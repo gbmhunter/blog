@@ -1,5 +1,5 @@
 ---
-title: "Programming Page"
+title: "Git"
 date: 2018-11-19
 type: page
 ---

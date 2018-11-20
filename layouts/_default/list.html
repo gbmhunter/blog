@@ -10,14 +10,18 @@
     <ul>
     <!-- Ranges through content/post/*.md -->
 
+    {{ if .Sections }}
     <h1>Sections</h1>
+    {{ end }}
     {{ range .Sections }}
         <li>
             <a href="{{.Permalink}}">{{.Title}}</a>
         </li>
     {{ end }}
 
+    {{ if .Pages }}
     <h1>Pages</h1>
+    {{ end }}
     {{ range .Pages }}
         <li>
             <a href="{{.Permalink}}">{{.Title}}</a>
