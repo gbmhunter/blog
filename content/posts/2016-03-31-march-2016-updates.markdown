@@ -1,0 +1,34 @@
+---
+author: gbmhunter
+date: 2016-03-31 08:13:18+00:00
+draft: false
+title: March 2016 Updates
+type: post
+url: /updates/march-2016-updates
+categories:
+- Updates
+tags:
+- circuit protection
+- component package
+- connectors
+- current loop
+- d-subminiature
+- d2pak
+- mains power
+- spi
+- thermistor
+---
+
+  * New [Mains Power page](http://blog.mbedded.ninja/electronics/components/connectors/mains-power) under Electronics->Components->Connectors.  * Updates to the [SPI Protocol page](http://blog.mbedded.ninja/electronics/communication-protocols/spi-protocol) under Electronics->Communication Protocols.  
+
+
+[![The typical SPI connections that an IC will have.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/typical-spi-connections.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2011/09/typical-spi-connections.jpg)  * New [Circuit Protection sub-section](http://blog.mbedded.ninja/electronics/components/circuit-protection) and [PTC Type Thermistor page](http://blog.mbedded.ninja/electronics/components/circuit-protection/ptc-type-thermistor).  * Updates to the [D2PAK (TO-263) Component Package page](http://blog.mbedded.ninja/pcb-design/component-packages/d2pak-to-263-component-package), with more info on the TO-263 THIN package.  
+
+
+[![A 3D render of the D2PAK (TO-263) component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/d2pak-to-263-component-package-3d-render.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/04/d2pak-to-263-component-package-3d-render.jpg)  * New [4-20mA Current Loop page](http://blog.mbedded.ninja/electronics/communication-protocols/4-20ma-current-loops), under Electronics->Communication Protocols.  
+
+
+[![An schematic showing how to interface a 4-20mA current loop signal to the ADC on a microcontroller. The circuit also has a low-pass filter and a buffer.](http://blog.mbedded.ninja/wp-content/uploads/2016/03/4-20ma-current-loop-interface-to-micro-schematic-with-filter-and-buffer.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2016/03/4-20ma-current-loop-interface-to-micro-schematic-with-filter-and-buffer.png)  * Updates to the [D-sub Connectors page](http://blog.mbedded.ninja/electronics/components/connectors/d-subminiature-d-sub) including info about filtered D-sub connectors and the various sizes and shapes of D-sub connectors.

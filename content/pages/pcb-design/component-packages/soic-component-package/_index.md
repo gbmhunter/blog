@@ -1,0 +1,130 @@
+---
+author: gbmhunter
+date: 2015-01-21 20:35:35+00:00
+draft: false
+title: SOIC Component Package
+type: page
+url: /pcb-design/component-packages/soic-component-package
+---
+
+# Overview
+
+<table ><tbody ><tr >
+<td style="width: 100px;" >Name
+</td>
+<td >SOIC (Small Outline Integrated Package)
+</td></tr><tr >
+<td >Synonyms
+</td>
+<td >  * R-PDSO (JEDEC wide body SOIC, 7.5mm width, 0.65mm pitch)  * SO (ST Microelectronics)  * S8 (SOIC-8, Analog Devices)  * S8E (Linear Technologies, SOIC-8 with exposed pad)  * WSON (SST, this is a package which shares the same footprint as a SOIC but has a smaller height, not to be confused with the different SON package)
+</td></tr><tr >
+<td >Variants
+</td>
+<td >
+
+The SOIC family contains packages with a varying number of pins.
+
+There are also two width's for SOIC packages, narrow width (3.9mm wide body, SOICx_N) and wide width (7.5mm wide body, SOICx_W). The width is usually expressed by the addition of _N or _W to the end of the package name. If the width is not mentioned, it is most likely going to be narrow width.
+
+</td></tr><tr >
+<td >Relevant Standards
+</td>
+<td >  * JEDEC MS-012-AA (SOIC Narrow)  * JEDEC MS-013 (SOIC Wide)
+</td></tr><tr >
+<td >Similar To
+</td>
+<td >  * SOJ
+</td></tr><tr >
+<td >Mounting
+</td>
+<td >SMD
+</td></tr><tr >
+<td >Pin Count
+</td>
+<td >8, 14, 16, 18, 20, 24, 28, 32
+</td></tr><tr >
+<td >Pitch
+</td>
+<td >  * 0.65mm (e.g. R-PDSO)  * 1.27mm (50mill)
+</td></tr><tr >
+<td >Solderability
+</td>
+<td >Relatively easy to hand solder compared to other SMT packages.
+</td></tr><tr >
+<td >Thermal Resistance
+</td>
+<td >  * SOIC-8: 70.6K/W (pads only, no copper fill)  * SOIC-8: 55K/W (6cm2 of copper, ground pins attached internally to die)  * SOIC-8: 33.5K/W (1 square inch of copper surrounding package, connected to ground)
+</td></tr><tr >
+<td >Land Area
+</td>
+<td >  * SOIC-8: 29.4mm2  * SOIC-28W: 186.4mm² (10.3x18.1mm)
+</td></tr><tr >
+<td >Height
+</td>
+<td >1.50-2.54mm
+</td></tr><tr >
+<td >3D Models
+</td>
+<td >n/a
+</td></tr><tr >
+<td >Common Uses
+</td>
+<td >  * Linear regulators  * Drivers/buffers  * High-power MOSFET's (normally in a SOIC-8N, with one pin for the gate, and either 3 or 4 pins for the drain and source)
+</td></tr></tbody></table>
+
+# Dimensions
+
+The dimensions for the SOIC-8N package are shown below:
+
+[caption id="attachment_9848" align="aligncenter" width="555"][![The dimensions for the SOIC-8 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-8-component-package-dimensions.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-8-component-package-dimensions.png) The dimensions for the SOIC-8N component package.[/caption]
+
+The dimensions for the SOIC-16N component package are shown below:
+
+[caption id="attachment_9849" align="aligncenter" width="575"][![The dimensions for the SOIC-16 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-16-component-package-dimensions.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-16-component-package-dimensions.jpg) The dimensions for the SOIC-16N component package.[/caption]
+
+# Pitch
+
+Most SOIC packages have a pitch of 1.27mm (50mil) and usually have Gullwing leads. When used for regulators, sometimes the many ground pins are connected internally to the die attach flag, providing better heat sinking capabilities. SOIC packages use _leadframe_ technology.
+
+The SOIC package R-PDSO defined by JEDEC has a non-standard pitch of 0.65mm (and the standard wide body width of 7.5mm).
+
+# Pin Numbering
+
+Pin numbering is the same as a DIP package, in that pin 1 is at the top left, and then pins are numbered sequentially down the left-hand side, then up the right hand-side.
+
+# Polarity Marks
+
+There are three ways of indicating the polarity on a SOIC package. The first two, a dot or a notch, indicate pin 1 or the top of the chip. The third way is not so obvious, and features a beveled edge along the side that pin 1 is on (so for SOIC-8, the bevelled edge would be on the side with pins 1 to 4).
+
+# Related Packages
+
+The WSON package by SST is lower in height than a standard SOIC package, but is designed to use the same PCB footprint.
+
+# Adapter PCBs
+
+Adapter PCBs for the SOIC family of packages are widely available due to the popularity of the package.
+
+SparkFun makes a SOIC-8 to DIP-8-300 adapter PCB.
+
+[caption id="attachment_9847" align="aligncenter" width="272"][![A SOIC-8 to DIP-8-300 adapter PCB by SparkFun.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-8-component-package-sparkfun-breakout-board.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-8-component-package-sparkfun-breakout-board.jpg) A SOIC-8 to DIP-8-300 adapter PCB by SparkFun.[/caption]
+
+# Thermal Resistance And Power Dissipation
+
+This graph shows the maximum power dissipation for the SOIC-8N component package, for various PCB copper areas.
+
+[caption id="attachment_9850" align="aligncenter" width="701"][![Maximum power dissipation graphs for the SOIC-8 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/maximum-power-dissapation-graphs-so-8.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/01/maximum-power-dissapation-graphs-so-8.png) Maximum power dissipation graphs for the SOIC-8N component package.[/caption]
+
+# Standard Pinout For MOSFETs
+
+The SOIC-8 component package is commonly used for medium-power N and P-channel MOSFETs. Most of these MOSFETs have the exact same pinout (both N and P-Channels!), as shown in the below diagram.
+
+Note: As far I'm aware, this is not specified in any standard, but is just an industry default. Also, this only applies to SOIC-8 packages with 1 MOSFET inside them.
+
+[caption id="attachment_12432" align="aligncenter" width="334"][![The standard pinout for a single MOSFET (N or P-channel) in a SOIC-8 package.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-8-component-package-standard-mosfet-pinout.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-8-component-package-standard-mosfet-pinout.png) The standard pinout for a single MOSFET (N or P-channel) in a SOIC-8 package.[/caption]
+
+Examples that follow this pinout include the [ST STS25NH3LL (N-channel)](https://www.sparkfun.com/datasheets/Robotics/sts25nh3ll.pdf), the [International Rectifier IRF8721PbF-1 (N-channel)](http://www.irf.com/product-info/datasheets/data/irf8721pbf-1.pdf), and the [Vishay SI9407BDY-T1-GE3 (P-channel)](http://www.vishay.com/docs/69902/si9407bd.pdf).

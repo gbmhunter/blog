@@ -1,0 +1,104 @@
+---
+author: gbmhunter
+date: 2014-07-17 21:31:18+00:00
+draft: false
+title: C Naming Conventions
+type: page
+url: /programming/languages/c/c-naming-conventions
+---
+
+# Overview
+
+
+
+
+This page explains my preferred naming convention style for C code.
+
+
+
+
+# Variables
+
+
+
+
+All local variables (variables within a function) begin with a lower-case letter and use camel-case, including function pointers. Only the first letter in an acronym is capitalised, e.g.
+
+
+
+    
+    void MyFunction()
+    {
+       uint8_t activeGpsAnt;
+    }
+    
+
+
+
+
+All file-level and global variable use the same syntax except with an underscore in front of them.
+
+
+
+    
+    uint8_t _activeGpsAnt;
+    
+    void MyFunction()
+    {
+       // code here...
+    }
+    
+
+
+
+
+# Functions
+
+
+
+
+Functions start with the file/module name, an underscore, and then a description. All functions use camel-case and begin with a capital letter. For example, a function in a file called Gps.c would look like...
+
+
+
+    
+    void Gps_GetLocation();
+    
+
+
+
+
+# Typedefs
+
+
+
+
+Typedefs aways end in _t. The helps the reader instantly distinguish a data type from anything else, and also serves to distinguish user defined data types (e.g. uint8_t, myType_t) from system data types (e.g. char, double, int).
+
+
+
+
+# Acronyms
+
+
+
+
+When it comes to capitalisation rules, acronyms are treated if they were a standard word, and only the first letter of the acronym is capitalised. For example, if you had a GPS variable, it would be named:
+
+
+
+    
+    bool gpsEnabled = true;
+
+
+
+
+Similarly, for functions:
+
+
+
+    
+    Gps_SetEnabled();
+
+
+

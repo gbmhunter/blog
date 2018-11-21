@@ -1,32 +1,37 @@
+{{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
 {{ define "main" }}
-<main>
-    <article>
-        <header>
-            <h1>{{.Title}}</h1>
-        </header>
-        <!-- "{{.Content}}" pulls from the markdown content of the corresponding _index.md -->
-        {{.Content}}
+  <div class="flex-l mt2 mw8 center">
+    <article class="center cf pv5 ph3 ph4-ns mw7">
+      {{ partial "breadcrumbs.html" . }}
+      <header>
+        <p class="f6 b helvetica tracked">
+          {{ humanize .Section | upper  }}
+        </p>
+        <h1 class="f1">
+          {{ .Title }}
+        </h1>
+      </header>
+      <div class="nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray">
+            {{ if .Sections }}
+            <h1>Sections</h1>
+            {{ end }}
+            {{ range .Sections }}
+                <li>
+                    <a href="{{.Permalink}}">{{.Title}}</a>
+                </li>
+            {{ end }}
+
+            {{ if .Pages }}
+            <h1>Pages</h1>
+            {{ end }}
+            {{ range .Pages }}
+                <li>
+                    <a href="{{.Permalink}}">{{.Title}}</a>
+                </li>
+            {{ end }}
+
+        {{ .Content }}
+      </div>
     </article>
-    <ul>
-    <!-- Ranges through content/post/*.md -->
-
-    {{ if .Sections }}
-    <h1>Sections</h1>
-    {{ end }}
-    {{ range .Sections }}
-        <li>
-            <a href="{{.Permalink}}">{{.Title}}</a>
-        </li>
-    {{ end }}
-
-    {{ if .Pages }}
-    <h1>Pages</h1>
-    {{ end }}
-    {{ range .Pages }}
-        <li>
-            <a href="{{.Permalink}}">{{.Title}}</a>
-        </li>
-    {{ end }}
-    </ul>
-</main>
+  </div>
 {{ end }}

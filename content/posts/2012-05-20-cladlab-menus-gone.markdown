@@ -1,0 +1,54 @@
+---
+author: gbmhunter
+date: 2012-05-20 09:30:49+00:00
+draft: false
+title: Cladlab Menu's Gone
+type: post
+url: /site-admin/cladlab-menus-gone
+categories:
+- Site Admin
+tags:
+- admin
+- crashed
+- error
+- menu
+- wordpress
+---
+
+O.K., so the menu system in Wordpress just started crashing after trying to add a page, giving me a "The given object id is not of that menu item" error many times over.
+
+Argh, so simple things such as reloading the old menu (using the back button on the browser), or disabling all plugins has not fixed this. One source claims that it could be a problem with the maximum php memory limit being set to low (something the server owners have to change).
+
+Worst case scenario is I have to recreate the entire menu structure again. My website was basically entirely linked from within this menu. Groan...
+
+[singlepic id=566 w=650 h=500 float=center]
+
+_**EDIT (03-09-2012)**_
+
+So I discovered that this problem must be either caused by a php timeout or memory limit. I have managed to stop this from happening again (but not recovering what I had already lost), by adding the following two lines to the wp-admin.php file in the root directory of the wordpress installation.
+
+[code lang="php"]
+
+set_time_limit(300);
+
+define('WP_MEMORY_LIMIT', '64M');
+
+[/code]
+
+at any point in the file after
+
+[code lang="php"]
+
+<?php
+
+[/code]
+
+and before
+
+[code lang="php"]
+
+if ( !defined('ABSPATH') )
+
+[/code]
+
+There was no specific reason to choose a time of 300 seconds and memory limit of 64MB, they just turned out to be large enough so that the php engine could handle the menus. This still means that large menus will take ages to update (minutes!), but at least you don't loose it all!

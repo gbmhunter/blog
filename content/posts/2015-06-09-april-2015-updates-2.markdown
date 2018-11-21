@@ -1,0 +1,24 @@
+---
+author: gbmhunter
+date: 2015-06-09 10:54:29+00:00
+draft: false
+title: April 2015 Updates
+type: post
+url: /updates/april-2015-updates-2
+categories:
+- Updates
+tags:
+- air
+- battery
+- component package
+- dsop advance
+- programming language
+- rust
+- vson
+- wson
+- zinc
+---
+
+  * New page on [Zinc-air batteries](http://blog.mbedded.ninja/electronics/components/batteries/zinc-air-batteries).[caption id="attachment_11641" align="aligncenter" width="443"][![A cut-away of a zinc-air button cell with annotations. Image from http://hear-better.com/.](http://blog.mbedded.ninja/wp-content/uploads/2015/05/zinc-air-battery-cut-away-annotated.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/05/zinc-air-battery-cut-away-annotated.jpg) A cut-away of a zinc-air button cell with annotations. Image from http://hear-better.com/.[/caption]  * Added info about the VSON and WSON variants to the [SON Component Package page](http://blog.mbedded.ninja/pcb-design/component-packages/son-component-package#wson-and-vson-variants).  * New DSOP Advance component package page.[caption id="attachment_11663" align="aligncenter" width="298"][![A basic outline of the DSOP advance component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/05/dsop-advance-component-package-basic-outline.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/05/dsop-advance-component-package-basic-outline.png) A basic outline of the DSOP advance component package.[/caption]  * Added a page on the [Rust programming language](http://blog.mbedded.ninja/programming/languages/rust).

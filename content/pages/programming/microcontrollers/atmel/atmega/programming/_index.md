@@ -1,0 +1,33 @@
+---
+author: gbmhunter
+date: 2011-09-14 21:54:19+00:00
+draft: false
+title: Programming
+type: page
+url: /programming/microcontrollers/atmel/atmega/programming
+---
+
+# Overview
+
+Programming a micro-controller is the process of downloading the code you have written on a computer, onto the on-board memory of the micro-controller so it can then run and execute it.
+
+Programming of most Atmel chips can be done with either one of the range of Atmel or 3rd party/self built programmers (this is a piece of hardware). To download the code you need some software that support the hardware device that you are going to use. Atmel supplies some inbuilt with AVR Studio, or you can download external, free ones such as the popular GUI based [PonyProg](http://www.lancos.com/prog.html) (supports most nix and Windows operating systems, but as of early 2011 some manipulation was required to get it running on 64x windows) or the command line interface [AVRDUDE](http://blog.mbedded.ninja/programming/microcontrollers/atmel/avrdude).
+
+[caption id="attachment_12461" align="aligncenter" width="293"][![A photo of the Atmel AVR MkII programmer, suitable for ISP programming of a range of Atmel microcontrollers.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/atmel-avr-mk2-programmer-photo-www-robotics-org-zajpg.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2011/09/atmel-avr-mk2-programmer-photo-www-robotics-org-zajpg.jpg) A photo of the Atmel AVR MkII programmer, suitable for ISP programming of a range of Atmel microcontrollers.[/caption]
+
+# ISP
+
+ISP (in-circuit-programming) is one of the easiest ways of programming micro-controllers. To program any AVR chip, all you need is a computer, a ISP programmer (such as the AVRISP MkII), and the self-powered target chip. If you are using the AVRISP MkII, all you need to do is connect the following pins to the 6-pin header in the following order:  1. MISO  2. VTG  3. SCK  4. MOSI  5. RST  6. GND
+
+An ATmega8 has the following pins:  1. MISO: Pin 18 (PB4)  2. VTG: Pin 7  3. SCK: Pin 19 (PB5)  4. MOSI: Pin 17 (PB3)  5. RST: Pin 1  6. GND: Pin 8, Pin 22
+
+If you connect the MkII up and it flashes orange (it's got some fancy smarts inside of it which makes sure every thing is connected up properly before you can even try to program with it), chances are you have got one or more of the connections the wrong way around.
+
+# The Reset Line
+
+The reset line is dual purpose, in normal operation it can be used to perform a "traditional" reset of the microcontroller's firmware. It is also used when programming.
+
+The reset line is active-low logic. It is usually controlled/driven by the programmer (e.g. the AVR MkII ISP programmer). While the reset line is active, all GPIO on the microcontroller are turned in inputs with pull-ups disabled.
+
+The reset line is held active (low) for almost all of the programming sequence. The one exception is at the end of an erase cycle (which is usually part of the programming sequence).

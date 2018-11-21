@@ -1,0 +1,24 @@
+---
+author: gbmhunter
+date: 2016-08-30 12:03:53+00:00
+draft: false
+title: August 2016 Updates
+type: post
+url: /updates/august-2016-updates
+categories:
+- Updates
+tags:
+- diode
+- pin
+- reverse recovery
+- rf
+---
+
+
+	  * New [PIN Diodes page](http://blog.mbedded.ninja/electronics/components/diodes/pin-diodes).  
+
+  
+
+[caption id="attachment_13727" align="aligncenter" width="192"][![A photo of a small, through-hole PIN diode.](http://blog.mbedded.ninja/wp-content/uploads/2016/08/pin-diode-photo-small.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2016/08/pin-diode-photo-small.jpg) A photo of a small, through-hole PIN diode.[/caption]
+

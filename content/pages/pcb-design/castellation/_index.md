@@ -1,0 +1,41 @@
+---
+author: gbmhunter
+date: 2014-07-28 21:09:13+00:00
+draft: false
+title: Castellation
+type: page
+url: /pcb-design/castellation
+---
+
+# Overview
+
+Castellation is a way of mounting one PCB onto another. It is also known by the name half-vias, edge-plating and leadless chip carrier (LCC).
+
+[caption id="attachment_8795" align="aligncenter" width="520"][![Close-up of the edge holes on a castellated PCB.](http://blog.mbedded.ninja/wp-content/uploads/2014/07/castellation-close-up-of-edge-holes.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2014/07/castellation-close-up-of-edge-holes.jpg) Close-up of the edge holes on a castellated PCB.[/caption]
+
+It is a common technique used for a daughter board, module or secondary PCB that needs to be mounted on the main PCB.
+
+[caption id="attachment_8791" align="aligncenter" width="299"][![A Telit cellular modem module which uses castellation. Image from http://www.cirtech-electronics.com/castellation/.](http://blog.mbedded.ninja/wp-content/uploads/2014/07/castellation-photo-of-telit-module.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2014/07/castellation-photo-of-telit-module.jpg) A Telit cellular modem module which uses castellation. Image from http://www.cirtech-electronics.com/castellation/.[/caption]
+
+Once soldered onto the parent PCB, it is a permanent attachment.
+
+# Process
+
+Rows of holes are drilled around the edge of the PCB. Once the holes have been through-hole plated, the board edge is cut so that it runs right down the middle of these holes. The edge of the board now looks like the top of a castle wall, hence the word catellation.
+
+# Design  * Make the vias as large as possible  * Make the top and bottom copper layer pads for the vias as large as possible  * Add pads to the castellated vias on middle layers if possible, to help anchor the barrel. This will reduce burring during the routing.
+
+The holes can be both used for mechanical fixture and also to pass electrical signals between the main and daughter PCBs.
+
+The holes, since on the edge of the daughter PCB, do not use up much valuable space (you normally have to have a component/track clearance around the edge of the board anyway)!
+
+Because the half-holes are plated and of a concave shape, they are very suitable for soldering.
+
+Watch out for torn edge-holes!
+
+[caption id="attachment_8790" align="aligncenter" width="372"][![Torn edge holes in a castellation attempt. Image from http://www.cirtech-electronics.com/castellation/.](http://blog.mbedded.ninja/wp-content/uploads/2014/07/castellation-torn-edge-holes.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2014/07/castellation-torn-edge-holes.jpg) Torn edge holes in a castellation attempt. Image from http://www.cirtech-electronics.com/castellation/.[/caption]
+
+The router bit can squash the via barrels, as shown in the following image:

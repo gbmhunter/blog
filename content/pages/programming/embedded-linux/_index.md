@@ -1,0 +1,111 @@
+---
+author: gbmhunter
+date: 2017-03-27 23:00:18+00:00
+draft: false
+title: Embedded Linux
+type: page
+url: /programming/embedded-linux
+---
+
+# Overview
+
+
+
+
+Embedded Linux is the name given to the Linux operating system when it is run on **resource-constrained systems**, as opposed to traditional laptop, desktop or server style computers.
+
+
+[caption id="attachment_14145" align="aligncenter" width="308"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/03/embedded-linux-icon.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2017/03/embedded-linux-icon.png) Embedded Linux icon.[/caption]
+
+
+# Child Pages
+
+
+
+
+[sb_child_list template=2 orderby=title order=asc nest_level=1]
+
+
+
+
+# Differences With "Standard" Linux
+
+
+
+
+Embedded devices typically have fewer resources and hardware than a traditional computer running Linux. For example, embedded Linux might run on a single-board MCU which does not have a screen, harddrive or speakers. The board will usually have far less ROM and RAM than a traditional computer.
+
+
+
+
+Because of the resource/hardware constraints, the embedded Linux kernel is usually stripped of all unneeded features, resulting in a much smaller ROM/RAM footprint.
+
+
+
+
+# Functionality Of MCUs
+
+
+
+
+A MCU designed to run embedded Linux (or any other high-level operating system) usually has some (or most) of the following features:
+
+
+
+
+
+	  * CPU (e.g. a ARM A9)
+	  * MMU (if no MMU is present, a special type of Linux has to be run)
+	  * Memory interface
+	  * Graphics processor
+	  * Ethernet
+	  * USB
+	  * UART interface
+	  * SPI interface
+	  * I2C interface
+	  * CAN interface
+	  * Analogue-to-digital converters (ADCs)
+	  * Timers
+	  * General purpose IO (GPIO)
+	  * Watchdog timer (WDT)
+	  * JTAG
+
+
+
+# Development Kits
+
+
+
+
+2 of the most popular embedded Linux development kits are the RaspberryPi and the BeagleBone.
+
+
+
+
+# BusyBox
+
+
+
+
+BusyBox is a bunch of stripped down Linux tools that are compiled into one executable. This makes it a popular choice for embedded devices, as each separate executable on an embedded system requires a significant amount of overhead.
+
+
+
+
+# Embedded ABI
+
+
+
+
+An _embedded application binary interface (EABI)_ is very similar to a normal ABI. It specifies:
+
+
+
+
+
+	  * File formats
+	  * Data types
+	  * Register usage
+	  * Stack frame organisation
+

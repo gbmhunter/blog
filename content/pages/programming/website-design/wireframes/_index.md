@@ -1,0 +1,14 @@
+---
+author: gbmhunter
+date: 2012-03-13 04:23:35+00:00
+draft: false
+title: Wireframes
+type: page
+url: /programming/website-design/wireframes
+---
+
+Wireframes are really good in the design stage of a website for getting an idea of the layout and feel of a website. They are good at communicating these ideas with the client/customer (if there is such one). When using a good wireframe tool/program, they are really easy to create.
+
+My favourite is [Mockingbird](https://gomockingbird.com/), and web-based wireframe tool developed with Cappuccino (an open source framework for building desktop-looking applications in a web browser). It has a nice layout, is easy to use, and contains plenty of powerful objects to add to your wireframe.
+
+They have a free license which allows you to create one project and collaborate with one other user. I haven't discovered the page limit of the project (I've created about 7 pages with no problems).

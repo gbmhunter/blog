@@ -1,0 +1,40 @@
+---
+author: gbmhunter
+date: 2013-07-26 02:43:12+00:00
+draft: false
+title: Useful PSoC Macros
+type: page
+url: /programming/microcontrollers/psoc/useful-psoc-macros
+---
+
+# Working Out What PSoC IC You Are Using
+
+PSoC Creator will define the following variable-like macros depending on what IC you've instructed it to compile for. These are useful for including IC-specific blocks of code using the preprocessor #ifdef directives. These macros are defined in cytypes.h, which is in the cy_boot folder under "Generated_Source" in the Workspace Explorer window in PSoC Creator. They are included if you include the standard PSoC catch-all header <device.h> into your code.
+    
+    CY_PSOC3 // Any PSoC3 device
+    CY_PSOC4 // Any PSoC4 device
+    CY_PSOC5 // Any PSoC5 device (including both 5 and 5LP)
+    CY_PSOC5LP // Any PSoC 5LP device
+    
+    // If you want to get more specific, you can check for the following...
+    CY_PSOC3_ES1 // PSoC3, Engineering Silicon 1
+    CY_PSOC3_ES2 // PSoC3, Engineering Silicon 2
+    CY_PSOC3_ES3 // PSoC3, Engineering Silicon 3
+    CY_PSOC5_ES1 // PSoC5, Engineering Silicon 1
+    
+    CY_PSOC5_ES2 // PSoC5, Engineering Silicon 2
+    
+    // You can use them to include code like in the following example
+    #if(CY_PSOC5)
+       FlashLed();
+    #endif
+    
+    // Note that #ifdef doesn't work properly! It will always evaluate to true.// Don't know why. Always use the directive #if
+    #ifdef CY_PSOC5 // This won't work!!!
+
+Note that these are only define once the precompiler passes the line #define <device.h>, therefore there is no way to write code that detects if you are compiling on a PSoC chip, and if so, then including device.h. A way to get around this is to add a compiler macro as a compiler flag (e.g. -D PSOC), and then use the following code.
+    
+    // PSOC is defined by adding "-D PSOC" to the compiler build flags
+    #ifdef PSOC
+       #include <device.h>
+    #endif

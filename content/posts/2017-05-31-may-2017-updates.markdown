@@ -1,0 +1,78 @@
+---
+author: gbmhunter
+date: 2017-05-31 01:21:51+00:00
+draft: false
+title: May 2017 Updates
+type: post
+url: /updates/may-2017-updates
+categories:
+- Updates
+tags:
+- c
+- clion
+- docker
+- mocking
+- python
+- sgp4
+- simplified perturbations models
+- space
+- threading
+- tle
+- two-line element
+- unit testing
+- volumes
+---
+
+
+	  * New [Threading page](http://blog.mbedded.ninja/?page_id=14412&preview=true) under Programming->Programming Languages->C++.  
+
+   
+
+
+
+[![](http://blog.mbedded.ninja/wp-content/uploads/2015/01/thread-needle-icon.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/01/thread-needle-icon.png)
+
+
+
+	  * New [Volumes page](http://blog.mbedded.ninja/programming/virtual-machines-and-containers/docker/volumes) under Programming->Virtual Machines And Containers->Docker.
+	  * New [Running External Commands page](http://blog.mbedded.ninja/programming/languages/python/running-external-commands) under Programming->Languages->Python.
+	  * New [CLion page](http://blog.mbedded.ninja/programming/integrated-development-environments-ides/clion) under Programming->Integrated Development Environments (IDEs).  
+
+   
+
+[caption id="attachment_14451" align="aligncenter" width="261"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/05/clion-logo.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2017/05/clion-logo.png) The CLion logo.[/caption]
+
+	  * New [Space sub-site](http://blog.mbedded.ninja/space) added to www.mbedded.ninja.  
+
+   
+
+
+
+[![](http://blog.mbedded.ninja/wp-content/uploads/2017/06/planet-icon-space.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2017/06/planet-icon-space.png)
+
+
+
+	  * New [Simplified Perturbations Models](http://blog.mbedded.ninja/space/simplified-perturbations-models) page under Space.
+	  * New [Unit Testing And Mocking page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/unit-testing-and-mocking) under Programming->Languages->C++.
+	  * New [Two-line Elements page](http://blog.mbedded.ninja/space/two-line-elements) under Space.  
+
+   
+
+[caption id="attachment_14484" align="aligncenter" width="575"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/05/tle-two-line-element-example-first-quarter.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2017/05/tle-two-line-element-example-first-quarter.png) A partial screenshot of a TLE (two-line element) for the NOAA 14 satellite.[/caption]
+  
+
+ 
+	  * New [fsck (File System Consistency checK) page](http://blog.mbedded.ninja/programming/operating-systems/linux/programs/fsck-file-system-consistency-check) under Programming->Operating Systems->Linux->Programs.
+	  * New [Building page](http://blog.mbedded.ninja/programming/embedded-linux/yocto-project/building) under Programming->Embedded Linux->Yocto Project.
+	  * New [Device Trees page](http://blog.mbedded.ninja/programming/embedded-linux/yocto-project/device-trees) under Programming->Embedded Linux->Yocto Project.  
+
+   
+
+[caption id="attachment_14505" align="aligncenter" width="1159"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/06/yocto-device-tree-conversion-from-blob-to-source.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2017/06/yocto-device-tree-conversion-from-blob-to-source.png) A comparison between the Yocto generated binary Device Tree Blob (.dtb) file and the human-readable Device Tree Source (.dts) file that can be created from the .dtb file using the program dtc.[/caption]
+
+

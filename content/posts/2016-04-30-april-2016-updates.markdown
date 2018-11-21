@@ -1,0 +1,77 @@
+---
+author: gbmhunter
+date: 2016-04-30 06:56:21+00:00
+draft: false
+title: April 2016 Updates
+type: post
+url: /updates/april-2016-updates
+categories:
+- Updates
+tags:
+- bjt
+- constant-current
+- i2c
+- led driver
+- low-pass rc
+- microblaze
+- multiple-collector
+- multiple-emitter
+- ninjacalc
+- ntc
+- pwm
+- sensor
+- temperature
+- thermistor
+- track current
+- vdac
+- z-wave
+---
+
+
+	  * Added information about [multiple-collector and multiple-emitter BJTs](http://blog.mbedded.ninja/electronics/components/transistors/bipolar-junction-transistors-bjts#multiple-collector-and-multiple-emitter-bjts).  
+
+  
+
+[caption id="attachment_13088" align="aligncenter" width="499"][![The schematic of a basic two-input TTL NAND gate.](http://blog.mbedded.ninja/wp-content/uploads/2015/08/basic-two-input-tll-nand-gate-schematic.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/08/basic-two-input-tll-nand-gate-schematic.png) The schematic of a basic two-input TTL NAND gate.[/caption]  
+
+  
+
+
+	  * Information added on using low-pass RC filters for making a VDAC from a PWM source.
+	  * Added information about the [10-bit I2C addressing scheme](http://blog.mbedded.ninja/electronics/communication-protocols/i2c-protocol).
+	  * New [How To Calculate Track Current page](http://blog.mbedded.ninja/pcb-design/how-to-calculate-maximum-track-current) under the PCB Design section of the website, with information, equations, and more info on how to calculate the maximum current a track (a.k.a. trace) on a PCB can take.
+	  * New [NTC Thermistor Temperature Sensing page](http://blog.mbedded.ninja/electronics/components/sensors/temperature-sensors/ntc-thermistors-temperature-sensors) with information on PTC and NTC thermistors, including how to connect them up to a microcontroller for temperature measurements.  
+
+  
+
+[caption id="attachment_13343" align="aligncenter" width="529"][![A screenshot of the NTC thermistor page.](http://blog.mbedded.ninja/wp-content/uploads/2016/05/screenshot-of-ntc-thermistor-page.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2016/05/screenshot-of-ntc-thermistor-page.png) A screenshot of the NTC thermistor page.[/caption]  
+
+  
+
+
+	  * New [MicroBlaze page](http://blog.mbedded.ninja/programming/microcontrollers/microblaze) under Programming->Microcontrollers.
+	  * New [Z-Wave page](http://blog.mbedded.ninja/electronics/communication-protocols/z-wave) under Electronics->Communication Protocols.
+	  * New information about the [common-collector BJT amplifier](http://blog.mbedded.ninja/electronics/components/transistors/bipolar-junction-transistors-bjts#common-collector).  
+
+  
+
+[caption id="attachment_13103" align="aligncenter" width="517"][![The basic schematic of a common-collector BJT amplifier.](http://blog.mbedded.ninja/wp-content/uploads/2015/08/basic-common-collector-bjt-amplifier-schematic.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/08/basic-common-collector-bjt-amplifier-schematic.png) The basic schematic of a common-collector BJT amplifier.[/caption]including simulation results...  
+
+  
+
+[caption id="attachment_13107" align="aligncenter" width="1418"][![Vout vs. Vin for a basic common-collector BJT amplifier.](http://blog.mbedded.ninja/wp-content/uploads/2015/08/vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/08/vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png) Vout vs. Vin for a basic common-collector BJT amplifier.[/caption]  
+
+  
+
+
+	  * Information added about making [constant-current LED drivers using BJTs](http://blog.mbedded.ninja/electronics/components/transistors/bipolar-junction-transistors-bjts#constant-current-sink).  
+
+  
+
+[caption id="attachment_13334" align="aligncenter" width="465"][![The simulation schematic for a constant-current BJT-based LED driver.](http://blog.mbedded.ninja/wp-content/uploads/2015/08/constant-current-bjt-based-led-driver.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/08/constant-current-bjt-based-led-driver.png) The simulation schematic for a constant-current BJT-based LED driver.[/caption]
+

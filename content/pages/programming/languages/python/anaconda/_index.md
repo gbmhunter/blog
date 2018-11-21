@@ -1,0 +1,119 @@
+---
+author: gbmhunter
+date: 2018-01-17 19:17:03+00:00
+draft: false
+title: Anaconda
+type: page
+url: /programming/languages/python/anaconda
+---
+
+# Overview
+
+
+
+
+Anaconda exposes two important command-line tools, conda and source.
+
+
+
+[caption id="attachment_15261" align="aligncenter" width="598"][![](http://blog.mbedded.ninja/wp-content/uploads/2018/02/anaconda-python-logo.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2018/02/anaconda-python-logo.png) The logo for Anaconda (Python distribution/environment).[/caption]
+
+
+
+# How To Create And Use A Virtual Environment
+
+
+
+
+This assumes you have installed anaconda and conda is available on your path.
+
+
+
+
+First, create a new environment:
+
+
+
+    
+    $ conda create -n <your environment name>
+
+
+
+
+Now activate this environment:
+
+
+
+    
+    $ source activate <your environment name>
+
+
+
+
+Install your required packages:
+
+
+
+    
+    $ conda install -n <your environment name> <package>
+
+
+
+
+Note: If you don't specify an environment to install to (as above), Anaconda will install to the currently active environment. To install to any environment which is not currently active, add the option -n <your environment name> to the above command.
+
+
+
+
+Now you can run your python code!
+
+
+
+
+When finished, you can deactivate your virtual environment with:
+
+
+
+    
+    $ source deactivate
+
+
+
+
+# Listing All Local Environments
+
+
+
+
+Use the following command to list all local environments:
+
+
+
+    
+    $ conda env list
+
+
+
+
+The currently active environment will have an asterisk after it's name.
+
+
+
+
+# Installing Non-Conda Packages
+
+
+
+
+Non-conda packages can be installed into the current environment with other Python package managers such as pip:
+
+
+
+    
+    $ pip install <package name>
+
+
+
+
+As long as a Anaconda environment is active, pip will install to the current environment only.

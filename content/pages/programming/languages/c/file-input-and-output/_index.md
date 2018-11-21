@@ -1,0 +1,215 @@
+---
+author: gbmhunter
+date: 2013-07-11 23:16:27+00:00
+draft: false
+title: File Input And Output
+type: page
+url: /programming/languages/c/file-input-and-output
+---
+
+The standard C library provides functions for writing input and output to files.
+
+Most of the file input/output functions are declared in header stdio.h. Add the line #include <stdio.h> to your source code to use file I/O functions.
+
+
+# fopen()
+
+
+fopen() is used to open a file.
+
+The function declaration changed in C99, by adding the keyword restrict. Before C99 it was:
+
+    
+    FILE *fopen(const char *filename, const char *mode);
+
+
+In C99 and above:
+
+    
+    FILE *fopen(const char *restrict filename, const char *restrict mode);
+
+
+where:
+
+filename: Null-terminated string of the filename to associate the data to
+
+mode: Null-terminated string that determines the file access mode
+<table style="width: 600px;" border="0" >
+<tbody >
+<tr >
+
+<td >**mode**
+</td>
+
+<td >**Stands For:**
+</td>
+
+<td >**Description**
+</td>
+
+<td >**Behaviour If File Already Exists**
+</td>
+
+<td >**Behaviour If File Doesn't Exist**
+</td>
+</tr>
+<tr >
+
+<td >"r"
+</td>
+
+<td >read
+</td>
+
+<td >Open a file to read from it.
+</td>
+
+<td >Read from start.
+</td>
+
+<td >Error.
+</td>
+</tr>
+<tr >
+
+<td >"w"
+</td>
+
+<td >write
+</td>
+
+<td >Open a file to write to it.
+</td>
+
+<td >Delete file contents.
+</td>
+
+<td >Create new file.
+</td>
+</tr>
+<tr >
+
+<td >"wx"
+</td>
+
+<td >write
+</td>
+
+<td >Write to file, but don't overwrite if file already exists.
+</td>
+
+<td >Error.
+</td>
+
+<td >Create new file
+</td>
+</tr>
+<tr >
+
+<td >"a"
+</td>
+
+<td >append
+</td>
+
+<td >Open a file to append data to the end.
+</td>
+
+<td >Append new data to the end of file.
+</td>
+
+<td >Create new file.
+</td>
+</tr>
+<tr >
+
+<td >"r+"
+</td>
+
+<td >read extended
+</td>
+
+<td >Opens a file for read/write access
+</td>
+
+<td >Read from start.
+</td>
+
+<td >Error.
+</td>
+</tr>
+<tr >
+
+<td >"w+"
+</td>
+
+<td >write extended
+</td>
+
+<td >Creates a file for read/write access
+</td>
+
+<td >Deletes file contents.
+</td>
+
+<td >Create new file.
+</td>
+</tr>
+<tr >
+
+<td >"w+x"
+</td>
+
+<td >write extended
+</td>
+
+<td >Opens a file for read/write access, but doesn't overwrite if file already exists.
+</td>
+
+<td >Error.
+</td>
+
+<td >Create new file.
+</td>
+</tr>
+<tr >
+
+<td >"a+"
+</td>
+
+<td >append extended
+</td>
+
+<td >Opens a file for read/write access
+</td>
+
+<td >Appends new data to the end of file.
+</td>
+
+<td >Create new file.
+</td>
+</tr>
+<tr >
+
+<td >b
+</td>
+
+<td >binary open
+</td>
+
+<td >Opens a file in binary mode (**Windows only**).
+</td>
+
+<td >?
+</td>
+
+<td >?
+</td>
+</tr>
+</tbody>
+</table>
+fopen() returns pointer to opened file stream on success, otherwise a NULL pointer on fail.
+
+You have to be careful when using fopen() on a system with multiple threads, there is the possibility of creating race conditions.
+
+

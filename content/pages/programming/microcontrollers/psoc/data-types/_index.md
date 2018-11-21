@@ -1,0 +1,127 @@
+---
+author: gbmhunter
+date: 2013-07-26 00:57:28+00:00
+draft: false
+title: Data Types
+type: page
+url: /programming/microcontrollers/psoc/data-types
+---
+
+# Standard Data Types
+
+Note: The pre-defined variable types that come with the PSoC programming suites are defined both with and without the _t suffix that most people use to define a typedef (e.g. uint8_t). I recommend using the version with the underscore, as this increases portability (this is also supported by Linux and other Unix-like systems). It is better practise to use the data types whose size is explicitly stated (e.g. uint32_t rather than unsigned int as the latter's size is platform-dependant). The following data types are valid for all PSoC families.
+    
+    // Standard C data types (implicit sizes)
+    char
+    short
+    int
+    long
+    float
+    double
+    
+    // Types available through <stdint.h>
+    int8_t
+    uint8_t
+    int16_t
+    uint16_t
+    int32_t
+    uint32_t
+    int64_t
+    uint64_t
+    size_t
+    
+    // Cypress-defined data types (explicit sizes)
+    // Note that 64-bit data types are only availiable
+    // with the _t suffix
+    int8
+    uint8
+    int16
+    uint16
+    int32
+    uint32
+
+# **Standard C Variable Type Sizes On PSoC 5**
+
+<table border="0" ><tbody ><tr >
+<td >**Data Type**
+</td>
+<td >**Size (bytes)**
+</td>
+<td >**Range**
+</td>
+<td >**Decimal Precision (places)**
+</td>
+<td >**printf() identifier**
+</td></tr><tr >
+<td >char
+</td>
+<td >1
+</td>
+<td >0-255
+</td>
+<td > 
+</td>
+<td >%c
+</td></tr><tr >
+<td >short
+</td>
+<td >2
+</td>
+<td > 
+</td>
+<td > 
+</td>
+<td >%i
+</td></tr><tr >
+<td >int
+</td>
+<td >4
+</td>
+<td > 
+</td>
+<td > 
+</td>
+<td >%i
+</td></tr><tr >
+<td >unsigned int
+</td>
+<td >4
+</td>
+<td > 
+</td>
+<td > 
+</td>
+<td >%u
+</td></tr><tr >
+<td >long
+</td>
+<td >4
+</td>
+<td > 
+</td>
+<td > 
+</td>
+<td >%i
+</td></tr><tr >
+<td >float
+</td>
+<td >4
+</td>
+<td > 
+</td>
+<td >7
+</td>
+<td >%f
+</td></tr><tr >
+<td >double
+</td>
+<td >8
+</td>
+<td > 
+</td>
+<td >15
+</td>
+<td >%f
+</td></tr></tbody></table>
+
+These were discovered using the sizeof() command, and printing the result to a debug terminal.

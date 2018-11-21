@@ -1,0 +1,57 @@
+---
+author: gbmhunter
+date: 2012-12-21 07:05:14+00:00
+draft: false
+title: '2 New Calculators Added: Capacitor Charge And Energy'
+type: post
+url: /updates/2-new-calculators-added-capacitor-charge-and-energy
+categories:
+- Electronics
+- Updates
+tags:
+- capacitance calculator
+- capacitor energy calculator
+- online calculator
+---
+
+[latexpage]
+
+This week, two new online electrical-engineering-themed calculators have been added!
+
+One calculator is for the capacitor charge equation,
+
+
+$Q = CV$
+
+
+which involves charge, capacitance and voltage.
+
+The other is for the capacitor energy equation,
+
+
+$ E = \frac{1}{2}CV^2$
+
+
+
+
+which involves energy, capacitance and voltage.
+
+
+As usual, any of the variables can be chosen to be calculated given the other ones (the independant and dependant variables). Values are updated automatically as you type. The equations and the variables are fully explained on their respective pages.
+
+These calculators are useful for both electrical engineers and hobbyists alike when:
+
+
+
+	  * Calculating capacitor time constants
+	  * When using super-capacitors
+	  * Working out how long a capacitor will power a circuit for
+	  * Working out the available energy in cap banks for coil guns and other high-energy electronic  devices
+	  * Working out the effectiveness of a capacitor for transient voltage suppression
+	  * Much more!
+
+They can be found individually on the [Capacitors page](http://blog.mbedded.ninja/electronics/components/capacitors), or with the other calculators on the [Online Calculators page](http://blog.mbedded.ninja/electronics/general/online-calculators).
+
+[singlepic id=1026 w=600 h=900 float=center]
+
+Also, updates were made to the [RFID page](http://blog.mbedded.ninja/electronics/circuit-design/rfid) (regarding 13.56MHz RFID standards and transceivers) and also the [OLED page](http://blog.mbedded.ninja/electronics/components/oled-screens) (regarding the SSD1306 driver IC and manufacturers/distributors).

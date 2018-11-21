@@ -1,0 +1,55 @@
+---
+author: gbmhunter
+date: 2017-04-09 02:01:03+00:00
+draft: false
+title: Wordpress Backups
+type: page
+url: /programming/website-design/content-management-systems/wordpress/wordpress-backups
+---
+
+# Folders To Ignore
+
+
+
+
+There are many folders/files that could be drastically increasing the size of your Wordpress backups. These include cache files created by various plugins.
+
+
+
+
+The following information is based of my personal experiences only! (i.e. there will be other Wordpress plugins that create backup trouble, but I don't use them).
+
+
+
+
+## Add Watermark
+
+
+
+
+[Add Watermark](https://en-ca.wordpress.org/plugins/add-watermark/) is a useful plugin for dynamically adding watermarks to images that are served to users. But is also can create a large cache directory, which can clutter backup operations.
+
+
+
+
+You can safely ignore any files in the folder wp-content/plugins/add-watermark/cache/.
+
+
+
+
+## NextGen
+
+
+
+
+NextGen can create a rather large number of cache/backup files in wp-content/gallery/.
+
+
+
+
+You should ignore all files in the wp-content/gallery/cache/ folder.
+
+
+
+
+You should also ignore all files that reside with any subfolder named dynamic of wp-content/gallery/ (e.g. anything that matches the glob syntax wp-content/gallery/**/dynamic/**).

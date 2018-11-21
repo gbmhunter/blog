@@ -1,0 +1,50 @@
+---
+author: gbmhunter
+date: 2017-06-29 23:25:29+00:00
+draft: false
+title: June 2017 Updates
+type: post
+url: /updates/june-2017-updates
+categories:
+- Updates
+tags:
+- c
+- linear programming
+- linux
+- memory
+- protobuf
+- serial ports
+- serialization
+- valgrind
+---
+
+
+	  * New [Linear Programming page](http://blog.mbedded.ninja/mathematics/linear-programming) under Mathematics.
+	  * New [Valgrind page](http://blog.mbedded.ninja/programming/operating-systems/linux/programs/valgrind) under Programming->Operating Systems->Linux->Programs.  
+
+   
+
+[caption id="attachment_14549" align="aligncenter" width="229"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/06/valgrind-logo.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2017/06/valgrind-logo.jpg) The Valgrind logo.[/caption]
+  
+
+ 
+	  * New [Linux Serial Ports Using C page](http://blog.mbedded.ninja/programming/languages/c/linux-serial-ports-using-c) under Programming->Languages->C.  
+
+   
+
+
+
+[![](http://blog.mbedded.ninja/wp-content/uploads/2015/11/amphenol-ltw-waterproof-serial-de-9-receptacle-connector.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/11/amphenol-ltw-waterproof-serial-de-9-receptacle-connector.jpg)
+
+
+
+	  * Updates to the [Protobuf page](http://blog.mbedded.ninja/programming/general/protobuf), including code examples on serialization/deserialization.  
+
+   
+
+[caption id="attachment_14568" align="aligncenter" width="310"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/07/google-protobuf-logo.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2017/07/google-protobuf-logo.png) Icon for Google's protobuf library.[/caption]
+
+

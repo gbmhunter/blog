@@ -1,0 +1,39 @@
+---
+author: gbmhunter
+date: 2013-03-27 04:31:44+00:00
+draft: false
+title: Programming
+type: page
+url: /programming/microcontrollers/psoc/programming
+---
+
+[singlepic id=349 w=250 h=250 float=right]
+
+
+
+
+Programming is supported by the MiniProg programmers. The current version is the MiniProg 3 which supports JTAG, SWD, ISSP, SWV and I2C (in a bridge, not programming protocol). It can program target boards with a voltage ranging from 1.5 to 5.5V, or supply power to the target board at one of four voltage levels. It comes with both a 5-pin 100mil pitch and 10-pin 50mill pitch header. The 10-pin connector is used on the prototyping boards, and a cable is provided. The programmer is small! (which is a good thing). Some (e.g. ATMEL's) are huge, and also quite expensive in comparison (especially for the ATMEL JTAG programmer).
+
+
+
+
+PCB Header: Samtec FTSH-105-01-L-DV-K-ND (Digi-Key Part Num: FTSH-105-01-L-DV-K-ND)  
+
+ Supplied Cable: Samtec FFSD-10-D-06.00-01-N  
+
+ Socket-to-Socket 152.40mm (Digi-Key Part Num: SAM8218-ND)
+
+
+
+
+However, the header is typically out-of-stock on DigiKey. It can be set to provide one of four voltage levels to the target board (1.8V, 2.5V, 3.3V, 5V). Cypress provides a standalone program, PSoC Programmer, to program it's PSoC chips. However, programming is usually done through PSoC Creator (the design software), which also supports debugging. Cypress also provides a command-line interface (CLI) and component-object model (COM) so that you can design your own applications that utilize PSoC Programmer's backend to program chips.
+
+
+
+
+[singlepic id=677 w=400 h=400 float=center]
+
+
+
+
+[singlepic id=676 w=400 h=400 float=center]

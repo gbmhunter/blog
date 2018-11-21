@@ -1,0 +1,79 @@
+---
+author: gbmhunter
+date: 2014-11-04 09:12:02+00:00
+draft: false
+title: IMS (Insulated Metal Substrate) PCBs
+type: page
+url: /pcb-design/ims-insulated-metal-substrate-pcbs
+---
+
+[latexpage]
+
+# Overview
+
+Insulated metallic substrate (IMS) PCBs are PCBs which use a metallic material as a a thick base or inner layer to improve the thermal and mechanical properties of the PCB. They are also known as aluminium base, aluminium clad, metal clad (MCPCB), or thermally conductive PCBs (ergh...bad name, all PCBs are pretty thermally conductive). A **3-10 fold** thermal improvement over standard FR-4 can be achieved.
+
+[caption id="attachment_8863" align="aligncenter" width="346"][![A side on photo of a IMS PCB with an aluminium base.](http://blog.mbedded.ninja/wp-content/uploads/2014/11/ims-pcb-aluminium-side-on-photo.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2014/11/ims-pcb-aluminium-side-on-photo.png) A side on photo of a IMS PCB with an aluminium base.[/caption]
+
+Aluminium is normally used as the substrate (with copper still being used for the electrical layers) because of it's low cost, however copper is used in more expensive/higher power density designs because of it's superior thermal conductivity. Copper also has a lower co-efficient of thermal expansion and is also used when the stresses on the component's solder joints need to be reduced.
+
+# Uses  * High power applications  * Where there are large mechanical loads  * High level of dimensional stability is required  * Flammability concerns/restrictions  * Extra electromagnetic shielding is required
+
+The increased thermal conductivity of IMS PCBs allows for higher packing densities (you can have thinner copper tracks for the same current!), longer operating times, more reliable devices (reduces thermal stress and drops the MTBF).
+
+IMS PCBs are used for power LED PCBs, motor drivers. welding machines, SSR's, power conversion circuits and more.
+
+[caption id="attachment_8871" align="aligncenter" width="281"][![Top-down photo of a IMS PCB for high-power LEDs.](http://blog.mbedded.ninja/wp-content/uploads/2014/11/ims-pcb-copper-clad-top-down-photo.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2014/11/ims-pcb-copper-clad-top-down-photo.png) Top-down photo of a IMS PCB for high-power LEDs.[/caption]
+
+There are also direct bonded copper (DBC) substrates, active metal braze (AMB) substrates
+
+Sometimes using a IMS PCB saves you having to use a heatsink!
+
+# Thermal Conductivities
+
+Just for comparison, here are the thermal conductivities of various PCB materials. Note that these units are Watts per metre per Kelvin (or Watts per metre-Kelvin).  * Copper: \(385 W/m/K\)  * Aluminum: \(205 W/m/K\)  * Water: \(0.56 W/m/K\)  * FR4: \(0.25 W/m/K\)  * Thermal prepreg: \(1.00 – 5.00 W/m/K\)  * Still Air: \(0.24 W/m/K\)
+
+Notice how traditional PCB prepreg has a very poor thermal conductivity at \(0.25W/m/K\).
+
+# Design
+
+Basic ones allow for components to be placed on one side only. White and black are common soldermask and silkscreen colours for IMS PCBs. More advanced ones follow normal stack-up rules, except one or more "cores" in the PCB is replaced with a metallic material. Prepreg and normal copper layers still used. However prepreg layers are small (typically 20-100um thick), and they have poor thermal conductivity! However we can't make the dielectric too thin or the dielectric strength will be too low (and we will get breakdowns). Special prepreg can be used that is ceramic or boron-filled to increase it's thermal conductivity while keeping it's insulating properties.
+
+An IMS PCB can be plated using most common plating techniques. However, HASL is not preferred due to the uneven surface it creates compared to other processes such as Cu-OSP, immersion Sn or NiAu (ENIG).
+
+## Single-Sided, Single-Layer IMS PCB
+
+This is the most basic and cheapest IMS PCB design layout. It consists of one electrical layer sandwiched to a metallic substrate with some prepreg inbetween. It is commonly used for basic high-power LED PCBs and other simple circuits which don't require too much routing.
+
+[caption id="attachment_12318" align="aligncenter" width="407"][![An example stack-up of a single-sided, single-layered IMS PCB.](http://blog.mbedded.ninja/wp-content/uploads/2014/11/example-stack-up-of-single-sided-single-layered-ims-pcb.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2014/11/example-stack-up-of-single-sided-single-layered-ims-pcb.png) An example stack-up of a single-sided, single-layered IMS PCB.[/caption]
+
+## Single-Sided, Double-Layered IMS PCB
+
+This design is not much more complex than a single-layer, single-sided IMS PCB. All it is is an extra electrical copper layer just below the top electrical layer. A thin two-layer PCB is made using the normal PCB processes, and then the metallic substrate is added to complete the PCB.
+
+[caption id="attachment_12317" align="aligncenter" width="388"][![An example stack-up of a single-sided, double-layered IMS PCB.](http://blog.mbedded.ninja/wp-content/uploads/2014/11/example-stack-up-of-single-sided-double-layered-ims-pcb.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2014/11/example-stack-up-of-single-sided-double-layered-ims-pcb.png) An example stack-up of a single-sided, double-layered IMS PCB.[/caption]
+
+The non-component side of a 1-sided IMS PCB can be mounted to a heatsink (e.g. the device's enclosure) for a huge decrease in the total thermal resistance of the device. Thermal interface layer (TIM) between IMS PCB and the heatsink.
+
+Maximum dimensions seem to be around 500x500mm.
+
+Flammabiity rating can be 94V0.
+
+# PCB Constraints
+
+Depending on the design, the thermal conductivity can range from 0.60 (average to good) to 2.2W/m*K (really good), where FR4 is 0.3W/m*K. 1.5mm and 2.0mm are common thicknesses. I have seen 0.8, 1.0, 1.2, 1.5, 1.6 and 2.0mm supported. Copper thickness ranges from 35->200um.
+
+Minimum conductor width: 200um  
+Minimum conductor spacing: 200um  
+Min. annular ring: 150um  
+Min via (pth): 0.3mm  
+Glass transition temp for dielectric layer: 130C  
+Er (permittivity): 4.2-4.7. 
+
+# Thermal Management Alternatives To IMS
+
+Moving from a traditional PCB to a IMS PCB can be quite a large design/manufacturing change. Before doing this, think, "Can I get improve the thermal properties of my PCB in any other way?". Here are some alternatives to IMS PCBs:  * Thermal vias (note that these can be also used in conjunction with IMS PCBs)  * Thicker copper layers. 35um (1 oz.) thick copper is standard, but most PCB manufacturers allow you to increase the thickness by a large amount!

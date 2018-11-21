@@ -1,0 +1,338 @@
+---
+author: gbmhunter
+date: 2016-12-13 14:03:56+00:00
+draft: false
+title: Containers
+type: page
+url: /programming/languages/c-plus-plus/containers
+---
+
+[mathjax]
+
+
+
+
+# Overview
+
+
+
+
+This page goes over the various type of containers that are available in C++. These containers cover the many different way in which you might wish to store data.
+
+
+
+
+_The following containers are sorted alphabetically._
+
+
+
+
+# arrays
+
+
+<table >
+<tbody >
+<tr >
+
+<td >Header
+</td>
+
+<td >#include <deque>
+</td>
+</tr>
+<tr >
+
+<td >Full Path
+</td>
+
+<td >std::array
+</td>
+</tr>
+<tr >
+
+<td >Time Complexity
+</td>
+
+<td >Random Access: \( \mathcal{O}(1) \)  
+
+ Insertion At Start Or End: n/a  
+
+ Insertion In Middle: n/a
+</td>
+</tr>
+</tbody>
+</table>
+
+
+Of course, we will always be able to use C-style arrays in C++, which are normally just used and passed around as a pointer to the element type. However, some issues with standard C-style arrays include; no built-in memory management, no bounds checking, and no information about the size of the array is carried with it (so you usually have to indicate the size by passing in another variable to functions).
+
+
+
+
+C++11 provides us with a std container which encapsulates a fixed-size array.
+
+
+
+    
+    std::array<int, 3> myArray = { 1, 2, 3}; 
+
+
+
+
+Note that a std::array is more restrictive than a C-style array in that the size must be provided at compile time. e.g.:
+
+
+
+    
+    int size = 4;
+    int cArray[x];                  // This WILL compile
+    std::array<int, size> cppArray; // This WON'T compile
+
+
+
+
+If you want a runtime resizable array-like container, reach for a std::vector instead.
+
+
+
+
+Before C++11 introduced std::array, you could use the Boost equivalent. Boost provides a templated class to create fixed-size arrays of a particular type. To create a fixed array that stored 6 doubles, you would use:
+
+
+
+    
+    boost::array<double, 6> myArray;
+
+
+
+
+Note that boost::array provides exactly the same syntax as std::array for initializaiton. The first template parameter is the type you wish the array to store, and the second parameter is the number of elements in the array.
+
+
+
+
+# deque
+
+
+<table >
+<tbody >
+<tr >
+
+<td >Header
+</td>
+
+<td >#include <deque>
+</td>
+</tr>
+<tr >
+
+<td >Full Path
+</td>
+
+<td >std::deque
+</td>
+</tr>
+<tr >
+
+<td >Time Complexity
+</td>
+
+<td >Random Access: \( \mathcal{O}(1) \)  
+
+ Insertion At Start Or End: \( \mathcal{O}(1) \)  
+
+ Insertion In Middle: \( \mathcal{O}(n) \)
+</td>
+</tr>
+</tbody>
+</table>
+
+
+deque stands for **double-ended queue** (usually pronounced similar to "deck"). It is an indexed sequence container used for storing data in C++. It is dynamically sized, and can be quickly expanded/contracted both at the front and back.
+
+
+
+
+A deque is not guaranteed to store all of it's data in a continuous memory sequence. Thus it's data cannot be accessed via pointer addition (unlike a vector).
+
+
+
+
+**Example**
+
+
+
+    
+    // Create a new queue initialised with 4 integers
+    std::deque<int> myDeque = {5, 6, 7, 8};
+    myDeque.push_front(4);
+    myDeque.push_back(9);
+    
+    // queue now equals 4, 5, 6, 7, 8, 9
+    
+
+
+
+
+# map/multimap
+
+
+<table >
+<tbody >
+<tr >
+
+<td >Header
+</td>
+
+<td >#include <map>
+</td>
+</tr>
+<tr >
+
+<td >Full Path
+</td>
+
+<td >std::map , std::multimap
+</td>
+</tr>
+<tr >
+
+<td >Time Complexity
+</td>
+
+<td >Random Access: \( \mathcal{O}(1) \)  
+
+ Insertion At Start Or End: \( \mathcal{O}(1) \)  
+
+ Insertion In Middle: \( \mathcal{O}(n) \)
+</td>
+</tr>
+</tbody>
+</table>
+
+
+std::map is an associative C++ container. Is is similar to a dictionary in Python. While an array or vector only allows you to store and retrieve data using an integer, a map allows you to store and retrieve data via any other object.
+
+
+
+
+For example, we could store peoples data based on their first name:
+
+
+
+    
+    std::map <string, int> peoplesAges;
+
+
+
+
+We could now store a value into the map:
+
+
+
+    
+    peoplesAges["John"] = 32;
+
+
+
+
+Notice how we can use a string to index into the map, rather than an integer!
+
+
+
+
+We can retrieve values from a map by using the find() method.
+
+
+
+    
+    auto it = peoplesAges.find("John");
+    if(it != peoplesAges.end()
+       std::cout << "Found John's age of " << *it << std::endl;
+
+
+
+
+**Different Ways Of Adding An Element To A Map**
+
+
+
+
+emplace was added to std::map in C++11. It allows you to pass in the arguments used to create a new element in the map separately. emplace() then forwards these arguments onto the element's constructor.
+
+
+
+
+# set/multiset
+
+
+
+
+A set is an associative, ordered container in where the value of the element also serves as a key (as opposed to a map, where the key is different from the value). Another interesting property of sets is that the elements are const, that is, you cannot modify them directly. However, you can add and remove elements.
+
+
+
+    
+    std::set<std::string> mySet;
+      
+    mySet.insert("Hello, ");
+    mySet.insert("world!");
+    
+    for(it = mySet.begin(); it != mySet.end(); it++){
+       std::cout << *it << std::endl;
+    }
+
+
+
+
+The C++ standard does not specify how the library must implement a std::set. However, std::set is normally implemented behind-the-scenes as _binary search trees_.
+
+
+
+
+Each element in a set must be unique. If you want to store multiple elements of the same value, use a multiset instead.
+
+
+
+
+# vector
+
+
+
+
+A std::vector is your bread-and-butter array type in C++. It supports the insertion and removal of elements and dynamic resizing at run-time.
+
+
+
+    
+    std::vector<int> myVector;
+    myVector.push_back(1);
+    myVector.push_back(2);
+    myVector.push_back(3);
+    
+    std::cout << myVector[1] << std::endl; // "2", no bounds checking
+    std::cout << myVector.at(1) << std::endl; // "2", with bounds checking!
+
+
+
+
+myVector[<element index>] provides the standard, no bounds checking way of getting and setting elements within the vector. However, if you want **bounds checking**, you can use .at() instead.
+
+
+
+
+Since C++11, you can get a C-style pointer to the array using the data() method:
+
+
+
+    
+    std::vector<int> myVector = { 1, 2, 3 };
+    int * ptrToArray = myVector.data();
+
+
+
+
+The C++ standard guarantees that the data will be stored in a contiguous memory space, and accessible like a C-style array.
+
+
+

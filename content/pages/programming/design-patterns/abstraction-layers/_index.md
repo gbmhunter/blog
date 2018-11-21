@@ -1,0 +1,326 @@
+---
+author: gbmhunter
+date: 2014-08-07 05:13:29+00:00
+draft: false
+title: Abstraction Layers
+type: page
+url: /programming/design-patterns/abstraction-layers
+---
+
+# Overview
+
+
+
+
+Abstraction layers allow for portable code. They provide a custom **"in-house" abstraction layer between your portable code and a third party library**. If you ever need to change to a different third-party library (shall we stipulate here that it needs to offer similar features), you just tweak your abstraction layer and all your higher level code that uses the abstraction layer **should** work just fine without any modification.
+
+
+
+
+Some commons layers are the hardware abstraction layer (HAL) and the operating system abstraction layer (OSAL).
+
+
+
+
+**Should you provide an abstraction layer for every piece of third-party code?** No, probably not. For things like the C and C++ standard library (e.g. <stdint.h>, you can be pretty sure that these will be supported and consistant across multiple platforms/architectures. You are most likely just wasting your time and creating an extra layer on confusion by writing an abstraction layer for these. All consider, will I ever use a different library, or is someone else likely to? It the answers no, again, think twice before writing an abstraction layer for it.
+
+
+
+
+# How To Specify The Different Implementations?
+
+
+
+
+Each abstraction layer will need a different implementation with each target hardware/firmware combination. This can be achieved with #ifdef statements, conditionally compiling specific .cpp/.c files, or providing function pointers in the abstraction layer which are pointed to the correct functions at run time.
+
+
+
+
+# Vendor Lock-In
+
+
+
+
+Be careful using a feature which is specific to a particular platform. An abstraction layer can't protect you from that. You can however make the abstraction layer flexible and powerful enough to support that special feature, and still run on other platforms by detecting the feature isn't present and disabling any special code from running (as long as your higher level code is not **fatally dependent** on that feature). For example the abstraction layer could have function pointers which are null when the feature isn't present (obviously with code that stops the functions from being called if they are null, we don't want segmentation/hard faults!).
+
+
+
+
+# Better Unit Testing
+
+
+
+
+The usage of abtraction layers allows for better unit tests. By creating fake/mock abstraction layers, it allows for unit tests to be run on a different setup, e.g. on a PC rather than a microcontroller. This can speed up testing, make it easier to automate, and can allow for better debugging abilities (most micrcontroller platforms do not have quite the same debugging abilities a full-blown computer has).
+
+
+
+
+# Abstraction Layer API Recommendations
+
+
+
+
+Below are recommended abstraction layer API's for various hardware peripherals and common 3rd party libraries that you will use when writing firmware. Code is written in C++, but all are also applicable to the C programming language. All methods are sorted alphabetically.
+
+
+
+
+Plenty of the methods return a boolean true/false value to indicate whether the operation was successful or not. In the case that it cannot fail on a particular platform, just always return true. Keep in mind that as these are designed for embedded systems, exceptions are not used.
+
+
+
+
+## Operating System
+
+
+<table >
+<tbody >
+<tr >
+Method
+Description
+OS's Known To Be Applicable For And Their Respective Code
+</tr>
+<tr >
+
+<td >osal.DelayThreadMs(double milliseconds)
+</td>
+
+<td >Delays the current thread for a certain amount of milliseconds.
+</td>
+
+<td >
+
+
+
+	  * FreeRTOS (vTaskDelay(milliseconds/portTICK_RATE_MS))
+	  * Linux
+
+
+</td>
+</tr>
+<tr >
+
+<td >osal.EnterCritical()
+</td>
+
+<td >Enters a critical section (no other threads or OS aware interrupts will run in a critical section).
+</td>
+
+<td >
+
+
+
+	  * FreeRTOS (taskENTER_CRITICAL())
+
+
+</td>
+</tr>
+<tr >
+
+<td >osal.ExitCritical()
+</td>
+
+<td >Exits a critical section (no other threads or OS aware interrupts will run in a critical section).
+</td>
+
+<td >
+
+
+
+	  * FreeRTOS (taskEXIT_CRITICAL())
+
+
+</td>
+</tr>
+<tr >
+
+<td >osal.Free()
+</td>
+
+<td >Performs an OS-safe free of memory from the heap. Related to osal.Malloc().
+</td>
+
+<td >
+
+
+
+	  * FreeRTOS (pvPortFree())
+
+
+</td>
+</tr>
+<tr >
+
+<td >osal.Malloc()
+</td>
+
+<td >Performs an OS-safe memory allocation on the heap. This can includes things like thread-safety and memory coalescence which the standard C/C++ library versions will not neccessarily provide. Related to osal.Free().
+</td>
+
+<td >
+
+
+
+	  * FreeRTOS (pvPortMalloc())
+
+
+</td>
+</tr>
+</tbody>
+</table>
+
+
+Other operations not mentioned above that might be OS specific are the memory allocations functions such as malloc() and friends, new, delete (as well as their brothers new[] and delete[]). The OS may provide enhanced version of these memory allocation functions that provide things such as thread-safety and anti-fragmentation abilities (e.g. coalescence). For example, FreeRTOS provides you with the functions pvPortMalloc() and vFree().
+
+
+
+
+The nice thing about C++ is that you can do a program-wide overide of the new/delete family of operations which can then in turn call the OS-specific versions, making your code very portable.
+
+
+
+
+I have written a OSAL template module in C++ called Osal-Cpp which is freely available for download on GitHub at [https://github.com/gbmhunter/Osal-Cpp](https://github.com/gbmhunter/Osal-Cpp).
+
+
+
+
+## GPIO
+
+
+
+
+GPIO can be one of the easiest peripherals to write a hardware abstraction layer for.
+
+
+<table >
+<tbody >
+<tr >
+Method
+Description
+Platforms Known To Be Applicable For And Respective Code
+</tr>
+<tr >
+
+<td >HalGpio.Set(GpioStates gpioState)
+</td>
+
+<td >Sets the GPIO pin either LOW or HIGH, when the GPIO is configured as a digital output.
+</td>
+
+<td >
+
+
+
+	  * ATmega
+	  * PSoC (CyPin.Set(), CyPin.Clear())
+
+
+</td>
+</tr>
+</tbody>
+</table>
+
+
+## UART
+
+
+<table >
+<tbody >
+<tr style="text-align: justify;" >
+Method
+Description
+Platforms Known To Be Applicable For And Respective Code
+</tr>
+<tr style="text-align: justify;" >
+
+<td >bool HalUart.PutChar(char myChar)
+</td>
+
+<td >Writes a single character to the UART hardware register(s). Blocks until write is complete. Returns true if write successful, otherwise false.
+</td>
+
+<td >
+
+
+
+	  * ATmega
+	  * PSoC (CyUart.PutChar(char myChar))
+
+
+</td>
+</tr>
+<tr style="text-align: justify;" >
+
+<td >bool HalUart.PutMsg(const char * msg)
+</td>
+
+<td >Writes a block of characters (i.e. a message or C string) to the hardware UART registers. Returns true if write successful, otherwise false. Blocks until message is sent. I do not recommend using this method, as it will chew up processing time. Rather, implement a software ring buffer and insert the characters one-by-one into the hardware register(s) as space becomes available.
+</td>
+
+<td >
+
+
+
+	  * ATmega
+	  * PSoC (CyUart.PutString(const char * string))
+
+
+</td>
+</tr>
+<tr style="text-align: justify;" >
+
+<td >bool HalUart.SetBaudRate(BuadRates baudRate)
+</td>
+
+<td >Changes the baud rate for the UART. Most embedded systems come with a discrete number of availiable baud rates, hence the use of an enumeration BaudRates. Note that different platforms may support a different number of baud rates. Returns true if buadRate is valid for a particular platform and buad rate was changed successfully, otherwise returns false.
+</td>
+
+<td >
+
+
+
+	  * ATmega
+	  * PSoC
+
+
+</td>
+</tr>
+<tr style="text-align: justify;" >
+
+<td >bool HalUart.Start()
+</td>
+
+<td >Initialises/configures/starts the UART (the constructor could also do this). Returns true if starting of UART was successful, otherwise false.
+</td>
+
+<td >
+
+
+
+	  * PSoC (CyUart.Start())
+
+
+</td>
+</tr>
+<tr >
+
+<td style="text-align: justify;" >bool HalUart.Stop()
+</td>
+
+<td style="text-align: justify;" >Deinitialises/stops the UART (the destructor could also do this). Returns true if stopping of UART was successful, otherwise false.
+</td>
+
+<td >
+
+
+
+	  * PSoC (CyUart.Stop())
+
+
+</td>
+</tr>
+</tbody>
+</table>

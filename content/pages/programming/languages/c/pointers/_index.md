@@ -1,0 +1,355 @@
+---
+author: gbmhunter
+date: 2013-03-18 08:40:31+00:00
+draft: false
+title: Pointers
+type: page
+url: /programming/languages/c/pointers
+---
+
+# Overview
+
+
+
+
+Pointers are a core concept in C programming, yet can be a difficult concept to grasp for those who are new to the language.
+
+
+
+
+[![](http://blog.mbedded.ninja/wp-content/uploads/2013/03/pointing-hand-icon.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2013/03/pointing-hand-icon.png)
+
+
+
+
+And, here is my favourite question and answer regarding pointers:
+
+
+
+
+<blockquote>
+
+> 
+> Q. Why are pointers used in C?
+> 
+> 
+
+> 
+> A. It's easier to give someone an address to your home than to give a copy of your home to everyone.
+> 
+> 
+</blockquote>
+
+
+
+
+# Pointer Arithmetic
+
+
+
+
+The rule to remember with pointer arithmetic is that **a pointer will always increment by the size of the data type they are pointing to**.
+
+
+
+
+This is explained in the following example...
+
+
+
+    
+    // Both examples assume memory is address byte-wise, i.e. memory 0x00 is byte 0, memory 0x01 is byte 1 e.t.c
+    
+    // 16-bit EXAMPLE
+    uint16_t * myPtr = (uint16_t*)0x00;
+    myPtr++;
+    // myPtr now equals 0x02!
+    
+    // 32-bit EXAMPLE
+    uint32_t  my32BitPtr = (uint32_t)0x00;
+    my32BitPtr++;
+    
+    // my32BitPtr now equals 0x04!
+    
+
+
+
+
+# Arrays Decaying To Pointers
+
+
+
+
+Consider the array:
+
+
+
+    
+    uint8_t myArray[] = {1, 1, 2, 3, 5}
+
+
+
+
+&myArray is a pointer to the array. This pointers to the same memory address as just myArray, which decays to a pointer to it's first element. But, they have different types. myArray is of type *uint8_t, while &myArray is of type myArray. Therefore, &myArray + 1 points to the address after the end of the array, **not the next element**! 
+
+
+
+
+# Really Good Articles On Pointers
+
+
+
+
+[The move forward until you can't and then move back method.](http://www.unixwiz.net/techtips/reading-cdecl.html)
+
+
+
+
+[The spiral method.](http://c-faq.com/decl/spiral.anderson.html)
+
+
+
+
+# Clever Uses Of Pointers
+
+
+
+
+The following short piece of code:
+
+
+
+    
+    while (*p++ = *q++);
+
+
+
+
+is the equivalent to the standard library function strcpy(p, q)!
+
+
+
+
+# Strict Aliasing Rules
+
+
+
+
+Be careful when performing "clever" pointer casting tricks to cast memory to different data types.
+
+
+
+
+From section 6.5 of the C99 standard:
+
+
+
+
+<blockquote>
+
+> 
+> 7. An object shall have its stored value accessed only by an lvalue expression that has one of the following types:
+> 
+> 
+</blockquote>
+
+
+
+
+
+	  * 
+
+
+<blockquote>
+
+> 
+> a type compatible with the effective type of the object,
+> 
+> 
+</blockquote>
+
+
+
+	  * 
+
+
+<blockquote>
+
+> 
+> a qualified version of a type compatible with the effective type of the object,
+> 
+> 
+</blockquote>
+
+
+
+	  * 
+
+
+<blockquote>
+
+> 
+> a type that is the signed or unsigned type corresponding to the effective type of the object,
+> 
+> 
+</blockquote>
+
+
+
+	  * 
+
+
+<blockquote>
+
+> 
+> a type that is the signed or unsigned type corresponding to a qualified version of the effective type of the object,
+> 
+> 
+</blockquote>
+
+
+
+	  * 
+
+
+<blockquote>
+
+> 
+> an aggregate or union type that includes one of the aforementioned types among its members (including, recursively, a member of a subaggregate or contained union), or
+> 
+> 
+</blockquote>
+
+
+
+	  * 
+
+
+<blockquote>
+
+> 
+> a character type.
+> 
+> 
+</blockquote>
+
+
+
+
+
+
+Historically, these rules could be broken without too much worry. You could use pointer casting to access different representations of the same data by casting to different types. However, in modern compilers with optimisation turned on, this kind of code can cause fatal errors, because these rules allow them to assume that pointers to different types do not point to the same region (or an overlapping) region in memory, and once they assume that they can perform optimisations which will cause fatal errors if the pointers do infact point to the same region in memory.
+
+
+
+
+# Function Pointers
+
+
+
+
+## Overview
+
+
+
+
+Functions pointers are variables that rather than store a number or point to one, point to a function. They are commonly used for call-back routines and for function-based state machines. Function pointers can also be defined as a type.
+
+
+
+
+## Function Pointers On The 8051
+
+
+
+
+Function pointers on 8051 architectures are dangerous. The 8051 has a tiny stack, and so variables passed into functions that are called indirectly have to be stored in registers. This limits you to a maximum of about 3 variables. If you exceed the maximum number of variables, you will get the "Indirect call: parameters do not fit into registers" error. To get around this you can use the reentrant keyword as shown below, which creates a "stack" for the variables in memory.
+
+
+
+    
+    // Adding the reentrant keyword to allow function pointers with more than 3 variables on the 8051 architecture
+    typedef uint8 (*functionPointer_t)(uint8 var1, uint8 var2, uint8 var3, uint8 var4) reentrant;
+
+
+
+
+# Using const And volatile With Pointers
+
+
+
+
+When declaring pointers to objects that also need to be qualified as either const  or volatile, **it can be hard to work out how to order the qualifiers**.
+
+
+
+
+<blockquote>
+
+> 
+> Rule of thumb: Always place const and volatile qualifiers **AFTER** the thing you wish to make const of volatile.
+> 
+> 
+</blockquote>
+
+
+
+
+For example, a constant int:
+
+
+
+    
+    int const x;
+
+
+
+
+A pointer to a constant int:
+
+
+
+    
+    int const * x;
+
+
+
+
+A constant pointer to a int:
+
+
+
+    
+    int * const x;
+
+
+
+
+A constant pointer to a constant int:
+
+
+
+    
+    int const * const x;
+
+
+
+
+The same applies for the volatile keyword. For example, a const pointer to a volatile int would be written as:
+
+
+
+    
+    int volatile * const x;
+
+
+
+
+This rule works in all situations. It also makes it easy to deduce the type of the variable, by reading backwards. For example, if you see: int volatile * const x, you can deduce the type of x by reading it backwards, e.g. x is a const * (pointer) to a volatile int.
+
+
+
+
+
+

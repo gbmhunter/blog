@@ -1,0 +1,65 @@
+---
+author: gbmhunter
+date: 2017-07-30 23:28:45+00:00
+draft: false
+title: July 2017 Updates
+type: post
+url: /updates/july-2017-updates
+categories:
+- Updates
+tags:
+- algorithms
+- altium
+- can bus
+- data structures
+- hdlc
+- linux
+- shortcuts
+- socketcan
+- time complexity
+---
+
+
+	  * New [Algorithms And Data Structures page](http://blog.mbedded.ninja/programming/algorithms-and-data-structures) under Programming.  
+
+   
+
+
+
+[![](http://blog.mbedded.ninja/wp-content/uploads/2017/07/algorithms-data-structures-icon.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2017/07/algorithms-data-structures-icon.png)
+
+
+
+	  * New [Time Complexity page](http://blog.mbedded.ninja/programming/algorithms-and-data-structures/time-complexity) under Programming->Algorithms And Data Structures.
+	  * Updates to the [CAN Protocol page](http://blog.mbedded.ninja/electronics/communication-protocols/can-protocol).  
+
+   
+
+[caption id="attachment_14610" align="aligncenter" width="202"][![](http://blog.mbedded.ninja/wp-content/uploads/2012/12/can-bus-logo-bosch.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2012/12/can-bus-logo-bosch.png) The CAN bus logo. Image from www.bosch.com.[/caption]
+
+	  * New High-Level Data Link Control page under Electronics->Communication Protocols.  
+
+   
+
+
+
+[![](http://blog.mbedded.ninja/wp-content/uploads/2017/07/high-level-data-link-control-icon.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2017/07/high-level-data-link-control-icon.png)
+
+
+
+	  * New [Using SocketCAN With The Command-Line In Linux page](http://blog.mbedded.ninja/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux) under Programming->Operating Systems->Linux.  
+
+ 
+	  * Updated the [Altium Keyboard Shortcuts page](http://blog.mbedded.ninja/electronics/general/altium/altium-keyboard-shortcuts) with fixes for out-of-date shortcuts and a few additional new shortcuts (many thanks to [Justin Massiot](https://twitter.com/justinmassiot) for providing info).  
+
+
+
+[![](http://blog.mbedded.ninja/wp-content/uploads/2013/08/altium-designer-logo.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2013/08/altium-designer-logo.png)
+
+
+
+

@@ -1,0 +1,46 @@
+---
+author: gbmhunter
+date: 2012-07-13 07:36:20+00:00
+draft: false
+title: Altium BOM Template Files (Excel)
+type: page
+url: /electronics/general/altium/altium-automatic-bom-generation-macros
+---
+
+# Overview
+
+It also provides the ability to customise an generated Excel BOM with the use of a template file. This ability is poorly documented, so I thought it would be good to explain it in more detail.
+
+The exact process depends on the component data storage method (e.g. libraries, databases, or Altium vaults).
+
+# How It Works
+
+When you load up the BOM settings window (right-click the BOM row in the outjob and click _Configure_.
+
+[caption id="attachment_11916" align="aligncenter" width="449"][![Getting to the BOM configuration window from an Outjob in Altium.](http://blog.mbedded.ninja/wp-content/uploads/2012/07/altium-selecting-bom-configure-in-outjob.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2012/07/altium-selecting-bom-configure-in-outjob.png) Getting to the BOM configuration window from an Outjob in Altium.[/caption]
+
+...there is an option to provide an Excel template file.
+
+[caption id="attachment_11918" align="aligncenter" width="459"][![The field in the BOM configuration window that allows you to specify a Excel template file.](http://blog.mbedded.ninja/wp-content/uploads/2012/07/altium-bom-configure-excel-template-field.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2012/07/altium-bom-configure-excel-template-field.png) The field in the BOM configuration window that allows you to specify a Excel template file.[/caption]
+
+# To Download
+
+The macro code is hosted on GitHub in a Git repository.
+
+[Click here](https://github.com/gbmhunter/Altium-Bom-Template) to visit the repo.
+
+To clone the repository (i.e. download the code), use the Git command:
+    
+    git clone https://github.com/gbmhunter/Altium-Bom-Template.git
+
+Improvements/bug fix comments are welcome!
+
+# Partial Components
+
+Altium lacks the native support for partial components, that is, when you want to only use a portion (a percentage) of a component per PCB. This is common when including wire in your BOM. Wire usually comes in rolls of say, 100m, but your project only requires say, 1.5m. If you add the wire as a component with the supplier information attached, Altium will add the full 100m price to the BOM.
+
+Essentially what we need to be able to do is set the "Quantity" parameter to a fraction of 1.
+
+One way to do this is to add a QuantityMultiplier parameter to components. If you don't add it, you can treat it as equalling 1, which means to you only have to add it to partial components. Set up Altium to pass this parameter to the Excel BOM file, and then write a macro to multiply the quantity by this value to get the actual quantity. The sub-total is then calculated by multiplying this new quantity with the Supplier unit price (called Supplier Unit Price 1 if you are using vault components).

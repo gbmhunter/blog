@@ -1,0 +1,80 @@
+---
+author: gbmhunter
+date: 2011-09-05 01:10:03+00:00
+draft: false
+title: PSoC
+type: page
+url: /programming/microcontrollers/psoc
+---
+
+# Overview
+
+
+
+
+The PSoC ecosystem by Cypress is a range of microcontrollers (PSoC 3, 4, 5 and 5LP) and IDE's (PSoC Designer and PSoC Creator).
+
+
+
+
+# Child Pages
+
+
+
+
+[sb_child_list template=2 orderby=title order=asc nest_level=1]
+
+
+
+
+# Ports/Pins
+
+
+
+
+PSoC devices are great in the fact that almost all hardware peripherals are reconfigurable to any port/pins. You don't have specific ports/pins for UART peripherals, nor for ADC's e.t.c. However, I have to say almost, because there are some restrictions. These include:
+
+
+
+
+
+	  * Power/ground pins - These are fixed (not really a big surprise there)
+	  * Reset pin - This is also fixed. You could make another reconfigurable reset pin by using a GPIO, an interrupt, and a software reset, but this would have slightly less functionality
+	  * External oscillator pins - If you want to use an external oscillator for better timing, it has to be connected up to specific pins (seperate pins for kilohertz and megahertz  oscillators)
+	  * Op-Amp Inputs/Outputs - I think these are pre-defined to optimise resolution/signal-to-noise ratios.
+	  * USB D+ and D- pins - Because of the high communication speeds of the USB protocol, these pins require special design and hence are fixed.
+
+
+
+# FreeRTOS and PSoC
+
+
+
+
+[singlepic id=782 w=320 h=240 float=right]
+
+
+
+
+As far as I know, there are three ports for the PSoC family for using freeRTOS, all for the PSoC 5 family. Two are supplied with the[ freeRTOS download](http://www.freertos.org/) (i.e. officially supported), and the other is availiable on the Cypress forums (specifically, [here](http://www.freertos.org/index.html?http://interactive.freertos.org/entries/211156-cypress-cy8c55xx-family-demo-project)). The two official ports both have the same functionality, but one is for the GCC compiler while the other is for IAR. It utilises the CY8CKIT-001 development board and features some sophisticated RTOS feature tests, as well as flashing the lights and using the LCD screen. The unofficial port is targeted for the same dev board, but is much simpler and just flashes two lights. They all use the native ARM M3 timer interrupt for the RTOS tick, which can be misleading since this is not set-up graphically (as most interrupts are, you can see them on the schematic editor). However, it is pretty easy to change this tick to run off a different source, such as the sleep timer, and ignore the ARM timer interrupt completely. You can find various FreeRTOS firmware modules for the PSoC microcontroller on my [GitHub account](https://github.com/gbmhunter). This includes:
+
+
+
+
+
+	  * [PSoC-FreeRTOS-Cli](https://github.com/gbmhunter/C-FreeRTOS-PSoC-Cli)
+	  * [FreeRTOS-Uart](https://github.com/gbmhunter/C-FreeRTOS-Uart)
+	  * [FreeRTOS-Lights](https://github.com/gbmhunter/C-FreeRTOS-Lights)
+	  * [FreeRTOS-PerformanceMetrics](https://github.com/gbmhunter/C-FreeRTOS-PerformanceMetrics)
+
+
+
+# Other Resources
+
+
+
+
+
+	  * The Cypress website naturally has tons of information about PSoC devices. A really handy feature is that the IDE has one-click links to the datasheets with many of the supplied "components" (blocks of code).
+	  * Planet PSoC (www.planetpsoc.com) is a small website with some information and block designs for PSoC 1 and PSoC 3 devices. **UPDATE Dec 2017: Website no longer accessible.**
+

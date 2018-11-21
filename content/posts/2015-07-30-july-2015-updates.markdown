@@ -1,0 +1,24 @@
+---
+author: gbmhunter
+date: 2015-07-30 20:54:02+00:00
+draft: false
+title: July 2015 Updates
+type: post
+url: /updates/july-2015-updates
+categories:
+- Updates
+---
+
+  * Updates to the [Transformer page](http://blog.mbedded.ninja/electronics/components/transformers).  * New theme, twentyfifteen! (Avada was getting too complicated)  * Added information on [adding comments (well, pseudo comments) to JSON files on the JSON page](http://blog.mbedded.ninja/programming/website-design/json).  * Moved all the [op-amp schematic diagrams on the Op-Amp page](http://blog.mbedded.ninja/electronics/components/op-amps) over to [Overleaf](https://www.overleaf.com/), the online Latex editor.  
+[caption id="attachment_11849" align="aligncenter" width="436"][![An op-amp configured as a differential amplifier.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-differential-amplifier.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-differential-amplifier.png) An op-amp configured as a differential amplifier.[/caption]  * New [General Routing Tips page](http://blog.mbedded.ninja/pcb-design/general-routing-tips).  * Information on [Aspect Ratios added to the Pads, Vias and Holes page](http://blog.mbedded.ninja/pcb-design/pads-vias-holes#aspect-ratios).  
+  
+[caption id="attachment_12050" align="aligncenter" width="312"][![A screenshot of the aspect ratio information added the "Pads, Vias And Holes" page as part of the PCB design section.](http://blog.mbedded.ninja/wp-content/uploads/2015/10/aspect-ratio-page-screenshot.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/10/aspect-ratio-page-screenshot.png) A screenshot of the aspect ratio information added the "Pads, Vias And Holes" page as part of the PCB design section.[/caption]  
+  
+  * Information on [Microvias added to the Pads, Vias and Holes page](http://blog.mbedded.ninja/pcb-design/pads-vias-holes#microvias).  * Added information to the [PCI Express (PCIe) page](http://blog.mbedded.ninja/electronics/communication-protocols/pci-express-pcie).  * New [FPGAs sub-section](http://blog.mbedded.ninja/electronics/components/fpgas) under Electronics->Components.  
+  
+[caption id="attachment_11910" align="aligncenter" width="590"][![An A3 schematic sheet with just one 236-pin FPGA IC added to it (no routing).](http://blog.mbedded.ninja/wp-content/uploads/2015/07/fpga-schematic-just-the-ic-no-routing.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/07/fpga-schematic-just-the-ic-no-routing.png) An A3 schematic sheet with just one 236-pin FPGA IC added to it (no routing).[/caption]  
+  
+  * New [Xilinx 7 Series (Artix-7, Kintex-7, Virtex-7, Zynq-7000) page](http://blog.mbedded.ninja/programming/fpgas/xilinx-7-series-artix-7-kintex-7-virtex-7-zynq-7000).  * New [Logic Families page](http://blog.mbedded.ninja/electronics/circuit-design/logic-familes).

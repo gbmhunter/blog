@@ -1,0 +1,41 @@
+---
+author: gbmhunter
+date: 2015-11-30 22:23:05+00:00
+draft: false
+title: PCB Card Edge
+type: page
+url: /electronics/components/connectors/pcb-card-edge
+---
+
+# Overview
+
+This is a cheap and many-pin capable solution when you want to connect two PCB's together. PCB card edge connector involve using the edge of one of the mating PCB's as the connector, by etching/routing "fingers" on the PCB. The other mating part of the connector is designed to accept these fingers. Most card edge connectors are used when the PCB's are at right-angles to each other, although you can get connectors designed for parallel and co-planar connections.
+
+The fingers that are etched on the PCB are usually gold plated to make the contacts more reliable (the normal lead/tin coating oxidises too quickly). This is a special process that most PCB manufacturers will support, and does not add much to the cost of the PCB. The supported PCB thickness of most of these connectors is around 1.60mm (which is pretty standard). Also, it is recommended to add a small bevel to the inserted end of the PCB to facilitate mating. Again, most quality PCB manufacturers will support this.
+
+Card-edge connectors are very susceptible to board warping and board thickness errors, so takes these into consideration when adding card-edge connectors to your PCB design.
+
+[caption id="attachment_12737" align="aligncenter" width="445"][![Edge connector fingers which have been gold plated and the PCB bevelled. Image from http://www.eurocircuits.com/index.php/eurocircuits-printed-circuits-blog/gold-plating-for-edge-connectors.](http://blog.mbedded.ninja/wp-content/uploads/2015/12/edge-connector-gold-fingers-and-bevel.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/12/edge-connector-gold-fingers-and-bevel.png) Edge connector fingers which have been gold plated and the PCB bevelled. Image from http://www.eurocircuits.com/index.php/eurocircuits-printed-circuits-blog/gold-plating-for-edge-connectors.[/caption]
+
+The following image is of PCB card edge connectors on the [Cavro XL-3000 syringe pump](http://blog.mbedded.ninja/electronics/teardowns/cavro-xl3000-8-port-syringe-pump-teardown).
+
+[caption id="attachment_12739" align="aligncenter" width="1200"][![An example of a PCB card edge connector. This is a photo of the Cavro XL-3000 syringe pump.](http://blog.mbedded.ninja/wp-content/uploads/2015/12/pcb-card-edge-connector-example-from-cavro-xl-3000.jpg)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/12/pcb-card-edge-connector-example-from-cavro-xl-3000.jpg) An example of a PCB card edge connector. This is a photo of the Cavro XL-3000 syringe pump.[/caption]
+
+You can get PCB card edge connectors which have latches, which lock in the daughter board which has special "hockey stick" pieces routed on the sides.
+
+[caption id="attachment_12740" align="aligncenter" width="412"][![Male pcb-card edge connectors can have "hockey-stick" latches as indicated (the female connector also has to support this).](http://blog.mbedded.ninja/wp-content/uploads/2015/12/pcb-edge-connector-pci-hockey-stick.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/12/pcb-edge-connector-pci-hockey-stick.png) Male pcb-card edge connectors can have "hockey-stick" latches as indicated (the female connector also has to support this).[/caption]
+
+This is a screenshot from a PCB design for the male part of a card-edge connector in Altium.
+
+[caption id="attachment_12741" align="aligncenter" width="1502"][![An Altium PCB design of a male card-edge connector. This is for the 20-pin connector in the Molex SPD08 series.](http://blog.mbedded.ninja/wp-content/uploads/2015/12/altium-card-edge-male-connector-on-pcb.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/12/altium-card-edge-male-connector-on-pcb.png) An Altium PCB design of a male card-edge connector. This is for the 20-pin connector in the Molex SPD08 series.[/caption]
+
+This is a female latching card-edge connector.
+
+[caption id="attachment_12742" align="aligncenter" width="1265"][![A 20-pin card-edge female connector from the Molex SPD08 series.](http://blog.mbedded.ninja/wp-content/uploads/2015/12/pcb-connector-with-latches-3m-spd08.png)
+](http://blog.mbedded.ninja/wp-content/uploads/2015/12/pcb-connector-with-latches-3m-spd08.png) A 20-pin card-edge female connector from the Molex SPD08 series.[/caption]
+
+In some rare cases (e.g. the Sullins EBC Card-Edge connector series), aside from the socket, the connector manufacturer will also manufacture a plug which replicates PCB fingers, instead of you using the PCB for this purpose.
