@@ -1,0 +1,47 @@
+#dc_jqmegamenu_widget-%ID%-item {font: normal 13px Arial, sans-serif; line-height: 16px;}
+#dc_jqmegamenu_widget-%ID%-item ul, #dc_jqmegamenu_widget-%ID%-item ul, #dc_jqmegamenu_widget-%ID%-item ul li {margin: 0; padding: 0; border: none;}
+
+
+/* Background behind visible menu buttons */
+#dc_jqmegamenu_widget-%ID%-item ul.menu {background: rgba(10, 10, 10, 0.6) repeat-x 0 -80px; width: 100%; height: 40px; border-right: 1px solid rgba(0, 0, 0 ,0); border-left: 1px solid rgba(0,0,0,0); position: relative;}
+
+
+
+#dc_jqmegamenu_widget-%ID%-item ul li {float: left; margin: 0; padding: 0; font-size: 13px; font-weight: bold;}
+
+/* Visible Menu Entry */
+#dc_jqmegamenu_widget-%ID%-item ul li a {float: left; display: block; color: #fff; padding: 12px 38px 12px 25px; background: rgba(100, 100, 100, 0.0) repeat-x 100% 0; text-shadow: 1px 1px 1px #000; text-decoration: none;}
+
+#dc_jqmegamenu_widget-%ID%-item ul li a.dc-mega {position: relative;}
+#dc_jqmegamenu_widget-%ID%-item ul li a .dc-mega-icon {display: block; position: absolute; top: 18px; right: 15px; width: 8px; height: 6px; background: url(skins/images/arrow.png) no-repeat 0 0;}
+#dc_jqmegamenu_widget-%ID%-item ul li.mega-hover a, #dc_jqmegamenu_widget-%ID%-item ul li a:hover {background-position: 100% -40px; color: #000; text-shadow: none;}
+#dc_jqmegamenu_widget-%ID%-item ul li.mega-hover a .dc-mega-icon {background-position: 0 100%;}
+
+/* Container of sub-menu */
+#dc_jqmegamenu_widget-%ID%-item ul li .sub-container {position: absolute; background: rgba(10, 10, 10, 0.8) no-repeat 0 100%; padding-left: 20px; margin-left: -3px;}
+
+/* Container around each category in sub-menu */
+#dc_jqmegamenu_widget-%ID%-item ul li .sub {background: rgba(0, 0, 0, 0) no-repeat 100% 100%; padding: 20px 20px 20px 10px;}
+
+
+#dc_jqmegamenu_widget-%ID%-item ul li .sub-container.mega .sub {padding: 20px 20px 10px 0;}
+#dc_jqmegamenu_widget-%ID%-item ul.full-width li .sub-container.mega .sub {margin-right: -2px;}
+#dc_jqmegamenu_widget-%ID%-item ul li .sub .row {width: 100%; overflow: hidden; clear: both;}
+#dc_jqmegamenu_widget-%ID%-item ul li .sub li {list-style: none; float: none; width: 170px; font-size: 1em; font-weight: normal;}
+#dc_jqmegamenu_widget-%ID%-item ul li .sub li.mega-hdr {margin: 0 10px 10px 0; float: left;}
+#dc_jqmegamenu_widget-%ID%-item ul li .sub li.mega-hdr.last {margin-right: 0;}
+
+/* Target's text in sub-menu's */
+#dc_jqmegamenu_widget-%ID%-item ul li .sub a {background: none; border: none; text-shadow: none; color: #fff; padding: 7px 10px; display: block; float: none; text-decoration: none; font-size: 0.9em;}
+
+/* Target's the sub-menu category text */
+#dc_jqmegamenu_widget-%ID%-item ul li .sub li.mega-hdr a.mega-hdr-a {padding: 5px 5px 5px 15px; margin-bottom: 5px; background: rgba(50, 50, 50, 0.5) no-repeat 0 0; text-transform: uppercase; font-weight: bold; color: #fff; text-shadow: 1px 1px 1px #333;}
+
+#dc_jqmegamenu_widget-%ID%-item ul li .sub li.mega-hdr a.mega-hdr-a:hover {color: #000; text-shadow: none;}
+#dc_jqmegamenu_widget-%ID%-item ul .sub li.mega-hdr li a {padding: 4px 5px 4px 20px; background: url(skins/images/arrow_off.png) no-repeat 5px 8px; font-weight: normal;}
+#dc_jqmegamenu_widget-%ID%-item ul .sub li.mega-hdr li a:hover {color: #a32403; background: #efefef url(skins/images/arrow_on.png) no-repeat 5px 8px;}
+#dc_jqmegamenu_widget-%ID%-item ul .sub ul li {padding-right: 0;}
+#dc_jqmegamenu_widget-%ID%-item ul li .sub-container.non-mega .sub {padding: 20px 20px 20px 0;}
+#dc_jqmegamenu_widget-%ID%-item ul li .sub-container.non-mega li {padding: 0; width: 190px; margin: 0;}
+#dc_jqmegamenu_widget-%ID%-item ul li .sub-container.non-mega li a {padding: 7px 5px 7px 22px; background: url(skins/images/arrow_off.png) no-repeat 7px 10px;}
+#dc_jqmegamenu_widget-%ID%-item ul li .sub-container.non-mega li a:hover {color: #a32403; background: #efefef url(skins/images/1arrow_on.png) no-repeat 7px 10px;}

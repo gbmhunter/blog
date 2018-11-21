@@ -1,0 +1,86 @@
+.wpfilebase-attachment {
+	border: 2px solid rgba(0, 0, 0, 1.0);
+	color: #333;
+	padding: 4px;
+	margin: 10px;
+	text-align: left;
+	background-color: rgba(20, 20, 20, 0.5);
+	//background-image: url('images/down.png');
+	background-repeat: no-repeat;
+	background-position: top right;
+	vertical-align: middle;
+	width: 500px;
+	line-height: normal;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.wpfilebase-attachment-cat {
+	background-image: none;
+}
+
+.wpfilebase-fileicon { float: left; }
+
+.wpfilebase-fileicon img {
+	margin: 2px 0 2px 2px;
+	padding: 2px;
+	background-color: #FFF;
+	border: 1px solid #999;
+}
+
+.wpfilebase-attachment .wpfilebase-rightcol { float: left; }
+
+.wpfilebase-filetitle {
+	float: left;
+	font-size: 10px;
+	margin: 0 0 4px 8px;
+	height: 40px;
+}
+
+.wpfilebase-filetitle a { font-size: 16px; }
+
+.wpfilebase-filetitle a.wpfilebase-postlink { font-size: 10px; }
+
+.wpfilebase-fileinfo {
+	float: right;
+	text-align: left;
+	font-size: 10px;
+	margin: 0 3px 0 auto;
+}
+
+.wpfilebase-filedetails {
+	clear: both;
+	font-size: 12px;
+	width: 250px;
+	margin: 0 -50px 0 0;
+	padding: 0;
+}
+
+.wpfilebase-filedetails table, .wpfilebase-filedetails table tr, .wpfilebase-filedetails table tr th, .wpfilebase-filedetails table tr td {
+	border: none;
+	border-collapse: collapse;
+}
+
+.wpfilebase-filedetails table {
+	width: 100%;
+}
+
+.wpfilebase-filedetails td {
+	padding: 0 0 6px 4px;
+}
+
+.wpfilebase-filedetails table th {
+	vertical-align: top;
+	font-size: 10px;
+}
+
+.wpfilebase-catselect {
+	width: 100%;
+}
+
+#wpfb-credits {
+	margin: 0 auto 2px auto;
+	text-align: center;
+}
