@@ -145,5 +145,5 @@ None
 # Photos
 
 
-[caption id="attachment_11352" align="aligncenter" width="222"][![A photo of the SOT-523F component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sot-523f-component-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sot-523f-component-package-photo.jpg) A photo of the SOT-523F component package.[/caption]
+[caption id="attachment_11352" align="aligncenter" width="222"][![A photo of the SOT-523F component package.](/images/2015/04/sot-523f-component-package-photo.jpg)
+](/images/2015/04/sot-523f-component-package-photo.jpg) A photo of the SOT-523F component package.[/caption]

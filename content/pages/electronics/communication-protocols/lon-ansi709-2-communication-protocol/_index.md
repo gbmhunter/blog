@@ -16,8 +16,8 @@ The Local Operating Network (LON) protocol is a inter-device communication proto
 </td>
 <td > 
 
-[![The logo of LonMark International. Image from http://www.prlog.org/.](http://blog.mbedded.ninja/wp-content/uploads/2015/02/lonmark-international-logo-certified.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/02/lonmark-international-logo-certified.jpg)
+[![The logo of LonMark International. Image from http://www.prlog.org/.](/images/2015/02/lonmark-international-logo-certified.jpg)
+](/images/2015/02/lonmark-international-logo-certified.jpg)
 
 </td></tr><tr >
 <td >Speed
@@ -68,8 +68,8 @@ _Bindings_ are how LON nodes share data. For data to be shared, two variables on
 
 A Echelon Neuron microprocessor is not to be confused with a Cavium Neuron, which is a processor designed for high-performance IEEE802 network search applications. Neuron microprocessors are commonly used as transceivers on the LON. A Neuron chip contains three 8-bit inline CPUs, on-board memory, 11 GPIOs and a LON hardware peripheral.
 
-[caption id="attachment_9667" align="aligncenter" width="392"][![The block diagram for the FT5000 "Smart Transceiver" IC which can be used as part of a LON node.](http://blog.mbedded.ninja/wp-content/uploads/2015/02/ft-5000-smart-transceiver-cip-block-diagram.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/02/ft-5000-smart-transceiver-cip-block-diagram.png) The block diagram for the FT5000 "Smart Transceiver" IC which can be used as part of a LON node.[/caption]
+[caption id="attachment_9667" align="aligncenter" width="392"][![The block diagram for the FT5000 "Smart Transceiver" IC which can be used as part of a LON node.](/images/2015/02/ft-5000-smart-transceiver-cip-block-diagram.png)
+](/images/2015/02/ft-5000-smart-transceiver-cip-block-diagram.png) The block diagram for the FT5000 "Smart Transceiver" IC which can be used as part of a LON node.[/caption]
 
 The transceivers usually run of a 5.0V power supply.
 
@@ -117,8 +117,8 @@ There a four different routing algorithm types to choose from:  * Repeater  * Br
 
 A communications transformer sits between the transceiver and the transmission line.
 
-[caption id="attachment_12969" align="aligncenter" width="518"][![A connection diagram between the FT5000 processor and the FT-X3 transformer.](http://blog.mbedded.ninja/wp-content/uploads/2015/02/ft500-ft-x3-connection-diagram.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/02/ft500-ft-x3-connection-diagram.png) A connection diagram between the FT5000 processor and the FT-X3 transformer.[/caption]
+[caption id="attachment_12969" align="aligncenter" width="518"][![A connection diagram between the FT5000 processor and the FT-X3 transformer.](/images/2015/02/ft500-ft-x3-connection-diagram.png)
+](/images/2015/02/ft500-ft-x3-connection-diagram.png) A connection diagram between the FT5000 processor and the FT-X3 transformer.[/caption]
 
 The FT-X1 was the first transformer. FT-X3 (US$4.52 (1), DigiKey, Feb 2015) belongs to the LonWorks 2.0 platform.
 
@@ -168,15 +168,15 @@ The International Forecourt Standards Forum (IFSF) specifies standards for petro
 
 The Echelon FT5000 (manf. part number 14305R-ES) is a modern (as of Feb 2015) LON controller. It allows you to run user defined code. It itself has no on-board non-volatile user memory, so external flash/EEPROM must be provided. It has 42kB of volatile memory to hold application code. It supports re-programming of the flash/EEPROM over the TF/PT-10 LON network (the differential, wired LON network).
 
-[caption id="attachment_12971" align="aligncenter" width="325"][![The typical operating conditions of the FT5000 processor.](http://blog.mbedded.ninja/wp-content/uploads/2015/02/ft5000-typical-operating-conditions.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/02/ft5000-typical-operating-conditions.png) The typical operating conditions of the FT5000 processor.[/caption]
+[caption id="attachment_12971" align="aligncenter" width="325"][![The typical operating conditions of the FT5000 processor.](/images/2015/02/ft5000-typical-operating-conditions.png)
+](/images/2015/02/ft5000-typical-operating-conditions.png) The typical operating conditions of the FT5000 processor.[/caption]
 
 ### Memory
 
 The FT5000 requires at least 2kB of external serial EEPROM for storing it's configuration data. The maximum size the EEPROM is allowed to be is 64kB. You also need space to store your user application code (since the FT5000 itself does not have any internal NVM). You can either use the EEPROM data, or if that is not big enough, use an external SPI flash IC. Note that although the FT5000 supports I2C flash, the datasheet says that as of it's publication date, it is not aware of any I2C flash which meets the FT5000's specifications. I am not aware of any size restrictions for the flash memory.
 
-[caption id="attachment_12970" align="aligncenter" width="270"][![The permitted external memory configurations for the FT5000 processor.](http://blog.mbedded.ninja/wp-content/uploads/2015/02/ft5000-allowed-external-memory-configurations.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/02/ft5000-allowed-external-memory-configurations.png) The permitted external memory configurations for the FT5000 processor.[/caption]
+[caption id="attachment_12970" align="aligncenter" width="270"][![The permitted external memory configurations for the FT5000 processor.](/images/2015/02/ft5000-allowed-external-memory-configurations.png)
+](/images/2015/02/ft5000-allowed-external-memory-configurations.png) The permitted external memory configurations for the FT5000 processor.[/caption]
 
 Because the way of writing SPI flash memory can very slightly between manufacturers (reads are all the same), a small function resides in the EEPROM that instructs the FT5000 how to correctly write to the device. Echelon provides three memory IC's which have been "qualified" to work with the FT5000. These are:  * Atmel® AT25F512B 512-Kilobit 2.7-volt  
 Minimum SPI Serial Flash Memory.  * Numonyx™ M25P05-A 512-Kbit, serial  
@@ -203,11 +203,11 @@ It has 12 I/O, all of which can be configured to one or more of 35 predefined I/
 
 ### More Resources
 
-The [FT5000 datasheet](http://downloads.echelon.com/support/documentation/datashts/142x5R_FT_5000_Smart_Transceiver.pdf) (local copy [here](http://blog.mbedded.ninja/wp-content/uploads/2015/02/Echelon-142x5R-FT5000-Smart-Transceiver-Datasheet.pdf)) provides a brief 9-page overview of the FT5000.
+The [FT5000 datasheet](http://downloads.echelon.com/support/documentation/datashts/142x5R_FT_5000_Smart_Transceiver.pdf) (local copy [here](/images/2015/02/Echelon-142x5R-FT5000-Smart-Transceiver-Datasheet.pdf)) provides a brief 9-page overview of the FT5000.
 
-You might then want to move onto the heavier 194-page [Series 5000 Chip Data Book](http://www.echelon.com/assets/bltf1b015c7aa71641a/005-0199-01B_Series_5000_Databook.pdf) (local copy [here](http://blog.mbedded.ninja/wp-content/uploads/2015/02/Echelon-005-0199-01B-Series-5000-Chip-Data-Book.pdf)).  
+You might then want to move onto the heavier 194-page [Series 5000 Chip Data Book](http://www.echelon.com/assets/bltf1b015c7aa71641a/005-0199-01B_Series_5000_Databook.pdf) (local copy [here](/images/2015/02/Echelon-005-0199-01B-Series-5000-Chip-Data-Book.pdf)).  
 
-For the firmware developers interested in writing code for running on the FT5000, you would want to read the [LonWorks Host Application Programmer's Guide](http://www.echelon.com/assets/blt7a0ec688f1e43c90/078-0016-01B.pdf) (local copy [here](http://blog.mbedded.ninja/wp-content/uploads/2015/02/LonWorks-Host-Application-Programmers-Guide-Revision-2.pdf)).
+For the firmware developers interested in writing code for running on the FT5000, you would want to read the [LonWorks Host Application Programmer's Guide](http://www.echelon.com/assets/blt7a0ec688f1e43c90/078-0016-01B.pdf) (local copy [here](/images/2015/02/LonWorks-Host-Application-Programmers-Guide-Revision-2.pdf)).
 
 ## FT 6000 Family
 

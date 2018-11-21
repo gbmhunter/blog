@@ -156,6 +156,6 @@ This package is normally mounted on the PCB in two ways, either flat with the le
 # Photo
 
 
-[caption id="attachment_11245" align="aligncenter" width="369"][![A photo of the DO-41 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/do-41-component-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/do-41-component-package-photo.jpg) A photo of the DO-41 component package.[/caption]
+[caption id="attachment_11245" align="aligncenter" width="369"][![A photo of the DO-41 component package.](/images/2015/04/do-41-component-package-photo.jpg)
+](/images/2015/04/do-41-component-package-photo.jpg) A photo of the DO-41 component package.[/caption]
 

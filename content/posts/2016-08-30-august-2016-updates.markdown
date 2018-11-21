@@ -19,6 +19,6 @@ tags:
 
   
 
-[caption id="attachment_13727" align="aligncenter" width="192"][![A photo of a small, through-hole PIN diode.](http://blog.mbedded.ninja/wp-content/uploads/2016/08/pin-diode-photo-small.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/08/pin-diode-photo-small.jpg) A photo of a small, through-hole PIN diode.[/caption]
+[caption id="attachment_13727" align="aligncenter" width="192"][![A photo of a small, through-hole PIN diode.](/images/2016/08/pin-diode-photo-small.jpg)
+](/images/2016/08/pin-diode-photo-small.jpg) A photo of a small, through-hole PIN diode.[/caption]
 

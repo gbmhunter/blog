@@ -24,23 +24,23 @@ The most commonly-used resistor schematic symbols are shown below. I prefer the 
 <table style="width: 600px; text-align: center; margin: 0 auto;" ><tbody ><tr >
 <td >
 
-[caption id="attachment_12616" align="aligncenter" width="168"][![The American-styled schematic symbol for a resistor.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/resistor-schematic-symbol-american.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/resistor-schematic-symbol-american.png) The American-styled schematic symbol for a resistor.[/caption]
+[caption id="attachment_12616" align="aligncenter" width="168"][![The American-styled schematic symbol for a resistor.](/images/2012/05/resistor-schematic-symbol-american.png)
+](/images/2012/05/resistor-schematic-symbol-american.png) The American-styled schematic symbol for a resistor.[/caption]
 
 </td>
-<td >[caption id="attachment_12617" align="aligncenter" width="142"][![The European schematic symbol for a resistor.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/resistor-schematic-symbol-european.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/resistor-schematic-symbol-european.png) The European schematic symbol for a resistor.[/caption]
-</td>
-<td >
-
-[caption id="attachment_12618" align="aligncenter" width="212"][![The schematic symbol for a 2-terminal variable resistor.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/resistor-schematic-symbol-variable-2-terminal.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/resistor-schematic-symbol-variable-2-terminal.png) The schematic symbol for a 2-terminal variable resistor.[/caption]
-
+<td >[caption id="attachment_12617" align="aligncenter" width="142"][![The European schematic symbol for a resistor.](/images/2012/05/resistor-schematic-symbol-european.png)
+](/images/2012/05/resistor-schematic-symbol-european.png) The European schematic symbol for a resistor.[/caption]
 </td>
 <td >
 
-[caption id="attachment_12619" align="aligncenter" width="207"][![The schematic symbol for a potentiometer.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/potentiometer-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/potentiometer-schematic-symbol.png) The schematic symbol for a potentiometer.[/caption]
+[caption id="attachment_12618" align="aligncenter" width="212"][![The schematic symbol for a 2-terminal variable resistor.](/images/2012/05/resistor-schematic-symbol-variable-2-terminal.png)
+](/images/2012/05/resistor-schematic-symbol-variable-2-terminal.png) The schematic symbol for a 2-terminal variable resistor.[/caption]
+
+</td>
+<td >
+
+[caption id="attachment_12619" align="aligncenter" width="207"][![The schematic symbol for a potentiometer.](/images/2012/05/potentiometer-schematic-symbol.png)
+](/images/2012/05/potentiometer-schematic-symbol.png) The schematic symbol for a potentiometer.[/caption]
 
 </td></tr><tr >
 <td >American-styled resistor.
@@ -68,8 +68,8 @@ $$ \frac{1}{R_{total}} = \frac{1}{R1} + \frac{1}{R2} $$
 
 The following diagram shows this:
 
-[caption id="attachment_12621" align="aligncenter" width="723"][![Two resistors in parallel can be treated as one resistor using the shown equation.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/resistors-in-parallel-equivalence-with-equation.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/resistors-in-parallel-equivalence-with-equation.png) Two resistors in parallel can be treated as one resistor using the shown equation.[/caption]
+[caption id="attachment_12621" align="aligncenter" width="723"][![Two resistors in parallel can be treated as one resistor using the shown equation.](/images/2012/05/resistors-in-parallel-equivalence-with-equation.png)
+](/images/2012/05/resistors-in-parallel-equivalence-with-equation.png) Two resistors in parallel can be treated as one resistor using the shown equation.[/caption]
 
 ## Resistors In Series.
 
@@ -79,8 +79,8 @@ $$ R_{total} = R1 + R2 $$
 
 This is shown in the diagram below:
 
-[caption id="attachment_12630" align="aligncenter" width="669"][![Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/two-resistors-in-series-equivalent-single-resistance.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/two-resistors-in-series-equivalent-single-resistance.png) Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image.[/caption]
+[caption id="attachment_12630" align="aligncenter" width="669"][![Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image.](/images/2012/05/two-resistors-in-series-equivalent-single-resistance.png)
+](/images/2012/05/two-resistors-in-series-equivalent-single-resistance.png) Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image.[/caption]
 
 # Resistor Dividers
 
@@ -92,8 +92,8 @@ The simplest voltage divider consists of just two resistors in series.
 
  
 
-[caption id="attachment_12631" align="aligncenter" width="556"][![A basic schematic of a resistor divider, showing the equation which determines the output voltage.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/basic-resistor-divider-schematic-with-equation.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/basic-resistor-divider-schematic-with-equation.png) A basic schematic of a resistor divider, showing the equation which determines the output voltage.[/caption]
+[caption id="attachment_12631" align="aligncenter" width="556"][![A basic schematic of a resistor divider, showing the equation which determines the output voltage.](/images/2012/05/basic-resistor-divider-schematic-with-equation.png)
+](/images/2012/05/basic-resistor-divider-schematic-with-equation.png) A basic schematic of a resistor divider, showing the equation which determines the output voltage.[/caption]
 
 Note that the DC output impedance of a resistor divider is normally quite high (it is equal to R1), and for this reason, **you cannot normally use a resistor divider to drop the voltage and provide power for a device**. This is a common mistake that people learning electronics do, when in reality you should either be using a linear regulator, a SMPS, or a transformer. Voltage dividers should normally only be used to provide a voltage to a high-impedance input (e.g. op-amp input, comparator input, microcontroller ADC input, or voltage-level translation for comms signals).
 
@@ -103,8 +103,8 @@ An interesting example I have seen of a resistor divider powering a circuit was 
 
 The [NinjaCalc program](http://mbedded-ninja.github.io/NinjaCalc/) has a calculator that can work out voltages, resistances and currents of a resistor divider.
 
-[caption id="attachment_13051" align="aligncenter" width="604"][![A screenshot of the NinjaCalc's "Resistor Divider" calculator, being used to find the top resistance.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/screenshot-of-ninjacalc-resistor-divider-calculator.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/screenshot-of-ninjacalc-resistor-divider-calculator.png) A screenshot of the NinjaCalc's "Resistor Divider" calculator, being used to find the top resistance.[/caption]
+[caption id="attachment_13051" align="aligncenter" width="604"][![A screenshot of the NinjaCalc's "Resistor Divider" calculator, being used to find the top resistance.](/images/2012/05/screenshot-of-ninjacalc-resistor-divider-calculator.png)
+](/images/2012/05/screenshot-of-ninjacalc-resistor-divider-calculator.png) A screenshot of the NinjaCalc's "Resistor Divider" calculator, being used to find the top resistance.[/caption]
 
 # Variable Resistors
 
@@ -193,8 +193,8 @@ See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_numbe
 
 [NinjaCalc, a free embedded engineering calculator toolbox](http://mbedded-ninja.github.io/NinjaCalc/), can easily find the closest E-series resistance to your desired resistance.
 
-[caption id="attachment_13054" align="aligncenter" width="552"][![NinjaCalc's "Standard Resistance Finder" calculator showing the closest E-series values to a desired resistance of 2.34kΩ.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png) NinjaCalc's "Standard Resistance Finder" calculator showing the closest E-series values to a desired resistance of 2.34kΩ.[/caption]
+[caption id="attachment_13054" align="aligncenter" width="552"][![NinjaCalc's "Standard Resistance Finder" calculator showing the closest E-series values to a desired resistance of 2.34kΩ.](/images/2012/05/screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png)
+](/images/2012/05/screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png) NinjaCalc's "Standard Resistance Finder" calculator showing the closest E-series values to a desired resistance of 2.34kΩ.[/caption]
 
 # Manufacturing Processes
 
@@ -216,8 +216,8 @@ Power resistors is a term used with resistors which are usually rated to dissipa
 
 They can be used to intentionally heat things, as the picture below shows. This image below is a common 5W resistor being used to heat a small container of oil, with a copper thermostat from a hot water cylinder being used to control the temperature.
 
-[caption id="attachment_12637" align="aligncenter" width="1600"][![Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/using-a-power-resistor-to-heat-oil.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/using-a-power-resistor-to-heat-oil.jpg) Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature.[/caption]
+[caption id="attachment_12637" align="aligncenter" width="1600"][![Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature.](/images/2012/05/using-a-power-resistor-to-heat-oil.jpg)
+](/images/2012/05/using-a-power-resistor-to-heat-oil.jpg) Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature.[/caption]
 
 ``````````````
 
@@ -225,8 +225,8 @@ They can be used to intentionally heat things, as the picture below shows. This 
 
 Current-sense resistors are a label given to low-valued, high precision (1% or better), and high power resistors that are good for using in current-sense circuits. Sometimes there is nothing special about these resistors (it's purely a marketing term), othertimes they may have two additional terminals for _Kelvin sensing_. A four terminal resistor is also called an _ammeter shunt_. Two of the terminals are used to pass the high current, the other two are used to measure to voltage drop across the resistor. This gets rid of measurement errors due to voltage drop in the wires going to the resistor (when the sense line and high-current path are the same thing).
 
-[caption id="attachment_8798" align="aligncenter" width="513"][![A large four-lead current sensing resistor.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/current-sensing-resistor-large-four-lead.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/current-sensing-resistor-large-four-lead.jpg) A large four-lead current sensing resistor.[/caption]
+[caption id="attachment_8798" align="aligncenter" width="513"][![A large four-lead current sensing resistor.](/images/2012/05/current-sensing-resistor-large-four-lead.jpg)
+](/images/2012/05/current-sensing-resistor-large-four-lead.jpg) A large four-lead current sensing resistor.[/caption]
 
 More information and schematics on how to make current-sense circuits can be found on the [Current-Sensing page](http://blog.mbedded.ninja/electronics/circuit-design/current-sensing).
 
@@ -250,15 +250,15 @@ Resistor come in many packages, from large, wire-wound power resistors that come
 
 Through-hole resistors use the older color code scheme (the current international standard as of 2013 is IEC 60062). Newer surface-mount resistors usually have the value printed directly on them (a three-digit number is most common, with the third digit being the multiplier).
 
-[caption id="attachment_12633" align="aligncenter" width="530"][![SMD resistors usually come on a tape like the one shown (which could be on a reel) which contains 500 0603 SMD resistors.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/500-0603-smd-resistors-on-tape.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/500-0603-smd-resistors-on-tape.jpg) SMD resistors usually come on a tape like the one shown (which could be on a reel) which contains 500 0603 SMD resistors.[/caption]
+[caption id="attachment_12633" align="aligncenter" width="530"][![SMD resistors usually come on a tape like the one shown (which could be on a reel) which contains 500 0603 SMD resistors.](/images/2012/05/500-0603-smd-resistors-on-tape.jpg)
+](/images/2012/05/500-0603-smd-resistors-on-tape.jpg) SMD resistors usually come on a tape like the one shown (which could be on a reel) which contains 500 0603 SMD resistors.[/caption]
 
 Once taken out of the tape, they don't look like much!
 
-[caption id="attachment_12634" align="aligncenter" width="517"][![500 0603 SMD resistors in a pile next to pin. This is too illustrate just how small they are! (and then can get smaller).](http://blog.mbedded.ninja/wp-content/uploads/2012/05/500-0603-smd-resistors-next-to-a-pin.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/500-0603-smd-resistors-next-to-a-pin.jpg) 500 0603 SMD resistors in a pile next to pin. This is too illustrate just how small they are! (and then can get smaller).[/caption]
+[caption id="attachment_12634" align="aligncenter" width="517"][![500 0603 SMD resistors in a pile next to pin. This is too illustrate just how small they are! (and then can get smaller).](/images/2012/05/500-0603-smd-resistors-next-to-a-pin.jpg)
+](/images/2012/05/500-0603-smd-resistors-next-to-a-pin.jpg) 500 0603 SMD resistors in a pile next to pin. This is too illustrate just how small they are! (and then can get smaller).[/caption]
 
 This was me trying to be arty-farty with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.
 
-[caption id="attachment_12635" align="aligncenter" width="1024"][![This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.](http://blog.mbedded.ninja/wp-content/uploads/2012/05/reel-0603-resistor-leftovers-best.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/05/reel-0603-resistor-leftovers-best.jpg) This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.[/caption]
+[caption id="attachment_12635" align="aligncenter" width="1024"][![This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.](/images/2012/05/reel-0603-resistor-leftovers-best.jpg)
+](/images/2012/05/reel-0603-resistor-leftovers-best.jpg) This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.[/caption]

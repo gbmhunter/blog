@@ -32,8 +32,8 @@ tags:
 
   
 
-[caption id="attachment_13088" align="aligncenter" width="499"][![The schematic of a basic two-input TTL NAND gate.](http://blog.mbedded.ninja/wp-content/uploads/2015/08/basic-two-input-tll-nand-gate-schematic.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/08/basic-two-input-tll-nand-gate-schematic.png) The schematic of a basic two-input TTL NAND gate.[/caption]  
+[caption id="attachment_13088" align="aligncenter" width="499"][![The schematic of a basic two-input TTL NAND gate.](/images/2015/08/basic-two-input-tll-nand-gate-schematic.png)
+](/images/2015/08/basic-two-input-tll-nand-gate-schematic.png) The schematic of a basic two-input TTL NAND gate.[/caption]  
 
   
 
@@ -45,8 +45,8 @@ tags:
 
   
 
-[caption id="attachment_13343" align="aligncenter" width="529"][![A screenshot of the NTC thermistor page.](http://blog.mbedded.ninja/wp-content/uploads/2016/05/screenshot-of-ntc-thermistor-page.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/05/screenshot-of-ntc-thermistor-page.png) A screenshot of the NTC thermistor page.[/caption]  
+[caption id="attachment_13343" align="aligncenter" width="529"][![A screenshot of the NTC thermistor page.](/images/2016/05/screenshot-of-ntc-thermistor-page.png)
+](/images/2016/05/screenshot-of-ntc-thermistor-page.png) A screenshot of the NTC thermistor page.[/caption]  
 
   
 
@@ -57,13 +57,13 @@ tags:
 
   
 
-[caption id="attachment_13103" align="aligncenter" width="517"][![The basic schematic of a common-collector BJT amplifier.](http://blog.mbedded.ninja/wp-content/uploads/2015/08/basic-common-collector-bjt-amplifier-schematic.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/08/basic-common-collector-bjt-amplifier-schematic.png) The basic schematic of a common-collector BJT amplifier.[/caption]including simulation results...  
+[caption id="attachment_13103" align="aligncenter" width="517"][![The basic schematic of a common-collector BJT amplifier.](/images/2015/08/basic-common-collector-bjt-amplifier-schematic.png)
+](/images/2015/08/basic-common-collector-bjt-amplifier-schematic.png) The basic schematic of a common-collector BJT amplifier.[/caption]including simulation results...  
 
   
 
-[caption id="attachment_13107" align="aligncenter" width="1418"][![Vout vs. Vin for a basic common-collector BJT amplifier.](http://blog.mbedded.ninja/wp-content/uploads/2015/08/vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/08/vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png) Vout vs. Vin for a basic common-collector BJT amplifier.[/caption]  
+[caption id="attachment_13107" align="aligncenter" width="1418"][![Vout vs. Vin for a basic common-collector BJT amplifier.](/images/2015/08/vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png)
+](/images/2015/08/vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png) Vout vs. Vin for a basic common-collector BJT amplifier.[/caption]  
 
   
 
@@ -72,6 +72,6 @@ tags:
 
   
 
-[caption id="attachment_13334" align="aligncenter" width="465"][![The simulation schematic for a constant-current BJT-based LED driver.](http://blog.mbedded.ninja/wp-content/uploads/2015/08/constant-current-bjt-based-led-driver.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/08/constant-current-bjt-based-led-driver.png) The simulation schematic for a constant-current BJT-based LED driver.[/caption]
+[caption id="attachment_13334" align="aligncenter" width="465"][![The simulation schematic for a constant-current BJT-based LED driver.](/images/2015/08/constant-current-bjt-based-led-driver.png)
+](/images/2015/08/constant-current-bjt-based-led-driver.png) The simulation schematic for a constant-current BJT-based LED driver.[/caption]
 

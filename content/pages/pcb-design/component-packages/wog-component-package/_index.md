@@ -128,5 +128,5 @@ url: /pcb-design/component-packages/wog-component-package
 A cheap, cylindrical plastic package used for smaller (low power) through-hole full-bridge rectifiers. Uses a glass-passivated construction.
 
 
-[caption id="attachment_11435" align="aligncenter" width="342"][![A photo of the WOG component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/wog-component-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/wog-component-package-photo.jpg) A photo of the WOG component package.[/caption]
+[caption id="attachment_11435" align="aligncenter" width="342"][![A photo of the WOG component package.](/images/2015/04/wog-component-package-photo.jpg)
+](/images/2015/04/wog-component-package-photo.jpg) A photo of the WOG component package.[/caption]

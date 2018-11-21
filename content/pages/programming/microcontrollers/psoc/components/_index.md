@@ -42,8 +42,8 @@ This is just a personal preference, but I append the suffix "Cp" and then a desc
 
 
 
-[caption id="attachment_13117" align="aligncenter" width="688"][![The correct place to enter custom user code in automatically generated Cypress component API files.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/custom-user-c-code-in-psoc-api-files.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/custom-user-c-code-in-psoc-api-files.png) The correct place to enter custom user code in automatically generated Cypress component API files.[/caption]
+[caption id="attachment_13117" align="aligncenter" width="688"][![The correct place to enter custom user code in automatically generated Cypress component API files.](/images/2013/03/custom-user-c-code-in-psoc-api-files.png)
+](/images/2013/03/custom-user-c-code-in-psoc-api-files.png) The correct place to enter custom user code in automatically generated Cypress component API files.[/caption]
 
 
 
@@ -116,8 +116,8 @@ The following picture shows a PSoC multiplexer being used to connect two analogu
 
 
 
-[caption id="attachment_13118" align="aligncenter" width="550"][![The analogue multiplexor (mux) component in PSoC Creator.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-component-analogue-multiplexor-mux.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-component-analogue-multiplexor-mux.jpg) The analogue multiplexor (mux) component in PSoC Creator.[/caption]
+[caption id="attachment_13118" align="aligncenter" width="550"][![The analogue multiplexor (mux) component in PSoC Creator.](/images/2013/03/psoc-component-analogue-multiplexor-mux.jpg)
+](/images/2013/03/psoc-component-analogue-multiplexor-mux.jpg) The analogue multiplexor (mux) component in PSoC Creator.[/caption]
 
 
 
@@ -150,8 +150,8 @@ The screenshot below shows the GUI for configuring the capacitive elements in PS
 
 
 
-[caption id="attachment_13119" align="aligncenter" width="670"][![The cap sense configure window in PSoC Creator.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-creator-schematic-cap-sense-component.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-creator-schematic-cap-sense-component.jpg) The cap sense configure window in PSoC Creator.[/caption]
+[caption id="attachment_13119" align="aligncenter" width="670"][![The cap sense configure window in PSoC Creator.](/images/2013/03/psoc-creator-schematic-cap-sense-component.jpg)
+](/images/2013/03/psoc-creator-schematic-cap-sense-component.jpg) The cap sense configure window in PSoC Creator.[/caption]
 
 
 
@@ -233,8 +233,8 @@ Most embedded engineers would of heard about counters. They are commonly include
 
 
 
-[caption id="attachment_13120" align="aligncenter" width="820"][![The PSoC counter component, set to be 16-bit (this is configurable).](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-component-schematic-counter-16bit.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-component-schematic-counter-16bit.png) The PSoC counter component, set to be 16-bit (this is configurable).[/caption]
+[caption id="attachment_13120" align="aligncenter" width="820"][![The PSoC counter component, set to be 16-bit (this is configurable).](/images/2013/03/psoc-component-schematic-counter-16bit.png)
+](/images/2013/03/psoc-component-schematic-counter-16bit.png) The PSoC counter component, set to be 16-bit (this is configurable).[/caption]
 
 
 
@@ -262,8 +262,8 @@ The component is really set-up and user, and the following image shows one of th
 
 
 
-[caption id="attachment_13121" align="aligncenter" width="590"][![The PSoC Debouncer. In the case, the switch pulled-up, and input goes low on press, which fires interrupt.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-debounce-component-with-pin-and-interrupt.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-debounce-component-with-pin-and-interrupt.png) The PSoC Debouncer. In the case, the switch pulled-up, and input goes low on press, which fires interrupt.[/caption]
+[caption id="attachment_13121" align="aligncenter" width="590"][![The PSoC Debouncer. In the case, the switch pulled-up, and input goes low on press, which fires interrupt.](/images/2013/03/psoc-debounce-component-with-pin-and-interrupt.png)
+](/images/2013/03/psoc-debounce-component-with-pin-and-interrupt.png) The PSoC Debouncer. In the case, the switch pulled-up, and input goes low on press, which fires interrupt.[/caption]
 
 
 
@@ -298,8 +298,8 @@ The PSoC microcontroller features a digital filter block, a highly versatile and
 
 
 
-[caption id="attachment_13122" align="aligncenter" width="1118"][![The filter component configuration tab in PSoC Creator.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-filter-component-config-dialog-box.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-filter-component-config-dialog-box.png) The filter component configuration tab in PSoC Creator.[/caption]
+[caption id="attachment_13122" align="aligncenter" width="1118"][![The filter component configuration tab in PSoC Creator.](/images/2013/03/psoc-filter-component-config-dialog-box.png)
+](/images/2013/03/psoc-filter-component-config-dialog-box.png) The filter component configuration tab in PSoC Creator.[/caption]
 
 
 
@@ -372,8 +372,8 @@ In what I see as a rather poor design decision, some of the low-level PSoC I2C A
 
 
 
-[caption id="attachment_12906" align="aligncenter" width="538"][![An example of the dangerous, un-bounded while() loops in the PSoC I2C API.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/cypress-psoc-i2c-api-while-loops-in-master-functions-annotated.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/cypress-psoc-i2c-api-while-loops-in-master-functions-annotated.png) An example of the dangerous, un-bounded while() loops in the PSoC I2C API.[/caption]
+[caption id="attachment_12906" align="aligncenter" width="538"][![An example of the dangerous, un-bounded while() loops in the PSoC I2C API.](/images/2013/03/cypress-psoc-i2c-api-while-loops-in-master-functions-annotated.png)
+](/images/2013/03/cypress-psoc-i2c-api-while-loops-in-master-functions-annotated.png) An example of the dangerous, un-bounded while() loops in the PSoC I2C API.[/caption]
 
 
 
@@ -410,8 +410,8 @@ The only work around I know of is to modify the PSoC I2C component (not nice, I 
 
 
 
-[caption id="attachment_12909" align="aligncenter" width="857"][![An screenshot of an edited version of the PSoC I2C API with added upper-bounds on the number of while() loop iterations.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-i2c-api-with-upper-bounds-on-while-loops-annotated.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-i2c-api-with-upper-bounds-on-while-loops-annotated.png) An screenshot of an edited version of the PSoC I2C API with added upper-bounds on the number of while() loop iterations.[/caption]
+[caption id="attachment_12909" align="aligncenter" width="857"][![An screenshot of an edited version of the PSoC I2C API with added upper-bounds on the number of while() loop iterations.](/images/2013/03/psoc-i2c-api-with-upper-bounds-on-while-loops-annotated.png)
+](/images/2013/03/psoc-i2c-api-with-upper-bounds-on-while-loops-annotated.png) An screenshot of an edited version of the PSoC I2C API with added upper-bounds on the number of while() loop iterations.[/caption]
 
 
 
@@ -429,8 +429,8 @@ Most of the work in setting up an interrupt can be done graphically. When starti
 
 
 
-[caption id="attachment_13123" align="aligncenter" width="472"][![The ISR component, connected to a push button (digital input pin).](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-top-design-isr-component-connected-to-push-button.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-top-design-isr-component-connected-to-push-button.jpg) The ISR component, connected to a push button (digital input pin).[/caption]
+[caption id="attachment_13123" align="aligncenter" width="472"][![The ISR component, connected to a push button (digital input pin).](/images/2013/03/psoc-top-design-isr-component-connected-to-push-button.jpg)
+](/images/2013/03/psoc-top-design-isr-component-connected-to-push-button.jpg) The ISR component, connected to a push button (digital input pin).[/caption]
 
 
 
@@ -485,8 +485,8 @@ Note that the trigger mode for interrupts can only be set to rising edge or leve
 
 
 
-[caption id="attachment_13124" align="aligncenter" width="1054"][![6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png) 6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge.[/caption]
+[caption id="attachment_13124" align="aligncenter" width="1054"][![6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge.](/images/2013/03/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png)
+](/images/2013/03/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png) 6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge.[/caption]
 
 
 
@@ -504,8 +504,8 @@ One of the disadvantages of the character LCD driver is that it requires 7 conse
 
 
 
-[caption id="attachment_13125" align="aligncenter" width="154"][![The PSoC Character LCD component. Not much to it right?](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-module-character-lcd.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-module-character-lcd.jpg) The PSoC Character LCD component. Not much to it right?[/caption]
+[caption id="attachment_13125" align="aligncenter" width="154"][![The PSoC Character LCD component. Not much to it right?](/images/2013/03/psoc-module-character-lcd.jpg)
+](/images/2013/03/psoc-module-character-lcd.jpg) The PSoC Character LCD component. Not much to it right?[/caption]
 
 
 
@@ -513,8 +513,8 @@ Pin description:
 
 
 
-[caption id="attachment_13126" align="aligncenter" width="800"][![The pin descriptions for the PSoC LCD component.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-module-character-lcd-pin-description.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-module-character-lcd-pin-description.jpg) The pin descriptions for the PSoC LCD component.[/caption]
+[caption id="attachment_13126" align="aligncenter" width="800"][![The pin descriptions for the PSoC LCD component.](/images/2013/03/psoc-module-character-lcd-pin-description.jpg)
+](/images/2013/03/psoc-module-character-lcd-pin-description.jpg) The pin descriptions for the PSoC LCD component.[/caption]
 
 
 
@@ -532,8 +532,8 @@ Pins on a PSoC microcontroller can be "ganged" together to provide more output c
 
 
 
-[caption id="attachment_13127" align="aligncenter" width="620"][![Ganging port pins together on a PSoC microcontroller to provide more output current. Be careful not to exceed to total allowed current per port.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/ganging-port-pins-together-to-provide-more-output-current.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/ganging-port-pins-together-to-provide-more-output-current.png) Ganging port pins together on a PSoC microcontroller to provide more output current. Be careful not to exceed to total allowed current per port.[/caption]
+[caption id="attachment_13127" align="aligncenter" width="620"][![Ganging port pins together on a PSoC microcontroller to provide more output current. Be careful not to exceed to total allowed current per port.](/images/2013/03/ganging-port-pins-together-to-provide-more-output-current.png)
+](/images/2013/03/ganging-port-pins-together-to-provide-more-output-current.png) Ganging port pins together on a PSoC microcontroller to provide more output current. Be careful not to exceed to total allowed current per port.[/caption]
 
 
 
@@ -571,8 +571,8 @@ The Pulse Converter component is useful to convert variable width input pulses i
 
 
 
-[caption id="attachment_13128" align="aligncenter" width="388"][![The PSoC Pulse Converter component, being used here to output constant-width pulses.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-component-pulse-converter-trigger-in-out.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-component-pulse-converter-trigger-in-out.png) The PSoC Pulse Converter component, being used here to output constant-width pulses.[/caption]
+[caption id="attachment_13128" align="aligncenter" width="388"][![The PSoC Pulse Converter component, being used here to output constant-width pulses.](/images/2013/03/psoc-component-pulse-converter-trigger-in-out.png)
+](/images/2013/03/psoc-component-pulse-converter-trigger-in-out.png) The PSoC Pulse Converter component, being used here to output constant-width pulses.[/caption]
 
 
 
@@ -595,8 +595,8 @@ I have used this for controlling a [BLDC motor](http://blog.mbedded.ninja/electr
 
 
 
-[caption id="attachment_13129" align="aligncenter" width="1034"][![The PSoC quadrature decoder component. Takes the A, B and N inputs from an incremental encoder and converts it into a count.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-component-quadrature-decoder.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-component-quadrature-decoder.png) The PSoC quadrature decoder component. Takes the A, B and N inputs from an incremental encoder and converts it into a count.[/caption]
+[caption id="attachment_13129" align="aligncenter" width="1034"][![The PSoC quadrature decoder component. Takes the A, B and N inputs from an incremental encoder and converts it into a count.](/images/2013/03/psoc-component-quadrature-decoder.png)
+](/images/2013/03/psoc-component-quadrature-decoder.png) The PSoC quadrature decoder component. Takes the A, B and N inputs from an incremental encoder and converts it into a count.[/caption]
 
 
 
@@ -624,8 +624,8 @@ While the PSoC 3 and 5/5LP microcontollers have dedicated UART, I2C and SPI modu
 
 
 
-[caption id="attachment_13679" align="aligncenter" width="307"][![A screenshot of a SCB block in the "TopDesign.cysch" file in PSoC Creator. This SCB block is configured as a UART.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-creator-scb-component-as-uart-example-topdesign.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/psoc-creator-scb-component-as-uart-example-topdesign.png) A screenshot of a SCB block in the "TopDesign.cysch" file in PSoC Creator. This SCB block is configured as a UART.[/caption]
+[caption id="attachment_13679" align="aligncenter" width="307"][![A screenshot of a SCB block in the "TopDesign.cysch" file in PSoC Creator. This SCB block is configured as a UART.](/images/2013/03/psoc-creator-scb-component-as-uart-example-topdesign.png)
+](/images/2013/03/psoc-creator-scb-component-as-uart-example-topdesign.png) A screenshot of a SCB block in the "TopDesign.cysch" file in PSoC Creator. This SCB block is configured as a UART.[/caption]
 
 
 
@@ -708,8 +708,8 @@ The VDAC (digital-to-analogue voltage converter) component is used to convert a 
 
 
 
-[caption id="attachment_13130" align="aligncenter" width="210"][![The PSoC VDAC component.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/vdac-component-routed-to-debug-pin-on-schematic.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/vdac-component-routed-to-debug-pin-on-schematic.png) The PSoC VDAC component.[/caption]
+[caption id="attachment_13130" align="aligncenter" width="210"][![The PSoC VDAC component.](/images/2013/03/vdac-component-routed-to-debug-pin-on-schematic.png)
+](/images/2013/03/vdac-component-routed-to-debug-pin-on-schematic.png) The PSoC VDAC component.[/caption]
 
 
 
@@ -717,8 +717,8 @@ The VDAC component can be very helpful while debugging. You can use it to "trace
 
 
 
-[caption id="attachment_13557" align="aligncenter" width="579"][![The oscilloscope on the PSoC VDAC component output allows you to inspect code execution. Each different voltage level corresponds to a different section of code. This was taken while running a complex FreeRTOS-based program.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/using-psoc-vdac-component-to-inspect-code-execution.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/using-psoc-vdac-component-to-inspect-code-execution.jpg) The oscilloscope on the PSoC VDAC component output allows you to inspect code execution. Each different voltage level corresponds to a different section of code. This was taken while running a complex FreeRTOS-based program.[/caption]
+[caption id="attachment_13557" align="aligncenter" width="579"][![The oscilloscope on the PSoC VDAC component output allows you to inspect code execution. Each different voltage level corresponds to a different section of code. This was taken while running a complex FreeRTOS-based program.](/images/2013/03/using-psoc-vdac-component-to-inspect-code-execution.jpg)
+](/images/2013/03/using-psoc-vdac-component-to-inspect-code-execution.jpg) The oscilloscope on the PSoC VDAC component output allows you to inspect code execution. Each different voltage level corresponds to a different section of code. This was taken while running a complex FreeRTOS-based program.[/caption]
 
 
 
@@ -797,5 +797,5 @@ Care must be taken when a watchdog is activated for an application that writes t
 
 
 
-[caption id="attachment_13558" align="aligncenter" width="357"][![A screenshot taken from the PSoC 5 LP datasheet, stating care must be taken when using the watchdog in an application that also performs EEPROM or flash writes.](http://blog.mbedded.ninja/wp-content/uploads/2013/03/care-with-psoc-watchdog-and-eeprom-flash-20ms-write-time.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/care-with-psoc-watchdog-and-eeprom-flash-20ms-write-time.png) A screenshot taken from the PSoC 5 LP datasheet, stating care must be taken when using the watchdog in an application that also performs EEPROM or flash writes.[/caption]
+[caption id="attachment_13558" align="aligncenter" width="357"][![A screenshot taken from the PSoC 5 LP datasheet, stating care must be taken when using the watchdog in an application that also performs EEPROM or flash writes.](/images/2013/03/care-with-psoc-watchdog-and-eeprom-flash-20ms-write-time.png)
+](/images/2013/03/care-with-psoc-watchdog-and-eeprom-flash-20ms-write-time.png) A screenshot taken from the PSoC 5 LP datasheet, stating care must be taken when using the watchdog in an application that also performs EEPROM or flash writes.[/caption]

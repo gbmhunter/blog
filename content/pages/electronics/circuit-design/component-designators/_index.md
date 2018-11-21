@@ -58,8 +58,8 @@ Component Type
 <td >
 
 
-[![The schematic symbol for analogue ground (AGND).](http://blog.mbedded.ninja/wp-content/uploads/2011/09/ground-analogue.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/ground-analogue.png)
+[![The schematic symbol for analogue ground (AGND).](/images/2011/09/ground-analogue.png)
+](/images/2011/09/ground-analogue.png)
 
 
 
@@ -98,14 +98,14 @@ Component Type
 <td >
 
 
-[![The schematic symbol for a non-polarised capacitor.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/non-polarised-capacitor-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/non-polarised-capacitor-schematic-symbol.png)
+[![The schematic symbol for a non-polarised capacitor.](/images/2011/09/non-polarised-capacitor-schematic-symbol.png)
+](/images/2011/09/non-polarised-capacitor-schematic-symbol.png)
 
 
 
 
-[![The schematic symbol for a polarised capacitor.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/polarised-capacitor-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/polarised-capacitor-schematic-symbol.png)
+[![The schematic symbol for a polarised capacitor.](/images/2011/09/polarised-capacitor-schematic-symbol.png)
+](/images/2011/09/polarised-capacitor-schematic-symbol.png)
 
 
 
@@ -122,8 +122,8 @@ Component Type
 <td >
 
 
-[![The schematic symbol for an LED.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/led-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/led-schematic-symbol.png)
+[![The schematic symbol for an LED.](/images/2011/09/led-schematic-symbol.png)
+](/images/2011/09/led-schematic-symbol.png)
 
 
 
@@ -140,8 +140,8 @@ Component Type
 <td >
 
 
-[![The schematic symbol for digital ground.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/digital-ground-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/digital-ground-schematic-symbol.png)
+[![The schematic symbol for digital ground.](/images/2011/09/digital-ground-schematic-symbol.png)
+](/images/2011/09/digital-ground-schematic-symbol.png)
 
 
 
@@ -180,8 +180,8 @@ Component Type
 <td >
 
 
-[![The schematic symbol for a ferrite bead.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/ferrite-bead-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/ferrite-bead-schematic-symbol.png)
+[![The schematic symbol for a ferrite bead.](/images/2011/09/ferrite-bead-schematic-symbol.png)
+](/images/2011/09/ferrite-bead-schematic-symbol.png)
 
 
 
@@ -198,8 +198,8 @@ Component Type
 <td >
 
 
-[![The schematic symbol for a fiducial.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/fiducial-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/fiducial-schematic-symbol.png)
+[![The schematic symbol for a fiducial.](/images/2011/09/fiducial-schematic-symbol.png)
+](/images/2011/09/fiducial-schematic-symbol.png)
 
 
 
@@ -216,8 +216,8 @@ Component Type
 <td >
 
 
-[![The schematic symbol for a general or common ground.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/general-common-ground-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/general-common-ground-schematic-symbol.png)
+[![The schematic symbol for a general or common ground.](/images/2011/09/general-common-ground-schematic-symbol.png)
+](/images/2011/09/general-common-ground-schematic-symbol.png)
 
 
 
@@ -311,14 +311,14 @@ Component Type
 <td >
 
 
-[![The schematic symbol for an N-channel MOSFET.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/n-channel-mosfet-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/n-channel-mosfet-schematic-symbol.png)
+[![The schematic symbol for an N-channel MOSFET.](/images/2011/09/n-channel-mosfet-schematic-symbol.png)
+](/images/2011/09/n-channel-mosfet-schematic-symbol.png)
 
 
 
 
-[![The schematic symbol for a P-channel MOSFET.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/p-channel-mosfet-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/p-channel-mosfet-schematic-symbol.png)
+[![The schematic symbol for a P-channel MOSFET.](/images/2011/09/p-channel-mosfet-schematic-symbol.png)
+](/images/2011/09/p-channel-mosfet-schematic-symbol.png)
 
 
 
@@ -368,8 +368,8 @@ Component Type
 <td >
 
 
-[![A schematic symbol for a spark gap. This spark gap is created with two triangles of copper on the PCB, with a gap of 200um between them. As this is made purely from the PCB, there is no BOM component needed.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/spark-gap-schematic-symbol-triangular-200um-no-bom.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/spark-gap-schematic-symbol-triangular-200um-no-bom.png)
+[![A schematic symbol for a spark gap. This spark gap is created with two triangles of copper on the PCB, with a gap of 200um between them. As this is made purely from the PCB, there is no BOM component needed.](/images/2011/09/spark-gap-schematic-symbol-triangular-200um-no-bom.png)
+](/images/2011/09/spark-gap-schematic-symbol-triangular-200um-no-bom.png)
 
 
 
@@ -419,8 +419,8 @@ Component Type
 <td >
 
 
-[![The schematic symbol for a variable resistor (potentiometer).](http://blog.mbedded.ninja/wp-content/uploads/2011/09/variable-resistor-potentiometer-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/variable-resistor-potentiometer-schematic-symbol.png)
+[![The schematic symbol for a variable resistor (potentiometer).](/images/2011/09/variable-resistor-potentiometer-schematic-symbol.png)
+](/images/2011/09/variable-resistor-potentiometer-schematic-symbol.png)
 
 
 
@@ -448,8 +448,8 @@ Component Type
 <td >
 
 
-[![The schematic symbol for a crystal.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/crystal-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/crystal-schematic-symbol.png)
+[![The schematic symbol for a crystal.](/images/2011/09/crystal-schematic-symbol.png)
+](/images/2011/09/crystal-schematic-symbol.png)
 
 
 

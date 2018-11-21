@@ -15,5 +15,5 @@ url: /electronics/circuit-design/four-terminal-4t-sensing
 Four terminal sensing is used to measure electrical impedance (resistance). It uses four probes (two sets of wires), one for measuring voltage and the other for measuring current. It basically removes the error in the measurement caused by the resistance of the leads that the current flows through. Measuring impedance in this manner gives more accurate results than the traditional 2 terminal (2T) method (which most multimeters use).
 
 
-[caption id="attachment_14080" align="aligncenter" width="716"][![](http://blog.mbedded.ninja/wp-content/uploads/2014/02/four-terminal-sensing-method-basic-schematic-showing-measuring-method.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2014/02/four-terminal-sensing-method-basic-schematic-showing-measuring-method.png) A basic schematic showing how to measure resistance using the four-terminal (4T) sensing method.[/caption]
+[caption id="attachment_14080" align="aligncenter" width="716"][![](/images/2014/02/four-terminal-sensing-method-basic-schematic-showing-measuring-method.png)
+](/images/2014/02/four-terminal-sensing-method-basic-schematic-showing-measuring-method.png) A basic schematic showing how to measure resistance using the four-terminal (4T) sensing method.[/caption]

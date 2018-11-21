@@ -18,8 +18,8 @@ url: /pcb-design/component-packages/sot-1226-component-package
 </td>
 <td >
 
-[![A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html. ](http://blog.mbedded.ninja/wp-content/uploads/2015/03/sot-1226-component-package-3d-render-top-bottom.gif)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/03/sot-1226-component-package-3d-render-top-bottom.gif)
+[![A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html. ](/images/2015/03/sot-1226-component-package-3d-render-top-bottom.gif)
+](/images/2015/03/sot-1226-component-package-3d-render-top-bottom.gif)
 
 </td></tr><tr >
 <td >Synonyms
@@ -79,10 +79,10 @@ As of March 2015, NXP seems to be the only manufacturer using this package. NXP 
 
 # Dimensions
 
-[caption id="attachment_11076" align="aligncenter" width="481"][![The dimensions of the SOT-1226 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1226_po.pdf.](http://blog.mbedded.ninja/wp-content/uploads/2015/03/sot-1226-component-package-dimensions.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/03/sot-1226-component-package-dimensions.png) The dimensions of the SOT-1226 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1226_po.pdf.[/caption]
+[caption id="attachment_11076" align="aligncenter" width="481"][![The dimensions of the SOT-1226 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1226_po.pdf.](/images/2015/03/sot-1226-component-package-dimensions.png)
+](/images/2015/03/sot-1226-component-package-dimensions.png) The dimensions of the SOT-1226 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1226_po.pdf.[/caption]
 
 # Recommended Footprint
 
-[caption id="attachment_11075" align="aligncenter" width="443"][![The recommended footprint (land pattern) for the SOT-1226 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/03/sot-1226-component-package-recommended-footprint.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/03/sot-1226-component-package-recommended-footprint.png) The recommended footprint (land pattern) for the SOT-1226 component package.[/caption]
+[caption id="attachment_11075" align="aligncenter" width="443"][![The recommended footprint (land pattern) for the SOT-1226 component package.](/images/2015/03/sot-1226-component-package-recommended-footprint.png)
+](/images/2015/03/sot-1226-component-package-recommended-footprint.png) The recommended footprint (land pattern) for the SOT-1226 component package.[/caption]

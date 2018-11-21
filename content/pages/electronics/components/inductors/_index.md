@@ -131,8 +131,8 @@ The following diagram shows this:
 
 
 
-[caption id="attachment_11495" align="aligncenter" width="608"][![Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image.](http://blog.mbedded.ninja/wp-content/uploads/2013/05/inductors-in-parallel-with-equation.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/05/inductors-in-parallel-with-equation.png) Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image.[/caption]
+[caption id="attachment_11495" align="aligncenter" width="608"][![Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image.](/images/2013/05/inductors-in-parallel-with-equation.png)
+](/images/2013/05/inductors-in-parallel-with-equation.png) Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image.[/caption]
 
 
 
@@ -166,8 +166,8 @@ This is shown in the diagram below:
 
    
 
-[caption id="attachment_11494" align="aligncenter" width="609"][![Two inductors in series are the equivalent of one inductor whose inductance is the sum of the indiviual inductances.](http://blog.mbedded.ninja/wp-content/uploads/2013/05/inductor-in-series-with-equation1.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/05/inductor-in-series-with-equation1.png) Two inductors in series are the equivalent of one inductor whose inductance is the sum of the indiviual inductances.[/caption]
+[caption id="attachment_11494" align="aligncenter" width="609"][![Two inductors in series are the equivalent of one inductor whose inductance is the sum of the indiviual inductances.](/images/2013/05/inductor-in-series-with-equation1.png)
+](/images/2013/05/inductor-in-series-with-equation1.png) Two inductors in series are the equivalent of one inductor whose inductance is the sum of the indiviual inductances.[/caption]
 
 
 
@@ -573,8 +573,8 @@ Inductors only behave like inductors over a **limited current range**. As the cu
 The below image shows a typical inductance vs. current curve for a ferrite core, SMD inductor that could be used on a 3A SMPS design. It's rated saturation current is 4.2A. Notice how after the current increases beyond this point, the inductance of the inductor drops of rapidly.
 
 
-[caption id="attachment_11497" align="aligncenter" width="502"][![Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A.](http://blog.mbedded.ninja/wp-content/uploads/2013/05/inductance-vs-current-graph-wurth-7447789003-3.3uh.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/05/inductance-vs-current-graph-wurth-7447789003-3.3uh.png) Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A.[/caption]
+[caption id="attachment_11497" align="aligncenter" width="502"][![Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A.](/images/2013/05/inductance-vs-current-graph-wurth-7447789003-3.3uh.png)
+](/images/2013/05/inductance-vs-current-graph-wurth-7447789003-3.3uh.png) Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A.[/caption]
 
 
 As governed by the basic induction equation, applying a constant voltage across an inductor will lead to a linear increase in current. This will be the case until the saturation point, at which the current will begin to increase more rapidly, until is reaches a limit determined only by the DC resistance of the windings.
@@ -615,5 +615,5 @@ Confusing? The most simple Simon design approach is to pick the lower maximum c
 # Inductor Packages
 
 
-[caption id="attachment_9179" align="aligncenter" width="709"][![Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard.](http://blog.mbedded.ninja/wp-content/uploads/2013/05/ipc-sm-782-component-dimensions-for-smd-inductors.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/05/ipc-sm-782-component-dimensions-for-smd-inductors.png) Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard.[/caption]
+[caption id="attachment_9179" align="aligncenter" width="709"][![Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard.](/images/2013/05/ipc-sm-782-component-dimensions-for-smd-inductors.png)
+](/images/2013/05/ipc-sm-782-component-dimensions-for-smd-inductors.png) Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard.[/caption]

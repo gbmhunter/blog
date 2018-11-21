@@ -16,8 +16,8 @@ SCons is a build system.
 
 
 
-[caption id="attachment_15435" align="aligncenter" width="310"][![](http://blog.mbedded.ninja/wp-content/uploads/2018/03/scons-build-system-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/03/scons-build-system-logo.png) The logo for the SCons build system.[/caption]
+[caption id="attachment_15435" align="aligncenter" width="310"][![](/images/2018/03/scons-build-system-logo.png)
+](/images/2018/03/scons-build-system-logo.png) The logo for the SCons build system.[/caption]
 
 
 

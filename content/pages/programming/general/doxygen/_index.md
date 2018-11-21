@@ -17,8 +17,8 @@ Doxygen is an open-source program for **documenting code**. It is commonly used 
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2013/05/doxygen-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/05/doxygen-logo.png)
+[![](/images/2013/05/doxygen-logo.png)
+](/images/2013/05/doxygen-logo.png)
 
 
 
@@ -27,8 +27,8 @@ It is essentially a program which looks through your source code and extracts in
 
 
 
-[caption id="attachment_13585" align="aligncenter" width="1919"][![Screenshot of the html documentation that Doxygen generates with properly commented code.](http://blog.mbedded.ninja/wp-content/uploads/2013/05/doxygen-html-documentation-screenshot.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/05/doxygen-html-documentation-screenshot.png) Screenshot of the html documentation that Doxygen generates with properly commented code.[/caption]
+[caption id="attachment_13585" align="aligncenter" width="1919"][![Screenshot of the html documentation that Doxygen generates with properly commented code.](/images/2013/05/doxygen-html-documentation-screenshot.png)
+](/images/2013/05/doxygen-html-documentation-screenshot.png) Screenshot of the html documentation that Doxygen generates with properly commented code.[/caption]
 
 
 
@@ -325,8 +325,8 @@ Doxywizard is a Windows GUI for using Doxygen. Desired Extraction Mode: Document
 
 
 
-[caption id="attachment_13588" align="aligncenter" width="829"][![Selecting 'EXTRACT_PRIVATE' and 'EXTRACT STATIC' in the Doxygen GUI.](http://blog.mbedded.ninja/wp-content/uploads/2013/05/doxygen-gui-extract-private-and-static-selected.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/05/doxygen-gui-extract-private-and-static-selected.png) Selecting 'EXTRACT_PRIVATE' and 'EXTRACT STATIC' in the Doxygen GUI.[/caption]
+[caption id="attachment_13588" align="aligncenter" width="829"][![Selecting 'EXTRACT_PRIVATE' and 'EXTRACT STATIC' in the Doxygen GUI.](/images/2013/05/doxygen-gui-extract-private-and-static-selected.png)
+](/images/2013/05/doxygen-gui-extract-private-and-static-selected.png) Selecting 'EXTRACT_PRIVATE' and 'EXTRACT STATIC' in the Doxygen GUI.[/caption]
 
 
 

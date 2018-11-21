@@ -11,8 +11,8 @@ url: /programming/microcontrollers/atmel
 
 Atmel is a manufacturer who make a broad range of popular microcontrollers.
 
-[caption id="attachment_12450" align="aligncenter" width="249"][![The Atmel logo as of October 2015.](http://blog.mbedded.ninja/wp-content/uploads/2015/10/atmel-logo-2015.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/10/atmel-logo-2015.png) The Atmel logo as of October 2015.[/caption]
+[caption id="attachment_12450" align="aligncenter" width="249"][![The Atmel logo as of October 2015.](/images/2015/10/atmel-logo-2015.png)
+](/images/2015/10/atmel-logo-2015.png) The Atmel logo as of October 2015.[/caption]
 
 # Child Pages
 

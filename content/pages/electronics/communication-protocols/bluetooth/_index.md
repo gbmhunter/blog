@@ -16,8 +16,8 @@ The bluetooth logo is shown below:
 
 
 
-[caption id="attachment_9286" align="aligncenter" width="266"][![The Bluetooth icon/logo.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/bluetooth-4-0-icon.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/01/bluetooth-4-0-icon.jpg) The Bluetooth icon/logo.[/caption]
+[caption id="attachment_9286" align="aligncenter" width="266"][![The Bluetooth icon/logo.](/images/2015/01/bluetooth-4-0-icon.jpg)
+](/images/2015/01/bluetooth-4-0-icon.jpg) The Bluetooth icon/logo.[/caption]
 
 
 

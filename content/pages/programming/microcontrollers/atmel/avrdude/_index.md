@@ -11,13 +11,13 @@ url: /programming/microcontrollers/atmel/avrdude
 
 [AVRDUDE](http://www.nongnu.org/avrdude/) (or avrdude) is a popular, open-source, third-party (i.e. non-Atmel) command-line utility for programming Atmel microcontrollers.
 
-[caption id="attachment_12149" align="aligncenter" width="486"][![The default information printed by avrdude from the Windows command line.](http://blog.mbedded.ninja/wp-content/uploads/2015/10/avr-dude-windows-command-line-default-usage-info.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/10/avr-dude-windows-command-line-default-usage-info.png) The default information printed by avrdude from the Windows command line.[/caption]
+[caption id="attachment_12149" align="aligncenter" width="486"][![The default information printed by avrdude from the Windows command line.](/images/2015/10/avr-dude-windows-command-line-default-usage-info.png)
+](/images/2015/10/avr-dude-windows-command-line-default-usage-info.png) The default information printed by avrdude from the Windows command line.[/caption]
 
 It supports a wide-range of programmers and microcontrollers.
 
-[caption id="attachment_12099" align="aligncenter" width="452"][![A Windows command-line screenshot of AVRDUDE programming an Atmel ATmega microcontroller.](http://blog.mbedded.ninja/wp-content/uploads/2015/10/example-cmd-screenshot-of-avrdude-programming-atmega-microcontroller.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/10/example-cmd-screenshot-of-avrdude-programming-atmega-microcontroller.png) A Windows command-line screenshot of AVRDUDE programming an Atmel ATmega microcontroller.[/caption]
+[caption id="attachment_12099" align="aligncenter" width="452"][![A Windows command-line screenshot of AVRDUDE programming an Atmel ATmega microcontroller.](/images/2015/10/example-cmd-screenshot-of-avrdude-programming-atmega-microcontroller.png)
+](/images/2015/10/example-cmd-screenshot-of-avrdude-programming-atmega-microcontroller.png) A Windows command-line screenshot of AVRDUDE programming an Atmel ATmega microcontroller.[/caption]
 
 # The Micro Won't Program, What Do I Do?
 

@@ -24,8 +24,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2016/12/cardboard-boxes.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/12/cardboard-boxes.png)
+[![](/images/2016/12/cardboard-boxes.png)
+](/images/2016/12/cardboard-boxes.png)
 
 
   
@@ -38,22 +38,22 @@ tags:
 
    
 
-[caption id="attachment_13883" align="aligncenter" width="277"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/01/boost-c-plus-plus-libraries-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/01/boost-c-plus-plus-libraries-logo.png) The boost (C++ libraries) logo.[/caption]
+[caption id="attachment_13883" align="aligncenter" width="277"][![](/images/2017/01/boost-c-plus-plus-libraries-logo.png)
+](/images/2017/01/boost-c-plus-plus-libraries-logo.png) The boost (C++ libraries) logo.[/caption]
 	  * New [NuttX page](http://blog.mbedded.ninja/programming/operating-systems/nuttx) under Programming->Operating Systems.  
 
    
 
-[caption id="attachment_13884" align="aligncenter" width="194"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/01/nuttx-rtos-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/01/nuttx-rtos-logo.png) The NuttX logo.[/caption]
+[caption id="attachment_13884" align="aligncenter" width="194"][![](/images/2017/01/nuttx-rtos-logo.png)
+](/images/2017/01/nuttx-rtos-logo.png) The NuttX logo.[/caption]
 	  * New [Robotics section](http://blog.mbedded.ninja/robotics) added to the website.  
 
   
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2016/12/robotics-roombot-humanoid-waving.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/12/robotics-roombot-humanoid-waving.png)
+[![](/images/2016/12/robotics-roombot-humanoid-waving.png)
+](/images/2016/12/robotics-roombot-humanoid-waving.png)
 
 
 

@@ -21,8 +21,8 @@ Although there are many different ways of calling C++ code from Python, this pag
 
 
 
-[caption id="attachment_14676" align="aligncenter" width="307"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/08/swig-python-bindings-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/08/swig-python-bindings-logo.png) The SWIG logo.[/caption]
+[caption id="attachment_14676" align="aligncenter" width="307"][![](/images/2017/08/swig-python-bindings-logo.png)
+](/images/2017/08/swig-python-bindings-logo.png) The SWIG logo.[/caption]
 
 
 

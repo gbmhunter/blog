@@ -84,10 +84,10 @@ The DSOP Advance component package comes with dual-side cooling features to furt
 
 # Dimensions
 
-[caption id="attachment_11664" align="aligncenter" width="952"][![The dimensions for the DSOP Advance component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/05/dsop-advance-component-package-dimensions.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/05/dsop-advance-component-package-dimensions.png) The dimensions for the DSOP Advance component package.[/caption]
+[caption id="attachment_11664" align="aligncenter" width="952"][![The dimensions for the DSOP Advance component package.](/images/2015/05/dsop-advance-component-package-dimensions.png)
+](/images/2015/05/dsop-advance-component-package-dimensions.png) The dimensions for the DSOP Advance component package.[/caption]
 
 # Recommended Land Pattern
 
-[caption id="attachment_11667" align="aligncenter" width="271"][![The recommended land pattern for the DSOP Advance component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/05/dsop-advance-component-package-recommended-land-pattern.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/05/dsop-advance-component-package-recommended-land-pattern.png) The recommended land pattern for the DSOP Advance component package.[/caption]
+[caption id="attachment_11667" align="aligncenter" width="271"][![The recommended land pattern for the DSOP Advance component package.](/images/2015/05/dsop-advance-component-package-recommended-land-pattern.png)
+](/images/2015/05/dsop-advance-component-package-recommended-land-pattern.png) The recommended land pattern for the DSOP Advance component package.[/caption]

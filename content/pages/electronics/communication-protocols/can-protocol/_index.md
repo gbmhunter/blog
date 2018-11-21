@@ -21,8 +21,8 @@ url: /electronics/communication-protocols/can-protocol
 
 
 
-[caption id="attachment_14610" align="aligncenter" width="270"][![](http://blog.mbedded.ninja/wp-content/uploads/2012/12/can-bus-logo-bosch.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/12/can-bus-logo-bosch.png) The CAN bus logo. Image from www.bosch.com.[/caption]
+[caption id="attachment_14610" align="aligncenter" width="270"][![](/images/2012/12/can-bus-logo-bosch.png)
+](/images/2012/12/can-bus-logo-bosch.png) The CAN bus logo. Image from www.bosch.com.[/caption]
 
 
 
@@ -195,8 +195,8 @@ Dominant bits are logic level 0, while recessive bits are logic level 1.
 
 
 
-[caption id="attachment_15445" align="aligncenter" width="883"][![](http://blog.mbedded.ninja/wp-content/uploads/2018/03/can-standard-base-frame-format-data-remote.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/03/can-standard-base-frame-format-data-remote.png) The standard (base) CAN frame format for both data and remote frames.[/caption]
+[caption id="attachment_15445" align="aligncenter" width="883"][![](/images/2018/03/can-standard-base-frame-format-data-remote.png)
+](/images/2018/03/can-standard-base-frame-format-data-remote.png) The standard (base) CAN frame format for both data and remote frames.[/caption]
 
 
 
@@ -254,8 +254,8 @@ _**7-bit EOF:**_ The End Of Frame is marked with 7 recessive bits.
 
 
 
-[caption id="attachment_15446" align="aligncenter" width="1111"][![](http://blog.mbedded.ninja/wp-content/uploads/2018/03/can-extended-frame-format-data-remote.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/03/can-extended-frame-format-data-remote.png) The extended CAN frame format for both data and remote frames.[/caption]
+[caption id="attachment_15446" align="aligncenter" width="1111"][![](/images/2018/03/can-extended-frame-format-data-remote.png)
+](/images/2018/03/can-extended-frame-format-data-remote.png) The extended CAN frame format for both data and remote frames.[/caption]
 
 
 
@@ -427,8 +427,8 @@ Uses a shielded twisted pair. Used in trucks, agricultural and industrial equipm
 
 
 
-[caption id="attachment_14612" align="aligncenter" width="506"][![](http://blog.mbedded.ninja/wp-content/uploads/2012/12/can-bus-licensing-fee-highlighted-bosch.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/12/can-bus-licensing-fee-highlighted-bosch.png) A screenshot of the CAN bus licensing fee details from Bosch. Image from http://www.bosch-semiconductors.de/media/automotive_electronics/pdf_2/ipmodules_3/can_protocol_license_1/Bosch_CAN_Protocol_License_Conditions.pdf.[/caption]
+[caption id="attachment_14612" align="aligncenter" width="506"][![](/images/2012/12/can-bus-licensing-fee-highlighted-bosch.png)
+](/images/2012/12/can-bus-licensing-fee-highlighted-bosch.png) A screenshot of the CAN bus licensing fee details from Bosch. Image from http://www.bosch-semiconductors.de/media/automotive_electronics/pdf_2/ipmodules_3/can_protocol_license_1/Bosch_CAN_Protocol_License_Conditions.pdf.[/caption]
 
 
 
@@ -451,8 +451,8 @@ One example is the PCAN-USB, which support Windows and Linux.
 
 
 
-[caption id="attachment_14614" align="aligncenter" width="759"][![](http://blog.mbedded.ninja/wp-content/uploads/2012/12/pcan-usb-device-connected-to-ubuntu-vmware.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/12/pcan-usb-device-connected-to-ubuntu-vmware.png) Screenshot showing a PCAN-USB device connected to Ubuntu running inside VMware.[/caption]
+[caption id="attachment_14614" align="aligncenter" width="759"][![](/images/2012/12/pcan-usb-device-connected-to-ubuntu-vmware.png)
+](/images/2012/12/pcan-usb-device-connected-to-ubuntu-vmware.png) Screenshot showing a PCAN-USB device connected to Ubuntu running inside VMware.[/caption]
 
 
 
@@ -495,8 +495,8 @@ Atmel T89C51CC01 Microcontroller. 8-bit 8051 architecture, with CAN interface. S
 
 
 
-[caption id="attachment_14593" align="aligncenter" width="849"][![](http://blog.mbedded.ninja/wp-content/uploads/2012/12/t89c51cc01-8bit-atmel-can-network-microcontroller.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/12/t89c51cc01-8bit-atmel-can-network-microcontroller.png) The Atmel T89C51CC01 microcontroller. An 8-bit 8051 architecture, with a CAN interface.[/caption]
+[caption id="attachment_14593" align="aligncenter" width="849"][![](/images/2012/12/t89c51cc01-8bit-atmel-can-network-microcontroller.png)
+](/images/2012/12/t89c51cc01-8bit-atmel-can-network-microcontroller.png) The Atmel T89C51CC01 microcontroller. An 8-bit 8051 architecture, with a CAN interface.[/caption]
 
 
 
@@ -514,5 +514,5 @@ The [Freescale MC9SO8D](http://www.freescale.com/webapp/sps/site/prod_summary.js
 
 
 
-[caption id="attachment_14594" align="alignnone" width="660"][![](http://blog.mbedded.ninja/wp-content/uploads/2012/12/freescale-mc9so8-microcontroller-mscan-hardware-peripheral.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/12/freescale-mc9so8-microcontroller-mscan-hardware-peripheral.png) The Freescale MC9SO8 microcontroller MSCAN peripheral.[/caption]
+[caption id="attachment_14594" align="alignnone" width="660"][![](/images/2012/12/freescale-mc9so8-microcontroller-mscan-hardware-peripheral.png)
+](/images/2012/12/freescale-mc9so8-microcontroller-mscan-hardware-peripheral.png) The Freescale MC9SO8 microcontroller MSCAN peripheral.[/caption]

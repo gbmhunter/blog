@@ -36,8 +36,8 @@ This `.dts` file is much more useful to a developer than the `.dtb` file, and ca
 
 
 
-[caption id="attachment_14505" align="aligncenter" width="1159"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/06/yocto-device-tree-conversion-from-blob-to-source.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/06/yocto-device-tree-conversion-from-blob-to-source.png) A comparison between the Yocto generated binary Device Tree Blob (.dtb) file and the human-readable Device Tree Source (.dts) file that can be created from the .dtb file using the program dtc.[/caption]
+[caption id="attachment_14505" align="aligncenter" width="1159"][![](/images/2017/06/yocto-device-tree-conversion-from-blob-to-source.png)
+](/images/2017/06/yocto-device-tree-conversion-from-blob-to-source.png) A comparison between the Yocto generated binary Device Tree Blob (.dtb) file and the human-readable Device Tree Source (.dts) file that can be created from the .dtb file using the program dtc.[/caption]
 
 
 

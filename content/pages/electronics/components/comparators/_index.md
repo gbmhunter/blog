@@ -15,8 +15,8 @@ Comparators are closely related to op-amps. A comparator is basically an op-amp 
 
 This is the schematic symbol for a comparator, which is the same as the op-amp.
 
-[caption id="attachment_12675" align="aligncenter" width="353"][![The basic schematic symbol for a comparator (it is the same for an op-amp).](http://blog.mbedded.ninja/wp-content/uploads/2014/06/basic-op-amp-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2014/06/basic-op-amp-schematic-symbol.png) The basic schematic symbol for a comparator (it is the same for an op-amp).[/caption]
+[caption id="attachment_12675" align="aligncenter" width="353"][![The basic schematic symbol for a comparator (it is the same for an op-amp).](/images/2014/06/basic-op-amp-schematic-symbol.png)
+](/images/2014/06/basic-op-amp-schematic-symbol.png) The basic schematic symbol for a comparator (it is the same for an op-amp).[/caption]
 
 # Comparators vs. Op-Amps
 
@@ -42,8 +42,8 @@ Hystersis is essentially caused by positive feedback. Many comparators have a sm
 
 The following diagram shows how hystersis effects the outputs state changes (from low to high and back again) in regards to the input, for a non-inverting comparator configuration.
 
-[caption id="attachment_12676" align="aligncenter" width="334"][![A graph showing how comparator hystersis works.](http://blog.mbedded.ninja/wp-content/uploads/2014/06/comparator-hystersis-graph.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2014/06/comparator-hystersis-graph.png) A graph showing how comparator hystersis works.[/caption]
+[caption id="attachment_12676" align="aligncenter" width="334"][![A graph showing how comparator hystersis works.](/images/2014/06/comparator-hystersis-graph.png)
+](/images/2014/06/comparator-hystersis-graph.png) A graph showing how comparator hystersis works.[/caption]
 
 # Terms
 
@@ -75,8 +75,8 @@ The following diagram shows how hystersis effects the outputs state changes (fro
 
 The following diagram shows a non-inverting comparator with hystersis resistors added.
 
-[caption id="attachment_12677" align="aligncenter" width="535"][![A schematic of a comparator in the non-inverting configuration.](http://blog.mbedded.ninja/wp-content/uploads/2014/06/comparator-push-pull-out-non-inverting-configuration.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2014/06/comparator-push-pull-out-non-inverting-configuration.png) A schematic of a comparator in the non-inverting configuration.[/caption]
+[caption id="attachment_12677" align="aligncenter" width="535"][![A schematic of a comparator in the non-inverting configuration.](/images/2014/06/comparator-push-pull-out-non-inverting-configuration.png)
+](/images/2014/06/comparator-push-pull-out-non-inverting-configuration.png) A schematic of a comparator in the non-inverting configuration.[/caption]
 
 Firstly, determine the amount of hystersis you want (\( V_{HYST} \)). Then use the following equation to work out the ratio between the feedback and input resistor.
 

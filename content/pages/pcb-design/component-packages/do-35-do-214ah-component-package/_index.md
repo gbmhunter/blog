@@ -157,8 +157,8 @@ This a very common package for small-signal low-power through-hole diodes such a
 # Photo
 
 
-[caption id="attachment_11249" align="aligncenter" width="343"][![A photo of the DO-35 (DO-204AH) component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/do-35-do-204ah-component-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/do-35-do-204ah-component-package-photo.jpg) A photo of the DO-35 (DO-204AH) component package.[/caption]
+[caption id="attachment_11249" align="aligncenter" width="343"][![A photo of the DO-35 (DO-204AH) component package.](/images/2015/04/do-35-do-204ah-component-package-photo.jpg)
+](/images/2015/04/do-35-do-204ah-component-package-photo.jpg) A photo of the DO-35 (DO-204AH) component package.[/caption]
 
 
 # Images

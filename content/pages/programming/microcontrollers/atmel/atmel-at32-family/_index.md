@@ -11,8 +11,8 @@ url: /programming/microcontrollers/atmel/atmel-at32-family
 
 The AT32 family of microcontrollers are manufactured by ATMEL. They use the proprietary Atmel AVR architecture for the core part of the microcontroller. The memory and data paths are 32-bits wide, and they come with varying amounts of flash memory and hardware peripherals.
 
-[caption id="attachment_12448" align="aligncenter" width="259"][![A 3D render of the AT32UC3L, an Atmel AVR AT32 microcontroller. Image from http://teckhat.com/.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/atmel-avr-at32-3d-render-of-ic-www-teckhat-com.gif)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/atmel-avr-at32-3d-render-of-ic-www-teckhat-com.gif) A 3D render of the AT32UC3L, an Atmel AVR AT32 microcontroller. Image from http://teckhat.com/.[/caption]
+[caption id="attachment_12448" align="aligncenter" width="259"][![A 3D render of the AT32UC3L, an Atmel AVR AT32 microcontroller. Image from http://teckhat.com/.](/images/2011/09/atmel-avr-at32-3d-render-of-ic-www-teckhat-com.gif)
+](/images/2011/09/atmel-avr-at32-3d-render-of-ic-www-teckhat-com.gif) A 3D render of the AT32UC3L, an Atmel AVR AT32 microcontroller. Image from http://teckhat.com/.[/caption]
 
 Because of their large pin count, AT32 microcontrollers normally in high-density packages such as QFN and BGA.
 

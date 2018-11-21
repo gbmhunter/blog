@@ -26,8 +26,8 @@ Happy new year to all!
 
 
 
-[caption id="attachment_9401" align="aligncenter" width="693"][![Happy new year! Image from www.freechristmaswallpapers.net.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/happy-new-year-2015.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/01/happy-new-year-2015.jpg) Happy new year! Image from www.freechristmaswallpapers.net.[/caption]
+[caption id="attachment_9401" align="aligncenter" width="693"][![Happy new year! Image from www.freechristmaswallpapers.net.](/images/2015/01/happy-new-year-2015.jpg)
+](/images/2015/01/happy-new-year-2015.jpg) Happy new year! Image from www.freechristmaswallpapers.net.[/caption]
 
 
 
@@ -68,8 +68,8 @@ And here is a screenshot of the number of visitors by month up to Jan 2015 since
 
 
 
-[caption id="attachment_9400" align="aligncenter" width="608"][![Num. of visitors to mbedded.ninja by month to January 2015.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/mbedded-ninja-visitor-stats-by-month-to-jan-2015.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/01/mbedded-ninja-visitor-stats-by-month-to-jan-2015.png) Num. of visitors to mbedded.ninja by month to January 2015.[/caption]
+[caption id="attachment_9400" align="aligncenter" width="608"][![Num. of visitors to mbedded.ninja by month to January 2015.](/images/2015/01/mbedded-ninja-visitor-stats-by-month-to-jan-2015.png)
+](/images/2015/01/mbedded-ninja-visitor-stats-by-month-to-jan-2015.png) Num. of visitors to mbedded.ninja by month to January 2015.[/caption]
 
 
 

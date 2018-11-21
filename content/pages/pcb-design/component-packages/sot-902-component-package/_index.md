@@ -154,8 +154,8 @@ NXP seems to be the only manufacturer who uses this package.
 # Photos
 
 
-[caption id="attachment_11367" align="aligncenter" width="150"][![A photo of the SOT-902 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sot-902-component-package-photo.gif)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sot-902-component-package-photo.gif) A photo of the SOT-902 component package.[/caption]
+[caption id="attachment_11367" align="aligncenter" width="150"][![A photo of the SOT-902 component package.](/images/2015/04/sot-902-component-package-photo.gif)
+](/images/2015/04/sot-902-component-package-photo.gif) A photo of the SOT-902 component package.[/caption]
 
 
 # Other Images

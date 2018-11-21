@@ -16,8 +16,8 @@ Futures and promises are a way of dealing with asynchronous events in a multi-th
 
 
 
-[caption id="attachment_14850" align="aligncenter" width="211"][![](http://blog.mbedded.ninja/wp-content/uploads/2015/04/futures-and-promises-cpp-icon.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/futures-and-promises-cpp-icon.png) Icon for futures and promises.[/caption]
+[caption id="attachment_14850" align="aligncenter" width="211"][![](/images/2015/04/futures-and-promises-cpp-icon.png)
+](/images/2015/04/futures-and-promises-cpp-icon.png) Icon for futures and promises.[/caption]
 
 
 

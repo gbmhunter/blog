@@ -145,8 +145,8 @@ Exclusively used by NXP for some of their RFID inlays. I'm not sure why they lab
 # 3D Renders
 
 
-[caption id="attachment_11336" align="aligncenter" width="160"][![A 3D render of the SOT-1040-1 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sot-1040-1-component-package-3d-render.gif)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sot-1040-1-component-package-3d-render.gif) A 3D render of the SOT-1040-1 component package.[/caption]
+[caption id="attachment_11336" align="aligncenter" width="160"][![A 3D render of the SOT-1040-1 component package.](/images/2015/04/sot-1040-1-component-package-3d-render.gif)
+](/images/2015/04/sot-1040-1-component-package-3d-render.gif) A 3D render of the SOT-1040-1 component package.[/caption]
 
 
 # Images

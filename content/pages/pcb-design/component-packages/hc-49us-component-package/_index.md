@@ -154,8 +154,8 @@ Common footprint for larger SMD crystals. Internal circuitry is shielded by meta
 # Photos
 
 
-[caption id="attachment_11265" align="aligncenter" width="339"][![A photo of the HC-49US component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/hc-49us-component-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/hc-49us-component-package-photo.jpg) A photo of the HC-49/US component package.[/caption]
+[caption id="attachment_11265" align="aligncenter" width="339"][![A photo of the HC-49US component package.](/images/2015/04/hc-49us-component-package-photo.jpg)
+](/images/2015/04/hc-49us-component-package-photo.jpg) A photo of the HC-49/US component package.[/caption]
 
 
 # Images

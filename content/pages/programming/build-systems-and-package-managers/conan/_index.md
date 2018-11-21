@@ -17,8 +17,8 @@ Conan is a package manager, primarily designed for C or C++ packages.
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2018/04/conan-package-manager-logo-with-text.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/04/conan-package-manager-logo-with-text.png)
+[![](/images/2018/04/conan-package-manager-logo-with-text.png)
+](/images/2018/04/conan-package-manager-logo-with-text.png)
 
 
 

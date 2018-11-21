@@ -140,5 +140,5 @@ An ultra-thin QFN package. Commonly used for packaging 4 or 5 [TVSdiodes](htt
 # 3D Renders
 
 
-[caption id="attachment_11429" align="aligncenter" width="313"][![A 3D render of the UQFN-28 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/uqfn-28-component-package-3d-render.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/uqfn-28-component-package-3d-render.jpg) A 3D render of the UQFN-28 component package.[/caption]
+[caption id="attachment_11429" align="aligncenter" width="313"][![A 3D render of the UQFN-28 component package.](/images/2015/04/uqfn-28-component-package-3d-render.jpg)
+](/images/2015/04/uqfn-28-component-package-3d-render.jpg) A 3D render of the UQFN-28 component package.[/caption]

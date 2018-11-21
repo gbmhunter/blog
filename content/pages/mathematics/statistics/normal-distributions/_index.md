@@ -35,8 +35,8 @@ where:
 
 
 
-[caption id="attachment_15620" align="aligncenter" width="488"][![](http://blog.mbedded.ninja/wp-content/uploads/2018/09/normal-distribution-pdf-examples-300x225.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/09/normal-distribution-pdf-examples.png) A few example probability density functions (PDFs) for the normal distribution.[/caption]
+[caption id="attachment_15620" align="aligncenter" width="488"][![](/images/2018/09/normal-distribution-pdf-examples-300x225.png)
+](/images/2018/09/normal-distribution-pdf-examples.png) A few example probability density functions (PDFs) for the normal distribution.[/caption]
 
 
 

@@ -22,8 +22,8 @@ Happy new year for 2018!
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2018/01/happy-new-year-2018.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/01/happy-new-year-2018.jpg)
+[![](/images/2018/01/happy-new-year-2018.jpg)
+](/images/2018/01/happy-new-year-2018.jpg)
 
 
 
@@ -163,8 +163,8 @@ Happy new year for 2018!
 
 
 
-[caption id="attachment_15257" align="aligncenter" width="250"][![](http://blog.mbedded.ninja/wp-content/uploads/2018/01/mbedded-ninja-2017-statistics-visitors-by-country.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/01/mbedded-ninja-2017-statistics-visitors-by-country.png) The number of visitors to blog.mbedded.ninja in the year 2017, sorted by country.[/caption]
+[caption id="attachment_15257" align="aligncenter" width="250"][![](/images/2018/01/mbedded-ninja-2017-statistics-visitors-by-country.png)
+](/images/2018/01/mbedded-ninja-2017-statistics-visitors-by-country.png) The number of visitors to blog.mbedded.ninja in the year 2017, sorted by country.[/caption]
 
 
 
@@ -172,8 +172,8 @@ I think the biggest reason for the drop in visits (down 40%) in 2017 was due to 
 
 
 
-[caption id="attachment_15253" align="aligncenter" width="1716"][![](http://blog.mbedded.ninja/wp-content/uploads/2018/01/mbedded-ninja-visitor-stats-2017-screenshot-annotated.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/01/mbedded-ninja-visitor-stats-2017-screenshot-annotated.png) Visitor stats for mbedded.ninja in 2017, highlighting the drop in visits when the blog was moved from www.mbedded.ninja to blog.mbedded.ninja in March 2017.[/caption]
+[caption id="attachment_15253" align="aligncenter" width="1716"][![](/images/2018/01/mbedded-ninja-visitor-stats-2017-screenshot-annotated.png)
+](/images/2018/01/mbedded-ninja-visitor-stats-2017-screenshot-annotated.png) Visitor stats for mbedded.ninja in 2017, highlighting the drop in visits when the blog was moved from www.mbedded.ninja to blog.mbedded.ninja in March 2017.[/caption]
 
 
 

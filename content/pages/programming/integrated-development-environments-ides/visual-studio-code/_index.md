@@ -16,8 +16,8 @@ Visual Studio Code is a free, multi-platform, open-source code editor from Micro
 
 
 
-[caption id="attachment_15056" align="aligncenter" width="272"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/11/visual-studio-code-icon-large.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/11/visual-studio-code-icon-large.png) The icon for Microsoft's Visual Studio Code.[/caption]
+[caption id="attachment_15056" align="aligncenter" width="272"][![](/images/2017/11/visual-studio-code-icon-large.png)
+](/images/2017/11/visual-studio-code-icon-large.png) The icon for Microsoft's Visual Studio Code.[/caption]
 
 
 

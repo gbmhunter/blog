@@ -57,8 +57,8 @@ It is recommended to charge a lead-acid at C/10 or less. There are three differe
 
 Non-repetitive charging of lead-acids allows you to charge it to a higher voltage than with repetitive charging (float charging). The battery can be charged to 2.4V per cell. Charging should be terminated when the current (in Amps) drops to 0.02C (where C is the Amp-hour rating of the battery, but to all those concerned that the unit don't match up, ignore the hour bit when doing this calculation).
 
-[caption id="attachment_13643" align="aligncenter" width="1200"][![Monitoring the voltage and current is important while charging a lead-acid battery.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/lead-acid-charging-showing-voltage-and-current.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/lead-acid-charging-showing-voltage-and-current.jpg) Monitoring the voltage and current is important while charging a lead-acid battery.[/caption]
+[caption id="attachment_13643" align="aligncenter" width="1200"][![Monitoring the voltage and current is important while charging a lead-acid battery.](/images/2011/09/lead-acid-charging-showing-voltage-and-current.jpg)
+](/images/2011/09/lead-acid-charging-showing-voltage-and-current.jpg) Monitoring the voltage and current is important while charging a lead-acid battery.[/caption]
 
 The table below shows a list of common lead-acid battery voltages and the voltage you should charge them to, based on a charge voltage 2.4V per cell and an ambient temperature of 25C.
 
@@ -74,8 +74,8 @@ The table below shows a list of common lead-acid battery voltages and the voltag
 <td >12.0
 </td>
 <td >14.4
-</td></tr></tbody></table>[caption id="attachment_13645" align="aligncenter" width="1200"][![Charging a 12V, 6Ah lead-acid battery with a variable-voltage power supply.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/charging-a-lead-acid.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/charging-a-lead-acid.jpg) Charging a 12V, 6Ah lead-acid battery with a variable-voltage power supply.[/caption]
+</td></tr></tbody></table>[caption id="attachment_13645" align="aligncenter" width="1200"][![Charging a 12V, 6Ah lead-acid battery with a variable-voltage power supply.](/images/2011/09/charging-a-lead-acid.jpg)
+](/images/2011/09/charging-a-lead-acid.jpg) Charging a 12V, 6Ah lead-acid battery with a variable-voltage power supply.[/caption]
 
 ## Float Charging
 

@@ -11,8 +11,8 @@ url: /pcb-design/impedance-controlled-routing
 
 # Overview
 
-[caption id="attachment_12305" align="aligncenter" width="316"][![An isometric diagram of a microstrip. Image from www.maximintegrated.com.](http://blog.mbedded.ninja/wp-content/uploads/2013/10/microstrip-track-example-in-isometric-view-microchip.gif)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/10/microstrip-track-example-in-isometric-view-microchip.gif) An isometric diagram of a microstrip. Image from www.maximintegrated.com.[/caption]
+[caption id="attachment_12305" align="aligncenter" width="316"][![An isometric diagram of a microstrip. Image from www.maximintegrated.com.](/images/2013/10/microstrip-track-example-in-isometric-view-microchip.gif)
+](/images/2013/10/microstrip-track-example-in-isometric-view-microchip.gif) An isometric diagram of a microstrip. Image from www.maximintegrated.com.[/caption]
 
 # Child Pages
 
@@ -79,8 +79,8 @@ Thus, the minimum wavelength of the USB full-speed signal is 1.65m, and the char
 
 Co-planaer waveguides (CPW) are a third alternative to microstrips and striplines for controlling the impedance of a circuitboard trace. There are two variants, the basic _co-planar waveguide_ and the _co-planar waveguide with ground_. The main advantage of a co-planar waveguide is that it **does not require a solid power plane** above or below it, making it a more flexible choice for layer and space constrained PCBs.
 
-[caption id="attachment_12760" align="aligncenter" width="490"][![A co-planer waveguide for a GSM antenna feed-line. The co-planar waveguide is the curved track that starts at E1. The three 0402 components are for a impedance matching circuit.](http://blog.mbedded.ninja/wp-content/uploads/2013/10/coplanaer-waveguide-for-gsm-antenna.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/10/coplanaer-waveguide-for-gsm-antenna.png) A co-planer waveguide for a GSM antenna feed-line. The co-planar waveguide is the curved track that starts at E1. The three 0402 components are for a impedance matching circuit.[/caption]
+[caption id="attachment_12760" align="aligncenter" width="490"][![A co-planer waveguide for a GSM antenna feed-line. The co-planar waveguide is the curved track that starts at E1. The three 0402 components are for a impedance matching circuit.](/images/2013/10/coplanaer-waveguide-for-gsm-antenna.png)
+](/images/2013/10/coplanaer-waveguide-for-gsm-antenna.png) A co-planer waveguide for a GSM antenna feed-line. The co-planar waveguide is the curved track that starts at E1. The three 0402 components are for a impedance matching circuit.[/caption]
 
 Although you can't see it in the image above, there is a ground plane underneath the CPW (there are two internal layers between the visible top layer (red) and bottom layer (blue)).
 

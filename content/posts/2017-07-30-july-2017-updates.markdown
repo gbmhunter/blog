@@ -26,8 +26,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2017/07/algorithms-data-structures-icon.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/07/algorithms-data-structures-icon.png)
+[![](/images/2017/07/algorithms-data-structures-icon.png)
+](/images/2017/07/algorithms-data-structures-icon.png)
 
 
 
@@ -36,8 +36,8 @@ tags:
 
    
 
-[caption id="attachment_14610" align="aligncenter" width="202"][![](http://blog.mbedded.ninja/wp-content/uploads/2012/12/can-bus-logo-bosch.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/12/can-bus-logo-bosch.png) The CAN bus logo. Image from www.bosch.com.[/caption]
+[caption id="attachment_14610" align="aligncenter" width="202"][![](/images/2012/12/can-bus-logo-bosch.png)
+](/images/2012/12/can-bus-logo-bosch.png) The CAN bus logo. Image from www.bosch.com.[/caption]
 
 	  * New High-Level Data Link Control page under Electronics->Communication Protocols.  
 
@@ -45,8 +45,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2017/07/high-level-data-link-control-icon.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/07/high-level-data-link-control-icon.png)
+[![](/images/2017/07/high-level-data-link-control-icon.png)
+](/images/2017/07/high-level-data-link-control-icon.png)
 
 
 
@@ -57,8 +57,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2013/08/altium-designer-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/08/altium-designer-logo.png)
+[![](/images/2013/08/altium-designer-logo.png)
+](/images/2013/08/altium-designer-logo.png)
 
 
 

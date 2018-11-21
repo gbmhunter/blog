@@ -63,5 +63,5 @@ url: /pcb-design/component-packages/pp9-component-package
 
 A less common 9V battery size. Zinc carbon 9V batteries come in this package.
 
-[caption id="attachment_12406" align="aligncenter" width="279"][![A 9V battery in the PP9 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/10/pp9-component-package-9v-eveready-silver-battery.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/10/pp9-component-package-9v-eveready-silver-battery.jpg) A 9V battery in the PP9 component package.[/caption]
+[caption id="attachment_12406" align="aligncenter" width="279"][![A 9V battery in the PP9 component package.](/images/2015/10/pp9-component-package-9v-eveready-silver-battery.jpg)
+](/images/2015/10/pp9-component-package-9v-eveready-silver-battery.jpg) A 9V battery in the PP9 component package.[/caption]

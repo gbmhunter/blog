@@ -17,8 +17,8 @@ The Linux program apt (Advanced Package Tool) is a collection of tools for manag
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2018/02/sudo-apt-install-icon.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/02/sudo-apt-install-icon.png)
+[![](/images/2018/02/sudo-apt-install-icon.png)
+](/images/2018/02/sudo-apt-install-icon.png)
 
 
 

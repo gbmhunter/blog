@@ -33,8 +33,8 @@ Given two points in latitude/longitude form (both degrees and radians supported)
 
 
 
-[caption id="attachment_15338" align="aligncenter" width="450"][![](http://blog.mbedded.ninja/wp-content/uploads/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png) A screenshot of the "Two Coordinate Geodesics" calculator in NinjaCalc.[/caption]
+[caption id="attachment_15338" align="aligncenter" width="450"][![](/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png)
+](/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png) A screenshot of the "Two Coordinate Geodesics" calculator in NinjaCalc.[/caption]
 
 
 

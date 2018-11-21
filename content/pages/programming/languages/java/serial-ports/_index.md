@@ -36,8 +36,8 @@ It can be added to your project with the following Maven code:
 
 Just look at their fine example of a website...
 
-[caption id="attachment_13633" align="aligncenter" width="1313"][![A screenshot of RXTX's (a Java comm port library) front page on their website. Dear god.](http://blog.mbedded.ninja/wp-content/uploads/2016/07/screenshot-java-serial-rxtx-website-front-page.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/07/screenshot-java-serial-rxtx-website-front-page.png) A screenshot of RXTX's (a Java comm port library) front page on their website. Dear god.[/caption]
+[caption id="attachment_13633" align="aligncenter" width="1313"][![A screenshot of RXTX's (a Java comm port library) front page on their website. Dear god.](/images/2016/07/screenshot-java-serial-rxtx-website-front-page.png)
+](/images/2016/07/screenshot-java-serial-rxtx-website-front-page.png) A screenshot of RXTX's (a Java comm port library) front page on their website. Dear god.[/caption]
 
 I hope you could tell I was being sarcastic.
 

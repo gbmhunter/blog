@@ -552,8 +552,8 @@ It can view and send binary, hex, ASCII, ANSI, integers (both signed and unsigne
 
 
 
-[caption id="attachment_13662" align="aligncenter" width="620"][![A screenshot of RealTerm in action.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/realterm-window.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/realterm-window.jpg) A screenshot of RealTerm in action.[/caption]
+[caption id="attachment_13662" align="aligncenter" width="620"][![A screenshot of RealTerm in action.](/images/2011/09/realterm-window.jpg)
+](/images/2011/09/realterm-window.jpg) A screenshot of RealTerm in action.[/caption]
 
 
 
@@ -576,8 +576,8 @@ A simple and tidy Windows terminal program. Personally, it doesn't get the same 
 
 
 
-[caption id="attachment_13663" align="aligncenter" width="800"][![A screenshot of "Terminal by Br@y" in action.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/terminal-v1-9b-by-bray-window.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/terminal-v1-9b-by-bray-window.jpg) A screenshot of "Terminal by Br@y" in action.[/caption]
+[caption id="attachment_13663" align="aligncenter" width="800"][![A screenshot of "Terminal by Br@y" in action.](/images/2011/09/terminal-v1-9b-by-bray-window.jpg)
+](/images/2011/09/terminal-v1-9b-by-bray-window.jpg) A screenshot of "Terminal by Br@y" in action.[/caption]
 
 
 
@@ -606,8 +606,8 @@ If your running windows, PuTTY is a very handy application to have if you want t
 
 
 
-[caption id="attachment_13659" align="aligncenter" width="831"][![A screenshot of the PuTTy application in action, along with the settings window.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/putty-terminal-screenshot-with-settings-window.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/putty-terminal-screenshot-with-settings-window.png) A screenshot of the PuTTy application in action, along with the settings window.[/caption]
+[caption id="attachment_13659" align="aligncenter" width="831"][![A screenshot of the PuTTy application in action, along with the settings window.](/images/2011/09/putty-terminal-screenshot-with-settings-window.png)
+](/images/2011/09/putty-terminal-screenshot-with-settings-window.png) A screenshot of the PuTTy application in action, along with the settings window.[/caption]
 
 
 
@@ -615,8 +615,8 @@ I have discovered one bug in PuTTY...if it receives a large number of characters
 
 
 
-[caption id="attachment_13658" align="aligncenter" width="699"][![PuTTY can freeze when printing a large number of random characters to it across a COM port.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/putty-bug-when-receiving-large-num-of-chars.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/putty-bug-when-receiving-large-num-of-chars.png) PuTTY can freeze when printing a large number of random characters to it across a COM port.[/caption]
+[caption id="attachment_13658" align="aligncenter" width="699"][![PuTTY can freeze when printing a large number of random characters to it across a COM port.](/images/2011/09/putty-bug-when-receiving-large-num-of-chars.png)
+](/images/2011/09/putty-bug-when-receiving-large-num-of-chars.png) PuTTY can freeze when printing a large number of random characters to it across a COM port.[/caption]
 
 
 
@@ -710,8 +710,8 @@ There are occasions when you want or need to send serial data between two pieces
 
 
 
-[caption id="attachment_13665" align="aligncenter" width="931"][![Testing a physical serial-port bridge, made by connecting two FTDI cable together.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/testing-a-physical-serial-port-bridge.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/testing-a-physical-serial-port-bridge.jpg) Testing a physical serial-port bridge, made by connecting two FTDI cable together.[/caption]
+[caption id="attachment_13665" align="aligncenter" width="931"][![Testing a physical serial-port bridge, made by connecting two FTDI cable together.](/images/2011/09/testing-a-physical-serial-port-bridge.jpg)
+](/images/2011/09/testing-a-physical-serial-port-bridge.jpg) Testing a physical serial-port bridge, made by connecting two FTDI cable together.[/caption]
 
 
 

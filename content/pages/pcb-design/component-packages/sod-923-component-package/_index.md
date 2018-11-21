@@ -64,5 +64,5 @@ url: /pcb-design/component-packages/sod-923-component-package
 
 # 3D Render
 
-[caption id="attachment_12381" align="aligncenter" width="379"][![A 3D render of the SOD-923 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/10/sod-923-component-package-3d-render.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/10/sod-923-component-package-3d-render.jpg) A 3D render of the SOD-923 component package.[/caption]
+[caption id="attachment_12381" align="aligncenter" width="379"][![A 3D render of the SOD-923 component package.](/images/2015/10/sod-923-component-package-3d-render.jpg)
+](/images/2015/10/sod-923-component-package-3d-render.jpg) A 3D render of the SOD-923 component package.[/caption]

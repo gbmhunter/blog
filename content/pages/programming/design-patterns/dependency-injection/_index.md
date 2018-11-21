@@ -17,8 +17,8 @@ Dependency injection is a programming design pattern in where services (dependen
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2014/07/red-syringe.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2014/07/red-syringe.jpg)
+[![](/images/2014/07/red-syringe.jpg)
+](/images/2014/07/red-syringe.jpg)
 
 
 

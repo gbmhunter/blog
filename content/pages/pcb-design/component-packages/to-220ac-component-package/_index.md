@@ -72,12 +72,12 @@ url: /pcb-design/component-packages/to-220ac-component-package
 
 A variant on the TO-220 package with only two leads and the pad (which still means it could have three distinct connections). Use for some high power diodes.
 
-[caption id="attachment_11379" align="aligncenter" width="271"][![A photo of the TO-220AC component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/to-220ac-component-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/to-220ac-component-package-photo.jpg) A photo of the TO-220AC component package.[/caption]
+[caption id="attachment_11379" align="aligncenter" width="271"][![A photo of the TO-220AC component package.](/images/2015/04/to-220ac-component-package-photo.jpg)
+](/images/2015/04/to-220ac-component-package-photo.jpg) A photo of the TO-220AC component package.[/caption]
 
 #  
 
 # Dimensions
 
-[caption id="attachment_13340" align="aligncenter" width="637"][![The dimensions of the TO-220AC component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/to-220ac-component-package-dimensions.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/to-220ac-component-package-dimensions.png) The dimensions of the TO-220AC component package.[/caption]
+[caption id="attachment_13340" align="aligncenter" width="637"][![The dimensions of the TO-220AC component package.](/images/2015/04/to-220ac-component-package-dimensions.png)
+](/images/2015/04/to-220ac-component-package-dimensions.png) The dimensions of the TO-220AC component package.[/caption]

@@ -26,8 +26,8 @@ tags:
 NinjaCalc, a "collection of embedded engineering related calculators", is now a web app (go to [http://ninja-calc.mbedded.ninja/](http://ninja-calc.mbedded.ninja/) to try it out)!
 
 
-[caption id="attachment_14097" align="aligncenter" width="1920"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/03/ninja-calc-v2.2.0-screenshot-calc-selection-page.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/03/ninja-calc-v2.2.0-screenshot-calc-selection-page.png) NinjaCalc is now a web app! A screenshot while selecting a calculator using the new web app at http://ninja-calc.mbedded.ninja/.[/caption]
+[caption id="attachment_14097" align="aligncenter" width="1920"][![](/images/2017/03/ninja-calc-v2.2.0-screenshot-calc-selection-page.png)
+](/images/2017/03/ninja-calc-v2.2.0-screenshot-calc-selection-page.png) NinjaCalc is now a web app! A screenshot while selecting a calculator using the new web app at http://ninja-calc.mbedded.ninja/.[/caption]
 
 
 Up until now NinjaCalc has been a desktop app written in Java (as [NinjaTerm](http://mbedded-ninja.github.io/NinjaTerm/) still is). However, the functionality that NinjaCalc provided had no need to be a installable desktop app, and I had long desired to move it to the easily accessible web.

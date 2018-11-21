@@ -118,8 +118,8 @@ Example output from UnitTest++ when one of the tests fails.
 
 
 
-[caption id="attachment_14137" align="aligncenter" width="961"][![](http://blog.mbedded.ninja/wp-content/uploads/2013/05/example-output-from-unittestpp-when-test-fail.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/05/example-output-from-unittestpp-when-test-fail.png) Example output from UnitTest++ when one of the tests fails.[/caption]
+[caption id="attachment_14137" align="aligncenter" width="961"][![](/images/2013/05/example-output-from-unittestpp-when-test-fail.png)
+](/images/2013/05/example-output-from-unittestpp-when-test-fail.png) Example output from UnitTest++ when one of the tests fails.[/caption]
 
 
 

@@ -140,8 +140,8 @@ Package proprietary to Fairchild Semiconductor, used for some of their motor dri
 # Photos
 
 
-[caption id="attachment_11373" align="aligncenter" width="344"][![A photo of the SPM23 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/spm23-component-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/spm23-component-package-photo.jpg) A photo of the SPM23 component package.[/caption]
+[caption id="attachment_11373" align="aligncenter" width="344"][![A photo of the SPM23 component package.](/images/2015/04/spm23-component-package-photo.jpg)
+](/images/2015/04/spm23-component-package-photo.jpg) A photo of the SPM23 component package.[/caption]
 
 
 # Images

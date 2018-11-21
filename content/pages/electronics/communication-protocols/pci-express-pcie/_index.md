@@ -87,8 +87,8 @@ PCI devices have a set of registers referred to as the _configuration space_, an
 
 The configuration space is a standardised section of memory on PCIe cards that allows PCIe cards to configure correctly.
 
-[caption id="attachment_13079" align="aligncenter" width="624"][![The standardised registers that belong to the PCI/PCIe Type 0 (non-bridge) configuration space. Image from https://en.wikipedia.org.](http://blog.mbedded.ninja/wp-content/uploads/2015/02/pci-type-0-non-bridge-config-space-diagram-v2.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/02/pci-type-0-non-bridge-config-space-diagram-v2.png) The standardised registers that belong to the PCI/PCIe Type 0 (non-bridge) configuration space. Image from https://en.wikipedia.org.[/caption]
+[caption id="attachment_13079" align="aligncenter" width="624"][![The standardised registers that belong to the PCI/PCIe Type 0 (non-bridge) configuration space. Image from https://en.wikipedia.org.](/images/2015/02/pci-type-0-non-bridge-config-space-diagram-v2.png)
+](/images/2015/02/pci-type-0-non-bridge-config-space-diagram-v2.png) The standardised registers that belong to the PCI/PCIe Type 0 (non-bridge) configuration space. Image from https://en.wikipedia.org.[/caption]
 
 # What Are BARs?
 
@@ -114,13 +114,13 @@ The way to detect and explore the PCIe device depends on the OS that the compute
 
 The built-in Device Manager gives a very brief overview of detected PCI cards.
 
-[caption id="attachment_13075" align="aligncenter" width="341"][![A screenshot of Windows Device Manager showing the presence of a custom PCIe card.](http://blog.mbedded.ninja/wp-content/uploads/2015/02/screenshot-of-custom-pcie-card-in-device-manager.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/02/screenshot-of-custom-pcie-card-in-device-manager.png) A screenshot of Windows Device Manager showing the presence of a custom PCIe card.[/caption]
+[caption id="attachment_13075" align="aligncenter" width="341"][![A screenshot of Windows Device Manager showing the presence of a custom PCIe card.](/images/2015/02/screenshot-of-custom-pcie-card-in-device-manager.png)
+](/images/2015/02/screenshot-of-custom-pcie-card-in-device-manager.png) A screenshot of Windows Device Manager showing the presence of a custom PCIe card.[/caption]
 
 RWEverything is a great Windows tool that allows you to read and write from any available memory location on the PCIe card (not just the configuration memory, as many other tools provide).
 
-[caption id="attachment_13074" align="aligncenter" width="883"][![A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC.](http://blog.mbedded.ninja/wp-content/uploads/2015/02/screenshot-of-custom-pcie-card-in-rw-everything.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/02/screenshot-of-custom-pcie-card-in-rw-everything.png) A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC.[/caption]
+[caption id="attachment_13074" align="aligncenter" width="883"][![A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC.](/images/2015/02/screenshot-of-custom-pcie-card-in-rw-everything.png)
+](/images/2015/02/screenshot-of-custom-pcie-card-in-rw-everything.png) A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC.[/caption]
 
 A note on downloading RWEverything: Many browsers and anti-virus software packages will state that RWEverything is a virus/malware. Chrome doesn't even let you download the file. However, I have used RWEverything many times and not discovered any problems from using the software. I suspect that this program is picked up by anti-virus software because it allows low-level read/write access to the systems memory and peripherals.
 

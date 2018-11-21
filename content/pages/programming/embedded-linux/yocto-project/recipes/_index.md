@@ -185,8 +185,8 @@ Yocto supports patches, which is a way of **modifying third-party code** before 
 
 
 
-[caption id="attachment_14480" align="aligncenter" width="202"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/04/patch-icon-band-aid.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/04/patch-icon-band-aid.png) Patch icon (band-aid).[/caption]
+[caption id="attachment_14480" align="aligncenter" width="202"][![](/images/2017/04/patch-icon-band-aid.png)
+](/images/2017/04/patch-icon-band-aid.png) Patch icon (band-aid).[/caption]
 
 
 

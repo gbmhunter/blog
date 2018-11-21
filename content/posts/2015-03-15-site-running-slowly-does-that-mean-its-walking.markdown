@@ -19,15 +19,15 @@ Load times (for a first-time load) are around a minute! Repeated load times are 
 
 I have installed the [P3 (Plugin Performance Profiler) Wordpress plugin](https://wordpress.org/plugins/p3-profiler/), which should help me identify any issues with the plugins currently running on this site. Yes there are many of them, 51 are currently active. This is what the plugin had to say about things:
 
-[caption id="attachment_9903" align="aligncenter" width="922"][![blog.mbedded.ninja plugin speed test results when using the P3 (plugin performance profiler) plugin.](http://blog.mbedded.ninja/wp-content/uploads/2015/03/mbedded-ninja-plugin-speed-test-results.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/03/mbedded-ninja-plugin-speed-test-results.png) blog.mbedded.ninja plugin speed test results when using the P3 (plugin performance profiler) plugin.[/caption]
+[caption id="attachment_9903" align="aligncenter" width="922"][![blog.mbedded.ninja plugin speed test results when using the P3 (plugin performance profiler) plugin.](/images/2015/03/mbedded-ninja-plugin-speed-test-results.png)
+](/images/2015/03/mbedded-ninja-plugin-speed-test-results.png) blog.mbedded.ninja plugin speed test results when using the P3 (plugin performance profiler) plugin.[/caption]
 
 P3 reports that the Discus commenting system is taking the most time. I did a quick Google and found no mention of other users having similar issues with this plugin. Strange.
 
 I also ran the website through [www.webpagetest.org](http://www.webpagetest.org/). Here is a summary of the results:
 
-[caption id="attachment_9904" align="aligncenter" width="1026"][![A summary of the performance test run on blog.mbedded.ninja by www.webpagetest.org.](http://blog.mbedded.ninja/wp-content/uploads/2015/03/mbedded-ninja-webpagetest-org-speed-test-results.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/03/mbedded-ninja-webpagetest-org-speed-test-results.png) A summary of the performance test run on blog.mbedded.ninja by www.webpagetest.org.[/caption]
+[caption id="attachment_9904" align="aligncenter" width="1026"][![A summary of the performance test run on blog.mbedded.ninja by www.webpagetest.org.](/images/2015/03/mbedded-ninja-webpagetest-org-speed-test-results.png)
+](/images/2015/03/mbedded-ninja-webpagetest-org-speed-test-results.png) A summary of the performance test run on blog.mbedded.ninja by www.webpagetest.org.[/caption]
 
 Other things I'm suspicious about:
 

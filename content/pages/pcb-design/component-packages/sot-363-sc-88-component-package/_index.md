@@ -71,22 +71,22 @@ SOT-363 is used for smaller SMD transistors and MOSFET's. It has a lead-pitch ha
 
 # Dimensions
 
-[caption id="attachment_12666" align="aligncenter" width="917"][![The dimensions of the SOT-363 component package. Image from http://www.diodes.com/.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sot-363-component-package-dimensions-diodes-inc.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sot-363-component-package-dimensions-diodes-inc.png) The dimensions of the SOT-363 component package. Image from http://www.diodes.com/.[/caption]
+[caption id="attachment_12666" align="aligncenter" width="917"][![The dimensions of the SOT-363 component package. Image from http://www.diodes.com/.](/images/2015/04/sot-363-component-package-dimensions-diodes-inc.png)
+](/images/2015/04/sot-363-component-package-dimensions-diodes-inc.png) The dimensions of the SOT-363 component package. Image from http://www.diodes.com/.[/caption]
 
 # Footprint (Land Pattern)
 
-[caption id="attachment_12667" align="aligncenter" width="885"][![A recommended footprint (land pattern) for the SOT-363 component package. Image from http://www.diodes.com/.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sot-363-component-package-recommended-footprint-land-pattern-diodes-inc.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sot-363-component-package-recommended-footprint-land-pattern-diodes-inc.png) A recommended footprint (land pattern) for the SOT-363 component package. Image from http://www.diodes.com/.[/caption]
+[caption id="attachment_12667" align="aligncenter" width="885"][![A recommended footprint (land pattern) for the SOT-363 component package. Image from http://www.diodes.com/.](/images/2015/04/sot-363-component-package-recommended-footprint-land-pattern-diodes-inc.png)
+](/images/2015/04/sot-363-component-package-recommended-footprint-land-pattern-diodes-inc.png) A recommended footprint (land pattern) for the SOT-363 component package. Image from http://www.diodes.com/.[/caption]
 
 # Polarity
 
 Some components using the SOT-363 package do not require any polarity marking as the pins are rotationally symmetric. This is a common configuration for a two-device MOSFET component, in where the pinout is shown below:
 
-[caption id="attachment_12662" align="aligncenter" width="322"][![Internal schematic of a dual-MOSFET component in a SOT-363 package. Notice it is not polarity sensitive. Image from http://www.diodes.com/.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/dmn63d8ldw-dual-device-mosfet-in-sot-363-component-package-internal-schematic.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/dmn63d8ldw-dual-device-mosfet-in-sot-363-component-package-internal-schematic.png) Internal schematic of a dual-MOSFET component in a SOT-363 package. Notice it is not polarity sensitive. Image from http://www.diodes.com/.[/caption]
+[caption id="attachment_12662" align="aligncenter" width="322"][![Internal schematic of a dual-MOSFET component in a SOT-363 package. Notice it is not polarity sensitive. Image from http://www.diodes.com/.](/images/2015/04/dmn63d8ldw-dual-device-mosfet-in-sot-363-component-package-internal-schematic.png)
+](/images/2015/04/dmn63d8ldw-dual-device-mosfet-in-sot-363-component-package-internal-schematic.png) Internal schematic of a dual-MOSFET component in a SOT-363 package. Notice it is not polarity sensitive. Image from http://www.diodes.com/.[/caption]
 
 # 3D Renders
 
-[caption id="attachment_11349" align="aligncenter" width="412"][![A 3D render of the SOT-363 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sot-363-component-package-3d-render.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sot-363-component-package-3d-render.jpg) A 3D render of the SOT-363 component package.[/caption]
+[caption id="attachment_11349" align="aligncenter" width="412"][![A 3D render of the SOT-363 component package.](/images/2015/04/sot-363-component-package-3d-render.jpg)
+](/images/2015/04/sot-363-component-package-3d-render.jpg) A 3D render of the SOT-363 component package.[/caption]

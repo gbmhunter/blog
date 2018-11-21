@@ -25,8 +25,8 @@ In low-power, battery operated devices, when the battery is running flat, you ne
 
 For it to work, you need to have a single device downstream of the battery which has a shutdown function. Linear regulators are great for this. The image below shows the suicide switch logic to disconnect the load from the battery, until the USB is plugged in.
 
-[caption id="attachment_12182" align="aligncenter" width="1331"][![A circuit schematic of a "suicide switch" powered from a USB port.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/circuit-schematic-suicide-switch-with-usb-powered-lipo-charger.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/circuit-schematic-suicide-switch-with-usb-powered-lipo-charger.png) A circuit schematic of a "suicide switch" powered from a USB port.[/caption]
+[caption id="attachment_12182" align="aligncenter" width="1331"][![A circuit schematic of a "suicide switch" powered from a USB port.](/images/2011/09/circuit-schematic-suicide-switch-with-usb-powered-lipo-charger.png)
+](/images/2011/09/circuit-schematic-suicide-switch-with-usb-powered-lipo-charger.png) A circuit schematic of a "suicide switch" powered from a USB port.[/caption]
 
 The microcontroller disconnects the load (which includes itself) by pulling the SHUTDOWN pin low until the RC circuit discharges (about 4s). The only load on the battery is the shutdown current on the linear regulator, which is very low. As soon as the USB is plugged in, SHUTDOWN once again goes high, which enables the load, turns the microcontroller on, which takes over control of pulling the line high until such a time to disconnect again.
 
@@ -61,5 +61,5 @@ where:
 
 The [Texas Instruments INA226](http://www.ti.com/product/ina226) is an example of a voltage/current and power monitoring IC. It relies on an external high or low-side current-sense resistor. It is controlled via I2C. 
 
-[caption id="attachment_12189" align="aligncenter" width="878"][![The internal diagram (with some external filtering circuitry) of the INA226 voltage/current/power monitoring IC. Image from http://www.ti.com/.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/ina226-power-monitor-ic-internal-diagram-with-external-filtering.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/ina226-power-monitor-ic-internal-diagram-with-external-filtering.png) The internal diagram (with some external filtering circuitry) of the INA226 voltage/current/power monitoring IC. Image from http://www.ti.com/.[/caption]
+[caption id="attachment_12189" align="aligncenter" width="878"][![The internal diagram (with some external filtering circuitry) of the INA226 voltage/current/power monitoring IC. Image from http://www.ti.com/.](/images/2011/09/ina226-power-monitor-ic-internal-diagram-with-external-filtering.png)
+](/images/2011/09/ina226-power-monitor-ic-internal-diagram-with-external-filtering.png) The internal diagram (with some external filtering circuitry) of the INA226 voltage/current/power monitoring IC. Image from http://www.ti.com/.[/caption]

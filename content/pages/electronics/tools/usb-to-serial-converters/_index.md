@@ -19,13 +19,13 @@ As of 2016, their IC's are commonly found in good quality USB-to-serial hardware
 
 USB-to-Serial converters introduce a fair bit of delays into serial communications. and depending on your latency requirements, this may effect your design.
 
-[caption id="attachment_13669" align="aligncenter" width="752"][![The conditions which will cause an FTDI IC to send received serial data to the computer. Especially notice the 16ms "latency timer". Image from "FTDI - AN232B-04 - Data Throughput. Latency and Handshaking".](http://blog.mbedded.ninja/wp-content/uploads/2016/07/ftdi-ic-send-serial-data-conditions-annotated.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/07/ftdi-ic-send-serial-data-conditions-annotated.png) The conditions which will cause an FTDI IC to send received serial data to the computer. Especially notice the 16ms "latency timer". Image from "FTDI - AN232B-04 - Data Throughput. Latency and Handshaking".[/caption]
+[caption id="attachment_13669" align="aligncenter" width="752"][![The conditions which will cause an FTDI IC to send received serial data to the computer. Especially notice the 16ms "latency timer". Image from "FTDI - AN232B-04 - Data Throughput. Latency and Handshaking".](/images/2016/07/ftdi-ic-send-serial-data-conditions-annotated.png)
+](/images/2016/07/ftdi-ic-send-serial-data-conditions-annotated.png) The conditions which will cause an FTDI IC to send received serial data to the computer. Especially notice the 16ms "latency timer". Image from "FTDI - AN232B-04 - Data Throughput. Latency and Handshaking".[/caption]
 
 The below image is a screenshot of FTDI RX/TX data captured with a logic analyser. The computer was running Java code which sent an 0x02 response as soon as it received an 0x01 byte.
 
-[caption id="attachment_13674" align="aligncenter" width="759"][![FTDI RX and TX data captured by a logic analyser, with the computer running Java code which responds to 0x01 with 0x02. The "latency timer" on the FTDI IC has been reduced to 1ms, which gives a much  faster response time from the computer (about 1.5ms delay).](http://blog.mbedded.ninja/wp-content/uploads/2016/07/screenshot-fast-computer-response-ftdi-java-set-latency-timer.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/07/screenshot-fast-computer-response-ftdi-java-set-latency-timer.png) FTDI RX and TX data captured by a logic analyser, with the computer running Java code which responds to 0x01 with 0x02. The "latency timer" on the FTDI IC has been reduced to 1ms, which gives a much faster response time from the computer (about 1.5ms delay).[/caption]
+[caption id="attachment_13674" align="aligncenter" width="759"][![FTDI RX and TX data captured by a logic analyser, with the computer running Java code which responds to 0x01 with 0x02. The "latency timer" on the FTDI IC has been reduced to 1ms, which gives a much  faster response time from the computer (about 1.5ms delay).](/images/2016/07/screenshot-fast-computer-response-ftdi-java-set-latency-timer.png)
+](/images/2016/07/screenshot-fast-computer-response-ftdi-java-set-latency-timer.png) FTDI RX and TX data captured by a logic analyser, with the computer running Java code which responds to 0x01 with 0x02. The "latency timer" on the FTDI IC has been reduced to 1ms, which gives a much faster response time from the computer (about 1.5ms delay).[/caption]
 
 ## Drivers
 

@@ -11,15 +11,15 @@ url: /programming/compilers/mplab-xc-compilers
 
 The MPLAB XC compilers are a range of compilers built by Microchip, which **compile C/C++ source code for 8, 16 and 32-bit PIC microcontrollers**, as well as the dsPIC DSCs.
 
-[caption id="attachment_13511" align="aligncenter" width="282"][![The logo for the range of MPLAB XC compilers. Image from http://www.microchip.com/.](http://blog.mbedded.ninja/wp-content/uploads/2016/06/mplab-xc-compiler-microchip-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/06/mplab-xc-compiler-microchip-logo.png) The logo for the range of MPLAB XC compilers. Image from http://www.microchip.com/.[/caption]
+[caption id="attachment_13511" align="aligncenter" width="282"][![The logo for the range of MPLAB XC compilers. Image from http://www.microchip.com/.](/images/2016/06/mplab-xc-compiler-microchip-logo.png)
+](/images/2016/06/mplab-xc-compiler-microchip-logo.png) The logo for the range of MPLAB XC compilers. Image from http://www.microchip.com/.[/caption]
 
 # Licensing
 
 The _Free_ versions of the MPLAB XC compilers allow for limited optimisation (both in w.r.t. size and speed). The _Standard_ and _Pro_ versions allow for increased optimisation levels.
 
-[caption id="attachment_13514" align="aligncenter" width="540"][![Build status output from the free version of the MPLAB XC compiler.](http://blog.mbedded.ninja/wp-content/uploads/2016/06/mplab-xc-compiler-build-status-output-memory-summary-licensing.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/06/mplab-xc-compiler-build-status-output-memory-summary-licensing.png) Build status output from the free version of the MPLAB XC compiler.[/caption]
+[caption id="attachment_13514" align="aligncenter" width="540"][![Build status output from the free version of the MPLAB XC compiler.](/images/2016/06/mplab-xc-compiler-build-status-output-memory-summary-licensing.png)
+](/images/2016/06/mplab-xc-compiler-build-status-output-memory-summary-licensing.png) Build status output from the free version of the MPLAB XC compiler.[/caption]
 
 # MPLAB X IDE Integration
 
@@ -29,8 +29,8 @@ The MPLAB XC compilers are designed to be used with the MPLAB X IDE, also provid
 
 Delays are provided by the compiler/library through the __delay_us() and __delay_ms() functions.
 
-[caption id="attachment_13525" align="aligncenter" width="719"][![A screenshot of the built-in delay functions provided in the PIC microcontroller libraries. This screenshot was taken from pic18.h.](http://blog.mbedded.ninja/wp-content/uploads/2016/06/built-in-pic-microcontroller-delay-functions.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/06/built-in-pic-microcontroller-delay-functions.png) A screenshot of the built-in delay functions provided in the PIC microcontroller libraries. This screenshot was taken from pic18.h.[/caption]
+[caption id="attachment_13525" align="aligncenter" width="719"][![A screenshot of the built-in delay functions provided in the PIC microcontroller libraries. This screenshot was taken from pic18.h.](/images/2016/06/built-in-pic-microcontroller-delay-functions.png)
+](/images/2016/06/built-in-pic-microcontroller-delay-functions.png) A screenshot of the built-in delay functions provided in the PIC microcontroller libraries. This screenshot was taken from pic18.h.[/caption]
 
 Note that you have to manually define the macro _XTAL_FREQ correctly before you can use these delays.
 

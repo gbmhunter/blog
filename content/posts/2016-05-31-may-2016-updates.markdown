@@ -23,15 +23,15 @@ tags:
 
   * The TVS diode content from the [Diodes page](http://blog.mbedded.ninja/electronics/components/diodes) was moved to it's own [child page](http://blog.mbedded.ninja/electronics/components/diodes/tvs-diodes). Info on low-capacitance TVS diodes added to this page.  
   
-[caption id="attachment_13370" align="aligncenter" width="454"][![The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component.](http://blog.mbedded.ninja/wp-content/uploads/2016/05/internal-schematic-of-low-capacitance-tvs-diode-annotated.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/05/internal-schematic-of-low-capacitance-tvs-diode-annotated.png) The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component.[/caption]  
+[caption id="attachment_13370" align="aligncenter" width="454"][![The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component.](/images/2016/05/internal-schematic-of-low-capacitance-tvs-diode-annotated.png)
+](/images/2016/05/internal-schematic-of-low-capacitance-tvs-diode-annotated.png) The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component.[/caption]  
   
   * Added sections to the [PTC Type Thermistor page](http://blog.mbedded.ninja/electronics/components/circuit-protection/ptc-type-thermistor) about [PTC Thermistors vs. Fuses](http://blog.mbedded.ninja/electronics/components/circuit-protection/ptc-type-thermistor#ptc-thermistors-vs-fuses) and [How To Calculate The Triggered Resistance](http://blog.mbedded.ninja/electronics/components/circuit-protection/ptc-type-thermistor#how-to-calculate-the-triggered-resistance).  
   
-[caption id="attachment_13004" align="aligncenter" width="402"][![Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor.](http://blog.mbedded.ninja/wp-content/uploads/2016/03/positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/03/positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png) Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor.[/caption]  
+[caption id="attachment_13004" align="aligncenter" width="402"][![Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor.](/images/2016/03/positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png)
+](/images/2016/03/positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png) Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor.[/caption]  
   
   * New [Voltage-To-Current Converters page](http://blog.mbedded.ninja/electronics/circuit-design/voltage-to-current-converters) under Electronics->Circuit Design.  
   
-[caption id="attachment_13455" align="aligncenter" width="492"][![A screenshot of the Howland current-source info on the Voltage-to-Current Converters page.](http://blog.mbedded.ninja/wp-content/uploads/2016/06/screenshot-howland-current-source-info-and-equations.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/06/screenshot-howland-current-source-info-and-equations.png) A screenshot of the Howland current-source info on the Voltage-to-Current Converters page.[/caption]
+[caption id="attachment_13455" align="aligncenter" width="492"][![A screenshot of the Howland current-source info on the Voltage-to-Current Converters page.](/images/2016/06/screenshot-howland-current-source-info-and-equations.png)
+](/images/2016/06/screenshot-howland-current-source-info-and-equations.png) A screenshot of the Howland current-source info on the Voltage-to-Current Converters page.[/caption]

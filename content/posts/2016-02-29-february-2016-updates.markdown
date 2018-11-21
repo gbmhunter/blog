@@ -27,8 +27,8 @@ tags:
   
 
 ](http://blog.mbedded.ninja/electronics/components/sensors/humidity-sensors)
-[caption id="attachment_12984" align="aligncenter" width="637"][![A screenshot of the Magnus equation, which calculates the dew point from the relative humidity and temperature.](http://blog.mbedded.ninja/wp-content/uploads/2016/03/magnus-equation-humidity-temperature-and-dew-point.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/03/magnus-equation-humidity-temperature-and-dew-point.png) A screenshot of the Magnus equation, which calculates the dew point from the relative humidity and temperature.[/caption]
+[caption id="attachment_12984" align="aligncenter" width="637"][![A screenshot of the Magnus equation, which calculates the dew point from the relative humidity and temperature.](/images/2016/03/magnus-equation-humidity-temperature-and-dew-point.png)
+](/images/2016/03/magnus-equation-humidity-temperature-and-dew-point.png) A screenshot of the Magnus equation, which calculates the dew point from the relative humidity and temperature.[/caption]
 [  
 
   
@@ -38,8 +38,8 @@ tags:
 
   
 
-[caption id="attachment_12932" align="aligncenter" width="259"][![The Quantum Leaps QP logo. Image from http://www.state-machine.com/.](http://blog.mbedded.ninja/wp-content/uploads/2016/02/quantum-leaps-qp-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/02/quantum-leaps-qp-logo.png) The Quantum Leaps QP logo. Image from http://www.state-machine.com/.[/caption]
+[caption id="attachment_12932" align="aligncenter" width="259"][![The Quantum Leaps QP logo. Image from http://www.state-machine.com/.](/images/2016/02/quantum-leaps-qp-logo.png)
+](/images/2016/02/quantum-leaps-qp-logo.png) The Quantum Leaps QP logo. Image from http://www.state-machine.com/.[/caption]
   
 
   
@@ -53,8 +53,8 @@ tags:
 
 
 
-[![Sparse binary code done in a "Matrix" style.](http://blog.mbedded.ninja/wp-content/uploads/2016/03/binary-sparse-matrix-style.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/03/binary-sparse-matrix-style.jpg)
+[![Sparse binary code done in a "Matrix" style.](/images/2016/03/binary-sparse-matrix-style.jpg)
+](/images/2016/03/binary-sparse-matrix-style.jpg)
 
 
 

@@ -21,8 +21,8 @@ Flux activity is a measure of the strength/aggressiveness of the flux in it's ab
 
 Rosin fluxes are the oldest types of flux (well, charcoal was first!). Rosin is the name of refined **pine sap**. Rosin flux is typically a solid at room temperature, but quickly melts and flow easily at soldering temperatures. It is usually a light or dark amber colour. Rosin fluxes have a **low flux activity**.
 
-[caption id="attachment_12833" align="aligncenter" width="329"][![A tin of rosin-based flux. Image from https://en.wikipedia.org.](http://blog.mbedded.ninja/wp-content/uploads/2015/11/rosin-flux-tin-kolophonium-loeten-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/11/rosin-flux-tin-kolophonium-loeten-photo.jpg) A tin of rosin-based flux. Image from https://en.wikipedia.org.[/caption]
+[caption id="attachment_12833" align="aligncenter" width="329"][![A tin of rosin-based flux. Image from https://en.wikipedia.org.](/images/2015/11/rosin-flux-tin-kolophonium-loeten-photo.jpg)
+](/images/2015/11/rosin-flux-tin-kolophonium-loeten-photo.jpg) A tin of rosin-based flux. Image from https://en.wikipedia.org.[/caption]
 
 As such, it is usually inert while as a solid, and therefore **safe to leave** on the PCB after soldering. This is of course unless during normal operation the PCB temperature rises enough to melt the rosin flux.
 
@@ -30,8 +30,8 @@ Rosin fluxes are usually non-polar and therefore cannot be washed off with pl
 
 Some types of solder contain a rosin core to aid the soldering process, and saves you time because you do not have to apply the flux manually.
 
-[caption id="attachment_12834" align="aligncenter" width="278"][![A brand of solder which has a rosin-based flux core.](http://blog.mbedded.ninja/wp-content/uploads/2015/11/rosin-core-solder-firepower-60-40-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/11/rosin-core-solder-firepower-60-40-photo.jpg) A brand of solder which has a rosin-based flux core.[/caption]
+[caption id="attachment_12834" align="aligncenter" width="278"][![A brand of solder which has a rosin-based flux core.](/images/2015/11/rosin-core-solder-firepower-60-40-photo.jpg)
+](/images/2015/11/rosin-core-solder-firepower-60-40-photo.jpg) A brand of solder which has a rosin-based flux core.[/caption]
 
 For the chemically-minded people, rosin flux usually has a formula of:
 

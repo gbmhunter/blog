@@ -193,7 +193,7 @@ The C library reference ([http://www.cplusplus.com/reference/clibrary/](http://w
 <tr >
 
 <td style="text-align: center;" >[![The GNU C Library Reference Manual](http://blog.mbedded.ninja/wp-includes/images/crystal/document.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/The-GNU-C-Library-Reference-Manual.pdf)
+](/images/2011/09/The-GNU-C-Library-Reference-Manual.pdf)
 </td>
 
 <td style="text-align: center;" >The GNU C Library Reference Manual
@@ -205,7 +205,7 @@ The C library reference ([http://www.cplusplus.com/reference/clibrary/](http://w
 <tr >
 
 <td style="text-align: center;" >[![C Reference Card (ANSI) v2.2](http://blog.mbedded.ninja/wp-includes/images/crystal/document.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/C-Reference-Card-ANSI-v2.2.pdf)
+](/images/2011/09/C-Reference-Card-ANSI-v2.2.pdf)
 </td>
 
 <td style="text-align: center;" >C Reference Guide (ANSI) v2.2

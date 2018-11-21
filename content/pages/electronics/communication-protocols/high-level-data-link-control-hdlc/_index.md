@@ -12,8 +12,8 @@ url: /electronics/communication-protocols/high-level-data-link-control-hdlc
 
 
 
-**High-Level Data Link Control (HDLC) is a synchronous data-link layer protocol**. It was developed by the International Organization for Standardization (ISO).[![](http://blog.mbedded.ninja/wp-content/uploads/2017/07/high-level-data-link-control-icon.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/07/high-level-data-link-control-icon.png)
+**High-Level Data Link Control (HDLC) is a synchronous data-link layer protocol**. It was developed by the International Organization for Standardization (ISO).[![](/images/2017/07/high-level-data-link-control-icon.png)
+](/images/2017/07/high-level-data-link-control-icon.png)
 
 
 

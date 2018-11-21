@@ -292,8 +292,8 @@ Open and closed types. The following image shows a open type piezo-electric ultr
 
 
 
-[caption id="attachment_13156" align="aligncenter" width="1200"][![An Arduino compatible ultrasound module.](http://blog.mbedded.ninja/wp-content/uploads/2013/12/arduino-ultrasound-module.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/12/arduino-ultrasound-module.jpg) An Arduino compatible ultrasound module.[/caption]
+[caption id="attachment_13156" align="aligncenter" width="1200"][![An Arduino compatible ultrasound module.](/images/2013/12/arduino-ultrasound-module.jpg)
+](/images/2013/12/arduino-ultrasound-module.jpg) An Arduino compatible ultrasound module.[/caption]
 
 
 
@@ -311,15 +311,15 @@ High-power types have a power rating between 40-150W. These types of ultrasonic 
 	  * Ultrasound modules for tank level measurement. They normally can measure a range of liquids including water, black water, oil, petrol, diesel without any adjustment (liquid type agnostic). Range is typically from 100mm to 4m. Some have focusers made of materials such as glass-reinforced polypropylene to produce narrow beams.
 	  * Ultrasound cleaners are used to clean objects by vibrating the dirt/greese from them. They are commonly used to clean the resin of circuit boards after soldering.
 	  * High-end wind sensors (anemometers) use ultrasound to measure the wind speed and direction (or more concisely, it's velocity).
-[caption id="attachment_13157" align="aligncenter" width="149"][![A 3D sonic anemometer. Image from http://www.thiesclima.com/ultrasonic_anemometer_3d_e.html.](http://blog.mbedded.ninja/wp-content/uploads/2013/12/3d-sonic-anemometer.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/12/3d-sonic-anemometer.jpg) A 3D sonic anemometer. Image from http://www.thiesclima.com/ultrasonic_anemometer_3d_e.html.[/caption]
+[caption id="attachment_13157" align="aligncenter" width="149"][![A 3D sonic anemometer. Image from http://www.thiesclima.com/ultrasonic_anemometer_3d_e.html.](/images/2013/12/3d-sonic-anemometer.jpg)
+](/images/2013/12/3d-sonic-anemometer.jpg) A 3D sonic anemometer. Image from http://www.thiesclima.com/ultrasonic_anemometer_3d_e.html.[/caption]
   
 
  
 	  * Similar to anemometers, ultrasonic flowmeters can be used to determine the speed and direction of liquid within pipes.
 	  * Ultrasonic devices are used in the medical world for getting images of body parts (e.g. an unborn baby). Human tissue attenuates ultrasound by approximately 1dB/cm/MHz.
-[caption id="attachment_13158" align="aligncenter" width="286"][![The C60X medical ultrasound sensor by Sonosite. Image from http://www.sonosite.com/accessories/c60x-0.](http://blog.mbedded.ninja/wp-content/uploads/2013/12/medical-ultrasonic-sensor-sonosite-c60x.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/12/medical-ultrasonic-sensor-sonosite-c60x.jpg) The C60X medical ultrasound sensor by Sonosite. Image from http://www.sonosite.com/accessories/c60x-0.[/caption]
+[caption id="attachment_13158" align="aligncenter" width="286"][![The C60X medical ultrasound sensor by Sonosite. Image from http://www.sonosite.com/accessories/c60x-0.](/images/2013/12/medical-ultrasonic-sensor-sonosite-c60x.jpg)
+](/images/2013/12/medical-ultrasonic-sensor-sonosite-c60x.jpg) The C60X medical ultrasound sensor by Sonosite. Image from http://www.sonosite.com/accessories/c60x-0.[/caption]
   
 
  
@@ -356,8 +356,8 @@ With a simple single transducer acting as both the receiver and transmitter, the
 
 
 
-[caption id="attachment_13163" align="aligncenter" width="358"][![The detection beam pattern of some ultrasonic transducers by Sonarange. Image from http://www.sntag.ch/data/Datenblatt%20e%20UPS.pdf.](http://blog.mbedded.ninja/wp-content/uploads/2013/12/detection-beam-pattern-of-sonarange-ups-ultrasonic-transducers.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/12/detection-beam-pattern-of-sonarange-ups-ultrasonic-transducers.png) The detection beam pattern of some ultrasonic transducers by Sonarange. Image from http://www.sntag.ch/data/Datenblatt%20e%20UPS.pdf.[/caption]
+[caption id="attachment_13163" align="aligncenter" width="358"][![The detection beam pattern of some ultrasonic transducers by Sonarange. Image from http://www.sntag.ch/data/Datenblatt%20e%20UPS.pdf.](/images/2013/12/detection-beam-pattern-of-sonarange-ups-ultrasonic-transducers.png)
+](/images/2013/12/detection-beam-pattern-of-sonarange-ups-ultrasonic-transducers.png) The detection beam pattern of some ultrasonic transducers by Sonarange. Image from http://www.sntag.ch/data/Datenblatt%20e%20UPS.pdf.[/caption]
 
 
 
@@ -382,8 +382,8 @@ The combination of these three factors creates a dead-zone right in-front of the
 
 
 
-[caption id="attachment_13164" align="aligncenter" width="988"][![A ultrasonic proximity detector circuit with separate transmitter and receiver. Image from http://www.datasheetarchive.com/dl/Scans-004/Scans-0082375.pdf.](http://blog.mbedded.ninja/wp-content/uploads/2013/12/ultrasonic-proximity-detector-circuit-with-seperate-transmitter-and-receiver.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/12/ultrasonic-proximity-detector-circuit-with-seperate-transmitter-and-receiver.png) A ultrasonic proximity detector circuit with separate transmitter and receiver. Image from http://www.datasheetarchive.com/dl/Scans-004/Scans-0082375.pdf.[/caption]
+[caption id="attachment_13164" align="aligncenter" width="988"][![A ultrasonic proximity detector circuit with separate transmitter and receiver. Image from http://www.datasheetarchive.com/dl/Scans-004/Scans-0082375.pdf.](/images/2013/12/ultrasonic-proximity-detector-circuit-with-seperate-transmitter-and-receiver.png)
+](/images/2013/12/ultrasonic-proximity-detector-circuit-with-seperate-transmitter-and-receiver.png) A ultrasonic proximity detector circuit with separate transmitter and receiver. Image from http://www.datasheetarchive.com/dl/Scans-004/Scans-0082375.pdf.[/caption]
 
 
 
@@ -416,8 +416,8 @@ Higher frequency ultrasonic waveforms lose energy quicker when travelling throug
 
 
 
-[caption id="attachment_13165" align="aligncenter" width="561"][![A graph showing the audible and ultrasound ranges of the sound spectrum, with subsections. Image from http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf.](http://blog.mbedded.ninja/wp-content/uploads/2013/12/graph-of-audible-and-ultrasound-frequency-range-with-subsections.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/12/graph-of-audible-and-ultrasound-frequency-range-with-subsections.png) A graph showing the audible and ultrasound ranges of the sound spectrum, with subsections. Image from http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf.[/caption]
+[caption id="attachment_13165" align="aligncenter" width="561"][![A graph showing the audible and ultrasound ranges of the sound spectrum, with subsections. Image from http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf.](/images/2013/12/graph-of-audible-and-ultrasound-frequency-range-with-subsections.png)
+](/images/2013/12/graph-of-audible-and-ultrasound-frequency-range-with-subsections.png) A graph showing the audible and ultrasound ranges of the sound spectrum, with subsections. Image from http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf.[/caption]
 
 
 

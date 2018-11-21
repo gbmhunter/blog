@@ -133,5 +133,5 @@ The thin-quad-flat-pack package is a leaded, thin SMT package commonly used for 
 # 3D Renders
 
 
-[caption id="attachment_11426" align="aligncenter" width="290"][![A 3D render of the TQFP-32 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/tqfp-32-component-package-3d-render.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/tqfp-32-component-package-3d-render.jpg) A 3D render of the TQFP-32 component package.[/caption]
+[caption id="attachment_11426" align="aligncenter" width="290"][![A 3D render of the TQFP-32 component package.](/images/2015/04/tqfp-32-component-package-3d-render.jpg)
+](/images/2015/04/tqfp-32-component-package-3d-render.jpg) A 3D render of the TQFP-32 component package.[/caption]

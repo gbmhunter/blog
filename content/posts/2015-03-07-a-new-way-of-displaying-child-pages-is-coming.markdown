@@ -31,8 +31,8 @@ With this site getting rather large (536 published pages as of March 2015), and 
 The current design uses a _Mega Menu_ as the primary and pretty much only way of navigating to the correct page. In most cases, the only pages on this site which have any material on them are the pages which have no children of there on (i.e. the end-points), while the parent pages are blank and just used to group pages into a logical hierarchy. 
 
 
-[caption id="attachment_9830" align="aligncenter" width="587"][![Screenshot of the large "mega menu" structure on mbedded.ninja.](http://blog.mbedded.ninja/wp-content/uploads/2015/03/screenshot-of-large-mega-menu-structure-on-mbedded-ninja.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/03/screenshot-of-large-mega-menu-structure-on-mbedded-ninja.png) Screenshot of the large "mega menu" structure on mbedded.ninja.[/caption]
+[caption id="attachment_9830" align="aligncenter" width="587"][![Screenshot of the large "mega menu" structure on mbedded.ninja.](/images/2015/03/screenshot-of-large-mega-menu-structure-on-mbedded-ninja.png)
+](/images/2015/03/screenshot-of-large-mega-menu-structure-on-mbedded-ninja.png) Screenshot of the large "mega menu" structure on mbedded.ninja.[/caption]
 
 
 The new design will not replace the Mega Menu, but rather to provide material for the mostly blank parent pages and make it easy to navigate from them to the child pages. I want this to happen in the most autonomous fashion possible. For this reason I looked at plugins which can automatically create lists of child pages and insert them into parent pages.
@@ -170,8 +170,8 @@ Template
 A screenshot of the above code is shown below:
 
 
-[caption id="attachment_9825" align="aligncenter" width="491"][![A screenshot of the SB Child List template code for mbedded.ninja.](http://blog.mbedded.ninja/wp-content/uploads/2015/03/screenshot-of-sb-child-list-template-for-mbedded-ninja.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/03/screenshot-of-sb-child-list-template-for-mbedded-ninja.png) A screenshot of the SB Child List template code for mbedded.ninja.[/caption]
+[caption id="attachment_9825" align="aligncenter" width="491"][![A screenshot of the SB Child List template code for mbedded.ninja.](/images/2015/03/screenshot-of-sb-child-list-template-for-mbedded-ninja.png)
+](/images/2015/03/screenshot-of-sb-child-list-template-for-mbedded-ninja.png) A screenshot of the SB Child List template code for mbedded.ninja.[/caption]
 
 
 The child pages menu is then inserted into the parent with the shortcode:
@@ -187,8 +187,8 @@ The child pages menu is then inserted into the parent with the shortcode:
  I have currently tested this on the Altium pages, below is a screenshot of what the Altium page looks like, which is the parent for things like the popular Altium Tricks And Standards, Altium Bugs and Altium Simulation pages.
 
 
-[caption id="attachment_9823" align="aligncenter" width="532"][![Screenshot of the new child page design for mbedded.ninja.](http://blog.mbedded.ninja/wp-content/uploads/2015/03/screenshot-of-new-child-page-design-for-mbedded-ninja-altium.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/03/screenshot-of-new-child-page-design-for-mbedded-ninja-altium.png) Screenshot of the new child page design for mbedded.ninja.[/caption]
+[caption id="attachment_9823" align="aligncenter" width="532"][![Screenshot of the new child page design for mbedded.ninja.](/images/2015/03/screenshot-of-new-child-page-design-for-mbedded-ninja-altium.png)
+](/images/2015/03/screenshot-of-new-child-page-design-for-mbedded-ninja-altium.png) Screenshot of the new child page design for mbedded.ninja.[/caption]
 
 
 One of the target areas of the site for this new design will be the Component Packages page. Currently, most of the packages are on the one page, and as the number of components listed there grew, it just got too big! This plugin will allow me to add all the information about a component package to it's own child page, and then easily list all the components in a table on the parent page. However, this will take sometime to implement (there are currently over a 100 packages on there).

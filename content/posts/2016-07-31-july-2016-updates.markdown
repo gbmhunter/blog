@@ -19,7 +19,7 @@ tags:
 
   * New [USB-to-Serial Converters page](http://blog.mbedded.ninja/electronics/tools/usb-to-serial-converters) under Electronics->Tools.  
   
-[caption id="attachment_13676" align="aligncenter" width="4160"][![FTDI serial cable (TTL-232RG-VIP-WE) art?](http://blog.mbedded.ninja/wp-content/uploads/2016/07/ftdi-serial-cable-art.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/07/ftdi-serial-cable-art.jpg) FTDI serial cable (TTL-232RG-VIP-WE) art?[/caption]  
+[caption id="attachment_13676" align="aligncenter" width="4160"][![FTDI serial cable (TTL-232RG-VIP-WE) art?](/images/2016/07/ftdi-serial-cable-art.jpg)
+](/images/2016/07/ftdi-serial-cable-art.jpg) FTDI serial cable (TTL-232RG-VIP-WE) art?[/caption]  
   
   * New [Java Thread Safety (Concurrency) page](http://blog.mbedded.ninja/programming/languages/java/thread-safety-concurrency).

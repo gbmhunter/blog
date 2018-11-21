@@ -35,8 +35,8 @@ Delphi uses begin and end; keywords to create blocks of code (similar to the { a
 Note that after the end keyword you must include a semi-colon, but
 
 
-[caption id="attachment_14211" align="aligncenter" width="261"][![](http://blog.mbedded.ninja/wp-content/uploads/2012/07/delphi-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/07/delphi-logo.png) The Delphi logo.[/caption]
+[caption id="attachment_14211" align="aligncenter" width="261"][![](/images/2012/07/delphi-logo.png)
+](/images/2012/07/delphi-logo.png) The Delphi logo.[/caption]
 
 
 not after the begin keyword!

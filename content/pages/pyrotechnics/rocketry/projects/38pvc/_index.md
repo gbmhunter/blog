@@ -64,7 +64,7 @@ Motor worked successfully and propelled skateboard across the concrete. Average 
 
 **Calculations:**
 
-[gview file="http://blog.mbedded.ninja/wp-content/uploads/2012/12/38PVC-Rocket-Motor-Data-Richard-Nakkas-SRM.xls"]
+[gview file="/images/2012/12/38PVC-Rocket-Motor-Data-Richard-Nakkas-SRM.xls"]
 
 **Video:**
 

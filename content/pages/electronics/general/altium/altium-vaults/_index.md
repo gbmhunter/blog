@@ -15,8 +15,8 @@ url: /electronics/general/altium/altium-vaults
 Vaults are for storing design data.
 
 
-[caption id="attachment_9789" align="aligncenter" width="300"][![Depiction of the Altium vault.](http://blog.mbedded.ninja/wp-content/uploads/2013/12/altium-vault-image.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/12/altium-vault-image.png) Depiction of the Altium vault.[/caption]
+[caption id="attachment_9789" align="aligncenter" width="300"][![Depiction of the Altium vault.](/images/2013/12/altium-vault-image.png)
+](/images/2013/12/altium-vault-image.png) Depiction of the Altium vault.[/caption]
 
 
 # Personal Vault

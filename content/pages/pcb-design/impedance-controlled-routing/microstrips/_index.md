@@ -20,8 +20,8 @@ url: /pcb-design/impedance-controlled-routing/microstrips
 Microstrips are impedance controlled transmission lines on the top or bottom layers of a PCB, where there is free space above the track, and a copper pour on the layer below the track. This is opposed to striplines, which are embedded in a middle layer of a PCB, and have a copper pour above and below them.
 
 
-[caption id="attachment_12776" align="aligncenter" width="760"][![A diagram of a single-ended microstrip, with standard names for the various dimensions added.](http://blog.mbedded.ninja/wp-content/uploads/2015/12/single-ended-basic-microstrip-diagram-annotated.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/12/single-ended-basic-microstrip-diagram-annotated.png) A diagram of a single-ended microstrip, with standard names for the various dimensions added.[/caption]
+[caption id="attachment_12776" align="aligncenter" width="760"][![A diagram of a single-ended microstrip, with standard names for the various dimensions added.](/images/2015/12/single-ended-basic-microstrip-diagram-annotated.png)
+](/images/2015/12/single-ended-basic-microstrip-diagram-annotated.png) A diagram of a single-ended microstrip, with standard names for the various dimensions added.[/caption]
 
 
 # RFcafe Equations
@@ -94,8 +94,8 @@ Equations are from [http://www.rfcafe.com/references/electrical/microstrip-eq.ht
 Go to [http://ninja-calc.mbedded.ninja/calc/microstrip-impedance-calculator](http://ninja-calc.mbedded.ninja/calc/microstrip-impedance-calculator) to use an online calculator which uses these above equations (part of NinjaCalc).
 
 
-[caption id="attachment_14158" align="aligncenter" width="945"][![](http://blog.mbedded.ninja/wp-content/uploads/2015/12/screenshot-microstrip-impedance-calculator-ninjacalc.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/12/screenshot-microstrip-impedance-calculator-ninjacalc.png) A screenshot of the "Microstrip Impedance" calculator in the NinjaCalc web app.[/caption]
+[caption id="attachment_14158" align="aligncenter" width="945"][![](/images/2015/12/screenshot-microstrip-impedance-calculator-ninjacalc.png)
+](/images/2015/12/screenshot-microstrip-impedance-calculator-ninjacalc.png) A screenshot of the "Microstrip Impedance" calculator in the NinjaCalc web app.[/caption]
 
 
 # The Equations Altium Uses

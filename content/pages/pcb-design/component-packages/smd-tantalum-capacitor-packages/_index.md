@@ -11,8 +11,8 @@ url: /pcb-design/component-packages/smd-tantalum-capacitor-packages
 
 Most SMD tantalum capacitors follow a standard set of sizes given in the following table. Most are almost rectangular, but if you look closely some the the faces are slightly angled. They are typically orange in colour. Kemet and AVX (two large manufacturers of these caps) label the packages slightly differently.
 
-[caption id="attachment_12396" align="aligncenter" width="262"][![A photo of a SMD tantalum capacitor package.](http://blog.mbedded.ninja/wp-content/uploads/2015/10/smd-tantalum-capacitor-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/10/smd-tantalum-capacitor-package-photo.jpg) A photo of a SMD tantalum capacitor package.[/caption]<table ><tr >Kemet CodeAVX CodeLength (mm)Width (mm)Height (mm)EIA Standard</tr><tbody ><tr >
+[caption id="attachment_12396" align="aligncenter" width="262"][![A photo of a SMD tantalum capacitor package.](/images/2015/10/smd-tantalum-capacitor-package-photo.jpg)
+](/images/2015/10/smd-tantalum-capacitor-package-photo.jpg) A photo of a SMD tantalum capacitor package.[/caption]<table ><tr >Kemet CodeAVX CodeLength (mm)Width (mm)Height (mm)EIA Standard</tr><tbody ><tr >
 <td >S
 </td>
 <td >S
@@ -136,5 +136,5 @@ Most SMD tantalum capacitors follow a standard set of sizes given in the followi
 
 The land dimensions and courtyard are shown below:
 
-[caption id="attachment_11971" align="aligncenter" width="1139"][![The land dimensions and courtyard for various SMD tantalum capacitor sizes. Image from www.kemet.com.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/tantalum-smd-capacitors-component-package-kemet-land-dimensions-and-courtyard-info.pdf.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/tantalum-smd-capacitors-component-package-kemet-land-dimensions-and-courtyard-info.pdf.png) The land dimensions and courtyard for various SMD tantalum capacitor sizes. Image from www.kemet.com.[/caption]
+[caption id="attachment_11971" align="aligncenter" width="1139"][![The land dimensions and courtyard for various SMD tantalum capacitor sizes. Image from www.kemet.com.](/images/2011/09/tantalum-smd-capacitors-component-package-kemet-land-dimensions-and-courtyard-info.pdf.png)
+](/images/2011/09/tantalum-smd-capacitors-component-package-kemet-land-dimensions-and-courtyard-info.pdf.png) The land dimensions and courtyard for various SMD tantalum capacitor sizes. Image from www.kemet.com.[/caption]

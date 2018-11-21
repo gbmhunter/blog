@@ -139,8 +139,8 @@ Large panel mount package used for high-power SCR's. Has good heat-sinking capab
 # Photos
 
 
-[caption id="attachment_11410" align="aligncenter" width="160"][![A photo of the TO-93 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/to-93-component-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/to-93-component-package-photo.jpg) A photo of the TO-93 component package.[/caption]
+[caption id="attachment_11410" align="aligncenter" width="160"][![A photo of the TO-93 component package.](/images/2015/04/to-93-component-package-photo.jpg)
+](/images/2015/04/to-93-component-package-photo.jpg) A photo of the TO-93 component package.[/caption]
 
 
 # Images

@@ -138,5 +138,5 @@ Has four rows of pins. Used in the 1970's when single-sided boards with through-
 # Photos
 
 
-[caption id="attachment_11285" align="aligncenter" width="600"][![A photo of the QIP component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/qip-component-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/qip-component-package-photo.jpg) A photo of the QIP component package.[/caption]
+[caption id="attachment_11285" align="aligncenter" width="600"][![A photo of the QIP component package.](/images/2015/04/qip-component-package-photo.jpg)
+](/images/2015/04/qip-component-package-photo.jpg) A photo of the QIP component package.[/caption]

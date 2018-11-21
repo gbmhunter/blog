@@ -24,8 +24,8 @@ If you want a more serious testpoint something you can clip something onto, many
 <table class="aligncenter" ><tbody ><tr >
 <td >
 
-[![A minature SMD testpoint made by Keystone.](http://blog.mbedded.ninja/wp-content/uploads/2015/10/keystone-minature-smd-testpoint.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/10/keystone-minature-smd-testpoint.jpg)
+[![A minature SMD testpoint made by Keystone.](/images/2015/10/keystone-minature-smd-testpoint.jpg)
+](/images/2015/10/keystone-minature-smd-testpoint.jpg)
 
 </td>
 <td >Keystone Miniature SMT Test Point

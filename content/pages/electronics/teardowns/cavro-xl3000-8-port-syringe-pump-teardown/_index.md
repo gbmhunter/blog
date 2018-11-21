@@ -32,17 +32,17 @@ Although there was no reference to the PCB fingers on the XL3000, the pinout is 
 
 
 
-The Hamilton PSD/8 is meant to be a "drop in replacement" for the Cavro XL3000. So finding a manual for this would mean finding a manual for the XL3000. Unfortunately, these are really hard to come by also. I did find the [Hamilton PSD8 Syringe Pump Specification Sheet](http://blog.mbedded.ninja/wp-content/uploads/2013/03/hamilton-psd8-syringe-pump-spec-sheet.pdf), but it does not have any information on the connector wiring or commands.
+The Hamilton PSD/8 is meant to be a "drop in replacement" for the Cavro XL3000. So finding a manual for this would mean finding a manual for the XL3000. Unfortunately, these are really hard to come by also. I did find the [Hamilton PSD8 Syringe Pump Specification Sheet](/images/2013/03/hamilton-psd8-syringe-pump-spec-sheet.pdf), but it does not have any information on the connector wiring or commands.
 
 
 
 
-Here is the [Cavro XP-3000 Syringe Pump Operators Manual](http://blog.mbedded.ninja/wp-content/uploads/2013/03/cavro-xp-3000-syringe-pump-operators-manual.pdf). The XP-3000 is the smaller cousin (30mm stroke length) of the XL-3000.
+Here is the [Cavro XP-3000 Syringe Pump Operators Manual](/images/2013/03/cavro-xp-3000-syringe-pump-operators-manual.pdf). The XP-3000 is the smaller cousin (30mm stroke length) of the XL-3000.
 
 
 
 
-I finally got it! Thanks to Emerald Bio, who sent me the [Cavro XL-3000 Syringe Pump Operators Manual](http://blog.mbedded.ninja/wp-content/uploads/2013/03/cavro-xl-3000-syringe-pump-operators-manual.pdf) after I contacted them via email.
+I finally got it! Thanks to Emerald Bio, who sent me the [Cavro XL-3000 Syringe Pump Operators Manual](/images/2013/03/cavro-xl-3000-syringe-pump-operators-manual.pdf) after I contacted them via email.
 
 
 

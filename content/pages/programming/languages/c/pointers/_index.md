@@ -17,8 +17,8 @@ Pointers are a core concept in C programming, yet can be a difficult concept to 
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2013/03/pointing-hand-icon.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/03/pointing-hand-icon.png)
+[![](/images/2013/03/pointing-hand-icon.png)
+](/images/2013/03/pointing-hand-icon.png)
 
 
 

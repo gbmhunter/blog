@@ -13,8 +13,8 @@ url: /electronics/components/sensors/temperature-sensors/ntc-thermistors-tempera
 
 **A _negative-temperature coefficient_ (NTC) thermistor can be used as a temperature sensor.** A NTC thermistor is a resistor which has a non-linear change in resistance in a response to a change in temperature. It is a _passive sensor_.
 
-[caption id="attachment_13253" align="aligncenter" width="372"][![An example of a NTC thermistor built into a metal lug, and provided with a cable and connector. Vishay component NTCALUG03A103GC. Image from www.digikey.com.](http://blog.mbedded.ninja/wp-content/uploads/2016/04/ntc-thermistor-with-lug-vishay-ntcalug03a103gc-v2.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2016/04/ntc-thermistor-with-lug-vishay-ntcalug03a103gc-v2.jpg) An example of a NTC thermistor built into a metal lug, and provided with a cable and connector. Vishay component NTCALUG03A103GC. Image from www.digikey.com.[/caption]
+[caption id="attachment_13253" align="aligncenter" width="372"][![An example of a NTC thermistor built into a metal lug, and provided with a cable and connector. Vishay component NTCALUG03A103GC. Image from www.digikey.com.](/images/2016/04/ntc-thermistor-with-lug-vishay-ntcalug03a103gc-v2.jpg)
+](/images/2016/04/ntc-thermistor-with-lug-vishay-ntcalug03a103gc-v2.jpg) An example of a NTC thermistor built into a metal lug, and provided with a cable and connector. Vishay component NTCALUG03A103GC. Image from www.digikey.com.[/caption]
 
 # NTCs vs RTDs
 
@@ -75,7 +75,7 @@ Re-arranged so that we can calculate a temperature from a measured resistance, 
 
 $$ \frac{1}{T} = \frac{1}{T_0} + \frac{1}{\beta}ln(\frac{R}{R_0}) $$
 
-[![ninja-calc-logo-v2-no-transparency](http://blog.mbedded.ninja/wp-content/uploads/2016/04/ninja-calc-logo-v2-no-transparency.png)
+[![ninja-calc-logo-v2-no-transparency](/images/2016/04/ninja-calc-logo-v2-no-transparency.png)
 ](http://mbedded-ninja.github.io/NinjaCalc/)The free embedded-engineering calculator app, [NinjaCalc](http://mbedded-ninja.github.io/NinjaCalc/), features a calculator for working out the thermistor temperature (or any other variable) using the Beta equation.
 
  

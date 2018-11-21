@@ -76,13 +76,13 @@ There are also two width's for SOIC packages, narrow width (3.9mm wide body, SOI
 
 The dimensions for the SOIC-8N package are shown below:
 
-[caption id="attachment_9848" align="aligncenter" width="555"][![The dimensions for the SOIC-8 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-8-component-package-dimensions.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-8-component-package-dimensions.png) The dimensions for the SOIC-8N component package.[/caption]
+[caption id="attachment_9848" align="aligncenter" width="555"][![The dimensions for the SOIC-8 component package.](/images/2015/01/soic-8-component-package-dimensions.png)
+](/images/2015/01/soic-8-component-package-dimensions.png) The dimensions for the SOIC-8N component package.[/caption]
 
 The dimensions for the SOIC-16N component package are shown below:
 
-[caption id="attachment_9849" align="aligncenter" width="575"][![The dimensions for the SOIC-16 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-16-component-package-dimensions.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-16-component-package-dimensions.jpg) The dimensions for the SOIC-16N component package.[/caption]
+[caption id="attachment_9849" align="aligncenter" width="575"][![The dimensions for the SOIC-16 component package.](/images/2015/01/soic-16-component-package-dimensions.jpg)
+](/images/2015/01/soic-16-component-package-dimensions.jpg) The dimensions for the SOIC-16N component package.[/caption]
 
 # Pitch
 
@@ -108,15 +108,15 @@ Adapter PCBs for the SOIC family of packages are widely available due to the pop
 
 SparkFun makes a SOIC-8 to DIP-8-300 adapter PCB.
 
-[caption id="attachment_9847" align="aligncenter" width="272"][![A SOIC-8 to DIP-8-300 adapter PCB by SparkFun.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-8-component-package-sparkfun-breakout-board.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-8-component-package-sparkfun-breakout-board.jpg) A SOIC-8 to DIP-8-300 adapter PCB by SparkFun.[/caption]
+[caption id="attachment_9847" align="aligncenter" width="272"][![A SOIC-8 to DIP-8-300 adapter PCB by SparkFun.](/images/2015/01/soic-8-component-package-sparkfun-breakout-board.jpg)
+](/images/2015/01/soic-8-component-package-sparkfun-breakout-board.jpg) A SOIC-8 to DIP-8-300 adapter PCB by SparkFun.[/caption]
 
 # Thermal Resistance And Power Dissipation
 
 This graph shows the maximum power dissipation for the SOIC-8N component package, for various PCB copper areas.
 
-[caption id="attachment_9850" align="aligncenter" width="701"][![Maximum power dissipation graphs for the SOIC-8 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/maximum-power-dissapation-graphs-so-8.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/01/maximum-power-dissapation-graphs-so-8.png) Maximum power dissipation graphs for the SOIC-8N component package.[/caption]
+[caption id="attachment_9850" align="aligncenter" width="701"][![Maximum power dissipation graphs for the SOIC-8 component package.](/images/2015/01/maximum-power-dissapation-graphs-so-8.png)
+](/images/2015/01/maximum-power-dissapation-graphs-so-8.png) Maximum power dissipation graphs for the SOIC-8N component package.[/caption]
 
 # Standard Pinout For MOSFETs
 
@@ -124,7 +124,7 @@ The SOIC-8 component package is commonly used for medium-power N and P-channel M
 
 Note: As far I'm aware, this is not specified in any standard, but is just an industry default. Also, this only applies to SOIC-8 packages with 1 MOSFET inside them.
 
-[caption id="attachment_12432" align="aligncenter" width="334"][![The standard pinout for a single MOSFET (N or P-channel) in a SOIC-8 package.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-8-component-package-standard-mosfet-pinout.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/01/soic-8-component-package-standard-mosfet-pinout.png) The standard pinout for a single MOSFET (N or P-channel) in a SOIC-8 package.[/caption]
+[caption id="attachment_12432" align="aligncenter" width="334"][![The standard pinout for a single MOSFET (N or P-channel) in a SOIC-8 package.](/images/2015/01/soic-8-component-package-standard-mosfet-pinout.png)
+](/images/2015/01/soic-8-component-package-standard-mosfet-pinout.png) The standard pinout for a single MOSFET (N or P-channel) in a SOIC-8 package.[/caption]
 
 Examples that follow this pinout include the [ST STS25NH3LL (N-channel)](https://www.sparkfun.com/datasheets/Robotics/sts25nh3ll.pdf), the [International Rectifier IRF8721PbF-1 (N-channel)](http://www.irf.com/product-info/datasheets/data/irf8721pbf-1.pdf), and the [Vishay SI9407BDY-T1-GE3 (P-channel)](http://www.vishay.com/docs/69902/si9407bd.pdf).

@@ -87,8 +87,8 @@ The original LVDS standard was concerned only with point-to-point communications
 
 
 
-[caption id="attachment_14684" align="aligncenter" width="676"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/08/lvds-multipoint-configuration-example-schematic-ti.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/08/lvds-multipoint-configuration-example-schematic-ti.png) Example schematics showing LVDS devices in a multipoint configuration. Image from www.ti.com.[/caption]
+[caption id="attachment_14684" align="aligncenter" width="676"][![](/images/2017/08/lvds-multipoint-configuration-example-schematic-ti.png)
+](/images/2017/08/lvds-multipoint-configuration-example-schematic-ti.png) Example schematics showing LVDS devices in a multipoint configuration. Image from www.ti.com.[/caption]
 
 
 

@@ -16,8 +16,8 @@ url: /programming/embedded-linux/zynq
 
 
 
-[caption id="attachment_14274" align="aligncenter" width="773"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/04/xilinx-zynq-7000-ZC720-evaluation-kit-photo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/04/xilinx-zynq-7000-ZC720-evaluation-kit-photo.png) The Xilinx ZC720 Evaluation Kit featuring the Zynq-7000 SoC.[/caption]
+[caption id="attachment_14274" align="aligncenter" width="773"][![](/images/2017/04/xilinx-zynq-7000-ZC720-evaluation-kit-photo.png)
+](/images/2017/04/xilinx-zynq-7000-ZC720-evaluation-kit-photo.png) The Xilinx ZC720 Evaluation Kit featuring the Zynq-7000 SoC.[/caption]
 
 
 

@@ -69,9 +69,9 @@ Now knowing that I needed a new bass-driver, I got the guys at [South Pacific Mu
 ## Power Transistors
 
 
-[gview file="http://blog.mbedded.ninja/wp-content/uploads/2012/07/2SC3856-Sanken-NPN-Transistor.pdf"]
+[gview file="/images/2012/07/2SC3856-Sanken-NPN-Transistor.pdf"]
 
-[gview file="http://blog.mbedded.ninja/wp-content/uploads/2012/07/2SA1492-Sanken-PNP-Transistor.pdf"]
+[gview file="/images/2012/07/2SA1492-Sanken-PNP-Transistor.pdf"]
 
 
 # Pictures:

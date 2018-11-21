@@ -364,7 +364,7 @@ Once the electronic design had been verified with the prototypes, it was time to
 
 The schematics for the motherboard are shown below.
 
-[gview file="http://blog.mbedded.ninja/wp-content/uploads/2011/09/Electric-Skateboard-Motherboard-v1.1-Schematics.pdf"]
+[gview file="/images/2011/09/Electric-Skateboard-Motherboard-v1.1-Schematics.pdf"]
 
 
 ## Remote Control PCB
@@ -372,7 +372,7 @@ The schematics for the motherboard are shown below.
 
 The schematics for the remote control are shown below.
 
-[gview file="http://blog.mbedded.ninja/wp-content/uploads/2011/09/Electric-Skateboard-Remote-v1.1-Schematics.pdf"]
+[gview file="/images/2011/09/Electric-Skateboard-Remote-v1.1-Schematics.pdf"]
 
 
 ## Motor Driver PCB
@@ -380,7 +380,7 @@ The schematics for the remote control are shown below.
 
 The schematics for the Half Bridge Driver v1.1 (please remember, this is the one that kept blowing up) are shown below. From v1.0->v1.1, I removed the low-side MOSFET switch that was designed to disconnect the battery. This didn't work when tested, so I replaced it with a high-current relay instead (still operating from the same key-switch). I'm still at a loss to as why this did not work. I made multiple prototypes, and enlisted help/advice from many engineering friends and even a 40-year old motor control and design veteran, yet still coaxed the magic smoke out of ever PCB I tested.
 
-[gview file="http://blog.mbedded.ninja/wp-content/uploads/2011/09/Half-Bridge-Driver-v1.1-Schematics.pdf"]
+[gview file="/images/2011/09/Half-Bridge-Driver-v1.1-Schematics.pdf"]
 
 
 # PCB Manufacturing

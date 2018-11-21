@@ -60,7 +60,7 @@ $$ I_{leakage} = 5nA (typ), 90nA (max) $$
 
 
 
-[caption id="attachment_11061" align="aligncenter" width="256"][![Functional diagram of the Intersil ISL43L410 analogue switch. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf.](http://blog.mbedded.ninja/wp-content/uploads/2015/03/intersil-isl43l410-analogue-switch-functional-diagram.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/03/intersil-isl43l410-analogue-switch-functional-diagram.png) Functional diagram of the Intersil ISL43L410 analogue switch. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf.[/caption]
+[caption id="attachment_11061" align="aligncenter" width="256"][![Functional diagram of the Intersil ISL43L410 analogue switch. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf.](/images/2015/03/intersil-isl43l410-analogue-switch-functional-diagram.png)
+](/images/2015/03/intersil-isl43l410-analogue-switch-functional-diagram.png) Functional diagram of the Intersil ISL43L410 analogue switch. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf.[/caption]
 
 This IC has the nice feature that the common net can be disconnected from both NC and NO at the same time. However, both switches cannot be switched from NC to NO independently, which might be a deal-breaker for some designs.

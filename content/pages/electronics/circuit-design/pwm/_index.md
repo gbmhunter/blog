@@ -23,7 +23,7 @@ Centre-aligned PWM is good for motor control as it generates fewer harmonics in 
 
 When viewing a PWM output on an oscilloscope, you can experience what is called _aliasing_, and oscilloscope seems to show that the PWM signal is stopping and then restarting at a rate much slower than the PWM frequency.
 
-[caption id="attachment_13099" align="aligncenter" width="1200"][![An oscilloscope aliasing problem which appears to show that the 15kHz PWM signal turning on and off (in reality it is continuous).](http://blog.mbedded.ninja/wp-content/uploads/2012/10/oscilloscope-aliasing-pwm-output-appaearing-to-turn-on-off.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/10/oscilloscope-aliasing-pwm-output-appaearing-to-turn-on-off.jpg) An oscilloscope aliasing problem which appears to show that the 15kHz PWM signal turning on and off (in reality it is continuous).[/caption]
+[caption id="attachment_13099" align="aligncenter" width="1200"][![An oscilloscope aliasing problem which appears to show that the 15kHz PWM signal turning on and off (in reality it is continuous).](/images/2012/10/oscilloscope-aliasing-pwm-output-appaearing-to-turn-on-off.jpg)
+](/images/2012/10/oscilloscope-aliasing-pwm-output-appaearing-to-turn-on-off.jpg) An oscilloscope aliasing problem which appears to show that the 15kHz PWM signal turning on and off (in reality it is continuous).[/caption]
 
 While your PWM could actually be doing this, more often than not what you are seeing is an **artefact caused by the digital sampling of the oscilloscope**. The following picture shows a 15kHz PWM signal appearing to stop and start every 10ms or so. I can assure you that the PWM signal is fine, it is the Rigol 100MHz oscilloscope showing the wrong thing.

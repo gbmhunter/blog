@@ -21,5 +21,5 @@ url: /programming/compilers/gcc
 
 
 
-[caption id="attachment_13502" align="aligncenter" width="207"][![The GCC logo.](http://blog.mbedded.ninja/wp-content/uploads/2014/07/gcc-compiler-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2014/07/gcc-compiler-logo.png) The GCC logo.[/caption]
+[caption id="attachment_13502" align="aligncenter" width="207"][![The GCC logo.](/images/2014/07/gcc-compiler-logo.png)
+](/images/2014/07/gcc-compiler-logo.png) The GCC logo.[/caption]

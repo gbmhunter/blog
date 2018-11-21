@@ -16,8 +16,8 @@ The _Yocto Project_, or more commonly just called _Yocto_, is a build system use
 
 
 
-[caption id="attachment_14258" align="aligncenter" width="404"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/04/the-yocto-project-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/04/the-yocto-project-logo.png) The logo for the Yocto project.[/caption]
+[caption id="attachment_14258" align="aligncenter" width="404"][![](/images/2017/04/the-yocto-project-logo.png)
+](/images/2017/04/the-yocto-project-logo.png) The logo for the Yocto project.[/caption]
 
 
 
@@ -166,8 +166,8 @@ Now go grab a coffee. Or better yet, take your family out to a restaurant for a 
 
 
 
-[caption id="attachment_14262" align="aligncenter" width="1491"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/04/yocto-linux-build-in-progress-showing-cpu-usage.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/04/yocto-linux-build-in-progress-showing-cpu-usage.png) An embedded Linux build in progress (using Yocto), note the CPU usage![/caption]
+[caption id="attachment_14262" align="aligncenter" width="1491"][![](/images/2017/04/yocto-linux-build-in-progress-showing-cpu-usage.png)
+](/images/2017/04/yocto-linux-build-in-progress-showing-cpu-usage.png) An embedded Linux build in progress (using Yocto), note the CPU usage![/caption]
 
 
 
@@ -200,8 +200,8 @@ This should load up a separate window, and display a GUI of the Linux image you 
 
 
 
-[caption id="attachment_14272" align="aligncenter" width="1327"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/04/yocto-running-qemu-after-building-default-linux-image.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/04/yocto-running-qemu-after-building-default-linux-image.png) Running the finished Yocto build in QEMU (an emulator).[/caption]
+[caption id="attachment_14272" align="aligncenter" width="1327"][![](/images/2017/04/yocto-running-qemu-after-building-default-linux-image.png)
+](/images/2017/04/yocto-running-qemu-after-building-default-linux-image.png) Running the finished Yocto build in QEMU (an emulator).[/caption]
 
 
 

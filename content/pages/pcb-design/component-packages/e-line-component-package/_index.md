@@ -146,8 +146,8 @@ Very similar to the common TO-92 package, except it is a little flatter (e.g. sq
 # Photos
 
 
-[caption id="attachment_11253" align="aligncenter" width="290"][![A photo of the E-Line component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/e-line-component-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/e-line-component-package-photo.jpg) A photo of the E-Line component package.[/caption]
+[caption id="attachment_11253" align="aligncenter" width="290"][![A photo of the E-Line component package.](/images/2015/04/e-line-component-package-photo.jpg)
+](/images/2015/04/e-line-component-package-photo.jpg) A photo of the E-Line component package.[/caption]
 
 
 # Images

@@ -51,5 +51,5 @@ There a four standard SIM card sizes.
 <td >JEDEC Design Guide 4.8, SON-8
 </td>
 <td >Designed to be directly mounted onto a circuit board. 
-</td></tr></tbody></table>[caption id="attachment_12415" align="aligncenter" width="404"][![A 3D render of a stack of standard-sized SIM cards.](http://blog.mbedded.ninja/wp-content/uploads/2015/10/stack-of-sim-card-component-packages-3d-render.jpeg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/10/stack-of-sim-card-component-packages-3d-render.jpeg) A 3D render of a stack of standard-sized SIM cards.[/caption]
+</td></tr></tbody></table>[caption id="attachment_12415" align="aligncenter" width="404"][![A 3D render of a stack of standard-sized SIM cards.](/images/2015/10/stack-of-sim-card-component-packages-3d-render.jpeg)
+](/images/2015/10/stack-of-sim-card-component-packages-3d-render.jpeg) A 3D render of a stack of standard-sized SIM cards.[/caption]

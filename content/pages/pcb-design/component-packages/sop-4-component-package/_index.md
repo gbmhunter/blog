@@ -148,8 +148,8 @@ An easy to solder, medium sized, 4-pin SMD package. Commonly used for small soli
 # Photos
 
 
-[caption id="attachment_11331" align="aligncenter" width="356"][![A photo of the SOP-4 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sop-4-component-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sop-4-component-package-photo.jpg) A photo of the SOP-4 component package.[/caption]
+[caption id="attachment_11331" align="aligncenter" width="356"][![A photo of the SOP-4 component package.](/images/2015/04/sop-4-component-package-photo.jpg)
+](/images/2015/04/sop-4-component-package-photo.jpg) A photo of the SOP-4 component package.[/caption]
 
 
 # Other Images

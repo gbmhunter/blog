@@ -28,8 +28,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg)
+[![](/images/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg)
+](/images/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg)
 
 
 
@@ -37,8 +37,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2018/03/cross-product-equation.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/03/cross-product-equation.png)
+[![](/images/2018/03/cross-product-equation.png)
+](/images/2018/03/cross-product-equation.png)
 
 
 
@@ -47,8 +47,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png)
+[![](/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png)
+](/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png)
 
 
 
@@ -56,8 +56,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2017/09/qt-cute-software-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/09/qt-cute-software-logo.png)
+[![](/images/2017/09/qt-cute-software-logo.png)
+](/images/2017/09/qt-cute-software-logo.png)
 
 
 

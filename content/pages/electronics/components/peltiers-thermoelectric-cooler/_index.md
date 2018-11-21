@@ -13,8 +13,8 @@ url: /electronics/components/peltiers-thermoelectric-cooler
 
 Peltiers are electrical components that use the Peltier effect to heat/cool objects. They act as a heat pump, moving heat energy from the cold side to the hot side.
 
-[caption id="attachment_12893" align="aligncenter" width="444"][![A photo of a standard peltier module. Image from www.cherrybiotech.com.](http://blog.mbedded.ninja/wp-content/uploads/2015/10/standard-peltier-module-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/10/standard-peltier-module-photo.jpg) A photo of a standard peltier module. Image from www.cherrybiotech.com.[/caption]
+[caption id="attachment_12893" align="aligncenter" width="444"][![A photo of a standard peltier module. Image from www.cherrybiotech.com.](/images/2015/10/standard-peltier-module-photo.jpg)
+](/images/2015/10/standard-peltier-module-photo.jpg) A photo of a standard peltier module. Image from www.cherrybiotech.com.[/caption]
 
 # History
 

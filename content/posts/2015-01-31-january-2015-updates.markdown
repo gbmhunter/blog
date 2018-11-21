@@ -19,8 +19,8 @@ categories:
   * Moved info from the PCB Design page to a new child page called [Pads, Vias And Holes](http://blog.mbedded.ninja/pcb-design/pads-vias-holes). Added information to this page about direct-connect vs. thermal-relief style pad/via connections.  
   
 
-[caption id="attachment_9326" align="aligncenter" width="440"][![The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style.](http://blog.mbedded.ninja/wp-content/uploads/2015/01/pads-with-direct-connect-and-thermal-relief.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/01/pads-with-direct-connect-and-thermal-relief.png) The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style.[/caption]
+[caption id="attachment_9326" align="aligncenter" width="440"][![The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style.](/images/2015/01/pads-with-direct-connect-and-thermal-relief.png)
+](/images/2015/01/pads-with-direct-connect-and-thermal-relief.png) The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style.[/caption]
   
   
 

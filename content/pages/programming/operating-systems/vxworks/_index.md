@@ -15,8 +15,8 @@ url: /programming/operating-systems/vxworks
 VxWorks is a proprietary real-time operating system designed by Wind River.
 
 
-[caption id="attachment_14369" align="aligncenter" width="407"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/04/vxworks-rtos-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/04/vxworks-rtos-logo.png) The VxWorks (a real-time operating system, or RTOS) logo.[/caption]
+[caption id="attachment_14369" align="aligncenter" width="407"][![](/images/2017/04/vxworks-rtos-logo.png)
+](/images/2017/04/vxworks-rtos-logo.png) The VxWorks (a real-time operating system, or RTOS) logo.[/caption]
 
 
 # POSIX Compliance

@@ -24,8 +24,8 @@ tags:
 
    
 
-[caption id="attachment_14549" align="aligncenter" width="229"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/06/valgrind-logo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/06/valgrind-logo.jpg) The Valgrind logo.[/caption]
+[caption id="attachment_14549" align="aligncenter" width="229"][![](/images/2017/06/valgrind-logo.jpg)
+](/images/2017/06/valgrind-logo.jpg) The Valgrind logo.[/caption]
   
 
  
@@ -35,8 +35,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2015/11/amphenol-ltw-waterproof-serial-de-9-receptacle-connector.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/11/amphenol-ltw-waterproof-serial-de-9-receptacle-connector.jpg)
+[![](/images/2015/11/amphenol-ltw-waterproof-serial-de-9-receptacle-connector.jpg)
+](/images/2015/11/amphenol-ltw-waterproof-serial-de-9-receptacle-connector.jpg)
 
 
 
@@ -44,7 +44,7 @@ tags:
 
    
 
-[caption id="attachment_14568" align="aligncenter" width="310"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/07/google-protobuf-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/07/google-protobuf-logo.png) Icon for Google's protobuf library.[/caption]
+[caption id="attachment_14568" align="aligncenter" width="310"][![](/images/2017/07/google-protobuf-logo.png)
+](/images/2017/07/google-protobuf-logo.png) Icon for Google's protobuf library.[/caption]
 
 

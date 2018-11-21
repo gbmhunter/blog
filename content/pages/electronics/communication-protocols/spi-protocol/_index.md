@@ -19,8 +19,8 @@ SPI stands for _Serial Peripheral Interface_, and was initially developed by Mot
 
 SPI can either be _three wire_ (when there is only one slave and the slave does not require any signal on this line), or _four wire_ (when there are multiple slaves, and the slave select line needs to be used). For every slave there needs to be new select line, but the other three traces can be shared.
 
-[caption id="attachment_12976" align="aligncenter" width="181"][![The typical SPI connections that an IC will have.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/typical-spi-connections.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/typical-spi-connections.jpg) The typical SPI connections that an IC will have.[/caption]
+[caption id="attachment_12976" align="aligncenter" width="181"][![The typical SPI connections that an IC will have.](/images/2011/09/typical-spi-connections.jpg)
+](/images/2011/09/typical-spi-connections.jpg) The typical SPI connections that an IC will have.[/caption]
 
 One limitation with SPI is that the master has to **initiate** all communication. This can be a problem if the slave has data for the master but the master hasn't or doesn't know when to ask for it. Designers get around this by also providing a _Data Ready_ line to the master. This is separate from the SPI interface, and usually set to trigger an **interrupt** to tell the master to request for the data.
 
@@ -106,8 +106,8 @@ Some slave devices only support _point-to-point_ SPI communication. This means 
 
 The Freescale FXOS8700CQ magnetometer is one such example.
 
-[caption id="attachment_12978" align="aligncenter" width="745"][![The note from the Freescale FXOS8700CQ magnetometer stating that it only supports the "point-to-point" SPI protocol.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/fxos8700cq-freescale-magnetometer-note-supports-only-point-to-point-spi-protocol.pdf.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/fxos8700cq-freescale-magnetometer-note-supports-only-point-to-point-spi-protocol.pdf.png) The note from the Freescale FXOS8700CQ magnetometer stating that it only supports the "point-to-point" SPI protocol.[/caption]
+[caption id="attachment_12978" align="aligncenter" width="745"][![The note from the Freescale FXOS8700CQ magnetometer stating that it only supports the "point-to-point" SPI protocol.](/images/2011/09/fxos8700cq-freescale-magnetometer-note-supports-only-point-to-point-spi-protocol.pdf.png)
+](/images/2011/09/fxos8700cq-freescale-magnetometer-note-supports-only-point-to-point-spi-protocol.pdf.png) The note from the Freescale FXOS8700CQ magnetometer stating that it only supports the "point-to-point" SPI protocol.[/caption]
 
 # Similar Protocols
 

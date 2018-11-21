@@ -9,8 +9,8 @@ url: /pcb-design/soldering
 
 # Overview
 
-[caption id="attachment_5018" align="aligncenter" width="240"][![SMD components during a reflow soldering process.](http://blog.mbedded.ninja/wp-content/uploads/2013/08/smd-components-in-reflow.gif)
-](http://blog.mbedded.ninja/wp-content/uploads/2013/08/smd-components-in-reflow.gif) SMD components during a reflow soldering process.[/caption]
+[caption id="attachment_5018" align="aligncenter" width="240"][![SMD components during a reflow soldering process.](/images/2013/08/smd-components-in-reflow.gif)
+](/images/2013/08/smd-components-in-reflow.gif) SMD components during a reflow soldering process.[/caption]
 
 # Manually Applying Solder Paste
 

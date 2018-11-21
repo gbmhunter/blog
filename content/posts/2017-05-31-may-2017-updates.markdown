@@ -30,8 +30,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2015/01/thread-needle-icon.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/01/thread-needle-icon.png)
+[![](/images/2015/01/thread-needle-icon.png)
+](/images/2015/01/thread-needle-icon.png)
 
 
 
@@ -41,8 +41,8 @@ tags:
 
    
 
-[caption id="attachment_14451" align="aligncenter" width="261"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/05/clion-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/05/clion-logo.png) The CLion logo.[/caption]
+[caption id="attachment_14451" align="aligncenter" width="261"][![](/images/2017/05/clion-logo.png)
+](/images/2017/05/clion-logo.png) The CLion logo.[/caption]
 
 	  * New [Space sub-site](http://blog.mbedded.ninja/space) added to www.mbedded.ninja.  
 
@@ -50,8 +50,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2017/06/planet-icon-space.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/06/planet-icon-space.png)
+[![](/images/2017/06/planet-icon-space.png)
+](/images/2017/06/planet-icon-space.png)
 
 
 
@@ -61,8 +61,8 @@ tags:
 
    
 
-[caption id="attachment_14484" align="aligncenter" width="575"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/05/tle-two-line-element-example-first-quarter.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/05/tle-two-line-element-example-first-quarter.png) A partial screenshot of a TLE (two-line element) for the NOAA 14 satellite.[/caption]
+[caption id="attachment_14484" align="aligncenter" width="575"][![](/images/2017/05/tle-two-line-element-example-first-quarter.png)
+](/images/2017/05/tle-two-line-element-example-first-quarter.png) A partial screenshot of a TLE (two-line element) for the NOAA 14 satellite.[/caption]
   
 
  
@@ -72,7 +72,7 @@ tags:
 
    
 
-[caption id="attachment_14505" align="aligncenter" width="1159"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/06/yocto-device-tree-conversion-from-blob-to-source.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/06/yocto-device-tree-conversion-from-blob-to-source.png) A comparison between the Yocto generated binary Device Tree Blob (.dtb) file and the human-readable Device Tree Source (.dts) file that can be created from the .dtb file using the program dtc.[/caption]
+[caption id="attachment_14505" align="aligncenter" width="1159"][![](/images/2017/06/yocto-device-tree-conversion-from-blob-to-source.png)
+](/images/2017/06/yocto-device-tree-conversion-from-blob-to-source.png) A comparison between the Yocto generated binary Device Tree Blob (.dtb) file and the human-readable Device Tree Source (.dts) file that can be created from the .dtb file using the program dtc.[/caption]
 
 

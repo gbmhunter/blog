@@ -49,13 +49,13 @@ These are some of the important parameters shared by all types of diode (in a r
 
 Some other important properties of diodes are their ability to prevent conduction until a certain, configurable breakdown voltage, and a conduction current that is related to the square of the voltage across it. On schematics, they have the designator "D", and the following symbol (for a general diode).
 
-[caption id="attachment_11822" align="aligncenter" width="221"][![The schematic symbol for a general diode.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/schematic-symbol-general-diode.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/schematic-symbol-general-diode.png) The schematic symbol for a general diode.[/caption]
+[caption id="attachment_11822" align="aligncenter" width="221"][![The schematic symbol for a general diode.](/images/2011/09/schematic-symbol-general-diode.png)
+](/images/2011/09/schematic-symbol-general-diode.png) The schematic symbol for a general diode.[/caption]
 
 Diodes come in many [component packages](http://blog.mbedded.ninja/electronics/circuit-design/component-packages), one of the most common being the [through-hole DO-41 package](http://blog.mbedded.ninja/electronics/circuit-design/component-packages#do-41). They also come in standard SMD packages. It is a good idea to add polarity marks to the silkscreen layer on  diode footprints. The picture below shows polarity marks being added to a diode with a 0603 footprint.
 
-[caption id="attachment_11823" align="aligncenter" width="504"][![Polarity marks have been added to the silkscreen layer for these 0603 diodes.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/silkscreen-polarity-marks-on-0603-diode-footprint.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/silkscreen-polarity-marks-on-0603-diode-footprint.png) Polarity marks have been added to the silkscreen layer for these 0603 diodes.[/caption]
+[caption id="attachment_11823" align="aligncenter" width="504"][![Polarity marks have been added to the silkscreen layer for these 0603 diodes.](/images/2011/09/silkscreen-polarity-marks-on-0603-diode-footprint.png)
+](/images/2011/09/silkscreen-polarity-marks-on-0603-diode-footprint.png) Polarity marks have been added to the silkscreen layer for these 0603 diodes.[/caption]
 
 # Polarity
 
@@ -67,8 +67,8 @@ Note that some diodes, such as bi-directional TVS diodes, do not have a polarity
 
 Schottky diodes are special diodes that have a lower voltage drop than standard diodes (typically 0.3V instead of 0.7V). They are used in applications where the input voltage is small, and in high power applications in where the power consumption of the diode needs to be kept to a minimum. The standard schematic symbol for a schottky diode is shown below (note the curls on the bar, which differs it from the standard diode symbol.
 
-[caption id="attachment_11826" align="aligncenter" width="216"][![The schematic symbol for the schottky diode.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/schematic-symbol-schottky-diode.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/schematic-symbol-schottky-diode.png) The schematic symbol for the schottky diode.[/caption]
+[caption id="attachment_11826" align="aligncenter" width="216"][![The schematic symbol for the schottky diode.](/images/2011/09/schematic-symbol-schottky-diode.png)
+](/images/2011/09/schematic-symbol-schottky-diode.png) The schematic symbol for the schottky diode.[/caption]
 
 #  
 
@@ -100,8 +100,8 @@ APDs are used in range-finders and optical communications.
 
 Bridge rectifiers are 4 diodes connected in such a way that they rectify an AC voltage waveform into a DC one. The image below shows a bridge rectifier being used after a transformer to convert 12Vac into 12Vdc. Note that the frequency of the ripple will be twice the AC input frequency (2x 50Hz = 100Hz).
 
-[caption id="attachment_11829" align="aligncenter" width="1232"][![A schematic of an AC-DC power-supply that uses a bridge rectifier.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/transformer-bridge-recitifier-cap-240vac-to-12vdc.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/transformer-bridge-recitifier-cap-240vac-to-12vdc.png) A schematic of an AC-DC power-supply that uses a bridge rectifier.[/caption]
+[caption id="attachment_11829" align="aligncenter" width="1232"][![A schematic of an AC-DC power-supply that uses a bridge rectifier.](/images/2011/09/transformer-bridge-recitifier-cap-240vac-to-12vdc.png)
+](/images/2011/09/transformer-bridge-recitifier-cap-240vac-to-12vdc.png) A schematic of an AC-DC power-supply that uses a bridge rectifier.[/caption]
 
 Bridge rectifiers can have snubber elements attached to each diode. This helps reduce the high-frequency noise which can be induced when the diodes themselves switch on/off, due the leakage inductance and parasitic capacitance of the transformer (which cause oscillations when the diodes essentially change the output impedance). Typical values for the snubber circuit are a 47pF capacitor in series with a 2kR resistor.
 
@@ -115,13 +115,13 @@ Steering diodes is a name given to a configuration of two or more diodes that ch
 
 They can be used to provide transient ESD protection.
 
-[caption id="attachment_9422" align="aligncenter" width="484"][![Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/steering-diodes-used-for-transient-esd-protection.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/steering-diodes-used-for-transient-esd-protection.png) Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf.[/caption]
+[caption id="attachment_9422" align="aligncenter" width="484"][![Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf.](/images/2011/09/steering-diodes-used-for-transient-esd-protection.png)
+](/images/2011/09/steering-diodes-used-for-transient-esd-protection.png) Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf.[/caption]
 
 They can be used alongside a potentiometer and 555 timer to create a PWM circuit.
 
-[caption id="attachment_9423" align="aligncenter" width="736"][![Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications).](http://blog.mbedded.ninja/wp-content/uploads/2011/09/schematic-steering-diodes-used-for-555-timer-pwm-circuit.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/schematic-steering-diodes-used-for-555-timer-pwm-circuit.png) Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications).[/caption]
+[caption id="attachment_9423" align="aligncenter" width="736"][![Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications).](/images/2011/09/schematic-steering-diodes-used-for-555-timer-pwm-circuit.png)
+](/images/2011/09/schematic-steering-diodes-used-for-555-timer-pwm-circuit.png) Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications).[/caption]
 
 # Can Diodes Share Current?
 

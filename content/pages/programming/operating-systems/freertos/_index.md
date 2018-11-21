@@ -201,7 +201,7 @@ Some of the files in the demo folder are nested deeply within others, giving lar
 <tr >
 
 <td >[caption id="attachment_847" align="alignnone" width="46"][![Embedded Computer - RTOS vs. GPOS](http://blog.mbedded.ninja/wp-includes/images/crystal/document.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/10/Embedded-Computer-RTOS-vs.-GPOS.pdf) RTOS vs. GPOS[/caption]
+](/images/2011/10/Embedded-Computer-RTOS-vs.-GPOS.pdf) RTOS vs. GPOS[/caption]
 </td>
 
 <td > A good article pitching and comparing a RTOS against a GPOS.

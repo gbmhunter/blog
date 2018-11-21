@@ -140,5 +140,5 @@ These packages don't have leads, instead all of the pins are present as pads the
 # Photos
 
 
-[caption id="attachment_11432" align="aligncenter" width="392"][![A photo of the VQFN-28 component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/vqfn-28-component-package-photo-top-bottom.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/vqfn-28-component-package-photo-top-bottom.jpg) A photo of the VQFN-28 component package.[/caption]
+[caption id="attachment_11432" align="aligncenter" width="392"][![A photo of the VQFN-28 component package.](/images/2015/04/vqfn-28-component-package-photo-top-bottom.jpg)
+](/images/2015/04/vqfn-28-component-package-photo-top-bottom.jpg) A photo of the VQFN-28 component package.[/caption]

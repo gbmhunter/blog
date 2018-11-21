@@ -13,8 +13,8 @@ url: /electronics/general/altium/altium-bugs-and-things-to-watch-out-for
 
 There's no denying Altium has it's quirks. If you are getting annoyed with one of Altium's bugs, submit it to [BugCrunch](http://live.altium.com/bugcrunch), their bug tracking and fixing sub-site (you can vote on what you want fixed first). Here a some of the things you should keep an eye out for...
 
-[caption id="attachment_12698" align="aligncenter" width="487"][![Sigh. Altium.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/sigh-altium.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/sigh-altium.png) Sigh. Altium.[/caption]
+[caption id="attachment_12698" align="aligncenter" width="487"][![Sigh. Altium.](/images/2012/04/sigh-altium.png)
+](/images/2012/04/sigh-altium.png) Sigh. Altium.[/caption]
 
 # Custom Soldermask Expansions
 
@@ -26,25 +26,25 @@ Applicable Versions: 14, 15, 16
 
 Altium crashing with a 'Information' title box that says 'Please wait a moment', and a forever scrolling progress bar. At the point, save as much work as possible (you can still operate some commands at this point), and quit.
 
-[caption id="attachment_12699" align="aligncenter" width="284"][![The annoying "Please Wait A Moment" dialogue box that appears sometime while using Altium.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-information-please-wait-a-moment-bug.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-information-please-wait-a-moment-bug.jpg) The annoying "Please Wait A Moment" dialogue box that appears sometime while using Altium.[/caption]
+[caption id="attachment_12699" align="aligncenter" width="284"][![The annoying "Please Wait A Moment" dialogue box that appears sometime while using Altium.](/images/2012/04/altium-information-please-wait-a-moment-bug.jpg)
+](/images/2012/04/altium-information-please-wait-a-moment-bug.jpg) The annoying "Please Wait A Moment" dialogue box that appears sometime while using Altium.[/caption]
 
 The error you sometimes get after the "Please Wait A Moment" box.
 
-[caption id="attachment_12700" align="aligncenter" width="475"][![An access violation error message which can occur when using Altium.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-access-violation-error.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-access-violation-error.jpg) An access violation error message which can occur when using Altium.[/caption]
+[caption id="attachment_12700" align="aligncenter" width="475"][![An access violation error message which can occur when using Altium.](/images/2012/04/altium-access-violation-error.jpg)
+](/images/2012/04/altium-access-violation-error.jpg) An access violation error message which can occur when using Altium.[/caption]
 
 UPDATE: As of Altium v14.0, running on a Windows 8 machine, I have noticed far fewer of these errors!
 
-[caption id="attachment_12796" align="aligncenter" width="493"][![Ohhhh look, I was lucky enough to get two at once!](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-crash-please-wait-a-moment-i-was-lucky-enough-to-get-two-at-once.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-crash-please-wait-a-moment-i-was-lucky-enough-to-get-two-at-once.png) Ohhhh look, I was lucky enough to get two at once![/caption]
+[caption id="attachment_12796" align="aligncenter" width="493"][![Ohhhh look, I was lucky enough to get two at once!](/images/2012/04/altium-crash-please-wait-a-moment-i-was-lucky-enough-to-get-two-at-once.png)
+](/images/2012/04/altium-crash-please-wait-a-moment-i-was-lucky-enough-to-get-two-at-once.png) Ohhhh look, I was lucky enough to get two at once![/caption]
 
 # Closing Altium When It Crashes
 
 The easiest way to close Altium when it crashes it to hit Ctrl-Alt-Delete, bring up the task manager, go to the processes tab, and close DXP.exe. This is plenty faster than closing the program Altium.exe from the same task manager (almost instant, rather than 30+ seconds).
 
-[caption id="attachment_12794" align="aligncenter" width="445"][![Quickly closing Altium when it crashes.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/task-manager-quickly-closing-altium-end-task.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/task-manager-quickly-closing-altium-end-task.png) Quickly closing Altium when it crashes.[/caption]
+[caption id="attachment_12794" align="aligncenter" width="445"][![Quickly closing Altium when it crashes.](/images/2012/04/task-manager-quickly-closing-altium-end-task.png)
+](/images/2012/04/task-manager-quickly-closing-altium-end-task.png) Quickly closing Altium when it crashes.[/caption]
 
 # "Argument out of range" Errors
 
@@ -53,8 +53,8 @@ _Last Updated:_ April 2016_
 
 I have got fatal "Argument out of range" errors while performing basic routing tasks on the PCB. There is no way to save any work when this occurs, and after clicking the "O.K." button of the many "Argument out or range" boxes that pop-up (which are glitchy), Altium crashes and closes automatically.
 
-[caption id="attachment_13093" align="aligncenter" width="580"][![The fatal "Argument out of range" error that can occur while routing tracks in Altium.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-bug-argument-out-of-range-error-while-pcb-routing.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-bug-argument-out-of-range-error-while-pcb-routing.png) The fatal "Argument out of range" error that can occur while routing tracks in Altium.[/caption]
+[caption id="attachment_13093" align="aligncenter" width="580"][![The fatal "Argument out of range" error that can occur while routing tracks in Altium.](/images/2012/04/altium-bug-argument-out-of-range-error-while-pcb-routing.png)
+](/images/2012/04/altium-bug-argument-out-of-range-error-while-pcb-routing.png) The fatal "Argument out of range" error that can occur while routing tracks in Altium.[/caption]
 
 # Vias Disappearing While Routing Tracks
 
@@ -66,8 +66,8 @@ Vias disappearing when you route tracks to them. This is a weird one which has b
 
 If you draw an arc with the intention of drawing a full-circle but don't close it completely, you may notice that it will disappear at certain zoom levels (or just disappear entirely). This seems to happen when the start and end angle of the arc are very closer together (for example start angle = 0, end angle = 359.9). A way to fix is to edit the properties of the arc and make the start and angle the same.
 
-[caption id="attachment_12701" align="aligncenter" width="1127"][![Altium will make arcs disappear on certain zoom levels if the arc is almost fully circular.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-not-drawing-almost-complete-circle-arcs.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-not-drawing-almost-complete-circle-arcs.jpg) Altium will make arcs disappear on certain zoom levels if the arc is almost fully circular.[/caption]
+[caption id="attachment_12701" align="aligncenter" width="1127"][![Altium will make arcs disappear on certain zoom levels if the arc is almost fully circular.](/images/2012/04/altium-not-drawing-almost-complete-circle-arcs.jpg)
+](/images/2012/04/altium-not-drawing-almost-complete-circle-arcs.jpg) Altium will make arcs disappear on certain zoom levels if the arc is almost fully circular.[/caption]
 
 # Copy/Pasting Images Into Altium
 
@@ -80,11 +80,11 @@ UPDATE, March 2016: This does not seem to be happening anymore with AD15 or AD15
 Altium decides whether or not it wants to export holes/vias in step files. Upon importing these step files into a 3D CAD program, more often than not you will find that some of the holes have been covered (or partially covered) up by a very thin solid on the top and/or bottom. I have tried removing copper, silkscreen, soldermask and solderpaste layers to see if these were causing the trouble, but have had no luck in finding out why Altium does this. It is very annoying when it doesn't create the mounting holes, and you can't check that the PCB will work with the rest of the mechanical design (which is normally one of the reasons why you'd be exporting a 3D model).
 
 <table align="center" ><tbody ><tr >
-<td >[caption id="attachment_12702" align="aligncenter" width="369"][![Hole in PCB.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-not-exporting-holes-properly-before.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-not-exporting-holes-properly-before.jpg) Hole in PCB.[/caption]
+<td >[caption id="attachment_12702" align="aligncenter" width="369"][![Hole in PCB.](/images/2012/04/altium-not-exporting-holes-properly-before.jpg)
+](/images/2012/04/altium-not-exporting-holes-properly-before.jpg) Hole in PCB.[/caption]
 </td>
-<td >[caption id="attachment_12703" align="aligncenter" width="382"][![Hole covered over in step file output.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-not-exporting-holes-properly-after.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-not-exporting-holes-properly-after.jpg) Hole covered over in step file output.[/caption]
+<td >[caption id="attachment_12703" align="aligncenter" width="382"][![Hole covered over in step file output.](/images/2012/04/altium-not-exporting-holes-properly-after.jpg)
+](/images/2012/04/altium-not-exporting-holes-properly-after.jpg) Hole covered over in step file output.[/caption]
 </td></tr></tbody></table>
 
 # Variants With Multi-part Components
@@ -95,16 +95,16 @@ Multi-part components do not work well with schematic and PCB 'variants'. The mu
 
 To remove soldermask/solder paste from pads, the only way to do it is to go into the pads properties (double-click it), and then change the "Soldermask Expansions" (or Paste Mask...) option from "Expansion value from rules" to "Specify expansion value". Then you have to set it to a negative value large enough the it will shrink it away to nothing (e.g. larger than than the radius of the hole/via itself). I normally just enter -99mm or something along those lines...
 
-[caption id="attachment_12704" align="aligncenter" width="1233"][![How to remove a solder or paste mask completely from a pad/via.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-removing-solder-and-paste-mask.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-removing-solder-and-paste-mask.jpg) How to remove a solder or paste mask completely from a pad/via.[/caption]
+[caption id="attachment_12704" align="aligncenter" width="1233"][![How to remove a solder or paste mask completely from a pad/via.](/images/2012/04/altium-removing-solder-and-paste-mask.jpg)
+](/images/2012/04/altium-removing-solder-and-paste-mask.jpg) How to remove a solder or paste mask completely from a pad/via.[/caption]
 
 # Searching Altium Libraries
 
 When searching through a library, Altium will only search from the first letter of the component name or the description. This normally makes you search turn up blank. To make Altium search anywhere in those fields, add the asterisk character before the word (e.g. *reg rather than reg).
 
-[caption id="attachment_12705" align="aligncenter" width="800"][![Searching an Altium component library without an asterisk.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-library-search-without-asterisk.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-library-search-without-asterisk.jpg) Searching an Altium component library without an asterisk.[/caption] [caption id="attachment_12706" align="aligncenter" width="800"][![Searching an Alitum component library with an asterisk.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-library-search-with-asterisk.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-library-search-with-asterisk.jpg) Searching an Alitum component library with an asterisk.[/caption]
+[caption id="attachment_12705" align="aligncenter" width="800"][![Searching an Altium component library without an asterisk.](/images/2012/04/altium-library-search-without-asterisk.jpg)
+](/images/2012/04/altium-library-search-without-asterisk.jpg) Searching an Altium component library without an asterisk.[/caption] [caption id="attachment_12706" align="aligncenter" width="800"][![Searching an Alitum component library with an asterisk.](/images/2012/04/altium-library-search-with-asterisk.jpg)
+](/images/2012/04/altium-library-search-with-asterisk.jpg) Searching an Alitum component library with an asterisk.[/caption]
 
 #  Timestamping Output Files
 
@@ -118,8 +118,8 @@ Using scripts to add objects to a PCB can remove the ability to undo in any PCB 
 
 When setting the clearance rule in Altium. make sure that when you set the 'First Object Matches' query, you use the term 'InPolygon' rather than 'IsPolygon'. This is because Altium treats all the copper which you wish to apply the clearance rule to in the polygon as an object which is 'in' the polygon object. See the example in the picture below.
 
-[caption id="attachment_12708" align="aligncenter" width="970"][![The "Polygon Clearance" rule in Alitum. Make sure you use "InPolygon" and not "IsPolygon".](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-polygon-clearance-rule.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-polygon-clearance-rule.jpg) The "Polygon Clearance" rule in Alitum. Make sure you use "InPolygon" and not "IsPolygon".[/caption]
+[caption id="attachment_12708" align="aligncenter" width="970"][![The "Polygon Clearance" rule in Alitum. Make sure you use "InPolygon" and not "IsPolygon".](/images/2012/04/altium-polygon-clearance-rule.jpg)
+](/images/2012/04/altium-polygon-clearance-rule.jpg) The "Polygon Clearance" rule in Alitum. Make sure you use "InPolygon" and not "IsPolygon".[/caption]
 
 # Clearance Rules On The Keep-out Layer Are Not Working Properly With Polygons
 
@@ -127,8 +127,8 @@ If you are finding that when you draw polygons that Altium is not staying the co
 
 What I do to workaround this is to make the width of any tracks on the keep-out layer small in relation to the clearance you need (e.g. track width = 0.01mm). This way, the track width makes an insignificant change to the actual clearance. The picture below shows part of a PCB board along with thin-width tracks on the keep-out layer to set clearances properly. Note that the keep-out layer clearance is set to 0.5mm (a good value to keep things away from the edge of the board), while the track width is only 0.01mm resulting in an actual clearance of 0.5005mm (clearance + half the track width).
 
-[caption id="attachment_12709" align="aligncenter" width="1414"][![Changing the keepout layer track size.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-keepout-layer-track-size.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-keepout-layer-track-size.jpg) Changing the keepout layer track size.[/caption]
+[caption id="attachment_12709" align="aligncenter" width="1414"][![Changing the keepout layer track size.](/images/2012/04/altium-keepout-layer-track-size.jpg)
+](/images/2012/04/altium-keepout-layer-track-size.jpg) Changing the keepout layer track size.[/caption]
 
 # Altium And It's Geometrical Limitations
 
@@ -138,43 +138,43 @@ Altium works with straight lines and circular arcs. There is no provision for hi
 
 In my experience, a 'scaled' Altium Document printed on a standard laser printer has a decent amount of measurement error, and cannot be relied on for things such a mechanical checking or PCB prints and defintely not for etching. This is likely not to be a bug in Altium but the printer's fault (well, even then, it's not really the printers fault, a standard laser was probably never designed to be able to print accurate drawings).
 
-[caption id="attachment_12710" align="aligncenter" width="570"][![Selecting "Scaled Print" to print a 1:1 drawing of the PCB. Good for component footprint checking!](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-selecting-scaled-print.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-selecting-scaled-print.jpg) Selecting "Scaled Print" to print a 1:1 drawing of the PCB. Good for component footprint checking![/caption]
+[caption id="attachment_12710" align="aligncenter" width="570"][![Selecting "Scaled Print" to print a 1:1 drawing of the PCB. Good for component footprint checking!](/images/2012/04/altium-selecting-scaled-print.jpg)
+](/images/2012/04/altium-selecting-scaled-print.jpg) Selecting "Scaled Print" to print a 1:1 drawing of the PCB. Good for component footprint checking![/caption]
 
 # Altium Detecting Acute Angles Inside Pads
 
 Altium will give you warnings about acute angles when the tracks are inside pads (and therefore don't actually get drawn). This normally occurs in the central pad of SMD IC packages (such as QFN). The solution to this finish tracks just as they enter pads rather then letting them snap to the centre of the pad. To do this, hold down CTRL while routing the track, this will stop it from snapping to the centre.
 
-[caption id="attachment_12711" align="aligncenter" width="1533"][![Altium has a bug where it reports acute angle rule violations of tracks that are under pads.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-detecting-acute-angles-under-pads.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-detecting-acute-angles-under-pads.jpg) Altium has a bug where it reports acute angle rule violations of tracks that are under pads.[/caption]
+[caption id="attachment_12711" align="aligncenter" width="1533"][![Altium has a bug where it reports acute angle rule violations of tracks that are under pads.](/images/2012/04/altium-detecting-acute-angles-under-pads.jpg)
+](/images/2012/04/altium-detecting-acute-angles-under-pads.jpg) Altium has a bug where it reports acute angle rule violations of tracks that are under pads.[/caption]
 
 # Layer Stack-Up Manager Calculating Wrong Height
 
 The layer stack manager seems to incorrectly calculate the stack-up height by 1um (O.K., it's not that important, but still...). See the screen shot below for an example. All the copper thicknesses are 35um. It should total to 0.800mm, but Altium incorrectly reports it as 0.8001mm.
 
-[caption id="attachment_12712" align="aligncenter" width="1055"][![The stack-up manager in Altium reporting the wrong height.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-layer-stack-up-manager-giving-wrong-height.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-layer-stack-up-manager-giving-wrong-height.jpg) The stack-up manager in Altium reporting the wrong height.[/caption]
+[caption id="attachment_12712" align="aligncenter" width="1055"][![The stack-up manager in Altium reporting the wrong height.](/images/2012/04/altium-layer-stack-up-manager-giving-wrong-height.jpg)
+](/images/2012/04/altium-layer-stack-up-manager-giving-wrong-height.jpg) The stack-up manager in Altium reporting the wrong height.[/caption]
 
 # Combo Boxes In Script Form Forgetting Their Items
 
 The combo boxes in the script form designer forget their items if you set them using the GUI, save, and then restart. The way to get around this is to add the items at run time in the code itself (using the function comboBox.AddItem).
 
-[caption id="attachment_12713" align="aligncenter" width="573"][![Altium forgets any items you assigned to a combo box through GUI after saving and restarting.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-script-combobox-loses-items-on-restart.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-script-combobox-loses-items-on-restart.jpg) Altium forgets any items you assigned to a combo box through GUI after saving and restarting.[/caption]
+[caption id="attachment_12713" align="aligncenter" width="573"][![Altium forgets any items you assigned to a combo box through GUI after saving and restarting.](/images/2012/04/altium-script-combobox-loses-items-on-restart.jpg)
+](/images/2012/04/altium-script-combobox-loses-items-on-restart.jpg) Altium forgets any items you assigned to a combo box through GUI after saving and restarting.[/caption]
 
 # Screen Artifacts
 
 Every so often small screen artifacts can appear. These are defintely one of the more tolerable Altium bugs. To fix, usually you have restart Altium, as refreshing the window or minimising/maximising does not remove them. The artifacts are usually sections of the 'Projects' menu on the left-hand side of the screen.
 
-[caption id="attachment_12714" align="aligncenter" width="521"][![A screen artifact/glitch in Altium.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-bug-screen-artifact.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-bug-screen-artifact.png) A screen artifact/glitch in Altium.[/caption]
+[caption id="attachment_12714" align="aligncenter" width="521"][![A screen artifact/glitch in Altium.](/images/2012/04/altium-bug-screen-artifact.png)
+](/images/2012/04/altium-bug-screen-artifact.png) A screen artifact/glitch in Altium.[/caption]
 
 # Clearing Cells In Parameter Manger Takes Ages
 
 When clearing a large number of cells (>20) in the Parameter Manager , Altium can take plenty of time, stalling the program in the process (it looks as though Altium has locked up).
 
-[caption id="attachment_12715" align="aligncenter" width="1196"][![When clearing a large number of cells (>20) in the Parameter Manager , Altium can take plenty of time, stalling the program in the process (it looks as though Altium has locked up).](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-parameter-manager-clearing-cells-takes-a-long-time-bug.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-parameter-manager-clearing-cells-takes-a-long-time-bug.png) When clearing a large number of cells (>20) in the Parameter Manager , Altium can take plenty of time, stalling the program in the process (it looks as though Altium has locked up).[/caption]
+[caption id="attachment_12715" align="aligncenter" width="1196"][![When clearing a large number of cells (>20) in the Parameter Manager , Altium can take plenty of time, stalling the program in the process (it looks as though Altium has locked up).](/images/2012/04/altium-parameter-manager-clearing-cells-takes-a-long-time-bug.png)
+](/images/2012/04/altium-parameter-manager-clearing-cells-takes-a-long-time-bug.png) When clearing a large number of cells (>20) in the Parameter Manager , Altium can take plenty of time, stalling the program in the process (it looks as though Altium has locked up).[/caption]
 
 # Undo/Redo Issues When Editing Component Primitives On PCB
 
@@ -186,15 +186,15 @@ When creating PCB footprints in Altium's PCB editor, you can sometimes accidenta
 
 Once this occurs, it can be ridiculously hard to delete this objects, because they cannot be selected (even with Select->Outside Rectangle). These objects then appear during the PCB design (you may not even realise they are there) at times when you want to zoom to fit, or creating PCB print outputs (in which everything will be zoomed out by way to much to accommodate these far-away objects).
 
-[caption id="attachment_12716" align="aligncenter" width="807"][![Accidentally pushing objects outside of the PCB editor boundary can be a hassle to remove when designing a PCB in Altium.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/objects-going-outside-of-the-pcb-boundry-in-altium.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/objects-going-outside-of-the-pcb-boundry-in-altium.png) Accidentally pushing objects outside of the PCB editor boundary can be a hassle to remove when designing a PCB in Altium.[/caption]
+[caption id="attachment_12716" align="aligncenter" width="807"][![Accidentally pushing objects outside of the PCB editor boundary can be a hassle to remove when designing a PCB in Altium.](/images/2012/04/objects-going-outside-of-the-pcb-boundry-in-altium.png)
+](/images/2012/04/objects-going-outside-of-the-pcb-boundry-in-altium.png) Accidentally pushing objects outside of the PCB editor boundary can be a hassle to remove when designing a PCB in Altium.[/caption]
 
 # Schematic Parameters Un-removable After Script Modifications
 
 In certain cases, I have noticed that the schematic preferences become un-removable after they have been modified with a script.
 
-[caption id="attachment_12717" align="aligncenter" width="728"][![This schematic parameter is un-removable!](http://blog.mbedded.ninja/wp-content/uploads/2012/04/schematic-parameters-unremovable-annotated.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/schematic-parameters-unremovable-annotated.png) This schematic parameter is un-removable![/caption]
+[caption id="attachment_12717" align="aligncenter" width="728"][![This schematic parameter is un-removable!](/images/2012/04/schematic-parameters-unremovable-annotated.png)
+](/images/2012/04/schematic-parameters-unremovable-annotated.png) This schematic parameter is un-removable![/caption]
 
 # No Multi-line PCB Strings
 
@@ -202,8 +202,8 @@ UPDATE, 2015-11: The Altium PCB editor now supports multi-line strings. Hurrah!
 
 Altium does not have support for multi-line PCB strings. The work around is build up your multiline PCB string from many single line strings. This is time consuming, annoying, and seems like a waste of time.
 
-[caption id="attachment_12718" align="aligncenter" width="1276"][![In Altium, multi-line PCB strings have to be made from many single-line strings.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-multi-line-pcb-string-made-from-single-line-strings.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-multi-line-pcb-string-made-from-single-line-strings.png) In Altium, multi-line PCB strings have to be made from many single-line strings.[/caption]
+[caption id="attachment_12718" align="aligncenter" width="1276"][![In Altium, multi-line PCB strings have to be made from many single-line strings.](/images/2012/04/altium-multi-line-pcb-string-made-from-single-line-strings.png)
+](/images/2012/04/altium-multi-line-pcb-string-made-from-single-line-strings.png) In Altium, multi-line PCB strings have to be made from many single-line strings.[/caption]
 
 # Split-planes Don't Avoid On-Layer Keep-Out Objects
 
@@ -251,13 +251,13 @@ Keep-out regions on split-plane layers do not stop the split plane copper from b
 
 On the surface, it seems like Altium gives you the option to hide pins on a schematic symbol and attach them to other, visible pins on the schematic symbol.
 
-[caption id="attachment_12475" align="aligncenter" width="486"][![The "Pin Properties" window in the Altium schematic symbol library editor. The "Hide" and "Connect To" fields give the allusion you can hide a pin and connect it to another, visible pin.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-schematic-symbol-pin-properties-highlighting-hidden-pin-connect-to.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-schematic-symbol-pin-properties-highlighting-hidden-pin-connect-to.png) The "Pin Properties" window in the Altium schematic symbol library editor. The "Hide" and "Connect To" fields give the allusion you can hide a pin and connect it to another, visible pin.[/caption]
+[caption id="attachment_12475" align="aligncenter" width="486"][![The "Pin Properties" window in the Altium schematic symbol library editor. The "Hide" and "Connect To" fields give the allusion you can hide a pin and connect it to another, visible pin.](/images/2012/04/altium-schematic-symbol-pin-properties-highlighting-hidden-pin-connect-to.png)
+](/images/2012/04/altium-schematic-symbol-pin-properties-highlighting-hidden-pin-connect-to.png) The "Pin Properties" window in the Altium schematic symbol library editor. The "Hide" and "Connect To" fields give the allusion you can hide a pin and connect it to another, visible pin.[/caption]
 
 This would be very useful for certain component/package combinations which use multiple pins for the same purpose. Such an example are MOSFET's in the SOIC-8N component package. The standard pinout for connecting the three MOSFET terminals to the 8-pin SOIC-8N package is source = pins 1 to 3, gate = pin 4, drain = pins 5 to 8.
 
-[caption id="attachment_12476" align="aligncenter" width="881"][![The schematic symbol of a P-channel MOSFET in the Altium schematic symbol editor. The particualr MOSFET is in a  SOIC-8N (8-pin) package, and I have attempted to hide the extra pins to keep the symbol looking clean.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/p-channel-mosfet-schematic-symbol-altium-soic-8-hidden-pins-annotated.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/p-channel-mosfet-schematic-symbol-altium-soic-8-hidden-pins-annotated.png) The schematic symbol of a P-channel MOSFET in the Altium schematic symbol editor. The particualr MOSFET is in a SOIC-8N (8-pin) package, and I have attempted to hide the extra pins to keep the symbol looking clean.[/caption]
+[caption id="attachment_12476" align="aligncenter" width="881"][![The schematic symbol of a P-channel MOSFET in the Altium schematic symbol editor. The particualr MOSFET is in a  SOIC-8N (8-pin) package, and I have attempted to hide the extra pins to keep the symbol looking clean.](/images/2012/04/p-channel-mosfet-schematic-symbol-altium-soic-8-hidden-pins-annotated.png)
+](/images/2012/04/p-channel-mosfet-schematic-symbol-altium-soic-8-hidden-pins-annotated.png) The schematic symbol of a P-channel MOSFET in the Altium schematic symbol editor. The particualr MOSFET is in a SOIC-8N (8-pin) package, and I have attempted to hide the extra pins to keep the symbol looking clean.[/caption]
 
 The only solution is to ditch the "hide" ability altogether and stack the pins ontop of each other. One downside to this approach is that Altium will show a multiple connection dot on the schematics when you wire up to pins stacked ontop of each other. But then again, maybe this is not such a bad thing?
 
@@ -265,13 +265,13 @@ The only solution is to ditch the "hide" ability altogether and stack the pins 
 
 If you get the error "Table: Field name Missing" when opening, modifying, or saving a BOM (for me it occurs when using a .BomDoc), it is usually because your Altium project contains components which have parameters with no name.
 
-[caption id="attachment_12606" align="aligncenter" width="1225"][![A screenshot of the "Table: Field name Missing" error in Altium.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-bug-bom-table-field-name-missing-error.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-bug-bom-table-field-name-missing-error.png) A screenshot of the "Table: Field name Missing" error in Altium.[/caption]
+[caption id="attachment_12606" align="aligncenter" width="1225"][![A screenshot of the "Table: Field name Missing" error in Altium.](/images/2012/04/altium-bug-bom-table-field-name-missing-error.png)
+](/images/2012/04/altium-bug-bom-table-field-name-missing-error.png) A screenshot of the "Table: Field name Missing" error in Altium.[/caption]
 
 Parameters are allowed to have no value, but not no name. To fix this, delete all unnamed parameter in your project. The easiest way to do this is to load up the **Parameter Manager** and hunt down for parameter names up at the top of every column that are blank, and then delete them.
 
-[caption id="attachment_12607" align="aligncenter" width="877"][![Hunting down unnamed parameters in the parameter manager to fix the "Table: Field name missing" bug in Altium.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-bug-bom-table-field-name-missing-parameter-manager-no-names-annotated.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-bug-bom-table-field-name-missing-parameter-manager-no-names-annotated.png) Hunting down unnamed parameters in the parameter manager to fix the "Table: Field name missing" bug in Altium.[/caption]
+[caption id="attachment_12607" align="aligncenter" width="877"][![Hunting down unnamed parameters in the parameter manager to fix the "Table: Field name missing" bug in Altium.](/images/2012/04/altium-bug-bom-table-field-name-missing-parameter-manager-no-names-annotated.png)
+](/images/2012/04/altium-bug-bom-table-field-name-missing-parameter-manager-no-names-annotated.png) Hunting down unnamed parameters in the parameter manager to fix the "Table: Field name missing" bug in Altium.[/caption]
 
 # PCB Editor Can't Handle Unicode Characters In Component Descriptions
 
@@ -279,8 +279,8 @@ Unicode characters (which are not ASCII), such as the Ohm symbol and the degree 
 
 Because of this, the PCB editor will continuously try and update component descriptions which contain Unicode characters on every "Update Changes From Schematics" command.
 
-[caption id="attachment_12695" align="aligncenter" width="1146"][![Altium's PCB editor can't handle Unicode characters such as the Ohm (Omega) and degree symbol. This image shows how Altium will continuously try and update components that contain these symbols.](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-pcb-editor-cant-handle-unicode-chars-ohms-symbols.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/04/altium-pcb-editor-cant-handle-unicode-chars-ohms-symbols.png) Altium's PCB editor can't handle Unicode characters such as the Ohm (Omega) and degree symbol. This image shows how Altium will continuously try and update components that contain these symbols.[/caption]
+[caption id="attachment_12695" align="aligncenter" width="1146"][![Altium's PCB editor can't handle Unicode characters such as the Ohm (Omega) and degree symbol. This image shows how Altium will continuously try and update components that contain these symbols.](/images/2012/04/altium-pcb-editor-cant-handle-unicode-chars-ohms-symbols.png)
+](/images/2012/04/altium-pcb-editor-cant-handle-unicode-chars-ohms-symbols.png) Altium's PCB editor can't handle Unicode characters such as the Ohm (Omega) and degree symbol. This image shows how Altium will continuously try and update components that contain these symbols.[/caption]
 
 This is unfortunate, as symbols like \(\Omega\) and \(^{\circ}\) are great to use in component descriptions.
 

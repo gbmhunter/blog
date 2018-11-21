@@ -22,9 +22,9 @@ I have recently upgraded this sites theme from [Avada](http://themeforest.net/it
 
 
 
-[caption id="attachment_11804" align="aligncenter" width="1452"][![A screenshot of mbedded-ninja's home page with the new twentyfifteen theme.](http://blog.mbedded.ninja/wp-content/uploads/2015/07/screenshot-of-mbedded-ninja-home-page-with-twenty-fifteen-theme.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/07/screenshot-of-mbedded-ninja-home-page-with-twenty-fifteen-theme.png) A screenshot of mbedded-ninja's home page with the new twentyfifteen theme.[/caption] [caption id="attachment_11805" align="alignright" width="182"][![Just some of Avada's complex, deeply-nested and non-intuitive menu structure.](http://blog.mbedded.ninja/wp-content/uploads/2015/07/just-some-of-avadas-menu-structure.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/07/just-some-of-avadas-menu-structure.png) Just some of Avada's complex, deeply-nested and non-intuitive menu structure.[/caption]
+[caption id="attachment_11804" align="aligncenter" width="1452"][![A screenshot of mbedded-ninja's home page with the new twentyfifteen theme.](/images/2015/07/screenshot-of-mbedded-ninja-home-page-with-twenty-fifteen-theme.png)
+](/images/2015/07/screenshot-of-mbedded-ninja-home-page-with-twenty-fifteen-theme.png) A screenshot of mbedded-ninja's home page with the new twentyfifteen theme.[/caption] [caption id="attachment_11805" align="alignright" width="182"][![Just some of Avada's complex, deeply-nested and non-intuitive menu structure.](/images/2015/07/just-some-of-avadas-menu-structure.png)
+](/images/2015/07/just-some-of-avadas-menu-structure.png) Just some of Avada's complex, deeply-nested and non-intuitive menu structure.[/caption]
 
 
 

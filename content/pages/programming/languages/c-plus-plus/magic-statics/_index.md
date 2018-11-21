@@ -37,8 +37,8 @@ The above code creates a new static qualified string inside the function, and th
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2017/08/magic-statics-icon-bunny-hat-code.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/08/magic-statics-icon-bunny-hat-code.png)
+[![](/images/2017/08/magic-statics-icon-bunny-hat-code.png)
+](/images/2017/08/magic-statics-icon-bunny-hat-code.png)
 
 
 
@@ -105,7 +105,7 @@ The constructor and destructor is made private, and both the copy and move const
 
 
 
-This is sometimes called the _Meyers' Singleton_ after Scott Meyers publication "[_C++ and the Perils of Double-Checked Locking_](http://blog.mbedded.ninja/wp-content/uploads/2017/08/Scott-Meyers-Cpp-and-the-Perils-of-Double-Checked-Locking.pdf)".
+This is sometimes called the _Meyers' Singleton_ after Scott Meyers publication "[_C++ and the Perils of Double-Checked Locking_](/images/2017/08/Scott-Meyers-Cpp-and-the-Perils-of-Double-Checked-Locking.pdf)".
 
 
 
@@ -144,8 +144,8 @@ On the Windows side of things, thread safety was implemented for magic statics i
 
 
 
-[caption id="attachment_14713" align="aligncenter" width="622"][![](http://blog.mbedded.ninja/wp-content/uploads/2017/08/visual-studio-support-for-cpp-magic-statics.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/08/visual-studio-support-for-cpp-magic-statics.png) Table showing Visual Studio's support for magic statics. Image from https://msdn.microsoft.com/en-us/library/hh567368.aspx.[/caption]
+[caption id="attachment_14713" align="aligncenter" width="622"][![](/images/2017/08/visual-studio-support-for-cpp-magic-statics.png)
+](/images/2017/08/visual-studio-support-for-cpp-magic-statics.png) Table showing Visual Studio's support for magic statics. Image from https://msdn.microsoft.com/en-us/library/hh567368.aspx.[/caption]
 
 
 

@@ -19,8 +19,8 @@ Note that an op-amp's gain can be adjusted with the appropriate external circui
 
 An op-amp is commonly drawn on schematics as:
 
-[caption id="attachment_11845" align="aligncenter" width="335"][![The basic schematic symbol for an op-amp.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-basic-schematic-symbol.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-basic-schematic-symbol.png) The basic schematic symbol for an op-amp.[/caption]
+[caption id="attachment_11845" align="aligncenter" width="335"][![The basic schematic symbol for an op-amp.](/images/2011/09/op-amp-basic-schematic-symbol.png)
+](/images/2011/09/op-amp-basic-schematic-symbol.png) The basic schematic symbol for an op-amp.[/caption]
 
 You may see this symbol with or without the voltage supply pins \( V_{S+} \) and \( V_{S-} \). If they are not present, it is assumed that they are connected up to a power source which should be obvious from the design intent.
 
@@ -34,27 +34,27 @@ You may see this symbol with or without the voltage supply pins \( V_{S+} \) and
 
 A voltage follower (also known as a buffer) is one of the most basic circuits you can make with an op-amp.
 
-[caption id="attachment_11846" align="aligncenter" width="517"][![An op-amp configured as a voltage follower (aka buffer).](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-voltage-follower-buffer.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-voltage-follower-buffer.png) An op-amp configured as a voltage follower (aka buffer).[/caption]
+[caption id="attachment_11846" align="aligncenter" width="517"][![An op-amp configured as a voltage follower (aka buffer).](/images/2011/09/op-amp-schematic-voltage-follower-buffer.png)
+](/images/2011/09/op-amp-schematic-voltage-follower-buffer.png) An op-amp configured as a voltage follower (aka buffer).[/caption]
 
 As shown in the above diagram, the output voltage is the same as the input voltage (\(v_{o} = v_{i}\)). Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
 
 A simulation schematic for a voltage-follower op-amp is shown below:
 
-[caption id="attachment_13180" align="aligncenter" width="382"][![A simulation schematic for an op-amp configured as a voltage-follower (buffer).](http://blog.mbedded.ninja/wp-content/uploads/2011/09/simulation-schematic-for-op-amp-voltage-follower-buffer.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/simulation-schematic-for-op-amp-voltage-follower-buffer.png) A simulation schematic for an op-amp configured as a voltage-follower (buffer).[/caption]
+[caption id="attachment_13180" align="aligncenter" width="382"][![A simulation schematic for an op-amp configured as a voltage-follower (buffer).](/images/2011/09/simulation-schematic-for-op-amp-voltage-follower-buffer.png)
+](/images/2011/09/simulation-schematic-for-op-amp-voltage-follower-buffer.png) A simulation schematic for an op-amp configured as a voltage-follower (buffer).[/caption]
 
 The results of the simulation:
 
-[caption id="attachment_13178" align="aligncenter" width="1400"][![The simulation results for an op-amp configured as a voltage-follower (buffer). Note how the output voltage mirrors the input voltage exactly.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/Output-Voltage-vs.-Input-Voltage-For-Op-Amp-Configured-As-Voltage-Follower-Buffer.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/Output-Voltage-vs.-Input-Voltage-For-Op-Amp-Configured-As-Voltage-Follower-Buffer.png) The simulation results for an op-amp configured as a voltage-follower (buffer). Note how the output voltage mirrors the input voltage exactly.[/caption]
+[caption id="attachment_13178" align="aligncenter" width="1400"][![The simulation results for an op-amp configured as a voltage-follower (buffer). Note how the output voltage mirrors the input voltage exactly.](/images/2011/09/Output-Voltage-vs.-Input-Voltage-For-Op-Amp-Configured-As-Voltage-Follower-Buffer.png)
+](/images/2011/09/Output-Voltage-vs.-Input-Voltage-For-Op-Amp-Configured-As-Voltage-Follower-Buffer.png) The simulation results for an op-amp configured as a voltage-follower (buffer). Note how the output voltage mirrors the input voltage exactly.[/caption]
 
 ## Non-Inverting Amplifier
 
 A op-amp in the non-inverting amplifier configuration is shown below.
 
-[caption id="attachment_11847" align="aligncenter" width="508"][![An op-amp configured as a non-inverting amplifier.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-non-inverting-amplifier.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-non-inverting-amplifier.png) An op-amp configured as a non-inverting amplifier.[/caption]
+[caption id="attachment_11847" align="aligncenter" width="508"][![An op-amp configured as a non-inverting amplifier.](/images/2011/09/op-amp-schematic-non-inverting-amplifier.png)
+](/images/2011/09/op-amp-schematic-non-inverting-amplifier.png) An op-amp configured as a non-inverting amplifier.[/caption]
 
 The equation for the gain of the non-inverting amplifier is:
 
@@ -68,20 +68,20 @@ $$ G = 1 + \frac{R_f}{R_i} \\
 G = 1 + \frac{1k\Omega}{1k\Omega} \\  
 G = 2 $$
 
-[caption id="attachment_13183" align="aligncenter" width="465"][![The simulation schematic for a non-inverting op-amp amplifier.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/non-inverting-op-amp-amplifier-simulation-schematic.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/non-inverting-op-amp-amplifier-simulation-schematic.png) The simulation schematic for a non-inverting op-amp amplifier.[/caption]
+[caption id="attachment_13183" align="aligncenter" width="465"][![The simulation schematic for a non-inverting op-amp amplifier.](/images/2011/09/non-inverting-op-amp-amplifier-simulation-schematic.png)
+](/images/2011/09/non-inverting-op-amp-amplifier-simulation-schematic.png) The simulation schematic for a non-inverting op-amp amplifier.[/caption]
 
 The results of the simulation are shown below. As you can see, the output voltage \(V_{out}\) is exactly twice the input voltage \(V_{in}\).
 
-[caption id="attachment_13182" align="aligncenter" width="1700"][![A graph of Vout vs. Vin for a non-inverting op-amp amplifier circuit.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png) A graph of Vout vs. Vin for a non-inverting op-amp amplifier circuit.[/caption]
+[caption id="attachment_13182" align="aligncenter" width="1700"][![A graph of Vout vs. Vin for a non-inverting op-amp amplifier circuit.](/images/2011/09/vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png)
+](/images/2011/09/vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png) A graph of Vout vs. Vin for a non-inverting op-amp amplifier circuit.[/caption]
 
 ## Inverting Amplifier
 
 A op-amp amplifier in the inverting configuration is shown below:
 
-[caption id="attachment_11848" align="aligncenter" width="473"][![An op-amp configured as an inverting amplifier.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-inverting-amplifier.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-inverting-amplifier.png) An op-amp configured as an inverting amplifier.[/caption]
+[caption id="attachment_11848" align="aligncenter" width="473"][![An op-amp configured as an inverting amplifier.](/images/2011/09/op-amp-schematic-inverting-amplifier.png)
+](/images/2011/09/op-amp-schematic-inverting-amplifier.png) An op-amp configured as an inverting amplifier.[/caption]
 
 The equation for the gain of an inverting amplifier is:
 
@@ -91,20 +91,20 @@ The negative sign is to show that the output is the inverse polarity of the inpu
 
 Below is the schematic used for simulating the behaviour of an inverting op-amp. Note how is requires a negative voltage power supply.
 
-[caption id="attachment_13265" align="aligncenter" width="584"][![A schematic for simulating the behaviour of an inverting op-amp.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/inverting-op-amp-simulation-schematic.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/inverting-op-amp-simulation-schematic.png) A schematic for simulating the behaviour of an inverting op-amp.[/caption]
+[caption id="attachment_13265" align="aligncenter" width="584"][![A schematic for simulating the behaviour of an inverting op-amp.](/images/2011/09/inverting-op-amp-simulation-schematic.png)
+](/images/2011/09/inverting-op-amp-simulation-schematic.png) A schematic for simulating the behaviour of an inverting op-amp.[/caption]
 
 And below are the simulation results for the above schematic:
 
-[caption id="attachment_13266" align="aligncenter" width="1420"][![Vout vs. Vin for an inverting op-amp with a gain of -1.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/vout-vs-vin-inverting-op-amp-gain-neg-1.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/vout-vs-vin-inverting-op-amp-gain-neg-1.png) Vout vs. Vin for an inverting op-amp with a gain of -1.[/caption]
+[caption id="attachment_13266" align="aligncenter" width="1420"][![Vout vs. Vin for an inverting op-amp with a gain of -1.](/images/2011/09/vout-vs-vin-inverting-op-amp-gain-neg-1.png)
+](/images/2011/09/vout-vs-vin-inverting-op-amp-gain-neg-1.png) Vout vs. Vin for an inverting op-amp with a gain of -1.[/caption]
 
 ## Differential Amplifier
 
 A differential amplifier amplifies the difference between two electrical signals.
 
-[caption id="attachment_11849" align="aligncenter" width="489"][![An op-amp configured as a differential amplifier.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-differential-amplifier.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-differential-amplifier.png) An op-amp configured as a differential amplifier.[/caption]
+[caption id="attachment_11849" align="aligncenter" width="489"][![An op-amp configured as a differential amplifier.](/images/2011/09/op-amp-schematic-differential-amplifier.png)
+](/images/2011/09/op-amp-schematic-differential-amplifier.png) An op-amp configured as a differential amplifier.[/caption]
 
 The output voltage is given by the equation:
 
@@ -112,27 +112,27 @@ $$ v_o = \frac{R_4}{R_3 + R_4}(1 + \frac{R_2}{R_1})v_2 - \frac{R_2}{R_1}v_1 $$
 
 Below is a schematic for simulating the behaviour of a differential op-amp:
 
-[caption id="attachment_13269" align="aligncenter" width="822"][![A schematic for simulating the behaviour of a differential op-amp.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/differential-op-amp-simulation-schematic.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/differential-op-amp-simulation-schematic.png) A schematic for simulating the behaviour of a differential op-amp.[/caption]
+[caption id="attachment_13269" align="aligncenter" width="822"][![A schematic for simulating the behaviour of a differential op-amp.](/images/2011/09/differential-op-amp-simulation-schematic.png)
+](/images/2011/09/differential-op-amp-simulation-schematic.png) A schematic for simulating the behaviour of a differential op-amp.[/caption]
 
 This schematic produces the following results:
 
-[caption id="attachment_13270" align="aligncenter" width="1686"][![A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/differential-op-amp-simulation-graph-vin1-vin2-vout.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/differential-op-amp-simulation-graph-vin1-vin2-vout.png) A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier.[/caption]
+[caption id="attachment_13270" align="aligncenter" width="1686"][![A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier.](/images/2011/09/differential-op-amp-simulation-graph-vin1-vin2-vout.png)
+](/images/2011/09/differential-op-amp-simulation-graph-vin1-vin2-vout.png) A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier.[/caption]
 
 ## Integrator
 
 It's output voltage is proportional to the integral of the input voltage w.r.t. time. The figure below shows an **ideal** op-amp based integrator.
 
-[caption id="attachment_11850" align="aligncenter" width="491"][![An op-amp configured as an ideal integrator.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-ideal-integrator.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-ideal-integrator.png) An op-amp configured as an ideal integrator.[/caption]
+[caption id="attachment_11850" align="aligncenter" width="491"][![An op-amp configured as an ideal integrator.](/images/2011/09/op-amp-schematic-ideal-integrator.png)
+](/images/2011/09/op-amp-schematic-ideal-integrator.png) An op-amp configured as an ideal integrator.[/caption]
 
 However, this circuit is normally not practical in real world situations. Any errors such as the output offset voltage and input bias current (which all op-amps invariably have), as well as a non-perfect input signal with small amounts of DC bias, will cause the output to drift, until it reaches saturation.
 
 A way to fix this problem is to insert a high-valued feedback resistor, \(R_f\), to limit the DC gain, as well as a resistor, \(R_{bias}\), on the non-inverting input terminal to compensate for the input bias current.
 
-[caption id="attachment_11851" align="aligncenter" width="431"][![An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-integrator-non-ideal.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/op-amp-schematic-integrator-non-ideal.png) An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset.[/caption]
+[caption id="attachment_11851" align="aligncenter" width="431"][![An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset.](/images/2011/09/op-amp-schematic-integrator-non-ideal.png)
+](/images/2011/09/op-amp-schematic-integrator-non-ideal.png) An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset.[/caption]
 
 ## Transconductance Amplifier
 
@@ -211,7 +211,7 @@ Op-amps have slowly gotten better over the last few decades. Newer op-amps have 
 
 Check out Korg's Monotron schematics for some good examples of how op-aps are used in commercial products.  
 [![Korg Monotron Schematics](http://blog.mbedded.ninja/wp-includes/images/crystal/document.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/Korg-Monotron-Schematics.pdf)
+](/images/2011/09/Korg-Monotron-Schematics.pdf)
 
 # Rail-to-Rail Op-amps
 
@@ -221,8 +221,8 @@ What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-
 
 **To achieve a true ground output, you need a negative voltage supply.** There are dedicated IC's designed to provide a small negative power supply to op-amps so that they can output true ground. One such example is the [Texas Instruments LM7705](http://www.ti.com/product/LM7705), a "_Low Noise Negative Bias Generator_". This IC only generates -230mV, which allows the designer to use CMOS-based op-amps which usually have a maximum supply voltage of 5.5V.
 
-[caption id="attachment_13294" align="aligncenter" width="688"][![The typical application schematic for the Texas Instruments LM7705, a "Low-Noise Negative Bias Generator" for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png) The typical application schematic for the Texas Instruments LM7705, a "Low-Noise Negative Bias Generator" for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/.[/caption]
+[caption id="attachment_13294" align="aligncenter" width="688"][![The typical application schematic for the Texas Instruments LM7705, a "Low-Noise Negative Bias Generator" for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/.](/images/2011/09/lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png)
+](/images/2011/09/lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png) The typical application schematic for the Texas Instruments LM7705, a "Low-Noise Negative Bias Generator" for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/.[/caption]
 
 # Examples
 
@@ -258,8 +258,8 @@ Below are some examples of op-amps that stand out from the crowd for some reason
 
 Isolation amplifiers provide galvanic isolation between the input (sensor) and output (measurement circuitry). They are used to protect the sensor measurement and recording circuitry (e.g. a microcontroller with on-board ADC) from dangerously high voltages at the sensor, and also the opposite, to protect the sensor environment from potentially dangerous voltages on the rest of the system.
 
-[caption id="attachment_12310" align="aligncenter" width="753"][![A simplified schematic of the Texas Instruments AMC1200, a fully-differential isolated amplifier. Image from http://www.ti.com/.](http://blog.mbedded.ninja/wp-content/uploads/2011/09/fully-differential-isolation-amplfier-ti-amc1200-simplified-schematic.pdf.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2011/09/fully-differential-isolation-amplfier-ti-amc1200-simplified-schematic.pdf.png) A simplified schematic of the Texas Instruments AMC1200, a fully-differential isolated amplifier. Image from http://www.ti.com/.[/caption]
+[caption id="attachment_12310" align="aligncenter" width="753"][![A simplified schematic of the Texas Instruments AMC1200, a fully-differential isolated amplifier. Image from http://www.ti.com/.](/images/2011/09/fully-differential-isolation-amplfier-ti-amc1200-simplified-schematic.pdf.png)
+](/images/2011/09/fully-differential-isolation-amplfier-ti-amc1200-simplified-schematic.pdf.png) A simplified schematic of the Texas Instruments AMC1200, a fully-differential isolated amplifier. Image from http://www.ti.com/.[/caption]
 
 A common application would be to isolate and amplify the voltage across a current-sense resistor on a high-power motor, or to protect humans with medical sensors connected to them from the measurement system.
 

@@ -9,4 +9,4 @@ url: /pyrotechnics/rocketry/projects/22crd
 
 I only have the motor burn calculations for this one!
 
-[gview file="http://blog.mbedded.ninja/wp-content/uploads/2012/12/22CRD-Rocket-Motor-Data-SRM.xls"]
+[gview file="/images/2012/12/22CRD-Rocket-Motor-Data-SRM.xls"]

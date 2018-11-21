@@ -33,8 +33,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2017/09/qt-cute-software-logo-300x229.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2017/09/qt-cute-software-logo.png)
+[![](/images/2017/09/qt-cute-software-logo-300x229.png)
+](/images/2017/09/qt-cute-software-logo.png)
 
 
 
@@ -44,8 +44,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2014/05/timer-icon-small-black-white.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2014/05/timer-icon-small-black-white.png)
+[![](/images/2014/05/timer-icon-small-black-white.png)
+](/images/2014/05/timer-icon-small-black-white.png)
 
 
 
@@ -55,8 +55,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2018/04/conan-package-manager-logo-with-text.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/04/conan-package-manager-logo-with-text.png)
+[![](/images/2018/04/conan-package-manager-logo-with-text.png)
+](/images/2018/04/conan-package-manager-logo-with-text.png)
 
 
 
@@ -66,8 +66,8 @@ tags:
 
 
 
-[![](http://blog.mbedded.ninja/wp-content/uploads/2018/03/scons-build-system-logo.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2018/03/scons-build-system-logo.png)
+[![](/images/2018/03/scons-build-system-logo.png)
+](/images/2018/03/scons-build-system-logo.png)
 
 
 

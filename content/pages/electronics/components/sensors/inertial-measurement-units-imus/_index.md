@@ -86,8 +86,8 @@ More and more GPS units are beginning to support integration with an IMU unit to
 
 
 
-[caption id="attachment_9182" align="aligncenter" width="782"][![Playing around with RTHostIMUGL and a connected IMU through an Arduino.](http://blog.mbedded.ninja/wp-content/uploads/2014/12/screenshot-playing-around-with-rthostimugl.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2014/12/screenshot-playing-around-with-rthostimugl.png) Playing around with RTHostIMUGL and a connected IMU through an Arduino.[/caption]
+[caption id="attachment_9182" align="aligncenter" width="782"][![Playing around with RTHostIMUGL and a connected IMU through an Arduino.](/images/2014/12/screenshot-playing-around-with-rthostimugl.png)
+](/images/2014/12/screenshot-playing-around-with-rthostimugl.png) Playing around with RTHostIMUGL and a connected IMU through an Arduino.[/caption]
 
 
 

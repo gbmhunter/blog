@@ -65,8 +65,8 @@ One of a disadvantages of the TO-220AB package is that the metal tab, although g
 
 The TO-220F is a variant of the TO-220 package which has an **insulated metal tab, which is not electrically connected to any of its pins**. Some thermal performance is sacrificed because of this insulating layer.
 
-[caption id="attachment_11382" align="aligncenter" width="338"][![A 3D render of the TO-220F component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/to-220f-component-package-3d-render.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/to-220f-component-package-3d-render.jpg) A 3D render of the TO-220F component package.[/caption]
+[caption id="attachment_11382" align="aligncenter" width="338"][![A 3D render of the TO-220F component package.](/images/2015/04/to-220f-component-package-3d-render.jpg)
+](/images/2015/04/to-220f-component-package-3d-render.jpg) A 3D render of the TO-220F component package.[/caption]
 
 #  
 
@@ -74,10 +74,10 @@ The TO-220F is a variant of the TO-220 package which has an **insulated metal ta
 
 The dimensions of the TO-220F are shown below:
 
-[caption id="attachment_13189" align="aligncenter" width="574"][![The dimensions for the TO-220F component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/component-package-to-220f-dimensions.png)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/component-package-to-220f-dimensions.png) The dimensions for the TO-220F component package.[/caption]
+[caption id="attachment_13189" align="aligncenter" width="574"][![The dimensions for the TO-220F component package.](/images/2015/04/component-package-to-220f-dimensions.png)
+](/images/2015/04/component-package-to-220f-dimensions.png) The dimensions for the TO-220F component package.[/caption]
 
 # Photos
 
-[caption id="attachment_13190" align="aligncenter" width="329"][![A photo of the TO-220F component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/component-packages-to-220f-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/component-packages-to-220f-photo.jpg) A photo of the TO-220F component package.[/caption]
+[caption id="attachment_13190" align="aligncenter" width="329"][![A photo of the TO-220F component package.](/images/2015/04/component-packages-to-220f-photo.jpg)
+](/images/2015/04/component-packages-to-220f-photo.jpg) A photo of the TO-220F component package.[/caption]

@@ -38,8 +38,8 @@ There are two main methods, single and differential.
 
 
 
-[caption id="attachment_14054" align="aligncenter" width="395"][![](http://blog.mbedded.ninja/wp-content/uploads/2012/01/cap-sense-button-diagram-cypress.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/01/cap-sense-button-diagram-cypress.jpg) How simple cap sense buttons work.[/caption]
+[caption id="attachment_14054" align="aligncenter" width="395"][![](/images/2012/01/cap-sense-button-diagram-cypress.jpg)
+](/images/2012/01/cap-sense-button-diagram-cypress.jpg) How simple cap sense buttons work.[/caption]
 
 
 
@@ -62,8 +62,8 @@ The button footprint can vary between the designs. One of the easiest is simply 
 
 
 
-[caption id="attachment_14056" align="aligncenter" width="430"][![](http://blog.mbedded.ninja/wp-content/uploads/2012/01/atmel-recommended-cap-button-shape.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2012/01/atmel-recommended-cap-button-shape.jpg) A recommended cap button shape by Atmel. Image from atmel.com.[/caption]
+[caption id="attachment_14056" align="aligncenter" width="430"][![](/images/2012/01/atmel-recommended-cap-button-shape.jpg)
+](/images/2012/01/atmel-recommended-cap-button-shape.jpg) A recommended cap button shape by Atmel. Image from atmel.com.[/caption]
 
 
 

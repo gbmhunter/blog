@@ -140,6 +140,6 @@ Commonly used for resistor networks and RAM chips. Similar to the DIP package ex
 # Photos
 
 
-[caption id="attachment_11289" align="aligncenter" width="385"][![A photo of the SIP component package.](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sip-component-package-photo.jpg)
-](http://blog.mbedded.ninja/wp-content/uploads/2015/04/sip-component-package-photo.jpg) A photo of the SIP component package.[/caption]
+[caption id="attachment_11289" align="aligncenter" width="385"][![A photo of the SIP component package.](/images/2015/04/sip-component-package-photo.jpg)
+](/images/2015/04/sip-component-package-photo.jpg) A photo of the SIP component package.[/caption]
 
