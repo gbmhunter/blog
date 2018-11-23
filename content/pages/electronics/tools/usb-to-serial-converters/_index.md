@@ -19,7 +19,7 @@ As of 2016, their IC's are commonly found in good quality USB-to-serial hardware
 
 USB-to-Serial converters introduce a fair bit of delays into serial communications. and depending on your latency requirements, this may effect your design.
 
-{{< figure src="/images/2016/07/ftdi-ic-send-serial-data-conditions-annotated.png" caption="The conditions which will cause an FTDI IC to send received serial data to the computer. Especially notice the 16ms "latency timer". Image from "FTDI – AN232B-04 – Data Throughput. Latency and Handshaking." caption-position="bottom" >}}
+{{< figure src="/images/2016/07/ftdi-ic-send-serial-data-conditions-annotated.png" caption="The conditions which will cause an FTDI IC to send received serial data to the computer. Especially notice the 16ms 'latency timer'. Image from 'FTDI – AN232B-04 – Data Throughput. Latency and Handshaking'." caption-position="bottom" >}}
 
 The conditions which will cause an FTDI IC to send received serial data to the computer. Especially notice the 16ms "latency timer". Image from "FTDI - AN232B-04 - Data Throughput. Latency and Handshaking".[/caption]
 
