@@ -56,7 +56,7 @@ DESCRIPTION
 <td >\( V \)
 </td>
 
-<td >Also called the reverse breakdown voltage. This is the reverse voltage (cathode-to-anode) at which the diode “begins” to conduct. The point at which the diode begins to conduct is usually specified as a fixed current, typically 1mA. Also see [standoff voltage](http://blog.mbedded.ninja/electronics/components/diodes#standoff-voltage).
+<td >Also called the reverse breakdown voltage. This is the reverse voltage (cathode-to-anode) at which the diode "begins" to conduct. The point at which the diode begins to conduct is usually specified as a fixed current, typically 1mA. Also see [standoff voltage](http://blog.mbedded.ninja/electronics/components/diodes#standoff-voltage).
 </td>
 </tr>
 <tr id="rated-power" >
@@ -84,7 +84,7 @@ DESCRIPTION
 <td >\( V \)
 </td>
 
-<td >This is the reverse voltage that the diode can withstand without drawing “any” current. This is one of the most important parameters, as you usually match this voltage to the maximum operating voltage of the wire you are connecting it to. Note that there is a small amount of current drawn at this voltage, this is called the reverse leakage current.
+<td >This is the reverse voltage that the diode can withstand without drawing "any" current. This is one of the most important parameters, as you usually match this voltage to the maximum operating voltage of the wire you are connecting it to. Note that there is a small amount of current drawn at this voltage, this is called the reverse leakage current.
 </td>
 </tr>
 </tbody>

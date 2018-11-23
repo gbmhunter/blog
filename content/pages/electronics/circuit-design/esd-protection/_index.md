@@ -163,16 +163,9 @@ I would explain this, but I found an application note by Silicon Labs to explain
 
 
 <blockquote>
+The most common method of external ESD protection is adding a small series resistance in-line between the source of ESD energy and the integrated circuit pin to be protected. Somewhat counter-intuitively, a resistance as small as 50Ω can double the ESD immunity of a CMOS IC. Higher immunity is possible; a higher level of protection is somewhat proportional to increased series resistance.
 
-> 
-> The most common method of external ESD protection is adding a small series resistance in-line between the source of ESD energy and the integrated circuit pin to be protected. Somewhat counter-intuitively, a resistance as small as 50  can double the ESD immunity of a CMOS IC. Higher immunity is possible; a higher level of protection is somewhat proportional to increased series resistance.
-> 
-> 
-
-> 
-> This method works for two reasons. First, the series resistance works with the IC's parasitic pin capacitance (typically 5 to 10 pF) to create a single-pole low pass filter with a cutoff frequency below 1 GHz. This causes the series resistor to attenuate a majority of an ESD event's high-frequency energy (as much as 90% of the rising-edge power in an HBM discharge). Second, when the IC's protection circuits are operating normally, their impedance is very low (on the order of tens of ohms or less). This low resistance works with the series resistance to create a voltage divider, so that the high voltage from an ESD event can only bias the IC's built-in protection circuits with a portion of the total ESD voltage. This attenuation is in addition to rising-edge filtering. The sum of these effects from a simple external series resistor dramatically improves ESD performance in a demanding application.
-> 
-> 
+This method works for two reasons. First, the series resistance works with the IC's parasitic pin capacitance (typically 5 to 10 pF) to create a single-pole low pass filter with a cutoff frequency below 1 GHz. This causes the series resistor to attenuate a majority of an ESD event's high-frequency energy (as much as 90% of the rising-edge power in an HBM discharge). Second, when the IC's protection circuits are operating normally, their impedance is very low (on the order of tens of ohms or less). This low resistance works with the series resistance to create a voltage divider, so that the high voltage from an ESD event can only bias the IC's built-in protection circuits with a portion of the total ESD voltage. This attenuation is in addition to rising-edge filtering. The sum of these effects from a simple external series resistor dramatically improves ESD performance in a demanding application.
 </blockquote>
 
 
