@@ -17,8 +17,7 @@ Doxygen is an open-source program for **documenting code**. It is commonly used 
 
 
 
-[![](/images/2013/05/doxygen-logo.png)
-](/images/2013/05/doxygen-logo.png)
+{{< figure src="/images/2013/05/doxygen-logo.png" caption="" caption-position="bottom" >}}
 
 
 

@@ -276,8 +276,7 @@ Typically, the IC has a 7-bit address which if right-shifted with the read/write
 
 At this point, if the master is performing a write, the master's third word will write to the register pointed to by the address pointer (which was sent as the second word). The address pointer is automatically incremented by one a this point, allowing the master to write consecutive registers all at once without having to do separate I2C transmissions.
 
-[![i2c-waveform-example-saleae-logic-analyser](http://blog.mbedded.ninja/wp-content/gallery/electronics-misc/i2c-waveform-example-saleae-logic-analyser.png)
-](http://blog.mbedded.ninja/wp-content/gallery/electronics-misc/i2c-waveform-example-saleae-logic-analyser.png)
+{{< figure src="http://blog.mbedded.ninja/wp-content/gallery/electronics-misc/i2c-waveform-example-saleae-logic-analyser.png" caption="i2c-waveform-example-saleae-logic-analyser" caption-position="bottom" >}}
 
 But if instead the master is performing a read, a repeated start is normally issued after writing to the address pointer. Then the master issues a read command (the IC's 7-bit address and the read/write bit set correctly). The master then provides clock pulses while the slave 'reads' out register contents beginning at the register set in the address pointer in the previous write cycle. Just as with a write, the address pointer is incremented automatically, allowing multiple registers to be read at once.
 

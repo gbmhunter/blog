@@ -18,14 +18,12 @@ Pages sub-section!
 <td >
 
 
-[![The schematic symbol for an N-channel MOSFET.](/images/2011/09/n-channel-mosfet-schematic-symbol.png)
-](/images/2011/09/n-channel-mosfet-schematic-symbol.png)
+{{< figure src="/images/2011/09/n-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for an N-channel MOSFET." caption-position="bottom" >}}
 
 
 
 
-[![The schematic symbol for a P-channel MOSFET.](/images/2011/09/p-channel-mosfet-schematic-symbol.png)
-](/images/2011/09/p-channel-mosfet-schematic-symbol.png)
+{{< figure src="/images/2011/09/p-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for a P-channel MOSFET." caption-position="bottom" >}}
 
 
 

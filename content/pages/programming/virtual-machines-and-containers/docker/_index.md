@@ -17,8 +17,7 @@ Docker is container software. It is commonly used as a lightweight alternative t
 
 
 
-[![](/images/2017/01/docker-logo.png)
-](/images/2017/01/docker-logo.png)
+{{< figure src="/images/2017/01/docker-logo.png" caption="" caption-position="bottom" >}}
 
 
 

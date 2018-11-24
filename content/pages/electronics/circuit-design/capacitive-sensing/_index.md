@@ -129,8 +129,7 @@ AD7150 with Er compensation
 <tbody >
 <tr >
 
-<td style="width: 400px;" >[![](/images/2012/05/toc-section-3-1-analog-devices-basic-linear-design-book-capactivie-sensings-highlighted.png)
-](/images/2012/05/toc-section-3-1-analog-devices-basic-linear-design-book-capactivie-sensings-highlighted.png)
+<td style="width: 400px;" >{{< figure src="/images/2012/05/toc-section-3-1-analog-devices-basic-linear-design-book-capactivie-sensings-highlighted.png" caption="" caption-position="bottom" >}}
 </td>
 
 <td style="width: 200px; text-align: center; vertical-align: middle;" >Section 3.1 of the "Basic Linear Design" book by Analog Devices. Freely available from [http://www.analog.com/library/analogDialogue/archives/43-09/linear_circuit_design_handbook.html](http://www.analog.com/library/analogDialogue/archives/43-09/linear_circuit_design_handbook.html)

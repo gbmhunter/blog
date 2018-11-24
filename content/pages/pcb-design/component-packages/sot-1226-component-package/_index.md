@@ -18,8 +18,7 @@ url: /pcb-design/component-packages/sot-1226-component-package
 </td>
 <td >
 
-[![A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html. ](/images/2015/03/sot-1226-component-package-3d-render-top-bottom.gif)
-](/images/2015/03/sot-1226-component-package-3d-render-top-bottom.gif)
+{{< figure src="/images/2015/03/sot-1226-component-package-3d-render-top-bottom.gif" caption="A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html. " caption-position="bottom" >}}
 
 </td></tr><tr >
 <td >Synonyms

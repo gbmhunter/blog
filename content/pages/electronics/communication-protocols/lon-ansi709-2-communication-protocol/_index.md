@@ -16,8 +16,7 @@ The Local Operating Network (LON) protocol is a inter-device communication proto
 </td>
 <td > 
 
-[![The logo of LonMark International. Image from http://www.prlog.org/.](/images/2015/02/lonmark-international-logo-certified.jpg)
-](/images/2015/02/lonmark-international-logo-certified.jpg)
+{{< figure src="/images/2015/02/lonmark-international-logo-certified.jpg" caption="The logo of LonMark International. Image from http://www.prlog.org/." caption-position="bottom" >}}
 
 </td></tr><tr >
 <td >Speed

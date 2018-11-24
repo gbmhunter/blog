@@ -74,8 +74,7 @@ Re-arranged so that we can calculate a temperature from a measured resistance, 
 
 $$ \frac{1}{T} = \frac{1}{T_0} + \frac{1}{\beta}ln(\frac{R}{R_0}) $$
 
-[![ninja-calc-logo-v2-no-transparency](/images/2016/04/ninja-calc-logo-v2-no-transparency.png)
-](http://mbedded-ninja.github.io/NinjaCalc/)The free embedded-engineering calculator app, [NinjaCalc](http://mbedded-ninja.github.io/NinjaCalc/), features a calculator for working out the thermistor temperature (or any other variable) using the Beta equation.
+{{< figure src="/images/2016/04/ninja-calc-logo-v2-no-transparency.png" caption="ninja-calc-logo-v2-no-transparency" caption-position="bottom" >}}The free embedded-engineering calculator app, [NinjaCalc](http://mbedded-ninja.github.io/NinjaCalc/), features a calculator for working out the thermistor temperature (or any other variable) using the Beta equation.
 
  
 

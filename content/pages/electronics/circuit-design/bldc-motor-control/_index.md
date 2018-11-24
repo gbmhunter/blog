@@ -569,8 +569,7 @@ The schematic below shows the hardware used in a PSoC 5 microcontroller to perfo
 
 
 
-[![](/images/2012/08/psoc-bldc-schematic-luts-and-multiplexors-for-phase-drive.png)
-](/images/2012/08/psoc-bldc-schematic-luts-and-multiplexors-for-phase-drive.png)A PSoC schematic containing LUT's and multiplexors for trapezoidal-control of a BLDC motor.
+{{< figure src="/images/2012/08/psoc-bldc-schematic-luts-and-multiplexors-for-phase-drive.png" caption="" caption-position="bottom" >}}A PSoC schematic containing LUT's and multiplexors for trapezoidal-control of a BLDC motor.
 
 
 

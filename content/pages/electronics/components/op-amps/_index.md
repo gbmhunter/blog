@@ -195,8 +195,7 @@ As a rule-of-thumb, you should use the lowest acceptable resistances in op-amp f
 Op-amps have slowly gotten better over the last few decades. Newer op-amps have better gain bandwidth products, better noise rejection ratios, and far less input bias currents as well as power usage. As expected, all the newer ones are primarily released in SMD packages.
 
 Check out Korg's Monotron schematics for some good examples of how op-aps are used in commercial products.  
-[![Korg Monotron Schematics](http://blog.mbedded.ninja/wp-includes/images/crystal/document.png)
-](/images/2011/09/Korg-Monotron-Schematics.pdf)
+{{< figure src="http://blog.mbedded.ninja/wp-includes/images/crystal/document.png" caption="Korg Monotron Schematics" caption-position="bottom" >}}
 
 # Rail-to-Rail Op-amps
 

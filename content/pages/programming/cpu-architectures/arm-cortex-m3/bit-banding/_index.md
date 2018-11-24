@@ -19,8 +19,7 @@ Bit banding is not to be confused with another embedded programming technique ca
 
 The Cortex-M3 has two 32MB regions that map onto the two 1MB bit-band regions. The two regions are separate, one in the SRAM region and one in the peripheral region (but both of course in the same memory space). The diagram below shows the entire Cortex-M3 memory space, with the bit band locations being close to the bottom of memory.
 
-[![Screen Shot 09-30-14 at 04.30 PM](/images/2014/09/Screen-Shot-09-30-14-at-04.30-PM.png)
-](/images/2014/09/Screen-Shot-09-30-14-at-04.30-PM.png)
+{{< figure src="/images/2014/09/Screen-Shot-09-30-14-at-04.30-PM.png" caption="Screen Shot 09-30-14 at 04.30 PM" caption-position="bottom" >}}
 
 Each bit in the bit-band region is addressed sequentially in the 32MB alias region. For example, the eighth bit in the bit-band region can be accessed using the eighth word in the 32MB alias region.
 

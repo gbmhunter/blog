@@ -17,8 +17,7 @@ Pointers are a core concept in C programming, yet can be a difficult concept to 
 
 
 
-[![](/images/2013/03/pointing-hand-icon.png)
-](/images/2013/03/pointing-hand-icon.png)
+{{< figure src="/images/2013/03/pointing-hand-icon.png" caption="" caption-position="bottom" >}}
 
 
 
