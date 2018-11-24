@@ -175,8 +175,7 @@ PCB Land Area (incl. recommended footprint) = \(1.88mm^2\)
 Here is a 3D render of the SOT-723 component package.
 
 
-[caption id="attachment_11574" align="aligncenter" width="369"][![A 3D render of the SOT-723 component package.](/images/2015/04/sot-723-component-package-3d-render.jpg)
-](/images/2015/04/sot-723-component-package-3d-render.jpg) A 3D render of the SOT-723 component package.[/caption]
+{{< figure src="/images/2015/04/sot-723-component-package-3d-render.jpg" width="369" caption="A 3D render of the SOT-723 component package." caption-position="bottom" >}}
 
 
 # Dimensions
@@ -187,5 +186,4 @@ Here is a 3D render of the SOT-723 component package.
 Here are the dimensions and a recommended footprint for the SOT-723 component package.
 
 
-[caption id="attachment_11578" align="aligncenter" width="686"][![Dimensions and a recommended footprint for the SOT-723 component package. Image from http://www.onsemi.com/pub_link/Collateral/ESD7C3.3D-D.PDF.](/images/2015/04/sot-723-component-package-dimensions-and-footprint.png)
-](/images/2015/04/sot-723-component-package-dimensions-and-footprint.png) Dimensions and a recommended footprint for the SOT-723 component package. Image from http://www.onsemi.com/pub_link/Collateral/ESD7C3.3D-D.PDF.[/caption]
+{{< figure src="/images/2015/04/sot-723-component-package-dimensions-and-footprint.png" width="686" caption="Dimensions and a recommended footprint for the SOT-723 component package. Image from http://www.onsemi.com/pub_link/Collateral/ESD7C3.3D-D.PDF." caption-position="bottom" >}}

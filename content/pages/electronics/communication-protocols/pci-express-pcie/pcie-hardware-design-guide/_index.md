@@ -247,7 +247,6 @@ With PCIe ports implemented on large FPGA-based designs, this can be a challengi
 
 The following image shows an example PCIe x1 card-edge connector schematic symbol and associated components:
 
-[caption id="attachment_11928" align="aligncenter" width="997"][![A PCIe card-edge connector schematic symbol and associated components.](/images/2015/08/pcie-edge-connector-schematic-symbol-and-example-design.png)
-](/images/2015/08/pcie-edge-connector-schematic-symbol-and-example-design.png) A PCIe card-edge connector schematic symbol and associated components.[/caption]
+{{< figure src="/images/2015/08/pcie-edge-connector-schematic-symbol-and-example-design.png" width="997" caption="A PCIe card-edge connector schematic symbol and associated components." caption-position="bottom" >}}
 
 # Logical Sub-Layer

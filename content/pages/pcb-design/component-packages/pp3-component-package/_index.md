@@ -63,5 +63,4 @@ url: /pcb-design/component-packages/pp3-component-package
 
 This is the most common 9V battery size. This is the battery size used in smoke alarms, remote control toys e.t.c. Most 9V battery chemistry come in the shape, including alkaline, lithium iron disulphide, lithium manganese dioxide and zinc chloride.
 
-[caption id="attachment_12403" align="aligncenter" width="282"][![A photo of a 9V battery in the PP3 component package size.](/images/2015/10/pp3-component-battery-9v-battery-photo.jpg)
-](/images/2015/10/pp3-component-battery-9v-battery-photo.jpg) A photo of a 9V battery in the PP3 component package size.[/caption]
+{{< figure src="/images/2015/10/pp3-component-battery-9v-battery-photo.jpg" width="282" caption="A photo of a 9V battery in the PP3 component package size." caption-position="bottom" >}}

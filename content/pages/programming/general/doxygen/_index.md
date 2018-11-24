@@ -27,8 +27,7 @@ It is essentially a program which looks through your source code and extracts in
 
 
 
-[caption id="attachment_13585" align="aligncenter" width="1919"][![Screenshot of the html documentation that Doxygen generates with properly commented code.](/images/2013/05/doxygen-html-documentation-screenshot.png)
-](/images/2013/05/doxygen-html-documentation-screenshot.png) Screenshot of the html documentation that Doxygen generates with properly commented code.[/caption]
+{{< figure src="/images/2013/05/doxygen-html-documentation-screenshot.png" width="1919" caption="Screenshot of the html documentation that Doxygen generates with properly commented code." caption-position="bottom" >}}
 
 
 
@@ -325,8 +324,7 @@ Doxywizard is a Windows GUI for using Doxygen. Desired Extraction Mode: Document
 
 
 
-[caption id="attachment_13588" align="aligncenter" width="829"][![Selecting 'EXTRACT_PRIVATE' and 'EXTRACT STATIC' in the Doxygen GUI.](/images/2013/05/doxygen-gui-extract-private-and-static-selected.png)
-](/images/2013/05/doxygen-gui-extract-private-and-static-selected.png) Selecting 'EXTRACT_PRIVATE' and 'EXTRACT STATIC' in the Doxygen GUI.[/caption]
+{{< figure src="/images/2013/05/doxygen-gui-extract-private-and-static-selected.png" width="829" caption="Selecting 'EXTRACT_PRIVATE' and 'EXTRACT STATIC' in the Doxygen GUI." caption-position="bottom" >}}
 
 
 

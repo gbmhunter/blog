@@ -16,8 +16,7 @@ If you are writing assembly for ARM processors, make sure to check out the [GNU 
 
 
 
-[caption id="attachment_14200" align="aligncenter" width="481"][![](/images/2013/06/assembly-code-example.png)
-](/images/2013/06/assembly-code-example.png) An example of assembly code from the glibc library (an optimised memcpy() function).[/caption]
+{{< figure src="/images/2013/06/assembly-code-example.png" width="481" caption="An example of assembly code from the glibc library (an optimised memcpy() function)." caption-position="bottom" >}}
 
 
 

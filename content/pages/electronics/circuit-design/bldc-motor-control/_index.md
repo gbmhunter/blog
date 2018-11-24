@@ -21,8 +21,7 @@ The page is dedicated to how to control a **brushless DC** (BLDC) motor in an em
 
 
 
-[caption id="attachment_14039" align="aligncenter" width="258"][![](/images/2012/08/rp17-bldc-motor-nema-17.jpg)
-](/images/2012/08/rp17-bldc-motor-nema-17.jpg) A standard-looking BLDC motor in a NEMA-17 enclosure.[/caption]
+{{< figure src="/images/2012/08/rp17-bldc-motor-nema-17.jpg" width="258" caption="A standard-looking BLDC motor in a NEMA-17 enclosure." caption-position="bottom" >}}
 
 
 
@@ -561,8 +560,7 @@ where H1, H2, and H3 are the hall-effect sensors, and A, B, and C are the motor 
 
 
 
-[caption id="attachment_14030" align="aligncenter" width="550"][![](/images/2012/08/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png)
-](/images/2012/08/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png) 6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge.[/caption]
+{{< figure src="/images/2012/08/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png" width="550" caption="6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge." caption-position="bottom" >}}
 
 
 
@@ -641,8 +639,7 @@ With a LUT that stores floats, and a small amount of float multiplication (no di
 
 
 
-[caption id="attachment_14032" align="aligncenter" width="1069"][![](/images/2012/08/16-bit-500-count-sine-wave-lut-data-graph-1.png)
-](/images/2012/08/16-bit-500-count-sine-wave-lut-data-graph-1.png) Data extracted from a 16-bit sine wave LUT designed for use with sinusoidal BLDC motor control.[/caption]
+{{< figure src="/images/2012/08/16-bit-500-count-sine-wave-lut-data-graph-1.png" width="1069" caption="Data extracted from a 16-bit sine wave LUT designed for use with sinusoidal BLDC motor control." caption-position="bottom" >}}
 
 
 
@@ -800,8 +797,7 @@ $$
 
 
 
-[caption id="attachment_14033" align="aligncenter" width="516"][![](/images/2012/08/clark-transformation-alpha-beta-geometric-interpretation.gif)
-](/images/2012/08/clark-transformation-alpha-beta-geometric-interpretation.gif) A geometric interpretation of the Clark (alpha-beta) transformation. Image from http://en.wikipedia.org/wiki/%CE%91%CE%B2%CE%B3_transform.[/caption]
+{{< figure src="/images/2012/08/clark-transformation-alpha-beta-geometric-interpretation.gif" width="516" caption="A geometric interpretation of the Clark (alpha-beta) transformation. Image from http://en.wikipedia.org/wiki/%CE%91%CE%B2%CE%B3_transform." caption-position="bottom" >}}
 
 
 
@@ -846,8 +842,7 @@ where:
 
 
 
-[caption id="attachment_14034" align="aligncenter" width="976"][![](/images/2012/08/park-transformation-d-q-geometric-interpretation.jpg)
-](/images/2012/08/park-transformation-d-q-geometric-interpretation.jpg) A geometric interpretation of the Park (dq) transformation. Image from http://en.wikipedia.org/wiki/Dqo_transformation.[/caption]
+{{< figure src="/images/2012/08/park-transformation-d-q-geometric-interpretation.jpg" width="976" caption="A geometric interpretation of the Park (dq) transformation. Image from http://en.wikipedia.org/wiki/Dqo_transformation." caption-position="bottom" >}}
 
 
 
@@ -865,8 +860,7 @@ The following picture shows the control architecture for a PMSM motor controlled
 
 
 
-[caption id="attachment_14035" align="aligncenter" width="1372"][![](/images/2012/08/pmsm-motor-control-architecture-with-psoc-micro.png)
-](/images/2012/08/pmsm-motor-control-architecture-with-psoc-micro.png) The FOC control architecture for a PMSM motor with a PSoC microcontroller.[/caption]
+{{< figure src="/images/2012/08/pmsm-motor-control-architecture-with-psoc-micro.png" width="1372" caption="The FOC control architecture for a PMSM motor with a PSoC microcontroller." caption-position="bottom" >}}
 
 
 
@@ -1198,8 +1192,7 @@ The NEMA17 mounting hole dimensions are shown below. The dimensions are in milli
 
 
 
-[caption id="attachment_14036" align="aligncenter" width="497"][![](/images/2012/08/nema-17-motor-mounting-dimensions.jpg)
-](/images/2012/08/nema-17-motor-mounting-dimensions.jpg) The NEMA17 mounting hole dimensions .The dimensions are in millimeters. Image from http://www.xylotex.com/FAQ.htm.[/caption]
+{{< figure src="/images/2012/08/nema-17-motor-mounting-dimensions.jpg" width="497" caption="The NEMA17 mounting hole dimensions .The dimensions are in millimeters. Image from http://www.xylotex.com/FAQ.htm." caption-position="bottom" >}}
 
 
 
@@ -1207,8 +1200,7 @@ The NEMA23 mounting hole dimensions are shown below. The dimensions are in inche
 
 
 
-[caption id="attachment_14037" align="aligncenter" width="595"][![](/images/2012/08/nema-23-motor-mounting-dimensions.jpg)
-](/images/2012/08/nema-23-motor-mounting-dimensions.jpg) The NEMA23 mounting hole dimensions .The dimensions are in inches. Image from http://www.xylotex.com/FAQ.htm.[/caption]
+{{< figure src="/images/2012/08/nema-23-motor-mounting-dimensions.jpg" width="595" caption="The NEMA23 mounting hole dimensions .The dimensions are in inches. Image from http://www.xylotex.com/FAQ.htm." caption-position="bottom" >}}
 
 
 

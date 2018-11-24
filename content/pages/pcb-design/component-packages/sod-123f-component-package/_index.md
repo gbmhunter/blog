@@ -151,8 +151,7 @@ The SOD-123F component package has narrow, flat leads protruding from the base o
 # 3D Render
 
 
-[caption id="attachment_11311" align="aligncenter" width="352"][![A 3D render of the SOD-123F component package.](/images/2015/04/sod-123f-component-package-3d-render.jpg)
-](/images/2015/04/sod-123f-component-package-3d-render.jpg) A 3D render of the SOD-123F component package.[/caption]
+{{< figure src="/images/2015/04/sod-123f-component-package-3d-render.jpg" width="352" caption="A 3D render of the SOD-123F component package." caption-position="bottom" >}}
 
 
 # Other Images

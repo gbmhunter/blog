@@ -15,8 +15,7 @@ Holes in PCB's are typically used to mount through-hole components (their main u
 
 The smallest hole PCB manufacturers can support is usually 0.1-0.2mm, with anything under 0.2mm becoming specialty and hence more expensive. Holes which are designed for component leads to go through require pads surrounding the holes on the top and/or bottom of the PCB. This allows a good solder bond between the component and the PCB tracks. A typical rule-of-thumb is to make the pad diameter twice the size of the hole diameter. The middle pad in the image below shows this.
 
-[caption id="attachment_11863" align="aligncenter" width="767"][![Diagram showing different ratios between hole and pad size.](/images/2015/01/hole-size-versus-pad-size.png)
-](/images/2015/01/hole-size-versus-pad-size.png) Diagram showing different ratios between hole and pad size.[/caption]
+{{< figure src="/images/2015/01/hole-size-versus-pad-size.png" width="767" caption="Diagram showing different ratios between hole and pad size." caption-position="bottom" >}}
 
  
 
@@ -32,15 +31,13 @@ The above rule-of thumb stems from the fact that when a via wall is unrolled int
 
 NinjaCalc (which can be downloaded for free from [here](http://mbedded-ninja.github.io/NinjaCalc/)) has a via current calculator.
 
-[caption id="attachment_13329" align="aligncenter" width="890"][![A screenshot of the via current calculator (based of the IPC-2221A standard) in NinjaCalc.](/images/2015/01/ninja-calc-via-current-ipc-2221a-calculator-screenshot.png)
-](/images/2015/01/ninja-calc-via-current-ipc-2221a-calculator-screenshot.png) A screenshot of the via current calculator (based of the IPC-2221A standard) in NinjaCalc.[/caption]
+{{< figure src="/images/2015/01/ninja-calc-via-current-ipc-2221a-calculator-screenshot.png" width="890" caption="A screenshot of the via current calculator (based of the IPC-2221A standard) in NinjaCalc." caption-position="bottom" >}}
 
 ## Drilling Out Vias
 
 Vias can be drilled out easily to break connections when re-wiring, modifying existing PCBs. Just use a drill-bit 2-5x the diameter of the via's copper pad, and drill down gently until the connection between the via's pad and plated hole are disconnected.
 
-[caption id="attachment_11864" align="aligncenter" width="1600"][![A drilled-out via (to break the connection) between a 0603 resistor and SOT-23-3 MOSFET.](/images/2015/01/drilled-out-via-on-pcb-next-to-resistor.jpg)
-](/images/2015/01/drilled-out-via-on-pcb-next-to-resistor.jpg) A drilled-out via (to break the connection) between a 0603 resistor and SOT-23-3 MOSFET.[/caption]
+{{< figure src="/images/2015/01/drilled-out-via-on-pcb-next-to-resistor.jpg" width="1600" caption="A drilled-out via (to break the connection) between a 0603 resistor and SOT-23-3 MOSFET." caption-position="bottom" >}}
 
  
 
@@ -66,8 +63,7 @@ Trepanning is when the laser is moved in a circular pattern to make a large diam
 
 # Annular Rings
 
-[caption id="attachment_11865" align="aligncenter" width="124"][![The definition of an annular ring in PCB design.](/images/2015/01/minimum-annular-ring.gif)
-](/images/2015/01/minimum-annular-ring.gif) The definition of an annular ring in PCB design.[/caption]
+{{< figure src="/images/2015/01/minimum-annular-ring.gif" width="124" caption="The definition of an annular ring in PCB design." caption-position="bottom" >}}
 
 Most PCB manufacturers specify a minimum annular ring distance. The annular ring distance is measured radially and is the pad/via diameter subtracted by the pad/via hole diameter. PCB's with smaller annular ring requirements usually cost more to manufacture. You normally have to be attention to the minimum annular ring when designing the vias.
 
@@ -77,8 +73,7 @@ Thermal relief is a connection style between copper pours (typically power or gr
 
 The image below shows a a direct-connect style pad on the left, and a thermal relief style pad on the right.
 
-[caption id="attachment_9326" align="aligncenter" width="440"][![The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style.](/images/2015/01/pads-with-direct-connect-and-thermal-relief.png)
-](/images/2015/01/pads-with-direct-connect-and-thermal-relief.png) The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style.[/caption]
+{{< figure src="/images/2015/01/pads-with-direct-connect-and-thermal-relief.png" width="440" caption="The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style." caption-position="bottom" >}}
 
  
 

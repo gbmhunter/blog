@@ -53,8 +53,7 @@ There are four (but three common) frequency bands that RFID uses. Based on knowl
 
 
 
-[caption id="attachment_12526" align="aligncenter" width="1288"][![The radio-frequency spectrum from Texas Instruments. Image from http://www.ti.com/lit/sg/spab089/spab089.pdf.](/images/2012/11/ti-radio-frequency-spectrum-diagram-with-standards.png)
-](/images/2012/11/ti-radio-frequency-spectrum-diagram-with-standards.png) The radio-frequency spectrum from Texas Instruments. Image from http://www.ti.com/lit/sg/spab089/spab089.pdf.[/caption]
+{{< figure src="/images/2012/11/ti-radio-frequency-spectrum-diagram-with-standards.png" width="1288" caption="The radio-frequency spectrum from Texas Instruments. Image from http://www.ti.com/lit/sg/spab089/spab089.pdf." caption-position="bottom" >}}
 
 
 
@@ -103,8 +102,7 @@ The following graph shows the allowed UHF frequency bands in different countries
 
 
 
-[caption id="attachment_12527" align="aligncenter" width="715"][![Allowed UHF frequency bands comparison graph. Image from http://www.omni-id.com/blog/2010/08/rfid_tag_comparison_guide_understanding_broadband_technology/.](/images/2012/11/uhf-rfid-tag-freq-comparison-graph.jpg)
-](/images/2012/11/uhf-rfid-tag-freq-comparison-graph.jpg) Allowed UHF frequency bands comparison graph. Image from http://www.omni-id.com/blog/2010/08/rfid_tag_comparison_guide_understanding_broadband_technology/.[/caption]
+{{< figure src="/images/2012/11/uhf-rfid-tag-freq-comparison-graph.jpg" width="715" caption="Allowed UHF frequency bands comparison graph. Image from http://www.omni-id.com/blog/2010/08/rfid_tag_comparison_guide_understanding_broadband_technology/." caption-position="bottom" >}}
 
 
 
@@ -237,8 +235,7 @@ Reader modules exist for integrating an RFID reader into an OEM product, and are
 
 
 
-[caption id="attachment_12528" align="aligncenter" width="415"][![The M6e UHF RFID reader module from Skyetek. Image from http://rfid.thingmagic.com/collateral-download---m6e/.](/images/2012/11/thing-magic-m6e-rfid-reader-module-photo.png)
-](/images/2012/11/thing-magic-m6e-rfid-reader-module-photo.png) The M6e UHF RFID reader module from Skyetek. Image from http://rfid.thingmagic.com/collateral-download---m6e/.[/caption]
+{{< figure src="/images/2012/11/thing-magic-m6e-rfid-reader-module-photo.png" width="415" caption="The M6e UHF RFID reader module from Skyetek. Image from http://rfid.thingmagic.com/collateral-download---m6e/." caption-position="bottom" >}}
 
 
 
@@ -251,8 +248,7 @@ Stand-alone IC's also exist. The following image is the block diagram for the Te
 
 
 
-[caption id="attachment_12529" align="aligncenter" width="961"][![The block diagram for the Texas Instruments TRF7960A 13.56MHz RFID transceiver IC. Image from http://www.ti.com/product/trf7960A.](/images/2012/11/ti-trf7960a-rfid-ic-block-diagram.png)
-](/images/2012/11/ti-trf7960a-rfid-ic-block-diagram.png) The block diagram for the Texas Instruments TRF7960A 13.56MHz RFID transceiver IC. Image from http://www.ti.com/product/trf7960A.[/caption]
+{{< figure src="/images/2012/11/ti-trf7960a-rfid-ic-block-diagram.png" width="961" caption="The block diagram for the Texas Instruments TRF7960A 13.56MHz RFID transceiver IC. Image from http://www.ti.com/product/trf7960A." caption-position="bottom" >}}
 
 
 
@@ -265,8 +261,7 @@ On-metal compatibility of tags is a big issue. Nearby metal objects cause RFID s
 
 
 
-[caption id="attachment_12530" align="aligncenter" width="454"][![The typical RFID tag chip architecture (block diagram). Image from http://www.nxp.com/documents/data_sheet/SL3S1203_1213.pdf.](/images/2012/11/typical-rfid-tag-chip-architecture-block-diagram.png)
-](/images/2012/11/typical-rfid-tag-chip-architecture-block-diagram.png) The typical RFID tag chip architecture (block diagram). Image from http://www.nxp.com/documents/data_sheet/SL3S1203_1213.pdf.[/caption]
+{{< figure src="/images/2012/11/typical-rfid-tag-chip-architecture-block-diagram.png" width="454" caption="The typical RFID tag chip architecture (block diagram). Image from http://www.nxp.com/documents/data_sheet/SL3S1203_1213.pdf." caption-position="bottom" >}}
 
 
 
@@ -274,8 +269,7 @@ Tags can be made with incredibly basic materials! Once such example is the RFID 
 
 
 
-[caption id="attachment_12531" align="aligncenter" width="500"][![A RFID tag made from a single Atmel ATtiny and inductor! Image from http://scanlime.org/2008/09/using-an-avr-as-an-rfid-tag/.](/images/2012/11/single-attiny-and-inductor-makes-rfid-tag.jpg)
-](/images/2012/11/single-attiny-and-inductor-makes-rfid-tag.jpg) A RFID tag made from a single Atmel ATtiny and inductor! Image from http://scanlime.org/2008/09/using-an-avr-as-an-rfid-tag/.[/caption]
+{{< figure src="/images/2012/11/single-attiny-and-inductor-makes-rfid-tag.jpg" width="500" caption="A RFID tag made from a single Atmel ATtiny and inductor! Image from http://scanlime.org/2008/09/using-an-avr-as-an-rfid-tag/." caption-position="bottom" >}}
 
 
 
@@ -301,8 +295,7 @@ Murata makes a [MAGICSTRAP chip](http://www.murataamericas.com/rfid), which is a
 
 
 
-[caption id="attachment_12532" align="aligncenter" width="401"][![http://www.murata.eu/news/en/pr/pcb-mounted-rfid-tag-solution-from-MUR247.](/images/2012/11/murata-magic-strap-uhf-rfid-chip-on-pcb.jpg)
-](/images/2012/11/murata-magic-strap-uhf-rfid-chip-on-pcb.jpg) http://www.murata.eu/news/en/pr/pcb-mounted-rfid-tag-solution-from-MUR247.[/caption]
+{{< figure src="/images/2012/11/murata-magic-strap-uhf-rfid-chip-on-pcb.jpg" width="401" caption="http://www.murata.eu/news/en/pr/pcb-mounted-rfid-tag-solution-from-MUR247." caption-position="bottom" >}}
 
 
 
@@ -315,8 +308,7 @@ RFID inlays are a popular way form of cheap, disposable RIFD tags. They are usua
 
 
 
-[caption id="attachment_12534" align="aligncenter" width="1218"][![An example of the antenna/chip layout on a RFID UHF inlay. This image is of the Alien ALN-9662 "Short" inlay. Image from http://www.alientechnology.com/tags/index.php.](/images/2012/11/alien-uhf-rfid-short-inlay-pattern.jpg)
-](/images/2012/11/alien-uhf-rfid-short-inlay-pattern.jpg) An example of the antenna/chip layout on a RFID UHF inlay. This image is of the Alien ALN-9662 "Short" inlay. Image from http://www.alientechnology.com/tags/index.php.[/caption]
+{{< figure src="/images/2012/11/alien-uhf-rfid-short-inlay-pattern.jpg" width="1218" caption="An example of the antenna/chip layout on a RFID UHF inlay. This image is of the Alien ALN-9662 'Short' inlay. Image from http://www.alientechnology.com/tags/index.php." caption-position="bottom" >}}
 
 
 
@@ -324,8 +316,7 @@ They commonly follow the layer makeup shown below:
 
 
 
-[caption id="attachment_12533" align="aligncenter" width="215"][![The layer makeup of a RFID label. Image from http://www.tageos.com/index.php?idpage=256&langue=eng.](/images/2012/11/rfid-label-layer-makeup.png)
-](/images/2012/11/rfid-label-layer-makeup.png) The layer makeup of a RFID label. Image from http://www.tageos.com/index.php?idpage=256&langue=eng.[/caption]
+{{< figure src="/images/2012/11/rfid-label-layer-makeup.png" width="215" caption="The layer makeup of a RFID label. Image from http://www.tageos.com/index.php?idpage=256&langue=eng." caption-position="bottom" >}}
 
 
 
@@ -333,8 +324,7 @@ Larger inlays give more room the antenna, giving longer read ranges. You can eit
 
 
 
-[caption id="attachment_12535" align="aligncenter" width="306"][![A roll of UHF RFID inlays. Image from http://hcaeditor.blogspot.co.nz/2011/07/want-some-salsa-with-your-chips.html.](/images/2012/11/roll-of-uhf-rfid-inlays.jpg)
-](/images/2012/11/roll-of-uhf-rfid-inlays.jpg) A roll of UHF RFID inlays. Image from http://hcaeditor.blogspot.co.nz/2011/07/want-some-salsa-with-your-chips.html.[/caption]
+{{< figure src="/images/2012/11/roll-of-uhf-rfid-inlays.jpg" width="306" caption="A roll of UHF RFID inlays. Image from http://hcaeditor.blogspot.co.nz/2011/07/want-some-salsa-with-your-chips.html." caption-position="bottom" >}}
 
 
 
@@ -342,8 +332,7 @@ The following image shows the dimensions of a typical inlay (the Tageos EOS-300)
 
 
 
-[caption id="attachment_12536" align="aligncenter" width="959"][![The dimensions of a standard inlay (the Tageos EOS-300), and the measured read ranges when it is attached on a different number of materials. Image from http://www.tageos.com/index.php?idpage=256&langue=eng.](/images/2012/11/tageos-eos-300-rfid-inlay-mechanical-dimensions-and-read-range-graph.png)
-](/images/2012/11/tageos-eos-300-rfid-inlay-mechanical-dimensions-and-read-range-graph.png) The dimensions of a standard inlay (the Tageos EOS-300), and the measured read ranges when it is attached on a different number of materials. Image from http://www.tageos.com/index.php?idpage=256&langue=eng.[/caption]
+{{< figure src="/images/2012/11/tageos-eos-300-rfid-inlay-mechanical-dimensions-and-read-range-graph.png" width="959" caption="The dimensions of a standard inlay (the Tageos EOS-300), and the measured read ranges when it is attached on a different number of materials. Image from http://www.tageos.com/index.php?idpage=256&langue=eng." caption-position="bottom" >}}
 
 
 
@@ -351,8 +340,7 @@ A few select manufacturers make metal-capable UHF RFID inlays. As of 2012, they 
 
 
 
-[caption id="attachment_12537" align="aligncenter" width="1026"][![The outline of the Xerafy "Mercury" UHF RFID metal-capable inlay. ](/images/2012/11/xerafy-mercury-rfid-inlay-metal-capable.png)
-](/images/2012/11/xerafy-mercury-rfid-inlay-metal-capable.png) The outline of the Xerafy "Mercury" UHF RFID metal-capable inlay.[/caption]
+{{< figure src="/images/2012/11/xerafy-mercury-rfid-inlay-metal-capable.png" width="1026" caption="The outline of the Xerafy 'Mercury' UHF RFID metal-capable inlay." caption-position="bottom" >}}
 
 
 
@@ -360,8 +348,7 @@ The following image shows a typical radiation pattern from an RFID inlay.
 
 
 
-[caption id="attachment_12538" align="aligncenter" width="1576"][![A typical radiation pattern from an RFID inlay. Image from http://www.lab-id.com/datasheet/inlay_UHF/SKLI4218.pdf.](/images/2012/11/rfid-uhf-inlay-radiation-pattern.png)
-](/images/2012/11/rfid-uhf-inlay-radiation-pattern.png) A typical radiation pattern from an RFID inlay. Image from http://www.lab-id.com/datasheet/inlay_UHF/SKLI4218.pdf.[/caption]
+{{< figure src="/images/2012/11/rfid-uhf-inlay-radiation-pattern.png" width="1576" caption="A typical radiation pattern from an RFID inlay. Image from http://www.lab-id.com/datasheet/inlay_UHF/SKLI4218.pdf." caption-position="bottom" >}}
 
 
 
@@ -384,8 +371,7 @@ Specialised tags/inlays exist for attaching/putting in close proximity to metal 
 
 
 
-[caption id="attachment_12539" align="aligncenter" width="348"][![A cross-section of the proposed antenna in the article "Small Proximity Coupled Ceramic Patch Antenna For UHF RFID Tag Mountable On Metallic Objects". Image from http://www.jpier.org/PIERC/pierc04/10.08061809.pdf.](/images/2012/11/metallic-rfid-antenna-geometry-with-coupled-ceramic-patch.png)
-](/images/2012/11/metallic-rfid-antenna-geometry-with-coupled-ceramic-patch.png) A cross-section of the proposed antenna in the article "Small Proximity Coupled Ceramic Patch Antenna For UHF RFID Tag Mountable On Metallic Objects". Image from http://www.jpier.org/PIERC/pierc04/10.08061809.pdf.[/caption]
+{{< figure src="/images/2012/11/metallic-rfid-antenna-geometry-with-coupled-ceramic-patch.png" width="348" caption="A cross-section of the proposed antenna in the article 'Small Proximity Coupled Ceramic Patch Antenna For UHF RFID Tag Mountable On Metallic Objects'. Image from http://www.jpier.org/PIERC/pierc04/10.08061809.pdf." caption-position="bottom" >}}
 
 
 
@@ -408,8 +394,7 @@ Smith charts are useful when designing impedance matching circuits between the a
 
 
 
-[caption id="attachment_12540" align="aligncenter" width="353"][![Screenshot of an example Smith chart generated by Smith, a windows program by Fritz Dellsperger (http://www.fritz.dellsperger.net/).](/images/2012/11/example-smith-chart-from-smith-program-for-windows.png)
-](/images/2012/11/example-smith-chart-from-smith-program-for-windows.png) Screenshot of an example Smith chart generated by Smith, a windows program by Fritz Dellsperger (http://www.fritz.dellsperger.net/).[/caption]
+{{< figure src="/images/2012/11/example-smith-chart-from-smith-program-for-windows.png" width="353" caption="Screenshot of an example Smith chart generated by Smith, a windows program by Fritz Dellsperger (http://www.fritz.dellsperger.net/)." caption-position="bottom" >}}
 
 
 
@@ -428,8 +413,7 @@ The following diagram is of a planar PCB 13.56MHz RFID antenna design, recommend
 
 
 
-[caption id="attachment_12541" align="aligncenter" width="331"][![Diagram of a typical 13.56MHz planar PCB antenna. Image from http://www.ti.com/lit/an/sloa135/sloa135.pdf.](/images/2012/11/rfid-13-56mhz-typical-pcb-antenna-circuit-diagram-with-dimensions.png)
-](/images/2012/11/rfid-13-56mhz-typical-pcb-antenna-circuit-diagram-with-dimensions.png) Diagram of a typical 13.56MHz planar PCB antenna. Image from http://www.ti.com/lit/an/sloa135/sloa135.pdf.[/caption]
+{{< figure src="/images/2012/11/rfid-13-56mhz-typical-pcb-antenna-circuit-diagram-with-dimensions.png" width="331" caption="Diagram of a typical 13.56MHz planar PCB antenna. Image from http://www.ti.com/lit/an/sloa135/sloa135.pdf." caption-position="bottom" >}}
 
 
 
@@ -575,8 +559,7 @@ Most RFID reader development kits come with suppporting software to get a RFID p
 
 
 
-[caption id="attachment_12542" align="aligncenter" width="1042"][![Readout of RFID tags in the near vicinity by the ThingMagic AstraEX.](/images/2012/11/uhf-rfid-tag-read-results-astra-ex-to-usa.png)
-](/images/2012/11/uhf-rfid-tag-read-results-astra-ex-to-usa.png) Readout of RFID tags in the near vicinity by the ThingMagic AstraEX.[/caption]
+{{< figure src="/images/2012/11/uhf-rfid-tag-read-results-astra-ex-to-usa.png" width="1042" caption="Readout of RFID tags in the near vicinity by the ThingMagic AstraEX." caption-position="bottom" >}}
 
 
 

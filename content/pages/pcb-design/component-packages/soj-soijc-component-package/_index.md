@@ -159,8 +159,7 @@ Same general package dimensions as the standard SOIC but with J-type leads rathe
 # 3D Renders
 
 
-[caption id="attachment_11327" align="aligncenter" width="350"][![A 3D render of the SOJ component package.](/images/2015/04/soj-component-package-3d-render.jpg)
-](/images/2015/04/soj-component-package-3d-render.jpg) A 3D render of the SOJ component package.[/caption]
+{{< figure src="/images/2015/04/soj-component-package-3d-render.jpg" width="350" caption="A 3D render of the SOJ component package." caption-position="bottom" >}}
 
 
 # Other Images

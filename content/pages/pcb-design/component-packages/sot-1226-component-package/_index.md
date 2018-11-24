@@ -79,10 +79,8 @@ As of March 2015, NXP seems to be the only manufacturer using this package. NXP 
 
 # Dimensions
 
-[caption id="attachment_11076" align="aligncenter" width="481"][![The dimensions of the SOT-1226 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1226_po.pdf.](/images/2015/03/sot-1226-component-package-dimensions.png)
-](/images/2015/03/sot-1226-component-package-dimensions.png) The dimensions of the SOT-1226 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1226_po.pdf.[/caption]
+{{< figure src="/images/2015/03/sot-1226-component-package-dimensions.png" width="481" caption="The dimensions of the SOT-1226 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1226_po.pdf." caption-position="bottom" >}}
 
 # Recommended Footprint
 
-[caption id="attachment_11075" align="aligncenter" width="443"][![The recommended footprint (land pattern) for the SOT-1226 component package.](/images/2015/03/sot-1226-component-package-recommended-footprint.png)
-](/images/2015/03/sot-1226-component-package-recommended-footprint.png) The recommended footprint (land pattern) for the SOT-1226 component package.[/caption]
+{{< figure src="/images/2015/03/sot-1226-component-package-recommended-footprint.png" width="443" caption="The recommended footprint (land pattern) for the SOT-1226 component package." caption-position="bottom" >}}

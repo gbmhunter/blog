@@ -10,8 +10,7 @@ url: /programming/languages/java
 # Logo
 
 
-[caption id="attachment_14214" align="aligncenter" width="278"][![](/images/2016/06/java-logo-v2.png)
-](/images/2016/06/java-logo-v2.png) The Java logo.[/caption]
+{{< figure src="/images/2016/06/java-logo-v2.png" width="278" caption="The Java logo." caption-position="bottom" >}}
 
 
 # Child Pages

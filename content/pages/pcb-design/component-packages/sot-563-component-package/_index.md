@@ -69,17 +69,14 @@ The SOT-563 package has a 68% smaller footprint than the SOT-23-x package.
 
 Below is the dimensions for the SOT-563 component package as defined by Texas Instruments.
 
-[caption id="attachment_12274" align="aligncenter" width="556"][![Dimensions of the SOT-563 component package. Image from http://www.ti.com/.](/images/2015/04/sot-563-component-package-dimensions-ti-drl-r-pdso-n6.png)
-](/images/2015/04/sot-563-component-package-dimensions-ti-drl-r-pdso-n6.png) Dimensions of the SOT-563 component package. Image from http://www.ti.com/.[/caption]
+{{< figure src="/images/2015/04/sot-563-component-package-dimensions-ti-drl-r-pdso-n6.png" width="556" caption="Dimensions of the SOT-563 component package. Image from http://www.ti.com/." caption-position="bottom" >}}
 
 # Recommended Footprint
 
 Below is the recommended footprint for the SOT-563 component package from Texas Instruments.
 
-[caption id="attachment_12275" align="aligncenter" width="927"][![A recommended PCB footprint for the SOT-563 (TI DRL) component package. Image from http://www.ti.com/.](/images/2015/04/sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6.png)
-](/images/2015/04/sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6.png) A recommended PCB footprint for the SOT-563 (TI DRL) component package. Image from http://www.ti.com/.[/caption]
+{{< figure src="/images/2015/04/sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6.png" width="927" caption="A recommended PCB footprint for the SOT-563 (TI DRL) component package. Image from http://www.ti.com/." caption-position="bottom" >}}
 
 # 3D Renders
 
-[caption id="attachment_11355" align="aligncenter" width="362"][![A 3D render of the SOT-563 component package.](/images/2015/04/sot-563-component-package-3d-render.jpg)
-](/images/2015/04/sot-563-component-package-3d-render.jpg) A 3D render of the SOT-563 component package.[/caption]
+{{< figure src="/images/2015/04/sot-563-component-package-3d-render.jpg" width="362" caption="A 3D render of the SOT-563 component package." caption-position="bottom" >}}

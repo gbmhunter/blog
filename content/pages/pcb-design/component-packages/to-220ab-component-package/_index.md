@@ -153,8 +153,7 @@ A variant on the TO-220 package with three leads and the pad (but only has three
 # 3D Renders
 
 
-[caption id="attachment_11376" align="aligncenter" width="378"][![A 3D render of the TO-220AB component package.](/images/2015/04/to-220ab-to-220-3-component-package-3d-render.jpg)
-](/images/2015/04/to-220ab-to-220-3-component-package-3d-render.jpg) A 3D render of the TO-220AB component package.[/caption]
+{{< figure src="/images/2015/04/to-220ab-to-220-3-component-package-3d-render.jpg" width="378" caption="A 3D render of the TO-220AB component package." caption-position="bottom" >}}
 
 
 # Images

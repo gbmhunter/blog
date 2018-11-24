@@ -40,8 +40,7 @@ Standard resistors are one of the simplest ways of limiting inrush current. They
 NTC thermistors can be used for reducing the amount of inrush current.
 
 
-[caption id="attachment_14087" align="aligncenter" width="475"][![](/images/2015/01/inrush-current-limiting-with-thermistor.jpg)
-](/images/2015/01/inrush-current-limiting-with-thermistor.jpg) A graph showing the effect of a NTC thermistor limiting the inrush current to a circuit.[/caption]
+{{< figure src="/images/2015/01/inrush-current-limiting-with-thermistor.jpg" width="475" caption="A graph showing the effect of a NTC thermistor limiting the inrush current to a circuit." caption-position="bottom" >}}
 
 
 They will always be some measurable amount of voltage drop when using a NTC, as some continuous thermal dissipation is required to keep the thermistor warm enough to be in it's low resistance state.

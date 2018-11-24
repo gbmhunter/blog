@@ -16,8 +16,7 @@ The _Yocto Project_, or more commonly just called _Yocto_, is a build system use
 
 
 
-[caption id="attachment_14258" align="aligncenter" width="404"][![](/images/2017/04/the-yocto-project-logo.png)
-](/images/2017/04/the-yocto-project-logo.png) The logo for the Yocto project.[/caption]
+{{< figure src="/images/2017/04/the-yocto-project-logo.png" width="404" caption="The logo for the Yocto project." caption-position="bottom" >}}
 
 
 
@@ -166,8 +165,7 @@ Now go grab a coffee. Or better yet, take your family out to a restaurant for a 
 
 
 
-[caption id="attachment_14262" align="aligncenter" width="1491"][![](/images/2017/04/yocto-linux-build-in-progress-showing-cpu-usage.png)
-](/images/2017/04/yocto-linux-build-in-progress-showing-cpu-usage.png) An embedded Linux build in progress (using Yocto), note the CPU usage![/caption]
+{{< figure src="/images/2017/04/yocto-linux-build-in-progress-showing-cpu-usage.png" width="1491" caption="An embedded Linux build in progress (using Yocto), note the CPU usage!" caption-position="bottom" >}}
 
 
 
@@ -200,8 +198,7 @@ This should load up a separate window, and display a GUI of the Linux image you 
 
 
 
-[caption id="attachment_14272" align="aligncenter" width="1327"][![](/images/2017/04/yocto-running-qemu-after-building-default-linux-image.png)
-](/images/2017/04/yocto-running-qemu-after-building-default-linux-image.png) Running the finished Yocto build in QEMU (an emulator).[/caption]
+{{< figure src="/images/2017/04/yocto-running-qemu-after-building-default-linux-image.png" width="1327" caption="Running the finished Yocto build in QEMU (an emulator)." caption-position="bottom" >}}
 
 
 

@@ -184,8 +184,7 @@ I have only ever seen this in the 3-pin variant (called TO-268-3).
 # Photos
 
 
-[caption id="attachment_11395" align="aligncenter" width="366"][![Photo of the D3PAK (TO-268) component package.](/images/2015/04/d3pak-to-268-component-package-photo.jpg)
-](/images/2015/04/d3pak-to-268-component-package-photo.jpg) Photo of the D3PAK (TO-268) component package.[/caption]
+{{< figure src="/images/2015/04/d3pak-to-268-component-package-photo.jpg" width="366" caption="Photo of the D3PAK (TO-268) component package." caption-position="bottom" >}}
 
 
 # Other Images

@@ -145,5 +145,4 @@ None
 # Photos
 
 
-[caption id="attachment_11352" align="aligncenter" width="222"][![A photo of the SOT-523F component package.](/images/2015/04/sot-523f-component-package-photo.jpg)
-](/images/2015/04/sot-523f-component-package-photo.jpg) A photo of the SOT-523F component package.[/caption]
+{{< figure src="/images/2015/04/sot-523f-component-package-photo.jpg" width="222" caption="A photo of the SOT-523F component package." caption-position="bottom" >}}

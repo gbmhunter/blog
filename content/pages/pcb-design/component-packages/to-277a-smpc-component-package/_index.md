@@ -166,12 +166,10 @@ Used by Vishay and Bruckewell.
 # 3D Renders
 
 
-[caption id="attachment_11398" align="aligncenter" width="358"][![A 3D render of the TO-277A component package.](/images/2015/04/to-277a-component-package-3d-render.jpg)
-](/images/2015/04/to-277a-component-package-3d-render.jpg) A 3D render of the TO-277A component package.[/caption]
+{{< figure src="/images/2015/04/to-277a-component-package-3d-render.jpg" width="358" caption="A 3D render of the TO-277A component package." caption-position="bottom" >}}
 
 
 #  Dimensions
 
 
-[caption id="attachment_13852" align="aligncenter" width="913"][![](/images/2015/04/component-package-to-277a-smpc-dimensions-and-land-pattern.png)
-](/images/2015/04/component-package-to-277a-smpc-dimensions-and-land-pattern.png) Dimensions and land pattern for the TO-277A (SMPC) component package.[/caption]
+{{< figure src="/images/2015/04/component-package-to-277a-smpc-dimensions-and-land-pattern.png" width="913" caption="Dimensions and land pattern for the TO-277A (SMPC) component package." caption-position="bottom" >}}

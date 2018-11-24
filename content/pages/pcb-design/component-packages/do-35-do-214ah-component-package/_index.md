@@ -157,8 +157,7 @@ This a very common package for small-signal low-power through-hole diodes such a
 # Photo
 
 
-[caption id="attachment_11249" align="aligncenter" width="343"][![A photo of the DO-35 (DO-204AH) component package.](/images/2015/04/do-35-do-204ah-component-package-photo.jpg)
-](/images/2015/04/do-35-do-204ah-component-package-photo.jpg) A photo of the DO-35 (DO-204AH) component package.[/caption]
+{{< figure src="/images/2015/04/do-35-do-204ah-component-package-photo.jpg" width="343" caption="A photo of the DO-35 (DO-204AH) component package." caption-position="bottom" >}}
 
 
 # Images

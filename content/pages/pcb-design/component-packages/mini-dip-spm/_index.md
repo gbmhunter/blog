@@ -153,5 +153,4 @@ The SPM27-JA does not have a top-side copper face, while the SPM27-CC and SPM27-
 # 3D Renders
 
 
-[caption id="attachment_11282" align="aligncenter" width="412"][![A 3D render of the Mini-DIP SPM component package.](/images/2015/04/mini-dip-spm-component-package-3d-render.png)
-](/images/2015/04/mini-dip-spm-component-package-3d-render.png) A 3D render of the Mini-DIP SPM component package.[/caption]
+{{< figure src="/images/2015/04/mini-dip-spm-component-package-3d-render.png" width="412" caption="A 3D render of the Mini-DIP SPM component package." caption-position="bottom" >}}

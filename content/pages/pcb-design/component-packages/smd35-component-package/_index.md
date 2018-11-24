@@ -138,8 +138,7 @@ Used exclusively by Seti for their range of Deep UV LEDs.
 # Photos
 
 
-[caption id="attachment_11295" align="aligncenter" width="365"][![A 3D render of the SMD35 component package.](/images/2015/04/smd35-component-package-3d-render.png)
-](/images/2015/04/smd35-component-package-3d-render.png) A 3D render of the SMD35 component package.[/caption]
+{{< figure src="/images/2015/04/smd35-component-package-3d-render.png" width="365" caption="A 3D render of the SMD35 component package." caption-position="bottom" >}}
 
 
 ##  

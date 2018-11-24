@@ -148,8 +148,7 @@ A package used by NXP for some of their diodes.
 # 3D Render
 
 
-[caption id="attachment_11314" align="aligncenter" width="415"][![A 3D render of the SOD-128 component package.](/images/2015/04/sod-128-component-package-3d-render.jpg)
-](/images/2015/04/sod-128-component-package-3d-render.jpg) A 3D render of the SOD-128 component package.[/caption]
+{{< figure src="/images/2015/04/sod-128-component-package-3d-render.jpg" width="415" caption="A 3D render of the SOD-128 component package." caption-position="bottom" >}}
 
 
 # Other Images

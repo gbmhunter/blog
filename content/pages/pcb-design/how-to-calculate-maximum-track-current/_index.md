@@ -147,8 +147,7 @@ Unlike IPC-2221A, IPC-2152 is not just a simple equation.
 
   
 
-[caption id="attachment_13214" align="aligncenter" width="641"][![The Universal Chart in IPC-2152 which gives an un-adjusted track cross-sectional area based upon the desired current and temperature rise.](/images/2016/04/ipc-2152-universal-chart.png)
-](/images/2016/04/ipc-2152-universal-chart.png) The Universal Chart in IPC-2152 which gives an un-adjusted track cross-sectional area based upon the desired current and temperature rise.[/caption]  
+{{< figure src="/images/2016/04/ipc-2152-universal-chart.png" width="641" caption="The Universal Chart in IPC-2152 which gives an un-adjusted track cross-sectional area based upon the desired current and temperature rise." caption-position="bottom" >}}  
 
   
 

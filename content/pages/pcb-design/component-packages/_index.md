@@ -111,8 +111,7 @@ The SMT Code Book ([http://www.marsport.org.uk/smd/mainframe.htm](http://www.mar
 
 
 
-[caption id="" align="alignnone" width="46"][![Suggested Pad Layouts For A Number Of Packages (Diodes INC)](http://blog.mbedded.ninja/wp-includes/images/crystal/document.png)
-](/images/2011/09/Suggested-Pad-Layouts-For-A-Number-Of-Packages-Diodes-INC.pdf) PDF[/caption]
+{{< figure src="http://blog.mbedded.ninja/wp-includes/images/crystal/document.png" width="46" caption="PDF" caption-position="bottom" >}}
 
 
 

@@ -73,8 +73,7 @@ url: /pcb-design/component-packages/d2pak-to-263-component-package
 
 This package can be considered the SMT version of the TO-220AB. It is a 3, 5 or 7 leaded heavy-duty package that allows for good heat-sinking due to a large pad on it's underside. Used frequently for high power MOSFETs, LDOs and SMPS. Comes with either a normal middle lead (X2 = nothing) or a short, cut-off middle lead (X2 = S).
 
-[caption id="attachment_11392" align="aligncenter" width="345"][![A 3D render of the D2PAK (TO-263) component package.](/images/2015/04/d2pak-to-263-component-package-3d-render.jpg)
-](/images/2015/04/d2pak-to-263-component-package-3d-render.jpg) A 3D render of the D2PAK (TO-263) component package.[/caption]
+{{< figure src="/images/2015/04/d2pak-to-263-component-package-3d-render.jpg" width="345" caption="A 3D render of the D2PAK (TO-263) component package." caption-position="bottom" >}}
 
 The synonym for the TO-263 package, D2PAK, stands for "double decawatt package". It was designed by Motorola for high power devices.
 
@@ -82,19 +81,16 @@ The synonym for the TO-263 package, D2PAK, stands for "double decawatt package".
 
 The junction-to-ambient thermal resistance for the TO-263 component package on both standard JEDEC 2-layer and 4-layer boards is shown below:
 
-[caption id="attachment_13010" align="aligncenter" width="680"][![Junction-to-ambient thermal resistance data of the TO-263 component package on both standard JEDEC 2-layer and 4-layer PCBs. Image from www.ti.com.](/images/2015/04/d2pak-to-263-component-package-thermal-resistance-2-vs-4-layer-comparison.png)
-](/images/2015/04/d2pak-to-263-component-package-thermal-resistance-2-vs-4-layer-comparison.png) Junction-to-ambient thermal resistance data of the TO-263 component package on both standard JEDEC 2-layer and 4-layer PCBs. Image from www.ti.com.[/caption]
+{{< figure src="/images/2015/04/d2pak-to-263-component-package-thermal-resistance-2-vs-4-layer-comparison.png" width="680" caption="Junction-to-ambient thermal resistance data of the TO-263 component package on both standard JEDEC 2-layer and 4-layer PCBs. Image from www.ti.com." caption-position="bottom" >}}
 
 # TO-263 THIN
 
 TO-263 THIN is a variant of the TO-263 component package by Texas Instruments. It shares a similar PCB footprint, but is significantly smaller in height (i.e. thinner).
 
-[caption id="attachment_13006" align="aligncenter" width="446"][![A comparison in dimensions of the standard  TO-263 component package vs. the TO-263 THIN component package. Image from www.ti.com.](/images/2015/04/to-263-normal-vs-thin-component-package-comparison.pdf.png)
-](/images/2015/04/to-263-normal-vs-thin-component-package-comparison.pdf.png) A comparison in dimensions of the standard TO-263 component package vs. the TO-263 THIN component package. Image from www.ti.com.[/caption]
+{{< figure src="/images/2015/04/to-263-normal-vs-thin-component-package-comparison.pdf.png" width="446" caption="A comparison in dimensions of the standard TO-263 component package vs. the TO-263 THIN component package. Image from www.ti.com." caption-position="bottom" >}}
 
 It still has a similar exposed pad on it's underside (making it footprint compatible with the standard TO-263 package).
 
 The exact dimensions of the TO-263 THIN package are shown in the below image:
 
-[caption id="attachment_13008" align="aligncenter" width="817"][![The dimensions for the TO-263 THIN component package. Image built from elements taken from www.ti.com.](/images/2015/04/to-263-thin-component-package-dimensions.png)
-](/images/2015/04/to-263-thin-component-package-dimensions.png) The dimensions for the TO-263 THIN component package. Image built from elements taken from www.ti.com.[/caption]
+{{< figure src="/images/2015/04/to-263-thin-component-package-dimensions.png" width="817" caption="The dimensions for the TO-263 THIN component package. Image built from elements taken from www.ti.com." caption-position="bottom" >}}

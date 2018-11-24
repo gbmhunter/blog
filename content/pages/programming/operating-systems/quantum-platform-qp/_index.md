@@ -11,8 +11,7 @@ url: /programming/operating-systems/quantum-platform-qp
 
 Quantum Platform (QP) is a framework suite used to create state-machine based applications. It is cross-platform, supporting Window, Linux, embedded systems/toolchains, and other operating systems. It is very applicable to firmware development.
 
-[caption id="attachment_12932" align="aligncenter" width="259"][![The Quantum Leaps QP logo. Image from http://www.state-machine.com/.](/images/2016/02/quantum-leaps-qp-logo.png)
-](/images/2016/02/quantum-leaps-qp-logo.png) The Quantum Leaps QP logo. Image from http://www.state-machine.com/.[/caption]
+{{< figure src="/images/2016/02/quantum-leaps-qp-logo.png" width="259" caption="The Quantum Leaps QP logo. Image from http://www.state-machine.com/." caption-position="bottom" >}}
 
 # QP
 

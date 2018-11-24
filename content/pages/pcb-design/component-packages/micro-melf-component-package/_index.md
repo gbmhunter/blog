@@ -156,8 +156,7 @@ Some versions have squared bits in the middle, making it easier to place one on 
 
 
 
-[caption id="attachment_11275" align="aligncenter" width="360"][![A photo of the Micro-MELF component package.](/images/2015/04/micro-melf-component-package-photo.jpg)
-](/images/2015/04/micro-melf-component-package-photo.jpg) A photo of the Micro-MELF component package.[/caption]
+{{< figure src="/images/2015/04/micro-melf-component-package-photo.jpg" width="360" caption="A photo of the Micro-MELF component package." caption-position="bottom" >}}
 
 
 

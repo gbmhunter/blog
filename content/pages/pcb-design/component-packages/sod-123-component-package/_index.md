@@ -65,12 +65,10 @@ The SOD-123 component package has narrow, flat leads protruding from the base of
 
 # 3D Render
 
-[caption id="attachment_11740" align="aligncenter" width="296"][![A 3D render of the SOD-123 component package. Image from www.digikey.com.](/images/2015/06/sod-123-component-package-3d-render.jpg)
-](/images/2015/06/sod-123-component-package-3d-render.jpg) A 3D render of the SOD-123 component package. Image from www.digikey.com.[/caption]
+{{< figure src="/images/2015/06/sod-123-component-package-3d-render.jpg" width="296" caption="A 3D render of the SOD-123 component package. Image from www.digikey.com." caption-position="bottom" >}}
 
 # Dimensions And Recommended Footprint
 
-[caption id="attachment_11739" align="aligncenter" width="584"][![Dimensions and a recommended footprint (land pattern) for the SOD-123 component package. ](/images/2015/06/sod-123-component-package-dimensions-and-recommended-footprint.png)
-](/images/2015/06/sod-123-component-package-dimensions-and-recommended-footprint.png) Dimensions and a recommended footprint (land pattern) for the SOD-123 component package.[/caption]
+{{< figure src="/images/2015/06/sod-123-component-package-dimensions-and-recommended-footprint.png" width="584" caption="Dimensions and a recommended footprint (land pattern) for the SOD-123 component package." caption-position="bottom" >}}
 
 Note that the pins in the above diagram are labelled with the diode anode being pin 2, and the cathode being pin 1. This is not what I would consider to be intuitive numbering!

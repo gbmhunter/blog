@@ -117,8 +117,7 @@ $$
 
 
 
-[caption id="attachment_14065" align="aligncenter" width="777"][![](/images/2012/08/digital-logic-counter-six-state-binary.png)
-](/images/2012/08/digital-logic-counter-six-state-binary.png) Schematic of a six state binary counter.[/caption]
+{{< figure src="/images/2012/08/digital-logic-counter-six-state-binary.png" width="777" caption="Schematic of a six state binary counter." caption-position="bottom" >}}
 
 
 ## 3-Bit Grey Encoded Counter
@@ -157,8 +156,7 @@ Download: [CEDAR Logic Simulator File](https://docs.google.com/open?id=0B9GgsT_b
 The 3-Bit Grey Encoded Counter is a counter that counts from 0 to 7 in binary in a grey encoded fashion. The counter increments on every rising edge of the bit 'count' and the direction bit 'upNDown' determines the direction of counting.
 
 
-[caption id="attachment_14066" align="aligncenter" width="781"][![](/images/2012/08/digital-logic-counter-three-bit-grey-encoded-binary.png)
-](/images/2012/08/digital-logic-counter-three-bit-grey-encoded-binary.png) Schematic of a three-bit Grey encoded binary counter.[/caption]
+{{< figure src="/images/2012/08/digital-logic-counter-three-bit-grey-encoded-binary.png" width="781" caption="Schematic of a three-bit Grey encoded binary counter." caption-position="bottom" >}}
 
 
 ## Quadrature Detection Circuit
@@ -174,8 +172,7 @@ This quadrature detection circuit is built entirely in hardware, and only uses o
 When the encoder is spinning in one direction, the output will be logic high (1), when it is spinning in the opposite direction, it will be logic low (0).
 
 
-[caption id="attachment_14067" align="aligncenter" width="623"][![](/images/2012/08/quadrature-phase-detection-circuit.png)
-](/images/2012/08/quadrature-phase-detection-circuit.png) A simple quadrature phase detection circuit using a D flip-flop.[/caption]
+{{< figure src="/images/2012/08/quadrature-phase-detection-circuit.png" width="623" caption="A simple quadrature phase detection circuit using a D flip-flop." caption-position="bottom" >}}
 
 
 ## Delay Circuit
@@ -186,8 +183,7 @@ When the encoder is spinning in one direction, the output will be logic high (1)
 A simple delay circuit can be made just by chaining DQ flip-flops together in series (the output of one feeds the input of another). For every flip-flop, the signal will be delayed by one clock-cycle (assuming they all share the same clock source).
 
 
-[caption id="attachment_14068" align="aligncenter" width="880"][![](/images/2012/08/four-clock-cycle-delay-element-from-flipflops.png)
-](/images/2012/08/four-clock-cycle-delay-element-from-flipflops.png) A simple four clock-cycle delay element made from four DQ flip-flops. This can be used as a simple timer.[/caption]
+{{< figure src="/images/2012/08/four-clock-cycle-delay-element-from-flipflops.png" width="880" caption="A simple four clock-cycle delay element made from four DQ flip-flops. This can be used as a simple timer." caption-position="bottom" >}}
 
 
 This can be used to make a simple timer. Obviously, a limitation is that a flip-flop is needed for every clock cycle of delay needed (try that with a 1000 clock cycle delay!). More advanced timers use binary encoding with the flip-flops to achieve a greater number of states for a lower number of flip-flops.

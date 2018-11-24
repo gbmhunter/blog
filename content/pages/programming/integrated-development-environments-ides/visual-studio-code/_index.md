@@ -16,8 +16,7 @@ Visual Studio Code is a free, multi-platform, open-source code editor from Micro
 
 
 
-[caption id="attachment_15056" align="aligncenter" width="272"][![](/images/2017/11/visual-studio-code-icon-large.png)
-](/images/2017/11/visual-studio-code-icon-large.png) The icon for Microsoft's Visual Studio Code.[/caption]
+{{< figure src="/images/2017/11/visual-studio-code-icon-large.png" width="272" caption="The icon for Microsoft's Visual Studio Code." caption-position="bottom" >}}
 
 
 

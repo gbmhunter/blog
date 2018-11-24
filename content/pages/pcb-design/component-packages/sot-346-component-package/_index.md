@@ -73,17 +73,14 @@ Standard Footprint Land Area = 11.22mm² (3.3x3.4mm)
 
 Below is the outline and dimensions of the SOT-346 component package as specified by NXP Semiconductors.
 
-[caption id="attachment_12161" align="aligncenter" width="758"][![The outline and dimensions of the SOT-346 component package. Image from http://www.nxp.com/.](/images/2015/10/sot-346-component-package-outline-and-dimensions.png)
-](/images/2015/10/sot-346-component-package-outline-and-dimensions.png) The outline and dimensions of the SOT-346 component package. Image from http://www.nxp.com/.[/caption]
+{{< figure src="/images/2015/10/sot-346-component-package-outline-and-dimensions.png" width="758" caption="The outline and dimensions of the SOT-346 component package. Image from http://www.nxp.com/." caption-position="bottom" >}}
 
 # Footprint
 
 Below is the recommended reflow soldering footprint by NXP Semiconductors.
 
-[caption id="attachment_12158" align="aligncenter" width="1222"][![A recommended reflow soldering footprint (land pattern) for the SOT-346 (SC-59A) component package. Image from http://www.nxp.com/.](/images/2015/10/sot-346-sc-59a-component-package-footprint-for-reflow-soldering.pdf.png)
-](/images/2015/10/sot-346-sc-59a-component-package-footprint-for-reflow-soldering.pdf.png) A recommended reflow soldering footprint (land pattern) for the SOT-346 (SC-59A) component package. Image from http://www.nxp.com/.[/caption]
+{{< figure src="/images/2015/10/sot-346-sc-59a-component-package-footprint-for-reflow-soldering.pdf.png" width="1222" caption="A recommended reflow soldering footprint (land pattern) for the SOT-346 (SC-59A) component package. Image from http://www.nxp.com/." caption-position="bottom" >}}
 
 # 3D Render
 
-[caption id="attachment_12159" align="aligncenter" width="362"][![A 3D render of the SOT-346 (SC-59A) component package.](/images/2015/10/sot-346-sc-59a-component-package-3d-render.jpg)
-](/images/2015/10/sot-346-sc-59a-component-package-3d-render.jpg) A 3D render of the SOT-346 (SC-59A) component package.[/caption]
+{{< figure src="/images/2015/10/sot-346-sc-59a-component-package-3d-render.jpg" width="362" caption="A 3D render of the SOT-346 (SC-59A) component package." caption-position="bottom" >}}
