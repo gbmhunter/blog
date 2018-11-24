@@ -146,7 +146,7 @@ As far as I know, the TO-Leadless package is solely used by Infineon for a range
 # 3D Render
 
 
-{{< figure src="/images/2015/04/to-leadless-component-package-3d-render.jpg" width="310" caption="A 3D render of the TO-Leadless component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/to-leadless-component-package-3d-render.jpg" width="310px" caption="A 3D render of the TO-Leadless component package." caption-position="bottom" >}}
 
 
 # Images

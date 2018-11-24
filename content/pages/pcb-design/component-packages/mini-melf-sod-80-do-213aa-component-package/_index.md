@@ -69,7 +69,7 @@ Cylindrical shaped components. Not very popular because they have a tendency to
 
 # Photos
 
-{{< figure src="/images/2015/04/mini-melf-sod-80-do-213aa-component-package-photo.jpg" width="369" caption="A photo of the Mini-MELF (SOD-80, DO-213AA) component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/mini-melf-sod-80-do-213aa-component-package-photo.jpg" width="369px" caption="A photo of the Mini-MELF (SOD-80, DO-213AA) component package." caption-position="bottom" >}}
 
 # Other Images
 

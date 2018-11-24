@@ -65,7 +65,7 @@ One of a disadvantages of the TO-220AB package is that the metal tab, although g
 
 The TO-220F is a variant of the TO-220 package which has an **insulated metal tab, which is not electrically connected to any of its pins**. Some thermal performance is sacrificed because of this insulating layer.
 
-{{< figure src="/images/2015/04/to-220f-component-package-3d-render.jpg" width="338" caption="A 3D render of the TO-220F component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/to-220f-component-package-3d-render.jpg" width="338px" caption="A 3D render of the TO-220F component package." caption-position="bottom" >}}
 
 #  
 
@@ -73,8 +73,8 @@ The TO-220F is a variant of the TO-220 package which has an **insulated metal ta
 
 The dimensions of the TO-220F are shown below:
 
-{{< figure src="/images/2015/04/component-package-to-220f-dimensions.png" width="574" caption="The dimensions for the TO-220F component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/component-package-to-220f-dimensions.png" width="574px" caption="The dimensions for the TO-220F component package." caption-position="bottom" >}}
 
 # Photos
 
-{{< figure src="/images/2015/04/component-packages-to-220f-photo.jpg" width="329" caption="A photo of the TO-220F component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/component-packages-to-220f-photo.jpg" width="329px" caption="A photo of the TO-220F component package." caption-position="bottom" >}}

@@ -16,7 +16,7 @@ Perlin noise is commonly used to create natural looking textures in computer gra
 
 
 
-{{< figure src="/images/2017/10/perlin-noise-cloud-example.png" width="331" caption="Rendered Perlin noise that has been configured to make realistic looking clouds." caption-position="bottom" >}}
+{{< figure src="/images/2017/10/perlin-noise-cloud-example.png" width="331px" caption="Rendered Perlin noise that has been configured to make realistic looking clouds." caption-position="bottom" >}}
 
 
 

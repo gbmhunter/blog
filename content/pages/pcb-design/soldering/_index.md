@@ -9,7 +9,7 @@ url: /pcb-design/soldering
 
 # Overview
 
-{{< figure src="/images/2013/08/smd-components-in-reflow.gif" width="240" caption="SMD components during a reflow soldering process." caption-position="bottom" >}}
+{{< figure src="/images/2013/08/smd-components-in-reflow.gif" width="240px" caption="SMD components during a reflow soldering process." caption-position="bottom" >}}
 
 # Manually Applying Solder Paste
 

@@ -69,7 +69,7 @@ Common package for diodes, and is the in the same family as SMA and SMC. The com
 
 # 3D Renders
 
-{{< figure src="/images/2015/03/smb-do-214aa-component-package-3d-render.jpg" width="366" caption="A 3D render of the SMB (DO-214AA) component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/03/smb-do-214aa-component-package-3d-render.jpg" width="366px" caption="A 3D render of the SMB (DO-214AA) component package." caption-position="bottom" >}}
 
 # Images
 

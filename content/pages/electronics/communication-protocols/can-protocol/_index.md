@@ -21,7 +21,7 @@ url: /electronics/communication-protocols/can-protocol
 
 
 
-{{< figure src="/images/2012/12/can-bus-logo-bosch.png" width="270" caption="The CAN bus logo. Image from www.bosch.com." caption-position="bottom" >}}
+{{< figure src="/images/2012/12/can-bus-logo-bosch.png" width="270px" caption="The CAN bus logo. Image from www.bosch.com." caption-position="bottom" >}}
 
 
 
@@ -194,7 +194,7 @@ Dominant bits are logic level 0, while recessive bits are logic level 1.
 
 
 
-{{< figure src="/images/2018/03/can-standard-base-frame-format-data-remote.png" width="883" caption="The standard (base) CAN frame format for both data and remote frames." caption-position="bottom" >}}
+{{< figure src="/images/2018/03/can-standard-base-frame-format-data-remote.png" width="883px" caption="The standard (base) CAN frame format for both data and remote frames." caption-position="bottom" >}}
 
 
 
@@ -252,7 +252,7 @@ _**7-bit EOF:**_ The End Of Frame is marked with 7 recessive bits.
 
 
 
-{{< figure src="/images/2018/03/can-extended-frame-format-data-remote.png" width="1111" caption="The extended CAN frame format for both data and remote frames." caption-position="bottom" >}}
+{{< figure src="/images/2018/03/can-extended-frame-format-data-remote.png" width="1111px" caption="The extended CAN frame format for both data and remote frames." caption-position="bottom" >}}
 
 
 
@@ -424,7 +424,7 @@ Uses a shielded twisted pair. Used in trucks, agricultural and industrial equipm
 
 
 
-{{< figure src="/images/2012/12/can-bus-licensing-fee-highlighted-bosch.png" width="506" caption="A screenshot of the CAN bus licensing fee details from Bosch. Image from http://www.bosch-semiconductors.de/media/automotive_electronics/pdf_2/ipmodules_3/can_protocol_license_1/Bosch_CAN_Protocol_License_Conditions.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2012/12/can-bus-licensing-fee-highlighted-bosch.png" width="506px" caption="A screenshot of the CAN bus licensing fee details from Bosch. Image from http://www.bosch-semiconductors.de/media/automotive_electronics/pdf_2/ipmodules_3/can_protocol_license_1/Bosch_CAN_Protocol_License_Conditions.pdf." caption-position="bottom" >}}
 
 
 
@@ -447,7 +447,7 @@ One example is the PCAN-USB, which support Windows and Linux.
 
 
 
-{{< figure src="/images/2012/12/pcan-usb-device-connected-to-ubuntu-vmware.png" width="759" caption="Screenshot showing a PCAN-USB device connected to Ubuntu running inside VMware." caption-position="bottom" >}}
+{{< figure src="/images/2012/12/pcan-usb-device-connected-to-ubuntu-vmware.png" width="759px" caption="Screenshot showing a PCAN-USB device connected to Ubuntu running inside VMware." caption-position="bottom" >}}
 
 
 
@@ -490,7 +490,7 @@ Atmel T89C51CC01 Microcontroller. 8-bit 8051 architecture, with CAN interface. S
 
 
 
-{{< figure src="/images/2012/12/t89c51cc01-8bit-atmel-can-network-microcontroller.png" width="849" caption="The Atmel T89C51CC01 microcontroller. An 8-bit 8051 architecture, with a CAN interface." caption-position="bottom" >}}
+{{< figure src="/images/2012/12/t89c51cc01-8bit-atmel-can-network-microcontroller.png" width="849px" caption="The Atmel T89C51CC01 microcontroller. An 8-bit 8051 architecture, with a CAN interface." caption-position="bottom" >}}
 
 
 
@@ -508,4 +508,4 @@ The [Freescale MC9SO8D](http://www.freescale.com/webapp/sps/site/prod_summary.js
 
 
 
-{{< figure src="/images/2012/12/freescale-mc9so8-microcontroller-mscan-hardware-peripheral.png" width="660" caption="The Freescale MC9SO8 microcontroller MSCAN peripheral." caption-position="bottom" >}}
+{{< figure src="/images/2012/12/freescale-mc9so8-microcontroller-mscan-hardware-peripheral.png" width="660px" caption="The Freescale MC9SO8 microcontroller MSCAN peripheral." caption-position="bottom" >}}

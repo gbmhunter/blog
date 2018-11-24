@@ -23,6 +23,6 @@ Centre-aligned PWM is good for motor control as it generates fewer harmonics in 
 
 When viewing a PWM output on an oscilloscope, you can experience what is called _aliasing_, and oscilloscope seems to show that the PWM signal is stopping and then restarting at a rate much slower than the PWM frequency.
 
-{{< figure src="/images/2012/10/oscilloscope-aliasing-pwm-output-appaearing-to-turn-on-off.jpg" width="1200" caption="An oscilloscope aliasing problem which appears to show that the 15kHz PWM signal turning on and off (in reality it is continuous)." caption-position="bottom" >}}
+{{< figure src="/images/2012/10/oscilloscope-aliasing-pwm-output-appaearing-to-turn-on-off.jpg" width="1200px" caption="An oscilloscope aliasing problem which appears to show that the 15kHz PWM signal turning on and off (in reality it is continuous)." caption-position="bottom" >}}
 
 While your PWM could actually be doing this, more often than not what you are seeing is an **artefact caused by the digital sampling of the oscilloscope**. The following picture shows a 15kHz PWM signal appearing to stop and start every 10ms or so. I can assure you that the PWM signal is fine, it is the Rigol 100MHz oscilloscope showing the wrong thing.

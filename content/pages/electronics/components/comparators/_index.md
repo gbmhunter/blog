@@ -15,7 +15,7 @@ Comparators are closely related to op-amps. A comparator is basically an op-amp 
 
 This is the schematic symbol for a comparator, which is the same as the op-amp.
 
-{{< figure src="/images/2014/06/basic-op-amp-schematic-symbol.png" width="353" caption="The basic schematic symbol for a comparator (it is the same for an op-amp)." caption-position="bottom" >}}
+{{< figure src="/images/2014/06/basic-op-amp-schematic-symbol.png" width="353px" caption="The basic schematic symbol for a comparator (it is the same for an op-amp)." caption-position="bottom" >}}
 
 # Comparators vs. Op-Amps
 
@@ -41,7 +41,7 @@ Hystersis is essentially caused by positive feedback. Many comparators have a sm
 
 The following diagram shows how hystersis effects the outputs state changes (from low to high and back again) in regards to the input, for a non-inverting comparator configuration.
 
-{{< figure src="/images/2014/06/comparator-hystersis-graph.png" width="334" caption="A graph showing how comparator hystersis works." caption-position="bottom" >}}
+{{< figure src="/images/2014/06/comparator-hystersis-graph.png" width="334px" caption="A graph showing how comparator hystersis works." caption-position="bottom" >}}
 
 # Terms
 
@@ -73,7 +73,7 @@ The following diagram shows how hystersis effects the outputs state changes (fro
 
 The following diagram shows a non-inverting comparator with hystersis resistors added.
 
-{{< figure src="/images/2014/06/comparator-push-pull-out-non-inverting-configuration.png" width="535" caption="A schematic of a comparator in the non-inverting configuration." caption-position="bottom" >}}
+{{< figure src="/images/2014/06/comparator-push-pull-out-non-inverting-configuration.png" width="535px" caption="A schematic of a comparator in the non-inverting configuration." caption-position="bottom" >}}
 
 Firstly, determine the amount of hystersis you want (\( V_{HYST} \)). Then use the following equation to work out the ratio between the feedback and input resistor.
 

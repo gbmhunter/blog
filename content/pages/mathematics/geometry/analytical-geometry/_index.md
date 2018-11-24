@@ -115,7 +115,7 @@ Assume we have points \(\mathbf{p1}\) and \(\mathbf{p2}\) which form a line, and
 
 
 
-{{< figure src="/images/2017/11/3d-point-to-line-distance-diagram-p1-p2-p3-p4.png" width="475" caption="A diagram showing a 3D point to line distance problem." caption-position="bottom" >}}
+{{< figure src="/images/2017/11/3d-point-to-line-distance-diagram-p1-p2-p3-p4.png" width="475px" caption="A diagram showing a 3D point to line distance problem." caption-position="bottom" >}}
 
 
 

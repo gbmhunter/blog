@@ -154,7 +154,7 @@ NXP seems to be the only manufacturer who uses this package.
 # Photos
 
 
-{{< figure src="/images/2015/04/sot-902-component-package-photo.gif" width="150" caption="A photo of the SOT-902 component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/sot-902-component-package-photo.gif" width="150px" caption="A photo of the SOT-902 component package." caption-position="bottom" >}}
 
 
 # Other Images

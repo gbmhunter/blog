@@ -21,7 +21,7 @@ The page is dedicated to how to control a **brushless DC** (BLDC) motor in an em
 
 
 
-{{< figure src="/images/2012/08/rp17-bldc-motor-nema-17.jpg" width="258" caption="A standard-looking BLDC motor in a NEMA-17 enclosure." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/rp17-bldc-motor-nema-17.jpg" width="258px" caption="A standard-looking BLDC motor in a NEMA-17 enclosure." caption-position="bottom" >}}
 
 
 
@@ -266,16 +266,23 @@ The page is dedicated to how to control a **brushless DC** (BLDC) motor in an em
 
 # Motors
 
+
+
+
 Important Parameters:
 
-* Torque Constant: An important parameter which relates the torque to the DC current draw. All other things being equal, higher-quality motors will have a higher torque constant.
-* Rated Speed: Most are rated in the range of 3000-6000rpm. The motor can be driven at slightly higher speeds than those rated by a technique that is called 'flux weakening'
-* Rated Current
-* Cogging torque - This is the maximum torque the motor has when it is not being driven. This causes the rotation of the axle to feel 'bumpy' if rotated by hand when it's not being driven. For smooth operation at low speeds (< 100rpm), the cogging torque has to be small (or nothing at all). You shouldn't be able to feel this 'bumpy' phenomenom on motors with small cogging torques.
-* Mechanical Time Constant: The time for the motor to spin up to full speed at rated voltage. Normally between 4-10ms. High performance motors can have a time constant as low as 1ms to speed up to 30,000rpm!
-* Electrical Time Constant
-* Winding Inductance: High precision motors typically have lower inductance. The winding inductance has the useful property of limiting the rate of change of current through the motor, and is what allows you to use PWM to produce smooth current. The lower the inductance, the higher the PWM needed to the same current ripple.
-* Number of pole pairs. The number of pole pairs is equal to the number of electrical revolutions per mechanical revolution. Typical BLDC motors have a number of pole pairs varying from 1 to 5. If the motors datasheet instead states the number of poles, this is just 2x num. pole pairs. Note that if the motor has more than 1 pole pair, **you cannot orientate the motor to a known mechanical position** without some type of feedback (hall-effect, encoder).
+
+
+
+
+	  * Torque Constant: An important parameter which relates the torque to the DC current draw. All other things being equal, higher-quality motors will have a higher torque constant.
+	  * Rated Speed: Most are rated in the range of 3000-6000rpm. The motor can be driven at slightly higher speeds than those rated by a technique that is called 'flux weakening'
+	  * Rated Current
+	  * Cogging torque - This is the maximum torque the motor has when it is not being driven. This causes the rotation of the axle to feel 'bumpy' if rotated by hand when it's not being driven. For smooth operation at low speeds (< 100rpm), the cogging torque has to be small (or nothing at all). You shouldn't be able to feel this 'bumpy' phenomenom on motors with small cogging torques.
+	  * Mechanical Time Constant: The time for the motor to spin up to full speed at rated voltage. Normally between 4-10ms. High performance motors can have a time constant as low as 1ms to speed up to 30,000rpm!
+	  * Electrical Time Constant
+	  * Winding Inductance: High precision motors typically have lower inductance. The winding inductance has the useful property of limiting the rate of change of current through the motor, and is what allows you to use PWM to produce smooth current. The lower the inductance, the higher the PWM needed to the same current ripple.
+	  * Number of pole pairs. The number of pole pairs is equal to the number of electrical revolutions per mechanical revolution. Typical BLDC motors have a number of pole pairs varying from 1 to 5. If the motors datasheet instead states the number of poles, this is just 2x num. pole pairs. Note that if the motor has more than 1 pole pair, **you cannot orientate the motor to a known mechanical position** without some type of feedback (hall-effect, encoder).
 
 
 
@@ -553,7 +560,7 @@ where H1, H2, and H3 are the hall-effect sensors, and A, B, and C are the motor 
 
 
 
-{{< figure src="/images/2012/08/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png" width="550" caption="6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png" width="550px" caption="6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge." caption-position="bottom" >}}
 
 
 
@@ -562,7 +569,8 @@ The schematic below shows the hardware used in a PSoC 5 microcontroller to perfo
 
 
 
-{{< figure src="/images/2012/08/psoc-bldc-schematic-luts-and-multiplexors-for-phase-drive.png" caption="" caption-position="bottom" >}}A PSoC schematic containing LUT's and multiplexors for trapezoidal-control of a BLDC motor.
+[![](/images/2012/08/psoc-bldc-schematic-luts-and-multiplexors-for-phase-drive.png)
+](/images/2012/08/psoc-bldc-schematic-luts-and-multiplexors-for-phase-drive.png)A PSoC schematic containing LUT's and multiplexors for trapezoidal-control of a BLDC motor.
 
 
 
@@ -578,20 +586,41 @@ The schematic below shows the hardware used in a PSoC 5 microcontroller to perfo
 
 # Sinusoidal Control
 
+
+
+
 The benefits:
 
-* Smoother operation/less torque ripple than trapezoidal
-* Greater efficiency/less heat dissapation
-* Able to run the motor at slower speeds
+
+
+
+
+	  * Smoother operation/less torque ripple than trapezoidal
+	  * Greater efficiency/less heat dissapation
+	  * Able to run the motor at slower speeds
+
+
 
 The disadvantages:
 
-* Complex control
-* Embedded firmware uses more flash/ROM space
-* More processing power used
-* Slightly lower maximum torque (although third-harmonic injection can reduce this)
-* Hall-effect feedback becomes insufficient at low speed with varying loads, and optical encoders are preferred
-* Back EMF feedback is not possible
+
+
+
+
+
+
+
+	  * Complex control
+	  * Embedded firmware uses more flash/ROM space
+	  * More processing power used
+	  * Slightly lower maximum torque (although third-harmonic injection can reduce this)
+	  * Hall-effect feedback becomes insufficient at low speed with varying loads, and optical encoders are preferred
+	  * Back EMF feedback is not possible
+
+
+
+
+
 
 Sinusoidal control (also known as voltage-over-frequency control) is more complex than trapezoidal techniques, but offers smoother operation and better control at slow speeds.
 
@@ -610,7 +639,7 @@ With a LUT that stores floats, and a small amount of float multiplication (no di
 
 
 
-{{< figure src="/images/2012/08/16-bit-500-count-sine-wave-lut-data-graph-1.png" width="1069" caption="Data extracted from a 16-bit sine wave LUT designed for use with sinusoidal BLDC motor control." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/16-bit-500-count-sine-wave-lut-data-graph-1.png" width="1069px" caption="Data extracted from a 16-bit sine wave LUT designed for use with sinusoidal BLDC motor control." caption-position="bottom" >}}
 
 
 
@@ -678,41 +707,97 @@ With a pure phase-neutral sinusoidal drive, the maximum phase-to-phase voltage i
 
 To implement third-harmonic injection, all you have to do is add the third-harmonic to the sine-wave LUT. The third-harmonic has an amplitude that is 1/6 of that of the fundamental (your original sine wave). You'll notice that the maximum value in the LUT has decreased. At this point, scale up all the values in the LUT so they use the full-range again.
 
+
+
+
+
+
+
 # Sensor Field Orientated Control (FOC)
 
+
+
+
 The benefits:
-* You can control motor parameters which relate directly to it's physical behaviour (the variables make sense to a human)
-* Angle can be determined from phase currents (usually using a sliding state estimator), no encoder needed
+
+
+
+
+
+	  * You can control motor parameters which relate directly to it's physical behaviour (the variables make sense to a human)
+	  * Angle can be determined from phase currents (usually using a sliding state estimator), no encoder needed
+
+
 
 The disadvantages:
-* Greater control complexity than trapezoidal or sinusoidal
-* Requires fast processor to execute neccessary maths
-* Requires phase current to be measured (usually with low-side current sense resistors and an ADC)
-* Requires the tuning of three PID loops (usually)
+
+
+
+
+
+	  * Greater control complexity than trapezoidal or sinusoidal
+	  * Requires fast processor to execute neccessary maths
+	  * Requires phase current to be measured (usually with low-side current sense resistors and an ADC)
+	  * Requires the tuning of three PID loops (usually)
+
+
 
 Sensor field orientated control (also called vector control) is a permanent magnet motor control method that allows one to regulated both the speed and torque independently from each other. However, this form of control is more computationally intensive than trapezoidal or sinusoidal. Part of the complexity is due to the need to be able to measure both the current going through the windings, while both trapezoidal and sinusoidal only requires positional feedback. Clark (aka alpha-beta) and Park transforms (aka d-q) have to be calculated with the phase currents.
 
+
+
+
 ## The Clark Transformation (alpha-beta)
+
+
+
 
 The Clark transformation (also called the $\alpha \beta$ transformation, and occasionally called the Concordia transformation, but I don't know why!) is the projection of three separate sinusoidal phase values onto a stationary 2D axis.
 
+
+
+
 The Clark transformation equation is shown below:
 
-<div>$$ I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\ 0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\ \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix} \text{(unsimplified Clark transform)} $$</div>
 
-<p align="center">
-	where:<br>
- 	\(I_a\) = current in motor winding A<br>
- 	\(I_b\)` = current in motor winding B<br>
- 	\(I_c\)` = current in motor winding C<br>
- 	\(I_{\alpha\beta\gamma}\) = the Clark transformed currents
-</p>
 
-We are fortunate that when using a star-connected BLDC motor (most are!), `\(I_c\)` is 0, so that we can simplify the equation to:
 
-<div>$$  I_{\alpha\beta} = TI_{ab} = \begin{bmatrix} 1 & 0 \\ \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \end{bmatrix} \text{(simplified Clark transform for star-connected BLDC)}$$</div>
+$$  
 
-{{< figure src="/images/2012/08/clark-transformation-alpha-beta-geometric-interpretation.gif" width="500px" caption="A geometric interpretation of the Clark (alpha-beta) transformation. Image from http://en.wikipedia.org/wiki/%CE%91%CE%B2%CE%B3_transform." caption-position="bottom" >}}
+ I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\ 0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\ \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix} \text{(unsimplified Clark transform)}  
+
+ $$
+
+
+
+
+where:  
+
+ \(I_a\) = current in motor winding A (\(A\))  
+
+ \(I_b\) = current in motor winding B (\(A\))  
+
+ \(I_c\) = current in motor winding C (\(A\))  
+
+ \(I_{\alpha\beta\gamma}\) = the Clark transformed currents (\(A\))
+
+
+
+
+We are fortunate that when using a star-connected BLDC motor (most are!), \(I_c\) is 0, so that we can simplify the equation to:
+
+
+
+
+$$  
+
+ I_{\alpha\beta} = TI_{ab} = \begin{bmatrix} 1 & 0 \\ \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \end{bmatrix} \text{(simplified Clark transform for star-connected BLDC)}  
+
+ $$
+
+
+
+{{< figure src="/images/2012/08/clark-transformation-alpha-beta-geometric-interpretation.gif" width="516px" caption="A geometric interpretation of the Clark (alpha-beta) transformation. Image from http://en.wikipedia.org/wiki/%CE%91%CE%B2%CE%B3_transform." caption-position="bottom" >}}
 
 
 
@@ -757,7 +842,7 @@ where:
 
 
 
-{{< figure src="/images/2012/08/park-transformation-d-q-geometric-interpretation.jpg" width="976" caption="A geometric interpretation of the Park (dq) transformation. Image from http://en.wikipedia.org/wiki/Dqo_transformation." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/park-transformation-d-q-geometric-interpretation.jpg" width="976px" caption="A geometric interpretation of the Park (dq) transformation. Image from http://en.wikipedia.org/wiki/Dqo_transformation." caption-position="bottom" >}}
 
 
 
@@ -775,7 +860,7 @@ The following picture shows the control architecture for a PMSM motor controlled
 
 
 
-{{< figure src="/images/2012/08/pmsm-motor-control-architecture-with-psoc-micro.png" width="1372" caption="The FOC control architecture for a PMSM motor with a PSoC microcontroller." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/pmsm-motor-control-architecture-with-psoc-micro.png" width="1372px" caption="The FOC control architecture for a PMSM motor with a PSoC microcontroller." caption-position="bottom" >}}
 
 
 
@@ -1107,7 +1192,7 @@ The NEMA17 mounting hole dimensions are shown below. The dimensions are in milli
 
 
 
-{{< figure src="/images/2012/08/nema-17-motor-mounting-dimensions.jpg" width="497" caption="The NEMA17 mounting hole dimensions .The dimensions are in millimeters. Image from http://www.xylotex.com/FAQ.htm." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/nema-17-motor-mounting-dimensions.jpg" width="497px" caption="The NEMA17 mounting hole dimensions .The dimensions are in millimeters. Image from http://www.xylotex.com/FAQ.htm." caption-position="bottom" >}}
 
 
 
@@ -1115,7 +1200,7 @@ The NEMA23 mounting hole dimensions are shown below. The dimensions are in inche
 
 
 
-{{< figure src="/images/2012/08/nema-23-motor-mounting-dimensions.jpg" width="595" caption="The NEMA23 mounting hole dimensions .The dimensions are in inches. Image from http://www.xylotex.com/FAQ.htm." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/nema-23-motor-mounting-dimensions.jpg" width="595px" caption="The NEMA23 mounting hole dimensions .The dimensions are in inches. Image from http://www.xylotex.com/FAQ.htm." caption-position="bottom" >}}
 
 
 

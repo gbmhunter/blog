@@ -26,7 +26,7 @@ They can be grouped into IC packages called arrays. A typical schematic symbol f
 
 
 
-{{< figure src="/images/2011/09/schematic-symbol-esd-diode-array.png" width="297" caption="The schematic symbol of a diode array, with a common anode connection." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/schematic-symbol-esd-diode-array.png" width="297px" caption="The schematic symbol of a diode array, with a common anode connection." caption-position="bottom" >}}
 
 
 
@@ -109,7 +109,7 @@ The reverse-leakage of TVS diodes decreases as the stand-off voltage increases. 
 
 
 
-{{< figure src="/images/2011/09/leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png" width="1182" caption="Leakage currents of TVS diodes with low stand-off voltages." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png" width="1182px" caption="Leakage currents of TVS diodes with low stand-off voltages." caption-position="bottom" >}}
 
 
 
@@ -132,7 +132,7 @@ They are especially suited to this role (when considering other diodes) as the a
 
 
 
-{{< figure src="/images/2011/09/tvs-diode-for-reverse-polarity-protection.png" width="701" caption="A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/tvs-diode-for-reverse-polarity-protection.png" width="701px" caption="A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection." caption-position="bottom" >}}
 
 
 
@@ -155,7 +155,7 @@ This low capacitance is achieved by adding a forward-biased general purpose diod
 
 
 
-{{< figure src="/images/2016/05/internal-schematic-of-low-capacitance-tvs-diode-annotated.png" width="536" caption="The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component." caption-position="bottom" >}}
+{{< figure src="/images/2016/05/internal-schematic-of-low-capacitance-tvs-diode-annotated.png" width="536px" caption="The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component." caption-position="bottom" >}}
 
 
 
@@ -181,7 +181,7 @@ TVS diodes built specifically for protecting RS-485 communication protocol bus l
 
 
 
-{{< figure src="/images/2016/05/sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png" width="511" caption="The pintout and functional block diagram of the SM712-02HTG TVS diode, designed specifically for protecting RS-485 bus lines. Image from http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2016/05/sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png" width="511px" caption="The pintout and functional block diagram of the SM712-02HTG TVS diode, designed specifically for protecting RS-485 bus lines. Image from http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf." caption-position="bottom" >}}
 
 
 

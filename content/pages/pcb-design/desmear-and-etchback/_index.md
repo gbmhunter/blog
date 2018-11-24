@@ -16,18 +16,18 @@ The mechanical of via's in multi-layer PCBs crates a residual resin that smears 
 The images below show positive etchback.
 
 <table style="width: 800px; height: 300px;" ><tbody ><tr >
-<td >{{< figure src="/images/2014/11/etchback-none.png" width="203" caption="Cross-section of a via hole with no etchback (hole has not been plated yet)." caption-position="bottom" >}}
+<td >{{< figure src="/images/2014/11/etchback-none.png" width="203px" caption="Cross-section of a via hole with no etchback (hole has not been plated yet)." caption-position="bottom" >}}
 </td>
-<td >{{< figure src="/images/2014/11/etchback-before-plating.png" width="224" caption="Cross-section of a via hole that has positive etchback (hole has not been plated yet)." caption-position="bottom" >}}
+<td >{{< figure src="/images/2014/11/etchback-before-plating.png" width="224px" caption="Cross-section of a via hole that has positive etchback (hole has not been plated yet)." caption-position="bottom" >}}
 </td>
-<td >{{< figure src="/images/2014/11/etchback-after-plating.png" width="204" caption="Cross-section of a via which has been plated after positive etchback was done, notice the 'three-point connection'." caption-position="bottom" >}}
+<td >{{< figure src="/images/2014/11/etchback-after-plating.png" width="204px" caption="Cross-section of a via which has been plated after positive etchback was done, notice the 'three-point connection'." caption-position="bottom" >}}
 </td></tr></tbody></table>
 
 # Negative Etchback
 
 Negative etchback is when the copper layers recede from the edge of the via hole, as shown in the diagram below.
 
-{{< figure src="/images/2014/11/etchback-negative.png" width="314" caption="The cross-section of a via with negative etchback. Notice how the copper plane recedes from the edge of the via hole." caption-position="bottom" >}}
+{{< figure src="/images/2014/11/etchback-negative.png" width="314px" caption="The cross-section of a via with negative etchback. Notice how the copper plane recedes from the edge of the via hole." caption-position="bottom" >}}
 
 # Methods
 

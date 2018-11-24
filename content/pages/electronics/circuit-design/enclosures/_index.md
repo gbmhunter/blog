@@ -15,7 +15,7 @@ url: /electronics/circuit-design/enclosures
 Extruded aluminium enclosures consist of one piece of box-section aluminium for the body, with two plastic/metal end caps and a optional bezel. These enclosures are really good for small/medium PCB projects. The extruded aluminium normally has guide rails on the insides so that PCB's can slide into it. With the case being made of metal, heatsinking is easy.
 
 
-{{< figure src="/images/2012/09/extruded-aluminium-enclosures-eurocard-pcb.jpg" width="300" caption="Examples of extruded aluminium enclosures by Vero Technologies." caption-position="bottom" >}}
+{{< figure src="/images/2012/09/extruded-aluminium-enclosures-eurocard-pcb.jpg" width="300px" caption="Examples of extruded aluminium enclosures by Vero Technologies." caption-position="bottom" >}}
 
 
 One point to note is that connectors/indicators typically have to come out from either end. Right-angled PCB mount connectors are the easy to use with this configuration (panel mount can also be used).

@@ -16,7 +16,7 @@ The bluetooth logo is shown below:
 
 
 
-{{< figure src="/images/2015/01/bluetooth-4-0-icon.jpg" width="266" caption="The Bluetooth icon/logo." caption-position="bottom" >}}
+{{< figure src="/images/2015/01/bluetooth-4-0-icon.jpg" width="266px" caption="The Bluetooth icon/logo." caption-position="bottom" >}}
 
 
 

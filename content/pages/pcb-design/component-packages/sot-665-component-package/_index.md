@@ -68,16 +68,16 @@ url: /pcb-design/component-packages/sot-665-component-package
 
 # General
 
-{{< figure src="/images/2015/11/sot-665-component-package-3d-render.jpg" width="259" caption="A 3D render of the SOT-665 component package. Image from http://www.digikey.com/." caption-position="bottom" >}}
+{{< figure src="/images/2015/11/sot-665-component-package-3d-render.jpg" width="259px" caption="A 3D render of the SOT-665 component package. Image from http://www.digikey.com/." caption-position="bottom" >}}
 
 # Dimensions
 
-{{< figure src="/images/2015/11/sot-665-component-package-dimensions.png" width="836" caption="The dimensions for the SOT-665 component package. Image from http://www.nxp.com/." caption-position="bottom" >}}
+{{< figure src="/images/2015/11/sot-665-component-package-dimensions.png" width="836px" caption="The dimensions for the SOT-665 component package. Image from http://www.nxp.com/." caption-position="bottom" >}}
 
 # Footprint
 
 A recommended footprint (land pattern) for the SOT-665 component package is shown below:
 
-{{< figure src="/images/2015/11/sot-665-component-package-footprint-land-pattern.png" width="736" caption="A recommended footprint (land pattern) for the SOT-665 component package. Image from http://www.st.com/." caption-position="bottom" >}}
+{{< figure src="/images/2015/11/sot-665-component-package-footprint-land-pattern.png" width="736px" caption="A recommended footprint (land pattern) for the SOT-665 component package. Image from http://www.st.com/." caption-position="bottom" >}}
 
 The footprint has a land area of \(3.38mm^2\) (1.3x2.6mm), ignoring any clearance area given around the perimeter of the footprint (i.e. courtyard).

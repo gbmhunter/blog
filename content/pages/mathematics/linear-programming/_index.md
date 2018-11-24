@@ -21,7 +21,7 @@ This page provides an introduction to linear programming, with examples which us
 
 
 
-{{< figure src="/images/2017/06/linear-programming-example-2d-graph-feasible-region-wikipedia.png" width="203" caption="An example of linear programming with 2 variables. Image from www.wikipedia.com." caption-position="bottom" >}}
+{{< figure src="/images/2017/06/linear-programming-example-2d-graph-feasible-region-wikipedia.png" width="203px" caption="An example of linear programming with 2 variables. Image from www.wikipedia.com." caption-position="bottom" >}}
 
 
 

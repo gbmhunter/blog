@@ -89,7 +89,7 @@ The above projection algorithm can be used to perform "quad-to-quad" projection 
 
 
 
-{{< figure src="/images/2017/11/quad-to-quad-transformation-complex-image.png" width="598" caption="A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges." caption-position="bottom" >}}
+{{< figure src="/images/2017/11/quad-to-quad-transformation-complex-image.png" width="598px" caption="A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges." caption-position="bottom" >}}
 
 
 
@@ -195,7 +195,7 @@ For example, take the square (which is a simple quadrilateral) defined by (0, 0)
 
 
 
-{{< figure src="/images/2017/11/quad-to-quad-transformation-simple-square.png" width="455" caption="A simple quad-to-quad transformation of the square P to the square Q." caption-position="bottom" >}}
+{{< figure src="/images/2017/11/quad-to-quad-transformation-simple-square.png" width="455px" caption="A simple quad-to-quad transformation of the square P to the square Q." caption-position="bottom" >}}
 
 
 
@@ -293,7 +293,7 @@ Of course, Quad-to-Quad transformations do not have to use simple square, any fo
 
 
 
-{{< figure src="/images/2017/11/quad-to-quad-transformation-complex-image.png" width="616" caption="A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges." caption-position="bottom" >}}
+{{< figure src="/images/2017/11/quad-to-quad-transformation-complex-image.png" width="616px" caption="A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges." caption-position="bottom" >}}
 
 
 
@@ -306,7 +306,7 @@ Qt provides a QTranform::quadToQuad() method which can be used to create a trans
 
 
 
-{{< figure src="/images/2017/11/qt-transformation-matrix-element-order.png" width="827" caption="The structure of a Qt transformation matrix. Notice how the ordering is different to 'standard' ( it looks like the matrix has been mirrored around the leading diagonal)." caption-position="bottom" >}}
+{{< figure src="/images/2017/11/qt-transformation-matrix-element-order.png" width="827px" caption="The structure of a Qt transformation matrix. Notice how the ordering is different to 'standard' ( it looks like the matrix has been mirrored around the leading diagonal)." caption-position="bottom" >}}
 
 
 

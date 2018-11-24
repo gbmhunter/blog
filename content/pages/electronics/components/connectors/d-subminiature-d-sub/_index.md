@@ -11,7 +11,7 @@ url: /electronics/components/connectors/d-subminiature-d-sub
 
 These connectors were designed by ITT Canon in 1952. Large by today's standards, at the time, these connectors where one of the smallest connectors available for a computer, hence the name "subminiature". They are characterised by two or more rows of connections inside a **"D" shape** metal shell.
 
-{{< figure src="/images/2015/11/de-9-female-pcb-mount-d-sub-connector-photo.jpg" width="272" caption="One of the most commonly used D-sub connectors of this era, the 9-pin female PCB-mount DE-9 connector." caption-position="bottom" >}}
+{{< figure src="/images/2015/11/de-9-female-pcb-mount-d-sub-connector-photo.jpg" width="272px" caption="One of the most commonly used D-sub connectors of this era, the 9-pin female PCB-mount DE-9 connector." caption-position="bottom" >}}
 
 The **DE-9** is a very **popular** 9-pin computer serial cable. It is also commonly (and **incorrectly**) called a DB-9 connector, presumably because of the name of larger DB-25 connector that it replaced.
 
@@ -21,7 +21,7 @@ The DE-15 connector is commonly used for VGA connections between computers and s
 
 I recommend using the unique schematic symbol style below for the range of D-sub-miniature connectors. It immediately identifies the connector to the viewer.
 
-{{< figure src="/images/2011/09/connector-db25-schematic-symbol.png" width="185" caption="An easy-to-identify schematic symbol style for representing D sub-miniature connectors." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/connector-db25-schematic-symbol.png" width="185px" caption="An easy-to-identify schematic symbol style for representing D sub-miniature connectors." caption-position="bottom" >}}
 
 ````````````````
 
@@ -139,7 +139,7 @@ Many older consumer products and prototype circuits of all ages use the DE-9 con
 
 Filtered D-sub connectors have purposeful capacitance-to-ground (or more complicated filters) built into each one of the connectors pins.
 
-{{< figure src="/images/2015/11/d-sub-connector-with-c-filter-conec-graph-of-insertion-loss-vs-freq.pdf.png" width="551" caption="A graph of insertion loss vs. frequency for a Conec D-sub connector with integrated capacitance for filtering (a 'C' filter)." caption-position="bottom" >}}
+{{< figure src="/images/2015/11/d-sub-connector-with-c-filter-conec-graph-of-insertion-loss-vs-freq.pdf.png" width="551px" caption="A graph of insertion loss vs. frequency for a Conec D-sub connector with integrated capacitance for filtering (a 'C' filter)." caption-position="bottom" >}}
 
 Compared to implementing the filtering on say, the PCB, filtering at the connector offers the advantage of increased EMI protection due to the filtering occurring at the point that the signal enters the enclosure (so the wires to the PCB don't radiate noise). It also saves PCB space and simplifies PCB routing/layout.
 
@@ -147,10 +147,10 @@ Compared to implementing the filtering on say, the PCB, filtering at the connect
 
 You can buy pre-made screw kits, such as the [TE Connectivity 5205817-1](http://www.digikey.co.nz/product-search/en?vendor=0&keywords=5205817-1&stock=1), which comes with all the necessary screws and associated hardware to secure two D-sub connectors together (I might point out here that screws **are not required** to make a connection, but help to make it more secure).
 
-{{< figure src="/images/2015/11/te-connectivity-5205817-1-d-sub-screw-kit.jpg" width="254" caption="The TE Connectivity 5205817-1 D-Sub screw kit." caption-position="bottom" >}}
+{{< figure src="/images/2015/11/te-connectivity-5205817-1-d-sub-screw-kit.jpg" width="254px" caption="The TE Connectivity 5205817-1 D-Sub screw kit." caption-position="bottom" >}}
 
 # Waterproof Variants
 
 Waterproof variants of D-sub connectors exist, the two most common being a DE-9 or a DB-25.
 
-{{< figure src="/images/2015/11/amphenol-ltw-waterproof-serial-de-9-receptacle-connector.jpg" width="450" caption="A waterproof DE-9 receptacle by Amphenol LTW." caption-position="bottom" >}}
+{{< figure src="/images/2015/11/amphenol-ltw-waterproof-serial-de-9-receptacle-connector.jpg" width="450px" caption="A waterproof DE-9 receptacle by Amphenol LTW." caption-position="bottom" >}}

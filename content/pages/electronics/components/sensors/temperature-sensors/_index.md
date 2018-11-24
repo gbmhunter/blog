@@ -16,7 +16,7 @@ Temperature sensors are electronic transducers which measure the temperature of 
 
 
 
-{{< figure src="/images/2012/11/schematic-icon-for-temperature-sensor.png" width="343" caption="A schematic icon for a temperature sensor." caption-position="bottom" >}}
+{{< figure src="/images/2012/11/schematic-icon-for-temperature-sensor.png" width="343px" caption="A schematic icon for a temperature sensor." caption-position="bottom" >}}
 
 
 

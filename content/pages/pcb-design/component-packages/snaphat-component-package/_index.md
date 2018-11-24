@@ -139,7 +139,7 @@ Package registered by ST Microelectronics. Used to hold small rechargeable batte
 # Photo
 
 
-{{< figure src="/images/2015/04/snaphat-component-package-photo.png" width="340" caption="A photo of the SNAPHAT component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/snaphat-component-package-photo.png" width="340px" caption="A photo of the SNAPHAT component package." caption-position="bottom" >}}
 
 
 # Images

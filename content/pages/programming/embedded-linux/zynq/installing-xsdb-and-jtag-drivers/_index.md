@@ -16,7 +16,7 @@ Use this page to **help you install Diligent JTAG drivers on your computer so yo
 
 
 
-{{< figure src="/images/2017/04/xilinx-zc702-usb-to-jtag-module-highlighted.png" width="548" caption="The Xilinx Zynq-7000 ZC702 development board with the USB-to-JTAG module highlighted." caption-position="bottom" >}}
+{{< figure src="/images/2017/04/xilinx-zc702-usb-to-jtag-module-highlighted.png" width="548px" caption="The Xilinx Zynq-7000 ZC702 development board with the USB-to-JTAG module highlighted." caption-position="bottom" >}}
 
 
 
@@ -87,7 +87,7 @@ And then run the install_drivers script (with admin privileges) that resides in 
 
 
 
-{{< figure src="/images/2017/04/installing-xilinx-digilent-jtag-drivers-ubuntu-snapshot.png" width="587" caption="A snapshot of the terminal output while installing the Xilinx 'Digilent' JTAG drivers on Ubuntu." caption-position="bottom" >}}
+{{< figure src="/images/2017/04/installing-xilinx-digilent-jtag-drivers-ubuntu-snapshot.png" width="587px" caption="A snapshot of the terminal output while installing the Xilinx 'Digilent' JTAG drivers on Ubuntu." caption-position="bottom" >}}
 
 
 

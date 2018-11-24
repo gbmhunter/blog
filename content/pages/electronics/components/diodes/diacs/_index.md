@@ -15,4 +15,4 @@ The DIAC is a form of diode which conducts current only after it reaches it's br
 
 Below is the schematic symbol for the DIAC.
 
-{{< figure src="/images/2015/11/diac-schematic-symbol.png" width="295" caption="The schematic symbol for a DIAC." caption-position="bottom" >}}
+{{< figure src="/images/2015/11/diac-schematic-symbol.png" width="295px" caption="The schematic symbol for a DIAC." caption-position="bottom" >}}

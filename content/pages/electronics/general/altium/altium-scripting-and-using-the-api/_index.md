@@ -74,7 +74,7 @@ In Altium, click _File->New->Script Files->VB Script Unit_. Altium should open a
 
  Save the script file. Now run the script file by clicking _DXP->Run Script_ and then selecting the HelloWorld function (which should be listed underneath the filename of the script, see the below image). When run in Altium, this code should display a message box with the text "Hello, world!".
 
-{{< figure src="/images/2012/02/running-hello-world-script-in-altium.png" width="893" caption="Running the Hello, world script in Altium." caption-position="bottom" >}}
+{{< figure src="/images/2012/02/running-hello-world-script-in-altium.png" width="893px" caption="Running the Hello, world script in Altium." caption-position="bottom" >}}
 
 The Delphi equivalent is shown below:
     
@@ -158,7 +158,7 @@ Usually, if you do something that throws an exception, the script will halt at t
 
 However, in my experience, you run into problems if you close the first (main) script form, and then an exception is thrown. You get an "unhandled exception" error, and you can't debug the code at the current stop point. To prevent this, I make sure I never close the main form, but instead resize it to the smallest area possible before loading up a child form.
 
-{{< figure src="/images/2012/02/altium-script-visual-studio-just-in-time-debugger-unhandled-exception-crash.png" width="438" caption="What happens when an exception is thrown in an Altium script." caption-position="bottom" >}}
+{{< figure src="/images/2012/02/altium-script-visual-studio-just-in-time-debugger-unhandled-exception-crash.png" width="438px" caption="What happens when an exception is thrown in an Altium script." caption-position="bottom" >}}
 
 You get into some nasty situations where Altium will "lock-up", if an unhandled exception is thrown and there are forms hidden but still active.
 
@@ -335,7 +335,7 @@ You can resize a TForm object programmatically using the Height and Width par
 
 TRadioGroup controls are useful for when you have multiple "sets" of radio buttons on one UI. They allow multiple radio buttons to be selected (from different groups of course), without all other on the UI being deselected.
 
-{{< figure src="/images/2012/02/altium-script-radio-group-example-screenshot.png" width="890" caption="Adding a TRadioGroup control to an Altium script UI.R" caption-position="bottom" >}}
+{{< figure src="/images/2012/02/altium-script-radio-group-example-screenshot.png" width="890px" caption="Adding a TRadioGroup control to an Altium script UI.R" caption-position="bottom" >}}
 
 Individual radio buttons are added to a radio group through the Items property, in where you add a new radio button on a new line.
 

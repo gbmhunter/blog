@@ -11,7 +11,7 @@ url: /programming/microcontrollers/atmel/atmega
 
 The ATmega is a microcontroller series by Atmel. It is an 8-bit architecture, with chip variants depending on the needed memory, peripherals and package size. Below are code examples for the ATmega range of microcontrollers.
 
-{{< figure src="/images/2011/09/atmel-avr-atmega168-ic-photo-www-wolfpaulus-com.jpeg" width="426" caption="A photo of the Atmel AVR ATmega168 microcontroller. Image from https://wolfpaulus.com." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/atmel-avr-atmega168-ic-photo-www-wolfpaulus-com.jpeg" width="426px" caption="A photo of the Atmel AVR ATmega168 microcontroller. Image from https://wolfpaulus.com." caption-position="bottom" >}}
 
 # Child Pages
 

@@ -145,4 +145,4 @@ n/a
 # 3D Render
 
 
-{{< figure src="/images/2015/04/sod-323-sc-76-component-package-3d-render.jpg" width="361" caption="A 3D render of the SOD-323 (SC-76) component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/sod-323-sc-76-component-package-3d-render.jpg" width="361px" caption="A 3D render of the SOD-323 (SC-76) component package." caption-position="bottom" >}}

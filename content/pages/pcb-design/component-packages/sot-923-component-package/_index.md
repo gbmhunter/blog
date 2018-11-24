@@ -139,7 +139,7 @@ Tiny package used for diodes! See the below picture for a comparison of one of t
 # 3D Renders
 
 
-{{< figure src="/images/2015/04/sot-923-component-package-3d-render.jpg" width="423" caption="A 3D render of the SOT-923 component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/sot-923-component-package-3d-render.jpg" width="423px" caption="A 3D render of the SOT-923 component package." caption-position="bottom" >}}
 
 
 # Images

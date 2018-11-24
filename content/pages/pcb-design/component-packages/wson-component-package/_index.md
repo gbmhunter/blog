@@ -69,6 +69,6 @@ Warning: Texas Instruments has a WSON package which does not have a pitch of 1.2
 
 Below is an "odd shaped" SON package used by Numonyx flash chips that goes under the name VDFPN8. Notice the half-round appearance of the pins.
 
-{{< figure src="/images/2014/12/component-package-vdfpn8-mlp8-outline-dimensions.png" width="554" caption="Outline and dimensions for the VDFPN8 (SON-8) component package of a Numonyx flash IC.Image from http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/M25P/M25P128.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2014/12/component-package-vdfpn8-mlp8-outline-dimensions.png" width="554px" caption="Outline and dimensions for the VDFPN8 (SON-8) component package of a Numonyx flash IC.Image from http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/M25P/M25P128.pdf." caption-position="bottom" >}}
 
 #  

@@ -38,7 +38,7 @@ There are two main methods, single and differential.
 
 
 
-{{< figure src="/images/2012/01/cap-sense-button-diagram-cypress.jpg" width="395" caption="How simple cap sense buttons work." caption-position="bottom" >}}
+{{< figure src="/images/2012/01/cap-sense-button-diagram-cypress.jpg" width="395px" caption="How simple cap sense buttons work." caption-position="bottom" >}}
 
 
 
@@ -61,7 +61,7 @@ The button footprint can vary between the designs. One of the easiest is simply 
 
 
 
-{{< figure src="/images/2012/01/atmel-recommended-cap-button-shape.jpg" width="430" caption="A recommended cap button shape by Atmel. Image from atmel.com." caption-position="bottom" >}}
+{{< figure src="/images/2012/01/atmel-recommended-cap-button-shape.jpg" width="430px" caption="A recommended cap button shape by Atmel. Image from atmel.com." caption-position="bottom" >}}
 
 
 

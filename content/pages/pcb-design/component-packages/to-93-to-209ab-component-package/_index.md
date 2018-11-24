@@ -139,7 +139,7 @@ Large panel mount package used for high-power SCR's. Has good heat-sinking capab
 # Photos
 
 
-{{< figure src="/images/2015/04/to-93-component-package-photo.jpg" width="160" caption="A photo of the TO-93 component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/to-93-component-package-photo.jpg" width="160px" caption="A photo of the TO-93 component package." caption-position="bottom" >}}
 
 
 # Images

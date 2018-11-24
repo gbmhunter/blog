@@ -131,7 +131,7 @@ The following diagram shows this:
 
 
 
-{{< figure src="/images/2013/05/inductors-in-parallel-with-equation.png" width="608" caption="Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image." caption-position="bottom" >}}
+{{< figure src="/images/2013/05/inductors-in-parallel-with-equation.png" width="608px" caption="Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image." caption-position="bottom" >}}
 
 
 
@@ -165,7 +165,7 @@ This is shown in the diagram below:
 
    
 
-{{< figure src="/images/2013/05/inductor-in-series-with-equation1.png" width="609" caption="Two inductors in series are the equivalent of one inductor whose inductance is the sum of the indiviual inductances." caption-position="bottom" >}}
+{{< figure src="/images/2013/05/inductor-in-series-with-equation1.png" width="609px" caption="Two inductors in series are the equivalent of one inductor whose inductance is the sum of the indiviual inductances." caption-position="bottom" >}}
 
 
 
@@ -571,7 +571,7 @@ Inductors only behave like inductors over a **limited current range**. As the cu
 The below image shows a typical inductance vs. current curve for a ferrite core, SMD inductor that could be used on a 3A SMPS design. It's rated saturation current is 4.2A. Notice how after the current increases beyond this point, the inductance of the inductor drops of rapidly.
 
 
-{{< figure src="/images/2013/05/inductance-vs-current-graph-wurth-7447789003-3.3uh.png" width="502" caption="Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A." caption-position="bottom" >}}
+{{< figure src="/images/2013/05/inductance-vs-current-graph-wurth-7447789003-3.3uh.png" width="502px" caption="Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A." caption-position="bottom" >}}
 
 
 As governed by the basic induction equation, applying a constant voltage across an inductor will lead to a linear increase in current. This will be the case until the saturation point, at which the current will begin to increase more rapidly, until is reaches a limit determined only by the DC resistance of the windings.
@@ -612,4 +612,4 @@ Confusing? The most simple Simon design approach is to pick the lower maximum c
 # Inductor Packages
 
 
-{{< figure src="/images/2013/05/ipc-sm-782-component-dimensions-for-smd-inductors.png" width="709" caption="Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard." caption-position="bottom" >}}
+{{< figure src="/images/2013/05/ipc-sm-782-component-dimensions-for-smd-inductors.png" width="709px" caption="Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard." caption-position="bottom" >}}

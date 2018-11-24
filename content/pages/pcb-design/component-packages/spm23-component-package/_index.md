@@ -140,7 +140,7 @@ Package proprietary to Fairchild Semiconductor, used for some of their motor dri
 # Photos
 
 
-{{< figure src="/images/2015/04/spm23-component-package-photo.jpg" width="344" caption="A photo of the SPM23 component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/spm23-component-package-photo.jpg" width="344px" caption="A photo of the SPM23 component package." caption-position="bottom" >}}
 
 
 # Images

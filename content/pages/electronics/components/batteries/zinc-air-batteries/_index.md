@@ -20,7 +20,7 @@ url: /electronics/components/batteries/zinc-air-batteries
 Zinc-air batteries are batteries characterised by their use of zinc and a reaction with atmospheric oxygen. There is both non-rechargeable (primary) and rechargeable (secondary) zinc-air batteries, although the primary batteries are far more common.
 
 
-{{< figure src="/images/2015/05/zinc-air-battery-cut-away-annotated.jpg" width="458" caption="A cut-away of a zinc-air button cell with annotations. Image from http://hear-better.com/." caption-position="bottom" >}}
+{{< figure src="/images/2015/05/zinc-air-battery-cut-away-annotated.jpg" width="458px" caption="A cut-away of a zinc-air button cell with annotations. Image from http://hear-better.com/." caption-position="bottom" >}}
 
 
 # Chemistry

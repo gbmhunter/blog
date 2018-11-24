@@ -218,7 +218,7 @@ This created the below image for the example code above:
 
 
 
-{{< figure src="/images/2017/11/gprof2dot-profiling-dot-graph.png" width="442" caption="A profile of the execution time of the example code. Graph was created using gprof and the gprof2dot tool." caption-position="bottom" >}}
+{{< figure src="/images/2017/11/gprof2dot-profiling-dot-graph.png" width="442px" caption="A profile of the execution time of the example code. Graph was created using gprof and the gprof2dot tool." caption-position="bottom" >}}
 
 
 

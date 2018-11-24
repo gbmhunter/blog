@@ -78,7 +78,7 @@ RS-232 is commonly used today for a variety of different purposes in embedded sy
 
 
 
-{{< figure src="/images/2015/10/rs232-comm-protocol-male-connector-large-pinout.png" width="315" caption="The pinout of a male RS-232 DE-9 connector. Image from http://www.ethernut.de/." caption-position="bottom" >}}
+{{< figure src="/images/2015/10/rs232-comm-protocol-male-connector-large-pinout.png" width="315px" caption="The pinout of a male RS-232 DE-9 connector. Image from http://www.ethernut.de/." caption-position="bottom" >}}
 
 
 
@@ -123,7 +123,7 @@ The pinout of a typical Analog Devices RS-232 to UART transceiver is shown below
 
 
 
-{{< figure src="/images/2011/09/analog-devices-rs-232-transceiver-pin-layout.png" width="242" caption="Pinout of a RS-232 transceiver by Analogue Devices." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/analog-devices-rs-232-transceiver-pin-layout.png" width="242px" caption="Pinout of a RS-232 transceiver by Analogue Devices." caption-position="bottom" >}}
 
 
 
@@ -141,4 +141,4 @@ A RS-232 to TTL logic-level converter can be made out of a few discrete componen
 
 
 
-{{< figure src="/images/2015/10/low-cost-discrete-part-rs-232-to-ttl-converter-schematic-atmel-avr910.png" width="677" caption="The schematic of a cheap, discrete-part RS-232 to TTL logic-level converter. Image from Atmel AVR910 (http://www.atmel.com/)." caption-position="bottom" >}}
+{{< figure src="/images/2015/10/low-cost-discrete-part-rs-232-to-ttl-converter-schematic-atmel-avr910.png" width="677px" caption="The schematic of a cheap, discrete-part RS-232 to TTL logic-level converter. Image from Atmel AVR910 (http://www.atmel.com/)." caption-position="bottom" >}}

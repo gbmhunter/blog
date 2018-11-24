@@ -200,7 +200,7 @@ Some of the files in the demo folder are nested deeply within others, giving lar
 </tr>
 <tr >
 
-<td >{{< figure src="http://blog.mbedded.ninja/wp-includes/images/crystal/document.png" width="46" caption="RTOS vs. GPOS" caption-position="bottom" >}}
+<td >{{< figure src="http://blog.mbedded.ninja/wp-includes/images/crystal/document.png" width="46px" caption="RTOS vs. GPOS" caption-position="bottom" >}}
 </td>
 
 <td > A good article pitching and comparing a RTOS against a GPOS.

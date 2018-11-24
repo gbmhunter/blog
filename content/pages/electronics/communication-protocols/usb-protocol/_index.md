@@ -9,27 +9,73 @@ url: /electronics/communication-protocols/usb-protocol
 
 # Overview
 
+
+
+
 The Universal Serial Bus (USB) standard defines a collection of connectors, cables and communication protocols to allow digital devices to talk to one another.
 
-# First, Some Basic Terminology
+
+
+
+# Child Pages
+
+
+
+
+[sb_child_list template="2" orderby=title order=asc]
+
+
+
+
+# **First, Some Basic Terminology**
+
+
+
 
 A host is a device which acts as a "master". It connects to a _device_.
 
+
+
+
 A device is a device which acts as a "slave". It connects to a _host_.
+
+
+
 
 A peripheral is a OTG system which is acting as a "slave". If it wasn't an OTG system, you would just call it a device. It connects to a_ host_.
 
+
+
+
 Other terms will be introduced as needed.
+
+
+
 
 # Data Encoding
 
+
+
+
 USB 1.0 and 2.0 uses a single differential transmission pair for communication. It is encoded in NRZI and is bit stuffed for correct clock recovery at the other end. On low and full-speed devices, a "1" is transmitted by driving D+ over 2.8V with a 15KR resistor to ground, and driving D- under 0.3V with a 1.5KR resistor pulled to 3.6V. A "0" is transmitted by driving D- greater than 2.8V and D+ less than 0.3V.
+
+
+
 
 # Conventional Hosts
 
+
+
+
 Conventional hosts don't have a Targeted Peripheral List (TPL).
 
+
+
+
 Typical maximum current for USB 2.0 from a host is 500mA. SuperSpeed requires 900mA.
+
+
+
 
 # Targeted Hosts
 
@@ -110,7 +156,7 @@ Some embedded systems provide both USB host and USB device functions. They must 
 When a Embedded Host has turned off Vbus, it can detect if a device has been connected by using the _Attach Detection Protocol_. The EH measures the time it takes for a fixed current to charge the Vbus line to a specific voltage. If the time takes longer than expected, a device is present. This charge/discharge process repeats about every 1.75s.
 
 
-{{< figure src="/images/2011/09/usb-adp-architecture-vbus-and-current-sources.png" width="786" caption="The ADP architecture, showing Vbus, current sources, and the snesing logic. Image from On-The-Go and Embedded Host Supplement to the USB Revision 2.0 Specification: Revision 2.0 version 1.1a." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/usb-adp-architecture-vbus-and-current-sources.png" width="786px" caption="The ADP architecture, showing Vbus, current sources, and the snesing logic. Image from On-The-Go and Embedded Host Supplement to the USB Revision 2.0 Specification: Revision 2.0 version 1.1a." caption-position="bottom" >}}
 
 
 Support of the ADP is optional. Hubs do not support the ADP, and so a EH which does support ADP cannot detect a device if a hub is plugged in.
@@ -227,7 +273,7 @@ USB was not originally designed for low-power applications. However, it can be s
 The current required while actually performing a transmission is still quite high. The table below gives you an idea on the currents used when a microcontroller is in different USB transmission modes.
 
 
-{{< figure src="/images/2011/09/at32uc3-dynamic-usb-power-consumtpion-table.png" width="743" caption="Table showing the dynamic USB power consumption of a AT32UC3A3 microcontroller during various USB transmission modes. Image from page 976 of http://www.atmel.com/Images/doc32072.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/at32uc3-dynamic-usb-power-consumtpion-table.png" width="743px" caption="Table showing the dynamic USB power consumption of a AT32UC3A3 microcontroller during various USB transmission modes. Image from page 976 of http://www.atmel.com/Images/doc32072.pdf." caption-position="bottom" >}}
 
 
 ## Inrush Currents
@@ -259,7 +305,7 @@ A basic way (note basic does not always equal easiest) to limit the inrush curre
 This circuit example from FTDI Application Note AN_146 does exactly that:
 
 
-{{< figure src="/images/2011/09/ftdi-app-note-an-146-limiting-inrush-current-by-slow-mosfet-turn-on.png" width="518" caption="Limiting the USB inrush current by slowing down the turn-on of a MOSFET with a RC circuit. Image from http://www.ftdichip.com/Support/Documents/AppNotes/AN_146_USB_Hardware_Design_Guidelines_for_FTDI_ICs.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/ftdi-app-note-an-146-limiting-inrush-current-by-slow-mosfet-turn-on.png" width="518px" caption="Limiting the USB inrush current by slowing down the turn-on of a MOSFET with a RC circuit. Image from http://www.ftdichip.com/Support/Documents/AppNotes/AN_146_USB_Hardware_Design_Guidelines_for_FTDI_ICs.pdf." caption-position="bottom" >}}
 
 
 If you prefer a powerful, one component solution, you can get a variety of load switches which also perform inrush-current limiting.
@@ -290,13 +336,13 @@ There was about 50uF of total capacitance on the +3.3V rail. The +3.3V rail was 
 The top waveform shows the zoomed out image of over 100ms, while the bottom waveform shows a zoomed in image of the initial behaviour (200us per square).
 
 
-{{< figure src="/images/2011/09/usb-surge-curr-01-750mA-surge-causing-vbus-to-drop-annotated.png" width="800" caption="A invalid surge current on the USB VBUS line of 750mA caused by the capacitance on the +3.3V when the rail powers up." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/usb-surge-curr-01-750mA-surge-causing-vbus-to-drop-annotated.png" width="800px" caption="A invalid surge current on the USB VBUS line of 750mA caused by the capacitance on the +3.3V when the rail powers up." caption-position="bottom" >}}
 
 
 And here is what happens after you add a current-limiting IC between VBUS and the +3.3V rail (everything else remaining constant).
 
 
-{{< figure src="/images/2011/09/usb-surge-curr-02-100mA-current-limiter-added-vbus-doesnt-drop-annotated.png" width="800" caption="USB VBUS surge currents limited to appropriate values." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/usb-surge-curr-02-100mA-current-limiter-added-vbus-doesnt-drop-annotated.png" width="800px" caption="USB VBUS surge currents limited to appropriate values." caption-position="bottom" >}}
 
 
 ## Ferrite Beads

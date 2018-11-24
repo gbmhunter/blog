@@ -19,7 +19,7 @@ Do not confuse voltage-level translation with voltage converters (e.g. linear re
 
 The below schematic shows a simple circuit for voltage-level translation using a single MOSFET and pull-up resistors. It supports bi-directional digital signal translation.
 
-{{< figure src="/images/2015/05/schematic-of-voltage-level-translation-with-a-mosfet.png" width="660" caption="An example schematic of bi-directional voltage-level translation using a MOSFET." caption-position="bottom" >}}
+{{< figure src="/images/2015/05/schematic-of-voltage-level-translation-with-a-mosfet.png" width="660px" caption="An example schematic of bi-directional voltage-level translation using a MOSFET." caption-position="bottom" >}}
 
 **What happens if \(V_{low}\) is driven?**
 

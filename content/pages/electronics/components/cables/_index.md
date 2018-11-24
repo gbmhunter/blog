@@ -99,7 +99,7 @@ The _National Electrical Code_ (NEC) is an American standards body which defines
 
 NEC _types_ are acronyms consisting of a prefix describing **cable type** (e.g. coax, CATV, fiber optic) and a suffix indicating the type of **flame test** it has passed and where it can be **installed**.
 
-{{< figure src="/images/2012/11/nec-2005-cable-standards-reference-cable-type-and-fire-resistance-summary.png" width="790" caption="A summary of the cable types and flame tests from NEC. Image from http://www.associatedtelephone.com/." caption-position="bottom" >}}
+{{< figure src="/images/2012/11/nec-2005-cable-standards-reference-cable-type-and-fire-resistance-summary.png" width="790px" caption="A summary of the cable types and flame tests from NEC. Image from http://www.associatedtelephone.com/." caption-position="bottom" >}}
 
 # Computer Cable
 

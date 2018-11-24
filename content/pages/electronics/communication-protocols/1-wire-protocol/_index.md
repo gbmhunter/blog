@@ -11,7 +11,7 @@ url: /electronics/communication-protocols/1-wire-protocol
 
 The 1-wire protocol is a one wire, half-duplex, bi-directional, multi-drop, wired communication protocol.
 
-{{< figure src="/images/2013/10/1-wire-ic-schematic-ds18b20-high-zoom-logo.png" width="181" caption="A high-zoom schematic screenshot of the DS18B20, a Maxim 1-wire temperature sensor." caption-position="bottom" >}}<table ><tbody ><tr >
+{{< figure src="/images/2013/10/1-wire-ic-schematic-ds18b20-high-zoom-logo.png" width="181px" caption="A high-zoom schematic screenshot of the DS18B20, a Maxim 1-wire temperature sensor." caption-position="bottom" >}}<table ><tbody ><tr >
 <td >Num. Dedicated Communication Wires
 </td>
 <td >1
@@ -47,7 +47,7 @@ The 1-wire protocol is a one wire, half-duplex, bi-directional, multi-drop, wire
 
 The 1-wire communication protocol is a hardware and software design that allows communication between a microcontroller and other ICs, using only a single wire (excluding ground, and if needed, a power rail). Each and every 1-Wire IC has it's own unique code.
 
-{{< figure src="/images/2013/10/ds18b20-temp-sensor-functional-block-diagram-showing-one-wire-interface.png" width="475" caption="The functional block diagram of the DS18B20 temperature sensor, showing the 1-wire interface circuitry. Image from www.maximintegrated.com." caption-position="bottom" >}}
+{{< figure src="/images/2013/10/ds18b20-temp-sensor-functional-block-diagram-showing-one-wire-interface.png" width="475px" caption="The functional block diagram of the DS18B20 temperature sensor, showing the 1-wire interface circuitry. Image from www.maximintegrated.com." caption-position="bottom" >}}
 
 # Addressing
 
@@ -69,7 +69,7 @@ Although the standard 1-wire bus allows the master to search and discover an ar
 
 Some 1-wire devices have two additional pins to support sequence detection.
 
-{{< figure src="/images/2013/10/1-wire-bus-example-showing-sequence-detection-with-ds28ea00.png" width="702" caption="An example of a 1-wire bus with the DS28EA00 ICs, which support sequence detection. Image from www.maximintegrated.com." caption-position="bottom" >}}
+{{< figure src="/images/2013/10/1-wire-bus-example-showing-sequence-detection-with-ds28ea00.png" width="702px" caption="An example of a 1-wire bus with the DS28EA00 ICs, which support sequence detection. Image from www.maximintegrated.com." caption-position="bottom" >}}
 
 # Bit Bashing
 

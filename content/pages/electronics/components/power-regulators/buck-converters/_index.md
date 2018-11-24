@@ -20,7 +20,7 @@ url: /electronics/components/power-regulators/buck-converters
 Buck converters use a switching element, inductor and capacitor to convert an input voltage into a lower output voltage.
 
 
-{{< figure src="/images/2015/03/smps-buck-converter-simple.png" width="629" caption="The basic parts of a buck converter." caption-position="bottom" >}}
+{{< figure src="/images/2015/03/smps-buck-converter-simple.png" width="629px" caption="The basic parts of a buck converter." caption-position="bottom" >}}
 
 
 When using a P-channel MOSFET for synchronous rectification, it's body diode is forward-biased when the converter is in shutdown mode. This can **drain the power source** into the output. More advanced buck converters have extra circuitry to disconnect this P-channel MOSFET when the device is not active.
@@ -132,7 +132,7 @@ The total output ripple is the sum of the ripple caused by the capacitance, and 
 Some boost converters also have a built in regulator to provide regulation when the input voltage exceeds the desired output voltage. This is normally a linear regulator, so your efficiency will drop and you will have to take into account the thermal dissipation. This is normally called **down conversion**.
 
 
-{{< figure src="/images/2015/03/schematic-of-boost-converter-with-down-conversion-capability.png" width="507" caption="The internal schematic of a boost converter with in-built down conversion capability (the ability to drop the input voltage)." caption-position="bottom" >}}
+{{< figure src="/images/2015/03/schematic-of-boost-converter-with-down-conversion-capability.png" width="507px" caption="The internal schematic of a boost converter with in-built down conversion capability (the ability to drop the input voltage)." caption-position="bottom" >}}
 
 
 The price you pay for this added down conversion feature is a slightly higher cost, and slightly higher quiescent current (e.g. some of TI's boost converters have 19uA quiescent current without down conversion, and 25uA with down conversion).
@@ -158,7 +158,7 @@ Typically, boost IC's with an internal switch (a converter) can support lower in
 You can find a buck converter calculator as part of [mbedded.ninja's NinjaCalc web app](http://ninja-calc.mbedded.ninja/buck-converter-calculator).
 
 
-{{< figure src="/images/2015/03/ninja-calc-buck-converter-calculator-screenshot.png" width="956" caption="A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0)." caption-position="bottom" >}}
+{{< figure src="/images/2015/03/ninja-calc-buck-converter-calculator-screenshot.png" width="956px" caption="A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0)." caption-position="bottom" >}}
 
 
 
@@ -177,10 +177,10 @@ You can find a buck converter calculator as part of [mbedded.ninja's NinjaCalc w
 Texas Instruments released a series of very small (3.5x3.5x1.8mm) buck converter modules in 2015. One of the most impressive features is that this includes the inductor (external capacitors are still required). One example is the LMZ20502, which can provide up to 2A of current with an input voltage range of 2.7-5.5V and a output voltage range of 0.8-3.6V.
 
 
-{{< figure src="/images/2015/03/photo-of-lmz20502-buck-converter.jpg" width="306" caption="A photo of the LMZ20502 buck converter. Image from http://www.digikey.co.nz/product-detail/en/LMZ20502SILT/296-38656-1-ND/." caption-position="bottom" >}}
+{{< figure src="/images/2015/03/photo-of-lmz20502-buck-converter.jpg" width="306px" caption="A photo of the LMZ20502 buck converter. Image from http://www.digikey.co.nz/product-detail/en/LMZ20502SILT/296-38656-1-ND/." caption-position="bottom" >}}
 
 
 Notice how most of the volume on the module is taken up the chip inductor (the big brown thing that dominates most of the image). The dimensions of the package are shown in the diagram below.
 
 
-{{< figure src="/images/2015/03/microsip-component-package-dimensions.png" width="501" caption="The dimensions of the MicroSIP component package, used by the Texas Instruments 'Nano' buck converters. Image from http://www.ti.com/lit/ds/symlink/lmz20502.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2015/03/microsip-component-package-dimensions.png" width="501px" caption="The dimensions of the MicroSIP component package, used by the Texas Instruments 'Nano' buck converters. Image from http://www.ti.com/lit/ds/symlink/lmz20502.pdf." caption-position="bottom" >}}

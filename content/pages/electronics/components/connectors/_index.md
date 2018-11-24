@@ -371,7 +371,7 @@ The term zero Ohm resistor is usually reserved for a resistor package whose resi
 
 
 
-{{< figure src="/images/2011/09/keystone-5110-smd-0604-jumper-3d-model.jpg" width="222" caption="3D model of the Keystone 0603 'true' zero-Ohm jumper. Image from http://www.keyelco.com/product.cfm/Zero-ohm-SMT-Jumpers/0603-Zero-ohm-SMT-Jumper/product_id/14038." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/keystone-5110-smd-0604-jumper-3d-model.jpg" width="222px" caption="3D model of the Keystone 0603 'true' zero-Ohm jumper. Image from http://www.keyelco.com/product.cfm/Zero-ohm-SMT-Jumpers/0603-Zero-ohm-SMT-Jumper/product_id/14038." caption-position="bottom" >}}
 
 
 
@@ -392,7 +392,7 @@ One company which is doing interesting things with spring-loaded connectors is T
 
 
 
-{{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-photo.png" width="562" caption="Photo of the TC2050-IDC-NL connector by Tag-Connect." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-photo.png" width="562px" caption="Photo of the TC2050-IDC-NL connector by Tag-Connect." caption-position="bottom" >}}
 
 
 
@@ -400,7 +400,7 @@ They sell legged and no-legged versions. The legged versions have retainers (leg
 
 
 
-{{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-pcb-footprint.png" width="806" caption="The recommended PCB footprint for accepting the TC2050-IDC-NL connector by Tag-Connect." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-pcb-footprint.png" width="806px" caption="The recommended PCB footprint for accepting the TC2050-IDC-NL connector by Tag-Connect." caption-position="bottom" >}}
 
 
 
@@ -484,6 +484,6 @@ TE Connectivity make a range under the family name [ARISO](http://www.digikey.co
 
 
 
-{{< figure src="/images/2011/09/te-connectivity-ariso-m30-contactless-connector-pair-photo.png" width="640" caption="A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/te-connectivity-ariso-m30-contactless-connector-pair-photo.png" width="640px" caption="A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com." caption-position="bottom" >}}
 
 

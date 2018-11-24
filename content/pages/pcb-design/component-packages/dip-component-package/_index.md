@@ -183,4 +183,4 @@ Components other than ICs can also use this footprint (although they typically h
 # 3D Renders
 
 
-{{< figure src="/images/2015/03/dip-16-component-package-3d-render.jpg" width="297" caption="A 3D render of the DIP-16 component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/03/dip-16-component-package-3d-render.jpg" width="297px" caption="A 3D render of the DIP-16 component package." caption-position="bottom" >}}

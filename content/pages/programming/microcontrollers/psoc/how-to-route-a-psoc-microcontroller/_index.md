@@ -15,4 +15,4 @@ SIO pins cannot:  * Act as analogue I/O. This means you cannot connect them up t
 
 Some SIO pins also have fixed-hardware I2C peripherals connected to them. In my experience, SIO pins also tend to use a little more power than GPIO, it seems that their input buffers consume more current.
 
-{{< figure src="/images/2013/09/additional-features-only-provided-on-sio-pins.png" width="631" caption="Information on the SIO pins from a PSoC datasheet." caption-position="bottom" >}}
+{{< figure src="/images/2013/09/additional-features-only-provided-on-sio-pins.png" width="631px" caption="Information on the SIO pins from a PSoC datasheet." caption-position="bottom" >}}

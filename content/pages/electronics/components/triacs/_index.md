@@ -19,7 +19,7 @@ The name TRIAC is a generic trademark and is an abbreviation of _TRIode for Alt
 
 The schematic symbol for the TRIAC is shown below:
 
-{{< figure src="/images/2015/11/triac-schematic-symbol-with-pin-names.png" width="255" caption="The schematic symbol for the TRIAC, with pin names." caption-position="bottom" >}}
+{{< figure src="/images/2015/11/triac-schematic-symbol-with-pin-names.png" width="255px" caption="The schematic symbol for the TRIAC, with pin names." caption-position="bottom" >}}
 
 The anodes A1 and A2 may be called Main Terminal 1 (MT1) and Main Terminal 2 (MT2) respectively.
 

@@ -16,7 +16,7 @@ SCons is a build system.
 
 
 
-{{< figure src="/images/2018/03/scons-build-system-logo.png" width="310" caption="The logo for the SCons build system." caption-position="bottom" >}}
+{{< figure src="/images/2018/03/scons-build-system-logo.png" width="310px" caption="The logo for the SCons build system." caption-position="bottom" >}}
 
 
 

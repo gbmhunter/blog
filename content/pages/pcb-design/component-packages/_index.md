@@ -111,7 +111,7 @@ The SMT Code Book ([http://www.marsport.org.uk/smd/mainframe.htm](http://www.mar
 
 
 
-{{< figure src="http://blog.mbedded.ninja/wp-includes/images/crystal/document.png" width="46" caption="PDF" caption-position="bottom" >}}
+{{< figure src="http://blog.mbedded.ninja/wp-includes/images/crystal/document.png" width="46px" caption="PDF" caption-position="bottom" >}}
 
 
 

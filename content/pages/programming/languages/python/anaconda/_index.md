@@ -16,7 +16,7 @@ Anaconda exposes two important command-line tools, conda and source.
 
 
 
-{{< figure src="/images/2018/02/anaconda-python-logo.png" width="598" caption="The logo for Anaconda (Python distribution/environment)." caption-position="bottom" >}}
+{{< figure src="/images/2018/02/anaconda-python-logo.png" width="598px" caption="The logo for Anaconda (Python distribution/environment)." caption-position="bottom" >}}
 
 
 

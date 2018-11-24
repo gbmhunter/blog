@@ -145,7 +145,7 @@ Exclusively used by NXP for some of their RFID inlays. I'm not sure why they lab
 # 3D Renders
 
 
-{{< figure src="/images/2015/04/sot-1040-1-component-package-3d-render.gif" width="160" caption="A 3D render of the SOT-1040-1 component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/sot-1040-1-component-package-3d-render.gif" width="160px" caption="A 3D render of the SOT-1040-1 component package." caption-position="bottom" >}}
 
 
 # Images
