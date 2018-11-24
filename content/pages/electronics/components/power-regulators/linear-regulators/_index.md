@@ -13,8 +13,7 @@ url: /electronics/components/power-regulators/linear-regulators
 
 Linear regulators are great when you want a cheap, low power voltage regulation solution. They can also be used on the output of a DC/DC converter to reduce the ripple (the ripple will be reduced by the high PSRR).
 
-[caption id="attachment_13307" align="aligncenter" width="1080"][![The basic schematic for the LT1086 3.3V linear regulator. Image from http://www.linear.com/.](/images/2014/11/lt1086-3.3-linear-regulator-basic-schematic.png)
-](/images/2014/11/lt1086-3.3-linear-regulator-basic-schematic.png) The basic schematic for the LT1086 3.3V linear regulator. Image from http://www.linear.com/.[/caption]
+{{< figure src="/images/2014/11/lt1086-3.3-linear-regulator-basic-schematic.png" width="1080" caption="The basic schematic for the LT1086 3.3V linear regulator. Image from http://www.linear.com/." caption-position="bottom" >}}
 
 # Important Parameters  * Maximum current (A)  * Output voltage (or voltage range if adjustable, \(V_{out}\))  * Input voltage range \(V_{in}\)  * Protection circuitry (current limit, input polarity reversal, thermal limit)  * Junction-to-ambient thermal resistance of linear reg package (\(T_{j-a}\), °C/W)  * Power-supply rejection ratio (\(PSRR\), dB)  * Maximum operating temperature
 
@@ -53,8 +52,7 @@ A typical value of a bypass capacitor is [latex]10nF[/latex].
 
 DDR termination regulators are special-purpose linear regulators designed for powering DDR memory ICs. They usually provide the multiple voltage rails that are required to drive DDR memory, along with the power control logic required to meet the DDR spec (incl. suspend to RAM, suspend to disk states).
 
-[caption id="attachment_13317" align="aligncenter" width="470"][![The Texas Instruments TPS51206 IC, a DDR termination regulator (linear). Image from http://www.ti.com/.](/images/2014/11/tps51206-ti-ddr-termination-regulator-simplified-application-schematic.png)
-](/images/2014/11/tps51206-ti-ddr-termination-regulator-simplified-application-schematic.png) The Texas Instruments TPS51206 IC, a DDR termination regulator (linear). Image from http://www.ti.com/.[/caption]
+{{< figure src="linear" width="470" caption="](/images/2014/11/tps51206-ti-ddr-termination-regulator-simplified-application-schematic.png) The Texas Instruments TPS51206 IC, a DDR termination regulator (linear). Image from http://www.ti.com/." caption-position="bottom" >}}
 
 DDR memory draws current in quick surges of around 2-3A. Most DDR termination regulators support both the sinking and sourcing of current, which means they can clamp the voltage if an overshoot occurs due to a fast switching transient. Standard linear regulators cannot do this, and only source current.
 

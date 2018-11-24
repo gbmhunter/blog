@@ -145,8 +145,7 @@ A small 14-leaded SMD package with a thermal pad in the middle (similar to some 
 # 3D Renders
 
 
-[caption id="attachment_11358" align="aligncenter" width="381"][![A 3D render of the SOT-762-1 component package.](/images/2015/04/sot-762-1-component-package-3d-render.jpg)
-](/images/2015/04/sot-762-1-component-package-3d-render.jpg) A 3D render of the SOT-762-1 component package.[/caption]
+{{< figure src="/images/2015/04/sot-762-1-component-package-3d-render.jpg" width="381" caption="A 3D render of the SOT-762-1 component package." caption-position="bottom" >}}
 
 
 # Other Images

@@ -11,13 +11,11 @@ url: /electronics/components/timing/crystals
 
 _Crystals_ (also called by the more generic term _oscillator_, although oscillators are also used to refer to other "oscillating" components) are electrical components which output a periodic waveform that can be used as a clock source for digital logic (which includes microcontrollers, it's main use).
 
-[caption id="attachment_12809" align="aligncenter" width="275"][![A schematic of a crystal, usually connected to a microcontroller or other digital device that uses a clock. The load capacitance usually varies from 6-25pF per leg (see the crsytals datasheet for the correct value).](/images/2012/01/crystal-schematic.png)
-](/images/2012/01/crystal-schematic.png) A schematic of a crystal, usually connected to a microcontroller or other digital device that uses a clock. The load capacitance usually varies from 6-25pF per leg (see the crystals datasheet for the correct value).[/caption]
+{{< figure src="see the crsytals datasheet for the correct value" width="275" caption="](/images/2012/01/crystal-schematic.png) A schematic of a crystal, usually connected to a microcontroller or other digital device that uses a clock. The load capacitance usually varies from 6-25pF per leg (see the crystals datasheet for the correct value)." caption-position="bottom" >}}
 
 I have also seen them being called "SMD Tuning Forks". WTF? I'm putting this down to a bad to-English translation.
 
-[caption id="attachment_12810" align="aligncenter" width="275"][![Weird name for a crystal, don't you think? Image from http://www.foxonline.com/pdfs/fsrlf.pdf.](/images/2012/01/smd-tuning-fork-weird-name-for-crystal.png)
-](/images/2012/01/smd-tuning-fork-weird-name-for-crystal.png) Weird name for a crystal, don't you think? Image from http://www.foxonline.com/pdfs/fsrlf.pdf.[/caption]
+{{< figure src="/images/2012/01/smd-tuning-fork-weird-name-for-crystal.png" width="275" caption="Weird name for a crystal, don't you think? Image from http://www.foxonline.com/pdfs/fsrlf.pdf." caption-position="bottom" >}}
 
 # Schematic Symbol
 
@@ -75,15 +73,13 @@ Typical stability is around 30-50ppm.
 
 The following waveform is the voltage on one of a 12MHz SMD crystals pins, when driven by a standard microcontroller.
 
-[caption id="attachment_12811" align="aligncenter" width="1200"][![The output voltage waveform of a 12MHz crystal being driven by a standard microcontroller.](/images/2012/01/12mhz-crystal-output-when-driven-by-microcontroller.jpg)
-](/images/2012/01/12mhz-crystal-output-when-driven-by-microcontroller.jpg) The output voltage waveform of a 12MHz crystal being driven by a standard microcontroller.[/caption]
+{{< figure src="/images/2012/01/12mhz-crystal-output-when-driven-by-microcontroller.jpg" width="1200" caption="The output voltage waveform of a 12MHz crystal being driven by a standard microcontroller." caption-position="bottom" >}}
 
 # Oven-Controlled Crystal Oscillators (OCXOs)
 
 High-performance crystal oscillators are kept with temperature-controlled environments to increase the stability of the oscillator. They are called oven-controlled crystal oscillators (OCXOs).
 
-[caption id="attachment_12152" align="aligncenter" width="264"][![A photo of an N4A series OXCO. Image from http://www.bliley.com/.](/images/2012/01/n4a-series-oven-controlled-crystal-oscillator-ocxo-photo.gif)
-](/images/2012/01/n4a-series-oven-controlled-crystal-oscillator-ocxo-photo.gif) A photo of an N4A series OXCO. Image from http://www.bliley.com/.[/caption]
+{{< figure src="/images/2012/01/n4a-series-oven-controlled-crystal-oscillator-ocxo-photo.gif" width="264" caption="A photo of an N4A series OXCO. Image from http://www.bliley.com/." caption-position="bottom" >}}
 
 The crystals are designed to have a _turning-point_, a point of greatest stability, close to the oven temperature. OXCOs, rather than having a temperature stability in the ppm (parts-per-million) range like normal crystals, have a stability in the ppb (parts-per-billion) range (20ppb would be a viable stability).
 

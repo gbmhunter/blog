@@ -36,8 +36,7 @@ It can be added to your project with the following Maven code:
 
 Just look at their fine example of a website...
 
-[caption id="attachment_13633" align="aligncenter" width="1313"][![A screenshot of RXTX's (a Java comm port library) front page on their website. Dear god.](/images/2016/07/screenshot-java-serial-rxtx-website-front-page.png)
-](/images/2016/07/screenshot-java-serial-rxtx-website-front-page.png) A screenshot of RXTX's (a Java comm port library) front page on their website. Dear god.[/caption]
+{{< figure src="a Java comm port library" width="1313" caption="](/images/2016/07/screenshot-java-serial-rxtx-website-front-page.png) A screenshot of RXTX's (a Java comm port library) front page on their website. Dear god." caption-position="bottom" >}}
 
 I hope you could tell I was being sarcastic.
 

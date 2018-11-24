@@ -191,8 +191,7 @@ Below is an "odd shaped" SON package used by Numonyx flash chips that goes under
 
 
 
-[caption id="attachment_9169" align="aligncenter" width="554"][![Outline and dimensions for the VDFPN8 (SON-8) component package of a Numonyx flash IC.Image from http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/M25P/M25P128.pdf.](/images/2014/12/component-package-vdfpn8-mlp8-outline-dimensions.png)
-](/images/2014/12/component-package-vdfpn8-mlp8-outline-dimensions.png) Outline and dimensions for the VDFPN8 (SON-8) component package of a Numonyx flash IC.Image from http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/M25P/M25P128.pdf.[/caption]
+{{< figure src="SON-8" width="554" caption="](/images/2014/12/component-package-vdfpn8-mlp8-outline-dimensions.png) Outline and dimensions for the VDFPN8 (SON-8) component package of a Numonyx flash IC.Image from http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/M25P/M25P128.pdf." caption-position="bottom" >}}
 
 
 
@@ -220,8 +219,7 @@ The WSON variant has a height of 0.80mm (max.)
 
 
 
-[caption id="attachment_11657" align="aligncenter" width="471"][![An outline of the WSON component package showing it's height.](/images/2014/12/wson-component-package-height.png)
-](/images/2014/12/wson-component-package-height.png) An outline of the WSON component package showing it's height.[/caption]
+{{< figure src="/images/2014/12/wson-component-package-height.png" width="471" caption="An outline of the WSON component package showing it's height." caption-position="bottom" >}}
 
 
 
@@ -229,8 +227,7 @@ The VSON variant has a height of 1.00mm (max.)
 
 
 
-[caption id="attachment_11658" align="aligncenter" width="471"][![An outline of the VSON component package showing it's height.](/images/2014/12/vson-component-package-height.png)
-](/images/2014/12/vson-component-package-height.png) An outline of the VSON component package showing it's height.[/caption]
+{{< figure src="/images/2014/12/vson-component-package-height.png" width="471" caption="An outline of the VSON component package showing it's height." caption-position="bottom" >}}
 
 
 

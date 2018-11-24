@@ -371,8 +371,7 @@ The term zero Ohm resistor is usually reserved for a resistor package whose resi
 
 
 
-[caption id="attachment_9159" align="aligncenter" width="222"][![3D model of the Keystone 0603 "true" zero-Ohm jumper. Image from http://www.keyelco.com/product.cfm/Zero-ohm-SMT-Jumpers/0603-Zero-ohm-SMT-Jumper/product_id/14038.](/images/2011/09/keystone-5110-smd-0604-jumper-3d-model.jpg)
-](/images/2011/09/keystone-5110-smd-0604-jumper-3d-model.jpg) 3D model of the Keystone 0603 "true" zero-Ohm jumper. Image from http://www.keyelco.com/product.cfm/Zero-ohm-SMT-Jumpers/0603-Zero-ohm-SMT-Jumper/product_id/14038.[/caption]
+{{< figure src="/images/2011/09/keystone-5110-smd-0604-jumper-3d-model.jpg" width="222" caption="3D model of the Keystone 0603 "true" zero-Ohm jumper. Image from http://www.keyelco.com/product.cfm/Zero-ohm-SMT-Jumpers/0603-Zero-ohm-SMT-Jumper/product_id/14038." caption-position="bottom" >}}
 
 
 
@@ -393,8 +392,7 @@ One company which is doing interesting things with spring-loaded connectors is T
 
 
 
-[caption id="attachment_9687" align="aligncenter" width="562"][![Photo of the TC2050-IDC-NL connector by Tag-Connect.](/images/2011/09/tc2050-idc-nl-pogo-pin-connector-photo.png)
-](/images/2011/09/tc2050-idc-nl-pogo-pin-connector-photo.png) Photo of the TC2050-IDC-NL connector by Tag-Connect.[/caption]
+{{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-photo.png" width="562" caption="Photo of the TC2050-IDC-NL connector by Tag-Connect." caption-position="bottom" >}}
 
 
 
@@ -402,8 +400,7 @@ They sell legged and no-legged versions. The legged versions have retainers (leg
 
 
 
-[caption id="attachment_9689" align="aligncenter" width="806"][![The recommended PCB footprint for accepting the TC2050-IDC-NL connector by Tag-Connect.](/images/2011/09/tc2050-idc-nl-pogo-pin-connector-pcb-footprint.png)
-](/images/2011/09/tc2050-idc-nl-pogo-pin-connector-pcb-footprint.png) The recommended PCB footprint for accepting the TC2050-IDC-NL connector by Tag-Connect.[/caption]
+{{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-pcb-footprint.png" width="806" caption="The recommended PCB footprint for accepting the TC2050-IDC-NL connector by Tag-Connect." caption-position="bottom" >}}
 
 
 
@@ -487,7 +484,6 @@ TE Connectivity make a range under the family name [ARISO](http://www.digikey.co
 
 
 
-[caption id="attachment_11698" align="aligncenter" width="640"][![A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com.](/images/2011/09/te-connectivity-ariso-m30-contactless-connector-pair-photo.png)
-](/images/2011/09/te-connectivity-ariso-m30-contactless-connector-pair-photo.png) A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com.[/caption]
+{{< figure src="/images/2011/09/te-connectivity-ariso-m30-contactless-connector-pair-photo.png" width="640" caption="A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com." caption-position="bottom" >}}
 
 

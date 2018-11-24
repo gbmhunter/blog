@@ -146,8 +146,7 @@ Very similar to the common TO-92 package, except it is a little flatter (e.g. sq
 # Photos
 
 
-[caption id="attachment_11253" align="aligncenter" width="290"][![A photo of the E-Line component package.](/images/2015/04/e-line-component-package-photo.jpg)
-](/images/2015/04/e-line-component-package-photo.jpg) A photo of the E-Line component package.[/caption]
+{{< figure src="/images/2015/04/e-line-component-package-photo.jpg" width="290" caption="A photo of the E-Line component package." caption-position="bottom" >}}
 
 
 # Images

@@ -25,8 +25,7 @@ The conditions which will cause an FTDI IC to send received serial data to the c
 
 The below image is a screenshot of FTDI RX/TX data captured with a logic analyser. The computer was running Java code which sent an 0x02 response as soon as it received an 0x01 byte.
 
-[caption id="attachment_13674" align="aligncenter" width="759"][![FTDI RX and TX data captured by a logic analyser, with the computer running Java code which responds to 0x01 with 0x02. The "latency timer" on the FTDI IC has been reduced to 1ms, which gives a much  faster response time from the computer (about 1.5ms delay).](/images/2016/07/screenshot-fast-computer-response-ftdi-java-set-latency-timer.png)
-](/images/2016/07/screenshot-fast-computer-response-ftdi-java-set-latency-timer.png) FTDI RX and TX data captured by a logic analyser, with the computer running Java code which responds to 0x01 with 0x02. The "latency timer" on the FTDI IC has been reduced to 1ms, which gives a much faster response time from the computer (about 1.5ms delay).[/caption]
+{{< figure src="about 1.5ms delay" width="759" caption="](/images/2016/07/screenshot-fast-computer-response-ftdi-java-set-latency-timer.png) FTDI RX and TX data captured by a logic analyser, with the computer running Java code which responds to 0x01 with 0x02. The "latency timer" on the FTDI IC has been reduced to 1ms, which gives a much faster response time from the computer (about 1.5ms delay)." caption-position="bottom" >}}
 
 ## Drivers
 

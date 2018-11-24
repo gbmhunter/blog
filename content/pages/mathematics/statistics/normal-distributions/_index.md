@@ -35,8 +35,7 @@ where:
 
 
 
-[caption id="attachment_15620" align="aligncenter" width="488"][![](/images/2018/09/normal-distribution-pdf-examples-300x225.png)
-](/images/2018/09/normal-distribution-pdf-examples.png) A few example probability density functions (PDFs) for the normal distribution.[/caption]
+{{< figure src="/images/2018/09/normal-distribution-pdf-examples-300x225.png" width="488" caption="A few example probability density functions (PDFs) for the normal distribution." caption-position="bottom" >}}
 
 
 

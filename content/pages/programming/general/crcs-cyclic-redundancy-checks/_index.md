@@ -37,8 +37,7 @@ When checking a CRC, rather than recalculating the CRC for the message and compa
 
 [NinjaCalc](http://mbedded-ninja.github.io/NinjaCalc/) has a CRC calculator which allows you to calculate the CRC value for ASCII or hex data, using either common pre-loaded CRC algorithms or your own custom algorithm.
 
-[caption id="attachment_13651" align="aligncenter" width="1094"][![Example usage of the CRC Calculator within NinjaCalc (http://mbedded-ninja.github.io/NinjaCalc/).](/images/2016/07/ninja-calc-crc-calculator-example.gif)
-](/images/2016/07/ninja-calc-crc-calculator-example.gif) Example usage of the CRC Calculator within NinjaCalc (http://mbedded-ninja.github.io/NinjaCalc/).[/caption]
+{{< figure src="http://mbedded-ninja.github.io/NinjaCalc/" width="1094" caption="](/images/2016/07/ninja-calc-crc-calculator-example.gif) Example usage of the CRC Calculator within NinjaCalc (http://mbedded-ninja.github.io/NinjaCalc/)." caption-position="bottom" >}}
 
 # Some Common CRC Algorithms
 

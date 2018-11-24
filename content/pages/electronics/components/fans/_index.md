@@ -13,8 +13,7 @@ url: /electronics/components/fans
 
 Computer fans usually have two, three or four wires. The simpilist two-wire fans just have a wire for power and ground.
 
-[caption id="attachment_12471" align="aligncenter" width="308"][![A photo of a standard computer cooling fan.](/images/2015/10/computer-cooling-fan-photo-front-view-blog-lili-farm.jpg)
-](/images/2015/10/computer-cooling-fan-photo-front-view-blog-lili-farm.jpg) A photo of a standard computer cooling fan.[/caption]
+{{< figure src="/images/2015/10/computer-cooling-fan-photo-front-view-blog-lili-farm.jpg" width="308" caption="A photo of a standard computer cooling fan." caption-position="bottom" >}}
 
 ## 3-Wire Computer Fans
 

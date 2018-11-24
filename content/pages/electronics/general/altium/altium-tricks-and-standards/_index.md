@@ -82,8 +82,7 @@ _Create a different folder for each project_ - With all the files Altium creates
 Also, rooms can get annoying when you don't need them. To disable rooms, click Project -> Project Options -> ECO Generation. Select Add Rooms and then choose 'Ignore Differences' from the drop-down menu on the right. Delete any existing rooms, and Altium will no longer automatically add them when you update the PCB.
 
 
-[caption id="attachment_11831" align="aligncenter" width="799"][![A screenshot showing how to stop Altium from adding rooms to the PCB.](/images/2011/09/altium-stopping-rooms-from-being-added-to-pcb.jpg)
-](/images/2011/09/altium-stopping-rooms-from-being-added-to-pcb.jpg) A screenshot showing how to stop Altium from adding rooms to the PCB.[/caption]
+{{< figure src="/images/2011/09/altium-stopping-rooms-from-being-added-to-pcb.jpg" width="799" caption="A screenshot showing how to stop Altium from adding rooms to the PCB." caption-position="bottom" >}}
 
 
 # My Vias/Tracks disappear When I'm Routing!
@@ -218,8 +217,7 @@ Note that Mechanical 1 (the board outline), Mechanical 2 (PCB info) and Mechanic
 The pairing of the mechanical layers is done as shown below.
 
 
-[caption id="attachment_11832" align="aligncenter" width="498"][![Pairing mechanical layers in Altium.](/images/2011/09/altium-pairing-the-mechanical-layers.jpg)
-](/images/2011/09/altium-pairing-the-mechanical-layers.jpg) Pairing mechanical layers in Altium.[/caption]
+{{< figure src="/images/2011/09/altium-pairing-the-mechanical-layers.jpg" width="498" caption="Pairing mechanical layers in Altium." caption-position="bottom" >}}
 
 
 
@@ -238,8 +236,7 @@ I find that when using many Altium layers, the default colour scheme can get ver
 All layers related to the top side (Top Layer, Top Overlay, Top Paste, Top Solder, Top Dimensions, Top Component Outlines/3D Bodies, and Top Courtyard are all chosen to be hot colours, while conversely all the bottom side layers are chosen to be cold colours.
 
 
-[caption id="attachment_11833" align="aligncenter" width="1341"][![An example showing the use of "hot" and "cold" PCB layer colours in Altium to help distinguish between top and bottom associated objects.](/images/2011/09/example-of-hot-and-cold-altium-pcb-layer-colours-annotated.png)
-](/images/2011/09/example-of-hot-and-cold-altium-pcb-layer-colours-annotated.png) An example showing the use of "hot" and "cold" PCB layer colours in Altium to help distinguish between top and bottom associated objects.[/caption]
+{{< figure src="/images/2011/09/example-of-hot-and-cold-altium-pcb-layer-colours-annotated.png" width="1341" caption="An example showing the use of "hot" and "cold" PCB layer colours in Altium to help distinguish between top and bottom associated objects." caption-position="bottom" >}}
 
 
 The following file can be downloaded and loaded into Altium to setup the colour scheme as mentioned above.
@@ -290,8 +287,7 @@ I use the following notation for the description field. The parameters are liste
 ## Capacitors
 
 
-[caption id="attachment_11834" align="aligncenter" width="350"][![Searching through an Altium schematic library.](/images/2011/09/altium-library-search-cap-name-standards.png)
-](/images/2011/09/altium-library-search-cap-name-standards.png) Searching through an Altium schematic library.[/caption]
+{{< figure src="/images/2011/09/altium-library-search-cap-name-standards.png" width="350" caption="Searching through an Altium schematic library." caption-position="bottom" >}}
 
     
     Capacitor, <type>, <package size (imperial)>, <capacitance>, <voltage>, <temperature coefficient>, <tolerance>
@@ -452,15 +448,13 @@ For example, I would add these component parameters to a buffer IC:
 As shown in the following image:
 
 
-[caption id="attachment_11835" align="aligncenter" width="1139"][![Adding a special component link to the components datasheet in Altium.](/images/2011/09/adding-special-component-links-to-a-component-in-altium.png)
-](/images/2011/09/adding-special-component-links-to-a-component-in-altium.png) Adding a special component link to the components datasheet in Altium.[/caption]
+{{< figure src="/images/2011/09/adding-special-component-links-to-a-component-in-altium.png" width="1139" caption="Adding a special component link to the components datasheet in Altium." caption-position="bottom" >}}
 
 
 I would then be able to quickly go to the datasheet by right-clicking the component, navigating to the "References" sub-menu, and clicking "Datasheet".
 
 
-[caption id="attachment_11837" align="aligncenter" width="418"][![Quickly going to the component datasheet by using a component link parameter in Alitum.](/images/2011/09/quickly-going-to-a-datasheet-using-a-component-link-in-the-right-click-menu-in-altium.png)
-](/images/2011/09/quickly-going-to-a-datasheet-using-a-component-link-in-the-right-click-menu-in-altium.png) Quickly going to the component datasheet by using a component link parameter in Alitum.[/caption]
+{{< figure src="/images/2011/09/quickly-going-to-a-datasheet-using-a-component-link-in-the-right-click-menu-in-altium.png" width="418" caption="Quickly going to the component datasheet by using a component link parameter in Alitum." caption-position="bottom" >}}
 
 
 
@@ -474,15 +468,13 @@ I would then be able to quickly go to the datasheet by right-clicking the compon
 'Use Transparent Layers' is a menu option hidden away in Altium that makes the layers go semi-transparent. It is really useful when dealing/routing with multi-layer objects (such as vias). I found I use Transparent mode more often than not now since I discovered it. To enable it, go into the View Configurations Menu, click the 'View Options' tab, and then make sure the 'Use Transparent Layers' box is ticked as shown below.
 
 
-[caption id="attachment_11838" align="aligncenter" width="1217"][![Turning on the transparent layer option in Altium. Very useful when routing complex multi-layer boards!](/images/2011/09/altium-use-transparent-layers.jpg)
-](/images/2011/09/altium-use-transparent-layers.jpg) Turning on the transparent layer option in Altium. Very useful when routing complex multi-layer boards![/caption]
+{{< figure src="/images/2011/09/altium-use-transparent-layers.jpg" width="1217" caption="Turning on the transparent layer option in Altium. Very useful when routing complex multi-layer boards!" caption-position="bottom" >}}
 
 
 Here is an example showing layers when set to Transparent mode.
 
 
-[caption id="attachment_11839" align="aligncenter" width="1839"][![An example of the PCB view in Altium when using transparent layers.](/images/2011/09/altium-transparent-layers-example.jpg)
-](/images/2011/09/altium-transparent-layers-example.jpg) An example of the PCB view in Altium when using transparent layers.[/caption]
+{{< figure src="/images/2011/09/altium-transparent-layers-example.jpg" width="1839" caption="An example of the PCB view in Altium when using transparent layers." caption-position="bottom" >}}
 
 
 
@@ -496,8 +488,8 @@ Here is an example showing layers when set to Transparent mode.
 When designing a PCB, you often find yourself wanting to "direct connect" from polygon pours and power planes to specific pads of a component, while leaving the others with thermal relief connections. This is usually to reduce the copper track resistance to high current pins (e.g. V+ and GND).
 
 
-[caption id="attachment_9027" align="aligncenter" width="440"][![A terminal block pad with direct connections to a polygon (+24V-MOTOR) and a pad with thermal relief connections (GND).](/images/2011/09/pads-with-direct-connect-and-thermal-relief.png)
-](/images/2011/09/pads-with-direct-connect-and-thermal-relief.png) A terminal block pad with direct connections to a polygon (+24V-MOTOR) and a pad with thermal relief connections (GND).[/caption]
+{{< figure src="+24V-MOTOR" width="440" caption="](/images/2011/09/pads-with-direct-connect-and-thermal-relief.png)
+](/images/2011/09/pads-with-direct-connect-and-thermal-relief.png) A terminal block pad with direct connections to a polygon (+24V-MOTOR) and a pad with thermal relief connections (GND)." caption-position="bottom" >}}
 
 
 The simplest way to do this is to add a custom pad region around the pin of interest. However, this is time consuming as you have to do it for every pin and on every layer. A better way is to use pad classes.
@@ -508,15 +500,13 @@ The simplest way to do this is to add a custom pad region around the pin of inte
 To add pads to a pad class, first take note of the component the pad is part of in the Altium PCB editor, and the pin number of the pad itself (e.g. component J3, pin number 2). Now click _Design->Classes_. Navigate the folder "Pad Classes", and add a new pad class called DirectConnect (the exact name does not matter). Now add all the desired pads to this new pad class.
 
 
-[caption id="attachment_9028" align="aligncenter" width="720"][![Adding pads to the new "DirectConnect" pad class.](/images/2011/09/altium-adding-pads-to-the-direct-connect-pad-class.png)
-](/images/2011/09/altium-adding-pads-to-the-direct-connect-pad-class.png) Adding pads to the new "DirectConnect" pad class.[/caption]
+{{< figure src="/images/2011/09/altium-adding-pads-to-the-direct-connect-pad-class.png" width="720" caption="Adding pads to the new "DirectConnect" pad class." caption-position="bottom" >}}
 
 
 We now need to make a direct connect rule for all pads in this pad class. Click close, and now click _Design->Rules_. Add a new "Polygon Connect Style" rule. Select "Advanced (Query)" for the first object match, and then enter InPadClass('DirectConnect') into the "Full Query" window. Change the Connect Style to "Direct Connect".
 
 
-[caption id="attachment_9029" align="aligncenter" width="772"][![Making a new "Direct Connect" rule for the pad class.](/images/2011/09/altium-making-new-direct-conect-rule-for-pad-class.png)
-](/images/2011/09/altium-making-new-direct-conect-rule-for-pad-class.png) Making a new "Direct Connect" rule for the pad class.[/caption]
+{{< figure src="/images/2011/09/altium-making-new-direct-conect-rule-for-pad-class.png" width="772" caption="Making a new "Direct Connect" rule for the pad class." caption-position="bottom" >}}
 
 
 Save and exit the Rules dialog, and rebuild your polygons. Done! You should now have direct connects to all the pads you added to the "DirectConnect" pad class. If you want to do the same thing for power planes, add a similar "Power Plane Connect Style" rule for the same pad class, as shown in the above picture. If you want to add pads to class which don't belong to any component, look for them under "Free-xx" (e.g. Free-0) in the pad classes dialogue.
@@ -542,8 +532,7 @@ Note: Direct connect rules can also be added to specific pins on the schematic, 
 By default, Altium tries to open internet links in it's own internal browser. It's no surprise that because Altium is a EDA tool and not a dedicated browser, it's not the best at displaying web pages. Thankfully, you can force Altium to use your default external web browser by navigating to _DXP->Preferences->System->View_ and checking the "Open internet links in external Web browser" option.
 
 
-[caption id="attachment_12568" align="aligncenter" width="390"][![Checking "Open internet links in external web browser" will stop Altium from trying to open them.](/images/2011/09/altium-settings-open-internet-links-in-external-web-browser-annotated.png)
-](/images/2011/09/altium-settings-open-internet-links-in-external-web-browser-annotated.png) Checking "Open internet links in external web browser" will stop Altium from trying to open them.[/caption]
+{{< figure src="/images/2011/09/altium-settings-open-internet-links-in-external-web-browser-annotated.png" width="390" caption="Checking "Open internet links in external web browser" will stop Altium from trying to open them." caption-position="bottom" >}}
 
 
 # Removing Exposed-Pad Vias That Are Automatically Added By The Footprint Wizard
@@ -565,20 +554,17 @@ For these reasons, I recommend that you **delete** these automatically added via
 
 <td >   
 
-[caption id="attachment_9330" align="aligncenter" width="182"][![The footprint wizard in Altium has automatically added three thermal vias to this QFN package.](/images/2011/09/altium-footprint-wizard-adds-vias-to-centre-pads-01.png)
-](/images/2011/09/altium-footprint-wizard-adds-vias-to-centre-pads-01.png) The footprint wizard in Altium has automatically added three thermal vias to this QFN package.[/caption]
+{{< figure src="/images/2011/09/altium-footprint-wizard-adds-vias-to-centre-pads-01.png" width="182" caption="The footprint wizard in Altium has automatically added three thermal vias to this QFN package." caption-position="bottom" >}}
 </td>
 
 <td >   
 
-[caption id="attachment_9332" align="aligncenter" width="198"][![I recommend that you remove these vias and instead add them as needed at the PCB routing stage of the design process. ](/images/2011/09/altium-footprint-wizard-adds-vias-to-centre-pads-02.png)
-](/images/2011/09/altium-footprint-wizard-adds-vias-to-centre-pads-02.png) I recommend that you remove these vias and instead add them as needed at the PCB routing stage of the design process.[/caption]
+{{< figure src="/images/2011/09/altium-footprint-wizard-adds-vias-to-centre-pads-02.png" width="198" caption="I recommend that you remove these vias and instead add them as needed at the PCB routing stage of the design process." caption-position="bottom" >}}
 </td>
 
 <td >   
 
-[caption id="attachment_9331" align="aligncenter" width="191"][![Also, I prefer to rename the thermal pin to pin number "0".](/images/2011/09/altium-footprint-wizard-adds-vias-to-centre-pads-03.png)
-](/images/2011/09/altium-footprint-wizard-adds-vias-to-centre-pads-03.png) Also, I prefer to rename the thermal pin to pin number "0".[/caption]
+{{< figure src="/images/2011/09/altium-footprint-wizard-adds-vias-to-centre-pads-03.png" width="191" caption="Also, I prefer to rename the thermal pin to pin number "0"." caption-position="bottom" >}}
 </td>
 </tr>
 </tbody>

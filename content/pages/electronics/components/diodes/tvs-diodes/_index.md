@@ -26,8 +26,7 @@ They can be grouped into IC packages called arrays. A typical schematic symbol f
 
 
 
-[caption id="attachment_11827" align="aligncenter" width="297"][![The schematic symbol of a diode array, with a common anode connection.](/images/2011/09/schematic-symbol-esd-diode-array.png)
-](/images/2011/09/schematic-symbol-esd-diode-array.png) The schematic symbol of a diode array, with a common anode connection.[/caption]
+{{< figure src="/images/2011/09/schematic-symbol-esd-diode-array.png" width="297" caption="The schematic symbol of a diode array, with a common anode connection." caption-position="bottom" >}}
 
 
 
@@ -110,8 +109,7 @@ The reverse-leakage of TVS diodes decreases as the stand-off voltage increases. 
 
 
 
-[caption id="attachment_11828" align="aligncenter" width="1182"][![Leakage currents of TVS diodes with low stand-off voltages.](/images/2011/09/leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png)
-](/images/2011/09/leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png) Leakage currents of TVS diodes with low stand-off voltages.[/caption]
+{{< figure src="/images/2011/09/leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png" width="1182" caption="Leakage currents of TVS diodes with low stand-off voltages." caption-position="bottom" >}}
 
 
 
@@ -134,8 +132,7 @@ They are especially suited to this role (when considering other diodes) as the a
 
 
 
-[caption id="attachment_9022" align="aligncenter" width="701"][![A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection.](/images/2011/09/tvs-diode-for-reverse-polarity-protection.png)
-](/images/2011/09/tvs-diode-for-reverse-polarity-protection.png) A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection.[/caption]
+{{< figure src="along with a fuse" width="701" caption="](/images/2011/09/tvs-diode-for-reverse-polarity-protection.png) A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection." caption-position="bottom" >}}
 
 
 
@@ -158,8 +155,7 @@ This low capacitance is achieved by adding a forward-biased general purpose diod
 
 
 
-[caption id="attachment_13370" align="aligncenter" width="536"][![The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component.](/images/2016/05/internal-schematic-of-low-capacitance-tvs-diode-annotated.png)
-](/images/2016/05/internal-schematic-of-low-capacitance-tvs-diode-annotated.png) The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component.[/caption]
+{{< figure src="/images/2016/05/internal-schematic-of-low-capacitance-tvs-diode-annotated.png" width="536" caption="The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component." caption-position="bottom" >}}
 
 
 
@@ -185,8 +181,7 @@ TVS diodes built specifically for protecting RS-485 communication protocol bus l
 
 
 
-[caption id="attachment_13466" align="aligncenter" width="511"][![The pintout and functional block diagram of the SM712-02HTG TVS diode, designed specifically for protecting RS-485 bus lines. Image from http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf.](/images/2016/05/sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png)
-](/images/2016/05/sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png) The pintout and functional block diagram of the SM712-02HTG TVS diode, designed specifically for protecting RS-485 bus lines. Image from http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf.[/caption]
+{{< figure src="/images/2016/05/sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png" width="511" caption="The pintout and functional block diagram of the SM712-02HTG TVS diode, designed specifically for protecting RS-485 bus lines. Image from http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf." caption-position="bottom" >}}
 
 
 

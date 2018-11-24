@@ -45,5 +45,4 @@ The main advantage is that the measuring device does not need to fully encircle 
 
 Aim has patents around it's fluxgate magnetometer based current probe, so it might be a while before other manufacturers make similar probes.
 
-[caption id="attachment_12959" align="aligncenter" width="390"][![The AIM I-Prober 520 current probe based on fluxgate magnetometer technology. Image from http://www.tti-test.com/.](/images/2015/09/aim-i-prober-520-fluxgate-magnetometer-current-probe-with-scope.jpg)
-](/images/2015/09/aim-i-prober-520-fluxgate-magnetometer-current-probe-with-scope.jpg) The AIM I-Prober 520 current probe based on fluxgate magnetometer technology. Image from http://www.tti-test.com/.[/caption]
+{{< figure src="/images/2015/09/aim-i-prober-520-fluxgate-magnetometer-current-probe-with-scope.jpg" width="390" caption="The AIM I-Prober 520 current probe based on fluxgate magnetometer technology. Image from http://www.tti-test.com/." caption-position="bottom" >}}

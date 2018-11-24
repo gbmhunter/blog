@@ -69,8 +69,7 @@ The largest in the DO-214xx range of diode packages, the DO214AB is a surface-mo
 
 # 3D Renders
 
-[caption id="attachment_9895" align="aligncenter" width="376"][![A 3D render of the  SMC (DO-214AB) component package.](/images/2015/03/smc-do-214ab-component-package-3d-render.jpg)
-](/images/2015/03/smc-do-214ab-component-package-3d-render.jpg) A 3D render of the SMC (DO-214AB) component package.[/caption]
+{{< figure src="DO-214AB" width="376" caption="](/images/2015/03/smc-do-214ab-component-package-3d-render.jpg) A 3D render of the SMC (DO-214AB) component package." caption-position="bottom" >}}
 
 # Images
 

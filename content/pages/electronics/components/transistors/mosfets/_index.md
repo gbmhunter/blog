@@ -149,8 +149,7 @@ where:
 
 You generic MOSFET's actually have four leads (pins). It's just that one of them, the substrate (body) lead, is normally connected internally to the source, and so you only get three external connections. Note: There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
 
-[caption id="attachment_9738" align="aligncenter" width="311"][![Internal diagram of a MOSFET showing the four connections, including the body pin. Image from http://www.muzique.com/news/mosfet-body-diodes/.](/images/2011/09/mosfet-four-terminal-internal-diagram.gif)
-](/images/2011/09/mosfet-four-terminal-internal-diagram.gif) Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/.[/caption]
+{{< figure src="/images/2011/09/mosfet-four-terminal-internal-diagram.gif" width="311" caption="Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/." caption-position="bottom" >}}
 
 The substrate lead is pretty self-explanatory, it is connected to the substrate (body) of the MOSFET.
 
@@ -162,18 +161,15 @@ Another interesting note is that without the connection of the substrate to the 
 
 The 3N163 is an example of a MOSFET which provides you with a fourth pin for the substrate connection.
 
-[caption id="attachment_9741" align="aligncenter" width="348"][![A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html.](/images/2011/09/3n163-mosfet-drawing-with-substrate-connection.png)
-](/images/2011/09/3n163-mosfet-drawing-with-substrate-connection.png) A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html.[/caption]
+{{< figure src="C" width="348" caption="](/images/2011/09/3n163-mosfet-drawing-with-substrate-connection.png) A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html." caption-position="bottom" >}}
 
 You may also note that some IC designs do not connect the substrate to the source. The TPS2020 load switch by Texas Instruments is one example. You can see in the diagram below that the substrate pin is connected to ground. I'm not entirely sure why, but it might have something to do with the devices ability to block reverse current. Normally this is achieved with back-to-back MOSFETs, but this diagram almost suggests that they pull it off using only the one MOSFET.
 
-[caption id="attachment_9745" align="aligncenter" width="611"][![Functional block diagram of the TPS2020 load switch. Note how the substrate of the MOSFET is not connected to the source, but instead connected to ground. Image from http://www.ti.com/lit/ds/symlink/tps2020.pdf.](/images/2011/09/tps2020-functional-diagram-with-mosfet-body-grounded-annotated.png)
-](/images/2011/09/tps2020-functional-diagram-with-mosfet-body-grounded-annotated.png) Functional block diagram of the TPS2020 load switch. Note how the substrate of the MOSFET (top middle) is not connected to the source, but instead connected to ground. Image from http://www.ti.com/lit/ds/symlink/tps2020.pdf.[/caption]
+{{< figure src="/images/2011/09/tps2020-functional-diagram-with-mosfet-body-grounded-annotated.png" width="611" caption="Functional block diagram of the TPS2020 load switch. Note how the substrate of the MOSFET (top middle) is not connected to the source, but instead connected to ground. Image from http://www.ti.com/lit/ds/symlink/tps2020.pdf." caption-position="bottom" >}}
 
 Interestingly, the block diagram for the [NCP380 high-side load switch by On Semiconductor](http://www.onsemi.com/pub_link/Collateral/NCP380-D.PDF) may shed more light on this matter. Notice how in the image below, the substrate of the MOSFET is connected to two switches, which can either connect it to the input or the output.
 
-[caption id="attachment_11653" align="aligncenter" width="711"][![A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed.](/images/2013/11/ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png)
-](/images/2013/11/ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png) A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed.[/caption]
+{{< figure src="/images/2013/11/ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png" width="711" caption="A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed." caption-position="bottom" >}}
 
 # The Transconductance Of A MOSFET
 

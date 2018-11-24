@@ -21,8 +21,7 @@ Before reading this page, please check out the [Linear Curve Fitting page](http:
 
 
 
-[caption id="attachment_15585" align="aligncenter" width="605"][![](/images/2018/07/many-polynomial-best-fits-on-graph-300x225.png)
-](/images/2018/07/many-polynomial-best-fits-on-graph.png) A graph showing how different degree polynomials can be fitted to data.[/caption]
+{{< figure src="/images/2018/07/many-polynomial-best-fits-on-graph-300x225.png" width="605" caption="A graph showing how different degree polynomials can be fitted to data." caption-position="bottom" >}}
 
 
 
@@ -302,5 +301,4 @@ The data points and polynomial of best fit are shown in the below graph:
 
 
 
-[caption id="attachment_15584" align="aligncenter" width="574"][![](/images/2018/07/2-degree-poly-best-fit-graph-300x225.png)
-](/images/2018/07/2-degree-poly-best-fit-graph.png) Four data points and a 2 degree polynomial of best fit (using the least squares method).[/caption]
+{{< figure src="/images/2018/07/2-degree-poly-best-fit-graph-300x225.png" width="574" caption="Four data points and a 2 degree polynomial of best fit (using the least squares method)." caption-position="bottom" >}}

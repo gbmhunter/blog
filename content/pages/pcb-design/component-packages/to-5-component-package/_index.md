@@ -72,18 +72,15 @@ The diameter of the pin circumference can also vary. Diameters of 0.200" and 0.2
 
 The TO-5 is an older-style through-hole metal can package. The traditional TO-92 package has 3 pins.
 
-[caption id="attachment_12436" align="aligncenter" width="275"][![A photo of the TO-5 6-lead component package.](/images/2015/10/to-5-6-component-package-photo.jpg)
-](/images/2015/10/to-5-6-component-package-photo.jpg) A photo of the TO-5 6-lead component package.[/caption]
+{{< figure src="/images/2015/10/to-5-6-component-package-photo.jpg" width="275" caption="A photo of the TO-5 6-lead component package." caption-position="bottom" >}}
 
 The original JEDEC TO-5 specification is shown below:
 
-[caption id="attachment_12440" align="aligncenter" width="503"][![The original JEDEC TO-5 (TO-5-3) component package specification drawing. Image from http://www.jedec.org/.](/images/2015/10/to-5-3-component-package-original-jedec-specification-drawing.png)
-](/images/2015/10/to-5-3-component-package-original-jedec-specification-drawing.png) The original JEDEC TO-5 (TO-5-3) component package specification drawing. Image from http://www.jedec.org/.[/caption]
+{{< figure src="TO-5-3" width="503" caption="](/images/2015/10/to-5-3-component-package-original-jedec-specification-drawing.png) The original JEDEC TO-5 (TO-5-3) component package specification drawing. Image from http://www.jedec.org/." caption-position="bottom" >}}
 
 # TO-5-8
 
-[caption id="attachment_12442" align="aligncenter" width="328"][![Dimensions for the 8 leaded TO-5 (TO-5-8) component package.](/images/2015/10/to-5-8-component-package-dimensions.jpg)
-](/images/2015/10/to-5-8-component-package-dimensions.jpg) Dimensions for the 8 leaded TO-5 (TO-5-8) component package.[/caption]
+{{< figure src="TO-5-8" width="328" caption="](/images/2015/10/to-5-8-component-package-dimensions.jpg) Dimensions for the 8 leaded TO-5 (TO-5-8) component package." caption-position="bottom" >}}
 
 # Pin Numbering
 

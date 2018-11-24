@@ -23,8 +23,7 @@ There are two types of phase-cutting:  1. Leading-edge phase-cutting  2. Trailin
 
 Here is a VERY simple two-component zero-cross detection circuit by Atmel:
 
-[caption id="attachment_12500" align="aligncenter" width="333"][![A very simple two-component mains zero-cross detection circuit. Image from http://www.atmel.com/.](/images/2015/11/two-resistor-one-micro-very-simple-zero-cross-detector-atmel.png)
-](/images/2015/11/two-resistor-one-micro-very-simple-zero-cross-detector-atmel.png) A very simple two-component mains zero-cross detection circuit. Image from http://www.atmel.com/.[/caption]
+{{< figure src="/images/2015/11/two-resistor-one-micro-very-simple-zero-cross-detector-atmel.png" width="333" caption="A very simple two-component mains zero-cross detection circuit. Image from http://www.atmel.com/." caption-position="bottom" >}}
 
 More info on this circuit can be found [here](http://www.atmel.com/Images/doc2508.pdf).
 

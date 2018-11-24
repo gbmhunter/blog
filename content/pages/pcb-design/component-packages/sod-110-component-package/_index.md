@@ -131,8 +131,7 @@ n/a
 # Photos
 
 
-[caption id="attachment_11307" align="aligncenter" width="357"][![A photo of the SOD-110 component package.](/images/2015/04/sod-110-component-package-photo.png)
-](/images/2015/04/sod-110-component-package-photo.png) A photo of the SOD-110 component package.[/caption]
+{{< figure src="/images/2015/04/sod-110-component-package-photo.png" width="357" caption="A photo of the SOD-110 component package." caption-position="bottom" >}}
 
 
 # Images
