@@ -59,7 +59,8 @@ NAMUR, an international association of process instrumentation companies, made a
 
 The "standard" defines any current below 3.6mA or above 21mA as a sensor fault. This signal needs to be present for at least 4 seconds before it is considered a fault.
 
-{{< figure src="/images/2016/03/namur-ne-43-current-looop-current-ranges-diagram.png" width="560" caption="The current ranges allowed by the NAMUR NE 43 current-loop standard." caption-position="bottom" >}}
+[caption id="attachment_13415" align="aligncenter" width="560"][![The current ranges allowed by the NAMUR NE 43 current-loop standard.](/images/2016/03/namur-ne-43-current-looop-current-ranges-diagram.png)
+](/images/2016/03/namur-ne-43-current-looop-current-ranges-diagram.png) The current ranges allowed by the NAMUR NE 43 current-loop standard.[/caption]
 
 The standard also extends the normal operation 4-20mA current range to 3.8-20.5mA, allowing more measurement information to be communicated.
 
@@ -77,7 +78,8 @@ A 4-20mA current loop signal can be easily interfaced to a microcontroller which
 
 The schematic below shows probably the simplest 4-20mA interface you could build to an ADC on a microcontroller. It uses just a single, precision \(100\Omega\) resistor to convert the 4-20mA signal into a 400-2000mV voltage.
 
-{{< figure src="/images/2016/03/simple-4-20ma-current-loop-interface-to-micro-adc.png" width="807" caption="Possibly the simplest 4-20mA current loop interface to an ADC on a microcontroller. No filtering, buffering or voltage scaling." caption-position="bottom" >}}
+[caption id="attachment_13040" align="aligncenter" width="807"][![Possibly the simplest 4-20mA current loop interface to an ADC on a microcontroller. No filtering, buffering or voltage scaling.](/images/2016/03/simple-4-20ma-current-loop-interface-to-micro-adc.png)
+](/images/2016/03/simple-4-20ma-current-loop-interface-to-micro-adc.png) Possibly the simplest 4-20mA current loop interface to an ADC on a microcontroller. No filtering, buffering or voltage scaling.[/caption]
 
 The value of the resistor can be changed to modify the voltage range that the ADC measures. Below is a table of common resistors that are used and the voltage ranges they give:
 
@@ -107,7 +109,8 @@ The value of the resistor can be changed to modify the voltage range that the AD
 
 The schematic below shows how you can convert the 4-20mA current loop into a voltage signal suitable for the ADC, along with a low-pass filter and buffering circuitry.
 
-{{< figure src="/images/2016/03/4-20ma-current-loop-interface-to-micro-schematic-with-filter-and-buffer.png" width="1021" caption="An schematic showing how to interface a 4-20mA current loop signal to the ADC on a microcontroller. The circuit also has a low-pass filter and a buffer." caption-position="bottom" >}}
+[caption id="attachment_13038" align="aligncenter" width="1021"][![An schematic showing how to interface a 4-20mA current loop signal to the ADC on a microcontroller. The circuit also has a low-pass filter and a buffer.](/images/2016/03/4-20ma-current-loop-interface-to-micro-schematic-with-filter-and-buffer.png)
+](/images/2016/03/4-20ma-current-loop-interface-to-micro-schematic-with-filter-and-buffer.png) An schematic showing how to interface a 4-20mA current loop signal to the ADC on a microcontroller. The circuit also has a low-pass filter and a buffer.[/caption]
 
 # Noise
 
@@ -125,7 +128,8 @@ The NAMUR NE43 standard specifies any current below 3.6mA or above 21mA should
 
 The HART communication protocol (_Highway Addressable Remote Transducer_) is a separate communications protocol which can communicate on the same wires as the 4-20mA current loop protocol.
 
-{{< figure src="/images/2016/03/hart-communication-protocol-logo-4-20ma-current-loop.jpg" width="390" caption="The logo for the HART communication protocol." caption-position="bottom" >}}
+[caption id="attachment_13423" align="aligncenter" width="390"][![The logo for the HART communication protocol.](/images/2016/03/hart-communication-protocol-logo-4-20ma-current-loop.jpg)
+](/images/2016/03/hart-communication-protocol-logo-4-20ma-current-loop.jpg) The logo for the HART communication protocol.[/caption]
 
 It transmits one or digital signals which are **superimposed** onto the 4-20mA current signal.
 

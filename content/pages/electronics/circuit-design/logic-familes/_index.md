@@ -19,7 +19,8 @@ HSTL compares the input voltage with a reference voltage.
 
 Complementary metal-oxide semiconductor.
 
-{{< figure src="/images/2015/07/logic-family-cmos-technologies-voltage-vs-speed.png" width="762" caption="A comparison of voltage vs. speed for a range of CMOS-based logic families. Image from http://www.ti.com/." caption-position="bottom" >}}
+[caption id="attachment_11900" align="aligncenter" width="762"][![A comparison of voltage vs. speed for a range of CMOS-based logic families. Image from http://www.ti.com/.](/images/2015/07/logic-family-cmos-technologies-voltage-vs-speed.png)
+](/images/2015/07/logic-family-cmos-technologies-voltage-vs-speed.png) A comparison of voltage vs. speed for a range of CMOS-based logic families. Image from http://www.ti.com/.[/caption]
 
 ## AUC
 

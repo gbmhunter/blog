@@ -51,7 +51,8 @@ The schematic symbols for NPN and PNP transistors are shown below:
 
 
 
-{{< figure src="/images/2015/08/transistors-pnp-and-npn-schematic-symbols.png" width="498" caption="Schematics symbols for NPN and PNP transistors. Note that the collector and emitter have flipped positions for the PNP, as commonly drawn on schematics." caption-position="bottom" >}}
+[caption id="attachment_11956" align="aligncenter" width="498"][![Schematics symbols for NPN and PNP transistors. Note that the collector and emitter have flipped positions for the PNP, as commonly drawn on schematics.](/images/2015/08/transistors-pnp-and-npn-schematic-symbols.png)
+](/images/2015/08/transistors-pnp-and-npn-schematic-symbols.png) Schematics symbols for NPN and PNP transistors. Note that the collector and emitter have flipped positions for the PNP, as commonly drawn on schematics.[/caption]
 
 
 
@@ -174,7 +175,8 @@ The common collector amplifier topology is also known as a _emitter follower amp
 
 
 
-{{< figure src="/images/2015/08/basic-common-collector-bjt-amplifier-schematic.png" width="640" caption="The basic schematic of a common-collector BJT amplifier." caption-position="bottom" >}}
+[caption id="attachment_13103" align="aligncenter" width="640"][![The basic schematic of a common-collector BJT amplifier.](/images/2015/08/basic-common-collector-bjt-amplifier-schematic.png)
+](/images/2015/08/basic-common-collector-bjt-amplifier-schematic.png) The basic schematic of a common-collector BJT amplifier.[/caption]
 
 
 
@@ -192,7 +194,8 @@ Here is a graph of \(v_{in}\) vs. \(v_{out}\) for the above circuit:
 
 
 
-{{< figure src="/images/2015/08/vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png" width="1418" caption="Vout vs. Vin for a basic common-collector BJT amplifier." caption-position="bottom" >}}
+[caption id="attachment_13107" align="aligncenter" width="1418"][![](/images/2015/08/vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png)
+](/images/2015/08/vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png) Vout vs. Vin for a basic common-collector BJT amplifier.[/caption]
 
 
 
@@ -205,7 +208,8 @@ BJTs can be configured to sink a relatively constant amount of current which is 
 
 
 
-{{< figure src="/images/2015/08/constant-current-bjt-based-led-driver.png" width="465" caption="The simulation schematic for a constant-current BJT-based LED driver." caption-position="bottom" >}}
+[caption id="attachment_13334" align="aligncenter" width="465"][![The simulation schematic for a constant-current BJT-based LED driver.](/images/2015/08/constant-current-bjt-based-led-driver.png)
+](/images/2015/08/constant-current-bjt-based-led-driver.png) The simulation schematic for a constant-current BJT-based LED driver.[/caption]
 
 
 
@@ -243,7 +247,8 @@ Below are the simulation results for the above schematic, showing the LED curren
 
 
 
-{{< figure src="/images/2015/08/constant-current-bjt-based-led-driver-simulation-results.png" width="1691" caption="The simulation results of a constant-current BJT-based LED driver." caption-position="bottom" >}}
+[caption id="attachment_13335" align="aligncenter" width="1691"][![The simulation results of a constant-current BJT-based LED driver.](/images/2015/08/constant-current-bjt-based-led-driver-simulation-results.png)
+](/images/2015/08/constant-current-bjt-based-led-driver-simulation-results.png) The simulation results of a constant-current BJT-based LED driver.[/caption]
 
 
 
@@ -271,7 +276,8 @@ Multiple emitter and multiple collector BJTs are special types of BJTs which hav
 
 
 
-{{< figure src="/images/2015/08/multiple-emitter-bjt-schematic-symbol-u1.png" width="322" caption="The schematic symbol for a multiple-emitter BJT." caption-position="bottom" >}}
+[caption id="attachment_13086" align="aligncenter" width="322"][![The schematic symbol for a multiple-emitter BJT.](/images/2015/08/multiple-emitter-bjt-schematic-symbol-u1.png)
+](/images/2015/08/multiple-emitter-bjt-schematic-symbol-u1.png) The schematic symbol for a multiple-emitter BJT.[/caption]
 
 
 
@@ -284,7 +290,8 @@ In the case of a multiple collector BJT, **the total collector current \(I_{C,to
 
 
 
-{{< figure src="/images/2015/08/basic-two-input-tll-nand-gate-schematic.png" width="843" caption="The schematic of a basic two-input TTL NAND gate." caption-position="bottom" >}}
+[caption id="attachment_13088" align="aligncenter" width="843"][![The schematic of a basic two-input TTL NAND gate.](/images/2015/08/basic-two-input-tll-nand-gate-schematic.png)
+](/images/2015/08/basic-two-input-tll-nand-gate-schematic.png) The schematic of a basic two-input TTL NAND gate.[/caption]
 
 
 

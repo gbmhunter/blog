@@ -203,7 +203,8 @@ The SOT-223-3 (TO-261AA) component package is the most common variant within the
 
 
 
-{{< figure src="SOT-223" width="341" caption="](/images/2015/01/to-261aa-sot-223-component-package-3d-model.jpg) A 3D render of the TO-261AA (SOT-223-3) component package." caption-position="bottom" >}}
+[caption id="attachment_9854" align="aligncenter" width="341"][![A 3D render of the TO-261AA (SOT-223) component package.](/images/2015/01/to-261aa-sot-223-component-package-3d-model.jpg)
+](/images/2015/01/to-261aa-sot-223-component-package-3d-model.jpg) A 3D render of the TO-261AA (SOT-223-3) component package.[/caption]
 
 
 
@@ -296,7 +297,8 @@ All of the parameters in the above table were measured with the SOT-223-3 packag
 
 
 
-{{< figure src="SOT-223" width="400" caption="](/images/2015/01/to-216aa-sot-223-component-package-thermal-resistance.jpg) The thermal resistance of the TO-261AA (SOT-223-3) component package for various PCB footprints." caption-position="bottom" >}}
+[caption id="attachment_9853" align="aligncenter" width="400"][![The thermal resistance of the TO-261AA (SOT-223) component package for various PCB footprints.](/images/2015/01/to-216aa-sot-223-component-package-thermal-resistance.jpg)
+](/images/2015/01/to-216aa-sot-223-component-package-thermal-resistance.jpg) The thermal resistance of the TO-261AA (SOT-223-3) component package for various PCB footprints.[/caption]
 
 
 
@@ -312,7 +314,8 @@ The SOT-223-3 package is commonly used for small, medium-power linear regulators
 
 
 
-{{< figure src="/images/2015/01/sot-223-3-component-package-footprint-layout-example-linear-regulator-with-caps.png" width="441" caption="The de-facto standard pinout for a linear regulator inside a SOT-223-3 package. This image also shows the standard PCB footprint used to achieve a low thermal resistance. Image from http://www.ti.com/." caption-position="bottom" >}}
+[caption id="attachment_13262" align="aligncenter" width="441"][![The de-facto standard pinout for a linear regulator inside a SOT-223-3 package. This image also shows the standard PCB footprint used to achieve a low thermal resistance. Image from http://www.ti.com/.](/images/2015/01/sot-223-3-component-package-footprint-layout-example-linear-regulator-with-caps.png)
+](/images/2015/01/sot-223-3-component-package-footprint-layout-example-linear-regulator-with-caps.png) The de-facto standard pinout for a linear regulator inside a SOT-223-3 package. This image also shows the standard PCB footprint used to achieve a low thermal resistance. Image from http://www.ti.com/.[/caption]
 
 
 
@@ -325,7 +328,8 @@ The SOT-223-3 package is commonly used for smaller low and high-side load switch
 
 
 
-{{< figure src="/images/2015/01/sot-223-4-component-package-load-switch-typical-pinout.png" width="469" caption="The de-facto standard pinout for a load switch in a SOT-223-3 package. Image from http://www.infineon.com/." caption-position="bottom" >}}
+[caption id="attachment_12586" align="aligncenter" width="469"][![The de-facto standard pinout for a load switch in a SOT-223-3 package. Image from http://www.infineon.com/.](/images/2015/01/sot-223-4-component-package-load-switch-typical-pinout.png)
+](/images/2015/01/sot-223-4-component-package-load-switch-typical-pinout.png) The de-facto standard pinout for a load switch in a SOT-223-3 package. Image from http://www.infineon.com/.[/caption]
 
 
 
@@ -338,7 +342,8 @@ This variant can be confused with the three pin and one pad variant (SOT-223-3) 
 
 
 
-{{< figure src="/images/2015/01/sot-223-4-component-package-3d-render.jpg" width="268" caption="A 3D render of the SOT-223-4 component package. Image from http://www.datasheetdir.com/." caption-position="bottom" >}}
+[caption id="attachment_12488" align="aligncenter" width="268"][![A 3D render of the SOT-223-4 component package. Image from http://www.datasheetdir.com/.](/images/2015/01/sot-223-4-component-package-3d-render.jpg)
+](/images/2015/01/sot-223-4-component-package-3d-render.jpg) A 3D render of the SOT-223-4 component package. Image from http://www.datasheetdir.com/.[/caption]
 
 
 
@@ -356,7 +361,8 @@ Below are the dimensions of the SOT-223-5 package as specified by Texas Instrume
 
 
 
-{{< figure src="/images/2015/01/sot-223-5-component-package-dimensions-ti.png" width="695" caption="The dimensions of the SOT-223-5 component package. Image from http://www.ti.com/." caption-position="bottom" >}}
+[caption id="attachment_12483" align="aligncenter" width="695"][![The dimensions of the SOT-223-5 component package. Image from http://www.ti.com/.](/images/2015/01/sot-223-5-component-package-dimensions-ti.png)
+](/images/2015/01/sot-223-5-component-package-dimensions-ti.png) The dimensions of the SOT-223-5 component package. Image from http://www.ti.com/.[/caption]
 
 
 
@@ -369,7 +375,8 @@ Below is the recommended footprint (land pattern) for the SOT-223-5 component pa
 
 
 
-{{< figure src="land pattern" width="858" caption="](/images/2015/01/sot-223-5-component-package-recommended-footprint-land-pattern-ti.png) A recommended footprint (land pattern) for the SOT-223-5 component package. Image from http://www.ti.com/." caption-position="bottom" >}}
+[caption id="attachment_12485" align="aligncenter" width="858"][![A recommended footprint (land pattern) for the SOT-223-5 component package. Image from http://www.ti.com/.](/images/2015/01/sot-223-5-component-package-recommended-footprint-land-pattern-ti.png)
+](/images/2015/01/sot-223-5-component-package-recommended-footprint-land-pattern-ti.png) A recommended footprint (land pattern) for the SOT-223-5 component package. Image from http://www.ti.com/.[/caption]
 
 
 
@@ -382,7 +389,8 @@ Below is a graph showing the thermal resistance of the SOT-223-5 package with va
 
 
 
-{{< figure src="/images/2015/01/sot-223-5-component-package-thermal-resistance-vs-copper-area-graph-ti.png" width="1059" caption="Graph of thermal resistance vs. copper area for the SOT-223-5 component package. Image from http://www.ti.com/." caption-position="bottom" >}}
+[caption id="attachment_12480" align="aligncenter" width="1059"][![Graph of thermal resistance vs. copper area for the SOT-223-5 component package. Image from http://www.ti.com/.](/images/2015/01/sot-223-5-component-package-thermal-resistance-vs-copper-area-graph-ti.png)
+](/images/2015/01/sot-223-5-component-package-thermal-resistance-vs-copper-area-graph-ti.png) Graph of thermal resistance vs. copper area for the SOT-223-5 component package. Image from http://www.ti.com/.[/caption]
 
 
 

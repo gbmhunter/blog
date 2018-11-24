@@ -49,7 +49,8 @@ This error is what is fed into the P (proportional), I (integral) and D (derivat
 
 
 
-{{< figure src="/images/2018/04/pid-controller-diagram-process-error-setpoint-measured-value-300x113.png" width="716" caption="A block diagram of a PID controller." caption-position="bottom" >}}
+[caption id="attachment_15476" align="aligncenter" width="716"][![](/images/2018/04/pid-controller-diagram-process-error-setpoint-measured-value-300x113.png)
+](/images/2018/04/pid-controller-diagram-process-error-setpoint-measured-value.png) A block diagram of a PID controller.[/caption]
 
 
 
@@ -190,7 +191,8 @@ Lets assume a mass/spring/damper process (aka plant or system) which consists of
 
 
 
-{{< figure src="/images/2018/04/mass-spring-damper-system-diagram-pid-300x185.png" width="583" caption="A mass-spring-damper system, which is commonly used to demonstrate PID control and appropriate tuning." caption-position="bottom" >}}
+[caption id="attachment_15471" align="aligncenter" width="583"][![](/images/2018/04/mass-spring-damper-system-diagram-pid-300x185.png)
+](/images/2018/04/mass-spring-damper-system-diagram-pid.png) A mass-spring-damper system, which is commonly used to demonstrate PID control and appropriate tuning.[/caption]
 
 
 

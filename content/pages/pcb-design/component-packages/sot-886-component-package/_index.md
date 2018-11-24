@@ -149,7 +149,8 @@ NXP seems to be the only manufacturer who uses this package.
 # 3D Renders
 
 
-{{< figure src="/images/2015/04/sot-886-component-package-3d-render.jpg" width="378" caption="A 3D render of the SOT-886 component package." caption-position="bottom" >}}
+[caption id="attachment_11361" align="aligncenter" width="378"][![A 3D render of the SOT-886 component package.](/images/2015/04/sot-886-component-package-3d-render.jpg)
+](/images/2015/04/sot-886-component-package-3d-render.jpg) A 3D render of the SOT-886 component package.[/caption]
 
 
 # Other Images

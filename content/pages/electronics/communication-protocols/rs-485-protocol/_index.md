@@ -21,7 +21,8 @@ The RS-485 communication protocol is a differential, multi-drop, half-duplex, tw
 
 
 
-{{< figure src="in this case it is the TI SN65HVD72" width="819" caption="](/images/2015/10/rs-485-typical-application-diagram-with-ti-sllse11d.pdf.png) A typical RS-485 network setup, using a standard RS-485 to UART transceiver at each node (in this case it is the TI SN65HVD72). Image from http://www.ti.com/." caption-position="bottom" >}}
+[caption id="attachment_12203" align="aligncenter" width="819"][![A typical RS-485 network setup, using a standard RS-485 to UART transceiver at each node (in this case it is the TI SN65HVD72). Image from http://www.ti.com/.](/images/2015/10/rs-485-typical-application-diagram-with-ti-sllse11d.pdf.png)
+](/images/2015/10/rs-485-typical-application-diagram-with-ti-sllse11d.pdf.png) A typical RS-485 network setup, using a standard RS-485 to UART transceiver at each node (in this case it is the TI SN65HVD72). Image from http://www.ti.com/.[/caption]
 
 
 
@@ -383,8 +384,8 @@ The waveform below shows the voltage on the A and B nets of a RS-485 bus when op
 
 
 
-{{< figure src="top" width="800" caption="nets of a RS-485 bus under normal operating.  This was operating at 115200 baud.](/images/2015/10/typical-rs-485-a-b-waveforms-during-communication.png)
-](/images/2015/10/typical-rs-485-a-b-waveforms-during-communication.png) The typical appearance of the voltages on the A (top) and B (bottom) nets of a RS-485 bus under normal operating. This was operating at 115200 baud." caption-position="bottom" >}}
+[caption id="attachment_12901" align="aligncenter" width="800"][![The typical appearance of the voltages on the A (top) and B (bottom) nets of a RS-485 bus under normal operating.  This was operating at 115200 baud.](/images/2015/10/typical-rs-485-a-b-waveforms-during-communication.png)
+](/images/2015/10/typical-rs-485-a-b-waveforms-during-communication.png) The typical appearance of the voltages on the A (top) and B (bottom) nets of a RS-485 bus under normal operating. This was operating at 115200 baud.[/caption]
 
 
 
@@ -427,7 +428,8 @@ One such example is the Semtech SM712 diode array. Below is an image of the comp
 
 
 
-{{< figure src="/images/2015/10/sm712-tvs-diode-array-designed-for-rs-485-data-lines.pdf.png" width="267" caption="The SM712 TVS diode array, a diode array with asymmetric breakdown voltages, specifically designed for protecting RS-485 data lines. Image from http://www.semtech.com/." caption-position="bottom" >}}
+[caption id="attachment_12852" align="aligncenter" width="267"][![The SM712 TVS diode array, a diode array with asymmetric breakdown voltages, specifically designed for protecting RS-485 data lines. Image from http://www.semtech.com/.](/images/2015/10/sm712-tvs-diode-array-designed-for-rs-485-data-lines.pdf.png)
+](/images/2015/10/sm712-tvs-diode-array-designed-for-rs-485-data-lines.pdf.png) The SM712 TVS diode array, a diode array with asymmetric breakdown voltages, specifically designed for protecting RS-485 data lines. Image from http://www.semtech.com/.[/caption]
 
 
 
@@ -445,7 +447,8 @@ The hardware used for SAE J1708 is usually a RS-485 transceiver that is wired fo
 
 
 
-{{< figure src="/images/2015/10/rs-485-transceiver-with-open-collector-modifications-wired-or-sae-j1708.png" width="1167" caption="A standard RS-485 transceiver with a modified bus connection to provide open collector (wired OR) arbitration for the SAE-J1708 bus. Image adopted from content found at http://www.ti.com/lit/an/snla038b/snla038b.pdf." caption-position="bottom" >}}
+[caption id="attachment_14732" align="aligncenter" width="1167"][![](/images/2015/10/rs-485-transceiver-with-open-collector-modifications-wired-or-sae-j1708.png)
+](/images/2015/10/rs-485-transceiver-with-open-collector-modifications-wired-or-sae-j1708.png) A standard RS-485 transceiver with a modified bus connection to provide open collector (wired OR) arbitration for the SAE-J1708 bus. Image adopted from content found at http://www.ti.com/lit/an/snla038b/snla038b.pdf.[/caption]
 
 
 

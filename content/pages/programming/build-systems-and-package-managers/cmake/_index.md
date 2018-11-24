@@ -15,7 +15,8 @@ url: /programming/build-systems-and-package-managers/cmake
 **cmake** is a cross-platform tool for building applications. It is commonly used with C and C++. The program is configured through CMakeLists.txt files, which reside in the source directories of the corresponding code.
 
 
-{{< figure src="/images/2016/12/cmake-logo.png" width="383" caption="The CMake logo." caption-position="bottom" >}}
+[caption id="attachment_13897" align="aligncenter" width="383"][![](/images/2016/12/cmake-logo.png)
+](/images/2016/12/cmake-logo.png) The CMake logo.[/caption]
 
 
 The output of cmake is standard build/project files (e.g. Makefiles if targeting GNU make). These build files are then run using the standard build command to generate the final build files.

@@ -15,7 +15,8 @@ The following surface finishes are listed in order of increasing price/performan
 
 HASL is one of the most widely used surface finishes. It involves dipping the circuit board into a pot of molten solder, taking it out, and then removing the excess solder with a set of "air knives".
 
-{{< figure src="/images/2015/10/hasl-pcb-surface-finish-example.jpg" width="463" caption="An example of a PCB with a HASL surface finish. Image from http://www.pcbsourcing.com/." caption-position="bottom" >}}
+[caption id="attachment_12112" align="aligncenter" width="463"][![An example of a PCB with a HASL surface finish. Image from http://www.pcbsourcing.com/.](/images/2015/10/hasl-pcb-surface-finish-example.jpg)
+](/images/2015/10/hasl-pcb-surface-finish-example.jpg) An example of a PCB with a HASL surface finish. Image from http://www.pcbsourcing.com/.[/caption]
 
 **Pros:**  * Cheap  * Tough  * Re-workable
 
@@ -31,7 +32,8 @@ The thermal shock from dipping the PCB into a pool of molten solder can damage t
 
 Immersion tin is
 
-{{< figure src="ISn" width="890" caption="](/images/2015/10/example-of-immersion-tin-surface-finish-on-pcb.jpg) Example of an immersion tin (ISn) PCB surface finish. Image from http://www.standardpcb.com/." caption-position="bottom" >}}
+[caption id="attachment_12115" align="aligncenter" width="890"][![Example of an immersion tin (ISn) PCB surface finish. Image from http://www.standardpcb.com/.](/images/2015/10/example-of-immersion-tin-surface-finish-on-pcb.jpg)
+](/images/2015/10/example-of-immersion-tin-surface-finish-on-pcb.jpg) Example of an immersion tin (ISn) PCB surface finish. Image from http://www.standardpcb.com/.[/caption]
 
 **Pros**  * Relatively cheap, but more expensive than HASL  * Flat surface  * No lead (RoHS compliant)  * Re-workable
 
@@ -43,7 +45,8 @@ The biggest issue with ISn is that the copper and tin layers slowly diffuse into
 
 Immersion silver is good alternative to ENIG.
 
-{{< figure src="IAg" width="600" caption="](/images/2015/10/pcb-surface-finish-immersion-silver.jpg) Example of an immersion silver (IAg) PCB finish. Image from http://www.rlcinnovation.com/." caption-position="bottom" >}}
+[caption id="attachment_12110" align="aligncenter" width="600"][![Example of an immersion silver (IAg) PCB finish. Image from http://www.rlcinnovation.com/.](/images/2015/10/pcb-surface-finish-immersion-silver.jpg)
+](/images/2015/10/pcb-surface-finish-immersion-silver.jpg) Example of an immersion silver (IAg) PCB finish. Image from http://www.rlcinnovation.com/.[/caption]
 
 **Pros**  * Precise  * Only requires one plating procedure (compared to ENIG)
 
@@ -55,7 +58,8 @@ PCB's plated with IAg must not be handled directly or cleaned with a solvent pri
 
 ENIG is becoming more and more popular as component package pitch sizes drop, and RoHS regulation becomes more common place.
 
-{{< figure src="/images/2015/10/example-of-immersion-gold-pcb-surface-finish.jpg" width="1557" caption="Example of an immersion gold PCB surface finish. Image from http://www.standardpcb.com/." caption-position="bottom" >}}
+[caption id="attachment_12116" align="aligncenter" width="1557"][![Example of an immersion gold PCB surface finish. Image from http://www.standardpcb.com/.](/images/2015/10/example-of-immersion-gold-pcb-surface-finish.jpg)
+](/images/2015/10/example-of-immersion-gold-pcb-surface-finish.jpg) Example of an immersion gold PCB surface finish. Image from http://www.standardpcb.com/.[/caption]
 
 **Pros**  * Very high shelf-life  * Good for PCB fingers  * Good for RF shield connections
 

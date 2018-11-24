@@ -199,7 +199,8 @@ If DPAK is referred to by itself, with no pin number indication (e.g. DPAK3, DPA
 # 3D Renders
 
 
-{{< figure src="/images/2015/04/to-252-component-package-3d-render.jpg" width="340" caption="A 3D render of the TO-252 component package." caption-position="bottom" >}}
+[caption id="attachment_11388" align="aligncenter" width="340"][![A 3D render of the TO-252 component package.](/images/2015/04/to-252-component-package-3d-render.jpg)
+](/images/2015/04/to-252-component-package-3d-render.jpg) A 3D render of the TO-252 component package.[/caption]
 
 
 # Other Images

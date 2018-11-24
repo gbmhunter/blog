@@ -135,7 +135,8 @@ The Gerber file format has long been criticized for it's inability to accurately
 
 For anything greater than a 2 layer board, the PCB manufacturer can have trouble distinguishing the layer order from the Gerber files. This is because the inner copper layers and plane layers are numbered separately (both starting from 1), and therefore the order in which they should be in is ambiguous.
 
-{{< figure src="/images/2013/10/gerber-file-layer-order-confusion.png" width="438" caption="The stack-up order of internal copper layers and internal planes is ambiguous by just looking at the Gerber file name extensions." caption-position="bottom" >}}
+[caption id="attachment_12165" align="aligncenter" width="438"][![The stack-up order of internal copper layers and internal planes is ambiguous by just looking at the Gerber file name extensions.](/images/2013/10/gerber-file-layer-order-confusion.png)
+](/images/2013/10/gerber-file-layer-order-confusion.png) The stack-up order of internal copper layers and internal planes is ambiguous by just looking at the Gerber file name extensions.[/caption]
 
 # ODB++
 

@@ -11,11 +11,13 @@ url: /pcb-design/castellation
 
 Castellation is a way of mounting one PCB onto another. It is also known by the name half-vias, edge-plating and leadless chip carrier (LCC).
 
-{{< figure src="/images/2014/07/castellation-close-up-of-edge-holes.jpg" width="520" caption="Close-up of the edge holes on a castellated PCB." caption-position="bottom" >}}
+[caption id="attachment_8795" align="aligncenter" width="520"][![Close-up of the edge holes on a castellated PCB.](/images/2014/07/castellation-close-up-of-edge-holes.jpg)
+](/images/2014/07/castellation-close-up-of-edge-holes.jpg) Close-up of the edge holes on a castellated PCB.[/caption]
 
 It is a common technique used for a daughter board, module or secondary PCB that needs to be mounted on the main PCB.
 
-{{< figure src="/images/2014/07/castellation-photo-of-telit-module.jpg" width="299" caption="A Telit cellular modem module which uses castellation. Image from http://www.cirtech-electronics.com/castellation/." caption-position="bottom" >}}
+[caption id="attachment_8791" align="aligncenter" width="299"][![A Telit cellular modem module which uses castellation. Image from http://www.cirtech-electronics.com/castellation/.](/images/2014/07/castellation-photo-of-telit-module.jpg)
+](/images/2014/07/castellation-photo-of-telit-module.jpg) A Telit cellular modem module which uses castellation. Image from http://www.cirtech-electronics.com/castellation/.[/caption]
 
 Once soldered onto the parent PCB, it is a permanent attachment.
 
@@ -33,6 +35,7 @@ Because the half-holes are plated and of a concave shape, they are very suitable
 
 Watch out for torn edge-holes!
 
-{{< figure src="/images/2014/07/castellation-torn-edge-holes.jpg" width="372" caption="Torn edge holes in a castellation attempt. Image from http://www.cirtech-electronics.com/castellation/." caption-position="bottom" >}}
+[caption id="attachment_8790" align="aligncenter" width="372"][![Torn edge holes in a castellation attempt. Image from http://www.cirtech-electronics.com/castellation/.](/images/2014/07/castellation-torn-edge-holes.jpg)
+](/images/2014/07/castellation-torn-edge-holes.jpg) Torn edge holes in a castellation attempt. Image from http://www.cirtech-electronics.com/castellation/.[/caption]
 
 The router bit can squash the via barrels, as shown in the following image:

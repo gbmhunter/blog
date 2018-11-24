@@ -76,11 +76,13 @@ All packages in this family have a number of rectangular leads and a central si
 
 The SOT-89-5 package is commonly used as a SMD replacement for the SIP-4 TH package.
 
-{{< figure src="SC-62, TO-243" width="296" caption="](/images/2015/11/sot-89-sc62-to-243-component-package-3d-render.jpg) A 3D render of the SOT-89 (SC-62, TO-243) component package. Image from http://www.digikey.com/." caption-position="bottom" >}}
+[caption id="attachment_12574" align="aligncenter" width="296"][![A 3D render of the SOT-89 (SC-62, TO-243) component package. Image from http://www.digikey.com/.](/images/2015/11/sot-89-sc62-to-243-component-package-3d-render.jpg)
+](/images/2015/11/sot-89-sc62-to-243-component-package-3d-render.jpg) A 3D render of the SOT-89 (SC-62, TO-243) component package. Image from http://www.digikey.com/.[/caption]
 
 ## Dimensions
 
-{{< figure src="SC-62, TO-243" width="937" caption="](/images/2015/11/sot-89-sc62-to-243-component-package-dimensions.jpg.png) The dimensions for the SOT-89-5 (SC-62, TO-243) component package." caption-position="bottom" >}}
+[caption id="attachment_12576" align="aligncenter" width="937"][![The dimensions for the SOT-89-5 (SC-62, TO-243) component package.](/images/2015/11/sot-89-sc62-to-243-component-package-dimensions.jpg.png)
+](/images/2015/11/sot-89-sc62-to-243-component-package-dimensions.jpg.png) The dimensions for the SOT-89-5 (SC-62, TO-243) component package.[/caption]
 
 ## Thermal Resistance
 

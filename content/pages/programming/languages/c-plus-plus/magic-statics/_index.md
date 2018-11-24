@@ -144,7 +144,8 @@ On the Windows side of things, thread safety was implemented for magic statics i
 
 
 
-{{< figure src="/images/2017/08/visual-studio-support-for-cpp-magic-statics.png" width="622" caption="Table showing Visual Studio's support for magic statics. Image from https://msdn.microsoft.com/en-us/library/hh567368.aspx." caption-position="bottom" >}}
+[caption id="attachment_14713" align="aligncenter" width="622"][![](/images/2017/08/visual-studio-support-for-cpp-magic-statics.png)
+](/images/2017/08/visual-studio-support-for-cpp-magic-statics.png) Table showing Visual Studio's support for magic statics. Image from https://msdn.microsoft.com/en-us/library/hh567368.aspx.[/caption]
 
 
 

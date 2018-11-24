@@ -23,14 +23,15 @@ You can also get headers which are polarised, usually by both the male missing o
 
 Male headers (plugs) are normally numbered from left-to-right, when the connectors solder terminals (tail end) are facing south on the PCB, and the bits that do the connecting are facing north (all of this while looking down on the PCB). For female headers (jacks) to match, they are numbered from right-to-left. This is all better explained in the following image.
 
-{{< figure src="plugs" width="687" caption="being numbered from right-to-left.](/images/2015/11/typical-numbering-order-for-header-connectors.png)
-](/images/2015/11/typical-numbering-order-for-header-connectors.png) This image show the typical way in which headers are numbered, with males headers (plugs) being numbered left-to-right and female headers (jacks) being numbered from right-to-left." caption-position="bottom" >}}
+[caption id="attachment_12725" align="aligncenter" width="687"][![This image show the typical way in which headers are numbered, with males headers (plugs) being numbered left-to-right and female headers (jacks) being numbered from right-to-left.](/images/2015/11/typical-numbering-order-for-header-connectors.png)
+](/images/2015/11/typical-numbering-order-for-header-connectors.png) This image show the typical way in which headers are numbered, with males headers (plugs) being numbered left-to-right and female headers (jacks) being numbered from right-to-left.[/caption]
 
 # Using Headers For Board-to-Board Connections
 
 They are also a great, cheap way of connecting two or more PCB's together, as shown in the following image. A disadvantage is that this method is not as mechanically strong as some more expensive custom board-to-board connection methods.
 
-{{< figure src="male and female parts" width="1200" caption="](/images/2015/11/2-54mm-smd-right-angle-header-plug-and-jack-mosaic.jpg) Header plugs and jacks (male and female parts) are a good way of connecting PCB's together." caption-position="bottom" >}}
+[caption id="attachment_12726" align="aligncenter" width="1200"][![Header plugs and jacks (male and female parts) are a good way of connecting PCB's together.](/images/2015/11/2-54mm-smd-right-angle-header-plug-and-jack-mosaic.jpg)
+](/images/2015/11/2-54mm-smd-right-angle-header-plug-and-jack-mosaic.jpg) Header plugs and jacks (male and female parts) are a good way of connecting PCB's together.[/caption]
 
 # Part Links
 

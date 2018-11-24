@@ -69,7 +69,8 @@ Not to be confused with SMD (surface-mount device, the common name for any surfa
 
 # 3D Render
 
-{{< figure src="DO-214AC" width="356" caption="](/images/2015/04/sma-do-214ac-component-package-3d-render.jpg) A 3D render of the SMA (DO-214AC) component package." caption-position="bottom" >}}
+[caption id="attachment_11242" align="aligncenter" width="356"][![A 3D render of the SMA (DO-214AC) component package.](/images/2015/04/sma-do-214ac-component-package-3d-render.jpg)
+](/images/2015/04/sma-do-214ac-component-package-3d-render.jpg) A 3D render of the SMA (DO-214AC) component package.[/caption]
 
 # Images
 

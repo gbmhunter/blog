@@ -158,7 +158,8 @@ The peak pulse power for these diodes is typically 500W. For a TVS diode in the 
 # 3D Renders
 
 
-{{< figure src="DO-15" width="278" caption="](/images/2015/03/do-204ac-do-15-axial-component-package-3d-render.jpg) 3D render of the DO-204AC (DO-15) component package in an axial configuration." caption-position="bottom" >}}
+[caption id="attachment_9886" align="aligncenter" width="278"][![3D render of the DO-204AC (DO-15) component package in an axial configuration.](/images/2015/03/do-204ac-do-15-axial-component-package-3d-render.jpg)
+](/images/2015/03/do-204ac-do-15-axial-component-package-3d-render.jpg) 3D render of the DO-204AC (DO-15) component package in an axial configuration.[/caption]
 
 
 # **Images**

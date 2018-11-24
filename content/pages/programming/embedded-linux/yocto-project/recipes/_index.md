@@ -185,7 +185,8 @@ Yocto supports patches, which is a way of **modifying third-party code** before 
 
 
 
-{{< figure src="/images/2017/04/patch-icon-band-aid.png" width="202" caption="Patch icon (band-aid)." caption-position="bottom" >}}
+[caption id="attachment_14480" align="aligncenter" width="202"][![](/images/2017/04/patch-icon-band-aid.png)
+](/images/2017/04/patch-icon-band-aid.png) Patch icon (band-aid).[/caption]
 
 
 

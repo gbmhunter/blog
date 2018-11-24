@@ -61,7 +61,8 @@ Remember that transformers work with an AC voltage/current. The tiny magnetic do
 
 The hysteresis loss can be seen on the BH (flux-density vs. field strength) curve.
 
-{{< figure src="/images/2013/02/transformer-graph-explaining-hysteresis-losses.jpg" width="609" caption="Graph explaining the hysteresis losses in a transformer. Image from http://ecetutorials.com/." caption-position="bottom" >}}
+[caption id="attachment_11758" align="aligncenter" width="609"][![Graph explaining the hysteresis losses in a transformer. Image from http://ecetutorials.com/.](/images/2013/02/transformer-graph-explaining-hysteresis-losses.jpg)
+](/images/2013/02/transformer-graph-explaining-hysteresis-losses.jpg) Graph explaining the hysteresis losses in a transformer. Image from http://ecetutorials.com/.[/caption]
 
 ## Eddy Current Losses
 

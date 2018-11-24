@@ -15,12 +15,14 @@ RF connectors are connectors specifically designed to carry high-frequency signa
 
 Also known as UMC or XFL connectors.
 
-{{< figure src="/images/2015/11/ufl-connector-photo.png" width="344" caption="A photo of a male, SMD mount UFL connector. Image from www.digikey.com." caption-position="bottom" >}}
+[caption id="attachment_12682" align="aligncenter" width="344"][![A photo of a male, SMD mount UFL connector. Image from www.digikey.com.](/images/2015/11/ufl-connector-photo.png)
+](/images/2015/11/ufl-connector-photo.png) A photo of a male, SMD mount UFL connector. Image from www.digikey.com.[/caption]
 
 ## Schematic Symbol
 
 There is no "standard" schematic symbol for the male, SMD mount UFL connector, so I normally decide to go with some that is visually resembles the actual connector part, as shown below:
 
-{{< figure src="a.k.a. UMC, UMCC" width="510" caption="](/images/2015/11/ufl-umc-umcc-rf-connector-schematic-symbol.png) A schematic symbol for the male, SMD, UFL (a.k.a. UMC, UMCC) style RF connector." caption-position="bottom" >}}
+[caption id="attachment_12680" align="aligncenter" width="510"][![A schematic symbol for the male, SMD, UFL (a.k.a. UMC, UMCC) style RF connector.](/images/2015/11/ufl-umc-umcc-rf-connector-schematic-symbol.png)
+](/images/2015/11/ufl-umc-umcc-rf-connector-schematic-symbol.png) A schematic symbol for the male, SMD, UFL (a.k.a. UMC, UMCC) style RF connector.[/caption]
 
 The height of the male SMD connector can vary, but something around 1.2mm is common.

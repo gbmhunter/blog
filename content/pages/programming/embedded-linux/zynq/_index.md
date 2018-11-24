@@ -16,7 +16,8 @@ url: /programming/embedded-linux/zynq
 
 
 
-{{< figure src="/images/2017/04/xilinx-zynq-7000-ZC720-evaluation-kit-photo.png" width="773" caption="The Xilinx ZC720 Evaluation Kit featuring the Zynq-7000 SoC." caption-position="bottom" >}}
+[caption id="attachment_14274" align="aligncenter" width="773"][![](/images/2017/04/xilinx-zynq-7000-ZC720-evaluation-kit-photo.png)
+](/images/2017/04/xilinx-zynq-7000-ZC720-evaluation-kit-photo.png) The Xilinx ZC720 Evaluation Kit featuring the Zynq-7000 SoC.[/caption]
 
 
 

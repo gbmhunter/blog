@@ -23,7 +23,8 @@ Capacitive sensing is a widely used technique for proximity detection, touch-scr
 
 
 
-{{< figure src="/images/2012/05/capacitive-encoder-photo-cui-amt.jpg" width="300" caption="The CUI AMT100 series capacitive encoders with up to 2048 counts per revolution. Image from http://www.engineerlive.com/Asia-Pacific-Engineer/Time_Compression/Capacitive_encoder_offers_versatility/22119/." caption-position="bottom" >}}
+[caption id="attachment_14045" align="aligncenter" width="300"][![](/images/2012/05/capacitive-encoder-photo-cui-amt.jpg)
+](/images/2012/05/capacitive-encoder-photo-cui-amt.jpg) The CUI AMT100 series capacitive encoders with up to 2048 counts per revolution. Image from http://www.engineerlive.com/Asia-Pacific-Engineer/Time_Compression/Capacitive_encoder_offers_versatility/22119/.[/caption]
 
 
 
@@ -65,12 +66,14 @@ The following image shows the typical dimensions of the linear encoder typically
 <tr >
 
 <td >
-{{< figure src="/images/2012/05/digital-calliper-capacitive-encoder-strip-up-close-photo.jpg" width="284" caption="A zoomed in photo of the capacitive linear encoder pads on a digital calliper. Image from http://www.iceinspace.com.au/forum/showthread.php?t=80356." caption-position="bottom" >}}
+[caption id="attachment_14043" align="aligncenter" width="284"][![](/images/2012/05/digital-calliper-capacitive-encoder-strip-up-close-photo.jpg)
+](/images/2012/05/digital-calliper-capacitive-encoder-strip-up-close-photo.jpg) A zoomed in photo of the capacitive linear encoder pads on a digital calliper. Image from http://www.iceinspace.com.au/forum/showthread.php?t=80356.[/caption]
 
 </td>
 
 <td >
-{{< figure src="/images/2012/05/capacitance-strip-dimensions-for-linear-encoder.jpg" width="321" caption="The dimensions for a capacitive linear encoder commonly found in digital callipers. Image from http://www.iceinspace.com.au/forum/showthread.php?t=80356." caption-position="bottom" >}}
+[caption id="attachment_14044" align="aligncenter" width="321"][![](/images/2012/05/capacitance-strip-dimensions-for-linear-encoder.jpg)
+](/images/2012/05/capacitance-strip-dimensions-for-linear-encoder.jpg) The dimensions for a capacitive linear encoder commonly found in digital callipers. Image from http://www.iceinspace.com.au/forum/showthread.php?t=80356.[/caption]
 
 </td>
 </tr>
@@ -96,7 +99,8 @@ Examples of a small capacitive encoder:
 <tr >
 
 <td >
-{{< figure src="/images/2012/05/capacitive-encoder-photo-cui-amt.jpg" width="300" caption="The CUI AMT100 series capacitive encoders with up to 2048 counts per revolution. Image from http://www.engineerlive.com/Asia-Pacific-Engineer/Time_Compression/Capacitive_encoder_offers_versatility/22119/." caption-position="bottom" >}}
+[caption id="attachment_14045" align="aligncenter" width="300"][![](/images/2012/05/capacitive-encoder-photo-cui-amt.jpg)
+](/images/2012/05/capacitive-encoder-photo-cui-amt.jpg) The CUI AMT100 series capacitive encoders with up to 2048 counts per revolution. Image from http://www.engineerlive.com/Asia-Pacific-Engineer/Time_Compression/Capacitive_encoder_offers_versatility/22119/.[/caption]
 
 </td>
 

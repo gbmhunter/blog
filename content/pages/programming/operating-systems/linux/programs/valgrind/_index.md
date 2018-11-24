@@ -16,7 +16,8 @@ Valgrind is a tool that can be used to detect memory management and threading bu
 
 
 
-{{< figure src="/images/2017/06/valgrind-logo.jpg" width="316" caption="The Valgrind logo." caption-position="bottom" >}}
+[caption id="attachment_14549" align="aligncenter" width="316"][![](/images/2017/06/valgrind-logo.jpg)
+](/images/2017/06/valgrind-logo.jpg) The Valgrind logo.[/caption]
 
 
 
@@ -185,4 +186,5 @@ You should then be presented with wonderful profiling data as shown below!
 
 
 
-{{< figure src="/images/2017/11/callgrind-profiling-output-displayed-in-kcachegrind.png" width="1310" caption="The callgrind profiling output data being displayed in kcachegrind for a simple test application (with Fibonacci calculation and looping)." caption-position="bottom" >}}
+[caption id="attachment_15017" align="aligncenter" width="1310"][![](/images/2017/11/callgrind-profiling-output-displayed-in-kcachegrind.png)
+](/images/2017/11/callgrind-profiling-output-displayed-in-kcachegrind.png) The callgrind profiling output data being displayed in kcachegrind for a simple test application (with Fibonacci calculation and looping).[/caption]

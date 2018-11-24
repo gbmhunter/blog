@@ -11,7 +11,8 @@ url: /electronics/components/optical-isolators
 
 A commonly used schematic symbol for an optical isolator is shown below:
 
-{{< figure src="/images/2015/11/opto-isolator-schematic-symbol.png" width="158" caption="A commonly used symbol for a standard optical isolator." caption-position="bottom" >}}
+[caption id="attachment_12519" align="aligncenter" width="158"][![A commonly used symbol for a standard optical isolator.](/images/2015/11/opto-isolator-schematic-symbol.png)
+](/images/2015/11/opto-isolator-schematic-symbol.png) A commonly used symbol for a standard optical isolator.[/caption]
 
 # The Current-Transfer Ratio
 
@@ -23,7 +24,8 @@ For optical isolators with a single phototransistor driver, the current-transfe
 
 Some optical isolators have phototriac outputs instead of the normal phototransistor output. A phototriac is a triac whose gate is controlled by the incoming light source, essentially the same as what a phototransistor is to a transistor.
 
-{{< figure src="/images/2015/11/phototriac-based-optical-isolator-internal-schematic.png" width="389" caption="The internal schematic of an optical isolator with a phototriac output driver rather than a phototransistor. Image from http://www.ti.com/." caption-position="bottom" >}}
+[caption id="attachment_12514" align="aligncenter" width="389"][![The internal schematic of an optical isolator with a phototriac output driver rather than a phototransistor. Image from http://www.ti.com/.](/images/2015/11/phototriac-based-optical-isolator-internal-schematic.png)
+](/images/2015/11/phototriac-based-optical-isolator-internal-schematic.png) The internal schematic of an optical isolator with a phototriac output driver rather than a phototransistor. Image from http://www.ti.com/.[/caption]
 
 The outputs of phototriac optical isolators usually go on to drive power TRIACs which switch a mains powered load.
 

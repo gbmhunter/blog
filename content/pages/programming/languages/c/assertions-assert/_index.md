@@ -171,7 +171,8 @@ Note that I was using gcc-5.1 when I was presented with this error.
 
 
 
-{{< figure src="" width="736" caption="](/images/2013/06/screenshot-of-compiler-error-disallowing-assert-side-effects.png) A screenshot of the C compiler throwing an error when an assignment is attempted within the parameter passed to an assert()." caption-position="bottom" >}}
+[caption id="attachment_13601" align="aligncenter" width="736"][![A screenshot of the C compiler throwing an error when an assignment is attempted within the parameter passed to an assert().](/images/2013/06/screenshot-of-compiler-error-disallowing-assert-side-effects.png)
+](/images/2013/06/screenshot-of-compiler-error-disallowing-assert-side-effects.png) A screenshot of the C compiler throwing an error when an assignment is attempted within the parameter passed to an assert().[/caption]
 
 
 
@@ -184,8 +185,8 @@ I have written a working assert() example at [http://ideone.com/CSX6wN](http://i
 
 
 
-{{< figure src="" width="1060" caption="](/images/2013/06/assert-example-code-on-ide-one.png)
-](/images/2013/06/assert-example-code-on-ide-one.png) Example assert() code on Ideone (http://ideone.com/CSX6wN)." caption-position="bottom" >}}
+[caption id="attachment_13597" align="aligncenter" width="1060"][![Example assert() code on Ideone (http://ideone.com/CSX6wN).](/images/2013/06/assert-example-code-on-ide-one.png)
+](/images/2013/06/assert-example-code-on-ide-one.png) Example assert() code on Ideone (http://ideone.com/CSX6wN).[/caption]
 
 
 

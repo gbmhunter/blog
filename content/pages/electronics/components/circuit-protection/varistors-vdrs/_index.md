@@ -19,7 +19,8 @@ Because their resistance in not fixed, they are called non-Ohmic devices. Note t
 
 # Schematic Symbol
 
-{{< figure src="a.k.a. voltage-dependent resistor, VDR" width="327" caption="](/images/2015/11/varistor-schematic-symbol.png) The schematic symbol for a varistor (a.k.a. voltage-dependent resistor, VDR)." caption-position="bottom" >}}
+[caption id="attachment_12627" align="aligncenter" width="327"][![The schematic symbol for a varistor (a.k.a. voltage-dependent resistor, VDR).](/images/2015/11/varistor-schematic-symbol.png)
+](/images/2015/11/varistor-schematic-symbol.png) The schematic symbol for a varistor (a.k.a. voltage-dependent resistor, VDR).[/caption]
 
 # Important Parameters
 

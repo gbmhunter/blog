@@ -158,7 +158,8 @@ Go have lunch! This build is going to take a while...
 
 
 
-{{< figure src="/images/2017/04/screenshot-building-linux-for-zynq-7-using-yocto.png" width="1067" caption="Screenshot while building embedded Linux for the ZC702 Eval Kit board using Yocto." caption-position="bottom" >}}
+[caption id="attachment_14266" align="aligncenter" width="1067"][![](/images/2017/04/screenshot-building-linux-for-zynq-7-using-yocto.png)
+](/images/2017/04/screenshot-building-linux-for-zynq-7-using-yocto.png) Screenshot while building embedded Linux for the ZC702 Eval Kit board using Yocto.[/caption]
 
 
 
@@ -368,7 +369,8 @@ Now turn on the power switch to the dev. board. Hopefully, you should see it boo
 
 
 
-{{< figure src="/images/2017/04/terminal-output-start-of-zynq-zc702-linux-boot-using-yocty.png" width="1656" caption="The terminal output during the start of a Linux boot built using Yocty, and running on the Xilinx ZC702 dev. board." caption-position="bottom" >}}
+[caption id="attachment_14305" align="aligncenter" width="1656"][![](/images/2017/04/terminal-output-start-of-zynq-zc702-linux-boot-using-yocty.png)
+](/images/2017/04/terminal-output-start-of-zynq-zc702-linux-boot-using-yocty.png) The terminal output during the start of a Linux boot built using Yocty, and running on the Xilinx ZC702 dev. board.[/caption]
 
 
 
@@ -441,7 +443,8 @@ Load up the SDK. Select New->Application Project.
 
 
 
-{{< figure src="/images/2017/04/xilinx-sdk-new-application-project-screenshot.png" width="513" caption="Creating a "New Application" in the Xilinx SDK." caption-position="bottom" >}}
+[caption id="attachment_14377" align="aligncenter" width="513"][![](/images/2017/04/xilinx-sdk-new-application-project-screenshot.png)
+](/images/2017/04/xilinx-sdk-new-application-project-screenshot.png) Creating a "New Application" in the Xilinx SDK.[/caption]
 
 
 
@@ -449,7 +452,8 @@ Enter a name:
 
 
 
-{{< figure src="/images/2017/04/xilinx-sdk-new-application-project-settings-screen.png" width="465" caption="Give the Zynq FSBL project a name and make sure the right platform/processor is selected." caption-position="bottom" >}}
+[caption id="attachment_14378" align="aligncenter" width="465"][![](/images/2017/04/xilinx-sdk-new-application-project-settings-screen.png)
+](/images/2017/04/xilinx-sdk-new-application-project-settings-screen.png) Give the Zynq FSBL project a name and make sure the right platform/processor is selected.[/caption]
 
 
 
@@ -457,7 +461,8 @@ Click Next. Select FSBL.
 
 
 
-{{< figure src="/images/2017/04/xilinx-sdk-new-application-project-settings-screen-2-select-fsbl.png" width="456" caption="Select "Zynq FSBL" as the template for the application." caption-position="bottom" >}}
+[caption id="attachment_14379" align="aligncenter" width="456"][![](/images/2017/04/xilinx-sdk-new-application-project-settings-screen-2-select-fsbl.png)
+](/images/2017/04/xilinx-sdk-new-application-project-settings-screen-2-select-fsbl.png) Select "Zynq FSBL" as the template for the application.[/caption]
 
 
 
@@ -611,7 +616,8 @@ Now run QEMU, passing in the location of the just-built QEMU configuration file.
 
 
 
-{{< figure src="/images/2017/04/xilinx-zc702-yocto-linux-build-qemu-boot-console-screenshot.png" width="728" caption="The final stages of a Yocto Linux (built for the Xilinx ZC702 dev. board) boot running in QEMU." caption-position="bottom" >}}
+[caption id="attachment_14314" align="aligncenter" width="728"][![](/images/2017/04/xilinx-zc702-yocto-linux-build-qemu-boot-console-screenshot.png)
+](/images/2017/04/xilinx-zc702-yocto-linux-build-qemu-boot-console-screenshot.png) The final stages of a Yocto Linux (built for the Xilinx ZC702 dev. board) boot running in QEMU.[/caption]
 
 
 

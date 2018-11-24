@@ -13,7 +13,8 @@ url: /electronics/components/power-regulators/boost-converters
 
 Boost converters use a switching element, inductor, diode, and capacitor to convert an input voltage \( V_{in} \) into a higher or equal output voltage \( V_{out} \).
 
-{{< figure src="/images/2014/06/smps-boost-converter-simple.png" width="599" caption="The basic components of a boost converter." caption-position="bottom" >}}
+[caption id="attachment_11509" align="aligncenter" width="599"][![The basic components of a boost converter.](/images/2014/06/smps-boost-converter-simple.png)
+](/images/2014/06/smps-boost-converter-simple.png) The basic components of a boost converter.[/caption]
 
 In a real boost converter, the switch \( SW \) is usually realised 
 
@@ -143,12 +144,14 @@ One gotcha: The "max. current" rating that a manufacturer will provide with a bo
 
 The compensation loop is part of the feedback mechanism. The below diagram shows a current-mode controlled boost converter with a transconductance amplifier (\( g_m \)) providing the feedback.
 
-{{< figure src="gm" width="557" caption="](/images/2015/04/simplified-diagram-current-mode-boost-converter-with-gm-amplifier.png) A simplified diagram of a current-mode boost converter with a transconductance amplifier (gm). Image from Texas Instruments Application Report SLVA452 - Compensating the Current-Mode-Controlled Boost Converter." caption-position="bottom" >}}
+[caption id="attachment_11477" align="aligncenter" width="557"][![A simplified diagram of a current-mode  boost converter with a transconductance amplifier (gm). Image from Texas Instruments Application Report SLVA452 - Compensating the Current-Mode-Controlled Boost Converter.](/images/2015/04/simplified-diagram-current-mode-boost-converter-with-gm-amplifier.png)
+](/images/2015/04/simplified-diagram-current-mode-boost-converter-with-gm-amplifier.png) A simplified diagram of a current-mode boost converter with a transconductance amplifier (gm). Image from Texas Instruments Application Report SLVA452 - Compensating the Current-Mode-Controlled Boost Converter.[/caption]
 
 The above model is only valid for when the boost converter is acting like a current-mode controlled regulator. This is the case when the ripple current is within the normal operating region (0.2-0.4 times the average input current). When the inductor is oversized to further reduce current ripple through the inductor (less than 0.2 times the average input current), the boost converter behaves more like a voltage-mode controlled regulator and this above model is no longer valid.
 
 External compensation can be added if the manufacturer provides a compensation pin (typically called COMP). The pin is the output of the internal transconductance amplifier.
 
-{{< figure src="/images/2015/04/compensation-components-for-tps61087evm-boost-converter-annotated.png" width="870" caption="The external loop compensation components for the TPS61087 boost regulator. Image from the Texas Instruments TPS61087EVM User's Guide with annotations." caption-position="bottom" >}}
+[caption id="attachment_11480" align="aligncenter" width="870"][![The external loop compensation components for the TPS61087 boost regulator. Image from the Texas Instruments TPS61087EVM User's Guide with annotations.](/images/2015/04/compensation-components-for-tps61087evm-boost-converter-annotated.png)
+](/images/2015/04/compensation-components-for-tps61087evm-boost-converter-annotated.png) The external loop compensation components for the TPS61087 boost regulator. Image from the Texas Instruments TPS61087EVM User's Guide with annotations.[/caption]
 
 A resistance between 5-100kR and a capacitance between 1-10nF is typical. A higher resistance corresponds to a faster response time. A lower capacitance corresponds to a higher phase margin.

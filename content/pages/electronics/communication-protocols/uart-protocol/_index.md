@@ -552,7 +552,8 @@ It can view and send binary, hex, ASCII, ANSI, integers (both signed and unsigne
 
 
 
-{{< figure src="/images/2011/09/realterm-window.jpg" width="620" caption="A screenshot of RealTerm in action." caption-position="bottom" >}}
+[caption id="attachment_13662" align="aligncenter" width="620"][![A screenshot of RealTerm in action.](/images/2011/09/realterm-window.jpg)
+](/images/2011/09/realterm-window.jpg) A screenshot of RealTerm in action.[/caption]
 
 
 
@@ -575,7 +576,8 @@ A simple and tidy Windows terminal program. Personally, it doesn't get the same 
 
 
 
-{{< figure src="/images/2011/09/terminal-v1-9b-by-bray-window.jpg" width="800" caption="A screenshot of "Terminal by Br@y" in action." caption-position="bottom" >}}
+[caption id="attachment_13663" align="aligncenter" width="800"][![A screenshot of "Terminal by Br@y" in action.](/images/2011/09/terminal-v1-9b-by-bray-window.jpg)
+](/images/2011/09/terminal-v1-9b-by-bray-window.jpg) A screenshot of "Terminal by Br@y" in action.[/caption]
 
 
 
@@ -604,7 +606,8 @@ If your running windows, PuTTY is a very handy application to have if you want t
 
 
 
-{{< figure src="/images/2011/09/putty-terminal-screenshot-with-settings-window.png" width="831" caption="A screenshot of the PuTTy application in action, along with the settings window." caption-position="bottom" >}}
+[caption id="attachment_13659" align="aligncenter" width="831"][![A screenshot of the PuTTy application in action, along with the settings window.](/images/2011/09/putty-terminal-screenshot-with-settings-window.png)
+](/images/2011/09/putty-terminal-screenshot-with-settings-window.png) A screenshot of the PuTTy application in action, along with the settings window.[/caption]
 
 
 
@@ -612,7 +615,8 @@ I have discovered one bug in PuTTY...if it receives a large number of characters
 
 
 
-{{< figure src="/images/2011/09/putty-bug-when-receiving-large-num-of-chars.png" width="699" caption="PuTTY can freeze when printing a large number of random characters to it across a COM port." caption-position="bottom" >}}
+[caption id="attachment_13658" align="aligncenter" width="699"][![PuTTY can freeze when printing a large number of random characters to it across a COM port.](/images/2011/09/putty-bug-when-receiving-large-num-of-chars.png)
+](/images/2011/09/putty-bug-when-receiving-large-num-of-chars.png) PuTTY can freeze when printing a large number of random characters to it across a COM port.[/caption]
 
 
 
@@ -706,7 +710,8 @@ There are occasions when you want or need to send serial data between two pieces
 
 
 
-{{< figure src="/images/2011/09/testing-a-physical-serial-port-bridge.jpg" width="931" caption="Testing a physical serial-port bridge, made by connecting two FTDI cable together." caption-position="bottom" >}}
+[caption id="attachment_13665" align="aligncenter" width="931"][![Testing a physical serial-port bridge, made by connecting two FTDI cable together.](/images/2011/09/testing-a-physical-serial-port-bridge.jpg)
+](/images/2011/09/testing-a-physical-serial-port-bridge.jpg) Testing a physical serial-port bridge, made by connecting two FTDI cable together.[/caption]
 
 
 

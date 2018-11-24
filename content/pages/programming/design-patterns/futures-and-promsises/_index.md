@@ -16,7 +16,8 @@ Futures and promises are a way of dealing with asynchronous events in a multi-th
 
 
 
-{{< figure src="/images/2015/04/futures-and-promises-cpp-icon.png" width="211" caption="Icon for futures and promises." caption-position="bottom" >}}
+[caption id="attachment_14850" align="aligncenter" width="211"][![](/images/2015/04/futures-and-promises-cpp-icon.png)
+](/images/2015/04/futures-and-promises-cpp-icon.png) Icon for futures and promises.[/caption]
 
 
 

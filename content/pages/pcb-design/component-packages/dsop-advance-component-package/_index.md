@@ -84,8 +84,10 @@ The DSOP Advance component package comes with dual-side cooling features to furt
 
 # Dimensions
 
-{{< figure src="/images/2015/05/dsop-advance-component-package-dimensions.png" width="952" caption="The dimensions for the DSOP Advance component package." caption-position="bottom" >}}
+[caption id="attachment_11664" align="aligncenter" width="952"][![The dimensions for the DSOP Advance component package.](/images/2015/05/dsop-advance-component-package-dimensions.png)
+](/images/2015/05/dsop-advance-component-package-dimensions.png) The dimensions for the DSOP Advance component package.[/caption]
 
 # Recommended Land Pattern
 
-{{< figure src="/images/2015/05/dsop-advance-component-package-recommended-land-pattern.png" width="271" caption="The recommended land pattern for the DSOP Advance component package." caption-position="bottom" >}}
+[caption id="attachment_11667" align="aligncenter" width="271"][![The recommended land pattern for the DSOP Advance component package.](/images/2015/05/dsop-advance-component-package-recommended-land-pattern.png)
+](/images/2015/05/dsop-advance-component-package-recommended-land-pattern.png) The recommended land pattern for the DSOP Advance component package.[/caption]

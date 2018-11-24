@@ -11,11 +11,13 @@ url: /programming/microcontrollers/atmel/avrdude
 
 [AVRDUDE](http://www.nongnu.org/avrdude/) (or avrdude) is a popular, open-source, third-party (i.e. non-Atmel) command-line utility for programming Atmel microcontrollers.
 
-{{< figure src="/images/2015/10/avr-dude-windows-command-line-default-usage-info.png" width="486" caption="The default information printed by avrdude from the Windows command line." caption-position="bottom" >}}
+[caption id="attachment_12149" align="aligncenter" width="486"][![The default information printed by avrdude from the Windows command line.](/images/2015/10/avr-dude-windows-command-line-default-usage-info.png)
+](/images/2015/10/avr-dude-windows-command-line-default-usage-info.png) The default information printed by avrdude from the Windows command line.[/caption]
 
 It supports a wide-range of programmers and microcontrollers.
 
-{{< figure src="/images/2015/10/example-cmd-screenshot-of-avrdude-programming-atmega-microcontroller.png" width="452" caption="A Windows command-line screenshot of AVRDUDE programming an Atmel ATmega microcontroller." caption-position="bottom" >}}
+[caption id="attachment_12099" align="aligncenter" width="452"][![A Windows command-line screenshot of AVRDUDE programming an Atmel ATmega microcontroller.](/images/2015/10/example-cmd-screenshot-of-avrdude-programming-atmega-microcontroller.png)
+](/images/2015/10/example-cmd-screenshot-of-avrdude-programming-atmega-microcontroller.png) A Windows command-line screenshot of AVRDUDE programming an Atmel ATmega microcontroller.[/caption]
 
 # The Micro Won't Program, What Do I Do?
 

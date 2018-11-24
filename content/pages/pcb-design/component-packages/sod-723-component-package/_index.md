@@ -140,7 +140,8 @@ n/a
 # 3D Render
 
 
-{{< figure src="/images/2015/04/sod-723-component-package-3d-render.jpg" width="351" caption="A 3D render of the SOD-723 component package." caption-position="bottom" >}}
+[caption id="attachment_11320" align="aligncenter" width="351"][![A 3D render of the SOD-723 component package.](/images/2015/04/sod-723-component-package-3d-render.jpg)
+](/images/2015/04/sod-723-component-package-3d-render.jpg) A 3D render of the SOD-723 component package.[/caption]
 
 
 # Other Images

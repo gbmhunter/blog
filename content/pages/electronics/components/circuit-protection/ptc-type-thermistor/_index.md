@@ -19,7 +19,8 @@ For information on just plain old resistors, see the [Resistors page](http://blo
 
 I prefer to use the designator prefix \(RT\) (e.g. \(RT1\)) and the following schematic symbol for a PTC-type thermistor. 
 
-{{< figure src="positive-temperature co-efficient" width="417" caption="](/images/2016/03/positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png) Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor." caption-position="bottom" >}}
+[caption id="attachment_13004" align="aligncenter" width="417"][![Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor.](/images/2016/03/positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png)
+](/images/2016/03/positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png) Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor.[/caption]
 
 I use the designator prefix \(RT\) for thermistors (**R**esistance depends on **T**emperature), while using \(RV\) for varistors (**R**esistance depends on **V**oltage).
 

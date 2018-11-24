@@ -15,7 +15,8 @@ url: /electronics/circuit-design/debouncing
 Debouncing is the technique of detecting and removing multiple state changes from a hardware device (most commonly a push-button switch) caused when the mechanical contacts touch. Because of tiny imperfections in switch contacts, as the contacts come together and make a conductive circuit, the actual resistance jumps up and down multiple times in quick succession (this is the bouncing). Although the human eye cannot see this when a light is turned on in a house, this bouncing can cause problems for logic which is expecting a single state tradition (e.g. a microcontroller which is counting button presses).
 
 
-{{< figure src="/images/2013/08/button-press-needs-debouncing.jpg" width="440" caption="A digitalized output of a button press, which needs debouncing." caption-position="bottom" >}}
+[caption id="attachment_14062" align="aligncenter" width="440"][![](/images/2013/08/button-press-needs-debouncing.jpg)
+](/images/2013/08/button-press-needs-debouncing.jpg) A digitalized output of a button press, which needs debouncing.[/caption]
 
 
 # Hardware Debouncing

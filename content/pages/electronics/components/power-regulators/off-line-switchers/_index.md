@@ -21,8 +21,10 @@ IMHO, this was a **bad name choice**, as many people would assume it is related 
 
 Both isolated and non-isolated off-line switchers exist on the market.
 
-{{< figure src="/images/2016/06/offline-switcher-complete-isolated-flyback-switching-supply-schematic-ti.png" width="651" caption="Schematic of a isolated off-line switcher by TI. Image from http://www.ti.com." caption-position="bottom" >}}
+[caption id="attachment_13624" align="aligncenter" width="651"][![Schematic of a isolated off-line switcher by TI. Image from http://www.ti.com.](/images/2016/06/offline-switcher-complete-isolated-flyback-switching-supply-schematic-ti.png)
+](/images/2016/06/offline-switcher-complete-isolated-flyback-switching-supply-schematic-ti.png) Schematic of a isolated off-line switcher by TI. Image from http://www.ti.com.[/caption]
 
 And here is an example of a non-isolated version:
 
-{{< figure src="/images/2016/06/offline-switcher-linkswitch-tn-typical-application-schematic.pdf.png" width="625" caption="A typical application schematic for the LinkSwitch-TN family of non-isolated off-line switchers by Power Integrations. Image from www.power.com." caption-position="bottom" >}}
+[caption id="attachment_13625" align="aligncenter" width="625"][![A typical application schematic for the LinkSwitch-TN family of non-isolated off-line switchers by Power Integrations. Image from www.power.com.](/images/2016/06/offline-switcher-linkswitch-tn-typical-application-schematic.pdf.png)
+](/images/2016/06/offline-switcher-linkswitch-tn-typical-application-schematic.pdf.png) A typical application schematic for the LinkSwitch-TN family of non-isolated off-line switchers by Power Integrations. Image from www.power.com.[/caption]

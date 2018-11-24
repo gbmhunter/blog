@@ -21,7 +21,8 @@ Although there are many different ways of calling C++ code from Python, this pag
 
 
 
-{{< figure src="/images/2017/08/swig-python-bindings-logo.png" width="307" caption="The SWIG logo." caption-position="bottom" >}}
+[caption id="attachment_14676" align="aligncenter" width="307"][![](/images/2017/08/swig-python-bindings-logo.png)
+](/images/2017/08/swig-python-bindings-logo.png) The SWIG logo.[/caption]
 
 
 

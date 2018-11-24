@@ -16,18 +16,22 @@ The mechanical of via's in multi-layer PCBs crates a residual resin that smears 
 The images below show positive etchback.
 
 <table style="width: 800px; height: 300px;" ><tbody ><tr >
-<td >{{< figure src="hole has not been plated yet" width="203" caption="](/images/2014/11/etchback-none.png) Cross-section of a via hole with no etchback (hole has not been plated yet)." caption-position="bottom" >}}
+<td >[caption id="attachment_8751" align="aligncenter" width="203"][![Cross-section of a via hole with no etchback (hole has not been plated yet).](/images/2014/11/etchback-none.png)
+](/images/2014/11/etchback-none.png) Cross-section of a via hole with no etchback (hole has not been plated yet).[/caption]
 </td>
-<td >{{< figure src="hole has not been plated yet" width="224" caption="](/images/2014/11/etchback-before-plating.png) Cross-section of a via hole that has positive etchback (hole has not been plated yet)." caption-position="bottom" >}}
+<td >[caption id="attachment_8753" align="aligncenter" width="224"][![A via hole that has etchback (hole has not been plated yet).](/images/2014/11/etchback-before-plating.png)
+](/images/2014/11/etchback-before-plating.png) Cross-section of a via hole that has positive etchback (hole has not been plated yet).[/caption]
 </td>
-<td >{{< figure src="/images/2014/11/etchback-after-plating.png" width="204" caption="Cross-section of a via which has been plated after positive etchback was done, notice the "three-point connection"." caption-position="bottom" >}}
+<td >[caption id="attachment_8752" align="aligncenter" width="204"][![A via which has been plated after etchback was done, notice the "three-point connection".](/images/2014/11/etchback-after-plating.png)
+](/images/2014/11/etchback-after-plating.png) Cross-section of a via which has been plated after positive etchback was done, notice the "three-point connection".[/caption]
 </td></tr></tbody></table>
 
 # Negative Etchback
 
 Negative etchback is when the copper layers recede from the edge of the via hole, as shown in the diagram below.
 
-{{< figure src="/images/2014/11/etchback-negative.png" width="314" caption="The cross-section of a via with negative etchback. Notice how the copper plane recedes from the edge of the via hole." caption-position="bottom" >}}
+[caption id="attachment_8756" align="aligncenter" width="314"][![The cross-section of a via with negative ecthback. Notice how the copper plane recedes from the edge of the via hole.](/images/2014/11/etchback-negative.png)
+](/images/2014/11/etchback-negative.png) The cross-section of a via with negative etchback. Notice how the copper plane recedes from the edge of the via hole.[/caption]
 
 # Methods
 

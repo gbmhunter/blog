@@ -273,6 +273,7 @@ Current
 
 Reverse-aspect chip capacitors (a.k.a LICC) have their leads on the long sides of the chip, as opposed to standard chip components which have the leads on the short sides. This reverse-geometry reduces the inductance in the PCB-to-capacitor connection, and is in high-speed designs where ultra-low inductance is required.
 
-{{< figure src="/images/2015/10/comparison-of-various-smd-chip-capacitor-internal-designs.mlcc-licc-mpdigest.png" width="483" caption="A comparison of the different internal designs of various SMD chip capacitors. Image from http://www.mpdigest.com/." caption-position="bottom" >}}
+[caption id="attachment_12423" align="aligncenter" width="483"][![A comparison of the different internal designs of various SMD chip capacitors. Image from http://www.mpdigest.com/.](/images/2015/10/comparison-of-various-smd-chip-capacitor-internal-designs.mlcc-licc-mpdigest.png)
+](/images/2015/10/comparison-of-various-smd-chip-capacitor-internal-designs.mlcc-licc-mpdigest.png) A comparison of the different internal designs of various SMD chip capacitors. Image from http://www.mpdigest.com/.[/caption]
 
 They are normally named the same as normal aspect chip capacitors except with the two numbers in reverse order, i.e. an 0603 sized capacitor now becomes a 0306 capacitor.

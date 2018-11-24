@@ -86,7 +86,8 @@ More and more GPS units are beginning to support integration with an IMU unit to
 
 
 
-{{< figure src="/images/2014/12/screenshot-playing-around-with-rthostimugl.png" width="782" caption="Playing around with RTHostIMUGL and a connected IMU through an Arduino." caption-position="bottom" >}}
+[caption id="attachment_9182" align="aligncenter" width="782"][![Playing around with RTHostIMUGL and a connected IMU through an Arduino.](/images/2014/12/screenshot-playing-around-with-rthostimugl.png)
+](/images/2014/12/screenshot-playing-around-with-rthostimugl.png) Playing around with RTHostIMUGL and a connected IMU through an Arduino.[/caption]
 
 
 

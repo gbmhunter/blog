@@ -13,7 +13,8 @@ url: /pcb-design/ims-insulated-metal-substrate-pcbs
 
 Insulated metallic substrate (IMS) PCBs are PCBs which use a metallic material as a a thick base or inner layer to improve the thermal and mechanical properties of the PCB. They are also known as aluminium base, aluminium clad, metal clad (MCPCB), or thermally conductive PCBs (ergh...bad name, all PCBs are pretty thermally conductive). A **3-10 fold** thermal improvement over standard FR-4 can be achieved.
 
-{{< figure src="/images/2014/11/ims-pcb-aluminium-side-on-photo.png" width="346" caption="A side on photo of a IMS PCB with an aluminium base." caption-position="bottom" >}}
+[caption id="attachment_8863" align="aligncenter" width="346"][![A side on photo of a IMS PCB with an aluminium base.](/images/2014/11/ims-pcb-aluminium-side-on-photo.png)
+](/images/2014/11/ims-pcb-aluminium-side-on-photo.png) A side on photo of a IMS PCB with an aluminium base.[/caption]
 
 Aluminium is normally used as the substrate (with copper still being used for the electrical layers) because of it's low cost, however copper is used in more expensive/higher power density designs because of it's superior thermal conductivity. Copper also has a lower co-efficient of thermal expansion and is also used when the stresses on the component's solder joints need to be reduced.
 
@@ -23,7 +24,8 @@ The increased thermal conductivity of IMS PCBs allows for higher packing densiti
 
 IMS PCBs are used for power LED PCBs, motor drivers. welding machines, SSR's, power conversion circuits and more.
 
-{{< figure src="/images/2014/11/ims-pcb-copper-clad-top-down-photo.png" width="281" caption="Top-down photo of a IMS PCB for high-power LEDs." caption-position="bottom" >}}
+[caption id="attachment_8871" align="aligncenter" width="281"][![Top-down photo of a IMS PCB for high-power LEDs.](/images/2014/11/ims-pcb-copper-clad-top-down-photo.png)
+](/images/2014/11/ims-pcb-copper-clad-top-down-photo.png) Top-down photo of a IMS PCB for high-power LEDs.[/caption]
 
 There are also direct bonded copper (DBC) substrates, active metal braze (AMB) substrates
 
@@ -45,13 +47,15 @@ An IMS PCB can be plated using most common plating techniques. However, HASL is
 
 This is the most basic and cheapest IMS PCB design layout. It consists of one electrical layer sandwiched to a metallic substrate with some prepreg inbetween. It is commonly used for basic high-power LED PCBs and other simple circuits which don't require too much routing.
 
-{{< figure src="/images/2014/11/example-stack-up-of-single-sided-single-layered-ims-pcb.png" width="407" caption="An example stack-up of a single-sided, single-layered IMS PCB." caption-position="bottom" >}}
+[caption id="attachment_12318" align="aligncenter" width="407"][![An example stack-up of a single-sided, single-layered IMS PCB.](/images/2014/11/example-stack-up-of-single-sided-single-layered-ims-pcb.png)
+](/images/2014/11/example-stack-up-of-single-sided-single-layered-ims-pcb.png) An example stack-up of a single-sided, single-layered IMS PCB.[/caption]
 
 ## Single-Sided, Double-Layered IMS PCB
 
 This design is not much more complex than a single-layer, single-sided IMS PCB. All it is is an extra electrical copper layer just below the top electrical layer. A thin two-layer PCB is made using the normal PCB processes, and then the metallic substrate is added to complete the PCB.
 
-{{< figure src="/images/2014/11/example-stack-up-of-single-sided-double-layered-ims-pcb.png" width="388" caption="An example stack-up of a single-sided, double-layered IMS PCB." caption-position="bottom" >}}
+[caption id="attachment_12317" align="aligncenter" width="388"][![An example stack-up of a single-sided, double-layered IMS PCB.](/images/2014/11/example-stack-up-of-single-sided-double-layered-ims-pcb.png)
+](/images/2014/11/example-stack-up-of-single-sided-double-layered-ims-pcb.png) An example stack-up of a single-sided, double-layered IMS PCB.[/caption]
 
 The non-component side of a 1-sided IMS PCB can be mounted to a heatsink (e.g. the device's enclosure) for a huge decrease in the total thermal resistance of the device. Thermal interface layer (TIM) between IMS PCB and the heatsink.
 

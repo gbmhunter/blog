@@ -15,7 +15,8 @@ url: /programming/build-systems-and-package-managers/gradle
 Gradle is an open-source build automation system. It is primarily targeted towards languages running on the JVM (Java Virtual Machine).
 
 
-{{< figure src="/images/2017/01/gradlephant-gradle-logo-v2.png" width="271" caption="The Gradle logo." caption-position="bottom" >}}
+[caption id="attachment_14010" align="aligncenter" width="271"][![](/images/2017/01/gradlephant-gradle-logo-v2.png)
+](/images/2017/01/gradlephant-gradle-logo-v2.png) The Gradle logo.[/caption]
 
 
 One of it's big advantages over Maven is it's use of a domain-specific language (DSL) rather than XML to specify the project configuration and build steps.

@@ -157,7 +157,8 @@ Unusually, the WLCSP package is sensitive to high-intensity, long wavelength li
 
 WLCSP packages can come with a backside laminate (BSL) which blocks light from disrupting the IC. Fairchild Semiconductor explain that having a BSL is not significant for board-level reliability.
 
-{{< figure src="BSL" width="517" caption="](/images/2015/03/paragraph-on-backside-laminate-for-wlcsp-package-farchild-an-5075.png) Paragraph on backside laminate (BSL) for WLCSP component packages. Image from https://www.fairchildsemi.com/application-notes/AN/AN-5075.pdf." caption-position="bottom" >}}
+[caption id="attachment_11038" align="aligncenter" width="517"][![Paragraph on backside laminate (BSL) for WLCSP component packages. Image from https://www.fairchildsemi.com/application-notes/AN/AN-5075.pdf.](/images/2015/03/paragraph-on-backside-laminate-for-wlcsp-package-farchild-an-5075.png)
+](/images/2015/03/paragraph-on-backside-laminate-for-wlcsp-package-farchild-an-5075.png) Paragraph on backside laminate (BSL) for WLCSP component packages. Image from https://www.fairchildsemi.com/application-notes/AN/AN-5075.pdf.[/caption]
 
 
 ## RaspberryPi 2 Bug

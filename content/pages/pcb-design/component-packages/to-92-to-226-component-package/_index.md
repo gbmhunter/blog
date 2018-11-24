@@ -73,19 +73,22 @@ TO-92 is a very common package for low-power through-hole transistors, MOSFET's,
 
 If a package is just labelled as TO-92, then it is most likely to be the "standard" variant, which is also known as TO-226AA.
 
-{{< figure src="/images/2015/04/to-92-3-component-package-3d-render.jpg" width="292" caption="A 3D render of the TO-92-3 component package." caption-position="bottom" >}}
+[caption id="attachment_11407" align="aligncenter" width="292"][![A 3D render of the TO-92-3 component package.](/images/2015/04/to-92-3-component-package-3d-render.jpg)
+](/images/2015/04/to-92-3-component-package-3d-render.jpg) A 3D render of the TO-92-3 component package.[/caption]
 
 ## TO-92/18
 
 The TO-92/18 variant of the TO-92 package is similar to the standard package (which is just called the TO-92), except that it has a longer body. It is also known as the TO-226AB or TO-92MOD package.
 
-{{< figure src="TO-226AB" width="407" caption="](/images/2015/04/to-226-component-package-3d-render.jpg) A 3D render of the TO-92/18 (TO-226AB) component package." caption-position="bottom" >}}
+[caption id="attachment_11385" align="aligncenter" width="407"][![A 3D render of the TO-92/18 (TO-226AB) component package.](/images/2015/04/to-226-component-package-3d-render.jpg)
+](/images/2015/04/to-226-component-package-3d-render.jpg) A 3D render of the TO-92/18 (TO-226AB) component package.[/caption]
 
 # Pin Numbering
 
 Pin numbering is always done from left-to-right, when the flat side of the TO-92 package is facing you and the legs are pointing downwards, as shown in the following diagram:
 
-{{< figure src="/images/2015/04/package-to-92-3d-render-with-pin-numbering-v2.png" width="516" caption="A 3D render of the TO-92 component package with pin numbering." caption-position="bottom" >}}
+[caption id="attachment_13217" align="aligncenter" width="516"][![A 3D render of the TO-92 component package with pin numbering.](/images/2015/04/package-to-92-3d-render-with-pin-numbering-v2.png)
+](/images/2015/04/package-to-92-3d-render-with-pin-numbering-v2.png) A 3D render of the TO-92 component package with pin numbering.[/caption]
 
 This is applicable to both the standard TO-92 (TO-226AA) and TO-92/18 (TO-226AB) variants.
 
@@ -115,4 +118,5 @@ The pinout for JEDEC-named 2N series transistors is standardised as per the foll
 
 There are a limited range of heatsinks available for the TO-92 component package. Aavid Thermalloy makes two TO-92 heatsinks, one of which is currently available (as of May 2016) on [DigiKey](http://www.digikey.com/product-detail/en/575200B00000G/HS251-ND/269309).
 
-{{< figure src="part num. 575200B00000G" width="295" caption="](/images/2015/04/to-92-clip-on-heatsink-aavid-thermalloy-575200B00000G.png) The TO-92 clip-on heatsink by Aavid Thermalloy (part num. 575200B00000G)." caption-position="bottom" >}}
+[caption id="attachment_13227" align="aligncenter" width="295"][![The TO-92 clip-on heatsink by Aavid Thermalloy (part num. 575200B00000G).](/images/2015/04/to-92-clip-on-heatsink-aavid-thermalloy-575200B00000G.png)
+](/images/2015/04/to-92-clip-on-heatsink-aavid-thermalloy-575200B00000G.png) The TO-92 clip-on heatsink by Aavid Thermalloy (part num. 575200B00000G).[/caption]

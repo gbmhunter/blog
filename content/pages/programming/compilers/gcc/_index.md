@@ -21,4 +21,5 @@ url: /programming/compilers/gcc
 
 
 
-{{< figure src="/images/2014/07/gcc-compiler-logo.png" width="207" caption="The GCC logo." caption-position="bottom" >}}
+[caption id="attachment_13502" align="aligncenter" width="207"][![The GCC logo.](/images/2014/07/gcc-compiler-logo.png)
+](/images/2014/07/gcc-compiler-logo.png) The GCC logo.[/caption]

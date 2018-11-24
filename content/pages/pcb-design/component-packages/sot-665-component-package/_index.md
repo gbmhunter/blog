@@ -68,16 +68,19 @@ url: /pcb-design/component-packages/sot-665-component-package
 
 # General
 
-{{< figure src="/images/2015/11/sot-665-component-package-3d-render.jpg" width="259" caption="A 3D render of the SOT-665 component package. Image from http://www.digikey.com/." caption-position="bottom" >}}
+[caption id="attachment_12583" align="aligncenter" width="259"][![A 3D render of the SOT-665 component package. Image from http://www.digikey.com/.](/images/2015/11/sot-665-component-package-3d-render.jpg)
+](/images/2015/11/sot-665-component-package-3d-render.jpg) A 3D render of the SOT-665 component package. Image from http://www.digikey.com/.[/caption]
 
 # Dimensions
 
-{{< figure src="/images/2015/11/sot-665-component-package-dimensions.png" width="836" caption="The dimensions for the SOT-665 component package. Image from http://www.nxp.com/." caption-position="bottom" >}}
+[caption id="attachment_12588" align="aligncenter" width="836"][![The dimensions for the SOT-665 component package. Image from http://www.nxp.com/.](/images/2015/11/sot-665-component-package-dimensions.png)
+](/images/2015/11/sot-665-component-package-dimensions.png) The dimensions for the SOT-665 component package. Image from http://www.nxp.com/.[/caption]
 
 # Footprint
 
 A recommended footprint (land pattern) for the SOT-665 component package is shown below:
 
-{{< figure src="land pattern" width="736" caption="](/images/2015/11/sot-665-component-package-footprint-land-pattern.png) A recommended footprint (land pattern) for the SOT-665 component package. Image from http://www.st.com/." caption-position="bottom" >}}
+[caption id="attachment_12589" align="aligncenter" width="736"][![A recommended footprint (land pattern) for the SOT-665 component package. Image from http://www.st.com/.](/images/2015/11/sot-665-component-package-footprint-land-pattern.png)
+](/images/2015/11/sot-665-component-package-footprint-land-pattern.png) A recommended footprint (land pattern) for the SOT-665 component package. Image from http://www.st.com/.[/caption]
 
 The footprint has a land area of \(3.38mm^2\) (1.3x2.6mm), ignoring any clearance area given around the perimeter of the footprint (i.e. courtyard).

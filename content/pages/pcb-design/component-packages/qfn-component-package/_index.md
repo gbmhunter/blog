@@ -272,12 +272,14 @@ It is recommended to reduce the amount of solder paste applied to the centre pad
 <tr >
 
 <td >
-{{< figure src="not recommended" width="359" caption="](/images/2014/12/qfn-68-component-package-with-no-solder-paste-aperture-reduction-on-center-pad.png) A QFN-68 package with no solder paste aperture reduction on the center pad (not recommended)." caption-position="bottom" >}}
+[caption id="attachment_9129" align="aligncenter" width="359"][![A QFN-68 package with no solder paste aperture reduction on the center pad (not recommended).](/images/2014/12/qfn-68-component-package-with-no-solder-paste-aperture-reduction-on-center-pad.png)
+](/images/2014/12/qfn-68-component-package-with-no-solder-paste-aperture-reduction-on-center-pad.png) A QFN-68 package with no solder paste aperture reduction on the center pad (not recommended).[/caption]
 
 </td>
 
 <td >
-{{< figure src="recommended" width="340" caption="](/images/2014/12/qfn-68-component-package-with-solder-paste-aperture-reduction-on-center-pad.png) A QFN-68 package with solder paste aperture reduction on the center pad (recommended)." caption-position="bottom" >}}
+[caption id="attachment_9130" align="aligncenter" width="340"][![A QFN-68 package with solder paste aperture reduction on the center pad (recommended).](/images/2014/12/qfn-68-component-package-with-solder-paste-aperture-reduction-on-center-pad.png)
+](/images/2014/12/qfn-68-component-package-with-solder-paste-aperture-reduction-on-center-pad.png) A QFN-68 package with solder paste aperture reduction on the center pad (recommended).[/caption]
 
 </td>
 </tr>
@@ -310,7 +312,8 @@ The main difference between these two singulation methods is the cross-sectional
 
 
 
-{{< figure src="/images/2014/12/qfn-component-package-sawn-vs-punch-vs-col-singulation.png" width="573" caption="Cross-sectional comparison of sawn and punch singulated QFN packages. Image from http://cache.freescale.com/files/analog/doc/app_note/AN1902.pdf." caption-position="bottom" >}}
+[caption id="attachment_9124" align="aligncenter" width="573"][![Cross-sectional comparison of sawn and punch singulated QFN packages. Image from http://cache.freescale.com/files/analog/doc/app_note/AN1902.pdf.](/images/2014/12/qfn-component-package-sawn-vs-punch-vs-col-singulation.png)
+](/images/2014/12/qfn-component-package-sawn-vs-punch-vs-col-singulation.png) Cross-sectional comparison of sawn and punch singulated QFN packages. Image from http://cache.freescale.com/files/analog/doc/app_note/AN1902.pdf.[/caption]
 
 
 
@@ -347,17 +350,20 @@ Because the QFN package sits directly on the PCB and has no standoff, they are l
 <tr >
 
 <td >
-{{< figure src="this is a good thing" width="205" caption="](/images/2014/07/qfn-package-e-style-leads-fully-exposed-on-side-of-package.png) A QFN package with "e" style leads which are fully exposed on the side of the package (this is a good thing)." caption-position="bottom" >}}
+[caption id="attachment_9135" align="aligncenter" width="205"][![A QFN package with "e" style leads which are fully exposed on the side of the package (this is a good thing).](/images/2014/07/qfn-package-e-style-leads-fully-exposed-on-side-of-package.png)
+](/images/2014/07/qfn-package-e-style-leads-fully-exposed-on-side-of-package.png) A QFN package with "e" style leads which are fully exposed on the side of the package (this is a good thing).[/caption]
 
 </td>
 
 <td >
-{{< figure src="this is a not a good thing" width="207" caption="](/images/2014/07/qfn-package-s-style-leads-not-exposed-on-side-of-package.png) A QFN package with "S" style leads which are only partially exposed on the side of the package (this is a not a good thing)." caption-position="bottom" >}}
+[caption id="attachment_9137" align="aligncenter" width="207"][![A QFN package with "S" style leads which are only partially exposed on the side of the package (this is a not a good thing).](/images/2014/07/qfn-package-s-style-leads-not-exposed-on-side-of-package.png)
+](/images/2014/07/qfn-package-s-style-leads-not-exposed-on-side-of-package.png) A QFN package with "S" style leads which are only partially exposed on the side of the package (this is a not a good thing).[/caption]
 
 </td>
 
 <td >
-{{< figure src="/images/2014/07/qfn-package-wf-style-dimpled-leads.png" width="206" caption="A QFN package with "WF" style leads. They have dimples which allow for improved soldering." caption-position="bottom" >}}
+[caption id="attachment_9136" align="aligncenter" width="206"][![A QFN package with "WF" style leads. They have dimples which allow for improved soldering.](/images/2014/07/qfn-package-wf-style-dimpled-leads.png)
+](/images/2014/07/qfn-package-wf-style-dimpled-leads.png) A QFN package with "WF" style leads. They have dimples which allow for improved soldering.[/caption]
 
 </td>
 </tr>
@@ -378,12 +384,14 @@ QFN packages exist in where the **corner pins have to be of a different shape** 
 <tr >
 
 <td >
-{{< figure src="/images/2014/12/qfn-24-component-package-with-unique-corner-pads-mpu-9250-dimensions.png" width="306" caption="The corner pins on the QFN package used by the IvenSense MPU-9250 have a unique shape." caption-position="bottom" >}}
+[caption id="attachment_9119" align="aligncenter" width="306"][![The corner pins on the QFN package used by the IvenSense MPU-9250 have a unique shape.](/images/2014/12/qfn-24-component-package-with-unique-corner-pads-mpu-9250-dimensions.png)
+](/images/2014/12/qfn-24-component-package-with-unique-corner-pads-mpu-9250-dimensions.png) The corner pins on the QFN package used by the IvenSense MPU-9250 have a unique shape.[/caption]
 
 </td>
 
 <td >
-{{< figure src="notice how they are smaller" width="260" caption="](/images/2014/12/qfn-24-component-package-with-unique-corner-pads-mpu-9250-land-pattern.png) The footprint for the IvenSense MPU-9250 IMU which uses a QFN package with unique corner pin shapes (notice how they are smaller)." caption-position="bottom" >}}
+[caption id="attachment_9120" align="aligncenter" width="260"][![The footprint for the IvenSense MPU-9250 IMU which uses a QFN package with unique corner pin shapes (notice how they are smaller).](/images/2014/12/qfn-24-component-package-with-unique-corner-pads-mpu-9250-land-pattern.png)
+](/images/2014/12/qfn-24-component-package-with-unique-corner-pads-mpu-9250-land-pattern.png) The footprint for the IvenSense MPU-9250 IMU which uses a QFN package with unique corner pin shapes (notice how they are smaller).[/caption]
 
 </td>
 </tr>

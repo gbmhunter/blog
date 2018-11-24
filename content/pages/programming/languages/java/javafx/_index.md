@@ -15,7 +15,8 @@ url: /programming/languages/java/javafx
 JavaFX is a Java-based UI platform for developing desktop applications on a variety of platforms. It is pitched as a replacement for Swing.
 
 
-{{< figure src="/images/2016/06/javafx-logo.png" width="404" caption="The JavaFX logo." caption-position="bottom" >}}
+[caption id="attachment_13469" align="aligncenter" width="404"][![The JavaFX logo.](/images/2016/06/javafx-logo.png)
+](/images/2016/06/javafx-logo.png) The JavaFX logo.[/caption]
 
 
 # Child Pages

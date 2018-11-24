@@ -17,11 +17,13 @@ The exact process depends on the component data storage method (e.g. libraries, 
 
 When you load up the BOM settings window (right-click the BOM row in the outjob and click _Configure_.
 
-{{< figure src="/images/2012/07/altium-selecting-bom-configure-in-outjob.png" width="449" caption="Getting to the BOM configuration window from an Outjob in Altium." caption-position="bottom" >}}
+[caption id="attachment_11916" align="aligncenter" width="449"][![Getting to the BOM configuration window from an Outjob in Altium.](/images/2012/07/altium-selecting-bom-configure-in-outjob.png)
+](/images/2012/07/altium-selecting-bom-configure-in-outjob.png) Getting to the BOM configuration window from an Outjob in Altium.[/caption]
 
 ...there is an option to provide an Excel template file.
 
-{{< figure src="/images/2012/07/altium-bom-configure-excel-template-field.png" width="459" caption="The field in the BOM configuration window that allows you to specify a Excel template file." caption-position="bottom" >}}
+[caption id="attachment_11918" align="aligncenter" width="459"][![The field in the BOM configuration window that allows you to specify a Excel template file.](/images/2012/07/altium-bom-configure-excel-template-field.png)
+](/images/2012/07/altium-bom-configure-excel-template-field.png) The field in the BOM configuration window that allows you to specify a Excel template file.[/caption]
 
 # To Download
 

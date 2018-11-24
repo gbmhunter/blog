@@ -146,7 +146,8 @@ Used by Texas Instruments for some of their higher power DC/DC converters. Has a
 # Photos
 
 
-{{< figure src="/images/2015/04/eep-component-package-photo.png" width="384" caption="Photo of a DC/DC converter by Texas Instruments in an EEP package." caption-position="bottom" >}}
+[caption id="attachment_11262" align="aligncenter" width="384"][![Photo of a DC/DC converter by Texas Instruments in an EEP package.](/images/2015/04/eep-component-package-photo.png)
+](/images/2015/04/eep-component-package-photo.png) Photo of a DC/DC converter by Texas Instruments in an EEP package.[/caption]
 
 
 # Dimensions

@@ -30,7 +30,8 @@ H-bridges are used for efficient power and polarity control of electronic loads.
 # Circuit
 
 
-{{< figure src="/images/2011/09/lm5104-example-circuit.jpg" width="800" caption="Example half-bridge circuit for the LM5104 half-bridge controller." caption-position="bottom" >}}
+[caption id="attachment_14083" align="aligncenter" width="800"][![](/images/2011/09/lm5104-example-circuit.jpg)
+](/images/2011/09/lm5104-example-circuit.jpg) Example half-bridge circuit for the LM5104 half-bridge controller.[/caption]
 
 
 # A Basic Switch/Relay H-Bridge
@@ -71,7 +72,8 @@ Almost all serious half or full-bridges use [MOSFET's](http://blog.mbedded.ninja
 With a bit of clever circuitry, you can create a H-bridge made from discrete components that only requires two control lines, direction and PWM.
 
 
-{{< figure src="/images/2011/09/full-bridge-schematic-two-control-inputs-discrete-components.png" width="1067" caption="A full-bridge example schematic made from discrete components. This circuit only requires two control inputs and has shoot-thru protection." caption-position="bottom" >}}
+[caption id="attachment_12144" align="aligncenter" width="1067"][![A full-bridge example schematic made from discrete components. This circuit only requires two control inputs and has shoot-thru protection.](/images/2011/09/full-bridge-schematic-two-control-inputs-discrete-components.png)
+](/images/2011/09/full-bridge-schematic-two-control-inputs-discrete-components.png) A full-bridge example schematic made from discrete components. This circuit only requires two control inputs and has shoot-thru protection.[/caption]
 
 
 As a bonus, it also has shoot-through protection!

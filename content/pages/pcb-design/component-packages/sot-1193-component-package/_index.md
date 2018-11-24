@@ -140,7 +140,8 @@ NXP seems to be the only manufacturer who uses this package.
 # 3D Renders
 
 
-{{< figure src="/images/2015/04/sot-1193-component-package-3d-render.jpg" width="360" caption="A 3D render of the SOT-1193 component package." caption-position="bottom" >}}
+[caption id="attachment_11342" align="aligncenter" width="360"][![A 3D render of the SOT-1193 component package.](/images/2015/04/sot-1193-component-package-3d-render.jpg)
+](/images/2015/04/sot-1193-component-package-3d-render.jpg) A 3D render of the SOT-1193 component package.[/caption]
 
 
 # Other Images

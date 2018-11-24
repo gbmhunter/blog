@@ -13,7 +13,8 @@ url: /electronics/components/heatsinks
 
 Heatsinks are used in circuit design to conduct heat away from a component faster than what air would do, usually to prevent high-power components from overheating and failing.
 
-{{< figure src="/images/2013/05/typical-to-220-heatsink-with-fins.jpg" width="411" caption="A typical TO-220 heatsink with fins. Image from www.digikey.com." caption-position="bottom" >}}
+[caption id="attachment_13705" align="aligncenter" width="411"][![A typical TO-220 heatsink with fins. Image from www.digikey.com.](/images/2013/05/typical-to-220-heatsink-with-fins.jpg)
+](/images/2013/05/typical-to-220-heatsink-with-fins.jpg) A typical TO-220 heatsink with fins. Image from www.digikey.com.[/caption]
 
 Typical components that require heatsinking are high current [linear regulators](http://blog.mbedded.ninja/electronics/components/power-regulators), MOSFET's on [H-bridges](http://blog.mbedded.ninja/electronics/circuit-design/h-bridges), power amplifier BJT's and [MOSFET's](http://blog.mbedded.ninja/electronics/components/mosfets), and power limiting resistors. Most heatsinks are made from black anodized aluminium.
 
@@ -29,7 +30,8 @@ For more information on thermal resistances, see the [Thermal Management page](h
 
 The following diagram is a thermal analysis of a SMD MOSFET mounted to a PCB.
 
-{{< figure src="/images/2013/05/thermal-analysis-of-smd-mosfet-on-pcb.png" width="687" caption="Thermal analysis of a SMD MOSFET mounted on a PCB. Image from http://www.fairchildsemi.com/an/AN/AN-1029.pdf." caption-position="bottom" >}}
+[caption id="attachment_13703" align="aligncenter" width="687"][![Thermal analysis of a SMD MOSFET mounted on a PCB. Image from http://www.fairchildsemi.com/an/AN/AN-1029.pdf.](/images/2013/05/thermal-analysis-of-smd-mosfet-on-pcb.png)
+](/images/2013/05/thermal-analysis-of-smd-mosfet-on-pcb.png) Thermal analysis of a SMD MOSFET mounted on a PCB. Image from http://www.fairchildsemi.com/an/AN/AN-1029.pdf.[/caption]
 
 # List Of Component Package Thermal Resistances
 
@@ -39,10 +41,12 @@ See the [Component Packages page](http://blog.mbedded.ninja/electronics/circuit-
 
 The following image shows two graphs combined into one, the thermal performance of a heatsink with natural convection, and that with forced convection (e.g. a fan).
 
-{{< figure src="/images/2013/05/heat-dissipation-graph-for-natural-and-forced-convection.png" width="960" caption="Heat dissipation graph for both natural and forced convection. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf." caption-position="bottom" >}}
+[caption id="attachment_13706" align="aligncenter" width="960"][![Heat dissipation graph for both natural and forced convection. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf.](/images/2013/05/heat-dissipation-graph-for-natural-and-forced-convection.png)
+](/images/2013/05/heat-dissipation-graph-for-natural-and-forced-convection.png) Heat dissipation graph for both natural and forced convection. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf.[/caption]
 
 # Packages
 
 There is no standard package for heatsinks and the pitch for their support pins, although some more common pin spacings exist (such as 25.4mm (1inch) e.t.c).
 
-{{< figure src="/images/2013/05/to-220-pcb-mount-heatsink-hs22-technical-drawing.png" width="1364" caption="The technical drawing of a typical TO-220 heatsink. Image from www.digikey.com." caption-position="bottom" >}}
+[caption id="attachment_13707" align="alignnone" width="1364"][![The technical drawing of a typical TO-220 heatsink. Image from www.digikey.com.](/images/2013/05/to-220-pcb-mount-heatsink-hs22-technical-drawing.png)
+](/images/2013/05/to-220-pcb-mount-heatsink-hs22-technical-drawing.png) The technical drawing of a typical TO-220 heatsink. Image from www.digikey.com.[/caption]

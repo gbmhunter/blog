@@ -13,7 +13,8 @@ url: /electronics/components/power-regulators/sepic-converters
 
 SEPIC (single-ended primary inductance converter) is a switch-mode power supply (SMPS) which can both up and down-convert, similar to a buck/boost. It can be viewed as a boost converter followed by a buck-boost converter.
 
-{{< figure src="/images/2015/03/smps-buck-boost-converter-sepic-basic-components.png" width="698" caption="The basic components of a SEPIC style buck-boost converter." caption-position="bottom" >}}
+[caption id="attachment_11556" align="aligncenter" width="698"][![The basic components of a SEPIC style buck-boost converter.](/images/2015/03/smps-buck-boost-converter-sepic-basic-components.png)
+](/images/2015/03/smps-buck-boost-converter-sepic-basic-components.png) The basic components of a SEPIC style buck-boost converter.[/caption]
 
 It is normally recognised both in schematics and on PCBs because of it's use of two inductors. It's advantages over a buck-boost alone is that is has a non-inverted output voltage, DC decouplement from input to out (through a series power-transferring capacitor), which makes it easier to handle things such as short circuits on the output, and true turnoff of the output (when the switch is off, the output truly goes to 0V).
 
