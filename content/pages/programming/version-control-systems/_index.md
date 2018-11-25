@@ -107,7 +107,7 @@ Glob Syntax (no longer maintained):
 	  * "The system cannot find the file specified" error message occuring when you attempt to commit your repo. This is normally due to one of two reasons. The first one is if you deleted a file between clicking the 'Refresh files' button and clicking 'Commit'. The second reason is if the absolute path name of the file exceeds 255 characters. Tortoise HG will recognise the file and display it, but will fail when trying to commit. There is an extension called ['Win32LongFileNamesExtension' (aka win32lfn)](https://www.mercurial-scm.org/wiki/Win32LongFileNamesExtension) that is meant to fix this, but I have not be able to get it to work.
 	  * "abandoned transaction found - run hg recover" - This normally occurs if the connection between the local and remote repo is disconnected mid-way through a push/pull operation.  
 
- [singlepic id=767 w=300 h=150 float=center]
+ {{< figure src="/images/programming-misc/mercurial-error-msg-abandoned-transaction-found.png" caption="The 'abandoned transaction found' Mercurial error message." caption-position="bottom" width="300px" >}}
 
 
 

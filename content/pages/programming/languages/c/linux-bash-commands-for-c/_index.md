@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/linux-bash-commands-for-c
 ---
 
-[singlepic id=790 w=450 h=450 float=right]
+{{< figure src="/images/programming-misc/essential-bash-commands-for-c-screenshot.png" caption="Screenshot of essential bash commands for C being used in a terminal on Ubuntu." caption-position="bottom" width="450px" >}}
 
 Below are a list of the most essential bash commands when working with the c programming language in linux.
 

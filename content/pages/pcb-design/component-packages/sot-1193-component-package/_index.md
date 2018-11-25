@@ -148,4 +148,4 @@ NXP seems to be the only manufacturer who uses this package.
 
 
 
-[singlepic id=1104 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-sot-1193-2-nxp-xqfn8-dimensions.png" caption="The dimensions for the SOT-1193-2 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1193-2_po.pdf." caption-position="bottom" width="600px" >}}

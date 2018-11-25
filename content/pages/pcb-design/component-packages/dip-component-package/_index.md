@@ -170,7 +170,7 @@ Anti-static packaging can easily be made for DIP packages with foam and aluminiu
 
 
 
-[singlepic id=656 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/making-antistatic-packaging-for-dip-ic-with-aluminium-foil.jpg" caption="Anti-static packaging can easily be made for DIP packages with foam and aluminium foil." caption-position="bottom" width="500px" >}}
 
 
 

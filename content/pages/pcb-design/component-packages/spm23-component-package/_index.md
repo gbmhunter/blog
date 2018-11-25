@@ -148,4 +148,4 @@ Package proprietary to Fairchild Semiconductor, used for some of their motor dri
 
 
 
-[singlepic id=753 w=400 h=400 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-spm-23-land-pattern.png" caption="The land pattern for the SPM-23 component package." caption-position="bottom" width="400px" >}}

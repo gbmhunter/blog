@@ -165,4 +165,4 @@ This a very common package for small-signal low-power through-hole diodes such a
 
 
 
-[singlepic id=763 w=400 h=400 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-do-35-photo.jpg" caption="OLYMPUS DIGITAL CAMERA" caption-position="bottom" width="400px" >}}

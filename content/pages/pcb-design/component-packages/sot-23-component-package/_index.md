@@ -103,4 +103,4 @@ Why you'd ever number the package in that manner is beyond me. It's dangerous, 
 
 # Other Images
 
-[singlepic id=554 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/package-dimensions-sot23-3.gif" caption="The dimensions of the SOT-23-5 component package." caption-position="bottom" width="500px" >}}

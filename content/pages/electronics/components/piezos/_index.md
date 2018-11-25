@@ -17,7 +17,7 @@ Piezo's (in the electrical component sense), are small speakers that feature a p
 
 
 
-[singlepic id=560 w=400 h=400 float=center template=caption]
+{{< figure src="/images/electronics-misc/piezo-photo.jpg" caption="Photo of an externally driven piezo. They tend to be smaller than their internally driven cousins." caption-position="bottom" width="400px" >}}
 
 
 
@@ -45,7 +45,7 @@ The schematic symbol for a piezo is shown below. Some piezos have internal oscil
 
 
 
-[singlepic id=550 w=320 h=240 float=center template=caption]
+{{< figure src="/images/electronics-misc/piezo-schematic-symbol.jpg" caption="The schematic symbol for a piezo speaker." caption-position="bottom" width="320px" >}}
 
 
 
@@ -60,7 +60,7 @@ A piezo does not have near anything like an ideal flat frequency response over t
 
 
 
-[singlepic id=558 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-misc/piezo-4khz-resonant-frequency-response.jpg" caption="The frequency response of a piezo speaker with a resonant frequency of 4kHz." caption-position="bottom" width="500px" >}}
 
 
 
@@ -85,7 +85,7 @@ The frequency of the PWM controls the pitch of the sound, the duty cycle control
 
 
 
-[singlepic id=549 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-misc/piezo-drive-circuit-parallel-inductor.jpg" caption="An easy and loud way to drive a piezo speaker using an inductor in parallel with the piezo and a NPN BJT." caption-position="bottom" width="500px" >}}
 
 
 
@@ -95,7 +95,7 @@ A non-standard and slightly convoluted method for driving a piezo speaker using 
 
 
 
-[singlepic id=548 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-misc/piezo-drive-circuit-half-bridge-ic.jpg" caption="A non-standard and slightly convulated method for driving a Piezo speaker using a half-bridge driver IC." caption-position="bottom" width="500px" >}}
 
 
 
@@ -126,7 +126,7 @@ The volume can be controlled with a simple RC low pass filter and PWM signal as 
 
 
 
-[singlepic id=559 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-misc/piezo-int-drive-volume-control-circuit.jpg" caption="The schematic of an internally driven piezo volume control circuit." caption-position="bottom" width="500px" >}}
 
 
 
@@ -141,7 +141,7 @@ This circuit uses a RC low-pass filter and PWM to change the DC voltage that the
 
 
 
-[singlepic id=766 w=250 h=250 float=left template=caption]
+{{< figure src="/images/electronics-misc/piezoelectric-bender.jpg" caption="A piezoelectric bender. Image from http://www.kineticceramics.com/." caption-position="bottom" width="250px" >}}
 
 
 
@@ -191,7 +191,7 @@ You can easily make crystals with a few common household ingredients. See the [P
 
 
 
-[singlepic id=696 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-piezocrystalformation/2012-07-16-22-21-30.jpg" caption="A large homemade piezo crystal." caption-position="bottom" width="600px" >}}
 
 
 

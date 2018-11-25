@@ -26,7 +26,7 @@ A simple three PIN device that is good for binary (on/off) short-range detection
 
 
 
-[singlepic id=963 w=400 h=400 float=center template=caption]
+{{< figure src="/images/electronics-arduino/arduino-infrared-sensors.jpg" caption="Arduino-compatible infrared sensors." caption-position="bottom" width="400px" >}}
 
 
 
@@ -83,7 +83,7 @@ The Arduino comes with a LCDCrystal library, making it almost too easy to use th
 
 
 
-[singlepic id=962 w=400 h=400 float=center template=caption]
+{{< figure src="/images/electronics-arduino/arduino-4wd-robot-motor-controller.jpg" caption="The controller for a Arduino 4WD robot." caption-position="bottom" width="400px" >}}
 
 
 
@@ -93,7 +93,7 @@ The Arduino comes with a LCDCrystal library, making it almost too easy to use th
 
 
 
-[singlepic id=964 w=400 h=400 float=center template=caption]
+{{< figure src="/images/electronics-arduino/arduino-sensor-shield.jpg" caption="An Arduino sensor shield." caption-position="bottom" width="400px" >}}
 
 
 
@@ -119,7 +119,7 @@ Very easy to interface to, due there being a native Arduino API function called 
 
 
 
-[singlepic id=965 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-arduino/arduino-ultrasound-module.jpg" caption="An Arduino compatible ultrasound module." caption-position="bottom" width="600px" >}}
 
 
 
@@ -129,7 +129,7 @@ Very easy to interface to, due there being a native Arduino API function called 
 
 
 
-[singlepic id=967 w=200 h=200 float=right template=caption]
+{{< figure src="/images/electronics-arduino/bottom-side-of-arduino-4wd-robot.jpg" caption="The bottom side of the 4WD Arduino robot." caption-position="bottom" width="200px" >}}
 
 
 
@@ -153,4 +153,4 @@ No instructions come with this! You are left on your own to figure out how to as
 
 
 
-[singlepic id=961 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-arduino/arduino-4wd-robot-base-wheels-motor-driver.jpg" caption="A Arduino robot base." caption-position="bottom" width="600px" >}}

@@ -41,7 +41,7 @@ Link
 <td >Very simple but extensive PCB design aid. And it's free! Includes a via current calculator, trace width calculator, bandwidth calculator, differential pair calculator, mechanical data, conductor impedance calculator, unit conversions, planar inductor calculator, thermal resistance calculator and more!
 </td>
 
-<td >[singlepic id=314 w=160 h=120 float=center]
+<td >{{< figure src="/images/electronics-misc/saturn-pcb-toolkit-screenshot.gif" caption="A screen-shot of the Saturn PCB toolkit." caption-position="bottom" width="160px" >}}
 </td>
 
 <td >[http://saturnpcb.com/pcb_toolkit.htm](http://saturnpcb.com/pcb_toolkit.htm)
@@ -55,7 +55,7 @@ Link
 <td >Invaluable when working out the closest manufactured resistor to the value you need in your design. There are tons of web-based calculators out there, and most let you choose a resistor series (e.g. E12, E24 e.t.c), or a precision (e.g. 5%, 1%). The higher the precisioin (1% is higher than 5%), the more expensive the resistor.
 </td>
 
-<td >[singlepic id=565 w=160 h=120 float=center]
+<td >{{< figure src="/images/electronics-misc/resistor-calculator-screenshot.jpg" caption="Screenshot of the resistor calculator." caption-position="bottom" width="160px" >}}
 </td>
 
 <td >[http://www.daycounter.com/Calculators/Standard-Resistor-Value-Calculator.phtml](http://www.daycounter.com/Calculators/Standard-Resistor-Value-Calculator.phtml)
@@ -143,12 +143,12 @@ Compatible Soldermask Colours
 </table>
 
 
-The silkscreen has to printed on either soldermask or bare PCB, it cannot be printed onto bare or tinned copper. For this reason, you cannot have soldermask ontop of component pads. [singlepic id=760 w=320 h=240 float=right] For components that protrude of the edge of the PCB (for example, connectors, or right-angled switches/leds, see the picture to the left), it is useful to indicate this on the silkscreen layer with diagonal lines as shown in the image below.
+The silkscreen has to printed on either soldermask or bare PCB, it cannot be printed onto bare or tinned copper. For this reason, you cannot have soldermask ontop of component pads. {{< figure src="/images/electronics-pcbdesign/connector-protruding-over-edge-of-pcb.png" caption="A right-angled connector protruding over the edge of the PCB." caption-position="bottom" width="320px" >}} For components that protrude of the edge of the PCB (for example, connectors, or right-angled switches/leds, see the picture to the left), it is useful to indicate this on the silkscreen layer with diagonal lines as shown in the image below.
 
 
 
 
-[singlepic id=761 w=400 h=400 float=center]
+{{< figure src="/images/electronics-pcbdesign/silkscreen-indicating-footprint-protrudes-edge-of-pcb.png" caption="Diagonal lines on the silkscreen layer of a PCB can be useful for indicating a component that protrudes over the edge of a PCB." caption-position="bottom" width="400px" >}}
 
 
 
@@ -163,7 +163,7 @@ Solder paste is applied in the PCB manufacturing process just before the board i
 
 
 
-[singlepic id=1077 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-pcbdesign/recommended-stencil-opening-for-solder-paste-on-qfn-package.png" caption="The recommended stencil opening for solder paste on a QFN package. Note the windowing to prevent the package from floating during soldering. Image from http://www.ti.com/lit/an/sloa122/sloa122.pdf." caption-position="bottom" width="600px" >}}
 
 
 
@@ -178,7 +178,7 @@ Designators normally only face in two directions only (i.e. down-facing and righ
 
 
 
-[singlepic id=1355 w=800 h=600 float="center" template="caption"]
+{{< figure src="/images/electronics-pcbdesign/close-up-of-0603-resistor-on-pcb.jpg" caption="A close-up of a 0603 resistor and it's designator on a PCB." caption-position="bottom" width="800px" >}}
 
 
 
@@ -188,7 +188,7 @@ If you cannot fit the designators next to their relevant components (e.g. a dens
 
 
 
-[singlepic id=1354 w=800 h=600 float="center" template="caption"]
+{{< figure src="/images/electronics-pcbdesign/designators-seperated-from-dense-components-on-pcb.png" caption="Designators can be separated from dense components, as long as they are grouped and are in the same orientation as the components." caption-position="bottom" width="800px" >}}
 
 
 
@@ -296,7 +296,7 @@ Antennas can also be used for stress relief during soldering for stress-sensitiv
 
 
 
-[singlepic id=1260 w=800 h=800 float=center template=caption]
+{{< figure src="/images/electronics-pcbdesign/routed-accelrometer-footprint-showing-thermal-relief-on-not-connects-for-stress-relief.png" caption="Routing un-used pins on a accelerometer component package a minimum distance away from the IC to reduce stress when infrared/reflow soldering." caption-position="bottom" width="800px" >}}
 
 
 
@@ -331,12 +331,12 @@ Don't forget to consider how the PCB is going to be mounted. One of the most com
 
 
 
-[singlepic id=955 w=800 h=800 float=center template=caption]
+{{< figure src="/images/electronics-pcbdesign/pcb-showing-mounting-holes.png" caption="A PCB, showing the four mounting holes. Note that one is underneath a component (the Xbee module)." caption-position="bottom" width="800px" >}}
 
 
 
 
-[singlepic id=954 w=200 h=200 float=right]
+{{< figure src="/images/electronics-misc/m3-12mm-pcb-standoff.jpg" caption="A M3 PCB standoff. Image from http://www.electronicparts.net.au/." caption-position="bottom" width="200px" >}}
 
 
 
@@ -346,7 +346,7 @@ Standoffs are good for providing clearance between the PCB and the mounting surf
 
 
 
-[singlepic id=313 w=160 h=120 float=center template=caption]
+{{< figure src="/images/electronics-misc/spherical-rubber-pcb-feet.jpg" caption="A stick-on spherical rubber PCB foot." caption-position="bottom" width="160px" >}}
 
 
 
@@ -356,7 +356,7 @@ Below is an example of a SMD standoff from [Pem Engineering](http://www.pemnet.c
 
 
 
-[singlepic id=1078 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-pcbdesign/reelfast-smd-standoff-example.jpg" caption="An SMD standoff from Pen Engineering. Image from http://catalog.pemnet.com/viewitems/uts-and-spacers-standoffs-surface-mount-type-smtso/t-nuts-and-spacers-standoffs-br-type-smtso-unified." caption-position="bottom" width="500px" >}}
 
 
 
@@ -366,7 +366,7 @@ Below is an example of a SMD standoff from [Pem Engineering](http://www.pemnet.c
 
 
 
-Desiccant (a moisture absorbing compound), can be a good thing to use if your PCB is at risk of condensation. [singlepic id=973 w=400 h=400 float=center template=caption] See the [Desiccant page](http://blog.mbedded.ninja/electronics/components/desiccant) for more info.
+Desiccant (a moisture absorbing compound), can be a good thing to use if your PCB is at risk of condensation. {{< figure src="/images/electronics-misc/dessicant-on-oven-tray.jpg" caption="Desiccant about to be dried on an oven tray." caption-position="bottom" width="400px" >}} See the [Desiccant page](http://blog.mbedded.ninja/electronics/components/desiccant) for more info.
 
 
 
@@ -386,7 +386,7 @@ This is an example of a PCB which I really like. It is called "[The Mojo](http:/
 
 
 
-[singlepic id=1101 w=800 h=600 float=center template=caption]
+{{< figure src="/images/electronics-pcbdesign/the-mojo-fpga-pcb.jpg" caption="'The Mojo', a Arduino-like FPGA development that looks really nice. Image from http://embeddedmicro.com/products/the-mojo." caption-position="bottom" width="800px" >}}
 
 
 
@@ -436,7 +436,7 @@ Below is an example of a screwed PCB after too much rework was done on a 0.5mm p
 
 
 
-[singlepic id=678 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-pcbdesign/qfn-footprint-failure-after-too-much-resoldering.jpg" caption="The PCB was wrecked after doing too much re-soldering on a 0.5mm pitch QFN footprint." caption-position="bottom" width="600px" >}}
 
 
 

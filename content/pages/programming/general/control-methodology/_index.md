@@ -175,7 +175,7 @@ However, you guessed it, preemptive RTOS's can halt the current process to execu
 
 
 
-FreeRTOS ([http://www.freertos.org/](http://www.freertos.org/)) [singlepic id=244 w=320 h=240 float=right]
+FreeRTOS ([http://www.freertos.org/](http://www.freertos.org/)) {{< figure src="/images/misc/freertos-logo.jpg" caption="The FreeRTOS logo. Image from http://www.freertos.org/." caption-position="bottom" width="320px" >}}
 
 
 

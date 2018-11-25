@@ -81,7 +81,7 @@ The following image shows maxima/minima detection for six noisy, sine-like wavef
 
 
 
-[singlepic id=1039 w=800 h=400 float=center]
+{{< figure src="/images/programming-signalprocessing/graph-of-maxima-minima-detection-on-six-waveforms.png" caption="A graph of maxima and minima detection on six noisy sine-like waveforms." caption-position="bottom" width="800px" >}}
 
 
 
@@ -91,7 +91,7 @@ A graph on noisy, but stable data showing problems with maxima and minima detect
 
 
 
-[singlepic id=1040 w=800 h=400 float=center]
+{{< figure src="/images/programming-signalprocessing/noisy-data-graph-with-no-threshold-on-maxima-minima-detection.png" caption="A graph on noisy, but stable data showing problems with maxima and minima detection without thresholding (false detections)." caption-position="bottom" width="800px" >}}
 
 
 

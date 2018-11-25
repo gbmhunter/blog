@@ -15,7 +15,7 @@
             {{ if .Sections }}
             <h1>Sections</h1>
             {{ end }}
-            {{ range .Sections }}
+            {{ range .Sections.ByTitle }}
                 <li>
                     <a href="{{.Permalink}}">{{.Title}}</a>
                 </li>
@@ -24,7 +24,7 @@
             {{ if .Pages }}
             <h1>Pages</h1>
             {{ end }}
-            {{ range .Pages }}
+            {{ range .Pages.ByTitle }}
                 <li>
                     <a href="{{.Permalink}}">{{.Title}}</a>
                 </li>

@@ -165,4 +165,4 @@ Some versions have squared bits in the middle, making it easier to place one on 
 
 
 
-[singlepic id=1181 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-micro-melf-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the Micro-MELF component package. Image from http://www.vishay.com/docs/20003/smm0102.pdf." caption-position="bottom" width="500px" >}}

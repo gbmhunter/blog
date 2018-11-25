@@ -9,7 +9,7 @@ url: /programming/microcontrollers/psoc/psoc-power-management
 
 # Processor Speed
 
-As with almost all digital electronics, as the clock speed increases, so does the power consumption. However, this does not neccesarily mean that you save power by running at a faster clock speed. You have to consider that at faster clock speeds, you get the 'job' done faster, meaning the processor is consuming power for less time. In fact, at faster clock speeds, the mA per MHz actually decreases, as shown by the following graph. [singlepic id=757 w=400 h=400 float=center]
+As with almost all digital electronics, as the clock speed increases, so does the power consumption. However, this does not neccesarily mean that you save power by running at a faster clock speed. You have to consider that at faster clock speeds, you get the 'job' done faster, meaning the processor is consuming power for less time. In fact, at faster clock speeds, the mA per MHz actually decreases, as shown by the following graph. {{< figure src="/images/programming-psoc/psoc-5-power-consumption-ma-vs-mhz-graph.png" caption="A graph of the PSoC 5 power consumption expressed as mA per MHz." caption-position="bottom" width="400px" >}}
 
 # Sleep Code
 

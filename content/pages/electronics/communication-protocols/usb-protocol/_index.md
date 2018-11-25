@@ -543,7 +543,7 @@ Note that if you want to use all 5 connections (+ shield, so actually 6!) on USB
 
 
 
-[singlepic id=1067 w=320 h=240 float=center]
+{{< figure src="/images/electronics-misc/molex-mini-usb-type-b-plug-assembly-photo.jpg" caption="A photo of the Molex mini USB type B plug. Image from http://nz.element14.com/molex/47014-0008/mini-usb-type-b-plug-assembly/dp/1355758." caption-position="bottom" width="320px" >}}
 
 
 

@@ -55,7 +55,7 @@ The Due currently has a problem running the OneWire library. The micros() functi
 
 
 
-[singlepic id=966 w=200 h=200 float=right template=caption]
+{{< figure src="/images/electronics-arduino/arduino-uno-pcb.jpg" caption="The Arduino UNO, the first ever Arduino PCB." caption-position="bottom" width="200px" >}}
 
 
 
@@ -99,7 +99,7 @@ I used one of these in the [Luxcity Tonic UV Control System project](http://blog
 
 
 
-[singlepic id=1349 w=200 h=200 float=right template=caption]
+{{< figure src="/images/electronics-arduino/arduino-yun-pcb.jpg" caption="The Arduino Yun, a PCB with both a real-time Arduino microcontroller and Linux-based microprocessor." caption-position="bottom" width="200px" >}}
 
 
 

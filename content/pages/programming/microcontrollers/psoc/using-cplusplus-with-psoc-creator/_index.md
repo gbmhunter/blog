@@ -19,7 +19,7 @@ To some degree PSoC Creator disregards the code file extensions, and passes all 
 
 But you'll notice that if you right-click a file called main.cpp, the 'Build Settings' option has gone! To get this back, from the same menu, select properties. **Then change the "File Type" to C_FILE.** Now the "Build Settings" option will be availiable for main.cpp. Select this, and navigate to Compiler->Command Line. In the "Custom Flags" box, enter the flag -x c++.
 
-[singlepic id=854 w=800 h=700 float=center template=caption]
+{{< figure src="/images/programming-psoc/psoc-creator-build-settings-command-line-custom-flags.png" caption="Adding custom command line flags in PSoC Creator to force GCC to use the C++ compiler." caption-position="bottom" width="800px" >}}
 
 Also, when you open up .hpp/.cpp files in PSoC Creator, they will not have syntax highlighting, which is rather annoying. Because of this and the C_FILE issue, I use the .h/.c file extension for C++ files, since the compiler doesn't care anyway. The only difficulty with this is that it makes it hard to easily see what a C++ and what are C code files.
 
@@ -104,15 +104,15 @@ If your dealing with dynamically-allocated arrays, you'll also want to declare t
 
 You'll notice that if you are trying to use your own versions of new and delete, you will get a error from the linker saying undefined reference to __gxx_personality_v0 .
 
-[singlepic id=1099 w=600 h=100 float=center template=caption]
+{{< figure src="/images/programming-psoc/cplusplus-linker-error-undefined-reference-to-gxx-personality.png" caption="Add the custom compile flag '-fno-exceptions' to every .cpp file you want to compile in PSoC Creator to prevent the 'undefined reference to __gxx_personality_v0' linker error." caption-position="bottom" width="600px" >}}
 
 and/or the reported error from PSoC Creator saying undefined reference to __cxa_end_cleanup.
 
-[singlepic id=1098 w=600 h=100 float=center template=caption]
+{{< figure src="/images/programming-psoc/c-linker-error-undefined-reference-to-cxa-end-cleanup.png" caption="Add the custom compile flag '-fno-exceptions' to every .cpp file you want to compile in PSoC Creator to prevent the 'undefined reference to __cxa_end_cleanup' linker error." caption-position="bottom" width="600px" >}}
 
 To prevent this, you have the to include the build flag -fno-exceptions  to **every .cpp file that produces this error**. To add the build flag to a particular file, right click the file in the Workspace Explorer and click "Build Settings". Then click "Compiler", then "Command Line", and enter "-fno-excpetions" to the "Custom Flags" field.
 
-[singlepic id=1100 w=800 h=700 float=center template=caption]
+{{< figure src="/images/programming-psoc/psoc-creator-build-settings-to-use-new-delete-fno-exceptions.png" caption="Add the custom compile flag '-fno-exceptions' flag via the 'Build Settings' menu in PSoC Creator." caption-position="bottom" width="800px" >}}
 
 Incase you didn't wan't to globally disable exceptoins, you can disable exceptions for the new operator on a case-by-case basis by using the nothrow keyword. For example:
     
@@ -172,13 +172,13 @@ Because of this, I almost use no standard C++ library features for embedded firm
 
 You can safely ignore the "warning: IO function 'xxx' used" messages that pop up while compiling (xxx tends to be _close, _fstat, _isatty, _kill, _lseek, _read, and _write). I don't know exactly what these do, but the programs seem to work fine even though they are used.
 
-[singlepic id=1120 w=700 h=500 float=center template=caption]
+{{< figure src="/images/programming-psoc/psoc-creator-io-function-gcc-build-warnings-cpp.png" caption="The PSoC Creator build warnings that pop up if you compile C++ code. You can safely ignore these." caption-position="bottom" width="700px" >}}
 
 # Debugging
 
 C++ code can be debugged using the MiniProg3 and the in-built debugging facilities in the PSoC Creator IDE, **as long as code optimisation is turned off**. Optimisation is turned off in the build settings for the project, as shown in the image below.
 
-[singlepic id=1107 w=600 h=600 float=center template=caption]
+{{< figure src="/images/programming-psoc/psoc-creator-build-settings-compiler-optimisation-none.png" caption="Setting the compiler optimisation to none in the PSoC Creator project build settings so that C++ code can be debugged just like normal C code." caption-position="bottom" width="600px" >}}
 
 # Interrupts
 

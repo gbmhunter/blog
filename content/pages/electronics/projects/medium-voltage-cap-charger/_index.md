@@ -17,6 +17,6 @@ Maximum Charge Voltage: 500V
 
 This was before I knew what a boost converter was, so I used the Aahz's Boost Converter  design (member of the www.4hv.org forum). A blurry schematic (the only one I have!) of his design is shown below.
 
-[singlepic id=658 w=400 h=400 float=center]
+{{< figure src="/images/electronics-mediumvoltagecapcharger/aahzs-boost-converter-schematic.jpg" caption="" caption-position="bottom" width="400px" >}}
 
 The only thing I would do differently would be to improve the MOSFET switching, as it gets very hot during use. Something is causing the MOSFET to remain in it's linear region for too long.

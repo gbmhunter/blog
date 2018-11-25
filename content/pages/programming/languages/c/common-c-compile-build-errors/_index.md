@@ -50,7 +50,7 @@ Usually occurs when you are doing memory arithmetic, and can actually be a warni
 
 
 
-[singlepic id=1081 w=700 h=240 float=center]
+{{< figure src="/images/programming-c-builderrors/elf-section-bss-will-not-fit-in-region-ram.png" caption="C build error 'elf section '.bss' will not fit in region 'ram'" caption-position="bottom" width="700px" >}}
 
 
 
@@ -68,7 +68,7 @@ The .bss section contains all 0-initialized global and static variables. This er
 
 
 
-[singlepic id=775 w=500 h=240 float=center]
+{{< figure src="/images/programming-misc/c-warning-suggesed-parentheses-around-assignment-used-as-truth-value.png" caption="A warning message from the C compiler." caption-position="bottom" width="500px" >}}
 
 
 
@@ -106,7 +106,7 @@ This is usually because you've forgotten to add the second '=' in the if stateme
 
 
 
-[singlepic id=815 w=500 h=240 float=center]
+{{< figure src="/images/programming-misc/c-build-error-subscripted-value-is-neither-array-nor-pointer.png" caption="The C build error 'subscripted value is neither array nor pointer'." caption-position="bottom" width="500px" >}}
 
 
 
@@ -140,7 +140,7 @@ Normally occurs when you try and index something like an array which isn't. For 
 
 
 
-[singlepic id=852 w=500 h=240 float=center]
+{{< figure src="/images/programming-misc/c-build-warning-pragma-once-in-main-file.png" caption="The C compiler warning '#pragma once in main file' which occurs when the directive '#pragma once' is incorrectly placed in a .c file." caption-position="bottom" width="500px" >}}
 
 
 
@@ -158,7 +158,7 @@ This occurs when you incorrectly write "#pragma once" in a .c file (even though 
 
 
 
-[singlepic id=853 w=500 h=240 float=center]
+{{< figure src="/images/programming-misc/c-build-error-variable-or-field-declared-void.png" caption="The C build error 'Variable or field declared void'." caption-position="bottom" width="500px" >}}
 
 
 
@@ -214,7 +214,7 @@ If you get the error macro names must be indentifiers it is usually because yo
 
 
 
-[singlepic id=1048 w=500 h=240 float=center]
+{{< figure src="/images/programming-psoc/keil-c51-build-error-not-in-formal-parameter-list.png" caption="The 'not in formal parameter list' build error is most likely to occur when you have forgotten to add the semi-colon at the end of a function declaration." caption-position="bottom" width="500px" >}}
 
 
 

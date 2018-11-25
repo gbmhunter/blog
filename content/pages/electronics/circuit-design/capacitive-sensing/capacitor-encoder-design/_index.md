@@ -117,10 +117,10 @@ The Altium script takes input variables such as N track length, number of passiv
 <tbody >
 <tr >
 
-<td >[singlepic id=1051 w=400 h=400 float=center]
+<td >{{< figure src="/images/electronics-capacitiveencoders/linear-nm1-cap-encoder-passive-pcb-image.png" caption="A linear capacitive encoder passive PCB." caption-position="bottom" width="400px" >}}
 </td>
 
-<td >[singlepic id=1050 w=400 h=400 float=center]
+<td >{{< figure src="/images/electronics-capacitiveencoders/linear-nm1-cap-encoder-active-pcb-image.png" caption="A linear capacitive encoder active PCB." caption-position="bottom" width="400px" >}}
 </td>
 </tr>
 <tr >
@@ -143,10 +143,10 @@ A rotational capacitive encoder design is very much like the linear one, except 
 <tbody >
 <tr >
 
-<td >[singlepic id=1053 w=400 h=400 float=center]
+<td >{{< figure src="/images/electronics-capacitiveencoders/rotational-nm1-capacitive-encoder-passive-pcb-image.png" caption="A rotational capacitive encoder passive PCB." caption-position="bottom" width="400px" >}}
 </td>
 
-<td >[singlepic id=1052 w=400 h=400 float=center]
+<td >{{< figure src="/images/electronics-capacitiveencoders/rotational-nm1-capacitive-encoder-active-pcb-image.png" caption="A rotational capacitive encoder active PCB." caption-position="bottom" width="400px" >}}
 </td>
 </tr>
 <tr >
@@ -170,7 +170,7 @@ The reason I recommend adding a dielectric is that it **stabilizes** the capacit
 
 I achieved good results when using 0.165mm thick acrylic adhesive transfer tape (3M code 467MP), as shown below.
 
-[singlepic id=1055 w=400 h=400 float=center]
+{{< figure src="/images/electronics-capacitiveencoders/165um-dielectric-3m-467mp-half-peeled-off-backing.jpg" caption="165um plastic dielectric (3M 467MP)." caption-position="bottom" width="400px" >}}
 
 
 ## Maximum Velocities
@@ -193,15 +193,15 @@ The skewing can be prevented by:
 
 The following image shows the individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm).
 
-[singlepic id=1071 w=800 h=1000 float=center]
+{{< figure src="/images/electronics-capacitiveencoders/cap-encoder-individual-cdc-waveform-graphs-for-both-tracks.jpg" caption="The individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm)." caption-position="bottom" width="800px" >}}
 
 The following image shows the grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm).
 
-[singlepic id=1070 w=800 h=1000 float=center]
+{{< figure src="/images/electronics-capacitiveencoders/cap-encoder-grouped-cdc-waveform-graphs-for-both-tracks.jpg" caption="The grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm)." caption-position="bottom" width="800px" >}}
 
 What makes the signal processing difficult is that the channels of CDC values can have different offset's. The graph below shows this (notice the light green channel which has a much higher offset than all the others.
 
-[singlepic id=1073 w=800 h=1000 float=center]
+{{< figure src="/images/electronics-capacitiveencoders/cdc-vs-time-graph-showing-different-offsets-of-each-channel.jpg" caption="CDC values vs. time graph showing the different offsets each channel can have." caption-position="bottom" width="800px" >}}
 
 
 # Firmware And Algorithm
@@ -284,7 +284,7 @@ The absolute position can be found if the capacitive encoder has two tracks (usi
 
 The phase difference between the tracks increments stepwise every time the N track loop phase distance loops from max to 0 (the encoder is moving in the forward direction) decrements in the same fashion every time the phase distance loops from 0 to max. The graph below shows the phase difference incrementing (nosily) by about 0.95 everytime the N track completes one cycle.
 
-[singlepic id=1074 w=800 h=1000 float=center]
+{{< figure src="/images/electronics-capacitiveencoders/cdc-phase-difference-graph-showing-noisy-stepwise-increments.jpg" caption="Graph showing the stepwise incrementing of the phase difference between the two calculated positions of the CDC tracks." caption-position="bottom" width="800px" >}}
 
 A maths function, Maths_RoundToPrecision() needs to be used to round the phase difference to the closest expected value.
 

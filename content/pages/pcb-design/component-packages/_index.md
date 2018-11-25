@@ -62,7 +62,7 @@ Some items such as the [PP3 9V battery case](http://blog.mbedded.ninja/pcb-desig
 
 
 
-[singlepic id=297 w=160 h=120 float=right]
+{{< figure src="/images/electronics-misc/sparkfun-break-out-board.jpg" caption="A SOIC-8 to DIP break-out board made by SparkFun." caption-position="bottom" width="160px" >}}
 
 
 

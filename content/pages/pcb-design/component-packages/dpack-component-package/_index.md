@@ -207,9 +207,9 @@ If DPAK is referred to by itself, with no pin number indication (e.g. DPAK3, DPA
 
 
 
-[singlepic id=725 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-to-252-5-recommended-land-pattern.png" caption="The recommended PCB land pattern for the TO-252-5 component package. Image from Ricoh TO-252 Package Information (http://www.ricoh.com/LSI/product_power/pkg/to-252-5-p2.pdf)." caption-position="bottom" width="500px" >}}
 
 
 
 
-[singlepic id=335 w=400 h=400 float=center template=caption]
+{{< figure src="/images/electronics-packages/to-252-3d-model.jpg" caption="3D model of the TO-252 (DPACK) package." caption-position="bottom" width="400px" >}}

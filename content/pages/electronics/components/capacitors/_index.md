@@ -576,7 +576,7 @@ where:
 
 ## Single Disc Capacitance
 
-[singlepic id=1061 w=320 h=240 float=center template=caption]
+{{< figure src="/images/electronics-misc/diagram-for-disc-capacitance-equation.png" caption="Diagram for the disc-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf." caption-position="bottom" width="320px" >}}
 
 The capacitance of a single thin plate, with  a ground at 'infinity' (or more practically, just very far away) is:
 
@@ -591,7 +591,7 @@ where:
 
 ## Sphere Capacitance
 
-[singlepic id=1062 w=320 h=240 float=center template=caption]
+{{< figure src="/images/electronics-misc/diagram-for-sphere-capacitance-equation.png" caption="Diagram for the sphere-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf." caption-position="bottom" width="320px" >}}
 
 The capacitance of a single sphere, again, with a ground at infinity is:
 
@@ -620,7 +620,7 @@ where:
 
 ## Concentric Cylinder Capacitance
 
-[singlepic id=1060 w=320 h=240 float=center template=caption]
+{{< figure src="/images/electronics-misc/diagram-for-coaxial-cylinders-capacitance-equation.png" caption="Diagram for the coaxial cylinder capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf." caption-position="bottom" width="320px" >}}
 
 The capacitance of two concentric cylinders as shown in the diagram above is:
 

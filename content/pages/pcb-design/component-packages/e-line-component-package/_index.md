@@ -154,4 +154,4 @@ Very similar to the common TO-92 package, except it is a little flatter (e.g. sq
 
 
 
-[singlepic id=875 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-e-line-outline-and-dimensions.png" caption="The dimensions for the E-line component package. Image from http://www.diodes.com/zetex/_pdfs/3.0/pack/E-Line.pdf." caption-position="bottom" width="500px" >}}

@@ -167,4 +167,4 @@ Same general package dimensions as the standard SOIC but with J-type leads rathe
 
 
 
-[singlepic id=534 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/ic-package-soj-28.jpg" caption="Photo of a SOJ-28 package, a variant of the SOIC package with J-type leads." caption-position="bottom" width="500px" >}}

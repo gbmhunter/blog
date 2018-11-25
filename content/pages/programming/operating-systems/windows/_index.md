@@ -106,7 +106,7 @@ In Windows 95 and 98, two versions of xcopy are natively available, xcopy and xc
 
 There are more advanced command-line Windows copy programs, such as robocopy, which supports resuming. If you are looking for a GUI, try RichCopy. Although I have had RichCopy v4.0 crash on me when coming across multiple files which have file names too long for Windows to support.
 
-[singlepic id=1148 w=600 h=450 float=center template=caption]
+{{< figure src="/images/programming-misc/rich-copy-crashed-on-long-file-names.png" caption="RichCopy has crashed for me when encountering a large number of files with filenames 'too long' for windows to deal with." caption-position="bottom" width="600px" >}}
 
 
 ## robocopy

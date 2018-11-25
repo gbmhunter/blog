@@ -22,7 +22,7 @@ Inductors are passive electronic components which store energy as a magnetic fie
 
 
 
-[singlepic id=1414 width=600 height=450 float=center template=caption]
+{{< figure src="/images/electronics-misc/3-35uh-20a-large-inductor.jpg" caption="A 3.35uH 20A large inductor." caption-position="bottom"  >}}
 
 
 

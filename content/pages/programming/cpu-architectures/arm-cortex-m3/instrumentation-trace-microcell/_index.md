@@ -11,7 +11,7 @@ The ITM can be used to redirect printf() function calls. This allows a printf()
 
 The ITM is part of the Coresight debugging and trace system, shown in the right of the below diagram.
 
-[singlepic id=1168 w=600 h=600 float=center template=caption]
+{{< figure src="/images/programming-misc/core-sight-debug-and-trace-overview-diagram-for-arm-cortex-m3.png" caption="The ARM Cortex-M3 Coresight debug and trace overview diagram. Image from http://www.keil.com/support/man/docs/ulink2/ulink2_cs_core_sight.htm." caption-position="bottom" width="600px" >}}
 
 printf()  ultimately relies on the function fputc() to do the low-level character outputting. So this is the function we are going to replace. The following code shows the re-definition of fputc().
 

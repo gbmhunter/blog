@@ -27,7 +27,7 @@ A long-standing bug with Oracles VirtualBox and the popular Linux text editor, G
 
 
 
-[singlepic id=1136 w=800 h=300 float=center template=caption]
+{{< figure src="/images/programming-linux/gedit-save-to-shared-virtual-box-folder-text-file-busy-error.png" caption="The workaround, to enable the 'Save Backup Copy' option in the preferences, and hit the save button twice." caption-position="bottom" width="800px" >}}
 
 
 
@@ -47,7 +47,7 @@ The only workaround I am aware of is to enable the "Save Backup Copy" option in 
 
 
 
-[singlepic id=1135 w=500 h=400 float=center template=caption]
+{{< figure src="/images/programming-linux/gedit-preferences-enabling-save-backup-copy-to-stop-file-busy-error.png" caption="The 'File Busy' error that you get when trying to save a file across a mounted, shared folder from within Linux system running Gedit." caption-position="bottom" width="500px" >}}
 
 
 

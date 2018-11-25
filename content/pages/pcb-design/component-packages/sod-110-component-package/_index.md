@@ -139,4 +139,4 @@ n/a
 
 
 
-[singlepic id=726 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-sod-110-2d-outline-with-dimensions.png" caption="The dimensions of the SOD-110 component package. Image from NXP SOD-110 Package Outline (http://www.nxp.com/documents/outline_drawing/sod110_po.pdf)" caption-position="bottom" width="600px" >}}

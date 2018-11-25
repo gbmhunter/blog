@@ -153,9 +153,9 @@ Exclusively used by NXP for some of their RFID inlays. I'm not sure why they lab
 
 
 
-[singlepic id=1115 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-sot-1040-1-outline-drawing.png" caption="The dimensions of the SOT-1040-1 component package. Image from http://www.nxp.com/packages/SOT1040-1.html." caption-position="bottom" width="600px" >}}
 
 
 
 
-[singlepic id=1114 w=200 h=200 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-sot-1040-1-3d-model.gif" caption="The 3D model of the SOT-1040-1 component package. Image from http://www.nxp.com/documents/outline_3d/sot1040-1_3d.gif." caption-position="bottom" width="200px" >}}

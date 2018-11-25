@@ -25,7 +25,7 @@ The results from the 2012 embedded survey were interesting...
 
 
 
-[singlepic id=1151 w=650 h=550 float=center]
+{{< figure src="/images/programming-misc/embedded-vendor-which-has-the-best-ecosystem.png" caption="Results from a embedded design survey, showing what microcontroller users thought has the best ecosystem." caption-position="bottom" width="650px" >}}
 
 
 

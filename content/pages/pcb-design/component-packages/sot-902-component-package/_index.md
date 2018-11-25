@@ -164,10 +164,10 @@ NXP seems to be the only manufacturer who uses this package.
 <tbody >
 <tr >
 
-<td >[singlepic id=1105 w=400 h=400 float=cendter template=caption]
+<td >{{< figure src="/images/electronics-packages/component-package-sot-902-3-nxp-xqfn8-dimensions.png" caption="The dimensions for the SOT-902-3 component package. Image from http://www.nxp.com/documents/outline_drawing/sot902-3_po.pdf." caption-position="bottom" width="400px" >}}
 </td>
 
-<td >[singlepic id=1106 w=400 h=400 float=center template=caption]
+<td >{{< figure src="/images/electronics-packages/component-package-sot-902-3-nxp-xqfn8-land-pattern.png" caption="The land pattern for the SOT-902-3 component package. Image from http://www.nxp.com/documents/reflow_soldering/sot902-3_fr.pdf." caption-position="bottom" width="400px" >}}
 </td>
 </tr>
 </tbody>

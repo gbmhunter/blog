@@ -12,7 +12,7 @@ Sometimes you run into the issue of the background "running out" before the page
 
 
 
-[singlepic id=1112 w=800 h=700 float=center template=caption]
+{{< figure src="/images/programming-opencart/open-cart-background-running-out-before-content-finishes.jpg" caption="Sometime the background finishes before the content does. Usually this is because either the image has run out or the container holding the image (usually a DIV element) does not fully encompass its child elements." caption-position="bottom" width="800px" >}}
 
 
 

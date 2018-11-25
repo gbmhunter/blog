@@ -126,7 +126,7 @@ Motor Power Wire thickness (individual): 3.25mm (OD)
 
 
 
-[singlepic id=391 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-electricskateboard-secondprototype/bdc-motor-01.jpg" caption="The new 800W, 36V brushed motor I got after the BLDC motor blew up." caption-position="bottom" width="600px" >}}
 
 
 
@@ -214,7 +214,7 @@ I had a sneak peak around in the guts of this thing, and I discovered that it ha
 
 
 
-[singlepic id=604 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-electricskateboard/2012-06-15-18-31-28.jpg" caption="The quarter-bridge motor driver that I ended up buying from AliExpress." caption-position="bottom" width="600px" >}}
 
 
 
@@ -313,7 +313,7 @@ The battery was brought from AliExpress.
 </table>
 
 
-[singlepic id=419 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-electricskateboard-secondprototype/2012-01-29-15-05-51.jpg" caption="Working out how to mount the 48V 10Ah LiFePO battery onto the bottom of the board. The foam is used to pad the battery and protect it when the board flexes during use." caption-position="bottom" width="600px" >}}
 
 
 
@@ -356,7 +356,7 @@ The battery management system came with the LiFePo battery. It protects the batt
 </table>
 
 
-[singlepic id=487 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-electricskateboard-final-mech/2012-02-25-16-20-34.jpg" caption="" caption-position="bottom" width="600px" >}}
 
 
 
@@ -439,7 +439,7 @@ The battery management system came with the LiFePo battery. It protects the batt
 </table>
 
 
-[singlepic id=442 w=500 h=500 float=center]
+{{< figure src="/images/electronics-electricskateboard-final-mech/skateboard-electronic-enclsoure-product-photo.jpg" caption="" caption-position="bottom" width="500px" >}}
 
 
 
@@ -503,7 +503,7 @@ Used for seeing where you are riding at night, and for cars to see you. The red 
 
 
 
-[singlepic id=545 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-electricskateboard-final-mech/2012-04-25-13-26-51.jpg" caption="" caption-position="bottom" width="500px" >}}
 
 
 
@@ -635,7 +635,7 @@ After the low-side MOSFET power switch idea failed, I decided to use a high-powe
 </table>
 
 
-[singlepic id=607 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-electricskateboard/2012-06-16-10-41-45.jpg" caption="The relay I decided to use after my low-side MOSFET for turning the board on didn't work. Next to a 9V battery for size comparison." caption-position="bottom" width="600px" >}}
 
 
 
@@ -650,7 +650,7 @@ As mentioned, the wheels were also brought from Green Skate. If you are imaginin
 
 
 
-[singlepic id=378 w=600 h=600 float=center]
+{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6309.jpg" caption="One of the four pneumatic wheels used on the electric skateboard." caption-position="bottom" width="600px" >}}
 
 
 
@@ -738,7 +738,7 @@ Technology: Brushless DC (BLDC)
 
 
 
-[singlepic id=401 w=600 h=600 float=center]
+{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6210.jpg" caption="A supposedly '3kW' BLDC motor I got from Hobby King." caption-position="bottom" width="600px" >}}
 
 
 
@@ -769,7 +769,7 @@ Chemistry: Li-Po
 
 
 
-[singlepic id=404 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6221.jpg" caption="A lithium-ion polymer battery from Hobby King." caption-position="bottom" width="600px" >}}
 
 
 
@@ -807,7 +807,7 @@ An electronic speed controller (ESC) in hobby circles is a power circuit which c
 
 
 
-[singlepic id=405 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6226.jpg" caption="" caption-position="bottom" width="600px" >}}
 
 
 

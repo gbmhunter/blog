@@ -180,14 +180,14 @@ If the pin number isn't specified, it is likely to be the 3 pin variant (this is
 
 
 
-[singlepic id=1188 w=800 h=1000 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-sot-323-5-dimensions-and-land-pattern.png" caption="Dimensions and recommended land pattern for the SOT-323-5 (SC-70-5) component package." caption-position="bottom" width="800px" >}}
 
 
 
 
-[singlepic id=1187 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-sot-323-3-3d-model.jpg" caption="3D model of the SOT-323-3 (SC-70-3) component package." caption-position="bottom" width="500px" >}}
 
 
 
 
-[singlepic id=1186 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-sot-323-5-3d-model.jpg" caption="3D model of the SOT-323-5 (SC-70-5) component package." caption-position="bottom" width="500px" >}}

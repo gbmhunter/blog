@@ -10,7 +10,7 @@ url: /programming/languages/c-sharp/graph-drawing
 # NPlot
 
 
-[singlepic id=315 w=300 h=300 float=right]
+{{< figure src="/images/programming-misc/nplot-screenshot.png" caption="Screenshot of the NPlot charting library for .NET. Features a 2D candleplot, filled region, line plot and datetime axis." caption-position="bottom" width="300px" >}}
 
 
 
@@ -67,7 +67,7 @@ OxyPlot has the ability to smooth out plot lines automatically, which can be ena
 # RadChart
 
 
-[singlepic id=316 w=300 h=300 float=right]
+{{< figure src="/images/programming-misc/telerik-radchart-screenshot.png" caption="Screenshot of the Telerik charting library for .NET applications. Comes with some very nice skins and tutorials." caption-position="bottom" width="300px" >}}
 
 
 
@@ -147,7 +147,7 @@ _(click on any code example to expand)_
 # ZedGraph
 
 
-[singlepic id=317 w=300 h=300 float=right]
+{{< figure src="/images/programming-misc/zedgraph-screenshot.png" caption="Screenshot of the ZedGraph charting library for .NET. One of the most powerful and widely used free charting libraries." caption-position="bottom" width="300px" >}}
 
 
 

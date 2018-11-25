@@ -18,7 +18,7 @@ Bodied rockets are rockets which have the traditional 'look' of a rocket. They h
 
 The '5min' rocket was built purely for fun. The '5min' stands for the 5 minutes (or less) it took to construct the rocket body. Naturally, no thought went into the design of the body. Bits were glued on here and there until it looked aesthetically close enough to what a real rocket should look like.
 
-[singlepic id=151 w=320 h=240 float=center template=caption]
+{{< figure src="/images/pyrotechnics-rocketry/5min_rocket.jpg" caption="The 5min rocket. Visual appearance came second to construction speed." caption-position="bottom" width="320px" >}}
 <table cellpadding="1" cellspacing="1" border="1" >
 <tbody >
 <tr >
@@ -47,9 +47,9 @@ The Tiger rocket was the first 'bodied' rocket that I built, after experimenting
 The rocket only every got one test flight, due to problems making the black powder motors work reliably. The one test flight was not too successful. It launched of the pad, did an abrupt 180, and plowed straight back into the ground, most likely due to the heavy plaster of paris nose cone. The center of gravity was defiantly forward of the centre of drag on this rocket.
 
 
-[singlepic id=152 w=320 h=240 float=center template=caption]
+{{< figure src="/images/pyrotechnics-rocketry/tiger_rocket_01.jpg" caption="The 'Tiger' rocket. Painted with fluro colours so it was easy to find in a paddock." caption-position="bottom" width="320px" >}}
 
 
 
 
-[singlepic id=153 w=320 h=240 float=center template=caption]
+{{< figure src="/images/pyrotechnics-rocketry/tiger_rocket_02.jpg" caption="The rocket motors that went in the 'Tiger' rocket." caption-position="bottom" width="320px" >}}

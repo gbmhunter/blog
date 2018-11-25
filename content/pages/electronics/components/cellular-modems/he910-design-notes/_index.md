@@ -173,7 +173,7 @@ The HE910 family of modems come in a LGA component package. It has selectively d
 
 3 of the pads on the footprint have "do not route" areas surrounding three of their sides (these are the main cellular antenna, the optional diversity antenna, and the GPS antenna). Make sure to not include and tracks or ground planes in these areas.
 
-[singlepic id=1293 w=700 h=700 float=center template=caption]
+{{< figure src="/images/electronics-components/he910-component-footprint-with-keepouts.png" caption="The Telit HE-910 cellular modem component footprint (a LGA-style footprint) with keepouts around three EMI-sensitive pads." caption-position="bottom" width="700px" >}}
 
 
 ## The Antenna
@@ -209,7 +209,7 @@ The HE910 can be sent AT commands and have it's GPS information read through the
 
 The HE910 can run directly of a Li-Ion battery (3.7V nominal battery voltage). Any other battery chemistry will require buck/boost/lin regulator circuitry to keep the voltage in the allowable range.
 
-[singlepic id=1294 w=700 h=500 float=center template=caption]
+{{< figure src="/images/electronics-components/recommended-power-supply-filter-for-he910.png" caption="The recommended power supply filter for the Telit HE910 cellular modem." caption-position="bottom" width="700px" >}}
 
 The device uses about 40uA when in shutdown. Although this doesn't seem like much, this can result in a large energy loss in a energy critical application (e.g. battery power). Instead of putting the device into shutdown, it can be better to turn-off the power supply to the HE910 instead (most linear regulators/DC-DC converters support this) instead. However, when doing this, note that you have to pay particular attention to any leakage currents that may occur from any connected devices (e.g. a microcontroller) due to the voltage rail collapsing and the internal ESD diodes conducting.
 

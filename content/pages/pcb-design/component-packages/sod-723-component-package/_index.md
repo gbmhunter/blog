@@ -148,9 +148,9 @@ n/a
 
 
 
-[singlepic id=717 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/package-sod-723-recommended-land-pattern.png" caption="The recommended PCB land pattern for the SOD-723 component package." caption-position="bottom" width="500px" >}}
 
 
 
 
-[singlepic id=716 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/package-sod-723-2d-dimensions.png" caption="2D dimensions drawing of the SOD-723 package. Taken from the NXP SOD-723 datasheet (http://www.nxp.com/documents/outline_drawing/sod723_po.pdf)." caption-position="bottom" width="500px" >}}

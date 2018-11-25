@@ -157,4 +157,4 @@ NXP seems to be the only manufacturer who uses this package.
 
 
 
-[singlepic id=950 w=800 h=800 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-footprint-sot-886-land-pattern.png" caption="The PCB land pattern for the SOT-886 component package. Image from http://www.nxp.com/documents/reflow_soldering/sot886_fr.pdf." caption-position="bottom" width="800px" >}}

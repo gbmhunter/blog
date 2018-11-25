@@ -27,4 +27,4 @@ The following image shows the before and after when removing the product count f
 
 
 
-[singlepic id=1111 w=600 h=400 float=center template=caption]
+{{< figure src="/images/programming-opencart/open-cart-product-count-next-to-categories-before-and-after.jpg" caption="Removing the product count from the categories in OpenCart. This uses the free VSmod extension 'Simple Remove Product Count From Categories'." caption-position="bottom" width="600px" >}}

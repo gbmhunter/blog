@@ -195,11 +195,11 @@ Sorted from smallest to largest package size.
 
 The following image shows how you can easily route an 0.2mm thick trace between the pads of a 0805 component.
 
-[singlepic id=564 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/routing-between-0805-footprints.jpg" caption="Routing between the pads of a 0805 footprint (in Altium)." caption-position="bottom" width="500px" >}}
 
 The following image is of 0603 (imperial) SMD components inside a small container.
 
-[singlepic id=971 w=800 h=600 float=center template=caption]
+{{< figure src="/images/my-workshop/smd-container-open-and-closed.jpg" caption="A container from DealExtreme used for holding SMD components (capacitors in this picture)" caption-position="bottom" width="800px" >}}
 
 # SMD Chip Resistors
 

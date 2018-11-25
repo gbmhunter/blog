@@ -28,7 +28,7 @@ The capacitor bank was built from capacitors scrounged from used disposable flas
 
 
 
-[singlepic id=95 w=160 h=120 float=left] [singlepic id=97 w=160 h=120 float=left] [singlepic id=99 w=160 h=120 float=left] [singlepic id=101 w=160 h=120 float=left] [singlepic id=103 w=160 h=120 float=left] [singlepic id=105 w=160 h=120 float=left]
+{{< figure src="/images/electronics-coil-gun-mach-1/cap_01.jpg" caption="Disposable cameras from a Kodak processing store." caption-position="bottom" width="160px" >}} {{< figure src="/images/electronics-coil-gun-mach-1/cap_02.jpg" caption="The circuits inside the disposable cameras." caption-position="bottom" width="160px" >}} {{< figure src="/images/electronics-coil-gun-mach-1/cap_03.jpg" caption="330V 80uF caps from the cameras." caption-position="bottom" width="160px" >}} {{< figure src="/images/electronics-coil-gun-mach-1/cap_04.jpg" caption="Assembled 1920uF 330V capacitor bank." caption-position="bottom" width="160px" >}} {{< figure src="/images/electronics-coil-gun-mach-1/cap_05.jpg" caption="I don't want to touch it." caption-position="bottom" width="160px" >}} {{< figure src="/images/electronics-coil-gun-mach-1/cap_06.jpg" caption="The finished cap bank." caption-position="bottom" width="160px" >}}
 
 
 
@@ -45,4 +45,4 @@ Coil Length = 30mm
 The coil was made with enamelled copper wire and wrapped around a coil former. Two slotted metal sides contain the wire and provide some structural strength. The coil was covered in two-part epoxy to hold the wire in place. The coil is designed to be slipped onto the projectile tube.
 
 
-[singlepic id=107 w=160 h=120 float=left] [singlepic id=109 w=160 h=120 float=left] [singlepic id=111 w=160 h=120 float=left]
+{{< figure src="/images/electronics-coil-gun-mach-1/coil_01.jpg" caption="The cardboard core and two slotted side washers. The slots prevent eddy currents from forming and wasting power." caption-position="bottom" width="160px" >}} {{< figure src="/images/electronics-coil-gun-mach-1/coil_02.jpg" caption="The coil former assembled." caption-position="bottom" width="160px" >}} {{< figure src="/images/electronics-coil-gun-mach-1/coil_03.jpg" caption="The coil completed, ready to slide on the barrel." caption-position="bottom" width="160px" >}}

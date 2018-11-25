@@ -21,7 +21,7 @@ MOSFETs should not be confused with MODFETs (modulation-doped FETs) or MESFETs (
 
 The following image shows the schematic symbol and pin names for both an N-channel and P-channel MOSFET.
 
-[singlepic id=884 w=400 h=400 float=center template=caption]
+{{< figure src="/images/electronics-misc/mosfet-schematic-symbols-n-ch-p-ch.png" caption="The schematic symbol and pin names for both an n-channel and p-channel MOSFET." caption-position="bottom" width="400px" >}}
 
 # Important Parameters
 
@@ -103,7 +103,7 @@ In precise pulse-drive situations, it is desirable for the MOSFET to have simila
 
 FinFET's are multi-fin FET's which overcome issues once MOSFET approach very small sizes (such as 22nm).
 
-[singlepic id=1259 w=600 h=600 float=center template=caption]
+{{< figure src="/images/electronics-misc/3d-model-of-the-structure-of-a-multi-fin-finfet.png" caption="The 3D structure of a multi-fin MOSFET (FinFET)." caption-position="bottom" width="600px" >}}
 
 # Load Switching
 

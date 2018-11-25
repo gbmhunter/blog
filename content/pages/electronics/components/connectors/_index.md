@@ -302,7 +302,7 @@ Mixing the two plating metals is not recommended! The corrosion rate is greatly 
 
 
 
-[singlepic id=1265 w=900 h=600 float=center template=caption]
+{{< figure src="/images/electronics-components/gold-and-tin-plated-contacts.jpg" caption="You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/." caption-position="bottom" width="900px" >}}
 
 
 
@@ -347,7 +347,7 @@ USB plug assemblies (non pre-assembled plugs) are hard to come by. However, they
 
 
 
-[singlepic id=1154 w=400 h=400 float=center template=caption]
+{{< figure src="/images/electronics-connectors/molex-mini-usb-type-b-plug-assembly-photo.jpg" caption="The Molex Mini Usb Type B plug assembly." caption-position="bottom" width="400px" >}}
 
 
 
@@ -362,7 +362,7 @@ Jumpers are used to connect adjacent pins on a header together. They can also be
 
 
 
-[singlepic id=1155 w=550 h=550 float=center template=caption]
+{{< figure src="/images/electronics-connectors/using-jumpers-to-connect-pin-headers-to-test-leads.jpg" caption="A clever way of using jumpers to connect test leads to header pins. Image from http://hackadaycom.files.wordpress.com/2013/06/dgcaicca.jpg." caption-position="bottom" width="550px" >}}
 
 
 

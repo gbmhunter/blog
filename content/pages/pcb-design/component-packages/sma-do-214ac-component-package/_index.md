@@ -73,6 +73,6 @@ Not to be confused with SMD (surface-mount device, the common name for any surfa
 
 # Images
 
-[singlepic id=719 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/package-do-214ac-recommended-land-pattern.png" caption="The recommended PCB land pattern for the DO-214AC component package." caption-position="bottom" width="500px" >}}
 
-[singlepic id=718 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/package-do-214ac-2d-dimensions.png" caption="The dimensions for the DO-214AC component package." caption-position="bottom" width="500px" >}}

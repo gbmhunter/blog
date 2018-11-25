@@ -161,17 +161,17 @@ A variant on the TO-220 package with three leads and the pad (but only has three
 
 
 
-[singlepic id=1003 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-to-220ab-dimensions.png" caption="The dimensions of the TO-220AB component package." caption-position="bottom" width="500px" >}}
 
 
 <table align="center" >
 <tbody >
 <tr >
 
-<td >[singlepic id=1005 w=300 h=220 float=center template=caption]
+<td >{{< figure src="/images/electronics-packages/component-package-to-220ab-photo.jpg" caption="A photo of the TO-220AB component package." caption-position="bottom" width="300px" >}}
 </td>
 
-<td >[singlepic id=1004 w=300 h=300 float=center template=caption]
+<td >{{< figure src="/images/electronics-packages/component-package-to-220ab-mounted-on-heatsink.jpg" caption="A photo of the TO-220AB component package, mounted on a heatsink." caption-position="bottom" width="300px" >}}
 </td>
 </tr>
 </tbody>

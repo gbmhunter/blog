@@ -51,7 +51,7 @@ The normal way of doing this is to perform the switching with back-to-back N-cha
 
 Below is the typical schematic symbol for a solid-state relay, along with a resistor connected to the input to limit the current through the internal LED.
 
-[singlepic id=1178 w=600 h=500 float=center template=caption]
+{{< figure src="/images/electronics-components/solid-state-relay-in-schematic-with-input-resistor.png" caption="This is the typical schematic symbol for a solid-state relay, along with a resistor connected to the input to limit the current through the internal LED." caption-position="bottom" width="600px" >}}
 
 
 # Contact Arrangements
@@ -65,7 +65,7 @@ Double-pole, single-throw (1C)
 
 The following diagram shows three of the most common contact arrangements for relays.
 
-[singlepic id=868 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-misc/relay-form-a-b-c-contact-arrangement.png" caption="Three of the most common contact arrangements for relays. Image from 'http://relays.te.com/pnb.asp'." caption-position="bottom" width="500px" >}}
 
 
 # Inductive Kickback

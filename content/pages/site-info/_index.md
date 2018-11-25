@@ -100,7 +100,7 @@ April 2013: Background Darkened
 
 
 
-[singlepic id=1113 w=700 h=700 float=center template=caption]
+{{< figure src="/images/misc/cladlabs-background-changed-to-black.png" caption="The CladLabs background has been changed to a dark, dark grey (April 2013)." caption-position="bottom" width="700px" >}}
 
 
 

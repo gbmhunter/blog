@@ -84,7 +84,7 @@ One of my friends had a peltier-based portable automotive (12V) heater/cooler fo
 
 
 
-[singlepic id=1388 width=600 height=900 float=center]
+{{< figure src="/images/project-inursery/001-the-heater-chiller-i-started-with.jpg" caption="The automotive heater/chiller I started out with." caption-position="bottom"  >}}
 
 
 
@@ -94,7 +94,7 @@ It can both heat or cool, depending on what way around to connect the power supp
 
 
 
-[singlepic id=1390 width=600 height=400 float=center]
+{{< figure src="/images/project-inursery/003-the-power-input.jpg" caption="The power input to the heater/chiller." caption-position="bottom"  >}}
 
 
 
@@ -104,7 +104,7 @@ Inside the unit there was a metal base tray which connected to the inside-facing
 
 
 
-[singlepic id=1389 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/002-inside-the-chiller.jpg" caption="Inside the chiller." caption-position="bottom"  >}}
 
 
 
@@ -114,7 +114,7 @@ The internal wiring was simple, the input power directly connected to a peltier 
 
 
 
-[singlepic id=1391 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/004-taking-off-the-cover.jpg" caption="Taking of the heater/chillers electronics cover." caption-position="bottom"  >}}
 
 
 
@@ -136,7 +136,7 @@ I had to measure the power usage of the heater/chiller to get an idea on what po
 
 
 
-[singlepic id=1392 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/005-measuring-power-usage.jpg" caption="Meauring the power usage of the heater/cooler using a bench-top power supply." caption-position="bottom"  >}}
 
 
 
@@ -221,7 +221,7 @@ I found a 12V, 5A AC/DC power supply from Jaycar that after measuring the power 
 
 
 
-[singlepic id=1361  width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/011-the-12v-5a-adapter.jpg" caption="The ratings for the PSU." caption-position="bottom"  >}}
 
 
 
@@ -261,7 +261,7 @@ I needed to create space at the top of the heater/chiller for the LCD screen. Th
 
 
 
-[singlepic id=1394  width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/007-cutting-out-hole-for-lcd-screen.jpg" caption="Cutting a hole out for the LCD screen." caption-position="bottom"  >}}
 
 
 
@@ -271,7 +271,7 @@ I needed to create space at the top of the heater/chiller for the LCD screen. Th
 
 
 
-[singlepic id=1358  width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/008-removing-the-polystyrene.jpg" caption="'Sanding' out the polystyrene with a router attachment." caption-position="bottom"  >}}
 
 
 
@@ -281,7 +281,7 @@ Now to test the fit...
 
 
 
-[singlepic id=1359  width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/009-testing-the-fit-of-the-lcd-screen.jpg" caption="Testing the fit of the LCD screen." caption-position="bottom"  >}}
 
 
 
@@ -313,7 +313,7 @@ However, I didn't run into much trouble! The only real problems was that one of 
 
 
 
-[singlepic id=1367  width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/017-h-bridge-completed.jpg" caption="The H-bridge completed." caption-position="bottom"  >}}
 
 
 
@@ -323,7 +323,7 @@ Notice the clip-on black heatsinks for the P-Channel MOSFET's. And the bottom of
 
 
 
-[singlepic id=1368  width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/018-bottom-side-of-h-bridge.jpg" caption="The bottom side of the H-bridge." caption-position="bottom"  >}}
 
 
 
@@ -333,7 +333,7 @@ I utilized the existing fan on the heater/cooler (that was used to cool the exte
 
 
 
-[singlepic id=1375  width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/025-drilling-holes-for-mosfet-cooling.jpg" caption="Drilling holes for redirecting airflow across the H-bridge MOSFETs." caption-position="bottom"  >}}
 
 
 
@@ -368,7 +368,7 @@ I soldered the IC onto the end of some 6-core alarm cable (only using three of t
 
 
 
-[singlepic id=1364 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/014-temp-sensor-ready-to-be-heatshrinked.jpg" caption="The MCP9700E temperature sensor soldered and ready to be heat shrinked." caption-position="bottom"  >}}
 
 
 
@@ -378,7 +378,7 @@ And then heatshrinked it all up to be semi-water-proof and tidy.
 
 
 
-[singlepic id=1365 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/015-temp-sensor-construction-completed.jpg" caption="The temperature sensor construction completed." caption-position="bottom"  >}}
 
 
 
@@ -395,7 +395,7 @@ Animals need light, and since the heater/chilled was fully sealed, it needed an 
 
 
 
-[singlepic id=1370 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/020-the-3-12v-lights.jpg" caption="The 3 12V, 100mA (each) tungsten lights and their holders." caption-position="bottom"  >}}
 
 
 
@@ -405,7 +405,7 @@ I fixed these three lights to the top of the inside of the iNursery.
 
 
 
-[singlepic id=1371 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/021-light-holders-installed.jpg" caption="The light holders installed in the lid of the iNursery." caption-position="bottom"  >}}
 
 
 
@@ -415,7 +415,7 @@ The lights couldn't be driven directly from the Arduino (100mA is too much curre
 
 
 
-[singlepic id=1373 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/023-the-little-daughter-circuit-for-switching-the-lights.jpg" caption="The daughter board for the Arduino to switch on the three lights." caption-position="bottom"  >}}
 
 
 
@@ -425,7 +425,7 @@ This was then soldered directly up to the Arduino PCB (there was no room for con
 
 
 
-[singlepic id=1374 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/024-daughter-board-connected-to-arduino.jpg" caption="The daughter board soldered to the Arduino." caption-position="bottom"  >}}
 
 
 
@@ -435,7 +435,7 @@ You could then select how many lights you wanted turned on (these photos were ta
 
 
 
-[singlepic id=1395 width=950 height=300 float=center]
+{{< figure src="/images/project-inursery/inursery-light-collage.jpg" caption="This collage shows the three levels of lights you can use with the iNursery." caption-position="bottom"  >}}
 
 
 
@@ -445,7 +445,7 @@ The workshop (a.k.a. dining room table, only because the flatmates were all away
 
 
 
-[singlepic id=1372 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/022-messy-workbench.jpg" caption="A messy workbench." caption-position="bottom"  >}}
 
 
 
@@ -467,7 +467,7 @@ I decided to add three "air-pipes", which I mounted in the side of the base. I c
 
 
 
-[singlepic id=1376 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/026-drilling-air-holes.jpg" caption="Drilling holes for the air pipes." caption-position="bottom"  >}}
 
 
 
@@ -477,7 +477,7 @@ To stop wind from blowing through these pipes and removing the heat or "coldness
 
 
 
-[singlepic id=1377 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/027-the-air-pipes.jpg" caption="The air-pipes had black weed matting glued to one end to 'dampen' the air flow." caption-position="bottom"  >}}
 
 
 
@@ -487,7 +487,7 @@ And here are the three air-pipes fully assembled...
 
 
 
-[singlepic id=1381 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/037-the-air-pipes-finished-outside.jpg" caption="The outside of the air-pipes once they have been mounted in the iNursery" caption-position="bottom"  >}}
 
 
 
@@ -504,7 +504,7 @@ I used C++ and a mega-loop structure. I didn't see a need for an RTOS, since the
 
 
 
-[singlepic id=1397 width=600 height=700 float=center]
+{{< figure src="/images/project-inursery/part-of-the-inursery-main-loop-code.png" caption="Part of the iNursery's main mega-loop code." caption-position="bottom"  >}}
 
 
 
@@ -514,7 +514,7 @@ I had difficulty with Arduino IDE's when using custom code sources (which don't 
 
 
 
-[singlepic id=1396 width=600 height=700 float=center]
+{{< figure src="/images/project-inursery/using-arduino-make-file-to-compile-and-upload-in-ubuntu.png" caption="Programming the Arduino using a makefile and Ubuntu." caption-position="bottom"  >}}
 
 
 
@@ -570,7 +570,7 @@ The following collage shows the three states the LCD screen can be in. It cycles
 
 
 
-[singlepic id=1386 width=950 height=300 float=center]
+{{< figure src="/images/project-inursery/inursery-lcd-screen-collage.jpg" caption="The three states the LCD screen can be in." caption-position="bottom"  >}}
 
 
 
@@ -587,7 +587,7 @@ The LCD shield came with five UI buttons. Four are directional (up, down, left, 
 
 
 
-[singlepic id=1378 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/028-inursery-lcd-at-night.jpg" caption="" caption-position="bottom"  >}}
 
 
 
@@ -604,7 +604,7 @@ Luckily, there was some spare space around where the heatsink and existing elect
 
 
 
-[singlepic id=1401 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/045-circuitry-packed-in-inursery.jpg" caption="The H-bridge, terminal blocks, and wiring packed into the small gap where the existing electronics went." caption-position="bottom"  >}}
 
 
 
@@ -614,7 +614,7 @@ And this is what it looked like with the lid closed...
 
 
 
-[singlepic id=1399 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/046-electronics-lid-closed.jpg" caption="The fan, heatsink, H-bridge and existing electronics are all behind this plastic panel." caption-position="bottom"  >}}
 
 
 
@@ -631,7 +631,7 @@ The finished iNursery, when closed!
 
 
 
-[singlepic id=1384 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/040-finished.jpg" caption="The finished iNursery!" caption-position="bottom"  >}}
 
 
 
@@ -641,7 +641,7 @@ The finished iNursery, when open...
 
 
 
-[singlepic id=1385 width=600 height=500 float=center]
+{{< figure src="/images/project-inursery/041-finished-and-open.jpg" caption="The finished iNursery!" caption-position="bottom"  >}}
 
 
 

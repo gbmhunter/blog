@@ -31,11 +31,11 @@ Polumna's are Mexican in origin, and look like an equailteral triangle when comp
 
 Click the image below to get a visual guide on how to fold a polumna. The numbers in the image correspond to the steps below...
 
-[singlepic id=150 w=320 h=240 float=center template=caption]
+{{< figure src="/images/pyrotechnics-polumnas/polumna_construction.jpg" caption="Diagram with instructions on showing how to make a polumna." caption-position="bottom" width="320px" >}}
 
 1. First of cut a 50mm wide by 600mm long strip from the newspaper. Use a whole newspaper and a craft knife to cut through all the pages so you get a thick strip. The take the bottom right corner and fold it over the the left edge, making a smalle triangle.
 
-[singlepic id=146 w=320 h=240 float=center template=caption]
+{{< figure src="/images/pyrotechnics-polumnas/polumna_01.jpg" caption="The layers of newspaper used to make a polumna." caption-position="bottom" width="320px" >}}
 
 2. Take the bottom left corner of the triangle and fold it along the top edge of the triangle so it flips the triangle along its horizontal axis.
 
@@ -43,15 +43,15 @@ Click the image below to get a visual guide on how to fold a polumna. The number
 
 4. This will form and pocket inside the triangle. This is where you pour in about 2 grams of BP or flash powder. Fill the pocket so it is 3/4 full, then place the end of the fuse in the mix.
 
-[singlepic id=147 w=320 h=240 float=center template=caption]
+{{< figure src="/images/pyrotechnics-polumnas/polumna_02.jpg" caption="Wrapping the newspaper into a triangle, filling it with blackpower, and then adding a fuse." caption-position="bottom" width="320px" >}}
 
 5. Carefully keep wrapping the newspaper around the triangle as described in steps 1,2 and 3 until you you've used up all the paper. Use a bit of celotape to keep it wrapped up.
 
-[singlepic id=148 w=320 h=240 float=center template=caption]
+{{< figure src="/images/pyrotechnics-polumnas/polumna_03.jpg" caption="The finished polumna." caption-position="bottom" width="320px" >}}
 
 6. Light and throw!
 
-[singlepic id=149 w=320 h=240 float=center template=caption]
+{{< figure src="/images/pyrotechnics-polumnas/polumna_04.jpg" caption="The remains of a polumna." caption-position="bottom" width="320px" >}}
 
 
 # Video

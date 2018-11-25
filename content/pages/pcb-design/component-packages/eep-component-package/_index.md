@@ -154,4 +154,4 @@ Used by Texas Instruments for some of their higher power DC/DC converters. Has a
 
 
 
-[singlepic id=332 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/eep-dimensions.png" caption="Dimensions of the EEP package." caption-position="bottom" width="500px" >}}

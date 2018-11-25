@@ -147,4 +147,4 @@ Tiny package used for diodes! See the below picture for a comparison of one of t
 
 
 
-[singlepic id=657 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/tiny-sod-923-package-relative-to-usb-conn.jpg" caption="3D model showing the difference between the size of a tiny SOD-923 package and a PCB-mount USB connector." caption-position="bottom" width="500px" >}}

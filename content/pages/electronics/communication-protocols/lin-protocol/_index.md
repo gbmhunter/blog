@@ -51,10 +51,10 @@ Atmel makes SiP (System-in-Package) IC's such as the [ATA6624C](http://www.atmel
 
 Texas Instruments make LIN interface IC's, such as the [TPIC1021DR](http://www.ti.com/product/TPIC1021), which is a cheap (approx US$0.50, as of 2012), simple, SOIC-8, LIN bus driver.
 
-[singlepic id=1015 w=500 h=500 float=center]
+{{< figure src="/images/electronics-misc/lin-bus-example-schematic-ti-tpic1021-and-micro.png" caption="An example schematic using the Texas Instruments TPIC1021 LIN bus driver IC. Image from http://www.ti.com/lit/ds/slis113c/slis113c.pdf." caption-position="bottom" width="500px" >}}
 
 Texas Instruments MSP430 microcontrollers with the USCI_A (Universal Serial Communication Interface) peripheral support the LIN protocol. This includes the MSP430 Value Line (MSP430G2xx), MSP430 2 Series (MSP430F2xx), MSP430 4 Series, MSP430 5 Series, MSP430 6 Series and MSP430 Automotive Series.
 
-[singlepic id=1019 w=250 h=250 float=center]
+{{< figure src="/images/electronics-misc/ti-msp-430-micro-controller-usci-block.png" caption="The USCI_A hardware peripheral block in a MSP430 microcontroller. Image from http://www.ti.com/lit/ds/symlink/msp430g2153.pdf." caption-position="bottom" width="250px" >}}
 
 [Freescale's S08 automotive microcontrollers](http://www.freescale.com/webapp/sps/site/overview.jsp?code=8BITAUTO) have an SCIx peripheral, which support the LIN protocol.

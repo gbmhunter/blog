@@ -24,10 +24,10 @@ Organisation! Component trays are the shiz. When you want a component, they are 
 <tbody >
 <tr >
 
-<td >[singlepic id=67 w=300 h=300 float=center]
+<td >{{< figure src="/images/my-workshop/component_trays_01.jpg" caption="These trays are awesome for storing through-hole components." caption-position="bottom" width="300px" >}}
 </td>
 
-<td >[singlepic id=69 w=300 h=300 float=center]
+<td >{{< figure src="/images/my-workshop/component_trays_02.jpg" caption="20 of them in total." caption-position="bottom" width="300px" >}}
 </td>
 </tr>
 </tbody>
@@ -47,7 +47,7 @@ No, I didn't eat all that ice cream myself. But they are all 2L ice-cream contai
 
 
 
-[singlepic id=93 w=400 h=400 float=center]
+{{< figure src="/images/my-workshop/storage_containers.jpg" caption="Ice cream containers for storage. I didn't eat all that ice cream, honest :-)." caption-position="bottom" width="400px" >}}
 
 
 
@@ -59,7 +59,7 @@ For storing SMD components such as resistors, capacitors, and ferrite beads, I u
 
 
 
-[singlepic id=971 w=600 h=600 float=center]
+{{< figure src="/images/my-workshop/smd-container-open-and-closed.jpg" caption="A container from DealExtreme used for holding SMD components (capacitors in this picture)" caption-position="bottom" width="600px" >}}
 
 
 
@@ -89,7 +89,7 @@ I brought a cheap 0-30V, 0-5A power supply from AliExpress. It is the YH-305D, a
 
 
 
-[singlepic id=1056 w=400 h=400 float=center]
+{{< figure src="/images/my-workshop/single-channel-dc-power-supply-photo.jpg" caption="A single channel DC power supply with variable voltage and current controls." caption-position="bottom" width="400px" >}}
 
 
 
@@ -101,7 +101,7 @@ I also have a high-power DC-DC buck converter that I use when I need high curren
 
 
 
-[singlepic id=1058 w=400 h=400 float=center]
+{{< figure src="/images/my-workshop/12a-buck-converter-from-aliexpress.jpg" caption="A 12A, 4.5-30V in, 0.8-28V out DC-DC buck converter from AliExpress. Rated power is 100W without active cooling, 200W with active cooling." caption-position="bottom" width="400px" >}}
 
 
 
@@ -121,10 +121,10 @@ Hitachi V-1050F 100MHz Oscilloscope - This thing is an ancient beast. I picked i
 <tbody >
 <tr >
 
-<td >[singlepic id=87 w=300 h=300 float=center]
+<td >{{< figure src="/images/my-workshop/oscilloscope_01.jpg" caption="Old-skurl oscilloscope." caption-position="bottom" width="300px" >}}
 </td>
 
-<td >[singlepic id=89 w=300 h=300 float=center]
+<td >{{< figure src="/images/my-workshop/oscilloscope_02.jpg" caption="Testing with the oscilloscope." caption-position="bottom" width="300px" >}}
 </td>
 </tr>
 </tbody>
@@ -138,7 +138,7 @@ As of 2012 I got a new oscilloscope, a Rigol ADS 1102CAL. It has a 100MHz bandwi
 
 
 
-[singlepic id=695 w=500 h=500 float=center]
+{{< figure src="/images/my-workshop/2012-07-19-19-13-37.jpg" caption="The new Rigol ADS 1102CAL oscilloscope." caption-position="bottom" width="500px" >}}
 
 
 
@@ -180,7 +180,7 @@ The particular [Saleae](http://www.saleae.com/) "[Logic](http://www.saleae.com/l
 
 
 
-[singlepic id=1059 w=400 h=400 float=center]
+{{< figure src="/images/my-workshop/digital-logic-analyzer.jpg" caption="A digital logic analyser." caption-position="bottom" width="400px" >}}
 
 
 
@@ -210,7 +210,7 @@ Plenty of industrial, hard-wearing and/or long-distance electrical equipment use
 
 
 
-[singlepic id=1092 w=500 h=250 float=center template=caption]
+{{< figure src="/images/electronics-teardowns-cavro-xl3000/usb-serial-port-for-rs-485-converter-in-device-manager.png" caption="When installing a USB-to-RS485/422 converter, it installs a virtual COM port under the Device Manager in Windows." caption-position="bottom" width="500px" >}}
 
 
 
@@ -271,7 +271,7 @@ Supported transmission speeds are:
 
 
 
-[singlepic id=1088 w=600 h=800 float=center template=caption]
+{{< figure src="/images/my-workshop/dt5019-usb-to-rs-485-converter-photo.jpg" caption="The DT-5019 USB-to-RS-485 converter, with supplied terminal block breakout board." caption-position="bottom" width="600px" >}}
 
 
 
@@ -315,13 +315,13 @@ These pics below are of my largest capacitors, 20 1800uF, 500V monstrosities. I 
 <tbody >
 <tr >
 
-<td >[singlepic id=61 w=250 h=300 float=center]
+<td >{{< figure src="/images/my-workshop/1800uf_500v_caps_01.jpg" caption="They are big, and they are powerful." caption-position="bottom" width="250px" >}}
 </td>
 
-<td >[singlepic id=63 w=250 h=300 float=center]
+<td >{{< figure src="/images/my-workshop/1800uf_500v_caps_02.jpg" caption="Capacitor size comparison." caption-position="bottom" width="250px" >}}
 </td>
 
-<td >[singlepic id=65 w=250 h=300 float=center]
+<td >{{< figure src="/images/my-workshop/1800uf_500v_caps_03.jpg" caption="The collection of large capacitors." caption-position="bottom" width="250px" >}}
 </td>
 </tr>
 </tbody>
@@ -337,18 +337,18 @@ My 'monster' cap bank. Me and a mate made this in 2005 for a coil gun. Each capa
 <tbody >
 <tr >
 
-<td >[singlepic id=75 w=250 h=300 float=center]
+<td >{{< figure src="/images/my-workshop/monster_cap_bank_01.jpg" caption="The bank from above. Made with disposable camera caps." caption-position="bottom" width="250px" >}}
 </td>
 
-<td >[singlepic id=83 w=250 h=300 float=center]
+<td >{{< figure src="/images/my-workshop/monster_cap_bank_05.jpg" caption="Damaged caps." caption-position="bottom" width="250px" >}}
 </td>
 </tr>
 <tr >
 
-<td >[singlepic id=85 w=250 h=300 float=center]
+<td >{{< figure src="/images/my-workshop/monster_cap_bank_06.jpg" caption="Width comparison." caption-position="bottom" width="250px" >}}
 </td>
 
-<td >[singlepic id=81 w=250 h=300 float=center]
+<td >{{< figure src="/images/my-workshop/monster_cap_bank_04.jpg" caption="Damaged tracks! I think someone ran over it." caption-position="bottom" width="250px" >}}
 </td>
 </tr>
 </tbody>
@@ -373,7 +373,7 @@ PCB's are useful when developing a circuit past the quick prototype stage. I hav
 
 
 
-[singlepic id=91 w=400 h=400 float=center]
+{{< figure src="/images/my-workshop/pcbs.jpg" caption="Collection of proto-typing and solid copper boards for making up circuits." caption-position="bottom" width="400px" >}}
 
 
 
@@ -385,7 +385,7 @@ PCB's are useful when developing a circuit past the quick prototype stage. I hav
 
 
 
-[singlepic id=668 w=200 h=200 float=left]
+{{< figure src="/images/electronics-misc/hene-laser-tube.jpg" caption="The HeNe laser, looking down the 'barrel'." caption-position="bottom" width="200px" >}}
 
 
 
@@ -397,7 +397,7 @@ PCB's are useful when developing a circuit past the quick prototype stage. I hav
 
 
 
-[singlepic id=667 w=300 h=300 float=center]
+{{< figure src="/images/electronics-misc/hene-laser-3kv-power-supply.jpg" caption="The power supply for a 3kV HeNe laser." caption-position="bottom" width="300px" >}}
 
 
 

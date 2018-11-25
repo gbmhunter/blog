@@ -161,7 +161,7 @@ As part of the compile process, a very nice table showing the utilisation of the
 
 As shown in the image below, the table shows you useful things like how many of the following you are using: UDB Macrocells and Datapath Cells, analog and digital clock dividers, DMA channels, interrupts and pins.
 
-[singlepic id=1433 width=500 height=800 float=center template=caption]
+{{< figure src="/images/programming-psoc/psoc-creator-verilog-report-file-technology-mapping-summary-hardware-utilisation.png" caption="The PSoC Creator 'Technology Mapping Table' in the .rpt file, showing a breakdown of the hardware utilisation." caption-position="bottom"  >}}
 
 # Bugs
 

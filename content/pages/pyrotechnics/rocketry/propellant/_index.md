@@ -18,15 +18,15 @@ KNDX stands for potassium nitrate-dextrose, and is a easy-to-make rocket propell
 
 Not melted.
 
-[singlepic id=934 w=600 h=600 float=center template=caption]
+{{< figure src="/images/pyrotechnics-rocketry-38pvc/46-melting-kndx-01.jpg" caption="KNDX just beginning to melt." caption-position="bottom" width="600px" >}}
 
 Half melted.
 
-[singlepic id=935 w=600 h=600 float=center template=caption]
+{{< figure src="/images/pyrotechnics-rocketry-38pvc/47-melting-kndx-02.jpg" caption="KNDX half melted." caption-position="bottom" width="600px" >}}
 
 Fully melted.
 
-[singlepic id=936 w=600 h=600 float=center template=caption]
+{{< figure src="/images/pyrotechnics-rocketry-38pvc/48-melting-kndx-03.jpg" caption="KNDX fully melted." caption-position="bottom" width="600px" >}}
 
 
 ## The End Result
@@ -34,4 +34,4 @@ Fully melted.
 
 The propellant grains in this image have been made rather poorly, notice the cracks and uneven surface!
 
-[singlepic id=943 w=600 h=600 float=center template=caption]
+{{< figure src="/images/pyrotechnics-rocketry/knsx-propellant-and-casings.jpg" caption="KNSX propellant and casings." caption-position="bottom" width="600px" >}}

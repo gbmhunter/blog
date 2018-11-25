@@ -73,4 +73,4 @@ Cylindrical shaped components. Not very popular because they have a tendency to
 
 # Other Images
 
-[singlepic id=789 w=500 h=500 float=center template=caption]
+{{< figure src="/images/electronics-packages/component-package-sod-80-dimensions-and-land-pattern.gif" caption="Image from http://www.topline.tv/drawings/images/MELF_Diodes/SOD80.gif." caption-position="bottom" width="500px" >}}

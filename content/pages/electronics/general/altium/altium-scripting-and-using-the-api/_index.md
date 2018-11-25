@@ -349,7 +349,7 @@ The [DeleteSchematicParameters,vbs script in the AltiumScriptCentral](https://gi
 
 You can get the following error when trying to save if you haven't called PCBServer.PostProcess an equal number of times as PCBServer.PostProcess. So far, if this does occur, I haven't worked out how to save the document (all changes since the last save are lost!).
 
-[singlepic id=1180 w=800 h=400 float=center template=caption]
+{{< figure src="/images/altium/pcb-script-bug-a-command-is-currently-active-and-save-cannot-be-completed-at-this-time.png" caption="You might get this error in Altium when trying to save because you have run a script which hasn't called PSBServer.PostProcess an equal number of times as PCBServer.PostProcess." caption-position="bottom" width="800px" >}}
 
 See the Undo section for information.
 

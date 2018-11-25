@@ -14,15 +14,15 @@ Stick rockets are one of the most basic forms of rockets. They consist only of a
 
 The nozzle can be made by compressing ground up "kitty litter" (which is bentonite clay).
 
-[singlepic id=941 w=500 h=500 float=center template=caption]
+{{< figure src="/images/pyrotechnics-rocketry/grinding-kitty-litter-for-nozzle-plug.jpg" caption="Grinding kitty litter (which is bentonite clay), for making rocket nozzle plugs." caption-position="bottom" width="500px" >}}
 
 The weight of the finished motors is usually low, in the order of 20-100g.
 
-[singlepic id=942 w=700 h=700 float=center template=caption]
+{{< figure src="/images/pyrotechnics-rocketry/kndc-rocket-motor.jpg" caption="A KNDX rocket motor on the electronic scales." caption-position="bottom" width="700px" >}}
 
 A bamboo skewer or piece of dowel protruding 150-400mm behind the nozzle works well for most hobby rocket motors.
 
-[singlepic id=940 w=700 h=700 float=center template=caption]
+{{< figure src="/images/pyrotechnics-rocketry/four-stick-rockets-with-charges.jpg" caption="Four stick rockets with charges (the larger parts at the front-end of the rocket)" caption-position="bottom" width="700px" >}}
 
 
 # Videos

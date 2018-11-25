@@ -332,7 +332,7 @@ I recommend a package manager like NuGet is used to install third-party librarie
 
 
 
-[singlepic id=1076 w=700 h=600 float=center]
+{{< figure src="/images/programming-misc/screenshot-of-nuget-plugin-for-visual-studio.jpg" caption="A screenshot of the NuGet plugin for Visual Studio." caption-position="bottom" width="700px" >}}
 
 
 

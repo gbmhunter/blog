@@ -153,4 +153,4 @@ A small 14-leaded SMD package with a thermal pad in the middle (similar to some 
 
 
 
-[singlepic id=1173 w=800 h=800 float=center]
+{{< figure src="/images/electronics-packages/component-package-sot-762-1-outline-and-dimensions.png" caption="The dimensions for the SOT-762-1 component package. Image from http://www.farnell.com/datasheets/1645528.pdf." caption-position="bottom" width="800px" >}}
