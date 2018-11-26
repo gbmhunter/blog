@@ -1,0 +1,17 @@
+figcaption {
+    font-size: 80%;
+    font-style: italic;
+    color: gray;
+    text-align: center;
+}
+
+/* Center tables inside page content */
+div.content table {
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+/* Allow for special paragraphs that have centered text */
+div.content p.centered {
+    text-align: center !important;
+}
