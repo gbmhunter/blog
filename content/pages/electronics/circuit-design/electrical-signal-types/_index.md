@@ -9,106 +9,45 @@ url: /electronics/circuit-design/electrical-signal-types
 
 Signal types are sorted in alphabetical order. Take note that there may be a low-voltage equivalent of many signal types under the prefix "LV" (e.g. TTL and LVTTL).
 
-
-
-
 # CML
 
-
-
-
-<blockquote>
-
-> 
 > See PECL.
-> 
-> 
-</blockquote>
-
-
-
 
 # CSEF
 
-
-
-
-<blockquote>
-
-> 
 > See PECL.
-> 
-> 
-</blockquote>
-
-
-
 
 # CSL
 
-
-
-
-<blockquote>
-
-> 
 > See PECL.
-> 
-> 
-</blockquote>
-
-
-
 
 # DCS (Differential Current Switch)
 
-
-
-
-
-
-
 # DTLL (Differential Transistor-Transistor Logic)
-
-
-
 
 DTLL is a differential signal type that is similar to standard to TTL. Because of it's differential nature, DTLL is preferred over TTL for communications over long cables. DTLL comes under the category HVDS (high-voltage differential signalling), and is the most popular choice in this category.
 
-
-
-
 # LVTTL
 
-
-
-
 ## Stats
-
 
 <table style="width: 500px;" border="0" >
 <tbody >
 <tr style="height: 28px;" >
-
 <td style="height: 28px;" >**Mode**
 </td>
-
 <td style="height: 28px;" >**Single-ended**
 </td>
 </tr>
 <tr style="height: 28px;" >
-
 <td style="height: 28px;" >Logic High
 </td>
-
 <td style="height: 28px;" >
 </td>
 </tr>
 <tr style="height: 28px;" >
-
 <td style="height: 28px;" >Logic Low
 </td>
-
 <td style="height: 28px;" >
 </td>
 </tr>
@@ -118,43 +57,26 @@ DTLL is a differential signal type that is similar to standard to TTL. Because o
 
 LVTTL is the low-voltage version of TTL.
 
-
-
-
 Common drive-strengths are 24mA.
-
-
-
 
 ## Converters
 
-
-
-
 TI SN65LVELT23 converts LVPECL and LVDS to LVTTL.
-
-
-
 
 # LVDS
 
-
-
-
 ## Stats
-
 
 <table style="width: 500px;" border="0" >
 <tbody >
 <tr >
-
 <td >**Mode**
 </td>
 
 <td >**Differential**
 </td>
 </tr>
-<tr >
+<tr>
 
 <td >Logic High ([latex]V_{OH}[/latex])
 </td>
