@@ -11,7 +11,33 @@ div.content table {
     margin-right: auto;
 }
 
+div.content th {
+    background-color: #505050;
+    color: white;
+    font-weight: normal;
+    padding: 10px;
+}
+
+div.content tr:nth-of-type(even) {
+    background:#EAEAEA;
+}
+
+div.content tr:nth-of-type(odd) {
+    background:#EEEEEE;
+}
+
+div.content td {
+    text-align: center;
+    padding: 2px;
+}
+
 /* Allow for special paragraphs that have centered text */
 div.content p.centered {
     text-align: center !important;
 }
+
+/* Center single images on the page */
+div.box {
+    margin: auto;
+}
+

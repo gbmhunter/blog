@@ -7,179 +7,71 @@ type: page
 url: /electronics/circuit-design/component-designators
 ---
 
-[mathjax]
-
-
-
-
 # Overview
-
-
-
 
 Component designators are used to identify components both on schematics and PCB's. They usually consist of a short acronym representing the type of component, followed by unique number to distinguish it from other components of the same type (e.g. R3, R4, C3).
 
-
-
-
 Over the years, many standards have been released that specify particular designator prefixes for component types (such as the IEEE 315-1975). However, many schematics and PCB silkscreen do not strictly follow any standard (although the similarities are usually quite high). The following table shows non-standard specific, commonly used acronyms and the type of component they represent.
-
-
-
 
 Sorted by alphabetic order...
 
-
-<table class=" aligncenter" >
-
-<tr >
-Designator
-Image
-Component Type
-</tr>
-
+<table>
+    <tr>
+        <th>Designator</th>
+        <th>Image</th>
+        <th>Component Type</th>
+    </tr>
 <tbody >
 <tr >
-
-<td >A
-</td>
-
-<td >
-</td>
-
-<td >Separate assembly or sub-assembly (e.g. daughter board). I do not see this designator used much in practise (and I myself have never used it, for things such as GPS modules with an LGA footprint I have always used the designator U).
-</td>
+    <td >A</td>
+    <td ></td>
+    <td >Separate assembly or sub-assembly (e.g. daughter board). I do not see this designator used much in practise (and I myself have never used it, for things such as GPS modules with an LGA footprint I have always used the designator U).</td>
 </tr>
 <tr >
-
-<td >AGND
-</td>
-
-<td >
-
-
-{{< figure src="/images/2011/09/ground-analogue.png" caption="The schematic symbol for analogue ground (AGND)."  >}}
-
-
-
-</td>
-
-<td >Analogue ground. See also DGND and GND.
-</td>
+    <td >AGND</td>
+    <td >{{< figure src="/images/2011/09/ground-analogue.png" caption="The schematic symbol for analogue ground (AGND)."  >}}</td>
+    <td >Analogue ground. See also DGND and GND.</td>
 </tr>
 <tr >
-
-<td >ANT
-</td>
-
-<td >
-</td>
-
-<td >Antenna. E is also used, however ANT is my personal preference..
-</td>
+    <td >ANT</td>
+    <td ></td>
+    <td >Antenna. E is also used, however ANT is my personal preference..</td>
 </tr>
 <tr >
-
-<td >BT
-</td>
-
-<td >
-</td>
-
-<td >Battery.
-</td>
+    <td >BT</td>
+    <td ></td>
+    <td >Battery.</td>
 </tr>
 <tr >
-
-<td >C
-</td>
-
-<td >
-
-
-{{< figure src="/images/2011/09/non-polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a non-polarised capacitor."  >}}
-
-
-
-
-{{< figure src="/images/2011/09/polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a polarised capacitor."  >}}
-
-
-
-</td>
-
-<td >Capacitor (both polarised and non-polarised)
-</td>
+    <td >C</td>
+    <td >{{< figure src="/images/2011/09/non-polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a non-polarised capacitor."  >}}
+    {{< figure src="/images/2011/09/polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a polarised capacitor."  >}}</td>
+    <td >Capacitor (both polarised and non-polarised)</td>
+</tr>
+<tr>
+    <td>D</td>
+    <td>{{< figure src="/images/2011/09/led-schematic-symbol.png" caption="The schematic symbol for an LED."  >}}</td>
+    <td >Diode (standard, Schottky, zener, e.t.c). Note that many different variations on the schematic symbol exist for the different types of diodes.</td>
 </tr>
 <tr >
-
-<td >D
-</td>
-
-<td >
-
-
-{{< figure src="/images/2011/09/led-schematic-symbol.png" caption="The schematic symbol for an LED."  >}}
-
-
-
-</td>
-
-<td >Diode (standard, Schottky, zener, e.t.c). Note that many different variations on the schematic symbol exist for the different types of diodes.
-</td>
+<td >DGND</td>
+<td >{{< figure src="/images/2011/09/digital-ground-schematic-symbol.png" caption="The schematic symbol for digital ground."  >}}</td>
+<td >Digital ground. See also AGND and GND.</td>
 </tr>
 <tr >
-
-<td >DGND
-</td>
-
-<td >
-
-
-{{< figure src="/images/2011/09/digital-ground-schematic-symbol.png" caption="The schematic symbol for digital ground."  >}}
-
-
-
-</td>
-
-<td >Digital ground. See also AGND and GND.
-</td>
+<td >E</td>
+<td ></td>
+<td >Antenna. ANT is also used (and is my personal preference).</td>
 </tr>
 <tr >
-
-<td >E
-</td>
-
-<td >
-</td>
-
-<td >Antenna. ANT is also used (and is my personal preference).
-</td>
+<td >F</td>
+<td ></td>
+<td >Fuse (wired, electrical, e.t.c). XF is for a fuse holder.</td>
 </tr>
 <tr >
-
-<td >F
-</td>
-
-<td >
-</td>
-
-<td >Fuse (wired, electrical, e.t.c). XF is for a fuse holder.
-</td>
-</tr>
-<tr >
-
 <td >FB
 </td>
-
-<td >
-
-
-{{< figure src="/images/2011/09/ferrite-bead-schematic-symbol.png" caption="The schematic symbol for a ferrite bead."  >}}
-
-
-
-</td>
+<td >{{< figure src="/images/2011/09/ferrite-bead-schematic-symbol.png" caption="The schematic symbol for a ferrite bead."  >}}</td>
 
 <td >Ferrite bead. Sometimes the designator FEB is used instead.
 </td>
@@ -473,17 +365,8 @@ Component Type
 
 # Regex
 
-
-
-
 The regex pattern to match any valid component designator, which is one or more capital letters followed by one or more numerals, is
 
-
-
-    
     ^[A-Z][A-Z]*[0-9][0-9]*$
-
-
-
 
 The above pattern also contains the start and end-of-line anchors ^ and $, to enforce that there is no text before or after the designator. These can be removed if desired. More on using regex with component designators can be found on the [Altium Scripting page](http://blog.mbedded.ninja/electronics/general/altium/altium-scripting-and-using-the-api).
