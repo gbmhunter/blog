@@ -17,7 +17,7 @@ Doxygen is an open-source program for **documenting code**. It is commonly used 
 
 
 
-{{< figure src="/images/2013/05/doxygen-logo.png" caption="" caption-position="bottom" >}}
+{{< figure src="/images/2013/05/doxygen-logo.png" caption=""  >}}
 
 
 
@@ -26,7 +26,7 @@ It is essentially a program which looks through your source code and extracts in
 
 
 
-{{< figure src="/images/2013/05/doxygen-html-documentation-screenshot.png" width="1919px" caption="Screenshot of the html documentation that Doxygen generates with properly commented code." caption-position="bottom" >}}
+{{< figure src="/images/2013/05/doxygen-html-documentation-screenshot.png" width="1919px" caption="Screenshot of the html documentation that Doxygen generates with properly commented code."  >}}
 
 
 
@@ -323,7 +323,7 @@ Doxywizard is a Windows GUI for using Doxygen. Desired Extraction Mode: Document
 
 
 
-{{< figure src="/images/2013/05/doxygen-gui-extract-private-and-static-selected.png" width="829px" caption="Selecting 'EXTRACT_PRIVATE' and 'EXTRACT STATIC' in the Doxygen GUI." caption-position="bottom" >}}
+{{< figure src="/images/2013/05/doxygen-gui-extract-private-and-static-selected.png" width="829px" caption="Selecting 'EXTRACT_PRIVATE' and 'EXTRACT STATIC' in the Doxygen GUI."  >}}
 
 
 

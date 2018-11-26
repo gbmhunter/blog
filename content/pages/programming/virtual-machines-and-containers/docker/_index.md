@@ -17,7 +17,7 @@ Docker is container software. It is commonly used as a lightweight alternative t
 
 
 
-{{< figure src="/images/2017/01/docker-logo.png" caption="" caption-position="bottom" >}}
+{{< figure src="/images/2017/01/docker-logo.png" caption=""  >}}
 
 
 

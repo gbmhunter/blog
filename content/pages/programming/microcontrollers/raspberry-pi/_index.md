@@ -17,7 +17,7 @@ The RaspberryPi is a cheap, fully-functional micro-computer.
 
 
 
-{{< figure src="/images/project-autoelectricblanket/raspberry-pi-with-lots-of-cables-filtered.jpg" caption="The RaspberryPi while testing." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/project-autoelectricblanket/raspberry-pi-with-lots-of-cables-filtered.jpg" caption="The RaspberryPi while testing."  width="800px" >}}
 
 
 
@@ -367,7 +367,7 @@ There is also the [pi-gpio module](https://npmjs.org/package/pi-gpio) for contro
 
 
 
-{{< figure src="/images/project-autoelectricblanket/simple-led-connected-to-raspberry-pi-gpio.jpg" caption="I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/project-autoelectricblanket/simple-led-connected-to-raspberry-pi-gpio.jpg" caption="I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing."  width="800px" >}}
 
 
 

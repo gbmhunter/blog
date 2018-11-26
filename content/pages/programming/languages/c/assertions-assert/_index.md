@@ -171,7 +171,7 @@ Note that I was using gcc-5.1 when I was presented with this error.
 
 
 
-{{< figure src="/images/2013/06/screenshot-of-compiler-error-disallowing-assert-side-effects.png" width="736px" caption="A screenshot of the C compiler throwing an error when an assignment is attempted within the parameter passed to an assert()." caption-position="bottom" >}}
+{{< figure src="/images/2013/06/screenshot-of-compiler-error-disallowing-assert-side-effects.png" width="736px" caption="A screenshot of the C compiler throwing an error when an assignment is attempted within the parameter passed to an assert()."  >}}
 
 
 
@@ -184,7 +184,7 @@ I have written a working assert() example at [http://ideone.com/CSX6wN](http://i
 
 
 
-{{< figure src="/images/2013/06/assert-example-code-on-ide-one.png" width="1060px" caption="Example assert() code on Ideone (http://ideone.com/CSX6wN)." caption-position="bottom" >}}
+{{< figure src="/images/2013/06/assert-example-code-on-ide-one.png" width="1060px" caption="Example assert() code on Ideone (http://ideone.com/CSX6wN)."  >}}
 
 
 

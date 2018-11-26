@@ -62,7 +62,7 @@ Some items such as the [PP3 9V battery case](http://blog.mbedded.ninja/pcb-desig
 
 
 
-{{< figure src="/images/electronics-misc/sparkfun-break-out-board.jpg" caption="A SOIC-8 to DIP break-out board made by SparkFun." caption-position="bottom" width="160px" >}}
+{{< figure src="/images/electronics-misc/sparkfun-break-out-board.jpg" caption="A SOIC-8 to DIP break-out board made by SparkFun."  width="160px" >}}
 
 
 
@@ -111,7 +111,7 @@ The SMT Code Book ([http://www.marsport.org.uk/smd/mainframe.htm](http://www.mar
 
 
 
-{{< figure src="http://blog.mbedded.ninja/wp-includes/images/crystal/document.png" width="46px" caption="PDF" caption-position="bottom" >}}
+{{< figure src="http://blog.mbedded.ninja/wp-includes/images/crystal/document.png" width="46px" caption="PDF"  >}}
 
 
 

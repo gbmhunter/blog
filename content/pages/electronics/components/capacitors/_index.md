@@ -22,17 +22,17 @@ Below is a table of most of the capacitor schematic symbols in use.
 <table style="width: 600px; text-align: center;" ><tbody ><tr >
 <td >
 
-{{< figure src="/images/2011/09/capacitor-unpolarised-schematic-symbol.png" width="196px" caption="The schematic symbol for an unpolarised capacitor." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/capacitor-unpolarised-schematic-symbol.png" width="196px" caption="The schematic symbol for an unpolarised capacitor."  >}}
 
 </td>
 <td >
 
-{{< figure src="/images/2011/09/capacitor-polarised-schematic-symbol.png" width="200px" caption="The schematic symbol for a polarised capacitor." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/capacitor-polarised-schematic-symbol.png" width="200px" caption="The schematic symbol for a polarised capacitor."  >}}
 
 </td>
 <td >
 
-{{< figure src="/images/2011/09/capacitor-variable-schematic-symbol.png" width="185px" caption="The schematic symbol for a variable capacitor." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/capacitor-variable-schematic-symbol.png" width="185px" caption="The schematic symbol for a variable capacitor."  >}}
 
 </td></tr></tbody></table>
 
@@ -68,7 +68,7 @@ Ceramic capacitors are named after the tiny disc of ceramic material they use fo
 
 Ceramic capacitors can generate audible noise when operated at certain frequencies. This is due to the electrostrictive (not piezo-electric, as many people suggest) effect of the internal dielectric materials in a monolithic ceramic capacitor. This causes the capacitor to mechanically vibrate (the movement is in the order of 1pm-1nm), which creates acoustic noise. This noise can commonly be heard in switch-mode power supplies and other high-frequency switching devices. Tantalum and electrolytic capacitors do not exhibit this effect, and can be used as a replacement when this noise is undesirable.
 
-{{< figure src="/images/2011/09/murata-deformation-of-pcb-by-electrostrictive-phenomenon.jpg" width="452px" caption="The deformation of a PCB due to the electrostrictive phenomenon in ceramic chip capacitors. Image from http://www.murata.com/products/capacitor/solution/naki.html." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/murata-deformation-of-pcb-by-electrostrictive-phenomenon.jpg" width="452px" caption="The deformation of a PCB due to the electrostrictive phenomenon in ceramic chip capacitors. Image from http://www.murata.com/products/capacitor/solution/naki.html."  >}}
 
 ### Ceramic Di-electrics
 
@@ -231,7 +231,7 @@ In over-voltage conditions, holes can be punched through the dielectric layer an
 
 Tantalum capacitors are actually special type of electrolytic capacitor. But they deserve their own category because of their special properties and wide-spread use. The have lower ESR, lower leakage and higher temperature ranges (up to 125°C) than their electrolytic counterparts.
 
-{{< figure src="/images/2011/09/container-of-th-tantalum-caps.jpg" width="1000px" caption="Through-hole tantalum capacitors." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/container-of-th-tantalum-caps.jpg" width="1000px" caption="Through-hole tantalum capacitors."  >}}
 
 Most tantalum capacitors are made with a solid electrolyte, and therefore are not prone to the electrolyte evaporation/drying up problems normal electrolytics have. This makes them able to retain their rated capacitance for years, if not decades.
 
@@ -239,7 +239,7 @@ Most tantalum capacitors are made with a solid electrolyte, and therefore are no
 
 At the heart of a tantalum capacitor is a pellet of tantalum (\(Ta_2 O_5\)).
 
-{{< figure src="/images/2011/09/cross-section-of-tantalum-capacitor.png" width="489px" caption="Cross-section of a SMD tantalum capacitor." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/cross-section-of-tantalum-capacitor.png" width="489px" caption="Cross-section of a SMD tantalum capacitor."  >}}
 
 ### Packaging
 
@@ -347,7 +347,7 @@ Through-hole and SMD super capacitor packages exist.
 
 Door knob (or barrel) capacitors are a form of ceramic capacitor named after their look-alike appearance to a door knob. They are usually rated for high voltages (kV's), and used in RF applications. They hav a low dielectric loss and linear temperature co-efficient of capacitance. They are typically used in the frequency range from 50kHz-100MHz.
 
-{{< figure src="/images/2011/09/door-knob-capacitors.jpg" width="666px" caption="Ceramic, high-voltage 'door-knob' capacitors. Image from www.trademe.co.nz." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/door-knob-capacitors.jpg" width="666px" caption="Ceramic, high-voltage 'door-knob' capacitors. Image from www.trademe.co.nz."  >}}
 
 # Dielectric Constants Of Common Materials
 
@@ -499,7 +499,7 @@ $$ C_{total} = C1 + C2 $$
 
 That is, in parallel, **the total equivalent capacitance is the sum of the individual capacitances**. This is shown in the below diagram.
 
-{{< figure src="/images/2011/09/capacitor-equivalence-in-parallel-with-equation.png" width="629px" caption="Diagram showing the resulting capacitance from two capacitors in parallel." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/capacitor-equivalence-in-parallel-with-equation.png" width="629px" caption="Diagram showing the resulting capacitance from two capacitors in parallel."  >}}
 
 **Connecting capacitors in parallel increases the capacitance.** Parallel-connected capacitors occurs everywhere in circuit design. A classic example is bulk decoupling for a switch-mode power supply, which will typically have more than one large capacitor connected in parallel on the input.
 
@@ -517,7 +517,7 @@ $$ \frac{1}{C_{total}} = \frac{1}{C1} + \frac{1}{C2} $$
 
 This is shown in the following diagram.
 
-{{< figure src="/images/2011/09/capacitor-equivalence-in-series-with-equation.png" width="620px" caption="Diagram showing the equivalent capacitance from two capacitors connected in series." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/capacitor-equivalence-in-series-with-equation.png" width="620px" caption="Diagram showing the equivalent capacitance from two capacitors connected in series."  >}}
 
 Notice how the total equivalent capacitance is less than any one capacitor in the series string. **Connecting capacitors in series reduces the capacitance**.
 
@@ -576,7 +576,7 @@ where:
 
 ## Single Disc Capacitance
 
-{{< figure src="/images/electronics-misc/diagram-for-disc-capacitance-equation.png" caption="Diagram for the disc-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/electronics-misc/diagram-for-disc-capacitance-equation.png" caption="Diagram for the disc-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf."  width="320px" >}}
 
 The capacitance of a single thin plate, with  a ground at 'infinity' (or more practically, just very far away) is:
 
@@ -591,7 +591,7 @@ where:
 
 ## Sphere Capacitance
 
-{{< figure src="/images/electronics-misc/diagram-for-sphere-capacitance-equation.png" caption="Diagram for the sphere-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/electronics-misc/diagram-for-sphere-capacitance-equation.png" caption="Diagram for the sphere-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf."  width="320px" >}}
 
 The capacitance of a single sphere, again, with a ground at infinity is:
 
@@ -620,7 +620,7 @@ where:
 
 ## Concentric Cylinder Capacitance
 
-{{< figure src="/images/electronics-misc/diagram-for-coaxial-cylinders-capacitance-equation.png" caption="Diagram for the coaxial cylinder capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/electronics-misc/diagram-for-coaxial-cylinders-capacitance-equation.png" caption="Diagram for the coaxial cylinder capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf."  width="320px" >}}
 
 The capacitance of two concentric cylinders as shown in the diagram above is:
 
@@ -664,7 +664,7 @@ Capacitors that have had a relatively constant voltage across them for a decent 
 
 The leakage current through a capacitor can be modeled with a resistor in parallel with the actual capacitance, as shown in the image below:
 
-{{< figure src="/images/2011/09/capacitor-with-parasitic-series-resistance-leakage-current.png" width="288px" caption="A capacitor showing the parasitic series resistance present in all real capacitors, which creates a leakage current." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/capacitor-with-parasitic-series-resistance-leakage-current.png" width="288px" caption="A capacitor showing the parasitic series resistance present in all real capacitors, which creates a leakage current."  >}}
 
 ## How Leakage Current Is Specified
 
@@ -709,7 +709,7 @@ The good news is this can be manipulated to make things such as voltage-controll
 
 The bad news is that this also adversely affects the capacitance in situations where you want it to stay constant. This can actually be a very significant problems, especially with small [package](http://blog.mbedded.ninja/electronics/circuit-design/component-packages) size ceramic capacitors (such as 0603 and 0805 SMD chip capacitors). An excellent explanation on this effects if Maxim Integrated's "[Temperature and Voltage Variation of Ceramic Capacitors, or Why Your 4.7uF Capacitor Becomes a 0.33uF Capacitor](http://www.maximintegrated.com/app-notes/index.mvp/id/5527)". The following graph is from Maxim's page, and just serves as an example to show by how much the capacitance can vary in normal operation conditions!
 
-{{< figure src="/images/2011/09/graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors.png" width="925px" caption="Graph of the capacitance variation (w.r.t. voltage) of a select group of 4.7uF ceramic chip capacitors, Image from http://www.maximintegrated.com/app-notes/index.mvp/id/5527." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors.png" width="925px" caption="Graph of the capacitance variation (w.r.t. voltage) of a select group of 4.7uF ceramic chip capacitors, Image from http://www.maximintegrated.com/app-notes/index.mvp/id/5527."  >}}
 
 This can upset op-amp gains, frequency cut-off points of filters, and the time constant of RC oscillators.
 
@@ -719,7 +719,7 @@ This can upset op-amp gains, frequency cut-off points of filters, and the time c
 
 Capacitors are commonly used for decoupling, as this following schematic shows (taken from the Raspberry-Pi PCB design).
 
-{{< figure src="/images/2011/09/decoupling-caps-schematic-example-on-r-pi-pcb.png" width="396px" caption="Example usage of decoupling capacitors for IC's. Schematic is from the Raspberry-Pi PCB. Image from http://www.raspberrypi.org/wp-content/uploads/2012/04/Raspberry-Pi-Schematics-R1.0.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/decoupling-caps-schematic-example-on-r-pi-pcb.png" width="396px" caption="Example usage of decoupling capacitors for IC's. Schematic is from the Raspberry-Pi PCB. Image from http://www.raspberrypi.org/wp-content/uploads/2012/04/Raspberry-Pi-Schematics-R1.0.pdf."  >}}
 
 ``````
 
@@ -778,7 +778,7 @@ However, if you really want to optimise the charge pump capacitor, this rule doe
 
 The following circuit shows a charge pump circuit used to generate -5V from a +5V PWM signal.
 
-{{< figure src="/images/2011/09/charge-pump-based-negative-voltage-gen-schematic.png" width="1157px" caption="This schematic shows a charge pump circuit used to generate -5V from a +5V PWM signal." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/charge-pump-based-negative-voltage-gen-schematic.png" width="1157px" caption="This schematic shows a charge pump circuit used to generate -5V from a +5V PWM signal."  >}}
 
 ``````
 
@@ -941,13 +941,13 @@ Change Over Temp (max)</tr><tr >CharTemp (°C)NumTemp (°C)CharChange (%)</tr><
 
 Feedthrough (or feedthru) capacitors are special three-terminal capacitors (sometimes with four connections) used for **suppression** of **RF noise**. They are also known under the more general name of an _EMI suppression filter_ or _three-terminal capacitor._
 
-{{< figure src="/images/2011/09/feedthrough-capacitor-3d-render-0603-1608-3-connections.jpg" width="314px" caption="A 3D render of an 0603-sized feedthrough capacitor with 3 connections. Image from www.digikey.com." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/feedthrough-capacitor-3d-render-0603-1608-3-connections.jpg" width="314px" caption="A 3D render of an 0603-sized feedthrough capacitor with 3 connections. Image from www.digikey.com."  >}}
 
 Their advantage over a standard decoupling capacitor to ground is **lower parasitic series inductance**, which offers a lower impedance path for RF noise to ground.
 
 ## Schematic Symbol
 
-{{< figure src="/images/2011/09/feedthrough-capacitor-schematic-symbol-3-connection.png" width="422px" caption="The schematic symbol for a 3-terminal feedthrough capacitor." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/feedthrough-capacitor-schematic-symbol-3-connection.png" width="422px" caption="The schematic symbol for a 3-terminal feedthrough capacitor."  >}}
 
 ## Component Package
 
@@ -961,11 +961,11 @@ Feedthrough capacitors are commonly used in [RC, LC, π and t-type filters](htt
 
 When electrolytic capacitors get old, they can dry out and stop working properly (for example, their capacitance can reduce and/or maximum dielectric voltage drop). There are many sources quoting that electrolytic capacitors can be repaired by ramping the voltage slowly up to its full rated voltage. It is meant to repair the aluminium oxide dielectric layer.
 
-{{< figure src="/images/2011/09/circuit-schematic-showing-how-to-repair-an-electrolytic-capacitor.png" width="287px" caption="Schematic showing how to repair/reform an old electrolytic capacitor. The voltage on the capacitor should slowly rise to the rated voltage." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/circuit-schematic-showing-how-to-repair-an-electrolytic-capacitor.png" width="287px" caption="Schematic showing how to repair/reform an old electrolytic capacitor. The voltage on the capacitor should slowly rise to the rated voltage."  >}}
 
 This can be done with power supply set the rated voltage and a high-power (e.g. 5W) 30kΩ resistor in series with the capacitor, as shown in the image above. Connect the circuit and measure the voltage across the capacitor. It should start at 0V and increase as an inverse exponential as the current through the capacitor decreases. Wait until the voltage across the capacitor gets above 90% of the rated voltage before disconnecting the circuit, as shown in the image below. If the voltage stabilises below 90% of the full-rated voltage, the capacitor is stuffed and can be thrown out.
 
-{{< figure src="/images/2011/09/capacitor-voltage-graph-while-charging-through-resistor-for-reforming.png" width="399px" caption="Graph of an electrolytic capacitor charging through a resistor to reform the aluminium oxide. The graph part of the image from http://www.antonine-education.co.uk/Pages/Electronics_2/Timing_Subsystems/RC_Networks/further_page_2.htm." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/capacitor-voltage-graph-while-charging-through-resistor-for-reforming.png" width="399px" caption="Graph of an electrolytic capacitor charging through a resistor to reform the aluminium oxide. The graph part of the image from http://www.antonine-education.co.uk/Pages/Electronics_2/Timing_Subsystems/RC_Networks/further_page_2.htm."  >}}
 
 # Energy Loss While Charging A Capacitor
 
@@ -973,7 +973,7 @@ An interesting phenomenon occurs when charging a capacitor from a fixed voltage 
 
 Here is an example schematic:
 
-{{< figure src="/images/2011/09/energy-loss-while-charging-a-capacitor-schematic.png" width="573px" caption="A schematic showing the basic circuit while charging a capacitor, highlighting the energy lost in the series resistance." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/energy-loss-while-charging-a-capacitor-schematic.png" width="573px" caption="A schematic showing the basic circuit while charging a capacitor, highlighting the energy lost in the series resistance."  >}}
 
 This quite significant and fixed energy loss has implications when it comes to charging caps in low-power circuits (e.g. running of a battery), and sizing resistors (including NTC thermistors) for limiting the inrush current to capacitors, normally as part of the front end to a power supply or motor driver.
 

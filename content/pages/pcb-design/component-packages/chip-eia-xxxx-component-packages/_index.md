@@ -195,11 +195,11 @@ Sorted from smallest to largest package size.
 
 The following image shows how you can easily route an 0.2mm thick trace between the pads of a 0805 component.
 
-{{< figure src="/images/electronics-packages/routing-between-0805-footprints.jpg" caption="Routing between the pads of a 0805 footprint (in Altium)." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-packages/routing-between-0805-footprints.jpg" caption="Routing between the pads of a 0805 footprint (in Altium)."  width="500px" >}}
 
 The following image is of 0603 (imperial) SMD components inside a small container.
 
-{{< figure src="/images/my-workshop/smd-container-open-and-closed.jpg" caption="A container from DealExtreme used for holding SMD components (capacitors in this picture)" caption-position="bottom" width="800px" >}}
+{{< figure src="/images/my-workshop/smd-container-open-and-closed.jpg" caption="A container from DealExtreme used for holding SMD components (capacitors in this picture)"  width="800px" >}}
 
 # SMD Chip Resistors
 
@@ -273,6 +273,6 @@ Current
 
 Reverse-aspect chip capacitors (a.k.a LICC) have their leads on the long sides of the chip, as opposed to standard chip components which have the leads on the short sides. This reverse-geometry reduces the inductance in the PCB-to-capacitor connection, and is in high-speed designs where ultra-low inductance is required.
 
-{{< figure src="/images/2015/10/comparison-of-various-smd-chip-capacitor-internal-designs.mlcc-licc-mpdigest.png" width="483px" caption="A comparison of the different internal designs of various SMD chip capacitors. Image from http://www.mpdigest.com/." caption-position="bottom" >}}
+{{< figure src="/images/2015/10/comparison-of-various-smd-chip-capacitor-internal-designs.mlcc-licc-mpdigest.png" width="483px" caption="A comparison of the different internal designs of various SMD chip capacitors. Image from http://www.mpdigest.com/."  >}}
 
 They are normally named the same as normal aspect chip capacitors except with the two numbers in reverse order, i.e. an 0603 sized capacitor now becomes a 0306 capacitor.

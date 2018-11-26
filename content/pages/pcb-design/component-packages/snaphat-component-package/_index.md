@@ -139,7 +139,7 @@ Package registered by ST Microelectronics. Used to hold small rechargeable batte
 # Photo
 
 
-{{< figure src="/images/2015/04/snaphat-component-package-photo.png" width="340px" caption="A photo of the SNAPHAT component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/snaphat-component-package-photo.png" width="340px" caption="A photo of the SNAPHAT component package."  >}}
 
 
 # Images
@@ -147,9 +147,9 @@ Package registered by ST Microelectronics. Used to hold small rechargeable batte
 
 
 
-{{< figure src="/images/electronics-packages/component-package-snaphat-dimensions.png" caption="The dimensions for the SnapHat component package." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-packages/component-package-snaphat-dimensions.png" caption="The dimensions for the SnapHat component package."  width="600px" >}}
 
 
 
 
-{{< figure src="/images/electronics-packages/component-package-snaphat-schematic.png" caption="The schematic for the SnapHat component package." caption-position="bottom" width="400px" >}}
+{{< figure src="/images/electronics-packages/component-package-snaphat-schematic.png" caption="The schematic for the SnapHat component package."  width="400px" >}}

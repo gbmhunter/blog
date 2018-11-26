@@ -11,7 +11,7 @@ url: /electronics/communication-protocols/z-wave
 
 Z-Wave is a wireless communications protocol primarily designed for home automation.
 
-{{< figure src="/images/2016/04/z-wave-logo-large.png" width="447px" caption="The Z-Wave logo. Image from http://www.z-wave.com/." caption-position="bottom" >}}
+{{< figure src="/images/2016/04/z-wave-logo-large.png" width="447px" caption="The Z-Wave logo. Image from http://www.z-wave.com/."  >}}
 
 # Frequency
 

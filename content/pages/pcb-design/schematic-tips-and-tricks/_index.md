@@ -19,4 +19,4 @@ The answer, use common sense. Things like temperature sensors, they can probably
 
 Make sure all note arrows cannot be confused with schematic wires/nets. I make sure of this by changing the colour of the arrow, and by always making it non-orthogonal (i.e. on a slant).
 
-{{< figure src="/images/2015/10/schematic-note-and-arrow-obvious-not-wire-annotated.png" width="544px" caption="By changing the colour and making it non-orthogonal, it is obvious this note arrow is not a schematic wire/net." caption-position="bottom" >}}
+{{< figure src="/images/2015/10/schematic-note-and-arrow-obvious-not-wire-annotated.png" width="544px" caption="By changing the colour and making it non-orthogonal, it is obvious this note arrow is not a schematic wire/net."  >}}

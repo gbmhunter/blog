@@ -153,7 +153,7 @@ A variant on the TO-220 package with three leads and the pad (but only has three
 # 3D Renders
 
 
-{{< figure src="/images/2015/04/to-220ab-to-220-3-component-package-3d-render.jpg" width="378px" caption="A 3D render of the TO-220AB component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/to-220ab-to-220-3-component-package-3d-render.jpg" width="378px" caption="A 3D render of the TO-220AB component package."  >}}
 
 
 # Images
@@ -161,17 +161,17 @@ A variant on the TO-220 package with three leads and the pad (but only has three
 
 
 
-{{< figure src="/images/electronics-packages/component-package-to-220ab-dimensions.png" caption="The dimensions of the TO-220AB component package." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-packages/component-package-to-220ab-dimensions.png" caption="The dimensions of the TO-220AB component package."  width="500px" >}}
 
 
 <table align="center" >
 <tbody >
 <tr >
 
-<td >{{< figure src="/images/electronics-packages/component-package-to-220ab-photo.jpg" caption="A photo of the TO-220AB component package." caption-position="bottom" width="300px" >}}
+<td >{{< figure src="/images/electronics-packages/component-package-to-220ab-photo.jpg" caption="A photo of the TO-220AB component package."  width="300px" >}}
 </td>
 
-<td >{{< figure src="/images/electronics-packages/component-package-to-220ab-mounted-on-heatsink.jpg" caption="A photo of the TO-220AB component package, mounted on a heatsink." caption-position="bottom" width="300px" >}}
+<td >{{< figure src="/images/electronics-packages/component-package-to-220ab-mounted-on-heatsink.jpg" caption="A photo of the TO-220AB component package, mounted on a heatsink."  width="300px" >}}
 </td>
 </tr>
 </tbody>

@@ -21,7 +21,7 @@ The RS-485 communication protocol is a differential, multi-drop, half-duplex, tw
 
 
 
-{{< figure src="/images/2015/10/rs-485-typical-application-diagram-with-ti-sllse11d.pdf.png" width="819px" caption="A typical RS-485 network setup, using a standard RS-485 to UART transceiver at each node (in this case it is the TI SN65HVD72). Image from http://www.ti.com/." caption-position="bottom" >}}
+{{< figure src="/images/2015/10/rs-485-typical-application-diagram-with-ti-sllse11d.pdf.png" width="819px" caption="A typical RS-485 network setup, using a standard RS-485 to UART transceiver at each node (in this case it is the TI SN65HVD72). Image from http://www.ti.com/."  >}}
 
 
 
@@ -383,7 +383,7 @@ The waveform below shows the voltage on the A and B nets of a RS-485 bus when op
 
 
 
-{{< figure src="/images/2015/10/typical-rs-485-a-b-waveforms-during-communication.png" width="800px" caption="The typical appearance of the voltages on the A (top) and B (bottom) nets of a RS-485 bus under normal operating. This was operating at 115200 baud." caption-position="bottom" >}}
+{{< figure src="/images/2015/10/typical-rs-485-a-b-waveforms-during-communication.png" width="800px" caption="The typical appearance of the voltages on the A (top) and B (bottom) nets of a RS-485 bus under normal operating. This was operating at 115200 baud."  >}}
 
 
 
@@ -426,7 +426,7 @@ One such example is the Semtech SM712 diode array. Below is an image of the comp
 
 
 
-{{< figure src="/images/2015/10/sm712-tvs-diode-array-designed-for-rs-485-data-lines.pdf.png" width="267px" caption="The SM712 TVS diode array, a diode array with asymmetric breakdown voltages, specifically designed for protecting RS-485 data lines. Image from http://www.semtech.com/." caption-position="bottom" >}}
+{{< figure src="/images/2015/10/sm712-tvs-diode-array-designed-for-rs-485-data-lines.pdf.png" width="267px" caption="The SM712 TVS diode array, a diode array with asymmetric breakdown voltages, specifically designed for protecting RS-485 data lines. Image from http://www.semtech.com/."  >}}
 
 
 
@@ -444,7 +444,7 @@ The hardware used for SAE J1708 is usually a RS-485 transceiver that is wired fo
 
 
 
-{{< figure src="/images/2015/10/rs-485-transceiver-with-open-collector-modifications-wired-or-sae-j1708.png" width="1167px" caption="A standard RS-485 transceiver with a modified bus connection to provide open collector (wired OR) arbitration for the SAE-J1708 bus. Image adopted from content found at http://www.ti.com/lit/an/snla038b/snla038b.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2015/10/rs-485-transceiver-with-open-collector-modifications-wired-or-sae-j1708.png" width="1167px" caption="A standard RS-485 transceiver with a modified bus connection to provide open collector (wired OR) arbitration for the SAE-J1708 bus. Image adopted from content found at http://www.ti.com/lit/an/snla038b/snla038b.pdf."  >}}
 
 
 

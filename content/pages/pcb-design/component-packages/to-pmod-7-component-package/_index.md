@@ -140,7 +140,7 @@ This is a rather large SMD package with good heat sinking ability. Texas Instrum
 # 3D Renders
 
 
-{{< figure src="/images/2015/04/to-pmod-7-component-package-3d-render.jpg" width="253px" caption="A 3D render of the TO-PMOD-7 component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/to-pmod-7-component-package-3d-render.jpg" width="253px" caption="A 3D render of the TO-PMOD-7 component package."  >}}
 
 
 # Other Images
@@ -148,9 +148,9 @@ This is a rather large SMD package with good heat sinking ability. Texas Instrum
 
 
 
-{{< figure src="/images/electronics-packages/to-pmod-7-component-package-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the TO-PMOD-7 component package. Image from http://www.ti.com/." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/electronics-packages/to-pmod-7-component-package-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the TO-PMOD-7 component package. Image from http://www.ti.com/."  width="800px" >}}
 
 
 
 
-{{< figure src="/images/electronics-packages/to-pmod-7-3d-render.jpg" caption="A 3D model of the TO-PMOD-7 package." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-packages/to-pmod-7-3d-render.jpg" caption="A 3D model of the TO-PMOD-7 package."  width="500px" >}}

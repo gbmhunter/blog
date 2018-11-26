@@ -97,7 +97,7 @@ This plugin is great for automated and continuous checking of hyperlinks through
 
 
 
-{{< figure src="/images/programming-wordpress/wordpress-plugin-broken-link-checker-sends-you-email.png" caption="The 'Broken Link Checker' plugin sends you an email when it detects a NEW broken link." caption-position="bottom" width="650px" >}}
+{{< figure src="/images/programming-wordpress/wordpress-plugin-broken-link-checker-sends-you-email.png" caption="The 'Broken Link Checker' plugin sends you an email when it detects a NEW broken link."  width="650px" >}}
 
 
 
@@ -107,7 +107,7 @@ What is also powerful about this feature is that you can edit a broken hyperlink
 
 
 
-{{< figure src="/images/programming-wordpress/wordpress-plugin-broken-link-checker-edit-url.png" caption="You only have to edit a broken hyperlink once for all ocurrances of it on your site." caption-position="bottom" width="650px" >}}
+{{< figure src="/images/programming-wordpress/wordpress-plugin-broken-link-checker-edit-url.png" caption="You only have to edit a broken hyperlink once for all ocurrances of it on your site."  width="650px" >}}
 
 
 

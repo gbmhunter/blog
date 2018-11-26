@@ -7,7 +7,7 @@ type: page
 url: /homebrewing/brewing-notes/index-of-brewing-notes/popped-cherry
 ---
 
-{{< figure src="/images/homebrewing-poppedcherry/17-protecting-the-important-things-in-life.jpg" caption="Protecting the important things in life." caption-position="bottom" width="400px" >}}
+{{< figure src="/images/homebrewing-poppedcherry/17-protecting-the-important-things-in-life.jpg" caption="Protecting the important things in life."  width="400px" >}}
 
 
 # Summary
@@ -99,7 +99,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 # Ingredients
 
 
-{{< figure src="/images/homebrewing-poppedcherry/01-crushed-malt.jpg" caption="" caption-position="bottom" width="320px" >}}
+{{< figure src="/images/homebrewing-poppedcherry/01-crushed-malt.jpg" caption=""  width="320px" >}}
 
 
 # Malt
@@ -143,7 +143,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 ## Other
 
 
-{{< figure src="/images/homebrewing-poppedcherry/14-cherrys-to-boil.jpg" caption="The cherrys were boiled before adding to the beer to both sterilize and extract the flavour." caption-position="bottom" width="400px" >}}
+{{< figure src="/images/homebrewing-poppedcherry/14-cherrys-to-boil.jpg" caption="The cherrys were boiled before adding to the beer to both sterilize and extract the flavour."  width="400px" >}}
 
 
 
@@ -222,7 +222,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 # Sparging
 
 
-{{< figure src="/images/homebrewing-poppedcherry/05-reading-wort-temp-02.jpg" caption="" caption-position="bottom" width="400px" >}}
+{{< figure src="/images/homebrewing-poppedcherry/05-reading-wort-temp-02.jpg" caption=""  width="400px" >}}
 <table style="width: 600px;" border="0" >
 <tbody >
 <tr >
@@ -382,7 +382,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 </tr>
 </tbody>
 </table>
-{{< figure src="/images/homebrewing-poppedcherry/12-using-ice-to-cool-down-the-heat-exchanger.jpg" caption="" caption-position="bottom" width="400px" >}}**
+{{< figure src="/images/homebrewing-poppedcherry/12-using-ice-to-cool-down-the-heat-exchanger.jpg" caption=""  width="400px" >}}**
 **
 
 
@@ -472,7 +472,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 # Secondary Fermentation
 
 
-{{< figure src="/images/homebrewing-poppedcherry/16-adding-boiled-cherrys-to-fermenting-beer.jpg" caption="Adding the boiled cherry mixture to the fermenting beer." caption-position="bottom" width="400px" >}}
+{{< figure src="/images/homebrewing-poppedcherry/16-adding-boiled-cherrys-to-fermenting-beer.jpg" caption="Adding the boiled cherry mixture to the fermenting beer."  width="400px" >}}
 <table style="width: 600px;" border="0" >
 <tbody >
 <tr >

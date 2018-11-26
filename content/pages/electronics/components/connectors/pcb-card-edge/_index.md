@@ -15,22 +15,22 @@ The fingers that are etched on the PCB are usually gold plated to make the conta
 
 Card-edge connectors are very susceptible to board warping and board thickness errors, so takes these into consideration when adding card-edge connectors to your PCB design.
 
-{{< figure src="/images/2015/12/edge-connector-gold-fingers-and-bevel.png" width="445px" caption="Edge connector fingers which have been gold plated and the PCB bevelled. Image from http://www.eurocircuits.com/index.php/eurocircuits-printed-circuits-blog/gold-plating-for-edge-connectors." caption-position="bottom" >}}
+{{< figure src="/images/2015/12/edge-connector-gold-fingers-and-bevel.png" width="445px" caption="Edge connector fingers which have been gold plated and the PCB bevelled. Image from http://www.eurocircuits.com/index.php/eurocircuits-printed-circuits-blog/gold-plating-for-edge-connectors."  >}}
 
 The following image is of PCB card edge connectors on the [Cavro XL-3000 syringe pump](http://blog.mbedded.ninja/electronics/teardowns/cavro-xl3000-8-port-syringe-pump-teardown).
 
-{{< figure src="/images/2015/12/pcb-card-edge-connector-example-from-cavro-xl-3000.jpg" width="1200px" caption="An example of a PCB card edge connector. This is a photo of the Cavro XL-3000 syringe pump." caption-position="bottom" >}}
+{{< figure src="/images/2015/12/pcb-card-edge-connector-example-from-cavro-xl-3000.jpg" width="1200px" caption="An example of a PCB card edge connector. This is a photo of the Cavro XL-3000 syringe pump."  >}}
 
 You can get PCB card edge connectors which have latches, which lock in the daughter board which has special "hockey stick" pieces routed on the sides.
 
-{{< figure src="/images/2015/12/pcb-edge-connector-pci-hockey-stick.png" width="412px" caption="Male pcb-card edge connectors can have 'hockey-stick' latches as indicated (the female connector also has to support this)." caption-position="bottom" >}}
+{{< figure src="/images/2015/12/pcb-edge-connector-pci-hockey-stick.png" width="412px" caption="Male pcb-card edge connectors can have 'hockey-stick' latches as indicated (the female connector also has to support this)."  >}}
 
 This is a screenshot from a PCB design for the male part of a card-edge connector in Altium.
 
-{{< figure src="/images/2015/12/altium-card-edge-male-connector-on-pcb.png" width="1502px" caption="An Altium PCB design of a male card-edge connector. This is for the 20-pin connector in the Molex SPD08 series." caption-position="bottom" >}}
+{{< figure src="/images/2015/12/altium-card-edge-male-connector-on-pcb.png" width="1502px" caption="An Altium PCB design of a male card-edge connector. This is for the 20-pin connector in the Molex SPD08 series."  >}}
 
 This is a female latching card-edge connector.
 
-{{< figure src="/images/2015/12/pcb-connector-with-latches-3m-spd08.png" width="1265px" caption="A 20-pin card-edge female connector from the Molex SPD08 series." caption-position="bottom" >}}
+{{< figure src="/images/2015/12/pcb-connector-with-latches-3m-spd08.png" width="1265px" caption="A 20-pin card-edge female connector from the Molex SPD08 series."  >}}
 
 In some rare cases (e.g. the Sullins EBC Card-Edge connector series), aside from the socket, the connector manufacturer will also manufacture a plug which replicates PCB fingers, instead of you using the PCB for this purpose.

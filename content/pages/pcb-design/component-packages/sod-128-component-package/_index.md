@@ -148,7 +148,7 @@ A package used by NXP for some of their diodes.
 # 3D Render
 
 
-{{< figure src="/images/2015/04/sod-128-component-package-3d-render.jpg" width="415px" caption="A 3D render of the SOD-128 component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/sod-128-component-package-3d-render.jpg" width="415px" caption="A 3D render of the SOD-128 component package."  >}}
 
 
 # Other Images
@@ -156,14 +156,14 @@ A package used by NXP for some of their diodes.
 
 
 
-{{< figure src="/images/electronics-packages/sod128-recommended-land-pattern.jpg" caption="The recommended land pattern for the SOD-128 component package." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-packages/sod128-recommended-land-pattern.jpg" caption="The recommended land pattern for the SOD-128 component package."  width="500px" >}}
 
 
 
 
-{{< figure src="/images/electronics-packages/sod128-3d-model.jpg" caption="The 3D model for the SOD-128 component package." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-packages/sod128-3d-model.jpg" caption="The 3D model for the SOD-128 component package."  width="500px" >}}
 
 
 
 
-{{< figure src="/images/electronics-packages/sod128-package-outline.jpg" caption="The package outline for the SOD-128 component package." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-packages/sod128-package-outline.jpg" caption="The package outline for the SOD-128 component package."  width="500px" >}}

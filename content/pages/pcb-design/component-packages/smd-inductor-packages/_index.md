@@ -19,4 +19,4 @@ Inductor sizes are semi-standardized, that is, there are a few manufacturers tha
 <td >4.0x4.0mm
 </td>
 <td >16mm2
-</td></tr></tbody></table>{{< figure src="/images/2015/10/smd-inductor-component-package-photo.jpg" width="258px" caption="A SMD inductor component package." caption-position="bottom" >}}
+</td></tr></tbody></table>{{< figure src="/images/2015/10/smd-inductor-component-package-photo.jpg" width="258px" caption="A SMD inductor component package."  >}}

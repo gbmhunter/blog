@@ -7,7 +7,7 @@ type: page
 url: /programming/microcontrollers/psoc/programming
 ---
 
-{{< figure src="/images/programming-misc/swd-programming-interface-for-psoc-5.png" caption="The pinout for the PSoC programming interface." caption-position="bottom" width="250px" >}}
+{{< figure src="/images/programming-misc/swd-programming-interface-for-psoc-5.png" caption="The pinout for the PSoC programming interface."  width="250px" >}}
 
 
 
@@ -31,9 +31,9 @@ However, the header is typically out-of-stock on DigiKey. It can be set to provi
 
 
 
-{{< figure src="/images/electronics-misc/mini-prog-3-insides-top.jpg" caption="The top view of the MiniProg3 PCB with the cover removed." caption-position="bottom" width="400px" >}}
+{{< figure src="/images/electronics-misc/mini-prog-3-insides-top.jpg" caption="The top view of the MiniProg3 PCB with the cover removed."  width="400px" >}}
 
 
 
 
-{{< figure src="/images/electronics-misc/mini-prog-3-insides-bottom_0.jpg" caption="The bottom view of the MiniProg3 PCB with the cover removed." caption-position="bottom" width="400px" >}}
+{{< figure src="/images/electronics-misc/mini-prog-3-insides-bottom_0.jpg" caption="The bottom view of the MiniProg3 PCB with the cover removed."  width="400px" >}}

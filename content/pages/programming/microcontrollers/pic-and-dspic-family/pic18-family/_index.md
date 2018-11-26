@@ -11,7 +11,7 @@ url: /programming/microcontrollers/pic-and-dspic-family/pic18-family
 
 PIC18 is a family of microcontrollers from Microchip. This includes the PIC18C and PIC18F sub-families.
 
-{{< figure src="/images/2016/06/marketing-image-microchip-pic18-microcontroller-family.pdf.png" width="571px" caption="Marketing render of a range of microcontrollers from the Microchip PIC18 family. Image from http://ww1.microchip.com/." caption-position="bottom" >}}
+{{< figure src="/images/2016/06/marketing-image-microchip-pic18-microcontroller-family.pdf.png" width="571px" caption="Marketing render of a range of microcontrollers from the Microchip PIC18 family. Image from http://ww1.microchip.com/."  >}}
 
 # Compilers
 

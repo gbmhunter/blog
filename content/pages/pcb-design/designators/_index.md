@@ -11,7 +11,7 @@ url: /pcb-design/designators
 
 Designators are small component-identifying pieces of text that usually reside on both the circuit schematics and the top and bottom silkscreen layers of a PCB design.
 
-{{< figure src="/images/2015/04/0603-resistor-and-designator-2d-cad-birds-eye-high-zoom.png" width="425px" caption="A 0603 resistor and it's designator inside a CAD packages PCB design file." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/0603-resistor-and-designator-2d-cad-birds-eye-high-zoom.png" width="425px" caption="A 0603 resistor and it's designator inside a CAD packages PCB design file."  >}}
 
 # Resetting Designators
 

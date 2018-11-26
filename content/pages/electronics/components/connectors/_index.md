@@ -302,7 +302,7 @@ Mixing the two plating metals is not recommended! The corrosion rate is greatly 
 
 
 
-{{< figure src="/images/electronics-components/gold-and-tin-plated-contacts.jpg" caption="You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/." caption-position="bottom" width="900px" >}}
+{{< figure src="/images/electronics-components/gold-and-tin-plated-contacts.jpg" caption="You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/."  width="900px" >}}
 
 
 
@@ -347,7 +347,7 @@ USB plug assemblies (non pre-assembled plugs) are hard to come by. However, they
 
 
 
-{{< figure src="/images/electronics-connectors/molex-mini-usb-type-b-plug-assembly-photo.jpg" caption="The Molex Mini Usb Type B plug assembly." caption-position="bottom" width="400px" >}}
+{{< figure src="/images/electronics-connectors/molex-mini-usb-type-b-plug-assembly-photo.jpg" caption="The Molex Mini Usb Type B plug assembly."  width="400px" >}}
 
 
 
@@ -362,7 +362,7 @@ Jumpers are used to connect adjacent pins on a header together. They can also be
 
 
 
-{{< figure src="/images/electronics-connectors/using-jumpers-to-connect-pin-headers-to-test-leads.jpg" caption="A clever way of using jumpers to connect test leads to header pins. Image from http://hackadaycom.files.wordpress.com/2013/06/dgcaicca.jpg." caption-position="bottom" width="550px" >}}
+{{< figure src="/images/electronics-connectors/using-jumpers-to-connect-pin-headers-to-test-leads.jpg" caption="A clever way of using jumpers to connect test leads to header pins. Image from http://hackadaycom.files.wordpress.com/2013/06/dgcaicca.jpg."  width="550px" >}}
 
 
 
@@ -371,7 +371,7 @@ The term zero Ohm resistor is usually reserved for a resistor package whose resi
 
 
 
-{{< figure src="/images/2011/09/keystone-5110-smd-0604-jumper-3d-model.jpg" width="222px" caption="3D model of the Keystone 0603 'true' zero-Ohm jumper. Image from http://www.keyelco.com/product.cfm/Zero-ohm-SMT-Jumpers/0603-Zero-ohm-SMT-Jumper/product_id/14038." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/keystone-5110-smd-0604-jumper-3d-model.jpg" width="222px" caption="3D model of the Keystone 0603 'true' zero-Ohm jumper. Image from http://www.keyelco.com/product.cfm/Zero-ohm-SMT-Jumpers/0603-Zero-ohm-SMT-Jumper/product_id/14038."  >}}
 
 
 
@@ -392,7 +392,7 @@ One company which is doing interesting things with spring-loaded connectors is T
 
 
 
-{{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-photo.png" width="562px" caption="Photo of the TC2050-IDC-NL connector by Tag-Connect." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-photo.png" width="562px" caption="Photo of the TC2050-IDC-NL connector by Tag-Connect."  >}}
 
 
 
@@ -400,7 +400,7 @@ They sell legged and no-legged versions. The legged versions have retainers (leg
 
 
 
-{{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-pcb-footprint.png" width="806px" caption="The recommended PCB footprint for accepting the TC2050-IDC-NL connector by Tag-Connect." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-pcb-footprint.png" width="806px" caption="The recommended PCB footprint for accepting the TC2050-IDC-NL connector by Tag-Connect."  >}}
 
 
 
@@ -484,6 +484,6 @@ TE Connectivity make a range under the family name [ARISO](http://www.digikey.co
 
 
 
-{{< figure src="/images/2011/09/te-connectivity-ariso-m30-contactless-connector-pair-photo.png" width="640px" caption="A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/te-connectivity-ariso-m30-contactless-connector-pair-photo.png" width="640px" caption="A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com."  >}}
 
 

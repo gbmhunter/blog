@@ -16,7 +16,7 @@ CLion is an C/C++ IDE developed by JetBrains. Unlike Intelli IDEA, it has no fre
 
 
 
-{{< figure src="/images/2017/05/clion-logo.png" width="304px" caption="The CLion logo." caption-position="bottom" >}}
+{{< figure src="/images/2017/05/clion-logo.png" width="304px" caption="The CLion logo."  >}}
 
 
 

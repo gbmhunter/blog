@@ -31,7 +31,7 @@ Manufacturing codes include _1775469-x_ for the right-angle SMD variants, and _
 
 Molex's PicoBlade connector families are quite popular. They have a 1.25mm pitch and a 1A capacity per contact. There are a variety of wire-to-board and wire-to-wire options.
 
-{{< figure src="/images/2011/09/molex-picoblade-connector-photo.gif" width="268px" caption="A photo showing a few of the connectors from the Molex PicoBlade families. Image from www.molex.com." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/molex-picoblade-connector-photo.gif" width="268px" caption="A photo showing a few of the connectors from the Molex PicoBlade families. Image from www.molex.com."  >}}
 
 ## MTA/CST-100 Connectors
 

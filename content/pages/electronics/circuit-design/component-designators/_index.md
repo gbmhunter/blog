@@ -58,7 +58,7 @@ Component Type
 <td >
 
 
-{{< figure src="/images/2011/09/ground-analogue.png" caption="The schematic symbol for analogue ground (AGND)." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/ground-analogue.png" caption="The schematic symbol for analogue ground (AGND)."  >}}
 
 
 
@@ -97,12 +97,12 @@ Component Type
 <td >
 
 
-{{< figure src="/images/2011/09/non-polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a non-polarised capacitor." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/non-polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a non-polarised capacitor."  >}}
 
 
 
 
-{{< figure src="/images/2011/09/polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a polarised capacitor." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a polarised capacitor."  >}}
 
 
 
@@ -119,7 +119,7 @@ Component Type
 <td >
 
 
-{{< figure src="/images/2011/09/led-schematic-symbol.png" caption="The schematic symbol for an LED." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/led-schematic-symbol.png" caption="The schematic symbol for an LED."  >}}
 
 
 
@@ -136,7 +136,7 @@ Component Type
 <td >
 
 
-{{< figure src="/images/2011/09/digital-ground-schematic-symbol.png" caption="The schematic symbol for digital ground." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/digital-ground-schematic-symbol.png" caption="The schematic symbol for digital ground."  >}}
 
 
 
@@ -175,7 +175,7 @@ Component Type
 <td >
 
 
-{{< figure src="/images/2011/09/ferrite-bead-schematic-symbol.png" caption="The schematic symbol for a ferrite bead." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/ferrite-bead-schematic-symbol.png" caption="The schematic symbol for a ferrite bead."  >}}
 
 
 
@@ -192,7 +192,7 @@ Component Type
 <td >
 
 
-{{< figure src="/images/2011/09/fiducial-schematic-symbol.png" caption="The schematic symbol for a fiducial." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/fiducial-schematic-symbol.png" caption="The schematic symbol for a fiducial."  >}}
 
 
 
@@ -209,7 +209,7 @@ Component Type
 <td >
 
 
-{{< figure src="/images/2011/09/general-common-ground-schematic-symbol.png" caption="The schematic symbol for a general or common ground." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/general-common-ground-schematic-symbol.png" caption="The schematic symbol for a general or common ground."  >}}
 
 
 
@@ -303,12 +303,12 @@ Component Type
 <td >
 
 
-{{< figure src="/images/2011/09/n-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for an N-channel MOSFET." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/n-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for an N-channel MOSFET."  >}}
 
 
 
 
-{{< figure src="/images/2011/09/p-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for a P-channel MOSFET." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/p-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for a P-channel MOSFET."  >}}
 
 
 
@@ -358,7 +358,7 @@ Component Type
 <td >
 
 
-{{< figure src="/images/2011/09/spark-gap-schematic-symbol-triangular-200um-no-bom.png" caption="A schematic symbol for a spark gap. This spark gap is created with two triangles of copper on the PCB, with a gap of 200um between them. As this is made purely from the PCB, there is no BOM component needed." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/spark-gap-schematic-symbol-triangular-200um-no-bom.png" caption="A schematic symbol for a spark gap. This spark gap is created with two triangles of copper on the PCB, with a gap of 200um between them. As this is made purely from the PCB, there is no BOM component needed."  >}}
 
 
 
@@ -408,7 +408,7 @@ Component Type
 <td >
 
 
-{{< figure src="/images/2011/09/variable-resistor-potentiometer-schematic-symbol.png" caption="The schematic symbol for a variable resistor (potentiometer)." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/variable-resistor-potentiometer-schematic-symbol.png" caption="The schematic symbol for a variable resistor (potentiometer)."  >}}
 
 
 
@@ -436,7 +436,7 @@ Component Type
 <td >
 
 
-{{< figure src="/images/2011/09/crystal-schematic-symbol.png" caption="The schematic symbol for a crystal." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/crystal-schematic-symbol.png" caption="The schematic symbol for a crystal."  >}}
 
 
 

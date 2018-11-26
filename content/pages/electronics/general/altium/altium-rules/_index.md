@@ -62,4 +62,4 @@ The following picture shows the rule in Altium.
 
 
 
-{{< figure src="/images/electronics-misc/altium-power-plane-pull-back-rule.jpg" caption="Setting a pull-back rule for a power plane in Altium." caption-position="bottom" width="700px" >}}
+{{< figure src="/images/electronics-misc/altium-power-plane-pull-back-rule.jpg" caption="Setting a pull-back rule for a power plane in Altium."  width="700px" >}}

@@ -15,7 +15,7 @@ url: /electronics/general/altium/altium-vaults
 Vaults are for storing design data.
 
 
-{{< figure src="/images/2013/12/altium-vault-image.png" width="300px" caption="Depiction of the Altium vault." caption-position="bottom" >}}
+{{< figure src="/images/2013/12/altium-vault-image.png" width="300px" caption="Depiction of the Altium vault."  >}}
 
 
 # Personal Vault

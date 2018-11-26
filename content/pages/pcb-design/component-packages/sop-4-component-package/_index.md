@@ -148,7 +148,7 @@ An easy to solder, medium sized, 4-pin SMD package. Commonly used for small soli
 # Photos
 
 
-{{< figure src="/images/2015/04/sop-4-component-package-photo.jpg" width="356px" caption="A photo of the SOP-4 component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/sop-4-component-package-photo.jpg" width="356px" caption="A photo of the SOP-4 component package."  >}}
 
 
 # Other Images
@@ -156,9 +156,9 @@ An easy to solder, medium sized, 4-pin SMD package. Commonly used for small soli
 
 
 
-{{< figure src="/images/electronics-packages/sop-4-component-package-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the SOP-4 component package. Image from http://www.everlight.com/datasheets/EL452-G.pdf." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-packages/sop-4-component-package-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the SOP-4 component package. Image from http://www.everlight.com/datasheets/EL452-G.pdf."  width="500px" >}}
 
 
 
 
-{{< figure src="/images/electronics-packages/sop-4-component-package-3d-model.jpg" caption="A 3D model of the SOP-4 component package. Image from www.digikey.com." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-packages/sop-4-component-package-3d-model.jpg" caption="A 3D model of the SOP-4 component package. Image from www.digikey.com."  width="500px" >}}

@@ -146,7 +146,7 @@ Very similar to the common TO-92 package, except it is a little flatter (e.g. sq
 # Photos
 
 
-{{< figure src="/images/2015/04/e-line-component-package-photo.jpg" width="290px" caption="A photo of the E-Line component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/e-line-component-package-photo.jpg" width="290px" caption="A photo of the E-Line component package."  >}}
 
 
 # Images
@@ -154,4 +154,4 @@ Very similar to the common TO-92 package, except it is a little flatter (e.g. sq
 
 
 
-{{< figure src="/images/electronics-packages/component-package-e-line-outline-and-dimensions.png" caption="The dimensions for the E-line component package. Image from http://www.diodes.com/zetex/_pdfs/3.0/pack/E-Line.pdf." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-packages/component-package-e-line-outline-and-dimensions.png" caption="The dimensions for the E-line component package. Image from http://www.diodes.com/zetex/_pdfs/3.0/pack/E-Line.pdf."  width="500px" >}}

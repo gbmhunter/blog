@@ -18,7 +18,7 @@ url: /pcb-design/component-packages/sot-1226-component-package
 </td>
 <td >
 
-{{< figure src="/images/2015/03/sot-1226-component-package-3d-render-top-bottom.gif" caption="A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html. " caption-position="bottom" >}}
+{{< figure src="/images/2015/03/sot-1226-component-package-3d-render-top-bottom.gif" caption="A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html. "  >}}
 
 </td></tr><tr >
 <td >Synonyms
@@ -78,8 +78,8 @@ As of March 2015, NXP seems to be the only manufacturer using this package. NXP 
 
 # Dimensions
 
-{{< figure src="/images/2015/03/sot-1226-component-package-dimensions.png" width="481px" caption="The dimensions of the SOT-1226 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1226_po.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2015/03/sot-1226-component-package-dimensions.png" width="481px" caption="The dimensions of the SOT-1226 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1226_po.pdf."  >}}
 
 # Recommended Footprint
 
-{{< figure src="/images/2015/03/sot-1226-component-package-recommended-footprint.png" width="443px" caption="The recommended footprint (land pattern) for the SOT-1226 component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/03/sot-1226-component-package-recommended-footprint.png" width="443px" caption="The recommended footprint (land pattern) for the SOT-1226 component package."  >}}

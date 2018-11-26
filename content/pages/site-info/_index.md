@@ -82,7 +82,7 @@ safe_mode = Off  -> Allows backup to DropBox php script to complete (takes about
 
 April 2013: Background Darkened
 
-{{< figure src="/images/misc/cladlabs-background-changed-to-black.png" caption="The CladLabs background has been changed to a dark, dark grey (April 2013)." caption-position="bottom" width="700px" >}}
+{{< figure src="/images/misc/cladlabs-background-changed-to-black.png" caption="The CladLabs background has been changed to a dark, dark grey (April 2013)."  width="700px" >}}
 
 
 2014-March 2017  

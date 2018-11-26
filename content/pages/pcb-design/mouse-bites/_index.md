@@ -17,7 +17,7 @@ There is no standardised symbol for mouse bites. In fact, mouse bites may be dir
 
 I use the following symbol to define mouse bites on schematics:
 
-{{< figure src="/images/2015/11/mouse-bite-schematic-symbol-three-circles.png" width="248px" caption="A schematic symbol for a mouse bite. Mouse bites may be added directly to the PCB and not feature on the schematics." caption-position="bottom" >}}
+{{< figure src="/images/2015/11/mouse-bite-schematic-symbol-three-circles.png" width="248px" caption="A schematic symbol for a mouse bite. Mouse bites may be added directly to the PCB and not feature on the schematics."  >}}
 
 # PCB Considerations
 

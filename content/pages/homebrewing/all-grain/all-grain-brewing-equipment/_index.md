@@ -20,4 +20,4 @@ A residual-current device (RCD) is a very good piece of cheap safety equipment t
 
 The following picture shows an RCD and the best way to loop a cable so that water cannot run down it's length and soak into the plug contacts.
 
-{{< figure src="/images/homebrewing-allgrainequipment/how-to-place-a-power-cord-when-brewing.jpg" caption="" caption-position="bottom" width="600px" >}}
+{{< figure src="/images/homebrewing-allgrainequipment/how-to-place-a-power-cord-when-brewing.jpg" caption=""  width="600px" >}}

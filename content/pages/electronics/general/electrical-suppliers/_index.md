@@ -40,7 +40,7 @@ url: /electronics/general/electrical-suppliers
 <td >Alibaba ([visit site](http://www.alibaba.com/))
 </td>
 
-<td >{{< figure src="/images/electronics-misc/alibaba-logo.jpg" caption="The Alibaba logo." caption-position="bottom" width="100px" >}}
+<td >{{< figure src="/images/electronics-misc/alibaba-logo.jpg" caption="The Alibaba logo."  width="100px" >}}
 </td>
 
 <td >1/5
@@ -63,7 +63,7 @@ url: /electronics/general/electrical-suppliers
 <td >AliExpress ([visit site](http://www.aliexpress.com))
 </td>
 
-<td >{{< figure src="/images/electronics-misc/aliexpress-logo.jpg" caption="The AliExpress logo." caption-position="bottom" width="100px" >}}
+<td >{{< figure src="/images/electronics-misc/aliexpress-logo.jpg" caption="The AliExpress logo."  width="100px" >}}
 </td>
 
 <td >4/5
@@ -86,7 +86,7 @@ url: /electronics/general/electrical-suppliers
 <td >Deal Extreme ([visit site](http://www.dealextreme.com))
 </td>
 
-<td > {{< figure src="/images/electronics-suppliers/deal-extreme-logo.png" caption="The Deal Extreme logo." caption-position="bottom" width="100px" >}}
+<td > {{< figure src="/images/electronics-suppliers/deal-extreme-logo.png" caption="The Deal Extreme logo."  width="100px" >}}
 </td>
 
 <td >2/5
@@ -109,7 +109,7 @@ url: /electronics/general/electrical-suppliers
 <td >Element 14 [(visit site)](http://www.element14.com)
 </td>
 
-<td > {{< figure src="/images/electronics-suppliers/element-14-logo.jpg" caption="The Element 14 logo." caption-position="bottom" width="100px" >}}
+<td > {{< figure src="/images/electronics-suppliers/element-14-logo.jpg" caption="The Element 14 logo."  width="100px" >}}
 </td>
 
 <td >5/5
@@ -155,7 +155,7 @@ url: /electronics/general/electrical-suppliers
 <td >Jaycar ([visit site](http://www.jaycar.co.nz/))
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/jaycar-logo.jpg" caption="The Jaycar logo." caption-position="bottom" width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/jaycar-logo.jpg" caption="The Jaycar logo."  width="100px" >}}
 </td>
 
 <td > 1/5
@@ -178,7 +178,7 @@ url: /electronics/general/electrical-suppliers
 <td >Mind Kits ([visit site](http://www.mindkits.co.nz/))
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/mind-kits-logo.png" caption="" caption-position="bottom" width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/mind-kits-logo.png" caption=""  width="100px" >}}
 </td>
 
 <td >3/5
@@ -201,7 +201,7 @@ url: /electronics/general/electrical-suppliers
 <td >Mouser ([visit site](http://www.mouser.com))
 </td>
 
-<td >{{< figure src="/images/electronics-misc/mouser-logo.jpg" caption="The Mouser logo." caption-position="bottom" width="100px" >}}
+<td >{{< figure src="/images/electronics-misc/mouser-logo.jpg" caption="The Mouser logo."  width="100px" >}}
 </td>
 
 <td >4/5
@@ -248,7 +248,7 @@ url: /electronics/general/electrical-suppliers
 </table>
 
 
-{{< figure src="/images/electronics-suppliers/avnet-logo.gif" caption="" caption-position="bottom" width="100px" >}}
+{{< figure src="/images/electronics-suppliers/avnet-logo.gif" caption=""  width="100px" >}}
 
 
 
@@ -268,7 +268,7 @@ Supplier of PSoC devices.
 <td >Logo
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/digi-key-logo.jpg" caption="The Digi-Key logo." caption-position="bottom" width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/digi-key-logo.jpg" caption="The Digi-Key logo."  width="100px" >}}
 </td>
 </tr>
 <tr >
@@ -346,12 +346,12 @@ Automatic Part List/BOM/Order Creation. This speeds up the ordering process. Dir
 
 
 
-{{< figure src="/images/electronics-suppliers/digi-key-automatic-bom-uploading-please-wait.png" caption="" caption-position="bottom" width="320px" >}}
+{{< figure src="/images/electronics-suppliers/digi-key-automatic-bom-uploading-please-wait.png" caption=""  width="320px" >}}
 
 
 
 
-{{< figure src="/images/electronics-suppliers/digi-key-automatic-bom-uploading-selecting-excel-columns.png" caption="" caption-position="bottom" width="700px" >}}
+{{< figure src="/images/electronics-suppliers/digi-key-automatic-bom-uploading-selecting-excel-columns.png" caption=""  width="700px" >}}
 
 
 
@@ -449,7 +449,7 @@ NiceGear sells a range of DIY electronics such as Arduino gear, cables and conne
 <td >Logo
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/rs-components-logo.jpg" caption="The RS Components logo." caption-position="bottom" width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/rs-components-logo.jpg" caption="The RS Components logo."  width="100px" >}}
 </td>
 </tr>
 <tr >
@@ -566,7 +566,7 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
 <td >Circuit Labs ([website](http://www.circuitlabs.co.nz/))
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/circuit-labs-logo.jpg" caption="" caption-position="bottom" width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/circuit-labs-logo.jpg" caption=""  width="100px" >}}
 </td>
 
 <td >Number Of Layers: 2 Min Track And Gap: 0.152mm Min Hole Size: 0.30mm Min Annular Ring: 0.10 Rigid-Flex: No
@@ -595,7 +595,7 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
 <td >IMP ([website](http://www.imppc.com.au/))
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/imp-logo.gif" caption="The IMP logo." caption-position="bottom" width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/imp-logo.gif" caption="The IMP logo."  width="100px" >}}
 </td>
 
 <td >Number Of Layers: 2-8+ Min Track And Gap: ? Min Hole Size: ? Min Annular Ring: 0.10 Rigid-Flex: Yes (outsourced)
@@ -624,7 +624,7 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
 <td >PCB Zone ([website](http://www.pcbzone.net/))
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/pcb-zone-logo.jpg" caption="The PCB Zone logo." caption-position="bottom" width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/pcb-zone-logo.jpg" caption="The PCB Zone logo."  width="100px" >}}
 </td>
 
 <td >Number Of Layers: 2 Min Track And Gap: 0.20mm Min Hole Size: 0.30mm Min Annular Ring: ? Rigid-Flex: No
@@ -686,7 +686,7 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
 
 
 
-{{< figure src="/images/electronics-suppliers/pcb-cart-logo.jpg" caption="The PCB Cart logo." caption-position="bottom" width="100px" >}} Website: [wwww.pcbcart.com](http://pcbcart.com/) Number Of Layers: 4 Min Track And Gap: 0.1 Min Hole Size: 0.1 Min Annular Ring: 0.10 PCB Edge Clearance: 0.3mm/12mil (1-2 layers), 0.2mm/8mil (>2 layers) Rigid-Flex: No Plated Through-hole: Yes Soldermask/Silkscreen: Yes Instant Quote: Yes Based In: China Supplied Locations: International Notes:  Cheap supplier for boards, but they do take a while to manufacture. Offers extensive features and a nice web ordering interface with on-the-spot quotes. Although I did have an unpleasant run-in with them once, see the post " **Stack-ups:** Here is one of their default 4-layer, 2core, 1.6mm thick stack-ups. {{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-6mm-layer-stackup.jpg" caption="" caption-position="bottom" width="400px" >}} Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core. {{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-core-1-6mm-layer-stackup.jpg" caption="" caption-position="bottom" width="400px" >}}
+{{< figure src="/images/electronics-suppliers/pcb-cart-logo.jpg" caption="The PCB Cart logo."  width="100px" >}} Website: [wwww.pcbcart.com](http://pcbcart.com/) Number Of Layers: 4 Min Track And Gap: 0.1 Min Hole Size: 0.1 Min Annular Ring: 0.10 PCB Edge Clearance: 0.3mm/12mil (1-2 layers), 0.2mm/8mil (>2 layers) Rigid-Flex: No Plated Through-hole: Yes Soldermask/Silkscreen: Yes Instant Quote: Yes Based In: China Supplied Locations: International Notes:  Cheap supplier for boards, but they do take a while to manufacture. Offers extensive features and a nice web ordering interface with on-the-spot quotes. Although I did have an unpleasant run-in with them once, see the post " **Stack-ups:** Here is one of their default 4-layer, 2core, 1.6mm thick stack-ups. {{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-6mm-layer-stackup.jpg" caption=""  width="400px" >}} Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core. {{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-core-1-6mm-layer-stackup.jpg" caption=""  width="400px" >}}
 
 
 
@@ -712,7 +712,7 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
 <td >Coilcraft ([http://www.coilcraft.com/](http://www.coilcraft.com/))
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/coilcraft-logo.gif" caption="" caption-position="bottom" width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/coilcraft-logo.gif" caption=""  width="100px" >}}
 </td>
 
 <td >Free samples of their inductors with free international shipping!
@@ -723,7 +723,7 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
 <td >Texas Instruments ([http://www.ti.com/](http://www.ti.com/))
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/texas-instruments-logo.gif" caption="" caption-position="bottom" width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/texas-instruments-logo.gif" caption=""  width="100px" >}}
 </td>
 
 <td >Selection of their components. A maximum of 5 can be ordered at once. They also provide free internaitonal shipping! They do not allow you to register for free samples with a free email address such as Gmail or Hotmail, so you have to use a company or University email address.

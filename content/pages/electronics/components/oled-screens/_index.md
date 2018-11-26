@@ -123,7 +123,7 @@ Just to give you an idea of how graphics data is written to the SSD1306, the GDD
 
 
 
-{{< figure src="/images/electronics-misc/ssd1306-gddram-page-structure.png" caption="The GDDRAM structure (the RAM inside the IC which holds information on the colour of each pixel) of the Solomon SSD1306 IC." caption-position="bottom" width="550px" >}}
+{{< figure src="/images/electronics-misc/ssd1306-gddram-page-structure.png" caption="The GDDRAM structure (the RAM inside the IC which holds information on the colour of each pixel) of the Solomon SSD1306 IC."  width="550px" >}}
 
 
 
@@ -138,7 +138,7 @@ OLED screens that use the Solomon SSD1306 usually have a pin labelled VCOMH, whi
 
 
 
-{{< figure src="/images/electronics-misc/oled-vcomh-pin-description-with-error.jpg" caption="The pin description for the VCOMH pin on an OLED screen connector that uses the Solomon SSD1306 IC. This pin is incorrectly labelled as in input, but is actually an output from the internal charge pump for powering the COM segments on the OLED screen." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/electronics-misc/oled-vcomh-pin-description-with-error.jpg" caption="The pin description for the VCOMH pin on an OLED screen connector that uses the Solomon SSD1306 IC. This pin is incorrectly labelled as in input, but is actually an output from the internal charge pump for powering the COM segments on the OLED screen."  width="800px" >}}
 
 
 
@@ -158,7 +158,7 @@ You might notice that some OLED's specify a voltage range of 3.3-4.2V for the ch
 
 
 
-{{< figure src="/images/electronics-misc/oled-display-brightness-vs-vddb.gif" caption="Graph of OLED brightness vs. VDDB." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/electronics-misc/oled-display-brightness-vs-vddb.gif" caption="Graph of OLED brightness vs. VDDB."  width="320px" >}}
 
 
 

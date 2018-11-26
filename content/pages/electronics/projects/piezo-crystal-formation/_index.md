@@ -19,11 +19,11 @@ The piezo synthesis at RimStar was followed ([http://rimstar.org/materials/piezo
 
 The first photo I got was once the crystals had been grown. The size of the largest crystal is shown below.
 
-{{< figure src="/images/electronics-piezocrystalformation/2012-07-16-22-21-30.jpg" caption="A large homemade piezo crystal." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-piezocrystalformation/2012-07-16-22-21-30.jpg" caption="A large homemade piezo crystal."  width="500px" >}}
 
 To do a crude test of whether or not it would produce a voltage when struck, the crystal was sandwiched between two pieces of tin foil that were connected to an oscilloscope.
 
-{{< figure src="/images/electronics-piezocrystalformation/2012-07-21-19-43-19.jpg" caption="The simple setup to generate a measurable voltage from the piezo. The two tin pieces of tin foil where connected up to an oscilloscope." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-piezocrystalformation/2012-07-21-19-43-19.jpg" caption="The simple setup to generate a measurable voltage from the piezo. The two tin pieces of tin foil where connected up to an oscilloscope."  width="500px" >}}
 
 We were not expecting this, but a voltage was generated when we hit it!
 
@@ -31,15 +31,15 @@ We were not expecting this, but a voltage was generated when we hit it!
 <blockquote>To anyone using an oscilloscope: Mains ripple easily gets it way onto the trace (since it's really an open circuit), but aslong as you set the trigger to manual and at a high enough voltage, you should be able to catch this spike!</blockquote>
 
 
-{{< figure src="/images/electronics-piezocrystalformation/2012-07-21-19-42-13.jpg" caption="The voltage when giving the piezo a small whack from the end of a screw driver." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-piezocrystalformation/2012-07-21-19-42-13.jpg" caption="The voltage when giving the piezo a small whack from the end of a screw driver."  width="500px" >}}
 
 An even larger voltage was created when it was hit with the back-end of a screw-driver (not the ideal tool for this, but hey...). At 10V/div, this is about 55V peak-to-peak!
 
-{{< figure src="/images/electronics-piezocrystalformation/2012-07-21-19-42-57.jpg" caption="The voltage created when giving the piezo a large whack from the back-end of the screw driver." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-piezocrystalformation/2012-07-21-19-42-57.jpg" caption="The voltage created when giving the piezo a large whack from the back-end of the screw driver."  width="500px" >}}
 
 These crystals are quite brittle (they aren't diamonds!). Not surprisingly, it broke it two shortly after recording 50V across it.
 
-{{< figure src="/images/electronics-piezocrystalformation/2012-07-21-19-50-19.jpg" caption="The piezo crystal broke in two after one too many hits with the screw driver." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-piezocrystalformation/2012-07-21-19-50-19.jpg" caption="The piezo crystal broke in two after one too many hits with the screw driver."  width="500px" >}}
 
 If you want more information about piezos and their use in electronics, see the [Piezo Speaker page](http://blog.mbedded.ninja/electronics/components/piezos).
 

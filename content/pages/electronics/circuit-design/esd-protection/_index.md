@@ -20,7 +20,7 @@ url: /electronics/circuit-design/esd-protection
 Electrostatic discharge (ESD) is a unintended quick high-voltage transient waveform which appears on conductors within an electrical circuit. The high voltages and current peaks caused by ESD can cause devices such as static sensitive IC's to fail. Human contact is a common source of an ESD. Even if there is no direct human contact with the circuit, devices such as capacitive sense switches can allow charge to be coupled through onto electrical conductors. ESD protection is needed in cases were ESD discharges could potentially cause a circuit to fail.
 
 
-{{< figure src="/images/2011/09/esd-protectors-schematic-symbol.png" width="770px" caption="The schematic symbol for ESD protectors. Image from http://www.bourns.com/data/global/pdfs/MLC.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/esd-protectors-schematic-symbol.png" width="770px" caption="The schematic symbol for ESD protectors. Image from http://www.bourns.com/data/global/pdfs/MLC.pdf."  >}}
 
 
 # ESD Protection Devices
@@ -142,7 +142,7 @@ You can normally diagnose this by noting the the "unpowered" rail will be one di
 Extra diodes, external to the IC, can be added to prevent leakage currents through CMOS IO pins on devices which have ESD protection diodes to VCC and GND. The following image shows how they would be connected to the IC of interest.
 
 
-{{< figure src="/images/2011/09/protection-diodes-to-disable-esd-diodes-on-cmos-io.png" width="489px" caption="Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/protection-diodes-to-disable-esd-diodes-on-cmos-io.png" width="489px" caption="Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf."  >}}
 
 
 However, this approach has it's disadvantages. The actual supply voltage seen by the IC is reduced by twice the voltage drop (\( V_f \)) across the diodes (normally 2x 0.5-0.7V = 1.0-1.4V). Also, the IC ground is now significantly different from the system ground. This can upset single-ended ADC measurements and other analogue functions.

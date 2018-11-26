@@ -292,7 +292,7 @@ Open and closed types. The following image shows a open type piezo-electric ultr
 
 
 
-{{< figure src="/images/2013/12/arduino-ultrasound-module.jpg" width="1200px" caption="An Arduino compatible ultrasound module." caption-position="bottom" >}}
+{{< figure src="/images/2013/12/arduino-ultrasound-module.jpg" width="1200px" caption="An Arduino compatible ultrasound module."  >}}
 
 
 
@@ -310,13 +310,13 @@ High-power types have a power rating between 40-150W. These types of ultrasonic 
 	  * Ultrasound modules for tank level measurement. They normally can measure a range of liquids including water, black water, oil, petrol, diesel without any adjustment (liquid type agnostic). Range is typically from 100mm to 4m. Some have focusers made of materials such as glass-reinforced polypropylene to produce narrow beams.
 	  * Ultrasound cleaners are used to clean objects by vibrating the dirt/greese from them. They are commonly used to clean the resin of circuit boards after soldering.
 	  * High-end wind sensors (anemometers) use ultrasound to measure the wind speed and direction (or more concisely, it's velocity).
-{{< figure src="/images/2013/12/3d-sonic-anemometer.jpg" width="149px" caption="A 3D sonic anemometer. Image from http://www.thiesclima.com/ultrasonic_anemometer_3d_e.html." caption-position="bottom" >}}
+{{< figure src="/images/2013/12/3d-sonic-anemometer.jpg" width="149px" caption="A 3D sonic anemometer. Image from http://www.thiesclima.com/ultrasonic_anemometer_3d_e.html."  >}}
   
 
  
 	  * Similar to anemometers, ultrasonic flowmeters can be used to determine the speed and direction of liquid within pipes.
 	  * Ultrasonic devices are used in the medical world for getting images of body parts (e.g. an unborn baby). Human tissue attenuates ultrasound by approximately 1dB/cm/MHz.
-{{< figure src="/images/2013/12/medical-ultrasonic-sensor-sonosite-c60x.jpg" width="286px" caption="The C60X medical ultrasound sensor by Sonosite. Image from http://www.sonosite.com/accessories/c60x-0." caption-position="bottom" >}}
+{{< figure src="/images/2013/12/medical-ultrasonic-sensor-sonosite-c60x.jpg" width="286px" caption="The C60X medical ultrasound sensor by Sonosite. Image from http://www.sonosite.com/accessories/c60x-0."  >}}
   
 
  
@@ -353,7 +353,7 @@ With a simple single transducer acting as both the receiver and transmitter, the
 
 
 
-{{< figure src="/images/2013/12/detection-beam-pattern-of-sonarange-ups-ultrasonic-transducers.png" width="358px" caption="The detection beam pattern of some ultrasonic transducers by Sonarange. Image from http://www.sntag.ch/data/Datenblatt%20e%20UPS.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2013/12/detection-beam-pattern-of-sonarange-ups-ultrasonic-transducers.png" width="358px" caption="The detection beam pattern of some ultrasonic transducers by Sonarange. Image from http://www.sntag.ch/data/Datenblatt%20e%20UPS.pdf."  >}}
 
 
 
@@ -378,7 +378,7 @@ The combination of these three factors creates a dead-zone right in-front of the
 
 
 
-{{< figure src="/images/2013/12/ultrasonic-proximity-detector-circuit-with-seperate-transmitter-and-receiver.png" width="988px" caption="A ultrasonic proximity detector circuit with separate transmitter and receiver. Image from http://www.datasheetarchive.com/dl/Scans-004/Scans-0082375.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2013/12/ultrasonic-proximity-detector-circuit-with-seperate-transmitter-and-receiver.png" width="988px" caption="A ultrasonic proximity detector circuit with separate transmitter and receiver. Image from http://www.datasheetarchive.com/dl/Scans-004/Scans-0082375.pdf."  >}}
 
 
 
@@ -411,7 +411,7 @@ Higher frequency ultrasonic waveforms lose energy quicker when travelling throug
 
 
 
-{{< figure src="/images/2013/12/graph-of-audible-and-ultrasound-frequency-range-with-subsections.png" width="561px" caption="A graph showing the audible and ultrasound ranges of the sound spectrum, with subsections. Image from http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf." caption-position="bottom" >}}
+{{< figure src="/images/2013/12/graph-of-audible-and-ultrasound-frequency-range-with-subsections.png" width="561px" caption="A graph showing the audible and ultrasound ranges of the sound spectrum, with subsections. Image from http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf."  >}}
 
 
 

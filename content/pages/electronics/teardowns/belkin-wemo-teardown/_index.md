@@ -79,7 +79,7 @@ The screws are triangle (anti-tamper), 2.3mm. 2 of the four are hidden underneat
 
 
 
-{{< figure src="/images/teardown-belkinwemo/010-cutting-sticker-to-open-wimo.jpg" caption="Cutting the sticker to open the WiMo." caption-position="bottom"  >}}
+{{< figure src="/images/teardown-belkinwemo/010-cutting-sticker-to-open-wimo.jpg" caption="Cutting the sticker to open the WiMo."   >}}
 
 
 
@@ -89,7 +89,7 @@ There are two PCBs, with a 3-wire connector between them. One can bet that the t
 
 
 
-{{< figure src="/images/teardown-belkinwemo/020-wimo-opened-up.jpg" caption="The insides of the Belkin WiMo." caption-position="bottom"  >}}
+{{< figure src="/images/teardown-belkinwemo/020-wimo-opened-up.jpg" caption="The insides of the Belkin WiMo."   >}}
 
 
 
@@ -104,7 +104,7 @@ They use a mechanical relay to switch the mains to the outlet. The relay is the 
 
 
 
-{{< figure src="/images/teardown-belkinwemo/030-power-circuitry.jpg" caption="The power circuitry of the Belkin WeMo." caption-position="bottom"  >}}
+{{< figure src="/images/teardown-belkinwemo/030-power-circuitry.jpg" caption="The power circuitry of the Belkin WeMo."   >}}
 
 
 
@@ -134,7 +134,7 @@ The main chip on this board is the Ralink RT5350F (other numbers on the IC are T
 
 
 
-{{< figure src="/images/teardown-belkinwemo/040-logic-circuitry-top-side.jpg" caption="The top-side of the Belkin WeMo's logic circuitry." caption-position="bottom"  >}}
+{{< figure src="/images/teardown-belkinwemo/040-logic-circuitry-top-side.jpg" caption="The top-side of the Belkin WeMo's logic circuitry."   >}}
 
 
 
@@ -149,7 +149,7 @@ On the other side of the board are two more ICs, the Winbond W9825G6JH-61 1302P 
 
 
 
-{{< figure src="/images/teardown-belkinwemo/050-logic-circuitry-bottom-side.jpg" caption="The bottom side of the Belkin WeMo's logic circuitry." caption-position="bottom"  >}}
+{{< figure src="/images/teardown-belkinwemo/050-logic-circuitry-bottom-side.jpg" caption="The bottom side of the Belkin WeMo's logic circuitry."   >}}
 
 
 

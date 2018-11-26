@@ -15,7 +15,7 @@ url: /programming/embedded-linux
 Embedded Linux is the name given to the Linux operating system when it is run on **resource-constrained systems**, as opposed to traditional laptop, desktop or server style computers.
 
 
-{{< figure src="/images/2017/03/embedded-linux-icon.png" width="308px" caption="Embedded Linux icon." caption-position="bottom" >}}
+{{< figure src="/images/2017/03/embedded-linux-icon.png" width="308px" caption="Embedded Linux icon."  >}}
 
 
 # Child Pages

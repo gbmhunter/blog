@@ -11,4 +11,4 @@ Also called Power Line Carrier Communication (PLCC). A "power line" can be any c
 
 An example circuit for the LM1893 from Texas Instruments.
 
-{{< figure src="/images/electronics-misc/lm1893-example-circuit-power-line-comms-texas-instruments.png" caption="Example circuit from Texas Instruments for the LM1893. Image from http://www.ti.com/lit/ds/snas544a/snas544a.pdf." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/electronics-misc/lm1893-example-circuit-power-line-comms-texas-instruments.png" caption="Example circuit from Texas Instruments for the LM1893. Image from http://www.ti.com/lit/ds/snas544a/snas544a.pdf."  width="800px" >}}

@@ -15,7 +15,7 @@ You may wish to build up a small prototype circuit on stripboard of the analogue
 
 Try and use development kits wherever possible.
 
-{{< figure src="/images/2011/12/first-electric-skateboard-prototype-circuit.jpg" width="504px" caption="The first prototype circuit for the electric skateboard." caption-position="bottom" >}}
+{{< figure src="/images/2011/12/first-electric-skateboard-prototype-circuit.jpg" width="504px" caption="The first prototype circuit for the electric skateboard."  >}}
 
 # Grid Generators
 

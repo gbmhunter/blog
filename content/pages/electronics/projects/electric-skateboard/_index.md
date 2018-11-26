@@ -27,7 +27,7 @@ Description
 <tbody >
 <tr >
 
-<td >{{< figure src="/images/electronics-misc/update-note.jpg" caption="For the electric skateboard project page." caption-position="bottom" width="320px" >}}
+<td >{{< figure src="/images/electronics-misc/update-note.jpg" caption="For the electric skateboard project page."  width="320px" >}}
 </td>
 
 <td >[Updates](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-updates)
@@ -38,7 +38,7 @@ Description
 </tr>
 <tr >
 
-<td >{{< figure src="/images/electronics-misc/gears-icon.jpg" caption="For the electric skateboard project page." caption-position="bottom" width="320px" >}}
+<td >{{< figure src="/images/electronics-misc/gears-icon.jpg" caption="For the electric skateboard project page."  width="320px" >}}
 </td>
 
 <td >[Hardware](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-hardware)
@@ -49,7 +49,7 @@ Description
 </tr>
 <tr >
 
-<td >{{< figure src="/images/electronics-misc/design-and-construction.jpg" caption="For the electric skateboard project page." caption-position="bottom" width="320px" >}}
+<td >{{< figure src="/images/electronics-misc/design-and-construction.jpg" caption="For the electric skateboard project page."  width="320px" >}}
 </td>
 
 <td >[Skateboard Design](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-design)
@@ -60,7 +60,7 @@ Description
 </tr>
 <tr >
 
-<td >{{< figure src="/images/electronics-misc/firmware-update-icon.png" caption="For the electric skateboard project page." caption-position="bottom" width="320px" >}}
+<td >{{< figure src="/images/electronics-misc/firmware-update-icon.png" caption="For the electric skateboard project page."  width="320px" >}}
 </td>
 
 <td >[Firmware](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-firmware)
@@ -71,7 +71,7 @@ Description
 </tr>
 <tr >
 
-<td >{{< figure src="/images/electronics-misc/angel-emoticon.jpg" caption="For the electric skateboard project page." caption-position="bottom" width="320px" >}}
+<td >{{< figure src="/images/electronics-misc/angel-emoticon.jpg" caption="For the electric skateboard project page."  width="320px" >}}
 </td>
 
 <td >[Near Misses/Mistakes](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-near-misses-and-mistakes)
@@ -82,7 +82,7 @@ Description
 </tr>
 <tr >
 
-<td >{{< figure src="/images/electronics-misc/scalpel-icon.png" caption="For the electric skateboard project page." caption-position="bottom" width="320px" >}}
+<td >{{< figure src="/images/electronics-misc/scalpel-icon.png" caption="For the electric skateboard project page."  width="320px" >}}
 </td>
 
 <td >[The Li-Po Battery Dissection](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-the-li-po-battery-dissection)
@@ -93,7 +93,7 @@ Description
 </tr>
 <tr >
 
-<td >{{< figure src="/images/electronics-misc/camera-icon.png" caption="For the electric skateboard project page." caption-position="bottom" width="200px" >}}
+<td >{{< figure src="/images/electronics-misc/camera-icon.png" caption="For the electric skateboard project page."  width="200px" >}}
 </td>
 
 <td >[Picture Gallery](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-photo-album)

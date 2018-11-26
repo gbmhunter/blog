@@ -58,7 +58,7 @@ $$ R_{RC filter} << R_{ADC} $$
 
 The basic low-pass LC filter consists of a single inductor and capacitor.
 
-{{< figure src="/images/2013/01/lc-low-pass-filter-basic-diagram-schematic.png" width="556px" caption="A basic schematic of a low-pass LC filter." caption-position="bottom" >}}
+{{< figure src="/images/2013/01/lc-low-pass-filter-basic-diagram-schematic.png" width="556px" caption="A basic schematic of a low-pass LC filter."  >}}
 
 Unlike the low-pass RC filter, the low-pass LC filter is theoretically loss-less. This means that it does not dissipate energy as heat. However, the presence of the inductance usually makes the LC filter larger and more expensive than the RC filter.
 
@@ -78,7 +78,7 @@ which you will notice is also present in the cut-off frequency equation.
 
 The main parasitic element to consider with a low-pass LC filter is the parasitic coil resistance of the inductor. This dampens the output signal.
 
-{{< figure src="/images/2013/01/lc-low-pass-filter-schematic-with-parasitic-inductor-resistance.png" width="539px" caption="A schematic of a LC low-pass filter with parasitic inductor resistance included." caption-position="bottom" >}}
+{{< figure src="/images/2013/01/lc-low-pass-filter-schematic-with-parasitic-inductor-resistance.png" width="539px" caption="A schematic of a LC low-pass filter with parasitic inductor resistance included."  >}}
 
 This is equivalent to a low-pass RLC filter.
 

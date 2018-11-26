@@ -161,7 +161,7 @@ As far as I can tell, this package only comes in the 6-pin version (TSOC-6), and
 # Photos
 
 
-{{< figure src="/images/2015/04/tsoc-6-component-package-photo.jpg" width="364px" caption="A photo of the TSOC-6 component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/tsoc-6-component-package-photo.jpg" width="364px" caption="A photo of the TSOC-6 component package."  >}}
 
 
 # Images

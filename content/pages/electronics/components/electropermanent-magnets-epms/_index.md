@@ -19,7 +19,7 @@ An **electropermanent magnet (EPM)** is a device which can have it's magnetic fi
 
 
 
-{{< figure src="/images/electronics-components/electropermanent-magnet-construction-and-metal-properties.png" caption="The basic construction of an electropermanent magnet and the properties of the two magnetic materials used. Image from Electropermanent Magnetic Connectors and Actuators: Devices and Their Application in Programmable Matter by Ara Nerses Knaian." caption-position="bottom"  >}}
+{{< figure src="/images/electronics-components/electropermanent-magnet-construction-and-metal-properties.png" caption="The basic construction of an electropermanent magnet and the properties of the two magnetic materials used. Image from Electropermanent Magnetic Connectors and Actuators: Devices and Their Application in Programmable Matter by Ara Nerses Knaian."   >}}
 
 
 
@@ -43,7 +43,7 @@ EPMs contain a hard magentic material (such as NIB) and a semi-hard magnetic met
 
 
 
-{{< figure src="/images/electronics-components/diagram-of-electropermanent-magnet-fields-and-hystersis.png" caption="Diagram showing the how electropermanent magnets work. Image from Electropermanent Magnetic Connectors and Actuators: Devices and Their Application in Programmable Matter by Ara Nerses Knaian." caption-position="bottom"  >}}
+{{< figure src="/images/electronics-components/diagram-of-electropermanent-magnet-fields-and-hystersis.png" caption="Diagram showing the how electropermanent magnets work. Image from Electropermanent Magnetic Connectors and Actuators: Devices and Their Application in Programmable Matter by Ara Nerses Knaian."   >}}
 
 
 
@@ -93,4 +93,4 @@ The [OpenGrab Electro Permanent Magnet (EPM) Gripper v2.0](http://nicadrone.com/
 
 
 
-{{< figure src="/images/electronics-components/opengrab-epm-688-v2.0-electropermanent-magnet-module.jpg" caption="The OpenGrab Electropermanent Magnet (EPM) module. Image from http://nicadrone.com/index.php?id_product=13&controller=product." caption-position="bottom"  >}}
+{{< figure src="/images/electronics-components/opengrab-epm-688-v2.0-electropermanent-magnet-module.jpg" caption="The OpenGrab Electropermanent Magnet (EPM) module. Image from http://nicadrone.com/index.php?id_product=13&controller=product."   >}}

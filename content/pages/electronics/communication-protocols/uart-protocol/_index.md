@@ -552,7 +552,7 @@ It can view and send binary, hex, ASCII, ANSI, integers (both signed and unsigne
 
 
 
-{{< figure src="/images/2011/09/realterm-window.jpg" width="620px" caption="A screenshot of RealTerm in action." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/realterm-window.jpg" width="620px" caption="A screenshot of RealTerm in action."  >}}
 
 
 
@@ -575,7 +575,7 @@ A simple and tidy Windows terminal program. Personally, it doesn't get the same 
 
 
 
-{{< figure src="/images/2011/09/terminal-v1-9b-by-bray-window.jpg" width="800px" caption="A screenshot of 'Terminal by Br@y' in action." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/terminal-v1-9b-by-bray-window.jpg" width="800px" caption="A screenshot of 'Terminal by Br@y' in action."  >}}
 
 
 
@@ -604,7 +604,7 @@ If your running windows, PuTTY is a very handy application to have if you want t
 
 
 
-{{< figure src="/images/2011/09/putty-terminal-screenshot-with-settings-window.png" width="831px" caption="A screenshot of the PuTTy application in action, along with the settings window." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/putty-terminal-screenshot-with-settings-window.png" width="831px" caption="A screenshot of the PuTTy application in action, along with the settings window."  >}}
 
 
 
@@ -612,7 +612,7 @@ I have discovered one bug in PuTTY...if it receives a large number of characters
 
 
 
-{{< figure src="/images/2011/09/putty-bug-when-receiving-large-num-of-chars.png" width="699px" caption="PuTTY can freeze when printing a large number of random characters to it across a COM port." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/putty-bug-when-receiving-large-num-of-chars.png" width="699px" caption="PuTTY can freeze when printing a large number of random characters to it across a COM port."  >}}
 
 
 
@@ -706,7 +706,7 @@ There are occasions when you want or need to send serial data between two pieces
 
 
 
-{{< figure src="/images/2011/09/testing-a-physical-serial-port-bridge.jpg" width="931px" caption="Testing a physical serial-port bridge, made by connecting two FTDI cable together." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/testing-a-physical-serial-port-bridge.jpg" width="931px" caption="Testing a physical serial-port bridge, made by connecting two FTDI cable together."  >}}
 
 
 

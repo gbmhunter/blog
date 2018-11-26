@@ -30,7 +30,7 @@ News is that the PCB's won't be made by Massey anymore, so I'm going to have to 
 
 After going nuts on this project in the last week, I have nearly finished the PCB routing for the skateboard PCB, the first of two boards (the other is the remote PCB).
 
-{{< figure src="/images/electronics-electricskateboard/skateboard-pcb-routing-almost-complete.jpg" caption="Screenshot of the nearly finished skateboard PCB routing (1 of 2 boards...)." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-electricskateboard/skateboard-pcb-routing-almost-complete.jpg" caption="Screenshot of the nearly finished skateboard PCB routing (1 of 2 boards...)."  width="500px" >}}
 
 
 ### **05/01/2012**
@@ -38,7 +38,7 @@ After going nuts on this project in the last week, I have nearly finished the PC
 
 ****Finally got some time of work to 'start' finishing this thing! Worked on the schematics today, and are planning to get a PCB done so that Massey in Palmerston North can make some rough 2-layer PCB prototype boards for testing. I brought a PSoC development kit a while back in anticipation of using it to develop code/test hardware before these boards are ready.
 
-{{< figure src="/images/electronics-misc/psoc-5-cy8c5246ax1-054-microcontroller.png" caption="A schematic drawing of the PSoC 5 CY8C5246AX1-054 microcontroller." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/electronics-misc/psoc-5-cy8c5246ax1-054-microcontroller.png" caption="A schematic drawing of the PSoC 5 CY8C5246AX1-054 microcontroller."  width="320px" >}}
 
 
 ### 14/03/2011
@@ -99,13 +99,13 @@ Fixed the Li-Po battery. Removed the dead cell and reconnected the remaining cel
 <tbody >
 <tr >
 
-<td >{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6210.jpg" caption="A supposedly '3kW' BLDC motor I got from Hobby King." caption-position="bottom" width="160px" >}}
+<td >{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6210.jpg" caption="A supposedly '3kW' BLDC motor I got from Hobby King."  width="160px" >}}
 </td>
 
-<td >{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6216.jpg" caption="The BLDC motor mount, that attaches to only one end of the motor, since it is an outrunner." caption-position="bottom" width="160px" >}}
+<td >{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6216.jpg" caption="The BLDC motor mount, that attaches to only one end of the motor, since it is an outrunner."  width="160px" >}}
 </td>
 
-<td >{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6221.jpg" caption="A lithium-ion polymer battery from Hobby King." caption-position="bottom" width="160px" >}}
+<td >{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6221.jpg" caption="A lithium-ion polymer battery from Hobby King."  width="160px" >}}
 </td>
 </tr>
 </tbody>
@@ -118,7 +118,7 @@ Fixed the Li-Po battery. Removed the dead cell and reconnected the remaining cel
 
 ****Designed breakout boards for the Xbee modules. These will be used to test the module before making the final circuits.
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0125.jpg" caption="I made two Xbee breakout boards for prototyping, since they use the non-prototype friendly 2mm pitch connectors." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0125.jpg" caption="I made two Xbee breakout boards for prototyping, since they use the non-prototype friendly 2mm pitch connectors."  width="320px" >}}
 
 **12/05/2010**
 

@@ -51,7 +51,7 @@ PSoC devices are great in the fact that almost all hardware peripherals are reco
 
 
 
-{{< figure src="/images/programming-misc/freertos-logo-large.jpg" caption="The FreeRTOS logo. Image from http://www.arm.com/community/partners/display_product/rw/ProductId/4028/." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/programming-misc/freertos-logo-large.jpg" caption="The FreeRTOS logo. Image from http://www.arm.com/community/partners/display_product/rw/ProductId/4028/."  width="320px" >}}
 
 
 

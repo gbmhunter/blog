@@ -21,7 +21,7 @@ Fitting a linear curve (a line!) to a set of data is called linear regression. T
 
 
 
-{{< figure src="/images/2018/07/linear_curve_fitting_graph_of_points_and_line-300x225.png" width="603px" caption="The linear curve fitting (using the least squares approach) to four data points." caption-position="bottom" >}}
+{{< figure src="/images/2018/07/linear_curve_fitting_graph_of_points_and_line-300x225.png" width="603px" caption="The linear curve fitting (using the least squares approach) to four data points."  >}}
 
 
 
@@ -264,4 +264,4 @@ The points and line of best fit are shown in the below graph:
 
 
 
-{{< figure src="/images/2018/07/linear_curve_fitting_graph_of_points_and_line-300x225.png" width="587px" caption="The linear curve fitting (using the least squares approach) to four data points." caption-position="bottom" >}}
+{{< figure src="/images/2018/07/linear_curve_fitting_graph_of_points_and_line-300x225.png" width="587px" caption="The linear curve fitting (using the least squares approach) to four data points."  >}}

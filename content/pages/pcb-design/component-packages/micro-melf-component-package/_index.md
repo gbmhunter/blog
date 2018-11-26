@@ -156,7 +156,7 @@ Some versions have squared bits in the middle, making it easier to place one on 
 
 
 
-{{< figure src="/images/2015/04/micro-melf-component-package-photo.jpg" width="360px" caption="A photo of the Micro-MELF component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/micro-melf-component-package-photo.jpg" width="360px" caption="A photo of the Micro-MELF component package."  >}}
 
 
 
@@ -165,4 +165,4 @@ Some versions have squared bits in the middle, making it easier to place one on 
 
 
 
-{{< figure src="/images/electronics-packages/component-package-micro-melf-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the Micro-MELF component package. Image from http://www.vishay.com/docs/20003/smm0102.pdf." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-packages/component-package-micro-melf-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the Micro-MELF component package. Image from http://www.vishay.com/docs/20003/smm0102.pdf."  width="500px" >}}

@@ -270,7 +270,7 @@ Make sure that you call PCBServer.PreProcess and PCBServer.PostProcess after d
 
 You can get the following error when trying to save if you haven't called PCBServer.PostProcess and equal number of times as PCBServer.PostProcess. So far, if this does occur, I haven't worked out how to save the document (all changes since last save are lost!).
 
-{{< figure src="/images/altium/pcb-script-bug-a-command-is-currently-active-and-save-cannot-be-completed-at-this-time.png" caption="You might get this error in Altium when trying to save because you have run a script which hasn't called PSBServer.PostProcess an equal number of times as PCBServer.PostProcess." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/altium/pcb-script-bug-a-command-is-currently-active-and-save-cannot-be-completed-at-this-time.png" caption="You might get this error in Altium when trying to save because you have run a script which hasn't called PSBServer.PostProcess an equal number of times as PCBServer.PostProcess."  width="800px" >}}
 
 # Updating Component  Links
 

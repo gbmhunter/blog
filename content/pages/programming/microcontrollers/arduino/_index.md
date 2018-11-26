@@ -13,7 +13,7 @@ url: /programming/microcontrollers/arduino
 
 The Arduino is a low-cost, easy-to-use, microcontroller development environment. It consists of a range of hardware PCB's, and the Arduino software and supporting libraries.
 
-{{< figure src="/images/2011/11/arduino-uno-r3-photo.jpg" width="425px" caption="A photo of the Arduino Uno (revision r3). Image from https://www.wikimedia.org/." caption-position="bottom" >}}
+{{< figure src="/images/2011/11/arduino-uno-r3-photo.jpg" width="425px" caption="A photo of the Arduino Uno (revision r3). Image from https://www.wikimedia.org/."  >}}
 
 The Arduino platform was used in the [Luxcity Tonic UV Control System project](http://blog.mbedded.ninja/electronics/projects/luxcity-uv-tonic-control-system) that I designed.
 
@@ -25,13 +25,13 @@ The Arduino platform was used in the [Luxcity Tonic UV Control System project](h
 
 The Arduino drivers do not currently work on Windows 8, because they have not been digitally signed. However "Louis Davis" on the Arduino forum created a signed cat file (signed with a test certificate) so that you can install the driver (INF) file on Windows 8 (see [forum](http://arduino.cc/forum/index.php/topic,94651.msg711489.html#msg711489)). Tested and it works!
 
-{{< figure src="/images/2011/11/windows-8-start-screen.jpg" width="272px" caption="The Windows 8 start screen." caption-position="bottom" >}}
+{{< figure src="/images/2011/11/windows-8-start-screen.jpg" width="272px" caption="The Windows 8 start screen."  >}}
 
 ## NetDuino
 
 An embedded platform that runs the .NET Micro framework.
 
-{{< figure src="/images/2011/11/netduino-plus-photo.jpg" width="470px" caption="The Netduino, an embedded platform that runs the .NET Micro framework. Image from http://netduino.com/." caption-position="bottom" >}}
+{{< figure src="/images/2011/11/netduino-plus-photo.jpg" width="470px" caption="The Netduino, an embedded platform that runs the .NET Micro framework. Image from http://netduino.com/."  >}}
 
 ## FezDomino
 
@@ -47,7 +47,7 @@ Most importantly, the Arduino IDE is free and open-source. The complete tool-cha
 
 MariaMole is an IDE that runs over the Arduino install. I think it's main benefit is that it allows you to write code in a proper file/library structure (which is a serious downside to the native Arduino IDE). It provides the Workspace/project/file window that is a default to any good IDE.
 
-{{< figure src="/images/2011/11/mariamole-screenshot-from-website.jpg" width="402px" caption="Screenshot of the MariaMole IDE. Image from http://dalpix.com/mariamole." caption-position="bottom" >}}
+{{< figure src="/images/2011/11/mariamole-screenshot-from-website.jpg" width="402px" caption="Screenshot of the MariaMole IDE. Image from http://dalpix.com/mariamole."  >}}
 
 As of Mar 2013, MariaMole does not support Arduino v1.5.2, which is required to run the Due.
 

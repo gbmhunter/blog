@@ -112,7 +112,7 @@ I got some weird cb() never called! errors when trying to install express with 
 
 I installed geany (sudo apt-get install geany), to get a better code editor than nano or leafpad.
 
-{{< figure src="/images/project-autoelectricblanket/raspberry-pi-with-lots-of-cables-filtered.jpg" caption="The RaspberryPi while testing." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/project-autoelectricblanket/raspberry-pi-with-lots-of-cables-filtered.jpg" caption="The RaspberryPi while testing."  width="800px" >}}
 
 
 ## List Of Installed Programs
@@ -132,7 +132,7 @@ I installed geany (sudo apt-get install geany), to get a better code editor than
 
 The ENOENT read /sys/class/gpio/gpio4/direction error caught me out for along time, until I realised I had to run the node module using sudo node server,js (with administrator privlages).
 
-{{< figure src="/images/project-autoelectricblanket/simple-led-connected-to-raspberry-pi-gpio.jpg" caption="I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/project-autoelectricblanket/simple-led-connected-to-raspberry-pi-gpio.jpg" caption="I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing."  width="800px" >}}
 
 
 # Nodejs Modules
@@ -144,11 +144,11 @@ Managed to get the RaspberryPi to take action when the client visited a specific
 
 Wanted to send information back to the server without the client browsing to a different page.
 
-{{< figure src="/images/project-autoelectricblanket/node-js-server-running-on-raspberry-pi-terminal-output-filtered.jpg" caption="The terminal output when a client visits the node.js server running on the RaspberryPi." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/project-autoelectricblanket/node-js-server-running-on-raspberry-pi-terminal-output-filtered.jpg" caption="The terminal output when a client visits the node.js server running on the RaspberryPi."  width="600px" >}}
 
 The express extension serves up a web page.
 
-{{< figure src="/images/project-autoelectricblanket/basic-web-page-served-by-node-js.jpg" caption="The basic web page served with node.js running on the RaspberryPi (viewed in Chrome)." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/project-autoelectricblanket/basic-web-page-served-by-node-js.jpg" caption="The basic web page served with node.js running on the RaspberryPi (viewed in Chrome)."  width="800px" >}}
 
 At first I was just using the window.redirect() to send data back to the server when the user toggled the on/off button. This had the problem of the web page wanting to change everytime you clicked the button. To send back data without reloading the page, I use the AJAX (this was new to me) post request that comes with jQuery, $.post().
 
@@ -166,7 +166,7 @@ I used the following command when currently in the repo directory on my PC (note
     rsync -arvz --delete . pi@192.168.1.51:~/autoeb
 
 
-{{< figure src="/images/project-autoelectricblanket/sending-files-via-rsync-between-pc-and-raspberry-pi.png" caption="Sending code files using rsync from the PC to the RaspberryPi." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/project-autoelectricblanket/sending-files-via-rsync-between-pc-and-raspberry-pi.png" caption="Sending code files using rsync from the PC to the RaspberryPi."  width="800px" >}}
 
 
 # Dynamic DNS
@@ -248,7 +248,7 @@ But it still seemed to work fine.
 
 I pulled apart the electric blanket. Simple control. Looks like switch selects different resistance circuits to power.
 
-{{< figure src="/images/project-autoelectricblanket/camerazoom-20131009175933171.jpg" caption="The circuit inside the electric blanket controls (for one side of the bed)." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/project-autoelectricblanket/camerazoom-20131009175933171.jpg" caption="The circuit inside the electric blanket controls (for one side of the bed)."  width="800px" >}}
 
 The Pololu ([http://www.pololu.com/catalog/product/2120](http://www.pololu.com/catalog/product/2120)) wasn't enough to power the RaspberryPi with the WiFi module installed (it got hot and then kept restarting).
 

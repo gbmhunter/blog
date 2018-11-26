@@ -37,7 +37,7 @@ The above code creates a new static qualified string inside the function, and th
 
 
 
-{{< figure src="/images/2017/08/magic-statics-icon-bunny-hat-code.png" caption="" caption-position="bottom" >}}
+{{< figure src="/images/2017/08/magic-statics-icon-bunny-hat-code.png" caption=""  >}}
 
 
 
@@ -143,7 +143,7 @@ On the Windows side of things, thread safety was implemented for magic statics i
 
 
 
-{{< figure src="/images/2017/08/visual-studio-support-for-cpp-magic-statics.png" width="622px" caption="Table showing Visual Studio's support for magic statics. Image from https://msdn.microsoft.com/en-us/library/hh567368.aspx." caption-position="bottom" >}}
+{{< figure src="/images/2017/08/visual-studio-support-for-cpp-magic-statics.png" width="622px" caption="Table showing Visual Studio's support for magic statics. Image from https://msdn.microsoft.com/en-us/library/hh567368.aspx."  >}}
 
 
 

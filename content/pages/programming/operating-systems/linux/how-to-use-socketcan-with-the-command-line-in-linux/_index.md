@@ -16,7 +16,7 @@ url: /programming/operating-systems/linux/how-to-use-socketcan-with-the-command-
 
 
 
-{{< figure src="/images/2017/07/socketcan-image.png" width="337px" caption="Icon for SocketCAN. Image from https://github.com/linux-can/can-utils." caption-position="bottom" >}}
+{{< figure src="/images/2017/07/socketcan-image.png" width="337px" caption="Icon for SocketCAN. Image from https://github.com/linux-can/can-utils."  >}}
 
 
 

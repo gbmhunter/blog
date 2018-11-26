@@ -25,7 +25,7 @@ Make sure you add the emWin link library (emWinnosnts.lib, emWinnosts.lib or sim
 
 ## GCC (PSoC 4, 5, 5LP) Specific Steps
 
-Right-click on your project, and select _Build Settings_. Navigate to ARM GCC x.x.x->Linker->General and fill in the _Additional Libraries_ and _Additional Library Directories_ fields similar to as shown in the image below. Note that in the _Additional Libraries_ field, you are referencing the file in a directory that is specified in the _Additional Library Directories_ field, however, the **"lib" prefix and ".o" file extension have to be removed**. This is the standard GCC way of naming and specifying libraries. {{< figure src="/images/programming-psoc/linker-build-settings-emwin-psoc-5.png" caption="The linker build settings for using emWin with GCC." caption-position="bottom" width="650px" >}}
+Right-click on your project, and select _Build Settings_. Navigate to ARM GCC x.x.x->Linker->General and fill in the _Additional Libraries_ and _Additional Library Directories_ fields similar to as shown in the image below. Note that in the _Additional Libraries_ field, you are referencing the file in a directory that is specified in the _Additional Library Directories_ field, however, the **"lib" prefix and ".o" file extension have to be removed**. This is the standard GCC way of naming and specifying libraries. {{< figure src="/images/programming-psoc/linker-build-settings-emwin-psoc-5.png" caption="The linker build settings for using emWin with GCC."  width="650px" >}}
 
 ## The Functions You Have To Write Code For
 

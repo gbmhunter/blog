@@ -225,19 +225,19 @@ Note that some manufactures choose to provide a sub-circuit model instead of usi
 
 Finding the frequency response of a circuit can give you plenty of useful information. Normally a single output/single input response is found (i.e. the response at a node while changing only one other node). A frequency response is usually plotted with frequency (either with a linear scale or more commonly log) on the horizontal axis and magnitude (again, either on a linear or log scale) on the vertical scale. The following tutorial will use the following circuit, a simple first-order high-pass filter with a cut-off of 15.9kHz.
 
-{{< figure src="/images/altium/frequency_response_01.jpg" caption="A first-order high-pass filter with a cut-off frequency of 15.9kHz." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/altium/frequency_response_01.jpg" caption="A first-order high-pass filter with a cut-off frequency of 15.9kHz."  width="320px" >}}
 
 The frequency response can be found using the AC Small Signal Analysis feature of SPICE. It can be selected from the 'Analysis Menu in Altium (Design -> Simulate -> Mixed Sim). There are not too many parameters to set, just the start and stop frequency, the sweep type and number of test points. Wait, you ask, don't I have to choose what the input and output are? It is a little misleading, but you do this by modifying the graphing options once the simulation has run.
 
-{{< figure src="/images/altium/frequency_response_02.jpg" caption="Find the frequency response by using the AC Small Signal Analysis feature of SPICE." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/altium/frequency_response_02.jpg" caption="Find the frequency response by using the AC Small Signal Analysis feature of SPICE."  width="320px" >}}
 
 Once the simulation has run, make sure that the 'AC Analysis' tab is selected. Then right click and select 'Add Wave To Plot'. The next step is the magic trick, where you actually tell Altium you want to see a frequency response. Select the output trace first from the list on the left, then click the '/' in the functions box before finally selecting the input trace. This tells Altium to compare (essentially divide) the output to the input. This is how frequency responses are defined (a la Transfer Functions, but we don't need to go into that). Select either 'Magnitude' or 'Magnitude (dB)' from the 'Complex Functions' list before clicking 'Create'.
 
-{{< figure src="/images/altium/frequency_response_03.jpg" caption="Instruct Altium/SPICE to draw a magnitude function" caption-position="bottom" width="320px" >}}
+{{< figure src="/images/altium/frequency_response_03.jpg" caption="Instruct Altium/SPICE to draw a magnitude function"  width="320px" >}}
 
 All things going well, you should now have a graph of the frequency response! The following graph shows the result I got from doing a frequency response analysis on the first-order high pass filter circuit shown above, plotted in dB. Notice it attenuates low frequencies (<0dB), and lets through high frequencies relatively untouched (a gain of 0dB). The cut-off frequency of the circuit is 15.9kHz.
 
-{{< figure src="/images/altium/frequency_response_04.jpg" caption="The resulting plot of the high-pass filter." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/altium/frequency_response_04.jpg" caption="The resulting plot of the high-pass filter."  width="320px" >}}
 
 # Altium Simulation Bugs
 

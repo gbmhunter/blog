@@ -26,7 +26,7 @@ A simple three PIN device that is good for binary (on/off) short-range detection
 
 
 
-{{< figure src="/images/electronics-arduino/arduino-infrared-sensors.jpg" caption="Arduino-compatible infrared sensors." caption-position="bottom" width="400px" >}}
+{{< figure src="/images/electronics-arduino/arduino-infrared-sensors.jpg" caption="Arduino-compatible infrared sensors."  width="400px" >}}
 
 
 
@@ -83,7 +83,7 @@ The Arduino comes with a LCDCrystal library, making it almost too easy to use th
 
 
 
-{{< figure src="/images/electronics-arduino/arduino-4wd-robot-motor-controller.jpg" caption="The controller for a Arduino 4WD robot." caption-position="bottom" width="400px" >}}
+{{< figure src="/images/electronics-arduino/arduino-4wd-robot-motor-controller.jpg" caption="The controller for a Arduino 4WD robot."  width="400px" >}}
 
 
 
@@ -93,7 +93,7 @@ The Arduino comes with a LCDCrystal library, making it almost too easy to use th
 
 
 
-{{< figure src="/images/electronics-arduino/arduino-sensor-shield.jpg" caption="An Arduino sensor shield." caption-position="bottom" width="400px" >}}
+{{< figure src="/images/electronics-arduino/arduino-sensor-shield.jpg" caption="An Arduino sensor shield."  width="400px" >}}
 
 
 
@@ -119,7 +119,7 @@ Very easy to interface to, due there being a native Arduino API function called 
 
 
 
-{{< figure src="/images/electronics-arduino/arduino-ultrasound-module.jpg" caption="An Arduino compatible ultrasound module." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-arduino/arduino-ultrasound-module.jpg" caption="An Arduino compatible ultrasound module."  width="600px" >}}
 
 
 
@@ -129,7 +129,7 @@ Very easy to interface to, due there being a native Arduino API function called 
 
 
 
-{{< figure src="/images/electronics-arduino/bottom-side-of-arduino-4wd-robot.jpg" caption="The bottom side of the 4WD Arduino robot." caption-position="bottom" width="200px" >}}
+{{< figure src="/images/electronics-arduino/bottom-side-of-arduino-4wd-robot.jpg" caption="The bottom side of the 4WD Arduino robot."  width="200px" >}}
 
 
 
@@ -153,4 +153,4 @@ No instructions come with this! You are left on your own to figure out how to as
 
 
 
-{{< figure src="/images/electronics-arduino/arduino-4wd-robot-base-wheels-motor-driver.jpg" caption="A Arduino robot base." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-arduino/arduino-4wd-robot-base-wheels-motor-driver.jpg" caption="A Arduino robot base."  width="600px" >}}

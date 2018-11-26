@@ -33,7 +33,7 @@ There are different types of terminal blocks:
 
 You can see the push-in terminal blocks I used to connect up all the solenoids for the [Luxcity Tonic project](http://blog.mbedded.ninja/electronics/projects/luxcity-uv-tonic-control-system) in the image below (the green things with numbered stickers and wires coming out of them).
 
-{{< figure src="/images/2015/12/arduino-relay-shields-and-relays.jpg" width="1200px" caption="The Arduino, the relay shields and the relays, set-up for testing." caption-position="bottom" >}}
+{{< figure src="/images/2015/12/arduino-relay-shields-and-relays.jpg" width="1200px" caption="The Arduino, the relay shields and the relays, set-up for testing."  >}}
 
 However, because they do not enforce a specific wiring configuration, they are prone to wiring errors, especially if someone else than that who designed the circuit is wiring it up.
 
@@ -61,7 +61,7 @@ A word of caution: **DO NOT** completely tin the ends of wires that go in the te
 
 A better way to fix this problem is to use wire ferrules. These are small hollow metal cylinder which just fit over the wire and then crimped onto it, before being inserted into the terminal block. It stops the wires from fraying, and gets rid of the solder creep problem.
 
-{{< figure src="/images/2015/12/wire-ferrules-used-in-terminal-block.jpg" width="928px" caption="Wire ferrule are crimped onto wires before they are inserted into a terminal block, preventing fraying and solder creep." caption-position="bottom" >}}
+{{< figure src="/images/2015/12/wire-ferrules-used-in-terminal-block.jpg" width="928px" caption="Wire ferrule are crimped onto wires before they are inserted into a terminal block, preventing fraying and solder creep."  >}}
 
 # Connection Type
 
@@ -76,13 +76,13 @@ Terminal blocks have many different connection types:
 </td></tr><tbody ><tr >
 <td >Screw
 </td>
-<td >{{< figure src="/images/2011/09/terminal-block-screw-style.jpg" width="181px" caption="A terminal block with a screw-style connection method." caption-position="bottom" >}}
+<td >{{< figure src="/images/2011/09/terminal-block-screw-style.jpg" width="181px" caption="A terminal block with a screw-style connection method."  >}}
 </td>
 <td >The most basic terminal block connection type. I don't particularly like this connection style, especially when clamping bare wires (i.e. no wire ferrule), as the screw can pinch and break the individual wire strands, as well as the screw completely missing some/all of the wire strands if they ride up the sides of the metal enclosure. This problem is exasperated when the gauge of the wire is small compared to the size of the terminal block.
 </td></tr><tr >
 <td >Rising Cage
 </td>
-<td >{{< figure src="/images/2011/09/terminal-block-rising-cage-close-up.jpg" width="148px" caption="A terminal block with a rising-cage style connection method." caption-position="bottom" >}}
+<td >{{< figure src="/images/2011/09/terminal-block-rising-cage-close-up.jpg" width="148px" caption="A terminal block with a rising-cage style connection method."  >}}
 </td>
 <td >Screw with rising cage clamp is my preferred connection type. This is where the bottom side of a square cage rises up and clamps the wire when you tighten the screw. This does not pinch and break the wire as often as the basic screw connection type terminal block does.
 </td></tr><tr >
@@ -99,4 +99,4 @@ You can purchase terminal block covers, which give further protection to the wir
 
 Commonly, they clip onto the top of the terminal block and shield the terminal block from objects approaching from overhead.
 
-{{< figure src="/images/2011/09/terminal-block-cover-beside-block1.jpg" width="210px" caption="A terminal block cover beside the terminal block." caption-position="bottom" >}} {{< figure src="/images/2011/09/terminal-block-cover-mounted-on-block.jpg" width="445px" caption="A terminal block cover mounted onto a terminal block." caption-position="bottom" >}}
+{{< figure src="/images/2011/09/terminal-block-cover-beside-block1.jpg" width="210px" caption="A terminal block cover beside the terminal block."  >}} {{< figure src="/images/2011/09/terminal-block-cover-mounted-on-block.jpg" width="445px" caption="A terminal block cover mounted onto a terminal block."  >}}

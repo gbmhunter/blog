@@ -118,7 +118,7 @@ Example output from UnitTest++ when one of the tests fails.
 
 
 
-{{< figure src="/images/2013/05/example-output-from-unittestpp-when-test-fail.png" width="961px" caption="Example output from UnitTest++ when one of the tests fails." caption-position="bottom" >}}
+{{< figure src="/images/2013/05/example-output-from-unittestpp-when-test-fail.png" width="961px" caption="Example output from UnitTest++ when one of the tests fails."  >}}
 
 
 

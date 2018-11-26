@@ -19,7 +19,7 @@ Brew End Date: n/a
 # Ingredients
 
 
-{{< figure src="/images/homebrew-hefe-weizen/2011-09-04-11-41-12.jpg" caption="A total of 8kg of malt used! Brought pre-crushed, which is a HUGE relief :-)" caption-position="bottom" width="320px" >}}
+{{< figure src="/images/homebrew-hefe-weizen/2011-09-04-11-41-12.jpg" caption="A total of 8kg of malt used! Brought pre-crushed, which is a HUGE relief :-)"  width="320px" >}}
 
 
 ## Malt
@@ -57,7 +57,7 @@ Brew End Date: n/a
 # Mashing
 
 
-{{< figure src="/images/homebrew-hefe-weizen/2011-09-04-13-29-29.jpg" caption="Checking the temperature of the wort." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/homebrew-hefe-weizen/2011-09-04-13-29-29.jpg" caption="Checking the temperature of the wort."  width="320px" >}}
 <table border="0" >
 <tbody >
 <tr >
@@ -151,7 +151,7 @@ Large grain bill, required about 20L of water to cover entire grain. Because of 
 # Boil
 
 
-{{< figure src="/images/homebrew-hefe-weizen/2011-09-04-15-36-35.jpg" caption="Adding honey the kettle (this one done late into the boil)." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/homebrew-hefe-weizen/2011-09-04-15-36-35.jpg" caption="Adding honey the kettle (this one done late into the boil)."  width="320px" >}}
 
 
 ## Volume/Density

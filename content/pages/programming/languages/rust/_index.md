@@ -11,7 +11,7 @@ url: /programming/languages/rust
 
 Rust is a "systems" programming language. 
 
-{{< figure src="/images/2015/05/rust-programming-language-logo-white-background.png" width="393px" caption="The logo of the Rust programming language. Image from http://www.rust-lang.org/." caption-position="bottom" >}}
+{{< figure src="/images/2015/05/rust-programming-language-logo-white-background.png" width="393px" caption="The logo of the Rust programming language. Image from http://www.rust-lang.org/."  >}}
 
 # Memory
 

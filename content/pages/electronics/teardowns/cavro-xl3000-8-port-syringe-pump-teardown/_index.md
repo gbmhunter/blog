@@ -22,7 +22,7 @@ I found the schematic "[Metrolab Wiring Diagram](http://www.frankshospitalworksh
 
 
 
-{{< figure src="/images/electronics-teardowns-cavro-xl3000/m2300p-cpu-to-cavro-xl3000-schematic.jpg" caption="Image from http://www.frankshospitalworkshop.com/equipment/documents/automated_analyzer/service_manuals/Metrolab%202300%20-%20Wiring%20diagram.pdf." caption-position="bottom" width="900px" >}}
+{{< figure src="/images/electronics-teardowns-cavro-xl3000/m2300p-cpu-to-cavro-xl3000-schematic.jpg" caption="Image from http://www.frankshospitalworkshop.com/equipment/documents/automated_analyzer/service_manuals/Metrolab%202300%20-%20Wiring%20diagram.pdf."  width="900px" >}}
 
 
 
@@ -52,7 +52,7 @@ Pictured below is the wiring diagram for the PCB finger connector on the XL-3000
 
 
 
-{{< figure src="/images/electronics-teardowns-cavro-xl3000/cavro-xl3000-syringe-pump-wiring-diagram-for-connector.jpg" caption="The wiring diagram for the PCB finger connector on the Cavro XL-3000 syringe pump. Taken from the schematic in the operators manual." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/electronics-teardowns-cavro-xl3000/cavro-xl3000-syringe-pump-wiring-diagram-for-connector.jpg" caption="The wiring diagram for the PCB finger connector on the Cavro XL-3000 syringe pump. Taken from the schematic in the operators manual."  width="800px" >}}
 
 
 
@@ -62,7 +62,7 @@ The bare minimum number of connections to get it working are 4, the +24V, GND, R
 
 
 
-{{< figure src="/images/electronics-teardowns-cavro-xl3000/communicating-via-rs-485-to-syringe-pump.jpg" caption="Communicating to the syringe pump via a USB-to-RS-485 converter." caption-position="bottom" width="700px" >}}
+{{< figure src="/images/electronics-teardowns-cavro-xl3000/communicating-via-rs-485-to-syringe-pump.jpg" caption="Communicating to the syringe pump via a USB-to-RS-485 converter."  width="700px" >}}
 
 
 
@@ -82,7 +82,7 @@ There are two communication protocols, the OEM protocol and the DT (data termina
 
 
 
-{{< figure src="/images/electronics-teardowns-cavro-xl3000/putty-configuration-for-comms-with-cavro-xl3000-syring-pump.png" caption="The PuTTY configuration settings for communicating to the syringe pump." caption-position="bottom" width="700px" >}}
+{{< figure src="/images/electronics-teardowns-cavro-xl3000/putty-configuration-for-comms-with-cavro-xl3000-syring-pump.png" caption="The PuTTY configuration settings for communicating to the syringe pump."  width="700px" >}}
 
 
 
@@ -92,12 +92,12 @@ Making sure the virtual COM port was installed correctly.
 
 
 
-{{< figure src="/images/electronics-teardowns-cavro-xl3000/usb-serial-port-for-rs-485-converter-in-device-manager.png" caption="When installing a USB-to-RS485/422 converter, it installs a virtual COM port under the Device Manager in Windows." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-teardowns-cavro-xl3000/usb-serial-port-for-rs-485-converter-in-device-manager.png" caption="When installing a USB-to-RS485/422 converter, it installs a virtual COM port under the Device Manager in Windows."  width="500px" >}}
 
 
 
 
-{{< figure src="/images/electronics-teardowns-cavro-xl3000/dip-switch-sw2-configuration-cavro-xl3000-syringe-pump.png" caption="The DIP switch settings for SW2 on the XL-3000 syringe pump" caption-position="bottom" width="300px" >}}
+{{< figure src="/images/electronics-teardowns-cavro-xl3000/dip-switch-sw2-configuration-cavro-xl3000-syringe-pump.png" caption="The DIP switch settings for SW2 on the XL-3000 syringe pump"  width="300px" >}}
 
 
 
@@ -107,7 +107,7 @@ To get it running, the only setting I had to change was DIP switch 2 on SW2, fro
 
 
 
-{{< figure src="/images/electronics-teardowns-cavro-xl3000/the-dip-switch-sw2-on-the-syringe-pump.jpg" caption="The DIP switch (SW2) on the XL-3000 syringe pump." caption-position="bottom" width="700px" >}}
+{{< figure src="/images/electronics-teardowns-cavro-xl3000/the-dip-switch-sw2-on-the-syringe-pump.jpg" caption="The DIP switch (SW2) on the XL-3000 syringe pump."  width="700px" >}}
 
 
 
@@ -117,4 +117,4 @@ o get the pump to initialise, I sent the command /1ZR. / indicates that a comman
 
 
 
-{{< figure src="/images/electronics-teardowns-cavro-xl3000/basic-message-and-response-to-xl3000-in-terminal.png" caption="Sending the initialise message to the syringe pump at the pumps response. This was using the PuTTy terminal program, with the pump in the 'RT' protocol mode." caption-position="bottom" width="700px" >}}
+{{< figure src="/images/electronics-teardowns-cavro-xl3000/basic-message-and-response-to-xl3000-in-terminal.png" caption="Sending the initialise message to the syringe pump at the pumps response. This was using the PuTTy terminal program, with the pump in the 'RT' protocol mode."  width="700px" >}}

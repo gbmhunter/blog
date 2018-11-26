@@ -17,7 +17,7 @@ Pointers are a core concept in C programming, yet can be a difficult concept to 
 
 
 
-{{< figure src="/images/2013/03/pointing-hand-icon.png" caption="" caption-position="bottom" >}}
+{{< figure src="/images/2013/03/pointing-hand-icon.png" caption=""  >}}
 
 
 

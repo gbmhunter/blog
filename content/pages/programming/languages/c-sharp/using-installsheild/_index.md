@@ -20,7 +20,7 @@ For smaller projects and things that will be downloaded over the internet, you'l
 
 The key part, once you've created an InstallShield project in your solution, is to go to the Visual Studio Configuration Manager window and change the build configuration for the InstallShield project to "SingleImage".
 
-{{< figure src="/images/programming-csharp/visual-studio-config-manager-window-single-image.png" caption="Making InstallShield produce a single file output install (e.g. setup.exe) in the Visual Studio configuration manager." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/programming-csharp/visual-studio-config-manager-window-single-image.png" caption="Making InstallShield produce a single file output install (e.g. setup.exe) in the Visual Studio configuration manager."  width="600px" >}}
 
 
 # Version Numbers
@@ -34,7 +34,7 @@ The product version must follow the syntax aaa.bbb.ccccc where the aaa is the 
 
 By default, if you try and install a newer version of your install package on a system, the InstallShield will throw the error "Another version of this product is installed. Installation cannot continue.".
 
-{{< figure src="/images/programming-csharp/another-version-is-installed-error-from-install-shield.png" caption="The 'Another version is installed' error that InstallShield gives you if you haven't set the updates up correctly." caption-position="bottom" width="450px" >}}
+{{< figure src="/images/programming-csharp/another-version-is-installed-error-from-install-shield.png" caption="The 'Another version is installed' error that InstallShield gives you if you haven't set the updates up correctly."  width="450px" >}}
 
 To change this so that newer versions will update or replace files from the older version, you have to make sure of two things.
 
@@ -42,10 +42,10 @@ To change this so that newer versions will update or replace files from the olde
 
 	  1. You have a upgrade path.
 
-{{< figure src="/images/programming-csharp/install-shield-adding-new-upgrade-path.png" caption="Adding a new update path, so newer versions of the program will install over older versions." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/programming-csharp/install-shield-adding-new-upgrade-path.png" caption="Adding a new update path, so newer versions of the program will install over older versions."  width="800px" >}}
 	  2. You generate a new "Product Code" everytime you want the application to update. **Note that this is different to the Product Version**, which is a smaller, user-generated number (e.g. 1.2.3), rather than the longer computer-generated Product Code.
 
-{{< figure src="/images/programming-misc/change-product-code-not-upgrade-code-install-shield.png" caption="If you want a install to replace/upgrade and older one, make sure to re-generate a different product code (the circled number)." caption-position="bottom" width="700px" >}}
+{{< figure src="/images/programming-misc/change-product-code-not-upgrade-code-install-shield.png" caption="If you want a install to replace/upgrade and older one, make sure to re-generate a different product code (the circled number)."  width="700px" >}}
 
 
 
@@ -119,4 +119,4 @@ You can build a release from the command line by using ISCmdBld.exe for both Win
 
 By default, if you select the option to allow the user to launch program on install, the checkbox will not work.
 
-{{< figure src="/images/programming-misc/install-shield-launch-this-program-end-of-installation.png" caption="The option to allow the user to launch the program once the installation has finished. This normally doesn't work without tweaking a few settings." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/programming-misc/install-shield-launch-this-program-end-of-installation.png" caption="The option to allow the user to launch the program once the installation has finished. This normally doesn't work without tweaking a few settings."  width="500px" >}}

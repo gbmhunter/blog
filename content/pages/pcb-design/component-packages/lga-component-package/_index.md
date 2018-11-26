@@ -168,7 +168,7 @@ Like BGA's, LGA packages can withstand up to 50% mis-alignment when soldering, a
 # 3D Renders
 
 
-{{< figure src="/images/2015/04/lga-component-package-3d-render.jpg" width="342px" caption="A 3D render of the LGA component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/lga-component-package-3d-render.jpg" width="342px" caption="A 3D render of the LGA component package."  >}}
 
 
 # Images

@@ -159,7 +159,7 @@ Same general package dimensions as the standard SOIC but with J-type leads rathe
 # 3D Renders
 
 
-{{< figure src="/images/2015/04/soj-component-package-3d-render.jpg" width="350px" caption="A 3D render of the SOJ component package." caption-position="bottom" >}}
+{{< figure src="/images/2015/04/soj-component-package-3d-render.jpg" width="350px" caption="A 3D render of the SOJ component package."  >}}
 
 
 # Other Images
@@ -167,4 +167,4 @@ Same general package dimensions as the standard SOIC but with J-type leads rathe
 
 
 
-{{< figure src="/images/electronics-packages/ic-package-soj-28.jpg" caption="Photo of a SOJ-28 package, a variant of the SOIC package with J-type leads." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-packages/ic-package-soj-28.jpg" caption="Photo of a SOJ-28 package, a variant of the SOIC package with J-type leads."  width="500px" >}}

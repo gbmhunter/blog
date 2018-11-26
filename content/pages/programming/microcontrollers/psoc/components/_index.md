@@ -42,7 +42,7 @@ This is just a personal preference, but I append the suffix "Cp" and then a desc
 
 
 
-{{< figure src="/images/2013/03/custom-user-c-code-in-psoc-api-files.png" width="688px" caption="The correct place to enter custom user code in automatically generated Cypress component API files." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/custom-user-c-code-in-psoc-api-files.png" width="688px" caption="The correct place to enter custom user code in automatically generated Cypress component API files."  >}}
 
 
 
@@ -115,7 +115,7 @@ The following picture shows a PSoC multiplexer being used to connect two analogu
 
 
 
-{{< figure src="/images/2013/03/psoc-component-analogue-multiplexor-mux.jpg" width="550px" caption="The analogue multiplexor (mux) component in PSoC Creator." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/psoc-component-analogue-multiplexor-mux.jpg" width="550px" caption="The analogue multiplexor (mux) component in PSoC Creator."  >}}
 
 
 
@@ -148,7 +148,7 @@ The screenshot below shows the GUI for configuring the capacitive elements in PS
 
 
 
-{{< figure src="/images/2013/03/psoc-creator-schematic-cap-sense-component.jpg" width="670px" caption="The cap sense configure window in PSoC Creator." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/psoc-creator-schematic-cap-sense-component.jpg" width="670px" caption="The cap sense configure window in PSoC Creator."  >}}
 
 
 
@@ -230,7 +230,7 @@ Most embedded engineers would of heard about counters. They are commonly include
 
 
 
-{{< figure src="/images/2013/03/psoc-component-schematic-counter-16bit.png" width="820px" caption="The PSoC counter component, set to be 16-bit (this is configurable)." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/psoc-component-schematic-counter-16bit.png" width="820px" caption="The PSoC counter component, set to be 16-bit (this is configurable)."  >}}
 
 
 
@@ -258,7 +258,7 @@ The component is really set-up and user, and the following image shows one of th
 
 
 
-{{< figure src="/images/2013/03/psoc-debounce-component-with-pin-and-interrupt.png" width="590px" caption="The PSoC Debouncer. In the case, the switch pulled-up, and input goes low on press, which fires interrupt." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/psoc-debounce-component-with-pin-and-interrupt.png" width="590px" caption="The PSoC Debouncer. In the case, the switch pulled-up, and input goes low on press, which fires interrupt."  >}}
 
 
 
@@ -293,7 +293,7 @@ The PSoC microcontroller features a digital filter block, a highly versatile and
 
 
 
-{{< figure src="/images/2013/03/psoc-filter-component-config-dialog-box.png" width="1118px" caption="The filter component configuration tab in PSoC Creator." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/psoc-filter-component-config-dialog-box.png" width="1118px" caption="The filter component configuration tab in PSoC Creator."  >}}
 
 
 
@@ -366,7 +366,7 @@ In what I see as a rather poor design decision, some of the low-level PSoC I2C A
 
 
 
-{{< figure src="/images/2013/03/cypress-psoc-i2c-api-while-loops-in-master-functions-annotated.png" width="538px" caption="An example of the dangerous, un-bounded while() loops in the PSoC I2C API." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/cypress-psoc-i2c-api-while-loops-in-master-functions-annotated.png" width="538px" caption="An example of the dangerous, un-bounded while() loops in the PSoC I2C API."  >}}
 
 
 
@@ -403,7 +403,7 @@ The only work around I know of is to modify the PSoC I2C component (not nice, I 
 
 
 
-{{< figure src="/images/2013/03/psoc-i2c-api-with-upper-bounds-on-while-loops-annotated.png" width="857px" caption="An screenshot of an edited version of the PSoC I2C API with added upper-bounds on the number of while() loop iterations." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/psoc-i2c-api-with-upper-bounds-on-while-loops-annotated.png" width="857px" caption="An screenshot of an edited version of the PSoC I2C API with added upper-bounds on the number of while() loop iterations."  >}}
 
 
 
@@ -421,7 +421,7 @@ Most of the work in setting up an interrupt can be done graphically. When starti
 
 
 
-{{< figure src="/images/2013/03/psoc-top-design-isr-component-connected-to-push-button.jpg" width="472px" caption="The ISR component, connected to a push button (digital input pin)." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/psoc-top-design-isr-component-connected-to-push-button.jpg" width="472px" caption="The ISR component, connected to a push button (digital input pin)."  >}}
 
 
 
@@ -476,7 +476,7 @@ Note that the trigger mode for interrupts can only be set to rising edge or leve
 
 
 
-{{< figure src="/images/2013/03/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png" width="1054px" caption="6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png" width="1054px" caption="6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge."  >}}
 
 
 
@@ -494,7 +494,7 @@ One of the disadvantages of the character LCD driver is that it requires 7 conse
 
 
 
-{{< figure src="/images/2013/03/psoc-module-character-lcd.jpg" width="154px" caption="The PSoC Character LCD component. Not much to it right?" caption-position="bottom" >}}
+{{< figure src="/images/2013/03/psoc-module-character-lcd.jpg" width="154px" caption="The PSoC Character LCD component. Not much to it right?"  >}}
 
 
 
@@ -502,7 +502,7 @@ Pin description:
 
 
 
-{{< figure src="/images/2013/03/psoc-module-character-lcd-pin-description.jpg" width="800px" caption="The pin descriptions for the PSoC LCD component." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/psoc-module-character-lcd-pin-description.jpg" width="800px" caption="The pin descriptions for the PSoC LCD component."  >}}
 
 
 
@@ -520,7 +520,7 @@ Pins on a PSoC microcontroller can be "ganged" together to provide more output c
 
 
 
-{{< figure src="/images/2013/03/ganging-port-pins-together-to-provide-more-output-current.png" width="620px" caption="Ganging port pins together on a PSoC microcontroller to provide more output current. Be careful not to exceed to total allowed current per port." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/ganging-port-pins-together-to-provide-more-output-current.png" width="620px" caption="Ganging port pins together on a PSoC microcontroller to provide more output current. Be careful not to exceed to total allowed current per port."  >}}
 
 
 
@@ -558,7 +558,7 @@ The Pulse Converter component is useful to convert variable width input pulses i
 
 
 
-{{< figure src="/images/2013/03/psoc-component-pulse-converter-trigger-in-out.png" width="388px" caption="The PSoC Pulse Converter component, being used here to output constant-width pulses." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/psoc-component-pulse-converter-trigger-in-out.png" width="388px" caption="The PSoC Pulse Converter component, being used here to output constant-width pulses."  >}}
 
 
 
@@ -581,7 +581,7 @@ I have used this for controlling a [BLDC motor](http://blog.mbedded.ninja/electr
 
 
 
-{{< figure src="/images/2013/03/psoc-component-quadrature-decoder.png" width="1034px" caption="The PSoC quadrature decoder component. Takes the A, B and N inputs from an incremental encoder and converts it into a count." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/psoc-component-quadrature-decoder.png" width="1034px" caption="The PSoC quadrature decoder component. Takes the A, B and N inputs from an incremental encoder and converts it into a count."  >}}
 
 
 
@@ -609,7 +609,7 @@ While the PSoC 3 and 5/5LP microcontollers have dedicated UART, I2C and SPI modu
 
 
 
-{{< figure src="/images/2013/03/psoc-creator-scb-component-as-uart-example-topdesign.png" width="307px" caption="A screenshot of a SCB block in the 'TopDesign.cysch' file in PSoC Creator. This SCB block is configured as a UART." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/psoc-creator-scb-component-as-uart-example-topdesign.png" width="307px" caption="A screenshot of a SCB block in the 'TopDesign.cysch' file in PSoC Creator. This SCB block is configured as a UART."  >}}
 
 
 
@@ -692,7 +692,7 @@ The VDAC (digital-to-analogue voltage converter) component is used to convert a 
 
 
 
-{{< figure src="/images/2013/03/vdac-component-routed-to-debug-pin-on-schematic.png" width="210px" caption="The PSoC VDAC component." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/vdac-component-routed-to-debug-pin-on-schematic.png" width="210px" caption="The PSoC VDAC component."  >}}
 
 
 
@@ -700,7 +700,7 @@ The VDAC component can be very helpful while debugging. You can use it to "trace
 
 
 
-{{< figure src="/images/2013/03/using-psoc-vdac-component-to-inspect-code-execution.jpg" width="579px" caption="The oscilloscope on the PSoC VDAC component output allows you to inspect code execution. Each different voltage level corresponds to a different section of code. This was taken while running a complex FreeRTOS-based program." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/using-psoc-vdac-component-to-inspect-code-execution.jpg" width="579px" caption="The oscilloscope on the PSoC VDAC component output allows you to inspect code execution. Each different voltage level corresponds to a different section of code. This was taken while running a complex FreeRTOS-based program."  >}}
 
 
 
@@ -779,4 +779,4 @@ Care must be taken when a watchdog is activated for an application that writes t
 
 
 
-{{< figure src="/images/2013/03/care-with-psoc-watchdog-and-eeprom-flash-20ms-write-time.png" width="357px" caption="A screenshot taken from the PSoC 5 LP datasheet, stating care must be taken when using the watchdog in an application that also performs EEPROM or flash writes." caption-position="bottom" >}}
+{{< figure src="/images/2013/03/care-with-psoc-watchdog-and-eeprom-flash-20ms-write-time.png" width="357px" caption="A screenshot taken from the PSoC 5 LP datasheet, stating care must be taken when using the watchdog in an application that also performs EEPROM or flash writes."  >}}

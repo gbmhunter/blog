@@ -16,7 +16,7 @@ _**protobuf**_ is an open-source, multi-language library from Google for seriali
 
 
 
-{{< figure src="/images/2017/07/google-protobuf-logo.png" width="467px" caption="Icon for Google's protobuf library." caption-position="bottom" >}}
+{{< figure src="/images/2017/07/google-protobuf-logo.png" width="467px" caption="Icon for Google's protobuf library."  >}}
 
 
 

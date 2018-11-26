@@ -21,7 +21,7 @@ Project Start Date: 27/09/2012
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-tonic-logo-small.png" caption="The Luxcity Tonic logo." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-tonic-logo-small.png" caption="The Luxcity Tonic logo."  width="320px" >}}
 
 
 
@@ -49,7 +49,7 @@ or the Luxcity page on EventFinder ([http://www.eventfinder.co.nz/2012/luxcity/c
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-event-october-2012-christchurch.jpg" caption="Luxcity event poster for Christchurch 2012." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-event-october-2012-christchurch.jpg" caption="Luxcity event poster for Christchurch 2012."  width="600px" >}}
 
 
 
@@ -89,7 +89,7 @@ The repo for this project can be found on [BitBucket](https://bitbucket.org/) at
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/arduino-8-ch-relay-channel-02.jpg" caption="The Freetronics 8-channel relay driver shield for the Arduino." caption-position="bottom" width="250px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/arduino-8-ch-relay-channel-02.jpg" caption="The Freetronics 8-channel relay driver shield for the Arduino."  width="250px" >}}
 
 
 
@@ -110,7 +110,7 @@ The I2C controlled shield provides 8 outputs that can drive standard relays. Bei
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/freetronics-relay-driver-schematic-snapshot-of-1-channel.png" caption="Part of the schematics for the Freetronics 8-channel relay driver shield showing one channel." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/freetronics-relay-driver-schematic-snapshot-of-1-channel.png" caption="Part of the schematics for the Freetronics 8-channel relay driver shield showing one channel."  width="500px" >}}
 
 
 
@@ -120,7 +120,7 @@ The I2C controlled shield provides 8 outputs that can drive standard relays. Bei
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/64-12v-relays.jpg" caption="64 12V relays." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/64-12v-relays.jpg" caption="64 12V relays."  width="320px" >}}
 
 
 
@@ -156,7 +156,7 @@ The I2C controlled shield provides 8 outputs that can drive standard relays. Bei
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/12v-solenoid-valve-02.jpg" caption="A 12V solenoid valve. 62 of these were used to control the flow of UV-reactive tonic water or air through the pipes." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/12v-solenoid-valve-02.jpg" caption="A 12V solenoid valve. 62 of these were used to control the flow of UV-reactive tonic water or air through the pipes."  width="320px" >}}
 
 
 
@@ -187,7 +187,7 @@ The I2C controlled shield provides 8 outputs that can drive standard relays. Bei
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/solenoid-minimum-operating-pressure.png" caption="" caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/solenoid-minimum-operating-pressure.png" caption=""  width="500px" >}}
 
 
 
@@ -216,7 +216,7 @@ I decided to use the Ardunio development environment for speed, simplicity, and 
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/twin-power-supplies.jpg" caption="Twin 500W power supplies to turn on up to half of the relays and solenoids all at once." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/twin-power-supplies.jpg" caption="Twin 500W power supplies to turn on up to half of the relays and solenoids all at once."  width="320px" >}}
 
 
 
@@ -256,7 +256,7 @@ They quote that there are two +12V supplies, but when using a multimeter, there 
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/arduino-lcd-shield-02.jpg" caption="The Freetronics LCD shield for the Arduino. This was used to display running information to the user." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/arduino-lcd-shield-02.jpg" caption="The Freetronics LCD shield for the Arduino. This was used to display running information to the user."  width="320px" >}}
 
 
 
@@ -285,7 +285,7 @@ The LCD screen was one of easiest parts of this project to setup. Built in libra
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-software-logo.jpg" caption="The Vixen software logo. Image from http://www.vixenlights.com." caption-position="bottom" width="100px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-software-logo.jpg" caption="The Vixen software logo. Image from http://www.vixenlights.com."  width="100px" >}}
 
 
 
@@ -307,7 +307,7 @@ To get around the problem with Vixen not outputting cells with an intensity of 0
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-screenshot-tonic-test-sequence.png" caption="" caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-screenshot-tonic-test-sequence.png" caption=""  width="600px" >}}
 
 
 
@@ -322,7 +322,7 @@ The hardware! (just after arrival).
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-tonic-hardware.jpg" caption="The hardware for the Luxcity Tonic project (just after it arrived)." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-tonic-hardware.jpg" caption="The hardware for the Luxcity Tonic project (just after it arrived)."  width="600px" >}}
 
 
 
@@ -332,7 +332,7 @@ The relay boards and LCD were stacked ontop of each other.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/arduino-and-relay-shield-stack-vertical.jpg" caption="A Ardunio stack with the Uno (at bottom), 8 relay shields, and an LCD shield on-top." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/arduino-and-relay-shield-stack-vertical.jpg" caption="A Ardunio stack with the Uno (at bottom), 8 relay shields, and an LCD shield on-top."  width="600px" >}}
 
 
 
@@ -342,7 +342,7 @@ Wiring up the relay boards.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/relay-shiled-wiring-02.jpg" caption="More wires!" caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/relay-shiled-wiring-02.jpg" caption="More wires!"  width="600px" >}}
 
 
 
@@ -352,7 +352,7 @@ Placement of the relays onto strip board (they JUST managed to fit all on one bo
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/relay-shield-wiring-and-relays-01.jpg" caption="Wiring up the relay shields, with the relays next door." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/relay-shield-wiring-and-relays-01.jpg" caption="Wiring up the relay shields, with the relays next door."  width="600px" >}}
 
 
 
@@ -362,7 +362,7 @@ A quick way of breaking tracks on prototype board.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/quick-way-of-breaking-tracks-on-prototype-board.jpg" caption="The quick way to break tracks on a prototype board." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/quick-way-of-breaking-tracks-on-prototype-board.jpg" caption="The quick way to break tracks on a prototype board."  width="600px" >}}
 
 
 
@@ -372,7 +372,7 @@ Soldering the relays, relay coil inputs, and power connectors to the board.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/soldering-prototype-board.jpg" caption="Soldering up the prototype board." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/soldering-prototype-board.jpg" caption="Soldering up the prototype board."  width="600px" >}}
 
 
 
@@ -382,7 +382,7 @@ The 62 solenoid valves.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/solenoids-in-a-box.jpg" caption="All of the 62 solenoids, in a box." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/solenoids-in-a-box.jpg" caption="All of the 62 solenoids, in a box."  width="600px" >}}
 
 
 
@@ -392,7 +392,7 @@ After testing a solenoid valve with the system, the comms between the computer a
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/string-of-diodes.jpg" caption="String of diodes for quencing the inductive kick of the solenoids." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/string-of-diodes.jpg" caption="String of diodes for quencing the inductive kick of the solenoids."  width="600px" >}}
 
 
 
@@ -402,7 +402,7 @@ The Arduino, relay control boards, and the relay board, semi-assembled.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/arduino-and-relays-semi-assembled.jpg" caption="The Arduino and relays semi-assembled." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/arduino-and-relays-semi-assembled.jpg" caption="The Arduino and relays semi-assembled."  width="600px" >}}
 
 
 
@@ -412,7 +412,7 @@ The bottom-side of the prototype board, fully soldered. Notice the heavy duty ra
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/finished-soldering-the-prototype-board.jpg" caption="The bottom-side of the prototype board, fully soldered. Notice the heavy duty rails that deliver the power to the relays/solenoids. Even with these thick lines of solder, when half (31) of the solenoids where turned on, the board got considerably warm around the PSU entry point." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/finished-soldering-the-prototype-board.jpg" caption="The bottom-side of the prototype board, fully soldered. Notice the heavy duty rails that deliver the power to the relays/solenoids. Even with these thick lines of solder, when half (31) of the solenoids where turned on, the board got considerably warm around the PSU entry point."  width="600px" >}}
 
 
 
@@ -422,7 +422,7 @@ Wiring up the solenoids, as they need to have a 2m cable reach. I'm going throug
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/lots-of-twisted-wire.jpg" caption="Lots of twisted wire for the solenoids." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/lots-of-twisted-wire.jpg" caption="Lots of twisted wire for the solenoids."  width="600px" >}}
 
 
 
@@ -432,7 +432,7 @@ The pile of wired solenoids. It took a good 8+ hours to wire these up!
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/pile-of-wired-solenoids.jpg" caption="The pile of wired solenoids. It took a good 8+ hours to wire these up!" caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/pile-of-wired-solenoids.jpg" caption="The pile of wired solenoids. It took a good 8+ hours to wire these up!"  width="600px" >}}
 
 
 
@@ -442,7 +442,7 @@ Shorting out the green wire to ground on the PSU to get it to turn on.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/grounding-the-green-wire-on-psu.jpg" caption="Grounding the green wire on the PSU to get it to turn on." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/grounding-the-green-wire-on-psu.jpg" caption="Grounding the green wire on the PSU to get it to turn on."  width="600px" >}}
 
 
 
@@ -452,7 +452,7 @@ Adding small-valued power resistors in series with the PSU outputs to make them 
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/current-sharing-power-resistors.jpg" caption="Adding small-valued power resistors in series with the PSU outputs to make them share the current equally." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/current-sharing-power-resistors.jpg" caption="Adding small-valued power resistors in series with the PSU outputs to make them share the current equally."  width="600px" >}}
 
 
 
@@ -462,7 +462,7 @@ The heavy duty fuses used to protect the +12V rails of the power supply. The two
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/heavy-duty-fuses.jpg" caption="The heavy duty fuses used to protect the +12V rails of the power supply. The two in use are 30A 5AG fuses, and the two spares are 40A." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/heavy-duty-fuses.jpg" caption="The heavy duty fuses used to protect the +12V rails of the power supply. The two in use are 30A 5AG fuses, and the two spares are 40A."  width="600px" >}}
 
 
 
@@ -472,7 +472,7 @@ The LCD screen working. This part was a breeze, it was an Arduino capable LCD sh
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/lcd-screen-tonic-active.jpg" caption="The LCD screen working. This part was a breeze, it was an Arduino capable LCD shield, and there was a pre-written library for the firmware. It literally took less than 5 minutes to get working." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/lcd-screen-tonic-active.jpg" caption="The LCD screen working. This part was a breeze, it was an Arduino capable LCD shield, and there was a pre-written library for the firmware. It literally took less than 5 minutes to get working."  width="600px" >}}
 
 
 
@@ -482,7 +482,7 @@ The solenoids were numbered so sequencing would become confusing when out in the
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/solenoid-number-3.jpg" caption="Numbering the solenoids..." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/solenoid-number-3.jpg" caption="Numbering the solenoids..."  width="600px" >}}
 
 
 
@@ -492,7 +492,7 @@ Testing the complete system the night before it's due to be used.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/circle-of-solenoids.jpg" caption="Testing the system in my living room the night before it's to be used." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/circle-of-solenoids.jpg" caption="Testing the system in my living room the night before it's to be used."  width="600px" >}}
 
 
 
@@ -502,7 +502,7 @@ The Vixen software sequence used to test the solenoids. Each solenoid is turned 
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-screenshot-tonic-test-sequence.png" caption="" caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-screenshot-tonic-test-sequence.png" caption=""  width="600px" >}}
 
 
 
@@ -512,7 +512,7 @@ The settings to configure the 'Generic Serial' output plugin in Vixen.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-tonic-generic-serial-output-plugin-settings.png" caption="" caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-tonic-generic-serial-output-plugin-settings.png" caption=""  width="600px" >}}
 
 
 
@@ -527,7 +527,7 @@ The manifold with the solenoids in place, being assembled on-site.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/manifold-with-solenoids-in-place.jpg" caption="The manifold with the solenoids in place, being assembled on-site." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/manifold-with-solenoids-in-place.jpg" caption="The manifold with the solenoids in place, being assembled on-site."  width="600px" >}}
 
 
 
@@ -537,7 +537,7 @@ Carrying the water tank for the gin and tonic drinks down the road to the the co
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/carrying-tank-down-road.jpg" caption="Carrying the water tank for the gin and tonic drinks down the road to the the construction site." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/carrying-tank-down-road.jpg" caption="Carrying the water tank for the gin and tonic drinks down the road to the the construction site."  width="600px" >}}
 
 
 
@@ -547,7 +547,7 @@ The tensioned cable structure being hoisted into the air by the crane.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/structure-half-up-in-air.jpg" caption="The tensioned cable structure being hoisted into the air by the crane." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/structure-half-up-in-air.jpg" caption="The tensioned cable structure being hoisted into the air by the crane."  width="600px" >}}
 
 
 
@@ -557,7 +557,7 @@ The annoying street-light which dampened the fluorescent effect.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/bright-light-in-the-way.jpg" caption="A bright light that we couldn't turn off. This reduced the fluorescent effect of the tonic." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/bright-light-in-the-way.jpg" caption="A bright light that we couldn't turn off. This reduced the fluorescent effect of the tonic."  width="600px" >}}
 
 
 
@@ -567,7 +567,7 @@ The pipes with tonic inside them, glowing with UV.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/pipes-with-tonic-and-uv.jpg" caption="The central structure and the tonic-filled pipes glowing under UV light." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/pipes-with-tonic-and-uv.jpg" caption="The central structure and the tonic-filled pipes glowing under UV light."  width="600px" >}}
 
 
 
@@ -577,7 +577,7 @@ Gin and tonic!
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/gin-and-tonic-uv.jpg" caption="Gin and tonic glowing under UV light!" caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/gin-and-tonic-uv.jpg" caption="Gin and tonic glowing under UV light!"  width="600px" >}}
 
 
 
@@ -587,12 +587,12 @@ Some of the other structures at the Luxcity event.
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/altitude-02.jpg" caption="A view of Alititude from the centre." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/altitude-02.jpg" caption="A view of Alititude from the centre."  width="600px" >}}
 
 
 
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/scary-tree.jpg" caption="" caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/scary-tree.jpg" caption=""  width="600px" >}}
 
 
 

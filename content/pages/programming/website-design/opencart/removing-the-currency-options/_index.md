@@ -14,4 +14,4 @@ One way to easily remove the currency options is to use CSS to hide the currency
     #currency { display: none; }
 
 
-{{< figure src="/images/programming-opencart/open-cart-currency-options-gone.jpg" caption="Removing the currency options in OpenCart only takes a little CSS." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/programming-opencart/open-cart-currency-options-gone.jpg" caption="Removing the currency options in OpenCart only takes a little CSS."  width="800px" >}}

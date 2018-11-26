@@ -17,7 +17,7 @@ The Linux program apt (Advanced Package Tool) is a collection of tools for manag
 
 
 
-{{< figure src="/images/2018/02/sudo-apt-install-icon.png" caption="" caption-position="bottom" >}}
+{{< figure src="/images/2018/02/sudo-apt-install-icon.png" caption=""  >}}
 
 
 

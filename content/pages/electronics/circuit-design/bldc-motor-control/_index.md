@@ -348,7 +348,7 @@ A common example of a trapezoidal (or block) commutation cycle of a BLDC motor w
 
 where H1, H2, and H3 are the hall-effect sensors, and A, B, and C are the motor phases of a 3-phase star-connected BLDC motor. Note that the either the high-side, low-side, or both driver inputs can be modulated with a PWM signal to provide speed control.
 
-{{< figure src="/images/2012/08/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png" width="550px" caption="6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png" width="550px" caption="6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge."  >}}
 
 The schematic below shows the hardware used in a PSoC 5 microcontroller to perform hall-effect based trapezoidal commutation. With the correct mux selects, this control method can run completely from hardware and be completely processor independent (when running at a constant duty-cycle).
 
@@ -377,7 +377,7 @@ Look-up tables (LUT's) are recommended over using the sin() function due to spee
 
 With a LUT that stores floats, and a small amount of float multiplication (no divide) on a embedded processor that does not have floating point hardware support (such as the ARM Cortex-M3), you could expect the look-up and assign process to take around 500-1000 clock cycles (maybe 20us at 48MHz). This is a big reduction over using the \(sin()\) function!
 
-{{< figure src="/images/2012/08/16-bit-500-count-sine-wave-lut-data-graph-1.png" width="1069px" caption="Data extracted from a 16-bit sine wave LUT designed for use with sinusoidal BLDC motor control." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/16-bit-500-count-sine-wave-lut-data-graph-1.png" width="1069px" caption="Data extracted from a 16-bit sine wave LUT designed for use with sinusoidal BLDC motor control."  >}}
 
 Phase displacement. Sinusoidal control requires three PWM signal's, preferably dual-output with adjustable dead-time for synchronous switching.
 
@@ -455,7 +455,7 @@ We are fortunate that when using a star-connected BLDC motor (most are!), \(I_c\
 
 <div>$$ I_{\alpha\beta} = TI_{ab} = \begin{bmatrix} 1 & 0 \\ \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \end{bmatrix} \text{(simplified Clark transform for star-connected BLDC)} $$ </div>
 
-{{< figure src="/images/2012/08/clark-transformation-alpha-beta-geometric-interpretation.gif" width="516px" caption="A geometric interpretation of the Clark (alpha-beta) transformation. Image from http://en.wikipedia.org/wiki/%CE%91%CE%B2%CE%B3_transform." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/clark-transformation-alpha-beta-geometric-interpretation.gif" width="516px" caption="A geometric interpretation of the Clark (alpha-beta) transformation. Image from http://en.wikipedia.org/wiki/%CE%91%CE%B2%CE%B3_transform."  >}}
 
 If you want the code to do the Clark Transformation (written in C++, and designed for embedded applications), check out the GitHub repository [Cpp-Maths-ClarkTransformation](https://github.com/gbmhunter/Cpp-ClarkTransform).
 
@@ -475,7 +475,7 @@ The Park transformation equation is shown below:
     \(I_{dqo}\) = the Park transformed currents
  </p>
 
-{{< figure src="/images/2012/08/park-transformation-d-q-geometric-interpretation.jpg" width="976px" caption="A geometric interpretation of the Park (dq) transformation. Image from http://en.wikipedia.org/wiki/Dqo_transformation." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/park-transformation-d-q-geometric-interpretation.jpg" width="976px" caption="A geometric interpretation of the Park (dq) transformation. Image from http://en.wikipedia.org/wiki/Dqo_transformation."  >}}
 
 If you want the code to do the Park Transformation (written in C++, and designed for embedded applications), check out the GitHub repository [Cpp-Maths-ParkTransformation](https://github.com/gbmhunter/Cpp-ParkTransform).
 
@@ -483,7 +483,7 @@ If you want the code to do the Park Transformation (written in C++, and designed
 
 The following picture shows the control architecture for a PMSM motor controlled with a PSoC microcontroller.
 
-{{< figure src="/images/2012/08/pmsm-motor-control-architecture-with-psoc-micro.png" width="1372px" caption="The FOC control architecture for a PMSM motor with a PSoC microcontroller." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/pmsm-motor-control-architecture-with-psoc-micro.png" width="1372px" caption="The FOC control architecture for a PMSM motor with a PSoC microcontroller."  >}}
 
 It is standard practice to set `\(I_q\)` to some value depending on the torque/speed required, while keeping `\(I_d\)` zero. This is because `\(I_d\)` does nothing to help make the motor spin, and just wastes electrical energy as heat. However, there is a technique called flux weakening, and this is done by making `\(I_d\)` negative. It will allow the motor to spin faster than it's rated speed, in a zone called 'constant power'. I have had good experiences at using this to squeeze more RPM out of BLDC motors that weren't requiring much torque. A good method is to make `\(I_d\)` proportional to `\(I_q\)` (but always negative, no matter what sign `\(I_q\)` is, which essentially gives you a fixed drive is angle which is over 90. You can use this equation to work out the proportion of `\(I_q\)` that `\(I_d\)` has to be for a certain angle.
 
@@ -639,11 +639,11 @@ The NEMA17 and NEMA23 are two common sizes that BLDC motors come in. This design
 
 The NEMA17 mounting hole dimensions are shown below. The dimensions are in millimeters.
 
-{{< figure src="/images/2012/08/nema-17-motor-mounting-dimensions.jpg" width="497px" caption="The NEMA17 mounting hole dimensions .The dimensions are in millimeters. Image from http://www.xylotex.com/FAQ.htm." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/nema-17-motor-mounting-dimensions.jpg" width="497px" caption="The NEMA17 mounting hole dimensions .The dimensions are in millimeters. Image from http://www.xylotex.com/FAQ.htm."  >}}
 
 The NEMA23 mounting hole dimensions are shown below. The dimensions are in inches.
 
-{{< figure src="/images/2012/08/nema-23-motor-mounting-dimensions.jpg" width="595px" caption="The NEMA23 mounting hole dimensions .The dimensions are in inches. Image from http://www.xylotex.com/FAQ.htm." caption-position="bottom" >}}
+{{< figure src="/images/2012/08/nema-23-motor-mounting-dimensions.jpg" width="595px" caption="The NEMA23 mounting hole dimensions .The dimensions are in inches. Image from http://www.xylotex.com/FAQ.htm."  >}}
 
 # External Resources
 

@@ -17,7 +17,7 @@ Dependency injection is a programming design pattern in where services (dependen
 
 
 
-{{< figure src="/images/2014/07/red-syringe.jpg" caption="" caption-position="bottom" >}}
+{{< figure src="/images/2014/07/red-syringe.jpg" caption=""  >}}
 
 
 
