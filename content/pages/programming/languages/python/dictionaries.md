@@ -41,10 +41,30 @@ my_dict = {
 }
 for key in list(my_dict.keys()):
     if key == 'foo':
-        my_dict.pop(key)
+        del my_dict[key]
 
 print(my_dict)
 # stdout: {'bar': 2}
 ```
 
 This does not occur much overhead as you are just copying the keys, and not the values.
+
+# del vs. pop()
+
+Both `del` and `pop()` can be used to remove items from a dictionary:
+
+```python
+my_dict = {
+    'foo': 1,
+    'bar': 2
+}
+
+del my_dict['foo']
+my_dict.pop('foo')
+```
+
+It is recommended to use `del` if you just want to delete the item, as it will be slightly faster than `pop()`. Use `pop()` if you want to capture the removed item, as `pop()` returns the removed item:
+
+```python
+my_item = my_dict.pop('foo')
+```
