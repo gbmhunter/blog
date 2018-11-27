@@ -11,7 +11,11 @@ url: /electronics/circuit-design/filtering/active-filters
 
 Active filters are electronic waveform filters which require their own power source (such as any filter powered with an [op-amp](http://blog.mbedded.ninja/electronics/components/op-amps)), as opposed to passive filters (such as RC filters) which do not require an external power source. Active filters allow higher roll-of and better transfer characteristics than passive filters, but require more componentry and consume power.
 
-# Types of Filters  * Butterworth (designed to give a flat gain response through the pass-band, at the expense of having a low transisiton between the pass and stop-band)  * Tschebyscheff (designed to have the steepest transisition between the pass ad stop-band, at the expense of gain ripple through the pass-band)  * Bessel
+# Types of Filters
+
+* Butterworth (designed to give a flat gain response through the pass-band, at the expense of having a low transisiton between the pass and stop-band)
+* Tschebyscheff (designed to have the steepest transisition between the pass ad stop-band, at the expense of gain ripple through the pass-band)
+* Bessel
 
 # Filter Design
 
@@ -21,4 +25,6 @@ Active filters can have gain. However, introducing gain introduces other issues,
 
 ## Design Tools
 
-**OKAWA Filter Design and Analysis** ([http://sim.okawa-denshi.jp/en/Fkeisan.htm](http://sim.okawa-denshi.jp/en/Fkeisan.htm)) - Recommended Awesome site with web-based calculators and design tools for active and passive filters. Very detailed site with many configuration options and the site even outputs graphs of your desinged filter repsonse. **PSoC Microcontrollers And The PSoC Creator IDE** The PSoC microcontroller features an in-built and versatile digital filter block, and the IDE has a graphically-edited method of configuring the DFB to do exactly what you want. The IDE even shows you graphs of the expected response (magnitude, phase, step plots e.t.c).
+**OKAWA Filter Design and Analysis** ([http://sim.okawa-denshi.jp/en/Fkeisan.htm](http://sim.okawa-denshi.jp/en/Fkeisan.htm)) - Recommended Awesome site with web-based calculators and design tools for active and passive filters. Very detailed site with many configuration options and the site even outputs graphs of your desinged filter repsonse.
+
+**PSoC Microcontrollers And The PSoC Creator IDE** The PSoC microcontroller features an in-built and versatile digital filter block, and the IDE has a graphically-edited method of configuring the DFB to do exactly what you want. The IDE even shows you graphs of the expected response (magnitude, phase, step plots e.t.c).

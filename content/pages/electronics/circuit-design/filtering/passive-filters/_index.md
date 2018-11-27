@@ -7,8 +7,6 @@ type: page
 url: /electronics/circuit-design/filtering/passive-filters
 ---
 
-[mathjax]
-
 # Overview
 
 Even in the pass-band, passive filters almost always increase the impedance of the signal, post filter. For a trace on a circuit board, this actually makes the post-filter trace more susceptible to picking up external noise. For this reason, when using a passive filter to filter out induced noise of a sensitive trace, always place a passive filter as close as possible to the receiving end of the signal (e.g. as close as possible to an ADC pin on a microcontroller).
@@ -25,30 +23,32 @@ Due to the presence of the resistor, it is a lossy filter, and therefore not sui
 
 The equation for the voltage across the capacitor is:
 
-$$V_c = V_s(1 - e^{(\frac{t}{RC})})$$
+<div>$$V_c = V_s(1 - e^{(\frac{t}{RC})})$$</div>
 
-where:  
-\(V_c\) = voltage across the capacitor, Volts  
-\(V_s\) = supply voltage, Volts  
-\(t\) = time since supply was turned on, Seconds  
-\(R\) = resistance, Ohms  
-\(C\) = capacitance, Farads
+<p class="centered">
+    where:<br>
+    \(V_c\) = voltage across the capacitor, Volts<br>
+    \(V_s\) = supply voltage, Volts<br>
+    \(t\) = time since supply was turned on, Seconds<br>
+    \(R\) = resistance, Ohms<br>
+    \(C\) = capacitance, Farads<br>
+</p>
 
-This equation can be re-arranged to find the time \(t\), and which the capacitor is at a certain voltage:
+This equation can be re-arranged to find the time `\(t\)`, and which the capacitor is at a certain voltage:
 
-$$t = -log(\frac{V-V_c}{V})RC$$
+<div>$$t = -log(\frac{V-V_c}{V})RC$$</div>
 
-This form of the equation can be useful to calculate the delay (aka the time \(t\)), that the RC circuit will provide before something happens.
+This form of the equation can be useful to calculate the delay (aka the time `\(t\)`), that the RC circuit will provide before something happens.
 
 The low-pass RC filter can be used to provide filtering on analogue inputs to a microcontroller before being sampled by the ADC. One example could be to filter the output of an analogue temperature sensor. Note that is **normally advantageous to place the filter as close as possible to the microcontroller**, rather than close to the sensor producing the voltage. This is because the series resistor of the RC filter increases the source impedance of the analogue signal, **making the PCB track less immune to noise once it passes through the resistor**.
 
 Another way to reduce the reduction in noise immunity due to the resistor in the RC low-pass filter is **to make the capacitor as large as practically possible **(**for a particular cut-off frequency)**. Both the resistance and the capacitance influence the cut-off frequency. If you increase the capacitance by 10x, and reduce the resistance by 10x, you get the same cut-off frequency, but far better noise immunity since the source impedance is not altered as much.
 
-**Another consideration is the effect of the increase in source impedance (due to the resistor in the RC filter) when connecting the output to something like a [microcontroller ADC](http://blog.mbedded.ninja/electronics/circuit-design/adcs).** The input impedance of an non-buffered ADC pin on a microcontroller is usually somewhere between \(20-500k\Omega\) (note that this is usually variable, and can change with sampling rate). This will form a resistor divider with the RC filter resistance, increasing the ADC measurement error. As a general rule, **you want the RC filter resistance to be much lower than the ADC input impedance**.
+**Another consideration is the effect of the increase in source impedance (due to the resistor in the RC filter) when connecting the output to something like a [microcontroller ADC](http://blog.mbedded.ninja/electronics/circuit-design/adcs).** The input impedance of an non-buffered ADC pin on a microcontroller is usually somewhere between `\(20-500k\Omega\)` (note that this is usually variable, and can change with sampling rate). This will form a resistor divider with the RC filter resistance, increasing the ADC measurement error. As a general rule, **you want the RC filter resistance to be much lower than the ADC input impedance**.
 
-$$ R_{RC filter} << R_{ADC} $$
+<div>$$ R_{RC filter} << R_{ADC} $$</div>
 
-**A RC filter resistance which is at least 50x lower than the ADC input impedance is acceptable in most cases.** For a standard ADC input impedance of \(50k\Omega\), this means that the resistor in the RC filter should be no more than \(1k\Omega\).
+**A RC filter resistance which is at least 50x lower than the ADC input impedance is acceptable in most cases.** For a standard ADC input impedance of `\(50k\Omega\)`, this means that the resistor in the RC filter should be no more than `\(1k\Omega\)`.
 
 ## Building A VDAC From An ADC And Low-pass RC Filter
 
@@ -66,11 +66,11 @@ This makes an LC low-pass filter suitable for higher-power applications. You wi
 
 The cut-off frequency is given by the following equation:
 
-$$ f_c = \frac{1}{2\pi \sqrt{LC}} $$
+<div>$$ f_c = \frac{1}{2\pi \sqrt{LC}} $$</div>
 
 The characteristic impedance is:
 
-$$ Z = \sqrt{LC} $$
+<div>$$ Z = \sqrt{LC} $$</div>
 
 which you will notice is also present in the cut-off frequency equation.
 
@@ -86,15 +86,15 @@ This is equivalent to a low-pass RLC filter.
 
 The quality factor is equal to:
 
-$$ Q = \frac{2\pi f}{R} $$
+<div>$$ Q = \frac{2\pi f}{R} $$</div>
 
 As you increase the series resistance, the quality factor decreases.
 
 The damping factor is equal to:
 
-$$ d_0 = \frac{1}{Q} $$
+<div>$$ d_0 = \frac{1}{Q} $$</div>
 
-$$ d_0 = \frac{R}{2\pi fL} $$
+<div>$$ d_0 = \frac{R}{2\pi fL} $$</div>
 
 # Low-Pass π And t Filters
 
@@ -104,19 +104,21 @@ A 1st-order low-pass π-filter has two capacitors and one inductor. The first ca
 
 The equations for a 1st order filter are:
 
-$$C = \frac{z_o}{\pi f_c}$$  
-$$L = \frac{1}{z_o \pi f_c}$$  
-$$f_c = \frac{1}{\pi \sqrt{LC}}$$
+<div>$$C = \frac{z_o}{\pi f_c}$$</div>
+<div>$$L = \frac{1}{z_o \pi f_c}$$</div>
+<div>$$f_c = \frac{1}{\pi \sqrt{LC}}$$</div>
 
-where:  
-\(C\) = total capacitance ,Farads  
-\(L\) = total inductance, Henrys  
-\(z_o\) = characteristic impedance, Ohms  
-\(f_c\) = -3dB cutoff frequency, Hz
+<p class="centered">
+where:<br>
+\(C\) = total capacitance ,Farads<br>
+\(L\) = total inductance, Henrys<br>
+\(z_o\) = characteristic impedance, Ohms<br>
+\(f_c\) = -3dB cutoff frequency, Hz<br>
+</p>
 
 Note that I mention total capacitance or total inductance, as in the case of the π-filter each capacitor is C/2, and in the case of the t-filter, each inductor is L/2.
 
-The typical value to use for the characteristic impedance is \( z_o = 50 \Omega \). Use this if you are unsure on what to set it to. This value is only important if your are matching two RF circuits.
+The typical value to use for the characteristic impedance is `\( z_o = 50 \Omega \)`. Use this if you are unsure on what to set it to. This value is only important if your are matching two RF circuits.
 
 A t-filter is usually better at suppressing high-frequencies than a π-filter, as parasitic coupling between input and output due to PCB layout tends to turn the π filter into a notch filter. However, π-filters are more common because they are cheaper (capacitors are cheaper than inductors).
 
