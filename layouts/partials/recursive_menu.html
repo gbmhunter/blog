@@ -3,8 +3,9 @@
     {{ range .Sections.ByTitle }}
         <li class="dropdown">
             <a href="{{.Permalink}}">{{.Title}}</a>
-        </li>
+    
         {{ partial "recursive_menu.html" . }}
+    </li>
     {{ end }}
     </ul>
 {{ end }}
