@@ -42,9 +42,9 @@ div.box {
 }
 
 
-/* ========================= */
-/* MAIN PAGE STYLING         */
-/* ========================= */
+/* ========================================================================= */
+/* MAIN PAGE STYLING                                                         */
+/* ========================================================================= */
 
 html {
     height: 100%;
@@ -56,18 +56,24 @@ body {
     flex-direction: row;
 }
 
+/* Left column contains logo and menu */
 .left-column {
-    width: 200px;
+    width: 300px;
     height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 
+/* Right column contains page content */
 .right-column {
     height: 100%;
     flex: 1;
 }
 
-
-
+/* ========================================================================= */
+/* MENU STYLING                                                         */
+/* ========================================================================= */
 
 .menu {
     display: block;
@@ -89,32 +95,40 @@ body {
 }
 
 .menu li a {
-    display: block;
+    display: flex;
+    width: 200px;
     padding: 12px 8px;
     /* padding: 12px; */
     background: rgb(34, 34, 34);
     color: #fff;
+    text-decoration: none;
+}
+
+.menu .menu-text {
+    width: 165px;
 }
 
 .menu li.dropdown > a::after {
-    content: "\e259";
+    /* content: "▶";
     font-family: 'Glyphicons Halflings';
     font-style: normal;
+    text-decoration: none !important;
     font-weight: 400;
     margin-left: 8px;
-    font-size: 10px;
+    font-size: 10px; */
 }
 
 .menu li a::before {
-    content: "\e179";
+    /* content: "\e179";
     font-family: 'Glyphicons Halflings';
     font-style: normal;
     font-weight: 400;
-    margin-right: 8px;
+    margin-right: 8px; */
 }
 
 .menu li a:hover {
     background: grey;
+    text-decoration: underline;
 }
 
 .menu .submenu {
@@ -138,9 +152,9 @@ body {
 }
 
 .submenu li a {
-    display: block;
-    background: #999;
-    color: #fff;
+    display: flex;
+    background: rgb(241, 241, 241);
+    color: rgb(34, 34, 34);
     padding: 8px 6px;
     /* padding: 0px; */
     margin-bottom: 1px;
@@ -156,11 +170,11 @@ body {
     top: 0px;
 }
 
-.submenu li.dropdown > a:after {
-    content: "\e258";
+/* .submenu li.dropdown > a:after {
+    content: "▶";
     font-family: 'Glyphicons Halflings';
     font-style: normal;
     font-weight: 400;
     margin-left: 8px;
     font-size: 10px;
-}
+} */

@@ -1,7 +1,8 @@
 <ul class="menu">
     {{ with .Site.GetPage "/pages" }}
         {{ range .Sections.ByTitle }}
-            <li class="dropdown"><a href="">{{ .Title }}</a>
+            <li class="dropdown">
+                <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div>▶</a>
                 {{ partial "recursive_menu.html" . }}
             </li>
         {{ end }}

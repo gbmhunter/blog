@@ -48,6 +48,7 @@
 
     <body class="ma0 {{ $.Param "body_classes"  | default "avenir bg-near-white"}}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
         <div class="left-column">  
+            <div style="height: 50px;"></div>
             {{ partial "menu.html" . }}
         </div>
 
