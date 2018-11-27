@@ -7,8 +7,6 @@ type: page
 url: /electronics/circuit-design/logic-familes
 ---
 
-[mathjax]
-
 # HSTL
 
 HSTL compares the input voltage with a reference voltage.
@@ -29,55 +27,45 @@ Advanced ultra-low CMOS (AUC) is a CMOS logic family. It is optimised for 1.8V o
 
 Voltage specifications:
 
-<table ><tr >
-<td >Parameter
-</td>
-<td >Minimum
-</td>
-<td >Typical
-</td>
-<td >Maximum
-</td></tr><tbody ><tr >
-<td >\( V_{CCO} \)
-</td>
-<td >2.3V
-</td>
-<td >2.5V
-</td>
-<td >2.7V
-</td></tr><tr >
-<td >\( V_{REF} \)
-</td>
-<td >-
-</td>
-<td >-
-</td>
-<td >-
-</td></tr><tr >
-<td >\( V_{TT} \)
-</td>
-<td >-
-</td>
-<td >-
-</td>
-<td >-
-</td></tr><tr >
-<td >\( V_{IH} \)
-</td>
-<td >1.7V
-</td>
-<td >-
-</td>
-<td >3.6V
-</td></tr><tr >
-<td >\( V_{IL} \)
-</td>
-<td >-0.5V
-</td>
-<td >-
-</td>
-<td >0.7V
-</td></tr><tr >
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Minimum</th>
+        <th>Typical</th>
+        <th>Maximum</th>
+    </tr>
+    <tbody >
+        <tr >
+            <td>\( V_{CCO} \)</td>
+            <td>2.3V</td>
+            <td>2.5V</td>
+            <td>2.7V</td>
+        </tr>
+        <tr>
+            <td>\( V_{REF} \)</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>\( V_{TT} \)</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr >
+            <td>\( V_{IH} \)</td>
+            <td>1.7V</td>
+            <td>-</td>
+            <td>3.6V</td>
+        </tr>
+        <tr>
+            <td>\( V_{IL} \)</td>
+            <td>-0.5V</td>
+            <td>-</td>
+            <td>0.7V</td>
+        </tr>
+        <tr >
 <td >\( V_{OH} \)
 </td>
 <td >1.9V

@@ -7,17 +7,27 @@ type: page
 url: /electronics/circuit-design/power-management
 ---
 
-[mathjax]
-
 # Overview
 
-Power management is a big design consideration of battery powered and eco-friendly mains powered circuits. There are many ways of saving energy, some of the commonly used techniques are:  * Switching of sections of the circuit when they are not needed  * Slowing the clock speed of digital logic when high-speed is not needed
+Power management is a big design consideration of battery powered and eco-friendly mains powered circuits. There are many ways of saving energy, some of the commonly used techniques are:
 
-The following points need to be considered:  * The start and stop times of the circuitry being switched off  * The effect of having input signals still being applied to the chips which are 'off' (e.g. unwanted ESD conduction)  * The leakage currents of the device you're using to turn it off with (anything solid state has some form of leakage current, however mechanical relays do not).
+* Switching of sections of the circuit when they are not needed
+* Slowing the clock speed of digital logic when high-speed is not needed
+
+The following points need to be considered:
+
+* The start and stop times of the circuitry being switched off
+* The effect of having input signals still being applied to the chips which are 'off' (e.g. unwanted ESD conduction)
+* The leakage currents of the device you're using to turn it off with (anything solid state has some form of leakage current, however mechanical relays do not).
 
 # Disabling Sections Of A Circuit
 
-Disabling sections of the circuit is an easy way to save power. This can be done with  low-side or high-side switch. High side switches disconnect the load from the positive voltage rail (an source current to the load), while low-side switches connect the load to ground (and conversly sink current from the load). This can be done with a number of components, their advantages/disadvantages are explained below:  * MOSFET's - An n-channel can be used for low-side switching or a p-channel for high-side switching. You could combine an n and p to perform high-side switching with a standard non-inverted logic signal. This is one of the cheapest options. However, MOSFET's can have quite a large leakage current (0.1 to 1uA @ 25C), which climbs rapidly as the temperature increases. If this is a concern, a JFET maybe a better option.  * JFET's - A benefit of using a JFET is the tiny leakage currents (nano-amps). However a dis-advantage of using a JFET is the large on-resistance compared to that of a MOSFET, you will only be able to switch mA's of current. Also, they require about 4-4.5V to switch them, meaning they are not compatible with 3.3V or lower circuitry.  * Integrated Load Switch/Smart Power Switch - These are essentially MOSFET's and supporting components built into a small chip for ease of use. Some feature the mentioned n and p combo to make it easy to control the load from a micro-controller. They normally also have build in ESD protection, thermal protection, overvoltage protection and current limiting which makes them hardened against all-sorts of abuse.  * Voltage Regulator - Voltage regulators can be used to turn off power to circuits as long as they have a shut-down pin. Not the cheapest solution or the most power efficient (especially if it's a linear voltage regulator), but you might just happen to already be using one.
+Disabling sections of the circuit is an easy way to save power. This can be done with  low-side or high-side switch. High side switches disconnect the load from the positive voltage rail (an source current to the load), while low-side switches connect the load to ground (and conversly sink current from the load). This can be done with a number of components, their advantages/disadvantages are explained below:
+
+* MOSFET's - An n-channel can be used for low-side switching or a p-channel for high-side switching. You could combine an n and p to perform high-side switching with a standard non-inverted logic signal. This is one of the cheapest options. However, MOSFET's can have quite a large leakage current (0.1 to 1uA @ 25C), which climbs rapidly as the temperature increases. If this is a concern, a JFET maybe a better option.
+* JFET's - A benefit of using a JFET is the tiny leakage currents (nano-amps). However a dis-advantage of using a JFET is the large on-resistance compared to that of a MOSFET, you will only be able to switch mA's of current. Also, they require about 4-4.5V to switch them, meaning they are not compatible with 3.3V or lower circuitry.
+* Integrated Load Switch/Smart Power Switch - These are essentially MOSFET's and supporting components built into a small chip for ease of use. Some feature the mentioned n and p combo to make it easy to control the load from a micro-controller. They normally also have build in ESD protection, thermal protection, overvoltage protection and current limiting which makes them hardened against all-sorts of abuse.
+* Voltage Regulator - Voltage regulators can be used to turn off power to circuits as long as they have a shut-down pin. Not the cheapest solution or the most power efficient (especially if it's a linear voltage regulator), but you might just happen to already be using one.
 
 # The "Suicide Switch"
 
@@ -43,18 +53,20 @@ UVLO pins are sometimes named LBI (low battery input) instead (Texas Instrument
 
 One issue with UVLO pins is that they introduce instabilities when there is any kind of resistance between the power supply and the IC. If powering the IC from a battery, this **includes the internal resistance** of the battery. When the voltage drops below the threshold, the IC turns off, reducing the load current. Because of the source resistance, this causes the voltage the IC see's to increase, potentially rising above the threshold and turning the IC on again. This cycle will repeat and the IC will quickly oscillate between the on and off states.
 
-The solution to this is to add the right amount of hysteresis. Note that the IC may already have hysteresis, but it may not be enough (especially if it wasn't specifically designed for battery or other high-resistance power source operation). The hysteresis can be increased by the designed by adding a resistor between \( V_{OUT} \) and the UVLO pin.
+The solution to this is to add the right amount of hysteresis. Note that the IC may already have hysteresis, but it may not be enough (especially if it wasn't specifically designed for battery or other high-resistance power source operation). The hysteresis can be increased by the designed by adding a resistor between `\( V_{OUT} \)` and the UVLO pin.
 
 The two equations are:
 
-$$ \frac{V_{BAT} - V_{UVLO}}{R1} + \frac{V_{OUT} - V_{UVLO}}{R3} = \frac{V_{UVLO}}{R_2} $$
+<div>$$ \frac{V_{BAT} - V_{UVLO}}{R1} + \frac{V_{OUT} - V_{UVLO}}{R3} = \frac{V_{UVLO}}{R_2} $$</div>
 
-$$ \frac{V_{BAT} - V_{UVLO}}{R1} = \frac{V_{UVLO}}{R_2} + \frac{V_{UVLO}}{R_3} $$
+<div>$$ \frac{V_{BAT} - V_{UVLO}}{R1} = \frac{V_{UVLO}}{R_2} + \frac{V_{UVLO}}{R_3} $$</div>
 
-where:  
-\( R1\) = top resistance divider resistor  
-\( R2 \) = bottom resistance divider resistor  
-\( R3 \) = resistor between \( V_{OUT} \) and the UVLO pin
+<p class="centered">
+    where:<br>
+    \( R1\) = top resistance divider resistor<br>
+    \( R2 \) = bottom resistance divider resistor<br>
+    \( R3 \) = resistor between \( V_{OUT} \) and the UVLO pin<br>
+</p>
 
 # Voltage/Current/Power Monitoring
 

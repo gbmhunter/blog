@@ -9,25 +9,17 @@ url: /electronics/circuit-design/power-management/load-switches
 
 # MOSFET Based
 
-
-
-
 The following image shows a MOSFET based high-side switch:
 
 
 {{< figure src="/images/2013/11/high-side-mosfet-load-switch-schematic.png" width="678px" caption="A high-side load switch made from a N-Channel and P-Channel MOSFET."  >}}
 
-
 # IC Based
-
-
-
 
 The following image shows an IC based high-side switch.
 
 
 {{< figure src="/images/2013/11/high-side-load-switch-with-tps27082lddcr-ic-schematic.png" width="692px" caption="The TPS27082LDDCR, a high-side load switch IC."  >}}
-
 
 Some load-switches have reverse-polarity protection. More information of how they exactly implement reverse-protection with only the one MOSFET can be found in the [The Substrate (Body) Connection section of the MOSFET page](http://blog.mbedded.ninja/electronics/components/mosfets#the-substrate-body-connection).
 

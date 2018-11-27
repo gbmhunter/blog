@@ -21,15 +21,15 @@ The Howland current source is an op-amp based voltage-to-current converter.
 
 For the circuit to work correctly, three pairs of resistors have to be equal:
 
-$$ R_1 = R_3, R_2 = R_4, R_S = R_{S'} $$
+<div>$$ R_1 = R_3, R_2 = R_4, R_S = R_{S'} $$</div>
 
 Given the resistor equations above are satisfied, the load current is given by the following equation:
 
-$$ I_{LOAD} = \frac{V_{IN}}{R_S}(\frac{R_2 + R_S}{R_1}) $$
+<div>$$ I_{LOAD} = \frac{V_{IN}}{R_S}(\frac{R_2 + R_S}{R_1}) $$</div>
 
 The output impedance is given by the equation (note that this does not depend on the above resistor equality equations to be satisfied):
 
-$$ Z_{OUT} = \frac{R_3 R_{S'}(R_1 + R_2)}{R_1 (R_4 + R_S) - R_3 (R_2 + R_{S'})} $$
+<div>$$ Z_{OUT} = \frac{R_3 R_{S'}(R_1 + R_2)}{R_1 (R_4 + R_S) - R_3 (R_2 + R_{S'})} $$</div>
 
 The Howland current source is commonly used to build a [4-20mA current-loop transmitter](http://blog.mbedded.ninja/electronics/communication-protocols/4-20ma-current-loops).
 
@@ -49,4 +49,7 @@ DigiKey stocks a number of pre-built voltage-to-current converter ICs. First, 
 
 _Product Index -> Integrated Circuits (ICs) -> Interface - Sensor and Detector Interfaces._
 
-Then select the filtering options:  * Type: _Current Transmitter_  * Input Type: _Voltage_
+Then select the filtering options:
+
+* Type: _Current Transmitter_
+* Input Type: _Voltage_
