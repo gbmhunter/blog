@@ -7,43 +7,31 @@ type: page
 url: /electronics/communication-protocols/lin-protocol
 ---
 
+# Overview
+
 The LIN protocol is a serial, wired communications protocol for electronic devices. It consists of one master and one or more slaves, and does not support multiple masters.
 
 The LIN (local interconnect network) protocol was originally designed for localised communication within an automobile (for instance, between electrical devices in the door), while the CAM protocol was designed for global communication (e.g. from the back to the engine bay).
 
 It can be considered as a cross between the RS-232/UART and I2C protocols. It uses the open-drain, pull-up design of the [I2C protocol](http://blog.mbedded.ninja/electronics/circuit-design/i2c-communication), but the start/stop bit and asynchronous timing of the [UART protocol](http://blog.mbedded.ninja/electronics/circuit-design/uart).
 
-
 # Bit Rate And Transmission Distances
-
 
 Bit rates vary between 1-20kBit/s. The top speed is limited primarily for EMC reasons. The transmission rate is changeable by the master at any time, as the slaves use a sync byte included in the message header to synchronise their clocks to the bit rate.
 
-
 # Node Addressing
-
 
 6 bits is allocated for the header ID, giving a total of 64 different header IDs. However, the IDs 60-63 are reserved for special functions, giving a useable range 0-59. Note that these "header IDs" do not necessarily mean node addresses. The header IDs purely describe what the data is, meaning that a single packet sent from the master can be interpreted and used by more than one slave node.
 
-
 # Standards
-
-
-
 
 ## SAE J2602
 
-
 From the [Freescale website](http://www.freescale.com/webapp/sps/site/overview.jsp?code=IFATOLIN)
-
 
 <blockquote>LIN/SAE J2602 is a universal asynchronous receiver–transmitter (UART)–based, single–master, multiple–slave networking architecture originally developed for automotive sensor and actuator networking applications.</blockquote>
 
-
-
-
 # Devices
-
 
 [NI USB-8476 - 1-port USB-to-LIN Interface](http://sine.ni.com/nips/cds/view/p/lang/en/nid/203388).
 

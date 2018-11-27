@@ -13,10 +13,6 @@ PCI Express (PCIe) is a high-speed serial bus, designed as a replacement for th
 
 PCIe is a packet based network, similar to Ethernet. However, it is accessed via reads and writes to/from the address and I/O space, and there are vendor and product IDs, so in a large way it mimics the older PCI bus.
 
-# Child Pages
-
-[sb_child_list template=2 orderby=title order=asc nest_level=1]
-
 # Layers
 
 The PCIe specification defines three networking layers, the transaction layer (the topmost layer), the data link layer, and the physical layer (the bottom layer).
@@ -47,11 +43,15 @@ The minimum implementation of PCIe with one lane requires 4 wires for data trans
 
 Note that the transmission speed in software is not define as a absolute bits/seconds, but rather as a multiplier for the base rate, e.g. _8x_ speed. The base rate is dependent on what version of the PCIe specification supports, and is summarised in the following table:
 
-<table ><tbody ><tr >
-<td >PCIe Version
-</td>
-<td >Transfer Speed
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>PCIe Version</th>
+            <th>Transfer Speed</th>
+        </tr>
+    </thead>
+    <tbody>
+<tr >
 <td >v1.x
 </td>
 <td >2.5GT/s

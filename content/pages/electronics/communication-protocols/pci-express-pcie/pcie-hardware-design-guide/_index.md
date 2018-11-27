@@ -17,17 +17,18 @@ The PCIe physical layer can be split into two sub-layers, the electrical and log
 
 The pinout for a x1 PCIe connector are as follows:
 
-<table ><tbody ><tr >
-<td >Pin Number
-</td>
-<td >Side B Pin Name
-</td>
-<td >Side B Description
-</td>
-<td >Side A Pin Name
-</td>
-<td >Side A Description
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Pin Number</th>
+            <th>Side B Pin Name</th>
+            <th>Side B Description</th>
+            <th>Side A Pin Name</th>
+            <th>Side A Description</th>
+        </tr>
+    </thead>
+    <tbody>
+<tr >
 <td >1
 </td>
 <td >+12V
@@ -248,5 +249,3 @@ With PCIe ports implemented on large FPGA-based designs, this can be a challengi
 The following image shows an example PCIe x1 card-edge connector schematic symbol and associated components:
 
 {{< figure src="/images/2015/08/pcie-edge-connector-schematic-symbol-and-example-design.png" width="997px" caption="A PCIe card-edge connector schematic symbol and associated components."  >}}
-
-# Logical Sub-Layer

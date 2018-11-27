@@ -11,26 +11,31 @@ url: /electronics/communication-protocols/lon-ansi709-2-communication-protocol
 
 The Local Operating Network (LON) protocol is a inter-device communication protocol. Echelon holds the rights to the protocol, with the trade name LonTalk, although it also known as ANSI709.2 (see the standards section for more info). It is a multi-media protocol, supporting many different modes of transmission.
 
-<table style="width: 600px;" ><tbody ><tr >
-<td >Logo
-</td>
-<td > 
-
-{{< figure src="/images/2015/02/lonmark-international-logo-certified.jpg" caption="The logo of LonMark International. Image from http://www.prlog.org/."  >}}
-
-</td></tr><tr >
-<td >Speed
-</td>
-<td >  * 78kbit/s (twisted pair)  * 5.4, 3.6kbit/s (powerline)
-</td></tr><tr >
-<td >Transmission mediums
-</td>
-<td >  * Twister pair cable  * Powerlines  * Fiber optics  * RF
-</td></tr><tr >
-<td >Main uses
-</td>
-<td >  * Building lighting control  * HVAC  * Service station forecourt control  * In-train controls
-</td></tr></tbody></table>
+<table>
+    <tbody>
+        <tr>
+            <td>Logo</td>
+            <td>{{< figure src="/images/2015/02/lonmark-international-logo-certified.jpg" caption="The logo of LonMark International. Image from http://www.prlog.org/."  >}}</td>
+        </tr>
+        <tr>
+            <td>Speed</td>
+            <td><ul><li>78kbit/s (twisted pair)</li><li>5.4, 3.6kbit/s (powerline)</li></ul></td>
+        </tr>
+        <tr >
+            <td>Transmission mediums</td>
+            <td><ul><li>Twister pair cable</li><li>Powerlines</li><li>Fiber optics</li><li>RF</li></ul></td>
+        </tr>
+        <tr>
+            <td>Main uses</td>
+            <td><ul>
+                <li>Building lighting control</li>
+                <li>HVAC</li>
+                <li>Service station forecourt control</li>
+                <li>In-train controls</li>
+            </ul></td>
+        </tr>
+    </tbody>
+</table>
 
 # Standards
 

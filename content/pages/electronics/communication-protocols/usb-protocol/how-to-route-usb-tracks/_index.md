@@ -7,8 +7,6 @@ type: page
 url: /electronics/communication-protocols/usb-protocol/how-to-route-usb-tracks
 ---
 
-[mathjax]
-
 # Overview
 
 The D+ and D- (data) USB traces on circuit boards require impedance controlled routing. The tolerance depends on the exact USB standard used (e.g. USB1.0, USB2.0 full-speed/high-speed, USB3.0).
@@ -23,36 +21,41 @@ I recommend visiting the [Impedance Controlled Routing page](http://blog.mbedded
 
 Lets recall the well-known rule-of-thumb:
 
-$$ BW \approx \frac{0.35}{t_r} $$
+<div>$$ BW \approx \frac{0.35}{t_r} $$</div>
 
-where:  
-\( t_r \) is the maximum rise time from 10 to 90% (this is stated in the USB spec.), in seconds (s).  
-\( BW \) the resulting maximum bandwidth the track has to support, in Hertz (Hz). You can also think of this as a maximum frequency, since the bandwidth starts at 0Hz.
+<p class="centered">
+    where:<br>
+    \( t_r \) is the maximum rise time from 10 to 90% (this is stated in the USB spec.), in seconds (s).<br>  
+    \( BW \) the resulting maximum bandwidth the track has to support, in Hertz (Hz). You can also think of this as a maximum frequency, since the bandwidth starts at 0Hz.<br>
+</p>
 
 The USB specification states a maximum rise time of 4ns. Using the equation above, this gives us a bandwidth of approximately 87.5MHz. 
 
 From this, we can calculate the wavelength of an 87.5MHz signal travelling down a track on standard FR-4 PCB.
 
-$$ \lambda = \frac{c}{f\sqrt{\epsilon_r}} $$
+<div>$$ \lambda = \frac{c}{f\sqrt{\epsilon_r}} $$</div>
 
-where:  
-\( c \) is the speed of light, in meters per second  
-\(  f \) is the frequency that you worked out above (which we called bandwidth)  
-\( \epsilon_r \) is the di-electric of the material the electro-magnetic wave is travelling through, and is unitless. In our case this will be the di-electric of the PCB. For standard FR4, this is about 4.35.
+<p class="centered">
+    where:<br>
+    \( c \) is the speed of light, in meters per second<br>
+    \(  f \) is the frequency that you worked out above (which we called bandwidth)<br>
+    \( \epsilon_r \) is the di-electric of the material the electro-magnetic wave is travelling through, and is unitless. In our case this will be the di-electric of the PCB. For standard FR4, this is about 4.35.<br>
+</p>
 
-<blockquote>Another general rule-of-thumb is that the impedance of a PCB track is not important if it is at least 10 times smaller than the wavelength of the signal.
-> 
-> </blockquote>
+> Another general rule-of-thumb is that the impedance of a PCB track is not important if it is at least 10 times smaller than the wavelength of the signal.
 
 Thus, the minimum wavelength of the USB full-speed signal is 1.65m, and the characteristic impedance of the track is only important if the total track length is greater than 165mm.
 
-<table ><tbody ><tr >
-<td >USB Standard
-</td>
-<td >Minimum Rise Time, \( t_r \)
-</td>
-<td >Track Length At Which Impedance Matters
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>USB Standard</th>
+            <th>Minimum Rise Time, \( t_r \)</th>
+            <th>Track Length At Which Impedance Matters</th>
+        </tr>
+    </thead>
+    <tbody>
+<tr>
 <td >2.0 Low-speed (1.5Mb/s)
 </td>
 <td >75ns (USB Spec Rev 2.0, Table 7-10)
@@ -80,13 +83,16 @@ For more information, see the [Impedance Controlled Routing page](http://blog.mb
 
 The impedance depends on the USB standard.
 
-<table ><tbody ><tr >
-<td >USB Standard
-</td>
-<td >Differential Impedance
-</td>
-<td >Single-ended Impedance
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>USB Standard</th>
+            <th>Differential Impedance</th>
+            <th>Single-ended Impedance</th>
+        </tr>
+    </thead>
+<tbody>
+<tr >
 <td >1.0
 </td>
 <td > 

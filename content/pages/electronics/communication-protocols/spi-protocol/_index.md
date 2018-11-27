@@ -11,9 +11,15 @@ url: /electronics/communication-protocols/spi-protocol
 
 SPI stands for _Serial Peripheral Interface_, and was initially developed by Motorola. It is **full-duplex** (data can be sent in both directions at once), and is ideally suited to sending data streams between devices. Speeds of **10MHz** or more are achievable. It is a **de-facto standard**, which means there is no governing body that defines and regulates the protocol. This means there a quite a number of protocol variants.
 
-## Advantages  * SPI has much higher throughput compared to other board-level communication protocols (such as I2C or 1-wire), primarily because the bus lines are driven both high and low, and there is a separate wire for transmit and receive (full-duplex)  * SPI can have an arbitrary data/frame length  * Most logic analysers support SPI decoding
+## Advantages
 
-## Disadvantages  * When configured in the standard manner, SPI requires 1 extra control line (for the slave select signal) from the master for every extra slave added to the SPI bus. This can take up more space and I/O pins for designs with a large number of SPI devices.
+* SPI has much higher throughput compared to other board-level communication protocols (such as I2C or 1-wire), primarily because the bus lines are driven both high and low, and there is a separate wire for transmit and receive (full-duplex)
+* SPI can have an arbitrary data/frame length
+* Most logic analysers support SPI decoding
+
+## Disadvantages
+
+* When configured in the standard manner, SPI requires 1 extra control line (for the slave select signal) from the master for every extra slave added to the SPI bus. This can take up more space and I/O pins for designs with a large number of SPI devices.
 
 # Physical Layer
 
@@ -45,13 +51,15 @@ The clock phase (CPHA) determines whether data is captured/sent on the rising or
 
 The following table shows the naming conventions for _Microchip PIC_ or _ARM-based _microcontrollers:
 
-<table ><tbody ><tr >
-<td >**Clock Polarity (CPOL)**
-</td>
-<td >**Clock Phase (CPHA)**
-</td>
-<td >**SPI Mode**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Clock Polarity (CPOL)</th>
+            <th>Clock Phase (CPHA)</th>
+        </tr>
+    </thead>
+<tbody>
+<tr >
 <td >0
 </td>
 <td >1

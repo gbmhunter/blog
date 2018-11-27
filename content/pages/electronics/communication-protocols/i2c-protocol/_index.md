@@ -7,8 +7,6 @@ type: page
 url: /electronics/communication-protocols/i2c-protocol
 ---
 
-[mathjax]
-
 # Overview
 
 The I²C bus is a communication protocol commonly used for PCB level transmissions between IC's and microcontrollers. It is a half-duplex synchronous protocol which requires 2 non-power-related wires (4 if you include power and ground). It uses device addressing to indicate the recipient of the data. It is commonly used for sending small packets of information to IC's (such as configuration settings, or a sensor value), while [SPI](http://localhost/?q=node/135) is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C can support multiple masters through software protocols.
@@ -17,39 +15,53 @@ The I²C bus is a communication protocol commonly used for PCB level transmissi
 
 # Typical Electrical Specs
 
-<table style="width: 500px;" class="aligncenter" ><tbody ><tr >SpecificationValue</tr><tr >
-<td >Bus Capacitive Load
-</td>
-<td >400pF max (this limits cable length and fan-out)
-</td></tr><tr >
-<td >Signal Rise Times
-</td>
-<td >1000ns max (standard mode), 300ns max (fast-mode)
-</td></tr><tr >
-<td >Maximum Pull-down Current
-</td>
-<td >3mA (this limits the minimum pull-up resistance)
-</td></tr><tr >
-<td >Signal Naming Conventions
-</td>
-<td >SCK (clock), SDA (data)
-</td></tr></tbody></table>
+<table>
+    <tr>
+        <th>Specification</th>
+        <th>Value</th>
+    <tbody>
+        <tr>
+            <td>Bus Capacitive Load</td>
+            <td>400pF max (this limits cable length and fan-out)</td>
+        </tr>
+        <tr>
+            <td>Signal Rise Times</td>
+            <td>1000ns max (standard mode), 300ns max (fast-mode)</td>
+        </tr>
+        <tr>
+            <td>Maximum Pull-down Current</td>
+            <td>3mA (this limits the minimum pull-up resistance)</td>
+        </tr>
+        <tr>
+            <td>Signal Naming Conventions</td>
+            <td>SCK (clock), SDA (data)</td>
+        </tr>
+    </tbody>
+</table>
 
 # Signal Names
 
-<table align="center" style="width: 500px;" class=" aligncenter" ><tbody ><tr >NameFlowDescription</tr><tr >
-<td style="text-align: left;" >SCL (sometimes called SCK)
-</td>
-<td style="text-align: left;" >Master drives, slaves listen
-</td>
-<td style="text-align: left;" >Clock
-</td></tr><tr >
-<td style="text-align: left;" >SDA
-</td>
-<td style="text-align: left;" >Bi-directional
-</td>
-<td style="text-align: left;" >Data
-</td></tr></tbody></table>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Flow</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SCL (sometimes called SCK)</td>
+            <td>Master drives, slaves listen</td>
+            <td>Clock</td>
+        </tr>
+        <tr >
+            <td>SDA</td>
+            <td>Bi-directional</td>
+            <td>Data</td>
+        </tr>
+    </tbody>
+</table>
 
 # Pull-Up Resistors
 
@@ -57,44 +69,53 @@ The I²C bus uses open-drain drivers to allow for **compatibility** between chi
 
 {{< figure src="/images/2011/09/i2c-pull-up-resistors.png" width="488px" caption="I2C pull-up resistors."  >}}
 
-**The value of the resistor determines the maximum speed of the bus (the lower the resistance, the faster the bus can operate).** The resistance is limited at the lower end by the maximum bus current that the I²C chips can supply, and maximum power consumption if relevant. The I2C specification states that an I2C compliant device must be able to sink at least 3mA from the I2C bus lines and have a logic low voltage of no higher than \( V_{OL} = 0.4V \) while doing this. Using this information, it is easy to come up with the equation for the minimum allowed resistance:
+**The value of the resistor determines the maximum speed of the bus (the lower the resistance, the faster the bus can operate).** The resistance is limited at the lower end by the maximum bus current that the I²C chips can supply, and maximum power consumption if relevant. The I2C specification states that an I2C compliant device must be able to sink at least 3mA from the I2C bus lines and have a logic low voltage of no higher than `\(V_{OL} = 0.4V\)` while doing this. Using this information, it is easy to come up with the equation for the minimum allowed resistance:
 
-$$ R_{min} = \frac{V_{CC} - V_{OL}}{I_{OL}} $$
+<div>$$ R_{min} = \frac{V_{CC} - V_{OL}}{I_{OL}} $$</div>
 
-where:  
-\( V_{CC} \) is the supply voltage that one side of the pull-up resistor is connected to, in Volts  
-\( V_{OL} \) is the maximum voltage allowed on the bus while the device is sinking \) I_{OL} \), in Volts  
-\( I_{OL} \) is the maximum current the I2C device pulling the bus line low is required to sink (typ. 3mA), in Amps
+<p class="centered">
+where:<br>
+\( V_{CC} \) is the supply voltage that one side of the pull-up resistor is connected to, in Volts<br>
+\( V_{OL} \) is the maximum voltage allowed on the bus while the device is sinking \) I_{OL} \), in Volts<br>
+\( I_{OL} \) is the maximum current the I2C device pulling the bus line low is required to sink (typ. 3mA), in Amps<br>
+</p>
 
 Given the fixed known values, this can be simplified to:
 
-$$ R_{P, min} = \frac{V_{CC} - 0.4V}{3mA} $$
+<div>$$ R_{P, min} = \frac{V_{CC} - 0.4V}{3mA} $$</div>
 
-Because of I2C's open-collector topology, it is **solely the pull-up resistors duty to pull the line high** when a device releases it (i.e. stops pulling it to ground). The pull-up resistor, along with the bus capacitance \( C_{BUS} \), creates a time constant which slows the rise time of the bus voltage. The I2C specification states that a voltage above \( V_{IH} = 0.7V_{CC} \) must be considered logic high by all devices.
+Because of I2C's open-collector topology, it is **solely the pull-up resistors duty to pull the line high** when a device releases it (i.e. stops pulling it to ground). The pull-up resistor, along with the bus capacitance `\( C_{BUS} \)`, creates a time constant which slows the rise time of the bus voltage. The I2C specification states that a voltage above `\( V_{IH} = 0.7V_{CC} \)` must be considered logic high by all devices.
 
- $$ R_{P, max} = \frac{T_R}{0.847298C_{BUS}} $$
+<div>$$ R_{P, max} = \frac{T_R}{0.847298C_{BUS}} $$</div>
 
-where:  
-\( T_R \) is the maximum allowed rise time as specified by the I2C specification for a particular mode, in seconds  
-\( C_{BUS} \) is the total bus capacitance, in Farads
+<p class="centered">
+    where:<br>
+    \( T_R \) is the maximum allowed rise time as specified by the I2C specification for a particular mode, in seconds<br>
+    \( C_{BUS} \) is the total bus capacitance, in Farads<br>
+</p>
 
-The maximum rise time \( T_R \) is specified by the I2C standard for each I2C mode as shown in the table below:
+The maximum rise time `\( T_R \)` is specified by the I2C standard for each I2C mode as shown in the table below:
 
-<table style="width: 400px;" class=" aligncenter" ><tbody ><tr >
-<td style="text-align: center;" >**I2C Mode**
-</td>
-<td style="text-align: center;" >**Maximum Rise Time \( T_R \)**
-</td></tr><tr >
-<td style="text-align: center;" >Standard
-</td>
-<td style="text-align: center;" >1000ns
-</td></tr><tr >
-<td style="text-align: center;" >Fast Mode
-</td>
-<td style="text-align: center;" >300ns
-</td></tr></tbody></table>
+<table>
+    <thead>
+        <tr>
+            <th>I2C Mode</th>
+            <th>Maximum Rise Time \( T_R \)</th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr >
+            <td>Standard</td>
+            <td>1000ns</td>
+        </tr>
+        <tr>
+            <td>Fast Mode</td>
+            <td>300ns</td>
+        </tr>
+    </tbody>
+</table>
 
-Note that this is not the only thing which limits the maximum pull-up resistance, the **high-level input current**, \( I_{IH} \) also puts a restriction on the maximum resistance (it is usually higher than that imposed by the maximum rise time, and therefore rarely considered). The high-level input current is due to leakage current through the digital input pins connected to the bus, which creates a constant voltage drop over the pull-up resistors (remember, it's the resistors which are pulling the bus line high).
+Note that this is not the only thing which limits the maximum pull-up resistance, the **high-level input current**, `\( I_{IH} \)` also puts a restriction on the maximum resistance (it is usually higher than that imposed by the maximum rise time, and therefore rarely considered). The high-level input current is due to leakage current through the digital input pins connected to the bus, which creates a constant voltage drop over the pull-up resistors (remember, it's the resistors which are pulling the bus line high).
 
 Typical pull-up resistor values are 10kΩ for up to a 100kHz bud rate, and 1kΩ for up to a 400kHz baud rate. External pull-up resistors should be used as normally, the internal pull-up of microcontroller ports and other I2C compliant devices have too high a resistance (100kΩ-1MΩ).
 
@@ -106,23 +127,32 @@ A **gotcha** during PCB design is to unintentionally **add multiple pull-up resi
 
 The data on an I2C bus can be transmitted at different rates, depending on what modes both the transmitter and receiver support. The following table outline the modes and the maximum speeds at which data can be transmitted on them. Note that because the data is clocked, there is almost no minimum speed (unless the device implements some sort of time-out feature).
 
-<table align="center" style="width: 400px;" class=" aligncenter" ><tbody ><tr >I2C ModeMaximum Speed (Kbps)</tr><tr >
-<td >Standard
-</td>
-<td >100
-</td></tr><tr >
-<td >Fast-mode (Fm)
-</td>
-<td >400
-</td></tr><tr >
-<td >Fast-mode Plus (Fm+)
-</td>
-<td >1000
-</td></tr><tr >
-<td >High-speed (HS)
-</td>
-<td >3400
-</td></tr></tbody></table>
+<table>
+    <thead>
+        <tr>
+            <th>I2C Mode</th>
+            <th>Maximum Speed (Kbps)</th>
+        </tr>
+    </thead>
+    <tbody>        
+        <tr>
+            <td>Standard</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Fast-mode (Fm)</td>
+            <td>400</td>
+        </tr>
+        <tr>
+            <td>Fast-mode Plus (Fm+)</td>
+            <td>1000</td>
+        </tr>
+        <tr>
+            <td>High-speed (HS)</td>
+            <td>3400</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Fast Mode (Fm)
 
@@ -140,9 +170,25 @@ Also, the clock signal has a high to low ratio of 1:2, which is different the th
 
 # I²C Bus Protocols And Variants
 
-There are variants on the I2C bus, defined and implemented by various manufactures. These include:  * SMBus - The System Management Bus. Only works with a single slave. Uses less current, but operates at a lower speed.  * PMBus - Extends the SMBus functionality  * IPMB - The Intelligent Platform Management Bus  * TWI - The Two-Wire Interface. A name used by some vendors (including ATMEL), to describe a I2c bus (exactly identical).  * ACCESS.bus  * DDC, E-DDC - (Enhanced) Display Data Channel, used by the HDMI protocol send data from the sink to the source about what resolutions and frame rates it supports. The HDMI specification says it must support standard rate I2C (100kbit/s), with optional support for fast mode (400kbit/s).
+There are variants on the I2C bus, defined and implemented by various manufactures. These include:
 
-# I2C Applications  * Automotive (although the CAN/LIN bus is more popular in automotive environments due to the higher noise resistance)  * Consumer  * Industrial (ethernet is also popular for industrial control)  * Mobile  * Telecom/networking  * Radio/T.V.{{< figure src="/images/2011/09/typical-application-schematic-for-i2c-io-expander.png" width="411px" caption="A typical application schematic for an I2C I/O expander."  >}}
+* SMBus - The System Management Bus. Only works with a single slave. Uses less current, but operates at a lower speed.
+* PMBus - Extends the SMBus functionality
+* IPMB - The Intelligent Platform Management Bus
+* TWI - The Two-Wire Interface. A name used by some vendors (including ATMEL), to describe a I2c bus (exactly identical).
+* ACCESS.bus
+* DDC, E-DDC - (Enhanced) Display Data Channel, used by the HDMI protocol send data from the sink to the source about what resolutions and frame rates it supports. The HDMI specification says it must support standard rate I2C (100kbit/s), with optional support for fast mode (400kbit/s).
+
+# I2C Applications
+
+* Automotive (although the CAN/LIN bus is more popular in automotive environments due to the higher noise resistance)
+* Consumer
+* Industrial (ethernet is also popular for industrial control)
+* Mobile
+* Telecom/networking
+* Radio/T.V.
+
+{{< figure src="/images/2011/09/typical-application-schematic-for-i2c-io-expander.png" width="411px" caption="A typical application schematic for an I2C I/O expander."  >}}
 
 # Addressing
 
@@ -152,7 +198,7 @@ All I2C slave devices must have an address. This address is used by the master t
 
 Connecting two identical devices (e.g. lets say you have two temperature sensors) onto the same I2C bus, both with the same pre-programmed I2C address means that that the master cannot address them individually and functionality is serverly reduced. To overcome this, many I2C slave ICs also come with a few address pins. These address pins are digital inputs and control what I2C address the slave will respond to. A device with two address pins allows the designer to connect up to four identical ICs to the same I2C bus by connecting the address pins to different combinations of Vcc and GND.
 
-Newer pin-constrained I2C slave devices allow you to connect the address pins up to SCL and SDA to further increase the number of assignable addresses. With two address pins, and the possibility of connecting each up to either \(V_{CC}\), GND, SCL or SDA, gives a total of 16 different I2C addresses.
+Newer pin-constrained I2C slave devices allow you to connect the address pins up to SCL and SDA to further increase the number of assignable addresses. With two address pins, and the possibility of connecting each up to either `\(V_{CC}\)`, GND, SCL or SDA, gives a total of 16 different I2C addresses.
 
 {{< figure src="/images/2011/09/i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png" width="826px" caption="The logic table (truth table) of the I2C address pins on the TI INA226 IC. Notice how you can connect the address pins up to SCL or SDA as well as the standard VS and GND, to give a total of 16 possible I2C addresses."  >}}
 
@@ -160,11 +206,15 @@ Newer pin-constrained I2C slave devices allow you to connect the address pins up
 
 The I2C specification reserves some addresses for special purposes. Because of these reserved addresses, only 112 addresses are available to I2C devices using the 7-bit address scheme. Do not set your device to use these addresses listed below.
 
-<table style="width: 400px;" class=" aligncenter" ><tbody ><tr >
-<td >**Reserved Address**
-</td>
-<td >**Description**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Reserved Address</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr >
 <td >0000000 0
 </td>
 <td >General call.
@@ -262,7 +312,11 @@ A clever I2C trick for hot-swapping capability is to pre-charge the bus lines,
 
 A slave device can indicate that it is not ready to receive new data by holding the clock line (SCL) low. This tells the master to wait until the clock line is high before sending more data.
 
-# Complimentary/Useful I2C Devices  * I/O Expanders - Used for trace reduction and routing simplification. Basically an IC with digital ports that can be turned on or off through I2C communication. Used to compliment processors with limited I/O, and drive port-hungry peripherals such as keypads (you can also get dedicated I2C keypad controllers)  * I2C Multiplexers/Switches - Performs voltage translation/isolation and multiplexing of I2C traces. Useful when dealing with mixed-voltage I2C systems and for resolving address conflicts  * USB-to-I2c Bridges - These provide a interface between your computer and an external I2C communication line. Certain FTDI chips/cables with an in-built MPSSE (multi-purpose synchronous serial engine) support USB-to-I2C communication. See this application note here ([Application Note AN-190: C232HM MPSSE Cable in USB to I2C/SMBus interface](http://www.ftdichip.com/Support/Documents/AppNotes/AN_190_C232HM_MPSSE_Cable_in_USB_to_I2C_Interface.pdf)).  
+# Complimentary/Useful I2C Devices
+
+* I/O Expanders - Used for trace reduction and routing simplification. Basically an IC with digital ports that can be turned on or off through I2C communication. Used to compliment processors with limited I/O, and drive port-hungry peripherals such as keypads (you can also get dedicated I2C keypad controllers)
+* I2C Multiplexers/Switches - Performs voltage translation/isolation and multiplexing of I2C traces. Useful when dealing with mixed-voltage I2C systems and for resolving address conflicts 
+* USB-to-I2c Bridges - These provide a interface between your computer and an external I2C communication line. Certain FTDI chips/cables with an in-built MPSSE (multi-purpose synchronous serial engine) support USB-to-I2C communication. See this application note here ([Application Note AN-190: C232HM MPSSE Cable in USB to I2C/SMBus interface](http://www.ftdichip.com/Support/Documents/AppNotes/AN_190_C232HM_MPSSE_Cable_in_USB_to_I2C_Interface.pdf)).  
   
 {{< figure src="/images/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg" width="265px" caption="The C232HM-DDHSL-0 FTDI USB-to-MPSSE cable. Creates a bridge between your computer and a number of serial comm protocols such as SPI, I2C and UART."  >}}
 
@@ -283,7 +337,6 @@ But if instead the master is performing a read, a repeated start is normally iss
 The following image shows an I2C slave that is not responding. Notice the absence of an "ACK" on the SDA line on the 9th clock pulse. The slave should of pulled this low.
 
 ![i2c-waveform-with-nak-saleae-logic-analyser](http://blog.mbedded.ninja/wp-content/gallery/electronics-misc/i2c-waveform-with-nak-saleae-logic-analyser.png)
-
 
 # Prototyping
 

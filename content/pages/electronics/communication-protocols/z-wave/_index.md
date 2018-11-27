@@ -17,11 +17,15 @@ Z-Wave is a wireless communications protocol primarily designed for home automat
 
 Z-Wave operates on frequencies around 900MHz. The exact frequency depends on country.
 
-<table ><tbody ><tr >
-<td >**Region**
-</td>
-<td >**Frequency**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Region</th>
+            <th>Frequency</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >Europe
 </td>
 <td >868.42MHz
