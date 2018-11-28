@@ -9,15 +9,17 @@ url: /electronics/components/cables
 
 # Insulation Materials And Their Properties
 
-<table border="0" ><tbody ><tr >
-<td >Common Name
-</td>
-<td >Material
-</td>
-<td >Temperature Range
-</td>
-<td >Features
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Common Name</th>
+            <th>Material</th>
+            <th>Temperature Range</th>
+            <th>Features</th>
+        </tr>
+    </thead>
+    <tbody>
+<tr >
 <td >ETFE
 </td>
 <td >Ethylene tetraflouroethylene
@@ -129,26 +131,39 @@ UL2464 is a loose standard defining some of the properties of computer cable, ma
 <td >Lay
 </td>
 <td >Not specified (circular is common)
-</td></tr><tr >
-<td > 
-</td>
-<td > 
-</td></tr><tr >
-<td > 
-</td>
-<td > 
-</td></tr><tr >
-<td > 
-</td>
-<td > 
-</td></tr><tr >
-<td > 
-</td>
-<td > 
-</td></tr></tbody></table>
+</td></tr>
+</tbody></table>
 
 Reference standard: UL Subject 758, UL 1581 & CSA C22.2 No.210.2 - Stranded, bare or tinned copper conductor - Colour-coded SR-PVC insulation - Cores cabled under aluminum mylar shield - Tinned or bare copper stranded drain wire - Tinned or bare copper wire braid shield up to 95% coverage - Lead free PVC jacket - Passes UL VW-1SC & CSA FT1 vertical flame test
 
-Features Specifications: UL2464 Double Shielded Computer Cables - Rated temperature: 80°C - Rated voltage: 300V - Reference standard: UL Subject 758, UL 1581 & CSA C22.2 No.210.2 - Stranded, bare or tinned copper conductor - Colour-coded SR-PVC insulation - Cores cabled under aluminum mylar shield - Tinned or bare copper stranded drain wire - Tinned or bare copper wire braid shield up to 95% coverage - Lead free PVC jacket - Passes UL VW-1SC & CSA FT1 vertical flame test Common Colours In UL2464 Cable:  * Black  * Brown  * Red  * Orange  * Yellow  * Green  * Blue  * Purple  * Gray  * White  * Pink  * Light Green  * Black-White
+Features Specifications: UL2464 Double Shielded Computer Cables - Rated temperature: 80°C - Rated voltage: 300V - Reference standard: UL Subject 758, UL 1581 & CSA C22.2 No.210.2 - Stranded, bare or tinned copper conductor - Colour-coded SR-PVC insulation - Cores cabled under aluminum mylar shield - Tinned or bare copper stranded drain wire - Tinned or bare copper wire braid shield up to 95% coverage - Lead free PVC jacket - Passes UL VW-1SC & CSA FT1 vertical flame test Common Colours In UL2464 Cable:
 
-Common Colours For 12 Core Cable  * Black  * Yellow  * Red  * Blue  * Green  * Yellow  * White  * Brown  * Violet  * Orange  * Pink  * Light Green  * Grey
+* Black
+* Brown
+* Red
+* Orange
+* Yellow
+* Green
+* Blue
+* Purple
+* Gray
+* White
+* Pink
+* Light Green
+* Black-White
+
+Common Colours For 12 Core Cable:
+
+* Black
+* Yellow
+* Red
+* Blue
+* Green
+* Yellow
+* White
+* Brown
+* Violet
+* Orange
+* Pink
+* Light Green
+* Grey

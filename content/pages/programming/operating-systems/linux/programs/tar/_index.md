@@ -9,28 +9,21 @@ url: /programming/operating-systems/linux/programs/tar
 
 # Overview
 
-
-
-
 tar is a program which can be used to package and unpackage files using the .tar format.
-
-
-
 
 # What About .tar.gz Files?
 
-
-
-
 .tar.gz files are files which have been packaged by tar, and then compressed with gzip. Fortunately, tar can both uncompress and unpackage in one step. Usually you would want to use the following command:
 
+```sh
+$ tar -xvzf my_file.tar.gz
+```
 
+To compress all the files in the current directory into a .tar.gz archive:
 
-    
-    tar -xvzf my_file.tar.gz
-
-
-
+```sh
+$ tar -cvzf my_archive.tar.gz *
+```
 
 The above options are:
 

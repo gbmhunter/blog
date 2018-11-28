@@ -13,11 +13,15 @@ Lead-acid batteries are the oldest form of rechargeable battery, invented in 185
 
 # General Characteristics
 
-<table style="width: 600px;" border="0" ><tbody ><tr >
-<td >**Property**
-</td>
-<td >**Value**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >Specific Energy
 </td>
 <td >30-40Wh/kg
@@ -61,11 +65,15 @@ Non-repetitive charging of lead-acids allows you to charge it to a higher voltag
 
 The table below shows a list of common lead-acid battery voltages and the voltage you should charge them to, based on a charge voltage 2.4V per cell and an ambient temperature of 25C.
 
-<table border="0" ><tbody ><tr >
-<td >Nominal Voltage (V)
-</td>
-<td >Voltage To Charge To (V)
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Nominal Voltage (V)</th>
+            <th>Voltage To Charge To (V)</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >6.0
 </td>
 <td >7.2
@@ -73,7 +81,9 @@ The table below shows a list of common lead-acid battery voltages and the voltag
 <td >12.0
 </td>
 <td >14.4
-</td></tr></tbody></table>{{< figure src="/images/2011/09/charging-a-lead-acid.jpg" width="1200px" caption="Charging a 12V, 6Ah lead-acid battery with a variable-voltage power supply."  >}}
+</td></tr></tbody></table>
+
+{{< figure src="/images/2011/09/charging-a-lead-acid.jpg" width="1200px" caption="Charging a 12V, 6Ah lead-acid battery with a variable-voltage power supply."  >}}
 
 ## Float Charging
 

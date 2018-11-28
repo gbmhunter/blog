@@ -9,23 +9,13 @@ url: /electronics/components/cellular-modems
 
 # Overview
 
-
-
-
 Most embedded modems are designed to communicate to a microcontroller over a [UART interface](http://blog.mbedded.ninja/electronics/circuit-design/communication-protocols/uart-protocol). Some cellular modems also have embedded GPS decoders.
-
-
-
 
 # Terminology
 
-
-
-
 Cellular modem design is FULL of acronyms/initialisms, here is a list to help you make sense of them:
 
-
-<table style="width: 800px;" >
+<table>
 <tbody >
 <tr >
 
@@ -337,28 +327,20 @@ Cellular modem design is FULL of acronyms/initialisms, here is a list to help yo
 
 # Power Supply
 
-
-
-
 Most embedded cellular modems run of a supply voltage of +3.8V. Linear regulators are preferred over switching regulators as they typically have lower dropout and voltage ripple. It a switching regulator is to be used, it is preferable to use one that operates at 500kHz or above, so that it can respond to the current pulses quickly and prevent the voltage dropping to far.
-
-
-
 
 A single cell Li-ion battery can also be used to power a +3.8V modem directly (with no regulator), as their voltage range falls within that acceptable for the modem. No other battery technology can be used (e.g. 4V Pb, Ni-MH or Ni-Cad) as their operating voltages either exceed or drop below that allowed by the modem.
 
-
-
-
 ## Rough Figures
 
-
-<table >
+<table>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
+    </thead>
 <tbody >
-<tr >
-Parameter
-Value
-</tr>
 <tr >
 
 <td >Avergae idle current
@@ -413,27 +395,18 @@ Value
 
 # SIM Cards
 
-
-
-
 Listed below are the common pins that you need to connect from the SIM card (technically to the SIM card holder).
 
-
-<table style="width: 600px;" >
-<tbody >
+<table>
+    <thead>
+        <tr>
+            <th>Pin</th>
+            <th>Pin Type (w.r.t the modem)</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
 <tr >
-
-<td >**Pin**
-</td>
-
-<td >**Pin Type (w.r.t the modem)**
-</td>
-
-<td >**Description**
-</td>
-</tr>
-<tr >
-
 <td >SIMCLK
 </td>
 
@@ -490,51 +463,25 @@ Listed below are the common pins that you need to connect from the SIM card (tec
 </tbody>
 </table>
 
-
 # PCB Layout And Antenna Routing
-
-
-
 
 This is the most important part of the product design!
 
-
-
-
 The characteristic impedance is typically around 50Ω. The maximum allowed signal loss is normally around 0.3dB.
-
-
-
 
 # Supported Bands
 
-
-
-
 ## GSM
-
-
-
 
 GSM900/GSM1800
 
-
-
-
 The GSM band is designed so that data is sent not continuously but in bursts at a rate of around 216Hz. This results in large pulse currents that can be as high as 1.5-2.0A.
-
-
-
 
 # Bands By Country
 
-
-
-
 Countries sorted by alphabetical order, networks sorted by technology and frequency.
 
-
-<table style="width: 600px;" border="0" >
+<table>
 <tbody >
 <tr >
 Country
@@ -554,47 +501,36 @@ Supported Bands
 </td>
 
 <td >
-
-
-
-	  * GSM-850 (rural, urban backup)
-	  * GSM-1900 (primary urban band, PCS)
-
-
+<ul>
+<li>GSM-850 (rural, urban backup)</li>
+<li>GSM-1900 (primary urban band, PCS)</li>
+</ul>
 </td>
 </tr>
 <tr >
-
 <td >Japan
 </td>
-
 <td >(no GSM bands)
 </td>
 </tr>
 <tr >
-
 <td >Mexico
 </td>
-
 <td >GSM-1900 (PCS)
 </td>
 </tr>
 <tr >
-
 <td >New Zealand
 </td>
-
 <td >
-
-
-
-	  * GSM-900 (Vodafone, 2degrees)
-	  * GSM-1800 (Vodafone, 2degrees, only in congested areas),
-	  * UMTS-850 (Telecom)
-	  * UMTS-900 (Vodafone)
-	  * UMTS-2100 (Vodafone, Telecom)
-	  * LTE-1800 (Vodafone, only in Auckland/Christchurch)
-
+<ul>
+    <li>GSM-900 (Vodafone, 2degrees)</li>
+    <li>GSM-1800 (Vodafone, 2degrees, only in congested areas)</li>
+    <li>UMTS-850 (Telecom)</li>
+    <li>UMTS-900 (Vodafone)</li>
+    <li>UMTS-2100 (Vodafone, Telecom)</li>
+    <li>LTE-1800 (Vodafone, only in Auckland/Christchurch)</li>
+</ul>
 
 </td>
 </tr>
@@ -603,58 +539,32 @@ Supported Bands
 <td >United States
 </td>
 
-<td >
-
-
-
-	  * GSM-850 (AT&T Mobility, Verizon Wireless)
-	  * GSM-1900 (Sprint Corporation, T-Mobile US (Metro PCS))
-
-
+<td>
+<ul>
+<li>GSM-850 (AT&T Mobility, Verizon Wireless)</li>
+<li>GSM-1900 (Sprint Corporation, T-Mobile US (Metro PCS))</li>
+</ul>
 </td>
 </tr>
 <tr >
-
 <td >South Korea
 </td>
-
 <td >(no GSM bands)
 </td>
 </tr>
 </tbody>
 </table>
 
-
 # Software
-
-
-
 
 [Mihini](http://www.eclipse.org/mihini/) is a "M2M embeddable runtime on top of Linux". Since it requires Linux, it cannot be used in smaller embeddable projects. Code is written in the Lua language.
 
-
-
-
 # Examples
-
-
-
 
 The [Telit HE910 family](http://www.telit.com/en/products/umts-hsdpa.php?p_ac=show&p=108) is a series of embedded modems all within the same LGA package. Some of the models have embedded GPS decoders in them. You can get them for about US$30 in quantities of 1000.
 
-
-
-
 The Simcom SIM900 is a very cheap and common place cellular modem, seen in plenty of hobbyist projects, and featuring on many Arduino/RaspberryPi shields. You can buy them for about US$18 in quantities of 1, and US$10 in quantities of 1000. The SIM900 is the most basic, but there are others in the SIM family, including the SIM908.
-
-
-
 
 # Design Notes
 
-
-
-
-
-	  * [Telit HE910](http://blog.mbedded.ninja/electronics/components/cellular-modems/he910-design-notes)
-
+* [Telit HE910](http://blog.mbedded.ninja/electronics/components/cellular-modems/he910-design-notes)

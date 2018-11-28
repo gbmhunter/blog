@@ -7,8 +7,6 @@ type: page
 url: /electronics/components/capacitors
 ---
 
-[mathjax]
-
 # Overview
 
 Capacitors are a passive electronic component that stores charge between two conductive surfaces. The conductive surfaces (plates) are usually very close together, with a dielectric inbetween, to maximize the capacitance for a given size. They are a popular component, that along with resistors, make up the two most commonly used components on a circuit board. They come in a large range of sizes, from water tank sized caps to small SMD capacitors and capacitors formed from tracks on PCB's.
@@ -19,7 +17,8 @@ Capacitors are a passive electronic component that stores charge between two con
 
 Below is a table of most of the capacitor schematic symbols in use.
 
-<table style="width: 600px; text-align: center;" ><tbody ><tr >
+<table>
+<tbody ><tr >
 <td >
 
 {{< figure src="/images/2011/09/capacitor-unpolarised-schematic-symbol.png" width="196px" caption="The schematic symbol for an unpolarised capacitor."  >}}
@@ -38,7 +37,15 @@ Below is a table of most of the capacitor schematic symbols in use.
 
 # Uses
 
-Some of the well-known uses for capacitors are:  * Analog filtering  * Energy storage (supercapacitors)  * Charge pumps (voltage boosting, or a bootstrap capacitor)  * High power energy supplies (e.g. for powering coil and rail guns)  * Oscillators (along with resistors and/or inductors)  * Touch/proximity sensors and screens  * Distance measurement (e.g. the technique used in digital calipers)
+Some of the well-known uses for capacitors are:
+
+* Analog filtering
+* Energy storage (supercapacitors)
+* Charge pumps (voltage boosting, or a bootstrap capacitor)
+* High power energy supplies (e.g. for powering coil and rail guns)
+* Oscillators (along with resistors and/or inductors)
+* Touch/proximity sensors and screens
+* Distance measurement (e.g. the technique used in digital calipers)
 
 A **feedforward capacitor** is the name given to capacitor between the VOUT and ADJ pins of a linear regulator to improve stability.
 
@@ -46,7 +53,7 @@ A **feedforward capacitor** is the name given to capacitor between the VOUT and
 
 ## Ceramic
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Range
 </td>
 <td >1pF - 100uF
@@ -76,15 +83,17 @@ The following table lists the common ceramic dielectric codes. 
 
 **Class 1 (Temperature Compensating)**
 
-<table style="width: 600px;" ><tbody ><tr >
-<td >**Standard**
-</td>
-<td >**Symbol**
-</td>
-<td >**Temperature Range**
-</td>
-<td >**Capacitance Tolerance**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Standard</th>
+            <th>Symbol</th>
+            <th>Temperature Range</th>
+            <th>Capacitance Tolerance</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >JIS
 </td>
 <td >CH
@@ -114,7 +123,16 @@ The following table lists the common ceramic dielectric codes. 
 
 The following are based on the EIA RS-198 standard.
 
-<table style="width: 600px;" ><tbody ><tr >First Character (lower temperature letter)Second Character (upper temperature letter)Third Character (change in capacitance over temperature)</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>First Character (lower temperature letter)</th>
+            <th>Second Character (upper temperature letter)</th>
+            <th>Third Character (change in capacitance over temperature)</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >X = -55°C (-67°F)
 </td>
 <td >4 = +65°C (+149°F)
@@ -156,15 +174,17 @@ The most common codes from the above table are X5R, X7R, and Y5V.
 
 The following table lists the class 2 codes defined by the JIS standard.
 
-<table style="width: 600px;" ><tbody ><tr >
-<td >**Standard**
-</td>
-<td >**Symbol**
-</td>
-<td >**Temperature Range**
-</td>
-<td >**Capacitance Tolerance**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Standard</th>
+            <th>Symbol</th>
+            <th>Temperature Range</th>
+            <th>Capacitance Tolerance</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >JIS
 </td>
 <td >JB
@@ -180,14 +200,15 @@ There is also the two codes JB (which is similar to X5R) and CH (which is simila
 
 The [insulation resistance](http://blog.mbedded.ninja/electronics/components/capacitors#leakage-currents) limits for military MLCC's are:
 
-IR > \( 10^{11}\Omega \) or \( 10^3 M\Omega \cdot uF \), whichever is less, at \( +25^{\circ}C \)  
-IR > \( 10^{10}\Omega \) or \( 10^2 M\Omega \cdot uF \), whichever is less, at \( +125^{\circ}C \)
+IR > `\( 10^{11}\Omega \)` or `\( 10^3 M\Omega \cdot uF \)`, whichever is less, at `\( +25^{\circ}C \)`  
+
+IR > `\( 10^{10}\Omega \)` or `\( 10^2 M\Omega \cdot uF \)`, whichever is less, at `\( +125^{\circ}C \)`
 
 IR requirements for commercial MLCC's are about two times less.
 
 ## Electrolytic
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Range
 </td>
 <td >100nF - 5000uF
@@ -211,7 +232,7 @@ In over-voltage conditions, holes can be punched through the dielectric layer an
 
 ## Tantalum
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Range
 </td>
 <td >100nF-2mF (from 47nF to 10mF on DigiKey as of Jan 2014)
@@ -259,7 +280,7 @@ Because of their large operating temperature range, stability, and high price, t
 
 ## Film Capacitors
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Synoyms
 </td>
 <td >MKT, MFC's (metallized film capacitors), power (film) capacitor
@@ -291,7 +312,7 @@ Metallized film capacitors have a self-healing effect when an over-voltage even 
 
 ## Polyester (Green Cap)
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Range
 </td>
 <td >1nF - 10uF
@@ -317,7 +338,7 @@ Polyester capacitors use polyester plastic film for their dielectric. They have 
 
 ## Supercapacitors
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Range
 </td>
 <td >10mF-1000F
@@ -332,7 +353,13 @@ Polyester capacitors use polyester plastic film for their dielectric. They have 
 </td></tr><tr >
 <td >Uses
 </td>
-<td >  * Filtering of low frequency voltage ripple, usually due to large and low-frequency pulse currents.  * As an energy storage alternative to a battery  * To be hooked up in parallel with batteries to provide good pulse-current capabilities to battery chemistries which typically lack in that regard (i.e. those which have a large internal resistance,). This is a common practice with lithium thionyl chloride batteries.  * To provide extra support for bass in audio systems (essentially providing a low-source impedance energy source for when the bass goes boom)
+<td >
+<ul>
+    <li>Filtering of low frequency voltage ripple, usually due to large and low-frequency pulse currents.</li>
+    <li>As an energy storage alternative to a battery</li>
+    <li>To be hooked up in parallel with batteries to provide good pulse-current capabilities to battery chemistries which typically lack in that regard (i.e. those which have a large internal resistance,). This is a common practice with lithium thionyl chloride batteries.</li>
+    <li>To provide extra support for bass in audio systems (essentially providing a low-source impedance energy source for when the bass goes boom)</li>
+</ul>
 </td></tr></tbody></table>
 
 Supercapacitors are actually a special type of electrolytic capacitor.
@@ -353,7 +380,16 @@ Door knob (or barrel) capacitors are a form of ceramic capacitor named after the
 
 Sorted by alphabetic order.
 
-<table ><tbody ><tr >MaterialDielectic Constant (value or range, no unit)Notes:</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Material</th>
+            <th>Dielectic Constant (value or range, no unit)</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >Air
 </td>
 <td >1
@@ -495,7 +531,7 @@ The behaviour of capacitors when connected together in series and in parallel is
 
 Capacitors in parallel can be treated as one capacitor with the equivalent capacitance of:
 
-$$ C_{total} = C1 + C2 $$
+<div>$$ C_{total} = C1 + C2 $$</div>
 
 That is, in parallel, **the total equivalent capacitance is the sum of the individual capacitances**. This is shown in the below diagram.
 
@@ -509,11 +545,11 @@ One of the benefits of connecting many capacitors in parallel rather than using 
 
 Capacitors in series with each other can be treated as one capacitor with a capacitance:
 
-$$ C_{total} = \frac{1}{\frac{1}{C1} + \frac{1}{C2}} $$
+<div>$$ C_{total} = \frac{1}{\frac{1}{C1} + \frac{1}{C2}} $$</div>
 
 It is usually easier to remember this equation as:
 
-$$ \frac{1}{C_{total}} = \frac{1}{C1} + \frac{1}{C2} $$
+<div>$$ \frac{1}{C_{total}} = \frac{1}{C1} + \frac{1}{C2} $$</div>
 
 This is shown in the following diagram.
 
@@ -525,54 +561,52 @@ One of the benefits of connecting capacitors in series is that each capacitor on
 
 # Formulas
 
-``````
-
 ## Charge
 
 The charge stored on the plates of a capacitor is related to the voltage and capacitance by:
 
-$$Q = CV$$
+<div>$$Q = CV$$</div>
 
-where:  
-\(Q\) = charge stored in plates (Colombs)  
-\(C\) = capacitance (Farads)  
-\(V\) = voltage (Volts)
+<p class="centered">
+    where:<br>
+    \(Q\) = charge stored in plates (Colombs)<br>
+    \(C\) = capacitance (Farads)<br>
+    \(V\) = voltage (Volts)<br>
+</p>
 
 If using this formula, see the Capacitor Charge Calculator.
-
-``````
 
 ## Energy
 
 The energy stored in a capacitor is:
 
-$$E = \frac{1}{2}CV^2$$
+<div>$$E = \frac{1}{2}CV^2$$</div>
 
-where:  
-\(E\) = energy stored in the capacitor (Joules)  
-\(C\) = capacitance (Farads)  
-\(V\) = voltage across the capacitor (Volts)
+<p class="centered">
+    where:<br>
+    \(E\) = energy stored in the capacitor (Joules)<br>
+    \(C\) = capacitance (Farads)<br>
+    \(V\) = voltage across the capacitor (Volts)<br>
+</p>
 
 As shown by the equation, the energy stored in a capacitor is related to both the capacitance and voltage of the capacitor. A typical 100nF, 6.5V capacitor can store 2.11uJ. Not much huh! If you are really considering capacitors for their energy storage capabilities, you must look at supercapacitors, which have typical values of 100F and 2.5V (as of 2011). This gives 313J of energy, which is useful amount for powering something.
 
 If using this formula, see the Capacitor Energy Calculator.
 
-``````
-
 ## Force
 
 The force exerted on the two parallel plates of a capacitor is:
 
-$$F = \frac{\epsilon_0 AV^2}{2d^2}$$
+<div>$$F = \frac{\epsilon_0 AV^2}{2d^2}$$</div>
 
-where:  
-\(F\) = outwards force extered on each parallel plate of the capacitor, in Newtons  
-\(\epsilon_0\) = the permittivity of free space  
-\(A\) = overlapping area of the two plates, in meters squared  
-\(V\) = voltage across the capacitor, in Volts  
-\(d\) = seperation distance between the two plates, in meters
-
-``````
+<p class="centered">
+    where:<br>
+    \(F\) = outwards force extered on each parallel plate of the capacitor, in Newtons<br>
+    \(\epsilon_0\) = the permittivity of free space<br>
+    \(A\) = overlapping area of the two plates, in meters squared<br>
+    \(V\) = voltage across the capacitor, in Volts<br>
+    \(d\) = seperation distance between the two plates, in meters<br>
+</p>
 
 ## Single Disc Capacitance
 
@@ -580,14 +614,14 @@ where:
 
 The capacitance of a single thin plate, with  a ground at 'infinity' (or more practically, just very far away) is:
 
-$$C = 35.4 \times 10^{-12} \epsilon_r d$$
+<div>$$C = 35.4 \times 10^{-12} \epsilon_r d$$</div>
 
-where:  
-\(C\) = capacitance (Farads)  
-\(\epsilon_r\) = relative dielectric constant (1 for a vacuum)  
-\(d\) = diameter of the thin plate (meters)
-
-``````
+<p class="centered">
+    where:<br>
+    \(C\) = capacitance (Farads)<br>
+    \(\epsilon_r\) = relative dielectric constant (1 for a vacuum)<br>
+    \(d\) = diameter of the thin plate (meters)<br>
+</p>
 
 ## Sphere Capacitance
 
@@ -595,28 +629,28 @@ where:
 
 The capacitance of a single sphere, again, with a ground at infinity is:
 
-$$C = 55.6 \times 10^{-12} \epsilon_r d$$
+<div>$$C = 55.6 \times 10^{-12} \epsilon_r d$$</div>
 
-where:  
-\(C\) = capacitance (Farads)  
-\(\epsilon_r\) = relative dielectric constant (1 for a vacuum)  
-\(r\) = radius of sphere (meters)
-
-``````
+<p class="centered">
+    where:<br>
+    \(C\) = capacitance (Farads)<br>
+    \(\epsilon_r\) = relative dielectric constant (1 for a vacuum)<br>
+    \(r\) = radius of sphere (meters)<br>
+</p>
 
 ## Parallel Plate Capacitance
 
 The capacitance of two parallel plates is approximately
 
-$$C = \epsilon_r \epsilon_o\frac{A}{d}$$
+<div>$$C = \epsilon_r \epsilon_o\frac{A}{d}$$</div>
 
-where:  
-\(\epsilon_o\) = electric constant (\(8.854 \times 10^{-12}Fm^{-1}\))  
-\(\epsilon_r\) = dielectric constant of the material between the plates (no unit)  
-\(A\) = overlapping surface area of the parallel plates (meters squared)  
-\(d\) = distance between the plates (meters)
-
-``````
+<p class="centered">
+where:<br>
+\(\epsilon_o\) = electric constant (\(8.854 \times 10^{-12}Fm^{-1}\))<br>
+\(\epsilon_r\) = dielectric constant of the material between the plates (no unit)<br>
+\(A\) = overlapping surface area of the parallel plates (meters squared)<br>
+\(d\) = distance between the plates (meters)<br>
+</p>
 
 ## Concentric Cylinder Capacitance
 
@@ -624,15 +658,15 @@ where:
 
 The capacitance of two concentric cylinders as shown in the diagram above is:
 
-$$\frac{2 \pi \epsilon_o \epsilon_r}{\ln (\frac{b}{a})} L$$
+<div>$$\frac{2 \pi \epsilon_o \epsilon_r}{\ln (\frac{b}{a})} L$$</div>
 
-where:  
-\(a\) = radius of inner cylinder (meters)  
-\(b\) = radius of outer cylinder (meters)  
-\(L\) = length of both cylinders (meters)  
-and all other variables as previously mentioned
-
-``````
+<p class="centered">
+    where:<br>
+    \(a\) = radius of inner cylinder (meters)<br>
+    \(b\) = radius of outer cylinder (meters)<br>
+    \(L\) = length of both cylinders (meters)<br>
+    and all other variables as previously mentioned<br>
+</p>
 
 # Equivalent Series Resistance (ESR)
 
@@ -640,7 +674,15 @@ Ceramic SMD capacitors have very low ESRs. In fact, in certain applications, thi
 
 Electrolytic capacitors typically have a large ESR (there are special low-ESR types, but they still don't compare to ceramic caps).
 
-<table ><tbody ><tr >Capacitor TypeTypical ESR (at 1kHz)</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Capacitor Type</th>
+            <th>Typical ESR (at 1kHz)</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >Super-cap (1-100F)
 </td>
 <td >4-0.1Ω
@@ -648,15 +690,13 @@ Electrolytic capacitors typically have a large ESR (there are special low-ESR ty
 
 Since the ESR is proportional to the capacitor's plate area, for a similar capacitor designs, the ESR decreases with increasing capacitance.
 
-``````
-
 # Leakage Currents
 
-Leakage currents are present in all types of capacitor. Leakage current is the sum of electrical losses from energy required to build up the oxide layers, weaknesses in the dielectric, tunnel effects, and cross currents. They are typically increase proportionally to the capacitance of the capacitor. We can reduce the leakage current down to two main factors, the absorption current \( I_{abs} \), and the intrinisic leakage current \( I_{il} \).
+Leakage currents are present in all types of capacitor. Leakage current is the sum of electrical losses from energy required to build up the oxide layers, weaknesses in the dielectric, tunnel effects, and cross currents. They are typically increase proportionally to the capacitance of the capacitor. We can reduce the leakage current down to two main factors, the absorption current `\( I_{abs} \)`, and the intrinisic leakage current `\( I_{il} \)`.
 
-$$ I_{leakage} = I_{abs} + I_{il} $$
+<div>$$ I_{leakage} = I_{abs} + I_{il} $$</div>
 
-Absorption currents are due to quantum tunneling of electrons at the metal/ceramic barrier! Absorption currents, \( I_{abs} \) reduce with time and have weak temperature dependence, while intrinsic leakage currents \( I_{il} \) remain constant with time but exponentially increase with temperature.
+Absorption currents are due to quantum tunneling of electrons at the metal/ceramic barrier! Absorption currents, `\(I_{abs}\)` reduce with time and have weak temperature dependence, while intrinsic leakage currents `\(I_{il}\)` remain constant with time but exponentially increase with temperature.
 
 Desorption currents (depolarization) flow when the voltage on a capacitor is decreased (e.g. when it is shorted). These currents can actually recharge a previously discharged capacitor, sometimes up to dangerous voltages (people experimenting with coil/rail guns can have this problem)!
 
@@ -670,22 +710,26 @@ The leakage current through a capacitor can be modeled with a resistor in parall
 
 For electrolytics, the maximum leakage current is usually specified in terms of the capacitance.
 
-$$ I_{leakage} = xC $$
+<div>$$ I_{leakage} = xC $$</div>
 
-where:  
-\( I_{leakage} \) = the leakage current, usually specified in units of mA (this is up to the manufacturer and their choice of constant)  
-\( x \) = a fixed constant (e.g. 0.5)  
-\( C \) = the capacitance of the capacitor, and again, choice of units is up to the manufacturer
+<p class="centered">
+    where:<br>
+    \( I_{leakage} \) = the leakage current, usually specified in units of mA (this is up to the manufacturer and their choice of constant)<br>
+    \( x \) = a fixed constant (e.g. 0.5)<br>
+    \( C \) = the capacitance of the capacitor, and again, choice of units is up to the manufacturer<br>
+</p>
 
 Note how when specified this way, the current is **completely independent on voltage**. The leakage current for electrolytic super-caps in the range of 1 to 100F is typically 0.5C (mA), where C is the rated capacitance in Farads.
 
 The leakage current for MLCC capacitors is specified by an **insulation resistance**. To work out the leakage current, you just use Ohm's law as follows:
 
-$$ I_{leakage} = \frac{V}{R_{insulation}} $$
+<div>$$ I_{leakage} = \frac{V}{R_{insulation}} $$</div>
 
-where:  
-\( V \) = the voltage across the capacitor  
-\( R_{insulation} \) = the insulation resistance as specified on the capacitors datasheet
+<p class="centered">
+    where:<br>
+    \( V \) = the voltage across the capacitor<br>
+    \( R_{insulation} \) = the insulation resistance as specified on the capacitors datasheet<br>
+</p>
 
 Note how when leakage current is specified this way, **it is dependent on the voltage**.
 
@@ -699,8 +743,6 @@ Leakage current becomes an important parameter to consider when designing long-l
 
 Because of the small current's/total energy involved, you can't really measure the leakage current of a capacitor with standard multimeter. One way is to use a dedicated high-resistance meter, commonly called a megaohm meter or insulation resistance tester.
 
-``````
-
 # Voltage Dependence
 
 Some types of capacitors have a capacitance which changes depending on the applied voltage (well, technically, all do, but I'm talking about a significant/useful change).
@@ -713,15 +755,11 @@ The bad news is that this also adversely affects the capacitance in situations w
 
 This can upset op-amp gains, frequency cut-off points of filters, and the time constant of RC oscillators.
 
-``````
-
 # Decoupling
 
 Capacitors are commonly used for decoupling, as this following schematic shows (taken from the Raspberry-Pi PCB design).
 
 {{< figure src="/images/2011/09/decoupling-caps-schematic-example-on-r-pi-pcb.png" width="396px" caption="Example usage of decoupling capacitors for IC's. Schematic is from the Raspberry-Pi PCB. Image from http://www.raspberrypi.org/wp-content/uploads/2012/04/Raspberry-Pi-Schematics-R1.0.pdf."  >}}
-
-``````
 
 # Mains Line Filters
 
@@ -731,7 +769,15 @@ Capacitors rated with an X are deemed suitable for connecting between two main v
 
 They are also given a number to represent there impulse test rating, as shown in the table below.
 
-<table style="width: 300px;" ><tbody ><tr >Classification:Impulse Voltage (V):</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Classification</th>
+            <th>Impulse Voltage (V)</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >X1
 </td>
 <td >4,000
@@ -749,30 +795,26 @@ They are also given a number to represent there impulse test rating, as shown in
 <td >5,000
 </td></tr></tbody></table>
 
-``````
-
 # Dielectric Soakage
 
 A weird and little known about property of capacitors is their ability to seemingly 'create' energy and charge themselves up when left in certain conditions. This can be particularly dangerous with high voltage capacitors such as the old oil-filled paper capacitors, which would charge themselves up and then give anyone a shock who was unfortunate enough to get too close.
 
 It's called dielectric soakage because it's essentially a property of the dielectric which retains some of the charge if a capacitor is discharged quickly and then left open circuit. The voltage climb can be up to 10% of the original voltage on the capacitor.
 
-``````
-
 # Charge Pumps (Bootstrapping)
 
 A charge pump (also commonly called **bootstrapping**), is a way of using capacitors to generate a voltage higher than the supply. A typical charge-pump circuit has two capacitors and two diodes, and requires an oscillating input.
 
-``````
-
 It is commonly used as a simple way of driving the gate of a n-doped silicon switch (such as a N-Channel MOSFET or IGBT) when being used as a high side driver. Although using a P-Channel as the high-side driver would not require this voltage step-up, N-Channel MOSFET's are preferred in most cases because of their lower on-resistance and price. When using a capacitor to charge the gate of a N-Channel MOSFET, you must make sure the capacitor stores enough charge to transfer to the MOSFET gate while raising the voltage enough drive the on-resistance as low as you need. A general rule of thumb is that the capacitor should store 100x more charge than the gate charge as stated on the MOSFET's datasheet. The charge stored in a capacitor can be calculated using the following equation:
 
-$$Q = CV$$
+<div>$$Q = CV$$</div>
 
-where:  
-\(Q\) is the charge (Coulombs)  
-\(C\) the capacitance (Farads)  
-\(V\) the voltage (Volts)
+<p class="centered">
+    where:<br>
+    \(Q\) is the charge (Coulombs)<br>
+    \(C\) the capacitance (Farads)<br>
+    \(V\) the voltage (Volts)<br>
+</p>
 
 However, if you really want to optimise the charge pump capacitor, this rule does not suffice. The Fairchild Semiconductor Application Note, ["Design And Application Guide Of Bootstrap Circuit For High-Voltage Gate-Drive IC"](http://www.fairchildsemi.com/an/AN/AN-6076.pdf) has an indepth analysis of the bootstrap capacitor and surrounding circuit.
 
@@ -780,18 +822,25 @@ The following circuit shows a charge pump circuit used to generate -5V from a +5
 
 {{< figure src="/images/2011/09/charge-pump-based-negative-voltage-gen-schematic.png" width="1157px" caption="This schematic shows a charge pump circuit used to generate -5V from a +5V PWM signal."  >}}
 
-``````
-
 # Capacitor Packages
 
 Through-hole capacitors can usually be used in a surface mount fashion by lying the caps down on the board, bending the legs 90 degrees, and soldering them onto pads on the PCB.
 
 Ceramic chip capacitors usually have a three letter code which describes the max cap temp, min cap temp, and change over temperature. The following table shows what the three letter code means for "Class II" and "Class III" ceramics. This basically covers all ceramic caps except the NP0/COG capacitors which belong to Class I.
 
-<table style="width: 600px;" ><tbody ><tr >1st Character:  
-Low Temp2nd Character:  
-High Temp3rd Character:  
-Change Over Temp (max)</tr><tr >CharTemp (°C)NumTemp (°C)CharChange (%)</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>1st Character</th>
+            <th>Low Temp</th>
+            <th>2nd Character</th>
+            <th>High Temp</th>
+            <th>3rd Character</th>
+            <th>Change Over Temp (max)</th>
+        </tr>
+        <tr >CharTemp (°C)NumTemp (°C)CharChange (%)</tr>
+<tbody >
+<tr>
 <td style="text-align: center;" >Z
 </td>
 <td style="text-align: center;" >+10
@@ -969,7 +1018,7 @@ This can be done with power supply set the rated voltage and a high-power (e.g. 
 
 # Energy Loss While Charging A Capacitor
 
-An interesting phenomenon occurs when charging a capacitor from a fixed voltage source (e.g. battery or power supply). Assuming a real-world world situation, there is always going to be some resistance between the voltage source and capacitor. **Exactly the same amount of energy** is dissipated through this resistance as is stored in the capacitor when charging it up to the voltage source voltage \(V_{cc}\). It **doesn't matter how large or small** this resistance is! The resistance could just be the ESR of the capacitor, or it could be a dedicated resistor placed in series to limit the inrush current.
+An interesting phenomenon occurs when charging a capacitor from a fixed voltage source (e.g. battery or power supply). Assuming a real-world world situation, there is always going to be some resistance between the voltage source and capacitor. **Exactly the same amount of energy** is dissipated through this resistance as is stored in the capacitor when charging it up to the voltage source voltage `\(V_{cc}\)`. It **doesn't matter how large or small** this resistance is! The resistance could just be the ESR of the capacitor, or it could be a dedicated resistor placed in series to limit the inrush current.
 
 Here is an example schematic:
 
@@ -983,41 +1032,41 @@ Let's start from the basics.
 
 We know total energy in the circuit is the integral of power over time:
 
-$$ E_{in} = \int{P_{in} \cdot dt} $$ 
+<div>$$ E_{in} = \int{P_{in} \cdot dt} $$</div>
 
-Using the basic equation for electrical power (\( P = VI \) we can write:
+Using the basic equation for electrical power `\( P = VI \)` we can write:
 
-$$ P_{in} = V_{in} \cdot I_{in} $$
+<div>$$ P_{in} = V_{in} \cdot I_{in} $$</div>
 
 Substituting the power equation into integral equation, we get an equation for the energy in terms of the voltage and current:
 
-$$ E_{in} = \int{  V_{in} I_{in} \cdot dt } $$
+<div>$$ E_{in} = \int{  V_{in} I_{in} \cdot dt } $$</div>
 
-If we assume a fixed DC voltage source, \( V_{in} \), that does not vary over time, we can bring it outside the integral:
+If we assume a fixed DC voltage source, `\( V_{in} \)`, that does not vary over time, we can bring it outside the integral:
 
-$$ E_{in} = V_{in} \int{  I_{in} \cdot dt } $$
+<div>$$ E_{in} = V_{in} \int{  I_{in} \cdot dt } $$</div>
 
-Now using the equation for charge in it's integral form \( Q = \int{I \cdot dt} \) we can write:
+Now using the equation for charge in it's integral form `\( Q = \int{I \cdot dt} \)` we can write:
 
-$$ Q_{in} = \int{I_{in} \cdot dt} $$
+<div>$$ Q_{in} = \int{I_{in} \cdot dt} $$</div>
 
 We can substitute the charge equation into for energy equation:
 
-$$ E_{in} = V_{in} Q_{in} $$
+<div>$$ E_{in} = V_{in} Q_{in} $$</div>
 
-Assuming the cap was fully charged to \( V_{in} \) (o.k., this would take an infinite amount of time, but lets just be realistic and say 99.9% is fully charged), and using the basic formula for the energy in a capacitor (\( E = \frac{1}{2}CV^2 \)), we can write:
+Assuming the cap was fully charged to `\( V_{in} \)` (o.k., this would take an infinite amount of time, but lets just be realistic and say 99.9% is fully charged), and using the basic formula for the energy in a capacitor (`\( E = \frac{1}{2}CV^2 \)`), we can write:
 
-$$ E_{cap} = \frac{1}{2}CV_{in}^2 $$
+<div>$$ E_{cap} = \frac{1}{2}CV_{in}^2 $$</div>
 
-Now, all of the input charge \( Q_{in} \) referred to in charge equation got to the capacitor since the resistor and capacitor share the same current. The equation for the energy in the capacitor can be re-written in terms of charge (using \( Q=CV \)):
+Now, all of the input charge `\(Q_{in}\)` referred to in charge equation got to the capacitor since the resistor and capacitor share the same current. The equation for the energy in the capacitor can be re-written in terms of charge (using `\(Q=CV\)`):
 
-$$ E_{cap} = \frac{1}{2} V_{in} Q_{in} $$
+<div>$$ E_{cap} = \frac{1}{2} V_{in} Q_{in} $$</div>
 
 We now have an equation for the energy given out by the voltage source, and an equation for the amount of energy given to the capacitor. Subtracting the two will give the amount of energy lost to the resistance during charging:
 
-$$ E_{res} = E_{in} - E_{cap} $$  
-$$ = V_{in} Q_{in} - \frac{1}{2} V_{in} Q_{in} $$  
-$$ = \frac{1}{2} V_{in} Q_{in} $$
+<div>$$ E_{res} = E_{in} - E_{cap} $$</div>
+<div>$$ = V_{in} Q_{in} - \frac{1}{2} V_{in} Q_{in} $$</div>
+<div>$$ = \frac{1}{2} V_{in} Q_{in} $$</div>
 
 Woah, hang on a moment, this is the same as the energy in the capacitor!
 
