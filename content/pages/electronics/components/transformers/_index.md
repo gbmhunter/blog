@@ -7,39 +7,37 @@ type: page
 url: /electronics/components/transformers
 ---
 
-[mathjax]
-
 # Transformation Ratio
 
 For an **ideal transformer**, the voltage of the output (secondary) compared to the input (primary) is directly related to the ratio between the number of turns on the output compared to the input.
 
-$$ \frac{V_P}{N_P} = \frac{V_S}{N_S} $$
+<div>$$ \frac{V_P}{N_P} = \frac{V_S}{N_S} $$</div>
 
 # Power Equivalence
 
-Remember, energy cannot be created nor destroyed. Therefore, for an **ideal transformer**, with no losses, the output (secondary) power \( P_S \) must be equal to the input (primary) power \( P_P \).
+Remember, energy cannot be created nor destroyed. Therefore, for an **ideal transformer**, with no losses, the output (secondary) power `\(P_S\)` must be equal to the input (primary) power `\(P_P\)`.
 
-$$ P_P = P_S $$
+<div>$$ P_P = P_S $$</div>
 
-$$ V_P \cdot I_P = V_S \cdot I_S $$
+<div>$$ V_P \cdot I_P = V_S \cdot I_S $$</div>
 
 Substituting in the transformation ratio above gives:
 
-$$ I_P \cdot N_P = I_S \cdot N_S $$
+<div>$$ I_P \cdot N_P = I_S \cdot N_S $$</div>
 
 # Mutual Inductance
 
 In general, the number of mutual inductances that a transformer with N windings has is:
 
-$$\frac{N \cdot (N-1)}{2}$$
+<div>$$\frac{N \cdot (N-1)}{2}$$</div>
 
-Notice that the number of mutual inductances grows with \(N^2\).
+Notice that the number of mutual inductances grows with `\(N^2\)`.
 
 # Coupling Coefficient
 
 The coupling coefficient is usually denoted K. It is used extensively in SPICE simulations ([see Linear Technology: Using Transformers in LTspice/SwitcherCAD III by Mike Engelhardt](http://cds.linear.com/docs/en/lt-journal/LTMag-V16N3-23-LTspice_Transformers-MikeEngelhardt.pdf)). The leakage inductance can be calculated from the coupling coefficient using the following formula:
 
-$$L_{leakage} = L_{wind} \cdot (1 - K^2)$$
+<div>$$L_{leakage} = L_{wind} \cdot (1 - K^2)$$</div>
 
 # Non-Ideal Transformer Losses
 
@@ -51,9 +49,9 @@ In large power transformers, with the appropriate design to reduce the non-ideal
 
 These losses occur due to the windings of the transformer having a non-zero resistance. The power lost by resistive losses is:
 
-$$ P = I^2 \cdot R $$
+<div>$$ P = I^2 \cdot R $$</div>
 
-for both the primary and secondary. For this reason they are also called \( I^2 R \) losses.
+for both the primary and secondary. For this reason they are also called `\(I^2 R\)` losses.
 
 ## Hysteresis Losses
 

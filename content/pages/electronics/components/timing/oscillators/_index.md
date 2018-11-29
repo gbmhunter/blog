@@ -7,15 +7,13 @@ type: page
 url: /electronics/components/timing/oscillators
 ---
 
-[mathjax]
-
 # Overview
 
 This site uses the word _oscillator_ to represent a component with an **self-contained** oscillating feature that has power, ground, and signal out pins. This site uses the word _crystal_ to represent an component which contains a oscillating element (in the form of a crystal), which requires an **external oscillation circuit** before it useful.
 
 # Designators
 
-A common designator prefix to use for oscillators is \(Y\) (e.g. \(Y1\)). I do not recommend using the prefix \(XC\) as this should be reserved for crystal oscillators.
+A common designator prefix to use for oscillators is `\(Y\)` (e.g. `\(Y1\)`). I do not recommend using the prefix `\(XC\)` as this should be reserved for crystal oscillators.
 
 # Important Parameters
 
@@ -25,7 +23,7 @@ Phase noise is a way of describing the stability of the crystal in the frequency
 
 ## Start-Up Time
 
-Symbol: \(T_{SU}\)
+Symbol: `\(T_{SU}\)`
 
 The start-up time for most oscillators is within the range 2-20ms. This start-up time can be important in low-power designs when the start/stop time of the crystal results in wasted energy.
 

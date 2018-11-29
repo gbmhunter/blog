@@ -17,4 +17,8 @@ Magnetic proximity sensors usually come in 2 or 3-pin variants. They come in no
 
 The two pins variants only come with a V+/SIG and GND pin. The supply voltage on the V+/SIG pin only applies when the device is open, when it is closed, this voltage drops down to the residual voltage.
 
-# Examples  * ISL29028 - Intersil Low Power Ambient Light and Proximity Sensor with Intelligent Interrupt and Sleep Modes  * Si1120 - SiLabs  * Si114x - Silabs (new product as of 2011 with 2-axis detection and longer range)
+# Examples
+
+* ISL29028 - Intersil Low Power Ambient Light and Proximity Sensor with Intelligent Interrupt and Sleep Modes
+* Si1120 - SiLabs
+* Si114x - Silabs (new product as of 2011 with 2-axis detection and longer range)

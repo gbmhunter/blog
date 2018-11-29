@@ -11,11 +11,11 @@ url: /electronics/components/power-regulators/boost-converters
 
 # Overview
 
-Boost converters use a switching element, inductor, diode, and capacitor to convert an input voltage \( V_{in} \) into a higher or equal output voltage \( V_{out} \).
+Boost converters use a switching element, inductor, diode, and capacitor to convert an input voltage `\(V_{in}\)` into a higher or equal output voltage `\(V_{out}\)`.
 
 {{< figure src="/images/2014/06/smps-boost-converter-simple.png" width="599px" caption="The basic components of a boost converter."  >}}
 
-In a real boost converter, the switch \( SW \) is usually realised 
+In a real boost converter, the switch `\( SW \)` is usually realised 
 
 # Modes Of Operation
 
@@ -27,7 +27,7 @@ These are explained in the following sub-sections.
 
 For the same output current, the peak current through the inductor is lower when the boost converter is operating in CCM, compared on any other mode of operation.
 
-CCM encounters turn-on losses through the switch. These can be exacerbated by the diodes reverse recover charge (\( Q_{rr} \)). Ultra-fast diodes with low (\(Q_{rr}\)) are therefore recommended.
+CCM encounters turn-on losses through the switch. These can be exacerbated by the diodes reverse recover charge (`\( Q_{rr} \)`). Ultra-fast diodes with low (`\(Q_{rr}\)`) are therefore recommended.
 
 ## Discontinuous Conduction Mode (DCM)
 
@@ -51,11 +51,15 @@ When the converter enters sleep, a number of power consuming components of the b
 
 This assumes you already know:
 
-<table style="width: 80%;" class=" aligncenter" ><tbody ><tr >
-<td >**Symbol**
-</td>
-<td >**Description**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr>
 <td > \( V_{in} \)
 </td>
 <td >The input voltage.
@@ -81,7 +85,7 @@ This assumes you already know:
 
 The duty cycle for a boost converter is given by:
 
-$$ D = 1 - \eta \cdot \frac{V_{IN}}{V_{OUT}} $$
+<div>$$ D = 1 - \eta \cdot \frac{V_{IN}}{V_{OUT}} $$</div>
 
 As you can see, the duty cycle is dependent only on the ratio between the input and output voltages. This has to be one of the simplest boost converter equations. This equation ignores the specific voltage drops across the switching element and rectifier, but rather lumps them together into the efficiency term.
 
@@ -89,15 +93,15 @@ As you can see, the duty cycle is dependent only on the ratio between the input 
 
 The inductance can be determined using:
 
-$$ L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}) \cdot (\frac{\eta I_L}{\Delta I_L}) $$
+<div>$$ L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}) \cdot (\frac{\eta I_L}{\Delta I_L}) $$</div>
 
-You don't know \( I_L \) or \( \Delta I_L \) yet, but the trick is here to assume a maximum inductor ripple current \( \Delta I_L \) as a percentage of the average inductor current, \( I_L \). A rule-of-thumb is to assume a maximum ripple current of 35% (assuming it is operating in CCM mode). Thus,
+You don't know `\( I_L \)` or `\( \Delta I_L \)` yet, but the trick is here to assume a maximum inductor ripple current `\( \Delta I_L \)` as a percentage of the average inductor current, `\( I_L \)`. A rule-of-thumb is to assume a maximum ripple current of 35% (assuming it is operating in CCM mode). Thus,
 
-$$ \frac{\Delta I_L}{I_L} = 0.35$$
+<div>$$ \frac{\Delta I_L}{I_L} = 0.35$$</div>
 
 Now the equation for the inductance becomes:
 
-$$ L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}) \cdot (\frac{\eta }{0.35}) $$
+<div>$$ L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}) \cdot (\frac{\eta }{0.35}) $$</div>
 
 which can be solved as we know all of the variables.
 
@@ -105,7 +109,7 @@ which can be solved as we know all of the variables.
 
 The maximum output current is given by:
 
-$$ I_{OUT(max)} = (I_{SW(max)} - \frac{\Delta I_L}{2})(1 - D) $$
+<div>$$ I_{OUT(max)} = (I_{SW(max)} - \frac{\Delta I_L}{2})(1 - D) $$</div>
 
 ## Diode Selection
 
@@ -114,8 +118,6 @@ The maximum reverse voltage of the diode must be at least equal to the output vo
 ## PCB Routing
 
 The same rules apply for routing boost converters as with any SMPS. See the PCB Routing section on the SMPS page for more information.
-
-#  
 
 # Light Load Instabilities
 

@@ -31,13 +31,16 @@ The resistance is of potentiometers is easy to read, a usually indicated by a th
 
 There are two types of taper codes (confusing!).
 
-<table style="width: 500px;" border="0" ><tbody ><tr >
-<td >**Taper**
-</td>
-<td >**Old Code**
-</td>
-<td >**New Code**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Taper</th>
+            <th>Old Code</th>
+            <th>New Code</th>
+        </tr>
+    </thead>
+<tbody>
+<tr>
 <td >Linear
 </td>
 <td >A

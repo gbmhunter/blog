@@ -7,34 +7,44 @@ type: page
 url: /electronics/components/power-regulators/linear-regulators
 ---
 
-[mathjax]
-
 # Overview
 
 Linear regulators are great when you want a cheap, low power voltage regulation solution. They can also be used on the output of a DC/DC converter to reduce the ripple (the ripple will be reduced by the high PSRR).
 
 {{< figure src="/images/2014/11/lt1086-3.3-linear-regulator-basic-schematic.png" width="1080px" caption="The basic schematic for the LT1086 3.3V linear regulator. Image from http://www.linear.com/."  >}}
 
-# Important Parameters  * Maximum current (A)  * Output voltage (or voltage range if adjustable, \(V_{out}\))  * Input voltage range \(V_{in}\)  * Protection circuitry (current limit, input polarity reversal, thermal limit)  * Junction-to-ambient thermal resistance of linear reg package (\(T_{j-a}\), °C/W)  * Power-supply rejection ratio (\(PSRR\), dB)  * Maximum operating temperature
+# Important Parameters
+
+* Maximum current (A)
+* Output voltage (or voltage range if adjustable, `\(V_{out}\)`)
+* Input voltage range `\(V_{in}\)`
+* Protection circuitry (current limit, input polarity reversal, thermal limit)
+* Junction-to-ambient thermal resistance of linear reg package (`\(T_{j-a}\)`, °C/W)
+* Power-supply rejection ratio (`\(PSRR\)`, dB)
+* Maximum operating temperature
 
 # Thermal Considerations
 
 The power lost as heat through a linear regulator is:
 
-$$ P_t = (V_{out} - V_{in})I$$
+<div>$$ P_t = (V_{out} - V_{in})I$$</div>
 
-where:  
-\( V_{out} \) is the output voltage  
-\( V_{in} \) is the input voltage  
-\( I \) is the current through the regulator.
+<p class="centered">
+    where:<br>
+    \( V_{out} \) is the output voltage<br>
+    \( V_{in} \) is the input voltage<br>
+    \( I \) is the current through the regulator.<br>
+</p>
 
 The regulator has to be able to dissipate this power without exceeding the maximum operating temperature. The temperature that the linear regulator will operate at is given by:
 
-$$ T_j = P_{t}T_{j-a} + T_a$$
+<div>$$ T_j = P_{t}T_{j-a} + T_a$$</div>
 
-where:  
-\( T_{j-a} \) is the junction-to-ambient thermal resistance  
-\( T_a \) is the ambient temperature
+<p class="centered">
+    where:<br>
+    \( T_{j-a} \) is the junction-to-ambient thermal resistance<br>
+    \( T_a \) is the ambient temperature<br>
+</p>
 
 # Protection
 
@@ -46,7 +56,7 @@ Variable output-voltage linear regulators usually have a feedback pin for settin
 
 Adding capacitance here helps improve the AC characteristics of the linear regulator, which includes:  * Better transient response to load changes  * Increases the PSRR (power supply rejection ratio)  * Decreases the noise added to the line by the linear regulator
 
-A typical value of a bypass capacitor is [latex]10nF[/latex].
+A typical value of a bypass capacitor is `\(10nF\)`.
 
 # DDR Termination Regulators
 

@@ -7,8 +7,6 @@ type: page
 url: /electronics/components/power-regulators
 ---
 
-[latexpage]
-
 # Overview
 
 Power regulators aim to convert an input DC voltage into a DC output voltage. There are many different ways of doing this, an each design has its benefits and advantages. The important parameters of DC/DC converters are efficiency, output ripple, complexity, and maximum output current.
@@ -19,7 +17,15 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 
 # Terminology
 
-<table ><tbody ><tr >TermDescription</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Term</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr>
 <td >Boost converter
 </td>
 <td >A DC/DC converter topology which converts an input voltage into a **higher** output voltage.
@@ -63,12 +69,33 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 
 # Topology Summary
 
-<table border="0" ><tbody ><tr >TopologyAdvantagesDisadvantagesCommentsImage</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Topology</th>
+            <th>Advantages</th>
+            <th>Disadvantages</th>
+            <th>Comments</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+<tbody>
+<tr>
 <td >Linear Voltage Regulator (LDO)
 </td>
-<td >  * Simple  * Cheap  * Very low output ripple  * Low EMI
+<td >
+<ul>
+    <li>Simple</li>
+    <li>Cheap</li>
+    <li>Very low output ripple</li>
+    <li>Low EMI</li>
+</ul>
 </td>
-<td >  * Inefficient  * Can only decrease the voltage
+<td>
+<ul>
+    <li>Inefficient</li>
+    <li>Can only decrease the voltage</li>
+</ul>
 </td>
 <td >Uses transistors to create a dynamically changing resistance to drop the voltage to the required level (hence linear). Dissipates the energy as heat, and therefore is very inefficient, and limited in power. Linear regulators have very low radiated EMI because they do not have a switching element. For the very same reason they also have very low output ripple, and high PSRR (power supply rejection ratio).
 </td>
@@ -76,9 +103,17 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 </td></tr><tr >
 <td >Buck Converter
 </td>
-<td >  * Very high efficiency (>90%)
+<td >
+<ul>
+<li>Very high efficiency (>90%)</li>
+</ul>
 </td>
-<td >  * Can only decrease the voltage  * Medium complexity  * High EMI
+<td >
+<ul>
+<li>Can only decrease the voltage</li>
+<li>Medium complexity</li>
+<li>High EMI</li>
+</ul>
 </td>
 <td >Uses an inductor, capacitor and switching element to reduce the input voltage. The alternative method to a buck converter for reducing the input voltage is a linear voltage regulator. Very high efficiencys in some cases due to the absense resistive power losses.
 </td>
@@ -86,9 +121,17 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 </td></tr><tr >
 <td >Boost Converter
 </td>
-<td >  * High efficiency (>80%)
+<td >
+<ul>
+<li>High efficiency (>80%)</li>
+</ul>
 </td>
-<td >  * Can only increase the voltage  * Medium complexity  * High EMI
+<td >
+<ul>
+<li>Can only increase the voltage</li>
+<li>Medium complexity</li>
+<li>High EMI</li>
+</ul>
 </td>
 <td >Uses an inductor, capacitor and switching element to increase the input voltage.
 </td>
@@ -96,9 +139,18 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 </td></tr><tr >
 <td >Buck-Boost
 </td>
-<td >  * Most flexible in terms of voltage, can either decrease or increase input voltage.
+<td >
+<ul>
+<li>Most flexible in terms of voltage, can either decrease or increase input voltage.</li>
+</ul>
 </td>
-<td >  * Slightly lower efficiency than a dedicated boost or buck converter  * Input voltage range extremes are usually less than a dedicated buck or boost converter.  * High EMI  * Larger part count than a dedicated buck or boost converter.
+<td >
+<ul>
+<li>Slightly lower efficiency than a dedicated boost or buck converter</li>
+<li>Input voltage range extremes are usually less than a dedicated buck or boost converter.</li>
+<li>High EMI</li>
+<li>Larger part count than a dedicated buck or boost converter.</li>
+</ul>
 </td>
 <td >This is basically a combination buck and boost converter in one, and so can either increase or decrease the input voltage.
 </td>
@@ -106,9 +158,18 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 </td></tr><tr >
 <td >Charge Pump
 </td>
-<td >  * Very high efficiency (99%)  * Simple, requires minimal external componentry
+<td >
+<ul>
+<li>Very high efficiency (99%)</li>
+<li>Simple, requires minimal external componentry</li>
+</ul>
 </td>
-<td >  * Low output current  * High output resistance  * Fixed output voltages
+<td >
+<ul>
+<li>Low output current</li>
+<li>High output resistance</li>
+<li>Fixed output voltages</li>
+</ul>
 </td>
 <td >Uses capacitors, diodes, and a oscillating switch to move charge from one capacitor to another, and in the process, increasing the voltage on the second cap. Normally the voltage is doubled, and multiple elements can be connected together to create larger voltage increases.
 </td>
@@ -116,9 +177,17 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 </td></tr><tr >
 <td > Joule Thief
 </td>
-<td >  * Simple  * Moderately efficient  * Good at extracting all the energy from a power source.
+<td >
+<ul>
+    <li>Simple</li>
+    <li>Moderately efficient</li>
+    <li>Good at extracting all the energy from a power source.</li>
+</ul>
 </td>
-<td >  * Low power
+<td >
+<ul>
+    <li>Low power</li>
+</ul>
 </td>
 <td > Used in low power and cheap applications, e.g. powering an LED from a 1.5V battery.
 </td>
@@ -127,7 +196,17 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 
 # DC/DC Converters And Controllers
 
-{{< figure src="/images/electronics-misc/recom-acdc-converter.jpg" caption="A Recom AC/DC converter module that can take 100-240VAC as it's input and outputs 12V at up to 83mA."  width="200px" >}} DC/DC converters and controllers are IC's which contain all of the logic and most of the passive componentry that makes up a switching power converter. When the industry talks about a DC/DC converter, they are talking about a chip which has an integrated switch (usually a [MOSFET](http://blog.mbedded.ninja/electronics/components/mosfets)). When they talk about a DC/DC controller, they are talking about a chip which requires an external switch. Most DC/DC converters and controllers require at least an external input capacitor, switching inductor, and output capacitor. Some however, like Linear Technology uModule range, have the inductor/capacitors built in also. These tend to be rather expensive! Two important patents in the history of DC/DC converters are patent [US3040271](http://www.google.com/patents/US3040271) and [US4097773](http://www.google.com/patents/US4097773). DC/DC converters are also used to charge batteries from solar panels. In this case, they are operated in an unusual fashion, because you want to regulate the input voltage to what provides maximum power extraction from the solar panel, rather than regulating the output voltage. Sometimes AC/DC power supplies are called LPS, which is an acronym for "**limited power supply**". This term is related to the IEC60950-1 standard. {{< figure src="/images/electronics-misc/ul60950-limited-power-circuits-graph.png" caption="A graph of voltage vs. current for a LPS (limited power supply)."  width="400px" >}}
+{{< figure src="/images/electronics-misc/recom-acdc-converter.jpg" caption="A Recom AC/DC converter module that can take 100-240VAC as it's input and outputs 12V at up to 83mA."  width="200px" >}}
+
+DC/DC converters and controllers are IC's which contain all of the logic and most of the passive componentry that makes up a switching power converter. When the industry talks about a DC/DC converter, they are talking about a chip which has an integrated switch (usually a [MOSFET](http://blog.mbedded.ninja/electronics/components/mosfets)). When they talk about a DC/DC controller, they are talking about a chip which requires an external switch.
+
+Most DC/DC converters and controllers require at least an external input capacitor, switching inductor, and output capacitor. Some however, like Linear Technology uModule range, have the inductor/capacitors built in also. These tend to be rather expensive!
+
+Two important patents in the history of DC/DC converters are patent [US3040271](http://www.google.com/patents/US3040271) and [US4097773](http://www.google.com/patents/US4097773).
+
+DC/DC converters are also used to charge batteries from solar panels. In this case, they are operated in an unusual fashion, because you want to regulate the input voltage to what provides maximum power extraction from the solar panel, rather than regulating the output voltage. Sometimes AC/DC power supplies are called LPS, which is an acronym for "**limited power supply**". This term is related to the IEC60950-1 standard.
+
+{{< figure src="/images/electronics-misc/ul60950-limited-power-circuits-graph.png" caption="A graph of voltage vs. current for a LPS (limited power supply)."  width="400px" >}}
 
 ## Efficiencies
 
@@ -145,13 +224,9 @@ Although strictly not a DC/DC converter, you can purchase ready-to-go PCB-mounte
 
 You can balance current-sharing between two similar power supplies by adding in-line resistance to each of power supply outputs, before connecting them together. Normally power resistors are required (>= 5W), and resistances between 1mΩ and 1Ω are used. Basically, you want to choose the largest resistance that at maximum current won't overheat, and won't drop to much voltage so that the load does not operate correctly. I have used this technique successfully for the [Luxcity UV Tonic project](http://blog.mbedded.ninja/electronics/projects/luxcity-uv-tonic-control-system) to current-share between two computer power supplies that were driving the 64 solenoids.
 
-#  
-
 # Buck-Boost Converter
 
 A buck-boost power converter is a power supply which can produce an output voltage which can be both higher or lower than the input voltage. A buck-boost converter is similar to a SEPIC converter. Buck-boosts are not used unless an output voltage which could be both lower and higher than the input voltage is specifically required, as usually a sole buck or boost converter is cheaper, has a lower part count, and is more efficient. Maxim claims that a boost with linear regulator instead of a buck circuit can out perform a buck/boost in certain applications.
-
-#  
 
 # Joule Thiefs
 

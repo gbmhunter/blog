@@ -7,8 +7,6 @@ type: page
 url: /electronics/components/sensors/humidity-sensors
 ---
 
-[mathjax]
-
 # Types
 
 Humidity sensors can either contain just the humidity sensing component (which means they usually just have two leads), or they may also contain signal processing circuits. The ones which also contain circuitry have an analogue (usually 3 pin) or digital output (can have many pins, 8 is a common number).
@@ -33,28 +31,31 @@ The _dew point_ is the point at which the atmosphere has to be **cooled down** t
 
 The Magnus equation is an approximation to calculate the dew point from the actual air temperature and relative humidity. It is a useful equation to use when you have a sensor IC which measures both temperature and relative humidity.
 
-First we find an intermediary value called gamma (\(\gamma\)):
+First we find an intermediary value called gamma (`\(\gamma\)`):
 
-$$ \gamma(T, RH) = ln(\frac{RH}{100}) + \frac{bT}{c + T} $$
+<div>$$ \gamma(T, RH) = ln(\frac{RH}{100}) + \frac{bT}{c + T} $$</div>
 
-where:  
-\(RH\) = relative humidity of the air (as a percentage from 0-100%)  
-\(T\) = temperature of air, in degrees Celsius  
-\(b\) = constant  
-\(c\) = constant
+<p class="centered">
+    where:<br>
+    \(RH\) = relative humidity of the air (as a percentage from 0-100%)<br>
+    \(T\) = temperature of air, in degrees Celsius<br>
+    \(b\) = constant<br>
+    \(c\) = constant<br>
+</p>
 
-\(\gamma\) can then be substituted into the following equation to calculate the dew point temperature \(T_{dp}\) (in degrees Celsius):
+`\(\gamma\)` can then be substituted into the following equation to calculate the dew point temperature `\(T_{dp}\)` (in degrees Celsius):
 
-$$ T_{dp} = \frac{c\gamma(T, RH)}{b - \gamma(T, RH)} $$
+<div>$$ T_{dp} = \frac{c\gamma(T, RH)}{b - \gamma(T, RH)} $$</div>
 
-The values of the constants \(a\), \(b\) and \(c\) can vary depending on the data set and method used to calculate them (this is an empirical formula). Common values for them are:
+The values of the constants `\(a\)`, `\(b\)` and `\(c\)` can vary depending on the data set and method used to calculate them (this is an empirical formula). Common values for them are:
 
-\(a = 6.112millibar\)  
-\(b = 17.67\)  
-\(c = 243.5^{\circ}C\)
+`\(a = 6.112millibar\)`
+`\(b = 17.67\)`
+`\(c = 243.5^{\circ}C\)`
 
 The following is a code example in C showing a function which converts temperature and relative humidity into a dew point, using the simple Magnus equation.
-    
+
+```c
     #include <math.h>
     
     //! @brief		The B constant for the Magnus equation to calculate the dew point.
@@ -81,6 +82,7 @@ The following is a code example in C showing a function which converts temperatu
     	return dewPoint_DegC;
     	
     }
+```
 
 # Examples
 

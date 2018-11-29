@@ -7,15 +7,20 @@ type: page
 url: /electronics/components/transistors/mosfets
 ---
 
-[mathjax]
-
 # Overview
 
 A MOSFET is a three-pin active semi-conductor device, used frequently in electronics design. In the most basic sense, they can be thought of as a voltage controlled switch, that can turn things on and off.
 
 MOSFETs should not be confused with MODFETs (modulation-doped FETs) or MESFETs (metal-semiconductor FETs).
 
-# Uses  * Basic electric switches (turn a load on/off)  * Totem-pole drivers  * [H-bridges](http://blog.mbedded.ninja/electronics/circuit-design/h-bridges)  * 3-Phase Inverters  * Current regulating shunts (with feedback)  * Switch-mode PSUs
+# Uses
+
+* Basic electric switches (turn a load on/off)
+* Totem-pole drivers
+* [H-bridges](http://blog.mbedded.ninja/electronics/circuit-design/h-bridges)
+* 3-Phase Inverters
+* Current regulating shunts (with feedback)
+* Switch-mode PSUs
 
 # Schematic Symbol
 
@@ -29,7 +34,16 @@ Note that with all voltage parameters that mention two pins of a MOSFET (e.g. \(
 
 Sorted by alphabetical order, including subscripts.
 
-<table style="width: 600px; margin: 0 auto;" ><tbody ><tr >SymbolNameDescription</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr >
 <td >\(R_{DS(on)}\)
 </td>
 <td >On-state drain-source resistance.
@@ -57,9 +71,9 @@ Sorted by alphabetical order, including subscripts.
 
 # How To Use Them?
 
-The amount of current through the drain-source in controlled by a voltage on the gate. To make a basic switch, you can insert an N-Channel MOSFET between the load and ground. The source is connected to ground, and the drain to the negative terminal of the load. If the gate is given 0V (aka connected to ground), the switch will be off. If more than \(V_{GS(th)}\) is applied to the gate, the MOSFET will turn on (start conducting), and the load will get power.
+The amount of current through the drain-source in controlled by a voltage on the gate. To make a basic switch, you can insert an N-Channel MOSFET between the load and ground. The source is connected to ground, and the drain to the negative terminal of the load. If the gate is given 0V (aka connected to ground), the switch will be off. If more than `\(V_{GS(th)}\)` is applied to the gate, the MOSFET will turn on (start conducting), and the load will get power.
 
-P-channels work in a similar manner to N-channels, the difference being that a negative \(V_{GS}\) has to be applied to turn them off (that is, the voltage on the gate has to be less than that on the source). This results in them commonly being used for high-side switching, in where the source is connected to Vcc, the drain to the load, and the gate voltage pulled low to turn it on, or pulled-up to \(V_{cc}\) to turn it off.
+P-channels work in a similar manner to N-channels, the difference being that a negative `\(V_{GS}\)` has to be applied to turn them off (that is, the voltage on the gate has to be less than that on the source). This results in them commonly being used for high-side switching, in where the source is connected to Vcc, the drain to the load, and the gate voltage pulled low to turn it on, or pulled-up to `\(V_{cc}\)` to turn it off.
 
 In any case, do not leave the MOSFET gate floating. Since it has a very high impedance input, if the gate is not driven, then noise can change the voltage on the gate, and cause the MOSFET to conduct/have undefined behaviour.
 
@@ -85,19 +99,16 @@ This means that MOSFET's can share current with each other easily. The positive 
 
 # Dead-Time
 
-Dead-time is a technique which is commonly applied to MOSFET driving when the MOSFETs are in a H-Bridge (or half-bridge) configuration. Dead-time is the time between when one MOSFET(s) is turned off and another MOSFET(s) is turned on. It is used to prevent **shoot-through**, which is when two MOSFET's on the same leg of a H-bridge are on at the same time, creating a direct short between \(V_{cc}\) and \(GND\). Shoot-through occurs because of the turn-off delay time of a MOSFET.
-
-The following graph shows the actual gate-drive voltage of two switched MOSFET's with dead-time added (the dead-time has been made quite large in this graph for extra emphasis).
-
-[php]  
-include $_SERVER['DOCUMENT_ROOT'] . '/eng-graphs-js/graphs/mosfets/two-mosfet-gate-drives-with-deadtime.php';  
-[/php]
+Dead-time is a technique which is commonly applied to MOSFET driving when the MOSFETs are in a H-Bridge (or half-bridge) configuration. Dead-time is the time between when one MOSFET(s) is turned off and another MOSFET(s) is turned on. It is used to prevent **shoot-through**, which is when two MOSFET's on the same leg of a H-bridge are on at the same time, creating a direct short between `\(V_{cc}\)` and `\(GND\)`. Shoot-through occurs because of the turn-off delay time of a MOSFET.
 
 # Turn On/Turn Off Times
 
 In precise pulse-drive situations, it is desirable for the MOSFET to have similar turn-on and turn-off times. This is so the output pulse, although delayed by these parameters, has roughly the same width as the input pulse to the gate. This is imporatant in applications such as laser range-finding.
 
-# Industry Names  * FRFET - A trademarked name by Fairchild used to label some of their fast-recovery MOSFETs used in inverter and [BLDC controller](http://blog.mbedded.ninja/electronics/circuit-design/bldc-motor-control) design  * PROFET - A name (it stands for protected-FET) used by [Siemens](http://www.siemens.com) and now [Infineon](http://www.infineon.com) to describe power MOSFETs with built in logic circuitry for "smart switches", designed for controlling current and voltage into a load. An document about PROFETs from Infineon can be found [here](http://www.infineon.com/dgdl?folderId=db3a30431400ef68011421b54e2e0564&fileId=db3a304332d040720132f7151b4a7955).
+# Industry Names
+
+* FRFET - A trademarked name by Fairchild used to label some of their fast-recovery MOSFETs used in inverter and [BLDC controller](http://blog.mbedded.ninja/electronics/circuit-design/bldc-motor-control) design
+* PROFET - A name (it stands for protected-FET) used by [Siemens](http://www.siemens.com) and now [Infineon](http://www.infineon.com) to describe power MOSFETs with built in logic circuitry for "smart switches", designed for controlling current and voltage into a load. An document about PROFETs from Infineon can be found [here](http://www.infineon.com/dgdl?folderId=db3a30431400ef68011421b54e2e0564&fileId=db3a304332d040720132f7151b4a7955).
 
 # FinFET's
 
@@ -111,7 +122,10 @@ MOSFET's can be used for load switches, as shown on the [Load Switches page](htt
 
 # Isolated Gate Drives
 
-One problem with MOSFETS (well, with any switched semiconductor) is dealing with the gate drive when either:  * A) The source voltage is not constant or at a point where the gate-source voltage for turn-on is not easy to acheive  * B) The MOSFET is dealing with large voltages and so electrical isolation between the load and the drive circuitry is desired/required (normally by law)
+One problem with MOSFETS (well, with any switched semiconductor) is dealing with the gate drive when either:
+
+* A) The source voltage is not constant or at a point where the gate-source voltage for turn-on is not easy to acheive
+* B) The MOSFET is dealing with large voltages and so electrical isolation between the load and the drive circuitry is desired/required (normally by law)
 
 In these cases, the gate drive has to be **isolated**.
 
@@ -131,19 +145,21 @@ CMOS devices have PNPN structures. This forms a parasitic thyristor, which can c
 
 # The Body Effect (aka The Substrate Bias Effect)
 
-The body effect (also known as the Substrate Bias Effect of a MOSFET describes how the threshold voltage of a MOSFET, \( V_{TH} \) is affected by the voltage difference between the substrate and source, \(V_{SB}\). Because the source-to-body voltage can effect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_.
+The body effect (also known as the Substrate Bias Effect of a MOSFET describes how the threshold voltage of a MOSFET, `\(V_{TH}\)` is affected by the voltage difference between the substrate and source, `\(V_{SB}\)`. Because the source-to-body voltage can effect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_.
 
-Note that most discrete MOSFET's that you can buy internally tie the substrate to the source, meaning \(V_{SB} = 0V\). This prevents any body effect from occuring.
+Note that most discrete MOSFET's that you can buy internally tie the substrate to the source, meaning `\(V_{SB} = 0V\)`. This prevents any body effect from occuring.
 
 Do you want the huge equation that tells you how the threshold voltage changes? Here you go:
 
-$$ V_{TN} = V_{TO} + \gamma (\sqrt{|V_{SB} + 2\phi_F|} - \sqrt{|2\phi_F|}) $$
+<div>$$ V_{TN} = V_{TO} + \gamma (\sqrt{|V_{SB} + 2\phi_F|} - \sqrt{|2\phi_F|}) $$</div>
 
-where:  
-\(V_{TN}\) = the threshold voltage with substrate bias present [Volts]  
-\(V_{TO}\) = the threshold voltage for zero substrate bias [Volts]  
-\(\gamma\) = the body effect parameter  
-\(V_{SB}\) = the source to body (substrate) voltage [Volts]
+<p class="centered">
+    where:<br>
+    \(V_{TN}\) = the threshold voltage with substrate bias present [Volts]<br>
+    \(V_{TO}\) = the threshold voltage for zero substrate bias [Volts]<br>
+    \(\gamma\) = the body effect parameter<br>
+    \(V_{SB}\) = the source to body (substrate) voltage [Volts]<br>
+</p>
 
 # The Substrate (Body) Connection
 
@@ -173,7 +189,7 @@ Interestingly, the block diagram for the [NCP380 high-side load switch by On Sem
 
 # The Transconductance Of A MOSFET
 
-The transconductance of a MOSFET is the ratio of a change in output current (drain-source current, \(I_{DS}\)) due to the change in input voltage (gate-source voltage, \(V_{GS}\)) over an arbitrarily small range of operation.
+The transconductance of a MOSFET is the ratio of a change in output current (drain-source current, `\(I_{DS}\)`) due to the change in input voltage (gate-source voltage, `\(V_{GS}\)`) over an arbitrarily small range of operation.
 
 The range of operation has to be restricted because the transcondutance of a MOSFET changes depending on the operating point.
 

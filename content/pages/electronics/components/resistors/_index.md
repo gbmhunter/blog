@@ -7,8 +7,6 @@ type: page
 url: /electronics/components/resistors
 ---
 
-[mathjax]
-
 # Overview
 
 Resistors are a passive electronic component that restricts the flow of current when a given voltage is applied. They dissipate energy as heat. Given their simplicity and usefulness in circuits, they are the most commonly used electronic component.
@@ -21,7 +19,7 @@ For information on positive temperature coefficient resistors used as "fuses" in
 
 The most commonly-used resistor schematic symbols are shown below. I prefer the American-style resistor over the European (given my distaste for the American imperial system, I never thought I would ever say that!), and use the American style through-out the rest of this website.
 
-<table style="width: 600px; text-align: center; margin: 0 auto;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >
 
 {{< figure src="/images/2012/05/resistor-schematic-symbol-american.png" width="168px" caption="The American-styled schematic symbol for a resistor."  >}}
@@ -56,11 +54,11 @@ The behaviour of resistors when connected together in series and in parallel is 
 
 When two resistors are connected in parallel, the equivalent total resistance follows the inverse law:
 
-$$ R_{total} = \frac{1}{\frac{1}{R1} + \frac{1}{R2}} $$
+<div>$$ R_{total} = \frac{1}{\frac{1}{R1} + \frac{1}{R2}} $$</div>
 
 It is usually easier to remember this equation as:
 
-$$ \frac{1}{R_{total}} = \frac{1}{R1} + \frac{1}{R2} $$
+<div>$$ \frac{1}{R_{total}} = \frac{1}{R1} + \frac{1}{R2} $$</div>
 
 The following diagram shows this:
 
@@ -70,7 +68,7 @@ The following diagram shows this:
 
 When two resistors are connected in series, the total equivalent resistance is equal to the sum of individual resistances.
 
-$$ R_{total} = R1 + R2 $$
+<div>$$ R_{total} = R1 + R2 $$</div>
 
 This is shown in the diagram below:
 
@@ -78,21 +76,20 @@ This is shown in the diagram below:
 
 # Resistor Dividers
 
-``````````````[debugembedit snippet="resistive-voltage-divider-calculator"]``````````````
-
 Resistor dividers are two or more resistors in a series configuration such that at some junction in the string, the voltage is a fixed proportion of the total voltage applied to the end's of the string. In this way, they **"divide"** the input voltage into a smaller output voltage.
 
 The simplest voltage divider consists of just two resistors in series.
-
- 
 
 {{< figure src="/images/2012/05/basic-resistor-divider-schematic-with-equation.png" width="556px" caption="A basic schematic of a resistor divider, showing the equation which determines the output voltage."  >}}
 
 Note that the DC output impedance of a resistor divider is normally quite high (it is equal to R1), and for this reason, **you cannot normally use a resistor divider to drop the voltage and provide power for a device**. This is a common mistake that people learning electronics do, when in reality you should either be using a linear regulator, a SMPS, or a transformer. Voltage dividers should normally only be used to provide a voltage to a high-impedance input (e.g. op-amp input, comparator input, microcontroller ADC input, or voltage-level translation for comms signals).
 
-The exception to the above rule is when the two following conditions are met:  * The device will draw so little current that the voltage sag due to the extra current through R1 is acceptable.  * The extra current going through R1 will not cause it to overheat.
+The exception to the above rule is when the two following conditions are met:
 
-An interesting example I have seen of a resistor divider powering a circuit was a low-power microcontroller being powered directly from a resistor-divider, diode and capacitor from mains supply (240VAC). The microcontroller only drew \(uA\) so met the two above conditions.
+* The device will draw so little current that the voltage sag due to the extra current through R1 is acceptable.
+* The extra current going through R1 will not cause it to overheat.
+
+An interesting example I have seen of a resistor divider powering a circuit was a low-power microcontroller being powered directly from a resistor-divider, diode and capacitor from mains supply (240VAC). The microcontroller only drew `\(uA\)` so met the two above conditions.
 
 The [NinjaCalc program](http://mbedded-ninja.github.io/NinjaCalc/) has a calculator that can work out voltages, resistances and currents of a resistor divider.
 
@@ -108,25 +105,32 @@ You call also get variable resistors which can be changed digitially (called DPO
 
 The tolerance of a resistor defines how accurately the resistor the actual resistors value is to the specified value, usually in terms of a percentage. 5% and 1% resistors are the most common. Typically the cost of a resistor goes up as the tolerance reduces, as it requires increased manufacturing precision.
 
-5% resistors are normally fine for the most resistor jobs such as:  * Current-limiting  * ESD protection  * Pull-ups/pull-downs  * Termination resistors
+5% resistors are normally fine for the most resistor jobs such as:
 
-1% or lower precision is usually required for:  * Resistor dividers for ADC inputs  * Op-amp gain resistors  * Current measuring resistors (0.1% precision may be needed here, and they start costing a bit!)
+* Current-limiting
+* ESD protection
+* Pull-ups/pull-downs
+* Termination resistors
+
+1% or lower precision is usually required for:
+
+* Resistor dividers for ADC inputs
+* Op-amp gain resistors
+* Current measuring resistors (0.1% precision may be needed here, and they start costing a bit!)
 
 With the advent of SMD resistors, the difference in price between 1% and 5% resistors is so insignificant that for **most purposes you can get away with using 1% tolerance resistors** for everything in your circuit design.
 
 ## Can I Put Resistors In Series Or Parallel For Better Tolerances?
 
-**The short answer. No.** 2x \(1k\Omega\) 1% resistors in series is the equivalent to 1x \(2k\Omega\) 1% resistor.
+**The short answer. No.** 2x `\(1k\Omega\)` 1% resistors in series is the equivalent to 1x `\(2k\Omega\)` 1% resistor.
 
 **The long answer.** You will never get a worse tolerance by putting two resistors in series or parallel. BUT, you may get a better distribution of values, depending on the distribution of the original resistors. If you assume (and this is a bad assumption) that the resistor values followed a Gaussian distribution, then the resulting distribution is a better Gaussian distribution (skinnier/smaller deviation). If the original resistors had a flat distribution, the resulting distribution is a triangle shape.
 
-However, the distribution of resistor values could be any number of shapes. For example, the manufacturer might make heaps of 5% \(1k\Omega\) resistors, which are then measured. If the resistance falls within 1% of \(1k\Omega\), then they are made into 1% resistors. This would leave the 5% resistor bin with a double peak, with a valley right in the middle of the distribution.
+However, the distribution of resistor values could be any number of shapes. For example, the manufacturer might make heaps of 5% `\(1k\Omega\)` resistors, which are then measured. If the resistance falls within 1% of `\(1k\Omega\)`, then they are made into 1% resistors. This would leave the 5% resistor bin with a double peak, with a valley right in the middle of the distribution.
 
 ## Manually Tweaking Resistance
 
 For non-repetitive, high precision values, you can actually tweak a resistors value by grinding some of the resistor away with a metal file. This only works for the metal film style resistors. See [this video](https://www.youtube.com/watch?v=OQDjjIvLaj4) as an example.
-
-``````````````
 
 # The E Series
 
@@ -136,7 +140,15 @@ Simply, this means that each series guarantees you will be able to find a resist
 
 *NOTE: Confusingly, for each series, you can get ever so slightly higher errors than what is listed below. This is due to the final rounding process (e.g. E96 resistors are rounded to three significant figures).
 
-<table style="width: 400px;" ><tbody ><tr >SeriesMaximum Percentage Error</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Series</th>
+            <th>Maximum Percentage Error</th>
+        </tr>
+    </thead>
+<tbody >
+<tr>
 <td >E6
 </td>
 <td >20%
@@ -165,21 +177,25 @@ Simply, this means that each series guarantees you will be able to find a resist
 The E192 series is also used for 0.25% and 0.1% error resistors.
 
 Below are all the actual values for the common E series. They are written as initialised arrays in the [C programming language](http://blog.mbedded.ninja/programming/languages/c), so that you can copy them and use them in code easily (some modifications may be required for other programming languages).
-    
-    E6[6] = {10, 15, 22, 33, 47, 68};
-    
-    E12[12] = {10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 82};
+
+```c
+E6[6] = {10, 15, 22, 33, 47, 68};
+
+E12[12] = {10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 82};
+```
     
 
 Note how there are two digits of precision for E6, E12, and E24 values, while 3 digits of precision for E48, E96 and E192 values. These two sets of three series share special properties with one another. E6 is every second value from the E12 series, and E12 is every second value from the E24 series. Simarly, E48 is every second value from the E96 series, and E96 is every second value from the E192 series.
 
 The values come from the exponential number series, using the equation:
 
-$$v(i, n) = 10^{i/n}$$
+<div>$$v(i, n) = 10^{i/n}$$</div>
 
-where:  
-\(i\) = the i'th element in the series  
-\(n\) = the total number of elements in the series
+<p class="centered">
+    where:<br>
+    \(i\) = the i'th element in the series<br>
+    \(n\) = the total number of elements in the series<br>
+</p>
 
 See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_number), for information on these series.
 
@@ -209,8 +225,6 @@ They can be used to intentionally heat things, as the picture below shows. This 
 
 {{< figure src="/images/2012/05/using-a-power-resistor-to-heat-oil.jpg" width="1600px" caption="Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature."  >}}
 
-``````````````
-
 # Current-Sense Resistors
 
 Current-sense resistors are a label given to low-valued, high precision (1% or better), and high power resistors that are good for using in current-sense circuits. Sometimes there is nothing special about these resistors (it's purely a marketing term), othertimes they may have two additional terminals for _Kelvin sensing_. A four terminal resistor is also called an _ammeter shunt_. Two of the terminals are used to pass the high current, the other two are used to measure to voltage drop across the resistor. This gets rid of measurement errors due to voltage drop in the wires going to the resistor (when the sense line and high-current path are the same thing).
@@ -218,8 +232,6 @@ Current-sense resistors are a label given to low-valued, high precision (1% or b
 {{< figure src="/images/2012/05/current-sensing-resistor-large-four-lead.jpg" width="513px" caption="A large four-lead current sensing resistor."  >}}
 
 More information and schematics on how to make current-sense circuits can be found on the [Current-Sensing page](http://blog.mbedded.ninja/electronics/circuit-design/current-sensing).
-
-``````````````
 
 # Jumpers
 
@@ -231,7 +243,7 @@ Jumper resistors are not specified with a percentage tolerance as most other res
 
 # Volume Resistance (Bulk Resistance)
 
-Volume resistance (also known as just resitivity, electrical resistivity, or bulk resistance) has the SI units \(\Omega m\). It is a measure of how well a particular material conducts electricity, and is an intrinsic property of that material (it does not depend on how much of the material or what shape it is in). If the resistance between two conducting plates on opposite faces of a \(1 \times 1 \times 1m\) cube of material is measured to be \(1\Omega\), then the material has a volume resistivity of \(1\Omega m\). 
+Volume resistance (also known as just resitivity, electrical resistivity, or bulk resistance) has the SI units `\(\Omega m\)`. It is a measure of how well a particular material conducts electricity, and is an intrinsic property of that material (it does not depend on how much of the material or what shape it is in). If the resistance between two conducting plates on opposite faces of a `\(1 \times 1 \times 1m\)` cube of material is measured to be `\(1\Omega\)`, then the material has a volume resistivity of `\(1\Omega m\)`. 
 
 # Packages
 

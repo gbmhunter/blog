@@ -9,106 +9,47 @@ url: /electronics/components/sensors/inertial-measurement-units-imus
 
 # Overview
 
-
-
-
 The IMU can either consist of 3 separate chips mounted onto a small piece of PCB, or a single system-on-chip that integrated all of the components into one package.
-
-
-
 
 They normally combine accelerometers. gyroscopes and sometimes magnetometers together as a single device (monolithic package). Devices with accelerometers and magnetometers are usually called 6-axis devices, while ones that also have magnetometers are called 9-axis devices.
 
-
-
-
 The can include digital motion processors (DMPs). This offloads some of the processing required by the host microcontroller. They can also provide additional features such as motion gesture recognition. They do not normally include more advanced processing tasks such as an **attitude and heading reference system** (AHRS). This normally has to be provided by the host microcontroller.
-
-
-
 
 The accelerometers usually exploit the Coriolis effect and a capacitor sensor to measure the angular rate in a axis.
 
-
-
-
 Some IMU's negate the temperature drift by measuring their own temperature and performing self-compensation for these errors.
-
-
-
 
 # Performance
 
-
-
-
 The performance of IMU is normally expressed as a full-scale range and resolution for each sensor. The resolution might be specified in terms of the number of bits of the ADC. A "_Sensitivity Scale Factor_" might also provided, which is the full-scale range divided by the resolution. Sensitivity is usually specified at 100Hz and per lowest significant bit (LSB).
-
-
-
 
 # Navigation
 
-
-
-
 IMU's calculate their current position based on data from it's last known position(s), and they suffer from locational errors which accumulate over time. This is called **dead reckoning**. GPS does not have this problem.
-
-
-
 
 # Communication
 
-
-
-
 SPI is preferable over I2C when high data throughput's are required.
-
-
-
 
 # GPS
 
-
-
-
 More and more GPS units are beginning to support integration with an IMU unit to improve their accuracy.
-
-
-
 
 # Software
 
-
-
-
 [RTIMULib](https://github.com/RTIMULib/RTIMULib) is a pretty nice software package which makes it easier to get IMU's working with operating systems (including "embedded" ones such as the RaspberryPi). The writer, "richards-tech", also has a version of this for the Arduino, which makes it easy to use the Arduino as an I2C host to read back data from popular IMU's, send it via UART to a computer, where it can be processed.
-
-
 
 {{< figure src="/images/2014/12/screenshot-playing-around-with-rthostimugl.png" width="782px" caption="Playing around with RTHostIMUGL and a connected IMU through an Arduino."  >}}
 
-
-
 # Packages
-
-
-
 
 A big advantage of an IMU is the reduced PCB footprint due the the combination of multiple sensors into a single package. These are sometimes called system-in-packages (SIP's). 3x3x1mm package.
 
-
-
-
 # Examples
-
-
-
 
 ## MPU-9250
 
-
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
 
@@ -233,16 +174,12 @@ A big advantage of an IMU is the reduced PCB footprint due the the combination o
 </tbody>
 </table>
 
-
 It has an on-board digital motion processor (DMP). Note that although the QFN package this IMU comes in has a exposed pad on the bottom, InvenSense recommend that you **do not connect it** to anything to reduce the amount of stress put on the sensitive MEMS device.
-
-
-
 
 ## LSM9DS1
 
 
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
 
@@ -367,35 +304,16 @@ It has an on-board digital motion processor (DMP). Note that although the QFN pa
 </tbody>
 </table>
 
-
 The LSM9DS1 is part of the iNEMO family.
-
-
-
 
 ## Others
 
-
-
-
 Analog devices makes high-end military grade IMU's.
-
-
-
 
 ST makes the iNEMO family of IMU modules.
 
-
-
-
 DigiKey lists IMU's under the section [Sensors, Transducers -> Multifunction](http://www.digikey.com/product-search/en/sensors-transducers/multifunction/). The [STMicroelectronics LSM330TR](http://www.digikey.com/product-detail/en/LSM330TR/497-14381-1-ND/) is the cheapest accelerometer/gyro I could find on DigiKey as of Dec 2014 with a price of US$3.40 (100).
 
-
-
-
 ST and InvenSense are the dominant manufacturers of the chips used on the [Sparkfun IMU modules](https://www.sparkfun.com/categories/160).
-
-
-
 
 The cheapest 9-axis IMU I have found on the internet ANYWHERE is the [GY-85 sold by DealExtreme](http://www.dx.com/p/gy-85-6dof-9dof-imu-sensor-module-for-arduino-148436), which as of Dec 2014 is US$9.49 (1).

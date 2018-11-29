@@ -17,13 +17,21 @@ Magnetometers are miniature electro-mechanical devices that measure the **magnet
 
 Soft-iron materials are ones which are not magnetic themselves, but generate a magnetic field.
 
-This includes:  * Ferrous EMI shielding  * Screws  * Battery contacts
+This includes:
+
+* Ferrous EMI shielding
+* Screws
+* Battery contacts
 
 ## Hard-Iron
 
 Hard-iron materials are ones which are naturally magnetic.
 
-This includes:  * Speakers  * Proximity switches  * Hall-effect sensors
+This includes:
+
+* Speakers
+* Proximity switches
+* Hall-effect sensors
 
 ## Electromagnetic
 
