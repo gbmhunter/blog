@@ -1,3 +1,7 @@
+* {
+    font-family: 'avenir next' ,'avenir', sans-serif
+}
+
 figcaption {
     font-size: 80%;
     font-style: italic;
@@ -58,17 +62,61 @@ body {
 
 /* Left column contains logo and menu */
 .left-column {
-    width: 300px;
     height: 100%;
     display: flex;
     flex-flow: column;
     align-items: center;
+    justify-content: flex-start;
+
+    background-color: white;
+    width: 30%;
+    max-width: 450px;
+
+    /* Add subtle border to left-hand column */
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
+}
+
+.logo-img {
+    width: 80%;
+}
+
+.site-title {
+    color: rgb(51, 51, 51);
+    font-size: 24px;
+    font-weight: 700;
+
+    width: 80%;
+    text-align: center;
+}
+
+.site-description {
+    color: rgb(51, 51, 51);
+    font-size: 1.0rem;
+    font-weight: 400;
+
+    margin-top: 7px;
+    width: 60%;
+    text-align: center;
 }
 
 /* Right column contains page content */
 .right-column {
     height: 100%;
     flex: 1;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.inner-right-column {
+    width: 90%;
+    max-width: 800px;
+    margin-top: 5%;
+    background-color: white;
+
+    /* Add subtle border to right-hand content */
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
 }
 
 /* ========================================================================= */
@@ -79,6 +127,7 @@ body {
     display: block;
     z-index: 999999;
     margin: 0;
+    margin-top: 20px;
     padding: 0;
 }
 

@@ -47,18 +47,23 @@
   </head>
 
     <body class="ma0 {{ $.Param "body_classes"  | default "avenir bg-near-white"}}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
-        <div class="left-column">  
-            <div style="height: 50px;"></div>
+        <div class="left-column">
+            
+            <img src={{ "images/logo/cartoon-ninja.jpg" | absURL }} class="logo-img" />
+            <div class="site-title">mbedded.ninja</div>
+            <div class="site-description">The embedded engineering webstie that's got your back.</div>
             {{ partial "menu.html" . }}
         </div>
 
         <div class="right-column">
-            {{ block "header" . }}{{ partial "site-header.html" .}}{{ end }}
-            <main class="pb7" role="main">
-            {{ block "main" . }}{{ end }}
-            </main>
-            {{ block "footer" . }}{{ partial "site-footer.html" . }}{{ end }}
-            {{ block "scripts" . }}{{ partial "site-scripts.html" . }}{{ end }}
+            <div class="inner-right-column">
+                <!-- {{ block "header" . }}{{ partial "site-header.html" .}}{{ end }} -->
+                <main class="pb7" role="main">
+                {{ block "main" . }}{{ end }}
+                </main>
+                {{ block "footer" . }}{{ partial "site-footer.html" . }}{{ end }}
+                {{ block "scripts" . }}{{ partial "site-scripts.html" . }}{{ end }}
+            </div>
         </div>
   </body>
 </html>

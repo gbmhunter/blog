@@ -1,9 +1,10 @@
 # Making the baseURL empty allows links to work correctly on both
 # dev and prod
-baseURL = ""
+baseURL = "http://localhost:1313"
 languageCode = "en-us"
 title = "mbedded.ninja"
 theme = "ananke"
 sectionPagesMenu = "main"
 pluralizelisttitles = "false"
 pygmentsCodeFences = "true"
+canonifyURLs = "true"
