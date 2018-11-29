@@ -39,6 +39,9 @@ or, if the inline equations are inside an HTML element, that backticks can be re
 # Todo
 
 * Remove [wpfilebase] tags.
+* Replace [nggallery] tags.
+* Replace Google Doc tags
+* Update all http://mbedded.ninja URLs to be absolute from base dir of site
 
 ## Custom PHP Options
 

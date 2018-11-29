@@ -9,11 +9,15 @@ url: /electronics/components/gnss-gps-modules
 
 # Terminology
 
-<table border="0" ><tbody ><tr >
-<td >**Term**
-</td>
-<td >**Description**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Term</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr >
 <td >A-GPS
 </td>
 <td >A-GPS (or AGPS) is an acronym for assisted GPS.
@@ -28,11 +32,11 @@ url: /electronics/components/gnss-gps-modules
 </td></tr><tr >
 <td >dBi
 </td>
-<td >The directivity ratio between the antenna of interest and a **theoretical isotropic antenna** (that is **not** circularly polarized).
+<td >The directivity ratio between the antenna of interest and a <b>theoretical isotropic antenna</b> (that is <b>not</b> circularly polarized).
 </td></tr><tr >
 <td >dBic
 </td>
-<td >The directivity ratio between the antenna of interest and a **theoretical circularly polarized and isotropic antenna.**
+<td >The directivity ratio between the antenna of interest and a <b>theoretical circularly polarized and isotropic antenna</b>.
 </td></tr><tr >
 <td >Ephemeris
 </td>
@@ -44,23 +48,23 @@ url: /electronics/components/gnss-gps-modules
 </td></tr><tr >
 <td >GLONASS
 </td>
-<td >GLONASS is an acronym for **Globalnaya Navigazionnaya Sputnikovaya Sistema**, a satellite navigation system controlled by Russia.
+<td >GLONASS is an acronym for <b>Globalnaya Navigazionnaya Sputnikovaya Sistema</b>, a satellite navigation system controlled by Russia.
 </td></tr><tr >
 <td >GNSS
 </td>
-<td >GNSS is an acronym for **Global Navigation Satellite System**. It is the proper umbrella term for anything related to using satellites for navigation, not GPS, which should only stand for the American system.
+<td >GNSS is an acronym for <b>Global Navigation Satellite System</b>. It is the proper umbrella term for anything related to using satellites for navigation, not GPS, which should only stand for the American system.
 </td></tr><tr >
 <td >GPS
 </td>
-<td >GPS is an acronym for **Global Positioning System**, a satellite navigation system developed and controlled by the USA. It is commonly used in error to describe any satellite navigation system.
+<td >GPS is an acronym for <b>Global Positioning System</b>, a satellite navigation system developed and controlled by the USA. It is commonly used in error to describe any satellite navigation system.
 </td></tr><tr >
 <td >IRNSS
 </td>
-<td >IRNSS is an acronym for **Indian Regional Navigation Satellite System**. It is a GNSS under the control of the Indian government.
+<td >IRNSS is an acronym for <b>Indian Regional Navigation Satellite System</b>. It is a GNSS under the control of the Indian government.
 </td></tr><tr >
 <td >ISRO
 </td>
-<td >ISRO is an acronym for **Indian Space Research Organisation**. They designed the IRNSS.
+<td >ISRO is an acronym for <b>Indian Space Research Organisation</b>. They designed the IRNSS.
 </td></tr><tr >
 <td >L1
 </td>
@@ -68,7 +72,7 @@ url: /electronics/components/gnss-gps-modules
 </td></tr><tr >
 <td >M2M
 </td>
-<td >M2M is an acronym for **machine-to-machine**. It is used as an umbrella term for GNSS and GPRS devices.
+<td >M2M is an acronym for <b>machine-to-machine</b>. It is used as an umbrella term for GNSS and GPRS devices.
 </td></tr><tr >
 <td >Patch Antenna
 </td>
@@ -76,7 +80,7 @@ url: /electronics/components/gnss-gps-modules
 </td></tr><tr >
 <td >SWR
 </td>
-<td >SWR is an acronym from **standing wave ratio**. The most commonly used variant of SWR is VSWR, and in terms of GPS is used to describe the amount of reflection that a GPS antenna has. An ideal transmission line would have a SWR of 1:1. It is related to return loss.
+<td >SWR is an acronym from <b>standing wave ratio</b>. The most commonly used variant of SWR is VSWR, and in terms of GPS is used to describe the amount of reflection that a GPS antenna has. An ideal transmission line would have a SWR of 1:1. It is related to return loss.
 </td></tr><tr >
 <td >Return loss
 </td>
@@ -84,16 +88,19 @@ url: /electronics/components/gnss-gps-modules
 </td></tr><tr >
 <td >VSWR
 </td>
-<td >VSWR is an acronym for **voltage standing wave ratio**. It is a type of SWR.
+<td >VSWR is an acronym for <b>voltage standing wave ratio</b>. It is a type of SWR.
 </td></tr></tbody></table>
 
 #  Frequencies
 
-<table style="width: 600px;" border="0" ><tbody ><tr >
-<td >**GPS System**
-</td>
-<td >**Frequency Range**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>GPS System</th>
+            <th>Frequency Range</th>
+        </tr>
+    </thead>
+<tbody><tr>
 <td >Galileo
 </td>
 <td >1555-1596MHz
@@ -135,7 +142,7 @@ For a GPS antenna, the VSWR approaches 1 for the GPS signal frequency. The below
 
 Typical parameter values:
 
-<table style="width: 400px;" border="0" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Peak linear gain
 </td>
 <td >2.5 to 3dBi

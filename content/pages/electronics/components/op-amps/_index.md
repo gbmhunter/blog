@@ -7,8 +7,6 @@ type: page
 url: /electronics/components/op-amps
 ---
 
-[mathjax]
-
 # Overview
 
 At it's most basic level, an operational amplifier (op-amp) is a discrete analogue integrated circuit which acts as a voltage-amplifier with very high gain.
@@ -21,11 +19,17 @@ An op-amp is commonly drawn on schematics as:
 
 {{< figure src="/images/2011/09/op-amp-basic-schematic-symbol.png" width="335px" caption="The basic schematic symbol for an op-amp."  >}}
 
-You may see this symbol with or without the voltage supply pins \( V_{S+} \) and \( V_{S-} \). If they are not present, it is assumed that they are connected up to a power source which should be obvious from the design intent.
+You may see this symbol with or without the voltage supply pins `\( V_{S+} \)` and `\( V_{S-} \)`. If they are not present, it is assumed that they are connected up to a power source which should be obvious from the design intent.
 
 **WARNING:** Always take note of the position of the inverting (-) and non-inverting (+) input terminals. Sometimes they can be drawn swapped around relative to the symbol shown above.
 
-# Uses  * Buffers  * Linear amplifiers, non-linear amplifiers  * Pre-amplifiers (amplifier's with a input voltage of 10mV or less)  * Analogue mathematical operations (differentiators, integrators, summer, subtracters, e.t.c)  * Voltage to current (transconductance) and current to voltage conversions (transimpedence)
+# Uses
+
+* Buffers
+* Linear amplifiers, non-linear amplifiers
+* Pre-amplifiers (amplifier's with a input voltage of 10mV or less)
+* Analogue mathematical operations (differentiators, integrators, summer, subtracters, e.t.c)
+* Voltage to current (transconductance) and current to voltage conversions (transimpedence)
 
 # Configurations
 
@@ -35,7 +39,7 @@ A voltage follower (also known as a buffer) is one of the most basic circuits yo
 
 {{< figure src="/images/2011/09/op-amp-schematic-voltage-follower-buffer.png" width="517px" caption="An op-amp configured as a voltage follower (aka buffer)."  >}}
 
-As shown in the above diagram, the output voltage is the same as the input voltage (\(v_{o} = v_{i}\)). Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
+As shown in the above diagram, the output voltage is the same as the input voltage (`\(v_{o} = v_{i}\)`). Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
 
 A simulation schematic for a voltage-follower op-amp is shown below:
 
@@ -53,15 +57,17 @@ A op-amp in the non-inverting amplifier configuration is shown below.
 
 The equation for the gain of the non-inverting amplifier is:
 
-$$ v_o = (1 + \frac{R_f}{R_i} ) v_i $$
+<div>$$ v_o = (1 + \frac{R_f}{R_i} ) v_i $$</div>
 
-Notice the \(1\) in the gain equation? This means that no matter what you set the resistors \(R_f\) and \(R_i\) to, you can **never get a gain which is less than one**. This is one of the disadvantages of the non-inverting amplifier (you can have a gain of less than one with an inverting amplifier).
+Notice the `\(1\)` in the gain equation? This means that no matter what you set the resistors `\(R_f\)` and `\(R_i\)` to, you can **never get a gain which is less than one**. This is one of the disadvantages of the non-inverting amplifier (you can have a gain of less than one with an inverting amplifier).
 
-Here is a simulation schematic (circuit) for a non-inverting op-amp amplifier running from a single-ended supply. Because R1 (\(R_f\)) and R2 (\(R_i\)) are both \(1k\Omega\), the op-amp has a gain of:
+Here is a simulation schematic (circuit) for a non-inverting op-amp amplifier running from a single-ended supply. Because R1 (`\(R_f\)`) and R2 (`\(R_i\)`) are both `\(1k\Omega\)`, the op-amp has a gain of:
 
+<div>
 $$ G = 1 + \frac{R_f}{R_i} \\  
 G = 1 + \frac{1k\Omega}{1k\Omega} \\  
 G = 2 $$
+</div>
 
 {{< figure src="/images/2011/09/non-inverting-op-amp-amplifier-simulation-schematic.png" width="465px" caption="The simulation schematic for a non-inverting op-amp amplifier."  >}}
 
@@ -77,7 +83,7 @@ A op-amp amplifier in the inverting configuration is shown below:
 
 The equation for the gain of an inverting amplifier is:
 
-$$ v_o = - \frac{R_f}{R_i} v_i $$
+<div>$$ v_o = - \frac{R_f}{R_i} v_i $$</div>
 
 The negative sign is to show that the output is the inverse polarity of the input. Notice that, unlike the non-inverting amplifier, **an inverting amplifier lets you obtain a gain of less than 1**.
 
@@ -97,7 +103,7 @@ A differential amplifier amplifies the difference between two electrical signals
 
 The output voltage is given by the equation:
 
-$$ v_o = \frac{R_4}{R_3 + R_4}(1 + \frac{R_2}{R_1})v_2 - \frac{R_2}{R_1}v_1 $$
+<div>$$ v_o = \frac{R_4}{R_3 + R_4}(1 + \frac{R_2}{R_1})v_2 - \frac{R_2}{R_1}v_1 $$</div>
 
 Below is a schematic for simulating the behaviour of a differential op-amp:
 
@@ -115,7 +121,7 @@ It's output voltage is proportional to the integral of the input voltage w.r.t. 
 
 However, this circuit is normally not practical in real world situations. Any errors such as the output offset voltage and input bias current (which all op-amps invariably have), as well as a non-perfect input signal with small amounts of DC bias, will cause the output to drift, until it reaches saturation.
 
-A way to fix this problem is to insert a high-valued feedback resistor, \(R_f\), to limit the DC gain, as well as a resistor, \(R_{bias}\), on the non-inverting input terminal to compensate for the input bias current.
+A way to fix this problem is to insert a high-valued feedback resistor, `\(R_f\)`, to limit the DC gain, as well as a resistor, `\(R_{bias}\)`, on the non-inverting input terminal to compensate for the input bias current.
 
 {{< figure src="/images/2011/09/op-amp-schematic-integrator-non-ideal.png" width="431px" caption="An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset."  >}}
 
@@ -169,7 +175,7 @@ For a fixed-gain, cascading op-amps can also be used to **increase the bandwidth
 
 When cascading op-amps, the total gain is the product of all of the individual op-amps gains, i.e.:
 
-$$ A_{total} = A_0 A_1 A_2 ... A_n $$
+<div>$$ A_{total} = A_0 A_1 A_2 ... A_n $$</div>
 
 ## The Bandwidth
 
@@ -177,12 +183,14 @@ The bandwidth of cascaded op-amps is not as simple to calculate as the gain.
 
 If all of the op-amps are identical, then the following equation can be used:
 
-$$ BW_{tot} = BW \times \sqrt{2^{\frac{1}{N}} - 1} $$
+<div>$$ BW_{tot} = BW \times \sqrt{2^{\frac{1}{N}} - 1} $$</div>
 
-where:   
-\( BW_{tot} \) = the total bandwidth of the cascaded op-amp system  
-\( BW \) = the bandwidth of the individual op-amps (remember, they have to be identical)  
-\( N \) = the number of op-amps in the cascaded system
+<p class="centered">
+    where:<br>
+    \( BW_{tot} \) = the total bandwidth of the cascaded op-amp system<br>
+    \( BW \) = the bandwidth of the individual op-amps (remember, they have to be identical)<br>
+    \( N \) = the number of op-amps in the cascaded system<br>
+</p>
 
 The above equation gives diminishing returns with every additional op-amp added.
 
@@ -211,7 +219,15 @@ What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-
 
 Below are some examples of op-amps that stand out from the crowd for some reason, be it popularity, years in service, or functionality wise.
 
-<table ><tbody ><tr >Manufacturer Code:Description:Approximate Price (1 unit, US$):</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Manufacturer Code</th>
+            <th>Description</th>
+            <th>Approximate Price (1 unit, US$)</th>
+        </tr>
+    </thead>
+<tbody><tr >
 <td >AD860x
 </td>
 <td >Good for high precision stuff! Awesome for [photo-diode amplification](http://localhost/?q=ir-devices) (both current-to-voltage and voltage-to-voltage configurations).

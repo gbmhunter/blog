@@ -9,12 +9,9 @@ url: /electronics/components/encoders
 
 # Overview
 
-
 Encoders are devices that measure the position of something. The word 'encoder' typically refers to a rotational encoder, although linear encoders do exist. Rotational encoders usually connect to a shaft (or have provision for one).
 
-
 # Incremental Encoders
-
 
 Incremental encoders are encoders that output 'step-change' data, rather than an absolute position of an object (however, incremental encoders can have an absolute output, that typically outputs one pulse per revolution, is called channel N, and can be used to determine absolute position).
 
@@ -24,9 +21,7 @@ The phase difference can be determined in electronics hardware by using a 'D typ
 
 {{< figure src="/images/electronics-misc/quadrature-phase-detection-circuit.png" caption="A simple quadrature phase detection circuit using a D flip-flop."  width="600px" >}}
 
-
 # Overflow Protection
-
 
 Overflow of encoder inputs in embedded firmware is common, because of the large ranges covered by an encoder that is connected to object which is moving quickly for long periods of time (e.g. a spinning shaft at 6000rpm).
 
@@ -36,7 +31,7 @@ This means that if you want to track it for longer than 89minutes, you will have
 
 One way is use software overflow protection, as shown below. This takes a overflow-is-possible 32-bit number and converts it into a 64-bit number. It uses probability to determine whether an overflow has occured, based on the difference between the previous and current 32-bit value. The only requirement for this to work correctly is that it is called often enough that the encoder value **cannot change more that half full-scale of the 32-bit number between two successive calls**.
 
-    
+```c
     int64_t Encoder::Get64BitVal()
     {
     	// Remember the prev encoder count
@@ -98,7 +93,7 @@ One way is use software overflow protection, as shown below. This takes a overfl
     
     	return encCount64;
     }
-
+```
 
 
 

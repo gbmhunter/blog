@@ -1,5 +1,6 @@
 * {
-    font-family: 'avenir next' ,'avenir', sans-serif
+    /* Don't set font family for everything, as it messes with code blocks */
+    /* font-family: 'avenir next' ,'avenir', sans-serif */
 }
 
 figcaption {

@@ -9,7 +9,4 @@ url: /electronics/components/fpgas/xilinx-7-series-artix-7-kintex-7-virtex-7-zyn
 
 # PCI Express Support
 
-
-
-
 The GTP transceivers on the 7 Series FPGAs support [PCI Express (PCIe)](http://blog.mbedded.ninja/electronics/communication-protocols/pci-express-pcie), up-to revision 2.0 (also called Gen 2).
