@@ -7,21 +7,24 @@ type: page
 url: /electronics/components/diodes
 ---
 
-[mathjax]
-
 # Overview
 
 Diodes are passive semiconductor components consisting of a single P-N junction. Their main property is that they only allow conduction of current in one direction, which makes them a useful component in many electronic circuits.
-
-# Child Pages
-
-[sb_child_list template=2 orderby=title order=asc nest_level=1]
 
 # Parameters
 
 These are some of the important parameters shared by all types of diode (in a rough order of importance):
 
-<table ><tbody ><tr >ParameterSymbolDescription</tr><tr >
+<table >
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Symbol</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr >
 <td >Maximum Continuous Forward Current
 </td>
 <td >\( I_{f(cont)} \)
@@ -67,13 +70,15 @@ Schottky diodes are special diodes that have a lower voltage drop than standard 
 
 {{< figure src="/images/2011/09/schematic-symbol-schottky-diode.png" width="216px" caption="The schematic symbol for the schottky diode."  >}}
 
-#  
-
 # Zener Diodes
 
 Zener diodes are diodes which have a specified reverse blocking voltage at which they breakdown and begin to conduct. They are similar to TVS diodes, but generally have a more defined and precise breakdown voltage, but a lower power rating. Also, shunt voltage references are similar in concept to zener diodes, except that they are more precise but can't dissipate as much power.
 
-Uses for zener diodes include:  * Low power/simple voltage reference  * Over-voltage protection for low power applications (use TVS diodes to dissapate high energy voltage spikes)  * To turn on a sub-circuit once a certain voltage level is reached (e.g. an LED in a simple battery charging circuit)
+Uses for zener diodes include:
+
+* Low power/simple voltage reference
+* Over-voltage protection for low power applications (use TVS diodes to dissapate high energy voltage spikes)
+* To turn on a sub-circuit once a certain voltage level is reached (e.g. an LED in a simple battery charging circuit)
 
 You can purchase Zeners with a reverse voltage drop as low as 1.8V all the way to above 100V. For voltage drops less than 1.8V, you can stack (i.e. place in series) multiple normal or schottky diodes in forward bias.
 
@@ -82,8 +87,6 @@ For more information, see the [ESD Protection](http://blog.mbedded.ninja/electr
 # Photo Diodes
 
 Note these are not be confused with photo-transistors, which are similar, but technically not photo diodes. Photo diodes have a faster response time than photo-transistors.
-
-#  
 
 # Avalanche Photo-diodes (APDs)
 

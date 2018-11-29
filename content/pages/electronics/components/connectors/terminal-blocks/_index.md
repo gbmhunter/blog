@@ -13,8 +13,9 @@ Terminal blocks are a great easy-to-use connection method for signal from mA rig
 
 There are different types of terminal blocks:
 
-<table ><tbody ><tr >
-<td style="width: 100px;" >One piece
+<table>
+<tbody ><tr >
+<td>One piece
 </td>
 <td >These are your standard terminal blocks that are soldered onto PCBs.
 </td></tr><tr >
@@ -39,8 +40,16 @@ However, because they do not enforce a specific wiring configuration, they are p
 
 Common pitches for terminal blocks are:
 
-<table ><tbody ><tr >PitchUse</tr><tr >
-<td style="width: 100px;" >2.54mm (100mill)
+<table>
+    <thead>
+        <tr>
+            <th>Pitch</th>
+            <th>Use</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
+<td>2.54mm (100mill)
 </td>
 <td >Imperial pitch used for small wires (16-30AWG). While this is a very common pitch for other connectors, the design of terminal blocks actually makes this result in very small connections, hence larger pitches are more popular.
 </td></tr><tr >
@@ -67,13 +76,15 @@ A better way to fix this problem is to use wire ferrules. These are small hollow
 
 Terminal blocks have many different connection types:
 
-<table ><tr >
-<td style="width: 100px;" >Connection Type
-</td>
-<td >Image
-</td>
-<td >Description
-</td></tr><tbody ><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Connection Type</th>
+            <th>Image</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody><tr >
 <td >Screw
 </td>
 <td >{{< figure src="/images/2011/09/terminal-block-screw-style.jpg" width="181px" caption="A terminal block with a screw-style connection method."  >}}

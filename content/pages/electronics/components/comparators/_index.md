@@ -7,8 +7,6 @@ type: page
 url: /electronics/components/comparators
 ---
 
-[mathjax]
-
 # Overview
 
 Comparators are closely related to op-amps. A comparator is basically an op-amp which is operated in it's open-loop mode (no feedback except for when hystersis is added).
@@ -45,7 +43,15 @@ The following diagram shows how hystersis effects the outputs state changes (fro
 
 # Terms
 
-<table style="width: 600px;" ><tbody ><tr >TermDescription</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Term</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >\(R_{FB}\)
 </td>
 <td >Feedback resistor required when adding external hystersis to both inverting and non-inverting comparator configurations.
@@ -75,11 +81,11 @@ The following diagram shows a non-inverting comparator with hystersis resistors 
 
 {{< figure src="/images/2014/06/comparator-push-pull-out-non-inverting-configuration.png" width="535px" caption="A schematic of a comparator in the non-inverting configuration."  >}}
 
-Firstly, determine the amount of hystersis you want (\( V_{HYST} \)). Then use the following equation to work out the ratio between the feedback and input resistor.
+Firstly, determine the amount of hystersis you want (`\( V_{HYST} \)`). Then use the following equation to work out the ratio between the feedback and input resistor.
 
-$$ \frac{R_{FB}}{R_I} = \frac{V_{OH} - V_{OL}}{V_{HYST}} $$
+<div>$$ \frac{R_{FB}}{R_I} = \frac{V_{OH} - V_{OL}}{V_{HYST}} $$</div>
 
-Next, you need to determine an appropriate value for one of them, and then calculate the other resistance value. One way to determine \( R_{FB}\) is to set a quiscent current limit, say 100uA.
+Next, you need to determine an appropriate value for one of them, and then calculate the other resistance value. One way to determine `\( R_{FB}\)` is to set a quiscent current limit, say 100uA.
 
 ## Inverting Configuration
 
@@ -87,7 +93,7 @@ Nothing here yet...
 
 ## Open-Drain Output Comparators
 
-Open-drian output comparators require an extra pull-up resistor on the output (when compared to push-pull output comparators) to enable hystersis. This resistor, along with the feedback resistor, will create a voltage divider and introduce some error when the output is high. To keep this error small, it is recommended that \( R_{FB} > 100 \times R_{pullup} \).
+Open-drian output comparators require an extra pull-up resistor on the output (when compared to push-pull output comparators) to enable hystersis. This resistor, along with the feedback resistor, will create a voltage divider and introduce some error when the output is high. To keep this error small, it is recommended that `\( R_{FB} > 100 \times R_{pullup} \)`.
 
 # PCB Surface Leakage
 

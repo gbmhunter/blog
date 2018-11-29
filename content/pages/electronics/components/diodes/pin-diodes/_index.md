@@ -19,8 +19,18 @@ A PIN diode is a light detector. It can be used to convert optical signals into 
 
 # Important Parameters
 
-<table ><tbody ><tr >PARAMETERSYMBOLUNITSDESCRIPTION</tr><tr >
-<td >Dark Current
+<table>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Symbol</th>
+            <th>Units</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr>
+<td>Dark Current
 </td>
 <td >\(I_D\)
 </td>
@@ -67,7 +77,7 @@ Because of their good light-to-current linearity, they are commonly connected to
 
 They act as almost perfect resistors in the RF and microwave frequencies. The resistivity these AC waveforms see is dependent on the DC bias current flowing through the diode, and the intensity, wavelength and modulation rate of the incoming light.
 
-Because the PIN diodes RF resistance is dependant on the DC bias current, they can be used as an RF switch or variable resistor. The RF resistance can range from about \( 100m\Omega\) to \(10k\Omega\).
+Because the PIN diodes RF resistance is dependant on the DC bias current, they can be used as an RF switch or variable resistor. The RF resistance can range from about `\( 100m\Omega\)` to `\(10k\Omega\)`.
 
 # Reverse Recovery Time
 

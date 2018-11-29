@@ -7,6 +7,23 @@ type: page
 url: /programming/languages/python/dictionaries
 ---
 
+# Checking If A Key Exists In A Dictionary
+
+The recommended way to check if a key exists in a Python dictionary is to use the `in` keyword, as shown in the code example below:
+
+```python
+my_dict = {
+    'foo': 1,
+    'bar': 2
+}
+
+if 'foo' in my_dict:
+    print('Found key')
+else:
+    print('Did not find key')
+# stdout: Found key
+```
+
 # Get A List Of Dictionary Keys
 
 Calling `keys()` on a Python dictionary returns a `dict_keys` object. A `dict_keys` object is similar to a List, but you cannot index or modify the object.
@@ -67,4 +84,17 @@ It is recommended to use `del` if you just want to delete the item, as it will b
 
 ```python
 my_item = my_dict.pop('foo')
+```
+
+# Combining Dictionaries
+
+Python dictionaries can be combined with the `update()` function.
+
+```python
+my_dict1 = { 'foo': 1, 'bar': 2 }
+my_dict2 = { 'banana': 'yellow' }
+
+my_dict1.update(my_dict2)
+print(my_dict1)
+# stdout: {'foo': 1, 'bar': 2, 'banana': 'yellow'}
 ```

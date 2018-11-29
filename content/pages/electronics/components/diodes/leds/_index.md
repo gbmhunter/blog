@@ -7,8 +7,6 @@ type: page
 url: /electronics/components/diodes/leds
 ---
 
-[mathjax]
-
 # Overview
 
 There is a neat little [LED Wizard](http://led.linear1.org/led.wiz) from [LED Centre](http://led.linear1.org/) for working out what parallel/series combination of LED's you should use given a certain input voltage and number of LEDs you want in your array.
@@ -17,15 +15,17 @@ There is a neat little [LED Wizard](http://led.linear1.org/led.wiz) from [LED C
 
 # Important Parameters
 
-<table border="0" ><tbody ><tr >
-<td >**Name**
-</td>
-<td >**Parameter Symbol**
-</td>
-<td >**Units**
-</td>
-<td >**Description**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Parameter Symbol</th>
+            <th>Units</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr >
 <td >Forward Current
 </td>
 <td >\(I_F\)
@@ -71,13 +71,15 @@ There is a neat little [LED Wizard](http://led.linear1.org/led.wiz) from [LED C
 
 A common mistake when working out the value of a current limiting LED resistor is to forget to include the forward voltage drop of the diode into the equations. This has a bigger effect when running the LED at lower voltages. The equation for working out the resistance needed to limit the current in an LED is:
 
-$$R = \frac{V_{dd} - V_{led,f}}{I_{led}}$$
+<div>$$R = \frac{V_{dd} - V_{led,f}}{I_{led}}$$</div>
 
-where:  
-\(R\) = resistance required in series of LED to limit current,  
-\(V_{dd}\) = supply voltage driving the LED (typ. 3.3, 5, 12V)  
-\(V_{led,f}\) = forward voltage drop of the led (typ. 2.0V)  
-\(I_{led}\) = required current through the led (typ. 5-20mA)
+<p class="centered">
+    where:<br>
+    \(R\) = resistance required in series of LED to limit current<br>
+    \(V_{dd}\) = supply voltage driving the LED (typ. 3.3, 5, 12V)<br>
+    \(V_{led,f}\) = forward voltage drop of the led (typ. 2.0V)<br>
+    \(I_{led}\) = required current through the led (typ. 5-20mA)<br>
+</p>
 
 # Reverse Mounting
 
@@ -95,11 +97,13 @@ Multiplexing is a way of connecting LED's in an arrangement so that it minimises
 
 Multiplexing is normally done in a row/column configuration, where the LED's are connected in a grid-like fashion, and one microcontroller output pin is used for each row and column. This gives the following equation linking the number of pins used and the number of LEDs:
 
-$$y = (\frac{x}{2})^2$$
+<div>$$y = (\frac{x}{2})^2$$</div>
 
-where:  
-\(y\) = number of LEDs  
-\(x\) = number of microcontroller pins
+<p class="centered">
+    where:<br>
+    \(y\) = number of LEDs<br>
+    \(x\) = number of microcontroller pins<br>
+</p>
 
 # Charlieplexing
 
@@ -107,7 +111,7 @@ Charlieplexing is a more efficient (in terms of number of drive signals used) wa
 
 The following equation is given linking the number of pins used and the number of LEDs:
 
-$$y = x^2 - x$$
+<div>$$y = x^2 - x$$</div>
 
 # ESD
 
@@ -131,7 +135,7 @@ RGB LEDs are LED's which have three diodes inside them, one red, one green, and 
 
 RGB's usually have at least four pins, one each for one side of the red, green, and blue diodes (either all anode or all cathode), and a common which connects all three of the other sides of the diodes. They are more complicated to control than a normal LED, normally requiring 3 different PWM signals, and a bit of firmware to calculate the appropriate duty cycles.
 
-You can get RGD LEDs which already have the control and drive circuitry (e.g. the constant current source) for the LEDs inside them. These are normally connected to a microcontroller via a digital communication bus (e.g. [SPI](http://blog.mbedded.ninja/electronics/circuit-design/communication-protocols/spi-protocol), or sometimes a custom protocol).
+You can get RGD LEDs which already have the control and drive circuitry (e.g. the constant current source) for the LEDs inside them. These are normally connected to a microcontroller via a digital communication bus (e.g. [SPI](electronics/circuit-design/communication-protocols/spi-protocol), or sometimes a custom protocol).
 
 One popular example, the WS8211, uses it's own custom communications protocol running at 800kHz.
 
@@ -148,8 +152,6 @@ Some feature logarithmic current output levels to best match up with what the hu
 There are two main ways to dim an LED, either by changing the current or with PWM. Since PWM only varies how long the LED is on for, and keeps the current through the LED the same, it does not really affect the colour of the LED, while the current-changing method does (the colour depends on the forward current).
 
 ## Examples
-
- 
 
 The [PCA9634 8-Channel 25mA I2C LED Controller by NXP](http://www.nxp.com/products/power_management/lighting_driver_and_controller_ics/i2c_led_display_control/series/PCA9634.html) is a simple LED driver for up to 8 single low-power (20mA) LEDs.
 

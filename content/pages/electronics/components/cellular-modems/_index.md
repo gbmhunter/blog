@@ -541,7 +541,7 @@ Supported Bands
 
 <td>
 <ul>
-<li>GSM-850 (AT&T Mobility, Verizon Wireless)</li>
+<li>GSM-850 (AT&amp;T Mobility, Verizon Wireless)</li>
 <li>GSM-1900 (Sprint Corporation, T-Mobile US (Metro PCS))</li>
 </ul>
 </td>

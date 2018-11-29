@@ -23,31 +23,28 @@ I recommend using the unique schematic symbol style below for the range of D-su
 
 {{< figure src="/images/2011/09/connector-db25-schematic-symbol.png" width="185px" caption="An easy-to-identify schematic symbol style for representing D sub-miniature connectors."  >}}
 
-````````````````
-
 # Sizes
 
 The available sizes are:
 
-<table ><tbody ><tr >
-<td colspan="2" >**Normal Density**
-</td>
-<td colspan="2" >**High Density**
-</td>
-<td colspan="2" >**Double Density**
-</td></tr><tr >
-<td >**Name**
-</td>
-<td >**Num. Pins (layout)**
-</td>
-<td >**Name**
-</td>
-<td >**Num. Pins (layout)**
-</td>
-<td >**Name**
-</td>
-<td >**Num. Pins (layout)**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th colspan="2" >Normal Density</th>
+            <th colspan="2" >High Density</th>
+            <th colspan="2" >Double Density</th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Num. Pins (layout)</th>
+            <th>Name</th>
+            <th>Num. Pins (layout)</th>
+            <th>Name</th>
+            <th>Num. Pins (layout)</th>
+        </tr>
+    </thead>
+    <tbody>
+><tr >
 <td >DE-09
 </td>
 <td >9 (8-7)

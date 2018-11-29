@@ -7,21 +7,19 @@ type: page
 url: /electronics/components/circuit-protection/ptc-type-thermistor
 ---
 
-[mathjax]
-
 # Overview
 
 A PTC-type thermistor is a resistor whose resistance increases as temperature increases. They are commonly used as a "resettable fuse" in circuit protection applications.
 
-For information on just plain old resistors, see the [Resistors page](http://blog.mbedded.ninja/electronics/components/resistors).
+For information on just plain old resistors, see the [Resistors page](/electronics/components/resistors).
 
 # Schematic Symbol And Designator
 
-I prefer to use the designator prefix \(RT\) (e.g. \(RT1\)) and the following schematic symbol for a PTC-type thermistor. 
+I prefer to use the designator prefix `\(RT\)` (e.g. `\(RT1\)`) and the following schematic symbol for a PTC-type thermistor. 
 
 {{< figure src="/images/2016/03/positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png" width="417px" caption="Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor."  >}}
 
-I use the designator prefix \(RT\) for thermistors (**R**esistance depends on **T**emperature), while using \(RV\) for varistors (**R**esistance depends on **V**oltage).
+I use the designator prefix `\(RT\)` for thermistors (**R**esistance depends on **T**emperature), while using `\(RV\)` for varistors (**R**esistance depends on **V**oltage).
 
 # Types
 
@@ -43,17 +41,19 @@ One clear **advantage of PTC thermistors is cost** in price-sensitive circuit b
 
 # How To Calculate The Triggered Resistance
 
-Most PTC thermistor datasheets will tell you the nominal off resistance (and/or it's range of values), but not the triggered resistance! However, you can calculate this using the typical power value (\(P_D\)) that they provide.
+Most PTC thermistor datasheets will tell you the nominal off resistance (and/or it's range of values), but not the triggered resistance! However, you can calculate this using the typical power value (`\(P_D\)`) that they provide.
 
-\(P_D\) is the typical power dissipated by the device when in a tripped state and in a fixed temperature (usually 23-25°C) still air environment. This is somewhat independent of the voltage applied to the thermistor, due to an increased voltage causing more heating, which in turn increases the resistance, which lowers the current and therefore dissipated. This is a form of negative feedback, and because this dissipated power is independent of the supply voltage, it can be specified as a property of the component on the datasheet.
+`\(P_D\)` is the typical power dissipated by the device when in a tripped state and in a fixed temperature (usually 23-25°C) still air environment. This is somewhat independent of the voltage applied to the thermistor, due to an increased voltage causing more heating, which in turn increases the resistance, which lowers the current and therefore dissipated. This is a form of negative feedback, and because this dissipated power is independent of the supply voltage, it can be specified as a property of the component on the datasheet.
 
 To calculate the triggered resistance, use the following equation:
 
-$$ R_{triggered} = \frac{V^2}{P_D} $$
+<div>$$ R_{triggered} = \frac{V^2}{P_D} $$</div>
 
-where:  
-\( R_{triggered} \) is the triggered resistance of the PTC thermistor, in Ohms  
-\( V \) is the voltage across the PTC thermistor (usually equal to the open-circuit supply voltage)  
-\( P_D \) is the dissipated power of the PTC thermistor when in it's triggered state, as given by it's datasheet
+<p class="centered">
+    where:<br>
+    \( R_{triggered} \) is the triggered resistance of the PTC thermistor, in Ohms<br>
+    \( V \) is the voltage across the PTC thermistor (usually equal to the open-circuit supply voltage)<br>
+    \( P_D \) is the dissipated power of the PTC thermistor when in it's triggered state, as given by it's datasheet><br>
+</p>
 
 The triggered resistance should be many orders of magnitude larger than the off resistance.

@@ -37,11 +37,14 @@ Molex's PicoBlade connector families are quite popular. They have a 1.25mm pitch
 
 MTA-100 connectors are colour coded according the wire size they accept.
 
-<table style="width: 277px; height: 213px;" class=" aligncenter" ><tbody ><tr >
-<td style="text-align: center;" >**Connector Colour**
-</td>
-<td style="text-align: center;" >**Wire Size**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Connector Colour</th>
+            <th>Wire Size</th>
+        </tr>
+    </thead>
+<tbody ><tr >
 <td style="text-align: center;" >Red
 </td>
 <td style="text-align: center;" >22AWG
