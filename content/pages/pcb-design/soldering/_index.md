@@ -17,15 +17,21 @@ Plastic syringe tips are usually better than metal ones, as they offer less fric
 
 # Solder Paste Dispensing Machines
 
-If you are applying solder paste by hand (as opposed to using a template), you can purchase machines which help automatically dispense a measured amount of solder paste from the syringe. Most are operated with air pressure and require an external air compressor (recommended to be at least 1.5HP). You can also get based around linear motors and peristaltic pumps. Common models from AliExpress include:  * YDL-983A  * AD-982<table style="width: 600px;" border="0" ><tbody ><tr >
-<td >**Model Number**
-</td>
-<td >**Features**
-</td>
-<td >**Vendor**
-</td>
-<td >**Vendor Price**
-</td></tr><tr >
+If you are applying solder paste by hand (as opposed to using a template), you can purchase machines which help automatically dispense a measured amount of solder paste from the syringe. Most are operated with air pressure and require an external air compressor (recommended to be at least 1.5HP). You can also get based around linear motors and peristaltic pumps. Common models from AliExpress include:
+
+* YDL-983A
+* AD-982
+
+<table>
+    <thead>
+        <tr>
+            <th>Model Number</th>
+            <th>Features</th>
+            <th>Vendor</th>
+            <th>Vendor Price</th>
+        </tr>
+    </thead>
+<tbody><tr >
 <td >xxx-982
 </td>
 <td >Analogue dials

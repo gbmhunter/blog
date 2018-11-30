@@ -7,64 +7,26 @@ type: page
 url: /mathematics/geometry/cross-product
 ---
 
-[mathjax]
-
-
-
-
 # Overview
-
-
-
 
 The cross-product is a mathematical operation you can perform on two vectors in 3D space. The cross-product produces a vector which is orthogonal to both of the input vectors, which means it is also normal to the plane containing the two input vectors.
 
-
-
-
 # Mathematical Symbol
 
+The cross product of vectors `\(\textbf{a}\)` and `\(\textbf{b}\)` is written as:
 
-
-
-The cross product of vectors \(\textbf{a}\) and \(\textbf{b}\) is written as:
-
-
-
-
-$$ \textbf{a} \times \textbf{b} $$
-
-
-
+<div>$$ \textbf{a} \times \textbf{b} $$</div>
 
 # Defining Equation
 
-
-
-
 The cross product is defined by the formula:
 
-
-
-
-$$ \textbf{a} \times \textbf{b} = ||\textbf{a}|| ||\textbf{b}|| \, sin (\theta) \, \textbf{n} $$
-
-
-
+<div>$$ \textbf{a} \times \textbf{b} = ||\textbf{a}|| ||\textbf{b}|| \, sin (\theta) \, \textbf{n} $$</div>
 
 # Cross Product Properties
 
-
-
-
 The cross product of two vector always produces a vector which:
 
-
-
-
-
-	  * Is orthogonal to both input vectors (i.e. normal to the plane containing the input vectors)
-	  * Has a direction which is determined by the right-hand rule
-	  * Has a magnitude which is equal to the area of the parallelogram formed by the two input vectors.
-
-
+* Is orthogonal to both input vectors (i.e. normal to the plane containing the input vectors)
+* Has a direction which is determined by the right-hand rule
+* Has a magnitude which is equal to the area of the parallelogram formed by the two input vectors.

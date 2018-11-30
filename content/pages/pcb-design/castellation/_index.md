@@ -23,7 +23,11 @@ Once soldered onto the parent PCB, it is a permanent attachment.
 
 Rows of holes are drilled around the edge of the PCB. Once the holes have been through-hole plated, the board edge is cut so that it runs right down the middle of these holes. The edge of the board now looks like the top of a castle wall, hence the word catellation.
 
-# Design  * Make the vias as large as possible  * Make the top and bottom copper layer pads for the vias as large as possible  * Add pads to the castellated vias on middle layers if possible, to help anchor the barrel. This will reduce burring during the routing.
+# Design
+
+* Make the vias as large as possible
+* Make the top and bottom copper layer pads for the vias as large as possible
+* Add pads to the castellated vias on middle layers if possible, to help anchor the barrel. This will reduce burring during the routing.
 
 The holes can be both used for mechanical fixture and also to pass electrical signals between the main and daughter PCBs.
 

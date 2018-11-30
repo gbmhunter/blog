@@ -21,11 +21,9 @@ A common and easy way to add test points onto a PCB is to leave some vias **unte
 
 If you want a more serious testpoint something you can clip something onto, many manufacturers make custom testpoints. Even though these are designed to be miniature SMD test-points, the manufacturers normally recommend a largish land pad. Do not skimp on this, as you require this land-area so that the pad doesn't rip of when you clip test leads to the test-point. Be warned, for what are seemingly simple pieces of bent metal, they are not cheap! Some examples are:
 
-<table class="aligncenter" ><tbody ><tr >
+<table><tbody ><tr >
 <td >
-
 {{< figure src="/images/2015/10/keystone-minature-smd-testpoint.jpg" caption="A minature SMD testpoint made by Keystone."  >}}
-
 </td>
 <td >Keystone Miniature SMT Test Point
 </td>
@@ -37,5 +35,3 @@ If you want a more serious testpoint something you can clip something onto, many
 </td>
 <td >Element14 Number: 182-6282
 </td></tr></tbody></table>
-
-#  

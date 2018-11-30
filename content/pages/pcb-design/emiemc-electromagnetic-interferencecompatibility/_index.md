@@ -7,13 +7,9 @@ type: page
 url: /pcb-design/emiemc-electromagnetic-interferencecompatibility
 ---
 
-[mathjax]
-
 # Overview
 
-<blockquote>It is very difficult to reduce EM emissions by more than 20dB without serious design changes - Anon
-> 
-> </blockquote>
+>It is very difficult to reduce EM emissions by more than 20dB without serious design changes - Anon
 
 # Contact vs. Non-Contact Probes
 
@@ -27,6 +23,6 @@ Most general-purpose oscilloscope have very poor common-mode rejection. The comm
 
 The impedance mismatch between the noise source, the tracks, the scope probe and oscilloscope may cause reflections to reduce the accuracy of your noise measurements. 
 
-For example, the output impedance of a SMPS may be a few \(m\Omega\), which then connects to the PCB tracks and scope probe, which may have an impedance of \(50\Omega\). This then connects to the oscilloscope which has an impedance in the \(M\Omega\). 
+For example, the output impedance of a SMPS may be a few `\(m\Omega\)`, which then connects to the PCB tracks and scope probe, which may have an impedance of `\(50\Omega\)`. This then connects to the oscilloscope which has an impedance in the `\(M\Omega\)`. 
 
-These reflections can be minimised by adding the appropriate termination resistors, e.g. a \(50\Omega\) resistor in series with the SMPS (as close to the SMPS output as you can), and then another \(50\Omega\) resistor in parallel (shunt to ground), as close to the oscilloscope input as you can. All noise measurements
+These reflections can be minimised by adding the appropriate termination resistors, e.g. a `\(50\Omega\)` resistor in series with the SMPS (as close to the SMPS output as you can), and then another `\(50\Omega\)` resistor in parallel (shunt to ground), as close to the oscilloscope input as you can. All noise measurements

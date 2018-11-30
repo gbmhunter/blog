@@ -17,9 +17,17 @@ HASL is one of the most widely used surface finishes. It involves dipping the ci
 
 {{< figure src="/images/2015/10/hasl-pcb-surface-finish-example.jpg" width="463px" caption="An example of a PCB with a HASL surface finish. Image from http://www.pcbsourcing.com/."  >}}
 
-**Pros:**  * Cheap  * Tough  * Re-workable
+**Pros:**
 
-**Cons:**  * Uneven surface  * Thermally shocks the PCB (decreased reliability)  * Plugs (or partially plugs) plated through-holes
+* Cheap
+* Tough
+* Re-workable
+
+**Cons:**
+
+* Uneven surface
+* Thermally shocks the PCB (decreased reliability)
+* Plugs (or partially plugs) plated through-holes
 
 HASL used to be the de-facto surface finish for most PCB's. As component footprint has shrunk, the limitations of HASL have begun to cause serious issues.
 
@@ -33,9 +41,16 @@ Immersion tin is
 
 {{< figure src="/images/2015/10/example-of-immersion-tin-surface-finish-on-pcb.jpg" width="890px" caption="Example of an immersion tin (ISn) PCB surface finish. Image from http://www.standardpcb.com/."  >}}
 
-**Pros**  * Relatively cheap, but more expensive than HASL  * Flat surface  * No lead (RoHS compliant)  * Re-workable
+**Pros**
 
-**Cons**  * Short shelf-life (3-6 months)
+* Relatively cheap, but more expensive than HASL
+* Flat surface
+* No lead (RoHS compliant)
+* Re-workable
+
+**Cons**
+
+* Short shelf-life (3-6 months)
 
 The biggest issue with ISn is that the copper and tin layers slowly diffuse into one another over time. This creates "tin wiskers", and limits the shelf-life of ISn PCB's (before soldering) to about 3-6 months.
 
@@ -45,9 +60,16 @@ Immersion silver is good alternative to ENIG.
 
 {{< figure src="/images/2015/10/pcb-surface-finish-immersion-silver.jpg" width="600px" caption="Example of an immersion silver (IAg) PCB finish. Image from http://www.rlcinnovation.com/."  >}}
 
-**Pros**  * Precise  * Only requires one plating procedure (compared to ENIG)
+**Pros**
 
-**Cons**  * Moderately expensive  * Finger-grease and solvents can cause wetting problems  * Gets attacked in acidic and sulphur environments
+* Precise
+* Only requires one plating procedure (compared to ENIG)
+
+**Cons**
+
+* Moderately expensive
+* Finger-grease and solvents can cause wetting problems
+* Gets attacked in acidic and sulphur environments
 
 PCB's plated with IAg must not be handled directly or cleaned with a solvent prior to soldering, as finger-grease and solvents can cause wetting problems.
 
@@ -57,9 +79,16 @@ ENIG is becoming more and more popular as component package pitch sizes drop, 
 
 {{< figure src="/images/2015/10/example-of-immersion-gold-pcb-surface-finish.jpg" width="1557px" caption="Example of an immersion gold PCB surface finish. Image from http://www.standardpcb.com/."  >}}
 
-**Pros**  * Very high shelf-life  * Good for PCB fingers  * Good for RF shield connections
+**Pros**
 
-**Cons**  * More expensive than immersion silver  * Requires to plating procedures (nickel, then gold)
+* Very high shelf-life
+* Good for PCB fingers
+* Good for RF shield connections
+
+**Cons**
+
+* More expensive than immersion silver
+* Requires to plating procedures (nickel, then gold)
 
 # Immersion vs. Electro-less Platings
 

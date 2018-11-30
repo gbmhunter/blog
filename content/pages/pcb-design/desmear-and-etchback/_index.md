@@ -15,7 +15,7 @@ The mechanical of via's in multi-layer PCBs crates a residual resin that smears 
 
 The images below show positive etchback.
 
-<table style="width: 800px; height: 300px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >{{< figure src="/images/2014/11/etchback-none.png" width="203px" caption="Cross-section of a via hole with no etchback (hole has not been plated yet)."  >}}
 </td>
 <td >{{< figure src="/images/2014/11/etchback-before-plating.png" width="224px" caption="Cross-section of a via hole that has positive etchback (hole has not been plated yet)."  >}}

@@ -9,7 +9,17 @@ url: /pcb-design/noise-supression
 
 # Bypass Capacitors
 
-Bypass capacitors are used to separate AC and DC signals from one another. Normally they are used to short out the AC component of a waveform and allow through the DC signal. A common type of bypass capacitor is a 'decoupling' capacitor. This is usually a 100nF (or more commonly, 0.1uF) capacitor connected to the power and ground pins next to any digital or switching IC. It is placed as close as possible to the pins to give the maximum effect (reducing the loop area). It serves to reduce the high frequency AC components on the power lines generated from the Ic itself. Another common type of bypass capacitor is the low frequency bypass capacitor. These are used to reduce voltage sag on the power rails from high current pulses. When very large currents are being pulsed, an resistor or inductor is also used to form a RC or LC network.The value of the components used in a low-frequency bypass circuit depend on the magnitude and length of the current pulse. Situations When You Must Consider Noise  * High-gain, low input level amplifiers (e.g. pre-amps)  * High frequency circuits  * Circuits with large current pulses  * Circuits with sensitive sensors (this essentially mean's you will need a high-gain, low input level amp)  * Circuits in noisy (in the electrical sense) environments (e.g. car engine bays, next to power circuitry e.t.c){{< figure src="/images/2011/09/fpga-fgg-485-capacitors-around-outside-pcb-routing-screenshot.png" width="670px" caption="If your not allowed to place components on the bottom-side of the PCB, placing decoupling caps around the perimeter of a large BGA packaged FPGA is the best you can do."  >}}
+Bypass capacitors are used to separate AC and DC signals from one another. Normally they are used to short out the AC component of a waveform and allow through the DC signal. A common type of bypass capacitor is a 'decoupling' capacitor. This is usually a 100nF (or more commonly, 0.1uF) capacitor connected to the power and ground pins next to any digital or switching IC. It is placed as close as possible to the pins to give the maximum effect (reducing the loop area). It serves to reduce the high frequency AC components on the power lines generated from the Ic itself. Another common type of bypass capacitor is the low frequency bypass capacitor. These are used to reduce voltage sag on the power rails from high current pulses. When very large currents are being pulsed, an resistor or inductor is also used to form a RC or LC network.The value of the components used in a low-frequency bypass circuit depend on the magnitude and length of the current pulse.
+
+Situations When You Must Consider Noise:
+
+* High-gain, low input level amplifiers (e.g. pre-amps)
+* High frequency circuits
+* Circuits with large current pulses
+* Circuits with sensitive sensors (this essentially mean's you will need a high-gain, low input level amp)
+* Circuits in noisy (in the electrical sense) environments (e.g. car engine bays, next to power circuitry e.t.c)
+
+{{< figure src="/images/2011/09/fpga-fgg-485-capacitors-around-outside-pcb-routing-screenshot.png" width="670px" caption="If your not allowed to place components on the bottom-side of the PCB, placing decoupling caps around the perimeter of a large BGA packaged FPGA is the best you can do."  >}}
 
 Note that top-side only components for high-speed FPGA designs is not recommended, and prototyping is definitely needed for design verification.
 

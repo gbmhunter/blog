@@ -7,8 +7,6 @@ type: page
 url: /pcb-design/ims-insulated-metal-substrate-pcbs
 ---
 
-[latexpage]
-
 # Overview
 
 Insulated metallic substrate (IMS) PCBs are PCBs which use a metallic material as a a thick base or inner layer to improve the thermal and mechanical properties of the PCB. They are also known as aluminium base, aluminium clad, metal clad (MCPCB), or thermally conductive PCBs (ergh...bad name, all PCBs are pretty thermally conductive). A **3-10 fold** thermal improvement over standard FR-4 can be achieved.
@@ -31,9 +29,16 @@ Sometimes using a IMS PCB saves you having to use a heatsink!
 
 # Thermal Conductivities
 
-Just for comparison, here are the thermal conductivities of various PCB materials. Note that these units are Watts per metre per Kelvin (or Watts per metre-Kelvin).  * Copper: \(385 W/m/K\)  * Aluminum: \(205 W/m/K\)  * Water: \(0.56 W/m/K\)  * FR4: \(0.25 W/m/K\)  * Thermal prepreg: \(1.00 – 5.00 W/m/K\)  * Still Air: \(0.24 W/m/K\)
+Just for comparison, here are the thermal conductivities of various PCB materials. Note that these units are Watts per metre per Kelvin (or Watts per metre-Kelvin).
 
-Notice how traditional PCB prepreg has a very poor thermal conductivity at \(0.25W/m/K\).
+* Copper: `\(385 W/m/K\)`
+* Aluminum: `\(205 W/m/K\)`
+* Water: `\(0.56 W/m/K\)`
+* FR4: `\(0.25 W/m/K\)`
+* Thermal prepreg: `\(1.00 – 5.00 W/m/K\)`
+* Still Air: `\(0.24 W/m/K\)`
+
+Notice how traditional PCB prepreg has a very poor thermal conductivity at `\(0.25W/m/K\)`.
 
 # Design
 

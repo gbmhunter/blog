@@ -31,13 +31,15 @@ Extended Gerber is the most common Gerber format, the standard Gerber format is 
 
 Layers are sorted alphabetically by extension.
 
-<table style="width: 700px;" ><tbody ><tr >
-<td >Extension
-</td>
-<td >Layer Name
-</td>
-<td >Description
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Extension</th>
+            <th>Layer Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody ><tr >
 <td >.GBL
 </td>
 <td >Bottom Layer

@@ -7,8 +7,6 @@ type: page
 url: /pcb-design/impedance-controlled-routing
 ---
 
-[mathjax]
-
 # Overview
 
 {{< figure src="/images/2013/10/microstrip-track-example-in-isometric-view-microchip.gif" width="316px" caption="An isometric diagram of a microstrip. Image from www.maximintegrated.com."  >}}
@@ -29,11 +27,14 @@ The characteristic impedance of a transmission line need to equal the impedance 
 
 Typical impedances and their associated uses are:
 
-<table style="width: 500px;" ><tbody ><tr >
-<td >**Characteristic Impedance**
-</td>
-<td >**Uses**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Characteristic Impedance</th>
+            <th>Uses</th>
+        </tr>
+    </thead>
+<tbody><tr >
 <td >50Ω
 </td>
 <td >GPS antennas, GPRS antennas, BNC cables (for things like oscilloscopes)
@@ -51,26 +52,28 @@ Typical impedances and their associated uses are:
 
 There is a well-known rule-of-thumb for applies to digital waveforms:
 
-$$ BW \approx \frac{0.35}{t_r} $$
+<div>$$ BW \approx \frac{0.35}{t_r} $$</div>
 
-where:  
-\( t_r \) is the maximum rise time from 10 to 90% (this is stated in the USB spec.), in seconds (s).  
-\( BW \) the resulting maximum bandwidth the track has to support, in Hertz (Hz). You can also think of this as a maximum frequency, since the bandwidth starts at 0Hz.
+<p class="centered">
+    where:<br>
+    \( t_r \) is the maximum rise time from 10 to 90% (this is stated in the USB spec.), in seconds (s).<br>  
+    \( BW \) the resulting maximum bandwidth the track has to support, in Hertz (Hz). You can also think of this as a maximum frequency, since the bandwidth starts at 0Hz.<br>
+</p>
 
 For example, the USB 2.0 specification states a maximum rise time of 4ns. Using the equation above, this gives us a bandwidth of approximately 87.5MHz. 
 
 From this, we can calculate the wavelength of an 87.5MHz signal travelling down a track on standard FR-4 PCB.
 
-$$ \lambda = \frac{c}{f\sqrt{\epsilon_r}} $$
+<div>$$ \lambda = \frac{c}{f\sqrt{\epsilon_r}} $$</div>
 
-where:  
-\( c \) is the speed of light, in meters per second  
-\(  f \) is the frequency that you worked out above (which we called bandwidth)  
-\( \epsilon_r \) is the di-electric of the material the electro-magnetic wave is travelling through, and is unitless. In our case this will be the di-electric of the PCB. For standard FR4, this is about 4.35.
+<p class="centered">
+where:<br>
+\( c \) is the speed of light, in meters per second<br>
+\(  f \) is the frequency that you worked out above (which we called bandwidth)<br>
+\( \epsilon_r \) is the di-electric of the material the electro-magnetic wave is travelling through, and is unitless. In our case this will be the di-electric of the PCB. For standard FR4, this is about 4.35.<br>
+</p>
 
-<blockquote>The impedance of a PCB track is not important if it is at least 10 times smaller than the wavelength of the signal.
-> 
-> </blockquote>
+> The impedance of a PCB track is not important if it is at least 10 times smaller than the wavelength of the signal.
 
 Thus, the minimum wavelength of the USB full-speed signal is 1.65m, and the characteristic impedance of the track is only important if the total track length is greater than 165mm.
 
