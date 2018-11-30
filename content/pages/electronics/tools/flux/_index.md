@@ -7,8 +7,6 @@ type: page
 url: /electronics/tools/flux
 ---
 
-[mathjax]
-
 # Overview
 
 Flux is a substance used in the soldering process to remove metal corrosion and improve the adhesion of the molten solder to the metal surfaces.
@@ -33,7 +31,7 @@ Some types of solder contain a rosin core to aid the soldering process, and save
 
 For the chemically-minded people, rosin flux usually has a formula of:
 
-$$ C_{19}H_{19}COOH $$
+<div>$$ C_{19}H_{19}COOH $$</div>
 
 Obviously, being a naturally produced substance, the make-up of a rosin flux will change.
 

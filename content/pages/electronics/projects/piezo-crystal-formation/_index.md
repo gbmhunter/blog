@@ -27,9 +27,7 @@ To do a crude test of whether or not it would produce a voltage when struck, the
 
 We were not expecting this, but a voltage was generated when we hit it!
 
-
 <blockquote>To anyone using an oscilloscope: Mains ripple easily gets it way onto the trace (since it's really an open circuit), but aslong as you set the trigger to manual and at a high enough voltage, you should be able to catch this spike!</blockquote>
-
 
 {{< figure src="/images/electronics-piezocrystalformation/2012-07-21-19-42-13.jpg" caption="The voltage when giving the piezo a small whack from the end of a screw driver."  width="500px" >}}
 
@@ -43,8 +41,6 @@ These crystals are quite brittle (they aren't diamonds!). Not surprisingly, it b
 
 If you want more information about piezos and their use in electronics, see the [Piezo Speaker page](http://blog.mbedded.ninja/electronics/components/piezos).
 
-
 # Picture Gallery
-
 
 [nggallery id=43]

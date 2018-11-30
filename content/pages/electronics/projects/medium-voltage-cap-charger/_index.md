@@ -11,7 +11,8 @@ Project Start Date: March 2006
 Project End Date: April 2006
 Current State: Completed
 
-**The Crucial Stats:**
+# The Crucial Stats:
+
 Input Voltage: 12V
 Maximum Charge Voltage: 500V
 

@@ -9,9 +9,7 @@ url: /electronics/teardowns/evp-x12p-300w-speaker-teardown
 
 Here is a little teardown of a Wharfedale EVP-X12P 300W active speaker.
 
-
 <blockquote>BACKSTORY: So I borrowed two Wharfedale EVP-X12P active speakers for DJing at a 21st party, and half-way through the set, as Skrillex was playing, I happened to blow one up (if I remove the theatrics, what I really mean is that one of the bass/mid cone speakers stopped working). It turned off, and I smelt that 'burnt electronics' smell. It turned back in about 10minutes, however was not producing any sound from the cone speaker. I managed to survive the rest of the set with just one.</blockquote>
-
 
 On the premise I over-drove it, I was looking for visibly wrong things such as blown fuses or dried up/non-existant thermal compound. All components were through-hole, so that made things easier to investigate...
 
@@ -60,11 +58,7 @@ And then I discovered why I was still reading 4Ω at the connector on the amplif
 
 Now knowing that I needed a new bass-driver, I got the guys at [South Pacific Music](http://www.southpacmusic.co.nz/), the New Zealand stockists for Wharfedale Pro speakers, to re-cone the bass-driver.
 
-
 # Datasheets:
-
-
-
 
 ## Power Transistors
 
@@ -73,8 +67,6 @@ Now knowing that I needed a new bass-driver, I got the guys at [South Pacific Mu
 
 [gview file="/images/2012/07/2SA1492-Sanken-PNP-Transistor.pdf"]
 
-
 # Pictures:
-
 
 [nggallery id=38]

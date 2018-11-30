@@ -11,8 +11,6 @@ url: /electronics/tools/usb-to-serial-converters
 
 FTDI (Future Technology Devices International Ltd.) is a popular and reputable designer and manufacturer of USB-to-Serial converters. They make a range of IC's for this purpose, as well and manufacturing useful products which use these IC's (such as USB-to-serial cables).
 
- 
-
 As of 2016, their IC's are commonly found in good quality USB-to-serial hardware (more so than one of their main competitors, Prolific
 
 ## Latency
