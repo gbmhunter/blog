@@ -13,17 +13,13 @@ Current Status: **Finished**
 Last Update: 22/12/2012
 
 
-## 
-
-
-<table style="width: 750px;" align="center" >
-
-<tr >
-
-Page
-Description
-</tr>
-
+<table>
+    <thead>
+        <tr>
+            <th>Page</th>
+            <th>Description</th>
+        </tr>
+    </thead>
 <tbody >
 <tr >
 

@@ -7,21 +7,15 @@ type: page
 url: /electronics/projects/electric-skateboard/electric-skateboard-design
 ---
 
-
-	  * The Skateboard That Started It All...
-
-
-
 # The Skateboard That Started It All...
-
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/first-skateboard-top-view.jpg" caption="Top view of the first skateboard."  width="400px" >}}
 
 I brought this electric skateboard of a friend for NZ$20. This is what started my craze to build something better, faster, harder, stronger (did I get that in the right order?). This board comes fitted with a 120W brushed DC motor, which does get you places, but not quickly. It is powered by two 12V lead-acid batteries, which make it quite heavy. I managed to get about 5-6km from this board before it would crap out, leaving me to drag the thing the rest of the way home. Admittedly, the batteries weren't in the best of condition, being many years old and having no charge/discharge activity in a long time. It's operated by pressing down on a big button with your foot on the top of the board (it has one speed and one speed only).
-<table style="width: 650px;" border="0" class="aligncenter" >
+
+<table>
 <tbody >
 <tr >
-
 <td >{{< figure src="/images/electronics-electricskateboard-firstprototype/first-skateboard-front-wheels.jpg" caption="The front axle and turning system of the first electric skateboard"  width="300px" >}}
 </td>
 
@@ -39,9 +33,7 @@ I brought this electric skateboard of a friend for NZ$20. This is what started m
 </tbody>
 </table>
 
-
 # Finding A Motor
-
 
 The first thing to do was to find a new motor. The motor could possibly be the single most important part of the skateboard design. The motor is one of the primary factors in deciding how fast the board will go, the amount of power drawn from the battery, the acceleration/deceleration, and the ability to climb up hills (essentially the torque).
 
@@ -51,17 +43,13 @@ A skateboard requires a fairly powerful motor (in a non-commercial sense). The N
 
 I decided to use the brushless DC (BLDC) motor shown above. BLDC motors have an awesome power-to-weight ratio and high efficiency (90%+), which will extend the distance the board can travel. This is at the expensive of being slightly harder to control (see the page [BLDC Motor Control](http://blog.mbedded.ninja/electronics/circuit-design/bldc-motor-control) for more on that).
 
-
 # The ESC
-
 
 Designing a control system for a BLDC motor is not trivial, so I decided to use an off-the-shelf ESC (electronic speed controller).
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/bldc-esc-size-comparison.jpg" caption="A size comparison of the BLDC ESC (electronic speed controller)."  width="400px" >}}
 
-
 # Battery
-
 
 I decided to get a 29.6V, 5800mAh Li-Po (full details on the Hardware page). This gives it 171.68Wh's of energy (it can supply 172W for 1 hour, or 343W for 30mins e.t.c).
 
@@ -71,14 +59,12 @@ I also got this multi-chemistry battery charger shown below to charge it.
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/img_6228.jpg" caption="A multi-chemistry battery charger from Hobby King."  width="400px" >}}
 
-
 # Wheels And Axles
-
 
 The wheels and axles where brought of TradeMe, New Zealands equivalent of eBay. I needed axles and wheels that would allow me to transfer power from the motor somehow. After much consideration, and tossing up the idea of making them myself, I decided to buy some axles and wheels that were designed for skateboards in the first place (half-cheating, I know, but it would of added so much more work to the project, and it had enough already).
 
 There were two wheel/axle variants, a smaller package for street only use and a larger package for off-roading. I decided to go with the off-road version. They are huge! The wheels are self-sealing pneumatic tires and the axles are huge (and heavy :-(...). Although this adds a decent amount of weight to the board, they will be able to take on shallow curbs and ruts which I was worried about when flying down the streets in the dark. Being large they offer more side-to-side stability, but also increase the centre of weight, which is bad for stability. It's a healthy compromise...
-<table style="width: 650px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
 
@@ -99,51 +85,33 @@ There were two wheel/axle variants, a smaller package for street only use and a 
 </tbody>
 </table>
 
-
 # Drive Cog
-
 
 The drive cog was brought from the same place as the wheels and axles. Fortunately, the cog was designed for a 10mm shaft, exactly what my motor shaft happened to be. However, the cog was a 'D' type so it could deliver torque, while the motor shaft was circular. Thankfully, the kind folk at [Nivens Engineering](http://www.nivenengineering.co.nz/)[ ](http://www.nivenengineering.co.nz/)were able to machine a D into the shaft, as well as drilling and treading a hole in the side of the cog for a retaining grub screw.
 
-
 {{< figure src="/images/electronics-electricskateboard-firstprototype/cog_02.jpg" caption="The grub screw added to the cog."  width="400px" >}}
-
-
-
-
 
 # Mounting The Motor To The Rear Axle
 
-
 The motor mount on the rear axle was not designed for the BLDC motor (it was designed for a larger 800W brushed motor). To fix the motor in the correct position I had to drill new holes in the mount. Luckily, the BLDC motor came with it's own mounting bracket, and even luckier was that it fitted quite nicely inside the original motor mount, needing minimal modifications. Notice the difference in size between the expected motor and the BLDC! And note that this smaller motor is 4-5 times more powerful, and lighter (ahem, as "they" quote, keep reading to find out why this figures may be wrong)!
-
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/img_6314.jpg" caption="The BLDC motor mounted onto the electric skateboards axle."  width="400px" >}}
 
-
-
-
-
 # The Prototype Motherboard
 
-
 The first prototype control circuitry (aka motherboard), was assembled on strip-board. I used an ATmega8L-8PC microcontroller since the [DIP package](http://localhost/?q=node/50) makes it easy to hand solder into strip board, requiring no breakout PCB.
-<table style="width: 850px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
-
 <td >{{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0136.jpg" caption="The first electric skateboard prototype circuit."  width="400px" >}}
 </td>
-
 <td >{{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0138.jpg" caption="The first electric skateboard prototype circuit up close."  width="400px" >}}
 </td>
 </tr>
 </tbody>
 </table>
 
-
 # Wireless Control
-
 
 I wanted to be able to hold down a trigger in my hand to control the motor speed wirelessly. To do this I used the MaxStream XBee module, a 'plug and play' wireless module that accepts standard TTL serial input and output. It is used in 'Transparent Mode' (non API), making it very easy to use (you don't have to worry about packetising the data or using a defined structure on the data).
 
@@ -159,9 +127,7 @@ The first wireless controller looked awesome, if your a prototyping geek like me
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/testing-the-pwm-with-remote-and-light-bulb.jpg" caption=" "  width="700px" >}}
 
-
 # RPM Counter
-
 
 I needed to measure the RPM range of the motor to work out what gearing I needed between the motor and the wheel. To do this I glued a section of KNEX (basically a plastic rod) onto the rotor and placed an infrared emitting diode and transistor either side of the KNEX.
 
@@ -173,36 +139,25 @@ When the motor spun, the infrared transistor would essentially switch from 'off'
 
 Table showing the calculations for working out the maximum and minimum rpm of the motor.
 
-
 # Power Requirements
-
 
 The power requirements of the circuits and motor determine the run time of both the skateboard unit and the remote control. They also determine the size and complexity of the power circuitry. Larger power requirements demands larger heatsinks, or better efficiency voltage conversion circuitry (e.g. a simple and cheap inefficient linear voltage regulator versus a more complex but efficient switch-mode power supply).
 
-
 ### Skateboard Power Requirements
-
 
 The skateboard power is largely used by the 800W (max) motor. A small amount will be taken up the LED lighting (both front/rear and skirting lights), a smaller amount by the comms, and a tiny amount by the micro-controller itself. A breakdown of the power usage is below:
 
 The battery voltage is nominally 48V, although this can be as high as 53V and as low as 42V depending on the charge. This is dropped down to 12V by a switch-mode power supply for the lights. Two linear voltage regulators drop the voltage even further to 3.3V for the digital circuitry.
 
-
 ### Remote Power Requirements
-
 
 The remote uses far less power than the board, and is largely consumed by the comms and leds. The remote is powered from a 9V Ni-MH battery with a capacity of 180mAh (I'm hoping to get some higher capacity 300mAh battery as the run time is currently only about an hour). This is dropped down to 3.3V by a linear voltage regulator to power all of the circuity.
 
-
-# 
-
-
-
-
 # Electric Skateboard v1.0
 
+{{< figure src="/images/electronics-electricskateboard-secondprototype/2012-01-29-13-55-47.jpg" caption="Drilling holes in a plank of wood to attach the axles to a test skateboard."  width="150px" >}}
 
-{{< figure src="/images/electronics-electricskateboard-secondprototype/2012-01-29-13-55-47.jpg" caption="Drilling holes in a plank of wood to attach the axles to a test skateboard."  width="150px" >}} The test board was to make sure the basic principle worked, and to make sure I hadn't done something fundamentally wrong such as brought motor that was utterly too small or wheels/gear-ratio combo that wouldn't work properly. The mechanical part was as simple as mounting the axles onto a piece of MDF.
+The test board was to make sure the basic principle worked, and to make sure I hadn't done something fundamentally wrong such as brought motor that was utterly too small or wheels/gear-ratio combo that wouldn't work properly. The mechanical part was as simple as mounting the axles onto a piece of MDF.
 
 The proto-type electronics were stuck onto the top, and after lots of testing and debugging, I finally managed to get it moving! With code bugs and problems using the RC trigger pot, I wasn't able to get the electric skateboard up to full speed, but I still managed to break the 30km/h mark. The [ESC](http://localhost/?q=content/hardware) got damn hot! This may need heatsinking in the future...
 
@@ -222,12 +177,10 @@ Getting ready for a test run to work!
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/getting-ready-to-test-ride.jpg" caption="Getting ready to test ride the electric skateboard."  width="400px" >}}
 
-
 # An Explosion
 
-
 Unfortunately, the BLDC ESC blew up about half way to work (a few kilometers into the test run). My best guess is that both the RC plane designed motor and  controller were under-powered for the job (even though rated well enough). The picture on the right shows the blown ESC.
-<table style="width: 650px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
 
@@ -240,9 +193,7 @@ Unfortunately, the BLDC ESC blew up about half way to work (a few kilometers int
 </tbody>
 </table>
 
-
 # The New Motor + Battery
-
 
 However, after I made the change from a BLDC to brushed-DC motor, I made an upgrade to a 48V, 10Ah LiFePO battery! However, the first battery they sent was the wrong size (I had ordered a flatter shape, could you see this fitting on the bottom of a skateboard?).
 
@@ -256,9 +207,7 @@ The electronics mounted onto the top of the second prototype.
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/img_6639.jpg" caption="The electronics mounted onto the top of the second prototype board."  width="400px" >}}
 
-
 # Custom Half-Bridge
-
 
 The next attempt at motor control was done, using a brushed DC motor and a homemade half-bridge controller.
 
@@ -276,9 +225,7 @@ It turns out I did not have enough bulk capacitance, causing the voltage to osci
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/2012-02-18-17-08-57.jpg" caption=" "  width="500px" >}}
 
-
 # Alarm Prototype
-
 
 I wanted a motion alarm on the skateboard so I could "arm" it when locking it to a bike rack in public places.
 
@@ -287,10 +234,9 @@ I used the MS24 motion sensor.
 {{< figure src="/images/electronics-electricskateboard-secondprototype/2012-03-04-21-17-27.jpg" caption="The MS24 motion sensor (works in any direction, unlike most tilt sensors)."  width="300px" >}}
 
 And built this test circuit on breadboard. There is a PSoC development kit in the background.
-<table style="width: 650px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
-
 <td >{{< figure src="/images/electronics-electricskateboard-secondprototype/2012-03-08-21-37-14.jpg" caption="The BJT full-bridge used to drive the alarm speaker."  width="300px" >}}
 </td>
 
@@ -300,91 +246,68 @@ And built this test circuit on breadboard. There is a PSoC development kit in th
 </tbody>
 </table>
 
-
 # The Final PCB Design
-
-
-
 
 Once the electronic design had been verified with the prototypes, it was time to get some professional PCB's made. The PCB's were designed in Altium. I used a PSoC 5 [microcontroller](http://localhost/?q=node/56) from Cypress for the final designs.
 
-
-
-<table style="width: 800px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
-
-<td style="text-align: center;" >{{< figure src="/images/electronics-electricskateboard/schematic-collage.jpg" caption="A collage of the 5 schematic sheets that make up the remote circuit. Most of them were pretty sparse except for the microcontroller sheet."  width="250px" >}}
+<td>{{< figure src="/images/electronics-electricskateboard/schematic-collage.jpg" caption="A collage of the 5 schematic sheets that make up the remote circuit. Most of them were pretty sparse except for the microcontroller sheet."  width="250px" >}}
 </td>
 
-<td style="text-align: center;" >{{< figure src="/images/electronics-electricskateboard/collage-remote.jpg" caption=" "  width="250px" >}}
+<td>{{< figure src="/images/electronics-electricskateboard/collage-remote.jpg" caption=" "  width="250px" >}}
 </td>
 
-<td style="text-align: center;" >{{< figure src="/images/electronics-electricskateboard/half-bridge.jpg" caption=" "  width="250px" >}}
-</td>
-</tr>
-<tr >
-
-<td style="text-align: center;" >{{< figure src="/images/electronics-electricskateboard/board-2d.jpg" caption="2D PCB design of the mother-board, showing the top and bottom tracks."  width="250px" >}}
-</td>
-
-<td style="text-align: center;" >{{< figure src="/images/electronics-electricskateboard/remote-pcb-2d-bottom.jpg" caption=" "  width="250px" >}}
-</td>
-
-<td style="text-align: center;" >{{< figure src="/images/electronics-electricskateboard/half-bridge-2d.jpg" caption="2D PCB design of the half-bridge, showing the top and bottom tracks."  width="250px" >}}
+<td>{{< figure src="/images/electronics-electricskateboard/half-bridge.jpg" caption=" "  width="250px" >}}
 </td>
 </tr>
 <tr >
 
-<td style="text-align: center;" >{{< figure src="/images/electronics-electricskateboard/board-3d-front.jpg" caption="3D model of the motherboard."  width="250px" >}}
+<td>{{< figure src="/images/electronics-electricskateboard/board-2d.jpg" caption="2D PCB design of the mother-board, showing the top and bottom tracks."  width="250px" >}}
 </td>
 
-<td style="text-align: center;" >{{< figure src="/images/electronics-electricskateboard/remote-pcb-3d-model-back-side.jpg" caption="3D model of the bottom side of the remote PCB v2."  width="250px" >}}
+<td>{{< figure src="/images/electronics-electricskateboard/remote-pcb-2d-bottom.jpg" caption=" "  width="250px" >}}
 </td>
 
-<td style="text-align: center;" >{{< figure src="/images/electronics-electricskateboard/half-bridge-3d-front.jpg" caption="3D model of the half-bridge motor controller. In case you were wondering, the 8 large cylindrical thingys are bulk capacitors."  width="250px" >}}
+<td>{{< figure src="/images/electronics-electricskateboard/half-bridge-2d.jpg" caption="2D PCB design of the half-bridge, showing the top and bottom tracks."  width="250px" >}}
+</td>
+</tr>
+<tr >
+
+<td>{{< figure src="/images/electronics-electricskateboard/board-3d-front.jpg" caption="3D model of the motherboard."  width="250px" >}}
+</td>
+
+<td>{{< figure src="/images/electronics-electricskateboard/remote-pcb-3d-model-back-side.jpg" caption="3D model of the bottom side of the remote PCB v2."  width="250px" >}}
+</td>
+
+<td>{{< figure src="/images/electronics-electricskateboard/half-bridge-3d-front.jpg" caption="3D model of the half-bridge motor controller. In case you were wondering, the 8 large cylindrical thingys are bulk capacitors."  width="250px" >}}
 </td>
 </tr>
 </tbody>
 </table>
 
-
-# 
-
-
-
-
 # The Schematics
 
-
-
-
 ## Motherboard PCB
-
 
 The schematics for the motherboard are shown below.
 
 [gview file="/images/2011/09/Electric-Skateboard-Motherboard-v1.1-Schematics.pdf"]
 
-
 ## Remote Control PCB
-
 
 The schematics for the remote control are shown below.
 
 [gview file="/images/2011/09/Electric-Skateboard-Remote-v1.1-Schematics.pdf"]
 
-
 ## Motor Driver PCB
-
 
 The schematics for the Half Bridge Driver v1.1 (please remember, this is the one that kept blowing up) are shown below. From v1.0->v1.1, I removed the low-side MOSFET switch that was designed to disconnect the battery. This didn't work when tested, so I replaced it with a high-current relay instead (still operating from the same key-switch). I'm still at a loss to as why this did not work. I made multiple prototypes, and enlisted help/advice from many engineering friends and even a 40-year old motor control and design veteran, yet still coaxed the magic smoke out of ever PCB I tested.
 
 [gview file="/images/2011/09/Half-Bridge-Driver-v1.1-Schematics.pdf"]
 
-
 # PCB Manufacturing
-
 
 Once the PCB's were designed, I had them etched by [PCB Cart](http://www.pcbcart.com/) (see the [Electrical Suppliers page](http://blog.mbedded.ninja/electronics/other/electrical-suppliers)). The PCB's came back in a colour what I like to call 'spew orange', which was less than ideal, since I wanted orange.
 
@@ -418,9 +341,7 @@ The finished half-bridge motor controller (which didn't work).
 
 {{< figure src="/images/electronics-electricskateboard/2012-06-03-12-26-59.jpg" caption="A photo of the populated half-bridge driver. Note that this didn't work, I ended up replacing it with one brought from AliExpress."  width="500px" >}}
 
-
 # Writing/Testing Firmware
-
 
 I ran into plenty of mysterious problems while testing the firmware, such as LEDs randomly turning on and off, microcontrollers programming and then refusing to be recognised, and more. I eventually discovered the problem was the flux I had used, Fluxite, which it actually a plumbers flux and not designed for electronic circuits. The flux residue (present even when the PCBs were ultrasonically cleaned), absorbed water and became conductive, causing micro shorts all throughout the circuits.
 
@@ -434,9 +355,7 @@ I was very happy once the PCBs finally powered up and were working correctly.
 
 {{< figure src="/images/electronics-electricskateboard/2012-05-14-22-38-35.jpg" caption=" "  width="500px" >}}
 
-
 # Fibreglassing
-
 
 The final board was made from fibreglass and plywood. Here is an image of all the gear I used.
 
@@ -477,10 +396,9 @@ The end result!
 {{< figure src="/images/electronics-electricskateboard-fibreglassing/2012-01-29-10-41-05.jpg" caption="The board, after the outline had been cut-out."  width="500px" >}}
 
 The idea was to create an outline of the board which glowed at night, using E-wire. The electrical E-wire needed a groove to sit in that ran around the perimeter of the board. I made this groove with a dremel and a spherical routing attachment.
-<table style="width: 650px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
-
 <td >{{< figure src="/images/electronics-electricskateboard-fibreglassing/2012-01-29-11-26-19.jpg" caption="Routing out a groove for the E-wire."  width="300px" >}}
 </td>
 
@@ -490,16 +408,14 @@ The idea was to create an outline of the board which glowed at night, using E-wi
 </tbody>
 </table>
 
-
 # Painting
-
 
 Once the fibreglass board was cut to shape, it was time to paint it! I used "fibreglass-like" paints that use fibreglass resin and a solid powder pigment to provide the colour.
 
 {{< figure src="/images/electronics-electricskateboard-final-paint/2012-02-11-15-32-00.jpg" caption="The various things needed for painting, gel-coat, paint brushes, measuring jugs, catalyst and acetone."  width="500px" >}}
 
 Black on the bottom side was the first colour to go on.
-<table style="width: 650px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
 
@@ -520,7 +436,7 @@ The top-side had all the pacman artwork, so I had to make masks to protect certa
 {{< figure src="/images/electronics-electricskateboard-final-paint/2012-02-12-11-31-41.jpg" caption="Making the various shaped masks for protecting paintwork."  width="500px" >}}
 
 Then I started painting all the coloured sections.
-<table style="width: 650px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
 
@@ -533,7 +449,7 @@ Then I started painting all the coloured sections.
 </tbody>
 </table>
 To add grip, I added crushed glass to the final layers of all the paintwork on the top surface.
-<table style="width: 650px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
 
@@ -557,16 +473,14 @@ The finished paint job!
 
 {{< figure src="/images/electronics-electricskateboard-final-paint/2012-02-13-00-06-43.jpg" caption="The finished paint job!"  width="500px" >}}
 
-
 # Final Mechanical Construction/Assembly
-
 
 Here is me working out how to mount it onto the bottom of the board (click the pic for more info).
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/2012-01-29-15-05-51.jpg" caption="Working out how to mount the 48V 10Ah LiFePO battery onto the bottom of the board. The foam is used to pad the battery and protect it when the board flexes during use."  width="400px" >}}
 
 The battery mounts where made up from sections of angled steel.
-<table style="width: 500px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
 
@@ -583,7 +497,7 @@ Mounting the battery onto the PCB
 {{< figure src="/images/electronics-electricskateboard-final-mech/2012-02-04-16-38-23.jpg" caption="The battery mounted to the board."  width="400px" >}}
 
 The electrical enclosure was mounted next to the battery.
-<table align="center" style="width: 800px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
 
@@ -595,6 +509,7 @@ The electrical enclosure was mounted next to the battery.
 </tr>
 </tbody>
 </table>
+
 One thing to take into consideration when mounting things onto the bottom of the board is the flex of the fibreglass board, especially when someone is standing on it. This flex could cause any large inflexible object (e.g. the battery and electronics enclosure) mounted onto the underside to snap or be ripped from its mounts. The way around this was to place a piece of foam pad underneath both the battery and enclosure as shown in the image below. This allowed board flex without putting stress on the parts.
 
 {{< figure src="/images/electronics-electricskateboard-final-mech/2012-02-04-18-23-09.jpg" caption="A piece of foam pad was put underneath both the battery and enclosure. This allowed board flex without putting stress on the parts."  width="500px" >}}
@@ -608,7 +523,7 @@ The LED lights were mounted to the underside of the PCB with some angled steel b
 {{< figure src="/images/electronics-electricskateboard-final-mech/2012-02-04-15-44-24.jpg" caption="The LED light brackets to mount them on the underside of the electric skateboard."  width="400px" >}}
 
 The lights were attached with "nylock" bolts so they wouldn't fall off.
-<table align="center" style="width: 650px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
 
@@ -629,7 +544,7 @@ The lights were attached with "nylock" bolts so they wouldn't fall off.
 </tbody>
 </table>
 The electrical enclosure needed waterproof ways of getting cables in and out (for the battery, motor, and LED lights). I decided to use metal cable clamps. The following images show the construction.
-<table style="width: 650px;" border="0" class="aligncenter" >
+<table>
 <tbody >
 <tr >
 
@@ -663,7 +578,8 @@ The stand-off supports attached to the base plate. These support the 4 circuits 
 {{< figure src="/images/electronics-electricskateboard-final-mech/2012-06-17-16-00-25.jpg" caption="The stand-off supports attached to the base plate. These support the 4 circuits boards that are held above it in the enclosure."  width="500px" >}}
 
 The EL-wire driver with added standoff.
-<table style="width: 650px;" border="0" class="aligncenter" >
+
+<table>
 <tbody >
 <tr >
 
@@ -675,6 +591,7 @@ The EL-wire driver with added standoff.
 </tr>
 </tbody>
 </table>
+
 Drilling holes in the BMS PCB for standoffs.
 
 {{< figure src="/images/electronics-electricskateboard-final-mech/2012-02-25-15-43-01.jpg" caption="Drilling holes in the BMS PCB for standoffs."  width="500px" >}}
@@ -711,9 +628,7 @@ The electronics was then added to the handheld controller along with the trigger
 
 {{< figure src="/images/electronics-electricskateboard-final-mech/2012-06-17-21-03-27.jpg" caption="The electronics added to the handheld controller along with the trigger."  width="500px" >}}
 
-
 # Giving Up On The DIY Half-Bridge
-
 
 So the motor controller that I eventually ended up using...a quarter-bridge motor controller from AliExpress. Yes, a bit of a cop-out considering this board was meant to be homemade, but at least it works! The unfortunate thing about the quarter bridge is that it has no breaking ability, meaning the skateboard has not breaks. Something to fix in the future...
 
@@ -723,17 +638,13 @@ Installing the new motor controller into the enclosure.
 
 {{< figure src="/images/electronics-electricskateboard-final-mech/2012-06-17-21-09-23.jpg" caption="Finishing off the last bit of wiring."  width="600px" >}}
 
-
 # Desiccant
-
 
 After a few longer test drives, I noticed a bit of moisture condensing on the insides of the enclosure. So I added some desiccant to the skateboard enclosure to absorb any trapped moisture. Find out more about desiccant [here](http://blog.mbedded.ninja/electronics/components/desiccant).
 
 {{< figure src="/images/electronics-electricskateboard/desiccant-in-skateboard-enclosure.jpg" caption="Desiccant was added to the skateboard enclosure to absorb any trapped moisture."  width="500px" >}}
 
-
 # The Finished Electric Skateboard!
-
 
 A mug shot of the finished board next to some greenery :-D.
 
@@ -747,20 +658,12 @@ The underside of the finished electric skateboard.
 
 {{< figure src="/images/electronics-electricskateboard-final-mech/2012-06-16-19-10-09.jpg" caption="The underside of the finished electric skateboard."  width="800px" >}}
 
-
 # Weigh-In
-
-
-
 
 Fibreglass Board = 2.84kg
 Front Truck + It's 2 Wheels = 4.68kg
 Back Truck + Motor + It's 2 Wheels = 8.84kg
 Tires = 1.42kg (each)
-
-
-
-
 
 # Timesheet
 

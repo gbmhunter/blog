@@ -8,23 +8,18 @@ url: /electronics/projects/autoelectric-blanket
 
 # Overview
 
-
 To design a smart phone controlled electric blanket.
-
 
 # Material Costs
 
-
-<table style="width: 600px;" border="0" >
+<table>
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Cost (NZ$)</th>
+        </tr>
+    </thead>
 <tbody >
-<tr >
-
-<td >**Item**
-</td>
-
-<td >**Cost (NZ$)**
-</td>
-</tr>
 <tr >
 
 <td >RaspberryPi, Type B
@@ -117,26 +112,17 @@ I installed geany (sudo apt-get install geany), to get a better code editor than
 
 ## List Of Installed Programs
 
-
-
-
-
-	  * node
-	  * express (node extension)
-	  * ddclient - Manager for dynamic DNS service
-
-
+* node
+* express (node extension)
+* ddclient - Manager for dynamic DNS service
 
 # Controlling GPIO
-
 
 The ENOENT read /sys/class/gpio/gpio4/direction error caught me out for along time, until I realised I had to run the node module using sudo node server,js (with administrator privlages).
 
 {{< figure src="/images/project-autoelectricblanket/simple-led-connected-to-raspberry-pi-gpio.jpg" caption="I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing."  width="800px" >}}
 
-
 # Nodejs Modules
-
 
 Express allows you to easily set up a web server using node.js.
 
@@ -154,23 +140,19 @@ At first I was just using the window.redirect() to send data back to the server 
 
 The server checks to see if it can resolve the address www.google.com every 5 seconds. If it can, it turns the online LED on, if it can't, it turns it off. This gives the user a good indication of whether the device is connected to the internet or not.
 
-
 # Using Rsync To Write Code On PC, Then Transfer To RaspberryPi
-
 
 I discovered rsync was one of the best ways of enabling me write code on my Windows computer, and then transfer it to the RaspberryPi quickly and easily for running.
 
 I used the following command when currently in the repo directory on my PC (note the . after --delete ,this is important!):
 
-    
+    ```sh
     rsync -arvz --delete . pi@192.168.1.51:~/autoeb
-
+    ```
 
 {{< figure src="/images/project-autoelectricblanket/sending-files-via-rsync-between-pc-and-raspberry-pi.png" caption="Sending code files using rsync from the PC to the RaspberryPi."  width="800px" >}}
 
-
 # Dynamic DNS
-
 
 I used this awesome and simple guide, [http://blog.mivia.dk/2013/03/free-dynamic-dns-for-raspberry-pi/](http://blog.mivia.dk/2013/03/free-dynamic-dns-for-raspberry-pi/)
 
@@ -184,42 +166,34 @@ I gave the RaspberryPi a fixed internal address by configuring settings on the r
 
 [Pagekite](https://pagekite.net/) looks interesting, as it means you don't have to setup port forwarding on the router, although I didn't use the service for this project. They have a pay-what-you-want pricing plan, with the basic service being free.
 
-
 # Automatic Run On Start-up
-
 
 We want the RaspberryPi server to automatically run on start-up. To do this, I edited some configuration files to make the RaspberryPi automatically login at turn on, and then set it up so a script ran automatically whenever that user logged in, hence it would run at start-up.
 
 This guide is easy to follow...[http://raspberrypi.stackexchange.com/questions/8734/execute-script-on-start-up](http://raspberrypi.stackexchange.com/questions/8734/execute-script-on-start-up) and so is this. [http://www.akeric.com/blog/?p=1976](http://www.akeric.com/blog/?p=1976).
 
-
 # Forwarding Ports
-
 
 I set up port forwarding on the router for port 8000. This worked fine for a Vodafone router, however, when I tried to set up the same port forwarding on an Orcon router, it complained that the port 8000 was already in use by something called a "USB Server". I had to change all references of the port to 8001, which meant changing both the node server code and the Android app code.
 
-
 # Fixed IP
-
 
 To do this I first had to setup the RaspberryPi so it has a fixed IP. Depending on the router, I could do this one of two ways:
 
-
-
-	  1. Set up a fixed IP purely on the router, using the RaspberryPi's MAC address. This is the easy way!
-	  2. Set up a fixed IP on the RaspberryPi. This is harder!
+1. Set up a fixed IP purely on the router, using the RaspberryPi's MAC address. This is the easy way!
+2. Set up a fixed IP on the RaspberryPi. This is harder!
 
 To make the RaspberryPi request a fixed IP (option 2), you have to modify it's network interface settings.
 
 The file /etc/network/interfaces contains a list of the present network adaptors and their basic settings.
 
-    
+    ```sh
     iface wlan0 inet manual
-
+    ```
 
 There were many tutorials online on how to modify this file. However, most of them didn't seem to work in my case. The one that did ([http://kerneldriver.wordpress.com/2012/10/21/configuring-wpa2-using-wpa_supplicant-on-the-raspberry-pi/](http://kerneldriver.wordpress.com/2012/10/21/configuring-wpa2-using-wpa_supplicant-on-the-raspberry-pi/)) was when I changed it to:
 
-    
+    ```sh
     # allow-hotplug wlan0
     iface wlan0 inet manual
     wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
@@ -228,23 +202,21 @@ There were many tutorials online on how to modify this file. However, most of th
         netmask 255.255.255.0
         network 10.1.2.0
         gateway 10.1.2.1
-
+    ```
 
 However, this would not work automatically on start-up. I had to also type the command sudo ifup wlan0 before the internet would start working.
 
 This would give me the errors:
 
-    
+    ```sh
     ioctl[SIOCSIWAP]: Operation not permitted
     ioctl[SIOCSIWENCODEEXT]: Invalid argument
     ioctl[SIOCSIWENCODEEXT]: Invalid argument
-
+    ```
 
 But it still seemed to work fine.
 
-
 # The Electric Blanket Wiring
-
 
 I pulled apart the electric blanket. Simple control. Looks like switch selects different resistance circuits to power.
 
@@ -263,7 +235,7 @@ The switch has a 1kR resistor in series and a 50kR resistor pulling the GPIO pin
 I had an issue with a energy-saving light flickering about once per second when the relay was not meant to be turned on.
 
 Measured wire resistances:
-<table style="width: 400px;" border="0" >
+<table>
 <tbody >
 <tr >
 
@@ -284,19 +256,16 @@ Measured wire resistances:
 </tbody>
 </table>
 How I think the circuit worked:
-<table style="width: 500px;" border="0" >
+<table>
+    <thead>
+        <tr>
+            <th>Power Setting</th>
+            <th>Connection</th>
+            <th>Calculated Power</th>
+        </tr>
+    </thead>
 <tbody >
-<tr >
 
-<td >**Power Setting**
-</td>
-
-<td >**Connection**
-</td>
-
-<td >**Calculated Power**
-</td>
-</tr>
 <tr >
 
 <td >0
@@ -344,10 +313,7 @@ How I think the circuit worked:
 </tbody>
 </table>
 
-
-
 # The Android App
-
 
 I had never developed an Android app before, so the first task was downloading and installing the [Android SDK](http://developer.android.com/sdk/index.html).
 
@@ -355,11 +321,6 @@ The idea was to basically recreate how the web page looked and acted with an And
 
 A thing that caught me out is that the WebView URL has to have http:// at the front to work, you can't use shortened versions like www.google.com.
 
-
 # Image Gallery
 
-
 ![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--5528)
-
-
-

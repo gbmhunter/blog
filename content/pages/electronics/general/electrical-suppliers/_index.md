@@ -9,34 +9,20 @@ url: /electronics/general/electrical-suppliers
 
 # General Components
 
-
-<table cellpadding="0" style="width: 950px;" border="0" >
+<table>
+    <thead>
+        <tr>
+            <th>Supplier Name/Website</th>
+            <th>Logo</th>
+            <th>Interface</th>
+            <th>Part Count</th>
+            <th>Supplied Locations</th>
+            <th>Delivery Speed/Cost</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
 <tbody >
 <tr >
-
-<td >**Supplier Name/Website:**
-</td>
-
-<td >**Logo:**
-</td>
-
-<td >**Interface:**
-</td>
-
-<td >**Part Count:**
-</td>
-
-<td >**Supplied Locations:**
-</td>
-
-<td >**Delivery Speed/Cost:**
-</td>
-
-<td >** Comments:**
-</td>
-</tr>
-<tr >
-
 <td >Alibaba ([visit site](http://www.alibaba.com/))
 </td>
 
@@ -222,9 +208,7 @@ url: /electronics/general/electrical-suppliers
 </tbody>
 </table>
 
-
 ## Avnet
-
 
 <table >
 <tbody >
@@ -247,19 +231,11 @@ url: /electronics/general/electrical-suppliers
 </tbody>
 </table>
 
-
 {{< figure src="/images/electronics-suppliers/avnet-logo.gif" caption=""  width="100px" >}}
-
-
-
 
 Supplier of PSoC devices.
 
-
-
-
 ## Digi-Key
-
 
 <table >
 <tbody >
@@ -330,34 +306,17 @@ Supplier of PSoC devices.
 </tbody>
 </table>
 
-
 **Comments:**
-
-
-
 
 Digi-Key is a huge international supplier. If anyone will have a component, it will be Digi-Key. Although their website isnt that aesthetically pleasing, they have a powerful search interface and display a fair amount of the component properties without having to dig into the datasheets (helpful!). Their pricing is usually a little expensive for one of components, but they are by far the cheapest if you buy in large quantities. I definetly recommend using Digi-Key if you are taking a circuit into production.
 
-
-
-
 Automatic Part List/BOM/Order Creation. This speeds up the ordering process. Directly upload BOM's  as text, csv, or Excel Spreadsheet (.xls) files to DigiKey, select the appropriate columns, and then instantly create orders.
-
-
-
 
 {{< figure src="/images/electronics-suppliers/digi-key-automatic-bom-uploading-please-wait.png" caption=""  width="320px" >}}
 
-
-
-
 {{< figure src="/images/electronics-suppliers/digi-key-automatic-bom-uploading-selecting-excel-columns.png" caption=""  width="700px" >}}
 
-
-
-
 ## NiceGear
-
 
 <table >
 <tbody >
@@ -428,19 +387,11 @@ Automatic Part List/BOM/Order Creation. This speeds up the ordering process. Dir
 </tbody>
 </table>
 
-
 **Comments:**
-
-
-
 
 NiceGear sells a range of DIY electronics such as Arduino gear, cables and connectors, some components, and tools. The best thing about this electronics supplier is the friendly service and the fast shipping to NZ locations. Surprisingly, NiceGear also undercuts larger suppliers with pricing. For example, in 2013, they were selling the Arduino Due for about NZ$15 cheaper than Element14.
 
-
-
-
 ## RS Components
-
 
 <table >
 <tbody >
@@ -511,56 +462,30 @@ NiceGear sells a range of DIY electronics such as Arduino gear, cables and conne
 </tbody>
 </table>
 
-
 International online component store that stocks most electrical components. As of 09/12/2010 they were offering free shipping around New Zealand.
-
-
-
 
 ## Samtec
 
-
-
-
 In my opinion, Samtec has one of the best websites for finding/deciding on electrical connectors. They also have an awesome rapid free sample service, in where you can order samples and they will pay for everything (including shipping), with the goods typically arriving in a few days (and I live in New Zealand!).
-
-
-
 
 # PCB Manufacturers
 
 
-<table style="width: 950px;" border="0" >
+<table>
+    <thead>
+        <tr>
+            <th>Name/Website</th>
+            <th>Logo</th>
+            <th>Specifications</th>
+            <th>Soldermask/ Silkscreen</th>
+            <th>Plated Through-hole Vias</th>
+            <th>Instant Online Quote</th>
+            <th>Based In</th>
+            <th>Supplied Locations</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
 <tbody >
-<tr >
-
-<td >**Name/Website:**
-</td>
-
-<td >**Logo:**
-</td>
-
-<td >**Specifications:**
-</td>
-
-<td >**Soldermask/ Silkscreen**
-</td>
-
-<td >**Plated Through-hole Vias**
-</td>
-
-<td >**Instant Online Quote**
-</td>
-
-<td >**Based In:**
-</td>
-
-<td >**Supplied Locations:**
-</td>
-
-<td >** Comments:**
-</td>
-</tr>
 <tr >
 
 <td >Circuit Labs ([website](http://www.circuitlabs.co.nz/))
@@ -680,33 +605,42 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
 </tbody>
 </table>
 
-
 ## PCB Cart
 
+{{< figure src="/images/electronics-suppliers/pcb-cart-logo.jpg" caption="The PCB Cart logo."  width="100px" >}}
 
+Website: [wwww.pcbcart.com](http://pcbcart.com/)
 
+Number Of Layers: 4
+Min Track And Gap: 0.1
+Min Hole Size: 0.1
+Min Annular Ring: 0.10
+PCB Edge Clearance: 0.3mm/12mil (1-2 layers), 0.2mm/8mil (>2 layers)
+Rigid-Flex: No
+Plated Through-hole: Yes
+Soldermask/Silkscreen: Yes
+Instant Quote: Yes
+Based In: China
+Supplied Locations: International
+Notes:  Cheap supplier for boards, but they do take a while to manufacture. Offers extensive features and a nice web ordering interface with on-the-spot quotes. Although I did have an unpleasant run-in with them once, see the post " **Stack-ups:** Here is one of their default 4-layer, 2core, 1.6mm thick stack-ups.
 
-{{< figure src="/images/electronics-suppliers/pcb-cart-logo.jpg" caption="The PCB Cart logo."  width="100px" >}} Website: [wwww.pcbcart.com](http://pcbcart.com/) Number Of Layers: 4 Min Track And Gap: 0.1 Min Hole Size: 0.1 Min Annular Ring: 0.10 PCB Edge Clearance: 0.3mm/12mil (1-2 layers), 0.2mm/8mil (>2 layers) Rigid-Flex: No Plated Through-hole: Yes Soldermask/Silkscreen: Yes Instant Quote: Yes Based In: China Supplied Locations: International Notes:  Cheap supplier for boards, but they do take a while to manufacture. Offers extensive features and a nice web ordering interface with on-the-spot quotes. Although I did have an unpleasant run-in with them once, see the post " **Stack-ups:** Here is one of their default 4-layer, 2core, 1.6mm thick stack-ups. {{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-6mm-layer-stackup.jpg" caption=""  width="400px" >}} Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core. {{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-core-1-6mm-layer-stackup.jpg" caption=""  width="400px" >}}
+{{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-6mm-layer-stackup.jpg" caption=""  width="400px" >}}
 
+Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core.
 
-
+{{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-core-1-6mm-layer-stackup.jpg" caption=""  width="400px" >}}
 
 # Suppliers With Free Samples!
 
-
-<table style="width: 950px;" border="0" >
+<table>
+    <thead>
+        <tr>
+            <th>Name/Website</th>
+            <th>Logo</th>
+            <th>Free Samples</th>
+        </tr>
+    </thead>
 <tbody >
-<tr >
-
-<td >**Name/Website:**
-</td>
-
-<td >**Logo:**
-</td>
-
-<td >**Free Samples:**
-</td>
-</tr>
 <tr >
 
 <td >Coilcraft ([http://www.coilcraft.com/](http://www.coilcraft.com/))
@@ -732,198 +666,98 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
 </tbody>
 </table>
 
-
 # Electronic Manufacturing Service (EMS) Companies
-
-
-
 
 EMS companies specialise in component sourcing, component placing, soldering and general PCB assembly. They don't normally do the PCB design themselves (although some business do both, and others sub-contract this part to another company). A good EMS will support small-pitch components such as 0201's and BGA's (see [Component Packages](http://blog.mbedded.ninja/electronics/circuit-design/component-packages)), and have a large number of basic components on hand (such as resistors and capacitors).
 
-
-
-
 ## EffyDeal
 
+Location: Taiwan
+Website: [http://www.pcb-assembly.com.tw/](http://www.pcb-assembly.com.tw/)
+PCB Manufacturing: Yes
+Cable Assembly: Yes
+Price: 4/5
 
-
-
-Location: Taiwan Website: [http://www.pcb-assembly.com.tw/](http://www.pcb-assembly.com.tw/) PCB Manufacturing: Yes Cable Assembly: Yes Price: 4/5 Larger manufacturer which can also take care of of the PCB etching. Quick to deal with, and offer exceptional service.
-
-
-
+Larger manufacturer which can also take care of of the PCB etching. Quick to deal with, and offer exceptional service.
 
 ## Precision Electronic Technologies
 
+Location: Australia
+Website: [http://www.precisionet.com.au/](http://www.precisionet.com.au/)
+PCB Manufacturing: Yes
 
-
-
-Location: Australia Website: [http://www.precisionet.com.au/](http://www.precisionet.com.au/) PCB Manufacturing: Yes Used to be called Precision Circuits (pre 2012).
-
-
-
+Used to be called Precision Circuits (pre 2012).
 
 ## Quick Circuits
 
+Location: New Zealand
+Website: [http://www.quickcircuit.co.nz/](http://www.quickcircuit.co.nz/)
 
-
-
-Location: New Zealand Website: [http://www.quickcircuit.co.nz/](http://www.quickcircuit.co.nz/) Helpful and have a good range of experience when it comes to PCB manufacturing. Capabilities include encapsulating/potting.
-
-
-
+Helpful and have a good range of experience when it comes to PCB manufacturing. Capabilities include encapsulating/potting.
 
 ## SRX Global
 
+Location: New Zealand, Australia
+Website: [http://www.srxglobal.com/](http://www.srxglobal.com/)
 
-
-
-Location: New Zealand, Australia Website: [http://www.srxglobal.com/](http://www.srxglobal.com/) Gone through a series of name changes (used to be Aims, then Startronics, now SRX Global).
-
-
-
+Gone through a series of name changes (used to be Aims, then Startronics, now SRX Global).
 
 ## Texmate
 
-
-
-
 Location: New Zealand Have not done encapsulation before.
-
-
-
 
 # Specific Components
 
-
-
-
 ### Traco Power
-
-
-
 
 [http://www.tracopower.com](http://www.tracopower.com/): Traco Power specialises in power conversion, specifically AC/DC converters, DC/DC converters, and DC/AC inverters. [Element14](http://www.element14.com) stocks a range of their products, including a range of complete DC/DC converters priced from NZ$8-16.
 
-
-
-
 ### Molex
-
-
-
 
 [www.molex.com](http://www.molex.com): Molex is one of the industry leaders for electrical connectors. They have a comprehensive set of connectors, from tiny pitched SMD mount connectors all the way up to IP67 rated ethernet connectors. They also have 3D models for most of their connectors (in PRO/E, IGES and STEP formats).
 
-
-
-
 # Hardware
-
-
-
 
 ### Hobby King
 
-
-
-
 [www.hobbyking.com](http://www.hobbyking.com): Hobby site that sells anything to do with RC (radio controlled) toys. They sell brushless DC motors (BLDC's), speed controllers, batteries (both Li-Po and NiMH), battery chargers, as well as complete kits. I used this site to buy the motor and associated hardware for the electric skateboard. It should be noted however the first ever Turnigy Li-Po battery I brought from there was defective, as well as a connector on a battery charger being connected around the wrong way, and a faulty ESC card programmer! I was not that impressed. They also take a hard-line on refunds, giving only a 30-day warranty for Li-Po batteries and no refund if they have been tampered with.
-
-
-
 
 ### Deal Extreme
 
-
-
-
 [www.dealextreme.com](http://www.dealextreme.com): An American online store that sells selected popular hardware for cheap (along with components). One of the best things about this site is that they offer free international shipping on everything, no matter how cheap the item is!
-
-
-
 
 # Batteries
 
-
-
-
 ## Shenzhen Shirui Battery Co.
-
-
-
 
 Location: Shenzhen, China Chemistries: Li-Po Support: 4/5 Price: 5/5 Range: 4/5 Details: Shenzhen Shirui Battery Co. stock many different sized single-celled Li-Po batteries ranging from 30mAh up to 1000mAh+. In my experience, they have fast response times and more than eager to help (and profecient in English). Datasheets are not included on their website (as with many Asian suppliers), but they will provide them at your request.
 
-
-
-
 ## SparkFun
-
-
-
 
 Location: USA Chemistries: Li-Po Support: 4/5 Price: 3/5 Range: 2/5 Details: SparkFun sells a small range of Li-Po's suitable for small DIY electronics projects.
 
-
-
-
 # OLED Screens
-
-
-
 
 See the [OLED Screens page](http://blog.mbedded.ninja/electronics/components/oled-screens).
 
-
-
-
 # Fibreglass
-
-
-
 
 ## Gracol Enterprises
 
-
-
-
 Christchurch manufacturer of fibreglass pultrusion (different from protrusion!) and hand-made products. Useful stuff when building strong and light chassis or frames!
 
-
-
-
 Phone: +64 3 384 9934  
-
- Address: 31 Wickham St., Bromley, 8062, Christchurch, New Zealand  
-
- Website: [https://www.gracolcomposites.co.nz/](https://www.gracolcomposites.co.nz/)
-
-
-
+Address: 31 Wickham St., Bromley, 8062, Christchurch, New Zealand  
+Website: [https://www.gracolcomposites.co.nz/](https://www.gracolcomposites.co.nz/)
 
 ## GJH Fibreglass
 
-
-
-
 Palmerston North manufacturer of fibreglass products (especially moulded). Do not sell protruded fibreglass. Can purchase mat and resin.
 
-
-
-
 Phone: +64 6 357 0390  
-
- Address: 1 Settlers Line, Palmerston North, New Zealand  
-
- Website: None
-
-
-
+Address: 1 Settlers Line, Palmerston North, New Zealand  
+Website: None
 
 **Prices (as of Jan 2011, GST inclusive)**
-
-
-
 
 Chop Stran Mat: NZ$11/metre (1.05m wide) Polyester Resin: NZ$16.50/L

@@ -7,8 +7,6 @@ type: page
 url: /electronics/general/altium/altium-bugs-and-things-to-watch-out-for
 ---
 
-[mathjax]
-
 # Overview
 
 There's no denying Altium has it's quirks. If you are getting annoyed with one of Altium's bugs, submit it to [BugCrunch](http://live.altium.com/bugcrunch), their bug tracking and fixing sub-site (you can vote on what you want fixed first). Here a some of the things you should keep an eye out for...
@@ -72,7 +70,7 @@ UPDATE, March 2016: This does not seem to be happening anymore with AD15 or AD15
 
 Altium decides whether or not it wants to export holes/vias in step files. Upon importing these step files into a 3D CAD program, more often than not you will find that some of the holes have been covered (or partially covered) up by a very thin solid on the top and/or bottom. I have tried removing copper, silkscreen, soldermask and solderpaste layers to see if these were causing the trouble, but have had no luck in finding out why Altium does this. It is very annoying when it doesn't create the mounting holes, and you can't check that the PCB will work with the rest of the mechanical design (which is normally one of the reasons why you'd be exporting a 3D model).
 
-<table align="center" ><tbody ><tr >
+<table><tbody ><tr >
 <td >{{< figure src="/images/2012/04/altium-not-exporting-holes-properly-before.jpg" width="369px" caption="Hole in PCB."  >}}
 </td>
 <td >{{< figure src="/images/2012/04/altium-not-exporting-holes-properly-after.jpg" width="382px" caption="Hole covered over in step file output."  >}}
@@ -254,7 +252,7 @@ Because of this, the PCB editor will continuously try and update component descr
 
 {{< figure src="/images/2012/04/altium-pcb-editor-cant-handle-unicode-chars-ohms-symbols.png" width="1146px" caption="Altium's PCB editor can't handle Unicode characters such as the Ohm (Omega) and degree symbol. This image shows how Altium will continuously try and update components that contain these symbols."  >}}
 
-This is unfortunate, as symbols like \(\Omega\) and \(^{\circ}\) are great to use in component descriptions.
+This is unfortunate, as symbols like `\(\Omega\)` and `\(^{\circ}\)` are great to use in component descriptions.
 
 # BomDoc Gets Modified When You Don't Want It To
 

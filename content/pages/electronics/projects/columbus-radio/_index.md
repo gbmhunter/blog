@@ -41,7 +41,7 @@ The radio's enclosure was in a pretty sad state when I first laid hands on it. 
 
 I tried a few different paint strippers (because my father had all of these lying around).
 
-<table style="width: 600px;" class=" aligncenter" ><tbody ><tr >
+<table><tbody ><tr >
 <td >   
 {{< figure src="/images/2014/11/columbus-radio-050-maxistrip-paint-stripper.jpg" width="253px" caption="The Maxistrip paint stripper."  >}}
 </td>
@@ -54,7 +54,7 @@ I tried a few different paint strippers (because my father had all of these lyin
 
 Here is me applying the stripper to the cabinet:
 
-<table style="width: 600px;" class=" aligncenter" ><tbody ><tr >
+<table><tbody ><tr >
 <td >{{< figure src="/images/2014/11/columbus-radio-075-trying-the-maxistrip.jpg" width="232px" caption="Testing out the Maxistrip stripper."  >}}
 </td>
 <td >{{< figure src="/images/2014/11/columbus-radio-080-coating-radio-with-stripper.jpg" width="421px" caption="Applying the stripper."  >}}
@@ -70,7 +70,7 @@ Yay, it works! You can see the bare wood (on the side) coming up nicely in the p
 
 I did a bit of a comparison between them, and the differences were pretty amazing! The Cooper's seemed to produce a much nicer finish than the other two...
 
-<table style="width: 800px;" class=" aligncenter" ><tbody ><tr >
+<table><tbody ><tr >
 <td >{{< figure src="/images/2014/11/columbus-radio-124-comparison-maxistrip.jpg" width="346px" caption="A wooden surface stripped using Maxistrip."  >}}
 </td>
 <td >{{< figure src="/images/2014/11/columbus-radio-125-comparison-coopers.jpg" width="347px" caption="A wooden surface stripped using Cooper's."  >}}
@@ -134,7 +134,7 @@ I could of kept this speaker and gone for a "classic sound" as well as a "classi
 
 Unfortunately, these didn't quite fit side-by-side when facing forwards in the enclosure! So for better or worse, I decided to face one backwards (goodbye stereo). Here is the front speaker being installed:
 
-<table style="width: 600px;" class=" aligncenter" ><tbody ><tr >
+<table><tbody ><tr >
 <td >{{< figure src="/images/2014/11/columbus-radio-210-installing-6x9-mount.jpg" width="268px" caption="Installing the 6x9 mount for the front speaker."  >}}
 
 </td>
@@ -158,7 +158,7 @@ EDIT (post completion): One backwards facing speaker **didn't seem to be that de
 
 There used to be some sort of valve-based indicator which poked out onto the front glass panel.
 
-<table style="width: 600px;" class=" aligncenter" ><tbody ><tr >
+<table><tbody ><tr >
 <td >{{< figure src="/images/2014/11/columbus-radio-345-removing-old-indicator.jpg" width="250px" caption="Removing the existing valve-based indicator."  >}}
 </td>
 <td >{{< figure src="/images/2014/11/columbus-radio-350-place-for-indicator.jpg" width="257px" caption="I now had to find something to fit into the gap..."  >}}
@@ -168,7 +168,7 @@ I got the great idea to use LEDs to indicate two things, when the power was on, 
 
 Heartbreakingly I decided to rip them out right then and there before the epoxy set, and start anew. This time I used a tungsten based bulb instead, wrapping it in black cardboard to make up a mount that would fit the original hole.
 
-<table style="width: 600px;" class=" aligncenter" ><tbody ><tr >
+<table><tbody ><tr >
 <td >{{< figure src="/images/2014/11/columbus-radio-353-new-indicator.jpg" width="276px" caption="Making up a mount for a 12V, 100mA bulb to replace the valve-based indicator."  >}}
 </td>
 <td >{{< figure src="/images/2014/11/columbus-radio-356-gluing-new-indicator-into-place.jpg" width="273px" caption="Hot-gluing the bulb into the front glass face from the back."  >}}
@@ -190,7 +190,7 @@ The **RaspberryPi was not enough on it's own** to provide all of the I/O functio
 
 For this reason, I had to **craft a daughter board**. I used a piece of strip-board, shaped to that it would directly solder onto the RaspberryPi's GPIO header, and still allow the Pi to fit inside an enclosure.
 
-<table style="width: 600px;" class=" aligncenter" ><tbody ><tr >
+<table><tbody ><tr >
 <td >{{< figure src="/images/2014/11/columbus-radio-310-cutting-out-daughter-board.jpg" width="378px" caption="Cutting out a RaspberryPi daughter board from strip-board prototyping PCB."  >}}
 </td>
 <td >{{< figure src="/images/2014/11/columbus-radio-320-fitting-daughter-board.jpg" width="285px" caption="Fitting the daughter board directly onto the RaspberryPi's GPIO header. This was designed so the entire thing could still fit inside a standard Pi B+ enclosure."  >}}
@@ -202,13 +202,15 @@ The layout of the GPIO on the RaspberryPi is shown below.
 
 The following table shows what GPIO header pins I decided to use and what they are connected up to on the daughter board (the circuit was so simple I didn't think it warranted actual schematics been drawn up):
 
-<table style="width: 600px;" ><tbody ><tr >
-<td >**GPIO Header Pin Number**
-</td>
-<td >**GPIO Function(s)/Name**
-</td>
-<td >** What I Used It For**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>GPIO Header Pin Number</th>
+            <th>GPIO Function(s)/Name</th>
+            <th>What I Used It For**</th>
+        </tr>
+    </thead>
+<tbody><tr >
 <td > 11
 </td>
 <td >GPIO17
@@ -278,11 +280,15 @@ modprobe spidev seemed to run o.k. with no errors. It wasn't listed under lsmod,
 
 Installing the spidev python module with python setup.py install. It gave me the error 
     
-    spidev_module.c:20:20: fatal error: Python.h: No such file or directory
+```sh
+spidev_module.c:20:20: fatal error: Python.h: No such file or directory
+```
 
 So I installed the python development software with the command
     
-    sudo apt-get install python-dev
+```sh
+sudo apt-get install python-dev
+```
 
 This took a decent amount of time to install, primarily because the download speed was a mere 50kB/s. I think this was because the RaspberryPi was connected via WiFi and was out in the garage, with low reception back to the router in the house. The fact that I even got reception was pretty impressive considering I was only using a tiny chip-antenna based USB WiFi dongle on the RaspberryPi!
 
@@ -300,39 +306,45 @@ The potentiometer for the "next track" functionality also had this issue, except
 
 My first attempt at writing mpc on the command-line gave me this error:
     
-    root@volumio:/etc# mpc
-    error: Connection refused
+```sh
+root@volumio:/etc# mpc
+error: Connection refused
+```
 
 And then I discovered that the web interface had stopped working. Oh oh. I tried a number of things like restarting the MPD server and trying the following shell commands:
     
-    sudo /etc/init.d/mpd stop
-    cd /var/lib/mpd
-    ls /var/lib/mpd
-    rm -i state
-    sudo reboot
+```sh
+sudo /etc/init.d/mpd stop
+cd /var/lib/mpd
+ls /var/lib/mpd
+rm -i state
+sudo reboot
+```
 
 However, nothing seemed to fix it. I ended up having to reflash the SD card and start again.
 
 Maybe the apt-get -y upgrade command is screwing things over, I noticed this as part of it's long, long output.
     
+    ```sh
     Checking init scripts...
     WARNING: init script for nginx not found.
+    ```
 
  There is also this message, in where I choose "N" (keep currently-installed version).
     
-    Configuration file '/etc/monit/monitrc'
-     ==> Modified (by you or by a script) since installation.
-     ==> Package distributor has shipped an updated version.
-       What would you like to do about it ?  Your options are:
-        Y or I  : install the package maintainer's version
-        N or O  : keep your currently-installed version
-          D     : show the differences between the versions
-          Z     : start a shell to examine the situation
-     The default action is to keep your current version.
+```sh
+Configuration file '/etc/monit/monitrc'
+    ==> Modified (by you or by a script) since installation.
+    ==> Package distributor has shipped an updated version.
+    What would you like to do about it ?  Your options are:
+    Y or I  : install the package maintainer's version
+    N or O  : keep your currently-installed version
+        D     : show the differences between the versions
+        Z     : start a shell to examine the situation
+    The default action is to keep your current version.
+```
     
-    
-
- So I had to reflash again. At which point the OS wouldn't even boot. Some issue with the SD card image?
+So I had to reflash again. At which point the OS wouldn't even boot. Some issue with the SD card image?
 
 Fixed! Had to clone all the files from the Volumio git repository back into /var/www. Volumio then prompted that there were updated available, and would you like to upgrade. After clicking yes, we were back to normal!
 
@@ -344,15 +356,21 @@ So I gave up on sudo apt-get update, and  apt-get -y upgrade as they seemed to
 
 I also found instruction on how to install the python RPi.GPIO module without having to use sudo apt-get install python (which required the sudo apt-get update  call first).
     
-    wget http://sourceforge.net/projects/raspberry-gpio-python/files/raspbian-wheezy/python-rpi.gpio_0.5.8-1_armhf.deb
+```sh
+wget http://sourceforge.net/projects/raspberry-gpio-python/files/raspbian-wheezy/python-rpi.gpio_0.5.8-1_armhf.deb
+```
 
  And the to install it:
     
-    sudo dpkg -i python-rpi.gpio_0.5.8-1_armhf.deb
+```sh
+sudo dpkg -i python-rpi.gpio_0.5.8-1_armhf.deb
+```
 
  I copied all of the custom code to the RaspberryPi using the command (note this is after changing the "name" of the Volumio platform from volumio to columbus:
     
-    rsync -avz /home/gbmhunter/GoogleDrive/Projects/ColumbusRadio/repo root@columbus:~/ColumbusRadio
+```sh
+rsync -avz /home/gbmhunter/GoogleDrive/Projects/ColumbusRadio/repo root@columbus:~/ColumbusRadio
+```
 
 {{< figure src="/images/2014/11/columbus-radio-440-volumio-ssh-and-rsync-screenshot.png" width="965px" caption="Copying the repository to the RaspberryPi using rsync, and then loading the code through SSH."  >}}
 
@@ -370,38 +388,46 @@ Although getting a thread to start running was pretty trivial, getting multiple
 
 I followed [this tutorial on regexprn.com](http://www.regexprn.com/2010/05/killing-multithreaded-python-programs.html) for the most part, but discovered the example code was buggy, and Ctrl-C was not causing all the threads to exit! I had to modify the code example by replacing:
     
-     try:
-         threads = [t.join(1) for t in threads if t is not None and t.isAlive()
+```python
+try:
+        threads = [t.join(1) for t in threads if t is not None and t.isAlive()
+```
 
  with:
     
-    for i in range(len(threads)):
-        # Make sure thread still exists
-        if threads[i] is not None:
-            print 'Attemping to join()...'
-            threads[i].join(1)
-            if threads[i].isAlive() is False:
-                print 'isAlive() is False, removing thread from list...'
-                threads.pop(i)
+```python
+for i in range(len(threads)):
+    # Make sure thread still exists
+    if threads[i] is not None:
+        print 'Attemping to join()...'
+        threads[i].join(1)
+        if threads[i].isAlive() is False:
+            print 'isAlive() is False, removing thread from list...'
+            threads.pop(i)
+```
 
- After I did that, the threads started working correctly! I had one thread for controlling the two potentiometers and sending commands to volumio, and one thread for monitoring internet connectivity and controlling the bulb (the bulb flashes slowly with a period of 4s if there is no internet connectivity).
+After I did that, the threads started working correctly! I had one thread for controlling the two potentiometers and sending commands to volumio, and one thread for monitoring internet connectivity and controlling the bulb (the bulb flashes slowly with a period of 4s if there is no internet connectivity).
 
 ## Getting The Hardware UI Script To Run On Startup
 
 I needed the hardware UI script to run automatically whenever the RaspberryPi booted up. To do this I created another small bash script called launcher.sh that ran the python hardware UI script.
     
-    sudo python ~/ColumbusRadio/hardware-ui/hardware-ui.py 
+```sh
+sudo python ~/ColumbusRadio/hardware-ui/hardware-ui.py 
+```
 
 This launcher.sh script was added to the root user's crontab with the command:
-    
-    # Write out current crontab
-    crontab -l > mycron
-    # Echo new cron into cron file
-    echo "@reboot sh ~/ColumbusRadio/hardware-ui/launcher.sh ~/ColumbusRadio/hardware-ui/cronlog 2>&1" >> mycron
-    # Install new cron file
-    crontab mycron
-    # Remove temp cron file
-    rm mycron
+
+```sh 
+# Write out current crontab
+crontab -l > mycron
+# Echo new cron into cron file
+echo "@reboot sh ~/ColumbusRadio/hardware-ui/launcher.sh ~/ColumbusRadio/hardware-ui/cronlog 2>&1" >> mycron
+# Install new cron file
+crontab mycron
+# Remove temp cron file
+rm mycron
+```
 
 crontab would start the script on startup of the RaspberryPi, and it would run under the user root (which is good, because we have got all privileges, and means we don't have to use sudo all the time).
 
@@ -425,7 +451,7 @@ Everyone loves statistics, right?
 
 ## At A Glance
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Project Start Date
 </td>
 <td >2014-12-06
@@ -471,4 +497,9 @@ The individual material costs of each item used to build the Columbus Radio.
 
 {{< figure src="/images/2014/11/columbus-radio-640-graph-material-cost-by-component.png" width="818px" caption="The material costs (as a percentage) of the components used to build the Columbus Radio."  >}}
 
-# Things To Improve On  1. The volume control dial is very sensitive, and the volume only changes a distinguishable amount over a small segment of the potentiometers full range of motion. I believe this a compounded problem due to the potentiometer itself being logarithmic, but the code treating it like a linear pot, and the volumio volume control being quite sensitive in the upper volume regions to start of with.  2. If you pull the radio's power cord out from the wall (or turn it off at the wall), you have to go around the back and set up the head unit to the correct volume and sound source (aux). The head unit is designed to have the continuous power source from the battery when in a vehicle, a battery that the radio does not have. Turning the radio on/off by it's front on/off switch does not cause this problem as I leave a residual power feed on that goes to the head unit. Unfortunately this means that the PSU and RaspberryPi also continuously run, which may shorten their life and definitely consumes more mains power than necessary!  3. Simultaneous playback. It would be really neat to have other devices around the house that can be set up to play the same song at the same time. I'm guessing this feature would be best built into the Volumio player that I am using.  4. The software does not turn itself off when the power switch of the radio is turned off (the power switch just turns of the amplifier). This is a good thing in terms of start-up speed, as music is pretty much instantly available as soon as you turn it back on. However, it does mean that volumio keeps streaming music from the internet, which can chew up bandwidth if you have a long playlist and/or set it into repeat mode. A better way would be for the power switch to also pause the music, and then start it again when it turns back on, starting off from where you left it.
+# Things To Improve On
+
+1. The volume control dial is very sensitive, and the volume only changes a distinguishable amount over a small segment of the potentiometers full range of motion. I believe this a compounded problem due to the potentiometer itself being logarithmic, but the code treating it like a linear pot, and the volumio volume control being quite sensitive in the upper volume regions to start of with.
+2. If you pull the radio's power cord out from the wall (or turn it off at the wall), you have to go around the back and set up the head unit to the correct volume and sound source (aux). The head unit is designed to have the continuous power source from the battery when in a vehicle, a battery that the radio does not have. Turning the radio on/off by it's front on/off switch does not cause this problem as I leave a residual power feed on that goes to the head unit. Unfortunately this means that the PSU and RaspberryPi also continuously run, which may shorten their life and definitely consumes more mains power than necessary!
+3. Simultaneous playback. It would be really neat to have other devices around the house that can be set up to play the same song at the same time. I'm guessing this feature would be best built into the Volumio player that I am using.
+4. The software does not turn itself off when the power switch of the radio is turned off (the power switch just turns of the amplifier). This is a good thing in terms of start-up speed, as music is pretty much instantly available as soon as you turn it back on. However, it does mean that volumio keeps streaming music from the internet, which can chew up bandwidth if you have a long playlist and/or set it into repeat mode. A better way would be for the power switch to also pause the music, and then start it again when it turns back on, starting off from where you left it.

@@ -21,13 +21,16 @@ This has been written for Altium Designer Summer 08, but steps should be similar
 
 A pulsed voltage source has the following important parameters:
 
-<table ><tbody ><tr >
-<td >Parameter Name
-</td>
-<td >Units
-</td>
-<td >Description
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Parameter Name</th>
+            <th>Units</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >AC Magnitude
 </td>
 <td >V
@@ -85,7 +88,15 @@ The "Model Name" parameter in a SimModel file has to be the same as the model na
 
 The Altium simulator supports the following value prefix multipliers. Note the non-standard K for 103 and the Meg for 106 (the prefixs are case insensitive so M would actually give you 10-3)! Also note the use of mil, which can be used to describe millionth's of an inch.
 
-<table style="width: 400px;" class=" aligncenter" ><tbody ><tr >**Suffix**Multiplier</tr><tr >
+<table>
+    <thead>
+        <tr> 
+            <th>Suffix</th>
+            <th>Multiplier</th>
+        </tr>
+    </thead>
+<tbody>
+<tr>
 <td >f
 </td>
 <td >10-15
@@ -133,13 +144,16 @@ Exponential notation is also supported, so you can write 1000 like this 1e3.
 
 The Altium SPICE model for a MOSFET contains the following level-1 parameters (sorted alphabetically):
 
-<table ><tbody ><tr >
-<td >Symbol
-</td>
-<td >Parameter
-</td>
-<td >Description
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Parameter</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr >
 <td >AD
 </td>
 <td >Drain Area
