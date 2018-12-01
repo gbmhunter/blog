@@ -7,66 +7,35 @@ type: page
 url: /programming/languages/tex
 ---
 
-[mathjax]
-
-
-
-
 # Overview
-
-
-
 
 TeX is a typesetting language for producing documents. It is one of the most popular alternatives to WYSIWYG text editors such as Microsoft Word. The language largely resembles a programming language, and is then compiled to produce professional looking documents.
 
-
-
-
 The advantage of TeX typesetting over an editor such as Microsoft Word is the conformity and standardization that comes naturally when writing a document using 'code'. For example, figures are always labeled correctly and in the same manner, page margins are identical, and bibliographic references are identical and always match correctly with the reference. The large disadvantage with TeX typesetting is the lack of instant feedback (although there are some packages that now support live feedback), and the complexity in understanding and knowing how to write in the TeX language.
-
-
-
 
 There is a difference between a TeX distribution and a TeX editor.
 
-
-
-
 # TeX Distributions
 
-
-
-
-
-	  * LaTeX (my favourite)
-
-
+* LaTeX (my favourite)
 
 # TeX Editors
 
-
-
-
-
-	  * MiKTeK
-	  * TeXnicCenter
-
-
-
-
-
+* MiKTeK
+* TeXnicCenter
 
 # MathJAX
 
-
-<table >
+<table>
+    <thead>
+        <tr>
+            <th>Operator</th>
+            <th>Description</th>
+            <th>Example</th>
+            <th>See Also</th>
+        </tr>
+    </thead>
 <tbody >
-<tr >
-Operator
-Description
-Example
-See Also
-</tr>
 <tr >
 
 <td >\dfrac{x}{y}
@@ -112,21 +81,15 @@ See Also
 </tbody>
 </table>
 
-
 # Example Code
 
+```   
+% Produces a matrix equation
+I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\ 
+0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\ 
+\frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix} \begin{bmatrix} I_a \\ 
+I_b \\ 
+I_c \end{bmatrix} \text{(unsimplified Clarke transform)} \\ \\
+```    
 
-
-    
-    % Produces a matrix equation
-    I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\ 
-    0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\ 
-    \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix} \begin{bmatrix} I_a \\ 
-    I_b \\ 
-    I_c \end{bmatrix} \text{(unsimplified Clarke transform)} \\ \\
-    
-
-
-
-
-$$ I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\ 0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\ \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix} \text{(unsimplified Clarke transform)}\\ \\ $$
+<div>$$ I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\ 0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\ \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix} \text{(unsimplified Clarke transform)}\\ \\ $$</div>

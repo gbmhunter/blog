@@ -9,16 +9,13 @@ url: /programming/microcontrollers/beaglebone
 
 # BeagleBone Black
 
-
 The BeagleBone black is a credit-card sized embedded computer, competitive in pricing, size, and features to the RaspberryPi.
 
 It supports a number of plug-on PCBs, called "capes", which add additional functionality.
 
-
 ## Stats
 
-
-<table style="width: 600px;" border="0" >
+<table>
 <tbody >
 <tr >
 
@@ -91,18 +88,16 @@ It supports a number of plug-on PCBs, called "capes", which add additional funct
 
 <td >
 
-
-
-	  * 65 digital GPIO
-	  * 7 analog GPIO
-	  * 4 serial
-	  * 2 SPI
-	  * 2 I2C
-	  * 8 PWM
-	  * 4 timers
-	  * 4 leds
-
-
+<ul>
+	<li>65 digital GPIO</li>
+	<li>7 analog GPIO</li>
+	<li>4 serial</li>
+	<li>2 SPI</li>
+	<li>2 I2C</li>
+	<li>8 PWM</li>
+	<li>4 timers</li>
+	<li>4 leds</li>
+</ul>
 </td>
 </tr>
 <tr >
@@ -128,32 +123,29 @@ It supports a number of plug-on PCBs, called "capes", which add additional funct
 
 <td >Common:
 
-
-
-	  * Angstrom
-	  * Debian
-	  * Ubuntu
-	  * Fedora
+<ul>
+<li>Angstrom</li>
+<li>Debian</li>
+<li>Ubuntu</li>
+<li>Fedora</li>
+</ul>
 
 Not as common:
 
-	  * Nitendo
-	  * Gentoo
-	  * ArchLinux
-	  * Sabayon
-	  * LinuxCNC
-	  * Minux
-
+<ul>
+<li>Nitendo</li>
+<li>Gentoo</li>
+<li>ArchLinux</li>
+<li>Sabayon</li>
+<li>LinuxCNC</li>
+<li>Minux</li>
+</ul>
 
 </td>
 </tr>
 </tbody>
 </table>
 
-
 ## Supported Capes
 
-
 There are LCD capes designed specifically for the BeagleBone Black, some of which also have a resistive touch screen.
-
-

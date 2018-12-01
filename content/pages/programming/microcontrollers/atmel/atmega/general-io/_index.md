@@ -9,15 +9,12 @@ url: /programming/microcontrollers/atmel/atmega/general-io
 
 General I/O are pins that are used for non-specific purposes. Non-specific purposes are those not requiring any of the on-board peripherals that come with the ATmega micro-controllers (such as USART, timers). They are essentially pins which can be set either to digital high or digital low by the software.
 
-
 ## Configuring Ports
-
 
 x = port letter (A, B or C), e.g. PORTA PORTB PORTC
 n = pin number (0 to 7)
 
 If the pin is used as input, setting PORTxn  controls pull-up for the pin (0 = disabled, 1 = enabled). If the pin is used as an output, PORTxn  is used to control the voltage at the pin. PINx  reads the value of the pin (for the whole port at once)
-
 
 ## Writing To Ports
 
@@ -26,11 +23,12 @@ Writing to ports can be done in a number of ways. The objective is to modify jus
 
 To write a bit (in this example, setting pin 2 of port A high)
 
-    
-    PORTA |= (1<<PA2)
-
+```c
+PORTA |= (1<<PA2)
+```
 
 To clear a bit (in this example, setting pin 2 of port A low)
 
-    
-    PORTA &= ~(1<<PA5)
+```c 
+PORTA &= ~(1<<PA5)
+```

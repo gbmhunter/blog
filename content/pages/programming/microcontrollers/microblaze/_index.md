@@ -9,4 +9,4 @@ url: /programming/microcontrollers/microblaze
 
 # Delay Function
 
-The delay function MB_Sleep(u32 MilliSeconds) is made accessible by including the header file #include "microblaze_sleep.h" in your source code.
+The delay function `MB_Sleep(u32 MilliSeconds)` is made accessible by including the header file `#include "microblaze_sleep.h"` in your source code.

@@ -9,11 +9,10 @@ url: /programming/microcontrollers/atmel/atmel-xmega-family/atmel-xmega-general-
 
 # Controlling A Port
 
-
 The Xmega has hardware registries that speeds up controlling ports by skipping the read-execute-write cycle. The following example shows ways of controlling a port pin.
 
-[code lang="c"]
+```c
 PORTB.DIRSET = (1 << 3);
- PORTB.OUTSET = (1 << 3);
- PORTB.OUTTGL = (1 << 3);
-[/code]
+PORTB.OUTSET = (1 << 3);
+PORTB.OUTTGL = (1 << 3);
+```

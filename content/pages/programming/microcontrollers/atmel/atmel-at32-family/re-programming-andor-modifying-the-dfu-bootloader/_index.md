@@ -28,30 +28,44 @@ This should put all the files into a directory called 1.7.0-ATUC3. Sweet! Now yo
 At this point I will pick a particular sub-family for the rest of the tutorial, the AT32UC3A. Obviously, replace all occurrences of this name with your particular sub-family. If you navigate into the AT32UC3A sub-folder, you will find an IAR and a GCC folder. Since we are using Linux, and the license for GCC does not cost any money, we will choose GCC. Go into the GCC folder.
 
 Your path should now be:
-    
-    1.7.0-AT32UC3/SERVICES/USB/CLASS/DFU/EXAMPLES/ISP/AT32UC3A/GCC
+
+```
+1.7.0-AT32UC3/SERVICES/USB/CLASS/DFU/EXAMPLES/ISP/AT32UC3A/GCC
+```
 
 If you just run make, you get the error:
-    
-    *** multiple target patterns. Stop.
+
+```    
+*** multiple target patterns. Stop.
+```
 
 So, it turns out someone at Atmel forgot to do a make clean before zipping up the project. The folder structure has residual .d files from a previous build step. These .d  iles contain Windows style paths. The Makefile is trying to parse these .d files and this is what is causing the multiple target patterns error. So you need to deleting all of the .d files to fix this.
 
 # Downloading The Toolchain
 
-Linux:   
-Install AVR Toolchain for Linux from [http://www.atmel.com/tools/atmelavrtoolchainforlinux.aspx](http://www.atmel.com/tools/atmelavrtoolchainforlinux.aspx) .(Windows versions can be found at [http://www.atmel.com/tools/atmelavrtoolchainforwindows.aspx](http://www.atmel.com/tools/atmelavrtoolchainforwindows.aspx)).  
-Note you have to install both the source code (.tar.gz file) and the headers (.zip file)  
-to /opt  
-`sudo tar xzf avr-32-gnu-tool-chain-linux_x86_64 `  
-and  
-sudo unzip atmel-headers-6.1.3.1475.zip
+**Linux**
 
-Add /opt/avr32-gnu-toolchain-linux_x86_64/bin to the PATH variable.
+Install AVR Toolchain for Linux from [http://www.atmel.com/tools/atmelavrtoolchainforlinux.aspx](http://www.atmel.com/tools/atmelavrtoolchainforlinux.aspx) .(Windows versions can be found at [http://www.atmel.com/tools/atmelavrtoolchainforwindows.aspx](http://www.atmel.com/tools/atmelavrtoolchainforwindows.aspx)). Note you have to install both the source code (.tar.gz file) and the headers (.zip file) to `/opt`:
+
+```  
+sudo tar xzf avr-32-gnu-tool-chain-linux_x86_64
+```
+
+and
+
+```sh  
+sudo unzip atmel-headers-6.1.3.1475.zip
+```
+
+Add `/opt/avr32-gnu-toolchain-linux_x86_64/bin` to the `PATH` variable.
 
 You will then get an error similar to:  
+
+```
 ../../BOOT/boot.S:47:22: error: avr32/io.h: No such file or directory  
-Add /opt/atmel-headers-6.1.3.1475/ to the end of the INC_PATH variable in the config.mk file to fix this
+```
+
+Add `/opt/atmel-headers-6.1.3.1475/` to the end of the `INC_PATH` variable in the `config.mk` file to fix this
 
 Then run make and it should actually work! But...it is probably not configured for your exact microcontroller.
 
@@ -59,14 +73,15 @@ Then run make and it should actually work! But...it is probably not configured f
 
 As previously mentioned, the file . The default is:
 
-# Part: {none|ap7xxx|uc3xxxxx}  
+# Part: {none|ap7xxx|uc3xxxxx}
+
 PART = uc3a0512
 
 You will need to change this to suit your exact microcontroller. For example, I changed it too:
 
 PART = uc3a3256
 
-You will also have to change the board. If you are pro
+You will also have to change the board.
 
 # Building
 
@@ -78,11 +93,15 @@ Ohoh, the size of the .bin file is more than 8kB! I believe this is because Atme
 
 In conf_isp.h, you'll want to change
 
+```
 #define PROGRAM_START_OFFSET          0x00002000
+```
 
 to
 
+```
 #define PROGRAM_START_OFFSET          0x00004000
+```
 
 # Post-Build Programming
 
@@ -98,11 +117,13 @@ unzip avr32studio-ide-2.6.0.753-linux-gtk.x86_64.zip. This will unzip all the fi
 avr32program should be found at as4e-ide/plugins/com.atmel.avr.utilities.linux.x86_64_3.0.0.201009140848/os/linux/x86_64/bin. This needs to be added to your path.
 
 But wait, what about atprogram, the newer replacement for avr32program, can we use that? Yes. And this would be the way I recommend. The commands to program the bootloader are:
-    
-    atprogram -t jtagice3 -i jtag -d at32uc3a3256 chiperase
-    
-    atprogram -t jtagice3 -i jtag -d at32uc3a3256 write -o 0x808001FC --values 0x929E2A9E
-    
-    atprogram -t jtagice3 -i jtag -d at32uc3a3256 program -o 0x80000000 -f at32uc3a3-isp.bin --verify write -fs -o 0xFFFE1410 --values FFF7FFFF
+
+```sh
+atprogram -t jtagice3 -i jtag -d at32uc3a3256 chiperase
+
+atprogram -t jtagice3 -i jtag -d at32uc3a3256 write -o 0x808001FC --values 0x929E2A9E
+
+atprogram -t jtagice3 -i jtag -d at32uc3a3256 program -o 0x80000000 -f at32uc3a3-isp.bin --verify write -fs -o 0xFFFE1410 --values FFF7FFFF
+```
 
 This was designed for the JTAG ICE 3 and the AT32UC3A3256. Change these accordingly.

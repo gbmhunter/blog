@@ -9,28 +9,22 @@ url: /programming/languages/c/system-calls
 
 Most standard C libraries depend on a number of subroutine calls for interacting with system services. These are called system calls.
 
-
 # Standard C System Calls
 
-
-
-
 ## _exit()
-
 
 Exits a program without cleaning up files.
 
 
 ## close()
 
-
 Closes a file
 
-    
-    int close(int file) {
-       return -1;
-    }
-
+```c    
+int close(int file) {
+    return -1;
+}
+```
 
 
 

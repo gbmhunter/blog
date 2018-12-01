@@ -10,49 +10,51 @@ url: /programming/microcontrollers/psoc/data-types
 # Standard Data Types
 
 Note: The pre-defined variable types that come with the PSoC programming suites are defined both with and without the _t suffix that most people use to define a typedef (e.g. uint8_t). I recommend using the version with the underscore, as this increases portability (this is also supported by Linux and other Unix-like systems). It is better practise to use the data types whose size is explicitly stated (e.g. uint32_t rather than unsigned int as the latter's size is platform-dependant). The following data types are valid for all PSoC families.
-    
-    // Standard C data types (implicit sizes)
-    char
-    short
-    int
-    long
-    float
-    double
-    
-    // Types available through <stdint.h>
-    int8_t
-    uint8_t
-    int16_t
-    uint16_t
-    int32_t
-    uint32_t
-    int64_t
-    uint64_t
-    size_t
-    
-    // Cypress-defined data types (explicit sizes)
-    // Note that 64-bit data types are only availiable
-    // with the _t suffix
-    int8
-    uint8
-    int16
-    uint16
-    int32
-    uint32
 
-# **Standard C Variable Type Sizes On PSoC 5**
+```c
+// Standard C data types (implicit sizes)
+char
+short
+int
+long
+float
+double
 
-<table border="0" ><tbody ><tr >
-<td >**Data Type**
-</td>
-<td >**Size (bytes)**
-</td>
-<td >**Range**
-</td>
-<td >**Decimal Precision (places)**
-</td>
-<td >**printf() identifier**
-</td></tr><tr >
+// Types available through <stdint.h>
+int8_t
+uint8_t
+int16_t
+uint16_t
+int32_t
+uint32_t
+int64_t
+uint64_t
+size_t
+
+// Cypress-defined data types (explicit sizes)
+// Note that 64-bit data types are only availiable
+// with the _t suffix
+int8
+uint8
+int16
+uint16
+int32
+uint32
+```
+
+# Standard C Variable Type Sizes On PSoC 5
+
+<table>
+    <thead>
+        <tr>
+            <th>Data Type</th>
+            <th>Size (bytes)</th>
+            <th>Range</th>
+            <th>Decimal Precision (places)</th>
+            <th>printf() identifier</th>
+        </tr>
+    </thead>
+<tbody><tr >
 <td >char
 </td>
 <td >1
@@ -124,4 +126,4 @@ Note: The pre-defined variable types that come with the PSoC programming suites 
 <td >%f
 </td></tr></tbody></table>
 
-These were discovered using the sizeof() command, and printing the result to a debug terminal.
+These were discovered using the `sizeof()` command, and printing the result to a debug terminal.

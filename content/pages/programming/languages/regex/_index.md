@@ -9,21 +9,19 @@ url: /programming/languages/regex
 
 <blockquote>All the listed regex examples can be tested with the online regex engine [regexpal](http://regexpal.com/).</blockquote>
 
-
-
-
 # Quick Reference
 
 
-<table style="width: 700px;" >
+<table>
+    <thead>
+        <tr>
+            <th>Operator</th>
+            <th>Name</th>
+            <th>Use</th>
+        </tr>
+    </thead>
 <tbody >
 <tr >
-Operator
-Name
-Use
-</tr>
-<tr >
-
 <td >\
 </td>
 
@@ -160,207 +158,98 @@ Use
 
 # Preventing Recursive Find And Replace Matches
 
-
-
-
 ## A Lookahead Example
 
-
-
-
 If you had the function UartComms() and you wanted to find and replace all instances with UartCommsSend() , you would use the following syntax:
-
-
-
     
-    Find: UartComms(?!Send)
+Find: UartComms(?!Send)
     
-    Replace: UartCommsSend
+Replace: UartCommsSend
     
-
-
-
-
 This example uses a regex "lookahead" rather than a "lookbehind". Notice how you don't have to use an angular bracket in the lookahead example, but you have to use a < in the lookbehind example.
-
-
-
 
 ## A Lookbehind Example
 
-
-
-
 Sometimes when using find and replace you can find yourself in a loop, the thing you are replacing with contains the original word, and so when "Find Next" is run, it finds the word in itself. You can use Regex (if your find and replace program supports it) to prevent this from happening. Note that this normally only happens if you iterate through each one by clicking "Replace Next". Clicking "Replace All" normally overcomes this problem.
-
-
-
 
 For example, say you had the function CommsSend() , and you wished to find and replace all instances of this in your code with UartCommsSend() . With a normal "Replace Next", this would get you into an infinite loop.
 
+Find: CommsSend
 
-
+Replace: UartCommsSend
     
-    Find: CommsSend
-    
-    Replace: UartCommsSend
-    
-
-
-
-
 The trick is to use a Regex expression called a  "positive/negative lookahead". In this case we need a lookbehind, which will check the characters before "CommsSend"; If they are equal and only equal to "Uart" it will not create a match, hence fixing the recursive find-replace issue.
 
-
-
+Find: (?<!Uart)CommsSend
     
-    Find: (?<!Uart)CommsSend
-    
-    Replace: UartCommsSend
-    
-
-
-
+Replace: UartCommsSend
 
 **Note:** I have had issues using greedy operators (such as * and + ) inside a lookahead. Upon adding such operators to character regions (e.g. [a=z]* ), the lookbehind fails to match anything. The error message was "Lookbehind requires fixed-width pattern".
 
-
-
-
 # Finding C/C++ Function Definitions
-
-
-
 
 You can use the following syntax to find a C/C++ function definitions based purely on the function name. This does not take into account the name or number of input variables, so in a language which supports function overloading (e.g. C++), this will **find all overloads** of a certain function. It works by looking for the function name, matching the "(", and number of characters and a matching ")", then any number of white space or new lines before a "{", then any number of characters, white-space or new lines before the closing "}".
 
-
-
-    
-    FuncName(.*)\s{(.*\n)*.*(\n)*}
-
-
-
+```    
+FuncName(.*)\s{(.*\n)*.*(\n)*}
+```
 
 Replace FuncName with the name of the function you wish to find.
 
-
-
-
 # File Paths
-
-
-
 
 Note: To match directories on Windows machines, replace every / in the following examples with \\.
 
-
-
-
 To match a directory, including the last / of a file path, use:
 
-
-
-    
-    (.*=?\\)
-    
-
-
-
+```    
+(.*=?\\)
+```    
 
 This will match C:/test/ in C:/test/reg.exe and root/samples/ in root/samples/filename.txt.
 
-
-
-
 To match the directory, excluding the last / of a file path, use:
 
-
-
-    
-    .*(?=/)
-    
-
-
-
+```    
+.*(?=/)
+```    
 
 This will match C:/test in C:/test/reg.exe and root/samples in root/samples/filename.txt.
 
-
-
-
 To match all files, except those that begin with the tilda character (~), use:
 
-
-
-    
-    .*(?=/)/[^~]*
-    
-
-
-
+```    
+.*(?=/)/[^~]*
+```    
 
 This will match C:/dir/include.txt **but NOT** C:/dir/~exclude.txt.
 
-
-
-
 # Matching Strings
-
-
-
 
 The following regex will match strings enclosed by double or single quotations. Delete either enclosed in the square brackets to exclude that style of string delimiting from the match.
 
-
-
-    
-    (["'])(?:\\\1|.)*?\1
-    
-
-
-
+```    
+(["'])(?:\\\1|.)*?\1
+```    
 
 This will match test string 1 and test string 2 in this is "test string 1" and this is 'test string 2'.
 
-
-
-
 The following regex expression matches all spaces, except those that are enclosed in double quotes. **Ignore the first and last double quotation** (it is just there to show you that a space exists at the start), and note the first character of the expression is a space. The expression can be useful in command-line processing applications.
 
-
-
-    
-    " (?=[^"]*("[^"]*"[^"]*)*$)"
-    
-
-
-
+```    
+" (?=[^"]*("[^"]*"[^"]*)*$)"
+```    
 
 # Matching All Printable ASCII Characters
 
-
-
-
 The following matches all printable ASCII characters (which are grouped together on the ASCII table, from number 32 to 126).
 
-
-
-    
-    [ -~]
-    
-
-
-
+```    
+[ -~]
+```
 
 # Online Regex Testers
 
-
-
-
 Plenty of online regex testers exist for testing the matching of regex expressions on sample text.
-
-
-
 
 My favourite is [RegExr by gSkinner](http://gskinner.com/RegExr/). It has powerful features like helpful **mouseover tooltips** which tell you what a certain sections of your regex string are doing.

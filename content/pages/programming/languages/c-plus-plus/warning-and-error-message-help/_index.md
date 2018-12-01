@@ -19,6 +19,4 @@ This can come about if you have run-time info disabled via the -fno-rtti GCC c
 
 This can also come about from forgetting to declare non-pure virtual functions, as the following snippet from GCC suggests.
 
-<blockquote>If the class declares any non-inline, non-pure virtual functions, the first one is chosen as the “key method” for the class, and the vtable is only emitted in the translation unit where the key method is defined.
-> 
-> </blockquote>
+> If the class declares any non-inline, non-pure virtual functions, the first one is chosen as the “key method” for the class, and the vtable is only emitted in the translation unit where the key method is defined.

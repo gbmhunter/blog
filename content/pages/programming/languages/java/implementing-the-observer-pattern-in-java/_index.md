@@ -12,36 +12,38 @@ url: /programming/languages/java/implementing-the-observer-pattern-in-java
 # Roll-Your-Own
 
 The following examples shows you how to manually implement the Observer pattern in Java.
-    
-    // This is an interface, describing what method a Listener class
-    // should contain
-    public interface HelloListener {
-       void notify(String msg);
+
+```java
+// This is an interface, describing what method a Listener class
+// should contain
+public interface HelloListener {
+    void notify(String msg);
+}
+
+// Let's make a class which listens to "Hello" events
+public class MyClass implements HelloListener {
+    void notify(String msg) {
+        System.out.println(msg);
     }
-    
-    // Let's make a class which listens to "Hello" events
-    public class MyClass implements HelloListener {
-       void notify(String msg) {
-          System.out.println(msg);
-       }
+}
+
+// Let's make a class which generates "Hello" events
+public class HelloEventGenerator {
+
+    List<HelloListener> helloListeners = new ArrayList<HelloListener>();
+
+    public void addHelloListener(HelloListener helloListener) {
+        helloListeners.add(helloListener);
     }
-    
-    // Let's make a class which generates "Hello" events
-    public class HelloEventGenerator {
-    
-       List<HelloListener> helloListeners = new ArrayList<HelloListener>();
-    
-       public void addHelloListener(HelloListener helloListener) {
-          helloListeners.add(helloListener);
-       }
-    
-       public void raiseEvent() {
-          for(HelloListener helloListener : helloListeners) {
-             helloListener.notify("Hello, world!);
-          }
-       }
-    
+
+    public void raiseEvent() {
+        for(HelloListener helloListener : helloListeners) {
+            helloListener.notify("Hello, world!);
+        }
     }
+
+}
+```
 
 Since the interface is public, it has to be described in it's own file.
 

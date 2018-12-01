@@ -17,7 +17,7 @@ Corel Draw macro code is saved in files with the extension .gms. A .gms file is 
     
     C:\Users\<YourName>\AppData\Roaming\Corel\CorelDRAW Graphics Suite <X5>\Draw\GMS
 
-where <UserName> is your Windows user name and <X5> may be replaced with X5, X6 or X7 depending on your version of CorelDraw.
+where `<UserName>` is your Windows user name and `<X5>` may be replaced with X5, X6 or X7 depending on your version of CorelDraw.
 
 # The Main Object
 
@@ -29,7 +29,7 @@ The Application object contains all Document objects as well as all Window objec
 
 An empty Corel Draw document can be created with the code:
 
-Application.CreateDocument
+`Application.CreateDocument`
 
 This is created in a new Corel Draw window.
 

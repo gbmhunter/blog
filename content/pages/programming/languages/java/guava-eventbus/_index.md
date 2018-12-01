@@ -11,9 +11,13 @@ url: /programming/languages/java/guava-eventbus
 
 The Guava EventBus is a Java library owned by Google. It is a event broadcasting system which implements an event/listener pattern.
 
-# Advantages  * Provides a mechanism for loose coupling between objects.
+# Advantages
 
-# Disadvantages  * No returns codes/status/exceptions can be returned from eventBus.post(). This is an advantage that the oberserver pattern has over an event bus, as it can return values/catch excpetions.
+* Provides a mechanism for loose coupling between objects.
+
+# Disadvantages
+
+* No returns codes/status/exceptions can be returned from eventBus.post(). This is an advantage that the oberserver pattern has over an event bus, as it can return values/catch excpetions.
 
 # Exceptions
 

@@ -7,8 +7,6 @@ type: page
 url: /programming/microcontrollers/arduino
 ---
 
-#  
-
 # Overview
 
 The Arduino is a low-cost, easy-to-use, microcontroller development environment. It consists of a range of hardware PCB's, and the Arduino software and supporting libraries.
@@ -16,10 +14,6 @@ The Arduino is a low-cost, easy-to-use, microcontroller development environment.
 {{< figure src="/images/2011/11/arduino-uno-r3-photo.jpg" width="425px" caption="A photo of the Arduino Uno (revision r3). Image from https://www.wikimedia.org/."  >}}
 
 The Arduino platform was used in the [Luxcity Tonic UV Control System project](http://blog.mbedded.ninja/electronics/projects/luxcity-uv-tonic-control-system) that I designed.
-
-# Child Pages
-
-[sb_child_list template=2 orderby=title order=asc nest_level=1]
 
 # Windows 8
 

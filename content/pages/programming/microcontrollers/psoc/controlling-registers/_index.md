@@ -8,15 +8,16 @@ url: /programming/microcontrollers/psoc/controlling-registers
 ---
 
 You can use the standard C way (note this is assuming a 32-bit register (e.g. PSoC 5 device).
-    
-    volatile uint32_t * myReg = (volatile uint32_t *)0xE000E304;
-    
-    // Read
-    uint32_t regVal = *myReg;
-    
-    // Write
-    *myReg = 0x0000FFFF;
-    
+
+```c
+volatile uint32_t * myReg = (volatile uint32_t *)0xE000E304;
+
+// Read
+uint32_t regVal = *myReg;
+
+// Write
+*myReg = 0x0000FFFF;
+```    
 
 PSoC also provides macros and typedefs for this process.
 

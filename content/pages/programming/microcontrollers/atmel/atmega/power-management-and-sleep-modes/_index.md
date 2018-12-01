@@ -9,36 +9,31 @@ url: /programming/microcontrollers/atmel/atmega/power-management-and-sleep-modes
 
 # Overview
 
-
 The ATmega architecture provides power saving modes of operation to reduce to total power consumption of the microcontroller. The number and type of power saving modes depends on the exact chip in the ATmega family. Power saving modes are very useful when designing an embedded solution that will be powered of a limited power source, such as a coin-cell, solar power, or energy harvesting method.
-
 
 # AVR-LibC Library
 
-
 AVR-LibC provides a good library for utilising the sleep modes on an ATmega microcontroller. To use them, make sure to include sleep.h from AVR-LibC into your project. If using AVR Studio 5, this can be done with the following inclusion at the top of your code.
 
-    
-    #include <avr/sleep.h>
-
+```c    
+#include <avr/sleep.h>
+```
 
 The following code examples make use of the functions provided by this library.
 
-
 # Sleep Modes
 
-
-<table >
-
-<tr >
-Mode
-clkCPU
-clkFLASH
-clkI/O
-Can Wake Up From
-Notes
-</tr>
-
+<table>
+	<thead>
+		<tr>
+			<th>Mode</th>
+			<th>clkCPU</th>
+			<th>clkFLASH</th>
+			<th>clkI/O</th>
+			<th>Can Wake Up From</th>
+			<th>Notes</th>
+		</tr>
+	</thead>
 <tbody >
 <tr >
 
@@ -55,13 +50,10 @@ Notes
 </td>
 
 <td >
-
-
-
-	  * External interrupts
-	  * Internal interrupts
-
-
+<ul>
+	<li>External interrupts</li>
+	<li>Internal interrupts</li>
+</ul>
 </td>
 
 <td >Stops the cpu and flash access, but allows all other components to run.
@@ -82,14 +74,11 @@ Notes
 </td>
 
 <td >
-
-
-
-	  * External interrupts
-	  * Internal interrupts
-	  * Watchdog reset
-
-
+<ul>
+	<li>External interrupts</li>
+	<li>Internal interrupts</li>
+	<li>Watchdog reset</li>
+</ul>
 </td>
 
 <td >Improves the noise performance of the ADC. Use this if you want to do hard-core ADC measurements and get the maximum possible resolution.
@@ -162,15 +151,9 @@ Notes
 # Putting The Micro To Sleep
 
 
-There are three functions from the AVR-LibC sleep library that need to be called to make the microcontroller enter a sleep mode. The first is set_sleep_mode(mode).
+There are three functions from the AVR-LibC sleep library that need to be called to make the microcontroller enter a sleep mode. The first is `set_sleep_mode(mode)`.
 
 
 # Things To Watch Out For
 
-
-
-
-
-	  * USART/other comm transmissions have finished before you enter a sleep mode which stops the USART clock. If not, you will be sending corrupted data.
-
-
+* USART/other comm transmissions have finished before you enter a sleep mode which stops the USART clock. If not, you will be sending corrupted data.

@@ -9,7 +9,7 @@ url: /programming/languages/java/logging
 
 # Overview
 
-Java provides advanced logging functionality through the java.util.Logging class.
+Java provides advanced logging functionality through the `java.util.Logging` class.
 
 # Creating An Instance
 
@@ -17,13 +17,15 @@ It is common practise to declare a single (static) instance of a Logger per cla
 
 The single parameter passed to the Logger constructor defines both the name and hierarchy for the Logger. It is common practise to use the fully qualified  class name for this purpose (e.g. myPackage.LoggingExample). An easy way to do this is to just use the method this.class.getName().
     
-    // A class that is going to have logging capabilities
-    public class LoggingExample {
-    
-       private static final Logger logger =
-           Logger.getLogger(LoggingExample.class.getName());
-    
-    }
+```java
+// A class that is going to have logging capabilities
+public class LoggingExample {
+
+    private static final Logger logger =
+        Logger.getLogger(LoggingExample.class.getName());
+
+}
+```
 
 # Handlers
 
@@ -40,7 +42,9 @@ The **parent Logger does not perform any level or filter checks**, but instead
 # LogManager
 
 The LogManager object is a central control room for all Logger objects within your application. Only one instance can exist, and can be obtained by calling:
-    
-    LogManager.getLogManager();
+
+```java
+LogManager.getLogManager();
+```
 
 The LogManager object can be used to set all Logger objects within a certain package to a specific Level. 

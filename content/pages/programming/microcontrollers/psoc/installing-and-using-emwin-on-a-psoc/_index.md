@@ -46,14 +46,18 @@ Only some of the fonts listed in the emWin manual are available in the PSoC vers
 ## Using Fonts
 
 To start using a font, type the command:
-    
-    GUI_SetFont(&GUI_Font4x6);
 
-This will use the font from this point onwards, until GUI_SetFont()  is called again.
+```c
+GUI_SetFont(&GUI_Font4x6);
+```
+
+This will use the font from this point onwards, until `GUI_SetFont()` is called again.
 
 # Displaying Text
 
-You can display text with the function GUI_DispString(char* msg); , where msg is a pointer to an array of null-terminated characters that you want to print. For example:
+You can display text with the function `GUI_DispString(char* msg);`, where msg is a pointer to an array of null-terminated characters that you want to print. For example:
     
-    // Display a string of text
-    GUI_DispString("This is a message!");
+```c
+// Display a string of text
+GUI_DispString("This is a message!");
+```

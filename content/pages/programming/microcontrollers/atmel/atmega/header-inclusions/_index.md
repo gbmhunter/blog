@@ -11,41 +11,21 @@ Include files that contains functions that are used by your code. Use double quo
 
 Included file is in the same directory structure as your code
 
-
-
-
-    
-    #include "filename.h"
-
-
-
-
+```c    
+#include "filename.h"
+```
 
 Included file is in the dafault win-avr directory structure
 
-
-
-
-    
-    #include <filename.h>
-
-
-
-
+```c    
+#include <filename.h>
+```
 
 Some of the recommended files to include in your code when using ATmega architecture microcontrollers are:
 
-
-
-
-    
-    #include <stdio.h>
-    #include <stdint.h>
-    #include <avr/io.h>
-    #include <avr/interupt.h>
-
-
-
-
-
-
+```c    
+#include <stdio.h>
+#include <stdint.h>
+#include <avr/io.h>
+#include <avr/interupt.h>
+```

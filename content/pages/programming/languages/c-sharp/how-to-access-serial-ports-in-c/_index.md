@@ -7,96 +7,95 @@ type: page
 url: /programming/languages/c-sharp/how-to-access-serial-ports-in-c
 ---
 
-# 
-
 
 The pre-installed Visual Studio C# class for manipulating serial ports in C# is found in the following namespace:
 
-    
-    // The class for manipulating serial ports in C#
-    System.IO.Ports.SerialPort
-
+```c#    
+// The class for manipulating serial ports in C#
+System.IO.Ports.SerialPort
+```
 
 To get a string list of the current active COM ports on the computer, and then populate a combobox with this list, use the code:
 
-    
-    // Populates a combobox with a string list of the active serial port names
-    // e.g. "COM3", "COM8"
-    ComboBoxComPorts.ItemsSource = System.IO.Ports.SerialPort.GetPortNames();
-
+```c# 
+// Populates a combobox with a string list of the active serial port names
+// e.g. "COM3", "COM8"
+ComboBoxComPorts.ItemsSource = System.IO.Ports.SerialPort.GetPortNames();
+```
 
 The SerialPort class contains an handy enumeration of commonly available baud rates. The following code shows how to populate a combo box with these values.
 
-    
-    // An enumeration of common baud rates is used to populate
-    // a combo box.
-    foreach (int i in Enum.GetValues(typeof(SerialPort.BaudRate)))
-       ComboBoxBaudRate.Items.Add(i);
-
+```c# 
+// An enumeration of common baud rates is used to populate
+// a combo box.
+foreach (int i in Enum.GetValues(typeof(SerialPort.BaudRate)))
+    ComboBoxBaudRate.Items.Add(i);
+```
 
 To set up the SerialPort class for use, you have to set the parameters shown in the code below.
 
-    
-    SerialPort serialPort;
-    
-    public void ComPortSetup(
-       int baudRate, 
-       int numDataBits,
-       string portName,
-       StopBits stopBits,
-       Parity parity,
-       int readBufferSize)
-    {
-       this.serialPort = new SerialPort();
-       // Set up serial comms
-       this.serialPort.BaudRate = baudRate;
-       this.serialPort.DataBits = numDataBits;
-       this.serialPort.PortName = portName;
-       this.serialPort.StopBits = stopBits;
-       this.serialPort.Parity = parity;
-       this.serialPort.ReadBufferSize = readBufferSize; //Default dataIList
-    }
+```c# 
+SerialPort serialPort;
 
+public void ComPortSetup(
+    int baudRate, 
+    int numDataBits,
+    string portName,
+    StopBits stopBits,
+    Parity parity,
+    int readBufferSize)
+{
+    this.serialPort = new SerialPort();
+    // Set up serial comms
+    this.serialPort.BaudRate = baudRate;
+    this.serialPort.DataBits = numDataBits;
+    this.serialPort.PortName = portName;
+    this.serialPort.StopBits = stopBits;
+    this.serialPort.Parity = parity;
+    this.serialPort.ReadBufferSize = readBufferSize; //Default dataIList
+}
+```
 
 Then you can use code like shown below to open and close the serial port for use.
 
-    
-    // Opens the port. If already open, will close first.
-    // If null, returns false.
-    public bool OpenPort()
+```c#
+// Opens the port. If already open, will close first.
+// If null, returns false.
+public bool OpenPort()
+{
+    try
     {
-       try
-       {
-          if (this.IsOpen())
-             this.CloseAndDisposePort();
-          serialPort.Open();
-       }
-       catch (Exception e)
-       {
-          MessageBox.Show(Convert.ToString(e));
-          return false;
-       }
-    
-       return true;
+        if (this.IsOpen())
+            this.CloseAndDisposePort();
+        serialPort.Open();
     }
-    
-    /// <summary>
-    /// Checks whether serial port is open. 
-    /// </summary>
-    /// <returns>Returns true is serial port is open, returns false if serial port is closed or null.</returns>
-    public bool IsOpen()
+    catch (Exception e)
     {
-       if (serialPort != null)
-          return serialPort.IsOpen;
-       else
-          return false;
+        MessageBox.Show(Convert.ToString(e));
+        return false;
     }
-    
-    /// <summary>
-    /// Closes and disposes of serial port.
-    /// </summary>
-    public void CloseAndDisposePort()
-    {
-        serialPort.Close();
-        serialPort.Dispose();
-    }
+
+    return true;
+}
+
+/// <summary>
+/// Checks whether serial port is open. 
+/// </summary>
+/// <returns>Returns true is serial port is open, returns false if serial port is closed or null.</returns>
+public bool IsOpen()
+{
+    if (serialPort != null)
+        return serialPort.IsOpen;
+    else
+        return false;
+}
+
+/// <summary>
+/// Closes and disposes of serial port.
+/// </summary>
+public void CloseAndDisposePort()
+{
+    serialPort.Close();
+    serialPort.Dispose();
+}
+```

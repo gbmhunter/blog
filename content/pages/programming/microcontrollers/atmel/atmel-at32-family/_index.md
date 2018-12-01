@@ -15,10 +15,6 @@ The AT32 family of microcontrollers are manufactured by ATMEL. They use the prop
 
 Because of their large pin count, AT32 microcontrollers normally in high-density packages such as QFN and BGA.
 
-# Child Pages
-
-[sb_child_list template=2 orderby=title order=asc nest_level=1]
-
 # Programming
 
 They support both JTAG and programming via pre-installed bootloader over USB (on all USB capable devices). BatchISP is a computer-side program developed by ATMEL that can program firmware onto the devices through the USB connection.

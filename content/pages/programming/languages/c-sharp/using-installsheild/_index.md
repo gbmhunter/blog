@@ -9,9 +9,7 @@ url: /programming/languages/c-sharp/using-installsheild
 
 # Overview
 
-
 This page is all about using InstallShield with Visual Studio projects to create installable setup files for the user to use.
-
 
 # Creating A Single setup.exe
 
@@ -22,15 +20,11 @@ The key part, once you've created an InstallShield project in your solution, is 
 
 {{< figure src="/images/programming-csharp/visual-studio-config-manager-window-single-image.png" caption="Making InstallShield produce a single file output install (e.g. setup.exe) in the Visual Studio configuration manager."  width="600px" >}}
 
-
 # Version Numbers
-
 
 The product version must follow the syntax aaa.bbb.ccccc where the aaa is the major version number, bbb is the minor version number, and ccccc is the build number. You are limited to a maximum number of 255 (unsigned 8-bit) for both aaa and bbb, and a maximum number of 65,535 (unsigned 16-bit) for ccccc. You can include a fourth field, dddd, but the InstallShield does not use it.
 
-
 # Upgrading From Older Versions
-
 
 By default, if you try and install a newer version of your install package on a system, the InstallShield will throw the error "Another version of this product is installed. Installation cannot continue.".
 
@@ -38,29 +32,23 @@ By default, if you try and install a newer version of your install package on a 
 
 To change this so that newer versions will update or replace files from the older version, you have to make sure of two things.
 
+1. You have a upgrade path.
 
+	{{< figure src="/images/programming-csharp/install-shield-adding-new-upgrade-path.png" caption="Adding a new update path, so newer versions of the program will install over older versions."  width="800px" >}}
 
-	  1. You have a upgrade path.
+2. You generate a new "Product Code" everytime you want the application to update. **Note that this is different to the Product Version**, which is a smaller, user-generated number (e.g. 1.2.3), rather than the longer computer-generated Product Code.
 
-{{< figure src="/images/programming-csharp/install-shield-adding-new-upgrade-path.png" caption="Adding a new update path, so newer versions of the program will install over older versions."  width="800px" >}}
-	  2. You generate a new "Product Code" everytime you want the application to update. **Note that this is different to the Product Version**, which is a smaller, user-generated number (e.g. 1.2.3), rather than the longer computer-generated Product Code.
-
-{{< figure src="/images/programming-misc/change-product-code-not-upgrade-code-install-shield.png" caption="If you want a install to replace/upgrade and older one, make sure to re-generate a different product code (the circled number)."  width="700px" >}}
-
-
-
+	{{< figure src="/images/programming-misc/change-product-code-not-upgrade-code-install-shield.png" caption="If you want a install to replace/upgrade and older one, make sure to re-generate a different product code (the circled number)."  width="700px" >}}
 
 # Using The Command-Line
-
 
 You can build a release from the command line by using ISCmdBld.exe for both Windows Installer and InstallScript projects.
 
 
 ## Non-optional Options
 
-
-<table style="width: 500px;" border="0" >
-<tbody >
+<table>
+<tbody>
 <tr >
 
 <td >-p "path"
@@ -88,11 +76,9 @@ You can build a release from the command line by using ISCmdBld.exe for both Win
 </tbody>
 </table>
 
-
 ## Optional Options
 
-
-<table style="width: 500px;" border="0" >
+<table>
 <tbody >
 <tr >
 

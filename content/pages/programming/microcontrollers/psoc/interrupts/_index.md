@@ -18,17 +18,19 @@ The easiest and most common way to create interrupts on a PSoC microcontroller i
 # Code-Based Interrupts
 
 You have to be aware that **not all interrupts** have to be created using a [PSoC Interrupt component](http://blog.mbedded.ninja/programming/microcontrollers/psoc/components#interrupts). There are also pure software method for creating/installing interrupts. This can lead to confusion/bugs if the coder expects that all the interrupts running on the PSoC can be seen in the schematics. Cypress defines the cyisraddress data type to store pointers to interrupt handlers. They also define the array CyRamVectors[] which stores the interrupt handlers at the correct locations. This is an example from the FreeRTOS port to the PSoC 5.
-    
-    // Code taken from the FreeRTOS PSoC 5 port
-    
-    extern void xPortPendSVHandler(void);
-    extern void xPortSysTickHandler(void);
-    extern void vPortSVCHandler(void);
-    extern cyisraddress CyRamVectors[];
-    
-    // Install the OS Interrupt Handlers.
-    CyRamVectors[11] = (cyisraddress)vPortSVCHandler;
-    CyRamVectors[14] = (cyisraddress)xPortPendSVHandler;
-    CyRamVectors[15] = (cyisraddress)xPortSysTickHandler;
+
+```c
+// Code taken from the FreeRTOS PSoC 5 port
+
+extern void xPortPendSVHandler(void);
+extern void xPortSysTickHandler(void);
+extern void vPortSVCHandler(void);
+extern cyisraddress CyRamVectors[];
+
+// Install the OS Interrupt Handlers.
+CyRamVectors[11] = (cyisraddress)vPortSVCHandler;
+CyRamVectors[14] = (cyisraddress)xPortPendSVHandler;
+CyRamVectors[15] = (cyisraddress)xPortSysTickHandler;
+```
 
 The above code installs the neccessary interrupt handlers for the FreeRTOS operating system to work correctly on the PSoC 5. Note that xPortSysTickHandler is the "tick" or "heartbeat" for the operating system,

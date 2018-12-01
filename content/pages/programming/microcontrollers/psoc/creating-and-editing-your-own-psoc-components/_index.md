@@ -15,13 +15,16 @@ PSoC components can be created from the PSoC Creator IDE. If you are looking for
 
 # Component File Structure
 
-<table style="width: 600px;" border="0" ><tbody ><tr >
-<td >**File Extension**
-</td>
-<td >**File Format**
-</td>
-<td >**Description**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>    
+            <th>File Extension</th>
+            <th>File Format</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr >
 <td >.cs
 
 </td>

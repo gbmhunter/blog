@@ -9,13 +9,9 @@ url: /programming/languages/vhdl
 
 ## 2-Input AND Gate
 
-
-
-    
-    entity AND2 is
-         port (in1, in2: in std_logic;
-               out1: out std_logic);
-    end AND2;
-
-
-
+```vhdl    
+entity AND2 is
+        port (in1, in2: in std_logic;
+            out1: out std_logic);
+end AND2;
+```

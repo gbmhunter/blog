@@ -7,84 +7,50 @@ type: page
 url: /programming/languages/tex/drawing-schematics-with-tikz-and-circuitikz
 ---
 
-[latexpage]
-
-
-
-
 # QuickLatex Setup
-
-
-
 
  The code below shows the basic setup to draw a Circuitikz diagram in a Wordpress post using the QuickLatex plugin.
 
+```    
+\begin{tikzpicture}
+[+preamble]
+    \usepackage{tikz}
+    \usepackage[siunitx]{circuitikz}
+[/preamble]
+    % Draw a non-polarized capacitor.
+    \draw (0,0) to [C, l=$C$] (0,2);
+\end{tikzpicture}
+```
 
-
-    
-    \begin{tikzpicture}
-    [+preamble]
-       \usepackage{tikz}
-       \usepackage[siunitx]{circuitikz}
-    [/preamble]
-       % Draw a non-polarized capacitor.
-       \draw (0,0) to [C, l=$C$] (0,2);
-    \end{tikzpicture}
-
-
-
-
- Add the actual Circuitikz code between the end of the preamble and the end of the tikzpicture elements.
-
-
-
+Add the actual Circuitikz code between the end of the preamble and the end of the tikzpicture elements.
 
 # Adding A Background
 
-
-
-
 Sometimes in can be beneficial to add a background to the circuit drawing. This is true when using QuickLatex with Wordpress to render Circuitikz (as this site does), as by default it uses a transparent background, which is good for inline equations, but not so much for circuit drawings.
 
+```    
+\useasboundingbox [fill=white!10] (-1,-1) rectangle (3,3);	
+```
 
-
-    
-    \useasboundingbox [fill=white!10] (-1,-1) rectangle (3,3);	
-
-
-
-
- Tailor the corners of the rectangle to provide the correct size background for your circuit drawing.
-
-
-
+Tailor the corners of the rectangle to provide the correct size background for your circuit drawing.
 
 # Capacitors
 
-
-
-
 The three types of capacitors used are easily drawn.
 
+```
+% Draw a unpolarised capacitor.
+\draw (0,0) to [C, l=$C$] (0,2);	
+% Draw a polarised capacitor.
+\draw (0,0) to [pC, l=$C$] (0,2);
+% Draw a variable capacitor.
+\draw (0,0) to [vC, l=$C$] (0,2);
+```    
 
-
-    
-    % Draw a unpolarised capacitor.
-    \draw (0,0) to [C, l=$C$] (0,2);	
-    % Draw a polarised capacitor.
-    \draw (0,0) to [pC, l=$C$] (0,2);
-    % Draw a variable capacitor.
-    \draw (0,0) to [vC, l=$C$] (0,2);
-    
-
-
-<table style="width: 600px; text-align: center;" >
+<table>
 <tbody >
 <tr >
-
 <td >
-
-
 \begin{tikzpicture}  
 [+preamble]  
 \usepackage{tikz}  
@@ -93,14 +59,8 @@ The three types of capacitors used are easily drawn.
 % Draw a non-polarized capacitor.  
 \draw (0,0) to [C, l=$C$] (0,2);  
 \end{tikzpicture}
-
-
-
 </td>
-
 <td >
-
-
 \begin{tikzpicture}  
 [+preamble]  
 \usepackage{tikz}  
@@ -109,14 +69,8 @@ The three types of capacitors used are easily drawn.
 % Draw a polarized capacitor.  
 \draw (0,0) to [pC, l=$C$] (0,2);  
 \end{tikzpicture}
-
-
-
 </td>
-
 <td >
-
-
 \begin{tikzpicture}  
 [+preamble]  
 \usepackage{tikz}  
@@ -125,9 +79,6 @@ The three types of capacitors used are easily drawn.
 % Draw a variable capacitor.  
 \draw (0,0) to [vC, l=$C$] (0,2);  
 \end{tikzpicture}
-
-
-
 </td>
 </tr>
 <tr >
@@ -144,32 +95,21 @@ The three types of capacitors used are easily drawn.
 </tbody>
 </table>
 
-
 # Op-Amps And Comparators
-
-
-
 
 Op-amps and caparators share the same symbol.
 
+```
+\draw
+    % Draw an op-amp
+    (0,0) node[op amp] (opamp) {}
+    (opamp.+) node[left] {$v_+$}
+    (opamp.−) node[left] {$v_−$}
+    (opamp.out) node[right] {$v_o$}
+;	
+```    
 
-
-    
-    \draw
-    	% Draw an op-amp
-    	(0,0) node[op amp] (opamp) {}
-    	(opamp.+) node[left] {$v_+$}
-    	(opamp.−) node[left] {$v_−$}
-    	(opamp.out) node[right] {$v_o$}
-    ;	
-    
-
-
-
-
-
-
-
+```
 \begin{tikzpicture}[scale=1]  
 [+preamble]  
 \usepackage{tikz}  
@@ -182,29 +122,17 @@ Op-amps and caparators share the same symbol.
 (opamp.−) node[left] {$v_−$}  
 (opamp.out) node[right] {$v_o$};  
 \end{tikzpicture}
-
-
-
+```
 
 # Dashed Lines
 
-
-
-
 It took me awhile to get dashed lines to work, here is the correct way to draw them:
 
-
-
-    
-    % Make sure to use a separate draw command for dashed lines,
-    % rather than tacking it onto another one!
-    \draw[dashed]
-       (-0.5,0) -- (2,0);
-
-
-
+```    
+% Make sure to use a separate draw command for dashed lines,
+% rather than tacking it onto another one!
+\draw[dashed]
+    (-0.5,0) -- (2,0);
+```
 
  Make sure to use a separate draw command for dashed lines, rather than tacking it onto another one, otherwise you will find all lines in that draw command will become dashed.
-
-
-

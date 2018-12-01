@@ -9,15 +9,22 @@ url: /programming/languages/c-plus-plus/operator-overloading
 
 # Overview
 
-C++ allows you to perform operator overloading. This is when you specify the exact behaviour of a operator when used on or between specific data types. For example, you may create a string object class String, and overload the addition (+) operator so that when used on two string types like so str1 + str2, it concatenates the strings together to produce a new string.
+C++ allows you to perform operator overloading. This is when you specify the exact behaviour of a operator when used on or between specific data types. For example, you may create a string object class String, and overload the addition (`+`) operator so that when used on two string types like so `str1 + str2`, it concatenates the strings together to produce a new string.
 
-Operator overloading allows you to express statements in a more compact and readable form. Continuing with the above example, if operator overloading was not available, we would have to create a function called String::Append(String & string2) and to perform the same action as above we would have to write str1.Append(str), which is slightly more convoluted.
+Operator overloading allows you to express statements in a more compact and readable form. Continuing with the above example, if operator overloading was not available, we would have to create a function called `String::Append(String & string2)` and to perform the same action as above we would have to write `str1.Append(str)`, which is slightly more convoluted.
 
 # What Operators Can I Overload?
 
 C++ allows you to overload most operators. In fact, because you can overload so many, it's easier just to list the ones you can't.
 
-Operators you CAN'T overload:  * . (member selection operator, note you can still override ->)  * .* (member selection with pointer to member operator)  * ?: (tenary conditional operator)  * sizeof() (object size operator)  * typeid() (object type info operator)  * :: (scope resolution operator)
+Operators you CAN'T overload:
+
+* . (member selection operator, note you can still override ->)  
+* .* (member selection with pointer to member operator)
+* ?: (tenary conditional operator)
+* sizeof() (object size operator)
+* typeid() (object type info operator)
+* :: (scope resolution operator)
 
 # Suitability For Embedded Systems
 

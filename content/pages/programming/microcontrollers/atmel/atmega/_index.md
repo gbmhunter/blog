@@ -13,10 +13,6 @@ The ATmega is a microcontroller series by Atmel. It is an 8-bit architecture, wi
 
 {{< figure src="/images/2011/09/atmel-avr-atmega168-ic-photo-www-wolfpaulus-com.jpeg" width="426px" caption="A photo of the Atmel AVR ATmega168 microcontroller. Image from https://wolfpaulus.com."  >}}
 
-# Child Pages
-
-[sb_child_list template=2 orderby=title order=asc nest_level=1]
-
 # Code Examples
 
 One annoyance with the ATmega series is that Atmel wrote all the code to compile with IAR Compiler, a paid for IDE, and not their own proprietary and free AVR Studio. This means that you have to port the code to work with the Win-AVR compiler if you want to use ATMEL's code examples. The main differences between the two compilers are precompiler directives (e.g. #pragma), delay functions, and the handling of variables that are stored in flash.

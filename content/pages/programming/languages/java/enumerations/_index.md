@@ -15,9 +15,11 @@ Enumerations in Java are treated as proper objects.
 
 An enum can be iterated over by using a for in the following way:
     
-    for(MyEnum myEnum: MyEnum.values()) {
-       // Your code here
-    }
+```java
+for(MyEnum myEnum: MyEnum.values()) {
+    // Your code here
+}
+```
 
 # Indexing An Array Using An Enum
 

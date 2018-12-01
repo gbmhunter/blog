@@ -9,8 +9,4 @@ url: /programming/microcontrollers/psoc/fault-finding
 
 # Reset Cause Detection
 
-
-
-
-
-PSoC provides the function CyResetStatus(), which returns information on the cause of the last PSoC reset.
+PSoC provides the function `CyResetStatus()`, which returns information on the cause of the last PSoC reset.

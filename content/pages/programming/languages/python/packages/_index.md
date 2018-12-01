@@ -6,10 +6,3 @@ title: Packages
 type: page
 url: /programming/languages/python/packages
 ---
-
-# Child Pages
-
-
-
-
-[sb_child_list template=2 orderby=title order=asc nest_level=1]

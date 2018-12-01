@@ -14,12 +14,14 @@ Variable scope is a way to determining the lifespan of a variable in code.
 # Function Scope
 
 Function scope is given to a JavaScript variable with the var keyword.
-    
-    function myFunc() {
-       var myVar = 8;
-    }
-    
-    // myVar does not exist here
+
+```js
+function myFunc() {
+    var myVar = 8;
+}
+
+// myVar does not exist here
+```
 
 The above myVar variable cannot be accessed outside of the function myFunc().
 

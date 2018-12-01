@@ -15,13 +15,15 @@ The PSoC development environment tends to be mostly bug free. However, there are
 
 The PSoC 3 and 5 range of microcontrollers are relatively new (as of writing this, September 2011), and therefore have a few issues here and there that need to be smoothed out. Let it be mentioned here that all-in-all they are already a very capable and powerful microcontroller, with this being more like little annoyances than huge problems. This page does not detail all issues, rather just some of the more major ones.
 
-<table style="width: 600px;" border="0" class="aligncenter" ><tbody ><tr >
-<td >**Problem**
-</td>
-<td >**Affected Revisions**
-</td>
-<td >**Status**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Problem</th>
+            <th>Affected Revisions</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+<tbody ><tr >
 <td >Wake-up sources not selectable when putting micro to sleep
 </td>
 <td >PSoC ES2 or earlier
@@ -78,8 +80,6 @@ After adding another single-byte variable to the project, you might receive this
 # Invalid Input Module
 
 This applies to PSoC 3 and the Keil tool chain.
-
-.
 
 {{< figure src="/images/programming-psoc/psoc-3-build-error-invalid-input-module-build-message.png" caption="The PSoC 3 build error 'Invalid Input Module',"  width="400px" >}}
 
