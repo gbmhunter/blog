@@ -7,8 +7,6 @@ type: page
 url: /pcb-design/soldermask-stencils
 ---
 
-[mathjax]
-
 # Overview
 
 PCB stencils help you apply solder paste and a quick and even manner to a PCB during the reflow soldering process. They are usually made from either a sheet of stainless steel (for large manufacturing runs) or a plastic/wax paper (for cheap one off prototypes).
@@ -41,7 +39,7 @@ Typical thickness include 0.12mm and 0.15mm. 0.10mm thick stainless steel can be
 
 The aspect ratio of a particular aperture is the ratio beteen the width of an aperture and the thickness of the stencil.
 
-$$ R = \frac{W}{T} $$
+<div>$$ R = \frac{W}{T} $$</div>
 
 For a particular stencil, this ratio should never be smaller than a particular number. This is commonly 1 or 1.5.
 
@@ -49,7 +47,7 @@ For a particular stencil, this ratio should never be smaller than a particular n
 
 The rule:
 
-$$ R = \frac{LW}{2(L+W)T} $$
+<div>$$ R = \frac{LW}{2(L+W)T} $$</div>
 
 This ratio should always be greater or equal to 0.66.
 

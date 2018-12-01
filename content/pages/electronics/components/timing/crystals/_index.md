@@ -51,8 +51,6 @@ The operating temperature is the temperature range in which the crystal is guara
 
 Typical operating temperatures are -40 to +85°C.
 
-##  
-
 ## Power Consumption
 
 The power consumption of a crystal is a measure of how much **power** the **crystal consumes** during normal operation. This can be of concern for extremely low power designs.
@@ -66,8 +64,6 @@ Note that this is the power consumption of the crystal itself, and **does not ta
 Stability is a measure of how repetitive, or stable, the clocks frequency is over time. It is measured in parts-per-million (ppm).
 
 Typical stability is around 30-50ppm.
-
-#  
 
 # What The Crystal Output Looks Like...
 

@@ -7,9 +7,11 @@ type: page
 url: /programming/version-control-systems/git
 ---
 
-# Child Pages
+# Pulling In Temporary Changes To Your Branch
 
+If you have some small improvements on branch `A` that make debugging/testing easier that are not yet reviewed/pushed to master, and you are working on branch `B`, you can bring these useful changes into `B` without polluting the branch with:
 
-
-
-[sb_child_list template=2 orderby=title order=asc nest_level=1]
+```sh
+$ git merge --no-commit --squash A
+$ git reset HEAD
+```

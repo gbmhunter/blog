@@ -9,12 +9,6 @@ url: /programming/build-systems-and-package-managers/cmake/a-modular-scaleable-w
 
 # Overview
 
-
-
-
 Each sub-project should be treated like a proper project, with it's own build and install step. find_package() should be the preferred way of declaring and finding dependencies between packages.
-
-
-
 
 In a way, this method is quite similar to how the Linux package system works, and how you would add dependencies into your projects such as the Boost libraries. Your own code libraries should follow the same architecture.

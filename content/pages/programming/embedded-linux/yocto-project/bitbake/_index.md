@@ -9,67 +9,36 @@ url: /programming/embedded-linux/yocto-project/bitbake
 
 # Running Specific Commands
 
-
-
-
 To run a specific bitbake command, use the -c option followed by the command:
 
+```sh
+$ bitbake -c compile
+```
 
+`-c` can be followed with things such as:
 
-    
-    $ bitbake -c compile
+* fetch
+* coinfigure
+* compile
+* package
+* clean
 
+To force a bitbake command, use the `-f` option:
 
-
-
--c can be followed with things such as:
-
-
-
-
-
-	  * fetch
-	  * coinfigure
-	  * compile
-	  * package
-	  * clean
-
-
-
-To force a bitbake command, use the -f option:
-
-
-
-    
-    $ bitbake -f -c compile
-
-
-
+```sh
+$ bitbake -f -c compile
+```
 
 # Debug Output
 
+The `-v` option increases the amount of info that bitbake prints.
 
+```sh  
+$ bitbake -v core-image-minimal
+```
 
+But you can do better! You can also add the options `-DDD` for even more debug output!
 
-The -v option increases the amount of info that bitbake prints.
-
-
-
-    
-    $ bitbake -v core-image-minimal
-
-
-
-
-But you can do better! You can also add the options -DDD for even more debug output!
-
-
-
-    
-    $ bitbake -v -DDD core-image-minimal
-
-
-
-
-
-
+```sh    
+$ bitbake -v -DDD core-image-minimal
+```

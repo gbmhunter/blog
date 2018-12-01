@@ -9,71 +9,28 @@ url: /programming/general/makefiles
 
 # Overview
 
-
-
-
-
 Makefiles are a way of making a **"one touch" build solution for source code**. They are a type of file used by the GNU command **make**. They take multiple file inputs, do some part or all of the code build process, and produce output(s). They are commonly used to create executables, object files, or libraries (combined object files) from source code. They come in particularly useful when dealing with large projects.
-
-
-
-
 
 They are textfiles that are stored with the filename "Makefile" (or "makefile"), with no file extension (**do not** call it makefile.txt!). The capital M version is recommended because it persists at the top of the directory, along with other important files like the README.
 
-
-
-
-
 Makefiles are most commonly used to compile code for Linux environments, but also works in Windows, and for embedded systems.
-
-
-
-
 
 Unlike most other programming/scripting languages, Makefiles are white-space sensitive. This can be annoying! Take care when coping makefile code from the internet, the clipboard can easily convert tabs into spaces and cause the makefile **code to break**.
 
-
-
-
-
 Make can be then used by "higher-level" build programs, such as the [Autoconfig](http://www.gnu.org/savannah-checkouts/gnu/autoconf/manual/autoconf-2.69/html_node/index.html#Top) and [Automake](http://www.gnu.org/software/automake/) tools .
-
-
-
-
 
 # The Simplest Possible Makefile
 
-
-
-
-
 The simplest possible makefile is (please correct me if I'm wrong):
 
-
-
-
-    
-    make: main.o
-         gcc -o main.o main.c
-    
-
-
-
-
+```make 
+make: main.o
+        gcc -o main.o main.c
+```
 
 If in Linux, opening a terminal, typing make and pressing enter while in the same directory as this makefile will compile a file called main.c with the GCC compiler and produce the output executable file main.o .
 
-
-
-
-
 The primary three things a Makefile consists of are **targets**, **prerequisites**, and **recipes**. The above code contains two of these, main.o , which is the target, and gcc -o main.o main.c, which is the recipe. Make interprets this code as saying "You make main.o by running the command gcc -o main.o main.c in the terminal.". Note that all recipes are run in the terminal, and each new recipe (which is on a new line), is **run in a different instance of the terminal**.
-
-
-
-
 
 Note that there is a tab infront of the recipe gcc .... . This is important! **All recipes must be proceeded by a tab.**
 

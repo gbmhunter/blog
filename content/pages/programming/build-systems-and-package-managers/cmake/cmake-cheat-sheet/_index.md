@@ -9,34 +9,21 @@ url: /programming/build-systems-and-package-managers/cmake/cmake-cheat-sheet
 
 # cmake Cheat Sheet
 
-
-
-
 Below is a **cheat sheet for the most common statements** you will use in a CMakeLists.txt file!
-
-
-
 
 **By no means is this a complete reference guide**, even for the mentioned functions (commonly they are just depicted in their most used form). For full documentation, see [https://cmake.org/documentation/](https://cmake.org/documentation/).
 
-
-
-
 Sorted roughly by in which order you would use them (i.e. from compiling to linking).
 
-
-<table >
+<table>
+    <thead>
+        <tr>
+            <th>Function</th>
+            <th>Explanation</th>
+        </tr>
+    </thead>
 <tbody >
 <tr >
-
-<td >**Function**
-</td>
-
-<td >**Explanation**
-</td>
-</tr>
-<tr >
-
 <td >set(srcs file1.c file2.c ...)
 </td>
 

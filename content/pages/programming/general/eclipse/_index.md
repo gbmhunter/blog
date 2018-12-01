@@ -9,8 +9,7 @@ url: /programming/general/eclipse
 
 # Cheat Sheet
 
-
-<table style="width: 600px;" border="0" >
+<table>
 <tbody >
 <tr >
 

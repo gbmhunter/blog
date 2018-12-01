@@ -16,9 +16,7 @@ Then there is asymmetric algorithms, which include the popular public-key algori
 
 When the decryption keys is kept private and the encryption-key made public
 
-
 # Hash Functions
-
 
 Hash functions are used in cryptograph to prove a digital signature of the sender
 
@@ -28,36 +26,21 @@ A checksum, regularly used to verify data blocks over internet transmission prot
 
 The ideal hash function is easy to compute the hash value- infeasible to generate a message with a given hash- infeasible to modify a message without changing the hash- infeasible to find two different messages with the same hash- posses the Avalanche effect
 
-
-
-
 # Types Of Attacks
-
-
-
 
 ## Brute-Force Attack
 
-
 This is when the attacker attempts to decipher the message by making random guesses at the key. The stronger the encryption (in expressed in terms of bits), the longer (on average), it would take an attacker to crack the code.
-
 
 ## Side-Channel Attacks
 
-
 Using the time of computation or the CPU power usage while performing encryption/decryption to infer features about the key (and hence reducing the number set that the key could belong t0), resulting in
-
 
 ## Man-In-The-Middle Attacks
 
-
 This is when a third party changes the public key half-way through a transmission to match their own private key.
 
-
-
-
 # TEMPEST
-
 
 TEMPEST is a term used to define the method of obtaining protected information from 'compromising emissions'.
 
@@ -67,16 +50,10 @@ Bell Labs were able to use a TEMPEST method on computer monitors to decipher 75%
 
 Also interesting to note, the LED’s on routers can also compromise data. The LED’s usually blink to indicate traffic, and with a fast enough optical system, you can get the exact bits/bytes, since they are usually connected straight onto the data line
 
-
 ## Traffic Analysis
-
 
 Traffic analysis is all about intercepting and examining messages and inferring information from the patterns in communication
 
 For example, in WWI and WWII, many Allied analysts managed to deduce the location and movement of enemy positions using traffic analysis. However, many of the reports weren’t heeded by the chain of command, and lives and resources were lost.
 
 The timing of packets using internet protocols that send a packet everytime a key is pressed (such as SSH), can give away passwords (analysed using hidden Markov models).
-
-
-
-

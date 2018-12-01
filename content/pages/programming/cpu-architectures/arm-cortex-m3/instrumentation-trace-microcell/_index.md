@@ -15,18 +15,18 @@ The ITM is part of the Coresight debugging and trace system, shown in the right 
 
 printf()  ultimately relies on the function fputc() to do the low-level character outputting. So this is the function we are going to replace. The following code shows the re-definition of fputc().
 
-    
+    ```c
     int fputc(int ch, FILE *f) {
        return ITM_SendChar(ch);
     }
-
+    ```
 
 Note that the passed in file argument f is ignored altogether.
 
 ITM_SendChar() is a Cortex-M3 function provided by ARM and is defined in core_cm3.h. The declaration of it is shown below (for reference purposes).
 
-    
+    ```c
     static __INLINE uint32_t ITM_SendChar (uint32_t ch);
-
+    ```
 
 

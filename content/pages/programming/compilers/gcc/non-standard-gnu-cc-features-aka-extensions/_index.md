@@ -17,10 +17,11 @@ That said, they are still sometimes the best tool for the job (e.g. you can't do
 
 GNU allows you to determine the initialisation order of **global static variables** by specifying a priority.
     
+    ```c++
     // In some .cpp file...
     
     MyClass myVar1  __attribute__ ((init_priority (321)));
     MyClass myVar2  __attribute__ ((init_priority (12)));
-    
+    ```
 
 Usually, myVar1 would be initialisaed before myVar2. However, with myVar2 being specified with the priority 12 (lower numbers equate to a higher priority), myVar2 will be initialised first.

@@ -9,67 +9,40 @@ url: /programming/embedded-linux/yocto-project/adding-a-custom-app-to-a-yocto-bu
 
 # Overview
 
-
-
-
 This page is a walk-through to show you how to add your own code/app to a custom Linux build that uses Yocto.
-
-
-
 
 # Making A Basic Hello, World App (Binary)
 
-
-
-
 Firstly, we need a basic application that we can then add to a Yocto build. Let's create a simple application that prints "Hello, World" to stdout and then exits.
-
-
-
 
 We need to create the following files:
 
-
-
-
-
-	  * HelloWorld.c
-	  * HelloWorld.h
-	  * LICENSE
-	  * configure.ac
-	  * Makefile.am
-
-
+* HelloWorld.c
+* HelloWorld.h
+* LICENSE
+* configure.ac
+* Makefile.am
 
 These will be added to a git repository and pushed to GitHub (no folder structure, all these files will be added to the root repository directory).
 
-
-
-
 Let's create a HelloWorld.c:
 
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
 
+#include "HelloWorld.h"
 
-    
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <stdint.h>
-    
-    #include "HelloWorld.h"
-    
-    int main(int argc, char *argv[]) {
-      printf("Hello, World...\n");
-      return 0;
-    }
-
-
-
+int main(int argc, char *argv[]) {
+    printf("Hello, World...\n");
+    return 0;
+}
+```
 
 And a matching HelloWorld.h:
 
-
-
-    
+    ```c    
     #ifndef HELLO_WORLD_H
     #define HELLO_WORLD_H
     
@@ -79,15 +52,11 @@ And a matching HelloWorld.h:
     #endif /* HAVE_CONFIG_H */
     
     #endif /* HELLO_WORLD_H */
-
-
-
+    ```
 
 We also need a LICENSE file. Yocto is quite particular about licenses, to ensure that users can specify exactly what licensing restrictions are present in a particular build (e.g. make sure this build ONLY contains open-source code). Create a LICENSE file, we will use the MIT license for this one:
 
-
-
-    
+    ```    
     The MIT License (MIT)
     
     Copyright (c) 2014 Dynamic Devices
@@ -109,15 +78,11 @@ We also need a LICENSE file. Yocto is quite particular about licenses, to ensure
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
-
-
-
+    ```
 
 We need a configure.ac file:
 
-
-
-    
+    ```    
     #                                               -*- Autoconf -*-
     # Process this file with autoconf to produce a configure script.
     
@@ -148,15 +113,11 @@ We need a configure.ac file:
     #AC_CONFIG_MACRO_DIR([m4])
     AC_CONFIG_FILES([Makefile])
     AC_OUTPUT
-
-
-
+    ```
 
 Finally, make a Makefile.am:
 
-
-
-    
+    ```    
     AUTOMAKE_OPTIONS = foreign
     
     CFLAGS = -Wall -pedantic
@@ -164,77 +125,44 @@ Finally, make a Makefile.am:
     
     bin_PROGRAMS = helloworld
     helloworld_SOURCES = HelloWorld.c
-
-
-
+    ```
 
 Notice in the Makefile.am file that we add helloworld to the bin_PROGRAMS variable. This makes Yocto create a binary executable of your example "Hello, World" application and places it in usr/bin, making it executable from the command-line. We will use this feature to test it in QEMU once we have built the image below.
 
-
-
-
 Commit all these files into a git repository. If you want the Yocto layer to download the files automatically, this repository needs to be placed on a server, so I used GitHub.
 
-
-
-
 **Note: During development, you may not want to have to commit everytime you wish to build your code. See the bottom of this page on how achieve this.**
-
-
-
 
 The code for this example app is located at [https://github.com/mbedded-ninja/YoctoHelloWorldApp](https://github.com/mbedded-ninja/YoctoHelloWorldApp).
 
 
-
-
 # Make A Layer To Hold The App
-
-
-
 
 The application needs to be added to a Yocto layer before it can be included in a build. It can either be added to an existing layer, or added to a new one. We will create a new layer to keep the development environment "clean". All layers are contained with a meta-<layer name> folder.
 
-
-
-
 We will create a layer called meta-example. Create a new directory called meta-example in the main Yocto directory (called poky in our case).
 
-
-
-    
+    ```sh 
     ~/poky$ mkdir meta-example
-
-
-
+    ```
 
 Now cd into this new directory and create a new folder called conf.
 
-
-
-    
+    ```sh    
     ~/poky$ cd meta-example
     ~/poky/meta-example$ mkdir conf=
-
-
-
+    ```
 
 The config folder holds configuration data about the layer. cd into this directory and create a new file called layer.conf:
 
-
-
-    
+    ```sh    
     ~/poky/meta-example$ cd conf
     ~/poky/meta-example/conf$ touch layer.conf
-
-
-
+    ```
 
 Add the standard config code to layer.conf as shown below. This layer.conf file tells Yocto where the BitBake files are located in this package. We won't go into any more detail about this file, as this is beyond the scope of this tutorial.
 
-
-
-    
+    ```    
     # We have a conf and classes directory, add to BBPATH 
     BBPATH := "${BBPATH}:${LAYERDIR}" 
     # We have a packages directory, add to BBFILES 
@@ -243,48 +171,32 @@ Add the standard config code to layer.conf as shown below. This layer.conf file 
     BBFILE_COLLECTIONS += "example" 
     BBFILE_PATTERN_example := "^${LAYERDIR}/" 
     BBFILE_PRIORITY_example := "5"
-
-
-
+    ```
 
 We have finished with the conf folder. We now need to create a recipe for this layer of ours. cd into the parent directory, and create a new directory called recipes-example.
 
-
-
-    
+    ```sh    
     ~/poky/meta-example/conf$ cd ..
     ~/poky/meta-example$ mkdir recipes-example
-
-
-
+    ```
 
 Now cd into recipes-example, and create a new folder called HelloWorld:
 
-
-
-    
+    ```sh    
     ~/poky/meta-example$ cd recipes-example
     ~/poky/meta-example/recipes-example$ mkdir HelloWorld
-
-
-
+    ```
 
 This HelloWorld folder is going to contain a file which says that the HelloWorld app that we created above should be part of this recipe. cd into the HelloWorld directory, and create a new file called HelloWorld_1.0.bb:
 
-
-
-    
+    ```sh    
     ~/poky/meta-example/recipes-example$ cd HelloWorld
     ~/poky/meta-example/recipes-example/HelloWorld$ touch HelloWorld_1.0.bb
-
-
-
+    ```
 
 This HelloWorld_1.0.bb is a BitBake file which points to the location that the HelloWorld app is stored (in our case, GitHub). It contains the following code:
 
-
-
-    
+    ```    
     #
     # This file was derived from the 'Hello World!' example recipe in the
     # Yocto Project Development Manual.
@@ -307,61 +219,32 @@ This HelloWorld_1.0.bb is a BitBake file which points to the location that the H
     
     # The autotools configuration I am basing this on seems to have a problem with a race condition when parallel make is enabled
     PARALLEL_MAKE = ""
-
-
-
+    ```
 
 The first thing to note is SRC_URL. This points to where the HelloWorld application lives. Notice the git:// at the start, this is slightly different to the URL you would use to push/pull using SSH or HTML.
 
-
-
-
 Also note SRCREV. This points to the SHA of the commit you wish to use when building. Remember to update this if you push new commits to the repo!
-
-
-
 
 Also note LIC_FILES_CHKSUM. This tells Yocto where the license file is in the HelloWorld repo, and what the MD5 checksum of that file is. Yocto checks to make sure this file exists and the checksum is still the same, to make sure the licensing hasn't changed.
 
-
-
-
 If you want to calculate the MD5 checksum of your own LICENSE file, you can use the md5sum UNIX command:
 
-
-
-    
+    ```sh    
     $ md5sum LICENSE
     96af5705d6f64a88e035781ef00e98a8  LICENSE
-
-
-
+    ```
 
 Use the number, but ignore the filename which is printed afterwards!
 
-
-
-
 The code for this example layer is located at [https://github.com/mbedded-ninja/YoctoMetaExample](https://github.com/mbedded-ninja/YoctoMetaExample).
-
-
-
 
 # Adding The Layer To The Build
 
-
-
-
 The final step is to add the newly created layer to your build. Layers are not automatically included in each build, the layers used is determined by the blah file at poky/build/conf/bblayers.conf.
-
-
-
 
 The default bblayers.conf file might look something like this:
 
-
-
-    
+    ```    
     # POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
     # changes incompatibly
     POKY_BBLAYERS_CONF_VERSION = "2"
@@ -374,76 +257,43 @@ The default bblayers.conf file might look something like this:
       /home/username/temp/poky/meta-poky \
       /home/username/temp/poky/meta-yocto-bsp \
       "
-
-
-
+    ```
 
 We want to add our new layer to the BBLAYERS variable as shown below:
 
-
-
-    
+    ```    
     BBLAYERS ?= " \
       /home/username/temp/poky/meta \
       /home/username/temp/poky/meta-poky \
       /home/username/temp/poky/meta-yocto-bsp \
       /home/username/temp/poky/meta-example \
       "
-
-
-
+    ```
 
 # Build Time
 
-
-
-
 cd back to ~/poky/build/. We can now start the build process by running:
 
-
-
-    
+    ```sh    
     ~/poky/build$ bitbake core-image-minimal
-
-
-
+    ```
 
 This should take a few hours to complete when running it the first time!
 
-
-
-
 # Run Linux Build And Test Custom App
-
-
-
 
 Now you have built a Linux image with your custom application added, lets run the Linux image in QEMU and test that the application is present and runs correctly.
 
-
-
-
 Use the following command to start QEMU:
 
-
-
-    
+    ```sh    
     ~/poky/build$ runqemu qemux86
-
-
-
+    ```
 
 Login as root (no password needed). You should now be at the command prompt inside your Linux build. You can now make sure your "Hello, World" application is present by using the command:
 
-
-
-    
+    ```sh    
     root@qemux86:~# helloworld
     Hello, World...
     root@qemux86:~#
-
-
-
-
-
-
+    ```

@@ -9,11 +9,7 @@ url: /programming/general/file-systems
 
 # Open-Source File Systems
 
-
-
-
 ## FatFs
-
 
 URL: [http://elm-chan.org/fsw/ff/00index_e.html](http://elm-chan.org/fsw/ff/00index_e.html)
 

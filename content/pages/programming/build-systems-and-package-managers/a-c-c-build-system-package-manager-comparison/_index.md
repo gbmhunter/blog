@@ -9,43 +9,19 @@ url: /programming/build-systems-and-package-managers/a-c-c-build-system-package-
 
 # Overview
 
-
-
-
 This article is a some opinionated comparison of popular, open-source build systems/package managers for C/C++. This review looks at both programs that compile your code and those that manage dependencies, as the line between build systems and package managers is blurred. The build and packaging support are treated as separate qualities which will be reviewed for each.
-
-
-
 
 The build systems are listed in alphabetical order.
 
-
-
-
-**DISCLAIMER: I have had much experience with CMake and Makefiles, and moderate experience with autotools. For some of the other build systems, upon researching/testing for this comparison was the first time I had ever used or sometimes even heard of them.**
-
-
-
+DISCLAIMER: I have had much experience with CMake and Makefiles, and moderate experience with autotools. For some of the other build systems, upon researching/testing for this comparison was the first time I had ever used or sometimes even heard of them.
 
 The [GitHub repository mbedded-ninja/CppBuildSystemReview](https://github.com/mbedded-ninja/CppBuildSystemReview) contains a example/demo project for each build/packaging system mentioned below (one per folder). In each folder, there is a build.sh bash script which should automatically run the build on a Linux system, provided you have the build system installed.
 
-
-
-
 # The Opinionated TL;DR
-
-
-
 
 If you want a full end-to-end package manager and build system setup, have a look at Conan with CMake. If you just are after a modern, powerful build system for typical build situations, have a look at Bazel. If you are thinking about cross-compiling (e.g. embedded targets), want something mature and well-known, or have a complicated build structure, have a look at CMake by it's own.
 
-
-
-
 If you are thinking of using Scons or Makefiles, please make sure you are doing so for a good reason! Perhaps it's because it has to integrate with a system that already uses these tools, or that is what your company prefers. If you are considering it for a completely new project, I strongly recommend you consider some of the alternatives!
-
-
-
 
 # Bazel
 
@@ -54,7 +30,7 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 <tbody >
 <tr >
 
-<td >**Build Functionality**
+<td >Build Functionality
 </td>
 
 <td >9/10
@@ -65,7 +41,7 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 </tr>
 <tr >
 
-<td >**Package Functionality**
+<td >Package Functionality
 </td>
 
 <td >7/10
@@ -76,7 +52,7 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 </tr>
 <tr >
 
-<td >**Platform Support**
+<td >Platform Support
 </td>
 
 <td >7/10
@@ -87,7 +63,7 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 </tr>
 <tr >
 
-<td >**Usability**
+<td >Usability
 </td>
 
 <td >6/10
@@ -98,7 +74,7 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 </tr>
 <tr >
 
-<td >**Scalability/Speed**
+<td >Scalability/Speed
 </td>
 
 <td >8/10
@@ -109,7 +85,7 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 </tr>
 <tr >
 
-<td >**Community**
+<td >Community
 </td>
 
 <td >7/10
@@ -120,7 +96,7 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 </tr>
 <tr >
 
-<td >**TOTAL**
+<td >TOTAL
 </td>
 
 <td > 7/10
@@ -132,35 +108,21 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 </tbody>
 </table>
 
-
 Developed by Google.
-
-
-
 
 Bazel has some decent package manager support in the form of external dependencies. Bazel supports other local Bazel repositories, non-Bazel projects, and remote repositories which can be automatically downloaded by Bazel.
 
-
-
-
 Cross-compilation using Bazel can be difficult (see [https://github.com/bazelbuild/bazel/wiki/Building-with-a-custom-toolchain](https://github.com/bazelbuild/bazel/wiki/Building-with-a-custom-toolchain) for reasons why).
-
-
-
 
 As far as I'm aware, Bazel does not have the install functionality that build systems such as make and CMake have. The is no way to "install" the build executables, libraries and header files onto the system, be it the typically install locations (such as /usr/local/bin, /usr/local/lib, ... on Linux) or a custom install directory.
 
-
-
-
 # Buck
-
 
 <table >
 <tbody >
 <tr >
 
-<td >**Build Functionality**
+<td >Build Functionality
 </td>
 
 <td >10/10
@@ -171,7 +133,7 @@ As far as I'm aware, Bazel does not have the install functionality that build sy
 </tr>
 <tr >
 
-<td >**Package Functionality**
+<td >Package Functionality
 </td>
 
 <td >6/10
@@ -182,7 +144,7 @@ As far as I'm aware, Bazel does not have the install functionality that build sy
 </tr>
 <tr >
 
-<td >**Platform Support**
+<td >Platform Support
 </td>
 
 <td >7/10
@@ -193,10 +155,10 @@ As far as I'm aware, Bazel does not have the install functionality that build sy
 </tr>
 <tr >
 
-<td >**Usability**
+<td >Usability
 </td>
 
-<td >**8/10**
+<td >8/10
 </td>
 
 <td >_Buck is very easy to configure for both building and packaging C/C++ libraries/applications._
@@ -204,10 +166,10 @@ As far as I'm aware, Bazel does not have the install functionality that build sy
 </tr>
 <tr >
 
-<td >**Scalability/Speed**
+<td >Scalability/Speed
 </td>
 
-<td >**9/10**
+<td >9/10
 </td>
 
 <td >_Buck is designed to be fast. [It even attempts to work out what dependency headers to use](https://buckbuild.com/concept/what_makes_buck_so_fast.html), and only recompile if these change. Going hand-in-hand with Buck speed, it was designed from the start to be highly scalable. _
@@ -215,7 +177,7 @@ As far as I'm aware, Bazel does not have the install functionality that build sy
 </tr>
 <tr >
 
-<td >**Community**
+<td >Community
 </td>
 
 <td > 6/10
@@ -226,7 +188,7 @@ As far as I'm aware, Bazel does not have the install functionality that build sy
 </tr>
 <tr >
 
-<td >**TOTAL**
+<td >TOTAL
 </td>
 
 <td > 7/10
@@ -238,33 +200,22 @@ As far as I'm aware, Bazel does not have the install functionality that build sy
 </tbody>
 </table>
 
-
 # Buckaroo
-
-
-
 
 Buckaroo is a package manager that uses Buck as the build system.
 
-
-
-
 Unfortunately, I do not believe that Buckaroo supports local dependencies. All dependencies have to come from
 
-
-
-
 # CMake
-
 
 <table >
 <tbody >
 <tr >
 
-<td >**Build Functionality**
+<td >Build Functionality
 </td>
 
-<td >**9/10**
+<td >9/10
 </td>
 
 <td > _CMake is mature and has a very complete feature set._
@@ -272,10 +223,10 @@ Unfortunately, I do not believe that Buckaroo supports local dependencies. All d
 </tr>
 <tr >
 
-<td >**Package Functionality**
+<td >Package Functionality
 </td>
 
-<td >**6/10**
+<td >6/10
 </td>
 
 <td >
@@ -283,10 +234,10 @@ Unfortunately, I do not believe that Buckaroo supports local dependencies. All d
 </tr>
 <tr >
 
-<td >**Platform Support**
+<td >Platform Support
 </td>
 
-<td >**9/10**
+<td >9/10
 </td>
 
 <td >_(Linux, macOS, Windows). One of CMake's core qualities is to be platform and build system independent!_
@@ -294,10 +245,10 @@ Unfortunately, I do not believe that Buckaroo supports local dependencies. All d
 </tr>
 <tr >
 
-<td >**Usability**
+<td >Usability
 </td>
 
-<td >**5/10**
+<td >5/10
 </td>
 
 <td >_CMake can be somewhat easy to use for a self-contained build, but can get rather complex when dealing with dependencies (exporting, supporting find_package, .cmake.in files, e.t.c, see [here](https://cmake.org/cmake/help/git-master/manual/cmake-packages.7.html#creating-packages))._
@@ -305,10 +256,10 @@ Unfortunately, I do not believe that Buckaroo supports local dependencies. All d
 </tr>
 <tr >
 
-<td >**Scalability/Speed**
+<td >Scalability/Speed
 </td>
 
-<td >**7/10**
+<td >7/10
 </td>
 
 <td >_CMake supports large, multi-dependency projects well. However, you can get into a bit of a mess if proper "best practises" are not followed._
@@ -316,10 +267,10 @@ Unfortunately, I do not believe that Buckaroo supports local dependencies. All d
 </tr>
 <tr >
 
-<td >**Community**
+<td >Community
 </td>
 
-<td >**8/10**
+<td >8/10
 </td>
 
 <td >
@@ -333,66 +284,46 @@ _CMake has become the defacto standard for newer C++/C projects._
 </tr>
 <tr >
 
-<td >**TOTAL**
+<td >TOTAL
 </td>
 
-<td >**7/10**
+<td >7/10
 </td>
 
 <td >
 
-
 _Definitely a build system I would recommend!_
-
-
 
 </td>
 </tr>
 </tbody>
 </table>
 
-
 CMake is a C/C++ build system which strives to be operating system and compiler independent. CMake itself does not actually run the build process, instead, it generates build files for another build system, which is typically make on UNIX systems and Visual Studio on Windows systems.
-
-
-
 
 CMake is driven by scripts in CMakeLists.txt files, usually contained in the root and relevant sub-directories directories of the project you are building. The language of a CMakeLists.txt file may seem a little foreign at first but is a powerful way of expressing the build process.
 
-
-
-
 The default way of building a CMake project usually looks something like:
 
-
-
-    
+```sh
     ProjectDir$ mkdir build
     ProjectDir$ cd build
     ProjectDir/build$ cmake ..
     ProjectDir/build$ make
-
-
-
+```
 
 There is an interesting [Hunter package manager](https://github.com/ruslo/hunter) which is aimed at making CMake package management easier. I decided not to include Hunter as a separate build system because of the similarities, but it definitely shows promise when it comes to making CMake easier to use!
-
-
-
 
 For more information on CMake, see the [dedicated CMake section of mbedded.ninja](http://blog.mbedded.ninja/programming/compilers-build-systems/cmake).
 
 
-
-
 # Conan
-
 
 <table >
 <tbody >
 <tr >
 
-<td >**Build Functionality**
+<td >Build Functionality
 </td>
 
 <td >7/10
@@ -403,10 +334,10 @@ For more information on CMake, see the [dedicated CMake section of mbedded.ninja
 </tr>
 <tr >
 
-<td >**Package Functionality**
+<td >Package Functionality
 </td>
 
-<td >**9/10**
+<td >9/10
 </td>
 
 <td > Conan is first and foremost a package manager.
@@ -414,10 +345,10 @@ For more information on CMake, see the [dedicated CMake section of mbedded.ninja
 </tr>
 <tr >
 
-<td >**Platform Support**
+<td >Platform Support
 </td>
 
-<td >**9/10**
+<td >9/10
 </td>
 
 <td >_(Linux, macOS, Windows). Written in python, it is supported on all popular platforms. When choosing CMake as the build system (this seems to be the popular option), this cross-platform support continues._
@@ -425,7 +356,7 @@ For more information on CMake, see the [dedicated CMake section of mbedded.ninja
 </tr>
 <tr >
 
-<td >**Usability**
+<td >Usability
 </td>
 
 <td >7/10
@@ -436,7 +367,7 @@ For more information on CMake, see the [dedicated CMake section of mbedded.ninja
 </tr>
 <tr >
 
-<td >**Scalability/Speed**
+<td >Scalability/Speed
 </td>
 
 <td >7/10
@@ -447,10 +378,10 @@ For more information on CMake, see the [dedicated CMake section of mbedded.ninja
 </tr>
 <tr >
 
-<td >**Community**
+<td >Community
 </td>
 
-<td >**8/10**
+<td >8/10
 </td>
 
 <td >_With over 1.6k stars on GitHub, and fairly comprehensive documentation, Conan has a large number of users (although Buck has more)._
@@ -458,7 +389,7 @@ For more information on CMake, see the [dedicated CMake section of mbedded.ninja
 </tr>
 <tr >
 
-<td >**TOTAL**
+<td >TOTAL
 </td>
 
 <td > ?
@@ -470,30 +401,19 @@ For more information on CMake, see the [dedicated CMake section of mbedded.ninja
 </tbody>
 </table>
 
-
 Conan is solely a C/C++ package manager, although it provides interfaces to common build tools such as CMake (this seems to be popular pairing). Installation can be as simple as $ pip install conan.
-
-
-
 
 Conan is tightly integrated with official and community repositories which house popular packages. [The official repository is on bintray](https://bintray.com/conan/conan-center). It also uses a local repository (or cache) which is used to prevent multiple copies of the same dependency, and for local/private package development.
 
-
-
-
 When used with CMake, Conan can take over the responsibility of what is traditionally CMake's install/export steps. The install/export steps have always been a difficult issue with CMake, which requires complex logic to produce a relocatable, re-usable upstream CMake package.
 
-
-
-
 # Makefiles
-
 
 <table >
 <tbody >
 <tr >
 
-<td >**Build Functionality**
+<td >Build Functionality
 </td>
 
 <td > 6/10
@@ -504,7 +424,7 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 </tr>
 <tr >
 
-<td >**Package Functionality**
+<td >Package Functionality
 </td>
 
 <td > 3/10
@@ -515,10 +435,10 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 </tr>
 <tr >
 
-<td >**Platform Support**
+<td >Platform Support
 </td>
 
-<td >**10/10 **
+<td >10/10 
 </td>
 
 <td >_(Linux, macOS, Windows, ...). Makefiles have been around since the dawn of time, and are supported almost everywhere!_
@@ -526,10 +446,10 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 </tr>
 <tr >
 
-<td >**Usability**
+<td >Usability
 </td>
 
-<td >**1/10**
+<td >1/10
 </td>
 
 <td >_ Ever tried to write a Makefile by hand? If you have, you will appreciate this score._
@@ -537,10 +457,10 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 </tr>
 <tr >
 
-<td >**Scalability/Speed**
+<td >Scalability/Speed
 </td>
 
-<td >**2/10**
+<td >2/10
 </td>
 
 <td >
@@ -548,10 +468,10 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 </tr>
 <tr >
 
-<td >** Community**
+<td > Community
 </td>
 
-<td >**8/10 **
+<td >8/10 
 </td>
 
 <td >Makefiles, being one of the oldest build systems still in popular use, has plenty of online resources!
@@ -559,7 +479,7 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 </tr>
 <tr >
 
-<td >**TOTAL**
+<td >TOTAL
 </td>
 
 <td > 3/10
@@ -574,17 +494,13 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 
 No. No. No. Please don't consider raw makefiles as your build system unless you absolutely have to. Did I mention this comparison was opinionated?
 
-
-
-
 # Scons
-
 
 <table >
 <tbody >
 <tr >
 
-<td >**Build Functionality**
+<td >Build Functionality
 </td>
 
 <td >6/10
@@ -595,7 +511,7 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
 </tr>
 <tr >
 
-<td >**Package Functionality**
+<td >Package Functionality
 </td>
 
 <td > 1/10
@@ -606,7 +522,7 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
 </tr>
 <tr >
 
-<td >**Platform Support**
+<td >Platform Support
 </td>
 
 <td > 8/10
@@ -617,7 +533,7 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
 </tr>
 <tr >
 
-<td >**Usability**
+<td >Usability
 </td>
 
 <td > 4/10
@@ -628,7 +544,7 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
 </tr>
 <tr >
 
-<td >**Scalability/Speed**
+<td >Scalability/Speed
 </td>
 
 <td >
@@ -639,7 +555,7 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
 </tr>
 <tr >
 
-<td >**Community**
+<td >Community
 </td>
 
 <td > 3/10
@@ -650,7 +566,7 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
 </tr>
 <tr >
 
-<td >**TOTAL**
+<td >TOTAL
 </td>
 
 <td > 4/10
@@ -662,27 +578,12 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
 </tbody>
 </table>
 
-
 Scons is a build tool. The technical limitations of scons starts to make the scripts complex when it comes to local builds with multiple dependencies and local install paths.
-
-
-
 
 # Examples
 
-
-
-
 Each build system has to:
 
-
-
-
-
-	  * Compile source code into a executable
-	  * Link a third-party library
-	  * Install static library (lib file and headers) and executable onto system
-
-
-
-# Build Systems Not Considered
+* Compile source code into a executable
+* Link a third-party library
+* Install static library (lib file and headers) and executable onto system

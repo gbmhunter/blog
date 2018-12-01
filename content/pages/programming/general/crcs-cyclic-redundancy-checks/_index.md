@@ -47,7 +47,7 @@ Note that this does in no way try and be an exhaustive list. Sites like [CRC Rev
 
 It uses the generator polynomial:
 
-$$ x^{8} + x^{2} + x + 1 $$
+<div>$$ x^{8} + x^{2} + x + 1 $$</div>
 
 It can be represented by the following hexadecimal numbers:
 
@@ -58,7 +58,11 @@ Normal: 0x
 <table ><tbody ><tr >
 <td >Aliases
 </td>
-<td >  * CRC-16  * CCITT-FALSE
+<td>
+    <ul>
+        <li>CRC-16</li>
+        <li>CCITT-FALSE</li>
+    </ul>
 </td></tr><tr >
 <td >Width
 </td>
@@ -87,13 +91,15 @@ However, CRC-16-CCITT are not all the same. There are a few common variants of t
 
 All of the CRC-CCITT variants use the following generator polynomial:
 
-$$ x^{16} + x^{12} + x^{5} + 1 $$
+<div>$$ x^{16} + x^{12} + x^{5} + 1 $$</div>
 
 It can be represented by the following hexadecimal numbers:
 
+```
 Normal: 0x1021  
 Reverse: 0x8408  
 Koopman: 0x8810
+```
 
 # External Resources
 

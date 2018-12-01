@@ -9,19 +9,16 @@ url: /programming/general/checksums
 
 # Fletcher's Checksum
 
-
 Transmitter Methodology
 
-
-
-	  1. Calculate checksum on raw  data
-	  2. Using the raw data and the newly found checksum, calculate the checkbytes
-	  3. Add the checkbytes to the end of the data packet
-	  4. Transmit data
+1. Calculate checksum on raw  data
+2. Using the raw data and the newly found checksum, calculate the checkbytes
+3. Add the checkbytes to the end of the data packet
+4. Transmit data
 
 Receiver Methodology
 
-	  1. Receive data packet
-	  2. Calculate checksum (including the checkbytes)
-	  3. Make sure checksum equals 0, if so, data passed the checksum test
+1. Receive data packet
+2. Calculate checksum (including the checkbytes)
+3. Make sure checksum equals 0, if so, data passed the checksum test
 

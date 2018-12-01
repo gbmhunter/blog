@@ -7,18 +7,6 @@ type: page
 url: /programming/compilers/gcc
 ---
 
-# Child Pages
-
-
-
-
-[sb_child_list template=2 order=asc nest_level=1]
-
-
-
-
 # Logo
-
-
 
 {{< figure src="/images/2014/07/gcc-compiler-logo.png" width="207px" caption="The GCC logo."  >}}
