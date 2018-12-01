@@ -22,30 +22,36 @@ Well, not much! Most use cases for the comma operator should never be used, at i
 A use of the comma operator that can be sanctioned is when it is used to **perform operations on entry to every iteration of a while() loop**.
 
 For example:
-    
-    char * rxBuffer;
-    while(getData(rxBuffer), strlen(rxBuffer) > 0)
-    {
-       // Process characters in rxBuffer here
-       // ...
-    }
+
+```c
+char * rxBuffer;
+while(getData(rxBuffer), strlen(rxBuffer) > 0)
+{
+    // Process characters in rxBuffer here
+    // ...
+}
+```
 
 The non-comma operator way would be to do it like this:
-    
-    char * rxBuffer;
+
+```c    
+char * rxBuffer;
+GetData(rxBuffer);
+while(strlen(rxBuffer) > 0)
+{
+    // Process characters in rxBuffer here
+    // ...
+
     GetData(rxBuffer);
-    while(strlen(rxBuffer) > 0)
-    {
-       // Process characters in rxBuffer here
-       // ...
-    
-       GetData(rxBuffer);
-    }
+}
+```
 
 ## Prevent Side-Effects In assert() Statements
 
 Another good use is a clever manipulation of the comma operator to **prevent programmers from adding side-effects to their assert statements**. For example, an assert() macro defined as:
-    
-    #define ASSERT(exp)  ((void)(exp), (exp ? : AssertFailed(__FILE__, __LINE__, #exp)))
 
-will allow programmers to write ASSERT(x == 3) but not ASSERT(x = 3). The comma operator helps achieve this (the comma operator is after the (void)(exp) bit). For more information on this, see the [C Assertions page](http://blog.mbedded.ninja/programming/languages/c/assertions-assert).
+```c
+#define ASSERT(exp)  ((void)(exp), (exp ? : AssertFailed(__FILE__, __LINE__, #exp)))
+```
+
+will allow programmers to write `ASSERT(x == 3)` but not `ASSERT(x = 3)`. The comma operator helps achieve this (the comma operator is after the (void)(exp) bit). For more information on this, see the [C Assertions page](http://blog.mbedded.ninja/programming/languages/c/assertions-assert).

@@ -9,25 +9,19 @@ url: /programming/languages/c/c-related-file-extensions
 
 # Overview
 
-
-
-
 The following table lists the standard file extensions used for C-related files. The extension normally indicates how far the file is through the compilation process. Note that many integrated development environments (IDE's), and command-line compilers hide most of the individual compiler steps from the user.
 
-
-<table style="width: 500px;" >
+<table>
+    <thead>
+        <tr>
+            <th>File Extension</th>
+            <th>Description</th>
+        </tr>
+    </thead>
 <tbody >
 <tr >
 
-<td width="120" >**File Extension**
-</td>
-
-<td >**Description**
-</td>
-</tr>
-<tr >
-
-<td width="120" >file-name.c
+<td>file-name.c
 </td>
 
 <td >C source code which must be preprocessed.
@@ -35,7 +29,7 @@ The following table lists the standard file extensions used for C-related files.
 </tr>
 <tr >
 
-<td width="120" >file-name.i
+<td>file-name.i
 </td>
 
 <td >C source code which should not be preprocessed.
@@ -43,7 +37,7 @@ The following table lists the standard file extensions used for C-related files.
 </tr>
 <tr >
 
-<td width="120" >file-name.h
+<td>file-name.h
 </td>
 
 <td >C header file (not to be compiled or linked).
@@ -51,7 +45,7 @@ The following table lists the standard file extensions used for C-related files.
 </tr>
 <tr >
 
-<td width="120" >file-name.s
+<td>file-name.s
 </td>
 
 <td >Assembler code.
@@ -59,7 +53,7 @@ The following table lists the standard file extensions used for C-related files.
 </tr>
 <tr >
 
-<td width="120" >file-name.S
+<td>file-name.S
 </td>
 
 <td >Assembler code which must be preprocessed.
@@ -67,7 +61,7 @@ The following table lists the standard file extensions used for C-related files.
 </tr>
 <tr >
 
-<td width="120" >file-name.o
+<td>file-name.o
 </td>
 
 <td >Object file by default, the object file name for a source file is made by replacing the extension .c, .i, .s etc with .o. This can be changed with a command line parameter.
@@ -75,7 +69,7 @@ The following table lists the standard file extensions used for C-related files.
 </tr>
 <tr >
 
-<td width="120" >file-name
+<td>file-name
 </td>
 
 <td >If the file has no extension, this is usually the final executable (NIX systems).
@@ -83,7 +77,7 @@ The following table lists the standard file extensions used for C-related files.
 </tr>
 <tr >
 
-<td width="120" >file-name.exe, .dll, .com
+<td>file-name.exe, .dll, .com
 </td>
 
 <td >The final executable on a Windows system.

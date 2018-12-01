@@ -34,33 +34,15 @@ The primary three things a Makefile consists of are **targets**, **prerequisite
 
 Note that there is a tab infront of the recipe gcc .... . This is important! **All recipes must be proceeded by a tab.**
 
-
-
-
-
 If no parameters are passed in when you call make, the first rule in the makefile will be run.
-
-
-
-
 
 # Adding Variables
 
-
-
-
-
 Make supports variables that are defined before they are used in a rule. The value of the variable is substituted to replace the constant at run-time, similar to the C preprocessor.
-
-
-
-
 
 You assign a value to a variable in the following ways:
 
-
-
-<table style="width: 700px;" >
+<table>
     <tbody >
         <tr >
             
@@ -114,117 +96,61 @@ You assign a value to a variable in the following ways:
 </table>
     
 
-
 There are common names that most people use for variables, which are shown below.
 
-
-
-
-    
-    CC
-    CFLAGS
-    
-
-
-
-
+```    
+CC
+CFLAGS
+```    
 
 Using wildcards in variable assignment requires special syntax, see the Wildcards section.
 
-
-
-
-
 # Wildcards
-
-
-
-
 
 Wildcards are a great way to make automatic makefiles, i.e. makefiles that you do not need to continuously update as you create/delete code files.
 
-
-
-
-
 One of the most common uses for a wildcard is with the "clean" rule, which is usually along the lines of:
 
-
-
-
-    
-    clean : 
-       rm -f *.o
-    
-
-
-
-
+```    
+clean : 
+rm -f *.o
+```    
 
 The *.o string is called a [glob](http://en.wikipedia.org/wiki/Glob_(programming)). It will match any file names which end in .o. This will delete all object files in the current directory.
 
 
-
-
-
 **Wildcard expansion does not occur if you define a variable.** For this reason, if you use wildcards in variable assignments, you use the following syntax instead:
 
-
-
-
-    
-    objects := $(wildcard *.o)
-    
-
-
-
-
+```    
+objects := $(wildcard *.o)
+```    
 
 This will replace $(wildcard *.o) with a space-separated list of all object files in the current directory, e.g. objects := objectfile1.o objectfile2.o.
 
-
-
-
-
 What is also neat is you can combine the wildcard functions with other functions for string substitution and analysis. For example, you could create a list of "future" object files by scanning the directory for files using the wildcard function, and then substituting the .c  for .o . In this way you can compile and link a whole directory of .c files automatically. The following example does this.
 
+```    
+objects := $(patsubst %.c,%.o,$(wildcard *.c))
 
-
-
-    
-    objects := $(patsubst %.c,%.o,$(wildcard *.c))
-    
-    foo : $(objects)
-       cc -o foo $(objects)
-    
-
-
-
-
+foo : $(objects)
+cc -o foo $(objects)
+```    
 
 # Automatic Variables
 
-
-
-
-
 Automatic variables are another great tool to use when creating automatic makefiles. Automatic variables begin with the $ character, just like normal variables.
-
-
-
-
 
 Here is a table some of the most useful automatic variables:
 
-
-
-<table style="width: 700px;" >
-    <tbody >
-        <tr >
-            Automatic Variable
-            Comment
+<table>
+    <thead>
+        <tr>
+            <th>Automatic Variable</th>
+            <th>Comment</th>
         </tr>
-        <tr >
+    </thead>
+<tbody>
+<tr>
             
 <td >$@
 </td>
@@ -275,89 +201,40 @@ Here is a table some of the most useful automatic variables:
     </tbody>
 </table>
 
-
-
 Automatic variables are used frequently in the compiler command that is executed when a rule is matched.
-
-
-
-
 
 # Including One Makefile In Another
 
-
-
-
-
 Note that this is different from Calling One Makefile From Another.
-    
-
-
+  
 A Makefile (or a partial Makefile) can be included in another with the -include directive.
-
-
-
-
 
 # Calling One Makefile From Another
 
-
-
-
-
 Note that this is different from Including One Makefile In Another.
-
-
-
-
 
 You can easily call one makefile from another. This is useful when you have a project which is made up of smaller sub-projects, and each one of the sub-projects has it's own makefile.
 
-
-
-
-
 The recommended to run another makefile is to write:
 
-
-
-
-    
-    # Run another makefile from this makefile
-    $(MAKE) -C ./path/to/makefile/ all
-    
-
-
-
-
+```    
+# Run another makefile from this makefile
+$(MAKE) -C ./path/to/makefile/ all
+```    
 
 where all can be substituted for any other parameter you wish to pass to the secondary makefile. Note that this method is preferred over manually changing directory and calling make yourself, which can be done in the following manner:
-    
-    subsystem:
-       cd subdir && $(MAKE)
 
-
-
-
+```    
+subsystem:
+    cd subdir && $(MAKE)
+```
 
 The && is so that make will only be called if cd is successful. If this wasn't there and cd was not successful, make would be called in the wrong directory.
 
 # Debugging
 
-
-
-
-
 Make prints out some debug information to the standard output when it is run. If you want more debugging functionality, try [Remake](http://bashdb.sourceforge.net/remake/), which is a patched version of GNU Make with better error reporting, and trace execution/debugging capability.
 
-
-
-
-
 # More Reading
-
-
-
-
 
 For a comprehensive reading, checkout the [GNU 'make' manual](http://www.gnu.org/software/make/manual/make.html#Rules).

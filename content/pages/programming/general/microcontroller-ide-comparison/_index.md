@@ -9,35 +9,17 @@ url: /programming/general/microcontroller-ide-comparison
 
 # Overview
 
-
-
-
-
 Below is a comparison of some of the more popular microcontroller IDEs (integrated development environments).
-
-
-
-
 
 The results from the 2012 embedded survey were interesting...
 
-
-
-
-
 {{< figure src="/images/programming-misc/embedded-vendor-which-has-the-best-ecosystem.png" caption="Results from a embedded design survey, showing what microcontroller users thought has the best ecosystem."  width="650px" >}}
-
-
-
-
 
 # AVR Studio
 
-
-
-<table style="width: 700px" >
-	<tbody >
-		<tr >
+<table>
+	<tbody>
+		<tr>
 			
 <td >Cost
 </td>
@@ -59,30 +41,24 @@ The results from the 2012 embedded survey were interesting...
 </td>
 			
 <td >All 8-bit and 32-bit ATMEL micro-controllers...
-				
-
-
-					  * ATmega
-					  * ARM
-					  * AT91
-				
-			
+<ul>
+	<li>ATmega</li>
+	<li>ARM</li>
+	<li>AT91</li>
+</ul>
 </td>
 		</tr>
 		<tr >
-			
+		
 <td >Supported Languages
 </td>
 			
 <td >
-				
-
-
-					  * C
-					  * C++
-				
-			
-</td>
+<ul>
+	<li>C</li>
+	<li>C++</li>
+</ul>
+	</td>
 		</tr>
 		<tr >
 			
@@ -99,16 +75,15 @@ The results from the 2012 embedded survey were interesting...
 			
 <td >All of the AVR branded programmers...
 				
-
-
-					  * AVR ONE!
-					  * JTAGICE MKII
-					  * JTAGICE3
-					  * STK600
-					  * QT600
-					  * AVRISP MKII
-					  * AVR Dragon
-				
+<ul>
+	<li>AVR ONE!</li>
+	<li>JTAGICE MKII</li>
+	<li>JTAGICE3</li>
+	<li>STK600</li>
+	<li>QT600</li>
+	<li>AVRISP MKII</li>
+	<li>AVR Dragon</li>
+</ul>
 			
 </td>
 		</tr>
@@ -118,12 +93,10 @@ The results from the 2012 embedded survey were interesting...
 </td>
 			
 <td >
+<ul>
+	<li>JTAG</li>
+</ul>
 				
-
-
-					  * JTAG
-				
-			
 </td>
 		</tr>
 		<tr >
@@ -137,31 +110,15 @@ The results from the 2012 embedded survey were interesting...
 	</tbody>
 </table>
 
-
-
 Designed to be used with ATMEL micro-controllers (the IDE is built by ATMEL after-all). Supports most if not all of ATEML's programmers. It can use Win-GCC to compile. The lastest version (5.0 beta) has had a major facelift (over v4) and given it that much needed feature boost to keep in the IDE game. Now it has auto-complete other Visual Studio features!
-
-
-
-
 
 The **ASF** (Atmel Software Framework), is a collection of firmware libraries that is set-up graphically through Atmel Studio. The libraries include things such as UART drivers, common signal processing algorithms, e.t.c. They can provide a high-level interface to the hardware which promotes modular, reusable code.
 
-
-
-
-
 Atmel Studio also promotes an integrated app-store, simulator (which of July 2014 only supports AVR devices), and shared workspace.
-
-
-
-
 
 # Eclipse
 
-
-
-<table style="width: 700px" >
+<table>
 	<tbody >
 		<tr >
 			
@@ -177,14 +134,12 @@ Atmel Studio also promotes an integrated app-store, simulator (which of July 201
 </td>
 			
 <td >
-				
-
-
-					  * Windows
-					  * Linux
-					  * MacOS
-				
-			
+<ul>
+	<li>Windows</li>
+	<li>Linux</li>
+	<li>MacOS</li>
+</ul>
+		
 </td>
 		</tr>
 		<tr >
@@ -201,13 +156,12 @@ Atmel Studio also promotes an integrated app-store, simulator (which of July 201
 </td>
 			
 <td >
-				
-
-
-					  * Java
-					  * PHP
-					  * C/C++
-					  * Many more...
+<ul>
+	<li>Java</li>
+	<li>PHP</li>
+	<li>C/C++</li>
+	<li>Many more...</li>
+</ul>
 				
 		</tr>
 		<tr >
@@ -216,12 +170,9 @@ Atmel Studio also promotes an integrated app-store, simulator (which of July 201
 </td>
 			
 <td >
-				
-
-
-					  * GCC
-				
-			
+<ul>
+	<li>GCC</li>
+</ul>						
 </td>
 		</tr>
 		<tr >
@@ -230,12 +181,9 @@ Atmel Studio also promotes an integrated app-store, simulator (which of July 201
 </td>
 			
 <td >
-				
-
-
-					  * JTAG
-				
-			
+<ul>
+	<li>JTAG</li>
+</ul>
 </td>
 		</tr>
 		<tr >
@@ -249,28 +197,17 @@ Atmel Studio also promotes an integrated app-store, simulator (which of July 201
 	</tbody>
 </table>
 
-
-
 Eclipse would be one of the most popular open-source IDE's out there. It's popularity is partly due to the fact it supports so many frameworks with it's modular design. The Eclipse project was started initially in 2001 and the not-for-profit corporation The Eclipse Foundation was founded in 2004. With support for many large frameworks such as Java, C/C++, PHP and mobile platforms, it is very powerful. It also support TEX based mark-up languages.
 
-
-
-
-
 There are many different releases of Eclipse that you can download.
-
-
-
-
 
 # Keil uVision
 
 
 
-<table style="width: 700px" >
+<table>
 	<tbody >
 		<tr >
-			
 <td >Cost
 </td>
 			
@@ -283,15 +220,13 @@ There are many different releases of Eclipse that you can download.
 </td>
 			
 <td >
-				
-
-
-					  * ARM
-					  * Cortex
-					  * 8051
-					  * C116
-				
-		</tr>
+<ul>
+	<li>ARM</li>
+	<li>Cortex</li>
+	<li>8051</li>
+	<li>C116</li>
+</ul>
+</tr>
 		<tr >
 			
 <td >Supported Compilers
@@ -322,12 +257,9 @@ There are many different releases of Eclipse that you can download.
 </td>
 			
 <td >
-				
-
-
-					  * JTAG
-				
-			
+<ul>
+	<li>JTAG</li>
+</ul>
 </td>
 		</tr>
 		<tr >
@@ -341,10 +273,4 @@ There are many different releases of Eclipse that you can download.
 	</tbody>
 </table>
 
-
-
 Supports programming of 8051 architecture micro-controllers. Can be used with SiLabs micro-controllers. Supports JTAG de-bugging. No auto-complete which can get annoying.
-
-
-
-

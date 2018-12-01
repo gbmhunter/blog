@@ -9,120 +9,63 @@ url: /programming/languages/c/arrays
 
 # Overview
 
-
-
-
 Arrays in C are a form of data structure. They are used to store one or more elements of the same data type. They are all stored in a contiguous block of memory.
-
-
-
 
 # Ragged Array
 
-
-
-
 A **ragged array** is a term for an array of pointers which point to objects with a different memory length. One common example is an array of pointers to strings, where each string has a variable number of characters.
-
-
-
 
 A array of pointers to some data type (e.g. an array of pointers to strings) is also a type of **Iliffe vector**. You have the advantage of being able to use NULL to signify the end of the array (no other data
 
-
-
-
 # Weird Syntax
 
-
-
-
-It is a little known and weird fact, but arrays can be written as a[5] or 5[a], it does not matter. However, using the syntax 6[a] serves no useful purpose, and confuses people to no-end, so I don't recommend using it!
-
-
-
+It is a little known and weird fact, but arrays can be written as `a[5]` or `5[a]`, it does not matter. However, using the syntax `6[a]` serves no useful purpose, and confuses people to no-end, so I don't recommend using it!
 
 # Multidimensional Arrays
 
-
-
-
 A multidimensional array can be created with:
 
-
-
-    
-    int myArray[3][4];
-
-
-
+```c    
+int myArray[3][4];
+```
 
 This will create 3 one dimensional arrays, with each having 4 elements (4 integers), for a total of 12 integers. They can be read and written to with the following syntax:
 
+```c    
+// Read
+int x = myArray[0][3]
 
-
-    
-    // Read
-    int x = myArray[0][3]
-    
-    // Write
-    myArray[1][2] = 3;
-
-
-
+// Write
+myArray[1][2] = 3;
+```
 
 The C89 standard requires this memory to be contiguous, just like one-dimensional array.
 
-
-
-
 ## Multidimensional Arrays As Function Arguments
-
-
-
 
 You have to provide all but the left-most dimension of a multidimensional array which is passed into a function as an argument (technically known as a _formal parameter_). If you think about it, this makes sense, given that C adds no run-time calculations to array operations. For this reason, there is no possible way the compiler can calculate the memory offset (remember, an array is just a contiguous, linear block of memory) for say, myArray[][2] without knowing the sizes of all dimensions except the last.
 
+```c    
+// Valid 3-dimensional array as the formal parameter
+void MyFuction(char[][12][23] myArray);
 
-
-    
-    // Valid 3-dimensional array as the formal parameter
-    void MyFuction(char[][12][23] myArray);
-    
-    //! This is invalid!
-    void MyFuction(char[][][23] myArray);
-    
-
-
-
+//! This is invalid!
+void MyFuction(char[][][23] myArray);
+```    
 
 In a sense, **when passing an array as an argument to a function, the array always loses one dimension**.
 
-
-
-
 # Dynamic Arrays
-
-
-
 
 Dynamic arrays are arrays whose size is determined at runtime. Programmers use them when we don't know the size of the array in advance (i.e., we can't write a hard-coded integer into the code, but instead we have to use a variable such as x).
 
-
-
-
 Dynamic arrays are not allowed in ANSI C, all arrays have to be static. Infact, even this will give you an error!
 
-
-
-    
-    const int limit = 100; 
-    char myArray[limit]; 
-                 ^^^^^ 
-    	error: integral constant expression expected 
-    
-
-
-
+```c    
+const int limit = 100; 
+char myArray[limit]; 
+                ^^^^^ 
+    error: integral constant expression expected 
+```
 
 what! **Fortunately, C99 has come to the rescue**, and allows you to create dynamic arrays on the stack. You can also create dynamic arrays (in all versions of C) on the heap by using the malloc() family of functions.

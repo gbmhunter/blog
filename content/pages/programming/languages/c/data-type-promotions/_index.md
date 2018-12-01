@@ -8,19 +8,18 @@ url: /programming/languages/c/data-type-promotions
 ---
 
 
-     
-    if (-1 < (unsigned char)1)
-    	printf("less than");
-    else        
-    	printf("NOT less than"); 
-    
-    // Prints "less than"
-    
-    if (-1 < (unsigned int)1)
-    	printf("less than");
-    else        
-    	printf("NOT less than"); 
-    
-    // Prints "not less than"!!!
-    
-    
+```c
+if (-1 < (unsigned char)1)
+    printf("less than");
+else        
+    printf("NOT less than"); 
+
+// Prints "less than"
+
+if (-1 < (unsigned int)1)
+    printf("less than");
+else        
+    printf("NOT less than"); 
+
+// Prints "not less than"!!!
+```

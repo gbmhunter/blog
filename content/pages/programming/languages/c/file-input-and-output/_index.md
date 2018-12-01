@@ -14,45 +14,38 @@ Most of the file input/output functions are declared in header stdio.h. Add the 
 
 # fopen()
 
-
-fopen() is used to open a file.
+`fopen()` is used to open a file.
 
 The function declaration changed in C99, by adding the keyword restrict. Before C99 it was:
 
-    
-    FILE *fopen(const char *filename, const char *mode);
-
+```
+FILE *fopen(const char *filename, const char *mode);
+```
 
 In C99 and above:
 
-    
-    FILE *fopen(const char *restrict filename, const char *restrict mode);
-
+``` 
+FILE *fopen(const char *restrict filename, const char *restrict mode);
+```
 
 where:
 
+```
 filename: Null-terminated string of the filename to associate the data to
-
 mode: Null-terminated string that determines the file access mode
-<table style="width: 600px;" border="0" >
+```
+
+<table>
+    </thead>
+        <tr>
+            <th>mode</th>
+            <th>Stands For</th>
+            <th>Description</th>
+            <th>Behaviour If File Already Exists</th>
+            <th>Behaviour If File Doesn't Exist</th>\
+        </tr>
+    </thead>
 <tbody >
-<tr >
-
-<td >**mode**
-</td>
-
-<td >**Stands For:**
-</td>
-
-<td >**Description**
-</td>
-
-<td >**Behaviour If File Already Exists**
-</td>
-
-<td >**Behaviour If File Doesn't Exist**
-</td>
-</tr>
 <tr >
 
 <td >"r"
@@ -208,8 +201,9 @@ mode: Null-terminated string that determines the file access mode
 </tr>
 </tbody>
 </table>
-fopen() returns pointer to opened file stream on success, otherwise a NULL pointer on fail.
 
-You have to be careful when using fopen() on a system with multiple threads, there is the possibility of creating race conditions.
+`fopen()` returns pointer to opened file stream on success, otherwise a `NULL` pointer on fail.
+
+You have to be careful when using `fopen()` on a system with multiple threads, there is the possibility of creating race conditions.
 
 
