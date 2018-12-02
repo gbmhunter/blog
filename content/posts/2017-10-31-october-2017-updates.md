@@ -41,8 +41,7 @@ tags:
 
 
 
-[![](/images/2017/05/satellite-orbit-on-2d-map-propagator.png)
-](/images/2017/05/satellite-orbit-on-2d-map-propagator.png)
+{{< figure src="/images/2017/05/satellite-orbit-on-2d-map-propagator.png" caption="" caption-position="bottom" >}}
 
 
 
@@ -52,8 +51,7 @@ tags:
 
 
 
-[![](/images/2013/06/assembly-programming-language-icon.png)
-](/images/2013/06/assembly-programming-language-icon.png)
+{{< figure src="/images/2013/06/assembly-programming-language-icon.png" caption="" caption-position="bottom" >}}
 
 
 

@@ -32,8 +32,7 @@ tags:
 
 
 
-[![](/images/2018/02/sudo-apt-install-icon.png)
-](/images/2018/02/sudo-apt-install-icon.png)
+{{< figure src="/images/2018/02/sudo-apt-install-icon.png" caption="" caption-position="bottom" >}}
 
 
 

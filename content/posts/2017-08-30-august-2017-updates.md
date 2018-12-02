@@ -46,8 +46,7 @@ tags:
 
 
 
-[![](/images/2017/08/magic-statics-icon-bunny-hat-code.png)
-](/images/2017/08/magic-statics-icon-bunny-hat-code.png)
+{{< figure src="/images/2017/08/magic-statics-icon-bunny-hat-code.png" caption="" caption-position="bottom" >}}
 
 
 

@@ -28,8 +28,7 @@ tags:
 
 
 
-[![](/images/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg)
-](/images/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg)
+{{< figure src="/images/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg" caption="" caption-position="bottom" >}}
 
 
 
@@ -37,8 +36,7 @@ tags:
 
 
 
-[![](/images/2018/03/cross-product-equation.png)
-](/images/2018/03/cross-product-equation.png)
+{{< figure src="/images/2018/03/cross-product-equation.png" caption="" caption-position="bottom" >}}
 
 
 
@@ -47,8 +45,7 @@ tags:
 
 
 
-[![](/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png)
-](/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png)
+{{< figure src="/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png" caption="" caption-position="bottom" >}}
 
 
 
@@ -56,8 +53,7 @@ tags:
 
 
 
-[![](/images/2017/09/qt-cute-software-logo.png)
-](/images/2017/09/qt-cute-software-logo.png)
+{{< figure src="/images/2017/09/qt-cute-software-logo.png" caption="" caption-position="bottom" >}}
 
 
 

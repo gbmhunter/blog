@@ -24,8 +24,7 @@ tags:
 
 
 
-[![](/images/2016/12/cardboard-boxes.png)
-](/images/2016/12/cardboard-boxes.png)
+{{< figure src="/images/2016/12/cardboard-boxes.png" caption="" caption-position="bottom" >}}
 
 
   
@@ -50,8 +49,7 @@ tags:
 
 
 
-[![](/images/2016/12/robotics-roombot-humanoid-waving.png)
-](/images/2016/12/robotics-roombot-humanoid-waving.png)
+{{< figure src="/images/2016/12/robotics-roombot-humanoid-waving.png" caption="" caption-position="bottom" >}}
 
 
 

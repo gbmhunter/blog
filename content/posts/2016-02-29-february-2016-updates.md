@@ -51,8 +51,7 @@ tags:
 
 
 
-[![Sparse binary code done in a "Matrix" style.](/images/2016/03/binary-sparse-matrix-style.jpg)
-](/images/2016/03/binary-sparse-matrix-style.jpg)
+{{< figure src="/images/2016/03/binary-sparse-matrix-style.jpg" caption="Sparse binary code done in a 'Matrix' style." caption-position="bottom" >}}
 
 
 

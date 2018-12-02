@@ -32,8 +32,7 @@ tags:
 
 
 
-[![](/images/2015/01/thread-needle-icon.png)
-](/images/2015/01/thread-needle-icon.png)
+{{< figure src="/images/2015/01/thread-needle-icon.png" caption="" caption-position="bottom" >}}
 
 
 

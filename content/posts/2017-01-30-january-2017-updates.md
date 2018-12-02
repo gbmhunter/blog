@@ -48,16 +48,14 @@ tags:
 
   
 
-[![](/images/2017/01/russian-dolls.jpeg)
-](/images/2017/01/russian-dolls.jpeg)
+{{< figure src="/images/2017/01/russian-dolls.jpeg" caption="" caption-position="bottom" >}}
 	  * New [ln (link) page](http://www.mbedded.ninja/programming/operating-systems/linux/programs/ln-link) under Programming->Operating Systems->Linux->Programs.
 	  * New [Virtual Machines and Containers page](http://www.mbedded.ninja/programming/general/virtual-machines-and-containers) under Programming.
 	  * New [Docker page](http://www.mbedded.ninja/?page_id=13984&preview=true) under Programming->Virtual Machines And Containers.  
 
   
 
-[![](/images/2017/01/docker-logo.png)
-](/images/2017/01/docker-logo.png)  
+{{< figure src="/images/2017/01/docker-logo.png" caption="" caption-position="bottom" >}}  
 
   
 
