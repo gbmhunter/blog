@@ -49,7 +49,7 @@
     <body class="ma0 {{ $.Param "body_classes"  | default "avenir bg-near-white"}}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
         <div class="left-column">
             
-            <img src={{ "images/logo/cartoon-ninja.jpg" | absURL }} class="logo-img" />
+            <img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} class="logo-img" />
             <div class="site-title">mbedded.ninja</div>
             <div class="site-description">The embedded engineering webstie that's got your back.</div>
             {{ partial "menu.html" . }}
