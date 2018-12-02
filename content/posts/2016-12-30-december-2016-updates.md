@@ -38,14 +38,12 @@ tags:
 
    
 
-[caption id="attachment_13883" align="aligncenter" width="277"][![](/images/2017/01/boost-c-plus-plus-libraries-logo.png)
-](/images/2017/01/boost-c-plus-plus-libraries-logo.png) The boost (C++ libraries) logo.[/caption]
+{{< figure src="/images/2017/01/boost-c-plus-plus-libraries-logo.png" width="277px" caption="The boost (C++ libraries) logo." caption-position="bottom" >}}
 	  * New [NuttX page](http://blog.mbedded.ninja/programming/operating-systems/nuttx) under Programming->Operating Systems.  
 
    
 
-[caption id="attachment_13884" align="aligncenter" width="194"][![](/images/2017/01/nuttx-rtos-logo.png)
-](/images/2017/01/nuttx-rtos-logo.png) The NuttX logo.[/caption]
+{{< figure src="/images/2017/01/nuttx-rtos-logo.png" width="194px" caption="The NuttX logo." caption-position="bottom" >}}
 	  * New [Robotics section](http://blog.mbedded.ninja/robotics) added to the website.  
 
   

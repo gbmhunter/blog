@@ -19,6 +19,5 @@ tags:
 
   
 
-[caption id="attachment_13727" align="aligncenter" width="192"][![A photo of a small, through-hole PIN diode.](/images/2016/08/pin-diode-photo-small.jpg)
-](/images/2016/08/pin-diode-photo-small.jpg) A photo of a small, through-hole PIN diode.[/caption]
+{{< figure src="/images/2016/08/pin-diode-photo-small.jpg" width="192px" caption="A photo of a small, through-hole PIN diode." caption-position="bottom" >}}
 

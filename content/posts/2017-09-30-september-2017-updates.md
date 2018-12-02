@@ -24,8 +24,7 @@ tags:
 
    
 
-[caption id="attachment_14676" align="aligncenter" width="307"][![](/images/2017/08/swig-python-bindings-logo.png)
-](/images/2017/08/swig-python-bindings-logo.png) The SWIG logo.[/caption]
+{{< figure src="/images/2017/08/swig-python-bindings-logo.png" width="307px" caption="The SWIG logo." caption-position="bottom" >}}
 
 	  * Updates to the [C++ Threading page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/threading) regarding condition variables and locks.  
 
@@ -45,7 +44,6 @@ tags:
 
    
 
-[caption id="attachment_14791" align="aligncenter" width="293"][![](/images/2017/09/qt-cute-software-logo.png)
-](/images/2017/09/qt-cute-software-logo.png) The QT (pronounced "cute") logo.[/caption]
+{{< figure src="/images/2017/09/qt-cute-software-logo.png" width="293px" caption="The QT (pronounced 'cute') logo." caption-position="bottom" >}}
 
 

@@ -25,13 +25,11 @@ tags:
 
 Certain pages around this website where **not displaying source code** correctly. I was using [Crayon Syntax Highlighter](https://wordpress.org/plugins/crayon-syntax-highlighter/) to style the code. Instead of nicely formatted code like this:
 
-[caption id="attachment_11812" align="aligncenter" width="508"][![Code displaying correctly.](/images/2015/07/sb-child-list-plugin-bug-code-displaying-correctly.png)
-](/images/2015/07/sb-child-list-plugin-bug-code-displaying-correctly.png) Code displaying correctly.[/caption]
+{{< figure src="/images/2015/07/sb-child-list-plugin-bug-code-displaying-correctly.png" width="508px" caption="Code displaying correctly." caption-position="bottom" >}}
 
 I was left with Crayon shortcodes in the form
 
-[caption id="attachment_11815" align="aligncenter" width="379"][![Code displaying incorrectly because of a bug with the SB Child List plugin.](/images/2015/07/sb-child-list-plugin-bug-code-displaying-incorrectly.png)
-](/images/2015/07/sb-child-list-plugin-bug-code-displaying-incorrectly.png) Code displaying incorrectly because of a bug with the SB Child List plugin.[/caption]
+{{< figure src="/images/2015/07/sb-child-list-plugin-bug-code-displaying-incorrectly.png" width="379px" caption="Code displaying incorrectly because of a bug with the SB Child List plugin." caption-position="bottom" >}}
 
 It seemed that shortcodes with the form [crayon-55a318c46df22443583779/] were somehow not being processed (it might be that all shortcodes were not being processed, I did not test any others).
 

@@ -36,8 +36,7 @@ tags:
 
   
 
-[caption id="attachment_13897" align="aligncenter" width="353"][![](/images/2016/12/cmake-logo.png)
-](/images/2016/12/cmake-logo.png) The CMake logo.[/caption]  
+{{< figure src="/images/2016/12/cmake-logo.png" width="353px" caption="The CMake logo." caption-position="bottom" >}}  
 
   
 
@@ -68,6 +67,5 @@ tags:
 
   
 
-[caption id="attachment_14010" align="aligncenter" width="235"][![](/images/2017/01/gradlephant-gradle-logo-v2.png)
-](/images/2017/01/gradlephant-gradle-logo-v2.png) The Gradle logo.[/caption]
+{{< figure src="/images/2017/01/gradlephant-gradle-logo-v2.png" width="235px" caption="The Gradle logo." caption-position="bottom" >}}
 

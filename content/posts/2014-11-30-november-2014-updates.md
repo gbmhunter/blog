@@ -32,8 +32,7 @@ tags:
 
   * Added [Desmear and Etchback page](http://blog.mbedded.ninja/electronics/pcb-design/desmear-and-etchback) under Electronics->PCB Design.  
 
-[caption id="attachment_8752" align="aligncenter" width="219"][![A via which has been plated after etchback was done, notice the "three-point connection".](/images/2014/11/etchback-after-plating.png)
-](/images/2014/11/etchback-after-plating.png) A via which has been plated after etchback was done, notice the "three-point connection".[/caption]
+{{< figure src="/images/2014/11/etchback-after-plating.png" width="219px" caption="A via which has been plated after etchback was done, notice the 'three-point connection'." caption-position="bottom" >}}
 
   * Update to the [sed page](http://blog.mbedded.ninja/programming/operating-systems/linux/programs/sed) with a new example on replacing a date format.
   * Added a new [Coin Cell page](http://blog.mbedded.ninja/electronics/components/batteries/button-cell-coin-cell) under Electronics->Components->Batteries.
@@ -42,8 +41,7 @@ tags:
   * New [IMS (Insulated Metallic Substrate) PCBs page under Electronics->PCB Design. Includes tikz drawn diagrams.  
 ](http://blog.mbedded.ninja/electronics/pcb-design/ims-insulated-metal-substrate-pcbs)  
 
-[caption id="attachment_8863" align="aligncenter" width="653"][![A side on photo of a IMS PCB with an aluminium base.](/images/2014/11/ims-pcb-aluminium-side-on-photo.png)
-](/images/2014/11/ims-pcb-aluminium-side-on-photo.png) A side on photo of a IMS PCB with an aluminium base.[/caption]
+{{< figure src="/images/2014/11/ims-pcb-aluminium-side-on-photo.png" width="653px" caption="A side on photo of a IMS PCB with an aluminium base." caption-position="bottom" >}}
 
   * New [.bss Section page](http://blog.mbedded.ninja/programming/languages/c/bss-section) under Programming->Languages->C.
   * Added more info and photos to the [Castellation page.](http://blog.mbedded.ninja/electronics/pcb-design/castellation)
@@ -63,8 +61,7 @@ tags:
   * New RF Design section under Electronics. Added the first pages, [Link Budgets](http://blog.mbedded.ninja/electronics/rf-design/link-budgets) and RF Black Magic.
   * New [page on 2D Coordinate Rotation](http://blog.mbedded.ninja/mathematics/2d-coordinate-rotation) under Mathematics.  
 
-[caption id="attachment_9146" align="aligncenter" width="375"][![2D co-ordinate rotation equations.](/images/2014/12/2d-co-ordinate-rotation-equations.png)
-](/images/2014/12/2d-co-ordinate-rotation-equations.png) 2D co-ordinate rotation equations.[/caption]
+{{< figure src="/images/2014/12/2d-co-ordinate-rotation-equations.png" width="375px" caption="2D co-ordinate rotation equations." caption-position="bottom" >}}
 
   * New info about SEPIC's added to the [Power Converters page](http://blog.mbedded.ninja/electronics/components/power-regulators).
   * Removed the double title bug which occurred when I started using a new SEO plugin,

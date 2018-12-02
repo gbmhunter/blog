@@ -41,16 +41,13 @@ tags:
 
 
 	  * New [Affine Transformations page](http://blog.mbedded.ninja/mathematics/affine-transformations) under Mathematics.
-[caption id="attachment_15194" align="aligncenter" width="294"][![](/images/2017/12/affine-transformation-matrix-latex.png)
-](/images/2017/12/affine-transformation-matrix-latex.png) The standard form of a affine transformation matrix.[/caption]
+{{< figure src="/images/2017/12/affine-transformation-matrix-latex.png" width="294px" caption="The standard form of a affine transformation matrix." caption-position="bottom" >}}
 
 	  * New Projective Transformations page under Mathematics.
-[caption id="attachment_15024" align="aligncenter" width="576"][![](/images/2017/11/quad-to-quad-transformation-complex-image.png)
-](/images/2017/11/quad-to-quad-transformation-complex-image.png) A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges.[/caption]
+{{< figure src="/images/2017/11/quad-to-quad-transformation-complex-image.png" width="576px" caption="A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges." caption-position="bottom" >}}
 
 	  * New [GCC Profiling page](http://blog.mbedded.ninja/programming/compilers-build-systems/gcc/gcc-profiling) under Programming->Compilers->GCC.
-[caption id="attachment_15000" align="aligncenter" width="350"][![](/images/2017/11/gprof2dot-profiling-dot-graph.png)
-](/images/2017/11/gprof2dot-profiling-dot-graph.png) A profile of the execution time of the example code. Graph was created using gprof and the gprof2dot tool.[/caption]
+{{< figure src="/images/2017/11/gprof2dot-profiling-dot-graph.png" width="350px" caption="A profile of the execution time of the example code. Graph was created using gprof and the gprof2dot tool." caption-position="bottom" >}}
 
 	  * New [Premade Recipes page](http://blog.mbedded.ninja/programming/embedded-linux/yocto-project/premade-recipes) under Programming->Embedded Linux->Yocto.  
 
@@ -63,12 +60,10 @@ tags:
 
 
 	  * New [BlogAssets repository](https://github.com/mbedded-ninja/BlogAssets) and a central place to store all code examples/diagram source files for this website.
-[caption id="attachment_15195" align="aligncenter" width="578"][![](/images/2017/12/github-blog-assets-homepage-repo-screenshot.png)
-](/images/2017/12/github-blog-assets-homepage-repo-screenshot.png) A screenshot of the GitHub BlogAssets repository.[/caption]
+{{< figure src="/images/2017/12/github-blog-assets-homepage-repo-screenshot.png" width="578px" caption="A screenshot of the GitHub BlogAssets repository." caption-position="bottom" >}}
 
 	  * New [Visual Studio Code page](http://blog.mbedded.ninja/programming/integrated-development-environments-ides/visual-studio-code) under Programming->Integrated Development Environments (IDEs).
-[caption id="attachment_15056" align="aligncenter" width="203"][![](/images/2017/11/visual-studio-code-icon-large.png)
-](/images/2017/11/visual-studio-code-icon-large.png) The icon for Microsoft's Visual Studio Code.[/caption]
+{{< figure src="/images/2017/11/visual-studio-code-icon-large.png" width="203px" caption="The icon for Microsoft's Visual Studio Code." caption-position="bottom" >}}
 
 	  * Fixed many of the broken links (approx. 60) on this blog, via the help of the great Wordpress plugin [Broken Link Checker](https://en-ca.wordpress.org/plugins/broken-link-checker/).  
 

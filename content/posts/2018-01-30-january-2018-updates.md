@@ -38,8 +38,7 @@ tags:
 
 
 	  * New [Anaconda page](http://blog.mbedded.ninja/programming/languages/python/anaconda) under Programming->Languages->Python.
-[caption id="attachment_15261" align="aligncenter" width="446"][![](/images/2018/02/anaconda-python-logo.png)
-](/images/2018/02/anaconda-python-logo.png) The logo for Anaconda (Python distribution/environment).[/caption]
+{{< figure src="/images/2018/02/anaconda-python-logo.png" width="446px" caption="The logo for Anaconda (Python distribution/environment)." caption-position="bottom" >}}
 
 	  * Updated the [C++ Exceptions page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/exceptions) with information on the noexcept keyword introduced in C++11.
 
