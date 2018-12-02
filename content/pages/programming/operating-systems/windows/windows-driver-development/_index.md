@@ -7,24 +7,7 @@ type: page
 url: /programming/operating-systems/windows/windows-driver-development
 ---
 
-# Child Pages
-
-
-[Keyboard Driver](http://blog.mbedded.ninja/programming/general/windows-driver-development/keyboard-driver)
-
-
-# User Space
-
-
-
-
-# Kernel Space
-
-
-
-
 # I/O Control Codes (IOCTLs)
-
 
 IOCTL is a UNIX term.
 
@@ -32,22 +15,13 @@ From the Wikipedia article, "[ioctl](http://en.wikipedia.org/wiki/Ioctl)".
 
 A Win32 `DeviceIoControl` takes as parameters:
 
-
-
-	  1. an open object handle (the Win32 equivalent of a file descriptor)
-	  2. a request code number (the "control code")
-	  3. a buffer for input parameters
-	  4. length of the input buffer
-	  5. a buffer for output results
-	  6. length of the output buffer
-	  7. an `OVERLAPPED` structure, if overlapped I/O is being used.
-
-
-
-# I/O Request Packets (IRPs)
-
-
-
+1. an open object handle (the Win32 equivalent of a file descriptor)
+2. a request code number (the "control code")
+3. a buffer for input parameters
+4. length of the input buffer
+5. a buffer for output results
+6. length of the output buffer
+7. an `OVERLAPPED` structure, if overlapped I/O is being used.
 
 # Interrupt Request Level (IRQL)
 
@@ -63,12 +37,12 @@ All user code, and most kernel code is executed at this level.
 
 ## IRQL 1 (APC_LEVEL)
 
-
+No information.
 
 
 ## IRQL 2 (DISPATCH_LEVEL)
 
-
+No information.
 
 
 ## IRQL 3+ (DIRQL)

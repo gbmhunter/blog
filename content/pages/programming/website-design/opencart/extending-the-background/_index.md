@@ -9,43 +9,24 @@ url: /programming/website-design/opencart/extending-the-background
 
 Sometimes you run into the issue of the background "running out" before the page has finished, as shown below.
 
-
-
-
 {{< figure src="/images/programming-opencart/open-cart-background-running-out-before-content-finishes.jpg" caption="Sometime the background finishes before the content does. Usually this is because either the image has run out or the container holding the image (usually a DIV element) does not fully encompass its child elements."  width="800px" >}}
-
-
-
 
 This can be either a case of the image running out, or the object that the image is contained in finishing.
 
-
-
-
 If it is because the object the image is in has finished, you can modify the CSS to make the parent element encompass the child elements. The "Getting DIVS To Expand Vertically" article by Robert Sandy (http://www.rmsjr.com/blog/web-design/getting-divs-to-expand-vertically/, **as of Dec 2017, URL is inactive**) explains this problem in more detail and how to fix it.
-
-
-
 
 I found trick 3 (the overflow/height method) to work the best since it is has the least side-effects.
 
-
-
-
 All I had to do was add the line overflow: hidden; to the OpenCarts theme stylesheet.css file.
 
-
-
-    
-    #mainsite{
-    	margin:0;
-    	padding:0;
-    	/* Original background */
-    	/* background: url('../image/bg-conteiner.png') no-repeat; */
-    	/* Geo's Edit: Make sure image is long enough to cover full page */
-    	background: url('../image/bg-conteiner-new.png') no-repeat;
-    	overflow: hidden;
-    }
-
-
-
+```css    
+#mainsite{
+	margin:0;
+	padding:0;
+	/* Original background */
+	/* background: url('../image/bg-conteiner.png') no-repeat; */
+	/* Geo's Edit: Make sure image is long enough to cover full page */
+	background: url('../image/bg-conteiner-new.png') no-repeat;
+	overflow: hidden;
+}
+```

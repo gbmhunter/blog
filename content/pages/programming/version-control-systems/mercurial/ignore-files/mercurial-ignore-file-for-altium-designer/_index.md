@@ -9,55 +9,48 @@ url: /programming/version-control-systems/mercurial/ignore-files/mercurial-ignor
 
 Following is an Mercurial ignore file for excluding the unnecessary files created by Altium Designer. The ignore files is written using regexp syntax. It only excludes files that are within a specified sub-directory within the repository. This is to stop the ignore file excluding other files with the same extension from other sections of the repository.
 
-
-
-
 Where possible, the type of file excluded is commented beside each line, just incase you want to re-introduce the file for some reason.
-
-
-
 
 Just copy and append the code below into the .hgignore file found in the root directory of your repository, and change <Altium root dir> to the directory of your choice (or delete <Altium root dir>/ so it will apply to the entire repo.
 
+```    
+#*************************************************************************
+#************************* ALTIUM IGNORE FILES ***************************
+#*************************************************************************
 
+# Files that should be included:
+# .SchDoc, .PcbDoc, .PrjPcbStructure (schematic compile info)
 
-    
-    #*************************************************************************
-    #************************* ALTIUM IGNORE FILES ***************************
-    #*************************************************************************
-    
-    # Files that should be included:
-    # .SchDoc, .PcbDoc, .PrjPcbStructure (schematic compile info)
-    
-    # Backup Files
-    <Altium root dir>/.*\.SchDoc.Zip$					# Backup of schematics
-    <Altium root dir>/.*\.PcbDoc.Zip$					# Backup of schematics
-    <Altium root dir>/.*\.PrjPcb.Zip$					# Backup of pcb project fle
-    <Altium root dir>/.*\.PcbLib.Zip$					# Backup of pcb lib fle
-    <Altium root dir>/.*\.SchLib.Zip$					# Backup of sch lib fle
-    
-    # Preview Files
-    <Altium root dir>/.*\.SchDocPreview$
-    <Altium root dir>/.*\.PcbDocPreview$
-    <Altium root dir>/.*\.HarnessPreview$
-    <Altium root dir>/.*\.errPreview$
-    <Altium root dir>/.*\.nsxPreview$
-    <Altium root dir>/.*\.TxtPreview$
-    <Altium root dir>/.*\.txtPreview$
-    <Altium root dir>/.*\.BOMPreview$
-    <Altium root dir>/.*\.CSVPreview$
-    
-    # Reporting Files
-    <Altium root dir>/.*\.LOG$
-    <Altium root dir>/.*\.drc$
-    <Altium root dir>/.*\.html$		# Report thats generated when a file is opened       
-    <Altium root dir>/.*\.htm$		# Report thats generated when a file is opened                
-    
-    # Other Files
-    <Altium root dir>/.*\.orig$
-    <Altium root dir>/.*\.pcbdoc_viewstate$				# Viewstate of .pcbdoc file
-    <Altium root dir>/.*\.pcblib_viewstate$				# Viewstate of PCB library
-    <Altium root dir>/.*\.REPPreview$						# Gerber preview file
-    
-    # Directories
-    <Altium root dir>/.*?/?History/.*
+# Backup Files
+<Altium root dir>/.*\.SchDoc.Zip$					# Backup of schematics
+<Altium root dir>/.*\.PcbDoc.Zip$					# Backup of schematics
+<Altium root dir>/.*\.PrjPcb.Zip$					# Backup of pcb project fle
+<Altium root dir>/.*\.PcbLib.Zip$					# Backup of pcb lib fle
+<Altium root dir>/.*\.SchLib.Zip$					# Backup of sch lib fle
+
+# Preview Files
+<Altium root dir>/.*\.SchDocPreview$
+<Altium root dir>/.*\.PcbDocPreview$
+<Altium root dir>/.*\.HarnessPreview$
+<Altium root dir>/.*\.errPreview$
+<Altium root dir>/.*\.nsxPreview$
+<Altium root dir>/.*\.TxtPreview$
+<Altium root dir>/.*\.txtPreview$
+<Altium root dir>/.*\.BOMPreview$
+<Altium root dir>/.*\.CSVPreview$
+
+# Reporting Files
+<Altium root dir>/.*\.LOG$
+<Altium root dir>/.*\.drc$
+<Altium root dir>/.*\.html$		# Report thats generated when a file is opened       
+<Altium root dir>/.*\.htm$		# Report thats generated when a file is opened                
+
+# Other Files
+<Altium root dir>/.*\.orig$
+<Altium root dir>/.*\.pcbdoc_viewstate$				# Viewstate of .pcbdoc file
+<Altium root dir>/.*\.pcblib_viewstate$				# Viewstate of PCB library
+<Altium root dir>/.*\.REPPreview$						# Gerber preview file
+
+# Directories
+<Altium root dir>/.*?/?History/.*
+```

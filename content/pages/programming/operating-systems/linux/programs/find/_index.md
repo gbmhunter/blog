@@ -9,34 +9,14 @@ url: /programming/operating-systems/linux/programs/find
 
 # Multiple Patterns
 
-
-
-
-
-You can provide find with multiple paterns by using the -o option.
-
-
-
-
+You can provide find with multiple patterns by using the `-o` option.
 
 The following example looks for all files with the .cpp or .hpp file extension in the current directory.
 
-
-
-
-    
-    
-    find . -name "*.cpp" -o -name "*.hpp"
-    
-
-
-
-
+```sh    
+find . -name "*.cpp" -o -name "*.hpp"
+```    
 
 # Combining With sed
 
-
-
-
-
-find, a program which finds files, lends itself to working well in conjuction with sed, a program for modifying the contents of a file.
+`find`, a program which finds files, lends itself to working well in conjuction with sed, a program for modifying the contents of a file.

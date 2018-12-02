@@ -25,15 +25,17 @@ Knowing what each file can do is helpful when working out what to include in a S
 
 ## All Platforms
 
-<table style="width: 700px;" ><tbody ><tr >
-<td >File
-</td>
-<td >File Format
-</td>
-<td >Description
-</td>
-<td >Include in SCM?
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>File</th>
+            <th>File Format</th>
+            <th>Description</th>
+            <th>Include in SCM?</th>
+        </tr>
+    </thead>
+<tbody>
+<tr >
 <td >_**ProjectName**_.cycdx
 </td>
 <td >text-xml
@@ -133,7 +135,17 @@ Knowing what each file can do is helpful when working out what to include in a S
 
 ## PSoC 3 Specific
 
-<table style="width: 700px;" ><tbody ><tr >FileFile FormatDescriptionInclude in SCM?</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>File</th>
+            <th>File Format</th>
+            <th>Description</th>
+            <th>Include in SCM?</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >**_ProjectName_**_PSoC3lib.uvopt
 </td>
 <td >text-xml

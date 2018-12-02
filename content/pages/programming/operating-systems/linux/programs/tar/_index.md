@@ -28,16 +28,14 @@ $ tar -cvzf my_archive.tar.gz *
 The above options are:
 
 
-<table >
-<tbody >
-<tr >
-
-<td >Argument
-</td>
-
-<td >Description
-</td>
-</tr>
+<table>
+    <thead>
+        <tr>
+            <th>Argument</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
 <tr >
 
 <td >x

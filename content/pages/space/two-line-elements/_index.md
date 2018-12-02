@@ -9,17 +9,8 @@ url: /space/two-line-elements
 
 # Overview
 
-
-
-
 A two-line element (TLE) is 2-line (3-line if you count the name) string which contains information about an orbiting objects state, at a specific time which is called the epoch. Using a suitable propagator, the position and velocity of the orbiting object at any past or future time w.r.t to the epoch can be calculated.
 
-
-
-
 # Errors
-
-
-
 
 The further a prediction (using a propagator) is away from the epoch, the worse the error between the predicted position/velocity and the actual position/velocity.

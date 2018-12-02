@@ -9,17 +9,13 @@ url: /programming/website-design/nodejs
 
 # Overview
 
-
 node.js is a platform built on the Chrome Javascript runtime engine. It uses a non-blocking, event-driven I/O model and uses the Javascript programming language. It comes with a standard set of pacakges to make life easier.
-
 
 # Child Pages
 
-
-<table style="width: 600px;" border="0" >
-<tbody >
-<tr >
-
+<table>
+<tbody>
+<tr>
 <td >[Using Connect](http://blog.mbedded.ninja/programming/website-design/nodejs/using-connect)
 </td>
 
@@ -37,104 +33,92 @@ node.js is a platform built on the Chrome Javascript runtime engine. It uses a n
 </tbody>
 </table>
 
-
 # Basics
 
-
-
-
-
-	  * All code is written in Javascript.
-	  * All lines of code outside of any function are executed sequentially when the script is first run.
-	  * Functions are run only when they are called.
-
-
+* All code is written in Javascript.
+* All lines of code outside of any function are executed sequentially when the script is first run.
+* Functions are run only when they are called.
 
 # A Simple HTTP Server
 
-
 This is one of the most common Node.js examples:
 
-    
-    var http = require('http');
-    
-    http.createServer( function(req, res)
-    {
-       var currentTime = new Date();
-       console.log('Client called at ' + currentTime);
-    
-       res.writeHead(200, {'Content-Type':'text/plain'});
-       res.write('NodeJs says hi.\n');
-       res.end();
-    }).listen('8124');
+```js    
+var http = require('http');
 
+http.createServer( function(req, res)
+{
+    var currentTime = new Date();
+    console.log('Client called at ' + currentTime);
+
+    res.writeHead(200, {'Content-Type':'text/plain'});
+    res.write('NodeJs says hi.\n');
+    res.end();
+}).listen('8124');
+```
 
 This will respond with the text NodeJs says hi. It may respond with the message twice, as some browsers (e.g. Chrome) also put in a separate HTTP request for favicon.ico. The function passed into createServer() gets called when the request event fires. If you want to know more about the http object methods, see the [API reference](http://nodejs.org/api/http.html#http_class_http_server).
 
 A simple way to stop this from happening is to investigate the req variable.
 
-    
-    var http = require('http');
-    
-    http.createServer(function (req, res) { 
-    
-       if(req.url === '/favicon.ico')
-       {
-          res.writeHead(200, {'Content-Type': 'image/x-icon'} );
-          res.end();
-          console.log('favicon requested');
-          return;
-       }
-    
-       // If not favicon
-       console.log('Non-favicon request.');
-       res.writeHead(200, {'Content-Type': 'text/plain'} );
-       res.write('nodejs says hi');
-       res.end();
-    
-    }).listen(8000);
+```js
+var http = require('http');
 
+http.createServer(function (req, res) { 
+
+    if(req.url === '/favicon.ico')
+    {
+        res.writeHead(200, {'Content-Type': 'image/x-icon'} );
+        res.end();
+        console.log('favicon requested');
+        return;
+    }
+
+    // If not favicon
+    console.log('Non-favicon request.');
+    res.writeHead(200, {'Content-Type': 'text/plain'} );
+    res.write('nodejs says hi');
+    res.end();
+
+}).listen(8000);
+```
 
 This handles favicon requests differently from standard requests.
 
-
 # Checking To See If There Is An Internet Connection
-
 
 A quick and dirty way to check if there is internet connectivity is to use the code:
 
-    
-    require('dns').resolve('www.google.com', function(err) {
-      if (err)
-         // no connection
-      else
-         // connection
-    });
-
+```js    
+require('dns').resolve('www.google.com', function(err) {
+    if (err)
+        // no connection
+    else
+        // connection
+});
+```
 
 This checks to see if it can resolve Google's named internet address into a numerical address with a DNS server. If there is no connection, this will timeout after about 10s or so and execute any code under if(err). There is no way of changing the timeout time by passing a value through in the function, but you can roll your own custom timeout function.
 
-
 # NPM
-
 
 npm is the node package manager. You can install it by typing:
 
-    
-    sudo apt-get install npm
-
+```sh    
+$ sudo apt-get install npm
+```
 
 Node packages are installed locally (in the current directory) with the following npm syntax
 
-    
-    npm install package-name
-
+```sh 
+$ npm install package-name
+```
 
 They are installed globally by adding the -g flag:
 
-    
-    npm install -g package-name
-
+```sh 
+$ npm install -g package-name
+```
 
 Local packages are installed in the current directory under ./node_modules/.
 
@@ -143,21 +127,14 @@ A giant list of node modules can be found at [https://github.com/joyent/node/wi
 
 # RaspberryPi GPIO
 
-
 Make sure you start the nodejs script with admin privlages (sudo node myScript.js), otherwise you won't be able to control the GPIO (you will get an error similar to).
-
 
 # Packages I Have Found Useful
 
-
 [Express](http://expressjs.com/) is a web application framework for node.
 
-
 # External References
-
 
 [The Node Beginner Book](http://www.nodebeginner.org/#javascript-and-nodejs) is an awesome place to start learning about nodejs. This first part is free (which gets you a long way), but the rest of it costs a small amount. Recommended to be worth it by both me and some of my friends!
 
 [Here is a good example](https://blog.codecentric.de/en/2013/03/home-automation-with-angularjs-and-node-js-on-a-raspberry-pi/) on using node.js for home automation.
-
-

@@ -9,81 +9,79 @@ url: /programming/version-control-systems/git/git-quickstart-guide
 
 Below is a quick start guide for using git.
 
+```
+# Create a new empty repo in a folder
+# (folder does not have to be empty)
+git init
 
+# Add changes (verbose flag helps!)
+# Note that this does not track deleted
+# files, use "git add -u -v" below 
+git add . -v
 
-    
-    # Create a new empty repo in a folder
-    # (folder does not have to be empty)
-    git init
-    
-    # Add changes (verbose flag helps!)
-    # Note that this does not track deleted
-    # files, use "git add -u -v" below 
-    git add . -v
-    
-    # Use to track deleted files
-    # ("git add ." does not do this)
-    git add -u -v
-    
-    # Commit to repo
-    git commit -m "Commit message."
-    
-    # Add remote push location to Github (called "origin") for current repo
-    # Note that this is the https method, and will require you to 
-    # enter your password on every push.
-    git remote add origin https://github.com/username/repo-name
-    
-    # Modify an existing push/pull location (in this case origin)
-    git remote set-url origin https://new-url
-    
-    # Remove remote push location added in previous command (in this case origin)
-    git remote rm origin
-    
-    # Push to Github repo added in above command
-    git push origin
-    
-    # Push a specific local branch to a specific remote branch
-    git push origin my_local_branch:my_remote_branch
-    
-    # To add a lightweight tag to the latest commit
-    # (in this example I am adding a version number)
-    git tag v2.1.0.5
-    
-    # To remove the lightweight tag added above
-    git tag -d v2.1.0.5
-    
-    # Push tags to remote repo location assigned above ("gh")
-    # (these are not pushed by default, and this does not
-    # push deleted tags, see below)
-    git push origin --tags
-    
-    # Since I normally always want to push tags at the same
-    # time as I push commits, I combine the two commands into
-    # one line like so:
-    git push origin; git push origin --tags
-    
-    # To push deleted tags to a remote location
-    # (so it deletes the tags at the remote)
-    git push origin :refs/tags/v2.1.0.5
-    
-    # List all tags in repo
-    git tag
-    
-    # Clone a remote repo to local location
-    git clone https://github.com/username/repo-name ./local-repo-folder
-    
-    # Get repo info
-    git status
-    
-    # Add a new sub-module to existing repo
-    # Note that the local install path is relative to the root directory
-    # of the repo
-    git submodule add https://path.to.remote.repo ./local/install/path
-    
-    # To revert all uncommitted changes to modified files and delete untracked files/directories (useful if you done edits which you no longer wish to keep). Calling git reset --hard will print the commit the repo falls back to.
-    git reset --hard
-    git clean -fd
-    
-    # To print the SHA-1 (long version) of the current commit
-    git rev-parse HEAD
-    
+# Use to track deleted files
+# ("git add ." does not do this)
+git add -u -v
+
+# Commit to repo
+git commit -m "Commit message."
+
+# Add remote push location to Github (called "origin") for current repo
+# Note that this is the https method, and will require you to 
+# enter your password on every push.
+git remote add origin https://github.com/username/repo-name
+
+# Modify an existing push/pull location (in this case origin)
+git remote set-url origin https://new-url
+
+# Remove remote push location added in previous command (in this case origin)
+git remote rm origin
+
+# Push to Github repo added in above command
+git push origin
+
+# Push a specific local branch to a specific remote branch
+git push origin my_local_branch:my_remote_branch
+
+# To add a lightweight tag to the latest commit
+# (in this example I am adding a version number)
+git tag v2.1.0.5
+
+# To remove the lightweight tag added above
+git tag -d v2.1.0.5
+
+# Push tags to remote repo location assigned above ("gh")
+# (these are not pushed by default, and this does not
+# push deleted tags, see below)
+git push origin --tags
+
+# Since I normally always want to push tags at the same
+# time as I push commits, I combine the two commands into
+# one line like so:
+git push origin; git push origin --tags
+
+# To push deleted tags to a remote location
+# (so it deletes the tags at the remote)
+git push origin :refs/tags/v2.1.0.5
+
+# List all tags in repo
+git tag
+
+# Clone a remote repo to local location
+git clone https://github.com/username/repo-name ./local-repo-folder
+
+# Get repo info
+git status
+
+# Add a new sub-module to existing repo
+# Note that the local install path is relative to the root directory
+# of the repo
+git submodule add https://path.to.remote.repo ./local/install/path
+
+# To revert all uncommitted changes to modified files and delete untracked files/directories (useful if you done edits which you no longer wish to keep). Calling git reset --hard will print the commit the repo falls back to.
+git reset --hard
+git clean -fd
+
+# To print the SHA-1 (long version) of the current commit
+git rev-parse HEAD
+```

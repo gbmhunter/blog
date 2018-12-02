@@ -17,18 +17,22 @@ JSON files have the file extension .json.
 
 Unfortunately, there is no special syntax to add comments into a JSON file (some consider this to be a major pitfall to the JSON format). The best you can do is to add a fake parameter, and make sure that the reader ignores it.
     
-    "_comment": "This is a comment inside a .json file"
+```json
+"_comment": "This is a comment inside a .json file"
+```
 
 Below is an example of a comment inside a JSON file:
-    
-    {"employees":[
-        {"firstName":"John", "lastName":"Doe"},
-        {"firstName":"Anna", "lastName":"Smith"},
-        "_comment": "Peter Jones may be removed from this array at some point", 
-        {"firstName":"Peter", "lastName":"Jones"}
-    ]}
 
-You can have multiple comments with the same "_comment"  identifier (this is called a key), this does not break any strict rules.
+```json 
+{"employees":[
+    {"firstName":"John", "lastName":"Doe"},
+    {"firstName":"Anna", "lastName":"Smith"},
+    "_comment": "Peter Jones may be removed from this array at some point", 
+    {"firstName":"Peter", "lastName":"Jones"}
+]}
+```
+
+You can have multiple comments with the same `"_comment"`  identifier (this is called a key), this does not break any strict rules.
 
 # Libraries
 

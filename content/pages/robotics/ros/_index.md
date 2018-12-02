@@ -9,17 +9,4 @@ url: /robotics/ros
 
 # Overview
 
-
-
-
 The Robotic Operating System (ROS) is a lightweight OS designed to both standardise and modularise software modules used in robotic systems.
-
-
-
-
-# Child Pages
-
-
-
-
-[sb_child_list template=2 orderby=title order=asc nest_level=1]

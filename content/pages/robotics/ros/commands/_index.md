@@ -9,78 +9,42 @@ url: /robotics/ros/commands
 
 # Overview
 
-
-
-
 The following page lists terminal commands (i.e. commands that can be run in bash/the shell) to control ROS.
-
-
-
 
 # Terminal Commands
 
-
-
-
 Creates a new ROS master, parameter server, and a rosout logging node.
 
-
-
-    
-    roscore
-
-
-
+```sh    
+$ roscore
+```
 
 Runs a ROS application.
 
-
-
-
-rosrun <package> <executable> 
-
-
-
+```sh
+$ rosrun <package> <executable> 
+```
 
 Prints information about a node.
 
-
-
-    
-    rosnode info
-
-
-
+```sh    
+rosnode info
+```
 
 Prints a list of the active topics.
 
-
-
-    
-    rostopic list
-
-
-
+```sh    
+$ rostopic list
+```
 
 Prints a topic's messages.
 
-
-
-    
-    rosnode echo /topic
-
-
-
+```sh    
+$ rosnode echo /topic
+```
 
 Publishes a message to a topic.
 
-
-
-    
-    rostopic pub <arguments>
-
-
-
-
-
-
+```sh    
+$ rostopic pub <arguments>
+```

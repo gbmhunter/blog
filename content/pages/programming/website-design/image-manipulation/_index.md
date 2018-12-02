@@ -9,13 +9,10 @@ url: /programming/website-design/image-manipulation
 
 You can install GIMP on Ubuntu with the command
 
-    
-    sudo apt-get install gimp
-
-
-
+```sh    
+$ sudo apt-get install gimp
+```
 
 # Plugins
-
 
 GIMP supports plugins.

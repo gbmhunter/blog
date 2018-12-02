@@ -11,11 +11,15 @@ url: /programming/operating-systems/freertos/freertos-quick-reference-guide
 
 This contains examples of the most common functions, designed to jog your memory when writing FreeRTOS code.
 
-<table border="0" ><tbody ><tr >
-<td >**Function**
-</td>
-<td >**Comments**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Function</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+<tbody >
+<tr >
 <td >**GENERAL TASK MANIPULATION**
 </td>
 <td > 

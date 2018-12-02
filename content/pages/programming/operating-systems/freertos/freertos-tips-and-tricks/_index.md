@@ -7,13 +7,13 @@ type: page
 url: /programming/operating-systems/freertos/freertos-tips-and-tricks
 ---
 
-[latexpage]
-
 # Diagram
 
 The following diagram shows a holistic diagram of the architecture for a medium to large firmware application that runs on a microcontroller and uses a RTOS.
 
+```
 \begin{tikzpicture}[node distance = 2cm, scale=1.0] [+preamble] \usepackage[latin1]{inputenc} \usepackage{tikz} \usetikzlibrary{shapes,arrows} [/preamble] \tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt] \tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em] \tikzstyle{line} = [draw, -latex'] \tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm, minimum height=2em] % Place nodes \node [block] (app) {Application}; \node [block, below of=app] (rtos) {RTOS}; \node [block, below of=rtos] (rtos-adoption) {RTOS Adoption Layer}; \node [block, below of=rtos-adoption] (drivers) {Drivers}; \node [block, below of=drivers] (hardware-abs) {Hardware Abstraction Layer}; \node [block, below of=hardware-abs] (hardware) {Hardware}; % Draw edges \path [line] (app) -- (rtos); \path [line] (rtos) -- (rtos-adoption); \path [line] (rtos-adoption) -- (drivers); \path [line] (drivers) -- (hardware-abs); \path [line] (hardware-abs) -- (hardware); \end{tikzpicture}
+```
 
 The hardware is the acutal peripherals that a particular microcontroller has, including things like a UART, I2C and ADC.
 

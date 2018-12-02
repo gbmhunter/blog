@@ -9,38 +9,33 @@ url: /programming/website-design/nodejs/using-express
 
 # Overview
 
-
 Express is a web application framework for node. The Express framework itself uses Connect for some of it's functionality, a middleware framework for node.
 
 It's website is [http://expressjs.com/](http://expressjs.com/).
 
-
 # Installing
-
 
 You can install Express with NPM (node package manager) using the following command:
 
-    
-    npm install express
-
+```sh    
+$ npm install express
+```
 
 This will install express into the current directory under the standard node packages folder.
 
-
 # Basic Web Server
-
 
 The following code shows how to make a basic web server with Express. Notice how it is different from the basic web sever using plain node.
 
-    
-    var express = require('express');
-    var app = express();
-    
-    app.get('/', function(req, res){
-      res.send('hello world');
-    });
-    
-    app.listen(3000);
+```js    
+var express = require('express');
+var app = express();
 
+app.get('/', function(req, res){
+    res.send('hello world');
+});
+
+app.listen(3000);
+```
 
 To run this, save the code as a .js file, and instruct node to run this file from the command line by typing node filename.js.

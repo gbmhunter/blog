@@ -9,54 +9,30 @@ url: /programming/operating-systems/linux/programs/cron
 
 # Overview
 
-
-
-
-
 Most web-servers give you the ability to setup and run cron tasks for maintaining your website. These are normally setup from cPanel or equivalent, and is called a [webcron](http://en.wikipedia.org/wiki/Webcron).
-
-
-
-
 
 # The Basics
 
-
-
-
-
 To list the current crontabs type:
 
-
-
-
-    
-    
-    sudo crontab -l
-    
-
-
-
-
+```sh   
+sudo crontab -l
+```    
 
 # Special Characters
 
-
-
-
-
 There are a number of characters which have a special meaning when writing a crontab.
 
-
-
 <table >
-	<tbody >
-		<tr >
-			Character
-			Description
-			Compatibility
+	<thead>
+		<tr>
+			<th>Character</th>
+			<th>Description</th>
+			<th>Compatibility</th>
 		</tr>
-		<tr >
+	</thead>
+<tbody >
+	<tr>
 			
 <td >*
 </td>
@@ -103,22 +79,20 @@ There are a number of characters which have a special meaning when writing a cro
 	</tbody>
 </table>
 
-
-
 # Predefined Timing Words
-
-
 
 These are pretty self-explanatory.
 
-<table >
-	<tbody >
-		<tr >
-			Word
-			Description
-			Equivalent To
+<table>
+	<thead>
+		<tr>
+			<th>Word</th>
+			<th>Description</th>
+			<th>Equivalent To</th>
 		</tr>
-		<tr >
+	</thead>
+<tbody>
+	<tr >
 			
 <td >@hourly
 </td>
@@ -187,26 +161,12 @@ These are pretty self-explanatory.
 	</tbody>
 </table>
 
-
-
 # Logging
-
-
-
-
 
 By default, cron saves the output to the user's mailbox. You can save it to a separate logfile instead with the following syntax:
 
-
-
-
-    
-    
-    * * * * * shell-command-here >> /var/log/cron-log-file.log 2>&1
-    
-
-
-
-
+```sh   
+* * * * * shell-command-here >> /var/log/cron-log-file.log 2>&1
+```    
 
 This redirects both stdout and stderr to the file cron-log-file.log.

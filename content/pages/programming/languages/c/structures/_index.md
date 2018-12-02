@@ -36,7 +36,7 @@ Unfortunately, **you cannot define default variables for a structure when you de
 
 # Manipulating Structures
 
-Because structure can contain more than one data type, you can't use the standard procedure for manipulating other 'variables'. For example you can't use struct 1 = struct 2 to copy one structure to another or use struct1= 0 to set all values to 0. Instead, you have to use memory operations.
+Because structure can contain more than one data type, you can't use the standard procedure for manipulating other 'variables'. For example you can't use struct 1 = struct 2 to copy one structure to another or use `struct1= 0` to set all values to 0. Instead, you have to use memory operations.
 
 However, you can still copy individual variables that belong to a structure just like usual.
 

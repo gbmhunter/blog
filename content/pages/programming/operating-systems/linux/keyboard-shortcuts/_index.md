@@ -8,13 +8,15 @@ url: /programming/operating-systems/linux/keyboard-shortcuts
 ---
 
 <table >
-	<tbody >
-		<tr >
-			Shortcut
-			Description
-			Tested On
+	<thead>
+		<tr>
+			<th>Shortcut</th>
+			<th>Description</th>
+			<th>Tested On</th>
 		</tr>
-		<tr >
+	</thead>
+<tbody>
+	<tr>
 			
 <td >Ctrl+Alt+ArrowKey
 </td>

@@ -7,74 +7,30 @@ type: page
 url: /programming/signal-processing/convolution
 ---
 
-[mathjax]
-
-
-
-
-Overview
-
-
-
+# Overview
 
 Convolution is a mathematic operation that can be performed on two functions, which produces a third output function which is a "blend" of the two inputs.
 
-
-
-
 Convolution can be thought of as a measure of the amount of overlap of one function as it is shifted over the other function
-
-
-
 
 # Formal Definition
 
-
-
-
-$$ f \ast g = \int_{-\infty}^{\infty} f(\tau)\ g(t - \tau) d \tau $$
-
-
-
+<div>$$ f \ast g = \int_{-\infty}^{\infty} f(\tau)\ g(t - \tau) d \tau $$</div>
 
 # Mathematical Properties
 
-
-
-
 Convolution is **commutative**:
 
-
-
-
-$$ f \ast g = g \ast f $$
-
-
-
+<div>$$ f \ast g = g \ast f $$</div>
 
 Convolution is **associative**:
 
-
-
-
-$$ (f \ast g) \ast h = f \ast (g \ast h) $$
-
-
-
+<div>$$ (f \ast g) \ast h = f \ast (g \ast h) $$</div>
 
 Convolution is **distributive**:
 
-
-
-
-$$ f \ast (g + h) = f \ast g + f \ast h $$
-
-
-
+<div>$$ f \ast (g + h) = f \ast g + f \ast h $$</div>
 
 These other properties also hold true:
 
-
-
-
-$$ a (f \ast g) = (af) \ast g $$
+<div>$$ a (f \ast g) = (af) \ast g $$</div>
