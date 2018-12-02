@@ -23,17 +23,10 @@ tags:
 - type conversion
 ---
 
+* Added info on static_cast and dynamic_cast to the [C++ Type Conversion page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/type-conversion).  
+* Updated the [Qt page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/qt-cute) with info on the old and new Qt5 syntax of connect() for connecting signals to slots.  
 
-	  * Added info on static_cast and dynamic_cast to the [C++ Type Conversion page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/type-conversion).  
-
- 
-	  * Updated the [Qt page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/qt-cute) with info on the old and new Qt5 syntax of connect() for connecting signals to slots.  
-
-   
-
-
-
-[![](/images/2017/09/qt-cute-software-logo-300x229.png)
+	[![](/images/2017/09/qt-cute-software-logo-300x229.png)
 ](/images/2017/09/qt-cute-software-logo.png)
 
 
