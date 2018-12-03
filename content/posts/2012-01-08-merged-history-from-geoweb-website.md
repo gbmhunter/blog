@@ -14,4 +14,4 @@ tags:
 
 Merged the history of the GeoWeb website into Clandestine Laboratories. Added the updates as back-dated posts (most were around Dec-Jan 2010/2011).
 
-[singlepic id=342 w=800 h=800 float=center]
+{{< figure src="/images/misc/old-geoweb-screenshot.jpg" caption="Screenshot of Geoweb (before it was renamed to undergroundmadlabs, then CladLabs)." caption-position="bottom" width="800px" >}}

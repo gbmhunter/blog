@@ -23,6 +23,6 @@ The ['Popped Cherry' all-grain beer recipe and notes](http://blog.mbedded.ninja/
 
 Brewed for the Massey Handball fundraiser party, it was designed to be cheap! Used the low cost styles of malt, and whatever hops we had left in the fridge from other brews. End result was pretty good considering the low cost and speed that we made it in.
 
-[singlepic id=751 w=400 h=400 float=center]
+{{< figure src="/images/homebrewing-poppedcherry/17-protecting-the-important-things-in-life.jpg" caption="Protecting the important things in life." caption-position="bottom" width="400px" >}}
 
-[singlepic id=750 w=400 h=400 float=center]
+{{< figure src="/images/homebrewing-poppedcherry/16-adding-boiled-cherrys-to-fermenting-beer.jpg" caption="Adding the boiled cherry mixture to the fermenting beer." caption-position="bottom" width="400px" >}}

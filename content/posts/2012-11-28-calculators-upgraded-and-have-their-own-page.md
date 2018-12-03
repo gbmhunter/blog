@@ -35,4 +35,4 @@ The electronic online calculators have been upgraded! They now
 
 The calculators now have their own [page](http://blog.mbedded.ninja/electronics/general/online-calculators), which shows the collection of calculators that are used on the electrical pages of the [CladLabs site](http://www.blog.mbedded.ninja).
 
-[singlepic id=890 w=600 h=600 float=center]
+{{< figure src="/images/electronics-misc/calculators-got-upgrade-and-have-their-own-page-with-border.jpg" caption="Screenshot of the Ohm's law and resistor divider online calculators." caption-position="bottom" width="600px" >}}

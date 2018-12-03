@@ -21,7 +21,7 @@ tags:
 - uv
 ---
 
-[singlepic id=802 w=320 h=240 float=right]
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-tonic-logo-small.png" caption="The Luxcity Tonic logo." caption-position="bottom" width="320px" >}}
 
 
 
@@ -36,12 +36,12 @@ Their page can be found here ([http://stajegrouparchitects.wordpress.com/](http:
 
 
 
-[singlepic id=801 w=600 h=600 float=center]
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-event-october-2012-christchurch.jpg" caption="Luxcity event poster for Christchurch 2012." caption-position="bottom" width="600px" >}}
 
 
 
 
-[singlepic id=797 w=600 h=600 float=center]
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-tonic-hardware.jpg" caption="The hardware for the Luxcity Tonic project (just after it arrived)." caption-position="bottom" width="600px" >}}
 
 
 

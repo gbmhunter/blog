@@ -16,4 +16,4 @@ tags:
 
 After going nuts on the Electric Skateboard project in the last week, I have nearly finished the PCB routing for the skateboard PCB, the first of two boards (the other is the remote PCB).
 
-[singlepic id=339 w=500 h=500 float=center]
+{{< figure src="/images/electronics-electricskateboard/skateboard-pcb-routing-almost-complete.jpg" caption="Screenshot of the nearly finished skateboard PCB routing (1 of 2 boards...)." caption-position="bottom" width="500px" >}}

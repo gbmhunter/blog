@@ -21,7 +21,7 @@ Argh, so simple things such as reloading the old menu (using the back button on 
 
 Worst case scenario is I have to recreate the entire menu structure again. My website was basically entirely linked from within this menu. Groan...
 
-[singlepic id=566 w=650 h=500 float=center]
+{{< figure src="/images/misc/clablab-menus-gone.jpg" caption="The CladLabs menus disappeared after a menu crash." caption-position="bottom" width="650px" >}}
 
 _**EDIT (03-09-2012)**_
 

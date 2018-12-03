@@ -16,6 +16,6 @@ tags:
 
 PCB Cart has finally re-produced the PCB's in a much nicer red colour. It's now time to populate these boards...
 
-[singlepic id=536 w=500 h=500 float=center]
+{{< figure src="/images/electronics-electricskateboard/2012-04-25-13-28-16.jpg" caption="" caption-position="bottom" width="500px" >}}
 
-[singlepic id=537 w=500 h=500 float=center]
+{{< figure src="/images/electronics-electricskateboard/2012-04-25-13-54-54.jpg" caption="" caption-position="bottom" width="500px" >}}

@@ -12,4 +12,4 @@ categories:
 
 Logo made for Kaboom in Adobe Photoshop. Added section "How To?".
 
-[singlepic id=333 w=500 h=500 float=center]
+{{< figure src="/images/misc/kaboom-maintitle.jpg" caption="The title image for the Kaboom website." caption-position="bottom" width="500px" >}}

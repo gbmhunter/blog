@@ -23,7 +23,7 @@ We reached an agreement that I could get them redone in another colour, paying h
 
 The photo below shows the gross orange colour compared to the kind of yellow I was expecting.
 
-[singlepic id=532 w=600 h=600 float=center]
+{{< figure src="/images/electronics-electricskateboard/2012-04-04-15-45-02.jpg" caption="This photo shows the gross orange colour of the electric skateboard PCB's compared to the kind of yellow I was expecting." caption-position="bottom" width="600px" >}}
 
 
 

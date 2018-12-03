@@ -20,7 +20,7 @@ tags:
 
 Finally, a rotating image banner has been added back to CladLabs, just like the one when the website was running of the [Drupal CMS](http://drupal.org/). I used the [Cimy Header Image Rotator plugin](http://wordpress.org/extend/plugins/cimy-header-image-rotator/) and added code to the header.php file in a child theme for 'motion'.
 
-[singlepic id=788 w=600 h=800 float=center]
+{{< figure src="/images/misc/screenshot-of-banner-added-to-cladlabs.jpg" caption="Screenshot of the rotating banner added to the CladLabs website." caption-position="bottom" width="600px" >}}
 
 I was having issues with the text element that the Cimy plugin added with the image. The default setting was for the text to be placed in the middle (both vertically and horizontally) of the image, which isn't very appealing. I wanted the text to span the bottom of the image, and wanted to get rid of the rounded corners of the text box. To do this, I had to edit the generated code as follows (including adding an extra 'div' element around the entire plugin). The total size of the rotating header element is 980x300px.
 

@@ -18,7 +18,7 @@ It was only when I viewed my website from another person's computer that I reali
 
 
 
-[singlepic id=1459 width=500 height=500]
+{{< figure src="/images/misc/screenshot-with-disqus-ads-present.png" caption="Screenshot with disqus ads present." caption-position="bottom"  >}}
 
 
 
@@ -30,7 +30,7 @@ After looking through the disqus setting on this site, I discovered that I had t
 
 
 
-[singlepic id=1458 width=600 height=500]
+{{< figure src="/images/misc/disabling-disqus-ads-promoted-discovery-annotated.png" caption="Disabling disqus ads." caption-position="bottom"  >}}
 
 
 
@@ -42,7 +42,7 @@ Now we are back to normal!
 
 
 
-[singlepic id=1460 width=500 height=500]
+{{< figure src="/images/misc/screenshot-with-disqus-ads-removed.png" caption="Screenshot with disqus ads removed." caption-position="bottom"  >}}
 
 
 

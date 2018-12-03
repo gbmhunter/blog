@@ -17,7 +17,7 @@ tags:
 - repository
 ---
 
-[singlepic id=776 w=300 h=300 float=right]
+{{< figure src="/images/programming-misc/bit-bucket-logo.png" caption="The BitBucket logo. Image from https://bitbucket.org/." caption-position="bottom" width="300px" >}}
 
 The firmware has been made public and can be downloaded as a Mercurial repo on www.bitbucket.com from [https://bitbucket.org/gbmhunter/electric-skateboard-firmware](https://bitbucket.org/gbmhunter/proj-electricskateboardfirmware).
 
@@ -25,4 +25,4 @@ Note that this is quite a large repo, as it contains the most recent and old ver
 
 More information can be found on the [Electric Skateboard Firmware](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-firmware) page, under Electronics->Projects->[Electric Skateboard](http://blog.mbedded.ninja/electronics/projects/electric-skateboard).
 
-[singlepic id=777 w=600 h=600 float=center]
+{{< figure src="/images/electronics-electricskateboard/electric-skateboard-c-code-screenshot.png" caption="Screenshot of the electric skateboard firmware, showing main.c." caption-position="bottom" width="600px" >}}
