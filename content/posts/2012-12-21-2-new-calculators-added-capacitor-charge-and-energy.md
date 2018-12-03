@@ -18,13 +18,13 @@ This week, two new online electrical-engineering-themed calculators have been ad
 
 One calculator is for the capacitor charge equation,
 
-<div>$Q = CV$</div>
+<div>$$Q = CV$$</div>
 
 which involves charge, capacitance and voltage.
 
 The other is for the capacitor energy equation,
 
-<div>$ E = \frac{1}{2}CV^2$</div>
+<div>$$ E = \frac{1}{2}CV^2$$</div>
 
 which involves energy, capacitance and voltage.
 

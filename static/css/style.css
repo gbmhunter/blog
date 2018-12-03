@@ -90,6 +90,12 @@ body {
     text-align: center;
 }
 
+/* Disable any link styling for the site title */
+.site-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .site-description {
     color: rgb(51, 51, 51);
     font-size: 1.0rem;
@@ -118,6 +124,10 @@ body {
 
     /* Add subtle border to right-hand content */
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
+}
+
+main {
+    padding: 50px;
 }
 
 /* ========================================================================= */
