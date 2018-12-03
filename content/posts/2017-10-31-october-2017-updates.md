@@ -29,7 +29,7 @@ tags:
 
    
 
-{{< figure src="/images/2014/07/gcc-compiler-logo.png" width="151px" caption="The GCC logo." caption-position="bottom" >}}
+{{< figure src="/images/2014/07/gcc-compiler-logo.png" width="151px" caption="The GCC logo."  >}}
 
 	  * Updates to the [C++ Threading page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/threading) with info on how set the priorities of a std::thread on different operating systems.
 	  * Updates to the [C++ Virtual Methods page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/virtual-methods).
@@ -41,7 +41,7 @@ tags:
 
 
 
-{{< figure src="/images/2017/05/satellite-orbit-on-2d-map-propagator.png" caption="" caption-position="bottom" >}}
+{{< figure src="/images/2017/05/satellite-orbit-on-2d-map-propagator.png" caption=""  >}}
 
 
 
@@ -51,7 +51,7 @@ tags:
 
 
 
-{{< figure src="/images/2013/06/assembly-programming-language-icon.png" caption="" caption-position="bottom" >}}
+{{< figure src="/images/2013/06/assembly-programming-language-icon.png" caption=""  >}}
 
 
 
@@ -59,6 +59,6 @@ tags:
 
    
 
-{{< figure src="/images/2017/10/perlin-noise-cloud-example.png" width="374px" caption="Rendered Perlin noise that has been configured to make realistic looking clouds." caption-position="bottom" >}}
+{{< figure src="/images/2017/10/perlin-noise-cloud-example.png" width="374px" caption="Rendered Perlin noise that has been configured to make realistic looking clouds."  >}}
 
 

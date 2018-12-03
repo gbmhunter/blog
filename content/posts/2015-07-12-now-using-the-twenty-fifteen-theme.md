@@ -22,7 +22,7 @@ I have recently upgraded this sites theme from [Avada](http://themeforest.net/it
 
 
 
-{{< figure src="/images/2015/07/screenshot-of-mbedded-ninja-home-page-with-twenty-fifteen-theme.png" width="1452px" caption="A screenshot of mbedded-ninja's home page with the new twentyfifteen theme." caption-position="bottom" >}} {{< figure src="/images/2015/07/just-some-of-avadas-menu-structure.png" width="182px" caption="Just some of Avada's complex, deeply-nested and non-intuitive menu structure." caption-position="bottom" >}}
+{{< figure src="/images/2015/07/screenshot-of-mbedded-ninja-home-page-with-twenty-fifteen-theme.png" width="1452px" caption="A screenshot of mbedded-ninja's home page with the new twentyfifteen theme."  >}} {{< figure src="/images/2015/07/just-some-of-avadas-menu-structure.png" width="182px" caption="Just some of Avada's complex, deeply-nested and non-intuitive menu structure."  >}}
 
 
 

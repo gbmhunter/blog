@@ -21,4 +21,4 @@ It's been on the back of my mind to fix up the ugly main menu for some time now.
 
 
 
-{{< figure src="/images/misc/clad-labs-menu-gets-make-over.jpg" caption="The new look of the main menu." caption-position="bottom" width="800px" >}}
+{{< figure src="/images/misc/clad-labs-menu-gets-make-over.jpg" caption="The new look of the main menu."  width="800px" >}}

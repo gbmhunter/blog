@@ -16,7 +16,7 @@ tags:
 Added [Santa Alarm](http://blog.mbedded.ninja/electronics/projects/santa-alarm) project! My solution to early mornings...
 
 
-{{< figure src="http://geoweb.hostei.com/electronics/projects/santa_alarm/images/santa_alarm_09.jpg" caption="" caption-position="bottom" >}}
+{{< figure src="http://geoweb.hostei.com/electronics/projects/santa_alarm/images/santa_alarm_09.jpg" caption=""  >}}
 
 
 Added more information on interrupts in C. Not that exciting I know, but useful!

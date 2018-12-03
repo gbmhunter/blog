@@ -32,12 +32,12 @@ tags:
 
 
 
-{{< figure src="/images/2018/02/sudo-apt-install-icon.png" caption="" caption-position="bottom" >}}
+{{< figure src="/images/2018/02/sudo-apt-install-icon.png" caption=""  >}}
 
 
 
 	  * New [Anaconda page](http://blog.mbedded.ninja/programming/languages/python/anaconda) under Programming->Languages->Python.
-{{< figure src="/images/2018/02/anaconda-python-logo.png" width="446px" caption="The logo for Anaconda (Python distribution/environment)." caption-position="bottom" >}}
+{{< figure src="/images/2018/02/anaconda-python-logo.png" width="446px" caption="The logo for Anaconda (Python distribution/environment)."  >}}
 
 	  * Updated the [C++ Exceptions page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/exceptions) with information on the noexcept keyword introduced in C++11.
 

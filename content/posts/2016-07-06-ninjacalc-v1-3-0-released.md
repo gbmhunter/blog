@@ -21,7 +21,7 @@ tags:
 
 [NinjaCalc v1.3.0 has been released!](http://mbedded-ninja.github.io/NinjaCalc/) The biggest change is the addition of a **CRC calculator**, which allows you to calculate the CRC value for ASCII or hex data, using either **common pre-loaded CRC algorithms or your own custom algorithm**.
 
-{{< figure src="/images/2016/07/ninja-calc-crc-calculator-example.gif" width="1094px" caption="Example usage of the CRC Calculator within NinjaCalc (http://mbedded-ninja.github.io/NinjaCalc/)." caption-position="bottom" >}}
+{{< figure src="/images/2016/07/ninja-calc-crc-calculator-example.gif" width="1094px" caption="Example usage of the CRC Calculator within NinjaCalc (http://mbedded-ninja.github.io/NinjaCalc/)."  >}}
 
 The **custom algorithm section** allows you to enter a CRC width from 1-64 bits, a CRC polynomial, initial value, XOR-out value, and whether the input data and/or the output CRC value is reflected. Then it will calculate the resultant CRC value.
 
@@ -29,4 +29,4 @@ The **custom algorithm section** allows you to enter a CRC width from 1-64 bits,
 
 More information on CRC algorithms can be found on the [CRCs (Cyclic Redundancy Checks) page](http://blog.mbedded.ninja/programming/general/crcs-cyclic-redundancy-checks).
 
-**Changelog**  * Added CRC calculator, closes [#122](https://github.com/mbedded-ninja/NinjaCalc/issues/122).  * Fixed issue with install4j dependency, closes [#123](https://github.com/mbedded-ninja/NinjaCalc/issues/123).  * Removed .idea/workspace.xml file from repo, closes [#124](https://github.com/mbedded-ninja/NinjaCalc/issues/124).  * Added a text-based calculator variable, closes [#125](https://github.com/mbedded-ninja/NinjaCalc/issues/125).  * Added check so that calculator variables can't be accidentally added to the same calculator twice, closes [#126](https://github.com/mbedded-ninja/NinjaCalc/issues/126).{{< figure src="/images/2016/04/ninja-calc-logo-v2-no-transparency.png" width="308px" caption="The NinjaCalc logo (with no transparency)." caption-position="bottom" >}}
+**Changelog**  * Added CRC calculator, closes [#122](https://github.com/mbedded-ninja/NinjaCalc/issues/122).  * Fixed issue with install4j dependency, closes [#123](https://github.com/mbedded-ninja/NinjaCalc/issues/123).  * Removed .idea/workspace.xml file from repo, closes [#124](https://github.com/mbedded-ninja/NinjaCalc/issues/124).  * Added a text-based calculator variable, closes [#125](https://github.com/mbedded-ninja/NinjaCalc/issues/125).  * Added check so that calculator variables can't be accidentally added to the same calculator twice, closes [#126](https://github.com/mbedded-ninja/NinjaCalc/issues/126).{{< figure src="/images/2016/04/ninja-calc-logo-v2-no-transparency.png" width="308px" caption="The NinjaCalc logo (with no transparency)."  >}}

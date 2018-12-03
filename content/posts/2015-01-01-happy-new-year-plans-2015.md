@@ -26,7 +26,7 @@ Happy new year to all!
 
 
 
-{{< figure src="/images/2015/01/happy-new-year-2015.jpg" width="693px" caption="Happy new year! Image from www.freechristmaswallpapers.net." caption-position="bottom" >}}
+{{< figure src="/images/2015/01/happy-new-year-2015.jpg" width="693px" caption="Happy new year! Image from www.freechristmaswallpapers.net."  >}}
 
 
 
@@ -67,7 +67,7 @@ And here is a screenshot of the number of visitors by month up to Jan 2015 since
 
 
 
-{{< figure src="/images/2015/01/mbedded-ninja-visitor-stats-by-month-to-jan-2015.png" width="608px" caption="Num. of visitors to mbedded.ninja by month to January 2015." caption-position="bottom" >}}
+{{< figure src="/images/2015/01/mbedded-ninja-visitor-stats-by-month-to-jan-2015.png" width="608px" caption="Num. of visitors to mbedded.ninja by month to January 2015."  >}}
 
 
 

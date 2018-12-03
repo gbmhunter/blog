@@ -18,7 +18,7 @@ tags:
 - website statistics
 ---
 
-{{< figure src="/images/misc/2013-sign-new-year-ahead.jpg" caption="Image from http://blog.mailermailer.com/industry-news/2013-is-coming-is-your-email-ready." caption-position="bottom" width="320px" >}} Happy new year and welcome to 2013 from the [CladLabs team](http://en.gravatar.com/gbmhunter)! (well, that's just me, aka Geoffrey Hunter). Feel privileged, for this is one of the rare semi-personal, non-engineering posts that are ever presented on this site.
+{{< figure src="/images/misc/2013-sign-new-year-ahead.jpg" caption="Image from http://blog.mailermailer.com/industry-news/2013-is-coming-is-your-email-ready."  width="320px" >}} Happy new year and welcome to 2013 from the [CladLabs team](http://en.gravatar.com/gbmhunter)! (well, that's just me, aka Geoffrey Hunter). Feel privileged, for this is one of the rare semi-personal, non-engineering posts that are ever presented on this site.
 
 First off, thanks to everyone who has visited this site. And a bigger thanks for anyone who has commented or learnt something from it! I hope that this site has provided useful engineering-related information for people doing anything from constructing DIY electronic circuits to getting involved with pyrotechnics and rocketry.
 
@@ -50,4 +50,4 @@ Website goals for this year:
 	  * Fix long titles which overlap each other. For some reason, long titles which wrap onto a second line are not spaced properly and the font text overlaps. Probably just require a quick CSS fix somewhere.
 	  * Add continuous scrolling. [Wordpress.com](http://wordpress.com/) recently added this feature to their [Jetpack plugin](http://wordpress.org/extend/plugins/jetpack/), although the theme has to also support it before it can be enabled. This will require tweaking the theme page template files as well as a bit of CSS.
 
-{{< figure src="/images/misc/geoffrey-hunter-profile-photo-jumping-cladlabs.jpg" caption="Me (Geoffrey Hunter) jumping. Ummm...." caption-position="bottom" width="500px" >}}
+{{< figure src="/images/misc/geoffrey-hunter-profile-photo-jumping-cladlabs.jpg" caption="Me (Geoffrey Hunter) jumping. Ummm...."  width="500px" >}}

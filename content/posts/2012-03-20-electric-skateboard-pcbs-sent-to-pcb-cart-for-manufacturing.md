@@ -17,7 +17,7 @@ tags:
 - silver circuits
 ---
 
-{{< figure src="/images/electronics-electricskateboard/electric-skateboard-pcb-panel-camtastic.jpg" caption="Screenshot of the Gerber's sent to PCB Cart for manufacturing." caption-position="bottom" width="650px" >}}
+{{< figure src="/images/electronics-electricskateboard/electric-skateboard-pcb-panel-camtastic.jpg" caption="Screenshot of the Gerber's sent to PCB Cart for manufacturing."  width="650px" >}}
 
 Finally, the electric skateboard PCB's have been sent away for manufacturing. I eventually chose [PCB Cart](http://www.pcbcart.com/) after discovering that I couldn't run the PCB's as a 'Prototype' at [Silver Circuits](http://www.custompcb.com/) (their maximum Prototype PCB size was 160mm in any direction, my panel was 200mm). See the [Electrical Suppliers page](http://blog.mbedded.ninja/electronics/other/electrical-suppliers) for more info on PCB manufacturers.
 

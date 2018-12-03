@@ -36,7 +36,7 @@ tags:
 
   
 
-{{< figure src="/images/2016/12/cmake-logo.png" width="353px" caption="The CMake logo." caption-position="bottom" >}}  
+{{< figure src="/images/2016/12/cmake-logo.png" width="353px" caption="The CMake logo."  >}}  
 
   
 
@@ -48,14 +48,14 @@ tags:
 
   
 
-{{< figure src="/images/2017/01/russian-dolls.jpeg" caption="" caption-position="bottom" >}}
+{{< figure src="/images/2017/01/russian-dolls.jpeg" caption=""  >}}
 	  * New [ln (link) page](http://www.mbedded.ninja/programming/operating-systems/linux/programs/ln-link) under Programming->Operating Systems->Linux->Programs.
 	  * New [Virtual Machines and Containers page](http://www.mbedded.ninja/programming/general/virtual-machines-and-containers) under Programming.
 	  * New [Docker page](http://www.mbedded.ninja/?page_id=13984&preview=true) under Programming->Virtual Machines And Containers.  
 
   
 
-{{< figure src="/images/2017/01/docker-logo.png" caption="" caption-position="bottom" >}}  
+{{< figure src="/images/2017/01/docker-logo.png" caption=""  >}}  
 
   
 
@@ -65,5 +65,5 @@ tags:
 
   
 
-{{< figure src="/images/2017/01/gradlephant-gradle-logo-v2.png" width="235px" caption="The Gradle logo." caption-position="bottom" >}}
+{{< figure src="/images/2017/01/gradlephant-gradle-logo-v2.png" width="235px" caption="The Gradle logo."  >}}
 

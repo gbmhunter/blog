@@ -30,8 +30,8 @@ More information can be found on the project page at Electronics->Projects->[Lux
 
 The previous post about starting the project can be found [here](http://blog.mbedded.ninja/electronics/luxcity-uv-tonic-project-started).
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/lcd-screen-tonic-active.jpg" caption="The LCD screen working. This part was a breeze, it was an Arduino capable LCD shield, and there was a pre-written library for the firmware. It literally took less than 5 minutes to get working." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/lcd-screen-tonic-active.jpg" caption="The LCD screen working. This part was a breeze, it was an Arduino capable LCD shield, and there was a pre-written library for the firmware. It literally took less than 5 minutes to get working."  width="600px" >}}
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/circle-of-solenoids.jpg" caption="Testing the system in my living room the night before it's to be used." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/circle-of-solenoids.jpg" caption="Testing the system in my living room the night before it's to be used."  width="600px" >}}
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/pipes-with-tonic-and-uv.jpg" caption="The central structure and the tonic-filled pipes glowing under UV light." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/pipes-with-tonic-and-uv.jpg" caption="The central structure and the tonic-filled pipes glowing under UV light."  width="600px" >}}

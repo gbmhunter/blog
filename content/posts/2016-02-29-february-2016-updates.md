@@ -27,7 +27,7 @@ tags:
   
 
 ](http://blog.mbedded.ninja/electronics/components/sensors/humidity-sensors)
-{{< figure src="/images/2016/03/magnus-equation-humidity-temperature-and-dew-point.png" width="637px" caption="A screenshot of the Magnus equation, which calculates the dew point from the relative humidity and temperature." caption-position="bottom" >}}
+{{< figure src="/images/2016/03/magnus-equation-humidity-temperature-and-dew-point.png" width="637px" caption="A screenshot of the Magnus equation, which calculates the dew point from the relative humidity and temperature."  >}}
 [  
 
   
@@ -37,7 +37,7 @@ tags:
 
   
 
-{{< figure src="/images/2016/02/quantum-leaps-qp-logo.png" width="259px" caption="The Quantum Leaps QP logo. Image from http://www.state-machine.com/." caption-position="bottom" >}}
+{{< figure src="/images/2016/02/quantum-leaps-qp-logo.png" width="259px" caption="The Quantum Leaps QP logo. Image from http://www.state-machine.com/."  >}}
   
 
   
@@ -51,7 +51,7 @@ tags:
 
 
 
-{{< figure src="/images/2016/03/binary-sparse-matrix-style.jpg" caption="Sparse binary code done in a 'Matrix' style." caption-position="bottom" >}}
+{{< figure src="/images/2016/03/binary-sparse-matrix-style.jpg" caption="Sparse binary code done in a 'Matrix' style."  >}}
 
 
 

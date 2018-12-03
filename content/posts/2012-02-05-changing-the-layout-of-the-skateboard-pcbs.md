@@ -13,4 +13,4 @@ tags:
 - pcb
 ---
 
-{{< figure src="/images/electronics-electricskateboard/remote-2d-pcb-layout.jpg" caption="The 2D layout of the Remote PCB v1." caption-position="bottom" width="300px" >}}
+{{< figure src="/images/electronics-electricskateboard/remote-2d-pcb-layout.jpg" caption="The 2D layout of the Remote PCB v1."  width="300px" >}}

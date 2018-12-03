@@ -28,7 +28,7 @@ I changed the syntax highlighter plugin from [Syntax Highlighter Evolved](http:/
 
 
 
-{{< figure src="/images/misc/old-and-new-code-display-plugin-comparison.jpg" caption="A comparison between the old and new syntax highlighter plugin used on CladLabs." caption-position="bottom" width="600px" >}}
+{{< figure src="/images/misc/old-and-new-code-display-plugin-comparison.jpg" caption="A comparison between the old and new syntax highlighter plugin used on CladLabs."  width="600px" >}}
 
 
 

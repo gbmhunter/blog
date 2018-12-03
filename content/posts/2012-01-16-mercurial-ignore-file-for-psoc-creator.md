@@ -15,7 +15,7 @@ tags:
 - psoc
 ---
 
-{{< figure src="/images/programming-misc/psoc-building-block-image.jpg" caption="Image from the PSoC website." caption-position="bottom" width="320px" >}}{{< figure src="/images/programming-misc/mercurial-logo.png" caption="Mercurial's logo." caption-position="bottom" width="320px" >}}
+{{< figure src="/images/programming-misc/psoc-building-block-image.jpg" caption="Image from the PSoC website."  width="320px" >}}{{< figure src="/images/programming-misc/mercurial-logo.png" caption="Mercurial's logo."  width="320px" >}}
 
 
 

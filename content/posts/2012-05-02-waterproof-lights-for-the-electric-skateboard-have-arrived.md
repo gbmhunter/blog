@@ -20,4 +20,4 @@ The waterproof LED lights that I had ordered from [Deal Extreme ](http://www.dea
 
 More pictures of the design can be found on the [Electric Skateboard Photo Gallery Page](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-photo-album).
 
-{{< figure src="/images/electronics-electricskateboard-final-mech/2012-04-25-13-26-51.jpg" caption="" caption-position="bottom" width="500px" >}}
+{{< figure src="/images/electronics-electricskateboard-final-mech/2012-04-25-13-26-51.jpg" caption=""  width="500px" >}}
