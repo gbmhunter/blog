@@ -292,7 +292,7 @@ The following collage shows the three states the LCD screen can be in. It cycles
 
 The LCD shield came with five UI buttons. Four are directional (up, down, left, right) and one for select. I decided to use the up/down buttons for controlling the set temperature ("ST") in 1 degree increments/decrements, and the select button toggles through the light levels (0, 1, 2, 3). The left/right buttons are not used for anything.
 
-{{< figure src="/images/project-inursery/028-inursery-lcd-at-night.jpg" caption=""   >}}
+{{< figure src="/images/project-inursery/028-inursery-lcd-at-night.jpg"    >}}
 
 # Connecting It All Up
 

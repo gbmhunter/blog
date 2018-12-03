@@ -20,7 +20,7 @@ tags:
 
 * New [Containers page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/containers) under Programming->Languages->C++.  
 
-	{{< figure src="/images/2016/12/cardboard-boxes.png" caption=""  >}}
+	{{< figure src="/images/2016/12/cardboard-boxes.png"   >}}
 
 * New page [Boost Libraries](http://blog.mbedded.ninja/programming/languages/c-plus-plus/boost-libraries) under Programming->Languages->C++.  
 
@@ -32,4 +32,4 @@ tags:
 
 * New [Robotics section](http://blog.mbedded.ninja/robotics) added to the website.  
 
-	{{< figure src="/images/2016/12/robotics-roombot-humanoid-waving.png" caption=""  >}}
+	{{< figure src="/images/2016/12/robotics-roombot-humanoid-waving.png"   >}}

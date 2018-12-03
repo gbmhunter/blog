@@ -126,8 +126,13 @@ body {
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
 }
 
+/* Padding between border of right-hand inner column and content */
 main {
     padding: 50px;
+}
+
+.homepage-post-content {
+    padding-bottom: 50px;
 }
 
 /* ========================================================================= */

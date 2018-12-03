@@ -99,7 +99,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 # Ingredients
 
 
-{{< figure src="/images/homebrewing-poppedcherry/01-crushed-malt.jpg" caption=""  width="320px" >}}
+{{< figure src="/images/homebrewing-poppedcherry/01-crushed-malt.jpg"   width="320px" >}}
 
 
 # Malt
@@ -222,7 +222,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 # Sparging
 
 
-{{< figure src="/images/homebrewing-poppedcherry/05-reading-wort-temp-02.jpg" caption=""  width="400px" >}}
+{{< figure src="/images/homebrewing-poppedcherry/05-reading-wort-temp-02.jpg"   width="400px" >}}
 <table style="width: 600px;" border="0" >
 <tbody >
 <tr >
@@ -382,7 +382,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 </tr>
 </tbody>
 </table>
-{{< figure src="/images/homebrewing-poppedcherry/12-using-ice-to-cool-down-the-heat-exchanger.jpg" caption=""  width="400px" >}}**
+{{< figure src="/images/homebrewing-poppedcherry/12-using-ice-to-cool-down-the-heat-exchanger.jpg"   width="400px" >}}**
 **
 
 

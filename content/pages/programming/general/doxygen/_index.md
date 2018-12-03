@@ -11,7 +11,7 @@ url: /programming/general/doxygen
 
 Doxygen is an open-source program for **documenting code**. It is commonly used to build documentation from **source files which have special identifiers added** to help generate useful documentation. Doxygen supports many languages (including C, C++, C#, Java, Python, VHDL, PHP and others...), however only C/C++ documentation is covered here. As of 2016, it is guessed to be the **most popular method for documenting C/C++ code**.
 
-{{< figure src="/images/2013/05/doxygen-logo.png" caption=""  >}}
+{{< figure src="/images/2013/05/doxygen-logo.png"   >}}
 
 It is essentially a program which looks through your source code and extracts information about functions, variables, enumerations, defines and almost everything else, including special comments and identifies that you place in the code, and compiles it into a nice looking html, pdf, or latex document. With the right commands, you can create a customised main page, linking between similar functions, automatic bug/todo lists, insert latex equations and more!
 

@@ -164,7 +164,7 @@ url: /electronics/general/electrical-suppliers
 <td >Mind Kits ([visit site](http://www.mindkits.co.nz/))
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/mind-kits-logo.png" caption=""  width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/mind-kits-logo.png"   width="100px" >}}
 </td>
 
 <td >3/5
@@ -231,7 +231,7 @@ url: /electronics/general/electrical-suppliers
 </tbody>
 </table>
 
-{{< figure src="/images/electronics-suppliers/avnet-logo.gif" caption=""  width="100px" >}}
+{{< figure src="/images/electronics-suppliers/avnet-logo.gif"   width="100px" >}}
 
 Supplier of PSoC devices.
 
@@ -312,9 +312,9 @@ Digi-Key is a huge international supplier. If anyone will have a component, it w
 
 Automatic Part List/BOM/Order Creation. This speeds up the ordering process. Directly upload BOM's  as text, csv, or Excel Spreadsheet (.xls) files to DigiKey, select the appropriate columns, and then instantly create orders.
 
-{{< figure src="/images/electronics-suppliers/digi-key-automatic-bom-uploading-please-wait.png" caption=""  width="320px" >}}
+{{< figure src="/images/electronics-suppliers/digi-key-automatic-bom-uploading-please-wait.png"   width="320px" >}}
 
-{{< figure src="/images/electronics-suppliers/digi-key-automatic-bom-uploading-selecting-excel-columns.png" caption=""  width="700px" >}}
+{{< figure src="/images/electronics-suppliers/digi-key-automatic-bom-uploading-selecting-excel-columns.png"   width="700px" >}}
 
 ## NiceGear
 
@@ -491,7 +491,7 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
 <td >Circuit Labs ([website](http://www.circuitlabs.co.nz/))
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/circuit-labs-logo.jpg" caption=""  width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/circuit-labs-logo.jpg"   width="100px" >}}
 </td>
 
 <td >Number Of Layers: 2 Min Track And Gap: 0.152mm Min Hole Size: 0.30mm Min Annular Ring: 0.10 Rigid-Flex: No
@@ -624,11 +624,11 @@ Based In: China
 Supplied Locations: International
 Notes:  Cheap supplier for boards, but they do take a while to manufacture. Offers extensive features and a nice web ordering interface with on-the-spot quotes. Although I did have an unpleasant run-in with them once, see the post " **Stack-ups:** Here is one of their default 4-layer, 2core, 1.6mm thick stack-ups.
 
-{{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-6mm-layer-stackup.jpg" caption=""  width="400px" >}}
+{{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-6mm-layer-stackup.jpg"   width="400px" >}}
 
 Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core.
 
-{{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-core-1-6mm-layer-stackup.jpg" caption=""  width="400px" >}}
+{{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-core-1-6mm-layer-stackup.jpg"   width="400px" >}}
 
 # Suppliers With Free Samples!
 
@@ -646,7 +646,7 @@ Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core.
 <td >Coilcraft ([http://www.coilcraft.com/](http://www.coilcraft.com/))
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/coilcraft-logo.gif" caption=""  width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/coilcraft-logo.gif"   width="100px" >}}
 </td>
 
 <td >Free samples of their inductors with free international shipping!
@@ -657,7 +657,7 @@ Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core.
 <td >Texas Instruments ([http://www.ti.com/](http://www.ti.com/))
 </td>
 
-<td >{{< figure src="/images/electronics-suppliers/texas-instruments-logo.gif" caption=""  width="100px" >}}
+<td >{{< figure src="/images/electronics-suppliers/texas-instruments-logo.gif"   width="100px" >}}
 </td>
 
 <td >Selection of their components. A maximum of 5 can be ordered at once. They also provide free internaitonal shipping! They do not allow you to register for free samples with a free email address such as Gmail or Hotmail, so you have to use a company or University email address.

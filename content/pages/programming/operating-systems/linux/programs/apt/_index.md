@@ -11,7 +11,7 @@ url: /programming/operating-systems/linux/programs/apt
 
 The Linux program apt (Advanced Package Tool) is a collection of tools for managing Debian packages.
 
-{{< figure src="/images/2018/02/sudo-apt-install-icon.png" caption="" >}}
+{{< figure src="/images/2018/02/sudo-apt-install-icon.png"  >}}
 
 apt is a combination of the most widely used commands from apt-get and apt-cache. It is the recommended over apt-get when used by humans, as it is easier to use and looks better.
 

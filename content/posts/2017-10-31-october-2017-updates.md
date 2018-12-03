@@ -35,11 +35,11 @@ tags:
 * New [Memory Barriers page](http://blog.mbedded.ninja/programming/design-patterns/memory-barriers) under Programming->Design Patterns.
 * New [Coordinate Conversion page](http://blog.mbedded.ninja/space/coordinate-conversion) under Space.  
 
-	{{< figure src="/images/2017/05/satellite-orbit-on-2d-map-propagator.png" caption=""  >}}
+	{{< figure src="/images/2017/05/satellite-orbit-on-2d-map-propagator.png"   >}}
 
 * Updates to the [Assembly page](http://blog.mbedded.ninja/programming/languages/assembly).  
 
-	{{< figure src="/images/2013/06/assembly-programming-language-icon.png" caption=""  >}}
+	{{< figure src="/images/2013/06/assembly-programming-language-icon.png"   >}}
 
 * New [Perlin Noise page](http://blog.mbedded.ninja/mathematics/perlin-noise) under Mathematics.  
 

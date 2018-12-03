@@ -11,7 +11,7 @@ url: /programming/design-patterns/dependency-injection
 
 Dependency injection is a programming design pattern in where services (dependencies) are inserted into the client (the code that needs the services) at runtime.
 
-{{< figure src="/images/2014/07/red-syringe.jpg" caption=""  >}}
+{{< figure src="/images/2014/07/red-syringe.jpg"   >}}
 
 # Pros And Cons
 

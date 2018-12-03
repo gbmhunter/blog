@@ -307,7 +307,7 @@ The battery management system came with the LiFePo battery. It protects the batt
 </tbody>
 </table>
 
-{{< figure src="/images/electronics-electricskateboard-final-mech/2012-02-25-16-20-34.jpg" caption=""  width="600px" >}}
+{{< figure src="/images/electronics-electricskateboard-final-mech/2012-02-25-16-20-34.jpg"   width="600px" >}}
 
 ## Skateboard Electronics Enclosure
 
@@ -383,7 +383,7 @@ The battery management system came with the LiFePo battery. It protects the batt
 </table>
 
 
-{{< figure src="/images/electronics-electricskateboard-final-mech/skateboard-electronic-enclsoure-product-photo.jpg" caption=""  width="500px" >}}
+{{< figure src="/images/electronics-electricskateboard-final-mech/skateboard-electronic-enclsoure-product-photo.jpg"   width="500px" >}}
 
 ## Lights
 
@@ -438,7 +438,7 @@ The battery management system came with the LiFePo battery. It protects the batt
 
 Used for seeing where you are riding at night, and for cars to see you. The red light was made by putting red cellophane over a white light.
 
-{{< figure src="/images/electronics-electricskateboard-final-mech/2012-04-25-13-26-51.jpg" caption=""  width="500px" >}}
+{{< figure src="/images/electronics-electricskateboard-final-mech/2012-04-25-13-26-51.jpg"   width="500px" >}}
 
 ### Green Flexible EL Skirting Light
 
@@ -631,7 +631,7 @@ Notes: 8AWG wire connections. Supplied with 5.5mm gold connectors, but I replace
 
 An electronic speed controller (ESC) in hobby circles is a power circuit which controls the speed of a brushless DC motor. They typically are rated for motor currents between 20-150A and use MOSFETs, PWM and back EMF sensing to switch the currents through the motor windings at the correct time. They are necessary to set up a rotating magnetic field since BLDC motors are not commutated like brushed DC motors. They typically accept a PWM input to control the speed of the motor (which is designed to be directly connect to a RC receiver, but I will be generating the PWM with a micro-controller instead), and feature programmable settings to control the characteristics of the controller (such as acceleration, braking force e.t.c).
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6226.jpg" caption=""  width="600px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6226.jpg"   width="600px" >}}
 
 ## ESC Programming Card (redundant after v1.1 failed)
 

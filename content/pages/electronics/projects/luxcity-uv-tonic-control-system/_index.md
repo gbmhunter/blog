@@ -85,7 +85,7 @@ The I2C controlled shield provides 8 outputs that can drive standard relays. Bei
 
 62 solenoids are needed to either allow tonic or air to flow into one of the 31 pipes. When I first received them, I had a horrible feeling as I blew in one end and the solenoid let air through with some resistance. This was until I realised that they have a minimum operating pressure of 20kPA.
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/solenoid-minimum-operating-pressure.png" caption=""  width="500px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/solenoid-minimum-operating-pressure.png"   width="500px" >}}
 
 ## 1x Ardunio Uno
 
@@ -134,7 +134,7 @@ Vixen is a free PC-based sequencer designed for controlling lights. Although not
 
 To get around the problem with Vixen not outputting cells with an intensity of 0 (the firmware can't recognise what output value is for what channel unless all 64 are output in the correct order), I made the minimum allowable intensity equal to 1, so that Vixen outputs a value for every cell at every time step, and the firmware looks for a non-one value.
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-screenshot-tonic-test-sequence.png" caption=""  width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-screenshot-tonic-test-sequence.png"   width="600px" >}}
 
 # Construction
 
@@ -212,11 +212,11 @@ Testing the complete system the night before it's due to be used.
 
 The Vixen software sequence used to test the solenoids. Each solenoid is turned on for 1 second in sequential order.
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-screenshot-tonic-test-sequence.png" caption=""  width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-screenshot-tonic-test-sequence.png"   width="600px" >}}
 
 The settings to configure the 'Generic Serial' output plugin in Vixen.
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-tonic-generic-serial-output-plugin-settings.png" caption=""  width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-tonic-generic-serial-output-plugin-settings.png"   width="600px" >}}
 
 ## Onsite
 
@@ -249,7 +249,7 @@ Some of the other structures at the Luxcity event.
 
 {{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/altitude-02.jpg" caption="A view of Alititude from the centre."  width="600px" >}}
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/scary-tree.jpg" caption=""  width="600px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/scary-tree.jpg"   width="600px" >}}
 
 # Firmware
 

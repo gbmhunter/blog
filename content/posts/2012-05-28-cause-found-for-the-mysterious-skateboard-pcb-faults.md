@@ -22,8 +22,8 @@ The culprit, the flux! This stuff is acidic and makes solder stick better to the
 
 {{< figure src="/images/electronics-electricskateboard/2012-05-21-21-13-45.jpg" caption="Fluxite, soldering paste which caused all sorts of problems since it is a plumbers flux which is not designed for electronics."  width="500px" >}}
 
-{{< figure src="/images/electronics-electricskateboard/2012-05-21-13-18-24.jpg" caption=""  width="500px" >}}
+{{< figure src="/images/electronics-electricskateboard/2012-05-21-13-18-24.jpg"   width="500px" >}}
 
-{{< figure src="/images/electronics-electricskateboard/2012-05-21-13-56-49.jpg" caption=""  width="500px" >}}
+{{< figure src="/images/electronics-electricskateboard/2012-05-21-13-56-49.jpg"   width="500px" >}}
 
 More info can be found on the [Electric Skateboard project page](http://blog.mbedded.ninja/electronics/projects/electric-skateboard).

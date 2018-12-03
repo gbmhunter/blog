@@ -37,6 +37,6 @@ tags:
 
 * New [Magic Statics page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/magic-statics) under Programming->Programming Languages->C++.  
 
-	{{< figure src="/images/2017/08/magic-statics-icon-bunny-hat-code.png" caption=""  >}}
+	{{< figure src="/images/2017/08/magic-statics-icon-bunny-hat-code.png"   >}}
 
 * New [Communication Protocol Theory page](http://blog.mbedded.ninja/electronics/communication-protocols/communication-protocol-theory) under Electronics->Communication Protocols.

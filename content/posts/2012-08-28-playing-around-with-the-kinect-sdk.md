@@ -29,7 +29,7 @@ I got excited about 3D modelling and brought a Microsoft Kinect a few weeks ago.
 
 Anyway, I installed the Microsoft SDK/drivers and within minutes I had a development platform in action for the Kinect. I wrote a small program in Visual C# Express using the provided API, and following [this tutorial](http://www.i-programmer.info/ebooks/practical-windows-kinect-in-c/4126-kinect-sdk1-a-3d-point-cloud.html), got a cool depth image of my room ('cool' being relative, this was the first day I had started playing with it).
 
-{{< figure src="/images/programming-kinect/first-try-with-kinect.png" caption=""  width="600px" >}}
+{{< figure src="/images/programming-kinect/first-try-with-kinect.png"   width="600px" >}}
 
 However, Microsoft puts a restriction on it's SDK, saying that the software must run on a PC running Windows. One thought in the back of my head was to one day make it run on an embedded linux system, so I had a crack at getting the 3rd party open-source drivers working. This involved many hours of messing around installing multiple programs in different orders, then trying different versions, and then trying to compile the drivers with a make command. It reminded me of the driver issues you used to get with Windows 95, and after about 5 hours I gave up.
 

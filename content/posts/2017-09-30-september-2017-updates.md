@@ -26,7 +26,7 @@ tags:
 
 * Updates to the [C++ Threading page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/threading) regarding condition variables and locks.  
 
-	{{< figure src="/images/2015/01/thread-needle-icon.png" caption=""  >}}
+	{{< figure src="/images/2015/01/thread-needle-icon.png"   >}}
 
 * Updates to the [Yocto Project->Recipes page](http://blog.mbedded.ninja/programming/embedded-linux/yocto-project/recipes).  
 

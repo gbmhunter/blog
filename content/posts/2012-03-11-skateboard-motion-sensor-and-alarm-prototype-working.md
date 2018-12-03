@@ -22,7 +22,7 @@ The motion sensor and alarm is now working! This would of had to been the easies
 
 I found this cool little motion sensor, the MS24 on Element14 for less than NZ$10. It's heaps better than most tilt sensors since it is sensitive to motion in all orientations, unlike tilt sensors which tend to only change state at a specific angle from the horizontal.
 
-{{< figure src="/images/electronics-electricskateboard-secondprototype/2012-03-08-21-36-21.jpg" caption=""  width="250px" >}}
+{{< figure src="/images/electronics-electricskateboard-secondprototype/2012-03-08-21-36-21.jpg"   width="250px" >}}
 
 The sensor is normally closed, but when a small amount of motion disturbs it, it momentarily goes into the open state. All you need is a resistor and capacitor to interface this into a microcontrollers interrupt pin. The combination of the resistor and capacitor control the sensitivity.
 

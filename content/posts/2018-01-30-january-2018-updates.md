@@ -25,7 +25,7 @@ tags:
 
 * New [apt page](http://blog.mbedded.ninja/programming/operating-systems/linux/programs/apt) under Programming->Operating Systems->Linux->Programs.  
 
-	{{< figure src="/images/2018/02/sudo-apt-install-icon.png" caption=""  >}}
+	{{< figure src="/images/2018/02/sudo-apt-install-icon.png"   >}}
 
 * New [Anaconda page](http://blog.mbedded.ninja/programming/languages/python/anaconda) under Programming->Languages->Python.
 

@@ -46,15 +46,15 @@ I found a pad labelled ground on the output board! Hooray for nicely labelled te
 
 After finding to difference between the broken and working circuits, I decided to remove the speakers from the enclosures.
 
-{{< figure src="/images/electronics-evp-x12p-speaker-teardown/2012-07-23-22-30-27.jpg" caption=""  width="800px" >}}
+{{< figure src="/images/electronics-evp-x12p-speaker-teardown/2012-07-23-22-30-27.jpg"   width="800px" >}}
 
 This is where I finally found the problem, the LF speaker coil had completely blown!
 
-{{< figure src="/images/electronics-evp-x12p-speaker-teardown/2012-07-23-22-44-31.jpg" caption=""  width="800px" >}}
+{{< figure src="/images/electronics-evp-x12p-speaker-teardown/2012-07-23-22-44-31.jpg"   width="800px" >}}
 
 And then I discovered why I was still reading 4Ω at the connector on the amplifier PCB, there was another PCB between the amp and the speaker to filter the sounds between the LF (low-frequency, aka bass-driver) and horn (HF, high-frequency) speaker.
 
-{{< figure src="/images/electronics-evp-x12p-speaker-teardown/2012-07-23-22-39-03.jpg" caption=""  width="800px" >}}
+{{< figure src="/images/electronics-evp-x12p-speaker-teardown/2012-07-23-22-39-03.jpg"   width="800px" >}}
 
 Now knowing that I needed a new bass-driver, I got the guys at [South Pacific Music](http://www.southpacmusic.co.nz/), the New Zealand stockists for Wharfedale Pro speakers, to re-cone the bass-driver.
 

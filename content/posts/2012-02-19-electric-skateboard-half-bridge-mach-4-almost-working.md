@@ -19,11 +19,11 @@ I finished building and started testing half-bridge mach 4 this weekend. To my s
 
 The schematic the prototype board was made from.
 
-{{< figure src="/images/electronics-electricskateboard-secondprototype/half-bridge-schematic-for-eda-forums.jpg" caption=""  width="320px" >}}
+{{< figure src="/images/electronics-electricskateboard-secondprototype/half-bridge-schematic-for-eda-forums.jpg"   width="320px" >}}
 
 Testing it with a motor. I was able to stand on it for short times! (last time the MOSFET's blew).
 
-{{< figure src="/images/electronics-electricskateboard-secondprototype/2012-02-18-17-08-37.jpg" caption=""  width="320px" >}}
+{{< figure src="/images/electronics-electricskateboard-secondprototype/2012-02-18-17-08-37.jpg"   width="320px" >}}
 
 However, the MOSFET's and the bulk capacitor were getting unusually hot. I hooked a scope up to the gates of the MOSFET's and noticed ringing on the low-side FET when the high-side FET switched on. I think this is causing momentary shoot-through. This would explain hot FET's, and, if the voltage rail was sagging, hot bulk capacitors.
 

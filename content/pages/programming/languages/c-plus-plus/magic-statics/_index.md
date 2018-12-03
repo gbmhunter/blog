@@ -24,7 +24,7 @@ std::string& GetString() {
 
 The above code creates a new static qualified string inside the function, and then returns a reference to it. **Seeing a reference being returned to a locally defined variable should give you the heebie jeebies!** This is the only time I can think of where this kind of behaviour is allowed (if the variable was not declared static, then it would be deleted when the function returned, and accessing the reference would likely crash your system!).
 
-{{< figure src="/images/2017/08/magic-statics-icon-bunny-hat-code.png" caption=""  >}}
+{{< figure src="/images/2017/08/magic-statics-icon-bunny-hat-code.png"   >}}
 
 # Thread Safety
 

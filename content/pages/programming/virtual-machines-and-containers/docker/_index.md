@@ -11,7 +11,7 @@ url: /programming/virtual-machines-and-containers/docker
 
 Docker is container software. It is commonly used as a lightweight alternative to a virtual machine.
 
-{{< figure src="/images/2017/01/docker-logo.png" caption=""  >}}
+{{< figure src="/images/2017/01/docker-logo.png"   >}}
 
 # Running Docker Without sudo
 
