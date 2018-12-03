@@ -14,41 +14,30 @@ tags:
 - online calculator
 ---
 
-[latexpage]
-
 This week, two new online electrical-engineering-themed calculators have been added!
 
 One calculator is for the capacitor charge equation,
 
-
-$Q = CV$
-
+<div>$Q = CV$</div>
 
 which involves charge, capacitance and voltage.
 
 The other is for the capacitor energy equation,
 
-
-$ E = \frac{1}{2}CV^2$
-
-
-
+<div>$ E = \frac{1}{2}CV^2$</div>
 
 which involves energy, capacitance and voltage.
-
 
 As usual, any of the variables can be chosen to be calculated given the other ones (the independant and dependant variables). Values are updated automatically as you type. The equations and the variables are fully explained on their respective pages.
 
 These calculators are useful for both electrical engineers and hobbyists alike when:
 
-
-
-	  * Calculating capacitor time constants
-	  * When using super-capacitors
-	  * Working out how long a capacitor will power a circuit for
-	  * Working out the available energy in cap banks for coil guns and other high-energy electronic  devices
-	  * Working out the effectiveness of a capacitor for transient voltage suppression
-	  * Much more!
+* Calculating capacitor time constants
+* When using super-capacitors
+* Working out how long a capacitor will power a circuit for
+* Working out the available energy in cap banks for coil guns and other high-energy electronic  devices
+* Working out the effectiveness of a capacitor for transient voltage suppression
+* Much more!
 
 They can be found individually on the [Capacitors page](http://blog.mbedded.ninja/electronics/components/capacitors), or with the other calculators on the [Online Calculators page](http://blog.mbedded.ninja/electronics/general/online-calculators).
 

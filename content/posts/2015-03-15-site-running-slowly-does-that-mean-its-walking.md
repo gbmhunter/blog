@@ -29,9 +29,7 @@ I also ran the website through [www.webpagetest.org](http://www.webpagetest.org/
 
 Other things I'm suspicious about:
 
-
-
-	  * NextGEN just released a series of "performance increase" updates. Maybe there is a bug in the new code?
-	  * I have just started using the SB Plugin for automatically displaying child pages on parent pages. This might be the main culprit?
+* NextGEN just released a series of "performance increase" updates. Maybe there is a bug in the new code?
+* I have just started using the SB Plugin for automatically displaying child pages on parent pages. This might be the main culprit?
 
 Hold tight, the debugging continues...

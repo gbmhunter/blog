@@ -24,37 +24,20 @@ tags:
 ---
 
 
-	  * Updates to the [UART](http://blog.mbedded.ninja/electronics/communication-protocols/uart-protocol) and [RS-232](http://blog.mbedded.ninja/electronics/communication-protocols/rs-232-protocol) communication protocol pages.  
+* Updates to the [UART](http://blog.mbedded.ninja/electronics/communication-protocols/uart-protocol) and [RS-232](http://blog.mbedded.ninja/electronics/communication-protocols/rs-232-protocol) communication protocol pages.  
 
+	{{< figure src="/images/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg" caption=""  >}}
 
+* New [Cross Product page](http://blog.mbedded.ninja/mathematics/geometry/cross-product) under Mathematics->Geometry.  
 
-{{< figure src="/images/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg" caption=""  >}}
+	{{< figure src="/images/2018/03/cross-product-equation.png" caption=""  >}}
 
+* Updated the [Fixed Point Mathematics page](http://blog.mbedded.ninja/programming/general/fixed-point-mathematics) with more information of multiplication, division and modulo.
 
+* NinjaCalc got a new 'Two Coordinate Geodesics' calculator. This has it's [own post here](http://blog.mbedded.ninja/ninjacalc/geodesic-calculator-added-to-ninjacalc).  
 
-	  * New [Cross Product page](http://blog.mbedded.ninja/mathematics/geometry/cross-product) under Mathematics->Geometry.  
+	{{< figure src="/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png" caption=""  >}}
 
+* Added information on "unused parameter" compiler warnings to the [Qt page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/qt-cute).  
 
-
-{{< figure src="/images/2018/03/cross-product-equation.png" caption=""  >}}
-
-
-
-	  * Updated the [Fixed Point Mathematics page](http://blog.mbedded.ninja/programming/general/fixed-point-mathematics) with more information of multiplication, division and modulo.
-	  * NinjaCalc got a new 'Two Coordinate Geodesics' calculator. This has it's [own post here](http://blog.mbedded.ninja/ninjacalc/geodesic-calculator-added-to-ninjacalc).  
-
-
-
-{{< figure src="/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png" caption=""  >}}
-
-
-
-	  * Added information on "unused parameter" compiler warnings to the [Qt page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/qt-cute).  
-
-
-
-{{< figure src="/images/2017/09/qt-cute-software-logo.png" caption=""  >}}
-
-
-
-
+	{{< figure src="/images/2017/09/qt-cute-software-logo.png" caption=""  >}}

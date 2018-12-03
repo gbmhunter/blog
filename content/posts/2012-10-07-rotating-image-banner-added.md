@@ -26,8 +26,7 @@ I was having issues with the text element that the Cimy plugin added with the im
 
 Note that CSS styling is included in this html file, as provided by the generated Cimy code. If I really wanted to do this 'properly', I would move the CSS to the style.css file in the same folder.
 
-[code lang="html"]
-
+```html
 <!-- Code added to header.php in the child theme for motion ('motion-child')
    Added in the header div element below the logo div -->
 
@@ -80,4 +79,4 @@ Note that CSS styling is included in this html file, as provided by the generate
    </noscript>
 </div>
 <!-- End of rotating banner image -->
-[/code]
+```

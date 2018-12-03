@@ -25,13 +25,11 @@ tags:
 
 The electronic online calculators have been upgraded! They now
 
-
-
-	  * Have selectable engineering units
-	  * Have a "Calculate What?" button, meaning you choose which variable you know, and which to calculate
-	  * Features shading of the calculated variables, so you know which ones you have to type in yourself
-	  * Has live calculating that re-calculates everytime you change something.
-	  * Features a "variable diagram", which helps graphically explain the equation and what your calculating
+* Have selectable engineering units
+* Have a "Calculate What?" button, meaning you choose which variable you know, and which to calculate
+* Features shading of the calculated variables, so you know which ones you have to type in yourself
+* Has live calculating that re-calculates everytime you change something.
+* Features a "variable diagram", which helps graphically explain the equation and what your calculating
 
 The calculators now have their own [page](http://blog.mbedded.ninja/electronics/general/online-calculators), which shows the collection of calculators that are used on the electrical pages of the [CladLabs site](http://www.blog.mbedded.ninja).
 

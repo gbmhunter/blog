@@ -27,28 +27,21 @@ _**EDIT (03-09-2012)**_
 
 So I discovered that this problem must be either caused by a php timeout or memory limit. I have managed to stop this from happening again (but not recovering what I had already lost), by adding the following two lines to the wp-admin.php file in the root directory of the wordpress installation.
 
-[code lang="php"]
-
+```php
 set_time_limit(300);
-
 define('WP_MEMORY_LIMIT', '64M');
-
-[/code]
+```
 
 at any point in the file after
 
-[code lang="php"]
-
+```php
 <?php
-
-[/code]
+```
 
 and before
 
-[code lang="php"]
-
+```php
 if ( !defined('ABSPATH') )
-
-[/code]
+```
 
 There was no specific reason to choose a time of 300 seconds and memory limit of 64MB, they just turned out to be large enough so that the php engine could handle the menus. This still means that large menus will take ages to update (minutes!), but at least you don't loose it all!

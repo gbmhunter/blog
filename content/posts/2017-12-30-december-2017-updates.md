@@ -15,10 +15,4 @@ tags:
 - time
 ---
 
-
-	  * Added info on the SGP4 DateTime object to the [C++ Clocks And Timing page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/clocks-and-timing).  
-
-  
-
-
-
+* Added info on the SGP4 DateTime object to the [C++ Clocks And Timing page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/clocks-and-timing).

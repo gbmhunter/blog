@@ -18,5 +18,4 @@ Added [Santa Alarm](http://blog.mbedded.ninja/electronics/projects/santa-alarm)
 
 {{< figure src="http://geoweb.hostei.com/electronics/projects/santa_alarm/images/santa_alarm_09.jpg" caption=""  >}}
 
-
 Added more information on interrupts in C. Not that exciting I know, but useful!

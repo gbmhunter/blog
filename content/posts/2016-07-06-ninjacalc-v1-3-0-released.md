@@ -29,4 +29,12 @@ The **custom algorithm section** allows you to enter a CRC width from 1-64 bits,
 
 More information on CRC algorithms can be found on the [CRCs (Cyclic Redundancy Checks) page](http://blog.mbedded.ninja/programming/general/crcs-cyclic-redundancy-checks).
 
-**Changelog**  * Added CRC calculator, closes [#122](https://github.com/mbedded-ninja/NinjaCalc/issues/122).  * Fixed issue with install4j dependency, closes [#123](https://github.com/mbedded-ninja/NinjaCalc/issues/123).  * Removed .idea/workspace.xml file from repo, closes [#124](https://github.com/mbedded-ninja/NinjaCalc/issues/124).  * Added a text-based calculator variable, closes [#125](https://github.com/mbedded-ninja/NinjaCalc/issues/125).  * Added check so that calculator variables can't be accidentally added to the same calculator twice, closes [#126](https://github.com/mbedded-ninja/NinjaCalc/issues/126).{{< figure src="/images/2016/04/ninja-calc-logo-v2-no-transparency.png" width="308px" caption="The NinjaCalc logo (with no transparency)."  >}}
+**Changelog**
+
+* Added CRC calculator, closes [#122](https://github.com/mbedded-ninja/NinjaCalc/issues/122).
+* Fixed issue with install4j dependency, closes [#123](https://github.com/mbedded-ninja/NinjaCalc/issues/123).
+* Removed .idea/workspace.xml file from repo, closes [#124](https://github.com/mbedded-ninja/NinjaCalc/issues/124).
+* Added a text-based calculator variable, closes [#125](https://github.com/mbedded-ninja/NinjaCalc/issues/125).
+* Added check so that calculator variables can't be accidentally added to the same calculator twice, closes [#126](https://github.com/mbedded-ninja/NinjaCalc/issues/126).
+
+{{< figure src="/images/2016/04/ninja-calc-logo-v2-no-transparency.png" width="308px" caption="The NinjaCalc logo (with no transparency)."  >}}

@@ -14,10 +14,6 @@ tags:
 - rf
 ---
 
+* New [PIN Diodes page](http://blog.mbedded.ninja/electronics/components/diodes/pin-diodes).  
 
-	  * New [PIN Diodes page](http://blog.mbedded.ninja/electronics/components/diodes/pin-diodes).  
-
-  
-
-{{< figure src="/images/2016/08/pin-diode-photo-small.jpg" width="192px" caption="A photo of a small, through-hole PIN diode."  >}}
-
+	{{< figure src="/images/2016/08/pin-diode-photo-small.jpg" width="192px" caption="A photo of a small, through-hole PIN diode."  >}}

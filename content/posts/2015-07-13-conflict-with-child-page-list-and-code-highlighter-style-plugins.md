@@ -31,11 +31,13 @@ I was left with Crayon shortcodes in the form
 
 {{< figure src="/images/2015/07/sb-child-list-plugin-bug-code-displaying-incorrectly.png" width="379px" caption="Code displaying incorrectly because of a bug with the SB Child List plugin."  >}}
 
-It seemed that shortcodes with the form [crayon-55a318c46df22443583779/] were somehow not being processed (it might be that all shortcodes were not being processed, I did not test any others).
+It seemed that shortcodes with the form `[crayon-55a318c46df22443583779/]` were somehow not being processed (it might be that all shortcodes were not being processed, I did not test any others).
 
 After about 5 long hours I managed to hunt down the cause, this single line in wp-content/plugins/sb_child_list.php (line 352 in the sb_cl_render_child_list() function):
-    
-    $template = str_replace('[post_excerpt]', sb_cl_get_the_excerpt($p->ID), $template);
+
+```php
+$template = str_replace('[post_excerpt]', sb_cl_get_the_excerpt($p->ID), $template);
+```
 
 If this line of code happened to be called on a particular page because I had used the [sb_child_list] shortcode, and it had added links to child pages which hadn't had manual excerpts added, this would stop Crayon Syntax Highlighter code blocks from rendering correctly further down the page (leaving me with text like [crayon-55a318c46df22443583779/] as explained above).
 

@@ -19,21 +19,13 @@ tags:
 ---
 
 All the info I recorded about 38PVC, a experimental rocket motor I was playing around with in 2007, has got it's [own page](http://blog.mbedded.ninja/pyrotechnics/rocketry/projects/38pvc).
-<table style="width: 500px;" border="0" class="aligncenter" >
-<tbody >
-<tr >
 
-<td >{{< figure src="/images/pyrotechnics-rocketry-38pvc/03-anchor-holes-and-disk.jpg" caption=""  width="150px" >}}
-</td>
+{{< figure src="/images/pyrotechnics-rocketry-38pvc/03-anchor-holes-and-disk.jpg" caption=""  width="400px" >}}
 
-<td >{{< figure src="/images/pyrotechnics-rocketry-38pvc/15-knsu-propellant-in-mould.jpg" caption=""  width="150px" >}}
-</td>
+{{< figure src="/images/pyrotechnics-rocketry-38pvc/15-knsu-propellant-in-mould.jpg" caption=""  width="400px" >}}
 
-<td >{{< figure src="/images/pyrotechnics-rocketry-38pvc/27-end-of-rocket-with-ignitor.jpg" caption=""  width="150px" >}}
-</td>
-</tr>
-</tbody>
-</table>
+{{< figure src="/images/pyrotechnics-rocketry-38pvc/27-end-of-rocket-with-ignitor.jpg" caption=""  width="400px" >}}
+
 This motor got lucky enough to be attached to skateboard, and rocket-board was born.
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/33-rocketboard-02.jpg" caption=""  width="600px" >}}
