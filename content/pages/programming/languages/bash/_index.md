@@ -106,3 +106,15 @@ flags:
 ```
 
 As shown above, it also supports automatic help! Although the shebang in the above example is #!/bin/sh, this can be changed to #!/usr/bin/env bash without any issues. Please note: If using bash, make sure that set -e is not active when shflags is sourced, otherwise your script will crash when sourcing, with no helpful error message displayed.
+
+# Refreshing The Current Working Directory After It Was Deleted And Recreated
+
+If the directory you are currently in during a bash session gets deleted and recreated, you may notice that commands like ls don't work. That is because the directory you were in no longer exists, the new directory is a different directory (different inode) but shares the same name.
+
+To quickly get back to a valid state of the working directory, type:
+
+```sh
+cd `pwd`
+```
+
+The works by re-entering a directory with the same path as the old one you are currently in.

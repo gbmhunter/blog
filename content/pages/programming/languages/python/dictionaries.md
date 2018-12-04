@@ -88,13 +88,23 @@ my_item = my_dict.pop('foo')
 
 # Combining Dictionaries
 
-Python dictionaries can be combined with the `update()` function.
+Python dictionaries can be combined (merged) with the `update()` function.
 
 ```python
-my_dict1 = { 'foo': 1, 'bar': 2 }
-my_dict2 = { 'banana': 'yellow' }
+my_dict1 = { 'a': 1, 'b': 2 }
+my_dict2 = { 'b': 3, 'c': 4 }
 
 my_dict1.update(my_dict2)
 print(my_dict1)
-# stdout: {'foo': 1, 'bar': 2, 'banana': 'yellow'}
+# stdout: {'a': 1, 'b': 3, 'c': 4}
+```
+
+As of Python 3.5 and higher, they can also be combined with the `**` syntax below:
+
+```python
+my_dict1 = { 'a': 1, 'b': 2 }
+my_dict2 = { 'b': 3, 'c': 4 }
+my_dict3 = {**my_dict1, **my_dict2}
+print(my_dict3)
+# stdout: {'a': 1, 'b': 3, 'c': 4}
 ```

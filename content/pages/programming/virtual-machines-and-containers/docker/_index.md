@@ -53,7 +53,9 @@ $ dial unix /var/run/docker.sock: connect: permission denied
 
 An image is a file which contains all the information/data about a particular system setup. When you run an image, you create a container of this image. You can create many containers based of the same image.
 
-# Getting Images (docker pull)
+# Images
+
+## Getting Images (docker pull)
 
 Images can be downloaded from [Docker Hub](https://hub.docker.com/) using the docker pull command.
 
@@ -67,12 +69,20 @@ Images can be removed with:
 $ docker rmi image_name
 ```
 
-# Inspecting Local Images
+## Inspecting Local Images
 
 You can view all of the docker images present on the local machine with:
 
 ```sh    
-docker images
+$ docker images
+```
+
+## Delete All Images
+
+The following command will remove all Docker images from your system:
+
+```sh
+$ docker rmi $(docker images -q)
 ```
 
 # Containers
