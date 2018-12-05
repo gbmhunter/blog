@@ -48,6 +48,16 @@ div.box {
 
 
 /* ========================================================================= */
+/* POST STYLING                                                              */
+/* ========================================================================= */
+
+/* Disable link styling for post titles */
+.post-title {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ========================================================================= */
 /* MAIN PAGE STYLING                                                         */
 /* ========================================================================= */
 
@@ -78,7 +88,7 @@ body {
 }
 
 .logo-img {
-    width: 80%;
+    width: 70%;
 }
 
 .site-title {
@@ -162,7 +172,8 @@ main {
 .menu li a {
     display: flex;
     width: 200px;
-    padding: 12px 8px;
+    /* Below padding controls spacing of adjacent menu elements */
+    padding: 8px 8px; 
     /* padding: 12px; */
     background: rgb(34, 34, 34);
     color: #fff;

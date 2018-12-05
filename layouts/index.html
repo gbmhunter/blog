@@ -16,7 +16,7 @@
     {{ with .Site.GetPage "/posts" }}
         {{ range first 10 .Pages }}
             <!-- {{ .Render "summary"}} -->
-            <h1 class="f1">{{ .Title }}</h1>
+            <a href="{{ .URL }}" class="post-title"><h1>{{ .Title }}</h1></a>
             <div class="homepage-post-content nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray">
                 {{ .Content }}
             </div>

@@ -1,8 +1,8 @@
+---
 author: gbmhunter
 date: 2018-12-03
 title: Bash Script For Monitoring Disk Usage
-type: post
-categories:
+tags:
 - bash
 - script
 - disk

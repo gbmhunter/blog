@@ -10,11 +10,7 @@ url: /site-info
 # Site Info
 Platform: Wordpress v3.x (CMS)  
 
-Maintained By: Geoffrey Hunter  
-
-## Active Wordpress Plugins:
-
-See [Wordpress Plugins This Site Uses](http://blog.mbedded.ninja/programming/website-design/wordpress/wordpress-plugins-that-this-site-uses).
+Maintained By: Geoffrey Hunter
 
 # Latex
 
