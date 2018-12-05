@@ -1,6 +1,5 @@
 author: gbmhunter
 date: 2018-12-03
-draft: false
 title: Bash Script For Monitoring Disk Usage
 type: post
 categories:
@@ -8,13 +7,16 @@ categories:
 - script
 - disk
 - space
+- df
+- devices
+- ssh
 ---
 
 # The Problem
 
 Sometimes it would be nice if you could keep an eye on the disk space usage of a Linux machine. You can do this manually using the `df` command, but sometimes you forget to check for a while, and only discover the problem when you start experiencing disk full errors. Wouldn't it be nice if perhaps we could automate this somewhat, and report back if certain disks where almost full?
 
-And what if we could check everytime we ssh'ed into the machine (assuming the machine is remote)?
+And what if we could check everytime we startup/login/ssh into a machine?
 
 # The Script
 
@@ -64,9 +66,9 @@ You can configure the percentage threshold at which full disks are reported by m
 
 Sometimes you may want to ignore particular mounted disks which are always near full (e.g. boot partitions). To do this, add the path to the mounted disk to the `IGNORED_DISKS` array.
 
-# How To Make It Run On ssh Login
+# How To Make It Run On Startup/ssh Login
 
-To do this, I added the above code to the file `~/.ssh/rc`.
+To do this, I added the above code to the file `~/bash_profile`. Do not add it to `~/.ssh/rc`, as this can cause X11 forwarding problems (and you can get the error: `X11 connection rejected because of wrong authentication.`).
 
 Now, everytime you ssh into the machine, any disk space warnings will be printed to your console.
 
