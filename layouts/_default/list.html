@@ -32,7 +32,9 @@
 
         {{ .Content }}
       </div>
+      {{ template "_internal/disqus.html" . }}
     </article>
+
   </div>
   <!-- LOAD LIGHTBOX FOR IMAGES -->
   {{ partial "load-photoswipe.html" . }}
