@@ -4,7 +4,7 @@ date: 2012-05-02 02:28:59+00:00
 draft: false
 title: Piezo's
 type: page
-url: /electronics/components/piezos
+
 ---
 
 # Overview

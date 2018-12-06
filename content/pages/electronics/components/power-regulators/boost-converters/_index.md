@@ -4,7 +4,7 @@ date: 2014-06-13 04:41:03+00:00
 draft: false
 title: Boost Converters
 type: page
-url: /electronics/components/power-regulators/boost-converters
+
 ---
 
 [mathjax]

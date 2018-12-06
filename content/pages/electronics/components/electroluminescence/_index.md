@@ -4,7 +4,7 @@ date: 2013-08-22 09:52:05+00:00
 draft: false
 title: Electroluminescence
 type: page
-url: /electronics/components/electroluminescence
+
 ---
 
 # Overview

@@ -4,7 +4,7 @@ date: 2015-11-30 22:20:37+00:00
 draft: false
 title: Wire-To-Board (WTB)
 type: page
-url: /electronics/components/connectors/wire-to-board-wtb
+
 ---
 
 # Overview

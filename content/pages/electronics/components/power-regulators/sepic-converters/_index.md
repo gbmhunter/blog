@@ -4,7 +4,7 @@ date: 2015-03-24 19:31:39+00:00
 draft: false
 title: SEPIC Converters
 type: page
-url: /electronics/components/power-regulators/sepic-converters
+
 ---
 
 [mathjax]

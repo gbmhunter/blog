@@ -4,7 +4,7 @@ date: 2015-11-30 03:00:39+00:00
 draft: false
 title: D-Subminiature (D-sub)
 type: page
-url: /electronics/components/connectors/d-subminiature-d-sub
+
 ---
 
 # Overview

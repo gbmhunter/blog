@@ -4,7 +4,7 @@ date: 2015-11-22 23:38:32+00:00
 draft: false
 title: Flux
 type: page
-url: /electronics/tools/flux
+
 ---
 
 # Overview

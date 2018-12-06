@@ -4,7 +4,7 @@ date: 2016-05-10 00:54:01+00:00
 draft: false
 title: TVS Diodes
 type: page
-url: /electronics/components/diodes/tvs-diodes
+
 ---
 
 # Overview

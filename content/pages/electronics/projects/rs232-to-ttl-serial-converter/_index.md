@@ -4,7 +4,7 @@ date: 2011-09-06 06:50:01+00:00
 draft: false
 title: RS232 To TTL Serial Converter
 type: page
-url: /electronics/projects/rs232-to-ttl-serial-converter
+
 ---
 
 Start Date: Jan 2011

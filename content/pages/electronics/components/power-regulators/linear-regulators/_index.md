@@ -4,7 +4,7 @@ date: 2014-11-09 03:57:49+00:00
 draft: false
 title: Linear Regulators
 type: page
-url: /electronics/components/power-regulators/linear-regulators
+
 ---
 
 # Overview

@@ -4,7 +4,7 @@ date: 2014-01-15 07:58:16+00:00
 draft: false
 title: Backlit PCB Stencil
 type: page
-url: /electronics/projects/backlit-pcb-stencil
+
 ---
 
 # Stats

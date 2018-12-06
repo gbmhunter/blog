@@ -4,7 +4,7 @@ date: 2011-09-05 06:08:53+00:00
 draft: false
 title: Proximity Sensors
 type: page
-url: /electronics/components/sensors/proximity-sensors
+
 ---
 
 # Overview

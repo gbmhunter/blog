@@ -4,7 +4,7 @@ date: 2015-02-18 02:18:04+00:00
 draft: false
 title: BLE112/BLE113 Design Guide
 type: page
-url: /electronics/components/bluetooth/ble112ble113-design-guide
+
 ---
 
 # UART And USB

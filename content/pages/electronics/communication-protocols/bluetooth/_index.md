@@ -4,7 +4,7 @@ date: 2015-01-03 01:30:49+00:00
 draft: false
 title: Bluetooth
 type: page
-url: /electronics/communication-protocols/bluetooth
+
 ---
 
 # Logo

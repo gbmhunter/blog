@@ -4,7 +4,7 @@ date: 2013-10-09 03:00:45+00:00
 draft: false
 title: Satellite Modems
 type: page
-url: /electronics/components/satellite-modems
+
 ---
 
 # Overview

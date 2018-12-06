@@ -4,7 +4,7 @@ date: 2015-08-16 23:07:55+00:00
 draft: false
 title: Xilinx 7 Series Design Guide
 type: page
-url: /electronics/components/fpgas/xilinx-7-series-design-guide
+
 ---
 
 # Overview

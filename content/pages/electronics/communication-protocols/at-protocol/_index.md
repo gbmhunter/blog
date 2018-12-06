@@ -4,7 +4,7 @@ date: 2014-08-13 21:04:28+00:00
 draft: false
 title: AT Protocol
 type: page
-url: /electronics/communication-protocols/at-protocol
+
 ---
 
 # Overview

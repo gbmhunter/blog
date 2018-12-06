@@ -4,7 +4,7 @@ date: 2011-09-03 02:16:14+00:00
 draft: false
 title: H-Bridges (and Half-Bridges)
 type: page
-url: /electronics/circuit-design/h-bridges
+
 ---
 
 # Overview

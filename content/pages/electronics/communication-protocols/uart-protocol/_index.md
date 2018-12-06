@@ -4,7 +4,7 @@ date: 2011-09-12 05:52:05+00:00
 draft: false
 title: UART Protocol
 type: page
-url: /electronics/communication-protocols/uart-protocol
+
 ---
 
 # Overview

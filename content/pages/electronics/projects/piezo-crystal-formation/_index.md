@@ -4,7 +4,7 @@ date: 2012-08-04 22:54:21+00:00
 draft: false
 title: Piezo Crystal Formation
 type: page
-url: /electronics/projects/piezo-crystal-formation
+
 ---
 
 Start Date: June 2012

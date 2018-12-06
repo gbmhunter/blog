@@ -4,7 +4,7 @@ date: 2012-01-05 03:50:31+00:00
 draft: false
 title: Crystals
 type: page
-url: /electronics/components/timing/crystals
+
 ---
 
 # Overview

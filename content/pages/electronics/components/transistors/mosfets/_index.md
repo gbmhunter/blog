@@ -4,7 +4,7 @@ date: 2011-09-03 02:23:53+00:00
 draft: false
 title: MOSFET's
 type: page
-url: /electronics/components/transistors/mosfets
+
 ---
 
 # Overview

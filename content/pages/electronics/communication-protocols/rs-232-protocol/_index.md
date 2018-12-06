@@ -4,7 +4,7 @@ date: 2015-10-29 02:55:58+00:00
 draft: false
 title: RS-232 Protocol
 type: page
-url: /electronics/communication-protocols/rs-232-protocol
+
 ---
 
 # Overview

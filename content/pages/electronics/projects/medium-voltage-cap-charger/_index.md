@@ -4,7 +4,7 @@ date: 2012-07-24 05:43:55+00:00
 draft: false
 title: Medium-Voltage Cap Charger
 type: page
-url: /electronics/projects/medium-voltage-cap-charger
+
 ---
 
 Project Start Date: March 2006

@@ -4,7 +4,7 @@ date: 2017-07-18 00:06:40+00:00
 draft: false
 title: High-Level Data Link Control (HDLC)
 type: page
-url: /electronics/communication-protocols/high-level-data-link-control-hdlc
+
 ---
 
 # Overview

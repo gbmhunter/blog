@@ -4,7 +4,7 @@ date: 2014-06-16 22:12:14+00:00
 draft: false
 title: RF Shields
 type: page
-url: /electronics/components/rf-shields
+
 ---
 
 # Overview

@@ -4,7 +4,7 @@ date: 2011-09-05 06:13:21+00:00
 draft: false
 title: Solar Cells
 type: page
-url: /electronics/components/solar-cells
+
 ---
 
 # The Peak Power Point

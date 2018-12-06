@@ -4,7 +4,7 @@ date: 2012-10-25 21:44:23+00:00
 draft: false
 title: Snubber Circuits
 type: page
-url: /electronics/circuit-design/snubber-circuits
+
 ---
 
 # RC Snubber

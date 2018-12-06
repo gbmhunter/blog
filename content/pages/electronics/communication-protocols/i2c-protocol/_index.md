@@ -4,7 +4,7 @@ date: 2011-09-03 02:17:06+00:00
 draft: false
 title: I2C Protocol
 type: page
-url: /electronics/communication-protocols/i2c-protocol
+
 ---
 
 # Overview

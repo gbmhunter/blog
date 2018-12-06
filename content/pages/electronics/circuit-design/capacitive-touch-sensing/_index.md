@@ -4,7 +4,7 @@ date: 2012-01-09 09:49:05+00:00
 draft: false
 title: Capacitive Touch Sensing
 type: page
-url: /electronics/circuit-design/capacitive-touch-sensing
+
 ---
 
 # Overview

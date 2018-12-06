@@ -4,7 +4,7 @@ date: 2011-09-03 02:13:25+00:00
 draft: false
 title: ESD Protection
 type: page
-url: /electronics/circuit-design/esd-protection
+
 ---
 
 # Overview

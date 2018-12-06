@@ -4,7 +4,7 @@ date: 2011-09-05 06:11:24+00:00
 draft: false
 title: DPOT's
 type: page
-url: /electronics/components/dpots
+
 ---
 
 # Overview

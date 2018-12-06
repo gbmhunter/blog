@@ -4,7 +4,7 @@ date: 2012-08-06 00:02:09+00:00
 draft: false
 title: Digital Logic
 type: page
-url: /electronics/circuit-design/digital-logic
+
 ---
 
 # Overview

@@ -4,7 +4,7 @@ date: 2011-09-05 06:36:55+00:00
 draft: false
 title: Altium Simulation
 type: page
-url: /electronics/general/altium/altium-simulation
+
 ---
 
 # Overview

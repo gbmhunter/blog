@@ -4,7 +4,7 @@ date: 2014-11-29 06:07:27+00:00
 draft: false
 title: Columbus Radio
 type: page
-url: /electronics/projects/columbus-radio
+
 ---
 
 # The Idea...

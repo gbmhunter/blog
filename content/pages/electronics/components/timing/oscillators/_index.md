@@ -4,7 +4,7 @@ date: 2015-12-17 01:21:25+00:00
 draft: false
 title: Oscillators
 type: page
-url: /electronics/components/timing/oscillators
+
 ---
 
 # Overview

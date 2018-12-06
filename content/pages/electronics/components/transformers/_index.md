@@ -4,7 +4,7 @@ date: 2013-02-24 20:32:13+00:00
 draft: false
 title: Transformers
 type: page
-url: /electronics/components/transformers
+
 ---
 
 # Transformation Ratio

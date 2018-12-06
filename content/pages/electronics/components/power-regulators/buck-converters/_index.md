@@ -4,7 +4,7 @@ date: 2015-03-24 08:49:10+00:00
 draft: false
 title: Buck Converters
 type: page
-url: /electronics/components/power-regulators/buck-converters
+
 ---
 
 # Overview

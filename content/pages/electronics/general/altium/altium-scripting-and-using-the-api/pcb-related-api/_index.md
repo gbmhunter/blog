@@ -4,7 +4,7 @@ date: 2015-04-28 09:33:15+00:00
 draft: false
 title: PCB-Related API
 type: page
-url: /electronics/general/altium/altium-scripting-and-using-the-api/pcb-related-api
+
 ---
 
 # Overview

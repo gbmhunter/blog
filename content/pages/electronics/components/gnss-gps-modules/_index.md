@@ -4,7 +4,7 @@ date: 2013-10-25 00:02:57+00:00
 draft: false
 title: GNSS (GPS) Modules
 type: page
-url: /electronics/components/gnss-gps-modules
+
 ---
 
 # Terminology

@@ -4,7 +4,7 @@ date: 2015-10-13 05:02:51+00:00
 draft: false
 title: Peltiers (Thermoelectric Cooler)
 type: page
-url: /electronics/components/peltiers-thermoelectric-cooler
+
 ---
 
 # Overview

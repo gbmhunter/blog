@@ -4,7 +4,7 @@ date: 2013-06-24 05:41:01+00:00
 draft: false
 title: Potentiometers
 type: page
-url: /electronics/components/potentiometers
+
 ---
 
 # Overview

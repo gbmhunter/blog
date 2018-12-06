@@ -4,7 +4,7 @@ date: 2014-06-24 22:44:43+00:00
 draft: false
 title: Comparators
 type: page
-url: /electronics/components/comparators
+
 ---
 
 # Overview

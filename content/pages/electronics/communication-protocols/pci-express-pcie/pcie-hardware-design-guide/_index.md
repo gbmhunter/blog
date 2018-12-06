@@ -4,7 +4,7 @@ date: 2015-08-10 04:34:54+00:00
 draft: false
 title: PCIe Hardware Design Guide
 type: page
-url: /electronics/communication-protocols/pci-express-pcie/pcie-hardware-design-guide
+
 ---
 
 # Overview

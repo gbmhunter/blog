@@ -4,7 +4,7 @@ date: 2012-05-14 00:08:16+00:00
 draft: false
 title: Resistors
 type: page
-url: /electronics/components/resistors
+
 ---
 
 # Overview

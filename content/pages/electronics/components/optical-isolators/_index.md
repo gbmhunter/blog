@@ -4,7 +4,7 @@ date: 2015-11-02 03:03:37+00:00
 draft: false
 title: Optical Isolators
 type: page
-url: /electronics/components/optical-isolators
+
 ---
 
 # Schematic Symbol

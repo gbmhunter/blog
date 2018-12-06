@@ -4,7 +4,7 @@ date: 2015-02-16 21:27:48+00:00
 draft: false
 title: AXI Bus
 type: page
-url: /electronics/communication-protocols/axi-bus
+
 ---
 
 # Overview

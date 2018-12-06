@@ -4,7 +4,7 @@ date: 2012-08-20 05:26:07+00:00
 draft: false
 title: Current Sensing
 type: page
-url: /electronics/circuit-design/current-sensing
+
 ---
 
 # Low-Side Current Sensing

@@ -4,7 +4,7 @@ date: 2012-02-10 05:38:26+00:00
 draft: false
 title: OLED Screens
 type: page
-url: /electronics/components/oled-screens
+
 ---
 
 # Overview

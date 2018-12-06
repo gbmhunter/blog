@@ -4,7 +4,7 @@ date: 2015-02-15 23:07:40+00:00
 draft: false
 title: PCI Express (PCIe)
 type: page
-url: /electronics/communication-protocols/pci-express-pcie
+
 ---
 
 # Overview

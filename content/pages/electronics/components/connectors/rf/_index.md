@@ -4,7 +4,7 @@ date: 2015-11-26 22:57:47+00:00
 draft: false
 title: RF
 type: page
-url: /electronics/components/connectors/rf
+
 ---
 
 # Overview

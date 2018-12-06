@@ -4,7 +4,7 @@ date: 2015-07-15 03:08:35+00:00
 draft: false
 title: Logic Familes
 type: page
-url: /electronics/circuit-design/logic-familes
+
 ---
 
 # HSTL

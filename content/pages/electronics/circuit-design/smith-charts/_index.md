@@ -4,7 +4,7 @@ date: 2014-05-01 05:25:57+00:00
 draft: false
 title: Smith Charts
 type: page
-url: /electronics/circuit-design/smith-charts
+
 ---
 
 # Overview

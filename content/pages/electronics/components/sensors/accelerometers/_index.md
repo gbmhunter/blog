@@ -4,7 +4,7 @@ date: 2014-12-11 21:18:35+00:00
 draft: false
 title: Accelerometers
 type: page
-url: /electronics/components/sensors/accelerometers
+
 ---
 
 # Overview

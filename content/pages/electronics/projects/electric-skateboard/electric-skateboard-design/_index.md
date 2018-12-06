@@ -4,7 +4,7 @@ date: 2011-09-06 06:38:10+00:00
 draft: false
 title: Electric Skateboard Design
 type: page
-url: /electronics/projects/electric-skateboard/electric-skateboard-design
+
 ---
 
 # The Skateboard That Started It All...

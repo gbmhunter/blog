@@ -4,7 +4,7 @@ date: 2015-11-01 23:12:52+00:00
 draft: false
 title: DIACs
 type: page
-url: /electronics/components/diodes/diacs
+
 ---
 
 # Overview

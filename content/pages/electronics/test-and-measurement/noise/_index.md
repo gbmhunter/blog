@@ -4,7 +4,7 @@ date: 2013-10-16 09:08:55+00:00
 draft: false
 title: Noise
 type: page
-url: /electronics/test-and-measurement/noise
+
 ---
 
 # Thermal Noise

@@ -4,7 +4,7 @@ date: 2011-09-05 07:21:39+00:00
 draft: false
 title: My Workshop
 type: page
-url: /electronics/general/my-workshop
+
 ---
 
 # Storage

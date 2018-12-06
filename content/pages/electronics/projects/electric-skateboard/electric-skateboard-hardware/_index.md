@@ -4,7 +4,7 @@ date: 2011-09-06 06:34:23+00:00
 draft: false
 title: Electric Skateboard Hardware
 type: page
-url: /electronics/projects/electric-skateboard/electric-skateboard-hardware
+
 ---
 
 This page contains basic stats about all the individual pieces of hardware that went into the construction of the electric skateboard.

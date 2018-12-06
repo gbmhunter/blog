@@ -4,7 +4,7 @@ date: 2012-06-05 15:32:47+00:00
 draft: false
 title: LCD Screens
 type: page
-url: /electronics/components/lcd-screens
+
 ---
 
 # Character LCD Screens

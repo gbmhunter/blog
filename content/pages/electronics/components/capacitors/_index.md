@@ -4,7 +4,7 @@ date: 2011-09-05 06:09:43+00:00
 draft: false
 title: Capacitors
 type: page
-url: /electronics/components/capacitors
+
 ---
 
 # Overview

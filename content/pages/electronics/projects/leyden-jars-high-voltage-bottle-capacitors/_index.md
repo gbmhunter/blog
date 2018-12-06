@@ -4,7 +4,7 @@ date: 2011-09-06 06:45:44+00:00
 draft: false
 title: Leyden Jars (High Voltage Bottle Capacitors)
 type: page
-url: /electronics/projects/leyden-jars-high-voltage-bottle-capacitors
+
 ---
 
 Project Start Date: Dec 2005

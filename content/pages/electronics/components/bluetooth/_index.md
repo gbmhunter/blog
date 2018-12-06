@@ -4,7 +4,7 @@ date: 2014-12-02 01:42:05+00:00
 draft: false
 title: Bluetooth
 type: page
-url: /electronics/components/bluetooth
+
 ---
 
 # Bluetooth 2.1

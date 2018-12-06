@@ -4,7 +4,7 @@ date: 2011-09-05 06:21:29+00:00
 draft: false
 title: Altium Tricks And Standards
 type: page
-url: /electronics/general/altium/altium-tricks-and-standards
+
 ---
 
 # Overview

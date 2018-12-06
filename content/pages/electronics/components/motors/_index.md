@@ -4,7 +4,7 @@ date: 2011-09-03 02:17:41+00:00
 draft: false
 title: Motors
 type: page
-url: /electronics/components/motors
+
 ---
 
 # Brushed DC Motors

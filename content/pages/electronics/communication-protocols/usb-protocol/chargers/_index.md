@@ -4,7 +4,7 @@ date: 2015-03-04 22:31:03+00:00
 draft: false
 title: Chargers
 type: page
-url: /electronics/communication-protocols/usb-protocol/chargers
+
 ---
 
 # Overview

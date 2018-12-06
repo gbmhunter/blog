@@ -4,7 +4,7 @@ date: 2015-01-13 07:21:25+00:00
 draft: false
 title: Inrush Current
 type: page
-url: /electronics/circuit-design/inrush-current
+
 ---
 
 # Overview

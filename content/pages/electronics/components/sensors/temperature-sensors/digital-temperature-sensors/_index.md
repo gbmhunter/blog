@@ -4,7 +4,7 @@ date: 2016-04-19 05:04:34+00:00
 draft: false
 title: Digital Temperature Sensors
 type: page
-url: /electronics/components/sensors/temperature-sensors/digital-temperature-sensors
+
 ---
 
 # Overview

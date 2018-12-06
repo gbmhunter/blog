@@ -4,7 +4,7 @@ date: 2011-09-05 06:38:02+00:00
 draft: false
 title: Altium Rules
 type: page
-url: /electronics/general/altium/altium-rules
+
 ---
 
 # Overview

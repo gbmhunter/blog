@@ -4,7 +4,7 @@ date: 2012-12-14 02:26:10+00:00
 draft: false
 title: Modbus Protocol
 type: page
-url: /electronics/communication-protocols/modbus-protocol
+
 ---
 
 # Overview

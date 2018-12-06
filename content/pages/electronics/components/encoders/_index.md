@@ -4,7 +4,7 @@ date: 2012-09-20 06:13:17+00:00
 draft: false
 title: Encoders
 type: page
-url: /electronics/components/encoders
+
 ---
 
 # Overview

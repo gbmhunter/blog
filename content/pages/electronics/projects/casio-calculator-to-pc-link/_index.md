@@ -4,7 +4,7 @@ date: 2012-07-24 11:31:30+00:00
 draft: false
 title: Casio Calculator To PC Link
 type: page
-url: /electronics/projects/casio-calculator-to-pc-link
+
 ---
 
 Start Date: December 2005

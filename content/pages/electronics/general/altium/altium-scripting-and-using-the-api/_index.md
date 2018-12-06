@@ -4,7 +4,7 @@ date: 2012-02-15 20:26:30+00:00
 draft: false
 title: Altium Scripting And Using The API
 type: page
-url: /electronics/general/altium/altium-scripting-and-using-the-api
+
 ---
 
 # Overview

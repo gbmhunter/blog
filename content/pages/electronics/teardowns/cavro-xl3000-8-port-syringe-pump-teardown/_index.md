@@ -4,7 +4,7 @@ date: 2013-03-03 03:39:19+00:00
 draft: false
 title: Cavro XL-3000 8-port Syringe Pump Teardown
 type: page
-url: /electronics/teardowns/cavro-xl3000-8-port-syringe-pump-teardown
+
 ---
 
 This was an OEM model, so the exact part number of the unit was a little hard to determine. I contacted both Tecan US and Emerald Bio with a request for the Operator's manual. This is the reply I got from Tecan US.

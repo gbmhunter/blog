@@ -4,7 +4,7 @@ date: 2015-10-05 03:39:51+00:00
 draft: false
 title: How To Route USB Tracks
 type: page
-url: /electronics/communication-protocols/usb-protocol/how-to-route-usb-tracks
+
 ---
 
 # Overview

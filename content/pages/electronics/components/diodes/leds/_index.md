@@ -4,7 +4,7 @@ date: 2012-03-15 01:04:38+00:00
 draft: false
 title: LEDs
 type: page
-url: /electronics/components/diodes/leds
+
 ---
 
 # Overview

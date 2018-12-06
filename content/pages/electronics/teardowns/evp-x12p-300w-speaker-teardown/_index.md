@@ -4,7 +4,7 @@ date: 2012-07-09 07:10:27+00:00
 draft: false
 title: EVP-X12P 300W Speaker Teardown
 type: page
-url: /electronics/teardowns/evp-x12p-300w-speaker-teardown
+
 ---
 
 Here is a little teardown of a Wharfedale EVP-X12P 300W active speaker.

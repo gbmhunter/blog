@@ -4,7 +4,7 @@ date: 2011-09-05 06:23:30+00:00
 draft: false
 title: Altium Version Control
 type: page
-url: /electronics/general/altium/altium-version-control
+
 ---
 
 ## Overview

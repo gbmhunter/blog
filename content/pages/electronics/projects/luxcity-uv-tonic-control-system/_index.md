@@ -4,7 +4,7 @@ date: 2012-09-28 05:41:27+00:00
 draft: false
 title: Luxcity UV Tonic Control System
 type: page
-url: /electronics/projects/luxcity-uv-tonic-control-system
+
 ---
 
 * Project Start Date: 27/09/2012  
