@@ -13,14 +13,13 @@
     </div>
     <div>
     <!-- Note that .Pages is the same as .Site.RegularPages on the homepage template. -->
-    {{ with .Site.GetPage "/posts" }}
-        {{ range first 10 .Pages }}
-            <!-- {{ .Render "summary"}} -->
-            <a href="{{ .URL }}" class="post-title"><h1>{{ .Title }}</h1></a>
-            <div class="homepage-post-content nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray">
-                {{ .Content }}
-            </div>
-        {{ end }}
+    <!-- Get the 10 most recent posts, from any section -->
+    {{ range first 10 ( sort (where .Site.RegularPages "Section" "posts") "Date" "desc" ) }}
+        <!-- {{ .Render "summary"}} -->
+        <a href="{{ .URL }}" class="post-title"><h1 class="f1">{{ .Title }}</h1></a>
+        <div class="homepage-post-content nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray">
+            {{ .Content }}
+        </div>
     {{ end }}
     </div>
 </main>
