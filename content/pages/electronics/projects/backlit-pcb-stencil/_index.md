@@ -11,37 +11,21 @@ url: /electronics/projects/backlit-pcb-stencil
 
 <table>
     <tbody >
-        <tr >
-            
-<td >Project Started:
-</td>
-            
-<td >13/12/2013
-</td>
+        <tr>           
+            <td>Project Started:</td>
+            <td>13/12/2013</td>
         </tr>
-        <tr >
-            
-<td >Project Finished:
-</td>
-            
-<td >17/12/2013
-</td>
+        <tr>
+            <td>Project Finished:</td>
+            <td>17/12/2013</td>
         </tr>
-        <tr >
-            
-<td >Time Taken:
-</td>
-            
-<td >Approx. 24 hours
-</td>
+        <tr>
+            <td>Time Taken:</td>
+            <td>Approx. 24 hours</td>
         </tr>
-        <tr >
-            
-<td >Cost:
-</td>
-            
-<td >Approx. NZ$80
-</td>
+        <tr>
+            <td>Cost:</td>
+            <td>Approx. NZ$80</td>
         </tr>
     </tbody>
 </table>
@@ -68,4 +52,4 @@ We has a three-step diffusing method:
 
 # Images
 
-![](/nextgen-attach_to_post/preview/id--6364)
+{{< gallery dir="/images/project-backlitpcbstencil" />}}`

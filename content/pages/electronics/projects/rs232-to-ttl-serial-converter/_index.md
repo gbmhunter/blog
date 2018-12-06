@@ -7,9 +7,9 @@ type: page
 url: /electronics/projects/rs232-to-ttl-serial-converter
 ---
 
-Start Date: Jan 2011
-End Date: Feb 2011
-Status: Completed
+* Start Date: Jan 2011
+* End Date: Feb 2011
+* Status: Completed
 
 These are indespesable when it comes to debugging serial commuincations (unless you are lucky enough to own an oscilloscope that can decode serial data for you). They are really simple to make as essentially voltage converters that convert RS232 logic levels that computers use (±15V) to ttl logic levels (0 and Vcc) which micro-controllers use. The easiest way to do this is by using a chip such as the MAX232.
 
@@ -33,4 +33,4 @@ About 2 hours...
 
 # Images
 
-[nggallery id=7]
+{{< gallery dir="/images/electronics-rs232-to-ttl" />}}

@@ -9,26 +9,26 @@ url: /electronics/projects/electric-skateboard/electric-skateboard-photo-album
 
 # The First Prototype
 
-[nggallery id=32]
+{{< gallery dir="/images/electronics-electricskateboard-firstprototype" />}}
 
 # The Second Prototype
 
-[nggallery id=33]
+{{< gallery dir="/images/electronics-electricskateboard-secondprototype" />}}
 
 # Final Board Photos
 
-## -> Mechanical
+## Mechanical
 
-[nggallery id=34]
+{{< gallery dir="/images/electronics-electricskateboard-final-mech" />}}
 
-## -> PCB
+## PCB
 
-[nggallery id=27]
+{{< gallery dir="/images/electronics-electricskateboard" />}}
 
-## -> Fibreglassing
+## Fibreglassing
 
-[nggallery id=31]
+{{< gallery dir="/images/electronics-electricskateboard-fibreglassing" />}}
 
-## -> Painting
+## Painting
 
-[nggallery id=35]
+{{< gallery dir="/images/electronics-electricskateboard-final-paint" />}}

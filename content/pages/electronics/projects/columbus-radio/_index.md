@@ -169,9 +169,9 @@ I got the great idea to use LEDs to indicate two things, when the power was on, 
 Heartbreakingly I decided to rip them out right then and there before the epoxy set, and start anew. This time I used a tungsten based bulb instead, wrapping it in black cardboard to make up a mount that would fit the original hole.
 
 <table><tbody ><tr >
-<td >{{< figure src="/images/2014/11/columbus-radio-353-new-indicator.jpg" width="276px" caption="Making up a mount for a 12V, 100mA bulb to replace the valve-based indicator."  >}}
+<td >{{< figure src="/images/2014/11/columbus-radio-353-new-indicator.jpg" width="300px" caption="Making up a mount for a 12V, 100mA bulb to replace the valve-based indicator."  >}}
 </td>
-<td >{{< figure src="/images/2014/11/columbus-radio-356-gluing-new-indicator-into-place.jpg" width="273px" caption="Hot-gluing the bulb into the front glass face from the back."  >}}
+<td >{{< figure src="/images/2014/11/columbus-radio-356-gluing-new-indicator-into-place.jpg" width="300px" caption="Hot-gluing the bulb into the front glass face from the back."  >}}
 </td></tr></tbody></table>
 
 ## User Interface Inputs
@@ -182,7 +182,7 @@ There are 5 dials on the Columbus radio, The central one is a SPST switch for co
 
 I decided to use the two existing potentiometers to control the volume and to switch to the next track. The volume one is self-explanatory, for the "next track" functionality I had the idea to make it so you just twiddle it in any direction by at least a small threshold amount to get it to go to the next track in the playlist.
 
-{{< figure src="/images/2014/11/columbus-radio-360-wiring-up-a-pot.jpg" width="379px" caption="Wiring up from the RaspberryPi daughter board to an existing potentiometer on the Columbus radio. This one was used for volume control."  >}}
+{{< figure src="/images/2014/11/columbus-radio-360-wiring-up-a-pot.jpg" width="600px" caption="Wiring up from the RaspberryPi daughter board to an existing potentiometer on the Columbus radio. This one was used for volume control."  >}}
 
 ## RaspberryPi Daughter Board
 
@@ -198,7 +198,7 @@ For this reason, I had to **craft a daughter board**. I used a piece of strip-bo
 
 The layout of the GPIO on the RaspberryPi is shown below.
 
-{{< figure src="/images/2014/11/raspberry-pi-gpio-layout-model-b-plus-800.jpg" width="157px" caption="The GPIO header layout of the RaspberryPi B+. Image from http://www.raspberrypi-spy.co.uk/2014/07/raspberry-pi-b-gpio-header-details-and-pinout/."  >}}
+{{< figure src="/images/2014/11/raspberry-pi-gpio-layout-model-b-plus-800.jpg" width="300px" caption="The GPIO header layout of the RaspberryPi B+. Image from http://www.raspberrypi-spy.co.uk/2014/07/raspberry-pi-b-gpio-header-details-and-pinout/."  >}}
 
 The following table shows what GPIO header pins I decided to use and what they are connected up to on the daughter board (the circuit was so simple I didn't think it warranted actual schematics been drawn up):
 
@@ -258,7 +258,7 @@ The **RaspberryPi doesn't have any ADC's**, so I had to use the popular **MCP300
 
 Here is a photo of the completed daughter board:
 
-{{< figure src="/images/2014/11/columbus-radio-330-populated-daughter-board.jpg" width="437px" caption="The completed daughter board."  >}}
+{{< figure src="/images/2014/11/columbus-radio-330-populated-daughter-board.jpg" width="600px" caption="The completed daughter board." >}}
 
 # The Software
 
@@ -266,19 +266,19 @@ Note: All software for the Columbus radio project can be found on GitHub at [ht
 
 [Volumio](http://volumio.org/) was easy to install. The Volumio v1.51 (the most recent as of 2014-12-29) image was downloaded and then written to a SD card. When the RaspberryPi is booted with this SD card and plugged into a router with an ethernet cable, you should be able to visit the Volumio WebUI by navigating to volumio.local/ on your computer's web browser. At this point I changed the name of the 
 
-You can SSH into the volumio platform with the network name columbus (or whatever you changed it to), and both the username and password as volumio (type ssh columbus -l volumio, and then enter in the password volumio when prompted). If you need root access (as I did, to enable the SPI controller), you can use the same credentials as above, except replace the username with root.
+You can SSH into the volumio platform with the network name columbus (or whatever you changed it to), and both the username and password as volumio (type `ssh columbus -l volumio`, and then enter in the password `volumio` when prompted). If you need root access (as I did, to enable the SPI controller), you can use the same credentials as above, except replace the username with root.
 
 The wireless was easy to setup and was working as soon as the SSID and password was entered via LAN connection. I could even change WiFi dongles and not have to re-enter this information.
 
 Getting SPI working was more difficult. When running lsmod on the default volumio install it listed spi-bcm2708 but no spi-dev (this didn't turn out to be an issue in the end, even though online tutorials suggest that spi-dev has to be present before the SPI will work).
 
-I ran apt-get update and apt-get -y upgrade.
+I ran `apt-get update` and `apt-get -y upgrade`.
 
 {{< figure src="/images/2014/11/volumio-sudo-upgrade-screenshot.png" width="568px" caption="Part-way through the sudo -y upgrade process on the volumio."  >}}
 
 modprobe spidev seemed to run o.k. with no errors. It wasn't listed under lsmod, but I could see the two SPI devices in /dev (run ls /dev).
 
-Installing the spidev python module with python setup.py install. It gave me the error 
+Installing the spidev python module with `python setup.py install`. It gave me the error 
     
 ```sh
 spidev_module.c:20:20: fatal error: Python.h: No such file or directory
@@ -323,12 +323,12 @@ sudo reboot
 
 However, nothing seemed to fix it. I ended up having to reflash the SD card and start again.
 
-Maybe the apt-get -y upgrade command is screwing things over, I noticed this as part of it's long, long output.
+Maybe the `apt-get -y upgrade` command is screwing things over, I noticed this as part of it's long, long output.
     
-    ```sh
-    Checking init scripts...
-    WARNING: init script for nginx not found.
-    ```
+```sh
+Checking init scripts...
+WARNING: init script for nginx not found.
+```
 
  There is also this message, in where I choose "N" (keep currently-installed version).
     
@@ -346,15 +346,15 @@ Configuration file '/etc/monit/monitrc'
     
 So I had to reflash again. At which point the OS wouldn't even boot. Some issue with the SD card image?
 
-Fixed! Had to clone all the files from the Volumio git repository back into /var/www. Volumio then prompted that there were updated available, and would you like to upgrade. After clicking yes, we were back to normal!
+Fixed! Had to clone all the files from the Volumio git repository back into `/var/www`. Volumio then prompted that there were updated available, and would you like to upgrade. After clicking yes, we were back to normal!
 
-Also tried sudo rpi-update (and then a reboot). This also didn't work.
+Also tried `sudo rpi-update` (and then a reboot). This also didn't work.
 
 ## The Way That Worked
 
 So I gave up on sudo apt-get update, and  apt-get -y upgrade as they seemed to break the Volumio Web UI. Given I couldn't run the proper SPI code without running that command, I luckily discovered a bit-banged python code module ([https://learn.adafruit.com/reading-a-analog-in-and-controlling-audio-volume-with-the-raspberry-pi/script](https://learn.adafruit.com/reading-a-analog-in-and-controlling-audio-volume-with-the-raspberry-pi/script)) that can talk to the MCP3008.
 
-I also found instruction on how to install the python RPi.GPIO module without having to use sudo apt-get install python (which required the sudo apt-get update  call first).
+I also found instruction on how to install the python RPi.GPIO module without having to use `sudo apt-get install python` (which required the `sudo apt-get update` call first).
     
 ```sh
 wget http://sourceforge.net/projects/raspberry-gpio-python/files/raspbian-wheezy/python-rpi.gpio_0.5.8-1_armhf.deb
@@ -378,7 +378,12 @@ rsync -avz /home/gbmhunter/GoogleDrive/Projects/ColumbusRadio/repo root@columbus
 
 Volumio took care of the web interface, but I still needed some code to control the dials and bulb. I decided to use Python as there was no compiling needed and it's allows for pretty quick development.
 
-I originally went for a basic mega main-loop code architecture. The basic tasks I had to perform were:  * Read the ADC values from the MCP3008 to find out where the two potentiometer's are. Implement filtering and thresholding for these values to prevent false triggering and jitter. Based on these readings, send the appropriate commands to Volumio to change the volume and skip to the next track.  * Regularly check for an internet connection, and start flashing the UI bulb if no internet connectivity is found.{{< figure src="/images/2014/11/columbus-radio-430-screenshot-of-python-hardware-ui-code.png" width="630px" caption="Screenshot of part of the Python 'hardware UI' script."  >}}
+I originally went for a basic mega main-loop code architecture. The basic tasks I had to perform were:
+
+ * Read the ADC values from the MCP3008 to find out where the two potentiometer's are. Implement filtering and thresholding for these values to prevent false triggering and jitter. Based on these readings, send the appropriate commands to Volumio to change the volume and skip to the next track.
+ * Regularly check for an internet connection, and start flashing the UI bulb if no internet connectivity is found.
+ 
+ {{< figure src="/images/2014/11/columbus-radio-430-screenshot-of-python-hardware-ui-code.png" width="630px" caption="Screenshot of part of the Python 'hardware UI' script."  >}}
 
 Note that the complete hardware UI code can be found in the [GitHub ColumbusRadio repo](https://github.com/mbedded-ninja/ColumbusRadio) at hardware-ui/hardware-ui.py.
 

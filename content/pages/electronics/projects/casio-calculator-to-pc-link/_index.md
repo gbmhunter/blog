@@ -7,9 +7,9 @@ type: page
 url: /electronics/projects/casio-calculator-to-pc-link
 ---
 
-Start Date: December 2005
-End Date: April 2006
-Status: Completed
+* Start Date: December 2005
+* End Date: April 2006
+* Status: Completed
 
 # What Is It?
 
@@ -21,4 +21,4 @@ I made this with the idea I could make more of them and sell them for a profit. 
 
 # Gallery
 
-[nggallery id=41]
+{{< gallery dir="/images/electronics-calctopclink" />}}

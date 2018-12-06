@@ -9,7 +9,7 @@ url: /electronics/projects/electric-skateboard/electric-skateboard-design
 
 # The Skateboard That Started It All...
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/first-skateboard-top-view.jpg" caption="Top view of the first skateboard."  width="400px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/first-skateboard-top-view.jpg" caption="Top view of the first skateboard."  width="600px" >}}
 
 I brought this electric skateboard of a friend for NZ$20. This is what started my craze to build something better, faster, harder, stronger (did I get that in the right order?). This board comes fitted with a 120W brushed DC motor, which does get you places, but not quickly. It is powered by two 12V lead-acid batteries, which make it quite heavy. I managed to get about 5-6km from this board before it would crap out, leaving me to drag the thing the rest of the way home. Admittedly, the batteries weren't in the best of condition, being many years old and having no charge/discharge activity in a long time. It's operated by pressing down on a big button with your foot on the top of the board (it has one speed and one speed only).
 
@@ -39,7 +39,7 @@ The first thing to do was to find a new motor. The motor could possibly be the s
 
 A skateboard requires a fairly powerful motor (in a non-commercial sense). The NZ$20 second-hand el-cheapo china skateboard mentioned above barely made it to 20km/h after 10 seconds at full throttle. Some of the more powerful commercial ones have a 500-800W motor on-board. Every single board I saw used a brushed DC motor (BDC). These are simple to control, but wear out faster and more importantly have a small power-to-weight ratio.
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6210.jpg" caption="A supposedly '3kW' BLDC motor I got from Hobby King."  width="400px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6210.jpg" caption="A supposedly '3kW' BLDC motor I got from Hobby King."  width="600px" >}}
 
 I decided to use the brushless DC (BLDC) motor shown above. BLDC motors have an awesome power-to-weight ratio and high efficiency (90%+), which will extend the distance the board can travel. This is at the expensive of being slightly harder to control (see the page [BLDC Motor Control](/electronics/circuit-design/bldc-motor-control) for more on that).
 
@@ -47,17 +47,17 @@ I decided to use the brushless DC (BLDC) motor shown above. BLDC motors have an 
 
 Designing a control system for a BLDC motor is not trivial, so I decided to use an off-the-shelf ESC (electronic speed controller).
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/bldc-esc-size-comparison.jpg" caption="A size comparison of the BLDC ESC (electronic speed controller)."  width="400px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/bldc-esc-size-comparison.jpg" caption="A size comparison of the BLDC ESC (electronic speed controller)." width="600px" >}}
 
 # Battery
 
 I decided to get a 29.6V, 5800mAh Li-Po (full details on the Hardware page). This gives it 171.68Wh's of energy (it can supply 172W for 1 hour, or 343W for 30mins e.t.c).
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6221.jpg" caption="A lithium-ion polymer battery from Hobby King."  width="400px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6221.jpg" caption="A lithium-ion polymer battery from Hobby King."  width="600px" >}}
 
 I also got this multi-chemistry battery charger shown below to charge it.
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6228.jpg" caption="A multi-chemistry battery charger from Hobby King."  width="400px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6228.jpg" caption="A multi-chemistry battery charger from Hobby King."  width="600px" >}}
 
 # Wheels And Axles
 
@@ -95,21 +95,15 @@ The drive cog was brought from the same place as the wheels and axles. Fortunate
 
 The motor mount on the rear axle was not designed for the BLDC motor (it was designed for a larger 800W brushed motor). To fix the motor in the correct position I had to drill new holes in the mount. Luckily, the BLDC motor came with it's own mounting bracket, and even luckier was that it fitted quite nicely inside the original motor mount, needing minimal modifications. Notice the difference in size between the expected motor and the BLDC! And note that this smaller motor is 4-5 times more powerful, and lighter (ahem, as "they" quote, keep reading to find out why this figures may be wrong)!
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6314.jpg" caption="The BLDC motor mounted onto the electric skateboards axle."  width="400px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6314.jpg" caption="The BLDC motor mounted onto the electric skateboards axle."  width="600px" >}}
 
 # The Prototype Motherboard
 
 The first prototype control circuitry (aka motherboard), was assembled on strip-board. I used an ATmega8L-8PC microcontroller since the [DIP package](http://localhost/?q=node/50) makes it easy to hand solder into strip board, requiring no breakout PCB.
-<table>
-<tbody >
-<tr >
-<td >{{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0136.jpg" caption="The first electric skateboard prototype circuit."  width="400px" >}}
-</td>
-<td >{{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0138.jpg" caption="The first electric skateboard prototype circuit up close."  width="400px" >}}
-</td>
-</tr>
-</tbody>
-</table>
+
+{{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0136.jpg" caption="The first electric skateboard prototype circuit." width="600px" >}}
+
+{{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0138.jpg" caption="The first electric skateboard prototype circuit up close."  width="600px" >}}
 
 # Wireless Control
 
@@ -131,11 +125,11 @@ The first wireless controller looked awesome, if your a prototyping geek like me
 
 I needed to measure the RPM range of the motor to work out what gearing I needed between the motor and the wheel. To do this I glued a section of KNEX (basically a plastic rod) onto the rotor and placed an infrared emitting diode and transistor either side of the KNEX.
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/rpm-counter-01.jpg" caption="A bit of KNEX was glued onto the motor to interrupt the infrared beam twice per revolution.,"  width="400px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/rpm-counter-01.jpg" caption="A bit of KNEX was glued onto the motor to interrupt the infrared beam twice per revolution." width="600px" >}}
 
 When the motor spun, the infrared transistor would essentially switch from 'off' to 'on' when the beam was blocked by the KNEX. This happened twice per revolution and I could measure this on my oscilloscope. The infrared diode and transistor set-up to the left of the motor. My old-school oscilloscope picking up the rod cutting the infrared beam twice per revolution.
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/rpm-counter-02.jpg" caption="The RPM counter output on the oscilloscope."  width="400px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/rpm-counter-02.jpg" caption="The RPM counter output on the oscilloscope." width="600px" >}}
 
 Table showing the calculations for working out the maximum and minimum rpm of the motor.
 
@@ -155,17 +149,17 @@ The remote uses far less power than the board, and is largely consumed by the co
 
 # Electric Skateboard v1.0
 
-{{< figure src="/images/electronics-electricskateboard-secondprototype/2012-01-29-13-55-47.jpg" caption="Drilling holes in a plank of wood to attach the axles to a test skateboard."  width="150px" >}}
+{{< figure src="/images/electronics-electricskateboard-secondprototype/2012-01-29-13-55-47.jpg" caption="Drilling holes in a plank of wood to attach the axles to a test skateboard."  width="600px" >}}
 
 The test board was to make sure the basic principle worked, and to make sure I hadn't done something fundamentally wrong such as brought motor that was utterly too small or wheels/gear-ratio combo that wouldn't work properly. The mechanical part was as simple as mounting the axles onto a piece of MDF.
 
 The proto-type electronics were stuck onto the top, and after lots of testing and debugging, I finally managed to get it moving! With code bugs and problems using the RC trigger pot, I wasn't able to get the electric skateboard up to full speed, but I still managed to break the 30km/h mark. The [ESC](http://localhost/?q=content/hardware) got damn hot! This may need heatsinking in the future...
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6323.jpg" caption=" "  width="400px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6323.jpg" width="600px" >}}
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6338.jpg" caption=" "  width="400px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/img_6338.jpg" width="600px" >}}
 
-{{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0138.jpg" caption="The first electric skateboard prototype circuit up close."  width="400px" >}}
+{{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0138.jpg" caption="The first electric skateboard prototype circuit up close." width="600px" >}}
 
 After fixing up the code, it was time to take the board a little further down the road. I decided to heatsink the ESC to the trucks after discovering it was burning hot after the last test. I covered the heatsink side of the [ESC](http://localhost/?q=content/hardware) with heat transfer compound and duct taped it securely to the rear truck.
 

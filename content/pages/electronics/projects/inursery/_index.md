@@ -90,59 +90,32 @@ Here are the measurements...
 			<th>Conditions</th>
 		</tr>
 	</thead>
-<tbody>
-	<tr>
-			
-<td colspan="3" >**Cooling**
-</td>
+	<tbody>
+		<tr>
+			<td colspan="3" ><b>Cooling</b></td>
 		</tr>
-		<tr >
-			
-<td >Max
-</td>
-<td >Unknown
-</td>
-			
-<td >
-</td>
+		<tr>
+			<td >Max</td>
+			<td >Unknown</td>
+			<td ></td>
 		</tr>
-		<tr >
-			
-<td >Stabilised
-</td>
-			
-<td >12V, 4.20A = 50W
-</td>
-			
-<td >Internal Temp = 12C (ambient = 23C)
-</td>
+		<tr>
+			<td>Stabilised</td>
+			<td >12V, 4.20A = 50W</td>
+			<td >Internal Temp = 12C (ambient = 23C)</td>
 		</tr>
-		<tr >
-			
-<td colspan="3" >**Heating**
-</td>
+		<tr>
+			<td colspan="3" ><b>Heating</b></td>
 		</tr>
-		<tr >
-			
-<td >Max
-</td>
-			
-<td >12V, 4.95A = 59W
-</td>
-			
-<td >
-</td>
+		<tr>
+			<td>Max</td>
+			<td >12V, 4.95A = 59W</td>
+			<td></td>
 		</tr>
-		<tr >
-			
-<td >Stabilised
-</td>
-			
-<td >12V, 3.70A = 44W
-</td>
-			
-<td >Internal Temp = 40C (ambient = 23C)
-</td>
+		<tr>
+			<td>Stabilised</td>
+			<td >12V, 3.70A = 44W</td>
+			<td >Internal Temp = 40C (ambient = 23C)</td>
 		</tr>
 	</tbody>
 </table>
@@ -350,4 +323,4 @@ If I ever made another version of improved this one, I probably would:
 
 # Gallery
 
-![](/nextgen-attach_to_post/preview/id--6150)
+{{< gallery dir="/images/project-inursery" />}}

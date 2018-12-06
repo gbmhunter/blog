@@ -1,7 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-06 06:55:10+00:00
-draft: false
+date: 2011-09-06
 title: Santa Alarm
 type: page
 url: /electronics/projects/santa-alarm
@@ -24,10 +23,10 @@ I'm in no way a morning person. This alarm is was designed to get me out of bed 
 
 ## Time
 
-Start Date: 08/01/2011
-Finish Date: 09/01/2011
-Total Time: About 6 hours...
+* Start Date: 08/01/2011
+* Finish Date: 09/01/2011
+* Total Time: About 6 hours...
 
 ## Images
 
-[nggallery id=8]
+{{< gallery dir="/images/electronics-santa-alarm" />}}

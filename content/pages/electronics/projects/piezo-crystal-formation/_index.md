@@ -43,4 +43,4 @@ If you want more information about piezos and their use in electronics, see the 
 
 # Picture Gallery
 
-[nggallery id=43]
+{{< gallery dir="/images/electronics-piezocrystalformation" />}}

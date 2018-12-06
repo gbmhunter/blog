@@ -40,14 +40,12 @@ The repo for this project can be found on [BitBucket](https://bitbucket.org/) at
 
 ## 8x FreeTronics 8-Channel Relay Driver Shields
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/arduino-8-ch-relay-channel-02.jpg" caption="The Freetronics 8-channel relay driver shield for the Arduino."  width="250px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/arduino-8-ch-relay-channel-02.jpg" caption="The Freetronics 8-channel relay driver shield for the Arduino." width="250px" >}}
 
 * Manufacturer: [Freetronics](http://www.freetronics.com/)  
-* Store URL: [http://www.freetronics.com/products/relay8-8-channel-relay-driver-shield  
-
- ](http://www.freetronics.com/products/relay8-8-channel-relay-driver-shield)Datasheet: [https://github.com/freetronics/RelayDriverShield8/blob/master/RelayDriverShield8.pdf](https://github.com/freetronics/RelayDriverShield8/blob/master/RelayDriverShield8.pdf)[  
-
- ](http://www.freetronics.com/products/relay8-8-channel-relay-driver-shield)Supplier: NiceGear
+* Store URL: <http://www.freetronics.com/products/relay8-8-channel-relay-driver-shield>
+* Datasheet: <https://github.com/freetronics/RelayDriverShield8/blob/master/RelayDriverShield8.pdf>
+* Supplier: NiceGear
 
 The I2C controlled shield provides 8 outputs that can drive standard relays. Being I2C controlled, it only uses 2-pins of the Ardunio. Luckily, the I2C address settings are 3-bit, meaning I could just control all 8 from a single I2C line. The boards feature the MCP23017 I2C expander IC ([datasheet](http://ww1.microchip.com/downloads/en/DeviceDoc/21952b.pdf)).
 
@@ -55,12 +53,12 @@ The I2C controlled shield provides 8 outputs that can drive standard relays. Bei
 
 ## 64x SPDT 12V Relays
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/64-12v-relays.jpg" caption="64 12V relays."  width="320px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/64-12v-relays.jpg" caption="64 12V relays." width="500px" >}}
 
 * Manufacturer: Zhejiang Dongya Electric Co. Ltd.
 * Supplier: [NiceGear](http://nicegear.co.nz/)
-* Supplier Link: [http://nicegear.co.nz/components/relay-spdt-sealed/](http://nicegear.co.nz/components/relay-spdt-sealed/)
-* Datasheet: ([click here](http://www.sparkfun.com/datasheets/Components/General/JZC-11F-05VDC-1Z%20EN.pdf))[](http://nicegear.co.nz/components/relay-spdt-sealed/)
+* Supplier Link: <http://nicegear.co.nz/components/relay-spdt-sealed/>
+* Datasheet: [click here](http://www.sparkfun.com/datasheets/Components/General/JZC-11F-05VDC-1Z%20EN.pdf)
 * Rated Coil Load: 12V @ 37.5mA  
 * Coil Resistance: 320Ω  
 * Minimum Coil Load: 5V @ 10mA
@@ -103,7 +101,6 @@ I decided to use the Ardunio development environment for speed, simplicity, and 
 * Product: TomaHawk2 500W ATX2.2 PSU
 * Supplier: [MightyApe](http://www.mightyape.co.nz/)
 * Product Page: [click here](http://www.mightyape.co.nz/product/ENERMAX-TOMAHAWK2-500W-ATX22-PSU/19760193/)
-
 * Total Continuous Rated Power: 500W  
 * Output Voltages: 12Vx2, 5V, 3.3V, -12V
 
@@ -125,7 +122,7 @@ The LCD screen was one of easiest parts of this project to setup. Built in libra
 
 ## Vixen Software
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-software-logo.jpg" caption="The Vixen software logo. Image from http://www.vixenlights.com."  width="100px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-software-logo.jpg" caption="The Vixen software logo. Image from http://www.vixenlights.com."  width="300px" >}}
 
 * URL: [http://www.vixenlights.com/](http://www.vixenlights.com/)
 * License: Closed-source, free to use.
@@ -576,6 +573,4 @@ The firmware can be found in the project repo under 'src' on [BitBucket](https:/
 ```
 # Gallery
 
-> click any image below to start a slideshow-like gallery view
-
-![](/nextgen-attach_to_post/preview/id--4816)
+{{< gallery dir="/images/electronics-luxcityuvtoniccontrolsystem" />}}
