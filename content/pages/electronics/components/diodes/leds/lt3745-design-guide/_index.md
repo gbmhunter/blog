@@ -3,7 +3,7 @@ author: gbmhunter
 date: 2013-11-12 08:02:53+00:00
 title: LT3745 Design Guide
 type: page
-
+url: /electronics/components/diodes/leds/lt3745-design-guide
 ---
 
 [mathjax]

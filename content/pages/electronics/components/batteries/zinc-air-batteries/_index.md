@@ -4,7 +4,7 @@ date: 2015-05-11 00:23:30+00:00
 draft: false
 title: Zinc-air Batteries
 type: page
-
+url: /electronics/components/batteries/zinc-air-batteries
 ---
 
 # Overview

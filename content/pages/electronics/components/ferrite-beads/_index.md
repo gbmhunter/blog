@@ -4,7 +4,7 @@ date: 2013-09-19 04:23:00+00:00
 draft: false
 title: Ferrite Beads
 type: page
-
+url: /electronics/components/ferrite-beads
 ---
 
 # Overview

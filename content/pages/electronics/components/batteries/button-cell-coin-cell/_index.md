@@ -4,7 +4,7 @@ date: 2014-11-04 01:44:11+00:00
 draft: false
 title: Button Cell (Coin Cell)
 type: page
-
+url: /electronics/components/batteries/button-cell-coin-cell
 ---
 
 # Overview

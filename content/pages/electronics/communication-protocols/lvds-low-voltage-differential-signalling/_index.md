@@ -4,7 +4,7 @@ date: 2017-08-21 18:36:20+00:00
 draft: false
 title: LVDS (Low-Voltage Differential Signalling)
 type: page
-
+url: /electronics/communication-protocols/lvds-low-voltage-differential-signalling
 ---
 
 # Overview

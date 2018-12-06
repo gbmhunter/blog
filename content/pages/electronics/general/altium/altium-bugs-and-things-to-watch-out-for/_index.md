@@ -4,7 +4,7 @@ date: 2012-04-27 00:26:19+00:00
 draft: false
 title: Altium Bugs And Things To Watch Out For
 type: page
-
+url: /electronics/general/altium/altium-bugs-and-things-to-watch-out-for
 ---
 
 # Overview

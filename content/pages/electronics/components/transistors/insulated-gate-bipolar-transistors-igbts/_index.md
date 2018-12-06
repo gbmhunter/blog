@@ -4,7 +4,7 @@ date: 2014-11-30 23:31:38+00:00
 draft: false
 title: Insulated-Gate Bipolar Transistors (IGBTs)
 type: page
-
+url: /electronics/components/transistors/insulated-gate-bipolar-transistors-igbts
 ---
 
 # Overview

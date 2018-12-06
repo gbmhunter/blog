@@ -4,7 +4,7 @@ date: 2016-03-08 04:26:39+00:00
 draft: false
 title: PTC Type Thermistor
 type: page
-
+url: /electronics/components/circuit-protection/ptc-type-thermistor
 ---
 
 # Overview

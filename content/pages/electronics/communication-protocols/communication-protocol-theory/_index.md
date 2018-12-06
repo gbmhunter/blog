@@ -4,7 +4,7 @@ date: 2017-08-30 22:24:30+00:00
 draft: false
 title: Communication Protocol Theory
 type: page
-
+url: /electronics/communication-protocols/communication-protocol-theory
 ---
 
 # Communication Bus Topologies

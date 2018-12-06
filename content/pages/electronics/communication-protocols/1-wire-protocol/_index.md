@@ -4,7 +4,7 @@ date: 2013-10-20 22:28:10+00:00
 draft: false
 title: 1-Wire Protocol
 type: page
-
+url: /electronics/communication-protocols/1-wire-protocol
 ---
 
 # Overview

@@ -4,7 +4,7 @@ date: 2015-11-02 01:06:49+00:00
 draft: false
 title: TRIACs
 type: page
-
+url: /electronics/components/triacs
 ---
 
 # Overview

@@ -4,7 +4,7 @@ date: 2011-09-05 06:44:22+00:00
 draft: false
 title: Electrical Compliance Design
 type: page
-
+url: /electronics/general/electrical-compliance-design
 ---
 
 Circuits emit electrical noise. They emit radiated electromagnetic noise, and conductive noise (noise that travels down any external electrical connections). Many electronic standards define maximum values of noise and disruption that a circuit can emmit.

@@ -4,7 +4,7 @@ date: 2013-10-02 22:22:07+00:00
 draft: false
 title: Memory
 type: page
-
+url: /electronics/components/memory
 ---
 
 # EEPROM

@@ -4,7 +4,7 @@ date: 2013-10-13 22:40:15+00:00
 draft: false
 title: Cellular Modems
 type: page
-
+url: /electronics/components/cellular-modems
 ---
 
 # Overview

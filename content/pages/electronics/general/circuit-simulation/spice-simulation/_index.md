@@ -4,7 +4,7 @@ date: 2015-06-09 05:52:43+00:00
 draft: false
 title: SPICE Simulation
 type: page
-
+url: /electronics/general/circuit-simulation/spice-simulation
 ---
 
 # Elementary SPICE Components

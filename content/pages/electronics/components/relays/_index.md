@@ -4,7 +4,7 @@ date: 2012-10-25 20:48:03+00:00
 draft: false
 title: Relays
 type: page
-
+url: /electronics/components/relays
 ---
 
 # Overview

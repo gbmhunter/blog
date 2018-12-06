@@ -4,7 +4,7 @@ date: 2015-11-30 22:23:05+00:00
 draft: false
 title: PCB Card Edge
 type: page
-
+url: /electronics/components/connectors/pcb-card-edge
 ---
 
 # Overview

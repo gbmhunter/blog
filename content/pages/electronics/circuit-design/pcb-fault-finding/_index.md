@@ -4,7 +4,7 @@ date: 2013-08-22 07:57:54+00:00
 draft: false
 title: PCB Fault Finding
 type: page
-
+url: /electronics/circuit-design/pcb-fault-finding
 ---
 
 # Solder Bridges

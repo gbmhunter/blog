@@ -4,7 +4,7 @@ date: 2016-03-02 22:30:58+00:00
 draft: false
 title: Mains Power
 type: page
-
+url: /electronics/components/connectors/mains-power
 ---
 
 # IEC 60320

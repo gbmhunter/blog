@@ -4,7 +4,7 @@ date: 2015-08-10 22:04:47+00:00
 draft: false
 title: Bipolar Junction Transistors (BJTs)
 type: page
-
+url: /electronics/components/transistors/bipolar-junction-transistors-bjts
 ---
 
 # Overview

@@ -4,7 +4,7 @@ date: 2011-09-05 06:22:16+00:00
 draft: false
 title: Altium Keyboard Shortcuts
 type: page
-
+url: /electronics/general/altium/altium-keyboard-shortcuts
 ---
 
 # Route With The Pro's!

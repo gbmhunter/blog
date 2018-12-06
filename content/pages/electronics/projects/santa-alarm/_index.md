@@ -4,7 +4,7 @@ date: 2011-09-06 06:55:10+00:00
 draft: false
 title: Santa Alarm
 type: page
-
+url: /electronics/projects/santa-alarm
 ---
 
 I'm in no way a morning person. This alarm is was designed to get me out of bed on time! Specially since I'm starting a new job soon. During a 2009 Christmas shopping spree I brought myself a little dancing, singing Santa (100% impulse buy). To clear my financial conscience, I decided then and there I would use it for something purposeful in the future. Here it is! The Santa Alarm is a hack of my original alarm clock that turns on the santa rather than playing a simple beep or sound. It was quite a simple project and involved tapping into the alarm speaker wires, installing an Atmega8 micro-controller inside it, writing some simple code to turn on and off the switch that makes Santa go nuts.

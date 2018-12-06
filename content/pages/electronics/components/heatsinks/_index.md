@@ -4,7 +4,7 @@ date: 2013-05-29 02:10:25+00:00
 draft: false
 title: Heatsinks
 type: page
-
+url: /electronics/components/heatsinks
 ---
 
 [mathjax]

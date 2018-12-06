@@ -4,7 +4,7 @@ date: 2011-09-05 06:42:54+00:00
 draft: false
 title: Circuit Simulation
 type: page
-
+url: /electronics/general/circuit-simulation
 ---
 
 # Overview

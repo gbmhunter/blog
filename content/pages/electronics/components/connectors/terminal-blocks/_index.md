@@ -4,7 +4,7 @@ date: 2015-11-30 22:30:48+00:00
 draft: false
 title: Terminal Blocks
 type: page
-
+url: /electronics/components/connectors/terminal-blocks
 ---
 
 # Overview

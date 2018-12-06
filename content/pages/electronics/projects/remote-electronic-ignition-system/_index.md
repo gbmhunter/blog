@@ -4,7 +4,7 @@ date: 2012-01-25 04:48:45+00:00
 draft: false
 title: Remote Electronic Ignition System
 type: page
-
+url: /electronics/projects/remote-electronic-ignition-system
 ---
 
 Setting of pyrotechnics with fuses was getting too old school, so I decided to make a remote electronic ignition system. This system uses electronic fuses made with christmas tree lights. Rather than make the wireless comms myself (and I was rather young when I made this, I probably wouldn't of known how to do that back then), I hacked an RC car unit. Instead of the throttle normally turning on the motor of the RC car, I made the circuit turn on a relay to dump current into the electronic fuse. O.K., so the comms arn't that secure (another RC operating could set it off, as could stray interference), but it was good enough for me.

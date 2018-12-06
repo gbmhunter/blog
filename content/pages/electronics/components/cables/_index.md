@@ -4,7 +4,7 @@ date: 2012-11-21 20:50:49+00:00
 draft: false
 title: Cables
 type: page
-
+url: /electronics/components/cables
 ---
 
 # Insulation Materials And Their Properties

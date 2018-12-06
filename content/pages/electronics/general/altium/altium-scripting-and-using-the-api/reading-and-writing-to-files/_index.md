@@ -4,7 +4,7 @@ date: 2015-04-28 05:52:37+00:00
 draft: false
 title: Reading And Writing To Files
 type: page
-
+url: /electronics/general/altium/altium-scripting-and-using-the-api/reading-and-writing-to-files
 ---
 
 # Overview

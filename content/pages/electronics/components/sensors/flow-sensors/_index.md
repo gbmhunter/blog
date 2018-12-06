@@ -4,7 +4,7 @@ date: 2014-04-14 03:02:00+00:00
 draft: false
 title: Flow Sensors
 type: page
-
+url: /electronics/components/sensors/flow-sensors
 ---
 
 # Tiny Flow Sensors

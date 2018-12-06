@@ -4,7 +4,7 @@ date: 2014-11-13 19:41:35+00:00
 draft: false
 title: Link Budgets
 type: page
-
+url: /electronics/rf-design/link-budgets
 ---
 
 A link budget is a calculation which takes into account all of the losses and gains from transmitter to receiver in a communications system.

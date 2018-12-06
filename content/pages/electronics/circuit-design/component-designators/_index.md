@@ -4,7 +4,7 @@ date: 2011-09-03 02:10:49+00:00
 draft: false
 title: Component Designators
 type: page
-
+url: /electronics/circuit-design/component-designators
 ---
 
 # Overview

@@ -4,7 +4,7 @@ date: 2013-01-31 00:07:38+00:00
 draft: true
 title: Capacitor Encoder Design
 type: page
-
+url: /electronics/circuit-design/capacitive-sensing/capacitor-encoder-design
 ---
 
 * Overview

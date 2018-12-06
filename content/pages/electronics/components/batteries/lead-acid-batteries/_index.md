@@ -4,7 +4,7 @@ date: 2011-09-05 06:12:49+00:00
 draft: false
 title: Lead-Acid Batteries
 type: page
-
+url: /electronics/components/batteries/lead-acid-batteries
 ---
 
 # Overview

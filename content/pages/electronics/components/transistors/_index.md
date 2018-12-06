@@ -4,7 +4,7 @@ date: 2011-09-05 06:13:54+00:00
 draft: false
 title: Transistors
 type: page
-
+url: /electronics/components/transistors
 ---
 
 # Overview

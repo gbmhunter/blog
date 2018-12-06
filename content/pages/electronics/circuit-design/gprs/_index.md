@@ -4,7 +4,7 @@ date: 2011-09-08 23:51:50+00:00
 draft: false
 title: GPRS
 type: page
-
+url: /electronics/circuit-design/gprs
 ---
 
 # Overview

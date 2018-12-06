@@ -3,7 +3,7 @@ author: gbmhunter
 date: 2015-10-04 21:59:08+00:00
 title: Autoelectric Blanket
 type: page
-
+url: /electronics/projects/autoelectric-blanket
 ---
 
 # Overview

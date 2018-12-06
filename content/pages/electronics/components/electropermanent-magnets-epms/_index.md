@@ -4,7 +4,7 @@ date: 2014-06-22 23:32:18+00:00
 draft: false
 title: Electropermanent Magnets (EPMs)
 type: page
-
+url: /electronics/components/electropermanent-magnets-epms
 ---
 
 # Overview

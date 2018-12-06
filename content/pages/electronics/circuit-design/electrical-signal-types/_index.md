@@ -4,7 +4,7 @@ date: 2013-12-16 23:28:56+00:00
 draft: false
 title: Electrical Signal Types
 type: page
-
+url: /electronics/circuit-design/electrical-signal-types
 ---
 
 Signal types are sorted in alphabetical order. Take note that there may be a low-voltage equivalent of many signal types under the prefix "LV" (e.g. TTL and LVTTL).

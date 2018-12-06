@@ -4,7 +4,7 @@ date: 2012-08-02 21:09:06+00:00
 draft: false
 title: BLDC Motor Control
 type: page
-
+url: /electronics/circuit-design/bldc-motor-control
 ---
 
 # Overview

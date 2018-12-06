@@ -4,7 +4,7 @@ date: 2011-09-05 06:10:43+00:00
 draft: false
 title: Connectors
 type: page
-
+url: /electronics/components/connectors
 ---
 
 # Overview

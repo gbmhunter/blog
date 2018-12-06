@@ -4,7 +4,7 @@ date: 2013-05-06 20:52:36+00:00
 draft: false
 title: Inductors
 type: page
-
+url: /electronics/components/inductors
 ---
 
 # Overview

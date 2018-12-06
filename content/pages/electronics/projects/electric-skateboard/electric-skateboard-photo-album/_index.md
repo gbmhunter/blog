@@ -4,7 +4,7 @@ date: 2012-01-30 11:24:27+00:00
 draft: false
 title: Electric Skateboard Photo Album
 type: page
-
+url: /electronics/projects/electric-skateboard/electric-skateboard-photo-album
 ---
 
 # The First Prototype

@@ -4,7 +4,7 @@ date: 2012-12-13 03:29:29+00:00
 draft: false
 title: LIN Protocol
 type: page
-
+url: /electronics/communication-protocols/lin-protocol
 ---
 
 # Overview

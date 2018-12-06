@@ -4,7 +4,7 @@ date: 2013-08-21 21:15:26+00:00
 draft: false
 title: Thermal Management
 type: page
-
+url: /electronics/circuit-design/thermal-management
 ---
 
 # Thermal Resistance

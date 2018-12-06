@@ -4,7 +4,7 @@ date: 2011-09-05 07:23:46+00:00
 draft: false
 title: USB Protocol
 type: page
-
+url: /electronics/communication-protocols/usb-protocol
 ---
 
 # Overview

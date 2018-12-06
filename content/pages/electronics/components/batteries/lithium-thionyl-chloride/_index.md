@@ -4,7 +4,7 @@ date: 2014-02-09 09:18:17+00:00
 draft: false
 title: Lithium Thionyl Chloride
 type: page
-
+url: /electronics/components/batteries/lithium-thionyl-chloride
 ---
 
 # Overview

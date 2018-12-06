@@ -4,7 +4,7 @@ date: 2015-10-29 04:14:11+00:00
 draft: false
 title: Fans
 type: page
-
+url: /electronics/components/fans
 ---
 
 # Overview

@@ -4,7 +4,7 @@ date: 2015-04-22 05:18:51+00:00
 draft: false
 title: IO-Link Protocol
 type: page
-
+url: /electronics/communication-protocols/io-link-protocol
 ---
 
 # Overview

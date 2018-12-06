@@ -4,7 +4,7 @@ date: 2013-08-02 05:58:59+00:00
 draft: false
 title: Logic Gates
 type: page
-
+url: /electronics/circuit-design/digital-logic/logic-gates
 ---
 
 # Overview

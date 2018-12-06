@@ -4,7 +4,7 @@ date: 2012-11-08 05:09:44+00:00
 draft: false
 title: Temperature Sensors
 type: page
-
+url: /electronics/components/sensors/temperature-sensors
 ---
 
 # Overview

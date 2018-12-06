@@ -4,7 +4,7 @@ date: 2011-09-05 07:23:03+00:00
 draft: false
 title: Power Management
 type: page
-
+url: /electronics/circuit-design/power-management
 ---
 
 # Overview

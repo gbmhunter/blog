@@ -4,7 +4,7 @@ date: 2014-02-11 20:30:39+00:00
 draft: false
 title: SMBus
 type: page
-
+url: /electronics/communication-protocols/smbus
 ---
 
 # Overview

@@ -4,7 +4,7 @@ date: 2016-03-10 01:40:57+00:00
 draft: false
 title: 4-20mA Current Loops
 type: page
-
+url: /electronics/communication-protocols/4-20ma-current-loops
 ---
 
 [mathjax]

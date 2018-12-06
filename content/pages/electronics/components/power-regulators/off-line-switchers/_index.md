@@ -4,7 +4,7 @@ date: 2016-06-28 05:59:45+00:00
 draft: false
 title: Off-line Switchers
 type: page
-
+url: /electronics/components/power-regulators/off-line-switchers
 ---
 
 # Overview

@@ -4,7 +4,7 @@ date: 2014-09-15 08:34:59+00:00
 draft: false
 title: IDP-110 Design Guide
 type: page
-
+url: /electronics/components/satellite-modems/idp-110-design-guide
 ---
 
 # Overview

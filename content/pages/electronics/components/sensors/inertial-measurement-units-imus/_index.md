@@ -4,7 +4,7 @@ date: 2014-12-02 21:10:33+00:00
 draft: false
 title: Inertial Measurement Units (IMUs)
 type: page
-
+url: /electronics/components/sensors/inertial-measurement-units-imus
 ---
 
 # Overview

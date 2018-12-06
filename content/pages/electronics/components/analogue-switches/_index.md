@@ -4,7 +4,7 @@ date: 2015-03-25 05:00:51+00:00
 draft: false
 title: Analogue Switches
 type: page
-
+url: /electronics/components/analogue-switches
 ---
 
 # Overview

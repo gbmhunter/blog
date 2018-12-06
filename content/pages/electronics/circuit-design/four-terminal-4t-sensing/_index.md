@@ -4,7 +4,7 @@ date: 2014-02-07 21:55:39+00:00
 draft: false
 title: Four Terminal (4T) Sensing
 type: page
-
+url: /electronics/circuit-design/four-terminal-4t-sensing
 ---
 
 # Overview

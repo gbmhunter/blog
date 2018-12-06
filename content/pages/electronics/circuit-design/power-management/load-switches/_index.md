@@ -4,7 +4,7 @@ date: 2013-11-08 02:04:26+00:00
 draft: false
 title: Load Switches
 type: page
-
+url: /electronics/circuit-design/power-management/load-switches
 ---
 
 # MOSFET Based

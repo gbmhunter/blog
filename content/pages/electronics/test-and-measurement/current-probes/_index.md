@@ -4,7 +4,7 @@ date: 2015-09-25 00:43:35+00:00
 draft: false
 title: Current Probes
 type: page
-
+url: /electronics/test-and-measurement/current-probes
 ---
 
 # Overview

@@ -4,7 +4,7 @@ date: 2012-05-20 08:52:13+00:00
 draft: false
 title: Capacitive Sensing
 type: page
-
+url: /electronics/circuit-design/capacitive-sensing
 ---
 
 # Overview

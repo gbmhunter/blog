@@ -4,7 +4,7 @@ date: 2015-11-23 23:31:14+00:00
 draft: false
 title: Varistors (VDRs)
 type: page
-
+url: /electronics/components/circuit-protection/varistors-vdrs
 ---
 
 # Overview

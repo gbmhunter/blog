@@ -4,7 +4,7 @@ date: 2016-08-07 23:23:09+00:00
 draft: false
 title: PIN Diodes
 type: page
-
+url: /electronics/components/diodes/pin-diodes
 ---
 
 # Overview

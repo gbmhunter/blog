@@ -4,7 +4,7 @@ date: 2011-09-05 06:12:18+00:00
 draft: false
 title: Diodes
 type: page
-
+url: /electronics/components/diodes
 ---
 
 # Overview

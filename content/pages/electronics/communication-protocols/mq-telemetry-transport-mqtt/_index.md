@@ -4,7 +4,7 @@ date: 2014-02-16 20:08:05+00:00
 draft: false
 title: MQ Telemetry Transport (MQTT)
 type: page
-
+url: /electronics/communication-protocols/mq-telemetry-transport-mqtt
 ---
 
 # Overview

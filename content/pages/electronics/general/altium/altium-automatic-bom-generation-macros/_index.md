@@ -4,7 +4,7 @@ date: 2012-07-13 07:36:20+00:00
 draft: false
 title: Altium BOM Template Files (Excel)
 type: page
-
+url: /electronics/general/altium/altium-automatic-bom-generation-macros
 ---
 
 # Overview

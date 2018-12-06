@@ -4,7 +4,7 @@ date: 2012-05-20 08:47:38+00:00
 draft: false
 title: Electric Skateboard Near Misses And Mistakes
 type: page
-
+url: /electronics/projects/electric-skateboard/electric-skateboard-near-misses-and-mistakes
 ---
 
 Near misses/mistakes are always fun to talk about, so here is a list of them...

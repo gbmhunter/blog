@@ -4,7 +4,7 @@ date: 2011-09-03 02:18:19+00:00
 draft: false
 title: SPI Protocol
 type: page
-
+url: /electronics/communication-protocols/spi-protocol
 ---
 
 # Overview

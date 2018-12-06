@@ -4,7 +4,7 @@ date: 2014-01-25 05:11:02+00:00
 draft: false
 title: Belkin WeMo Teardown
 type: page
-
+url: /electronics/teardowns/belkin-wemo-teardown
 ---
 
 # Overview

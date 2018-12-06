@@ -4,7 +4,7 @@ date: 2013-12-26 03:12:38+00:00
 draft: false
 title: iNursery
 type: page
-
+url: /electronics/projects/inursery
 ---
 
 # Stats

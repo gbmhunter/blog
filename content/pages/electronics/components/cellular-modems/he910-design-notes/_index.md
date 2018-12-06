@@ -4,7 +4,7 @@ date: 2013-10-16 23:07:43+00:00
 draft: false
 title: HE910 Design Notes
 type: page
-
+url: /electronics/components/cellular-modems/he910-design-notes
 ---
 
 This page is not intended to replace the datasheet, but to serve as an additional guide when designing the schematics/PCB for the HE910 cellular modem.

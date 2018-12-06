@@ -4,7 +4,7 @@ date: 2015-10-19 20:40:40+00:00
 draft: false
 title: RS-485 Protocol
 type: page
-
+url: /electronics/communication-protocols/rs-485-protocol
 ---
 
 # Overview

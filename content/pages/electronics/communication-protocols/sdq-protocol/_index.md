@@ -4,7 +4,7 @@ date: 2015-04-12 03:08:29+00:00
 draft: false
 title: SDQ Protocol
 type: page
-
+url: /electronics/communication-protocols/sdq-protocol
 ---
 
 # Overview

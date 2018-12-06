@@ -4,7 +4,7 @@ date: 2013-12-03 22:08:04+00:00
 draft: false
 title: Ultrasonic Sensors
 type: page
-
+url: /electronics/components/sensors/ultrasonic-sensors
 ---
 
 # Overview

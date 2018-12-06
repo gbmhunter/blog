@@ -4,7 +4,7 @@ date: 2015-05-08 05:53:31+00:00
 draft: false
 title: Voltage-Level Translation
 type: page
-
+url: /electronics/circuit-design/voltage-level-translation
 ---
 
 # Overview

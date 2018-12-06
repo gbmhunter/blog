@@ -4,7 +4,7 @@ date: 2014-02-18 22:31:05+00:00
 draft: false
 title: Metastability And Synchronisation
 type: page
-
+url: /electronics/circuit-design/digital-logic/metastability-and-synchronisation
 ---
 
 # Flip-flop MTBF

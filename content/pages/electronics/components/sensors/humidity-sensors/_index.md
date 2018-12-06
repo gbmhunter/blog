@@ -4,7 +4,7 @@ date: 2016-02-04 20:48:53+00:00
 draft: false
 title: Humidity Sensors
 type: page
-
+url: /electronics/components/sensors/humidity-sensors
 ---
 
 # Types

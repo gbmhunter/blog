@@ -4,7 +4,7 @@ date: 2013-08-02 03:08:04+00:00
 draft: false
 title: Debouncing
 type: page
-
+url: /electronics/circuit-design/debouncing
 ---
 
 # Overview

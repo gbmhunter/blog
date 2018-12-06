@@ -4,7 +4,7 @@ date: 2012-09-03 21:43:54+00:00
 draft: false
 title: Enclosures
 type: page
-
+url: /electronics/circuit-design/enclosures
 ---
 
 # Extruded Aluminium Enclosures
