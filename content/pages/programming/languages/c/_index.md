@@ -49,38 +49,3 @@ Click [here](http://astyle.sourceforge.net/) to visit their website.
 # External Links
 
 The C library reference ([http://www.cplusplus.com/reference/clibrary/](http://www.cplusplus.com/reference/clibrary/)) provides good explanations on standard functions that are included with the C programming language, organised by file and then by function. Also check out the [GNU C Pre-processor reference](http://gcc.gnu.org/onlinedocs/cpp.pdf).
-
-
-<table>
-    <thead>
-        <tr>
-            <th>Link</th>
-            <th>Title</th>
-            <th>Reference</th>
-        </tr>
-    </thead>
-<tbody>
-<tr>
-<td >{{< figure src="/wp-includes/images/crystal/document.png" caption="The GNU C Library Reference Manual"  >}}
-</td>
-
-<td >The GNU C Library Reference Manual
-</td>
-
-<td >[www.gnu.org](http://www.gnu.org/)
-</td>
-</tr>
-<tr >
-
-<td >{{< figure src="/wp-includes/images/crystal/document.png" caption="C Reference Card (ANSI) v2.2"  >}}
-</td>
-
-<td >C Reference Guide (ANSI) v2.2
-</td>
-
-<td >http://www.digilife.be/quickreferences/QRC /C%20Reference%20Card%20%28ANSI%29%202.2.pdf (**as of Dec 2017, link dead**)
-</td>
-</tr>
-</tbody>
-</table>
-

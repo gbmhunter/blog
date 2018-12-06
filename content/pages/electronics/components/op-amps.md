@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-05 06:08:03+00:00
+date: 2011-09-05
 draft: false
 title: Op-Amps
 type: page
@@ -198,13 +198,6 @@ The above equation gives diminishing returns with every additional op-amp added.
 
 As a rule-of-thumb, you should use the lowest acceptable resistances in op-amp feedback paths to reduce instabilities.
 
-# History
-
-Op-amps have slowly gotten better over the last few decades. Newer op-amps have better gain bandwidth products, better noise rejection ratios, and far less input bias currents as well as power usage. As expected, all the newer ones are primarily released in SMD packages.
-
-Check out Korg's Monotron schematics for some good examples of how op-aps are used in commercial products.  
-{{< figure src="/wp-includes/images/crystal/document.png" caption="Korg Monotron Schematics"  >}}
-
 # Rail-to-Rail Op-amps
 
 What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-amps that can run from a single voltage supply, rather than requiring a dual positive/negative supply) market op-amps as _rail-to-rail_, and that the output of the op-amp can swing from ground to the positive rail. This is not exactly true. The op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. This voltage drop increases with the amount of current the op-amp is supplying to the load.
@@ -257,7 +250,7 @@ Below are some examples of op-amps that stand out from the crowd for some reason
 
 Isolation amplifiers provide galvanic isolation between the input (sensor) and output (measurement circuitry). They are used to protect the sensor measurement and recording circuitry (e.g. a microcontroller with on-board ADC) from dangerously high voltages at the sensor, and also the opposite, to protect the sensor environment from potentially dangerous voltages on the rest of the system.
 
-{{< figure src="/images/2011/09/fully-differential-isolation-amplfier-ti-amc1200-simplified-schematic.pdf.png" width="753px" caption="A simplified schematic of the Texas Instruments AMC1200, a fully-differential isolated amplifier. Image from http://www.ti.com/."  >}}
+{{< figure src="/images/2011/09/fully-differential-isolation-amplfier-ti-amc1200-simplified-schematic.pdf.png" width="753px" caption="A simplified schematic of the Texas Instruments AMC1200, a fully-differential isolated amplifier. Image from http://www.ti.com/." >}}
 
 A common application would be to isolate and amplify the voltage across a current-sense resistor on a high-power motor, or to protect humans with medical sensors connected to them from the measurement system.
 

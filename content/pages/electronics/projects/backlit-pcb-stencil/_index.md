@@ -52,4 +52,4 @@ We has a three-step diffusing method:
 
 # Images
 
-{{< gallery dir="/images/project-backlitpcbstencil" />}}`
+{{< gallery dir="/images/project-backlitpcbstencil" />}}
