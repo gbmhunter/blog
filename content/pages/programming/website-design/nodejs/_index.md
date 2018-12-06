@@ -16,7 +16,7 @@ node.js is a platform built on the Chrome Javascript runtime engine. It uses a n
 <table>
 <tbody>
 <tr>
-<td >[Using Connect](http://blog.mbedded.ninja/programming/website-design/nodejs/using-connect)
+<td >[Using Connect](/programming/website-design/nodejs/using-connect)
 </td>
 
 <td >How to use the Connect extension.
@@ -24,7 +24,7 @@ node.js is a platform built on the Chrome Javascript runtime engine. It uses a n
 </tr>
 <tr >
 
-<td >[Using Express](http://blog.mbedded.ninja/programming/website-design/nodejs/using-express)
+<td >[Using Express](/programming/website-design/nodejs/using-express)
 </td>
 
 <td >How to make a server using the Express extension.

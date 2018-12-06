@@ -15,7 +15,7 @@ PIC18 is a family of microcontrollers from Microchip. This includes the PIC18C a
 
 # Compilers
 
-The newest compiler for the PIC18 family of microcontrollers (as of July 2016) is the Microchip XC8 compiler. More information an be found on the [MPLAB XC Compilers page](http://blog.mbedded.ninja/programming/compilers/mplab-xc-compilers).
+The newest compiler for the PIC18 family of microcontrollers (as of July 2016) is the Microchip XC8 compiler. More information an be found on the [MPLAB XC Compilers page](/programming/compilers/mplab-xc-compilers).
 
 # EEPROM
 

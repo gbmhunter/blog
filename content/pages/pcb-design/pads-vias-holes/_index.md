@@ -17,7 +17,7 @@ The smallest hole PCB manufacturers can support is usually 0.1-0.2mm, with anyth
 
 # Vias
 
-Vias are simply the name given to plated holes which are used to connect to tracks on different layers. Vias with a drilled hole size of 150um or less are called [microvias](http://blog.mbedded.ninja/pcb-design/pads-vias-holes#microvias).
+Vias are simply the name given to plated holes which are used to connect to tracks on different layers. Vias with a drilled hole size of 150um or less are called [microvias](/pcb-design/pads-vias-holes#microvias).
 
 ## Current-Carrying Ability
 

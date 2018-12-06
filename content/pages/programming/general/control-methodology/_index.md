@@ -18,7 +18,7 @@ State machines are coding structures/methodologies to write the top-level code w
 
 Sequential logic theory (the subject which involves these state machines) says that if the combination of the inputs and the state which the program is in determines the outputs it is a Mealy state machine. If just the state determines the outputs, then it is a Moore state machine. Usually however, when writing a state machine in C for a program, you don't have to strictly follow these rules, as you will find that it can make unnecessary complications to your code.
 
-Go to the [A Function Pointer State Machine](http://blog.mbedded.ninja/programming/c-programming/control-methodology/a-function-pointer-based-state-machine) page for a worked example on how to write a moderately powerful state machine.
+Go to the [A Function Pointer State Machine](/programming/c-programming/control-methodology/a-function-pointer-based-state-machine) page for a worked example on how to write a moderately powerful state machine.
 
 There is software out there that lets you convert graphical state machine diagrams into usable code. One popular one is the QP state machine framework and the QM modelling tool ([http://www.state-machine.com/](http://www.state-machine.com/)).
 

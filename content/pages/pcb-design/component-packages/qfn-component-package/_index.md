@@ -59,7 +59,7 @@ url: /pcb-design/component-packages/qfn-component-package
 
 
 
-	  * [SON (DFN)](http://blog.mbedded.ninja/pcb-design/component-packages/son-component-package)
+	  * [SON (DFN)](/pcb-design/component-packages/son-component-package)
 	  * UQFN
 	  * VQFN
 

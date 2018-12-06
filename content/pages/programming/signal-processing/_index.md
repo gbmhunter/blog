@@ -19,7 +19,7 @@ C:\project\mathnet-neodym\build\Debug>sn.exe -Vr *
 
 # Finite Impulse Response (FIR) Filters
 
-Moving average filters are a type of FIR filter. Learn more about them on the [Moving Average Filters page](http://blog.mbedded.ninja/programming/general/signal-processing/moving-average-filters).
+Moving average filters are a type of FIR filter. Learn more about them on the [Moving Average Filters page](/programming/general/signal-processing/moving-average-filters).
 
 # Infinite Impulse Response (IIR) Filters
 

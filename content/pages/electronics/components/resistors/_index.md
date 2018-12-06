@@ -11,7 +11,7 @@ type: page
 
 Resistors are a passive electronic component that restricts the flow of current when a given voltage is applied. They dissipate energy as heat. Given their simplicity and usefulness in circuits, they are the most commonly used electronic component.
 
-For information on positive temperature coefficient resistors used as "fuses" in circuit protection applications, see the [PTC Type Thermistor page](http://blog.mbedded.ninja/electronics/components/circuit-protection/ptc-type-thermistor).
+For information on positive temperature coefficient resistors used as "fuses" in circuit protection applications, see the [PTC Type Thermistor page](/electronics/components/circuit-protection/ptc-type-thermistor).
 
 **The mechanical equivalent of a resistor is friction.** The larger the resistance, the larger the friction. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
@@ -99,7 +99,7 @@ The [NinjaCalc program](http://mbedded-ninja.github.io/NinjaCalc/) has a calcula
 
 The output of a potentiometer varies depending on the wiper position. If varies from 0R when the wiper is at both ends of the pot to a maximum of Rpot/4 when the wiper is in the middle.
 
-You call also get variable resistors which can be changed digitially (called DPOT's). They have their own page which can be found [here](http://blog.mbedded.ninja/electronics/components/dpots).
+You call also get variable resistors which can be changed digitially (called DPOT's). They have their own page which can be found [here](/electronics/components/dpots).
 
 # Tolerances
 
@@ -176,7 +176,7 @@ Simply, this means that each series guarantees you will be able to find a resist
 
 The E192 series is also used for 0.25% and 0.1% error resistors.
 
-Below are all the actual values for the common E series. They are written as initialised arrays in the [C programming language](http://blog.mbedded.ninja/programming/languages/c), so that you can copy them and use them in code easily (some modifications may be required for other programming languages).
+Below are all the actual values for the common E series. They are written as initialised arrays in the [C programming language](/programming/languages/c), so that you can copy them and use them in code easily (some modifications may be required for other programming languages).
 
 ```c
 E6[6] = {10, 15, 22, 33, 47, 68};
@@ -231,7 +231,7 @@ Current-sense resistors are a label given to low-valued, high precision (1% or b
 
 {{< figure src="/images/2012/05/current-sensing-resistor-large-four-lead.jpg" width="513px" caption="A large four-lead current sensing resistor."  >}}
 
-More information and schematics on how to make current-sense circuits can be found on the [Current-Sensing page](http://blog.mbedded.ninja/electronics/circuit-design/current-sensing).
+More information and schematics on how to make current-sense circuits can be found on the [Current-Sensing page](/electronics/circuit-design/current-sensing).
 
 # Jumpers
 
@@ -247,7 +247,7 @@ Volume resistance (also known as just resitivity, electrical resistivity, or bul
 
 # Packages
 
-Resistor come in many packages, from large, wire-wound power resistors that come in coils and blocks, to smaller through-hole resistors, to even smaller still SMD resistors. You can find more about resistor packages on the [Component Package Database](http://blog.mbedded.ninja/electronics/circuit-design/component-packages) page.
+Resistor come in many packages, from large, wire-wound power resistors that come in coils and blocks, to smaller through-hole resistors, to even smaller still SMD resistors. You can find more about resistor packages on the [Component Package Database](/electronics/circuit-design/component-packages) page.
 
 Through-hole resistors use the older color code scheme (the current international standard as of 2013 is IEC 60062). Newer surface-mount resistors usually have the value printed directly on them (a three-digit number is most common, with the third digit being the multiplier).
 

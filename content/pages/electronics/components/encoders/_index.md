@@ -98,7 +98,7 @@ One way is use software overflow protection, as shown below. This takes a overfl
 # Embedded Hardware Encoder Peripherals
 
 
-The [PSoC range of microcontrollers](http://blog.mbedded.ninja/programming/microcontrollers/psoc) contain reconfigurable hardware that can used to make a hardware peripheral that counts quadrature output from an encoder. See the [PSoC Component page](http://blog.mbedded.ninja/programming/microcontrollers/psoc/components) for more information.
+The [PSoC range of microcontrollers](/programming/microcontrollers/psoc) contain reconfigurable hardware that can used to make a hardware peripheral that counts quadrature output from an encoder. See the [PSoC Component page](/programming/microcontrollers/psoc/components) for more information.
 
 # Datasheet Errors
 

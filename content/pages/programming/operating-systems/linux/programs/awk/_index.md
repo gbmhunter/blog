@@ -11,7 +11,7 @@ url: /programming/operating-systems/linux/programs/awk
 
 awk is a UNIX-based program that is used to scan and modify text files. It commonly used to find and replace text in one or many files at once.
 
-It could be seen as a more powerful version of [sed](http://blog.mbedded.ninja/programming/operating-systems/linux/programs/sed), with a fuller programming language and better support for variables.
+It could be seen as a more powerful version of [sed](/programming/operating-systems/linux/programs/sed), with a fuller programming language and better support for variables.
 
 Note: If you just want to search for text, and have no desire to edit it, it might be better (and safer!) to just use grep instead.
 

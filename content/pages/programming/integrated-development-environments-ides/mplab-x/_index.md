@@ -13,7 +13,7 @@ MPLAB X is an integrated development environment (IDE) by Microchip to cater for
 
 # Compiler Support
 
-It supports the use of the [MPLAB XC compilers](http://blog.mbedded.ninja/programming/compilers/mplab-xc-compilers).
+It supports the use of the [MPLAB XC compilers](/programming/compilers/mplab-xc-compilers).
 
 # Refactoring
 

@@ -13,7 +13,7 @@ type: page
 
 _Voltage-to-current converters_ are circuits which **convert an input voltage into an output current**. The output current is usually proportional to the input voltage, over some suitable range.
 
-Many of these circuit designs use op-amps. Please see the [Op-Amp page](http://blog.mbedded.ninja/electronics/components/op-amps) for more general information on operational amplifiers.
+Many of these circuit designs use op-amps. Please see the [Op-Amp page](/electronics/components/op-amps) for more general information on operational amplifiers.
 
 # Howland Current Source
 
@@ -31,7 +31,7 @@ The output impedance is given by the equation (note that this does not depend on
 
 <div>$$ Z_{OUT} = \frac{R_3 R_{S'}(R_1 + R_2)}{R_1 (R_4 + R_S) - R_3 (R_2 + R_{S'})} $$</div>
 
-The Howland current source is commonly used to build a [4-20mA current-loop transmitter](http://blog.mbedded.ninja/electronics/communication-protocols/4-20ma-current-loops).
+The Howland current source is commonly used to build a [4-20mA current-loop transmitter](/electronics/communication-protocols/4-20ma-current-loops).
 
 # Pre-built ICs
 

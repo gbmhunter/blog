@@ -19,7 +19,7 @@ tags:
 - popped
 ---
 
-The ['Popped Cherry' all-grain beer recipe and notes](http://blog.mbedded.ninja/homebrewing/brewing-notes/popped-cherry) has been added under the [Homebrewing->Brewing Notes->Beer Brewing Notes](http://blog.mbedded.ninja/homebrewing/brewing-notes/index-of-brewing-notes).
+The ['Popped Cherry' all-grain beer recipe and notes](/homebrewing/brewing-notes/popped-cherry) has been added under the [Homebrewing->Brewing Notes->Beer Brewing Notes](/homebrewing/brewing-notes/index-of-brewing-notes).
 
 Brewed for the Massey Handball fundraiser party, it was designed to be cheap! Used the low cost styles of malt, and whatever hops we had left in the fridge from other brews. End result was pretty good considering the low cost and speed that we made it in.
 

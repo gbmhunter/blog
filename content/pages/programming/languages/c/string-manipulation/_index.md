@@ -327,7 +327,7 @@ Memory manipulation functions are also useful for string manipulation. Some of t
 
 # Decoding/Encoding Strings
 
-`strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](http://blog.mbedded.ninja/electronics/circuit-design/communication-protocols/nmea-protocol). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
+`strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](/electronics/circuit-design/communication-protocols/nmea-protocol). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
 
 `getopt()` is a standard function for finding command-line arguments passed into main() as an array of strings. It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable below (taken from GCC gLibC v2.17).
 
@@ -460,7 +460,7 @@ If you actually wanted to print the % character rather than use it to specify a
 
 There are plenty of format specifiers that you can use with `printf()` which changes the way the text is formatted. Format specifiers go between the % symbol and the conversion specifier, mentioned above. They are optional, but if used, have to be added in the correct order.
 
-I have come across embedded implementations of `printf()` which do not support string padding (e.g. `%5s` or `%-6s`). This includes the version used with the [PSoC 5](http://blog.mbedded.ninja/programming/microcontrollers/psoc).
+I have come across embedded implementations of `printf()` which do not support string padding (e.g. `%5s` or `%-6s`). This includes the version used with the [PSoC 5](/programming/microcontrollers/psoc).
 
 ## Portable size_t Printing
 

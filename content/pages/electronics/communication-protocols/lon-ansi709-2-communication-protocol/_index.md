@@ -187,7 +187,7 @@ The onboard microprocessors can run up to a speed of 80MHz.
 
 ### Voltages And Currents
 
-The FT5000 is designed to run of a 3.3V supply. In receive mode, it typically draws between 9mA (5MHz clock) and 38mA (80MHz clock). In transmit, it draws between 24mA (5MHz) and 53mA (80MHz). The peak currents are not much higher. Given these relatively low operating currents, it is easy to design a power supply for chip, possibly using something as simple as a [linear regulator](http://blog.mbedded.ninja/electronics/components/power-regulators/linear-regulators).
+The FT5000 is designed to run of a 3.3V supply. In receive mode, it typically draws between 9mA (5MHz clock) and 38mA (80MHz clock). In transmit, it draws between 24mA (5MHz) and 53mA (80MHz). The peak currents are not much higher. Given these relatively low operating currents, it is easy to design a power supply for chip, possibly using something as simple as a [linear regulator](/electronics/components/power-regulators/linear-regulators).
 
 ### Transmission Mediums
 

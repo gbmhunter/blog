@@ -61,7 +61,7 @@ There are many programs that operate/work with ELF files, especially on UNIX-lik
 * elfcheck
 * objcopy: Used to create a raw binary file from an .elf file.
 * objdump
-* [readelf](http://blog.mbedded.ninja/programming/operating-systems/linux/programs/readelf): Provides the user with information on .elf files.
+* [readelf](/programming/operating-systems/linux/programs/readelf): Provides the user with information on .elf files.
 
 # ELF Code Libraries
 

@@ -23,6 +23,6 @@ The firmware has been made public and can be downloaded as a Mercurial repo on w
 
 Note that this is quite a large repo, as it contains the most recent and old versions of code, which were for different platforms.
 
-More information can be found on the [Electric Skateboard Firmware](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-firmware) page, under Electronics->Projects->[Electric Skateboard](http://blog.mbedded.ninja/electronics/projects/electric-skateboard).
+More information can be found on the [Electric Skateboard Firmware](/electronics/projects/electric-skateboard/electric-skateboard-firmware) page, under Electronics->Projects->[Electric Skateboard](/electronics/projects/electric-skateboard).
 
 {{< figure src="/images/electronics-electricskateboard/electric-skateboard-c-code-screenshot.png" caption="Screenshot of the electric skateboard firmware, showing main.c."  width="600px" >}}

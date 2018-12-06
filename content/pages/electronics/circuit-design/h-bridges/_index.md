@@ -27,7 +27,7 @@ They are suitable for things like heating/cooling elements which use on/off cont
 
 # A Transistor H-Bridge
 
-Almost all serious half or full-bridges use [MOSFET's](http://blog.mbedded.ninja/electronics/components/mosfets) as the switches. This is because MOSFET's have very low on resistances, meaning they can sink/source plenty of current without heating up. Some of the better MOSFET's are pushing on resistances (`\( R_{DS(on)} \)`) as low as `\( 1m\Omega \)` or less, allowing for continuous currents in the hundred's of amps as long as the MOSFET is heatsinked correctly.
+Almost all serious half or full-bridges use [MOSFET's](/electronics/components/mosfets) as the switches. This is because MOSFET's have very low on resistances, meaning they can sink/source plenty of current without heating up. Some of the better MOSFET's are pushing on resistances (`\( R_{DS(on)} \)`) as low as `\( 1m\Omega \)` or less, allowing for continuous currents in the hundred's of amps as long as the MOSFET is heatsinked correctly.
 
 ## Discrete Component H-Bridge With Only Two Control Lines
 

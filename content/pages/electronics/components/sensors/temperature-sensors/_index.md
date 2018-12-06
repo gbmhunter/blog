@@ -25,4 +25,4 @@ Infrared thermopiles can measure the temperature of an object without coming int
 
 Temperature sensors are so ubiquitous that they are often integrated into other sensor IC's to create composite sensors. They are also very useful in helping to calibrate the measurement of another sensor reading, as many real-world measurements dependent on the temperature.
 
-One such example would be [humidity sensors](http://blog.mbedded.ninja/electronics/components/sensors/humidity-sensors).
+One such example would be [humidity sensors](/electronics/components/sensors/humidity-sensors).

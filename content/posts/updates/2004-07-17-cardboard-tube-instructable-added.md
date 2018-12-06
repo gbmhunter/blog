@@ -12,4 +12,4 @@ tags:
 - instructable
 ---
 
-Want to learn how to make your own cardboard tubes? Check out the [tools and equipment section](http://blog.mbedded.ninja/pyrotechnics/tools-and-equipment/making-your-own-cardboard-tubes).
+Want to learn how to make your own cardboard tubes? Check out the [tools and equipment section](/pyrotechnics/tools-and-equipment/making-your-own-cardboard-tubes).

@@ -26,4 +26,4 @@ $ git clone --depth n
 
 Git version 1.9 improved the capabilities of shallow clones dramatically, giving them full push/pull support between the shallow copy repo and a repo with the entire history.
 
-As of 2015-01, [Mercurial does not support this feature](http://blog.mbedded.ninja/programming/version-control-systems/mercurial/managing-large-repos).
+As of 2015-01, [Mercurial does not support this feature](/programming/version-control-systems/mercurial/managing-large-repos).

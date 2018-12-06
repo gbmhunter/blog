@@ -369,4 +369,4 @@ The regex pattern to match any valid component designator, which is one or more 
 
     ^[A-Z][A-Z]*[0-9][0-9]*$
 
-The above pattern also contains the start and end-of-line anchors ^ and $, to enforce that there is no text before or after the designator. These can be removed if desired. More on using regex with component designators can be found on the [Altium Scripting page](http://blog.mbedded.ninja/electronics/general/altium/altium-scripting-and-using-the-api).
+The above pattern also contains the start and end-of-line anchors ^ and $, to enforce that there is no text before or after the designator. These can be removed if desired. More on using regex with component designators can be found on the [Altium Scripting page](/electronics/general/altium/altium-scripting-and-using-the-api).

@@ -30,4 +30,4 @@ Once you click the "Start" button, the PID tuner tool simulates the process and 
 
 The PID tuner tool can be found [here](http://ninja-calc.mbedded.ninja/tool/pid-tuner).
 
-More information on PID Controllers can be found on the [PID Control page](http://blog.mbedded.ninja/programming/general/pid-control).
+More information on PID Controllers can be found on the [PID Control page](/programming/general/pid-control).

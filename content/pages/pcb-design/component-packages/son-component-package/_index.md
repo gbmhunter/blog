@@ -32,7 +32,7 @@ url: /pcb-design/component-packages/son-component-package
 	  * DFN (Linear Technology, Micron Technology Inc, this synonym is more common than the JEDEC named SON!)
 	  * DSG (TI)
 	  * PE-SON-8 (SON-8, Ricoh)
-	  * MLP (micro leadframe package or moulded leaded package). This also can refer to variants with pins on all four sides of the package, which is also called a [QFN package](http://blog.mbedded.ninja/pcb-design/component-packages/qfn-component-package)). This name is used by Linear Technologies, Carsem.
+	  * MLP (micro leadframe package or moulded leaded package). This also can refer to variants with pins on all four sides of the package, which is also called a [QFN package](/pcb-design/component-packages/qfn-component-package)). This name is used by Linear Technologies, Carsem.
 	  * MLPD (MLP dual).
 	  * MLPM (MLP micro). This name is used by Carsem.
 	  * MLPQ (MLP quad).
@@ -242,7 +242,7 @@ The VSON variant has a height of 1.00mm (max.)
 
 
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--5154)
+![](/nextgen-attach_to_post/preview/id--5154)
 
 
 

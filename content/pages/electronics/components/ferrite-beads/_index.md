@@ -61,6 +61,6 @@ Another way to model a ferrite bead is a high-frequency transformer with a low v
 
 # Packages
 
-They come in many [package sizes](http://blog.mbedded.ninja/electronics/circuit-design/component-packages), including small [0603 sized SMD packages](http://blog.mbedded.ninja/electronics/circuit-design/component-packages#chip-packages-and-the-eiaj-standard). Ferrite beads tend to be smaller than general purpose inductors because they are not used for their inductance (which is what requires space). They usually have milli-Ohms of DC resistance, which increases to \(50-500\Omega\) (typically) at 100MHz (which is the usual rated frequency, but they also provide a continuous frequency vs. impedance graph).
+They come in many [package sizes](/electronics/circuit-design/component-packages), including small [0603 sized SMD packages](/electronics/circuit-design/component-packages#chip-packages-and-the-eiaj-standard). Ferrite beads tend to be smaller than general purpose inductors because they are not used for their inductance (which is what requires space). They usually have milli-Ohms of DC resistance, which increases to \(50-500\Omega\) (typically) at 100MHz (which is the usual rated frequency, but they also provide a continuous frequency vs. impedance graph).
 
 This really great PDF, [Understanding Ferrite Bead Inductors](http://lpvo.fe.uni-lj.si/fileadmin/files/Izobrazevanje/RES/Gradiva/07/Ferrite%20beads.pdf), explains them well.

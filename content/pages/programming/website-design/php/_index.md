@@ -27,7 +27,7 @@ comment */
 $var2 = 6.7;
 ```
 
-This comment style is the same as what's used in the [C](http://blog.mbedded.ninja/programming/languages/c) and [C++](http://blog.mbedded.ninja/programming/languages/c-plus-plus) programming languages.
+This comment style is the same as what's used in the [C](/programming/languages/c) and [C++](/programming/languages/c-plus-plus) programming languages.
 
 # Debugging
 

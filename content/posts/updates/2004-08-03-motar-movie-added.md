@@ -12,4 +12,4 @@ tags:
 - video
 ---
 
-Added a [movie of a mortar loaded with a dowel](http://blog.mbedded.ninja/pyrotechnics/general/pyrotechnic-videos) being fired. It makes quite a bang considering it is charged with 4g of meal powder. Some new terms have been added to the pyro encyclopedia.
+Added a [movie of a mortar loaded with a dowel](/pyrotechnics/general/pyrotechnic-videos) being fired. It makes quite a bang considering it is charged with 4g of meal powder. Some new terms have been added to the pyro encyclopedia.

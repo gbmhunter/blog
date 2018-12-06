@@ -275,7 +275,7 @@ prints `'/myFolder/myCfile.c:8 note: #pragma message: TODO - Remember to fix thi
 
 # File Names And Line Numbers
 
-When the preprocessor runs through source code, it updates variables remembering the current file name and line number that the preprocessor is executing from. These are called _predefined macros_. These are useful to use if you want to print out debug information to the user (similar to how a compiler reports back file names/line numbers when it encounters a warning/error), or when it comes to [**using assertions**](http://blog.mbedded.ninja/programming/languages/c/assertions-assert).
+When the preprocessor runs through source code, it updates variables remembering the current file name and line number that the preprocessor is executing from. These are called _predefined macros_. These are useful to use if you want to print out debug information to the user (similar to how a compiler reports back file names/line numbers when it encounters a warning/error), or when it comes to [**using assertions**](/programming/languages/c/assertions-assert).
 
 You can override the preprocessors current line number at any point with the directive:
     

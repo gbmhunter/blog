@@ -270,7 +270,7 @@ Because there are no brushes to switch the current in the windings (commutation)
 
 **Hall-Effect** sensors output a voltage relative the magnetic field strength (or more technically, the magnetic flux density). Three of them are spaced 120° apart from each other and designed so that their output voltage changes rapidly as the phase coils require switching. This can make the switching electronics easy to implement. Be careful, some hall-effect sensors can be open-drain, even though the motor's datasheet suggest that the output is fully driven!
 
-The [encoder](http://blog.mbedded.ninja/electronics/components/encoders) method uses, well, an encoder attached to the axle to determine rotor position. This is more complex than the hall-effect method as the encoder output requires decoding. The encoder is typically of the incremental qunadrature type, which requires a counter to count the pulses and a phase detection logic to determine the direction. This feedback method can also suffer from glitches which causes the encoder count to drift from the correct value. The [PSoC microcontroller](http://blog.mbedded.ninja/programming/microcontrollers/psoc) has a very nice quadrature decoding component with built-in glitch filtering.
+The [encoder](/electronics/components/encoders) method uses, well, an encoder attached to the axle to determine rotor position. This is more complex than the hall-effect method as the encoder output requires decoding. The encoder is typically of the incremental qunadrature type, which requires a counter to count the pulses and a phase detection logic to determine the direction. This feedback method can also suffer from glitches which causes the encoder count to drift from the correct value. The [PSoC microcontroller](/programming/microcontrollers/psoc) has a very nice quadrature decoding component with built-in glitch filtering.
 
 **Zero-crossing** has become popular in recent years due to the fact it requires no sensors, making it cheap to implement. It is the method of measuring the voltage of the floating winding during operation (1 winding is always undriven), to determine the position of the rotor. One disadvantage of this method it does not work below a minimum speed (because the voltage is too small).
 
@@ -383,7 +383,7 @@ Phase displacement. Sinusoidal control requires three PWM signal's, preferably d
 
 ## Example LUT Code
 
-The following code is an example of how to create a LUT in the C programming language. This function calculates the LUT values at run-time, using the \(sin()\) function. In space constrained applications it may pay to pre-calculate the values and save them directly into flash. More help with the C language can be found [here](http://blog.mbedded.ninja/programming/languages/c).
+The following code is an example of how to create a LUT in the C programming language. This function calculates the LUT values at run-time, using the \(sin()\) function. In space constrained applications it may pay to pre-calculate the values and save them directly into flash. More help with the C language can be found [here](/programming/languages/c).
 
 ```c
     #include <math.h>
@@ -552,12 +552,12 @@ Closed-loop velocity control involves controlling the rpm of the motor to a desi
 **Feedback Can Come From:**
 
 * Hall-effect sensors (o.k.)
-* [Optical encoder](http://blog.mbedded.ninja/electronics/components/encoders) (better, especially at slow speeds)
+* [Optical encoder](/electronics/components/encoders) (better, especially at slow speeds)
 * Back E.M.F (good, but not at slow speeds)
 
 **Control Methods:**
 
-* [PID](http://blog.mbedded.ninja/programming/general/pid-control) PWM Control (soft or hard-chopping)
+* [PID](/programming/general/pid-control) PWM Control (soft or hard-chopping)
 
 # Closed-Loop Current Feedback
 
@@ -565,12 +565,12 @@ Closed-loop current control will give you a constant output torque. This means t
 
 **Feedback Can Come From:**
 
-* Low-side [current sense resistors](http://blog.mbedded.ninja/electronics/components/resistors) and single-sided ADC
-* High-side [current sense resistors](http://blog.mbedded.ninja/electronics/components/resistors) and a differential ADC
+* Low-side [current sense resistors](/electronics/components/resistors) and single-sided ADC
+* High-side [current sense resistors](/electronics/components/resistors) and a differential ADC
 
 **Control Methods:**
 
-* [PID](http://blog.mbedded.ninja/programming/microcontrollers/general/pid-control) PWM Control
+* [PID](/programming/microcontrollers/general/pid-control) PWM Control
 
 # Sliding Mode Observer
 
@@ -593,7 +593,7 @@ The execution time of the code which controls the PWM duty cycle is critical, es
 * Precalculate any maths that can be done before-hand
 * Make sure the compiler optimises for speed, not space
 
-See the [C Programming page](http://blog.mbedded.ninja/programming/languages/c) for more help on this subject.
+See the [C Programming page](/programming/languages/c) for more help on this subject.
 
 # BLDC Maths
 
@@ -627,7 +627,7 @@ Flux = Magnetic field lines per unit area
 
 FSB50825US - Fairchild Smart Power Module (SPM)  
 
- Package: [SPM-23](http://blog.mbedded.ninja/electronics/circuit-design/component-packages#spm23)  
+ Package: [SPM-23](/electronics/circuit-design/component-packages#spm23)  
 
  Shoot-through Protection: No  
 

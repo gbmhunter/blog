@@ -18,7 +18,7 @@ tags:
 - skateboard
 ---
 
-All the info I recorded about 38PVC, a experimental rocket motor I was playing around with in 2007, has got it's [own page](http://blog.mbedded.ninja/pyrotechnics/rocketry/projects/38pvc).
+All the info I recorded about 38PVC, a experimental rocket motor I was playing around with in 2007, has got it's [own page](/pyrotechnics/rocketry/projects/38pvc).
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/03-anchor-holes-and-disk.jpg"   width="400px" >}}
 
@@ -34,4 +34,4 @@ And the rocket-board video can be found on YouTube.
 
 [youtube=http://www.youtube.com/watch?v=SPJvFzGbNCA]
 
-Click here to go to the page [38PVC](http://blog.mbedded.ninja/pyrotechnics/rocketry/projects/38pvc).
+Click here to go to the page [38PVC](/pyrotechnics/rocketry/projects/38pvc).

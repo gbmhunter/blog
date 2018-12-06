@@ -11,7 +11,7 @@ url: /robotics/ros/topics-publishers-and-subscribers
 
 ROS provides a publish and subscribe mechanism on message buses called topics.
 
-More information about the ROS messages can be found on the [Messages page](http://blog.mbedded.ninja/robotics/ros/messages).
+More information about the ROS messages can be found on the [Messages page](/robotics/ros/messages).
 
 # Custom Subscriber Callbacks
 

@@ -14,4 +14,4 @@ tags:
 - workshop
 ---
 
-Happy new year's everyone! Hope you had an awesome time. I spent it down in Little Akaloa (on the Banks Peninsula, Canterbury, New Zealand), camping with mates. Anyways, I have updated the [Electrical Suppliers](http://blog.mbedded.ninja/electronics/other/electrical-suppliers), added the [Leyden Jar](http://blog.mbedded.ninja/electronics/projects/leyden-jars-high-voltage-bottle-capacitors) project that I did in 2005 to the electronics section, and added a section showing what I have in [My Workshop](http://blog.mbedded.ninja/electronics/other/my-workshop).
+Happy new year's everyone! Hope you had an awesome time. I spent it down in Little Akaloa (on the Banks Peninsula, Canterbury, New Zealand), camping with mates. Anyways, I have updated the [Electrical Suppliers](/electronics/other/electrical-suppliers), added the [Leyden Jar](/electronics/projects/leyden-jars-high-voltage-bottle-capacitors) project that I did in 2005 to the electronics section, and added a section showing what I have in [My Workshop](/electronics/other/my-workshop).

@@ -80,4 +80,4 @@ Note that the above BIT_MASK and SET_BITS macros only work for variables up to M
 
 # Use In The Industry
 
-Many microcontroller manufactures (e.g. [Atmel](http://blog.mbedded.ninja/programming/microcontrollers/atmel)), provide firmware libraries and example code which make extensive use of bitfield manipulation to modify the registers which control the hardware peripherals (e.g the register(s) which configures the baud rate, parity and num. stop bits for a UART).
+Many microcontroller manufactures (e.g. [Atmel](/programming/microcontrollers/atmel)), provide firmware libraries and example code which make extensive use of bitfield manipulation to modify the registers which control the hardware peripherals (e.g the register(s) which configures the baud rate, parity and num. stop bits for a UART).

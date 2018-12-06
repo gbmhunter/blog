@@ -350,4 +350,4 @@ If I ever made another version of improved this one, I probably would:
 
 # Gallery
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--6150)
+![](/nextgen-attach_to_post/preview/id--6150)

@@ -196,7 +196,7 @@ Large heatsinks designed for the TO-3 package can have thermal resistances as lo
 
 
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--6622)
+![](/nextgen-attach_to_post/preview/id--6622)
 
 
 

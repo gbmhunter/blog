@@ -578,4 +578,4 @@ The firmware can be found in the project repo under 'src' on [BitBucket](https:/
 
 > click any image below to start a slideshow-like gallery view
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--4816)
+![](/nextgen-attach_to_post/preview/id--4816)

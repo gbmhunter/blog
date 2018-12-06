@@ -314,7 +314,7 @@ The default way of building a CMake project usually looks something like:
 
 There is an interesting [Hunter package manager](https://github.com/ruslo/hunter) which is aimed at making CMake package management easier. I decided not to include Hunter as a separate build system because of the similarities, but it definitely shows promise when it comes to making CMake easier to use!
 
-For more information on CMake, see the [dedicated CMake section of mbedded.ninja](http://blog.mbedded.ninja/programming/compilers-build-systems/cmake).
+For more information on CMake, see the [dedicated CMake section of mbedded.ninja](/programming/compilers-build-systems/cmake).
 
 
 # Conan

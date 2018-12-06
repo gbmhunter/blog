@@ -31,4 +31,4 @@ The outputs of phototriac optical isolators usually go on to drive power TRIACs 
 
 To achieve good isolation, different-net pins must be kept well away from each other to prevent arcing. This prevents many small-pitch packages from being used for optical isolators.
 
-The two most common packages used for optical isolation components are the through-hole [DIP package](http://blog.mbedded.ninja/pcb-design/component-packages/dip-component-package) and the surface-mount [SOIC package](http://blog.mbedded.ninja/pcb-design/component-packages/soic-component-package).
+The two most common packages used for optical isolation components are the through-hole [DIP package](/pcb-design/component-packages/dip-component-package) and the surface-mount [SOIC package](/pcb-design/component-packages/soic-component-package).

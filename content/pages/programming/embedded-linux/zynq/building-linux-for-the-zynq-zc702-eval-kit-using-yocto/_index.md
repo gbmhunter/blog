@@ -17,7 +17,7 @@ More information on building and booting Linux on the Zyqn ZC702 using Yocto can
 
 ## Download/Setup Yocto
 
-If you want to get more familiar with Yocto, check out the [Yocto Quick Start guide](http://blog.mbedded.ninja/programming/embedded-linux/yocto-project).
+If you want to get more familiar with Yocto, check out the [Yocto Quick Start guide](/programming/embedded-linux/yocto-project).
 
 Firstly, install all the dependencies needed by Yocto:
 
@@ -307,7 +307,7 @@ More information about bootgen can be found in Appendix A - Using Bootgen (page 
 
 You can program the flash connected to the Zynq on the ZC-702 using Xilinx's xsdb and program_flash utilities.
 
-Firstly, make sure the micro-USB cable to the JTAG device on the ZC-702 (U23) is connected to your Linux OS (see the [Installing xsdb And JTAG Drivers page](http://blog.mbedded.ninja/programming/embedded-linux/zynq/installing-xsdb-and-jtag-drivers) for more info).
+Firstly, make sure the micro-USB cable to the JTAG device on the ZC-702 (U23) is connected to your Linux OS (see the [Installing xsdb And JTAG Drivers page](/programming/embedded-linux/zynq/installing-xsdb-and-jtag-drivers) for more info).
 
 The, connect to the target using xsdb:
 

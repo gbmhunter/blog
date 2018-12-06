@@ -11,4 +11,4 @@ tags:
 - rocketry
 ---
 
-New section added! [Rocketry](http://blog.mbedded.ninja/pyrotechnics/rocketry). Hope to see major updates to it in the few months. Very intresting, safe and rewarding hobby. Hopefully section will contain everything on how to build and fly your own rockets. A must for any pyro.
+New section added! [Rocketry](/pyrotechnics/rocketry). Hope to see major updates to it in the few months. Very intresting, safe and rewarding hobby. Hopefully section will contain everything on how to build and fly your own rockets. A must for any pyro.

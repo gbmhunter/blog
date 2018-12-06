@@ -17,7 +17,7 @@ A single capacitor/diode configuration (with additional smoothing capacitor on 
 
 Charge pumps can be used to provide the negative voltage to op-amps. They suit this application since op-amp power supplies typically require little current (1-20mA), and can generate the negative voltage from the main, higher-current, positive power source.
 
-Special charge pumps exist that only produce a very small negative voltage (e.g. -250mV), for providing the negative power supply to rail-to-rail "single-supply" op-amps so that they can output a true 0V. [More on this on the Op-amps page.](http://blog.mbedded.ninja/electronics/components/op-amps#rail-to-rail-op-amps)
+Special charge pumps exist that only produce a very small negative voltage (e.g. -250mV), for providing the negative power supply to rail-to-rail "single-supply" op-amps so that they can output a true 0V. [More on this on the Op-amps page.](/electronics/components/op-amps#rail-to-rail-op-amps)
 
 {{< figure src="/images/2011/09/lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png" width="409px" caption="The typical application schematic for the Texas Instruments LM7705, a 'Low-Noise Negative Bias Generator' for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/."  >}}
 

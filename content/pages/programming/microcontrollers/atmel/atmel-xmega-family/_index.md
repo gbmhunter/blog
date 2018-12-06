@@ -17,4 +17,4 @@ The XMEGA family supports JTAG and PDI programming. Supported programmers includ
 
 # Code Tutorials
 
-[General I/O](http://blog.mbedded.ninja/programming/microcontrollers/atmel-xmega-family/atmel-xmega-general-io)
+[General I/O](/programming/microcontrollers/atmel-xmega-family/atmel-xmega-general-io)

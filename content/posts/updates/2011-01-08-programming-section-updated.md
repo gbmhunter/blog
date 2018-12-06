@@ -14,4 +14,4 @@ tags:
 - programming
 ---
 
-Programming section has been updated with comms code for communication between two micro-controller. This was developed for the electric skateboard project but is totally generic and can be used for any project using two ATmega's that need to communicate with each other. Rather proud of this c module. Free to download!  Also check out the [Electric Skateboard Updates](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-updates).
+Programming section has been updated with comms code for communication between two micro-controller. This was developed for the electric skateboard project but is totally generic and can be used for any project using two ATmega's that need to communicate with each other. Rather proud of this c module. Free to download!  Also check out the [Electric Skateboard Updates](/electronics/projects/electric-skateboard/electric-skateboard-updates).

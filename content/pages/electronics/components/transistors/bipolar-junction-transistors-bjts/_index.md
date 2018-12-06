@@ -17,7 +17,7 @@ It was the first type of transistor to ever be mass produced.
 
 BJTs come in two flavours, NPN or PNP. They both have three terminals, the collector (C), the base (B) and the emitter (E).
 
-The differences between the NPN and PNP transistor types are analogous to the [N-Channel and P-Channel MOSFET](http://blog.mbedded.ninja/electronics/components/transistors/mosfets) types.
+The differences between the NPN and PNP transistor types are analogous to the [N-Channel and P-Channel MOSFET](/electronics/components/transistors/mosfets) types.
 
 # Schematic Symbols
 

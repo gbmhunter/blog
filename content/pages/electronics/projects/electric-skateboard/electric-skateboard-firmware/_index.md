@@ -69,7 +69,7 @@ Speed control is performed with a fixed-frequency, variable duty-cycle PWM perip
 
 ## Prototyping
 
-AVR Studio was used to program the ATmega8 chips used for prototyping (they come in a prototype board loving [DIP package](http://blog.mbedded.ninja/electronics/circuit-design/component-packages)). That was until communication crapped out between the AVRISPmkII and the new AVR Studio 5 (I'm not the only one who has had this problem.. From that point on I uninstalled the AVR Jungo drivers for the AVRISPmkII and used the command line programmer avrdude to program the chips, using the following command:
+AVR Studio was used to program the ATmega8 chips used for prototyping (they come in a prototype board loving [DIP package](/electronics/circuit-design/component-packages)). That was until communication crapped out between the AVRISPmkII and the new AVR Studio 5 (I'm not the only one who has had this problem.. From that point on I uninstalled the AVR Jungo drivers for the AVRISPmkII and used the command line programmer avrdude to program the chips, using the following command:
 
 ```
 avrdude -c avrispmkII - p atmega8 -P usb -U flash:w:<filename.hex>

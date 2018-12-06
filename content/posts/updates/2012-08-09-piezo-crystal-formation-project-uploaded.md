@@ -25,7 +25,7 @@ It's not hard to build your own homemade piezo crystals! The Piezo Crystal Forma
 
 We managed to get about 50-60V generated across it when hitting it softly with the back of a screwdriver. Unfortunately we couldn't get it to make any sound, this is probably harder to achieve due to getting the correct crystal shape (long and flat, I'm guessing) to make audible sound waves.
 
-See the [Piezo Crystal Formation Project page](http://blog.mbedded.ninja/electronics/projects/piezo-crystal-formation) for more info...
+See the [Piezo Crystal Formation Project page](/electronics/projects/piezo-crystal-formation) for more info...
 
 {{< figure src="/images/electronics-piezocrystalformation/2012-07-16-22-21-30.jpg" caption="A large homemade piezo crystal."  width="600px" >}}
 

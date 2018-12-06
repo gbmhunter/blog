@@ -33,7 +33,7 @@ The Due currently has a problem running the OneWire library. The micros() functi
 
 {{< figure src="/images/electronics-arduino/arduino-uno-pcb.jpg" caption="The Arduino UNO, the first ever Arduino PCB."  width="200px" >}}
 
-Being one of the most popular Arduino boards, most shields are designed to be compatible with the Arduino Uno. The original contains a [DIP-packaged](http://blog.mbedded.ninja/electronics/circuit-design/component-packages) microcontroller placed in a socket, but there is also a SMD version.
+Being one of the most popular Arduino boards, most shields are designed to be compatible with the Arduino Uno. The original contains a [DIP-packaged](/electronics/circuit-design/component-packages) microcontroller placed in a socket, but there is also a SMD version.
 
 The Specs:
 
@@ -49,7 +49,7 @@ The Specs:
 Legitimate versions: DigiKey, Element14, Mouser, e.t.c  
 Rip-offs: DealExtreme
 
-I used one of these in the [Luxcity Tonic UV Control System project](http://blog.mbedded.ninja/electronics/projects/luxcity-uv-tonic-control-system).
+I used one of these in the [Luxcity Tonic UV Control System project](/electronics/projects/luxcity-uv-tonic-control-system).
 
 # Arduino Yun
 

@@ -32,7 +32,7 @@ There are different types of terminal blocks:
 <td >These provide electrical isolation.
 </td></tr></tbody></table>
 
-You can see the push-in terminal blocks I used to connect up all the solenoids for the [Luxcity Tonic project](http://blog.mbedded.ninja/electronics/projects/luxcity-uv-tonic-control-system) in the image below (the green things with numbered stickers and wires coming out of them).
+You can see the push-in terminal blocks I used to connect up all the solenoids for the [Luxcity Tonic project](/electronics/projects/luxcity-uv-tonic-control-system) in the image below (the green things with numbered stickers and wires coming out of them).
 
 {{< figure src="/images/2015/12/arduino-relay-shields-and-relays.jpg" width="1200px" caption="The Arduino, the relay shields and the relays, set-up for testing."  >}}
 

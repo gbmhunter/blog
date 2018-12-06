@@ -164,7 +164,7 @@ Fast mode plus (Fm+) is an extension of I2C Fast mode which allows devices to co
 
 ## High-Speed
 
-The high-speed mode allows for communcation rates of up to 3.4Mbps, which makes it the fastest I2C mode available. It is an **officially supported** mode of operation, however, not many I2C devices support this mode of operation (the competing [SPI communcation protocol](http://blog.mbedded.ninja/electronics/communication-protocols/spi-protocol) seems to be the preferred way of doing things at >1Mbps). One of the key differences between normal I2C communcations and high-speed mode is the **current sourcing** capabilities of the master device. This allows the master to inject current onto the I2C lines to pull-them high faster than what pull-up resistors on their own would allow.
+The high-speed mode allows for communcation rates of up to 3.4Mbps, which makes it the fastest I2C mode available. It is an **officially supported** mode of operation, however, not many I2C devices support this mode of operation (the competing [SPI communcation protocol](/electronics/communication-protocols/spi-protocol) seems to be the preferred way of doing things at >1Mbps). One of the key differences between normal I2C communcations and high-speed mode is the **current sourcing** capabilities of the master device. This allows the master to inject current onto the I2C lines to pull-them high faster than what pull-up resistors on their own would allow.
 
 Also, the clock signal has a high to low ratio of 1:2, which is different the the ratio of 1:1 for all other modes.
 
@@ -192,7 +192,7 @@ There are variants on the I2C bus, defined and implemented by various manufactur
 
 # Addressing
 
-All I2C slave devices must have an address. This address is used by the master to select which device to talk with. All addresses are 7 bits long (EDIT April 2016, this is no longer true, see the [10-bit Addressing section](http://blog.mbedded.ninja/electronics/communication-protocols/i2c-protocol#10-bit-addressing)), and are left shifted by one and packed into the first byte which is sent across the I2C bus by the master (the final bit, bit 0, of the first byte, is used to signal whether a read or write operation is about to take place).
+All I2C slave devices must have an address. This address is used by the master to select which device to talk with. All addresses are 7 bits long (EDIT April 2016, this is no longer true, see the [10-bit Addressing section](/electronics/communication-protocols/i2c-protocol#10-bit-addressing)), and are left shifted by one and packed into the first byte which is sent across the I2C bus by the master (the final bit, bit 0, of the first byte, is used to signal whether a read or write operation is about to take place).
 
 ## Multiple ICs, Same Address?
 
@@ -330,13 +330,13 @@ Typically, the IC has a 7-bit address which if right-shifted with the read/write
 
 At this point, if the master is performing a write, the master's third word will write to the register pointed to by the address pointer (which was sent as the second word). The address pointer is automatically incremented by one a this point, allowing the master to write consecutive registers all at once without having to do separate I2C transmissions.
 
-{{< figure src="http://blog.mbedded.ninja/wp-content/gallery/electronics-misc/i2c-waveform-example-saleae-logic-analyser.png" caption="i2c-waveform-example-saleae-logic-analyser"  >}}
+{{< figure src="/wp-content/gallery/electronics-misc/i2c-waveform-example-saleae-logic-analyser.png" caption="i2c-waveform-example-saleae-logic-analyser"  >}}
 
 But if instead the master is performing a read, a repeated start is normally issued after writing to the address pointer. Then the master issues a read command (the IC's 7-bit address and the read/write bit set correctly). The master then provides clock pulses while the slave 'reads' out register contents beginning at the register set in the address pointer in the previous write cycle. Just as with a write, the address pointer is incremented automatically, allowing multiple registers to be read at once.
 
 The following image shows an I2C slave that is not responding. Notice the absence of an "ACK" on the SDA line on the 9th clock pulse. The slave should of pulled this low.
 
-![i2c-waveform-with-nak-saleae-logic-analyser](http://blog.mbedded.ninja/wp-content/gallery/electronics-misc/i2c-waveform-with-nak-saleae-logic-analyser.png)
+![i2c-waveform-with-nak-saleae-logic-analyser](/wp-content/gallery/electronics-misc/i2c-waveform-with-nak-saleae-logic-analyser.png)
 
 # Prototyping
 
@@ -344,4 +344,4 @@ I try to use SPI or UART over I2C (if the option exists, and there are no other 
 
 # Microcontroller Support
 
-I2C is a very popular protocol and is supported by most microcontrollers. Some examples of microcontroller I2C support include the TI MSP430 Enhanced Universal Serial Communication Interface (eUSCI),[ PSoC 3, 4, and 5LP I2C drag'n'drop modules](http://blog.mbedded.ninja/programming/microcontrollers/psoc/components#i2c) (both integrated and hardware fabric versions), and the Atmel Atmega TWI peripheral.
+I2C is a very popular protocol and is supported by most microcontrollers. Some examples of microcontroller I2C support include the TI MSP430 Enhanced Universal Serial Communication Interface (eUSCI),[ PSoC 3, 4, and 5LP I2C drag'n'drop modules](/programming/microcontrollers/psoc/components#i2c) (both integrated and hardware fabric versions), and the Atmel Atmega TWI peripheral.

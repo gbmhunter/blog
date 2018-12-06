@@ -15,7 +15,7 @@ The USB2.0 spec specifies a 90R differential impedance and a 45R single-ended im
 
 For most normal sized PCBs, signal integrity starts becoming an issue at the 480Mb/s USB baud rate.
 
-I recommend visiting the [Impedance Controlled Routing page](http://blog.mbedded.ninja/pcb-design/impedance-controlled-routing) before continuing here...
+I recommend visiting the [Impedance Controlled Routing page](/pcb-design/impedance-controlled-routing) before continuing here...
 
 # What Is My Bandwidth?
 
@@ -77,7 +77,7 @@ Thus, the minimum wavelength of the USB full-speed signal is 1.65m, and the char
 
 As you can see from the above table, for most PCB's designs, you don't really have to worry about USB2.0 low-speed tracks, you might be concerned about really long USB2.0 full-speed tracks, and you have to control the impedance for all but the smallest USB2.0 high-speed tracks.
 
-For more information, see the [Impedance Controlled Routing page](http://blog.mbedded.ninja/pcb-design/impedance-controlled-routing) in the [PCB Design section](http://blog.mbedded.ninja/pcb-design) of this website.
+For more information, see the [Impedance Controlled Routing page](/pcb-design/impedance-controlled-routing) in the [PCB Design section](/pcb-design) of this website.
 
 # What Should My Impedance Be?
 

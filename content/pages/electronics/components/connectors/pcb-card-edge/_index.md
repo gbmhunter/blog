@@ -17,7 +17,7 @@ Card-edge connectors are very susceptible to board warping and board thickness e
 
 {{< figure src="/images/2015/12/edge-connector-gold-fingers-and-bevel.png" width="445px" caption="Edge connector fingers which have been gold plated and the PCB bevelled. Image from http://www.eurocircuits.com/index.php/eurocircuits-printed-circuits-blog/gold-plating-for-edge-connectors."  >}}
 
-The following image is of PCB card edge connectors on the [Cavro XL-3000 syringe pump](http://blog.mbedded.ninja/electronics/teardowns/cavro-xl3000-8-port-syringe-pump-teardown).
+The following image is of PCB card edge connectors on the [Cavro XL-3000 syringe pump](/electronics/teardowns/cavro-xl3000-8-port-syringe-pump-teardown).
 
 {{< figure src="/images/2015/12/pcb-card-edge-connector-example-from-cavro-xl-3000.jpg" width="1200px" caption="An example of a PCB card edge connector. This is a photo of the Cavro XL-3000 syringe pump."  >}}
 

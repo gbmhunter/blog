@@ -9,7 +9,7 @@ url: /programming/operating-systems/windows
 
 # Overview
 
-These pages are all about the Windows operating system and the command-line interface. For information about how to write batch scripts and it's programming syntax, see the [Batch Files page](http://blog.mbedded.ninja/programming/languages/batch-files).
+These pages are all about the Windows operating system and the command-line interface. For information about how to write batch scripts and it's programming syntax, see the [Batch Files page](/programming/languages/batch-files).
 
 
 # Auto-complete

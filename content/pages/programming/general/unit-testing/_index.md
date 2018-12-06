@@ -31,13 +31,13 @@ Unit testing on embedded systems can be much harder than "typical" software unit
 
 If the particular embedded code in question doesn't rely on any hardware peripherals (like a message decoder or mathematical function), you don't usually need the embedded system to perform the tests on. This is great, since you can run them on a normal computer, and save you all the time and hassle of setting correct test conditions on a microcontroller.
 
-Linux is a great tool to use here, as it is great for compiling and testing C/C++ code, and usually supports the same compiler as which the embedded system uses (e.g. GCC), meaning you have to make little or no changes. See [Linux Bash Commands For C](http://blog.mbedded.ninja/programming/languages/c/linux-bash-commands-for-c) for instructions on how to compile C code in Linux, and the [Bash page](http://blog.mbedded.ninja/programming/scripting-languages/bash) for more helpful bash (Linux terminal) commands.
+Linux is a great tool to use here, as it is great for compiling and testing C/C++ code, and usually supports the same compiler as which the embedded system uses (e.g. GCC), meaning you have to make little or no changes. See [Linux Bash Commands For C](/programming/languages/c/linux-bash-commands-for-c) for instructions on how to compile C code in Linux, and the [Bash page](/programming/scripting-languages/bash) for more helpful bash (Linux terminal) commands.
 
 It is common practice to put unit tests in a separate folder to your source code. I (and others, including those who write libraries in python) use the name test .
 
 # C/C++
 
-See the [Programming->Languages->C++->Unit Testing And Mocking page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/unit-testing-and-mocking).
+See the [Programming->Languages->C++->Unit Testing And Mocking page](/programming/languages/c-plus-plus/unit-testing-and-mocking).
 
 # External Links
 

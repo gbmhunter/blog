@@ -14,7 +14,7 @@ Brew Start Date: 25/09/11
 
 Brew End Date: n/a
 
-Notes: This is the second all-grain wheat beer we've tried, after the first one ([Hefeweizen 1](http://blog.mbedded.ninja/homebrewing/brewing-notes/hefe-weizen-brewing-notes)) sadly got infected.
+Notes: This is the second all-grain wheat beer we've tried, after the first one ([Hefeweizen 1](/homebrewing/brewing-notes/hefe-weizen-brewing-notes)) sadly got infected.
 
 
 # Ingredients
@@ -287,7 +287,7 @@ The mash temperature was a little higher than hoped. Due to the large amount of 
 </table>
 **Notes:**
 
-Thankfully, this time around, the kettle filter didn't get as clogged as much as last time a Wheat beer was run though it (see the [Hefeweizen Brewing Notes](http://blog.mbedded.ninja/homebrewing/brewing-notes/hefe-weizen-brewing-notes)). This is possibly due to the runnier honey we used (previously we had suspicions that the faster cooling rate due to the new immersion cooler was causing more particles to fall out of suspension).
+Thankfully, this time around, the kettle filter didn't get as clogged as much as last time a Wheat beer was run though it (see the [Hefeweizen Brewing Notes](/homebrewing/brewing-notes/hefe-weizen-brewing-notes)). This is possibly due to the runnier honey we used (previously we had suspicions that the faster cooling rate due to the new immersion cooler was causing more particles to fall out of suspension).
 
 
 # Primary Fermentation

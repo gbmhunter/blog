@@ -26,7 +26,7 @@ url: /homebrewing/brewing-notes
 <td >001
 </td>
 
-<td >[Captain Happy Brewing Notes](http://blog.mbedded.ninja/homebrewing/brewing-notes/captain-happy-brewing-notes)
+<td >[Captain Happy Brewing Notes](/homebrewing/brewing-notes/captain-happy-brewing-notes)
 </td>
 
 <td >O.K.
@@ -37,7 +37,7 @@ url: /homebrewing/brewing-notes
 <td >002
 </td>
 
-<td >[Hefeweizen Brewing Notes](http://blog.mbedded.ninja/homebrewing/brewing-notes/hefe-weizen-brewing-notes)
+<td >[Hefeweizen Brewing Notes](/homebrewing/brewing-notes/hefe-weizen-brewing-notes)
 </td>
 
 <td >Infected
@@ -48,7 +48,7 @@ url: /homebrewing/brewing-notes
 <td >003
 </td>
 
-<td >[Hefeweizen 2 Brewing Notes](http://blog.mbedded.ninja/homebrewing/brewing-notes/hefeweizen-2-brewing-notes)
+<td >[Hefeweizen 2 Brewing Notes](/homebrewing/brewing-notes/hefeweizen-2-brewing-notes)
 </td>
 
 <td >Infected
@@ -59,7 +59,7 @@ url: /homebrewing/brewing-notes
 <td >004
 </td>
 
-<td >[Brewski Brewing Notes](http://blog.mbedded.ninja/homebrewing/brewing-notes/brewski-brewing-notes)
+<td >[Brewski Brewing Notes](/homebrewing/brewing-notes/brewski-brewing-notes)
 </td>
 
 <td >Infected
@@ -70,7 +70,7 @@ url: /homebrewing/brewing-notes
 <td >005
 </td>
 
-<td >[The Vasectomy Brewing Notes](http://blog.mbedded.ninja/homebrewing/brewing-notes/the-vasectomy-brewing-notes)
+<td >[The Vasectomy Brewing Notes](/homebrewing/brewing-notes/the-vasectomy-brewing-notes)
 </td>
 
 <td >O.K.
@@ -81,7 +81,7 @@ url: /homebrewing/brewing-notes
 <td >006
 </td>
 
-<td >[Hooray-weizen Brewing Notes](http://blog.mbedded.ninja/homebrewing/brewing-notes/hooray-weizen-brewing-notes)
+<td >[Hooray-weizen Brewing Notes](/homebrewing/brewing-notes/hooray-weizen-brewing-notes)
 </td>
 
 <td >Pending
@@ -92,7 +92,7 @@ url: /homebrewing/brewing-notes
 <td >007
 </td>
 
-<td >[Stout](http://blog.mbedded.ninja/homebrewing/brewing-notes/stout-brewing-notes)
+<td >[Stout](/homebrewing/brewing-notes/stout-brewing-notes)
 </td>
 
 <td >Pending
@@ -103,7 +103,7 @@ url: /homebrewing/brewing-notes
 <td >008
 </td>
 
-<td >[2E](http://blog.mbedded.ninja/homebrewing/brewing-notes/2e-brewing-notes)
+<td >[2E](/homebrewing/brewing-notes/2e-brewing-notes)
 </td>
 
 <td >Pending

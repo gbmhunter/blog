@@ -9,9 +9,9 @@ type: page
 
 # Overview
 
-Altium supports the ability to wire and run scripts, pieces of code which can perform repetitive tasks or tasks which would otherwise take along time for a person to do and speed up the PCB design process. Altium supports [DelphiScript](http://blog.mbedded.ninja/programming/languages/delphi) (.pas), EnableBasic, [VBScript](http://blog.mbedded.ninja/programming/languages/vbscript), [JavaScript](http://blog.mbedded.ninja/programming/website-design/javascript), and TCL scripting language sets.
+Altium supports the ability to wire and run scripts, pieces of code which can perform repetitive tasks or tasks which would otherwise take along time for a person to do and speed up the PCB design process. Altium supports [DelphiScript](/programming/languages/delphi) (.pas), EnableBasic, [VBScript](/programming/languages/vbscript), [JavaScript](/programming/website-design/javascript), and TCL scripting language sets.
 
-From my personal wonders it seems that [Delphi](http://blog.mbedded.ninja/programming/languages/delphi) and VBScript are the two most popular ([Delphi](http://blog.mbedded.ninja/programming/languages/delphi) being the one most of Altium's own examples are written in, and [VBScript](http://blog.mbedded.ninja/programming/languages/vbscript) being the one that many 3rd parties have used). My personal favourite is [VBScript](http://blog.mbedded.ninja/programming/languages/vbscript), due to it's simplicity (while not lacking any power).
+From my personal wonders it seems that [Delphi](/programming/languages/delphi) and VBScript are the two most popular ([Delphi](/programming/languages/delphi) being the one most of Altium's own examples are written in, and [VBScript](/programming/languages/vbscript) being the one that many 3rd parties have used). My personal favourite is [VBScript](/programming/languages/vbscript), due to it's simplicity (while not lacking any power).
 
 # Child Pages
 
@@ -29,9 +29,9 @@ Also, I have a project called [AltiumScriptCentral which can be downloaded from 
 
 # How To Write Your Own Scripts
 
-Below are tips and code examples to write your own Altium scripts. I prefer [VBScript](http://blog.mbedded.ninja/programming/languages/vbscript) (which to me personally was one of the easiest to grasp coming from a C/C++/C# background, and seems to be one of the widely supported languages), however most are written in [Delphi Script](http://blog.mbedded.ninja/programming/languages/delphi).
+Below are tips and code examples to write your own Altium scripts. I prefer [VBScript](/programming/languages/vbscript) (which to me personally was one of the easiest to grasp coming from a C/C++/C# background, and seems to be one of the widely supported languages), however most are written in [Delphi Script](/programming/languages/delphi).
 
-If you want to learn more about these scripting languages, check out the [VBScript page](http://blog.mbedded.ninja/programming/languages/vbscript) or the [Delphi page](http://blog.mbedded.ninja/programming/languages/delphi).
+If you want to learn more about these scripting languages, check out the [VBScript page](/programming/languages/vbscript) or the [Delphi page](/programming/languages/delphi).
 
 A word of caution, when writing/testing scripts (and running downloaded scripts for the first time), **always test them on a non-valuable PCB project (or similar)** incase the script does not work as expected! Buggy/rouge scripts can cause Altium to lock-up/crash, stop the undo from working (until you restart Altium), stop you from being able to save from that point onwards (again until you restart Altium), among other things! You do not want to lose your precious work!
 
@@ -150,7 +150,7 @@ I have experienced issues with calling RobotManager.SendMessage() before, resul
 
 It won't be long before you'll end up doing something like trigonometry in Altium scripts to work out the placement of objects onto a PCB. This kind of thing is not really dependent on Altium but more on the provided mathematics libraries that come with the scripting language you are using.
 
-Check out the [VBScript page](http://blog.mbedded.ninja/programming/languages/vbscript) to find out how to use the sin() and cos() family of functions, how to get a value for Pi, and more! All these are applicable to Altium scripts.
+Check out the [VBScript page](/programming/languages/vbscript) to find out how to use the sin() and cos() family of functions, how to get a value for Pi, and more! All these are applicable to Altium scripts.
 
 ## Catching Exceptions
 

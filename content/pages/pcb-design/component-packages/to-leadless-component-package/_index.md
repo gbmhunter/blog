@@ -154,7 +154,7 @@ As far as I know, the TO-Leadless package is solely used by Infineon for a range
 
 
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--5412)
+![](/nextgen-attach_to_post/preview/id--5412)
 
 
 

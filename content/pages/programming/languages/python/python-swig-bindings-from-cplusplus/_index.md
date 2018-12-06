@@ -110,7 +110,7 @@ _Sorted alphabetically:_
 
 # CMake
 
-CMake has built-in support for creating SWIG bindings for your C++ project (for more information on CMake itself, see [http://blog.mbedded.ninja/programming/build-systems-and-package-managers/cmake](http://blog.mbedded.ninja/programming/build-systems-and-package-managers/cmake)). To use CMake to build SWIG bindings, make sure to include the SWIG package with the following command in your CMakeLists.txt:
+CMake has built-in support for creating SWIG bindings for your C++ project (for more information on CMake itself, see [/programming/build-systems-and-package-managers/cmake](/programming/build-systems-and-package-managers/cmake)). To use CMake to build SWIG bindings, make sure to include the SWIG package with the following command in your CMakeLists.txt:
 
 ```    
 FIND_PACKAGE(SWIG REQUIRED)

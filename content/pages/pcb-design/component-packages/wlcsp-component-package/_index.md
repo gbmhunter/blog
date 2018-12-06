@@ -51,7 +51,7 @@ url: /pcb-design/component-packages/wlcsp-component-package
 
 
 
-	  * [BGA](http://blog.mbedded.ninja/pcb-design/component-packages/bga-component-package)
+	  * [BGA](/pcb-design/component-packages/bga-component-package)
 
 
 </td>
@@ -143,7 +143,7 @@ url: /pcb-design/component-packages/wlcsp-component-package
 
 The WLCSP package can either be rectangular or square in shape.
 
-The pin numbering follows the standard [BGA](http://blog.mbedded.ninja/pcb-design/component-packages/bga-component-package) convention, the columns are labelled with letters (A, B, C, ...) and the rows with numbers (1, 2, 3, ...). Thus pins are referred to as A1, C3, D11, e.t.c.
+The pin numbering follows the standard [BGA](/pcb-design/component-packages/bga-component-package) convention, the columns are labelled with letters (A, B, C, ...) and the rows with numbers (1, 2, 3, ...). Thus pins are referred to as A1, C3, D11, e.t.c.
 
 The rows of bumps maybe aligned in a grid or offset, again like BGA.
 

@@ -159,7 +159,7 @@ The SOD-123F component package has narrow, flat leads protruding from the base o
 
 
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--7608)
+![](/nextgen-attach_to_post/preview/id--7608)
 
 
 

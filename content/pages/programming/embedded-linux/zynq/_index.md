@@ -39,11 +39,11 @@ The Xilinx **S**oftware **D**evelopment **K**it (SDK) can be used to design and 
 
 You can run a number of different operating systems on the Cortex-A9 processor inside the Zynq FPGA. These include:
 
-* [Yocto-based builds](http://blog.mbedded.ninja/programming/embedded-linux/yocto-project) (Xilinx provides device and dev board support through [meta-xilinx](https://github.com/Xilinx/meta-xilinx))
-* [PetaLinux](http://blog.mbedded.ninja/programming/operating-systems/petalinux)
+* [Yocto-based builds](/programming/embedded-linux/yocto-project) (Xilinx provides device and dev board support through [meta-xilinx](https://github.com/Xilinx/meta-xilinx))
+* [PetaLinux](/programming/operating-systems/petalinux)
 * Ubuntu (limited support, usually with a GUI)
-* [Android](http://blog.mbedded.ninja/programming/operating-systems/android)
-* [FreeRTOS](http://blog.mbedded.ninja/programming/operating-systems/freertos)
+* [Android](/programming/operating-systems/android)
+* [FreeRTOS](/programming/operating-systems/freertos)
 * [Arch Linux ARM](https://archlinuxarm.org/) (the ARM port of Arch Linux)
 
 # meta-xilinx

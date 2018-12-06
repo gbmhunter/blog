@@ -57,6 +57,11 @@ div.box {
     color: inherit;
 }
 
+article {
+    /* This forces content to stay within the bounds of the article element and wrap if needed */
+    width: 100%;
+}
+
 /* ========================================================================= */
 /* MAIN PAGE STYLING                                                         */
 /* ========================================================================= */

@@ -35,7 +35,7 @@ One of my favourite quotes:
 
 # Disadvantages Over C
 
-* Not as much support for embedded systems. Any self-respecting embedded system has a compiler for C. However, C++ compilers are less common. Saying that, many of the most popular microcontrollers such as the ATmega, [8-bit Arduino's](http://blog.mbedded.ninja/programming/microcontrollers/arduino) (which uses an ATmega anyway) support C++. And some of those that don't can be hacked to compile C++ (e.g. [PSoC 5](http://blog.mbedded.ninja/programming/microcontrollers/psoc)).
+* Not as much support for embedded systems. Any self-respecting embedded system has a compiler for C. However, C++ compilers are less common. Saying that, many of the most popular microcontrollers such as the ATmega, [8-bit Arduino's](/programming/microcontrollers/arduino) (which uses an ATmega anyway) support C++. And some of those that don't can be hacked to compile C++ (e.g. [PSoC 5](/programming/microcontrollers/psoc)).
 * Less transparent, loss of exact control over what the compiler generates
 * More memory issues, greater code footprint (potentially)
 * Function pointers no longer work the same way when they point to a function in a class (aka point to a member function)
@@ -54,7 +54,7 @@ Name mangling is a technique used by C++ compilers to distinguish overloaded fun
 
 Most embedded C++ compilers use GCC. The main competitor to the GCC compiler is Clang, however it is not as common in embedded environments (I have never personally used Clang to compile for an embedded application).
 
-See the [Linux Bash Commands For C++ page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/linux-bash-commands-for-cpp) for a quickstart C++ guide for Linux.
+See the [Linux Bash Commands For C++ page](/programming/languages/c-plus-plus/linux-bash-commands-for-cpp) for a quickstart C++ guide for Linux.
 
 # Constructors
 

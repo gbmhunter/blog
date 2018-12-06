@@ -27,7 +27,7 @@ The **custom algorithm section** allows you to enter a CRC width from 1-64 bits,
 
 **Either [download NinjaCalc v1.3.0 here](http://mbedded-ninja.github.io/NinjaCalc/)**, or open up your previous installation and click yes to update when prompted.
 
-More information on CRC algorithms can be found on the [CRCs (Cyclic Redundancy Checks) page](http://blog.mbedded.ninja/programming/general/crcs-cyclic-redundancy-checks).
+More information on CRC algorithms can be found on the [CRCs (Cyclic Redundancy Checks) page](/programming/general/crcs-cyclic-redundancy-checks).
 
 **Changelog**
 

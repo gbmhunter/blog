@@ -108,7 +108,7 @@ Wire thickness (total, including shealth): 8mm (OD)
 
 ## Motor Controller
 
-The motor controller was brought after I gave up in frustration about trying to build my own half-bridge (and I didn't give up easily, see the post [Skateboard Half-Bridge Blew Up (for the 10th+ time)](http://blog.mbedded.ninja/electronics/electronics-electric-skateboard/skateboard-h-bridge-blew-up-for-the-10th-time)).
+The motor controller was brought after I gave up in frustration about trying to build my own half-bridge (and I didn't give up easily, see the post [Skateboard Half-Bridge Blew Up (for the 10th+ time)](/electronics/electronics-electric-skateboard/skateboard-h-bridge-blew-up-for-the-10th-time)).
 
 
 <table>
@@ -179,7 +179,7 @@ The motor controller was brought after I gave up in frustration about trying to 
 </tbody>
 </table>
 
-I had a sneak peak around in the guts of this thing, and I discovered that it had four n-channel MOSFETs (STP75NF75x4) and four schottky diodes (NFA19) to make up the half-bridge. Both components were in the [TO-220AB](http://blog.mbedded.ninja/electronics/circuit-design/component-packages#to-220ab) package, and each all four of each were in series to increase the current capabilities.
+I had a sneak peak around in the guts of this thing, and I discovered that it had four n-channel MOSFETs (STP75NF75x4) and four schottky diodes (NFA19) to make up the half-bridge. Both components were in the [TO-220AB](/electronics/circuit-design/component-packages#to-220ab) package, and each all four of each were in series to increase the current capabilities.
 
 {{< figure src="/images/electronics-electricskateboard/2012-06-15-18-31-28.jpg" caption="The quarter-bridge motor driver that I ended up buying from AliExpress."  width="600px" >}}
 

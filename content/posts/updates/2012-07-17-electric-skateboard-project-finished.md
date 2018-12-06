@@ -44,4 +44,4 @@ Here is what it looks like at night time.
 
 **More Info**
 
-If you want to see more info about it, go to the [Electric Skateboard Project](http://blog.mbedded.ninja/electronics/projects/electric-skateboard) page.
+If you want to see more info about it, go to the [Electric Skateboard Project](/electronics/projects/electric-skateboard) page.

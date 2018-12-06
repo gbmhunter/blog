@@ -13,7 +13,7 @@ emWin is a graphical user interface designed for embedded systems. Cypress provi
 
 <blockquote>emWin is designed to provide an efficient, processor- and LCD controller-independent graphical user interface (GUI) for any application that operates with a graphical LCD.</blockquote>
 
-I want to make and ammendment here as say that you can use emWin for not just LCD displays, but any display which is controlled via pixel information (such as [OLED displays](http://blog.mbedded.ninja/electronics/components/oled-screens)). You** do not have access to the emWin source code**, instead you are given a pre-compiled object file, headers, and source code only for the port-specific functions. Unfortunately, the graphics library is not provided as a quick-and-simple PSoC component which can be drag 'n' dropped onto the schematics in PSoC Creator. Instead, you have to download the code library as a zip file, and manually install it.
+I want to make and ammendment here as say that you can use emWin for not just LCD displays, but any display which is controlled via pixel information (such as [OLED displays](/electronics/components/oled-screens)). You** do not have access to the emWin source code**, instead you are given a pre-compiled object file, headers, and source code only for the port-specific functions. Unfortunately, the graphics library is not provided as a quick-and-simple PSoC component which can be drag 'n' dropped onto the schematics in PSoC Creator. Instead, you have to download the code library as a zip file, and manually install it.
 
 # Installing In PSoC Creator
 

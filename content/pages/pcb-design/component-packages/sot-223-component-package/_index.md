@@ -70,7 +70,7 @@ url: /pcb-design/component-packages/sot-223-component-package
 
 
 
-	  * [SOT-23](http://blog.mbedded.ninja/pcb-design/component-packages/sot-23-component-package)
+	  * [SOT-23](/pcb-design/component-packages/sot-23-component-package)
 
 
 </td>

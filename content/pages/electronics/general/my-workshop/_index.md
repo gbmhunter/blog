@@ -77,9 +77,9 @@ I have used the .csv files to display graphs via Google visualizations on vario
 
 Logic analysers are great tools for looking a digital circuits! Most oscilloscopes are great for looking at analogue waveforms, but have serious limitations when looking at digital waveforms (except fancy versions, which have digital analysers built in, or offer a hardware extension).
 
-Logic analysers usually have 8 or more inputs. They record the 1's and 0's on the inputs, and often have advanced features like comm protocol decode support. This means they can decode the information sent across common communication protocols, making debugging easier as you no longer have to look at each individual bit and work out what was sent. They commonly support protocols such as [UART](http://blog.mbedded.ninja/electronics/circuit-design/uart), [SPI](http://blog.mbedded.ninja/electronics/circuit-design/communication-protocols/spi-protocol), and [I2C](http://blog.mbedded.ninja/electronics/circuit-design/i2c-communication), and less commonly LIN and CAN.
+Logic analysers usually have 8 or more inputs. They record the 1's and 0's on the inputs, and often have advanced features like comm protocol decode support. This means they can decode the information sent across common communication protocols, making debugging easier as you no longer have to look at each individual bit and work out what was sent. They commonly support protocols such as [UART](/electronics/circuit-design/uart), [SPI](/electronics/circuit-design/communication-protocols/spi-protocol), and [I2C](/electronics/circuit-design/i2c-communication), and less commonly LIN and CAN.
 
-The particular [Saleae](http://www.saleae.com/) "[Logic](http://www.saleae.com/logic)" logic analyser below uses a [PSoC microcontroller](http://blog.mbedded.ninja/programming/microcontrollers/psoc).
+The particular [Saleae](http://www.saleae.com/) "[Logic](http://www.saleae.com/logic)" logic analyser below uses a [PSoC microcontroller](/programming/microcontrollers/psoc).
 
 {{< figure src="/images/my-workshop/digital-logic-analyzer.jpg" caption="A digital logic analyser."  width="400px" >}}
 
@@ -205,7 +205,7 @@ PCB's are useful when developing a circuit past the quick prototype stage. I hav
 
 ## Altium
 
-Altium is a CAD package for designing circuit boards. It is a very expensive (like most high-end CAD packages) piece of software, that I do not own personally. Luckily, the company I work for has commercial licences, which I use when designing PCB's. If you want to know more about it, go to the [Altium page](http://blog.mbedded.ninja/electronics/general/altium).
+Altium is a CAD package for designing circuit boards. It is a very expensive (like most high-end CAD packages) piece of software, that I do not own personally. Luckily, the company I work for has commercial licences, which I use when designing PCB's. If you want to know more about it, go to the [Altium page](/electronics/general/altium).
 
 ## Console Calculator
 

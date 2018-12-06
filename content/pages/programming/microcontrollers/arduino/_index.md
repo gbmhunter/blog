@@ -13,7 +13,7 @@ The Arduino is a low-cost, easy-to-use, microcontroller development environment.
 
 {{< figure src="/images/2011/11/arduino-uno-r3-photo.jpg" width="425px" caption="A photo of the Arduino Uno (revision r3). Image from https://www.wikimedia.org/."  >}}
 
-The Arduino platform was used in the [Luxcity Tonic UV Control System project](http://blog.mbedded.ninja/electronics/projects/luxcity-uv-tonic-control-system) that I designed.
+The Arduino platform was used in the [Luxcity Tonic UV Control System project](/electronics/projects/luxcity-uv-tonic-control-system) that I designed.
 
 # Windows 8
 

@@ -109,5 +109,5 @@ Synonyms: DGS (Texas Instruments), VSSOP-10 (Texas Instruments)
 
 # **Images**
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--5082)
+![](/nextgen-attach_to_post/preview/id--5082)
 

@@ -45,8 +45,8 @@ url: /pcb-design/component-packages/micro-melf-component-package
 
 
 
-	  * [MELF](http://blog.mbedded.ninja/pcb-design/component-packages/melf-component-package)
-	  * [Mini-MELF (SOD-80, DO-213AA)](http://blog.mbedded.ninja/pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package)
+	  * [MELF](/pcb-design/component-packages/melf-component-package)
+	  * [Mini-MELF (SOD-80, DO-213AA)](/pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package)
 
 
 </td>

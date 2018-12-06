@@ -130,7 +130,7 @@ Solder Lug: Designed so that wires can be soldered onto the pins. This style of 
 
 # Uses
 
-Many older consumer products and prototype circuits of all ages use the DE-9 connector for [RS-232 communications](http://blog.mbedded.ninja/electronics/communication-protocols/rs-232-protocol). However, it is becoming less common, with USB-to-UART cables becoming more popular, which get connected directly to a microcontrollers pins through flying leads, standard header, or USB connector (in this case the USB-to-UART converter is usually on the board itself, i.e. [Arduino boards](http://blog.mbedded.ninja/programming/microcontrollers/arduino)).
+Many older consumer products and prototype circuits of all ages use the DE-9 connector for [RS-232 communications](/electronics/communication-protocols/rs-232-protocol). However, it is becoming less common, with USB-to-UART cables becoming more popular, which get connected directly to a microcontrollers pins through flying leads, standard header, or USB connector (in this case the USB-to-UART converter is usually on the board itself, i.e. [Arduino boards](/programming/microcontrollers/arduino)).
 
 # Filtered D-sub Connectors
 

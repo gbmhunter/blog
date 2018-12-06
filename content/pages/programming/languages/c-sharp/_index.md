@@ -67,7 +67,7 @@ There is a popular "cross platform, open source, .NET development framework" cal
 
 # Signal Processing
 
-The [Math.Net project](http://www.mathdotnet.com/) contains the ["Neodym" library](http://neodym.mathdotnet.com/) for signal processing in C#. See the [Signal Processing page](http://blog.mbedded.ninja/programming/general/signal-processing) for more information.
+The [Math.Net project](http://www.mathdotnet.com/) contains the ["Neodym" library](http://neodym.mathdotnet.com/) for signal processing in C#. See the [Signal Processing page](/programming/general/signal-processing) for more information.
 
 # Rounding
 
@@ -148,7 +148,7 @@ This library supports multiple commands, which is useful if you want to use the 
 
 You can manipulate Microsoft Office applications quite easily within the .NET framework (which includes C#). See the following page I wrote for more information.
 
-=> [Windows Office Application Interface](http://blog.mbedded.ninja/programming/c-programming-2/windows-office-application-interface)
+=> [Windows Office Application Interface](/programming/c-programming-2/windows-office-application-interface)
 
 # Installing Third-Party Libraries
 

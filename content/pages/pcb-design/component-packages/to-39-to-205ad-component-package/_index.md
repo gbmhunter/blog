@@ -86,5 +86,5 @@ You can get clip-on heatsinks for the TO-39 package with thermal resistances of 
 
 # Other Images
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--6589)
+![](/nextgen-attach_to_post/preview/id--6589)
 

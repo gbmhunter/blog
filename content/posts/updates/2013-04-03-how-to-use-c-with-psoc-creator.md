@@ -20,7 +20,7 @@ Ever wanted to write C++ for the PSoC 5 or 5LP chips in PSoC Creator?
 
 Well, although PSoC Creator doesn't natively support it, you can quite easily **do a few 'hacks', and you'll be writing in C++ in no time**.
 
-A new page "[Using C++ With PSoC Creator](http://blog.mbedded.ninja/programming/microcontrollers/psoc/using-cplusplus-with-psoc-creator)", under Programming->[PSoC](http://blog.mbedded.ninja/programming/microcontrollers/psoc), explains the steps required to compile C++ code in Cypress's PSoC Creator.
+A new page "[Using C++ With PSoC Creator](/programming/microcontrollers/psoc/using-cplusplus-with-psoc-creator)", under Programming->[PSoC](/programming/microcontrollers/psoc), explains the steps required to compile C++ code in Cypress's PSoC Creator.
 
 It covers the four main steps:
 
@@ -42,4 +42,4 @@ Preventing exception functionality to prevent linker errors such as "undefined 
 
 The steps have pictures and code examples to help you through the process.
 
-Checkout the page [here](http://blog.mbedded.ninja/programming/microcontrollers/psoc/using-cplusplus-with-psoc-creator).
+Checkout the page [here](/programming/microcontrollers/psoc/using-cplusplus-with-psoc-creator).

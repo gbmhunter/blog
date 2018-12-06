@@ -59,7 +59,7 @@ Here's a list of some useful design tools which come in useful when making PCB's
 <td >
 </td>
 
-<td >[http://blog.mbedded.ninja/electronics/general/online-calculators](http://www.daycounter.com/Calculators/Standard-Resistor-Value-Calculator.phtml)
+<td >[/electronics/general/online-calculators](http://www.daycounter.com/Calculators/Standard-Resistor-Value-Calculator.phtml)
 </td>
 </tr>
 </tbody>
@@ -164,7 +164,7 @@ Route on the top or bottom layers if possible, especially when prototyping, this
 
 # EMC Considerations/Noise Supression
 
-This is a big topic, and has it's own page [here](http://blog.mbedded.ninja/electronics/circuit-design/noise-supression).
+This is a big topic, and has it's own page [here](/electronics/circuit-design/noise-supression).
 
 # PCB Antennas
 
@@ -172,7 +172,7 @@ This is a big topic, and has it's own page [here](http://blog.mbedded.ninja/elec
 
 In some situations, antennas for wireless communications can be formed directly on the PCB, with no need for an external component. They are normally used with carrier frequencies in the UHF range (300MHz-3GHz), due to these have frequencies having the appropriate wavelength for PCB construction. They are very cheap, and easy to tune, at the expense of sacrificing some communication range relative to a external antenna. PCB antennas are commonly made for:
 
-* [RFID](http://blog.mbedded.ninja/electronics/circuit-design/rfid)
+* [RFID](/electronics/circuit-design/rfid)
 * 2.4GHz communication (e.g. ZigBee, Wi-Fi, ANT+)
 
 ## Stress Relief Antennas
@@ -187,7 +187,7 @@ Any PCB antenna that isn't for radio transmission or stress relief is probably a
 
 # Heatsinking
 
-See the [Heatsinking page](http://blog.mbedded.ninja/electronics/circuit-design/heatsinks).
+See the [Heatsinking page](/electronics/circuit-design/heatsinks).
 
 # Mounting
 
@@ -207,7 +207,7 @@ Below is an example of a SMD standoff from [Pem Engineering](http://www.pemnet.c
 
 # Desiccant
 
-Desiccant (a moisture absorbing compound), can be a good thing to use if your PCB is at risk of condensation. {{< figure src="/images/electronics-misc/dessicant-on-oven-tray.jpg" caption="Desiccant about to be dried on an oven tray."  width="400px" >}} See the [Desiccant page](http://blog.mbedded.ninja/electronics/components/desiccant) for more info.
+Desiccant (a moisture absorbing compound), can be a good thing to use if your PCB is at risk of condensation. {{< figure src="/images/electronics-misc/dessicant-on-oven-tray.jpg" caption="Desiccant about to be dried on an oven tray."  width="400px" >}} See the [Desiccant page](/electronics/components/desiccant) for more info.
 
 # Making It Look Good
 
@@ -225,11 +225,11 @@ This is an example of a PCB which I really like. It is called "[The Mojo](http:/
 
 Panelization is when you combine multiple PCB designs onto one PCB board, with the normal intention of saving costs associated with producing individual PCB's. Most PCB manufacturers support panelization and will route/v-score each design out for you, so you can separate them easily.
 
-[Altium](http://blog.mbedded.ninja/electronics/general/altium) supports panelization. There is also software called [GerbMerge](https://github.com/unwireddevices/gerbmerge), an open-source tool which merges Gerber files together.
+[Altium](/electronics/general/altium) supports panelization. There is also software called [GerbMerge](https://github.com/unwireddevices/gerbmerge), an open-source tool which merges Gerber files together.
 
 # Sending It To A PCB Manufacturer
 
-For a review on different PCB manufacturers and their capabilities, see the [PCB Manufacturers section of the Electrical Suppliers page](http://blog.mbedded.ninja/electronics/general/electrical-suppliers#pcb-manufacturers).
+For a review on different PCB manufacturers and their capabilities, see the [PCB Manufacturers section of the Electrical Suppliers page](/electronics/general/electrical-suppliers#pcb-manufacturers).
 
 # PCB Rework
 
@@ -239,4 +239,4 @@ Below is an example of a screwed PCB after too much rework was done on a 0.5mm p
 
 # PCB Design Checklist
 
-Click [here](http://blog.mbedded.ninja/electronics/circuit-design/pcb-design/pcb-design-checklist).
+Click [here](/electronics/circuit-design/pcb-design/pcb-design-checklist).

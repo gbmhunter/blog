@@ -9,4 +9,4 @@ type: page
 
 A vacuum tube is a device which controls a electric current through a vacuum created by a sealed container.
 
-Although none were "used" in the [Columbus Radio project](http://blog.mbedded.ninja/electronics/projects/columbus-radio), the radio itself still had some beautiful valves in it (which I left in even though the valve circuitry is not used).
+Although none were "used" in the [Columbus Radio project](/electronics/projects/columbus-radio), the radio itself still had some beautiful valves in it (which I left in even though the valve circuitry is not used).

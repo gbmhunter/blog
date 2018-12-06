@@ -37,7 +37,7 @@ void AssertRaised(const char * filename, int lineNumber);
 
 # A Note On __FILE__ and __LINE__
 
-`__FILE__` and `__LINE__` are special _Standard Predefined Macros_ as defined by the C language specifications. For more info, see the [File Names And Line Numbers section of the Preprocessor page](http://blog.mbedded.ninja/programming/languages/c/preprocessor#file-names-and-line-numbers).
+`__FILE__` and `__LINE__` are special _Standard Predefined Macros_ as defined by the C language specifications. For more info, see the [File Names And Line Numbers section of the Preprocessor page](/programming/languages/c/preprocessor#file-names-and-line-numbers).
 
 `__FILE__` and `__LINE__` can be **removed from the macro in flash constrained embedded systems** (storing the filename strings can take up a decent amount of flash).
 
@@ -47,7 +47,7 @@ Are there any other useful preprocessor keywords? How about `__func__`? This get
 
 # Printing The Failed assert() Condition
 
-Even more useful than just having the filename and line number is also printing the expression which caused the failed assert() . Luckily, this is easy to do, using the [preprocessor stringification symbol](http://blog.mbedded.ninja/programming/languages/c/preprocessor#stringification), #.
+Even more useful than just having the filename and line number is also printing the expression which caused the failed assert() . Luckily, this is easy to do, using the [preprocessor stringification symbol](/programming/languages/c/preprocessor#stringification), #.
 
 ```c    
 #define ASSERT(exp) (exp ? : AssertFailed(__FILE__, __LINE__, #exp))

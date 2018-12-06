@@ -34,7 +34,7 @@ So you've decided on using a PSoC microcontroller, but what from what family? Th
 # PSoC 5
 
 * Faster maximum clock speed (67MHz vs. 50MHz)
-* Uses the very popular [ARM Cortex-M3 core](http://blog.mbedded.ninja/programming/cpu-architectures/arm-cortex-m3).
+* Uses the very popular [ARM Cortex-M3 core](/programming/cpu-architectures/arm-cortex-m3).
 * Better compiler (IMO, GCC is much better than Keil)
 * More flash and ROM
 * More UDB (Universal Digital Blocks)
@@ -46,5 +46,5 @@ So you've decided on using a PSoC microcontroller, but what from what family? Th
 * Same maximum clock speed as PSoC 5 (67MHz). It was initially spec'd at 80MHz but was revised to 67MHz when the 5LP family was released.
 * The LP family fixed most of the known silicone errors with the original PSoC 5. Designed to eventually replace the PSoC 5.
 * Much lower sleep power usage, and added sleep functionality (the LP stands for "low power")
-* Like the PSoC 5, uses the [ARM Cortex-M3 core](http://blog.mbedded.ninja/programming/cpu-architectures/arm-cortex-m3).
-* You can get the PSoC 5LP micro in space saving [0.40mm pitch QFN packages](http://blog.mbedded.ninja/electronics/circuit-design/component-packages#qfn).
+* Like the PSoC 5, uses the [ARM Cortex-M3 core](/programming/cpu-architectures/arm-cortex-m3).
+* You can get the PSoC 5LP micro in space saving [0.40mm pitch QFN packages](/electronics/circuit-design/component-packages#qfn).

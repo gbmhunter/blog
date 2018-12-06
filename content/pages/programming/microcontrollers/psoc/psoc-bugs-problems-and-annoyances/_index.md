@@ -105,4 +105,4 @@ The workaround is to delete these manually. This is not hard, as you can group t
 
 # You Can Use The Two USB Pins As GPIO, But...
 
-But they have to set-up with either the "strong drive" or "open-drain drive low" drive mode first (even if they are inputs)! See the [Pins section on the PSoC->Components page](http://blog.mbedded.ninja/programming/microcontrollers/psoc/components#pins) for more info.
+But they have to set-up with either the "strong drive" or "open-drain drive low" drive mode first (even if they are inputs)! See the [Pins section on the PSoC->Components page](/programming/microcontrollers/psoc/components#pins) for more info.

@@ -9,7 +9,7 @@ type: page
 
 # Overview
 
-Active filters are electronic waveform filters which require their own power source (such as any filter powered with an [op-amp](http://blog.mbedded.ninja/electronics/components/op-amps)), as opposed to passive filters (such as RC filters) which do not require an external power source. Active filters allow higher roll-of and better transfer characteristics than passive filters, but require more componentry and consume power.
+Active filters are electronic waveform filters which require their own power source (such as any filter powered with an [op-amp](/electronics/components/op-amps)), as opposed to passive filters (such as RC filters) which do not require an external power source. Active filters allow higher roll-of and better transfer characteristics than passive filters, but require more componentry and consume power.
 
 # Types of Filters
 

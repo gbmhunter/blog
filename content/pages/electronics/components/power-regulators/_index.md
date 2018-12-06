@@ -198,7 +198,7 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 
 {{< figure src="/images/electronics-misc/recom-acdc-converter.jpg" caption="A Recom AC/DC converter module that can take 100-240VAC as it's input and outputs 12V at up to 83mA."  width="200px" >}}
 
-DC/DC converters and controllers are IC's which contain all of the logic and most of the passive componentry that makes up a switching power converter. When the industry talks about a DC/DC converter, they are talking about a chip which has an integrated switch (usually a [MOSFET](http://blog.mbedded.ninja/electronics/components/mosfets)). When they talk about a DC/DC controller, they are talking about a chip which requires an external switch.
+DC/DC converters and controllers are IC's which contain all of the logic and most of the passive componentry that makes up a switching power converter. When the industry talks about a DC/DC converter, they are talking about a chip which has an integrated switch (usually a [MOSFET](/electronics/components/mosfets)). When they talk about a DC/DC controller, they are talking about a chip which requires an external switch.
 
 Most DC/DC converters and controllers require at least an external input capacitor, switching inductor, and output capacitor. Some however, like Linear Technology uModule range, have the inductor/capacitors built in also. These tend to be rather expensive!
 
@@ -222,7 +222,7 @@ Although strictly not a DC/DC converter, you can purchase ready-to-go PCB-mounte
 
 ## Current Sharing
 
-You can balance current-sharing between two similar power supplies by adding in-line resistance to each of power supply outputs, before connecting them together. Normally power resistors are required (>= 5W), and resistances between 1mΩ and 1Ω are used. Basically, you want to choose the largest resistance that at maximum current won't overheat, and won't drop to much voltage so that the load does not operate correctly. I have used this technique successfully for the [Luxcity UV Tonic project](http://blog.mbedded.ninja/electronics/projects/luxcity-uv-tonic-control-system) to current-share between two computer power supplies that were driving the 64 solenoids.
+You can balance current-sharing between two similar power supplies by adding in-line resistance to each of power supply outputs, before connecting them together. Normally power resistors are required (>= 5W), and resistances between 1mΩ and 1Ω are used. Basically, you want to choose the largest resistance that at maximum current won't overheat, and won't drop to much voltage so that the load does not operate correctly. I have used this technique successfully for the [Luxcity UV Tonic project](/electronics/projects/luxcity-uv-tonic-control-system) to current-share between two computer power supplies that were driving the 64 solenoids.
 
 # Buck-Boost Converter
 

@@ -9,7 +9,7 @@ url: /programming/operating-systems/linux/programs/cp-copy
 
 # Overview
 
-If you want to move or rename files (instead of copying), please checkout the [mv command](http://blog.mbedded.ninja/programming/operating-systems/linux/programs/mv-move).
+If you want to move or rename files (instead of copying), please checkout the [mv command](/programming/operating-systems/linux/programs/mv-move).
 
 # Copying A Single File
 

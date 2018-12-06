@@ -68,4 +68,4 @@ We has a three-step diffusing method:
 
 # Images
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--6364)
+![](/nextgen-attach_to_post/preview/id--6364)

@@ -23,7 +23,7 @@ tags:
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/img_6210.jpg" caption="A supposedly '3kW' BLDC motor I got from Hobby King."  width="200px" >}}
 
-If you ever need to control a BLDC motor, hit up [this page](http://blog.mbedded.ninja/electronics/circuit-design/bldc-motor-control)! This newly added information is all about the different types of BLDC motor, how the windings and magnets are orientated, the different control methods and the different feedback variables.
+If you ever need to control a BLDC motor, hit up [this page](/electronics/circuit-design/bldc-motor-control)! This newly added information is all about the different types of BLDC motor, how the windings and magnets are orientated, the different control methods and the different feedback variables.
 
 It also has BLDC motor equations,
 
@@ -37,4 +37,4 @@ and example code.
 
 {{< figure src="/images/electronics-bldcmotors/bldc-motor-example-lut-code-screenshot.png" caption="Screenshot of the LUT code on the BLDC page."  width="600px" >}}
 
-This page can be found at Electronics->Circuit Design->[BLDC Motor Control](http://blog.mbedded.ninja/electronics/circuit-design/bldc-motor-control).
+This page can be found at Electronics->Circuit Design->[BLDC Motor Control](/electronics/circuit-design/bldc-motor-control).

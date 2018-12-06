@@ -97,7 +97,7 @@ A rotational capacitive encoder design is very much like the linear one, except 
 
 ## The Dielectric
 
-I recommend adding a dielectric between the PCB's (as well as the soldermask). Counter-intuitively, any dielectric added decreases the total capacitance. This is because although the dielectric increases the dielectric constant, it also increases the distance between the plates. This distance increase as a bigger effect on the capacitance than the dielectric increase, as per the [parallel-plate equation on the Capacitors page](http://blog.mbedded.ninja/electronics/components/capacitors).
+I recommend adding a dielectric between the PCB's (as well as the soldermask). Counter-intuitively, any dielectric added decreases the total capacitance. This is because although the dielectric increases the dielectric constant, it also increases the distance between the plates. This distance increase as a bigger effect on the capacitance than the dielectric increase, as per the [parallel-plate equation on the Capacitors page](/electronics/components/capacitors).
 
 The reason I recommend adding a dielectric is that it **stabilizes** the capacitances. It reduces the change in capacitance due to the two PCB's moving away from each other and also when moving out of alignment (the sliding mechanism is never perfect), making signal processing a whole lot easier.
 

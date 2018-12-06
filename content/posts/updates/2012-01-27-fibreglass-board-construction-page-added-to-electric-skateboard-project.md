@@ -18,6 +18,6 @@ Check it out below...
 
 -> Electric Skateboard - Fibreglass Board Construction
 
-> Note 26/12/2012: This has now been added to the "[Electric Skateboard Design page](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-design)", and the above link is no longer active.
+> Note 26/12/2012: This has now been added to the "[Electric Skateboard Design page](/electronics/projects/electric-skateboard/electric-skateboard-design)", and the above link is no longer active.
 
 [nggallery id=31]

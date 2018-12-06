@@ -13,4 +13,4 @@ tags:
 - video
 ---
 
-[Picture and movie gallery](http://blog.mbedded.ninja/pyrotechnics/general/pyrotechnic-videos) online. Adding pictures in the next few days. Theres a movie of a stick rocket in the movie gallery.
+[Picture and movie gallery](/pyrotechnics/general/pyrotechnic-videos) online. Adding pictures in the next few days. Theres a movie of a stick rocket in the movie gallery.

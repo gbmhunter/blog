@@ -17,7 +17,7 @@ MOSFETs should not be confused with MODFETs (modulation-doped FETs) or MESFETs (
 
 * Basic electric switches (turn a load on/off)
 * Totem-pole drivers
-* [H-bridges](http://blog.mbedded.ninja/electronics/circuit-design/h-bridges)
+* [H-bridges](/electronics/circuit-design/h-bridges)
 * 3-Phase Inverters
 * Current regulating shunts (with feedback)
 * Switch-mode PSUs
@@ -89,7 +89,7 @@ There are three ways in which a MOSFET can generally fail:  * Gate punch-through
 
 To prevent over-voltage failure's, TVS diodes, zener diodes, or snubber circuits can be used to protect the pins. TVS and zener diodes are the most common ways to do this, and are used to clamp the voltages to a safe level.
 
-Almost always, a MOSFET will short out the drain and source when it fails. This mean the MOSFET goes into conduction, and can destroy even more circuitry! Either make sure that your MOSFET won't fail, or take precautions against large currents if it does. I experienced plenty of MOSFET failures when designing the half-bridge for the [Electric Skateboard project](http://blog.mbedded.ninja/electronics/projects/electric-skateboard)).
+Almost always, a MOSFET will short out the drain and source when it fails. This mean the MOSFET goes into conduction, and can destroy even more circuitry! Either make sure that your MOSFET won't fail, or take precautions against large currents if it does. I experienced plenty of MOSFET failures when designing the half-bridge for the [Electric Skateboard project](/electronics/projects/electric-skateboard)).
 
 # Thermal Stability
 
@@ -107,7 +107,7 @@ In precise pulse-drive situations, it is desirable for the MOSFET to have simila
 
 # Industry Names
 
-* FRFET - A trademarked name by Fairchild used to label some of their fast-recovery MOSFETs used in inverter and [BLDC controller](http://blog.mbedded.ninja/electronics/circuit-design/bldc-motor-control) design
+* FRFET - A trademarked name by Fairchild used to label some of their fast-recovery MOSFETs used in inverter and [BLDC controller](/electronics/circuit-design/bldc-motor-control) design
 * PROFET - A name (it stands for protected-FET) used by [Siemens](http://www.siemens.com) and now [Infineon](http://www.infineon.com) to describe power MOSFETs with built in logic circuitry for "smart switches", designed for controlling current and voltage into a load. An document about PROFETs from Infineon can be found [here](http://www.infineon.com/dgdl?folderId=db3a30431400ef68011421b54e2e0564&fileId=db3a304332d040720132f7151b4a7955).
 
 # FinFET's
@@ -118,7 +118,7 @@ FinFET's are multi-fin FET's which overcome issues once MOSFET approach very sma
 
 # Load Switching
 
-MOSFET's can be used for load switches, as shown on the [Load Switches page](http://blog.mbedded.ninja/electronics/circuit-design/load-switches). They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
+MOSFET's can be used for load switches, as shown on the [Load Switches page](/electronics/circuit-design/load-switches). They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
 
 # Isolated Gate Drives
 
@@ -195,7 +195,7 @@ The range of operation has to be restricted because the transcondutance of a MOS
 
 # Spice Model
 
-Information about the MOSFET Spice model can be found on the [Altium Simulation page](http://blog.mbedded.ninja/electronics/general/altium/altium-simulation).
+Information about the MOSFET Spice model can be found on the [Altium Simulation page](/electronics/general/altium/altium-simulation).
 
 # Part Recommendations
 

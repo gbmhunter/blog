@@ -9,7 +9,7 @@ url: /mathematics/curve-fitting/polynomial-curve-fitting
 
 # Overview
 
-Before reading this page, please check out the [Linear Curve Fitting page](http://blog.mbedded.ninja/mathematics/curve-fitting/linear-curve-fitting). Many of the principles mentioned there will be re-used here, and will not be explained in as much detail.
+Before reading this page, please check out the [Linear Curve Fitting page](/mathematics/curve-fitting/linear-curve-fitting). Many of the principles mentioned there will be re-used here, and will not be explained in as much detail.
 
 {{< figure src="/images/2018/07/many-polynomial-best-fits-on-graph-300x225.png" width="605px" caption="A graph showing how different degree polynomials can be fitted to data."  >}}
 

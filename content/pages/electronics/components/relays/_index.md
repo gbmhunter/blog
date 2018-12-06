@@ -30,7 +30,7 @@ Relays with built in timers.
 
 Solid-state relays are relay's that don't have any moving mechanical parts involved in the switching. They use semi-conductor devices to perform the switching instead.
 
-The normal way of doing this is to perform the switching with back-to-back N-channel [MOSFETs](http://blog.mbedded.ninja/electronics/components/mosfets) whose gates are activated by a isolating opto-coupler (LED and receiver).
+The normal way of doing this is to perform the switching with back-to-back N-channel [MOSFETs](/electronics/components/mosfets) whose gates are activated by a isolating opto-coupler (LED and receiver).
 
 Below is the typical schematic symbol for a solid-state relay, along with a resistor connected to the input to limit the current through the internal LED.
 

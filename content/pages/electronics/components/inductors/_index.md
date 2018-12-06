@@ -9,13 +9,13 @@ type: page
 
 # Overview
 
-Inductors are passive electronic components which store energy as a magnetic field. They are made by coiling wire around a material (be it air, or something else). They are not as common as [resistors](http://blog.mbedded.ninja/electronics/components/resistors) and [capacitors](http://blog.mbedded.ninja/electronics/components/capacitors) in electronic circuits. They are related to [transformers](http://blog.mbedded.ninja/electronics/components/transformers).
+Inductors are passive electronic components which store energy as a magnetic field. They are made by coiling wire around a material (be it air, or something else). They are not as common as [resistors](/electronics/components/resistors) and [capacitors](/electronics/components/capacitors) in electronic circuits. They are related to [transformers](/electronics/components/transformers).
 
 {{< figure src="/images/electronics-misc/3-35uh-20a-large-inductor.jpg" caption="A 3.35uH 20A large inductor."   >}}
 
 **The mechanical equivalent of an inductor is mass.** The larger the inductance, the larger the mass. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
-Two inductances which are in close proximity they can couple with each, this is called **mutual inductance**. This is the basic principle behind a [transformer](http://blog.mbedded.ninja/electronics/components/transformers).
+Two inductances which are in close proximity they can couple with each, this is called **mutual inductance**. This is the basic principle behind a [transformer](/electronics/components/transformers).
 
 # Terminology
 
@@ -178,7 +178,7 @@ The energy stored in a inductor is given by:
     \(I\) is the current flowing through the inductor<br>
 </p>
 
-This equation is only valid when the inductor is operating in it's linear region, that is, before the current reachs the point where the magnetic feild begins to **saturate**. Notice that it is similar to the [equation for energy in a capacitor](http://blog.mbedded.ninja/electronics/components/capacitors#energy).
+This equation is only valid when the inductor is operating in it's linear region, that is, before the current reachs the point where the magnetic feild begins to **saturate**. Notice that it is similar to the [equation for energy in a capacitor](/electronics/components/capacitors#energy).
 
 # Simple Impedance Model
 
@@ -317,7 +317,7 @@ Inductors in series behave just like resistors in series.
 </tbody>
 </table>
 
-Inductors are commonly used as an energy storage component in [DC/DC converters](http://blog.mbedded.ninja/electronics/components/power-regulators).
+Inductors are commonly used as an energy storage component in [DC/DC converters](/electronics/components/power-regulators).
 
 # Air-cored Inductors
 
@@ -335,15 +335,15 @@ Air-cored inductors represent any inductor which contains no ferromagnetic mater
 
 # Ferrite Beads
 
-See the [Ferrite Beads page](http://blog.mbedded.ninja/electronics/components/ferrite-beads).
+See the [Ferrite Beads page](/electronics/components/ferrite-beads).
 
 # Inductor Kickback
 
 Inductor kickback is when an inductor the current through an inductor is quickly stopped, usually by making an open circuit. Because inductors "want to keep the current flowing", they generate a very large voltage spike in attempt to keep the current going. This large voltage spike can jump switch gaps, fry MOSFET's, destroy other sensitive circuitry, and give people dangerous shocks.
 
-A more technical way of looking a kickback is by analysing the [voltage-inductance equation](http://blog.mbedded.ninja/electronics/components/inductors#inductance-equation). From this is should be obvious that the inductors voltage is proportional to the change in current. Making an inductor open-circuit is creating a very large change in current, and hence it produces a very large voltage spike.
+A more technical way of looking a kickback is by analysing the [voltage-inductance equation](/electronics/components/inductors#inductance-equation). From this is should be obvious that the inductors voltage is proportional to the change in current. Making an inductor open-circuit is creating a very large change in current, and hence it produces a very large voltage spike.
 
-Inductor kickback is a significant design issue when using [relays](http://blog.mbedded.ninja/electronics/components/relays) or [motors](http://blog.mbedded.ninja/electronics/components/motors).
+Inductor kickback is a significant design issue when using [relays](/electronics/components/relays) or [motors](/electronics/components/motors).
 
 # Saturation Current
 

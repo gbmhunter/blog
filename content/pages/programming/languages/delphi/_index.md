@@ -11,7 +11,7 @@ url: /programming/languages/delphi
 
 Delphi grew out of the Turbo Pascal language.
 
-Delphi is one of the languages available for [writing scripts in Altium](http://blog.mbedded.ninja/electronics/other/altium/altium-scripting-and-using-the-api), a PCB design program.
+Delphi is one of the languages available for [writing scripts in Altium](/electronics/other/altium/altium-scripting-and-using-the-api), a PCB design program.
 
 # Code Blocks
 

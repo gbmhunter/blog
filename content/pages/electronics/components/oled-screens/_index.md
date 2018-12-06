@@ -29,7 +29,7 @@ OLED's suitable for electronic products typically range in resolution from 96x16
 
 # Communication/Connection Methods
 
-Most small OLED screens have inbuilt driver IC's such as the Solomon SSD1306, which takes care of the 100+ lines and allows you to connect the OLED module directly up to a microcontroller. [I2C](http://blog.mbedded.ninja/electronics/circuit-design/i2c-communication), [SPI](http://blog.mbedded.ninja/electronics/circuit-design/communication-protocols/spi-protocol) or parallel are the most commonly used communication methods. Normally they are provided with a solderable FPC connector (a flexible, flat, connector that can be soldered from both sides).
+Most small OLED screens have inbuilt driver IC's such as the Solomon SSD1306, which takes care of the 100+ lines and allows you to connect the OLED module directly up to a microcontroller. [I2C](/electronics/circuit-design/i2c-communication), [SPI](/electronics/circuit-design/communication-protocols/spi-protocol) or parallel are the most commonly used communication methods. Normally they are provided with a solderable FPC connector (a flexible, flat, connector that can be soldered from both sides).
 
 The cable to the OLED screen is usually designed to be soldered flat, or bent 180 degrees and soldered underneath the OLED screen itself. The cable sometimes have a pad pitch of 0.65mm, and you can't by connector to fit this (it needs to be directly soldered onto the PCB. The soldering can easily be done by hand.
 
@@ -37,7 +37,7 @@ Most OLED screens are pixel-driven, as opposed to character driven such as some 
 
 # Driver IC's
 
-The Solomon SSDxxxx IC's are a common choice as a driver IC for an OLED screen. They are usually embedded in the the screen itself (this makes sense, otherwise you would have hundreds of wires to connect up to the screen, one for each row and column), and connected to the external world via a communications protocol such as [SPI](http://blog.mbedded.ninja/electronics/circuit-design/communication-protocols/spi-protocol) or [I2C](http://blog.mbedded.ninja/electronics/circuit-design/i2c-communication).
+The Solomon SSDxxxx IC's are a common choice as a driver IC for an OLED screen. They are usually embedded in the the screen itself (this makes sense, otherwise you would have hundreds of wires to connect up to the screen, one for each row and column), and connected to the external world via a communications protocol such as [SPI](/electronics/circuit-design/communication-protocols/spi-protocol) or [I2C](/electronics/circuit-design/i2c-communication).
 
 ## Solomon SSD1305
 
@@ -75,7 +75,7 @@ You might notice that some OLED's specify a voltage range of 3.3-4.2V for the ch
 
 # Embedded Graphics Libraries
 
-Check out the [Installing And Using emWin On A PSoC page](http://blog.mbedded.ninja/programming/microcontrollers/psoc/installing-and-using-emwin-on-a-psoc).
+Check out the [Installing And Using emWin On A PSoC page](/programming/microcontrollers/psoc/installing-and-using-emwin-on-a-psoc).
 
 # Manufacturers/Distributers
 

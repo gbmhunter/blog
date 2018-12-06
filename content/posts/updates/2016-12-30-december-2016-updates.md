@@ -18,18 +18,18 @@ tags:
 ---
 
 
-* New [Containers page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/containers) under Programming->Languages->C++.  
+* New [Containers page](/programming/languages/c-plus-plus/containers) under Programming->Languages->C++.  
 
 	{{< figure src="/images/2016/12/cardboard-boxes.png"   >}}
 
-* New page [Boost Libraries](http://blog.mbedded.ninja/programming/languages/c-plus-plus/boost-libraries) under Programming->Languages->C++.  
+* New page [Boost Libraries](/programming/languages/c-plus-plus/boost-libraries) under Programming->Languages->C++.  
 
 	{{< figure src="/images/2017/01/boost-c-plus-plus-libraries-logo.png" width="277px" caption="The boost (C++ libraries) logo."  >}}
 
-* New [NuttX page](http://blog.mbedded.ninja/programming/operating-systems/nuttx) under Programming->Operating Systems.  
+* New [NuttX page](/programming/operating-systems/nuttx) under Programming->Operating Systems.  
 
 	{{< figure src="/images/2017/01/nuttx-rtos-logo.png" width="194px" caption="The NuttX logo."  >}}
 
-* New [Robotics section](http://blog.mbedded.ninja/robotics) added to the website.  
+* New [Robotics section](/robotics) added to the website.  
 
 	{{< figure src="/images/2016/12/robotics-roombot-humanoid-waving.png"   >}}

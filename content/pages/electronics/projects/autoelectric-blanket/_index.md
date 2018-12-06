@@ -323,4 +323,4 @@ A thing that caught me out is that the WebView URL has to have http:// at the fr
 
 # Image Gallery
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--5528)
+![](/nextgen-attach_to_post/preview/id--5528)

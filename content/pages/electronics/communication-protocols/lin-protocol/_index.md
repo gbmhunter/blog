@@ -13,7 +13,7 @@ The LIN protocol is a serial, wired communications protocol for electronic devic
 
 The LIN (local interconnect network) protocol was originally designed for localised communication within an automobile (for instance, between electrical devices in the door), while the CAM protocol was designed for global communication (e.g. from the back to the engine bay).
 
-It can be considered as a cross between the RS-232/UART and I2C protocols. It uses the open-drain, pull-up design of the [I2C protocol](http://blog.mbedded.ninja/electronics/circuit-design/i2c-communication), but the start/stop bit and asynchronous timing of the [UART protocol](http://blog.mbedded.ninja/electronics/circuit-design/uart).
+It can be considered as a cross between the RS-232/UART and I2C protocols. It uses the open-drain, pull-up design of the [I2C protocol](/electronics/circuit-design/i2c-communication), but the start/stop bit and asynchronous timing of the [UART protocol](/electronics/circuit-design/uart).
 
 # Bit Rate And Transmission Distances
 

@@ -16,4 +16,4 @@ The I2C communication has been updated with new info.
 
 {{< figure src="/images/electronics-misc/i2c-logo.gif" caption="The I2C logo."  width="320px" >}}
 
-Check it out [here](http://blog.mbedded.ninja/electronics/circuit-design/i2c-communication).
+Check it out [here](/electronics/circuit-design/i2c-communication).

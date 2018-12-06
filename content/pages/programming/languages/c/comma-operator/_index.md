@@ -54,4 +54,4 @@ Another good use is a clever manipulation of the comma operator to **prevent p
 #define ASSERT(exp)  ((void)(exp), (exp ? : AssertFailed(__FILE__, __LINE__, #exp)))
 ```
 
-will allow programmers to write `ASSERT(x == 3)` but not `ASSERT(x = 3)`. The comma operator helps achieve this (the comma operator is after the (void)(exp) bit). For more information on this, see the [C Assertions page](http://blog.mbedded.ninja/programming/languages/c/assertions-assert).
+will allow programmers to write `ASSERT(x == 3)` but not `ASSERT(x = 3)`. The comma operator helps achieve this (the comma operator is after the (void)(exp) bit). For more information on this, see the [C Assertions page](/programming/languages/c/assertions-assert).

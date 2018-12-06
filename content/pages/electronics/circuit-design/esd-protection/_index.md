@@ -32,12 +32,12 @@ The table below summarizes the different components you can use for ESD protecti
 		<tr >
 			<td>Zener Diode</td>
 			<td>Average</td>
-			<td >Zener diodes were designed for voltage regulation rather than ESD protection, but they can be used for low-power ESD protection. For more information, see the [Diodes](http://blog.mbedded.ninja/electronics/components/diodes) page.</td>
+			<td >Zener diodes were designed for voltage regulation rather than ESD protection, but they can be used for low-power ESD protection. For more information, see the [Diodes](/electronics/components/diodes) page.</td>
 		</tr>
 		<tr>
 			<td>TVS Diode</td>
 			<td>Excellent</td>
-			<td>These things are designed to handle high-power ESD surges. Turn on time is very good also. Uni-directional TVS diodes have a much faster turn-on time (e.g. 4ps) as opposed to bi-directional types (e.g. 4ns). For more information, see the [Diodes](http://blog.mbedded.ninja/electronics/components/diodes) page.</td>
+			<td>These things are designed to handle high-power ESD surges. Turn on time is very good also. Uni-directional TVS diodes have a much faster turn-on time (e.g. 4ps) as opposed to bi-directional types (e.g. 4ns). For more information, see the [Diodes](/electronics/components/diodes) page.</td>
 		</tr>
 	</tbody>
 </table>
@@ -98,4 +98,4 @@ Check the inputs maximum digital low and minimum digital high voltage levels. If
 
 # ESD Protection Of Capacitive Sensing I/O Lines
 
-See the [Capacitive Touch Sensing](http://blog.mbedded.ninja/electronics/circuit-design/capacitive-touch-sensing) page.
+See the [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-sensing) page.

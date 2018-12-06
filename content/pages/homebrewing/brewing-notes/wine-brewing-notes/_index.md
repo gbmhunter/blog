@@ -26,7 +26,7 @@ url: /homebrewing/brewing-notes/wine-brewing-notes
 <td >001
 </td>
 
-<td >[Feijoa Wine Brewing Notes](http://blog.mbedded.ninja/homebrewing/brewing-notes/wine-brewing-notes/feijoa-wine-brewing-notes)
+<td >[Feijoa Wine Brewing Notes](/homebrewing/brewing-notes/wine-brewing-notes/feijoa-wine-brewing-notes)
 </td>
 
 <td >Pending

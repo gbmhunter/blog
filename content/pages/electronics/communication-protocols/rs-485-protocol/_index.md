@@ -302,7 +302,7 @@ One such example is the Semtech SM712 diode array. Below is an image of the comp
 
 # SAE J1708
 
-SAE J1708 is a communications protocol standard by SAE in 1986. It was intended to be used for serial communications between ECUs on heavy duty vehicles. Today, the [CAN Bus protocol](http://blog.mbedded.ninja/electronics/communication-protocols/can-protocol) is usually used instead of SAE J1708.
+SAE J1708 is a communications protocol standard by SAE in 1986. It was intended to be used for serial communications between ECUs on heavy duty vehicles. Today, the [CAN Bus protocol](/electronics/communication-protocols/can-protocol) is usually used instead of SAE J1708.
 
 The hardware used for SAE J1708 is usually a RS-485 transceiver that is wired for open collector operation. Transmission of bits is done through controlling the driver enable pin of the transceiver (rather than using the data in (DI) pin, which is used during normal RS-485 operation).
 

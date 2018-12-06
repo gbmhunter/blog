@@ -81,7 +81,7 @@ The bandwidth of multi-layer piezos is usually between 200-500Hz and 20kHz. Beca
 
 # Homemade Piezo Crystals
 
-You can easily make crystals with a few common household ingredients. See the [Piezo Crystal Formation Project](http://blog.mbedded.ninja/electronics/projects/piezo-crystal-formation) for more information.
+You can easily make crystals with a few common household ingredients. See the [Piezo Crystal Formation Project](/electronics/projects/piezo-crystal-formation) for more information.
 
 {{< figure src="/images/electronics-piezocrystalformation/2012-07-16-22-21-30.jpg" caption="A large homemade piezo crystal."  width="600px" >}}
 

@@ -31,4 +31,4 @@ Their page can be found here ([http://stajegrouparchitects.wordpress.com/](http:
 
 {{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-tonic-hardware.jpg" caption="The hardware for the Luxcity Tonic project (just after it arrived)."  width="600px" >}}
 
-The project page can be found at Electronics->Projects->[Luxcity UV Tonic Control System](http://blog.mbedded.ninja/electronics/projects/luxcity-uv-tonic-control-system).
+The project page can be found at Electronics->Projects->[Luxcity UV Tonic Control System](/electronics/projects/luxcity-uv-tonic-control-system).

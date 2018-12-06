@@ -75,7 +75,7 @@ value = sin(180);
 
 {{< figure src="/images/programming-misc/c-build-warning-pragma-once-in-main-file.png" caption="The C compiler warning '#pragma once in main file' which occurs when the directive '#pragma once' is incorrectly placed in a .c file."  width="500px" >}}
 
-This occurs when you incorrectly write "#pragma once" in a .c file (even though the error would suggest it, it doesn't have to be main.c). "#pragma once" is a header guard which prevents an .h file from being included twice in a project and causing multiple declaration/definition errors. Hence "#pragma once" should be only place in .h files. It is an alternative to the "#ifndef" header guard style (see [this page](http://blog.mbedded.ninja/programming/languages/c/header-guards) for more info).
+This occurs when you incorrectly write "#pragma once" in a .c file (even though the error would suggest it, it doesn't have to be main.c). "#pragma once" is a header guard which prevents an .h file from being included twice in a project and causing multiple declaration/definition errors. Hence "#pragma once" should be only place in .h files. It is an alternative to the "#ifndef" header guard style (see [this page](/programming/languages/c/header-guards) for more info).
 
 # "variable or field declared void"
 

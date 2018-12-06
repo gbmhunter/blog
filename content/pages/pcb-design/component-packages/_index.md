@@ -23,7 +23,7 @@ Click on any photo to expand into a full-sized version.
 
 Component packages with many names (synonyms) are listed by the most common, or most "popular" name, which is not necessarily the technically correct name.
 
-Some items such as the [PP3 9V battery case](http://blog.mbedded.ninja/pcb-design/component-packages/pp3-component-package), and [SIM card sizes](http://blog.mbedded.ninja/pcb-design/component-packages/sim-card-sizes), may not be strictly component packages, but are included here for completeness.
+Some items such as the [PP3 9V battery case](/pcb-design/component-packages/pp3-component-package), and [SIM card sizes](/pcb-design/component-packages/sim-card-sizes), may not be strictly component packages, but are included here for completeness.
 
 # Break-out Boards
 
@@ -47,7 +47,7 @@ The SMT Code Book ([http://www.marsport.org.uk/smd/mainframe.htm](http://www.mar
 
 [Answers.com's Surface-mount Technology page](http://www.answers.com/topic/surface-mount-technology). Broad spectrum of information regarding SMT components, the production methods and package sizes.
 
-{{< figure src="http://blog.mbedded.ninja/wp-includes/images/crystal/document.png" width="46px" caption="PDF"  >}}
+{{< figure src="/wp-includes/images/crystal/document.png" width="46px" caption="PDF"  >}}
 
 Suggested Pad Layouts For A Number Of Packages (Diodes INC) - Many recommended pad layouts/land patterns for common packages all in one PDF!
 

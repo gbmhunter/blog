@@ -9,7 +9,7 @@ type: page
 
 # Overview
 
-Note that this page is about the specifics of using Altium Designer for circuit simulation (which uses SPICE). For more detailed information about SPICE, including the various components and parameters it supports, see the [SPICE Simulation page](http://blog.mbedded.ninja/electronics/general/circuit-simulation/spice-simulation).
+Note that this page is about the specifics of using Altium Designer for circuit simulation (which uses SPICE). For more detailed information about SPICE, including the various components and parameters it supports, see the [SPICE Simulation page](/electronics/general/circuit-simulation/spice-simulation).
 
 Alitum has a built-in mixed-signal (analog and digital) simulator. It uses an enhanced version of the event-driven XSPICE, and is fully compatible with SPICE3f5.
 

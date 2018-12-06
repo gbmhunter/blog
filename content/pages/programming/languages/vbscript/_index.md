@@ -9,13 +9,13 @@ url: /programming/languages/vbscript
 
 # Overview
 
-Visual basic is one of the scripting languages you can use to write [code for interfacing with the PCB design software Altium,](http://blog.mbedded.ninja/electronics/general/altium/altium-scripting-and-using-the-api) through it's provided API.
+Visual basic is one of the scripting languages you can use to write [code for interfacing with the PCB design software Altium,](/electronics/general/altium/altium-scripting-and-using-the-api) through it's provided API.
 
 # The Basics
 
 VBScript is not case-sensitive. That is, the variable myInt is the same as the variable myint. This said, I prefer to capitalise the start of any system word in VBScript (e.g. And, For, If, End If, Dim).
 
-There is no end of command/end of line delimiter. This is probably one of the first things you will notice when coming from [another language such as C](http://blog.mbedded.ninja/programming/languages/c).
+There is no end of command/end of line delimiter. This is probably one of the first things you will notice when coming from [another language such as C](/programming/languages/c).
 
 # Variables
 
@@ -225,7 +225,7 @@ myFunc = GetRef(“IAmAFunction″)
 Call myFunc()
 ```
 
-`GetRef()` is one of the functions you can't use when doing [Altium Scripting](http://blog.mbedded.ninja/electronics/general/altium/altium-scripting-and-using-the-api).
+`GetRef()` is one of the functions you can't use when doing [Altium Scripting](/electronics/general/altium/altium-scripting-and-using-the-api).
 
 # Sets (The MkSet()/InSet() Functions)
 

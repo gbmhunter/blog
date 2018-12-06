@@ -31,11 +31,11 @@ tags:
 - wordpress
 ---
 
-[blog.mbedded.ninja](http://blog.mbedded.ninja/) has been moved from a Linux-based shared server on GoDaddy to one of their ["managed wordpress" services](https://support.godaddy.com/help/article/8926/what-is-managed-wordpress). It is about the same price, and instead of CPanel, they provide you with a pre-installed Wordpress CMS (with a powerful and quick import from existing Wordpress installation tool). The server is still shared, but is configured to run efficiently run Wordpress-based websites.
+[blog.mbedded.ninja](/) has been moved from a Linux-based shared server on GoDaddy to one of their ["managed wordpress" services](https://support.godaddy.com/help/article/8926/what-is-managed-wordpress). It is about the same price, and instead of CPanel, they provide you with a pre-installed Wordpress CMS (with a powerful and quick import from existing Wordpress installation tool). The server is still shared, but is configured to run efficiently run Wordpress-based websites.
 
 {{< figure src="/images/2015/04/screenshot-godaddy-managed-wordpress-plans.png" width="692px" caption="Screenshot of GoDaddy's managed Wordpress plans as of 2015-04-03."  >}}
 
-The idea was to hopefully speed things up, as [blog.mbedded.ninja](http://blog.mbedded.ninja/) has been running really slow lately (30-60s load times!, see the [Site Running Slowly, Does That Mean It's Walking? post](http://blog.mbedded.ninja/site-admin/site-running-slowly-does-that-mean-its-walking)). So far so good, the page load times seem to have dropped dramatically. Now the front page takes 6.43s to load the first time, and 4.47s to load on a repeat view. See the screenshot below:
+The idea was to hopefully speed things up, as [blog.mbedded.ninja](/) has been running really slow lately (30-60s load times!, see the [Site Running Slowly, Does That Mean It's Walking? post](/site-admin/site-running-slowly-does-that-mean-its-walking)). So far so good, the page load times seem to have dropped dramatically. Now the front page takes 6.43s to load the first time, and 4.47s to load on a repeat view. See the screenshot below:
 
 {{< figure src="/images/2015/04/web-page-test-on-mbedded-ninja-after-moving-to-managed-wordpress-service.png" width="1032px" caption="A webpage speed test run on blog.mbedded.ninja after the site was moved to a GoDaddy managed wordpress service."  >}}
 

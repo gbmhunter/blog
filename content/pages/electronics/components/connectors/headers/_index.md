@@ -11,7 +11,7 @@ type: page
 
 The term "Header" normally refers to a basic row of pins or sockets, with little or no additional features such as shrouds, locking ability, or keyed parts. The most common pitch for headers is 2.54mm (100mil). Headers are versatile, as they not vendor-specific, can be connected to by soldering, hooks/probes, or the opposite gender header (either a plug or jack), normally have a standardised pitch, can handle a decent amount of current (at least 1A for normal 2.54mm headers), and are cheap!
 
-Headers are used frequently on electronic development kits. For example, the [Arduino](http://blog.mbedded.ninja/programming/microcontrollers/arduino), [RaspberryPi](http://blog.mbedded.ninja/programming/microcontrollers/raspberry-pi), and [PSoC](http://blog.mbedded.ninja/programming/microcontrollers/psoc) development kits all use headers for various things such as programming the microcontroller to providing a way to connect expansion boards.
+Headers are used frequently on electronic development kits. For example, the [Arduino](/programming/microcontrollers/arduino), [RaspberryPi](/programming/microcontrollers/raspberry-pi), and [PSoC](/programming/microcontrollers/psoc) development kits all use headers for various things such as programming the microcontroller to providing a way to connect expansion boards.
 
 # Types
 

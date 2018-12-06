@@ -169,7 +169,7 @@ As far as I can tell, this package only comes in the 6-pin version (TSOC-6), and
 
 
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--5110)
+![](/nextgen-attach_to_post/preview/id--5110)
 
 
 

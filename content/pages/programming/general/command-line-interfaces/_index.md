@@ -13,9 +13,9 @@ A command-line interface is a way of interacting (sending instructions, receivin
 
 NOTE: For a C++ command-line interpreter, that can run on both embedded and P.C. architectures, see [clide-cpp on Github](https://github.com/gbmhunter/clide-cpp).
 
-See [C->Processing Command-Line Input](http://blog.mbedded.ninja/programming/languages/c/processing-command-line-input) for how to write C code for dealing with command-line arguments passed to main().
+See [C->Processing Command-Line Input](/programming/languages/c/processing-command-line-input) for how to write C code for dealing with command-line arguments passed to main().
 
-Related is the page [C#->Redirecting The Command-line To A Text Block](http://blog.mbedded.ninja/programming/languages/c-sharp/redirecting-the-command-line-to-a-text-block).
+Related is the page [C#->Redirecting The Command-line To A Text Block](/programming/languages/c-sharp/redirecting-the-command-line-to-a-text-block).
 
 # Command Description (Help) Syntax
 

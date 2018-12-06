@@ -15,4 +15,4 @@ My brother actually designed and made this fuel cell, I thought it was so cool I
 
 # Images
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--5001)
+![](/nextgen-attach_to_post/preview/id--5001)

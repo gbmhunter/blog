@@ -63,8 +63,8 @@ None
 
 
 
-  * [SOT-23](http://blog.mbedded.ninja/pcb-design/component-packages/sot-23-component-package)
-  * [SOT-523F](http://blog.mbedded.ninja/pcb-design/component-packages/sot-523f)
+  * [SOT-23](/pcb-design/component-packages/sot-23-component-package)
+  * [SOT-523F](/pcb-design/component-packages/sot-523f)
 
 
 </td>

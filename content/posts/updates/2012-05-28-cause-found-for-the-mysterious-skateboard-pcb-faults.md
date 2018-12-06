@@ -26,4 +26,4 @@ The culprit, the flux! This stuff is acidic and makes solder stick better to the
 
 {{< figure src="/images/electronics-electricskateboard/2012-05-21-13-56-49.jpg"   width="500px" >}}
 
-More info can be found on the [Electric Skateboard project page](http://blog.mbedded.ninja/electronics/projects/electric-skateboard).
+More info can be found on the [Electric Skateboard project page](/electronics/projects/electric-skateboard).

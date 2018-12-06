@@ -11,7 +11,7 @@ url: /programming/operating-systems/linux/programs/minicom
 
 minicom is a Linux program to . It calls itself a "friendly serial communications program". It is also available for the RaspberryPi.
 
-If you want to connect two terminals together and test the output/input of minicom, check out the [Connecting Two COM Ports Together" section on the socat program page](http://blog.mbedded.ninja/programming/operating-systems/linux/programs/socat#connecting-two-com-ports-together).
+If you want to connect two terminals together and test the output/input of minicom, check out the [Connecting Two COM Ports Together" section on the socat program page](/programming/operating-systems/linux/programs/socat#connecting-two-com-ports-together).
 
 # Installing
 

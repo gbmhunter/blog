@@ -39,8 +39,8 @@ These calculators are useful for both electrical engineers and hobbyists alike w
 * Working out the effectiveness of a capacitor for transient voltage suppression
 * Much more!
 
-They can be found individually on the [Capacitors page](http://blog.mbedded.ninja/electronics/components/capacitors), or with the other calculators on the [Online Calculators page](http://blog.mbedded.ninja/electronics/general/online-calculators).
+They can be found individually on the [Capacitors page](/electronics/components/capacitors), or with the other calculators on the [Online Calculators page](/electronics/general/online-calculators).
 
 {{< figure src="/images/electronics-misc/two-new-capacitor-charge-and-energy-calculators.jpg" caption="Two new electrical-engineering-themed calculators. One calculator is for the capacitor charge equation, Q = CV, which involves charge, capacitance and voltage. The other is for the capacitor energy equation, E = 1/2CV^2 which involves energy, capacitance and voltage."  width="600px" >}}
 
-Also, updates were made to the [RFID page](http://blog.mbedded.ninja/electronics/circuit-design/rfid) (regarding 13.56MHz RFID standards and transceivers) and also the [OLED page](http://blog.mbedded.ninja/electronics/components/oled-screens) (regarding the SSD1306 driver IC and manufacturers/distributors).
+Also, updates were made to the [RFID page](/electronics/circuit-design/rfid) (regarding 13.56MHz RFID standards and transceivers) and also the [OLED page](/electronics/components/oled-screens) (regarding the SSD1306 driver IC and manufacturers/distributors).

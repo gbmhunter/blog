@@ -37,7 +37,7 @@ Various options to control the BLDC include:
 * Special microcontroller that is desinged for BLDC motor control (such as ST Microelectronics ST7MC)
 * Design your own from scratch
 
-For more information on BLDC motors, go to the [BLDC Motor Control](http://blog.mbedded.ninja/electronics/circuit-design/bldc-motor-control) page.
+For more information on BLDC motors, go to the [BLDC Motor Control](/electronics/circuit-design/bldc-motor-control) page.
 
 # Universal Motors
 

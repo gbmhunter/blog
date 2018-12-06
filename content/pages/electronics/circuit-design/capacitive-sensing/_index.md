@@ -11,9 +11,9 @@ type: page
 
 This page is about capacitive sensing methods.  
 
-For information about capacitors in general, see the [Capacitor page](http://blog.mbedded.ninja/electronics/components/capacitors).
+For information about capacitors in general, see the [Capacitor page](/electronics/components/capacitors).
 
-Capacitive sensing is a widely used technique for proximity detection, touch-screens, level measurement, and distance measurements. It is used in the more expensive touch-screens found in today's smart phones (as opposed to the cheaper and poorer performing resistive touch screens), for contact-less buttons (see page on [Capacitive Touch Sensing](http://blog.mbedded.ninja/electronics/circuit-design/capacitive-touch-sensing)), the distance measuring mechanism in digital calipers, liquid level measurement and much more.
+Capacitive sensing is a widely used technique for proximity detection, touch-screens, level measurement, and distance measurements. It is used in the more expensive touch-screens found in today's smart phones (as opposed to the cheaper and poorer performing resistive touch screens), for contact-less buttons (see page on [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-sensing)), the distance measuring mechanism in digital calipers, liquid level measurement and much more.
 
 {{< figure src="/images/2012/05/capacitive-encoder-photo-cui-amt.jpg" width="300px" caption="The CUI AMT100 series capacitive encoders with up to 2048 counts per revolution. Image from http://www.engineerlive.com/Asia-Pacific-Engineer/Time_Compression/Capacitive_encoder_offers_versatility/22119/."  >}}
 
@@ -22,7 +22,7 @@ Capacitive sensing is a widely used technique for proximity detection, touch-scr
 * Level measurement
 * Proximity sensing
 * Impurity detection
-* Touch sensing (see page on [Capacitive Touch Sensing](http://blog.mbedded.ninja/electronics/circuit-design/capacitive-touch-sensing))
+* Touch sensing (see page on [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-sensing))
 * Flow sensing
 * Position sensing
 

@@ -19,7 +19,7 @@ The ARM Cortex-M3 is a computer CPU architecture introduced in 2004 and designed
 <tbody >
 <tr >
 
-<td >[Instrumentation Trace Microcell](http://blog.mbedded.ninja/programming/cpu-architectures/arm-cortex-m3/instrumentation-trace-microcell)
+<td >[Instrumentation Trace Microcell](/programming/cpu-architectures/arm-cortex-m3/instrumentation-trace-microcell)
 </td>
 
 <td >How to redirect printf() function calls to output data using the instrumentation trace microcell (ITM).
@@ -111,8 +111,8 @@ Supports core debug/trace facilities.
 
 # Microcontrollers Which Use This Architecture
 
-* [PSoC 5](http://blog.mbedded.ninja/programming/microcontrollers/psoc)
-* [PSoC 5 LP](http://blog.mbedded.ninja/programming/microcontrollers/psoc)
+* [PSoC 5](/programming/microcontrollers/psoc)
+* [PSoC 5 LP](/programming/microcontrollers/psoc)
 
 # External Links
 

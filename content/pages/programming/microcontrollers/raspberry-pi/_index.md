@@ -217,7 +217,7 @@ The RaspberryPi also has a DSI output connector (the 15-pin connector that is no
 
 Check out the [Quick2wire Python API repo](https://github.com/quick2wire/quick2wire-python-api), this allows to to control the RPi's GPIO from a python script.
 
-There is also the [pi-gpio module](https://npmjs.org/package/pi-gpio) for controlling GPIO with [nodejs](http://blog.mbedded.ninja/programming/languages/nodejs). Good for when you are wanting to control the RPi GPIO from across a network (remotely).
+There is also the [pi-gpio module](https://npmjs.org/package/pi-gpio) for controlling GPIO with [nodejs](/programming/languages/nodejs). Good for when you are wanting to control the RPi GPIO from across a network (remotely).
 
 {{< figure src="/images/project-autoelectricblanket/simple-led-connected-to-raspberry-pi-gpio.jpg" caption="I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing."  width="800px" >}}
 

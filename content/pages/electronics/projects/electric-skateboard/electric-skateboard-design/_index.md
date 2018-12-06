@@ -41,7 +41,7 @@ A skateboard requires a fairly powerful motor (in a non-commercial sense). The N
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/img_6210.jpg" caption="A supposedly '3kW' BLDC motor I got from Hobby King."  width="400px" >}}
 
-I decided to use the brushless DC (BLDC) motor shown above. BLDC motors have an awesome power-to-weight ratio and high efficiency (90%+), which will extend the distance the board can travel. This is at the expensive of being slightly harder to control (see the page [BLDC Motor Control](http://blog.mbedded.ninja/electronics/circuit-design/bldc-motor-control) for more on that).
+I decided to use the brushless DC (BLDC) motor shown above. BLDC motors have an awesome power-to-weight ratio and high efficiency (90%+), which will extend the distance the board can travel. This is at the expensive of being slightly harder to control (see the page [BLDC Motor Control](/electronics/circuit-design/bldc-motor-control) for more on that).
 
 # The ESC
 
@@ -213,7 +213,7 @@ The next attempt at motor control was done, using a brushed DC motor and a homem
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/img_6628.jpg" caption=" "  width="400px" >}}
 
-Alas, it kept blowing up (see the post [Skateboard H-Bridge Blew Up (for the +10th time](http://blog.mbedded.ninja/electronics/electronics-electric-skateboard/skateboard-h-bridge-blew-up-for-the-10th-time)). The MOSFETs were getting very warm, and there was an oscillating signal on the gates of the half-bridge MOSFETs.
+Alas, it kept blowing up (see the post [Skateboard H-Bridge Blew Up (for the +10th time](/electronics/electronics-electric-skateboard/skateboard-h-bridge-blew-up-for-the-10th-time)). The MOSFETs were getting very warm, and there was an oscillating signal on the gates of the half-bridge MOSFETs.
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/2012-02-18-16-17-26.jpg" caption="The oscillating gate drive to the MOSFETs."  width="500px" >}}
 
@@ -309,7 +309,7 @@ The schematics for the Half Bridge Driver v1.1 (please remember, this is the one
 
 # PCB Manufacturing
 
-Once the PCB's were designed, I had them etched by [PCB Cart](http://www.pcbcart.com/) (see the [Electrical Suppliers page](http://blog.mbedded.ninja/electronics/other/electrical-suppliers)). The PCB's came back in a colour what I like to call 'spew orange', which was less than ideal, since I wanted orange.
+Once the PCB's were designed, I had them etched by [PCB Cart](http://www.pcbcart.com/) (see the [Electrical Suppliers page](/electronics/other/electrical-suppliers)). The PCB's came back in a colour what I like to call 'spew orange', which was less than ideal, since I wanted orange.
 
 {{< figure src="/images/electronics-electricskateboard/2012-04-04-15-45-02.jpg" caption="This photo shows the gross orange colour of the electric skateboard PCB's compared to the kind of yellow I was expecting."  width="500px" >}}
 
@@ -317,7 +317,7 @@ I got to the point where PCB Cart would redo them in red if I paid for half the 
 
 {{< figure src="/images/electronics-electricskateboard/2012-04-25-13-28-16.jpg" caption=" "  width="500px" >}}
 
-See the post [Electric Skateboard PCB’s Arrived In The Wrong Colour](http://blog.mbedded.ninja/electronics/electronics-electric-skateboard/electric-skateboard-pcbs-arrived-in-the-wrong-colour) for more info. Most of the components were populated by hand, with the help of a infrared rework station for soldering the PSoC 5 chips (in TQFP packages).
+See the post [Electric Skateboard PCB’s Arrived In The Wrong Colour](/electronics/electronics-electric-skateboard/electric-skateboard-pcbs-arrived-in-the-wrong-colour) for more info. Most of the components were populated by hand, with the help of a infrared rework station for soldering the PSoC 5 chips (in TQFP packages).
 
 {{< figure src="/images/electronics-electricskateboard/2012-04-27-18-48-39.jpg" caption=" "  width="500px" >}}
 
@@ -640,7 +640,7 @@ Installing the new motor controller into the enclosure.
 
 # Desiccant
 
-After a few longer test drives, I noticed a bit of moisture condensing on the insides of the enclosure. So I added some desiccant to the skateboard enclosure to absorb any trapped moisture. Find out more about desiccant [here](http://blog.mbedded.ninja/electronics/components/desiccant).
+After a few longer test drives, I noticed a bit of moisture condensing on the insides of the enclosure. So I added some desiccant to the skateboard enclosure to absorb any trapped moisture. Find out more about desiccant [here](/electronics/components/desiccant).
 
 {{< figure src="/images/electronics-electricskateboard/desiccant-in-skateboard-enclosure.jpg" caption="Desiccant was added to the skateboard enclosure to absorb any trapped moisture."  width="500px" >}}
 

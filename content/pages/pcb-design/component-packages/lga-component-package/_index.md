@@ -176,7 +176,7 @@ Like BGA's, LGA packages can withstand up to 50% mis-alignment when soldering, a
 
 
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--5580)
+![](/nextgen-attach_to_post/preview/id--5580)
 
 
 

@@ -7,4 +7,4 @@ type: page
 url: /programming/general/naming-conventions
 ---
 
-See the [C Naming Conventions page](http://blog.mbedded.ninja/programming/languages/c/c-naming-conventions).
+See the [C Naming Conventions page](/programming/languages/c/c-naming-conventions).

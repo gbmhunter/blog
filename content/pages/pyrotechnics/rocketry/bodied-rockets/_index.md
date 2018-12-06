@@ -10,7 +10,7 @@ url: /pyrotechnics/rocketry/bodied-rockets
 # Overview
 
 
-Bodied rockets are rockets which have the traditional 'look' of a rocket. They have a body, a nose, fins and a motor mount. As opposed to [stick rockets](http://blog.mbedded.ninja/pyrotechnics/rocketry/stick-rockets), which is the easier, cheaper, way of creating hobby rockets.
+Bodied rockets are rockets which have the traditional 'look' of a rocket. They have a body, a nose, fins and a motor mount. As opposed to [stick rockets](/pyrotechnics/rocketry/stick-rockets), which is the easier, cheaper, way of creating hobby rockets.
 
 
 # The '5min' Rocket

@@ -18,8 +18,8 @@ tags:
 - pcie
 ---
 
-* New page on the [LON (ANSI709.2) Communication Protocol](http://blog.mbedded.ninja/electronics/communication-protocols/lon-ansi709-2-communication-protocol).
-* New page on the [AXI bus](http://blog.mbedded.ninja/electronics/communication-protocols/axi-bus).
-* New page on the [PCI Express (PCIe) Communication Protocol](http://blog.mbedded.ninja/electronics/communication-protocols/pci-express-pcie).
-* New [BLE112/113 Design Guide](http://blog.mbedded.ninja/electronics/components/bluetooth/ble112ble113-design-guide) under Electronics->Communication Protocols->Bluetooth.
+* New page on the [LON (ANSI709.2) Communication Protocol](/electronics/communication-protocols/lon-ansi709-2-communication-protocol).
+* New page on the [AXI bus](/electronics/communication-protocols/axi-bus).
+* New page on the [PCI Express (PCIe) Communication Protocol](/electronics/communication-protocols/pci-express-pcie).
+* New [BLE112/113 Design Guide](/electronics/components/bluetooth/ble112ble113-design-guide) under Electronics->Communication Protocols->Bluetooth.
 

@@ -9,4 +9,4 @@ type: page
 
 # PCI Express Support
 
-The GTP transceivers on the 7 Series FPGAs support [PCI Express (PCIe)](http://blog.mbedded.ninja/electronics/communication-protocols/pci-express-pcie), up-to revision 2.0 (also called Gen 2).
+The GTP transceivers on the 7 Series FPGAs support [PCI Express (PCIe)](/electronics/communication-protocols/pci-express-pcie), up-to revision 2.0 (also called Gen 2).

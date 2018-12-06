@@ -7,4 +7,4 @@ type: page
 url: /programming/cpu-architectures/arm-cortex-m6
 ---
 
-The [RaspberryPi](http://blog.mbedded.ninja/programming/microcontrollers/raspberry-pi) uses the ARM Cortex-M6 architecture.
+The [RaspberryPi](/programming/microcontrollers/raspberry-pi) uses the ARM Cortex-M6 architecture.

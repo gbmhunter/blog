@@ -13,7 +13,7 @@ tags:
 - santa alarm
 ---
 
-Added [Santa Alarm](http://blog.mbedded.ninja/electronics/projects/santa-alarm) project! My solution to early mornings...
+Added [Santa Alarm](/electronics/projects/santa-alarm) project! My solution to early mornings...
 
 
 {{< figure src="http://geoweb.hostei.com/electronics/projects/santa_alarm/images/santa_alarm_09.jpg"   >}}

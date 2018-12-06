@@ -12,7 +12,7 @@ url: /pcb-design/pcb-design-checklist
 ## Microcontroller
 
 * uC has supply decoupling (e.g. 100nF caps)
-* [Crystal/oscillator](http://blog.mbedded.ninja/electronics/components/crystals) is connected to compatible osc ports (e.g. XTAL0)
+* [Crystal/oscillator](/electronics/components/crystals) is connected to compatible osc ports (e.g. XTAL0)
 * Core power/decoupling supplied (if applicable)
 * Priority crossbar functions in correct order (applicable to Si micros)
 * Programming pins connected correctly and routed to appropriate header/connector
@@ -24,15 +24,15 @@ url: /pcb-design/pcb-design-checklist
 
 ## Communications
 
-* [UART/RS-232](http://blog.mbedded.ninja/electronics/circuit-design/uart) RX and TX swap between devices
+* [UART/RS-232](/electronics/circuit-design/uart) RX and TX swap between devices
 * USB data lines D+ and D- have 39R series resistors
-* [I2C](http://blog.mbedded.ninja/electronics/circuit-design/i2c-communication) have pull-up resistors (unless they are already internal to a device)
+* [I2C](/electronics/circuit-design/i2c-communication) have pull-up resistors (unless they are already internal to a device)
 
 ## Schematics Components
 
 * Do not rely on standard Altium libraries (pinouts and footprints can be wrong). Use Beta Solutions libraries and add to it. Make sure variable labelling is consistent.
-* P-Ch [MOSFET's](http://blog.mbedded.ninja/electronics/components/mosfets) have their SOURCE connected to the high-side voltage (e.g. Vcc)
-* N-Ch [MOSFET's](http://blog.mbedded.ninja/electronics/components/mosfets) have their SOURCE connected to the low-side voltage (e.g. ground)
+* P-Ch [MOSFET's](/electronics/components/mosfets) have their SOURCE connected to the high-side voltage (e.g. Vcc)
+* N-Ch [MOSFET's](/electronics/components/mosfets) have their SOURCE connected to the low-side voltage (e.g. ground)
 * Make sure voltages are not applied to any pins of IC's that are shut-down by removing power (unless the are designed to handle it). Leakage currents can occur.
 * Systematically check BOM with every component on schematics to weed out labelling errors and component variant problems.
 

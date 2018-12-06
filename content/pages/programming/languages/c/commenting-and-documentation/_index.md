@@ -81,4 +81,4 @@ Return Value:
 
 # Doxygen
 
-Doxygen is a powerful documentation generator that can be used with the C language. For more information and code examples with Doxygen, go to the [Doxygen page](http://blog.mbedded.ninja/programming/general/doxygen).
+Doxygen is a powerful documentation generator that can be used with the C language. For more information and code examples with Doxygen, go to the [Doxygen page](/programming/general/doxygen).

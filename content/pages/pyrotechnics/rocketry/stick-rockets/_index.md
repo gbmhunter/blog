@@ -46,4 +46,4 @@ A stick rocket with rcandy propellant. Internal diameter of cardboard motor tube
 </tr>
 </tbody>
 </table>
-For more videos, see the [Pyrotechnic Videos](http://blog.mbedded.ninja/pyrotechnics/general/pyrotechnic-videos) page.
+For more videos, see the [Pyrotechnic Videos](/pyrotechnics/general/pyrotechnic-videos) page.

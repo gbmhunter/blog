@@ -80,7 +80,7 @@ Some 1-wire devices have two additional pins to support sequence detection.
 
 Bit bashing the 1-Wire interface is possible, but not recommended, due to it's asynchronous nature and associated tight timing constraints.
 
-As of October 2015, the [Cypress PSoC 3, PSoC 4 and PSoC 5 LP microcontroller families](http://blog.mbedded.ninja/programming/microcontrollers/psoc) do not have a 1-wire hardware component, and so bit-bashing is the only option.
+As of October 2015, the [Cypress PSoC 3, PSoC 4 and PSoC 5 LP microcontroller families](/programming/microcontrollers/psoc) do not have a 1-wire hardware component, and so bit-bashing is the only option.
 
 # Uses
 

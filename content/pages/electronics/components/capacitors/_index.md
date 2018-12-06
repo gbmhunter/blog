@@ -198,7 +198,7 @@ There is also the two codes JB (which is similar to X5R) and CH (which is simila
 
 ### Insulation Resistance
 
-The [insulation resistance](http://blog.mbedded.ninja/electronics/components/capacitors#leakage-currents) limits for military MLCC's are:
+The [insulation resistance](/electronics/components/capacitors#leakage-currents) limits for military MLCC's are:
 
 IR > `\( 10^{11}\Omega \)` or `\( 10^3 M\Omega \cdot uF \)`, whichever is less, at `\( +25^{\circ}C \)`  
 
@@ -747,9 +747,9 @@ Because of the small current's/total energy involved, you can't really measure t
 
 Some types of capacitors have a capacitance which changes depending on the applied voltage (well, technically, all do, but I'm talking about a significant/useful change).
 
-The good news is this can be manipulated to make things such as voltage-controlled oscillators (VCO's), in where the capacitance is part of a resonant circuit, and the resonant frequency is changed by modifiying the voltage on the capacitor, hence changing the capacitance. [Diodes](http://blog.mbedded.ninja/electronics/components/diodes) also offer this feature and can be used to make FM radio signals by modulating a high-frequency waveform.
+The good news is this can be manipulated to make things such as voltage-controlled oscillators (VCO's), in where the capacitance is part of a resonant circuit, and the resonant frequency is changed by modifiying the voltage on the capacitor, hence changing the capacitance. [Diodes](/electronics/components/diodes) also offer this feature and can be used to make FM radio signals by modulating a high-frequency waveform.
 
-The bad news is that this also adversely affects the capacitance in situations where you want it to stay constant. This can actually be a very significant problems, especially with small [package](http://blog.mbedded.ninja/electronics/circuit-design/component-packages) size ceramic capacitors (such as 0603 and 0805 SMD chip capacitors). An excellent explanation on this effects if Maxim Integrated's "[Temperature and Voltage Variation of Ceramic Capacitors, or Why Your 4.7uF Capacitor Becomes a 0.33uF Capacitor](http://www.maximintegrated.com/app-notes/index.mvp/id/5527)". The following graph is from Maxim's page, and just serves as an example to show by how much the capacitance can vary in normal operation conditions!
+The bad news is that this also adversely affects the capacitance in situations where you want it to stay constant. This can actually be a very significant problems, especially with small [package](/electronics/circuit-design/component-packages) size ceramic capacitors (such as 0603 and 0805 SMD chip capacitors). An excellent explanation on this effects if Maxim Integrated's "[Temperature and Voltage Variation of Ceramic Capacitors, or Why Your 4.7uF Capacitor Becomes a 0.33uF Capacitor](http://www.maximintegrated.com/app-notes/index.mvp/id/5527)". The following graph is from Maxim's page, and just serves as an example to show by how much the capacitance can vary in normal operation conditions!
 
 {{< figure src="/images/2011/09/graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors.png" width="925px" caption="Graph of the capacitance variation (w.r.t. voltage) of a select group of 4.7uF ceramic chip capacitors, Image from http://www.maximintegrated.com/app-notes/index.mvp/id/5527."  >}}
 
@@ -1000,11 +1000,11 @@ Their advantage over a standard decoupling capacitor to ground is **lower paras
 
 ## Component Package
 
-Many smaller, PCB suitable feedthrough capacitors come in [chip packages](http://blog.mbedded.ninja/pcb-design/component-packages/chip-eia-xxxx-component-packages), such as the 0603 or 0402 size. They can be distinguished from normal capacitors by the fact that the package will have three or four terminals rather than the standard two.
+Many smaller, PCB suitable feedthrough capacitors come in [chip packages](/pcb-design/component-packages/chip-eia-xxxx-component-packages), such as the 0603 or 0402 size. They can be distinguished from normal capacitors by the fact that the package will have three or four terminals rather than the standard two.
 
 ## Uses
 
-Feedthrough capacitors are commonly used in [RC, LC, π and t-type filters](http://blog.mbedded.ninja/electronics/circuit-design/filtering/passive-filters) when good RF performance is required.
+Feedthrough capacitors are commonly used in [RC, LC, π and t-type filters](/electronics/circuit-design/filtering/passive-filters) when good RF performance is required.
 
 # Repairing Electrolytics
 

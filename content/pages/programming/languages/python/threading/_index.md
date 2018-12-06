@@ -104,4 +104,4 @@ Note that the code in class `MyThread1` can be copied to create as many threads 
 
 # Examples
 
-The [Columbus Radio project](http://blog.mbedded.ninja/electronics/projects/columbus-radio) uses multiple Python threads for the UI control. The code is in the [ColumbusRadio repo on GitHub](https://github.com/mbedded-ninja/ColumbusRadio). The threads should gracefully exit if Ctrl-C is pressed in the terminal while they are running.
+The [Columbus Radio project](/electronics/projects/columbus-radio) uses multiple Python threads for the UI control. The code is in the [ColumbusRadio repo on GitHub](https://github.com/mbedded-ninja/ColumbusRadio). The threads should gracefully exit if Ctrl-C is pressed in the terminal while they are running.

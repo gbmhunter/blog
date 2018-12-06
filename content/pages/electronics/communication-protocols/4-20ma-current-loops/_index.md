@@ -71,7 +71,7 @@ The 4-20mA current-loop communication protocol is used by many **industrial sens
 
 # Interfacing To A Microcontroller
 
-A 4-20mA current loop signal can be easily interfaced to a microcontroller which has an [ADC](http://blog.mbedded.ninja/electronics/circuit-design/adcs).
+A 4-20mA current loop signal can be easily interfaced to a microcontroller which has an [ADC](/electronics/circuit-design/adcs).
 
 ## A Simple Interface
 
@@ -143,4 +143,4 @@ While the 4-20mA current-loop protocol can only have one transmitter, it does su
 
 4-20mA transmitters can be built either using discrete circuitry (usually involving an op-amp), or with dedicated ICs.
 
-The [Voltage-To-Current Converters page](http://blog.mbedded.ninja/electronics/circuit-design/voltage-to-current-converters) has more info (including schematics), on how to build 4-20mA transmitters.
+The [Voltage-To-Current Converters page](/electronics/circuit-design/voltage-to-current-converters) has more info (including schematics), on how to build 4-20mA transmitters.

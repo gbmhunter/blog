@@ -15,6 +15,6 @@ tags:
 
 Worked hard on the skateboard over the weekend, new photos have been added to the photo gallery. Click the link below to view them all...
 
-=> [Electric Skateboard Photo Gallery](http://blog.mbedded.ninja/electronics/projects/electric-skateboard/electric-skateboard-photo-album)
+=> [Electric Skateboard Photo Gallery](/electronics/projects/electric-skateboard/electric-skateboard-photo-album)
 
 [nggallery id=33]

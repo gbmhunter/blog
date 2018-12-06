@@ -38,7 +38,7 @@ They can be grouped into IC packages called arrays. A typical schematic symbol f
 <td >\( V \)
 </td>
 
-<td >Also called the reverse breakdown voltage. This is the reverse voltage (cathode-to-anode) at which the diode "begins" to conduct. The point at which the diode begins to conduct is usually specified as a fixed current, typically 1mA. Also see [standoff voltage](http://blog.mbedded.ninja/electronics/components/diodes#standoff-voltage).
+<td >Also called the reverse breakdown voltage. This is the reverse voltage (cathode-to-anode) at which the diode "begins" to conduct. The point at which the diode begins to conduct is usually specified as a fixed current, typically 1mA. Also see [standoff voltage](/electronics/components/diodes#standoff-voltage).
 </td>
 </tr>
 <tr id="rated-power" >
@@ -82,7 +82,7 @@ The reverse-leakage of TVS diodes decreases as the stand-off voltage increases. 
 
 {{< figure src="/images/2011/09/leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png" width="1182px" caption="Leakage currents of TVS diodes with low stand-off voltages."  >}}
 
-For more information, see the [ESD Protection](http://blog.mbedded.ninja/electronics/circuit-design/esd-protection) page.
+For more information, see the [ESD Protection](/electronics/circuit-design/esd-protection) page.
 
 # Reverse Polarity Protection
 
@@ -112,4 +112,4 @@ TVS diodes built specifically for protecting RS-485 communication protocol bus l
 
 {{< figure src="/images/2016/05/sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png" width="511px" caption="The pintout and functional block diagram of the SM712-02HTG TVS diode, designed specifically for protecting RS-485 bus lines. Image from http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf."  >}}
 
-More information on these diodes can be found in the [Specialised TVS Diodes section on the RS-485 Protocol page](http://blog.mbedded.ninja/electronics/communication-protocols/rs-485-protocol#specialised-tvs-diodes).
+More information on these diodes can be found in the [Specialised TVS Diodes section on the RS-485 Protocol page](/electronics/communication-protocols/rs-485-protocol#specialised-tvs-diodes).

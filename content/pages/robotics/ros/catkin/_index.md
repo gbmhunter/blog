@@ -9,7 +9,7 @@ url: /robotics/ros/catkin
 
 # Overview
 
-catkin is a CMake and python based build system for building [ROS packages](http://blog.mbedded.ninja/programming/operating-systems/ros). It was designed to replace the original ROS build system, rosbuild. One of the significant advantages of catkin over rosbuild is that it is cross-platform (e.g. supports Windows).
+catkin is a CMake and python based build system for building [ROS packages](/programming/operating-systems/ros). It was designed to replace the original ROS build system, rosbuild. One of the significant advantages of catkin over rosbuild is that it is cross-platform (e.g. supports Windows).
 
 catkin is installed automatically when ROS is installed.
 

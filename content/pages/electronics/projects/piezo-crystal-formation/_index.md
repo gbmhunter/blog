@@ -39,7 +39,7 @@ These crystals are quite brittle (they aren't diamonds!). Not surprisingly, it b
 
 {{< figure src="/images/electronics-piezocrystalformation/2012-07-21-19-50-19.jpg" caption="The piezo crystal broke in two after one too many hits with the screw driver."  width="500px" >}}
 
-If you want more information about piezos and their use in electronics, see the [Piezo Speaker page](http://blog.mbedded.ninja/electronics/components/piezos).
+If you want more information about piezos and their use in electronics, see the [Piezo Speaker page](/electronics/components/piezos).
 
 # Picture Gallery
 

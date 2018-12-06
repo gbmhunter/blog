@@ -33,4 +33,4 @@ ADCs are commonly used in medical devices for biopotential measurements. One com
 
 ADCs can be used to read the value from a 4-20mA current loop signal with the help of a current-to-voltage converting resistors (what all resistors do, right?).
 
-See the [4-20mA Current Loops page](http://blog.mbedded.ninja/electronics/communication-protocols/4-20ma-current-loops) for more info.
+See the [4-20mA Current Loops page](/electronics/communication-protocols/4-20ma-current-loops) for more info.

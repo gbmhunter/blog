@@ -9,7 +9,7 @@ type: page
 
 # Overview
 
-Most embedded modems are designed to communicate to a microcontroller over a [UART interface](http://blog.mbedded.ninja/electronics/circuit-design/communication-protocols/uart-protocol). Some cellular modems also have embedded GPS decoders.
+Most embedded modems are designed to communicate to a microcontroller over a [UART interface](/electronics/circuit-design/communication-protocols/uart-protocol). Some cellular modems also have embedded GPS decoders.
 
 # Terminology
 
@@ -567,4 +567,4 @@ The Simcom SIM900 is a very cheap and common place cellular modem, seen in plent
 
 # Design Notes
 
-* [Telit HE910](http://blog.mbedded.ninja/electronics/components/cellular-modems/he910-design-notes)
+* [Telit HE910](/electronics/components/cellular-modems/he910-design-notes)

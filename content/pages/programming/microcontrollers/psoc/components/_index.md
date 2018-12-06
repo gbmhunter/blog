@@ -41,7 +41,7 @@ Delta-Sigma ADC components are high precision voltage measuring devices. The tra
 
 A _successive-approximation register analogue-to-digital converter_ (SAR ADC) is the common way of measuring a PCB voltage with a microcontroller.
 
-The PSoC ADC component supports many different sources for the voltage reference, `\(V_{ref}\)`. One of the most common choices is the internally generated 1.024V, which allows you to measure a voltage between 0-2.048V. For ratiometric measurements (e.g. measuring the voltage of a [thermistor temperature sensor](http://blog.mbedded.ninja/electronics/components/sensors/temperature-sensors/ntc-thermistors-temperature-sensors) connected in a resistor divider configuration), you can set `\(V_{ref}\)` to be `VDDA/2`. Please note that you cannot change the voltage reference for the ADC at run-time (i.e. it may only be adjusted at compile time).
+The PSoC ADC component supports many different sources for the voltage reference, `\(V_{ref}\)`. One of the most common choices is the internally generated 1.024V, which allows you to measure a voltage between 0-2.048V. For ratiometric measurements (e.g. measuring the voltage of a [thermistor temperature sensor](/electronics/components/sensors/temperature-sensors/ntc-thermistors-temperature-sensors) connected in a resistor divider configuration), you can set `\(V_{ref}\)` to be `VDDA/2`. Please note that you cannot change the voltage reference for the ADC at run-time (i.e. it may only be adjusted at compile time).
 
 Some of the higher-end PSoC microcontrollers contain 2 SAR ADCs. Remember that with an analogue multiplexor, you can use one ADC to take successive measurements of large numbers of analogue channels. And if you need precisely consecutive measurements, you still only need one ADC if you add 'sample and hold' components to the analogue inputs.
 
@@ -288,7 +288,7 @@ Pins on a PSoC microcontroller can be "ganged" together to provide more output c
 
 ## USB Pins
 
-Most physical pins on a PSoC microcontroller can be connected to a GPIO pin component. One caveat is that your have to select the pin component to either "strong drive" or "open-drain pull low" before you can assign it to one of the two USB pins (D+, D-, or P15[6] and P15[7] on the PSoC 5/PSoC 5 LP). This is also mentioned on the [PSoC Bugs, Problems And Annoyances page](http://blog.mbedded.ninja/programming/microcontrollers/psoc/psoc-bugs-problems-and-annoyances).
+Most physical pins on a PSoC microcontroller can be connected to a GPIO pin component. One caveat is that your have to select the pin component to either "strong drive" or "open-drain pull low" before you can assign it to one of the two USB pins (D+, D-, or P15[6] and P15[7] on the PSoC 5/PSoC 5 LP). This is also mentioned on the [PSoC Bugs, Problems And Annoyances page](/programming/microcontrollers/psoc/psoc-bugs-problems-and-annoyances).
 
 ## Synchronisation
 
@@ -308,7 +308,7 @@ The Pulse Converter component is useful to convert variable width input pulses i
 
 The quadrature decoder is a useful component when interfacing with incremental encoders. It accepts A, B and N (optional) channel quadrature inputs, and converts the pulses into a count. The count is configurable to be 8, 16 or 32-bit. You can select to to count on every pulse transistion for the highest resolution (4 per 'pulse'), to just one per pulse. It also features glitch filters and a configurable interrupt source. The interrupt source does not have a compare feature, so one of the let-downs is that most of the processing of the count has to be done by software polling.
 
-I have used this for controlling a [BLDC motor](http://blog.mbedded.ninja/electronics/circuit-design/bldc-motor-control) that had an incremental encoder attached to it's shaft at it worked perfectly! The picture below shows the component connected to the input pins of the incremental encoder. The N channel was not used as I did not want the count to be reset every cycle.
+I have used this for controlling a [BLDC motor](/electronics/circuit-design/bldc-motor-control) that had an incremental encoder attached to it's shaft at it worked perfectly! The picture below shows the component connected to the input pins of the incremental encoder. The N channel was not used as I did not want the count to be reset every cycle.
 
 {{< figure src="/images/2013/03/psoc-component-quadrature-decoder.png" width="1034px" caption="The PSoC quadrature decoder component. Takes the A, B and N inputs from an incremental encoder and converts it into a count."  >}}
 

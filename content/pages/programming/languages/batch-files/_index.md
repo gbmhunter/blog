@@ -11,7 +11,7 @@ url: /programming/languages/batch-files
 
 # Overview
 
-This page is all about the programming language used to write functioning batch file scripts for running in the Windows operating system. For native Windows commands/programs that you call call from a batch file or command prompt, see the [Windows page](http://blog.mbedded.ninja/programming/operating-systems/windows).
+This page is all about the programming language used to write functioning batch file scripts for running in the Windows operating system. For native Windows commands/programs that you call call from a batch file or command prompt, see the [Windows page](/programming/operating-systems/windows).
 
 A batch file is a text file with the extension .bat. They are scripting files for the Windows command-line.
 

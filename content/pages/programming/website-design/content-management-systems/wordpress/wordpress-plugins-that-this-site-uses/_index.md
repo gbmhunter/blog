@@ -104,7 +104,7 @@ Used for the front rotating image banner. Code to draw the banner on every page 
     </style>
     <noscript>
         <div id="cimy_div_id_0_nojs">
-            <img id="cimy_img_id" src="http://blog.mbedded.ninja/wp-content/Cimy_Header_Images/0/12mhz-crystal-output-when-driven-by-microcontroller.jpg" alt="" />
+            <img id="cimy_img_id" src="/wp-content/Cimy_Header_Images/0/12mhz-crystal-output-when-driven-by-microcontroller.jpg" alt="" />
         </div>
     </noscript>
     <!-- End of rotating banner image -->

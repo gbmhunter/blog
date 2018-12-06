@@ -15,7 +15,7 @@ PCB stencils help you apply solder paste and a quick and even manner to a PCB d
 
 The sheet has apertures cut out of it in all places on the PCB in where you want solder paste to be applied. The stencil is placed on the surface of the PCB and solderpaste applied. The thickness of the stencil determines the paste density (how much paste will be applied for a given area).
 
-PCB stencils are usually created from the same design files that are used to manufacture the PCB. If using the [Gerber format](http://blog.mbedded.ninja/pcb-design/pcb-data-formats#gerber-files), the Top Paste (.GTP) and Bottom Paste (.GBP) files will be used.
+PCB stencils are usually created from the same design files that are used to manufacture the PCB. If using the [Gerber format](/pcb-design/pcb-data-formats#gerber-files), the Top Paste (.GTP) and Bottom Paste (.GBP) files will be used.
 
 # Etching Processes
 
@@ -63,4 +63,4 @@ Sometimes different paste densities are required for different components. Sten
 
 # Art?
 
-What to do with a stencil once you have finished making PCBs with it? Do stencils have the potential to be art pieces? I did attach a back light and diffuser to one and made a wall-mountable piece of art, see the [Backlit PCB Stencil project](http://blog.mbedded.ninja/electronics/projects/backlit-pcb-stencil) for more information.
+What to do with a stencil once you have finished making PCBs with it? Do stencils have the potential to be art pieces? I did attach a back light and diffuser to one and made a wall-mountable piece of art, see the [Backlit PCB Stencil project](/electronics/projects/backlit-pcb-stencil) for more information.

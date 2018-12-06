@@ -33,4 +33,4 @@ Thermal sleeves help prevent the rocket motor casing from rupturing during the b
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/44-rocket-motor.jpg" caption="A KNDX PVC rocket motor."  width="600px" >}}
 
-You can view the motors I made for either rockets, experiments, or even the odd skatebaord on the [Rocket Projects page](http://blog.mbedded.ninja/pyrotechnics/rocketry/projects).
+You can view the motors I made for either rockets, experiments, or even the odd skatebaord on the [Rocket Projects page](/pyrotechnics/rocketry/projects).

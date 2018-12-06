@@ -26,8 +26,8 @@ I have added some website statistics to keep the info-devouring, content absorbi
 
 Some site stats:
 
-* Website Age = 8 years, 8 months (since April 2004, when [Kaboom was created](http://blog.mbedded.ninja/2004/04))
-* Time since last major site structure/url change (when I moved from [Drupal to Wordpress](http://blog.mbedded.ninja/site-admin/wordpress-migration)) = 1 year, 4 months
+* Website Age = 8 years, 8 months (since April 2004, when [Kaboom was created](/2004/04))
+* Time since last major site structure/url change (when I moved from [Drupal to Wordpress](/site-admin/wordpress-migration)) = 1 year, 4 months
 * Total Number of visits since May 2012 (when stats were reset) = 18,874
 * Percentage increase in visitors in the last year = 2260% (from 202/month in May 2012 to 4,562/month in Dec 2012)
 * Highest Number of Views in 1 Day = 312
@@ -38,13 +38,13 @@ Some site stats:
 
 Website goals for this year:
 
-* Add more [online calculators](http://blog.mbedded.ninja/electronics/general/online-calculators) to the Electronics section. If laid out properly, made to look good, and aided with clear diagrams, these are very helpful for many engineering tasks. I find myself using them often!
+* Add more [online calculators](/electronics/general/online-calculators) to the Electronics section. If laid out properly, made to look good, and aided with clear diagrams, these are very helpful for many engineering tasks. I find myself using them often!
 * Increase the amount of reader interaction (i.e. comments) on the site. There are over 200 published pages but only 32 comments.
 * Remove some of the dead links on the site. No one likes the "Page not found" error. I have the awesome [Wordpress plugin Broken Link Checker](http://w-shadow.com/blog/2007/08/05/broken-link-checker-for-wordpress/) which monitors the site continuously for dead links. Currently there are 33 dead links.
 * Increase website exposure. Currently this site gets about 4,500 visits per month. Part of the plan to increase exposure is perform SEO on the websites pages and images.
 * Tidy up some of the "work-in-progress" pages
-* Add more rotating image banners. These images are useful at highlighting some of the best parts of this site. Currently, there are only four banner images in rotation. Two I intend to add are for the [Component Packages page](http://blog.mbedded.ninja/electronics/circuit-design/component-packages) and the [32PVC Rocket Project page](http://blog.mbedded.ninja/pyrotechnics/rocketry/projects/32pvc).
-* Tidy up the navigation menu. This (especially the Electronics section) has become bloated as more pages have been added. One of the problems of just 'changing it' is Wordpress poor ability to handle large menu structures, causing crashes and entire menu structures to be lost (which is a time consuming task!, see the [Cladlab Menu’s Gone post](http://blog.mbedded.ninja/site-admin/cladlab-menus-gone)). The way around this has been for me to use the Wordpress plugin "[Add Descendants As Submenu Items](http://www.viper007bond.com/wordpress-plugins/add-descendants-as-submenu-items/)", which automatically adds child pages into the menu. However, there is no way of preventing "grandchildren" pages (which I want to be accessed only through hyper-links of the child page, not the menu) to be added also, and so the menus get very big and bloated. I have put in a feature request comment on the [plugin's website](http://www.viper007bond.com/wordpress-plugins/add-descendants-as-submenu-items/).
+* Add more rotating image banners. These images are useful at highlighting some of the best parts of this site. Currently, there are only four banner images in rotation. Two I intend to add are for the [Component Packages page](/electronics/circuit-design/component-packages) and the [32PVC Rocket Project page](/pyrotechnics/rocketry/projects/32pvc).
+* Tidy up the navigation menu. This (especially the Electronics section) has become bloated as more pages have been added. One of the problems of just 'changing it' is Wordpress poor ability to handle large menu structures, causing crashes and entire menu structures to be lost (which is a time consuming task!, see the [Cladlab Menu’s Gone post](/site-admin/cladlab-menus-gone)). The way around this has been for me to use the Wordpress plugin "[Add Descendants As Submenu Items](http://www.viper007bond.com/wordpress-plugins/add-descendants-as-submenu-items/)", which automatically adds child pages into the menu. However, there is no way of preventing "grandchildren" pages (which I want to be accessed only through hyper-links of the child page, not the menu) to be added also, and so the menus get very big and bloated. I have put in a feature request comment on the [plugin's website](http://www.viper007bond.com/wordpress-plugins/add-descendants-as-submenu-items/).
 * Fix long titles which overlap each other. For some reason, long titles which wrap onto a second line are not spaced properly and the font text overlaps. Probably just require a quick CSS fix somewhere.
 * Add continuous scrolling. [Wordpress.com](http://wordpress.com/) recently added this feature to their [Jetpack plugin](http://wordpress.org/extend/plugins/jetpack/), although the theme has to also support it before it can be enabled. This will require tweaking the theme page template files as well as a bit of CSS.
 

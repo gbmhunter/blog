@@ -55,7 +55,7 @@ UART (_Universal Asynchronous Receiver/Transmitter_) is a lower-voltage, microco
 </table>
 
 
-**It is commonly used today as a simple, two-way node-to-node serial communications protocol between devices on a circuit board** or possibly over a cable. Because of it's low voltage and single-ended nature, it is not very noise resilient, and is usually replaced with a more robust protocol such as [RS-232](http://blog.mbedded.ninja/electronics/communication-protocols/rs-232-protocol) or [RS-485](http://blog.mbedded.ninja/electronics/communication-protocols/rs-485-protocol) when communication occurs over any significant cable length or in a noisy environment.
+**It is commonly used today as a simple, two-way node-to-node serial communications protocol between devices on a circuit board** or possibly over a cable. Because of it's low voltage and single-ended nature, it is not very noise resilient, and is usually replaced with a more robust protocol such as [RS-232](/electronics/communication-protocols/rs-232-protocol) or [RS-485](/electronics/communication-protocols/rs-485-protocol) when communication occurs over any significant cable length or in a noisy environment.
 
 # Terminology
 
@@ -437,11 +437,11 @@ Some UART protocols have radiation tolerant devices, such as the [DRS4485](http:
 
 RS-232 is a very similar protocol to UART, and a UART to RS-232 converter is one of the most popular communication protocol converters you will see in an embedded system.
 
-For more information, see the [RS-232 page](http://blog.mbedded.ninja/electronics/communication-protocols/rs-232-protocol).
+For more information, see the [RS-232 page](/electronics/communication-protocols/rs-232-protocol).
 
 # RS-485
 
-RS-482 is another very common protocol that UART is converted to and from. It is usually chosen over RS-232 when longer distances and/or larger noise immunity is needed. For more information, see the [RS-485 page](http://blog.mbedded.ninja/electronics/communication-protocols/rs-485-protocol).
+RS-482 is another very common protocol that UART is converted to and from. It is usually chosen over RS-232 when longer distances and/or larger noise immunity is needed. For more information, see the [RS-485 page](/electronics/communication-protocols/rs-485-protocol).
 
 # Cables
 

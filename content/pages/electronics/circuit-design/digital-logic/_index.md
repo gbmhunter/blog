@@ -69,7 +69,7 @@ The 3-Bit Grey Encoded Counter is a counter that counts from 0 to 7 in binary in
 
 ## Quadrature Detection Circuit
 
-This quadrature detection circuit is built entirely in hardware, and only uses one flip-flop. It is useful for detecting the direction that an encoder that outputs quadrature signals is spinning in. Potential applications include [BLDC motor control](http://blog.mbedded.ninja/electronics/circuit-design/bldc-motor-control). This circuit can be built entirely in [reconfigurable PSoC on-chip logic](http://blog.mbedded.ninja/programming/microcontrollers/psoc).
+This quadrature detection circuit is built entirely in hardware, and only uses one flip-flop. It is useful for detecting the direction that an encoder that outputs quadrature signals is spinning in. Potential applications include [BLDC motor control](/electronics/circuit-design/bldc-motor-control). This circuit can be built entirely in [reconfigurable PSoC on-chip logic](/programming/microcontrollers/psoc).
 
 When the encoder is spinning in one direction, the output will be logic high (1), when it is spinning in the opposite direction, it will be logic low (0).
 

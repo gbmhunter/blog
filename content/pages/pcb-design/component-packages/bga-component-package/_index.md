@@ -24,7 +24,7 @@ url: /pcb-design/component-packages/bga-component-package
 </td></tr><tr >
 <td >Similar To
 </td>
-<td >  * [WLCSP](http://blog.mbedded.ninja/pcb-design/component-packages/wlcsp-component-package)
+<td >  * [WLCSP](/pcb-design/component-packages/wlcsp-component-package)
 </td></tr><tr >
 <td >Mounting
 </td>

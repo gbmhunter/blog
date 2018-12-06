@@ -192,7 +192,7 @@ I have only ever seen this in the 3-pin variant (called TO-268-3).
 
 
 
-![](http://blog.mbedded.ninja/nextgen-attach_to_post/preview/id--5173)
+![](/nextgen-attach_to_post/preview/id--5173)
 
 
 

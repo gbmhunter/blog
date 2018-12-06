@@ -21,15 +21,15 @@ tags:
 ---
 
 
-* Updated the [C Data Types page](http://blog.mbedded.ninja/programming/languages/c/data-types) with information on software-based floating point arithmetic.  
+* Updated the [C Data Types page](/programming/languages/c/data-types) with information on software-based floating point arithmetic.  
 
-* New [apt page](http://blog.mbedded.ninja/programming/operating-systems/linux/programs/apt) under Programming->Operating Systems->Linux->Programs.  
+* New [apt page](/programming/operating-systems/linux/programs/apt) under Programming->Operating Systems->Linux->Programs.  
 
 	{{< figure src="/images/2018/02/sudo-apt-install-icon.png"   >}}
 
-* New [Anaconda page](http://blog.mbedded.ninja/programming/languages/python/anaconda) under Programming->Languages->Python.
+* New [Anaconda page](/programming/languages/python/anaconda) under Programming->Languages->Python.
 
 	{{< figure src="/images/2018/02/anaconda-python-logo.png" width="446px" caption="The logo for Anaconda (Python distribution/environment)."  >}}
 
-* Updated the [C++ Exceptions page](http://blog.mbedded.ninja/programming/languages/c-plus-plus/exceptions) with information on the noexcept keyword introduced in C++11.
+* Updated the [C++ Exceptions page](/programming/languages/c-plus-plus/exceptions) with information on the noexcept keyword introduced in C++11.
 

@@ -251,7 +251,7 @@ SocketCAN creates a new protocol family called `PF_CAN`. You can then communicat
 
 CAN support was added to the Linux kernel in version 2.6.25.
 
-More information on SocketCAN, including information and code examples on how to send and receive CAN data from the terminal using SocketCAN, see the [How To Use SocketCAN With The Command-Line In Linux page](http://blog.mbedded.ninja/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux) or the [How To Use SocketCAN With C++ In Linux page](http://blog.mbedded.ninja/programming/operating-systems/linux/how-to-use-socketcan-with-c-in-linux).
+More information on SocketCAN, including information and code examples on how to send and receive CAN data from the terminal using SocketCAN, see the [How To Use SocketCAN With The Command-Line In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux) or the [How To Use SocketCAN With C++ In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-c-in-linux).
 
 # IC's
 

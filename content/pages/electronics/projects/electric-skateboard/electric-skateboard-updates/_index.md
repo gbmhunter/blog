@@ -13,11 +13,11 @@ Finished the battery mounts, drilled holes and mounted the electronics enclosure
 
 ### 02/02/2012
 
-The second prototype h-bridge circuit blew up! It was working when powering a light, and also the 800W motor with no load. But as soon as I added a load to the motor (in the form of my body-weight and a skateboard), the h-bridge blew up. The top [MOSFET](http://blog.mbedded.ninja/electronics/components/mosfets) broke and when into their infamous short mode, which then caused some of the prototype board tracks to blow up. Not sure of the cause, most likely noise spikes from the motor, but I had TVS diodes everywhere! I replaced the MOSFET, fixed the tracks, and it once again blew up, this time without a PWM signal being applied (which means it should of never turned on the MOSFET)!
+The second prototype h-bridge circuit blew up! It was working when powering a light, and also the 800W motor with no load. But as soon as I added a load to the motor (in the form of my body-weight and a skateboard), the h-bridge blew up. The top [MOSFET](/electronics/components/mosfets) broke and when into their infamous short mode, which then caused some of the prototype board tracks to blow up. Not sure of the cause, most likely noise spikes from the motor, but I had TVS diodes everywhere! I replaced the MOSFET, fixed the tracks, and it once again blew up, this time without a PWM signal being applied (which means it should of never turned on the MOSFET)!
 
 ### 25/01/2012
 
-News is that the PCB's won't be made by Massey anymore, so I'm going to have to submit them to a professional PCB manufacturer. Considering either [Circuit Labs](http://www.circuitlabs.co.nz/) or [PCB Zone](http://www.pcbzone.net/) (see more info on PCB manufacturers [here](http://blog.mbedded.ninja/electronics/other/electrical-suppliers)).
+News is that the PCB's won't be made by Massey anymore, so I'm going to have to submit them to a professional PCB manufacturer. Considering either [Circuit Labs](http://www.circuitlabs.co.nz/) or [PCB Zone](http://www.pcbzone.net/) (see more info on PCB manufacturers [here](/electronics/other/electrical-suppliers)).
 
 ### 07/01/2012
 

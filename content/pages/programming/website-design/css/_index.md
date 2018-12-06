@@ -75,7 +75,7 @@ An easy way to prevent objects from being rendered is to modify the display prop
 #container { display : none; }
 ```
 
-Another example is on the [OpenCart page](http://blog.mbedded.ninja/programming/website-design/opencart), where it's used to hide the currency options.
+Another example is on the [OpenCart page](/programming/website-design/opencart), where it's used to hide the currency options.
 
 # Links
 
