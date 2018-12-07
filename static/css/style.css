@@ -3,17 +3,44 @@
     /* font-family: 'avenir next' ,'avenir', sans-serif */
 }
 
-figcaption {
+p, h1, h2, h3, ul, li, a, div {
+    /* font-family: 'Nunito', sans-serif; */
+    font-family: 'avenir next' ,'avenir', sans-serif;
+    
+}
+
+/* Styling for page titles */
+h1.f1 {
+    font-size: 3rem;
+}
+
+/* Styling for major sections in content */
+h1 {
+    font-size: 2rem;
+}
+
+p, li, div {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: rgb(85, 85, 85);
+}
+
+figcaption p {
     font-size: 80%;
     font-style: italic;
     color: gray;
     text-align: center;
 }
 
+/* ========================================================================= */
+/* TABLE STYLING                                                             */
+/* ========================================================================= */
+
 /* Center tables inside page content */
 div.content table {
     margin-left: auto; 
     margin-right: auto;
+    font-size: 1.1rem;
 }
 
 div.content th {
@@ -24,11 +51,11 @@ div.content th {
 }
 
 div.content tr:nth-of-type(even) {
-    background:#EAEAEA;
+    background:#E8E8E8;
 }
 
 div.content tr:nth-of-type(odd) {
-    background:#EEEEEE;
+    background:#EFEFEF;
 }
 
 div.content td {
@@ -46,6 +73,38 @@ div.box {
     margin: auto;
 }
 
+/* ========================================================================= */
+/* BREADCRUMBS                                                               */
+/* ========================================================================= */
+
+.breadcrumbs {
+    font-size: 1.0rem;
+}
+
+/* ========================================================================= */
+/* CODE                                                                      */
+/* ========================================================================= */
+
+pre, .pre  {
+    overflow-x: auto;
+    overflow-y: hidden;
+    overflow:   scroll;
+}
+pre code {
+    display: block;
+    padding: 1.5em 1.5em;
+    white-space: pre;
+    font-size: .875rem;
+    line-height: 2;
+}
+
+pre {
+    background-color: #222;
+    color: #ddd;
+    white-space: pre;
+    hyphens: none;
+    position: relative;
+}
 
 /* ========================================================================= */
 /* POST STYLING                                                              */
@@ -74,6 +133,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: row;
+    background-color: rgb(241, 241, 241);
 }
 
 /* Left column contains logo and menu */
@@ -94,6 +154,10 @@ body {
 
 .logo-img {
     width: 70%;
+}
+
+.logo-img img {
+    width: 100%;
 }
 
 .site-title {
@@ -151,6 +215,14 @@ main {
 }
 
 /* ========================================================================= */
+/* IMAGE STYLING                                                             */
+/* ========================================================================= */
+
+figure img {
+    width: 100%; /* Force images to stay within the confines of the parent container */
+}
+
+/* ========================================================================= */
 /* MENU STYLING                                                         */
 /* ========================================================================= */
 
@@ -187,6 +259,21 @@ main {
 
 .menu .menu-text {
     width: 165px;
+    color: #fff;
+    line-height: 1.0;
+    font-size: 0.9rem;
+
+    /* Center the text vertically */
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.menu .right-arrow {
+    color: #fff;
+    line-height: 1.0;
+    font-size: 1.2rem;
 }
 
 .menu li.dropdown > a::after {
@@ -216,6 +303,11 @@ main {
     display: none;
     top: -5px; /* This brings the sub-menu vertically in-line with the menu */
 }
+
+.submenu .menu-text {
+    color: rgb(85, 85, 85);
+}
+
 
 .submenu {
     margin: 0px;
