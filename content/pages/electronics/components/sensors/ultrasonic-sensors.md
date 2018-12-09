@@ -617,20 +617,12 @@ CMUTs use a change in capacitance to perform energy transduction. They are micro
 
 # External Resources
 
-The [Olympus Ultrasonic Transducers Technical Notes](http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf) is a great document explaining some of the basics of ultrasonic transducers and related equations. If the link is dead, you can use the local download below:
-
-[wpdm_file id=4 title="true" desc="true"]
+The [Olympus Ultrasonic Transducers Technical Notes](http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf) is a great document explaining some of the basics of ultrasonic transducers and related equations. If the link is dead, you can use the [local download](/docs/olympus-ultrasonic-transducers-technical-notes.pdf).
 
 A technical resource on ultrasonic flowmeter basics can be found at [http://www.sensorsmag.com/sensors/acoustic-ultrasound/ultrasonic-flowmeter-basics-842](http://www.sensorsmag.com/sensors/acoustic-ultrasound/ultrasonic-flowmeter-basics-842).
 
-For information on how to tune circuits with piezo transducers in them, see http://traktoria.org/files/sonar/system_design/notes_on_the_design_of_matching_systems_for_piezo_elements.pdf . If the link is dead (**which it has been since Dec 2017**), you can use the local download below:
+For information on how to tune circuits with piezo transducers in them, see http://traktoria.org/files/sonar/system_design/notes_on_the_design_of_matching_systems_for_piezo_elements.pdf . If the link is dead (**which it has been since Dec 2017**), you can use the [local download](/docs/airmar-notes-on-the-design-of-matching-systems-for-piezo-elements.pdf).
 
-[wpdm_file id=3 title="true" desc="true"]
+A good journal article on ultrasound losses in air is at [http://www.ktu.lt/ultra/journal/pdf_50_1/50-2004-Vol.1_09-A.Vladisauskas.pdf](http://www.ktu.lt/ultra/journal/pdf_50_1/50-2004-Vol.1_09-A.Vladisauskas.pdf) [Cypress - Automotive Ultrasonic Distance Measurement For Park Assist Systems](http://www.cypress.com/?docID=42341) is a good document describing an ultrasonic system built from a transducer and a PSoC 1 microcontroller. You can also use the [local download](/docs/Cypress - Automotive Ultrasonic Distance Measurement For Park Assist Systems.pdf).
 
-A good journal article on ultrasound losses in air is at [http://www.ktu.lt/ultra/journal/pdf_50_1/50-2004-Vol.1_09-A.Vladisauskas.pdf](http://www.ktu.lt/ultra/journal/pdf_50_1/50-2004-Vol.1_09-A.Vladisauskas.pdf) [Cypress - Automotive Ultrasonic Distance Measurement For Park Assist Systems](http://www.cypress.com/?docID=42341) is a good document describing an ultrasonic system built from a transducer and a PSoC 1 microcontroller. You can also use the local download below:
-
-[wpdm_file id=5 title="true" desc="true"]
-
-_Maxim - Proximity Detector Features In Ultrasonic Transducers_ shows a good circuit when using a separate transmitter and receiver. You can also use the local download link below:
-
-[wpdm_file id=6  title="true" desc="true"] 
+_Maxim - Proximity Detector Features In Ultrasonic Transducers_ shows a good circuit when using a separate transmitter and receiver. You can also use the [local download link](/docs/Maxim - Proximity Detector Features Ultrasonic Transducers.pdf).
