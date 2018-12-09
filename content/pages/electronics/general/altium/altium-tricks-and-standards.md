@@ -155,9 +155,7 @@ All layers related to the top side (Top Layer, Top Overlay, Top Paste, Top Solde
 
 {{< figure src="/images/2011/09/example-of-hot-and-cold-altium-pcb-layer-colours-annotated.png" width="1341px" caption="An example showing the use of 'hot' and 'cold' PCB layer colours in Altium to help distinguish between top and bottom associated objects."  >}}
 
-The following file can be downloaded and loaded into Altium to setup the colour scheme as mentioned above.
-
-[wpdm_package id='13060']
+The file [TransparentHotColdPcbViewConfig v1.0.config_2dsimple](/docs/TransparentHotColdPcbViewConfig v1.0.config_2dsimple) and loaded into Altium to setup the colour scheme as mentioned above.
 
 # PCB Symbol Naming Convention
 
