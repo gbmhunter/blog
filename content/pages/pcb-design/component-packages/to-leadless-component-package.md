@@ -9,24 +9,15 @@ url: /pcb-design/component-packages/to-leadless-component-package
 
 # Overview
 
-
-<table style="width: 600px;" >
-<tbody >
-<tr >
-
-<td >Name
-</td>
-
-<td >TO-Leadless (Transistor Outline Leadless)
-</td>
+<table>
+<tbody>
+<tr>
+    <td>Name</td>
+    <td>TO-Leadless (Transistor Outline Leadless)</td>
 </tr>
-<tr >
-
-<td >Synonyms
-</td>
-
-<td >n/a
-</td>
+<tr>
+<td>Synonyms</td>
+<td>n/a</td>
 </tr>
 <tr >
 
@@ -68,28 +59,18 @@ url: /pcb-design/component-packages/to-leadless-component-package
 <td >1.20mm
 </td>
 </tr>
-<tr >
-
-<td >Solderability
-</td>
-
-<td >Not suitable for hand soldering due to pads underneath the package. Suitable for hot air and reflow soldering techniques.
-</td>
+<tr>
+    <td>Solderability</td>
+    <td>Not suitable for hand soldering due to pads underneath the package. Suitable for hot air and reflow soldering techniques.</td>
 </tr>
-<tr >
-
-<td >Thermal Resistance
-</td>
-
-<td >
-
-
-
-  * [latex]R_{JC} = 0.4^{\circ}{\rm C}/W[/latex]
-  * [latex]R_{JA} = 40^{\circ}{\rm C}/W[/latex] (max)
-
-
-</td>
+<tr>
+    <td>Thermal Resistance</td>
+    <td>
+        <ul>
+            <li>\(R_{JC} = 0.4^{\circ}{\rm C}/W\)</li>
+            <li>\(R_{JA} = 40^{\circ}{\rm C}/W\) (max)</li>
+        </ul>
+    </td>
 </tr>
 <tr >
 
@@ -115,49 +96,21 @@ url: /pcb-design/component-packages/to-leadless-component-package
 <td >n/a
 </td>
 </tr>
-<tr >
-
-<td >Common Uses
-</td>
-
-<td >
-
-
-
-  * High-power MOSFETs (e.g. with 300A current capability)
-
-
-</td>
+<tr>
+    <td>Common Uses</td>
+    <td>High-power MOSFETs (e.g. with 300A current capability)</td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 As far as I know, the TO-Leadless package is solely used by Infineon for a range of it's high power MOSFETs. In this package, Infineons MOSFETs can achieve on-resistances as low as 0.4mΩ. It's package size is 60% smaller than the D2PAK 7-pin package.
 
-
-
-
 # 3D Render
-
 
 {{< figure src="/images/2015/04/to-leadless-component-package-3d-render.jpg" width="310px" caption="A 3D render of the TO-Leadless component package."  >}}
 
-
 # Images
 
-
-
-
-![](/nextgen-attach_to_post/preview/id--5412)
-
-
-
-
-
-##  
+{{< gallery dir="/images/electronics-packages/to-leadless" />}}

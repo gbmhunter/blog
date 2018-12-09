@@ -9,48 +9,27 @@ url: /pcb-design/component-packages/to-3-component-package
 
 # Overview
 
-
-<table style="width: 600px;" >
-<tbody >
-<tr >
-
-<td >Name
-</td>
-
-<td >Transistor Outline 3
-</td>
+<table>
+<tbody>
+<tr>
+    <td>Name</td>
+    <td>Transistor Outline 3</td>
 </tr>
-<tr >
-
-<td >Synonyms
-</td>
-
-<td >
-
-
-
-  * TO-204AD (TO-3-2L)
-
-
-</td>
+<tr>
+    <td>Synonyms</td>
+    <td>TO-204AD (TO-3-2L)</td>
 </tr>
-<tr >
-
-<td >Variants
-</td>
-
-<td >
-
-
-
-  * TO-3-2L (2 pins + case)
-  * TO-3-4L (4 pins + case)
-  * TO-204 AA (TO-3-2L with 1.0mm pins)
-  * TO-204 AE (TO-3-2L with 1.5mm pins)
-  * TO-204 AD
-
-
-</td>
+<tr>
+    <td>Variants</td>
+    <td>
+        <ul>
+            <li>TO-3-2L (2 pins + case)</li>
+            <li>TO-3-4L (4 pins + case)</li>
+            <li>TO-204 AA (TO-3-2L with 1.0mm pins)</li>
+            <li>TO-204 AE (TO-3-2L with 1.5mm pins)</li>
+            <li>TO-204 AD</li>
+        </ul>
+    </td>
 </tr>
 <tr >
 
@@ -92,114 +71,64 @@ url: /pcb-design/component-packages/to-3-component-package
 <td >Easy to solder by hand.
 </td>
 </tr>
-<tr >
-
-<td >Thermal Resistance
-</td>
-
-<td >
-
-
-
-  * [latex]T_{JC} = 0.83-1.4^{\circ}{\rm C}/W[/latex] (depending on exact component)
-  * [latex]T_{CH} = 0.40^{\circ}{\rm C}/W[/latex] (using thermal grease)
-  * [latex]T_{CH} = 1.00^{\circ}{\rm C}/W[/latex] (using thermal grease with mica insulator)
-  * [latex]T_{JA} = 30.0^{\circ}{\rm C}/W[/latex] (typical socket mount)
-
-
-</td>
+<tr>
+    <td>Thermal Resistance</td>
+    <td>
+        <ul>
+            <li>\(T_{JC} = 0.83-1.4^{\circ}{\rm C}/W\) (depending on exact component)</li>
+            <li>\(T_{CH} = 0.40^{\circ}{\rm C}/W\) (using thermal grease)</li>
+            <li>\(T_{CH} = 1.00^{\circ}{\rm C}/W\) (using thermal grease with mica insulator)</li>
+            <li>\(T_{JA} = 30.0^{\circ}{\rm C}/W\) (typical socket mount)</li>
+        </ul>
+    </td>
 </tr>
 <tr >
 
 <td >Dimensions
 </td>
 
-<td >[latex]39.94x26.67=1065mm^2[/latex] (smallest square area to enclose package)
-</td>
+<td>\(39.94x26.67=1065mm^2\) (smallest square area to enclose package)</td>
 </tr>
-<tr >
-
-<td >Height
-</td>
-
-<td >
-
-
-All variants of the TO-3 package seem to have the same height.
-
-
-
-
-[latex]6.35-11.43mm (0.250-0.450")[/latex] (when mounted flat with no standoff on PCB)
-
-
-
-</td>
+<tr>
+    <td>Height</td>
+    <td>
+        <p>All variants of the TO-3 package seem to have the same height.</p>
+        <p>\(6.35-11.43mm (0.250-0.450")\) (when mounted flat with no standoff on PCB).</p>
+    </td>
 </tr>
-<tr >
-
+<tr>
 <td >3D Models
 </td>
 
 <td >n/a
 </td>
 </tr>
-<tr >
-
-<td >Common Uses
-</td>
-
-<td >
-
-
-
-  * Transistors (TO-3-2L)
-  * Linear regulators (TO-3-2L)
-  * Op-amps (TO-3-8L)
-  * Diodes (TO-3-2L)
-
-
-</td>
+<tr>
+    <td>Common Uses</td>
+    <td>
+        <ul>
+            <li>Transistors (TO-3-2L)</li>
+            <li>Linear regulators (TO-3-2L)</li>
+            <li>Op-amps (TO-3-8L)</li>
+            <li>Diodes (TO-3-2L)</li>
+        </ul>
+    </td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 This package comes in many different pin variants. The 2-pinned device, called the TO-3-2L is the most common.
 
+The TO-3 package has a very low junction-to-case thermal resistance (`\(0.8-1.5^{\circ}{\rm C}/W\)`). The TO-3 package is flange mount, which facilitates easy heatsinking. They are commonly screwed onto the metal enclosure of the device (you can sometimes see them on the outside of the enclosure!) for cheap and effective heatsinking.
 
-
-
-The TO-3 package has a very low junction-to-case thermal resistance ([latex]0.8-1.5^{\circ}{\rm C}/W[/latex]). The TO-3 package is flange mount, which facilitates easy heatsinking. They are commonly screwed onto the metal enclosure of the device (you can sometimes see them on the outside of the enclosure!) for cheap and effective heatsinking.
-
-
-
-
-Large heatsinks designed for the TO-3 package can have thermal resistances as low as [latex]0.4^{\circ}{\rm C/W}[/latex]. The thermal resistance between the device case and the heatsink is normally between [latex]0.5-1.7^{\circ}{\rm C/W}[/latex].
-
-
-
+Large heatsinks designed for the TO-3 package can have thermal resistances as low as `\(0.4^{\circ}{\rm C/W}\)`. The thermal resistance between the device case and the heatsink is normally between `\(0.5-1.7^{\circ}{\rm C/W}\)`.
 
 # Photos
 
-
 {{< figure src="/images/2015/04/to-3-8-component-package-photo-top-bottom.jpg" width="401px" caption="A photo of the TO-3-8 component package."  >}}
-
 
 # Other Images
 
-
-
-
-![](/nextgen-attach_to_post/preview/id--6622)
-
-
-
-
-
-##  
+{{< gallery dir="/images/electronics-packages/to-3" />}}

@@ -7,34 +7,42 @@ type: page
 url: /pcb-design/component-packages/to-39-to-205ad-component-package
 ---
 
-[mathjax]
-
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
-<td >Name
+<table><tbody ><tr >
+    <td>Name</td>
+    <td >TO-39 (Transistor Outline 39)</td>
+</tr>
+<tr>
+<td>Synonyms</td>
+<td>
+    <ul>
+        <li>TO-205AD</li>
+        <li>H (Linear Technology Package Code)</li>
+    </ul>
 </td>
-<td >TO-39 (Transistor Outline 39)
-</td></tr><tr >
-<td >Synonyms
-</td>
-<td >  * TO-205AD  * H (Linear Technology Package Code)
-</td></tr><tr >
-<td >Variants
-</td>
-<td >  * TO-39-3  * TO-39-4  * TO-39-6  * TO-39-8
-
-The height can also vary (e.g. low profile and high profile, see comments).
-
-</td></tr><tr >
-<td >Similar To
-</td>
-<td >TO-18
-</td></tr><tr >
-<td >Mounting
-</td>
-<td >TH
-</td></tr><tr >
+</tr>
+<tr>
+    <td>Variants</td>
+    <td>
+        <ul>
+            <li>TO-39-3</li>
+            <li>TO-39-4</li>
+            <li>TO-39-6</li>
+            <li>TO-39-8</li>
+        </ul>
+        <p>The height can also vary (e.g. low profile and high profile, see comments).</p>
+    </td>
+</tr>
+<tr>
+    <td>Similar To</td>
+    <td >TO-18</td>
+</tr>
+<tr>
+    <td>Mounting</td>
+    <td>TH</td>
+</tr>
+<tr >
 <td >Pin Count
 </td>
 <td >3-10 (most common pin count is 3)
@@ -46,13 +54,19 @@ The height can also vary (e.g. low profile and high profile, see comments).
 <td >Solderability
 </td>
 <td >Easy to solder by hand.
-</td></tr><tr >
-<td >Thermal Resistance
 </td>
-<td >  * \(T_{JC} = 15^{\circ}{\rm C}/W\)  * \(T_{JA} = 150^{\circ}{\rm C}/W\) (mounted in the standard way to the PCB)
-</td></tr><tr >
-<td >Land Area
-</td>
+</tr>
+<tr>
+    <td>Thermal Resistance</td>
+    <td>
+        <ul>
+            <li>\(T_{JC} = 15^{\circ}{\rm C}/W\)</li>
+            <li>\(T_{JA} = 150^{\circ}{\rm C}/W\) (mounted in the standard way to the PCB)</li>
+        </ul>
+    </td>
+</tr>
+<tr>
+<td>Land Area</td>
 <td >\(88mm^2\) (smallest square area to enclose package)
 </td></tr><tr >
 <td >Height
@@ -62,11 +76,20 @@ The height can also vary (e.g. low profile and high profile, see comments).
 <td >3D Models
 </td>
 <td >n/a
-</td></tr><tr >
-<td >Common Uses
 </td>
-<td >  * Transistors  * UV LEDs  * IR Thermometers
-</td></tr></tbody></table>
+</tr>
+<tr>
+    <td >Common Uses
+    </td>
+    <td>
+        <ul>
+            <li>Transistors</li>
+            <li>UV LEDs</li>
+            <li>IR Thermometers</li>
+        </ul>
+    </td>
+</tr>
+</tbody></table>
 
 # Comments
 
@@ -78,7 +101,7 @@ The TO-39 package comes in different heights, two of which are commonly called l
 
 The ground pin of the TO-39 package is usually connected to the metal case. The TO-39 can sit directly on the PCB, so it's important to consider that it could short out any unmasked nets running underneath the package. This also applies to the pads surrounding the non-ground pins. I measured the clearance around the non-ground pins and the maximum diameter of the pad surrounding the hole was about 1.60mm before it would short to ground. The pad on the overside of the PCB can be as large as you want.
 
-You can get clip-on heatsinks for the TO-39 package with thermal resistances of around \(30-40^{\circ}{\rm C}/W\), which drops the \(T_{JA}\) to around \(45-55^{\circ}{\rm C}\).
+You can get clip-on heatsinks for the TO-39 package with thermal resistances of around `\(30-40^{\circ}{\rm C}/W\)`, which drops the `\(T_{JA}\)` to around `\(45-55^{\circ}{\rm C}\)`.
 
 # Photos
 
@@ -86,5 +109,4 @@ You can get clip-on heatsinks for the TO-39 package with thermal resistances of 
 
 # Other Images
 
-![](/nextgen-attach_to_post/preview/id--6589)
-
+{{< gallery dir="/images/electronics-packages/to-39" />}}

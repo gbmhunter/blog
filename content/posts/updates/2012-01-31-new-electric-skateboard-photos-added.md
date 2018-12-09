@@ -17,4 +17,4 @@ Worked hard on the skateboard over the weekend, new photos have been added to th
 
 => [Electric Skateboard Photo Gallery](/electronics/projects/electric-skateboard/electric-skateboard-photo-album)
 
-[nggallery id=33]
+{{< gallery dir="/images/electronics-electricskateboard-final-mech" />}}

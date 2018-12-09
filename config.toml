@@ -3,7 +3,7 @@
 baseURL = ""
 languageCode = "en-us"
 title = "mbedded.ninja"
-theme = "ananke"
+#theme = "ananke"
 sectionPagesMenu = "main"
 pluralizelisttitles = "false"
 pygmentsCodeFences = "true"

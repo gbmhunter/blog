@@ -7,27 +7,35 @@ type: page
 url: /pcb-design/component-packages/msop-component-package
 ---
 
-[mathjax]
-
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
-<td >Name
+<table>
+<tbody>
+<tr>
+    <td>Name</td>
+    <td>Micro Small Outline Package</td>
+</tr>
+<tr>
+    <td>Synonyms</td>
+    <td>
+        <ul>
+            <li>Micro SOP</li>
+            <li>RM-8, RM-10 (Analog Devices, no pad)</li>
+            <li>MINI<em>SO</em>EP, RH-8-1, RH-10-1 (Analog Devices, with pad)</li>
+            <li>MSE (Linear Technology)</li>
+            <li>uSOP (Maxim Integrated)</li>
+            <li>uMAX (Maxim Integrated)</li>
+            <li>u8+1 (Maxim Integrated package code for MSOP-8 P0.65mm)</li>
+        </ul>
 </td>
-<td >Micro Small Outline Package
-</td></tr><tr >
-<td >Synonyms
-</td>
-<td >  * Micro SOP  * RM-8, RM-10 (Analog Devices, no pad)  * MINI_SO_EP, RH-8-1, RH-10-1 (Analog Devices, with pad)  * MSE (Linear Technology)  * uSOP (Maxim Integrated)  * uMAX (Maxim Integrated)  * u8+1 (Maxim Integrated package code for MSOP-8 P0.65mm)
-</td></tr><tr >
+</tr><tr >
 <td >Variants
 </td>
 <td >n/a
 </td></tr><tr >
-<td >Similar To
-</td>
-<td >  * SSOP
-</td></tr><tr >
+<td>Similar To</td>
+<td>SSOP</td>
+</tr><tr >
 <td >Mounting
 </td>
 <td >SMD
@@ -42,8 +50,13 @@ url: /pcb-design/component-packages/msop-component-package
 </td></tr><tr >
 <td >Pitch
 </td>
-<td >  * 0.50mm (MSOP-16)  * 0.65mm (uMAX, uSOP)
-</td></tr><tr >
+<td>
+    <ul>
+        <li>0.50mm (MSOP-16)</li>
+        <li>0.65mm (uMAX, uSOP)</li>
+    </ul>
+</td>
+</tr><tr >
 <td >Solderability
 </td>
 <td >Moderately difficult to solder by hand, due to the small pitch. Easy to solder with hot air, infrared, or reflow techniques.
@@ -54,22 +67,39 @@ url: /pcb-design/component-packages/msop-component-package
 </td></tr><tr >
 <td >Dimensions
 </td>
-<td >  * 4.9x3.0x1.1mm (LA: 14.7mm2)  * MSOP-10: 3.0x3.0mm, LA = 9.0mm2 
-</td></tr><tr >
-<td >Height
+<td>
+    <ul>
+        <li>4.9x3.0x1.1mm (LA: 14.7mm2)</li>
+        <li>MSOP-10: 3.0x3.0mm, LA = 9.0mm2</li>
+    </ul>
 </td>
-<td >1.10mm
-</td></tr><tr >
-<td >3D Models
-</td>
-<td >  * [MSOP-10](http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&id=205903)  * [IPC-7351 All SOIC SOP HSOP QSOP MSOP VSOP TVSOP SSOP TSSOP 250 packages](http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&id=225862)  * [uMAX-8](http://www.3dcontentcentral.com/Download-Model.aspx?catalogid=171&id=165793)
-</td></tr><tr >
+</tr>
+<tr>
+<td>Height</td>
+<td >1.10mm</td>
+</tr>
+<tr>
+    <td>3D Models</td>
+    <td>
+        <ul>
+            <li><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=205903">MSOP-10</a></li>
+            <li><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=225862">IPC-7351 All SOIC SOP HSOP QSOP MSOP VSOP TVSOP SSOP TSSOP 250 packages</a></li>
+            <li><a href="http://www.3dcontentcentral.com/Download-Model.aspx?catalogid=171&amp;id=165793">uMAX-8</a></li>
+        </ul>
+    </td>
+</tr>
+<tr>
 <td >Common Uses
 </td>
-<td >  * Audio amplifiers (Analog Devices)  * LED Controllers (Linear Technology)
-</td></tr></tbody></table>
+<td>
+    <ul>
+        <li>Audio amplifiers (Analog Devices)</li>
+        <li>LED Controllers (Linear Technology)</li>
+    </ul>
+</td>
+</tr></tbody></table>
 
-# **Comments**
+# Comments
 
 The width of any MSOP package is always 3mm. The length is also commonly 3mm (except for MSOP-16). Because of this restriction, the pitch usually decreases as the pin count increases.
 
@@ -107,7 +137,14 @@ Synonyms: DGS (Texas Instruments), VSSOP-10 (Texas Instruments)
 <td >\(91.8^{\circ}C/W\)
 </td></tr></tbody></table>
 
-# **Images**
+# MSOP-8
 
-![](/nextgen-attach_to_post/preview/id--5082)
+{{< figure src="/images/electronics-packages/msop-8-component-package-3d-model-with-exposed-pad.jpg" width="500px" caption="3D model of the MSOP-8 component package (with exposed pad)." >}}
 
+{{< figure src="/images/electronics-packages/msop-8-component-package-dimensions.png" width="500px" caption="Package dimensions of the MSOP-8 component package (with exposed pad)." >}}
+
+# MSOP-10
+
+{{< figure src="/images/electronics-packages/msop-10-component-package-dimensions.png" width="500px" caption="Package dimensions of the MSOP-10 component package (with exposed pad)." >}}
+
+{{< figure src="/images/electronics-packages/msop-10-component-package-recommend-land-pattern.gif" width="500px" caption="The recommeneded land pattern for the MSOP-10 component package." >}}

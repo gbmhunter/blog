@@ -1,5 +1,9 @@
 # Development
 
+The recommended code editor is [Visual Studio Code](https://code.visualstudio.com/).
+
+Follow the instructions [here](https://gohugo.io/getting-started/installing) to install Hugo.
+
 To start a development server that will watch for file changes:
 
 ```sh
