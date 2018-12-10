@@ -24,6 +24,25 @@ To build site and place files in `public` directory:
 $ hugo
 ```
 
+# Directory Structure
+
+<table>
+    <tbody>
+        <tr>
+            <td>content/</td>
+            <td>Markdown files which contain the content which creates the sites pages and posts.</td>
+        </tr>
+        <tr>
+            <td>old/</td>
+            <td>Deprecated content which is kept around just in case I need it again.</td>
+        </tr>
+        <tr>
+            <td>scripts/</td>
+            <td>Useful Python scripts to automate some labourous tasks.</td>
+        </tr>
+    </tbody>
+</table>
+
 # Recommended VS Code Plugins
 
 * Code Spell Checker

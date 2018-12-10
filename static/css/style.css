@@ -93,11 +93,12 @@ div.box {
 /* CODE                                                                      */
 /* ========================================================================= */
 
-pre, .pre  {
+pre, .pre {
     overflow-x: auto;
     overflow-y: hidden;
     overflow:   scroll;
 }
+
 pre code {
     display: block;
     padding: 1.5em 1.5em;
@@ -112,6 +113,15 @@ pre {
     white-space: pre;
     hyphens: none;
     position: relative;
+}
+
+/* Styling for inline code (no pre element) */
+code {
+    border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    border: 1px solid #BCBEC0;
+    padding: 2px;     
 }
 
 /* ========================================================================= */
