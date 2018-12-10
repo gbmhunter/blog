@@ -143,9 +143,7 @@ Wordpress Plugin Page: [http://wordpress.org/extend/plugins/jquery-mega-menu/](h
 
 Jquery Mega Menu is used for the large drop-down menu on this site (the main form of navigation). The include code is added to the header.php file of the motion child theme (rather than added as a widget, which it also supports). This plugin is slightly confusing as it goes under different names and their are other similarly named plugins.
 
-I had to modify one of the plug-ins CSS files directly to customize the appearance. The CSS file is overwritten when the plugin is updated, so this file (grey.css) has to be replaced every time the plug-in is updated. The CSS file is included here in-case I ever lose it.
-
-[wpfilebase tag=file id=2 /]
+I had to modify one of the plug-ins CSS files directly to customize the appearance. The CSS file is overwritten when the plugin is updated, so this file (grey.css) has to be replaced every time the plug-in is updated.
 
 # NextGEN Gallery
 

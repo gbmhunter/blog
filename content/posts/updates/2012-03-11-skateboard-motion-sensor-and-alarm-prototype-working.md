@@ -1,7 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-03-11 04:18:09+00:00
-draft: false
+date: 2012-03-11
 title: Skateboard Motion Sensor And Alarm Prototype Working
 type: post
 url: /electronics/electronics-electric-skateboard/skateboard-motion-sensor-and-alarm-prototype-working
@@ -34,4 +33,4 @@ For the prototype, the motion sensor triggers an interrupt on the micro, which t
 
 Here's a little video showing how it works. Note that I had the motion sensor on maximum sensitivity (aka no capacitor), hence how a little table vibration sets it off, which is quite impressive!
 
-[youtube=http://www.youtube.com/watch?v=cKx7CbwUe6E]
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cKx7CbwUe6E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

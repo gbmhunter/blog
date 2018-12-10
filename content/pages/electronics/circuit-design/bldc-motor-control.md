@@ -1,7 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-08-02 21:09:06+00:00
-draft: false
+date: 2012-08-02
 title: BLDC Motor Control
 type: page
 url: /electronics/circuit-design/bldc-motor-control
@@ -15,7 +14,7 @@ The page is dedicated to how to control a **brushless DC** (BLDC) motor in an em
 
 # Acronyms And Terminology
 
-<table border="0" >
+<table>
 <tbody>
 <tr>
     <td ><b>Subscript</b></td>
@@ -233,6 +232,7 @@ The page is dedicated to how to control a **brushless DC** (BLDC) motor in an em
 # Motors
 
 Important Parameters:
+
 * Torque Constant: An important parameter which relates the torque to the DC current draw. All other things being equal, higher-quality motors will have a higher torque constant.
 * Rated Speed: Most are rated in the range of 3000-6000rpm. The motor can be driven at slightly higher speeds than those rated by a technique that is called 'flux weakening'
 * Rated Current
@@ -248,7 +248,7 @@ Cogging torque is due to the variation in airgap permanence or reluctance of the
 
 Ripple torque is the torque produces by the interaction between the stator and rotor MMF. Ripple torque is mainly due to fluctuations in the field distribution.
 
-The motor windings can be wound to either give trapezoidal or sinusoidal feedback, which relates to the control methods mentioned further down on this page. As quoted by _Shiyoung Lee, Ph.D., _A COMPARISON STUDY OF THE COMMUTATION METHODS FOR THE THREE-PHASE PERMANENT MAGNET BRUSHLESS DC MOTOR),
+The motor windings can be wound to either give trapezoidal or sinusoidal feedback, which relates to the control methods mentioned further down on this page. As quoted by _Shiyoung Lee, Ph.D.,_ A COMPARISON STUDY OF THE COMMUTATION METHODS FOR THE THREE-PHASE PERMANENT MAGNET BRUSHLESS DC MOTOR),
 
 > The simulation results verify that mismatch of the back-EMF waveform and commutation method produces ripple rich torque. Therefore, the BLDC motor and trapezoidal(six-step) commutation and the PMSM and sinusoidal commutation are the most desirable combination to produce minimum torque ripple.
 
@@ -647,9 +647,7 @@ The NEMA23 mounting hole dimensions are shown below. The dimensions are in inche
 
 # External Resources
 
-One of the best documents that I've seen about BLDC motor theory is [James Robert Mevey's "Sensorless Field Orientated Control Of Brushless Permanent Magnet Synchronous Motors"](http://krex.k-state.edu/dspace/bitstream/handle/2097/1507/JamesMevey2009.pdf). It's so good, I even decided to host it on this site incase the original link above goes down. Click below to download locally.
-
-[wpfilebase tag=file id=17 /]
+One of the best documents that I've seen about BLDC motor theory is [James Robert Mevey's "Sensorless Field Orientated Control Of Brushless Permanent Magnet Synchronous Motors"](http://krex.k-state.edu/dspace/bitstream/handle/2097/1507/JamesMevey2009.pdf). Click [here](/docs/James Mevey - Sensorless Field Orientated Control Of Brushless Permanent Magnet Synchronous Motors.pdf) to download a local version.
 
 The second best is MicroChips [AN885 - Brushless DC (BLDC) Motor Fundamentals](http://ww1.microchip.com/downloads/en/AppNotes/00885a.pdf).
 

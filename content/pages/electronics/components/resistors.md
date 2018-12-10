@@ -19,32 +19,22 @@ For information on positive temperature coefficient resistors used as "fuses" in
 
 The most commonly-used resistor schematic symbols are shown below. I prefer the American-style resistor over the European (given my distaste for the American imperial system, I never thought I would ever say that!), and use the American style through-out the rest of this website.
 
-<table><tbody ><tr >
-<td >
-
-{{< figure src="/images/2012/05/resistor-schematic-symbol-american.png" width="168px" caption="The American-styled schematic symbol for a resistor."  >}}
-
-</td>
-<td >{{< figure src="/images/2012/05/resistor-schematic-symbol-european.png" width="142px" caption="The European schematic symbol for a resistor."  >}}
-</td>
-<td >
-
-{{< figure src="/images/2012/05/resistor-schematic-symbol-variable-2-terminal.png" width="212px" caption="The schematic symbol for a 2-terminal variable resistor."  >}}
-
-</td>
-<td >
-
-{{< figure src="/images/2012/05/potentiometer-schematic-symbol.png" width="207px" caption="The schematic symbol for a potentiometer."  >}}
-
-</td></tr><tr >
-<td >American-styled resistor.
-</td>
-<td >European-style resistor.
-</td>
-<td >Variable resistor (2-terminal component).
-</td>
-<td >Potentiometer (3-terminal component).
-</td></tr></tbody></table>
+<table>
+    <tbody>
+        <tr>
+            <td>{{< figure src="/images/2012/05/resistor-schematic-symbol-american.png" width="168px" caption="The American-styled schematic symbol for a resistor."  >}}</td>
+            <td>{{< figure src="/images/2012/05/resistor-schematic-symbol-european.png" width="142px" caption="The European schematic symbol for a resistor."  >}}</td>
+            <td>{{< figure src="/images/2012/05/resistor-schematic-symbol-variable-2-terminal.png" width="212px" caption="The schematic symbol for a 2-terminal variable resistor."  >}}</td>
+            <td>{{< figure src="/images/2012/05/potentiometer-schematic-symbol.png" width="207px" caption="The schematic symbol for a potentiometer."  >}}</td>
+        </tr>
+        <tr>
+            <td>American-styled resistor.</td>
+            <td>European-style resistor.</td>
+            <td>Variable resistor (2-terminal component).</td>
+            <td>Potentiometer (3-terminal component).</td>
+        </tr>
+    </tbody>
+</table>
 
 # Resistors In Series And In Parallel
 

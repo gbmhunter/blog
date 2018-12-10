@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-14 21:25:19+00:00
+date: 2011-09-14
 draft: false
 title: ATMEL ATmega - UART
 type: page
@@ -11,14 +11,13 @@ I wrote some code to deal with communication through USART between two micro-con
 
 ## Specs
 
-Language: C
-Platform: ATmega8
-Version: 1
-Last Modification: 08/01/2011
+* Language: C
+* Platform: ATmega8
+* Version: 1
+* Last Modification: 2011-01-08
 
 ## Download
 
+[comms.rar](/docs/atmega/comms.rar)
 
-[wpfilebase tag=file id=14 /]
-
-[wpfilebase tag=file id=15 /]
+[usart.rar](/docs/atmega/usart.rar)

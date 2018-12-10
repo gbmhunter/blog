@@ -47,10 +47,8 @@ The SMT Code Book ([http://www.marsport.org.uk/smd/mainframe.htm](http://www.mar
 
 [Answers.com's Surface-mount Technology page](http://www.answers.com/topic/surface-mount-technology). Broad spectrum of information regarding SMT components, the production methods and package sizes.
 
-{{< figure src="/wp-includes/images/crystal/document.png" width="46px" caption="PDF"  >}}
+{{< figure src="/wp-includes/images/crystal/document.png" width="46px" caption="PDF" >}}
 
 Suggested Pad Layouts For A Number Of Packages (Diodes INC) - Many recommended pad layouts/land patterns for common packages all in one PDF!
 
-Quick-tecks SMT Package Dimensions PDF, which contains hundreds of dimensions for common SMD component packages. You can [download it from here](http://www.quick-teck.co.uk/TechArticleDoc/9522698761347382744.pdf), or alternatively, use the file stored on this site below.
-
-[wpfilebase tag=file id=12 /]
+Quick-tecks SMT Package Dimensions PDF, which contains hundreds of dimensions for common SMD component packages. You can [download it from here](http://www.quick-teck.co.uk/TechArticleDoc/9522698761347382744.pdf), or alternatively, use the local link [here](/docs/Quick-tecks SMT Package Dimensions.pdf).

@@ -61,10 +61,9 @@ Now knowing that I needed a new bass-driver, I got the guys at [South Pacific Mu
 
 ## Power Transistors
 
+[2SC3856-Sanken-NPN-Transistor.pdf](/images/2012/07/2SC3856-Sanken-NPN-Transistor.pdf)
 
-[gview file="/images/2012/07/2SC3856-Sanken-NPN-Transistor.pdf"]
-
-[gview file="/images/2012/07/2SA1492-Sanken-PNP-Transistor.pdf"]
+[2SA1492-Sanken-PNP-Transistor.pdf](/images/2012/07/2SA1492-Sanken-PNP-Transistor.pdf)
 
 # Pictures:
 

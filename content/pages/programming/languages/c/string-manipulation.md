@@ -329,9 +329,7 @@ Memory manipulation functions are also useful for string manipulation. Some of t
 
 `strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](/electronics/circuit-design/communication-protocols/nmea-protocol). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
 
-`getopt()` is a standard function for finding command-line arguments passed into main() as an array of strings. It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable below (taken from GCC gLibC v2.17).
-
-[wpfilebase tag=file id=11 /]
+`getopt()` is a standard function for finding command-line arguments passed into main() as an array of strings. It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable locally [here](docs/getopt.zip) (taken from GCC gLibC v2.17).
 
 # printf (And It's Variants)
 
@@ -343,7 +341,7 @@ Memory manipulation functions are also useful for string manipulation. Some of t
 
 On Linux, this will print the string to the calling terminal window. Most embedded systems do not support `printf()` as their is no "standard output" (although this can be re-wired to say, a UART). Instead, in embedded applications, printf's variants like `sprintf()` are more common.
 
-If you want to print an already-formulated string using printf (with no additional arguments to be inserted), do not use the syntax printf(msg) . Instead, use the format `printf(%s, msg)`.
+If you want to print an already-formulated string using `printf` (with no additional arguments to be inserted), do not use the syntax `printf(msg)`. Instead, use the format `printf(%s, msg)`.
 
 ```c    
 char* msg = "Example message";
@@ -362,9 +360,9 @@ The `printf()` function takes format specifiers which tell the function how you
 
 ## Conversion Specifiers
 
-Conversion specifiers determine how `printf(`) interprets the input variables and displays their value as a string. Conversion specifiers are added in the input string after the % character (optional format specifiers may be added between the % symbol and the conversion specifier).
+Conversion specifiers determine how `printf(`) interprets the input variables and displays their value as a string. Conversion specifiers are added in the input string after the `%` character (optional format specifiers may be added between the `%` symbol and the conversion specifier).
 
-Although the basic behaviour is defined in the ANSI standard, the exact implementation of printf() is likely to vary slightly between C libraries.
+Although the basic behaviour is defined in the ANSI standard, the exact implementation of `printf()` is likely to vary slightly between C libraries.
 
 <table>
     <thead>

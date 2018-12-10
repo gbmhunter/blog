@@ -1,7 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-12 06:27:48+00:00
-draft: false
+date: 2011-09-12
 title: Polumnas (Triangle Firecrackers)
 type: page
 url: /pyrotechnics/explosions/polumnas-triangle-firecrackers
@@ -12,22 +11,14 @@ url: /pyrotechnics/explosions/polumnas-triangle-firecrackers
 
 Polumna's are Mexican in origin, and look like an equailteral triangle when completed. Dead simple to make, they are completely made out of paper, sticky tape and of course black powder, so they are pretty harmless but cool little firecrackers.
 
-
 # Materials
 
-
-
-
-
-	  * Black Powder (or for a sharper crack use flash powder)
-	  * 50mm of fuse
-	  * Thick wad of newspaper
-	  * Tape
-
-
+* Black Powder (or for a sharper crack use flash powder)
+* 50mm of fuse
+* Thick wad of newspaper
+* Tape
 
 # Method
-
 
 Click the image below to get a visual guide on how to fold a polumna. The numbers in the image correspond to the steps below...
 
@@ -56,7 +47,6 @@ Click the image below to get a visual guide on how to fold a polumna. The number
 
 # Video
 
-
 A video of a small polumna blowing up.
 
-[youtube=http://www.youtube.com/watch?v=ByAsQiedvEw]
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ByAsQiedvEw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

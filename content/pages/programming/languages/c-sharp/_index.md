@@ -13,9 +13,7 @@ url: /programming/languages/c-sharp
 
 `Convert.To<type>` - Converts back and forth from many standard types, including integers and strings
 
-There is a great cheat sheet by John Sheehan which explains string manipulation in the .NET language. Unfortunately, it can no longer be found on his site. See the link below to download.
-
-[wpfilebase tag=file id=6 /]
+There is a great cheat sheet by John Sheehan which explains string manipulation in the .NET language. Unfortunately, it can no longer be found on his site, but you can still download this [locally cached version](/docs/john-sheehan-msnet-formatting-strings-cheat-sheet.pdf).
 
 ## Removing Characters From A String
 

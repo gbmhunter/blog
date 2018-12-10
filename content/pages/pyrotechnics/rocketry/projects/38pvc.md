@@ -70,13 +70,13 @@ Motor worked successfully and propelled skateboard across the concrete. Average 
 
 # Calculations
 
-[gview file="/images/2012/12/38PVC-Rocket-Motor-Data-Richard-Nakkas-SRM.xls"]
+[38PVC-Rocket-Motor-Data-Richard-Nakkas-SRM.xls](/images/2012/12/38PVC-Rocket-Motor-Data-Richard-Nakkas-SRM.xls)
 
 # Video
 
 A video of the rocket-board.
 
-[youtube=http://www.youtube.com/watch?v=SPJvFzGbNCA]
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SPJvFzGbNCA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Pictures
 

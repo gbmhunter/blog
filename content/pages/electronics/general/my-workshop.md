@@ -1,7 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-05 07:21:39+00:00
-draft: false
+date: 2011-09-05
 title: My Workshop
 type: page
 url: /electronics/general/my-workshop
@@ -14,14 +13,12 @@ url: /electronics/general/my-workshop
 Organisation! Component trays are the shiz. When you want a component, they are right there and waiting. It is like walking into a shop, but without the cost (or course you have to fill them up, but you forget about the purchasing after a while). I use component trays for through hole resistors, through-hole capacitors, diodes, transistors, MOSFET's, and common IC's (555's, max232's, etc). I have smaller containers for the surface mount equivalents.
 
 <table>
-<tbody >
-<tr >
-<td >{{< figure src="/images/my-workshop/component_trays_01.jpg" caption="These trays are awesome for storing through-hole components."  width="300px" >}}
-</td>
-<td >{{< figure src="/images/my-workshop/component_trays_02.jpg" caption="20 of them in total."  width="300px" >}}
-</td>
-</tr>
-</tbody>
+    <tbody>
+        <tr>
+            <td>{{< figure src="/images/my-workshop/component_trays_01.jpg" caption="These trays are awesome for storing through-hole components."  width="300px" >}}</td>
+            <td>{{< figure src="/images/my-workshop/component_trays_02.jpg" caption="20 of them in total."  width="300px" >}}</td>
+        </tr>
+    </tbody>
 </table>
 
 ## Storage Boxes
@@ -91,7 +88,7 @@ One of these is essential for debugging embedded designs. My favourite is the TT
 
 Plenty of industrial, hard-wearing and/or long-distance electrical equipment uses the RS-485 interface for communicating. The DT-5019 is a great USB-to-RS-485 converter for talking to devices uses this protocol with a computer.
 
-{{< figure src="/images/electronics-teardowns-cavro-xl3000/usb-serial-port-for-rs-485-converter-in-device-manager.png" caption="When installing a USB-to-RS485/422 converter, it installs a virtual COM port under the Device Manager in Windows."  width="500px" >}}
+{{< figure src="/images/electronics-teardowns-cavro-xl3000/usb-serial-port-for-rs-485-converter-in-device-manager.png" caption="When installing a USB-to-RS485/422 converter, it installs a virtual COM port under the Device Manager in Windows." width="500px" >}}
 
 I got this from [DealExtreme](http://dx.com/), part number [54289](http://dx.com/p/dtech-usb-2-0-to-rs422-rs485-adapter-cable-1-2m-cable-54289), for US$19.70 in Jan 2013 (inc. shipping to NZ). It is made by Dtech.
 
@@ -109,12 +106,8 @@ Supported transmission speeds are:
 <tbody >
 
 <tr >
-
-<td >300m
-</td>
-
-<td >921600bps
-</td>
+    <td>300m</td>
+    <td>921600bps</td>
 </tr>
 <tr >
 
@@ -137,9 +130,7 @@ Supported transmission speeds are:
 
 {{< figure src="/images/my-workshop/dt5019-usb-to-rs-485-converter-photo.jpg" caption="The DT-5019 USB-to-RS-485 converter, with supplied terminal block breakout board."  width="600px" >}}
 
-The manual for this Dtech converter  can be downloaded below.
-
-[wpfilebase tag=file id=13 /]
+The manual for this Dtech converter can be downloaded [here](/docs/dtech-usb-to-rs-485-manual.pdf).
 
 # Components
 
@@ -191,15 +182,15 @@ My 'monster' cap bank. Me and a mate made this in 2005 for a coil gun. Each capa
 
 PCB's are useful when developing a circuit past the quick prototype stage. I have both blank copper PCB sheets as well as protoboard (copper tracks running parallel with each other), and variations on proto-board esigned to make it easier to hook up IC's and other chips.
 
-{{< figure src="/images/my-workshop/pcbs.jpg" caption="Collection of proto-typing and solid copper boards for making up circuits."  width="400px" >}}
+{{< figure src="/images/my-workshop/pcbs.jpg" caption="Collection of proto-typing and solid copper boards for making up circuits." width="400px" >}}
 
 ## Laser
 
-{{< figure src="/images/electronics-misc/hene-laser-tube.jpg" caption="The HeNe laser, looking down the 'barrel'."  width="200px" >}}
+{{< figure src="/images/electronics-misc/hene-laser-tube.jpg" caption="The HeNe laser, looking down the 'barrel'." width="400px" >}}
 
 3kV HeNe Laser - I picked this laser up from Trademe in 2005 for NZ$40. The tube is about 400mm long and 80mm in diameter. The power supply is a seperate PCB which runs of 12V. So far I have never managed to get the laser running continously, only turning on intermittantly every few seconds. It seems there is a problem with the power supply and it cannot supply the required current to keep the laser on. It also emits quite a annoying squeal when running (I'm guesssing it's the switching frequency). I am unsure of it's output power...
 
-{{< figure src="/images/electronics-misc/hene-laser-3kv-power-supply.jpg" caption="The power supply for a 3kV HeNe laser."  width="300px" >}}
+{{< figure src="/images/electronics-misc/hene-laser-3kv-power-supply.jpg" caption="The power supply for a 3kV HeNe laser."  width="500px" >}}
 
 # Software
 
