@@ -238,6 +238,9 @@ body {
 
     /* Add subtle border to right-hand content */
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
+
+    /* Stops long URLs and strings going of the right-hand side of the column */
+    word-break: break-word;
 }
 
 /* Padding between border of right-hand inner column and content */
