@@ -29,7 +29,7 @@ Bit rates vary between 1-20kBit/s. The top speed is limited primarily for EMC re
 
 From the [Freescale website](http://www.freescale.com/webapp/sps/site/overview.jsp?code=IFATOLIN)
 
-<blockquote>LIN/SAE J2602 is a universal asynchronous receiver–transmitter (UART)–based, single–master, multiple–slave networking architecture originally developed for automotive sensor and actuator networking applications.</blockquote>
+> LIN/SAE J2602 is a universal asynchronous receiver–transmitter (UART)–based, single–master, multiple–slave networking architecture originally developed for automotive sensor and actuator networking applications.</blockquote>
 
 # Devices
 

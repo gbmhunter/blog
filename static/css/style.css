@@ -115,6 +115,23 @@ pre {
 }
 
 /* ========================================================================= */
+/* BLOCK QUOTES                                                              */
+/* ========================================================================= */
+
+blockquote {    
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    padding-left: 15px;
+    border-left: 3px solid #ccc;    
+}
+
+/* markdown wraps the text inside a p element */
+blockquote p {
+    font-size: 1.2rem;
+}
+
+/* ========================================================================= */
 /* POST STYLING                                                              */
 /* ========================================================================= */
 
@@ -258,7 +275,7 @@ figure img {
     display: flex;
     width: 200px;
     /* Below padding controls spacing of adjacent menu elements */
-    padding: 8px 8px; 
+    padding: 12px 8px; 
     /* padding: 12px; */
     background: rgb(34, 34, 34);
     color: #fff;
@@ -281,7 +298,7 @@ figure img {
 .menu .right-arrow {
     color: #fff;
     line-height: 1.0;
-    font-size: 1.2rem;
+    font-size: 0.7rem;
 }
 
 .menu li.dropdown > a::after {
@@ -309,7 +326,7 @@ figure img {
 
 .menu .submenu {
     display: none;
-    top: -5px; /* This brings the sub-menu vertically in-line with the menu */
+    top: 0px; /* This brings the sub-menu vertically in-line with the menu */
 }
 
 .submenu .menu-text {
@@ -330,15 +347,22 @@ figure img {
 
 .submenu li {
     display: block;
+    margin: 0;
 }
 
 .submenu li a {
     display: flex;
     background: rgb(241, 241, 241);
     color: rgb(34, 34, 34);
-    padding: 8px 6px;
+    /* padding: 8px 6px; */
     /* padding: 0px; */
-    margin-bottom: 1px;
+    /* margin-bottom: 1px; */
+}
+
+.submenu .right-arrow {
+    color: rgb(34, 34, 34);
+    line-height: 1.0;
+    font-size: 0.7rem;
 }
 
 .menu .submenu > li.dropdown:hover > .submenu {
