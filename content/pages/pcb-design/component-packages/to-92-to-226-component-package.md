@@ -9,19 +9,31 @@ url: /pcb-design/component-packages/to-92-to-226-component-package
 
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
-<td >Name
+<table>
+    <tbody>
+        <tr>
+            <td>Name</td>
+            <td>TO-92 (Transistor Outline 92)</td>
+        </tr>
+        <tr>
+<td>Synonyms</td>
+<td>
+    <ul>
+        <li>Z Package (Analog Devices)</li>
+        <li>29-11 (On Semiconductor)</li>
+    </ul>    
 </td>
-<td >TO-92 (Transistor Outline 92)
-</td></tr><tr >
-<td >Synonyms
-</td>
-<td >  * Z Package (Analog Devices)  * 29-11 (On Semiconductor)
-</td></tr><tr >
+</tr>
+<tr>
 <td >Variants
 </td>
-<td >  * TO-92 (TO-226AA)  * TO-92/18 (TO-226AB, TO-92MOD)
-</td></tr><tr >
+<td >
+    <ul>
+        <li>TO-92 (TO-226AA)</li>
+        <li>TO-92/18 (TO-226AB, TO-92MOD)</li>
+    </ul>
+</td>
+</tr><tr >
 <td >Similar To
 </td>
 <td >TO-226
@@ -44,7 +56,12 @@ url: /pcb-design/component-packages/to-92-to-226-component-package
 </td></tr><tr >
 <td >Thermal Resistance
 </td>
-<td >  * [latex]220^{\circ}{\rm C}/W[/latex] (package only)  * [latex]175^{\circ}{\rm C}/W[/latex] (plated through-holes)  * [latex]145^{\circ}{\rm C}/W[/latex] (plated through-holes and [latex]0.25inch^2[/latex] pad per lead)
+<td>
+    <ul>
+        <li>\(220^{\circ}{\rm C}/W\) (package only)</li>
+        <li>\(175^{\circ}{\rm C}/W\) (plated through-holes)</li>
+        <li>\(145^{\circ}{\rm C}/W\) (plated through-holes and \(0.25inch^2\) pad per lead)</li>
+    </ul>
 </td></tr><tr >
 <td >Land Area
 </td>
@@ -60,7 +77,14 @@ url: /pcb-design/component-packages/to-92-to-226-component-package
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * BJTs  * MOSFETs  * Linear regulators  * Active linear analogue temperature sensors  * Digital 1-wire temperature sensors
+<td>
+    <ul>
+        <li>BJTs</li>
+        <li>MOSFETs</li>
+        <li>Linear regulators</li>
+        <li>Active linear analogue temperature sensors</li>
+        <li>Digital 1-wire temperature sensors</li>
+    </ul>
 </td></tr></tbody></table>
 
 # Usage
@@ -93,23 +117,27 @@ This is applicable to both the standard TO-92 (TO-226AA) and TO-92/18 (TO-226AB)
 
 The pinout for JEDEC-named 2N series transistors is standardised as per the following table:
 
-<table ><tbody ><tr >
-<td >**Pin Number**
-</td>
-<td >**BJT Connection**
-</td></tr><tr >
-<td >1
-</td>
-<td >Emitter (E)
-</td></tr><tr >
-<td >2
-</td>
-<td >Base (B)
-</td></tr><tr >
-<td >3
-</td>
-<td >Collector (C)
-</td></tr></tbody></table>
+<table>
+    <thead>
+        <tr>
+            <th>Pin Number</th>
+            <th>BJT Connection</th>
+        </tr>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Emitter (E)</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Base (B)</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Collector (C)</td>
+        </tr>
+    </tbody>
+</table>
 
 # Thermal Resistance And Heatsinks
 

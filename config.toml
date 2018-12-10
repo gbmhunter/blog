@@ -8,3 +8,6 @@ sectionPagesMenu = "main"
 pluralizelisttitles = "false"
 pygmentsCodeFences = "true"
 disqusShortname = "blog-mbedded-ninja"
+
+[blackfriday]
+fractions = false

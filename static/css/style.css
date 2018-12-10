@@ -59,8 +59,16 @@ div.content tr:nth-of-type(odd) {
 }
 
 div.content td {
-    text-align: center;
+    text-align: center; /* This messes up list identifiers (e.g. bullet points), so we fix this below */
     padding: 2px;
+}
+
+div.content td ul {
+    display: inline-block; /* This makes list identifiers look good within table cells when contents are centered */
+}
+
+div.content td li {
+    text-align: left; /* Left aligns text in lists */
 }
 
 /* Allow for special paragraphs that have centered text */
