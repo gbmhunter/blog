@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2015-03-08 22:28:51+00:00
+date: 2015-03-08
 draft: false
 title: DIP Component Package
 type: page
@@ -9,29 +9,25 @@ url: /pcb-design/component-packages/dip-component-package
 
 # Overview
 
-
 <table >
 <tbody >
 <tr >
-
-<td >Name
-</td>
-
-<td >Dual In-Line Package
-</td>
+<td>Name</td>
+<td>Dual In-Line Package</td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
+<td >Synonyms</td>
 <td >
 
 
 
-  * N Package (Analog Devices)
-  * PDIP (plastic dual-inline package)
-  * CDIP (ceramic dual-inline package)
+<ul>
+<li>N Package (Analog Devices)</li>
+<li>PDIP (plastic dual-inline package)</li>
+
+<li>CDIP (ceramic dual-inline package)</li></ul>
+</li>
+</ul>
 
 
 </td>

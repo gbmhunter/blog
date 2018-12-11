@@ -1,7 +1,6 @@
 ---
 author: gbmhunter
-date: 2015-03-08 21:34:20+00:00
-draft: false
+date: 2015-03-08
 title: BGA Component Package
 type: page
 url: /pcb-design/component-packages/bga-component-package
@@ -9,23 +8,34 @@ url: /pcb-design/component-packages/bga-component-package
 
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
-<td style="width: 100px;" >Name
-</td>
-<td >BGA (Ball-Grid Array)
-</td></tr><tr >
-<td >Synonyms
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Variants
-</td>
-<td >  * CABGA  * CTBGA  * DSBGA (Die-Size BGA). Used by Texas Instruments. JEDEC standard MO-207  * FBGA  * FGG484 (Xilinx)  * X-DSBGA (Very thin die-size BGA). JEDEC standard MO-211-C.  * xDSB (Square and rectangular die-size BGA). JEDEC standard MO-207N.
-</td></tr><tr >
+<table>
+<tbody>
+<tr>
+    <td>Name</td>
+    <td>BGA (Ball-Grid Array)</td>
+</tr>
+<tr>
+    <td>Synonyms</td>
+    <td >n/a</td>
+</tr>
+<tr>
+    <td>Variants</td>
+    <td>
+        <ul>
+            <li>CABGA</li>
+            <li>CTBGA</li>
+            <li>DSBGA (Die-Size BGA). Used by Texas Instruments. JEDEC standard MO-207</li>
+            <li>FBGA</li>
+            <li>FGG484 (Xilinx)</li>
+            <li>X-DSBGA (Very thin die-size BGA). JEDEC standard MO-211-C.</li>
+            <li>xDSB (Square and rectangular die-size BGA). JEDEC standard MO-207N.</li>
+        </ul>
+    </td>
+</tr>
+<tr >
 <td >Similar To
 </td>
-<td >  * [WLCSP](/pcb-design/component-packages/wlcsp-component-package)
-</td></tr><tr >
+<td >[WLCSP](/pcb-design/component-packages/wlcsp-component-package)</td></tr><tr >
 <td >Mounting
 </td>
 <td >SMD
@@ -52,12 +62,26 @@ url: /pcb-design/component-packages/bga-component-package
 </td></tr><tr >
 <td >3D Models
 </td>
-<td >  * [Various Config 1mm Pitch](http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&id=215083)  * [324pins 18x18mm 1mm Pitch](http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&id=363398)
-</td></tr><tr >
-<td >Common Uses
+<td >
+    <ul>
+        <li><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=215083">Various Config 1mm Pitch</a></li>
+        <li><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=363398">324pins 18x18mm 1mm Pitch</a></li>
+    </ul>
 </td>
-<td >  * Microcontrollers  * FPGAs  * High-density SMD IC's  * CPU's  * GPU's  * Memory
-</td></tr></tbody></table>
+</tr>
+<tr>
+<td>Common Uses</td>
+<td>
+    <ul>
+        <li>Microcontrollers</li>
+        <li>FPGAs</li>
+        <li>High-density SMD IC's</li>
+        <li>CPU's</li>
+        <li>GPU's</li>
+        <li>Memory</li>
+    </ul>
+</td>
+</tr></tbody></table>
 
 # Comments
 
@@ -73,7 +97,11 @@ A particular BGA package may not have a complete grid of balls. BGA packages als
 
 # BGA Pad Diameter
 
-The pad diameter for a BGA footprint can be determined by one of three methods:  * Maximum material condition (MMC)  * Least material condition (LMC)  * Percentage reduction of nominal ball diameter (e.g. 20%)
+The pad diameter for a BGA footprint can be determined by one of three methods:
+
+* Maximum material condition (MMC)
+* Least material condition (LMC)
+* Percentage reduction of nominal ball diameter (e.g. 20%)
 
 # Soldermask Considerations
 
@@ -89,15 +117,19 @@ DSBGA (Die Sized BGA) is the name given by Texas Instruments for their family of
 
 Texas Instruments also assigns a package code to each package within the DSBGA family. Here are some example (this is in no way an exhaustive list):
 
-<table ><tbody ><tr >
-<td >TI Package Code
-</td>
-<td >Description
-</td></tr><tr >
-<td >YDC
-</td>
-<td >DSBGA, 4 Leads, Pitch 0.5mm, Body 1.1x1.1mm, Height 0.4mm
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>TI Package Code</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr>
+<td>YDC</td>
+<td >DSBGA, 4 Leads, Pitch 0.5mm, Body 1.1x1.1mm, Height 0.4mm</td>
+</tr>
+<tr >
 <td >YEA
 </td>
 <td >DSBGA, 5 Leads, Pitch 0.5mm, Body 0.9x1.4mm, Height 0.5mm
