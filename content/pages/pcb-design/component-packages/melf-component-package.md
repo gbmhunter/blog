@@ -10,7 +10,7 @@ url: /pcb-design/component-packages/melf-component-package
 # Overview
 
 
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
 
@@ -20,19 +20,9 @@ url: /pcb-design/component-packages/melf-component-package
 <td >Metal Electrode Leadless Face
 </td>
 </tr>
-<tr >
-
-<td >Synonyms
-</td>
-
-<td >
-
-
-
-  * LL-34
-
-
-</td>
+<tr>
+<td >Synonyms</td>
+<td>LL-34</td>
 </tr>
 <tr >
 
@@ -42,20 +32,14 @@ url: /pcb-design/component-packages/melf-component-package
 <td >n/a
 </td>
 </tr>
-<tr >
-
-<td >Similar To
-</td>
-
-<td >
-
-
-
-  * SOD-80
-  * Mini-MELF
-  * Micro-MELF
-
-
+<tr>
+<td >Similar To</td>
+<td>
+    <ul>
+        <li>SOD-80</li>
+        <li>Mini-MELF</li>
+        <li>Micro-MELF</li>
+    </ul>
 </td>
 </tr>
 <tr >
@@ -122,33 +106,20 @@ url: /pcb-design/component-packages/melf-component-package
 <td >n/a
 </td>
 </tr>
-<tr >
-
-<td >Common Uses
-</td>
-
-<td >
-
-
-
-  * Resistors
-  * Diodes
-
-
+<tr>
+<td >Common Uses</td>
+<td>
+    <ul>
+        <li>Resistors</li>
+        <li>Diodes</li>
+    </ul>
 </td>
 </tr>
 </tbody>
 </table>
 
-
 The MELF component package is a cylindrical shaped package. Not very popular because they have a tendency to roll around when soldering.
 
-
-
-
 # Images
-
-
-
 
 Nothing here yet...

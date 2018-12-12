@@ -9,7 +9,7 @@ url: /pcb-design/component-packages/sma-do-214ac-component-package
 
 # Overview
 
-<table style="width: 800px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Name
 </td>
 <td >Diode Outline 214AC

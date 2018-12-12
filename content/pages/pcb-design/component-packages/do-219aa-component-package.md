@@ -7,4 +7,4 @@ type: page
 url: /pcb-design/component-packages/do-219aa-component-package
 ---
 
-No Content Found
+See the [SOD-123F Component Package](/pcb-design/component-packages/sod-123f-component-package).

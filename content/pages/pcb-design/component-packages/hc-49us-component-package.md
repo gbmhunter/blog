@@ -9,16 +9,11 @@ url: /pcb-design/component-packages/hc-49us-component-package
 
 # Overview
 
-
-<table style="width: 600px;" >
-<tbody >
-<tr >
-
-<td >Name
-</td>
-
-<td >HC-49/U-S
-</td>
+<table>
+<tbody>
+<tr>
+<td >Name</td>
+<td >HC-49/U-S</td>
 </tr>
 <tr >
 
@@ -92,79 +87,40 @@ url: /pcb-design/component-packages/hc-49us-component-package
 <td >57.8mm2 (12.3x4.7mm)
 </td>
 </tr>
-<tr >
-
-<td >Height
-</td>
-
-<td >
-
-
-
-  * A
-  * B
-  * C
-  * D
-
-
+<tr>
+<td>Height</td>
+<td>
+    <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+    </ul>
 </td>
 </tr>
-<tr >
-
-<td >3D Models
-</td>
-
+<tr>
+<td >3D Models</td>
 <td >
-
-
-
-  * [HC49/US ](http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=137229)
-
-
+<p><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=137229">HC49/US </a></p>
 </td>
 </tr>
-<tr >
-
-<td >Common Uses
-</td>
-
-<td >
-
-
-
-  * Crystals
-
-
-</td>
+<tr>
+<td >Common Uses</td>
+<td>Crystals</td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 Common footprint for larger SMD crystals. Internal circuitry is shielded by metal case. Comes in 4 height variants (A, B, C and D). The power consumption of crystals in these package usually ranges from 1nW to 1mW, with a typical value being 50uW.
 
-
-
-
 # Photos
-
 
 {{< figure src="/images/2015/04/hc-49us-component-package-photo.jpg" width="339px" caption="A photo of the HC-49/US component package."  >}}
 
-
 # Images
 
-
-
-
 {{< figure src="/images/electronics-packages/hc49us-component-package-dimensions-land-pattern.png" caption="The dimensions and recommended land pattern for the HC-49/U-S component package."  width="800px" >}}
-
-
-
 
 {{< figure src="/images/electronics-packages/hc49us-component-package-photo.jpg" caption="HC-49/US"  width="400px" >}}

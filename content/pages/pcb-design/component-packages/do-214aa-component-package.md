@@ -7,4 +7,4 @@ type: page
 url: /pcb-design/component-packages/do-214aa-component-package
 ---
 
-No Content Found
+See the [SMB (DO-214AA) Component Package](/pcb-design/component-packages/smb-do-214aa-component-package).

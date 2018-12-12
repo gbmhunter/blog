@@ -10,30 +10,21 @@ url: /pcb-design/component-packages/mini-dip-spm
 # Overview
 
 
-<table >
-<tbody >
-<tr >
-
-<td >Name
-</td>
-
+<table>
+<tbody>
+<tr>
+<td >Name</td>
 <td >Mini Dual In-Line Package
 </td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
-<td >
-
-
-
-  * SPM27-JA
-  * SPM27-CC
-  * SPM27-EC
-
-
+<td >Synonyms</td>
+<td>
+    <ul>
+        <li>SPM27-JA</li>
+        <li>SPM27-CC</li>
+        <li>SPM27-EC</li>
+    </ul>
 </td>
 </tr>
 <tr >
@@ -44,40 +35,21 @@ url: /pcb-design/component-packages/mini-dip-spm
 <td >n/a
 </td>
 </tr>
-<tr >
-
-<td >Similar To
-</td>
-
-<td >
-
-
-
-  * DIP
-
-
-</td>
+<tr>
+<td>Similar To</td>
+<td>DIP</td>
 </tr>
-<tr >
-
-<td >Mounting
-</td>
-
-<td >TH
-</td>
+<tr>
+<td>Mounting</td>
+<td>TH</td>
 </tr>
-<tr >
-
-<td >Pin Count
+<tr>
+<td>Pin Count
 </td>
-
-<td >27
-</td>
+<td>27</td>
 </tr>
-<tr >
-
-<td >Pitch
-</td>
+<tr>
+<td>Pitch</td>
 
 <td >1.778mm, 2.050mm, 2.531mm (3 different pitches on the one package!)
 </td>
@@ -115,42 +87,20 @@ url: /pcb-design/component-packages/mini-dip-spm
 </td>
 </tr>
 <tr >
-
-<td >3D Models
-</td>
-
-<td >n/a
-</td>
+<td >3D Models</td>
+<td >n/a</td>
 </tr>
-<tr >
-
-<td >Common Uses
-</td>
-
-<td >
-
-
-
-  * BLDC motor drivers from Fairchild
-
-
-</td>
+<tr>
+<td >Common Uses</td>
+<td>BLDC motor drivers from Fairchild</td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 The SPM27-JA does not have a top-side copper face, while the SPM27-CC and SPM27-EC do. The copper face has been designed specifically for heatsinking as these IC's are designed to be able to handle plenty of power. This package is rather unique in the fact it contains a three-phase IGBT inverter circuit power block and four drive IC's. As of 2012, only a 27-pin variant exists.
 
-
-
-
 # 3D Renders
-
 
 {{< figure src="/images/2015/04/mini-dip-spm-component-package-3d-render.png" width="412px" caption="A 3D render of the Mini-DIP SPM component package."  >}}

@@ -7,4 +7,4 @@ type: page
 url: /pcb-design/component-packages/do-214ab-component-package
 ---
 
-No Content Found
+See the [SMC (DO-214AB) Component Package](/pcb-design/component-packages/smc-do-214ab-component-package)

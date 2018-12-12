@@ -24,15 +24,11 @@ url: /pcb-design/component-packages/eep-component-package
 
 <td >Synonyms
 </td>
-
 <td >
-
-
-
-  * R-PDSS-T5
-  * R-PDSS-T6
-
-
+    <ul>
+        <li>R-PDSS-T5</li>
+        <li>R-PDSS-T6</li>
+    </ul>
 </td>
 </tr>
 <tr >
@@ -109,10 +105,8 @@ url: /pcb-design/component-packages/eep-component-package
 </tr>
 <tr >
 
-<td >3D Models
-</td>
-
-<td >[E-Line](http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=356143)
+<td >3D Models</td>
+<td><p><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=356143">E-Line</a></p>
 </td>
 </tr>
 <tr >
@@ -120,38 +114,19 @@ url: /pcb-design/component-packages/eep-component-package
 <td >Common Uses
 </td>
 
-<td >
-
-
-
-  * DC/DC converters
-
-
-</td>
+<td>DC/DC converters</td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 Used by Texas Instruments for some of their higher power DC/DC converters. Has a varying number of pins depending on functionality (but this does not change the footprint).
 
-
-
-
 # Photos
-
 
 {{< figure src="/images/2015/04/eep-component-package-photo.png" width="384px" caption="Photo of a DC/DC converter by Texas Instruments in an EEP package."  >}}
 
-
 # Dimensions
-
-
-
 
 {{< figure src="/images/electronics-packages/eep-dimensions.png" caption="Dimensions of the EEP package."  width="500px" >}}
