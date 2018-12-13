@@ -9,18 +9,27 @@ url: /pcb-design/component-packages/to-220f-sot-168a-component-package
 
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Name
 </td>
 <td >TO-220F (Transistor Outline 220F)
 </td></tr><tr >
 <td >Synonyms
 </td>
-<td >  * TO-220F (JEDEC)  * SOT-186A  * TO-220F-3 (as far as I know this package only comes in a 3-pin variant, so the "-3" is redundant)
+<td >
+<ul>
+<li>TO-220F (JEDEC)</li>
+<li>SOT-186A</li>
+<li>TO-220F-3 (as far as I know this package only comes in a 3-pin variant, so the "-3" is redundant)</li>
+</ul>
 </td></tr><tr >
 <td >Similar To
 </td>
-<td >  * TO-220AB  * TO-220AC
+<td >
+<ul>
+<li>TO-220AB</li>
+<li>TO-220AC</li>
+</ul>
 </td></tr><tr >
 <td >Mounting
 </td>
@@ -40,7 +49,11 @@ url: /pcb-design/component-packages/to-220f-sot-168a-component-package
 </td></tr><tr >
 <td >Thermal Resistance
 </td>
-<td >  * [latex]T_{JC} = 3^{\circ}{\rm C}/W[/latex]  * [latex]T_{JA} = 55^{\circ}{\rm C}/W[/latex] (component standing vertical on PCB in free, non-moving air)
+<td >
+<ul>
+<li>\(T_{JC} = 3^{\circ}{\rm C}/W\)</li>
+<li>\(T_{JA} = 55^{\circ}{\rm C}/W\) (component standing vertical on PCB in free, non-moving air)</li>
+</ul>
 </td></tr><tr >
 <td >Land Area
 </td>
@@ -56,7 +69,7 @@ url: /pcb-design/component-packages/to-220f-sot-168a-component-package
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * MOSFET's
+<td >MOSFET's
 </td></tr></tbody></table>
 
 # A TO-220 Package With An Insulated Body
@@ -66,8 +79,6 @@ One of a disadvantages of the TO-220AB package is that the metal tab, although g
 The TO-220F is a variant of the TO-220 package which has an **insulated metal tab, which is not electrically connected to any of its pins**. Some thermal performance is sacrificed because of this insulating layer.
 
 {{< figure src="/images/2015/04/to-220f-component-package-3d-render.jpg" width="338px" caption="A 3D render of the TO-220F component package."  >}}
-
-#  
 
 # Dimensions
 

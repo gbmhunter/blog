@@ -9,7 +9,6 @@ url: /pcb-design/component-packages/do-41-component-package
 
 # Overview
 
-
 <table >
 <tbody >
 <tr >
@@ -78,83 +77,39 @@ url: /pcb-design/component-packages/do-41-component-package
 
 <td >Solderability
 </td>
-
 <td >Easy to solder by hand.
 </td>
 </tr>
 <tr >
-
-<td >Thermal Resistance
-</td>
-
-<td >[latex]100^{\circ}{\rm C/W}[/latex]
+<td >Thermal Resistance</td>
+<td>\(100^{\circ}{\rm C/W}\)
 </td>
 </tr>
-<tr >
-
-<td >Land Area
-</td>
-
-<td >
-
-
-
-  * 22mm2 (lying flat on PCB, with room to bend legs into holes)
-
-
-</td>
+<tr>
+<td >Land Area</td>
+<td>22mm2 (lying flat on PCB, with room to bend legs into holes)</td>
 </tr>
 <tr >
-
-<td >Height
-</td>
-
-<td >2.00-2.72mm
-</td>
+<td >Height</td>
+<td >2.00-2.72mm</td>
 </tr>
-<tr >
-
-<td >3D Models
-</td>
-
-<td >n/a
-</td>
+<tr>
+<td>3D Models</td>
+<td>n/a</td>
 </tr>
-<tr >
-
-<td >Common Uses
-</td>
-
-<td >
-
-
-
-  * Diodes
-
-
-</td>
+<tr>
+<td>Common Uses</td>
+<td>Diodes</td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 The most common through-hole package for diodes. The common (1N400x) series of diodes comes in this package. The typical rated current for a diode in this package is 1A.
 
-
-
-
 This package is normally mounted on the PCB in two ways, either flat with the legs bent at 90° to fit into the holes, or in space-constrained applications, vertical, with one of the legs straight and one bent 180° to fit into the holes in the PCB (which are closer together than when in the flat orientation. Material of package is normally molded plastic.
-
-
-
 
 # Photo
 
-
-{{< figure src="/images/2015/04/do-41-component-package-photo.jpg" width="369px" caption="A photo of the DO-41 component package."  >}}
-
+{{< figure src="/images/2015/04/do-41-component-package-photo.jpg" width="369px" caption="A photo of the DO-41 component package." >}}

@@ -10,15 +10,11 @@ url: /pcb-design/component-packages/micro-melf-component-package
 # Overview
 
 
-<table style="width: 600px;" >
+<table>
 <tbody >
-<tr >
-
-<td >Name
-</td>
-
-<td >Micro Metal Electrode Leadless Face
-</td>
+<tr>
+<td>Name</td>
+<td >Micro Metal Electrode Leadless Face</td>
 </tr>
 <tr >
 
@@ -36,19 +32,13 @@ url: /pcb-design/component-packages/micro-melf-component-package
 <td >n/a
 </td>
 </tr>
-<tr >
-
-<td >Similar To
-</td>
-
-<td >
-
-
-
-	  * [MELF](/pcb-design/component-packages/melf-component-package)
-	  * [Mini-MELF (SOD-80, DO-213AA)](/pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package)
-
-
+<tr>
+<td >Similar To</td>
+<td>
+    <ul>
+        <li><a href="/pcb-design/component-packages/melf-component-package">MELF</a></li>
+        <li><a href="/pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package">Mini-MELF (SOD-80, DO-213AA)</a></li>
+    </ul>
 </td>
 </tr>
 <tr >
@@ -124,45 +114,25 @@ url: /pcb-design/component-packages/micro-melf-component-package
 </td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
-<td >
-
-
-
-	  * Resistors
-	  * Diodes
-
-
+<td>Common Uses</td>
+<td>
+    <ul>
+        <li>Resistors</li>
+        <li>Diodes</li>
+    </ul>
 </td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 Some versions have squared bits in the middle, making it easier to place one on a PCB and solder without it rolling around. 0Ω resistors in this package usually have a single centered black line.
 
-
-
-
 # Photos
-
-
 
 {{< figure src="/images/2015/04/micro-melf-component-package-photo.jpg" width="360px" caption="A photo of the Micro-MELF component package."  >}}
 
-
-
 # Images
-
-
-
 
 {{< figure src="/images/electronics-packages/component-package-micro-melf-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the Micro-MELF component package. Image from http://www.vishay.com/docs/20003/smm0102.pdf."  width="500px" >}}

@@ -9,14 +9,10 @@ url: /pcb-design/component-packages/sot-762-1-component-package
 
 # Overview
 
-
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
-
-<td >Name
-</td>
-
+<td >Name</td>
 <td >SOT-762-1 (Small Outline Transistor 762-1)
 </td>
 </tr>
@@ -25,11 +21,7 @@ url: /pcb-design/component-packages/sot-762-1-component-package
 <td >Synonyms
 </td>
 
-<td >
-
-
-
-  * MO-241 (Jedec)
+<td >MO-241 (Jedec)
 
 
 </td>
@@ -119,11 +111,7 @@ url: /pcb-design/component-packages/sot-762-1-component-package
 <td >Common Uses
 </td>
 
-<td >
-
-
-
-  * Digital logic (e.g. Flip-flops)
+<td >Digital logic (e.g. Flip-flops)
 
 
 </td>
@@ -131,26 +119,14 @@ url: /pcb-design/component-packages/sot-762-1-component-package
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 A small 14-leaded SMD package with a thermal pad in the middle (similar to some QFN packages).
 
-
-
-
 # 3D Renders
-
 
 {{< figure src="/images/2015/04/sot-762-1-component-package-3d-render.jpg" width="381px" caption="A 3D render of the SOT-762-1 component package."  >}}
 
-
 # Other Images
-
-
-
 
 {{< figure src="/images/electronics-packages/component-package-sot-762-1-outline-and-dimensions.png" caption="The dimensions for the SOT-762-1 component package. Image from http://www.farnell.com/datasheets/1645528.pdf."  width="800px" >}}

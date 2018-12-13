@@ -24,7 +24,11 @@ url: /pcb-design/component-packages/smc-do-214ab-component-package
 </td></tr><tr >
 <td >Similar To
 </td>
-<td >  * DO-214AA  * DO-214AC
+<td >
+<ul>
+<li>DO-214AA</li>
+<li>DO-214AC</li>
+</ul>
 </td></tr><tr >
 <td >Mounting
 </td>
@@ -44,11 +48,20 @@ url: /pcb-design/component-packages/smc-do-214ab-component-package
 </td></tr><tr >
 <td >Thermal Resistance
 </td>
-<td >  * Tjc = 10-16°C/W  * Tja = 47-55°C/W (mounted on PCB with 8x8mm copper pad area)  * Tja = 90°C/W (mounted on PCB with two 1.54x3.14mm copper pads)
+<td>
+<ul>
+<li>Tjc = 10-16°C/W</li>
+<li>Tja = 47-55°C/W (mounted on PCB with 8x8mm copper pad area)</li>
+<li>Tja = 90°C/W (mounted on PCB with two 1.54x3.14mm copper pads)</li>
+</ul>
 </td></tr><tr >
 <td >Land Area
 </td>
-<td >  * 50.6mm2 (package only)  * 50.6mm2 (package with recommended land pattern)
+<td >
+<ul>
+<li>50.6mm2 (package only)</li>
+<li>50.6mm2 (package with recommended land pattern)</li>
+</ul>
 </td></tr><tr >
 <td >Height
 </td>
@@ -56,12 +69,14 @@ url: /pcb-design/component-packages/smc-do-214ab-component-package
 </td></tr><tr >
 <td >3D Models
 </td>
-<td >n/a
-</td></tr><tr >
-<td >Common Uses
-</td>
-<td >  * Diodes (especially high surge-current diodes)
-</td></tr></tbody></table>
+<td>n/a</td>
+</tr>
+<tr>
+    <td>Common Uses</td>
+    <td>Diodes (especially high surge-current diodes)</td>
+</tr>
+</tbody>
+</table>
 
 # Comments
 

@@ -7,4 +7,4 @@ type: page
 url: /pcb-design/component-packages/do-214ac-component-package
 ---
 
-No Content Found
+See the [SMA (DO-214AC) Component Package](/pcb-design/component-packages/sma-do-214ac-component-package).

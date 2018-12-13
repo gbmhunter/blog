@@ -9,14 +9,19 @@ url: /pcb-design/component-packages/sod-123-component-package
 
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
+<table>
+<tbody ><tr >
 <td >Name
 </td>
 <td >SOD-123 (Small-outline diode 123)
 </td></tr><tr >
 <td >Synonyms
 </td>
-<td >  * D6 (Fairchild Semiconductor)  * SC-109D
+<td >
+<ul>
+<li>D6 (Fairchild Semiconductor)</li>
+<li>SC-109D</li>
+</ul>
 </td></tr><tr >
 <td >Variants
 </td>
@@ -24,7 +29,11 @@ url: /pcb-design/component-packages/sod-123-component-package
 </td></tr><tr >
 <td >Similar To
 </td>
-<td >  * SOD-123F  * SOD-123W
+<td >
+<ul>
+<li>SOD-123F</li>
+<li>SOD-123W</li>
+</ul>
 </td></tr><tr >
 <td >Mounting
 </td>
@@ -56,7 +65,7 @@ url: /pcb-design/component-packages/sod-123-component-package
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * Diodes
+<td >Diodes
 </td></tr></tbody></table>
 
 # Comments

@@ -60,7 +60,13 @@ url: /pcb-design/component-packages/chip-eia-xxxx-component-packages
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * Resistors  * Capacitors  * Ferrite Chips  * LED's
+<td>
+    <ul>
+        <li>Resistors</li>
+        <li>Capacitors</li>
+        <li>Ferrite Chips</li>
+        <li>LED's</li>
+    </ul>
 </td></tr></tbody></table>
 
 # Chip Packages And The EIAJ Standard
@@ -71,7 +77,17 @@ The standard is to define them in the metric scale, however most manufacturers, 
 
 Sorted from smallest to largest package size.
 
-<table ><tr >Package Designator (metric)Package Designator (imperial)Typical Power Rating (W):Land AreaComments:</tr><tbody ><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Package Designator (metric)</th>
+            <th>Package Designator (imperial)</th>
+            <th>Typical Power Rating (W)</th>
+            <th>Land AreaComments</th>
+        </tr>
+    </thead>
+    <tbody>
+<tr >
 <td > ?
 </td>
 <td >01005
@@ -205,74 +221,79 @@ The following image is of 0603 (imperial) SMD components inside a small containe
 
 The following table shows the range of chip resistors package sizes (based on the EIAJ Chip Packages above), and typical parameters for each. Note that the maximum current rating is based on the thermal properties of the package and its leads, and does not take into account the actual resistance of the resistor (e.g. tested with a 0Ω). Obviously, the actual allowable current is likely to be much less due to resistance.
 
-<table ><tbody ><tr >Package  
-Designator  
-(metric)Package  
-Designator  
-(imperial)Maximum  
-Current  
-(A, typical)Has Printed Value</tr><tr >
-<td align="center" >1005
+<table>
+    <thead>
+        <tr>
+            <th>Package</th>
+            <th>Designator (metric)</th>
+            <th>Package</th>
+            <th>Designator (imperial)</th>
+            <th>Maximum Current (A, typical)</th>
+            <th>Has Printed Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td>1005</td>
+<td>0402
 </td>
-<td align="center" >0402
+<td>1
 </td>
-<td align="center" >1
-</td>
-<td align="center" >No
+<td>No
 </td></tr><tr >
-<td align="center" >1608
+<td>1608
 </td>
-<td align="center" >0603
+<td>0603
 </td>
-<td align="center" >1
+<td>1
 </td>
-<td align="center" >Yes
+<td>Yes
 </td></tr><tr >
-<td align="center" >2012
+<td>2012
 </td>
-<td align="center" >0805
+<td>0805
 </td>
-<td align="center" >2
+<td>2
 </td>
-<td align="center" >Yes
+<td>Yes
 </td></tr><tr >
-<td align="center" >3216
+<td>3216
 </td>
-<td align="center" >1206
+<td>1206
 </td>
-<td align="center" >2
+<td>2
 </td>
-<td align="center" >Yes
+<td>Yes
 </td></tr><tr >
-<td align="center" >3225
+<td>3225
 </td>
-<td align="center" >1210
+<td>1210
 </td>
-<td align="center" >3
+<td>3
 </td>
-<td align="center" >Yes
+<td>Yes
 </td></tr><tr >
-<td align="center" >5025
+<td>5025
 </td>
-<td align="center" >2010
+<td>2010
 </td>
-<td align="center" >3
+<td>3
 </td>
-<td align="center" >Yes
+<td>Yes
 </td></tr><tr >
-<td align="center" >6432
+<td>6432
 </td>
-<td align="center" >2512
+<td>2512
 </td>
-<td align="center" >3
+<td>3
 </td>
-<td align="center" >Yes
+<td>Yes
 </td></tr></tbody></table>
 
 # Reverse-Aspect Chip Capacitors (LICC)
 
 Reverse-aspect chip capacitors (a.k.a LICC) have their leads on the long sides of the chip, as opposed to standard chip components which have the leads on the short sides. This reverse-geometry reduces the inductance in the PCB-to-capacitor connection, and is in high-speed designs where ultra-low inductance is required.
 
-{{< figure src="/images/2015/10/comparison-of-various-smd-chip-capacitor-internal-designs.mlcc-licc-mpdigest.png" width="483px" caption="A comparison of the different internal designs of various SMD chip capacitors. Image from http://www.mpdigest.com/."  >}}
+{{< figure src="/images/2015/10/comparison-of-various-smd-chip-capacitor-internal-designs.mlcc-licc-mpdigest.png" width="483px" caption="A comparison of the different internal designs of various SMD chip capacitors. Image from http://www.mpdigest.com/." >}}
 
 They are normally named the same as normal aspect chip capacitors except with the two numbers in reverse order, i.e. an 0603 sized capacitor now becomes a 0306 capacitor.

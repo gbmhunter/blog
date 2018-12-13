@@ -16,7 +16,12 @@ url: /pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package
 </td></tr><tr >
 <td >Synonyms
 </td>
-<td >  * DO213-AA  * LL-34  * SOD-80 (Small-outline Diode 80)
+<td >
+<ul>
+<li>DO213-AA</li>
+<li>LL-34</li>
+<li>SOD-80 (Small-outline Diode 80)</li>
+</ul>
 </td></tr><tr >
 <td >Variants
 </td>
@@ -24,9 +29,8 @@ url: /pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package
 </td></tr><tr >
 <td >Similar To
 </td>
-<td >  * MELF
-</td></tr><tr >
-<td >Mounting
+<td>MELF</td></tr><tr >
+<td>Mounting
 </td>
 <td >SMD
 </td></tr><tr >
@@ -60,8 +64,8 @@ url: /pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * Diodes
-</td></tr></tbody></table>
+<td>Diodes</td>
+</tr></tbody></table>
 
 # Comments
 

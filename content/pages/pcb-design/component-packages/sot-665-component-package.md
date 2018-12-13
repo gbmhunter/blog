@@ -7,13 +7,10 @@ type: page
 url: /pcb-design/component-packages/sot-665-component-package
 ---
 
-[mathjax]
-
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
-<td style="width: 100px;" >Name
-</td>
+<table><tbody ><tr >
+<td>Name</td>
 <td >SOT-665 (Small Outline Transistor 665)
 </td></tr><tr >
 <td >Synonyms
@@ -27,7 +24,11 @@ url: /pcb-design/component-packages/sot-665-component-package
 </td></tr><tr >
 <td >Similar To
 </td>
-<td >  * SOT-663  * SOT-666IP
+<td >
+<ul>
+<li>SOT-663</li>
+<li>SOT-666IP</li>
+</ul>
 </td></tr><tr >
 <td >Mounting
 </td>
@@ -39,7 +40,7 @@ url: /pcb-design/component-packages/sot-665-component-package
 </td></tr><tr >
 <td >Pitch
 </td>
-<td >  * </td></tr><tr >
+<td></td></tr><tr >
 <td >Solderability
 </td>
 <td >Easy to hand-solder if you have had a bit of practice with surface mount devices before. Easy to solder with infrared or reflow techniques.
@@ -51,20 +52,6 @@ url: /pcb-design/component-packages/sot-665-component-package
 <td >Dimensions
 </td>
 <td >
-
-**Recommended Footprint**
-
-1.3x2.6mm (3.38mm^2)  
-(no courtyard)
-
-</td></tr><tr >
-<td >3D Models
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Common Uses
-</td>
-<td >  * </td></tr></tbody></table>
 
 # General
 
@@ -80,4 +67,4 @@ A recommended footprint (land pattern) for the SOT-665 component package is show
 
 {{< figure src="/images/2015/11/sot-665-component-package-footprint-land-pattern.png" width="736px" caption="A recommended footprint (land pattern) for the SOT-665 component package. Image from http://www.st.com/."  >}}
 
-The footprint has a land area of \(3.38mm^2\) (1.3x2.6mm), ignoring any clearance area given around the perimeter of the footprint (i.e. courtyard).
+The footprint has a land area of `\(3.38mm^2\)` (1.3x2.6mm), ignoring any clearance area given around the perimeter of the footprint (i.e. courtyard).

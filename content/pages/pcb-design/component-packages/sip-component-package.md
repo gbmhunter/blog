@@ -42,20 +42,14 @@ url: /pcb-design/component-packages/sip-component-package
 </td>
 
 <td >
-
-
-
-  * DIP
-  * QIP
-
-
+    <ul>
+        <li>DIP</li>
+        <li>QIP</li>
+    </ul>
 </td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
+<td >Mounting</td>
 <td >TH
 </td>
 </tr>
@@ -126,19 +120,10 @@ url: /pcb-design/component-packages/sip-component-package
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 Commonly used for resistor networks and RAM chips. Similar to the DIP package except there are only one row of pins.
 
-
-
-
 # Photos
 
-
-{{< figure src="/images/2015/04/sip-component-package-photo.jpg" width="385px" caption="A photo of the SIP component package."  >}}
-
+{{< figure src="/images/2015/04/sip-component-package-photo.jpg" width="385px" caption="A photo of the SIP component package." >}}

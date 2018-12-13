@@ -19,7 +19,15 @@ The following image shows the recommend land pattern for each of the sizes menti
 
 The following table shows the relationship between Panasonic cap packages and Chemi-Con cap packages.
 
-<table ><tbody ><tr >Panasonic Code:Chemi-Con Code:</tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Panasonic Code</th>
+            <th>Chemi-Con Code</th>
+        </tr>
+    </thead>
+<tbody>
+<tr>
 <td >A
 </td>
 <td >B
@@ -60,5 +68,3 @@ The following table shows the relationship between Panasonic cap packages and Ch
 </td>
 <td >M
 </td></tr></tbody></table>
-
-#  

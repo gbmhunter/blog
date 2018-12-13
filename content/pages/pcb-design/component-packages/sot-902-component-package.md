@@ -9,8 +9,7 @@ url: /pcb-design/component-packages/sot-902-component-package
 
 # Overview
 
-
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
 
@@ -25,14 +24,7 @@ url: /pcb-design/component-packages/sot-902-component-package
 <td >Synonyms
 </td>
 
-<td >
-
-
-
-  * XQFN8U (NXP RFID)
-
-
-</td>
+<td >XQFN8U (NXP RFID)</td>
 </tr>
 <tr >
 
@@ -41,13 +33,13 @@ url: /pcb-design/component-packages/sot-902-component-package
 
 <td >
 
+<ul>
+<li>SOT-902-1 (XQFN8U)</li>
 
+<li>SOT-902-2 (XQFN8)</li>
 
-  * SOT-902-1 (XQFN8U)
-  * SOT-902-2 (XQFN8)
-  * SOT-902-3 (XQFN8)
-
-
+<li>SOT-902-3 (XQFN8)</li>
+</ul>
 </td>
 </tr>
 <tr >
@@ -57,12 +49,11 @@ url: /pcb-design/component-packages/sot-902-component-package
 
 <td >
 
+<ul>
+<li>SOT-1193</li>
 
-
-  * SOT-1193
-  * SOIC
-
-
+<li>SOIC</li>
+</ul>
 </td>
 </tr>
 <tr >
@@ -143,19 +134,11 @@ url: /pcb-design/component-packages/sot-902-component-package
 
 # Comments
 
-
-
-
 NXP seems to be the only manufacturer who uses this package.
-
-
-
 
 # Photos
 
-
 {{< figure src="/images/2015/04/sot-902-component-package-photo.gif" width="150px" caption="A photo of the SOT-902 component package."  >}}
-
 
 # Other Images
 
@@ -172,6 +155,3 @@ NXP seems to be the only manufacturer who uses this package.
 </tr>
 </tbody>
 </table>
-
-
-##  

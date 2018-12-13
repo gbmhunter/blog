@@ -10,7 +10,7 @@ url: /pcb-design/component-packages/to-pmod-7-component-package
 # Overview
 
 
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
 
@@ -83,27 +83,21 @@ url: /pcb-design/component-packages/to-pmod-7-component-package
 
 <td >
 
-
-
-  * [latex]T_{JC} = 1.9^{\circ}{\rm C}/W[/latex]
-  * [latex]T_{JA} = 16^{\circ}{\rm C}/W[/latex] (with the recommended land pattern)
-
-
+<ul>
+<li>\(T_{JC} = 1.9^{\circ}{\rm C}/W\)</li>
+<li>\(T_{JA} = 16^{\circ}{\rm C}/W\) (with the recommended land pattern)</li>
+</ul>
 </td>
 </tr>
 <tr >
-
 <td >Land Area
 </td>
-
-<td >[latex]10.16x13.77mm = 140mm^2[/latex]
+<td >\(10.16x13.77mm = 140mm^2\)
 </td>
 </tr>
 <tr >
-
 <td >Height
 </td>
-
 <td >4.57mm
 </td>
 </tr>
@@ -112,7 +106,8 @@ url: /pcb-design/component-packages/to-pmod-7-component-package
 <td >3D Models
 </td>
 
-<td >[TO-PMOD 7 Pin Package](http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&id=414473)
+<td >
+<p><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=414473">TO-PMOD 7 Pin Package</a></p>
 </td>
 </tr>
 <tr >
@@ -126,31 +121,16 @@ url: /pcb-design/component-packages/to-pmod-7-component-package
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 This is a rather large SMD package with good heat sinking ability. Texas Instruments uses this package for some of their DC/DC power modules, which have built in shielded inductors.
 
-
-
-
 # 3D Renders
-
 
 {{< figure src="/images/2015/04/to-pmod-7-component-package-3d-render.jpg" width="253px" caption="A 3D render of the TO-PMOD-7 component package."  >}}
 
-
 # Other Images
 
-
-
-
 {{< figure src="/images/electronics-packages/to-pmod-7-component-package-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the TO-PMOD-7 component package. Image from http://www.ti.com/."  width="800px" >}}
-
-
-
 
 {{< figure src="/images/electronics-packages/to-pmod-7-3d-render.jpg" caption="A 3D model of the TO-PMOD-7 package."  width="500px" >}}

@@ -24,15 +24,11 @@ url: /pcb-design/component-packages/sot-886-component-package
 
 <td >Synonyms
 </td>
-
 <td >
-
-
-
-  * XSON6 (NXP RFID)
-  * 6-XFDFN (DigiKey)
-
-
+<ul>
+<li>XSON6 (NXP RFID)</li>
+<li>6-XFDFN (DigiKey)</li>
+</ul>
 </td>
 </tr>
 <tr >
@@ -122,39 +118,25 @@ url: /pcb-design/component-packages/sot-886-component-package
 
 <td >
 
-
-
-  * RFID tag chips (e.g. the some of the NXP UCODE G2il chips)
-  * Logic gates
-  * Buffers/line drivers
-  * Linear voltage regulators
-
-
+<ul>
+<li>RFID tag chips (e.g. the some of the NXP UCODE G2il chips)</li>
+<li>Logic gates</li>
+<li>Buffers/line drivers</li>
+<li>Linear voltage regulators</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 NXP seems to be the only manufacturer who uses this package.
 
-
-
-
 # 3D Renders
-
 
 {{< figure src="/images/2015/04/sot-886-component-package-3d-render.jpg" width="378px" caption="A 3D render of the SOT-886 component package."  >}}
 
-
 # Other Images
-
-
-
 
 {{< figure src="/images/electronics-packages/component-footprint-sot-886-land-pattern.png" caption="The PCB land pattern for the SOT-886 component package. Image from http://www.nxp.com/documents/reflow_soldering/sot886_fr.pdf."  width="800px" >}}

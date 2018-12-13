@@ -9,7 +9,7 @@ url: /pcb-design/component-packages/sma-do-214ac-component-package
 
 # Overview
 
-<table style="width: 800px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Name
 </td>
 <td >Diode Outline 214AC
@@ -24,7 +24,11 @@ url: /pcb-design/component-packages/sma-do-214ac-component-package
 </td></tr><tr >
 <td >Similar To
 </td>
-<td >  * DO-214AA  * DO-214AB
+<td >
+<ul>
+<li>DO-214AA</li>
+<li>DO-214AB</li>
+</ul>
 </td></tr><tr >
 <td >Mounting
 </td>
@@ -56,12 +60,13 @@ url: /pcb-design/component-packages/sma-do-214ac-component-package
 </td></tr><tr >
 <td >3D Models
 </td>
-<td >**[DO-214AC](http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=85501)**
+<td>
+<p><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=85501">DO-214AC</a></p>
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * Diodes
-</td></tr></tbody></table>
+<td>Diodes</td>
+</tr></tbody></table>
 
 # Comments
 

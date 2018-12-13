@@ -7,18 +7,16 @@ type: page
 url: /pcb-design/component-packages/sot-363-sc-88-component-package
 ---
 
-[mathjax]
-
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Name
 </td>
 <td >SOT-363 (Small Outline Transistor 363)
 </td></tr><tr >
 <td >Synonyms
 </td>
-<td >  * SC-88
+<td >SC-88
 </td></tr><tr >
 <td >Variants
 </td>
@@ -26,7 +24,7 @@ url: /pcb-design/component-packages/sot-363-sc-88-component-package
 </td></tr><tr >
 <td >Similar To
 </td>
-<td >  * SOT-323
+<td >SOT-323
 </td></tr><tr >
 <td >Mounting
 </td>
@@ -46,7 +44,14 @@ url: /pcb-design/component-packages/sot-363-sc-88-component-package
 </td></tr><tr >
 <td >Thermal Resistance
 </td>
-<td >  * \(R_{\theta JA} = 435^{\circ}/W\) (FR-4, single-sided, 1oz. copper, minimum recommended pad layout)  * \(R_{\theta JA} = 330^{\circ}/W\) (FR-4, double-sided, 2oz. copper, 1 inch square copper pad layout)  * \(R_{\theta JC} = 139^{\circ}/W\)
+<td >
+<ul>
+<li>\(R_{\theta JA} = 435^{\circ}/W\) (FR-4, single-sided, 1oz. copper, minimum recommended pad layout)</li>
+
+<li>\(R_{\theta JA} = 330^{\circ}/W\) (FR-4, double-sided, 2oz. copper, 1 inch square copper pad layout)</li>
+
+<li>\(R_{\theta JC} = 139^{\circ}/W\)</li>
+</ul>
 </td></tr><tr >
 <td >Dimensions
 </td>
@@ -62,7 +67,11 @@ url: /pcb-design/component-packages/sot-363-sc-88-component-package
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * BJTs  * MOSFETs (with up to two per package)
+<td >
+<ul>
+<li>BJTs</li>
+<li>MOSFETs (with up to two per package)</li>
+</ul>
 </td></tr></tbody></table>
 
 # Comments

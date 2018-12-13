@@ -7,66 +7,40 @@ type: page
 url: /pcb-design/component-packages/dpack-component-package
 ---
 
-[mathjax]
-
-
-
-
 # Overview
-
 
 <table >
 <tbody >
 <tr >
-
-<td >Name
-</td>
-
-<td >DPAK
+<td >Name</td>
+<td >DPAK</td>
+</tr>
+<tr>
+<td >Synonyms</td>
+<td>
+    <ul>
+        <li>Case 369C (On Semiconductor's name for the TO-252AA)</li>
+        <li>CPD (Rohm Semiconductor)</li>
+        <li>SC-63 (JEITA, EIAJ)</li>
+        <li>SOT-428</li>
+        <li>TO-252 (JEDEC Transistor Outline 252)</li>
+        <li>TO-252AA (only applies to DPAK3 (TO-252-3))</li>
+    </ul>
 </td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
+<td >Variants</td>
 <td >
-
-
-
-  * Case 369C (On Semiconductor's name for the TO-252AA)
-  * CPD (Rohm Semiconductor)
-  * SC-63 (JEITA, EIAJ)
-  * SOT-428
-  * TO-252 (JEDEC Transistor Outline 252)
-  * TO-252AA (only applies to DPAK3 (TO-252-3))
-
-
+    <ul>
+        <li>DPAK3 (TO-252-3, TO-252AA)</li>
+        <li>TO-252-5-P1 (5-pin, square and short tab)</li>
+        <li>TO-252-5-P2 (5-pin, rounded and longer tab). If there is no suffix listed, it will likely be this variant.</li>
+    </ul>
 </td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >
-
-
-
-  * DPAK3 (TO-252-3, TO-252AA)
-  * TO-252-5-P1 (5-pin, square and short tab)
-  * TO-252-5-P2 (5-pin, rounded and longer tab). If there is no suffix listed, it will likely be this variant.
-
-
-</td>
-</tr>
-<tr >
-
-<td >Similar To
-</td>
-
-<td >TO-220AB
-</td>
+<td >Similar To</td>
+<td >TO-220AB</td>
 </tr>
 <tr >
 
@@ -77,18 +51,12 @@ url: /pcb-design/component-packages/dpack-component-package
 </td>
 </tr>
 <tr >
-
-<td >Pin Count
-</td>
-
-<td >
-
-
-
-  * 3 (DPAK)
-  * 5 (TO-252-5)
-
-
+<td >Pin Count</td>
+<td>
+    <ul>
+        <li>3 (DPAK)</li>
+        <li>5 (TO-252-5)</li>
+    </ul>
 </td>
 </tr>
 <tr >
@@ -108,58 +76,32 @@ url: /pcb-design/component-packages/dpack-component-package
 </td>
 </tr>
 <tr >
-
-<td >Thermal Resistance
-</td>
-
-<td >
-
-
-TO-252-3 (DPAK)
-
-
-
-
-
-  * \(T_{JA} = 80^{\circ}{\rm C}/W\) (pads only, no copper fill)
-
-
-
-TO-252-5-xx (both P1 and P2 suffixes)
-
-
-
-
-
-  * \(T_{JA} = 59^{\circ}{\rm C}/W\) (pads only, no copper fill)
-  * \(T_{JA} = 26^{\circ}{\rm C}/W\) (high-wattage land pattern)
-  * \(T_{JA} = 20^{\circ}{\rm C}/W\) (one square inch of copper surrounding package, connected to ground)
-  * \(T_{JA} = 7^{\circ}{\rm C}/W\) (high-wattage land pattern with thermal vias to bottom layer)
-
-
+<td >Thermal Resistance</td>
+<td>
+    <p>TO-252-3 (DPAK)</p>
+    <ul>
+        <li>\(T_{JA} = 80^{\circ}{\rm C}/W\) (pads only, no copper fill)</li>
+    </ul>
+    <p>TO-252-5-xx (both P1 and P2 suffixes)</p>
+    <ul>
+        <li>\(T_{JA} = 59^{\circ}{\rm C}/W\) (pads only, no copper fill)</li>
+        <li>\(T_{JA} = 26^{\circ}{\rm C}/W\) (high-wattage land pattern)</li>
+        <li>\(T_{JA} = 20^{\circ}{\rm C}/W\) (one square inch of copper surrounding package, connected to ground)</li>
+        <li>\(T_{JA} = 7^{\circ}{\rm C}/W\) (high-wattage land pattern with thermal vias to bottom layer)</li>
+    </ul>
 </td>
 </tr>
 <tr >
-
-<td >Dimensions
-</td>
-
-<td >n/a
-</td>
+<td >Dimensions</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >3D Models
-</td>
-
+<td >3D Models</td>
 <td >
-
-
-
-  * [DPAK, TO-252AA, by Bill Brooks (this is DPAK3)](http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=444823)
-  * [DPAK-5, by Alexey Olehnovich](http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=432344) 
-
-
+<ul>
+<li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=444823">DPAK, TO-252AA, by Bill Brooks (this is DPAK3)</a></li>
+<li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=432344">DPAK-5, by Alexey Olehnovich</a> </li>
+</ul>
 </td>
 </tr>
 <tr >
@@ -168,48 +110,27 @@ TO-252-5-xx (both P1 and P2 suffixes)
 </td>
 
 <td >
-
-
-
-  * MOSFET's
-  * Linear voltage regulators
-
-
+<ul>
+<li>MOSFET's</li>
+<li>Linear voltage regulators</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 Commonly used for power MOSFET's and high power voltage regulators. Features a large tab/pin which can be soldered directly onto the PCB, providing good heatsinking capabilities.
 
-
-
-
 If DPAK is referred to by itself, with no pin number indication (e.g. DPAK3, DPAK5), it is usually referring to the 3-pin version.
-
-
-
 
 # 3D Renders
 
-
 {{< figure src="/images/2015/04/to-252-component-package-3d-render.jpg" width="340px" caption="A 3D render of the TO-252 component package."  >}}
-
 
 # Other Images
 
-
-
-
 {{< figure src="/images/electronics-packages/component-package-to-252-5-recommended-land-pattern.png" caption="The recommended PCB land pattern for the TO-252-5 component package. Image from Ricoh TO-252 Package Information (http://www.ricoh.com/LSI/product_power/pkg/to-252-5-p2.pdf)."  width="500px" >}}
-
-
-
 
 {{< figure src="/images/electronics-packages/to-252-3d-model.jpg" caption="3D model of the TO-252 (DPACK) package."  width="400px" >}}

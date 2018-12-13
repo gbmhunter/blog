@@ -7,11 +7,9 @@ type: page
 url: /pcb-design/component-packages/dsop-advance-component-package
 ---
 
-[mathjax]
-
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Name
 </td>
 <td >DSOP Advance Component Package
@@ -50,7 +48,11 @@ url: /pcb-design/component-packages/dsop-advance-component-package
 </td></tr><tr >
 <td >Thermal Resistance
 </td>
-<td >  * \(50^{\circ}C/W\) (device mounted copper PCB with large pads designed for heatsinking)  * \(142^{\circ}C/W\) (device mounted on standard PCB with minimal pad land pattern)
+<td >
+    <ul>
+        <li>\(50^{\circ}C/W\) (device mounted copper PCB with large pads designed for heatsinking)</li>
+        <li>\(142^{\circ}C/W\) (device mounted on standard PCB with minimal pad land pattern)</li>
+    </ul>
 </td></tr><tr >
 <td >Dimensions
 </td>
@@ -68,15 +70,12 @@ The package is 5x6x0.73mm (nominal)
 </td></tr><tr >
 <td >3D Models
 </td>
-<td >
-
-n/a
-
-</td></tr><tr >
-<td >Common Uses
-</td>
-<td >  * High-power Toshiba MOSFETs
-</td></tr></tbody></table>
+<td>n/a</td>
+</tr>
+<tr >
+    <td >Common Uses</td>
+    <td>High-power Toshiba MOSFETs</td>
+</tr></tbody></table>
 
 # Thermal Resistance
 

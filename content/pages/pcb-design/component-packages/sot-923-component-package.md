@@ -9,8 +9,7 @@ url: /pcb-design/component-packages/sot-923-component-package
 
 # Overview
 
-
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
 
@@ -113,11 +112,7 @@ url: /pcb-design/component-packages/sot-923-component-package
 <td >Common Uses
 </td>
 
-<td >
-
-
-
-  * TVS Diodes
+<td >TVS Diodes
 
 
 </td>
@@ -125,26 +120,14 @@ url: /pcb-design/component-packages/sot-923-component-package
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 Tiny package used for diodes! See the below picture for a comparison of one of these packages next to a USB socket.
 
-
-
-
 # 3D Renders
-
 
 {{< figure src="/images/2015/04/sot-923-component-package-3d-render.jpg" width="423px" caption="A 3D render of the SOT-923 component package."  >}}
 
-
 # Images
-
-
-
 
 {{< figure src="/images/electronics-packages/tiny-sod-923-package-relative-to-usb-conn.jpg" caption="3D model showing the difference between the size of a tiny SOD-923 package and a PCB-mount USB connector."  width="500px" >}}

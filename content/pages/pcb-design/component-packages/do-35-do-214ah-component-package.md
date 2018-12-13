@@ -14,25 +14,13 @@ url: /pcb-design/component-packages/do-35-do-214ah-component-package
 <tbody >
 <tr >
 
-<td >Name
-</td>
-
-<td >Diode Outline 35
+<td>Name</td>
+<td>Diode Outline 35
 </td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
-<td >
-
-
-
-  * JEDEC DO-204 Variant AH (DO-214AH)
-
-
-</td>
+<td>Synonyms</td>
+<td>JEDEC DO-204 Variant AH (DO-214AH)</td>
 </tr>
 <tr >
 
@@ -47,25 +35,13 @@ url: /pcb-design/component-packages/do-35-do-214ah-component-package
 <td >Similar To
 </td>
 
-<td >
-
-
-
-  * Other DO-204 variants such as the DO-7, DO-14, DO-15, DO-16, DO-26, DO-29, DO-34, DO-41
-
-
-</td>
+<td >Other DO-204 variants such as the DO-7, DO-14, DO-15, DO-16, DO-26, DO-29, DO-34, DO-41</td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >TH
-</td>
+<td >Mounting</td>
+<td >TH</td>
 </tr>
 <tr >
-
 <td >Pin Count
 </td>
 
@@ -113,56 +89,27 @@ url: /pcb-design/component-packages/do-35-do-214ah-component-package
 </td>
 </tr>
 <tr >
-
-<td >3D Models
-</td>
-
-<td >
-
-
-
-  * **[DO-35](http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=11032)**
-
-
-</td>
+<td >3D Models</td>
+<td><p><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=11032">DO-35</a></p></td>
 </tr>
 <tr >
 
 <td >Common Uses
 </td>
 
-<td >
-
-
-
-  * Diodes (including the popular 1N4148)
-
-
-</td>
+<td >Diodes (including the popular 1N4148)</td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 This a very common package for small-signal low-power through-hole diodes such as the 1N4148.
 
-
-
-
 # Photo
-
 
 {{< figure src="/images/2015/04/do-35-do-204ah-component-package-photo.jpg" width="343px" caption="A photo of the DO-35 (DO-204AH) component package."  >}}
 
-
 # Images
-
-
-
 
 {{< figure src="/images/electronics-packages/component-package-do-35-photo.jpg" caption="OLYMPUS DIGITAL CAMERA"  width="400px" >}}

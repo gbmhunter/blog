@@ -9,24 +9,16 @@ url: /pcb-design/component-packages/sod-723-component-package
 
 # Overview
 
-
-<table style="width: 600px;" >
+<table>
 <tbody >
-<tr >
-
-<td >Name
-</td>
-
-<td >Small-outline Diode 723
-</td>
+<tr>
+<td >Name</td>
+<td >Small-outline Diode 723</td>
 </tr>
 <tr >
 
-<td >Synonyms
-</td>
-
-<td >n/a
-</td>
+<td >Synonyms</td>
+<td >n/a</td>
 </tr>
 <tr >
 
@@ -114,43 +106,25 @@ url: /pcb-design/component-packages/sod-723-component-package
 </td>
 
 <td >
-
-
-
-  * Standard diodes
-  * TVS diodes
-
-
+<ul>
+<li>Standard diodes</li>
+<li>TVS diodes</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 n/a
 
-
-
-
 # 3D Render
-
 
 {{< figure src="/images/2015/04/sod-723-component-package-3d-render.jpg" width="351px" caption="A 3D render of the SOD-723 component package."  >}}
 
-
 # Other Images
 
-
-
-
 {{< figure src="/images/electronics-packages/package-sod-723-recommended-land-pattern.png" caption="The recommended PCB land pattern for the SOD-723 component package."  width="500px" >}}
-
-
-
 
 {{< figure src="/images/electronics-packages/package-sod-723-2d-dimensions.png" caption="2D dimensions drawing of the SOD-723 package. Taken from the NXP SOD-723 datasheet (http://www.nxp.com/documents/outline_drawing/sod723_po.pdf)."  width="500px" >}}
