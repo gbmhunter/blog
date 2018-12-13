@@ -16,7 +16,7 @@
             {{with .CurrentSection.Title }}{{. | upper }}{{end}}
         </p>
         <h1 class="f1">
-            <a href="s">{{- .Title -}}</a>
+            <a href="{{ .Permalink }}" class="post-title">{{- .Title -}}</a>
         </h1>
         {{/* Hugo uses Go's date formatting is set by example. Here are two formats */}}
         <time class="f6 mv4 dib tracked" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
@@ -36,6 +36,8 @@
 
     <div class="nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray content">
         {{- .Content -}}
+
+        <div>Tags</div>
         {{- partial "tags.html" . -}}
         <div class="mt6">
         {{ template "_internal/disqus.html" . }}
