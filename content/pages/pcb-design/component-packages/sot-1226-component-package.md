@@ -9,7 +9,7 @@ url: /pcb-design/component-packages/sot-1226-component-package
 
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Name
 </td>
 <td >Small Outline Transistor 1226 (SOT-1226)
@@ -67,7 +67,12 @@ url: /pcb-design/component-packages/sot-1226-component-package
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * Logic gates  * Line drivers
+<td >
+<ul>
+<li>Logic gates</li>
+
+<li>Line drivers</li>
+</ul>
 </td></tr></tbody></table>
 
 # Comments

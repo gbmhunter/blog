@@ -18,13 +18,55 @@ url: /pcb-design/component-packages/sot-23-component-package
 </td>
 <td >
 
-**SOT-23-3**  * Micro3  * SC-59 (JEITA)  * SOT-23 (TopLine)  * SOT-346  * SSOT3 (Fairchild Semiconductor)  * TO-236AA (JEDEC)  * TO-236AB (NXP)
+<p><strong>SOT-23-3</strong></p>
 
-**SOT-23-5**  * SC-74A (JEITA)  * SOT-753  * SOT-25 (TopLine)
+<ul>
+<li>Micro3</li>
 
-**SOT-23-6**  * SC-74 (JEITA)  * SMT6 (ROhm)  * SOT-26 (SOT-23-6 by TopLine)  * SOT-457 (JEDEC)
+<li>SC-59 (JEITA)</li>
 
-**SOT-23-8**  * RJ-8 (Analog Devices)  * SM8 (Diodes Incorporated)  * SOT-28 (TopLine)
+<li>SOT-23 (TopLine)</li>
+
+<li>SOT-346</li>
+
+<li>SSOT3 (Fairchild Semiconductor)</li>
+
+<li>TO-236AA (JEDEC)</li>
+
+<li>TO-236AB (NXP)</li>
+</ul>
+
+<p><strong>SOT-23-5</strong></p>
+
+<ul>
+<li>SC-74A (JEITA)</li>
+
+<li>SOT-753</li>
+
+<li>SOT-25 (TopLine)</li>
+</ul>
+
+<p><strong>SOT-23-6</strong></p>
+
+<ul>
+<li>SC-74 (JEITA)</li>
+
+<li>SMT6 (ROhm)</li>
+
+<li>SOT-26 (SOT-23-6 by TopLine)</li>
+
+<li>SOT-457 (JEDEC)</li>
+</ul>
+
+<p><strong>SOT-23-8</strong></p>
+
+<ul>
+<li>RJ-8 (Analog Devices)</li>
+
+<li>SM8 (Diodes Incorporated)</li>
+
+<li>SOT-28 (TopLine)</li>
+</ul>
 </td></tr><tr >
 <td >Variants
 </td>
@@ -44,7 +86,12 @@ url: /pcb-design/component-packages/sot-23-component-package
 </td></tr><tr >
 <td >Pitch
 </td>
-<td >  * 0.65mm (SOT-23-8)  * 0.95mm (SOT-23-3, SOT-23-5, SOT-23-6)
+<td >
+<ul>
+<li>0.65mm (SOT-23-8)</li>
+
+<li>0.95mm (SOT-23-3, SOT-23-5, SOT-23-6)</li>
+</ul>
 </td></tr><tr >
 <td >Solderability
 </td>
@@ -64,7 +111,16 @@ url: /pcb-design/component-packages/sot-23-component-package
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * Linear regulators  * Op-amps  * Transistors  * MOSFET's  * Diodes (including diode arrays)  * Battery management IC's  * Analogue active linear temperature sensors
+<td >
+<ul>
+<li>Linear regulators</li>
+<li>Op-amps</li>
+<li>Transistors</li>
+<li>MOSFET's</li>
+<li>Diodes (including diode arrays)</li>
+<li>Battery management IC's</li>
+<li>Analogue active linear temperature sensors</li>
+</ul>
 </td></tr></tbody></table>
 
 # Comments

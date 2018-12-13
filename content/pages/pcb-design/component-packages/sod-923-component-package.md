@@ -16,8 +16,7 @@ url: /pcb-design/component-packages/sod-923-component-package
 </td></tr><tr >
 <td >Synonyms
 </td>
-<td >  * SC-116A
-</td></tr><tr >
+<td>SC-116A</td></tr><tr >
 <td >Variants
 </td>
 <td >None
@@ -48,15 +47,15 @@ url: /pcb-design/component-packages/sod-923-component-package
 </td></tr><tr >
 <td >Dimensions
 </td>
-<td >  * </td></tr><tr >
-<td >3D Models
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Common Uses
-</td>
-<td >  *  ESD protection diodes
-</td></tr></tbody></table>
+<td ></td></tr>
+<tr >
+<td >3D Models</td>
+<td >n/a</td>
+</tr>
+<tr>
+<td >Common Uses</td>
+<td>ESD protection diodes</td>
+</tr></tbody></table>
 
 # Comments
 

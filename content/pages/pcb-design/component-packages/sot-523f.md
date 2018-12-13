@@ -9,30 +9,17 @@ url: /pcb-design/component-packages/sot-523f
 
 # Overview
 
-
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
-
 <td >Name
 </td>
-
 <td >Small Outline Transistor 523F
 </td>
 </tr>
-<tr >
-
-<td >Synonyms
-</td>
-
-<td >
-
-
-
-  * SC-89-3
-
-
-</td>
+<tr>
+<td>Synonyms</td>
+<td>SC-89-3</td>
 </tr>
 <tr >
 
@@ -115,34 +102,16 @@ url: /pcb-design/component-packages/sot-523f
 </td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
-<td >
-
-
-
-  * Transistors
-
-
-</td>
+<td >Common Uses</td>
+<td>Transistors</td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 None
 
-
-
-
 # Photos
-
 
 {{< figure src="/images/2015/04/sot-523f-component-package-photo.jpg" width="222px" caption="A photo of the SOT-523F component package."  >}}

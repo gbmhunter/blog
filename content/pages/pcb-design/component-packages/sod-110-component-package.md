@@ -10,10 +10,9 @@ url: /pcb-design/component-packages/sod-110-component-package
 # Overview
 
 
-<table style="width: 600px;" >
-<tbody >
+<table>
+<tbody>
 <tr >
-
 <td >Name
 </td>
 
@@ -102,41 +101,20 @@ url: /pcb-design/component-packages/sod-110-component-package
 </tr>
 <tr >
 
-<td >Common Uses
-</td>
-
-<td >
-
-
-
-  * Diodes
-
-
-</td>
+<td >Common Uses</td>
+<td>Diodes</td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 n/a
 
-
-
-
 # Photos
-
 
 {{< figure src="/images/2015/04/sod-110-component-package-photo.png" width="357px" caption="A photo of the SOD-110 component package."  >}}
 
-
 # Images
-
-
-
 
 {{< figure src="/images/electronics-packages/component-package-sod-110-2d-outline-with-dimensions.png" caption="The dimensions of the SOD-110 component package. Image from NXP SOD-110 Package Outline (http://www.nxp.com/documents/outline_drawing/sod110_po.pdf)"  width="600px" >}}

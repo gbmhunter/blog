@@ -7,18 +7,12 @@ type: page
 url: /pcb-design/component-packages/to-277a-smpc-component-package
 ---
 
-[mathjax]
-
-
-
-
 # Overview
 
 
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
-
 <td >Name (JEDEC)
 </td>
 
@@ -30,11 +24,7 @@ url: /pcb-design/component-packages/to-277a-smpc-component-package
 <td >Synonyms
 </td>
 
-<td >
-
-
-
-	  * SMPC (Vishay)
+<td >SMPC (Vishay)
 
 
 </td>
@@ -98,12 +88,10 @@ url: /pcb-design/component-packages/to-277a-smpc-component-package
 
 <td >
 
-
-
-	  * $$T_{JC} = 3^{\circ}{\rm C}/W$$
-	  * $$T_{JA} = 60^{\circ}{\rm C}/W$$ (recommended land pattern, no thermal vias)
-
-
+<ul>
+<li>\(T_{JC} = 3^{\circ}{\rm C}/W\)</li>
+<li>\(T_{JA} = 60^{\circ}{\rm C}/W\) (recommended land pattern, no thermal vias)</li>
+</ul>
 </td>
 </tr>
 <tr >
@@ -112,13 +100,11 @@ url: /pcb-design/component-packages/to-277a-smpc-component-package
 </td>
 
 <td >
+<ul>
+<li>Package Size: 4.60x6.50x1.10mm (width<em>length</em>height)</li>
 
-
-
-	  * Package Size: 4.60x6.50x1.10mm (width*length*height)
-	  * Recommended Footprint Land Area: 4.8x6.8mm = 32.6mm2
-
-
+<li>Recommended Footprint Land Area: 4.8x6.8mm = 32.6mm2</li>
+</ul>
 </td>
 </tr>
 <tr >
@@ -128,10 +114,9 @@ url: /pcb-design/component-packages/to-277a-smpc-component-package
 
 <td >
 
-
-
-	  * [TO-277A(SMPC)](http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=142982)
-
+<ul>
+<li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=142982">TO-277A(SMPC)</a></li>
+</ul>
 
 </td>
 </tr>
@@ -140,11 +125,7 @@ url: /pcb-design/component-packages/to-277a-smpc-component-package
 <td >Common Uses
 </td>
 
-<td >
-
-
-
-	  * Medium/high power diodes.
+<td >Medium/high power diodes.
 
 
 </td>
@@ -152,24 +133,14 @@ url: /pcb-design/component-packages/to-277a-smpc-component-package
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 Used by Vishay and Bruckewell.
 
-
-
-
 # 3D Renders
-
 
 {{< figure src="/images/2015/04/to-277a-component-package-3d-render.jpg" width="358px" caption="A 3D render of the TO-277A component package."  >}}
 
-
 #  Dimensions
-
 
 {{< figure src="/images/2015/04/component-package-to-277a-smpc-dimensions-and-land-pattern.png" width="913px" caption="Dimensions and land pattern for the TO-277A (SMPC) component package."  >}}

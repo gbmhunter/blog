@@ -9,48 +9,27 @@ url: /pcb-design/component-packages/smd35-component-package
 
 # Overview
 
-
 <table >
 <tbody >
 <tr >
-
-<td >Name
-</td>
-
-<td >SMD35
-</td>
+<td >Name</td>
+<td >SMD35</td>
+</tr>
+<tr>
+<td >Synonyms</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
-<td >n/a
-</td>
+<td >Variants</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >n/a
-</td>
+<td >Similar To</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
-<td >n/a
-</td>
-</tr>
-<tr >
-
-<td >Mounting
-</td>
-
-<td >SMD
-</td>
+<td >Mounting</td>
+<td >SMD</td>
 </tr>
 <tr >
 
@@ -85,18 +64,12 @@ url: /pcb-design/component-packages/smd35-component-package
 </td>
 </tr>
 <tr >
-
-<td >Dimensions
-</td>
-
-<td >
-
-
-
-  * WxLxH = 3.50x3.50x0.80mm
-  * Land Area = 12.25mm2 (3.50x3.50mm)
-
-
+<td >Dimensions</td>
+<td>
+    <ul>
+        <li>WxLxH = 3.50x3.50x0.80mm</li>
+        <li>Land Area = 12.25mm2 (3.50x3.50mm)</li>
+    </ul>
 </td>
 </tr>
 <tr >
@@ -107,38 +80,17 @@ url: /pcb-design/component-packages/smd35-component-package
 <td >n/a
 </td>
 </tr>
-<tr >
-
-<td >Common Uses
-</td>
-
-<td >
-
-
-
-  * Deep UV LEDs
-
-
-</td>
+<tr>
+<td >Common Uses</td>
+<td>Deep UV LEDs</td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 Used exclusively by Seti for their range of Deep UV LEDs.
 
-
-
-
 # Photos
 
-
-{{< figure src="/images/2015/04/smd35-component-package-3d-render.png" width="365px" caption="A 3D render of the SMD35 component package."  >}}
-
-
-##  
+{{< figure src="/images/2015/04/smd35-component-package-3d-render.png" width="365px" caption="A 3D render of the SMD35 component package." >}}

@@ -9,14 +9,18 @@ url: /pcb-design/component-packages/sot-563-component-package
 
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Name
 </td>
 <td >SOT-563 (Small Outline Transistor 563)
 </td></tr><tr >
 <td >Synonyms
 </td>
-<td >  * DRL (Texas Instruments)  * SC-89-6
+<td >
+<ul>
+<li>DRL (Texas Instruments)</li>
+<li>SC-89-6</li>
+</ul>
 </td></tr><tr >
 <td >Variants
 </td>
@@ -56,7 +60,7 @@ url: /pcb-design/component-packages/sot-563-component-package
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * MOSFET's
+<td >MOSFET's
 </td></tr></tbody></table>
 
 # Comments

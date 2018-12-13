@@ -10,10 +10,9 @@ url: /pcb-design/component-packages/snaphat-component-package
 # Overview
 
 
-<table style="width: 500px;" >
-<tbody >
-<tr >
-
+<table>
+<tbody>
+<tr>
 <td >Name
 </td>
 
@@ -125,31 +124,16 @@ url: /pcb-design/component-packages/snaphat-component-package
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 Package registered by ST Microelectronics. Used to hold small rechargeable batteries and crystals for timekeeping on circuit boards once the power is removed. The top part containing the batteries and crystal can 'snap' into package after reflow, to avoid damaging the battery.
 
-
-
-
 # Photo
-
 
 {{< figure src="/images/2015/04/snaphat-component-package-photo.png" width="340px" caption="A photo of the SNAPHAT component package."  >}}
 
-
 # Images
 
-
-
-
 {{< figure src="/images/electronics-packages/component-package-snaphat-dimensions.png" caption="The dimensions for the SnapHat component package."  width="600px" >}}
-
-
-
 
 {{< figure src="/images/electronics-packages/component-package-snaphat-schematic.png" caption="The schematic for the SnapHat component package."  width="400px" >}}

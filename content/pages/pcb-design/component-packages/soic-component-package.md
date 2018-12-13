@@ -16,7 +16,14 @@ url: /pcb-design/component-packages/soic-component-package
 </td></tr><tr >
 <td >Synonyms
 </td>
-<td >  * R-PDSO (JEDEC wide body SOIC, 7.5mm width, 0.65mm pitch)  * SO (ST Microelectronics)  * S8 (SOIC-8, Analog Devices)  * S8E (Linear Technologies, SOIC-8 with exposed pad)  * WSON (SST, this is a package which shares the same footprint as a SOIC but has a smaller height, not to be confused with the different SON package)
+<td >
+<ul>
+<li>R-PDSO (JEDEC wide body SOIC, 7.5mm width, 0.65mm pitch)</li>
+<li>SO (ST Microelectronics)</li>
+<li>S8 (SOIC-8, Analog Devices)</li>
+<li>S8E (Linear Technologies, SOIC-8 with exposed pad)</li>
+<li>WSON (SST, this is a package which shares the same footprint as a SOIC but has a smaller height, not to be confused with the different SON package)</li>
+</ul>
 </td></tr><tr >
 <td >Variants
 </td>
@@ -29,12 +36,15 @@ There are also two width's for SOIC packages, narrow width (3.9mm wide body, SOI
 </td></tr><tr >
 <td >Relevant Standards
 </td>
-<td >  * JEDEC MS-012-AA (SOIC Narrow)  * JEDEC MS-013 (SOIC Wide)
+<td >
+<ul>
+<li>JEDEC MS-012-AA (SOIC Narrow)</li>
+<li>JEDEC MS-013 (SOIC Wide)</li>
+</ul>
 </td></tr><tr >
 <td >Similar To
 </td>
-<td >  * SOJ
-</td></tr><tr >
+<td>SOJ</td></tr><tr >
 <td >Mounting
 </td>
 <td >SMD
@@ -45,7 +55,11 @@ There are also two width's for SOIC packages, narrow width (3.9mm wide body, SOI
 </td></tr><tr >
 <td >Pitch
 </td>
-<td >  * 0.65mm (e.g. R-PDSO)  * 1.27mm (50mill)
+<td >
+<ul>
+<li>0.65mm (e.g. R-PDSO)</li>
+<li>1.27mm (50mill)</li>
+</ul>
 </td></tr><tr >
 <td >Solderability
 </td>
@@ -53,11 +67,20 @@ There are also two width's for SOIC packages, narrow width (3.9mm wide body, SOI
 </td></tr><tr >
 <td >Thermal Resistance
 </td>
-<td >  * SOIC-8: 70.6K/W (pads only, no copper fill)  * SOIC-8: 55K/W (6cm2 of copper, ground pins attached internally to die)  * SOIC-8: 33.5K/W (1 square inch of copper surrounding package, connected to ground)
+<td >
+<ul>
+<li>SOIC-8: 70.6K/W (pads only, no copper fill)</li>
+<li>SOIC-8: 55K/W (6cm2 of copper, ground pins attached internally to die)</li>
+<li>SOIC-8: 33.5K/W (1 square inch of copper surrounding package, connected to ground)</li>
+</ul>
 </td></tr><tr >
 <td >Land Area
 </td>
-<td >  * SOIC-8: 29.4mm2  * SOIC-28W: 186.4mm² (10.3x18.1mm)
+<td >
+<ul>
+<li>SOIC-8: 29.4mm2</li>
+<li>SOIC-28W: 186.4mm² (10.3x18.1mm)</li>
+</ul>
 </td></tr><tr >
 <td >Height
 </td>
@@ -69,7 +92,12 @@ There are also two width's for SOIC packages, narrow width (3.9mm wide body, SOI
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * Linear regulators  * Drivers/buffers  * High-power MOSFET's (normally in a SOIC-8N, with one pin for the gate, and either 3 or 4 pins for the drain and source)
+<td >
+<ul>
+<li>Linear regulators</li>
+<li>Drivers/buffers</li>
+<li>High-power MOSFET's (normally in a SOIC-8N, with one pin for the gate, and either 3 or 4 pins for the drain and source)</li>
+</ul>
 </td></tr></tbody></table>
 
 # Dimensions

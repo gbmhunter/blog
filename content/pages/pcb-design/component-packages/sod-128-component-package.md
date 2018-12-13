@@ -9,7 +9,6 @@ url: /pcb-design/component-packages/sod-128-component-package
 
 # Overview
 
-
 <table >
 <tbody >
 <tr >
@@ -82,14 +81,11 @@ url: /pcb-design/component-packages/sod-128-component-package
 </td>
 
 <td >
-
-
-
-  * [latex]R_{JA} = 200^{\circ}{\rm C}/W[/latex] (standard land pattern, see below)
-  * [latex]R_{JA} = 120^{\circ}{\rm C}/W[/latex] (mounting pad for cathode 1cm²)
-  * [latex]R_{JA} = 60^{\circ}{\rm C}/W[/latex] (mounted on ceramic PCB with standard footprint)
-
-
+<ul>
+<li>\(R_{JA} = 200^{\circ}{\rm C}/W\) (standard land pattern, see below)</li>
+<li>\(R_{JA} = 120^{\circ}{\rm C}/W\) (mounting pad for cathode 1cm²)</li>
+<li>\(R_{JA} = 60^{\circ}{\rm C}/W\) (mounted on ceramic PCB with standard footprint)</li>
+</ul>
 </td>
 </tr>
 <tr >
@@ -120,14 +116,11 @@ url: /pcb-design/component-packages/sod-128-component-package
 
 <td >Common Uses
 </td>
-
 <td >
-
-
-
-  * Standard diodes
-  * TVS diodes
-
+<ul>
+<li>Standard diodes</li>
+<li>TVS diodes</li>
+</ul>
 
 </td>
 </tr>
@@ -137,33 +130,16 @@ url: /pcb-design/component-packages/sod-128-component-package
 
 # Comments
 
-
-
-
 A package used by NXP for some of their diodes.
-
-
-
 
 # 3D Render
 
-
 {{< figure src="/images/2015/04/sod-128-component-package-3d-render.jpg" width="415px" caption="A 3D render of the SOD-128 component package."  >}}
-
 
 # Other Images
 
-
-
-
 {{< figure src="/images/electronics-packages/sod128-recommended-land-pattern.jpg" caption="The recommended land pattern for the SOD-128 component package."  width="500px" >}}
 
-
-
-
 {{< figure src="/images/electronics-packages/sod128-3d-model.jpg" caption="The 3D model for the SOD-128 component package."  width="500px" >}}
-
-
-
 
 {{< figure src="/images/electronics-packages/sod128-package-outline.jpg" caption="The package outline for the SOD-128 component package."  width="500px" >}}

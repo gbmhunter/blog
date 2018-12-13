@@ -9,14 +9,10 @@ url: /pcb-design/component-packages/sot-323-component-package
 
 # Overview
 
-
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
-
-<td >Name
-</td>
-
+<td >Name</td>
 <td >SOT-323 (Small Outline Transistor 323)
 </td>
 </tr>
@@ -26,13 +22,11 @@ url: /pcb-design/component-packages/sot-323-component-package
 </td>
 
 <td >
-
-
-
-  * SC-70 (SOT323-3, JEITA)
-  * SCx (Analog Devices)
-  * SMini3-G1-B (SOT323-3, Panasonic)
-
+<ul>
+<li>SC-70 (SOT323-3, JEITA)</li>
+<li>SCx (Analog Devices)</li>
+<li>SMini3-G1-B (SOT323-3, Panasonic)</li>
+</ul>
 
 </td>
 </tr>
@@ -43,12 +37,13 @@ url: /pcb-design/component-packages/sot-323-component-package
 
 <td >
 
+<ul>
+<li>SOT-323-3 (3 lead)</li>
 
+<li>SOT-323-5 (5 lead)</li>
 
-  * SOT-323-3 (3 lead)
-  * SOT-323-5 (5 lead)
-  * SOT-323-8 (8 lead)
-
+<li>SOT-323-8 (8 lead)</li>
+</ul>
 
 </td>
 </tr>
@@ -74,14 +69,13 @@ url: /pcb-design/component-packages/sot-323-component-package
 </td>
 
 <td >
+<ul>
+<li>3 (SOT-323-3)</li>
 
+<li>5 (SOT-323-5)</li>
 
-
-  * 3 (SOT-323-3)
-  * 5 (SOT-323-5)
-  * 8 (SOT-323-8, SC8)
-
-
+<li>8 (SOT-323-8, SC8)</li>
+</ul>
 </td>
 </tr>
 <tr >
@@ -91,11 +85,11 @@ url: /pcb-design/component-packages/sot-323-component-package
 
 <td >
 
+<ul>
+<li>0.50mm (SOT-323-8, SC8)</li>
 
-
-  * 0.50mm (SOT-323-8, SC8)
-  * 0.65mm (all other variants)
-
+<li>0.65mm (all other variants)</li>
+</ul>
 
 </td>
 </tr>
@@ -113,12 +107,11 @@ url: /pcb-design/component-packages/sot-323-component-package
 </td>
 
 <td >
+<ul>
+<li>SOT-323-3: Tja = 380°C/W (mounted on 10x8x0.6mm FR4, still air)</li>
 
-
-
-  * SOT-323-3: Tja = 380°C/W (mounted on 10x8x0.6mm FR4, still air)
-  * SOT-323-8: Tja = 70-90°C/W
-
+<li>SOT-323-8: Tja = 70-90°C/W</li>
+</ul>
 
 </td>
 </tr>
@@ -152,42 +145,25 @@ url: /pcb-design/component-packages/sot-323-component-package
 </td>
 
 <td >
+<ul>
+<li>Diodes (SOT-323-3)</li>
 
-
-
-  * Diodes (SOT-323-3)
-  * Voltage regulators (SOT-323-8)
-
+<li>Voltage regulators (SOT-323-8)</li>
+</ul>
 
 </td>
 </tr>
 </tbody>
 </table>
 
-
 This package is a little confusing because it shares two common names, the SOT-323-x and the SC-70-x. And it also can have a different pitch (the SOT-323-8, aka SC-70-8 or SC8 has a 0.5mm pitch). It has a lead-pitch double that of the SOT-363.
-
-
-
 
 If the pin number isn't specified, it is likely to be the 3 pin variant (this is the most common).
 
-
-
-
 # Images
-
-
-
 
 {{< figure src="/images/electronics-packages/component-package-sot-323-5-dimensions-and-land-pattern.png" caption="Dimensions and recommended land pattern for the SOT-323-5 (SC-70-5) component package."  width="800px" >}}
 
-
-
-
 {{< figure src="/images/electronics-packages/component-package-sot-323-3-3d-model.jpg" caption="3D model of the SOT-323-3 (SC-70-3) component package."  width="500px" >}}
-
-
-
 
 {{< figure src="/images/electronics-packages/component-package-sot-323-5-3d-model.jpg" caption="3D model of the SOT-323-5 (SC-70-5) component package."  width="500px" >}}

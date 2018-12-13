@@ -7,11 +7,9 @@ type: page
 url: /pcb-design/component-packages/to-220ac-component-package
 ---
 
-[mathjax]
-
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Name
 </td>
 <td >TO-220AC (Transistor Outline 220AC)
@@ -22,7 +20,11 @@ url: /pcb-design/component-packages/to-220ac-component-package
 </td></tr><tr >
 <td >Variants
 </td>
-<td >  * TO-220AB  * TO-220F
+<td >
+<ul>
+<li>TO-220AB</li>
+<li>TO-220F</li>
+</ul>
 </td></tr><tr >
 <td >Similar To
 </td>
@@ -46,7 +48,11 @@ url: /pcb-design/component-packages/to-220ac-component-package
 </td></tr><tr >
 <td >Thermal Resistance
 </td>
-<td >  *  \(T_{JC} = 3^{\circ}{\rm C}/W\)  * \(T_{JA} = 34^{\circ}{\rm C}/W\)
+<td >
+<ul>
+<li>\(T_{JC} = 3^{\circ}{\rm C}/W\)</li>
+<li>\(T_{JA} = 34^{\circ}{\rm C}/W\)</li>
+</ul>
 </td>
 <td >
 
@@ -65,7 +71,8 @@ url: /pcb-design/component-packages/to-220ac-component-package
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * MOSFET's
+<td >
+MOSFET's
 </td></tr></tbody></table>
 
 # Comments
@@ -73,8 +80,6 @@ url: /pcb-design/component-packages/to-220ac-component-package
 A variant on the TO-220 package with only two leads and the pad (which still means it could have three distinct connections). Use for some high power diodes.
 
 {{< figure src="/images/2015/04/to-220ac-component-package-photo.jpg" width="271px" caption="A photo of the TO-220AC component package."  >}}
-
-#  
 
 # Dimensions
 

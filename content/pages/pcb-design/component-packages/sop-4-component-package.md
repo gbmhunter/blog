@@ -9,8 +9,7 @@ url: /pcb-design/component-packages/sop-4-component-package
 
 # Overview
 
-
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
 
@@ -122,39 +121,24 @@ url: /pcb-design/component-packages/sop-4-component-package
 </td>
 
 <td >
-
-
-
-  * Solid-state relays
-  * Optocouplers.
-
-
+<ul>
+<li>Solid-state relays</li>
+<li>Optocouplers.</li>
+</ul>
 </td>
 </tr>
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 An easy to solder, medium sized, 4-pin SMD package. Commonly used for small solid-state relays (Vishay makes quite a few of them). Related to SOP-4L, which is the same width, but longer.
 
-
-
-
 # Photos
-
 
 {{< figure src="/images/2015/04/sop-4-component-package-photo.jpg" width="356px" caption="A photo of the SOP-4 component package."  >}}
 
-
 # Other Images
-
-
-
 
 {{< figure src="/images/electronics-packages/sop-4-component-package-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the SOP-4 component package. Image from http://www.everlight.com/datasheets/EL452-G.pdf."  width="500px" >}}
 

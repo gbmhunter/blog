@@ -24,7 +24,11 @@ url: /pcb-design/component-packages/smb-do-214aa-component-package
 </td></tr><tr >
 <td >Similar To
 </td>
-<td >  * DO-214AB  * DO-214AC
+<td >
+<ul>
+<li>DO-214AB</li>
+<li>DO-214AC</li>
+</ul>
 </td></tr><tr >
 <td >Mounting
 </td>
@@ -56,12 +60,13 @@ url: /pcb-design/component-packages/smb-do-214aa-component-package
 </td></tr><tr >
 <td >3D Models
 </td>
-<td >[Link](http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&id=85500)
+<td>
+<p><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=85500">Link</a></p>
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * Diodes
-</td></tr></tbody></table>
+<td>Diodes</td>
+</tr></tbody></table>
 
 # Comments
 

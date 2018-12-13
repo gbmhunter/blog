@@ -7,15 +7,9 @@ type: page
 url: /pcb-design/component-packages/sot-723-component-package
 ---
 
-[mathjax]
-
-
-
-
 # Overview
 
-
-<table style="width: 600px;" >
+<table >
 <tbody >
 <tr >
 
@@ -32,11 +26,10 @@ url: /pcb-design/component-packages/sot-723-component-package
 
 <td >
 
-
-
-  * VMT3 (Rohm Semiconductor)
-  * Case 631AA (On Semiconductor)
-
+<ul>
+<li>VMT3 (Rohm Semiconductor)</li>
+<li>Case 631AA (On Semiconductor)</li>
+</ul>
 
 </td>
 </tr>
@@ -50,23 +43,16 @@ url: /pcb-design/component-packages/sot-723-component-package
 
 None
 
-
-
 </td>
 </tr>
 <tr >
-
 <td >Similar To
 </td>
-
 <td >
-
-
-
-  * [SOT-23](/pcb-design/component-packages/sot-23-component-package)
-  * [SOT-523F](/pcb-design/component-packages/sot-523f)
-
-
+<ul>
+<li><a href="/pcb-design/component-packages/sot-23-component-package">SOT-23</a></li>
+<li><a href="/pcb-design/component-packages/sot-523f">SOT-523F</a></li>
+</ul>
 </td>
 </tr>
 <tr >
@@ -116,18 +102,12 @@ None
 
 <td >
 
-
 X = 1.2mm  
 Y = 1.2mm  
 Z = 0.50mm
 
-
-
-
 PCB Land Area (package only) = \(1.44mm^2\)  
 PCB Land Area (incl. recommended footprint) = \(1.88mm^2\)
-
-
 
 </td>
 </tr>
@@ -137,11 +117,9 @@ PCB Land Area (incl. recommended footprint) = \(1.88mm^2\)
 </td>
 
 <td >
-
-
-
-  *  [SOT-723 (by ON Semiconductor)](http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=196277)
-
+<ul>
+<li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=196277">SOT-723 (by ON Semiconductor)</a></li>
+</ul>
 
 </td>
 </tr>
@@ -152,15 +130,13 @@ PCB Land Area (incl. recommended footprint) = \(1.88mm^2\)
 
 <td >
 
-
-
-  * MOSFET's
-  * Digital transistors (BRT's)
-  * Small-signal switching diodes
-  * Low power rectifiers
-  * ESD diodes
-
-
+<ul>
+<li>MOSFET's</li>
+<li>Digital transistors (BRT's)</li>
+<li>Small-signal switching diodes</li>
+<li>Low power rectifiers</li>
+<li>ESD diodes</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -169,21 +145,12 @@ PCB Land Area (incl. recommended footprint) = \(1.88mm^2\)
 
 # 3D Renders
 
-
-
-
 Here is a 3D render of the SOT-723 component package.
-
 
 {{< figure src="/images/2015/04/sot-723-component-package-3d-render.jpg" width="369px" caption="A 3D render of the SOT-723 component package."  >}}
 
-
 # Dimensions
 
-
-
-
 Here are the dimensions and a recommended footprint for the SOT-723 component package.
-
 
 {{< figure src="/images/2015/04/sot-723-component-package-dimensions-and-footprint.png" width="686px" caption="Dimensions and a recommended footprint for the SOT-723 component package. Image from http://www.onsemi.com/pub_link/Collateral/ESD7C3.3D-D.PDF."  >}}

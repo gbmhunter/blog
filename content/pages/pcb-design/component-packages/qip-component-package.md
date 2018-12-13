@@ -9,59 +9,36 @@ url: /pcb-design/component-packages/qip-component-package
 
 # Overview
 
-
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
-
 <td >Name
 </td>
-
 <td >Quad Inline Package
 </td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
-<td >
-
-
-
-  * QIL
-
-
-</td>
+<td >Synonyms</td>
+<td>QIL</td>
 </tr>
 <tr >
-
 <td >Variants
 </td>
-
 <td >n/a
 </td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
+<td >Similar To</td>
 <td >
-
-
-
-  * DIP
-  * SIP
-
-
+<ul>
+<li>DIP</li>
+<li>SIP</li>
+</ul>
 </td>
 </tr>
 <tr >
-
 <td >Mounting
 </td>
-
 <td >TH
 </td>
 </tr>
@@ -127,15 +104,8 @@ url: /pcb-design/component-packages/qip-component-package
 
 # Comments
 
-
-
-
 Has four rows of pins. Used in the 1970's when single-sided boards with through-hole components was common. Allowed tracks to be run between pins.
-
-
-
 
 # Photos
 
-
-{{< figure src="/images/2015/04/qip-component-package-photo.jpg" width="600px" caption="A photo of the QIP component package."  >}}
+{{< figure src="/images/2015/04/qip-component-package-photo.jpg" width="600px" caption="A photo of the QIP component package." >}}

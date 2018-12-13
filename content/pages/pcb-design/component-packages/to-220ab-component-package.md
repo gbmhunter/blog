@@ -9,13 +9,10 @@ url: /pcb-design/component-packages/to-220ab-component-package
 
 # Overview
 
-
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
-
-<td >Name
-</td>
+<td >Name</td>
 
 <td >TO-220AB (Transistor Outline 220AB)
 </td>
@@ -25,14 +22,7 @@ url: /pcb-design/component-packages/to-220ab-component-package
 <td >Synonyms
 </td>
 
-<td >
-
-
-
-  * TO-220-3
-
-
-</td>
+<td >TO-220-3</td>
 </tr>
 <tr >
 
@@ -41,11 +31,11 @@ url: /pcb-design/component-packages/to-220ab-component-package
 
 <td >
 
+<ul>
+<li>TO-220AC</li>
 
-
-  * TO-220AC
-  * TO-220F
-
+<li>TO-220F</li>
+</ul>
 
 </td>
 </tr>
@@ -96,11 +86,10 @@ url: /pcb-design/component-packages/to-220ab-component-package
 
 <td >
 
-
-
-  * [latex]T_{JC} = 3^{\circ}{\rm C}/W[/latex]
-  * [latex]T_{JA} = 34^{\circ}{\rm C}/W[/latex]
-
+<ul>
+<li>\(T_{JC} = 3^{\circ}{\rm C}/W\)</li>
+<li>\(T_{JA} = 34^{\circ}{\rm C}/W\)</li>
+</ul>
 
 </td>
 </tr>
@@ -109,7 +98,7 @@ url: /pcb-design/component-packages/to-220ab-component-package
 <td >Land Area
 </td>
 
-<td >[latex]44mm^2[/latex]
+<td >\(44mm^2\)
 </td>
 </tr>
 <tr >
@@ -139,32 +128,19 @@ url: /pcb-design/component-packages/to-220ab-component-package
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 A variant on the TO-220 package with three leads and the pad (but only has three distinct connections). Commonly used in power electronics for components which require high heat-dissipation. Can dissipate about 1W of power without a heatsink.
 
-
-
-
 # 3D Renders
-
 
 {{< figure src="/images/2015/04/to-220ab-to-220-3-component-package-3d-render.jpg" width="378px" caption="A 3D render of the TO-220AB component package."  >}}
 
-
 # Images
-
-
-
 
 {{< figure src="/images/electronics-packages/component-package-to-220ab-dimensions.png" caption="The dimensions of the TO-220AB component package."  width="500px" >}}
 
-
-<table align="center" >
+<table>
 <tbody >
 <tr >
 
@@ -176,6 +152,3 @@ A variant on the TO-220 package with three leads and the pad (but only has three
 </tr>
 </tbody>
 </table>
-
-
-##  

@@ -10,7 +10,7 @@ url: /pcb-design/component-packages/sot-1193-component-package
 # Overview
 
 
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
 
@@ -32,15 +32,11 @@ url: /pcb-design/component-packages/sot-1193-component-package
 
 <td >Variants
 </td>
-
 <td >
-
-
-
-  * SOT-1193-1 (XQFN8)
-  * SOT-1193-2 (XQFN8)
-
-
+<ul>
+<li>SOT-1193-1 (XQFN8)</li>
+<li>SOT-1193-2 (XQFN8)</li>
+</ul>
 </td>
 </tr>
 <tr >
@@ -126,26 +122,14 @@ url: /pcb-design/component-packages/sot-1193-component-package
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 NXP seems to be the only manufacturer who uses this package.
 
-
-
-
 # 3D Renders
-
 
 {{< figure src="/images/2015/04/sot-1193-component-package-3d-render.jpg" width="360px" caption="A 3D render of the SOT-1193 component package."  >}}
 
-
 # Other Images
-
-
-
 
 {{< figure src="/images/electronics-packages/component-package-sot-1193-2-nxp-xqfn8-dimensions.png" caption="The dimensions for the SOT-1193-2 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1193-2_po.pdf."  width="600px" >}}

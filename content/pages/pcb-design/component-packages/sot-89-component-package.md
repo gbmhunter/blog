@@ -7,22 +7,28 @@ type: page
 url: /pcb-design/component-packages/sot-89-component-package
 ---
 
-[mathjax]
-
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Name
 </td>
 <td >SOT-89 (Small Outline Transistor 89)
 </td></tr><tr >
 <td >Synonyms
 </td>
-<td >  * SC-62  * TO-243
+<td >
+<ul>
+<li>SC-62</li>
+<li>TO-243</li>
+</ul>
 </td></tr><tr >
 <td >Variants
 </td>
-<td >  * SOT-89-3  * SOT-89-5
+<td>
+<ul>
+<li>SOT-89-3</li>
+<li>SOT-89-5</li>
+</ul>
 </td></tr><tr >
 <td >Similar To
 </td>
@@ -38,8 +44,7 @@ url: /pcb-design/component-packages/sot-89-component-package
 </td></tr><tr >
 <td >Pitch
 </td>
-<td >  * 1.50mm (between lead centers on the same side)
-</td></tr><tr >
+<td >1.50mm (between lead centers on the same side)</td></tr><tr >
 <td >Solderability
 </td>
 <td >The package is relatively easy to solder by hand. There are no issues with hand soldering the tab since the tab produces on one side of the package.
@@ -50,7 +55,7 @@ url: /pcb-design/component-packages/sot-89-component-package
 
 **SOT-89-5**
 
-$$ \theta_{JA} = 168^{\circ}C/W $$
+<div>$$ \theta_{JA} = 168^{\circ}C/W $$</div>
 
 </td></tr><tr >
 <td >Dimensions
@@ -63,8 +68,8 @@ $$ \theta_{JA} = 168^{\circ}C/W $$
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * BLDC fan and motor drivers
-</td></tr></tbody></table>
+<td>BLDC fan and motor drivers</td>
+</tr></tbody></table>
 
 # Overview
 
@@ -86,6 +91,6 @@ The SOT-89-5 package is commonly used as a SMD replacement for the SIP-4 TH pack
 
 www.diodes.com states their SOT-89-5 component package to have:
 
-$$ \theta_{JA} = 168^{\circ}C/W $$
+<div>$$ \theta_{JA} = 168^{\circ}C/W $$</div>
 
-$$ \theta_{JC} = 36^{\circ}C/W $$
+<div>$$ \theta_{JC} = 36^{\circ}C/W $$</div>

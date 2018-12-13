@@ -9,14 +9,21 @@ url: /pcb-design/component-packages/sot-346-component-package
 
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Name
 </td>
 <td >SOT-346 (Small Outline Transistor 346)
 </td></tr><tr >
 <td >Synonyms
 </td>
-<td >  * SC-59 (EIAJ)  * SC-59A (EIAJ)  * TO-236 (JEDEC)  * SMT3 (NXP Semiconductors)  * MPAK (NXP Semiconductors)
+<td >
+<ul>
+<li>SC-59 (EIAJ)</li>
+<li>SC-59A (EIAJ)</li>
+<li>TO-236 (JEDEC)</li>
+<li>SMT3 (NXP Semiconductors)</li>
+<li>MPAK (NXP Semiconductors)</li>
+</ul>
 </td></tr><tr >
 <td >Variants
 </td>
@@ -66,7 +73,7 @@ Standard Footprint Land Area = 11.22mm² (3.3x3.4mm)
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  *  BJT transistors
+<td >BJT transistors
 </td></tr></tbody></table>
 
 # Outline And Dimensions
