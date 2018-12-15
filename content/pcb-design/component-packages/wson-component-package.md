@@ -9,7 +9,7 @@ url: /pcb-design/component-packages/wson-component-package
 
 # Overview
 
-<table style="width: 800px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Name
 </td>
 <td >WSON (Small-outline No-lead Package)
@@ -24,7 +24,8 @@ url: /pcb-design/component-packages/wson-component-package
 </td></tr><tr >
 <td >Similar To
 </td>
-<td >  * SOIC
+<td >
+SOIC
 </td></tr><tr >
 <td >Mounting
 </td>
@@ -49,16 +50,25 @@ url: /pcb-design/component-packages/wson-component-package
 <td >Dimensions
 </td>
 <td >
-
-**WSON-8**  * Package: 6.0x5.0x0.80mm (w*l*h, Winbond package code ZP)  * Recommended Land Pattern: 6.10x5.10mm (31.11mm2)
-</td></tr><tr >
+    <p><strong>WSON-8</strong>  </p>
+    <ul>
+        <li>Package: 6.0x5.0x0.80mm (w<em>l</em>h, Winbond package code ZP)</li>
+        <li>Recommended Land Pattern: 6.10x5.10mm (31.11mm2)</li>
+    </ul>
+</td>
+</tr>
+<tr >
 <td >3D Models
 </td>
 <td > 
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * Flash memory ICs  * Secondary-side bias regulators for DC-DC converters
+<td >
+<ul>
+<li>Flash memory ICs</li>
+<li>Secondary-side bias regulators for DC-DC converters</li>
+</ul>
 </td></tr></tbody></table>
 
 # Comments
@@ -70,5 +80,3 @@ Warning: Texas Instruments has a WSON package which does not have a pitch of 1.2
 Below is an "odd shaped" SON package used by Numonyx flash chips that goes under the name VDFPN8. Notice the half-round appearance of the pins.
 
 {{< figure src="/images/2014/12/component-package-vdfpn8-mlp8-outline-dimensions.png" width="554px" caption="Outline and dimensions for the VDFPN8 (SON-8) component package of a Numonyx flash IC.Image from http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/M25P/M25P128.pdf."  >}}
-
-#  

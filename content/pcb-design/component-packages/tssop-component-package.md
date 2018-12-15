@@ -7,11 +7,9 @@ type: page
 url: /pcb-design/component-packages/tssop-component-package
 ---
 
-[mathjax]
-
 # Overview
 
-<table style="width: 600px;" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Name
 </td>
 <td >TSSOP (Thin Scale Small Outline Package)
@@ -22,8 +20,12 @@ url: /pcb-design/component-packages/tssop-component-package
 </td></tr><tr >
 <td >Variants
 </td>
-<td >  * Variant with pad on bottom for power ICs (e.g. half-bridges), known as HTSSOP.
-</td></tr><tr >
+<td >
+    <ul>
+        <li>Variant with pad on bottom for power ICs (e.g. half-bridges), known as HTSSOP.</li>
+    </ul>
+</td>
+</tr><tr >
 <td >Similar To
 </td>
 <td >n/a
@@ -62,8 +64,13 @@ url: /pcb-design/component-packages/tssop-component-package
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >  * General IC's  * H-bridges (the HTSSOP variant)
-</td></tr></tbody></table>
+<td >
+    <ul>
+        <li>General IC's</li>
+        <li>H-bridges (the HTSSOP variant)</li>
+    </ul>
+</td>
+</tr></tbody></table>
 
 # Variants
 
@@ -73,13 +80,15 @@ There is a variant of the TSSOP with a solder pad on the underside. Texas Inst
 
 The HTTSOP-28 component package has the following thermal resistances:
 
-<table ><tr >
-<td >**Symbol**
-</td>
-<td >**Description**
-</td>
-<td >**Thermal Resistance**
-</td></tr><tbody ><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Description</th>
+            <th>Thermal Resistance</th>
+        </tr>
+    <tbody>
+<tr >
 <td >\( R_{\theta JA} \)
 </td>
 <td >Junction-to-ambient thermal resistance

@@ -9,22 +9,17 @@ url: /pcb-design/component-packages/uqfn-component-package
 
 # Overview
 
-
 <table >
 <tbody >
 <tr >
-
 <td >Name
 </td>
-
 <td >Ultra-thin Quad Flat Non-leaded
 </td>
 </tr>
 <tr >
-
 <td >Synonyms
 </td>
-
 <td >n/a
 </td>
 </tr>
@@ -41,14 +36,11 @@ url: /pcb-design/component-packages/uqfn-component-package
 <td >Similar To
 </td>
 
-<td >
-
-
-
-  * QFN
-  * VQFN
-
-
+<td>
+    <ul>
+        <li>QFN</li>
+        <li>VQFN</li>
+    </ul>
 </td>
 </tr>
 <tr >
@@ -126,18 +118,10 @@ url: /pcb-design/component-packages/uqfn-component-package
 </tbody>
 </table>
 
-
 # Comments
-
-
-
 
 An ultra-thin QFN package. Commonly used for packaging 4 or 5 [TVSdiodes](http://localhost/?q=node/28) together.
 
-
-
-
 # 3D Renders
-
 
 {{< figure src="/images/2015/04/uqfn-28-component-package-3d-render.jpg" width="313px" caption="A 3D render of the UQFN-28 component package."  >}}
