@@ -1,10 +1,11 @@
+{{/* USED FOR POSTS */}}
 {{ define "header" }}
    {{/* We can override any block in the baseof file be defining it in the template */}}
   {{ partial "page-header.html" . }}
 {{ end }}
 
 {{ define "main" }}
-    {{ $section := .Site.GetPage "section" .Section }}
+    {{ $section := .Site.GetPage "section" .Section }}    
     <article>
 
     <header class="mt4 w-100">

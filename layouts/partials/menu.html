@@ -1,10 +1,12 @@
 <ul class="menu">
-    {{ with .Site.GetPage "/pages" }}
+    {{ with .Site.GetPage "/" }}
         {{ range .Sections.ByTitle }}
-            <li class="dropdown">
-                <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div><div class="right-arrow">▶</div></a>
-                {{ partial "recursive_menu.html" . }}
-            </li>
+            {{ if ne .Title "Posts" }}
+                <li class="dropdown">
+                    <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div><div class="right-arrow">▶</div></a>
+                    {{ partial "recursive_menu.html" . }}
+                </li>
+            {{ end }}
         {{ end }}
     {{ end }}
     {{ with .Site.GetPage "/posts" }}

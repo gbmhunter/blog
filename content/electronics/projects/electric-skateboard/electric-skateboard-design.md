@@ -137,13 +137,13 @@ Table showing the calculations for working out the maximum and minimum rpm of th
 
 The power requirements of the circuits and motor determine the run time of both the skateboard unit and the remote control. They also determine the size and complexity of the power circuitry. Larger power requirements demands larger heatsinks, or better efficiency voltage conversion circuitry (e.g. a simple and cheap inefficient linear voltage regulator versus a more complex but efficient switch-mode power supply).
 
-### Skateboard Power Requirements
+## Skateboard Power Requirements
 
 The skateboard power is largely used by the 800W (max) motor. A small amount will be taken up the LED lighting (both front/rear and skirting lights), a smaller amount by the comms, and a tiny amount by the micro-controller itself. A breakdown of the power usage is below:
 
 The battery voltage is nominally 48V, although this can be as high as 53V and as low as 42V depending on the charge. This is dropped down to 12V by a switch-mode power supply for the lights. Two linear voltage regulators drop the voltage even further to 3.3V for the digital circuitry.
 
-### Remote Power Requirements
+## Remote Power Requirements
 
 The remote uses far less power than the board, and is largely consumed by the comms and leds. The remote is powered from a 9V Ni-MH battery with a capacity of 180mAh (I'm hoping to get some higher capacity 300mAh battery as the run time is currently only about an hour). This is dropped down to 3.3V by a linear voltage regulator to power all of the circuity.
 

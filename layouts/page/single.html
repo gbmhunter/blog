@@ -1,3 +1,4 @@
+{{/* USED FOR ALL NON INDEX.md PAGES */}}
 {{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
 {{ define "main" }}
   <div class="flex-l mt2 mw8 center">
@@ -12,6 +13,8 @@
         </h1>
       </header>
       <div class="nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray content">
+        <h1>Contents</h1>
+        {{ .TableOfContents }}
         {{ .Content }}
       </div>
       {{ template "_internal/disqus.html" . }}
