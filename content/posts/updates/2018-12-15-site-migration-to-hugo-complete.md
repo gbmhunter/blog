@@ -2,6 +2,7 @@
 title: "Site Migration To Hugo Complete"
 date: 2018-12-15
 type: post
+draft: true
 ---
 
 The migration of blog.mbedded.ninja from Wordpress to Hugo is complete!
