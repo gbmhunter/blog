@@ -9,5 +9,9 @@ pluralizelisttitles = "false"
 pygmentsCodeFences = "true"
 disqusShortname = "blog-mbedded-ninja"
 
+[params]
+    author = "Geoffrey Hunter"
+    description = "An embedded engineering site that's got your back."
+
 [blackfriday]
 fractions = false
