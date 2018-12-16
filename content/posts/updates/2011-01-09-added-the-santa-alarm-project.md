@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-01-09 05:07:46+00:00
+date: 2011-01-09
 draft: false
 title: Added The Santa Alarm Project
 type: post
@@ -13,9 +13,8 @@ tags:
 - santa alarm
 ---
 
-Added [Santa Alarm](/electronics/projects/santa-alarm) project! My solution to early mornings...
+Added the [Santa Alarm](/electronics/projects/santa-alarm) project! My solution to early mornings...
 
+{{< figure src="/images/electronics-santa-alarm/santa_alarm_09.jpg" >}}
 
-{{< figure src="http://geoweb.hostei.com/electronics/projects/santa_alarm/images/santa_alarm_09.jpg"   >}}
-
-Added more information on interrupts in C. Not that exciting I know, but useful!
+Also, I added more information on interrupts in C. Not that exciting I know, but useful!
