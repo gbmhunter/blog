@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-11-22 21:36:23+00:00
+date: 2012-11-22
 draft: false
 title: RFID
 type: page
@@ -139,7 +139,7 @@ There are apparel label categories that tags can be certified for, these are:
 
 Murata makes a [MAGICSTRAP chip](http://www.murataamericas.com/rfid), which is a passive RFID device designed to be soldered onto a PCB for circuit board tracking and inventory management. The antenna is etched onto the PCB, and sections of the antenna make up the pads in which the chip is soldered to. It operates in the UHF band, and a 4-6m range is possible.
 
-{{< figure src="/images/2012/11/murata-magic-strap-uhf-rfid-chip-on-pcb.jpg" width="401px" caption="http://www.murata.eu/news/en/pr/pcb-mounted-rfid-tag-solution-from-MUR247."  >}}
+{{< figure src="/images/2012/11/murata-magic-strap-uhf-rfid-chip-on-pcb.jpg" width="401px" caption="Image from http://www.murata.eu/news/en/pr/pcb-mounted-rfid-tag-solution-from-MUR247."  >}}
 
 # **Inlays/Labels**
 
@@ -262,7 +262,6 @@ It is a computer program, that when connected with standard RFID hardware, can r
 # Manufacturers/Suppliers
 
 You can use [www.veryfields.net](http://www.veryfields.net/) to do a parametric search for RFID tags. They require you to register to do search with all of the parameters, but registration is free.
-
 
 > VeryFields is the world’s largest showcase of RFID tags and provide RFID professionals with the best search tool for finding the best RFID tags for their needs.
 
