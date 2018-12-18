@@ -1,9 +1,10 @@
----
-title: "Site Migration To Hugo Complete"
-date: 2018-12-15
-type: post
-draft: true
----
++++
+title = "Site Migration To Hugo Complete"
+date = "2018-12-15"
+type = "post"
+draft = true
+tags = [ "blog", "hugo", "wordpress", "migration", "cms", "static site generation", "gatsby", "export", "menu", "partials", "layout" ]
++++
 
 The migration of blog.mbedded.ninja from Wordpress to Hugo is complete!
 
@@ -13,11 +14,11 @@ My site has been powered for the last X years by Wordpress. Wordpress is a great
 
 # Benefits
 
-* I can now write content using Markdown in a local code editor, rather than Wordpresses browser-based WSIWYG editor (I was using TinyMCE). 
-* Easier/more reliable update/version tracking of the website. The entire site content is contained within a single Git repository (see XXX if you are interested) (which is acessible locally), rather than spread across hosted php/html files and a Wordpress database. No more need to exporting the entire database/public_html directory once per month and saving to the cloud for backup purposes.
+* I can now write content using Markdown in a local code editor, rather than Wordpress's browser-based WSIWYG editor (I was using TinyMCE). 
+* Easier/more reliable update/version tracking of the website. The entire site content is contained within a single Git repository (see XXX if you are interested) (which is accessible locally), rather than spread across hosted php/html files and a Wordpress database. No more need to exporting the entire database/public_html directory once per month and saving to the cloud for backup purposes.
 * The content being local also gives me the ability to do site-wide text-based find/replace operations, or write scripts for more advanced manipulation/update features.
 * Faster load times. Because the content is generated statically, page load times should be much faster than when running Wordpress (even with the use of good Wordpress caching plugins).
-* Higher security. It unsurprizengly hard to hack a simple file server that does not run any custom server side code or plugins.
+* Higher security. It unsurprisingly hard to hack a simple file server that does not run any custom server side code or plugins.
 * Lower maintenance. I will no longer fear visiting my site one day to find it completely "borked", with some arcane Wordpress PHP error that takes days to resolve (this has happened many times in the past). This is also a big risk when updating plugins. 
 
 # Hugo vs. Gatsby
@@ -28,7 +29,7 @@ Being that Hugo is a single compiled executable, there is no dependency issues y
 
 # SEO
 
-
+Hopefully one of the big improvements to the site's SEO will be from the speed increases (see the Speed section below).
 
 # Speed
 
@@ -41,4 +42,79 @@ After moving to Hugo, I saw a huge increase in page load time performance. Load 
 **Hugo:**
 
 {{< figure src="/images/posts/2018-12-15-site-migration-to-hugo-complete/hugo-homepage-page-speed.png" width="500px" >}}
+
+# Difficulties
+
+## Wordpress Export
+
+Given my blog has over 1000 pages and posts (combined), I did not want to migrate from Wordpress to hugo solely by hand. To help, I employed the use of the an exporter. I first tried [Schumacher/wordpress-to-hugo-exporter](https://github.com/SchumacherFM/wordpress-to-hugo-exporter), but I did not have any luck with it (I did not get any output or sign that it completed, it might of ran into memory/performance issues due to the size of the blog). I instead had success with [exitwp-for-hugo](https://github.com/wooni005/exitwp-for-hugo). This exporter ran locally on an exported .xml file of Wordpress, and so was less likely to run into memory/performance issues.
+
+As to be expected, the exporter got me 90% of the way (in terms of content migration), but the remaining 10% still took many weekend worth of work to complete. The exporter did not handle images, and so I ended up writing a script to deal with the issue. For the first few years that I was running Wordpress, I used the NextGEN gallery plugin to manage images. However, I switched to using the built in media manager after I discovered how much easier it was to drop an image into the current post or page. This meant that hundred of images appeared as `[singlepic]` tags in the markdown files that exitwp-for-hugo created.
+
+I wrote a script to scan the markdown files, looking for `[singlepic]` tags. When the script finds one, it then makes a request to the Wordpress blog and downloads the HTML for the Wordpress page that the markdown was generated from. It then scans this HTML for the image element in the DOM associated with the `[singlepic]`. It then extracts the Wordpress URL for the image, and downloads the image into the `static/images/` directory in Hugo. Finally, it replaces the `[singlepic]` tag with the appropriate markdown that points tot he local image path.
+
+I also added caching of both the HTML and downloaded image so that I didn't have to download the HTML twice for two separate images that were on the same page, and so that I didn't download the image multiple times when that image was used more than once on the blog. Even with the caching, this script took many hours to run.
+
+## Nested Menu Structure
+
+I wanted to recreate the nested menu structure I had on while running on Wordpress. All of this blog's pages are organized in a giant hierarchal structure. The top-level pages are displayed as first-level menu items. Then all child pages are displayed under that as sub-menu items. Then all the child's child pages are displayed under that as sub-sub menu items, e.t.c.
+
+I managed to recreate this by creating menu **layout partials** in Hugo that uses **recursion**. This works because I have structured the markdown into hierarchal **sections** (another Hugo concept).
+
+**menu.html:**
+
+```html
+<ul class="menu">
+    {{ with .Site.GetPage "/" }}
+        {{ range .Sections.ByTitle }}
+            {{ if ne .Title "Posts" }}
+                <li class="dropdown">
+                    <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div><div class="right-arrow">▶</div></a>
+                    {{ partial "menu_recursive.html" . }}
+                </li>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+    {{ with .Site.GetPage "/posts" }}
+        <li class="dropdown">
+            <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div></a>
+        </li>
+    {{ end }}
+</ul>
+```
+
+Above, there is some conditional logic to not include the `posts/` content mixed in with all the page content. Instead, `posts/` is added at the bottom of the menu manually.
+
+**menu_recursive.html:**
+
+```html
+{{ if or (.Sections) (.Pages) }}
+    <ul class="submenu">
+        {{ range .Sections.ByTitle }}
+            <li class="dropdown">
+                <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div><div class="right-arrow">▶</div></a>
+                {{ partial "menu_recursive.html" . }}
+            </li>
+        {{ end }}
+        {{ range .Pages.ByTitle }}
+            <li>
+                <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div></a>
+                {{ partial "menu_recursive.html" . }}
+            </li>
+        {{ end }}
+    </ul>
+{{ end }}
+```
+
+## General Layout/Theming
+
+I wanted to keep appearance of the Hugo generated site to be very similar to the current Wordpress look (I am using a custom theme in Wordpress that is built upon the [Wordpress TwentyFifteen theme](https://en-ca.wordpress.org/themes/twentyfifteen/)). I initially chose the Hugo anake theme when I was beginning the migration, and after learning more about how the theme works, decided to write my own (they aren't that tricky).
+
+At the point that I migrated to Hugo, my Wordpress blog homepage looked like:
+
+WORDPRESS LOOKS LIKE
+
+And now the Hugo-generated blog homepage looks like:
+
+HUGO LOOKS LIKE
 

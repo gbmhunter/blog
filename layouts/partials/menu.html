@@ -4,7 +4,7 @@
             {{ if ne .Title "Posts" }}
                 <li class="dropdown">
                     <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div><div class="right-arrow">▶</div></a>
-                    {{ partial "recursive_menu.html" . }}
+                    {{ partial "menu_recursive.html" . }}
                 </li>
             {{ end }}
         {{ end }}

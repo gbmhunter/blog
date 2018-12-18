@@ -9,7 +9,7 @@ url: /programming/languages/python/matplotlib
 
 # Two Y-Axis Example
 
-```python
+```py
 import matplotlib.pyplot as plt
 import numpy as np
 
