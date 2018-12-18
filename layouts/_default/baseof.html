@@ -59,6 +59,10 @@
         {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
             {{ template "_internal/google_analytics_async.html" . }}
         {{ end }}
+
+        <!-- MAIN STYLING SCRIPT FOR THIS SITE -->
+        <!-- Make sure this is loaded in the head so that the browser does not render twice -->
+        <link rel="stylesheet" href="/css/style.css"/>
     </head>
 
     <body class="ma0 {{ $.Param "body_classes"  | default "avenir bg-near-white"}}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
