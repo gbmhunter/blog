@@ -15,3 +15,4 @@ disqusShortname = "blog-mbedded-ninja"
 
 [blackfriday]
 fractions = false
+extensionsmask = ["autolink"] # Prevent naked URL from being converted into links, as this creates problems when the are URLs in figure captions.
