@@ -47,6 +47,10 @@ This blog started of called "Kaboom Pyrotechnics". And yup, you guessed it, it s
 
 * Name: mbedded.minja
 * URL: www.mbedded.ninja  
+
+## 2015: Updated To The Wordpress TwentyFifteen Theme
+
+<div style='position:relative; padding-bottom:48.37%'><iframe src='https://gfycat.com/ifr/EnlightenedInferiorBluegill' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
   
 ## 2017-03: Blog Moved To Subdomain blog.mbedded.ninja
 
@@ -65,6 +69,8 @@ Hosted By: GoDaddy (shared Linux hosting)
 Migrated from Wordpress (full-blown CMS) to Hugo (static-site generator). The GitHub repo that the site is generated from can be found at [https://github.com/gbmhunter/blog](https://github.com/gbmhunter/blog).
 
 {{< figure src="/images/pages/site-info/hugo-homepage.png" caption="The homepage just after migrating to Hugo in December 2018." width="700px" >}}
+
+<div style='position:relative; padding-bottom:48.37%; margin-top: 40px;'><iframe src='https://gfycat.com/ifr/MassiveHappygoluckyAntarcticgiantpetrel' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
 
 A full post with more information on this migration can be found [here](/posts/updates/2018-12-15-site-migration-to-hugo-complete.md).
 
