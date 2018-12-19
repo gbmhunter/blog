@@ -8,6 +8,7 @@ sectionPagesMenu = "main"
 pluralizelisttitles = "false"
 pygmentsCodeFences = "true"
 disqusShortname = "blog-mbedded-ninja"
+googleAnalytics = "UA-92834105-2"
 
 [params]
     author = "Geoffrey Hunter"
