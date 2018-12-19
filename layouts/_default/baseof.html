@@ -85,5 +85,8 @@
                 {{ block "scripts" . }}{{ partial "site-scripts.html" . }}{{ end }}
             </div>
         </div>
+        {{ partial "mathjax-markdown-solution.html" . }}
+        <!-- LOAD LIGHTBOX FOR IMAGES -->
+        {{ partial "load-photoswipe.html" . }}
   </body>
 </html>
