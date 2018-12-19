@@ -2,8 +2,8 @@
 title = "Site Migration To Hugo Complete"
 date = "2018-12-15"
 type = "post"
-draft = true
-tags = [ "blog", "hugo", "wordpress", "migration", "cms", "static site generation", "gatsby", "export", "menu", "partials", "layout" ]
+draft = false
+tags = [ "blog", "hugo", "wordpress", "migration", "cms", "static site generation", "gatsby", "export", "menu", "partials", "layout", "disqus", "vglnk", "page speed", "seo" ]
 +++
 
 The migration of blog.mbedded.ninja from Wordpress to Hugo is complete!
@@ -11,12 +11,6 @@ The migration of blog.mbedded.ninja from Wordpress to Hugo is complete!
 {{< figure src="/images/posts/2018-12-15-site-migration-to-hugo-complete/wordpress-to-hugo.png" width="500px" >}}
 
 My site has been powered for the last X years by Wordpress. [Wordpress](https://wordpress.org/) is a great CMS (content management system) which runs on a server (I have been paying for hosting through GoDaddy). However, it was time to move to a static website generator, and I choose [Hugo](https://gohugo.io/). Read on for more details...
-
-# Hugo vs. Gatsby
-
-I had a hard decision choosing Hugo over another static site generator such as Gatsby (which is node/React based). Hugo seemed to have a gentler learning curve, but is not as flexible. Hugo provides a HTML templating engine, and while you have access to code elements in the templates, you don't have the full power of javascript and the npm ecosystem behind you. I liked the idea of being able to use React components in Gatsby, but was turned away by the GraphQL syntax in Gatsby used to retrieve data.
-
-Being that Hugo is a single compiled executable, there is no dependency issues you have to worry about. Compare that to when you install the Gatsby [gatsby-starter-blog](https://github.com/gatsbyjs/gatsby-starter-blog), which has around 1500 dependencies (which is rather typical of npm)! Sometimes npm native modules will fail to compile, and in general, the setup is just easier with Hugo. This however as a downside for Hugo, you can't just write a plugin to expand the functionality, with Hugo the code is written in Go and compiled into a binary.
 
 # The Benefits
 
@@ -26,6 +20,12 @@ Being that Hugo is a single compiled executable, there is no dependency issues y
 * Faster load times. Because the content is generated statically, page load times should be much faster than when running Wordpress (even with the use of good Wordpress caching plugins).
 * Higher security. It unsurprisingly hard to hack a simple file server that does not run any custom server side code or plugins.
 * Lower maintenance. I will no longer fear visiting my site one day to find it completely "borked", with some arcane Wordpress PHP error that takes days to resolve (this has happened many times in the past). This is also a big risk when updating plugins. 
+
+# Hugo vs. Gatsby
+
+I had a hard decision choosing Hugo over another static site generator such as Gatsby (which is node/React based). Hugo seemed to have a gentler learning curve, but is not as flexible. Hugo provides a HTML templating engine, and while you have access to code elements in the templates, you don't have the full power of javascript and the npm ecosystem behind you. I liked the idea of being able to use React components in Gatsby, but was turned away by the GraphQL syntax in Gatsby used to retrieve data.
+
+Being that Hugo is a single compiled executable, there is no dependency issues you have to worry about. Compare that to when you install the Gatsby [gatsby-starter-blog](https://github.com/gatsbyjs/gatsby-starter-blog), which has around 1500 dependencies (which is rather typical of npm)! Sometimes npm native modules will fail to compile, and in general, the setup is just easier with Hugo. This however as a downside for Hugo, you can't just write a plugin to expand the functionality, with Hugo the code is written in Go and compiled into a binary.
 
 # SEO
 
@@ -118,11 +118,19 @@ And now the Hugo-generated blog homepage looks like:
 
 <div style='position:relative; padding-bottom:48.37%; margin-top: 40px;'><iframe src='https://gfycat.com/ifr/MassiveHappygoluckyAntarcticgiantpetrel' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
 
+Quite similar right?
+
 # Consistent Page URLs
 
 I tried hard to keep all page URLs identical during this migration, as any change would have a significant impact on SEO and reduce the number of visitors/day (I found this out the hard way when I migrated from my previous domain to blog.mbedded.ninja).
 
 I'm pleased to say that all page URLs should be the same. Post URLs have changed, however I don't think this is nearly as important because the posts on this blog are more about updates than actual content that users will want to visit (posts do not feature in the most visited pages).
+
+# Weird vglnk Behaviour
+
+I noticed that URLs that were embedded within image captions were getting corrupted. This was occuring about 1s after the initial page load. On inspection of the HTML elements, I noticed that the URL had been broken up into many small `<span>` elements, and that each one of these elements had been assigned the class `vglnk`. After a bit of Googling, I realized that the Disqus plugin (for commenting) was causing this. To fix this, I had to disable *Tracking* and *Affiliate links* in the *Advanced* section of the Disqus config, as shown below:
+
+{{< figure src="/images/posts/2018-12-15-site-migration-to-hugo-complete/disqus-admin-vglnk-url-corruption.png" width="500px" caption="The two checkboxes I had to disable in my Disqus settings to prevent Disqus from corrupting URLs on the rest of the page, and adding vglnk classes." >}}
 
 # DNS Updates
 
@@ -141,3 +149,11 @@ The following DNS changes were made on my GoDaddy account:
 * Name: blog
 * Value: blog-mbedded-ninja.netlify.com
 * TTL: 1 hour
+
+# Mobile Compatibility
+
+Currently, this site is not mobile compatible (what is called *responsive*). This is what the homepage currently looks like when rendered on a cellphone.
+
+{{< figure src="/images/posts/2018-12-15-site-migration-to-hugo-complete/mbedded-ninja-homepage-mobile-device.png" width="400px" caption="This is what the blog.mbedded.ninja homepage currently looks like when rendered on a cellphone. Urgh..." >}}
+
+Hopefully I can fix this soon!
