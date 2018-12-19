@@ -235,7 +235,7 @@ body {
 
 .inner-right-column {
     width: 90%;
-    max-width: 800px;
+    max-width: 900px;
     margin-top: 5%;
     background-color: white;
 
@@ -248,7 +248,7 @@ body {
 
 /* Padding between border of right-hand inner column and content */
 main {
-    padding: 50px;
+    padding: 80px;
 }
 
 .homepage-post-content {
@@ -258,6 +258,13 @@ main {
 /* ========================================================================= */
 /* IMAGE STYLING                                                             */
 /* ========================================================================= */
+
+figure {
+    /* Setting these margins to 0 fixes the issue where the user agent stylesheet would set them to
+    40px and prevent the images for spanning the entire width of the content div */
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
 
 figure img {
     width: 100%; /* Force images to stay within the confines of the parent container */

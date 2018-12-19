@@ -10,12 +10,12 @@ The migration of blog.mbedded.ninja from Wordpress to Hugo is complete!
 
 {{< figure src="/images/posts/2018-12-15-site-migration-to-hugo-complete/wordpress-to-hugo.png" width="500px" >}}
 
-My site has been powered for the last X years by Wordpress. [Wordpress](https://wordpress.org/) is a great CMS (content management system) which runs on a server (I have been paying for hosting through GoDaddy). However, it was time to move to a static website generator, and I choose [Hugo](https://gohugo.io/). Read on for more details...
+My site has been powered for the last 7 years by Wordpress (see [Site Info](/site-info) for an entire history of this blog). [Wordpress](https://wordpress.org/) is a great CMS (content management system) which runs on a server (I have been paying for hosting through GoDaddy). However, it was time to move to a static website generator, and I choose [Hugo](https://gohugo.io/). Read on for more details...
 
 # The Benefits
 
 * I can now write content using Markdown in a local code editor, rather than Wordpress's browser-based WSIWYG editor (I was using TinyMCE). 
-* Easier/more reliable update/version tracking of the website. The entire site content is contained within a single Git repository (see XXX if you are interested) (which is accessible locally), rather than spread across hosted php/html files and a Wordpress database. No more need to exporting the entire database/public_html directory once per month and saving to the cloud for backup purposes.
+* Easier/more reliable update/version tracking of the website. The entire site content is contained within a single Git repository (see [https://github.com/gbmhunter/blog](https://github.com/gbmhunter/blog) if you are interested) (which is accessible locally), rather than spread across hosted php/html files and a Wordpress database. No more need to exporting the entire database/public_html directory once per month and saving to the cloud for backup purposes.
 * The content being local also gives me the ability to do site-wide text-based find/replace operations, or write scripts for more advanced manipulation/update features.
 * Faster load times. Because the content is generated statically, page load times should be much faster than when running Wordpress (even with the use of good Wordpress caching plugins).
 * Higher security. It unsurprisingly hard to hack a simple file server that does not run any custom server side code or plugins.
