@@ -31,6 +31,7 @@ No. of Flip-flops:  3
 1-Bit Outputs: 3  
 
 Tested On:
+
 * Simulation: Yes ([CEDAR Logic Simulator](http://sourceforge.net/projects/cedarlogic/))
 * Hardware: Yes
 
@@ -51,13 +52,14 @@ $$</div>
 ## 3-Bit Grey Encoded Counter
 
 Category: Counter  
- Expression Style: Sum of Products  
- No. of Gates: 14  
- No. of Flip-flops: 3  
- 1-Bit Inputs: 2 + reset  
- 1-Bit Outputs: 3  
+Expression Style: Sum of Products  
+No. of Gates: 14  
+No. of Flip-flops: 3  
+1-Bit Inputs: 2 + reset  
+1-Bit Outputs: 3  
 
- Tested On:
+Tested On:
+
 * Simulation: Yes ([CEDAR Logic Simulator](http://sourceforge.net/projects/cedarlogic/))
 * Hardware: Yes
 

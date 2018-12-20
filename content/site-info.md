@@ -14,9 +14,11 @@ title: Site Info
 * Hosted by: Inspire Net (free)  
 * Powered By: Plain HTML
 
-This blog started of called "Kaboom Pyrotechnics". And yup, you guessed it, it solely contained information on how to make fireworks.
+This blog started of called "Kaboom Pyrotechnics". And yup, you guessed it, it solely contained information on how to make fireworks. It was intially designed in [Microsoft Front Page](https://en.wikipedia.org/wiki/Microsoft_FrontPage) and then in [Dreamweaver](https://en.wikipedia.org/wiki/Adobe_Dreamweaver). These were both WYSIWYG editors!
 
 {{< figure src="/images/pages/site-info/geoweb-homepages-inspire-net-nz.png" caption="The homepage of the original blog back in 2004."  width="700px" >}}
+
+Yes and that is a `<marquee>` HTML element right underneath the main image there, I was so classy back then.
 
 ## 2010: Blog Renamed geoWeb, Moved Hosting  
 
@@ -41,6 +43,8 @@ This blog started of called "Kaboom Pyrotechnics". And yup, you guessed it, it s
 
 ## April 2013: Background Darkened
 
+This is when I switched from using a light theme to a dark theme.
+
 {{< figure src="/images/misc/cladlabs-background-changed-to-black.png" caption="The CladLabs background has been changed to a dark, dark grey (April 2013)."  width="700px" >}}
 
 ## 2014: Blog Renamed To mbedded.ninja
@@ -55,9 +59,9 @@ This blog started of called "Kaboom Pyrotechnics". And yup, you guessed it, it s
 ## 2017-03: Blog Moved To Subdomain blog.mbedded.ninja
 
 * Name: mbedded.ninja
-* URL: blog.mbedded.ninja  
-
-Hosted By: GoDaddy (shared Linux hosting)
+* URL: blog.mbedded.ninja
+* Hosted By: GoDaddy (shared Linux hosting)
+* Powered By: Wordpress
 
 ## 2017-12: Blog Moved From Wordpress To Hugo
 
