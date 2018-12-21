@@ -122,8 +122,8 @@ Bazel seems to have first tier build support for C/C++, Java, Android and iOS.
             <td><a href="https://buckbuild.com/setup/getting_started.html">Although the documentation is quite comprehensive</a>, Buck is still young at it can be difficult to find solutions to problems on places such as StackOverflow. It does have over 5.5k stars on GitHub!</td>
         </tr>
         <tr>
-            <td>TOTAL</td>
-            <td>7/10</td>
+            <td><b>TOTAL</b></td>
+            <td><b>7/10</b></td>
             <td>A relatively new, cross-platform, multi-language build system that has a promising future.</td>
         </tr>
     </tbody>
@@ -182,8 +182,8 @@ Unfortunately, I do not believe that Buckaroo supports local dependencies. All d
             <td>CMake has become the defacto standard for newer C++/C projects.</td>
         </tr>
         <tr>
-            <td>TOTAL</td>
-            <td>7/10</td>
+            <td><b>TOTAL</b></td>
+            <td><b>7/10</b></td>
             <td>Definitely a build system I would recommend!</td>
         </tr>
     </tbody>
@@ -247,8 +247,8 @@ For more information on CMake, see the [dedicated CMake section of mbedded.ninja
             <td>With over 1.6k stars on GitHub, and fairly comprehensive documentation, Conan has a large number of users (although Buck has more).</td>
         </tr>
         <tr>
-            <td>TOTAL</td>
-            <td> ?</td>
+            <td><b>TOTAL</b></td>
+            <td><b>8/10</b></td>
             <td></td>
         </tr>
     </tbody>
@@ -301,8 +301,8 @@ When used with CMake, Conan can take over the responsibility of what is traditio
             <td>Makefiles, being one of the oldest build systems still in popular use, has plenty of online resources!</td>
         </tr>
         <tr>
-            <td>TOTAL</td>
-            <td>3/10</td>
+            <td><b>TOTAL</b></td>
+            <td><b>3/10</b></td>
             <td></td>
         </tr>
     </tbody>
@@ -352,14 +352,14 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
             <td></td>
         </tr>
         <tr>
-            <td>TOTAL</td>
-            <td>4/10</td>
+            <td><b>TOTAL</b></td>
+            <td><b>4/10</b></td>
             <td></td>
         </tr>
     </tbody>
 </table>
 
-Scons is a build tool, with no real package management features. The technical limitations of scons starts to make the scripts complex when it comes to local builds with multiple dependencies and local install paths.
+SCons is a build tool, with no real package management features. The technical limitations of SCons starts to make the scripts complex when it comes to local builds with multiple dependencies and local install paths.
 
 # Examples
 
