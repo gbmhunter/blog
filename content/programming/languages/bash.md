@@ -118,3 +118,20 @@ cd `pwd`
 ```
 
 The works by re-entering a directory with the same path as the old one you are currently in.
+
+# Command Substitution
+
+You can use `` ` `` (backticks) or `$()` for command substitution. For example:
+
+```sh
+A=`ls .`
+```
+
+The above command will store the output of the command `ls .` (which will be a list of the contents of the current directory) into the variable `A`. It will not print the output of `ls` to the console (as it usually would). Now if we went:
+
+```sh
+echo $A
+# <contents of dir will be printed here>
+```
+
+It is recommended that you use the `$()` syntax rather than `` ` ``, as `$()` is standardized by POSIX and should work for most shells.

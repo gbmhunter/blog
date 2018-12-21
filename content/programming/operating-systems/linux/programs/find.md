@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2014-01-05 20:05:42+00:00
+date: 2014-01-05
 draft: false
 title: find
 type: page
@@ -13,7 +13,17 @@ url: /programming/operating-systems/linux/programs/find
 
 By default, `find` is recursive. It searches from the specified directory and looks in all sub-directories.
 
-The search pattern uses glob-style pattern matching.
+By default, the search pattern uses glob-style pattern matching (not regex).
+
+# Find File By Name
+
+A common use case is using `find` to find files which match a specifc glob pattern. For example, if you wanted to find all C++ header files (`.hpp`) in the current directory and all subdirectories (remember, `find` is recursive by default), you would use:
+
+```sh
+$ find . -name '*.cpp'
+```
+
+You have to provide the `*` at the start because find matches against the whole path (it doesn't allow partial matches).
 
 # Multiple Patterns
 
@@ -22,8 +32,36 @@ You can provide find with multiple patterns by using the `-o` option.
 The following example looks for all files with the `.cpp` or `.hpp` file extension in the current directory.
 
 ```sh    
-find . -name "*.cpp" -o -name "*.hpp"
+$ find . -name "*.cpp" -o -name "*.hpp"
 ```    
+
+# Find In Path
+
+The `-name` option only searches in the filename, but not the path in which the file sits. If you want to find matches against the path, use the `-path` option instead. The following example will find all paths that contain the string `image`:
+
+```sh
+$ find . -path '*image*'
+```
+
+Note that the path includes the filename, so you'll find matches in the file name also. Replace `-path` with `-ipath` to make the pattern case insensitive.
+
+As far as I know, the `-wholename` option is identical to `-path`. I believe `-path` is more portable, being part of the POSIX 2008 standard.
+
+# Using Regex
+
+You can use the `-regex` flag to use regex search patterns instead of glob. For example, to find all images in your current directory that have a filename made of numbers, you could use:
+
+```sh
+$ find . -regex '\./[0-9]+\.jpg'
+```
+
+Note that `find` always lists files in the current directory with `./` at the start.
+
+By default, `find` uses emacs style regex, which have different escaping rules than the usual egrep regex. Weirdly, on Mac I could not get the `+` operator (match one or more of the preceeding item) to work. I had to add `-E` (the `-E` tells find to use extended regex):
+
+```sh
+$ find . -regex '\./[0-9]+\.jpg' -E
+```
 
 # Combining With sed
 
