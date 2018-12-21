@@ -25,6 +25,12 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 
 # Bazel
 
+{{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/bazel-build-system-logo.png" width="150px" >}}
+
+* Website: [https://bazel.build/](https://bazel.build/)
+* Code: [https://github.com/bazelbuild/bazel](https://github.com/bazelbuild/bazel)
+* Slogan: 
+
 <table>
     <tbody>
         <tr>
@@ -58,9 +64,9 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
             <td>The Bazel community is strong, but is still young compared to other build systems (e.g. make, CMake).</td>
         </tr>
         <tr>
-            <td>TOTAL</td>
-            <td> 7/10</td>
-            <td>_ _</td>
+            <td><b>TOTAL</b></td>
+            <td><b>7/10</b></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -73,7 +79,15 @@ Cross-compilation using Bazel can be difficult (see [https://github.com/bazelbui
 
 As far as I'm aware, Bazel does not have the install functionality that build systems such as make and CMake have. The is no way to "install" the build executables, libraries and header files onto the system, be it the typically install locations (such as `/usr/local/bin`, `/usr/local/lib`, e.t.c. on Linux) or a custom install directory.
 
+Bazel seems to have first tier build support for C/C++, Java, Android and iOS.
+
 # Buck
+
+{{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/buck-build-system-logo.png" width="150px" >}}
+
+* Website: [https://buckbuild.com/](https://buckbuild.com/)
+* Code: [https://github.com/facebook/buck](https://github.com/facebook/buck)
+* Slogan: *A high-performance build tool*
 
 <table>
     <tbody>
@@ -87,7 +101,7 @@ As far as I'm aware, Bazel does not have the install functionality that build sy
             <td>6/10</td>
             <td>Buck does not support the downloading of pre-built binary assets, everything must be built from source. However, Buck seems to have good support for locally built dependencies.</td>
         </tr>
-        <tr >
+        <tr>
             <td>Platform Support</td>
             <td>7/10</td>
             <td>(Linux, macOS, Windows). Buck can be tricky to install on Windows and Linux (well supported on macOS via homebrew).</td>
@@ -100,16 +114,16 @@ As far as I'm aware, Bazel does not have the install functionality that build sy
         <tr>
             <td>Scalability/Speed</td>
             <td>9/10</td>
-            <td>Buck is designed to be fast. [It even attempts to work out what dependency headers to use](https://buckbuild.com/concept/what_makes_buck_so_fast.html), and only recompile if these change. Going hand-in-hand with Buck speed, it was designed from the start to be highly scalable.</td>
+            <td>Buck is designed to be fast. <a href="https://buckbuild.com/concept/what_makes_buck_so_fast.html">It even attempts to work out what dependency headers to use</a>, and only recompile if these change. Going hand-in-hand with Buck speed, it was designed from the start to be highly scalable.</td>
         </tr>
-        <tr>r
+        <tr>
             <td>Community</td>
-            <td> 6/10</td>
-            <td>[Although the documentation is quite comprehensive](https://buckbuild.com/setup/getting_started.html), Buck is still young at it can be difficult to find solutions to problems on places such as StackOverflow. It does have over 5.5k stars on GitHub!</td>
+            <td>6/10</td>
+            <td><a href="https://buckbuild.com/setup/getting_started.html">Although the documentation is quite comprehensive</a>, Buck is still young at it can be difficult to find solutions to problems on places such as StackOverflow. It does have over 5.5k stars on GitHub!</td>
         </tr>
         <tr>
             <td>TOTAL</td>
-            <td> 7/10</td>
+            <td>7/10</td>
             <td>A relatively new, cross-platform, multi-language build system that has a promising future.</td>
         </tr>
     </tbody>
@@ -117,11 +131,23 @@ As far as I'm aware, Bazel does not have the install functionality that build sy
 
 # Buckaroo
 
+{{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/buckaroo-package-manager-logo.png" width="150px" >}}
+
+* Website: [https://buckaroo.pm/](https://buckaroo.pm/)
+* Code: [https://github.com/LoopPerfect/buckaroo](https://github.com/LoopPerfect/buckaroo)
+* Slogan: *A C++ package manager that will take you to your happy place*
+
 Buckaroo is a package manager that uses Buck as the build system.
 
 Unfortunately, I do not believe that Buckaroo supports local dependencies. All dependencies have to come from
 
 # CMake
+
+{{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/cmake-build-system-logo.png" width="150px" >}}
+
+* Website: [https://cmake.org/](https://cmake.org/)
+* Code: [https://gitlab.kitware.com/cmake/cmake](https://gitlab.kitware.com/cmake/cmake)
+* Slogan: *Build with CMake. Build with Confidence.*
 
 <table>
     <tbody>
@@ -143,7 +169,7 @@ Unfortunately, I do not believe that Buckaroo supports local dependencies. All d
         <tr>
             <td>Usability</td>
             <td>5/10</td>
-            <td>CMake can be somewhat easy to use for a self-contained build, but can get rather complex when dealing with dependencies (exporting, supporting find_package, .cmake.in files, e.t.c, see [here](https://cmake.org/cmake/help/git-master/manual/cmake-packages.7.html#creating-packages)).</td>
+            <td>CMake can be somewhat easy to use for a self-contained build, but can get rather complex when dealing with dependencies (exporting, supporting find_package, .cmake.in files, e.t.c, see <a href="https://cmake.org/cmake/help/git-master/manual/cmake-packages.7.html#creating-packages">here</a>.</td>
         </tr>
         <tr>
             <td>Scalability/Speed</td>
@@ -180,8 +206,13 @@ There is an interesting [Hunter package manager](https://github.com/ruslo/hunter
 
 For more information on CMake, see the [dedicated CMake section of mbedded.ninja](/programming/compilers-build-systems/cmake).
 
-
 # Conan
+
+{{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/conan-c-cpp-package-manager-logo.png" width="150px" >}}
+
+* Website: [https://conan.io/](https://conan.io/)
+* Code: [https://github.com/conan-io/conan](https://github.com/conan-io/conan)
+* Slogan: *Conan.io - The open-source C/C++ package manager*
 
 <table>
     <tbody>
@@ -231,6 +262,12 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 
 # Makefiles
 
+{{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/gnu-logo.png" width="150px" >}}
+
+* Website: [https://www.gnu.org/software/make/](https://www.gnu.org/software/make/)
+* Code: [http://savannah.gnu.org/projects/make/](http://savannah.gnu.org/projects/make/)
+* Slogan: *???*
+
 <table>
     <tbody>
         <tr>
@@ -276,6 +313,12 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
 
 # Scons
 
+{{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/scons-build-system.png" width="200px" >}}
+
+* Website: [https://scons.org/](https://scons.org/)
+* Code: [https://github.com/SCons/scons](https://github.com/SCons/scons)
+* Slogan: *A software construction tool.*
+
 <table>
     <tbody>
         <tr>
@@ -286,7 +329,7 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
         <tr>
             <td>Package Functionality</td>
             <td>1/10</td>
-            <td></td>
+            <td>SCons doesn't really have any package management features.</td>
         </tr>
         <tr>
             <td>Platform Support</td>
@@ -320,8 +363,13 @@ Scons is a build tool, with no real package management features. The technical l
 
 # Examples
 
-Each build system has to:
+I tried to do the following for each build system:
 
 * Compile source code into a executable
 * Link a third-party library
 * Install static library (lib file and headers) and executable onto system
+* Run the executable to make sure it works
+
+The minimal code for each platform to do the above can be found at [https://github.com/mbedded-ninja/CppBuildSystemReview](https://github.com/mbedded-ninja/CppBuildSystemReview).
+
+Each sub-directory contains an example for each build system. Each of these sub-directories also contains a bash script you can run for a one-click demo of the build and run process (have a look at the build script to see how it's done!).

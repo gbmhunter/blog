@@ -65,7 +65,7 @@ div.content tr:nth-of-type(odd) {
 
 div.content td {
     text-align: center; /* This messes up list identifiers (e.g. bullet points), so we fix this below */
-    padding: 2px;
+    padding: 10px;
 }
 
 div.content td ul {

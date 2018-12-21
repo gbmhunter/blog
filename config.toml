@@ -3,7 +3,6 @@
 baseURL = ""
 languageCode = "en-us"
 title = "mbedded.ninja"
-#theme = "ananke"
 sectionPagesMenu = "main"
 pluralizelisttitles = "false"
 pygmentsCodeFences = "true"
@@ -15,5 +14,5 @@ googleAnalytics = "UA-92834105-2"
     description = "An embedded engineering site that's got your back."
 
 [blackfriday]
-fractions = false
-extensionsmask = ["autolink"] # Prevent naked URL from being converted into links, as this creates problems when the are URLs in figure captions.
+    fractions = false
+    extensionsmask = ["autolink"] # Prevent naked URL from being converted into links, as this creates problems when the are URLs in figure captions.

@@ -45,4 +45,5 @@ $ hugo
 
 # Recommended VS Code Plugins
 
+* Better TOML
 * Code Spell Checker
