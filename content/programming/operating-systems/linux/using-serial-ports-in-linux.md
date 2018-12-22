@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2014-01-07 08:54:33+00:00
+date: 2014-01-07
 draft: false
 title: Using Serial Ports In Linux
 type: page
@@ -11,33 +11,22 @@ url: /programming/operating-systems/linux/using-serial-ports-in-linux
 
 Serial ports typically show up as files under the /dev/ folder. They are usually prefixed with tty. Common names include:
 
-<table >
-<tbody >
-<tr >
-
-<td >ttyUSB0
-</td>
-
-<td >A common name for a generic USB-to-serial adapter. Most FTDI or Prolific adapters show up with this name.
-</td>
-</tr>
-<tr >
-
-<td >ttyACM0
-</td>
-
-<td >Ardunios show up under this name. ACM stands for "_Abstract Control Model_".
-</td>
-</tr>
-<tr >
-
-<td >ttyS0
-</td>
-
-<td >Some UART ports on SoC devices (such as the Xilinx Zynq) show up with this name.
-</td>
-</tr>
-</tbody>
+<table>
+    <tbody>
+        <tr>
+            <td>ttyUSB0</td>
+            <td>A common name for a generic USB-to-serial adapter. Most FTDI or Prolific adapters show up with this name.</td>
+        </tr>
+        <tr>
+            <td>ttyACM0</td>
+            <td>Ardunios show up under this name. ACM stands for "_Abstract Control Model_".</td>
+        </tr>
+        <tr>
+            <td>ttyS0</td>
+            <td>Some UART ports on SoC devices (such as the Xilinx Zynq) show up with this name.
+        </td>
+        </tr>
+    </tbody>
 </table>
 
 # Changing The Permissions On A Serial Port
