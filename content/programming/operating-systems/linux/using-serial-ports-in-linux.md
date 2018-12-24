@@ -7,35 +7,34 @@ type: page
 url: /programming/operating-systems/linux/using-serial-ports-in-linux
 ---
 
-# Where Do Serial Ports Show Up In Linux?
+## Where Do Serial Ports Show Up In Linux?
 
-Serial ports typically show up as files under the /dev/ folder. They are usually prefixed with tty. Common names include:
+Serial ports typically show up as files under the `/dev/` folder. They are usually prefixed with tty. Common names include:
 
 <table>
     <tbody>
         <tr>
-            <td>ttyUSB0</td>
+            <td><code>ttyUSB0</code></td>
             <td>A common name for a generic USB-to-serial adapter. Most FTDI or Prolific adapters show up with this name.</td>
         </tr>
         <tr>
-            <td>ttyACM0</td>
-            <td>Ardunios show up under this name. ACM stands for "_Abstract Control Model_".</td>
+            <td><code>ttyACM0</code></td>
+            <td>Ardunios show up under this name. ACM stands for "Abstract Control Model".</td>
         </tr>
         <tr>
-            <td>ttyS0</td>
-            <td>Some UART ports on SoC devices (such as the Xilinx Zynq) show up with this name.
-        </td>
+            <td><code>ttyS0</code></td>
+            <td>Some UART ports on SoC devices (such as the Xilinx Zynq) show up with this name.</td>
         </tr>
     </tbody>
 </table>
 
-# Changing The Permissions On A Serial Port
+## Changing The Permissions On A Serial Port
 
 You can change the permissions for a serial port so you don't have to keep using sudo by typing:
 
-```sh    
+```sh
 sudo chmod 666 /dev/ACM0
-```    
+```
 
 where `/dev/ACM0` is the file corresponding to the serial port you wish to control.
 
