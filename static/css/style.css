@@ -139,14 +139,6 @@ pre, .pre {
     overflow:   scroll;
 }
 
-pre code {
-    display: block;
-    padding: 1.5em 1.5em;
-    white-space: pre;
-    font-size: .875rem;
-    line-height: 2;
-}
-
 pre {
     background-color: #222;
     color: #ddd;
@@ -165,6 +157,14 @@ code:not(.has-jax) {
     -webkit-border-radius: 5px; 
     border: 1px solid #BCBEC0;
     padding: 2px;     
+}
+
+pre code:not(.has-jax) {
+    display: block;
+    padding: 1.5em 1.5em;
+    white-space: pre;
+    font-size: .875rem;
+    line-height: 2;
 }
 
 /* ========================================================================= */
