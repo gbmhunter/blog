@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+"""
+This script was written to shift all headings in markdown down one, so h1 -> h2, h2 -> h3, e.t.c.
+
+This is so there is only one <h1> per blog post/page, which is the post/page title, and not the section headings in the markdown.
+
+You have to watch out for matching "#" at the start of a line when it is a python/shell/script comment (i.e. in a code block). We try and prevent this by using the regex below to match a empty line above and below the heading line (code comments will not usually match against this).
+"""
+
 from power_edit import PowerEdit
 
 def main():

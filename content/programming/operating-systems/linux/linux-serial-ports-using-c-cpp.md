@@ -33,15 +33,23 @@ This code is also applicable to C++.
 First we want to include a few things:
 
 ```c
-#include <termios.h> // Contains POSIX terminal control definitions
 #include <fcntl.h> // Contains file controls
+#include <termios.h> // Contains POSIX terminal control definitions
+
 ```
 
 Then we want to open the serial port device (which appears as a file under `/dev/`), saving the file descriptor that is returned by `open()`:
 
 ```c 
-serial_port = open("/dev/ttyUSB0", O_RDWR);
+int serial_port = open("/dev/ttyUSB0", O_RDWR);
+
+# Check for errors
+if (serial_port < 0) {
+    printf("Error %i from open: %s\n", errno, strerror(errno));
+}
 ```
+
+One of the common errors you might see here is `errno = 2`, and `strerror(errno)` returns `No such file or directory`. Make sure you have the right path to the device and that the device exists!
 
 At this point we could technically read and write to the serial port, but it will likely not work, because the default configuration settings are not designed for serial port use. So now we will set the configuration correctly.
 
@@ -261,7 +269,7 @@ Reading is done through the `read()` function. You have to provide a buffer for 
 ```c
 // Allocate memory for read buffer, set size according to your needs
 char read_buf [256];
-memset(&read_buf, '\0', sizeof(read_buf);
+memset(&read_buf, '\0', sizeof(read_buf));
 
 // Read bytes. The behaviour of read() (e.g. does it block?,
 // how long does it block for?) depends on the configuration
@@ -284,9 +292,10 @@ close(serial_port)
 ```c
 #include <termios.h> // Contains POSIX terminal control definitions
 #include <fcntl.h> // Contains file controls
+#include <unistd.h> // read(), write()
 
 // Open the serial port. Change device path as needed (currently set to an standard FTDI USB-UART cable type device)
-serial_port = open("/dev/ttyUSB0", O_RDWR);
+int serial_port = open("/dev/ttyUSB0", O_RDWR);
 
 // Create new termios struc, we call it 'tty' for convention
 struct termios tty;
@@ -345,6 +354,8 @@ int num_bytes = read(serial_port, &read_buf, sizeof(read_buf));
 if (num_bytes < 0) {
     printf("Error reading: %s", strerror(errno));
 }
+
+close(serial_port)
 ```
 
 ## Issues With Getty
