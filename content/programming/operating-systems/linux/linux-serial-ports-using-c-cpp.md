@@ -271,6 +271,14 @@ int n = read(serial_port, &read_buf, sizeof(read_buf));
 // n is the number of bytes read. n may be 0 if no bytes were received, and can also be negative to signal an error.
 ```
 
+## Closing
+
+This is a simple as:
+
+```c
+close(serial_port)
+```
+
 ## Full Example
 
 ```c
@@ -331,9 +339,12 @@ memset(&read_buf, '\0', sizeof(read_buf);
 // Read bytes. The behaviour of read() (e.g. does it block?,
 // how long does it block for?) depends on the configuration
 // settings above, specifically VMIN and VTIME
-int n = read(serial_port, &read_buf, sizeof(read_buf));
+int num_bytes = read(serial_port, &read_buf, sizeof(read_buf));
 
 // n is the number of bytes read. n may be 0 if no bytes were received, and can also be -1 to signal an error.
+if (num_bytes < 0) {
+    printf("Error reading: %s", strerror(errno));
+}
 ```
 
 ## Issues With Getty

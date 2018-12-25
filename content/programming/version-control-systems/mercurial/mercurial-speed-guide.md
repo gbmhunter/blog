@@ -9,7 +9,7 @@ url: /programming/version-control-systems/mercurial/mercurial-speed-guide
 
 Note: Many of these commands use shortened versions of the full-length commands (e.g. addrem instead of addrem, stat instead of status), afterall, this is a speed guide!
 
-```
+```sh
 # Find the status of a repo (any uncomitted changes, revision id, e.t.c)
 hg stat
 
