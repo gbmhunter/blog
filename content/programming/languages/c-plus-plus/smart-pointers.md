@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus/smart-pointers
 ---
 
-# Overview
+## Overview
 
 Smart pointers in C++ are pointer objects which have added functionality over the concept of a _raw pointer_, in where these advanced pointer objects can automatically delete the memory once there are no more references to it, preventing the user from having to remember to call delete/delete[]. It **could be seen as some form of basic garbage collection**, except it is still deterministic (i.e. you can know exactly when the memory will be freed).
 
@@ -26,7 +26,7 @@ Before we touch on what a smart pointer is, it's probably best to review the dis
 
 Fortunately, the C++ standard library (std) provides a range of smart pointers to overcome these problems with raw pointers. These are described in detail below.
 
-# std::unique_ptr
+## std::unique_ptr
 
 `std::unique_ptr` is your bread and butter when it comes to smart pointers. A unique_ptr enforces _exclusive ownership_. One and only one pointer may own the memory at one time, and no other pointers may point to that memory. For that reason, you cannot **copy** a unique_ptr (copying would result in two unique_ptr's pointers pointing to the same memory), but you may **move** it.
 
@@ -36,7 +36,7 @@ Upon destruction of a `unique_ptr` (let's say the pointer goes out of scope), th
 
 Because of the limited abilities of a `unique_ptr`, it does not add much overhead or size compared to a raw pointer. It is small and light-weight.
 
-# std::shared_ptr
+## std::shared_ptr
 
 A `std::shared_ptr` can be used **when an object has multiple owners**. Unlike `std::unique_ptr`, **shared pointers can be copied**, and these copies passed to other owners. The underlying object that the shared pointer points to will not be deleted until all shared pointers pointing to it are destroyed.
 

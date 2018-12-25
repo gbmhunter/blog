@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/python/packages/numpy
 ---
 
-# The Array
+## The Array
 
 The main object that you throw around in NumPy is called a multidimensional array. Typically you store numbers in it. Each "dimension" is called an axes. For example, a single co-ordinate in 3D space could be stored as:
 
@@ -28,7 +28,7 @@ R = [
 
 This has two axes.
 
-# Creating An Array
+## Creating An Array
 
 NumPy arrays can be created with standard Python lists:
 
@@ -91,7 +91,7 @@ array([[0, 1, 2],
 array([ 4. ,  5.5,  7. ,  8.5, 10. ])
 ```
 
-# Indexing And Reading/Writing
+## Indexing And Reading/Writing
 
 NumPy arrays have one index per axis, forming a tuple. The indexed are zero-indexed, like all sensible languages/libraries :-D.
 
@@ -121,7 +121,7 @@ array([[ 2,  5],
         [ 1, 10]])
 ```
 
-# Doing Basic Operations With Arrays
+## Doing Basic Operations With Arrays
 
 NumPy arrays can be added element wise with the `+` operator:
 
@@ -162,7 +162,7 @@ The cross-product of two arrays can be done with `np.cross()`:
 array([ 9, -5, -11])
 ```
 
-# Slicing
+## Slicing
 
 One of the powerful features of Numpy arrays is the simple and terse slicing syntax (which is built upon Python's slicing syntax). A slice is when you extract just a portion of the array for further use:
 
@@ -233,7 +233,7 @@ my_slice = data[3:8:2] # Slice from 3 to 8, with a step size of 2
 # my_slice = array([3, 5, 7])
 ```
 
-# Reading A CSV File
+## Reading A CSV File
 
 You can use Numpy's `genfromtxt()` method to read in CSV files and convert the data into a Numpy array:
 
@@ -272,7 +272,7 @@ Time (s), Depth (m), Width (m)
 10, 11, 12
 ```
 
-# Functions
+## Functions
 
 **dot()**
 

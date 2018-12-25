@@ -7,6 +7,6 @@ type: page
 url: /programming/languages/c-plus-plus/inheritance
 ---
 
-# Inheritance Of Constructors
+## Inheritance Of Constructors
 
 The inheritance of constructors in C++ is only supported in the GCC compiler of v4.8 and higher.

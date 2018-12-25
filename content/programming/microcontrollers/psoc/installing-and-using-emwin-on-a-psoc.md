@@ -7,7 +7,7 @@ type: page
 url: /programming/microcontrollers/psoc/installing-and-using-emwin-on-a-psoc
 ---
 
-# Overview
+## Overview
 
 emWin is a graphical user interface designed for embedded systems. Cypress provides a **free emWin license** when you use the PSoC IDE. If I directly quote from the [SEGGER website](http://www.segger.com/emwin.html):
 
@@ -15,7 +15,7 @@ emWin is a graphical user interface designed for embedded systems. Cypress provi
 
 I want to make and ammendment here as say that you can use emWin for not just LCD displays, but any display which is controlled via pixel information (such as [OLED displays](/electronics/components/oled-screens)). You** do not have access to the emWin source code**, instead you are given a pre-compiled object file, headers, and source code only for the port-specific functions. Unfortunately, the graphics library is not provided as a quick-and-simple PSoC component which can be drag 'n' dropped onto the schematics in PSoC Creator. Instead, you have to download the code library as a zip file, and manually install it.
 
-# Installing In PSoC Creator
+## Installing In PSoC Creator
 
 The installation procedure is slightly different depending on whether you are using Keil (PSoC 3) or GCC (PSoC 4, 5, 5LP) to compile
 
@@ -33,11 +33,11 @@ There are a few port-specific functions that you have to write code for, before 
 
 If you just want basic control, the only function you have to write code for is CYGRAPHICS_WRITE() . The rest can be left blank.
 
-# Setting The Draw Position
+## Setting The Draw Position
 
 The draw position can be set with GUI_GotoXY(x, y), where x in the x-axis position, and y is the u-axis position (both measured in pixels). The draw position is incremented automatically when commands that place strings of text are used.
 
-# Fonts
+## Fonts
 
 ## Available Fonts
 
@@ -53,7 +53,7 @@ GUI_SetFont(&GUI_Font4x6);
 
 This will use the font from this point onwards, until `GUI_SetFont()` is called again.
 
-# Displaying Text
+## Displaying Text
 
 You can display text with the function `GUI_DispString(char* msg);`, where msg is a pointer to an array of null-terminated characters that you want to print. For example:
     

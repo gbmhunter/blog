@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/pointers
 ---
 
-# Overview
+## Overview
 
 
 
@@ -43,7 +43,7 @@ And, here is my favourite question and answer regarding pointers:
 
 
 
-# Pointer Arithmetic
+## Pointer Arithmetic
 
 
 
@@ -75,7 +75,7 @@ This is explained in the following example...
 
 
 
-# Arrays Decaying To Pointers
+## Arrays Decaying To Pointers
 
 
 
@@ -95,7 +95,7 @@ Consider the array:
 
 
 
-# Really Good Articles On Pointers
+## Really Good Articles On Pointers
 
 
 
@@ -110,7 +110,7 @@ Consider the array:
 
 
 
-# Clever Uses Of Pointers
+## Clever Uses Of Pointers
 
 
 
@@ -130,7 +130,7 @@ is the equivalent to the standard library function strcpy(p, q)!
 
 
 
-# Strict Aliasing Rules
+## Strict Aliasing Rules
 
 
 
@@ -243,7 +243,7 @@ Historically, these rules could be broken without too much worry. You could use 
 
 
 
-# Function Pointers
+## Function Pointers
 
 
 
@@ -274,7 +274,7 @@ Function pointers on 8051 architectures are dangerous. The 8051 has a tiny stack
 
 
 
-# Using const And volatile With Pointers
+## Using const And volatile With Pointers
 
 
 

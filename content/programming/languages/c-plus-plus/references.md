@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus/references
 ---
 
-# Overview
+## Overview
 
 C++ introduces the reference operator, `&`, which works slightly different than it does in C.
     
@@ -22,7 +22,7 @@ C++ introduces the reference operator, `&`, which works slightly different than 
 
 For those who come from a C background and understand pointers, treat it as though `double &b = a` goes to `double *b = &a` and all the subsequent usage of `b` is replaced with `*b`. Note that the double that `b` points to cannot be changed! This is unlike a normal pointer, `double *b = &a`, in where you could later write `b = &c`. This will not work with a reference.
 
-# What Are They Good For?
+## What Are They Good For?
 
 References can simplify the syntax of certain pointer manipulation. They also useful when creating operator overloads, (e.g. the ++ operator for an enumeration), so that the syntax remains consistent with the base types in C++.
 

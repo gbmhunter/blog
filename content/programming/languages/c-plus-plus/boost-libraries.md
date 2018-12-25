@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus/boost-libraries
 ---
 
-# shared_ptr
+## shared_ptr
 
 shared_ptr stores a pointer to a dynamically allocated object. It performs reference counting and will call delete on the original object when the last shared_ptr pointing to the object is destroyed (or reset).
 

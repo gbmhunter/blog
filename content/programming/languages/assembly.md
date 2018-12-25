@@ -7,13 +7,13 @@ type: page
 url: /programming/languages/assembly
 ---
 
-# Overview
+## Overview
 
 If you are writing assembly for ARM processors, make sure to check out the [GNU ARM Assembler Quick Reference](http://bel.gsi.de/scripts/gnu-arm-assy-quick-ref.pdf).
 
 {{< figure src="/images/2013/06/assembly-code-example.png" width="481px" caption="An example of assembly code from the glibc library (an optimised memcpy() function)."  >}}
 
-# Intel vs. AT&T Syntax
+## Intel vs. AT&T Syntax
 
 **Intel Syntax**
 
@@ -33,7 +33,7 @@ instr source, dest
 movl (%ecx), %eax
 ```
 
-# NASM
+## NASM
 
 The NASM assembly language is a very popular language that works on the x86 and x86-64 architectures. It has similar syntax to Intel's x86/x86-64 assembly, but it designed to be more "user friendly".
 

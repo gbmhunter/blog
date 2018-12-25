@@ -7,11 +7,11 @@ type: page
 url: /programming/operating-systems/linux/programs/socat
 ---
 
-# Overview
+## Overview
 
 socat is a very powerful utility program for estabilishing bi-directional data streams between two data sinks/sources. It can be used for creating two virtual COM ports that relay information to each other.
 
-# Installation
+## Installation
 
 On Debian-based operating systems (such as Ubuntu), you can type:
 
@@ -19,7 +19,7 @@ On Debian-based operating systems (such as Ubuntu), you can type:
 $ sudo apt-get install socat
 ```    
 
-# Connecting Two COM Ports Together
+## Connecting Two COM Ports Together
 
 You can use socat to connect two COM ports together. This means that any information sent to one will appear as input on the other, and vise-versa.
 

@@ -7,7 +7,7 @@ type: page
 url: /programming/design-patterns/concurrency-patterns
 ---
 
-# Overview
+## Overview
 
 This page focuses on concurrency patterns applicable to _embedded_ software, that is software running on anything from an 8-bit microcontroller to embedded Linux in either C or C++.
 
@@ -15,7 +15,7 @@ The terms thread 1 and thread 2 are used as imaginary threads that need to share
 
 > Some people, when confronted with a problem, think, “I know, I’ll use threads!” Now they have 10 problems. –Bill Schindler
 
-# Message Queues
+## Message Queues
 
 **Example**
 
@@ -86,7 +86,7 @@ Run this example online at [https://wandbox.org/permlink/HtrZL147mUQGs4vK](https
 * Thread 1 cannot easily get data back from thread 2, as the only way to communicate is through the message queues. Thread 1 would have send a message to thread 2 requesting data, and then thread 2 would have to send a message back to thread 1 with the data. This can break the "flow" of the code for thread 1.
 * Difficulties in safely handling multiple "types" of data sent on the message queue. The example above creates the data on the heap, creates a shared pointer to it and then casts away the type to `std::shared_ptr<void>`. You then have to make sure the receiving thread casts back to the correct type depending on the message.
 
-# Synchronization Objects
+## Synchronization Objects
 
 The most basic form of synchronization object is a mutex. When using C, popular operating systems such as FreeRTOS or Linux provide OS specific mutexes. If using C++ and have the standard library available, you can use std::mutex (as of C++11).
 
@@ -98,13 +98,13 @@ Why do we have to use synchronization objects? Because if more than one threads 
 * Threads still require some notification object to block on
 * It is harder for thread 1 to tell thread 2 to do some "work". Whilst in a message queue system thread 1 can just thread 2 a "do work" message, 
 
-# A Hybrid Approach
+## A Hybrid Approach
 
 What if we used a message queue for the sending thread to tell the receiving thread to perform some work, and a synchronization object when sending thread just wants to access some data from receiving thread?
 
 This is possible with the use of a message queue for incoming messages and a synchronization object to synchronize the receiving message loop with the data accesses.
 
-# A Message Queue That Can Wait For Return Data
+## A Message Queue That Can Wait For Return Data
 
 One way to solve the "no return data" issue with message queues is for the receiving thread to send a thread-safe data object along with the rest of the message data to the sending thread. When this message is processed in receiving thread, it calculates the return data and notifies the sending thread with the thread-safe data object.
 

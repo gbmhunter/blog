@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/lcd-screens
 ---
 
-# Character LCD Screens
+## Character LCD Screens
 
 ## Types
 
@@ -23,7 +23,7 @@ LCD screens are typically use 8-bit interfaces which can usually support a reduc
 
 {{< figure src="/images/electronics-misc/lcd-schematic.jpg" caption="Schematic for a character LCD."  width="500px" >}}
 
-# Mounting
+## Mounting
 
 ## Reverse-mounted Onto PCB
 
@@ -35,7 +35,7 @@ The image below shows what a reverse-mounted LCD screen will look like from the 
 
 {{< figure src="/images/electronics-misc/lcd-screen-reverse-mounted-on-pcb-front-view.jpg" caption="The front view of a reverse-mounted LCD screen."  width="600px" >}}
 
-# TFT LCD Screens
+## TFT LCD Screens
 
 A TFT screen is a form of LCD which uses thin-film technology.
 

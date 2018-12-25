@@ -7,11 +7,11 @@ type: page
 url: /pcb-design/pcb-surface-finishes
 ---
 
-# Overview
+## Overview
 
 The following surface finishes are listed in order of increasing price/performance.
 
-# Hot Air Solder Leveled (HASL)
+## Hot Air Solder Leveled (HASL)
 
 HASL is one of the most widely used surface finishes. It involves dipping the circuit board into a pot of molten solder, taking it out, and then removing the excess solder with a set of "air knives".
 
@@ -35,7 +35,7 @@ The major issue is the uneven surface that HASL provides. With 0.5-0.8mm pitch Q
 
 The thermal shock from dipping the PCB into a pool of molten solder can damage tiny vias and tracks, even causing a via to crack. This may result in the board working fine at room temperatures, but failing at -10°C as the metal in the via contracts.
 
-# Immersion Tin (ISn)
+## Immersion Tin (ISn)
 
 Immersion tin is
 
@@ -54,7 +54,7 @@ Immersion tin is
 
 The biggest issue with ISn is that the copper and tin layers slowly diffuse into one another over time. This creates "tin wiskers", and limits the shelf-life of ISn PCB's (before soldering) to about 3-6 months.
 
-# Immersion Silver (IAg)
+## Immersion Silver (IAg)
 
 Immersion silver is good alternative to ENIG.
 
@@ -73,7 +73,7 @@ Immersion silver is good alternative to ENIG.
 
 PCB's plated with IAg must not be handled directly or cleaned with a solvent prior to soldering, as finger-grease and solvents can cause wetting problems.
 
-# Electroless Nickel Immersion Gold (ENIG)
+## Electroless Nickel Immersion Gold (ENIG)
 
 ENIG is becoming more and more popular as component package pitch sizes drop, and RoHS regulation becomes more common place.
 
@@ -90,7 +90,7 @@ ENIG is becoming more and more popular as component package pitch sizes drop, 
 * More expensive than immersion silver
 * Requires to plating procedures (nickel, then gold)
 
-# Immersion vs. Electro-less Platings
+## Immersion vs. Electro-less Platings
 
 Immersion platings rely on a chemical displacement reaction of the surface of the PCB copper with a more noble metal that is in solution. Remember back to school chemistry in where iron nails where placed in a copper sulphate solution, and after a while the nail would be covered in copper?
 

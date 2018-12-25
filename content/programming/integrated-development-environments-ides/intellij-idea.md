@@ -7,7 +7,7 @@ type: page
 url: /programming/integrated-development-environments-ides/intellij-idea
 ---
 
-# Quick Reference
+## Quick Reference
 
 <table>
     <thead>

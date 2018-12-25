@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sod-523-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
 <tbody >
@@ -109,6 +109,6 @@ url: /pcb-design/component-packages/sod-523-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 Nothing here yet.

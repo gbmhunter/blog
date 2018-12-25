@@ -7,17 +7,17 @@ type: page
 url: /electronics/circuit-design/filtering/active-filters
 ---
 
-# Overview
+## Overview
 
 Active filters are electronic waveform filters which require their own power source (such as any filter powered with an [op-amp](/electronics/components/op-amps)), as opposed to passive filters (such as RC filters) which do not require an external power source. Active filters allow higher roll-of and better transfer characteristics than passive filters, but require more componentry and consume power.
 
-# Types of Filters
+## Types of Filters
 
 * Butterworth (designed to give a flat gain response through the pass-band, at the expense of having a low transisiton between the pass and stop-band)
 * Tschebyscheff (designed to have the steepest transisition between the pass ad stop-band, at the expense of gain ripple through the pass-band)
 * Bessel
 
-# Filter Design
+## Filter Design
 
 ## Gain
 

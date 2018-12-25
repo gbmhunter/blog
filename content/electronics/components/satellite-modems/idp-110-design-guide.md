@@ -7,21 +7,21 @@ type: page
 url: /electronics/components/satellite-modems/idp-110-design-guide
 ---
 
-# Overview
+## Overview
 
 The IDP-110 is a satellite modem made by SkyWave. It is designed for integration into an end product rather than to be an end-product itself. Because of this, it is sold as a bare-bones PCB or as a slightly more enclosed over-shielded version.
 
-# Dev Kit
+## Dev Kit
 
 A warning, you can easily destroy the dev kit base by plugging the IDP-110 incorrectly into it's mating connector on the base. The connector is not polarized, and you can quite easily plug it in while offset by 1 in any direction, as well as plugging it in at 180 to the correct orientation. Use the pegs provided (that screw into the base and align with the holes in the IDP-110 PCB) to prevent this!
 
-# Current Requirements
+## Current Requirements
 
 The IDP-110 draws quite a large pulse current during part of it's transmit/receive operation. A benchtop power supply I had connected up to the IDP-110 would display 2.10-2.40A for a very brief amount of time. Note that I wouldn't trust the benchtop PSU to display AC currents (as is this pulse) as accurate as DC ones, so this figure should not be taken too seriously. I think this current pulse is more serious that the ones drawn by cellular modems.
 
 The largest current seemed to be drawn just before the satellite modem transitions from state 7 to state 10 (this is the status returned from the command AT S90=3 S91=1 S92=1 S122?). This is just before the modem registration message appears in the gateway.
 
-# Simple Command Sequence To Send Some Data
+## Simple Command Sequence To Send Some Data
 
 This serves as a simple "cheat sheet" for getting some data sent quickly without having to trawl through the IDP-110 datasheets.
 
@@ -33,7 +33,7 @@ I assume the hardware is powered up correctly and you've got a terminal setup t
 4. Great, we are now registered with the satellite! Now to send some data (the following example sends "Hello, world!", type AT%MGRT="TestMsg",2,128.0,1,"Hello, world!" 
 5. Done! Assuming everything went o.k., the preceding message should turn-up in your gateway. You can use the AT command AT&MGRS to view the status of any outgoing messages that haven't been fully sent yet.
 
-# Finding The Time
+## Finding The Time
 
 Once the IDP-110 registers with the satellite network, you can request the UTC time from the modem with the command:
 
@@ -45,7 +45,7 @@ The modem will respond in the format:
 
 UTC time is 24 hour time, so there is no a.m. or p.m. designator.
 
-# Determining If The Antenna Is Connected
+## Determining If The Antenna Is Connected
 
 The IDP-110 can work out whether an antenna is connected by measuring the DC voltage on the RF connection to the antenna. You can query the status by typing:
 

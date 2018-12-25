@@ -7,7 +7,7 @@ type: page
 url: /mathematics/geometry/affine-transformations
 ---
 
-# Overview
+## Overview
 
 An affine transformation is a function between two different coordinate systems (or affine spaces) which preserves certain properties. These properties include:
 
@@ -23,7 +23,7 @@ An affine transformation can encompass the following "basic" modifications:
 * Rotation
 * Shearing
 
-# The Transformation Matrix
+## The Transformation Matrix
 
 A 2D affine transformation matrix is always in the form:
 
@@ -35,19 +35,19 @@ This maps from one affine space to another via the equation:
 
 Note how one more matrix dimension is used than the dimension of the space you wish to apply the affine transformation to. This is so that translation transformations can be performed.
 
-# Translation
+## Translation
 
 A 2D translation can be described by the following equation (using homogeneous coordinates):
 
 <div>$$ \begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}1&0&t_x\\0&1&t_y\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}$$</div>
 
-# Scaling
+## Scaling
 
 A 2D scaling can be done with:
 
 <div>$$ \begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}s_x&0&0\\0&s_y&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}$$</div>
 
-# Rotation
+## Rotation
 
 A 2D counter-clockwise rotation can be described by the following equation:
 
@@ -63,7 +63,7 @@ Note that the above equation performs rotation around the origin. To perform rot
 
 <div>$$R_z = \begin{bmatrix}cos\theta&-sin\theta&0\\sin\theta&cos\theta&0\\0&0&1\end{bmatrix}$$</div>
 
-# Shearing
+## Shearing
 
 A x direction shear (a shearing along x that is proportional to y):
 
@@ -73,7 +73,7 @@ A y direction shear (a shearing along y that is proportional to x):
 
 <div>$$ \begin{bmatrix}x^\prime\\y^\prime\\1\end{bmatrix} = \begin{bmatrix}1&\lambda&0\\0&1&0\\0&0&1\end{bmatrix} \begin{bmatrix}x\\y\\1\end{bmatrix}$$</div>
 
-# Combining Transformations
+## Combining Transformations
 
 Multiple affine transformations (translation, rotation, shear, e.t.c) can be combined into a single transformation matrix.
 

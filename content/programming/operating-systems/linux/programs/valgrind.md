@@ -7,13 +7,13 @@ type: page
 url: /programming/operating-systems/linux/programs/valgrind
 ---
 
-# Overview
+## Overview
 
 Valgrind is a tool that can be used to detect memory management and threading bugs.
 
 {{< figure src="/images/2017/06/valgrind-logo.jpg" width="316px" caption="The Valgrind logo."  >}}
 
-# Installation
+## Installation
 
 1. Download the latest Valgrind source code from http://valgrind.org/downloads/. For example, this downloads version 3.12.0:  
 
@@ -60,7 +60,7 @@ Valgrind is a tool that can be used to detect memory management and threading bu
     from any directory in your shell.
 
 
-# Profiling With Valgrind
+## Profiling With Valgrind
 
 The most simple way to run a program with valgrind is to call valgrind and pass in the executable at the only parameter:
 

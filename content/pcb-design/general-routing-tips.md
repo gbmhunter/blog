@@ -7,13 +7,13 @@ type: page
 url: /pcb-design/general-routing-tips
 ---
 
-# Overview
+## Overview
 
 See below for PCB routing tips and tricks.
 
 {{< figure src="/images/2015/07/screenshot-during-routing-a-track-on-pcb-in-altium.png" width="321px" caption="Screenshot during the routing of a track on a PCB in Altium."  >}}
 
-# Always Have Schematics In-Front Of You
+## Always Have Schematics In-Front Of You
 
 Having schematics in-front of you when routing is a must. Either print them out or put them on a second monitor if you are lucky enough to have one.
 

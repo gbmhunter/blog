@@ -9,13 +9,13 @@ url: /programming/languages/batch-files
 
 > MS-DOS comands use a / character to signify a flag. All command syntax on this page uses square brackets for optional parameters.
 
-# Overview
+## Overview
 
 This page is all about the programming language used to write functioning batch file scripts for running in the Windows operating system. For native Windows commands/programs that you call call from a batch file or command prompt, see the [Windows page](/programming/operating-systems/windows).
 
 A batch file is a text file with the extension .bat. They are scripting files for the Windows command-line.
 
-# Comments
+## Comments
 
 Single-line comments can be inserted with either the double colon (::) or rem command.
 
@@ -27,7 +27,7 @@ rem This is also a comment.
 
 Text stops being a comment once there is a new line.
 
-# Echo
+## Echo
 
 Echo is usually turned off to stop every line of code from being printed to the user:
 
@@ -45,7 +45,7 @@ Once echo is turned off, the only thing that will be printed is stuff which is e
 
 Naturally, you turn echo back on at any point with the command echo on.
 
-# Variables
+## Variables
 
 Variables are set to a value, or cleared/deleted by using the set command.
 
@@ -71,7 +71,7 @@ Variables are used by enclosing them with the % character, e.g. %myVar%.
 set myVar2 = %myVar%
 ```
 
-# Replacing Substrings Within Strings
+## Replacing Substrings Within Strings
 
 Batch files provides a way to replace substrings withing a string (or more generically, find and replace parts of a variable).
 
@@ -84,7 +84,7 @@ set modifiedText=!str1:%searchText%=%replaceText%!
 
 This technique can be used to detect whether a string contains a particular substring, as you can compare the replaced text with the original and check if they are equal (I know this sounds convoluted, but this is how you must do things in batch files).
 
-# Processing The Output Of A Command
+## Processing The Output Of A Command
 
 You can process the output of a command by using a for loop. The \f flag is commonly used.
 
@@ -105,7 +105,7 @@ echo !CONCAT_STR!
 
 You can replace hg status with any command that you can run from the command line.
 
-# Delayed Expansion
+## Delayed Expansion
 
 This a great method for preventing expansion of variables at parse time. It delays the expansion until execution time.
 

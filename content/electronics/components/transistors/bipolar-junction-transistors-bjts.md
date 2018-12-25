@@ -7,19 +7,19 @@ type: page
 url: /electronics/components/transistors/bipolar-junction-transistors-bjts
 ---
 
-# Overview
+## Overview
 
 Bipolar junction transistors (BJTs) are 3 legged active semiconductor devices. They behave as a current-amplifier, amplifying a small base-emitter (BE) current into a larger collector-emitter (CE) current.
 
 It was the first type of transistor to ever be mass produced.
 
-# Types
+## Types
 
 BJTs come in two flavours, NPN or PNP. They both have three terminals, the collector (C), the base (B) and the emitter (E).
 
 The differences between the NPN and PNP transistor types are analogous to the [N-Channel and P-Channel MOSFET](/electronics/components/transistors/mosfets) types.
 
-# Schematic Symbols
+## Schematic Symbols
 
 The schematic symbols for NPN and PNP transistors are shown below:
 
@@ -31,19 +31,19 @@ The **arrow** is always on the **emitter** leg of the BJT. To differentiate betw
 
 Sometimes you will see the transistors drawn with **circles** around them, they represent exactly the same thing as the symbols above.
 
-# How They Work
+## How They Work
 
 BJTs are made from a hunk of silicon. They are either a thin slice of P-type semiconductor sandwiched between two layers of N-type semiconductor (NPN) or the reverse, a thin slice of N-type semiconductor sandwiched between two layers of P-type semiconductor (PNP).
 
 The bipolar part of their name comes from the fact they conduct by using both majority and minority charge carriers.
 
-# Important Parameters
+## Important Parameters
 
 ## Gain (hfe)
 
 The gain of a BJT is the ratio between the base current and the collector current.
 
-# Circuit Design Basics With BJTs
+## Circuit Design Basics With BJTs
 
 The current through the base pin (`\(I_b\)`) and the current through the collector pin (`\(I_c\)`) always sums to give the current through the emitter pin (`\(I_e\)`).
 
@@ -59,7 +59,7 @@ NPN's require a small positive base-emitter voltage to create a current which fl
 
 A PNP transistor will only conduct when both the base and collector have a negative voltage w.r.t the emitter.
 
-# High And Low-side Switching With BJTs
+## High And Low-side Switching With BJTs
 
 NPN transistors are good for low-side switching. You can connect the collector to the negative end of the load, the emitter to ground, and control the base with a digital low/high signal through a resistor (low/ground base signal = load off, high base signal = load on).
 
@@ -67,7 +67,7 @@ They are not so good for high-side switching, as _negative feedback_ prevents th
 
 PNP transistors are good for high-side switching. Although not great at low-side switching, they can be used in some cases.
 
-# Amplifier Topologies
+## Amplifier Topologies
 
 ## Common Collector
 
@@ -83,7 +83,7 @@ Here is a graph of `\(v_{in}\)` vs. `\(v_{out}\)` for the above circuit:
 
 {{< figure src="/images/2015/08/vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png" width="1418px" caption="Vout vs. Vin for a basic common-collector BJT amplifier."  >}}
 
-# Constant-Current Sink
+## Constant-Current Sink
 
 BJTs can be configured to sink a relatively constant amount of current which is independent on the output-side voltage. This can be a useful way of driving an LED from a microcontroller with a constant current, no matter what voltage source is used to drive the LED.
 
@@ -105,13 +105,13 @@ Below are the simulation results for the above schematic, showing the LED curren
 
 {{< figure src="/images/2015/08/constant-current-bjt-based-led-driver-simulation-results.png" width="1691px" caption="The simulation results of a constant-current BJT-based LED driver."  >}}
 
-# Common BJTs
+## Common BJTs
 
 548 and 558 are common numbers to see embedded in transistor part numbers.
 
 BC548 - Common NPN transistor
 
-# Multiple-Collector And Multiple-Emitter BJTs
+## Multiple-Collector And Multiple-Emitter BJTs
 
 Multiple emitter and multiple collector BJTs are special types of BJTs which have more than one emitter or more than one collector.
 
@@ -125,6 +125,6 @@ In the case of a multiple collector BJT, the total collector current `\(I_{C,tot
 
 Multiple emitter BJTs were also used in older (e.g. from the 1960's) RAM. For example, Intel's first IC, the 3101 (64 bits of RAM!), **contains multiple emitter BJTs as part of the 2-state latch circuitry which holds one bit of information**. One emitter is used to select which cell to read or write, while the other emitter is used to read or write the data. See an excellent tear-down of the IC on [Ken Shirriff's blog](http://www.righto.com/2017/07/inside-intels-first-product-3101-ram.html).
 
-# External References
+## External References
 
 [This](https://www.youtube.com/watch?v=t0UOSIUve9E) is a great video on two not-so-common transistor biasing configurations.

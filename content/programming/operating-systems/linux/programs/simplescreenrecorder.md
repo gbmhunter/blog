@@ -7,13 +7,13 @@ type: page
 url: /programming/operating-systems/linux/programs/simplescreenrecorder
 ---
 
-# Overview
+## Overview
 
 SimpleScreenRecorder is a great Linux program for capturing screen output.
 
 It can capture the entire screen, and window, follow the curser, or a arbitary rectangle.
 
-# Stats
+## Stats
 
 <table >
 	<tbody >

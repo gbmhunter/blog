@@ -7,12 +7,12 @@ type: page
 url: /programming/operating-systems/windows
 ---
 
-# Overview
+## Overview
 
 These pages are all about the Windows operating system and the command-line interface. For information about how to write batch scripts and it's programming syntax, see the [Batch Files page](/programming/languages/batch-files).
 
 
-# Auto-complete
+## Auto-complete
 
 Did you know that MS-DOS has an auto-complete function, just like Linux, except **it's turned OFF by default?** To turn it on, type the following into the command line:
 
@@ -30,7 +30,7 @@ Now, to use it! It works slightly different to Linux. Instead of one button (_ta
 
 If there are multiple choices, pressing the button repeatedly will cycle through the options.
 
-# Comments
+## Comments
 
 
 There are two ways to display comments:
@@ -41,7 +41,7 @@ rem This is a comment
 : This is also a comment, and using a much simper keyword than rem
 ```
 
-# File Manipulation
+## File Manipulation
 
 ## Displaying Files
 
@@ -135,11 +135,11 @@ Confusingly, windows has a range of different delete commands, and the one you n
 # Delete a file (1st way)
 del filename.ext
 
-# Delete a file (2nd way)
+## Delete a file (2nd way)
 # Note that "del" and "erase" are the same command
 erase filename.ext
 
-# Remove a directory which is empty
+## Remove a directory which is empty
 rmdir directory-name
 
 # Remove a directory which is not empty

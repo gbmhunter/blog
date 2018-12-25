@@ -7,17 +7,17 @@ type: page
 url: /electronics/components/power-regulators/off-line-switchers
 ---
 
-# Overview
+## Overview
 
 Off-line switchers convert a usually high AC input voltage (e.g. 240VAC mains supply) down to a IC level DC voltage (e.g. 5V). Their design is based on a _flyback regulator_ circuit. 
 
-# Terminology
+## Terminology
 
 The term "_off-line switchers_" comes from the fact that the DC output voltage is derived straight from the AC input (the DC voltage comes straight "off" the line (AC)). 
 
 IMHO, this was a **bad name choice**, as many people would assume it is related to being offline (disconnected), rather than online. Remember back to when dot-matrix printers had a "online" LED?
 
-# Isolation
+## Isolation
 
 Both isolated and non-isolated off-line switchers exist on the market.
 

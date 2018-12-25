@@ -7,7 +7,7 @@ type: page
 url: /programming/operating-systems/linux/the-basic-essentials-you-should-do-after-installing-ubuntu
 ---
 
-# Make The Up/Down Keys Search History
+## Make The Up/Down Keys Search History
 
 This assumes you are using the Gnome terminal. This has been tested with Ubuntu 14.04.
 
@@ -37,7 +37,7 @@ This assumes you are using the Gnome terminal. This has been tested with Ubuntu 
 
 5. Done!
 
-# Turn On Mutiple Workspaces
+## Turn On Mutiple Workspaces
 
 Multiple workspaces (also called virtual desktops by Ubuntu) is a great feature to enable for increased productivity.
 
@@ -56,21 +56,21 @@ How to add more workspaces than the default 4 you get when enabling the option i
 
 It always has to be arranged in a grid, but you can practically have as many as you want.
 
-# Install Linuxbrew
+## Install Linuxbrew
 
 Linuxbrew is a copy of Mac's Homebrew for Linux. It's useful for installing applications that may not have built in installation support using apt or yum.
 
 See [http://linuxbrew.sh/](http://linuxbrew.sh/) for installation instructions.
 
-# Install fzf For Better Reverse Lookup
+## Install fzf For Better Reverse Lookup
 
 See [https://github.com/junegunn/fzf](https://github.com/junegunn/fzf) for installation instructions (I recommend using Linuxbrew).
 
-# Install fd For Better find
+## Install fd For Better find
 
 See [https://github.com/sharkdp/fd](https://github.com/sharkdp/fd) for installation instructions. Really easy to install on Debian systems.
 
-# Increase Max Num. of Open Files
+## Increase Max Num. of Open Files
 
 Sometimes you might run into the error:
 

@@ -7,13 +7,13 @@ type: page
 url: /pyrotechnics/rocketry/bodied-rockets
 ---
 
-# Overview
+## Overview
 
 
 Bodied rockets are rockets which have the traditional 'look' of a rocket. They have a body, a nose, fins and a motor mount. As opposed to [stick rockets](/pyrotechnics/rocketry/stick-rockets), which is the easier, cheaper, way of creating hobby rockets.
 
 
-# The '5min' Rocket
+## The '5min' Rocket
 
 
 The '5min' rocket was built purely for fun. The '5min' stands for the 5 minutes (or less) it took to construct the rocket body. Naturally, no thought went into the design of the body. Bits were glued on here and there until it looked aesthetically close enough to what a real rocket should look like.
@@ -39,7 +39,7 @@ The video shows the one and only attempted launch with this rocket. The nozzle p
 </table>
 
 
-# The 'Tiger' Rocket
+## The 'Tiger' Rocket
 
 
 The Tiger rocket was the first 'bodied' rocket that I built, after experimenting with many stick rockets. The body was built from a spiral wound cardboard tube, the fins were cut from ice cream container plastic and mounted on the body with cardboard inserts. The nose cone was made from a cardboard cone, filled with plaster of paris, and then a coupler pushed in to the plaster so it could friction fit with the body. Why the hell did you use ridiculously heavy plaster of paris to make a rocket?!?, you ask. I use the excuse that I was young at the time (I think I was about 15), and didn't think it through enough :-)

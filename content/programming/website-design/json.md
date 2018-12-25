@@ -7,13 +7,13 @@ type: page
 url: /programming/website-design/json
 ---
 
-# Overview
+## Overview
 
 JSON (JavaScript object notation) is a way of describing data that follows the syntax for creating an object in JavaScript. It is commonly used to pass messages across the internet, as an alternative to XML.
 
 JSON files have the file extension .json.
 
-# Comments
+## Comments
 
 Unfortunately, there is no special syntax to add comments into a JSON file (some consider this to be a major pitfall to the JSON format). The best you can do is to add a fake parameter, and make sure that the reader ignores it.
     
@@ -34,7 +34,7 @@ Below is an example of a comment inside a JSON file:
 
 You can have multiple comments with the same `"_comment"`  identifier (this is called a key), this does not break any strict rules.
 
-# Libraries
+## Libraries
 
 Many open-source libraries exists for encoding/decoding JSON data.
 

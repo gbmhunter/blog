@@ -7,7 +7,7 @@ type: page
 url: /programming/embedded-linux/yocto-project/building
 ---
 
-# What Do All The Build Output Files Do?
+## What Do All The Build Output Files Do?
 
 A Yocto build normally generated a confusing amount of files in the output build directory. This section aims to help you work out what all these files do!
 

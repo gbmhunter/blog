@@ -7,7 +7,7 @@ type: page
 url: /programming/build-systems-and-package-managers/gradle
 ---
 
-# Overview
+## Overview
 
 Gradle is an open-source build automation system. It is primarily targeted towards languages running on the JVM (Java Virtual Machine).
 
@@ -15,7 +15,7 @@ Gradle is an open-source build automation system. It is primarily targeted towar
 
 One of it's big advantages over Maven is it's use of a domain-specific language (DSL) rather than XML to specify the project configuration and build steps.
 
-# The Java Plugin
+## The Java Plugin
 
 The Java plugin is probably one of the most commonly used plugins. To use the plugin, add the following to your build script:
 

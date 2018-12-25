@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus/exceptions
 ---
 
-# Overview
+## Overview
 
 Exceptions are a supported form of error handling in C++. They allow the code write to throw and catch exceptions which can propagate through the call stack.
 
@@ -15,7 +15,7 @@ Note that it is common practise to use e to represent a variable that is of an e
 
 C++ is one of the "lowest level" languages that supports exceptions. Other low-level languages such as C do not have exception support.
 
-# Notation
+## Notation
 
 ```c    
 try {
@@ -25,9 +25,9 @@ try {
 }
 ```    
 
-# How The Exceptions Work
+## How The Exceptions Work
 
-# The Standard Exceptions
+## The Standard Exceptions
 
 `std::exception` doesn't support an additional message (it doesn't have an `e.what()`).
 
@@ -131,7 +131,7 @@ The standard exceptions are defined in `<stdexcept>`. They are split into catego
 </tbody>
 </table>
 
-# My Exception Message (e.what() Is Not Saying The Right Thing!
+## My Exception Message (e.what() Is Not Saying The Right Thing!
 
 The most common reason for this is that you have forgotten to catch by reference (`&`)! Make sure that your catch statement looks like this:
 
@@ -149,7 +149,7 @@ Remember, the standard rule for exceptions in C++ is:
  
 > throw by value, catch by reference
 
-# C++11 Additions
+## C++11 Additions
 
 C++11 added new exception types to the standard library.
 
@@ -202,7 +202,7 @@ catch (const std::exception& e) {
 }
 ```
 
-# The noexcept Keyword
+## The noexcept Keyword
 
 The noexcept keyword was added to the C++ language in C++11. It can used to specify a function which is guaranteed to not throw an exception.
 

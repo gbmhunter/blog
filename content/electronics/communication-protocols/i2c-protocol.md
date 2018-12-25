@@ -7,13 +7,13 @@ type: page
 url: /electronics/communication-protocols/i2c-protocol
 ---
 
-# Overview
+## Overview
 
 The I²C bus is a communication protocol commonly used for PCB level transmissions between IC's and microcontrollers. It is a half-duplex synchronous protocol which requires 2 non-power-related wires (4 if you include power and ground). It uses device addressing to indicate the recipient of the data. It is commonly used for sending small packets of information to IC's (such as configuration settings, or a sensor value), while [SPI](http://localhost/?q=node/135) is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C can support multiple masters through software protocols.
 
 {{< figure src="/images/2011/09/i2c-logo.gif" width="200px" caption="The I2C logo."  >}}
 
-# Typical Electrical Specs
+## Typical Electrical Specs
 
 <table>
     <thead>
@@ -42,7 +42,7 @@ The I²C bus is a communication protocol commonly used for PCB level transmissi
     </tbody>
 </table>
 
-# Signal Names
+## Signal Names
 
 <table>
     <thead>
@@ -66,7 +66,7 @@ The I²C bus is a communication protocol commonly used for PCB level transmissi
     </tbody>
 </table>
 
-# Pull-Up Resistors
+## Pull-Up Resistors
 
 The I²C bus uses open-drain drivers to allow for **compatibility** between chips that run of different voltages, bus arbitration, and hot-swapping. Thus pull-up resistors are essential for the bus to work. 
 
@@ -124,7 +124,7 @@ Typical pull-up resistor values are 10kΩ for up to a 100kHz bud rate, and 1kΩ 
 
 A **gotcha** during PCB design is to unintentionally **add multiple pull-up resistors to each bus line**. Maybe you added pull-up resistors to every I2C slave device, and then connected them to the same bus? Maybe you designed a plug-in board which had an I2C slave on it, and added resistors to that too? In any case, **try and make sure there is only one set of pull-up resistors**, associated with the I2C bus master. If you do need to have multiple resistors, make sure their **combined equivalent resistance does not violate** the I2C specifications.
 
-# Transmission Speeds
+## Transmission Speeds
 
 ## Overview
 
@@ -171,7 +171,7 @@ The high-speed mode allows for communcation rates of up to 3.4Mbps, which makes 
 
 Also, the clock signal has a high to low ratio of 1:2, which is different the the ratio of 1:1 for all other modes.
 
-# I²C Bus Protocols And Variants
+## I²C Bus Protocols And Variants
 
 There are variants on the I2C bus, defined and implemented by various manufactures. These include:
 
@@ -182,7 +182,7 @@ There are variants on the I2C bus, defined and implemented by various manufactur
 * ACCESS.bus
 * DDC, E-DDC - (Enhanced) Display Data Channel, used by the HDMI protocol send data from the sink to the source about what resolutions and frame rates it supports. The HDMI specification says it must support standard rate I2C (100kbit/s), with optional support for fast mode (400kbit/s).
 
-# I2C Applications
+## I2C Applications
 
 * Automotive (although the CAN/LIN bus is more popular in automotive environments due to the higher noise resistance)
 * Consumer
@@ -193,7 +193,7 @@ There are variants on the I2C bus, defined and implemented by various manufactur
 
 {{< figure src="/images/2011/09/typical-application-schematic-for-i2c-io-expander.png" width="411px" caption="A typical application schematic for an I2C I/O expander."  >}}
 
-# Addressing
+## Addressing
 
 All I2C slave devices must have an address. This address is used by the master to select which device to talk with. All addresses are 7 bits long (EDIT April 2016, this is no longer true, see the [10-bit Addressing section](/electronics/communication-protocols/i2c-protocol#10-bit-addressing)), and are left shifted by one and packed into the first byte which is sent across the I2C bus by the master (the final bit, bit 0, of the first byte, is used to signal whether a read or write operation is about to take place).
 
@@ -277,7 +277,7 @@ Bit 0 of the first address byte is the read/not-write (RnW) bit. **Note that whe
 
 The 10-bit addressing scheme has been to designed so that it can work on a bus alongside the 7-bit addressing scheme.
 
-# Transmission Distances And Buffer's
+## Transmission Distances And Buffer's
 
 {{< figure src="/images/2011/09/i2c-buffer-ic-example.jpg" width="800px" caption="An example from a NXP application note showing how their P82B96 I2C-bus buffering IC can utilise buffering and twisted pairs to increase the I2C communication distance."  >}}
 
@@ -305,17 +305,17 @@ If you follow by example, Nintendo's Wii hand controller is a good example of a 
 
 Rise-time accelerators, such as those used on the [NXP PCA9507 2-wire Serial Bus Extender](http://www.nxp.com/documents/data_sheet/PCA9507.pdf), can be used to extend the length of an I2C bus. They work by intelligently detecting when the bus voltage is rising (being pulled up by the pull-up resistors), and then injecting current to shorten the time it takes for the bus to reach a logic high voltage level. The current injector is then quickly turned off, allowing the I2C line to be pulled low again.
 
-# Hot-Swapping
+## Hot-Swapping
 
 ## Precharging
 
 A clever I2C trick for hot-swapping capability is to pre-charge the bus lines, as used on the [NXP PCA9511 Hot-swappable I2C Bus Buffer](http://www.marutsu.co.jp/contents/shop/marutsu/datasheet/PCA9511.pdf) (this also features rise-time accelerators). During insertion (assuming this chip is on a hot-swappable device which uses I2C), the bus lines are pre-charged to about 1V, which limits the worst-case capacitive disturbances on insertion due the I2C lines being a different voltage levels.
 
-# Clock Stretching
+## Clock Stretching
 
 A slave device can indicate that it is not ready to receive new data by holding the clock line (SCL) low. This tells the master to wait until the clock line is high before sending more data.
 
-# Complimentary/Useful I2C Devices
+## Complimentary/Useful I2C Devices
 
 * I/O Expanders - Used for trace reduction and routing simplification. Basically an IC with digital ports that can be turned on or off through I2C communication. Used to compliment processors with limited I/O, and drive port-hungry peripherals such as keypads (you can also get dedicated I2C keypad controllers)
 * I2C Multiplexers/Switches - Performs voltage translation/isolation and multiplexing of I2C traces. Useful when dealing with mixed-voltage I2C systems and for resolving address conflicts 
@@ -323,7 +323,7 @@ A slave device can indicate that it is not ready to receive new data by holding 
   
 {{< figure src="/images/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg" width="265px" caption="The C232HM-DDHSL-0 FTDI USB-to-MPSSE cable. Creates a bridge between your computer and a number of serial comm protocols such as SPI, I2C and UART."  >}}
 
-# Typical I2C Operation
+## Typical I2C Operation
 
 I2C is typically used to configure and talk to digital sensor IC's in an embedded environment. IC's such as accelerometers, capacitive sensors, digital thermometers usually have an I2c protocol for configuration and/or data transfer.
 
@@ -341,10 +341,10 @@ The following image shows an I2C slave that is not responding. Notice the absenc
 
 {{< figure src="/images/electronics-misc/i2c-waveform-with-nak-saleae-logic-analyser.png" width="600px" caption="An I2C slave that doesn't respond, no ACK on the 9th clock pulse."  >}}
 
-# Prototyping
+## Prototyping
 
 I try to use SPI or UART over I2C (if the option exists, and there are no other clear advantages/dis-advantages of choosing one over another) when prototyping because they tend to be easier protocols to debug. I2C is difficult because the data line is shared between master and slave (making it harder to work out what is sending what), and the transmission lines are pulled-up (hence it's hard/impossible to differentiate between a device driving the line or it being tri-stated).
 
-# Microcontroller Support
+## Microcontroller Support
 
 I2C is a very popular protocol and is supported by most microcontrollers. Some examples of microcontroller I2C support include the TI MSP430 Enhanced Universal Serial Communication Interface (eUSCI),[ PSoC 3, 4, and 5LP I2C drag'n'drop modules](/programming/microcontrollers/psoc/components#i2c) (both integrated and hardware fabric versions), and the Atmel Atmega TWI peripheral.

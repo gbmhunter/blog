@@ -9,7 +9,7 @@ url: /electronics/components/power-regulators/boost-converters
 
 [mathjax]
 
-# Overview
+## Overview
 
 Boost converters use a switching element, inductor, diode, and capacitor to convert an input voltage `\(V_{in}\)` into a higher or equal output voltage `\(V_{out}\)`.
 
@@ -17,7 +17,7 @@ Boost converters use a switching element, inductor, diode, and capacitor to conv
 
 In a real boost converter, the switch `\( SW \)` is usually realised 
 
-# Modes Of Operation
+## Modes Of Operation
 
 A boost converter can operate in three different modes of operation:  * Continuous conduction mode (CCM)  * Discontinuous conduction mode (DCM)  * Critical conduction mode (CrCM)  * Burst-mode
 
@@ -47,7 +47,7 @@ Burst-mode is a favourite for saving power when the load needs very little cur
 
 When the converter enters sleep, a number of power consuming components of the boost regulators control circuit can be disabled (e.g. oscillators, voltage references, op-amps), saving power.
 
-# Design Procedure
+## Design Procedure
 
 This assumes you already know:
 
@@ -119,29 +119,29 @@ The maximum reverse voltage of the diode must be at least equal to the output vo
 
 The same rules apply for routing boost converters as with any SMPS. See the PCB Routing section on the SMPS page for more information.
 
-# Light Load Instabilities
+## Light Load Instabilities
 
 Bad things can happen when boost converters are operated with light/no load. If the controller isn't smart enough to reduce the duty cycle down to near 0 when there is no or little load, the voltage across the capacitor can build up to a point where it causes damage to part of the circuitry.
 
 Also, if the converter is in DCM and the load current suddenly increases, the output voltage can sag greatly.
 
-# Turning Off/Disabling
+## Turning Off/Disabling
 
 While most boost controllers have an enable/disable pin, this doesn't actually disconnect the input from output, as the switching device is not in series with input and output, as it is in a buck Converter. Thus if you need the load completely disconnected from the input, you will need to add something like a P-Channel MOSFET or load switch to the front-end of the boost converter.
 
-# Start-up vs. Runtime Minimum Input Voltage Requirements
+## Start-up vs. Runtime Minimum Input Voltage Requirements
 
 Some boost converters have differing start-up and runtime minimum input voltage requirements. Typically, the boost converter requires a higher minimum input voltage to start (e.g. 18V), but once running, can run of a lower voltage (e.g. 500mV).
 
-# Bypass
+## Bypass
 
 Some boost converters designed for ultra-lower power applications have a **bypass mode**. When the output voltage is not needed to be higher than the input voltage, the converter enters a bypass mode in where most of the control circuitry is disabled, the converter stops switching, and the input voltage is "bypassed" straight to the output.
 
-# Max. Current Ratings
+## Max. Current Ratings
 
 One gotcha: The "max. current" rating that a manufacturer will provide with a boost controller with an integrated switch will usually be the maximum current rating of the switch. **This is not the maximum output current**, but rather the maximum input current. The maximum output current, assuming you have a higher output voltage, will be less than this.
 
-# Compensation Loop
+## Compensation Loop
 
 The compensation loop is part of the feedback mechanism. The below diagram shows a current-mode controlled boost converter with a transconductance amplifier (\( g_m \)) providing the feedback.
 

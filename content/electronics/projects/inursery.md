@@ -7,7 +7,7 @@ type: page
 url: /electronics/projects/inursery
 ---
 
-# Stats
+## Stats
 
 <table>
 	<tbody >
@@ -46,15 +46,15 @@ url: /electronics/projects/inursery
 	</tbody>
 </table>
 
-# Repo
+## Repo
 
 The code repository for the iNursery can be found on [GitHub here](https://github.com/gbmhunter/iNursery).
 
-# The Idea
+## The Idea
 
 Make a small temperature and light controlled environment for looking after small animals.
 
-# The Chamber
+## The Chamber
 
 One of my friends had a peltier-based portable automotive (12V) heater/cooler for food/drinks lying around unused.
 
@@ -74,7 +74,7 @@ The internal wiring was simple, the input power directly connected to a peltier 
 
 It seemed to have an temperature-based auto-cutoff when heating (it gave a me an "o shit I've broken it" scare the first time it kicked in).
 
-# Measuring The Power Usage
+## Measuring The Power Usage
 
 I had to measure the power usage of the heater/chiller to get an idea on what power supply I would need and how serious any additional power electronics would need to be.
 
@@ -120,13 +120,13 @@ Here are the measurements...
 	</tbody>
 </table>
 
-# The Power Supply
+## The Power Supply
 
 I found a 12V, 5A AC/DC power supply from Jaycar that after measuring the power usage of the peltier, seemed suitable for the job.
 
 {{< figure src="/images/project-inursery/011-the-12v-5a-adapter.jpg" caption="The ratings for the PSU."   >}}
 
-# The Brains
+## The Brains
 
 For the brains of the project, I decided to use an Arduino and LCD/button shield because:
 
@@ -135,7 +135,7 @@ For the brains of the project, I decided to use an Arduino and LCD/button shield
 
 For more on the Arduino, see the Firmware section.
 
-# Adding The LCD Screen
+## Adding The LCD Screen
 
 I needed to create space at the top of the heater/chiller for the LCD screen. This meant cutting a hole in the plastic:
 
@@ -151,7 +151,7 @@ Now to test the fit...
 
 See the UI section for more on the LCD screen.
 
-# Controlling The Peltier
+## Controlling The Peltier
 
 I tried a 2A/channel, 2 channel Arduino DC motor driver shield. However, it got too hot, probably because MOSFET's don't share current well.
 
@@ -169,7 +169,7 @@ I utilized the existing fan on the heater/cooler (that was used to cool the exte
 
 {{< figure src="/images/project-inursery/025-drilling-holes-for-mosfet-cooling.jpg" caption="Drilling holes for redirecting airflow across the H-bridge MOSFETs."   >}}
 
-# But How To Measure Temperature?
+## But How To Measure Temperature?
 
 I had some MCP9700E IC's lying around spare. These are linear analogue output temperature sensors, which are extremely easy to interface with a microcontroller. Their equation is:
 
@@ -189,7 +189,7 @@ And then heatshrinked it all up to be semi-water-proof and tidy.
 
 {{< figure src="/images/project-inursery/015-temp-sensor-construction-completed.jpg" caption="The temperature sensor construction completed."   >}}
 
-# Lights!
+## Lights!
 
 Animals need light, and since the heater/chilled was fully sealed, it needed an artificial light source. I choose traditional tungsten bulbs over something newer such as a LED because they emit a spectra of light which is similar to what the sun emits.
 
@@ -215,7 +215,7 @@ The workshop (a.k.a. dining room table, only because the flatmates were all away
 
 {{< figure src="/images/project-inursery/022-messy-workbench.jpg" caption="A messy workbench."   >}}
 
-# The Pros And Cons Of Breathing
+## The Pros And Cons Of Breathing
 
 Its not much of a nursery if it can provide warmth and light but not oxygen. And the original heater/cooler was designed specifically to be as air-tight as possible. It even had a rubber seal between the lid and base!
 
@@ -231,7 +231,7 @@ And here are the three air-pipes fully assembled...
 
 {{< figure src="/images/project-inursery/037-the-air-pipes-finished-outside.jpg" caption="The outside of the air-pipes once they have been mounted in the iNursery"   >}}
 
-# The Firmware
+## The Firmware
 
 I used C++ and a mega-loop structure. I didn't see a need for an RTOS, since the control is going to be relatively simple. The below image is part of the mega-loop.
 
@@ -241,7 +241,7 @@ I had difficulty with Arduino IDE's when using custom code sources (which don't 
 
 {{< figure src="/images/project-inursery/using-arduino-make-file-to-compile-and-upload-in-ubuntu.png" caption="Programming the Arduino using a makefile and Ubuntu."   >}}
 
-# Peltier Control
+## Peltier Control
 
 The H-bridge driving the peltier needed to be controlled from the Arduino code. Since the peltier unit is pretty much resistive, I didn't need to use any fancy switching schemes such as those used when driving inductive motors. I just needed to turn top-left and bottom-right MOSFET on, then off, wait a bit (to prevent shoot-through due to turn-off times), and then repeat with the top-right and bottom-left MOSFETs.
 
@@ -249,7 +249,7 @@ In terms of the control methodology, I tried basic on/off (bang-bang) control, b
 
 For the PID, I used the Arduino PID library. After some testing and tweaking, I discovered I only really needed proportional control if I could deal with a small amount of oscillation (1 degree or so). So no integral of derivative control was added.
 
-# UI
+## UI
 
 The LCD and button shield mounted ontop of the Arduino provided all the UI elements I needed!
 
@@ -267,7 +267,7 @@ The LCD shield came with five UI buttons. Four are directional (up, down, left, 
 
 {{< figure src="/images/project-inursery/028-inursery-lcd-at-night.jpg"    >}}
 
-# Connecting It All Up
+## Connecting It All Up
 
 Luckily, there was some spare space around where the heatsink and existing electronics went to fit the H-bridge, terminal blocks, and extra wiring I had added. It was a bit of a tight fit! Funnily enough, it's packed so tight that the circuit board can't move around, even though it is not mechanically fixed with anything!
 
@@ -277,7 +277,7 @@ And this is what it looked like with the lid closed...
 
 {{< figure src="/images/project-inursery/046-electronics-lid-closed.jpg" caption="The fan, heatsink, H-bridge and existing electronics are all behind this plastic panel."   >}}
 
-# The Finished Product
+## The Finished Product
 
 The finished iNursery, when closed!
 
@@ -287,7 +287,7 @@ The finished iNursery, when open...
 
 {{< figure src="/images/project-inursery/041-finished-and-open.jpg" caption="The finished iNursery!"   >}}
 
-# Max And Min Temps
+## Max And Min Temps
 
 ## Before Adding Ventilation
 
@@ -303,17 +303,17 @@ Note that the ambient temperature was 21°C.
 
 Note that ambient temperature was 25°C.
 
-# Time
+## Time
 
 The total time spent on the project was 41 hours.
 
-# Cost
+## Cost
 
 All prices are in NZ$ (New Zealand dollars).
 
 The total cost was NZ$166.86.
 
-# What To Do Next?
+## What To Do Next?
 
 If I ever made another version of improved this one, I probably would:
 
@@ -321,6 +321,6 @@ If I ever made another version of improved this one, I probably would:
 * Lower the proportional constant and add integral control into the mix, to reduce oscillations and provide better response over the full temperature range
 * Add EEPROM support so if a power-cut occurs it turns back on at the last set temperature (also makes it nicer to use when just turning it on again)
 
-# Gallery
+## Gallery
 
 {{< gallery dir="/images/project-inursery" />}}

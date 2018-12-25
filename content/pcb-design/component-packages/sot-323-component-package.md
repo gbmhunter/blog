@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sot-323-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
 <tbody >
@@ -160,7 +160,7 @@ This package is a little confusing because it shares two common names, the SOT-3
 
 If the pin number isn't specified, it is likely to be the 3 pin variant (this is the most common).
 
-# Images
+## Images
 
 {{< figure src="/images/electronics-packages/component-package-sot-323-5-dimensions-and-land-pattern.png" caption="Dimensions and recommended land pattern for the SOT-323-5 (SC-70-5) component package."  width="800px" >}}
 

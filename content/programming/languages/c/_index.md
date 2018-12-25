@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/c
 ---
 
-# Overview
+## Overview
 
 This is the main parent page for C programming. The information in the following child pages is mostly geared towards C programming in an embedded environment, although there are some parts dedicated to programming on Linux and other environments.
 
-# Endless Loops
+## Endless Loops
 
 Endless loops are usually used in embedded programming for the main function. They are used to keep the code running continuously, since exiting the main function from most embedded systems is undefined (and why would you want to?). In a non-scheduler based environment (i.e., no operating system), it is commonly called the "main loop". The only code not placed inside (or called from) the main loop is the initialisation code and interrupt handlers. Two common ways of making an endless loop are:
 
@@ -38,7 +38,7 @@ for(;;);
 
 In an embedded operating system based environment, there may be more than one endless loop. Typically, there is one per concurrent task or process (such as with FreeRTOS). An interrupt driven scheduler controls which loop the processor is currently executing by changing the CPU's instruction pointer.
 
-# Coding Standards
+## Coding Standards
 
 The Joint Strike Fighter C++ Coding Standards (semi-applicable to C also). Created by Lockhead Martin. A bit of a hefty read (I would never read this cover-to-cover unless I had too), but there is some good stuff in there. [scribd id=3969122 key=key-2kngufjhmo9zcs93g4mf mode=list] There are programs out there which format and tidy up your code. One such example is AStyle (or Artistic Stylle), a open-source program which is a
 
@@ -46,6 +46,6 @@ The Joint Strike Fighter C++ Coding Standards (semi-applicable to C also). Creat
 
 Click [here](http://astyle.sourceforge.net/) to visit their website.
 
-# External Links
+## External Links
 
 The C library reference ([http://www.cplusplus.com/reference/clibrary/](http://www.cplusplus.com/reference/clibrary/)) provides good explanations on standard functions that are included with the C programming language, organised by file and then by function. Also check out the [GNU C Pre-processor reference](http://gcc.gnu.org/onlinedocs/cpp.pdf).

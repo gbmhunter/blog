@@ -7,13 +7,13 @@ type: page
 url: /programming/microcontrollers/raspberry-pi
 ---
 
-# Overview
+## Overview
 
 The RaspberryPi is a cheap, fully-functional micro-computer.
 
 {{< figure src="/images/project-autoelectricblanket/raspberry-pi-with-lots-of-cables-filtered.jpg" caption="The RaspberryPi while testing."  width="800px" >}}
 
-# Quick Setup
+## Quick Setup
 
 www.raspberrypi.com has released software called NOOBS (new out-of-the-box software), which makes it really easy to setup the RPi. Just download NOOBS (which was just over 1GB at v1.2.1), format ([go here](https://www.sdcard.org/downloads/formatter_4/)) then unpack NOOBS onto the SD card, and your good to plug the SD card into the RPi and power up (NOOBS will present you with various operating systems to install on start-up).
 
@@ -40,11 +40,11 @@ At the bare minimum, you'll also need a USB keyboard, mouse (hard-outs may be ab
 </tbody>
 </table>
 
-# Longer Setups
+## Longer Setups
 
 You can also write images directly to the SD card. The recommended tool for this is the open source program [Win32DiskImager](http://sourceforge.net/projects/win32diskimager/).
 
-# Operating Systems
+## Operating Systems
 
 There are many operating systems that are compatible with the RPi.
 
@@ -199,11 +199,11 @@ Comments:
 
 Volumio began as the RaspyFi project in December 2012. It then expanded to support many embedded platforms including the Udoo and BeagleBoard. IMO, Volumio looks more polished than the Pi MusicBox.
 
-# RPi Store
+## RPi Store
 
 There is an [official RPi store](http://store.raspberrypi.com/projects) that offers applications and games (some cost, some are free) for the RPi.
 
-# Video Output
+## Video Output
 
 The RPi has two native video outputs, HDMI, and RCA/composite. **You cannot use both at the same time. **Converting any of these two to VGA is rather expensive.
 
@@ -211,7 +211,7 @@ The RPi has two native video outputs, HDMI, and RCA/composite. **You cannot use 
 
 The RaspberryPi also has a DSI output connector (the 15-pin connector that is not on the edge of the board), which is a high-speed, differential, serial point-to-point bus designed by the mobile industry to connect a host controller up to a graphics display device (normally an LCD screen). However, it is very difficult to use these on the RaspberryPi, as the pins are controller by the GPU, which is controlled by closed software written by Broadcom. I don't know of anyone who has managed to connect anything to this 15-pin connector!
 
-# Controlling The GPIO
+## Controlling The GPIO
 
 [Understanding Outputs](http://www.thebox.myzen.co.uk/Raspberry/Understanding_Outputs.html) explains the GPIO pins on the RaspberryPi really well.
 
@@ -221,15 +221,15 @@ There is also the [pi-gpio module](https://npmjs.org/package/pi-gpio) for contro
 
 {{< figure src="/images/project-autoelectricblanket/simple-led-connected-to-raspberry-pi-gpio.jpg" caption="I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing."  width="800px" >}}
 
-# PWM
+## PWM
 
 The RPi has one hardware PWM output (yes, only one, this isn't a microcontroller). Unfortunately this is shared with the audio system, so you can't use the PWM and listen to audio through the 3.5mm jack at the same time. Other GPIO can be bit-bashed with software PWM.
 
-# How To Change Keyboard Layout
+## How To Change Keyboard Layout
 
 The default keyboard layout is British, so you might find yourself getting a pound sign when you really want a dollar sign (and other quirky differences). To change the keyboard mapping, open the file etc/default/keyboard with a text editor like nano.
 
-# Updating
+## Updating
 
 Assuming you have an internet connection, run:
 
@@ -239,7 +239,7 @@ sudo apt-get update
 sudo apt-get upgrade
 ```   
 
-# SSH
+## SSH
 
 You can log into a RaspberryPi from another computer using SSH. Type the following command into a terminal:
 
@@ -249,26 +249,26 @@ ssh 192.168.1.100 -l pi
 
 where you replace 192.168.1.100 with the IP address of the RaspberryPi (this is the RaspberryPi's local address, which is only accessible via another computer on the intranet). The flag -l pi tells SSH to login with the username pi, not the default username of the calling terminal.
 
-# Useful Packages To Install
+## Useful Packages To Install
 
 ```sh    
 # GIT repo engine
 sudo apt-get install git
 
-# Advanced make-like compiler
+## Advanced make-like compiler
 sudo apt-get install scons
 
-# GCC/G++ compilers and additional tools
+## GCC/G++ compilers and additional tools
 sudo apt-get install build-essential
 
-# C++ wrapper for the perl-compatible regex engine (PCRE)
+## C++ wrapper for the perl-compatible regex engine (PCRE)
 sudo apt-get install libpcre++-dev
 
-# API for XUL embedders and Gecko applications (the main engine for Mozilla
+## API for XUL embedders and Gecko applications (the main engine for Mozilla
 # programs such as Firefox)
 sudo apt-get install xulrunner-dev
 
-# The boost library
+## The boost library
 sudo apt-get install libboost-dev libboost-program-options-dev libboost-thread-dev libboost-filesystem-dev
 ```
 
@@ -307,7 +307,7 @@ This [great tutorial on the Kitware blog](http://www.kitware.com/blog/home/post/
 sudo apt-get install npm
 ```    
 
-# Uses
+## Uses
 
 ## Education
 

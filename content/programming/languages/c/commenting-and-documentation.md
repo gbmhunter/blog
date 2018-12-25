@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/commenting-and-documentation
 ---
 
-# General Tips
+## General Tips
 
 * Always use \\ style comments where possible. This allows you to use /* style comments for commenting out large blocks of code when debugging. If you want to comment a block of code which has /* comments inside it, you will run into problems! (unfortunately, */ style comments don't nest in c).
 * However, sometimes you still need to comment out blocks of code which have /* comments already inside them (maybe your using someone else's code?). To do this, you can use the preprocessor trick #if 0 (see code below).
@@ -32,7 +32,7 @@ void test1()
 #endif // #if 0
 ```
 
-# C Supports URL's, Wait What?
+## C Supports URL's, Wait What?
 
 Did you know that:
 
@@ -42,7 +42,7 @@ http://www.google.com
 
  is valid syntax in C? Wait, what? O.K., I was lying, C doesn't support URL's, but the syntax is still valid! What it actually represents is a label (http:), followed by a single-line comment (//www.google.com).
 
-# Commenting Styles
+## Commenting Styles
 
 Some people put function descriptions after the function name and parameters, and before the opening curly brace (for example, some windows driver files). I find this method weird and hard to read.
 
@@ -79,6 +79,6 @@ Return Value:
     rest of function code...
 ```
 
-# Doxygen
+## Doxygen
 
 Doxygen is a powerful documentation generator that can be used with the C language. For more information and code examples with Doxygen, go to the [Doxygen page](/programming/general/doxygen).

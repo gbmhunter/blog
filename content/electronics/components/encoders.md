@@ -7,11 +7,11 @@ type: page
 url: /electronics/components/encoders
 ---
 
-# Overview
+## Overview
 
 Encoders are devices that measure the position of something. The word 'encoder' typically refers to a rotational encoder, although linear encoders do exist. Rotational encoders usually connect to a shaft (or have provision for one).
 
-# Incremental Encoders
+## Incremental Encoders
 
 Incremental encoders are encoders that output 'step-change' data, rather than an absolute position of an object (however, incremental encoders can have an absolute output, that typically outputs one pulse per revolution, is called channel N, and can be used to determine absolute position).
 
@@ -21,7 +21,7 @@ The phase difference can be determined in electronics hardware by using a 'D typ
 
 {{< figure src="/images/electronics-misc/quadrature-phase-detection-circuit.png" caption="A simple quadrature phase detection circuit using a D flip-flop."  width="600px" >}}
 
-# Overflow Protection
+## Overflow Protection
 
 Overflow of encoder inputs in embedded firmware is common, because of the large ranges covered by an encoder that is connected to object which is moving quickly for long periods of time (e.g. a spinning shaft at 6000rpm).
 
@@ -95,12 +95,12 @@ One way is use software overflow protection, as shown below. This takes a overfl
     }
 ```
 
-# Embedded Hardware Encoder Peripherals
+## Embedded Hardware Encoder Peripherals
 
 
 The [PSoC range of microcontrollers](/programming/microcontrollers/psoc) contain reconfigurable hardware that can used to make a hardware peripheral that counts quadrature output from an encoder. See the [PSoC Component page](/programming/microcontrollers/psoc/components) for more information.
 
-# Datasheet Errors
+## Datasheet Errors
 
 
 The datasheet for the Baumer BHK series of incremental encoders has an error on the encoders wiring diagram. The pinout on page (3/4) for the 8-pin connector, used for the 05A series, is mislabelled. All the pin numbers around the circumference need to be rotated anti-clockwise by one pin. Pin 2 should be pin 1, pin 3 should be pin 2, e.t.c. Pin 8 remains the same.

@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/testpoints
 ---
 
-# Overview
+## Overview
 
 Test points are essentially a place on a PCB where you can connect a multimeter or scope probe and see what the circuit is doing (voltage wise). They are almost always necessary for prototyping PCB's and also for manufacturing if you ever want to diagnose faulty boards. Test points are becoming more important with the frequent use of SMD components since it harder to probe a component when they are fractions of  millimeter wide. Back when through-hole components were in, every component was a test-point!
 
@@ -17,7 +17,7 @@ A common and easy way to add test points onto a PCB is to leave some vias **unte
 
 {{< figure src="/images/electronics-misc/pcb-untented-vias-as-test-points.jpg" caption="Notice the untented vias on a PCB. These can be used as test-points in space-constrained designs."  width="500px" >}}
 
-# Purpose-Built Testpoints
+## Purpose-Built Testpoints
 
 If you want a more serious testpoint something you can clip something onto, many manufacturers make custom testpoints. Even though these are designed to be miniature SMD test-points, the manufacturers normally recommend a largish land pad. Do not skimp on this, as you require this land-area so that the pad doesn't rip of when you clip test leads to the test-point. Be warned, for what are seemingly simple pieces of bent metal, they are not cheap! Some examples are:
 

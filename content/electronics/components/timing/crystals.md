@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/timing/crystals
 ---
 
-# Overview
+## Overview
 
 _Crystals_ (also called by the more generic term _oscillator_, although oscillators are also used to refer to other "oscillating" components) are electrical components which output a periodic waveform that can be used as a clock source for digital logic (which includes microcontrollers, it's main use).
 
@@ -17,11 +17,11 @@ I have also seen them being called "SMD Tuning Forks". WTF? I'm putting this dow
 
 {{< figure src="/images/2012/01/smd-tuning-fork-weird-name-for-crystal.png" width="275px" caption="Weird name for a crystal, don't you think? Image from http://www.foxonline.com/pdfs/fsrlf.pdf."  >}}
 
-# Schematic Symbol
+## Schematic Symbol
 
 Unfortunately, many different designator prefixes are used to represent a crystal. Some of the most common are:  * XC  * XO  * OCXO (oven-controller crystal oscillator)
 
-# Important Parameters
+## Important Parameters
 
 Sorted alphabetically.
 
@@ -65,13 +65,13 @@ Stability is a measure of how repetitive, or stable, the clocks frequency is ove
 
 Typical stability is around 30-50ppm.
 
-# What The Crystal Output Looks Like...
+## What The Crystal Output Looks Like...
 
 The following waveform is the voltage on one of a 12MHz SMD crystals pins, when driven by a standard microcontroller.
 
 {{< figure src="/images/2012/01/12mhz-crystal-output-when-driven-by-microcontroller.jpg" width="1200px" caption="The output voltage waveform of a 12MHz crystal being driven by a standard microcontroller."  >}}
 
-# Oven-Controlled Crystal Oscillators (OCXOs)
+## Oven-Controlled Crystal Oscillators (OCXOs)
 
 High-performance crystal oscillators are kept with temperature-controlled environments to increase the stability of the oscillator. They are called oven-controlled crystal oscillators (OCXOs).
 
@@ -81,7 +81,7 @@ The crystals are designed to have a _turning-point_, a point of greatest stabili
 
 Peltier devices can be used as the "oven" to keep the crystal's temperature constant.
 
-# Popular Crystal Packages
+## Popular Crystal Packages
 
 The HC-49/U package is a popular choice for older through-hole crystals.
 

@@ -7,13 +7,13 @@ type: page
 url: /programming/integrated-development-environments-ides/vim
 ---
 
-# Overview
+## Overview
 
 vim is a command-line based text editor.
 
 It is very useful for editing code and config files when you only have access to a command-line, e.g. when your are ssh'ed into a remote machine.
 
-# Find And Replace
+## Find And Replace
 
 To find every occurrence of `foo` and replace it with `bar` we can use the substitute command (`s`):
 

@@ -7,19 +7,19 @@ type: page
 url: /electronics/circuit-design/digital-logic
 ---
 
-# Overview
+## Overview
 
 Digital logic is the study and application of the fundamentals in digital (binary) electronics, e.g. gates, flip-flops, state machines.
 
-# Karnaugh Maps
+## Karnaugh Maps
 
 Karnaugh maps are a way of simplifing combinational logic, often used before realising a combination equation into a number of gates to reduce the complexity.
 
-# Logic Simulators
+## Logic Simulators
 
 [CEDAR Logic Simulator](http://sourceforge.net/projects/cedarlogic/) is my personal favourite. Free, easy to use, colours the wires depending on their state, and allows for named nets as well as direct connections.
 
-# Example Logic Circuits
+## Example Logic Circuits
 
 ## 6-State Binary Counter
 

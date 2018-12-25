@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/to-39-to-205ad-component-package
 ---
 
-# Overview
+## Overview
 
 <table><tbody ><tr >
     <td>Name</td>
@@ -91,7 +91,7 @@ url: /pcb-design/component-packages/to-39-to-205ad-component-package
 </tr>
 </tbody></table>
 
-# Comments
+## Comments
 
 The TO-39 package is a metallic can package used for hermetically sealing semiconductor devices. It usually has three legs (the TO-39-3 variant), but variants with up to 10 legs are in use. The metal case can be gold coated. As a large through-hole package, it is being used less in recent years, although it still finds applications with high-end, sensitive electronic devices such as UV LEDs and IR thermometers.
 
@@ -103,10 +103,10 @@ The ground pin of the TO-39 package is usually connected to the metal case. The 
 
 You can get clip-on heatsinks for the TO-39 package with thermal resistances of around `\(30-40^{\circ}{\rm C}/W\)`, which drops the `\(T_{JA}\)` to around `\(45-55^{\circ}{\rm C}\)`.
 
-# Photos
+## Photos
 
 {{< figure src="/images/2015/04/to-39-component-package-photo.jpg" width="265px" caption="A photo of the TO-39 component package."  >}}
 
-# Other Images
+## Other Images
 
 {{< gallery dir="/images/electronics-packages/to-39" />}}

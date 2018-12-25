@@ -7,7 +7,7 @@ type: page
 url: /programming/compilers/gcc/gcc-compiler-optimisation-levels
 ---
 
-# Fancy Optimisations
+## Fancy Optimisations
 
 One aspect of GCC optimisation that still amazes me is it's ability to convert specific repetitive operations into highly-efficient mathematical sequence equations.
 

@@ -7,7 +7,7 @@ type: page
 url: /programming/embedded-linux/zynq/installing-xsdb-and-jtag-drivers
 ---
 
-# Overview
+## Overview
 
 Use this page to **help you install Diligent JTAG drivers on your computer so you can use JTAG to the Xilinx Zynq-7000 ZC702 board via the micro-USB connection**. No special JTAG programmer is required, as the ZC702 development board has a USB-to-JTAG module on board.
 
@@ -15,7 +15,7 @@ Use this page to **help you install Diligent JTAG drivers on your computer so yo
 
 This tutorial is designed for people running a Ubuntu client using VMware on a Windows host.
 
-# Install Diligent JTAG Drivers On Windows
+## Install Diligent JTAG Drivers On Windows
 
 You will need the cable drivers on both Windows and Ubuntu (you need them on Windows so that you can do a USB pass through to the virtual machine). Download and install either Vivado Design Suite (large!) or Vivado Lab Edition (smaller install size) from [https://www.xilinx.com/support/download.html](https://www.xilinx.com/support/download.html) on Windows. This should install the Diligent JTAG drivers.
 
@@ -25,7 +25,7 @@ Plug the micro USB cable into the ZC702 dev. board and your computer.
 
 **NOTE: On recent versions of Mac OS (as of Aug 2017), it looks like the JTAG device on the ZC-702 is recognized as a "Digilent Adept USB Device" without the installation of any additional drivers.**
 
-# Install Diligent JTAG Drivers And SDK On Ubuntu
+## Install Diligent JTAG Drivers And SDK On Ubuntu
 
 Download and install the SDK on Ubuntu (again, from [https://www.xilinx.com/support/download.html](https://www.xilinx.com/support/download.html)). This includes the xsdb program, which is located
 

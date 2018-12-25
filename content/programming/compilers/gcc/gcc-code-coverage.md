@@ -7,7 +7,7 @@ type: page
 url: /programming/compilers/gcc/gcc-code-coverage
 ---
 
-# Overview
+## Overview
 
 GCC has built in functionality to generate code coverage data for libraries and executables you build with it. A number of other GNU tools are provided which can then read and display the generated coverage data
 
@@ -39,7 +39,7 @@ And then generate HTML files with:
 
 These visual HTML files are put into the out/ directory and can be viewed in your browser.
 
-# Troubleshooting
+## Troubleshooting
 
 **undefined reference to `__gcov_merge_add`**
 

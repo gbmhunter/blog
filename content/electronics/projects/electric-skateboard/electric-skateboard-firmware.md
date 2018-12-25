@@ -7,7 +7,7 @@ type: page
 url: /electronics/projects/electric-skateboard/electric-skateboard-firmware
 ---
 
-# Overview
+## Overview
 
 {{< figure src="/images/programming-misc/bit-bucket-logo.png" caption="The BitBucket logo. Image from https://bitbucket.org/."  width="320px" >}}
 
@@ -17,7 +17,7 @@ The firmware is public and can be downloaded as a Mercurial repo on www.bitbucke
 
 {{< figure src="/images/electronics-electricskateboard/electric-skateboard-c-code-screenshot.png" caption="Screenshot of the electric skateboard firmware, showing main.c."  width="600px" >}}
 
-# Wireless Comms
+## Wireless Comms
 
 ## General Format
 
@@ -57,15 +57,15 @@ The remote initiates the communication. The board listens for a package sent fro
 
 The remote then flashes the 'in-range' LED, and waits for the user to press the on button. When this occurs, the remote sets the on status bit high. The board waits for this bit in the received packages to go high, and then itself goes into the on state.
 
-# Battery Charge Monitoring
+## Battery Charge Monitoring
 
 The state of both the 48V 10Ah LiFePO4 skateboard battery and 9V Ni-MH remote battery is measured with ADC's, using resistor voltage dividers to scale the voltage down to a level safe for the microcontrollers. Voltage measurement provides an O.K. estimate of the batteries state-of-charge, however, the 48V battery's voltage drops when gunning it, making the display jump around a bit. The batteries charge is displayed using a 3-LED bar graph-type kind of setup on the remote. The LED's are flashed to increase the resolution of the graph (the flash rate of one LED increases as the voltage drops, before moving down to the next LED).
 
-# Speed Control
+## Speed Control
 
 Speed control is performed with a fixed-frequency, variable duty-cycle PWM peripheral. This is then low-pass filtered and amplified with a bit of external circuitry before going into the DC motor controller (which was designed for POT control, hence the LPF).
 
-# Programming
+## Programming
 
 ## Prototyping
 

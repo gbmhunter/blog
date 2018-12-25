@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-sharp
 ---
 
-# String Manipulation
+## String Manipulation
 
 `<string type>.IndexOf` - Searchs for a particuler character within a string, and returns the position of the first instance found. Can specify where in the string to start looking, as well as how many characters to look through
 
@@ -38,7 +38,7 @@ Use the `Convert.ToString()` class to convert to a hexadecimal string. The case 
 outputString = value.ToString("X4");
 ```
 
-# Populating A ComboBox From An Enumeration
+## Populating A ComboBox From An Enumeration
 
 Populating a combo box from an enumeration can save heaps of typing and manual work to enter each item individually. It is done easily with the one line of code below:
 
@@ -48,7 +48,7 @@ comboBox.DataSource = Enum.GetValues(typeof(<enumeration>));
 
 You can also use the actual value of an Enum rather than it's name by casting it to an int.
 
-# Iterating Through An Enumeration
+## Iterating Through An Enumeration
 
 Use the following code:
 
@@ -59,15 +59,15 @@ foreach (int i in Enum.GetValues(typeof(myEnum)))
 }
 ```
 
-# Running .NET On Non-Windows Platforms
+## Running .NET On Non-Windows Platforms
 
 There is a popular "cross platform, open source, .NET development framework" called [Mono](http://www.mono-project.com/). It is an open source implementation of the .NET framework which can run on a number of devices including Linus, Mac OS, Windows (of course), and even the [RaspberryPi](http://www.amazedsaint.com/2013/04/hack-raspberry-pi-how-to-build.html)!
 
-# Signal Processing
+## Signal Processing
 
 The [Math.Net project](http://www.mathdotnet.com/) contains the ["Neodym" library](http://neodym.mathdotnet.com/) for signal processing in C#. See the [Signal Processing page](/programming/general/signal-processing) for more information.
 
-# Rounding
+## Rounding
 
 The Math library (Math.<some function>) supports basic rounding. However, here is a trick to round to any specified value. You basically divide the number by the precision (the number to want to round to, e.g. 0.1, 0.25, 5 e.t.c), then use standard rounding on the result, and lastly multiply the rounded number by the precision to get the answer.
 
@@ -101,11 +101,11 @@ static public double RoundToPrecision(double value, double precision, double off
 }
 ```
 
-# Profiling And Performance Tuning
+## Profiling And Performance Tuning
 
 To programs to do this are SlimTune and EQATEC.
 
-# Command-Line Parsers
+## Command-Line Parsers
 
 Command-line parsers are a good way for user-program interaction and well as computer-computer communication. There are quite a few free and opensource C# Command-Line Parsers out there. Their core functionality is similar to the C-based linux [getopt()](http://www.gnu.org/software/libc/manual/html_node/Getopt.html) command, but incorporate the powerful functionality of the .NET language. Most use inline lambda notation to create the equivalent of call-back functions when registering the parameters.
 
@@ -142,18 +142,18 @@ NuGet: install-package ManyConsole
 
 This library supports multiple commands, which is useful if you want to use the command-line style for communication between two computers/microcontrollers. It uses the NDesk.Options library. In my opinion, ManyConsole is hard to use, and requires all the commands/parameters to be created at compile time as classes.
 
-# Microsoft Office Program Manipulation With C#
+## Microsoft Office Program Manipulation With C#
 
 You can manipulate Microsoft Office applications quite easily within the .NET framework (which includes C#). See the following page I wrote for more information.
 
 => [Windows Office Application Interface](/programming/c-programming-2/windows-office-application-interface)
 
-# Installing Third-Party Libraries
+## Installing Third-Party Libraries
 
 I recommend a package manager like NuGet is used to install third-party libraries/packages whenever possible. NuGet allows you to select a pre-compiled third-part library from a large online database and then install it into a Visual Studio project at the click of a button. It also removes a library just as quickly. The image below shows the NuGet package management screen
 
 {{< figure src="/images/programming-misc/screenshot-of-nuget-plugin-for-visual-studio.jpg" caption="A screenshot of the NuGet plugin for Visual Studio."  width="700px" >}}
 
-# Other Resources
+## Other Resources
 
 If you have the money, you can buy the MS Word component [Spire.Doc from E-IceBlue](http://www.e-iceblue.com/Introduce/word-for-net-introduce.html). It provides an API to easily create and manipulate Word documents in an easier manner than with Microsoft's standard library.

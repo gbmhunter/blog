@@ -7,11 +7,11 @@ type: page
 url: /electronics/circuit-design/logic-familes
 ---
 
-# HSTL
+## HSTL
 
 HSTL compares the input voltage with a reference voltage.
 
-# CMOS
+## CMOS
 
 ## Overview
 

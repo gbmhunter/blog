@@ -7,7 +7,7 @@ type: page
 url: /programming/build-systems-and-package-managers/buckaroo
 ---
 
-# Installation
+## Installation
 
 **Ubuntu**
 
@@ -38,6 +38,6 @@ url: /programming/build-systems-and-package-managers/buckaroo
 
     This will install Java and Ant if they are required, so this step may take a while.
 
-# Dependencies
+## Dependencies
 
 Buckaroo only supports downloading dependencies (packages) from GitHub, GitLab or BitBucket. It does not support the use of local (file system) dependencies.

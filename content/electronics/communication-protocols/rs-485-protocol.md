@@ -7,7 +7,7 @@ type: page
 url: /electronics/communication-protocols/rs-485-protocol
 ---
 
-# Overview
+## Overview
 
 The RS-485 communication protocol is a differential, multi-drop, half-duplex, two-wire communication protocol. It was formally specified in 1983 by the Electronics Industries Association (EIA).
 
@@ -72,7 +72,7 @@ A common and cheap way to implement RS-485 are to use half-duplex transceivers. 
 
 Some of the receivers have slew-rate limiting to reduce emissions, at the cost of having a lower maximum data rate (typically around 250kbps). Some also have built-in human body ESD protection (15kV), so you don't have to add external TVS diodes (which normally validates the increase in price you pay for the chips with this feature).
 
-# Standards
+## Standards
 
 The TIA/EIA 485 standard governs the RS-485 protocol specifications.
 
@@ -80,17 +80,17 @@ The RS-485 standard only defines the electrical specifications of the interface,
 
 Thus, the RS-485 can be incorporated into higher-level standards which specify things such as the messaging protocol, and use RS-485 to define the physical layer.
 
-# Transmission Distances
+## Transmission Distances
 
 Because RS-485 is a differential communication protocol, it can achieve far greater communication distances than say, UART, I2C or SPI.
 
 A distance of 1.22km (4000 feet) is achievable at a data rate of 100kbps.
 
-# Baud Rate
+## Baud Rate
 
 RS-485 transceivers usually top out at about 50-100Mbps.
 
-# Node Count
+## Node Count
 
 Higher baud rate transceiver IC's usually support a lower number of total nodes on the RS-485 bus.
 
@@ -153,17 +153,17 @@ RS-485 introduces the term unit load. A unit load is a specified load impedance 
 </table>
 
 
-# Termination Resistors
+## Termination Resistors
 
 The TIA/EIA 485 standard does not specifically state what the characteristic impedance of the twisted-pair cable should be, nor the value of the termination resistors. However, it does provide recommendations, and states that the twisted-pair cable should have a characteristic impedance of `\(120\Omega\)` whenever possible.
 
 This implies that `\(120\Omega\)` termination resistors should be used with this twisted-pair cable. Termination resistors of 120R connected between the two differential lines work well at reducing reflections along long cables.
 
-# Receiver Hysteresis
+## Receiver Hysteresis
 
 Receiver hysteresis is normally around 80mV.
 
-# Standard Pinout
+## Standard Pinout
 
 There is somewhat of a standard pinout for RS-485 transceivers in 8-pin component packages as follows:
 
@@ -270,11 +270,11 @@ There is somewhat of a standard pinout for RS-485 transceivers in 8-pin componen
 
 8-pin packages that RS-485 transceivers come include DIP-8, SOIC-8, TSSOP-8 and MSOP-8. Example transceivers that follow this "standard" include the [Texas Instruments DS485](http://www.ti.com/lit/ds/symlink/ds485.pdf), [Linear Technology LTC1480](http://cds.linear.com/docs/en/datasheet/1480fa.pdf).
 
-# Higher-Level Protocols
+## Higher-Level Protocols
 
 Do you need a higher-level communication protocol that works over a UART connection? See the [SerialFiller](https://github.com/mbedded-ninja/SerialFiller) library on GitHub (written in C++). SerialFiller uses a publish/subscribe mechanism and works well on point-to-point serial connections such as UART.
 
-# Differential Voltage Specs
+## Differential Voltage Specs
 
 The RS-485 specification states that the transmitter must produce a differential voltage of **at least ±1.5V **when loaded, and the receiver must receive a differential voltage of **at least ±200mV**.
 
@@ -284,11 +284,11 @@ The waveform below shows the voltage on the A and B nets of a RS-485 bus when op
 
 The standard also states that the driver is not allowed to produce a differential voltage of more than ±6V.
 
-# Common-Mode Voltage
+## Common-Mode Voltage
 
 Most transceivers can withstand a constant single-ended voltage of around ±15V on each of the A and B wires (the allowed transient voltage can be much higher).
 
-# Specialised TVS Diodes
+## Specialised TVS Diodes
 
 Dedicated TVS diode components exist for voltage-spike suppression on RS-485 data lines.
 
@@ -300,7 +300,7 @@ One such example is the Semtech SM712 diode array. Below is an image of the comp
 
 {{< figure src="/images/2015/10/sm712-tvs-diode-array-designed-for-rs-485-data-lines.pdf.png" width="267px" caption="The SM712 TVS diode array, a diode array with asymmetric breakdown voltages, specifically designed for protecting RS-485 data lines. Image from http://www.semtech.com/."  >}}
 
-# SAE J1708
+## SAE J1708
 
 SAE J1708 is a communications protocol standard by SAE in 1986. It was intended to be used for serial communications between ECUs on heavy duty vehicles. Today, the [CAN Bus protocol](/electronics/communication-protocols/can-protocol) is usually used instead of SAE J1708.
 

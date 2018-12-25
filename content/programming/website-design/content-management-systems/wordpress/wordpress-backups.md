@@ -7,7 +7,7 @@ type: page
 url: /programming/website-design/content-management-systems/wordpress/wordpress-backups
 ---
 
-# Folders To Ignore
+## Folders To Ignore
 
 There are many folders/files that could be drastically increasing the size of your Wordpress backups. These include cache files created by various plugins.
 

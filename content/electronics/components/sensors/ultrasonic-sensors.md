@@ -7,11 +7,11 @@ type: page
 url: /electronics/components/sensors/ultrasonic-sensors
 ---
 
-# Overview
+## Overview
 
 Ultrasound is sound waves that are at a frequency **above** the audible range. This is usually frequencies above 18kHz. Also note that **infrasound** are sound waves with a frequency of 16Hz or below, which is below the audible range.
 
-# Terminology
+## Terminology
 
 <table>
     <thead>
@@ -247,15 +247,15 @@ Ultrasound is sound waves that are at a frequency **above** the audible range. T
 </tbody>
 </table>
 
-# Basic Principle
+## Basic Principle
 
 Ultrasonic sensors work by emitting high-frequency sound waves (18-50MHz), and analysing the reflected waves  (including time of flight). Ultrasonic waves are longitudinal sound waves and require an elastic medium to travel through. They are normally made with a piezo-electric material that vibrates when a AC voltage is applied to it. Because piezo-electric materials convert energy in both ways (they also convert mechanical vibration into electricity), the same sensor can be used as the receiver, while some setups use separate transmitters and receivers. Smooth surfaces are hard to detect on inclined levels (e.g. only up to 10°). Rough/jagged surfaces are much easier to detect on inclined angles. The higher the ultrasound frequency, the better it will reflect of smaller objects (such as defects in materials).
 
-# Comparison Against Other Sensors
+## Comparison Against Other Sensors
 
 Ultrasound sensors are not effected by the translucence of the target object. For this reason they are better then photo-sensitive sensors are detecting transparent objects, or objects where there is high glare. They are also relatively cheap compared to other forms of distance sensors. Piezo-electric ultrasonic transducers are larger than most other photo-sensitive sensors.
 
-# Variations
+## Variations
 
 Open and closed types. The following image shows a open type piezo-electric ultrasonic transducer commonly used by electronic hobbyists, robiticists, and the maker community, called the HC-SR04. These modules integrate easily with the Arduino microcontroller platform.
 
@@ -263,7 +263,7 @@ Open and closed types. The following image shows a open type piezo-electric ultr
 
 High-power types have a power rating between 40-150W. These types of ultrasonic transmitters are used for ultrasonic cleaning.
 
-# Uses
+## Uses
 
 * Ultrasound modules for tank level measurement. They normally can measure a range of liquids including water, black water, oil, petrol, diesel without any adjustment (liquid type agnostic). Range is typically from 100mm to 4m. Some have focusers made of materials such as glass-reinforced polypropylene to produce narrow beams.
 * Ultrasound cleaners are used to clean objects by vibrating the dirt/greese from them. They are commonly used to clean the resin of circuit boards after soldering.
@@ -281,13 +281,13 @@ High-power types have a power rating between 40-150W. These types of ultrasonic 
 * Ultrasonic fuel vaporizers. They use ultrasound to vaporize fuel, usually before entering the combustion chamber on a vehicle.
 * Bat detectors. Ultrasonic bat detectors listen for the ultrasonic noises made by bats, and either graph them or convert them to the audible spectrum (heterodyning). The circuit below converts ultrasonic waves into the audible spectrum.
 
-# Common Outputs For Modules
+## Common Outputs For Modules
 
 * 4-20mA current output
 * Voltage output (max voltage varies, usually 3.3-12V)
 * Relay outputs (both NC and NO)
 
-# Beam Pattern And Range
+## Beam Pattern And Range
 
 With a simple single transducer acting as both the receiver and transmitter, the further away the object you wish to detect, the slower your maximum sample frequency can be, as you have to wait longer for the ultrasonic wave to return.
 
@@ -316,7 +316,7 @@ The maximum range of a ultrasonic transducer is primarily determined by:
 * The sensitivity of the receiver
 * The quality of the analogue front-end receiver circuitry (especially in relation to noise)
 
-# Frequency
+## Frequency
 
 Higher frequency ultrasonic waveforms lose energy quicker when travelling through a medium. For this reason low-frequency (40kHZ) is normally used when air is the medium. Higher frequencies such as 1MHz are used when the medium is water or metal.
 
@@ -324,19 +324,19 @@ Higher frequency ultrasonic waveforms lose energy quicker when travelling throug
 
 When using ultrasound for imaging, the frequency of the ultrasound determines the image resolution.
 
-# Amplitude
+## Amplitude
 
 Strong pressure waves suffer from deformation. This generates harmonics and causes non-linear propagation.
 
-# Electrical Model
+## Electrical Model
 
 An piezo-based ultrasound transducer can be modeled as a capacitor and resistor in series. This can be represented as a parallel capacitor and resistor with a suitable electrical transformation.
 
-# Tuned Driving
+## Tuned Driving
 
 See the External Resources section at the bottom of this page.
 
-# Transmission Speeds
+## Transmission Speeds
 
 Speed of sound through various mediums:
 
@@ -487,7 +487,7 @@ Speed of sound through various mediums:
 </tbody>
 </table>
 
-# Sound Pressure Level (SPL)
+## Sound Pressure Level (SPL)
 
 The sound pressure level (SPL) is a measure of the magnitude of the sound waves from a ultrasonic transmitter. Note that SPL varies with the distance to the source, but the sound power does not. As sound travels through a medium, the magnitude of the sound pressure is reduced due to two things:
 
@@ -507,7 +507,7 @@ The sound pressure decreases proportionally as the distance between the source a
 
 It is interesting to note that the SPL threshold of pain for a human is somewhere between `\(120-140dB\)`.
 
-# Acoustic Impedance
+## Acoustic Impedance
 
 Acoustic impedance is the measure of opposition to deflection of a mediums particles due to sound. It has the SI units `\(N \cdot s \cdot m^{-3}\)` or `\(Pa\cdot s \cdot m^{-1}\)`.
 
@@ -591,7 +591,7 @@ This determines how much intensity will be transmitted at the boundary between t
 
 <div>$$ ITC = 1- IRC$$</div>
 
-# Acoustic Interface
+## Acoustic Interface
 
 The boundary between two mediums with different acoustic impedances is called an acoustic interface. The loss (in dB) of a sound wave travelling from medium 1 to medium 2 is given by:
 
@@ -603,7 +603,7 @@ The boundary between two mediums with different acoustic impedances is called an
     \(Z_2\) = acoustic impedance of the second medium<br>
 </p>
 
-# Classification Of Detected Object Shapes
+## Classification Of Detected Object Shapes
 
 Detected objects can be classified as follows:
 
@@ -611,11 +611,11 @@ Detected objects can be classified as follows:
 * (B) Cylindrical objects such as cans, bottles and human bodies
 * (C) Powders and chunky objects such as minerals, rocks, coal, plastic, rubbish
 
-# CMUT's
+## CMUT's
 
 CMUTs use a change in capacitance to perform energy transduction. They are micromachined (i.e. small), and therefore easier to assemble into 2D and 3D arrays than traditional pizeo transducers. They have a large frequency bandwidth.
 
-# External Resources
+## External Resources
 
 The [Olympus Ultrasonic Transducers Technical Notes](http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf) is a great document explaining some of the basics of ultrasonic transducers and related equations. If the link is dead, you can use the [local download](/docs/olympus-ultrasonic-transducers-technical-notes.pdf).
 

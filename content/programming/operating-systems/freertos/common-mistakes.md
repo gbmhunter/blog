@@ -7,7 +7,7 @@ type: page
 url: /programming/operating-systems/freertos/common-mistakes
 ---
 
-# main() Stack Overwritten When vTaskStartScheduler() Called
+## main() Stack Overwritten When vTaskStartScheduler() Called
 
 Be warned, the stack used by main() could potentially be overwritten as soon as vTaskStartScheduler() is called. This is true is using a Cortex-M3 and interrupts, as the interrupts use the same stack space as main().
 
@@ -56,7 +56,7 @@ Accessing variables created in `main()` from tasks could result in segmentatoin 
 
 > Recover the stack used by main(). The stack used upon program entry is not required once the RTOS scheduler has been started (unless your application calls `vTaskEndScheduler()`, which is only supported directly in the distribution for the PC and Flashlite ports, or uses the stack as an interrupt stack as is done in the ARM Cortex-M and RX ports). Every task has its own stack allocated so the stack allocated to `main()` is available for reuse once the RTOS scheduler has started.
 
-# Interpreting portTICK_RATE_MS Incorrectly
+## Interpreting portTICK_RATE_MS Incorrectly
 
 What causes this confusion is that portTICK_RATE_MS is incorrectly named. It doesn't represent the number of ticks per millisecond as the name suggests, but rather the number of milliseconds per tick. A better name would be `portTICK_PERIOD_MS`.
 

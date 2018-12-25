@@ -7,7 +7,7 @@ type: page
 url: /electronics/circuit-design/digital-logic/metastability-and-synchronisation
 ---
 
-# Flip-flop MTBF
+## Flip-flop MTBF
 
 <div>$$ {\rm MTBF}(t_r) = \frac{e^{ \frac{t_r}{\tau} } } {T_O fa}$$</div>
 

@@ -7,7 +7,7 @@ type: page
 url: /programming/build-systems-and-package-managers/cmake/how-to-install-your-program-using-cmake
 ---
 
-# Installation Folder
+## Installation Folder
 
 By default, CMake sets the CMAKE_INSTALL_PREFIX to /usr/local on UNIX systems.
 

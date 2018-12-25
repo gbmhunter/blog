@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus/streams
 ---
 
-# Overloading << Operator For ostream
+## Overloading << Operator For ostream
 
 A common and useful practise is to overload the << operator for an ostream on your own classes. This allows you to then write things such as:
 
@@ -40,7 +40,7 @@ std::ostream &operator<<(std::ostream &out, const MyClass& rhs) {
 }
 ```
 
-# A Generic Overload For All Classes
+## A Generic Overload For All Classes
 
 Since C++11, you can make a generic overload that will work for all classes that contain a public method called `Print(std::ostream&)const`.
 

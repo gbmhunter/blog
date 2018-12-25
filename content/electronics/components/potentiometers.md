@@ -7,19 +7,19 @@ type: page
 url: /electronics/components/potentiometers
 ---
 
-# Overview
+## Overview
 
 Potentiometers are variable resistors which are adjusted mechanically. They may be rotational or linear (sliders). They are called **pots** for short. Technically, only the three pronged devices may be called potentiometers (top, bottom and wiper), the two-pronged version which is normally used for higher power applications is called a **variable resistor** or **rheostat**. They not only used for user interfaces, but also as a cheap mechanical rotation to digital converter.
 
-# Resistive Track
+## Resistive Track
 
 The resistive track is most cheap potentiometer is made from graphite. Others may be made from carbon or wound wire.
 
-# Taper
+## Taper
 
 The taper is the relationship between position and resistance. It is also sometimes called the "**law"**.
 
-# Labelling
+## Labelling
 
 Potentiometers are labelled according to their resistance value and resistance layout of the track (taper).
 
@@ -60,7 +60,7 @@ There are two types of taper codes (confusing!).
 <td >n/a
 </td></tr></tbody></table>
 
-# Travel (Rotation)
+## Travel (Rotation)
 
 ## Partial-turn
 

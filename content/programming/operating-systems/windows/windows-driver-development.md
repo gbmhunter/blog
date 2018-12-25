@@ -7,7 +7,7 @@ type: page
 url: /programming/operating-systems/windows/windows-driver-development
 ---
 
-# I/O Control Codes (IOCTLs)
+## I/O Control Codes (IOCTLs)
 
 IOCTL is a UNIX term.
 
@@ -23,7 +23,7 @@ A Win32 `DeviceIoControl` takes as parameters:
 6. length of the output buffer
 7. an `OVERLAPPED` structure, if overlapped I/O is being used.
 
-# Interrupt Request Level (IRQL)
+## Interrupt Request Level (IRQL)
 
 
 The IRQL can be tempoarily raised at any point, but can only be lowered by the routine that raised it.
@@ -56,7 +56,7 @@ Level 3 and above (except for one, called HIGH_LEVEL, see below) are interrupts 
 
 
 
-# Driver Stack
+## Driver Stack
 
 
 A hardware device has not one, but many drivers which work together to provide the correct functionality. These are implemented on a "driver stack".
@@ -77,19 +77,19 @@ A hardware device has not one, but many drivers which work together to provide t
 
 
 
-# Windows Driver Development Kit (WDK)
+## Windows Driver Development Kit (WDK)
 
 
 The compiler bundled with the WDK is optimised for driver development, and should not be used for standard C/C++ applications (and vise versa).
 
 
-# Windows Driver Model (WDM)
+## Windows Driver Model (WDM)
 
 
 The Windows driver model was first included with Windows 98 and replaces the older VxD driver model.
 
 
-# Windows Driver Foundation (WDF)
+## Windows Driver Foundation (WDF)
 
 
 The Windows driver foundation is event driven and object-orientated.

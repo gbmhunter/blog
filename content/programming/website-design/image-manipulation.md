@@ -13,6 +13,6 @@ You can install GIMP on Ubuntu with the command
 $ sudo apt-get install gimp
 ```
 
-# Plugins
+## Plugins
 
 GIMP supports plugins.

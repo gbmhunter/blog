@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus/unit-testing-and-mocking
 ---
 
-# gtest (Google Test)
+## gtest (Google Test)
 
 gtest (a.k.a Google Test) is an open-source C++ unit testing framework developed and maintained by Google.
 
@@ -65,13 +65,13 @@ TEST(UnitTestModule, TimeoutTest)
 
 Any code within the `TEST_TIMEOUT_BEGIN` and `TEST_TIMEOUT_FAIL_END(1000)` macros that takes longer that 1000ms will be aborted, and the test will fail. Credit for the above macros goes to [https://antonlipov.blogspot.ca/2015/08/how-to-timeout-tests-in-gtest.html](https://antonlipov.blogspot.ca/2015/08/how-to-timeout-tests-in-gtest.html).
 
-# gmock (Google Mock)
+## gmock (Google Mock)
 
 gmock (a.k.a Google Mock) is an open-source C++ mocking library developed and maintained by Google. It is NOT a unit testing framework, but can be used  in conjunction with gtest to provide a fully feature unit testing system.
 
 One disadvantage of gmock is that all class methods that you want to mock must be declared virtual. This increases the computational overhead of the class, and it may not be possible to add virtual if a 3rd party wrote/maintains the class of interest.
 
-# UnitTest++
+## UnitTest++
 
 UnitTest++ is a small, lightweight, but capable unit test library for C++ code.
 

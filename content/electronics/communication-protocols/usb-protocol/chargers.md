@@ -7,7 +7,7 @@ type: page
 url: /electronics/communication-protocols/usb-protocol/chargers
 ---
 
-# Overview
+## Overview
 
 USB wasn't initially designed for charging batteries in devices such as phones and GPS units. However, people soon realised USB was a neat way to charge these things while connected to your computer, without having to provide a separate power supply, cable and connector. USB chargers starting appearing which just gave the user a "dumb" USB A receptacle that just provided VBUS and GND (nothing connected to the data lines). This immediately breaks the USB 2.0 spec (devices need to draw less than 100mA in the unconfigured state, and less than 2.5mA if the bus is suspended).
 
@@ -17,13 +17,13 @@ Even so, most devices managed to draw 500mA and get away with it (one exception 
 
 Thus, the USB Implementers Forum (USB-IF) formally added charger specifications in 2010 to USB 2.0. They are designed to allow devices to safely draw more than 500mA of current. The specification covers the limits, detection, control and reporting mechanisms for this. They are backwards compatible with USB 2.0 hosts and peripherals. This is contained in the Battery Charging Specification (at revision 1.2, as of March 2015).
 
-# Terminology
+## Terminology
 
 Portable Device (PD): A device which can draw current from USB to charge it's batteries.
 
 Other terms are described as they introduced below.
 
-# The Different Types
+## The Different Types
 
 ## Accessory Charger Adapter (ACA)
 
@@ -41,7 +41,7 @@ When not connected to a peripheral, a CDP has to output a voltage of `\(V_{DM_SR
 
 A charging port can be a ACA, a ACA-Dock, CDP or DCP.
 
-# Weak And Dead Batteries
+## Weak And Dead Batteries
 
 The USB Battery Charging Spec defines good, weak and dead batteries.
 

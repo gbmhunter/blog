@@ -7,13 +7,13 @@ type: page
 url: /programming/languages/delphi
 ---
 
-# Overview
+## Overview
 
 Delphi grew out of the Turbo Pascal language.
 
 Delphi is one of the languages available for [writing scripts in Altium](/electronics/other/altium/altium-scripting-and-using-the-api), a PCB design program.
 
-# Code Blocks
+## Code Blocks
 
 Delphi uses begin and end; keywords to create blocks of code (similar to the { and } characters in c).
 
@@ -23,7 +23,7 @@ Note that after the end keyword you must include a semi-colon, but
 
 not after the begin keyword!
 
-# Operators
+## Operators
 
 ## Binary Arithmetic
 
@@ -32,13 +32,13 @@ not after the begin keyword!
 <> // Not equal too
 ```
 
-# Comments
+## Comments
 
 Single line comments are started with // and finish on the start of a new line.
 
 Multi-line comments are started with either { or (* and finished with } or *).
 
-# Rounding
+## Rounding
 
 Rounding in Delphi can be done with the in-built function Round(). It rounds a number to the nearest integer. To round to a specified number of decimal places, you can use this function in conjuction with the divide/multiply technique.
 

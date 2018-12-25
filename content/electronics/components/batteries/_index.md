@@ -7,6 +7,6 @@ type: page
 url: /electronics/components/batteries
 ---
 
-# Overview
+## Overview
 
 Batteries are, well, batteries. See the child pages for specific info!

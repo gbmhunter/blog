@@ -7,7 +7,7 @@ type: page
 url: /programming/microcontrollers/psoc/data-types
 ---
 
-# Standard Data Types
+## Standard Data Types
 
 Note: The pre-defined variable types that come with the PSoC programming suites are defined both with and without the _t suffix that most people use to define a typedef (e.g. uint8_t). I recommend using the version with the underscore, as this increases portability (this is also supported by Linux and other Unix-like systems). It is better practise to use the data types whose size is explicitly stated (e.g. uint32_t rather than unsigned int as the latter's size is platform-dependant). The following data types are valid for all PSoC families.
 
@@ -42,7 +42,7 @@ int32
 uint32
 ```
 
-# Standard C Variable Type Sizes On PSoC 5
+## Standard C Variable Type Sizes On PSoC 5
 
 <table>
     <thead>

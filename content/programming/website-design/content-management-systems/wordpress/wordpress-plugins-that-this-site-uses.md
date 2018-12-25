@@ -7,7 +7,7 @@ type: page
 url: /programming/website-design/content-management-systems/wordpress/wordpress-plugins-that-this-site-uses
 ---
 
-# Add Descendants As Menu Items
+## Add Descendants As Menu Items
 
 Site: [http://www.viper007bond.com/wordpress-plugins/add-descendants-as-submenu-items/](http://www.viper007bond.com/wordpress-plugins/add-descendants-as-submenu-items/)
 
@@ -35,7 +35,7 @@ case 'post_type':
 
 The code change was based of [this forum discussion](http://wordpress.org/support/topic/get_pages-how-to-disable-grandchildren?replies=6).
 
-# Breadcrumb NavXT
+## Breadcrumb NavXT
 
 Site: [http://mtekk.us/code/breadcrumb-navxt/](http://mtekk.us/code/breadcrumb-navxt/)
 
@@ -43,7 +43,7 @@ Wordpress Plugin Page: [http://wordpress.org/support/view/plugin-reviews/breadcr
 
 I use this plugin to create the breadcrumb you see at the top of the page, underneath the main menu. Code was added to the motion child theme in header.php. This plugin helps with navigation.
 
-# Broken Link Checker
+## Broken Link Checker
 
 Site: [http://w-shadow.com/blog/2007/08/05/broken-link-checker-for-wordpress/](http://w-shadow.com/blog/2007/08/05/broken-link-checker-for-wordpress/)
 Wordpress Plugin Page: [http://wordpress.org/extend/plugins/broken-link-checker/](http://wordpress.org/extend/plugins/broken-link-checker/)
@@ -56,7 +56,7 @@ What is also powerful about this feature is that you can edit a broken hyperlink
 
 {{< figure src="/images/programming-wordpress/wordpress-plugin-broken-link-checker-edit-url.png" caption="You only have to edit a broken hyperlink once for all ocurrances of it on your site."  width="650px" >}}
 
-# Cimy Image Rotator
+## Cimy Image Rotator
 
 Site: [http://www.marcocimmino.net/cimy-wordpress-plugins/cimy-header-image-rotator/](http://www.marcocimmino.net/cimy-wordpress-plugins/cimy-header-image-rotator/)
 Wordpress Plugin Page: [http://wordpress.org/extend/plugins/cimy-header-image-rotator/](http://wordpress.org/extend/plugins/cimy-header-image-rotator/)
@@ -113,7 +113,7 @@ Used for the front rotating image banner. Code to draw the banner on every page 
 
 The plugin itself stores uploaded image in the rather badly placed folder "<_wordpress install dir_>/wp-content/Cimy_Header_Images/".
 
-# Crayon Syntax Highlighter
+## Crayon Syntax Highlighter
 
 Site: [https://github.com/aramk/crayon-syntax-highlighter](https://github.com/aramk/crayon-syntax-highlighter)
 Wordpress Plugin Page: [http://wordpress.org/extend/plugins/crayon-syntax-highlighter/](http://wordpress.org/extend/plugins/crayon-syntax-highlighter/)
@@ -136,7 +136,7 @@ and colours them correctly */
 }
 ```
 
-# Jquery Mega Menu Widget
+## Jquery Mega Menu Widget
 
 Site: [http://www.designchemical.com/blog/index.php/wordpress-plugins/wordpress-plugin-jquery-drop-down-mega-menu-widget/](http://www.designchemical.com/blog/index.php/wordpress-plugins/wordpress-plugin-jquery-drop-down-mega-menu-widget/)
 Wordpress Plugin Page: [http://wordpress.org/extend/plugins/jquery-mega-menu/](http://wordpress.org/extend/plugins/jquery-mega-menu/)
@@ -145,7 +145,7 @@ Jquery Mega Menu is used for the large drop-down menu on this site (the main for
 
 I had to modify one of the plug-ins CSS files directly to customize the appearance. The CSS file is overwritten when the plugin is updated, so this file (grey.css) has to be replaced every time the plug-in is updated.
 
-# NextGEN Gallery
+## NextGEN Gallery
 
 Site: [http://www.nextgen-gallery.com/](http://www.nextgen-gallery.com/)
 Wordpress Plugin Page: [http://wordpress.org/extend/plugins/nextgen-gallery/](http://wordpress.org/extend/plugins/nextgen-gallery/)

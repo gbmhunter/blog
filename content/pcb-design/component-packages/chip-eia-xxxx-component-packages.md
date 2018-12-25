@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/chip-eia-xxxx-component-packages
 ---
 
-# Chip (EIA xxxx) Component Packages
+## Chip (EIA xxxx) Component Packages
 
 <table ><tbody ><tr >
 <td >Name
@@ -69,7 +69,7 @@ url: /pcb-design/component-packages/chip-eia-xxxx-component-packages
     </ul>
 </td></tr></tbody></table>
 
-# Chip Packages And The EIAJ Standard
+## Chip Packages And The EIAJ Standard
 
 The following are a description of the most popular chip packages. Chip packages are standardized small SMT footprints primarily used for 2 lead passive components such as resistors, capacitors and ferrite beads. They are defined by four-digit number which represents the total footprint width and height, respectively (assuming the two footprint pads are on the left and right rather than the top or bottom, or more formally, the axis of the component runs parallel to the width).
 
@@ -217,7 +217,7 @@ The following image is of 0603 (imperial) SMD components inside a small containe
 
 {{< figure src="/images/my-workshop/smd-container-open-and-closed.jpg" caption="A container from DealExtreme used for holding SMD components (capacitors in this picture)"  width="800px" >}}
 
-# SMD Chip Resistors
+## SMD Chip Resistors
 
 The following table shows the range of chip resistors package sizes (based on the EIAJ Chip Packages above), and typical parameters for each. Note that the maximum current rating is based on the thermal properties of the package and its leads, and does not take into account the actual resistance of the resistor (e.g. tested with a 0Ω). Obviously, the actual allowable current is likely to be much less due to resistance.
 
@@ -290,7 +290,7 @@ The following table shows the range of chip resistors package sizes (based on th
 <td>Yes
 </td></tr></tbody></table>
 
-# Reverse-Aspect Chip Capacitors (LICC)
+## Reverse-Aspect Chip Capacitors (LICC)
 
 Reverse-aspect chip capacitors (a.k.a LICC) have their leads on the long sides of the chip, as opposed to standard chip components which have the leads on the short sides. This reverse-geometry reduces the inductance in the PCB-to-capacitor connection, and is in high-speed designs where ultra-low inductance is required.
 

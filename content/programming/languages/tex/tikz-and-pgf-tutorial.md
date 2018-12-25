@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/tex/tikz-and-pgf-tutorial
 ---
 
-# Overview
+## Overview
 
 This page serves as a basic tutorial on using the TikZ package, which is part of Latex. All of the below examples are rendered with QuickLatex using the wonderful Wordpress plugin [WP-QuickLatex](http://wordpress.org/plugins/wp-quicklatex/). The code examples omit the common start, preamble and end code sections for clarity. These are:
 
@@ -22,7 +22,7 @@ This page serves as a basic tutorial on using the TikZ package, which is part of
 \end{tikzpicture}
 ```    
 
-# Drawing A Line
+## Drawing A Line
 
 One of the simplist things you can do is draw a line...
 
@@ -42,7 +42,7 @@ One of the simplist things you can do is draw a line...
 \end{tikzpicture}
 ```
 
-# Making A Box
+## Making A Box
 
 Adding more lines is easy, lets make a box...
 
@@ -62,7 +62,7 @@ Adding more lines is easy, lets make a box...
 \end{tikzpicture}
 ```
 
-# Adding Text
+## Adding Text
 
 You can use the node object to add text at specific places.
 
@@ -86,7 +86,7 @@ You can use the node object to add text at specific places.
 
 Use the anchor to control where exactly the text goes. The anchor determines what part of the text is placed at the co-ordinate you give it. The code anchor west in above example means the west (left) part of the text will be placed at (2,0).
 
-# Lets Draw An Arrow!
+## Lets Draw An Arrow!
 
 Lines are not the only thing you can draw, lets draw an arrow. Notice the only difference from drawing a line is that \draw is now \draw[->].
 
@@ -106,7 +106,7 @@ Lines are not the only thing you can draw, lets draw an arrow. Notice the only d
 \end{tikzpicture}
 ```	
 
-# How To Draw Graphs
+## How To Draw Graphs
 
 ## Drawing The Grid
 

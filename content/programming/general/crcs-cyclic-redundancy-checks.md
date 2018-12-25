@@ -9,37 +9,37 @@ url: /programming/general/crcs-cyclic-redundancy-checks
 
 [mathjax]
 
-# Overview
+## Overview
 
 <blockquote>"Everything you wanted to know about CRC algorithms, but were afraid to ask for fear that errors in your understanding might be detected." - Ross N. Williams.
 > 
 > </blockquote>
 
-# Generator Polynomial
+## Generator Polynomial
 
 The hexadecimal representation of the polynomial is what you end up exclusively-ORing the data with when writing the CRC software algorithm.
 
-# Start Value
+## Start Value
 
 A value of all 0's or all 1's are common start values for CRC calculations (e.g. 0x0000 and 0xFFFF for a 16-bit CRC calculations).
 
 Start values that are not 0 are better at detecting errors if the message begins with one or more bits that are 0.
 
-# MSB-first vs. LSB-first
+## MSB-first vs. LSB-first
 
 The least-significant-bit first CRC algorithm is slightly simpler to implement in software/firmware, however the most-significant-bit first algorithm is easier to conceptulise.
 
-# Properties Of CRCs
+## Properties Of CRCs
 
 When checking a CRC, rather than recalculating the CRC for the message and comparing with the sent CRC, the CRC calculation can be run on the all the data bits received (including the sent CRC). If the result is 0, the CRC check is O.K.
 
-# CRC Calculators
+## CRC Calculators
 
 [NinjaCalc](http://mbedded-ninja.github.io/NinjaCalc/) has a CRC calculator which allows you to calculate the CRC value for ASCII or hex data, using either common pre-loaded CRC algorithms or your own custom algorithm.
 
 {{< figure src="/images/2016/07/ninja-calc-crc-calculator-example.gif" width="1094px" caption="Example usage of the CRC Calculator within NinjaCalc (http://mbedded-ninja.github.io/NinjaCalc/)."  >}}
 
-# Some Common CRC Algorithms
+## Some Common CRC Algorithms
 
 Note that this does in no way try and be an exhaustive list. Sites like [CRC RevEng - Catalogue of parametised CRC algorithms](http://reveng.sourceforge.net/crc-catalogue/all.htm) and [Prof. Koopman's CRC Polynomial Zoo](https://users.ece.cmu.edu/~koopman/crc/notes.html) have great detailed lists of CRC algorithms.
 
@@ -101,7 +101,7 @@ Reverse: 0x8408
 Koopman: 0x8810
 ```
 
-# External Resources
+## External Resources
 
 [http://reveng.sourceforge.net/crc-catalogue/16.htm](http://reveng.sourceforge.net/crc-catalogue/16.htm) is a great webpage catalogue of many 16-bit CRC algorithms.
 

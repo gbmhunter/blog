@@ -6,7 +6,7 @@ type: page
 url: /electronics/general/my-workshop
 ---
 
-# Storage
+## Storage
 
 ## Component Trays
 
@@ -31,7 +31,7 @@ For storing SMD components such as resistors, capacitors, and ferrite beads, I u
 
 {{< figure src="/images/my-workshop/smd-container-open-and-closed.jpg" caption="A container from DealExtreme used for holding SMD components (capacitors in this picture)"  width="600px" >}}
 
-# Tools
+## Tools
 
 ## Power Supply
 
@@ -132,7 +132,7 @@ Supported transmission speeds are:
 
 The manual for this Dtech converter can be downloaded [here](/docs/dtech-usb-to-rs-485-manual.pdf).
 
-# Components
+## Components
 
 ## Capacitors
 
@@ -192,7 +192,7 @@ PCB's are useful when developing a circuit past the quick prototype stage. I hav
 
 {{< figure src="/images/electronics-misc/hene-laser-3kv-power-supply.jpg" caption="The power supply for a 3kV HeNe laser."  width="500px" >}}
 
-# Software
+## Software
 
 ## Altium
 

@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/wlcsp-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table style="width: 600px;" >
@@ -122,7 +122,7 @@ url: /pcb-design/component-packages/wlcsp-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 The WLCSP package can either be rectangular or square in shape.
 
@@ -132,7 +132,7 @@ The rows of bumps maybe aligned in a grid or offset, again like BGA.
 
 As of March 2015, WLCSP offers the smallest possible footprint of any component package for a particular die ((https://www.fairchildsemi.com/application-notes/AN/AN-5075.pdf)).
 
-# Photosensitivity
+## Photosensitivity
 
 Unusually, the WLCSP package is sensitive to high-intensity, long wavelength light. This was due to the photoelectric effect, where the light hitting the top and sides of the semiconductor-based package causes current to flow in the die and can disrupt proper operation.
 

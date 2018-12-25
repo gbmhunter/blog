@@ -7,11 +7,11 @@ type: page
 url: /electronics/circuit-design/rfid
 ---
 
-# Overview
+## Overview
 
 RFID (radio-frequency identification) is a wireless method of transmitting data between a reader and tag, for the purposes of tracking and identification.
 
-# Acronyms
+## Acronyms
 
 * Auto-ID: Automatic Identification
 * EPC: Electronic Product Code
@@ -27,7 +27,7 @@ RFID (radio-frequency identification) is a wireless method of transmitting data 
 * UPC: Universal Product Code
 * WEEE: Waste Electrical And Electronic Equipment
 
-# Frequencies
+## Frequencies
 
 There are four (but three common) frequency bands that RFID uses. Based on knowledge of sound and radio waves, you'd expect lower frequency RFID to achieve longer read distances. But the opposite is true! Higher frequency RFID communications get the longest read ranges.
 
@@ -65,7 +65,7 @@ The following graph shows the allowed UHF frequency bands in different countries
 * Rare RFID frequency
 * MF can also stand for metal-friendly RFID
 
-# Power Configurations
+## Power Configurations
 
 ## Passive
 
@@ -79,7 +79,7 @@ Semi-active tags have a nearby physical power source, however, they still rely s
 
 Active tags are powered with a nearby physical power source, and don't rely on the energy from the incoming RF signal. For this reason, they can have higher transmit powers, and therefore promote greater transmission distances between tag and reader.
 
-# Power Limitations
+## Power Limitations
 
 Regulations normally use one of the two following units to regulate power:
 
@@ -102,7 +102,7 @@ The free-space path loss equation is also useful for determining the transmissio
     \(c\) = speed of light in a vacuum (\(2.99792458108 \times 10^8 m/s\))<br>
 </p>
 
-# Readers
+## Readers
 
 Readers are also called interrogators. UHF readers typically have transmit powers from 5-32.5dBm (3-1000mW).
 
@@ -118,7 +118,7 @@ Stand-alone IC's also exist. The following image is the block diagram for the Te
 
 {{< figure src="/images/2012/11/ti-trf7960a-rfid-ic-block-diagram.png" width="961px" caption="The block diagram for the Texas Instruments TRF7960A 13.56MHz RFID transceiver IC. Image from http://www.ti.com/product/trf7960A."  >}}
 
-# Tags
+## Tags
 
 On-metal compatibility of tags is a big issue. Nearby metal objects cause RFID signal reflections that change the received/sent signal. There are special tags that are designed to work when mounted or near metallic objects. In some cases, due to the reflections, they can out-perform non-metallic mounted tags. The typical RFID chip architecture is shown below:
 
@@ -135,13 +135,13 @@ There are apparel label categories that tags can be certified for, these are:
 * C - Boxed items
 * D - Hanging apparel
 
-# Passive IC's
+## Passive IC's
 
 Murata makes a [MAGICSTRAP chip](http://www.murataamericas.com/rfid), which is a passive RFID device designed to be soldered onto a PCB for circuit board tracking and inventory management. The antenna is etched onto the PCB, and sections of the antenna make up the pads in which the chip is soldered to. It operates in the UHF band, and a 4-6m range is possible.
 
 {{< figure src="/images/2012/11/murata-magic-strap-uhf-rfid-chip-on-pcb.jpg" width="401px" caption="Image from http://www.murata.eu/news/en/pr/pcb-mounted-rfid-tag-solution-from-MUR247."  >}}
 
-# **Inlays/Labels**
+## **Inlays/Labels**
 
 RFID inlays are a popular way form of cheap, disposable RIFD tags. They are usually paper thin, flat, and contain both an embedded RFID chip and flat planar metallic antenna.
 
@@ -167,17 +167,17 @@ The following image shows a typical radiation pattern from an RFID inlay.
 
 {{< figure src="/images/2012/11/rfid-uhf-inlay-radiation-pattern.png" width="1576px" caption="A typical radiation pattern from an RFID inlay. Image from http://www.lab-id.com/datasheet/inlay_UHF/SKLI4218.pdf."  >}}
 
-# Cables
+## Cables
 
 RFID tags exist which use wire cables for their antennas. They normally look like a piece of wire (about 150mm long for a UHF version), with a piece of heatshrink in the middle. Compared to solid tags and inlays, they have the benefit of being very flexible and thin.
 
-# Metal Compatible
+## Metal Compatible
 
 Specialised tags/inlays exist for attaching/putting in close proximity to metal in where a normal tags range would be greatly limited/not work at all. They are normally more expensive than the standard RFID products. Xerafy makes a range of these metal-compatible tags/inlays. The article "Small Proximity Coupled Ceramic Patch Antenna For UHF RFID Tag Mountable On Metallic Objects" is an interesting read if you want to know more about metal-compatible RFID products. The following picture is a cross-section of the proposed antenna in the article.
 
 {{< figure src="/images/2012/11/metallic-rfid-antenna-geometry-with-coupled-ceramic-patch.png" width="348px" caption="A cross-section of the proposed antenna in the article 'Small Proximity Coupled Ceramic Patch Antenna For UHF RFID Tag Mountable On Metallic Objects'. Image from http://www.jpier.org/PIERC/pierc04/10.08061809.pdf."  >}}
 
-# Antennas
+## Antennas
 
 The are different types of antenna used in different RFID designs. UHF antenna input is typically between 1-5W. 13.56MHz antennas between 100-200mW. Antennas can either be stand-along items, or part of a substrate/PCB. [AN1715: UHF RFID PCB Antenna Design](http://www.nxp.com/documents/application_note/AN171530.pdf) by NXP explains how to design an PCB-based UHF RFID antenna. One of the key parameters of an antenna is it's gain. The gain is usually expressed in \(dBi\) (decibels isotropic), or more rarely, \(dBd\) (decibels relative to a lossless half-wave dipole antenna). To convert between \(dBi\) and \(dBd\), use the following equation:
 
@@ -207,7 +207,7 @@ The best method when the tag orientation could be anything. You lose at least 3d
 
 * PCB slot antennas: Lengths between 20-50mm for UHF RFID is common on 1.6mm thick PCB
 
-# Standards
+## Standards
 
 ## EPC Global Class 1 Generation 2 UHF Air Interface Protocol Standard "Gen 2"
 
@@ -241,11 +241,11 @@ Is is specially designed for high-performance tag reading when the tag antennas 
 
 Part 6 of the ISO/IEC 18000 standard. Defines parameters for RFID operating between 860-960MHz (UHF RFID). The EPC Global Class 1 Generation 2 UHF Air Interface Protocol Standard "Gen 2" standard was amended to this standard in 2006.
 
-# Recycling
+## Recycling
 
 Aside from recycling the RFID tag itseld, RFID tags also affect the the recycling of the product it is attached too. The presence of paper, aluminium, copper, gold and silver in the RFID tag can introduce new challenges to the recycling of the product. The cost of an RFID tag is low and still dropping, reducing the incentive to recycle it. Active tags, mainly because of the battery, are considered electronic equipment under the European WEEE directive, and has to be recycled under the appropriate regulations. Passive tags are outside the WEEE scope. There are special glues/adhesives which facilitate the removal of the RFID tag from the product it is attached to. A current area of research (as of 2013) are biodegradable tags that degrade naturally on paper products.
 
-# RFID Software
+## RFID Software
 
 Most RFID reader development kits come with suppporting software to get a RFID project started quickly. They usually provide a PC-based GUI which connects to the reader via Ethernet, USB, or serial, can provides a readout of tags that are in range (and shows you things like their ID and RSSI), and allows you to adjust things like read interval and read power.
 
@@ -259,7 +259,7 @@ Website: [http://www.rf-dump.org/](http://www.rf-dump.org/) In their own words:
 
 It is a computer program, that when connected with standard RFID hardware, can read and write to a number of RFID tags. It has a strong "hacker" feel to it.
 
-# Manufacturers/Suppliers
+## Manufacturers/Suppliers
 
 You can use [www.veryfields.net](http://www.veryfields.net/) to do a parametric search for RFID tags. They require you to register to do search with all of the parameters, but registration is free.
 
@@ -291,6 +291,6 @@ You can use [www.veryfields.net](http://www.veryfields.net/) to do a parametric 
 
 [Zebra](http://www.zebra.com) make [RFID label printers](http://www.zebra.com/us/en/products-services/printers/printer-type/rfid.html).
 
-# External Links
+## External Links
 
 [SkyRFID](http://www.skyrfid.com/) is a useful site which explains how RFID works.

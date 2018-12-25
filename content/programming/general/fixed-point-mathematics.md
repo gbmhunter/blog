@@ -7,7 +7,7 @@ type: page
 url: /programming/general/fixed-point-mathematics
 ---
 
-# Overview
+## Overview
 
 Fixed-point mathematics is a method for representing numbers on a binary computer architecture. It allows the storage numbers with decimal points, similar to the float and double, but with the benefit of requiring less computation time. The trade-off is lower precision and flexibility.
 
@@ -15,7 +15,7 @@ If you think about it, normal integers are just a special case of a fixed-point 
 
 Most programming languages and hardware that code runs on does not have native support for fixed-point mathematics (however there are many third-party libraries out there!). C++ has a nice advantage over C in the fact that it supports operator overloading, meaning that you can write a fixed-point library so that you could multiply/divide two fixed-point numbers just by using the '*' or '/' syntax, just like when dealing with other native number types (in C you would have to use functions/macros).
 
-# Notation
+## Notation
 
 Q is a number format used to describe fixed-point numbers. It uses the form:
 
@@ -29,7 +29,7 @@ where:<br>
 
 For example, Q24.8 would represent a 32-bit fixed-point number with 24 integer bits and 8 fractional bits.
 
-# How We Store Them In Software
+## How We Store Them In Software
 
 Floating point numbers are just stored in software as regular integers (signed or unsigned depends on your needs).
 
@@ -48,7 +48,7 @@ This could be created by using the following code:
 uint16_t fp1 = (uint16_t)(6.5 * (float)(1 << 12));
 ```
 
-# The Range Of Fixed-Point Numbers
+## The Range Of Fixed-Point Numbers
 
 **Unsigned Fixed-Point Numbers**
 
@@ -66,7 +66,7 @@ The range for a signed fixed-point number is given by:
 
 For example, an 8-bit fixed-point number with `\(5\)` bits for the integer and `\(3\)` bits for the fractional part (`\(Q5.3\)`) would have a range from `\(-16\)` to `\(15.875\)`.
 
-# The Precision Of Fixed-Point Numbers
+## The Precision Of Fixed-Point Numbers
 
 The precision of a fixed-point number is determined solely by the number of fractional bits. The precision is equal to:
 
@@ -74,7 +74,7 @@ The precision of a fixed-point number is determined solely by the number of frac
 
 For example, the precision of a `\(Q3.5\)` fixed-point number would be `\(2^{-5} = 0.03125\)`. The precision of a `\(Q8.0\)` number (no fractional bits) would be `\( 2^{-0} = 1\)`, as expected.
 
-# Converting To Fixed-Point
+## Converting To Fixed-Point
 
 **Integer To Fixed Point Number**
 
@@ -102,7 +102,7 @@ int32_t DoubleToRawFix32(double f) {
 }
 ```
 
-# Mathematical Operations On Fixed-Point Numbers
+## Mathematical Operations On Fixed-Point Numbers
 
 The first thing you need to realize is that **fixed-point arithmetic is just integer arithmetic**, but with some scaling factors applied on certain operations (e.g. multiplication/division).
 
@@ -194,11 +194,11 @@ fp2 = 1 / fp3
 
 However, there are clever ways of performing an inverse far quicker than using division.
 
-# Embedded C++ Fixed-Point Library
+## Embedded C++ Fixed-Point Library
 
 I have written an embedded C++ fixed-point library called MFixedPoint. It is freely available for [download from GitHub here](https://github.com/gbmhunter/Cpp-FixedPoint).
 
-# External Resources
+## External Resources
 
 See [Fixed-Point Representation and Fractional Math by Erick L. Oberstar](http://www.superkits.net/whitepapers/Fixed%20Point%20Representation%20&%20Fractional%20Math.pdf).
 

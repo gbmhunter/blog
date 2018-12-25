@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/spm23-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table >
@@ -125,14 +125,14 @@ url: /pcb-design/component-packages/spm23-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 Package proprietary to Fairchild Semiconductor, used for some of their motor driver IC's. Similar to a through-hole version called the Mini-DIP SPM. The package is designed to have a large flat top surface for heat sinking.
 
-# Photos
+## Photos
 
 {{< figure src="/images/2015/04/spm23-component-package-photo.jpg" width="344px" caption="A photo of the SPM23 component package."  >}}
 
-# Images
+## Images
 
 {{< figure src="/images/electronics-packages/component-package-spm-23-land-pattern.png" caption="The land pattern for the SPM-23 component package."  width="400px" >}}

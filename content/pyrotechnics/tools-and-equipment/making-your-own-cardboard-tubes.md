@@ -10,7 +10,7 @@ url: /pyrotechnics/tools-and-equipment/making-your-own-cardboard-tubes
 Pyrotechnics almost always requires cardboard tubes. Cardboard tubes are not that hard to make and can be stronger than bought ones. Making them yourself also allows you to control the size and thickness of the tube to exactly how you want it. I used this method to make hundreds of tubes with different thicknesses and internal diameters specific for certain pyrotechnic devices (e.g. rockets, mortars, crackers).
 
 
-# Materials
+## Materials
 
 
 
@@ -21,7 +21,7 @@ Pyrotechnics almost always requires cardboard tubes. Cardboard tubes are not tha
 
 
 
-# Tools
+## Tools
 
 
 
@@ -35,7 +35,7 @@ Pyrotechnics almost always requires cardboard tubes. Cardboard tubes are not tha
 
 
 
-# Method
+## Method
 
 
 

@@ -7,13 +7,13 @@ type: page
 url: /programming/build-systems-and-package-managers/scons
 ---
 
-# Overview
+## Overview
 
 SCons is a build system.
 
 {{< figure src="/images/2018/03/scons-build-system-logo.png" width="310px" caption="The logo for the SCons build system."  >}}
 
-# Installation
+## Installation
 
 **Ubuntu 16.04**
 
@@ -37,7 +37,7 @@ And then install scons with the command:
     $ sudo apt install scons
     ```
 
-# Basic Hello, World Example
+## Basic Hello, World Example
 
 **Prerequisites**
 
@@ -80,7 +80,7 @@ _NOTE: The console commands assume a UNIX-style terminal, although the example s
 
 6. Finished!
 
-# Importing And Exporting
+## Importing And Exporting
 
 scons variables may be shared between sconscript files through _importing_, _exporting _and _returning_.
 
@@ -100,7 +100,7 @@ The can be captured in the calling Sconscript file with:
     
     myLib = Sconscript('src/mySubSconscript')
 
-# Building
+## Building
 
 By default, scons does not perform an out-of-source build. You can perform an out-of-source build by including the following line in your root-level sconstruct file:
     

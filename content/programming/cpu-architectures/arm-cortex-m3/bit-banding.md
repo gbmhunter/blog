@@ -7,7 +7,7 @@ type: page
 url: /programming/cpu-architectures/arm-cortex-m3/bit-banding
 ---
 
-# Overview
+## Overview
 
 Bit banding maps a complete word in one memory space (this can be virtual) to a single bit in another memory space (this has to be a real memory space). This allows you to perform single-instruction read and write operations on individual bits. The benefit of single instruction reads and writes is that it is atomic and uses less processor time.
 
@@ -15,7 +15,7 @@ This technique is fully compatible with ANSI C, requiring no special compiler k
 
 Bit banding is not to be confused with another embedded programming technique called bit banging, which is when you implement what is typically done using in a hardware peripheral purely in the firmware.
 
-# Memory Regions
+## Memory Regions
 
 The Cortex-M3 has two 32MB regions that map onto the two 1MB bit-band regions. The two regions are separate, one in the SRAM region and one in the peripheral region (but both of course in the same memory space). The diagram below shows the entire Cortex-M3 memory space, with the bit band locations being close to the bottom of memory.
 

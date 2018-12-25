@@ -7,6 +7,6 @@ type: page
 url: /programming/languages/javascript/immutability
 ---
 
-# Deeply Nested Objects
+## Deeply Nested Objects
 
 When using the Immutable.js library, all access must be done using the  through the get(), getIn(), set() or setIn() family of functions.

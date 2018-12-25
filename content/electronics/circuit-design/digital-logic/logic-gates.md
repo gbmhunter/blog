@@ -7,13 +7,13 @@ type: page
 url: /electronics/circuit-design/digital-logic/logic-gates
 ---
 
-# Overview
+## Overview
 
 When sourcing logic IC's, note that the standard prefix used by many manufactures is "74".
 
 Logic gate inputs are normally labelled as a single letter, starting with A (e.g. a three input AND gate would have inputs A, B and C). The output is normally labelled Y, unless you are using a flip-flop or latch, and the output is labelled Q.
 
-# D Flip-Flops
+## D Flip-Flops
 
 ## Important Parameters
 

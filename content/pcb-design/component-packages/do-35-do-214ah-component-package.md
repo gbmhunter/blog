@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/do-35-do-214ah-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table >
@@ -102,14 +102,14 @@ url: /pcb-design/component-packages/do-35-do-214ah-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 This a very common package for small-signal low-power through-hole diodes such as the 1N4148.
 
-# Photo
+## Photo
 
 {{< figure src="/images/2015/04/do-35-do-204ah-component-package-photo.jpg" width="343px" caption="A photo of the DO-35 (DO-204AH) component package."  >}}
 
-# Images
+## Images
 
 {{< figure src="/images/electronics-packages/component-package-do-35-photo.jpg" caption="OLYMPUS DIGITAL CAMERA"  width="400px" >}}

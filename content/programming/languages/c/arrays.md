@@ -7,21 +7,21 @@ type: page
 url: /programming/languages/c/arrays
 ---
 
-# Overview
+## Overview
 
 Arrays in C are a form of data structure. They are used to store one or more elements of the same data type. They are all stored in a contiguous block of memory.
 
-# Ragged Array
+## Ragged Array
 
 A **ragged array** is a term for an array of pointers which point to objects with a different memory length. One common example is an array of pointers to strings, where each string has a variable number of characters.
 
 A array of pointers to some data type (e.g. an array of pointers to strings) is also a type of **Iliffe vector**. You have the advantage of being able to use NULL to signify the end of the array (no other data
 
-# Weird Syntax
+## Weird Syntax
 
 It is a little known and weird fact, but arrays can be written as `a[5]` or `5[a]`, it does not matter. However, using the syntax `6[a]` serves no useful purpose, and confuses people to no-end, so I don't recommend using it!
 
-# Multidimensional Arrays
+## Multidimensional Arrays
 
 A multidimensional array can be created with:
 
@@ -55,7 +55,7 @@ void MyFuction(char[][][23] myArray);
 
 In a sense, **when passing an array as an argument to a function, the array always loses one dimension**.
 
-# Dynamic Arrays
+## Dynamic Arrays
 
 Dynamic arrays are arrays whose size is determined at runtime. Programmers use them when we don't know the size of the array in advance (i.e., we can't write a hard-coded integer into the code, but instead we have to use a variable such as x).
 

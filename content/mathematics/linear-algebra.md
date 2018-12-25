@@ -7,7 +7,7 @@ type: page
 url: /mathematics/linear-algebra
 ---
 
-# Matrix Condition Number
+## Matrix Condition Number
 
 low condition number -> matrix is well conditioned  
 

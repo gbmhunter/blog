@@ -7,19 +7,19 @@ type: page
 url: /electronics/components/optical-isolators
 ---
 
-# Schematic Symbol
+## Schematic Symbol
 
 A commonly used schematic symbol for an optical isolator is shown below:
 
 {{< figure src="/images/2015/11/opto-isolator-schematic-symbol.png" width="158px" caption="A commonly used symbol for a standard optical isolator."  >}}
 
-# The Current-Transfer Ratio
+## The Current-Transfer Ratio
 
 The current-transfer ratio of a photo-transistor based optical isolator tells you how well it amplifies an input signal to an output signal.
 
 For optical isolators with a single phototransistor driver, the current-transfer ratio is normally in the 20-120% range.
 
-# Phototriac Outputs
+## Phototriac Outputs
 
 Some optical isolators have phototriac outputs instead of the normal phototransistor output. A phototriac is a triac whose gate is controlled by the incoming light source, essentially the same as what a phototransistor is to a transistor.
 
@@ -27,7 +27,7 @@ Some optical isolators have phototriac outputs instead of the normal phototrans
 
 The outputs of phototriac optical isolators usually go on to drive power TRIACs which switch a mains powered load.
 
-# Component Packages
+## Component Packages
 
 To achieve good isolation, different-net pins must be kept well away from each other to prevent arcing. This prevents many small-pitch packages from being used for optical isolators.
 

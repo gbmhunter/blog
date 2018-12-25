@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/connectors/pcb-card-edge
 ---
 
-# Overview
+## Overview
 
 This is a cheap and many-pin capable solution when you want to connect two PCB's together. PCB card edge connector involve using the edge of one of the mating PCB's as the connector, by etching/routing "fingers" on the PCB. The other mating part of the connector is designed to accept these fingers. Most card edge connectors are used when the PCB's are at right-angles to each other, although you can get connectors designed for parallel and co-planar connections.
 

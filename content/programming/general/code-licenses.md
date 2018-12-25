@@ -7,15 +7,15 @@ type: page
 url: /programming/general/code-licenses
 ---
 
-# Overview
+## Overview
 
 If you have been working with code for a while, you've probably come across licensing, and terms like "Free as in Speech", or "Free as in Beer". What does it all mean?
 
-# The BSD 3-Clause License
+## The BSD 3-Clause License
 
 URL: [http://opensource.org/licenses/BSD-3-Clause](http://opensource.org/licenses/BSD-3-Clause)
 
-# GPL
+## GPL
 
 URL: [http://www.gnu.org/licenses/gpl.html](http://www.gnu.org/licenses/gpl.html)
 

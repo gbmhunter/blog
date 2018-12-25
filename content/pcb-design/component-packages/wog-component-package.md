@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/wog-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table >
@@ -120,7 +120,7 @@ url: /pcb-design/component-packages/wog-component-package
 </table>
 
 
-# Comments
+## Comments
 
 A cheap, cylindrical plastic package used for smaller (low power) through-hole full-bridge rectifiers. Uses a glass-passivated construction.
 

@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/mini-dip-spm
 ---
 
-# Overview
+## Overview
 
 
 <table>
@@ -97,10 +97,10 @@ url: /pcb-design/component-packages/mini-dip-spm
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 The SPM27-JA does not have a top-side copper face, while the SPM27-CC and SPM27-EC do. The copper face has been designed specifically for heatsinking as these IC's are designed to be able to handle plenty of power. This package is rather unique in the fact it contains a three-phase IGBT inverter circuit power block and four drive IC's. As of 2012, only a 27-pin variant exists.
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/04/mini-dip-spm-component-package-3d-render.png" width="412px" caption="A 3D render of the Mini-DIP SPM component package."  >}}

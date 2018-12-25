@@ -7,19 +7,19 @@ type: page
 url: /programming/microcontrollers/psoc/psoc-creator
 ---
 
-# Overview
+## Overview
 
 Cypress provides PSoC Designer (for PSoC 1's) and PSoC Creator (for PSoC 3 and 5's). PSoC 5 uses the Cortex M3 ARM architecture, and uses a free GCC compiler. As of writing, PSoC Creator 2 has just been released which has more pre-made modules and integration into 3rd party IDE's (as of Feb 2013, only Keil, but Cypress plans on extending this in the next year).
 
-# Installing
+## Installing
 
 One annoying thing about PSoC Creator is that it takes plenty of time to install/uninstall (5-10mins+, even on a fast computer). Each new version of PSoC Creator is a fresh install (e.g. PSoC Creator 2.1 and PSoC Creator 2.2), so you normally would want to uninstall the older versions.
 
-# Debugging
+## Debugging
 
 When debugging with the IDE, watched variables (shown at the bottom of the screen) can take some time to update themselves once you have paused the program. It all depends on how many you are watching, but keep in mind that it might take a few seconds before the variables update to their correct values. Don't just continue the program quickly thinking that their must be a bug in your code.
 
-# File Types
+## File Types
 
 Knowing what each file can do is helpful when working out what to include in a SCM program (such a Mercurial or Git). Files which can be regenerated are not included in the SCM, as in my opinion they just clutter up change logs.
 
@@ -163,11 +163,11 @@ Knowing what each file can do is helpful when working out what to include in a S
 <td >Yes
 </td></tr></tbody></table>
 
-# File Changes
+## File Changes
 
 PSoC Creator can handle outside changes files that it has open and ones loaded with the current project really well. This usually happens if you are using an external code editor or updating files using versioning software. PSoC Creator warns that the files have be changed and gives you the option to reload them.
 
-# Working Out How Much Hardware You Are Using
+## Working Out How Much Hardware You Are Using
 
 As part of the compile process, a very nice table showing the utilisation of the different hardware inside the PSoC. This is called the **Technology mapping summary**. It is located in the ProjectName.rpt file in the PSoC project solution folder (.cydsn).
 
@@ -175,7 +175,7 @@ As shown in the image below, the table shows you useful things like how many of 
 
 {{< figure src="/images/programming-psoc/psoc-creator-verilog-report-file-technology-mapping-summary-hardware-utilisation.png" caption="The PSoC Creator 'Technology Mapping Table' in the .rpt file, showing a breakdown of the hardware utilisation."   >}}
 
-# Bugs
+## Bugs
 
 The Find/Replace algorithm resets it's search position when any text is manipulated. This gets annoying when using "Find Next" or "Replace Next" to selectively replace only certain matches , as you end up going back through previously found matches everytime you make a text edit.
 

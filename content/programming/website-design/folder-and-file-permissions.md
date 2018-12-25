@@ -7,11 +7,11 @@ type: page
 url: /programming/website-design/folder-and-file-permissions
 ---
 
-# Overview
+## Overview
 
 Folder and file permissions are an important aspect of web design. They need to be set carefully to allow the server and users the correct privileges so they can use the site correctly, however they need to be strict enough so that there are no security vulnerabilities.
 
-# Bulk Change Of Permissions Using SSH
+## Bulk Change Of Permissions Using SSH
 
 You can change the permerssions of a folder and all sub-folders by using the following command:
     

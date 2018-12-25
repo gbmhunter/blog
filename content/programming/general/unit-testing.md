@@ -7,7 +7,7 @@ type: page
 url: /programming/general/unit-testing
 ---
 
-# Overview
+## Overview
 
 Unit testing is the method of testing small segments of a code base (say, a function or class) individually, using testing code. There are good unit test frameworks for pretty much every programming language imaginable.
 
@@ -25,7 +25,7 @@ The aim of unit testing is to make sure that the small section of code works cor
     Tries to leave without paying.
 </blockquote>
 
-# Unit Testing Embedded Systems
+## Unit Testing Embedded Systems
 
 Unit testing on embedded systems can be much harder than "typical" software unit tests. Low-level embedded C/C++ code can have many hardware/MCU peripheral dependencies, which may not be available when unit testing (e.g. if you want to run the unit tests on a standard computer). These dependencies require mocking, which can be very difficult.
 
@@ -35,10 +35,10 @@ Linux is a great tool to use here, as it is great for compiling and testing C/C+
 
 It is common practice to put unit tests in a separate folder to your source code. I (and others, including those who write libraries in python) use the name test .
 
-# C/C++
+## C/C++
 
 See the [Programming->Languages->C++->Unit Testing And Mocking page](/programming/languages/c-plus-plus/unit-testing-and-mocking).
 
-# External Links
+## External Links
 
 A really good read is [How To Write Good Unit Tests](http://wiki.developerforce.com/page/How_to_Write_Good_Unit_Tests), on the DeveloperForce website.

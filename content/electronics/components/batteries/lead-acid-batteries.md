@@ -7,11 +7,11 @@ type: page
 url: /electronics/components/batteries/lead-acid-batteries
 ---
 
-# Overview
+## Overview
 
 Lead-acid batteries are the oldest form of rechargeable battery, invented in 1859.
 
-# General Characteristics
+## General Characteristics
 
 <table>
     <thead>
@@ -39,7 +39,7 @@ Lead-acid batteries are the oldest form of rechargeable battery, invented in 185
 <td >2.105V
 </td></tr></tbody></table>
 
-# Chemistries
+## Chemistries
 
 ## VRLA (Valve Regulated Lead Acid)
 
@@ -53,7 +53,7 @@ A subcategory of a VRLA, the AGM battery contains thinly woven fibreglass mats i
 
 As the name implies, a gel cell battery contains a gelled electrolyte. This is made by dissolving silica fume into sulphuric acid. The gel prevents evaporation and leakage of the electrolyte. The pressure valve keeps the internal pressure high enough to allow total recombination of the hydrogen and oxygen back into water.
 
-# Charging
+## Charging
 
 It is recommended to charge a lead-acid at C/10 or less. There are three different ways to charge a lead-acid battery. The best chargers incorporate all three in a multi-stage configuration.
 
@@ -93,11 +93,11 @@ Float charging is charging at a fixed voltage for an indefinite amount of time. 
 
 The lifetime of a lead-acid battery is affected by  * The charging/discharging regime the battery has experienced during its life  * The depth of discharge  * The exposure to long period's with the battery being only partially charged (causing sulphation)  * The average temperature of the battery over its life
 
-# Sulphation
+## Sulphation
 
 Sulphation occurs when the battery is left in a partially charged state for an extended period of time.
 
-# Equalization
+## Equalization
 
 It's an obvious statement that not every cell in a lead-acid battery would be exactly equal. Because of this, they lose/gain slightly different amounts of charge when in use. This fact becomes more predominant with time and more cycles of charging. At some point, the cells can become so imbalanced that the performance of the battery is severely affected.
 

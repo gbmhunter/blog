@@ -8,7 +8,7 @@ url: /programming/microcontrollers/psoc/components
 ---
 
 
-# Overview
+## Overview
 
 PSoC is unique in the microcontroller industry in that you can set-up and customize basically all the the hardware using a drag-n-drop GUI and schematic interface.
 
@@ -33,11 +33,11 @@ ClkCpTimer_Start();
 
 Most PSoC components do not like to be slept or woken twice in a row (by calling the component API function `Component_Sleep()` or `Component_Wakeup()` twice in a row). Make sure you always call each of these API functions **in sequence**! Calling `_Sleep()` when the component is already asleep or `_Wakeup()` when the component is awake can cause the program to crash.
 
-# ADC (Delta-Sigma)
+## ADC (Delta-Sigma)
 
 Delta-Sigma ADC components are high precision voltage measuring devices. The trade-off is they take longer to perform a conversion than the SAR ADC's.
 
-# ADC (SAR)
+## ADC (SAR)
 
 A _successive-approximation register analogue-to-digital converter_ (SAR ADC) is the common way of measuring a PCB voltage with a microcontroller.
 
@@ -49,7 +49,7 @@ The higher-end PSoC microcontrollers also have Delta-Sigma ADC's, which are more
 
 **WARNING:** Calling `AdcCp_StartConvert()` disables the SOC pin indefinitely if triggered mode is enabled (this always gets me).
 
-# Analogue Multiplexer
+## Analogue Multiplexer
 
 The PSoC has some powerful analogue multiplexing capabilities. This includes multiple analogue multiplexors that can accept up to 31 inputs. The multiplexer also has the ability to connect more than one signal at a time, providing "cross-bar support". This means you can essentially connect any analogue signal to any other (at makes the meaning of an 'input' to the mux rather ambiguous, as it now could be an output.
 
@@ -57,7 +57,7 @@ The following picture shows a PSoC multiplexer being used to connect two analogu
 
 {{< figure src="/images/2013/03/psoc-component-analogue-multiplexor-mux.jpg" width="550px" caption="The analogue multiplexor (mux) component in PSoC Creator."  >}}
 
-# Cap Sense
+## Cap Sense
 
 The cap sense component allows you to use capacitive touch sensing PCB components with a PSoC. The only external component required by the cap sense is a capacitor, which is used for transferring charge to and from the cap sense pins. The capacitor pin is automatically added to pin listing when you add a cap sense component, don't forget about this pin! Unusually, it can be routed to almost any pin on the microcontroller (most other pins used for capacitors (such as the ADC bypass cap) are limited to one or two pin choices).
 
@@ -71,7 +71,7 @@ The screenshot below shows the GUI for configuring the capacitive elements in PS
 
 {{< figure src="/images/2013/03/psoc-creator-schematic-cap-sense-component.jpg" width="670px" caption="The cap sense configure window in PSoC Creator."  >}}
 
-# Clocks
+## Clocks
 
 **Frequency Range:** 0Hz - max supported frequency of IC
 
@@ -81,7 +81,7 @@ The clocks can work the internal PLL (phase-locked loop), to generate higher fre
 
 Take care if using a clock to reset a PSoC hardware component. PSoC clocks have a 50% duty cycle, and reset inputs are usually level-triggered rather than edge-triggered. For that reason, if you connect a clock directly to a reset input pin, the clock will hold the component **in reset for half it's period**. This is probably not what you intended. To fix it so that the clock resets the hardware component on the rising-edge only, add a edge detect component between the clock and the reset input.
 
-# Counter
+## Counter
 
 <table >
 <tbody >
@@ -137,7 +137,7 @@ One gripe with the up-down counter is that when counting upwards, you cannot get
 
 PSoC 3 and 5 support both UDB and FF (fixed-function) block counters, while PSoC 4 only supports the FF block counters.
 
-# Debouncer
+## Debouncer
 
 Cypress provides a handy hardware component that deals with the issue of switch debouncing, without having to use any software.
 
@@ -145,7 +145,7 @@ The component is really set-up and user, and the following image shows one of th
 
 {{< figure src="/images/2013/03/psoc-debounce-component-with-pin-and-interrupt.png" width="590px" caption="The PSoC Debouncer. In the case, the switch pulled-up, and input goes low on press, which fires interrupt."  >}}
 
-# Delays
+## Delays
 
 Cypress supplies functions for creating software halt delays. They are included in CyLib.c. There is:
 
@@ -156,13 +156,13 @@ void CyDelayUs(uint16 microseconds)
 
 On the Cypress forums there is also delay functions supplied in a c header (.h) and assembly (.asm) file.
 
-# Digital Filter Blocks (DFB's)
+## Digital Filter Blocks (DFB's)
 
 The PSoC microcontroller features a digital filter block, a highly versatile and easy-to-use piece of analogue hardware that can configured graphically from the GUI.
 
 {{< figure src="/images/2013/03/psoc-filter-component-config-dialog-box.png" width="1118px" caption="The filter component configuration tab in PSoC Creator."  >}}
 
-# I2C
+## I2C
 
 Info Last Updated For: _I2C v3.5_
 
@@ -227,7 +227,7 @@ The only work around I know of is to modify the PSoC I2C component (not nice, I 
 
 Note that 5 new timeout error responses (e.g. `$INSTANCE_NAME`_MSTR_ERR_TIMEOUT_SEND_STOP) have been added as macros so the user code can determine if a timeout has occurred.
 
-# Interrupts
+## Interrupts
 
 Most of the work in setting up an interrupt can be done graphically. When starting an interrupt, you can provide a function pointer to call instead of using the pre-defined version (which helps keep your code separated from the automatically generated Cypress stuff).
 
@@ -268,7 +268,7 @@ Note that the trigger mode for interrupts can only be set to rising edge or leve
 
 If you are using a PSoC5/PSoC5 LP, you can use the ARM Cortex M3 NVIC_IABR0-NVIC_IABR7 registers to determine whether an ISR is currently being executed. These registers span the address range 0xE000E300-0xE000E31C. See [this link](http://infocenter.arm.com/help/topic/com.arm.doc.dui0552a/DUI0552A_cortex_m3_dgug.pdf) for more information.
 
-# LCD Drivers
+## LCD Drivers
 
 One of the disadvantages of the character LCD driver is that it requires 7 consecutive pins on a port, beginning at either pin 0 or pin 1. This kind of goes against PSoC's 'route anywhere' maxim.
 
@@ -278,7 +278,7 @@ Pin description:
 
 {{< figure src="/images/2013/03/psoc-module-character-lcd-pin-description.jpg" width="800px" caption="The pin descriptions for the PSoC LCD component."  >}}
 
-# Pins
+## Pins
 
 Yes, even the microcontrollers physical pins are "componentised" in PSoC Creator. This makes interfacing to the outside world easy! Pins can be connected directly to hardware on the schematic (so no code is needed to control it), or set to that an API is generated (so you can control it via code). Once the pin is created, you assign it a physical location in the system design window.
 
@@ -296,7 +296,7 @@ By default, digital inputs are **double synchronised**, and analogue inputs are 
 
 However, you can turn the synchronisation off in the pin settings if you wish to have an asynchronous signal.
 
-# Pulse Converter
+## Pulse Converter
 
 The Pulse Converter component is useful to convert variable width input pulses into constant width output pulses. It is a purely hardware-based component, using two different clock inputs to change the pulse width.
 
@@ -304,7 +304,7 @@ The Pulse Converter component is useful to convert variable width input pulses i
 
 **Note: With this component, there can (and likely will be) a delay between the rising edge of the input pulse and the rising edge of the output pulse, depending on the phase difference between the two clocks.**
 
-# Quadrature Decoder
+## Quadrature Decoder
 
 The quadrature decoder is a useful component when interfacing with incremental encoders. It accepts A, B and N (optional) channel quadrature inputs, and converts the pulses into a count. The count is configurable to be 8, 16 or 32-bit. You can select to to count on every pulse transistion for the highest resolution (4 per 'pulse'), to just one per pulse. It also features glitch filters and a configurable interrupt source. The interrupt source does not have a compare feature, so one of the let-downs is that most of the processing of the count has to be done by software polling.
 
@@ -312,13 +312,13 @@ I have used this for controlling a [BLDC motor](/electronics/circuit-design/bldc
 
 {{< figure src="/images/2013/03/psoc-component-quadrature-decoder.png" width="1034px" caption="The PSoC quadrature decoder component. Takes the A, B and N inputs from an incremental encoder and converts it into a count."  >}}
 
-# RTC
+## RTC
 
 RTC clock functions are provided that perform some rather neat and advanced functions. The core capability of the RTC is to keep track of the time. However it also extends the time keeping function by keeping track of hours/days/weeks/year, allows alarms to be set (based of flexible criteria such as the 10th minute of every hour or a one-of set time), and can even accommodate for daylight saving!
 
 The RTC code is supplied as component that you drop into the top level design in PSoC Creator.
 
-# Serial Communication Block (SCB)
+## Serial Communication Block (SCB)
 
 While the PSoC 3 and 5/5LP microcontollers have dedicated UART, I2C and SPI modules, in the PSoC 4 they are all bundled together in a _Serial Communication Block (SCB)_.
 
@@ -326,11 +326,11 @@ While the PSoC 3 and 5/5LP microcontollers have dedicated UART, I2C and SPI modu
 
 The SCB can be either configured graphically at compile time or by using code at runtime to operate as a UART, I2C or SPI module.
 
-# Timer
+## Timer
 
 The Timer component is very similar to the Counter component.
 
-# UART
+## UART
 
 As an embedded developer, this is one of the PSoC components you will use most frequently! The PSoC UART is easy to setup and powerful. It supports many baud rates, parity, stop bits, a voting system for noise reduction, a multitude of interrupt sources, and both hardware and software receive/transmit buffers. It does not support auto-baud.
 
@@ -346,17 +346,17 @@ Uart_Start();
 Uart_PutString("My first string!.");
 ```    
 
-# USB2UART
+## USB2UART
 
 Cypress has released a USB2UART driver for the PSoC 3 and PSoC 5 range. It allows you to emulate a COM port over a USB connection. Really useful for passing information easily from a microcontroller to a computer! This emulation gets rid of bulky COM ports and RS232 to UART drivers, since all the hardware is contained within the PSoC device. Data is sent/received on the microcontroller through a nicely built API, and sent/received on the computer like any standard COM port communication (e.g. a terminal program or .NET/COM API).
 
-# USB
+## USB
 
 Supports full-speed USB. However, there is no USB host support, so the PSoC always has to act as the device. Some PSoC 3 devices with 32kB or more of flash support USB, as well as PSoC 5 devices.
 
 The USB module supports interrupt, control, bulk and isochronous transfer types. It provides support for bootloading, HID (human-interface device), audio classes, MIDI devices, and CDC classes.
 
-# VDAC
+## VDAC
 
 The VDAC (digital-to-analogue voltage converter) component is used to convert a digital value into an analogue voltage. It is the opposite of an ADC.
 
@@ -397,7 +397,7 @@ void WatchedFunction()
 }
 ```
 
-# Watchdog
+## Watchdog
 
 Info last updated for: _cy_boot v5.20_.
 

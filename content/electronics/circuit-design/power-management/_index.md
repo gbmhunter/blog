@@ -7,7 +7,7 @@ type: page
 url: /electronics/circuit-design/power-management
 ---
 
-# Overview
+## Overview
 
 Power management is a big design consideration of battery powered and eco-friendly mains powered circuits. There are many ways of saving energy, some of the commonly used techniques are:
 
@@ -20,7 +20,7 @@ The following points need to be considered:
 * The effect of having input signals still being applied to the chips which are 'off' (e.g. unwanted ESD conduction)
 * The leakage currents of the device you're using to turn it off with (anything solid state has some form of leakage current, however mechanical relays do not).
 
-# Disabling Sections Of A Circuit
+## Disabling Sections Of A Circuit
 
 Disabling sections of the circuit is an easy way to save power. This can be done with  low-side or high-side switch. High side switches disconnect the load from the positive voltage rail (an source current to the load), while low-side switches connect the load to ground (and conversly sink current from the load). This can be done with a number of components, their advantages/disadvantages are explained below:
 
@@ -29,7 +29,7 @@ Disabling sections of the circuit is an easy way to save power. This can be done
 * Integrated Load Switch/Smart Power Switch - These are essentially MOSFET's and supporting components built into a small chip for ease of use. Some feature the mentioned n and p combo to make it easy to control the load from a micro-controller. They normally also have build in ESD protection, thermal protection, overvoltage protection and current limiting which makes them hardened against all-sorts of abuse.
 * Voltage Regulator - Voltage regulators can be used to turn off power to circuits as long as they have a shut-down pin. Not the cheapest solution or the most power efficient (especially if it's a linear voltage regulator), but you might just happen to already be using one.
 
-# The "Suicide Switch"
+## The "Suicide Switch"
 
 In low-power, battery operated devices, when the battery is running flat, you need to disconnect all the load from the battery until the charger is plugged back in. It can be hard to remove all current drain from the battery as most parts of a circuit draw quiescent current, even in shutdown modes, and these sum together to draw an appreciable amount of current that will ruin the battery after a period of time. To get around this, you can use what I call a "suicide switch".
 
@@ -39,7 +39,7 @@ For it to work, you need to have a single device downstream of the battery which
 
 The microcontroller disconnects the load (which includes itself) by pulling the SHUTDOWN pin low until the RC circuit discharges (about 4s). The only load on the battery is the shutdown current on the linear regulator, which is very low. As soon as the USB is plugged in, SHUTDOWN once again goes high, which enables the load, turns the microcontroller on, which takes over control of pulling the line high until such a time to disconnect again.
 
-# UVLO (Under-voltage Lockout)
+## UVLO (Under-voltage Lockout)
 
 UVLO pins usually monitor the supply voltage and turn of the IC if the supply voltage drops below a set threshold. They normally indirectly measure the supply voltage by using an external resistor divider. This reduced voltage is then compared against an internally sourced reference voltage (e.g. 1.2V). The resistor divider lets the PCB designer choose the supply cut-off voltage by adjusting the ratio of the resistances.
 
@@ -68,7 +68,7 @@ The two equations are:
     \( R3 \) = resistor between \( V_{OUT} \) and the UVLO pin<br>
 </p>
 
-# Voltage/Current/Power Monitoring
+## Voltage/Current/Power Monitoring
 
 The [Texas Instruments INA226](http://www.ti.com/product/ina226) is an example of a voltage/current and power monitoring IC. It relies on an external high or low-side current-sense resistor. It is controlled via I2C. 
 

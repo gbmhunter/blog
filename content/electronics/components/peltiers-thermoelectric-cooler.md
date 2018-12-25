@@ -7,25 +7,25 @@ type: page
 url: /electronics/components/peltiers-thermoelectric-cooler
 ---
 
-# Overview
+## Overview
 
 Peltiers are electrical components that use the Peltier effect to heat/cool objects. They act as a heat pump, moving heat energy from the cold side to the hot side.
 
 {{< figure src="/images/2015/10/standard-peltier-module-photo.jpg" width="444px" caption="A photo of a standard peltier module. Image from www.cherrybiotech.com."  >}}
 
-# History
+## History
 
 The Peltier effect was discovered by Jean Charles Athanase Peltier in 1834.
 
-# Uses
+## Uses
 
 Peltiers are used in things such as:  * Portable fridges/freezers (especially when powered from 12V)  * Electronic temperature stabilisers (e.g. CPU cooler)  * Temperature-sensitive scientific equipment  * Medical devices  * Photonic systems
 
-# Construction
+## Construction
 
 Most Peltiers consist of many small semiconductor junctions, joined together in array, and connected between two thermally conductive, white ceramic plates.
 
-# Important Parameters
+## Important Parameters
 
 ## Max. Heat Transfer (Qmax)
 
@@ -51,7 +51,7 @@ Do NOT confuse this with the maximum temperature differential, `\(\Delta T_{max
 
 Be very careful not to exceed the maximum. operating temperature! Among other things, you could cause the solder connecting the thermoelectric pairs inside the Peltier module to melt, destroying the device (and potentially causing short-circuits). This solder usually melts around 120-160°C.
 
-# How Should I Drive One Of These?
+## How Should I Drive One Of These?
 
 If you want simple on/off control and the hot/cold sides don't need to switch, then you can control a peltier with a single mechanical switch, relay, or transistor (e.g. MOSFET).
 
@@ -59,6 +59,6 @@ If you want tighter control over the power, you can PWM a transistor to provide 
 
 If you want full control over the heat direction (i.e. which side is hot/cold), then you will need a H-bridge setup (similar to what is used to control stepper motors.
 
-# Examples
+## Examples
 
 Many non-branded, cheap Peltier modules use the part number _TEC1-127xx_, where _xx_ can be things like _03_ or _05_ (e.g. _TEC1-12703_, _TEC1-12705_). Be warned though, Peltiers with identical part numbers in this style can have widely varying parameter values.

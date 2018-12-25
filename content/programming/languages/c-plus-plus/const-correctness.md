@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus/const-correctness
 ---
 
-# Overview
+## Overview
 
 
 
@@ -22,7 +22,7 @@ Correct usage of the const keyword in C++ is important to get right (it is calle
 
 
 
-# Decoding The const Keyword
+## Decoding The const Keyword
 
 
 
@@ -98,7 +98,7 @@ So int const * myInt; is exactly the same as const int * myInt; . I recommend on
 
 
 
-# Multiple Const's
+## Multiple Const's
 
 
 

@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/relays
 ---
 
-# Overview
+## Overview
 
 Relays are traditionally electro-mechanical devices used for switching electronic circuits. There now exists "sold-state relays", which are purely electronic and contain no moving parts.
 
@@ -18,7 +18,7 @@ Uses:
 
 Relays with built in timers.
 
-# Terminology/Parameters
+## Terminology/Parameters
 
 * The Coil: The windings which turn the relay on when you apply a voltage
 * The Contacts: The output pins when get connected or disconnected when the relay turns on
@@ -26,7 +26,7 @@ Relays with built in timers.
 * Rated Coil Current: The current the relay coil will draw when the rated coil voltage is applied to it.
 * Contact Current Rating: The maximum current that the relay can conduct through the contacts
 
-# Solid State
+## Solid State
 
 Solid-state relays are relay's that don't have any moving mechanical parts involved in the switching. They use semi-conductor devices to perform the switching instead.
 
@@ -36,7 +36,7 @@ Below is the typical schematic symbol for a solid-state relay, along with a resi
 
 {{< figure src="/images/electronics-components/solid-state-relay-in-schematic-with-input-resistor.png" caption="This is the typical schematic symbol for a solid-state relay, along with a resistor connected to the input to limit the current through the internal LED."  width="600px" >}}
 
-# Contact Arrangements
+## Contact Arrangements
 
 
 Normally Open vs. Normally Closed
@@ -49,18 +49,18 @@ The following diagram shows three of the most common contact arrangements for re
 
 {{< figure src="/images/electronics-misc/relay-form-a-b-c-contact-arrangement.png" caption="Three of the most common contact arrangements for relays. Image from 'http://relays.te.com/pnb.asp'."  width="500px" >}}
 
-# Inductive Kickback
+## Inductive Kickback
 
 Protect with diode in anti-parallel. This diode can keep the relay turned on for longer than expected, and this turn-off time is called the relay drop-out time. This slower off-time can decrease the life of the relay due to arcing.
 
-# Latching
+## Latching
 
 With a little bit of clever (in design, not in the components themselves) external componentry, a mechanical relay can be made to latch-on, and will only reset once the load has been disconnected.
 
-# Common Relay Packages
+## Common Relay Packages
 
 Most PCB-mount relays have an asymmetric lead configuration so that it cannot be installed incorrectly.
 
-# Suppliers
+## Suppliers
 
 The [relay category page on DigiKey](http://www.digikey.com/product-search/en/relays). [TE's relay product page](http://www.te.com/catalog/relays/menu/en/16453).

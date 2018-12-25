@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/to-92-to-226-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
     <tbody>
@@ -87,11 +87,11 @@ url: /pcb-design/component-packages/to-92-to-226-component-package
     </ul>
 </td></tr></tbody></table>
 
-# Usage
+## Usage
 
 TO-92 is a very common package for low-power through-hole transistors, MOSFET's, and linear regulators.
 
-# Variants
+## Variants
 
 ## TO-92
 
@@ -105,7 +105,7 @@ The TO-92/18 variant of the TO-92 package is similar to the standard package (w
 
 {{< figure src="/images/2015/04/to-226-component-package-3d-render.jpg" width="407px" caption="A 3D render of the TO-92/18 (TO-226AB) component package."  >}}
 
-# Pin Numbering
+## Pin Numbering
 
 Pin numbering is always done from left-to-right, when the flat side of the TO-92 package is facing you and the legs are pointing downwards, as shown in the following diagram:
 
@@ -113,7 +113,7 @@ Pin numbering is always done from left-to-right, when the flat side of the TO-92
 
 This is applicable to both the standard TO-92 (TO-226AA) and TO-92/18 (TO-226AB) variants.
 
-# Standard Pinouts
+## Standard Pinouts
 
 The pinout for JEDEC-named 2N series transistors is standardised as per the following table:
 
@@ -139,7 +139,7 @@ The pinout for JEDEC-named 2N series transistors is standardised as per the foll
     </tbody>
 </table>
 
-# Thermal Resistance And Heatsinks
+## Thermal Resistance And Heatsinks
 
 There are a limited range of heatsinks available for the TO-92 component package. Aavid Thermalloy makes two TO-92 heatsinks, one of which is currently available (as of May 2016) on [DigiKey](http://www.digikey.com/product-detail/en/575200B00000G/HS251-ND/269309).
 

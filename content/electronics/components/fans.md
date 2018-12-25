@@ -7,9 +7,9 @@ type: page
 url: /electronics/components/fans
 ---
 
-# Overview
+## Overview
 
-# Computer Fans
+## Computer Fans
 
 Computer fans usually have two, three or four wires. The simpilist two-wire fans just have a wire for power and ground.
 
@@ -25,7 +25,7 @@ They normally use a hall-effect sensor mounted near the fans rotor which is tri
 
 4-wire computer fans are identical to 3-wire fans except for an additional speed control input wire. This wire accepts a PWM waveform which controls the fans rotational speed.
 
-# Speed Control
+## Speed Control
 
 Some fans are called "PWM fans" and have a dedicated input for sending in a PWM waveform, allowing you to provide a constant DC power source to it's power pin.
 

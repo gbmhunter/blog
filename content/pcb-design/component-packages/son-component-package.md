@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/son-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
 <tbody >
@@ -114,7 +114,7 @@ url: /pcb-design/component-packages/son-component-package
 </tbody>
 </table>
 
-# Thermal Pad
+## Thermal Pad
 
 The SON package has a exposed thermal pad on the underside, similar to a QFN package.
 
@@ -126,11 +126,11 @@ Below is an "odd shaped" SON package used by Numonyx flash chips that goes under
 
 {{< figure src="/images/2014/12/component-package-vdfpn8-mlp8-outline-dimensions.png" width="554px" caption="Outline and dimensions for the VDFPN8 (SON-8) component package of a Numonyx flash IC.Image from http://www.micron.com/~/media/Documents/Products/Data%20Sheet/NOR%20Flash/Serial%20NOR/M25P/M25P128.pdf."  >}}
 
-# Thermal Resistance
+## Thermal Resistance
 
 For a comparable TQFP package with the same pin count, the SON package (with an exposed pad) can usually handle more than twice the power dissipation.
 
-# WSON And VSON Variants
+## WSON And VSON Variants
 
 The WSON and VSON variants of the SON package are identical to the SON package except for varying heights.
 
@@ -142,6 +142,6 @@ The VSON variant has a height of 1.00mm (max.)
 
 {{< figure src="/images/2014/12/vson-component-package-height.png" width="471px" caption="An outline of the VSON component package showing it's height."  >}}
 
-# Images
+## Images
 
 {{< gallery dir="/images/electronics-packages/son-6" />}}

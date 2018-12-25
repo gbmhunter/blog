@@ -7,7 +7,7 @@ type: page
 url: /electronics/circuit-design/enclosures
 ---
 
-# Extruded Aluminium Enclosures
+## Extruded Aluminium Enclosures
 
 
 

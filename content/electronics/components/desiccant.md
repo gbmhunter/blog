@@ -7,11 +7,11 @@ type: page
 url: /electronics/components/desiccant
 ---
 
-# Overview
+## Overview
 
 Desiccant (a moisture absorbing compound), can be a good thing to use if your PCB is at risk for condensation.
 
-# Recharging Desiccant
+## Recharging Desiccant
 
 Desiccant can be re-used, just by drying it in the oven.
 

@@ -7,6 +7,6 @@ type: page
 url: /programming/compilers/gcc
 ---
 
-# Logo
+## Logo
 
 {{< figure src="/images/2014/07/gcc-compiler-logo.png" width="207px" caption="The GCC logo."  >}}

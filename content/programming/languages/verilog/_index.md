@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/verilog
 ---
 
-# Counters
+## Counters
 
 A 4-bit Counter In Verilog
 
@@ -54,6 +54,6 @@ end
 endmodule
 ```
 
-#  External Resources
+##  External Resources
 
 [Embedded Micro](http://embeddedmicro.com/) has a great example showing how to create a [UART transceiver using verilog](http://embeddedmicro.com/tutorials/mojo/asynchronous-serial).

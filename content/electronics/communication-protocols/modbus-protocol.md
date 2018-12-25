@@ -7,22 +7,22 @@ type: page
 url: /electronics/communication-protocols/modbus-protocol
 ---
 
-# Overview
+## Overview
 
 The Modbus protocol does not define the physical layer. Instead it uses RS-232C compatible serial interfaces, which are very common on microcontrollers.
 
 Check out the [Mobicon Modbus Protocol Reference Guide](http://modbus.org/docs/PI_MBUS_300.pdf) for detailed info. Another good tutorial is [Lammert Bies' Modbus interface](http://www.lammertbies.nl/comm/info/modbus.html).
 
-# Terminology
+## Terminology
 
 * Coil: Discrete output (e.g. digital GPIO output pin on microcontroller)
 * Holding register: Internal, two-byte wide digital register that are used for storing values
 
-# ASCII Framing
+## ASCII Framing
 
 Messages start with a colon (:) and end with a carriage return-line feed pair (CR-LF). Each byte of data between is sent as ASCII-encoded HEX (0-9, A-F).
 
-# Function Codes
+## Function Codes
 
 The common function codes are shown in the below table.
 
@@ -116,7 +116,7 @@ The common function codes are shown in the below table.
 </tbody>
 </table>
 
-# Software
+## Software
 
 [FreeMODBUS - A Modbus ASCII/RTU and TCP implementation](https://www.freemodbus.org/): Software targeted at embedded platforms.
 

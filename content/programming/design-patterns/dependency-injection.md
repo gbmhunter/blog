@@ -7,13 +7,13 @@ type: page
 url: /programming/design-patterns/dependency-injection
 ---
 
-# Overview
+## Overview
 
 Dependency injection is a programming design pattern in where services (dependencies) are inserted into the client (the code that needs the services) at runtime.
 
 {{< figure src="/images/2014/07/red-syringe.jpg"   >}}
 
-# Pros And Cons
+## Pros And Cons
 
 Dependency injection has the following advantages (these are explained in more detail in the following sections):
 
@@ -21,7 +21,7 @@ Dependency injection has the following advantages (these are explained in more d
 * Modularity and decouplement due to the actual instances of the dependencies being passed in as references at runtime. These references could be null, and as long as the code has been written to support null references, then it should still function o.k.
 * Allows unit testing through the injection of mock or "stub" services.
 
-# Basic Example
+## Basic Example
 
 This basic example uses C++.
 
@@ -62,16 +62,16 @@ This basic example uses C++.
     }
     ```
 
-# How Does It Fit Into Existing Design Patterns?
+## How Does It Fit Into Existing Design Patterns?
 
 This programming style fits very nicely into object-orientated software/firmware. All of an objects dependencies can be injected into the object on construction. Each one of these dependencies can be represented by another object, and passed in by reference (e.g. using pointers in C++).
 
-# Is It Applicable To Firmware?
+## Is It Applicable To Firmware?
 
 Dependency injection can be implemented very easily in firmware. That being said, careful consideration of it's advantages and disadvantages in a firmware environment must occur.
 
 Dependency injection makes the code less statically analyisable. In a C/C++ enviroment, dependency injection will mean that services are stored as pointers, which are given values at runtime.
 
-# Unit Testing
+## Unit Testing
 
 Dependency injection facilitates unit testing by allowing the programmer to perform unit tests by injecting mock (or stub) services in the client under test.

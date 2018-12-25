@@ -7,13 +7,13 @@ type: page
 url: /programming/languages/c/non-local-jumps-setjmp-longjmp
 ---
 
-# Overview
+## Overview
 
 The C functions setjmp() and longjmp() provide the ability to perform non-local jumps. A non-local jump is a jump in code execution between two seperate functions. This is opposed the the local jump, goto which can perform jumps as long as you stay within the same funtion.
 
 Non-local jumps have complications, as the stack needs to be saved/modified when switching context between two separate functions.
 
-# Definitions
+## Definitions
 
 setjmp() and longjmp() are defined as:
 
@@ -26,7 +26,7 @@ void longjmp(jmp_buf env, int val);
 
 `setjmp()` has to be called before `longjmp()`.
 
-# What Do I Need To Include?
+## What Do I Need To Include?
 
 `setjmp()` and `longjmp()` are both defined in setjmp.h.
 
@@ -34,7 +34,7 @@ void longjmp(jmp_buf env, int val);
 #include <setjmp.h>
 ```    
 
-# Making Your Own Exception Handlers In C
+## Making Your Own Exception Handlers In C
 
 A cool feature about setjmp() and longjmp() is that they can be used to make your own exception handling in C. If you have use any higher-level, OOP languages before, you may be familiar with the notion of an exception handler, using the try/catch/throw keywords (or similar) that allow you to run "may not work" code and catch any errors that may occur.
 
@@ -88,7 +88,7 @@ If you are interested in this and still want more information, see [http://www.
 
 [https://code.google.com/p/exceptions4c/](https://code.google.com/p/exceptions4c/) is a C-based exception library.
 
-# A Word Of Caution To C++ Users
+## A Word Of Caution To C++ Users
 
 The C standard for the setjmp() and longjmp() functions makes no assurances that the destructors will be called for objects that are created after setjmp() (aka TRY) and before longjmp() (aka CATCH) (essentially the portion of code that will be "unwound"). In fact, the behaviour in these cases is undefined. 
 

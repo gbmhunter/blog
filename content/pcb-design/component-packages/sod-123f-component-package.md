@@ -6,7 +6,7 @@ type: page
 url: /pcb-design/component-packages/sod-123f-component-package
 ---
 
-# Overview
+## Overview
 
 <table >
 <tbody>
@@ -91,20 +91,20 @@ url: /pcb-design/component-packages/sod-123f-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 The SOD-123F component package has narrow, flat leads protruding from the base of the SMD package.
 
-# 3D Render
+## 3D Render
 
 {{< figure src="/images/electronics-packages/component-package-sod-123f-3d-model.jpg" width="500px" caption="3D model of the SOD-123F component package." >}}
 
 {{< figure src="/images/electronics-packages/component-package-sod-123f-3d-model-2.jpg" width="500px" caption="3D model of the SOD-123F component package." >}}
 
-# Dimensions
+## Dimensions
 
 {{< figure src="/images/electronics-packages/component-package-sod-123f-dimensions.png" width="700px" caption="Dimensions of the SOD-123F component package." >}}
 
-# Recommended Land Pattern
+## Recommended Land Pattern
 
 {{< figure src="/images/electronics-packages/component-package-sod-123f-recommended-land-pattern.png" width="700px" caption="Recommended land pattern for the SOD-123F component package." >}}

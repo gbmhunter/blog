@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/python/running-external-commands
 ---
 
-# Overview
+## Overview
 
 Python gives you the ability to run/call external commands from within python scripts. For example, you may wish to call a Linux shell program from within your python code.
 
-# An Example
+## An Example
 
 The below example provides a function which can run a sub-process from within Python. It prints output from the sub-process line-by-line to stdout (which is a great feature for seeing the status of the shell program, instead of being dumped with the entire output once the sub-process is finished). The python function returns when the sub-process finishes, returning the sub-processes exit code (normally you would check if it is non-zero, to see if an error occurred).
 

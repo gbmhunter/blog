@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sod-923-component-package
 ---
 
-# Overview
+## Overview
 
 <table style="width: 600px;" ><tbody ><tr >
 <td >Name
@@ -57,10 +57,10 @@ url: /pcb-design/component-packages/sod-923-component-package
 <td>ESD protection diodes</td>
 </tr></tbody></table>
 
-# Comments
+## Comments
 
  Nothing here yet.
 
-# 3D Render
+## 3D Render
 
 {{< figure src="/images/2015/10/sod-923-component-package-3d-render.jpg" width="379px" caption="A 3D render of the SOD-923 component package."  >}}

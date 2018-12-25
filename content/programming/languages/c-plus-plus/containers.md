@@ -12,7 +12,7 @@ url: /programming/languages/c-plus-plus/containers
 
 
 
-# Overview
+## Overview
 
 
 
@@ -27,7 +27,7 @@ _The following containers are sorted alphabetically._
 
 
 
-# arrays
+## arrays
 
 
 <table >
@@ -111,7 +111,7 @@ Note that boost::array provides exactly the same syntax as std::array for initia
 
 
 
-# deque
+## deque
 
 
 <table >
@@ -174,7 +174,7 @@ A deque is not guaranteed to store all of it's data in a continuous memory seque
 
 
 
-# map/multimap
+## map/multimap
 
 
 <table >
@@ -263,7 +263,7 @@ emplace was added to std::map in C++11. It allows you to pass in the arguments u
 
 
 
-# set/multiset
+## set/multiset
 
 
 
@@ -295,7 +295,7 @@ Each element in a set must be unique. If you want to store multiple elements of 
 
 
 
-# vector
+## vector
 
 
 

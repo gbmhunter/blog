@@ -7,11 +7,11 @@ type: page
 url: /programming/operating-systems/linux/programs/ls
 ---
 
-# Overview
+## Overview
 
 The ls command **lists directory contents**. It is one of the most commonly used commands in a Linux environment. ls is similar to dir in a Windows environment.
 
-# List File/Folder Size
+## List File/Folder Size
 
 You can use the `-l` option to list file and folder sizes:
 
@@ -25,7 +25,7 @@ By default, ls outputs file/folder sizes in bytes, no matter how large the file.
 $ ls -lh
 ```
 
-# Finding What Shell You Are Using
+## Finding What Shell You Are Using
 
 You can use the `ls` program along with the flag `-l` (use the long list format) to determine what shell program you are using (bash, dash, Bourne, e.t.c).
 

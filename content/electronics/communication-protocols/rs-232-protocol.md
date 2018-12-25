@@ -7,7 +7,7 @@ type: page
 url: /electronics/communication-protocols/rs-232-protocol
 ---
 
-# Overview
+## Overview
 
 RS-232 (_Universal Asynchronous Receiver/Transmitter_) is a digital data transmission protocol with origins dating back to the 1960's. It was designed as a communication protocol to talk between _DTE_ (data terminal equipment) and _DCE_ (data communication equipment). It is universal in the sense the timing, voltages, flow control and error checking can be configured.
 
@@ -59,25 +59,25 @@ RS-232 (_Universal Asynchronous Receiver/Transmitter_) is a digital data transmi
 
 RS-232 is commonly used today for a variety of different purposes in embedded systems, incl industrial equipment, test and measurement equipment. RS-232 ports are no longer available on most desktop computers (and certainly not on laptops), but USB-to-RS232 adapters are cheap, popular and easy to use with almost any operating system.
 
-# Pinout
+## Pinout
 
 {{< figure src="/images/2015/10/rs232-comm-protocol-male-connector-large-pinout.png" width="315px" caption="The pinout of a male RS-232 DE-9 connector. Image from http://www.ethernut.de/."  >}}
 
-# Revisions
+## Revisions
 
 * RS-232C (or just shortened to RS-232)
 * EIA-232-D (1987)
 * EIA/TIA-232-E (1991)
 
-# Transmission Distances
+## Transmission Distances
 
 15m or less
 
-# Higher-Level Protocols
+## Higher-Level Protocols
 
 Do you need a higher-level communication protocol that works over a UART connection? See the [SerialFiller](https://github.com/mbedded-ninja/SerialFiller) library on GitHub (written in C++). SerialFiller uses a publish/subscribe mechanism and works well on point-to-point serial connections such as UART.
 
-# Interfaces
+## Interfaces
 
 The pinout of a typical Analog Devices RS-232 to UART transceiver is shown below.
 
@@ -85,7 +85,7 @@ The pinout of a typical Analog Devices RS-232 to UART transceiver is shown below
 
 Another example of a RS-232 to CMOS UART converter is the MAX3221IDBE4. It supports an auto-shutdown feature based on the voltage-level of the receiving RS-232 line.
 
-# Cheap Discrete-Part RS-232 To TTL Converter
+## Cheap Discrete-Part RS-232 To TTL Converter
 
 A RS-232 to TTL logic-level converter can be made out of a few discrete components. The schematic shown below uses some clever circuitry, including a charge-pump like circuit, to generate the negative voltage required for RS-232 transmission back to the computer.
 

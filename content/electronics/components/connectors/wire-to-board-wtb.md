@@ -7,11 +7,11 @@ type: page
 url: /electronics/components/connectors/wire-to-board-wtb
 ---
 
-# Overview
+## Overview
 
 Wire-to-board (WTB) connectors are a very common type of electrical connector. WTB connectors are used to attach free wires and cables to a PCB, to provide both electrical connections and mechanical support.
 
-# Naming
+## Naming
 
 The name can be abbreviated to _WTB connectors_ or _W-T-B connectors_. They can also be referred to as _board-to-wire connectors_.
 
@@ -19,7 +19,7 @@ WTB connectors get rid of all the problems with soldering wires directly onto a 
 
 Trying the find a good, reasonably-priced WTB connector on a electronic supplier's website can be near-impossible. There are so many varieties, shapes, lead pitches, bad datasheets, and different manufacturer's making nearly identical products. Also, to top it all of, you need to usually find more than one item to make a connector work (e.g. if you buy a connector you must also find the matching receptacle and crimp pins). And most suppliers don't do a good job and making the related parts obvious.
 
-# Examples
+## Examples
 
 ## TE Connectivity HPI
 

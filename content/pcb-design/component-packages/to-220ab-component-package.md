@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/to-220ab-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
 <tbody >
@@ -128,15 +128,15 @@ url: /pcb-design/component-packages/to-220ab-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 A variant on the TO-220 package with three leads and the pad (but only has three distinct connections). Commonly used in power electronics for components which require high heat-dissipation. Can dissipate about 1W of power without a heatsink.
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/04/to-220ab-to-220-3-component-package-3d-render.jpg" width="378px" caption="A 3D render of the TO-220AB component package."  >}}
 
-# Images
+## Images
 
 {{< figure src="/images/electronics-packages/component-package-to-220ab-dimensions.png" caption="The dimensions of the TO-220AB component package."  width="500px" >}}
 

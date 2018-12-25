@@ -7,7 +7,7 @@ type: page
 url: /programming/compilers/gcc/gcc-bugs
 ---
 
-# Issue With std::function (and lambdas) With gcc and arm
+## Issue With std::function (and lambdas) With gcc and arm
 
 This specific bug has caused be much pain when cross-compiling C++ code for the Zynq 7020 SoC (which has ARM A9 processors on-board). This caused software to seg fault for not good reason. It appeared when trying to use a captured this inside of a lambda function.
 

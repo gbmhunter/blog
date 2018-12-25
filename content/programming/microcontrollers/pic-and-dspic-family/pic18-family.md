@@ -7,17 +7,17 @@ type: page
 url: /programming/microcontrollers/pic-and-dspic-family/pic18-family
 ---
 
-# Overview
+## Overview
 
 PIC18 is a family of microcontrollers from Microchip. This includes the PIC18C and PIC18F sub-families.
 
 {{< figure src="/images/2016/06/marketing-image-microchip-pic18-microcontroller-family.pdf.png" width="571px" caption="Marketing render of a range of microcontrollers from the Microchip PIC18 family. Image from http://ww1.microchip.com/."  >}}
 
-# Compilers
+## Compilers
 
 The newest compiler for the PIC18 family of microcontrollers (as of July 2016) is the Microchip XC8 compiler. More information an be found on the [MPLAB XC Compilers page](/programming/compilers/mplab-xc-compilers).
 
-# EEPROM
+## EEPROM
 
 The old-style (now deprecated) way of reading and writing to EEPROM was to use the following macros (defined in `pic18.h`):
 
@@ -94,11 +94,11 @@ Default data can be written to the EEPROM when programming the PIC18 microcontro
 
 This macro takes 8 single-bye arguments, which writes 8 bytes of EEPROM data at once. This macro starts writing from address 0x0000 and auto-increments by 0x8 on every call.
 
-# GPIO
+## GPIO
 
 The TRISx registers (where x  is the port letter, e.g. TRISA , TRISB) control the direction of the GPIO pins on that port. They can either be set as inputs or outputs.
 
-# SPI
+## SPI
 
 The SPI peripheral is controlled by the SSPCON and SSPSTAT registers. Note that these registers are also used to configure the I2C peripheral (the SPI and I2C cannot peripherals cannot be used at the same time).
 

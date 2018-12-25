@@ -7,11 +7,11 @@ type: page
 url: /programming/website-design/nodejs
 ---
 
-# Overview
+## Overview
 
 node.js is a platform built on the Chrome Javascript runtime engine. It uses a non-blocking, event-driven I/O model and uses the Javascript programming language. It comes with a standard set of pacakges to make life easier.
 
-# Child Pages
+## Child Pages
 
 <table>
 <tbody>
@@ -33,13 +33,13 @@ node.js is a platform built on the Chrome Javascript runtime engine. It uses a n
 </tbody>
 </table>
 
-# Basics
+## Basics
 
 * All code is written in Javascript.
 * All lines of code outside of any function are executed sequentially when the script is first run.
 * Functions are run only when they are called.
 
-# A Simple HTTP Server
+## A Simple HTTP Server
 
 This is one of the most common Node.js examples:
 
@@ -85,7 +85,7 @@ http.createServer(function (req, res) {
 
 This handles favicon requests differently from standard requests.
 
-# Checking To See If There Is An Internet Connection
+## Checking To See If There Is An Internet Connection
 
 A quick and dirty way to check if there is internet connectivity is to use the code:
 
@@ -100,7 +100,7 @@ require('dns').resolve('www.google.com', function(err) {
 
 This checks to see if it can resolve Google's named internet address into a numerical address with a DNS server. If there is no connection, this will timeout after about 10s or so and execute any code under if(err). There is no way of changing the timeout time by passing a value through in the function, but you can roll your own custom timeout function.
 
-# NPM
+## NPM
 
 npm is the node package manager. You can install it by typing:
 
@@ -125,15 +125,15 @@ Local packages are installed in the current directory under ./node_modules/.
 A giant list of node modules can be found at [https://github.com/joyent/node/wiki/modules](https://github.com/joyent/node/wiki/modules). You can print a list of all installed modules with the command npm -ls.
 
 
-# RaspberryPi GPIO
+## RaspberryPi GPIO
 
 Make sure you start the nodejs script with admin privlages (sudo node myScript.js), otherwise you won't be able to control the GPIO (you will get an error similar to).
 
-# Packages I Have Found Useful
+## Packages I Have Found Useful
 
 [Express](http://expressjs.com/) is a web application framework for node.
 
-# External References
+## External References
 
 [The Node Beginner Book](http://www.nodebeginner.org/#javascript-and-nodejs) is an awesome place to start learning about nodejs. This first part is free (which gets you a long way), but the rest of it costs a small amount. Recommended to be worth it by both me and some of my friends!
 

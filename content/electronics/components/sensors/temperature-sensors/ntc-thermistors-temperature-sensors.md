@@ -7,19 +7,19 @@ type: page
 url: /electronics/components/sensors/temperature-sensors/ntc-thermistors-temperature-sensors
 ---
 
-# Overview
+## Overview
 
 **A _negative-temperature coefficient_ (NTC) thermistor can be used as a temperature sensor.** A NTC thermistor is a resistor which has a non-linear change in resistance in a response to a change in temperature. It is a _passive sensor_.
 
 {{< figure src="/images/2016/04/ntc-thermistor-with-lug-vishay-ntcalug03a103gc-v2.jpg" width="372px" caption="An example of a NTC thermistor built into a metal lug, and provided with a cable and connector. Vishay component NTCALUG03A103GC. Image from www.digikey.com."  >}}
 
-# NTCs vs RTDs
+## NTCs vs RTDs
 
 A NTC differs from a _resistive temperature detector_ (RTD) in the material used to make the sensor. **RTDs have a resistive element made with pure metals, while NTCs have a resistive element made from ceramics or polymers with semiconductor properties.**
 
 NTCs are used for smaller, but more accurate temperature ranges such as measuring ambient temperature or fridge/freezer temperature, while RTDs are used for larger, less accurate temperature ranges such as measuring furnace temperature.
 
-# Temperature Accuracy
+## Temperature Accuracy
 
 The temperature accuracy of a thermistor can be calculated (at the reference temperature) by dividing the percentage resistance tolerance at 25°C (or whatever the reference temperature is) by the thermistor's temperature coefficient, `\(\alpha\)`.
 
@@ -29,7 +29,7 @@ For example, the [Vishay NTCALUG03A103GC](http://www.digikey.com/product-detai
 
 <div>$$ \text{accuracy}_{25} = \frac{2%}{4.39} \\ = 0.46% $$</div>
 
-# Self Heating
+## Self Heating
 
 A NTC thermistor, like any other resistor, dissipates energy as heat when current flows through it. The power dissipation, `\(P_{NTC}\)` in a NTC thermistor is:
 
@@ -46,7 +46,7 @@ Because the resistance of the NTC changes as the temperature changes, so does th
 
 **RULE OF THUMB:** To make sure self-heating doesn't affect your temperature measurements, make sure that no more than 1mW of power is dissipated in the NTC thermistor at any temperature.
 
-# Beta Equation
+## Beta Equation
 
 The Beta equation or Beta formula is a empirical equation used to work out the temperature from the measured resistance of a NTC thermistor.
 
@@ -78,7 +78,7 @@ Re-arranged so that we can calculate a temperature from a measured resistance, 
 
 {{< figure src="/images/2016/04/ninja-calc-logo-v2-no-transparency.png" caption="ninja-calc-logo-v2-no-transparency"  >}}The free embedded-engineering calculator app, [NinjaCalc](http://mbedded-ninja.github.io/NinjaCalc/), features a calculator for working out the thermistor temperature (or any other variable) using the Beta equation.
 
-# Steinhart-Hart Equation
+## Steinhart-Hart Equation
 
 The Steinhart-Hart is a complex but highly accurate way of modelling the relationship between temperature and resistance of a NTC thermistor.
 
@@ -95,7 +95,7 @@ The Steinhart-Hart equation is:
 
 **CAREFUL:** The `\(B\)` in the Steinhart-Hart equation above is not the same as the `\(\beta\)` in the Beta Equation.
 
-# Linearising The NTC With Extra Resistors
+## Linearising The NTC With Extra Resistors
 
 By just adding a few extra resistors, the output of a NTC thermistor can be "linearised" enough that the equation `\(y = ax + b\)` can be used within the microcontroller over a limited temperature range.
 

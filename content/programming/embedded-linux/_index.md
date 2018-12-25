@@ -7,19 +7,19 @@ type: page
 url: /programming/embedded-linux
 ---
 
-# Overview
+## Overview
 
 Embedded Linux is the name given to the Linux operating system when it is run on **resource-constrained systems**, as opposed to traditional laptop, desktop or server style computers.
 
 {{< figure src="/images/2017/03/embedded-linux-icon.png" width="308px" caption="Embedded Linux icon."  >}}
 
-# Differences With "Standard" Linux
+## Differences With "Standard" Linux
 
 Embedded devices typically have fewer resources and hardware than a traditional computer running Linux. For example, embedded Linux might run on a single-board MCU which does not have a screen, harddrive or speakers. The board will usually have far less ROM and RAM than a traditional computer.
 
 Because of the resource/hardware constraints, the embedded Linux kernel is usually stripped of all unneeded features, resulting in a much smaller ROM/RAM footprint.
 
-# Functionality Of MCUs
+## Functionality Of MCUs
 
 A MCU designed to run embedded Linux (or any other high-level operating system) usually has some (or most) of the following features:
 
@@ -39,15 +39,15 @@ A MCU designed to run embedded Linux (or any other high-level operating system) 
 * Watchdog timer (WDT)
 * JTAG
 
-# Development Kits
+## Development Kits
 
 2 of the most popular embedded Linux development kits are the RaspberryPi and the BeagleBone.
 
-# BusyBox
+## BusyBox
 
 BusyBox is a bunch of stripped down Linux tools that are compiled into one executable. This makes it a popular choice for embedded devices, as each separate executable on an embedded system requires a significant amount of overhead.
 
-# Embedded ABI
+## Embedded ABI
 
 
 

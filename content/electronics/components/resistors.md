@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/resistors
 ---
 
-# Overview
+## Overview
 
 Resistors are a passive electronic component that restricts the flow of current when a given voltage is applied. They dissipate energy as heat. Given their simplicity and usefulness in circuits, they are the most commonly used electronic component.
 
@@ -15,7 +15,7 @@ For information on positive temperature coefficient resistors used as "fuses" in
 
 **The mechanical equivalent of a resistor is friction.** The larger the resistance, the larger the friction. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
-# Schematic Symbols
+## Schematic Symbols
 
 The most commonly-used resistor schematic symbols are shown below. I prefer the American-style resistor over the European (given my distaste for the American imperial system, I never thought I would ever say that!), and use the American style through-out the rest of this website.
 
@@ -36,7 +36,7 @@ The most commonly-used resistor schematic symbols are shown below. I prefer the 
     </tbody>
 </table>
 
-# Resistors In Series And In Parallel
+## Resistors In Series And In Parallel
 
 The behaviour of resistors when connected together in series and in parallel is exactly the same behaviour inductors exhibit, and exactly the opposite behaviour of what capacitors exhibit.
 
@@ -64,7 +64,7 @@ This is shown in the diagram below:
 
 {{< figure src="/images/2012/05/two-resistors-in-series-equivalent-single-resistance.png" width="669px" caption="Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image."  >}}
 
-# Resistor Dividers
+## Resistor Dividers
 
 Resistor dividers are two or more resistors in a series configuration such that at some junction in the string, the voltage is a fixed proportion of the total voltage applied to the end's of the string. In this way, they **"divide"** the input voltage into a smaller output voltage.
 
@@ -85,13 +85,13 @@ The [NinjaCalc program](http://mbedded-ninja.github.io/NinjaCalc/) has a calcula
 
 {{< figure src="/images/2012/05/screenshot-of-ninjacalc-resistor-divider-calculator.png" width="604px" caption="A screenshot of the NinjaCalc's 'Resistor Divider' calculator, being used to find the top resistance."  >}}
 
-# Variable Resistors
+## Variable Resistors
 
 The output of a potentiometer varies depending on the wiper position. If varies from 0R when the wiper is at both ends of the pot to a maximum of Rpot/4 when the wiper is in the middle.
 
 You call also get variable resistors which can be changed digitially (called DPOT's). They have their own page which can be found [here](/electronics/components/dpots).
 
-# Tolerances
+## Tolerances
 
 The tolerance of a resistor defines how accurately the resistor the actual resistors value is to the specified value, usually in terms of a percentage. 5% and 1% resistors are the most common. Typically the cost of a resistor goes up as the tolerance reduces, as it requires increased manufacturing precision.
 
@@ -122,7 +122,7 @@ However, the distribution of resistor values could be any number of shapes. For 
 
 For non-repetitive, high precision values, you can actually tweak a resistors value by grinding some of the resistor away with a metal file. This only works for the metal film style resistors. See [this video](https://www.youtube.com/watch?v=OQDjjIvLaj4) as an example.
 
-# The E Series
+## The E Series
 
 Practically all resistors follow an _E series_, a **scale of predefined resistances** that have standardised by IEC 60063. This type of sequence is called [preferred numbers](https://en.wikipedia.org/wiki/Preferred_number). Common E series are the E12, E24, E48, E96 and E192 series. The series divides the numbers between 1 and 10 into 12, 24, 48, e.t.c steps. The steps are chosen so that maximum relative error between any resistance you want and the closest resistance in the series is fixed (i.e. constant).
 
@@ -193,7 +193,7 @@ See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_numbe
 
 {{< figure src="/images/2012/05/screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png" width="552px" caption="NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 2.34kΩ."  >}}
 
-# Manufacturing Processes
+## Manufacturing Processes
 
 ## Thick Film
 
@@ -207,7 +207,7 @@ Most 0.1% SMD chip package resistors (0402, 0603, e.t.c) use thin film technolo
 
 Even rarer than thick and thin film resistors, metal foil resistor technology allows the most precise resistors to be made.
 
-# Power Resistors
+## Power Resistors
 
 Power resistors is a term used with resistors which are usually rated to dissipate 1W or more of power (without heatsinking).
 
@@ -215,7 +215,7 @@ They can be used to intentionally heat things, as the picture below shows. This 
 
 {{< figure src="/images/2012/05/using-a-power-resistor-to-heat-oil.jpg" width="1600px" caption="Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature."  >}}
 
-# Current-Sense Resistors
+## Current-Sense Resistors
 
 Current-sense resistors are a label given to low-valued, high precision (1% or better), and high power resistors that are good for using in current-sense circuits. Sometimes there is nothing special about these resistors (it's purely a marketing term), othertimes they may have two additional terminals for _Kelvin sensing_. A four terminal resistor is also called an _ammeter shunt_. Two of the terminals are used to pass the high current, the other two are used to measure to voltage drop across the resistor. This gets rid of measurement errors due to voltage drop in the wires going to the resistor (when the sense line and high-current path are the same thing).
 
@@ -223,7 +223,7 @@ Current-sense resistors are a label given to low-valued, high precision (1% or b
 
 More information and schematics on how to make current-sense circuits can be found on the [Current-Sensing page](/electronics/circuit-design/current-sensing).
 
-# Jumpers
+## Jumpers
 
 Most resistor series also include a 0Ω **jumper** resistor. Jumper resistors are great for jumping tracks when doing PCB design, as well as providing a convenient and cheap way of connecting/disconnecting certain tracks in different PCB variants.
 
@@ -231,11 +231,11 @@ Note that sometimes these jumper resistors can handle much less current than you
 
 Jumper resistors are not specified with a percentage tolerance as most other resistors, as this makes no sense (what is 5% of 0Ω?). Instead, they are printed as 0Ω, and a maximum resistance is given in the datasheet, which is usually in the order of 1-50mΩ.
 
-# Volume Resistance (Bulk Resistance)
+## Volume Resistance (Bulk Resistance)
 
 Volume resistance (also known as just resitivity, electrical resistivity, or bulk resistance) has the SI units `\(\Omega m\)`. It is a measure of how well a particular material conducts electricity, and is an intrinsic property of that material (it does not depend on how much of the material or what shape it is in). If the resistance between two conducting plates on opposite faces of a `\(1 \times 1 \times 1m\)` cube of material is measured to be `\(1\Omega\)`, then the material has a volume resistivity of `\(1\Omega m\)`. 
 
-# Packages
+## Packages
 
 Resistor come in many packages, from large, wire-wound power resistors that come in coils and blocks, to smaller through-hole resistors, to even smaller still SMD resistors. You can find more about resistor packages on the [Component Package Database](/electronics/circuit-design/component-packages) page.
 

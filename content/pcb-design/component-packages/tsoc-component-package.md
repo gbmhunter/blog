@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/tsoc-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
 <tbody>
@@ -110,14 +110,14 @@ url: /pcb-design/component-packages/tsoc-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 As far as I can tell, this package only comes in the 6-pin version (TSOC-6), and is only used by Dallas/Maxim (since 2001, Dallas has been a subsidiary of Maxim). There are two variants, with the difference between them being the package width and the lead length (and hence two slightly different land patterns).
 
-# Photos
+## Photos
 
 {{< figure src="/images/2015/04/tsoc-6-component-package-photo.jpg" width="364px" caption="A photo of the TSOC-6 component package."  >}}
 
-# Images
+## Images
 
 {{< gallery dir="/images/electronics-packages/tsoc" />}}

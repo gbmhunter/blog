@@ -7,7 +7,7 @@ type: page
 url: /programming/website-design/php
 ---
 
-# Comments
+## Comments
 
 There are two types of comments in PHP, single line comments, and multi-line comments.
 
@@ -29,7 +29,7 @@ $var2 = 6.7;
 
 This comment style is the same as what's used in the [C](/programming/languages/c) and [C++](/programming/languages/c-plus-plus) programming languages.
 
-# Debugging
+## Debugging
 
 Printing to the current HTML page is an easy way of debugging, as long as you don't care that debug data momentarily appears on your website (e.g. your running on a test server, or just that you don't care). Be careful at leaking sensitive information to the public via this method.
 
@@ -49,7 +49,7 @@ You can use the function `get_defined_vars()` to return an array of all defined
 
 You can convert almost any object into a string using the function `serialize()`. This creates a text-representation of the object which can be converted back into an exact replica of the object at a later date.
 
-# Opening/Closing PHP In Html
+## Opening/Closing PHP In Html
 
 A PHP code block in the middle of an HTML page is opened with <?php and closed with ?>.
 
@@ -63,7 +63,7 @@ A PHP code block in the middle of an HTML page is opened with <?php and closed 
 ?>
 ```
 
-# Getting The Current Path
+## Getting The Current Path
 
 Commonly, you will find yourself wanting to find the current path of the php script you are running. The universal way to do this, which **even works for included files**, is to use:
 

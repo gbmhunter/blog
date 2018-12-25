@@ -5,7 +5,7 @@ draft: false
 title: Site Info
 ---
 
-# Site History
+## Site History
 
 ## 2004: Blog Started As "Kaboom Pyrotechnics"  
 
@@ -78,7 +78,7 @@ Migrated from Wordpress (full-blown CMS) to Hugo (static-site generator). The Gi
 
 A full post with more information on this migration can be found [here](/posts/updates/2018-12-15-site-migration-to-hugo-complete.md).
 
-# Latex
+## Latex
 
 Display-style math equations should be surrounded with:
 

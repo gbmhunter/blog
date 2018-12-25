@@ -7,7 +7,7 @@ type: page
 url: /programming/signal-processing
 ---
 
-# Overview
+## Overview
 
 The [Math.Net project](http://www.mathdotnet.com/) contains the ["Neodym" library](http://neodym.mathdotnet.com/) for signal processing in C#. The project can be downloaded, compiled in C# Express to produce a .dll, and then included as a resource in your own c# projects so you can then use the functions. I had issues using the DLL, and was getting the error "Could not load file: Strong name validation failed".
 
@@ -17,17 +17,17 @@ To fix this, I needed to use sn.exe (a tool provided with Visual Studio and the 
 C:\project\mathnet-neodym\build\Debug>sn.exe -Vr *
 ```    
 
-# Finite Impulse Response (FIR) Filters
+## Finite Impulse Response (FIR) Filters
 
 Moving average filters are a type of FIR filter. Learn more about them on the [Moving Average Filters page](/programming/general/signal-processing/moving-average-filters).
 
-# Infinite Impulse Response (IIR) Filters
+## Infinite Impulse Response (IIR) Filters
 
 ## Source Code
 
 The opensource [Math.Net NeoDym library](http://neodym.mathdotnet.com/) contains C# code for using IIR filters.
 
-# Local Maxima/Minima (aka Peak/Trough) Detection
+## Local Maxima/Minima (aka Peak/Trough) Detection
 
 Maxima/minima detection is useful for frequency/phase detection of waveforms which have changing amplitude, DC bias, and frequency (i.e. are all over the place).
 
@@ -54,7 +54,7 @@ However, real world data is not perfect, and is likely to have noise. This will 
 
 I have written a C library, [LocalExtrema](https://github.com/gbmhunter/LocalExtrema), capable of finding local maxima/minima and designed to be run on embedded systems. It is hosted on [GitHub here](https://github.com/gbmhunter/LocalExtrema).
 
-# Correlation
+## Correlation
 
 Correlation is the measure of "likeness" between sets of data. The correlation coefficient tells you how well the two sets of data match. The Pearson's correlation coefficient is given by:
 
@@ -68,7 +68,7 @@ Correlation is the measure of "likeness" between sets of data. The correlation c
     \( \`bar{Y} \) = average value of data set 2<br>
 </p>
 
-# Detecting Variable Wraparounds
+## Detecting Variable Wraparounds
 
 This is about how to detect if a variable which loops has "wrapped around", that is, incremented from it's highest value back to it's lowest (a forward direction wraparound), or decremented from it's lowest value back to it's highest (a reverse direction wraparound).
 
@@ -78,7 +78,7 @@ For example, say you were measuring a signal which could take on a value between
 
 The best you can do is make a statistical guess at which is more likely. In most real-world situations this would mean choosing the result which has the least absolute distance change, which in the example above would be deciding that it must of overflowed and jumped forward by 3 counts rather than jumping backwards by 7 counts.
 
-# Curve Fitting
+## Curve Fitting
 
 Curve fitting is an essential part of signal processing.
 

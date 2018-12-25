@@ -7,7 +7,7 @@ type: page
 url: /programming/operating-systems/freertos/freertos-tips-and-tricks
 ---
 
-# Diagram
+## Diagram
 
 The following diagram shows a holistic diagram of the architecture for a medium to large firmware application that runs on a microcontroller and uses a RTOS.
 
@@ -17,7 +17,7 @@ The following diagram shows a holistic diagram of the architecture for a medium 
 
 The hardware is the acutal peripherals that a particular microcontroller has, including things like a UART, I2C and ADC.
 
-# Building In Task Dsiabling Functionality
+## Building In Task Dsiabling Functionality
 
 It is good to design tasks with the ability to be able to disable that task while allowing the application to continue to run.
 

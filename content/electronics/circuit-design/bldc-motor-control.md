@@ -6,13 +6,13 @@ type: page
 url: /electronics/circuit-design/bldc-motor-control
 ---
 
-# Overview
+## Overview
 
 The page is dedicated to how to control a **brushless DC** (BLDC) motor in an embedded system. This includes control methods for both trapezoidal and sinusoidal wound BLDC motors. There are many different ways to control a BLDC motor, from simple hall-effect based switching, to complex encoder based field-orientated control with space-vector modulation (if you have no idea what these mean, don't worry, read on).
 
 {{< figure src="/images/2012/08/rp17-bldc-motor-nema-17.jpg" width="258px" caption="A standard-looking BLDC motor in a NEMA-17 enclosure." >}}
 
-# Acronyms And Terminology
+## Acronyms And Terminology
 
 <table>
 <tbody>
@@ -229,7 +229,7 @@ The page is dedicated to how to control a **brushless DC** (BLDC) motor in an em
 </table>
 
 
-# Motors
+## Motors
 
 Important Parameters:
 
@@ -254,13 +254,13 @@ The motor windings can be wound to either give trapezoidal or sinusoidal feedbac
 
 So it pays to get the right motor for the right job!
 
-# Trapezoidal vs. Sinusoidal
+## Trapezoidal vs. Sinusoidal
 
 There are two standard ways of winding the coils. One is to produce a trapezoidal shaped BEMF, the other produces a sinusoidal shapes BEMF. Sinusoidal motors have lower torque ripple (less vibration, mechanical stress e.t.c e.t.c), but suffers from higher switching losses and greater drive complexity than a trapezoidal motor. For this reason trapezoidal motors are very common.
 
 In a sinusoidal motor, current travels through all three windings at any point, while in a trapezoidal motor, current only flows through 2 of the 3 windings. Sinusoidal motors come under a number of names, including PMSM (permanent magnet synchronous motor), an AC servo motor, or BLAC (brushless AC, a term used by [Atmel](http://www.atmel.com/)). Trapezoidal designed motors go under the name BLDC (brushless DC).
 
-# Positional Sensing
+## Positional Sensing
 
 Because there are no brushes to switch the current in the windings (commutation), the position of the rotor relative to the stator needs to be known so that the current can be switched externally. There a three main methods for detecting where the rotor is:
 
@@ -274,7 +274,7 @@ The [encoder](/electronics/components/encoders) method uses, well, an encoder at
 
 **Zero-crossing** has become popular in recent years due to the fact it requires no sensors, making it cheap to implement. It is the method of measuring the voltage of the floating winding during operation (1 winding is always undriven), to determine the position of the rotor. One disadvantage of this method it does not work below a minimum speed (because the voltage is too small).
 
-# Trapezoidal Control
+## Trapezoidal Control
 
 A common example of a trapezoidal (or block) commutation cycle of a BLDC motor with hall-sensor feedback is shown in the below table. This will drive the motor in one particular direction. This can be used to form a LUT for quick hardware/software commutation.
 
@@ -354,7 +354,7 @@ The schematic below shows the hardware used in a PSoC 5 microcontroller to perfo
 
 {{< figure src="/images/2012/08/psoc-bldc-schematic-luts-and-multiplexors-for-phase-drive.png" caption="A PSoC schematic containing LUT's and multiplexors for trapezoidal-control of a BLDC motor.">}}
 
-# Sinusoidal Control
+## Sinusoidal Control
 
 The benefits:
 
@@ -418,7 +418,7 @@ With a pure phase-neutral sinusoidal drive, the maximum phase-to-phase voltage i
 
 To implement third-harmonic injection, all you have to do is add the third-harmonic to the sine-wave LUT. The third-harmonic has an amplitude that is 1/6 of that of the fundamental (your original sine wave). You'll notice that the maximum value in the LUT has decreased. At this point, scale up all the values in the LUT so they use the full-range again.
 
-# Sensor Field Orientated Control (FOC)
+## Sensor Field Orientated Control (FOC)
 
 The benefits:
 * You can control motor parameters which relate directly to it's physical behaviour (the variables make sense to a human)
@@ -527,25 +527,25 @@ During constant flux operation (which is normal operation, all the flux is creat
     |\Phi_{abc}| = \begin{bmatrix} \Phi_a & \Phi_b & \Phi_c \end{bmatrix} = \text{global fields} \\ \\  
  $$</div>
 
-# PWM Frequency
+## PWM Frequency
 
 So what PWM frequency do I choose? The PWM frequency is a trade-off between torque ripple and switching losses. Most controllers use a frequency between 10-20kHz. If you want to reduce the audible noise from the motor, try using a frequency between 17-20kHz (outside the audible range of most adults).
 
-# Deadtime
+## Deadtime
 
 Dead-time is only important if you are going synchronous rectification (i.e. switching on the MOSFET rather than letting the body diode conduct when current is flowing through it in the reverse direction). In this case, during the off-time of the PWM signal, the complementary (on the same leg of the bridge) MOSFET(s) to those that are being switched are turned on. This allows the reverse current that would be usually be flowing through the inherent body diodes to instead flow through the MOSFET, resulting in lower heat losses (MOSFET's have a lower on 'resistance' than diodes). Dead-time between turning on the leg MOSFET's off and the other on is needed to prevent shoot-through.
 
 Note that if the duty-cycle of the PWM causes either the on or off-time to be less than the dead-time, it will appear as if the PWM stops working. This will happen at it's two duty cycle extremes (at the top and bottom of the sine wave). Don't be alarmed, this is normal and totally acceptable behaviour.
 
-# Open-Loop Feedback
+## Open-Loop Feedback
 
 Fully open-loop control (no hall-effect, encoder, or BEMF feedback) can be used in applications where torque ripple and efficiency are not important. The load has to be also relatively constant for this to work.
 
-# Closed-Loop Voltage Feedback
+## Closed-Loop Voltage Feedback
 
 Closed-loop voltage control is when feedback is used to commutate the current's, and the PWM duty cycle is varied from 0-100% to control the speed of the motor (but with no velocity control).  With this method, you have full control of the motors speed from 0-100%, but the motor's speed may vary as the load changes. As the load is increased, the current will increase, and the rpm of the motor will drop. It is called 'voltage' control because you can set the PWM duty cycle, which determines the voltage across the windings.
 
-# Closed-Loop Velocity Feedback
+## Closed-Loop Velocity Feedback
 
 Closed-loop velocity control involves controlling the rpm of the motor to a desired speed. The maximum currents must be taken into consideration when doing constant velocity control, as they may get very large if the motor stalls.
 
@@ -559,7 +559,7 @@ Closed-loop velocity control involves controlling the rpm of the motor to a desi
 
 * [PID](/programming/general/pid-control) PWM Control (soft or hard-chopping)
 
-# Closed-Loop Current Feedback
+## Closed-Loop Current Feedback
 
 Closed-loop current control will give you a constant output torque. This means that the motor will slow down when the load is increased, and speed up when it is decreased.
 
@@ -572,15 +572,15 @@ Closed-loop current control will give you a constant output torque. This means t
 
 * [PID](/programming/microcontrollers/general/pid-control) PWM Control
 
-# Sliding Mode Observer
+## Sliding Mode Observer
 
 Used to provide estimates on the position and speed of the rotor when not using encoder or hall-based feedback.
 
-# Controller Bandwidth
+## Controller Bandwidth
 
 Controller bandwidth is an important term which is used to define the update rate or speed of a particular control section for a motor. It is usually referred to when talking about the "Current Controller Bandwidth", a control loop that measures the phase currents of a brushless motor and updates the control variable accordingly (usually with a PID loop). This is commonly used with FOC control and SVM. Slow current controller bandwidths are around 300Hz, while faster bandwidths are in the 10-50kHz range (which updates the duty at the same speed as the PWM itself!). Higher current controller bandwidths are needed for lower torque ripple and slower motion (1-50rpm).
 
-# Code Execution Time
+## Code Execution Time
 
 The execution time of the code which controls the PWM duty cycle is critical, especially when using sinusoidal or sensor field orientated control. Here are the best ways of making sure the code runs quickly
 
@@ -595,7 +595,7 @@ The execution time of the code which controls the PWM duty cycle is critical, es
 
 See the [C Programming page](/programming/languages/c) for more help on this subject.
 
-# BLDC Maths
+## BLDC Maths
 
 Some useful equations...
 
@@ -623,7 +623,7 @@ Some useful equations...
 
 Flux = Magnetic field lines per unit area
 
-# Related IC's
+## Related IC's
 
 FSB50825US - Fairchild Smart Power Module (SPM)  
 
@@ -633,7 +633,7 @@ FSB50825US - Fairchild Smart Power Module (SPM)
 
  Onboard Logic: None (micorcontroller required)
 
-# Standard Enclosures
+## Standard Enclosures
 
 The NEMA17 and NEMA23 are two common sizes that BLDC motors come in. This designation defines the mounting hole pattern for the motor.
 
@@ -645,7 +645,7 @@ The NEMA23 mounting hole dimensions are shown below. The dimensions are in inche
 
 {{< figure src="/images/2012/08/nema-23-motor-mounting-dimensions.jpg" width="595px" caption="The NEMA23 mounting hole dimensions .The dimensions are in inches. Image from http://www.xylotex.com/FAQ.htm."  >}}
 
-# External Resources
+## External Resources
 
 One of the best documents that I've seen about BLDC motor theory is [James Robert Mevey's "Sensorless Field Orientated Control Of Brushless Permanent Magnet Synchronous Motors"](http://krex.k-state.edu/dspace/bitstream/handle/2097/1507/JamesMevey2009.pdf). Click [here](/docs/James Mevey - Sensorless Field Orientated Control Of Brushless Permanent Magnet Synchronous Motors.pdf) to download a local version.
 

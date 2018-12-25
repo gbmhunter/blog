@@ -14,14 +14,14 @@ url: /pyrotechnics/rocketry/projects/38pvc
 
 One of these made it onto a skateboard, and the result was "Rocket Board".
 
-# Casing
+## Casing
 
 * ID: 38.50mm (1.5inch)
 * OD: 43.00mm
 * Thickness: 2.30mm
 * Material: White PVC Pipe
 
-# Nozzle
+## Nozzle
 
 * Throat Diameter: 11.0mm
 
@@ -29,11 +29,11 @@ One of these made it onto a skateboard, and the result was "Rocket Board".
 
 The nozzle was made from plaster of paris cast inside the PVC pipe. Nozzle is 40mm deep and four 11mm diameter holes where drilled into the PCV pipe surrounding the plaster to provide grip.
 
-# End Plug
+## End Plug
 
 Cast in exactly the same way as the nozzle.
 
-# Propellant
+## Propellant
 
 * Composition: 60/40 KNDX
 * Weight: 173g
@@ -47,20 +47,20 @@ A 60/40 mixture of potassium nitrate and dextrose respectively (KNDX). Melted an
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/19-kndx-propellant-grain-unwrapped.jpg" width="500px" >}}
 
-# Thermal Sleeve
+## Thermal Sleeve
 
 The thermal sleeve consisted of one layer of 0.28mm thick cardboard around the interior of the motor. This was not enough and completely burns out upon firing.
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/21-putting-thermal-backing-in-motor.jpg"   width="500px" >}}
 
-# Post Firing Data
+## Post Firing Data
 
 * Throat Diameter: 11.5mm
 * Throat Expansion: 0.5mm
 * Expansion of PVC Pipe: 5.80mm!
 * Weight of Motor After Firing: 216g
 
-# Inspection
+## Inspection
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/38-afterburn-03.jpg" width="320px" >}}
 
@@ -68,17 +68,17 @@ Motor worked successfully and propelled skateboard across the concrete. Average 
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/33-rocketboard-02.jpg" width="600px" >}}
 
-# Calculations
+## Calculations
 
 [38PVC-Rocket-Motor-Data-Richard-Nakkas-SRM.xls](/images/2012/12/38PVC-Rocket-Motor-Data-Richard-Nakkas-SRM.xls)
 
-# Video
+## Video
 
 A video of the rocket-board.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/SPJvFzGbNCA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-# Pictures
+## Pictures
 
 > Click any picture to bring up a gallery view
 

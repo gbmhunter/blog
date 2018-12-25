@@ -7,7 +7,7 @@ type: page
 url: /programming/version-control-systems/git
 ---
 
-# Pulling In Temporary Changes To Your Branch
+## Pulling In Temporary Changes To Your Branch
 
 If you have some small improvements on branch `A` that make debugging/testing easier that are not yet reviewed/pushed to master, and you are working on branch `B`, you can bring these useful changes into `B` without polluting the branch with:
 

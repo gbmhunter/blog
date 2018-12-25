@@ -7,7 +7,7 @@ type: page
 url: /programming/design-patterns/abstraction-layers
 ---
 
-# Overview
+## Overview
 
 Abstraction layers allow for portable code. They provide a custom **"in-house" abstraction layer between your portable code and a third party library**. If you ever need to change to a different third-party library (shall we stipulate here that it needs to offer similar features), you just tweak your abstraction layer and all your higher level code that uses the abstraction layer **should** work just fine without any modification.
 
@@ -15,19 +15,19 @@ Some commons layers are the hardware abstraction layer (HAL) and the operating s
 
 **Should you provide an abstraction layer for every piece of third-party code?** No, probably not. For things like the C and C++ standard library (e.g. <stdint.h>, you can be pretty sure that these will be supported and consistant across multiple platforms/architectures. You are most likely just wasting your time and creating an extra layer on confusion by writing an abstraction layer for these. All consider, will I ever use a different library, or is someone else likely to? It the answers no, again, think twice before writing an abstraction layer for it.
 
-# How To Specify The Different Implementations?
+## How To Specify The Different Implementations?
 
 Each abstraction layer will need a different implementation with each target hardware/firmware combination. This can be achieved with #ifdef statements, conditionally compiling specific .cpp/.c files, or providing function pointers in the abstraction layer which are pointed to the correct functions at run time.
 
-# Vendor Lock-In
+## Vendor Lock-In
 
 Be careful using a feature which is specific to a particular platform. An abstraction layer can't protect you from that. You can however make the abstraction layer flexible and powerful enough to support that special feature, and still run on other platforms by detecting the feature isn't present and disabling any special code from running (as long as your higher level code is not **fatally dependent** on that feature). For example the abstraction layer could have function pointers which are null when the feature isn't present (obviously with code that stops the functions from being called if they are null, we don't want segmentation/hard faults!).
 
-# Better Unit Testing
+## Better Unit Testing
 
 The usage of abtraction layers allows for better unit tests. By creating fake/mock abstraction layers, it allows for unit tests to be run on a different setup, e.g. on a PC rather than a microcontroller. This can speed up testing, make it easier to automate, and can allow for better debugging abilities (most micrcontroller platforms do not have quite the same debugging abilities a full-blown computer has).
 
-# Abstraction Layer API Recommendations
+## Abstraction Layer API Recommendations
 
 Below are recommended abstraction layer API's for various hardware peripherals and common 3rd party libraries that you will use when writing firmware. Code is written in C++, but all are also applicable to the C programming language. All methods are sorted alphabetically.
 

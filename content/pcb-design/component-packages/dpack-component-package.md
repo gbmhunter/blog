@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/dpack-component-package
 ---
 
-# Overview
+## Overview
 
 <table >
 <tbody >
@@ -119,17 +119,17 @@ url: /pcb-design/component-packages/dpack-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 Commonly used for power MOSFET's and high power voltage regulators. Features a large tab/pin which can be soldered directly onto the PCB, providing good heatsinking capabilities.
 
 If DPAK is referred to by itself, with no pin number indication (e.g. DPAK3, DPAK5), it is usually referring to the 3-pin version.
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/04/to-252-component-package-3d-render.jpg" width="340px" caption="A 3D render of the TO-252 component package."  >}}
 
-# Other Images
+## Other Images
 
 {{< figure src="/images/electronics-packages/component-package-to-252-5-recommended-land-pattern.png" caption="The recommended PCB land pattern for the TO-252-5 component package. Image from Ricoh TO-252 Package Information (http://www.ricoh.com/LSI/product_power/pkg/to-252-5-p2.pdf)."  width="500px" >}}
 

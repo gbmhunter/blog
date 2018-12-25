@@ -7,7 +7,7 @@ type: page
 url: /programming/general/encryption
 ---
 
-# Overview
+## Overview
 
 
 There are two basic types of encryption used widely in computer science, symmetric and asymmetric algorithms. Symmetric algorithms use two identical or very similar keys to both encrypt and decrypt the information. Their main problem is that the sender and receiver need to share these keys securely before any transfer of information can take place, and you can't easily do that over the internet.
@@ -16,7 +16,7 @@ Then there is asymmetric algorithms, which include the popular public-key algori
 
 When the decryption keys is kept private and the encryption-key made public
 
-# Hash Functions
+## Hash Functions
 
 Hash functions are used in cryptograph to prove a digital signature of the sender
 
@@ -26,7 +26,7 @@ A checksum, regularly used to verify data blocks over internet transmission prot
 
 The ideal hash function is easy to compute the hash value- infeasible to generate a message with a given hash- infeasible to modify a message without changing the hash- infeasible to find two different messages with the same hash- posses the Avalanche effect
 
-# Types Of Attacks
+## Types Of Attacks
 
 ## Brute-Force Attack
 
@@ -40,7 +40,7 @@ Using the time of computation or the CPU power usage while performing encryption
 
 This is when a third party changes the public key half-way through a transmission to match their own private key.
 
-# TEMPEST
+## TEMPEST
 
 TEMPEST is a term used to define the method of obtaining protected information from 'compromising emissions'.
 

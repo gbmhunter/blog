@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/powershell
 ---
 
-# Single Quotes Vs. Double Quotes
+## Single Quotes Vs. Double Quotes
 
 You can define strings in PowerShell with either single quotes or double quotes. What is the difference? The difference is that PowerShell does not perform interpolation with single quotes, but does perform interpolation with double quotes.
 

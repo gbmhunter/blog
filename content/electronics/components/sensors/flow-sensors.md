@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/sensors/flow-sensors
 ---
 
-# Tiny Flow Sensors
+## Tiny Flow Sensors
 
 Tiny flow sensors exist in chip-size packages. These are in a group of products called MEMS (micro-electro-mechanical system) devices.
 

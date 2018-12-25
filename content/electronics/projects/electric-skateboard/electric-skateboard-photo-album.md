@@ -7,15 +7,15 @@ type: page
 url: /electronics/projects/electric-skateboard/electric-skateboard-photo-album
 ---
 
-# The First Prototype
+## The First Prototype
 
 {{< gallery dir="/images/electronics-electricskateboard-firstprototype" />}}
 
-# The Second Prototype
+## The Second Prototype
 
 {{< gallery dir="/images/electronics-electricskateboard-secondprototype" />}}
 
-# Final Board Photos
+## Final Board Photos
 
 ## Mechanical
 

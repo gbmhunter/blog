@@ -7,17 +7,17 @@ type: page
 url: /programming/general/automated-code-analysis
 ---
 
-# Overview
+## Overview
 
 Automated code analysis is when code reviews other code. It can also be called static analysis, as most programs which do this check the source code without actually running the program (which is where the term static comes from).
 
-# Static vs. Dynamic
+## Static vs. Dynamic
 
 Static analysis involves checking a programs source code for any issues, without actually running the code.
 
 Dynamic analysis are code checks that involve running the code (which has to be compiled first for non-interpreted languages).
 
-# Code Analysis Program Review
+## Code Analysis Program Review
 
 ## ClangStatic Analyser
 

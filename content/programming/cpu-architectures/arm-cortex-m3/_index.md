@@ -7,13 +7,13 @@ type: page
 url: /programming/cpu-architectures/arm-cortex-m3
 ---
 
-# Overview
+## Overview
 
 
 The ARM Cortex-M3 is a computer CPU architecture introduced in 2004 and designed for micocontrollers. It uses the 32-bit Thumb-2 instruction set (which supports the 16-bit Thumb instructions). It **does not** support ARM instructions.
 
 
-# Child Pages
+## Child Pages
 
 <table>
 <tbody >
@@ -28,7 +28,7 @@ The ARM Cortex-M3 is a computer CPU architecture introduced in 2004 and designed
 </tbody>
 </table>
 
-# Processor Modes
+## Processor Modes
 
 The processor supports two modes of operation, thread mode and handler mode. Both privileged and user code can run in thread-mode, while only privileged code can run in handler mode.
 
@@ -42,17 +42,17 @@ User mode is a "safer" way of running code on the Cortex-M3. When the processor 
 
 The only way to go from user mode back into privileged mode is through the firing of a handler (interrupt).
 
-# Stack Pointers
+## Stack Pointers
 
 The Cortex-M3 has two stack pointers, the main stack pointer (MSP) and the process stack pointer (PSP). The MSP is used when handling interrupts and optionally during normal execution, while the PSP is only used during normal processor execution. In a RTOS environment, ARM recommends that the MSP is used for both interrupts and kernal execution, while the PSP is used for thread/task execution.
 
-# Memory
+## Memory
 
 The memory on the Cortex-M3 has a single continuously mapped memory address space. The memory map is shown below.
 
 {{< figure src="/images/programming-misc/arm-cortex-m3-complete-fixed-memory-map.png" caption="The ARM Cortex-M3 CPU fixed memory map. Image from http://infocenter.arm.com/help/topic/com.arm.doc.ddi0337e/DDI0337E_cortex_m3_r1p1_trm.pdf."  width="700px" >}}
 
-# Data Types
+## Data Types
 
 The Cortex-M3 supports 3 data types:
 
@@ -64,7 +64,7 @@ Note that you are **not limited to only these data types in C!** We are talking 
 
 The processor can access memory in either little-endian or big-endian format, however the code (usually stored in Flash) has to be stored as little-endian. The processor has a pin called BIGEND which allows you to select the endianess of the memory at reset. Note that is up to the vendor's descretion to route this "pin" to an actual hardware pin on the microcontroller. More often than not you will not have access to this pin, as the memory on a microcontroller is usually incorporated into silicon chip itself, so the endianess is known at production.
 
-# Interrupts
+## Interrupts
 
 The powerful interrupt controller on the Cortex-M3 is called the NVIC (nested vectored interrupt controller).
 
@@ -99,21 +99,21 @@ The Cortex-M3 NVIC supports priority grouping of interrupts. This is controlled 
 
 The grouping divides the 8-bit priority register for each interrupt into two sections, one part for the pre-emption field, and the other part for the subpriority field. the PRIGROUP register allows you to change the ratio of pre-emption bits to subpriority bits (e.g. 7:1, 5:3, 2:6). The pre-emption field can have no bits, but the subpriority field always has to have at least 1.
 
-# SysTick
+## SysTick
 
 The Cortex-M3 has a build in "systick" hardware peripheral. It is used in some ports of FreeRTOS for calling the FreeRTOS tick handler function (the heartbeat of the FreeRTOS).
 
-# CMSIS
+## CMSIS
 
 CMSIS (Cortex-M Software Interface Standard) is a vendor-independent hardware abstraction layer for the entire Cotrex-M processor series.
 
 Supports core debug/trace facilities.
 
-# Microcontrollers Which Use This Architecture
+## Microcontrollers Which Use This Architecture
 
 * [PSoC 5](/programming/microcontrollers/psoc)
 * [PSoC 5 LP](/programming/microcontrollers/psoc)
 
-# External Links
+## External Links
 
 Check out the [official marketing page](http://www.arm.com/products/processors/cortex-m/cortex-m3.php) for the Cortex-M3

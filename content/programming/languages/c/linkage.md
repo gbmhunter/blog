@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/linkage
 ---
 
-# The extern Keyword
+## The extern Keyword
 
 The extern  keyword is a linkage modifier that has different meanings in different contexts. In C++, when used it the form extern "C", it can be used to declare functions and variables which should have C linkage.
 

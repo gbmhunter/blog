@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/tqfp-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table>
@@ -119,10 +119,10 @@ url: /pcb-design/component-packages/tqfp-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 The thin-quad-flat-pack package is a leaded, thin SMT package commonly used for micron-controllers and such. It's quite easy to solder these packages and easy enough to probe the individual pins afterwards when testing also.
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/04/tqfp-32-component-package-3d-render.jpg" width="290px" caption="A 3D render of the TQFP-32 component package."  >}}

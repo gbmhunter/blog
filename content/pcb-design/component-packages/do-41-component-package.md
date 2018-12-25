@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/do-41-component-package
 ---
 
-# Overview
+## Overview
 
 <table >
 <tbody >
@@ -104,12 +104,12 @@ url: /pcb-design/component-packages/do-41-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 The most common through-hole package for diodes. The common (1N400x) series of diodes comes in this package. The typical rated current for a diode in this package is 1A.
 
 This package is normally mounted on the PCB in two ways, either flat with the legs bent at 90° to fit into the holes, or in space-constrained applications, vertical, with one of the legs straight and one bent 180° to fit into the holes in the PCB (which are closer together than when in the flat orientation. Material of package is normally molded plastic.
 
-# Photo
+## Photo
 
 {{< figure src="/images/2015/04/do-41-component-package-photo.jpg" width="369px" caption="A photo of the DO-41 component package." >}}

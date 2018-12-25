@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/smd35-component-package
 ---
 
-# Overview
+## Overview
 
 <table >
 <tbody >
@@ -87,10 +87,10 @@ url: /pcb-design/component-packages/smd35-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 Used exclusively by Seti for their range of Deep UV LEDs.
 
-# Photos
+## Photos
 
 {{< figure src="/images/2015/04/smd35-component-package-3d-render.png" width="365px" caption="A 3D render of the SMD35 component package." >}}

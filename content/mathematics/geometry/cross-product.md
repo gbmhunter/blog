@@ -7,23 +7,23 @@ type: page
 url: /mathematics/geometry/cross-product
 ---
 
-# Overview
+## Overview
 
 The cross-product is a mathematical operation you can perform on two vectors in 3D space. The cross-product produces a vector which is orthogonal to both of the input vectors, which means it is also normal to the plane containing the two input vectors.
 
-# Mathematical Symbol
+## Mathematical Symbol
 
 The cross product of vectors `\(\textbf{a}\)` and `\(\textbf{b}\)` is written as:
 
 <div>$$ \textbf{a} \times \textbf{b} $$</div>
 
-# Defining Equation
+## Defining Equation
 
 The cross product is defined by the formula:
 
 <div>$$ \textbf{a} \times \textbf{b} = ||\textbf{a}|| ||\textbf{b}|| \, sin (\theta) \, \textbf{n} $$</div>
 
-# Cross Product Properties
+## Cross Product Properties
 
 The cross product of two vector always produces a vector which:
 

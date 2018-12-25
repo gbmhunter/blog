@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/connectors/mains-power
 ---
 
-# IEC 60320
+## IEC 60320
 
 The C13/C14 coupler is very common for powering computers, computer screens and other tech equipment from mains power. In New Zealand, they are commonly called "jug plugs".
 

@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/string-manipulation
 ---
 
-# ASCII Characters
+## ASCII Characters
 
 ## Null Character
 
@@ -40,7 +40,7 @@ printf("a" ^ " ");
 A
 ```
 
-# The Standard Libraries
+## The Standard Libraries
 
 <table>
     <thead>
@@ -96,7 +96,7 @@ A
 </tbody>
 </table>
 
-# Strings
+## Strings
 
 Strings in C are arrays where each element of the array holds an ascii character. When they are defined using double quotes, they are called a string literal. Normally these are 8-bit elements representing the standard ascii format (click for ascii table). The arrays can be defined first, and then ascii characters assigned to them, of the ascii values can be assigned easily when the array is defined as follows:
 
@@ -107,7 +107,7 @@ char* myString = "abc123";
 char myString[] = "abc123";
 ```
 
-# Special Characters
+## Special Characters
 
 Special characters can be added to strings using the escape character \  followed by a single identifier.
 
@@ -180,7 +180,7 @@ Special characters can be added to strings using the escape character \  follo
 
 Typically, both the carriage return and new line characters are used for making a new line (and in that order). This is normally appended at the end of strings to be printed with \r\n.
 
-# Copying
+## Copying
 
 `strcpy()` is a standard library function for copying the contents of one C string to another.
 
@@ -192,7 +192,7 @@ while (*p++ = *q++);
 
 is the equivalent to the standard library function `strcpy(p, q)`!
 
-# Number To String Manipulation
+## Number To String Manipulation
 
 Most C compiler installations include standard C libraries for manipulating strings. A common one is stdio.h, usually included into a C file using the syntax `#include <stdio.h>`. This library contains string copy, concatenate, string build and many others. Most of them rely on null-terminated strings to function properly. Some of the most widely used ones are shown below.
 
@@ -325,13 +325,13 @@ Memory manipulation functions are also useful for string manipulation. Some of t
 </tbody>
 </table>
 
-# Decoding/Encoding Strings
+## Decoding/Encoding Strings
 
 `strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](/electronics/circuit-design/communication-protocols/nmea-protocol). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
 
 `getopt()` is a standard function for finding command-line arguments passed into main() as an array of strings. It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable locally [here](docs/getopt.zip) (taken from GCC gLibC v2.17).
 
-# printf (And It's Variants)
+## printf (And It's Variants)
 
 `printf()` can be a very taxing function on the processor, and may disrupt the real-time deadlines of code (especially relevant to embedded programming). It is a good idea to keep `printf()` function calls away from high-priority interrupts and control loops, and instead use them in background tasks that can be pre-empted (either by interrupts or a higher-priority threads when running a RTOS).
 

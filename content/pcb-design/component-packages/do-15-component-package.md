@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/do-15-component-package
 ---
 
-# Overview
+## Overview
 
 <table >
 <tbody >
@@ -111,16 +111,16 @@ url: /pcb-design/component-packages/do-15-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 A very common axial leaded through-hole package used for diodes. Can be mounted vertically with a 2.54mm pitch to save PCB space (sometimes called the DO-15V package).
 
 The peak pulse power for these diodes is typically 500W. For a TVS diode in the DO-15 package the peak current pulse is typically 54.3A (based on the 10/1000us rating).
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/03/do-204ac-do-15-axial-component-package-3d-render.jpg" width="278px" caption="3D render of the DO-204AC (DO-15) component package in an axial configuration."  >}}
 
-# Images
+## Images
 
 {{< figure src="/images/electronics-packages/component-package-do-204ac-3d-model.png" caption="A 3D model of the DO-204AC (DO-15) diode component package, with a 10.16mm pitch."  width="400px" >}}

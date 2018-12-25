@@ -7,7 +7,7 @@ type: page
 url: /programming/microcontrollers/atmel/atmel-xmega-family/atmel-xmega-general-io
 ---
 
-# Controlling A Port
+## Controlling A Port
 
 The Xmega has hardware registries that speeds up controlling ports by skipping the read-execute-write cycle. The following example shows ways of controlling a port pin.
 

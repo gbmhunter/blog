@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/to-220ac-component-package
 ---
 
-# Overview
+## Overview
 
 <table><tbody ><tr >
 <td >Name
@@ -75,12 +75,12 @@ url: /pcb-design/component-packages/to-220ac-component-package
 MOSFET's
 </td></tr></tbody></table>
 
-# Comments
+## Comments
 
 A variant on the TO-220 package with only two leads and the pad (which still means it could have three distinct connections). Use for some high power diodes.
 
 {{< figure src="/images/2015/04/to-220ac-component-package-photo.jpg" width="271px" caption="A photo of the TO-220AC component package."  >}}
 
-# Dimensions
+## Dimensions
 
 {{< figure src="/images/2015/04/to-220ac-component-package-dimensions.png" width="637px" caption="The dimensions of the TO-220AC component package."  >}}

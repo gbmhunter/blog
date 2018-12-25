@@ -7,11 +7,11 @@ type: page
 url: /programming/microcontrollers/psoc
 ---
 
-# Overview
+## Overview
 
 The PSoC ecosystem by Cypress is a range of microcontrollers (PSoC 3, 4, 5 and 5LP) and IDE's (PSoC Designer and PSoC Creator).
 
-# Ports/Pins
+## Ports/Pins
 
 PSoC devices are great in the fact that almost all hardware peripherals are reconfigurable to any port/pins. You don't have specific ports/pins for UART peripherals, nor for ADC's e.t.c. However, I have to say almost, because there are some restrictions. These include:
 
@@ -21,7 +21,7 @@ PSoC devices are great in the fact that almost all hardware peripherals are reco
 * Op-Amp Inputs/Outputs - I think these are pre-defined to optimise resolution/signal-to-noise ratios.
 * USB D+ and D- pins - Because of the high communication speeds of the USB protocol, these pins require special design and hence are fixed.
 
-# FreeRTOS and PSoC
+## FreeRTOS and PSoC
 
 {{< figure src="/images/programming-misc/freertos-logo-large.jpg" caption="The FreeRTOS logo. Image from http://www.arm.com/community/partners/display_product/rw/ProductId/4028/."  width="320px" >}}
 
@@ -32,7 +32,7 @@ As far as I know, there are three ports for the PSoC family for using freeRTOS, 
 * [FreeRTOS-Lights](https://github.com/gbmhunter/C-FreeRTOS-Lights)
 * [FreeRTOS-PerformanceMetrics](https://github.com/gbmhunter/C-FreeRTOS-PerformanceMetrics)
 
-# Other Resources
+## Other Resources
 
 * The Cypress website naturally has tons of information about PSoC devices. A really handy feature is that the IDE has one-click links to the datasheets with many of the supplied "components" (blocks of code).
 * Planet PSoC (www.planetpsoc.com) is a small website with some information and block designs for PSoC 1 and PSoC 3 devices. **UPDATE Dec 2017: Website no longer accessible.**

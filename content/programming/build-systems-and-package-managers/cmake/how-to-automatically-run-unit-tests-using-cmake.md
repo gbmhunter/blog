@@ -7,7 +7,7 @@ type: page
 url: /programming/build-systems-and-package-managers/cmake/how-to-automatically-run-unit-tests-using-cmake
 ---
 
-# Overview
+## Overview
 
 Unit tests are a great way to make sure your code is working, drive development (TDD, a.k.a Test Driven Development) and prevent regression. However, it is very easy to forget to run your unit tests regularly. CI (continuous integration) tools may help here, running unit tests on every commit that is pushed to the server. But what about local commits, and what about all the code builds that may occur before a commit is made and pushed?
 

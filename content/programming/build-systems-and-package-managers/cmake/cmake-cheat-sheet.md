@@ -7,7 +7,7 @@ type: page
 url: /programming/build-systems-and-package-managers/cmake/cmake-cheat-sheet
 ---
 
-# cmake Cheat Sheet
+## cmake Cheat Sheet
 
 Below is a **cheat sheet for the most common statements** you will use in a CMakeLists.txt file!
 

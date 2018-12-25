@@ -7,7 +7,7 @@ type: page
 url: /electronics/tools/em-probes
 ---
 
-# Beehive Non-contact EM Probes
+## Beehive Non-contact EM Probes
 
 The Beehive Electronics probes set contains three H-field probes (100A, 100B, 100C) and one E-field probe (100D). All are non-contact probes.
 

@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/qp-quantum-platform
 ---
 
-# QM (QP Modeler)
+## QM (QP Modeler)
 
 A core part of QM is the graphical UML-based state machine diagrams.
 
-# QS
+## QS
 
 ## Printing Custom Messages
 

@@ -7,23 +7,23 @@ type: page
 url: /programming/languages/c-plus-plus/qt-cute
 ---
 
-# Threading
+## Threading
 
 Qt is designed around an event/listener paradigm (which they call _signals_ and _slots_) which promotes an event driven design over blocking method calls.
 
 All UI interaction must occur in one thread(the default UI thread). It is not advisable to add blocking calls in this thread as this will make the UI unresponsive while the thread is blocked.
 
-# Serial Port (QSerialPort)
+## Serial Port (QSerialPort)
 
 Qt allows you to access serial ports on the machine via the QSerialPort class. Note that serial port operations such as reading and writing must be done from the same thread. In that respect, if you do need to do both reading and writing, it is best not to use a blocking approach for reading, as you can not both block on a read call and send data at the same time. The better alternative is to use the readyRead signal
 
-# Compatibility With std Library
+## Compatibility With std Library
 
 **Qt Threads and std::condition_variable**
 
 In my experience, `std::condition_variable` seems to work without an issues when within a Qt thread.
 
-# Unused Parameter 'xxx'
+## Unused Parameter 'xxx'
 
 Qt can provide warnings when function parameters are unused. This can be a good thing, however it can be annoying and clutter up the compile output when you are purposely ignoring function parameters.
 
@@ -50,7 +50,7 @@ void doSomething(QObject* parent) {
 }
 ```
 
-# Connecting Signals And Slots
+## Connecting Signals And Slots
 
 Prior to Qt5, you have to use the `SIGNAL()` and `SLOT()` macros in the call to `connect()`:
 

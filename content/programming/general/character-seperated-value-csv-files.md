@@ -7,11 +7,11 @@ type: page
 url: /programming/general/character-seperated-value-csv-files
 ---
 
-# Terminology
+## Terminology
 
 A CSV file is made up of many **records**, where a record is a single entire line in the file. Each new line is signified with the **record delimiter** (typically a carriage return and line feed character, CRLF or \r\n). A record is made up of many **fields**, each which a seperated by the **field delimiter** (typicallay a comma or a tab character).
 
-# General Rules
+## General Rules
 
 1. Each record is located on a different line, and each line is seperated by the carriage return and line break characters (the record delimiter).
 2. The last record in the file may or may not have a record delimiter at the end of it.  

@@ -7,7 +7,7 @@ type: page
 url: /programming/version-control-systems
 ---
 
-# Overview
+## Overview
 
 Version control systems are designed for organising and retaining file information in a environment where the 'watched' files are constantly changing. They are used exetnsively in programming, project file management and general file management.
 
@@ -22,7 +22,7 @@ The primary functions of a SCM are:
 
 Version control systems usually originate from command-line roots, and then get GUI'ed up once they gain popularity. Using modern SCM's like Git and Mercurial is trivial through a command-line.
 
-# Mercurial
+## Mercurial
 
 Mercurial will not copy folders into the repo if there are no files in them. Why would you have empty foler you ask? Well, one reason would be if you had a template folder structure for new projects that you wanted in the repo.
 
@@ -30,7 +30,7 @@ One of my favourite SCMs! It is very similar to Git, and hence Git it also one o
 
 Mercurial assigns every commit on your machine a revision number. This **IS NOT a unique number**! It is very much likely that another user of the repo will have the exact same revision number for a different commit. If you after a unique number, you have to use the changeset ID. This is a 160-bit number (Mercurial normally only shows you the first 10 characters) found by using the [SHA-1 hash](http://en.wikipedia.org/wiki/SHA-1) on the current commit data, the previous commits hash, the username, and the date. Note that when I say unique, I mean probablistically impossible, although two different revisions could in theory produce the same changeset ID (as of July 2012, no collisions have been discovered).
 
-# Mercurial Ignore Files
+## Mercurial Ignore Files
 
 Ignore files are handy for excluding unwanted files from any mercurial repository, such as the 'millions' of junk files created by programming and design software. Below are ignore files I have made for certain software packages.
 
@@ -51,7 +51,7 @@ Glob Syntax (no longer maintained):
 
 {{< figure src="/images/programming-misc/mercurial-error-msg-abandoned-transaction-found.png" caption="The 'abandoned transaction found' Mercurial error message."  width="300px" >}}
 
-# How To Make A Mercurial Repo Remember A Local Server Location To Push To
+## How To Make A Mercurial Repo Remember A Local Server Location To Push To
 
 You need to add the path of the server to the hgrc file in the Mercurial .hg folder that it creates at the root location of your repo. It can also be done through the UI.
 
@@ -69,17 +69,17 @@ For example:
 default = \\mainserver\projects\Electric Skateboa
 ```
 
-# Long File Names
+## Long File Names
 
 Long file names of over 260 characters in Windows can cause issues for Mercurial (you normally get cannot find file errors when trying to commit). There is a 3rd party extension, called [win32lfn](https://www.mercurial-scm.org/wiki/Win32LongFileNamesExtension), which allows Mercurial to handle these longer file names.
 
-# SVN
+## SVN
 
 A very popular version control system that is well integrated into a fair amount of third party software. Manages on a file-to-file basis, which gives the main benefit of a user being able to checkout a section of a project, work on it, and commit it back to the main repository without ever downloading the rest.
 
 An annoying problem of SVN is the errors I keep getting. I am not sure if I use it right, but somewhere along the line of using  SVN for project (be it a day, or a few weeks later), a clash arises from trying to merge to files together or accidently renaming a folder. This normally locks the directory and I can never get the clean up function to work properly, resulting in SVN becoming useless. This is why I prefer Mercurial/Git.
 
-# CVS
+## CVS
 
 CVS (concurrent versions system) is a tool for version control of files (normally code/text-files). It is older and considered inferior to newer CMS's such as Git or Mercurial. As of 2013, it is being used by [Sourceforge](https://sourceforge.net/).
 

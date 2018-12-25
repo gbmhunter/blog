@@ -7,7 +7,7 @@ type: page
 url: /programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison
 ---
 
-# Overview
+## Overview
 
 This article is a *opinionated* comparison of popular, open-source build systems/package managers for C/C++. This review looks at both programs that compile your code and those that manage dependencies, as the line between build systems and package managers is blurred. The build and packaging support are treated as separate qualities which will be reviewed for each.
 
@@ -17,13 +17,13 @@ DISCLAIMER: I have had much experience with CMake and Makefiles, and moderate ex
 
 The [GitHub repository mbedded-ninja/CppBuildSystemReview](https://github.com/mbedded-ninja/CppBuildSystemReview) contains a example/demo project for each build/packaging system mentioned below (one per folder). In each folder, there is a `build.sh` bash script which should automatically run the build on a Linux system, provided you have the build system installed.
 
-# The Opinionated TL;DR
+## The Opinionated TL;DR
 
 If you want a full end-to-end package manager and build system setup, have a look at Conan with CMake. If you just are after a modern, powerful build system for typical build situations, have a look at Bazel. If you are thinking about cross-compiling (e.g. embedded targets), want something mature and well-known, or have a complicated build structure, have a look at CMake by it's own.
 
 If you are thinking of using Scons or Makefiles, please make sure you are doing so for a good reason! Perhaps it's because it has to integrate with a system that already uses these tools, or that is what your company prefers. If you are considering it for a completely new project, I strongly recommend you consider some of the alternatives!
 
-# Bazel
+## Bazel
 
 {{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/bazel-build-system-logo.png" width="150px" >}}
 
@@ -81,7 +81,7 @@ As far as I'm aware, Bazel does not have the install functionality that build sy
 
 Bazel seems to have first tier build support for C/C++, Java, Android and iOS.
 
-# Buck
+## Buck
 
 {{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/buck-build-system-logo.png" width="150px" >}}
 
@@ -129,7 +129,7 @@ Bazel seems to have first tier build support for C/C++, Java, Android and iOS.
     </tbody>
 </table>
 
-# Buckaroo
+## Buckaroo
 
 {{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/buckaroo-package-manager-logo.png" width="150px" >}}
 
@@ -141,7 +141,7 @@ Buckaroo is a package manager that uses Buck as the build system.
 
 Unfortunately, I do not believe that Buckaroo supports local dependencies. All dependencies have to come from
 
-# CMake
+## CMake
 
 {{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/cmake-build-system-logo.png" width="150px" >}}
 
@@ -206,7 +206,7 @@ There is an interesting [Hunter package manager](https://github.com/ruslo/hunter
 
 For more information on CMake, see the [dedicated CMake section of mbedded.ninja](/programming/compilers-build-systems/cmake).
 
-# Conan
+## Conan
 
 {{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/conan-c-cpp-package-manager-logo.png" width="150px" >}}
 
@@ -260,7 +260,7 @@ Conan is tightly integrated with official and community repositories which house
 
 When used with CMake, Conan can take over the responsibility of what is traditionally CMake's install/export steps. The install/export steps have always been a difficult issue with CMake, which requires complex logic to produce a relocatable, re-usable upstream CMake package.
 
-# Makefiles
+## Makefiles
 
 {{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/gnu-logo.png" width="150px" >}}
 
@@ -311,7 +311,7 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 
 No. No. No. Please don't consider raw makefiles as your build system unless you absolutely have to. Did I mention this comparison was opinionated?
 
-# Scons
+## Scons
 
 {{< figure src="/images/pages/programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison/scons-build-system.png" width="200px" >}}
 
@@ -361,7 +361,7 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
 
 SCons is a build tool, with no real package management features. The technical limitations of SCons starts to make the scripts complex when it comes to local builds with multiple dependencies and local install paths.
 
-# Examples
+## Examples
 
 I tried to do the following for each build system:
 

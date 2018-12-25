@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/inserting-assembly-code-into-c
 ---
 
-# Overview
+## Overview
 
 Assembly code can be inserted into C code. This is usually done when you want to optimise something for a particular architecture (assembly is **NOT** as portable as C).
 
@@ -17,13 +17,13 @@ If you are using the GCC compiler, you can insert assembly code using the __asm 
 
 Note that the assembly code has to be written as a single string, with each new line of assembly being delimited by the \n character. Use compiler string concatenation to spread the assembly over multiple lines of source code to make it more readable.
 
-# The Volatile Keyword
+## The Volatile Keyword
 
 The keyword volatile is used when you don't want the compiler to perform any optimisation on the assembly code. Without the volatile keyword, the compiler may move the code around, take it out of a loop, or delete in entirely if it deems it uneccesary. To stop this from happening, add the word volatile after the asm keyword and before the opening curly brace.
 
 Note that the \n (newline characters) at the end of each line are important for GCC to correctly parse the assembly code.
 
-# An Example
+## An Example
 
 Here is an example from the FreeRTOS PSoC port which uses inserted assembly into the C code in port.c.
 

@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/eep-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table style="width: 500px;" >
@@ -119,14 +119,14 @@ url: /pcb-design/component-packages/eep-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 Used by Texas Instruments for some of their higher power DC/DC converters. Has a varying number of pins depending on functionality (but this does not change the footprint).
 
-# Photos
+## Photos
 
 {{< figure src="/images/2015/04/eep-component-package-photo.png" width="384px" caption="Photo of a DC/DC converter by Texas Instruments in an EEP package."  >}}
 
-# Dimensions
+## Dimensions
 
 {{< figure src="/images/electronics-packages/eep-dimensions.png" caption="Dimensions of the EEP package."  width="500px" >}}

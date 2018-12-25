@@ -7,13 +7,13 @@ type: page
 url: /programming/languages/c-plus-plus/cpp-on-embedded-systems
 ---
 
-# Overview
+## Overview
 
 The document "[Technical Performance on C++ Performance](http://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf)" is a good read if you are really interested in the advantages/disadvantages of using C++ on an embedded platform.
 
 [The Embedded C++ Homepage](http://www.caravan.net/ec2plus/) is sort of a hub for embedded C++ programming. They define a sub-set of the full C++ language for use on embedded devices such as microcontrollers.
 
-# Performance Concerns
+## Performance Concerns
 
 One fear about using C++ on an embedded system is a decrease in performance (in terms of memory and processing speed). As with most complex issues, the answer really is, "it depends".
 
@@ -38,7 +38,7 @@ I believe you can carefully select a subset of the C++ language which provides m
 * STL
 * Boost
 
-# C++ Standrad Libraries For Embedded Devices
+## C++ Standrad Libraries For Embedded Devices
 
 [uClibc++](http://cxx.uclibc.org/index.html) is a C++ standard library designed specifically for microcontrollers. It even has exception support!
 

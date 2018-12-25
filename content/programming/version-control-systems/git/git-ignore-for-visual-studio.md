@@ -57,7 +57,7 @@ _ReSharper*/
 #Subversion files
 .svn
 
-# Office Temp Files
+## Office Temp Files
 ~$*
 
 #NuGet
@@ -67,7 +67,7 @@ packages/
 *ncrunch*
 *crunch*.local.xml
 
-# visual studio database projects
+## visual studio database projects
 *.dbmdl
 
 #Test files

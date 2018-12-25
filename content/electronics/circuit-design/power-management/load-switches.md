@@ -7,14 +7,14 @@ type: page
 url: /electronics/circuit-design/power-management/load-switches
 ---
 
-# MOSFET Based
+## MOSFET Based
 
 The following image shows a MOSFET based high-side switch:
 
 
 {{< figure src="/images/2013/11/high-side-mosfet-load-switch-schematic.png" width="678px" caption="A high-side load switch made from a N-Channel and P-Channel MOSFET."  >}}
 
-# IC Based
+## IC Based
 
 The following image shows an IC based high-side switch.
 

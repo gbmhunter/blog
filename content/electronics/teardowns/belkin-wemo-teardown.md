@@ -7,7 +7,7 @@ type: page
 url: /electronics/teardowns/belkin-wemo-teardown
 ---
 
-# Overview
+## Overview
 
 The Belkin WeMo is a home automation product that works as a smartphone controlled power interrupter for standard electrical outlets.
 
@@ -74,7 +74,7 @@ There are two PCBs, with a 3-wire connector between them. One can bet that the t
 
 {{< figure src="/images/teardown-belkinwemo/020-wimo-opened-up.jpg" caption="The insides of the Belkin WiMo."   >}}
 
-# Power PCB
+## Power PCB
 
 They use a mechanical relay to switch the mains to the outlet. The relay is the HF3FA (005-HTF, SM47C), and is rated for 250VAC at 10A. As you would expect, it switches the live wire, ground and neutral are connected permanetly to the output.
 
@@ -86,7 +86,7 @@ For protection, there looks to be a thermal PTC fuse (VR1), with something that 
 
 There is also an inductory looking thingy (L3), which I think could be EMI filtering for the logic level power rail (it is right next to the connector).
 
-# Logic PCB
+## Logic PCB
 
 The main chip on this board is the Ralink RT5350F (other numbers on the IC are TPMX249409, 1246PTA1). This is a combined wireless front-end (1T1R 2.4G CMOS RF), stack (802.11n 1T1R MAC/BBP) and embedded CPU. I had a quick look on on [AliExpress.com](http://www.aliexpress.com/), and they seem to sell for about US$2.90, in quantities of 5 (Jan 2014). This is cheap (really cheap)! DigiKey nor any other non-Chinese supplier (try [www.findchips.com](http://www.findchips.com)) did not seem to stock these.
 
@@ -100,6 +100,6 @@ On the other side of the board are two more ICs, the Winbond W9825G6JH-61 1302P 
 
 There is also a miniature switch on the reverse-side of the PCB (inaccessable to the user).
 
-# External Links
+## External Links
 
 Another tear down for the Belkin WeMo exists at [OpenWrt](http://wiki.openwrt.org/toh/belkin/f7c027).

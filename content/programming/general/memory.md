@@ -7,6 +7,6 @@ type: page
 url: /programming/general/memory
 ---
 
-# What To Do With Unused Memory
+## What To Do With Unused Memory
 
 When writing code for microcontrollers, it can be advantageous to fill unused memory with particular code. For example, you may wish to fill unused flash memory with "jump to safe place" instructions, which will redirect the program if the CPU program counter goes to the wrong place.

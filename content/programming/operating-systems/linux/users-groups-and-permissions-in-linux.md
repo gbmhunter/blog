@@ -7,7 +7,7 @@ type: page
 url: /programming/operating-systems/linux/users-groups-and-permissions-in-linux
 ---
 
-# User Manipulation
+## User Manipulation
 
 To add a user called bart:
 
@@ -15,7 +15,7 @@ To add a user called bart:
 $ sudo useradd bart
 ```
 
-# Group Manipulation
+## Group Manipulation
 
 To add a pre-existing user called bart to the group simpsons:
 
@@ -23,7 +23,7 @@ To add a pre-existing user called bart to the group simpsons:
 $ groupadd -g simpsons bart
 ```
 
-# Permissions
+## Permissions
 
 File and directory permissions are set in Linux with pe
 

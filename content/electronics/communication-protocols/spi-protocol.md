@@ -7,7 +7,7 @@ type: page
 url: /electronics/communication-protocols/spi-protocol
 ---
 
-# Overview
+## Overview
 
 SPI stands for _Serial Peripheral Interface_, and was initially developed by Motorola. It is **full-duplex** (data can be sent in both directions at once), and is ideally suited to sending data streams between devices. Speeds of **10MHz** or more are achievable. It is a **de-facto standard**, which means there is no governing body that defines and regulates the protocol. This means there a quite a number of protocol variants.
 
@@ -21,7 +21,7 @@ SPI stands for _Serial Peripheral Interface_, and was initially developed by Mot
 
 * When configured in the standard manner, SPI requires 1 extra control line (for the slave select signal) from the master for every extra slave added to the SPI bus. This can take up more space and I/O pins for designs with a large number of SPI devices.
 
-# Physical Layer
+## Physical Layer
 
 SPI can either be _three wire_ (when there is only one slave and the slave does not require any signal on this line), or _four wire_ (when there are multiple slaves, and the slave select line needs to be used). For every slave there needs to be new select line, but the other three traces can be shared.
 
@@ -31,7 +31,7 @@ One limitation with SPI is that the master has to **initiate** all communication
 
 **No specific termination** is needed on SPI connections. Long connections (many metres or more) and high data rates (>10Mhz) may require standard termination procedures to prevent reflections.
 
-# Protocol
+## Protocol
 
 Many **microcontrollers** support the SPI protocol with **dedicated hardware** to perform the low-level functions associated with sending and receiving SPI data. However, SPI can also be **bit banged** (see below).
 
@@ -41,7 +41,7 @@ Chip select normally uses inverse logic (low = chip selected). It usually is use
 
 Because the master has to always drive the clock signal, if the slave wants to send data back to the master, the master must know about this and must have some way of knowing how many clock signals to send.
 
-# Modes
+## Modes
 
 SPI has **four** standard 'modes'. These define different polarities of the clock cycle and whether sampling is on the positive or falling edge of the clock. This is sometimes called the _SPI Clock Polarity (CPOL)_ and _SPI Clock Phase (CPHA)_.
 
@@ -89,15 +89,15 @@ The standard defines these different modes to allow for greater variability in t
 
 **Note that many devices do not support all four SPI modes.** It is common (especially for slave devices) to only support two of the four modes.
 
-# Timing
+## Timing
 
 SPI is **inherently synchronous** (requires a clock signal). There is **no such thing as asynchronous SPI**, as there is with UART and other transmission protocols.
 
-# Bit Banging
+## Bit Banging
 
 Bit banging (on the master device) can be **easily done** with SPI since it is synchronous and the master has full control over the clock, hence the timing can be manipulated. Care has to be taken to assert the right lines and read data before applying the next clock transition, as well as obeying any minimum/maximum time specifications for each state.
 
-# Daisy-Chaining
+## Daisy-Chaining
 
 SPI _daisy-chaining_ is way of **overcoming** the routing/capability issue of having many SPI slaves and therefore **many slave select lines**. ICs have to support SPI daisy-chaining with a _DOUT_ (or similar) signal before you can implement it.
 
@@ -107,7 +107,7 @@ The data is passed from the microcontoller to the first slave, who stores it in 
 
 Some devices that support daisy chaining are Microchips MCP42xxx digital potentiometers and Linear Technologies LED drivers.
 
-# Point-to-Point SPI
+## Point-to-Point SPI
 
 Some slave devices only support _point-to-point_ SPI communication. This means that there can only be one master on the bus, and also only one slave (the device which supports point-to-point SPI).
 
@@ -115,7 +115,7 @@ The Freescale FXOS8700CQ magnetometer is one such example.
 
 {{< figure src="/images/2011/09/fxos8700cq-freescale-magnetometer-note-supports-only-point-to-point-spi-protocol.pdf.png" width="745px" caption="The note from the Freescale FXOS8700CQ magnetometer stating that it only supports the 'point-to-point' SPI protocol."  >}}
 
-# Similar Protocols
+## Similar Protocols
 
 ## Microwire (uWire)
 

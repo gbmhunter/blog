@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/c-plus-plus/virtual-methods
 ---
 
-# What Are Virtual Methods?
+## What Are Virtual Methods?
 
 Virtual methods allow inherited methods of classes to be overwritten, even when a pointer to the base class is used. You can overwrite methods without using the virtual descriptor, just by using the same name, but the overwritten methods will not be called when a pointer to the base class is used. Real virtual methods are virtual methods that require implementation by a derived class.
 
-# Pure Virtual Methods
+## Pure Virtual Methods
 
 _Pure virtual methods_ are virtual methods which do not have any body (definition) defined for them in a particular class. They can be defined by adding an = 0 to the end of the declaration of the virtual method in the class header file, as shown below:
 
@@ -34,7 +34,7 @@ public:
 };
 ```
 
-# The override Keyword
+## The override Keyword
 
 C++11 introduced the override keyword, which is very useful when designing applications that use virtual methods. The override keyword makes the compiler check that the stated method overrides a base class. If it doesn't, you get a compiler error.
 

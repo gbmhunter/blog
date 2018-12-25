@@ -7,7 +7,7 @@ type: page
 url: /pyrotechnics/rocketry/stick-rockets
 ---
 
-# Overview
+## Overview
 
 
 Stick rockets are one of the most basic forms of rockets. They consist only of a motor (the part which contains fuel and produces thrust), and a rear-protruding stick to stabilise the rocket. With a suitably chosen stick, the rocket does not need any fins or nose cone, and if launched properly, can travel relatively straight. The stick serves to create drag and make the centre of drag behind the centre of thrust, a basic rocket principle that needs to be met for stable flight. Stick rockets are commonly used for low power rockets as the protruding stick becomes unpractical at high powers.
@@ -25,7 +25,7 @@ A bamboo skewer or piece of dowel protruding 150-400mm behind the nozzle works w
 {{< figure src="/images/pyrotechnics-rocketry/four-stick-rockets-with-charges.jpg" caption="Four stick rockets with charges (the larger parts at the front-end of the rocket)"  width="700px" >}}
 
 
-# Videos
+## Videos
 
 
 <table cellpadding="1" cellspacing="1" border="1" >

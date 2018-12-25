@@ -7,13 +7,13 @@ type: page
 url: /programming/virtual-machines-and-containers/docker
 ---
 
-# Overview
+## Overview
 
 Docker is container software. It is commonly used as a lightweight alternative to a virtual machine.
 
 {{< figure src="/images/2017/01/docker-logo.png"   >}}
 
-# Running Docker Without sudo
+## Running Docker Without sudo
 
 By default, Docker has to be run with sudo commands otherwise you will experience errors such as:
 
@@ -49,11 +49,11 @@ $ dial unix /var/run/docker.sock: connect: permission denied
 
 5. All done! You should now be able to use docker commands without sudo.
 
-# What Are Images? What Are Containers?
+## What Are Images? What Are Containers?
 
 An image is a file which contains all the information/data about a particular system setup. When you run an image, you create a container of this image. You can create many containers based of the same image.
 
-# Images
+## Images
 
 ## Getting Images (docker pull)
 
@@ -85,7 +85,7 @@ The following command will remove all Docker images from your system:
 $ docker rmi $(docker images -q)
 ```
 
-# Containers
+## Containers
 
 ## Inspecting
 
@@ -124,7 +124,7 @@ docker rm $(docker ps -a -q)
 
 If there are many docker containers, these commands can take some time (seconds).
 
-# Dockerfiles
+## Dockerfiles
 
 Dockerfiles are configuration files which tell Docker how to build an image.
 
@@ -134,10 +134,10 @@ Below is an example Dockerfile:
 # Extend base image ubuntu 16.04
 FROM ubuntu:16.04
 
-# Update Ubuntu Software repository
+## Update Ubuntu Software repository
 RUN apt-get update
 
-# Install git
+## Install git
 RUN apt-get install -y git
 ```
 

@@ -7,9 +7,9 @@ type: page
 url: /programming/languages/java/implementing-the-observer-pattern-in-java
 ---
 
-# Overview
+## Overview
 
-# Roll-Your-Own
+## Roll-Your-Own
 
 The following examples shows you how to manually implement the Observer pattern in Java.
 
@@ -47,7 +47,7 @@ public class HelloEventGenerator {
 
 Since the interface is public, it has to be described in it's own file.
 
-# java.util.Observer/Observable
+## java.util.Observer/Observable
 
 The Java framework provides the java.lang.Observer and java.lang.Observable classes to standardise the way the observer pattern is implemented.
 

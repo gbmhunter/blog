@@ -9,7 +9,7 @@ url: /programming/languages/regex
 
 <blockquote>All the listed regex examples can be tested with the online regex engine [regexpal](http://regexpal.com/).</blockquote>
 
-# Quick Reference
+## Quick Reference
 
 
 <table>
@@ -156,7 +156,7 @@ url: /programming/languages/regex
 </table>
 
 
-# Preventing Recursive Find And Replace Matches
+## Preventing Recursive Find And Replace Matches
 
 ## A Lookahead Example
 
@@ -186,7 +186,7 @@ Replace: UartCommsSend
 
 **Note:** I have had issues using greedy operators (such as * and + ) inside a lookahead. Upon adding such operators to character regions (e.g. [a=z]* ), the lookbehind fails to match anything. The error message was "Lookbehind requires fixed-width pattern".
 
-# Finding C/C++ Function Definitions
+## Finding C/C++ Function Definitions
 
 You can use the following syntax to find a C/C++ function definitions based purely on the function name. This does not take into account the name or number of input variables, so in a language which supports function overloading (e.g. C++), this will **find all overloads** of a certain function. It works by looking for the function name, matching the "(", and number of characters and a matching ")", then any number of white space or new lines before a "{", then any number of characters, white-space or new lines before the closing "}".
 
@@ -196,7 +196,7 @@ FuncName(.*)\s{(.*\n)*.*(\n)*}
 
 Replace FuncName with the name of the function you wish to find.
 
-# File Paths
+## File Paths
 
 Note: To match directories on Windows machines, replace every / in the following examples with \\.
 
@@ -224,7 +224,7 @@ To match all files, except those that begin with the tilda character (~), use:
 
 This will match C:/dir/include.txt **but NOT** C:/dir/~exclude.txt.
 
-# Matching Strings
+## Matching Strings
 
 The following regex will match strings enclosed by double or single quotations. Delete either enclosed in the square brackets to exclude that style of string delimiting from the match.
 
@@ -240,7 +240,7 @@ The following regex expression matches all spaces, except those that are enclose
 " (?=[^"]*("[^"]*"[^"]*)*$)"
 ```    
 
-# Matching All Printable ASCII Characters
+## Matching All Printable ASCII Characters
 
 The following matches all printable ASCII characters (which are grouped together on the ASCII table, from number 32 to 126).
 
@@ -248,7 +248,7 @@ The following matches all printable ASCII characters (which are grouped together
 [ -~]
 ```
 
-# Online Regex Testers
+## Online Regex Testers
 
 Plenty of online regex testers exist for testing the matching of regex expressions on sample text.
 

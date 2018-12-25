@@ -50,11 +50,11 @@ ELF files are the files typically produced by a linker, the last step of a build
 
 .elf files replaced the older a.out object file standard (and COFF file format). Some compilers still produce an object file named a.out, even if they do not still use this file format (it is likely to be in the .elf format).
 
-# What Is The Difference Between BIN and ELF Files?
+## What Is The Difference Between BIN and ELF Files?
 
 Both BIN and ELF files are files which can be run as programs by the operating system. What is the difference? A bin file is just a list of addresses and data, to run a program. An elf file is a bin file but with lots of additional information, including a symbol table (debug info), and can distuigish code from data.
 
-# Programs That Operate On ELF Files
+## Programs That Operate On ELF Files
 
 There are many programs that operate/work with ELF files, especially on UNIX-like systems. These include:
 
@@ -63,7 +63,7 @@ There are many programs that operate/work with ELF files, especially on UNIX-lik
 * objdump
 * [readelf](/programming/operating-systems/linux/programs/readelf): Provides the user with information on .elf files.
 
-# ELF Code Libraries
+## ELF Code Libraries
 
 
 ## ELFIO

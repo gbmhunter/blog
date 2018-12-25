@@ -9,7 +9,7 @@ url: /electronics/components/power-regulators/sepic-converters
 
 [mathjax]
 
-# Overview
+## Overview
 
 SEPIC (single-ended primary inductance converter) is a switch-mode power supply (SMPS) which can both up and down-convert, similar to a buck/boost. It can be viewed as a boost converter followed by a buck-boost converter.
 
@@ -19,13 +19,13 @@ It is normally recognised both in schematics and on PCBs because of it's use of 
 
 Like other SMPS, the SEPIC converter uses a switching element of control the output. The power transferring capacitor between input and output is sometimes called the **AC capacitor**.
 
-# Output Voltage
+## Output Voltage
 
 In continuous-conduction mode (CCM), the equation linking the input and output voltage of a SEPIC is:
 
 <div>$$ D = \frac{V_{OUT}}{V_{OUT} + V_{IN}} $$</div>
 
-# Inductor(s)
+## Inductor(s)
 
 The SEPIC is usually identified by it's two inductors, rather than as most other power converters which use only one. They can either be wound on separate cores and not share any magnetic field (uncoupled inductors), or be wound on the same core and share a magnetic field (a coupled dual-winding inductor). Using a coupled dual-winding inductor has the advantages of reducing the component count, and lowering the total inductance requirements, but can be hard to find for high-power requirements. Coupled inductors used in a SEPIC also benefit from some leakage inductance, which reduces the AC losses.
 
@@ -43,10 +43,10 @@ The above equations determines the minimum inductance required for CCM operation
 
 Even though the equations above show this, it is still worth pointing out that in an decoupled design, the inductances **do not have to be the same value**. This is a common misconception, this rule only applies to the coupled SEPIC design.
 
-# Capacitor
+## Capacitor
 
 Sometimes the AC capacitor needs a series RC snubber circuit to make the SEPIC stable. A low resistance between 1-10R and a large capacitance between 50-1000uF can sometimes fix this.
 
-# Examples
+## Examples
 
 The LT from Linear Technology can be used in a SEPIC configuration to control a series of high-power LEDs.

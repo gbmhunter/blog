@@ -7,7 +7,7 @@ type: page
 url: /programming/version-control-systems/mercurial/ignore-files/visual-studio-version-control-with-mercurial
 ---
 
-# Overview
+## Overview
 
 Following is an Mercurial ignore file for excluding the unnecessary files from a Visual Studio C# project (written when using the 2010 version, but should work with others). The ignore file is written using regex syntax.
 
@@ -17,7 +17,7 @@ The type of file excluded is commented beside each line, just incase you want to
 
 Copy this code into the .hgignore file found in the root directory of your repository.
 
-# Ignore File
+## Ignore File
 
 ```    
 #*************************************************************************

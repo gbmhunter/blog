@@ -7,11 +7,11 @@ type: page
 url: /programming/embedded-linux/yocto-project/using-cmake-with-the-sdk
 ---
 
-# Overview
+## Overview
 
 Although Yocto seems to use Autotools more than CMake, you can easily configure a generated Yocto SDK to include all the neccessary tools so that you can build a targeted software application using CMake instead (which, IMO, is much better than Autotools).
 
-# Add CMake To The Yocto SDK
+## Add CMake To The Yocto SDK
 
 This first thing is to add the CMake binary to the Yocto SDK. This version of CMake will be set up exactly as needed to build applications for your target architecture (which is typically not the same as your host/development system!).
 
@@ -29,7 +29,7 @@ Then rebuild the SDK command with:
 
 Replacing core-image-minimal with a different target if needed.
 
-# Install The New SDK
+## Install The New SDK
 
 Now install the new SDK:
 
@@ -39,7 +39,7 @@ Now install the new SDK:
 
 The new SDK should contain cmake.
 
-# Source Environment Variables And Build
+## Source Environment Variables And Build
 
 Because you are now going to be using a custom version of cmake, you don't have to modify the CMakeLists.txt of the project you are building!
 

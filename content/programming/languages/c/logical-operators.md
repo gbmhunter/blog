@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/logical-operators
 ---
 
-# C Logical Operators Cheat Sheet
+## C Logical Operators Cheat Sheet
 
 
 <table>
@@ -98,7 +98,7 @@ Logical
 </tbody>
 </table>
 
-# The Conditional Operator (?:)
+## The Conditional Operator (?:)
 
 The conditional operator, ? is used to write the equivalent of an if/else statement, but in a shorter format. It allows you to write an if/else as an **expression**, rather than a **statment**. This allows it to be used on the RHS of a statement.
 
@@ -125,7 +125,7 @@ It can be used to declare a const that is conditional on some other variable, as
 const int n = (x != 0) ? 10 : 20;
 ```    
 
-# Logical Short-Circuit Evaluation
+## Logical Short-Circuit Evaluation
 
 Both logical OR (||) and logical AND (&&) guarantee short-circuit evaluation. This means that the second argument is only evaluated if it needs to be to determine the outcome of the logical operation.
 
@@ -137,7 +137,7 @@ if (x != NULL && x->IsValid())
 
 You should be able to see that if x was NULL, than calling x->IsValid() has undefined behaviour. However, this statement is valid because of short-circuit evaluation. x->IsValid() will only be called if x! = NULL evaluates to true and the program needs to find x->IsValid() to determine the outcome of the expression.
 
-# Why Is There No Logical Exclusive OR (^^)?
+## Why Is There No Logical Exclusive OR (^^)?
 
 The C programming language does not provide us with a logical exclusive OR operator (which would presumably be ^^).
 

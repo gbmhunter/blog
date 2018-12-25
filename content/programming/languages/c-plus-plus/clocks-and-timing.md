@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/c-plus-plus/clocks-and-timing
 ---
 
-# Overview
+## Overview
 
 Timing and delay functions, by their very nature, a somewhat platform specific. The C and C++ languages do make some attempt to standardize these, in where they provide a standardized front-end function that then goes and calls system-specific functions.
 
-# C++11
+## C++11
 
 C++11 allows the use of the standard library to create delays in the current thread. These functions seem to have been copied across from the Boost libraries.
 
@@ -178,13 +178,13 @@ int main() {
 
 Run the above example online at [https://wandbox.org/permlink/EnPb9aag3TCkx3Lu](https://wandbox.org/permlink/TEz1riCEGaEPoZAE).
 
-# "DateTime" Objects
+## "DateTime" Objects
 
 Although C++11/C++14 provides a good amount of time related functionality, I still feel that a solid `DateTime` object is missing from the standard library. A good DateTime object should represent absolute instance in time, and should allow for subtraction of two DateTime objects (to produce a duration object), comparison of DateTime objects (based on which is in the future compared to the other) and the addition of a Duration object to a DateTime object to produce a new DateTime object.
 
 The best DateTime object I have found is part of the SGP4 library. You can download the entire repository from [https://github.com/dnwrnr/sgp4](https://github.com/dnwrnr/sgp4), or just [download the DateTime.h file](/docs/DateTime.h).
 
-# Time-Related Libraries
+## Time-Related Libraries
 
 <table>
 	<thead>
@@ -229,7 +229,7 @@ The best DateTime object I have found is part of the SGP4 library. You can downl
 </table>
 
 
-# Sleeping
+## Sleeping
 
 C++ provides many ways of sleeping a thread (i.e. creating a delay which does not use up valuable processor time).
 

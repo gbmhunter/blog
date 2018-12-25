@@ -7,7 +7,7 @@ type: page
 url: /programming/microcontrollers/atmel
 ---
 
-# Overview
+## Overview
 
 Atmel is a manufacturer who make a broad range of popular microcontrollers.
 

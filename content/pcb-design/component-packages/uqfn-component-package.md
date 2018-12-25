@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/uqfn-component-package
 ---
 
-# Overview
+## Overview
 
 <table >
 <tbody >
@@ -118,10 +118,10 @@ url: /pcb-design/component-packages/uqfn-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 An ultra-thin QFN package. Commonly used for packaging 4 or 5 [TVSdiodes](http://localhost/?q=node/28) together.
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/04/uqfn-28-component-package-3d-render.jpg" width="313px" caption="A 3D render of the UQFN-28 component package."  >}}

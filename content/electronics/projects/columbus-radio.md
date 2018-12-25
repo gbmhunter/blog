@@ -7,11 +7,11 @@ type: page
 url: /electronics/projects/columbus-radio
 ---
 
-# The Idea...
+## The Idea...
 
 To bring a old, broken valve-based antique radio into the digital age with the ability to stream audio from the internet, plugged in USB stick, or a networked computer. All while keeping the classic retro radio look.
 
-# The Original Radio
+## The Original Radio
 
 My partner brought this lovely vintage, but worn valve-based radio an auction many years ago for NZ$5. Bargain! 
 
@@ -33,7 +33,7 @@ Oh and don't forget the classic speaker...
 
 UPDATE 2015-01-12: I found [this webpage](http://www.radio-restoration.com/Columbus.html) which describes the Columbus radio brand and it's origins. Based on this information, the radio was made in New Zealand sometime between 1937 and 1961.
 
-# Mechanical 
+## Mechanical 
 
 ## Stripping The Cabinet
 
@@ -112,7 +112,7 @@ The existing cabinet had quite a few appearance-degrading borer holes on the fro
 
 The glass panel had to be handled carefully, the radio frequencies and other text printed on it I wanted to keep for retro reasons, yet it looked like it would flake of and the gentlest touch.
 
-# Electronics
+## Electronics
 
 ## The Smarts
 
@@ -260,7 +260,7 @@ Here is a photo of the completed daughter board:
 
 {{< figure src="/images/2014/11/columbus-radio-330-populated-daughter-board.jpg" width="600px" caption="The completed daughter board." >}}
 
-# The Software
+## The Software
 
 Note: All software for the Columbus radio project can be found on GitHub at [https://github.com/mbedded-ninja/ColumbusRadio](https://github.com/mbedded-ninja/ColumbusRadio).
 
@@ -436,7 +436,7 @@ rm mycron
 
 crontab would start the script on startup of the RaspberryPi, and it would run under the user root (which is good, because we have got all privileges, and means we don't have to use sudo all the time).
 
-# Power Supply Woes
+## Power Supply Woes
 
 During prototyping/testing, the red power LED on the RaspberryPi **kept flashing**. I discovered that this was mainly due to a large dropout between the USB wall-charger and the RaspberryPi's +5V lines! And this was when the device was only drawing about 300mA max.
 
@@ -444,13 +444,13 @@ I fixed this by powering the device through the USB port from a bench-top power
 
 This didn't turn out to be an issue in the final product, as the RaspberryPi was powered directly from the PSU's +5V. It was also powered directly to +5V on the GPIO header, meaning it bypassed the low but still significant resistance between the USB VBUS and the +5V rail. This came at the expense of **bypassing protection circuitry**. Hopefully the PSU doesn't inject any voltage spikes onto the rail!
 
-#  The End Result
+##  The End Result
 
 Here is a photo of the finished media-streaming, internet aware radio!
 
 {{< figure src="/images/2014/11/columbus-radio-420-closeup-on-stand-with-effect.jpg" width="904px" caption="The finished Columbus radio, streaming music from the internet using Volumio and Spotify!"  >}}
 
-# Statistics
+## Statistics
 
 Everyone loves statistics, right?
 
@@ -502,7 +502,7 @@ The individual material costs of each item used to build the Columbus Radio.
 
 {{< figure src="/images/2014/11/columbus-radio-640-graph-material-cost-by-component.png" width="818px" caption="The material costs (as a percentage) of the components used to build the Columbus Radio."  >}}
 
-# Things To Improve On
+## Things To Improve On
 
 1. The volume control dial is very sensitive, and the volume only changes a distinguishable amount over a small segment of the potentiometers full range of motion. I believe this a compounded problem due to the potentiometer itself being logarithmic, but the code treating it like a linear pot, and the volumio volume control being quite sensitive in the upper volume regions to start of with.
 2. If you pull the radio's power cord out from the wall (or turn it off at the wall), you have to go around the back and set up the head unit to the correct volume and sound source (aux). The head unit is designed to have the continuous power source from the battery when in a vehicle, a battery that the radio does not have. Turning the radio on/off by it's front on/off switch does not cause this problem as I leave a residual power feed on that goes to the head unit. Unfortunately this means that the PSU and RaspberryPi also continuously run, which may shorten their life and definitely consumes more mains power than necessary!

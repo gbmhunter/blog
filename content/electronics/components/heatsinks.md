@@ -9,7 +9,7 @@ url: /electronics/components/heatsinks
 
 [mathjax]
 
-# Overview
+## Overview
 
 Heatsinks are used in circuit design to conduct heat away from a component faster than what air would do, usually to prevent high-power components from overheating and failing.
 
@@ -25,23 +25,23 @@ Phase change compounds can be used as thermal pads. Phase change compounds are d
 
 For more information on thermal resistances, see the [Thermal Management page](/electronics/circuit-design/thermal-management).
 
-# Where Does The Heat Go?
+## Where Does The Heat Go?
 
 The following diagram is a thermal analysis of a SMD MOSFET mounted to a PCB.
 
 {{< figure src="/images/2013/05/thermal-analysis-of-smd-mosfet-on-pcb.png" width="687px" caption="Thermal analysis of a SMD MOSFET mounted on a PCB. Image from http://www.fairchildsemi.com/an/AN/AN-1029.pdf."  >}}
 
-# List Of Component Package Thermal Resistances
+## List Of Component Package Thermal Resistances
 
 See the [Component Packages page](/electronics/circuit-design/component-packages). This has many of the common component packages and their thermal resistances.
 
-# Forced Convection
+## Forced Convection
 
 The following image shows two graphs combined into one, the thermal performance of a heatsink with natural convection, and that with forced convection (e.g. a fan).
 
 {{< figure src="/images/2013/05/heat-dissipation-graph-for-natural-and-forced-convection.png" width="960px" caption="Heat dissipation graph for both natural and forced convection. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf."  >}}
 
-# Packages
+## Packages
 
 There is no standard package for heatsinks and the pitch for their support pins, although some more common pin spacings exist (such as 25.4mm (1inch) e.t.c).
 

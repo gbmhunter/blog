@@ -7,13 +7,13 @@ type: page
 url: /electronics/general/altium/altium-automatic-bom-generation-macros
 ---
 
-# Overview
+## Overview
 
 It also provides the ability to customise an generated Excel BOM with the use of a template file. This ability is poorly documented, so I thought it would be good to explain it in more detail.
 
 The exact process depends on the component data storage method (e.g. libraries, databases, or Altium vaults).
 
-# How It Works
+## How It Works
 
 When you load up the BOM settings window (right-click the BOM row in the outjob and click _Configure_.
 
@@ -23,7 +23,7 @@ When you load up the BOM settings window (right-click the BOM row in the outjob 
 
 {{< figure src="/images/2012/07/altium-bom-configure-excel-template-field.png" width="459px" caption="The field in the BOM configuration window that allows you to specify a Excel template file."  >}}
 
-# To Download
+## To Download
 
 The macro code is hosted on GitHub in a Git repository.
 
@@ -35,7 +35,7 @@ To clone the repository (i.e. download the code), use the Git command:
 
 Improvements/bug fix comments are welcome!
 
-# Partial Components
+## Partial Components
 
 Altium lacks the native support for partial components, that is, when you want to only use a portion (a percentage) of a component per PCB. This is common when including wire in your BOM. Wire usually comes in rolls of say, 100m, but your project only requires say, 1.5m. If you add the wire as a component with the supplier information attached, Altium will add the full 100m price to the BOM.
 

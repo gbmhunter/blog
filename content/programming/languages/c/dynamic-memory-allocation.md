@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/dynamic-memory-allocation
 ---
 
-# Overview
+## Overview
 
 Dynamic memory allocation is the process of assigning space for variables at run time. This is done automatically for function-scope variables which are put onto the stack when they are defined, but dynamic memory allocation usually refers to the process of using one of the malloc-family functions to manually allocate space of the heap.
 
@@ -15,13 +15,13 @@ The biggest risk with dynamic memory allocation is forgetting to free the memory
 
 The malloc-family of functions include malloc(), calloc(), realloc() and free(). Most C-programming IDE's link to a standard library with these functions. They are used by including stdlib.h into your project. These functions are also available in C++.
 
-# Thread-Safety
+## Thread-Safety
 
 The thread-safety of the memory functions listed below is implementation dependant. This means that their **safety when used in systems with threads (or tasks) is not guaranteed**. This normally is the case when you are running an operating system. The danger is especially relevant for memory functions on embedded systems running operating systems, as while memory functions on computers would be written with threading in mind, this is not the case for embedded systems.
 
 The best thing to do is to wrap the functions in thread safe procedures (such as a scheduler suspender call), or write your own thread safe versions from scratch.
 
-# malloc()
+## malloc()
 
 `malloc()` is the most-known about memory allocation function. Given a size (in bytes), it allocates a block of memory and returns a pointer to this memory.
 
@@ -56,7 +56,7 @@ void DynamicMemoryAllocation()
 }
 ```
 
-# realloc()
+## realloc()
 
 `realloc()` is used for reallocating memory to a different size. It takes a pointer to a memory address that has been previously allocated with malloc(), and the desired new size of the memory, and returns a pointer to the newly-sized memory block.
 
@@ -66,7 +66,7 @@ void* realloc(void* ptr, size_t size);
 
 You must consider that if `realloc()` cannot allocate enough memory at the end of the current block, it will re-allocate the entire block somewhere else, and will return a pointer to a different address in memory. Take care in making sure that **any other pointers to the old memory allocation will need updating also**. One way to stop this problem occurring is to take pointers to the original pointer instead of directly to the block in memory.
 
-# alloca()
+## alloca()
 
 `alloca()` is used to allocate memory on the stack, not the heap. Unlike the malloc()-family of functions, memory allocated by alloca() is automatically de-allocated when the function returns to the caller. It also has the benefit of not causing memory fragmentation. However, it can cause stack overflows if you assign too much memory, it does not check to see whether the operation is safe before it goes ahead an assigns the memory. For this reason it is not recommended for variables larger than a couple of hundred bytes (this is platform dependant).
 
@@ -96,7 +96,7 @@ int main()
 
 `alloca()` is used in the GNU glibc function `getopt()` (used for command-line option processing).
 
-# Appending An Element To An Array
+## Appending An Element To An Array
 
 When using dynamic memory allocation, you commonly want to add a new element to the end of an array that had been dynamically allocated yourself, and initialise it to 0. This can be done with clever use of the realloc() and memset() functions. The code below shows a function which can does this for you. This essentially increase the array size by 1.
 

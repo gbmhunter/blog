@@ -7,7 +7,7 @@ type: page
 url: /programming/microcontrollers/arduino/the-arduino-lineup
 ---
 
-# Arduino Due
+## Arduino Due
 
 The first official 32-bit Arduino development board, released in 2012! The 32-bit microcontroller is a welcome addition to the Arduino range, with a fast clock speed (84MHz) and huge amounts of flash/SRAM (512kB/96kB respectively).
 
@@ -29,7 +29,7 @@ Official Version: [http://arduino.cc/en/Main/ArduinoBoardDue](http://arduino.cc/
 
 The Due currently has a problem running the OneWire library. The micros() function has a problem with noInterrupts(), causing the library to work sporadically. The problem and potential work-arounds are listed on [this forum page](http://arduino.cc/forum/index.php/topic,141030.msg1117349.html). My friend found that Reply #41 on Feburary 13, 2013 by leonid_leonid fixed the issue.
 
-# Arduino Uno
+## Arduino Uno
 
 {{< figure src="/images/electronics-arduino/arduino-uno-pcb.jpg" caption="The Arduino UNO, the first ever Arduino PCB."  width="200px" >}}
 
@@ -51,7 +51,7 @@ Rip-offs: DealExtreme
 
 I used one of these in the [Luxcity Tonic UV Control System project](/electronics/projects/luxcity-uv-tonic-control-system).
 
-# Arduino Yun
+## Arduino Yun
 
 {{< figure src="/images/electronics-arduino/arduino-yun-pcb.jpg" caption="The Arduino Yun, a PCB with both a real-time Arduino microcontroller and Linux-based microprocessor."  width="200px" >}}
 

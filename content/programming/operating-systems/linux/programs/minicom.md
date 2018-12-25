@@ -7,13 +7,13 @@ type: page
 url: /programming/operating-systems/linux/programs/minicom
 ---
 
-# Overview
+## Overview
 
 minicom is a Linux program to . It calls itself a "friendly serial communications program". It is also available for the RaspberryPi.
 
 If you want to connect two terminals together and test the output/input of minicom, check out the [Connecting Two COM Ports Together" section on the socat program page](/programming/operating-systems/linux/programs/socat#connecting-two-com-ports-together).
 
-# Installing
+## Installing
 
 If using a Debian-style Linux (incl. the RaspberryPi), you can install minicom with the following command:
 
@@ -21,7 +21,7 @@ If using a Debian-style Linux (incl. the RaspberryPi), you can install minicom w
 $ sudo apt-get install minicom
 ```  
 
-# Config
+## Config
 
 You normally start minicom with the `-s` flag, so that you can set the configuration settings correctly.
 
@@ -43,7 +43,7 @@ Use `-b` to set the baud rate:
 $ minicom -b 9600
 ```  
 
-# Logging
+## Logging
 
 Start minicom with the following command to enable logging:
 
@@ -53,7 +53,7 @@ $ minicom -C MyLogFile.txt
 
 minicom describes this option as "open capture file at startup". A quick way to clear a log file is by using the command cat /dev/null > MyLogFile.txt.
 
-# Macros
+## Macros
 
 minicom supports the use of macros (key press sequences) that can be bound to the F1-F9 keys.
 
@@ -95,7 +95,7 @@ minicom macros support the insertion of special characters (such as new lines an
 </table>
 
 
-# How To Exit Minicom
+## How To Exit Minicom
 
 To exit minicom while it is being used as a serial terminal, type:
 

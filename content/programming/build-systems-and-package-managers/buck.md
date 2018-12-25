@@ -7,7 +7,7 @@ type: page
 url: /programming/build-systems-and-package-managers/buck
 ---
 
-# Installation
+## Installation
 
 **Ubuntu**
 
@@ -49,10 +49,10 @@ gen-buck-info:
 
 If the above command completes successfully, you will have the buck executable located at ./bin/buck. This build system does not install it into system folders on your machine, so you will probably want to add ./bin/buck to your path so you can just type buck at the command line.
 
-# Basic Example
+## Basic Example
 
 The most basic Buck-based project example requires two Buck specific files: .buckconfig and a BUCK file.
 
-# Example Project
+## Example Project
 
 An example C++ project built using Buck can be found on GitHub at [https://github.com/njlr/buck-cpp-example](https://github.com/njlr/buck-cpp-example).

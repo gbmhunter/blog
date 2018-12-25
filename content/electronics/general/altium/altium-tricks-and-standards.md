@@ -7,13 +7,13 @@ type: page
 url: /electronics/general/altium/altium-tricks-and-standards
 ---
 
-# Overview
+## Overview
 
 After using Altium for many years, you begin to pick up on little tricks to make your PCB design life easier. This page is intended to help you fast-track that!
 
 It pays to have some basic standards/protocols when working with Altium, otherwise things can get ugly real quick.
 
-# Schematic Symbol Snap
+## Schematic Symbol Snap
 
 _Rule: Keep schematic snap when designing symbols to DXP defaults._
 
@@ -21,7 +21,7 @@ This is because most schematic symbol libraries use this setting, and if you don
 
 If you don't get the snap right, it is really hard to connect pins up on the schematic, and Altium will produce "Component off grid" warnings when compiling. An overload of these can mask any true mistake where a component is not connected to the intended net.
 
-# One PCB Per PcbDoc And PcbPrj File
+## One PCB Per PcbDoc And PcbPrj File
 
 Altium was designed so that there is only one PCB per .PcbDoc file. And it was designed so that there is only one .PcbDoc file per .PcbPrj file. A single PCB is defined as one continuous board region.
 
@@ -31,30 +31,30 @@ Problems with having multiple PCB's per .PcbDoc:
 2. All the nets have to be unique between the two PCBs. This becomes a problem for commonly used names such as 5V and GND. If you don't have unique names, Altium will want you to join the two PCB's together with copper, thinking you have an unrouted net.
 3. Designators have to be unique across the two PCBs. This means that designators on one of the PCBs won't start from R1, C1, e.t.c.
 
-# Folder Structure
+## Folder Structure
 
 _Create a different folder for each project_ - With all the files Altium creates for a project, directories can get really, really messy.
 
-# Stopping Rooms From Being Added To The PCB
+## Stopping Rooms From Being Added To The PCB
 
 Also, rooms can get annoying when you don't need them. To disable rooms, click Project -> Project Options -> ECO Generation. Select Add Rooms and then choose 'Ignore Differences' from the drop-down menu on the right. Delete any existing rooms, and Altium will no longer automatically add them when you update the PCB.
 
 
 {{< figure src="/images/2011/09/altium-stopping-rooms-from-being-added-to-pcb.jpg" width="799px" caption="A screenshot showing how to stop Altium from adding rooms to the PCB."  >}}
 
-# My Vias/Tracks disappear When I'm Routing!
+## My Vias/Tracks disappear When I'm Routing!
 
 This is caused by Altium's "Automatically Remove Loops" function removing vias and tracks when you have more than one connected to the same trace. To stop this from happening, begin routing, and then press TAB. The routing options windows will pop up. Navigate to the 'Interactive Routing Options' section and deselect "Automatically Remove Loops".
 
-# Version Control Systems
+## Version Control Systems
 
 If you are using Mercurial source control software for you Altium project, here is a recommended [Mercurial Ignore File](http://localhost/?q=node/82) to prevent the un-necessary files from being put under version control.
 
-# The Board Shape
+## The Board Shape
 
 Altium allows close integration between the mechanical and electrical design with the ability to define the board shape from DXF/DWG files or step models. I personally find the DXF format perfect for defining the board shape from a mechanical design, in where you can create a board-outline DXF by exporting from CAD software such as SolidWorks or GeoMagic.
 
-# PCB Layer Standards
+## PCB Layer Standards
 
 These conform to the default layers that Altium's IPC Footprint Wizard automatically uses for certain parts of a component. Some of the layers are paired, so that Altium automatically switches the objects on these layers when the component is changed from top layer to bottom layer and vise versa.
 
@@ -147,7 +147,7 @@ The pairing of the mechanical layers is done as shown below.
 
 {{< figure src="/images/2011/09/altium-pairing-the-mechanical-layers.jpg" width="498px" caption="Pairing mechanical layers in Altium."  >}}
 
-# Layer Colours
+## Layer Colours
 
 I find that when using many Altium layers, the default colour scheme can get very confusing. To make things simple to understand, I like using a '**hot and cold**' colour scheme.
 
@@ -157,11 +157,11 @@ All layers related to the top side (Top Layer, Top Overlay, Top Paste, Top Solde
 
 The file [TransparentHotColdPcbViewConfig v1.0.config_2dsimple](/docs/TransparentHotColdPcbViewConfig v1.0.config_2dsimple) and loaded into Altium to setup the colour scheme as mentioned above.
 
-# PCB Symbol Naming Convention
+## PCB Symbol Naming Convention
 
 A good idea is to follow Altium's PCB symbol naming convention, which can be downloaded from the Altium website [here](http://www.altium.com/files/libraries/ls0002_pcbnamingconvention.pdf).
 
-# Component Description Standards
+## Component Description Standards
 
 The component description is commonly used to convey all the important parameters of the component that that are vital for the BOM. For example, the description of a capacitor might indicate that it's a capacitor, the type of capacitor, the package size, the temperature coefficient, tolerance, voltage and capacitance in a short hand notation.
 
@@ -192,11 +192,11 @@ e.g.
 
 Note that the Omega symbol (aka the Ohm symbol) is not supported in the PCB editor as part of the component description. You can use the symbol R instead.
 
-# Quickly Adding Vias To Nets
+## Quickly Adding Vias To Nets
 
 To quickly associate a via to a net, when placing the via, make sure to place it over a track or pad with the same net. The via automatically inherets the connected net.
 
-# Getting To Datasheets Quickly
+## Getting To Datasheets Quickly
 
 Over and over during the PCB design process you'll find yourself wanting to go to the datasheet of a component you can see on a schematic. There is a quick way to add a link to the right-click context menu of the component in Altium by adding a component parameter that follows a special syntax.
 
@@ -291,7 +291,7 @@ I would then be able to quickly go to the datasheet by right-clicking the compon
 
 {{< figure src="/images/2011/09/quickly-going-to-a-datasheet-using-a-component-link-in-the-right-click-menu-in-altium.png" width="418px" caption="Quickly going to the component datasheet by using a component link parameter in Alitum."  >}}
 
-# Using Transparent Layers
+## Using Transparent Layers
 
 'Use Transparent Layers' is a menu option hidden away in Altium that makes the layers go semi-transparent. It is really useful when dealing/routing with multi-layer objects (such as vias). I found I use Transparent mode more often than not now since I discovered it. To enable it, go into the View Configurations Menu, click the 'View Options' tab, and then make sure the 'Use Transparent Layers' box is ticked as shown below.
 
@@ -301,7 +301,7 @@ Here is an example showing layers when set to Transparent mode.
 
 {{< figure src="/images/2011/09/altium-transparent-layers-example.jpg" width="1839px" caption="An example of the PCB view in Altium when using transparent layers."  >}}
 
-# Direct Connect For Specific Pads
+## Direct Connect For Specific Pads
 
 When designing a PCB, you often find yourself wanting to "direct connect" from polygon pours and power planes to specific pads of a component, while leaving the others with thermal relief connections. This is usually to reduce the copper track resistance to high current pins (e.g. V+ and GND).
 
@@ -323,13 +323,13 @@ If all the pads that you are wanting to direct connect are located in the same a
 
 Note: Direct connect rules can also be added to specific pins on the schematic, through the pin editor menu for a selected component. However, as of Altium v15.1, this feature seems buggy, and causes basic (as vital) features like _Compile_ and _Update Changes To PCB_ to crash from that point on.
 
-# Opening Internet Links In External Web Browser
+## Opening Internet Links In External Web Browser
 
 By default, Altium tries to open internet links in it's own internal browser. It's no surprise that because Altium is a EDA tool and not a dedicated browser, it's not the best at displaying web pages. Thankfully, you can force Altium to use your default external web browser by navigating to _DXP->Preferences->System->View_ and checking the "Open internet links in external Web browser" option.
 
 {{< figure src="/images/2011/09/altium-settings-open-internet-links-in-external-web-browser-annotated.png" width="390px" caption="Checking 'Open internet links in external web browser' will stop Altium from trying to open them."  >}}
 
-# Removing Exposed-Pad Vias That Are Automatically Added By The Footprint Wizard
+## Removing Exposed-Pad Vias That Are Automatically Added By The Footprint Wizard
 
 The Alitum footprint wizard **automatically adds vias** to the exposed pad of component package footprints such as QFN. Although it is recommended to have thermal vias conducting heat away from the exposed pad to the other PCB layers, it causes problems when these vias are added to the footprint, because of the **inflexibility** to change them during the PCB design stage. Without unlocking the primitives of the footprint (which I **do not** recommend you do unless absolutely needed), there is no way to modify these vias during the PCB design. You may wish to move them to allow for nets to pass underneath the component footprint on another layer, you may wish to add more for better thermal properties, or you may wish to remove them altogether because it recommends for that specific chip to leave the thermal pad unconnected.
 

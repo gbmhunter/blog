@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sim-card-sizes
 ---
 
-# Overview
+## Overview
 
 There a four standard SIM card sizes.
 

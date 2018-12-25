@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/memory
 ---
 
-# EEPROM
+## EEPROM
 
 Even though flash is technically a form of EEPROM, the word EEPROM is usually reserved to smaller-memory, read/write/erase 1 byte at-a-time ICs (flash is usually erased in pages and has way more memory).
 
@@ -21,7 +21,7 @@ Some EEPROM chips also come with unique ID's burnt into memory. The [DS28E05 by
 
 {{< figure src="/images/2013/10/ds28e05-eeprom-ic-connected-to-micro-using-1-wire.pdf.png" width="390px" caption="The DS28E05 EEPROM I2C, connected to a microcontroller via the 1-wire interface."  >}}
 
-# Flash
+## Flash
 
 Flash sometimes uses flip-flop style pin naming conventions. The M25P128 is one such example.
 

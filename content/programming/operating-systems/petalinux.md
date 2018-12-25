@@ -7,11 +7,11 @@ type: page
 url: /programming/operating-systems/petalinux
 ---
 
-# Overview
+## Overview
 
 PetaLinux is a cusotm version of Linux designed for embedded Xilinx systems. PetaLinux is designed to work with the Zynq-7000, all programmables SOCs, MicroBlaze and PowerPC.
 
-# Compiling For PetaLinux
+## Compiling For PetaLinux
 
 Programs can be written and cross-compiled for the PetaLinux platform in the Eclipse-based Xilinx SDK (xsdk).
 
@@ -21,7 +21,7 @@ I added the line `PATH="$PATH:/opt/Xilinx/SDK/2013.4/bin/lin64"` to my `~/.bashr
 
 I had errors when trying to run xsdk for the first time. I believe this was due to me trying to run it on Ubuntu (Debian package manager) when it had been designed for Red Hat (RPM package manager) systems. I fixed these by updating a file in the Xilinx folder from my system library folder.
 
-# Incremental Build Bug
+## Incremental Build Bug
 
 I have experienced a bug with the incremental bug system when programming with C++ in the xsdk, which cause the compiled program to do weird things such a **segmentation faults**. After much debugging, I discovered that the constructors of classes created on the stack where not being called, which then caused memory errors (like the segmentation fault) when trying to access members of these non-created/non-initialised variables.
 

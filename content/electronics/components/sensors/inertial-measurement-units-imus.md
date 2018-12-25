@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/sensors/inertial-measurement-units-imus
 ---
 
-# Overview
+## Overview
 
 The IMU can either consist of 3 separate chips mounted onto a small piece of PCB, or a single system-on-chip that integrated all of the components into one package.
 
@@ -19,33 +19,33 @@ The accelerometers usually exploit the Coriolis effect and a capacitor sensor to
 
 Some IMU's negate the temperature drift by measuring their own temperature and performing self-compensation for these errors.
 
-# Performance
+## Performance
 
 The performance of IMU is normally expressed as a full-scale range and resolution for each sensor. The resolution might be specified in terms of the number of bits of the ADC. A "_Sensitivity Scale Factor_" might also provided, which is the full-scale range divided by the resolution. Sensitivity is usually specified at 100Hz and per lowest significant bit (LSB).
 
-# Navigation
+## Navigation
 
 IMU's calculate their current position based on data from it's last known position(s), and they suffer from locational errors which accumulate over time. This is called **dead reckoning**. GPS does not have this problem.
 
-# Communication
+## Communication
 
 SPI is preferable over I2C when high data throughput's are required.
 
-# GPS
+## GPS
 
 More and more GPS units are beginning to support integration with an IMU unit to improve their accuracy.
 
-# Software
+## Software
 
 [RTIMULib](https://github.com/RTIMULib/RTIMULib) is a pretty nice software package which makes it easier to get IMU's working with operating systems (including "embedded" ones such as the RaspberryPi). The writer, "richards-tech", also has a version of this for the Arduino, which makes it easy to use the Arduino as an I2C host to read back data from popular IMU's, send it via UART to a computer, where it can be processed.
 
 {{< figure src="/images/2014/12/screenshot-playing-around-with-rthostimugl.png" width="782px" caption="Playing around with RTHostIMUGL and a connected IMU through an Arduino."  >}}
 
-# Packages
+## Packages
 
 A big advantage of an IMU is the reduced PCB footprint due the the combination of multiple sensors into a single package. These are sometimes called system-in-packages (SIP's). 3x3x1mm package.
 
-# Examples
+## Examples
 
 ## MPU-9250
 

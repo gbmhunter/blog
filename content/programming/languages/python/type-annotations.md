@@ -7,13 +7,13 @@ type: page
 url: /programming/languages/python/type-annotations
 ---
 
-# Type Hints/Annotations
+## Type Hints/Annotations
 
 Type hints/annotations for Python are introduced in [PEP 484](https://www.python.org/dev/peps/pep-0484/) and [PEP 526](https://www.python.org/dev/peps/pep-0526/). The python interpreter completely ignores type hints/annotations, it is type syntax which is formalized so that third-party tools such as IDEs or type checkers such as MyPy can then use it to provide type checking and other useful type inference capabilities.
 
 The JetBrains range of IDEs support these type hints (e.g. PyCharm, IntelliJ IDEA).
 
-# Basic Types
+## Basic Types
     
 ```python
 my_int: int = 3
@@ -23,13 +23,13 @@ my_string: str = 'Hello'
 
 There is also None, which is commonly used to define the return type of a function that doesn't return anything.
 
-# Lists, Dicts, e.t.c
+## Lists, Dicts, e.t.c
 
 ```python    
 from typing import Dict, List, Tuple
 ```
 
-# Optional
+## Optional
 
 When a variable is optional, use Optional.
     

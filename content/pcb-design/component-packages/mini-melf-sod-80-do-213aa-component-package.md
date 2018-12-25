@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package
 ---
 
-# Overview
+## Overview
 
 <table ><tbody ><tr >
 <td >Name
@@ -67,14 +67,14 @@ url: /pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package
 <td>Diodes</td>
 </tr></tbody></table>
 
-# Comments
+## Comments
 
 Cylindrical shaped components. Not very popular because they have a tendency to roll around when soldering.
 
-# Photos
+## Photos
 
 {{< figure src="/images/2015/04/mini-melf-sod-80-do-213aa-component-package-photo.jpg" width="369px" caption="A photo of the Mini-MELF (SOD-80, DO-213AA) component package."  >}}
 
-# Other Images
+## Other Images
 
 {{< figure src="/images/electronics-packages/component-package-sod-80-dimensions-and-land-pattern.gif" caption="Image from http://www.topline.tv/drawings/images/MELF_Diodes/SOD80.gif."  width="500px" >}}

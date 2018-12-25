@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/c-plus-plus/classes
 ---
 
-# What Is A Class?
+## What Is A Class?
 
 A class can be basically seen as a super-charged structure. It can do all the things a structure can do, and it also supports **encapsulation (protection of members)**. This is an important difference, one which makes C++ an object-orientated language.
 
-# A Simple Class Example
+## A Simple Class Example
 
 The following example defines a class for a Point (user chosen name).
     
@@ -43,7 +43,7 @@ The above statement says two things, first it says that myFirstPoint is of type
 
 Note that a class by itself doesn't create an objects you can use (the exception to this rule is static members).
 
-# Member Functions
+## Member Functions
 
 Note: All C++ member functions are implicitly named inline. Thus there is no need to use the word inline, as it is already "present". Thus the two member functions below are identical:
     
@@ -59,11 +59,11 @@ Note: All C++ member functions are implicitly named inline. Thus there is no nee
        inline int32_t GetX();
     }
 
-# But Structures Can Have Functions Too?
+## But Structures Can Have Functions Too?
 
 A little used feature is that C++ also allows structures (aka struct) to have functions defined inside them (as apposed to C, where you could only define function pointers inside the structure).
 
-# Remembering The Parent
+## Remembering The Parent
 
 Sometimes, it is useful to remember the parent class. There is no default way of referencing this, any child classes have no knowledge of their parent by design.
 

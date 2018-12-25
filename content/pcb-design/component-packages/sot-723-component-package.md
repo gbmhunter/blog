@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sot-723-component-package
 ---
 
-# Overview
+## Overview
 
 <table >
 <tbody >
@@ -143,13 +143,13 @@ PCB Land Area (incl. recommended footprint) = \(1.88mm^2\)
 </table>
 
 
-# 3D Renders
+## 3D Renders
 
 Here is a 3D render of the SOT-723 component package.
 
 {{< figure src="/images/2015/04/sot-723-component-package-3d-render.jpg" width="369px" caption="A 3D render of the SOT-723 component package."  >}}
 
-# Dimensions
+## Dimensions
 
 Here are the dimensions and a recommended footprint for the SOT-723 component package.
 

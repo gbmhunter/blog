@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/inductors
 ---
 
-# Overview
+## Overview
 
 Inductors are passive electronic components which store energy as a magnetic field. They are made by coiling wire around a material (be it air, or something else). They are not as common as [resistors](/electronics/components/resistors) and [capacitors](/electronics/components/capacitors) in electronic circuits. They are related to [transformers](/electronics/components/transformers).
 
@@ -17,7 +17,7 @@ Inductors are passive electronic components which store energy as a magnetic fie
 
 Two inductances which are in close proximity they can couple with each, this is called **mutual inductance**. This is the basic principle behind a [transformer](/electronics/components/transformers).
 
-# Terminology
+## Terminology
 
 <table>
     <thead>
@@ -69,7 +69,7 @@ Two inductances which are in close proximity they can couple with each, this is 
 </tbody>
 </table>
 
-# Inductors In Series And In Parallel
+## Inductors In Series And In Parallel
 
 The behaviour of inductors when connected together in series and in parallel is exactly the same behaviour resistors exhibit, and exactly the opposite behvaiour of what capacitors exhibit.
 
@@ -97,7 +97,7 @@ This is shown in the diagram below:
 
 {{< figure src="/images/2013/05/inductor-in-series-with-equation1.png" width="609px" caption="Two inductors in series are the equivalent of one inductor whose inductance is the sum of the indiviual inductances."  >}}
 
-# Common Core Materials
+## Common Core Materials
 
 <table>
     <thead>
@@ -150,7 +150,7 @@ This is shown in the diagram below:
 </table>
 
 
-# Equations
+## Equations
 
 ## Inductance Equation
 
@@ -180,7 +180,7 @@ The energy stored in a inductor is given by:
 
 This equation is only valid when the inductor is operating in it's linear region, that is, before the current reachs the point where the magnetic feild begins to **saturate**. Notice that it is similar to the [equation for energy in a capacitor](/electronics/components/capacitors#energy).
 
-# Simple Impedance Model
+## Simple Impedance Model
 
 An ideal inductor (no parasitic elements) has an impedance given by:
 
@@ -208,7 +208,7 @@ Note that this impedance, although measured in Ohms, is **not the same as resist
 
 For a more accurate but complex model, see the Parasitic Model section.
 
-# Parasitic Model
+## Parasitic Model
 
 An inductor with parasitic components may be modelled by:
 
@@ -235,7 +235,7 @@ Typical values might be:
 * `\( R_S = 10m\Omega \)`
 * `\( C_P = 10pF \)`.
 
-# Inductor Networks
+## Inductor Networks
 
 ## Inductors In Parallel
 
@@ -249,7 +249,7 @@ Inductors in series behave just like resistors in series.
 
 <div>$$ L_{eq} = L_1 + L_2 + \ldots + L_n $$</div>
 
-# Important Parameters
+## Important Parameters
 
 <table>
     <thead>
@@ -319,7 +319,7 @@ Inductors in series behave just like resistors in series.
 
 Inductors are commonly used as an energy storage component in [DC/DC converters](/electronics/components/power-regulators).
 
-# Air-cored Inductors
+## Air-cored Inductors
 
 Air-cored inductors represent any inductor which contains no ferromagnetic material. This means that "air-cored" inductors also covers a range of inductors which use an insulator instead of air for the core, which includes materials such as glass or PTFE.
 
@@ -333,11 +333,11 @@ Air-cored inductors represent any inductor which contains no ferromagnetic mater
 * Air-cored inductors have to have more  and/or larger turns to acheive the same inductance value as a ferro-magnetic core. This is because **ferro-magnetic cores have a higher permeability than air**.
 * Air-cored inductaors radiate more electromagnetic fields over a wider area, and also pickup more radiation. This is because ferro-magnetic-cores constrain the magnetic field lines better.
 
-# Ferrite Beads
+## Ferrite Beads
 
 See the [Ferrite Beads page](/electronics/components/ferrite-beads).
 
-# Inductor Kickback
+## Inductor Kickback
 
 Inductor kickback is when an inductor the current through an inductor is quickly stopped, usually by making an open circuit. Because inductors "want to keep the current flowing", they generate a very large voltage spike in attempt to keep the current going. This large voltage spike can jump switch gaps, fry MOSFET's, destroy other sensitive circuitry, and give people dangerous shocks.
 
@@ -345,7 +345,7 @@ A more technical way of looking a kickback is by analysing the [voltage-inductan
 
 Inductor kickback is a significant design issue when using [relays](/electronics/components/relays) or [motors](/electronics/components/motors).
 
-# Saturation Current
+## Saturation Current
 
 Inductors only behave like inductors over a **limited current range**. As the current continues to increase, the apparent inductance of the inductor decreased. Above a certain current, they become what is called saturated. 
 
@@ -359,16 +359,16 @@ As governed by the basic induction equation, applying a constant voltage across 
 
 Reaching saturation is not always a bad thing. Saturation is desirable in self-switching power supplies, timing circuits and blocked oscillators, and saturable-core transformers (e.g. arc welding). It is not desirable in typical SMPS, or power/signal transformers.
 
-# Rated Current
+## Rated Current
 
 The rated current of an inductor is the maximum DC current allowed before the inductor gets"too hot". "Too hot" is usually defined as a certain temperature rise above ambient (e.g. `\( 40^{\circ}C \)`) when the inductor is mounted using a standard footprint on a standard PCB; again, both defined by the manufacturer. 
 
-# Saturation Current vs. Rated Current
+## Saturation Current vs. Rated Current
 
 There are usually two maximum current ratings on an inductor's datasheet, the saturation current and the rated current.
 
 Confusing? The most simple Simon design approach is to pick the lower maximum current of the two and treat that as the maximum current allowed through the inductor. A seasoned inductor sensei will realise that the rated current is not applicable to short current peaks, and so it is safe to exceed this for brief periods of time, as long as the saturation current is not exceeded (disclaimer: in some cases, even exceeding the saturation current limit is o.k. or even desirable, but see the Saturation Current section for more info on this.
 
-# Inductor Packages
+## Inductor Packages
 
 {{< figure src="/images/2013/05/ipc-sm-782-component-dimensions-for-smd-inductors.png" width="709px" caption="Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard."  >}}

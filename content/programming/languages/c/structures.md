@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/c/structures
 ---
 
-# Overview
+## Overview
 
 Structures can be used to do a "object-orientated" style of programming in C, a language which was originally designed to be functional.
 
-# Initialising Structures
+## Initialising Structures
 
 Initialising structures is way of defining what the values of the variables inside the struct will be at the time of creation. Note that there is a big syntax difference between initialising structures in C and in C++.
 
@@ -34,7 +34,7 @@ demoStruct_t struct1 =
 
 Unfortunately, **you cannot define default variables for a structure when you declare it**, only when you create an instance of that structure type. If this is annoying you, you might want to consider switching to C++, which allows you to do such a thing by using the class and constructor mechanisms.
 
-# Manipulating Structures
+## Manipulating Structures
 
 Because structure can contain more than one data type, you can't use the standard procedure for manipulating other 'variables'. For example you can't use struct 1 = struct 2 to copy one structure to another or use `struct1= 0` to set all values to 0. Instead, you have to use memory operations.
 
@@ -61,7 +61,7 @@ memcpy(&struct2, &struct1, sizeof(struct2));
 struct1.value1 = struct2.value2;
 ```
 
-# Self-referencing Structures
+## Self-referencing Structures
 
 You can self-reference a structure, but you cannot include the structure type in the structure itself (with would cause infinite recursion). To self-reference a structure, you have to use the little-used (in C anyway) name after typedef struct.
 	

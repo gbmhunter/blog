@@ -7,13 +7,13 @@ type: page
 url: /electronics/components/triacs
 ---
 
-# Overview
+## Overview
 
 A TRIAC is a 4-layer semiconductor device that conducts current in either direction when given a signal.
 
 The name TRIAC is a generic trademark and is an abbreviation of _TRIode for Alternating Current_. The formal names for a TRIAC are _bidirectional triode thyristor_ or _bilateral triode thyristor_, although these names are rarely used.
 
-# Schematic Symbol
+## Schematic Symbol
 
 The schematic symbol for the TRIAC is shown below:
 
@@ -21,7 +21,7 @@ The schematic symbol for the TRIAC is shown below:
 
 The anodes A1 and A2 may be called Main Terminal 1 (MT1) and Main Terminal 2 (MT2) respectively.
 
-# Component Parameter Descriptions
+## Component Parameter Descriptions
 
 **Repetitive Peak Off-State Voltage (50-60Hz)**
 
@@ -31,10 +31,10 @@ The maximum repetitive peak voltage (`\(V_{DSM}\)`) allowed across the device. R
 
 The maximum off-state peak voltage across A1 and A2 that is non-repetitive. Normally this is defined to pulses less than 10ms wide.
 
-# Gate Currents
+## Gate Currents
 
 A "normal" TRIAC might have a gate trigger current (`\(I_{gt}\)`) of 20-50mA. A "sensitive" TRIAC might have an `\(I_{gt}\)` of 2-10mA.
 
-# Part Numbering
+## Part Numbering
 
 Many TRIACs begin with/include the three-letter term _BTA_.

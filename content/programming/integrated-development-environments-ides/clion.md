@@ -7,17 +7,17 @@ type: page
 url: /programming/integrated-development-environments-ides/clion
 ---
 
-# Overview
+## Overview
 
 CLion is an C/C++ IDE developed by JetBrains. Unlike Intelli IDEA, it has no free/community edition (although free open source licenses are available on a case-by-case basis).
 
 {{< figure src="/images/2017/05/clion-logo.png" width="304px" caption="The CLion logo."  >}}
 
-# Performance
+## Performance
 
 In my experience, CLion runs smoothly relative to other C/C++ IDE's, even when running inside a resource constrained virtual machine. It manages to provide context dependent auto-complete relatively quickly after typing the start of a variable.
 
-# Keyboard Shortcuts
+## Keyboard Shortcuts
 
 **Navigation**
 
@@ -33,11 +33,11 @@ Ctrl-F9: Build. Only applicable if current run configuration supports a build st
 
 Ctrl-Shift-I: Inspect the object at the current cursor position. This will usually open up documentation for the object.
 
-# GDB Remote Debugging
+## GDB Remote Debugging
 
 CLion supports remote debugging using gdb (along with gdbserver). Remote debugging is useful when cross-compiling for a target that is not the same as your development computer. This can include firmware/software for microcontrollers and embedded Linux targets.
 
-# Refactoring Does Not Work
+## Refactoring Does Not Work
 
 If you find you cannot refactor C++ objects in CLion, it may be because your CMakeLists.txt is not including the header files.
 

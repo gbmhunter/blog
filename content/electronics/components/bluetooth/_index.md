@@ -7,13 +7,13 @@ type: page
 url: /electronics/components/bluetooth
 ---
 
-# Bluetooth 2.1
+## Bluetooth 2.1
 
 ## Examples
 
 The Bluegiga WT12 bluetooth module supports iAP connectivity through their "iWRAP" Bluetooth stack. This bluetooth module can be connected directly to an iPod Authentication Coprocessor (through pins PIO5, PIO6 and PIO7) and will handle all the necessary authentication for you.
 
-# Bluetooth 4.0
+## Bluetooth 4.0
 
 ## Examples
 

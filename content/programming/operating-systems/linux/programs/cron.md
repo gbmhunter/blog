@@ -7,11 +7,11 @@ type: page
 url: /programming/operating-systems/linux/programs/cron
 ---
 
-# Overview
+## Overview
 
 Most web-servers give you the ability to setup and run cron tasks for maintaining your website. These are normally setup from cPanel or equivalent, and is called a [webcron](http://en.wikipedia.org/wiki/Webcron).
 
-# The Basics
+## The Basics
 
 To list the current crontabs type:
 
@@ -19,7 +19,7 @@ To list the current crontabs type:
 sudo crontab -l
 ```    
 
-# Special Characters
+## Special Characters
 
 There are a number of characters which have a special meaning when writing a crontab.
 
@@ -79,7 +79,7 @@ There are a number of characters which have a special meaning when writing a cro
 	</tbody>
 </table>
 
-# Predefined Timing Words
+## Predefined Timing Words
 
 These are pretty self-explanatory.
 
@@ -161,7 +161,7 @@ These are pretty self-explanatory.
 	</tbody>
 </table>
 
-# Logging
+## Logging
 
 By default, cron saves the output to the user's mailbox. You can save it to a separate logfile instead with the following syntax:
 

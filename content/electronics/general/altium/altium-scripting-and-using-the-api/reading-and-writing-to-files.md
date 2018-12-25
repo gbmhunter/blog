@@ -7,7 +7,7 @@ type: page
 url: /electronics/general/altium/altium-scripting-and-using-the-api/reading-and-writing-to-files
 ---
 
-# Overview
+## Overview
 
 You have the ability to write to and read from files inside Altium scripts. This can be useful for saving user configuration data that persists between each time the script is run, or providing input/output data for a particular script that needs to interact with the operating system.
 
@@ -15,7 +15,7 @@ The objects of interest are `TIniFile`.
 
 `TIniFile` is great for storing category-key-value (or just key-value) information.
 
-# INI Files
+## INI Files
 
 ## Creating An INI File
 

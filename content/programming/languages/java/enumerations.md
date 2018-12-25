@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/java/enumerations
 ---
 
-# Overview
+## Overview
 
 Enumerations in Java are treated as proper objects.
 
-# Iterating Over A Enum
+## Iterating Over A Enum
 
 An enum can be iterated over by using a for in the following way:
     
@@ -21,7 +21,7 @@ for(MyEnum myEnum: MyEnum.values()) {
 }
 ```
 
-# Indexing An Array Using An Enum
+## Indexing An Array Using An Enum
 
 Because enumerations are proper objects, there is no way to directly use an enumeration as a index to a array (or any type of Collection for that matter). This is unlike C++, in where an enum is essentially a integer, and can be treated as such.
 

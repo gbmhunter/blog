@@ -12,7 +12,7 @@ The standard C library provides functions for writing input and output to files.
 Most of the file input/output functions are declared in header stdio.h. Add the line #include <stdio.h> to your source code to use file I/O functions.
 
 
-# fopen()
+## fopen()
 
 `fopen()` is used to open a file.
 

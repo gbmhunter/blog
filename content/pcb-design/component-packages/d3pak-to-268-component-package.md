@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/d3pak-to-268-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table>
@@ -115,7 +115,7 @@ url: /pcb-design/component-packages/d3pak-to-268-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 The TO-268 (D3PAK) package is bigger than the TO-263 (D2PAK) package. The D3PAK name stands for "decawatt 3 package". Unlike the TO-263 package, the TO-268 package only comes in one variant with 3 pins.
 
@@ -123,19 +123,19 @@ It is designed to have a really low thermal resistance so that it can be used in
 
 I have only ever seen this in the 3-pin variant (called TO-268-3).
 
-# Recommended Land Pattern
+## Recommended Land Pattern
 
 {{< figure src="/images/electronics-packages/to-268-component-package-land-pattern.png" width="500px" caption="Recommended land pattern for the D3PAK (TO-268) component package." >}}
 
-# Recommended Stencil
+## Recommended Stencil
 
 {{< figure src="/images/electronics-packages/to-268-component-package-recommended-stencil-pattern.png" width="500px" caption="Recommended stencil pattern for the D3PAK (TO-268) component package." >}}
 
 
-# Package Dimensions
+## Package Dimensions
 
 {{< figure src="/images/electronics-packages/to-268-3-component-package-dimensions.png" width="500px" caption="Dimensions for the D3PAK (TO-268) component package." >}}
 
-# Photos
+## Photos
 
 {{< figure src="/images/2015/04/d3pak-to-268-component-package-photo.jpg" width="366px" caption="Photo of the D3PAK (TO-268) component package."  >}}

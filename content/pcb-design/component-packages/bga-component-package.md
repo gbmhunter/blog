@@ -6,7 +6,7 @@ type: page
 url: /pcb-design/component-packages/bga-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
 <tbody>
@@ -83,7 +83,7 @@ url: /pcb-design/component-packages/bga-component-package
 </td>
 </tr></tbody></table>
 
-# Comments
+## Comments
 
 The package with the densest pin density out there, BGA's are used to either make components very small or to encompass a large number of leads. Some modern FPGA's have more than 1700 leads! Requires an x-ray machine to discover if the balls have correctly soldered onto the pads.
 
@@ -91,11 +91,11 @@ A 3D render of the BGA-144 component package.
 
 {{< figure src="/images/2015/03/bga-144-component-package-3d-render.jpg" width="372px" caption="A 3D render of the BGA-144 component package."  >}}
 
-# Ball Layout
+## Ball Layout
 
 A particular BGA package may not have a complete grid of balls. BGA packages also come in a _straight_ or _staggered_ ball layout.
 
-# BGA Pad Diameter
+## BGA Pad Diameter
 
 The pad diameter for a BGA footprint can be determined by one of three methods:
 
@@ -103,11 +103,11 @@ The pad diameter for a BGA footprint can be determined by one of three methods:
 * Least material condition (LMC)
 * Percentage reduction of nominal ball diameter (e.g. 20%)
 
-# Soldermask Considerations
+## Soldermask Considerations
 
 {{< figure src="/images/2015/03/example-of-nsmd-pcb-pad-solder-joint-xilinx.png" width="507px" caption="Example of a NSMD (non-soldermask defined) solder joint on a BGA package. Image from http://www.xilinx.com/."  >}}
 
-# Variants
+## Variants
 
 ## DSBGA
 

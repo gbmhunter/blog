@@ -7,7 +7,7 @@ type: page
 url: /programming/operating-systems/linux/programs/sed
 ---
 
-# Overview
+## Overview
 
 sed is a command that parses and transforms text, line-by-line. It is a form of stream-editing.
 
@@ -23,11 +23,11 @@ $ sed 'my-pattern' inputFile.txt >> outputFile.txt
 
 The `-exec` option is used so that you can execute a shell command on every output.
 
-# Comments
+## Comments
 
 sed allows you to put comments inside of script. Comments begin with the # character.
 
-# Substitution
+## Substitution
 
 One of the most popular operations is the substitution operation, s. It accepts a regular expression for the search pattern and standard text for replacement. To replace some (but probably not all, see the part below on sed's line by line processing) occurances of the word old with the word new in inputFile.txt and save it to outputFile.txt, you would write:
 
@@ -43,7 +43,7 @@ To get around this, you can use the global replacement character (g).
 $ sed 's/old/new/g' <inputFile.txt >outputFile.txt
 ```
 
-# The Delimiter
+## The Delimiter
 
 The forward slash is conventional delimiter, used to separate variables in a sed search pattern. However, the forward slash can get confusing when trying to manipulate path names, as these have forward slashes also, which means you need to escape them with a prefixed backslash. This can quickly get messy (the picket fence look):
 
@@ -51,7 +51,7 @@ The forward slash is conventional delimiter, used to separate variables in a sed
 $ sed 's/\/usr\/local\/bin/\/common\/bin/' <inputFile.txt >outputFile.txt
 ```
 
-# Deleting Lines
+## Deleting Lines
 
 You can delete lines from files using the pattern '3d', which will delete the 3rd line from the file, or '3,5d' which delete lines 3, 4 and 5. So the full command for deleting the 3rd line would be:
 
@@ -67,7 +67,7 @@ $ sed '$d' filename.txt
 
 `d` is the delete operator. `D` is another delete operator, although it's behavour is slightly different (it doesn't print what's in the current pattern space).
 
-# Pattern Found Variable (&)
+## Pattern Found Variable (&)
 
 When using the substitution command, the & character represents the found pattern. It can be used in the replacement string to insert the pattern found into the replacement text. This is useful for say, when you want to modify some text instead of replacing it completely.
 
@@ -80,7 +80,7 @@ A simple example is if you wanted to double a certain string of text, anywhere i
 
 This command finds any 2, or series of 2's (that is what the regex 22* does), and doubles the found string (this is what the && does).
 
-# Complex Examples
+## Complex Examples
 
 These examples may combine sed with other programs such as find and xargs.
 
@@ -102,6 +102,6 @@ This example looks for all occurences of a date in the format 2014/11/03 and rep
 $ sed -e "s/\([0-9]\{4\}\)\/\([0-9]\{2\}\)\/\([0-9]\{2\}\)/\1-\2-\3/g" filename.txt
 ```
 
-# External Resources
+## External Resources
 
 [Sed - An Introduction And Tutorial by Bruce Barnett](http://www.grymoire.com/Unix/Sed.html) is a very detailed page on sed. It is really easy to follow due to it's step-by-step approach to increased complexity.

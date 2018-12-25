@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/c/common-c-compile-build-errors
 ---
 
-# Overview
+## Overview
 
 These C compile/build errors and warnings are talked about largely in relation to embedded systems (i.e. microcontrollers).
 
-# "pointer of type void used in arithmetic"
+## "pointer of type void used in arithmetic"
 
 Usually occurs when you are doing memory arithmetic, and can actually be a warning you ignore!
 
@@ -25,13 +25,13 @@ void* AppendNewArrayElement(void* arrayStart, uint8 currNumElements, uint8 sizeO
 }
 ```
 
-# "elf section '.bss' will not fit in region 'ram'
+## "elf section '.bss' will not fit in region 'ram'
 
 {{< figure src="/images/programming-c-builderrors/elf-section-bss-will-not-fit-in-region-ram.png" caption="C build error 'elf section '.bss' will not fit in region 'ram'" width="700px" >}}
 
 The .bss section contains all 0-initialized global and static variables. This error normally occurs when you have overly large static variables, or you haven't allocated the stack/heap sizes correctly.
 
-# "Suggested parenthesis around assignment used as a truth value"
+## "Suggested parenthesis around assignment used as a truth value"
 
 {{< figure src="/images/programming-misc/c-warning-suggesed-parentheses-around-assignment-used-as-truth-value.png" caption="A warning message from the C compiler."  width="500px" >}}
 
@@ -53,7 +53,7 @@ if(value1 == value2)
 }
 ```
 
-# "Subscripted value is neither array nor pointer"
+## "Subscripted value is neither array nor pointer"
 
 {{< figure src="/images/programming-misc/c-build-error-subscripted-value-is-neither-array-nor-pointer.png" caption="The C build error 'subscripted value is neither array nor pointer'."  width="500px" >}}
 
@@ -71,13 +71,13 @@ value = sin[180];
 value = sin(180);
 ``` 
 
-# "#pragma once in main file"
+## "#pragma once in main file"
 
 {{< figure src="/images/programming-misc/c-build-warning-pragma-once-in-main-file.png" caption="The C compiler warning '#pragma once in main file' which occurs when the directive '#pragma once' is incorrectly placed in a .c file."  width="500px" >}}
 
 This occurs when you incorrectly write "#pragma once" in a .c file (even though the error would suggest it, it doesn't have to be main.c). "#pragma once" is a header guard which prevents an .h file from being included twice in a project and causing multiple declaration/definition errors. Hence "#pragma once" should be only place in .h files. It is an alternative to the "#ifndef" header guard style (see [this page](/programming/languages/c/header-guards) for more info).
 
-# "variable or field declared void"
+## "variable or field declared void"
 
 {{< figure src="/images/programming-misc/c-build-error-variable-or-field-declared-void.png" caption="The C build error 'Variable or field declared void'."  width="500px" >}}
 
@@ -89,7 +89,7 @@ This can occur when you declare/define a function in C++ and the compiler doesn'
 void function1(unrecognisedType_t inputVar);
 ``` 
 
-# "macro names must be identifiers"
+## "macro names must be identifiers"
 
 If you get the error macro names must be indentifiers it is usually because you have been using both #if()  and #ifdef directives, and accidentely used the combination #ifdef() . This is not allowed! When using #ifdef, do not enclose the proceeding identifier with brackets.
 
@@ -105,7 +105,7 @@ If you get the error macro names must be indentifiers it is usually because yo
 #endif
 ```
 
-# "Not In Formal Parameter List"
+## "Not In Formal Parameter List"
 
 {{< figure src="/images/programming-psoc/keil-c51-build-error-not-in-formal-parameter-list.png" caption="The 'not in formal parameter list' build error is most likely to occur when you have forgotten to add the semi-colon at the end of a function declaration."  width="500px" >}}
 
@@ -120,7 +120,7 @@ void function1()
 void function2();
 ```    
 
-# double free or corruption
+## double free or corruption
 
 Error Type: Run Time
 

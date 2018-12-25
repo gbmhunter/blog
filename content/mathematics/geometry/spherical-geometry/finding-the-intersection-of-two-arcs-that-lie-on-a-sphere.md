@@ -7,7 +7,7 @@ type: page
 url: /mathematics/geometry/spherical-geometry/finding-the-intersection-of-two-arcs-that-lie-on-a-sphere
 ---
 
-# Finding The Intersection Of Two Arcs That Lie On A Sphere
+## Finding The Intersection Of Two Arcs That Lie On A Sphere
 
 This is a common problem which usually arises because you want to find if two great circles (or segments of two great circles) on the earth's surface intersect (obviously with are approximating the earth as a sphere).
 
@@ -98,7 +98,7 @@ This test has to be repeated between potential intersecting point 1 and arc 2. I
 
 The same process has to be applied to potential intersecting point 2 (remember, normalizing the line of intersection between the two planes gives us TWO potential points of intersection).
 
-# Worked Example
+## Worked Example
 
 Let's define two arcs using two points each in geodetic (lat/lon) form (latitude and longitude are in degrees):
 
@@ -118,6 +118,6 @@ $$ a_{11} = \left[ {\begin{array}{c} x_{11} \\ y_{11} \\ z_{11} \end{array} } \r
  a_{22} = \left[ {\begin{array}{c} x_{22} \\ y_{22} \\ z_{22} \end{array} } \right] $$
 </div>
 
-# External Resources
+## External Resources
 
 [https://stackoverflow.com/questions/2954337/great-circle-rhumb-line-intersection](https://stackoverflow.com/questions/2954337/great-circle-rhumb-line-intersection) is a great page showing how to calculate the intersection between a arc and a Rhumb line (similar to above).

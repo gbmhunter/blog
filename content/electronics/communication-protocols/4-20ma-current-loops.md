@@ -9,13 +9,13 @@ url: /electronics/communication-protocols/4-20ma-current-loops
 
 [mathjax]
 
-# Overview
+## Overview
 
 The 4-20mA current loop protocol is an **analogue electrical communication protocol**. It is based around a **current loop** from transmitter to receiver that is varied between 4-20mA under normal operating conditions. This signal is usually used to represent 1 continuously varying measurement such as temperature, pressure, e.t.c.
 
 The first uses of the 4-20mA current loop appeared in the 1950's.
 
-# Protocol
+## Protocol
 
 The reason that the valid range is set between 4-20mA and not say, 0-20mA is so that no current can be used to signify that the transmitter is either not connected or not working correctly.
 
@@ -23,7 +23,7 @@ It also allows devices to be self-powered from the current-loop, as long as the
 
 Note that some devices do use a 0-20mA protocol instead.
 
-# Types
+## Types
 
 ## 2-Wire
 
@@ -41,13 +41,13 @@ The 3-wire variant uses two wires for power and ground, and then shares the thi
 
 The 4-wire version has a **differential pair** for the current signalling, which is not shared by the power source.
 
-# Transmission Distances
+## Transmission Distances
 
 Because the current-loop protocol is resistant to voltage drops over lengths of cabling (the current through all the series elements remains the same!), the current-loop protocol can work over large distance. It is insensitive to various noise sources that would otherwise affect voltage-based communication protocols.
 
 A transmission distance of up to 5km or more through standard signal/data cabling is not unusual. The limiting factor is when the voltage drop in the cable exceeds the maximum voltage that is powering the current source (the system voltage).
 
-# Standards
+## Standards
 
 ## ISA S50.1
 
@@ -65,11 +65,11 @@ The standard also extends the normal operation 4-20mA current range to 3.8-20.5m
 
 4-20mA devices that use this specification usually state _Compliant to NAMUR NE 43_.
 
-# Applications
+## Applications
 
 The 4-20mA current-loop communication protocol is used by many **industrial sensors** to return the value of the property they are measuring. These include:  * Temperature  * Position  * Speed  * Pressure  * Strain
 
-# Interfacing To A Microcontroller
+## Interfacing To A Microcontroller
 
 A 4-20mA current loop signal can be easily interfaced to a microcontroller which has an [ADC](/electronics/circuit-design/adcs).
 
@@ -109,11 +109,11 @@ The schematic below shows how you can convert the 4-20mA current loop into a vo
 
 {{< figure src="/images/2016/03/4-20ma-current-loop-interface-to-micro-schematic-with-filter-and-buffer.png" width="1021px" caption="An schematic showing how to interface a 4-20mA current loop signal to the ADC on a microcontroller. The circuit also has a low-pass filter and a buffer."  >}}
 
-# Noise
+## Noise
 
 4-20mA current loops can be thought of as a **low-impedance** communication protocol, as the low-valued resistor at the destination effectively makes the input impedance very small. This **reduces the amount of induced noise** on the input signal (i.e. the noise has to be of a higher power to produce the same voltage change).
 
-# Out-of-band Signalling
+## Out-of-band Signalling
 
 Some devices use currents **lower than 4mA or higher than 20mA** to communicate extra information. This is called _out-of-band_ communication.
 
@@ -121,7 +121,7 @@ For example, a distance sensor might use 3.5mA to signal that the object is too
 
 The NAMUR NE43 standard specifies any current below 3.6mA or above 21mA should be treated as any error condition.
 
-# HART
+## HART
 
 The HART communication protocol (_Highway Addressable Remote Transducer_) is a separate communications protocol which can communicate on the same wires as the 4-20mA current loop protocol.
 
@@ -129,17 +129,17 @@ The HART communication protocol (_Highway Addressable Remote Transducer_) is a 
 
 It transmits one or digital signals which are **superimposed** onto the 4-20mA current signal.
 
-# Over-voltage Dangers
+## Over-voltage Dangers
 
 Because the communication protocol is based on a current, the voltage at the receiver end is **dependent** on the resistor you choose to convert the current to a voltage. Care has to be taken to make sure that the resistance is low enough that produced voltage will **never exceed** the maximum input voltage of the receiving device (e.g. the ADC of a microcontroller). 
 
 This includes looking at all possible _out-of-band_ signalling scenarios that the transmitter supports. For example, although the transmitter might say it follows the 4-20mA protocol, it may be designed to transmit **30mA** under certain fault conditions.
 
-# Multiple Receivers
+## Multiple Receivers
 
 While the 4-20mA current-loop protocol can only have one transmitter, it does support multiple receivers. These receivers have to be connected in series, and you have to make sure the total voltage drop across all of the receivers does not exceed the maximum voltage the the system, or that of the transmitter supports.
 
-# 4-20mA Transmitters
+## 4-20mA Transmitters
 
 4-20mA transmitters can be built either using discrete circuitry (usually involving an op-amp), or with dedicated ICs.
 

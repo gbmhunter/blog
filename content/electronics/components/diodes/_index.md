@@ -7,11 +7,11 @@ type: page
 url: /electronics/components/diodes
 ---
 
-# Overview
+## Overview
 
 Diodes are passive semiconductor components consisting of a single P-N junction. Their main property is that they only allow conduction of current in one direction, which makes them a useful component in many electronic circuits.
 
-# Parameters
+## Parameters
 
 These are some of the important parameters shared by all types of diode (in a rough order of importance):
 
@@ -58,19 +58,19 @@ Diodes come in many [component packages](/electronics/circuit-design/component-p
 
 {{< figure src="/images/2011/09/silkscreen-polarity-marks-on-0603-diode-footprint.png" width="504px" caption="Polarity marks have been added to the silkscreen layer for these 0603 diodes."  >}}
 
-# Polarity
+## Polarity
 
 Most diodes have their polarity marked with a single line near the cathode (the "more negative" end when conducting current). They will let current flow from anode to cathode but not in the other direction.
 
 Note that some diodes, such as bi-directional TVS diodes, do not have a polarity.
 
-# Schottky Diodes
+## Schottky Diodes
 
 Schottky diodes are special diodes that have a lower voltage drop than standard diodes (typically 0.3V instead of 0.7V). They are used in applications where the input voltage is small, and in high power applications in where the power consumption of the diode needs to be kept to a minimum. The standard schematic symbol for a schottky diode is shown below (note the curls on the bar, which differs it from the standard diode symbol.
 
 {{< figure src="/images/2011/09/schematic-symbol-schottky-diode.png" width="216px" caption="The schematic symbol for the schottky diode."  >}}
 
-# Zener Diodes
+## Zener Diodes
 
 Zener diodes are diodes which have a specified reverse blocking voltage at which they breakdown and begin to conduct. They are similar to TVS diodes, but generally have a more defined and precise breakdown voltage, but a lower power rating. Also, shunt voltage references are similar in concept to zener diodes, except that they are more precise but can't dissipate as much power.
 
@@ -84,11 +84,11 @@ You can purchase Zeners with a reverse voltage drop as low as 1.8V all the way
 
 For more information, see the [ESD Protection](/electronics/circuit-design/esd-protection) page.
 
-# Photo Diodes
+## Photo Diodes
 
 Note these are not be confused with photo-transistors, which are similar, but technically not photo diodes. Photo diodes have a faster response time than photo-transistors.
 
-# Avalanche Photo-diodes (APDs)
+## Avalanche Photo-diodes (APDs)
 
 Avalanche photo-diodes (APDs) are constructed in a similar manner to PIN diodes. The major difference is that they are operated with a much larger reverse voltage (100-200V for silicon based ones). This causes the avalanche effect (impact ionization) whenever photons strike the sensor, giving a current-gain of around 100. The current gain is roughly proportional to the applied reverse voltage, and for this reason some special avalanche diodes have been made which have a reverse breakdown voltage of over 1500V, allowing much higher gains (e.g. 1000).
 
@@ -96,7 +96,7 @@ Sometimes they can be operated above their maximum reverse voltage for short per
 
 APDs are used in range-finders and optical communications.
 
-# Bridge Recitifers
+## Bridge Recitifers
 
 Bridge rectifiers are 4 diodes connected in such a way that they rectify an AC voltage waveform into a DC one. The image below shows a bridge rectifier being used after a transformer to convert 12Vac into 12Vdc. Note that the frequency of the ripple will be twice the AC input frequency (2x 50Hz = 100Hz).
 
@@ -104,11 +104,11 @@ Bridge rectifiers are 4 diodes connected in such a way that they rectify an AC v
 
 Bridge rectifiers can have snubber elements attached to each diode. This helps reduce the high-frequency noise which can be induced when the diodes themselves switch on/off, due the leakage inductance and parasitic capacitance of the transformer (which cause oscillations when the diodes essentially change the output impedance). Typical values for the snubber circuit are a 47pF capacitor in series with a 2kR resistor.
 
-# Temperature Sensors
+## Temperature Sensors
 
 Diodes can be used as temperature sensors, as their forward voltage changes depending on the temperature. Most 3-pin active linear temperature sensors use a diode for the temperature measurement, along with additional circuitry to linearise and scale the reading. See the [Temperature Sensors page](/electronics/circuit-design/temperature-sensors) for more information.
 
-# Steering Diodes
+## Steering Diodes
 
 Steering diodes is a name given to a configuration of two or more diodes that changes the direction of current depending on the polarity of the waveform.
 
@@ -120,7 +120,7 @@ They can be used alongside a potentiometer and 555 timer to create a PWM circui
 
 {{< figure src="/images/2011/09/schematic-steering-diodes-used-for-555-timer-pwm-circuit.png" width="736px" caption="Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications)."  >}}
 
-# Can Diodes Share Current?
+## Can Diodes Share Current?
 
 The short answer: No!
 

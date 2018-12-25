@@ -7,7 +7,7 @@ type: page
 url: /electronics/circuit-design/thermal-management
 ---
 
-# Thermal Resistance
+## Thermal Resistance
 
 Thermal resistance is way of modelling the thermal behaviour of an object in a way analogous to calculating the current through a resistor by measuring it's voltage.
 
@@ -36,11 +36,11 @@ An analogy to electrical resistance...
 
 {{< figure src="/images/electronics-misc/analogy-of-thermal-resistance-to-electrical-resistance.png" caption="The analogy of thermal resistance to electrical resistance. Image from http://www.vishay.com/docs/28705/mc_pro.pdf."  width="800px" >}}
 
-# Inaccuracies In The Thermal Resistance Model
+## Inaccuracies In The Thermal Resistance Model
 
 * Thermal resistances assume a linear relationship between temperature and heat flow. This is only a first-order approximation.
 
-# List Of Component Package Thermal Resistances
+## List Of Component Package Thermal Resistances
 
 See the [Component Packages page](/electronics/circuit-design/component-packages). This has many of the common component packages and their thermal resistances.
 

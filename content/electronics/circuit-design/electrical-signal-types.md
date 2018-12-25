@@ -9,25 +9,25 @@ url: /electronics/circuit-design/electrical-signal-types
 
 Signal types are sorted in alphabetical order. Take note that there may be a low-voltage equivalent of many signal types under the prefix "LV" (e.g. TTL and LVTTL).
 
-# CML
+## CML
 
 > See PECL.
 
-# CSEF
+## CSEF
 
 > See PECL.
 
-# CSL
+## CSL
 
 > See PECL.
 
-# DCS (Differential Current Switch)
+## DCS (Differential Current Switch)
 
-# DTLL (Differential Transistor-Transistor Logic)
+## DTLL (Differential Transistor-Transistor Logic)
 
 DTLL is a differential signal type that is similar to standard to TTL. Because of it's differential nature, DTLL is preferred over TTL for communications over long cables. DTLL comes under the category HVDS (high-voltage differential signalling), and is the most popular choice in this category.
 
-# LVTTL
+## LVTTL
 
 ## Stats
 
@@ -63,7 +63,7 @@ Common drive-strengths are 24mA.
 
 TI SN65LVELT23 converts LVPECL and LVDS to LVTTL.
 
-# LVDS
+## LVDS
 
 ## Stats
 
@@ -132,7 +132,7 @@ TI SN65LVELT23 converts LVPECL and LVDS to LVTTL.
 
 
 
-# LVPECL (Low-Voltage Emitter-Coupled Logic)
+## LVPECL (Low-Voltage Emitter-Coupled Logic)
 
 
 
@@ -152,7 +152,7 @@ TI SN65LVELT23 converts LVPECL and LVDS to LVTTL.
 
 
 
-# PECL (Emitter-Coupled Logic)
+## PECL (Emitter-Coupled Logic)
 
 
 
@@ -167,7 +167,7 @@ The MOSFET-based equivalent of PECL is SCFL (source-coupled logic).
 
 
 
-# SCFL (Source-Coupled Logic)
+## SCFL (Source-Coupled Logic)
 
 
 
@@ -177,7 +177,7 @@ The transistor-based equivalent of SCFL is PECL (emitter-coupled logic).
 
 
 
-# TTL
+## TTL
 
 
 

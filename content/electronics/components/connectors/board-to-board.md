@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/connectors/board-to-board
 ---
 
-# Overview
+## Overview
 
 Board-to-board connectors which connect to PCB's side-by-side are called _coplanar_ connectors.
 
@@ -15,7 +15,7 @@ Board-to-board-connectors which connect PCB's ontop of one another are called _m
 
 {{< figure src="/images/2015/12/stacked-board-to-board-connector-photo.png" width="700px" caption="An example of a 'mezzanine' or 'stacked' style of board-to-board connector."  >}}
 
-# Wire-to-Board (WTB) Support
+## Wire-to-Board (WTB) Support
 
 Some board-to-board connector families are have wire-to-board support, with a special wire-crimped inline receptacle which mates with the PCB-mounted connector that works with both the board-to-board and wire-to-board connectors.
 

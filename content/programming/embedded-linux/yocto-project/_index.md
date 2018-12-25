@@ -7,13 +7,13 @@ type: page
 url: /programming/embedded-linux/yocto-project
 ---
 
-# Overview
+## Overview
 
 The _Yocto Project_, or more commonly just called _Yocto_, is a build system used to create custom Linux distributions for embedded systems. It is important to note **that it is not a Linux distribution itself**, but a collection of tools to generate a custom Linux distribution for your specific embedded hardware.
 
 {{< figure src="/images/2017/04/the-yocto-project-logo.png" width="404px" caption="The logo for the Yocto project."  >}}
 
-# Quick Start
+## Quick Start
 
 This is a Yocto "Quick Start", aimed to get you familiar with the basics of the Yocto and building a embedded Linux image in no time!
 
@@ -99,11 +99,11 @@ This should load up a separate window, and display a GUI of the Linux image you 
 
 {{< figure src="/images/2017/04/yocto-running-qemu-after-building-default-linux-image.png" width="1327px" caption="Running the finished Yocto build in QEMU (an emulator)."  >}}
 
-# The Project Configuration File
+## The Project Configuration File
 
 The main configuration for a Yocto project is located at poky/build/conf/local.conf.
 
-# Moving The Entire Yocto Project Directory Somewhere Else
+## Moving The Entire Yocto Project Directory Somewhere Else
 
 Moving the entire Yocto project directory isn't as straightforward as you might think (e.g. moving or renaming the poky folder). Because Yocto stores a small but non-zero amount of information in the project using absolute paths (gasp!), moving/renaming this folder will break a build (assuming a build has already been completed at least once, if not, you're o.k.!).
 
@@ -113,7 +113,7 @@ Oh no! I have to rebuild? But that took hours! Luckily, you can fix this without
 
 You should now be able to run bitbake ... without any errors, and without having to restart the build from scratch.
 
-# Disabling sanity Checks
+## Disabling sanity Checks
 
 Although not recommended, sometimes it is necessary to disable the sanity checks. This can be done by commenting out the out the INHERIT += "sanity" line from the file meta/conf/sanity.conf, so it looks like the following:
 

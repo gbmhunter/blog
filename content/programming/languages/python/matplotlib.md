@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/python/matplotlib
 ---
 
-# Two Y-Axis Example
+## Two Y-Axis Example
 
 ```py
 import matplotlib.pyplot as plt

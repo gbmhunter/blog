@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/to-93-to-209ab-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table>
@@ -126,14 +126,14 @@ url: /pcb-design/component-packages/to-93-to-209ab-component-package
 </table>
 
 
-# Comments
+## Comments
 
 Large panel mount package used for high-power SCR's. Has good heat-sinking capabilities. Thread is 28.5mm in diameter, so fits 29-30mm hole. The metal case/thread is usually used as the anode, and the thick cable the cathode (there normally is a flying lead for the cathode also), along with a white flying lead for the gate.
 
-# Photos
+## Photos
 
 {{< figure src="/images/2015/04/to-93-component-package-photo.jpg" width="160px" caption="A photo of the TO-93 component package."  >}}
 
-# Images
+## Images
 
 {{< figure src="/images/electronics-packages/package-to-92-dimensions.jpg" caption="The dimensions for the TO-92 package."  width="500px" >}}

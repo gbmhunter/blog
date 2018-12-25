@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/python/python-swig-bindings-from-cplusplus
 ---
 
-# Overview
+## Overview
 
 **Sometimes you may want to call C++/C code from python.** This could be because the functionality you need is contained in a C++ library, you require low-level system or I/O access, or you want the performance benefits of running C++/C code vs. python.
 
@@ -17,7 +17,7 @@ Although there are many different ways of calling C++ code from Python, this pag
 
 There are numerous working SWIG example projects at [https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig](https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig) which follow along with the below tutorial. They are designed to be run in a Docker container created by the Dockerfile in the same repo (run the root-level run.sh to create and enter the Docker container).
 
-# What is SWIG?
+## What is SWIG?
 
 The Simplified Wrapper And Interface Generator (SWIG) is a free open-source tool which allows you to call C or C++ from a range of other programming languages.
 
@@ -34,7 +34,7 @@ SWIG can build C/C++ bindings to large number of programming languages, includin
 
 This tutorial focuses on building bindings for calling C++ code from Python, using the CMake build system.
 
-# The Interface File
+## The Interface File
 
 SWIG is configured with what is called an interface file. The interface file tells SWIG where to find C/C++ files, what objects it should create wrappers for, and what features should be included.
 
@@ -56,7 +56,7 @@ Here is an example of a SWIG interface file:
 
 This file can be found at [https://github.com/mbedded-ninja/BlogAssets/blob/master/Programming/Swig/BasicExample/example.i.](https://github.com/mbedded-ninja/BlogAssets/blob/master/Programming/Swig/BasicExample/example.i)
 
-# Installing And Running SWIG
+## Installing And Running SWIG
 
 SWIG can be installed with the following commands:
 
@@ -108,7 +108,7 @@ _Sorted alphabetically:_
 
 `-threads`: SWIG will release the GIL when calling any C/C++ library code from Python (excluding classes that have been wrapped in directors)
 
-# CMake
+## CMake
 
 CMake has built-in support for creating SWIG bindings for your C++ project (for more information on CMake itself, see [/programming/build-systems-and-package-managers/cmake](/programming/build-systems-and-package-managers/cmake)). To use CMake to build SWIG bindings, make sure to include the SWIG package with the following command in your CMakeLists.txt:
 
@@ -137,7 +137,7 @@ SWIG_ADD_MODULE(<ModuleName> python MyInterfaceFile.i ${Swig_SRC})
 SWIG_LINK_LIBRARIES(<ModuleName> ${PYTHON_LIBRARIES})
 ```
 
-# Applying Compile Flags To The Generated SWIG Source File
+## Applying Compile Flags To The Generated SWIG Source File
 
 SWIG generates a specific source file (normally with the extension .cxx if using C++) which contains the binding code which makes the C++ library compatible with Python.
 
@@ -150,7 +150,7 @@ SET_SOURCE_FILES_PROPERTIES(${swig_generated_file_fullname}
 
 `${swig_generated_file_fullname}` usually expands to `<path>/<module name>PYTHON_wrap.cxx` for C++ libraries. The variable is only valid after `SWIG_ADD_MODULE(...)` is called.
 
-# Installing Python Bindings Using CMake
+## Installing Python Bindings Using CMake
 
 You can instruct CMake to install the generated SWIG Python bindings onto your computer when sudo make install is run.
 
@@ -167,11 +167,11 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/<PythonModuleName>.py DESTINATION ${PY
 
 Notice the mention of `_<PythonModuleName>`. The SWIG package automatically adds a underscore to the compiled C/C++ library, while the generated `<PythonModuleName>.py` file does not have this underscore.
 
-# Order Is Important
+## Order Is Important
 
 **The order in which to add classes** (or header files via %include) to the SWIG .i file **is important**. For example, is class B uses class A (say class B gets passed a pointer to a class A object in one of it's methods), then class A should be included before class B, otherwise you won't be able to pass in a python object of class A into B (it will complain about a TypeError).
 
-# Typemaps
+## Typemaps
 
 **Typecheck Typemaps**
 
@@ -217,7 +217,7 @@ without the dreaded `**NotImplementedError: Wrong number or type of arguments fo
 
 **For a working code example using custom typemaps and typechecks, see [https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig/CustomTypemapExample](https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig/CustomTypemapExample).**
 
-# Cross-language Polymorphism (Directors)
+## Cross-language Polymorphism (Directors)
 
 **By default, cross-language polymorphism will not work with SWIG bindings.** For example, consider a Python class which inherits from a wrapped C++ class containing virtual methods. If the child Python class then overrides some of the base class functions, and is passed into the C++ side, these overriding functions will not be called.
 
@@ -391,7 +391,7 @@ As you can see above, we can now create a Callback object, passing in a python f
 
 **This working code example can be found at [https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig/CallbackExample.](https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig/CallbackExample)**
 
-# What Did SWIG Create?
+## What Did SWIG Create?
 
 Sometimes, even though SWIG compiled successfully, it can be difficult to determine if SWIG create the python bindings as intended. There are some useful tools you can use within the Python environment to determine what SWIG has exactly created.
 
@@ -403,11 +403,11 @@ help(MyBindingModuleName)
 
 This allows you to see what functions, classes, enumerations e.t.c are available from the Python code.
 
-# Return Values
+## Return Values
 
 Whilst the C++ compiler enforces return values (if the function's signature says that it will return a value), python does not. This can lead to issues when implementing concrete class in python of a base class that was defined in C++. If you forget to return the correct type, your program can segmentation fault.
 
-# Smart Pointers
+## Smart Pointers
 
 As of September 2017, SWIG only has support for `std::shared_ptr`, but not `std::unique_ptr` or `std::weak_ptr`.
 
@@ -455,7 +455,7 @@ A similar type map was created for the other direction (C++ to Python) in the ca
 
 This creates a Python list from a `std::shared_ptr<std::vector<uint8_t>>`.
 
-# Common Errors
+## Common Errors
 
 **fatal error: 'Python.h' file not found**
 

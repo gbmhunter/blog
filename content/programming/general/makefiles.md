@@ -7,7 +7,7 @@ type: page
 url: /programming/general/makefiles
 ---
 
-# Overview
+## Overview
 
 Makefiles are a way of making a **"one touch" build solution for source code**. They are a type of file used by the GNU command **make**. They take multiple file inputs, do some part or all of the code build process, and produce output(s). They are commonly used to create executables, object files, or libraries (combined object files) from source code. They come in particularly useful when dealing with large projects.
 
@@ -19,7 +19,7 @@ Unlike most other programming/scripting languages, Makefiles are white-space sen
 
 Make can be then used by "higher-level" build programs, such as the [Autoconfig](http://www.gnu.org/savannah-checkouts/gnu/autoconf/manual/autoconf-2.69/html_node/index.html#Top) and [Automake](http://www.gnu.org/software/automake/) tools .
 
-# The Simplest Possible Makefile
+## The Simplest Possible Makefile
 
 The simplest possible makefile is (please correct me if I'm wrong):
 
@@ -36,7 +36,7 @@ Note that there is a tab infront of the recipe gcc .... . This is important! *
 
 If no parameters are passed in when you call make, the first rule in the makefile will be run.
 
-# Adding Variables
+## Adding Variables
 
 Make supports variables that are defined before they are used in a rule. The value of the variable is substituted to replace the constant at run-time, similar to the C preprocessor.
 
@@ -105,7 +105,7 @@ CFLAGS
 
 Using wildcards in variable assignment requires special syntax, see the Wildcards section.
 
-# Wildcards
+## Wildcards
 
 Wildcards are a great way to make automatic makefiles, i.e. makefiles that you do not need to continuously update as you create/delete code files.
 
@@ -136,7 +136,7 @@ foo : $(objects)
 cc -o foo $(objects)
 ```    
 
-# Automatic Variables
+## Automatic Variables
 
 Automatic variables are another great tool to use when creating automatic makefiles. Automatic variables begin with the $ character, just like normal variables.
 
@@ -203,13 +203,13 @@ Here is a table some of the most useful automatic variables:
 
 Automatic variables are used frequently in the compiler command that is executed when a rule is matched.
 
-# Including One Makefile In Another
+## Including One Makefile In Another
 
 Note that this is different from Calling One Makefile From Another.
   
 A Makefile (or a partial Makefile) can be included in another with the -include directive.
 
-# Calling One Makefile From Another
+## Calling One Makefile From Another
 
 Note that this is different from Including One Makefile In Another.
 
@@ -231,10 +231,10 @@ subsystem:
 
 The && is so that make will only be called if cd is successful. If this wasn't there and cd was not successful, make would be called in the wrong directory.
 
-# Debugging
+## Debugging
 
 Make prints out some debug information to the standard output when it is run. If you want more debugging functionality, try [Remake](http://bashdb.sourceforge.net/remake/), which is a patched version of GNU Make with better error reporting, and trace execution/debugging capability.
 
-# More Reading
+## More Reading
 
 For a comprehensive reading, checkout the [GNU 'make' manual](http://www.gnu.org/software/make/manual/make.html#Rules).

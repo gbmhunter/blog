@@ -7,13 +7,13 @@ type: page
 url: /pcb-design/impedance-controlled-routing/microstrips
 ---
 
-# Overview
+## Overview
 
 Microstrips are impedance controlled transmission lines on the top or bottom layers of a PCB, where there is free space above the track, and a copper pour on the layer below the track. This is opposed to striplines, which are embedded in a middle layer of a PCB, and have a copper pour above and below them.
 
 {{< figure src="/images/2015/12/single-ended-basic-microstrip-diagram-annotated.png" width="760px" caption="A diagram of a single-ended microstrip, with standard names for the various dimensions added."  >}}
 
-# RFcafe Equations
+## RFcafe Equations
 
 To calculate the impedance of a microstrip, we need to know the following parameters of the PCB:
 
@@ -50,7 +50,7 @@ Go to [http://ninja-calc.mbedded.ninja/calc/microstrip-impedance-calculator](htt
 
 {{< figure src="/images/2015/12/screenshot-microstrip-impedance-calculator-ninjacalc.png" width="945px" caption="A screenshot of the 'Microstrip Impedance' calculator in the NinjaCalc web app."  >}}
 
-# The Equations Altium Uses
+## The Equations Altium Uses
 
 The equation Altium uses (as of AD14, and in unsimplified form):
 
@@ -75,12 +75,12 @@ w = ((5.98*h1)/exp(Z/(60/sqrt(Er*(1-exp(-1.55*(0.00002+h1)/h1)))))-h2)/0.8
 
 The primary and desired mode of signal propagation in a microstrip is transverse electric and magnetic (TEM). Other modes are undesirable and increase the degradation of the signal, such as what occurs with microstrip dispersion (see below).
 
-# Microstrip Dispersion
+## Microstrip Dispersion
 
 With wide microstrips that are far away from the ground plane, strange modes of propagation appear. Significant energy can now bounce between the microstrip and ground plane. Parts of the waveform that bounce between the microstrip and ground plane take longer to travel down the microstrip, distorting the waveform. This is called **microstrip dispersion**. Microstrip dispersion compounds quadratically with trace-to-ground height.
 
 Why not then make the ground plane really close to the microstrip then? Well, the skin-effect resistance varies inversely proportional with trace width (remember that for a given impedance, if the height between microstrip and ground is decreased, the trace width also has to decrease). So there is a trade-off point where both effects are minimised to an agreeable level.
 
-# Design Guidelines
+## Design Guidelines
 
 A rule of thumb is to keep co-planar ground at least 3x the microstrip width away from the edges of the microstrip. Close, co-planar ground reduces the impedance of the microstrip. Infact, putting the ground too close to the microstrip results in you making a co-planar waveguide (CPW) instead!

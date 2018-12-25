@@ -7,7 +7,7 @@ type: page
 url: /programming/website-design/html
 ---
 
-# Comments
+## Comments
 
 Comments within HTML code are added using the following syntax.
 
@@ -15,7 +15,7 @@ Comments within HTML code are added using the following syntax.
 <!-- This is a HTML comment -->
 ```
 
-# GET, PUT, e.t.c
+## GET, PUT, e.t.c
 
 The common command send when you type a URL into your browser is GET.
 
@@ -27,10 +27,10 @@ $ curl -i -X GET http://my.url
 
 Or you can use a web-based app such as the [Simple REST Client](https://chrome.google.com/webstore/detail/simple-rest-client/fhjcajmcbmldlhcimfajhfbgofnpcjmb?utm_source=chrome-ntp-icon).
 
-# API Design
+## API Design
 
 Apiary ([http://apiary.io/](http://apiary.io/)) is a useful tool for designing web-based API's (API's using HTML requests). It allows instant API mock creation with automatic documentation and testing. It is free for single, non-commercial users (aka hackers).
 
-# Dynamic Content
+## Dynamic Content
 
 [AngularJS](http://angularjs.org/) is a great tool for dealing with dynamic content. It is a tool that allows things such as data-binding, which allows a UI interface following the MVC or MVVC pattern. It is implemented in purely client-side Javascript. An alternative to AngularJS is [Knockout](http://knockoutjs.com/).

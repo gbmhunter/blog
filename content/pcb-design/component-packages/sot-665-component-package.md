@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sot-665-component-package
 ---
 
-# Overview
+## Overview
 
 <table><tbody ><tr >
 <td>Name</td>
@@ -53,15 +53,15 @@ url: /pcb-design/component-packages/sot-665-component-package
 </td>
 <td >
 
-# General
+## General
 
 {{< figure src="/images/2015/11/sot-665-component-package-3d-render.jpg" width="259px" caption="A 3D render of the SOT-665 component package. Image from http://www.digikey.com/."  >}}
 
-# Dimensions
+## Dimensions
 
 {{< figure src="/images/2015/11/sot-665-component-package-dimensions.png" width="836px" caption="The dimensions for the SOT-665 component package. Image from http://www.nxp.com/."  >}}
 
-# Footprint
+## Footprint
 
 A recommended footprint (land pattern) for the SOT-665 component package is shown below:
 

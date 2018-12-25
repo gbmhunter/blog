@@ -6,13 +6,13 @@ type: page
 url: /electronics/general/altium/altium-scripting-and-using-the-api
 ---
 
-# Overview
+## Overview
 
 Altium supports the ability to wire and run scripts, pieces of code which can perform repetitive tasks or tasks which would otherwise take along time for a person to do and speed up the PCB design process. Altium supports [DelphiScript](/programming/languages/delphi) (.pas), EnableBasic, [VBScript](/programming/languages/vbscript), [JavaScript](/programming/website-design/javascript), and TCL scripting language sets.
 
 From my personal wonders it seems that [Delphi](/programming/languages/delphi) and VBScript are the two most popular ([Delphi](/programming/languages/delphi) being the one most of Altium's own examples are written in, and [VBScript](/programming/languages/vbscript) being the one that many 3rd parties have used). My personal favourite is [VBScript](/programming/languages/vbscript), due to it's simplicity (while not lacking any power).
 
-# Where To Download Scripts From
+## Where To Download Scripts From
 
 Lots of third-party scripts can be downloaded from the Google Code Project, found [here](http://code.google.com/p/altium-designer-addons/).
 
@@ -20,7 +20,7 @@ Unfortunately, the original scripts that used to be included with Altium disappe
 
 Also, I have a project called [AltiumScriptCentral which can be downloaded from GitHub](https://github.com/mbedded-ninja/AltiumScriptCentral). It has a collection of useful scripts for increasing productivity and validating PCB's before being sent of for manufacturing. They are all written in VBScript, and can be used as code examples to write your own.
 
-# How To Write Your Own Scripts
+## How To Write Your Own Scripts
 
 Below are tips and code examples to write your own Altium scripts. I prefer [VBScript](/programming/languages/vbscript) (which to me personally was one of the easiest to grasp coming from a C/C++/C# background, and seems to be one of the widely supported languages), however most are written in [Delphi Script](/programming/languages/delphi).
 
@@ -30,7 +30,7 @@ A word of caution, when writing/testing scripts (and running downloaded scripts 
 
 More than likely, you will need to use the internet to get familiar with the scripting language of choice. Remember, if using VBScript, make sure you search for VBScript tutorials, not just "Visual Basic", as you will more than likely get the wrong language and you code won't work (VBScript is different to Visual Basic).
 
-# The Basics
+## The Basics
 
 ## Exiting
 
@@ -100,7 +100,7 @@ However, I recommend that you **do not** use these, but use the **built-in ones*
 
 For example, if using VBScript, the `CDbl()` function converts all numbers that pass the `IsNumeric()` test, while the Altium-provided `StrToFloat()` will fail on things like `"2-"` (which passes `IsNumeric()`), and throws an exception, potentially crashing your application.
 
-# Best Practices
+## Best Practices
 
 Before we get too serious, here are some best practices (stipulated by no-one except myself).
 
@@ -122,7 +122,7 @@ These apply if you are VBScript:
 
 3. Be consistent with your naming conventions.
 
-# Project-Related API
+## Project-Related API
 
 This sections covers code non-specific to either the schematics or PCB.
 
@@ -178,7 +178,7 @@ However, in my experience, you run into problems if you close the first (main) 
 
 You get into some nasty situations where Altium will "lock-up", if an unhandled exception is thrown and there are forms hidden but still active.
 
-# Schematic-Related API
+## Schematic-Related API
 
 The schematic server (SchServer) is the root object for all script usage within schematics.
 
@@ -283,11 +283,11 @@ Use the following command to refresh the screen:
 CurrentSheet.GraphicallyInvalidate
 ```
 
-# Auto-complete Tip
+## Auto-complete Tip
 
 Press _Ctrl-Space_ to bring up the auto-complete help at any time. This is very useful when writing scripts for Altium, and results in you having to do a lot less of searching through code reference guides!
 
-# Special Strings
+## Special Strings
 
 Special strings are text strings which get converted when presenting certain output. The following special strings are available:
    
@@ -316,7 +316,7 @@ Special strings are text strings which get converted when presenting certain out
 
 Special strings are the reason why most objects are provided with two string properties, `UnderlyingString` and `ConvertedString`. `UnderlyingString` contains the raw text of a string, while `ConvertedString` contains the text once all special strings have been converted into the appropriate output.
 
-# Regex
+## Regex
 
 If using VBScript, you can easily use the built-in regex engine to use regex with Altium scripts.
    
@@ -333,13 +333,13 @@ If regex.Test(component.Designator.Text) Then
 End If
 ```
 
-# GUI Design
+## GUI Design
 
 The Altium scripting language lets you design graphical user interfaces (GUIs) for your scripts. Each script file has the option of having an associated form which can be displayed from a function call.
 
 Warning/Be Aware: The script engine will automatically remove empty event handler functions (e.g. a function that is called when the user clicks the button) on file save. It also will prompt you to delete event handler function calls that point to functions that no longer exist.
 
-# TForm
+## TForm
 
 The TForm object is the main window, the parent UI object which holds all of the other UI objects for the window inside it.
 
@@ -372,7 +372,7 @@ The selected radio button in a group is controlled via the TRadioGroups ItemInde
 
 The [DeleteSchematicParameters,vbs script in the AltiumScriptCentral](https://github.com/mbedded-ninja/AltiumScriptCentral/blob/master/src/Tools/DeleteSchematicParameters.vbs) project makes use of the TRadioGroup control.
 
-# Bugs
+## Bugs
 
 ## A Command Is Currently Active, Cannot Save
 
@@ -427,6 +427,6 @@ end;
 
 Make sure that you call `PCBServer.PreProcess` and `PCBServer.PostProcess` correctly! (see the Undo section for more details).
 
-#  External Resources
+##  External Resources
 
 Checkout [CA Idiots blog](http://caidiot.blogspot.co.nz/)

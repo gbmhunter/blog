@@ -7,13 +7,13 @@ type: page
 url: /programming/website-design/nodejs/using-express
 ---
 
-# Overview
+## Overview
 
 Express is a web application framework for node. The Express framework itself uses Connect for some of it's functionality, a middleware framework for node.
 
 It's website is [http://expressjs.com/](http://expressjs.com/).
 
-# Installing
+## Installing
 
 You can install Express with NPM (node package manager) using the following command:
 
@@ -23,7 +23,7 @@ $ npm install express
 
 This will install express into the current directory under the standard node packages folder.
 
-# Basic Web Server
+## Basic Web Server
 
 The following code shows how to make a basic web server with Express. Notice how it is different from the basic web sever using plain node.
 

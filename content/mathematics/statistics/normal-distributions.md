@@ -7,7 +7,7 @@ type: page
 url: /mathematics/statistics/normal-distributions
 ---
 
-# Probability Density Function
+## Probability Density Function
 
 The probability density function of a normal distribution is given by:
 
@@ -23,7 +23,7 @@ where:<br>
 
 See [https://github.com/mbedded-ninja/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution](https://github.com/mbedded-ninja/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution) for the code which generated these graphs.
 
-# Capped Normal Distribution
+## Capped Normal Distribution
 
 <div>
 $$ \sigma_{overall}^2 = \frac{1}{\sqrt{2\pi} \sigma_{nd} + c} \left [\int_{-\infty}^{-c} +\int_{c}^{\infty} x^2 e^{(-\frac{1}{2} (\frac{x - c}{\sigma_{nd}})^2)} dx + \int_{-c}^{c} x^2 dx \right ] $$

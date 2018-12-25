@@ -7,13 +7,13 @@ type: page
 url: /robotics/ros/topics-publishers-and-subscribers
 ---
 
-# Overview
+## Overview
 
 ROS provides a publish and subscribe mechanism on message buses called topics.
 
 More information about the ROS messages can be found on the [Messages page](/robotics/ros/messages).
 
-# Custom Subscriber Callbacks
+## Custom Subscriber Callbacks
 
 You can implement custom subscriber callbacks by using the boost::bind class.
 
@@ -33,7 +33,7 @@ You can implement custom subscriber callbacks by using the boost::bind class.
     }
 ```
 
-# Smart Pointer Behaviour
+## Smart Pointer Behaviour
 
 Subscribers have built-in smart pointer like behaviour.
 

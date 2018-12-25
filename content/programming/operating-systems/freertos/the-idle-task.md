@@ -15,7 +15,7 @@ FreeRTOS always requires at least one task that is ready to run, and because of 
 
 The idle task is responsible for freeing memory of tasks which have been recently deleted. So if your application deletes tasks, you must make sure that the idle task is not starved continuously of processor time, otherwise the memory will never be freed. This is the only thing the idle task has to do however, so if you don't delete any tasks (which is a common scenario), the idle task can be starved of processor time.
 
-# Creating An Idle Hook
+## Creating An Idle Hook
 
 To create an idle hook, configUSE_IDLE_HOOK must be set to 1 in FreeRTOSConfig.h, and then define a function with the following prototype:
 

@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sot-1040-1-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table>
@@ -120,15 +120,15 @@ url: /pcb-design/component-packages/sot-1040-1-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 Exclusively used by NXP for some of their RFID inlays. I'm not sure why they labelled it as a "SOT" package, as it is very different from everything else in this range.
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/04/sot-1040-1-component-package-3d-render.gif" width="160px" caption="A 3D render of the SOT-1040-1 component package."  >}}
 
-# Images
+## Images
 
 {{< figure src="/images/electronics-packages/component-package-sot-1040-1-outline-drawing.png" caption="The dimensions of the SOT-1040-1 component package. Image from http://www.nxp.com/packages/SOT1040-1.html."  width="600px" >}}
 

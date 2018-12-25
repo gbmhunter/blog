@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sot-762-1-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
 <tbody >
@@ -119,14 +119,14 @@ url: /pcb-design/component-packages/sot-762-1-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 A small 14-leaded SMD package with a thermal pad in the middle (similar to some QFN packages).
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/04/sot-762-1-component-package-3d-render.jpg" width="381px" caption="A 3D render of the SOT-762-1 component package."  >}}
 
-# Other Images
+## Other Images
 
 {{< figure src="/images/electronics-packages/component-package-sot-762-1-outline-and-dimensions.png" caption="The dimensions for the SOT-762-1 component package. Image from http://www.farnell.com/datasheets/1645528.pdf."  width="800px" >}}

@@ -7,13 +7,13 @@ type: page
 url: /programming/languages/c-plus-plus/warning-and-error-message-help
 ---
 
-# warning: ISO C++ says that these are ambiguous, even though the worst conversion for the first is better than the worst conversion for the second:
+## warning: ISO C++ says that these are ambiguous, even though the worst conversion for the first is better than the worst conversion for the second:
 
 This is a form of overload ambguity. It occurs because a candidate function is only better than another candidate function if NONE of it's parameters are a worst match than the parameters of the other, and at least one conversion is better.
 
 This warning can also be an error!
 
-# error: undefined reference to `typeinfo for [classname]`
+## error: undefined reference to `typeinfo for [classname]`
 
 This can come about if you have run-time info disabled via the -fno-rtti GCC compiler option.
 

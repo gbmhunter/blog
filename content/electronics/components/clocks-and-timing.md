@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/clocks-and-timing
 ---
 
-# Delay Lines
+## Delay Lines
 
 Delay lines usually have multiple output pins, each which is connected to a different point in the delay sequence. These are called _taps_. The number of taps is an important parameter of the delay line.
 

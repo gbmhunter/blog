@@ -7,13 +7,13 @@ type: page
 url: /electronics/communication-protocols/lvds-low-voltage-differential-signalling
 ---
 
-# Overview
+## Overview
 
 _Low-Voltage Differential Signalling_ (LVDS) is a standard which specifies the low-level electrical characteristics of a serial communications protocol.
 
 The standard only defines the low-level electrical characteristics, which leaves designers free to specify the data link later, which includes things such as encoding.
 
-# Characteristics
+## Characteristics
 
 
 <table >
@@ -53,13 +53,13 @@ The standard only defines the low-level electrical characteristics, which leaves
 </tbody>
 </table>
 
-# Implementing LVDS On A FPGA
+## Implementing LVDS On A FPGA
 
 Many of the I/O present on an FPGA can support the differential LVDS protocol. They have built in drivers and receivers that can convert the LVDS signal to and from a stream of 1's and 0's.
 
 A serializer/deserializer (SERDES) can be used to convert the stream of bits into bytes of data. This can then be passed into a FIFO for storage, before being handled by processor or other part of the FPGA system.
 
-# Mulitpoint LVDS (MLVDS)
+## Mulitpoint LVDS (MLVDS)
 
 The original LVDS standard was concerned only with point-to-point communications. NSC invented a standard called Bus LVDS (BLVDS) which is a variant on LVDS which allows for a topology of one transmitter connected to multiple receivers.
 

@@ -7,7 +7,7 @@ type: page
 url: /pyrotechnics/rocketry/propellant
 ---
 
-# KNDX
+## KNDX
 
 
 KNDX stands for potassium nitrate-dextrose, and is a easy-to-make rocket propellant that is popular with hobbyist rocketry. The most common ratio is 60% potassium nitrate, 40% dexrtose (by weight).

@@ -7,7 +7,7 @@ type: page
 url: /electronics/projects/backlit-pcb-stencil
 ---
 
-# Stats
+## Stats
 
 <table>
     <tbody >
@@ -30,7 +30,7 @@ url: /electronics/projects/backlit-pcb-stencil
     </tbody>
 </table>
 
-# The Idea
+## The Idea
 
 To turn a spare and used PCB stencil into a wall decoration by adding a backlight and tidying up it's appearance.
 	
@@ -40,7 +40,7 @@ The original plan was to use EL sheets, and build an EL driver for it. Unfortuna
 
 So we ditched that idea and decided to use LEDs instead. We first tried a big bunch (maybe 200 or so) LEDs in the form of cheap christmas lights, but again, they didn't have enough brightness! We eventually settled on using super-bright green LEDs from Jaycar.
 
-# Diffusing The Light
+## Diffusing The Light
 
 Diffusing the light correctly and well enough was a big problem. The LEDs behind the stencil, without any diffusing, created intense spots of green light right infront of them and pretty much nothing anywhere else.
 
@@ -50,6 +50,6 @@ We has a three-step diffusing method:
 2. A thick layer of bubble-wrap ontop of the window tint. This stuff did most of the diffusing. The super-bright LED's were stuck onto the surface of the bubble-wrap (once it was laid ontop of the window tint).
 3. A flat piece of stainless steel sheet metal, stuck on the inside surface of the back cover (this placed in about 10mm of the surface of the bubble-wrap and the LEDs). This reflected any useless light going backwards, so that it had another chance of making it out of the stencil holes and into the eyes of the viewer. This improved the overall brightness of the backlight, and helped brighten the darker spots.
 
-# Images
+## Images
 
 {{< gallery dir="/images/project-backlitpcbstencil" />}}

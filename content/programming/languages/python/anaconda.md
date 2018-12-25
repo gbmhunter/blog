@@ -7,13 +7,13 @@ type: page
 url: /programming/languages/python/anaconda
 ---
 
-# Overview
+## Overview
 
 Anaconda exposes two important command-line tools, conda and source.
 
 {{< figure src="/images/2018/02/anaconda-python-logo.png" width="598px" caption="The logo for Anaconda (Python distribution/environment)."  >}}
 
-# How To Create And Use A Virtual Environment
+## How To Create And Use A Virtual Environment
 
 This assumes you have installed anaconda and conda is available on your path.
 
@@ -45,7 +45,7 @@ When finished, you can deactivate your virtual environment with:
 $ source deactivate
 ```
 
-# Listing All Local Environments
+## Listing All Local Environments
 
 Use the following command to list all local environments:
 
@@ -55,7 +55,7 @@ $ conda env list
 
 The currently active environment will have an asterisk after it's name.
 
-# Installing Non-Conda Packages
+## Installing Non-Conda Packages
 
 Non-conda packages can be installed into the current environment with other Python package managers such as pip:
 

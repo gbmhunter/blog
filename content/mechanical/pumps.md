@@ -7,11 +7,11 @@ type: page
 url: /mechanical/pumps
 ---
 
-# Overview
+## Overview
 
 Pumps develop differential pressure. That is, they add to whatever pressure is already at the input.
 
-# Converting Between Head And Pressure
+## Converting Between Head And Pressure
 
 You can convert between head and pressure by using the following equation:
 
@@ -26,7 +26,7 @@ You can convert between head and pressure by using the following equation:
 
 Conveniently, The SG for water is 1.
 
-# High Pressure
+## High Pressure
 
 ## High Pressure Water Pumps
 

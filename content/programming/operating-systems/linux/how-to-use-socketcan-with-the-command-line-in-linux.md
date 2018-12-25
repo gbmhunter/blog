@@ -7,13 +7,13 @@ type: page
 url: /programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux
 ---
 
-# Overview
+## Overview
 
 **This tutorial shows you how to manipulate SocketCAN interfaces using the Linux command-line**. This includes finding out what SocketCAN interfaces are available, printing detailed info about them, and then sending/receiving data.
 
 {{< figure src="/images/2017/07/socketcan-image.png" width="337px" caption="Icon for SocketCAN. Image from https://github.com/linux-can/can-utils."  >}}
 
-# What Types of CAN Interfaces Are There?
+## What Types of CAN Interfaces Are There?
 
 SocketCAN provides the following types of CAN interfaces:
 
@@ -21,7 +21,7 @@ SocketCAN provides the following types of CAN interfaces:
 2. **Virtual interfaces.** These are CAN interfaces that are not associated with any real hardware. They are named vcanX , e.g. vcan0 , vcan1 , ...
 3. **SLCAN based interfaces.** SLCAN interfaces provide a serial interface. They are named slcanX , e.g. slcan0 , slcan1 , e.t.c
 
-# Investigating SocketCAN Interfaces
+## Investigating SocketCAN Interfaces
 
 First off, you want to print all the available ip interfaces and see if you have some can interfaces. This uses the iproute2 suite of tools:
 
@@ -37,7 +37,7 @@ First off, you want to print all the available ip interfaces and see if you have
 
 The last interface listed is can0. This is a SocketCAN interface! Note the above command was run on Ubuntu 17.04 64-bit, running on VMware Workstation with a PCAN-USB dongle connected.
 
-# Print SocketCAN Info
+## Print SocketCAN Info
 
 Native CAN devices that support SocketCAN can be seen using the iproute2 suite of tools. For example:
 
@@ -66,7 +66,7 @@ can0: flags=128<NOARP>  mtu 16
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 ```
 
-# Configuring And Enabling The SocketCAN Interface
+## Configuring And Enabling The SocketCAN Interface
 
 Before we can enable the SocketCAN interface, we need to configure it:
 
@@ -95,7 +95,7 @@ _**Note:** If you ever get the following error:_
 
 _**Note**: And if you get the error: RTNETLINK answers: Operation not supported then try run sudo modprobe can (or sudo modprobe vcan ) first._
 
-# Send/Receive Data On SocketCAN
+## Send/Receive Data On SocketCAN
 
 If you then want to send/receive data on the CAN interface, you should install can-utils :
 

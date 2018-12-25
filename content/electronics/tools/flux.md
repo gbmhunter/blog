@@ -7,15 +7,15 @@ type: page
 url: /electronics/tools/flux
 ---
 
-# Overview
+## Overview
 
 Flux is a substance used in the soldering process to remove metal corrosion and improve the adhesion of the molten solder to the metal surfaces.
 
-# Activity
+## Activity
 
 Flux activity is a measure of the strength/aggressiveness of the flux in it's ability to clean metals while soldering. Low activity fluxes are weak fluxes and as usually mild acids. High activity fluxes are strong fluxes and are usually low pH acids.
 
-# Rosin Flux
+## Rosin Flux
 
 Rosin fluxes are the oldest types of flux (well, charcoal was first!). Rosin is the name of refined **pine sap**. Rosin flux is typically a solid at room temperature, but quickly melts and flow easily at soldering temperatures. It is usually a light or dark amber colour. Rosin fluxes have a **low flux activity**.
 
@@ -35,19 +35,19 @@ For the chemically-minded people, rosin flux usually has a formula of:
 
 Obviously, being a naturally produced substance, the make-up of a rosin flux will change.
 
-# Organic Acid Flux
+## Organic Acid Flux
 
 Organic acid flux is typically made of a weak, organic-based acid such as citric, lactic or stearic acid. The acid is dissolved in a solvent such as a mixture of isopropyl alcohol and water.
 
 They can be a good compromise between reliability, flux activity and cleanability.
 
-# Inorganic Acid Flux
+## Inorganic Acid Flux
 
 The most aggressive type of flux, inorganic fluxes are usually a blend of aggressive chemicals such as hydrochloric acid, zinc chloride and ammonium chloride. They have a **high activity**. They are normally used for non-electronics related soldering such as a joining of copper pipes (also called brazing).
 
 Inorganic acid fluxes should not be used for electronic soldering because they can leave chemically active residues which cause reliability problems.
 
-# "No Clean" Flux
+## "No Clean" Flux
 
 The term "no clean" flux is used for fluxes whose residue will not effect the long-term reliability of the PCB. The two important qualities
 
@@ -55,7 +55,7 @@ A disadvantage of no clean flux is the poor aesthetics of leaving the flux resid
 
 The IPC-610 standard specifies some the required properties of no clean flux to be compliant.
 
-# Soldering Fumes
+## Soldering Fumes
 
 During the soldering process fumes are released. The amount of fumes increases drastically as flux is used.
 

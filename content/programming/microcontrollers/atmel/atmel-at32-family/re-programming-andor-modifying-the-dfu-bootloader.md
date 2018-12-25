@@ -7,17 +7,17 @@ type: page
 url: /programming/microcontrollers/atmel/atmel-at32-family/re-programming-andor-modifying-the-dfu-bootloader
 ---
 
-# Overview
+## Overview
 
 The AT32UC3 series of microcontrollers come with a pre-loaded USB bootloader. This allows you to program the devices through a USB connection with a computer without the need for an ISP or JTAG programmer.
 
 This tutorial explains how to re-program, and/or modify the AT32UC3 bootloader. Atmel does not make this an easy task. Think again if you thought you could do it with a few clicks from within Atmel Studio 6. The documentation is sparse, the downloads (yes it requires many different programs) scattered around the back corners of their website, it involves many command-line operations, and the process filled with little gotchas and workarounds. Anyway, always look on the bright side of life? Right? Let us continue...
 
-# Choose An Operating System To Work Within
+## Choose An Operating System To Work Within
 
 I choose Linux because command-line utilities such as make are more at home within Linux than Windows.
 
-# Getting The Source Code
+## Getting The Source Code
 
 The first thing to do is get the bootloader source code. This is contained within the AVR UC3 Software Framework (currently at v1.7.0). This can be found at [https://code.google.com/p/goddac/downloads/detail?name=AVR-UC3-SoftwareFramework-1.7.0.zip](https://code.google.com/p/goddac/downloads/detail?name=AVR-UC3-SoftwareFramework-1.7.0.zip). Since we will be modifying files in this project, unzip it in your home directory.
     
@@ -41,7 +41,7 @@ If you just run make, you get the error:
 
 So, it turns out someone at Atmel forgot to do a make clean before zipping up the project. The folder structure has residual .d files from a previous build step. These .d  iles contain Windows style paths. The Makefile is trying to parse these .d files and this is what is causing the multiple target patterns error. So you need to deleting all of the .d files to fix this.
 
-# Downloading The Toolchain
+## Downloading The Toolchain
 
 **Linux**
 
@@ -69,11 +69,11 @@ Add `/opt/atmel-headers-6.1.3.1475/` to the end of the `INC_PATH` variable in th
 
 Then run make and it should actually work! But...it is probably not configured for your exact microcontroller.
 
-# Tweaking config.mk
+## Tweaking config.mk
 
 As previously mentioned, the file . The default is:
 
-# Part: {none|ap7xxx|uc3xxxxx}
+## Part: {none|ap7xxx|uc3xxxxx}
 
 PART = uc3a0512
 
@@ -83,13 +83,13 @@ PART = uc3a3256
 
 You will also have to change the board.
 
-# Building
+## Building
 
 Run the command make.
 
 Ohoh, the size of the .bin file is more than 8kB! I believe this is because Atmel used the IAR compiler, which results in slightly less code than the GCC compiler, even with the -Os optimisation flag set (this is set by default in config.mk). The pre-compiled bootloader binary that Atmel provides for the AT32UC3A3 microcontroller family (at32uc3a3-isp-1.0.3.bin) clocks in at a tidy 7,617B. 
 
-# Modifying The Bootloader Size
+## Modifying The Bootloader Size
 
 In conf_isp.h, you'll want to change
 
@@ -103,7 +103,7 @@ to
 #define PROGRAM_START_OFFSET          0x00004000
 ```
 
-# Post-Build Programming
+## Post-Build Programming
 
 Now for post-build steps...
 

@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/power-regulators/buck-converters
 ---
 
-# Overview
+## Overview
 
 Buck converters use a switching element, inductor and capacitor to convert an input voltage into a lower output voltage.
 
@@ -15,7 +15,7 @@ Buck converters use a switching element, inductor and capacitor to convert an in
 
 When using a P-channel MOSFET for synchronous rectification, it's body diode is forward-biased when the converter is in shutdown mode. This can **drain the power source** into the output. More advanced buck converters have extra circuitry to disconnect this P-channel MOSFET when the device is not active.
 
-# Inductor Selection
+## Inductor Selection
 
 You can use the following equations to select the main inductor for a buck converter.
 
@@ -40,7 +40,7 @@ Then, calculate the value of inductance required with:
 and everything else as mentioned previously<br>
 </p>
 
-# Capacitor Selection
+## Capacitor Selection
 
 The output capacitance is primarily determined by the maximum allowed output voltage ripple. This ripple is determined by the capacitance of the capacitor and it's ESR (equivalent series resistance). The output capacitance of a boost converter can be found using the following equation.
 
@@ -63,7 +63,7 @@ The actual ripple will be slightly larger than this due to the ESR of the capaci
 
 The total output ripple is the sum of the ripple caused by the capacitance, and the ripple cause by the ESR. Note that these equations assume a constant load. Load transients (fluctuations in the load current) will also cause voltage ripple.
 
-# Down Conversion
+## Down Conversion
 
 Some boost converters also have a built in regulator to provide regulation when the input voltage exceeds the desired output voltage. This is normally a linear regulator, so your efficiency will drop and you will have to take into account the thermal dissipation. This is normally called **down conversion**.
 
@@ -71,17 +71,17 @@ Some boost converters also have a built in regulator to provide regulation when 
 
 The price you pay for this added down conversion feature is a slightly higher cost, and slightly higher quiescent current (e.g. some of TI's boost converters have 19uA quiescent current without down conversion, and 25uA with down conversion).
 
-# Input Voltage Range
+## Input Voltage Range
 
 Typically, boost IC's with an internal switch (a converter) can support lower input voltages than those that require an external switch (a controller). A typical minimum input voltage for a converter is in the range 0.3-0.9V, while a controller's minimum is in the range 0.9-1.8V.
 
-# Buck Converter Calculator
+## Buck Converter Calculator
 
 You can find a buck converter calculator as part of [mbedded.ninja's NinjaCalc web app](http://ninja-calc.mbedded.ninja/buck-converter-calculator).
 
 {{< figure src="/images/2015/03/ninja-calc-buck-converter-calculator-screenshot.png" width="956px" caption="A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0)."  >}}
 
-# Examples
+## Examples
 
 ## Tiny (Nano) Buck Converters
 

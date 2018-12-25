@@ -7,13 +7,13 @@ type: page
 url: /programming/languages/java/javafx
 ---
 
-# Overview
+## Overview
 
 JavaFX is a Java-based UI platform for developing desktop applications on a variety of platforms. It is pitched as a replacement for Swing.
 
 {{< figure src="/images/2016/06/javafx-logo.png" width="404px" caption="The JavaFX logo."  >}}
 
-# FXML Files
+## FXML Files
 
 JavaFX UIs can be described using FXML files (.fxml). FXML files are a special type of XML file for describing the UI in a similar way to HTML. This style of designing a UI is called a _declarative style_. The alternative method to create JavaFX UIs is to use a _procedural style_, using normal Java code.
 
@@ -21,7 +21,7 @@ The FXML method is great for describing static (or semi-static) JavaFX UI eleme
 
 Both design methodologies can be implemented in the same project.
 
-# Layout Controls
+## Layout Controls
 
 JavaFX sports a number of different layout controls to arrange your UI with. These include (sorted in alphabetical order):
 
@@ -103,7 +103,7 @@ JavaFX sports a number of different layout controls to arrange your UI with. Th
 
 One thing that annoys me is that there is no row or column sub-controls (like <tr> in HTML) for table-like controls such as the GridPane. To arrange sub-controls within a GridPane, you have to manually specify the row and colomn number of each sub-control, making re-arrangement of the GridPane tedious.
 
-# Buttons
+## Buttons
 
 ## Circular Buttons
 
@@ -127,7 +127,7 @@ button.addEventFilter(MouseEvent.MOUSE_RELEASED,
 );
 ```
 
-# Events
+## Events
 
 Double clicks on JavaFX nodes can be found with the following code (using Java 8 lambda notation):
 
@@ -143,7 +143,7 @@ name.setOnMouseClicked((MouseEvent mouseEvent) -> {
 
 Note that it gets slightly more difficult if you need to detect single-clicks also.
 
-# Custom Controls
+## Custom Controls
 
 ## Adding Properties To Custom Controls
 

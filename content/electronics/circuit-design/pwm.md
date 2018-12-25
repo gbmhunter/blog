@@ -7,7 +7,7 @@ type: page
 url: /electronics/circuit-design/pwm
 ---
 
-# Operating Modes
+## Operating Modes
 
 PWM hardware peripherals may not support every one these modes.
 
@@ -19,7 +19,7 @@ PWM hardware peripherals may not support every one these modes.
 
 Centre-aligned PWM is good for motor control as it generates fewer harmonics in the output voltage and current than asymmetric PWM. Some centre-aligned PWM hardware peripherals implement this by using a counter which changes direction every cycle. It counts up for the first cycle, down for the second, and then repeats. Doing this **effectively reduces the PWM frequency by 2**. So to arrive back at the same PWM frequency as when in asymmetric mode, you have to half the period (in terms of clock cycles). This reduces your duty cycle resolution.
 
-# A Warning About PWM And Oscilloscopes
+## A Warning About PWM And Oscilloscopes
 
 When viewing a PWM output on an oscilloscope, you can experience what is called _aliasing_, and oscilloscope seems to show that the PWM signal is stopping and then restarting at a rate much slower than the PWM frequency.
 

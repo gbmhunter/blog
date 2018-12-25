@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/msop-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
 <tbody>
@@ -99,13 +99,13 @@ url: /pcb-design/component-packages/msop-component-package
 </td>
 </tr></tbody></table>
 
-# Comments
+## Comments
 
 The width of any MSOP package is always 3mm. The length is also commonly 3mm (except for MSOP-16). Because of this restriction, the pitch usually decreases as the pin count increases.
 
 The exposed pad on this package is optional (Analog Devices have separate codes for each).
 
-# Thermal Resistances
+## Thermal Resistances
 
 ## MSOP-10
 
@@ -137,13 +137,13 @@ Synonyms: DGS (Texas Instruments), VSSOP-10 (Texas Instruments)
 <td >\(91.8^{\circ}C/W\)
 </td></tr></tbody></table>
 
-# MSOP-8
+## MSOP-8
 
 {{< figure src="/images/electronics-packages/msop-8-component-package-3d-model-with-exposed-pad.jpg" width="500px" caption="3D model of the MSOP-8 component package (with exposed pad)." >}}
 
 {{< figure src="/images/electronics-packages/msop-8-component-package-dimensions.png" width="500px" caption="Package dimensions of the MSOP-8 component package (with exposed pad)." >}}
 
-# MSOP-10
+## MSOP-10
 
 {{< figure src="/images/electronics-packages/msop-10-component-package-dimensions.png" width="500px" caption="Package dimensions of the MSOP-10 component package (with exposed pad)." >}}
 

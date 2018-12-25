@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/soic-component-package
 ---
 
-# Overview
+## Overview
 
 <table ><tbody ><tr >
 <td style="width: 100px;" >Name
@@ -100,7 +100,7 @@ There are also two width's for SOIC packages, narrow width (3.9mm wide body, SOI
 </ul>
 </td></tr></tbody></table>
 
-# Dimensions
+## Dimensions
 
 The dimensions for the SOIC-8N package are shown below:
 
@@ -110,25 +110,25 @@ The dimensions for the SOIC-16N component package are shown below:
 
 {{< figure src="/images/2015/01/soic-16-component-package-dimensions.jpg" width="575px" caption="The dimensions for the SOIC-16N component package."  >}}
 
-# Pitch
+## Pitch
 
 Most SOIC packages have a pitch of 1.27mm (50mil) and usually have Gullwing leads. When used for regulators, sometimes the many ground pins are connected internally to the die attach flag, providing better heat sinking capabilities. SOIC packages use _leadframe_ technology.
 
 The SOIC package R-PDSO defined by JEDEC has a non-standard pitch of 0.65mm (and the standard wide body width of 7.5mm).
 
-# Pin Numbering
+## Pin Numbering
 
 Pin numbering is the same as a DIP package, in that pin 1 is at the top left, and then pins are numbered sequentially down the left-hand side, then up the right hand-side.
 
-# Polarity Marks
+## Polarity Marks
 
 There are three ways of indicating the polarity on a SOIC package. The first two, a dot or a notch, indicate pin 1 or the top of the chip. The third way is not so obvious, and features a beveled edge along the side that pin 1 is on (so for SOIC-8, the bevelled edge would be on the side with pins 1 to 4).
 
-# Related Packages
+## Related Packages
 
 The WSON package by SST is lower in height than a standard SOIC package, but is designed to use the same PCB footprint.
 
-# Adapter PCBs
+## Adapter PCBs
 
 Adapter PCBs for the SOIC family of packages are widely available due to the popularity of the package.
 
@@ -136,13 +136,13 @@ SparkFun makes a SOIC-8 to DIP-8-300 adapter PCB.
 
 {{< figure src="/images/2015/01/soic-8-component-package-sparkfun-breakout-board.jpg" width="272px" caption="A SOIC-8 to DIP-8-300 adapter PCB by SparkFun."  >}}
 
-# Thermal Resistance And Power Dissipation
+## Thermal Resistance And Power Dissipation
 
 This graph shows the maximum power dissipation for the SOIC-8N component package, for various PCB copper areas.
 
 {{< figure src="/images/2015/01/maximum-power-dissapation-graphs-so-8.png" width="701px" caption="Maximum power dissipation graphs for the SOIC-8N component package."  >}}
 
-# Standard Pinout For MOSFETs
+## Standard Pinout For MOSFETs
 
 The SOIC-8 component package is commonly used for medium-power N and P-channel MOSFETs. Most of these MOSFETs have the exact same pinout (both N and P-Channels!), as shown in the below diagram.
 

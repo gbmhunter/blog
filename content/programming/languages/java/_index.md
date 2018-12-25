@@ -7,6 +7,6 @@ type: page
 url: /programming/languages/java
 ---
 
-# Logo
+## Logo
 
 {{< figure src="/images/2016/06/java-logo-v2.png" width="278px" caption="The Java logo."  >}}

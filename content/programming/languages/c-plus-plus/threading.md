@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus/threading
 ---
 
-# Condition Variables
+## Condition Variables
 
 `std::condition_variable`, from `#include <condition_variable>` is a **synchronization object used for inter-thread notification**. Note that two additional shared variables need to be used alongside a condition variable to achieve thread-to-thread notification, a mutex and a boolean (a.k.a a _condition flag_).
 
@@ -140,7 +140,7 @@ So much easier! Right? This code can also be found in the [CppUtils repo on GitH
 
 Note: If you want to do more than just send notifications between threads, and actually send data, have a look at either implementing a queue or using a future/promise instead.
 
-# Locks
+## Locks
 
 Locks are C++ objects which **provide safety and convenience when locking and unlock mutexes** (you could call them _mutex wrappers_). The two main locks available in C++ are `std::unique_lock` and `std::lock_guard`, both from `#include <mutex>`.
 
@@ -162,7 +162,7 @@ A `lock_guard` tries to take ownership of a mutex when it is created. When contr
 
 Recommendation: Use a `lock_guard` unless you need to manually release the mutex without having to rely on a `lock_guard` going out of scope.
 
-# Mutex
+## Mutex
 
 C++11 introduced `std::mutex`, which is designed to be used as a basic synchronization object in a multi-threaded application.
 
@@ -209,7 +209,7 @@ private:
 
 This is one of the few use cases were the `mutable` keyword should be used.
 
-# Threads
+## Threads
 
 `std::thread` has been in the C++ language since C++11. It's introduction standardized the way threads are used in C++, as before this time platform-specific implementations were the only option (e.g. `pthread` for POSIX systems).
 
@@ -366,13 +366,13 @@ This code can be found and run online at [https://wandbox.org/permlink/KkL4A89Z6
 
 Note that the above code uses a ThreadSafeQueue class, which is not part of std, nor included in the above code. This class implements a thread safe queue. You can find code for this at [https://github.com/mbedded-ninja/CppUtils/blob/master/include/CppUtils/ThreadSafeQueue.hpp](https://github.com/mbedded-ninja/CppUtils/blob/master/include/CppUtils/ThreadSafeQueue.hpp).
 
-# Futures And Promises
+## Futures And Promises
 
 The `std::future` and `std::promise` objects allow a thread to wait for data to be returned from process occurring another thread.
 
 See [https://wandbox.org/permlink/gAq8i3HMcPMe6AMS](https://wandbox.org/permlink/gAq8i3HMcPMe6AMS).
 
-# The Volatile Keyword
+## The Volatile Keyword
 
 This statement is from Microsoft's [Common Visual C++ ARM Migration Issues page](https://msdn.microsoft.com/en-us/library/jj635841.aspx):
  

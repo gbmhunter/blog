@@ -7,13 +7,13 @@ type: page
 url: /electronics/components/satellite-modems
 ---
 
-# Overview
+## Overview
 
 Satellite modems are communication devices that use a satellite as a gateway to the destination device. This page focuses on satellite modems designed for embedded applications.
 
 They typically have tight technical voltage supply specifications (such as 40mVp2p voltage ripple and the ability to momentarily provide 1.5A of current during transmit mode).
 
-# Terminology
+## Terminology
 
 <table>
     <thead>
@@ -74,13 +74,13 @@ They typically have tight technical voltage supply specifications (such as 40mVp
 </tbody>
 </table>
 
-# Iridium
+## Iridium
 
 The Iridium 9602 and 9603 are both burst-data only satellite modems designed for embedded systems.
 
 When the 9603 is in transmit mode, it can draw up to 1.5A (for an period of around 8.3ms), with an average transmit current of 190mA. When receiving, they can draw 195mA peak and 45mA average.
 
-# Antennas
+## Antennas
 
 ## Quadrifilar
 

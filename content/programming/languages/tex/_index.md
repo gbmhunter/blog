@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/tex
 ---
 
-# Overview
+## Overview
 
 TeX is a typesetting language for producing documents. It is one of the most popular alternatives to WYSIWYG text editors such as Microsoft Word. The language largely resembles a programming language, and is then compiled to produce professional looking documents.
 
@@ -15,16 +15,16 @@ The advantage of TeX typesetting over an editor such as Microsoft Word is the co
 
 There is a difference between a TeX distribution and a TeX editor.
 
-# TeX Distributions
+## TeX Distributions
 
 * LaTeX (my favourite)
 
-# TeX Editors
+## TeX Editors
 
 * MiKTeK
 * TeXnicCenter
 
-# MathJAX
+## MathJAX
 
 <table>
     <thead>
@@ -81,7 +81,7 @@ There is a difference between a TeX distribution and a TeX editor.
 </tbody>
 </table>
 
-# Example Code
+## Example Code
 
 ```   
 % Produces a matrix equation

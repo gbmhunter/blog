@@ -5,7 +5,7 @@ title: Hugo
 type: page
 ---
 
-# Development
+## Development
 
 To start a development server and watch for changes:
 

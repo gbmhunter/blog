@@ -7,11 +7,11 @@ type: page
 url: /electronics/components/fpgas/xilinx-7-series-design-guide
 ---
 
-# Overview
+## Overview
 
 This is in no way meant to replace the comprehensive Xilinx design guides for 7 Series devices, but rather serve as a quick reference guide along with tips and tricks which may not be obvious from reading the official Xilinx material.
 
-# IO
+## IO
 
 The pins in a bank are labelled something like IO_L14P_T2_SRCC_14. What does this mean?
 
@@ -33,7 +33,7 @@ The pins in a bank are labelled something like IO_L14P_T2_SRCC_14. What does thi
 <td > 
 </td></tr></tbody></table>
 
-# Decoupling Capacitors
+## Decoupling Capacitors
 
 Xilinx gives strict recommendations on the parameters of the capacitors used for decoupling. The following image shows a table with the ESL, ESR and body size limits for the various-valued capacitances.
 
@@ -45,11 +45,11 @@ The Kintex and Virtex-7 devices has some in-built decoupling capacitors for the 
 
 Reverse-aspect capacitors can be used for when ultra-low parasitic inductances are required.
 
-# Un-used I/O Banks
+## Un-used I/O Banks
 
 Using a large device for a small project could mean that there are entire banks of usused I/O pins. In these cases you are allowed to leave the bank's Vcco pins (e.g. Vcco_14) and I/O pins disconnected. However, for ESD reasons, it is better to connect these pins to either (in order of preference): GND, a valid Vcco voltage, or a floating plane.
 
-# MGT's
+## MGT's
 
 The Xiinx 7 Series FPGA's have in-built Multi-Gigabit Transceivers (MGT's). These are SerDes capable of 1Gpbs+ transmission rates.
 

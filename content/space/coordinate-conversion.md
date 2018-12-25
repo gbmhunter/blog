@@ -7,7 +7,7 @@ type: page
 url: /space/coordinate-conversion
 ---
 
-# Haversine Formula
+## Haversine Formula
 
 The _Haversine_ formula can be used to find the shortest distance (great circle distance) between two points on the earths surface, given their latitude and longitude coordinates.
 
@@ -37,7 +37,7 @@ where all the symbols have the same meaning as above
 
 These two formulas are equivalent!
 
-# Bearing
+## Bearing
 
 This formula calculates the initial bearing, given a start and end co-ordinate.
 
@@ -53,7 +53,7 @@ This formula calculates the initial bearing, given a start and end co-ordinate.
 
 Note that this calculates the _initial bearing_, which is the bearing you would have to be pointing in at the first co-ordinate to travel to the second co-ordinate along a great circle (shortest path on the sphere). **As you travel there, the bearing is likely to change **(there are a few cases in where it wouldn't change, one being if you were travelling exactly North).
 
-# Destination Coordinate Given Distance And Bearing From Start Coordinate
+## Destination Coordinate Given Distance And Bearing From Start Coordinate
 
 The following formula allows you to calculate a destination coordinate (lat/lon) if you know a starting coordinate (again, in lat/lon), ground distance (great circle distance) and initial bearing.
 

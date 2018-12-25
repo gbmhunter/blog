@@ -7,13 +7,13 @@ type: page
 url: /electronics/components/circuit-protection/ptc-type-thermistor
 ---
 
-# Overview
+## Overview
 
 A PTC-type thermistor is a resistor whose resistance increases as temperature increases. They are commonly used as a "resettable fuse" in circuit protection applications.
 
 For information on just plain old resistors, see the [Resistors page](/electronics/components/resistors).
 
-# Schematic Symbol And Designator
+## Schematic Symbol And Designator
 
 I prefer to use the designator prefix `\(RT\)` (e.g. `\(RT1\)`) and the following schematic symbol for a PTC-type thermistor. 
 
@@ -21,7 +21,7 @@ I prefer to use the designator prefix `\(RT\)` (e.g. `\(RT1\)`) and the followin
 
 I use the designator prefix `\(RT\)` for thermistors (**R**esistance depends on **T**emperature), while using `\(RV\)` for varistors (**R**esistance depends on **V**oltage).
 
-# Types
+## Types
 
 ## Linear
 
@@ -29,7 +29,7 @@ Linear thermistors are those which have a roughly linear response in resistance 
 
 ## Switching
 
-# PTC Thermistors vs. Fuses
+## PTC Thermistors vs. Fuses
 
 When should a circuit designer use a PTC thermistor, and when should they use a fuse?
 
@@ -39,7 +39,7 @@ Conversely, this makes fuses better for applications where over-current conditi
 
 One clear **advantage of PTC thermistors is cost** in price-sensitive circuit board designs. As of the year 2016, a cheap SMD fuse in a chip package costs about US$0.40 in quantities of a 100, while a PTC thermistor for the same current rating in a similar SMD chip package costs about US$0.10, 4 times cheaper.
 
-# How To Calculate The Triggered Resistance
+## How To Calculate The Triggered Resistance
 
 Most PTC thermistor datasheets will tell you the nominal off resistance (and/or it's range of values), but not the triggered resistance! However, you can calculate this using the typical power value (`\(P_D\)`) that they provide.
 

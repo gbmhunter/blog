@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/pp9-component-package
 ---
 
-# PP9
+## PP9
 
 <table ><tbody ><tr >
 <td >Name
@@ -59,7 +59,7 @@ url: /pcb-design/component-packages/pp9-component-package
 <td >9V batteries
 </td></tr></tbody></table>
 
-# Comments
+## Comments
 
 A less common 9V battery size. Zinc carbon 9V batteries come in this package.
 

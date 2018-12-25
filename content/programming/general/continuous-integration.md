@@ -7,7 +7,7 @@ type: page
 url: /programming/general/continuous-integration
 ---
 
-# Travis CI
+## Travis CI
 
 Travis CI is a free (for public repositories), online, hosted continuous integration service.
 

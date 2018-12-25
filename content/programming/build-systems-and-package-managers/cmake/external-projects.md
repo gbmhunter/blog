@@ -7,13 +7,13 @@ type: page
 url: /programming/build-systems-and-package-managers/cmake/external-projects
 ---
 
-# Overview
+## Overview
 
 An external project in a CMake system is a separate, self-contained CMake project that can be turned into a target, which can then be used as a dependency on other targets in your build system.
 
 The ExternalProject module runs it's commands at build time.
 
-# Adding An External Project
+## Adding An External Project
 
 An external project can be added with the command ExternalProject_Add().
 
@@ -31,7 +31,7 @@ You can use this to "pass-in parameters" to the called CMakeLists.txt file by us
 
 Add CMake-enabled projects to an existing CMake-enabled project can become quite a complex task. The article at [https://coderwall.com/p/y3zzbq/use-cmake-enabled-libraries-in-your-cmake-project](https://coderwall.com/p/y3zzbq/use-cmake-enabled-libraries-in-your-cmake-project) details an elegant solution.
 
-# Difference Between ExternalProject_Add() And add_subdirectory()
+## Difference Between ExternalProject_Add() And add_subdirectory()
 
 It can be confusing when you want to add-in a CMake-managed project into your current project, which is also CMake-managed. There are a few ways of doing so, one being ExternalProject_Add() and the other add_subdirectory(). After-all, add_subdirectory() **doesn't have to actually be a subdirectory** (it can be any directory on the system).
 

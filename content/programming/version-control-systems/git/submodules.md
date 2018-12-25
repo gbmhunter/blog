@@ -7,13 +7,13 @@ type: page
 url: /programming/version-control-systems/git/submodules
 ---
 
-# Overview
+## Overview
 
 The git submodule feature allows you to **embed one git repository inside another**.
 
 When a git submodule is added, the files contained with the submodule have special treatment inside the parent repository. The **parent repository does not commit the individual files**, but rather just saves the current commit SHA1 that is checked-out with the submodule.
 
-# Basic Example
+## Basic Example
 
 To add a new submodule:
 
@@ -30,13 +30,13 @@ $ git submodule init
 $ git submodule update
 ```
 
-# Version Lockdown
+## Version Lockdown
 
 git submodules can be used for **file management and version lockdown of external dependencies**.
 
 Note that when using C++, it may be better to use the CMake `ExternalProject_Add()` and `find_package()` API (if available), rather than to rely on git submodules for version lockdown of external dependencies.
 
-# Changing An Existing Submodule
+## Changing An Existing Submodule
 
 Sometimes you may wish to change an existing submodule to point to a completely different remote repo.
 

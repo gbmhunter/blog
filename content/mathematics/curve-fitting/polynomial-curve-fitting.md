@@ -7,13 +7,13 @@ type: page
 url: /mathematics/curve-fitting/polynomial-curve-fitting
 ---
 
-# Overview
+## Overview
 
 Before reading this page, please check out the [Linear Curve Fitting page](/mathematics/curve-fitting/linear-curve-fitting). Many of the principles mentioned there will be re-used here, and will not be explained in as much detail.
 
 {{< figure src="/images/2018/07/many-polynomial-best-fits-on-graph.png" width="605px" caption="A graph showing how different degree polynomials can be fitted to data."  >}}
 
-# Calculating The Polynomial Curve
+## Calculating The Polynomial Curve
 
 We can write an equation for the error as follows:
 
@@ -90,7 +90,7 @@ Thus a polynomial curve of best fit is:
 
 See [https://github.com/mbedded-ninja/BlogAssets/tree/master/Mathematics/CurveFitting/polynomial](https://github.com/mbedded-ninja/BlogAssets/tree/master/Mathematics/CurveFitting/polynomial) for Python code which performs these calculations.
 
-# Worked Example
+## Worked Example
 
 Find a 2 degree polynomial that best describes the following points:
 

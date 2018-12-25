@@ -11,7 +11,7 @@ You can use C# to manipulate Microsoft Office programs such as Word and Excel. Y
 
 A good tutorial on the Word API can be found [here](http://msdn.microsoft.com/en-us/library/aa192495(v=office.11).aspx#wordobject_link8) in the MSDN library.
 
-# Tutorial
+## Tutorial
 
 {{< figure src="/images/programming-misc/add-microsoft-word-object-library-reference.png" caption="Adding the Microsoft Word x.x (14.0 in this case) Object Library to a C# project."  width="320px" >}} To create a word application (the first steps no matter what your doing) is to add the Microsoft Word x.x Object Library reference to your C# project. Right click on your project in the solution explorer, click 'Add Reference', click the 'COM' tab, and then select Microsoft Word x.x Object Library from the list as shown in the picture. Click 'OK' to add it to your project. Note that I was using Microsoft Office 2010 and the Microsoft Word 14.0 Object Library when writing this tutorial, so features/processes could be slightly different for other versions.
 
@@ -41,7 +41,7 @@ Word.Document wordDoc = wordApp.Documents.Add();
 
 At this point you can start playing around with the document by adding text, pictures, objects (such as textboxes, rectangles, e.t.c). See below for some hints. All hints assume you have instantiated the Word application and at least one document inside it.
 
-# Text Boxes:
+## Text Boxes:
 
 To create a textbox:
 
@@ -88,7 +88,7 @@ textBox.TextFrame.MarginRight;
 textBox.TextFrame.MarginLeft;
 ```
 
-# Tables
+## Tables
 
 Create a table using the method
 
@@ -96,7 +96,7 @@ Create a table using the method
 Word.Table table = wordDoc.Tables.Add(...);
 ```
 
-# Manipulating The Cursor
+## Manipulating The Cursor
 
 Manipulating the cursor is done with the methods and parameters in the class
 
@@ -118,7 +118,7 @@ To insert a break (e.g. line, page) at the current cursor position, use the meth
 wordApp.Selection.InsertBreak(...);
 ```
 
-# Breaks (Line, Page, ...)
+## Breaks (Line, Page, ...)
 
 To insert a break at the current selection point, call the following method:
 

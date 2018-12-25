@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/pads-vias-holes
 ---
 
-# Holes
+## Holes
 
 Holes in PCB's are typically used to mount through-hole components (their main use), and to provide places to secure the board mechanically. Holes are typically plated (which makes them identical to vias), but non-plated also have their uses (mounting or connector location holes). Holes with copper rings have to obey the minimum annular ring size clearance. Most PCB manufacturers will have a pricing regime that is dependent on the smallest hole size used, the total number of holes, and also the number of different hole sizes.
 
@@ -15,7 +15,7 @@ The smallest hole PCB manufacturers can support is usually 0.1-0.2mm, with anyth
 
 {{< figure src="/images/2015/01/hole-size-versus-pad-size.png" width="767px" caption="Diagram showing different ratios between hole and pad size."  >}}
 
-# Vias
+## Vias
 
 Vias are simply the name given to plated holes which are used to connect to tracks on different layers. Vias with a drilled hole size of 150um or less are called [microvias](/pcb-design/pads-vias-holes#microvias).
 
@@ -35,7 +35,7 @@ Vias can be drilled out easily to break connections when re-wiring, modifying ex
 
 {{< figure src="/images/2015/01/drilled-out-via-on-pcb-next-to-resistor.jpg" width="1600px" caption="A drilled-out via (to break the connection) between a 0603 resistor and SOT-23-3 MOSFET."  >}}
 
-# Microvias
+## Microvias
 
 _Microvias_ are tiny vias that are usually characterised by a diameter of **150um or less** (this is the formal IPC definition). At these diameters, the vias cannot be formed with standard drill bits. Other forms of technology have to be used. These include:  * Photovias  * Laservias
 
@@ -55,13 +55,13 @@ Trepanning is when the laser is moved in a circular pattern to make a large diam
 
 **UV Laser Only:** Approx. 80 drill holes per second. UV laser removes both copper and di-electric laser.
 
-# Annular Rings
+## Annular Rings
 
 {{< figure src="/images/2015/01/minimum-annular-ring.gif" width="124px" caption="The definition of an annular ring in PCB design."  >}}
 
 Most PCB manufacturers specify a minimum annular ring distance. The annular ring distance is measured radially and is the pad/via diameter subtracted by the pad/via hole diameter. PCB's with smaller annular ring requirements usually cost more to manufacture. You normally have to be attention to the minimum annular ring when designing the vias.
 
-# Direct Connect Vs. Thermal Relief
+## Direct Connect Vs. Thermal Relief
 
 Thermal relief is a connection style between copper pours (typically power or ground pours) and other copper elements on the PCB connected to the same net (typically component pads, although this can apply to vias also). A four-point connection is the most common style of thermal relief.
 
@@ -85,7 +85,7 @@ It is common to see power converter (e.g. SMPS) designs that forgo thermal relie
 
 You don't need to add thermal relief to vias. If nothing is soldered to it, then all your are doing is making your connection worse. Most EDA software programs will allow you change this easily (in Altium you set up a rule).
 
-# Aspect Ratios
+## Aspect Ratios
 
 The aspect ratio is an important parameter of a hole on a PCB. It is defined as:
 

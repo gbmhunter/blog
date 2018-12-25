@@ -7,7 +7,7 @@ type: page
 url: /programming/operating-systems/linux/programs/rsync
 ---
 
-# Overview
+## Overview
 
 rsync is similar to scp , except, well, better in most cases. It keeps a file table of all transferred files, and only transfers those that have been modified (hence the sync bit). It has the following syntax:
 
@@ -15,7 +15,7 @@ rsync is similar to scp , except, well, better in most cases. It keeps a file ta
 $ rsync [options] source destination
 ```
 
-# Options
+## Options
 
 The most popular options are:
 
@@ -112,7 +112,7 @@ ln -nfs $HOME/Backups/back-$date $HOME/Backups/current
 
 Another interesting side-note for those interested is that at the core of the compare algorithm is a MD5 checksum and a rolling checksum. This speeds up the checking, rather than comparing the files bit-by-bit. However, this can lead to errors. The probability of rsync believing two files are in sync, but actually are not, requires both a collision (a collision is when different inputs product the same output) in the MD5 and rolling checksum, which sits around the 2^-160 mark (very unlikely).
 
-# How To Incrementally Copy A Large File From Server To Local Folder
+## How To Incrementally Copy A Large File From Server To Local Folder
 
 If you want to copy a large file, you may want to do it incrementally because of disconnection issues, or to resume copying at a different time. rsync supports this with the `--append` option.
 

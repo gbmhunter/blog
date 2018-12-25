@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/unions
 ---
 
-# Overview
+## Overview
 
 **Unions are used to create a data structure that can be addressed using different data types.** An example of a union is shown below. This defines a result_t type which can either be read/written as a 32-bit value or an 8-bit error.
 

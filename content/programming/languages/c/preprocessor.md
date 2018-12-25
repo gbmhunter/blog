@@ -7,17 +7,17 @@ type: page
 url: /programming/languages/c/preprocessor
 ---
 
-# Overview
+## Overview
 
 Preprocessor directives (also known as precompiler directives) are pieces of code that are executed by the pre-compiler. The directives themselves do not appear in the final assembly files, but they are really useful for defining values for replacement through-out the code (e.g. a centralised place to define a constant that is used many times throughout the code), or to include/exclude blocks of code depending on the configuration you want.
 
 They are also used to clever assert and debug messages which can be built to automatically report the filename and line number of the code.
 
-# General Syntax
+## General Syntax
 
 All preprocessor functions in C start with the # character, telling the preprocessor that it must parse this line.
 
-# Macros (#define)
+## Macros (#define)
 
 Macros are one of the most commonly used preprocessor directives.
 
@@ -76,7 +76,7 @@ MY_FUNC(2)
 
 The preprocessor will replace it with: 2*2.
 
-# Variadic Macros
+## Variadic Macros
 
 The C preprocessor allows variadic macros, just like the C compilier allows for variadic functions. The variable-length parameters are encapsulated within the variable `__VA_ARGS__`, and you indicate in a macro that you want it to be variadic with ....
 
@@ -125,7 +125,7 @@ The example below uses a variadic macro along with the special macros `__FILE__`
 
 The `UartDebug_PutString()` function in the code above is part of the hardware abstraction layer on an embedded platform, and prints the passed in string to the debug UART.
 
-# Stringification
+## Stringification
 
 ## Basic Stringification
 
@@ -162,7 +162,7 @@ uint32_t aNum = 378;
 printf("This is an " STR(PF_UINT32_T) ".", sNum);
 ```    
 
-# Conditional Statements (#if, #else, ...)
+## Conditional Statements (#if, #else, ...)
 
 Conditional statements are used just like normal C if statements, except you must remember that the only valid conditions for checking are values (numbers, and in some cases, strings) that are constant. This makes perfect sense if you consider what the precompiler does. It parses this code before the 'c code' is compiled, and therefore has no idea what run-time variables are going to be.
 
@@ -208,7 +208,7 @@ void aFunction()
 #endif // #if 0
 ```    
 
-# Include (#include)
+## Include (#include)
 
 The #include directive is used to include the text contents of one file into another. #include can be called from both .c and .h files, and can be used to include both .c and .h files. However, I strongly recommend that you **don't use it to include .c files!** There is normally no reason to do this. .c files are compiled individually into object files, and then linked together by the linker. By including a .c file, you are kinda doing the linkers job, AND, you will end with **messy multiple definition errors**.
 
@@ -232,7 +232,7 @@ I make no rule about where #include should be called from, and although some pe
 
 Watch out for circular inclusions! This is when you have one header file that depends on a second, and the second also depends on the first. This can be fixed by doing **forward declarations**.
 
-# Warnings And Errors (#warning, #error)
+## Warnings And Errors (#warning, #error)
 
 Most C pre-compilers support directives which cause either warning or error messages to be printed to the standard output when compiling. The pre-compiler prints them if it comes across them, so they are usually wrapped in pre-compiler condition directives (e.g. #if). Warnings just print a message to the screen, however errors have the extra feature of stopping compilation.
 
@@ -248,7 +248,7 @@ To show an error (and stop compilation), use the following syntax:
 #error This is an error, and will stop compilation.
 ```    
 
-# Comments
+## Comments
 
 Some pre-compilers support the ability to print messages to the standard output without using #warning or #error. This includes the GCC pre-compiler.
 
@@ -273,7 +273,7 @@ TODO(Remember to fix this)
 
 prints `'/myFolder/myCfile.c:8 note: #pragma message: TODO - Remember to fix this’`
 
-# File Names And Line Numbers
+## File Names And Line Numbers
 
 When the preprocessor runs through source code, it updates variables remembering the current file name and line number that the preprocessor is executing from. These are called _predefined macros_. These are useful to use if you want to print out debug information to the user (similar to how a compiler reports back file names/line numbers when it encounters a warning/error), or when it comes to [**using assertions**](/programming/languages/c/assertions-assert).
 
@@ -283,7 +283,7 @@ You can override the preprocessors current line number at any point with the dir
 #line 230
 ```    
 
-# Tidying Up Preprocessor Code
+## Tidying Up Preprocessor Code
 
 Unfortunately, unlike the compiler, the preprocessor is pretty dumb, and won't give you warnings like #define SOMETHING is not used. This means you can end up with heaps of redundant code, which confuses both you and whoever is going to look at your code in the future.
 
@@ -298,10 +298,10 @@ A better way is to use another program to check for these. Some expensive progra
 # any sub-directories
 grep -r configNUM_OF_COUNTS ./*
 
-# And if only one match was returned you can
+## And if only one match was returned you can
 # continue...
 
-# The next line will delete all lines of code 
+## The next line will delete all lines of code 
 # that have the phrase "configNUM_OF_COUNTS" on 
 # them, in the files in the current directory.
 sed -i "/configNUM_OF_COUNTS/d" ./*.*

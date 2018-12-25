@@ -7,11 +7,11 @@ type: page
 url: /electronics/components/cellular-modems
 ---
 
-# Overview
+## Overview
 
 Most embedded modems are designed to communicate to a microcontroller over a [UART interface](/electronics/circuit-design/communication-protocols/uart-protocol). Some cellular modems also have embedded GPS decoders.
 
-# Terminology
+## Terminology
 
 Cellular modem design is FULL of acronyms/initialisms, here is a list to help you make sense of them:
 
@@ -325,7 +325,7 @@ Cellular modem design is FULL of acronyms/initialisms, here is a list to help yo
 </table>
 
 
-# Power Supply
+## Power Supply
 
 Most embedded cellular modems run of a supply voltage of +3.8V. Linear regulators are preferred over switching regulators as they typically have lower dropout and voltage ripple. It a switching regulator is to be used, it is preferable to use one that operates at 500kHz or above, so that it can respond to the current pulses quickly and prevent the voltage dropping to far.
 
@@ -393,7 +393,7 @@ A single cell Li-ion battery can also be used to power a +3.8V modem directly (w
 </table>
 
 
-# SIM Cards
+## SIM Cards
 
 Listed below are the common pins that you need to connect from the SIM card (technically to the SIM card holder).
 
@@ -463,13 +463,13 @@ Listed below are the common pins that you need to connect from the SIM card (tec
 </tbody>
 </table>
 
-# PCB Layout And Antenna Routing
+## PCB Layout And Antenna Routing
 
 This is the most important part of the product design!
 
 The characteristic impedance is typically around 50Ω. The maximum allowed signal loss is normally around 0.3dB.
 
-# Supported Bands
+## Supported Bands
 
 ## GSM
 
@@ -477,7 +477,7 @@ GSM900/GSM1800
 
 The GSM band is designed so that data is sent not continuously but in bursts at a rate of around 216Hz. This results in large pulse currents that can be as high as 1.5-2.0A.
 
-# Bands By Country
+## Bands By Country
 
 Countries sorted by alphabetical order, networks sorted by technology and frequency.
 
@@ -555,16 +555,16 @@ Supported Bands
 </tbody>
 </table>
 
-# Software
+## Software
 
 [Mihini](http://www.eclipse.org/mihini/) is a "M2M embeddable runtime on top of Linux". Since it requires Linux, it cannot be used in smaller embeddable projects. Code is written in the Lua language.
 
-# Examples
+## Examples
 
 The [Telit HE910 family](http://www.telit.com/en/products/umts-hsdpa.php?p_ac=show&p=108) is a series of embedded modems all within the same LGA package. Some of the models have embedded GPS decoders in them. You can get them for about US$30 in quantities of 1000.
 
 The Simcom SIM900 is a very cheap and common place cellular modem, seen in plenty of hobbyist projects, and featuring on many Arduino/RaspberryPi shields. You can buy them for about US$18 in quantities of 1, and US$10 in quantities of 1000. The SIM900 is the most basic, but there are others in the SIM family, including the SIM908.
 
-# Design Notes
+## Design Notes
 
 * [Telit HE910](/electronics/components/cellular-modems/he910-design-notes)

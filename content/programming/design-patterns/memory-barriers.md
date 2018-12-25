@@ -7,7 +7,7 @@ type: page
 url: /programming/design-patterns/memory-barriers
 ---
 
-# Overview
+## Overview
 
 The one rule that compile-time and runtime memory re-ordering follows:
 

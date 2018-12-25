@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sot-902-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
 <tbody >
@@ -132,15 +132,15 @@ url: /pcb-design/component-packages/sot-902-component-package
 </table>
 
 
-# Comments
+## Comments
 
 NXP seems to be the only manufacturer who uses this package.
 
-# Photos
+## Photos
 
 {{< figure src="/images/2015/04/sot-902-component-package-photo.gif" width="150px" caption="A photo of the SOT-902 component package."  >}}
 
-# Other Images
+## Other Images
 
 
 <table >

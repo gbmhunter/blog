@@ -7,7 +7,7 @@ type: page
 url: /electronics/communication-protocols/usb-protocol/how-to-route-usb-tracks
 ---
 
-# Overview
+## Overview
 
 The D+ and D- (data) USB traces on circuit boards require impedance controlled routing. The tolerance depends on the exact USB standard used (e.g. USB1.0, USB2.0 full-speed/high-speed, USB3.0).
 
@@ -17,7 +17,7 @@ For most normal sized PCBs, signal integrity starts becoming an issue at the 480
 
 I recommend visiting the [Impedance Controlled Routing page](/pcb-design/impedance-controlled-routing) before continuing here...
 
-# What Is My Bandwidth?
+## What Is My Bandwidth?
 
 Lets recall the well-known rule-of-thumb:
 
@@ -79,7 +79,7 @@ As you can see from the above table, for most PCB's designs, you don't really h
 
 For more information, see the [Impedance Controlled Routing page](/pcb-design/impedance-controlled-routing) in the [PCB Design section](/pcb-design) of this website.
 
-# What Should My Impedance Be?
+## What Should My Impedance Be?
 
 The impedance depends on the USB standard.
 

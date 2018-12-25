@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sot-89-component-package
 ---
 
-# Overview
+## Overview
 
 <table><tbody ><tr >
 <td >Name
@@ -71,13 +71,13 @@ url: /pcb-design/component-packages/sot-89-component-package
 <td>BLDC fan and motor drivers</td>
 </tr></tbody></table>
 
-# Overview
+## Overview
 
 SOT-89 is a small, surface-mount family of similar component packages. There are two variants within the family, the SOT-89-3 (with three leads), and the SOT-89-5 (with 5 leads).
 
 All packages in this family have a number of rectangular leads and a central single tab-shaped lead. The tab-shaped lead improves the thermal performance of the package (decreases it's thermal resistance).
 
-# SOT-89-5
+## SOT-89-5
 
 The SOT-89-5 package is commonly used as a SMD replacement for the SIP-4 TH package.
 

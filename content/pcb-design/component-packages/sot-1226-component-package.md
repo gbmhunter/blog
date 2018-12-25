@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sot-1226-component-package
 ---
 
-# Overview
+## Overview
 
 <table><tbody ><tr >
 <td >Name
@@ -75,16 +75,16 @@ url: /pcb-design/component-packages/sot-1226-component-package
 </ul>
 </td></tr></tbody></table>
 
-# Comments
+## Comments
 
 A unique feature of this package is the diamond-shaped pads.
 
 As of March 2015, NXP seems to be the only manufacturer using this package. NXP has a series of logic gates and line drivers in this package.
 
-# Dimensions
+## Dimensions
 
 {{< figure src="/images/2015/03/sot-1226-component-package-dimensions.png" width="481px" caption="The dimensions of the SOT-1226 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1226_po.pdf."  >}}
 
-# Recommended Footprint
+## Recommended Footprint
 
 {{< figure src="/images/2015/03/sot-1226-component-package-recommended-footprint.png" width="443px" caption="The recommended footprint (land pattern) for the SOT-1226 component package."  >}}

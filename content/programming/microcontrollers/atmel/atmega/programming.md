@@ -7,7 +7,7 @@ type: page
 url: /programming/microcontrollers/atmel/atmega/programming
 ---
 
-# Overview
+## Overview
 
 Programming a micro-controller is the process of downloading the code you have written on a computer, onto the on-board memory of the micro-controller so it can then run and execute it.
 
@@ -15,7 +15,7 @@ Programming of most Atmel chips can be done with either one of the range of Atm
 
 {{< figure src="/images/2011/09/atmel-avr-mk2-programmer-photo-www-robotics-org-zajpg.jpg" width="293px" caption="A photo of the Atmel AVR MkII programmer, suitable for ISP programming of a range of Atmel microcontrollers."  >}}
 
-# ISP
+## ISP
 
 ISP (in-circuit-programming) is one of the easiest ways of programming micro-controllers. To program any AVR chip, all you need is a computer, a ISP programmer (such as the AVRISP MkII), and the self-powered target chip. If you are using the AVRISP MkII, all you need to do is connect the following pins to the 6-pin header in the following order:  1. MISO  2. VTG  3. SCK  4. MOSI  5. RST  6. GND
 
@@ -23,7 +23,7 @@ An ATmega8 has the following pins:  1. MISO: Pin 18 (PB4)  2. VTG: Pin 7  3. SCK
 
 If you connect the MkII up and it flashes orange (it's got some fancy smarts inside of it which makes sure every thing is connected up properly before you can even try to program with it), chances are you have got one or more of the connections the wrong way around.
 
-# The Reset Line
+## The Reset Line
 
 The reset line is dual purpose, in normal operation it can be used to perform a "traditional" reset of the microcontroller's firmware. It is also used when programming.
 

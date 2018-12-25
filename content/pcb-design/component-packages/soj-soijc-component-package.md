@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/soj-soijc-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
 <tbody >
@@ -123,14 +123,14 @@ url: /pcb-design/component-packages/soj-soijc-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 Same general package dimensions as the standard SOIC but with J-type leads rather than Gull-wing leads. Commonly used for crystal oscillators.
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/04/soj-component-package-3d-render.jpg" width="350px" caption="A 3D render of the SOJ component package."  >}}
 
-# Other Images
+## Other Images
 
 {{< figure src="/images/electronics-packages/ic-package-soj-28.jpg" caption="Photo of a SOJ-28 package, a variant of the SOIC package with J-type leads."  width="500px" >}}

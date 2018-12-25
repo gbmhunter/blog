@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/ir-devices
 ---
 
-# Overview
+## Overview
 
 Infrared devices are used commonly used in electronics for communication, object detection, electrical isolation and illumination. The vague and broad category of 'infrared devices' includes infrared emitting diodes (IED's), phototransistors, and photodiodes. Phototransistors and photodiodes can actually also be used for visible light, but only their infrared use will be discussed here.
 
@@ -15,7 +15,7 @@ Diodes which emit visible light are discussed on the [LEDs page](/electronics/co
 
 Diodes which don't emit light at all are discussed on the [Diodes page](/electronics/components/diodes).
 
-# Infrared Emitting Diodes
+## Infrared Emitting Diodes
 
 ## Important parameters
 
@@ -43,7 +43,7 @@ Supplier Code: 475-2909-1-ND
 
 Notes: Small SMD infrared emitter with a little light blocker around the sides of the diode
 
-# Photodiodes
+## Photodiodes
 
 Photodiodes receive incoming light and convert it into electrical energy, which can be detected as either a current or voltage, depending on the way the surrounding circuit is configured. They are an alternative to phototransistors to infrared light detection, and offer faster response and the cost of decreased senstivity. Saying that, I have seem to get better object detection range with photodiodes than phototransistors! They also consume less power than the phototransistor (infact they generate power!). Photodiodes can detect light from the visible and infrared spectrum, however some come with specialised filters optimised for the infrared region (generally allowing through 850-950nm light). It should be noted that although they can detect a wide range of light, their peak sensitivty is normally in the infrared spectrum.
 
@@ -83,7 +83,7 @@ This diode has a smaller area than the BPW34FS. Availiabe with no filter (xx = "
 
 Manufacturer: OSRAM MAnufacturer Code: SFH4200xx Element 14 Code: 122-6452 Element 14 Price: NZ$2.15 (1), NZ$1.30 (100)
 
-# Phototransistors
+## Phototransistors
 
 Phototransistors use the base-emitter junction of a transistor as a photodiode and exposes it to the environment. This causes the transistor to turn on when light hits the junction. They offer better sensitvity than photodiodes, but have a slower response and consumer more power.
 
@@ -93,7 +93,7 @@ Phototransistors use the base-emitter junction of a transistor as a photodiode a
 2. Optical filter/no filter (usually an infrared-pass filter)
 3. Forward current vs light input
 
-# Thermopiles
+## Thermopiles
 
 Thermopiles are infrared sensors that convert thermal energy into electrical energy. Their output is **driectly proportional** to incident radiation (as opposed to pyroelectric devices whose output is porportional to the rate of change of incident radiation).
 
@@ -103,7 +103,7 @@ Compared to pyroelectrics, thermopiles have a **low impedance**.
 
 The Panasonic Grid-eye sensor uses this technology.
 
-# Pyroelectrics
+## Pyroelectrics
 
 Pyroelectric sensors are infrared sensors whose output is proportional to the **rate of change** of incident radiation (as opposed to thermopiles whose output is directly proportional to the incident radiation).
 
@@ -113,7 +113,7 @@ PIR sensors are pyroelectric infrared devices. They may not detect motion coming
 
 Popular brands include Zmotion, Parallax, Panasonic.
 
-# Emissivties
+## Emissivties
 
 The emissivity of a material is it's relative ability of it's surface to emit enegy as radiation. Bulky, dull materials usually have high emissivity (0.98), while shiny object have low emissivity (0.02).
 
@@ -370,6 +370,6 @@ The following table lists emissivities of common materials (source of this data 
 </tbody>
 </table>
 
-# More Info
+## More Info
 
 [Wikipedia - Photodiode](http://en.wikipedia.org/wiki/Photodiode) Good article on photodiodes and the photo-voltaic or photo-conductive method of operation.

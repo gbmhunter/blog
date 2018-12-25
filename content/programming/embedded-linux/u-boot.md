@@ -7,7 +7,7 @@ type: page
 url: /programming/embedded-linux/u-boot
 ---
 
-# Environment Variables
+## Environment Variables
 
 To print an environment variable, use the printenv command:
     
@@ -28,7 +28,7 @@ If you want to set a variable to something which includes special characters, su
 
 The above variable, when executed, runs several commands.
 
-# Setting The Device's IP Address
+## Setting The Device's IP Address
 
 There are two ways of setting the IP address of the device running U-Boot (useful if you are going to boot via TFTP). You can either **use the network DHCP or define a static IP address.** To use the network DHCP:
     
@@ -38,7 +38,7 @@ To use a static IP address:
 
     u-boot> setenv ipaddr <static ip address>
 
-# Booting Via TFTP
+## Booting Via TFTP
 
 TFTP is a great way to boot Linux on your board when developing, because it is quick and requires no physical medium to be moved from your computer to the board (unlike the SD card option).
 

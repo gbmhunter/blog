@@ -7,6 +7,6 @@ type: page
 url: /programming/cpu-architectures
 ---
 
-# Overview
+## Overview
 
 Information on specific CPU architectures such as the ARM Cortex M3 and the Texas C2000.

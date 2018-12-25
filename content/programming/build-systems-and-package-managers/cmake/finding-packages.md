@@ -7,7 +7,7 @@ type: page
 url: /programming/build-systems-and-package-managers/cmake/finding-packages
 ---
 
-# Overview
+## Overview
 
 You can instruct cmake to find external packages/software with the find_package() command.
 

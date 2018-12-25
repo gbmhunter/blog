@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus/special-casts
 ---
 
-# Dynamic Casts
+## Dynamic Casts
 
 The `dynamic_cast<>()` operator is part of the RTTI (run-time type information) engine in C++. It is a typecast, which unlike the standard C style (your-type-here) cast operator, performs a type conversion check when the operator is called (i.e. at runtime).
 
@@ -18,7 +18,7 @@ If the types are compatible (i.e. convertible), then the conversion occurs. If t
 
 You can use the `dynamic_cast<>()` operator to work out the type of an object at run-time.
 
-# Example
+## Example
 
 The following example shows how you can use dynamic_cast<>() to work out the type of an object at runtime. It uses the example where there are base and derived classes, and you wish to know to what one of these objects the pointer points to.
 
@@ -78,7 +78,7 @@ int main()
 }
 ```
 
-# What Does This Mean For Embedded Devices?
+## What Does This Mean For Embedded Devices?
 
 If you use the `dynamic_cast<>()` operator in code that is going onto a microcontroller, this now means the entire RTTI engine has to be included (assuming you are not already using the typeid operator, which also uses the RTTI).
 

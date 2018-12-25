@@ -7,7 +7,7 @@ type: page
 url: /electronics/communication-protocols/lon-ansi709-2-communication-protocol
 ---
 
-# Overview
+## Overview
 
 The Local Operating Network (LON) protocol is a inter-device communication protocol. Echelon holds the rights to the protocol, with the trade name LonTalk, although it also known as ANSI709.2 (see the standards section for more info). It is a multi-media protocol, supporting many different modes of transmission.
 
@@ -37,7 +37,7 @@ The Local Operating Network (LON) protocol is a inter-device communication proto
     </tbody>
 </table>
 
-# Standards
+## Standards
 
 Also known as the ANSI/CEA 709.1-B Control Networking Standard. It is related to European standard EN 14908.
 
@@ -47,7 +47,7 @@ LonWorks 2.0 is the name given to the "next-generation" devices, aimed at increa
 
 The LON devices can use an affiliate internet protocol tunneling standard (ISO/IEC 14908-4) to connect devices on LON networks to remote internet aware devices.
 
-# Protocol
+## Protocol
 
 The protocol is based of the concept of an _open network_, in where there **no masters and slaves**, and every node is able to talk freely to any other node.
 
@@ -68,7 +68,7 @@ _Bindings_ are how LON nodes share data. For data to be shared, two variables on
 1. One variable must be an output (NVO), and the other must be an input (NVI). One NVO can be bound to multiple NVIs.  
 2. The SNVTs of the two bound variables must be equal (i.e. the context, unit of measure, and dimension must be the same).
 
-# **Nodes (Devices)**
+## **Nodes (Devices)**
 
 A Echelon Neuron microprocessor is not to be confused with a Cavium Neuron, which is a processor designed for high-performance IEEE802 network search applications. Neuron microprocessors are commonly used as transceivers on the LON. A Neuron chip contains three 8-bit inline CPUs, on-board memory, 11 GPIOs and a LON hardware peripheral.
 
@@ -76,7 +76,7 @@ A Echelon Neuron microprocessor is not to be confused with a Cavium Neuron, whic
 
 The transceivers usually run of a 5.0V power supply.
 
-# Transmission Medium
+## Transmission Medium
 
 Many transmission mediums are supported by LON. These include:  * Twisted-pair cabling  * Powerlines  * Fiber optics
 
@@ -86,11 +86,11 @@ One of the most popular transceiver ICs is the FTT-10 Free Topology transceiver.
 
 Mains wiring is supported with the Echelon PL3120 and PL3150 power line smart transceivers. These are compliant with the Neuron 3120 and 3150 processors.
 
-# Segments
+## Segments
 
 A "segment" is a single piece of wire. Up to 64 nodes can be connected to a single segment.
 
-# Wiring Topology
+## Wiring Topology
 
 There are two different wiring topologies for the FTT-10 transceiver:   
 Free Topology  
@@ -100,15 +100,15 @@ Free topology uses a single termination module installed anywhere on the segment
 
 Doubly terminated uses a termination module at each end of a segment, and does not allow wiring tees. All multi-node connections must be daisy-chained. This allows for a longer segment distance, which is dependent on the wire size.
 
-# Net Names
+## Net Names
 
 NETA and NETB are commonly used net names for the twisted-pair differential LON signals.
 
-# Repeaters
+## Repeaters
 
 Repeaters can be connected to the transmission medium to amplify the incoming signal and pass it on.  
 
-# Routers
+## Routers
 
 Routers are used to manage network traffic, extend the length of a channel (similar to a repeater), increase the number of attached devices and connect channels that use different transmission mediums.
 
@@ -116,7 +116,7 @@ The ability of a router to partition traffic and selectively let messages throug
 
 There a four different routing algorithm types to choose from:  * Repeater  * Bridge  * Configured router  * Learning router
 
-# Transformers
+## Transformers
 
 A communications transformer sits between the transceiver and the transmission line.
 
@@ -124,7 +124,7 @@ A communications transformer sits between the transceiver and the transmission l
 
 The FT-X1 was the first transformer. FT-X3 (US$4.52 (1), DigiKey, Feb 2015) belongs to the LonWorks 2.0 platform.
 
-# Addressing
+## Addressing
 
 Each node's Neuron processor contains a unique 48-bit ID. Each node is also assigned a logical domain, subnet and node (DSN) number by software when operating on a LON network.
 
@@ -156,15 +156,15 @@ The LON network supports broadcasting, which is when a message is sent to all no
 
 The LON network supports multicasting (group addressing). Up to 64 nodes are allowed to be added to a group, and up to 127 groups are allowed on each domain. Most nodes can only be a member of up to 15 groups at once.
 
-# Communication To Other Protocols
+## Communication To Other Protocols
 
 A LON network can communicate to a LAN network through a IP-852 router, oBIX XML server, or web server.
 
-# Real-World Uses
+## Real-World Uses
 
 The International Forecourt Standards Forum (IFSF) specifies standards for petroleum forecourts which use the LON network protocol for the communication layer. These are predominately used in Europe.
 
-# Chips You Should Be Aware Of
+## Chips You Should Be Aware Of
 
 ## FT5000
 

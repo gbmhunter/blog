@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus/code-checkers
 ---
 
-# Cppcheck
+## Cppcheck
 
 Website: [http://cppcheck.sourceforge.net/ ](http://cppcheck.sourceforge.net/)
 

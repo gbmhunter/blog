@@ -7,7 +7,7 @@ type: page
 url: /electronics/general/electrical-suppliers
 ---
 
-# General Components
+## General Components
 
 <table>
     <thead>
@@ -468,7 +468,7 @@ International online component store that stocks most electrical components. As 
 
 In my opinion, Samtec has one of the best websites for finding/deciding on electrical connectors. They also have an awesome rapid free sample service, in where you can order samples and they will pay for everything (including shipping), with the goods typically arriving in a few days (and I live in New Zealand!).
 
-# PCB Manufacturers
+## PCB Manufacturers
 
 
 <table>
@@ -630,7 +630,7 @@ Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core.
 
 {{< figure src="/images/electronics-suppliers/pcb-cart-4-layer-1-core-1-6mm-layer-stackup.jpg"   width="400px" >}}
 
-# Suppliers With Free Samples!
+## Suppliers With Free Samples!
 
 <table>
     <thead>
@@ -666,7 +666,7 @@ Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core.
 </tbody>
 </table>
 
-# Electronic Manufacturing Service (EMS) Companies
+## Electronic Manufacturing Service (EMS) Companies
 
 EMS companies specialise in component sourcing, component placing, soldering and general PCB assembly. They don't normally do the PCB design themselves (although some business do both, and others sub-contract this part to another company). A good EMS will support small-pitch components such as 0201's and BGA's (see [Component Packages](/electronics/circuit-design/component-packages)), and have a large number of basic components on hand (such as resistors and capacitors).
 
@@ -706,7 +706,7 @@ Gone through a series of name changes (used to be Aims, then Startronics, now SR
 
 Location: New Zealand Have not done encapsulation before.
 
-# Specific Components
+## Specific Components
 
 ### Traco Power
 
@@ -716,7 +716,7 @@ Location: New Zealand Have not done encapsulation before.
 
 [www.molex.com](http://www.molex.com): Molex is one of the industry leaders for electrical connectors. They have a comprehensive set of connectors, from tiny pitched SMD mount connectors all the way up to IP67 rated ethernet connectors. They also have 3D models for most of their connectors (in PRO/E, IGES and STEP formats).
 
-# Hardware
+## Hardware
 
 ### Hobby King
 
@@ -726,7 +726,7 @@ Location: New Zealand Have not done encapsulation before.
 
 [www.dealextreme.com](http://www.dealextreme.com): An American online store that sells selected popular hardware for cheap (along with components). One of the best things about this site is that they offer free international shipping on everything, no matter how cheap the item is!
 
-# Batteries
+## Batteries
 
 ## Shenzhen Shirui Battery Co.
 
@@ -736,11 +736,11 @@ Location: Shenzhen, China Chemistries: Li-Po Support: 4/5 Price: 5/5 Range: 4/5 
 
 Location: USA Chemistries: Li-Po Support: 4/5 Price: 3/5 Range: 2/5 Details: SparkFun sells a small range of Li-Po's suitable for small DIY electronics projects.
 
-# OLED Screens
+## OLED Screens
 
 See the [OLED Screens page](/electronics/components/oled-screens).
 
-# Fibreglass
+## Fibreglass
 
 ## Gracol Enterprises
 

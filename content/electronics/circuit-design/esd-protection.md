@@ -7,13 +7,13 @@ type: page
 url: /electronics/circuit-design/esd-protection
 ---
 
-# Overview
+## Overview
 
 Electrostatic discharge (ESD) is a unintended quick high-voltage transient waveform which appears on conductors within an electrical circuit. The high voltages and current peaks caused by ESD can cause devices such as static sensitive IC's to fail. Human contact is a common source of an ESD. Even if there is no direct human contact with the circuit, devices such as capacitive sense switches can allow charge to be coupled through onto electrical conductors. ESD protection is needed in cases were ESD discharges could potentially cause a circuit to fail.
 
 {{< figure src="/images/2011/09/esd-protectors-schematic-symbol.png" width="770px" caption="The schematic symbol for ESD protectors. Image from http://www.bourns.com/data/global/pdfs/MLC.pdf."  >}}
 
-# ESD Protection Devices
+## ESD Protection Devices
 
 The table below summarizes the different components you can use for ESD protection.
 
@@ -42,7 +42,7 @@ The table below summarizes the different components you can use for ESD protecti
 	</tbody>
 </table>
 
-# Internal ESD Protection On CMOS I/O
+## Internal ESD Protection On CMOS I/O
 
 Inbuilt protection is very common on a CMOS I/O pins that may be part of a device (anything from a simple load switch, to a medium complexity microcontroller, to a high complexity FPGA). They are normally two per I/O pin. One attached between the pin and GND, and one attached between the pin and VCC. Both are reverse-biased under normal operating conditions (`\( GND <= V_{I/O} <= V_{CC} \)`).
 
@@ -74,7 +74,7 @@ Extra diodes, external to the IC, can be added to prevent leakage currents throu
 
 However, this approach has it's disadvantages. The actual supply voltage seen by the IC is reduced by twice the voltage drop (\( V_f \)) across the diodes (normally 2x 0.5-0.7V = 1.0-1.4V). Also, the IC ground is now significantly different from the system ground. This can upset single-ended ADC measurements and other analogue functions.
 
-# Series Resistance Into CMOS I/O
+## Series Resistance Into CMOS I/O
 
 I would explain this, but I found an application note by Silicon Labs to explain this much better than I could. So here is a direct copy-and-paste from [AN376](http://www.silabs.com/Support%20Documents/TechnicalDocs/AN376.pdf).
 
@@ -96,6 +96,6 @@ One problem with series resistors is that they can cause problems when used in c
 
 Check the inputs maximum digital low and minimum digital high voltage levels. If they are still met, then you don't have to worry.
 
-# ESD Protection Of Capacitive Sensing I/O Lines
+## ESD Protection Of Capacitive Sensing I/O Lines
 
 See the [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-sensing) page.

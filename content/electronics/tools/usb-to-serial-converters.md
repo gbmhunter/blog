@@ -7,7 +7,7 @@ type: page
 url: /electronics/tools/usb-to-serial-converters
 ---
 
-# FTDI Converters
+## FTDI Converters
 
 FTDI (Future Technology Devices International Ltd.) is a popular and reputable designer and manufacturer of USB-to-Serial converters. They make a range of IC's for this purpose, as well and manufacturing useful products which use these IC's (such as USB-to-serial cables).
 

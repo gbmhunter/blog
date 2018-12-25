@@ -7,7 +7,7 @@ type: page
 url: /programming/embedded-linux/yocto-project/bitbake
 ---
 
-# Running Specific Commands
+## Running Specific Commands
 
 To run a specific bitbake command, use the -c option followed by the command:
 
@@ -29,7 +29,7 @@ To force a bitbake command, use the `-f` option:
 $ bitbake -f -c compile
 ```
 
-# Debug Output
+## Debug Output
 
 The `-v` option increases the amount of info that bitbake prints.
 

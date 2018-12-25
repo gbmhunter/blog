@@ -7,7 +7,7 @@ type: page
 url: /programming/embedded-linux/yocto-project/device-trees
 ---
 
-# Converting From Binary (.dtb) To Human-Readable (.dts) Device Tree Files
+## Converting From Binary (.dtb) To Human-Readable (.dts) Device Tree Files
 
 Yocto **normally produces `.dtb` (_Device Tree Blob_) files** when you are building an image. These are in a binary format. While this format is great for loading onto your target system, **it's not very good for developing/debugging**. Luckily, you can **convert** a Device Tree Blob (`.dtb`) file back **into a human-readable Device Tree Source (.dts) file**.
 

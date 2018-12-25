@@ -7,15 +7,15 @@ type: page
 url: /electronics/components/power-regulators
 ---
 
-# Overview
+## Overview
 
 Power regulators aim to convert an input DC voltage into a DC output voltage. There are many different ways of doing this, an each design has its benefits and advantages. The important parameters of DC/DC converters are efficiency, output ripple, complexity, and maximum output current.
 
-# Child Pages
+## Child Pages
 
 [sb_child_list template=2 orderby=title order=asc nest_level=1]
 
-# Terminology
+## Terminology
 
 <table>
     <thead>
@@ -67,7 +67,7 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 <td >The type of design/technology of the converter (e.g. a buck converter is one type of topology, while a boost converter is another).
 </td></tr></tbody></table>
 
-# Topology Summary
+## Topology Summary
 
 <table>
     <thead>
@@ -194,7 +194,7 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 <td >{{< figure src="/images/electronics-misc/joule-thief.jpg" caption="A tiny Joule Thief made for a single coin battery that can power an LED."  width="160px" >}}
 </td></tr></tbody></table>
 
-# DC/DC Converters And Controllers
+## DC/DC Converters And Controllers
 
 {{< figure src="/images/electronics-misc/recom-acdc-converter.jpg" caption="A Recom AC/DC converter module that can take 100-240VAC as it's input and outputs 12V at up to 83mA."  width="200px" >}}
 
@@ -224,10 +224,10 @@ Although strictly not a DC/DC converter, you can purchase ready-to-go PCB-mounte
 
 You can balance current-sharing between two similar power supplies by adding in-line resistance to each of power supply outputs, before connecting them together. Normally power resistors are required (>= 5W), and resistances between 1mΩ and 1Ω are used. Basically, you want to choose the largest resistance that at maximum current won't overheat, and won't drop to much voltage so that the load does not operate correctly. I have used this technique successfully for the [Luxcity UV Tonic project](/electronics/projects/luxcity-uv-tonic-control-system) to current-share between two computer power supplies that were driving the 64 solenoids.
 
-# Buck-Boost Converter
+## Buck-Boost Converter
 
 A buck-boost power converter is a power supply which can produce an output voltage which can be both higher or lower than the input voltage. A buck-boost converter is similar to a SEPIC converter. Buck-boosts are not used unless an output voltage which could be both lower and higher than the input voltage is specifically required, as usually a sole buck or boost converter is cheaper, has a lower part count, and is more efficient. Maxim claims that a boost with linear regulator instead of a buck circuit can out perform a buck/boost in certain applications.
 
-# Joule Thiefs
+## Joule Thiefs
 
 The team at RustyBolt has experimented with plenty of different Joule thief designs, and documented the results well on [their website](http://rustybolt.info/wordpress/).

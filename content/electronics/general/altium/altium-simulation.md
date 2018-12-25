@@ -7,7 +7,7 @@ type: page
 url: /electronics/general/altium/altium-simulation
 ---
 
-# Overview
+## Overview
 
 Note that this page is about the specifics of using Altium Designer for circuit simulation (which uses SPICE). For more detailed information about SPICE, including the various components and parameters it supports, see the [SPICE Simulation page](/electronics/general/circuit-simulation/spice-simulation).
 
@@ -17,7 +17,7 @@ Simulating circuits in Altium can be a little confusing, so I've written this li
 
 This has been written for Altium Designer Summer 08, but steps should be similar if not identical for other versions of Altium also (it still seems applicable for AD14.3 in July 2014).
 
-# Voltage/Current Sources
+## Voltage/Current Sources
 
 A pulsed voltage source has the following important parameters:
 
@@ -68,23 +68,23 @@ A pulsed voltage source has the following important parameters:
 <td > 
 </td></tr></tbody></table>
 
-# Simulation Models
+## Simulation Models
 
 There are two types of file extensions that Altium accepts, .mdl and .ckt. MDL files (model files) are used for basic circuit simulation, and CKT files (subcircuit file) are for more advanced components that are built from many primary spice circuit elements (e.g. op-amps).
 
 Altium simulation files are located at C:\Users\Public\Documents\Altium\AD14\Library\Simulation. These files include basic items you will need while doing simulations, including math functions, simulation voltage and current sources, transmission lines and PSPICE functions.
 
-# Vault-Based Simulation Components
+## Vault-Based Simulation Components
 
 You are allowed to use hyphens in the .mdl and .ckt files if using vault-based simulation components.
 
 Simulation models are linked to vault-based components in Component Library files (.CmpLib), .ckt files in the same manner as schematic symbols and PCB footprints. I should point out here that .mdl and .ckt files cannot be used directly, you first have to create a .SimModel file, push it to the vault, and then link that to the component (just like you have to for schematic symbols and PCB footprints).
 
-# SimModel Files
+## SimModel Files
 
 The "Model Name" parameter in a SimModel file has to be the same as the model name in the .mdl or .ckt file.
 
-# Component Value Multipliers
+## Component Value Multipliers
 
 The Altium simulator supports the following value prefix multipliers. Note the non-standard K for 103 and the Meg for 106 (the prefixs are case insensitive so M would actually give you 10-3)! Also note the use of mil, which can be used to describe millionth's of an inch.
 
@@ -140,7 +140,7 @@ The Altium simulator supports the following value prefix multipliers. Note the n
 
 Exponential notation is also supported, so you can write 1000 like this 1e3.
 
-# MOSFET Model
+## MOSFET Model
 
 The Altium SPICE model for a MOSFET contains the following level-1 parameters (sorted alphabetically):
 
@@ -235,7 +235,7 @@ The Altium SPICE model for a MOSFET contains the following level-1 parameters (s
 
 Note that some manufactures choose to provide a sub-circuit model instead of using this built-in MOSFET model. This gives them the ability to better characterise the MOSFET, but there have been complaints of MOSFET sub-circuits having a big performance hit when it comes to simulation time.
 
-# Showing The Frequency Response
+## Showing The Frequency Response
 
 Finding the frequency response of a circuit can give you plenty of useful information. Normally a single output/single input response is found (i.e. the response at a node while changing only one other node). A frequency response is usually plotted with frequency (either with a linear scale or more commonly log) on the horizontal axis and magnitude (again, either on a linear or log scale) on the vertical scale. The following tutorial will use the following circuit, a simple first-order high-pass filter with a cut-off of 15.9kHz.
 
@@ -253,7 +253,7 @@ All things going well, you should now have a graph of the frequency response! Th
 
 {{< figure src="/images/altium/frequency_response_04.jpg" caption="The resulting plot of the high-pass filter."  width="320px" >}}
 
-# Altium Simulation Bugs
+## Altium Simulation Bugs
 
 I have experienced a weird bug with Altium 08, in where Altium would lose track of one of the 'pin to model' links that you assign in the port map window, making simulation impossible. Did not find a fix for it, so had to get rid of component from simulation entirely.
 

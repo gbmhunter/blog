@@ -7,13 +7,13 @@ type: page
 url: /electronics/circuit-design/voltage-level-translation
 ---
 
-# Overview
+## Overview
 
 Voltage-level translation refers to the conversion to digital logic signals from one voltage level (e.g. +3.3V) to another (e.g. +5.0). It is commonly used to provide communication capability between two ICs which are operating of a different voltage rail.
 
 Do not confuse voltage-level translation with voltage converters (e.g. linear regulators or SMPS) which are designed to provide power.
 
-# Discrete MOSFETs
+## Discrete MOSFETs
 
 The below schematic shows a simple circuit for voltage-level translation using a single MOSFET and pull-up resistors. It supports bi-directional digital signal translation.
 

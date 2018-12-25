@@ -11,6 +11,6 @@ Lua is an extension-based embeddable language. Lua itself is implemented as a st
 
 Reference Manual: [http://www.lua.org/manual/5.2/manual.html](http://www.lua.org/manual/5.2/manual.html)
 
-# Functions
+## Functions
 
 Functions in Lua can return more than one value. Awesome! This gets around the semantic issues of passing in variables by reference, just so that you can save data to them (think [pointers](/programming/languages/c/pointers) in [C](/programming/languages/c)).

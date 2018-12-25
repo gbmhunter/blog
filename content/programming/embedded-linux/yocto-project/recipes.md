@@ -7,11 +7,11 @@ type: page
 url: /programming/embedded-linux/yocto-project/recipes
 ---
 
-# Overview
+## Overview
 
 A recipe is file (or set of files) which tells Yocto how to build and include a particular application into a image.
 
-# Getting Code From Online Git Repositories
+## Getting Code From Online Git Repositories
 
 Yocto supports the ability to pull code from online git repositories as part of the build process.
 
@@ -62,20 +62,20 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-${PV}:"
 
 SRCREV = "ed189c8f5a4df717180b1353824d443c382f9587"
 
-# Notice how "http://" has been replaced with "git://"
+## Notice how "http://" has been replaced with "git://"
 # NOTE: This is not the same as the SSH address, which
 # has the format git@...
 SRC_URI = "git://github.com/example/example.git"
 
 S = "${WORKDIR}/git"
 
-# If the repo contains a root-level CMakeLists.txt, this following line is all you need to invoke the build/install process!
+## If the repo contains a root-level CMakeLists.txt, this following line is all you need to invoke the build/install process!
 inherit cmake
 ```
 
 This assumes the CMakeLists.txt contains at least one INSTALL command. bitbake will automatically call cmake, make and make install (if there are no INSTALL commands in the CMakeLists.txt, this part will fail!!!) on the repositories source code.
 
-# Licenses
+## Licenses
 
 **Recipes need to specify LICENSE and LICENSE_FILES_CHKSUM values.** This is so that Yocto can guarantee that certain image builds meet specific licensing requirements (e.g. all applications are open-source and free to re-distribute).
 
@@ -100,7 +100,7 @@ poky/meta/files/common-licenses
 
 This includes BSD, GPL-3.0 and MIT.
 
-# Patches
+## Patches
 
 Yocto supports patches, which is a way of **modifying third-party code** before it is included in the build, **without first having to duplicate the source code** or ask the maintainer to make the change for you.
 

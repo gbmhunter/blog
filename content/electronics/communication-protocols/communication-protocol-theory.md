@@ -7,7 +7,7 @@ type: page
 url: /electronics/communication-protocols/communication-protocol-theory
 ---
 
-# Communication Bus Topologies
+## Communication Bus Topologies
 
 The topology of a communication bus describes how nodes are connected to each other (e.g. line, ring, mesh), and what the type of each node is (e.g. whether nodes are master or slave, and how many are allowed of each).
 

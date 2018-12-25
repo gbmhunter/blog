@@ -7,7 +7,7 @@ type: page
 url: /programming/embedded-linux/zynq/building-linux-for-the-zynq-zc702-eval-kit-using-yocto
 ---
 
-# Overview
+## Overview
 
 Xilinx provides device and board information for the Zynq SoC for Yocto through the repository [meta-xilinx](https://github.com/Xilinx/meta-xilinx). This includes board information for the [ZC702 Evaluation Kit](https://www.xilinx.com/products/boards-and-kits/ek-z7-zc702-g.html).
 
@@ -91,7 +91,7 @@ Go have lunch! This build is going to take a while...
 
 {{< figure src="/images/2017/04/screenshot-building-linux-for-zynq-7-using-yocto.png" width="1067px" caption="Screenshot while building embedded Linux for the ZC702 Eval Kit board using Yocto."  >}}
 
-# Booting Via SD Card
+## Booting Via SD Card
 
 The ZC702 can be configured to boot a Yocto Linux distribution from the SD card. The following instructions show how:
 
@@ -227,7 +227,7 @@ Now turn on the power switch to the dev. board. Hopefully, you should see it boo
 
 You should be able to log in as user root, with no password.
 
-# Booting Via TFTP
+## Booting Via TFTP
 
 You can also use TFTP to transfer and boot compiled images from your desktop computer to the embedded device. The embedded device must have an internet/intranet connection to do so (e.g. Ethernet).
 
@@ -251,7 +251,7 @@ boot
 
 In my experience, it usually takes about 30s from the time you type boot to the time to get to the Linux login screen, which includes downloading the files via TFTP and then booting the Linux image (for a 100MiB or so filesystem).
 
-# Booting Via Flash
+## Booting Via Flash
 
 Yocto produces a boot.bin file when building a Linux image for the ZC-702 (using the _meta-xilinx_ layer), but this doesn't seem to be directly suitable for QSPI flash boot.
 
@@ -325,7 +325,7 @@ Then use the program_flash utility to write the BOOT.bin file generated above to
 
 More information on the Program Flash Utility can be found in the [Embedded System Tools Reference Manual (UG1043)](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2015_2/ug1043-embedded-system-tools.pdf).
 
-# Running In The Simulator (QEMU)
+## Running In The Simulator (QEMU)
 
 This assumes you have poky already downloaded onto your computer (see above). Create a new build directory for the QEMU build.
 
@@ -351,7 +351,7 @@ Now run QEMU, passing in the location of the just-built QEMU configuration file.
 
 You should be able to log onto the Linux system with the username root, no password required.
 
-# Help! I Get A "No Recipes Available For..." Error
+## Help! I Get A "No Recipes Available For..." Error
 
 Is your error similar to:
 
@@ -367,6 +367,6 @@ This can happen if you forgot to checkout the correct branch of meta-xilinx. Rem
 ~/poky/meta-xilinx$ git checkout morty
 ```
 
-# Other Resources
+## Other Resources
 
 [http://www.wiki.xilinx.com/Prepare+Boot+Medium](http://www.wiki.xilinx.com/Prepare+Boot+Medium) explains how to make a bootable SD card using Linux.

@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sod-128-component-package
 ---
 
-# Overview
+## Overview
 
 <table >
 <tbody >
@@ -128,15 +128,15 @@ url: /pcb-design/component-packages/sod-128-component-package
 </table>
 
 
-# Comments
+## Comments
 
 A package used by NXP for some of their diodes.
 
-# 3D Render
+## 3D Render
 
 {{< figure src="/images/2015/04/sod-128-component-package-3d-render.jpg" width="415px" caption="A 3D render of the SOD-128 component package."  >}}
 
-# Other Images
+## Other Images
 
 {{< figure src="/images/electronics-packages/sod128-recommended-land-pattern.jpg" caption="The recommended land pattern for the SOD-128 component package."  width="500px" >}}
 

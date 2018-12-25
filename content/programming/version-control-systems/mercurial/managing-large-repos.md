@@ -7,7 +7,7 @@ type: page
 url: /programming/version-control-systems/mercurial/managing-large-repos
 ---
 
-# Truncating History
+## Truncating History
 
 Removing history from Mercurial is one way to reduce the size of the repository (the stuff in the .hg folder).
 

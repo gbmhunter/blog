@@ -7,15 +7,15 @@ type: page
 url: /electronics/components/sensors/humidity-sensors
 ---
 
-# Types
+## Types
 
 Humidity sensors can either contain just the humidity sensing component (which means they usually just have two leads), or they may also contain signal processing circuits. The ones which also contain circuitry have an analogue (usually 3 pin) or digital output (can have many pins, 8 is a common number).
 
-# Uses
+## Uses
 
 Humidity sensors are commonly used in the following equipment:  * Air conditioning, heating and ventilation  * Refrigerators  * Industrial automation  * Asset and goods tracking  * Medical equipment (respiratory devices)
 
-# Relative Humidity
+## Relative Humidity
 
 Relative humidity is defined as the ratio of the water vapour pressure to the saturation water vapour pressure, at the current gas temperature.
 
@@ -23,7 +23,7 @@ It is ratio of the actual amount of water in the air to the total amount it c
 
 $$ RH = \frac{P_W}{P_{WS}}\cdot 100% $$
 
-# Dew Point
+## Dew Point
 
 The _dew point_ is the point at which the atmosphere has to be **cooled down** too so that **condensation** starts to appear. The frost point is the dew point when the temperatures are below freezing.
 
@@ -84,6 +84,6 @@ The following is a code example in C showing a function which converts temperatu
     }
 ```
 
-# Examples
+## Examples
 
 The Honeywell HIH-5030 (3.3V) or HIH-4030 (5.0V) analogue-output, 3-pin, SMD humidity sensors are a popular choice. They measure the full humidity range (0-100%), are easy to solder, and simple to interface too.

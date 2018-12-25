@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/connectors/d-subminiature-d-sub
 ---
 
-# Overview
+## Overview
 
 These connectors were designed by ITT Canon in 1952. Large by today's standards, at the time, these connectors where one of the smallest connectors available for a computer, hence the name "subminiature". They are characterised by two or more rows of connections inside a **"D" shape** metal shell.
 
@@ -17,13 +17,13 @@ The **DE-9** is a very **popular** 9-pin computer serial cable. It is also commo
 
 The DE-15 connector is commonly used for VGA connections between computers and screens.
 
-# Schematic Symbol
+## Schematic Symbol
 
 I recommend using the unique schematic symbol style below for the range of D-sub-miniature connectors. It immediately identifies the connector to the viewer.
 
 {{< figure src="/images/2011/09/connector-db25-schematic-symbol.png" width="185px" caption="An easy-to-identify schematic symbol style for representing D sub-miniature connectors."  >}}
 
-# Sizes
+## Sizes
 
 The available sizes are:
 
@@ -118,21 +118,21 @@ The available sizes are:
 <td > 
 </td></tr></tbody></table>
 
-# Backshells
+## Backshells
 
 D-subminiature connectors which are **attached to cables** (i.e. are not PCB mounted or panel mounted) are designed to be fitted with a _backshell_. The backshell **protects/encloses** the wire connections from from the cable, as well providing **mechancial support and strain relief** for the cable.
 
-# Termination Styles
+## Termination Styles
 
 PCB Mount: The connectors has protroding pins (in either straight or right-angle orientation) so that the connector can be soldered to a PCB.
 
 Solder Lug: Designed so that wires can be soldered onto the pins. This style of connector is designed to be panel mounted (**not PCB mounted**). Also called _solder bucket_.
 
-# Uses
+## Uses
 
 Many older consumer products and prototype circuits of all ages use the DE-9 connector for [RS-232 communications](/electronics/communication-protocols/rs-232-protocol). However, it is becoming less common, with USB-to-UART cables becoming more popular, which get connected directly to a microcontrollers pins through flying leads, standard header, or USB connector (in this case the USB-to-UART converter is usually on the board itself, i.e. [Arduino boards](/programming/microcontrollers/arduino)).
 
-# Filtered D-sub Connectors
+## Filtered D-sub Connectors
 
 Filtered D-sub connectors have purposeful capacitance-to-ground (or more complicated filters) built into each one of the connectors pins.
 
@@ -140,13 +140,13 @@ Filtered D-sub connectors have purposeful capacitance-to-ground (or more complic
 
 Compared to implementing the filtering on say, the PCB, filtering at the connector offers the advantage of increased EMI protection due to the filtering occurring at the point that the signal enters the enclosure (so the wires to the PCB don't radiate noise). It also saves PCB space and simplifies PCB routing/layout.
 
-# Screw Kits
+## Screw Kits
 
 You can buy pre-made screw kits, such as the [TE Connectivity 5205817-1](http://www.digikey.co.nz/product-search/en?vendor=0&keywords=5205817-1&stock=1), which comes with all the necessary screws and associated hardware to secure two D-sub connectors together (I might point out here that screws **are not required** to make a connection, but help to make it more secure).
 
 {{< figure src="/images/2015/11/te-connectivity-5205817-1-d-sub-screw-kit.jpg" width="254px" caption="The TE Connectivity 5205817-1 D-Sub screw kit."  >}}
 
-# Waterproof Variants
+## Waterproof Variants
 
 Waterproof variants of D-sub connectors exist, the two most common being a DE-9 or a DB-25.
 

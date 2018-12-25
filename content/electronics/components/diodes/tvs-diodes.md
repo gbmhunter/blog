@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/diodes/tvs-diodes
 ---
 
-# Overview
+## Overview
 
 TVS (transient voltage suppressor) diodes are used to protect traces from high voltage spikes. They work by shunting currents when the voltage exceeds the **avalanche breakdown potential**. They are basically **high-power zeners**. They start conducting at a preset voltage and are tailored for low on-times.
 
@@ -15,7 +15,7 @@ They can be grouped into IC packages called arrays. A typical schematic symbol f
 
 {{< figure src="/images/2011/09/schematic-symbol-esd-diode-array.png" width="297px" caption="The schematic symbol of a diode array, with a common anode connection."  >}}
 
-# Important Parameters
+## Important Parameters
 
 <table>
     <thead>
@@ -76,7 +76,7 @@ They are part of a family of components used for ESD (electro-static discharge) 
 
 They come in either uni-directional or bi-directional flavours. Uni-directional diodes block up to the rated voltage in one direction, and behave like a normal conducting diode in the other. Bi-directional block up to the rated voltage in both directions (good for protecting AC waveforms). Use uni-directional diodes if possible, they are cheaper, and they have much faster turn-on times than their bi-directional counterparts (e.g. 4ps compared to 4ns).
 
-# Leakage Current
+## Leakage Current
 
 The reverse-leakage of TVS diodes decreases as the stand-off voltage increases. Be warned, the leakage current of TVS diodes which have low voltage stand-offs (e.g. <10V), can have large leakage currents! A 5V stand-off TVS diode typically has a reverse-leakage current of around 500uA, but TVS diodes with a stand-off voltage of 10V or higher have a reverse-leakage of 1uA or less. Note that at low stand-off voltages, the leakage current of a bi-directional diode can be double that of a uni-directional diode for the same stand-off voltage.
 
@@ -84,7 +84,7 @@ The reverse-leakage of TVS diodes decreases as the stand-off voltage increases. 
 
 For more information, see the [ESD Protection](/electronics/circuit-design/esd-protection) page.
 
-# Reverse Polarity Protection
+## Reverse Polarity Protection
 
 Unusually, TVS diodes. along with a fuse or other current-limiting device, can act as a **very good reverse-polarity protection mechanism** on inputs to a PCB. They are usually present on a voltage rail input for the primary reason of reducing ESD. However, if the V+ and GND are connected to the PCB the wrong way around, the TVS diode will forward conduct and clamp the voltage to a normally non-destructive 0.7-1.5V. A current-limiting device like a fuse also has to be present to prevent the TVS diode from overheating.
 
@@ -94,7 +94,7 @@ They are especially suited to this role (when considering other diodes) as the a
 
 In the schematic above, the **fuse will quickly blow** if the power supply is connected to the input connector the wrong way around.
 
-# Low Capacitance
+## Low Capacitance
 
 There are a family of TVS diodes called low-capacitance (or ultra-low) TVS diodes. They have much less capacitance than standard TVS diodes (typical capacitances are between 0.4-0.9pF), and are designed for protecting high-speed data lines such as those used in USB, HDMI, DisplayPort, and Ethernet communication protocols and also for RF antennas such as GPS, FM radio and NFC antenna lines.
 
@@ -104,7 +104,7 @@ This low capacitance is achieved by adding a forward-biased general purpose diod
 
 The forward-biased general purpose diode has a much smaller parasitic capacitance than the zener diode. Because the parasitic capacitances are in series (grey capacitors in diagram), the total capacitance of the component is greatly reduced!
 
-# Special-Purpose TVS Diodes
+## Special-Purpose TVS Diodes
 
 ## RS-485 TVS Diodes
 

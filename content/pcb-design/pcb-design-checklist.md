@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/pcb-design-checklist
 ---
 
-# Schematics
+## Schematics
 
 ## Microcontroller
 
@@ -40,7 +40,7 @@ url: /pcb-design/pcb-design-checklist
 
 * Make sure schematics compile
 
-# PCB
+## PCB
 
 ## General PCB
 
@@ -108,7 +108,7 @@ M16: Bottom Courtyard
 * DRC (design rule check) is carried out
 * Lock all PCB objects
 
-# Release Time
+## Release Time
 
 ## Manufacturer
 

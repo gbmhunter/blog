@@ -7,13 +7,13 @@ type: page
 url: /electronics/communication-protocols/z-wave
 ---
 
-# Overview
+## Overview
 
 Z-Wave is a wireless communications protocol primarily designed for home automation.
 
 {{< figure src="/images/2016/04/z-wave-logo-large.png" width="447px" caption="The Z-Wave logo. Image from http://www.z-wave.com/."  >}}
 
-# Frequency
+## Frequency
 
 Z-Wave operates on frequencies around 900MHz. The exact frequency depends on country.
 
@@ -39,6 +39,6 @@ Z-Wave operates on frequencies around 900MHz. The exact frequency depends on cou
 <td >921.42MHz
 </td></tr></tbody></table>
 
-# Network Topology
+## Network Topology
 
 Z-Wave uses a source-routed mesh network topology. The mesh network allows devices to send messages through other Z-Wave devices before reaching the destination, allowing the message to "hop" between devices to extend the communication range and overcome RF dead spots.

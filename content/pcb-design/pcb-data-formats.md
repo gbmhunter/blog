@@ -7,13 +7,13 @@ type: page
 url: /pcb-design/pcb-data-formats
 ---
 
-# Overview
+## Overview
 
 PCB data formats are used to convey PCB manufacturing and assembling information from the designer using CAD software to the company(s) making the PCB.
 
 There are few different types of formats which are explained in more detail below.
 
-# Gerber Files
+## Gerber Files
 
 ## Overview
 
@@ -139,15 +139,15 @@ For anything greater than a 2 layer board, the PCB manufacturer can have trouble
 
 {{< figure src="/images/2013/10/gerber-file-layer-order-confusion.png" width="438px" caption="The stack-up order of internal copper layers and internal planes is ambiguous by just looking at the Gerber file name extensions."  >}}
 
-# ODB++
+## ODB++
 
 ODB++ is a database format originally developed by Valor to convey all the PCB information in a single file. ODB++ is now a format proprietry to Mentor Graphics who aquired Valor.
 
 As of 2014, about 10% of all PCB designs are submitted in ODB++ format. It would be the second most popular choice after the Gerber format.
 
-# Gerber X2 (Extended Gerber)
+## Gerber X2 (Extended Gerber)
 
-# IPC-2581B
+## IPC-2581B
 
 IPC-2581 is a new **XML-based** PCB data file format.
 

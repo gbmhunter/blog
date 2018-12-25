@@ -7,13 +7,13 @@ type: page
 url: /electronics/components/diodes/leds
 ---
 
-# Overview
+## Overview
 
 There is a neat little [LED Wizard](http://led.linear1.org/led.wiz) from [LED Centre](http://led.linear1.org/) for working out what parallel/series combination of LED's you should use given a certain input voltage and number of LEDs you want in your array.
 
 {{< figure src="/images/2012/03/red-led-5mm-th-diffused.jpg" width="242px" caption="A diffused-lens, red, 5mm through-hole LED."  >}}
 
-# Important Parameters
+## Important Parameters
 
 <table>
     <thead>
@@ -67,7 +67,7 @@ There is a neat little [LED Wizard](http://led.linear1.org/led.wiz) from [LED C
 <td >This is the wavelength which determines the "colour" you see.
 </td></tr></tbody></table>
 
-# Limiting The LED Current
+## Limiting The LED Current
 
 A common mistake when working out the value of a current limiting LED resistor is to forget to include the forward voltage drop of the diode into the equations. This has a bigger effect when running the LED at lower voltages. The equation for working out the resistance needed to limit the current in an LED is:
 
@@ -81,7 +81,7 @@ A common mistake when working out the value of a current limiting LED resistor i
     \(I_{led}\) = required current through the led (typ. 5-20mA)<br>
 </p>
 
-# Reverse Mounting
+## Reverse Mounting
 
 Reverse mounting LED's are SMD LEDs which have the light source emitting in the reverse direction, e.g. toward the PCB they are mounted on. A hole is drilled in the PCB to let the light through to the other side. They are useful when using a PCB as a user interface panel, or when you want to use light guides (since the light guides can be mounted up against flat PCB).
 
@@ -91,7 +91,7 @@ Note: Be careful when soldering reverse-mount LEDs by hand, it is very easy to p
 
 As of Dec 2015, it is fairly hard to find multi-colour (e.g. bi-colour or RGB) reverse-mount LEDs.
 
-# Multiplexing
+## Multiplexing
 
 Multiplexing is a way of connecting LED's in an arrangement so that it minimises the number of microcontroller pins required to drive them. There is also a even greater pin-saving method, known as Charlieplexing.
 
@@ -105,7 +105,7 @@ Multiplexing is normally done in a row/column configuration, where the LED's are
     \(x\) = number of microcontroller pins<br>
 </p>
 
-# Charlieplexing
+## Charlieplexing
 
 Charlieplexing is a more efficient (in terms of number of drive signals used) way of driving LEDs, compared to multiplexing.
 
@@ -113,13 +113,13 @@ The following equation is given linking the number of pins used and the number o
 
 <div>$$y = x^2 - x$$</div>
 
-# ESD
+## ESD
 
 Even though all LEDs are susceptible to ESD damage, it is the GaN based LEDs (blue, white and some green colors) that are more sensitive to surge voltages caused by ESD.
 
 The susceptibility for LEDs to ESD is low enough that no extra ESD protection measures (aside from the current-limiting resistor which acts somewhat as a ESD suppressor also) are taken for LEDs used for general purposes.
 
-# Light Detection With A LED
+## Light Detection With A LED
 
 A little known fact about LEDs is that they can be used for light detection. Although not as sensitive as purpose-built photo-diodes, with a few external components, can be interfaced with a microcontroller and be used to detect variations in the light level.
 
@@ -129,7 +129,7 @@ The schematic below shows how to connect an LED up to a general microcontroller 
 
 The photocurrent of an LED is about 10-100 times smaller that that of a purpose-built photo-diode. The wavelength of peak sensitivity is usually a little less than the peak wavelength that it emits light at.
 
-# RGB LEDs
+## RGB LEDs
 
 RGB LEDs are LED's which have three diodes inside them, one red, one green, and one blue. Whats cool with these is, when controlled correctly, they can produce almost any visible colour (remember primary colours in science class?).
 
@@ -141,7 +141,7 @@ One popular example, the WS8211, uses it's own custom communications protocol r
 
 {{< figure src="/images/2012/03/ws2811-rgb-led-front-and-back-photo.png" width="498px" caption="The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller."  >}}
 
-# LED Controllers
+## LED Controllers
 
 LED controllers are ICs designed specifically to make driving LEDs easier, by providing the correct current for the LEDs to operate and off-loading the processing power which would otherwise have to be done on a microcontroller. They normally allow you to control both the current and the PWM rate for each LED (to control both the brightness and colour). Some are specially designed for RGB LEDs.
 
@@ -155,7 +155,7 @@ There are two main ways to dim an LED, either by changing the current or with P
 
 The [PCA9634 8-Channel 25mA I2C LED Controller by NXP](http://www.nxp.com/products/power_management/lighting_driver_and_controller_ics/i2c_led_display_control/series/PCA9634.html) is a simple LED driver for up to 8 single low-power (20mA) LEDs.
 
-# Lens Shapes
+## Lens Shapes
 
 LEDs come with a variety of lens shapes. The major thing that the len shapes influences is the **radiant intensity or radiation pattern of the light**. Some lens shapes focus the light around a small angle (e.g. 10°), while others spread the light over nearly 180°.
 
@@ -163,7 +163,7 @@ Most standard LEDs used on circuit boards are either encapsulated or hemispheric
 
 Hemispherical lens concentrates the light into a tight beam, while the flat and encapsulated lens types spread the light more evenly than an LED with no lens at all.
 
-# Laser Diodes
+## Laser Diodes
 
 Laser diodes are LEDs which emits 'lasered' light using a similar method to standard-light LEDs.
 
@@ -171,7 +171,7 @@ Some laser diodes have integrated switching FETs and capacitors for high-speed, 
 
 {{< figure src="/images/2012/03/lazer-diode-with-integrated-fet-and-cap.png" width="473px" caption="A laser diode with an integrated FET and capacitor for high-seed, high-power switching."  >}}
 
-# Pulse-Width Extending
+## Pulse-Width Extending
 
 A common use for an LED is to connect it to a digital output pin of a microcontroller/IC which goes active upon a certain event (say the microcontroller receives a packet of data).
 
@@ -183,7 +183,7 @@ One way to fix this with hardware to to use a simple pulse-width extender circui
 
 This circuit uses an RC network to form a time delay. When the short pulse arrives, the MOSFET is turned on almost immediately, and the LED lights up. When the pulse stops, the diode prevents the capacitor from discharging immediately, and instead has to discharge slowly through the resistor. The MOSFET/LED remain on until the voltage on the capacitor drops below the MOSFET's gate-source threshold voltage (or something close to that).
 
-# Peak vs. Dominant Wavelength
+## Peak vs. Dominant Wavelength
 
 LEDs are usually given with two different quantifiers regarding their wavelength, both the _peak wavelength_ and the _dominant wavelength_.
 
@@ -195,7 +195,7 @@ The peak wavelength is the wavelength at the peak of the spectral density curve.
 
 The dominant wavelength is important for user interface designers as it determines the "colour" the user perceives.
 
-# Packaging
+## Packaging
 
 You can get LED's in a variety of SMD packages. Common SMD LED packages include the 0603 on 0402 chip packages.
 

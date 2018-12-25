@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/c/reading-user-input
 ---
 
-# Overview
+## Overview
 
 Reading user input is the process of prompting the user for input, and then receiving this by the software so that actions can be done based on what was typed. This applies more to C programs running on Linux and other terminal-capable architectures, rather than embedded microcontrollers.
 
-# Using scanf()
+## Using scanf()
 
 `scanf()`  is one of the most common ways of getting user input from a terminal in Linux.
 

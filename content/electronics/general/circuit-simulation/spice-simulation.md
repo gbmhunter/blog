@@ -7,7 +7,7 @@ type: page
 url: /electronics/general/circuit-simulation/spice-simulation
 ---
 
-# Elementary SPICE Components
+## Elementary SPICE Components
 
 Note: The XXXXXXX syntax in the general form describing elementary SPICE components is to dominate a user choosen alpha-numeric identifier (e.g. RXXXXXXX could stand for R1, RC1 or RMYNAME).
 
@@ -28,7 +28,7 @@ The most basic syntax to create a voltage-controlled switch is:
 
 .model VSW SW() 
 
-# The Best SPICE Resources Out There
+## The Best SPICE Resources Out There
 
 1. ECircuitCentre ([http://www.ecircuitcenter.com](http://www.ecircuitcenter.com/)) - Top-notch and free resource of SPICE thoery and circuits.
 2. National Instruments SPICE Simulation Fundamentals ([http://zone.ni.com/devzone/cda/tut/p/id/5413#toc3](http://zone.ni.com/devzone/cda/tut/p/id/5413#toc3)) - Helpful, professional resources covering most aspects of SPICE simulation

@@ -13,13 +13,13 @@ tags:
 - ssh
 ---
 
-# The Problem
+## The Problem
 
 Sometimes it would be nice if you could keep an eye on the disk space usage of a Linux machine. You can do this manually using the `df` command, but sometimes you forget to check for a while, and only discover the problem when you start experiencing disk full errors. Wouldn't it be nice if perhaps we could automate this somewhat, and report back if certain disks where almost full?
 
 And what if we could check everytime we startup/login/ssh into a machine?
 
-# The Script
+## The Script
 
 This script relies on `bash` being installed on the system. It also relies on ANSI escape code support (which is pretty well supported).
 
@@ -61,13 +61,13 @@ df --output='source,pcent' -h | while read x; do
 done
 ```
 
-# Configurable Threshold And Ignored Disks
+## Configurable Threshold And Ignored Disks
 
 You can configure the percentage threshold at which full disks are reported by modifying the `PERC_THRESHOLD` variable (default is 80% and above).
 
 Sometimes you may want to ignore particular mounted disks which are always near full (e.g. boot partitions). To do this, add the path to the mounted disk to the `IGNORED_DISKS` array.
 
-# How To Make It Run On Startup/ssh Login
+## How To Make It Run On Startup/ssh Login
 
 To do this, I added the above code to the file `~/bash_profile`. Do not add it to `~/.ssh/rc`, as this can cause X11 forwarding problems (and you can get the error: `X11 connection rejected because of wrong authentication.`).
 

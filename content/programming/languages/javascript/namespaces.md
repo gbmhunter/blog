@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/javascript/namespaces
 ---
 
-# Overview
+## Overview
 
 Unlike many object-orientated languages such as C++ and C#, namespaces are not natively supported in JavaScript.
 

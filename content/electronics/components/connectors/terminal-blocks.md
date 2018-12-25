@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/connectors/terminal-blocks
 ---
 
-# Overview
+## Overview
 
 Terminal blocks are a great easy-to-use connection method for signal from mA right up to 10A+. They make it **easy to connect (and re-arrange)** wires, accept one of the largest ranges of wire sizes, and the standard screw type requires no crimp on the end of the wire. They are also great because they** allow the cable itself to be fed through glands and other small orifices**, as there is no mating connector permanently mounted onto the end of the cable.
 
@@ -72,7 +72,7 @@ A better way to fix this problem is to use wire ferrules. These are small hollow
 
 {{< figure src="/images/2015/12/wire-ferrules-used-in-terminal-block.jpg" width="928px" caption="Wire ferrule are crimped onto wires before they are inserted into a terminal block, preventing fraying and solder creep."  >}}
 
-# Connection Type
+## Connection Type
 
 Terminal blocks have many different connection types:
 
@@ -104,7 +104,7 @@ Terminal blocks have many different connection types:
 <td > 
 </td></tr></tbody></table>
 
-# Terminal Block Covers
+## Terminal Block Covers
 
 You can purchase terminal block covers, which give further protection to the wires after they have been fixed into the contacts.
 

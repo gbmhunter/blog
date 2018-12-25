@@ -7,11 +7,11 @@ type: page
 url: /electronics/communication-protocols/usb-protocol
 ---
 
-# Overview
+## Overview
 
 The Universal Serial Bus (USB) standard defines a collection of connectors, cables and communication protocols to allow digital devices to talk to one another.
 
-# First, Some Basic Terminology
+## First, Some Basic Terminology
 
 A host is a device which acts as a "master". It connects to a _device_.
 
@@ -21,23 +21,23 @@ A peripheral is a OTG system which is acting as a "slave". If it wasn't an OTG s
 
 Other terms will be introduced as needed.
 
-# Data Encoding
+## Data Encoding
 
 USB 1.0 and 2.0 uses a single differential transmission pair for communication. It is encoded in NRZI and is bit stuffed for correct clock recovery at the other end. On low and full-speed devices, a "1" is transmitted by driving D+ over 2.8V with a 15KR resistor to ground, and driving D- under 0.3V with a 1.5KR resistor pulled to 3.6V. A "0" is transmitted by driving D- greater than 2.8V and D+ less than 0.3V.
 
-# Conventional Hosts
+## Conventional Hosts
 
 Conventional hosts don't have a Targeted Peripheral List (TPL).
 
 Typical maximum current for USB 2.0 from a host is 500mA. SuperSpeed requires 900mA.
 
-# Targeted Hosts
+## Targeted Hosts
 
 A targeted host is a host which provides a targeted peripheral list (TPL).
 
 On attachment of an unsupported peripheral, a Targeted Host should provide some kind of indication to the user (a blinking light, a message, e.t.c) that it is unsupported. It should NOT just fail silently.
 
-# Targeted Peripheral List (TPL)
+## Targeted Peripheral List (TPL)
 
 A targeted peripheral list (TPL) is a list held by a USB host that names devices known to work with the system. A host which has a TPL is called a Targeted Host. There are two types of allowed Targeted Hosts:
 
@@ -46,7 +46,7 @@ A targeted peripheral list (TPL) is a list held by a USB host that names devices
 
 Embedded hosts and OTG systems MUST have a TPL.
 
-# Embedded Hosts (EH)
+## Embedded Hosts (EH)
 
 An Embedded Host (EH) is a host that supports a limited number of peripheral types, rather than a conventional USB host that supports the full range of peripherals. The are typically implemented in embedded systems (PCB's with microcontrollers, FPGA's) while conventional hosts are found on desktop/laptop computers. Note that embedded computers, such as the RaspberryPi and BeagleBone, are Conventional Hosts, not Embedded Hosts.
 
@@ -60,7 +60,7 @@ This however creates a problem, how does the E,bedded Host detect Device attachm
 
 Some embedded systems provide both USB host and USB device functions. They must have a dedicated port for each function. If they have a single port which can act as both a host or a device, they are called an OTG system.
 
-# Attach Detection Protocol (ADP)
+## Attach Detection Protocol (ADP)
 
 When a Embedded Host has turned off Vbus, it can detect if a device has been connected by using the _Attach Detection Protocol_. The EH measures the time it takes for a fixed current to charge the Vbus line to a specific voltage. If the time takes longer than expected, a device is present. This charge/discharge process repeats about every 1.75s.
 
@@ -70,7 +70,7 @@ Support of the ADP is optional. Hubs do not support the ADP, and so a EH which d
 
 Remember, the ADP is used for detecting devices when Vbus is turned off. If Vbus is on (and potentially never turned off), hosts perform device detection by monitoring the voltages on D+ and D-.
 
-# Session Request Protocol (SRP)
+## Session Request Protocol (SRP)
 
 A device can use the Session Request Protocol (SRP) to request that the Vbus be turned back on by an EH or OTG system. The device makes the request by turning on the pull-up to either the D+ line (full and high-speed devices) or D- (low-speed devices) for 5-10ms. The host detects this increase in voltage on the line and turns on Vbus.
 
@@ -78,15 +78,15 @@ An E or OTG system which turns off Vbus and has a series-A plug MUST support SRP
 
 Like with ADP, hubs don't recognise the SRP, and so this protocol doesn't work if there is a hub between the host and device.
 
-# Host Negotiation Protocol (HNP)
+## Host Negotiation Protocol (HNP)
 
 The Host Negotiation Protocol (NHP) allows two OTG systems to swap their host/peripheral roles in a USB connection. This allows any OTG device to initiate data transfer.
 
-# Unit Load's
+## Unit Load's
 
 In USB 2.0, A unit load is defined as 100mA of current. It is defined as 150mA in USB3.0.
 
-# What is an OTG System?
+## What is an OTG System?
 
 An On-The-Go (OTG) system has a single port which can act as a both a host or a device. It is a point-to-point bus (only two devices can be connected together under OTG). They were originally referred to by the USB standard as _Dual Role Devices _(DRD).
 
@@ -98,7 +98,7 @@ OTG systems present unique power supply challenges to the hardware designer. OTG
 
 OTG hosts running of a LiPo battery supply can use a 1.5X inductorless charge pump to provide power for Vbus. They typically are limited to providing 100mA to the peripheral.
 
-# Hardware
+## Hardware
 
 ## Decoupling
 
@@ -153,11 +153,11 @@ The USB spec recommends ferrite beads on `\(V_{bus}\)`. It is common to combine 
 
 The USB specification prehibits ferrite beads on the D+ and D- signals. 
 
-# USB Protocol Analyzers
+## USB Protocol Analyzers
 
 USB protocol analysers are products which connect to a USB bus and capture traffic and events. They send this information to a PC and you can use this to develop and debug USB systems.
 
-# Suspend Mode
+## Suspend Mode
 
 The USB standard states that a USB device "must enter suspend mode when there is no activity on the bus for greater than 3.0ms". The maximum current a device may draw in suspend mode is proportional to the number of unit loads it has requested while active. **For every unit load the device requested while active, it may draw 500us of current in suspend mode**.
 
@@ -171,7 +171,7 @@ The three common ways a device exits suspend mode is by:
 2. A resume signal
 3. An external interrupt
 
-# Chips You Should Know About
+## Chips You Should Know About
 
 Selected chips from the Giant Gecko and Leopard Gecko families by Energy Micro offer on-chip USB support.
 
@@ -183,11 +183,11 @@ There is plenty of micro-controllers out there these days with a USB peripheral 
 
 Routing USB traces takes some thought because of the high speed the signals travel at. USB lines should be kept as short as possible and the impedance, both differential and common-mode, should be kept within the recommended values, especially when using the full-speed mode.
 
-# The Connectors
+## The Connectors
 
 Non-assembled USB plugs are much rarer than USB receptacles. I think this is because the USB protocol is not meant to be broken, so there is no reason with the many available pre-build USB cables for sale that you would ever need to build your own. But they do exist! Molex makes a mini type B plug (part number 47014-0008) that you can use to make custom USB cables (see the Non-Standard Uses section below).
 
-# Wiring Scheme
+## Wiring Scheme
 
 The most common wiring colour scheme that I've seen is:
 
@@ -198,11 +198,11 @@ The most common wiring colour scheme that I've seen is:
 * GND = Black
 * Metal Outside of Connector = Sheilding (no colour)
 
-# Data Lines
+## Data Lines
 
 The USB2.0 specification requires that the voltages on D+ and D- are between 0-3.3V at all times, even though the supplied bus voltage is 5V. This is to make the communications compatible with devices running from a 3.3V power supply.
 
-# Transmission Speeds
+## Transmission Speeds
 
 ## USB2.0
 
@@ -212,7 +212,7 @@ Maximum transmission speed = 400Mbit/s
 
 Maximum transmission speed = 5Gbit/s
 
-# Power Draw
+## Power Draw
 
 ## USB2.0
 
@@ -222,7 +222,7 @@ An unconfigured device can draw up to 100mA from a USB host (such as a battery c
 
 Maximum current draw is 1.8A, in battery charging mode. This is achieved by shorting the D+ and D- lines together with less than 200Ω of resistance.
 
-# Non-Standard Uses
+## Non-Standard Uses
 
 Although it is not recommended to break the USB protocol and use the USB connector for non-standard purposes, sometimes this way makes the most sense. I have used a micro USB cable to both provide power and program a PSoC microcontroller. The PCB could be plugged into a computer with a standard USB cable and it would charge the battery, or you could plug a custom cable between the PCB and the MiniProg3 programmer to both provide power and program the PSoC.
 
@@ -230,12 +230,12 @@ Note that if you want to use all 5 connections (+ shield, so actually 6!) on USB
 
 {{< figure src="/images/electronics-misc/molex-mini-usb-type-b-plug-assembly-photo.jpg" caption="A photo of the Molex mini USB type B plug. Image from http://nz.element14.com/molex/47014-0008/mini-usb-type-b-plug-assembly/dp/1355758."  width="320px" >}}
 
-# Protocol Bridges
+## Protocol Bridges
 
 The [FTDI FT4222H](http://www.digikey.co.nz/en/product-highlight/f/ftdi/ft4222h-bridge-ic) is a USB 2.0 to Quad SPI/I2C bridge. It supports all four modes of SPI transfer at up to 30MHz. It supports the I2C speed modes, SM, FM, FM+ and HS (i.e. every speed mode from 100kbs to 3.4Mbs). It also has dedicated charging port (DCP) support, and USB controlled GPIO.
 
 The [Exar XR21B142x ICs](http://www.digikey.co.nz/en/product-highlight/e/exar-corporation/xr21b1421-24-usb-2-to-uart-bridge-devices) are USB 2.0 to UART interface bridges. 
 
-# Licensed/Trademarked Images
+## Licensed/Trademarked Images
 
 Interestingly enough, the USB trident symbol is not trademarked. This means that manufacturers can put this onto products without having to undergo any USB certification.

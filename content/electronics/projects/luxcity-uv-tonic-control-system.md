@@ -11,7 +11,7 @@ url: /electronics/projects/luxcity-uv-tonic-control-system
 * Project Completion 21/10/2012  
 * Status: Complete
 
-# The Challenge
+## The Challenge
 
 {{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-tonic-logo-small.png" caption="The Luxcity Tonic logo."  width="320px" >}}
 
@@ -32,11 +32,11 @@ Post-event there have been another news article:
 
 * [http://www.listener.co.nz/commentary/letter-from-christchurch/luxcity-2012-a-hopeful-makeshift-magical-glow/](http://www.listener.co.nz/commentary/letter-from-christchurch/luxcity-2012-a-hopeful-makeshift-magical-glow/)
 
-# Repository
+## Repository
 
 The repo for this project can be found on [BitBucket](https://bitbucket.org/) at [https://bitbucket.org/gbmhunter/luxcity-tonic-uv-control-system](https://bitbucket.org/gbmhunter/luxcity-tonic-uv-control-system). It contains the firmware and datasheets.
 
-# The Hardware
+## The Hardware
 
 ## 8x FreeTronics 8-Channel Relay Driver Shields
 
@@ -133,7 +133,7 @@ To get around the problem with Vixen not outputting cells with an intensity of 0
 
 {{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/vixen-screenshot-tonic-test-sequence.png"   width="600px" >}}
 
-# Construction
+## Construction
 
 The hardware! (just after arrival).
 
@@ -248,7 +248,7 @@ Some of the other structures at the Luxcity event.
 
 {{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/scary-tree.jpg"   width="600px" >}}
 
-# Firmware
+## Firmware
 
 I firstly considered DMX Control (as described in a FreakLabs tutorial at http://freaklabs.org/index.php/Tutorials/Software/Light-Sequencing-and-Decoding-DMX-with-an-Arduino.html, **as of Dec 2017, URL unavailable**), but this required hacking the Ardunio software platform (specifically, the HardwareSerial.cpp file) to get the UART to work correctly. I found it more elegant to use the Vixen output plugin 'Generic Serial' instead, as this worked without any hacking.
 

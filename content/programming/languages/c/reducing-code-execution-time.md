@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/reducing-code-execution-time
 ---
 
-# Multiplication And Division
+## Multiplication And Division
 
 Fixed multiplication and division can converted to bit shifting to optimise code. The bit shifting operations can be found by doing a Taylor's expansion of the equation. The error in the result depends on how many bit shifting operations you wish to perform. The below example uses bit shifting instead of fixed-number multiplication to reduces the number of execution cycles, and shows the difference and error between the result and the actual value.
 
@@ -23,7 +23,7 @@ output = (input<<1) + (input>>1) + (input>>2) + (input>>4)+ (input>>6);
 // error = 0.011%
 ```
 
-# Powers And Square Roots
+## Powers And Square Roots
 
 `pow()`, a function provided with most IDE's, is a slow function. If raising to the power of an integer, multiply the variable by itself rather than use the pow() function.
 
@@ -41,11 +41,11 @@ output = (input<<1) + (input>>1) + (input>>2) + (input>>4)+ (input>>6);
 
 There is a brilliant article on square root optimisation: [http://www.azillionmonkeys.com/qed/sqroot.html](http://www.azillionmonkeys.com/qed/sqroot.html)
 
-# Fixed Point
+## Fixed Point
 
 mbedded.ninja has an open-source [fixed-point library](https://github.com/mbedded-ninja/MFixedPoint) (MFixedPoint) that is hosted on GitLab.
 
-# Trigonometry
+## Trigonometry
 
 Fast and accurate sin/cos approximations can be found [here.](http://devmaster.net/forums/topic/4648-fast-and-accurate-sinecosine/)
 

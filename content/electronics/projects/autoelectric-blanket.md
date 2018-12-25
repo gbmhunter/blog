@@ -6,11 +6,11 @@ type: page
 url: /electronics/projects/autoelectric-blanket
 ---
 
-# Overview
+## Overview
 
 To design a smart phone controlled electric blanket.
 
-# Material Costs
+## Material Costs
 
 <table>
     <thead>
@@ -76,7 +76,7 @@ To design a smart phone controlled electric blanket.
 </table>
 
 
-# RaspberryPi Setup
+## RaspberryPi Setup
 
 
 I needed a later version of nodejs than sudo apt-get install nodejs would offer, so I downloaded the node v0.11.6 binary from [http://nodejs.org/dist/v0.11.6/](http://nodejs.org/dist/v0.11.6/).
@@ -96,13 +96,13 @@ I installed geany (`sudo apt-get install geany`), to get a better code editor th
 * express (node extension)
 * ddclient - Manager for dynamic DNS service
 
-# Controlling GPIO
+## Controlling GPIO
 
 The `ENOENT read /sys/class/gpio/gpio4/direction` error caught me out for along time, until I realised I had to run the node module using `sudo node server.js` (with administrator privlages).
 
 {{< figure src="/images/project-autoelectricblanket/simple-led-connected-to-raspberry-pi-gpio.jpg" caption="I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing."  width="800px" >}}
 
-# Nodejs Modules
+## Nodejs Modules
 
 Express allows you to easily set up a web server using node.js.
 
@@ -120,7 +120,7 @@ At first I was just using the `window.redirect()` to send data back to the serve
 
 The server checks to see if it can resolve the address www.google.com every 5 seconds. If it can, it turns the online LED on, if it can't, it turns it off. This gives the user a good indication of whether the device is connected to the internet or not.
 
-# Using Rsync To Write Code On PC, Then Transfer To RaspberryPi
+## Using Rsync To Write Code On PC, Then Transfer To RaspberryPi
 
 I discovered rsync was one of the best ways of enabling me write code on my Windows computer, and then transfer it to the RaspberryPi quickly and easily for running.
 
@@ -132,7 +132,7 @@ rsync -arvz --delete . pi@192.168.1.51:~/autoeb
 
 {{< figure src="/images/project-autoelectricblanket/sending-files-via-rsync-between-pc-and-raspberry-pi.png" caption="Sending code files using rsync from the PC to the RaspberryPi."  width="800px" >}}
 
-# Dynamic DNS
+## Dynamic DNS
 
 I used this awesome and simple guide, [http://blog.mivia.dk/2013/03/free-dynamic-dns-for-raspberry-pi/](http://blog.mivia.dk/2013/03/free-dynamic-dns-for-raspberry-pi/)
 
@@ -146,17 +146,17 @@ I gave the RaspberryPi a fixed internal address by configuring settings on the r
 
 [Pagekite](https://pagekite.net/) looks interesting, as it means you don't have to setup port forwarding on the router, although I didn't use the service for this project. They have a pay-what-you-want pricing plan, with the basic service being free.
 
-# Automatic Run On Start-up
+## Automatic Run On Start-up
 
 We want the RaspberryPi server to automatically run on start-up. To do this, I edited some configuration files to make the RaspberryPi automatically login at turn on, and then set it up so a script ran automatically whenever that user logged in, hence it would run at start-up.
 
 This guide is easy to follow...[http://raspberrypi.stackexchange.com/questions/8734/execute-script-on-start-up](http://raspberrypi.stackexchange.com/questions/8734/execute-script-on-start-up) and so is this. [http://www.akeric.com/blog/?p=1976](http://www.akeric.com/blog/?p=1976).
 
-# Forwarding Ports
+## Forwarding Ports
 
 I set up port forwarding on the router for port 8000. This worked fine for a Vodafone router, however, when I tried to set up the same port forwarding on an Orcon router, it complained that the port 8000 was already in use by something called a "USB Server". I had to change all references of the port to 8001, which meant changing both the node server code and the Android app code.
 
-# Fixed IP
+## Fixed IP
 
 To do this I first had to setup the RaspberryPi so it has a fixed IP. Depending on the router, I could do this one of two ways:
 
@@ -196,7 +196,7 @@ ioctl[SIOCSIWENCODEEXT]: Invalid argument
 
 But it still seemed to work fine.
 
-# The Electric Blanket Wiring
+## The Electric Blanket Wiring
 
 I pulled apart the electric blanket. Simple control. Looks like switch selects different resistance circuits to power.
 
@@ -275,7 +275,7 @@ How I think the circuit worked:
 </tbody>
 </table>
 
-# The Android App
+## The Android App
 
 I had never developed an Android app before, so the first task was downloading and installing the [Android SDK](http://developer.android.com/sdk/index.html).
 
@@ -283,6 +283,6 @@ The idea was to basically recreate how the web page looked and acted with an And
 
 A thing that caught me out is that the WebView URL has to have `http://` at the front to work, you can't use shortened versions like `www.google.com`.
 
-# Image Gallery
+## Image Gallery
 
 {{< gallery dir="/images/project-autoelectricblanket" />}}

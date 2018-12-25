@@ -7,7 +7,7 @@ type: page
 url: /programming/algorithms-and-data-structures/sorting-algorithms
 ---
 
-# Overview
+## Overview
 
 Once you have a basic understanding of sorting algorithms, make sure to check out [https://www.youtube.com/watch?v=kPRA0W1kECg](https://www.youtube.com/watch?v=kPRA0W1kECg), it is a sorting algorithm and musical masterpiece!
 
@@ -25,7 +25,7 @@ Data is indexed by an integer key. Integer sorts are usually faster than compari
 
 `\( O(n^2) \)` is called quadratic time
 
-# Counting Sort
+## Counting Sort
 
 * Type: Integer  
 * Style: Out-of-place  
@@ -40,7 +40,7 @@ where `\( n \)` is the number of element in the array and `\( k \)` is a number 
 2. Determine, for each distinct key, the starting position in the output array for each element having that key.
 3. Iterate over all the elements once more, moving each element into it's sorted position in the output array.
 
-# Insertion Sort
+## Insertion Sort
 
 * Type: Comparison  
 * Style: In place  
@@ -85,13 +85,13 @@ An example in C++:
     }
 ```
 
-# Merge Sort
+## Merge Sort
 
 Merge sort splits an array into sub-arrays, sorts each sub-array, and then merges the arrays back together.
 
 The merge algorithm: Remove the element from the array which has the smaller first element and append it to the output array.
 
-# Selection Sort
+## Selection Sort
 
 1. Iterates through the unsorted section of the array (which will be the entire array at the start, finds the lowest value.
 2. Swaps this element with the far left element of the unsorted array (at the start, this will be the first element).

@@ -7,11 +7,11 @@ type: page
 url: /programming/embedded-linux/yocto-project/adding-a-custom-app-to-a-yocto-build
 ---
 
-# Overview
+## Overview
 
 This page is a walk-through to show you how to add your own code/app to a custom Linux build that uses Yocto.
 
-# Making A Basic Hello, World App (Binary)
+## Making A Basic Hello, World App (Binary)
 
 Firstly, we need a basic application that we can then add to a Yocto build. Let's create a simple application that prints "Hello, World" to stdout and then exits.
 
@@ -136,7 +136,7 @@ Commit all these files into a git repository. If you want the Yocto layer to dow
 The code for this example app is located at [https://github.com/mbedded-ninja/YoctoHelloWorldApp](https://github.com/mbedded-ninja/YoctoHelloWorldApp).
 
 
-# Make A Layer To Hold The App
+## Make A Layer To Hold The App
 
 The application needs to be added to a Yocto layer before it can be included in a build. It can either be added to an existing layer, or added to a new one. We will create a new layer to keep the development environment "clean". All layers are contained with a meta-<layer name> folder.
 
@@ -238,7 +238,7 @@ Use the number, but ignore the filename which is printed afterwards!
 
 The code for this example layer is located at [https://github.com/mbedded-ninja/YoctoMetaExample](https://github.com/mbedded-ninja/YoctoMetaExample).
 
-# Adding The Layer To The Build
+## Adding The Layer To The Build
 
 The final step is to add the newly created layer to your build. Layers are not automatically included in each build, the layers used is determined by the blah file at poky/build/conf/bblayers.conf.
 
@@ -270,7 +270,7 @@ We want to add our new layer to the BBLAYERS variable as shown below:
       "
     ```
 
-# Build Time
+## Build Time
 
 cd back to ~/poky/build/. We can now start the build process by running:
 
@@ -280,7 +280,7 @@ cd back to ~/poky/build/. We can now start the build process by running:
 
 This should take a few hours to complete when running it the first time!
 
-# Run Linux Build And Test Custom App
+## Run Linux Build And Test Custom App
 
 Now you have built a Linux image with your custom application added, lets run the Linux image in QEMU and test that the application is present and runs correctly.
 

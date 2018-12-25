@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/python/dictionaries
 ---
 
-# Checking If A Key Exists In A Dictionary
+## Checking If A Key Exists In A Dictionary
 
 The recommended way to check if a key exists in a Python dictionary is to use the `in` keyword, as shown in the code example below:
 
@@ -24,7 +24,7 @@ else:
 # stdout: Found key
 ```
 
-# Get A List Of Dictionary Keys
+## Get A List Of Dictionary Keys
 
 Calling `keys()` on a Python dictionary returns a `dict_keys` object. A `dict_keys` object is similar to a List, but you cannot index or modify the object.
 
@@ -47,7 +47,7 @@ print(keys_list)
 # stdout: ['foo', 'bar']
 ```
 
-# Iterating And Deleting Keys At The Same Time
+## Iterating And Deleting Keys At The Same Time
 
 Strictly speaking, you can't iterate over a dictionary and delete entries at the same time. However, you can quite easily create a copy of the dictionary keys, iterate of that, and delete entries from the dictionary, as shown in the following example:
 
@@ -66,7 +66,7 @@ print(my_dict)
 
 This does not occur much overhead as you are just copying the keys, and not the values.
 
-# del vs. pop()
+## del vs. pop()
 
 Both `del` and `pop()` can be used to remove items from a dictionary:
 
@@ -86,7 +86,7 @@ It is recommended to use `del` if you just want to delete the item, as it will b
 my_item = my_dict.pop('foo')
 ```
 
-# Combining Dictionaries
+## Combining Dictionaries
 
 Python dictionaries can be combined (merged) with the `update()` function.
 

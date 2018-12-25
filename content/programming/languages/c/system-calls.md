@@ -9,7 +9,7 @@ url: /programming/languages/c/system-calls
 
 Most standard C libraries depend on a number of subroutine calls for interacting with system services. These are called system calls.
 
-# Standard C System Calls
+## Standard C System Calls
 
 ## _exit()
 

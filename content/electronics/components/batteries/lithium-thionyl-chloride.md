@@ -7,35 +7,35 @@ type: page
 url: /electronics/components/batteries/lithium-thionyl-chloride
 ---
 
-# Overview
+## Overview
 
 Lithum thionyl chloride batteries are good for long-term power applications such as wireless remote sensors, backup power for non-persistant memory ICs, and real-time clocks.
 
-# Voltage
+## Voltage
 
 Lithium thionyl chloride batteries have a nominal voltage of 3.6V.
 
-# Current Draw
+## Current Draw
 
 This is where Lithium thionyl chloride batteries show their weakness. They are really bad at providing large pulse currents, due to their high internal resistnace. This can make the batteries bad at powering pulse-current drawing things like cellular modems. You can add super-capacitors to provide the pulse current in some applications. Some manufacturers have begun selling a combined battery/supercap module which allows for higher pulse currents.
 
-# Leakage Current
+## Leakage Current
 
 Lithium thionyl chloride batteries have a really low leakage current.
 
-# Discharge Characteristics
+## Discharge Characteristics
 
 They have a pretty flat voltage discharge characteristic.
 
-# Energy Density
+## Energy Density
 
 They have an energy density of 970mWh/cm^3 (when the discharge current is 100uA).
 
-# Temperature Range
+## Temperature Range
 
 They can be used over a wide temperautre range of `\(-55^\circ C\)` to `\(+85^\circ C\)`.
 
-# Chemical Reaction
+## Chemical Reaction
 
 Lithium thionyl chloride batteries use liquid thionyl chloride (`\(SOCl_2\)` as the positive active material, and lithium (Li) as the negative active material.
 

@@ -7,11 +7,11 @@ type: page
 url: /programming/general/control-methodology
 ---
 
-# Overview
+## Overview
 
 You may think that after writing the state machine for flashing a few LEDs and a buzzer that control metholody is a simple task that doesn't require further discussion. However, add in a multi-threaded operating system, asynchronous events, more objects to control and boom, suddenly control methodlogy is no simple topic.
 
-# State Machines (single process)
+## State Machines (single process)
 
 State machines are coding structures/methodologies to write the top-level code which performs the high level control of your program. State machines are essential for any thing but the most simple of programs, as they organise the code, improve the readability, and make it easy for the code to be changed. A state machine is based on the theory that a program will rest in certain states, and that particular inputs will cause the program to change into another state.
 
@@ -22,7 +22,7 @@ Go to the [A Function Pointer State Machine](/programming/c-programming/control-
 
 There is software out there that lets you convert graphical state machine diagrams into usable code. One popular one is the QP state machine framework and the QM modelling tool ([http://www.state-machine.com/](http://www.state-machine.com/)).
 
-# A Big switch() Statement
+## A Big switch() Statement
 
 This is one of the easiest state machines to implement, and is one of the first that programmers will encounter, most often by intuitive happenstance.
 
@@ -106,7 +106,7 @@ int main()
 
 One of the drawbacks is that you have to remember to break out of every case, otherwise you will get fall through to the next state.
 
-# Real Time Operating Systems (RTOS, multiple process)
+## Real Time Operating Systems (RTOS, multiple process)
 
 Let's not get confused here, RTOS's still need state machine or other control methodologies, but they offer increased simplicity of these state machines and a powerful architecture to handle concurrent matters. Their principal function is to provide processes (or tasks), aka separate sections of code which can run concurrently (at the same time).
 
@@ -127,13 +127,13 @@ Micrium uC/OS-II
 
 A (stolen straight from their marketing blurb) "Portable, ROMable, scalable, preemptive, real-time deterministic multitasking kernel for microporcessors, microcontrollers and DSPs". Supports a number of architectures. The only problem with it is the price! At over US$5000 for a license, you have to have a good reason for buying it.
 
-# Frameworks
+## Frameworks
 
 [QL's QP framework and the associated QM modelling tool](http://www.state-machine.com/) are prevelent tools for developing event driven embedded applications. Based on my experience with QM, the program appears highly polished and is coupled tightly with the code. You can even build and upload code for the Arduino from within QM, so you never have to open the Arduino IDE!
 
 Boost has a [Meta State Machine (MSM) library](http://www.boost.org/doc/libs/1_55_0/libs/msm/doc/HTML/index.html). Probably unsuitable for embedded applications, due to the depedance on high-level containers and other Boost objects.
 
-# Other External Links
+## Other External Links
 
 * The State Machine Framework - Qt Reference Documentation ([https://doc.qt.io/archives/4.6/statemachine-api.html](https://doc.qt.io/archives/4.6/statemachine-api.html))
 * State Machines - Basics of Computer Science ([http://blog.markwshead.com/869/state-machines-computer-science/](http://blog.markwshead.com/869/state-machines-computer-science/))

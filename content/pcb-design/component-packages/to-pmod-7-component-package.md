@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/to-pmod-7-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table>
@@ -121,15 +121,15 @@ url: /pcb-design/component-packages/to-pmod-7-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 This is a rather large SMD package with good heat sinking ability. Texas Instruments uses this package for some of their DC/DC power modules, which have built in shielded inductors.
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/04/to-pmod-7-component-package-3d-render.jpg" width="253px" caption="A 3D render of the TO-PMOD-7 component package."  >}}
 
-# Other Images
+## Other Images
 
 {{< figure src="/images/electronics-packages/to-pmod-7-component-package-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the TO-PMOD-7 component package. Image from http://www.ti.com/."  width="800px" >}}
 

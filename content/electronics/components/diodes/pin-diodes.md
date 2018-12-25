@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/diodes/pin-diodes
 ---
 
-# Overview
+## Overview
 
 A PIN diode is a semiconductor diode with a wide undoped intrinsic semiconductor region between a p-type and n-type semiconductor region (hence the name PIN).
 
@@ -17,7 +17,7 @@ A "normal" PN diode has a very small intrinsic region, which is good when you wi
 
 A PIN diode is a light detector. It can be used to convert optical signals into electrical electrical signals. It consists of a p region, an intrinsic region, and a n region (hence the name PIN diode).
 
-# Important Parameters
+## Important Parameters
 
 <table>
     <thead>
@@ -73,12 +73,12 @@ PIN diodes are normally operated in the reverse bias state.
 
 Because of their good light-to-current linearity, they are commonly connected to a transimpedance amplifier (one which converts an input current into an output voltage). A typical example would be the Maxim MAX3658, which is designed for fibre-optic applications.
 
-# RF Applications
+## RF Applications
 
 They act as almost perfect resistors in the RF and microwave frequencies. The resistivity these AC waveforms see is dependent on the DC bias current flowing through the diode, and the intensity, wavelength and modulation rate of the incoming light.
 
 Because the PIN diodes RF resistance is dependant on the DC bias current, they can be used as an RF switch or variable resistor. The RF resistance can range from about `\( 100m\Omega\)` to `\(10k\Omega\)`.
 
-# Reverse Recovery Time
+## Reverse Recovery Time
 
 PIN diodes have a very poor reverse recovery time.

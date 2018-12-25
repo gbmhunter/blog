@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/d2pak-to-263-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
 <tbody><tr >
@@ -107,7 +107,7 @@ url: /pcb-design/component-packages/d2pak-to-263-component-package
 </ul>
 </td></tr></tbody></table>
 
-# The Standard Package (TO-263)
+## The Standard Package (TO-263)
 
 This package can be considered the SMT version of the TO-220AB. It is a 3, 5 or 7 leaded heavy-duty package that allows for good heat-sinking due to a large pad on it's underside. Used frequently for high power MOSFETs, LDOs and SMPS. Comes with either a normal middle lead (X2 = nothing) or a short, cut-off middle lead (X2 = S).
 
@@ -121,7 +121,7 @@ The junction-to-ambient thermal resistance for the TO-263 component package on b
 
 {{< figure src="/images/2015/04/d2pak-to-263-component-package-thermal-resistance-2-vs-4-layer-comparison.png" width="680px" caption="Junction-to-ambient thermal resistance data of the TO-263 component package on both standard JEDEC 2-layer and 4-layer PCBs. Image from www.ti.com." >}}
 
-# TO-263 THIN
+## TO-263 THIN
 
 TO-263 THIN is a variant of the TO-263 component package by Texas Instruments. It shares a similar PCB footprint, but is significantly smaller in height (i.e. thinner).
 

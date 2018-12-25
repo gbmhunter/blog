@@ -7,7 +7,7 @@ type: page
 url: /electronics/communication-protocols/uart-protocol
 ---
 
-# Overview
+## Overview
 
 UART (_Universal Asynchronous Receiver/Transmitter_) is a lower-voltage, microcontroller friendly equivalent of the RS-232 digital data transmission protocol with origins dating back to the 1960's. It was designed as a communication protocol to talk between _DTE_ (data terminal equipment) and _DCE_ (data communication equipment). It is universal in the sense the timing, voltages, flow control and error checking can be configured.
 
@@ -57,7 +57,7 @@ UART (_Universal Asynchronous Receiver/Transmitter_) is a lower-voltage, microco
 
 **It is commonly used today as a simple, two-way node-to-node serial communications protocol between devices on a circuit board** or possibly over a cable. Because of it's low voltage and single-ended nature, it is not very noise resilient, and is usually replaced with a more robust protocol such as [RS-232](/electronics/communication-protocols/rs-232-protocol) or [RS-485](/electronics/communication-protocols/rs-485-protocol) when communication occurs over any significant cable length or in a noisy environment.
 
-# Terminology
+## Terminology
 
 Sorted in alphabetical order.
 
@@ -163,7 +163,7 @@ Sorted in alphabetical order.
 </table>
 
 
-# Protocol
+## Protocol
 
 The long history of RS-232 like serial communication means that UART is synonymous/compatible with many physical and protocol layer variations such as:
 
@@ -176,11 +176,11 @@ The long history of RS-232 like serial communication means that UART is synonymo
 * LIN Bus
 * IrDa
 
-# Connectors
+## Connectors
 
 UART is a protocol that has no one single recognizable connector. Because it is commonly used in conjunction with RS-232 or RS-485 protocols, the D subminiature connectors are commonly associated with the UART protocol. However, because UART is a very common microcontroller peripheral and can be used for short, permanent on-PCB communications between microcontroller and 3rd party device, it is also commonly implemented without any connector at all (pin-to-pin on PCB), or is routed from microcontroller directly to 0.1" header pins for things such as debugging (a debug UART is very common on embedded devices).
 
-# Transmission Speeds
+## Transmission Speeds
 
 UART, by today's standards, is a slow transmission protocol. However, it is still fast enough for tons of applications. The commonly supported baud rate speeds are:
 
@@ -190,7 +190,7 @@ I have had basically no issues using speeds up to 460800 baud in embedded system
 
 Some devices also support custom baud rates.
 
-# Flow Control
+## Flow Control
 
 The flow control is a way of detecting when the receiver or transmitter is ready to accept or send new data. The UART protocol provides a few (all optional) methods for flow control:
 
@@ -363,7 +363,7 @@ Note that confusion of how to connect two UART devices together arises when it i
 
 Most often, manufacturers label the UART pins as DTE's. In this case, you have to swap all connections with their matching line. So TxD of device 1 is connected to RxD of device 2, RxD of device 1 is connected to TxD of device 2, RTS of device 1 is connected to CTS of device 2, e.tc.
 
-# Error Checking/Noise Immunity
+## Error Checking/Noise Immunity
 
 The only error checking a UART has by specification is parity checking (additional error features may exist).
 
@@ -377,17 +377,17 @@ You may notice when sending lots of characters across a UART that some appear to
 * Shield the UART cable (not so important)
 * Implement a checksum algorithm into the receiver and transmitter, such as a CRC. The UART protocol does not support this natively, you will have to use a 3rd party library/write the code to do this yourself. Even when using a simple checksum algorithm such as exclusive or (XOR), this is probably one of the most fool proof methods for error checking.
 
-# Break Signal
+## Break Signal
 
 The _break signal_ is not a character, but a **special signal which can be sent from transmitter to receiver to indicate an event**.
 
 The transmitter sends a break signal by **driving it's TX line low for a period longer than one frame**. There are two types of breaks, short breaks and long breaks. A short break is when the TX line is driven low for a period of between 1 and 2 frame lengths, and a long break is when it is driven low for a period of more than 2 frame lengths.
 
-# Higher-Level Protocols
+## Higher-Level Protocols
 
 Do you need a higher-level communication protocol that works over a UART connection? See the [SerialFiller](https://github.com/mbedded-ninja/SerialFiller) library on GitHub (written in C++). SerialFiller uses a publish/subscribe mechanism and works well on point-to-point serial connections such as UART.
 
-# Terminal Programs
+## Terminal Programs
 
 ## RealTerm (3.5/5)
 
@@ -425,25 +425,25 @@ I have discovered one bug in PuTTY...if it receives a large number of characters
 
 {{< figure src="/images/2011/09/putty-bug-when-receiving-large-num-of-chars.png" width="699px" caption="PuTTY can freeze when printing a large number of random characters to it across a COM port."  >}}
 
-# 9-Bit Addressing
+## 9-Bit Addressing
 
 9-bit addressing was employed when using a multi-drop configuration to prevent slaves from wasting processor time in decoding every byte on the bus to see if it was addressed to them. A 9th bit is sent out after every byte, and is used to signal if the previous 8-bits where an address (which the slaves have to listen to), or just data (which can be ignored).
 
-# Radiation Hardening
+## Radiation Hardening
 
 Some UART protocols have radiation tolerant devices, such as the [DRS4485](http://www.aeroflex.com/ams/pagesproduct/datasheets/4485.pdf), an Dual RS-485 Interface Transceiver made by Aeroflex.
 
-# RS-232
+## RS-232
 
 RS-232 is a very similar protocol to UART, and a UART to RS-232 converter is one of the most popular communication protocol converters you will see in an embedded system.
 
 For more information, see the [RS-232 page](/electronics/communication-protocols/rs-232-protocol).
 
-# RS-485
+## RS-485
 
 RS-482 is another very common protocol that UART is converted to and from. It is usually chosen over RS-232 when longer distances and/or larger noise immunity is needed. For more information, see the [RS-485 page](/electronics/communication-protocols/rs-485-protocol).
 
-# Cables
+## Cables
 
 You can get null-terminated USB-to-USB serial port emulator cables. These are awesome for transferring data between two computers (or any 2-USB host devices) without reverting to a true USB-to-USB A cable (which requires use of a more complicated protocol).
 
@@ -451,11 +451,11 @@ FTDI makes one such cable called the [USB to USB cable](http://www.ftdichip.com/
 
 If you are interested in routing between two COM ports **on the same computer**, you could use one of these, however, it is normally much easier to do it purely in software with a serial bridge instead.
 
-# Powerline Transceivers
+## Powerline Transceivers
 
 The [SIG60](http://www.yamar.com/sig60.php) is an example of a powerline transceiver.
 
-# Creating A Serial Port Bridge
+## Creating A Serial Port Bridge
 
 There are occasions when you want or need to send serial data between two pieces of software on the computer, or between two hardware devices both connected to the computer. An example would be to unit test a PC-based serial communications protocol you have written without writing the unit-test code on the microcontroller. There are software programs that emulate a serial port bridge, but in my experience I found these are every buggy or cost money.
 

@@ -7,13 +7,13 @@ type: page
 url: /programming/algorithms-and-data-structures/time-complexity
 ---
 
-# Overview
+## Overview
 
 The Big O notation ignores behaviour when n is small, and ignores coefficients (e.g. an algorithm that grows at `\(2n\)` is still `\(O(n)\)`).
 
 The following complexities are described from best to worst.
 
-# Constant Time
+## Constant Time
 
 The following algorithm just prints "hello" once, and doesn't depend on the number of elements (n). It will always run in constant time, and therefore is `\(O(1)\)`.
 
@@ -34,7 +34,7 @@ Note that even though the following algorithm prints out "hello" three times, it
 * Reading an element from an array (or vector).
 * Reading an element from hash table (in the average and best case only)
 
-# log(n) Time
+## log(n) Time
 
 Note that whenever we are talking about software algorithms with `\(O(log(n))\)` complexity, we are really talking about `\(O(log_2(n))\)` complexity.
 
@@ -49,7 +49,7 @@ Common software operations that have `\(O(log(n))\)` complexity are:
 
 * Reading an element from a binary search tree
 
-# Linear Time
+## Linear Time
 
 Linear time is when an algorithm grows at a rate proportional to the number of elements, `\(n\)`. A simple for loop has `\(O(n)\)` complexity:
 
@@ -67,7 +67,7 @@ Another example:
 
 Note that even though the above example prints "hello" for every second `\(n\)` (`\(0.5n\)`), it is still said to have `\(O(n)\)` complexity (remember that coefficients are dropped).
 
-# nlog(n) Time
+## nlog(n) Time
 
 `\(O(nlog(n))\)` complexity can be thought of as a combination of `\(O(n)\)` and `\(O(log(n))\)` complexity.
 
@@ -79,7 +79,7 @@ This can be demonstrated by a nested for loop, one having `\(O(n)\)` complexity 
           print "hello";
 ```
 
-# n^2 Time
+## n^2 Time
 
 `\(O(n^2)\)` complexity is proportional to the square of the number of elements `\(n\)`. This is a bad form of complexity to have, especially when `\(n\)` grows large.
 
@@ -103,7 +103,7 @@ Here is another example which has `\(O(n^2)\)` complexity.
 
 Note that this is just a 2x repetition of a algorithm with `\(O(n^2)\)` complexity. Repeating an algorithm (i.e. performing it twice) does not change the complexity.
 
-# n^3 Time
+## n^3 Time
 
 `\(O(n^3)\)` complexity is rarely seen in a single software algorithms (but can easily arise from the combination of multiple algorithms to solve a problem).
 

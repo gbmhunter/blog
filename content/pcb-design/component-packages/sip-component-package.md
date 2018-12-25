@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sip-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table >
@@ -120,10 +120,10 @@ url: /pcb-design/component-packages/sip-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 Commonly used for resistor networks and RAM chips. Similar to the DIP package except there are only one row of pins.
 
-# Photos
+## Photos
 
 {{< figure src="/images/2015/04/sip-component-package-photo.jpg" width="385px" caption="A photo of the SIP component package." >}}

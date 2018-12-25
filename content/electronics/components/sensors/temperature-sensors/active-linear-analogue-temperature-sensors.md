@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/sensors/temperature-sensors/active-linear-analogue-temperature-sensors
 ---
 
-# Overview
+## Overview
 
 Linear active temperature sensors output a analogue voltage which is proportional (linear) to the temperature, and require a voltage supply to run.
 

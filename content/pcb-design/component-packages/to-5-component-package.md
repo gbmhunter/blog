@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/to-5-component-package
 ---
 
-# Overview
+## Overview
 
 <table ><tbody ><tr >
 <td>Name
@@ -85,7 +85,7 @@ The diameter of the pin circumference can also vary. Diameters of 0.200" and 0.2
 </ul>
 </td></tr></tbody></table>
 
-# Comments
+## Comments
 
 The TO-5 is an older-style through-hole metal can package. The traditional TO-92 package has 3 pins.
 
@@ -95,22 +95,22 @@ The original JEDEC TO-5 specification is shown below:
 
 {{< figure src="/images/2015/10/to-5-3-component-package-original-jedec-specification-drawing.png" width="503px" caption="The original JEDEC TO-5 (TO-5-3) component package specification drawing. Image from http://www.jedec.org/."  >}}
 
-# TO-5-8
+## TO-5-8
 
 {{< figure src="/images/2015/10/to-5-8-component-package-dimensions.jpg" width="328px" caption="Dimensions for the 8 leaded TO-5 (TO-5-8) component package."  >}}
 
-# Pin Numbering
+## Pin Numbering
 
 The pin numbering is clockwise while looking at the package from the bottom.
 
-# Pin Circumference
+## Pin Circumference
 
 The diameter of the pin circumference can vary between TO-5 packages. For example, there is a 8-pin TO-5 package with a pin diameter of 0.200", and another with a diameter of 0.230".
 
-# Sockets
+## Sockets
 
 Sockets exist which fit TO-92 packages.
 
-# External Resources
+## External Resources
 
 [http://ronja.twibright.com/datasheets/metal_cans.pdf](http://ronja.twibright.com/datasheets/metal_cans.pdf) has some great information on the TO-5 component package as well as similar style metal can packages.

@@ -7,17 +7,17 @@ type: page
 url: /electronics/circuit-design/h-bridges
 ---
 
-# Overview
+## Overview
 
 An H-bridge is a two-leg power inverter which converts DC current into a form of AC current. It is also known as a full-bridge. A half-bridge (**not be confused** with an H-bridge, the H is for the shape a full-bridge makes, it does not stand for _half_) is only one leg of the full-bridge.
 
 H-bridges are used for efficient power and polarity control of electronic loads.
 
-# Circuit
+## Circuit
 
 {{< figure src="/images/2011/09/lm5104-example-circuit.jpg" width="800px" caption="Example half-bridge circuit for the LM5104 half-bridge controller."  >}}
 
-# A Basic Switch/Relay H-Bridge
+## A Basic Switch/Relay H-Bridge
 
 **A double-pole, double-throw switch or relay can act as an basic H-bridge.** This may be suitable for manually-switched loads, or loads which do not require switching often.
 
@@ -25,7 +25,7 @@ The disadvantages are high-drive power (if using relays), mechanical wear of the
 
 They are suitable for things like heating/cooling elements which use on/off control (with suitable hysteresis) with large thermal masses (i.e. slow switching speeds).
 
-# A Transistor H-Bridge
+## A Transistor H-Bridge
 
 Almost all serious half or full-bridges use [MOSFET's](/electronics/components/mosfets) as the switches. This is because MOSFET's have very low on resistances, meaning they can sink/source plenty of current without heating up. Some of the better MOSFET's are pushing on resistances (`\( R_{DS(on)} \)`) as low as `\( 1m\Omega \)` or less, allowing for continuous currents in the hundred's of amps as long as the MOSFET is heatsinked correctly.
 
@@ -39,17 +39,17 @@ As a bonus, it also has shoot-through protection!
 
 One thing to watch out for here is the forward voltage drop of the diodes compared to the gate turn-on voltage of the N-channel MOSFETs. The gates of Q5 and Q6 are driven low through diodes. This means that the voltage at the gate doesn't go all the way down to 0V, but hangs around the forward-voltage drop of the diode. For general purpose diodes, this can be around 700mV, which is approaching the turn-on gate threshold voltage of some N-channel MOSFETs. The best solution is to use Schottky diodes (as shown), which have a lower voltage drop of around 300-500mV (dependent on current of course).
 
-# Driver ICs
+## Driver ICs
 
 There are heaps of H-bridge related ICs! Some are just a controller that takes in a PWM signal and outputs control signals designed to go to a MOSFET driver, some include the controller and the MOSFET driver, and some even include the power MOSFETs (and all-in-one solution).
 
 For the same price, N-channel MOSFET's have a lower `\(R_{DS(on)}\)` than P-channels. Becuase of this, many H-bridge circuits use N-channel MOSFETs for the top-side switches as well as the bottom-side. Top-side N-channel switches require a voltage greater than `\( V_{CC} \)` at the gate to turn them on. Most H-bridge drivers have an internal charge pump which takes care of this for you.
 
-# Bi-Colour LED's
+## Bi-Colour LED's
 
 Bi-colour LED's that only have two pins (two LED's connected head-to-tail) require a full-bridge to be driven correctly. Normally the bi-colour LED can be connected directly up to pins on a microcontroller (with a current-limiting resistor), as long as the micro can sink and source the required current.
 
-# Filtering
+## Filtering
 
 Unfiltered H-bridges subject the load to square wave whose frequency is the same as frequency of the H-bridge switching elements.
 
@@ -59,7 +59,7 @@ This results in higher resistive losses in a complex load controlled by a PWM so
 
 The solution is to filter the switching H-bridge output, so the load sees a constant DC voltage. H-bridges can be filtered with two inductors and two capacitors, forming two low-pass filters on each side of the load.
 
-# External Links
+## External Links
 
 Speed Controllers URL: [http://homepages.which.net/~paul.hills/SpeedControl/SpeedControllersBody.html](http://homepages.which.net/~paul.hills/SpeedControl/SpeedControllersBody.html) Description: Really good site explaining half-bridges, full-bridges and regenerative breaking
 

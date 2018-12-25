@@ -7,7 +7,7 @@ type: page
 url: /programming/microcontrollers/psoc/porting
 ---
 
-# Porting From PSoC 5 To PSoC 3
+## Porting From PSoC 5 To PSoC 3
 
 When rewriting PSoC 5 code for compilation on a PSoC 3 device, these are some of the things you have to watch out for.
 

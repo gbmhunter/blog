@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/c/header-guards
 ---
 
-# Overview
+## Overview
 
 A header guard is a piece of code that goes at the top and bottom of a header file that prevents the file from being linked more than once at compile time. A header file can be included from many different c files. The guard only lets the first inclusion of the header file actually parse. This prevents all the coding errors you would receive if the same code was written twice such as multiple definition errors and variable over writing. Examples follow...
 
-# The "#ifndef" Way
+## The "#ifndef" Way
 
 Also, it is standard for system header files guard identifiers to begin with `__` (e.g. `#ifndef __IDENTIFIER_H`). You should not do that either! This is because macros beginning with `_<capital letter>` or `__` are part of a reserved namespace for system macros.
 
@@ -40,7 +40,7 @@ The identifier just has to be some unique word that won't be used as an identifi
 // EOF
 ```
 
-# The "#pragma once" Way
+## The "#pragma once" Way
 
 The other way to create a header guard is to use the #pragma once directive. This approach has been supported by most compilers for a smaller length of time than the #ifndef method, but in today's world you can be confident that most compilers support it (including GCC).
 
@@ -61,7 +61,7 @@ However, it is not supported by all preprocessors, so is not as portable as the 
 
 Note how there is no header guard syntax needed at the bottom of the file!
 
-# The #import Method
+## The #import Method
 
 The third and final way is to use the #import directive instead of #include. However, this is only considered standard in Objective-C, **and is deprecated in both C and C++**.
 

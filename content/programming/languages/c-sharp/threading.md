@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-sharp/threading
 ---
 
-# Updating The UI From Another Task
+## Updating The UI From Another Task
 
 In WPF, the "Dispatcher" is the way to call a function that belongs to a class in one thread from another thread.
 
@@ -23,7 +23,7 @@ _mainWindowHndle.Dispatcher.BeginInvoke(new Action(delegate()
 
 If you want the calling thread to wait until the dispatcher function has run to completion before continuing (i.e. synchronous execution), you can use the Invoke()  method rather than BeginInvoke() .
 
-# Locking
+## Locking
 
 Locking is the common way of making thread-safe code in C#. It is done with the keyword lock, which is a native keyword in C# (it doesn't require any library or .dll to be included for it to work).
 
@@ -54,7 +54,7 @@ void MethodUsedInMultipleThreads()
 }
 ```
 
-# Queues
+## Queues
 
 Queues are a good way of passing information between two asynchronous threads. The .NET language supports queues with the System.Collections.Generic.Queue<T>  class.
 

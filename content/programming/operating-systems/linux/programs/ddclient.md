@@ -7,13 +7,13 @@ type: page
 url: /programming/operating-systems/linux/programs/ddclient
 ---
 
-# Overview
+## Overview
 
 ddclient is a open-source client program written in Perl to update DNS entries on Dynamic DNS Servers. It supports a number of different routers and dynamic DNS servers.
 
 Website: [http://sourceforge.net/projects/ddclient/](http://sourceforge.net/projects/ddclient/)
 
-# Installing
+## Installing
 
 You can install it on Debian-based systems with the command:
 
@@ -23,7 +23,7 @@ $ sudo apt install ddclient
 
 While installing, it will ask you to configure at least one DNS service. You can change this again later by restarting the configuration program or by manually modifying the config file.
 
-# Running
+## Running
 
 After installing, you can run it with all the default settings by typing
 
@@ -39,7 +39,7 @@ $ ddclient --query
 
 For more commands, see the [Usage page on SourceForge](https://sourceforge.net/p/ddclient/wiki/usage/).
 
-# Config File
+## Config File
 
 The configuration file for ddclient is at /etc/ddclient.conf.
 

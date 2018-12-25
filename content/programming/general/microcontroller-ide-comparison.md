@@ -7,7 +7,7 @@ type: page
 url: /programming/general/microcontroller-ide-comparison
 ---
 
-# Overview
+## Overview
 
 Below is a comparison of some of the more popular microcontroller IDEs (integrated development environments).
 
@@ -15,7 +15,7 @@ The results from the 2012 embedded survey were interesting...
 
 {{< figure src="/images/programming-misc/embedded-vendor-which-has-the-best-ecosystem.png" caption="Results from a embedded design survey, showing what microcontroller users thought has the best ecosystem."  width="650px" >}}
 
-# AVR Studio
+## AVR Studio
 
 <table>
 	<tbody>
@@ -116,7 +116,7 @@ The **ASF** (Atmel Software Framework), is a collection of firmware libraries th
 
 Atmel Studio also promotes an integrated app-store, simulator (which of July 2014 only supports AVR devices), and shared workspace.
 
-# Eclipse
+## Eclipse
 
 <table>
 	<tbody >
@@ -201,7 +201,7 @@ Eclipse would be one of the most popular open-source IDE's out there. It's popul
 
 There are many different releases of Eclipse that you can download.
 
-# Keil uVision
+## Keil uVision
 
 
 

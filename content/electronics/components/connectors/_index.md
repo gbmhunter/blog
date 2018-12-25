@@ -7,11 +7,11 @@ type: page
 url: /electronics/components/connectors
 ---
 
-# Overview
+## Overview
 
 Unlike most other electrical components, most connector manufacturers do not append any letter codes in the part numbers for connectors, rather they are just a long sequence of numbers. This can make part recognition very confusing (e.g. when you see an IC with "74" in it's part name, you instantly think of digital logic). A standard way to indicate pin 1 on a connector PCB footprint is to make the copper pad surrounding the pin 1 hole to be a different shape than the rest (e.g. square, while all the others are round).
 
-# Terminology
+## Terminology
 
 <table>
 	<thead>
@@ -96,7 +96,7 @@ Unlike most other electrical components, most connector manufacturers do not app
 </table>
 
 
-# Connector Manufacturers
+## Connector Manufacturers
 
 <table >
 	<thead>
@@ -249,19 +249,19 @@ Mixing the two plating metals is not recommended! The corrosion rate is greatly 
 
 {{< figure src="/images/electronics-components/gold-and-tin-plated-contacts.jpg" caption="You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/."  width="900px" >}}
 
-# Mass Pinned Header's
+## Mass Pinned Header's
 
 These are good for making many connections between PCB boards, while holding the boards parallel or perpendicular to each other.
 
 Example: Harting 0903 296 6825 96pin DIN41612 Socket Element14 Code: 1096910
 
-# USB
+## USB
 
 USB plug assemblies (non pre-assembled plugs) are hard to come by. However, they do exist. Here is a picture of a Molex Mini-USB Type-B plug assembly.
 
 {{< figure src="/images/electronics-connectors/molex-mini-usb-type-b-plug-assembly-photo.jpg" caption="The Molex Mini Usb Type B plug assembly."  width="400px" >}}
 
-# Jumpers
+## Jumpers
 
 Jumpers are used to connect adjacent pins on a header together. They can also be called **zero-Ohm links **or** zero-Ohm resistors. **
 
@@ -271,7 +271,7 @@ The term zero Ohm resistor is usually reserved for a resistor package whose resi
 
 {{< figure src="/images/2011/09/keystone-5110-smd-0604-jumper-3d-model.jpg" width="222px" caption="3D model of the Keystone 0603 'true' zero-Ohm jumper. Image from http://www.keyelco.com/product.cfm/Zero-ohm-SMT-Jumpers/0603-Zero-ohm-SMT-Jumper/product_id/14038."  >}}
 
-# Spring-Loaded (Pogo) Connectors
+## Spring-Loaded (Pogo) Connectors
 
 Spring-loaded connectors (also called Pogo connectors after the similarity to a pogo stick), are connectors that use springs to push the pins of the connectors together to make an electrical connection. They are commonly used in scenarios where a fast, temporary connection is needed between two circuit boards (e.g. automatic test equipment/bed of nails testing devices, and in-circuit programming devices for microcontrollers).
 
@@ -283,7 +283,7 @@ They sell legged and no-legged versions. The legged versions have retainers (leg
 
 {{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-pcb-footprint.png" width="806px" caption="The recommended PCB footprint for accepting the TC2050-IDC-NL connector by Tag-Connect."  >}}
 
-# Circular Connectors
+## Circular Connectors
 
 ## DIN Connectors
 
@@ -302,13 +302,13 @@ Mini-DIN connectors are smaller versions of the DIN connectors and are 9.5mm in 
 
 Mini-DIN connectors have been used for the S-video interface.
 
-# Telecom Connectors
+## Telecom Connectors
 
 ## BT Connector
 
 The connector called the "BT" connector (which is an acronym for the British Telecom connector) is commonly used through out houses in many countries (including the U.K. and New Zealand) to plug into a  Telecom jack that is mounted on the wall. It's proper name is the BS6312 431A plug. You can get cheap BT to RJ-11 adapters.
 
-# Contactless Connectors
+## Contactless Connectors
 
 Contactless connectors is the name given to connectors which don't require a physical electrical contact between the two mating pieces (they still may require physical mechanical contact). They can transmit both signals and power from one side to the other. This is normally done through magnetic/capacitive coupling.
 

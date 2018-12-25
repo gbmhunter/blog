@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/sod-723-component-package
 ---
 
-# Overview
+## Overview
 
 <table>
 <tbody >
@@ -115,15 +115,15 @@ url: /pcb-design/component-packages/sod-723-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 n/a
 
-# 3D Render
+## 3D Render
 
 {{< figure src="/images/2015/04/sod-723-component-package-3d-render.jpg" width="351px" caption="A 3D render of the SOD-723 component package."  >}}
 
-# Other Images
+## Other Images
 
 {{< figure src="/images/electronics-packages/package-sod-723-recommended-land-pattern.png" caption="The recommended PCB land pattern for the SOD-723 component package."  width="500px" >}}
 

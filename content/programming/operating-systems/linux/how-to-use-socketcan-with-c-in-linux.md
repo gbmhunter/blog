@@ -7,13 +7,13 @@ type: page
 url: /programming/operating-systems/linux/how-to-use-socketcan-with-c-in-linux
 ---
 
-# Overview
+## Overview
 
 The Linux C/C++ API allows you to control a SocketCAN interface via a C/C++ application.
 
 SocketCAN supports _standard frame format_ (SFF), _extended frame format_ (EFF) and _CAN FD_ frames.
 
-# Reading And Writing
+## Reading And Writing
 
 The data for reading and writing to the CAN bus is communicated through the can_frame struct which is declared and defined in <linux/can.h>.
 
@@ -62,7 +62,7 @@ A `read()` system call transfers a `can_frame` or `canfd_frame` struct from the 
 
 Data is buffered internally, which means for virtual interfaces, you can do a write, pause, and then read the value back at a later time (you do not have to use separate threads/processes).
 
-# libsocketcan
+## libsocketcan
 
 _**libsocketcan**_ is a Linux library that provides some userspace functionality to control a SocketCAN interface. It provides functions such as **can_set_bitrate()**, **can_do_start()** and **can_do_stop()**.
 
@@ -88,7 +88,7 @@ You can install libsocketcan on your Linux machine by following the below steps:
 
 You should now have **libsocketcan.a** installed to **/usr/local/lib** and the header file** libsocketcan.h** installed to **/usr/local/include**.
 
-# External Resources
+## External Resources
 
 [https://www.kernel.org/doc/Documentation/networking/can.txt](https://www.kernel.org/doc/Documentation/networking/can.txt) is a great page detailing with the Linux C API for SocketCAN, including code examples and use cases.
 

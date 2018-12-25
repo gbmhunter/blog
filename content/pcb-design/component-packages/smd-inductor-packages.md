@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/smd-inductor-packages
 ---
 
-# Overview
+## Overview
 
 Inductor sizes are semi-standardized, that is, there are a few manufacturers that have a few ranges of inductors which follow standard footprints.
 

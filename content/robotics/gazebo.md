@@ -7,7 +7,7 @@ type: page
 url: /robotics/gazebo
 ---
 
-# Topics
+## Topics
 
 ## Topic Info At Runtime
 
@@ -23,7 +23,7 @@ Make sure Gazebo is running (the server) first.
 
 The tilde (`~`) in a topic name will be replaced with the default world path. Usually this is `/gazebo/default`.
 
-# Nodes
+## Nodes
 
 A Gazebo Node (`gazebo::transport::Node`) can advertise and subscribe to topics. The recommended way to create a Gazebo Node is through the use of the NodePtr type, which wraps a Node up in `boost::shared_ptr`.
 
@@ -43,7 +43,7 @@ imu_pub_ = node_handle_->Advertise<sensor_msgs::Imu>("~/imu", 1);
 
 `Advertise()` returns a pointer to the publisher. This can be used later to publish messages.
 
-# Plugins
+## Plugins
 
 Plugins are compiled are a shared library and are linked to Gazebo at runtime when needed.
 
@@ -127,7 +127,7 @@ As of Dec 2016 this package has 5 plugins:
 * GazeboRosMagnetic
 * GazeboRosSonar
 
-# Asserts
+## Asserts
 
 Gazebo provides a standard way to provide assertions through the macro:
 
@@ -143,7 +143,7 @@ GZ_ASSERT(x == 2, "x must equal 2.");
 
 `GZ_ASSERT` is just a wrapper around `BOOST_ASSERT_MSG()`.
 
-# Error Messages
+## Error Messages
 
 ## No namespace found
 
@@ -157,7 +157,7 @@ This is usually because a .world file is loaded which contains external models w
 
 The exact line of code which prints this error can be found in the [Node.cc file on BitBucket](https://bitbucket.org/osrf/gazebo/src/a1fb370811b64723827c4e40fa3867ccbd8fd584/gazebo/transport/Node.cc?at=default&fileviewer=file-view-default).
 
-# World Files
+## World Files
 
 World files contain all elements of a simulation, including robots, lights, sensors, and static objects. The files are in SDF format, and typically have a .world extension (this is not strictly enforced).
 
@@ -171,7 +171,7 @@ Models can be included into world files with the following syntax:
 
 If Gazebo has internet connectivity, it will search it's [online model database](https://bitbucket.org/osrf/gazebo_models) and download the appropriate models.
 
-# Environment Variables
+## Environment Variables
 
 Gazebo uses environment variables to configure how it operates. It uses the following environment variables:
 

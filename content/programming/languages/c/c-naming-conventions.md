@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/c/c-naming-conventions
 ---
 
-# Overview
+## Overview
 
 This page explains my preferred naming convention style for C code.
 
-# Variables
+## Variables
 
 All local variables (variables within a function) begin with a lower-case letter and use camel-case, including function pointers. Only the first letter in an acronym is capitalised, e.g.
 
@@ -33,7 +33,7 @@ void MyFunction()
 }
 ```    
 
-# Functions
+## Functions
 
 Functions start with the file/module name, an underscore, and then a description. All functions use camel-case and begin with a capital letter. For example, a function in a file called Gps.c would look like...
 
@@ -41,11 +41,11 @@ Functions start with the file/module name, an underscore, and then a description
 void Gps_GetLocation();
 ```    
 
-# Typedefs
+## Typedefs
 
 Typedefs aways end in _t. The helps the reader instantly distinguish a data type from anything else, and also serves to distinguish user defined data types (e.g. uint8_t, myType_t) from system data types (e.g. char, double, int).
 
-# Acronyms
+## Acronyms
 
 When it comes to capitalisation rules, acronyms are treated if they were a standard word, and only the first letter of the acronym is capitalised. For example, if you had a GPS variable, it would be named:
 

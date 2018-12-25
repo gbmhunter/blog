@@ -7,6 +7,6 @@ type: page
 url: /electronics/general/altium
 ---
 
-# Overview
+## Overview
 
 Altium is a powerful PCB design software suite. It supports schematic design, PCB design, SPICE simulation, library management, cloud interfaces, a scripting API and more.

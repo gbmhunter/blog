@@ -19,7 +19,7 @@ Current Hardware
 * Lights
 * High Power On/Off Relay
 
-# Current Hardware
+## Current Hardware
 
 ## Motor
 
@@ -581,7 +581,7 @@ Distance Between Centers: 90mm
 
 The belt was supplied with the wheels and axles.
 
-# Old Prototype Hardware
+## Old Prototype Hardware
 
 ## Motor
 

@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-sharp/closing-your-application
 ---
 
-# WPF
+## WPF
 
 A common way to close the application is to use the following command:
 

@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus
 ---
 
-# Overview
+## Overview
 
 This page covers C++ programming and it's use in embedded programming.
 
@@ -17,7 +17,7 @@ One of my favourite quotes:
 
 > C makes it easy to shoot yourself in the foot...C++ makes it harder, but when you do, it blows your whole leg off. - Bjame Stroustrup
 
-# Benefits Over C
+## Benefits Over C
 
 * Namespaces
 * Classes (which are just fancy and more powerful structs!)
@@ -33,7 +33,7 @@ One of my favourite quotes:
 * A full explanation of the source code from just looking at the header file (the class definition includes private objects as well as public).
 * Parameters lists for creating constructors
 
-# Disadvantages Over C
+## Disadvantages Over C
 
 * Not as much support for embedded systems. Any self-respecting embedded system has a compiler for C. However, C++ compilers are less common. Saying that, many of the most popular microcontrollers such as the ATmega, [8-bit Arduino's](/programming/microcontrollers/arduino) (which uses an ATmega anyway) support C++. And some of those that don't can be hacked to compile C++ (e.g. [PSoC 5](/programming/microcontrollers/psoc)).
 * Less transparent, loss of exact control over what the compiler generates
@@ -42,7 +42,7 @@ One of my favourite quotes:
 * Non-static class variables can't be initialised at the same time as the declaration (they have to be initialised either in the constructor or a purpose made Init() function.
 * It's more complicated! Every heard of a **protected abstract virtual base pure virtual private destructor?** Well, in C++, they do exist!
 
-# Mixing C With C++
+## Mixing C With C++
 
 C code can be mixed (aka compiled) with/alongside C++ code. One important thing to note that C can be compiled from inside C++ code, but C++ code cannot be compiled from C code. This means that the file that includes main() must be compiled with C++, but main can call external C functions.
 
@@ -50,13 +50,13 @@ C code can be mixed (aka compiled) with/alongside C++ code. One important thing 
 
 Name mangling is a technique used by C++ compilers to distinguish overloaded functions of the same name. The compiler adds some seemingly unintelligable characters to the end of overloaded functions (these characters are related to the input variables). C compilers do not do this as the C standard does not support overloaded functions (even though it looks like it, printf(string, variable1, variable2, ...) is not overloaded!). When cross-compiling, this has to be taken into consideration.
 
-# Compilers
+## Compilers
 
 Most embedded C++ compilers use GCC. The main competitor to the GCC compiler is Clang, however it is not as common in embedded environments (I have never personally used Clang to compile for an embedded application).
 
 See the [Linux Bash Commands For C++ page](/programming/languages/c-plus-plus/linux-bash-commands-for-cpp) for a quickstart C++ guide for Linux.
 
-# Constructors
+## Constructors
 
 There is a syntax ambiguity in C++ which normally appears when you are trying to create an object of a particular type, and using the default constructor. It is called the "[Most Vexing Parse](http://en.wikipedia.org/wiki/Most_vexing_parse)".
 
@@ -64,7 +64,7 @@ Constructors cannot be declared static, as it makes sense that they only belong 
 
 Constructors can take **parameter lists**, which along with constructors, is a new concept that is not present in C.
 
-# Namespaces
+## Namespaces
 
 Namespaces give you the ability to wrap functions and variables into groups. Calling functions or accessing variables within a namespace requires you to use the :: syntax, or by using the using namespace blah syntax (see the code examples below).
 
@@ -96,7 +96,7 @@ PutString("blah");
 // to the code reader and can cause ambiguities if there are functions with the same name.
 ```
 
-# Qualifiers
+## Qualifiers
 
 ## static
 
@@ -106,7 +106,7 @@ You can't declare a whole class as static, as you can in C#. All that a static c
 
 Static can be a good way to get around the annoying "pointer to non-static member function" error you get when mixing C++ with C (especially in embedded situations). This is because you CAN take a pointer to a static member function. Just remember about the other implications it has!
 
-# Forward Declarations
+## Forward Declarations
 
 Forward declarations can be used to resolve circular dependencies of pointers to classes (but only pointers, and not circular dependencies of objects, these are illegal).
 
@@ -142,7 +142,7 @@ namespace NsB
 }
 ```
 
-# External Resources
+## External Resources
 
 [C And C++ In 5 Days](http://itee.uq.edu.au/~comp3300/Resources/C_C++_notes.pdf) is a good PDF which provides help for both C and C++.
 

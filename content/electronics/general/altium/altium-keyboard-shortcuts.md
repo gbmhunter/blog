@@ -7,13 +7,13 @@ type: page
 url: /electronics/general/altium/altium-keyboard-shortcuts
 ---
 
-# Route With The Pro's!
+## Route With The Pro's!
 
 This is a selection of some of the most useful shortcuts in Altium. It is in no-way a complete guide but just lists the ones you'd normally care to remember. If you've never used Altium before, you'll soon see why they are needed when you see the menus for the first time :-).
 
 You may notice that although some keyboard shortcuts that perform the same function are the same key combo when switching between the schematic and PCB editor, other keyboard shortcuts in each are radically different! This is likely due to the fact Altium acquired the PCB editor from another company after they had already started writing the schematic editor, and decided to keep some of the proprietary PCB keyboard shortcuts.
 
-# Schematic Designer
+## Schematic Designer
 
 ## General
 
@@ -47,7 +47,7 @@ You may notice that although some keyboard shortcuts that perform the same funct
 
 **T, A, A**: Open the "Annotate" window. You can use **T, A, U** instead to perform a "quick annotate".
 
-# PCB Designer
+## PCB Designer
 
 ## General
 
@@ -127,6 +127,6 @@ You may notice that although some keyboard shortcuts that perform the same funct
 
 **G**: Cycle through the predefined grids.
 
-# Scripting
+## Scripting
 
 **Ctrl-Space**: Provides a list of available commands, very helpful!

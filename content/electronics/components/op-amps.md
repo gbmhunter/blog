@@ -7,13 +7,13 @@ type: page
 url: /electronics/components/op-amps
 ---
 
-# Overview
+## Overview
 
 At it's most basic level, an operational amplifier (op-amp) is a discrete analogue integrated circuit which acts as a voltage-amplifier with very high gain.
 
 Note that an op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). It can also be converted into a current amplifier.
 
-# Schematic Symbol
+## Schematic Symbol
 
 An op-amp is commonly drawn on schematics as:
 
@@ -23,7 +23,7 @@ You may see this symbol with or without the voltage supply pins `\( V_{S+} \)` a
 
 **WARNING:** Always take note of the position of the inverting (-) and non-inverting (+) input terminals. Sometimes they can be drawn swapped around relative to the symbol shown above.
 
-# Uses
+## Uses
 
 * Buffers
 * Linear amplifiers, non-linear amplifiers
@@ -31,7 +31,7 @@ You may see this symbol with or without the voltage supply pins `\( V_{S+} \)` a
 * Analogue mathematical operations (differentiators, integrators, summer, subtracters, e.t.c)
 * Voltage to current (transconductance) and current to voltage conversions (transimpedence)
 
-# Configurations
+## Configurations
 
 ## Voltage Follower (aka Buffer)
 
@@ -135,7 +135,7 @@ A transconductance amplifier is useful creating an industry standard 4-20mA (o
 
 One dis-advantage with this design is that the current output is not ground referenced, that is, ground is not used as the return path for the current. This complicates the wiring.
 
-# Important Variables
+## Important Variables
 
 Sorted alphabetically.
 
@@ -165,7 +165,7 @@ The input impedance is the internal resistance to ground from the two input pins
 
 This defines the voltage range at which the op-amp can drive the output. The LM324 is rumoured to only be able to drive the output near ground if it is sourcing current, but only to 0.5V minimum if sinking (see this EDA Forum post, [LM324 Opamp Gain Instability](http://www.edaboard.com/thread209783.html)).
 
-# Cascading Op-Amps
+## Cascading Op-Amps
 
 Cascading op-amps is concept when the output of one op-amp is connected to the input of another. There can be an arbitrary number of op-amps in the cascade, but usual limits are 3-4.
 
@@ -194,11 +194,11 @@ If all of the op-amps are identical, then the following equation can be used:
 
 The above equation gives diminishing returns with every additional op-amp added.
 
-# Feedback Resistor Values
+## Feedback Resistor Values
 
 As a rule-of-thumb, you should use the lowest acceptable resistances in op-amp feedback paths to reduce instabilities.
 
-# Rail-to-Rail Op-amps
+## Rail-to-Rail Op-amps
 
 What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-amps that can run from a single voltage supply, rather than requiring a dual positive/negative supply) market op-amps as _rail-to-rail_, and that the output of the op-amp can swing from ground to the positive rail. This is not exactly true. The op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. This voltage drop increases with the amount of current the op-amp is supplying to the load.
 
@@ -208,7 +208,7 @@ What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-
 
 {{< figure src="/images/2011/09/lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png" width="688px" caption="The typical application schematic for the Texas Instruments LM7705, a 'Low-Noise Negative Bias Generator' for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/."  >}}
 
-# Examples
+## Examples
 
 Below are some examples of op-amps that stand out from the crowd for some reason, be it popularity, years in service, or functionality wise.
 
@@ -246,7 +246,7 @@ Below are some examples of op-amps that stand out from the crowd for some reason
 <td >$3.50
 </td></tr></tbody></table>
 
-# Isolation Amplifiers
+## Isolation Amplifiers
 
 Isolation amplifiers provide galvanic isolation between the input (sensor) and output (measurement circuitry). They are used to protect the sensor measurement and recording circuitry (e.g. a microcontroller with on-board ADC) from dangerously high voltages at the sensor, and also the opposite, to protect the sensor environment from potentially dangerous voltages on the rest of the system.
 

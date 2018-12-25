@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus/type-conversion
 ---
 
-# C-Style Casting
+## C-Style Casting
 
 C++ supports basic C-style casting. C-style casting is in the form:
 
@@ -23,7 +23,7 @@ int num1 = 5;
 double num2 = double(num1); // Notice brackets enclose the variable, not the type
 ```
 
-# C++ Casting Operators
+## C++ Casting Operators
 
 C++ introduces four new ways of casting (compared to C). This includes static_cast, dynamic_cast, reinterpret_cast and const_cast.
 

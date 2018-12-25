@@ -7,13 +7,13 @@ type: page
 url: /electronics/components/capacitors
 ---
 
-# Overview
+## Overview
 
 Capacitors are a passive electronic component that stores charge between two conductive surfaces. The conductive surfaces (plates) are usually very close together, with a dielectric inbetween, to maximize the capacitance for a given size. They are a popular component, that along with resistors, make up the two most commonly used components on a circuit board. They come in a large range of sizes, from water tank sized caps to small SMD capacitors and capacitors formed from tracks on PCB's.
 
 **The mechanical equivalent of a capacitor is a spring**. The larger the capacitance, the stronger the spring. This is using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) mechanical equivalent.
 
-# Schematic Symbol
+## Schematic Symbol
 
 Below is a table of most of the capacitor schematic symbols in use.
 
@@ -35,7 +35,7 @@ Below is a table of most of the capacitor schematic symbols in use.
 
 </td></tr></tbody></table>
 
-# Uses
+## Uses
 
 Some of the well-known uses for capacitors are:
 
@@ -49,7 +49,7 @@ Some of the well-known uses for capacitors are:
 
 A **feedforward capacitor** is the name given to capacitor between the VOUT and ADJ pins of a linear regulator to improve stability.
 
-# Types
+## Types
 
 ## Ceramic
 
@@ -376,7 +376,7 @@ Door knob (or barrel) capacitors are a form of ceramic capacitor named after the
 
 {{< figure src="/images/2011/09/door-knob-capacitors.jpg" width="666px" caption="Ceramic, high-voltage 'door-knob' capacitors. Image from www.trademe.co.nz."  >}}
 
-# Dielectric Constants Of Common Materials
+## Dielectric Constants Of Common Materials
 
 Sorted by alphabetic order.
 
@@ -523,7 +523,7 @@ The dielectric of air changes with humidity, pressure and temperature.
 <td >100ppm/atm
 </td></tr></tbody></table>
 
-# Capacitors In Series And In Parallel
+## Capacitors In Series And In Parallel
 
 The behaviour of capacitors when connected together in series and in parallel is exactly the opposite behvaiour of what resistors and inductors exhibit.
 
@@ -559,7 +559,7 @@ Notice how the total equivalent capacitance is less than any one capacitor in th
 
 One of the benefits of connecting capacitors in series is that each capacitor only sees a portion of the total applied voltage, hence you can apply a higher voltage than the max rated voltage for any single capacitor. However, care must be taken to make sure the capacitors don't build up a **charge imbalance**, which could cause a single capacitor to take more than it's fair share of voltage, and blow up! A balancing circuit can be made by connecting a high-value resistor(e.g. \(1M\Omega\)) across each capacitor. This causes any unbalanced build-up of charge to dissipate through the resistors, at the expense of increasing the leakage current of the circuit (remember, capacitors have an internal leakage current also). This is similar to how a battery cell charge balancing circuit works.
 
-# Formulas
+## Formulas
 
 ## Charge
 
@@ -668,7 +668,7 @@ The capacitance of two concentric cylinders as shown in the diagram above is:
     and all other variables as previously mentioned<br>
 </p>
 
-# Equivalent Series Resistance (ESR)
+## Equivalent Series Resistance (ESR)
 
 Ceramic SMD capacitors have very low ESRs. In fact, in certain applications, this can be a bad thing (such as the input/output stabilization capacitors for linear regulators and DC/DC converters), and either tantalums are used or resistance has to be added in series with the capacitor. Since usually only milli-Ohms is required, this can be done with an appropriately sized PCB track which is usually snaked to the capacitor terminal.
 
@@ -690,7 +690,7 @@ Electrolytic capacitors typically have a large ESR (there are special low-ESR ty
 
 Since the ESR is proportional to the capacitor's plate area, for a similar capacitor designs, the ESR decreases with increasing capacitance.
 
-# Leakage Currents
+## Leakage Currents
 
 Leakage currents are present in all types of capacitor. Leakage current is the sum of electrical losses from energy required to build up the oxide layers, weaknesses in the dielectric, tunnel effects, and cross currents. They are typically increase proportionally to the capacitance of the capacitor. We can reduce the leakage current down to two main factors, the absorption current `\( I_{abs} \)`, and the intrinisic leakage current `\( I_{il} \)`.
 
@@ -743,7 +743,7 @@ Leakage current becomes an important parameter to consider when designing long-l
 
 Because of the small current's/total energy involved, you can't really measure the leakage current of a capacitor with standard multimeter. One way is to use a dedicated high-resistance meter, commonly called a megaohm meter or insulation resistance tester.
 
-# Voltage Dependence
+## Voltage Dependence
 
 Some types of capacitors have a capacitance which changes depending on the applied voltage (well, technically, all do, but I'm talking about a significant/useful change).
 
@@ -755,13 +755,13 @@ The bad news is that this also adversely affects the capacitance in situations w
 
 This can upset op-amp gains, frequency cut-off points of filters, and the time constant of RC oscillators.
 
-# Decoupling
+## Decoupling
 
 Capacitors are commonly used for decoupling, as this following schematic shows (taken from the Raspberry-Pi PCB design).
 
 {{< figure src="/images/2011/09/decoupling-caps-schematic-example-on-r-pi-pcb.png" width="396px" caption="Example usage of decoupling capacitors for IC's. Schematic is from the Raspberry-Pi PCB. Image from http://www.raspberrypi.org/wp-content/uploads/2012/04/Raspberry-Pi-Schematics-R1.0.pdf."  >}}
 
-# Mains Line Filters
+## Mains Line Filters
 
 Capacitors used on mains lines for filtering are usually rated with the "XY" scheme.
 
@@ -795,13 +795,13 @@ They are also given a number to represent there impulse test rating, as shown in
 <td >5,000
 </td></tr></tbody></table>
 
-# Dielectric Soakage
+## Dielectric Soakage
 
 A weird and little known about property of capacitors is their ability to seemingly 'create' energy and charge themselves up when left in certain conditions. This can be particularly dangerous with high voltage capacitors such as the old oil-filled paper capacitors, which would charge themselves up and then give anyone a shock who was unfortunate enough to get too close.
 
 It's called dielectric soakage because it's essentially a property of the dielectric which retains some of the charge if a capacitor is discharged quickly and then left open circuit. The voltage climb can be up to 10% of the original voltage on the capacitor.
 
-# Charge Pumps (Bootstrapping)
+## Charge Pumps (Bootstrapping)
 
 A charge pump (also commonly called **bootstrapping**), is a way of using capacitors to generate a voltage higher than the supply. A typical charge-pump circuit has two capacitors and two diodes, and requires an oscillating input.
 
@@ -822,7 +822,7 @@ The following circuit shows a charge pump circuit used to generate -5V from a +5
 
 {{< figure src="/images/2011/09/charge-pump-based-negative-voltage-gen-schematic.png" width="1157px" caption="This schematic shows a charge pump circuit used to generate -5V from a +5V PWM signal."  >}}
 
-# Capacitor Packages
+## Capacitor Packages
 
 Through-hole capacitors can usually be used in a surface mount fashion by lying the caps down on the board, bending the legs 90 degrees, and soldering them onto pads on the PCB.
 
@@ -986,7 +986,7 @@ Ceramic chip capacitors usually have a three letter code which describes the max
 <td style="text-align: center;" >+22, -82
 </td></tr></tbody></table>
 
-# Feedthrough Capacitors
+## Feedthrough Capacitors
 
 Feedthrough (or feedthru) capacitors are special three-terminal capacitors (sometimes with four connections) used for **suppression** of **RF noise**. They are also known under the more general name of an _EMI suppression filter_ or _three-terminal capacitor._
 
@@ -1006,7 +1006,7 @@ Many smaller, PCB suitable feedthrough capacitors come in [chip packages](/pcb-
 
 Feedthrough capacitors are commonly used in [RC, LC, π and t-type filters](/electronics/circuit-design/filtering/passive-filters) when good RF performance is required.
 
-# Repairing Electrolytics
+## Repairing Electrolytics
 
 When electrolytic capacitors get old, they can dry out and stop working properly (for example, their capacitance can reduce and/or maximum dielectric voltage drop). There are many sources quoting that electrolytic capacitors can be repaired by ramping the voltage slowly up to its full rated voltage. It is meant to repair the aluminium oxide dielectric layer.
 
@@ -1016,7 +1016,7 @@ This can be done with power supply set the rated voltage and a high-power (e.g. 
 
 {{< figure src="/images/2011/09/capacitor-voltage-graph-while-charging-through-resistor-for-reforming.png" width="399px" caption="Graph of an electrolytic capacitor charging through a resistor to reform the aluminium oxide. The graph part of the image from http://www.antonine-education.co.uk/Pages/Electronics_2/Timing_Subsystems/RC_Networks/further_page_2.htm."  >}}
 
-# Energy Loss While Charging A Capacitor
+## Energy Loss While Charging A Capacitor
 
 An interesting phenomenon occurs when charging a capacitor from a fixed voltage source (e.g. battery or power supply). Assuming a real-world world situation, there is always going to be some resistance between the voltage source and capacitor. **Exactly the same amount of energy** is dissipated through this resistance as is stored in the capacitor when charging it up to the voltage source voltage `\(V_{cc}\)`. It **doesn't matter how large or small** this resistance is! The resistance could just be the ESR of the capacitor, or it could be a dedicated resistor placed in series to limit the inrush current.
 

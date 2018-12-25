@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/arithmetic-operators
 ---
 
-# C Arithmetic Operators Cheat Sheet
+## C Arithmetic Operators Cheat Sheet
 
 
 <table>
@@ -63,7 +63,7 @@ Tenary
 </tbody>
 </table>
 
-# Increment/Decrement
+## Increment/Decrement
 
 Increment and decrement are two of the most basic operators in the C programming language. They are examples of a unary operator (an operator that only needs one variable). They are only valid on integer types and serve to increment or decrement the number by 1.
 
@@ -91,7 +91,7 @@ while(x --> 0) // This looks like C has a "countdown to" operator!
 
 As you have probably worked out, `while(x --> 0)` is not a "countdown to" operator but rather a decrement operator with a space (`x --`), followed by a greater than symbol `>`.
 
-# Bitshifting
+## Bitshifting
 
 Bitshifting is the process of shifting the bits of a binary number to the left or the right. Bits which disappear of the end of the number are lost, and bits which a shifted onto the other end of the variable can be 0's or 1's, this is dependent on the compiler and the data type you are operating on. This makes them **non-circular shifts**.
 
@@ -109,7 +109,7 @@ temp = temp >> 3;
 
 Bitshifting by 0 does not modify the variable (and is likely to be optimised out by the compiler). Java has a logical (unsigned) right shift operator, >>> which is used to specify the the value should always be padded with 0's, and not whatever is the most-significant bit. C (and C++) do not have this operator, and the compiler chooses which operation to do based on the data type you are operating on.
 
-# Modulus
+## Modulus
 
 The modulus operator (`%`) returns the remainder of an integer division. and is commonly used to manipulate binary numbers (especially to get a number that loops from 0 to a set amount and back again). For example, if you had a 32-bit counter that increased by 1024 counts per second (e.g. 1 second = 1024, 2 seconds = 2048, e.t.c), you could use the modulus operator to do counter % 1024 to return a number that varied from 0-1023 each second.
 

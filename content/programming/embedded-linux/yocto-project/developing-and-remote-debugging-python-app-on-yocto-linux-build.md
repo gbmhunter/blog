@@ -7,11 +7,11 @@ type: page
 url: /programming/embedded-linux/yocto-project/developing-and-remote-debugging-python-app-on-yocto-linux-build
 ---
 
-# Overview
+## Overview
 
 This tutorial uses PyCharm as the IDE.
 
-# Adding Python, SSH and sudo To The Linux Image
+## Adding Python, SSH and sudo To The Linux Image
 
 First, you will need to make sure all the right stuff is installed on the Linux image you build using Yocto. We wiTo do this, add the following line to your build/conf/local.conf file:
 
@@ -27,7 +27,7 @@ Then use the bitbake ... command to re-build your image, load it up on your embe
 python -version
 ```
 
-# Add Password To Root User
+## Add Password To Root User
 
 While you are still logged into the embedded device, set up a password for root. PyCharm requires a password, otherwise it gets a little buggy further down the track. To do this, use the command:
 
@@ -37,7 +37,7 @@ passwd root
 
 Enter a password in at the prompt.
 
-# Setup Deployment In PyCharm
+## Setup Deployment In PyCharm
 
 In PyCharm, click Tools->Deployment->Configuration. Click the + to create a new deployment entry.
 
@@ -45,7 +45,7 @@ Set the type to SFTP. Set the SFTP host to the IP address of your embedded devic
 
 Click "Autodetect" to find out what the root path should be. On my embedded device, the root path was /home/root.
 
-# Add Remote Interpreter To PyCharm
+## Add Remote Interpreter To PyCharm
 
 Now we need to setup PyCharm. Create a new project called helloworld for testing purposes. Click File->Settings->Project: helloworld->Project Interpreter.
 

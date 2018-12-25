@@ -7,7 +7,7 @@ type: page
 url: /programming/microcontrollers/beaglebone
 ---
 
-# BeagleBone Black
+## BeagleBone Black
 
 The BeagleBone black is a credit-card sized embedded computer, competitive in pricing, size, and features to the RaspberryPi.
 

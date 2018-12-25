@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/qfn-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table >
@@ -172,13 +172,13 @@ A QFN-like package with pins on only two of the fours sides is a SON package (DF
 
 Confusingly, NXP names it's range of QFN  packages with SOT... (e.g, SOT-662-1), a name which is commonly reserved for transitory packages such as the popular SOT-23.
 
-# Solder Mask
+## Solder Mask
 
 TI recommends a non-solder mask defined (NSMD) pad over a solder mask defined (SMD) pad. This is to produce consistent and reliable solder joints. As a rule-of-thumb, you want solder mask openings that are 0.1-0.14mm larger than the pad size. By default, Altium uses NSMD pads.
 
 Some QFN packages have an exposed metal feature on the underside to indicate pin 1. If this is the case, make sure this area is covered with solder mask to prevent shorting to neighbouring traces. This is an unusual feature, and personally I have not used any QFN packages with this present.
 
-# Solder Paste
+## Solder Paste
 
 It is recommended to reduce the amount of solder paste applied to the centre pad to prevent the QFN package from floating during reflow. A rule-of-thumb is to have between 50-80% coverage on the center pad (this obviously does not apply to QFN packages with no pad).
 
@@ -201,7 +201,7 @@ It is recommended to reduce the amount of solder paste applied to the centre pad
 
 It may be necessary to mask or plug vias in the center pad to prevent solder paste being carried through the via and away from the pad during reflow. Small holed vias (such as vias with a hole diameter of 0.3mm or less) do not normally cause a big problem.
 
-# Singulation Methods
+## Singulation Methods
 
 There are two singulation methods for QFN packages:
 
@@ -214,15 +214,15 @@ The main difference between these two singulation methods is the cross-sectional
 
 Punch singulated QFN packages are JEDEC compliant.
 
-# Voiding
+## Voiding
 
 Volatiles that get trapped underneath the pad during reflow can cause voids to form underneath the component (areas in where the pad is not soldered to the PCB). Another potential cause of voiding is when too much solderpaste is applied to the centre pad, which causes the package to float on the PCB during reflow.
 
-# Stresses
+## Stresses
 
 Because the QFN package sits directly on the PCB and has no standoff, they are less resilient to mechanical stresses that say, QFP packages. The amount of PCB board flex must be taken into consideration. Excessive stress can damage a QFN package.
 
-# Lead Styles
+## Lead Styles
 
 <table >
 <tbody >
@@ -240,7 +240,7 @@ Because the QFN package sits directly on the PCB and has no standoff, they are l
 </tbody>
 </table>
 
-# Unique Corner Pins
+## Unique Corner Pins
 
 QFN packages exist in where the **corner pins have to be of a different shape** to all the others for **clearance reasons**. The only example of this I have ever seen is the package for the [IvenSense MPU-9250 IMU](https://www.invensense.com/products/motion-tracking/9-axis/mpu-9250/). It is a QFN package with 24 pins in a 3x3x1.0mm size with 6 0.40mm pitch pins on each edge. Because of the high pin density, the outer pins on each edge almost touch each other, and so a different pin shape is used. This also means you use a different pad shape for the package footprint.
 
@@ -254,7 +254,7 @@ QFN packages exist in where the **corner pins have to be of a different shape** 
 </tbody>
 </table>
 
-# Standardization Of Pinout For Logic Functions
+## Standardization Of Pinout For Logic Functions
 
 JEDEC has a standard on the pinout of QFN packages for logic functions.
 

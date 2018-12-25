@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-sharp/graph-drawing
 ---
 
-# NPlot
+## NPlot
 
 {{< figure src="/images/programming-misc/nplot-screenshot.png" caption="Screenshot of the NPlot charting library for .NET. Features a 2D candleplot, filled region, line plot and datetime axis."  width="300px" >}}
 
@@ -23,7 +23,7 @@ Graphing program that hasn't had much development recently, but still relatively
 
 External Link: [http://netcontrols.org/nplot/wiki/](http://netcontrols.org/nplot/wiki/)
 
-# OxyPlot
+## OxyPlot
 
 * Supported Platforms: .NET (WPF)
 * Dimension Support : 2D
@@ -49,7 +49,7 @@ LineSeries ls = new LineSeries();
 ls.smooth = true;
 ```
 
-# RadChart
+## RadChart
 
 {{< figure src="/images/programming-misc/telerik-radchart-screenshot.png" caption="Screenshot of the Telerik charting library for .NET applications. Comes with some very nice skins and tutorials."  width="300px" >}}
 
@@ -116,7 +116,7 @@ private void DrawInstantaneousGraph(RadChart radChart)
 }
 ```
 
-# ZedGraph
+## ZedGraph
 
 {{< figure src="/images/programming-misc/zedgraph-screenshot.png" caption="Screenshot of the ZedGraph charting library for .NET. One of the most powerful and widely used free charting libraries."  width="300px" >}}
 

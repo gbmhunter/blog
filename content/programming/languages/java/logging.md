@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/java/logging
 ---
 
-# Overview
+## Overview
 
 Java provides advanced logging functionality through the `java.util.Logging` class.
 
-# Creating An Instance
+## Creating An Instance
 
 It is common practise to declare a single (static) instance of a Logger per class. This technique also forgoes dependency injection.
 
@@ -27,19 +27,19 @@ public class LoggingExample {
 }
 ```
 
-# Handlers
+## Handlers
 
 A Logger object actually passes all of it's logging data to a Handler object, which then outputs the log data to wherever it is needed.
 
 A Handler object has it's own priority. Even though the Logger's level might be set to Level.ALL, if the Handler object's level is only set to Level.INFO, then the log data will never be "logged".
 
-# Hierarchy And Record Forwarding 
+## Hierarchy And Record Forwarding 
 
 Logger objects support (and are aware of) their hierarchy. Logger objects will send output log data (a LogRecord) to all attached handlers, **and to their parent (or higher ancestor) Logger object** (if any). This is called _record forwarding_.
 
 The **parent Logger does not perform any level or filter checks**, but instead immediately forwards the LogRecord onto all of it's handlers, and any parent Logger objects.
 
-# LogManager
+## LogManager
 
 The LogManager object is a central control room for all Logger objects within your application. Only one instance can exist, and can be obtained by calling:
 

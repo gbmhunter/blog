@@ -7,11 +7,11 @@ type: page
 url: /programming/operating-systems/linux/programs/kill
 ---
 
-# Overview
+## Overview
 
 `kill` is a UNIX-based program that makes it easy to "kill" (stop running) process running in the operating system.
 
-# Find And Kill Processes By Name
+## Find And Kill Processes By Name
 
 You can use the following bash shell command to find and kill processes by name (or partially by name). This is good if you have a bunch of related processes you want to kill and don't want to manually hunt down their PID's first.
 

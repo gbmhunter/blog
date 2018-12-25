@@ -7,12 +7,12 @@ type: page
 url: /electronics/projects/hho-fuel-cell
 ---
 
-# Overview
+## Overview
 
 An HHO fuel cell (also called a hydrogen generator) is an device which splits water into it's constitute parts, hydrogen and oxygen, using electricity.
 
 My brother actually designed and made this fuel cell, I thought it was so cool I decided to add it too my site anyway!
 
-# Images
+## Images
 
 {{< gallery dir="/images/project-hhofuelcell" />}}

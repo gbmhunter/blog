@@ -17,24 +17,24 @@ Examples tested on Ubuntu v12.04.
 # Install GNU C compiler and other essential C programs onto Linux platform
 sudo apt-get install build-essential
 
-# Creates c file called main.c in current directory and opens gedit to begin editing it
+## Creates c file called main.c in current directory and opens gedit to begin editing it
 # (and frees terminal)
 gedit main.c &
 
-# Compiles C program main.c with standard flags and creates executable called main
+## Compiles C program main.c with standard flags and creates executable called main
 gcc -Wall -W -Werror main.c -o main
 
-# Run a compiled executable called main in the current directory
+## Run a compiled executable called main in the current directory
 # Note that './' is mandatory, otherwise bash will think you have typed a command
 ./main
 
-# Change file permissions on executable called main so that it will run (if experiencing 'Permission denied' errors)
+## Change file permissions on executable called main so that it will run (if experiencing 'Permission denied' errors)
 chmod +x main
 
-# Compiles C program main.c and creates executable called main with debugging symbols
+## Compiles C program main.c and creates executable called main with debugging symbols
 gcc -Wall -W -Werror main.c -o main -g
 
-# Starts debugging session on compile program called main.
+## Starts debugging session on compile program called main.
 # Make sure -g flag was used when compiling
 gdb main
 

@@ -7,11 +7,11 @@ type: page
 url: /programming/operating-systems/linux/programs/tar
 ---
 
-# Overview
+## Overview
 
 `tar` is a UNIX utility program which can be used to package and unpackage files using the `.tar` format. It is commonly used along with `gzip` to produce compressed archives (usually with the `.tar.gz` extension).
 
-# What About .tar.gz Files?
+## What About .tar.gz Files?
 
 .tar.gz files are files which have been packaged by tar, and then compressed with `gzip`. Fortunately, tar can both decompress and unpackage in one step.
 
@@ -76,7 +76,7 @@ To compress an archive in **as little typing as possible**:
 $ tar cf my_archive.tar.gz *
 ```
 
-# Decompress To A Specific Folder
+## Decompress To A Specific Folder
 
 By default, `tar` will decompress the files into the current working directory. Sometimes you will want to specify the folder manually. To do this with the GNU version for tar, you can use the `-C` option.
 
@@ -88,7 +88,7 @@ Note that `destination_folder` has to already exist, tar will not create it for 
 
 `--directory` is the long name for `-C`.
 
-# What About .tar.xz Files?
+## What About .tar.xz Files?
 
 `tar` can also decompress and extract `.tar.xz` files. The `-J` flag can be used to specifically deal with `.xz` files:
 

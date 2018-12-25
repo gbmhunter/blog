@@ -7,17 +7,17 @@ type: page
 url: /programming/integrated-development-environments-ides/visual-studio-code
 ---
 
-# Overview
+## Overview
 
 Visual Studio Code is a free, multi-platform, open-source code editor from Microsoft.
 
 {{< figure src="/images/2017/11/visual-studio-code-icon-large.png" width="272px" caption="The icon for Microsoft's Visual Studio Code."  >}}
 
-# Keyboard Shortcuts
+## Keyboard Shortcuts
 
 Reformat Code: Ctrl-Shift-I (Linux)
 
-# C/C++
+## C/C++
 
 Visual Studio Code has relatively good support for C and C++.
 

@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/wson-component-package
 ---
 
-# Overview
+## Overview
 
 <table><tbody ><tr >
 <td >Name
@@ -71,7 +71,7 @@ SOIC
 </ul>
 </td></tr></tbody></table>
 
-# Comments
+## Comments
 
 The WSON package has a exposed thermal pad on the underside. However, it is not normally electrically connected to anything, and is optionally soldered to the PCB. It is recommended to be soldered when the PCB has a large amount of flex, else left unconnected.
 

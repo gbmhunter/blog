@@ -7,17 +7,17 @@ type: page
 url: /programming/languages/vbscript
 ---
 
-# Overview
+## Overview
 
 Visual basic is one of the scripting languages you can use to write [code for interfacing with the PCB design software Altium,](/electronics/general/altium/altium-scripting-and-using-the-api) through it's provided API.
 
-# The Basics
+## The Basics
 
 VBScript is not case-sensitive. That is, the variable myInt is the same as the variable myint. This said, I prefer to capitalise the start of any system word in VBScript (e.g. And, For, If, End If, Dim).
 
 There is no end of command/end of line delimiter. This is probably one of the first things you will notice when coming from [another language such as C](/programming/languages/c).
 
-# Variables
+## Variables
 
 Variables are defined with the keyword Dim. However, by default, you do not need to do this before using them (you can create them on the fly).
 
@@ -31,7 +31,7 @@ Option Explicit
 
 This forces you to declare every variable with Dim before using it. I make sure to add this to the top of every file!
 
-# Comments
+## Comments
 
 Single-line comments are started with the ' character, and continue until a new line occurs.
 
@@ -39,7 +39,7 @@ Single-line comments are started with the ' character, and continue until a new 
 Dim myVar ' This is a single-line comment
 ```
 
-# Strings
+## Strings
 
 Strings are delimited by double-quotation marks (").
 
@@ -56,7 +56,7 @@ VbLf ' Line feed
 
 You can format doubles into strings with the function `FormatNumber()`.
 
-# Regex
+## Regex
 
 Regex is particularly easy in VBScript, as it comes with a built-in regex engine (as of VBScript v5.0). Regex is performed through iteration with the RegExp object. The regex syntax in VBScript is very similar to that used for JScript.
 
@@ -200,7 +200,7 @@ If regex.Test(componentDesignator) Then
 End If
 ```
 
-# Integers
+## Integers
 
 A unary operator for easy increment/decrement is not supported (like ++ and -- in C), so the best way is to just use:
 
@@ -208,7 +208,7 @@ A unary operator for easy increment/decrement is not supported (like ++ and -- i
 myInt = myInt + 1
 ```
 
-# Function Pointers
+## Function Pointers
 
 Function pointers, in the C style of using them, are not available in VBScript. However, you can use the GetRef() function to get similar functionality.
 
@@ -227,7 +227,7 @@ Call myFunc()
 
 `GetRef()` is one of the functions you can't use when doing [Altium Scripting](/electronics/general/altium/altium-scripting-and-using-the-api).
 
-# Sets (The MkSet()/InSet() Functions)
+## Sets (The MkSet()/InSet() Functions)
 
 Sets of objects are supported in VBScript through the MkSet() and InSet() functions. It creates a set of the given input objects. You can have a maximum of 32 objects in a set. You can also create an empty set, by providing no input variables.
 
@@ -243,7 +243,7 @@ set2 = MkSet()
 
 Sets are a common design object used in a number of other scripting languages such as DelphiScript, JScript, C++Script and C#Script.
 
-# Trigonometry
+## Trigonometry
 
 VBScript has no built in value for Pi. What?!? The best way to do this is to use the following expression:
 

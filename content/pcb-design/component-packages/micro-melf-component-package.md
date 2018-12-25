@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/micro-melf-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table>
@@ -125,14 +125,14 @@ url: /pcb-design/component-packages/micro-melf-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 Some versions have squared bits in the middle, making it easier to place one on a PCB and solder without it rolling around. 0Ω resistors in this package usually have a single centered black line.
 
-# Photos
+## Photos
 
 {{< figure src="/images/2015/04/micro-melf-component-package-photo.jpg" width="360px" caption="A photo of the Micro-MELF component package."  >}}
 
-# Images
+## Images
 
 {{< figure src="/images/electronics-packages/component-package-micro-melf-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the Micro-MELF component package. Image from http://www.vishay.com/docs/20003/smm0102.pdf."  width="500px" >}}

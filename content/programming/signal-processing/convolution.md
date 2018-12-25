@@ -7,17 +7,17 @@ type: page
 url: /programming/signal-processing/convolution
 ---
 
-# Overview
+## Overview
 
 Convolution is a mathematic operation that can be performed on two functions, which produces a third output function which is a "blend" of the two inputs.
 
 Convolution can be thought of as a measure of the amount of overlap of one function as it is shifted over the other function
 
-# Formal Definition
+## Formal Definition
 
 <div>$$ f \ast g = \int_{-\infty}^{\infty} f(\tau)\ g(t - \tau) d \tau $$</div>
 
-# Mathematical Properties
+## Mathematical Properties
 
 Convolution is **commutative**:
 

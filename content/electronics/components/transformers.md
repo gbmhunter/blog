@@ -7,13 +7,13 @@ type: page
 url: /electronics/components/transformers
 ---
 
-# Transformation Ratio
+## Transformation Ratio
 
 For an **ideal transformer**, the voltage of the output (secondary) compared to the input (primary) is directly related to the ratio between the number of turns on the output compared to the input.
 
 <div>$$ \frac{V_P}{N_P} = \frac{V_S}{N_S} $$</div>
 
-# Power Equivalence
+## Power Equivalence
 
 Remember, energy cannot be created nor destroyed. Therefore, for an **ideal transformer**, with no losses, the output (secondary) power `\(P_S\)` must be equal to the input (primary) power `\(P_P\)`.
 
@@ -25,7 +25,7 @@ Substituting in the transformation ratio above gives:
 
 <div>$$ I_P \cdot N_P = I_S \cdot N_S $$</div>
 
-# Mutual Inductance
+## Mutual Inductance
 
 In general, the number of mutual inductances that a transformer with N windings has is:
 
@@ -33,13 +33,13 @@ In general, the number of mutual inductances that a transformer with N windings 
 
 Notice that the number of mutual inductances grows with `\(N^2\)`.
 
-# Coupling Coefficient
+## Coupling Coefficient
 
 The coupling coefficient is usually denoted K. It is used extensively in SPICE simulations ([see Linear Technology: Using Transformers in LTspice/SwitcherCAD III by Mike Engelhardt](http://cds.linear.com/docs/en/lt-journal/LTMag-V16N3-23-LTspice_Transformers-MikeEngelhardt.pdf)). The leakage inductance can be calculated from the coupling coefficient using the following formula:
 
 <div>$$L_{leakage} = L_{wind} \cdot (1 - K^2)$$</div>
 
-# Non-Ideal Transformer Losses
+## Non-Ideal Transformer Losses
 
 There are three main types of losses that occur in a non-ideal (real-world) transformer. These are resistive losses, hysteresis losses, and eddy current losses.
 

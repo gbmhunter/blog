@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/soldermask-stencils
 ---
 
-# Overview
+## Overview
 
 PCB stencils help you apply solder paste and a quick and even manner to a PCB during the reflow soldering process. They are usually made from either a sheet of stainless steel (for large manufacturing runs) or a plastic/wax paper (for cheap one off prototypes).
 
@@ -17,7 +17,7 @@ The sheet has apertures cut out of it in all places on the PCB in where you want
 
 PCB stencils are usually created from the same design files that are used to manufacture the PCB. If using the [Gerber format](/pcb-design/pcb-data-formats#gerber-files), the Top Paste (.GTP) and Bottom Paste (.GBP) files will be used.
 
-# Etching Processes
+## Etching Processes
 
 ## Chemical
 
@@ -31,11 +31,11 @@ Both stainless steel and wax-paper stencils can be laser cut. A tougher grade of
 
 The aperture wall surface is rougher with laser cut stencils due to the melting effect of the laser.
 
-# Stencil Thickness
+## Stencil Thickness
 
 Typical thickness include 0.12mm and 0.15mm. 0.10mm thick stainless steel can be quite floppy in unframed A4-sized or larger sheets.
 
-# Aspect Ratio
+## Aspect Ratio
 
 The aspect ratio of a particular aperture is the ratio beteen the width of an aperture and the thickness of the stencil.
 
@@ -43,7 +43,7 @@ The aspect ratio of a particular aperture is the ratio beteen the width of an ap
 
 For a particular stencil, this ratio should never be smaller than a particular number. This is commonly 1 or 1.5.
 
-# Aperture Size
+## Aperture Size
 
 The rule:
 
@@ -53,14 +53,14 @@ This ratio should always be greater or equal to 0.66.
 
 {{< figure src="/images/2014/07/pcb-stencil-aspect-and-area-ratio-illustration.png" width="877px" caption="Diagram explaining the aspect and area ratios of PCB stencils. Image from http://www.ti.com/lit/an/slua271a/slua271a.pdf."  >}}
 
-# Prices
+## Prices
 
 The price for a single stainless steel stencil for prototype use is normally in the range of US$20 to US$130, depending on the method used to cut the holes.
 
-# Stepped Stencils
+## Stepped Stencils
 
 Sometimes different paste densities are required for different components. Stencils with varying thickness can be produced by using a combination of chemical and laser etching. These are called **stepped stencils**.
 
-# Art?
+## Art?
 
 What to do with a stencil once you have finished making PCBs with it? Do stencils have the potential to be art pieces? I did attach a back light and diffuser to one and made a wall-mountable piece of art, see the [Backlit PCB Stencil project](/electronics/projects/backlit-pcb-stencil) for more information.

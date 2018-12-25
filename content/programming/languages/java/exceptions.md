@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/java/exceptions
 ---
 
-# Checked Exceptions
+## Checked Exceptions
 
 Any exception that is a subclass of Exception (or Exception itself), except for RuntimeException and it's subclasses, is a _checked exception_.
 
@@ -22,7 +22,7 @@ Some common examples of checked exceptions are:
 * SQLException
 * DataAccessException 
 
-# ConcurrentModificationException
+## ConcurrentModificationException
 
 The exception can be thrown while trying to remove an element from a Collection (e.g. an ArrayList) while iterating over it using a standard for loop.
 

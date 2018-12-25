@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/tssop-component-package
 ---
 
-# Overview
+## Overview
 
 <table><tbody ><tr >
 <td >Name
@@ -72,7 +72,7 @@ url: /pcb-design/component-packages/tssop-component-package
 </td>
 </tr></tbody></table>
 
-# Variants
+## Variants
 
 There is a variant of the TSSOP with a solder pad on the underside. Texas Instruments calls this the HTSSOP package. It is used for ICs which require good thermal conductivity (e.g. half-bridges).
 
@@ -114,6 +114,6 @@ The HTTSOP-28 component package has the following thermal resistances:
 <td >\(5.6^{\circ}C/W\)
 </td></tr></tbody></table>
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/04/tssop-38-component-package-3d-render.jpg" width="297px" caption="A 3D render of the TSSOP-38 component package."  >}}

@@ -7,7 +7,7 @@ type: page
 url: /programming/build-systems-and-package-managers/cmake
 ---
 
-# Overview
+## Overview
 
 **cmake** is a cross-platform tool for building applications. It is commonly used with C and C++. The program is configured through CMakeLists.txt files, which reside in the source directories of the corresponding code.
 
@@ -15,11 +15,11 @@ url: /programming/build-systems-and-package-managers/cmake
 
 The output of cmake is standard build/project files (e.g. Makefiles if targeting GNU make). These build files are then run using the standard build command to generate the final build files.
 
-# Quick Syntax Overview
+## Quick Syntax Overview
 
 One thing that cmake does different from other "languages" is enforce that all variables passed into a function are linked by naming, rather than their order.
 
-# Popular Generators (Build Systems)
+## Popular Generators (Build Systems)
 
 cmake is commonly used to generate build files for:
 
@@ -31,7 +31,7 @@ cmake is commonly used to generate build files for:
 
 cmake calls it's specific modules that convert cmake code into these various build systems **generators**.
 
-# Setting Variables
+## Setting Variables
 
 Variables can be created and assigned in cmake with the set() function. e.g.
 
@@ -53,7 +53,7 @@ Normal variables are visible to the CMakeLists.txt file they are set in, and als
 
 You can also set properties.
 
-# Adding Sub-directories
+## Adding Sub-directories
 
 Use add_subdirectory() to add a directory which contains another CMakeLists.txt and code that requires building. It has the following syntax:
 
@@ -63,7 +63,7 @@ Use add_subdirectory() to add a directory which contains another CMakeLists.txt 
 
 If `<folder_path>` is relative, it will be relative to the CMakeLists.txt file which called this function. But, it can also be absolute (in which case add_subdirectory() is somewhat of a misnomer).
 
-# Adding Libraries
+## Adding Libraries
 
 Libraries can be added with:
 
@@ -81,13 +81,13 @@ For example, the following command creates a static library called my_library fr
 
 The library name must be a new name which is unique in the project. target_link_libraries() can be used after add_library() to specify what other libraries this newly created library needs linking to.
 
-# Linking Libraries
+## Linking Libraries
 
 Once libraries have been added with add_library(), they need to be linked. This is normally done with target_link_libraries() or just link_libraries() (the former option is preferred).
 
 link_libraries() causes all proceeding targets in the CMakeLists.txt to be linked to this library.
 
-# Copying Files
+## Copying Files
 
 Files can be copied as part of the build process using the following syntax:
 
@@ -102,7 +102,7 @@ You can specify glob or regex patterns to copy only certain files. The following
     FILES_MATCHING PATTERN "*.h")
     ```
 
-# Adding Preprocessor Definitions
+## Adding Preprocessor Definitions
 
 Preprocessor definitions can be added by using the following cmake command:
     
@@ -112,11 +112,11 @@ The add_definitions command can actually be used to add any compiler flags, but 
 
 This command add the flags to all sources in the current directory and below.
 
-# add_custom_target()
+## add_custom_target()
 
 Custom targets are always built. Because there is no output file, they are considered always out-of-date, and are always re-built.
 
-# add_custom_command()
+## add_custom_command()
 
 add_custom_command() is used specify how to make the defined OUTPUT files, based on command-line(s) COMMAND.
 
@@ -124,13 +124,13 @@ add_custom_target() is commonly used at the same time as add_custom_command().
 
 The .stamp file extension is commonly used to create empty placeholder files as the OUTPUT of add_custom_command(). These files can then be used as dependents for other build targets.
 
-# Cache
+## Cache
 
 cmake creates a global cache called CMakeCache.txt which is created at root level of the build folder.
 
 The cache can be used to create and store variables which have global and persistent scope. This means they can be read/set by any CMakeLists.txt file in the project, and they keep their previous value between successive cmake calls.
 
-# Maths
+## Maths
 
 Basic maths (addition, subtraction, e.t.c) can be done in a CMakeLists.txt file via the math() function. e.g. to increment a counter we would use the syntax:
 
@@ -138,11 +138,11 @@ Basic maths (addition, subtraction, e.t.c) can be done in a CMakeLists.txt file 
 
 EXPR is to tell cmake you wish to evaluate the expression. It is currently the only supported mathematical operation.
 
-# Adding .cmake Files
+## Adding .cmake Files
 
 You can use the include() function to include .cmake file code into your CMakeLists.txt file. cmake will scan CMAKE_MODULE_PATH to look for .cmake files.
 
-# Running cmake
+## Running cmake
 
 This completely depends on the structure of the source code you are building, but in general, something close to the example below will be followed.
     

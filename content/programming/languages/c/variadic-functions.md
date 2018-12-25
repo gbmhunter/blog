@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/c/variadic-functions
 ---
 
-# Overview
+## Overview
 
 Variadic functions are functions which can take in a variable number of arguments. The C language by itself provides no special syntax for dealing with them, but variadic functions are supported by the standard C library (`<varargs.h>`).
 
-# Syntax
+## Syntax
 
 A variadic function is declared as:
 

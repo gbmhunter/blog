@@ -7,11 +7,11 @@ type: page
 url: /programming/virtual-machines-and-containers/virtual-box
 ---
 
-# Overview
+## Overview
 
 VirtualBox is virtual machine software by Oracle.
 
-# gedit "File Busy" Error
+## gedit "File Busy" Error
 
 A long-standing bug with Oracles VirtualBox and the popular Linux text editor, Gedit (or any other text editor, for that matter), is the "File Busy" error that you get when trying to save a file across a mounted, shared folder from within Linux system running Gedit (e.g. saving into a Windows-hosted folder).
 
@@ -29,7 +29,7 @@ The only workaround I am aware of is to enable the "Save Backup Copy" option in 
 
 You will also have to delete all the .goutputstream-XXXXXX files that are created in the directory (these are the backup files).
 
-# SVN In Shared Folders
+## SVN In Shared Folders
 
 SVN can throw svn: Can't move '.svn/tmp/entries' to '.svn/entries': Operation not permitted. errors when attempting to checkout a SVN repository into a shared folder when using VirtualBox.
 

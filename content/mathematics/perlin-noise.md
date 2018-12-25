@@ -7,7 +7,7 @@ type: page
 url: /mathematics/perlin-noise
 ---
 
-# Overview
+## Overview
 
 Perlin noise is commonly used to create natural looking textures in computer graphics. A common example is it's use to create a randomly generated landscape, or realistic looking clouds.
 
@@ -15,7 +15,7 @@ Perlin noise is commonly used to create natural looking textures in computer gra
 
 Ken Perlin invented the Perlin noise algorithm following CGI work on the movie Tron.
 
-# Libraries
+## Libraries
 
 [siv::PerlinNoise](https://github.com/Reputeless/PerlinNoise) is a good header-only Perlin noise library for C++.
 

@@ -7,7 +7,7 @@ type: page
 url: /programming/operating-systems/linux/programs/apt
 ---
 
-# Overview
+## Overview
 
 The Linux program apt (Advanced Package Tool) is a collection of tools for managing Debian packages.
 
@@ -17,7 +17,7 @@ apt is a combination of the most widely used commands from apt-get and apt-cache
 
 apt delegates the actual installation and removal of packages to dpkg.
 
-# Aborted Package Lists
+## Aborted Package Lists
 
 You may encounter the error "aborted package lists" when trying to run pretty much any apt command.
 

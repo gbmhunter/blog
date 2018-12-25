@@ -7,7 +7,7 @@ type: page
 url: /programming/general/command-line-interfaces
 ---
 
-# Overview
+## Overview
 
 A command-line interface is a way of interacting (sending instructions, receiving info) with programs on a computer.
 
@@ -17,7 +17,7 @@ See [C->Processing Command-Line Input](/programming/languages/c/processing-comma
 
 Related is the page [C#->Redirecting The Command-line To A Text Block](/programming/languages/c-sharp/redirecting-the-command-line-to-a-text-block).
 
-# Command Description (Help) Syntax
+## Command Description (Help) Syntax
 
 * Angled brackets for required parameters, e.g. cd <dir name>.
 * Square brackets for optional parameters, e.g. ls [-a].

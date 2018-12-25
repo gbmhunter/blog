@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-sharp/detecting-key-presses
 ---
 
-# WinForms
+## WinForms
 
 Use the following code to detect a key press when focus is on a particular object.
 
@@ -36,7 +36,7 @@ private void tb_KeyDown(object sender, KeyEventArgs e)
 }
 ```
 
-# WPF
+## WPF
 
 ## Non-Binding Method
 

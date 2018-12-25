@@ -7,7 +7,7 @@ type: page
 url: /electronics/communication-protocols/sdq-protocol
 ---
 
-# Overview
+## Overview
 
 The SDQ protocol is a proprietary 1-wire (excluding ground) interface designed by Texas Instruments.
 

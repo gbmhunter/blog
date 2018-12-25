@@ -7,7 +7,7 @@ type: page
 url: /programming/operating-systems/linux/programs/awk
 ---
 
-# Overview
+## Overview
 
 awk is a UNIX-based program that is used to scan and modify text files. It commonly used to find and replace text in one or many files at once.
 
@@ -15,7 +15,7 @@ It could be seen as a more powerful version of [sed](/programming/operating-syst
 
 Note: If you just want to search for text, and have no desire to edit it, it might be better (and safer!) to just use grep instead.
 
-# Basic Syntax
+## Basic Syntax
 
 The basic syntax for a simple awk command follows:
 
@@ -29,7 +29,7 @@ Strings can be embedded within the 'awk commands here' section by using double q
 awk 'awk_func("a string");' file.txt
 ```
 
-# Find And Replace
+## Find And Replace
 
 To replace all occurrences of old_world with new_world in file.txt:
 

@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/java/javafx/listview
 ---
 
-# Creating A List View In FXML
+## Creating A List View In FXML
 
 Although this would not be the standard way to do it (normally a ListView would be populated by the backend Java code), you can create a ListView node using pure fxml code:
 

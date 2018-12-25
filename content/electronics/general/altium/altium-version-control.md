@@ -26,7 +26,7 @@ As you may of noticed, I make sure that the files are inside the Altium project 
 
 ## Using Glob Syntax
 
-# Mercurial ignore file for Altium using Glob syntax
+## Mercurial ignore file for Altium using Glob syntax
 
 Note: Replace <AltiumProjectRoot> with the name of the folder all your Altium files are stored in, relative to the repository root directory (e.g. PCB)
 
@@ -44,7 +44,7 @@ syntax: glob
 
 
 
-# Backup Files  
+## Backup Files  
 <AltiumProjectRoot>/*.SchDoc.Zip                # Backup of schematics  
 <AltiumProjectRoot>/**/*.SchDoc.Zip  
 <AltiumProjectRoot>/*.PrjPcb.Zip                # Backup of pcb fle  
@@ -53,7 +53,7 @@ syntax: glob
 
 
 
-# Preview Files  
+## Preview Files  
 <AltiumProjectRoot>/*.SchDocPreview  
 <AltiumProjectRoot>/**/*.SchDocPreview  
 <AltiumProjectRoot>/*.PcbDocPreview  
@@ -78,7 +78,7 @@ syntax: glob
 
 
 
-# Reporting Files  
+## Reporting Files  
 <AltiumProjectRoot>/*.LOG  
 <AltiumProjectRoot>/**/*.LOG  
 <AltiumProjectRoot>/*.drc  
@@ -89,7 +89,7 @@ syntax: glob
 
 
 
-# Other Files  
+## Other Files  
 <AltiumProjectRoot>/*.orig  
 <AltiumProjectRoot>/**/*.orig  
 <AltiumProjectRoot>/*.pcbdoc_viewstate          # Viewstate of .pcbdoc file  
@@ -104,7 +104,7 @@ syntax: glob
 
 
 
-# Directories  
+## Directories  
 <AltiumProjectRoot>/History/  
 <AltiumProjectRoot>/**/History/
 ```
@@ -116,10 +116,10 @@ syntax: glob
 # Note: I currently use glob syntax since it makes more common sense than the regexp syntax and is powerful enough for what I need.  
 # Note: therefore this RegExp code is not complete nor fully tested. Only use it as a guide to how the code is written.
 
-# Note: Replace <AltiumProjectRoot> with the name of the folder all your Altium files are stored in,  
+## Note: Replace <AltiumProjectRoot> with the name of the folder all your Altium files are stored in,  
 # relative to the repository root directory (e.g. PCB)
 
-# switch to regexp syntax.  
+## switch to regexp syntax.  
 syntax: regexp
 
 xworking/(?!.*\.bit$).+  

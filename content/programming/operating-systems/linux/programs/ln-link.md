@@ -7,7 +7,7 @@ type: page
 url: /programming/operating-systems/linux/programs/ln-link
 ---
 
-# Overview
+## Overview
 
 There are two types of links in Linux:
 
@@ -15,7 +15,7 @@ There are two types of links in Linux:
 
 **hard links**: Refer to a specific location. A hard link must be created to a file or directory that already exists. A hard link is commonly used in software build processes instead of copying to speed things up (as long as the files are not written too!). Modifying or moving the original file will not upset a hardlink.
 
-# How To Create A Symbolic Link
+## How To Create A Symbolic Link
 
 For example, we will create a new "imaginary" file called ~/new_link.txt, which actually points to ~/a_folder/file_that_already_exists.txt.
 
@@ -25,7 +25,7 @@ ln -s ~/a_folder/file_that_already_exists.txt ~/new_link.txt
 
 You can inspect symbolic links by running `ls -l`. If any of the files are a symbolic link, it will show the path that they link to.
 
-# How To Create A Hard Link
+## How To Create A Hard Link
 
 For example, we will create a new "imaginary" file called ~/new_link.txt, which actually points to ~/a_folder/file_that_already_exists.txt.
 

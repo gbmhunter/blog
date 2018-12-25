@@ -57,7 +57,7 @@ And then I discovered why I was still reading 4Ω at the connector on the amplif
 
 Now knowing that I needed a new bass-driver, I got the guys at [South Pacific Music](http://www.southpacmusic.co.nz/), the New Zealand stockists for Wharfedale Pro speakers, to re-cone the bass-driver.
 
-# Datasheets:
+## Datasheets:
 
 ## Power Transistors
 
@@ -65,6 +65,6 @@ Now knowing that I needed a new bass-driver, I got the guys at [South Pacific Mu
 
 [2SA1492-Sanken-PNP-Transistor.pdf](/images/2012/07/2SA1492-Sanken-PNP-Transistor.pdf)
 
-# Pictures:
+## Pictures:
 
 {{< gallery dir="/images/electronics-evp-x12p-speaker-teardown" />}}

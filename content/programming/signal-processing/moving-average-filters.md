@@ -7,7 +7,7 @@ type: page
 url: /programming/signal-processing/moving-average-filters
 ---
 
-# Overview
+## Overview
 
 One of the classic examples of an FIR is a moving average (MA) filter. It can also be called a **box-car filter**. Although they are simple, they are the **best filter (optimal) at reducing random noise whilst retaining a sharp step respone**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to seperate one band of frequencies from another.
 
@@ -15,7 +15,7 @@ Moving average filters are also fast. In fact, they are the **fastest digital fi
 
 NOTE: Some equations use frequency `\( f \)`, while others use angular frequency `\( \omega \)`.
 
-# Terminology
+## Terminology
 
 <table>
     <thead>
@@ -68,7 +68,7 @@ NOTE: Some equations use frequency `\( f \)`, while others use angular frequency
 </tbody>
 </table>
 
-# Converting From A Continuous Time-Domain To Normalised Discrete Time-Domain Frequency
+## Converting From A Continuous Time-Domain To Normalised Discrete Time-Domain Frequency
 
 Remember, to map a continuous time-domain frequency to the discrete time-domain, use the following equation:
 
@@ -81,7 +81,7 @@ Remember, to map a continuous time-domain frequency to the discrete time-domain,
     \( f_s \) is the sample frequency in the continuous time-domain, in \(Hz\) (or \(samples/second\))<br>
 </p>
 
-# Simple Moving Average Filter (aka Sliding Window Filter)
+## Simple Moving Average Filter (aka Sliding Window Filter)
 
 The simple moving average filter is one of the most commonly used digital filters, due to it's simplicity and ease of use. There are two common types of simple moving average filters, left-hand and symmetric filters.
 
@@ -171,7 +171,7 @@ This is conceptially the same as having a variable-width window which increases 
 
 If you also know a what times the signal will jump significantly, you can reset the filter at these points to remove the lag from the output. You could even do this automatically by resetting the filter if the value jumps by some minimum threshold.
 
-# Exponentially Weighted Moving Average Filter
+## Exponentially Weighted Moving Average Filter
 
 A exponentially weighted moving average filter **places more weight on recent data by discounting old data in an exponential fashion**. It is a **low-pass, infinite-impulse response (IIR) filter**.
 
@@ -196,10 +196,10 @@ The constant `\( \alpha \)` determines how aggressive the filter is. It can vary
 
 [https://stratifylabs.co/embedded%20design%20tips/2013/10/04/Tips-An-Easy-to-Use-Digital-Filter/](https://stratifylabs.co/embedded%20design%20tips/2013/10/04/Tips-An-Easy-to-Use-Digital-Filter/) is a great page explaining the exponential moving average filter.
 
-# Multiple Pass Moving Average Filters
+## Multiple Pass Moving Average Filters
 
 This is when a signal is passed through a moving avergae filter multiple times. Two passes through a simple moving average filter produces the same effect as a triangular moving average filter. After four or more passes, it is equivalent to a Gaussian filter.
 
-# Source Code
+## Source Code
 
 The opensource [Math.Net NeoDym library](http://neodym.mathdotnet.com/) contains C# code for using FIR filters.

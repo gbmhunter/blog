@@ -7,13 +7,13 @@ type: page
 url: /programming/operating-systems/linux/programs/rename
 ---
 
-# To Check Changes Before Actually Renaming
+## To Check Changes Before Actually Renaming
 
 The `-n` option allows you to check changes before actually renaming. This is very useful, and recommended, as there is no undo button once you have done the renaming!
 
 With this option present, rename will print a list of the changes to stdout rather than actually peforming the changes.
 
-# Making All Filenames Title Case
+## Making All Filenames Title Case
 
 The following command makes all filenames title case, e.g. this is a file.pdf will become This Is A File.pdf.
 

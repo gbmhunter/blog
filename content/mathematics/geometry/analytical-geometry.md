@@ -7,7 +7,7 @@ type: page
 url: /mathematics/geometry/analytical-geometry
 ---
 
-# How To Check If A Point Is Inside A Rectangle?
+## How To Check If A Point Is Inside A Rectangle?
 
 **The Area Method**
 
@@ -42,7 +42,7 @@ This uses vector notation:
 
 Notice that this method does not use point C at all! It projects the point M onto the line AB and AD and makes sure that these projections lie somewhere on the line.
 
-# How To Find The Distance Between A Line And A Point In 3D
+## How To Find The Distance Between A Line And A Point In 3D
 
 Given two points `\(x_1\)` and `\(x_2\)` which form a line in 3D space, and a third point `\(x_0\)` in 3D space, the shortest distance `\( d \)` between the point `\(x_0\)` and the line is given by:
 

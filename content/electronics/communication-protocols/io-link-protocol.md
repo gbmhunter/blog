@@ -7,11 +7,11 @@ type: page
 url: /electronics/communication-protocols/io-link-protocol
 ---
 
-# Overview
+## Overview
 
 The IO-Link protocol is a point-to-point serial communication protocol which is commonly used for sensor and actuator communication in an industrial environment.
 
-# Packet Types
+## Packet Types
 
 ## Process Data
 

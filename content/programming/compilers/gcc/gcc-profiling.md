@@ -9,7 +9,7 @@ url: /programming/compilers/gcc/gcc-profiling
 
 _This article assumes you are using a Debian-based Linux machine (e.g. Ubuntu)._
 
-# Overview
+## Overview
 
 To use profiling, the program must be compiled and linked with the -qg profiling option:
 
@@ -116,7 +116,7 @@ Your program doesn't count as a clean exit if it is running in a Linux terminal 
 
 Note that you must compile and link with the -ldl option for dlsym to be found.
 
-# gprof2dot
+## gprof2dot
 
 gprof2dot is a tool that can create a visualization of the gprof output. TO install gprof2dot:
 

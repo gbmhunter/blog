@@ -7,13 +7,13 @@ type: page
 url: /pcb-design/component-packages
 ---
 
-# Overview
+## Overview
 
 Most electronic components come in standardized packages. A package type has well a defined set of physical dimensions that the component has to conform to. For each package, normally the pitch spacing, height and general shape is defined. However most packages contain variants with a differing number of leads (for example the classic old-school DIP package comes in 4, 8, and 10 lead variants just to name a few). This means that total land area and size of a package can vary according to how many leads it has.
 
 Standardizing components sizes and shapes makes it easier for the component manufacturer, the PCB manufacturer, and the design engineer. Although most components are standardized, there are still plenty of packages out there. This pages purpose is to hopefully make some sense of the most common and widely used packages and to help anyone choosing a component package or designing a PCB.
 
-# Component Package Database
+## Component Package Database
 
 Packages are listed alphabetically.
 
@@ -25,7 +25,7 @@ Component packages with many names (synonyms) are listed by the most common, or 
 
 Some items such as the [PP3 9V battery case](/pcb-design/component-packages/pp3-component-package), and [SIM card sizes](/pcb-design/component-packages/sim-card-sizes), may not be strictly component packages, but are included here for completeness.
 
-# Break-out Boards
+## Break-out Boards
 
 {{< figure src="/images/electronics-misc/sparkfun-break-out-board.jpg" caption="A SOIC-8 to DIP break-out board made by SparkFun."  width="160px" >}}
 
@@ -35,7 +35,7 @@ If not brought from the right place, these break-out board's can be very expensi
 
 SparkFun is the cheapest supplier of break-out boards that I've found. Element14 also sells them, but at a much higher price.
 
-# External References
+## External References
 
 If there is one other site I would direct you to for PCB information, it would be [Tom Hausherr's blog](http://blogs.mentor.com/tom-hausherr/) on the Mentor Graphics website.
 

@@ -7,13 +7,13 @@ type: page
 url: /programming/build-systems-and-package-managers/conan
 ---
 
-# Overview
+## Overview
 
 Conan is a package manager, primarily designed for C or C++ packages.
 
 {{< figure src="/images/2018/04/conan-package-manager-logo-with-text.png"   >}}
 
-# Installation
+## Installation
 
 **Linux, macOS, Windows**
 
@@ -23,7 +23,7 @@ Assuming you have python and pip already installed on your system, you can insta
     $ pip install conan
     ```
 
-# Local Cache
+## Local Cache
 
 Conan downloads package recipes and binaries to local cache, so if they are used multiple times, you don't have to download them. Typically, the local cache is found at ~/.conan/data.
 
@@ -39,13 +39,13 @@ You can remove packages from your local cache with:
     $ conan remove
     ```
 
-# Packaging
+## Packaging
 
 Conan will install packages to it's cache located at <user home directory>/.conan.
 
 Packages uploaded to the central repository must have a test_package sub-directory.
 
-# test_package
+## test_package
 
 The conan file inside test_package does not have to have a requires dependency for the package it is testing, this is automatically assumed.
 

@@ -7,13 +7,13 @@ type: page
 url: /programming/operating-systems/linux/programs/ps
 ---
 
-# Overview
+## Overview
 
 The ps command (a.k.a _process status_) provides a **snapshot of the current processes** running on the system.
 
 For **repetitive updating of the process information** (e.g. updates on how much CPU and memory each process is using, similar to Task Manager in Windows) see the top command instead.
 
-# Default Implementation
+## Default Implementation
 
 By default, ps only prints processes owned by the current user, **AND** are processes that are associated with the terminal that called ps. Normally this will result in quite a small amount of output, perhaps only 2-5 processes.
 
@@ -27,7 +27,7 @@ gbmhunter@ubuntu:~$
 
 You will always be guaranteed these two above when running from a bash terminal, obviously bash is running, and so is the ps command (it includes itself).
 
-# More Complete Information
+## More Complete Information
 
 More complete information on the running processes of the system can be found by providing arguments, such as the UNIX-style `ps -e`:
 
@@ -82,11 +82,11 @@ root         15  0.0  0.0      0     0 ?        S<   Jan27   0:00 [kworker/1:0H]
 
 This is only a snapshot of the total number of processes it will print!
 
-# Supported Options
+## Supported Options
 
 ps can support a large and confusing amount of different option styles, including UNIX options (one dash), BSD options (no dash) and GNU long options (two dashes).
 
-# ps With grep
+## ps With grep
 
 The output of ps can be piped to grep to filter the results. For example, if you wanted to only look for processes with the word hocus_pocus in it:
 

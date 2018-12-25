@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/cables
 ---
 
-# Insulation Materials And Their Properties
+## Insulation Materials And Their Properties
 
 <table>
     <thead>
@@ -93,7 +93,7 @@ url: /electronics/components/cables
 <td >  * Higher temperature rating than PVC
 </td></tr></tbody></table>
 
-# Standards
+## Standards
 
 ## NEC
 
@@ -103,7 +103,7 @@ NEC _types_ are acronyms consisting of a prefix describing **cable type** (e.g.
 
 {{< figure src="/images/2012/11/nec-2005-cable-standards-reference-cable-type-and-fire-resistance-summary.png" width="790px" caption="A summary of the cable types and flame tests from NEC. Image from http://www.associatedtelephone.com/."  >}}
 
-# Computer Cable
+## Computer Cable
 
 ## Overview
 

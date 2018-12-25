@@ -7,7 +7,7 @@ type: page
 url: /programming/operating-systems/freertos/freertos-quick-reference-guide
 ---
 
-# FreeRTOS Quick Reference Guide
+## FreeRTOS Quick Reference Guide
 
 This contains examples of the most common functions, designed to jog your memory when writing FreeRTOS code.
 

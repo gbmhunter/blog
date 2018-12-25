@@ -7,13 +7,13 @@ type: page
 url: /programming/microcontrollers/psoc/creating-and-editing-your-own-psoc-components
 ---
 
-# Overview
+## Overview
 
 PSoC Creator allows you to **create your own (or edit existing) components**, a powerful feature which allows you to capture both hardware (VHDL hardware) and software and package it into a reusable "block" which can be dropped into other projects.
 
 PSoC components can be created from the PSoC Creator IDE. If you are looking for a very comprehensive and detailed tutorial on how to create your own components, I would recommend the [Cypress Component Author Guide](http://www.cypress.com/?docID=27377). **This page serves only to highlight the important bits** and the things you will typically struggle with when creating your own components.
 
-# Component File Structure
+## Component File Structure
 
 <table>
     <thead>
@@ -75,15 +75,15 @@ PSoC components can be created from the PSoC Creator IDE. If you are looking for
 <td >Header files for the source code.
 </td></tr></tbody></table>
 
-# Special Flags
+## Special Flags
 
 '$INSTANCE_NAME'  - The name of the component in the schematic editor (e.g UartCpDebug). This is user editable. All component API is typically prefixed with this name and an underscore (e.g. UartCpDebug_Start();, UartCpDebug_PutChar();).
 
-# Building The Component
+## Building The Component
 
 **The build menu for components is hidden by default**, right-click on the PSoC taskbar and click "Build Customizer" to show this. The component can be built by clicking the "Build All Customizers" button.
 
-# Editing Existing Components
+## Editing Existing Components
 
 Make sure to rename the component in the Workspace Explorer, otherwise the name will clash with the existing component. Once you have done this, make sure to change the namespace name in all of the .cs files to the same name, as well as any other references to the project name that you find (use find/replace for this to make sure you don't miss any!).
 

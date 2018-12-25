@@ -7,11 +7,11 @@ type: page
 url: /programming/operating-systems/linux/programs/cp-copy
 ---
 
-# Overview
+## Overview
 
 If you want to move or rename files (instead of copying), please checkout the [mv command](/programming/operating-systems/linux/programs/mv-move).
 
-# Copying A Single File
+## Copying A Single File
 
 This is the simplist cp procedure:
 
@@ -19,7 +19,7 @@ This is the simplist cp procedure:
 $ cp ~/original_file.txt ~/copied_file.txt
 ```
 
-# Coping Multiple, Specific Files To A Directory
+## Coping Multiple, Specific Files To A Directory
 
 This can be done with the syntax:
 

@@ -7,33 +7,33 @@ type: page
 url: /programming/languages/c-plus-plus/input-and-output
 ---
 
-# Overview
+## Overview
 
 Input/output (I/O) is how a program interacts with the computers file system. The C/C++ standard librarys provide methods for reading and writing to files.
 
 Some parts of I/O are standard, others are platform specific.
 
-# cin And cout
+## cin And cout
 
 `std::cin` and `std::cout` are both of the type . They are declared in `<iostream>`.
 
 File descriptors for `std::cin` and `std::cout` can be found in the header file `<unistd.h>`. They are defined as `STDIN_FILENO` and `STDOUT_FILENO` respectively.
 
-# Input
+## Input
 
 Input in a C++ program can be grabbed via `std::cin`.
 
 After calling `cin.get()`, I have found it nessecary to call `cin.ignore()` to remove the still-present new-line character. If this is not done, `cin.get()` will keep triggering.
 
-# Flushing
+## Flushing
 
 The function `fflush()` can be used on an output buffer to write an unwritten data in it's output buffer to the file. The stream remains open after this function call. It returns 0 if the operation was a success.
 
-# select()
+## select()
 
 `select()` is used to wait on multiple files for input/output at the same time (and returns whenever one of them has data). `select()` is a BSD UNIX function, and therefore not portable to other systems. Ubuntu GCC has this function.
 
-# Non-Blocking IO
+## Non-Blocking IO
 
 By default, reading from stdin and writing to stdout are blocking operations, that is, they don't return until their job is complete. For input, this is until a character or line had received.
 

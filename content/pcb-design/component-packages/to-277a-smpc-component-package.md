@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/to-277a-smpc-component-package
 ---
 
-# Overview
+## Overview
 
 
 <table>
@@ -133,14 +133,14 @@ url: /pcb-design/component-packages/to-277a-smpc-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 Used by Vishay and Bruckewell.
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/04/to-277a-component-package-3d-render.jpg" width="358px" caption="A 3D render of the TO-277A component package."  >}}
 
-#  Dimensions
+##  Dimensions
 
 {{< figure src="/images/2015/04/component-package-to-277a-smpc-dimensions-and-land-pattern.png" width="913px" caption="Dimensions and land pattern for the TO-277A (SMPC) component package."  >}}

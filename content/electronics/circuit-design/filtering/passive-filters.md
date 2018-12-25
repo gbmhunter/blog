@@ -7,13 +7,13 @@ type: page
 url: /electronics/circuit-design/filtering/passive-filters
 ---
 
-# Overview
+## Overview
 
 Even in the pass-band, passive filters almost always increase the impedance of the signal, post filter. For a trace on a circuit board, this actually makes the post-filter trace more susceptible to picking up external noise. For this reason, when using a passive filter to filter out induced noise of a sensitive trace, always place a passive filter as close as possible to the receiving end of the signal (e.g. as close as possible to an ADC pin on a microcontroller).
 
 Low-pass filters have an additional advantage when used on the analogue outputs from micrcontrollers. If the DAC does not work properly for some reason (assuming you are using a DAC), you can sometimes implement the desired behaviour by using PWM instead. With the cut-off frequency set correctly, the PWM signal will be filtered so that a DC voltage proportional to the duty cycle remains, which is what you wished to implement with the DAC in the first place.
 
-# Low-Pass RC Filter
+## Low-Pass RC Filter
 
 The low-pass RC filter consists of a single series resistor and then a single capacitor to ground.
 
@@ -54,7 +54,7 @@ Another way to reduce the reduction in noise immunity due to the resistor in the
 
 **Low-pass RC filters can also be used to create a VDAC (voltage-based digital-to-analogue converter) from a [PWM signal](/electronics/circuit-design/pwm).** This is useful since many microcontrollers have one (or more) PWM peripherals, but rarely a built-in VDAC. A simple RC filter placed on the output pin of the PWM signal can convert it into a VDAC, in where the **duty cycle** determines the analogue voltage output.
 
-# Low-Pass LC Filter
+## Low-Pass LC Filter
 
 The basic low-pass LC filter consists of a single inductor and capacitor.
 
@@ -82,7 +82,7 @@ The main parasitic element to consider with a low-pass LC filter is the parasiti
 
 This is equivalent to a low-pass RLC filter.
 
-# Low-pass RLC Filter
+## Low-pass RLC Filter
 
 The quality factor is equal to:
 
@@ -96,7 +96,7 @@ The damping factor is equal to:
 
 <div>$$ d_0 = \frac{R}{2\pi fL} $$</div>
 
-# Low-Pass π And t Filters
+## Low-Pass π And t Filters
 
 Low-pass π and t-filters are one step better than the low-pass LC or RC filter.
 

@@ -7,7 +7,7 @@ type: page
 url: /programming/microcontrollers/psoc/how-to-route-a-psoc-microcontroller
 ---
 
-# SIO Pins
+## SIO Pins
 
 SIO pins can:
 

@@ -7,11 +7,11 @@ type: page
 url: /electronics/components/sensors/magnetometers
 ---
 
-# Overview
+## Overview
 
 Magnetometers are miniature electro-mechanical devices that measure the **magnetic field** they are placed in.
 
-# Interference
+## Interference
 
 ## Soft-Iron
 

@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/smc-do-214ab-component-package
 ---
 
-# Overview
+## Overview
 
 <table ><tbody ><tr >
 <td >Name
@@ -78,14 +78,14 @@ url: /pcb-design/component-packages/smc-do-214ab-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 The largest in the DO-214xx range of diode packages, the DO214AB is a surface-mount package used for diodes that require good heatsinking requirements and/or high-surge current capabilities. Used for general purpose, schottky, and TVS diodes.
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/03/smc-do-214ab-component-package-3d-render.jpg" width="376px" caption="A 3D render of the SMC (DO-214AB) component package."  >}}
 
-# Images
+## Images
 
 {{< figure src="/images/electronics-packages/component-package-smc-do-214ab-dimensions-and-land-pattern.png" caption="Dimensions and recommended land pattern for the DO-214AB (SMC) component package. Image from Vishay Outline Dimensions: SMC (http://www.vishay.com/docs/95023/smc.pdf)."  width="400px" >}}

@@ -7,7 +7,7 @@ type: page
 url: /mathematics/curve-fitting/linear-curve-fitting
 ---
 
-# Fitting A Linear Curve (Line)
+## Fitting A Linear Curve (Line)
 
 Fitting a linear curve (a line!) to a set of data is called linear regression. Typically, we want to minimize the square of the vertical error between each point and the line. The following graph shows four data points in green, and the calculated line of best fit in blue:
 

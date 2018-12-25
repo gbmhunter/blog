@@ -7,7 +7,7 @@ type: page
 url: /programming/general/control-methodology/a-function-pointer-based-state-machine
 ---
 
-# Overview
+## Overview
 
 This type of state machine involves:
 
@@ -17,7 +17,7 @@ This type of state machine involves:
 * Another array which maps each state with a state function pointer that gets called.
 * A simple main loop that does not need to be edited (all the control is changed by modifying the state transition matrix)
 
-# Advantages And Disadvantages
+## Advantages And Disadvantages
 
 **The advantages:**
 
@@ -32,7 +32,7 @@ This type of state machine involves:
 * Event determination can be slow when 'if' statements are used.
 * Can be potentially difficult to scale in larger programs, where you may want multiple state machines and threading. 
 
-# An Example
+## An Example
 
 This type of state machine is explained and demo'd below with a simple light flashing circuit that is turned on and off with a button press. When the button is pressed, the light starts flashing on/off every 2 seconds. Further button pushes toggle the light between the flashing mode and the off state.
 

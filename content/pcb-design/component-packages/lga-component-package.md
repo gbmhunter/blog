@@ -6,7 +6,7 @@ type: page
 url: /pcb-design/component-packages/lga-component-package
 ---
 
-# Overview
+## Overview
 
 <table >
 <tbody >
@@ -124,16 +124,16 @@ url: /pcb-design/component-packages/lga-component-package
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 The LGA package comes in many different variants, all which have a different number of pins and a different pin configuration. The pins are normally lines up in a grid of x columns and y rows, but not every position may have a pad. Therefore you can get variants with the same LGA package width and length.
 
 Like BGA's, LGA packages can withstand up to 50% mis-alignment when soldering, as the package will automatically align itself. LGA packages can be connected to the PCB either with a socket or direct soldering. Intel has popularised the package by using it on some of it's CPU families.
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/04/lga-component-package-3d-render.jpg" width="342px" caption="A 3D render of the LGA component package." >}}
 
-# Socket
+## Socket
 
 {{< figure src="/images/electronics-packages/lga-775-component-package-socket.jpg" width="500px" caption="Socket for the LGA-775 component package." >}}

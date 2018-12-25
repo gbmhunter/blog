@@ -9,7 +9,7 @@ url: /programming/languages/c-sharp/binding
 
 The best tutorial of Binding in WPF that I've found is [here](http://blog.cylewitruk.com/2010/09/wpf-combobox-and-databinding-datacontext-itemssource-displaymemberpath-selecteditem-selectedvalue-selectedvaluepath/#comment-4032). It includes a project download which is great for binding that works out-of-the-box, which you can then hack/adjust to your own needs.
 
-# ObservableCollection
+## ObservableCollection
 
 The `ObservableCollection()`  class is used plenty when it comes to binding.
 
@@ -27,7 +27,7 @@ var searchRes = observC.Where(item => item.Name == "test");
 var singleElement = searchRes.Take(0);
 ```
 
-# Obtaining The Current DataContext For A UI Element
+## Obtaining The Current DataContext For A UI Element
 
 Obtaining the current DataContext for a particular UI element us useful when you want to set-up binding. The following code shows how to get the data context, obtaining the data context for the entire window (because it uses this , but you could replace this with any particular UI element if you wish).
 

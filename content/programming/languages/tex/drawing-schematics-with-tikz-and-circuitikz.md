@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/tex/drawing-schematics-with-tikz-and-circuitikz
 ---
 
-# QuickLatex Setup
+## QuickLatex Setup
 
  The code below shows the basic setup to draw a Circuitikz diagram in a Wordpress post using the QuickLatex plugin.
 
@@ -24,7 +24,7 @@ url: /programming/languages/tex/drawing-schematics-with-tikz-and-circuitikz
 
 Add the actual Circuitikz code between the end of the preamble and the end of the tikzpicture elements.
 
-# Adding A Background
+## Adding A Background
 
 Sometimes in can be beneficial to add a background to the circuit drawing. This is true when using QuickLatex with Wordpress to render Circuitikz (as this site does), as by default it uses a transparent background, which is good for inline equations, but not so much for circuit drawings.
 
@@ -34,7 +34,7 @@ Sometimes in can be beneficial to add a background to the circuit drawing. This 
 
 Tailor the corners of the rectangle to provide the correct size background for your circuit drawing.
 
-# Capacitors
+## Capacitors
 
 The three types of capacitors used are easily drawn.
 
@@ -95,7 +95,7 @@ The three types of capacitors used are easily drawn.
 </tbody>
 </table>
 
-# Op-Amps And Comparators
+## Op-Amps And Comparators
 
 Op-amps and caparators share the same symbol.
 
@@ -124,7 +124,7 @@ Op-amps and caparators share the same symbol.
 \end{tikzpicture}
 ```
 
-# Dashed Lines
+## Dashed Lines
 
 It took me awhile to get dashed lines to work, here is the correct way to draw them:
 

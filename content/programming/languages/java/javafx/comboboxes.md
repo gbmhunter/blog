@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/java/javafx/comboboxes
 ---
 
-# Associating With An Enum
+## Associating With An Enum
 
 One of the tidiest ways of populating a JavaFX ComboBox is to associate it with an enumeration. The enumeration defines the objects you can select from in the ComboBox, as well as how to display these objects (their String representations).
 

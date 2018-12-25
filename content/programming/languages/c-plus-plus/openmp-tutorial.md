@@ -5,12 +5,12 @@ title: OpenMP Tutorial
 type: page
 ---
 
-# Prerequisites
+## Prerequisites
 
 * You are familiar with the command-line and you have access to a Linux/Mac OS, or you know how to tweak these commands where needed to run on Windows (you shouldn't need to change much)
 * You have a modern version of GCC installed.
 
-# The Hello, World Example
+## The Hello, World Example
 
 1. Create a new empty working directory and `cd` into it.
 
@@ -61,5 +61,5 @@ as there would be no guarantee that `"world"` will be printed directly after `"h
 
 `-fopenmp` told GCC to compile using OpenMP (otherwise the `#pragma ...` macro would of been ignored).
 
-# A Slightly More Complicated Example
+## A Slightly More Complicated Example
 

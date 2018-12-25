@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c-plus-plus/strings
 ---
 
-# Overview
+## Overview
 
 While strings are almost always represented as a pointer to a char or an array of characters in C (either char * or char[]), C++ introduces a std::string type. This offers the following advantages:
 
@@ -16,7 +16,7 @@ While strings are almost always represented as a pointer to a char or an array o
 
 However, this comes at a cost, now there is **dynamic memory allocation**. This may be a significant issue for embedded applications.
 
-# The Old C Style char*
+## The Old C Style char*
 
 The the most basic methods to store characters is to create a pointer to a character, e.g. char* myString. No standard library has to be included to be able to do this, and this is how you would typically store characters in C.
 
@@ -28,7 +28,7 @@ const char* myCharPtr = "This is a string literal.";
 
 Note the extra const qualifier in there, this is because a string literal is saved in program memory and should not be written to.
 
-# Strings
+## Strings
 
 As mentioned in the Overview, you can store characters (strings), in a type called string. To use this data type, you must #include <string>.
 
@@ -58,6 +58,6 @@ myCharPtr = new char[myString.size() + 1];
 memcpy(myCharPtr, myString.c_str(), myString.size() + 1);
 ```
 
-# Converting A Integer To A Hex String
+## Converting A Integer To A Hex String
 
 See the [String.hpp file](https://github.com/mbedded-ninja/CppUtils/blob/master/include/CppUtils/StrConv.hpp) in [CppUtils repo](https://github.com/mbedded-ninja/CppUtils).

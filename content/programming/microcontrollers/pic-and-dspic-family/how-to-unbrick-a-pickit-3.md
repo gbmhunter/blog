@@ -7,15 +7,15 @@ type: page
 url: /programming/microcontrollers/pic-and-dspic-family/how-to-unbrick-a-pickit-3
 ---
 
-# Overview
+## Overview
 
 You can quite easily brick a PICkit 3 when using it with the buggy standalone apps Microchip has written (especially when attempting to download the standalone OS to it). Here is how to unbrick a unresponsive PICkit3.
 
-# You Will Need
+## You Will Need
 
 Aside from the bricked PICkit3 you a trying to fix, you will also need:  * A working PICkit3 to program the bricked PICkit3 with.  * A standard 6-pin, 2.54mm header strip and some small bits of wire for converting J2 on the bricked PICkit3 into a something we can program with the working PICkit3  * The standalone PICkit3 v3.01 or similar application written by Microchip that allows you to program with the PICkit3 (it also provides the hex file we will be downloading to the bricked PICkit3).
 
-# Unbricking Steps
+## Unbricking Steps
 
 1. Remove the PCB from the PICkit 3 enclosure. The connections we are interested in for programming a those circled in yellow (J2).  
   

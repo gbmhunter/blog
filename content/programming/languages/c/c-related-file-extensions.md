@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/c-related-file-extensions
 ---
 
-# Overview
+## Overview
 
 The following table lists the standard file extensions used for C-related files. The extension normally indicates how far the file is through the compilation process. Note that many integrated development environments (IDE's), and command-line compilers hide most of the individual compiler steps from the user.
 

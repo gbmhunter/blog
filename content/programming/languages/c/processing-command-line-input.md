@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/c/processing-command-line-input
 ---
 
-# Overview
+## Overview
 
 This page concerns itself largely on the GNU implementation of `getopt()` and it's variants (more likely than not you will be using this library), and how they relate to the POSIX standard.
 
-# First, A Little Terminology
+## First, A Little Terminology
 
 
 <table>
@@ -79,7 +79,7 @@ This page concerns itself largely on the GNU implementation of `getopt()` and i
 </tbody>
 </table>
 
-# getopt()
+## getopt()
 
 `getopt()` is a standard C library function that is commonly used to decode command-line options that are passed into the main()  function from the calling program (which is usually a terminal, e.g. bash). It can be used in your C code by including getopt.h (#include <getopt.h>).
 
@@ -91,14 +91,14 @@ The header file getopt.h exposes four variables used by getopt() that you can 
 
 Note that getopt() re-arranges the variable pointer array as it is processing, so that when it is complete, the program name is first (as it was originally), followed by all the options, and lastely all the parameters. You can use this feature to identify the parameters once getopt() is finished.
 
-# getopt_long()
+## getopt_long()
 
 
 `getopt_long()` is an extension of `getopt()` that allows long options, that is, options that are described with more than one ASCII character and preceeded by -- (e.g. `--speed=54`). It is part the GNU C library (glibc).
 
 The way long options are specified and handled is radically different to that for short options. The getopt_long() function accepts...
 
-# Similar Functions
+## Similar Functions
 
 [Argtable](http://argtable.sourceforge.net/) is an open-source ANSI C library for parsing GNU-style command line options. Because it is ANSI compliant it is compilable on a huge range of operating systems, including Linux, FreeBSD, Cygwin, Apple Mac OS X and Windows, a compilable with the most common compilers on these operating systems. This library is well documented.
 

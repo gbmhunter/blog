@@ -16,11 +16,11 @@ url: /electronics/circuit-design/capacitive-sensing/capacitor-encoder-design
 * The Waveforms You Get
 * Firmware And Algorithm
 
-# Overview
+## Overview
 
 This page describes how to design a capacitor encoder with just two PCB's with cleverly etched tracks, a capacitance-to-digital converter IC, and a microcontroller with some signal processing/algorithm code.
 
-# Terminology
+## Terminology
 
 Warning, this is my terminology, and may not be consistent with other designs (as far as I'm aware, there is no industry standard).
 
@@ -29,11 +29,11 @@ Warning, this is my terminology, and may not be consistent with other designs (a
 * Channels: A channel is a single electrical circuit in which the capacitance can be measured. A **track** consists of many channels (e.g. 6). The channels capacitance varies as the PCBs slide across one another.
 * Signature Waveform: The expected shape of the waveform made when you group together the capacitance channels for a track. The measured capacitance values are made into an array and the compared with the signature waveform by calculating the **correlation coefficient**.
 
-# How They Work
+## How They Work
 
 <blockquote>The basic principle is two PCB's, which slide across each other. The PCB's have multiple specially shaped copper areas, and the capacitance between the copper areas on each PCB change as the PCB's move. The capacitances are measured with a CDC (capacitance-to-digital converter), and then a signal processing algorithm is used to determine one PCB's position relative to the other.</blockquote>
 
-# What You Will Need
+## What You Will Need
 
 * PCB's with etched "pads" and "finger", more on this later
 * A capacitance-to-digital converter (CDC)
@@ -42,7 +42,7 @@ Warning, this is my terminology, and may not be consistent with other designs (a
 
 The microcontroller needs to have enough memory and processing speed to do a bit of signal processing. I'm not talking intense DSP or FPGA levels of signal processing, but there is enough of it that it does rule out most lower end microcontrollers. I would recommend a 32-bit micro with at least 64kB of flash and 8kB of RAM, with a clock speed >24MHz, for processing one absolute capacitive encoder.
 
-# What Resolution/Accuracy Is Possible?
+## What Resolution/Accuracy Is Possible?
 
 I have achieved resolutions of up to 4/100 of a degree with custom-built absolute rotational capacitance encoders, which is equivalent to a 9000 count/rev encoder! The accuracy of these measurements was never calculated, although I suspect it would be high.
 
@@ -57,7 +57,7 @@ I have achieved resolutions of up to 4/100 of a degree with custom-built absolut
 * Number of capacitive channels to measure
 * PCB manufacturing tolerances
 
-# PCB Design
+## PCB Design
 
 **Soldermask** must be applied to all parts of both tracks which are rubbing against each other. You want the circuit to be capacitivly coupled, not a direct short. The soldermask acts as a dielectric (but more dielectric material should be added, see below).
 
@@ -115,7 +115,7 @@ The skewing can be prevented by:
 * Speeding up the CDC conversions (possibly by making them less accurate, if they use decimation or different power modes)
 * Designing larger capacitance pads. This will lower the resolution, but make the capacitance changes over a set distance smaller.
 
-# The Waveforms You Get
+## The Waveforms You Get
 
 The following image shows the individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm).
 
@@ -129,7 +129,7 @@ What makes the signal processing difficult is that the channels of CDC values ca
 
 {{< figure src="/images/electronics-capacitiveencoders/cdc-vs-time-graph-showing-different-offsets-of-each-channel.jpg" caption="CDC values vs. time graph showing the different offsets each channel can have."  width="800px" >}}
 
-# Firmware And Algorithm
+## Firmware And Algorithm
 
 ## Correlation
 

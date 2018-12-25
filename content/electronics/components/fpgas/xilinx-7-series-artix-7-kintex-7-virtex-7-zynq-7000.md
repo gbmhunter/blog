@@ -7,6 +7,6 @@ type: page
 url: /electronics/components/fpgas/xilinx-7-series-artix-7-kintex-7-virtex-7-zynq-7000
 ---
 
-# PCI Express Support
+## PCI Express Support
 
 The GTP transceivers on the 7 Series FPGAs support [PCI Express (PCIe)](/electronics/communication-protocols/pci-express-pcie), up-to revision 2.0 (also called Gen 2).

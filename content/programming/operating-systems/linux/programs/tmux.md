@@ -7,7 +7,7 @@ type: page
 url: /programming/operating-systems/linux/programs/tmux
 ---
 
-# Create And Attach To Sessions
+## Create And Attach To Sessions
 
 To attach to an already created session:
 
@@ -15,7 +15,7 @@ To attach to an already created session:
 $ tmux a -t <session_name>
 ```
 
-# Detach From A Session
+## Detach From A Session
 
 To detach from a tmux session press:
 
@@ -25,7 +25,7 @@ Ctrl-B, D
 
 while in the session. This will leave the session running in the background, so you can re-attach to it later.
 
-# Increase Scrollback Buffer Size
+## Increase Scrollback Buffer Size
 
 Add the following line to your ~/.tmux.conf file. This will allow you to retain more data (history) in the tmux scrollback buffer.
 
@@ -33,7 +33,7 @@ Add the following line to your ~/.tmux.conf file. This will allow you to retain 
 set -g history-limit 50000
 ```
 
-# Assign Key To Clear History
+## Assign Key To Clear History
 
 Add the following line to your ~/.tmux.conf file. This will allow you to press Ctrl-l to clear both the scrollback history and screen data at the same time.
 

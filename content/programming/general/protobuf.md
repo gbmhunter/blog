@@ -7,7 +7,7 @@ type: page
 url: /programming/general/protobuf
 ---
 
-# Overview
+## Overview
 
 _**protobuf**_ is an open-source, multi-language library from Google for serialising/deserialising data.
 
@@ -17,18 +17,18 @@ It is designed as an efficient, **language agnostic** way of sending data over m
 
 Source code and downloads can be found at [https://github.com/google/protobuf](https://github.com/google/protobuf).
 
-# Installing
+## Installing
 
 The installation for the C++ version of protobuf is described well at [https://github.com/google/protobuf/tree/master/src](https://github.com/google/protobuf/tree/master/src). It uses **command-line tools** (autotools and make) and works best on a UNIX-like system.
 
 
-# .proto Files
+## .proto Files
 
 **Messages are described in .proto files**. These are then converted into your language of choice by the protobuf compiler.
 
 An advantage of this is that they are programming language agnostic, i.e. you can use these same .proto files to generate libraries for many different programming languages that all need to interface with these message types.
 
-# Valid Scalar (Primitive) Types
+## Valid Scalar (Primitive) Types
 
 Messages defines in .proto files can be composed of variables which have scalar (primitive) types, as well as variables which are of another message type (e.g. nested types).
 
@@ -167,7 +167,7 @@ The valid scalar types are:
 
 Each one of these scalar types maps to a correspond type your language of choice. See [https://developers.google.com/protocol-buffers/docs/proto#scalar](https://developers.google.com/protocol-buffers/docs/proto#scalar) for more details.
 
-# Reading From A Protobuf
+## Reading From A Protobuf
 
 ## C++
 
@@ -178,7 +178,7 @@ MyMessageType myMessage;
 std::cout << "x = " << myMessage.x() << std::endl;
 ```
 
-# Writing To A Protobuf
+## Writing To A Protobuf
 
 ## C++
 
@@ -205,7 +205,7 @@ myMsg.mutable_header()->set_crc("7F34");
 
 `mutable_header()` returns a pointer to the header field in myMsg, and then you can use the normal `set_<field_name>()` function to write to header.
 
-# Serialization/Deserialization
+## Serialization/Deserialization
 
 The main reason you are using protobuf objects is so that you can easily serialize and deserialize them, right?
 
@@ -227,7 +227,7 @@ Of course, once serialized into a string, you can **send the data over a serial 
 
 **Do you need a library for sending serial data** to/from a communication bus like UART, SPI or I2C? I recommend you have a look at [SerialFiller](https://github.com/mbedded-ninja/SerialFiller), a C++ serial publish/subscribe based communication protocol by myself (shameless plug).
 
-# Protobuf And CMake
+## Protobuf And CMake
 
 When working with protobuf, you usually want your build system to generate C++ source code from your .proto files at build time.
 
@@ -246,17 +246,17 @@ This then exposes the macro `PROTOBUF_GENERATE_CPP`, which you can use to genera
 # this CMakeLists.txt file
 file(GLOB ProtoFiles "${CMAKE_CURRENT_SOURCE_DIR}/*.proto")
 
-# Generate C++ source and header files from the .proto files
+## Generate C++ source and header files from the .proto files
 # found above
 PROTOBUF_GENERATE_CPP(ProtoSources ProtoHeaders ${ProtoFiles})
 
-# Package the source code into a library
+## Package the source code into a library
 add_library(messages STATIC ${ProtoSources} ${ProtoHeaders})
 
-# Link our new messages library against the protobuf library
+## Link our new messages library against the protobuf library
 target_link_libraries(messages ${PROTOBUF_LIBRARY})
 ```
 
-# Applications
+## Applications
 
 protobuf is used with the Publish/Subscribe messaging system in the [Robotic Operating System (ROS)](http://www.ros.org/).

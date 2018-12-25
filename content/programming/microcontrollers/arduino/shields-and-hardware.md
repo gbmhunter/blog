@@ -7,7 +7,7 @@ type: page
 url: /programming/microcontrollers/arduino/shields-and-hardware
 ---
 
-# Infrared Sensors
+## Infrared Sensors
 
 Supplier: [DealExtreme](http://dx.com/)  
 Supplier Link: (unknown)  
@@ -17,7 +17,7 @@ A simple three PIN device that is good for binary (on/off) short-range detection
 
 {{< figure src="/images/electronics-arduino/arduino-infrared-sensors.jpg" caption="Arduino-compatible infrared sensors."  width="400px" >}}
 
-# Freetronics LCD And Keypad Shield
+## Freetronics LCD And Keypad Shield
 
 Part Number: SH-16X2LCD  
 Supplier: [Freetronics](http://www.freetronics.com/collections/display/products/lcd-keypad-shield#.UXtkG7V_rSg), Jaycar  
@@ -46,15 +46,15 @@ void loop()
 }
 ```
 
-# Motor Controller
+## Motor Controller
 
 {{< figure src="/images/electronics-arduino/arduino-4wd-robot-motor-controller.jpg" caption="The controller for a Arduino 4WD robot."  width="400px" >}}
 
-# Sensor Shield
+## Sensor Shield
 
 {{< figure src="/images/electronics-arduino/arduino-sensor-shield.jpg" caption="An Arduino sensor shield."  width="400px" >}}
 
-# Ultrasonic Ranging Module HCSR-04
+## Ultrasonic Ranging Module HCSR-04
 
 Part Number: HCSR-04  
 Supplier: [DealExtreme](http://dx.com/)  
@@ -65,7 +65,7 @@ Very easy to interface to, due there being a native Arduino API function called 
 
 {{< figure src="/images/electronics-arduino/arduino-ultrasound-module.jpg" caption="An Arduino compatible ultrasound module."  width="600px" >}}
 
-# The DealExtreme Robotic Platform
+## The DealExtreme Robotic Platform
 
 {{< figure src="/images/electronics-arduino/bottom-side-of-arduino-4wd-robot.jpg" caption="The bottom side of the 4WD Arduino robot."  width="200px" >}}
 

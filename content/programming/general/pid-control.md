@@ -7,13 +7,13 @@ type: page
 url: /programming/general/pid-control
 ---
 
-# Overview
+## Overview
 
 PID control is a very common technique for controlling a system in which you have a desired set-point for the system to be in, and are able to control this with one variable. PID is an acronym for proportional-derivative-integral, and describes the three mathematical processes used to decide on a output to the control system.
 
 You change the dynamics of the PID control loop by varying three parameters, the proportional, integral and derivative constants.
 
-# How PID Works
+## How PID Works
 
 PID is a industry-standard way of controlling a system, given a single input control parameter (e.g. duty cycle of heater) and a single variable that you want controlled (e.g. temperature of the heater).
 
@@ -24,7 +24,7 @@ This error is what is fed into the P (proportional), I (integral) and D (derivat
 
 {{< figure src="/images/2018/04/pid-controller-diagram-process-error-setpoint-measured-value.png" width="716px" caption="A block diagram of a PID controller."  >}}
 
-# The Maths
+## The Maths
 
 The standard PID equation is:
 
@@ -52,11 +52,11 @@ This PID equation is in the continuous time domain. However, most PID control lo
 
 This equation is suitable for implementing in code. There also exists the Z transformation of the equation, but this obscures the physical meaning of the parameters used in the controller.
 
-# Tuning Methods
+## Tuning Methods
 
 Coming soon...
 
-# Integral Windup
+## Integral Windup
 
 Integral windup is a common problem with PID controllers. It is when a sudden change in the set-point or large disturbance on the output (really anything that causes a large error between where you are and where you want to be), causes the integral term to build up (remember that the integral term accumulates errors). Once you have reached where you want to be, the integral term has to "unwind", and will drive the output past the setpoint until the error-time product is unwound.
 
@@ -80,7 +80,7 @@ Lets pretend the output is limited to 10. P + I + D = 13, so the output is going
 
 Be careful not to set the integral term to a negative value! This could potentially occur if the P + D term were already larger than the saturated value.
 
-# Worked Example
+## Worked Example
 
 Lets assume a mass/spring/damper process (aka plant or system) which consists of a mass attached to a fixed wall by spring and damper. We want to control the position of the mass, relative to it's resting point (which will be when the spring exerts no force).
 
@@ -135,11 +135,11 @@ We can simulate this system in code by discretizing the system into small time s
 
 6. Once the values for the velocity and displacement are updated, repeat steps 3-5 for the next time step. \(F_{spring}\) and \(F_{damper}\) will calculated for the next time step using these updated velocity and displacement values.
 
-# Firmwave Modules
+## Firmwave Modules
 
 If you are looking for PID code for an embedded system, check out my [Pid project on GitHub (CP3id)](https://github.com/gbmhunter/CP3id). It is written in C++ and designed to be portable enough to run on many embedded systems, as well as Linux.
 
-# External Links
+## External Links
 
 A really cool open-source hardware project is the [osPID Kit](http://www.rocketscream.com/shop/ospid-kit) which is sold at [RocketScream](http://www.rocketscream.com). It looks really swank in it's acrylic blue enclosure.
 

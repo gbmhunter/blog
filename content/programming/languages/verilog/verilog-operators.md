@@ -9,7 +9,7 @@ url: /programming/languages/verilog/verilog-operators
 
 Operators are used to manipulate variables.
 
-# Bitwise Operators
+## Bitwise Operators
 
 Bitwise operators act on the individual bits of a variable. They are very similar to the bitwise operations in other languages, such as [C](/programming/languages/c).
 <table>
@@ -63,7 +63,7 @@ Bitwise operators act on the individual bits of a variable. They are very simila
 
 These operators get synthesized directly into their equivalent logic gate.
 
-# Reduction Operators
+## Reduction Operators
 
 Reduction operators are similar to bitwise operators, except they act on all bits of a variable simultaneously, to produce a 1-bit output (hence the name reduction). Some of the operators are the same as the bitwise operators, and so operator used depends on the **context**.
 <table>
@@ -125,7 +125,7 @@ Reduction operators are similar to bitwise operators, except they act on all bit
 </tbody>
 </table>
 
-# Shift Operators
+## Shift Operators
 
 Shift operators shift the bits in a variable left or right by a number of specified places. The basic shifts are very similar to the shift operations in other languages, such as [C](/programming/languages/c). The arithmetic shift operators preserve the sign of the value when dealing with variables that represent signed numbers (this is done automatically in C, depending on the type of the variable).
 
@@ -173,7 +173,7 @@ Shift operators shift the bits in a variable left or right by a number of specif
 </table>
 
 
-# Concatenation And Replication Operators
+## Concatenation And Replication Operators
 
 
 Concatenation is used to combine two input variables into a wider output variable. Replication is used to repeat a variables many times in a pattern.
@@ -206,7 +206,7 @@ Concatenation is used to combine two input variables into a wider output variabl
 </table>
 
 
-# Arithmetic Operators
+## Arithmetic Operators
 
 Arithmetic operators are used to perform basic mathematics on variables. Most follow the same syntax as C, except the power operator (**), which is not supported in C.
 
@@ -271,7 +271,7 @@ Arithmetic operators are used to perform basic mathematics on variables. Most fo
 
 Remember that an FPGA does not have ALU like a microcontroller, so all of these operations will be created with gates in hardware! In some cases, this can be very taxing, so you must always be careful when using arithmetic operators in a hardware description language.
 
-# Comparison Operators
+## Comparison Operators
 
 These operators compare two values and produce a single bit output.
 
@@ -351,7 +351,7 @@ These operators compare two values and produce a single bit output.
 </table>
 
 
-# Logical Operators
+## Logical Operators
 
 <table>
     <thead>

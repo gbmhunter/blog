@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/enumerations
 ---
 
-# Overview
+## Overview
 
 Enumerations in C are in their most basic sense, a way of creating a meaningful word-based list **type**.
 
@@ -32,7 +32,7 @@ typedef enum
 } colours_t;
 ``` 
 
-# Usefullness
+## Usefullness
 
 Enumerations are commonly used for:
 
@@ -40,7 +40,7 @@ Enumerations are commonly used for:
 * Accessing hardware registers in embedded systems (used for creating meaningful register names).
 * Creating state variables (variables which describe a state in a state machine, commonly used with a switch statement)
 
-# Syntax
+## Syntax
 
 Enums can be defined it two seperate ways. The non-typedef way:
 
@@ -86,15 +86,15 @@ typedef enum
 
 If no value is specified, the compiler will increment by 1 as usual, so in the above case, BLUE = 6.
 
-# Interchangeability
+## Interchangeability
 
 In C, enum types and integer types are normally interchangeable. This can either be a good or bad thing, depending on your viewpoint. C++ allows for stricter type checking with the recently introduced enum class (strongly-typed enums), which cannot be compared with integer types. Strongly-typed enums also allows you to specify the width of the integer used to store the enumeration.
 
-# Optimisation
+## Optimisation
 
 You are not allowed to take a reference (pointer) to an enumeration (they are not allowed to be lvalues), while you can with a const int. This means they can be optimised, while const int cannot.
 
-# The Data Type Of An Enum
+## The Data Type Of An Enum
 
 The data type of an enumeration is implemenatation defined. This is what the standard has to say...
 

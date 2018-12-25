@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/java/primitive-data-types
 ---
 
-# Overview
+## Overview
 
 Java has 8 primitive data types. It does not support unsigned primitive types (all primitive numerical types are signed).
 
@@ -15,7 +15,7 @@ You cannot use the new keyword with primitive data types as they are not con
 
 Note that the String class, although it has special support by the language, is not a primitive data type.
 
-# byte
+## byte
 
 <table><tbody ><tr >
 <td >Size
@@ -35,7 +35,7 @@ Note that the String class, although it has special support by the language, is
 <td >Signed two's complement.
 </td></tr></tbody></table>
 
-# short
+## short
 
 <table><tbody ><tr >
 <td >Size
@@ -55,7 +55,7 @@ Note that the String class, although it has special support by the language, is
 <td >Signed two's complement.
 </td></tr></tbody></table>
 
-# int
+## int
 
 <table><tbody ><tr >
 <td >Size
@@ -81,7 +81,7 @@ Note that the String class, although it has special support by the language, is
 int i = 1234; // The 1234 is an integer literal
 ```
 
-# long
+## long
 
 <table><tbody ><tr >
 <td >Size
@@ -101,7 +101,7 @@ int i = 1234; // The 1234 is an integer literal
 <td >Signed two's complement.
 </td></tr></tbody></table>
 
-# float
+## float
 
 <table><tbody ><tr >
 <td >Size
@@ -121,7 +121,7 @@ int i = 1234; // The 1234 is an integer literal
 <td >Single-precision 32-bit IEEE 754 floating point.
 </td></tr></tbody></table>
 
-# double
+## double
 
 <table><tbody ><tr >
 <td >Size
@@ -143,7 +143,7 @@ int i = 1234; // The 1234 is an integer literal
 
 The double  type should be your default go-to for any general-purpose decimal number. If you are using many of them and space/performance is an issue, consider using the smaller, lower accuracy float type instead.
 
-# boolean
+## boolean
 
 <table><tbody ><tr >
 <td >Size
@@ -165,7 +165,7 @@ The double  type should be your default go-to for any general-purpose decimal n
 
 Even though a boolean can only be used to represent one bit of information, the amount of memory it uses isn't specified by the Java standard.
 
-# char
+## char
 
 <table><tbody ><tr >
 <td >Size
@@ -185,7 +185,7 @@ Even though a boolean can only be used to represent one bit of information, th
 <td >A single 16-bit Unicode character.
 </td></tr></tbody></table>
 
-# Converting Between byte And int
+## Converting Between byte And int
 
 Notice that the only 8-bit number representation Java has is for a signed two complement. This means that you can only store the numbers -128 to +127 in a byte.
 

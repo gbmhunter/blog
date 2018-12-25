@@ -7,11 +7,11 @@ type: page
 url: /programming/operating-systems/linux/programs/df-disk-free
 ---
 
-# Overview
+## Overview
 
 The df (_disk free_) program allows you to see how much space has been used up (and how much is still available) on all of the current mounted file systems.
 
-# Usage
+## Usage
 
 The basic way to use df is simply:
 

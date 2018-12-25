@@ -7,7 +7,7 @@ type: page
 url: /electronics/circuit-design/component-designators
 ---
 
-# Overview
+## Overview
 
 Component designators are used to identify components both on schematics and PCB's. They usually consist of a short acronym representing the type of component, followed by unique number to distinguish it from other components of the same type (e.g. R3, R4, C3).
 
@@ -363,7 +363,7 @@ Sorted by alphabetic order...
 </table>
 
 
-# Regex
+## Regex
 
 The regex pattern to match any valid component designator, which is one or more capital letters followed by one or more numerals, is
 

@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/python/threading
 ---
 
-# Overview
+## Overview
 
 Python supports threading. However, because of the GIL lock, only one thread is allowed to run at once. There Python threading supports concurrency, but not parallelizm. Most threading functions are made available by adding the code `import threading` to the top of your Python script.
 
-# Gracefully Exiting Multiple Threads
+## Gracefully Exiting Multiple Threads
 
 I followed [this example at regexprn.com](http://www.regexprn.com/2010/05/killing-multithreaded-python-programs.html) for the most part, except I discovered the example code was buggy and had to make some tweaks, as outlined below.
 
@@ -102,6 +102,6 @@ if __name__ == '__main__':
 
 Note that the code in class `MyThread1` can be copied to create as many threads as you want (for example, to create `MyThread2`).
 
-# Examples
+## Examples
 
 The [Columbus Radio project](/electronics/projects/columbus-radio) uses multiple Python threads for the UI control. The code is in the [ColumbusRadio repo on GitHub](https://github.com/mbedded-ninja/ColumbusRadio). The threads should gracefully exit if Ctrl-C is pressed in the terminal while they are running.

@@ -7,15 +7,15 @@ type: page
 url: /pcb-design/emiemc-electromagnetic-interferencecompatibility
 ---
 
-# Overview
+## Overview
 
 >It is very difficult to reduce EM emissions by more than 20dB without serious design changes - Anon
 
-# Contact vs. Non-Contact Probes
+## Contact vs. Non-Contact Probes
 
 Non-contact probes have the advantage of being easy to use. They do not require you to make and break electrical connections to test the circuit. They don't require you to ground the probe using a very short and obtrusive ground lead. They don't run the risk of shorting out parts of the circuit if your hand slips (non-contact probes are almost always insulated).
 
-# Oscilloscope Probes
+## Oscilloscope Probes
 
 The loop made with the probe tip and it's ground connection forms an unshielded antenna which will pick up high frequency noise in it's vicinity.
 

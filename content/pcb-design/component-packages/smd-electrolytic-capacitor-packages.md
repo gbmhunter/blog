@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/smd-electrolytic-capacitor-packages
 ---
 
-# Overview
+## Overview
 
 The following image shows the package sizes for Panasonics electrolytic SMD capacitors. These Panasonic cap ranges (there are quite a few series) are commonly used when requiring SMD electrolytics.
 

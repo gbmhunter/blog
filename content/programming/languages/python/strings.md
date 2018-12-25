@@ -7,11 +7,11 @@ type: page
 url: /programming/languages/python/strings
 ---
 
-# Overview
+## Overview
 
 Python has built-in support for strings and all of the common string manipulation actions.
 
-# Concatenation
+## Concatenation
 
 Strings can be concatenated with the + operator.
 
@@ -19,20 +19,20 @@ Strings can be concatenated with the + operator.
 "part 1" + " part 2" = "part 1 part2"
 ```
 
-# Repetition
+## Repetition
 
 ```py    
 "repeat me "*3 = "repeat me repeat me repeat me"
 ```
 
-# Indexing
+## Indexing
 
 ```py    
 "hello"[0] = "h"
 "hello"[-1] = "o"
 ```
 
-# Slicing
+## Slicing
 
 The slicing of strings can be easily done by using array-like syntax on a string object.
 
@@ -40,7 +40,7 @@ The slicing of strings can be easily done by using array-like syntax on a string
 "hello"[1:3] = "ell"
 ```
 
-# Find The Length
+## Find The Length
 
 To find the length of a Python string, use the `len()` function as shown below:
 

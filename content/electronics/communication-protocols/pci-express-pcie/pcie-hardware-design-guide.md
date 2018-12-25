@@ -7,13 +7,13 @@ type: page
 url: /electronics/communication-protocols/pci-express-pcie/pcie-hardware-design-guide
 ---
 
-# Overview
+## Overview
 
 This page contains information useful to hardware designers using a PCIe bus as part of their PCB design.
 
 The PCIe physical layer can be split into two sub-layers, the electrical and logical layers.
 
-# Electrical Sub-Layer
+## Electrical Sub-Layer
 
 The pinout for a x1 PCIe connector are as follows:
 
@@ -216,7 +216,7 @@ Pin B3 used to be RSVD, but was changed to +12V in PCIe revision 1.1 (March 2005
 
 The card-edge finger for A1 (PRSNT1#, hot-plug detect 1) and B17 (PRSNT#2, hot-plug detect 2) is shorter than all of the others, hence they should be the last two pins to make contact.
 
-# Differential-Pair Routing
+## Differential-Pair Routing
 
 Individual traces for a given differential pair must be matched in length to a tolerance of 0.127mm (5mils).
 
@@ -228,23 +228,23 @@ Vias in the differential pairs should be avoided as much as possible. If they c
 
 Regular FR4 PCB material can be used with PCIe traces.
 
-# Differential-Pair Decoupling Caps
+## Differential-Pair Decoupling Caps
 
 The PCIe standard states that AC coupling capacitors must connected in series on the transmitting side of all differential data pairs. The capacitance must be between 75 and 200nF. 100nF 0402-sized capacitors are recommended. The capacitors must be placed as close to the transmitting side as possible to reduce discontinuity effects.
 
 Thus, for daughter-board with a slave PCIe port, decoupling caps need to be placed on the PER differential signals.
 
-# Terminating Resistors
+## Terminating Resistors
 
 Most PCIe-compatible IC's automatically embed the 50Ω terminating resistors inside themselves, meaning no external termination is required.
 
-# Bootup Timing
+## Bootup Timing
 
 The PERST# net is deasserted by the master 100ms after a daughter board is first powered up (again, power comes from the master, in the form of +3.3 and +12V). The daughter board must be ready to link train (i.e. communicate other the PCIe port), no more than 20ms after PERST# is deasserted. Thus the daughter board has to be ready for PCIe communications 120ms after it is first powered up.
 
 With PCIe ports implemented on large FPGA-based designs, this can be a challenging design constraint. An FPGA which loads its bitstream (configuration data) from external flash over a SPI bus using standard data rates can easily take more than 120ms. Fortunately there a few ways to speed up the FPGA configuration:  1. Use x2 or x4 SPI memory.  2. Use a faster SPI clock speed (e.g 100MHz rather than 50MHz). Note that at these times sometimes the routing needs to be treated as a transmission line.  3. Use compression to reduce the size of the bitstream.  4. The loading/configuring of a PCIe-related bitstream, which quickly makes the PCIe port functional, followed by the loading/configuring of the rest of the FPGA system. Xilinx calls this _Tandem PCI Express_ or_ Tandem PROM_.
 
-# Example PCIe x1 Card-Edge Schematic Design
+## Example PCIe x1 Card-Edge Schematic Design
 
 The following image shows an example PCIe x1 card-edge connector schematic symbol and associated components:
 

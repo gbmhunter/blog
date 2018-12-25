@@ -7,7 +7,7 @@ type: page
 url: /programming/general/checksums
 ---
 
-# Fletcher's Checksum
+## Fletcher's Checksum
 
 Transmitter Methodology
 

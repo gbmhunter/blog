@@ -7,7 +7,7 @@ type: page
 url: /programming/version-control-systems/git/managing-large-repos
 ---
 
-# Overview
+## Overview
 
 The size of a repository can grow in two orthogonal directions:
 
@@ -16,7 +16,7 @@ The size of a repository can grow in two orthogonal directions:
 
 Obviously, if a shallow copy has not been performed, the size of the history is always equal or greater than the size of the current repo data (assuming no compression has taken place, and the repo has no uncommitted changes).
 
-# Shallow Clones
+## Shallow Clones
 
 Git allows a shallow copy, keeping only the latest n commits, with the command:
 

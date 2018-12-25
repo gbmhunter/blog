@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/dsop-advance-component-package
 ---
 
-# Overview
+## Overview
 
 <table><tbody ><tr >
 <td >Name
@@ -77,14 +77,14 @@ The package is 5x6x0.73mm (nominal)
     <td>High-power Toshiba MOSFETs</td>
 </tr></tbody></table>
 
-# Thermal Resistance
+## Thermal Resistance
 
 The DSOP Advance component package comes with dual-side cooling features to further decrease the thermal resistance compared to the SOP Advance component package.
 
-# Dimensions
+## Dimensions
 
 {{< figure src="/images/2015/05/dsop-advance-component-package-dimensions.png" width="952px" caption="The dimensions for the DSOP Advance component package."  >}}
 
-# Recommended Land Pattern
+## Recommended Land Pattern
 
 {{< figure src="/images/2015/05/dsop-advance-component-package-recommended-land-pattern.png" width="271px" caption="The recommended land pattern for the DSOP Advance component package."  >}}

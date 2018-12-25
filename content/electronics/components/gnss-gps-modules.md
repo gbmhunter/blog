@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/gnss-gps-modules
 ---
 
-# Terminology
+## Terminology
 
 <table>
     <thead>
@@ -91,7 +91,7 @@ url: /electronics/components/gnss-gps-modules
 <td >VSWR is an acronym for <b>voltage standing wave ratio</b>. It is a type of SWR.
 </td></tr></tbody></table>
 
-#  Frequencies
+##  Frequencies
 
 <table>
     <thead>
@@ -114,7 +114,7 @@ url: /electronics/components/gnss-gps-modules
 <td >1224-1230MHz, 1575.42MHz (L1)
 </td></tr></tbody></table>
 
-# Antenna Basics
+## Antenna Basics
 
 {{< figure src="/images/2013/10/gps-bluetooth-antenna-with-isolated-magnetic-dipole-photo.jpg" width="281px" caption="Photo of a combined GPS and Bluetooth antenna with an isolated magnetic dipole. Image from www.digikey.com."  >}}
 
@@ -136,7 +136,7 @@ For a GPS antenna, the VSWR approaches 1 for the GPS signal frequency. The below
 
 {{< figure src="/images/2013/10/gps-chip-antenna-vswr-and-efficiency-graph.png" width="540px" caption="A graph of the VSWR and efficiency vs. frequency for a passive SMD GPS antenna. Image from http://www.fractus.com/sales_documents/FR05-S1-E-0-103/DS_FR05-S1-E-0-103.pdf."  >}}
 
-# Types Of Antennas
+## Types Of Antennas
 
 ## Chip
 
@@ -194,10 +194,10 @@ They are normally made from a base ceramic material (and called ceramic patch an
 
 {{< figure src="/images/2013/10/gps-patch-antenna-02-photo.jpg" width="358px" caption="Photo of a SMD mounted GPS patch antenna. Image from www.digikey.com."  >}} {{< figure src="/images/2013/10/gps-external-patch-antenna-photo.jpg" width="407px" caption="Photo of an external (to PCB) GPS patch antenna. Image from www.digikey.com."  >}}
 
-# Relativity
+## Relativity
 
 GNSS satellites have to account for relativity, otherwise devices uses these satellites would be inaccurate to about 7m.
 
-# Communications With Microcontroller
+## Communications With Microcontroller
 
 GPS modules typically output NMEA protocol data, plus the option for a proprietary protocol that usually contains more information or allows extra features.  

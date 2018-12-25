@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/component-packages/dip-component-package
 ---
 
-# Overview
+## Overview
 
 <table >
 <tbody >
@@ -101,7 +101,7 @@ where n is the number of pins and the width is the rated package width in mm (e.
 </tbody>
 </table>
 
-# Comments
+## Comments
 
 The most common through-hole IC package. Now mostly superseded by SMT packages. Has standard 100mill pitch spacing. The two rows of legs are usually 300mill (thin-type), or 600mill (fat-type) apart (400mil and 900mil variants are also present). The 600mill package is usually reserved for the larger pin variants. As well as standard through-hole mounting, they can also be inserted into a socket, either by friction or clamping (zero insertion force). Pin numbering is counter-clockwise from the top-left.
 
@@ -111,6 +111,6 @@ Anti-static packaging can easily be made for DIP packages with foam and aluminiu
 
 Components other than ICs can also use this footprint (although they typically have different packages). One example are some 7-segment, 4-digit LCD character displays, which use the DIP-600-12 footprint.
 
-# 3D Renders
+## 3D Renders
 
 {{< figure src="/images/2015/03/dip-16-component-package-3d-render.jpg" width="297px" caption="A 3D render of the DIP-16 component package." >}}

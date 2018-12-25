@@ -7,15 +7,15 @@ type: page
 url: /electronics/circuit-design/inrush-current
 ---
 
-# Overview
+## Overview
 
 Power supplies are responsible for a large number of inrush current issues due to their large amounts of input and output capacitance. Advanced switch-mode power supplies will limit the inrush current to the output appropriately (either fixed or set by a resistor to a dedicated pin on the SMPS controller), but you still have the input capacitance to deal with.
 
-# Standard Resistors
+## Standard Resistors
 
 Standard resistors are one of the simplest ways of limiting inrush current. They are typically used in low-power situations, as unlike many of the more complex inrush current protection methods, their resistance does not reduce after start-up, meaning they dissipate significant power continuously and can cause large voltage drops.
 
-# NTC Thermistors
+## NTC Thermistors
 
 NTC thermistors can be used for reducing the amount of inrush current.
 

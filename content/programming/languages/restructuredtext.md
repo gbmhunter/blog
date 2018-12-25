@@ -7,15 +7,15 @@ type: page
 url: /programming/languages/restructuredtext
 ---
 
-# Overview
+## Overview
 
 reStructuredText is a markup language for plain text. It is also called reST.
 
-# Uses
+## Uses
 
 Cloud-based repository hosts (e.g. GitHub, BitBucket) README's (but not as popular as Markdown).
 
-# Section Headers
+## Section Headers
 
 Section titles are described in reST by underlining or both underlining and overlining the section header text with a sequence of non-alphanumeric characters. Adding these characters is called an **adornment**.
 
@@ -42,11 +42,11 @@ Chapter 2 Title
 
 Note that the document title and subtitle are handled slightly different from section headers.
 
-# Tables
+## Tables
 
 Two different table formats are supported.
 
-# Images
+## Images
 
 Images can be embedded into the output by using the following image directive.
 
@@ -56,6 +56,6 @@ Images can be embedded into the output by using the following image directive.
 
 The image URL can be either relative to the directory location of the ReStructuredText file or it can be an http URL.
 
-# Examples
+## Examples
 
 See any of my [GitHub repositories](https://github.com/gbmhunter) for a reST document in action (e.g. [https://github.com/gbmhunter/ClideCpp](https://github.com/gbmhunter/ClideCpp)).

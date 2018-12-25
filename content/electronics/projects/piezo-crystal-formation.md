@@ -41,6 +41,6 @@ These crystals are quite brittle (they aren't diamonds!). Not surprisingly, it b
 
 If you want more information about piezos and their use in electronics, see the [Piezo Speaker page](/electronics/components/piezos).
 
-# Picture Gallery
+## Picture Gallery
 
 {{< gallery dir="/images/electronics-piezocrystalformation" />}}

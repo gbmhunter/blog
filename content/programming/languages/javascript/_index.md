@@ -7,13 +7,13 @@ type: page
 url: /programming/languages/javascript
 ---
 
-# Overview
+## Overview
 
 JavaScript was originally developed to determine what browser a web page was loading on. It is commonly referred to as the language which was "designed in a weekend" or "designed in 2 weeks" (both which are partial truths).
 
 The most common use for JavaScript today is to enrich basic HTML webpages, as well as run back-end server tasks with a platform such as node.js. It can also be used to develop desktop applications with a platform such as nw.js or electron.
 
-# Adding JavaScript Code In An HTML Page
+## Adding JavaScript Code In An HTML Page
 
 There are two basic ways to add Javascript code into a web page. You can either: Include a JavaScript file (.js)
 
@@ -39,7 +39,7 @@ If adding a standalone javascript file, you can use the keyword defer to tell th
 <script type="text/javascript" src="myJavascriptFile.js" defer="defer"></script>
 ```
 
-# Constants
+## Constants
 
 Constants can't really be defined in JavaScript, at least not in the way you can in C and C++. One of the easiest workarounds is to just you all-uppercase variable names, like you would in C, so people will know that it shouldn't be changed.
 
@@ -56,7 +56,7 @@ Chrome let's you declare constants, but they are not that useful as they are not
 const A_CHROME_CONST = "blah";
 ```
 
-# Functions
+## Functions
 
 You can return values from a function by using the return keyword.
 
@@ -84,7 +84,7 @@ var myVal = myObj.val1;
 var trueFalse = myObj.var2;
 ```
 
-# Message Boxes
+## Message Boxes
 
 A simple message box can be created easily in JavaScript by using the alert() function.
 
@@ -93,7 +93,7 @@ A simple message box can be created easily in JavaScript by using the alert() fu
 alert("This is a simple message box using alert().");
 ```
 
-# The Console
+## The Console
 
 Many browsers support writing to the console with the command console.log() , in a similar manner that you would use printf for C/C++ in a Linux environment. The added ability of console.log() is that it can be passed most objects, and these will be printed with their own ToString() method.
 
@@ -109,11 +109,11 @@ var randomObject;
 console.log(randomObject);
 ```
 
-# Strings
+## Strings
 
 Strings can be defined with either the " or ' character. Both are allowed, to distinguish between HTML strings and JavaScript strings when JavaScript is wrapped in HTML. In this case, you need to use the ' character for JavaScript strings, and the " character for HTML strings.
 
-# String To Number Conversion
+## String To Number Conversion
 
 You can use the native javascript function parseFloat() .
 
@@ -162,7 +162,7 @@ However, be careful! Javascript has some very weird implicit conversion rules, a
 
 Credit for the above goes to [https://i.imgur.com/6aclmM6.png](https://i.imgur.com/6aclmM6.png).
 
-# The Maths Object
+## The Maths Object
 
 Like many languages, JavaScript has a Maths object which you can use to do basic mathematical operations with.
 

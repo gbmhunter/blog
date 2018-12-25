@@ -7,7 +7,7 @@ type: page
 url: /robotics/ros/messages
 ---
 
-# Pre-defined Messages
+## Pre-defined Messages
 
 Sensor-based messages are contained within the directory:
 
@@ -15,17 +15,17 @@ Sensor-based messages are contained within the directory:
 /opt/ros/<ros version>/share/sensor_msgs/
 ```
 
-# Defining Custom Messages
+## Defining Custom Messages
 
 ROS messages are defined in .msg files.
 
 An automatic MD5 sum of the .msg file is created and is checked when nodes try and publish/subscribe to topics. Nodes can only communicate when both the message type and MD5 sums match.
 
-# The Header
+## The Header
 
 ROS messages may include a special header. This can contain a time stamp and frame ID.
 
-# MD5 Checksums
+## MD5 Checksums
 
 If the message types are not the same, you will normally get a runtime error on launch similar to:
 

@@ -7,9 +7,9 @@ type: page
 url: /electronics/general/altium/altium-scripting-and-using-the-api/pcb-related-api
 ---
 
-# Overview
+## Overview
 
-# Creating Objects
+## Creating Objects
 
 ## Tracks
 
@@ -54,7 +54,7 @@ arcN_2.LineWidth := MMsToCoord(trackThicknessMM);
 Board.AddPCBObject(arcN_2);
 ```
 
-# User Input
+## User Input
 
 The following functions belonging to the IPCB_Board object request input from the user:
     
@@ -141,7 +141,7 @@ begin
 end;
 ```
 
-# Check That A PCB Board Is Selected
+## Check That A PCB Board Is Selected
 
 You commonly need to check that when a script is run, the active window is the right thing for the script to act on. The following code shows how to check if a PCB board file is loaded (.Pcb), and it feature at the start of lots of the other code examples. If a PCB board is not currently selected, the script quietly exits.
     
@@ -151,7 +151,7 @@ board := PCBServer.GetCurrentPCBBoard;
 if (board = nil) then exit;
 ```
 
-# Creating PCB Regions (The Contour Method)
+## Creating PCB Regions (The Contour Method)
 
 You can create PCB regions (which are similar to polygons, but have slightly different properties/behaviours) using contours.
 
@@ -201,7 +201,7 @@ region.Layer := eTopLayer;
 Board.AddPCBObject(region);
 ```
 
-# Creating PCB Polygons (The PolySegment Method)
+## Creating PCB Polygons (The PolySegment Method)
 
 You can create polygons on a PCB by using the IPCB_Polygon and TPolySegment classes.
 
@@ -270,7 +270,7 @@ procedure CreatePolygonUsingPolySegments();
 end;
 ```
 
-# To Update The PCB Window
+## To Update The PCB Window
 
 Use the Client object to update the PCB window. This will update the PCB to show any changes that have been made to it by preceeding code (it is not updated automatically). It is useful to call this at the end of a script to update the PCB and show the user the changes that have been made. If you don't call this, the the user will only see the changes once this method is called by another process.
     
@@ -278,7 +278,7 @@ Use the Client object to update the PCB window. This will update the PCB to show
 Call Client.SendMessage("PCB:Zoom", "Action=Redraw" , 255, Client.CurrentView)
 ```
 
-# Undo
+## Undo
 
 With specifically calling the functions `PCBServer.PreProcess` and `PCBServer.PostProcess`, you will lose undo/redo functionality when/after running altium scripts.
 
@@ -302,7 +302,7 @@ You can get the following error when trying to save if you haven't called `PCBSe
 
 {{< figure src="/images/altium/pcb-script-bug-a-command-is-currently-active-and-save-cannot-be-completed-at-this-time.png" caption="You might get this error in Altium when trying to save because you have run a script which hasn't called PSBServer.PostProcess an equal number of times as PCBServer.PostProcess."  width="800px" >}}
 
-# Updating Component  Links
+## Updating Component  Links
 
 You can open the "Edit Component Links" window by running the following commands (VBscript):
     
@@ -315,7 +315,7 @@ Call RunProcess("WorkspaceManager:DocumentOptions")
 
 Note that this does not update the component links automatically, but just opens the "Edit Component Links" window.
 
-# Zoom
+## Zoom
 
 You can change the zoom on a PCB by using the following commands (VBscipt):
     
@@ -325,7 +325,7 @@ Call AddStringParameter("ZoomLevel", "2.0")
 Call RunProcess("PCB:Zoom")
 ```
 
-# PCB Layer Info
+## PCB Layer Info
 
 You can get the currently selected PCB layer with the code:
     
@@ -344,7 +344,7 @@ ShowMessage(LayerToString(Board.CurrentLayer))
 ' copper layer was currently selected, it would display "Top Layer".
 ```
 
-# PCB Components
+## PCB Components
 
 PCB Components have a child object called Name, which refers the the designator.
 

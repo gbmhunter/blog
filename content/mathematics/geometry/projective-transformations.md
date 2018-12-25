@@ -7,7 +7,7 @@ type: page
 url: /mathematics/geometry/projective-transformations
 ---
 
-# Overview
+## Overview
 
 Perspective projection is a particular type of projection where all the rays of the projection pass through a single point. This puts constrains on the form of the matrix `\( \mathbf{P} \)`.
 
@@ -22,7 +22,7 @@ A perspective projection has the form:
     \( (X, Y, Z, S)^\top \) are the homogeneous coordinates of a point in the world<br>
 </p>
 
-# Plane To Image Projectivity
+## Plane To Image Projectivity
 
 <div>$$ \rho \begin{bmatrix} q_1 \\ q_2 \\ 1 \end{bmatrix} = \mathbf{T} \begin{bmatrix} p_1 \\ p_2 \\ 1 \end{bmatrix} = \begin{bmatrix} A&B&C \\ D&E&F \\ G&H&1 \end{bmatrix} \begin{bmatrix} p_1 \\ p_2 \\ 1 \end{bmatrix} $$</div>
 
@@ -39,7 +39,7 @@ This gives two linear equations with 8 unknowns:
 
 Four pairs of points `\( \hat{p} = (p_x, p_y), \hat{q} = (q_x, q_y) \)` (four points from each image which are paired together) give eight linear equations and then `\( A, B, ..., H \)` can be solved. One condition is that no three of the four points can be collinear (i.e. lie on the same line).
 
-# Quad-To-Quad Projection
+## Quad-To-Quad Projection
 
 The above projection algorithm can be used to perform "quad-to-quad" projection between 2 2D spaces (or two 2D coordinate systems). A quadrilateral (four sided polygon) is defined both in the input space and the output space. **It is guaranteed that there is exactly one transformation** that will map points from the input space to the output space as defined by the quadrilaterals.
 

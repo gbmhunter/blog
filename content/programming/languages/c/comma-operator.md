@@ -7,13 +7,13 @@ type: page
 url: /programming/languages/c/comma-operator
 ---
 
-# Overview
+## Overview
 
 The comma operator , is **used to separate expressions**. That means that the comma operator serves the same purpose for expressions as ; does for statements.
 
 The **comma operator has the lowest _precedence_** of any operator in the C programming language.
 
-# What Is It Good For?
+## What Is It Good For?
 
 Well, not much! Most use cases for the comma operator should never be used, at it severely compromises the readability of the code.
 

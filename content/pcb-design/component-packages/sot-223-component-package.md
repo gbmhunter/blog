@@ -12,7 +12,7 @@ url: /pcb-design/component-packages/sot-223-component-package
 
 
 
-# Overview
+## Overview
 
 
 <table >
@@ -152,13 +152,13 @@ url: /pcb-design/component-packages/sot-223-component-package
 </tbody>
 </table>
 
-# Conflicting Naming Conventions
+## Conflicting Naming Conventions
 
 **WARNING:** Some manufacturers use the term SOT-223-3 to refer to the 3-pin, 1 -tab package, while others count the tab as a "pin", and so name it SOT-223-4. However this conflicts with the first lot of manufacturers who use the term SOT-223-4 to refer to the package with 4 pins and 1 tab. In summary, BE CAREFUL.
 
 This page associates the x in SOT-223-x to stand for the **number of pins excluding the tab**. This is the most popular convention.
 
-# SOT-223-3
+## SOT-223-3
 
 The SOT-223-3 (TO-261AA) component package is the most common variant within the SOT-223 family. It looks similar to the SOT-23 package, but with a tab on one side instead of legs.
 
@@ -252,13 +252,13 @@ The SOT-223-3 package is commonly used for smaller low and high-side load switch
 
 {{< figure src="/images/2015/01/sot-223-4-component-package-load-switch-typical-pinout.png" width="469px" caption="The de-facto standard pinout for a load switch in a SOT-223-3 package. Image from http://www.infineon.com/."  >}}
 
-# SOT-223-4
+## SOT-223-4
 
 This variant can be confused with the three pin and one pad variant (SOT-223-3) if you decide to count the pad as well as the pins in the number.
 
 {{< figure src="/images/2015/01/sot-223-4-component-package-3d-render.jpg" width="268px" caption="A 3D render of the SOT-223-4 component package. Image from http://www.datasheetdir.com/."  >}}
 
-# SOT-223-5
+## SOT-223-5
 
 ## Dimensions
 

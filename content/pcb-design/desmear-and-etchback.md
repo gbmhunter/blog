@@ -7,11 +7,11 @@ type: page
 url: /pcb-design/desmear-and-etchback
 ---
 
-# Overview
+## Overview
 
 The mechanical of via's in multi-layer PCBs crates a residual resin that smears along the walls of the vias, preventing a good electrical connection between the copper layers and the via itself. The residue is due the the heat of the drill bit melting the resin and smearing it across the inner-layer copper surfaces in the via barrel. The idea behind desmear is to remove this residue so that a good connection is achieved when the via is plated (metallized). Etchback is the idea that one can go further than just removing resin, and etch away some of the epoxy/resin from the via barrel wall, giving what people call a "three-point connection" which could provide even better connectivity (this is a controversial topic). This is commonly used on high reliability PCBs (such as military, aerospace and medical PCBs).
 
-# Positive Etchback
+## Positive Etchback
 
 The images below show positive etchback.
 
@@ -23,13 +23,13 @@ The images below show positive etchback.
 <td >{{< figure src="/images/2014/11/etchback-after-plating.png" width="204px" caption="Cross-section of a via which has been plated after positive etchback was done, notice the 'three-point connection'."  >}}
 </td></tr></tbody></table>
 
-# Negative Etchback
+## Negative Etchback
 
 Negative etchback is when the copper layers recede from the edge of the via hole, as shown in the diagram below.
 
 {{< figure src="/images/2014/11/etchback-negative.png" width="314px" caption="The cross-section of a via with negative etchback. Notice how the copper plane recedes from the edge of the via hole."  >}}
 
-# Methods
+## Methods
 
 Desmear and etchback can be done with chemicals or by using plasma. The chemical process usually involves a alkaline potassium permanganate based etchant. This etchant must be completely removed before the via is plated.
 

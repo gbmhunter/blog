@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/bss-section
 ---
 
-# Overview
+## Overview
 
 The .bss section can be remembered as the "better save space" section. What it actually stands for _block started by symbol_.
 

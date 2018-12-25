@@ -21,6 +21,6 @@ uint32_t regVal = *myReg;
 
 PSoC also provides macros and typedefs for this process.
 
-# Register Description
+## Register Description
 
 Cypress fully describes all of the fixed PSoC 5LP registers [in this PDF](/images/2013/07/psoc-5-lp-registers-description.pdf). Note that this does not include registers that are generated when you add components to the visual editor (e.g. UART and ADC registers).

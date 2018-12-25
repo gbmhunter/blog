@@ -7,7 +7,7 @@ type: page
 url: /programming/languages/c/tips-and-tricks
 ---
 
-# Place A Statically Determinable Upper-Bound On All Loops
+## Place A Statically Determinable Upper-Bound On All Loops
 
 Having a statically determinable upper-bound on all loops creates a directed acyclic call graph of your program. This can help static-analysis tools determine the upper-limits of stack/memory usage.
 

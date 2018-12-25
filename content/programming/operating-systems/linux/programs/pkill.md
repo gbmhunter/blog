@@ -7,11 +7,11 @@ type: page
 url: /programming/operating-systems/linux/programs/pkill
 ---
 
-# Overview
+## Overview
 
 pkill is a program that can be used to send a signal to a processes, by specifying a regex pattern that matches part of the process name (or it's full command line name with the -f option).
 
-# Force Kill
+## Force Kill
 
 The most direct way to kill a process is with:
 
@@ -21,7 +21,7 @@ $ sudo pkill -9 "this_matches_part_of_process_name"
 
 The `-9` option tells pkill to issue the SIGKILL signal.
 
-# Be Careful!
+## Be Careful!
 
 pkill can be the nuclear bomb of all kill tools, as it is surprisingly easy to make the pattern too weak, and it matches something you didn't intend. And a way to crash your computer:
 

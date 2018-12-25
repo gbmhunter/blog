@@ -7,7 +7,7 @@ type: page
 url: /pcb-design
 ---
 
-# PCB Design Tools
+## PCB Design Tools
 
 Here's a list of some useful design tools which come in useful when making PCB's.
 
@@ -65,11 +65,11 @@ Here's a list of some useful design tools which come in useful when making PCB's
 </tbody>
 </table>
 
-# Soldermask
+## Soldermask
 
 All values are typical: Minimum Solder Mask Sliver = 0.1016mm (4mill) Solder Mask Thickness = 11um over copper, 20um over fibreglass (the difference is to that the resulting soldermask surface is flat) Common Solder Mask Colours: green (the most common), black, yellow, blue, clear, red and white Typical Dielectric Constant: 3-3.3 Note that the darker the solder mask colour (e.g. black), the harder it is to see the copper traces underneath, which in some cases makes it more difficult to debug a faulty PCB. The soldermask colour must be compatible with the silkscreen colour.
 
-# Silkscreen
+## Silkscreen
 
 The silkscreen is a printed layer which is used to convey information to the user(s) of the board. It usually contains outlines of components, component polarity indicators, component designators, test-point information, and the PCB designer/version. The silkscreen layer(s) helps greatly when manually placing components and soldering the board. The silkscreen is printed on-top of the soldermask, on one or both sides of the board. On really cheap PCB runs, the silkscreen is left-off altogether (because it is not a necessary layer for the board to function).  For good readability, it should contrast well with the colour of the soldermask. Common silkscreen colours are:
 
@@ -122,13 +122,13 @@ The silkscreen has to printed on either soldermask or bare PCB, it cannot be pri
 
 {{< figure src="/images/electronics-pcbdesign/silkscreen-indicating-footprint-protrudes-edge-of-pcb.png" caption="Diagonal lines on the silkscreen layer of a PCB can be useful for indicating a component that protrudes over the edge of a PCB."  width="400px" >}}
 
-# Solder Paste
+## Solder Paste
 
 Solder paste is applied in the PCB manufacturing process just before the board is populated and soldered. It is the way that solder is applied in mass-quantities by a machine, and consists of a powdered metal solder suspended in a thick paste of flux. It is usually passed through a metal stencil which is placed ontop of the PCB, which has laser-cut holes in where the paste is to be applied. Since solder paste is only used when the board are to be populated by machine, it is normally not a concern when designing prototypes that will be soldered by hand, and is part of the "design for manufacture" process. For large areas that are going to be covered to solder paste (such as thermal pads on QFN packages), it is recommended that you "window" the stencil, as shown in the image below.
 
 {{< figure src="/images/electronics-pcbdesign/recommended-stencil-opening-for-solder-paste-on-qfn-package.png" caption="The recommended stencil opening for solder paste on a QFN package. Note the windowing to prevent the package from floating during soldering. Image from http://www.ti.com/lit/an/sloa122/sloa122.pdf."  width="600px" >}}
 
-# Designators
+## Designators
 
 Designators normally only face in two directions only (i.e. down-facing and right-facing).
 
@@ -138,11 +138,11 @@ If you cannot fit the designators next to their relevant components (e.g. a dens
 
 {{< figure src="/images/electronics-pcbdesign/designators-seperated-from-dense-components-on-pcb.png" caption="Designators can be separated from dense components, as long as they are grouped and are in the same orientation as the components."  width="800px" >}}
 
-# Estimating PCB Design Time
+## Estimating PCB Design Time
 
 A good way of estimating the time to design a PCB board is by working out the utilization ratio. This is the total land area of all components divided by the total surface area of the board. A utilization ratio of 0.25 is easy enough to route, and the board starts getting harder as the ratio hits 0.50 and above. There is a good article, '[Estimating PCB Design Time And Complexity](http://www.pcbdesign007.com/pages/zone.cgi?a=74943&artpg=1)', that explains this in more detail, and even has a program to work it out for you.
 
-# Clearances
+## Clearances
 
 There are many different types of clearances on a PCB board, and it can be really confusing sometimes to find out you can an can't do in terms of component and track placement.
 
@@ -158,15 +158,15 @@ The copper to copper and copper width clearance are usually have the same value.
 * 0.2mm - Professionally printed PCB's
 * 0.1mm - High-end PCB's
 
-# Multi-Layer Routing
+## Multi-Layer Routing
 
 Route on the top or bottom layers if possible, especially when prototyping, this makes debugging and rework easier to do (you can't cut a track on one of the inside layers!).
 
-# EMC Considerations/Noise Supression
+## EMC Considerations/Noise Supression
 
 This is a big topic, and has it's own page [here](/electronics/circuit-design/noise-supression).
 
-# PCB Antennas
+## PCB Antennas
 
 ## RF Antennas
 
@@ -185,11 +185,11 @@ Antennas can also be used for stress relief during soldering for stress-sensitiv
 
 Any PCB antenna that isn't for radio transmission or stress relief is probably a **bad** thing. These are cause by tracks end in the middle of nowwhere, and are often created un-intentionally when routing the PCB.
 
-# Heatsinking
+## Heatsinking
 
 See the [Heatsinking page](/electronics/circuit-design/heatsinks).
 
-# Mounting
+## Mounting
 
 Don't forget to consider how the PCB is going to be mounted. One of the most common things accidentally left of a PCB. Normally all it requires is four holes (un-plated) in the corners for screwing in bolts/supports or just enough free PCB space to stick on rubber feet. M3 bolts and nuts are commonly used. Remember to consider the implications of using metal bolts next to/on-top of electrical signals. There are nylon bolts and washers when insulation is needed. Lock-tight can be good to prevent bolts/screws from undoing. The following picture shows the four mounting holes on a PCB. Notice one is underneath a component (the Xbee module).
 
@@ -205,11 +205,11 @@ Below is an example of a SMD standoff from [Pem Engineering](http://www.pemnet.c
 
 {{< figure src="/images/electronics-pcbdesign/reelfast-smd-standoff-example.jpg" caption="An SMD standoff from Pen Engineering. Image from http://catalog.pemnet.com/viewitems/uts-and-spacers-standoffs-surface-mount-type-smtso/t-nuts-and-spacers-standoffs-br-type-smtso-unified."  width="500px" >}}
 
-# Desiccant
+## Desiccant
 
 Desiccant (a moisture absorbing compound), can be a good thing to use if your PCB is at risk of condensation. {{< figure src="/images/electronics-misc/dessicant-on-oven-tray.jpg" caption="Desiccant about to be dried on an oven tray."  width="400px" >}} See the [Desiccant page](/electronics/components/desiccant) for more info.
 
-# Making It Look Good
+## Making It Look Good
 
 It could be said that PCB design is an art form. Personally, I take great pleasure in making a PCB that got the looks as well as the functionality. And it's helpful that most steps toward making a PCB look good actually tie in well with good design practises anyway.
 
@@ -217,26 +217,26 @@ This is an example of a PCB which I really like. It is called "[The Mojo](http:/
 
 {{< figure src="/images/electronics-pcbdesign/the-mojo-fpga-pcb.jpg" caption="'The Mojo', a Arduino-like FPGA development that looks really nice. Image from http://embeddedmicro.com/products/the-mojo."  width="800px" >}}
 
-# Late Cycle Rework
+## Late Cycle Rework
 
 "Late cycle rework" is the term given to PCB reworking done at the late stages, just before being sent of to the PCB manufacturer. Late cycle work is normally a bad thing, it is estimated that work done in this stage cost 10x as much as it does in the earlier stage.
 
-# Panelization
+## Panelization
 
 Panelization is when you combine multiple PCB designs onto one PCB board, with the normal intention of saving costs associated with producing individual PCB's. Most PCB manufacturers support panelization and will route/v-score each design out for you, so you can separate them easily.
 
 [Altium](/electronics/general/altium) supports panelization. There is also software called [GerbMerge](https://github.com/unwireddevices/gerbmerge), an open-source tool which merges Gerber files together.
 
-# Sending It To A PCB Manufacturer
+## Sending It To A PCB Manufacturer
 
 For a review on different PCB manufacturers and their capabilities, see the [PCB Manufacturers section of the Electrical Suppliers page](/electronics/general/electrical-suppliers#pcb-manufacturers).
 
-# PCB Rework
+## PCB Rework
 
 Below is an example of a screwed PCB after too much rework was done on a 0.5mm pitch QFN package.
 
 {{< figure src="/images/electronics-pcbdesign/qfn-footprint-failure-after-too-much-resoldering.jpg" caption="The PCB was wrecked after doing too much re-soldering on a 0.5mm pitch QFN footprint."  width="600px" >}}
 
-# PCB Design Checklist
+## PCB Design Checklist
 
 Click [here](/electronics/circuit-design/pcb-design/pcb-design-checklist).

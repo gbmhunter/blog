@@ -7,7 +7,7 @@ type: page
 url: /programming/microcontrollers/atmel/atmel-at32-family
 ---
 
-# Overview
+## Overview
 
 The AT32 family of microcontrollers are manufactured by ATMEL. They use the proprietary Atmel AVR architecture for the core part of the microcontroller. The memory and data paths are 32-bits wide, and they come with varying amounts of flash memory and hardware peripherals.
 
@@ -15,15 +15,15 @@ The AT32 family of microcontrollers are manufactured by ATMEL. They use the prop
 
 Because of their large pin count, AT32 microcontrollers normally in high-density packages such as QFN and BGA.
 
-# Programming
+## Programming
 
 They support both JTAG and programming via pre-installed bootloader over USB (on all USB capable devices). BatchISP is a computer-side program developed by ATMEL that can program firmware onto the devices through the USB connection.
 
-# I/o Multiplexing
+## I/o Multiplexing
 
 The AT32 microcontrollers feature an I/O controller which controls the functionality of each individual IO pin. The pin can either be selected to be GPIO or connected to 1 of 4 peripheral channels.
 
-# TWI Peripheral
+## TWI Peripheral
 
 The **TWI (two-wire interface)** peripheral supports the Phillips/NXP I2C communication interface and SMBs interface. Most AT32 microcontrollers have 1 or 2 of these TWI peripherals. Atmel names the pins TWCK (I2C SCK) and TWD (I2C SDA). They also provide a third pin, TWALM which is not part of the I2C standard (it is used to provide SMBus SMBALERT signals).
 

@@ -7,23 +7,23 @@ type: page
 url: /programming/compilers/mplab-xc-compilers
 ---
 
-# Overview
+## Overview
 
 The MPLAB XC compilers are a range of compilers built by Microchip, which **compile C/C++ source code for 8, 16 and 32-bit PIC microcontrollers**, as well as the dsPIC DSCs.
 
 {{< figure src="/images/2016/06/mplab-xc-compiler-microchip-logo.png" width="282px" caption="The logo for the range of MPLAB XC compilers. Image from http://www.microchip.com/."  >}}
 
-# Licensing
+## Licensing
 
 The _Free_ versions of the MPLAB XC compilers allow for limited optimisation (both in w.r.t. size and speed). The _Standard_ and _Pro_ versions allow for increased optimisation levels.
 
 {{< figure src="/images/2016/06/mplab-xc-compiler-build-status-output-memory-summary-licensing.png" width="540px" caption="Build status output from the free version of the MPLAB XC compiler."  >}}
 
-# MPLAB X IDE Integration
+## MPLAB X IDE Integration
 
 The MPLAB XC compilers are designed to be used with the MPLAB X IDE, also provided by Microchip.
 
-# Delays
+## Delays
 
 Delays are provided by the compiler/library through the __delay_us() and __delay_ms() functions.
 
@@ -31,7 +31,7 @@ Delays are provided by the compiler/library through the __delay_us() and __dela
 
 Note that you have to manually define the macro _XTAL_FREQ correctly before you can use these delays.
 
-# Variadic Macros
+## Variadic Macros
 
 Unfortunately, the **XC preprocessor does not support variadic macros **(well, at least XC8 doesn't as of July 2016).
 
@@ -59,7 +59,7 @@ The limitation with using the double-brackets technique is that you **don't have
     }
     ```
 
-# No Recursive Functions
+## No Recursive Functions
 
 Because of the hardware-limited stack size on the microcontrollers the XC8 compiler targets, the compiler does not support recursive functions.
 
@@ -69,13 +69,13 @@ This lack in functionality (and a rather serious one at that!) is the one item 
 
 What are my alternatives? Function duplication (albeit with a different function name) is an "easyish" hack that may get you where you want to be. However, it is not recommended due to issues in readability and maintainability (two copies of the same code to maintain, and people might not rember to update one when they update the other!).
 
-# Bits!
+## Bits!
 
 The XC8 compiler defines a new bit type. This is a non-standard C extension, and is added because the PIC microcontroller have hardware support for single-bit manipulation.
 
 The bit type does actually use a single bit (as opposed to the bool_t defined in standard C, which uses a whole byte to represent just true or false).
 
-# Compiler Errors
+## Compiler Errors
 
 ## can't generate code for this expression
 

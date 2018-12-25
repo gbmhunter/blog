@@ -7,7 +7,7 @@ type: page
 url: /electronics/components/comparators
 ---
 
-# Overview
+## Overview
 
 Comparators are closely related to op-amps. A comparator is basically an op-amp which is operated in it's open-loop mode (no feedback except for when hystersis is added).
 
@@ -15,25 +15,25 @@ This is the schematic symbol for a comparator, which is the same as the op-amp.
 
 {{< figure src="/images/2014/06/basic-op-amp-schematic-symbol.png" width="353px" caption="The basic schematic symbol for a comparator (it is the same for an op-amp)."  >}}
 
-# Comparators vs. Op-Amps
+## Comparators vs. Op-Amps
 
 So what are the differences between comparators and op-amps?  * Comparators are optimised for fast slew rate and propagation time.  * Op-amp's are designed to have negative feedback to reduce the gain. Comparators can go unstable when negative feedback is added.
 
 Op-amps can be used as low-performance comparators, but comparators cannot usually be used as low-performance op-amps (they are typically unstable under negative feedback).
 
-# Gain
+## Gain
 
 Comparators have a very high open-loop gain.
 
-# Types
+## Types
 
 There are push-pull and open-drain comparators.
 
-# Voltage References
+## Voltage References
 
 Usually you want some kind of stable voltage reference to feed into one of the compparators input pin, the other pin being fed the signal you want to compare to the refernce. Some comparators come with built-in voltage references, which can be directly hooked up to the input pin of your choosing.
 
-# Hysteresis
+## Hysteresis
 
 Hystersis is essentially caused by positive feedback. Many comparators have a small, built in hystersis (**interal hystersis**). External hystersis can be added if additional noise is to be expected, or to stop the output from switching so quickly (e.g. thermostat controls).
 
@@ -41,7 +41,7 @@ The following diagram shows how hystersis effects the outputs state changes (fro
 
 {{< figure src="/images/2014/06/comparator-hystersis-graph.png" width="334px" caption="A graph showing how comparator hystersis works."  >}}
 
-# Terms
+## Terms
 
 <table>
     <thead>
@@ -73,7 +73,7 @@ The following diagram shows how hystersis effects the outputs state changes (fro
 <td >Comparator output voltage when the comaprator is triggered low. In single-ended comparator designs, this is usually equal to 0V (GND).
 </td></tr></tbody></table>
 
-# Push-Pull Output Comparators
+## Push-Pull Output Comparators
 
 ## Non-Inverting Configuration
 
@@ -95,6 +95,6 @@ Nothing here yet...
 
 Open-drian output comparators require an extra pull-up resistor on the output (when compared to push-pull output comparators) to enable hystersis. This resistor, along with the feedback resistor, will create a voltage divider and introduce some error when the output is high. To keep this error small, it is recommended that `\( R_{FB} > 100 \times R_{pullup} \)`.
 
-# PCB Surface Leakage
+## PCB Surface Leakage
 
 When keeping the input bias current low is important, sometimes you have to consider the effects of **PCB surface leakage**. The resistance between two PCB traces in close proximity is about 1012 in low humidity conditions. If the two comparators inputs have a 5V difference, this surface leakage allows 5pA to flow, which can be much more than the input bias current of some comparators (e.g. 1pA). Guard rings can be added to prevent leakage currents.

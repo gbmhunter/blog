@@ -7,7 +7,7 @@ type: page
 url: /pcb-design/castellation
 ---
 
-# Overview
+## Overview
 
 Castellation is a way of mounting one PCB onto another. It is also known by the name half-vias, edge-plating and leadless chip carrier (LCC).
 
@@ -19,11 +19,11 @@ It is a common technique used for a daughter board, module or secondary PCB that
 
 Once soldered onto the parent PCB, it is a permanent attachment.
 
-# Process
+## Process
 
 Rows of holes are drilled around the edge of the PCB. Once the holes have been through-hole plated, the board edge is cut so that it runs right down the middle of these holes. The edge of the board now looks like the top of a castle wall, hence the word catellation.
 
-# Design
+## Design
 
 * Make the vias as large as possible
 * Make the top and bottom copper layer pads for the vias as large as possible

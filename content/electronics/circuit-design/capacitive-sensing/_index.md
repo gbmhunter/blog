@@ -7,7 +7,7 @@ type: page
 url: /electronics/circuit-design/capacitive-sensing
 ---
 
-# Overview
+## Overview
 
 This page is about capacitive sensing methods.  
 
@@ -17,7 +17,7 @@ Capacitive sensing is a widely used technique for proximity detection, touch-scr
 
 {{< figure src="/images/2012/05/capacitive-encoder-photo-cui-amt.jpg" width="300px" caption="The CUI AMT100 series capacitive encoders with up to 2048 counts per revolution. Image from http://www.engineerlive.com/Asia-Pacific-Engineer/Time_Compression/Capacitive_encoder_offers_versatility/22119/."  >}}
 
-# Applications
+## Applications
 
 * Level measurement
 * Proximity sensing
@@ -26,7 +26,7 @@ Capacitive sensing is a widely used technique for proximity detection, touch-scr
 * Flow sensing
 * Position sensing
 
-# Capacitance Sensors
+## Capacitance Sensors
 
 ## Linear
 
@@ -57,7 +57,7 @@ Examples of a small capacitive encoder:
 	</tbody>
 </table>
 
-# External Resources
+## External Resources
 
 <table >
 <tbody >
