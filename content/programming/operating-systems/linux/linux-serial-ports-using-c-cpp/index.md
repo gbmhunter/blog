@@ -24,6 +24,8 @@ Common names are:
 * `/dev/ttyUSB0` - Most USB-to-serial cables will show up using a file named like this.
 * `/dev/pts/0` - A psuedo terminal. These can be generated with `socat`.
 
+{{< imgproc linux-dev-dir-ttyacm0-arduino-serial Resize "600x" >}}A listing of the /dev/ directory in Linux with a connected Arduino. The Arduino serial port is present as /dev/ttyACMO0.{{< /imgproc >}}
+
 **To write to a serial port, you write to the file. To read from a serial port, you read from the file.** Of course, this allows you to send/receive data, but how do you set the serial port parameters such as baud rate, parity, e.t.c? This is set by a special `tty` configuration `struct`.
 
 ## Basic Setup In C
@@ -33,9 +35,15 @@ This code is also applicable to C++.
 First we want to include a few things:
 
 ```c
-#include <fcntl.h> // Contains file controls
-#include <termios.h> // Contains POSIX terminal control definitions
+// C library headers
+#include <stdio.h>
+#include <string.h>
 
+// Linux headers
+#include <fcntl.h> // Contains file controls like O_RDWR
+#include <errno.h> // Error integer and strerror() function
+#include <termios.h> // Contains POSIX terminal control definitions
+#include <unistd.h> // write(), read(), close()
 ```
 
 Then we want to open the serial port device (which appears as a file under `/dev/`), saving the file descriptor that is returned by `open()`:
@@ -50,6 +58,14 @@ if (serial_port < 0) {
 ```
 
 One of the common errors you might see here is `errno = 2`, and `strerror(errno)` returns `No such file or directory`. Make sure you have the right path to the device and that the device exists!
+
+Another common error you might get here is `errno = 13`, which is `Permission denied`. This usually happens because the current user is not part of the dialout group. Add the current user to the dialout group with:
+
+```sh
+$ sudo adduser $USER dialout
+```
+
+**You must log out and back in before these group changes come into effect.**
 
 At this point we could technically read and write to the serial port, but it will likely not work, because the default configuration settings are not designed for serial port use. So now we will set the configuration correctly.
 
@@ -206,7 +222,7 @@ An important point to note is that `VTIME` means slightly different things depen
 For example, if we wanted to wait for up to 1s, returning as soon as any data was received, we could use:
 
 ```c
-tty.c_cc[VTIME] = 10.0;    // Wait for up to 1s (10 deciseconds), returning as soon as any data is received.
+tty.c_cc[VTIME] = 10;    // Wait for up to 1s (10 deciseconds), returning as soon as any data is received.
 tty.c_cc[VMIN] = 0;
 ```
 
@@ -290,9 +306,15 @@ close(serial_port)
 ## Full Example
 
 ```c
+// C library headers
+#include <stdio.h>
+#include <string.h>
+
+// Linux headers
+#include <fcntl.h> // Contains file controls like O_RDWR
+#include <errno.h> // Error integer and strerror() function
 #include <termios.h> // Contains POSIX terminal control definitions
-#include <fcntl.h> // Contains file controls
-#include <unistd.h> // read(), write()
+#include <unistd.h> // write(), read(), close()
 
 // Open the serial port. Change device path as needed (currently set to an standard FTDI USB-UART cable type device)
 int serial_port = open("/dev/ttyUSB0", O_RDWR);
@@ -325,7 +347,7 @@ tty.c_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line 
 tty.c_oflag &= ~OXTABS; // Prevent conversion of tabs to spaces
 tty.c_oflag &= ~ONOEOT; // Prevent removal of C-d chars (0x004) in output
 
-tty.c_cc[VTIME] = 10.0;    // Wait for up to 1s (10 deciseconds), returning as soon as any data is received.
+tty.c_cc[VTIME] = 10;    // Wait for up to 1s (10 deciseconds), returning as soon as any data is received.
 tty.c_cc[VMIN] = 0;
 
 // Set in/out baud rate to be 9600
@@ -354,6 +376,10 @@ int num_bytes = read(serial_port, &read_buf, sizeof(read_buf));
 if (num_bytes < 0) {
     printf("Error reading: %s", strerror(errno));
 }
+
+// Here we assume we received ASCII data, but you might be sending raw bytes (in that case, don't try and
+// print it to the screen like this!)
+printf("Read %i bytes. Received message: %s", num_bytes, read_buf);
 
 close(serial_port)
 ```

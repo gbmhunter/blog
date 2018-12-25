@@ -1,3 +1,5 @@
 public/
+# Hugo puts page resources (e.g. images) here
+resources/
 
 __pycache__/
