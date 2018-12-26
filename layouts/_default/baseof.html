@@ -66,12 +66,24 @@
     </head>
 
     <body class="ma0 {{ $.Param "body_classes"  | default "avenir bg-near-white"}}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
-        <div class="left-column">
-            
-            <a href="/" class="logo-img"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} /></a>
-            <div class="site-title"><a href="/">mbedded.ninja</a></div>
-            <div class="site-description">The embedded engineering webstie that's got your back.</div>
-            {{ partial "menu.html" . }}
+
+        <!-- ======================================= -->
+        <!-- LEFT COLUMN                             -->
+        <!-- ======================================= -->
+        <div style="width: 30%; max-width: 450px;"> 
+            <div class="left-column">            
+                <a href="/" class="logo-img"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} /></a>
+                <div class="site-title"><a href="/">mbedded.ninja</a></div>
+                <div class="site-description">The embedded engineering webstie that's got your back.</div>
+
+                <!-- MAIN MENU -->
+                {{ partial "menu.html" . }}
+
+                <!-- RECENTLY EDITED CONTENT -->
+                {{ $byLastMod :=  .Site.RegularPages.ByLastmod  }}
+                {{ $recent := ($byLastMod | last 5).Reverse }}
+                {{ partial "recently-edited-item" $recent }}        
+            </div>
         </div>
 
         <div class="right-column">

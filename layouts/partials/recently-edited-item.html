@@ -1,0 +1,11 @@
+<div style="margin: 10px;">
+    <h2 style="font-size: 18px; margin-left: 30px;">Recent Updates:</h2>
+    <ul style="margin: 10px; font-size: 5px;">
+        {{ range  . }}
+        <li>
+            <h4 style="margin: 0px; font-size: 18px;"><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+            <p style="margin: 0px; font-size: 16px;">Edited on the {{ .Lastmod.Format "2 January, 2006" }}</p>
+        </li>
+        {{ end }}
+    </ul>
+</div>

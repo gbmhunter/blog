@@ -37,17 +37,17 @@ body {
     counter-reset: h2counter;
 }
 
-h1 {
+.content h1 {
     counter-reset: h2counter;
 }
 
-h2:before {
+.content h2:before {
     content: counter(h2counter) ".\0000a0\0000a0";
     counter-increment: h2counter;
     counter-reset: h3counter;
 }
 
-h3:before {
+.content h3:before {
     content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
     counter-increment: h3counter;
 }
@@ -216,15 +216,15 @@ body {
 
 /* Left column contains logo and menu */
 .left-column {
-    height: 100%;
+    min-height: 100%;
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: flex-start;
 
     background-color: white;
-    width: 30%;
-    max-width: 450px;
+    /* width: 30%; */
+    /* max-width: 450px; */
 
     /* Add subtle border to left-hand column */
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 

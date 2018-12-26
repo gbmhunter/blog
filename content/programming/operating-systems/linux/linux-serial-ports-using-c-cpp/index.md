@@ -1,12 +1,13 @@
-+++
-title = "Linux Serial Ports Using C/C++"
-description = "A walk-through on how to configure serial ports correctly in Linux."
-author = "gbmhunter"
-date = "2017-06-24"
-draft = false
-type = "page"
-url = "/programming/operating-systems/linux/linux-serial-ports-using-c-cpp"
-+++
+---
+title: "Linux Serial Ports Using C/C++"
+description: "A walk-through on how to configure serial ports correctly in Linux."
+tags: [ "linux", "serial port", "termios", "file", "unix", "tty", "device", "configuration", "C", "C++", "example"]
+author: "gbmhunter"
+date: "2017-06-24"
+lastmod: "2018-12-26"
+draft: false
+type: "page"
+---
 
 ## Overview
 
@@ -197,9 +198,11 @@ The `c_oflag` member of the `termios` struct contains low-level settings for out
 ```c
 tty.c_oflag &= ~OPOST; // Prevent special interpretation of output bytes (e.g. newline chars)
 tty.c_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line feed
-tty.c_oflag &= ~OXTABS; // Prevent conversion of tabs to spaces
-tty.c_oflag &= ~ONOEOT; // Prevent removal of C-d chars (0x004) in output
+// tty.c_oflag &= ~OXTABS; // Prevent conversion of tabs to spaces (NOT PRESENT IN LINUX)
+// tty.c_oflag &= ~ONOEOT; // Prevent removal of C-d chars (0x004) in output (NOT PRESENT IN LINUX)
 ```
+
+Both `OXTABS` and `ONOEOT` are not defined in Linux. Linux however does have the `XTABS` field which seems to be related. When compiling for Linux, I just exclude these two fields and the serial port still works fine.
 
 ## VMIN and VTIME (c_cc)
 
@@ -344,8 +347,8 @@ tty.c_iflag &= ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL); // Disable any 
 
 tty.c_oflag &= ~OPOST; // Prevent special interpretation of output bytes (e.g. newline chars)
 tty.c_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line feed
-tty.c_oflag &= ~OXTABS; // Prevent conversion of tabs to spaces
-tty.c_oflag &= ~ONOEOT; // Prevent removal of C-d chars (0x004) in output
+// tty.c_oflag &= ~OXTABS; // Prevent conversion of tabs to spaces (NOT PRESENT ON LINUX)
+// tty.c_oflag &= ~ONOEOT; // Prevent removal of C-d chars (0x004) in output (NOT PRESENT ON LINUX)
 
 tty.c_cc[VTIME] = 10;    // Wait for up to 1s (10 deciseconds), returning as soon as any data is received.
 tty.c_cc[VMIN] = 0;

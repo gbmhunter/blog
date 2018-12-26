@@ -1,13 +1,13 @@
 ---
-author: gbmhunter
-date: 2014-01-08 22:55:02+00:00
+title: "Keyboard Shortcuts"
+author: "gbmhunter"
+date: "2014-01-08"
+type: "page"
 draft: false
-title: Keyboard Shortcuts
-type: page
-url: /programming/operating-systems/linux/keyboard-shortcuts
+url: "/programming/operating-systems/linux/keyboard-shortcuts"
 ---
 
-<table >
+<table>
 	<thead>
 		<tr>
 			<th>Shortcut</th>
@@ -15,28 +15,16 @@ url: /programming/operating-systems/linux/keyboard-shortcuts
 			<th>Tested On</th>
 		</tr>
 	</thead>
-<tbody>
-	<tr>
-			
-<td >Ctrl+Alt+ArrowKey
-</td>
-			
-<td >Switch to a different workspace.
-</td>
-			
-<td >Ubuntu
-</td>
+	<tbody>
+		<tr>
+			<td>Ctrl+Alt+ArrowKey</td>		
+			<td>Switch to a different workspace.</td>
+			<td>Ubuntu</td>
 		</tr>
-		<tr >
-			
-<td >Ctrl+Alt+Shift+ArrowKey
-</td>
-			
-<td >Move window to a different workspace.
-</td>
-			
-<td >Ubuntu
-</td>
+		<tr>
+			<td>Ctrl+Alt+Shift+ArrowKey</td>
+			<td>Move window to a different workspace.</td>
+			<td>Ubuntu</td>
 		</tr>
 	</tbody>
 </table>
