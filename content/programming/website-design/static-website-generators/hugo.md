@@ -1,8 +1,11 @@
 ---
+title: Hugo
+description: "Information on the static-site builder Hugo."
+tags: [ "Hugo", "static site", "website", "go", "software", "server", "templating" ]
 author: gbmhunter
 date: 2018-12-04
-title: Hugo
-type: page
+lastmod: 2018-12-25
+type: "page"
 ---
 
 ## Development

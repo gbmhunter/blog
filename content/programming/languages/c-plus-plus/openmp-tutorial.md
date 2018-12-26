@@ -1,8 +1,11 @@
 ---
-author: gbmhunter
+title: "OpenMP Tutorial"
+description: "\"Hello, world\" example using OpenMP."
+tags: [ "OpenMP", "multiprocessing", "parallelization", "multi-threading" ]
+author: "gbmhunter"
 date: 2018-12-04
-title: OpenMP Tutorial
-type: page
+lastmod: 2018-12-05
+type: "page"
 ---
 
 ## Prerequisites
@@ -60,6 +63,4 @@ std::cout << "Hello, " << "world" << std::endl;
 as there would be no guarantee that `"world"` will be printed directly after `"hello"`...another thread may grab control of `std::cout` and print something in-between (the same applies to the `std::endl`, which normally prints a `\n`).
 
 `-fopenmp` told GCC to compile using OpenMP (otherwise the `#pragma ...` macro would of been ignored).
-
-## A Slightly More Complicated Example
 

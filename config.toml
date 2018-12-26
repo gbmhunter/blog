@@ -11,7 +11,7 @@ googleAnalytics = "UA-92834105-2"
 
 [params]
     author = "Geoffrey Hunter"
-    description = "An embedded engineering site that's got your back."
+    description = "An embedded engineering site that's got your back."    
 
 [blackfriday]
     fractions = false

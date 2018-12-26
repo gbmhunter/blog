@@ -1,10 +1,13 @@
-+++
-title = "Site Migration To Hugo Complete"
-date = "2018-12-15"
-type = "post"
-draft = false
-tags = [ "blog", "hugo", "wordpress", "migration", "cms", "static site generation", "gatsby", "export", "menu", "partials", "layout", "disqus", "vglnk", "page speed", "seo" ]
-+++
+---
+title: "Site Migration To Hugo Complete"
+description: "Details on the migration of this blog from Wordpress to Hugo."
+tags: [ "blog", "hugo", "wordpress", "migration", "cms", "static site generation", "gatsby", "export", "menu", "partials", "layout", "disqus", "vglnk", "page speed", "seo" ]
+author: "gbmhunter"
+date: "2018-12-15"
+lastmod: "2018-12-20"
+type: "post"
+draft: false
+---
 
 The migration of blog.mbedded.ninja from Wordpress to Hugo is complete!
 

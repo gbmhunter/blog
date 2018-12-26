@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
+title: "vim"
+description: "Regex find/replace, back-references and more info about the text-editor vim."
+author: "gbmhunter"
 date: 2018-12-03
-draft: false
-title: vim
-type: page
-url: /programming/integrated-development-environments-ides/vim
+lastmod: 2018-12-18
+type: "page"
 ---
 
 ## Overview
