@@ -1,16 +1,14 @@
 ---
-author: gbmhunter
-date: 2013-10-17 05:03:06+00:00
-draft: false
 title: Recent Updates
-type: post
-url: /updates/recent-updates
+author: gbmhunter
+date: 2013-10-17
+draft: false
 categories:
 - Updates
 tags:
-- altium
+- Altium
 - calculator
-- clablab
+- CladLab
 - component
 - connectors
 - images

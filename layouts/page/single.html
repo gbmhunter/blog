@@ -16,6 +16,9 @@
         {{ .TableOfContents }}        
         {{ .Content }}
       </div>
+      
+      {{- partial "tags.html" . -}}
+
       {{ template "_internal/disqus.html" . }}
     </article>
     

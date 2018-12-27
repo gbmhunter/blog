@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
-date: 2011-09-03 01:23:47+00:00
+title: "ADC's"
+tags: [ "ADC", "microcontrollers", "accuracy", "resolution", "current loop", "analog-to-digital converter", "digital", "analogue", "analog" ]
+author: "gbmhunter"
+date: 2011-09-03
 draft: false
-title: ADC's
-type: page
-toc: true
+type: "page"
 ---
 
 ## Overview
