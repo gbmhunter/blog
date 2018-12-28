@@ -23,7 +23,9 @@
         <meta name="MobileOptimized" content="320">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+        <!-- Make page match the screen's width in device-independant pixels -->
         <meta name="viewport" content="width=device-width,minimum-scale=1">
+
         {{ .Hugo.Generator }}
         {{/* NOTE: For Production make sure you add `HUGO_ENV="production"` before your build command */}}
         {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
@@ -65,24 +67,31 @@
         <link rel="stylesheet" href="/css/style.css"/>
     </head>
 
-    <body class="ma0 {{ $.Param "body_classes"  | default "avenir bg-near-white"}}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
-
+    <body>
         <!-- ======================================= -->
-        <!-- LEFT COLUMN                             -->
+        <!-- MENU BAR (left column on desktop, top section on mobile)  -->
         <!-- ======================================= -->
-        <div style="width: 30%; max-width: 450px;"> 
-            <div class="left-column">            
-                <a href="/" class="logo-img"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} /></a>
-                <div class="site-title"><a href="/">mbedded.ninja</a></div>
-                <div class="site-description">The embedded engineering webstie that's got your back.</div>
+        <div class="left-column-outer"> 
+            <div class="left-column">
 
-                <!-- MAIN MENU -->
-                {{ partial "menu.html" . }}
+                <!--- These two sections are stacked in a column when on desktop, side-by-side when on mobile -->
+                <div class="header-section-1">
+                    <div class="logo-img"><a href="/"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} /></a></div>
+                    <div class="site-title"><a href="/">mbedded.ninja</a></div>
+                    <div class="site-description">The embedded engineering webstie that's got your back.</div>
+                </div>
+                
+                <div class="header-section-2">
+                    <!-- MAIN MENU -->
+                    {{ partial "menu.html" . }}
+                </div>
 
-                <!-- RECENTLY EDITED CONTENT -->
-                {{ $byLastMod :=  .Site.RegularPages.ByLastmod  }}
-                {{ $recent := ($byLastMod | last 5).Reverse }}
-                {{ partial "recently-edited-item" $recent }}        
+                <div class="header-section-3">
+                    <!-- RECENTLY EDITED CONTENT -->
+                    {{ $byLastMod :=  .Site.RegularPages.ByLastmod  }}
+                    {{ $recent := ($byLastMod | last 5).Reverse }}
+                    {{ partial "recently-edited-item" $recent }}
+                </div>  
             </div>
         </div>
 

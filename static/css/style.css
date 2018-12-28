@@ -207,31 +207,98 @@ html {
     height: 100%;
 }
 
-body {
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    background-color: rgb(241, 241, 241);
+@media (max-width: 800px) {
+    body {
+        /* height: 100%; */
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(241, 241, 241);
+    }
+
+    .left-column-outer {
+        width: 100%;
+        margin: auto;      
+        display: flex;     
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .left-column {
+        width: 90%;
+    }
 }
 
+@media (min-width: 800px) {
+    body {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(241, 241, 241);
+    }
+
+    .left-column-outer {
+        width: 30%;
+        max-width: 450px;
+    }
+}
+
+
 /* Left column contains logo and menu */
-.left-column {
-    min-height: 100%;
+
+@media (max-width: 800px) {
+    .left-column {
+        min-height: 100%;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: space-around;
+
+        background-color: white;
+        /* width: 30%; */
+        /* max-width: 450px; */
+
+        /* Add subtle border to left-hand column */
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
+    }
+
+    .header-section-2 {
+        margin: 1.0em;
+    }
+
+    .header-section-3 {
+        display: none;
+    }
+}
+
+@media (min-width: 800px) {
+    .left-column {
+        min-height: 100%;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        background-color: white;
+        /* width: 30%; */
+        /* max-width: 450px; */
+
+        /* Add subtle border to left-hand column */
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
+    }
+}
+
+.header-section-1 {
+    width: 100%;
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content: flex-start;
-
-    background-color: white;
-    /* width: 30%; */
-    /* max-width: 450px; */
-
-    /* Add subtle border to left-hand column */
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
 }
 
 .logo-img {
     width: 70%;
+
+    /* max-width prevents image getting too large when on mobile device */
+    max-width: 300px;
 }
 
 .logo-img img {
@@ -261,6 +328,18 @@ body {
     margin-top: 7px;
     width: 60%;
     text-align: center;
+}
+
+@media (max-width: 800px) {
+    .right-column {
+        width: 100%;
+    }
+}
+
+@media (min-width: 800px) {
+    .right-column {
+        width: 70%;
+    }
 }
 
 /* Right column contains page content */
@@ -330,7 +409,7 @@ figure img {
     position: relative;
     margin: 0;
     padding: 0;
-    width: 200px;
+    /* width: 180px; */
 }
 
 .menu li.dropdown:hover > .submenu {
@@ -339,7 +418,10 @@ figure img {
 
 .menu li a {
     display: flex;
-    width: 200px;
+
+    /* This sets the width of the main menu */
+    width: 180px;
+
     /* Below padding controls spacing of adjacent menu elements */
     padding: 12px 8px; 
     /* padding: 12px; */
