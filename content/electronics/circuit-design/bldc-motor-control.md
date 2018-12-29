@@ -15,18 +15,18 @@ The page is dedicated to how to control a **brushless DC** (BLDC) motor in an em
 ## Acronyms And Terminology
 
 <table>
+    <thead>
+        <tr>
+            <th>Subscript</th>
+            <th>Parameter</th>
+            <th>Units (metric)</th>
+            <th>Units (imperial)</th>
+        </tr>
+    </thead>
 <tbody>
 <tr>
-    <td ><b>Subscript</b></td>
-    <td >Parameter</td>
-    <td >Units (metric)</td>
-    <td >Units (imperial)</td>
-</tr>
-<tr >
-<td >\(T_C\)
-</td>
-<td >Continuous Torque
-</td>
+<td>\(T_C\)</td>
+<td>Continuous Torque</td>
 <td >Nm
 </td>
 <td >oz-in
@@ -278,70 +278,72 @@ The [encoder](/electronics/components/encoders) method uses, well, an encoder at
 
 A common example of a trapezoidal (or block) commutation cycle of a BLDC motor with hall-sensor feedback is shown in the below table. This will drive the motor in one particular direction. This can be used to form a LUT for quick hardware/software commutation.
 
-<table border="0" >
-    <tr >
-        <td colspan="6" style="text-align: center;" ><b>Commutation Table</b></td>
-    </tr>
+<table>
+    <thead>
+        <tr>
+            <th colspan="6">Commutation Table</th>
+        </tr>
+    </thead>
     <tbody >
         <tr >
-            <td colspan="3" style="text-align: center;" >Sensor Output</td>
-            <td colspan="3" style="text-align: center;" >Driver Input</td>
+            <td colspan="3">Sensor Output</td>
+            <td colspan="3">Driver Input</td>
         </tr>
         <tr >
-            <td style="text-align: center;" >HS1</td>
-            <td style="text-align: center;" >HS2</td>
-            <td style="text-align: center;" >HS3</td>
-            <td style="text-align: center;" >A</td>
-            <td style="text-align: center;" >B</td>
-            <td style="text-align: center;" >C</td>
+            <td>HS1</td>
+            <td>HS2</td>
+            <td>HS3</td>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
         </tr>
         <tr >
-            <td style="text-align: center;" >0</td>
-            <td style="text-align: center;" >0</td>
-            <td style="text-align: center;" >1</td>
-            <td style="text-align: center;" > X</td>
-            <td style="text-align: center;" > HI</td>
-            <td style="text-align: center;" >LO</td>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+            <td>X</td>
+            <td>HI</td>
+            <td>LO</td>
         </tr>
         <tr >
-            <td style="text-align: center;" > 0</td>
-            <td style="text-align: center;" > 1</td>
-            <td style="text-align: center;" > 1</td>
-            <td style="text-align: center;" > HI</td>
-            <td style="text-align: center;" >X</td>
-            <td style="text-align: center;" >LO</td>
+            <td>0</td>
+            <td>1</td>
+            <td>1</td>
+            <td>HI</td>
+            <td>X</td>
+            <td>LO</td>
         </tr>
         <tr >
-            <td style="text-align: center;" > 0</td>
-            <td style="text-align: center;" > 1</td>
-            <td style="text-align: center;" > 0</td>
-            <td style="text-align: center;" >HI</td>
-            <td style="text-align: center;" >LO</td>
-            <td style="text-align: center;" >X</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>HI</td>
+            <td>LO</td>
+            <td>X</td>
         </tr>
         <tr >
-            <td style="text-align: center;" > 1</td>
-            <td style="text-align: center;" > 1</td>
-            <td style="text-align: center;" > 0</td>
-            <td style="text-align: center;" > X</td>
-            <td style="text-align: center;" >LO</td>
-            <td style="text-align: center;" >HI</td>
+            <td>1</td>
+            <td>1</td>
+            <td>0</td>
+            <td>X</td>
+            <td>LO</td>
+            <td>HI</td>
         </tr>
         <tr >
-            <td style="text-align: center;" > 1</td>
-            <td style="text-align: center;" > 0</td>
-            <td style="text-align: center;" > 0</td>
-            <td style="text-align: center;" >LO</td>
-            <td style="text-align: center;" >X</td>
-            <td style="text-align: center;" >HI</td>
+            <td>1</td>
+            <td>0</td>
+            <td>0</td>
+            <td>LO</td>
+            <td>X</td>
+            <td>HI</td>
         </tr>
         <tr >
-            <td style="text-align: center;" > 1</td>
-            <td style="text-align: center;" > 0</td>
-            <td style="text-align: center;" > 1</td>
-            <td style="text-align: center;" >LO</td>
-            <td style="text-align: center;" >HI</td>
-            <td style="text-align: center;" >X</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>LO</td>
+            <td>HI</td>
+            <td>X</td>
         </tr>
     </tbody>
 </table>
@@ -386,30 +388,30 @@ Phase displacement. Sinusoidal control requires three PWM signal's, preferably d
 The following code is an example of how to create a LUT in the C programming language. This function calculates the LUT values at run-time, using the \(sin()\) function. In space constrained applications it may pay to pre-calculate the values and save them directly into flash. More help with the C language can be found [here](/programming/languages/c).
 
 ```c
-    #include <math.h>
-    
-    #define configBLDC_MAX_SINE_LUT_VALUE (1000)
-    #define configNUM_SINE_LUT_ENTRIES (500)
-    
-    float _sineWaveLut[configNUM_SINE_LUT_ENTRIES] = {0};
-    
-    //! @brief Populates the sine LUT
-    //! @details The sine LUT is placed in RAM for fast access.
-    //! Call as part of the initialisation sequence.
-    //! Shifts sinewave so that values never go negative,
-    //! making it easy in ISR to multiply by scaling factor to get duty cycle
-    //! @note Not thread-safe. Call from Bldc_MainTask() only.
-    //! @private
-    void Bldc_FillSineLut(void)
+#include <math.h>
+
+#define configBLDC_MAX_SINE_LUT_VALUE (1000)
+#define configNUM_SINE_LUT_ENTRIES (500)
+
+float _sineWaveLut[configNUM_SINE_LUT_ENTRIES] = {0};
+
+//! @brief Populates the sine LUT
+//! @details The sine LUT is placed in RAM for fast access.
+//! Call as part of the initialisation sequence.
+//! Shifts sinewave so that values never go negative,
+//! making it easy in ISR to multiply by scaling factor to get duty cycle
+//! @note Not thread-safe. Call from Bldc_MainTask() only.
+//! @private
+void Bldc_FillSineLut(void)
+{
+    uint16_t i = 0;
+    // Populate LUT
+    for(i = 0; i < configNUM_SINE_LUT_ENTRIES; i++)
     {
-       uint16_t i = 0;
-       // Populate LUT
-       for(i = 0; i < configNUM_SINE_LUT_ENTRIES; i++)
-       {
-          double radians = (((double)i/(double)configNUM_SINE_LUT_ENTRIES)*360.0)*(configPI/180.0);
-          _sineWaveLut[i] = (configBLDC_MAX_SINE_LUT_VALUE/2.0)*sin(radians) + (configBLDC_MAX_SINE_LUT_VALUE/2.0);
-       }
+        double radians = (((double)i/(double)configNUM_SINE_LUT_ENTRIES)*360.0)*(configPI/180.0);
+        _sineWaveLut[i] = (configBLDC_MAX_SINE_LUT_VALUE/2.0)*sin(radians) + (configBLDC_MAX_SINE_LUT_VALUE/2.0);
     }
+}
 ```
 
 ## Third-Harmonic Injection
@@ -421,10 +423,12 @@ To implement third-harmonic injection, all you have to do is add the third-harmo
 ## Sensor Field Orientated Control (FOC)
 
 The benefits:
+
 * You can control motor parameters which relate directly to it's physical behaviour (the variables make sense to a human)
 * Angle can be determined from phase currents (usually using a sliding state estimator), no encoder needed
 
 The disadvantages:
+
 * Greater control complexity than trapezoidal or sinusoidal
 * Requires fast processor to execute neccessary maths
 * Requires phase current to be measured (usually with low-side current sense resistors and an ADC)
@@ -439,9 +443,8 @@ The Clark transformation (also called the $\alpha \beta$ transformation, and occ
 The Clark transformation equation is shown below:
 
 <div>$$  
- I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\ 0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\ \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix} \text{(unsimplified Clark transform)}  
-
- $$</div>
+I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\ 0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\ \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix} \text{(unsimplified Clark transform)}  
+$$</div>
 
 <p class="centered">
     where:<br>

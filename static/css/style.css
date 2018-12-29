@@ -7,7 +7,7 @@
 /* HEADING AND PARAGRAPH STYLING                                             */
 /* ========================================================================= */
 
-p, h1, h2, h3, ul, li, a, div {    
+p, h1, h2, h3, ul, li, a, div, td, th {    
     font-family: 'avenir next' ,'avenir', sans-serif;
     
 }
@@ -51,18 +51,15 @@ body {
 
 /* END OF HEADING NUMBERING */
 
-p, li, div, a {
+p, li, div, a, td, th {
     font-size: 3.0vw;
     line-height: 1.5;
     color: rgb(85, 85, 85);
 }
-
 @media (min-width: 800px) {
-    p, li, div, a {
+    p, li, div, a, td, th {
         font-size: 1.25rem;
-        line-height: 1.5;
     }
-    
 }
 
 figcaption p {
@@ -168,8 +165,13 @@ pre code:not(.has-jax) {
     display: block;
     padding: 1.5em 1.5em;
     white-space: pre;
-    font-size: .875rem;
+    font-size: 0.8em;
     line-height: 2;
+}
+@media (min-width: 800px) {
+    pre code:not(.has-jax) {
+        font-size: .875rem;
+    }
 }
 
 /* ========================================================================= */
@@ -179,14 +181,25 @@ pre code:not(.has-jax) {
 blockquote {    
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 50px;
-    padding-left: 15px;
+    margin-left: 1em;
+    padding-left: 1em;
     border-left: 3px solid #ccc;    
+}
+@media (min-width: 800px) {
+    blockquote {    
+        margin-left: 50px;
+        padding-left: 15px;
+    }
 }
 
 /* markdown wraps the text inside a p element */
 blockquote p {
-    font-size: 1.2rem;
+    font-size: 1em;
+}
+@media (min-width: 800px) {
+    blockquote p {
+        font-size: 1.2rem;
+    }
 }
 
 /* ========================================================================= */
