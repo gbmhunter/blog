@@ -51,14 +51,15 @@ body {
 
 /* END OF HEADING NUMBERING */
 
+/* This controls the main font size */
 p, li, div, a, td, th {
-    font-size: 3.0vw;
-    line-height: 1.5;
+    font-size: 2.0vw;
+    line-height: 1.7;
     color: rgb(85, 85, 85);
 }
 @media (min-width: 800px) {
     p, li, div, a, td, th {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
     }
 }
 
@@ -121,6 +122,19 @@ div.content p.centered {
 /* Center single images on the page */
 div.box {
     margin: auto;
+}
+
+/* ========================================================================= */
+/* LISTS                                                                     */
+/* ========================================================================= */
+
+ul {
+    padding-inline-start: 7vw;
+}
+@media (min-width: 800px) {
+    ul {
+        padding-inline-start: 40px;
+    }
 }
 
 /* ========================================================================= */
@@ -225,35 +239,31 @@ html {
     height: 100%;
 }
 
-@media (max-width: 800px) {
+body {
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(241, 241, 241);
+}
+@media (min-width: 800px) {
     body {
-        /* height: 100%; */
-        display: flex;
-        flex-direction: column;
-        background-color: rgb(241, 241, 241);
-    }
-
-    .left-column-outer {
-        width: 100%;
-        margin: auto;      
-        display: flex;     
-        flex-direction: column;
-        align-items: center; 
-    }
-
-    .left-column {
-        width: 90%;
+        height: 100%;        
+        flex-direction: row;        
     }
 }
 
-@media (min-width: 800px) {
-    body {
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        background-color: rgb(241, 241, 241);
-    }
+.left-column {
+    width: 90%;
+}
 
+.left-column-outer {
+    width: 100%;
+    margin: auto;      
+    display: flex;     
+    flex-direction: column;
+    align-items: center; 
+}
+@media (min-width: 800px) {
     .left-column-outer {
         width: 30%;
         max-width: 450px;

@@ -1,10 +1,11 @@
 ---
-author: gbmhunter
-date: 2011-09-05 06:21:29+00:00
-draft: false
-title: Altium Tricks And Standards
-type: page
-url: /electronics/general/altium/altium-tricks-and-standards
+title: "Altium Tricks And Standards"
+description: "Helpful hints, tricks and standardized ways of doing things to make using Altium Designer easier."
+tags: [ "Altium", "PCB", "CAD", "footprints", "components", "rules", "layers", "vias", "nets", "datasheets", "resistors", "capacitors", "PcbDoc", "PcbPrj", "AD", "schematic" ]
+author: "gbmhunter"
+date: 2011-09-05
+lastmod: 2018-12-29
+type: "page"
 ---
 
 ## Overview
@@ -23,9 +24,9 @@ If you don't get the snap right, it is really hard to connect pins up on the sch
 
 ## One PCB Per PcbDoc And PcbPrj File
 
-Altium was designed so that there is only one PCB per .PcbDoc file. And it was designed so that there is only one .PcbDoc file per .PcbPrj file. A single PCB is defined as one continuous board region.
+Altium was designed so that there is only one PCB per `.PcbDoc` file. And it was designed so that there is only one `.PcbDoc` file per `.PcbPrj` file. A single PCB is defined as one continuous board region.
 
-Problems with having multiple PCB's per .PcbDoc:
+Problems with having multiple PCB's per `.PcbDoc`:
 
 1. Altium only supports a board outline which outlines a single continuous region. To add multiple PCB's, you have to add a joining link of board between the two actual PCB's, which looks ugly in both 2D and 3D modes.
 2. All the nets have to be unique between the two PCBs. This becomes a problem for commonly used names such as 5V and GND. If you don't have unique names, Altium will want you to join the two PCB's together with copper, thinking you have an unrouted net.
@@ -37,14 +38,13 @@ _Create a different folder for each project_ - With all the files Altium creates
 
 ## Stopping Rooms From Being Added To The PCB
 
-Also, rooms can get annoying when you don't need them. To disable rooms, click Project -> Project Options -> ECO Generation. Select Add Rooms and then choose 'Ignore Differences' from the drop-down menu on the right. Delete any existing rooms, and Altium will no longer automatically add them when you update the PCB.
-
+Also, rooms can get annoying when you don't need them. To disable rooms, click _Project → Project Options → ECO Generation_. Select _Add Rooms_ and then choose _Ignore Differences_ from the drop-down menu on the right. Delete any existing rooms, and Altium will no longer automatically add them when you update the PCB.
 
 {{< figure src="/images/2011/09/altium-stopping-rooms-from-being-added-to-pcb.jpg" width="799px" caption="A screenshot showing how to stop Altium from adding rooms to the PCB."  >}}
 
 ## My Vias/Tracks disappear When I'm Routing!
 
-This is caused by Altium's "Automatically Remove Loops" function removing vias and tracks when you have more than one connected to the same trace. To stop this from happening, begin routing, and then press TAB. The routing options windows will pop up. Navigate to the 'Interactive Routing Options' section and deselect "Automatically Remove Loops".
+This is caused by Altium's _Automatically Remove Loops_ function removing vias and tracks when you have more than one connected to the same trace. To stop this from happening, begin routing, and then press _TAB_. The routing options windows will pop up. Navigate to the _Interactive Routing Options_ section and deselect _Automatically Remove Loops_.
 
 ## Version Control Systems
 
@@ -171,24 +171,35 @@ It is useful to use the component description for this purpose to make the BOM e
 
 I use the following notation for the description field. The parameters are listed in short-hand from most generic to least generic (this allows for good grouping when sorting alphanumerically). The symbol reference is set the manufacturer's part number, as this has to be a unique field.
 
-## Capacitors
+## Capacitor Labelling
+
+Below is a good way to label Capacitors:
 
 {{< figure src="/images/2011/09/altium-library-search-cap-name-standards.png" width="350px" caption="Searching through an Altium schematic library."  >}}
 
-    
-    Capacitor, <type>, <package size (imperial)>, <capacitance>, <voltage>, <temperature coefficient>, <tolerance>
+```    
+Capacitor, <type>, <package size (imperial)>, <capacitance>, <voltage>, <temperature coefficient>, <tolerance>
+```
 
 e.g.
 
-    Capacitor, Ceramic, 0603, 10nF, 35V, X7R, 5%
+```
+Capacitor, Ceramic, 0603, 10nF, 35V, X7R, 5%
+```
 
-## Resistor Description
+## Resistor Labelling
 
-    Resistor, <package size (imperial)>, <resistance>, <tolerance>, <rated power> 
+Below is a good way to label Resistors:
+
+```
+Resistor, <package size (imperial)>, <resistance>, <tolerance>, <rated power> 
+```
 
 e.g.
 
-    Resistor, 0402, 2.70k, 1%, 63mW
+```
+Resistor, 0402, 2.70k, 1%, 63mW
+```
 
 Note that the Omega symbol (aka the Ohm symbol) is not supported in the PCB editor as part of the component description. You can use the symbol R instead.
 
@@ -209,47 +220,28 @@ These special component parameters are called **component links**, and follow th
             <th>Parameter Value</th>
         </tr>
     </thead>
-<tbody >
-<tr >
-<td >ComponentLink1Description
-</td>
-
-<td >Enter the name you want to see in the right-click menu
-</td>
-</tr>
-<tr >
-
-<td >ComponentLink1URL
-</td>
-
-<td >Enter the URL you want to go to when you click.
-</td>
-</tr>
-<tr >
-
-<td >ComponentLink2Description
-</td>
-
-<td >Enter the name you want to see in the right-click menu
-</td>
-</tr>
-<tr >
-
-<td >ComponentLink2URL
-</td>
-
-<td >Enter the URL you want to go to when you click.
-</td>
-</tr>
-<tr >
-
-<td >...
-</td>
-
-<td >...
-</td>
-</tr>
-</tbody>
+    <tbody>
+        <tr>
+            <td>ComponentLink1Description</td>
+            <td>Enter the name you want to see in the right-click menu</td>
+        </tr>
+        <tr>
+            <td>ComponentLink1URL</td>
+            <td>Enter the URL you want to go to when you click.</td>
+        </tr>
+        <tr>
+            <td>ComponentLink2Description</td>
+            <td>Enter the name you want to see in the right-click menu</td>
+        </tr>
+        <tr>
+            <td>ComponentLink2URL</td>
+            <td>Enter the URL you want to go to when you click.</td>
+        </tr>
+        <tr>
+            <td>...</td>
+            <td>...</td>
+        </tr>
+    </tbody>
 </table>
 
 This can be **repeated for as many component links as you wish**. The URL can be any valid path (i.e. the path to a file on your computer/server, or to a website URL). They can be added to both schematic library component parameters, and component library parameters which will the be released to a vault. The component links get added to the **References** sub-menu when you right-click on the component in the Altium schematic editor.

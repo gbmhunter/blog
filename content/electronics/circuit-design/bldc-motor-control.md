@@ -1,9 +1,11 @@
 ---
-author: gbmhunter
+title: "BLDC Motor Control"
+description: "Positional sensing, trapezoidal control, sinusoidal control, sensor field orientated control, the Clark and Park transformations, PWM and more info on BLDC motor control"
+tags: [ "BLDC", "motor", "trapezoidal", "sinusoidal", "FOC", "PWM", "Clark transformation", "Park transformation", "control loop", "deadtime", "feedback", "closed-loop", "maths", "enclosures", "equations", "encoder" ]
+author: "gbmhunter"
 date: 2012-08-02
-title: BLDC Motor Control
-type: page
-url: /electronics/circuit-design/bldc-motor-control
+lastmod: 2018-12-29
+type: "page"
 ---
 
 ## Overview
@@ -375,9 +377,9 @@ The disadvantages:
 
 Sinusoidal control (also known as voltage-over-frequency control) is more complex than trapezoidal techniques, but offers smoother operation and better control at slow speeds.
 
-Look-up tables (LUT's) are recommended over using the sin() function due to speed issues. The sin() function in C is computationally intensive and can easily create delays that effect the performance of the control algorithm. The implementation of the sin() is platform dependent, but for example, using the GCC compiler on a PSoC 5 Cortex-M3 processor, calculating the sin() function three times (once for each phase), took approximately 24,000 clock cycles. With a processor running at 48MHz, this is about a 500us delay. Considering a 4-pole BLDC motor spinning at 6000rpm takes about 830us to move between commutation states. In each commutation cycle you want at least 6-bit resolution (64 PWM changes), and as you can see, the delay in calculating sin() is far too large.
+Look-up tables (LUT's) are recommended over using the `sin()` function due to speed issues. The `sin()` function in C is computationally intensive and can easily create delays that effect the performance of the control algorithm. The implementation of the `sin()` is platform dependent, but for example, using the GCC compiler on a PSoC 5 Cortex-M3 processor, calculating the `sin()` function three times (once for each phase), took approximately 24,000 clock cycles. With a processor running at 48MHz, this is about a 500us delay. Considering a 4-pole BLDC motor spinning at 6000rpm takes about 830us to move between commutation states. In each commutation cycle you want at least 6-bit resolution (64 PWM changes), and as you can see, the delay in calculating `sin()` is far too large.
 
-With a LUT that stores floats, and a small amount of float multiplication (no divide) on a embedded processor that does not have floating point hardware support (such as the ARM Cortex-M3), you could expect the look-up and assign process to take around 500-1000 clock cycles (maybe 20us at 48MHz). This is a big reduction over using the \(sin()\) function!
+With a LUT that stores floats, and a small amount of float multiplication (no divide) on a embedded processor that does not have floating point hardware support (such as the ARM Cortex-M3), you could expect the look-up and assign process to take around 500-1000 clock cycles (maybe 20us at 48MHz). This is a big reduction over using the `sin()` function!
 
 {{< figure src="/images/2012/08/16-bit-500-count-sine-wave-lut-data-graph-1.png" width="1069px" caption="Data extracted from a 16-bit sine wave LUT designed for use with sinusoidal BLDC motor control."  >}}
 
@@ -385,7 +387,7 @@ Phase displacement. Sinusoidal control requires three PWM signal's, preferably d
 
 ## Example LUT Code
 
-The following code is an example of how to create a LUT in the C programming language. This function calculates the LUT values at run-time, using the \(sin()\) function. In space constrained applications it may pay to pre-calculate the values and save them directly into flash. More help with the C language can be found [here](/programming/languages/c).
+The following code is an example of how to create a LUT in the C programming language. This function calculates the LUT values at run-time, using the `sin()` function. In space constrained applications it may pay to pre-calculate the values and save them directly into flash. More help with the C language can be found [here](/programming/languages/c).
 
 ```c
 #include <math.h>
@@ -402,12 +404,10 @@ float _sineWaveLut[configNUM_SINE_LUT_ENTRIES] = {0};
 //! making it easy in ISR to multiply by scaling factor to get duty cycle
 //! @note Not thread-safe. Call from Bldc_MainTask() only.
 //! @private
-void Bldc_FillSineLut(void)
-{
+void Bldc_FillSineLut(void) {
     uint16_t i = 0;
     // Populate LUT
-    for(i = 0; i < configNUM_SINE_LUT_ENTRIES; i++)
-    {
+    for(i = 0; i < configNUM_SINE_LUT_ENTRIES; i++) {
         double radians = (((double)i/(double)configNUM_SINE_LUT_ENTRIES)*360.0)*(configPI/180.0);
         _sineWaveLut[i] = (configBLDC_MAX_SINE_LUT_VALUE/2.0)*sin(radians) + (configBLDC_MAX_SINE_LUT_VALUE/2.0);
     }
@@ -438,12 +438,12 @@ Sensor field orientated control (also called vector control) is a permanent magn
 
 ## The Clark Transformation (alpha-beta)
 
-The Clark transformation (also called the $\alpha \beta$ transformation, and occasionally called the Concordia transformation, but I don't know why!) is the projection of three separate sinusoidal phase values onto a stationary 2D axis.
+The Clark transformation (also called the `\(\alpha \beta\)` transformation, and occasionally called the Concordia transformation, but I don't know why!) is the projection of three separate sinusoidal phase values onto a stationary 2D axis.
 
-The Clark transformation equation is shown below:
+The unsimplified Clark transformation equation is shown below:
 
 <div>$$  
-I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\ 0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\ \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix} \text{(unsimplified Clark transform)}  
+I_{\alpha\beta\gamma} = TI_{abc} = \frac{2}{3} \begin{bmatrix} 1 & -\frac{1}{2} & -\frac{1}{2} \\ 0 & \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} \\ \frac{1}{2} & \frac{1}{2} & \frac{1}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix}  
 $$</div>
 
 <p class="centered">
@@ -454,9 +454,9 @@ $$</div>
     \(I_{\alpha\beta\gamma}\) = the Clark transformed currents<br>
 </p>
 
-We are fortunate that when using a star-connected BLDC motor (most are!), \(I_c\) is 0, so that we can simplify the equation to:
+We are fortunate that when using a star-connected BLDC motor (most are!), `\(I_c\)` is 0, so that we can simplify the equation to:
 
-<div>$$ I_{\alpha\beta} = TI_{ab} = \begin{bmatrix} 1 & 0 \\ \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \end{bmatrix} \text{(simplified Clark transform for star-connected BLDC)} $$ </div>
+<div>$$ I_{\alpha\beta} = TI_{ab} = \begin{bmatrix} 1 & 0 \\ \frac{1}{\sqrt{3}} & \frac{2}{\sqrt{3}} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \end{bmatrix}$$ </div>
 
 {{< figure src="/images/2012/08/clark-transformation-alpha-beta-geometric-interpretation.gif" width="516px" caption="A geometric interpretation of the Clark (alpha-beta) transformation. Image from http://en.wikipedia.org/wiki/%CE%91%CE%B2%CE%B3_transform."  >}}
 
@@ -468,7 +468,7 @@ Park transformation is a projection of three seperate sinusoidal phase values on
 
 The Park transformation equation is shown below:
 
-<div>$$ I_{dqo} = TI_{abc} = \sqrt{\frac{2}{3}} \begin{bmatrix} \cos(\theta) & \cos(\theta - \frac{2\pi}{3}) & \cos(\theta + \frac{2\pi}{3}) \\ -\sin(\theta) & -\sin(\theta - \frac{2\pi}{3}) & -\sin(\theta + \frac{2\pi}{3}) \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix} \text{(forward Park transformation)} $$</div>
+<div>$$ I_{dqo} = TI_{abc} = \sqrt{\frac{2}{3}} \begin{bmatrix} \cos(\theta) & \cos(\theta - \frac{2\pi}{3}) & \cos(\theta + \frac{2\pi}{3}) \\ -\sin(\theta) & -\sin(\theta - \frac{2\pi}{3}) & -\sin(\theta + \frac{2\pi}{3}) \\ \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2} \end{bmatrix} \begin{bmatrix} I_a \\ I_b \\ I_c \end{bmatrix}$$</div>
 
 <p class="centered">
     where:<br>
