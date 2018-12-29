@@ -7,28 +7,25 @@
 /* HEADING AND PARAGRAPH STYLING                                             */
 /* ========================================================================= */
 
-p, h1, h2, h3, ul, li, a, div {
-    /* font-family: 'Nunito', sans-serif; */
+p, h1, h2, h3, ul, li, a, div {    
     font-family: 'avenir next' ,'avenir', sans-serif;
     
 }
 
 /* Styling for page titles */
-h1.f1 {
-    font-size: 3rem;
+h1 { font-size: 7vw; }
+@media (min-width: 800px) {
+    h1 { font-size: 3rem; }
 }
 
-/* Styling for major sections in content */
-h1 {
-    font-size: 2rem;
+h2 { font-size: 4vw; }
+@media (min-width: 800px) {
+    h2 { font-size: 1.5rem; }
 }
 
-h2 {
-    font-size: 1.5rem;
-}
-
-h3 {
-    font-size: 1.25rem;
+h3 { font-size: 2vw; }
+@media (min-width: 800px) {
+    h3 { font-size: 1.25rem; }
 }
 
 /* HEADING NUMBERING */
@@ -54,10 +51,18 @@ body {
 
 /* END OF HEADING NUMBERING */
 
-p, li, div {
-    font-size: 1.25rem;
+p, li, div, a {
+    font-size: 3.0vw;
     line-height: 1.5;
     color: rgb(85, 85, 85);
+}
+
+@media (min-width: 800px) {
+    p, li, div, a {
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+    
 }
 
 figcaption p {
@@ -263,6 +268,7 @@ html {
 
     .header-section-2 {
         margin: 1.0em;
+        flex-grow: 2;
     }
 
     .header-section-3 {
@@ -287,11 +293,17 @@ html {
     }
 }
 
-.header-section-1 {
-    width: 100%;
+.header-section-1 {    
     display: flex;
     flex-flow: column;
     align-items: center;
+    flex-grow: 0;
+    width: 60%;
+}
+@media (min-width: 800px) {
+    .header-section-1 {
+        width: 100%;
+    }
 }
 
 .logo-img {
@@ -307,12 +319,18 @@ html {
 
 .site-title {
     color: rgb(51, 51, 51);
-    font-size: 24px;
+    font-size: 5vw;
     font-weight: 700;
 
     width: 80%;
     text-align: center;
 }
+@media (min-width: 800px) {
+    .site-title {
+        font-size: 24px;
+    }
+}
+
 
 /* Disable any link styling for the site title */
 .site-title a {
@@ -322,12 +340,17 @@ html {
 
 .site-description {
     color: rgb(51, 51, 51);
-    font-size: 1.0rem;
+    font-size: 3vw;
     font-weight: 400;
 
     margin-top: 7px;
     width: 60%;
     text-align: center;
+}
+@media (min-width: 800px) {
+    .site-description {
+        font-size: 1.0rem;
+    }
 }
 
 @media (max-width: 800px) {
@@ -367,7 +390,13 @@ html {
 
 /* Padding between border of right-hand inner column and content */
 main {
-    padding: 80px;
+    padding: 5vw;
+}
+
+@media (min-width: 800px) {
+    main {
+        padding: 80px;
+    }
 }
 
 .homepage-post-content {
@@ -420,21 +449,27 @@ figure img {
     display: flex;
 
     /* This sets the width of the main menu */
-    width: 180px;
+    width: 20vw;
 
     /* Below padding controls spacing of adjacent menu elements */
-    padding: 12px 8px; 
+    padding: 1.5vw 8px; 
     /* padding: 12px; */
     background: rgb(34, 34, 34);
     color: #fff;
     text-decoration: none;
+}
+@media (min-width: 800px) {
+    .menu li a {
+        width: 180px;
+        padding: 12px 8px; 
+    }
 }
 
 .menu .menu-text {
     width: 165px;
     color: #fff;
     line-height: 1.0;
-    font-size: 0.9rem;
+    font-size: 2vw;
 
     /* Center the text vertically */
     display: flex;
@@ -442,11 +477,21 @@ figure img {
     align-content: center;
     flex-direction: column;
 }
+@media (min-width: 800px) {
+    .menu .menu-text {
+        font-size: 0.9rem;
+    }
+}
 
 .menu .right-arrow {
     color: #fff;
-    line-height: 1.0;
-    font-size: 0.7rem;
+    /* line-height: 1.0; */
+    font-size: 2vw;
+}
+@media (min-width: 800px) {
+    .menu .right-arrow {
+        font-size: 0.7rem;
+    }
 }
 
 .menu li.dropdown > a::after {
