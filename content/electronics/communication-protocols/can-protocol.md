@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-12-12 21:15:32+00:00
+date: 2012-12-12
 draft: false
 title: CAN Protocol
 type: page
