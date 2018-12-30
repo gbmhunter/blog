@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2015-04-07 07:12:25+00:00
-draft: false
-title: Micro SOP Component Package
-type: page
-url: /pcb-design/component-packages/micro-sop-component-package
+title: "Micro SOP Component Package"
+tags: [ "component package", "Micro SOP", "MSOP" ]
+author: "gbmhunter"
+date: 2015-04-07
+type: "page"
 ---
 
-No Content Found
+Micro SOP is a synonym for the [MSOP component package](/pcb-design/component-packages/msop-component-package/).

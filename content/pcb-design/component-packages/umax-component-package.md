@@ -2,9 +2,9 @@
 author: gbmhunter
 date: 2015-10-25 20:52:55+00:00
 draft: false
+tags: [ "component package", "uMAX", "MSOP" ]
 title: uMAX Component Package
 type: page
-url: /pcb-design/component-packages/umax-component-package
 ---
 
-No Content Found
+uMAX is a synonym for the [MSOP component package](/pcb-design/component-packages/msop-component-package/).

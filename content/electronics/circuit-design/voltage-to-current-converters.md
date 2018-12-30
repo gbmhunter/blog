@@ -1,13 +1,11 @@
 ---
 author: gbmhunter
-date: 2016-05-31 02:56:09+00:00
+date: 2016-05-31
 draft: false
+tags: [ "voltage", "current", "converter", "Howland", "current source" ]
 title: Voltage-To-Current Converters
 type: page
-url: /electronics/circuit-design/voltage-to-current-converters
 ---
-
-[mathjax]
 
 ## Overview
 

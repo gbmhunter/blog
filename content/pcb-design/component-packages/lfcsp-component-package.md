@@ -1,10 +1,10 @@
 ---
+title: "LFCSP Component Package"
+tags: [ "component package", "LFCSP", "QFN" ]
 author: gbmhunter
-date: 2015-04-07 07:09:02+00:00
-draft: false
-title: LFCSP Component Package
-type: page
-url: /pcb-design/component-packages/lfcsp-component-package
+date: 2015-04-07
+lastmod: 2018-12-29
+type: "page"
 ---
 
-No Content Found
+LFCSP is a synonym for the [QFN component package](/pcb-design/component-packages/qfn-component-package/).

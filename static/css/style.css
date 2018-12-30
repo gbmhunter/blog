@@ -13,7 +13,10 @@ p, h1, h2, h3, ul, li, a, div, td, th {
 }
 
 /* Styling for page titles */
-h1 { font-size: 7vw; }
+h1 { 
+    font-size: 7vw;
+    margin: 0.1em;
+}
 @media (min-width: 800px) {
     h1 { font-size: 3em; }
 }

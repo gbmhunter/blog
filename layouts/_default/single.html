@@ -9,13 +9,7 @@
     <article>
     <header class="mt4 w-100">
         {{ partial "breadcrumbs.html" . }}
-        <p class="f6 b helvetica tracked">
-            {{/*
-            CurrentSection allows us to use the section title instead of inferring from the folder.
-            https://gohugo.io/variables/page/#section-variables-and-methods
-            */}}
-            {{with .CurrentSection.Title }}{{. | upper }}{{end}}
-        </p>
+        <p>{{with .CurrentSection.Title }}{{. | upper }}{{end}}</p>
         <h1>
             <a href="{{ .Permalink }}" class="post-title">{{- .Title -}}</a>
         </h1>

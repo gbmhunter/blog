@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2014-11-09 03:39:08+00:00
-draft: false
-title: LL-34 Component Package
-type: page
-url: /pcb-design/component-packages/ll-34-component-package
+title: "LL-34 Component Package"
+tags: [ "component package" ]
+author: "gbmhunter"
+date: 2014-11-09
+type: "page"
 ---
 
-No Content Found
+LL-34 is a synonym for the [Mini-MELF component package](/pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package/).

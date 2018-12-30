@@ -1,10 +1,9 @@
 ---
+title: "SC-109D Component Package"
+tags: [ "component package", "SC-109D", "SOD-123" ]
 author: gbmhunter
-date: 2015-10-25 20:25:12+00:00
-draft: false
-title: SC-109D Component Package
+date: 2015-10-25
 type: page
-url: /pcb-design/component-packages/sc-109d-component-package
 ---
 
-No Content Found
+SC-109D is a synonym for the [SOD-123 component package](/pcb-design/component-packages/sod-123-component-package/).

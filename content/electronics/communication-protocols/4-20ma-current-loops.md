@@ -2,12 +2,11 @@
 author: gbmhunter
 date: 2016-03-10 01:40:57+00:00
 draft: false
+tags: [ "4-20mA", "current loop", "analogue", "transmitter", "receiver", "over-voltage", "HART", "communication protocol", "out-of-band signalling", "noise", "filtering", "buffering", "microcontroller", "ISA S50.1", "NAMUR NE43", "2-Wire", "3-Wire" ]
 title: 4-20mA Current Loops
 type: page
 url: /electronics/communication-protocols/4-20ma-current-loops
 ---
-
-[mathjax]
 
 ## Overview
 
@@ -67,7 +66,13 @@ The standard also extends the normal operation 4-20mA current range to 3.8-20.5m
 
 ## Applications
 
-The 4-20mA current-loop communication protocol is used by many **industrial sensors** to return the value of the property they are measuring. These include:  * Temperature  * Position  * Speed  * Pressure  * Strain
+The 4-20mA current-loop communication protocol is used by many **industrial sensors** to return the value of the property they are measuring. These include:
+
+* Temperature
+* Position
+* Speed
+* Pressure
+* Strain
 
 ## Interfacing To A Microcontroller
 
@@ -81,11 +86,15 @@ The schematic below shows probably the simplest 4-20mA interface you could buil
 
 The value of the resistor can be changed to modify the voltage range that the ADC measures. Below is a table of common resistors that are used and the voltage ranges they give:
 
-<table ><tbody ><tr >
-<td >**Resistance**
-</td>
-<td >**Voltage Range**
-</td></tr><tr >
+<table>
+    <thead>
+        <tr>
+            <th>Resistance</th>
+            <th>Voltage Range</th>
+        </tr>
+    </thead>
+<tbody>
+<tr>
 <td >\(50\Omega\)
 </td>
 <td >\(0.2-1V\)
