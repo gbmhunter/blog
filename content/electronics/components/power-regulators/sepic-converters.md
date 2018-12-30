@@ -1,13 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-03-24 19:31:39+00:00
+date: 2015-03-24
 draft: false
-title: SEPIC Converters
+tags: [ "SEPIC", "converter", "SMPS", "PWM", "boost converter", "boost", "schematic", "inductor", "capacitor" ]
+title: "SEPIC Converters"
 type: page
-url: /electronics/components/power-regulators/sepic-converters
 ---
-
-[mathjax]
 
 ## Overview
 

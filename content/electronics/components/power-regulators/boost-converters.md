@@ -1,13 +1,10 @@
 ---
 author: gbmhunter
-date: 2014-06-13 04:41:03+00:00
-draft: false
-title: Boost Converters
+date: 2014-06-13
+tags: [ "boost converter", "voltage converter", "current converter", "SMPS", "inductance", "MOSFET", "burst-mode", "duty cycle", "PWM", "diode", "capacitor" ]
+title: "Boost Converters"
 type: page
-url: /electronics/components/power-regulators/boost-converters
 ---
-
-[mathjax]
 
 ## Overview
 
@@ -15,11 +12,16 @@ Boost converters use a switching element, inductor, diode, and capacitor to conv
 
 {{< figure src="/images/2014/06/smps-boost-converter-simple.png" width="599px" caption="The basic components of a boost converter."  >}}
 
-In a real boost converter, the switch `\( SW \)` is usually realised 
+In a real boost converter, the switch `\( SW \)` is usually realized with a MOSFET or similar electronic switching device.
 
 ## Modes Of Operation
 
-A boost converter can operate in three different modes of operation:  * Continuous conduction mode (CCM)  * Discontinuous conduction mode (DCM)  * Critical conduction mode (CrCM)  * Burst-mode
+A boost converter can operate in three different modes of operation:
+
+* Continuous conduction mode (CCM)
+* Discontinuous conduction mode (DCM)
+* Critical conduction mode (CrCM)
+* Burst-mode
 
 These are explained in the following sub-sections.
 

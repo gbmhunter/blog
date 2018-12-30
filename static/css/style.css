@@ -388,6 +388,36 @@ body {
     }
 }
 
+/* ========================================================================= */
+/* RECENT UPDATES                                                            */
+/* ========================================================================= */
+
+div.recent-updates {
+    margin: 1em;
+}
+
+div.recent-updates h2 {
+    font-size: 1.0em;
+    margin: 0px;
+}
+
+div.recent-updates ul {
+    padding-inline-start: 1em;
+}
+
+div.recent-updates .modified {
+    font-size: 0.7em;
+    margin: 0px;
+    margin-left: 10px;
+    font-style: italic;
+}
+
+div.recent-updates .description {
+    font-size: 0.8em;
+    margin: 0px;
+    margin-left: 10px;
+}
+
 .right-column {
     width: 100%;
 }

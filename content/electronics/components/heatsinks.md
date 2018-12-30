@@ -1,13 +1,10 @@
 ---
 author: gbmhunter
-date: 2013-05-29 02:10:25+00:00
-draft: false
-title: Heatsinks
+date: 2013-05-29
+tags: [ "heatsink", "circuit design", "component", "overheating", "thermal", "temperature", "packages" ]
+title: "Heatsinks"
 type: page
-url: /electronics/components/heatsinks
 ---
-
-[mathjax]
 
 ## Overview
 

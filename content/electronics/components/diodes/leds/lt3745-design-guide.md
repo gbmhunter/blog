@@ -3,10 +3,7 @@ author: gbmhunter
 date: 2013-11-12 08:02:53+00:00
 title: LT3745 Design Guide
 type: page
-url: /electronics/components/diodes/leds/lt3745-design-guide
 ---
-
-[mathjax]
 
 ## Overview
 
@@ -24,12 +21,10 @@ The LT3745 datasheet gives a table of common resistances and the corresponding s
 
 The resulting power-based equation is (with better accuracy):
 
-$$ R_T = \frac{2.25167e^{11}}{f_{sw(act)}^{1.114}} $$
+<div>$$ R_T = \frac{2.25167e^{11}}{f_{sw(act)}^{1.114}} $$</div>
 
-which had a regression coefficient of \(R^2 = 0.9994\), not a bad fit!
+which had a regression coefficient of `\(R^2 = 0.9994\)`, not a bad fit!
 
 ## Be Careful When Probing
 
 It could be said that the LT3745 is poorly designed when it comes to the separation of low and high-voltage pins. The design places +5V logic pins right next to the LED supply line, which can be in excess of +50V. On the small QFN-40 package, this poses a risk if you are probing pins (e.g. with an oscilloscope or multimeter), because you can quite easily fry things if you short the two together.
-
-##  

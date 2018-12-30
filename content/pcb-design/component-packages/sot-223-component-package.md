@@ -2,69 +2,50 @@
 author: gbmhunter
 date: 2015-01-08 03:04:07+00:00
 draft: false
+tags: [ "component package", "SOT-223", "DCQ", "DCY", "MP04A", "PG-SOT-223-4", "TO-261-4", "R-PDSO-G6", "footprint", "land pattern", "PCB", "dimensions", "linear regulator" ]
 title: SOT-223 Component Package
 type: page
-url: /pcb-design/component-packages/sot-223-component-package
 ---
-
-[mathjax]
-
-
-
 
 ## Overview
 
-
-<table >
-<tbody >
-<tr >
-
-<td >Name
-</td>
-
-<td >SOT-223 (Small-outline Transistor 223)
-</td>
+<table>
+<tbody>
+<tr>
+    <td>Name</td>
+    <td>SOT-223 (Small-outline Transistor 223)</td>
 </tr>
-<tr >
-
-<td >Synonyms
-</td>
-
-<td >
-<ul>
-<li>DCQ (SOT-223-5, Texas Instruments)</li>
-<li>DCY (SOT-223, Texas Instruments)</li>
-<li>MP04A (National Semiconductor)</li>
-<li>PG-SOT-223-4 (Infineon Technologies)</li>
-<li>R-PDSO-G6 (SOT-223-5, Texas Instruments)</li>
-<li>ST Package (Analog Devices)</li>
-<li>TO-261-4</li>
-</ul>
-</td>
+<tr>
+    <td>Synonyms</td>
+    <td>
+        <ul>
+            <li>DCQ (SOT-223-5, Texas Instruments)</li>
+            <li>DCY (SOT-223, Texas Instruments)</li>
+            <li>MP04A (National Semiconductor)</li>
+            <li>PG-SOT-223-4 (Infineon Technologies)</li>
+            <li>R-PDSO-G6 (SOT-223-5, Texas Instruments)</li>
+            <li>ST Package (Analog Devices)</li>
+            <li>TO-261-4</li>
+        </ul>
+    </td>
 </tr>
-<tr >
-
-<td >Variants
-</td>
-
-<td >
-<ul>
-<li>SOT-223-3 (3 pin excl. tab)</li>
-<li>SOT-223-4 (4 pin excl. tab)</li>
-<li>SOT-223-5 (5 pin excl. tab)</li>
-</ul>
-</td>
+<tr>
+    <td>Variants</td>
+    <td>
+        <ul>
+            <li>SOT-223-3 (3 pin excl. tab)</li>
+            <li>SOT-223-4 (4 pin excl. tab)</li>
+            <li>SOT-223-5 (5 pin excl. tab)</li>
+        </ul>
+    </td>
 </tr>
-<tr >
-
-<td >Similar To
-</td>
-
-<td >
-<ul>
-<li><a href="/pcb-design/component-packages/sot-23-component-package">SOT-23</a></li>
-</ul>
-</td>
+<tr>
+    <td>Similar To</td>
+    <td>
+        <ul>
+            <li><a href="/pcb-design/component-packages/sot-23-component-package">SOT-23</a></li>
+        </ul>
+    </td>
 </tr>
 <tr >
 
@@ -103,37 +84,27 @@ url: /pcb-design/component-packages/sot-223-component-package
 <td >Thermal Resistance
 </td>
 
-<td >
-
-**SOT-223-3**
-
-<ul>
-<li>\(T_{JA} = 174^{\circ}{\rm C}/W\) (standard footprint)</li>
-<li>\(T_{JA} = 75^{\circ}{\rm C}/W\) (\(300mm^2\) heatsink area)</li>
-<li>\(T_{JA} = 63^{\circ}{\rm C}/W\)(\(600mm^2\) heatsink area)</li>
-<li>\(T_{JA} = 27^{\circ}{\rm C}/W\)(one square inch copper fill surrounding package)</li>
-</ul>
-<p><strong>SOT-223-5</strong></p>
-<ul>
-<li>\(55-165^{\circ}{\rm C}/W\) (see the SOT-223-5 section below)</li>
-</ul>
+<td>
+    <b>SOT-223-3</b>
+    <ul>
+        <li>\(T_{JA} = 174^{\circ}{\rm C}/W\) (standard footprint)</li>
+        <li>\(T_{JA} = 75^{\circ}{\rm C}/W\) (\(300mm^2\) heatsink area)</li>
+        <li>\(T_{JA} = 63^{\circ}{\rm C}/W\)(\(600mm^2\) heatsink area)</li>
+        <li>\(T_{JA} = 27^{\circ}{\rm C}/W\)(one square inch copper fill surrounding package)</li>
+    </ul>
+    <b>SOT-223-5</b>
+    <ul>
+        <li>\(55-165^{\circ}{\rm C}/W\) (see the SOT-223-5 section below)</li>
+    </ul>
 </td>
 </tr>
-<tr >
-
-<td >Dimensions
-</td>
-
-<td >n/a
-</td>
+<tr>
+<td>Dimensions</td>
+<td>n/a</td>
 </tr>
-<tr >
-
-<td >3D Models
-</td>
-
-<td >n/a
-</td>
+<tr>
+<td>3D Models</td>
+<td>n/a</td>
 </tr>
 <tr >
 
@@ -141,12 +112,12 @@ url: /pcb-design/component-packages/sot-223-component-package
 </td>
 
 <td >
-<ul>
-<li>MOSFET's</li>
-<li>Load switches</li>
-<li>High-power linear regulators</li>
-<li>Current sources</li>
-</ul>
+    <ul>
+        <li>MOSFET's</li>
+        <li>Load switches</li>
+        <li>High-power linear regulators</li>
+        <li>Current sources</li>
+    </ul>
 </td>
 </tr>
 </tbody>

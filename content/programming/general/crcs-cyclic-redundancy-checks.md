@@ -1,19 +1,14 @@
 ---
-author: gbmhunter
-date: 2016-06-07 21:24:31+00:00
-draft: false
-title: CRCs (Cyclic Redundancy Checks)
-type: page
-url: /programming/general/crcs-cyclic-redundancy-checks
+author: "gbmhunter"
+date: 2016-06-07
+tags: [ "CRC", "cyclic redundancy check", "generator polynomial", "calculator", "NinjaCalc", "CRC-8-ATM", "CRC-16", "XModem", "Kermit" ]
+title: "CRCs (Cyclic Redundancy Checks)"
+type: "page"
 ---
-
-[mathjax]
 
 ## Overview
 
-<blockquote>"Everything you wanted to know about CRC algorithms, but were afraid to ask for fear that errors in your understanding might be detected." - Ross N. Williams.
-> 
-> </blockquote>
+> "Everything you wanted to know about CRC algorithms, but were afraid to ask for fear that errors in your understanding might be detected." - Ross N. Williams.
 
 ## Generator Polynomial
 
@@ -21,13 +16,13 @@ The hexadecimal representation of the polynomial is what you end up exclusively-
 
 ## Start Value
 
-A value of all 0's or all 1's are common start values for CRC calculations (e.g. 0x0000 and 0xFFFF for a 16-bit CRC calculations).
+A value of all 0's or all 1's are common start values for CRC calculations (e.g. `0x0000` and `0xFFFF` for a 16-bit CRC calculations).
 
 Start values that are not 0 are better at detecting errors if the message begins with one or more bits that are 0.
 
 ## MSB-first vs. LSB-first
 
-The least-significant-bit first CRC algorithm is slightly simpler to implement in software/firmware, however the most-significant-bit first algorithm is easier to conceptulise.
+The least-significant-bit first CRC algorithm is slightly simpler to implement in software/firmware, however the most-significant-bit first algorithm is easier to conceptualize.
 
 ## Properties Of CRCs
 
@@ -41,7 +36,7 @@ When checking a CRC, rather than recalculating the CRC for the message and compa
 
 ## Some Common CRC Algorithms
 
-Note that this does in no way try and be an exhaustive list. Sites like [CRC RevEng - Catalogue of parametised CRC algorithms](http://reveng.sourceforge.net/crc-catalogue/all.htm) and [Prof. Koopman's CRC Polynomial Zoo](https://users.ece.cmu.edu/~koopman/crc/notes.html) have great detailed lists of CRC algorithms.
+Note that this does in no way try and be an exhaustive list. Sites like [CRC RevEng - Catalogue of parameterized CRC algorithms](http://reveng.sourceforge.net/crc-catalogue/all.htm) and [Prof. Koopman's CRC Polynomial Zoo](https://users.ece.cmu.edu/~koopman/crc/notes.html) have great detailed lists of CRC algorithms.
 
 ## CRC-8-ATM
 
@@ -87,7 +82,12 @@ Normal: 0x
 
 CRC-16-CCITT was first used by IBM in it's SDLC data link protocol. It is also known as just CRC-CCITT (it always uses a 16-bit CRC checksum).
 
-However, CRC-16-CCITT are not all the same. There are a few common variants of the CRC-16-CCITT in use:  * XModem  * 0xFFFF. This is an adaptation of the CRC-CCITT algorithm but with a starting CRC value of 0xFFFF rather than 0x0000.  * 0x1D0F  * Kermit. This is in fact the "true" CRC-CCITT CRC algorithm.
+However, CRC-16-CCITT are not all the same. There are a few common variants of the CRC-16-CCITT in use:
+
+* XModem
+* 0xFFFF. This is an adaptation of the CRC-CCITT algorithm but with a starting CRC value of 0xFFFF rather than 0x0000.
+* 0x1D0F
+* Kermit. This is in fact the "true" CRC-CCITT CRC algorithm.
 
 All of the CRC-CCITT variants use the following generator polynomial:
 
