@@ -24,7 +24,7 @@ Note that some devices do use a 0-20mA protocol instead.
 
 ## Types
 
-## 2-Wire
+### 2-Wire
 
 In the 2-wire variant, both the power and signal is transmitted over the same pair of wires. These are called _self-powered_ or _loop-powered_ devices.
 
@@ -32,11 +32,11 @@ In the 2-wire variant, both the power and signal is transmitted over the same pa
 
 2-wire sensors can be powered/measured with either a low-side or high-side shunt, the shunt being an additional resistor to measure the current the sensor is drawing.
 
-## 3-Wire
+### 3-Wire
 
 The 3-wire variant uses two wires for power and ground, and then shares the third wire for the 4-20mA current signal, with it's return path being shared with the ground wire.
 
-## 4-Wire
+### 4-Wire
 
 The 4-wire version has a **differential pair** for the current signalling, which is not shared by the power source.
 
