@@ -1,6 +1,6 @@
 {{ $related := .Site.RegularPages.RelatedIndices . "tags" | first 5 }}
 {{ with $related }}
-<h3>See Also</h3>
+<h3>Related Content:</h3>
 <ul>
 	{{ range . }}
 	<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>

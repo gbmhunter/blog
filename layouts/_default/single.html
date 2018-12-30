@@ -19,10 +19,31 @@
         <h1>
             <a href="{{ .Permalink }}" class="post-title">{{- .Title -}}</a>
         </h1>
-        {{/* Hugo uses Go's date formatting is set by example. Here are two formats */}}
-        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-            {{- .Date.Format "January 2, 2006" -}}
-        </time>      
+
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Date Published:</td>
+                        <td>
+                            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="datePublished">
+                                <i>{{ .Date.Format "January 2, 2006" }}</i>
+                            </time>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Last Modified:</td>
+                        <td>
+                            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="dateModified">
+                                <i>{{ .Lastmod.Format "January 2, 2006" }}</i>
+                            </time>
+                        </td>
+                    </tr>
+                </tbody>
+            </table> 
+        </div>
+        
+        
         {{/*  
             Show "reading time" and "word count" but only if one of the following are true:
             1) A global config `params` value is set `show_reading_time = true`
@@ -44,6 +65,7 @@
 
     {{- partial "related.html" . -}}
     {{- partial "tags.html" . -}}
+    <div class="disqus-divider"></div>
     {{ template "_internal/disqus.html" . }}    
 
     </article>

@@ -1,19 +1,19 @@
 {{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
 {{ define "main" }}
-  <div class="flex-l mt2 mw8 center">
-    <article class="center cf pv5 ph3 ph4-ns mw7">
+  <div>
+    <article>
       {{ partial "breadcrumbs.html" . }}
       <header>
-        <p class="f6 b helvetica tracked">
+        <p>
           {{ humanize .Section | upper  }}
         </p>
-        <h1 class="f1">
-          {{ .Title }}list
+        <h1>
+          {{ .Title }}
         </h1>
-      </header>ss
-      <div class="nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray content">
+      </header>
+      <div class="content">
             {{ if .Sections }}
-            <h1>Sections</h1>
+            <h2>Sections</h2>
             {{ end }}
             {{ range .Sections.ByTitle }}
                 <li>
@@ -22,7 +22,7 @@
             {{ end }}
 
             {{ if .Pages }}
-            <h1>Pages</h1>
+            <h2>Pages</h2>
             {{ end }}
             {{ range .Pages.ByTitle }}
                 <li>

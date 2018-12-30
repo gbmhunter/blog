@@ -28,6 +28,11 @@ h3 { font-size: 2vw; }
     h3 { font-size: 1.25rem; }
 }
 
+.flex-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
 /* HEADING NUMBERING */
 
 body {
@@ -385,12 +390,9 @@ body {
     }
 }
 
-@media (max-width: 800px) {
-    .right-column {
-        width: 100%;
-    }
+.right-column {
+    width: 100%;
 }
-
 @media (min-width: 800px) {
     .right-column {
         width: 70%;
@@ -424,7 +426,6 @@ body {
 main {
     padding: 5vw;
 }
-
 @media (min-width: 800px) {
     main {
         padding: 80px;
@@ -433,6 +434,11 @@ main {
 
 .homepage-post-content {
     padding-bottom: 50px;
+}
+
+/* Add a bit of space below the footer before the page ends */
+footer {
+    padding-bottom: 20px;
 }
 
 /* ========================================================================= */
@@ -448,6 +454,15 @@ figure {
 
 figure img {
     width: 100%; /* Force images to stay within the confines of the parent container */
+}
+
+/* ========================================================================= */
+/* DISQUS STYLING                                                             */
+/* ========================================================================= */
+
+/* Divider between the end of the page/related content/tags and the start of the Disqus comments */
+.disqus-divider {
+    height: 30px;
 }
 
 /* ========================================================================= */
