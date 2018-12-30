@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
+title: "CAN Protocol"
+description: "Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol."
+tags: [ "CAN", "bus", "communication protocol", "CAN1.0", "CAN2.0", "CAN base frame", "CAN extended frame", "USB adapters" ]
+author: "gbmhunter"
 date: 2012-12-12
-draft: false
-title: CAN Protocol
-type: page
-url: /electronics/communication-protocols/can-protocol
+type: "page"
 ---
 
 
@@ -22,86 +22,56 @@ The following equation can be used as a rule-of-thumb to calculate the maximum t
 
 <div>$$ BR\times L\leq 60 $$</div>
 
-<p class="cenetered">
+<p class="centered">
     where:<br>
-    \(BR\) = bit rate (in Mbit/s)<br>
-    \(L\) = length (in m)<br>
+    `\(BR\)` = bit rate (in Mbit/s)<br>
+    `\(L\)` = length (in m)<br>
 <p>
 
 A table of common distances/transmission rates is shown below:
 
-<table >
-<tbody >
-<tr >
-<td style="text-align: center; width: 74px;" >**Speed**
-</td>
-
-<td style="text-align: center; width: 75px;" >**Distance**
-</td>
-</tr>
-<tr >
-<td style="text-align: center; width: 74px;" >1Mbit/s
-</td>
-<td style="text-align: center; width: 75px;" >25m
-</td>
-</tr>
-<tr >
-<td style="text-align: center; width: 74px;" >800kBit/s
-</td>
-<td style="text-align: center; width: 75px;" >50m
-</td>
-</tr>
-<tr >
-
-<td style="text-align: center; width: 74px;" >500kBit/s
-</td>
-
-<td style="text-align: center; width: 75px;" >100m
-</td>
-</tr>
-<tr >
-
-<td style="text-align: center; width: 74px;" >250kBit/s
-</td>
-
-<td style="text-align: center; width: 75px;" >250m
-</td>
-</tr>
-<tr >
-
-<td style="text-align: center; width: 74px;" >125kBit/s
-</td>
-
-<td style="text-align: center; width: 75px;" >500m
-</td>
-</tr>
-<tr >
-
-<td style="text-align: center; width: 74px;" >50kBit/s
-</td>
-
-<td style="text-align: center; width: 75px;" >1000m
-</td>
-</tr>
-<tr >
-
-<td style="text-align: center; width: 74px;" >20kBit/s
-</td>
-
-<td style="text-align: center; width: 75px;" >2500m
-</td>
-</tr>
-<tr >
-
-<td style="text-align: center; width: 74px;" >10kBit/s
-</td>
-
-<td style="text-align: center; width: 75px;" >5000m
-</td>
-</tr>
-</tbody>
+<table>
+    <thead>
+        <tr>
+            <th>Speed</th>
+            <th>Distance**</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1Mbit/s</td>
+            <td>25m</td>
+        </tr>
+        <tr >
+            <td>800kBit/s</td>
+            <td>50m</td>
+        </tr>
+        <tr >
+            <td>500kBit/s</td>
+            <td>100m</td>
+        </tr>
+        <tr >
+            <td>250kBit/s</td>
+            <td>250m</td>
+        </tr>
+        <tr >
+            <td>125kBit/s</td>
+            <td>500m</td>
+        </tr>
+        <tr>
+            <td>50kBit/s</td>
+            <td>1000m</td>
+        </tr>
+        <tr>
+            <td>20kBit/s</td>
+            <td>2500m</td>
+        </tr>
+        <tr>
+            <td>10kBit/s</td>
+            <td>5000m</td>
+        </tr>
+    </tbody>
 </table>
-
 
 ## Arbitration
 

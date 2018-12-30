@@ -15,7 +15,7 @@ p, h1, h2, h3, ul, li, a, div, td, th {
 /* Styling for page titles */
 h1 { font-size: 7vw; }
 @media (min-width: 800px) {
-    h1 { font-size: 3rem; }
+    h1 { font-size: 3em; }
 }
 
 h2 { font-size: 4vw; }
@@ -51,15 +51,24 @@ body {
 
 /* END OF HEADING NUMBERING */
 
+/* Use rem for body, use em for everything else */
 /* This controls the main font size */
-p, li, div, a, td, th {
-    font-size: 2.0vw;
+body {
+    font-size: 1.3rem;
+}
+
+p, li, div, td, th {
     line-height: 1.7;
     color: rgb(85, 85, 85);
 }
+@media (max-width: 800px) {
+    p, li, div, td, th {
+        font-size: 2.0vw;
+    }
+}
 @media (min-width: 800px) {
-    p, li, div, a, td, th {
-        font-size: 1.3rem;
+    p, li, div, td, th {
+        /* font-size: 1.3rem; */
     }
 }
 

@@ -1,17 +1,18 @@
 ---
-author: gbmhunter
-date: 2014-07-08 01:03:43+00:00
-draft: false
-title: cat
-type: page
-url: /programming/operating-systems/linux/programs/cat
+title: "cat"
+description: "Creating files, outputing files, appending to files, emptying files and more info on the command-line UNIX program called cat."
+tags: [ "cat", "UNIX", "Linux", "concatenate", "program", "command-line" ]
+author: "gbmhunter"
+date: 2014-07-08
+lastmod: 2018-12-29
+type: "page"
 ---
 
 ## Overview
 
-`cat` (short for concatenate), is a basic terminal-based Linux program for manipulating text-based files.
+`cat` (short for concatenate), is a basic terminal-based Linux program for manipulating text-based files. It is commonly used to quickly output the contents of a text file to the screen, so that you can read it without having to open an editor.
 
-All of the following examples use .txt file extensions, but remember that this is optional, there is no notion of a "file extension" in Linux.
+Some of the following examples use `.txt` file extensions to indicate they contain textual information, but remember that this is optional, there is no notion of a "file extension" in Linux.
 
 ## To Create A File
 
@@ -19,7 +20,7 @@ All of the following examples use .txt file extensions, but remember that this i
 $ cat >filename.txt
 ```  
 
-Now type the text you want in the file. Press CTRL-D to exit and save the file. Warning: This will overwrite pre-existing files.
+Now type the text you want in the file. Press `CTRL-D` to exit and save the file. Warning: This will overwrite pre-existing files.
 
 ## Output A File To The Screen
 
@@ -32,10 +33,10 @@ $ cat filename.txt
 ## To Append To A File
 
 ```sh    
-cat >>filename.txt
+$ cat >>filename.txt
 ```    
 
-Now type the text you want in the file. Press CTRL-D to exit and save the file. Warning: This will overwrite pre-existing files.
+Now type the text you want in the file. Press `CTRL-D` to exit and save the file. Warning: This will overwrite pre-existing files.
 
 ## Empty A File
 
@@ -43,7 +44,8 @@ This trick works by redirecting the null output to your file, which clears it's 
 
 ```sh    
 $ cat /dev/null > filename.txt
-    
+```
+
 Warning: This will delete all the contents of a file, without prompt.
 
 ## To Output Line Numbers
@@ -51,5 +53,20 @@ Warning: This will delete all the contents of a file, without prompt.
 Use the `-n` switch.
 
 ```sh    
-cat -n filename.txt
-```    
+$ cat -n filename.txt
+```
+
+## Append/Concatenate Files To Another
+
+You can use redirection (`>`) to append the contents of one file into another.
+
+```sh
+$ cat file1 > file 2
+```
+
+You can list multiple files all at one to concatenate them into a single output file.
+
+```sh
+$ cat file1 file2 file3 > file4
+```
+

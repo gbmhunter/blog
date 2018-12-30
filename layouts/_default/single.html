@@ -7,8 +7,8 @@
 {{ define "main" }}
     {{ $section := .Site.GetPage "section" .Section }}    
     <article>
-
     <header class="mt4 w-100">
+        {{ partial "breadcrumbs.html" . }}
         <p class="f6 b helvetica tracked">
             {{/*
             CurrentSection allows us to use the section title instead of inferring from the folder.
@@ -16,11 +16,11 @@
             */}}
             {{with .CurrentSection.Title }}{{. | upper }}{{end}}
         </p>
-        <h1 class="f1">
+        <h1>
             <a href="{{ .Permalink }}" class="post-title">{{- .Title -}}</a>
         </h1>
         {{/* Hugo uses Go's date formatting is set by example. Here are two formats */}}
-        <time class="f6 mv4 dib tracked" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
             {{- .Date.Format "January 2, 2006" -}}
         </time>      
         {{/*  
@@ -36,17 +36,15 @@
     </header>
 
     <div class="content">
+        {{ .TableOfContents }}      
         {{- .Content -}}
-        
-        {{- partial "tags.html" . -}}
-        <div class="mt6">
-        {{ template "_internal/disqus.html" . }}
-        </div>
     </div>
 
-    <aside class="w-30-l mt6-l">
-        <!-- {{- partial "menu-contextual.html" . -}} -->
-    </aside>
+    <hr />
+
+    {{- partial "related.html" . -}}
+    {{- partial "tags.html" . -}}
+    {{ template "_internal/disqus.html" . }}    
 
     </article>
 {{ end }}

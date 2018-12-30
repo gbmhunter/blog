@@ -16,3 +16,14 @@ googleAnalytics = "UA-92834105-2"
 [blackfriday]
     fractions = false
     extensionsmask = ["autolink"] # Prevent naked URL from being converted into links, as this creates problems when the are URLs in figure captions.
+
+[related]
+    threshold= 80
+    includeNewer = true
+    toLower = false
+    [[related.indices]]
+        name = "keywords"
+        weight = 100
+    [[related.indices]]
+        name = "tags"
+        weight = 100

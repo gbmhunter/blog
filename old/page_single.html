@@ -17,6 +17,7 @@
         {{ .Content }}
       </div>
       
+      {{- partial "related.html" . -}}
       {{- partial "tags.html" . -}}
 
       {{ template "_internal/disqus.html" . }}
