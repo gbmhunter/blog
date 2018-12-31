@@ -1,41 +1,4 @@
 {{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
 {{ define "main" }}
-  <div>
-    <article>
-      {{ partial "breadcrumbs.html" . }}
-      <header>
-        <p>
-          {{ humanize .Section | upper  }}
-        </p>
-        <h1>
-          {{ .Title }}
-        </h1>
-      </header>
-      <div class="content">
-            {{ if .Sections }}
-            <h2>Sections</h2>
-            {{ end }}
-            {{ range .Sections.ByTitle }}
-                <li>
-                    <a href="{{.Permalink}}">{{.Title}}</a>
-                </li>
-            {{ end }}
-
-            {{ if .Pages }}
-            <h2>Pages</h2>
-            {{ end }}
-            {{ range .Pages.ByTitle }}
-                <li>
-                    <a href="{{.Permalink}}">{{.Title}}</a>
-                </li>
-            {{ end }}
-
-        {{ .Content }}
-      </div>
-      {{ template "_internal/disqus.html" . }}
-    </article>
-
-  </div>
-  <!-- LOAD LIGHTBOX FOR IMAGES -->
-  {{ partial "load-photoswipe.html" . }}
+    {{ partial "content" . }}
 {{ end }}

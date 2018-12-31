@@ -1,10 +1,7 @@
 ---
 author: gbmhunter
-date: 2011-09-12 06:17:24+00:00
+date: 2004-04-25
 draft: false
 title: Pyrotechnics
 type: page
-url: /pyrotechnics
 ---
-
-No Content Found

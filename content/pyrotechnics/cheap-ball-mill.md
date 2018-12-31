@@ -1,0 +1,41 @@
+---
+author: gbmhunter
+date: 2004-05-30
+draft: false
+title: Cheap Ball Mill
+type: page
+---
+
+A ball mill is handy tool for grinding things up to a powder, especially for making good quality black powder. A ball mill is composed of a motor which turns a container with lead balls inside. The chemicals (or whatever) that you want to be ground go into the container as well, and as the container spins the lead balls crush the mixture up.
+
+_Note: Never grind any pyrotechnic compositions except for black powder and its variants (mixtures containing the oxidizer potassium nitrate). This means no flash powders! They can and will explode by the friction and pressure the lead balls exert on them._
+
+## Materials:
+
+* Electric motor (I used a windscreen wiper motor from an old car)
+* Power source capable of powering the motor (I learned from [Toolerant](http://www.toolerant.com) that, a power supply from an old computer which was capable of suppling 150W at 12V. The motor draws 5A at 12V is 60W so is running the power supply just under half its maximum. Make sure your power supply can provide the current for the motor otherwise the transformer can over-heat and creates a fire-hazard)
+* Suitable container to grind mixtures in (I used a metal Nesquik container)
+* A base to secure the motor onto (I used a thick slab of wood)
+* Support for container (I used a long, thin metal bar and two springs, all out of an old printer)
+* Fan (optional but recommenced)
+
+## Tools
+
+* Bench Top Drill Press
+* Screw Drivers
+* Multi-meter
+* Soldering Iron
+
+## Method
+
+1. Firstly you need to do design a way to fix the container to the armature of the motor (the bit the sticks out of it and spins). I can't tell you how to do it, you need to use your imagination. The end of the armature was threaded and came with a nut that fitted onto it. I cut a 50mm length of 10mm iron rod (used to strengthen concrete) and used ordinary 60/40 solder to fix it onto the end of the nut. It still allowed the nut to be screwed onto the armature, but now it has a 50mm long removable extension onto it.
+2. Then I cut a block of wood about 70mm thick and as long and wide as the diameter of the container. I then used epoxy to glue it on to the bottom of the container. I drilled a 50mm hole with a diameter of 10mm in the centre of the wood (and in line with the axes of the container). I then got the extension I made previously and hammered the iron rod tightly into the hole, and left the nut sticking out. The nut then screws onto the end of the armature, and you have connected the motor to the container.
+3. Then you need to clamp the motor securely to some sort of base. A large block of wood is the easiest thing to use. It needs to be secured so that the armature is horizontal. You may need to raise the motor of the board so that when the container is attached it doesn't hit the base, depending on the size of container you use. The metal straps used to secure hot water cylinders are good for the job. Just wrap one around the center of the motor and secure it to the board with two screws.
+4. The last thing to do is to make some support to give some upward thrust on the container. When full of powder and lead balls, it can become very heavy and without support can wear out the bearings in the motor. The support should be located as close to the top of the container (end with lid) as possible. I placed a metal bar perpendicular to the axle of the container underneath it, and placed two springs at each end of the rod so they pushed it up onto the container and took some of its weight. This is a very crude but quick method, if you really wanted to you could use bearings, which would reduce wear on the container. When using a metal bar, the rod slowly wears away the metal, even when I use lots of grease, and when the container cracks I just use my trusty solder and fix it back up again.
+5. Place the container upright on a bench, put in whatever you want to grind (usually black powder) and but in the lead balls. Optimum grindeyness occurs when the container is half full of powder and 1/4 full of lead balls that weigh about 32g. Pop on the lid and screw the whole thing onto the armature of the motor. Connect the motor to the correct terminals coming from the power supply, and flick the switch. With luck the motor should start up and spin the container at about 100rpm. I also placed a electric fan beside the motor to keep it warm and not hot. It should never get so hot that you can't keep holding it.
+
+## Ball Mill
+
+My old ball mill for grinding black powder. Made from a Nesquick milkshake can and a window wiper motor from an old car. There's about 20 lead balls inside and it can grind about 100g of black powder in 8 hours.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OihWRB6T1Fc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

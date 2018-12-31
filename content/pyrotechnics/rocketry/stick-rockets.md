@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2011-09-12 06:41:36+00:00
+date: 2004-06-27
 draft: false
 title: Stick Rockets
 type: page
-url: /pyrotechnics/rocketry/stick-rockets
 ---
 
 ## Overview
@@ -24,26 +23,8 @@ A bamboo skewer or piece of dowel protruding 150-400mm behind the nozzle works w
 
 {{< figure src="/images/pyrotechnics-rocketry/four-stick-rockets-with-charges.jpg" caption="Four stick rockets with charges (the larger parts at the front-end of the rocket)"  width="700px" >}}
 
-
 ## Videos
 
-
-<table cellpadding="1" cellspacing="1" border="1" >
-<tbody >
-<tr >
-
-<td >
-</td>
-
-<td >
-
-
-### Stick Rocket 01
-
-
 A stick rocket with rcandy propellant. Internal diameter of cardboard motor tube was 18mm.
-</td>
-</tr>
-</tbody>
-</table>
-For more videos, see the [Pyrotechnic Videos](/pyrotechnics/general/pyrotechnic-videos) page.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/w9b2k-Lh5ww" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

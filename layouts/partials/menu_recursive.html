@@ -1,16 +1,21 @@
 {{ if or (.Sections) (.Pages) }}
+    {{ $child_pages := union .Sections .Pages }}
     <ul class="submenu">
-        {{ range .Sections.ByTitle }}
+        {{ range $child_pages.ByTitle }}
             <li class="dropdown">
-                <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div><div class="right-arrow">▶</div></a>
+                <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div>
+                    {{ if or (.Sections) (.Pages) }}
+                    <div class="right-arrow">▶</div>
+                    {{ end }}
+                </a>
                 {{ partial "menu_recursive.html" . }}
             </li>
         {{ end }}
-        {{ range .Pages.ByTitle }}
+        <!-- {{ range .Pages.ByTitle }}
             <li>
                 <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div></a>
                 {{ partial "menu_recursive.html" . }}
             </li>
-        {{ end }}
+        {{ end }} -->
     </ul>
 {{ end }}

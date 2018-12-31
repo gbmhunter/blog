@@ -1,20 +1,16 @@
 ---
 author: gbmhunter
-date: 2012-12-02 09:13:09+00:00
+date: 2004-03-04
 draft: false
 title: Propellant
 type: page
-url: /pyrotechnics/rocketry/propellant
 ---
 
 ## KNDX
 
-
 KNDX stands for potassium nitrate-dextrose, and is a easy-to-make rocket propellant that is popular with hobbyist rocketry. The most common ratio is 60% potassium nitrate, 40% dexrtose (by weight).
 
-
-## Melting
-
+### Melting
 
 Not melted.
 
@@ -28,9 +24,7 @@ Fully melted.
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/48-melting-kndx-03.jpg" caption="KNDX fully melted."  width="600px" >}}
 
-
-## The End Result
-
+### The End Result
 
 The propellant grains in this image have been made rather poorly, notice the cracks and uneven surface!
 

@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2015-02-15 23:07:40+00:00
-draft: false
-title: PCI Express (PCIe)
-type: page
-url: /electronics/communication-protocols/pci-express-pcie
+author: "gbmhunter"
+date: 2015-02-15
+tags: [ "PCIe", "PCI", "express", "communication protocol", "serial", "TLPs", "data link layer", "lanes", "memory", "bridges" ]
+title: "PCI Express (PCIe)"
+type: "page"
 ---
 
 ## Overview
@@ -73,7 +72,7 @@ Note that the transmission speed in software is not define as a absolute bits/se
 
 A link is a device-to-device connection consisting of 1 or more lanes.
 
-One of the cheapest FPGA's with PCIe support is the XC7A35T-1FTG256C, a Xilinx Artix-7 with 33280 cells in a BGA-256 package. In Feb 2015, it was avaiable from Avnet Express is prcies of US$37.89 (1) and US$29.17 (500).
+One of the cheapest FPGA's with PCIe support is the XC7A35T-1FTG256C, a Xilinx Artix-7 with 33280 cells in a BGA-256 package. In Feb 2015, it was available from Avnet Express is prices of US$37.89 (1) and US$29.17 (500).
 
 ## Data Transmission
 
@@ -85,7 +84,7 @@ PCI devices have a set of registers referred to as the _configuration space_, an
 
 ## Configuration Space
 
-The configuration space is a standardised section of memory on PCIe cards that allows PCIe cards to configure correctly.
+The configuration space is a standardized section of memory on PCIe cards that allows PCIe cards to configure correctly.
 
 {{< figure src="/images/2015/02/pci-type-0-non-bridge-config-space-diagram-v2.png" width="624px" caption="The standardised registers that belong to the PCI/PCIe Type 0 (non-bridge) configuration space. Image from https://en.wikipedia.org."  >}}
 
@@ -105,7 +104,7 @@ There is also a PCI Mini Express Card size. They are not physically compatible w
 
 ## Testing PCIe Carts With A Computer
 
-Once you have designed and made a PCIe card for a computer, one of the first things you'll want to do is plug it into a PCIe slot on the computer as see if the computer recognises it.
+Once you have designed and made a PCIe card for a computer, one of the first things you'll want to do is plug it into a PCIe slot on the computer as see if the computer recognizes it.
 
 The way to detect and explore the PCIe device depends on the OS that the computer is running.
 
@@ -123,4 +122,4 @@ A note on downloading RWEverything: Many browsers and anti-virus software packag
 
 ## Manufacturers
 
-PLX Tenchnologies is now Avago Technologies.
+PLX Technologies is now Avago Technologies.

@@ -1,6 +1,7 @@
 ---
 author: gbmhunter
 date: 2016-12-13
+description: "A tutorial on the most popular C++ containers including std::array, std::vector, std::map, std::deque, std::set and more."
 draft: false
 lastmod: 2018-12-30
 title: Containers
@@ -31,11 +32,10 @@ _The following containers are sorted alphabetically._
 <td >Time Complexity
 </td>
 
-<td >Random Access: \( \mathcal{O}(1) \)  
-
- Insertion At Start Or End: n/a  
-
- Insertion In Middle: n/a
+<td>
+    Random Access: \( \mathcal{O}(1) \)<br>
+    Insertion At Start Or End: n/a<br>
+    Insertion In Middle: n/a<br>
 </td>
 </tr>
 </tbody>
@@ -91,7 +91,7 @@ Note that `boost::array` provides exactly the same syntax as `std::array` for in
 </tbody>
 </table>
 
-deque stands for **double-ended queue** (usually pronounced similar to "deck"). It is an indexed sequence container used for storing data in C++. It is dynamically sized, and can be quickly expanded/contracted both at the front and back.
+`std::deque` stands for **double-ended queue** (usually pronounced similar to "deck"). It is an indexed sequence container used for storing data in C++. It is dynamically sized, and can be quickly expanded/contracted both at the front and back.
 
 A deque is not guaranteed to store all of it's data in a continuous memory sequence. Thus it's data cannot be accessed via pointer addition (unlike a vector).
 
@@ -108,25 +108,25 @@ myDeque.push_back(9);
 
 ## map/multimap
 
-<table >
-<tbody >
-<tr >
-<td >Header</td>
-<td >#include &lt;map&gt;</td>
-</tr>
-<tr >
-<td >Full Path</td>
-<td >std::map , std::multimap</td>
-</tr>
-<tr>
-<td>Time Complexity</td>
-<td>
-    Random Access: \( \mathcal{O}(1) \)<br>
-    Insertion At Start Or End: \( \mathcal{O}(1) \)<br>
-    Insertion In Middle: \( \mathcal{O}(n) \)<br>
-</td>
-</tr>
-</tbody>
+<table>
+    <tbody>
+        <tr>
+            <td>Header</td>
+            <td>#include &lt;map&gt;</td>
+        </tr>
+        <tr>
+            <td>Full Path</td>
+            <td>std::map , std::multimap</td>
+        </tr>
+        <tr>
+            <td>Time Complexity</td>
+            <td>
+                Random Access: \( \mathcal{O}(1) \)<br>
+                Insertion At Start Or End: \( \mathcal{O}(1) \)<br>
+                Insertion In Middle: \( \mathcal{O}(n) \)<br>
+            </td>
+        </tr>
+    </tbody>`
 </table>
 
 `std::map` is an associative C++ container. Is is similar to a dictionary in Python. While an array or vector only allows you to store and retrieve data using an integer, a map allows you to store and retrieve data via any other object.
@@ -145,7 +145,7 @@ peoplesAges["John"] = 32;
 
 Notice how we can use a string to index into the map, rather than an integer!
 
-We can retrieve values from a map by using the find() method.
+We can retrieve values from a map by using the `find()` method.
 
 ```c++    
 auto it = peoplesAges.find("John");

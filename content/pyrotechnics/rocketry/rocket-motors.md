@@ -9,9 +9,7 @@ url: /pyrotechnics/rocketry/rocket-motors
 
 Rocket motors are the part of the rocket which provides the thrust.
 
-
 ## Anchors
-
 
 Anchors help prevent the nozzle and end-plug from coming out during the burn.
 
@@ -19,17 +17,13 @@ Anchors help prevent the nozzle and end-plug from coming out during the burn.
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/42-drilling-anchors.jpg" caption="Drilling the anchors to stop the nozzle and end plug from coming out."  width="600px" >}}
 
-
 ## Thermal Sleeves
-
 
 Thermal sleeves help prevent the rocket motor casing from rupturing during the burn due to heat. This is especially true for PVC rocket motors.
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/43-inserting-thermal-sleeve-into-motor.jpg" caption="Inserting a thermal sleeve into the PVC rocket motor. The sleeve was made by gluing Aluminium foil onto a piece of cardboard, and then wrapping it on itself a couple of times."  width="600px" >}}
 
-
 ## Finished Motor
-
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/44-rocket-motor.jpg" caption="A KNDX PVC rocket motor."  width="600px" >}}
 
