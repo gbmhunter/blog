@@ -1,10 +1,12 @@
 ---
 author: gbmhunter
-date: 2011-09-03 02:16:14+00:00
+date: 2011-09-03
+description: "Schematics, circuits, half-bridges, transistor-based design, motors, controlling bi-color LEDs and more info about H-bridges."
 draft: false
-title: H-Bridges (and Half-Bridges)
+lastmod: 2018-12-31
+tags: [ "H-bridge", "half-bridge", "circuit", "transistor", "MOSFET", "motor", "LED" ]
+title: "H-Bridges (and Half-Bridges)"
 type: page
-url: /electronics/circuit-design/h-bridges
 ---
 
 ## Overview
@@ -61,6 +63,6 @@ The solution is to filter the switching H-bridge output, so the load sees a cons
 
 ## External Links
 
-Speed Controllers URL: [http://homepages.which.net/~paul.hills/SpeedControl/SpeedControllersBody.html](http://homepages.which.net/~paul.hills/SpeedControl/SpeedControllersBody.html) Description: Really good site explaining half-bridges, full-bridges and regenerative breaking
+[http://homepages.which.net/~paul.hills/SpeedControl/SpeedControllersBody.html](http://homepages.which.net/~paul.hills/SpeedControl/SpeedControllersBody.html) is a really good site explaining half-bridges, full-bridges and regenerative breaking.
 
 [http://www.homofaciens.de/technics-base-circuits-h-bridge_en_navion.htm](http://www.homofaciens.de/technics-base-circuits-h-bridge_en_navion.htm) has some great general information and schematics on full-bridges.

@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
-date: 2011-09-15 07:33:05+00:00
+author: "gbmhunter"
+date: 2011-09-15
 draft: false
-title: Microcontroller IDE Comparison
-type: page
-url: /programming/general/microcontroller-ide-comparison
+tags: [ "IDE", "microcontroller", "comparison", "AVR Studio", "Eclipse", "Keil uVision", "programming" ]
+title: "Microcontroller IDE Comparison"
+type: "page"
 ---
 
 ## Overview
@@ -120,57 +120,38 @@ Atmel Studio also promotes an integrated app-store, simulator (which of July 201
 
 <table>
 	<tbody >
-		<tr >
-			
-<td >Cost
-</td>
-			
-<td >Free (and open-source)
-</td>
+		<tr>
+			<td>Cost</td>
+			<td>Free (and open-source)</td>
 		</tr>
-		<tr >
-			
-<td >Supported Operating Systems
-</td>
-			
-<td >
-<ul>
-	<li>Windows</li>
-	<li>Linux</li>
-	<li>MacOS</li>
-</ul>
-		
-</td>
+		<tr>
+			<td>Supported Operating Systems</td>
+			<td>
+				<ul>
+					<li>Windows</li>
+					<li>Linux</li>
+					<li>MacOS</li>
+				</ul>
+			</td>
 		</tr>
-		<tr >
-			
-<td >Supported Architectures
-</td>
-			
-<td >Heaps
-</td>
+		<tr>
+			<td>Supported Architectures</td>
+			<td>Heaps</td>
 		</tr>
-		<tr >
-			
-<td >Supported Languages
-</td>
-			
-<td >
-<ul>
-	<li>Java</li>
-	<li>PHP</li>
-	<li>C/C++</li>
-	<li>Many more...</li>
-</ul>
-				
+		<tr>
+			<td>Supported Languages</td>
+			<td>
+				<ul>
+					<li>Java</li>
+					<li>PHP</li>
+					<li>C/C++</li>
+					<li>Many more...</li>
+				</ul>
 		</tr>
-		<tr >
-			
-<td >Supported Compilers
-</td>
-			
-<td >
-<ul>
+		<tr>
+			<td>Supported Compilers</td>
+			<td>
+			<ul>
 	<li>GCC</li>
 </ul>						
 </td>
@@ -201,9 +182,8 @@ Eclipse would be one of the most popular open-source IDE's out there. It's popul
 
 There are many different releases of Eclipse that you can download.
 
+
 ## Keil uVision
-
-
 
 <table>
 	<tbody >
