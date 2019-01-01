@@ -1,35 +1,38 @@
 ---
 author: gbmhunter
-date: 2014-07-21 23:44:57+00:00
+date: 2014-07-21
+description: "Basic improvements/additions that every installation of Linux should have."
 draft: false
-title: The Basic Essentials You Should Do After Installing Ubuntu
+lastmod: 2018-12-31
+tags: [ "search history", "Linux", "multiple workspaces", "Linuxbrew", "fzf", "fd", "maximum number of files" ]
+title: "The Basic Essentials You Should Do After Installing Ubuntu"
 type: page
-url: /programming/operating-systems/linux/the-basic-essentials-you-should-do-after-installing-ubuntu
 ---
 
 ## Make The Up/Down Keys Search History
 
 This assumes you are using the Gnome terminal. This has been tested with Ubuntu 14.04.
 
-1. Edit ~/.inputrc with this command (to apply the change to the current user only):
+1. Edit `~/.inputrc` with this command (to apply the change to the current user only):
 
-    ```shell
+    ```sh
     gedit ~/.inputrc
     ```
     or, to apply it system wide (assuming you have admin privileges):
     gedit /etc/.inputrc
+
 2. Add the following lines:
 
-    ```shell
+    ```sh
     "\e[A":history-search-backward
     "\e[B":history-search-forward
     ```
 
 3. Save then close the file.
 
-4. Execute this command in a terminal (not that you cannot source the .inputrc file):
+4. Execute this command in a terminal (not that you cannot `source` the `.inputrc` file):
 
-    ```shell
+    ```sh
     bind -f ~/.inputrc
     # OR
     sudo bind -f /etc/.inputrc
@@ -49,7 +52,7 @@ To switch workspaces, press Ctrl-Alt (on a Windows keyboard) or Cmd-Alt (on a Ma
 
 How to add more workspaces than the default 4 you get when enabling the option in the GUI? Easy, change the vsize and hsize settings! If you wanted 6 (2 across, 3 down), enter the following commands from the terminal:
 
- ```shell
+ ```sh
  ~$ settings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize 2
  ~$ settings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize 3
  ```
@@ -74,7 +77,7 @@ See [https://github.com/sharkdp/fd](https://github.com/sharkdp/fd) for installat
 
 Sometimes you might run into the error:
 
-```
+```sh
 too many open files in system
 ```
 
@@ -82,7 +85,7 @@ Linux puts a limit on the max. number of files that can be open at any one time 
 
 To see what the current limits are:
 
-```shell
+```sh
 $ sysctl kern.maxfiles
 kern.maxfiles: 12288
 $ sysctl kern.maxfilesperproc
@@ -91,7 +94,7 @@ kern.maxfilesperproc: 10240
 
 To increase the limits:
 
-```shell
+```sh
 $ sudo sysctl -w kern.maxfiles=40000
 kern.maxfiles: 12288 -> 40000
 $ sudo sysctl -w kern.maxfilesperproc=35000

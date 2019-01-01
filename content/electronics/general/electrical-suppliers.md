@@ -9,7 +9,8 @@ url: /electronics/general/electrical-suppliers
 
 ## General Components
 
-<table>
+<div class="table-wrapper">
+<table style="width: 1200px;">
     <thead>
         <tr>
             <th>Supplier Name/Website</th>
@@ -207,6 +208,7 @@ url: /electronics/general/electrical-suppliers
 </tr>
 </tbody>
 </table>
+</div>
 
 ## Avnet
 

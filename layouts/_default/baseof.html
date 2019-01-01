@@ -9,8 +9,8 @@
             NOTE: the Site's title, and if there is a page title, that is set too -->
 
         <title>{{ block "title" . }}{{ .Site.Title }} {{ with .Params.Title }} | {{ . }}{{ end }}{{ end }}</title>
-        {{/* For pages, this will use the description field if it's provided in the markdown metadata, otherwise
-        it will will make the description up from a summary /*}}
+        <!--  For pages, this will use the description field if it's provided in the markdown metadata, otherwise
+        it will will make the description up from a summary -->
         {{ if .IsHome }}
             <meta name="description" content="{{ $.Site.Params.description }}" />
         {{- else if .Description -}}
@@ -65,6 +65,10 @@
         <!-- MAIN STYLING SCRIPT FOR THIS SITE -->
         <!-- Make sure this is loaded in the head so that the browser does not render twice -->
         <link rel="stylesheet" href="/css/style.css"/>
+        <!-- <link rel="stylesheet" href="/css/responsive-tables.css"/> -->
+
+        <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> -->
+        <!-- <script type="text/javascript" src="/js/responsive-tables.js"></script> -->
     </head>
 
     <body>

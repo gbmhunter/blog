@@ -2,8 +2,9 @@
 {{- if not ($.Page.Scratch.Get "figurecount") }}<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />{{ end }}
 {{- $.Page.Scratch.Add "figurecount" 1 -}}
 {{- $image := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) }}
-{{- $thumb := $image.Resize (printf "%s%s" (.Get "width") "x") }}
-<div class="box{{ with .Get "caption-position" }} fancy-figure caption-position-{{.}}{{end}}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}" {{ with .Get "width" }}style="max-width:{{.}}px;"{{end}}>
+{{- $width_without_px := index (findRE "^[0-9]+" (.Get "width")) 0 -}}
+{{- $thumb := $image.Resize (printf "%s%s" $width_without_px "x") }}
+<div class="box{{ with .Get "caption-position" }} fancy-figure caption-position-{{.}}{{end}}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}" {{ with $width_without_px }}style="max-width:{{.}}px;"{{end}}>
   <figure {{ with .Get "class" }}class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img"{{ if .Parent }} style="background-image: url('{{ print .Site.BaseURL $thumb }}');"{{ end }}{{ with .Get "size" }} data-size="{{.}}"{{ end }}>
       <img itemprop="thumbnail" src="{{ $thumb.RelPermalink }}" {{ with .Get "alt" | default (.Get "caption") }}alt="{{.}}"{{ end }}/><!-- <img> hidden if in .gallery -->

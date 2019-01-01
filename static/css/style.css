@@ -86,6 +86,10 @@ figcaption p {
 /* TABLE STYLING                                                             */
 /* ========================================================================= */
 
+.table-wrapper {
+    overflow-x: auto;
+}
+
 /* Center tables inside page content */
 div.content table {
     margin-left: auto; 
