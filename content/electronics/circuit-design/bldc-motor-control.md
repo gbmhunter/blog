@@ -16,6 +16,7 @@ The page is dedicated to how to control a **brushless DC** (BLDC) motor in an em
 
 ## Acronyms And Terminology
 
+<div class="table-wrapper">
 <table>
     <thead>
         <tr>
@@ -139,23 +140,10 @@ The page is dedicated to how to control a **brushless DC** (BLDC) motor in an em
 </tr>
 <tr >
 
-<td >
-
-
-\(P_I\)
-
-
-
-</td>
-
-<td >Input Power
-</td>
-
-<td >W
-</td>
-
-<td >W
-</td>
+<td >\(P_I\)</td>
+<td >Input Power</td>
+<td >W</td>
+<td >W</td>
 </tr>
 <tr >
 
@@ -229,7 +217,7 @@ The page is dedicated to how to control a **brushless DC** (BLDC) motor in an em
 </tr>
 </tbody>
 </table>
-
+</div>
 
 ## Motors
 
@@ -280,6 +268,7 @@ The [encoder](/electronics/components/encoders) method uses, well, an encoder at
 
 A common example of a trapezoidal (or block) commutation cycle of a BLDC motor with hall-sensor feedback is shown in the below table. This will drive the motor in one particular direction. This can be used to form a LUT for quick hardware/software commutation.
 
+<div class="table-wrapper">
 <table>
     <thead>
         <tr>
@@ -349,6 +338,7 @@ A common example of a trapezoidal (or block) commutation cycle of a BLDC motor w
         </tr>
     </tbody>
 </table>
+</div>
 
 where H1, H2, and H3 are the hall-effect sensors, and A, B, and C are the motor phases of a 3-phase star-connected BLDC motor. Note that the either the high-side, low-side, or both driver inputs can be modulated with a PWM signal to provide speed control.
 

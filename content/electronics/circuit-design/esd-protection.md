@@ -17,6 +17,7 @@ Electrostatic discharge (ESD) is a unintended quick high-voltage transient wavef
 
 The table below summarizes the different components you can use for ESD protection.
 
+<div class="table-wrapper">
 <table>
 	<tr>
 		<th>Component</th>
@@ -41,6 +42,7 @@ The table below summarizes the different components you can use for ESD protecti
 		</tr>
 	</tbody>
 </table>
+</div>
 
 ## Internal ESD Protection On CMOS I/O
 

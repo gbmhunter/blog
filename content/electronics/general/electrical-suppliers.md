@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
-date: 2011-09-05 06:46:17+00:00
+date: 2011-09-05
 draft: false
+tags: [ "electronics", "engineering", "supplier", "batteries", "hardware", "PCB", "EMS", "components" ]
 title: Electrical Suppliers
 type: page
-url: /electronics/general/electrical-suppliers
 ---
 
 ## General Components
@@ -27,21 +27,11 @@ url: /electronics/general/electrical-suppliers
 <td >Alibaba ([visit site](http://www.alibaba.com/))
 </td>
 
-<td >{{< figure src="/images/electronics-misc/alibaba-logo.jpg" caption="The Alibaba logo."  width="100px" >}}
-</td>
-
-<td >1/5
-</td>
-
-<td >5/5
-</td>
-
-<td >International
-</td>
-
-<td >2/5
-</td>
-
+<td >{{< figure src="/images/electronics-misc/alibaba-logo.jpg" caption="The Alibaba logo."  width="100px" >}}</td>
+<td >1/5</td>
+<td >5/5</td>
+<td >International</td>
+<td >2/5</td>
 <td >Alibaba is a huge international trading site that offers goods a whole sale prices (if your prepared to buy in quantity). Prices are sometimes listed, but it is normally up to you to contact the seller and organise prices/quantities. Normally you can buy direct from manufacturers, offering very good deals!
 </td>
 </tr>
@@ -183,28 +173,14 @@ url: /electronics/general/electrical-suppliers
 <td >Good, cheap site with a fair amount of components. Supplier of SparkFun components to New Zealand customers, so you can skip the high shipping fee you would receive buying from the US.
 </td>
 </tr>
-<tr >
-
-<td >Mouser ([visit site](http://www.mouser.com))
-</td>
-
-<td >{{< figure src="/images/electronics-misc/mouser-logo.jpg" caption="The Mouser logo."  width="100px" >}}
-</td>
-
-<td >4/5
-</td>
-
-<td >3/5
-</td>
-
-<td >International
-</td>
-
-<td >3/5
-</td>
-
-<td >International online component store that has a large range of electronics. In my experience they are norammly one of the cheapest and best stocked suppliers. Easy to use search engine, much like Element 14's.
-</td>
+<tr>
+    <td>Mouser ([visit site](http://www.mouser.com))</td>
+    <td>{{< figure src="/images/electronics-misc/mouser-logo.jpg" caption="The Mouser logo."  width="100px" >}}</td>
+    <td>4/5</td>
+    <td>3/5</td>
+    <td>International</td>
+    <td>3/5</td>
+    <td>International online component store that has a large range of electronics. In my experience they are norammly one of the cheapest and best stocked suppliers. Easy to use search engine, much like Element 14's.</td>
 </tr>
 </tbody>
 </table>
@@ -472,8 +448,8 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
 
 ## PCB Manufacturers
 
-
-<table>
+<div class="table-wrapper">
+<table style="width:1500px;">
     <thead>
         <tr>
             <th>Name/Website</th>
@@ -487,125 +463,54 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
             <th>Comments</th>
         </tr>
     </thead>
-<tbody >
-<tr >
-
-<td >Circuit Labs ([website](http://www.circuitlabs.co.nz/))
-</td>
-
-<td >{{< figure src="/images/electronics-suppliers/circuit-labs-logo.jpg"   width="100px" >}}
-</td>
-
-<td >Number Of Layers: 2 Min Track And Gap: 0.152mm Min Hole Size: 0.30mm Min Annular Ring: 0.10 Rigid-Flex: No
-</td>
-
-<td >Yes
-</td>
-
-<td >
-</td>
-
-<td >No
-</td>
-
-<td >Auckland, New Zealand
-</td>
-
-<td >New Zealand
-</td>
-
-<td >Specialise in small-quantity PCB manufacture.
-</td>
-</tr>
-<tr >
-
-<td >IMP ([website](http://www.imppc.com.au/))
-</td>
-
-<td >{{< figure src="/images/electronics-suppliers/imp-logo.gif" caption="The IMP logo."  width="100px" >}}
-</td>
-
-<td >Number Of Layers: 2-8+ Min Track And Gap: ? Min Hole Size: ? Min Annular Ring: 0.10 Rigid-Flex: Yes (outsourced)
-</td>
-
-<td >Yes
-</td>
-
-<td >Yes
-</td>
-
-<td >No
-</td>
-
-<td >Australia
-</td>
-
-<td >Australia, New Zealand
-</td>
-
-<td >Manufacturer of small-runs of PCB's, usually for a prototyping or small manufacturer service. Very good customer support. Also produce/supply membranes, decals, stencils and LCD screens.
-</td>
-</tr>
-<tr >
-
-<td >PCB Zone ([website](http://www.pcbzone.net/))
-</td>
-
-<td >{{< figure src="/images/electronics-suppliers/pcb-zone-logo.jpg" caption="The PCB Zone logo."  width="100px" >}}
-</td>
-
-<td >Number Of Layers: 2 Min Track And Gap: 0.20mm Min Hole Size: 0.30mm Min Annular Ring: ? Rigid-Flex: No
-</td>
-
-<td >Yes (green)
-</td>
-
-<td >Yes
-</td>
-
-<td >Yes
-</td>
-
-<td >New Zealand
-</td>
-
-<td >New Zealand/International
-</td>
-
-<td >Manufacturer of PCB boards that is semi-tailored to hobbyist/DIY productions, offering cheap prices for limited runs.
-</td>
-</tr>
-<tr >
-
-<td >Silver Circuits ([website](http://www.custompcb.com))
-</td>
-
-<td >
-</td>
-
-<td >Number Of Layers: 2 Min Track And Gap: 0.1778mm (7mil) Min Hole Size: 0.3048mm (12mil) Min Annular Ring: ? Rigid-Flex: No
-</td>
-
-<td >
-</td>
-
-<td >
-</td>
-
-<td >Yes
-</td>
-
-<td >
-</td>
-
-<td >
-</td>
-
-<td >
-</td>
-</tr>
-</tbody>
+    <tbody>
+        <tr>
+            <td>Circuit Labs ([website](http://www.circuitlabs.co.nz/))</td>
+            <td>{{< figure src="/images/electronics-suppliers/circuit-labs-logo.jpg" width="100px" >}}</td>
+            <td>Number Of Layers: 2 Min Track And Gap: 0.152mm Min Hole Size: 0.30mm Min Annular Ring: 0.10 Rigid-Flex: No</td>
+            <td>Yes</td>
+            <td></td>
+            <td>No</td>
+            <td>Auckland, New Zealand</td>
+            <td>New Zealand</td>
+            <td>Specialise in small-quantity PCB manufacture.</td>
+        </tr>
+        <tr>
+            <td>IMP ([website](http://www.imppc.com.au/))</td>
+            <td>{{< figure src="/images/electronics-suppliers/imp-logo.gif" caption="The IMP logo."  width="100px" >}}</td>
+            <td>Number Of Layers: 2-8+ Min Track And Gap: ? Min Hole Size: ? Min Annular Ring: 0.10 Rigid-Flex: Yes (outsourced)</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>Australia</td>
+            <td>Australia, New Zealand</td>
+            <td>Manufacturer of small-runs of PCB's, usually for a prototyping or small manufacturer service. Very good customer support. Also produce/supply membranes, decals, stencils and LCD screens.</td>
+        </tr>
+        <tr>
+            <td>PCB Zone ([website](http://www.pcbzone.net/))</td>
+            <td>{{< figure src="/images/electronics-suppliers/pcb-zone-logo.jpg" caption="The PCB Zone logo."  width="100px" >}}</td>
+            <td>Number Of Layers: 2 Min Track And Gap: 0.20mm Min Hole Size: 0.30mm Min Annular Ring: ? Rigid-Flex: No</td>
+            <td>Yes (green)</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>New Zealand</td>
+            <td>New Zealand/International</td>
+            <td>Manufacturer of PCB boards that is semi-tailored to hobbyist/DIY productions, offering cheap prices for limited runs.</td>
+        </tr>
+        <tr>
+            <td>Silver Circuits ([website](http://www.custompcb.com))</td>
+            <td></td>
+            <td>Number Of Layers: 2 Min Track And Gap: 0.1778mm (7mil) Min Hole Size: 0.3048mm (12mil) Min Annular Ring: ? Rigid-Flex: No</td>
+            <td></td>
+            <td></td>
+            <td>Yes</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
 </table>
+</div>
 
 ## PCB Cart
 
@@ -674,39 +579,39 @@ EMS companies specialise in component sourcing, component placing, soldering and
 
 ## EffyDeal
 
-Location: Taiwan
-Website: [http://www.pcb-assembly.com.tw/](http://www.pcb-assembly.com.tw/)
-PCB Manufacturing: Yes
-Cable Assembly: Yes
-Price: 4/5
+* Location: Taiwan
+* Website: [http://www.pcb-assembly.com.tw/](http://www.pcb-assembly.com.tw/)
+* PCB Manufacturing: Yes
+* Cable Assembly: Yes
+* Price: 4/5
 
 Larger manufacturer which can also take care of of the PCB etching. Quick to deal with, and offer exceptional service.
 
 ## Precision Electronic Technologies
 
-Location: Australia
-Website: [http://www.precisionet.com.au/](http://www.precisionet.com.au/)
-PCB Manufacturing: Yes
+* Location: Australia
+* Website: [http://www.precisionet.com.au/](http://www.precisionet.com.au/)
+* PCB Manufacturing: Yes
 
 Used to be called Precision Circuits (pre 2012).
 
 ## Quick Circuits
 
-Location: New Zealand
-Website: [http://www.quickcircuit.co.nz/](http://www.quickcircuit.co.nz/)
+* Location: New Zealand
+* Website: [http://www.quickcircuit.co.nz/](http://www.quickcircuit.co.nz/)
 
 Helpful and have a good range of experience when it comes to PCB manufacturing. Capabilities include encapsulating/potting.
 
 ## SRX Global
 
-Location: New Zealand, Australia
-Website: [http://www.srxglobal.com/](http://www.srxglobal.com/)
+* Location: New Zealand, Australia
+* Website: [http://www.srxglobal.com/](http://www.srxglobal.com/)
 
 Gone through a series of name changes (used to be Aims, then Startronics, now SRX Global).
 
 ## Texmate
 
-Location: New Zealand Have not done encapsulation before.
+* Location: New Zealand. Have not done encapsulation before.
 
 ## Specific Components
 
@@ -732,11 +637,23 @@ Location: New Zealand Have not done encapsulation before.
 
 ## Shenzhen Shirui Battery Co.
 
-Location: Shenzhen, China Chemistries: Li-Po Support: 4/5 Price: 5/5 Range: 4/5 Details: Shenzhen Shirui Battery Co. stock many different sized single-celled Li-Po batteries ranging from 30mAh up to 1000mAh+. In my experience, they have fast response times and more than eager to help (and profecient in English). Datasheets are not included on their website (as with many Asian suppliers), but they will provide them at your request.
+* Location: Shenzhen, China
+* Chemistries: Li-Po
+* Support: 4/5
+* Price: 5/5
+* Range: 4/5
+
+Details: Shenzhen Shirui Battery Co. stock many different sized single-celled Li-Po batteries ranging from 30mAh up to 1000mAh+. In my experience, they have fast response times and more than eager to help (and profecient in English). Datasheets are not included on their website (as with many Asian suppliers), but they will provide them at your request.
 
 ## SparkFun
 
-Location: USA Chemistries: Li-Po Support: 4/5 Price: 3/5 Range: 2/5 Details: SparkFun sells a small range of Li-Po's suitable for small DIY electronics projects.
+* Location: USA
+* Chemistries: Li-Po
+* Support: 4/5
+* Price: 3/5
+* Range: 2/5
+
+Details: SparkFun sells a small range of Li-Po's suitable for small DIY electronics projects.
 
 ## OLED Screens
 
@@ -748,17 +665,17 @@ See the [OLED Screens page](/electronics/components/oled-screens).
 
 Christchurch manufacturer of fibreglass pultrusion (different from protrusion!) and hand-made products. Useful stuff when building strong and light chassis or frames!
 
-Phone: +64 3 384 9934  
-Address: 31 Wickham St., Bromley, 8062, Christchurch, New Zealand  
-Website: [https://www.gracolcomposites.co.nz/](https://www.gracolcomposites.co.nz/)
+* Phone: +64 3 384 9934  
+* Address: 31 Wickham St., Bromley, 8062, Christchurch, New Zealand  
+* Website: [https://www.gracolcomposites.co.nz/](https://www.gracolcomposites.co.nz/)
 
 ## GJH Fibreglass
 
 Palmerston North manufacturer of fibreglass products (especially moulded). Do not sell protruded fibreglass. Can purchase mat and resin.
 
-Phone: +64 6 357 0390  
-Address: 1 Settlers Line, Palmerston North, New Zealand  
-Website: None
+* Phone: +64 6 357 0390  
+* Address: 1 Settlers Line, Palmerston North, New Zealand  
+* Website: None
 
 **Prices (as of Jan 2011, GST inclusive)**
 

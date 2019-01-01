@@ -33,6 +33,7 @@ Linear capacitive sensors measure a linear position change (i.e. not rotational)
 
 The following image shows the typical dimensions of the linear encoder typically used in digital calliper design.
 
+<div class="table-wrapper">
 <table>
 	<tbody>
 		<tr>
@@ -41,6 +42,7 @@ The following image shows the typical dimensions of the linear encoder typically
 		</tr>
 	</tbody>
 </table>
+</div>
 
 ## Rotational
 
@@ -48,16 +50,19 @@ Rotational capacitive sensors can be used in similar situations to those that us
 
 Examples of a small capacitive encoder:
 
-<table >
-	<tbody >
-		<tr >
-		<td >{{< figure src="/images/2012/05/capacitive-encoder-photo-cui-amt.jpg" width="300px" caption="The CUI AMT100 series capacitive encoders with up to 2048 counts per revolution. Image from http://www.engineerlive.com/Asia-Pacific-Engineer/Time_Compression/Capacitive_encoder_offers_versatility/22119/."  >}}</td>
+<div class="table-wrapper">
+<table>
+	<tbody>
+		<tr>
+		<td>{{< figure src="/images/2012/05/capacitive-encoder-photo-cui-amt.jpg" width="300px" caption="The CUI AMT100 series capacitive encoders with up to 2048 counts per revolution. Image from http://www.engineerlive.com/Asia-Pacific-Engineer/Time_Compression/Capacitive_encoder_offers_versatility/22119/."  >}}</td>
 		</tr>
 	</tbody>
 </table>
+</div>
 
 ## External Resources
 
+<div class="table-wrapper">
 <table>
 <tbody>
 <tr>
@@ -66,3 +71,4 @@ Examples of a small capacitive encoder:
 </tr>
 </tbody>
 </table>
+</div>

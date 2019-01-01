@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
-date: 2011-09-03 02:10:49+00:00
+date: 2011-09-03
 draft: false
+tags: [ "component", "designators", "electronincs", "engineering", "symbol", "PCB", "silkscreen" ]
 title: Component Designators
 type: page
-url: /electronics/circuit-design/component-designators
 ---
 
 ## Overview
@@ -15,6 +15,7 @@ Over the years, many standards have been released that specify particular design
 
 Sorted by alphabetic order...
 
+<div class="table-wrapper">
 <table>
     <tr>
         <th>Designator</th>
@@ -23,9 +24,9 @@ Sorted by alphabetic order...
     </tr>
 <tbody >
 <tr >
-    <td >A</td>
-    <td ></td>
-    <td >Separate assembly or sub-assembly (e.g. daughter board). I do not see this designator used much in practise (and I myself have never used it, for things such as GPS modules with an LGA footprint I have always used the designator U).</td>
+    <td>A</td>
+    <td></td>
+    <td>Separate assembly or sub-assembly (e.g. daughter board). I do not see this designator used much in practise (and I myself have never used it, for things such as GPS modules with an LGA footprint I have always used the designator U).</td>
 </tr>
 <tr >
     <td >AGND</td>
@@ -81,97 +82,42 @@ Sorted by alphabetic order...
 <td >FID
 </td>
 
-<td >
-
-
-{{< figure src="/images/2011/09/fiducial-schematic-symbol.png" caption="The schematic symbol for a fiducial."  >}}
-
-
-
-</td>
-
-<td >Fiducial.
-</td>
+<td>{{< figure src="/images/2011/09/fiducial-schematic-symbol.png" caption="The schematic symbol for a fiducial."  >}}</td>
+<td>Fiducial.</td>
 </tr>
 <tr >
-
-<td >GND
-</td>
-
-<td >
-
-
-{{< figure src="/images/2011/09/general-common-ground-schematic-symbol.png" caption="The schematic symbol for a general or common ground."  >}}
-
-
-
-</td>
-
-<td >Common/General Ground (also see AGND and DGND).
-</td>
+<td >GND</td>
+<td >{{< figure src="/images/2011/09/general-common-ground-schematic-symbol.png" caption="The schematic symbol for a general or common ground."  >}}</td>
+<td>Common/General Ground (also see AGND and DGND).</td>
+</tr>
+<tr>
+<td>J</td>
+<td></td>
+<td>A jack/socket/female connector. Also defined in IEEE 315 as the least moving part of a connector set (which also includes a plug, P).</td>
+</tr>
+<tr>
+<td >JP</td>
+<td ></td>
+<td >Jumper or link (L is for inductor, not link). This maybe a simple piece of wire, a physical jumper component, or perhaps a \(0\Omega\) resistor).</td>
 </tr>
 <tr >
-
-<td >J
-</td>
-
-<td >
-</td>
-
-<td >A jack/socket/female connector. Also defined in IEEE 315 as the least moving part of a connector set (which also includes a plug, P).
-</td>
+<td >L</td>
+<td ></td>
+<td >Inductor</td>
 </tr>
 <tr >
-
-<td >JP
-</td>
-
-<td >
-</td>
-
-<td >Jumper or link (L is for inductor, not link). This maybe a simple piece of wire, a physical jumper component, or perhaps a \(0\Omega\) resistor).
-</td>
+<td >M</td>
+<td ></td>
+<td >Motor</td>
 </tr>
 <tr >
-
-<td >L
-</td>
-
-<td >
-</td>
-
-<td >Inductor
-</td>
+<td >MP</td>
+<td ></td>
+<td >A mechanical part. This is an umbrella term for many different things, such as screws, standoffs, brackets, e.t.c.</td>
 </tr>
 <tr >
-
-<td >M
-</td>
-
-<td >
-</td>
-
-<td >Motor
-</td>
-</tr>
-<tr >
-
-<td >MP
-</td>
-
-<td >
-</td>
-
-<td >A mechanical part. This is an umbrella term for many different things, such as screws, standoffs, brackets, e.t.c.
-</td>
-</tr>
-<tr >
-
-<td >P
-</td>
-
-<td >
-</td>
+<td >P</td>
+<td ></td>
 
 <td >A plug/male connector. Also defined in IEEE 315 as the most moving part of a connector set (which also includes a jack, J).
 </td>
@@ -192,27 +138,14 @@ Sorted by alphabetic order...
 <td >Q
 </td>
 
-<td >
-
-
+<td>
 {{< figure src="/images/2011/09/n-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for an N-channel MOSFET."  >}}
-
-
-
-
 {{< figure src="/images/2011/09/p-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for a P-channel MOSFET."  >}}
-
-
-
 </td>
-
-<td >Transistor (BJT's, MOSFETs, JFET's, e.t.c). Sometimes this is used for an integrated circuit, but I prefer using 'U'.
-</td>
+<td >Transistor (BJT's, MOSFETs, JFET's, e.t.c). Sometimes this is used for an integrated circuit, but I prefer using 'U'.</td>
 </tr>
 <tr >
-
-<td >R
-</td>
+<td >R</td>
 
 <td >
 </td>
@@ -320,53 +253,33 @@ Sorted by alphabetic order...
 <td >Wire/cable.
 </td>
 </tr>
-<tr >
-
-<td >XC
-</td>
-
-<td >
-
-
+<tr>
+<td>XC</td>
+<td>
 {{< figure src="/images/2011/09/crystal-schematic-symbol.png" caption="The schematic symbol for a crystal."  >}}
-
-
-
 </td>
-
-<td >Timing crystals. XTAL or Y are also used.
-</td>
+<td>Timing crystals. XTAL or Y are also used.</td>
 </tr>
-<tr >
-
-<td >XF
-</td>
-
-<td >
-</td>
-
-<td >Fuse holder. F is a fuse.
-</td>
+<tr>
+    <td>XF</td>
+    <td></td>
+    <td>Fuse holder. F is a fuse.</td>
 </tr>
-<tr >
-
-<td >Y
-</td>
-
-<td >
-</td>
-
-<td > Used for crystals or oscillators. XC or XTAL are also used.
-</td>
+<tr>
+    <td>Y</td>
+    <td></td>
+    <td> Used for crystals or oscillators. XC or XTAL are also used.</td>
 </tr>
 </tbody>
 </table>
-
+</div>
 
 ## Regex
 
-The regex pattern to match any valid component designator, which is one or more capital letters followed by one or more numerals, is
+The regex pattern to match any valid component designator, which is one or more capital letters followed by one or more numerals, is:
 
-    ^[A-Z][A-Z]*[0-9][0-9]*$
+```
+^[A-Z][A-Z]*[0-9][0-9]*$
+```
 
-The above pattern also contains the start and end-of-line anchors ^ and $, to enforce that there is no text before or after the designator. These can be removed if desired. More on using regex with component designators can be found on the [Altium Scripting page](/electronics/general/altium/altium-scripting-and-using-the-api).
+The above pattern also contains the start and end-of-line anchors `^` and `$`, to enforce that there is no text before or after the designator. These can be removed if desired. More on using regex with component designators can be found on the [Altium Scripting page](/electronics/general/altium/altium-scripting-and-using-the-api).
