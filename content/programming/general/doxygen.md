@@ -1,10 +1,11 @@
-s---
-author: gbmhunter
-date: 2013-04-30 23:17:40+00:00
+---
+author: "gbmhunter"
+date: 2013-04-30
+description: "Popular keywords, commenting styles, Doxywizard are more info on the Doxygen documentation system for C/C++ code."
 draft: false
+tags: [ "Doxygen", "code", "commenting", "C", "C++", "documentation", "API", "Doxywizard" ]
 title: Doxygen
 type: page
-url: /programming/general/doxygen
 ---
 
 ## Overview
@@ -13,7 +14,7 @@ Doxygen is an open-source program for **documenting code**. It is commonly used 
 
 {{< figure src="/images/2013/05/doxygen-logo.png"   >}}
 
-It is essentially a program which looks through your source code and extracts information about functions, variables, enumerations, defines and almost everything else, including special comments and identifies that you place in the code, and compiles it into a nice looking html, pdf, or latex document. With the right commands, you can create a customised main page, linking between similar functions, automatic bug/todo lists, insert latex equations and more!
+It is essentially a program which looks through your source code and extracts information about functions, variables, enumerations, defines and almost everything else, including special comments and identifies that you place in the code, and compiles it into a nice looking html, pdf, or latex document. With the right commands, you can create a customized main page, linking between similar functions, automatic bug/todo lists, insert latex equations and more!
 
 {{< figure src="/images/2013/05/doxygen-html-documentation-screenshot.png" width="1919px" caption="Screenshot of the html documentation that Doxygen generates with properly commented code."  >}}
 
@@ -28,77 +29,42 @@ A quick reference of the most popular Doxygen keywords for documenting source co
             <th>Description</th>
         </tr>
     </thead>
-<tbody >
-<tr >
-<td >@brief
-</td>
-
-<td >Gives a brief description of the object (variable/function/enum/struc/define) that will appear beside the name of the object in the index at the top of the pages that Doxygen produces.
-</td>
+<tbody>
+<tr>
+<td>@brief</td>
+<td>Gives a brief description of the object (variable/function/enum/struc/define) that will appear beside the name of the object in the index at the top of the pages that Doxygen produces.</td>
 </tr>
-<tr >
-
-<td >@details
-</td>
-
-<td >A more detailed description of the object that will appear below the index at the top of the page.
-</td>
+<tr>
+<td>@details</td>
+<td>A more detailed description of the object that will appear below the index at the top of the page.</td>
 </tr>
-<tr >
-
-<td >@param
-</td>
-
-<td >Used to describing parameters (arguments) into a function.
-</td>
+<tr>
+<td>@param</td>
+<td>Used to describing parameters (arguments) into a function.</td>
 </tr>
-<tr >
-
-<td >@returns
-</td>
-
-<td >Used to describe the return value from a function (if any). Has the same functionality as @return.
-</td>
+<tr>
+<td>@returns</td>
+<td>Used to describe the return value from a function (if any). Has the same functionality as @return.</td>
 </tr>
-<tr >
-
-<td >@sa
-</td>
-
-<td >Used to refer to other objects (acronym for 'see also').
-</td>
+<tr>
+<td>@sa</td>
+<td>Used to refer to other objects (acronym for 'see also').</td>
 </tr>
-<tr >
-
-<td >@public
-</td>
-
-<td >Defines the object as public. Useful in C programming since the visibility is not usually implicit.
-</td>
+<tr>
+<td>@public</td>
+<td>Defines the object as public. Useful in C programming since the visibility is not usually implicit.</td>
 </tr>
-<tr >
-
-<td >@private
-</td>
-
-<td >Define the object as private. Useful in C programming since the visibility is not usually implicit.
-</td>
+<tr>
+<td>@private</td>
+<td>Define the object as private. Useful in C programming since the visibility is not usually implicit.</td>
 </tr>
-<tr >
-
-<td >@todo
-</td>
-
-<td >I add it anywhere where I want to come back a change something at a later date. Doxygen automatically finds these notes and combines them into a "To Do" page in the documentation!
-</td>
+<tr>
+<td>@todo</td>
+<td>I add it anywhere where I want to come back a change something at a later date. Doxygen automatically finds these notes and combines them into a "To Do" page in the documentation!</td>
 </tr>
-<tr >
-
-<td >@debug
-</td>
-
-<td >I add this wherever I have added code which is specifically for debugging.
-</td>
+<tr>
+<td>@debug</td>
+<td>I add this wherever I have added code which is specifically for debugging.</td>
 </tr>
 </tbody>
 </table>
@@ -147,7 +113,7 @@ I normally use the following file headers when documenting with Doxygen.
 
 ## The Main Page
 
-The first time you use Doxygen, you open up your newly created documentation and discover that the first page (aka the main page or landing page) is blank. This is because Doxygen designed it this way, and to put stuff on it, you have to specifically tell Doxygen to do so. This can be done with the @mainpage command. The following example adds a main page with two sections.
+The first time you use Doxygen, you open up your newly created documentation and discover that the first page (aka the main page or landing page) is blank. This is because Doxygen designed it this way, and to put stuff on it, you have to specifically tell Doxygen to do so. This can be done with the `@mainpage` command. The following example adds a main page with two sections.
 
 ```    
 /*!
@@ -187,13 +153,13 @@ Doxygen supports a number of "escapes", ways of signalling that a code comment s
 ///
 
 //!
-//! And another Docygen comment block!
+//! And another Doxygen comment block!
 //!
 ```
 
 All of the above comment blocks are treated identically by Doxygen.
 
-There is also provision for putting documentation after objects such as variables and function parameters. This can be done by adding a < to the end of the Doxygen escape sequence, e.g.:
+There is also provision for putting documentation after objects such as variables and function parameters. This can be done by adding a `<` to the end of the Doxygen escape sequence, e.g.:
 
 ```c    
 int myVar; /*!< This is my variable! */
@@ -224,11 +190,9 @@ void FuncInTestGroup()
 //! @}
 ```
 
-Groups are good for grouping bunches of related variables together.
-
 ## Doxywizard Settings
 
-Doxywizard is a Windows GUI for using Doxygen. Desired Extraction Mode: Documented Entities Only Optimise For: C or PHP output Output format: HTML (with navigation panel, search function) Setting EXTRACT_PRIVATE = 1 and EXTRACT_STATIC = 1 results in doxygen including all commented objects into the documentation, not just the ones that it deems public or accessible from other files (static). I find this to be much more useful than to exclude them, as without these objects present in the documentation it can leave the reader wondering how on earth your code works (C doesn't have the nice public interface structure that object orientated programming has). The following picture shows the two options selected when using the Doxygen GUI (Doxywizard).
+Doxywizard is a Windows GUI for using Doxygen. Setting `EXTRACT_PRIVATE = 1` and `EXTRACT_STATIC = 1` results in doxygen including all commented objects into the documentation, not just the ones that it deems public or accessible from other files (static). I find this to be much more useful than to exclude them, as without these objects present in the documentation it can leave the reader wondering how on earth your code works (C doesn't have the nice public interface structure that object orientated programming has). The following picture shows the two options selected when using the Doxygen GUI (Doxywizard).
 
 {{< figure src="/images/2013/05/doxygen-gui-extract-private-and-static-selected.png" width="829px" caption="Selecting 'EXTRACT_PRIVATE' and 'EXTRACT STATIC' in the Doxygen GUI."  >}}
 

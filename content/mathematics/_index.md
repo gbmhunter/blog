@@ -1,8 +1,8 @@
 ---
-author: gbmhunter
-date: 2013-09-04 07:51:09+00:00
+author: "gbmhunter"
+date: 2013-09-04
 draft: false
-title: Mathematics
-type: page
-url: /mathematics
+title: "Mathematics"
+tags: [ "mathematics", "maths", "curve fitting", "geometry", "linear algebra", "linear programming", "perlin noise", "statistics" ]
+type: "page"
 ---
