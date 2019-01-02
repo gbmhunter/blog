@@ -1,15 +1,17 @@
 ---
 author: gbmhunter
-date: 2017-01-08 18:50:25+00:00
+date: 2017-01-08
+description: "A cheat sheet for the CMake build tool."
 draft: false
-title: cmake Cheat Sheet
+lastmod: 2019-01-01
+tags: [ "CMake", "cheat", "sheet", "C", "C++", "build system", "code", "compile", install" ]
+title: "cmake Cheat Sheet"
 type: page
-url: /programming/build-systems-and-package-managers/cmake/cmake-cheat-sheet
 ---
 
 ## cmake Cheat Sheet
 
-Below is a **cheat sheet for the most common statements** you will use in a CMakeLists.txt file!
+Below is a **cheat sheet for the most common statements** you will use in a `CMakeLists.txt` file!
 
 **By no means is this a complete reference guide**, even for the mentioned functions (commonly they are just depicted in their most used form). For full documentation, see [https://cmake.org/documentation/](https://cmake.org/documentation/).
 
