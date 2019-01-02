@@ -242,6 +242,34 @@ blockquote p {
 }
 
 /* ========================================================================= */
+/* PAGINATION                                                                */
+/* ========================================================================= */
+
+/* Pagination HTML is created with the Hugo template: {{ template "_internal/pagination.html" . }} */
+
+ul.pagination {
+
+    width: 100%;
+    padding: 0;
+
+    /* Add some vertical margin */
+    margin: 1em 0;
+
+    /* Display page numbers and arrows in row, not column */
+    display: flex;
+    justify-content: center;
+
+    /* Hide the bullets */
+    list-style-type: none;
+}
+
+ul.pagination li {
+    /* Add space between each number and arrow */
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+/* ========================================================================= */
 /* POST STYLING                                                              */
 /* ========================================================================= */
 
@@ -582,24 +610,6 @@ figure img {
     }
 }
 
-.menu li.dropdown > a::after {
-    /* content: "▶";
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    text-decoration: none !important;
-    font-weight: 400;
-    margin-left: 8px;
-    font-size: 10px; */
-}
-
-.menu li a::before {
-    /* content: "\e179";
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: 400;
-    margin-right: 8px; */
-}
-
 .menu li a:hover {
     background: grey;
     text-decoration: underline;
@@ -613,7 +623,6 @@ figure img {
 .submenu .menu-text {
     color: rgb(85, 85, 85);
 }
-
 
 .submenu {
     margin: 0px;
@@ -655,12 +664,3 @@ figure img {
     left: 200px;
     top: 0px;
 }
-
-/* .submenu li.dropdown > a:after {
-    content: "▶";
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: 400;
-    margin-left: 8px;
-    font-size: 10px;
-} */

@@ -55,7 +55,7 @@ tags:
 
 * New [Visual Studio Code page](/programming/integrated-development-environments-ides/visual-studio-code) under Programming->Integrated Development Environments (IDEs).
 	
-	{{< figure src="/images/2017/11/visual-studio-code-icon-large.png" width="203px" caption="The icon for Microsoft's Visual Studio Code."  >}}
+	{{< img src="visual-studio-code-icon-large.png" width="200px" caption="The icon for Microsoft's Visual Studio Code." >}}
 
 * Fixed many of the broken links (approx. 60) on this blog, via the help of the great Wordpress plugin [Broken Link Checker](https://en-ca.wordpress.org/plugins/broken-link-checker/).  
 

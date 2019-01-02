@@ -1,10 +1,12 @@
 ---
-author: gbmhunter
-date: 2011-09-22 05:57:48+00:00
+author: "gbmhunter"
+date: 2011-09-22
+description: "A step-by-step tutorial on building a function pointer based state machine."
 draft: false
-title: A Function Pointer Based State Machine
-type: page
-url: /programming/general/control-methodology/a-function-pointer-based-state-machine
+lastmod: 2019-01-01
+tags: [ "function pointer", "state machine", "C", "C++", "enumeration", "enum", "states", "events", "embedded", "logic" ]
+title: "A Function Pointer Based State Machine"
+type: "page"
 ---
 
 ## Overview
@@ -13,7 +15,7 @@ This type of state machine involves:
 
 * An enumeration of all possible states
 * An enumeration of all possible events
-* A state transition matrix (array) where each row contains a state, and event, and the next state to tramsition to
+* A state transition matrix (array) where each row contains a state, and event, and the next state to transition to
 * Another array which maps each state with a state function pointer that gets called.
 * A simple main loop that does not need to be edited (all the control is changed by modifying the state transition matrix)
 
@@ -40,7 +42,7 @@ The full, working example can be found at [https://github.com/mbedded-ninja/Func
 
 ## The State And Event Enumerations
 
-These enumerations hold values for every possible state and every possible event that your program will require. I have prefixed all states with ST_ and events with EV_ for readability. Sometimes, you could just use #define commands for every state and manually associate them with a number. But since the number doesn't actually matter, why not use an enumeration? Enumerations also allow you to insert new states/events anywhere on the list, allowing you to keep a visual clue of the flow between states/events (one after the other), which would get messy if you used the #define command.
+These enumerations hold values for every possible state and every possible event that your program will require. I have prefixed all states with `ST_` and events with `EV_` for readability. Sometimes, you could just use `#define` commands for every state and manually associate them with a number. But since the number doesn't actually matter, why not use an enumeration? Enumerations also allow you to insert new states/events anywhere on the list, allowing you to keep a visual clue of the flow between states/events (one after the other), which would get messy if you used the `#define` command.
 
 ```c
 typedef enum {
@@ -94,7 +96,7 @@ static stateTransMatrixRow_t stateTransMatrix[] = {
 ## The State Function Array
 
 
-The state function array holds a function pointer to the function which gets called for each state. In this example, we also store a printable state name for debugging purposes. Each row in the state function array is defined by a struct:
+The state function array holds a function pointer to the function which gets called for each state. In this example, we also store a printable state name for debugging purposes. Each row in the state function array is defined by a `struct`:
 
 ```c    
 typedef struct {
@@ -103,7 +105,7 @@ typedef struct {
 } stateFunctionRow_t;
 ```
 
-And then the actual array is initialised as follows:
+And then the actual array is initialized as follows:
 
 ```c    
 /// @brief  Maps a state to it's state transition function, which should be called
@@ -118,7 +120,7 @@ static stateFunctionRow_t stateFunctionA[] = {
 };
 ```
 
-**Note that this array has to stay in sync with the state_t enumeration. That is, there must be the same number of rows in stateFunctionA as there are states in state_t, and they must be in the same order.**
+**Note that this array has to stay in sync with the `state_t` enumeration. That is, there must be the same number of rows in `stateFunctionA` as there are states in `state_t`, and they must be in the same order.**
 
 This could be mitigated by saving the state enumeration in the array also, and iterating over each element until you have found the state you are looking for. However, this will incur a performance penalty (which may be insignificant).
 
@@ -148,7 +150,7 @@ void Led_Idle() {
 
 ## The State Machine Internal Variables
 
-This simple state machine needs to remember only one thing, the current state. As I am writing this code in a "C with classes" style, all the state machine's variables are declared in the stateMachine_t struct, as shown below:
+This simple state machine needs to remember only one thing, the current state. As I am writing this code in a "C with classes" style, all the state machine's variables are declared in the `stateMachine_t` struct, as shown below:
 
 ```c    
 typedef struct {
@@ -156,13 +158,13 @@ typedef struct {
 } stateMachine_t;
 ```
 
-A pointer to this struct gets passed in as the first variable to all the state machine functions, just like the this object in an object-orientated world.
+A pointer to this struct gets passed in as the first variable to all the state machine functions, just like the `this` object in an object-orientated world.
 
 ## The Get Event Function
 
-The function provides the state machine with an event to act upon (incl. EV_NONE, if no real event occurred). In an embedded environment, this would do things like read GPIO pins to see if a button had been pushed, check a UART flag to see if a byte has been received, e.t.c.
+The function provides the state machine with an event to act upon (incl. `EV_NONE`, if no real event occurred). In an embedded environment, this would do things like read GPIO pins to see if a button had been pushed, check a UART flag to see if a byte has been received, e.t.c.
 
-In our example world, we will just check the flag buttonPushed, which simulates a button press.
+In our example world, we will just check the flag `buttonPushed`, which simulates a button press.
 
 ```c    
 event_t StateMachine_GetEvent() {
@@ -178,7 +180,7 @@ event_t StateMachine_GetEvent() {
 
 ## The State Machine RunIteration() Function
 
-The RunIteration() function for this state machine is pretty generic and simple, and you don't usually have to modify it. All of the logic is controlled by the state transition matrix above. Essentially, the function gets an event (lets call it the current event), and then runs through the state transition matrix row by row to find a pre-defined state and event pair that match the current state and event. If so, it transitions to the specified next state, and then calls the state function pointed to by the function pointer.
+The `RunIteration()` function for this state machine is pretty generic and simple, and you don't usually have to modify it. All of the logic is controlled by the state transition matrix above. Essentially, the function gets an event (lets call it the current event), and then runs through the state transition matrix row by row to find a pre-defined state and event pair that match the current state and event. If so, it transitions to the specified next state, and then calls the state function pointed to by the function pointer.
 
 ```c    
 void StateMachine_RunIteration(stateMachine_t *stateMachine) {

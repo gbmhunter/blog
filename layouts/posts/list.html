@@ -1,4 +1,68 @@
+<!-- TEST -->
 {{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
 {{ define "main" }}
-    {{ partial "main_content.html" . }}
+
+{{ $section := .Site.GetPage "section" .Section }}
+<article>
+<header>
+    {{ partial "breadcrumbs.html" . }}
+    <p>{{with .CurrentSection.Title }}{{. | upper }}{{end}}</p>
+    <h1>
+        <a href="{{ .Permalink }}" class="post-title">{{- .Title -}}</a>
+    </h1>
+
+    <div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Date Published:</td>
+                    <td>
+                        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="datePublished">
+                            <i>{{ .Date.Format "January 2, 2006" }}</i>
+                        </time>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Modified:</td>
+                    <td>
+                        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="dateModified">
+                            <i>{{ .Lastmod.Format "January 2, 2006" }}</i>
+                        </time>
+                    </td>
+                </tr>
+            </tbody>
+        </table> 
+    </div>
+    
+    {{ if (or (eq (.Param "show_reading_time") true) (eq $section.Params.show_reading_time true) )}}
+    <span> - {{ .ReadingTime}} minutes read</span>
+    <span> - {{ .WordCount}} words</span>
+    {{ end }}
+</header>
+
+<div class="content">
+    {{ .TableOfContents }}     
+    
+    {{ $childpages := union .Sections .Pages }}
+    {{ if $childpages }}
+    <h2>Child Pages</h2>
+    {{ end }}
+    {{ range $childpages.ByDate }}
+        <li>
+            <a href="{{.Permalink}}">{{.Title}}</a>
+        </li>
+    {{ end }}
+
+    {{- .Content -}}
+</div>
+
+<hr />
+
+{{- partial "related.html" . -}}
+{{- partial "tags.html" . -}}
+<div class="disqus-divider"></div>
+{{ template "_internal/disqus.html" . }}    
+
+</article>
+
 {{ end }}

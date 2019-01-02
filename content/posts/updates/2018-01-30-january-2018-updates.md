@@ -25,11 +25,11 @@ tags:
 
 * New [apt page](/programming/operating-systems/linux/programs/apt) under Programming->Operating Systems->Linux->Programs.  
 
-	{{< figure src="/images/2018/02/sudo-apt-install-icon.png"   >}}
+	{{< figure src="/images/2018/02/sudo-apt-install-icon.png" width="400px" >}}
 
 * New [Anaconda page](/programming/languages/python/anaconda) under Programming->Languages->Python.
 
-	{{< figure src="/images/2018/02/anaconda-python-logo.png" width="446px" caption="The logo for Anaconda (Python distribution/environment)."  >}}
+	{{< figure src="/images/2018/02/anaconda-python-logo.png" width="400px" caption="The logo for Anaconda (Python distribution/environment)."  >}}
 
 * Updated the [C++ Exceptions page](/programming/languages/c-plus-plus/exceptions) with information on the noexcept keyword introduced in C++11.
 

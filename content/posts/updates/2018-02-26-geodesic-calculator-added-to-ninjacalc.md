@@ -28,7 +28,7 @@ tags:
 
 Given two points in latitude/longitude form (both degrees and radians supported), the calculator can give you the great circle (shortest) distance between the two points, and the initial/final bearings. This calculator can also find an intermediate coordinate/point between the two coordinates, given a fractional amount (such as 0.5). All of these properties are calculated using the [Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula).
 
-{{< figure src="/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png" width="450px" caption="A screenshot of the 'Two Coordinate Geodesics' calculator in NinjaCalc."  >}}
+{{< figure src="/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png" width="450px" caption="A screenshot of the 'Two Coordinate Geodesics' calculator in NinjaCalc." width="400px" >}}
 
 All these properties are shown on a interactive model of the earth in 3D (the sphere can be rotated).
 

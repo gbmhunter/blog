@@ -1,19 +1,22 @@
 {{ define "main" }}
-    <div class="homepage-content">
+<div class="content">
+    <div>
         <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
         <!-- This may be empty -->
         {{.Content}}
     </div>
     <div>
     <!-- Note that .Pages is the same as .Site.RegularPages on the homepage template. -->
-    <!-- Get the 10 most recent posts, from any section -->
-    {{ range first 10 ( sort (where .Site.RegularPages "Section" "posts") "Date" "desc" ) }}
+    <!-- Get the most recent posts, from any section, and then paginate them -->
+    {{ range (.Paginate (first 20 ( sort (where .Site.RegularPages "Section" "posts") "Date" "desc" )) 5 ).Pages }}
         <!-- {{ .Render "summary"}} -->
-        <a href="{{ .URL }}" class="post-title"><h1 class="f1">{{ .Title }}</h1></a>
-        <div class="homepage-post-content nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray">
+        <a href="{{ .URL }}" class="post-title"><h1>{{ .Title }}</h1></a>
+        <div>
             {{ .Content }}
         </div>
+        <hr>
     {{ end }}
+    {{ template "_internal/pagination.html" . }}
     </div>
-<link rel="stylesheet" href="/css/style.css"/>
+</div>
 {{ end }}
