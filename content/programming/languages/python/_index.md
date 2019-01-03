@@ -1,10 +1,11 @@
 ---
-author: gbmhunter
-date: 2013-06-18 00:06:43+00:00
+author: "gbmhunter"
+date: 2013-06-18
 draft: false
-title: Python
-type: page
-url: /programming/languages/python
+lastmod: 2019-01-01
+tags: [ "Python", "programming", "language", "software" ]
+title: "Python"
+type: "page"
 ---
 
 ## Overview
