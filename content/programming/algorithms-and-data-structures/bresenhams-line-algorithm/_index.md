@@ -1,9 +1,11 @@
 ---
 author: "gbmhunter"
-date: 2017-07-05
-draft: false
-lastmod: 2017-07-05
+date: 2019-01-03
+draft: true
+lastmod: 2019-01-03
 tags: [ "algorithm", "code", "software", "programming", "data structure" ]
-title: "Algorithms And Data Structures"
+title: "Bresenham's Line Algorithm"
 type: "page"
 ---
+
+Bre

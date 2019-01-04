@@ -67,7 +67,56 @@ def add(num1: int, num2: int) -> int:
     """
 
     return num1 + num2
-
 ```
 
 `Args` can be replaced with `Parameters`.
+
+### reStructured Text Style
+
+The reStructured text style is used by [Sphinx](http://www.sphinx-doc.org/en/master/) to generate documentation (however Sphinx can also handle Google-style docstrings with the pre-packaged [Napoleon extension](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/)). It is the default docstrings style when using the JetBrains PyCharm IDE (although the IDE supports the other common styles also).
+
+```python
+def add(num1: int, num2: int) -> int:
+    """
+    Adds two numbers together.
+
+    :param num1: The first operand.
+    :type num1: int
+    :param num2: The second operand.
+    :type num2: int
+
+    :returns: The sum of the two operands.
+    :rtype: int
+    """
+
+    return num1 + num2
+```
+
+Notice how the type for each parameter has to be specified on it's own line with the `:type` and `rtype` identifiers, which is rather clunky!
+
+### NumPy/SciPy Style
+
+```python
+def add(num1: int, num2: int) -> int:
+    """
+    Adds two numbers together.
+
+    Parameters
+    ----------
+    num1 : int
+        The first operand.
+    num2 : int
+        The second operand.
+
+    Returns
+    -------
+    int
+        The sum of the two operands.
+    """
+
+    return num1 + num2
+```
+
+## Docutils
+
+[Docutils](http://docutils.sourceforge.net/) is a tool you can use to generate documentation from Python docstrings.
