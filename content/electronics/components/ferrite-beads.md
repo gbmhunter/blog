@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
-date: 2013-09-19 04:23:00+00:00
+author: "gbmhunter"
+date: 2013-09-19
 draft: false
-title: Ferrite Beads
-type: page
-url: /electronics/components/ferrite-beads
+tags: [ "ferrite bead", "component", "schematic", "inductor", "impedance", "PCB" ]
+title: "Ferrite Beads"
+type: "page"
 ---
 
 ## Overview

@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-04-28 09:33:15+00:00
+date: 2015-04-28
 draft: false
 title: PCB-Related API
 type: page
-url: /electronics/general/altium/altium-scripting-and-using-the-api/pcb-related-api
 ---
 
 ## Overview
@@ -56,7 +55,7 @@ Board.AddPCBObject(arcN_2);
 
 ## User Input
 
-The following functions belonging to the IPCB_Board object request input from the user:
+The following functions belonging to the `IPCB_Board` object request input from the user:
     
 ```delphi
 GetObjectAtCursor
@@ -78,7 +77,7 @@ end;
 
 ## Get The User To Select Objects
 
-To prompt the user to select objects, use the function GetObjectAtCursor(); on a PCB board (IPCB_Board) object. It's syntax is:
+To prompt the user to select objects, use the function `GetObjectAtCursor();` on a PCB board (`IPCB_Board`) object. It's syntax is:
     
 ```delphi
 IPCB_Primative GetObjectAtCursor(
@@ -87,9 +86,9 @@ IPCB_Primative GetObjectAtCursor(
     TPCBString statusBarText);
 ```
 
-where objectSet is a list of all object types that the user can select (think of it as a mask), layerSet is a list of all layers that objects can be selected on (yet again, a mask), and statusBarText is the text you want to display in the status bar while the user selects the objects.
+where `objectSet` is a list of all object types that the user can select (think of it as a mask), `layerSet` is a list of all layers that objects can be selected on (yet again, a mask), and `statusBarText` is the text you want to display in the status bar while the user selects the objects.
 
-The TObjectSet variable is normally made by calling the function MkSet(), which makes a set from the passed in object(s) (this only required when scripting in Delphi, as Delphi doesn't natively support sets). The objects you can pass into MkSet() are part of the TObjectID enumeration and include:
+The `TObjectSet` variable is normally made by calling the function `MkSet()`, which makes a set from the passed in object(s) (this only required when scripting in Delphi, as Delphi doesn't natively support sets). The objects you can pass into `MkSet()` are part of the TObjectID enumeration and include:
     
 ```delphi
 eNoObject
@@ -143,7 +142,7 @@ end;
 
 ## Check That A PCB Board Is Selected
 
-You commonly need to check that when a script is run, the active window is the right thing for the script to act on. The following code shows how to check if a PCB board file is loaded (.Pcb), and it feature at the start of lots of the other code examples. If a PCB board is not currently selected, the script quietly exits.
+You commonly need to check that when a script is run, the active window is the right thing for the script to act on. The following code shows how to check if a PCB board file is loaded (`.Pcb`), and it feature at the start of lots of the other code examples. If a PCB board is not currently selected, the script quietly exits.
     
 ```delphi
 // obtains the PCB server and the PCB document
@@ -153,11 +152,11 @@ if (board = nil) then exit;
 
 ## Creating PCB Regions (The Contour Method)
 
-You can create PCB regions (which are similar to polygons, but have slightly different properties/behaviours) using contours.
+You can create PCB regions (which are similar to polygons, but have slightly different properties/behaviors) using contours.
 
 ## Define The Objects
 
-Define the following objects after the var  keyword and before the begin  keyword.
+Define the following objects after the `var` keyword and before the `begin` keyword.
     
 ```delphi
 board : IPCB_Board;
@@ -180,7 +179,7 @@ PCBServer.PCBContourMaker.AddArcToContour(
 );
 ```
 
-Make Aclockwise  be true if going clockwise, false if going clockwise.
+Make `Aclockwise` be `true` if going clockwise, `false` if going clockwise.
 
 ## The Generate A Straight Section Of A Region
 
@@ -203,7 +202,7 @@ Board.AddPCBObject(region);
 
 ## Creating PCB Polygons (The PolySegment Method)
 
-You can create polygons on a PCB by using the IPCB_Polygon and TPolySegment classes.
+You can create polygons on a PCB by using the `IPCB_Polygon` and `TPolySegment` classes.
 
 Here is an example that will create a rather large, square polygon on the top layer of your PCB.
     
@@ -272,7 +271,7 @@ end;
 
 ## To Update The PCB Window
 
-Use the Client object to update the PCB window. This will update the PCB to show any changes that have been made to it by preceeding code (it is not updated automatically). It is useful to call this at the end of a script to update the PCB and show the user the changes that have been made. If you don't call this, the the user will only see the changes once this method is called by another process.
+Use the Client object to update the PCB window. This will update the PCB to show any changes that have been made to it by preceding code (it is not updated automatically). It is useful to call this at the end of a script to update the PCB and show the user the changes that have been made. If you don't call this, the the user will only see the changes once this method is called by another process.
     
 ```delphi
 Call Client.SendMessage("PCB:Zoom", "Action=Redraw" , 255, Client.CurrentView)
@@ -306,7 +305,7 @@ You can get the following error when trying to save if you haven't called `PCBSe
 
 You can open the "Edit Component Links" window by running the following commands (VBscript):
     
-```delphi
+```vb
 ResetParameters
 Call AddStringParameter("ObjectKind", "Project")
 Call AddStringParameter("Action", "ComponentLinking")
@@ -319,7 +318,7 @@ Note that this does not update the component links automatically, but just opens
 
 You can change the zoom on a PCB by using the following commands (VBscipt):
     
-```delphi
+```vb
 ResetParameters
 Call AddStringParameter("ZoomLevel", "2.0")
 Call RunProcess("PCB:Zoom")
@@ -350,4 +349,4 @@ PCB Components have a child object called Name, which refers the the designator.
 
 ## The Name Object
 
-The confusing thing is, while the parameter Width refers to it's width, the parameter Size refers to the designator height.
+The confusing thing is, while the parameter Width refers to its width, the parameter Size refers to the designator height.

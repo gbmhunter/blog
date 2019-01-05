@@ -1,57 +1,41 @@
 ---
-author: gbmhunter
-date: 2011-09-12 05:52:05+00:00
+author: "gbmhunter"
+date: 2011-09-12
+description: "A tutorial on the UART communication protocol, including types, baud rates, flow control, error checking, RS-232 and more."
 draft: false
-title: UART Protocol
-type: page
-url: /electronics/communication-protocols/uart-protocol
+lastmod: 2019-01-04
+tags: [ "UART", "communication protocol", "USART", "microcontroller", "serial", "8n1", "universal asynchronous", "receiver", "transmitter", "RX", "TX" ]
+title: "UART Protocol"
+type: "page"
 ---
 
 ## Overview
 
 UART (_Universal Asynchronous Receiver/Transmitter_) is a lower-voltage, microcontroller friendly equivalent of the RS-232 digital data transmission protocol with origins dating back to the 1960's. It was designed as a communication protocol to talk between _DTE_ (data terminal equipment) and _DCE_ (data communication equipment). It is universal in the sense the timing, voltages, flow control and error checking can be configured.
 
-<table >
-<tbody >
-<tr >
-<td >Drive Type
-</td>
-<td >Single-ended
-</td>
-</tr>
-<tr >
-<td >Num. Wires (excl. GND)
-</td>
-<td >
-2 (TX/RX) or 
- 4 (TX/RX and RTS/CTS)
-</td>
-</tr>
-<tr >
-
-<td >Duplexity
-</td>
-
-<td >Full
-</td>
-</tr>
-<tr >
-
-<td >Connection Topology
-</td>
-
-<td >Point-to-point
-</td>
-</tr>
-<tr >
-
-<td >OSI Layers
-</td>
-
-<td >Layers 1 (physical) and 2 (data link)
-</td>
-</tr>
-</tbody>
+<table>
+    <tbody>
+        <tr>
+            <td>Drive Type</td>
+            <td>Single-ended</td>
+        </tr>
+        <tr>
+            <td>Num. Wires (excl. GND)</td>
+            <td>2 (TX/RX) or 4 (TX/RX and RTS/CTS)</td>
+        </tr>
+        <tr>
+            <td>Duplexity</td>
+            <td>Full</td>
+        </tr>
+        <tr>
+            <td>Connection Topology</td>
+            <td>Point-to-point</td>
+        </tr>
+        <tr>
+            <td>OSI Layers</td>
+            <td>Layers 1 (physical) and 2 (data link)</td>
+        </tr>
+    </tbody>
 </table>
 
 
@@ -68,98 +52,56 @@ Sorted in alphabetical order.
             <th>Description</th>
         </tr>
     </thead>
-<tbody >
-<tr >
-<td >CTS
-</td>
-<td >CTS is an initialism for "**Clear To Send**". See the Flow Control section for more information.
-</td>
-</tr>
-<tr >
-<td >DCD
-</td>
-<td >DCD is an initialism for "**Data Carrier Detect**". See the Flow Control section for more information.
-</td>
-</tr>
-<tr >
-<td >DCE
-</td>
-<td >DTE is an initialism for "**Data Communication Equipment**". It was a term created when UART was first developed to describe electronic devices which transmitted/received data and connected to terminals (which were termed DTE's). See the Flow Control section for more information.
-</td>
-</tr>
-<tr >
-
-<td >DTE
-</td>
-
-<td >DTE is an initialism for "**Data Terminal Equipment**". It was a term created when UART was first developed to describe electronic devices which displayed data and connected to modems (which were termed DCE's). See the Flow Control section for more information.
-</td>
-</tr>
-<tr >
-
-<td >DTR
-</td>
-
-<td >DTR is an initialism for "**Data Terminal Ready**". See the Flow Control section for more information.
-</td>
-</tr>
-<tr >
-
-<td >RI
-</td>
-
-<td >RI is an initialism for "**Ring Indicator**". See the Flow Control section for more information.
-</td>
-</tr>
-<tr >
-
-<td >RTS
-</td>
-
-<td >RTS is an initialism for "**Request To Send**". See the Flow Control section for more information.
-</td>
-</tr>
-<tr >
-
-<td >RxD
-</td>
-
-<td >RxD is an acronym for "**Receive Data**". See the Flow Control section for more information.
-</td>
-</tr>
-<tr >
-
-<td >TxD
-</td>
-
-<td >TxD is an acronym for "**Transmit Data**". See the Flow Control section for more information.
-</td>
-</tr>
-<tr >
-
-<td >UART
-</td>
-
-<td >UART is an initialism for "**Universal Asynchronous Receiver/Transmitter**".
-</td>
-</tr>
-<tr >
-
-<td >USART
-</td>
-
-<td >USART is an initialism for "**Universal Asynchronous/Synchronous Receiver/Transmitter**". ATMEL uses this term to describe the peripherals on its ATmega range of microcontrollers that support the standard asynchronous protocol as well as a synchronous (clocked) protocol.
-</td>
-</tr>
-<tr >
-
-<td >Voting
-</td>
-
-<td >Voting describes a error-checking process in which the same bit of UART data is sampled multiple times and then a vote occurs to determine it's state.
-</td>
-</tr>
-</tbody>
+    <tbody>
+        <tr>
+            <td>CTS</td>
+            <td>CTS is an initialism for <i>Clear To Send</i>. See the Flow Control section for more information.</td>
+        </tr>
+        <tr>
+            <td>DCD</td>
+            <td>DCD is an initialism for <i>Data Carrier Detect</i>. See the Flow Control section for more information.</td>
+        </tr>
+        <tr>
+            <td>DCE</td>
+            <td>DTE is an initialism for <i>Data Communication Equipment</i>. It was a term created when UART was first developed to describe electronic devices which transmitted/received data and connected to terminals (which were termed DTE's). See the Flow Control section for more information.</td>
+        </tr>
+        <tr>
+            <td>DTE</td>
+            <td>DTE is an initialism for <i>Data Terminal Equipment</i>. It was a term created when UART was first developed to describe electronic devices which displayed data and connected to modems (which were termed DCE's). See the Flow Control section for more information.</td>
+        </tr>
+        <tr>
+            <td>DTR</td>
+            <td>DTR is an initialism for <i>Data Terminal Ready</i>. See the Flow Control section for more information.</td>
+        </tr>
+        <tr>
+            <td>RI</td>
+            <td>RI is an initialism for <i>Ring Indicator</i>. See the Flow Control section for more information.</td>
+        </tr>
+        <tr>
+            <td>RTS</td>
+            <td>RTS is an initialism for <i>Request To Send</i>. See the Flow Control section for more information.</td>
+        </tr>
+        <tr>
+            <td>RxD</td>
+            <td>RxD is an acronym for <i>Receive Data</i>. See the Flow Control section for more information.</td>
+        </tr>
+        <tr>
+            <td>TxD</td>
+            <td>TxD is an acronym for <i>Transmit Data</i>. See the Flow Control section for more information.</td>
+        </tr>
+        <tr>
+            <td>UART</td>
+            <td>UART is an initialism for <i>Universal Asynchronous Receiver/Transmitter</i>.</td>
+        </tr>
+        <tr>
+            <td>USART</td>
+            <td>USART is an initialism for <i>Universal Asynchronous/Synchronous Receiver/Transmitter</i>. ATMEL uses this term to describe the peripherals on its ATmega range of microcontrollers that support the standard asynchronous protocol as well as a synchronous (clocked) protocol.</td>
+        </tr>
+        <tr>
+            <td>Voting</td>
+            <td>Voting describes a error-checking process in which the same bit of UART data is sampled multiple times and then a vote occurs to determine it's state.</td>
+        </tr>
+    </tbody>
 </table>
 
 
@@ -205,6 +147,7 @@ A small amount of power can be extracted from the RTS and CTS lines for powering
 
 The following tables lists all of the flow control signals (as well as the data signals), with respect to the device in question. Matching signals are grouped together.
 
+<div class="table-wrapper">
 <table>
     <thead>
         <tr>
@@ -263,99 +206,100 @@ The following tables lists all of the flow control signals (as well as the data 
 <td>DTE drives this to tell the DCE to get ready to receive data.
 </td>
 
-<td style="width: 51px;" >4
+<td>4
 </td>
 
-<td style="width: 45px;" >7
-</td>
-</tr>
-<tr >
-
-<td style="width: 92px;" >CTS (Clear To Send)
-</td>
-
-<td style="width: 54px;" >Input
-</td>
-
-<td style="width: 342px;" >Driven by the DCE when it is ready to accept data.
-</td>
-
-<td style="width: 51px;" >5
-</td>
-
-<td style="width: 45px;" >8
+<td>7
 </td>
 </tr>
 <tr >
 
-<td style="width: 92px;" >TxD (Data Transmit)
+<td>CTS (Clear To Send)
 </td>
 
-<td style="width: 54px;" >Output
+<td>Input
 </td>
 
-<td style="width: 342px;" >The DTE sends data to the DCE over this line.
+<td>Driven by the DCE when it is ready to accept data.
 </td>
 
-<td style="width: 51px;" >2
+<td>5
 </td>
 
-<td style="width: 45px;" >3
-</td>
-</tr>
-<tr >
-
-<td style="width: 92px;" >RxD (Data Receive)
-</td>
-
-<td style="width: 54px;" >Input
-</td>
-
-<td style="width: 342px;" >The DCE sends data to the DTE over this line.
-</td>
-
-<td style="width: 51px;" >3
-</td>
-
-<td style="width: 45px;" >2
+<td>8
 </td>
 </tr>
 <tr >
 
-<td style="width: 92px;" >Common Ground (GND)
+<td>TxD (Data Transmit)
 </td>
 
-<td style="width: 54px;" >n/a
+<td>Output
 </td>
 
-<td style="width: 342px;" >The common ground for all signals.
+<td>The DTE sends data to the DCE over this line.
 </td>
 
-<td style="width: 51px;" >7
+<td>2
 </td>
 
-<td style="width: 45px;" >5
+<td>3
 </td>
 </tr>
 <tr >
 
-<td style="width: 92px;" >Protective Ground (PG)
+<td>RxD (Data Receive)
 </td>
 
-<td style="width: 54px;" >n/a
+<td>Input
 </td>
 
-<td style="width: 342px;" >The protective ground. This is usually just connected up to the common ground on the PCB.
+<td>The DCE sends data to the DTE over this line.
 </td>
 
-<td style="width: 51px;" >1
+<td>3
 </td>
 
-<td style="width: 45px;" >n/a
+<td>2
+</td>
+</tr>
+<tr >
+
+<td>Common Ground (GND)
+</td>
+
+<td>n/a
+</td>
+
+<td>The common ground for all signals.
+</td>
+
+<td>7
+</td>
+
+<td>5
+</td>
+</tr>
+<tr >
+
+<td>Protective Ground (PG)
+</td>
+
+<td>n/a
+</td>
+
+<td>The protective ground. This is usually just connected up to the common ground on the PCB.
+</td>
+
+<td>1
+</td>
+
+<td>n/a
 </td>
 </tr>
 </tbody>
 </table>
+</div>
 
 Note that confusion of how to connect two UART devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support UART can act either as a DTE or a DCE. **Take particular care when connecting UART ports together on embedded devices!**
 
@@ -389,7 +333,7 @@ Do you need a higher-level communication protocol that works over a UART connect
 
 ## Terminal Programs
 
-## RealTerm (3.5/5)
+### RealTerm (3.5/5)
 
 Website: [http://realterm.sourceforge.net/](http://realterm.sourceforge.net/)
 
@@ -403,7 +347,7 @@ It can view and send binary, hex, ASCII, ANSI, integers (both signed and unsigne
 
 I have noticed a few bugs with RealTerm, especially when it comes to changing the number of rows and columns, and scrolling back through received data (the scrollback variable is buggy also).
 
-## Terminal by Br@y (3.5/5)
+### Terminal by Br@y (3.5/5)
 
 Website: [https://sites.google.com/site/terminalbpp/](https://sites.google.com/site/terminalbpp/)
 
@@ -411,7 +355,7 @@ A simple and tidy Windows terminal program. Personally, it doesn't get the same 
 
 {{< figure src="/images/2011/09/terminal-v1-9b-by-bray-window.jpg" width="800px" caption="A screenshot of 'Terminal by Br@y' in action."  >}}
 
-## PuTTy (4/5)
+### PuTTy (4/5)
 
 Website: [http://www.chiark.greenend.org.uk/~sgtatham/putty/](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 

@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
-date: 2013-03-03 03:39:19+00:00
+date: 2013-03-03
 draft: false
-title: Cavro XL-3000 8-port Syringe Pump Teardown
-type: page
-url: /electronics/teardowns/cavro-xl3000-8-port-syringe-pump-teardown
+tags: [ "Cavro", "XL-3000", "syringe pump", "teardown", "electronics", "OEM" ]
+title: "Cavro XL-3000 8-port Syringe Pump Teardown"
+type: "page"
 ---
 
 This was an OEM model, so the exact part number of the unit was a little hard to determine. I contacted both Tecan US and Emerald Bio with a request for the Operator's manual. This is the reply I got from Tecan US.
@@ -44,7 +44,7 @@ Making sure the virtual COM port was installed correctly.
 
 {{< figure src="/images/electronics-teardowns-cavro-xl3000/usb-serial-port-for-rs-485-converter-in-device-manager.png" caption="When installing a USB-to-RS485/422 converter, it installs a virtual COM port under the Device Manager in Windows."  width="500px" >}}
 
-{{< figure src="/images/electronics-teardowns-cavro-xl3000/dip-switch-sw2-configuration-cavro-xl3000-syringe-pump.png" caption="The DIP switch settings for SW2 on the XL-3000 syringe pump"  width="300px" >}}
+{{< figure src="/images/electronics-teardowns-cavro-xl3000/dip-switch-sw2-configuration-cavro-xl3000-syringe-pump.png" caption="The DIP switch settings for SW2 on the XL-3000 syringe pump"  width="80px" >}}
 
 To get it running, the only setting I had to change was DIP switch 2 on SW2, from ON to OFF. This changed the message protocol from OEM to DT, allowing simple, no checksum needed comms from a terminal program on a PC.
 

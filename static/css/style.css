@@ -613,7 +613,8 @@ figure img {
 }
 @media (min-width: 800px) {
     .menu .right-arrow {
-        font-size: 0.7rem;        
+        font-size: 0.7rem;
+        display: block;
     }
 }
 

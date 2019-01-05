@@ -1,9 +1,8 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2012-02-15
-title: Altium Scripting And Using The API
-type: page
-url: /electronics/general/altium/altium-scripting-and-using-the-api
+title: "Altium Scripting And Using The API"
+type: "page"
 ---
 
 ## Overview
@@ -44,7 +43,7 @@ quits the current script and returns the user back to Altium.
 
 ## Message Box
 
-You can use the function ShowMessage() to display to the user a message box with simple text. An example in Delphi:
+You can use the function `ShowMessage()` to display to the user a message box with simple text. An example in Delphi:
    
 ```
 procedure HelloWorldExample();
@@ -53,7 +52,7 @@ begin
 end;
 ```
 
-This will display a message box with the text "Hello, world.". Note that in Delphi, strings are delimited with single quotations (' ), not double quotations (").
+This will display a message box with the text "Hello, world.". Note that in Delphi, strings are delimited with single quotations (`'`), not double quotations (`"`).
 
 This is the equivalent in VBScript:
     
@@ -128,7 +127,7 @@ This sections covers code non-specific to either the schematics or PCB.
 
 ## Obtaining The Current Project
 
-Projects are represented as IProject objects. To get the currently active project, you can use the DM_FocusedProject function on an IWorkspace object, as shown in the following Delphi example:
+Projects are represented as `IProject` objects. To get the currently active project, you can use the `DM_FocusedProject` function on an `IWorkspace` object, as shown in the following Delphi example:
     
 ```
 Workspace  := GetWorkspace;
@@ -166,7 +165,7 @@ I have experienced issues with calling `RobotManager.SendMessage()` before, res
 
 It won't be long before you'll end up doing something like trigonometry in Altium scripts to work out the placement of objects onto a PCB. This kind of thing is not really dependent on Altium but more on the provided mathematics libraries that come with the scripting language you are using.
 
-Check out the [VBScript page](/programming/languages/vbscript) to find out how to use the sin() and cos() family of functions, how to get a value for Pi, and more! All these are applicable to Altium scripts.
+Check out the [VBScript page](/programming/languages/vbscript) to find out how to use the `sin()` and `cos()` family of functions, how to get a value for Pi, and more! All these are applicable to Altium scripts.
 
 ## Catching Exceptions
 
@@ -186,7 +185,7 @@ The schematic server (SchServer) is the root object for all script usage within 
 
 Two of the most common ways to get an object to the current schematic is to use either `SCHServer.GetCurrentSchDocument()` or `SCHServer.GetSchDocumentByPath()`, as shown in the examples below.
 
-```
+```vb
 Dim schematic
 
 ' Get's the current schematic document.
@@ -204,7 +203,7 @@ This example shows how you can safely loop through all schematics in a project. 
 
 The `GetSchDocumentByPath()` function requires the full path to the schematic to be passed into it. This can be obtained by using an `IDocument` object which in turn is obtained with an `IProject` object.
 
-```
+```vb
 Dim workspace
 Set workspace = GetWorkspace
 Dim pcbProject
@@ -401,7 +400,7 @@ begin
 
 ## Some PCB OBjects Properties Cannot Be Set Directly, Even Though They Are Visable Through The AutoComplete Menu
 
-For example. you cannot set a pads soldermask and pastemask expansion values (useful if you want to remove them alltogether) using the properties `pad.SolderMaskExpansion` and `pad.PasteMaskExpansion`. The only way I have found to do this is to create a pad cache, set the expansion values for the cache, and then assign the cache to the pad as per the following example.
+For example. you cannot set a pads soldermask and pastemask expansion values (useful if you want to remove them all together) using the properties `pad.SolderMaskExpansion` and `pad.PasteMaskExpansion`. The only way I have found to do this is to create a pad cache, set the expansion values for the cache, and then assign the cache to the pad as per the following example.
 
 ```    
 procedure SetPadExpansionValues();

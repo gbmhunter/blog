@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
-date: 2011-09-03 02:17:06+00:00
+author: "gbmhunter"
+date: 2011-09-03
 draft: false
-title: I2C Protocol
-type: page
-url: /electronics/communication-protocols/i2c-protocol
+tags: [ "I2C", "communication protocol", "bus", "serial", "microcontroller", "open-collector", "data", "transceiver", "TX", "RX" ]
+title: "I2C Protocol"
+type: "page"
 ---
 
 ## Overview

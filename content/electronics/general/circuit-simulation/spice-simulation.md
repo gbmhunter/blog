@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-06-09 05:52:43+00:00
+date: 2015-06-09
 draft: false
-title: SPICE Simulation
+title: "SPICE Simulation"
 type: page
-url: /electronics/general/circuit-simulation/spice-simulation
 ---
 
 ## Elementary SPICE Components
@@ -20,13 +19,17 @@ They are great for seeing what effect a short with have on your circuit (e.g. sh
 SPICE prefix for switches is S.
 
 The general form for a switch is:
-    
-    SXXXXXXX N+ N- NC+ NC- MODEL <ON><OFF>
-    WYYYYYYY N+ N- VNAM MODEL <ON><OFF>
+
+```
+SXXXXXXX N+ N- NC+ NC- MODEL <ON><OFF>
+WYYYYYYY N+ N- VNAM MODEL <ON><OFF>
+```
 
 The most basic syntax to create a voltage-controlled switch is:
 
-.model VSW SW() 
+```
+.model VSW SW()
+```
 
 ## The Best SPICE Resources Out There
 
