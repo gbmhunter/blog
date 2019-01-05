@@ -1,10 +1,11 @@
 ---
-author: gbmhunter
-date: 2013-10-02 04:31:39+00:00
+author: "gbmhunter"
+date: 2013-10-02
 draft: false
-title: JSON
-type: page
-url: /programming/website-design/json
+lastmod: 2019-01-04
+tags: [ "JSON", "serialization", "configuration", "data", "file", "Javascript", "object notation" ]
+title: "JSON"
+type: "page"
 ---
 
 ## Overview

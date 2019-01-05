@@ -1,6 +1,6 @@
 ---
 title: "December 2018 Updates"
-date: "2018-12-31"
+date: 2018-12-31
 type: "post"
 draft: false
 tags: [ "linux", "serial ports", "C", "C++", "python", "dictionaries", "Hugo", "static site generation", "OpenMP" ]

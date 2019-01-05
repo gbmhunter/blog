@@ -1,10 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2018-11-24
+description: "A tutorial on Python dictionaries, including how to check if keys exits, delete items while iterating, and more."
 draft: false
-title: Dictionaries
-type: page
-url: /programming/languages/python/dictionaries
+tags: [ "Python", "dict", "dictionary", "code", "software", "data structure", "container", "iteration" ]
+title: "Dictionaries"
+type: "page"
 ---
 
 ## Checking If A Key Exists In A Dictionary
@@ -65,6 +66,20 @@ print(my_dict)
 ```
 
 This does not occur much overhead as you are just copying the keys, and not the values.
+
+Another way you can do it is by creating a new dictionary using _dictionary comprehension_:
+
+```python
+my_dict = {
+    'foo': 1,
+    'bar': 2
+}
+my_dict_2 = { k: v for k, v in my_dict.items() if k != 'foo' }
+print(my_dict_2)
+# stdout: {'bar': 2}
+```
+
+This however creates a copy, and might be too memory intensive for large dictionaries.
 
 ## del vs. pop()
 
