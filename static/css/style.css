@@ -545,8 +545,12 @@ figure img {
     z-index: 1000;
 
     margin: 0;
-    margin-top: 20px;
     padding: 0;
+}
+@media (min-width: 800px) {
+    .menu {
+        margin-top: 20px;
+    }
 }
 
 .menu li {
@@ -576,7 +580,7 @@ figure img {
 }
 @media (min-width: 800px) {
     .menu li a {
-        width: 180px;
+        width: 184px; /* Make sure that this number + 2x horizontal padding below = 200px */
         padding: 12px 8px; 
     }
 }
@@ -585,7 +589,7 @@ figure img {
     width: 165px;
     color: #fff;
     line-height: 1.0;
-    font-size: 2vw;
+    font-size: 2.7vw;
 
     /* Center the text vertically */
     display: flex;
@@ -599,14 +603,17 @@ figure img {
     }
 }
 
+/* Hide the arrows on mobile, as we don't show the submenus either 
+(it's hard to hover on a mobile device) */
 .menu .right-arrow {
     color: #fff;
     /* line-height: 1.0; */
     font-size: 2vw;
+    display: none;
 }
 @media (min-width: 800px) {
     .menu .right-arrow {
-        font-size: 0.7rem;
+        font-size: 0.7rem;        
     }
 }
 
@@ -635,9 +642,16 @@ figure img {
     z-index: 9;
 }
 
+/* Hide the submenu if on mobile, only show when on desktop,
+as you cannot easily hover on touch screen */
 .submenu li {
-    display: block;
+    display: none;
     margin: 0;
+}
+@media (min-width: 800px) {
+    .submenu li {
+        display: block;
+    }
 }
 
 .submenu li a {
