@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2017-06-11 01:16:07+00:00
+date: 2017-06-11
 draft: false
 title: Sorting Algorithms
 type: page
-url: /programming/algorithms-and-data-structures/sorting-algorithms
 ---
 
 ## Overview
@@ -58,31 +57,31 @@ Insertion sort is very similar to selection sort, but has one distinct advantage
 An example in C:
 
 ```c    
-    void insertion_sort(int arr[], int length)
-    {
-        for (int i = 1; i < length; i++) {
-            for (int j = i; j > 0 && arr[j - 1] > arr[j]; j--) {
-                int tmp = arr[j];
-                arr[j] = arr[j - 1];
-                arr[j - 1] = tmp;
-            }
+void insertion_sort(int arr[], int length)
+{
+    for (int i = 1; i < length; i++) {
+        for (int j = i; j > 0 && arr[j - 1] > arr[j]; j--) {
+            int tmp = arr[j];
+            arr[j] = arr[j - 1];
+            arr[j - 1] = tmp;
         }
     }
+}
 ```
 
 An example in C++:
 
 ```c++    
-    void insertion_sort(std::vector<int>& array) {
-        for (auto it = array.begin(), end = array.end(); it != end; ++it) {
-            // 1. Search
-            auto const insertion_point =
-                std::upper_bound(array.begin(), it, *it);
-    
-            // 2. Insert
-            std::rotate(insertion_point, it, it + 1);
-        }
+void insertion_sort(std::vector<int>& array) {
+    for (auto it = array.begin(), end = array.end(); it != end; ++it) {
+        // 1. Search
+        auto const insertion_point =
+            std::upper_bound(array.begin(), it, *it);
+
+        // 2. Insert
+        std::rotate(insertion_point, it, it + 1);
     }
+}
 ```
 
 ## Merge Sort
