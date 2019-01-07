@@ -1,12 +1,12 @@
 ---
-title: "CAN Protocol"
-description: "Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol."
-tags: [ "CAN", "bus", "communication protocol", "CAN1.0", "CAN2.0", "CAN base frame", "CAN extended frame", "USB adapters" ]
 author: "gbmhunter"
 date: 2012-12-12
+description: "Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol."
+lastmod: 2019-01-06
+tags: [ "CAN", "bus", "communication protocol", "CAN1.0", "CAN2.0", "CAN base frame", "CAN extended frame", "USB adapters" ]
+title: "CAN Protocol"
 type: "page"
 ---
-
 
 ## Overview
 

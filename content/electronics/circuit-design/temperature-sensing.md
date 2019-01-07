@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2011-09-07 02:39:18+00:00
+date: 2011-09-07
 draft: false
-title: Temperature Sensing
+title: "Temperature Sensing"
 type: page
-url: /electronics/circuit-design/temperature-sensing
 ---
 
 ## Temperature Management of Components

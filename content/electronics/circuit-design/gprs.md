@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2011-09-08 23:51:50+00:00
+author: "gbmhunter"
+date: 2011-09-08
 draft: false
-title: GPRS
-type: page
-url: /electronics/circuit-design/gprs
+title: "GPRS"
+type: "page"
 ---
 
 ## Overview

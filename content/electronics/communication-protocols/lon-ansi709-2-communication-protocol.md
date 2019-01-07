@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
-date: 2015-02-13 06:23:35+00:00
+author: "gbmhunter"
+date: 2015-02-13
 draft: false
-title: LON (ANSI709.2) Communication Protocol
-type: page
-url: /electronics/communication-protocols/lon-ansi709-2-communication-protocol
+tags: [ "LON", "communication protocol", "Echelon", "LonTalk", wiring topology", "routers" ]
+title: "LON (ANSI709.2) Communication Protocol"
+type: "page"
 ---
 
 ## Overview

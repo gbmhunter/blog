@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-08-22 07:57:54+00:00
+date: 2013-08-22
 draft: false
-title: PCB Fault Finding
-type: page
-url: /electronics/circuit-design/pcb-fault-finding
+title: "PCB Fault Finding"
+type: "page"
 ---
 
 ## Solder Bridges

@@ -18,14 +18,17 @@ This is the first year I have used Google Analytics to gather these statistics. 
 Metric      | 2017  | 2018 |
 ------------|-------|------|
 Page Views  | 83k   | 116k |
-Visitors    | 41k   | 63k  |
+Users       | 41k   | 63k  |
 
 {{< img src="google-analytics-2018-mbedded-ninja-users.png" width="800px" caption="Number of users per week for the 2018 year. Image from Google Analytics." >}}
+
+A _User_ is a unique person who visited this website at least once.
 
 ### Most Popular Pages
 
 Ranked by number of page views:
 
+<div class="table-wrapper">
 <table>
     <thead>
         <tr>
@@ -91,11 +94,12 @@ Ranked by number of page views:
         <tr>
             <td>How To Unbrick A PICkit 3</td>
             <td>1.2l</td>
-            <td>Alitum Keyboard Shortcuts</td>
+            <td>Altium Keyboard Shortcuts</td>
             <td>2.3k</td>
         </tr>
     </tbody>
 </table>
+</div>
 
 ### Acquisition
 

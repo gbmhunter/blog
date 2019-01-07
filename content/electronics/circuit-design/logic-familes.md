@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-07-15 03:08:35+00:00
+date: 2015-07-15
 draft: false
-title: Logic Familes
+title: "Logic Families"
 type: page
-url: /electronics/circuit-design/logic-familes
 ---
 
 ## HSTL

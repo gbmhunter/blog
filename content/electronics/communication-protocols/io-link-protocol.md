@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2015-04-22 05:18:51+00:00
+author: "gbmhunter"
+date: 2015-04-22
 draft: false
-title: IO-Link Protocol
-type: page
-url: /electronics/communication-protocols/io-link-protocol
+title: "IO-Link Protocol"
+type: "page"
 ---
 
 ## Overview
@@ -19,7 +18,7 @@ Process data is sent every communication cycle (typically 2ms).
 
 ## Service Data
 
-Service data is used to send large amounts of non-periodic data at the request of the receipient. 
+Service data is used to send large amounts of non-periodic data at the request of the recipient. 
 
 ## Events
 

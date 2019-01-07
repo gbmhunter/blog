@@ -1,8 +1,8 @@
-<footer style="width: 100%; display: flex; justify-content: center;">
+<footer>
     <div>
-        <a href="{{ .Site.BaseURL }}" >
-            &copy; {{ now.Format "2006" }} {{ .Site.Title }}
-        </a>
+        <a href="{{ .Site.BaseURL }}">&copy; {{ now.Format "2006" }} {{ .Site.Title }}</a>
+        <div style="display: inline-block; width: 1em;"></div>
+        Powered by <a href="https://gohugo.io/">Hugo</a>.
         <div>{{ partial "social-follow.html" . }}</div>
     </div>
 </footer>

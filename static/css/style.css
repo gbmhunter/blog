@@ -683,3 +683,14 @@ as you cannot easily hover on touch screen */
     left: 200px;
     top: 0px;
 }
+
+/* ========================================================================= */
+/* FOOTER                                                                    */
+/* ========================================================================= */
+
+/* Footer contains copyright and "Powered by Hugo" */
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+} 

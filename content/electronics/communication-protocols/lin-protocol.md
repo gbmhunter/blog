@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
-date: 2012-12-13 03:29:29+00:00
+author: "gbmhunter"
+date: 2012-12-13
 draft: false
-title: LIN Protocol
-type: page
-url: /electronics/communication-protocols/lin-protocol
+tags: [ "LIN", "communication protocol", "bit rate", "transmission distances", "node addressing", "standards" ]
+title: "LIN Protocol"
+type: "page"
 ---
 
 ## Overview

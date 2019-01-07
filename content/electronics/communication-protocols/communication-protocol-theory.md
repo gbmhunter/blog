@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2017-08-30 22:24:30+00:00
+author: "gbmhunter"
+date: 2017-08-30
 draft: false
-title: Communication Protocol Theory
-type: page
-url: /electronics/communication-protocols/communication-protocol-theory
+title: "Communication Protocol Theory"
+type: "page"
 ---
 
 ## Communication Bus Topologies

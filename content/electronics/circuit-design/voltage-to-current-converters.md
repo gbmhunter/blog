@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2016-05-31
 draft: false
 tags: [ "voltage", "current", "converter", "Howland", "current source" ]
-title: Voltage-To-Current Converters
-type: page
+title: "Voltage-To-Current Converters"
+type: "page"
 ---
 
 ## Overview

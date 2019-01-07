@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2015-01-13 07:21:25+00:00
+author: "gbmhunter"
+date: 2015-01-13
 draft: false
-title: Inrush Current
-type: page
-url: /electronics/circuit-design/inrush-current
+title: "Inrush Current"
+type: "page"
 ---
 
 ## Overview

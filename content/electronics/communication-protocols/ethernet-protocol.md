@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2013-04-08 06:19:24+00:00
+author: "gbmhunter"
+date: 2013-04-08
 draft: false
-title: Ethernet Protocol
-type: page
-url: /electronics/communication-protocols/ethernet-protocol
+title: "Ethernet Protocol"
+type: "page"
 ---
 
 ## Ethernet Jacks

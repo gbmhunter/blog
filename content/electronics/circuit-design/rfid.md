@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2012-11-22
 draft: false
-title: RFID
-type: page
-url: /electronics/circuit-design/rfid
+title: "RFID"
+type: "page"
 ---
 
 ## Overview
@@ -20,7 +19,7 @@ RFID (radio-frequency identification) is a wireless method of transmitting data 
 * LF: Low Frequency
 * MF: Microwave Frequency
 * NFC: Near-field Communication
-* RFID: Radio Frequency Identidfication
+* RFID: Radio Frequency Identification
 * RoHS: Restriction of Hazardous Substances
 * SAL: Smart Active Label
 * UHF: Ultra-high Frequency
@@ -38,7 +37,7 @@ Here is a summary of the four bands:
 ## Low Frequency (LF)
 
 * 125kHz
-* Uses the "near-field" effect, utilising magnetic field coupling rather the electric. Only works for short distances (<10cm).
+* Uses the "near-field" effect, utilizing magnetic field coupling rather the electric. Only works for short distances (<10cm).
 
 ## High Frequency (HF)
 
@@ -61,7 +60,7 @@ The following graph shows the allowed UHF frequency bands in different countries
 
 * 2.4-5.8GHz
 * 10-80m read range
-* Longest read/write range, but waves are abosrbed readily by many materials, including water (it's the same frequency as microwaves)
+* Longest read/write range, but waves are absorbed readily by many materials, including water (it's the same frequency as microwaves)
 * Rare RFID frequency
 * MF can also stand for metal-friendly RFID
 
@@ -173,7 +172,7 @@ RFID tags exist which use wire cables for their antennas. They normally look lik
 
 ## Metal Compatible
 
-Specialised tags/inlays exist for attaching/putting in close proximity to metal in where a normal tags range would be greatly limited/not work at all. They are normally more expensive than the standard RFID products. Xerafy makes a range of these metal-compatible tags/inlays. The article "Small Proximity Coupled Ceramic Patch Antenna For UHF RFID Tag Mountable On Metallic Objects" is an interesting read if you want to know more about metal-compatible RFID products. The following picture is a cross-section of the proposed antenna in the article.
+Specialized tags/inlays exist for attaching/putting in close proximity to metal in where a normal tags range would be greatly limited/not work at all. They are normally more expensive than the standard RFID products. Xerafy makes a range of these metal-compatible tags/inlays. The article "Small Proximity Coupled Ceramic Patch Antenna For UHF RFID Tag Mountable On Metallic Objects" is an interesting read if you want to know more about metal-compatible RFID products. The following picture is a cross-section of the proposed antenna in the article.
 
 {{< figure src="/images/2012/11/metallic-rfid-antenna-geometry-with-coupled-ceramic-patch.png" width="348px" caption="A cross-section of the proposed antenna in the article 'Small Proximity Coupled Ceramic Patch Antenna For UHF RFID Tag Mountable On Metallic Objects'. Image from http://www.jpier.org/PIERC/pierc04/10.08061809.pdf."  >}}
 
@@ -243,11 +242,11 @@ Part 6 of the ISO/IEC 18000 standard. Defines parameters for RFID operating betw
 
 ## Recycling
 
-Aside from recycling the RFID tag itseld, RFID tags also affect the the recycling of the product it is attached too. The presence of paper, aluminium, copper, gold and silver in the RFID tag can introduce new challenges to the recycling of the product. The cost of an RFID tag is low and still dropping, reducing the incentive to recycle it. Active tags, mainly because of the battery, are considered electronic equipment under the European WEEE directive, and has to be recycled under the appropriate regulations. Passive tags are outside the WEEE scope. There are special glues/adhesives which facilitate the removal of the RFID tag from the product it is attached to. A current area of research (as of 2013) are biodegradable tags that degrade naturally on paper products.
+Aside from recycling the RFID tag itself, RFID tags also affect the the recycling of the product it is attached too. The presence of paper, aluminum, copper, gold and silver in the RFID tag can introduce new challenges to the recycling of the product. The cost of an RFID tag is low and still dropping, reducing the incentive to recycle it. Active tags, mainly because of the battery, are considered electronic equipment under the European WEEE directive, and has to be recycled under the appropriate regulations. Passive tags are outside the WEEE scope. There are special glues/adhesives which facilitate the removal of the RFID tag from the product it is attached to. A current area of research (as of 2013) are biodegradable tags that degrade naturally on paper products.
 
 ## RFID Software
 
-Most RFID reader development kits come with suppporting software to get a RFID project started quickly. They usually provide a PC-based GUI which connects to the reader via Ethernet, USB, or serial, can provides a readout of tags that are in range (and shows you things like their ID and RSSI), and allows you to adjust things like read interval and read power.
+Most RFID reader development kits come with supporting software to get a RFID project started quickly. They usually provide a PC-based GUI which connects to the reader via Ethernet, USB, or serial, can provides a readout of tags that are in range (and shows you things like their ID and RSSI), and allows you to adjust things like read interval and read power.
 
 {{< figure src="/images/2012/11/uhf-rfid-tag-read-results-astra-ex-to-usa.png" width="1042px" caption="Readout of RFID tags in the near vicinity by the ThingMagic AstraEX."  >}}
 

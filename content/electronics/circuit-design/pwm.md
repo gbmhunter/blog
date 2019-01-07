@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2012-10-04 05:51:22+00:00
+author: "gbmhunter"
+date: 2012-10-04
 draft: false
-title: PWM
+title: "PWM"
 type: page
-url: /electronics/circuit-design/pwm
 ---
 
 ## Operating Modes

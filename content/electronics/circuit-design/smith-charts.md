@@ -2,9 +2,8 @@
 author: gbmhunter
 date: 2014-05-01 05:25:57+00:00
 draft: false
-title: Smith Charts
+title: "Smith Charts"
 type: page
-url: /electronics/circuit-design/smith-charts
 ---
 
 ## Overview
@@ -34,7 +33,7 @@ In many case, it is desired so that the impedance is matched to \( (50 + j0)\Ome
 
 ## Solving Impedance Matching Problems
 
-Most circuits (e.g. GPS antennas and WiFi antennas on PCB's) are matched with capacitors between 1-10pF and inductors between 1-10nH. Make sure the inductor is O.K. at the operating frequency. This means you will probably need to get "high-frequency" or "RF" inductors, assuming the frequency of operating will be between 100MHz-6GHz. Power inductors, ferrite beads, and other types of inductors with ferrite cores **are not** suitable! You can also make your own air-core inductor suitabe for matching relatively easily with wire and a non-ferrous core (there are many calculators on the internet that will tell you how many turns you will need).
+Most circuits (e.g. GPS antennas and WiFi antennas on PCBs) are matched with capacitors between 1-10pF and inductors between 1-10nH. Make sure the inductor is O.K. at the operating frequency. This means you will probably need to get "high-frequency" or "RF" inductors, assuming the frequency of operating will be between 100MHz-6GHz. Power inductors, ferrite beads, and other types of inductors with ferrite cores **are not** suitable! You can also make your own air-core inductor suitable for matching relatively easily with wire and a non-ferrous core (there are many calculators on the internet that will tell you how many turns you will need).
 
 ## Series Inductors
 

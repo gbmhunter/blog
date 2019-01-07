@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
-date: 2017-08-21 18:36:20+00:00
+author: "gbmhunter"
+date: 2017-08-21
 draft: false
-title: LVDS (Low-Voltage Differential Signalling)
-type: page
-url: /electronics/communication-protocols/lvds-low-voltage-differential-signalling
+tags: [ "LVDS", "low voltage", "differential signalling", "communication protocol", "FPGA", "multipoint" ]
+title: "LVDS (Low-Voltage Differential Signalling)"
+type: "page"
 ---
 
 ## Overview
@@ -15,42 +15,25 @@ The standard only defines the low-level electrical characteristics, which leaves
 
 ## Characteristics
 
-
-<table >
-<tbody >
-<tr >
-
-<td >Drive Type
-</td>
-
-<td >Differential
-</td>
-</tr>
-<tr >
-
-<td >Num. Wires
-</td>
-
-<td >2 (excl. GND)
-</td>
-</tr>
-<tr >
-
-<td >Duplex
-</td>
-
-<td >Half
-</td>
-</tr>
-<tr >
-
-<td >Connection Topology
-</td>
-
-<td >Point-to-point (LVDS) or multidrop (MLVDS)
-</td>
-</tr>
-</tbody>
+<table>
+    <tbody>
+        <tr>
+            <td>Drive Type</td>
+            <td>Differential</td>
+        </tr>
+        <tr>
+            <td>Num. Wires</td>
+            <td>2 (excl. GND)</td>
+        </tr>
+        <tr>
+            <td>Duplex</td>
+            <td>Half</td>
+        </tr>
+        <tr>
+            <td>Connection Topology</td>
+            <td>Point-to-point (LVDS) or multidrop (MLVDS)</td>
+        </tr>
+    </tbody>
 </table>
 
 ## Implementing LVDS On A FPGA

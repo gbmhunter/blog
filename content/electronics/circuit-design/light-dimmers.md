@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2015-11-01 23:27:34+00:00
+author: "gbmhunter"
+date: 2015-11-01
 draft: false
-title: Light Dimmers
-type: page
-url: /electronics/circuit-design/light-dimmers
+title: "Light Dimmers"
+type: "page"
 ---
 
 ## Overview

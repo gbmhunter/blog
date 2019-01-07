@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2017-07-18 00:06:40+00:00
+author: "gbmhunter"
+date: 2017-07-18
 draft: false
-title: High-Level Data Link Control (HDLC)
-type: page
-url: /electronics/communication-protocols/high-level-data-link-control-hdlc
+title: "High-Level Data Link Control (HDLC)"
+type: "page"
 ---
 
 ## Overview
@@ -29,47 +28,28 @@ It only describes the data-link layer (layer 2 in the OSI model), and therefore 
             <td>Cisco HDLC</td>
             <td >An extension to HDLC created by Cisco. Also known as _cHDLC_. Cisco HDLC uses an alternative framing structure to ISO HDLC.</td>
         </tr>
-<tr >
-
-<td >Frame
-</td>
-
-<td >A unit that data is organised into and sent across the HDLC bus in.
-</td>
-</tr>
-<tr >
-
-<td >HDLC
-</td>
-
-<td >High-level Data link Control.
-</td>
-</tr>
-<tr >
-
-<td >PPP
-</td>
-
-<td > Point-to-Point Protocol.
-</td>
-</tr>
-<tr >
-
-<td >SLARP
-</td>
-
-<td >Serial Line Address Resolution Protocol. A control protocol used by Cisco HDLC to maintain serial link keepalives.
-</td>
-</tr>
-<tr >
-
-<td >X.25
-</td>
-
-<td > A protocol for packet switched WAN communication. Very popular in the 1980's.
-</td>
-</tr>
-</tbody>
+        <tr>
+            <td>Frame</td>
+            <td>A unit that data is organised into and sent across the HDLC bus in.
+        </td>
+        </tr>
+        <tr>
+            <td>HDLC</td>
+            <td>High-level Data link Control.</td>
+        </tr>
+        <tr>
+            <td>PPP</td>
+            <td> Point-to-Point Protocol.</td>
+        </tr>
+        <tr>
+            <td>SLARP</td>
+            <td>Serial Line Address Resolution Protocol. A control protocol used by Cisco HDLC to maintain serial link keepalives.</td>
+        </tr>
+        <tr>
+            <td>X.25</td>
+            <td>A protocol for packet switched WAN communication. Very popular in the 1980's.</td>
+        </tr>
+    </tbody>
 </table>
 
 ## History

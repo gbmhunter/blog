@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-03-05 01:09:15+00:00
+date: 2015-03-05
 draft: false
-title: Made For iPod/iPhone/iPad (MFi)
+title: "Made For iPod/iPhone/iPad (MFi)"
 type: page
-url: /electronics/circuit-design/made-for-ipod-iphone-ipad-mfi
 ---
 
 ## Overview
