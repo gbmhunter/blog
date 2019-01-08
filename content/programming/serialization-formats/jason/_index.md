@@ -40,3 +40,70 @@ You can have multiple comments with the same `"_comment"`  identifier (this is 
 Many open-source libraries exists for encoding/decoding JSON data.
 
 [Jansson](https://github.com/akheron/jansson) is a C-library for encoding/decoding JSON data, and is designed to run on embedded systems (it compiles for PSoC ICs with no problems).
+
+## jq
+
+`jq` is a command-line tool for inspecting/running queries on JSON data. For example, you can pass it a .json file, and print out the number keys in an object, print out the number of elements in an array, search for keys, e.t.c.
+
+Website: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)
+
+For example, let's say we had the following file:
+
+```json
+{
+  "my_array": [
+    "a",
+    "b",
+    "c"
+  ],
+  "my_obj": {
+    "key1": "foo",
+    "key2": "bar"
+  }
+}
+```
+
+Print out entire contents of file (not that much use):
+
+```sh
+$ cat data.json | jq `.`
+{
+  "my_array": [
+    "a",
+    "b",
+    "c"
+  ],
+  "my_obj": {
+    "key1": "foo",
+    "key2": "bar"
+  }
+}
+```
+
+Print out the key names of the root object, as an array:
+
+```sh
+$ cat data.json | jq `keys`
+[
+  "my_array",
+  "my_obj"
+]
+```
+
+Print out the elements in the array:
+
+```sh
+$ cat data.json | jq '.["my_array"]'
+[
+  "a",
+  "b",
+  "c"
+]
+```
+
+Count out the number of key/value pairs in the object:
+
+```sh
+cat data.json | jq '.["my_obj"] | length'
+2
+```

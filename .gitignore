@@ -1,5 +1,10 @@
+# Hugo build output goes here
 public/
+
 # Hugo puts page resources (e.g. images) here
 resources/
 
 __pycache__/
+
+# VS Code settings
+.vscode/

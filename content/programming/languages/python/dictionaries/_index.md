@@ -3,6 +3,7 @@ author: "gbmhunter"
 date: 2018-11-24
 description: "A tutorial on Python dictionaries, including how to check if keys exits, delete items while iterating, and more."
 draft: false
+lastmod: 2019-01-07
 tags: [ "Python", "dict", "dictionary", "code", "software", "data structure", "container", "iteration" ]
 title: "Dictionaries"
 type: "page"
@@ -122,4 +123,21 @@ my_dict2 = { 'b': 3, 'c': 4 }
 my_dict3 = {**my_dict1, **my_dict2}
 print(my_dict3)
 # stdout: {'a': 1, 'b': 3, 'c': 4}
+```
+
+## Sorting Dictionaries
+
+You can get a sorted list of the dictionary keys with the built-in `sorted()` function:
+
+```python
+my_dict = { 2: 'a', 4: 'dict', 3: 'sorted', 1: 'I\'m' }
+sorted_keys = sorted(my_dict)
+print(sorted_keys)
+# stdout: [1, 2, 3, 4]
+for key in sorted_keys:
+    print(my_dict[key])
+# stdout:   I'm
+#           a
+#           sorted
+#           dict
 ```

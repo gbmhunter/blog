@@ -1,0 +1,7 @@
+{
+    "my_array": [ "a", "b", "c" ],
+    "my_obj": {
+        "key1": "foo",
+        "key2": "bar"
+    }
+}
