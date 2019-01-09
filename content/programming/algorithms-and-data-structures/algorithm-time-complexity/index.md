@@ -1,10 +1,12 @@
 ---
-author: gbmhunter
-date: 2017-07-06 00:11:39+00:00
+author: "gbmhunter"
+date: 2017-07-06
+description: "A tutorial on the time complexity of algorithms, including Big-O notation and amortized complexity."
 draft: false
-title: Time Complexity
-type: page
-url: /programming/algorithms-and-data-structures/time-complexity
+lastmod: 2019-01-08
+tags: [ "big O notation", "big O", "algorithm", "time complexity", "complexity", "linear", "logarithmic", "nlog(n)", "programming", "amortized" ]
+title: "Algorithm Time Complexity"
+type: "page"
 ---
 
 ## Overview
@@ -114,4 +116,14 @@ Note that this is just a 2x repetition of a algorithm with `\(O(n^2)\)` complexi
              print "hello";
 ```
 
-Naturally, we could keep going forever explaining poorer and poorer complexities (`(\n^4\)`, `\(n^5\)`, e.t.c), but these are hardly educational and rarely seen in real software algorithms.
+Naturally, we could keep going forever explaining poorer and poorer complexities (`(\n^4\)`, `\(n^5\)`, e.t.c), but I think by now you understand the concept, and these higher complexities are rarely seen in real software algorithms.
+
+## Amortized Complexity
+
+When we talk about _amortized complexity_, we are referrring to complexity per run, as the number of runs goes to infinity. This means that if sometimes, the runtime is much longer, as long as this event is infrequent enough, the amortized complexity can still be quite good.
+
+In formal terms:
+
+> Amortized complexity is the total expense per operation, evaluated over a sequence of operations.
+
+**Amortized complexity is not the same thing as average complexity.** 

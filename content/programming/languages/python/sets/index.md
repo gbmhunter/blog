@@ -31,6 +31,19 @@ Set literal syntax looks very similar to dictionary literal syntax (which also u
 
 ## Set Operations
 
+### Add
+
+You can use the `.add()` function to add a single element to a set. If it already exists in the set, this function does nothing.
+
+```python
+A = { 1, 2, 3 }
+A.add(4)
+print(A)
+# stdout: {1, 2, 3, 4}
+```
+
+If you want to add multiple elements at the same time, see the `.union()` function below.
+
 ### Union
 
 A set union can be done either with `.union()` or `|`. It returns a set of all elements that are in either A or B:
@@ -174,3 +187,9 @@ for element in A:
 ```
 
 Note also how the order is not preserved when you print the elements! **DO NOT** rely on an ordering when using sets. Even though in the example above the order was "sorted" (i.e. `1` then `2` then `3`), you cannot rely on this either.
+
+## Implementation Details
+
+CPython implements a set very similar to how it implements a dictionary --- with the use of a hash table. The keys are the elements of the set, and the values are "ignored". Several optimizations can be made due to the lack of values. This hash table implementation allows `\( O(1) \)` average case membership checking (i.e. is `my_element` in `my_set`?).
+
+You can view the source code [here](https://github.com/python/cpython/blob/master/Objects/setobject.c).

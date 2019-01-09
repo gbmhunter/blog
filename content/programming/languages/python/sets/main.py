@@ -3,6 +3,11 @@
 my_set = set()
 print(my_set)
 
+print('ADD')
+A = { 1, 2, 3 }
+A.add(4)
+print(A)
+
 # UNION
 A = set([1, 2, 3, 4])
 B = set([3, 4, 5, 6])
