@@ -11,7 +11,17 @@ type: "page"
 
 ## Overview
 
-The Big O notation ignores behaviour when n is small, and ignores coefficients (e.g. an algorithm that grows at `\(2n\)` is still `\(O(n)\)`).
+{{% warning %}}
+This is the warning
+{{% /warning %}}
+
+Algorithmic time complexity is a measure of how long it takes for an algorithm to complete when there is a change in size of the input to the algorithm (which is usually the number of elements, n). Rather than actually measure the time taken, which varies on the programming language, processor speed, architecture, and a hundred other things, we consider the "time" to be the number of basic operations that the algorithm has to take. This gives us an metric independent on the users computer, that we can use to rate one algorithm against another when solving a problem.
+
+Normally, we use Big O notation to describe time complexity. Basically, it's a big `\(O()\)` with brackets, and inside the bracket you write how the time complexity scales with the input. The input is usually called `\(n\)`, and usually represents the "number of things" the algorithm has to deal with.
+
+Big O notation ignores and constant terms and any constant coefficients (e.g. an algorithm that grows at `\(2n\)` is still written as`\(O(n)\)`). This is because constant terms and coefficients do not effect the response.
+
+{{< img src="big-o-notation-algorithm-complexity.png" width="700px" caption="A grpah showing the response of different time complexities as the number of elements increase. Coefficients were chosen so that the worst time complexities were the largest by the time n = 1000."  >}}
 
 The following complexities are described from best to worst.
 
@@ -34,9 +44,11 @@ Note that even though the following algorithm prints out "hello" three times, it
 `\(O(1)\)` complexity is the best algorithm complexity you can achieve. Common software operations that have `\(O(1)\)` complexity are:
 
 * Reading an element from an array (or vector).
-* Reading an element from hash table (in the average and best case only)
+* Reading an element from hash table (in the average case)
 
 ## log(n) Time
+
+`\(O(log(n))\)` is a time complexity where the number of operations.
 
 Note that whenever we are talking about software algorithms with `\(O(log(n))\)` complexity, we are really talking about `\(O(log_2(n))\)` complexity.
 

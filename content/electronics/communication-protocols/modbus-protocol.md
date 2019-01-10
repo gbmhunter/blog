@@ -1,14 +1,16 @@
 ---
-author: gbmhunter
-date: 2012-12-14 02:26:10+00:00
+author: "gbmhunter"
+date: 2012-12-14
 draft: false
-title: Modbus Protocol
-type: page
+lastmod: 2019-01-09
+tags: [ "Modbus", "communication protocol", "serial", "RS-232", "ASCII", "function codes", "coil" ]
+title: "Modbus Protocol"
+type: "page"
 ---
 
 ## Overview
 
-The Modbus protocol does not define the physical layer. Instead it uses RS-232C compatible serial interfaces, which are very common on microcontrollers.
+The Modbus communication protocol is a serial communication protocol. The Modbus protocol does not define the physical layer. Instead it uses RS-232C compatible serial interfaces, which are very common on microcontrollers.
 
 Check out the [Mobicon Modbus Protocol Reference Guide](http://modbus.org/docs/PI_MBUS_300.pdf) for detailed info. Another good tutorial is [Lammert Bies' Modbus interface](http://www.lammertbies.nl/comm/info/modbus.html).
 
@@ -33,86 +35,47 @@ The common function codes are shown in the below table.
         </tr>
     </thead>
     <tbody>
-<tr >
-<td >01
-</td>
-
-<td >Read coil status
-</td>
-</tr>
-<tr >
-
-<td >02
-</td>
-
-<td >Read input status
-</td>
-</tr>
-<tr >
-
-<td >03
-</td>
-
-<td >Read holding registers
-</td>
-</tr>
-<tr >
-
-<td >04
-</td>
-
-<td >Read input registers
-</td>
-</tr>
-<tr >
-
-<td >05
-</td>
-
-<td >Force single coil
-</td>
-</tr>
-<tr >
-
-<td >06
-</td>
-
-<td >Preset single register
-</td>
-</tr>
-<tr >
-
-<td >07
-</td>
-
-<td >Read exception status
-</td>
-</tr>
-<tr >
-
-<td >15
-</td>
-
-<td >Force multiple coils
-</td>
-</tr>
-<tr >
-
-<td >16
-</td>
-
-<td >Preset multiple registers
-</td>
-</tr>
-<tr >
-
-<td >17
-</td>
-
-<td >Report slave ID
-</td>
-</tr>
-</tbody>
+        <tr>
+            <td>01</td>
+            <td>Read coil status</td>
+        </tr>
+        <tr>
+            <td>02</td>
+            <td>Read input status</td>
+        </tr>
+        <tr>
+            <td>03</td>
+            <td>Read holding registers</td>
+        </tr>
+        <tr>
+            <td>04</td>
+            <td>Read input registers</td>
+        </tr>
+        <tr>
+            <td>05</td>
+            <td>Force single coil</td>
+        </tr>
+        <tr>
+            <td>06</td>
+            <td>Preset single register</td>
+        </tr>
+        <tr>
+            <td>07</td>
+            <td>Read exception status</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>Force multiple coils</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>Preset multiple registers</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>Report slave ID</td>
+        </tr>
+    </tbody>
 </table>
 
 ## Software
