@@ -1,10 +1,12 @@
 ---
-author: gbmhunter
-date: 2018-06-26 21:27:55+00:00
+author: "gbmhunter"
+date: 2018-06-26
+description: "A tutorial showing how to fit a linear curve to a set of data."
 draft: false
-title: Linear Curve Fitting
-type: page
-url: /mathematics/curve-fitting/linear-curve-fitting
+lastmod: 2019-01-10
+tags: [ "linear", "curve fitting", "least squares", "regression", "fit", "matrix", "error" ]
+title: "Linear Curve Fitting"
+type: "page"
 ---
 
 ## Fitting A Linear Curve (Line)
