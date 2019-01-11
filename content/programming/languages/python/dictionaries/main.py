@@ -1,3 +1,18 @@
+print('ITERATION')
+my_dict = {
+    'foo': 1,
+    'bar': 2
+}
+for key in my_dict:
+    print(f'key = {key}, value = {my_dict[key]}')
+
+my_dict = {
+    'foo': 1,
+    'bar': 2
+}
+for key, value in my_dict.items():
+    print(f'key = {key}, value = {value}')
+
 ## Iterating And Deleting Keys At The Same Time
 my_dict = {
     'foo': 1,
