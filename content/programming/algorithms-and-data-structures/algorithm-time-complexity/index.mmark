@@ -31,11 +31,23 @@ $$O(f(n))$$ (Big-O) is the most commonly used complexity, as we are normally int
 
 Normally, we use Big O notation to describe time complexity. Basically, it's a big $$O()$$ with brackets, and inside the bracket you write how the time complexity scales with the input. The input is usually called $$n$$, and usually represents the "number of things" the algorithm has to deal with.
 
-Big O notation ignores and constant terms and any constant coefficients (e.g. an algorithm that grows at $$2n$$ is still written as $$O(n)$$). This is because constant terms and constant coefficients do not effect the growth, you can think as Big-O notation as kind of analysis on the "derivative" .
+Big O notation ignores and constant terms and any constant coefficients (e.g. an algorithm that grows at $$2n$$ is still written as $$O(n)$$). This is because constant terms and constant coefficients do not effect the growth, you can think as Big-O notation as kind of analysis on the "derivative".
+
+When adding two big-O complexity classes we can move the functions inside the $$O$$:
+
+$$ O(f(n)) + O(g(n)) = O(f(n) + O(g(n))) $$
+
+Then the larger complexity class becomes dominant and we drop the lower class. For example:
+
+$$ O(n) + O(log(n)) = O(n + log(n)) = O(n) $$
+
+$n$ grows faster than $log(n)$, as $$ \lim_{n \to \infty} \frac{log(n)}{n} = 0 $$
+
+## Common Complexity Classes
 
 The following complexities are described from best to worst.
 
-## Constant Time
+### Constant Time
 
 The following algorithm just prints "hello" once, and doesn't depend on the number of elements (n). It will always run in constant time, and therefore is `\(O(1)\)`.
 
@@ -56,7 +68,7 @@ print "hello"
 * Reading an element from an array (or vector).
 * Reading an element from hash table (in the average case)
 
-## log(n) Time
+### log(n) Time
 
 `\(O(log(n))\)` is a time complexity where the number of operations.
 
@@ -91,7 +103,7 @@ for(int i = 0; i < n; i = i + 2)
 
 Note that even though the above example prints "hello" for every second `\(n\)` (`\(0.5n\)`), it is still said to have `\(O(n)\)` complexity (remember that coefficients are dropped).
 
-## nlog(n) Time
+### nlog(n) Time
 
 `\(O(nlog(n))\)` complexity can be thought of as a combination of `\(O(n)\)` and `\(O(log(n))\)` complexity.
 
@@ -103,7 +115,7 @@ for(int i = 0; i < n; i++)
         print "hello";
 ```
 
-## n^2 Time
+### n^2 Time
 
 `\(O(n^2)\)` complexity is proportional to the square of the number of elements `\(n\)`. This is a bad form of complexity to have, especially when `\(n\)` grows large.
 
@@ -127,7 +139,7 @@ for(int i = 0; i < n; i++)
 
 Note that this is just a 2x repetition of a algorithm with `\(O(n^2)\)` complexity. Repeating an algorithm (i.e. performing it twice) does not change the complexity.
 
-## n^3 Time
+### n^3 Time
 
 `\(O(n^3)\)` complexity is rarely seen in a single software algorithms (but can easily arise from the combination of multiple algorithms to solve a problem).
 
@@ -140,11 +152,11 @@ for(int i = 0; i < n; i++)
 
 Naturally, we could keep going forever explaining poorer and poorer complexities (`(\n^4\)`, `\(n^5\)`, e.t.c), but I think by now you understand the concept, and these higher complexities are rarely seen in real software algorithms.
 
-## 2^n Time
+### 2^n Time
 
-Exponential time.
+Exponential time is written as $$O(2^n)$$. Exponential time is always greater than any polynomial time, e.g. $$2^n$$ grows faster than $$n^1000$$.
 
-An example of $$O(2^n)$$ time is the naive (and simple) implementation of an algorithm that calculates the Fibanocci number, without the use of dynamic programming. It would look something like this:
+An example of $$O(2^n)$$ time is the naive (and simple) implementation of an algorithm that calculates the Fibonacci sequence, without the use of dynamic programming. It would look something like this:
 
 ```python
 def fibonacci(n):
@@ -154,9 +166,9 @@ def fibonacci(n):
         return fibonacci(n - 1) + fibonacci(n - 2)
 ```
 
-## n! Time
+### n! Time
 
-Factorial time.
+Factorial time is written as $$O(n!)$$. It is a very rare and hugely expensive complexity class.
 
 ## Amortized Complexity
 
