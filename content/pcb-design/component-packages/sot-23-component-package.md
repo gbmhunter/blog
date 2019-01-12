@@ -151,7 +151,9 @@ However, the 8 lead variant, SOT-23-8, has a smaller pitch of 0.65mm
 
 ## Non-standard Pin Numbering
 
-**WARNING:** The SOT-23-6 package by Rohm (a.k.a IMT4, SOT-457, SMT6) has non-standard, clockwise pin numbering starting at the top right pin.
+{{% warning %}}
+The SOT-23-6 package by Rohm (a.k.a IMT4, SOT-457, SMT6) has non-standard, clockwise pin numbering starting at the top right pin.
+{{% /warning %}}
 
 {{< figure src="/images/2015/04/rohm-sot-457-imt4-sot-23-6-component-package-non-standard-clockwise-pin-numbering-annotated.png" width="645px" caption="The Rohm SOT-23-6 component package (a.k.a. SOT-457, IMT4) with non-standard pin numbering."  >}}
 

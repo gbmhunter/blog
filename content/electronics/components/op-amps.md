@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2011-09-05
 draft: false
-title: Op-Amps
-type: page
-url: /electronics/components/op-amps
+lastmod: 2019-01-10
+title: "Op-Amps"
+type: "page"
 ---
 
 ## Overview
@@ -21,7 +21,9 @@ An op-amp is commonly drawn on schematics as:
 
 You may see this symbol with or without the voltage supply pins `\( V_{S+} \)` and `\( V_{S-} \)`. If they are not present, it is assumed that they are connected up to a power source which should be obvious from the design intent.
 
-**WARNING:** Always take note of the position of the inverting (-) and non-inverting (+) input terminals. Sometimes they can be drawn swapped around relative to the symbol shown above.
+{{% warning %}}
+Always take note of the position of the inverting (-) and non-inverting (+) input terminals. Sometimes they can be drawn swapped around relative to the symbol shown above.
+{{% /warning %}}
 
 ## Uses
 
@@ -30,8 +32,6 @@ You may see this symbol with or without the voltage supply pins `\( V_{S+} \)` a
 * Pre-amplifiers (amplifier's with a input voltage of 10mV or less)
 * Analogue mathematical operations (differentiators, integrators, summer, subtracters, e.t.c)
 * Voltage to current (transconductance) and current to voltage conversions (transimpedence)
-
-## Configurations
 
 ## Voltage Follower (aka Buffer)
 
@@ -71,7 +71,7 @@ G = 2 $$
 
 {{< figure src="/images/2011/09/non-inverting-op-amp-amplifier-simulation-schematic.png" width="465px" caption="The simulation schematic for a non-inverting op-amp amplifier."  >}}
 
-The results of the simulation are shown below. As you can see, the output voltage \(V_{out}\) is exactly twice the input voltage \(V_{in}\).
+The results of the simulation are shown below. As you can see, the output voltage `\(V_{out}\)` is exactly twice the input voltage `\(V_{in}\)`.
 
 {{< figure src="/images/2011/09/vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png" width="1700px" caption="A graph of Vout vs. Vin for a non-inverting op-amp amplifier circuit."  >}}
 
@@ -202,7 +202,9 @@ As a rule-of-thumb, you should use the lowest acceptable resistances in op-amp f
 
 What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-amps that can run from a single voltage supply, rather than requiring a dual positive/negative supply) market op-amps as _rail-to-rail_, and that the output of the op-amp can swing from ground to the positive rail. This is not exactly true. The op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. This voltage drop increases with the amount of current the op-amp is supplying to the load.
 
-**WARNING:** "_Rail-to-rail_" op-amps cannot really output either rail voltage. A negative power supply is always required if you want the op-amp to be able to output a true 0V.
+{{% warning %}}
+"_Rail-to-rail_" op-amps cannot really output either rail voltage. A negative power supply is always required if you want the op-amp to be able to output a true 0V.
+{{% /warning %}}
 
 **To achieve a true ground output, you need a negative voltage supply.** There are dedicated IC's designed to provide a small negative power supply to op-amps so that they can output true ground. One such example is the [Texas Instruments LM7705](http://www.ti.com/product/LM7705), a "_Low Noise Negative Bias Generator_". This IC only generates -230mV, which allows the designer to use CMOS-based op-amps which usually have a maximum supply voltage of 5.5V.
 

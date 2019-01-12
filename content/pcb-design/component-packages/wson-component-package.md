@@ -69,13 +69,17 @@ SOIC
 <li>Flash memory ICs</li>
 <li>Secondary-side bias regulators for DC-DC converters</li>
 </ul>
-</td></tr></tbody></table>
+</td></tr>
+</tbody>
+</table>
 
 ## Comments
 
 The WSON package has a exposed thermal pad on the underside. However, it is not normally electrically connected to anything, and is optionally soldered to the PCB. It is recommended to be soldered when the PCB has a large amount of flex, else left unconnected.
 
-Warning: Texas Instruments has a WSON package which does not have a pitch of 1.27mm! 
+{{% warning %}}
+Texas Instruments has a WSON package which does not have a pitch of 1.27mm!
+{{% /warning %}}
 
 Below is an "odd shaped" SON package used by Numonyx flash chips that goes under the name VDFPN8. Notice the half-round appearance of the pins.
 

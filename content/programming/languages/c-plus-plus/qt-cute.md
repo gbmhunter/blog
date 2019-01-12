@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2017-09-28 00:13:46+00:00
+author: "gbmhunter"
+date: 2017-09-28
 draft: false
-title: Qt (cute)
-type: page
-url: /programming/languages/c-plus-plus/qt-cute
+title: "Qt (cute)"
+type: "page"
 ---
 
 ## Threading

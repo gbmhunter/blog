@@ -229,4 +229,6 @@ So why use noexcept? One on the primary reasons for using noexcept is so that th
 
 The compiler doesn't actually guarantee that exceptions are not thrown in a non-throwing function. However, the behaviour of an exception thrown inside a function declared as noexcept is changed. Instead of the exception propagating up the call stack to the nearest applicable catch block, std::terminate() is called.
 
-**WARNING: Do not get noexcept confused with std::nothrow. noexcept is a C++ language keyword as explained above, while std::nothrow is a constant that can be passed into the new operator.**
+{{% warning %}}
+Do not get noexcept confused with std::nothrow. noexcept is a C++ language keyword as explained above, while std::nothrow is a constant that can be passed into the new operator.
+{{% /warning %}}

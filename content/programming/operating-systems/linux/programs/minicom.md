@@ -1,21 +1,20 @@
 ---
-author: gbmhunter
-date: 2014-07-07 00:36:56+00:00
+author: "gbmhunter"
+date: 2014-07-07
 draft: false
-title: minicom
-type: page
-url: /programming/operating-systems/linux/programs/minicom
+title: "minicom"
+type: "page"
 ---
 
 ## Overview
 
-minicom is a Linux program to . It calls itself a "friendly serial communications program". It is also available for the RaspberryPi.
+`minicom` is a Linux program. It calls itself a "friendly serial communications program". It is also available for the RaspberryPi.
 
 If you want to connect two terminals together and test the output/input of minicom, check out the [Connecting Two COM Ports Together" section on the socat program page](/programming/operating-systems/linux/programs/socat#connecting-two-com-ports-together).
 
 ## Installing
 
-If using a Debian-style Linux (incl. the RaspberryPi), you can install minicom with the following command:
+If using a Debian-style Linux (incl. the RaspberryPi), you can install `minicom` with the following command:
 
 ```sh   
 $ sudo apt-get install minicom
@@ -29,9 +28,11 @@ You normally start minicom with the `-s` flag, so that you can set the configura
 $ minicom -s
 ```
 
-**WARNING: Most serial devices will not used hardware flow control, but this is enabled by default in minicom. Sometimes, if this is left enabled and the hardware does not use it, you will receive no serial data from the device.**
+{{% warning %}}
+Most serial devices will not used hardware flow control, but this is enabled by default in minicom. Sometimes, if this is left enabled and the hardware does not use it, you will receive no serial data from the device.
+{{% /warning %}}
 
-However, you can configure some of the most-used settings directly from the command line. Use -D to set the device name:
+However, you can configure some of the most-used settings directly from the command line. Use `-D` to set the device name:
 
 ```sh   
 $ minicom -D /dev/ttyUSB0
@@ -51,7 +52,7 @@ Start minicom with the following command to enable logging:
 $ minicom -C MyLogFile.txt
 ```  
 
-minicom describes this option as "open capture file at startup". A quick way to clear a log file is by using the command cat /dev/null > MyLogFile.txt.
+minicom describes this option as "open capture file at startup". A quick way to clear a log file is by using the command `cat /dev/null > MyLogFile.txt`.
 
 ## Macros
 
@@ -77,23 +78,15 @@ minicom macros support the insertion of special characters (such as new lines an
     </thead>
 <tbody>
 <tr>
-<td >^J
-</td>
-
-<td >New line (\n)
-</td>
+<td >^J</td>
+<td >New line (\n)</td>
 </tr>
-<tr >
-
-<td >^M
-</td>
-
-<td >Carriage return (\r)
-</td>
+<tr>
+<td>^M</td>
+<td >Carriage return (\r)</td>
 </tr>
 </tbody>
 </table>
-
 
 ## How To Exit Minicom
 

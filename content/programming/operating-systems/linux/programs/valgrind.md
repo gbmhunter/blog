@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2017-06-12 17:53:05+00:00
+author: "gbmhunter"
+date: 2017-06-12
 draft: false
-title: valgrind
-type: page
-url: /programming/operating-systems/linux/programs/valgrind
+title: "valgrind"
+type: "page"
 ---
 
 ## Overview
@@ -78,9 +77,11 @@ To run callgrind, use the following command:
 
 NOTE: The order of the optional parameters to valgrind is important! Make sure --tool=callgrind comes BEFORE the path to your executable.
 
-**WARNING: Again, callgrind will make your program run 4-10x slower than usual. If this slow down is unacceptable for whatever reason, but you still want to profile your application, you may want to check out GCC's gprof which in my experience, causes much less of a performance drop.**
+{{% warning %}}
+Again, callgrind will make your program run 4-10x slower than usual. If this slow down is unacceptable for whatever reason, but you still want to profile your application, you may want to check out GCC's gprof which in my experience, causes much less of a performance drop.
+{{% /warning %}}
 
-This will generate a profile data file called callgrind.out.<pid> in the same folder as the exectuable. To display the results of the profiling:
+This will generate a profile data file called `callgrind.out.<pid>` in the same folder as the exectuable. To display the results of the profiling:
 
 ```sh
 ~$ callgrind_annotate callgrind.out.<pid>

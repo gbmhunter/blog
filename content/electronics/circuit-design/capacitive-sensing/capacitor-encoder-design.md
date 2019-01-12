@@ -1,20 +1,11 @@
 ---
-author: gbmhunter
-date: 2013-01-31 00:07:38+00:00
+author: "gbmhunter"
+date: 2013-01-31
 draft: true
-title: Capacitor Encoder Design
-type: page
-url: /electronics/circuit-design/capacitive-sensing/capacitor-encoder-design
+lastmod: 2019-01-10
+title: "Capacitor Encoder Design"
+type: "page"
 ---
-
-* Overview
-* Terminology
-* How They Work
-* What You Will Need
-* What Resolution/Accuracy Is Possible?
-* PCB Design
-* The Waveforms You Get
-* Firmware And Algorithm
 
 ## Overview
 
@@ -22,7 +13,9 @@ This page describes how to design a capacitor encoder with just two PCB's with c
 
 ## Terminology
 
-Warning, this is my terminology, and may not be consistent with other designs (as far as I'm aware, there is no industry standard).
+{{% warning %}}
+This is my terminology, and may not be consistent with other designs (as far as I'm aware, there is no industry standard).
+{{% /warning %}}
 
 * Encoders: A encoder is a complete system which can be used to measure a position. It may have one (relative) or more (two for absolute) **tracks**.
 * Tracks: A sequence of capacitance pads and tracks used for measuring the position of an object. One or more of these make up a complete **encoder**. A track contains many **channels**.
@@ -31,11 +24,11 @@ Warning, this is my terminology, and may not be consistent with other designs (a
 
 ## How They Work
 
-<blockquote>The basic principle is two PCB's, which slide across each other. The PCB's have multiple specially shaped copper areas, and the capacitance between the copper areas on each PCB change as the PCB's move. The capacitances are measured with a CDC (capacitance-to-digital converter), and then a signal processing algorithm is used to determine one PCB's position relative to the other.</blockquote>
+The basic principle is two PCBs, which slide across each other. The PCBs have multiple specially shaped copper areas, and the capacitance between the copper areas on each PCB change as the PCBs move. The capacitances are measured with a CDC (capacitance-to-digital converter), and then a signal processing algorithm is used to determine one PCBs position relative to the other.
 
 ## What You Will Need
 
-* PCB's with etched "pads" and "finger", more on this later
+* PCBs with etched "pads" and "finger", more on this later
 * A capacitance-to-digital converter (CDC)
 * A microcontroller
 * A suitable dielectric
@@ -97,7 +90,7 @@ A rotational capacitive encoder design is very much like the linear one, except 
 
 ## The Dielectric
 
-I recommend adding a dielectric between the PCB's (as well as the soldermask). Counter-intuitively, any dielectric added decreases the total capacitance. This is because although the dielectric increases the dielectric constant, it also increases the distance between the plates. This distance increase as a bigger effect on the capacitance than the dielectric increase, as per the [parallel-plate equation on the Capacitors page](/electronics/components/capacitors).
+I recommend adding a dielectric between the PCBs (as well as the soldermask). Counter-intuitively, any dielectric added decreases the total capacitance. This is because although the dielectric increases the dielectric constant, it also increases the distance between the plates. This distance increase as a bigger effect on the capacitance than the dielectric increase, as per the [parallel-plate equation on the Capacitors page](/electronics/components/capacitors).
 
 The reason I recommend adding a dielectric is that it **stabilizes** the capacitances. It reduces the change in capacitance due to the two PCB's moving away from each other and also when moving out of alignment (the sliding mechanism is never perfect), making signal processing a whole lot easier.
 
@@ -173,9 +166,9 @@ double Maths_CalcCorrelCo(double capVals[], double adjustedCurveSignature[], dou
 
 ## The Signature Waveform
 
-The following code shows how to convert the current high-precision double-type signature waveform array to a lower precision in **Octave **(an open-source Matlab equivalent), to save embedded memory space and speed up the execution time.  It reads comma-seperated values from a text file (which convieniently is how you initialise the array in C, just remove the data type, variable name, and curly braces), rounds the data to the precision specified by scalingFactor, and then saves the array (again, as comma-seperated values) to output.txt.
+The following code shows how to convert the current high-precision double-type signature waveform array to a lower precision in **Octave **(an open-source Matlab equivalent), to save embedded memory space and speed up the execution time.  It reads comma-separated values from a text file (which conveniently is how you initialise the array in C, just remove the data type, variable name, and curly braces), rounds the data to the precision specified by scalingFactor, and then saves the array (again, as comma-separated values) to output.txt.
 
-The array is scaled from 0 to scalingFactor, so is designed for unsigned data types. For example, if scaling factor was set to 255, it would produce an array of uint8.
+The array is scaled from `0` to `scalingFactor`, so is designed for unsigned data types. For example, if scaling factor was set to `255`, it would produce an array of `uint8`.
 
 No additional Octave packages are needed.
 

@@ -1,17 +1,18 @@
 ---
 author: gbmhunter
-date: 2015-08-12 21:25:58+00:00
+date: 2015-08-12
 draft: false
-title: Smart Pointers
+title: "Smart Pointers"
 type: page
-url: /programming/languages/c-plus-plus/smart-pointers
 ---
 
 ## Overview
 
 Smart pointers in C++ are pointer objects which have added functionality over the concept of a _raw pointer_, in where these advanced pointer objects can automatically delete the memory once there are no more references to it, preventing the user from having to remember to call delete/delete[]. It **could be seen as some form of basic garbage collection**, except it is still deterministic (i.e. you can know exactly when the memory will be freed).
 
-**WARNING: Although smart pointers may seem like the magic bullet and that you never should use raw pointers or references again, please note, it's VERY EASY TO ABUSE SMART POINTERS. Boring standard pointers and references still have very valid use cases. Smart pointers should only be used when dealing with object ownership (more on this below).**
+{{% warning %}}
+Although smart pointers may seem like the magic bullet and that you never should use raw pointers or references again, please note, it's VERY EASY TO ABUSE SMART POINTERS. Boring standard pointers and references still have very valid use cases. Smart pointers should only be used when dealing with object ownership (more on this below).
+{{% /warning %}}
 
 **Problems With Raw Pointers**
 
