@@ -2,9 +2,8 @@
 author: gbmhunter
 date: 2011-09-03 02:21:55+00:00
 draft: false
-title: IR Devices
+title: "IR Devices"
 type: page
-url: /electronics/components/ir-devices
 ---
 
 ## Overview

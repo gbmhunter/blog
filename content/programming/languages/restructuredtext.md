@@ -4,7 +4,6 @@ date: 2013-08-21 02:52:56+00:00
 draft: false
 title: ReStructuredText
 type: page
-url: /programming/languages/restructuredtext
 ---
 
 ## Overview
@@ -19,7 +18,7 @@ Cloud-based repository hosts (e.g. GitHub, BitBucket) README's (but not as popul
 
 Section titles are described in reST by underlining or both underlining and overlining the section header text with a sequence of non-alphanumeric characters. Adding these characters is called an **adornment**.
 
-Any character from the set - ` : ' " ~ ^ _ * + # < > may be used for the adornment.
+Any character from the set `- ` : ' " ~ ^ _ * + # < >` may be used for the adornment.
 
 You can nest section headers as much as you want, as long as you use a different character for the child and parent headers. The following example shows headers and child headers being declared.
 

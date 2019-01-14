@@ -115,7 +115,9 @@ int main() {
 }
 ```
 
-Note that you must compile and link with the `-ldl` option for `dlsym` to be found.
+{{% note %}}
+You must compile and link with the `-ldl` option for `dlsym` to be found.
+{{% /note %}}
 
 ## gprof2dot
 

@@ -4,7 +4,6 @@ date: 2011-09-06 06:38:44+00:00
 draft: false
 title: Electric Skateboard Firmware
 type: page
-url: /electronics/projects/electric-skateboard/electric-skateboard-firmware
 ---
 
 ## Overview

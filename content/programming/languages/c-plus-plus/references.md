@@ -4,7 +4,6 @@ date: 2013-12-25 03:17:14+00:00
 draft: false
 title: References
 type: page
-url: /programming/languages/c-plus-plus/references
 ---
 
 ## Overview
@@ -26,4 +25,6 @@ For those who come from a C background and understand pointers, treat it as thou
 
 References can simplify the syntax of certain pointer manipulation. They also useful when creating operator overloads, (e.g. the ++ operator for an enumeration), so that the syntax remains consistent with the base types in C++.
 
-**Undefined behaviour occurs if you ever return a local variable by reference, even if it's an rvalue reference.**
+{{% warning %}}
+Undefined behaviour occurs if you ever return a local variable by reference, even if it's an rvalue reference.
+{{% /warning %}}

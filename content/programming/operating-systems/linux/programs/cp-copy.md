@@ -4,7 +4,6 @@ date: 2017-01-13 16:23:00+00:00
 draft: false
 title: cp (copy)
 type: page
-url: /programming/operating-systems/linux/programs/cp-copy
 ---
 
 ## Overview

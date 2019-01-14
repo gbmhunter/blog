@@ -4,7 +4,6 @@ date: 2017-05-08 16:19:41+00:00
 draft: false
 title: Threading
 type: page
-url: /programming/languages/c-plus-plus/threading
 ---
 
 ## Condition Variables
@@ -57,7 +56,9 @@ Notification received.
 
 On entry, the `wait()` method simultaneously unlocks the mutex and waits for the condition. On exit, the `wait()` method relocks the mutex.
 
-Note the use of the boolean variable called wakeup_. This has to be used to protect against _spurious wakeups_. This is where the thread that is waiting on a condition variable gets woken up, even though it has not been notified. The code checks the boolean, and if still false, goes back to sleep by calling wait() again.
+{{% warning %}}
+Note the use of the boolean variable called wakeup_. This has to be used to protect against _spurious wakeups_. This is where the thread that is waiting on a condition variable gets woken up, even though it has not been notified. The code checks the boolean, and if still false, goes back to sleep by calling `wait()` again.
+{{% /warning %}}
 
 **How To Improve A Condition Variable (a.k.a let's create a semaphore!)**
 
@@ -221,13 +222,11 @@ This is one of the few use cases were the `mutable` keyword should be used.
 #include <thread>
 
 // The function we want to execute on the new thread.
-void task1()
-{
+void task1() {
     cout << "Thread says hello!" << endl;
 }
 
-int main()
-{
+int main() {
     // Constructs the new thread (and runs it). This does not block the current thread.
     std::thread myThread(task1);
 
@@ -279,7 +278,9 @@ void SetPriority(std::thread& thread, int policy, int priority) {
 }
 ```
 
-**Note that this is not platform independent code!**
+{{% warning %}}
+This is not platform independent code!**
+{{% /warning %}}
 
 **Common Errors**
 

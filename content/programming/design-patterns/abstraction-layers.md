@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2014-08-07 05:13:29+00:00
+date: 2014-08-07
 draft: false
-title: Abstraction Layers
+title: "Abstraction Layers"
 type: page
-url: /programming/design-patterns/abstraction-layers
 ---
 
 ## Overview
@@ -96,13 +95,8 @@ Plenty of the methods return a boolean true/false value to indicate whether the 
 </td>
 </tr>
 <tr >
-
-<td >osal.Malloc()
-</td>
-
-<td >Performs an OS-safe memory allocation on the heap. This can includes things like thread-safety and memory coalescence which the standard C/C++ library versions will not neccessarily provide. Related to osal.Free().
-</td>
-
+<td >osal.Malloc()</td>
+<td >Performs an OS-safe memory allocation on the heap. This can includes things like thread-safety and memory coalescence which the standard C/C++ library versions will not neccessarily provide. Related to osal.Free().</td>
 <td>
     <ul>
         <li>FreeRTOS (pvPortMalloc())</li>
@@ -112,7 +106,7 @@ Plenty of the methods return a boolean true/false value to indicate whether the 
 </tbody>
 </table>
 
-Other operations not mentioned above that might be OS specific are the memory allocations functions such as malloc() and friends, new, delete (as well as their brothers new[] and delete[]). The OS may provide enhanced version of these memory allocation functions that provide things such as thread-safety and anti-fragmentation abilities (e.g. coalescence). For example, FreeRTOS provides you with the functions pvPortMalloc() and vFree().
+Other operations not mentioned above that might be OS specific are the memory allocations functions such as `malloc()` and friends, `new`, `delete` (as well as their brothers `new[]` and `delete[]`). The OS may provide enhanced version of these memory allocation functions that provide things such as thread-safety and anti-fragmentation abilities (e.g. coalescence). For example, FreeRTOS provides you with the functions pvPortMalloc() and vFree().
 
 The nice thing about C++ is that you can do a program-wide overide of the new/delete family of operations which can then in turn call the OS-specific versions, making your code very portable.
 
@@ -132,21 +126,17 @@ GPIO can be one of the easiest peripherals to write a hardware abstraction layer
     </thead>
 <tbody >
 <tr >
-<td >HalGpio.Set(GpioStates gpioState)
-</td>
-
-<td >Sets the GPIO pin either LOW or HIGH, when the GPIO is configured as a digital output.
-</td>
-
+<td >HalGpio.Set(GpioStates gpioState)</td>
+<td >Sets the GPIO pin either LOW or HIGH, when the GPIO is configured as a digital output.</td>
 <td >
-	  * ATmega
-	  * PSoC (CyPin.Set(), CyPin.Clear())
-
+    <ul>
+        <li>ATmega</li>
+        <li>PSoC (CyPin.Set(), CyPin.Clear())</li>
+    </ul>
 </td>
 </tr>
 </tbody>
 </table>
-
 
 ## UART
 
@@ -186,55 +176,31 @@ GPIO can be one of the easiest peripherals to write a hardware abstraction layer
 </td>
 </tr>
 <tr>
-
-<td >bool HalUart.SetBaudRate(BuadRates baudRate)
-</td>
-
-<td >Changes the baud rate for the UART. Most embedded systems come with a discrete number of availiable baud rates, hence the use of an enumeration BaudRates. Note that different platforms may support a different number of baud rates. Returns true if buadRate is valid for a particular platform and buad rate was changed successfully, otherwise returns false.
-</td>
-
+<td >bool HalUart.SetBaudRate(BuadRates baudRate)</td>
+<td >Changes the baud rate for the UART. Most embedded systems come with a discrete number of availiable baud rates, hence the use of an enumeration BaudRates. Note that different platforms may support a different number of baud rates. Returns true if buadRate is valid for a particular platform and buad rate was changed successfully, otherwise returns false.</td>
 <td >
-
-
-
-	  * ATmega
-	  * PSoC
-
-
+    <ul>
+        <li>ATmega</li>
+        <li>PSoC</li>
+    </ul>
 </td>
 </tr>
-<tr style="text-align: justify;" >
-
-<td >bool HalUart.Start()
-</td>
-
-<td >Initialises/configures/starts the UART (the constructor could also do this). Returns true if starting of UART was successful, otherwise false.
-</td>
-
+<tr>
+<td >bool HalUart.Start()</td>
+<td >Initialises/configures/starts the UART (the constructor could also do this). Returns true if starting of UART was successful, otherwise false.</td>
 <td >
-
-
-
-	  * PSoC (CyUart.Start())
-
-
+    <ul>
+        <li>PSoC (CyUart.Start())</li>
+    </ul>
 </td>
 </tr>
 <tr >
-
-<td style="text-align: justify;" >bool HalUart.Stop()
-</td>
-
-<td style="text-align: justify;" >Deinitialises/stops the UART (the destructor could also do this). Returns true if stopping of UART was successful, otherwise false.
-</td>
-
+<td>bool HalUart.Stop()</td>
+<td>Deinitialises/stops the UART (the destructor could also do this). Returns true if stopping of UART was successful, otherwise false.</td>
 <td >
-
-
-
-	  * PSoC (CyUart.Stop())
-
-
+    <ul>
+        <li>PSoC (CyUart.Stop())</li>
+    </ul>
 </td>
 </tr>
 </tbody>

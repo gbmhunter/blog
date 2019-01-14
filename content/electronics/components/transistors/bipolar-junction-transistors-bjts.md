@@ -23,7 +23,7 @@ The differences between the NPN and PNP transistor types are analogous to the [N
 
 The schematic symbols for NPN and PNP transistors are shown below:
 
-{{< figure src="/images/2015/08/transistors-pnp-and-npn-schematic-symbols.png" width="498px" caption="Schematics symbols for NPN and PNP transistors. Note that the collector and emitter have flipped positions for the PNP, as commonly drawn on schematics."  >}}
+{{< figure src="/images/2015/08/transistors-pnp-and-npn-schematic-symbols.png" width="498px" caption="Schematics symbols for NPN and PNP transistors. Note that the collector and emitter have flipped positions for the PNP, as commonly drawn on schematics." >}}
 
 Notice that the collector and emitter have been flipped for the PNP (compared to the NPN), this is how they are normally drawn on schematics.
 
@@ -55,7 +55,7 @@ Because the collector current is usually much larger than the base current, for 
 
 As a general rule, NPN transistors are useful for connecting things to ground. PNP transistors are useful for connecting things to your power rail.
 
-NPN's require a small positive base-emitter voltage to create a current which flows into the base. This current, multiplied by the gain of the transistor, determines the collector-to-emitter current (well, to be technically correct, the _maximum_ collector current). Because of this, a NPN transistor will only conduct when both the base and collector have a higher voltage than the emitter.
+NPNs require a small positive base-emitter voltage to create a current which flows into the base. This current, multiplied by the gain of the transistor, determines the collector-to-emitter current (well, to be technically correct, the _maximum_ collector current). Because of this, a NPN transistor will only conduct when both the base and collector have a higher voltage than the emitter.
 
 A PNP transistor will only conduct when both the base and collector have a negative voltage w.r.t the emitter.
 

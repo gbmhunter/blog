@@ -2,16 +2,17 @@
 author: gbmhunter
 date: 2017-05-31 17:27:09+00:00
 draft: false
-title: Building
+title: Building Yocto
 type: page
-url: /programming/embedded-linux/yocto-project/building
 ---
 
 ## What Do All The Build Output Files Do?
 
 A Yocto build normally generated a confusing amount of files in the output build directory. This section aims to help you work out what all these files do!
 
-**Note that only important files are listed here, and some may be symlinks to the actual file (the symlink is listed below instead of the destination file because it's file name is easier to read and understand).**
+{{% note %}}
+Only important files are listed here, and some may be symlinks to the actual file (the symlink is listed below instead of the destination file because it's file name is easier to read and understand).
+{{% /note %}}
 
 Example files are colored as they would appear with the `ls` command under Ubuntu. Normal files are in **white**. Symlinks are in **light blue**. Listed in alphabetical order.
 

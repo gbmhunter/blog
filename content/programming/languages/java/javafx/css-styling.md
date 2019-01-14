@@ -4,7 +4,6 @@ date: 2016-11-05 11:15:02+00:00
 draft: false
 title: CSS Styling
 type: page
-url: /programming/languages/java/javafx/css-styling
 ---
 
 ## Overview
@@ -23,7 +22,7 @@ myScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm(
 
 ## Background
 
-The background of JavaFX nodes can be styled using a variety of -fx-background-XXX properties.
+The background of JavaFX nodes can be styled using a variety of `-fx-background-XXX` properties.
 
 ## Basic Colour
 

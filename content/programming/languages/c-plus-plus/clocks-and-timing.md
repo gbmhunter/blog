@@ -4,7 +4,6 @@ date: 2014-05-07 04:17:19+00:00
 draft: false
 title: Clocks And Timing
 type: page
-url: /programming/languages/c-plus-plus/clocks-and-timing
 ---
 
 ## Overview
@@ -37,7 +36,7 @@ C++11 introduced three types of clocks:
 
 Each clock has a starting point (epoch) and tick rate. For example, a clock may have an epoch of 1 Jan, 1970 (UNIX epoch) and tick once per second.
 
-Note that all three are somewhat implementation/system specific (rely on OS calls).
+All three are somewhat implementation/system specific (rely on OS calls).
 
 The object returned from any `clock::now()` is a `time_point`.
 
@@ -112,7 +111,9 @@ int main() {
 
 Run the above example online at [https://wandbox.org/permlink/KSpr5KgvSIDimNb5](https://wandbox.org/permlink/KSpr5KgvSIDimNb5).
 
-Note: To use `std::chrono::duration` without having to specify the units requires C++17, as _template argument deduction_ feature is required. If you are using C++11 or C++14, you would have to change the above to:
+{{% note %}}
+To use `std::chrono::duration` without having to specify the units requires C++17, as _template argument deduction_ feature is required. If you are using C++11 or C++14, you would have to change the above to:
+{{% /note %}}
 
 ```c++    
 // C++14

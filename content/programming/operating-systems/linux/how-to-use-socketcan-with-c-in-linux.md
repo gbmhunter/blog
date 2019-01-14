@@ -27,22 +27,22 @@ struct can_frame {
 };
 ```
 
-The 32-bit can_id value has the following structure:
+The 32-bit `can_id` value has the following structure:
 
 **[0-28]**: CAN identifier (11/29bit)  
 
- **[29]**: Error frame flag (0 = data frame, 1 = error frame)  
+**[29]**: Error frame flag (0 = data frame, 1 = error frame)  
 
- **[30]**: Remote transmission request flag (1 = rtr frame)  
+**[30]**: Remote transmission request flag (1 = rtr frame)  
 
- **[31]**: Frame format flag (0 = standard 11bit, 1 = extended 29bit)
+**[31]**: Frame format flag (0 = standard 11bit, 1 = extended 29bit)
 
 The padding in the above struct allows data to be aligned to a 64-bit boundary. This allows the user to define their own structs and unions to easily access the data (by _casting_). For example, you could access all 8-bytes of data as a single 64-bit value if desired.
 
 
 Note that the `can_id` structure does not map directly to the bits present in the arbitration field of a CAN message.
 
-There is also an extended frame struct, called canfd_frame.
+There is also an extended frame struct, called `canfd_frame`.
 
 ```c    
 struct canfd_frame {
@@ -69,7 +69,7 @@ _**libsocketcan**_ is a Linux library that provides some userspace functionality
 Although _libsocketcan_ seems to work fine for physical CAN interfaces (e.g. can0), **I have had issues when using it with a virtual CAN interface** (e.g. vcan0). Specifically, functions such as can_get_state() do not seem to work correctly.
 {{% /warning %}}
 
-You can install libsocketcan on your Linux machine by following the below steps:
+You can install `libsocketcan` on your Linux machine by following the below steps:
 
 1. Clone the **libsocketcan** git repository:  
 

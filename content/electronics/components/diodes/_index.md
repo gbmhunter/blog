@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2011-09-05 06:12:18+00:00
+author: "gbmhunter"
+date: 2011-09-05
 draft: false
-title: Diodes
-type: page
-url: /electronics/components/diodes
+title: "Diodes"
+type: "page"
 ---
 
 ## Overview
@@ -62,7 +61,9 @@ Diodes come in many [component packages](/electronics/circuit-design/component-p
 
 Most diodes have their polarity marked with a single line near the cathode (the "more negative" end when conducting current). They will let current flow from anode to cathode but not in the other direction.
 
-Note that some diodes, such as bi-directional TVS diodes, do not have a polarity.
+{{% note %}}
+Some diodes, such as bi-directional TVS diodes, do not have a polarity.
+{{% /note %}}
 
 ## Schottky Diodes
 
@@ -77,7 +78,7 @@ Zener diodes are diodes which have a specified reverse blocking voltage at which
 Uses for zener diodes include:
 
 * Low power/simple voltage reference
-* Over-voltage protection for low power applications (use TVS diodes to dissapate high energy voltage spikes)
+* Over-voltage protection for low power applications (use TVS diodes to dissipate high energy voltage spikes)
 * To turn on a sub-circuit once a certain voltage level is reached (e.g. an LED in a simple battery charging circuit)
 
 You can purchase Zeners with a reverse voltage drop as low as 1.8V all the way to above 100V. For voltage drops less than 1.8V, you can stack (i.e. place in series) multiple normal or schottky diodes in forward bias.

@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2014-04-14 00:16:28+00:00
+author: "gbmhunter"
+date: 2014-04-14
 draft: false
-title: How To Unbrick A PICkit 3
-type: page
-url: /programming/microcontrollers/pic-and-dspic-family/how-to-unbrick-a-pickit-3
+title: "How To Unbrick A PICkit 3"
+type: "page"
 ---
 
 ## Overview

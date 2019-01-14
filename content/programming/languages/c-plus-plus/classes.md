@@ -4,7 +4,6 @@ date: 2013-12-25 11:38:20+00:00
 draft: false
 title: Classes
 type: page
-url: /programming/languages/c-plus-plus/classes
 ---
 
 ## What Is A Class?
@@ -14,30 +13,31 @@ A class can be basically seen as a super-charged structure. It can do all the th
 ## A Simple Class Example
 
 The following example defines a class for a Point (user chosen name).
-    
-    class Point
-    {
-       private:
-    
-          int32_t x;
-          int32_t y;
-    
-       public:
-    
-          int32_t GetX()
-          {
-             return x;
-          }
-    
-          int32_t GetY()
-          {
-             return y;
-          }
-    };
+
+```c++
+class Point {
+   private:
+
+      int32_t x;
+      int32_t y;
+
+   public:
+
+      int32_t GetX() {
+         return x;
+      }
+
+      int32_t GetY() {
+         return y;
+      }
+};
+```
 
 We can then go and use the Point class to create Point objects.
-    
-    Point myFirstPoint = new Point();
+
+```c++
+Point myFirstPoint = new Point();
+```
 
 The above statement says two things, first it says that myFirstPoint is of type Point (Point myFirstPoint), and then it is equal to a new Point object (= new Point();). The first part **declares** the variable, the second part **initialises** the variable.
 
@@ -45,7 +45,9 @@ Note that a class by itself doesn't create an objects you can use (the exception
 
 ## Member Functions
 
-Note: All C++ member functions are implicitly named inline. Thus there is no need to use the word inline, as it is already "present". Thus the two member functions below are identical:
+{{% note %}}
+All C++ member functions are implicitly named inline. Thus there is no need to use the word inline, as it is already "present". Thus the two member functions below are identical.
+{{% /note %}}
     
     // Identical to Point2
     class Point1
@@ -61,7 +63,7 @@ Note: All C++ member functions are implicitly named inline. Thus there is no nee
 
 ## But Structures Can Have Functions Too?
 
-A little used feature is that C++ also allows structures (aka struct) to have functions defined inside them (as apposed to C, where you could only define function pointers inside the structure).
+A little used feature is that C++ also allows structures (aka `struct`) to have functions defined inside them (as apposed to C, where you could only define function pointers inside the structure).
 
 ## Remembering The Parent
 

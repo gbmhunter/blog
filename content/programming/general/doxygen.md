@@ -133,7 +133,9 @@ The first time you use Doxygen, you open up your newly created documentation and
 */
 ```
 
-Note that this code to create a main page doesn't have to be anywhere special, it can be in of the files that Doxygen parses during document creation.
+{{% note %}}
+This code to create a main page doesn't have to be anywhere special, it can be in of the files that Doxygen parses during document creation.
+{{% /note %}}
 
 ## Doxygen "Escapes" For Comment Blocks
 

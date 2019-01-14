@@ -1,11 +1,10 @@
 ---
-author: gbmhunter
-date: 2016-03-10 01:40:57+00:00
+author: "gbmhunter"
+date: 2016-03-10
 draft: false
 tags: [ "4-20mA", "current loop", "analogue", "transmitter", "receiver", "over-voltage", "HART", "communication protocol", "out-of-band signalling", "noise", "filtering", "buffering", "microcontroller", "ISA S50.1", "NAMUR NE43", "2-Wire", "3-Wire" ]
-title: 4-20mA Current Loops
+title: "4-20mA Current Loops"
 type: page
-url: /electronics/communication-protocols/4-20ma-current-loops
 ---
 
 ## Overview
@@ -19,8 +18,6 @@ The first uses of the 4-20mA current loop appeared in the 1950's.
 The reason that the valid range is set between 4-20mA and not say, 0-20mA is so that no current can be used to signify that the transmitter is either not connected or not working correctly.
 
 It also allows devices to be self-powered from the current-loop, as long as the devices consume more than 4mA. The 0-20mA protocol does not allow for self-powered devices.
-
-Note that some devices do use a 0-20mA protocol instead.
 
 ## Types
 

@@ -4,9 +4,7 @@ date: 2013-03-19 22:10:03+00:00
 draft: false
 title: Components
 type: page
-url: /programming/microcontrollers/psoc/components
 ---
-
 
 ## Overview
 
@@ -27,7 +25,9 @@ ClkCpTimer_Start();
 
 {{< figure src="/images/2013/03/custom-user-c-code-in-psoc-api-files.png" width="688px" caption="The correct place to enter custom user code in automatically generated Cypress component API files."  >}}
 
-(note: This is not an exhaustive list, for a list of all components, download [PSoC Creator](http://www.cypress.com/?id=2494) and browse through the included library)
+{{% note %}}
+This is not an exhaustive list, for a list of all components, download [PSoC Creator](http://www.cypress.com/?id=2494) and browse through the included library.
+{{% /note %}}
 
 ## A Note On Sleeping
 
@@ -47,7 +47,9 @@ Some of the higher-end PSoC microcontrollers contain 2 SAR ADCs. Remember that w
 
 The higher-end PSoC microcontrollers also have Delta-Sigma ADC's, which are more accurate than the SAR ADC's (albeit with a slower conversion time).
 
-**WARNING:** Calling `AdcCp_StartConvert()` disables the SOC pin indefinitely if triggered mode is enabled (this always gets me).
+{{% warning %}}
+Calling `AdcCp_StartConvert()` disables the SOC pin indefinitely if triggered mode is enabled (this always gets me).
+{{% /warning %}}
 
 ## Analogue Multiplexer
 
@@ -248,8 +250,7 @@ To define the function (the actual interrupt code), do not just use the stardard
 // This one is for a UART receive interrupt
 // Notice the CY_ISR() macro, this is provided by 
 // Cypress to increase portability.
-CY_ISR(UartRxISR)
-{
+CY_ISR(UartRxISR) {
     // Do something in interrupt
 }
 ```
@@ -302,11 +303,13 @@ The Pulse Converter component is useful to convert variable width input pulses i
 
 {{< figure src="/images/2013/03/psoc-component-pulse-converter-trigger-in-out.png" width="388px" caption="The PSoC Pulse Converter component, being used here to output constant-width pulses."  >}}
 
-**Note: With this component, there can (and likely will be) a delay between the rising edge of the input pulse and the rising edge of the output pulse, depending on the phase difference between the two clocks.**
+{{% warning %}}
+With this component, there can (and likely will be) a delay between the rising edge of the input pulse and the rising edge of the output pulse, depending on the phase difference between the two clocks.
+{{% /warning %}}
 
 ## Quadrature Decoder
 
-The quadrature decoder is a useful component when interfacing with incremental encoders. It accepts A, B and N (optional) channel quadrature inputs, and converts the pulses into a count. The count is configurable to be 8, 16 or 32-bit. You can select to to count on every pulse transistion for the highest resolution (4 per 'pulse'), to just one per pulse. It also features glitch filters and a configurable interrupt source. The interrupt source does not have a compare feature, so one of the let-downs is that most of the processing of the count has to be done by software polling.
+The quadrature decoder is a useful component when interfacing with incremental encoders. It accepts A, B and N (optional) channel quadrature inputs, and converts the pulses into a count. The count is configurable to be 8, 16 or 32-bit. You can select to to count on every pulse transition for the highest resolution (4 per 'pulse'), to just one per pulse. It also features glitch filters and a configurable interrupt source. The interrupt source does not have a compare feature, so one of the let-downs is that most of the processing of the count has to be done by software polling.
 
 I have used this for controlling a [BLDC motor](/electronics/circuit-design/bldc-motor-control) that had an incremental encoder attached to it's shaft at it worked perfectly! The picture below shows the component connected to the input pins of the incremental encoder. The N channel was not used as I did not want the count to be reset every cycle.
 
@@ -354,7 +357,7 @@ Cypress has released a USB2UART driver for the PSoC 3 and PSoC 5 range. It allow
 
 Supports full-speed USB. However, there is no USB host support, so the PSoC always has to act as the device. Some PSoC 3 devices with 32kB or more of flash support USB, as well as PSoC 5 devices.
 
-The USB module supports interrupt, control, bulk and isochronous transfer types. It provides support for bootloading, HID (human-interface device), audio classes, MIDI devices, and CDC classes.
+The USB module supports interrupt, control, bulk and isosynchronous transfer types. It provides support for bootloading, HID (human-interface device), audio classes, MIDI devices, and CDC classes.
 
 ## VDAC
 
@@ -369,13 +372,11 @@ The VDAC component can be very helpful while debugging. You can use it to "trace
 This technique gives both you the execution time of a block of code, as well as the order of execution, which is important to know when running an embedded operating system (such as FreeRTOS).
 
 ```c    
-void main()
-{
+void main() {
     VDac8_SetVoltage(0);
     VDac8_Start();
 
-    while(1)
-    {
+    while(1) {
         WatchedFunction();
     }
 }
@@ -384,8 +385,7 @@ void main()
 // will able to determine the code execution times 
 // of it's different parts based on the voltage output
 // by the VDAC component.
-void WatchedFunction()
-{
+void WatchedFunction() {
     VDac8_SetVoltage(100);
     // Code here...
     VDac8_SetVoltage(200);
@@ -393,7 +393,6 @@ void WatchedFunction()
 
     // Reset VDAC to 0V
     VDac8_SetVoltage(0);
-
 }
 ```
 
@@ -401,15 +400,15 @@ void WatchedFunction()
 
 Info last updated for: _cy_boot v5.20_.
 
-Some PSoC microcontrollers have a built-in hardware watchdog. Because the watchdog is built into the silicon, it is not included in the PSoC Creator Component Catalog, and is not shown on the schematic design (.cydwr file).
+Some PSoC microcontrollers have a built-in hardware watchdog. Because the watchdog is built into the silicon, it is not included in the PSoC Creator Component Catalog, and is not shown on the schematic design (`.cydwr` file).
 
 The ILO (internal low-speed oscillator) is used to provide the watchdog with a clock source.
 
-The watchdog is started with the function CyWdtStart(). Note that once you make a call to CyWdtStart(), there is no way to disable the watchdog until an IPOR (imprecise power-on reset) event occurs. This is a purposeful design choice for application safety.
+The watchdog is started with the function CyWdtStart(). Note that once you make a call to `CyWdtStart()`, there is no way to disable the watchdog until an IPOR (imprecise power-on reset) event occurs. This is a purposeful design choice for application safety.
 
-NOTE: Although it seems like once you call CyWdtStart(), you are guaranteed that the device will reset if the watchdog is not fed, there is one exception. Putting the PSoC microcontroller into the _hibernate_ sleep mode will also halt the watchdog timer!
+NOTE: Although it seems like once you call `CyWdtStart()`, you are guaranteed that the device will reset if the watchdog is not fed, there is one exception. Putting the PSoC microcontroller into the _hibernate_ sleep mode will also halt the watchdog timer!
 
-The watchdog is cleared (a.k.a. fed) with the function CyWdtClear(). This must be called periodically to prevent the watchdog from resetting the microcontroller.
+The watchdog is cleared (a.k.a. fed) with the function `CyWdtClear()`. This must be called periodically to prevent the watchdog from resetting the microcontroller.
 
 Care must be taken when a watchdog is activated for an application that writes to either flash or EEPROM. It can take up to 20ms to perform a flash/EEPROM write, by which the watchdog could trigger an cause a reset.
 

@@ -49,7 +49,7 @@ Code To Cause Issue:
     }
     ```
 
-Note how the print to std::cout causes the bug to occur. Other, non-stream operations will likely cause a similar issue
+The print to `std::cout` causes the bug to occur. Other, non-stream operations will likely cause a similar issue
 
 **Effects:** Effects GCC v6.2.0, possibly others.
 

@@ -30,7 +30,7 @@ The following image shows the schematic symbol and pin names for both an N-chann
 
 ## Important Parameters
 
-Note that with all voltage parameters that mention two pins of a MOSFET (e.g. \(V_{DS(max)}\)), the voltage is measured with respect to the second pin (e.g. source). This would be the same as connecting the red probe of a multimeter to the drain, and the black probe to the source.
+Note that with all voltage parameters that mention two pins of a MOSFET (e.g. `\(V_{DS(max)}\)`), the voltage is measured with respect to the second pin (e.g. source). This would be the same as connecting the red probe of a multimeter to the drain, and the black probe to the source.
 
 Sorted by alphabetical order, including subscripts.
 
@@ -147,7 +147,7 @@ CMOS devices have PNPN structures. This forms a parasitic thyristor, which can c
 
 The body effect (also known as the Substrate Bias Effect of a MOSFET describes how the threshold voltage of a MOSFET, `\(V_{TH}\)` is affected by the voltage difference between the substrate and source, `\(V_{SB}\)`. Because the source-to-body voltage can effect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_.
 
-Note that most discrete MOSFET's that you can buy internally tie the substrate to the source, meaning `\(V_{SB} = 0V\)`. This prevents any body effect from occuring.
+Note that most discrete MOSFET's that you can buy internally tie the substrate to the source, meaning `\(V_{SB} = 0V\)`. This prevents any body effect from occurring.
 
 Do you want the huge equation that tells you how the threshold voltage changes? Here you go:
 
@@ -163,7 +163,11 @@ Do you want the huge equation that tells you how the threshold voltage changes? 
 
 ## The Substrate (Body) Connection
 
-You generic MOSFET's actually have four leads (pins). It's just that one of them, the substrate (body) lead, is normally connected internally to the source, and so you only get three external connections. Note: There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
+You generic MOSFET's actually have four leads (pins). It's just that one of them, the substrate (body) lead, is normally connected internally to the source, and so you only get three external connections.
+
+{{% note %}}
+There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
+{{% /note %}}
 
 {{< figure src="/images/2011/09/mosfet-four-terminal-internal-diagram.gif" width="311px" caption="Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/."  >}}
 

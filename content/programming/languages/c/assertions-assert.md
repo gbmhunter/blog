@@ -4,22 +4,21 @@ date: 2013-06-17 21:34:52+00:00
 draft: false
 title: Assertions (assert())
 type: page
-url: /programming/languages/c/assertions-assert
 ---
 
 ## Overview
 
-The basic premise behind an assert(bool_t value) is that the **macro/function checks to make sure that value is true.** The coder adds the checks where the expected result should be true. (i.e. don't use them as an if statement).  If the value is not true (i.e. false), the software/firmware takes specific action.
+The basic premise behind an `assert(bool_t value)` is that the **macro/function checks to make sure that value is true.** The coder adds the checks where the expected result should be true. (i.e. don't use them as an if statement).  If the value is not true (i.e. false), the software/firmware takes specific action.
 
-For a software application, this "specific action" may be printing out the filename and line number the assert() was raised in, and then exiting the application. For a firmware application, this may be printing out the filename and line number the assert() was raised in, and then restarting (it does not make sense to "quit" in a firmware environment).
+For a software application, this "specific action" may be printing out the filename and line number the `assert()` was raised in, and then exiting the application. For a firmware application, this may be printing out the filename and line number the `assert()` was raised in, and then restarting (it does not make sense to "quit" in a firmware environment).
 
-Assertions refer to the use of both the standard C library assert() macro, and the use of similar user-defined macros.
+Assertions refer to the use of both the standard C library `assert()` macro, and the use of similar user-defined macros.
 
-If you are looking for a full-blown assert() example, check out the compilable/testable assert() code snippet at [http://ideone.com/CSX6wN](http://ideone.com/CSX6wN).
+If you are looking for a full-blown `assert()` example, check out the compilable/testable `assert()` code snippet at [http://ideone.com/CSX6wN](http://ideone.com/CSX6wN).
 
 ## A Simple assert() Using A Macro
 
-**assert() is usually defined in C using a macro **(rather than a function), due to the ability of automatically keep track of things such as the filename and line number that the assert() was written on.
+**`assert()` is usually defined in C using a macro (rather than a function)**, due to the ability of automatically keep track of things such as the filename and line number that the `assert()` was written on.
 
 A basic assert macro could have the following definition:
 
@@ -29,7 +28,7 @@ A basic assert macro could have the following definition:
 
 Note that the ternary operator is used here instead of an if statement.
 
-`AssertRaised()` is a function you have to write that will handle any raised assert() 's. It would have the following declaration:
+`AssertRaised()` is a function you have to write that will handle any raised `assert()`'s. It would have the following declaration:
 
 ```c   
 void AssertRaised(const char * filename, int lineNumber); 

@@ -61,7 +61,11 @@ The actual ripple will be slightly larger than this due to the ESR of the capaci
     \(R_{ESR}\) = the parasitic series resistance of the output capacitor<br>
 </p>
 
-The total output ripple is the sum of the ripple caused by the capacitance, and the ripple cause by the ESR. Note that these equations assume a constant load. Load transients (fluctuations in the load current) will also cause voltage ripple.
+The total output ripple is the sum of the ripple caused by the capacitance, and the ripple cause by the ESR. 
+
+{{% note %}}
+These equations assume a constant load. Load transients (fluctuations in the load current) will also cause voltage ripple.
+{{% /note %}}
 
 ## Down Conversion
 
@@ -73,13 +77,13 @@ The price you pay for this added down conversion feature is a slightly higher co
 
 ## Input Voltage Range
 
-Typically, boost IC's with an internal switch (a converter) can support lower input voltages than those that require an external switch (a controller). A typical minimum input voltage for a converter is in the range 0.3-0.9V, while a controller's minimum is in the range 0.9-1.8V.
+Typically, boost ICs with an internal switch (a converter) can support lower input voltages than those that require an external switch (a controller). A typical minimum input voltage for a converter is in the range 0.3-0.9V, while a controller's minimum is in the range 0.9-1.8V.
 
 ## Buck Converter Calculator
 
 You can find a buck converter calculator as part of [mbedded.ninja's NinjaCalc web app](http://ninja-calc.mbedded.ninja/buck-converter-calculator).
 
-{{< figure src="/images/2015/03/ninja-calc-buck-converter-calculator-screenshot.png" width="956px" caption="A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0)."  >}}
+{{< figure src="/images/2015/03/ninja-calc-buck-converter-calculator-screenshot.png" width="956px" caption="A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0)." >}}
 
 ## Examples
 

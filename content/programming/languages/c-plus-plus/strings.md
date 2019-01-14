@@ -4,21 +4,20 @@ date: 2014-01-08 19:48:56+00:00
 draft: false
 title: Strings
 type: page
-url: /programming/languages/c-plus-plus/strings
 ---
 
 ## Overview
 
 While strings are almost always represented as a pointer to a char or an array of characters in C (either char * or char[]), C++ introduces a std::string type. This offers the following advantages:
 
-* Automatic memory allocation/deallocation (no more buffer overruns!)
+* Automatic memory allocation/de-allocation (no more buffer overruns!)
 * The size can be found by calling the appropriate method on the string object
 
 However, this comes at a cost, now there is **dynamic memory allocation**. This may be a significant issue for embedded applications.
 
 ## The Old C Style char*
 
-The the most basic methods to store characters is to create a pointer to a character, e.g. char* myString. No standard library has to be included to be able to do this, and this is how you would typically store characters in C.
+The the most basic methods to store characters is to create a pointer to a character, e.g. `char* myString`. No standard library has to be included to be able to do this, and this is how you would typically store characters in C.
 
 To actually store something (above, just a pointer was created, but assigned to nothing) you would commonly create a **string literal**, like this:
 
@@ -26,7 +25,7 @@ To actually store something (above, just a pointer was created, but assigned to 
 const char* myCharPtr = "This is a string literal.";
 ```    
 
-Note the extra const qualifier in there, this is because a string literal is saved in program memory and should not be written to.
+Note the extra `const` qualifier in there, this is because a string literal is saved in program memory and should not be written to.
 
 ## Strings
 
@@ -34,7 +33,7 @@ As mentioned in the Overview, you can store characters (strings), in a type call
 
 ## Converting To char*
 
-You can get a char* pointer to a string with the method .c_str().
+You can get a `char*` pointer to a string with the method `.c_str()`.
 
 ```c++    
 // Create a string type

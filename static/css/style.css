@@ -57,7 +57,7 @@ body {
 /* Use rem for body, use em for everything else */
 /* This controls the main font size */
 body {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 p, li, div, td, th {
@@ -530,11 +530,12 @@ figure img {
 }
 
 /* ========================================================================= */
-/* QUESTION                                                                  */
+/* PROMPTS                                                                   */
 /* ========================================================================= */
 
 aside.prompt {
-    margin: 20 0px;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
     border-left-width: 4px;
     border-left-style: solid;
     border-radius: 2px;
@@ -562,6 +563,8 @@ aside.prompt div.content p {
     font-size: 0.8em;
 }
 
+/* QUESTION */
+
 aside.question {
     border-left-color: #64dd17;
 }
@@ -574,9 +577,7 @@ aside.question .title .icon {
     color: #64dd17;
 }
 
-/* ========================================================================= */
-/* WARNING                                                                   */
-/* ========================================================================= */
+/* WARNING */
 
 aside.warning {
     border-left-color: #ff9100;
@@ -588,6 +589,20 @@ aside.warning .title {
 
 aside.warning .title .icon {
     color: #ff9100;
+}
+
+/* NOTE */
+
+aside.note {
+    border-left-color: #651fff;
+}
+
+aside.note .title {
+    background-color: rgba(101, 31, 255, 0.1);
+}
+
+aside.note .title .icon {
+    color: #651fff;
 }
 
 /* ========================================================================= */

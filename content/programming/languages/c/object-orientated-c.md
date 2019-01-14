@@ -58,7 +58,7 @@ The first (and only, in this case) argument passed into this "method" is a poin
 
 ## Wait, What About A Constructor?
 
-In OO-universe, a constructor is a special method which is run automatically when a new instance of an object is created. Unfortunately, in C, there is no way to enforce a method to run upon creation of our struct object (o.k., yes you could wrap the creation of a struct inside a macro which also called a method).
+In OO-universe, a constructor is a special method which is run automatically when a new instance of an object is created. Unfortunately, in C, there is no way to enforce a method to run upon creation of our `struct` object (o.k., yes you could wrap the creation of a struct inside a macro which also called a method).
 
 A simple way to have constructor-like behaviour is to create an `Init()` method.
 
@@ -69,7 +69,7 @@ void ComplexNum_Init(complexNum_t * obj) {
 }
 ```
 
-The downside of this is that we have to remember to call it every time we create a new complexNum_t object.
+The downside of this is that we have to remember to call it every time we create a new `complexNum_t` object.
     
 ```
 void main() {

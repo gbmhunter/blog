@@ -39,7 +39,9 @@ $ ant
 $ .\bin\buck build --show-output buck
 ```
 
-**Note: As of Buck v2018.02.16.01, python 2.7 is required. If you try a build will python v3.x, you will get the following error when running the ant command:**
+{{% note %}}
+As of Buck v2018.02.16.01, python 2.7 is required. If you try a build will python v3.x, you will get the following error when running the ant command:
+{{% /note %}}
 
 ```sh    
 gen-buck-info:

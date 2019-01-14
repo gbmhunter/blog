@@ -40,62 +40,6 @@ printf("a" ^ " ");
 A
 ```
 
-## The Standard Libraries
-
-<table>
-    <thead>
-        <tr>
-            <th>Library Name</th>
-            <th>Description</th>
-            <th>Popular Objects In Library</th>
-            <th>Comments</th>
-        </tr>
-    </thead>
-<tbody>
-<tr>
-<td ><stdio.h>
-</td>
-
-<td >Contains functions for input/output data streams
-</td>
-
-<td >printf(), sprintf(), scanf()
-</td>
-
-<td >Very common header file. You be searching hard to find a C project which didn't use this library.
-</td>
-</tr>
-<tr >
-
-<td ><stdlib.h>
-</td>
-
-<td > 
-</td>
-
-<td >atoi(), atof(), rand(), malloc(), abs(), div(), NULL
-</td>
-
-<td >Contains a mixture of different functions, some mathematically based, while others related to memory management.
-</td>
-</tr>
-<tr >
-
-<td ><stdbool.h>
-</td>
-
-<td >Contains definitions for true and false
-</td>
-
-<td >true, false
-</td>
-
-<td >Added in C99, contains macros for true and false. C++ supports these natively.
-</td>
-</tr>
-</tbody>
-</table>
-
 ## Strings
 
 Strings in C are arrays where each element of the array holds an ascii character. When they are defined using double quotes, they are called a string literal. Normally these are 8-bit elements representing the standard ascii format (click for ascii table). The arrays can be defined first, and then ascii characters assigned to them, of the ascii values can be assigned easily when the array is defined as follows:
@@ -109,7 +53,7 @@ char myString[] = "abc123";
 
 ## Special Characters
 
-Special characters can be added to strings using the escape character \  followed by a single identifier.
+Special characters can be added to strings using the escape character `\` followed by a single identifier.
 
 <table>
     <thead>
@@ -119,66 +63,36 @@ Special characters can be added to strings using the escape character \  follo
             <th>Inserted Number (in Hex)</th>
         </tr>
     </thead>
-<tbody >
-<tr >
-
-<td >\0
-</td>
-
-<td >NULL
-</td>
-
-<td > 0x00 
-</td>
-</tr>
-<tr >
-
-<td >\ddd
-</td>
-
-<td >Ascii char representing the three octal chars 'ddd'. Note that \0 is a special case of this more generic notation
-</td>
-
-<td >n/a
-</td>
-</tr>
-<tr >
-
-<td >\r 
-</td>
-
-<td >Carriage Return
-</td>
-
-<td > 0x0D 
-</td>
-</tr>
-<tr >
-
-<td >\n 
-</td>
-
-<td >New line
-</td>
-
-<td > 0x0A 
-</td>
-</tr>
-<tr >
-
-<td >\\ 
-</td>
-
-<td >Backslash (since a single backslash is the escape character)
-</td>
-
-<td > 0x5C 
-</td>
-</tr>
-</tbody>
+    <tbody>
+        <tr>
+            <td>{{% code %}}`\0`{{% /code %}}</td>
+            <td>{{% code %}}`NULL`{{% /code %}}</td>
+            <td>{{% code %}}`0x00`{{% /code %}}</td>
+        </tr>
+        <tr>
+            <td>{{% code %}}`\ddd`{{% /code %}}</td>
+            <td>Ascii char representing the three octal chars 'ddd'. Note that \0 is a special case of this more generic notation</td>
+            <td>n/a</td>
+        </tr>
+        <tr>
+            <td>{{% code %}}`\r`{{% /code %}}</td>
+            <td>Carriage Return</td>
+            <td>{{% code %}}`0x0D`{{% /code %}}</td>
+        </tr>
+        <tr>
+            <td>{{% code %}}`\n`{{% /code %}}</td>
+            <td>New line</td>
+            <td>{{% code %}}`0x0A`{{% /code %}}</td>
+        </tr>
+        <tr>
+            <td>{{% code %}}`\\`{{% /code %}}</td>
+            <td>Backslash (since a single backslash is the escape character)</td>
+            <td>{{% code %}}`0x5C`{{% /code %}}</td>
+        </tr>
+    </tbody>
 </table>
 
-Typically, both the carriage return and new line characters are used for making a new line (and in that order). This is normally appended at the end of strings to be printed with \r\n.
+Typically, both the carriage return and new line characters are used for making a new line (and in that order). This is normally appended at the end of strings to be printed with `\r\n`.
 
 ## Copying
 
@@ -208,59 +122,27 @@ Most C compiler installations include standard C libraries for manipulating stri
     </thead>
 <tbody >
 <tr >
-
-<td >snprintf(char* stringBuff, int limit, <string>, <input variable 1>, <input variable 2>, ...);
-</td>
-
-<td >Safe version of sprintf, which builds a null-terminated string based on input parameters.
-</td>
-
-<td ><stdio.h>
-</td>
-
-<td >One of the most (if not the most) useful string functions in C!
-</td>
+<td >{{% code %}}`snprintf(char* stringBuff, int limit, <string>, <input variable 1>, <input variable 2>, ...);`{{% code %}}</td>
+<td >Safe version of sprintf, which builds a null-terminated string based on input parameters.</td>
+<td >{{% code %}}`<stdio.h>`{{% code %}}</td>
+<td >One of the most (if not the most) useful string functions in C!</td>
 </tr>
 <tr >
-
-<td >int atoi(char* stringBuffer);
-</td>
-
-<td >Converts a string into an integer (typicaly 16-bit)
-</td>
-
-<td ><stdlib.h>
-</td>
-
-<td >'Undoes' the snprintf operation by accepting a string input and outputting a number.
-</td>
+<td >{{% code %}}`int atoi(char* stringBuffer);`{{% code %}}</td>
+<td >Converts a string into an integer (typicaly 16-bit)</td>
+<td >{{% code %}}`<stdlib.h>`{{% code %}}</td>
+<td >'Undoes' the snprintf operation by accepting a string input and outputting a number.</td>
 </tr>
 <tr >
-
-<td >double atof(char* stringBuffer);
-</td>
-
-<td >Converts a string into a double.
-</td>
-
-<td ><stdlib.h>
-</td>
-
-<td >Has limitations (see belo
-</td>
+<td >{{% code %}}`double atof(char* stringBuffer);`{{% code %}}</td>
+<td >Converts a string into a double.</td>
+<td >{{% code %}}`<stdlib.h>`{{% code %}}</td>
+<td >Has limitations (see below)</td>
 </tr>
 <tr >
-
-<td >long int atol(char* stringBuffer
-</td>
-
-<td >Converts a string into a long integer (typically 32-bit)
-</td>
-
-<td ><stdlib.h>
-</td>
-
-<td > 
+<td >{{% code %}}`long int atol(char* stringBuffer)`{{% code %}}</td>
+<td >Converts a string into a long integer (typically 32-bit)</td>
+<td >{{% code %}}`<stdlib.h>`{{% code %}}</td><td > 
 </td>
 </tr>
 </tbody>
@@ -268,7 +150,7 @@ Most C compiler installations include standard C libraries for manipulating stri
 
 ## atof()
 
-The biggest let-down with `atof()`  is that you cannot distinguish between the text input "0.0" and when there is no valid number to convert. This is because atof()  returns 0.0 if it can't find a valid float number in the input string. For example:
+The biggest let-down with `atof()` is that you cannot distinguish between the text input "0.0" and when there is no valid number to convert. This is because `atof()` returns `0.0` if it can't find a valid float number in the input string. For example:
 
 ```c    
 // Result is the same (0.0) in both of these cases).
@@ -277,7 +159,7 @@ result = atof("0.0");
 result = atof("blah blah");
 ```
 
-There is a better alternative `strtod()` , which allows you to test for this condition, **if your system supports it**.
+There is a better alternative `strtod()`, which allows you to test for this condition, **if your system supports it**.
 
 ## strtod()
 
@@ -313,14 +195,9 @@ Memory manipulation functions are also useful for string manipulation. Some of t
     </thead>
 <tbody>
 <tr>
-<td >memset(char* stringBuff, int value, size_t num);l
-</td>
-
-<td >Writes a constant value to a set number of elements in memory.
-</td>
-
-<td >Used to clear a string at run-time (e.g. memset(buff1, '\0', sizeof(buff1)); ). A common mistake is to put the input variables value and num around the wrong way, **which screws up the systems memory**!
-</td>
+<td >{{% code %}}`memset(char* stringBuff, int value, size_t num);`{{% code %}}</td>
+<td >Writes a constant value to a set number of elements in memory.</td>
+<td >Used to clear a string at run-time (e.g. {{% code %}}`memset(buff1, '\0', sizeof(buff1));`{{% code %}}). A common mistake is to put the input variables value and num around the wrong way, **which screws up the systems memory**!</td>
 </tr>
 </tbody>
 </table>

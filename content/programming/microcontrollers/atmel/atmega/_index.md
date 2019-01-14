@@ -4,7 +4,6 @@ date: 2011-09-14 21:22:43+00:00
 draft: false
 title: ATmega
 type: page
-url: /programming/microcontrollers/atmel/atmega
 ---
 
 ## Overview
@@ -19,4 +18,4 @@ One annoyance with the ATmega series is that Atmel wrote all the code to compile
 
 ## Code Compatibility
 
-ATMEL has done a good job at keeping code as similar as possible between microcontrollers in the ATmega family. One point to note is that at some point, they decided to add a '0' to all peripheral register descriptions, even when there was only one of these peripherals present in the chip (e.g. USART0 instead of USART). This generally applies to all the registers that are associated with the peripheral (e.g. RX0 and TX0 instead of RX and TX). You may have to add these before code will compile when using older source code with the newer avr libraries.
+ATMEL has done a good job at keeping code as similar as possible between microcontrollers in the ATmega family. One point to note is that at some point, they decided to add a '0' to all peripheral register descriptions, even when there was only one of these peripherals present in the chip (e.g. `USART0` instead of `USART`). This generally applies to all the registers that are associated with the peripheral (e.g. RX0 and TX0 instead of RX and TX). You may have to add these before code will compile when using older source code with the newer avr libraries.

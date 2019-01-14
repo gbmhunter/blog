@@ -36,7 +36,11 @@ First off, you want to print all the available ip interfaces and see if you have
     link/can 
 ```
 
-The last interface listed is `can0`. This is a SocketCAN interface! Note the above command was run on Ubuntu 17.04 64-bit, running on VMware Workstation with a PCAN-USB dongle connected.
+The last interface listed is `can0`. This is a SocketCAN interface!
+
+{{% note %}}
+The above command was run on Ubuntu 17.04 64-bit, running on VMware Workstation with a PCAN-USB dongle connected.
+{{% /note %}}
 
 ## Print SocketCAN Info
 
@@ -75,7 +79,9 @@ Before we can enable the SocketCAN interface, we need to configure it:
 ~$ sudo ip link set can0 type can bitrate 500000
 ```
 
-Note: The above command only works for interfaces that already exist (such as a physical `can0` that has been created when a CAN-to-USB dongle was connected). For virtual CAN interfaces, you must create the interface with a slightly different command:
+{{% warning %}}
+The above command only works for interfaces that already exist (such as a physical `can0` that has been created when a CAN-to-USB dongle was connected). For virtual CAN interfaces, you must create the interface with a slightly different command:
+{{% /warning %}}
 
 ```sh    
 ~$ sudo modprobe vcan
@@ -90,7 +96,7 @@ Note: The above command only works for interfaces that already exist (such as a 
 
 **Note 1:** If you ever get the following error: `RTNETLINK answers: Operation not permitted`, try the command again with sudo.
 
-**Note 1**: And if you get the error: `RTNETLINK answers: Operation not supported` then try run `sudo modprobe can` (or `sudo modprobe vcan` ) first.
+**Note 2**: And if you get the error: `RTNETLINK answers: Operation not supported` then try run `sudo modprobe can` (or `sudo modprobe vcan` ) first.
 
 ## Send/Receive Data On SocketCAN
 

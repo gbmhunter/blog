@@ -58,7 +58,9 @@ Altium allows close integration between the mechanical and electrical design wit
 
 These conform to the default layers that Altium's IPC Footprint Wizard automatically uses for certain parts of a component. Some of the layers are paired, so that Altium automatically switches the objects on these layers when the component is changed from top layer to bottom layer and vise versa.
 
-Note that Mechanical 1 (the board outline), Mechanical 2 (PCB info) and Mechanical 11/12 (the dimension layers) are not chosen by Altium , but rather just personal preferences.
+{{% note %}}
+Mechanical 1 (the board outline), Mechanical 2 (PCB info) and Mechanical 11/12 (the dimension layers) are not chosen by Altium , but rather just personal preferences.
+{{% /note %}}
 
 <table>
     <thead>
@@ -70,75 +72,40 @@ Note that Mechanical 1 (the board outline), Mechanical 2 (PCB info) and Mechanic
 <tbody>
 <tr >
 
-<td>Mechanical 1 (M1)
-</td>
-
-<td >Board outline (it is not recommended to use just the keep-out layer, since that can be used for other things also).
-</td>
+<td>Mechanical 1 (M1)</td>
+<td >Board outline (it is not recommended to use just the keep-out layer, since that can be used for other things also).</td>
 </tr>
 <tr >
-
-<td >Mechanical 2 (M2)
-</td>
-
-<td >PCB notes and comments for the PCB manufacturer/assembler (included in Gerber output).
-</td>
+<td >Mechanical 2 (M2)</td>
+<td >PCB notes and comments for the PCB manufacturer/assembler (included in Gerber output).</td>
 </tr>
 <tr >
-
-<td >Mechanical 3 (M3)
-</td>
-
-<td >General notes and comments that the PCB manufacturer/assembler does not need to know about (not included in Gerber output).
-</td>
+<td >Mechanical 3 (M3)</td>
+<td >General notes and comments that the PCB manufacturer/assembler does not need to know about (not included in Gerber output).</td>
 </tr>
 <tr >
-
-<td >Mechanical 11 (M11)
-</td>
-
-<td >Top layer dimensions (paired with M12).
-</td>
+<td >Mechanical 11 (M11)</td>
+<td >Top layer dimensions (paired with M12).</td>
 </tr>
 <tr >
-
-<td >Mechanical 12 (M12)
-</td>
-
-<td >Bottom layer dimensions (paired with M11).
-</td>
+<td >Mechanical 12 (M12)</td>
+<td >Bottom layer dimensions (paired with M11).</td>
 </tr>
 <tr >
-
-<td >Mechanical 13 (M13)
-</td>
-
-<td >Top layer component body information (3D models and mechanical outlines, paired with M14).
-</td>
+<td >Mechanical 13 (M13)</td>
+<td >Top layer component body information (3D models and mechanical outlines, paired with M14).</td>
 </tr>
 <tr >
-
-<td >Mechanical 14 (M14)
-</td>
-
-<td >Bottom layer component body information (3D models and mechanical outlines, paired with M13).
-</td>
+<td >Mechanical 14 (M14)</td>
+<td >Bottom layer component body information (3D models and mechanical outlines, paired with M13).</td>
 </tr>
 <tr >
-
-<td >Mechanical 15 (M15)
-</td>
-
-<td >Top layer courtyard and assembly information (paired with M16). This normally includes a cross-hairs at the origin of the component.
-</td>
+<td >Mechanical 15 (M15)</td>
+<td >Top layer courtyard and assembly information (paired with M16). This normally includes a cross-hairs at the origin of the component.</td>
 </tr>
 <tr >
-
-<td >Mechanical 16 (M16)
-</td>
-
-<td >Bottom layer courtyard and assembly information (paired with M15). This normally includes a cross-hairs at the origin of the component.
-</td>
+<td >Mechanical 16 (M16)</td>
+<td >Bottom layer courtyard and assembly information (paired with M15). This normally includes a cross-hairs at the origin of the component.</td>
 </tr>
 </tbody>
 </table>
@@ -201,11 +168,13 @@ e.g.
 Resistor, 0402, 2.70k, 1%, 63mW
 ```
 
-Note that the Omega symbol (aka the Ohm symbol) is not supported in the PCB editor as part of the component description. You can use the symbol R instead.
+{{% note %}}
+The Omega symbol (aka the Ohm symbol) is not supported in the PCB editor as part of the component description. You can use the symbol R instead.
+{{% /note %}}
 
 ## Quickly Adding Vias To Nets
 
-To quickly associate a via to a net, when placing the via, make sure to place it over a track or pad with the same net. The via automatically inherets the connected net.
+To quickly associate a via to a net, when placing the via, make sure to place it over a track or pad with the same net. The via automatically inherits the connected net.
 
 ## Getting To Datasheets Quickly
 
@@ -313,7 +282,9 @@ Save and exit the Rules dialog, and rebuild your polygons. Done! You should now 
 
 If all the pads that you are wanting to direct connect are located in the same area, you may want to use a PCB "room" object to envelop all the pads instead of adding each pad to a pad class. Another disadvantage of the pad class trick is that this direct connection information will be **lost if you change the designator** (or worse still, will be assigned to completely wrong pads who just happen to have the same name as the old ones).
 
-Note: Direct connect rules can also be added to specific pins on the schematic, through the pin editor menu for a selected component. However, as of Altium v15.1, this feature seems buggy, and causes basic (as vital) features like _Compile_ and _Update Changes To PCB_ to crash from that point on.
+{{% note %}}
+Direct connect rules can also be added to specific pins on the schematic, through the pin editor menu for a selected component. However, as of Altium v15.1, this feature seems buggy, and causes basic (as vital) features like _Compile_ and _Update Changes To PCB_ to crash from that point on.
+{{% /note %}}
 
 ## Opening Internet Links In External Web Browser
 
@@ -323,7 +294,7 @@ By default, Altium tries to open internet links in it's own internal browser. It
 
 ## Removing Exposed-Pad Vias That Are Automatically Added By The Footprint Wizard
 
-The Alitum footprint wizard **automatically adds vias** to the exposed pad of component package footprints such as QFN. Although it is recommended to have thermal vias conducting heat away from the exposed pad to the other PCB layers, it causes problems when these vias are added to the footprint, because of the **inflexibility** to change them during the PCB design stage. Without unlocking the primitives of the footprint (which I **do not** recommend you do unless absolutely needed), there is no way to modify these vias during the PCB design. You may wish to move them to allow for nets to pass underneath the component footprint on another layer, you may wish to add more for better thermal properties, or you may wish to remove them altogether because it recommends for that specific chip to leave the thermal pad unconnected.
+The Altium footprint wizard **automatically adds vias** to the exposed pad of component package footprints such as QFN. Although it is recommended to have thermal vias conducting heat away from the exposed pad to the other PCB layers, it causes problems when these vias are added to the footprint, because of the **inflexibility** to change them during the PCB design stage. Without unlocking the primitives of the footprint (which I **do not** recommend you do unless absolutely needed), there is no way to modify these vias during the PCB design. You may wish to move them to allow for nets to pass underneath the component footprint on another layer, you may wish to add more for better thermal properties, or you may wish to remove them altogether because it recommends for that specific chip to leave the thermal pad unconnected.
 
 For these reasons, I recommend that you **delete** these automatically added vias from all affected component footprints, and instead add vias as needed during the PCB routing stage of the design process.
 

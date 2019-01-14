@@ -2,9 +2,8 @@
 author: gbmhunter
 date: 2017-04-19 23:42:51+00:00
 draft: false
-title: Recipes
+title: Yocto Recipes
 type: page
-url: /programming/embedded-linux/yocto-project/recipes
 ---
 
 ## Overview
@@ -29,11 +28,11 @@ GitLab repositories require a slightly different syntax:
 SRC_URI = "git://git@gitlab.company_name.com:~/group_name/repo_name.git;protocol=ssh"
 ```
 
-Note the inclusion of ~/ before group_name in the above URL (as well as the inclusion of git:// at the start). This ~/ is important for Yocto to clone the git repo, but is not required (and not included in the GitLab example) when cloning a private GitLab repo normally.
+Note the inclusion of `~/` before `group_name` in the above URL (as well as the inclusion of `git://` at the start). This `~/` is important for Yocto to clone the git repo, but is not required (and not included in the GitLab example) when cloning a private GitLab repo normally.
 
 **Specifying A Branch**
 
-By default, the master branch is used when looking for a particular commit as specified by the SRCREV hash. However, you can change this default behaviour and specify a particular branch by adding the branch=<branch-name> option to the SRC_URI parameter:
+By default, the master branch is used when looking for a particular commit as specified by the `SRCREV` hash. However, you can change this default behaviour and specify a particular branch by adding the `branch=<branch-name>` option to the `SRC_URI` parameter:
 
 ```    
 SRC_URI = "git://github.com/mbedded-ninja/SerialFiller;branch=develop"
@@ -43,9 +42,11 @@ SRC_URI = "git://github.com/mbedded-ninja/SerialFiller;branch=develop"
 
 By default, Yocto will not clone submodules when cloning a git repository. This can be a problem for many builds, as usually dependent libraries are added to git repositories as submodules.
 
-Luckily, Yocto provides a way to tell it to check out all git submodules in a recipe. All you have to do is replace the git:// statement with gitsm://. e.g.
+Luckily, Yocto provides a way to tell it to check out all git submodules in a recipe. All you have to do is replace the `git://` statement with `gitsm://`. e.g.
 
+```
 SRC_URI="gitsm://git@github.com/group_name/repo_name.git;protocol=ssh"
+```
 
 ## A Complete GitHub Example
 

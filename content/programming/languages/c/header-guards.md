@@ -4,12 +4,11 @@ date: 2011-09-07 00:55:55+00:00
 draft: false
 title: Header Guards
 type: page
-url: /programming/languages/c/header-guards
 ---
 
 ## Overview
 
-A header guard is a piece of code that goes at the top and bottom of a header file that prevents the file from being linked more than once at compile time. A header file can be included from many different c files. The guard only lets the first inclusion of the header file actually parse. This prevents all the coding errors you would receive if the same code was written twice such as multiple definition errors and variable over writing. Examples follow...
+A header guard is a piece of code that goes at the top and bottom of a header file that prevents the file from being linked more than once at compile time. A header file can be included from many different `.c` files. The guard only lets the first inclusion of the header file actually parse. This prevents all the coding errors you would receive if the same code was written twice such as multiple definition errors and variable over writing. Examples follow...
 
 ## The "#ifndef" Way
 
@@ -17,7 +16,7 @@ Also, it is standard for system header files guard identifiers to begin with `__
 
 > In a user header file, the macro name should not begin with ‘_’. - GNU GCC: The C Preprocessor
 
-```c    
+```c
 // Top of header file...
 #ifndef <IDENTIFIER>_H
 #define <IDENTIFIER>_H
@@ -46,7 +45,7 @@ The other way to create a header guard is to use the #pragma once directive. Thi
 
 This method in some cases allows faster compilation and greater optimisation, due to the compiler being able to determine whether to include code before the pre-processor is run. It also is simpler to write, and does not require any termination code at the end of file (as does the #ifndef method).
 
-However, it is not supported by all preprocessors, so is not as portable as the #ifndef way.
+However, it is not supported by all preprocessors, so is not as portable as the `#ifndef` way.
 
 ```c    
 // Top of header file
@@ -63,9 +62,9 @@ Note how there is no header guard syntax needed at the bottom of the file!
 
 ## The #import Method
 
-The third and final way is to use the #import directive instead of #include. However, this is only considered standard in Objective-C, **and is deprecated in both C and C++**.
+The third and final way is to use the #import directive instead of `#include`. However, this is only considered standard in Objective-C, **and is deprecated in both C and C++**.
 
-Problems arise because the user must know that the header must be only included once, and use the #import directive rather than #include.
+Problems arise because the user must know that the header must be only included once, and use the `#import` directive rather than `#include`.
 
 ```c    
 // A C file

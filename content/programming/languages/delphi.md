@@ -4,7 +4,6 @@ date: 2012-07-02 23:21:46+00:00
 draft: false
 title: Delphi
 type: page
-url: /programming/languages/delphi
 ---
 
 ## Overview
@@ -34,13 +33,13 @@ not after the begin keyword!
 
 ## Comments
 
-Single line comments are started with // and finish on the start of a new line.
+Single line comments are started with `//` and finish on the start of a new line.
 
-Multi-line comments are started with either { or (* and finished with } or *).
+Multi-line comments are started with either `{` or `(*` and finished with `}` or `*)`.
 
 ## Rounding
 
-Rounding in Delphi can be done with the in-built function Round(). It rounds a number to the nearest integer. To round to a specified number of decimal places, you can use this function in conjuction with the divide/multiply technique.
+Rounding in Delphi can be done with the in-built function Round(). It rounds a number to the nearest integer. To round to a specified number of decimal places, you can use this function in conjunction with the divide/multiply technique.
 
 Divide the number by the precision you want, use the Round function, and then multiply it again by the precision.
 

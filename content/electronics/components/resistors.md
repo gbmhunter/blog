@@ -128,7 +128,10 @@ Practically all resistors follow an _E series_, a **scale of predefined resistan
 
 Simply, this means that each series guarantees you will be able to find a resistor that equals the resistance you need within a **fixed maximum percentage error***.
 
-*NOTE: Confusingly, for each series, you can get ever so slightly higher errors than what is listed below. This is due to the final rounding process (e.g. E96 resistors are rounded to three significant figures).
+{{% note %}}
+Confusingly, for each series, you can get ever so slightly higher errors than what is listed below. This is due to the final rounding process (e.g. E96 resistors are rounded to three significant figures).
+{{% /note %}}
+
 
 <table>
     <thead>

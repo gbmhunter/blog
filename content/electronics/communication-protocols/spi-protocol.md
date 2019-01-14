@@ -87,7 +87,9 @@ The following table shows the naming conventions for _Microchip PIC_ or _ARM-bas
 
 The standard defines these different modes to allow for greater variability in the master and slave devices that can use SPI.
 
-**Note that many devices do not support all four SPI modes.** It is common (especially for slave devices) to only support two of the four modes.
+{{% note %}}
+Many devices do not support all four SPI modes. It is common (especially for slave devices) to only support two of the four modes.
+{{% /note %}}
 
 ## Timing
 

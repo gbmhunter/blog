@@ -43,7 +43,9 @@ And then install scons with the command:
 
 * scons is installed on your system
 
-_NOTE: The console commands assume a UNIX-style terminal, although the example should be easily doable on any OS supported by scons._
+{{% note %}}
+The console commands assume a UNIX-style terminal, although the example should be easily doable on any OS supported by scons.
+{{% /note %}}
 
 **Steps**
 

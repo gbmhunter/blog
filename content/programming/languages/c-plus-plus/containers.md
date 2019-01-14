@@ -6,7 +6,6 @@ draft: false
 lastmod: 2018-12-30
 title: Containers
 type: page
-url: /programming/languages/c-plus-plus/containers
 ---
 
 ## Overview
@@ -24,14 +23,11 @@ _The following containers are sorted alphabetically._
     <td>#include &lt;deque&gt;</td>
 </tr>
 <tr>
-    <td >Full Path</td>
+    <td>Full Path</td>
     <td>std::array</td>
 </tr>
-<tr >
-
-<td >Time Complexity
-</td>
-
+<tr>
+<td>Time Complexity</td>
 <td>
     Random Access: \( \mathcal{O}(1) \)<br>
     Insertion At Start Or End: n/a<br>
@@ -49,7 +45,7 @@ C++11 provides us with a std container which encapsulates a fixed-size array.
 std::array<int, 3> myArray = { 1, 2, 3}; 
 ```
 
-Note that a `std::array` is more restrictive than a C-style array in that the size must be provided at compile time. e.g.:
+A `std::array` is more restrictive than a C-style array in that the size must be provided at compile time. e.g.:
 
 ```c++    
 int size = 4;

@@ -4,7 +4,6 @@ date: 2016-11-11 16:11:44+00:00
 draft: false
 title: ListView
 type: page
-url: /programming/languages/java/javafx/listview
 ---
 
 ## Creating A List View In FXML

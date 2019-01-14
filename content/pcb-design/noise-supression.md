@@ -2,9 +2,8 @@
 author: gbmhunter
 date: 2011-09-05 06:07:02+00:00
 draft: false
-title: Decoupling And Noise Supression
+title: "Decoupling And Noise Supression"
 type: page
-url: /pcb-design/noise-supression
 ---
 
 ## Bypass Capacitors

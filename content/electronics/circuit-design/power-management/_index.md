@@ -53,7 +53,7 @@ UVLO pins are sometimes named LBI (low battery input) instead (Texas Instrument
 
 One issue with UVLO pins is that they introduce instabilities when there is any kind of resistance between the power supply and the IC. If powering the IC from a battery, this **includes the internal resistance** of the battery. When the voltage drops below the threshold, the IC turns off, reducing the load current. Because of the source resistance, this causes the voltage the IC see's to increase, potentially rising above the threshold and turning the IC on again. This cycle will repeat and the IC will quickly oscillate between the on and off states.
 
-The solution to this is to add the right amount of hysteresis. Note that the IC may already have hysteresis, but it may not be enough (especially if it wasn't specifically designed for battery or other high-resistance power source operation). The hysteresis can be increased by the designed by adding a resistor between `\( V_{OUT} \)` and the UVLO pin.
+The solution to this is to add the right amount of hysteresis. The IC may already have hysteresis, but it may not be enough (especially if it wasn't specifically designed for battery or other high-resistance power source operation). The hysteresis can be increased by the designed by adding a resistor between `\( V_{OUT} \)` and the UVLO pin.
 
 The two equations are:
 

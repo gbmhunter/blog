@@ -4,20 +4,19 @@ date: 2016-02-12 05:58:03+00:00
 draft: false
 title: Bit Fields And Bit Manipulation/Masking
 type: page
-url: /programming/languages/c/bit-fields-and-bit-manipulation-masking
 ---
 
 ## Overview
 
 A _bit field_ is a software/firmware variable that stores many bits in a **consecutive memory** structure.
 
-_Bit masking_ is the process of masking (selecting) specific bits in a bit field (a multi-bit software/firmware variable), e.g. a 32-bit integer, or uint32_t) to manipulate, without modifying the value of any bits that where not selected.
+_Bit masking_ is the process of masking (selecting) specific bits in a bit field (a multi-bit software/firmware variable), e.g. a 32-bit integer, or `uint32_t`) to manipulate, without modifying the value of any bits that where not selected.
 
 Bit masking is thought-of as a low-level operation, and is normally only seen in languages such C and C++ (higher level languages may still use bit masking, but the code is likely to be abstracted away from the user). C and C++ bit masking usually makes extensive use of pre-processor macros.
 
 ## Setting Bits
 
-The bit-wise OR operation (|) can be used to **set bits in a variable to 1**. The bits in the bit field which you wish to set to 1 are ORed with 1, while those you wish to leave unchanged are ORed with 0.
+The bit-wise OR operation (`|`) can be used to **set bits in a variable to 1**. The bits in the bit field which you wish to set to 1 are ORed with 1, while those you wish to leave unchanged are ORed with 0.
 
 ```c    
 uint8_t bitField1 = 0b10110011;
@@ -28,7 +27,7 @@ bitField |= 0b11110000;
 
 ## Clearing Bits
 
-The bit-wise AND operation (&) can be used to **set bits in a variable to 0**. The bits in the bitfield which you wish to clear are ANDed with 0, while those you wish to leave unchanged are ANDed with 1.
+The bit-wise AND operation (`&`) can be used to **set bits in a variable to 0**. The bits in the bitfield which you wish to clear are ANDed with 0, while those you wish to leave unchanged are ANDed with 1.
 
 ```c    
 uint8_t bitField1 = 0b10110011;
@@ -76,7 +75,9 @@ SET_BITS(aRegister, 0, 3, 0b011);
 // aRegister = 0b00101011;
 ```
 
-Note that the above BIT_MASK and SET_BITS macros only work for variables up to MAX_BIT_FIELD_WIDTH_BITS wide!
+{{% note %}}
+The above `BIT_MASK` and `SET_BITS` macros only work for variables up to `MAX_BIT_FIELD_WIDTH_BITS` wide!
+{{% /note %}}
 
 ## Use In The Industry
 

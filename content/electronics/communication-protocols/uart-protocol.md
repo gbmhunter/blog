@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2011-09-12
 description: "A tutorial on the UART communication protocol, including types, baud rates, flow control, error checking, RS-232 and more."
 draft: false
-lastmod: 2019-01-04
+lastmod: 2019-01-13
 tags: [ "UART", "communication protocol", "USART", "microcontroller", "serial", "8n1", "universal asynchronous", "receiver", "transmitter", "RX", "TX" ]
 title: "UART Protocol"
 type: "page"
@@ -301,7 +301,9 @@ The following tables lists all of the flow control signals (as well as the data 
 </table>
 </div>
 
-Note that confusion of how to connect two UART devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support UART can act either as a DTE or a DCE. **Take particular care when connecting UART ports together on embedded devices!**
+{{% warning %}}
+There is confusion of how to connect two UART devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support UART can act either as a DTE or a DCE. **Take particular care when connecting UART ports together on embedded devices!**
+{{% /warning %}}
 
 > Rule-of-thumb: Most RS-232 serial interfaces with a male 9 or 25 pin connector are DTE's, most with a female 9 or 25 pin connector are DCE's.
 

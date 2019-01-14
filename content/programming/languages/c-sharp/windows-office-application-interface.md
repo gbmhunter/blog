@@ -4,7 +4,6 @@ date: 2012-01-08 04:37:05+00:00
 draft: false
 title: Windows Office Application Interface
 type: page
-url: /programming/languages/c-sharp/windows-office-application-interface
 ---
 
 You can use C# to manipulate Microsoft Office programs such as Word and Excel. You can open, create, edit and do essentially everything you can do in the programs natively using instead C# (albeit a little longer...) and libraries provided by Microsoft.
@@ -55,31 +54,31 @@ To change weather or not you can see the text box border modify the property:
 textBox.Line.Visible
 ```
 
-To insert text into the textbox modify the peoperty
+To insert text into the textbox modify the property:
 
 ```c#    
 textBox.TextFrame.TextRange.Text
 ```
 
-To change the font size
+To change the font size:
 
 ```c# 
 textBox.TextFrame.TextRange.Font.Size
 ```
 
-To change the font colour
+To change the font colour:
 
 ```c# 
 textBox.TextFrame.TextRange.Font.ColorIndex
 ```
 
-To change the alignment of the text
+To change the alignment of the text:
 
 ```c# 
 textBox.TextFrame.TextRange.ParagraphFormat.Alignment
 ```
 
-To modify the margins of the textbox modify the properties
+To modify the margins of the textbox modify the properties:
 
 ```c# 
 textBox.TextFrame.MarginBottom;
@@ -90,7 +89,7 @@ textBox.TextFrame.MarginLeft;
 
 ## Tables
 
-Create a table using the method
+Create a table using the method:
 
 ```c#    
 Word.Table table = wordDoc.Tables.Add(...);
@@ -98,7 +97,7 @@ Word.Table table = wordDoc.Tables.Add(...);
 
 ## Manipulating The Cursor
 
-Manipulating the cursor is done with the methods and parameters in the class
+Manipulating the cursor is done with the methods and parameters in the class:
 
 ```c#    
 wordApp.Selection
@@ -106,13 +105,13 @@ wordApp.Selection
 
 Selection is just another name for 'current cursor position'.
 
-To jump to the last line in a document, use the method
+To jump to the last line in a document, use the method:
 
 ```c# 
 wordApp.Selection.EndKey();
 ```
 
-To insert a break (e.g. line, page) at the current cursor position, use the method
+To insert a break (e.g. line, page) at the current cursor position, use the method:
 
 ```c# 
 wordApp.Selection.InsertBreak(...);

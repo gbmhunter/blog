@@ -60,13 +60,17 @@ The volume can be controlled with a simple RC low pass filter and PWM signal as 
 
 {{< figure src="/images/electronics-misc/piezo-int-drive-volume-control-circuit.jpg" caption="The schematic of an internally driven piezo volume control circuit."  width="500px" >}}
 
-This circuit uses a RC low-pass filter and PWM to change the DC voltage that the buzzer sees across it's terminal, thus controlling the volume. Note that the volume changes drastically from 0-1% duty cycle because of the logarithmic nature of sound, so a 12-bit or higher PWM is normally needed for smooth control. 12-bits will give you increments of approximately 0.025%. When I built one of these circuits, at 1% duty cycle the piezo was at approximately 90% apparent volume.
+This circuit uses a RC low-pass filter and PWM to change the DC voltage that the buzzer sees across it's terminal, thus controlling the volume.
+
+{{% note %}}
+The volume changes drastically from 0-1% duty cycle because of the logarithmic nature of sound, so a 12-bit or higher PWM is normally needed for smooth control. 12-bits will give you increments of approximately 0.025%. When I built one of these circuits, at 1% duty cycle the piezo was at approximately 90% apparent volume.
+{{% /note %}}
 
 ## Piezo Benders
 
 {{< figure src="/images/electronics-misc/piezoelectric-bender.jpg" caption="A piezoelectric bender. Image from http://www.kineticceramics.com/."  width="250px" >}}
 
-Piezo bendors are essentially un-mounted piezos, the insides of the standard black cased piezo that you commonly see. They are used in more spaced-constrained situations.
+Piezo benders are essentially un-mounted piezos, the insides of the standard black cased piezo that you commonly see. They are used in more spaced-constrained situations.
 
 These un-mounted piezos have to be mounted on something, and consideration about the vibrational aspects of the piezo have to be taken into account. Obviously, if you glue the entire piezo to the mounting surface, it won't be able to vibrate, and you'll get no sound. There are two standard ways of mounting a piezo, and they are called either edge-mounting or nodal-mounting.
 

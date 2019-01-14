@@ -1,10 +1,11 @@
 ---
-author: gbmhunter
-date: 2015-10-19 20:40:40+00:00
+author: "gbmhunter"
+date: 2015-10-19
 draft: false
-title: RS-485 Protocol
-type: page
-url: /electronics/communication-protocols/rs-485-protocol
+lastmod: 2019-01-13
+tags: [ "RS-485", "communication protocol", "transmitter", "receiver", "data", "bus", "serial", "node", "SAE J1708", "transmission distance" ]
+title: "RS-485 Protocol"
+type: "page"
 ---
 
 ## Overview
@@ -15,56 +16,14 @@ The RS-485 communication protocol is a differential, multi-drop, half-duplex, tw
 
 It is a very common protocol used in industry for between-room control system to sensor communication.
 
-<table >
-<tbody >
-<tr >
-<td >Name
-</td>
-<td >RS-485
-</td>
-</tr>
-<tr >
-
-<td >Drive Mode
-</td>
-
-<td >Differential
-</td>
-</tr>
-<tr >
-
-<td >Multi-drop
-</td>
-
-<td >Yes
-</td>
-</tr>
-<tr >
-
-<td > Duplexity
-</td>
-
-<td >Half-duplex
-</td>
-</tr>
-<tr >
-
-<td >Maximum Data Rate
-</td>
-
-<td >10Mbps
-</td>
-</tr>
-<tr >
-
-<td >Maximum Bus Length
-</td>
-
-<td >1.22km (at a data rate of 100kbps)
-</td>
-</tr>
-</tbody>
-</table>
+Property        | Value 
+----------------|--------------
+Name            | RS-485
+Drive Mode      | Differental
+Multi-drop      | Yes
+Duplexity       | Half-duplex
+Max. Data Rate  | 10Mbps
+Max. Bus Length | 1.22km (@ 100kbps)
 
 It is not commonly used for intra-board communication (i.e. between two devices on the same PCB) because in these scenarios there is normally no need for the noise immunity and transmission distances RS-485 provides, and communication protocols such as UART, SPI and I2C are more prevalent.
 
@@ -276,7 +235,7 @@ Do you need a higher-level communication protocol that works over a UART connect
 
 ## Differential Voltage Specs
 
-The RS-485 specification states that the transmitter must produce a differential voltage of **at least ±1.5V **when loaded, and the receiver must receive a differential voltage of **at least ±200mV**.
+The RS-485 specification states that the transmitter must produce a differential voltage of **at least ±1.5V** when loaded, and the receiver must receive a differential voltage of **at least ±200mV**.
 
 The waveform below shows the voltage on the A and B nets of a RS-485 bus when operating normally at 115200 baud.
 
@@ -310,4 +269,8 @@ The hardware used for SAE J1708 is usually a RS-485 transceiver that is wired fo
 
 The receiver is always enabled (RE* pin connected to ground) so that the bus state can be checked on every attempted write of a bit. The bus state needs to be compared with the intended write bit, if they are different, another node is also writing on the bus and this bus has lost arbitration.
 
-The modification to RS-485 essentially allows you to operate a multi-master (multi-point) configuration. **Please Note: This configuration means you will no longer be RS-485 compliant.**
+The modification to RS-485 essentially allows you to operate a multi-master (multi-point) configuration. 
+
+{{% note %}}
+This configuration means you will no longer be RS-485 compliant.
+{{% /note %}}

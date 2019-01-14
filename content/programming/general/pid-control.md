@@ -4,7 +4,6 @@ date: 2012-10-01 04:55:03+00:00
 draft: false
 title: PID Control
 type: page
-url: /programming/general/pid-control
 ---
 
 ## Overview
@@ -30,7 +29,7 @@ The standard PID equation is:
 
 <div>$$output = K_{p}e(t) + K_{i}\int e(t) \mathrm{d} x + K_{d}\frac{d}{dt}e(t)$$</div>
 
-The error is always defined as the setpoint value - acutal value, so the error is positive when the actual value is less than what it needs to be. It is defined by the following equation:
+The error is always defined as the `setpoint value - acutal value`, so the error is positive when the actual value is less than what it needs to be. It is defined by the following equation:
 
 <div>$$e = u(t) - y(t)$$</div>
 
@@ -76,7 +75,7 @@ For example, say the P, I and D terms were contributing the following effort to 
 * I = 5
 * D =2
 
-Lets pretend the output is limited to 10. P + I + D = 13, so the output is going to be saturated. The I effort is likely to be even larger next iteration (assuming we haven't reached our set-point yet) and so the output will saturate even more. To prevent this, we could limit the I value so that the sum of all three just hits the saturation limit, e.g. I would be set to 2.
+Lets pretend the output is limited to 10. `P + I + D = 13`, so the output is going to be saturated. The I effort is likely to be even larger next iteration (assuming we haven't reached our set-point yet) and so the output will saturate even more. To prevent this, we could limit the I value so that the sum of all three just hits the saturation limit, e.g. I would be set to 2.
 
 Be careful not to set the integral term to a negative value! This could potentially occur if the P + D term were already larger than the saturated value.
 
@@ -133,7 +132,7 @@ We can simulate this system in code by discretizing the system into small time s
    
 	Note that these are changes in velocity in displacement, so to calculate the velocity and displacement you add this change to the stored velocity/displacement state.
 
-6. Once the values for the velocity and displacement are updated, repeat steps 3-5 for the next time step. \(F_{spring}\) and \(F_{damper}\) will calculated for the next time step using these updated velocity and displacement values.
+6. Once the values for the velocity and displacement are updated, repeat steps 3-5 for the next time step. `\(F_{spring}\)` and `\(F_{damper}\)` will calculated for the next time step using these updated velocity and displacement values.
 
 ## Firmwave Modules
 

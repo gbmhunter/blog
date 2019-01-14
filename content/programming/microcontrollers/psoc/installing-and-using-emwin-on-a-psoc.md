@@ -4,7 +4,6 @@ date: 2013-06-11 21:58:31+00:00
 draft: false
 title: Installing And Using emWin On A PSoC
 type: page
-url: /programming/microcontrollers/psoc/installing-and-using-emwin-on-a-psoc
 ---
 
 ## Overview

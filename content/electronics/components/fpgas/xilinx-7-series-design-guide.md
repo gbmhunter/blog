@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2015-08-16 23:07:55+00:00
+author: "gbmhunter"
+date: 2015-08-16
 draft: false
-title: Xilinx 7 Series Design Guide
-type: page
-url: /electronics/components/fpgas/xilinx-7-series-design-guide
+title: "Xilinx 7 Series Design Guide"
+type: "page"
 ---
 
 ## Overview
@@ -39,7 +38,9 @@ Xilinx gives strict recommendations on the parameters of the capacitors used for
 
 {{< figure src="/images/2015/08/xilinx-7-series-decoupling-capacitor-parameter-value-recommendations.png" width="447px" caption="The parameter value recommendations for decoupling caps used for a Xilinx 7 Series FPGA."  >}}
 
-Note how there is a range specified for the ESR, it is also bad to have too-little series resistance.
+{{% note %}}
+There is a range specified for the ESR, it is also bad to have too-little series resistance.
+{{% /note %}}
 
 The Kintex and Virtex-7 devices has some in-built decoupling capacitors for the larger package sizes (you still need to add external decoupling caps, just not as many).
 
@@ -51,7 +52,7 @@ Using a large device for a small project could mean that there are entire banks 
 
 ## MGT's
 
-The Xiinx 7 Series FPGA's have in-built Multi-Gigabit Transceivers (MGT's). These are SerDes capable of 1Gpbs+ transmission rates.
+The Xilinx 7 Series FPGA's have in-built Multi-Gigabit Transceivers (MGT's). These are SerDes capable of 1Gbps+ transmission rates.
 
 The MGT's on-board a 7 Series FPGA can be used to implement high-speed communication protocols such as PCIe (PCI Express).
 

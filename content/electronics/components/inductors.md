@@ -204,7 +204,9 @@ You may also see this written as:
     \( \omega \) = radian frequency (rad/s) (which is equal to \( 2\pi f \))<br>
 </p>
 
-Note that this impedance, although measured in Ohms, is **not the same as resistance**. A resistance converts the energy into heat, the impedance of the inductor however cause the energy to be stored in it's magnetic feild, which is returned to the circuit when the current falls.
+{{% note %}}
+Impedance, although measured in Ohms, is **not the same as resistance**. A resistance converts the energy into heat, the impedance of the inductor however cause the energy to be stored in it's magnetic field, which is returned to the circuit when the current falls.
+{{% /note %}}
 
 For a more accurate but complex model, see the Parasitic Model section.
 
@@ -224,9 +226,9 @@ An inductor with parasitic components may be modelled by:
     \( C_P \) = parasitic parallel capacitance (\( F \))<br>
 </p>
 
-The main parasitic components are the series resistance (\( R_S \)) and the parallel capacitance (\( C_P \)). The series resistance arises from the resistance of the coil of wire which makes up the inductor. This thinner and longer the coil, the larger this resistance. The parallel capacitance is due to coil windings being very close to one another, each coil forming small capacitors to surrounding coils. This small capacitors can be lumped together and form the parallel capacitance.
+The main parasitic components are the series resistance (`\( R_S \)`) and the parallel capacitance (`\( C_P \)`). The series resistance arises from the resistance of the coil of wire which makes up the inductor. This thinner and longer the coil, the larger this resistance. The parallel capacitance is due to coil windings being very close to one another, each coil forming small capacitors to surrounding coils. This small capacitors can be lumped together and form the parallel capacitance.
 
-This model is a pretty good representation for most simulation purposes, and gives that characteristic decrease in performance (non-inductor-like behvaiour) at high-frequencies.
+This model is a pretty good representation for most simulation purposes, and gives that characteristic decrease in performance (non-inductor-like behavior) at high-frequencies.
 
 Typical values might be:
 
@@ -262,57 +264,28 @@ Inductors in series behave just like resistors in series.
     </thead>
 <tbody>
 <tr >
-<td >\(I\)
-</td>
-<td >Inductance
-</td>
-<td >Henrys (\(H\))
-</td>
-
-<td >This parameter determines the relationship between the rate of change in current through the inductor and the inductors voltage.
-</td>
+<td >\(I\)</td>
+<td >Inductance</td>
+<td >Henrys (\(H\))</td>
+<td >This parameter determines the relationship between the rate of change in current through the inductor and the inductors voltage.</td>
 </tr>
 <tr >
-
-<td >\(DCR\)
-</td>
-
-<td >DC resistance
-</td>
-
-<td >Ohms (\(\Omega\))
-</td>
-
-<td >The DC resistance of the coil of wire that the inductor is made up from. You can use this to calculate resistive losses through the inductor. An ideal inductor has no DCR.
-</td>
+<td >\(DCR\)</td>
+<td >DC resistance</td>
+<td >Ohms (\(\Omega\))</td>
+<td >The DC resistance of the coil of wire that the inductor is made up from. You can use this to calculate resistive losses through the inductor. An ideal inductor has no DCR.</td>
 </tr>
 <tr >
-
-<td >\(I_{sat}\)
-</td>
-
-<td >Saturation Current
-</td>
-
-<td >Amps (\(A\))
-</td>
-
-<td >This is the most important current rating. Essentially, this is the maximum current the inductor can take before it stops working like an inductor. At higher currents, the inductor becomes much more lossy.
-</td>
+<td >\(I_{sat}\)</td>
+<td >Saturation Current</td>
+<td >Amps (\(A\))</td>
+<td >This is the most important current rating. Essentially, this is the maximum current the inductor can take before it stops working like an inductor. At higher currents, the inductor becomes much more lossy.</td>
 </tr>
 <tr >
-
-<td >\(I_{rated}\)
-</td>
-
-<td >Rated current
-</td>
-
-<td >Amps (\(A\))
-</td>
-
-<td >Be careful when choosing an inductor, normally it's the saturation current which is important, and it can be much lower than the rated current!
-</td>
+<td >\(I_{rated}\)</td>
+<td >Rated current</td>
+<td >Amps (\(A\))</td>
+<td >Be careful when choosing an inductor, normally it's the saturation current which is important, and it can be much lower than the rated current!</td>
 </tr>
 </tbody>
 </table>
@@ -330,8 +303,8 @@ Air-cored inductors represent any inductor which contains no ferromagnetic mater
 
 ## Disadvantages
 
-* Air-cored inductors have to have more  and/or larger turns to acheive the same inductance value as a ferro-magnetic core. This is because **ferro-magnetic cores have a higher permeability than air**.
-* Air-cored inductaors radiate more electromagnetic fields over a wider area, and also pickup more radiation. This is because ferro-magnetic-cores constrain the magnetic field lines better.
+* Air-cored inductors have to have more  and/or larger turns to achieve the same inductance value as a ferro-magnetic core. This is because **ferro-magnetic cores have a higher permeability than air**.
+* Air-cored inductors radiate more electromagnetic fields over a wider area, and also pickup more radiation. This is because ferro-magnetic-cores constrain the magnetic field lines better.
 
 ## Ferrite Beads
 

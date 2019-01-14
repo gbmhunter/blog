@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2012-03-15 01:04:38+00:00
+author: "gbmhunter"
+date: 2012-03-15
 draft: false
-title: LEDs
-type: page
-url: /electronics/components/diodes/leds
+title: "LEDs"
+type: "page"
 ---
 
 ## Overview
@@ -85,11 +84,11 @@ A common mistake when working out the value of a current limiting LED resistor i
 
 Reverse mounting LED's are SMD LEDs which have the light source emitting in the reverse direction, e.g. toward the PCB they are mounted on. A hole is drilled in the PCB to let the light through to the other side. They are useful when using a PCB as a user interface panel, or when you want to use light guides (since the light guides can be mounted up against flat PCB).
 
-Note: Be careful when soldering reverse-mount LEDs by hand, it is very easy to push too hard on the LED body and bend the legs!
+{{% warning %}}
+Be careful when soldering reverse-mount LEDs by hand, it is very easy to push too hard on the LED body and bend the legs!
+{{% /warning %}}
 
 {{< figure src="/images/2012/03/osram-ls-p47k-reverse-mount-led-photo.png" width="440px" caption="An Osram reverse-mount LED (P47K series)."  >}}
-
-As of Dec 2015, it is fairly hard to find multi-colour (e.g. bi-colour or RGB) reverse-mount LEDs.
 
 ## Multiplexing
 

@@ -4,7 +4,6 @@ date: 2015-05-19 06:32:12+00:00
 draft: false
 title: Re-programming And/Or Modifying The DFU Bootloader
 type: page
-url: /programming/microcontrollers/atmel/atmel-at32-family/re-programming-andor-modifying-the-dfu-bootloader
 ---
 
 ## Overview
@@ -20,8 +19,10 @@ I choose Linux because command-line utilities such as make are more at home with
 ## Getting The Source Code
 
 The first thing to do is get the bootloader source code. This is contained within the AVR UC3 Software Framework (currently at v1.7.0). This can be found at [https://code.google.com/p/goddac/downloads/detail?name=AVR-UC3-SoftwareFramework-1.7.0.zip](https://code.google.com/p/goddac/downloads/detail?name=AVR-UC3-SoftwareFramework-1.7.0.zip). Since we will be modifying files in this project, unzip it in your home directory.
-    
-    unzip AVR-UC3-SoftwareFramework-1.7.0.zip
+
+```sh
+$ unzip AVR-UC3-SoftwareFramework-1.7.0.zip
+```
 
 This should put all the files into a directory called 1.7.0-ATUC3. Sweet! Now you can find the bootloader source code at 1.7.0-AT32UC3/SERVICES/USB/CLASS/DFU/EXAMPLES/ISP. In this directory you should find the source code and associated headers (isp.c/h, usb_dfu.c/h). There are also sub-directories containing files specific to the different sub-families of the AT32UC3 (e.g. AT32UC3A, AT32UC3A3, AT32UC3B, ...).
 
@@ -39,7 +40,7 @@ If you just run make, you get the error:
 *** multiple target patterns. Stop.
 ```
 
-So, it turns out someone at Atmel forgot to do a make clean before zipping up the project. The folder structure has residual .d files from a previous build step. These .d  iles contain Windows style paths. The Makefile is trying to parse these .d files and this is what is causing the multiple target patterns error. So you need to deleting all of the .d files to fix this.
+So, it turns out someone at Atmel forgot to do a `make clean` before zipping up the project. The folder structure has residual `.d` files from a previous build step. These `.d` files contain Windows style paths. The Makefile is trying to parse these `.d` files and this is what is causing the multiple target patterns error. So you need to deleting all of the `.d` files to fix this.
 
 ## Downloading The Toolchain
 
@@ -47,14 +48,14 @@ So, it turns out someone at Atmel forgot to do a make clean before zipping up t
 
 Install AVR Toolchain for Linux from [http://www.atmel.com/tools/atmelavrtoolchainforlinux.aspx](http://www.atmel.com/tools/atmelavrtoolchainforlinux.aspx) .(Windows versions can be found at [http://www.atmel.com/tools/atmelavrtoolchainforwindows.aspx](http://www.atmel.com/tools/atmelavrtoolchainforwindows.aspx)). Note you have to install both the source code (.tar.gz file) and the headers (.zip file) to `/opt`:
 
-```  
-sudo tar xzf avr-32-gnu-tool-chain-linux_x86_64
+```sh
+$ sudo tar xzf avr-32-gnu-tool-chain-linux_x86_64
 ```
 
 and
 
 ```sh  
-sudo unzip atmel-headers-6.1.3.1475.zip
+$ sudo unzip atmel-headers-6.1.3.1475.zip
 ```
 
 Add `/opt/avr32-gnu-toolchain-linux_x86_64/bin` to the `PATH` variable.
@@ -75,11 +76,15 @@ As previously mentioned, the file . The default is:
 
 ## Part: {none|ap7xxx|uc3xxxxx}
 
+```
 PART = uc3a0512
+```
 
 You will need to change this to suit your exact microcontroller. For example, I changed it too:
 
+```
 PART = uc3a3256
+```
 
 You will also have to change the board.
 
@@ -87,19 +92,19 @@ You will also have to change the board.
 
 Run the command make.
 
-Ohoh, the size of the .bin file is more than 8kB! I believe this is because Atmel used the IAR compiler, which results in slightly less code than the GCC compiler, even with the -Os optimisation flag set (this is set by default in config.mk). The pre-compiled bootloader binary that Atmel provides for the AT32UC3A3 microcontroller family (at32uc3a3-isp-1.0.3.bin) clocks in at a tidy 7,617B. 
+Ohoh, the size of the .bin file is more than 8kB! I believe this is because Atmel used the IAR compiler, which results in slightly less code than the GCC compiler, even with the `-Os` optimisation flag set (this is set by default in config.mk). The pre-compiled bootloader binary that Atmel provides for the AT32UC3A3 microcontroller family (at32uc3a3-isp-1.0.3.bin) clocks in at a tidy 7,617B. 
 
 ## Modifying The Bootloader Size
 
-In conf_isp.h, you'll want to change
+In `conf_isp.h`, you'll want to change
 
-```
+```c
 #define PROGRAM_START_OFFSET          0x00002000
 ```
 
 to
 
-```
+```c
 #define PROGRAM_START_OFFSET          0x00004000
 ```
 
@@ -107,16 +112,19 @@ to
 
 Now for post-build steps...
 
-Need to change permissions of post-build.sh file.  
-sudo chmod +x post-build.sh
+Need to change permissions of `post-build.sh` file.
 
-Run it. You should get the error, cannot find avr32program. To fix this, download the linux version of AVR32 Studio v2.6 (it must be v2.6, v2.5 does not have the available tools) from  
+```sh
+$ sudo chmod +x post-build.sh
+```
+
+Run it. You should get the error: `cannot find avr32program`. To fix this, download the linux version of AVR32 Studio v2.6 (it must be v2.6, v2.5 does not have the available tools) from  
 [http://www.atmel.com/tools/Archive/AVR32STUDIO2_6.aspx](http://www.atmel.com/tools/Archive/AVR32STUDIO2_6.aspx) to /opt/. Unzip with   
 unzip avr32studio-ide-2.6.0.753-linux-gtk.x86_64.zip. This will unzip all the files into a directory called as4e-ide.
 
-avr32program should be found at as4e-ide/plugins/com.atmel.avr.utilities.linux.x86_64_3.0.0.201009140848/os/linux/x86_64/bin. This needs to be added to your path.
+`avr32program` should be found at `as4e-ide/plugins/com.atmel.avr.utilities.linux.x86_64_3.0.0.201009140848/os/linux/x86_64/bin`. This needs to be added to your path.
 
-But wait, what about atprogram, the newer replacement for avr32program, can we use that? Yes. And this would be the way I recommend. The commands to program the bootloader are:
+But wait, what about `atprogram`, the newer replacement for `avr32program`, can we use that? Yes. And this would be the way I recommend. The commands to program the bootloader are:
 
 ```sh
 atprogram -t jtagice3 -i jtag -d at32uc3a3256 chiperase

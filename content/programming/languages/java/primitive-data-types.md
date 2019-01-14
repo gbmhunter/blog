@@ -4,7 +4,6 @@ date: 2016-06-08 23:16:55+00:00
 draft: false
 title: Primitive Data Types
 type: page
-url: /programming/languages/java/primitive-data-types
 ---
 
 ## Overview
@@ -13,7 +12,9 @@ Java has 8 primitive data types. It does not support unsigned primitive types (a
 
 You cannot use the new keyword with primitive data types as they are not considered objects.
 
-Note that the String class, although it has special support by the language, is not a primitive data type.
+{{% note %}}
+The `String` class, although it has special support by the language, is not a primitive data type.
+{{% /note %}}
 
 ## byte
 
@@ -202,9 +203,9 @@ myByte = 240;
 myByte = (byte)(240);
 ```
 
-Note here that when converting from an int to a byte, the bit pattern will not be changed (0b11110000 is still 0b11110000), but the decimal representation will (e.g. 240 is now -16).
+Note here that when converting from an int to a byte, the bit pattern will not be changed (`0b11110000` is still `0b11110000`), but the decimal representation will (e.g. `240` is now `-16`).
 
-People with a C/C++ background would be used to datatype uint8_t, which is an unsigned 8-bit number, and allows you to store numbers between 0 to 255.
+People with a C/C++ background would be used to datatype `uint8_t`, which is an unsigned 8-bit number, and allows you to store numbers between 0 to 255.
 
 Above we have shown you how to convert from a int to a byte. Converting back is slightly different...
 

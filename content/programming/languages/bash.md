@@ -4,7 +4,6 @@ date: 2013-05-12 23:47:37+00:00
 draft: false
 title: Bash
 type: page
-url: /programming/languages/bash
 ---
 
 ## Overview
@@ -21,7 +20,7 @@ The recommended shebang to use at the top of a bash script is:
 ## Make sure ^^^ is the first line in your bash script!!!
 ```
 
-The above variant gives the **greatest portability**, as **different UNIX systems put the bash program at different locations** on the system (e.g. OpenBSD and FreeBSD both do not have bash at /bin/bash). The above shebang is an instruction to run the first bash that is found on the PATH.
+The above variant gives the **greatest portability**, as **different UNIX systems put the bash program at different locations** on the system (e.g. OpenBSD and FreeBSD both do not have bash at `/bin/bash`). The above shebang is an instruction to run the first bash that is found on the PATH.
 
 A less optimal bash shebang is:
 
@@ -45,7 +44,7 @@ The return statement can be used to return from a function within a script. retu
 
 The exit code of the last command run in a script is used as the exit code that is returned to the parent program.
 
-You can also use the command exit <number> at any time to return from the script.
+You can also use the command `exit <number>` at any time to return from the script.
 
 ```sh    
 exit 0 # Return indicating success
@@ -70,7 +69,7 @@ Command-line argument parsing in bash is notoriously tricky.
 
 Thankfully, some open-source third party libraries come to the rescue. One of the most powerful command-line argument parsing libraries for shell scripts is [shflags](https://github.com/kward/shflags), a port of the Google gflags library for the UNIX shell.
 
-The simple Hello, World example (taken from their website) is shown below. If you create a file called hello_world.sh with the following contents:
+The simple Hello, World example (taken from their website) is shown below. If you create a file called `hello_world.sh` with the following contents:
 
 ```sh    
 #!/bin/sh
@@ -105,7 +104,11 @@ flags:
     -n  name to say hello to
 ```
 
-As shown above, it also supports automatic help! Although the shebang in the above example is #!/bin/sh, this can be changed to #!/usr/bin/env bash without any issues. Please note: If using bash, make sure that set -e is not active when shflags is sourced, otherwise your script will crash when sourcing, with no helpful error message displayed.
+As shown above, it also supports automatic help! Although the shebang in the above example is `#!/bin/sh`, this can be changed to `#!/usr/bin/env bash` without any issues. 
+
+{{% warning %}}
+If using bash, make sure that `set -e` is not active when `shflags` is sourced, otherwise your script will crash when sourcing, with no helpful error message displayed.
+{{% /warning %}}
 
 ## Refreshing The Current Working Directory After It Was Deleted And Recreated
 

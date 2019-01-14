@@ -4,29 +4,12 @@ date: 2013-07-18 00:30:05+00:00
 draft: false
 title: ARM Cortex-M3
 type: page
-url: /programming/cpu-architectures/arm-cortex-m3
 ---
 
 ## Overview
 
 
-The ARM Cortex-M3 is a computer CPU architecture introduced in 2004 and designed for micocontrollers. It uses the 32-bit Thumb-2 instruction set (which supports the 16-bit Thumb instructions). It **does not** support ARM instructions.
-
-
-## Child Pages
-
-<table>
-<tbody >
-<tr >
-
-<td >[Instrumentation Trace Microcell](/programming/cpu-architectures/arm-cortex-m3/instrumentation-trace-microcell)
-</td>
-
-<td >How to redirect printf() function calls to output data using the instrumentation trace microcell (ITM).
-</td>
-</tr>
-</tbody>
-</table>
+The ARM Cortex-M3 is a computer CPU architecture introduced in 2004 and designed for microcontrollers. It uses the 32-bit Thumb-2 instruction set (which supports the 16-bit Thumb instructions). It **does not** support ARM instructions.
 
 ## Processor Modes
 
@@ -62,7 +45,7 @@ The Cortex-M3 supports 3 data types:
 
 Note that you are **not limited to only these data types in C!** We are talking about the data types that the CPU natively supports, but with the appropriate assembly/C code, you can use many more.
 
-The processor can access memory in either little-endian or big-endian format, however the code (usually stored in Flash) has to be stored as little-endian. The processor has a pin called BIGEND which allows you to select the endianess of the memory at reset. Note that is up to the vendor's descretion to route this "pin" to an actual hardware pin on the microcontroller. More often than not you will not have access to this pin, as the memory on a microcontroller is usually incorporated into silicon chip itself, so the endianess is known at production.
+The processor can access memory in either little-endian or big-endian format, however the code (usually stored in Flash) has to be stored as little-endian. The processor has a pin called `BIGEND` which allows you to select the endianess of the memory at reset. Note that is up to the vendor's discretion to route this "pin" to an actual hardware pin on the microcontroller. More often than not you will not have access to this pin, as the memory on a microcontroller is usually incorporated into silicon chip itself, so the endianess is known at production.
 
 ## Interrupts
 
@@ -76,16 +59,16 @@ It supports both level and pulse triggered interrupts, dynamic re-prioritisation
 
 Address: 0xE000ED04
 
-You can use bits [8:0] from this register to check if an interrupt is currently active, as shown in the example code below.
+You can use bits `[8:0]` from this register to check if an interrupt is currently active, as shown in the example code below.
 
-    ```c
-    volatile uint32_t* INT_CTRL_REG = (volatile uint32_t*)0xE000ED04;
-    
-    if((*INT_CTRL_REG && 0x000001FF) != 0)
-       // An interrupt is active
-    else
-       // No interrupt is active
-    ```
+```c
+volatile uint32_t* INT_CTRL_REG = (volatile uint32_t*)0xE000ED04;
+
+if((*INT_CTRL_REG && 0x000001FF) != 0)
+   // An interrupt is active
+else
+   // No interrupt is active
+```
 
 ## Interrupt Active Registers
 

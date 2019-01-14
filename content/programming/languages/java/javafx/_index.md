@@ -4,7 +4,6 @@ date: 2016-06-07 00:03:35+00:00
 draft: false
 title: JavaFX
 type: page
-url: /programming/languages/java/javafx
 ---
 
 ## Overview

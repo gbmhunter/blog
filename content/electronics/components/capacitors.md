@@ -719,7 +719,9 @@ For electrolytics, the maximum leakage current is usually specified in terms of 
     \( C \) = the capacitance of the capacitor, and again, choice of units is up to the manufacturer<br>
 </p>
 
-Note how when specified this way, the current is **completely independent on voltage**. The leakage current for electrolytic super-caps in the range of 1 to 100F is typically 0.5C (mA), where C is the rated capacitance in Farads.
+{{% note %}}
+When specified this way, the current is **completely independent on voltage**. The leakage current for electrolytic super-caps in the range of 1 to 100F is typically 0.5C (mA), where C is the rated capacitance in Farads.
+{{% /note %}}
 
 The leakage current for MLCC capacitors is specified by an **insulation resistance**. To work out the leakage current, you just use Ohm's law as follows:
 
@@ -731,7 +733,9 @@ The leakage current for MLCC capacitors is specified by an **insulation resistan
     \( R_{insulation} \) = the insulation resistance as specified on the capacitors datasheet<br>
 </p>
 
-Note how when leakage current is specified this way, **it is dependent on the voltage**.
+{{% note %}}
+When leakage current is specified this way, **it is dependent on the voltage**.
+{{% /note %}}
 
 Ceramic capacitors are rated with an initial minimum insulation resistance (e.g. 500MR) and then a lower minimum resistance rated over its entire life time (e.g. 50MR).
 
@@ -747,7 +751,7 @@ Because of the small current's/total energy involved, you can't really measure t
 
 Some types of capacitors have a capacitance which changes depending on the applied voltage (well, technically, all do, but I'm talking about a significant/useful change).
 
-The good news is this can be manipulated to make things such as voltage-controlled oscillators (VCO's), in where the capacitance is part of a resonant circuit, and the resonant frequency is changed by modifiying the voltage on the capacitor, hence changing the capacitance. [Diodes](/electronics/components/diodes) also offer this feature and can be used to make FM radio signals by modulating a high-frequency waveform.
+The good news is this can be manipulated to make things such as voltage-controlled oscillators (VCOs), in where the capacitance is part of a resonant circuit, and the resonant frequency is changed by modifying the voltage on the capacitor, hence changing the capacitance. [Diodes](/electronics/components/diodes) also offer this feature and can be used to make FM radio signals by modulating a high-frequency waveform.
 
 The bad news is that this also adversely affects the capacitance in situations where you want it to stay constant. This can actually be a very significant problems, especially with small [package](/electronics/circuit-design/component-packages) size ceramic capacitors (such as 0603 and 0805 SMD chip capacitors). An excellent explanation on this effects if Maxim Integrated's "[Temperature and Voltage Variation of Ceramic Capacitors, or Why Your 4.7uF Capacitor Becomes a 0.33uF Capacitor](http://www.maximintegrated.com/app-notes/index.mvp/id/5527)". The following graph is from Maxim's page, and just serves as an example to show by how much the capacitance can vary in normal operation conditions!
 
@@ -805,7 +809,7 @@ It's called dielectric soakage because it's essentially a property of the dielec
 
 A charge pump (also commonly called **bootstrapping**), is a way of using capacitors to generate a voltage higher than the supply. A typical charge-pump circuit has two capacitors and two diodes, and requires an oscillating input.
 
-It is commonly used as a simple way of driving the gate of a n-doped silicon switch (such as a N-Channel MOSFET or IGBT) when being used as a high side driver. Although using a P-Channel as the high-side driver would not require this voltage step-up, N-Channel MOSFET's are preferred in most cases because of their lower on-resistance and price. When using a capacitor to charge the gate of a N-Channel MOSFET, you must make sure the capacitor stores enough charge to transfer to the MOSFET gate while raising the voltage enough drive the on-resistance as low as you need. A general rule of thumb is that the capacitor should store 100x more charge than the gate charge as stated on the MOSFET's datasheet. The charge stored in a capacitor can be calculated using the following equation:
+It is commonly used as a simple way of driving the gate of a n-doped silicon switch (such as a N-Channel MOSFET or IGBT) when being used as a high side driver. Although using a P-Channel as the high-side driver would not require this voltage step-up, N-Channel MOSFETs are preferred in most cases because of their lower on-resistance and price. When using a capacitor to charge the gate of a N-Channel MOSFET, you must make sure the capacitor stores enough charge to transfer to the MOSFET gate while raising the voltage enough drive the on-resistance as low as you need. A general rule of thumb is that the capacitor should store 100x more charge than the gate charge as stated on the MOSFET's datasheet. The charge stored in a capacitor can be calculated using the following equation:
 
 <div>$$Q = CV$$</div>
 
@@ -816,7 +820,7 @@ It is commonly used as a simple way of driving the gate of a n-doped silicon swi
     \(V\) the voltage (Volts)<br>
 </p>
 
-However, if you really want to optimise the charge pump capacitor, this rule does not suffice. The Fairchild Semiconductor Application Note, ["Design And Application Guide Of Bootstrap Circuit For High-Voltage Gate-Drive IC"](http://www.fairchildsemi.com/an/AN/AN-6076.pdf) has an indepth analysis of the bootstrap capacitor and surrounding circuit.
+However, if you really want to optimise the charge pump capacitor, this rule does not suffice. The Fairchild Semiconductor Application Note, ["Design And Application Guide Of Bootstrap Circuit For High-Voltage Gate-Drive IC"](http://www.fairchildsemi.com/an/AN/AN-6076.pdf) has an in-depth analysis of the bootstrap capacitor and surrounding circuit.
 
 The following circuit shows a charge pump circuit used to generate -5V from a +5V PWM signal.
 
@@ -841,149 +845,149 @@ Ceramic chip capacitors usually have a three letter code which describes the max
         <tr >CharTemp (°C)NumTemp (°C)CharChange (%)</tr>
 <tbody >
 <tr>
-<td style="text-align: center;" >Z
+<td>Z
 </td>
-<td style="text-align: center;" >+10
+<td>+10
 </td>
-<td style="text-align: center;" >2
+<td>2
 </td>
-<td style="text-align: center;" >+45
+<td>+45
 </td>
-<td style="text-align: center;" >A
+<td>A
 </td>
-<td style="text-align: center;" >±1.0
+<td>±1.0
 </td></tr><tr >
-<td style="text-align: center;" >Y
+<td>Y
 </td>
-<td style="text-align: center;" >-30
+<td>-30
 </td>
-<td style="text-align: center;" >4
+<td>4
 </td>
-<td style="text-align: center;" >+65
+<td>+65
 </td>
-<td style="text-align: center;" >B
+<td>B
 </td>
-<td style="text-align: center;" >±1.5
+<td>±1.5
 </td></tr><tr >
-<td style="text-align: center;" >X
+<td>X
 </td>
-<td style="text-align: center;" >-55
+<td>-55
 </td>
-<td style="text-align: center;" >5
+<td>5
 </td>
-<td style="text-align: center;" >+85
+<td>+85
 </td>
-<td style="text-align: center;" >C
+<td>C
 </td>
-<td style="text-align: center;" >±2.2
+<td>±2.2
 </td></tr><tr >
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >6
+<td>6
 </td>
-<td style="text-align: center;" >+105
+<td>+105
 </td>
-<td style="text-align: center;" >D
+<td>D
 </td>
-<td style="text-align: center;" >±3.3
+<td>±3.3
 </td></tr><tr >
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >7
+<td>7
 </td>
-<td style="text-align: center;" >+125
+<td>+125
 </td>
-<td style="text-align: center;" >E
+<td>E
 </td>
-<td style="text-align: center;" >±4.7
+<td>±4.7
 </td></tr><tr >
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >8
+<td>8
 </td>
-<td style="text-align: center;" >+150
+<td>+150
 </td>
-<td style="text-align: center;" >F
+<td>F
 </td>
-<td style="text-align: center;" >±7.5
+<td>±7.5
 </td></tr><tr >
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >9
+<td>9
 </td>
-<td style="text-align: center;" >+200
+<td>+200
 </td>
-<td style="text-align: center;" >P
+<td>P
 </td>
-<td style="text-align: center;" >±10
+<td>±10
 </td></tr><tr >
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >R
+<td>R
 </td>
-<td style="text-align: center;" >±15
+<td>±15
 </td></tr><tr >
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >S
+<td>S
 </td>
-<td style="text-align: center;" >±22
+<td>±22
 </td></tr><tr >
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >T
+<td>T
 </td>
-<td style="text-align: center;" >+22, -33
+<td>+22, -33
 </td></tr><tr >
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >U
+<td>U
 </td>
-<td style="text-align: center;" >+22, -56
+<td>+22, -56
 </td></tr><tr >
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >-
+<td>-
 </td>
-<td style="text-align: center;" >V
+<td>V
 </td>
-<td style="text-align: center;" >+22, -82
+<td>+22, -82
 </td></tr></tbody></table>
 
 ## Feedthrough Capacitors

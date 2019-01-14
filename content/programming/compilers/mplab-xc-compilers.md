@@ -4,7 +4,6 @@ date: 2016-06-16 05:14:49+00:00
 draft: false
 title: MPLAB XC Compilers
 type: page
-url: /programming/compilers/mplab-xc-compilers
 ---
 
 ## Overview
@@ -29,35 +28,38 @@ Delays are provided by the compiler/library through the __delay_us() and __dela
 
 {{< figure src="/images/2016/06/built-in-pic-microcontroller-delay-functions.png" width="719px" caption="A screenshot of the built-in delay functions provided in the PIC microcontroller libraries. This screenshot was taken from pic18.h."  >}}
 
-Note that you have to manually define the macro _XTAL_FREQ correctly before you can use these delays.
+{{% note %}}
+You have to manually define the macro `_XTAL_FREQ` correctly before you can use these delays.
+{{% /note %}}
 
 ## Variadic Macros
 
-Unfortunately, the **XC preprocessor does not support variadic macros **(well, at least XC8 doesn't as of July 2016).
+Unfortunately, the **XC preprocessor does not support variadic macros** (well, at least XC8 doesn't as of July 2016).
 
 However, you can somewhat implement the same functionality by using the _double-brackets_ technique.
 
-    ```c
-    #define DPRINTF(arguments) printf arguments;
-    
-    int main(void) {
-       int x = 3;
-       DPRINTF(("x = %i", x))   // This prints "x = 3"
-    }
+```c
+#define DPRINTF(arguments) printf arguments;
 
-The limitation with using the double-brackets technique is that you **don't have individual access to any of the parameters** in the macro. The only thing you can do is pass them onto a variadic function (although the XC compiler doesn't support variadic macros, it DOES support variadic functions). DPRINTF() as defined above is pretty useless, so let's make a better version:
-    
-    ```c
-    #define DPRINTF(arguments) \
-        printf("%s, %i: ", __FILE__, __LINE__); \
-        printf arguments; \
-        printf("\n");
+int main(void) {
+    int x = 3;
+    DPRINTF(("x = %i", x))   // This prints "x = 3"
+}
+```
 
-    int main(void) {
-        int x = 3;
-        DPRINTF(("x = %i", x))    // This will print something like "main.c, 23: x = 3"
-    }
-    ```
+The limitation with using the double-brackets technique is that you **don't have individual access to any of the parameters** in the macro. The only thing you can do is pass them onto a variadic function (although the XC compiler doesn't support variadic macros, it DOES support variadic functions). `DPRINTF()' as defined above is pretty useless, so let's make a better version:
+    
+```c
+#define DPRINTF(arguments) \
+    printf("%s, %i: ", __FILE__, __LINE__); \
+    printf arguments; \
+    printf("\n");
+
+int main(void) {
+    int x = 3;
+    DPRINTF(("x = %i", x))    // This will print something like "main.c, 23: x = 3"
+}
+```
 
 ## No Recursive Functions
 

@@ -47,3 +47,4 @@ $ hugo
 
 * Better TOML
 * Code Spell Checker
+* Vim (if your're a vim fan!)

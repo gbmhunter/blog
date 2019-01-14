@@ -4,7 +4,6 @@ date: 2012-10-29 01:56:38+00:00
 draft: false
 title: FreeRTOS
 type: page
-url: /programming/operating-systems/freertos
 ---
 
 ## Overview
@@ -37,11 +36,11 @@ Queues are stored on the heap, as are semaphores. You can view the remaining hea
 
 ## Fat File System
 
-As of v7.5.0, FreeRTOS has supported the Fat SL embedded file system library, provided by HCC Embedded. It supports a standard range of file operations (e.g. f_open() , f_write()).
+As of v7.5.0, FreeRTOS has supported the Fat SL embedded file system library, provided by HCC Embedded. It supports a standard range of file operations (e.g. `f_open()`, `f_write()`).
 
 ## Error Checking
 
-FreeRTOS provides the macro configASSERT(). An assertion is triggered if the parameter passed to configASSERT() is zero. It behaviour in a similar manner to the standard-C assert() macro. It is up to the user to provide an actual implementation on configASSERT(), it is not defined by FreeRTOS, just used through-out their code. An example definition is shown below (taken from the FreeRTOS website):
+FreeRTOS provides the macro `configASSERT()`. An assertion is triggered if the parameter passed to configASSERT() is zero. It behaviour in a similar manner to the standard-C `assert()` macro. It is up to the user to provide an actual implementation on configASSERT(), it is not defined by FreeRTOS, just used through-out their code. An example definition is shown below (taken from the FreeRTOS website):
 
 ```c    
 /* Define configASSERT() to call vAssertCalled() if the assertion fails.  The assertion has failed if the value of the parameter passed into configASSERT() equals zero. */
@@ -52,7 +51,7 @@ It is recommended that you make use of it in your code for once-only and continu
 
 ## Long File Name Warning
 
-Some of the files in the demo folder are nested deeply within others, giving large file paths. When the FreeRTOS directory is itself put in a resonably large directory, this can easily result in file paths over 260 characters, which on a Windows system, will cause issues (such as the SCM Mercurial not working correctly, or errors when trying to copy/cut/paste directories). Long file names include:
+Some of the files in the demo folder are nested deeply within others, giving large file paths. When the FreeRTOS directory is itself put in a reasonably large directory, this can easily result in file paths over 260 characters, which on a Windows system, will cause issues (such as the SCM Mercurial not working correctly, or errors when trying to copy/cut/paste directories). Long file names include:
 
 ```
 FreeRTOS\Demo\ARM7_AT91SAM7X256_Eclipse\.metadata\.plugins\org.eclipse.core.runtime\.settings\org.eclipse.cdt.core.prj-RTOSDemo.prefs

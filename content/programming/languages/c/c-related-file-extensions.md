@@ -4,7 +4,6 @@ date: 2013-04-25 01:44:56+00:00
 draft: false
 title: C Related File Extensions
 type: page
-url: /programming/languages/c/c-related-file-extensions
 ---
 
 ## Overview

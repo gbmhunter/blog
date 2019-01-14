@@ -115,7 +115,9 @@ Find: `(?<!Uart)CommsSend`
     
 Replace: `UartCommsSend`
 
-**Note:** I have had issues using greedy operators (such as `*` and `+`) inside a lookahead. Upon adding such operators to character regions (e.g. `[a=z]*`), the lookbehind fails to match anything. The error message was "Lookbehind requires fixed-width pattern".
+{{% warning %}}
+I have had issues using greedy operators (such as `*` and `+`) inside a lookahead. Upon adding such operators to character regions (e.g. `[a=z]*`), the lookbehind fails to match anything. The error message was "Lookbehind requires fixed-width pattern".
+{{% /warning %}}
 
 ## Finding C/C++ Function Definitions
 
@@ -128,8 +130,6 @@ FuncName(.*)\s{(.*\n)*.*(\n)*}
 Replace FuncName with the name of the function you wish to find.
 
 ## File Paths
-
-Note: To match directories on Windows machines, replace every `/` in the following examples with `\\`.
 
 To match a directory, including the last `/` of a file path, use:
 

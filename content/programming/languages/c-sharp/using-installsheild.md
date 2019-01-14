@@ -4,7 +4,6 @@ date: 2013-07-31 00:23:55+00:00
 draft: false
 title: Using InstallSheild
 type: page
-url: /programming/languages/c-sharp/using-installsheild
 ---
 
 ## Overview
@@ -12,7 +11,6 @@ url: /programming/languages/c-sharp/using-installsheild
 This page is all about using InstallShield with Visual Studio projects to create installable setup files for the user to use.
 
 ## Creating A Single setup.exe
-
 
 For smaller projects and things that will be downloaded over the internet, you'll most likely want to create a single file called setup.exe or similar that users can run to install the program. This is not the default way to do things with InstallShield, so you have to configure it to make this happen.
 

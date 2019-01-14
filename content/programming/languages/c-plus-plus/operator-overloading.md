@@ -4,7 +4,6 @@ date: 2014-08-13 20:18:21+00:00
 draft: false
 title: Operator Overloading
 type: page
-url: /programming/languages/c-plus-plus/operator-overloading
 ---
 
 ## Overview
@@ -19,12 +18,12 @@ C++ allows you to overload most operators. In fact, because you can overload so 
 
 Operators you CAN'T overload:
 
-* . (member selection operator, note you can still override ->)  
-* .* (member selection with pointer to member operator)
-* ?: (tenary conditional operator)
-* sizeof() (object size operator)
-* typeid() (object type info operator)
-* :: (scope resolution operator)
+* `.` (member selection operator, note you can still override `->`)
+* `.*` (member selection with pointer to member operator)
+* `?:` (tenary conditional operator)
+* `sizeof()` (object size operator)
+* `typeid()` (object type info operator)
+* `::` (scope resolution operator)
 
 ## Suitability For Embedded Systems
 

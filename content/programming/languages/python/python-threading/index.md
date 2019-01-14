@@ -2,14 +2,13 @@
 author: gbmhunter
 date: 2015-01-02 21:43:24+00:00
 draft: false
-title: Threading
+title: Python Threading
 type: page
-url: /programming/languages/python/threading
 ---
 
 ## Overview
 
-Python supports threading. However, because of the GIL lock, only one thread is allowed to run at once. There Python threading supports concurrency, but not parallelizm. Most threading functions are made available by adding the code `import threading` to the top of your Python script.
+Python supports threading. However, because of the GIL lock, only one thread is allowed to run at once. There Python threading supports _concurrency_, but not _parallelism_. This makes Python **threading suitable for IO bound operations, but not for processor bound operations**. Most threading functions are made available by adding the code `import threading` to the top of your Python script.
 
 ## Gracefully Exiting Multiple Threads
 
@@ -100,7 +99,9 @@ if __name__ == '__main__':
     main(sys.argv)
 ```
 
-Note that the code in class `MyThread1` can be copied to create as many threads as you want (for example, to create `MyThread2`).
+{{% note %}}
+The code in class `MyThread1` can be copied to create as many threads as you want (for example, to create `MyThread2`).
+{{% /note %}}
 
 ## Examples
 

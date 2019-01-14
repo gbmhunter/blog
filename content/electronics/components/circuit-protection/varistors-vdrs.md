@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2015-11-23 23:31:14+00:00
+author: "gbmhunter"
+date: 2015-11-23
 draft: false
-title: Varistors (VDRs)
-type: page
-url: /electronics/components/circuit-protection/varistors-vdrs
+title: "Varistors (VDRs)"
+type: "page"
 ---
 
 ## Overview

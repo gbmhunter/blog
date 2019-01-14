@@ -153,4 +153,6 @@ He also goes on to say:
 
 > "an essential best practice for any reference-counted smart pointer type is to avoid copying it unless you really mean to add a new reference"
 
-Note that by in passing by copy, a new shared pointer is made, and the reference count is incremented (and decremented again when the function returns). This procedure does not have to occur when passing by reference.
+{{% note %}}
+By in passing by copy, a new shared pointer is made, and the reference count is incremented (and decremented again when the function returns). This procedure does not have to occur when passing by reference.
+{{% /note %}}

@@ -1,15 +1,18 @@
 ---
 author: gbmhunter
-date: 2017-04-14 22:17:45+00:00
+date: 2017-04-14
 draft: false
 title: Yocto Project
 type: page
-url: /programming/embedded-linux/yocto-project
 ---
 
 ## Overview
 
-The _Yocto Project_, or more commonly just called _Yocto_, is a build system used to create custom Linux distributions for embedded systems. It is important to note **that it is not a Linux distribution itself**, but a collection of tools to generate a custom Linux distribution for your specific embedded hardware.
+The _Yocto Project_, or more commonly just called _Yocto_, is a build system used to create custom Linux distributions for embedded systems.
+
+{{% note %}}
+It is important to note **that it is not a Linux distribution itself**, but a collection of tools to generate a custom Linux distribution for your specific embedded hardware.
+{{% /note %}}
 
 {{< figure src="/images/2017/04/the-yocto-project-logo.png" width="404px" caption="The logo for the Yocto project."  >}}
 
@@ -19,7 +22,9 @@ This is a Yocto "Quick Start", aimed to get you familiar with the basics of the 
 
 This quick start has been tested with Ubuntu 16.04 64-bit, running in VMWare on a Windows host (the free VirtualBox VM should also work fine).
 
-**NOTE: Give your VM a ton of hard drive space, memory and processors. You will be building Linux from source code, and this is very resource intensive! I gave the VM 120GB hard drive space (grows as needed), 8GB memory and 8 processors.**
+{{% warning %}}
+Give your VM a ton of hard drive space, memory and processors. You will be building Linux from source code, and this is very resource intensive! I gave the VM 120GB hard drive space (grows as needed), 8GB memory and 8 processors.**
+{{% /warning %}}
 
 Yocto has it's own quick start guide at [http://www.yoctoproject.org/docs/2.2.1/yocto-project-qs/yocto-project-qs.html](http://www.yoctoproject.org/docs/2.2.1/yocto-project-qs/yocto-project-qs.html). However, I have has problems with this, including errors such as:
 

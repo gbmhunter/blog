@@ -4,7 +4,6 @@ date: 2017-04-17 20:31:49+00:00
 draft: false
 title: Building Linux For The Zynq ZC702 Eval Kit Using Yocto
 type: page
-url: /programming/embedded-linux/zynq/building-linux-for-the-zynq-zc702-eval-kit-using-yocto
 ---
 
 ## Overview
@@ -192,7 +191,9 @@ We now will extract the root filesystem onto the second partition:
 $ sudo tar x -C /mnt/sdX2/ -f core-image-minimal-zc702-zynq7.tar.gz
 ```
 
-**NOTE: If you now insert this SD into windows, you should be able to see the files on the first (boot) partition, but not those on the second partition.**
+{{% note %}}
+If you now insert this SD into windows, you should be able to see the files on the first (boot) partition, but not those on the second partition.
+{{% /note %}}
 
 uEnv.txt should contain information similar to the following:
 

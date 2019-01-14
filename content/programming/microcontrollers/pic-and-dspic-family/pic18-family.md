@@ -4,7 +4,6 @@ date: 2016-06-19 23:46:51+00:00
 draft: false
 title: PIC18 Family
 type: page
-url: /programming/microcontrollers/pic-and-dspic-family/pic18-family
 ---
 
 ## Overview
@@ -90,16 +89,16 @@ void Eeprom_WriteByte(uint16_t address, uint8_t data)
 
 ## Writing Default Data To EEPROM On Program
 
-Default data can be written to the EEPROM when programming the PIC18 microcontroller by using the __EEPROM_DATA() macro.
+Default data can be written to the EEPROM when programming the PIC18 microcontroller by using the `__EEPROM_DATA()` macro.
 
 This macro takes 8 single-bye arguments, which writes 8 bytes of EEPROM data at once. This macro starts writing from address 0x0000 and auto-increments by 0x8 on every call.
 
 ## GPIO
 
-The TRISx registers (where x  is the port letter, e.g. TRISA , TRISB) control the direction of the GPIO pins on that port. They can either be set as inputs or outputs.
+The TRISx registers (where x  is the port letter, e.g. `TRISA`, `TRISB`) control the direction of the GPIO pins on that port. They can either be set as inputs or outputs.
 
 ## SPI
 
-The SPI peripheral is controlled by the SSPCON and SSPSTAT registers. Note that these registers are also used to configure the I2C peripheral (the SPI and I2C cannot peripherals cannot be used at the same time).
+The SPI peripheral is controlled by the `SSPCON` and `SSPSTAT` registers. Note that these registers are also used to configure the I2C peripheral (the SPI and I2C cannot peripherals cannot be used at the same time).
 
-Data is read/written to the SPI bus using the SSPBUF register.
+Data is read/written to the SPI bus using the `SSPBUF` register.

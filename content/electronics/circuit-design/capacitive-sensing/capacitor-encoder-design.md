@@ -128,7 +128,11 @@ What makes the signal processing difficult is that the channels of CDC values ca
 
 Correlation is used to determine the position of the passive PCB relative to the active PCB. The measured capacitance data from each channel in the track is used to create a waveform, which is then compared with the pre-determined signature (aka expected) waveform by calculating the correlation coefficient.
 
-The exact correlation used is called Pearson's linear correlation. The code below shows how the correlation coefficient is calculated between two arrays of the same size. Note that the following example uses doubles and math operations such as pow() and sqrt(), which on some embedded systems (especially 8-bit ones) may slow down the processor too much. These doubles can be converted to integers with careful consideration about scaling and overflow.
+The exact correlation used is called Pearson's linear correlation. The code below shows how the correlation coefficient is calculated between two arrays of the same size. 
+
+{{% note %}}
+Note that the following example uses doubles and math operations such as `pow()` and `sqrt()`, which on some embedded systems (especially 8-bit ones) may slow down the processor too much. These doubles can be converted to integers with careful consideration about scaling and overflow.
+{{% /note %}}
 
 ```c
 //! @brief   Calculates the correlation coefficient

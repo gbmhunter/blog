@@ -40,7 +40,9 @@ Up to 32-lanes are supported with a single PCIe.
 
 The minimum implementation of PCIe with one lane requires 4 wires for data transmission and 2 for a reference clock, giving a total of 6 (excluding power and ground).
 
-Note that the transmission speed in software is not define as a absolute bits/seconds, but rather as a multiplier for the base rate, e.g. _8x_ speed. The base rate is dependent on what version of the PCIe specification supports, and is summarised in the following table:
+{{% note %}}
+The transmission speed in software is not defined as a absolute bits/seconds, but rather as a multiplier for the base rate, e.g. _8x_ speed. The base rate is dependent on what version of the PCIe specification supports, and is summarised in the following table:
+{{% /note %}}
 
 <table>
     <thead>
@@ -118,7 +120,9 @@ RWEverything is a great Windows tool that allows you to read and write from any�
 
 {{< figure src="/images/2015/02/screenshot-of-custom-pcie-card-in-rw-everything.png" width="883px" caption="A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC."  >}}
 
-A note on downloading RWEverything: Many browsers and anti-virus software packages will state that RWEverything is a virus/malware. Chrome doesn't even let you download the file. However, I have used RWEverything many times and not discovered any problems from using the software. I suspect that this program is picked up by anti-virus software because it allows low-level read/write access to the systems memory and peripherals.
+{{% note %}}
+Many browsers and anti-virus software packages will state that RWEverything is a virus/malware. Chrome doesn't even let you download the file. However, I have used RWEverything many times and not discovered any problems from using the software. I suspect that this program is picked up by anti-virus software because it allows low-level read/write access to the systems memory and peripherals.
+{{% /note %}}
 
 ## Manufacturers
 

@@ -81,22 +81,21 @@ This page concerns itself largely on the GNU implementation of `getopt()` and i
 
 ## getopt()
 
-`getopt()` is a standard C library function that is commonly used to decode command-line options that are passed into the main()  function from the calling program (which is usually a terminal, e.g. bash). It can be used in your C code by including getopt.h (#include <getopt.h>).
+`getopt()` is a standard C library function that is commonly used to decode command-line options that are passed into the `main()` function from the calling program (which is usually a terminal, e.g. bash). It can be used in your C code by including `getopt.h` (`#include <getopt.h>`).
 
-It is a recursive function which is designed to be called multiple times until it returns -1, indicating that it has finished processing all of the options.
+It is a function which is designed to be called multiple times until it returns `-1`, indicating that it has finished processing all of the options.
 
-It supports single character options preceeded by a single -, e.g. -s 54.
+It supports single character options preceded by a single `-`, e.g. `-s 54`.
 
-The header file getopt.h exposes four variables used by getopt() that you can check to find the state of the function.
+The header file `getopt.h` exposes four variables used by `getopt()` that you can check to find the state of the function.
 
-Note that getopt() re-arranges the variable pointer array as it is processing, so that when it is complete, the program name is first (as it was originally), followed by all the options, and lastely all the parameters. You can use this feature to identify the parameters once getopt() is finished.
+Note that `getopt()` re-arranges the variable pointer array as it is processing, so that when it is complete, the program name is first (as it was originally), followed by all the options, and lastly all the parameters. You can use this feature to identify the parameters once `getopt()` is finished.
 
 ## getopt_long()
 
-
 `getopt_long()` is an extension of `getopt()` that allows long options, that is, options that are described with more than one ASCII character and preceeded by -- (e.g. `--speed=54`). It is part the GNU C library (glibc).
 
-The way long options are specified and handled is radically different to that for short options. The getopt_long() function accepts...
+The way long options are specified and handled is radically different to that for short options. The `getopt_long()` function accepts...
 
 ## Similar Functions
 

@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
-date: 2013-04-03 04:17:58+00:00
+author: "gbmhunter"
+date: 2013-04-03
 draft: false
-title: Using C++ With PSoC Creator
-type: page
-url: /programming/microcontrollers/psoc/using-cplusplus-with-psoc-creator
+tags: [ "C++", "PSoC", "PSoC Creator", "C", "IDE", "gcc", "g++", "microcontroller", "new", "delete", "vtable", "nothrow" ]
+title: "Using C++ With PSoC Creator"
+type: "page"
 ---
 
 ## Overview
@@ -34,8 +34,7 @@ If you start a new PSoC project, and add `-x c++`  to the global build setting
 
 // The following line was modified from void main() so
 // that it would compile as C++
-int main()
-{
+int main() {
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
     /* CyGlobalIntEnable; */ /* Uncomment this line to enable global interrupts. */
@@ -76,16 +75,14 @@ extern "C" {
 
 ## Defining New And Delete
 
-The operators new and delete are not defined when compiling C++ with the ARM compiler. Before you can dynamically create objects with new and delete, you need to define them, as shown in the following code.
+The operators new and delete are not defined when compiling C++ with the ARM compiler. Before you can dynamically create objects with `new` and `delete`, you need to define them, as shown in the following code.
 
 ```c
-void* operator new(size_t size) 
-{ 
+void* operator new(size_t size) { 
     return malloc(size); 
 } 
 
-void operator delete(void* ptr) 
-{ 
+void operator delete(void* ptr) {
     free(ptr); 
 }
 ```
@@ -93,8 +90,7 @@ void operator delete(void* ptr)
 If your dealing with dynamically-allocated arrays, you'll also want to declare these:
 
 ```c    
-void * operator new[](size_t size) 
-{ 
+void * operator new[](size_t size) { 
     return malloc(size); 
 } 
 
@@ -106,7 +102,7 @@ void operator delete[](void * ptr)
 
 ## Preventing Exceptions
 
-You'll notice that if you are trying to use your own versions of new and delete, you will get a error from the linker saying undefined reference to `__gxx_personality_v0`.
+You'll notice that if you are trying to use your own versions of `new` and `delete`, you will get a error from the linker saying undefined reference to `__gxx_personality_v0`.
 
 {{< figure src="/images/programming-psoc/cplusplus-linker-error-undefined-reference-to-gxx-personality.png" caption="Add the custom compile flag '-fno-exceptions' to every .cpp file you want to compile in PSoC Creator to prevent the 'undefined reference to __gxx_personality_v0' linker error."  width="600px" >}}
 
@@ -114,21 +110,22 @@ and/or the reported error from PSoC Creator saying `undefined reference to __cxa
 
 {{< figure src="/images/programming-psoc/c-linker-error-undefined-reference-to-cxa-end-cleanup.png" caption="Add the custom compile flag '-fno-exceptions' to every .cpp file you want to compile in PSoC Creator to prevent the 'undefined reference to __cxa_end_cleanup' linker error."  width="600px" >}}
 
-To prevent this, you have the to include the build flag `-fno-exceptions` to **every .cpp file that produces this error**. To add the build flag to a particular file, right click the file in the Workspace Explorer and click "Build Settings". Then click "Compiler", then "Command Line", and enter "-fno-excpetions" to the "Custom Flags" field.
+To prevent this, you have the to include the build flag `-fno-exceptions` to **every .cpp file that produces this error**. To add the build flag to a particular file, right click the file in the Workspace Explorer and click "Build Settings". Then click "Compiler", then "Command Line", and enter `-fno-excpetions` to the "Custom Flags" field.
 
 {{< figure src="/images/programming-psoc/psoc-creator-build-settings-to-use-new-delete-fno-exceptions.png" caption="Add the custom compile flag '-fno-exceptions' flag via the 'Build Settings' menu in PSoC Creator."  width="800px" >}}
 
-Incase you didn't wan't to globally disable exceptoins, you can disable exceptions for the new operator on a case-by-case basis by using the nothrow keyword. For example:
-    
-    // Using nothrow to prevent an exception being thrown if the memory allocation of 2000 bytes fails
-    char* p = new (std::nothrow) char [2000];
-    
+Incase you didn't want to globally disable exceptions, you can disable exceptions for the new operator on a case-by-case basis by using the `nothrow` keyword. For example:
+
+```c++
+// Using nothrow to prevent an exception being thrown if the memory allocation of 2000 bytes fails
+char* p = new (std::nothrow) char [2000];
+```
 
 When using the `nothrow` keyword, new will return `NULL` if the memory allocation failed.
 
 ## Virtual Functions
 
-If you get the linker error, undefined reference to "__cxa_pure_virtual", it's probably because you are trying to use virtual functions (it's related to the vtable). Use the compiler flag `-fno-rtti` to suppress this error.
+If you get the linker error `undefined reference to "__cxa_pure_virtual"`, it's probably because you are trying to use virtual functions (it's related to the vtable). Use the compiler flag `-fno-rtti` to suppress this error.
 
 An alternative is to provide the missing function, as shown below:
     
@@ -140,17 +137,17 @@ extern "C" void __cxa_pure_virtual(void);
 void __cxa_pure_virtual(void) {}; 
 ```    
 
-Becuase it's only the linker that looks for this function, you can normally get by with only providing the declaration and omitting the definition, and the definition can be placed in any C file. Perhaps you want to replace this empty function with some error reporting/debug code to detect if you either attempt to call a derived class whose virtual function has not been defined.
+Because it's only the linker that looks for this function, you can normally get by with only providing the declaration and omitting the definition, and the definition can be placed in any C file. Perhaps you want to replace this empty function with some error reporting/debug code to detect if you either attempt to call a derived class whose virtual function has not been defined.
 
 ## Guard Acquire And Guard Release Errors
 
-If you get the error undefined reference to '__cxa_guard_aquire'  and/or undefined reference to '__cxa_guard_release', it's because C++ is looking for a few functions which implement thread safety for static variables. You usually get this error while initialising static variables/classes which are inside functions (statics that are global to the file will not cause this error).
+If you get the error `undefined reference to '__cxa_guard_aquire'` and/or `undefined reference to '__cxa_guard_release'`, it's because C++ is looking for a few functions which implement thread safety for static variables. You usually get this error while initialising static variables/classes which are inside functions (statics that are global to the file will not cause this error).
 
 To prevent this error, add the compile flag `-fno-threadsafe-statics` to the build options for that C++ file. Note that you must make sure that the static is only used in one thread (or provide your own locks to make it thread-safe)!
 
 To provide your own locks, you need to complete function definitions and declarations as shown below:
 
-```
+```c++
 __extension__ typedef int __guard __attribute__((mode (__DI__))); 
 
 // Definitions
@@ -164,7 +161,7 @@ void __cxa_guard_release (__guard *g) {*(char *)g = 1;};
 void __cxa_guard_abort (__guard *) {}; 
 ```    
 
-Becuase it's only the linker that looks for these functions, you can normally get by with only providing the declarations and omitting the definitions, and they can be placed in any C file. Note that these functions only serve to stop the linker from complaining, and don't actually offer any thread-safe static support. This will have to be implemented yourself! (or only use an object from one thread).
+Because it's only the linker that looks for these functions, you can normally get by with only providing the declarations and omitting the definitions, and they can be placed in any C file. Note that these functions only serve to stop the linker from complaining, and don't actually offer any thread-safe static support. This will have to be implemented yourself! (or only use an object from one thread).
 
 ## Being Careful About What C++ Library Features You Use
 
@@ -176,9 +173,9 @@ Because of this, I almost use no standard C++ library features for embedded firm
 
 ## Build Warnings That Are O.K.
 
-You can safely ignore the "warning: IO function 'xxx' used" messages that pop up while compiling (xxx tends to be `_close`, `_fstat`, `_isatty`, `_kill`, `_lseek`, `_read`, and `_write`). I don't know exactly what these do, but the programs seem to work fine even though they are used.
+You can safely ignore the `warning: IO function 'xxx' used` messages that pop up while compiling (`xxx` tends to be `_close`, `_fstat`, `_isatty`, `_kill`, `_lseek`, `_read`, and `_write`). I don't know exactly what these do, but the programs seem to work fine even though they are used.
 
-{{< figure src="/images/programming-psoc/psoc-creator-io-function-gcc-build-warnings-cpp.png" caption="The PSoC Creator build warnings that pop up if you compile C++ code. You can safely ignore these."  width="700px" >}}
+{{< figure src="/images/programming-psoc/psoc-creator-io-function-gcc-build-warnings-cpp.png" caption="The PSoC Creator build warnings that pop up if you compile C++ code. You can safely ignore these." width="700px" >}}
 
 ## Debugging
 
@@ -195,8 +192,7 @@ A useful feature about interrupts on the PSoC is that you can create one schemat
 // IsrCpAdc
 
 // Class with static ISR callback member function
-class VoltageMeas
-{
+class VoltageMeas {
     public:
         // Function prototype of ISR callback function AdcDone
         static CY_ISR_PROTO(AdcDone);
@@ -206,13 +202,11 @@ class VoltageMeas
 // Notice you can still wrap function
 // with CY_ISR macro (the recommended and 
 // portable way of declaring ISR functions)
-CY_ISR(VoltageMeas::AdcDone)
-{
+CY_ISR(VoltageMeas::AdcDone) {
     // Do interrupt stuff...
 }
 
-main()
-{
+main() {
     VoltageMeas voltMeas;
 
     // Since AdcDone() is static, this next line
@@ -225,13 +219,13 @@ Note that if you start creating multiple objects of classes with these static in
 
 ## Compiling/Linking With arm-none-eabi-g++.exe
 
-I have also experimented with building with the C++ compiler/linker directly (as opposed to the `-c c++` method). Why would we want to do this? There are differences between building with the GCC compiler and `-x c++` compared to building directly with `arm-none-eabi-g++.exe`. I believe most of the differences (if not all) are because in the first case, the C-linker is used, while in the latter case, the C++-linker is used. Without using the C++ linker, we can't use virtual methods or exceptions in our code (note: all PSoC code with exceptions compiles fine with G++, I havn't got it to actually work without crashing a PSoC microcontroller yet).
+I have also experimented with building with the C++ compiler/linker directly (as opposed to the `-c c++` method). Why would we want to do this? There are differences between building with the GCC compiler and `-x c++` compared to building directly with `arm-none-eabi-g++.exe`. I believe most of the differences (if not all) are because in the first case, the C-linker is used, while in the latter case, the C++-linker is used. Without using the C++ linker, we can't use virtual methods or exceptions in our code (note: all PSoC code with exceptions compiles fine with G++, I haven't got it to actually work without crashing a PSoC microcontroller yet).
 
-This is not easy, as unfortunately, PSoC creator is hard coded to call `arm-none-eabi-gcc.exe`, no matter what GCC/ARM toolchain you point it too. However, I have found that you can get around this by renaming arm-none-eabi-g++.exe to arm-none-eabi-gcc.exe.
+This is not easy, as unfortunately, PSoC creator is hard coded to call `arm-none-eabi-gcc.exe`, no matter what GCC/ARM toolchain you point it too. However, I have found that you can get around this by renaming `arm-none-eabi-g++.exe` to `arm-none-eabi-gcc.exe`.
 
-These files are located in C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\gnu_cs\arm\4.7.3\bin (or similar) if you are on a modern Windows machine and using the default toolchain. Before you rename arm-none-eabi-g++.exe, rename the pre-existing arm-none-eabi-gcc.exe so that you won't overwrite it.
+These files are located in `C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\gnu_cs\arm\4.7.3\bin` (or similar) if you are on a modern Windows machine and using the default toolchain. Before you rename `arm-none-eabi-g++.exe`, rename the pre-existing `arm-none-eabi-gcc.exe` so that you won't overwrite it.
 
-Building with arm-none-eabi-g++.exe seems to get rid of the thread-safe static function definitions missing errors, exception fuction missing errors, and allows you to use virtual functions. This highlights the differences between building with the GCC compiler and -x c++ compared to building directly with arm-none-eabi-g++.exe.
+Building with `arm-none-eabi-g++.exe` seems to get rid of the thread-safe static function definitions missing errors, exception function missing errors, and allows you to use virtual functions. This highlights the differences between building with the GCC compiler and `-x c++` compared to building directly with `arm-none-eabi-g++.exe`.
 
 ## Questions I Still Don't Have An Answer Too...
 

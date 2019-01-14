@@ -4,20 +4,19 @@ date: 2013-06-02 21:39:16+00:00
 draft: false
 title: Batch Files
 type: page
-url: /programming/languages/batch-files
 ---
 
-> MS-DOS comands use a / character to signify a flag. All command syntax on this page uses square brackets for optional parameters.
+> MS-DOS comands use a `/` character to signify a flag. All command syntax on this page uses square brackets for optional parameters.
 
 ## Overview
 
 This page is all about the programming language used to write functioning batch file scripts for running in the Windows operating system. For native Windows commands/programs that you call call from a batch file or command prompt, see the [Windows page](/programming/operating-systems/windows).
 
-A batch file is a text file with the extension .bat. They are scripting files for the Windows command-line.
+A batch file is a text file with the extension `.bat`. They are scripting files for the Windows command-line.
 
 ## Comments
 
-Single-line comments can be inserted with either the double colon (::) or rem command.
+Single-line comments can be inserted with either the double colon (`::`) or `rem` command.
 
 ```
 :: This is a comment.
@@ -35,7 +34,7 @@ Echo is usually turned off to stop every line of code from being printed to the 
 echo off
 ```
 
-Notice though, although no lines after echo off will be printed, echo off is still printed since it is not executed until after it has been printed. To stop this from happening, you can suppress echoing with the @ symbol like so:
+Notice though, although no lines after echo off will be printed, echo off is still printed since it is not executed until after it has been printed. To stop this from happening, you can suppress echoing with the `@` symbol like so:
 
 ```    
 @echo off
@@ -56,7 +55,9 @@ set myVar=3
 set myVar=
 ```
 
-Note than when setting a variable, anything after the equals sign, including white-space, is part of the variable, up-to the last non-white character. You have to be careful you don't accidentally add space to strings when assigning to them:
+{{% warning %}}
+When setting a variable, anything after the equals sign, including white-space, is part of the variable, up-to the last non-white character. You have to be careful you don't accidentally add space to strings when assigning to them:
+{{% /warning %}}
 
 ```    
 set myVar = This is a string
@@ -65,7 +66,7 @@ echo "%myVar%"
 :: This will echo " This is a string". Notice the space at the start!
 ```
 
-Variables are used by enclosing them with the % character, e.g. %myVar%.
+Variables are used by enclosing them with the `%` character, e.g. `%myVar%`.
 
 ```    
 set myVar2 = %myVar%
@@ -86,7 +87,7 @@ This technique can be used to detect whether a string contains a particular subs
 
 ## Processing The Output Of A Command
 
-You can process the output of a command by using a for loop. The \f flag is commonly used.
+You can process the output of a command by using a for loop. The `\f` flag is commonly used.
 
 If the command output only has one line, you can use:
 
@@ -103,7 +104,7 @@ for /f "delims=" %%i in ('hg status') do set "CONCAT_STR=!CONCAT_STR! %%i"
 echo !CONCAT_STR!
 ```
 
-You can replace hg status with any command that you can run from the command line.
+You can replace `hg status` with any command that you can run from the command line.
 
 ## Delayed Expansion
 

@@ -4,7 +4,6 @@ date: 2014-01-05 01:00:54+00:00
 draft: false
 title: Special Casts
 type: page
-url: /programming/languages/c-plus-plus/special-casts
 ---
 
 ## Dynamic Casts
@@ -20,7 +19,7 @@ You can use the `dynamic_cast<>()` operator to work out the type of an object at
 
 ## Example
 
-The following example shows how you can use dynamic_cast<>() to work out the type of an object at runtime. It uses the example where there are base and derived classes, and you wish to know to what one of these objects the pointer points to.
+The following example shows how you can use `dynamic_cast<>()` to work out the type of an object at runtime. It uses the example where there are base and derived classes, and you wish to know to what one of these objects the pointer points to.
 
 ```c++
 // A base class pointer can point to objects of any class which is derived 
@@ -82,4 +81,4 @@ int main()
 
 If you use the `dynamic_cast<>()` operator in code that is going onto a microcontroller, this now means the entire RTTI engine has to be included (assuming you are not already using the typeid operator, which also uses the RTTI).
 
-Note that RTTI is only availiable for functions which are polymorphic (i.e. have at least one virtual method), so by using RTTI-specific features, you are also implying you are using virtual methods, which is another resource cost on an embedded device.
+Note that RTTI is only available for functions which are polymorphic (i.e. have at least one virtual method), so by using RTTI-specific features, you are also implying you are using virtual methods, which is another resource cost on an embedded device.

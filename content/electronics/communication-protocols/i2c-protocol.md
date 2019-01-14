@@ -128,7 +128,11 @@ A **gotcha** during PCB design is to unintentionally **add multiple pull-up resi
 
 ## Overview
 
-The data on an I2C bus can be transmitted at different rates, depending on what modes both the transmitter and receiver support. The following table outline the modes and the maximum speeds at which data can be transmitted on them. Note that because the data is clocked, there is almost no minimum speed (unless the device implements some sort of time-out feature).
+The data on an I2C bus can be transmitted at different rates, depending on what modes both the transmitter and receiver support. The following table outline the modes and the maximum speeds at which data can be transmitted on them. 
+
+{{% note %}}
+Because the data is clocked, there is almost no minimum speed (unless the device implements some sort of time-out feature).
+{{% /note %}}
 
 <table>
     <thead>
@@ -273,7 +277,7 @@ The 10-bit addressing scheme involves two address bytes (instead of just one). 
 
 {{< figure src="/images/2011/09/i2c-10-bit-addressing-scheme-bit-pattern-of-address-bytes-1.gif" width="1023px" caption="The bit pattern of the two address bytes in the I2C 10-bit addressing scheme. Image from http://www.i2c-bus.org/."  >}}
 
-Bit 0 of the first address byte is the read/not-write (RnW) bit. **Note that when using the 10-bit addressing scheme, this must be set to 0. **Thus, to perform a read operation, a _combined transfer_ must be used. In a _combined transfer_, the above two bytes are sent with the RnW bit set to 0, then a repeated start, then the first address byte again, but with the RnW bit set to 1. A read operation then may be performed as usual.
+Bit 0 of the first address byte is the read/not-write (RnW) bit. **Note that when using the 10-bit addressing scheme, this must be set to 0.** Thus, to perform a read operation, a _combined transfer_ must be used. In a _combined transfer_, the above two bytes are sent with the RnW bit set to 0, then a repeated start, then the first address byte again, but with the RnW bit set to 1. A read operation then may be performed as usual.
 
 The 10-bit addressing scheme has been to designed so that it can work on a bus alongside the 7-bit addressing scheme.
 

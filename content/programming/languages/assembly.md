@@ -4,7 +4,6 @@ date: 2013-06-28 06:03:35+00:00
 draft: false
 title: Assembly
 type: page
-url: /programming/languages/assembly
 ---
 
 ## Overview
@@ -26,7 +25,7 @@ mov eax, [ecx]
 
 **AT&T Syntax**
 
-AT&T syntax always puts the source address before the destination address. It also requires a % infront of every register access, and a $ infront of immediate operands.
+AT&T syntax always puts the source address before the destination address. It also requires a `%` infront of every register access, and a `$` infront of immediate operands.
 
 ```asm    
 instr source, dest
@@ -57,12 +56,16 @@ OR for a 64-bit object file:
 $ nasm -f elf64 test.asm
 ```
 
-This will produce an object file called myfile.o. NOTE: Not all assembly instructions are supported for both 32-bits and 64-bits.
+This will produce an object file called `myfile.o`.
+
+{{% note %}}
+Not all assembly instructions are supported for both 32-bits and 64-bits.
+{{% /note %}}
 
 You then have two options for linking:
 
-1. Use the linker program ld
-2. Use gcc. This automatically links against the C standard library for you.
+1. Use the linker program `ld`
+2. Use `gcc`. This automatically links against the C standard library for you.
 
 Using gcc:
 
@@ -80,9 +83,9 @@ $ gcc -m64 test.o -o test
 
 **Hello World (using NASM)**
 
-This Hello, World example will be as bare-bones as possible, and will not even use the printf() function call (instead it will make a Linux system call directly).
+This Hello, World example will be as bare-bones as possible, and will not even use the `printf()` function call (instead it will make a Linux system call directly).
 
-First, we need a .section text to tell the compiler that this is our executable code.
+First, we need a `.section text` to tell the compiler that this is our executable code.
 
 ```    
 .section text
@@ -96,7 +99,7 @@ _start:
     ... more code here ...
 ```
 
-Now, printing "Hello, world!" requires the use of a Linux system call to print the text to stdout (specifically, sys_write). We will use the Linux _fastcall_ convention which **allows us to put the input arguments into registers, rather than on the stack**. The system call number is placed in eax, and the arguments in the successive registers ebx, ecx, e.t.c. The function number for sys_write is 4 ([see here](https://syscalls.kernelgrok.com/)). We need to place the file we wish to write to in ebx, a pointer to the message (char *) in ecx, and the number of characters in edx.
+Now, printing `Hello, world!` requires the use of a Linux system call to print the text to `stdout` (specifically, `sys_write`). We will use the Linux _fastcall_ convention which **allows us to put the input arguments into registers, rather than on the stack**. The system call number is placed in `eax`, and the arguments in the successive registers ebx, ecx, e.t.c. The function number for `sys_write` is `4` ([see here](https://syscalls.kernelgrok.com/)). We need to place the file we wish to write to in ebx, a pointer to the message (`char *`) in `ecx`, and the number of characters in edx.
 
 ```asm    
 section .text
@@ -110,7 +113,7 @@ _start:
 
 Note that I have assigned the registers in reverse order (starting at edx and going to eax). This is not necessary (any order would work), however this practise stems from the sequence required making a system call by pushing to the stack instead, in where this order is important. I just kept the same practise for good readability.
 
-So, now we need to place the message in memory somewhere, and also find out it's size, so we can fill in <pointer to msg> and <msg size>. We can create a data section just for this purpose:
+So, now we need to place the message in memory somewhere, and also find out it's size, so we can fill in `<pointer to msg>` and `<msg size>`. We can create a data section just for this purpose:
 
 ```asm    
 section .text
@@ -158,7 +161,7 @@ section .data
     len equ $ - msg        ; Calculate the length of the string (note, this does not store anything in memory)
 ```
 
-Running the above code should print "Hello, world!" to stdout. But your program might then just seg fault. This is because we have not exited cleanly. To do this, we can make another sys call, this time to sys_exit (0x01).
+Running the above code should print `Hello, world!` to stdout. But your program might then just seg fault. This is because we have not exited cleanly. To do this, we can make another sys call, this time to `sys_exit` (`0x01`).
 
 ```asm    
 section .text
@@ -183,7 +186,7 @@ All done! Run this code online at [https://www.tutorialspoint.com/tpcg.php?p=qjM
 
 Because we want to know use a standard library function, we are going to take a slightly different approach.
 
-Create a test.asm file with the following contents:
+Create a `test.asm` file with the following contents:
 
 ```asm    
 extern printf   ; Make sure to link with gcc so that standard library is automatically linked against

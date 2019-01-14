@@ -4,7 +4,6 @@ date: 2013-07-26 03:06:41+00:00
 draft: false
 title: Controlling Registers
 type: page
-url: /programming/microcontrollers/psoc/controlling-registers
 ---
 
 You can use the standard C way (note this is assuming a 32-bit register (e.g. PSoC 5 device).

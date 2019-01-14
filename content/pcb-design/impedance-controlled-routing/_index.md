@@ -1,19 +1,14 @@
 ---
-author: gbmhunter
-date: 2013-10-29 02:23:42+00:00
+author: "gbmhunter"
+date: 2013-10-29
 draft: false
-title: Impedance Controlled Routing
-type: page
-url: /pcb-design/impedance-controlled-routing
+title: "Impedance Controlled Routing"
+type: "page"
 ---
 
 ## Overview
 
-{{< figure src="/images/2013/10/microstrip-track-example-in-isometric-view-microchip.gif" width="316px" caption="An isometric diagram of a microstrip. Image from www.maximintegrated.com."  >}}
-
-## Child Pages
-
-[sb_child_list template=2 orderby=title order=asc nest_level=1]
+{{< figure src="/images/2013/10/microstrip-track-example-in-isometric-view-microchip.gif" width="316px" caption="An isometric diagram of a microstrip. Image from www.maximintegrated.com." >}}
 
 ## Dielectric Constant
 

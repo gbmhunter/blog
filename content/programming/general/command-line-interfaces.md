@@ -4,14 +4,15 @@ date: 2014-01-21 07:40:34+00:00
 draft: false
 title: Command-line Interfaces
 type: page
-url: /programming/general/command-line-interfaces
 ---
 
 ## Overview
 
 A command-line interface is a way of interacting (sending instructions, receiving info) with programs on a computer.
 
-NOTE: For a C++ command-line interpreter, that can run on both embedded and P.C. architectures, see [clide-cpp on Github](https://github.com/gbmhunter/clide-cpp).
+{{% note %}}
+For a C++ command-line interpreter, that can run on both embedded and P.C. architectures, see [clide-cpp on Github](https://github.com/gbmhunter/clide-cpp).
+{{% /note %}}
 
 See [C->Processing Command-Line Input](/programming/languages/c/processing-command-line-input) for how to write C code for dealing with command-line arguments passed to main().
 

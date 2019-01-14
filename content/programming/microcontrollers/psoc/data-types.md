@@ -4,12 +4,11 @@ date: 2013-07-26 00:57:28+00:00
 draft: false
 title: Data Types
 type: page
-url: /programming/microcontrollers/psoc/data-types
 ---
 
 ## Standard Data Types
 
-Note: The pre-defined variable types that come with the PSoC programming suites are defined both with and without the _t suffix that most people use to define a typedef (e.g. uint8_t). I recommend using the version with the underscore, as this increases portability (this is also supported by Linux and other Unix-like systems). It is better practise to use the data types whose size is explicitly stated (e.g. uint32_t rather than unsigned int as the latter's size is platform-dependant). The following data types are valid for all PSoC families.
+Note: The pre-defined variable types that come with the PSoC programming suites are defined both with and without the `_t` suffix that most people use to define a `typedef` (e.g. `uint8_t`). I recommend using the version with the underscore, as this increases portability (this is also supported by Linux and other Unix-like systems). It is better practice to use the data types whose size is explicitly stated (e.g. `uint32_t` rather than `unsigned int` as the latter's size is platform-dependant). The following data types are valid for all PSoC families.
 
 ```c
 // Standard C data types (implicit sizes)

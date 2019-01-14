@@ -4,7 +4,6 @@ date: 2017-08-16 16:09:37+00:00
 draft: false
 title: Strings
 type: page
-url: /programming/languages/python/strings
 ---
 
 ## Overview
@@ -58,4 +57,4 @@ numBytes = getsizeof("hello")
 // numBytes = 54 (in my specific case)
 ```
 
-Note that the number of bytes assigned to store the string may be rather arbitrary and much larger than the number of characters in the string itself.
+Note that the number of bytes assigned to store the string may be much larger than the number of characters (even if they are single byte chars!) in the string itself.

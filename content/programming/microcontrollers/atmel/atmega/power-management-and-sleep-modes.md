@@ -4,7 +4,6 @@ date: 2011-09-14 21:52:05+00:00
 draft: false
 title: ATmega Power Management And Sleep Modes
 type: page
-url: /programming/microcontrollers/atmel/atmega/power-management-and-sleep-modes
 ---
 
 ## Overview

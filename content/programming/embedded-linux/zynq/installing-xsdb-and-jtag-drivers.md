@@ -23,7 +23,9 @@ Once the drivers have been installed on Windows, VMware detects the cable as "Fu
 
 Plug the micro USB cable into the ZC702 dev. board and your computer.
 
-**NOTE: On recent versions of Mac OS (as of Aug 2017), it looks like the JTAG device on the ZC-702 is recognized as a "Digilent Adept USB Device" without the installation of any additional drivers.**
+{{% note %}}
+On recent versions of Mac OS (as of Aug 2017), it looks like the JTAG device on the ZC-702 is recognized as a "Digilent Adept USB Device" without the installation of any additional drivers.
+{{% /note %}}
 
 ## Install Diligent JTAG Drivers And SDK On Ubuntu
 

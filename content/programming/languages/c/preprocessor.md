@@ -4,7 +4,6 @@ date: 2011-09-07 00:56:48+00:00
 draft: false
 title: Preprocessor
 type: page
-url: /programming/languages/c/preprocessor
 ---
 
 ## Overview
@@ -74,17 +73,17 @@ And so when this is written in code somewhere
 MY_FUNC(2)
 ```    
 
-The preprocessor will replace it with: 2*2.
+The preprocessor will replace it with `2*2`.
 
 ## Variadic Macros
 
-The C preprocessor allows variadic macros, just like the C compilier allows for variadic functions. The variable-length parameters are encapsulated within the variable `__VA_ARGS__`, and you indicate in a macro that you want it to be variadic with ....
+The C preprocessor allows variadic macros, just like the C compiler allows for variadic functions. The variable-length parameters are encapsulated within the variable `__VA_ARGS__`, and you indicate in a macro that you want it to be variadic with ....
 
 ```c
 #define eprintf(...) fprintf (stderr, __VA_ARGS__)
 ```    
 
-The variadic example below allows for conditional inclusion of debug statements, which behaves just like printf() does. Note that it also uses FreeRTOS and their semaphores for debug UART resource control.
+The variadic example below allows for conditional inclusion of debug statements, which behaves just like `printf()` does. Note that it also uses FreeRTOS and their semaphores for debug UART resource control.
 
 ```c
 #if(configPRINT_DEBUG_GPRS_MAIN == 1)

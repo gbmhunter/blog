@@ -4,7 +4,6 @@ date: 2013-03-18 03:47:49+00:00
 draft: false
 title: Dynamic Memory Allocation
 type: page
-url: /programming/languages/c/dynamic-memory-allocation
 ---
 
 ## Overview
@@ -13,7 +12,7 @@ Dynamic memory allocation is the process of assigning space for variables at run
 
 The biggest risk with dynamic memory allocation is forgetting to free the memory after your finished with it. This can quickly lead to you running out of memory as more and more spaces in memory are assigned to the same variable (this is called a memory leak).
 
-The malloc-family of functions include malloc(), calloc(), realloc() and free(). Most C-programming IDE's link to a standard library with these functions. They are used by including stdlib.h into your project. These functions are also available in C++.
+The malloc-family of functions include `malloc()`, `calloc()`, `realloc()` and `free()`. Most C-programming IDE's link to a standard library with these functions. They are used by including `stdlib.h` into your project. These functions are also available in C++.
 
 ## Thread-Safety
 
@@ -31,15 +30,14 @@ void* malloc(size_t size);
 
 `malloc()` always returns a `void*` pointer, **so it has to be cast into the desired pointer type.**
 
-Memory allocated in this fashion **persists until it is freed** (it is placed on the heap). This means that unlike local variables, it will persist even after the function that called malloc() has ended. This can lead to **memory leaks** if you are not careful and keep track of all of your allocated variables. **C does not have any garbage collection.**
+Memory allocated in this fashion **persists until it is freed** (it is placed on the heap). This means that unlike local variables, it will persist even after the function that called `malloc()` has ended. This can lead to **memory leaks** if you are not careful and keep track of all of your allocated variables. **C does not have any garbage collection.**
 
-When using `malloc()`, remember that it requires the **number of bytes** you wish to allocate in memory. This is **NOT necessarily the same** as the number of elements you want in your array. For example, if your array is of type uint32_t, and you want the array to store 10 uint32_t numbers, you need to allocate 40 bytes, since each uint32_t requires 4 bytes of memory. The safest way to make sure this does not trip you up when programming is to use the sizeof() command as shown in the below code.
+When using `malloc()`, remember that it requires the **number of bytes** you wish to allocate in memory. This is **NOT necessarily the same** as the number of elements you want in your array. For example, if your array is of type `uint32_t`, and you want the array to store 10 `uint32_t` numbers, you need to allocate 40 bytes, since each `uint32_t` requires 4 bytes of memory. The safest way to make sure this does not trip you up when programming is to use the `sizeof()` command as shown in the below code.
 
 ```c    
 #include <stdlib.h>
 
-void DynamicMemoryAllocation()
-{
+void DynamicMemoryAllocation() {
     // You can set numDoubleElements to whatever you want at run time
     // (because this is dynamic memory allocation!!!)
     uint8_t numDoubleElements = 8;
@@ -68,7 +66,7 @@ You must consider that if `realloc()` cannot allocate enough memory at the end 
 
 ## alloca()
 
-`alloca()` is used to allocate memory on the stack, not the heap. Unlike the malloc()-family of functions, memory allocated by alloca() is automatically de-allocated when the function returns to the caller. It also has the benefit of not causing memory fragmentation. However, it can cause stack overflows if you assign too much memory, it does not check to see whether the operation is safe before it goes ahead an assigns the memory. For this reason it is not recommended for variables larger than a couple of hundred bytes (this is platform dependant).
+`alloca()` is used to allocate memory on the stack, not the heap. Unlike the `malloc()`-family of functions, memory allocated by `alloca()` is automatically de-allocated when the function returns to the caller. It also has the benefit of not causing memory fragmentation. However, it can cause stack overflows if you assign too much memory, it does not check to see whether the operation is safe before it goes ahead an assigns the memory. For this reason it is not recommended for variables larger than a couple of hundred bytes (this is platform dependant).
 
 The function declaration:
 
@@ -76,19 +74,18 @@ The function declaration:
 void* alloca(size_t size);
 ```
 
-where size is the number of bytes you wish assigned (positive integer).
+where `size` is the number of bytes you wish assigned (positive integer).
 
-You can use `alloca()` in your code after including alloca.h in your source file (#include <alloca.h>).
+You can use `alloca()` in your code after including `alloca.h` in your source file (`#include <alloca.h>`).
 
-**Do not free** a variable that has been allocated memory with alloca() using free()! This will most likely crash your program (behaviour is undefined).
+**Do not free** a variable that has been allocated memory with `alloca()` using `free()`! This will most likely crash your program (behaviour is undefined).
 
-If you are using GCC (and the glibc library), you should note that in most cases, the GCC compiler will inline the alloca()  call and remove the function. It is normally replaced with just a single line of code that adjusts the stack pointer.
+If you are using GCC (and the glibc library), you should note that in most cases, the GCC compiler will inline the `alloca()` call and remove the function. It is normally replaced with just a single line of code that adjusts the stack pointer.
 
-On many systems, you cannot call alloc()  from within the list of arguments for a function call, as the memory allocated would be interspersed with the arguments when the function is entered.
+On many systems, you cannot call `alloc()` from within the list of arguments for a function call, as the memory allocated would be interspersed with the arguments when the function is entered.
 
 ```c
-int main()
-{
+int main() {
     // This will throw a compiler error on most systems
     MyFunc(2, "string", alloca(2));
 }
@@ -108,8 +105,7 @@ When using dynamic memory allocation, you commonly want to add a new element to 
 //! @param	sizeofElement		The size (in bytes) of the individual elements in the array.
 //!					This can be found by using sizeof(arrayType_t)
 //! @returns	Pointer to new position of array[0]. Remember to cast back to the original type.
-void* AppendNewArrayElement(void* arrayStart, uint32_t currNumElements, uint32_t sizeOfElement)
-{
+void* AppendNewArrayElement(void* arrayStart, uint32_t currNumElements, uint32_t sizeOfElement) {
     // Create a new option at end of option array
     arrayStart = realloc(arrayStart , (currNumElements+1)*sizeOfElement);
     // Cast to char pointer to get around the "arthimetic on type void* compiler warning)

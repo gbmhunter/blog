@@ -4,7 +4,6 @@ date: 2018-01-17 19:17:03+00:00
 draft: false
 title: Anaconda
 type: page
-url: /programming/languages/python/anaconda
 ---
 
 ## Overview
@@ -35,7 +34,9 @@ Install your required packages:
 $ conda install -n <your environment name> <package>
 ```
 
-Note: If you don't specify an environment to install to (as above), Anaconda will install to the currently active environment. To install to any environment which is not currently active, add the option `-n <your environment name>` to the above command.
+{{% note %}}
+If you don't specify an environment to install to (as above), Anaconda will install to the currently active environment. To install to any environment which is not currently active, add the option `-n <your environment name>` to the above command.
+{{% /note %}}
 
 Now you can run your python code!
 

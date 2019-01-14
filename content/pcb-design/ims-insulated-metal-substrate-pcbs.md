@@ -62,7 +62,7 @@ The non-component side of a 1-sided IMS PCB can be mounted to a heatsink (e.g. t
 
 Maximum dimensions seem to be around 500x500mm.
 
-Flammabiity rating can be 94V0.
+Flammability rating can be 94V0.
 
 ## PCB Constraints
 
@@ -77,4 +77,7 @@ Er (permittivity): 4.2-4.7. 
 
 ## Thermal Management Alternatives To IMS
 
-Moving from a traditional PCB to a IMS PCB can be quite a large design/manufacturing change. Before doing this, think, "Can I get improve the thermal properties of my PCB in any other way?". Here are some alternatives to IMS PCBs:  * Thermal vias (note that these can be also used in conjunction with IMS PCBs)  * Thicker copper layers. 35um (1 oz.) thick copper is standard, but most PCB manufacturers allow you to increase the thickness by a large amount!
+Moving from a traditional PCB to a IMS PCB can be quite a large design/manufacturing change. Before doing this, think, "Can I get improve the thermal properties of my PCB in any other way?". Here are some alternatives to IMS PCBs:
+
+* Thermal vias (note that these can be also used in conjunction with IMS PCBs)
+* Thicker copper layers. 35um (1 oz.) thick copper is standard, but most PCB manufacturers allow you to increase the thickness by a large amount!

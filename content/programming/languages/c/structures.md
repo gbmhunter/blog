@@ -4,7 +4,6 @@ date: 2013-03-18 07:35:28+00:00
 draft: false
 title: Structures
 type: page
-url: /programming/languages/c/structures
 ---
 
 ## Overview
@@ -36,13 +35,12 @@ Unfortunately, **you cannot define default variables for a structure when you de
 
 ## Manipulating Structures
 
-Because structure can contain more than one data type, you can't use the standard procedure for manipulating other 'variables'. For example you can't use struct 1 = struct 2 to copy one structure to another or use `struct1= 0` to set all values to 0. Instead, you have to use memory operations.
+Because structure can contain more than one data type, you can't use the standard procedure for manipulating other 'variables'. For example you can't use `struct 1 = struct 2` to copy one structure to another or use `struct1 = 0` to set all values to `0`. Instead, you have to use memory operations.
 
 However, you can still copy individual variables that belong to a structure just like usual.
 
 ```c    
-typedef struct
-{
+typedef struct {
     uint16_t value1;
     uint16_t value2;
 } demoStruct_t;
@@ -51,6 +49,7 @@ demoStruct_t demoStruct1;
 demoStruct_t demoStruct2;
 // Clear all of the variables in a structure (set to 0)
 memset(&struct1, 0x00, sizeof(struct1));
+
 // Copy the contents of struct1 into struct 2 (of the same type)
 // Note that the size of the destination variable is used rather
 // than the source, this is a safer method as it prevents
@@ -66,22 +65,19 @@ struct1.value1 = struct2.value2;
 You can self-reference a structure, but you cannot include the structure type in the structure itself (with would cause infinite recursion). To self-reference a structure, you have to use the little-used (in C anyway) name after typedef struct.
 	
 ```c    
-typedef struct cmd_t
-{
+typedef struct cmd_t {
     // This is a legal self-reference
     cmd_t* cmdPtr;
 } cmd_t;
 
-typedef struct cmd_t
-{
+typedef struct cmd_t {
     // This is an illegal infinite recursion error
     cmd_t cmd;
 } cmd_t;
 
 // This following declaration has got the first cmd_t
 // missing. This will cause an cmd_t is undefined error.
-typedef struct
-{
+typedef struct {
     cmd_t cmd;
 } cmd_t
 ```

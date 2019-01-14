@@ -14,7 +14,9 @@ The topology of a communication bus describes how nodes are connected to each ot
 
 A point-to-point communication bus has **one driver, one receiver**. This is the simplest type of communication bus. It is also the communication bus which gives the greatest signal integrity, as the fan-out of one driver to many receiver increases the number of impedance mismatches.
 
-Note that this applies to each "wire" of the bus. For example, even though UART could be thought of one transceiver connected to another transceiver, each wire on the bus has only one transmitter and one receiver, and hence is point-to-point.
+{{% note %}}
+The concept of point-to-point applies to each "wire" of the bus. For example, even though UART could be thought of one transceiver connected to another transceiver, each wire on the bus has only one transmitter and one receiver, and hence is point-to-point.
+{{% /note %}}
 
 Examples of point-to-point communication buses are:
 

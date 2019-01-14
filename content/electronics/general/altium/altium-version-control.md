@@ -28,7 +28,7 @@ As you may of noticed, I make sure that the files are inside the Altium project 
 
 ## Mercurial ignore file for Altium using Glob syntax
 
-Note: Replace <AltiumProjectRoot> with the name of the folder all your Altium files are stored in, relative to the repository root directory (e.g. PCB)
+Note: Replace `<AltiumProjectRoot>` with the name of the folder all your Altium files are stored in, relative to the repository root directory (e.g. `PCB`)
 
 ```
 # use glob syntax  

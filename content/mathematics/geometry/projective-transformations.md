@@ -47,7 +47,9 @@ The above projection algorithm can be used to perform "quad-to-quad" projection 
 
 **Quadrilateral restrictions: No three of the four points in the quadrilateral can be collinear (i.e. lie on the same line).** That is the same as saying that the quadrilateral must have four distinct edges.
 
-**Note: If you learn better from example, see the Worked Example section below.**
+{{% note %}}
+If you learn better from example, see the Worked Example section below.
+{{% /note %}}
 
 The order in which you define the four vertices is not important. However, I define them in counter-clockwise order as this seem to be a common convention in industry.
 
@@ -134,12 +136,12 @@ Python code for this worked example can be found at [https://github.com/mbedded-
 
 Of course, Quad-to-Quad transformations do not have to use simple square, any four sided polygon can be used in the transformation, as shown in the below image:
 
-{{< figure src="/images/2017/11/quad-to-quad-transformation-complex-image.png" width="616px" caption="A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges."  >}}
+{{< figure src="/images/2017/11/quad-to-quad-transformation-complex-image.png" width="616px" caption="A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges." >}}
 
 **Code Libraries**
 
-Qt provides a QTranform::quadToQuad() method which can be used to create a transformation object that can then be applied to things such as images. Note how ever that that when transforming an image, **"extra" translation is removed from the output so that the translated image is contained within the smallest number of pixels possible**. Qt also specifies the structure of the transformation matrix slightly differently, **with the order of each element being different from "standard"** (it looks like it has been mirrored around the leading diagonal).
+Qt provides a `QTranform::quadToQuad()` method which can be used to create a transformation object that can then be applied to things such as images. Note how ever that that when transforming an image, **"extra" translation is removed from the output so that the translated image is contained within the smallest number of pixels possible**. Qt also specifies the structure of the transformation matrix slightly differently, **with the order of each element being different from "standard"** (it looks like it has been mirrored around the leading diagonal).
 
 {{< figure src="/images/2017/11/qt-transformation-matrix-element-order.png" width="827px" caption="The structure of a Qt transformation matrix. Notice how the ordering is different to 'standard' ( it looks like the matrix has been mirrored around the leading diagonal)."  >}}
 
-Python's image library (PIL) provides a transform() function with can do perspective transformations, along with interpolation (this is what is used to transform the above "Hello" image).
+Python's image library (PIL) provides a `transform()` function with can do perspective transformations, along with interpolation (this is what is used to transform the above "Hello" image).

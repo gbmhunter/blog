@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2016-04-19 05:04:34+00:00
+author: "gbmhunter"
+date: 2016-04-19
 draft: false
-title: Digital Temperature Sensors
-type: page
-url: /electronics/components/sensors/temperature-sensors/digital-temperature-sensors
+title: "Digital Temperature Sensors"
+type: "page"
 ---
 
 ## Overview
@@ -15,7 +14,9 @@ Digital temperature sensors are not as easy to interface with a microcontroller,
 
 Digital temperature sensors require contact with the medium that is to be measured.
 
-Note that although digital sensors are more immune to external noise, they also generate more noise than analogue ones (think about the sharp rise/fall times of a digital signal). It may be desirable to use an analogue temperature sensor in a highly sensitive environment.
+{{% note %}}
+Although digital sensors are more immune to external noise, they also generate more noise than analogue ones (think about the sharp rise/fall times of a digital signal). It may be desirable to use an analogue temperature sensor in a highly sensitive environment.
+{{% /note %}}
 
 ## History
 
