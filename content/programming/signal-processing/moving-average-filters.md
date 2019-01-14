@@ -1,7 +1,8 @@
 ---
 author: "gbmhunter"
-date: 2014-02-26 21:20:04+00:00
+date: 2014-02-26
 draft: false
+tags: [ "moving average", "filter", "ADC", "DAC", "time domain", "discrete", "frequency response", "exponentially weighted", "multiple pass", "signal processing" ]
 title: "Moving Average Filters"
 type: "page"
 ---
@@ -92,8 +93,8 @@ A left-hand simple moving average filter can be represented by:
 
 <p class="centered">
     where:<br>
-    \( x[] \) = the input signal<br>
-    \( y[] \) = the output signal<br>
+    \( x \) = the input signal<br>
+    \( y \) = the output signal<br>
     \( M \) = the number of points in the average (the width of the window)<br>
  </p>
 
