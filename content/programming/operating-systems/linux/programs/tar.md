@@ -4,7 +4,6 @@ date: 2017-04-09 00:25:31+00:00
 draft: false
 title: tar
 type: page
-url: /programming/operating-systems/linux/programs/tar
 ---
 
 ## Overview

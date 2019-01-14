@@ -4,7 +4,6 @@ date: 2014-09-17 00:23:25+00:00
 draft: false
 title: screen
 type: page
-url: /programming/operating-systems/linux/programs/screen
 ---
 
 ## Overview

@@ -4,7 +4,6 @@ date: 2013-04-29 08:19:56+00:00
 draft: false
 title: PHP
 type: page
-url: /programming/website-design/php
 ---
 
 ## Comments

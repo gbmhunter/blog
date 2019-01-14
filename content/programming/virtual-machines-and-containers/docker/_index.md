@@ -109,7 +109,9 @@ Enter this on the a shell session running in the host computer to enter a shell 
 docker exec -it <container_id> bash
 ```
 
-Note: This assumes you already have a container running!
+{{% note %}}
+This assumes you already have a container running!
+{{% /note %}}
 
 ## To Exit A Container Without Stopping It
 

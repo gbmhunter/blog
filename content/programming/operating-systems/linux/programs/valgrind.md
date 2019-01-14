@@ -75,7 +75,7 @@ To run callgrind, use the following command:
 ~$ valgrind --tool=callgrind ./profiling_test
 ```
 
-NOTE: The order of the optional parameters to valgrind is important! Make sure --tool=callgrind comes BEFORE the path to your executable.
+The order of the optional parameters to valgrind is important! Make sure `--tool=callgrind` comes BEFORE the path to your executable.
 
 {{% warning %}}
 Again, callgrind will make your program run 4-10x slower than usual. If this slow down is unacceptable for whatever reason, but you still want to profile your application, you may want to check out GCC's gprof which in my experience, causes much less of a performance drop.

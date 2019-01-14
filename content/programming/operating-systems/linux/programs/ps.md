@@ -4,7 +4,6 @@ date: 2017-01-28 13:39:39+00:00
 draft: false
 title: ps
 type: page
-url: /programming/operating-systems/linux/programs/ps
 ---
 
 ## Overview
@@ -58,7 +57,7 @@ root      45718      1  0 Jun06 ?        00:00:00 /usr/sbin/atd -f
 ntp       45742      1  0 Jun06 ?        00:00:18 /usr/sbin/ntpd -u ntp:ntp -g
 ```
 
-Remember that PID is the process ID and PPID is the parent process ID.
+Remember that `PID` is the process ID and `PPID` is the parent process ID.
 
 If you use BSD style options (no dash), ps will print the command and the provided options for each process, rather than the executable name:
 
@@ -94,6 +93,6 @@ The output of ps can be piped to grep to filter the results. For example, if you
 $ ps -aux | grep hocus_pocus
 ```
 
-Note: grep will **match anything on the line** printed by ps -aux. That means that hocus_pocus will be matched against the username column and any paths in the process name.
+Note: grep will **match anything on the line** printed by `ps -aux`. That means that `hocus_pocus` will be matched against the username column and any paths in the process name.
 
-However, aside from having to use two commands, there are other disadvantages to using ps with grep. A completely new program, pgrep was built to try and provide a better process-searching tool.
+However, aside from having to use two commands, there are other disadvantages to using `ps` with `grep`. A completely new program, `pgrep` was built to try and provide a better process-searching tool.

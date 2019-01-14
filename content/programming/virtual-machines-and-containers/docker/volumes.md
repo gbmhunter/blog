@@ -4,7 +4,6 @@ date: 2017-05-23 22:58:13+00:00
 draft: false
 title: Volumes
 type: page
-url: /programming/virtual-machines-and-containers/docker/volumes
 ---
 
 ## Overview
@@ -13,7 +12,7 @@ Volumes is a docker concept which allows you to have persistent storage within a
 
 ## Creating A Docker Volume
 
-A Docker volume can be associated with a host directory. This is specified as part of the -v option. Unlike the container path, which must be absolute, the host directory can be relative.
+A Docker volume can be associated with a host directory. This is specified as part of the `-v` option. Unlike the container path, which must be absolute, the host directory can be relative.
 
 The following command will mount the relative host directory my-volume/ to /root/ inside the container.
 
@@ -21,8 +20,10 @@ The following command will mount the relative host directory my-volume/ to /root
 $ docker run -it -v my-volume:/root container
 ```
 
-Note that any existing files in /root/ will be shadowed by this mount. This means that you cannot expose pre-existing files that reside in the container to the root system using this method.
+{{% note %}}
+Any existing files in `/root/` will be shadowed by this mount. This means that you cannot expose pre-existing files that reside in the container to the root system using this method.
+{{% /note %}}
 
 ## Using A Dockerfile
 
-Be careful with your placement of the VOLUME command inside a Dockerfile, as it essentially creates an immutable folder structure from that point forwards. Any modifications to the mount directory (or any sub-directory) will not be present when you create a container from the built image.
+Be careful with your placement of the `VOLUME` command inside a Dockerfile, as it essentially creates an immutable folder structure from that point forwards. Any modifications to the mount directory (or any sub-directory) will not be present when you create a container from the built image.

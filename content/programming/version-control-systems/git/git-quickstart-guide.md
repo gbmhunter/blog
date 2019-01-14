@@ -3,7 +3,6 @@ author: gbmhunter
 date: 2013-08-29
 title: Git Quickstart Guide
 type: page
-url: /programming/version-control-systems/git/git-quickstart-guide
 ---
 
 Below is a quick start guide for using git.

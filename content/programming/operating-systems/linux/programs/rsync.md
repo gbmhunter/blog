@@ -4,12 +4,11 @@ date: 2013-10-21 22:06:19+00:00
 draft: false
 title: rsync
 type: page
-url: /programming/operating-systems/linux/programs/rsync
 ---
 
 ## Overview
 
-rsync is similar to scp , except, well, better in most cases. It keeps a file table of all transferred files, and only transfers those that have been modified (hence the sync bit). It has the following syntax:
+rsync is similar to scp (secure copy), except, well, better in most cases. It keeps a file table of all transferred files, and only transfers those that have been modified (hence the sync bit). It has the following syntax:
 
 ```sh   
 $ rsync [options] source destination

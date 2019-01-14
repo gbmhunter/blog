@@ -1,10 +1,9 @@
-s---
-author: gbmhunter
+---
+author: "gbmhunter"
 date: 2014-02-26 21:20:04+00:00
 draft: false
-title: Moving Average Filters
-type: page
-url: /programming/signal-processing/moving-average-filters
+title: "Moving Average Filters"
+type: "page"
 ---
 
 ## Overview
@@ -13,7 +12,9 @@ One of the classic examples of an FIR is a moving average (MA) filter. It can al
 
 Moving average filters are also fast. In fact, they are the **fastest digital filter availiable** (when recursion is used).
 
-NOTE: Some equations use frequency `\( f \)`, while others use angular frequency `\( \omega \)`.
+{{% note %}}
+Some equations use frequency `\( f \)`, while others use angular frequency `\( \omega \)`.
+{{% /note %}}
 
 ## Terminology
 

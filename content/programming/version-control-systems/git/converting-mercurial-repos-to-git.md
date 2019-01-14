@@ -4,7 +4,6 @@ date: 2013-05-20 08:33:16+00:00
 draft: false
 title: Converting Mercurial Repos To Git
 type: page
-url: /programming/version-control-systems/git/converting-mercurial-repos-to-git
 ---
 
 I have tried many different ways of converting Mercurial (Hg) repositories to Git repositories. Some of them didn't work, some of them worked, and some of them, well, worked better.

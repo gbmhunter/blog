@@ -4,7 +4,6 @@ date: 2013-10-09 00:55:03+00:00
 draft: false
 title: Mercurial Extensions
 type: page
-url: /programming/version-control-systems/mercurial/mercurial-extensions
 ---
 
 ## Overview
@@ -31,20 +30,8 @@ Mercurial can handle both forward-slash (Linux) and back-slash (Windows) paths q
 ## hglock
 
 
-<table >
-<tbody >
-<tr >
-
-<td >URL
-</td>
-<td >
-	  * [https://www.mercurial-scm.org/wiki/LockExtension](https://www.mercurial-scm.org/wiki/LockExtension) (Wiki)
-	  * [https://bitbucket.org/jameslheard/hglock/](https://bitbucket.org/jameslheard/hglock/) (repo)
-
-</td>
-</tr>
-</tbody>
-</table>
+* Wiki: [https://www.mercurial-scm.org/wiki/LockExtension](https://www.mercurial-scm.org/wiki/LockExtension)
+* Repo: [https://bitbucket.org/jameslheard/hglock/](https://bitbucket.org/jameslheard/hglock/)
 
 hglock is a mercurial extension that adds file "locking" capabilities, just like non-distributed version control systems have. It allows you to lock a file, at which point no-one else working with the same repository can then edit the file, until it has been unlocked again.
 

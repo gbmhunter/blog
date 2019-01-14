@@ -4,7 +4,6 @@ date: 2014-01-07
 draft: false
 title: Using Serial Ports In Linux
 type: page
-url: /programming/operating-systems/linux/using-serial-ports-in-linux
 ---
 
 ## Where Do Serial Ports Show Up In Linux?
@@ -30,7 +29,7 @@ Serial ports typically show up as files under the `/dev/` folder. They are usual
 
 ## Changing The Permissions On A Serial Port
 
-You can change the permissions for a serial port so you don't have to keep using sudo by typing:
+You can change the permissions for a serial port so you don't have to keep using `sudo` by typing:
 
 ```sh
 sudo chmod 666 /dev/ACM0
@@ -50,4 +49,8 @@ which for the current user would just be:
 ~$ sudo adduser $USER dialout
 ```    
 
-Note that this depends on the username and dialout group already existing (which is normally the case). This new permission will not come into effect until the user has logged out and back in again.
+Note that this depends on the `username` and `dialout` group already existing (which is normally the case).
+
+{{% warning %}}
+This new permission will not come into effect until the user has logged out and back in again.
+{{% /warning %}}

@@ -4,7 +4,6 @@ date: 2014-01-08 08:18:30+00:00
 draft: false
 title: socat
 type: page
-url: /programming/operating-systems/linux/programs/socat
 ---
 
 ## Overview
@@ -33,7 +32,9 @@ A little explanation: The `-d -d` instructs socat to print fatal, error and warn
 
 Once you type this and press enter, socat will report back with the COM ports it decided to use. The program will not return (the terminal will hang) until you wish to cancel the link (press Ctrl-C).
 
-**NOTE: These virtual serial ports do not fully emulate a hardware serial port. Things like baud rate, hardware flow signals e.t.c are not taken into account.**
+{{% warning %}}
+These virtual serial ports do not fully emulate a hardware serial port. Things like baud rate, hardware flow signals e.t.c are not taken into account.
+{{% /warning %}}
 
 If you get a `bash: /dev/pts/x: Permission denied error`, run the following command:
 

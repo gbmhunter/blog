@@ -4,7 +4,6 @@ date: 2017-01-20 10:50:58+00:00
 draft: false
 title: Submodules
 type: page
-url: /programming/version-control-systems/git/submodules
 ---
 
 ## Overview

@@ -4,7 +4,6 @@ date: 2017-10-23 16:31:00+00:00
 draft: false
 title: Coordinate Conversion
 type: page
-url: /space/coordinate-conversion
 ---
 
 ## Haversine Formula
@@ -51,7 +50,7 @@ This formula calculates the initial bearing, given a start and end co-ordinate.
     \( \varphi_2, \lambda_2 \) is the latitude and longitude of point 2, in radians<br>
 </p>
 
-Note that this calculates the _initial bearing_, which is the bearing you would have to be pointing in at the first co-ordinate to travel to the second co-ordinate along a great circle (shortest path on the sphere). **As you travel there, the bearing is likely to change **(there are a few cases in where it wouldn't change, one being if you were travelling exactly North).
+Note that this calculates the _initial bearing_, which is the bearing you would have to be pointing in at the first co-ordinate to travel to the second co-ordinate along a great circle (shortest path on the sphere). **As you travel there, the bearing is likely to change** (there are a few cases in where it wouldn't change, one being if you were travelling exactly North).
 
 ## Destination Coordinate Given Distance And Bearing From Start Coordinate
 

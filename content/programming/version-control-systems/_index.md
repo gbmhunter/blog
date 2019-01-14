@@ -4,12 +4,11 @@ date: 2011-09-15 07:34:05+00:00
 draft: false
 title: Version Control Systems
 type: page
-url: /programming/version-control-systems
 ---
 
 ## Overview
 
-Version control systems are designed for organising and retaining file information in a environment where the 'watched' files are constantly changing. They are used exetnsively in programming, project file management and general file management.
+Version control systems are designed for organising and retaining file information in a environment where the 'watched' files are constantly changing. They are used extensively in programming, project file management and general file management.
 
 The primary functions of a SCM are:
 
@@ -20,11 +19,11 @@ The primary functions of a SCM are:
 * A checkout system for files  
 * The ability to merge individual changes on one file together
 
-Version control systems usually originate from command-line roots, and then get GUI'ed up once they gain popularity. Using modern SCM's like Git and Mercurial is trivial through a command-line.
+Version control systems usually originate from command-line roots, and then get GUI'ed up once they gain popularity. Using modern SCMs like Git and Mercurial is trivial through a command-line.
 
 ## Mercurial
 
-Mercurial will not copy folders into the repo if there are no files in them. Why would you have empty foler you ask? Well, one reason would be if you had a template folder structure for new projects that you wanted in the repo.
+Mercurial will not copy folders into the repo if there are no files in them. Why would you have empty folder you ask? Well, one reason would be if you had a template folder structure for new projects that you wanted in the repo.
 
 One of my favourite SCMs! It is very similar to Git, and hence Git it also one of my favourite. Mercurial only creates one folder in the root directory of your project (SVN creates one in every folder). [TortoiseHG](http://tortoisehg.bitbucket.org/) is an awesome Windows shell extension for Mercurial. I never get errors and irreversable lockouts with Mercurial as I did with SVN.
 

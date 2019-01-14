@@ -4,7 +4,6 @@ date: 2017-01-20 16:25:21+00:00
 draft: false
 title: ln (link)
 type: page
-url: /programming/operating-systems/linux/programs/ln-link
 ---
 
 ## Overview
@@ -17,7 +16,7 @@ There are two types of links in Linux:
 
 ## How To Create A Symbolic Link
 
-For example, we will create a new "imaginary" file called ~/new_link.txt, which actually points to ~/a_folder/file_that_already_exists.txt.
+For example, we will create a new "imaginary" file called `~/new_link.txt`, which actually points to `~/a_folder/file_that_already_exists.txt`.
 
 ```sh    
 ln -s ~/a_folder/file_that_already_exists.txt ~/new_link.txt
@@ -27,7 +26,7 @@ You can inspect symbolic links by running `ls -l`. If any of the files are a sym
 
 ## How To Create A Hard Link
 
-For example, we will create a new "imaginary" file called ~/new_link.txt, which actually points to ~/a_folder/file_that_already_exists.txt.
+For example, we will create a new "imaginary" file called `~/new_link.txt`, which actually points to `~/a_folder/file_that_already_exists.txt`.
 
 ```sh    
 $ ln ~/a_folder/file_that_already_exists.txt ~/new_link.txt
