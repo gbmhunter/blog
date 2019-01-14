@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2016-04-11 06:43:15+00:00
+author: "gbmhunter"
+date: 2016-04-11
 draft: false
-title: How To Calculate Maximum Track Current
-type: page
-url: /pcb-design/how-to-calculate-maximum-track-current
+title: "How To Calculate Maximum Track Current"
+type: "page"
 ---
 
 ## Overview

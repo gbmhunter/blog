@@ -28,10 +28,10 @@
 
 <nav class="breadcrumbs">
     <ul>
-        <li><a href="/">home</a> /</li>
+        <li><a href="/">home</a>&nbsp;/&nbsp;</li>
         {{ range $index, $element := $.Scratch.Get "siteBreadcrumbs" }}
         {{ if ne $index 0}}
-        <li><a href="{{ .url }}">{{ .name }}</a> / </li>
+        <li><a href="{{ .url }}">{{ .name }}</a>&nbsp;/&nbsp;</li>
         {{ end }}
         {{ end }}
     </ul>

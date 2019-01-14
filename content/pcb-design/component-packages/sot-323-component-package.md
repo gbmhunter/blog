@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2014-11-09 03:20:56+00:00
+author: "gbmhunter"
+date: 2014-11-09
 draft: false
-title: SOT-323 Component Package
-type: page
-url: /pcb-design/component-packages/sot-323-component-package
+title: "SOT-323 Component Package"
+type: "page"
 ---
 
 ## Overview

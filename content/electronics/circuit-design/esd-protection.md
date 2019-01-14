@@ -1,10 +1,10 @@
 ---
-author: gbmhunter
-date: 2011-09-03 02:13:25+00:00
+author: "gbmhunter"
+date: 2011-09-03
 draft: false
-title: ESD Protection
-type: page
-url: /electronics/circuit-design/esd-protection
+tags: [ "ESD", "diode", "electrostatic discharge", "high voltage", "electronics", "series resistance" ]
+title: "ESD Protection"
+type: "page"
 ---
 
 ## Overview
@@ -55,10 +55,10 @@ Be careful, as these diodes usually have quite a low maximum current. Exceeding 
 However useful they may be, they also generate design challenges in specific scenario's, and therefore require careful consideration when doing any schematic design involving CMOS I/O with the ESD protection diodes present. The two scenario's which cause problems are:
 
 1. When powering up a circuit with multiple voltage rails
-1. When the voltage on \( V_{I/O} \) could at some points be higher than \( V_{CC} \) because of the nature of the incoming signal.
+1. When the voltage on `\(V_{I/O}\)` could at some points be higher than `\(V_{CC}\)` because of the nature of the incoming signal.
 1. When you are selectively powering down the voltage rails powering these ICs in low-power designs.
 
-Out of all these scenario's, 3. has to be the one that catches a schematic designer out the most often.
+Out of all these scenarios, 3. has to be the one that catches a schematic designer out the most often.
 
 ## Backpowering
 
@@ -66,7 +66,7 @@ Backpowering is a phenomenon which occurs in circuits that selectively turn of v
 
 If the leakage current through any CMOS I/O ESD diodes onto the "unpowered" rail is large enough, the circuit may begin back powering itself. This means that although you have turned off the voltage source supplying that rail, the rail still remains powered and all the ICs connected to it still work normally.
 
-You can normally diagnose this by noting the the "unpowered" rail will be one diode forward voltage drop (\(V_f\), which is usually around 0.5-0.7V) less than the voltage on the I/O pin(s) powering the rail (which are normally at \(V_{CC}\).
+You can normally diagnose this by noting the the "unpowered" rail will be one diode forward voltage drop (`\(V_f\)`, which is usually around 0.5-0.7V) less than the voltage on the I/O pin(s) powering the rail (which are normally at `\(V_{CC}\)`).
 
 ## Disabling The ESD Diodes
 
@@ -74,7 +74,7 @@ Extra diodes, external to the IC, can be added to prevent leakage currents throu
 
 {{< figure src="/images/2011/09/protection-diodes-to-disable-esd-diodes-on-cmos-io.png" width="489px" caption="Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf."  >}}
 
-However, this approach has it's disadvantages. The actual supply voltage seen by the IC is reduced by twice the voltage drop (\( V_f \)) across the diodes (normally 2x 0.5-0.7V = 1.0-1.4V). Also, the IC ground is now significantly different from the system ground. This can upset single-ended ADC measurements and other analogue functions.
+However, this approach has it's disadvantages. The actual supply voltage seen by the IC is reduced by twice the voltage drop (`\(V_f\)`) across the diodes (normally 2x 0.5-0.7V = 1.0-1.4V). Also, the IC ground is now significantly different from the system ground. This can upset single-ended ADC measurements and other analogue functions.
 
 ## Series Resistance Into CMOS I/O
 

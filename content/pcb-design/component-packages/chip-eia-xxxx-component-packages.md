@@ -2,9 +2,8 @@
 author: gbmhunter
 date: 2015-10-25 23:46:07+00:00
 draft: false
-title: Chip (EIA xxxx) Component Packages
+title: "Chip (EIA xxxx) Component Packages"
 type: page
-url: /pcb-design/component-packages/chip-eia-xxxx-component-packages
 ---
 
 ## Chip (EIA xxxx) Component Packages
@@ -83,7 +82,8 @@ Sorted from smallest to largest package size.
             <th>Package Designator (metric)</th>
             <th>Package Designator (imperial)</th>
             <th>Typical Power Rating (W)</th>
-            <th>Land AreaComments</th>
+            <th>Land Area</th>
+            <th>Comments</th>
         </tr>
     </thead>
     <tbody>
@@ -228,8 +228,6 @@ The following table shows the range of chip resistors package sizes (based on th
             <th>Designator (metric)</th>
             <th>Package</th>
             <th>Designator (imperial)</th>
-            <th>Maximum Current (A, typical)</th>
-            <th>Has Printed Value</th>
         </tr>
     </thead>
     <tbody>
@@ -240,7 +238,9 @@ The following table shows the range of chip resistors package sizes (based on th
 <td>1
 </td>
 <td>No
-</td></tr><tr >
+</td>
+</tr>
+<tr >
 <td>1608
 </td>
 <td>0603
