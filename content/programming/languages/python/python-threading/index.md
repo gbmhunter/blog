@@ -1,9 +1,9 @@
 ---
-author: gbmhunter
-date: 2015-01-02 21:43:24+00:00
+author: "gbmhunter"
+date: 2015-01-02
 draft: false
-title: Python Threading
-type: page
+title: "Python Threading And Multiprocessing"
+type: "page"
 ---
 
 ## Overview

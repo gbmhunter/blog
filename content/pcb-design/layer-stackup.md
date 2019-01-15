@@ -4,7 +4,6 @@ date: 2015-04-28 08:49:07+00:00
 draft: false
 title: Layer Stackup
 type: page
-url: /pcb-design/layer-stackup
 ---
 
 ## Overview

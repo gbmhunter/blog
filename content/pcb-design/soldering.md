@@ -4,7 +4,6 @@ date: 2013-08-27 05:21:24+00:00
 draft: false
 title: Soldering
 type: page
-url: /pcb-design/soldering
 ---
 
 ## Overview

@@ -4,7 +4,6 @@ date: 2016-05-03 04:40:36+00:00
 draft: false
 title: EMI/EMC (Electromagnetic Interference/Compatibility)
 type: page
-url: /pcb-design/emiemc-electromagnetic-interferencecompatibility
 ---
 
 ## Overview

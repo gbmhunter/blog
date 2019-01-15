@@ -4,7 +4,6 @@ date: 2014-07-28 21:09:13+00:00
 draft: false
 title: Castellation
 type: page
-url: /pcb-design/castellation
 ---
 
 ## Overview

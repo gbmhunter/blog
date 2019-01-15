@@ -4,7 +4,6 @@ date: 2013-10-04 02:13:44+00:00
 draft: false
 title: PCB Data Formats
 type: page
-url: /pcb-design/pcb-data-formats
 ---
 
 ## Overview

@@ -4,7 +4,6 @@ date: 2015-10-21 09:38:12+00:00
 draft: false
 title: Schematic Tips And Tricks
 type: page
-url: /pcb-design/schematic-tips-and-tricks
 ---
 
 ## Make Input Connectors Face Right, Output's Face Left

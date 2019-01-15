@@ -4,7 +4,6 @@ date: 2015-12-01 21:21:51+00:00
 draft: false
 title: Microstrips
 type: page
-url: /pcb-design/impedance-controlled-routing/microstrips
 ---
 
 ## Overview

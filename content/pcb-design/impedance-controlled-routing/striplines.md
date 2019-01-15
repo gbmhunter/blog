@@ -4,7 +4,6 @@ date: 2015-12-01 03:51:36+00:00
 draft: false
 title: Striplines
 type: page
-url: /pcb-design/impedance-controlled-routing/striplines
 ---
 
 ## Overview

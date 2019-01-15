@@ -4,7 +4,6 @@ date: 2014-11-04 09:12:02+00:00
 draft: false
 title: IMS (Insulated Metal Substrate) PCBs
 type: page
-url: /pcb-design/ims-insulated-metal-substrate-pcbs
 ---
 
 ## Overview
@@ -15,7 +14,13 @@ Insulated metallic substrate (IMS) PCBs are PCBs which use a metallic material a
 
 Aluminium is normally used as the substrate (with copper still being used for the electrical layers) because of it's low cost, however copper is used in more expensive/higher power density designs because of it's superior thermal conductivity. Copper also has a lower co-efficient of thermal expansion and is also used when the stresses on the component's solder joints need to be reduced.
 
-## Uses  * High power applications  * Where there are large mechanical loads  * High level of dimensional stability is required  * Flammability concerns/restrictions  * Extra electromagnetic shielding is required
+## Uses
+
+* High power applications
+* Where there are large mechanical loads
+* High level of dimensional stability is required
+* Flammability concerns/restrictions
+* Extra electromagnetic shielding is required
 
 The increased thermal conductivity of IMS PCBs allows for higher packing densities (you can have thinner copper tracks for the same current!), longer operating times, more reliable devices (reduces thermal stress and drops the MTBF).
 

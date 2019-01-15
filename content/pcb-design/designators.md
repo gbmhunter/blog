@@ -4,7 +4,6 @@ date: 2015-04-27 07:51:28+00:00
 draft: false
 title: Designators
 type: page
-url: /pcb-design/designators
 ---
 
 ## Overview

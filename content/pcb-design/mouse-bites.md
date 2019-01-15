@@ -4,7 +4,6 @@ date: 2015-11-29 20:31:05+00:00
 draft: false
 title: Mouse Bites
 type: page
-url: /pcb-design/mouse-bites
 ---
 
 ## Overview

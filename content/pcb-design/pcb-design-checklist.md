@@ -1,15 +1,14 @@
 ---
-author: gbmhunter
-date: 2012-05-22 00:10:38+00:00
+author: "gbmhunter"
+date: 2012-05-22
 draft: false
-title: PCB Design Checklist
-type: page
-url: /pcb-design/pcb-design-checklist
+title: "PCB Design Checklist"
+type: "page"
 ---
 
 ## Schematics
 
-## Microcontroller
+### Microcontroller
 
 * uC has supply decoupling (e.g. 100nF caps)
 * [Crystal/oscillator](/electronics/components/crystals) is connected to compatible osc ports (e.g. XTAL0)
@@ -17,18 +16,18 @@ url: /pcb-design/pcb-design-checklist
 * Priority crossbar functions in correct order (applicable to Si micros)
 * Programming pins connected correctly and routed to appropriate header/connector
 
-## Other IC's
+### Other ICs
 
 * Decoupling is added were needed
 * Voltage difference problems between IC's that communicate and run of different voltage supplies is considered
 
-## Communications
+### Communications
 
 * [UART/RS-232](/electronics/circuit-design/uart) RX and TX swap between devices
 * USB data lines D+ and D- have 39R series resistors
 * [I2C](/electronics/circuit-design/i2c-communication) have pull-up resistors (unless they are already internal to a device)
 
-## Schematics Components
+### Schematics Components
 
 * Do not rely on standard Altium libraries (pinouts and footprints can be wrong). Use Beta Solutions libraries and add to it. Make sure variable labelling is consistent.
 * P-Ch [MOSFET's](/electronics/components/mosfets) have their SOURCE connected to the high-side voltage (e.g. Vcc)
@@ -36,13 +35,13 @@ url: /pcb-design/pcb-design-checklist
 * Make sure voltages are not applied to any pins of IC's that are shut-down by removing power (unless the are designed to handle it). Leakage currents can occur.
 * Systematically check BOM with every component on schematics to weed out labelling errors and component variant problems.
 
-## Final
+### Final
 
 * Make sure schematics compile
 
 ## PCB
 
-## General PCB
+### General PCB
 
 * Solder mask layer is visible on all component pads
 * Remove very thin slivers of solder mask that will not ‘cure properly’. IMP minimum is 6mill (0.1524mm)
@@ -52,25 +51,17 @@ url: /pcb-design/pcb-design-checklist
 * The layer stack-up is specified (core/prepeg/copper material and thicknesses)
 * The impedance is specified (if applicable). This is normally related to the stack-up.
 * Component links (between schematics and pcb file) are updated. This is done from the PCB editor.
-* Mechanical layers are used correctly. This default is  
+* Mechanical layers are used correctly. This default is:
+    * M01: Board outline and routed cut-outs  
+    * M02: PCB Info  
+    * M11: Top Dimensions  
+    * M12: Bottom Dimensions  
+    * M13: Top Component Outline And 3D Body  
+    * M14: Bottom Component Outline And 3D Body  
+    * M15: Top Courtyard  
+    * M16: Bottom Courtyard
 
-M01: Board outline and routed cut-outs  
-
-M02: PCB Info  
-
-M11: Top Dimensions  
-
-M12: Bottom Dimensions  
-
-M13: Top Component Outline And 3D Body  
-
-M14: Bottom Component Outline And 3D Body  
-
-M15: Top Courtyard  
-
-M16: Bottom Courtyard
-
-## PCB Rules
+### PCB Rules
 
 * No acute angles (typically set minimum angle to 85 degrees)
 * No silkscreen over pads (clearance 0.01mm)
@@ -80,7 +71,7 @@ M16: Bottom Courtyard
 * Polygon connect style to via by direct connect
 * Polygon connect style to all other by thermal relief
 
-## PCB Routing
+### PCB Routing
 
 * As a general rule, make the polygon clearance to anything at least 2x the minimum track clearance. Shorts are more likely to occur between a large polygon and a track rather than between two tracks.
 * Flip the board (shortcut V, B) when routing and checking correct pin connections on the bottom layer of the PCB (otherwise pins will appear the wrong way around)
@@ -97,12 +88,12 @@ M16: Bottom Courtyard
 * Polygons are set to thermal relief connect (typically four connections) with component pads
 * Make sure vias are not cutting into component pads
 
-## Silkscreen
+### Silkscreen
 
 * Connector pins are labelled, either numbered or described (especially if using terminal blocks)
 * Test points are labelled
 
-## Final
+### Final
 
 * Rebuild all polygons
 * DRC (design rule check) is carried out
@@ -110,7 +101,7 @@ M16: Bottom Courtyard
 
 ## Release Time
 
-## Manufacturer
+### Manufacturer
 
 * Find out wether manufacturer wants paste on Fiducials (not usually)
 * Make sure Gerber output contains all the required files (including a file for every copper layer)
@@ -131,11 +122,11 @@ M16: Bottom Courtyard
 
 * Include additional images with PCB project to instruct manufacturer on how to build/assemble PCB. These include images for counter-sunk holes and components which need gluing
 
-## Release
+### Release
 
 * Zip up PCB project and place in release folder
 
-## Documentation
+### Documentation
 
 * Changes/notes file created (such as readme.txt). This can be incorporated into Altiums project structure.
 * Once the PCB has been submitted, PCB project folder is stored and locked or committed so that it can be referred to in the future.

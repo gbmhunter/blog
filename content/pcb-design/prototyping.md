@@ -4,7 +4,6 @@ date: 2015-10-21 09:47:20+00:00
 draft: false
 title: Prototyping
 type: page
-url: /pcb-design/prototyping
 ---
 
 ## Overview

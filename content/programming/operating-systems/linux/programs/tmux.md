@@ -1,11 +1,14 @@
 ---
-author: gbmhunter
-date: 2018-11-13 19:45:56+00:00
+author: "gbmhunter"
+date: 2018-11-13
 draft: false
-title: tmux
-type: page
-url: /programming/operating-systems/linux/programs/tmux
+title: "tmux"
+type: "page"
 ---
+
+## Overview
+
+tmux uses an _alternate screen buffer_ which is the same height and width as the parent terminal.
 
 ## Create And Attach To Sessions
 

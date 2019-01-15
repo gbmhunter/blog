@@ -4,7 +4,6 @@ date: 2015-10-23 20:13:55+00:00
 draft: false
 title: Testpoints
 type: page
-url: /pcb-design/testpoints
 ---
 
 ## Overview

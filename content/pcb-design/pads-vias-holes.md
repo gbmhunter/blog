@@ -4,7 +4,6 @@ date: 2015-01-07 03:24:02+00:00
 draft: false
 title: Pads, Vias And Holes
 type: page
-url: /pcb-design/pads-vias-holes
 ---
 
 ## Holes
@@ -37,7 +36,10 @@ Vias can be drilled out easily to break connections when re-wiring, modifying ex
 
 ## Microvias
 
-_Microvias_ are tiny vias that are usually characterised by a diameter of **150um or less** (this is the formal IPC definition). At these diameters, the vias cannot be formed with standard drill bits. Other forms of technology have to be used. These include:  * Photovias  * Laservias
+_Microvias_ are tiny vias that are usually characterised by a diameter of **150um or less** (this is the formal IPC definition). At these diameters, the vias cannot be formed with standard drill bits. Other forms of technology have to be used. These include:
+
+* Photovias
+* Laservias
 
 Microvias are used extensively as part of _via-in-pad technology_, in where the via is placed directly on the pad of a component, compared to placing it beside the pad a running a short copper track to it. This offers significant space reductions in high-density PCBs.
 

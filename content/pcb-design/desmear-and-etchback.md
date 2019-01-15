@@ -4,7 +4,6 @@ date: 2014-11-03 08:10:02+00:00
 draft: false
 title: Desmear And Etchback
 type: page
-url: /pcb-design/desmear-and-etchback
 ---
 
 ## Overview

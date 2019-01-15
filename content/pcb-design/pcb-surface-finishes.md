@@ -4,7 +4,6 @@ date: 2015-10-06 03:35:21+00:00
 draft: false
 title: PCB Surface Finishes
 type: page
-url: /pcb-design/pcb-surface-finishes
 ---
 
 ## Overview

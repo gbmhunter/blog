@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2011-12-12 05:07:14+00:00
+author: "gbmhunter"
+date: 2011-12-12
 draft: false
-title: PCB Design
-type: page
-url: /pcb-design
+title: "PCB Design"
+type: "page"
 ---
 
 ## PCB Design Tools
@@ -81,41 +80,23 @@ The silkscreen is a printed layer which is used to convey information to the use
             <th>Compatible Soldermask Colours</th>
         </tr>
     </thead>
-<tbody >
-<tr >
-
-<td >White
-</td>
-
-<td >1
-</td>
-
-<td >Green, Red, Black
-</td>
-</tr>
-<tr >
-
-<td >Black
-</td>
-
-<td >2
-</td>
-
-<td >Green, White, Yellow
-</td>
-</tr>
-<tr >
-
-<td >Red
-</td>
-
-<td >4
-</td>
-
-<td >White, Yellow
-</td>
-</tr>
-</tbody>
+    <tbody>
+        <tr>
+            <td>White</td>
+            <td>1</td>
+            <td>Green, Red, Black</td>
+        </tr>
+        <tr>
+            <td>Black</td>
+            <td>2</td>
+            <td>Green, White, Yellow</td>
+        </tr>
+        <tr>
+            <td>Red</td>
+            <td>4</td>
+            <td>White, Yellow</td>
+        </tr>
+    </tbody>
 </table>
 
 The silkscreen has to printed on either soldermask or bare PCB, it cannot be printed onto bare or tinned copper. For this reason, you cannot have soldermask ontop of component pads. {{< figure src="/images/electronics-pcbdesign/connector-protruding-over-edge-of-pcb.png" caption="A right-angled connector protruding over the edge of the PCB."  width="320px" >}} For components that protrude of the edge of the PCB (for example, connectors, or right-angled switches/leds, see the picture to the left), it is useful to indicate this on the silkscreen layer with diagonal lines as shown in the image below.
