@@ -4,16 +4,16 @@ The recommended code editor is [Visual Studio Code](https://code.visualstudio.co
 
 Follow the instructions [here](https://gohugo.io/getting-started/installing) to install Hugo.
 
-To start a development server that will watch for file changes:
+To start a development server that will watch for file changes and build drafts:
 
 ```sh
-$ hugo server -w --buildDrafts
+$ hugo server -w -D
 ```
 
 Sometimes hugo gets out of sync with the latest file changes. If this happens, you can force hugo to rebuild everything when detecting a file change (warning: this slows down build times):
 
 ```sh
-$ hugo server -w --disableFastRender
+$ hugo server -w -D --disableFastRender
 ```
 
 # To Build

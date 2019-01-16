@@ -2,8 +2,8 @@
 author: "gbmhunter"
 date: 2018-12-03
 description: "Regex find/replace, back-references and more info about the text-editor vim."
-lastmod: 2018-12-18
-tags: [ "vim", "text editor", "linux", "command-line", "regex", "IDE" ]
+lastmod: 2019-01-15
+tags: [ "vim", "text editor", "linux", "command-line", "regex", "IDE", "copy", "paste", "system clipboard" ]
 title: "vim"
 type: "page"
 ---
@@ -48,4 +48,30 @@ When in normal mode, make sure the cursor is over one of the brackets, and press
 
 `dd` deletes the current line. You can press `p` to paste it.
 
+### Using Internal Registers
 
+When performing copy/paste operations in the above manner, vim will not use the system clipboard, but rather it's own internal clipboard. When no register is specified (e.g. the above example), vim will copy and paste using the _unnamed register_.
+
+## Copy/Paste To System Clipboard
+
+Copying/pasting to the system clipboard can be a little tricky.
+
+As long as your vim executable supports it, you can copy to the clipbaord using the `*` register. Select text using visual mode (e.g. `v`, `l`, `l` to select three characters), and then press:
+
+```
+"*y
+```
+
+You can find out if your vim executable supports copying to the clipboard with the command `vim --version` (it prints out a large amount of info, so we use `grep` to filter the output):
+
+```sh
+$ vim --version | grep clipboard
+-clipboard       +iconv           +path_extra      -toolbar
++eval            +mouse_dec       +startuptime     -xterm_clipboard
+```
+
+The `-clipboard` indicates that this feature was not includes. What you want to see is `+clipboard`!
+
+{{% note %}}
+Most VIM extensions for IDEs (including the one for IntelliJ and VS Code) support copying to the system clipboard.
+{{% /note %}}
