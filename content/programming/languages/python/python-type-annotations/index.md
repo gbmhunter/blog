@@ -86,6 +86,31 @@ If you want to ignore any type checking (this works with mypy):
 x = causes_weird_type_error() # type: ignore
 ```
 
+## Generators
+
+Python functions that use the `yield` keyword return a special type of object called a _generator_. You can use the `Generator[]` type annotation for the return type of generator functions.
+
+The generator type has the syntax: `Generator[yield_type, send_type, return_type]`. If you don't send anything to the generator, no return anything with the `return` statement, this simplifies to `Generator[yield_type, None, None]`:
+
+```python
+from typing import Generator
+
+def my_generator() -> Generator[int, None, None]:
+    for i in range(10):
+        yield i
+
+```
+
+You can also specify the return type as `Iterable[yield_type]`:
+
+```python
+from typing import Iterable
+
+def my_generator() -> Iterable[int]:
+    for i in range(10):
+        yield i
+```
+
 ## mypy
 
 [mypy](http://mypy-lang.org/) is a third-party static type checker for Python, which utilizes the official Python type annotation specification described above (which applied to Python 3.6 or greater, but you can use mypy on lower versions of Python using a different, non-official type syntax).
