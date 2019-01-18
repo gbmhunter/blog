@@ -4,7 +4,7 @@ date: 2019-01-17
 description: "A tutorial on parsing command-line arguments in Python."
 draft: false
 lastmod: 2019-01-17
-tags: [ "Python", "code", "software", "argparse", "argument parser", "command-line", "CLI" ]
+tags: [ "Python", "code", "software", "argparse", "argument parser", "command-line", "CLI", "sub-commands" ]
 title: "Parsing Command-Line Arguments In Python"
 type: "page"
 ---
@@ -15,11 +15,19 @@ This tutorial uses the built-in Pyton module `argparse`.
 
 ## Sub-Commands
 
-Complex command-line argument
+Complex command-line programs can be simplified with the concept of `sub-commands`. Sub-commands are named commands as the first argument passed into a program, where each sub-command has it's own unique set of required and optional arguments.
+
+A well-known program with sub-commands is `git`. The `git` command-line program has various sub-commands such as:
+
+* `git clone`
+* `git add`
+* `git commit`
+
+Each one of these sub-commands has it's own required and optional arguments.
 
 If you find yourself starting to add options that are only applicable when certain other arguments are present, then it might be time to look into sub-commands.
 
-The following working example shows a Python program which has two sub-commands, `add` and `print`.
+`argparse` has sub-command support through the use of `add_subparsers()`. The following working example shows a Python program which has two sub-commands, `add` and `print`.
 
 {{% note %}}
 Passing in `dest='command'` to `add_subparsers()` allows us to query the sub-command invoked through `args.command`.
