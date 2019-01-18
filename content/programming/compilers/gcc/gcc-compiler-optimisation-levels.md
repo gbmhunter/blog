@@ -4,7 +4,6 @@ date: 2015-10-07 03:21:26+00:00
 draft: false
 title: GCC Compiler Optimisation Levels
 type: page
-url: /programming/compilers/gcc/gcc-compiler-optimisation-levels
 ---
 
 ## Fancy Optimisations

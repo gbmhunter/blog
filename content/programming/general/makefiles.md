@@ -4,7 +4,6 @@ date: 2013-05-28 01:51:22+00:00
 draft: false
 title: Makefiles
 type: page
-url: /programming/general/makefiles
 ---
 
 ## Overview

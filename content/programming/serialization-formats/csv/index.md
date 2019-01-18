@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
-date: 2014-04-08 20:46:50+00:00
+date: 2014-04-08
 draft: false
-title: Character-Seperated Value (CSV) Files
+lastmod: 2019-01-18
+title: CSV (Character-Seperated Value) Files
 type: page
-url: /programming/general/character-seperated-value-csv-files
 ---
 
 ## Terminology

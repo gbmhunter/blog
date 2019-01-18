@@ -4,11 +4,9 @@ date: 2012-03-14 23:13:25+00:00
 draft: false
 title: Encryption
 type: page
-url: /programming/general/encryption
 ---
 
 ## Overview
-
 
 There are two basic types of encryption used widely in computer science, symmetric and asymmetric algorithms. Symmetric algorithms use two identical or very similar keys to both encrypt and decrypt the information. Their main problem is that the sender and receiver need to share these keys securely before any transfer of information can take place, and you can't easily do that over the internet.
 

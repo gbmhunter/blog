@@ -4,7 +4,6 @@ date: 2015-01-09 02:18:15+00:00
 draft: false
 title: Bootloaders
 type: page
-url: /programming/general/bootloaders
 ---
 
 ## Overview

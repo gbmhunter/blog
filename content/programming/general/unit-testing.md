@@ -4,7 +4,6 @@ date: 2013-05-22 06:13:52+00:00
 draft: false
 title: Unit Testing
 type: page
-url: /programming/general/unit-testing
 ---
 
 ## Overview

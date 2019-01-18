@@ -4,7 +4,6 @@ date: 2016-12-08 15:17:46+00:00
 draft: false
 title: protobuf
 type: page
-url: /programming/general/protobuf
 ---
 
 ## Overview

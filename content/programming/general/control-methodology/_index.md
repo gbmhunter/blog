@@ -4,7 +4,6 @@ date: 2011-09-22 05:58:46+00:00
 draft: false
 title: Control Methodology
 type: page
-url: /programming/general/control-methodology
 ---
 
 ## Overview
@@ -14,7 +13,6 @@ You may think that after writing the state machine for flashing a few LEDs and a
 ## State Machines (single process)
 
 State machines are coding structures/methodologies to write the top-level code which performs the high level control of your program. State machines are essential for any thing but the most simple of programs, as they organise the code, improve the readability, and make it easy for the code to be changed. A state machine is based on the theory that a program will rest in certain states, and that particular inputs will cause the program to change into another state.
-
 
 Sequential logic theory (the subject which involves these state machines) says that if the combination of the inputs and the state which the program is in determines the outputs it is a Mealy state machine. If just the state determines the outputs, then it is a Moore state machine. Usually however, when writing a state machine in C for a program, you don't have to strictly follow these rules, as you will find that it can make unnecessary complications to your code.
 
@@ -119,7 +117,6 @@ However, you guessed it, preemptive RTOS's can halt the current process to execu
 ## Examples
 
 FreeRTOS ([http://www.freertos.org/](http://www.freertos.org/)) {{< figure src="/images/misc/freertos-logo.jpg" caption="The FreeRTOS logo. Image from http://www.freertos.org/."  width="320px" >}}
-
 
 Currently officially supports 20+ architectures and is open-source and free to use in commercial applications without having to disclose your code. Huge support from its large user-base. Designed for embedded systems. Can be both co-operative or pre-emptive.
 

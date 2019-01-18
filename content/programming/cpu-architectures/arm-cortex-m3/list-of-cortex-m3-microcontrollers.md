@@ -4,7 +4,6 @@ date: 2014-09-30 03:03:39+00:00
 draft: false
 title: List Of Cortex-M3 Microcontrollers
 type: page
-url: /programming/cpu-architectures/arm-cortex-m3/list-of-cortex-m3-microcontrollers
 ---
 
 This list is not exhaustive! Entries sorted alphabetically...

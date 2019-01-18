@@ -4,7 +4,6 @@ date: 2012-10-23 05:16:51+00:00
 draft: false
 title: Fixed Point Mathematics
 type: page
-url: /programming/general/fixed-point-mathematics
 ---
 
 ## Overview

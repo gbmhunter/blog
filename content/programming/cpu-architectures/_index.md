@@ -4,7 +4,6 @@ date: 2013-07-18 00:26:14+00:00
 draft: false
 title: CPU Architectures
 type: page
-url: /programming/cpu-architectures
 ---
 
 ## Overview

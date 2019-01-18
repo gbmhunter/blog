@@ -4,7 +4,6 @@ date: 2017-10-05 22:46:15+00:00
 draft: false
 title: GCC Bugs
 type: page
-url: /programming/compilers/gcc/gcc-bugs
 ---
 
 ## Issue With std::function (and lambdas) With gcc and arm
@@ -13,41 +12,41 @@ This specific bug has caused be much pain when cross-compiling C++ code for the 
 
 Code To Cause Issue:
 
-    ```c
-    #include <iostream>
-    #include <functional>
-    
-    class App {
-    
-    public:
-    
-        std::function<App*()> test_;
-    
-        void Run() {
-    
-            // Enable this line, ERROR is printed
-            // Disable this line, app runs o.k.
-            std::cout << "This print statement causes the bug below!" << std::endl;
-            
-            test_ = [this] () {
-                return this;
-            };
-    
-            App* returnedThis = test_();
-            if(returnedThis != this) {
-                std::cout << "ERROR: 'this' returned from lambda (" << returnedThis << ") is NOT the same as 'this' (" << this << ") !?!?!?!?!" << std::endl;
-            } else {
-                std::cout << "Program run successfully." << std::endl;
-            }
-    
+```c
+#include <iostream>
+#include <functional>
+
+class App {
+
+public:
+
+    std::function<App*()> test_;
+
+    void Run() {
+
+        // Enable this line, ERROR is printed
+        // Disable this line, app runs o.k.
+        std::cout << "This print statement causes the bug below!" << std::endl;
+        
+        test_ = [this] () {
+            return this;
+        };
+
+        App* returnedThis = test_();
+        if(returnedThis != this) {
+            std::cout << "ERROR: 'this' returned from lambda (" << returnedThis << ") is NOT the same as 'this' (" << this << ") !?!?!?!?!" << std::endl;
+        } else {
+            std::cout << "Program run successfully." << std::endl;
         }
-    };
-    
-    int main(void) {
-        App app;
-        app.Run();
+
     }
-    ```
+};
+
+int main(void) {
+    App app;
+    app.Run();
+}
+```
 
 The print to `std::cout` causes the bug to occur. Other, non-stream operations will likely cause a similar issue
 

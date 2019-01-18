@@ -7,6 +7,61 @@ from matplotlib.colors import hsv_to_rgb
 import numpy as np
 
 def main():
+    draw_non_weighted_graph()
+    # draw_weighted_graph()
+
+def draw_non_weighted_graph():
+
+    y_clip = 100    
+    num_x = 100
+    x = np.arange(1, num_x + 1)
+
+    def constant(x):
+        return 1
+    y_constant = _calc_y_vals(x, constant, y_clip)
+
+    def log_n(x):
+        return math.log2(x)
+    y_logn = _calc_y_vals(x, log_n, y_clip)
+
+    def linear(x):
+        return x
+    y_linear = _calc_y_vals(x, linear, y_clip)
+
+    def n2(x):
+        return x**2
+    y_n2 = _calc_y_vals(x, n2, y_clip)
+
+    def n3(x):
+        return x**3
+    y_n3 = _calc_y_vals(x, n3, y_clip)
+
+
+
+    print(f'x = {x}')
+    print(f'y = {y_n2}')
+
+    fig, ax = plt.subplots()
+    ax.plot(x, y_constant, label='O(1)')
+    ax.plot(x, y_logn, label='O(log(n))')
+    ax.plot(x, y_linear, label='O(n)')
+    ax.plot(x, y_n2, label='O(n^2)')
+    ax.plot(x, y_n3, label='O(n^3)')
+    plt.savefig('big-o-notation-algorithm-complexity-non-weighted.png')
+
+def _calc_y_vals(x_array, fx_func, y_clip):
+    y_array = np.full((len(x_array)), np.nan)
+    for i, x in enumerate(x_array):
+        print(x)
+        y_val = fx_func(x)
+        if y_val > y_clip:
+            break
+        y_array[i] = y_val
+
+    return y_array
+
+
+def draw_weighted_graph():
 
     num_x = 1000
     x = np.arange(1, num_x+1)

@@ -4,7 +4,6 @@ date: 2014-07-13 05:44:53+00:00
 draft: false
 title: Automated Code Analysis
 type: page
-url: /programming/general/automated-code-analysis
 ---
 
 ## Overview

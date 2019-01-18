@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2018-12-03
 description: "Regex find/replace, back-references and more info about the text-editor vim."
 lastmod: 2019-01-15
-tags: [ "vim", "text editor", "linux", "command-line", "regex", "IDE", "copy", "paste", "system clipboard" ]
+tags: [ "vim", "text editor", "linux", "command-line", "regex", "IDE", "copy", "paste", "system clipboard", "yank", "indenting" ]
 title: "vim"
 type: "page"
 ---
@@ -13,6 +13,19 @@ type: "page"
 vim is a command-line based text editor.
 
 It is very useful for editing code and config files when you only have access to a command-line, e.g. when your are ssh'ed into a remote machine.
+
+## Select, Cut, Copy And Paste
+
+`i` and then a delimiter such as `(`, `{`, `[` can be added after yank, delete, replace.
+
+The following table shows some examples:
+
+Command   | Description
+----------|---------------------------------------------
+`yi{`     | Yank (copy) text inside braces
+`ya{`     | Yank text inside and including braces
+`di(`     | Delete inside brackets.
+`ci[`     | Replace inside square brackets.
 
 ## Find And Replace
 
@@ -75,3 +88,21 @@ The `-clipboard` indicates that this feature was not includes. What you want to 
 {{% note %}}
 Most VIM extensions for IDEs (including the one for IntelliJ and VS Code) support copying to the system clipboard.
 {{% /note %}}
+
+## Movement
+
+vim has two different sets of movement keys. The first is the standard `← → ↑ ↓`,  arrow keys. The second is the more harder to learn `h (left) j (down) k (up) l (right)` method.
+
+The idea behind `h j k l` is that they are closer to all the other vim commands, so you don't have to move you hand/finger position to use them, resulting in more faster use. The downside is that they are not as intuitive to use, and do not work in _insert mode_ (in insert mode they behave as the regular characters).
+
+## Indenting
+
+When writing code, a common need is to shift text left and right by a fixed indentation amount, either to make it readable in indentation agnostic languages such as C, or just to make it work in indentation sensitive languages such as Python!
+
+vim allows you to use the `<` and `>` keys to shift selected text left or right by the _shiftwidth_.
+
+Unfortunately, the selection is deselected as soon as you press the `<` or `>` keys. While you can still repeat the indentation with `.`,  you cannot reverse the indentation with the opposite chevron key without re-selecting the text (of course, undo will still work). A shortcut for re-selecting the lines is `gv`.
+
+When in normal mode, you can press `>>` or `<<` to shift the current line.
+
+When in insert mode, you can use `Ctrl-T` to indent right and `Ctrl-D` to indent left (unindent).
