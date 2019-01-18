@@ -4,7 +4,7 @@ date: 2018-08-20
 description: "A tutorial on Python type annotations, including basic types, Optional, casts and mypy."
 draft: false
 lastmod: 2019-01-15
-tags: [ "Python", "type hints", "type annotations", "syntax", "mypy", "PEP 526", "PEP 484", "code" ]
+tags: [ "Python", "type hints", "type annotations", "syntax", "mypy", "PEP 526", "PEP 484", "code", "dmypy", "mypy daemon" ]
 title: "Python Type Annotations"
 type: "page"
 ---
@@ -129,6 +129,40 @@ You can check a Python program with the command:
 $ mypy my_file.py
 ```
 
+### Ignoring Code
+
+You can tell mypy to ignore specific lines of code with `# type: ignore`:
+
+```python
+my_weird_thing # type: ignore
+```
+
+{{% note %}}
+This syntax is part of the PEP 484 specification, and not just one of mypy's inventions.
+{{% /note %}}
+
 ### The mypy.ini File
 
 mypy can read a project level `mypy.ini` file which you can use to configure mypy. You can use this configuration file to enable/disable certain type checking features, to prevent certain files/directories from being type checked, and more.
+
+### The mypy Daemon (dmypy)
+
+The mypy daemon (controlled with the executable `dmypy`), is a backround server process which caches program state, making mypy run much faster on successive runs (e.g. rather than mypy taking an agnozing 30s to run, it runs in <1s). The mypyp daemon is installed along with mypy.
+
+You can run the mypy daemon with (assuming your working directory is the root directory you want to check in):
+
+```sh
+$ dmypy run -- --follow-imports=skip . | less
+```
+
+It is helpful to pipe the output to `less` so that you can clear the output once you have addressed the issues. 
+
+```sh
+$ dmypy run -- --follow-imports=skip . | less
+```
+
+If you have a free terminal window, you can even incorporate `watch` so the errors update as you implement fixes:
+
+```sh
+$ watch dmypy run -- --follow-imports=skip .
+```
