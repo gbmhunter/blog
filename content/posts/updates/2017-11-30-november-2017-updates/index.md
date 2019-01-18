@@ -4,7 +4,6 @@ date: 2017-11-29 17:31:24+00:00
 draft: false
 title: November 2017 Updates
 type: post
-url: /updates/november-2017-updates
 categories:
 - Updates
 tags:
@@ -50,7 +49,7 @@ tags:
 
 * Updated the [Python SWIG Bindings From C++ page](/programming/languages/python/python-swig-bindings-from-cplusplus) with a tutorial on how to pass (and call) callbacks from Python code to C++ code, and information on custom typemaps and typechecks (with working code examples).  
 
-* New [BlogAssets repository](https://github.com/mbedded-ninja/BlogAssets) and a central place to store all code examples/diagram source files for this website.
+* New [BlogAssets repository](https://github.com/gbmhunter/BlogAssets) and a central place to store all code examples/diagram source files for this website.
 	{{< figure src="/images/2017/12/github-blog-assets-homepage-repo-screenshot.png" width="578px" caption="A screenshot of the GitHub BlogAssets repository."  >}}
 
 * New [Visual Studio Code page](/programming/integrated-development-environments-ides/visual-studio-code) under Programming->Integrated Development Environments (IDEs).
@@ -61,6 +60,6 @@ tags:
 
 * Added new [Git Subtrees page](/programming/version-control-systems/git/git-subtrees) under Programming->Version Control Systems->Git.  
 
-* Created a new repo called [CppTemplate](https://github.com/mbedded-ninja/CppTemplate) (on GitHub), with the purpose being for it to provide a way to quick start development on a new C++ project.  
+* Created a new repo called [CppTemplate](https://github.com/gbmhunter/CppTemplate) (on GitHub), with the purpose being for it to provide a way to quick start development on a new C++ project.  
 
 * New [GCC Code Coverage page](/programming/compilers-build-systems/gcc/gcc-code-coverage) under Programming->Compilers->GCC.

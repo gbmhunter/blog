@@ -4,7 +4,6 @@ date: 2018-03-08 21:30:16+00:00
 draft: false
 title: A C/C++ Build System/Package Manager Comparison
 type: page
-url: /programming/build-systems-and-package-managers/a-c-c-build-system-package-manager-comparison
 ---
 
 ## Overview
@@ -13,9 +12,11 @@ This article is a *opinionated* comparison of popular, open-source build systems
 
 The build systems are listed in alphabetical order.
 
+{{% warning %}}
 DISCLAIMER: I have had much experience with CMake and Makefiles, and moderate experience with autotools. For some of the other build systems, upon researching/testing for this comparison was the first time I had ever used or sometimes even heard of them.
+{{% /warning %}}
 
-The [GitHub repository mbedded-ninja/CppBuildSystemReview](https://github.com/mbedded-ninja/CppBuildSystemReview) contains a example/demo project for each build/packaging system mentioned below (one per folder). In each folder, there is a `build.sh` bash script which should automatically run the build on a Linux system, provided you have the build system installed.
+The [GitHub repository mbedded-ninja/CppBuildSystemReview](https://github.com/gbmhunter/CppBuildSystemReview) contains a example/demo project for each build/packaging system mentioned below (one per folder). In each folder, there is a `build.sh` bash script which should automatically run the build on a Linux system, provided you have the build system installed.
 
 ## The Opinionated TL;DR
 
@@ -370,6 +371,6 @@ I tried to do the following for each build system:
 * Install static library (lib file and headers) and executable onto system
 * Run the executable to make sure it works
 
-The minimal code for each platform to do the above can be found at [https://github.com/mbedded-ninja/CppBuildSystemReview](https://github.com/mbedded-ninja/CppBuildSystemReview).
+The minimal code for each platform to do the above can be found at [https://github.com/gbmhunter/CppBuildSystemReview](https://github.com/gbmhunter/CppBuildSystemReview).
 
 Each sub-directory contains an example for each build system. Each of these sub-directories also contains a bash script you can run for a one-click demo of the build and run process (have a look at the build script to see how it's done!).

@@ -4,7 +4,6 @@ date: 2013-03-18 09:09:10+00:00
 draft: false
 title: Reducing Code Execution Time
 type: page
-url: /programming/languages/c/reducing-code-execution-time
 ---
 
 ## Multiplication And Division
@@ -25,7 +24,7 @@ output = (input<<1) + (input>>1) + (input>>2) + (input>>4)+ (input>>6);
 
 ## Powers And Square Roots
 
-`pow()`, a function provided with most IDE's, is a slow function. If raising to the power of an integer, multiply the variable by itself rather than use the pow() function.
+`pow()`, a function provided with most IDEs, is a slow function. If raising to the power of an integer, multiply the variable by itself rather than use the `pow()` function.
 
 ```c    
 // Want to calculate output = 2*sqrt(2)*input
@@ -43,7 +42,7 @@ There is a brilliant article on square root optimisation: [http://www.azillionmo
 
 ## Fixed Point
 
-mbedded.ninja has an open-source [fixed-point library](https://github.com/mbedded-ninja/MFixedPoint) (MFixedPoint) that is hosted on GitLab.
+mbedded.ninja has an open-source [fixed-point library](https://github.com/gbmhunter/MFixedPoint) (MFixedPoint) that is hosted on GitLab.
 
 ## Trigonometry
 

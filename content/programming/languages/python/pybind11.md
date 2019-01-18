@@ -4,7 +4,6 @@ date: 2018-09-24 21:32:53+00:00
 draft: false
 title: pybind11
 type: page
-url: /programming/languages/python/pybind11
 ---
 
 ## Overview
@@ -15,6 +14,6 @@ Unlike some other binding creating software packages that expect to define gener
 
 ## Examples
 
-See [https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/pybind11/cmake_example](https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/pybind11/cmake_example) for a working example showing how to build Python bindings to C++ code maintained with the CMake build system.
+See [https://github.com/gbmhunter/BlogAssets/tree/master/Programming/pybind11/cmake_example](https://github.com/gbmhunter/BlogAssets/tree/master/Programming/pybind11/cmake_example) for a working example showing how to build Python bindings to C++ code maintained with the CMake build system.
 
 There are other great examples created by pybind themselves, including a [plain C++ example](https://github.com/pybind/python_example) and a [CMake project example](https://github.com/pybind/cmake_example).

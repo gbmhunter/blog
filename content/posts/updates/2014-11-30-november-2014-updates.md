@@ -4,7 +4,6 @@ date: 2014-11-30 08:36:44+00:00
 draft: false
 title: November 2014 Updates
 type: post
-url: /updates/november-2014-updates
 categories:
 - Updates
 tags:
@@ -49,13 +48,13 @@ tags:
 * Fixed the problem with the asterisks appearing after page headers throughout the website, for more info is the post [Two Bugs Which Need Fixing Soon...](/site-admin/two-bugs-which-need-fixing-soon).
 * Starting using HTML5 canvas objects to draw diagrams. See the [IMS PCBs page](/electronics/pcb-design/ims-insulated-metal-substrate-pcbs#single-sided-single-layer-ims-pcb) for some examples.
 * Fixed plugin conflict between Raw HTML Pro and Preserved HTML Editor Markup, which were both trying to do the same thing and somehow causing HTML/Javascript code in posts to get corrupted. I disabled the Preserved HTML Editor Markup plugin and now Raw HTML Pro seems to be working fine (raw HTML/Javascript is preserved when saving, and also when switching between the visual and text editor).
-* Updated [candy-calc](https://github.com/mbedded-ninja/candy-calc), fixed bug where characters where being deleted from inputs if non-numeric.
+* Updated [candy-calc](https://github.com/gbmhunter/candy-calc), fixed bug where characters where being deleted from inputs if non-numeric.
 * Removed non-embedded engineering related pages from website.
 * Made Online Calculators a main menu entry.
 * The "Component Packages page" is now been moved to be a sub-page of PCB Design. I have now started creating a seperate page per package as the single page was getting a little too large.
 * New [SOD-523 Component Package page](/pcb-design/component-packages/sod-523-component-package).
 * Added [Linear Regulators page](/electronics/components/power-regulators/linear-regulators) under Electronics->Components->Power Regulators.
-* Updates to the [AltiumScriptCentral repo](https://github.com/mbedded-ninja/AltiumScriptCentral), including a new polygon generator!
+* Updates to the [AltiumScriptCentral repo](https://github.com/gbmhunter/AltiumScriptCentral), including a new polygon generator!
 * Updates to the [Altium Scripting page](/electronics/general/altium/altium-scripting-and-using-the-api) and the [VBScript page](/programming/languages/vbscript).
 * New RF Design section under Electronics. Added the first pages, [Link Budgets](/electronics/rf-design/link-budgets) and RF Black Magic.
 * New [page on 2D Coordinate Rotation](/mathematics/2d-coordinate-rotation) under Mathematics.  

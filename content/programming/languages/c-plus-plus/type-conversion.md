@@ -4,7 +4,6 @@ date: 2013-11-18 22:20:06+00:00
 draft: false
 title: Type Conversion
 type: page
-url: /programming/languages/c-plus-plus/type-conversion
 ---
 
 ## C-Style Casting
@@ -40,7 +39,7 @@ Base * a = new Base;
 Derived * b = static_cast<Derived*>(a);
 ```
 
-`static_cast` can convert between any pointer and the type void*. It is guaranteed that if you convert a pointer to an object to `void*` and then back again, the pointer will still be valid. This technique works great for passing data when the data type may vary (e.g. passing data on message queues between threads). See [https://github.com/mbedded-ninja/CppUtils/blob/master/include/CppUtils/MsgQueue.hpp](https://github.com/mbedded-ninja/CppUtils/blob/master/include/CppUtils/MsgQueue.hpp) for an example of this.
+`static_cast` can convert between any pointer and the type void*. It is guaranteed that if you convert a pointer to an object to `void*` and then back again, the pointer will still be valid. This technique works great for passing data when the data type may vary (e.g. passing data on message queues between threads). See [https://github.com/gbmhunter/CppUtils/blob/master/include/CppUtils/MsgQueue.hpp](https://github.com/gbmhunter/CppUtils/blob/master/include/CppUtils/MsgQueue.hpp) for an example of this.
 
 
 `static_cast` is also useful for converting between C++'s strongly typed enums (enum class { ...) and integers.

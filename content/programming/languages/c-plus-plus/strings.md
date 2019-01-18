@@ -59,4 +59,4 @@ memcpy(myCharPtr, myString.c_str(), myString.size() + 1);
 
 ## Converting A Integer To A Hex String
 
-See the [String.hpp file](https://github.com/mbedded-ninja/CppUtils/blob/master/include/CppUtils/StrConv.hpp) in [CppUtils repo](https://github.com/mbedded-ninja/CppUtils).
+See the [String.hpp file](https://github.com/gbmhunter/CppUtils/blob/master/include/CppUtils/StrConv.hpp) in [CppUtils repo](https://github.com/gbmhunter/CppUtils).

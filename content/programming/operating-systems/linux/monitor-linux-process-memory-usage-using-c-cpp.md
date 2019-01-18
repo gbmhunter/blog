@@ -4,7 +4,6 @@ date: 2017-08-25 18:20:19+00:00
 draft: false
 title: Monitor Linux Process Memory Usage Using C/C++
 type: page
-url: /programming/operating-systems/linux/monitor-linux-process-memory-usage-using-c-cpp
 ---
 
 ## Overview

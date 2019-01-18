@@ -4,7 +4,6 @@ date: 2017-03-27 00:27:19+00:00
 draft: false
 title: NinjaCalc Is Now A Web App
 type: post
-url: /ninjacalc/ninjacalc-is-now-a-web-app
 categories:
 - NinjaCalc
 tags:
@@ -33,10 +32,10 @@ When I recently discovered [vue.js](https://vuejs.org/), I finally decided to ma
 
 After trying out [Heroku](https://www.heroku.com/) as the deployment platform, I eventually choose to deploy it on my server instead due to increased configuration flexibility (incl. the ability to setup the Apache server routing with .htaccess files). rsync is used to copy the production files over ssh onto my server.
 
-The newest version of the Java based NinjaCalc (v1.3.0) can still be downloaded from [https://github.com/mbedded-ninja/NinjaCalc/releases/tag/v1.3.0](https://github.com/mbedded-ninja/NinjaCalc/releases/tag/v1.3.0), although this will slowly deviate from the web app as the web app is developed further.
+The newest version of the Java based NinjaCalc (v1.3.0) can still be downloaded from [https://github.com/gbmhunter/NinjaCalc/releases/tag/v1.3.0](https://github.com/gbmhunter/NinjaCalc/releases/tag/v1.3.0), although this will slowly deviate from the web app as the web app is developed further.
 
 Existing users of NinjaCalc may appreciate the similarity between the Java app and the web app. The results can be found below!
 
-GitHub Repo: [https://github.com/mbedded-ninja/NinjaCalc](https://github.com/mbedded-ninja/NinjaCalc)  
+GitHub Repo: [https://github.com/gbmhunter/NinjaCalc](https://github.com/gbmhunter/NinjaCalc)  
 GitHub Project Page: [http://mbedded-ninja.github.io/NinjaCalc/](http://mbedded-ninja.github.io/NinjaCalc/)  
 NinjaCalc Web-app: [http://ninja-calc.mbedded.ninja/](http://ninja-calc.mbedded.ninja/)

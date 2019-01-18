@@ -225,7 +225,7 @@ myProtobufObject.ParseFromString(dataAsString);
 
 Of course, once serialized into a string, you can **send the data over a serial communications protocol**, save it to file, send over a websocket e.t.c, before deserializing at the other end!
 
-**Do you need a library for sending serial data** to/from a communication bus like UART, SPI or I2C? I recommend you have a look at [SerialFiller](https://github.com/mbedded-ninja/SerialFiller), a C++ serial publish/subscribe based communication protocol by myself (shameless plug).
+**Do you need a library for sending serial data** to/from a communication bus like UART, SPI or I2C? I recommend you have a look at [SerialFiller](https://github.com/gbmhunter/SerialFiller), a C++ serial publish/subscribe based communication protocol by myself (shameless plug).
 
 ## Protobuf And CMake
 

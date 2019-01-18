@@ -6,13 +6,15 @@ title: "GCC Profiling"
 type: page
 ---
 
-_This article assumes you are using a Debian-based Linux machine (e.g. Ubuntu)._
+{{% note %}}
+This article assumes you are using a Debian-based Linux machine (e.g. Ubuntu).
+{{% /note %}}
 
 ## Overview
 
-To use profiling, the program must be compiled and linked with the -qg profiling option:
+To use profiling, the program must be compiled and linked with the `-qg` profiling option:
 
-We will use an called profiling_test.c (full code can be found at [https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/ProfilingGprof](https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/ProfilingGprof)):
+We will use an called profiling_test.c (full code can be found at [https://github.com/gbmhunter/BlogAssets/tree/master/Programming/ProfilingGprof](https://github.com/gbmhunter/BlogAssets/tree/master/Programming/ProfilingGprof)):
 
 ```c
 #include <stdio.h>

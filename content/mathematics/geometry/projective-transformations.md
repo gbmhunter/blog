@@ -4,7 +4,6 @@ date: 2017-11-16 17:47:38+00:00
 draft: false
 title: Projective Transformations
 type: page
-url: /mathematics/geometry/projective-transformations
 ---
 
 ## Overview
@@ -132,7 +131,7 @@ Let's select point `\(\hat{p} = (0.5, 0.5)\)`. This is in the middle of our inpu
 
 ... which is what we expected!
 
-Python code for this worked example can be found at [https://github.com/mbedded-ninja/BlogAssets/tree/master/Mathematics/QuadToQuad](https://github.com/mbedded-ninja/BlogAssets/tree/master/Mathematics/QuadToQuad).
+Python code for this worked example can be found at [https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/QuadToQuad](https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/QuadToQuad).
 
 Of course, Quad-to-Quad transformations do not have to use simple square, any four sided polygon can be used in the transformation, as shown in the below image:
 

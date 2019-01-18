@@ -109,7 +109,7 @@ I normally use the following file headers when documenting with Doxygen.
 //!
 ```
 
-**EXAMPLE: A full working Doxygen example in C++ can be found at [https://github.com/mbedded-ninja/CppTemplate](https://github.com/mbedded-ninja/CppTemplate). The Doxygen configuration file generates documentation for this C++ template project and the HTML documentation output can be viewed on GitHub pages at [https://mbedded-ninja.github.io/CppTemplate/index.html](https://mbedded-ninja.github.io/CppTemplate/index.html).**
+**EXAMPLE: A full working Doxygen example in C++ can be found at [https://github.com/gbmhunter/CppTemplate](https://github.com/gbmhunter/CppTemplate). The Doxygen configuration file generates documentation for this C++ template project and the HTML documentation output can be viewed on GitHub pages at [https://mbedded-ninja.github.io/CppTemplate/index.html](https://mbedded-ninja.github.io/CppTemplate/index.html).**
 
 ## The Main Page
 

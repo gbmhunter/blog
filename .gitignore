@@ -7,4 +7,4 @@ resources/
 __pycache__/
 
 # VS Code settings
-.vscode/
+# .vscode/

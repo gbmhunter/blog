@@ -21,7 +21,7 @@ where:<br>
 
 {{< figure src="/images/2018/09/normal-distribution-pdf-examples.png" width="500px" caption="A few example probability density functions (PDFs) for the normal distribution."  >}}
 
-See [https://github.com/mbedded-ninja/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution](https://github.com/mbedded-ninja/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution) for the code which generated these graphs.
+See [https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution](https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution) for the code which generated these graphs.
 
 ## Capped Normal Distribution
 

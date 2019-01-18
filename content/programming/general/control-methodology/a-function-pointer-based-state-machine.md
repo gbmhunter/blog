@@ -38,7 +38,7 @@ This type of state machine involves:
 
 This type of state machine is explained and demo'd below with a simple light flashing circuit that is turned on and off with a button press. When the button is pressed, the light starts flashing on/off every 2 seconds. Further button pushes toggle the light between the flashing mode and the off state.
 
-The full, working example can be found at [https://github.com/mbedded-ninja/FunctionPointerStateMachineExample](https://github.com/mbedded-ninja/FunctionPointerStateMachineExample).
+The full, working example can be found at [https://github.com/gbmhunter/FunctionPointerStateMachineExample](https://github.com/gbmhunter/FunctionPointerStateMachineExample).
 
 ## The State And Event Enumerations
 
@@ -207,4 +207,4 @@ void StateMachine_RunIteration(stateMachine_t *stateMachine) {
 }
 ```
 
-As mentioned above, the full working example can be found at [https://github.com/mbedded-ninja/FunctionPointerStateMachineExample](https://github.com/mbedded-ninja/FunctionPointerStateMachineExample).
+As mentioned above, the full working example can be found at [https://github.com/gbmhunter/FunctionPointerStateMachineExample](https://github.com/gbmhunter/FunctionPointerStateMachineExample).

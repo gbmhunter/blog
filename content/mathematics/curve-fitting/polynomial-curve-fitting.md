@@ -88,7 +88,7 @@ Thus a polynomial curve of best fit is:
 
 <div>$$ y = x[0] + x[1]x + x[2]x^2 + ... + x[j]x^j $$</div>
 
-See [https://github.com/mbedded-ninja/BlogAssets/tree/master/Mathematics/CurveFitting/polynomial](https://github.com/mbedded-ninja/BlogAssets/tree/master/Mathematics/CurveFitting/polynomial) for Python code which performs these calculations.
+See [https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/CurveFitting/polynomial](https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/CurveFitting/polynomial) for Python code which performs these calculations.
 
 ## Worked Example
 

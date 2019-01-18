@@ -255,7 +255,7 @@ cfsetospeed(&tty, 104560);
 
 Not all hardware will support all baud rates, so it is best to stick with one of the standard `BXXX` rates above if you have the option to do so. If you have no idea what the baud rate is and you are trying to communicate with a 3rd party system, try `B9600`, then `B57600` and then `B115200` as they are the most common rates.
 
-**For Linux serial port code examples see [https://github.com/mbedded-ninja/CppLinuxSerial](https://github.com/mbedded-ninja/CppLinuxSerial).**
+**For Linux serial port code examples see [https://github.com/gbmhunter/CppLinuxSerial](https://github.com/gbmhunter/CppLinuxSerial).**
 
 ## Saving termios
 
@@ -428,7 +428,7 @@ int main() {
 
 ## Examples
 
-For Linux serial port code examples see [https://github.com/mbedded-ninja/CppLinuxSerial](https://github.com/mbedded-ninja/CppLinuxSerial).
+For Linux serial port code examples see [https://github.com/gbmhunter/CppLinuxSerial](https://github.com/gbmhunter/CppLinuxSerial).
 
 ## External Resources
 
