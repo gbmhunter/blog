@@ -263,7 +263,7 @@ Here is a photo of the completed daughter board:
 ## The Software
 
 {{% note %}}
-All software for the Columbus radio project can be found on GitHub at [https://github.com/mbedded-ninja/ColumbusRadio](https://github.com/mbedded-ninja/ColumbusRadio).
+All software for the Columbus radio project can be found on GitHub at [https://github.com/gbmhunter/ColumbusRadio](https://github.com/gbmhunter/ColumbusRadio).
 {{% /note %}}
 
 [Volumio](http://volumio.org/) was easy to install. The Volumio v1.51 (the most recent as of 2014-12-29) image was downloaded and then written to a SD card. When the RaspberryPi is booted with this SD card and plugged into a router with an ethernet cable, you should be able to visit the Volumio WebUI by navigating to volumio.local/ on your computer's web browser. At this point I changed the name of the 
@@ -387,7 +387,7 @@ I originally went for a basic mega main-loop code architecture. The basic tasks 
  
  {{< figure src="/images/2014/11/columbus-radio-430-screenshot-of-python-hardware-ui-code.png" width="630px" caption="Screenshot of part of the Python 'hardware UI' script."  >}}
 
-Note that the complete hardware UI code can be found in the [GitHub ColumbusRadio repo](https://github.com/mbedded-ninja/ColumbusRadio) at hardware-ui/hardware-ui.py.
+Note that the complete hardware UI code can be found in the [GitHub ColumbusRadio repo](https://github.com/gbmhunter/ColumbusRadio) at hardware-ui/hardware-ui.py.
 
 I was discovering that the **main loop lag** introduced when checking for an internet connection was disrupting and causing errors in my potentiometer control code. As much as I didn't want the extra complexity/bugs/troubleshooting time, I decided at this point that I would have to implement threading (it was a good excuse for me to learn more about python's threading abilities). 
 

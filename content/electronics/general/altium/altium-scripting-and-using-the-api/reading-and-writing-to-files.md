@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2015-04-28 05:52:37+00:00
+author: "gbmhunter"
+date: 2015-04-28
 draft: false
-title: Reading And Writing To Files
-type: page
-url: /electronics/general/altium/altium-scripting-and-using-the-api/reading-and-writing-to-files
+title: "Reading And Writing To Files"
+type: "page"
 ---
 
 ## Overview
@@ -72,4 +71,4 @@ You can read a data set from an INI file using:
 value = iniFile.ReadString category, key
 ```
 
-Have a look at the file [UserData.vbs](https://github.com/mbedded-ninja/AltiumScriptCentral/blob/master/src/UserData/UserData.vbs) in the [AltiumScriptCentral repo on GitHub](https://github.com/mbedded-ninja/AltiumScriptCentral) for INI file read/write examples.
+Have a look at the file [UserData.vbs](https://github.com/gbmhunter/AltiumScriptCentral/blob/master/src/UserData/UserData.vbs) in the [AltiumScriptCentral repo on GitHub](https://github.com/gbmhunter/AltiumScriptCentral) for INI file read/write examples.

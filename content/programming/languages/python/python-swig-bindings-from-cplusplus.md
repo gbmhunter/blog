@@ -15,7 +15,7 @@ Although there are many different ways of calling C++ code from Python, this pag
 
 {{< figure src="/images/2017/08/swig-python-bindings-logo.png" width="307px" caption="The SWIG logo."  >}}
 
-There are numerous working SWIG example projects at [https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig](https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig) which follow along with the below tutorial. They are designed to be run in a Docker container created by the Dockerfile in the same repo (run the root-level run.sh to create and enter the Docker container).
+There are numerous working SWIG example projects at [https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig](https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig) which follow along with the below tutorial. They are designed to be run in a Docker container created by the Dockerfile in the same repo (run the root-level run.sh to create and enter the Docker container).
 
 ## What is SWIG?
 
@@ -54,7 +54,7 @@ Here is an example of a SWIG interface file:
 %include "Example.hpp"
 ```
 
-This file can be found at [https://github.com/mbedded-ninja/BlogAssets/blob/master/Programming/Swig/BasicExample/example.i.](https://github.com/mbedded-ninja/BlogAssets/blob/master/Programming/Swig/BasicExample/example.i)
+This file can be found at [https://github.com/gbmhunter/BlogAssets/blob/master/Programming/Swig/BasicExample/example.i.](https://github.com/gbmhunter/BlogAssets/blob/master/Programming/Swig/BasicExample/example.i)
 
 ## Installing And Running SWIG
 
@@ -98,7 +98,7 @@ If you are creating a wrapper for C++ code instead of C, use:
 $ swig -python -c++ input.i
 ```
 
-See [https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig/BasicExample](https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig/BasicExample) for a basic example which creates bindings for C++ code and then calls them from Python.
+See [https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig/BasicExample](https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig/BasicExample) for a basic example which creates bindings for C++ code and then calls them from Python.
 
 **Commonly Used SWIG Program Arguments:**
 
@@ -215,7 +215,7 @@ int SumUInt8(std::vector<uint8_t> array, uint32_t numElements);
 
 without the dreaded `**NotImplementedError: Wrong number or type of arguments for overloaded function '<function name>'**` error!
 
-**For a working code example using custom typemaps and typechecks, see [https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig/CustomTypemapExample](https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig/CustomTypemapExample).**
+**For a working code example using custom typemaps and typechecks, see [https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig/CustomTypemapExample](https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig/CustomTypemapExample).**
 
 ## Cross-language Polymorphism (Directors)
 
@@ -389,7 +389,7 @@ example1.CallCallback()
 
 As you can see above, we can now create a Callback object, passing in a python function we wish to call (in this case it is called TestFunction), and then pass it to an instance of a Example class (which is a C++ class). The Python function is then called when CallCallback() is executed.
 
-**This working code example can be found at [https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig/CallbackExample.](https://github.com/mbedded-ninja/BlogAssets/tree/master/Programming/Swig/CallbackExample)**
+**This working code example can be found at [https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig/CallbackExample.](https://github.com/gbmhunter/BlogAssets/tree/master/Programming/Swig/CallbackExample)**
 
 ## What Did SWIG Create?
 

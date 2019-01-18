@@ -136,7 +136,7 @@ Commit all these files into a git repository. If you want the Yocto layer to dow
 During development, you may not want to have to commit everytime you wish to build your code. See the bottom of this page on how achieve this.
 {{% /note %}}
 
-The code for this example app is located at [https://github.com/mbedded-ninja/YoctoHelloWorldApp](https://github.com/mbedded-ninja/YoctoHelloWorldApp).
+The code for this example app is located at [https://github.com/gbmhunter/YoctoHelloWorldApp](https://github.com/gbmhunter/YoctoHelloWorldApp).
 
 ## Make A Layer To Hold The App
 
@@ -213,7 +213,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=96af5705d6f64a88e035781ef00e98a8"
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-${PV}:"
 
 SRCREV = "c96b1fdd0767a9a13b9fca9d91fd3975c44c9de4"
-SRC_URI = "git://github.com/mbedded-ninja/YoctoHelloWorldApp.git"
+SRC_URI = "git://github.com/gbmhunter/YoctoHelloWorldApp.git"
 
 S = "${WORKDIR}/git"
 
@@ -238,7 +238,7 @@ $ md5sum LICENSE
 
 Use the number, but ignore the filename which is printed afterwards!
 
-The code for this example layer is located at [https://github.com/mbedded-ninja/YoctoMetaExample](https://github.com/mbedded-ninja/YoctoMetaExample).
+The code for this example layer is located at [https://github.com/gbmhunter/YoctoMetaExample](https://github.com/gbmhunter/YoctoMetaExample).
 
 ## Adding The Layer To The Build
 

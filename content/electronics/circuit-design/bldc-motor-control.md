@@ -202,18 +202,10 @@ The page is dedicated to how to control a **brushless DC** (BLDC) motor in an em
 </td>
 </tr>
 <tr >
-
-<td >\(J_R\)
-</td>
-
-<td >Rotational Inertia
-</td>
-
-<td >gram-cm^2
-</td>
-
-<td >oz-in-s^2
-</td>
+<td >\(J_R\)</td>
+<td >Rotational Inertia</td>
+<td >gram-cm^2</td>
+<td >oz-in-s^2</td>
 </tr>
 </tbody>
 </table>
@@ -260,7 +252,7 @@ Because there are no brushes to switch the current in the windings (commutation)
 
 **Hall-Effect** sensors output a voltage relative the magnetic field strength (or more technically, the magnetic flux density). Three of them are spaced 120° apart from each other and designed so that their output voltage changes rapidly as the phase coils require switching. This can make the switching electronics easy to implement. Be careful, some hall-effect sensors can be open-drain, even though the motor's datasheet suggest that the output is fully driven!
 
-The [encoder](/electronics/components/encoders) method uses, well, an encoder attached to the axle to determine rotor position. This is more complex than the hall-effect method as the encoder output requires decoding. The encoder is typically of the incremental qunadrature type, which requires a counter to count the pulses and a phase detection logic to determine the direction. This feedback method can also suffer from glitches which causes the encoder count to drift from the correct value. The [PSoC microcontroller](/programming/microcontrollers/psoc) has a very nice quadrature decoding component with built-in glitch filtering.
+The [encoder](/electronics/components/encoders) method uses, well, an encoder attached to the axle to determine rotor position. This is more complex than the hall-effect method as the encoder output requires decoding. The encoder is typically of the incremental quadrature type, which requires a counter to count the pulses and a phase detection logic to determine the direction. This feedback method can also suffer from glitches which causes the encoder count to drift from the correct value. The [PSoC microcontroller](/programming/microcontrollers/psoc) has a very nice quadrature decoding component with built-in glitch filtering.
 
 **Zero-crossing** has become popular in recent years due to the fact it requires no sensors, making it cheap to implement. It is the method of measuring the voltage of the floating winding during operation (1 winding is always undriven), to determine the position of the rotor. One disadvantage of this method it does not work below a minimum speed (because the voltage is too small).
 
@@ -353,7 +345,7 @@ The schematic below shows the hardware used in a PSoC 5 microcontroller to perfo
 The benefits:
 
 * Smoother operation/less torque ripple than trapezoidal
-* Greater efficiency/less heat dissapation
+* Greater efficiency/less heat dissipation
 * Able to run the motor at slower speeds
 
 The disadvantages:
@@ -367,7 +359,7 @@ The disadvantages:
 
 Sinusoidal control (also known as voltage-over-frequency control) is more complex than trapezoidal techniques, but offers smoother operation and better control at slow speeds.
 
-Look-up tables (LUT's) are recommended over using the `sin()` function due to speed issues. The `sin()` function in C is computationally intensive and can easily create delays that effect the performance of the control algorithm. The implementation of the `sin()` is platform dependent, but for example, using the GCC compiler on a PSoC 5 Cortex-M3 processor, calculating the `sin()` function three times (once for each phase), took approximately 24,000 clock cycles. With a processor running at 48MHz, this is about a 500us delay. Considering a 4-pole BLDC motor spinning at 6000rpm takes about 830us to move between commutation states. In each commutation cycle you want at least 6-bit resolution (64 PWM changes), and as you can see, the delay in calculating `sin()` is far too large.
+Look-up tables (LUTs) are recommended over using the `sin()` function due to speed issues. The `sin()` function in C is computationally intensive and can easily create delays that effect the performance of the control algorithm. The implementation of the `sin()` is platform dependent, but for example, using the GCC compiler on a PSoC 5 Cortex-M3 processor, calculating the `sin()` function three times (once for each phase), took approximately 24,000 clock cycles. With a processor running at 48MHz, this is about a 500us delay. Considering a 4-pole BLDC motor spinning at 6000rpm takes about 830us to move between commutation states. In each commutation cycle you want at least 6-bit resolution (64 PWM changes), and as you can see, the delay in calculating `sin()` is far too large.
 
 With a LUT that stores floats, and a small amount of float multiplication (no divide) on a embedded processor that does not have floating point hardware support (such as the ARM Cortex-M3), you could expect the look-up and assign process to take around 500-1000 clock cycles (maybe 20us at 48MHz). This is a big reduction over using the `sin()` function!
 
@@ -406,7 +398,7 @@ void Bldc_FillSineLut(void) {
 
 ## Third-Harmonic Injection
 
-With a pure phase-neutral sinusoidal drive, the maximum phase-to-phase voltage is only roughly 0.86Vbus. This can be improved by 'injecting' the sine wave with the third harmonic. The first thing you may think is, won't this disrupt my nice and smooth sine wave control? Well, no, because as it happens, the third harmonic is in-phase with every winding (which are 120 apart), and since it is applied to every winding, the phase-to-phase waveform does not change. It does however flatten the phase-neutral waveform, making the PWM become under-modulated. You can then scale this back up to full-modulation, and gives approximately a 16% phase-to-phase voltage increase.
+With a pure phase-neutral sinusoidal drive, the maximum phase-to-phase voltage is only roughly `\(0.86V_{bus}\)`. This can be improved by 'injecting' the sine wave with the third harmonic. The first thing you may think is, won't this disrupt my nice and smooth sine wave control? Well, no, because as it happens, the third harmonic is in-phase with every winding (which are 120 apart), and since it is applied to every winding, the phase-to-phase waveform does not change. It does however flatten the phase-neutral waveform, making the PWM become under-modulated. You can then scale this back up to full-modulation, and gives approximately a 16% phase-to-phase voltage increase.
 
 To implement third-harmonic injection, all you have to do is add the third-harmonic to the sine-wave LUT. The third-harmonic has an amplitude that is 1/6 of that of the fundamental (your original sine wave). You'll notice that the maximum value in the LUT has decreased. At this point, scale up all the values in the LUT so they use the full-range again.
 
@@ -420,7 +412,7 @@ The benefits:
 The disadvantages:
 
 * Greater control complexity than trapezoidal or sinusoidal
-* Requires fast processor to execute neccessary maths
+* Requires fast processor to execute necessary maths
 * Requires phase current to be measured (usually with low-side current sense resistors and an ADC)
 * Requires the tuning of three PID loops (usually)
 
@@ -450,11 +442,11 @@ We are fortunate that when using a star-connected BLDC motor (most are!), `\(I_c
 
 {{< figure src="/images/2012/08/clark-transformation-alpha-beta-geometric-interpretation.gif" width="516px" caption="A geometric interpretation of the Clark (alpha-beta) transformation. Image from http://en.wikipedia.org/wiki/%CE%91%CE%B2%CE%B3_transform."  >}}
 
-If you want the code to do the Clark Transformation (written in C++, and designed for embedded applications), check out the GitHub repository [Cpp-Maths-ClarkTransformation](https://github.com/gbmhunter/Cpp-ClarkTransform).
+If you want the code to do the Clark Transformation (written in C++, and designed for embedded applications), check out the GitHub repository [Cpp-ClarkTransformation](https://github.com/gbmhunter/Cpp-ClarkTransform).
 
 ## The Park Transformation (dq)
 
-Park transformation is a projection of three seperate sinusoidal phase values onto a rotating 2D axis. The rotating axis (d, q) of the Park transformation rotates at the same speed as the rotor. When the projection occurs, the currents `\(I_d\)` and `\(I_q\)` remain constant (when the motor is at steady-state). It just so happens that `\(I_d\)` controls the magnetizing flux, while `\(I_q\)` controls the torque, and since both parameters are separate, we can control each individually!
+Park transformation is a projection of three separate sinusoidal phase values onto a rotating 2D axis. The rotating axis (d, q) of the Park transformation rotates at the same speed as the rotor. When the projection occurs, the currents `\(I_d\)` and `\(I_q\)` remain constant (when the motor is at steady-state). It just so happens that `\(I_d\)` controls the magnetizing flux, while `\(I_q\)` controls the torque, and since both parameters are separate, we can control each individually!
 
 The Park transformation equation is shown below:
 
@@ -470,7 +462,7 @@ The Park transformation equation is shown below:
 
 {{< figure src="/images/2012/08/park-transformation-d-q-geometric-interpretation.jpg" width="976px" caption="A geometric interpretation of the Park (dq) transformation. Image from http://en.wikipedia.org/wiki/Dqo_transformation."  >}}
 
-If you want the code to do the Park Transformation (written in C++, and designed for embedded applications), check out the GitHub repository [Cpp-Maths-ParkTransformation](https://github.com/gbmhunter/Cpp-ParkTransform).
+If you want the code to do the Park Transformation (written in C++, and designed for embedded applications), check out the GitHub repository [Cpp-ParkTransformation](https://github.com/gbmhunter/Cpp-ParkTransform).
 
 ## The Control Loop
 

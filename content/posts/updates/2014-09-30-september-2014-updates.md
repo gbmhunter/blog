@@ -4,7 +4,6 @@ date: 2014-09-30 08:28:47+00:00
 draft: false
 title: September 2014 Updates
 type: post
-url: /updates/september-2014-updates
 categories:
 - Updates
 ---
@@ -17,17 +16,17 @@ categories:
 
 * Fixed website title on home page.
 
-* Updated [MString](https://github.com/mbedded-ninja/MString), [MAssert](https://github.com/mbedded-ninja/MAssert), [MUnitTest](https://github.com/mbedded-ninja/MUnitTest), [MOsal](https://github.com/mbedded-ninja/MOsal) to automatically download and build dependencies.
+* Updated [MString](https://github.com/gbmhunter/MString), [MAssert](https://github.com/gbmhunter/MAssert), [MUnitTest](https://github.com/gbmhunter/MUnitTest), [MOsal](https://github.com/gbmhunter/MOsal) to automatically download and build dependencies.
 
-* [MToolkit](https://github.com/mbedded-ninja/MToolkit) now builds/tests all modules!
+* [MToolkit](https://github.com/gbmhunter/MToolkit) now builds/tests all modules!
 
 * Added section on Supercapacitors on the Capacitor page.
 
 * New page on the Linux program [screen](/programming/operating-systems/linux/programs/screen).
 
-* New GitHub module, [MFilters](https://github.com/mbedded-ninja/MFilters).
+* New GitHub module, [MFilters](https://github.com/gbmhunter/MFilters).
 
-* New GitHub module, [MSmartPtr](https://github.com/mbedded-ninja/MSmartPtr).
+* New GitHub module, [MSmartPtr](https://github.com/gbmhunter/MSmartPtr).
 
 * New page under Programming->Website on [Folder And File Permissions](/programming/website-design/folder-and-file-permissions).
 

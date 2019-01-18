@@ -80,7 +80,7 @@ Thus a linear curve of best fit is:
 
 <div>$$ y = x[0] x + x[1] $$</div>
 
-See [https://github.com/mbedded-ninja/BlogAssets/tree/master/Mathematics/CurveFitting/linear](https://github.com/mbedded-ninja/BlogAssets/tree/master/Mathematics/CurveFitting/linear) for Python code which performs these calculations.
+See [https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/CurveFitting/linear](https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/CurveFitting/linear) for Python code which performs these calculations.
 
 **_Worked Example_**
 

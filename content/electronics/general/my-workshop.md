@@ -10,7 +10,7 @@ type: "page"
 
 ### Component Trays
 
-Organisation! Component trays are the shiz. When you want a component, they are right there and waiting. It is like walking into a shop, but without the cost (or course you have to fill them up, but you forget about the purchasing after a while). I use component trays for through hole resistors, through-hole capacitors, diodes, transistors, MOSFET's, and common IC's (555's, max232's, etc). I have smaller containers for the surface mount equivalents.
+Organisation! Component trays are the shiz. When you want a component, they are right there and waiting. It is like walking into a shop, but without the cost (or course you have to fill them up, but you forget about the purchasing after a while). I use component trays for through hole resistors, through-hole capacitors, diodes, transistors, MOSFETs, and common ICs (555's, max232's, etc). I have smaller containers for the surface mount equivalents.
 
 <table>
     <tbody>
@@ -23,7 +23,7 @@ Organisation! Component trays are the shiz. When you want a component, they are 
 
 ### Storage Boxes
 
-No, I didn't eat all that ice cream myself. But they are all 2L ice-cream containers, eaten by my family over the last 8 years. They make really good stackable containers for holding compnents and anything else that is too big or not used enough for the component trays.
+No, I didn't eat all that ice cream myself. But they are all 2L ice-cream containers, eaten by my family over the last 8 years. They make really good stackable containers for holding components and anything else that is too big or not used enough for the component trays.
 
 {{< figure src="/images/my-workshop/storage_containers.jpg" caption="Ice cream containers for storage. I didn't eat all that ice cream, honest :-)."  width="400px" >}}
 

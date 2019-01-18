@@ -1,10 +1,9 @@
 ---
-author: gbmhunter
-date: 2012-07-13 07:36:20+00:00
+author: "gbmhunter"
+date: 2012-07-13
 draft: false
-title: Altium BOM Template Files (Excel)
-type: page
-url: /electronics/general/altium/altium-automatic-bom-generation-macros
+title: "Altium BOM Template Files (Excel)"
+type: "page"
 ---
 
 ## Overview
@@ -30,8 +29,10 @@ The macro code is hosted on GitHub in a Git repository.
 [Click here](https://github.com/gbmhunter/Altium-Bom-Template) to visit the repo.
 
 To clone the repository (i.e. download the code), use the Git command:
-    
-    git clone https://github.com/gbmhunter/Altium-Bom-Template.git
+
+```sh
+$ git clone https://github.com/gbmhunter/Altium-Bom-Template.git
+```
 
 Improvements/bug fix comments are welcome!
 

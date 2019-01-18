@@ -17,7 +17,7 @@ Lots of third-party scripts can be downloaded from the Google Code Project, fou
 
 Unfortunately, the original scripts that used to be included with Altium disappeared from Altium Designer 10. I've uploaded a zip of all these scripts that can be downloaded [here](/docs/The-Original-Altium-Scripts-All-Languages.zip).
 
-Also, I have a project called [AltiumScriptCentral which can be downloaded from GitHub](https://github.com/mbedded-ninja/AltiumScriptCentral). It has a collection of useful scripts for increasing productivity and validating PCB's before being sent of for manufacturing. They are all written in VBScript, and can be used as code examples to write your own.
+Also, I have a project called [AltiumScriptCentral which can be downloaded from GitHub](https://github.com/gbmhunter/AltiumScriptCentral). It has a collection of useful scripts for increasing productivity and validating PCB's before being sent of for manufacturing. They are all written in VBScript, and can be used as code examples to write your own.
 
 ## How To Write Your Own Scripts
 
@@ -344,7 +344,7 @@ The script engine will automatically remove empty event handler functions (e.g. 
 
 The TForm object is the main window, the parent UI object which holds all of the other UI objects for the window inside it.
 
-You can resize a TForm object programmatically using the Height and Width parameters. The script file [Main.vbs in the AltiumScriptCentral project](https://github.com/mbedded-ninja/AltiumScriptCentral/blob/master/src/Main.vbs) uses these parameters often to "hide" the main window when a child window is opened (without actually hiding it, which causes other issues). Here is an example which resizes the main form before calling a child script:
+You can resize a TForm object programmatically using the Height and Width parameters. The script file [Main.vbs in the AltiumScriptCentral project](https://github.com/gbmhunter/AltiumScriptCentral/blob/master/src/Main.vbs) uses these parameters often to "hide" the main window when a child window is opened (without actually hiding it, which causes other issues). Here is an example which resizes the main form before calling a child script:
 
 ```vb
 ' @brief    Called when the "Delete Schematic Parameters" button is clicked
@@ -371,7 +371,7 @@ Individual radio buttons are added to a radio group through the Items property,
 
 The selected radio button in a group is controlled via the TRadioGroups ItemIndex property. This property can the read or written. This property corresponds to the line number of the corresponding radio button entry in the Items property (0-based count).
 
-The [DeleteSchematicParameters,vbs script in the AltiumScriptCentral](https://github.com/mbedded-ninja/AltiumScriptCentral/blob/master/src/Tools/DeleteSchematicParameters.vbs) project makes use of the TRadioGroup control.
+The [DeleteSchematicParameters,vbs script in the AltiumScriptCentral](https://github.com/gbmhunter/AltiumScriptCentral/blob/master/src/Tools/DeleteSchematicParameters.vbs) project makes use of the TRadioGroup control.
 
 ## Bugs
 

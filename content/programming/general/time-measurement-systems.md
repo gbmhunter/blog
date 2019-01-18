@@ -10,11 +10,11 @@ type: page
 
 UTC (coordinated universal time) is a standardised measure of time that most people use in their day-to-day lives. Time zones around the world are expressed as an offset relative to UTC.
 
-UTC is not very programmer friendly. To calculate the interval between two UTC dates, you need to know about what years the range ecoompasses and leap year calculations, and what months the range encompasses, as well as knowing how many days are in each respective month. For this reason, a more programmer-friendly time system was created, Unix time.
+UTC is not very programmer friendly. To calculate the interval between two UTC dates, you need to know about what years the range encompass and leap year calculations, and what months the range encompasses, as well as knowing how many days are in each respective month. For this reason, a more programmer-friendly time system was created, Unix time.
 
 ## Unix Time
 
-Unix time (aka Epoch time or POSIX time) is the number of seconds that have elapsed since the 1st Janruary, 1970 at midnight (00:00:00) in UTC, excluding leap seconds. The reference time in 1970 is called the Epoch. It is normally stored as a signed 32-bit  or signed 64-bit number, hence able to represent both dates before and after the Epoch.
+Unix time (aka Epoch time or POSIX time) is the number of seconds that have elapsed since the 1st January, 1970 at midnight (00:00:00) in UTC, excluding leap seconds. The reference time in 1970 is called the Epoch. It is normally stored as a signed 32-bit  or signed 64-bit number, hence able to represent both dates before and after the Epoch.
 
 By definition, Unix time increments by exactly 86400 counts each day. Obviously the amount it increments each month and year is dependent on the number of days in the month and the number of days in the year (don't forget about leap years!).
 
@@ -22,7 +22,7 @@ Unix time is computer/software/programmer friendly. The whole idea was to do awa
 
 Because Unix time does not "count" leap seconds, it is not a linear representation of time. On a day where a leap second occurs, there is usually a discontinuity at midnight in where the Unix time leaps back for forward a second. However, for the same reason, Unix time is deterministic, and you can calculate the Unix time for any point in time in the future, relative to UTC time.
 
-Embedded.ninjas embedded code module, [MChrono](https://github.com/mbedded-ninja/MChrono), can convert from UTC time to Unix time.
+Embedded.ninjas embedded code module, [MChrono](https://github.com/gbmhunter/MChrono), can convert from UTC time to Unix time.
 
 ## Year 2038 Bug
 
@@ -57,4 +57,4 @@ Rather than handle leap seconds the usual way by skipping forwards/backwards at 
 
 The Iridium satellite network has it's own time system which is based of UTC time. It is called the Iridium L-Band frame count (also referred to as Iridium network time or Iridium time). It is incremented by one every 90-millisecond L-band frame and broadcast from the Iridium satellites to earth terminals every six L-band frames (once every 540 milliseconds). 
 
-Currently, it is based of the Irdium epoch which is March 8, 2007, 03:50:21.00 GMT, known as “ERA1”. On March 3rd, 2015 at 18:00:00 UTC they plan to change the L-Band downlink broadcast from ERA1 to ERA2. The UTC date and time epoch of the new Iridium Time era ("ERA2") will be May 11, 2014, at 14:23:55.
+Currently, it is based of the Iridium epoch which is March 8, 2007, 03:50:21.00 GMT, known as “ERA1”. On March 3rd, 2015 at 18:00:00 UTC they plan to change the L-Band downlink broadcast from ERA1 to ERA2. The UTC date and time epoch of the new Iridium Time era ("ERA2") will be May 11, 2014, at 14:23:55.

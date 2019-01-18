@@ -34,7 +34,7 @@ struct Cmd {
 };
     
 // We require a thread-safe queue, which is not part of the standard!
-// See https://github.com/mbedded-ninja/CppUtils/blob/master/include/CppUtils/ThreadSafeQueue.hpp
+// See https://github.com/gbmhunter/CppUtils/blob/master/include/CppUtils/ThreadSafeQueue.hpp
 ThreadSafeQueue<Cmd> queue_;
     
 void ThreadFn() {

@@ -1,60 +1,40 @@
 ---
-author: gbmhunter
-date: 2015-10-29 02:55:58+00:00
+author: "gbmhunter"
+date: 2015-10-29
 draft: false
-title: RS-232 Protocol
-type: page
-url: /electronics/communication-protocols/rs-232-protocol
+lastmod: 2019-01-17
+tags: [ "RS-232", "serial", "UART", "DTE", "DCE", "communication protocol", "TX", "RX", "USB" ]
+title: "RS-232 Protocol"
+type: "page"
 ---
 
 ## Overview
 
-RS-232 (_Universal Asynchronous Receiver/Transmitter_) is a digital data transmission protocol with origins dating back to the 1960's. It was designed as a communication protocol to talk between _DTE_ (data terminal equipment) and _DCE_ (data communication equipment). It is universal in the sense the timing, voltages, flow control and error checking can be configured.
+RS-232 is a digital data transmission protocol with origins dating back to the 1960's. It was designed as a communication protocol to talk between _DTE_ (data terminal equipment) and _DCE_ (data communication equipment).
 
-<table >
-<tbody >
-<tr >
-
-<td >Drive Type
-</td>
-
-<td >Single-ended
-</td>
-</tr>
-<tr >
-
-<td >Num. Wires (excl. GND)
-</td>
-<td >
-2 (TX/RX) or  
- 4 (TX/RX and RTS/CTS)
-</td>
-</tr>
-<tr >
-
-<td >Duplexity
-</td>
-
-<td >Full
-</td>
-</tr>
-<tr >
-
-<td >Connection Topology
-</td>
-
-<td >Point-to-point
-</td>
-</tr>
-<tr >
-
-<td >OSI Layers
-</td>
-
-<td >Layers 1 (physical) and 2 (data link)
-</td>
-</tr>
-</tbody>
+<table>
+    <tbody>
+        <tr>
+            <td>Drive Type</td>
+            <td>Single-ended</td>
+        </tr>
+        <tr>
+        <td>Num. Wires (excl. GND)</td>
+        <td>2 (TX/RX) or 4 (TX/RX and RTS/CTS)</td>
+        </tr>
+        <tr>
+            <td>Duplexity</td>
+            <td>Full</td>
+        </tr>
+        <tr>
+            <td>Connection Topology</td>
+            <td>Point-to-point</td>
+        </tr>
+        <tr>
+            <td>OSI Layers</td>
+            <td>Layers 1 (physical) and 2 (data link)</td>
+        </tr>
+    </tbody>
 </table>
 
 RS-232 is commonly used today for a variety of different purposes in embedded systems, incl industrial equipment, test and measurement equipment. RS-232 ports are no longer available on most desktop computers (and certainly not on laptops), but USB-to-RS232 adapters are cheap, popular and easy to use with almost any operating system.
@@ -75,7 +55,7 @@ RS-232 is commonly used today for a variety of different purposes in embedded sy
 
 ## Higher-Level Protocols
 
-Do you need a higher-level communication protocol that works over a UART connection? See the [SerialFiller](https://github.com/mbedded-ninja/SerialFiller) library on GitHub (written in C++). SerialFiller uses a publish/subscribe mechanism and works well on point-to-point serial connections such as UART.
+Do you need a higher-level communication protocol that works over a UART connection? See the [SerialFiller](https://github.com/gbmhunter/SerialFiller) library on GitHub (written in C++). SerialFiller uses a publish/subscribe mechanism and works well on point-to-point serial connections such as UART.
 
 ## Interfaces
 

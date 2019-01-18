@@ -137,7 +137,7 @@ int main() {
 }
 ```
 
-So much easier! Right? This code can also be found in the [CppUtils repo on GitHub](https://github.com/mbedded-ninja/CppUtils).
+So much easier! Right? This code can also be found in the [CppUtils repo on GitHub](https://github.com/gbmhunter/CppUtils).
 
 Note: If you want to do more than just send notifications between threads, and actually send data, have a look at either implementing a queue or using a future/promise instead.
 
@@ -320,7 +320,7 @@ struct Cmd {
 };
 
 // We require a thread-safe queue, which is not part of the standard!
-// See https://github.com/mbedded-ninja/CppUtils/blob/master/include/CppUtils/ThreadSafeQueue.hpp
+// See https://github.com/gbmhunter/CppUtils/blob/master/include/CppUtils/ThreadSafeQueue.hpp
 ThreadSafeQueue<Cmd> queue_;
 
 void ThreadFn() {
@@ -365,7 +365,7 @@ int main() {
 
 This code can be found and run online at [https://wandbox.org/permlink/KkL4A89Z60GJdva3](https://wandbox.org/permlink/KkL4A89Z60GJdva3).
 
-Note that the above code uses a ThreadSafeQueue class, which is not part of std, nor included in the above code. This class implements a thread safe queue. You can find code for this at [https://github.com/mbedded-ninja/CppUtils/blob/master/include/CppUtils/ThreadSafeQueue.hpp](https://github.com/mbedded-ninja/CppUtils/blob/master/include/CppUtils/ThreadSafeQueue.hpp).
+Note that the above code uses a ThreadSafeQueue class, which is not part of std, nor included in the above code. This class implements a thread safe queue. You can find code for this at [https://github.com/gbmhunter/CppUtils/blob/master/include/CppUtils/ThreadSafeQueue.hpp](https://github.com/gbmhunter/CppUtils/blob/master/include/CppUtils/ThreadSafeQueue.hpp).
 
 ## Futures And Promises
 

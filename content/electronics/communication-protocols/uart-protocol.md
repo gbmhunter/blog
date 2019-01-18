@@ -331,7 +331,7 @@ The transmitter sends a break signal by **driving it's TX line low for a period 
 
 ## Higher-Level Protocols
 
-Do you need a higher-level communication protocol that works over a UART connection? See the [SerialFiller](https://github.com/mbedded-ninja/SerialFiller) library on GitHub (written in C++). SerialFiller uses a publish/subscribe mechanism and works well on point-to-point serial connections such as UART.
+Do you need a higher-level communication protocol that works over a UART connection? See the [SerialFiller](https://github.com/gbmhunter/SerialFiller) library on GitHub (written in C++). SerialFiller uses a publish/subscribe mechanism and works well on point-to-point serial connections such as UART.
 
 ## Terminal Programs
 
