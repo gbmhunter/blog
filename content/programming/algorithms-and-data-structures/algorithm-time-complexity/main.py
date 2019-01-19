@@ -44,9 +44,6 @@ def draw_non_weighted_graph():
         return 3**x
     y_2n = _calc_y_vals(x, twon, y_clip)
 
-    print(f'x = {x}')
-    print(f'y = {y_n2}')
-
     fig, ax = plt.subplots()
     ax.plot(x, y_constant, label='O(1)')
     ax.plot(x, y_logn, label='O(log(n))')
@@ -70,7 +67,7 @@ def draw_non_weighted_graph():
         },
         {
             'title': 'Logarithmic Time Complexity',
-            'label': r'$\mathcal{O}(log(n))$',
+            'label': r'$\mathcal{O}(\log{n})$',
             'y_vals': y_logn,
         },
         {
@@ -80,7 +77,7 @@ def draw_non_weighted_graph():
         },
         {
             'title': 'nlog(n) Time Complexity',
-            'label': r'$\mathcal{O}(n\log{}n)$',
+            'label': r'$\mathcal{O}(n\log{n})$',
             'y_vals': y_nlogn,
         },
         {
