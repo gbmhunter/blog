@@ -4,7 +4,6 @@ date: 2012-08-20 07:20:46+00:00
 draft: false
 title: Power Regulators
 type: page
-url: /electronics/components/power-regulators
 ---
 
 ## Overview

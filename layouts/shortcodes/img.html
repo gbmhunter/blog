@@ -3,7 +3,8 @@
 {{- $.Page.Scratch.Add "figurecount" 1 -}}
 {{- $image := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) }}
 {{- $width_without_px := index (findRE "^[0-9]+" (.Get "width")) 0 -}}
-{{- $thumb := $image.Resize (printf "%s%s" $width_without_px "x") }}
+<!-- Make sure to specify Gaussian re-sampling, the default "Box" re-sampling looks horrible -->
+{{- $thumb := $image.Resize (printf "%s%s Gaussian" $width_without_px "x") }}
 <div class="box{{ with .Get "caption-position" }} fancy-figure caption-position-{{.}}{{end}}{{ with .Get "caption-effect" }} caption-effect-{{.}}{{end}}" {{ with $width_without_px }}style="max-width:{{.}}px;"{{end}}>
   <figure {{ with .Get "class" }}class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img"{{ if .Parent }} style="background-image: url('{{ print .Site.BaseURL $thumb }}');"{{ end }}{{ with .Get "size" }} data-size="{{.}}"{{ end }}>

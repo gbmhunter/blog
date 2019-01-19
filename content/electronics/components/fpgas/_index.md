@@ -4,7 +4,6 @@ date: 2015-07-15 21:55:37+00:00
 draft: false
 title: FPGAs
 type: page
-url: /electronics/components/fpgas
 ---
 
 ## Complexity
