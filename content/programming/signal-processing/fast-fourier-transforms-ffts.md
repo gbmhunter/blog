@@ -1,15 +1,14 @@
 ---
 author: gbmhunter
-date: 2018-06-02 23:48:53+00:00
+date: 2018-06-02
 draft: false
 title: Fast Fourier Transforms (FFTs)
 type: page
-url: /programming/signal-processing/fast-fourier-transforms-ffts
 ---
 
 ## Overview
 
-A fast fourier transform is a way of calculating the DFT (discrete fourier transform) of a signal. A fourier transform is a way of looking at a waveform in the time domain to see what frequencies it is made up of. A fast fourier transform differentiates itself apart from a standard fourier transform by factorizing the DFT matrix into a produce of sparse (mostly zero) factors. This actions reduces the complexity of the DFT algorithm from \(O(n^2)\) to \(O(n\ log\ n)\). This speed increase means that the FFT is very popular in signal processing applications.
+A fast fourier transform is a way of calculating the DFT (discrete fourier transform) of a signal. A fourier transform is a way of looking at a waveform in the time domain to see what frequencies it is made up of. A fast fourier transform differentiates itself apart from a standard fourier transform by factorizing the DFT matrix into a produce of sparse (mostly zero) factors. This actions reduces the complexity of the DFT algorithm from `\( \mathcal{O}(n^2) \)` to `\( \mathcal{O}(n\log{n}) \)`. This speed increase means that the FFT is very popular in signal processing applications.
 
 ## Bin Size
 
@@ -23,7 +22,7 @@ The width of each bin (in Hertz) is equal to:
     \( N_{bins} \) is the number of bins<br>
 </p>
 
-The bins of interest are those from `0` to `\( \frac{N_{bins}}{2} \)`.
+The bins of interest are those from `\( 0 \)` to `\( \frac{N_{bins}}{2} \)`.
 
 ## **Sampling Rate**
 

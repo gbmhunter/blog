@@ -4,7 +4,6 @@ date: 2010-12-12 04:50:23+00:00
 draft: false
 title: Silent Disco Images Added
 type: post
-url: /djing/silent-disco-images-added
 categories:
 - DJing
 - Updates

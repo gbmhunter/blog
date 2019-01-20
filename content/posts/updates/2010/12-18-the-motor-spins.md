@@ -4,7 +4,6 @@ date: 2010-12-18 04:59:12+00:00
 draft: false
 title: The Motor Spins
 type: post
-url: /electronics/electronics-electric-skateboard/the-motor-spins
 categories:
 - Electric Skateboard
 - Electronics

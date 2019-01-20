@@ -4,7 +4,6 @@ date: 2010-12-17 04:56:36+00:00
 draft: false
 title: BLDC Motor, Li-Po Batt, Charger And Other Electric Skateboard Gear Arrived
 type: post
-url: /electronics/bldc-motor-li-po-batt-charger-and-other-electric-skateboard-gear-arrived
 categories:
 - Electronics
 tags:

@@ -4,7 +4,6 @@ date: 2010-12-10 04:47:28+00:00
 draft: false
 title: Programming, DJ Sub-site Added
 type: post
-url: /updates/programming-dj-sub-site-added
 categories:
 - Updates
 tags:

@@ -4,7 +4,6 @@ date: 2004-06-27 08:36:19+00:00
 draft: false
 title: Added Words To The Pyro Encyclopedia
 type: post
-url: /updates/added-words-to-the-pyro-encyclopedia
 categories:
 - Updates
 tags:

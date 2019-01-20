@@ -4,7 +4,6 @@ date: 2004-08-03 08:40:54+00:00
 draft: false
 title: Motar Movie Added
 type: post
-url: /updates/motar-movie-added
 categories:
 - Updates
 tags:

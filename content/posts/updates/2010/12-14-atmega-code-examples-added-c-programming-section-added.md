@@ -4,7 +4,6 @@ date: 2010-12-14 04:52:57+00:00
 draft: false
 title: ATmega Code Examples Added, C Programming Section Added
 type: post
-url: /updates/atmega-code-examples-added-c-programming-section-added
 categories:
 - Programming
 - Updates

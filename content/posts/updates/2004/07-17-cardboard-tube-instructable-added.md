@@ -4,7 +4,6 @@ date: 2004-07-17 08:39:33+00:00
 draft: false
 title: Cardboard Tube Instructable Added
 type: post
-url: /updates/cardboard-tube-instructable-added
 categories:
 - Updates
 tags:

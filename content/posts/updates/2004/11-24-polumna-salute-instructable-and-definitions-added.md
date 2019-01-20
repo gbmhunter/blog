@@ -4,7 +4,6 @@ date: 2004-11-24 08:42:25+00:00
 draft: false
 title: Polumna Salute Instructable And Definitions Added
 type: post
-url: /pyrotechnics/polumna-salute-instructable-and-definitions-added
 categories:
 - Pyrotechnics
 - Updates
