@@ -11,7 +11,7 @@ type: "post"
 
 ## Statistics for 2018
 
-This is the first year I have used Google Analytics to gather these statistics. Even though I have been using Google Analytics for many years, in previous years I just relied on the statistics presented in the Wordpress admin dashboard. This is no longer possible as I am now [using Hugo to power this site](/posts/updates/2018-12-15-site-migration-to-hugo-complete/). This also means that the reported numbers are different, in fact, Wordpress seemed to always report higher numbers than Google Analytics. The stats for 2017 on this page are also from Google Analytics so that a fair comparison can be made. See the [Happy New Year 2017 post](http://localhost:1313/posts/updates/2017-12-31-happy-new-year-2018/) for the Wordpress sourced 2017 stats.
+This is the first year I have used Google Analytics to gather these statistics. Even though I have been using Google Analytics for many years, in previous years I just relied on the statistics presented in the Wordpress admin dashboard. This is no longer possible as I am now [using Hugo to power this site](/posts/updates/2018/12-15-site-migration-to-hugo-complete/). This also means that the reported numbers are different, in fact, Wordpress seemed to always report higher numbers than Google Analytics. The stats for 2017 on this page are also from Google Analytics so that a fair comparison can be made. See the [Happy New Year 2017 post](http://localhost:1313/posts/updates/2017-12-31-happy-new-year-2018/) for the Wordpress sourced 2017 stats.
 
 ### Summary
 

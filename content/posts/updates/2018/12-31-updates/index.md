@@ -6,9 +6,9 @@ draft: false
 tags: [ "linux", "serial ports", "C", "C++", "python", "dictionaries", "Hugo", "static site generation", "OpenMP" ]
 ---
 
-* Site was migrated from Wordpress to Hugo! See [/posts/updates/2018-12-15-site-migration-to-hugo-complete](/posts/updates/2018-12-15-site-migration-to-hugo-complete) for more info.
+* Site was migrated from Wordpress to Hugo! See [/posts/updates/2018/12-15-site-migration-to-hugo-complete](/posts/updates/2018/12-15-site-migration-to-hugo-complete) for more info.
 
-* A new [Python Dictionaries page](/pages/programming/languages/python/dictionaries.md) created.
+* A new [Python Dictionaries page](/pages/programming/languages/python/python-dictionaries.md) created.
 * New [Hugo page](/pages/programming/website-design/static-website-generators/hugo) created.
 * New [OpenMP Tutorial](content/pages/programming/languages/c-plus-plus/openmp-tutorial.md).
 * Many improvements to the [Linux Serial Ports Using C/C++ page](/programming/operating-systems/linux/linux-serial-ports-using-c-cpp.md).
