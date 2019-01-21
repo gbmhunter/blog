@@ -28,7 +28,7 @@ There are three different mathematical notations used:
 * `\( \Omega(f(n)) \)` describes the **lower bound** in complexity
 * `\( \Theta(f(n)) \)` describes the **exact bound** in complexity
 
-`\( \mathcal{O}(f(n)) \)` (Big-O) is the most commonly used complexity, as we are normally interested in the worst case computational cost/memory usage when choosing/designing an algorithm. Note that you even when using Big-O, you can still talk about average-case and worst-case scenarios, but this is referring to the quality of the inputs.
+`\( \mathcal{O}(f(n)) \)` (Big-O) is the most commonly used complexity, as we are normally interested in the worst case computational cost/memory usage when choosing/designing an algorithm. Note that you even when using Big-O, you can still talk about average-case and worst-case scenarios, but this is referring to specific inputs and algorithms states which cause the algorithm to perform more poorly than usual.
 
 Normally, we use Big-O notation to describe time complexity (computational cost). Basically, it's a big `\( \mathcal{O}() \)` with brackets, and inside the bracket you write how the time complexity scales with the input. The input is usually called `\( n \)`, and usually represents the "number of things/elements/objects" the algorithm has to deal with.
 
@@ -90,7 +90,7 @@ Even if an algorithm takes a long time to calculate something, e.g. computing a 
 
 `\(\mathcal{O}(\log{n})\)` is a time complexity where the **number of operations grows with the logarithm of the size of the input**. `\(\mathcal{O}(\log{n})\)` complexity is considered to be pretty good. You can think of it as: **Every time the size of the input doubles, the complexity increases by a constant amount**.
 
-Note that whenever we are talking about software algorithms with `\(\mathcal{O}(\log{n})\)` complexity, we are usually referring `\(\mathcal{O}(\log_2{n})\)` complexity (due to the binary nature of most algorithms). However, this does not matter, as all logarithmic complexities belong to the same class, no matter what the _base_ is.
+Note that whenever we are talking about software algorithms with `\(\mathcal{O}(\log{n})\)` complexity, we are usually referring `\(\mathcal{O}(\log_2{n})\)` complexity (due to the binary nature of most algorithms). However, this does not matter, as all logarithmic complexities belong to the same class, no matter what the _base_ is. The base is just a constant factor which again disappears (e.g. `\( \frac{\log{1000}}{\log{10}} = 2 \)`, no matter what base is used).
 
 ```python  
 i = 0  
@@ -107,6 +107,7 @@ Common software operations that have `\( \mathcal{O}(\log{n}) \)` complexity are
 * A binary search algorithm. On each iteration you half the number of elements remaining in the search space.
 * The best way to calculate Fibonacci numbers (the easiest way with recursion is `\( \mathcal{O}(2^n) \)`!).
 * Calculating `\( a^n \)`.
+* Other "divide-and-conquer" style algorithms.
 
 ### Linear Time
 
@@ -212,7 +213,11 @@ def fibonacci(n):
 
 ### n! Time
 
-Factorial time is written as `\(\mathcal{O}(n!)\)`. It is a very rare and hugely expensive complexity class. Permutation algorithms.
+Factorial time is written as `\( \mathcal{O}(n!) \)`. It is a very rare and hugely expensive complexity class. Permutation algorithms.
+
+### Exotic Times
+
+* The infamous Bogo sort runs in `\( \mathcal{O}(n \cdot n!) \)` time.
 
 ## Amortized Complexity
 

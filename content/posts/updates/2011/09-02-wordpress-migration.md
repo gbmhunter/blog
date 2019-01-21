@@ -1,0 +1,20 @@
+---
+author: gbmhunter
+date: 2011-09-02 12:20:39+00:00
+draft: false
+title: Wordpress Migration
+type: post
+categories:
+- Site Admin
+tags:
+- drupal
+- migration
+- site admin
+- wordpress
+---
+
+I know CladLabs has just been migrated to Drupal, but it is time for a change again. Drupal was great, except I couldn't invest the time required to manage it. Being complex and technical (not that these are bad things), Drupal is beginning to fall over with errors and database conflicts. I'm sure that these can all be solved, however they will require significant time and effort.
+
+Playing around with WordPress, it seems to have some nice features, such as easy-to-do multiple image upload (entire Galleries at once), that was a pain with Drupal. And some very cool themes! I spent ages tweaking my Drupal theme, but these free WordPress ones look incomparably better :-).
+
+Hopefully the migration won't take too long. Copy and pasting seems to work well between Drupal pages and the WordPress editor (carrying across HTML tags and formatting), which is good news!

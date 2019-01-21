@@ -1,13 +1,27 @@
 {
     "cSpell.words": [
+        "Atmel",
+        "BEMF",
+        "BLAC",
+        "Karnaugh",
+        "adcs",
         "bldc",
         "brushless",
         "cmos",
         "datasheet",
         "datasheets",
+        "drupal",
+        "fets",
+        "kinect",
+        "mosfet",
+        "mosfets",
         "nema",
+        "pcbs",
         "posix",
-        "uart"
+        "uart",
+        "vdac",
+        "vias",
+        "wordpress"
     ],
     "cSpell.language": "en-GB"
 }
