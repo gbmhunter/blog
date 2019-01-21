@@ -15,13 +15,13 @@ There have been many updates this month!
 
 * New [Miller Effect page](/electronics/circuit-design/miller-effect) (under Electronics->Circuit Design).
 
-* Info on the Miller Effect and [Isolated Gate Drives](/electronics/components/mosfets#isolated-gate-drives) to the [MOSFET page](/electronics/components/mosfets).
+* Info on the Miller Effect and [Isolated Gate Drives](/electronics/components/transistors/mosfets/#isolated-gate-drives) to the [MOSFET page](/electronics/components/transistors/mosfets/).
 
 * New [Eclipse page](/programming/general/eclipse) under Programming->General Programming.
 
 * New info on [ASCII character codes and text formatting](/programming/languages/bash#formatting-terminal-text) on the [Bash page](/programming/languages/bash).
 
-* New [MOSFET gate-drive graph](/electronics/components/mosfets#dead-time) on the [MOSFETs page](/electronics/components/mosfets).  
+* New [MOSFET gate-drive graph](/electronics/components/transistors/mosfets/#dead-time) on the [MOSFETs page](/electronics/components/transistors/mosfets/).  
 
       {{< figure src="/images/misc/two-mosfet-gate-drives-with-deadtime-graph-screenshot.png" caption="Screenshot of the MOSFET gate drive graph on the MOSFETs page."   >}}
       

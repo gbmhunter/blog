@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2011-09-03 02:23:53+00:00
+date: 2011-09-03
 draft: false
-title: MOSFET's
+title: MOSFETs
 type: page
-url: /electronics/components/transistors/mosfets
 ---
 
 ## Overview
@@ -30,7 +29,7 @@ The following image shows the schematic symbol and pin names for both an N-chann
 
 ## Important Parameters
 
-Note that with all voltage parameters that mention two pins of a MOSFET (e.g. `\(V_{DS(max)}\)`), the voltage is measured with respect to the second pin (e.g. source). This would be the same as connecting the red probe of a multimeter to the drain, and the black probe to the source.
+Note that with all voltage parameters that mention two pins of a MOSFET (e.g. `\( V_{DS(max)} \)`), the voltage is measured with respect to the second pin (e.g. source). This would be the same as connecting the red probe of a multimeter to the drain, and the black probe to the source.
 
 Sorted by alphabetical order, including subscripts.
 

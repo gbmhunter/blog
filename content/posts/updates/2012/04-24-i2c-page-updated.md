@@ -14,7 +14,7 @@ tags:
 
 The I2C comms page is now pretty comprehensive with added information about long-distance I2C communication, I2C variants, USB-to-I2C drivers, screenshots of I2C signals, and much more. You can visit it by clicking the link below:
 
--> [I2C Communication](/electronics/circuit-design/i2c-communication)
+-> [I2C Communication](/electronics/communication-protocols/i2c-communication-protocol/)
 
 {{< figure src="/images/electronics-misc/typical-i2c-waveform.jpg" caption="A typical I2C waveform. The top waveform is the clock (SCK), and the bottom waveform is the data (SDA). This shows a master trying to communicate with the slave, but the slave does not acknowledge (the ninth bit is high)."  width="320px" >}}
 

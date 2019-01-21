@@ -29,7 +29,7 @@ They are suitable for things like heating/cooling elements which use on/off cont
 
 ## A Transistor H-Bridge
 
-Almost all serious half or full-bridges use [MOSFET's](/electronics/components/mosfets) as the switches. This is because MOSFET's have very low on resistances, meaning they can sink/source plenty of current without heating up. Some of the better MOSFET's are pushing on resistances (`\( R_{DS(on)} \)`) as low as `\( 1m\Omega \)` or less, allowing for continuous currents in the hundred's of amps as long as the MOSFET is heatsinked correctly.
+Almost all serious half or full-bridges use [MOSFETs](/electronics/components/transistors/mosfets/) as the switches. This is because MOSFETs have very low on resistances, meaning they can sink/source plenty of current without heating up. Some of the better MOSFETs are pushing on resistances (`\( R_{DS(on)} \)`) as low as `\( 1m\Omega \)` or less, allowing for continuous currents in the hundred's of amps as long as the MOSFET is heatsinked correctly.
 
 ## Discrete Component H-Bridge With Only Two Control Lines
 
@@ -45,7 +45,7 @@ One thing to watch out for here is the forward voltage drop of the diodes compar
 
 There are heaps of H-bridge related ICs! Some are just a controller that takes in a PWM signal and outputs control signals designed to go to a MOSFET driver, some include the controller and the MOSFET driver, and some even include the power MOSFETs (and all-in-one solution).
 
-For the same price, N-channel MOSFET's have a lower `\(R_{DS(on)}\)` than P-channels. Becuase of this, many H-bridge circuits use N-channel MOSFETs for the top-side switches as well as the bottom-side. Top-side N-channel switches require a voltage greater than `\( V_{CC} \)` at the gate to turn them on. Most H-bridge drivers have an internal charge pump which takes care of this for you.
+For the same price, N-channel MOSFETs have a lower `\(R_{DS(on)}\)` than P-channels. Because of this, many H-bridge circuits use N-channel MOSFETs for the top-side switches as well as the bottom-side. Top-side N-channel switches require a voltage greater than `\( V_{CC} \)` at the gate to turn them on. Most H-bridge drivers have an internal charge pump which takes care of this for you.
 
 ## Bi-Colour LED's
 

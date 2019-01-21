@@ -13,7 +13,7 @@ Finished the battery mounts, drilled holes and mounted the electronics enclosure
 
 ### 02/02/2012
 
-The second prototype h-bridge circuit blew up! It was working when powering a light, and also the 800W motor with no load. But as soon as I added a load to the motor (in the form of my body-weight and a skateboard), the h-bridge blew up. The top [MOSFET](/electronics/components/mosfets) broke and when into their infamous short mode, which then caused some of the prototype board tracks to blow up. Not sure of the cause, most likely noise spikes from the motor, but I had TVS diodes everywhere! I replaced the MOSFET, fixed the tracks, and it once again blew up, this time without a PWM signal being applied (which means it should of never turned on the MOSFET)!
+The second prototype h-bridge circuit blew up! It was working when powering a light, and also the 800W motor with no load. But as soon as I added a load to the motor (in the form of my body-weight and a skateboard), the h-bridge blew up. The top [MOSFET](/electronics/components/transistors/mosfets/) broke and when into their infamous short mode, which then caused some of the prototype board tracks to blow up. Not sure of the cause, most likely noise spikes from the motor, but I had TVS diodes everywhere! I replaced the MOSFET, fixed the tracks, and it once again blew up, this time without a PWM signal being applied (which means it should of never turned on the MOSFET)!
 
 ### 25/01/2012
 

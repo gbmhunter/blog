@@ -25,13 +25,13 @@ type: "page"
 
 * [UART/RS-232](/electronics/circuit-design/uart) RX and TX swap between devices
 * USB data lines D+ and D- have 39R series resistors
-* [I2C](/electronics/circuit-design/i2c-communication) have pull-up resistors (unless they are already internal to a device)
+* [I2C](/electronics/communication-protocols/i2c-communication-protocol/) have pull-up resistors (unless they are already internal to a device)
 
 ### Schematics Components
 
 * Do not rely on standard Altium libraries (pinouts and footprints can be wrong). Use Beta Solutions libraries and add to it. Make sure variable labelling is consistent.
-* P-Ch [MOSFET's](/electronics/components/mosfets) have their SOURCE connected to the high-side voltage (e.g. Vcc)
-* N-Ch [MOSFET's](/electronics/components/mosfets) have their SOURCE connected to the low-side voltage (e.g. ground)
+* P-Ch [MOSFET's](/electronics/components/transistors/mosfets/) have their SOURCE connected to the high-side voltage (e.g. Vcc)
+* N-Ch [MOSFET's](/electronics/components/transistors/mosfets/) have their SOURCE connected to the low-side voltage (e.g. ground)
 * Make sure voltages are not applied to any pins of IC's that are shut-down by removing power (unless the are designed to handle it). Leakage currents can occur.
 * Systematically check BOM with every component on schematics to weed out labelling errors and component variant problems.
 

@@ -612,11 +612,9 @@ Flux = Magnetic field lines per unit area
 
 FSB50825US - Fairchild Smart Power Module (SPM)  
 
- Package: [SPM-23](/electronics/circuit-design/component-packages#spm23)  
-
- Shoot-through Protection: No  
-
- Onboard Logic: None (microcontroller required)
+* Package: [SPM-23](/pcb-design/component-packages/spm23-component-package/)  
+* Shoot-through Protection: No  
+* Onboard Logic: None (microcontroller required)
 
 ## Standard Enclosures
 

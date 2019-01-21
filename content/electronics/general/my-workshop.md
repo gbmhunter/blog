@@ -70,7 +70,7 @@ I have used the .csv files to display graphs via Google visualizations on vario
 
 Logic analysers are great tools for looking a digital circuits! Most oscilloscopes are great for looking at analogue waveforms, but have serious limitations when looking at digital waveforms (except fancy versions, which have digital analysers built in, or offer a hardware extension).
 
-Logic analysers usually have 8 or more inputs. They record the 1's and 0's on the inputs, and often have advanced features like comm protocol decode support. This means they can decode the information sent across common communication protocols, making debugging easier as you no longer have to look at each individual bit and work out what was sent. They commonly support protocols such as [UART](/electronics/circuit-design/uart), [SPI](/electronics/circuit-design/communication-protocols/spi-protocol), and [I2C](/electronics/circuit-design/i2c-communication), and less commonly LIN and CAN.
+Logic analysers usually have 8 or more inputs. They record the 1's and 0's on the inputs, and often have advanced features like comm protocol decode support. This means they can decode the information sent across common communication protocols, making debugging easier as you no longer have to look at each individual bit and work out what was sent. They commonly support protocols such as [UART](/electronics/circuit-design/uart), [SPI](/electronics/circuit-design/communication-protocols/spi-protocol), and [I2C](/electronics/communication-protocols/i2c-communication-protocol/), and less commonly LIN and CAN.
 
 The particular [Saleae](http://www.saleae.com/) "[Logic](http://www.saleae.com/logic)" logic analyser below uses a [PSoC microcontroller](/programming/microcontrollers/psoc).
 

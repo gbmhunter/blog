@@ -197,7 +197,7 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 
 {{< figure src="/images/electronics-misc/recom-acdc-converter.jpg" caption="A Recom AC/DC converter module that can take 100-240VAC as it's input and outputs 12V at up to 83mA."  width="200px" >}}
 
-DC/DC converters and controllers are IC's which contain all of the logic and most of the passive componentry that makes up a switching power converter. When the industry talks about a DC/DC converter, they are talking about a chip which has an integrated switch (usually a [MOSFET](/electronics/components/mosfets)). When they talk about a DC/DC controller, they are talking about a chip which requires an external switch.
+DC/DC converters and controllers are IC's which contain all of the logic and most of the passive componentry that makes up a switching power converter. When the industry talks about a DC/DC converter, they are talking about a chip which has an integrated switch (usually a [MOSFET](/electronics/components/transistors/mosfets/)). When they talk about a DC/DC controller, they are talking about a chip which requires an external switch.
 
 Most DC/DC converters and controllers require at least an external input capacitor, switching inductor, and output capacitor. Some however, like Linear Technology uModule range, have the inductor/capacitors built in also. These tend to be rather expensive!
 
