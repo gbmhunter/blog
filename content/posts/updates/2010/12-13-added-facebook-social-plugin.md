@@ -4,7 +4,6 @@ date: 2010-12-13 04:51:20+00:00
 draft: false
 title: Added Facebook Social Plugin
 type: post
-url: /djing/added-facebook-social-plugin
 categories:
 - DJing
 - Updates

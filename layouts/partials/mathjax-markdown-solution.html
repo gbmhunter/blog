@@ -1,5 +1,5 @@
 <script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
       tex2jax: {
         inlineMath: [['\\(','\\)']],
@@ -7,8 +7,15 @@
         processEscapes: true,
         processEnvironments: true,
         skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        TeX: { equationNumbers: { autoNumber: "AMS" },
-             extensions: ["AMSmath.js", "AMSsymbols.js"] }
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          },
+          extensions: [
+            "AMSmath.js",
+            "AMSsymbols.js"
+          ]
+        }
       },
       // Enable line-breaks, which makes MathJAX wrap long display equations
       // This only occurs on the initial render, so if the page width is changed by user,

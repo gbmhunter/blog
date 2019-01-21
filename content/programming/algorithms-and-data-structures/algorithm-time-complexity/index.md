@@ -19,19 +19,20 @@ Algorithmic time complexity is a measure of how long it takes for an algorithm t
 
 ## Big-O, Little-o, Theta And Omega 
 
-Big-O, little-o, Theta and Omega are all mathematical methods of **describing an algorithms growth as the size of the input increases**. We can look at growth in two different ways: the increase in computational cost and the increase in storage (memory). 
+Big-O (pronounced "Big-Oh"), little-o, Theta and Omega are all mathematical methods of **describing an algorithms growth as the size of the input increases**. We can look at growth in two different ways: the increase in computational cost and the increase in storage (memory). 
 
 There are three different mathematical notations used:
 
-* `\( \mathcal{O}(f(n)) \)` describes the **upper bound** in complexity
+* `\( \mathcal{O}(f(n)) \)` (Big-O) describes the **upper bound** in complexity
+* `\( \mathcal{o}(f(n)) \)` (little-O) also describes the **upper bound** in complexity, but is a stronger statement. Big-O is in inclusive upper bound (grows less than or equal to), while little-o is a strict upper bound (grows strictly less than). Big-O is to little-o as `\( \leq \)` is to `\( \le \)`.
 * `\( \Omega(f(n)) \)` describes the **lower bound** in complexity
 * `\( \Theta(f(n)) \)` describes the **exact bound** in complexity
 
-`\( \mathcal{O}(f(n)) \)` (Big-O) is the most commonly used complexity, as we are normally interested in the worst case computational cost/memory usage when choosing/designing an algorithm. Note that you can also describe Big-O average case and worst case scenarios, which can become confusing.
+`\( \mathcal{O}(f(n)) \)` (Big-O) is the most commonly used complexity, as we are normally interested in the worst case computational cost/memory usage when choosing/designing an algorithm. Note that you even when using Big-O, you can still talk about average-case and worst-case scenarios, but this is referring to the quality of the inputs.
 
-Normally, we use Big O notation to describe time complexity. Basically, it's a big `\( \mathcal{O}() \)` with brackets, and inside the bracket you write how the time complexity scales with the input. The input is usually called `\( n \)`, and usually represents the "number of things" the algorithm has to deal with.
+Normally, we use Big-O notation to describe time complexity (computational cost). Basically, it's a big `\( \mathcal{O}() \)` with brackets, and inside the bracket you write how the time complexity scales with the input. The input is usually called `\( n \)`, and usually represents the "number of things/elements/objects" the algorithm has to deal with.
 
-Big O notation ignores and constant terms and any constant coefficients (e.g. an algorithm that grows at `\( 2n \)` is still written as `\( \mathcal{O}(n) \)`. This is because constant terms and constant coefficients do not effect the growth, you can think as Big-O notation as kind of analysis on the "derivative".
+Big-O notation ignores and constant terms and any constant coefficients (e.g. an algorithm that grows at `\( 2n \)` is still written as `\( \mathcal{O}(n) \)`. This is because constant terms and constant coefficients do not effect the growth, you can think as Big-O notation as kind of analysis on the "derivative".
 
 ## Complexity Algebra
 
@@ -47,7 +48,11 @@ Then the larger complexity class becomes dominant and we drop the lower class. F
 
 ## Common Complexity Classes
 
-The following complexities are described from best to worst.
+The following complexity classes are described from best to worst.
+
+{{% note %}}
+All Big-O complexities examples below are assumed to be average-case, unless specified otherwise. 
+{{% /note %}}
 
 ### Constant Time
 
@@ -67,10 +72,13 @@ print('hello')
 print('hello')
 ```
 
-`\(\mathcal{O}(1)\)` complexity is the best algorithm complexity you can achieve. Common software operations that have _amortized_ `\(\mathcal{O}(1)\)` complexity are:
+`\(\mathcal{O}(1)\)` complexity is the best algorithm complexity you can achieve. Common software operations that have `\(\mathcal{O}(1)\)` complexity are:
 
-* Reading a value from an array (e.g. a Python `list`, a C `array`, or a C++ `std::vector`). To read a value from a from an array, you just read the memory address at `base_address + index * value_size`. This takes a constant amount of time.
+* Reading a value from an array (e.g. a Python `list`, a C `array`, or a C++ `std::vector`). To read a value from a from an array, you just read the memory address at `base_address + index * value_size`. This takes a constant amount of time, no matter the size of the array.
 * Reading an element from hash table (e.g. a Python `dictionary`). Computing the hash of a key takes a constant amount of time, and then looking up the memory location at that hash is also constant.
+* Deleting an element from a doubly-linked list.
+* Push/pop of a stack.
+* Inserting a value at the end of an array (note, this is _amortized_ `\(\mathcal{O}(1)\)` complexity)
 
 {{% note %}}
 Even if an algorithm takes a long time to calculate something, e.g. computing a hash, as long as this operation takes the same amount of time, no matter if there are 3 elements or 9000, it is still considered `\( \mathcal{O}(1) \)`.
@@ -80,20 +88,25 @@ Even if an algorithm takes a long time to calculate something, e.g. computing a 
 
 {{< img src="graph-logarithmic-time-complexity" width="700px" caption="The growth of logarithmic time complexity compared with other common complexity classes." >}}
 
-`\(\mathcal{O}(\log{n})\)` is a time complexity where the number of operations.
+`\(\mathcal{O}(\log{n})\)` is a time complexity where the **number of operations grows with the logarithm of the size of the input**. `\(\mathcal{O}(\log{n})\)` complexity is considered to be pretty good. You can think of it as: **Every time the size of the input doubles, the complexity increases by a constant amount**.
 
 Note that whenever we are talking about software algorithms with `\(\mathcal{O}(\log{n})\)` complexity, we are usually referring `\(\mathcal{O}(\log_2{n})\)` complexity (due to the binary nature of most algorithms). However, this does not matter, as all logarithmic complexities belong to the same class, no matter what the _base_ is.
 
-```c    
-for(int i = 1; i <= n; i = i * 2)
-    print "hello";
+```python  
+i = 0  
+while i < n:
+    print('hello')
+    i *= 2 # Double i each time, making it O(log n)
 ```
 
-Notice the `i = i * 2`, which makes in run in `\( \mathcal{O}(\log{n}) \)` time.
+Notice the `i *=  2`, which makes in run in `\( \mathcal{O}(\log{n}) \)` time.
 
 Common software operations that have `\( \mathcal{O}(\log{n}) \)` complexity are:
 
-* Reading an element from a binary search tree. a 1-node binary tree has height `\( \log_2{1} + 1 = 1 \)`, a 2-node binary tree has height `\( \log_2{2} + 1 = 2 \)`, a 4-node binary tree has height `\(\log_2{4} + 1 = 3\)`, and so on. An n-node tree has height `\( \log_2{n} + 1 \)`, so adding elements to the tree causes the height to grow logarithmically. Because 
+* Finding an element in a binary search tree. a 1-node binary tree has height `\( \log_2{1} + 1 = 1 \)`, a 2-node binary tree has height `\( \log_2{2} + 1 = 2 \)`, a 4-node binary tree has height `\(\log_2{4} + 1 = 3\)`, and so on. An n-node tree has height `\( \log_2{n} + 1 \)`, so adding elements to the tree causes the height to grow logarithmically with the number of inputs.
+* A binary search algorithm. On each iteration you half the number of elements remaining in the search space.
+* The best way to calculate Fibonacci numbers (the easiest way with recursion is `\( \mathcal{O}(2^n) \)`!).
+* Calculating `\( a^n \)`.
 
 ### Linear Time
 
@@ -101,33 +114,42 @@ Common software operations that have `\( \mathcal{O}(\log{n}) \)` complexity are
 
 Linear time is when an algorithm grows at a rate proportional to the number of elements, `\(n\)`. A simple for loop has `\(\mathcal{O}(n)\)` complexity:
 
-```c    
-for(int i = 0; i < n; i++)
-    print "hello";
+```python
+for i in range(n):
+    print('hello')
 ```
 
 Another example:
 
-```c    
-for(int i = 0; i < n; i = i + 2)
-    print "hello";
+```python
+for i in range(0, n, 2): # Increment n by 2 each time
+    print('hello')
 ```
 
-Note that even though the above example prints "hello" for every second `\(n\)` (`\(0.5n\)`), it is still said to have `\(\mathcal{O}(n)\)` complexity (remember that coefficients are dropped).
+Note that even though the above example prints "hello" for every second `\(n\)` (so it performs `\(0.5n\)` prints), it still has `\(\mathcal{O}(n)\)` complexity (remember that coefficients are dropped).
 
 ### nlog(n) Time
 
 {{< img src="graph-nlogn-time-complexity" width="700px" caption="The growth of nlogn time complexity compared with other common complexity classes." >}}
 
-`\( \mathcal{O}(nlog(n)) \)` complexity can be thought of as a combination of `\( \mathcal{O}(n) \)` and `\( \mathcal{O}(log(n)) \)` complexity.
+`\( \mathcal{O}(n\log{n}) \)` complexity can be thought of as a combination of `\( \mathcal{O}(n) \)` and `\( \mathcal{O}(\log{n}) \)` complexity (and more often than not, this is how the algorithm actually works). It is famously known as the **best complexity that you can sort an arbitrary collection of elements in**.
 
-This can be demonstrated by a nested `for` loop, one having `\( \mathcal{O}(n) \)` complexity and the other `\( \mathcal{O}(log(n)) \)` complexity:
+This can be demonstrated by a nested `for` loop, one having `\( \mathcal{O}(n) \)` complexity and the other `\( \mathcal{O}(\log{n}) \)` complexity:
 
-```c    
-for(int i = 0; i < n; i++)
-    for(int j = 1; j < n; j = j * 2)
-        print "hello";
+```python
+for i in range(n):
+    j = 0
+    while j < n:
+        print('hello')
+        j *= 2 # This inner loop is log(n)
 ```
+
+Examples of `\( \mathcal{O}(n\log{n}) \)` complexity:
+
+* Merge sort
+* Heap sort
+* Quick sort
+
 
 ### n^2 Time
 
@@ -135,22 +157,24 @@ for(int i = 0; i < n; i++)
 
 `\( \mathcal{O}(n^2) \)` complexity is proportional to the square of the number of elements `\( n \)`. This is a bad form of complexity to have, especially when `\( n \)` grows large.
 
-```c    
-for(int i = 0; i < n; i++)
-    for(int j = 0; j < n; j++)
-        print "hello";
+The most basic example of `\( \mathcal{O}(n^2) \)` is a pair of nested `for` loops, each iterating over every element:
+
+```python
+for i in range(n):
+    for j in range(n):
+        print('hello')
 ```
 
-Here is another example which has `\( \mathcal{O}(n^2) \)` complexity.
+Here is another example which has `\( \mathcal{O}(n^2) \)` complexity:
 
-```c    
-for(int i = 0; i < n; i++)
-    for(int j = 0; j < n; j++)
-        print "hello";
+```python 
+for i in range(n):
+    for j in range(n):
+        print('hello')
 
-for(int i = 0; i < n; i++)
-    for(int j = 0; j < n; j++)
-        print "hello";
+for i in range(n):
+    for j in range(n):
+        print('hello')
 ```
 
 Note that this is just a 2x repetition of a algorithm with `\( \mathcal{O}(n^2) \)` complexity. Repeating an algorithm (i.e. performing it twice) does not change the complexity.
@@ -161,14 +185,14 @@ Note that this is just a 2x repetition of a algorithm with `\( \mathcal{O}(n^2) 
 
 `\( \mathcal{O}(n^3) \)` complexity is rarely seen in a single software algorithms (but can easily arise from the combination of multiple algorithms to solve a problem).
 
-```c    
-for(int i = 0; i < n; i++)
-    for(int j = 0; j < n; j++)
-        for(int k = 0; k < n; k++)
-            print "hello";
+```python
+for i in range(n):
+    for j in range(n):
+        for k in range(n):
+            print('hello')
 ```
 
-Naturally, we could keep going forever explaining poorer and poorer complexities (`(\ n^4 \)`, `\( n^5 \)`, e.t.c), but I think by now you understand the concept, and these higher complexities are rarely seen in real software algorithms.
+Naturally, we could keep going forever explaining poorer and poorer complexities (`\( n^4 \)`, `\( n^5 \)`, e.t.c), but I think by now you understand the concept, and these higher complexities are rarely seen in real software algorithms.
 
 ### 2^n Time
 
