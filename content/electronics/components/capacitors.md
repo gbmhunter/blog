@@ -4,12 +4,11 @@ date: 2011-09-05 06:09:43+00:00
 draft: false
 title: Capacitors
 type: page
-url: /electronics/components/capacitors
 ---
 
 ## Overview
 
-Capacitors are a passive electronic component that stores charge between two conductive surfaces. The conductive surfaces (plates) are usually very close together, with a dielectric inbetween, to maximize the capacitance for a given size. They are a popular component, that along with resistors, make up the two most commonly used components on a circuit board. They come in a large range of sizes, from water tank sized caps to small SMD capacitors and capacitors formed from tracks on PCB's.
+Capacitors are a passive electronic component that stores charge between two conductive surfaces. The conductive surfaces (plates) are usually very close together, with a dielectric inbetween, to maximize the capacitance for a given size. They are a popular component, that along with resistors, make up the two most commonly used components on a circuit board. They come in a large range of sizes, from water tank sized caps to small SMD capacitors and capacitors formed from tracks on PCBs.
 
 **The mechanical equivalent of a capacitor is a spring**. The larger the capacitance, the stronger the spring. This is using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) mechanical equivalent.
 
@@ -228,7 +227,7 @@ IR requirements for commercial MLCC's are about two times less.
 
 Electrolytic capacitors uses a very thin electrically deposited metal oxide film (\(Al_2 O_3\))as their dielectric. They have a high capacitance density (well, that was before super-caps came along). They are usually cylindrical in shape, and come in through-hole (axial and radial) and surface-mount types.
 
-In over-voltage conditions, holes can be punched through the dielectric layer and the capacitor will begin to conduct. The good news is that if the over-voltage dissappears quickly enough (e.g. just a surge or spike), the capacitor can self-heal. The bad news is that a if the capacitor heats up enough, the dielectric can boil, create vapours, and the cap explodes. Most electrolytics have a specific "weak spot" on the case which is designed to break in an over-pressure situation. This can make quite a bang, and can be dangerous if you happen to be peering closely at the circuit while this happened.
+In over-voltage conditions, holes can be punched through the dielectric layer and the capacitor will begin to conduct. The good news is that if the over-voltage disappears quickly enough (e.g. just a surge or spike), the capacitor can self-heal. The bad news is that a if the capacitor heats up enough, the dielectric can boil, create vapours, and the cap explodes. Most electrolytics have a specific "weak spot" on the case which is designed to break in an over-pressure situation. This can make quite a bang, and can be dangerous if you happen to be peering closely at the circuit while this happened.
 
 ## Tantalum
 
@@ -258,7 +257,7 @@ Most tantalum capacitors are made with a solid electrolyte, and therefore are no
 
 ### Construction
 
-At the heart of a tantalum capacitor is a pellet of tantalum (\(Ta_2 O_5\)).
+At the heart of a tantalum capacitor is a pellet of tantalum (`\( Ta_2 O_5 \)`).
 
 {{< figure src="/images/2011/09/cross-section-of-tantalum-capacitor.png" width="489px" caption="Cross-section of a SMD tantalum capacitor."  >}}
 
@@ -274,16 +273,16 @@ Tantalum capacitors tend to be more expensive than any other commonly used capac
 
 The MOST RETARDED THING about tantalum capacitors is that the polarity indicator is a stripe, next to the POSITIVE end. Whoever decided on this when they were first made needs to be shot. It goes against pretty much all other stripy-polarity-mark thingies, which all indicate which end is the negative end (think electrolytics, diodes, e.t.c). So, be very careful and vigilant when using these, for it is so easy for forget this rule!
 
-Tantalum capacitors are more susceptible to reverse and over-voltage than their electrolytic counterparts. At a high enough voltage, the dielectric breaks down and the capacitor begins to conduct. The current can generate planty of heat, and here's the best part, it can start of a **mini-thermite** reaction between tantalum and manganese dioxide. Some slightly better news to offset this is that at low-energy breakdowns, tantalum capacitors can actually **self-heal** and stop the leakage current.
+Tantalum capacitors are more susceptible to reverse and over-voltage than their electrolytic counterparts. At a high enough voltage, the dielectric breaks down and the capacitor begins to conduct. The current can generate plenty of heat, and here's the best part, it can start of a **mini-thermite** reaction between tantalum and manganese dioxide. Some slightly better news to offset this is that at low-energy breakdowns, tantalum capacitors can actually **self-heal** and stop the leakage current.
 
 Because of their large operating temperature range, stability, and high price, they are often found in medical and space equipment.
 
 ## Film Capacitors
 
 <table><tbody ><tr >
-<td >Synoyms
+<td >Synonyms
 </td>
-<td >MKT, MFC's (metallized film capacitors), power (film) capacitor
+<td >MKT, MFCs (metallized film capacitors), power (film) capacitor
 </td></tr><tr >
 <td >Range
 </td>
@@ -331,8 +330,11 @@ Metallized film capacitors have a self-healing effect when an over-voltage even 
 </td></tr><tr >
 <td >Uses
 </td>
-<td >  * General circuits
-</td></tr></tbody></table>
+<td>General circuits
+</td>
+</tr>
+</tbody>
+</table>
 
 Polyester capacitors use polyester plastic film for their dielectric. They have similar properties to disc ceramic capacitors. They are sometimes called green caps because they have a green outer plastic coating to protect them. The problem with that is that not all polyesters are green! Quite a few are brown, among other colours.
 
@@ -509,7 +511,7 @@ Sorted by alphabetic order.
 
 The dielectric of air changes with humidity, pressure and temperature.
 
-<table style="width: 500px;" border="0" ><tbody ><tr >
+<table><tbody ><tr >
 <td >Temperature
 </td>
 <td >5ppm/C
@@ -557,7 +559,7 @@ This is shown in the following diagram.
 
 Notice how the total equivalent capacitance is less than any one capacitor in the series string. **Connecting capacitors in series reduces the capacitance**.
 
-One of the benefits of connecting capacitors in series is that each capacitor only sees a portion of the total applied voltage, hence you can apply a higher voltage than the max rated voltage for any single capacitor. However, care must be taken to make sure the capacitors don't build up a **charge imbalance**, which could cause a single capacitor to take more than it's fair share of voltage, and blow up! A balancing circuit can be made by connecting a high-value resistor(e.g. \(1M\Omega\)) across each capacitor. This causes any unbalanced build-up of charge to dissipate through the resistors, at the expense of increasing the leakage current of the circuit (remember, capacitors have an internal leakage current also). This is similar to how a battery cell charge balancing circuit works.
+One of the benefits of connecting capacitors in series is that each capacitor only sees a portion of the total applied voltage, hence you can apply a higher voltage than the max rated voltage for any single capacitor. However, care must be taken to make sure the capacitors don't build up a **charge imbalance**, which could cause a single capacitor to take more than it's fair share of voltage, and blow up! A balancing circuit can be made by connecting a high-value resistor(e.g. `\( 1M\Omega \)`) across each capacitor. This causes any unbalanced build-up of charge to dissipate through the resistors, at the expense of increasing the leakage current of the circuit (remember, capacitors have an internal leakage current also). This is similar to how a battery cell charge balancing circuit works.
 
 ## Formulas
 
@@ -692,11 +694,11 @@ Since the ESR is proportional to the capacitor's plate area, for a similar capac
 
 ## Leakage Currents
 
-Leakage currents are present in all types of capacitor. Leakage current is the sum of electrical losses from energy required to build up the oxide layers, weaknesses in the dielectric, tunnel effects, and cross currents. They are typically increase proportionally to the capacitance of the capacitor. We can reduce the leakage current down to two main factors, the absorption current `\( I_{abs} \)`, and the intrinisic leakage current `\( I_{il} \)`.
+Leakage currents are present in all types of capacitor. Leakage current is the sum of electrical losses from energy required to build up the oxide layers, weaknesses in the dielectric, tunnel effects, and cross currents. They are typically increase proportionally to the capacitance of the capacitor. We can reduce the leakage current down to two main factors, the absorption current `\( I_{abs} \)`, and the intrinsic leakage current `\( I_{il} \)`.
 
 <div>$$ I_{leakage} = I_{abs} + I_{il} $$</div>
 
-Absorption currents are due to quantum tunneling of electrons at the metal/ceramic barrier! Absorption currents, `\(I_{abs}\)` reduce with time and have weak temperature dependence, while intrinsic leakage currents `\(I_{il}\)` remain constant with time but exponentially increase with temperature.
+Absorption currents are due to quantum tunnelling of electrons at the metal/ceramic barrier! Absorption currents, `\(I_{abs}\)` reduce with time and have weak temperature dependence, while intrinsic leakage currents `\(I_{il}\)` remain constant with time but exponentially increase with temperature.
 
 Desorption currents (depolarization) flow when the voltage on a capacitor is decreased (e.g. when it is shorted). These currents can actually recharge a previously discharged capacitor, sometimes up to dangerous voltages (people experimenting with coil/rail guns can have this problem)!
 
@@ -741,11 +743,11 @@ Ceramic capacitors are rated with an initial minimum insulation resistance (e.g.
 
 ## Why Leakage Currents Are Important
 
-Leakage current becomes an important parameter to consider when designing long-life battery powered circuits. This is especially true for circuits powered of primary batteries with high internal resistance, such as lithium thionyl chloride baterries (LiSOCl2), because large (>100uF) capacitors can be required to help provide energy during high pulse current situations. These capacitors can have significant leakage current.
+Leakage current becomes an important parameter to consider when designing long-life battery powered circuits. This is especially true for circuits powered of primary batteries with high internal resistance, such as lithium thionyl chloride batteries (LiSOCl2), because large (>100uF) capacitors can be required to help provide energy during high pulse current situations. These capacitors can have significant leakage current.
 
 ## Measuring The Leakage Current Of A Capacitor
 
-Because of the small current's/total energy involved, you can't really measure the leakage current of a capacitor with standard multimeter. One way is to use a dedicated high-resistance meter, commonly called a megaohm meter or insulation resistance tester.
+Because of the small currents/total energy involved, you can't really measure the leakage current of a capacitor with standard multimeter. One way is to use a dedicated high-resistance meter, commonly called a megaohm meter or insulation resistance tester.
 
 ## Voltage Dependence
 
@@ -763,7 +765,7 @@ This can upset op-amp gains, frequency cut-off points of filters, and the time c
 
 Capacitors are commonly used for decoupling, as this following schematic shows (taken from the Raspberry-Pi PCB design).
 
-{{< figure src="/images/2011/09/decoupling-caps-schematic-example-on-r-pi-pcb.png" width="396px" caption="Example usage of decoupling capacitors for IC's. Schematic is from the Raspberry-Pi PCB. Image from http://www.raspberrypi.org/wp-content/uploads/2012/04/Raspberry-Pi-Schematics-R1.0.pdf."  >}}
+{{< figure src="/images/2011/09/decoupling-caps-schematic-example-on-r-pi-pcb.png" width="396px" caption="Example usage of decoupling capacitors for ICs. Schematic is from the Raspberry-Pi PCB. Image from http://www.raspberrypi.org/wp-content/uploads/2012/04/Raspberry-Pi-Schematics-R1.0.pdf."  >}}
 
 ## Mains Line Filters
 
@@ -809,7 +811,7 @@ It's called dielectric soakage because it's essentially a property of the dielec
 
 A charge pump (also commonly called **bootstrapping**), is a way of using capacitors to generate a voltage higher than the supply. A typical charge-pump circuit has two capacitors and two diodes, and requires an oscillating input.
 
-It is commonly used as a simple way of driving the gate of a n-doped silicon switch (such as a N-Channel MOSFET or IGBT) when being used as a high side driver. Although using a P-Channel as the high-side driver would not require this voltage step-up, N-Channel MOSFETs are preferred in most cases because of their lower on-resistance and price. When using a capacitor to charge the gate of a N-Channel MOSFET, you must make sure the capacitor stores enough charge to transfer to the MOSFET gate while raising the voltage enough drive the on-resistance as low as you need. A general rule of thumb is that the capacitor should store 100x more charge than the gate charge as stated on the MOSFET's datasheet. The charge stored in a capacitor can be calculated using the following equation:
+It is commonly used as a simple way of driving the gate of a n-doped silicon switch (such as a N-Channel MOSFET or IGBT) when being used as a high side driver. Although using a P-Channel as the high-side driver would not require this voltage step-up, N-Channel MOSFETs are preferred in most cases because of their lower on-resistance and price. When using a capacitor to charge the gate of a N-Channel MOSFET, you must make sure the capacitor stores enough charge to transfer to the MOSFET gate while raising the voltage enough drive the on-resistance as low as you need. A general rule of thumb is that the capacitor should store 100x more charge than the gate charge as stated on the MOSFETs datasheet. The charge stored in a capacitor can be calculated using the following equation:
 
 <div>$$Q = CV$$</div>
 
@@ -990,11 +992,11 @@ Ceramic chip capacitors usually have a three letter code which describes the max
 <td>+22, -82
 </td></tr></tbody></table>
 
-## Feedthrough Capacitors
+## <a name="feedthrough-capacitors"></a> Feedthrough Capacitors
 
 Feedthrough (or feedthru) capacitors are special three-terminal capacitors (sometimes with four connections) used for **suppression** of **RF noise**. They are also known under the more general name of an _EMI suppression filter_ or _three-terminal capacitor._
 
-{{< figure src="/images/2011/09/feedthrough-capacitor-3d-render-0603-1608-3-connections.jpg" width="314px" caption="A 3D render of an 0603-sized feedthrough capacitor with 3 connections. Image from www.digikey.com."  >}}
+{{< figure src="/images/2011/09/feedthrough-capacitor-3d-render-0603-1608-3-connections.jpg" width="314px" caption="A 3D render of an 0603-sized feedthrough capacitor with 3 connections. Image from www.digikey.com." >}}
 
 Their advantage over a standard decoupling capacitor to ground is **lower parasitic series inductance**, which offers a lower impedance path for RF noise to ground.
 

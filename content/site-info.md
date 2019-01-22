@@ -76,7 +76,7 @@ Migrated from Wordpress (full-blown CMS) to Hugo (static-site generator). The Gi
 
 <div style='position:relative; padding-bottom:48.37%; margin-top: 40px;'><iframe src='https://gfycat.com/ifr/MassiveHappygoluckyAntarcticgiantpetrel' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
 
-A full post with more information on this migration can be found [here](/posts/updates/2018/12-15-site-migration-to-hugo-complete.md).
+A full post with more information on this migration can be found [here](/posts/updates/2018/12-15-site-migration-to-hugo-complete/).
 
 ## Latex
 
