@@ -172,6 +172,7 @@ class LinkChecker:
 
         for invalid_url, invalid_url_info_list in self.invalid_urls.items():
             print('')
+            print('Locations of invalid URL:')
             for invalid_url_info in invalid_url_info_list:
                 file_path = invalid_url_info['file_path']
                 span = invalid_url_info['span']
@@ -187,20 +188,24 @@ class LinkChecker:
             print(f'invalid_url_base = {invalid_url_base}')
             print(f'anchor = {anchor}')
 
-            close_urls = difflib.get_close_matches(invalid_url_base, self.valid_urls, n=20)
-            print(f'Did you mean:')
-            print(f'0. Ignore.')
-            for i, close_match in enumerate(close_urls):
-                print(f'{i+1}. "{close_match}"')
-            user_input = input("Selection? ")
-            user_input = int(user_input)
-            if user_input < 0 or user_input > len(close_urls) + 1:
-                print('Invalid input!')
-                continue
-            if user_input == 0:
-                continue
+            if invalid_url_info_list[0]['error_reason'] == 'url_base_invalid':
+                close_urls = difflib.get_close_matches(invalid_url_base, self.valid_urls, n=20)
+                print(f'Did you mean:')
+                print(f'0. Ignore.')
+                for i, close_match in enumerate(close_urls):
+                    print(f'{i+1}. "{close_match}"')
+                user_input = input("Selection? ")
+                user_input = int(user_input)
+                if user_input < 0 or user_input > len(close_urls) + 1:
+                    print('Invalid input!')
+                    continue
+                if user_input == 0:
+                    continue
 
-            sel_url = close_urls[user_input - 1]
+                sel_url = close_urls[user_input - 1]
+            else:
+                print('Base URL was valid.')
+                sel_url = invalid_url_base
             print(f'Selected URL = {sel_url}')
 
 

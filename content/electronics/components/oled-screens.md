@@ -29,7 +29,7 @@ OLED's suitable for electronic products typically range in resolution from 96x16
 
 ## Communication/Connection Methods
 
-Most small OLED screens have inbuilt driver IC's such as the Solomon SSD1306, which takes care of the 100+ lines and allows you to connect the OLED module directly up to a microcontroller. [I2C](/electronics/communication-protocols/i2c-communication-protocol/), [SPI](/electronics/communication-protocols/spi-protocol/) or parallel are the most commonly used communication methods. Normally they are provided with a solderable FPC connector (a flexible, flat, connector that can be soldered from both sides).
+Most small OLED screens have inbuilt driver IC's such as the Solomon SSD1306, which takes care of the 100+ lines and allows you to connect the OLED module directly up to a microcontroller. [I2C](/electronics/communication-protocols/i2c-communication-protocol/), [SPI](/electronics/communication-protocols/spi-communication-protocol/) or parallel are the most commonly used communication methods. Normally they are provided with a solderable FPC connector (a flexible, flat, connector that can be soldered from both sides).
 
 The cable to the OLED screen is usually designed to be soldered flat, or bent 180 degrees and soldered underneath the OLED screen itself. The cable sometimes have a pad pitch of 0.65mm, and you can't by connector to fit this (it needs to be directly soldered onto the PCB. The soldering can easily be done by hand.
 
