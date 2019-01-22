@@ -4,6 +4,8 @@ import glob
 import os
 import re
 
+import difflib
+
 pattern = re.compile('\[.*?\]\((.*?)\)')
 
 def main():
@@ -11,12 +13,36 @@ def main():
     files = glob.glob('../content/**/*.md', recursive=True)
     # print(files)
 
+    urls = []
     for i, file_path in enumerate(files):
-        check_file(file_path)
+        urls.append(get_url(file_path))
+        # if i == 10:
+            # break
+
+    print(urls)
+
+    for i, file_path in enumerate(files):
+        check_file(file_path, urls)
         if i == 100:
             break
 
-def check_file(file_path):
+def get_url(file_path):
+    # print(f'get_url() called for {file_path}')
+
+    last_forward_slash = file_path.rfind('/')
+    path = file_path[:last_forward_slash + 1]
+    page = file_path[last_forward_slash + 1:]
+
+    if page == 'index.md' or page == '_index.md':
+        url = path
+    else:
+        extension_idx = file_path.rfind('.')
+        url = file_path[10:extension_idx] + '/'
+    
+    # print(f'url = {url}')
+    return url
+
+def check_file(file_path, urls):
 
     # print(file_path)
 
@@ -33,6 +59,8 @@ def check_file(file_path):
                     
                     if not check_url(url):
                         print(f'File {file_path}. Invalid URL = {url}')
+                        close_urls = difflib.get_close_matches(url, urls)
+                        print(f'Did you mean: {close_urls}')
 
 def check_url(url):
     # print(f'check_url() called with url = {url}.')
