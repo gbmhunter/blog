@@ -25,15 +25,13 @@ class LinkChecker:
             self.valid_urls.append(self.get_valid_url(file_path))
 
         for i, file_path in enumerate(files):
+            # file_path = '../content/electronics/circuit-design/bldc-motor-control/index.md'
             self.check_file(file_path)
-            if i == 10:
+            if i == 100:
                 break
         
         # print(f'invalid_urls = {self.invalid_urls}')
         self.ask_user()
-
-
-
 
     def get_valid_url(self, file_path):
         # print(f'get_url() called for {file_path}')
@@ -59,14 +57,13 @@ class LinkChecker:
         with open(file_path, 'r', encoding='utf-8') as file:
             filedata = file.read()
             match_itr = pattern.finditer(filedata)
-            # print(match)
             for match in match_itr:
                 if match is not None:
                     # print(match.group(0))
                     # print(match.group(1))
                     url = match.group(1)
                     if url.startswith('/'):
-                        print(f'match = {match}')
+                        # print(f'match = {match}')
                         invalid_url_info = {
                             'file_path': file_path,
                             'span': match.span(1),
@@ -80,39 +77,45 @@ class LinkChecker:
 
 
     def check_url(self, url):
-        # print(f'check_url() called with url = {url}.')
+        print(f'check_url() called with url = {url}.')
 
         # Make sure either folder exists with an index.md or _index.md,
         # OR file exists in parent folder
 
         last_forward_slash = url.rfind('/')
-        path = url[:last_forward_slash + 1]
-        page = url[last_forward_slash + 1:]
-        # print(f'path = {path}, page = {page}')
 
         url_valid = False
+
+        # Strip trailing '/' if presemt
+        if url[-1] == '/':
+            url = url[:-1]
 
         # Check if folder exists
         if os.path.isdir('../content' + url):
             # print('Found directory!')
             # Make sure either index.md or _index.md exists in this directory
             if os.path.isfile('../content' + url + '/index.md'):
-                # print('Found index.md')
+                print('Found index.md')
                 return True
             elif os.path.isfile('../content' + url + '/_index.md'):
-                # print('Found _index.md')
+                print('Found _index.md')
                 return True
             else:
-                # print('ERROR: No index file found!')
+                print('No index file found!')
                 return False
 
-        elif os.path.isfile('../content' + url + '.md'):
-            # print('Found file!')
-            # pass
+        if os.path.isfile('../content' + url + '.md'):
+            print('Found file!')
             return True
-        else:
-            # print('ERROR: URL invalid.')
-            return False
+
+        # Couldn't find an valid URL in content/, so now lets check static/
+
+        if os.path.isfile('../static' + url):
+            print('Found URL in static.')
+            return True
+
+        print('No URL found.')
+        return False
 
     def ask_user(self):
 
@@ -121,13 +124,13 @@ class LinkChecker:
             for invalid_url_info in invalid_url_info_list:
                 file_path = invalid_url_info['file_path']
                 span = invalid_url_info['span']
-                print(f'File {file_path}. Span = {span}. Invalid URL = {invalid_url}')
+                print(f'File {file_path}. Span = {span}. Invalid URL = "{invalid_url}"')
 
             close_urls = difflib.get_close_matches(invalid_url, self.valid_urls, n=10)
             print(f'Did you mean:')
             print(f'0. Ignore.')
             for i, close_match in enumerate(close_urls):
-                print(f'{i+1}. {close_match}')
+                print(f'{i+1}. "{close_match}"')
             user_input = input("Selection? ")
             user_input = int(user_input)
             if user_input == 0:
