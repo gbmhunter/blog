@@ -10,11 +10,15 @@ pattern = re.compile('\[.*?\]\((.*?)\)')
 
 def main():
 
+    script_path = os.path.dirname(os.path.realpath(__file__))
+    print(script_path)
+
     files = glob.glob('../content/**/*.md', recursive=True)
     # print(files)
 
     urls = []
     for i, file_path in enumerate(files):
+        file_path = file_path[10:]
         urls.append(get_url(file_path))
         # if i == 10:
             # break
@@ -29,6 +33,7 @@ def main():
 def get_url(file_path):
     # print(f'get_url() called for {file_path}')
 
+    file_path = file_path.replace('\\', '/')
     last_forward_slash = file_path.rfind('/')
     path = file_path[:last_forward_slash + 1]
     page = file_path[last_forward_slash + 1:]
@@ -37,7 +42,7 @@ def get_url(file_path):
         url = path
     else:
         extension_idx = file_path.rfind('.')
-        url = file_path[10:extension_idx] + '/'
+        url = file_path[:extension_idx] + '/'
     
     # print(f'url = {url}')
     return url
@@ -58,9 +63,13 @@ def check_file(file_path, urls):
                 if url.startswith('/'):
                     
                     if not check_url(url):
+                        print('')
                         print(f'File {file_path}. Invalid URL = {url}')
-                        close_urls = difflib.get_close_matches(url, urls)
-                        print(f'Did you mean: {close_urls}')
+                        close_urls = difflib.get_close_matches(url, urls, n=10)
+                        print(f'Did you mean:')
+                        for i, close_match in enumerate(close_urls):
+                            print(f'{i}. {close_match}')
+                        user_input = input("Selection? ")
 
 def check_url(url):
     # print(f'check_url() called with url = {url}.')
