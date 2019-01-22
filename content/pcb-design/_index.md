@@ -145,7 +145,7 @@ Route on the top or bottom layers if possible, especially when prototyping, this
 
 ## EMC Considerations/Noise Supression
 
-This is a big topic, and has it's own page [here](/electronics/circuit-design/noise-supression).
+This is a big topic, and has it's own page [here](/pcb-design/decoupling-and-noise-suppression/).
 
 ## PCB Antennas
 
@@ -168,7 +168,7 @@ Any PCB antenna that isn't for radio transmission or stress relief is probably a
 
 ## Heatsinking
 
-See the [Heatsinking page](/electronics/circuit-design/heatsinks).
+See the [Heatsinking page](/electronics/components/heatsinks/).
 
 ## Mounting
 
@@ -220,4 +220,4 @@ Below is an example of a screwed PCB after too much rework was done on a 0.5mm p
 
 ## PCB Design Checklist
 
-Click [here](/electronics/circuit-design/pcb-design/pcb-design-checklist).
+Click [here](/pcb-design/pcb-design-checklist/).

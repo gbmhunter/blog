@@ -47,4 +47,4 @@ So you've decided on using a PSoC microcontroller, but what from what family? Th
 * The LP family fixed most of the known silicone errors with the original PSoC 5. Designed to eventually replace the PSoC 5.
 * Much lower sleep power usage, and added sleep functionality (the LP stands for "low power")
 * Like the PSoC 5, uses the [ARM Cortex-M3 core](/programming/cpu-architectures/arm-cortex-m3).
-* You can get the PSoC 5LP micro in space saving [0.40mm pitch QFN packages](/electronics/circuit-design/component-packages#qfn).
+* You can get the PSoC 5LP micro in space saving [0.40mm pitch QFN packages](/pcb-design/component-packages/#qfn).

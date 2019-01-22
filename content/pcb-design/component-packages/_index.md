@@ -4,7 +4,6 @@ date: 2011-09-03 02:11:53+00:00
 draft: false
 title: Component Packages
 type: page
-url: /pcb-design/component-packages
 ---
 
 ## Overview
@@ -46,8 +45,6 @@ SiliconFarEast "IC Package Types" ([http://www.siliconfareast.com/ic-package-typ
 The SMT Code Book ([http://www.marsport.org.uk/smd/mainframe.htm](http://www.marsport.org.uk/smd/mainframe.htm)) - Handy database for working out what small SMT components are. Since there is usually not enough space to print the entire part number, most manufacturers print their own kind of code of small SMT components. This makes it really hard to determine what they are. To make matters worse, many manufacturers use the same code for different components, and sometimes the manufacturer releases two components with the same code! The trick is to be able to identify the package and the code, and together you can get a good idea of what the component is. The SMT Code Book lists over 3,500 SMT device codes in alphabetical order.
 
 [Answers.com's Surface-mount Technology page](http://www.answers.com/topic/surface-mount-technology). Broad spectrum of information regarding SMT components, the production methods and package sizes.
-
-{{< figure src="/wp-includes/images/crystal/document.png" width="46px" caption="PDF" >}}
 
 Suggested Pad Layouts For A Number Of Packages (Diodes INC) - Many recommended pad layouts/land patterns for common packages all in one PDF!
 

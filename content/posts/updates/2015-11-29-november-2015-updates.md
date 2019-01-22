@@ -45,7 +45,7 @@ tags:
     {{< figure src="/images/2015/11/varistor-schematic-symbol.png" width="327px" caption="The schematic symbol for a varistor (a.k.a. voltage-dependent resistor, VDR)."  >}}  
 
 * Updates to the [Ferrite Beads page](/electronics/components/ferrite-beads).
-* Updates to the [LEDs page (including the addition of section on pulse extending for LEDs).](/electronics/components/leds)
+* Updates to the [LEDs page (including the addition of section on pulse extending for LEDs).](/electronics/components/diodes/leds)
 
     {{< figure src="/images/2012/03/led-pulse-extending-circuit-schematic-annotated-rc-mosfet.png" width="519px" caption="The schematic for a LED pulse width extending circuit. It converts a short pulse that would not be seen into a longer pulse which is visible."  >}}
 

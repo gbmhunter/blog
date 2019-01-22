@@ -33,7 +33,7 @@ The Due currently has a problem running the OneWire library. The micros() functi
 
 {{< figure src="/images/electronics-arduino/arduino-uno-pcb.jpg" caption="The Arduino UNO, the first ever Arduino PCB."  width="200px" >}}
 
-Being one of the most popular Arduino boards, most shields are designed to be compatible with the Arduino Uno. The original contains a [DIP-packaged](/electronics/circuit-design/component-packages) microcontroller placed in a socket, but there is also a SMD version.
+Being one of the most popular Arduino boards, most shields are designed to be compatible with the Arduino Uno. The original contains a [DIP-packaged](/pcb-design/component-packages/) microcontroller placed in a socket, but there is also a SMD version.
 
 The Specs:
 

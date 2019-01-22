@@ -29,7 +29,7 @@ Updates for December 2014:
     {{< figure src="/images/2015/01/bluetooth-4-0-icon.jpg" width="379px" caption="The Bluetooth icon/logo."  >}}
 
 * New page on [Linkage](/programming/languages/c/linkage) in the C programming language.
-* New [IMU page](/electronics/components/inertial-measurement-units-imus). under Electronics->Components
+* New [IMU page](/electronics/components/sensors/inertial-measurement-units-imus). under Electronics->Components
 
     {{< figure src="/images/2014/12/screenshot-playing-around-with-rthostimugl.png" width="657px" caption="Playing around with RTHostIMUGL and a connected IMU through an Arduino."  >}}
 

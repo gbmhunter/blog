@@ -14,7 +14,7 @@ Heatsinks are used in circuit design to conduct heat away from a component faste
 
 Typical components that require heatsinking are high current [linear regulators](/electronics/components/power-regulators), MOSFET's on [H-bridges](/electronics/circuit-design/h-bridges), power amplifier BJT's and [MOSFET's](/electronics/components/transistors/mosfets/), and power limiting resistors. Most heatsinks are made from black anodized aluminium.
 
-Their heatsinking capability is rated with a thermal resistance, which has the units \( ^{\circ} C / W \). Common packages that heatsinks are made for include [TO-220](/electronics/circuit-design/component-packages#to-220ab), [SOT-223](/electronics/circuit-design/component-packages#sot-23-x).
+Their heatsinking capability is rated with a thermal resistance, which has the units \( ^{\circ} C / W \). Common packages that heatsinks are made for include [TO-220](/pcb-design/component-packages/#to-220ab), [SOT-223](/pcb-design/component-packages/#sot-23-x).
 
 You can get heatsinks with twisted fins, which gives better cooling due to increased air turbulance and convection flow.
 
@@ -30,7 +30,7 @@ The following diagram is a thermal analysis of a SMD MOSFET mounted to a PCB.
 
 ## List Of Component Package Thermal Resistances
 
-See the [Component Packages page](/electronics/circuit-design/component-packages). This has many of the common component packages and their thermal resistances.
+See the [Component Packages page](/pcb-design/component-packages/). This has many of the common component packages and their thermal resistances.
 
 ## Forced Convection
 

@@ -4,14 +4,13 @@ date: 2014-12-11 21:18:35+00:00
 draft: false
 title: Accelerometers
 type: page
-url: /electronics/components/sensors/accelerometers
 ---
 
 ## Overview
 
 Accelerometers are MEMS (micro electro-mechanical devices) that measure their acceleration. They are normally 3-axis devices that return a reading for the x, y and z axis accelerations.
 
-See the [IMU page](/electronics/components/inertial-measurement-units-imus) for monolithic components which include accelerometers with other MEMS sensors.
+See the [IMU page](/electronics/components/sensors/inertial-measurement-units-imus) for monolithic components which include accelerometers with other MEMS sensors.
 
 ## PCB Mounting
 

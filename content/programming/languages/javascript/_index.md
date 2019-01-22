@@ -4,7 +4,6 @@ date: 2011-09-15 07:44:32+00:00
 draft: false
 title: JavaScript
 type: page
-url: /programming/languages/javascript
 ---
 
 ## Overview

@@ -12,4 +12,4 @@ tags:
 ---
 
 * Submitted website to 20 popular search engines through [www.addme.com](http://www.addme.com/). ~~Here's(http://geoweb.hostei.com/index.php?dir\[\]=programming&dir\[\]=website_design&dir\[\]=search_engines&dir\[\]=search_engines.html)~~(link dead) how to do it.
-* Updated the [Electrical Suppliers](/electronics/other/electrical-suppliers) page with [Gracol Composites](https://www.gracolcomposites.co.nz/).
+* Updated the [Electrical Suppliers](/electronics/general/electrical-suppliers/) page with [Gracol Composites](https://www.gracolcomposites.co.nz/).

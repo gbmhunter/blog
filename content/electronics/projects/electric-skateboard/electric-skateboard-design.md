@@ -207,7 +207,7 @@ The next attempt at motor control was done, using a brushed DC motor and a homem
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/img_6628.jpg" caption=" "  width="400px" >}}
 
-Alas, it kept blowing up (see the post [Skateboard H-Bridge Blew Up (for the +10th time](/electronics/electronics-electric-skateboard/skateboard-h-bridge-blew-up-for-the-10th-time)). The MOSFETs were getting very warm, and there was an oscillating signal on the gates of the half-bridge MOSFETs.
+Alas, it kept blowing up (see the post [Skateboard H-Bridge Blew Up (for the +10th time](/posts/updates/2012/06-09-skateboard-h-bridge-blew-up-for-the-10th-time/)). The MOSFETs were getting very warm, and there was an oscillating signal on the gates of the half-bridge MOSFETs.
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/2012-02-18-16-17-26.jpg" caption="The oscillating gate drive to the MOSFETs."  width="500px" >}}
 
@@ -299,7 +299,7 @@ They can be downloaded [here](/images/2011/09/Half-Bridge-Driver-v1.1-Schematics
 
 ## PCB Manufacturing
 
-Once the PCB's were designed, I had them etched by [PCB Cart](http://www.pcbcart.com/) (see the [Electrical Suppliers page](/electronics/other/electrical-suppliers)). The PCB's came back in a colour what I like to call 'spew orange', which was less than ideal, since I wanted orange.
+Once the PCB's were designed, I had them etched by [PCB Cart](http://www.pcbcart.com/) (see the [Electrical Suppliers page](/electronics/general/electrical-suppliers/)). The PCB's came back in a colour what I like to call 'spew orange', which was less than ideal, since I wanted orange.
 
 {{< figure src="/images/electronics-electricskateboard/2012-04-04-15-45-02.jpg" caption="This photo shows the gross orange colour of the electric skateboard PCB's compared to the kind of yellow I was expecting."  width="500px" >}}
 
@@ -307,7 +307,7 @@ I got to the point where PCB Cart would redo them in red if I paid for half the 
 
 {{< figure src="/images/electronics-electricskateboard/2012-04-25-13-28-16.jpg" caption=" "  width="500px" >}}
 
-See the post [Electric Skateboard PCB’s Arrived In The Wrong Colour](/electronics/electronics-electric-skateboard/electric-skateboard-pcbs-arrived-in-the-wrong-colour) for more info. Most of the components were populated by hand, with the help of a infrared rework station for soldering the PSoC 5 chips (in TQFP packages).
+See the post [Electric Skateboard PCB’s Arrived In The Wrong Colour](/posts/updates/2012/04-11-electric-skateboard-pcbs-arrived-in-the-wrong-colour/) for more info. Most of the components were populated by hand, with the help of a infrared rework station for soldering the PSoC 5 chips (in TQFP packages).
 
 {{< figure src="/images/electronics-electricskateboard/2012-04-27-18-48-39.jpg" caption=" "  width="500px" >}}
 

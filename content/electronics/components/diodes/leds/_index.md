@@ -134,7 +134,7 @@ RGB LEDs are LED's which have three diodes inside them, one red, one green, and 
 
 RGB's usually have at least four pins, one each for one side of the red, green, and blue diodes (either all anode or all cathode), and a common which connects all three of the other sides of the diodes. They are more complicated to control than a normal LED, normally requiring 3 different PWM signals, and a bit of firmware to calculate the appropriate duty cycles.
 
-You can get RGD LEDs which already have the control and drive circuitry (e.g. the constant current source) for the LEDs inside them. These are normally connected to a microcontroller via a digital communication bus (e.g. [SPI](electronics/circuit-design/communication-protocols/spi-protocol), or sometimes a custom protocol).
+You can get RGD LEDs which already have the control and drive circuitry (e.g. the constant current source) for the LEDs inside them. These are normally connected to a microcontroller via a digital communication bus (e.g. [SPI](/electronics/communication-protocols/spi-communication-protocol), or sometimes a custom protocol).
 
 One popular example, the WS8211, uses it's own custom communications protocol running at 800kHz.
 

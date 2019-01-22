@@ -4,20 +4,17 @@ date: 2013-11-08 02:04:26+00:00
 draft: false
 title: Load Switches
 type: page
-url: /electronics/circuit-design/power-management/load-switches
 ---
 
 ## MOSFET Based
 
 The following image shows a MOSFET based high-side switch:
 
-
 {{< figure src="/images/2013/11/high-side-mosfet-load-switch-schematic.png" width="678px" caption="A high-side load switch made from a N-Channel and P-Channel MOSFET."  >}}
 
 ## IC Based
 
 The following image shows an IC based high-side switch.
-
 
 {{< figure src="/images/2013/11/high-side-load-switch-with-tps27082lddcr-ic-schematic.png" width="692px" caption="The TPS27082LDDCR, a high-side load switch IC."  >}}
 

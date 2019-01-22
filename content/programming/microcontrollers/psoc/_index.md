@@ -34,5 +34,5 @@ As far as I know, there are three ports for the PSoC family for using freeRTOS, 
 ## Other Resources
 
 * The Cypress website naturally has tons of information about PSoC devices. A really handy feature is that the IDE has one-click links to the datasheets with many of the supplied "components" (blocks of code).
-* Planet PSoC [www.planetpsoc.com](www.planetpsoc.com) is a small website with some information and block designs for PSoC 1 and PSoC 3 devices. **UPDATE Dec 2017: Website no longer accessible.**
+* Planet PSoC [http://www.planetpsoc.com](http://www.planetpsoc.com) is a small website with some information and block designs for PSoC 1 and PSoC 3 devices. **UPDATE Dec 2017: Website no longer accessible.**
 

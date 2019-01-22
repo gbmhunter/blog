@@ -28,11 +28,11 @@ tags:
 
 It's update time! Here is a list of some of most important updates that have happened on this site in the last month or so...
 
-1. New image format for the [Component Package page](/electronics/circuit-design/component-packages) images! For each component package, I have begun to use an individual slideshow for the associated images. This looks way better than the existing way of just posting the associated images one-by-one down the page.
+1. New image format for the [Component Package page](/pcb-design/component-packages/) images! For each component package, I have begun to use an individual slideshow for the associated images. This looks way better than the existing way of just posting the associated images one-by-one down the page.
 
 	{{< figure src="/images/misc/new-image-layout-for-component-packages-screenshot.jpg" caption="A new image layout for images of component packages."  width="500px" >}}
 
-2. There has been new packages added to the [Component Package page](/electronics/circuit-design/component-packages), including [TO-Leadless](/electronics/circuit-design/component-packages#to-leadless), [LGA](/electronics/circuit-design/component-packages#lga), and [SIM cards (including all variants)](/electronics/circuit-design/component-packages#sim-cards).
+2. There has been new packages added to the [Component Package page](/pcb-design/component-packages/), including [TO-Leadless](/pcb-design/component-packages/#to-leadless), [LGA](/pcb-design/component-packages/#lga), and [SIM cards (including all variants)](/pcb-design/component-packages/#sim-cards).
 
 	{{< figure src="/images/misc/to-leadless-package-screenshot.jpg" caption="TO-Leadless is one new package that has been added to the Component Packages page."  width="500px" >}}
 

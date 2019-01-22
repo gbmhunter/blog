@@ -3,7 +3,6 @@ author: gbmhunter
 date: 2011-09-05
 draft: false
 tags: [ "electronics", "engineering", "supplier", "batteries", "hardware", "PCB", "EMS", "components" ]
-title: Electrical Suppliers
 type: page
 ---
 
@@ -575,7 +574,7 @@ Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core.
 
 ## Electronic Manufacturing Service (EMS) Companies
 
-EMS companies specialise in component sourcing, component placing, soldering and general PCB assembly. They don't normally do the PCB design themselves (although some business do both, and others sub-contract this part to another company). A good EMS will support small-pitch components such as 0201's and BGA's (see [Component Packages](/electronics/circuit-design/component-packages)), and have a large number of basic components on hand (such as resistors and capacitors).
+EMS companies specialise in component sourcing, component placing, soldering and general PCB assembly. They don't normally do the PCB design themselves (although some business do both, and others sub-contract this part to another company). A good EMS will support small-pitch components such as 0201's and BGA's (see [Component Packages](/pcb-design/component-packages/)), and have a large number of basic components on hand (such as resistors and capacitors).
 
 ## Precision Electronic Technologies
 

@@ -22,7 +22,7 @@ So progress has been a little slower than usual lately, here are all the updates
 * New page on [electropermanent magnets](/electronics/components/electropermanent-magnets-epms) (cool electronic magnets which retain their magnetic state after powerdown.
 * New force equation on the Capacitors page (related to the force exerted on the plates due to the electric charge)
 * Picture added of card-edge connector gold fingers on the connectors page
-* New component packages added to the popular [Component Package page](/electronics/circuit-design/component-packages).
+* New component packages added to the popular [Component Package page](/pcb-design/component-packages/).
 * New page on [electrical comparators](/electronics/components/comparators).
 		
 I am now using Latex to draw diagrams! I have begun using [QuickLatex](http://quicklatex.com/), [TikZ](http://www.texample.net/tikz/) and [Circuitikz](http://www.ctan.org/pkg/circuitikz). This allows me to draw images like this:

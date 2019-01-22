@@ -4,7 +4,6 @@ date: 2011-09-15 07:24:03+00:00
 draft: false
 title: ATMEL Xmega - General I/O
 type: page
-url: /programming/microcontrollers/atmel/atmel-xmega-family/atmel-xmega-general-io
 ---
 
 ## Controlling A Port

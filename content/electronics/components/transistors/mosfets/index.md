@@ -117,7 +117,7 @@ FinFET's are multi-fin FET's which overcome issues once MOSFET approach very sma
 
 ## Load Switching
 
-MOSFET's can be used for load switches, as shown on the [Load Switches page](/electronics/circuit-design/load-switches). They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
+MOSFET's can be used for load switches, as shown on the [Load Switches page](/electronics/circuit-design/power-management/load-switches/). They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
 
 ## Isolated Gate Drives
 

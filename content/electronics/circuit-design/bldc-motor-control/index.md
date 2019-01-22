@@ -537,12 +537,12 @@ Closed-loop velocity control involves controlling the rpm of the motor to a desi
 **Feedback Can Come From:**
 
 * Hall-effect sensors (o.k.)
-* [Optical encoder](/electronics/components/encoders) (better, especially at slow speeds)
+* [Optical encoder](/electronics/components/encoders/) (better, especially at slow speeds)
 * Back E.M.F (good, but not at slow speeds)
 
 **Control Methods:**
 
-* [PID](/programming/general/pid-control) PWM Control (soft or hard-chopping)
+* [PID](/programming/general/pid-control/) PWM Control (soft or hard-chopping)
 
 ## Closed-Loop Current Feedback
 
@@ -550,12 +550,12 @@ Closed-loop current control will give you a constant output torque. This means t
 
 **Feedback Can Come From:**
 
-* Low-side [current sense resistors](/electronics/components/resistors) and single-sided ADC
-* High-side [current sense resistors](/electronics/components/resistors) and a differential ADC
+* Low-side [current sense resistors](/electronics/components/resistors/) and single-sided ADC
+* High-side [current sense resistors](/electronics/components/resistors/) and a differential ADC
 
 **Control Methods:**
 
-* [PID](/programming/microcontrollers/general/pid-control) PWM Control
+* [PID](/programming/general/pid-control/) PWM Control
 
 ## Sliding Mode Observer
 

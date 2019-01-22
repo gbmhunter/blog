@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-10-01 04:55:03+00:00
+date: 2012-10-01
 draft: false
 title: PID Control
 type: page

@@ -10,7 +10,7 @@ type: page
 
 Infrared devices are used commonly used in electronics for communication, object detection, electrical isolation and illumination. The vague and broad category of 'infrared devices' includes infrared emitting diodes (IED's), phototransistors, and photodiodes. Phototransistors and photodiodes can actually also be used for visible light, but only their infrared use will be discussed here.
 
-Diodes which emit visible light are discussed on the [LEDs page](/electronics/components/leds).
+Diodes which emit visible light are discussed on the [LEDs page](/electronics/components/diodes/leds).
 
 Diodes which don't emit light at all are discussed on the [Diodes page](/electronics/components/diodes).
 

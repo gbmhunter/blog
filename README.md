@@ -43,6 +43,16 @@ $ hugo
     </tbody>
 </table>
 
+# Broken Link Checking
+
+I use the great LinkChecker.
+
+You can install this with `pipenv` using:
+
+```bash
+$ pipenv install --two LinkChecker
+```
+
 # Recommended VS Code Plugins
 
 * Better TOML

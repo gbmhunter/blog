@@ -4,7 +4,6 @@ date: 2016-12-07 08:59:20+00:00
 draft: false
 title: cmake
 type: page
-url: /programming/build-systems-and-package-managers/cmake
 ---
 
 ## Overview

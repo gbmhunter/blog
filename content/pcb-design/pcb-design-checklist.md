@@ -11,7 +11,7 @@ type: "page"
 ### Microcontroller
 
 * uC has supply decoupling (e.g. 100nF caps)
-* [Crystal/oscillator](/electronics/components/crystals) is connected to compatible osc ports (e.g. XTAL0)
+* [Crystal/oscillator](/electronics/components/timing/crystals/) is connected to compatible osc ports (e.g. XTAL0)
 * Core power/decoupling supplied (if applicable)
 * Priority crossbar functions in correct order (applicable to Si micros)
 * Programming pins connected correctly and routed to appropriate header/connector
@@ -23,7 +23,7 @@ type: "page"
 
 ### Communications
 
-* [UART/RS-232](/electronics/circuit-design/uart) RX and TX swap between devices
+* [UART/RS-232](/electronics/communication-protocols/uart-communication-protocol) RX and TX swap between devices
 * USB data lines D+ and D- have 39R series resistors
 * [I2C](/electronics/communication-protocols/i2c-communication-protocol/) have pull-up resistors (unless they are already internal to a device)
 

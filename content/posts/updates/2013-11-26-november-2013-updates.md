@@ -51,9 +51,9 @@ It's been a buuuussssyyyyyy month around here. A list of the updates for this mo
 
 * [rsync](/programming/operating-systems/linux/rsync) and [ddclient](/programming/operating-systems/linux/ddclient) pages in the [Linux page](/programming/operating-systems/linux)
 
-* Info on [LED lens types](/electronics/components/leds#lens-shapes) on the [LED page](/electronics/components/leds)
+* Info on [LED lens types](/electronics/components/diodes/leds#lens-shapes) on the [LED page](/electronics/components/diodes/leds)
 
-	{{< figure src="/images/misc/led-lens-shapes-screenshot.jpg" caption="Info on LED lens shapes has been added to the LED page." >}}[](/electronics/components/leds)
+	{{< figure src="/images/misc/led-lens-shapes-screenshot.jpg" caption="Info on LED lens shapes has been added to the LED page." >}}[](/electronics/components/diodes/leds)
 
 * More info added to the [Windows](/programming/operating-systems/windows) and [Batch file](/programming/languages/batch-files) pages
 
