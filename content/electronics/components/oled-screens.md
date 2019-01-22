@@ -37,7 +37,7 @@ Most OLED screens are pixel-driven, as opposed to character driven such as some 
 
 ## Driver IC's
 
-The Solomon SSDxxxx IC's are a common choice as a driver IC for an OLED screen. They are usually embedded in the the screen itself (this makes sense, otherwise you would have hundreds of wires to connect up to the screen, one for each row and column), and connected to the external world via a communications protocol such as [SPI](/electronics/communication-protocols/spi-protocol/) or [I2C](/electronics/communication-protocols/i2c-communication-protocol/).
+The Solomon SSDxxxx IC's are a common choice as a driver IC for an OLED screen. They are usually embedded in the the screen itself (this makes sense, otherwise you would have hundreds of wires to connect up to the screen, one for each row and column), and connected to the external world via a communications protocol such as [SPI](/electronics/communication-protocols/spi-communication-protocol/) or [I2C](/electronics/communication-protocols/i2c-communication-protocol/).
 
 ## Solomon SSD1305
 

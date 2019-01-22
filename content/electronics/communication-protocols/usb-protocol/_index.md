@@ -148,7 +148,7 @@ And here is what happens after you add a current-limiting IC between VBUS and th
 
 ## Ferrite Beads
 
-The USB spec recommends ferrite beads on `\(V_{bus}\)`. It is common to combine them will bulk decoupling capacitors to make a [Pi filter](/electronics/circuit-design/passive-filters#low-pass-and-t-filters/).
+The USB spec recommends ferrite beads on `\(V_{bus}\)`. It is common to combine them will bulk decoupling capacitors to make a [Pi filter](/electronics/circuit-design/filtering/passive-filters/#low-pass-pi-and-t-filters).
 
 The USB specification prehibits ferrite beads on the D+ and D- signals. 
 

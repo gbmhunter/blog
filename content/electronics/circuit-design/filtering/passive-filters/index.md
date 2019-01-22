@@ -95,9 +95,9 @@ The damping factor is equal to:
 
 <div>$$ d_0 = \frac{R}{2\pi fL} $$</div>
 
-## Low-Pass π And t Filters
+## Low-Pass Pi And t Filters
 
-Low-pass π and t-filters are one step better than the low-pass LC or RC filter.
+Low-pass Pi (π) and t-filters are one step better than the low-pass LC or RC filter.
 
 A 1st-order low-pass π-filter has two capacitors and one inductor. The first capacitor absorbs the most AC by shunting it to ground (assuming the input has a finite source impedance). The inductor then blocks remaining AC, allowing only DC to pass through to the second capacitor. The second capacitor then shunts any remaining AC signal back through ground.
 

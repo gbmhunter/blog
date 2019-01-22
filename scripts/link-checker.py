@@ -7,6 +7,7 @@ import re
 import difflib
 
 pattern = re.compile('\[.*?\]\((.*?)\)')
+anchor_pattern = re.compile('^#+\s+([A-Za-z0-9]+.*)$', re.MULTILINE)
 
 def main():
 
@@ -17,12 +18,16 @@ class LinkChecker:
     def __init__(self):
         self.valid_urls = []
         self.invalid_urls = {}
+        self.valid_anchors = {}
 
     def run(self):
         files = glob.glob('../content/**/*.md', recursive=True)
         for i, file_path in enumerate(files):
-            file_path = file_path[10:]
-            self.valid_urls.append(self.get_valid_url(file_path))
+            file_path = file_path
+            self.valid_urls.append(self.get_valid_url_and_anchors(file_path))
+            # print(self.valid_anchors)
+            # if i == 10:
+                # return
 
         for i, file_path in enumerate(files):
             # file_path = '../content/electronics/circuit-design/bldc-motor-control/index.md'
@@ -33,19 +38,42 @@ class LinkChecker:
         # print(f'invalid_urls = {self.invalid_urls}')
         self.ask_user()
 
-    def get_valid_url(self, file_path):
+    def get_valid_url_and_anchors(self, file_path):
         # print(f'get_url() called for {file_path}')
 
-        file_path = file_path.replace('\\', '/')
-        last_forward_slash = file_path.rfind('/')
-        path = file_path[:last_forward_slash + 1]
-        page = file_path[last_forward_slash + 1:]
+        url = file_path[10:]
+        url = url.replace('\\', '/')
+        last_forward_slash = url.rfind('/')
+        path = url[:last_forward_slash + 1]
+        page = url[last_forward_slash + 1:]
 
         if page == 'index.md' or page == '_index.md':
             url = path
         else:
-            extension_idx = file_path.rfind('.')
-            url = file_path[:extension_idx] + '/'
+            # print(f'Removing extension. url = {url}')
+            extension_idx = url.rfind('.')
+            # print(f'extension_idx = {extension_idx}')
+            url = url[:extension_idx] + '/'
+            # print(f'url = {url}')
+
+        # Get valid anchors
+        # print(f'Looking for anchors for file_path = {file_path}, url = {url}.')
+        with open(file_path, 'r') as file:
+            file_content = file.read()
+
+        # print(file_content)
+
+        match_itr = anchor_pattern.finditer(file_content)
+        for match in match_itr:
+            title = match.group(1)
+            # Convert title into a valid anchor
+            title = title.lower()
+            title = title.replace(' ', '-')
+            if url in self.valid_anchors:
+                self.valid_anchors[url].append(title)
+            else:
+                self.valid_anchors[url] = [ title ]
+        
         
         # print(f'url = {url}')
         return url
@@ -64,11 +92,14 @@ class LinkChecker:
                     url = match.group(1)
                     if url.startswith('/'):
                         # print(f'match = {match}')
-                        invalid_url_info = {
-                            'file_path': file_path,
-                            'span': match.span(1),
-                        }
-                        if not self.check_url(url):
+     
+                        success, error_reason = self.check_url(url)
+                        if not success:
+                            invalid_url_info = {
+                                'file_path': file_path,
+                                'span': match.span(1),
+                                'error_reason': error_reason,
+                            }
                             if url in self.invalid_urls:
                                 self.invalid_urls[url].append(invalid_url_info)
                             else:
@@ -82,6 +113,16 @@ class LinkChecker:
         # Make sure either folder exists with an index.md or _index.md,
         # OR file exists in parent folder
 
+        anchor = None
+        anchor_pos = url.find('#')
+        if anchor_pos >= 0:
+            print('Found anchor.')
+            anchor = url[anchor_pos + 1:]
+            url = url[:anchor_pos]
+
+        print(f'anchor = {anchor}')
+        print(f'url = {url}')
+
         last_forward_slash = url.rfind('/')
 
         url_valid = False
@@ -90,32 +131,42 @@ class LinkChecker:
         if url[-1] == '/':
             url = url[:-1]
 
+        url_with_forward_slash = url + '/'
+
+        url_valid = False
+
         # Check if folder exists
         if os.path.isdir('../content' + url):
             # print('Found directory!')
             # Make sure either index.md or _index.md exists in this directory
             if os.path.isfile('../content' + url + '/index.md'):
                 print('Found index.md')
-                return True
             elif os.path.isfile('../content' + url + '/_index.md'):
                 print('Found _index.md')
-                return True
             else:
                 print('No index file found!')
-                return False
+                return False, 'url_base_invalid'
 
-        if os.path.isfile('../content' + url + '.md'):
+        elif os.path.isfile('../content' + url + '.md'):
             print('Found file!')
-            return True
 
         # Couldn't find an valid URL in content/, so now lets check static/
 
-        if os.path.isfile('../static' + url):
+        elif os.path.isfile('../static' + url):
             print('Found URL in static.')
-            return True
+        else:
+            return False, 'url_base_invalid'
 
-        print('No URL found.')
-        return False
+        if anchor is not None:
+            print(f'Looking for anchor in {self.valid_anchors[url_with_forward_slash]}.')
+            if anchor in self.valid_anchors[url_with_forward_slash]:
+                print('URL and anchor valid')
+                return True,  ''
+            else:
+                print('URL valid but anchor invalid.')
+                return False, 'anchor_invalid'
+        else:
+            return True, ''
 
     def ask_user(self):
 
@@ -126,19 +177,60 @@ class LinkChecker:
                 span = invalid_url_info['span']
                 print(f'File {file_path}. Span = {span}. Invalid URL = "{invalid_url}"')
 
-            close_urls = difflib.get_close_matches(invalid_url, self.valid_urls, n=10)
+            anchor_pos = invalid_url.find('#')
+            if anchor_pos >= 0:
+                invalid_url_base = invalid_url[:anchor_pos]
+                anchor = invalid_url[anchor_pos + 1:]
+            else:
+                invalid_url_base = invalid_url
+                anchor = None
+            print(f'invalid_url_base = {invalid_url_base}')
+            print(f'anchor = {anchor}')
+
+            close_urls = difflib.get_close_matches(invalid_url_base, self.valid_urls, n=20)
             print(f'Did you mean:')
             print(f'0. Ignore.')
             for i, close_match in enumerate(close_urls):
                 print(f'{i+1}. "{close_match}"')
             user_input = input("Selection? ")
             user_input = int(user_input)
+            if user_input < 0 or user_input > len(close_urls) + 1:
+                print('Invalid input!')
+                continue
             if user_input == 0:
                 continue
-            elif user_input >= 1 or user_input <= len(close_urls) + 1:
-                self.replace_url(invalid_url, invalid_url_info, close_urls[user_input - 1])
+
+            sel_url = close_urls[user_input - 1]
+            print(f'Selected URL = {sel_url}')
+
+
+            print('Checking for anchor')
+            if anchor is not None:
+                # print(f'valid_anchors = {self.valid_anchors[valid_url]}')
+                close_anchors = difflib.get_close_matches(anchor, self.valid_anchors[sel_url], n=10)
+                print(f'Invalid anchor "{anchor}". Is it one of these?')
+                print(f'0. Ignore.')
+                for i, close_anchor in enumerate(close_anchors):
+                    print(f'{i+1}. "{close_anchor}')
+                
+                user_input = input("Selection? ")
+                user_input = int(user_input)
+                if user_input < 0 or user_input > len(close_anchors) + 1:
+                    print('Invalid input!')
+                    continue
+                if user_input == 0:
+                    continue
+
+                sel_anchor = close_anchors[user_input - 1]
+                print(f'sel_anchor = {sel_anchor}')
+
+            if anchor is None:
+                full_sel_url = sel_url
             else:
-                print('Invalid input!')
+                full_sel_url = sel_url + '#' + sel_anchor
+
+
+            self.replace_url(invalid_url, invalid_url_info, full_sel_url)
             
     def replace_url(self, invalid_url, invalid_url_info, valid_url):
         print(f'replace_url() called with invalid_url = {invalid_url},' \
