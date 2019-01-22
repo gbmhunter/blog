@@ -32,8 +32,8 @@ class LinkChecker:
         for i, file_path in enumerate(files):
             # file_path = '../content/electronics/circuit-design/bldc-motor-control/index.md'
             self.check_file(file_path)
-            if i == 100:
-                break
+            # if i == 100:
+                # break
         
         # print(f'invalid_urls = {self.invalid_urls}')
         self.ask_user()
@@ -216,18 +216,26 @@ class LinkChecker:
                 close_anchors = difflib.get_close_matches(anchor, self.valid_anchors[sel_url], n=10)
                 print(f'Invalid anchor "{anchor}". Is it one of these?')
                 print(f'0. Ignore.')
+                print(f'1. Remove anchor.')
                 for i, close_anchor in enumerate(close_anchors):
-                    print(f'{i+1}. "{close_anchor}')
+                    print(f'{i+2}. "{close_anchor}')
                 
                 user_input = input("Selection? ")
+                if user_input == '':
+                    print(f'ERROR: Input cannot be empty.')
+                    continue
+
                 try:
                     user_input = int(user_input)
-                    if user_input < 0 or user_input > len(close_anchors) + 1:
+                    if user_input < 0 or user_input > len(close_anchors) + 2:
                         print('Invalid input!')
                         continue
-                    if user_input == 0:
+                    elif user_input == 0:
                         continue
-                    sel_anchor = close_anchors[user_input - 1]
+                    elif user_input == 1:
+                        sel_anchor = ''
+                    else:
+                        sel_anchor = close_anchors[user_input - 1]
                 except ValueError as e:
                     # Treat input as URL
                     sel_anchor = user_input

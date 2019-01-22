@@ -4,7 +4,6 @@ date: 2013-01-03 00:25:59+00:00
 draft: false
 title: Happy New Year And Welcome To 2013
 type: post
-url: /site-admin/happy-new-year-and-welcome-to-2013
 categories:
 - Site Admin
 tags:
@@ -26,8 +25,8 @@ I have added some website statistics to keep the info-devouring, content absorbi
 
 Some site stats:
 
-* Website Age = 8 years, 8 months (since April 2004, when [Kaboom was created](/2004/04))
-* Time since last major site structure/url change (when I moved from [Drupal to Wordpress](/site-admin/wordpress-migration)) = 1 year, 4 months
+* Website Age = 8 years, 8 months (since April 2004, when [Kaboom was created](/posts/updates/2004/04-25-kaboom-website-created/))
+* Time since last major site structure/url change (when I moved from [Drupal to Wordpress](/site-admin/posts/updates/2011/09-02-wordpress-migration/, 4 months
 * Total Number of visits since May 2012 (when stats were reset) = 18,874
 * Percentage increase in visitors in the last year = 2260% (from 202/month in May 2012 to 4,562/month in Dec 2012)
 * Highest Number of Views in 1 Day = 312
@@ -38,7 +37,7 @@ Some site stats:
 
 Website goals for this year:
 
-* Add more [online calculators](/electronics/general/online-calculators) to the Electronics section. If laid out properly, made to look good, and aided with clear diagrams, these are very helpful for many engineering tasks. I find myself using them often!
+* Add more ~~[online calculators](/electronics/general/online-calculators)~~ to the Electronics section. If laid out properly, made to look good, and aided with clear diagrams, these are very helpful for many engineering tasks. I find myself using them often!
 * Increase the amount of reader interaction (i.e. comments) on the site. There are over 200 published pages but only 32 comments.
 * Remove some of the dead links on the site. No one likes the "Page not found" error. I have the awesome [Wordpress plugin Broken Link Checker](http://w-shadow.com/blog/2007/08/05/broken-link-checker-for-wordpress/) which monitors the site continuously for dead links. Currently there are 33 dead links.
 * Increase website exposure. Currently this site gets about 4,500 visits per month. Part of the plan to increase exposure is perform SEO on the websites pages and images.

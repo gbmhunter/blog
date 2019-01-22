@@ -39,7 +39,7 @@ The image below shows what a reverse-mounted LCD screen will look like from the 
 
 A TFT screen is a form of LCD which uses thin-film technology.
 
-In 2013, FTDI released the EVE chip, which is a combined graphics/sound/touch screen processor designed for embedded applications which can be run from an 8-bit microcontroller. It supports QVGA and WQVGA resolution TFT displays with 24-bit true colour support, 256k internal object memory, and up to 2,000 objects. It communicates with the microcontroller via an [I2C](/electronics/communication-protocols/i2c-communication-protocol/) or [SPI](/electronics/communication-protocols/spi-communication-protocol/) interface. It is available in a [QFN-48 package](/pcb-design/component-packages/#qfn).
+In 2013, FTDI released the EVE chip, which is a combined graphics/sound/touch screen processor designed for embedded applications which can be run from an 8-bit microcontroller. It supports QVGA and WQVGA resolution TFT displays with 24-bit true colour support, 256k internal object memory, and up to 2,000 objects. It communicates with the microcontroller via an [I2C](/electronics/communication-protocols/i2c-communication-protocol/) or [SPI](/electronics/communication-protocols/spi-communication-protocol/) interface. It is available in a [QFN-48 package](/pcb-design/component-packages/qfn-component-package/).
 
 More on [EVE on the FTDI website](http://www.ftdichip.com/EVE.htm).
 

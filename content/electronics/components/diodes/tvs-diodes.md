@@ -38,7 +38,7 @@ They can be grouped into IC packages called arrays. A typical schematic symbol f
 <td >\( V \)
 </td>
 
-<td >Also called the reverse breakdown voltage. This is the reverse voltage (cathode-to-anode) at which the diode "begins" to conduct. The point at which the diode begins to conduct is usually specified as a fixed current, typically 1mA. Also see [standoff voltage](/electronics/components/diodes#standoff-voltage).
+<td >Also called the reverse breakdown voltage. This is the reverse voltage (cathode-to-anode) at which the diode "begins" to conduct. The point at which the diode begins to conduct is usually specified as a fixed current, typically 1mA. Also see [standoff voltage](/electronics/components/diodes/tvs-diodes/).
 </td>
 </tr>
 <tr id="rated-power" >

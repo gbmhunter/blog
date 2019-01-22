@@ -4,7 +4,6 @@ date: 2015-04-04 22:21:41+00:00
 draft: false
 title: DO-41 Component Package
 type: page
-url: /pcb-design/component-packages/do-41-component-package
 ---
 
 ## Overview

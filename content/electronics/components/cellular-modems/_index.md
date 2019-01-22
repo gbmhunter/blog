@@ -9,7 +9,7 @@ url: /electronics/components/cellular-modems
 
 ## Overview
 
-Most embedded modems are designed to communicate to a microcontroller over a [UART interface](/electronics/circuit-design/communication-protocols/uart-protocol). Some cellular modems also have embedded GPS decoders.
+Most embedded modems are designed to communicate to a microcontroller over a [UART interface](/electronics/communication-protocols/uart-communication-protocol/). Some cellular modems also have embedded GPS decoders.
 
 ## Terminology
 

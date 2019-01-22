@@ -53,7 +53,7 @@ Some other important properties of diodes are their ability to prevent conductio
 
 {{< figure src="/images/2011/09/schematic-symbol-general-diode.png" width="221px" caption="The schematic symbol for a general diode."  >}}
 
-Diodes come in many [component packages](/pcb-design/component-packages/), one of the most common being the [through-hole DO-41 package](/pcb-design/component-packages/#do-41). They also come in standard SMD packages. It is a good idea to add polarity marks to the silkscreen layer on  diode footprints. The picture below shows polarity marks being added to a diode with a 0603 footprint.
+Diodes come in many [component packages](/pcb-design/component-packages/), one of the most common being the [through-hole DO-41 package](/pcb-design/component-packages/do-41-component-package/). They also come in standard SMD packages. It is a good idea to add polarity marks to the silkscreen layer on  diode footprints. The picture below shows polarity marks being added to a diode with a 0603 footprint.
 
 {{< figure src="/images/2011/09/silkscreen-polarity-marks-on-0603-diode-footprint.png" width="504px" caption="Polarity marks have been added to the silkscreen layer for these 0603 diodes."  >}}
 
