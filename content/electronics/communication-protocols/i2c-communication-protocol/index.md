@@ -171,7 +171,7 @@ Fast mode plus (Fm+) is an extension of I2C Fast mode which allows devices to co
 
 ## High-Speed
 
-The high-speed mode allows for communcation rates of up to 3.4Mbps, which makes it the fastest I2C mode available. It is an **officially supported** mode of operation, however, not many I2C devices support this mode of operation (the competing [SPI communcation protocol](/electronics/communication-protocols/spi-protocol/) seems to be the preferred way of doing things at >1Mbps). One of the key differences between normal I2C communcations and high-speed mode is the **current sourcing** capabilities of the master device. This allows the master to inject current onto the I2C lines to pull-them high faster than what pull-up resistors on their own would allow.
+The high-speed mode allows for communcation rates of up to 3.4Mbps, which makes it the fastest I2C mode available. It is an **officially supported** mode of operation, however, not many I2C devices support this mode of operation (the competing [SPI communcation protocol](/electronics/communication-protocols/spi-communication-protocol/) seems to be the preferred way of doing things at >1Mbps). One of the key differences between normal I2C communcations and high-speed mode is the **current sourcing** capabilities of the master device. This allows the master to inject current onto the I2C lines to pull-them high faster than what pull-up resistors on their own would allow.
 
 Also, the clock signal has a high to low ratio of 1:2, which is different the the ratio of 1:1 for all other modes.
 

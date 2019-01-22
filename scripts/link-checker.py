@@ -188,13 +188,15 @@ class LinkChecker:
             print(f'invalid_url_base = {invalid_url_base}')
             print(f'anchor = {anchor}')
 
-            if invalid_url_info_list[0]['error_reason'] == 'url_base_invalid':
-                close_urls = difflib.get_close_matches(invalid_url_base, self.valid_urls, n=20)
-                print(f'Did you mean:')
-                print(f'0. Ignore.')
-                for i, close_match in enumerate(close_urls):
-                    print(f'{i+1}. "{close_match}"')
-                user_input = input("Selection? ")
+            # if invalid_url_info_list[0]['error_reason'] == 'url_base_invalid':
+            close_urls = difflib.get_close_matches(invalid_url_base, self.valid_urls, n=20)
+            print(f'Did you mean:')
+            print(f'0. Ignore.')
+            for i, close_match in enumerate(close_urls):
+                print(f'{i+1}. "{close_match}"')
+            user_input = input("Selection? ")
+
+            try:
                 user_input = int(user_input)
                 if user_input < 0 or user_input > len(close_urls) + 1:
                     print('Invalid input!')
@@ -203,12 +205,11 @@ class LinkChecker:
                     continue
 
                 sel_url = close_urls[user_input - 1]
-            else:
-                print('Base URL was valid.')
-                sel_url = invalid_url_base
+            except ValueError as e:
+                # Treat user input as string
+                sel_url = user_input
+
             print(f'Selected URL = {sel_url}')
-
-
             print('Checking for anchor')
             if anchor is not None:
                 # print(f'valid_anchors = {self.valid_anchors[valid_url]}')
@@ -219,23 +220,27 @@ class LinkChecker:
                     print(f'{i+1}. "{close_anchor}')
                 
                 user_input = input("Selection? ")
-                user_input = int(user_input)
-                if user_input < 0 or user_input > len(close_anchors) + 1:
-                    print('Invalid input!')
-                    continue
-                if user_input == 0:
-                    continue
+                try:
+                    user_input = int(user_input)
+                    if user_input < 0 or user_input > len(close_anchors) + 1:
+                        print('Invalid input!')
+                        continue
+                    if user_input == 0:
+                        continue
+                    sel_anchor = close_anchors[user_input - 1]
+                except ValueError as e:
+                    # Treat input as URL
+                    sel_anchor = user_input
 
-                sel_anchor = close_anchors[user_input - 1]
                 print(f'sel_anchor = {sel_anchor}')
 
-            if anchor is None:
+            if anchor is None or sel_anchor == '':
                 full_sel_url = sel_url
             else:
                 full_sel_url = sel_url + '#' + sel_anchor
 
-
-            self.replace_url(invalid_url, invalid_url_info, full_sel_url)
+            for invalid_url_info in invalid_url_info_list:
+                self.replace_url(invalid_url, invalid_url_info, full_sel_url)
             
     def replace_url(self, invalid_url, invalid_url_info, valid_url):
         print(f'replace_url() called with invalid_url = {invalid_url},' \

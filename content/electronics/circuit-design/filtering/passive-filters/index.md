@@ -127,6 +127,6 @@ Both π and t filters may use [feedthrough capacitors](/electronics/components/
 
 ## Prepackaged Filters
 
-π and t filters can come in prepackaged components which take all the hassle out of designing the filter correctly and reduce the BOM count of your design. They are commonly in [EIAxxxx chip packages](/pcb-design/component-packages/chip-eia-xxxx-component-packages).
+π and t filters can come in prepackaged components which take all the hassle out of designing the filter correctly and reduce the BOM count of your design. They are commonly in [EIAxxxx chip packages](/pcb-design/component-packages/chip-eia-component-packages/).
 
 One such example is the [TDK Corporation MEM Series](http://www.digikey.com/product-search/en?FV=ffec061a).

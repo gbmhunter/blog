@@ -1006,7 +1006,7 @@ Their advantage over a standard decoupling capacitor to ground is **lower paras
 
 ## Component Package
 
-Many smaller, PCB suitable feedthrough capacitors come in [chip packages](/pcb-design/component-packages/chip-eia-xxxx-component-packages), such as the 0603 or 0402 size. They can be distinguished from normal capacitors by the fact that the package will have three or four terminals rather than the standard two.
+Many smaller, PCB suitable feedthrough capacitors come in [chip packages](/pcb-design/component-packages/chip-eia-component-packages/), such as the 0603 or 0402 size. They can be distinguished from normal capacitors by the fact that the package will have three or four terminals rather than the standard two.
 
 ## Uses
 
