@@ -992,7 +992,7 @@ Ceramic chip capacitors usually have a three letter code which describes the max
 <td>+22, -82
 </td></tr></tbody></table>
 
-## <a name="feedthrough-capacitors"></a> Feedthrough Capacitors
+## Feedthrough Capacitors
 
 Feedthrough (or feedthru) capacitors are special three-terminal capacitors (sometimes with four connections) used for **suppression** of **RF noise**. They are also known under the more general name of an _EMI suppression filter_ or _three-terminal capacitor._
 
