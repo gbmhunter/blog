@@ -257,7 +257,7 @@ class LinkChecker:
         file_path = invalid_url_info['file_path']
         span = invalid_url_info['span']
 
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding='utf-8') as file:
             file_content = file.read()
 
         print(f'replacing {file_content[span[0]:span[1]]} with {valid_url}.')
