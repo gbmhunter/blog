@@ -4,7 +4,6 @@ date: 2015-07-12 09:13:51+00:00
 draft: false
 title: Now Using The Twenty Fifteen Theme
 type: post
-url: /updates/now-using-the-twenty-fifteen-theme
 categories:
 - Updates
 tags:

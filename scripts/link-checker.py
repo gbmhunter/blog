@@ -7,7 +7,9 @@ from collections import defaultdict
 
 import difflib
 
-pattern = re.compile('\[.*?\]\((.*?)\)')
+# The negative lookahead ignores any URL-like sequences that begin with \[ ...,
+# as the backslash escapes the brakcet
+pattern = re.compile('(?<!\\\\)\[.*?\]\((.*?)\)')
 anchor_pattern = re.compile('^#+\s+([A-Za-z0-9]+.*)$', re.MULTILINE)
 
 def main():
@@ -64,8 +66,8 @@ class LinkChecker:
             # print(f'url = {url}')
 
         # Get valid anchors
-        # print(f'Looking for anchors for file_path = {file_path}, url = {url}.')
-        with open(file_path, 'r') as file:
+        print(f'Looking for anchors for file_path = {file_path}, url = {url}.')
+        with open(file_path, 'r', encoding='utf-8') as file:
             file_content = file.read()
 
         # print(file_content)

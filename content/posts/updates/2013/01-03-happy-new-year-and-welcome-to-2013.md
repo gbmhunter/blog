@@ -37,7 +37,7 @@ Some site stats:
 
 Website goals for this year:
 
-* Add more ~~[online calculators](/electronics/general/online-calculators)~~ to the Electronics section. If laid out properly, made to look good, and aided with clear diagrams, these are very helpful for many engineering tasks. I find myself using them often!
+* Add more ~~\[online calculators\](/electronics/general/online-calculators)~~ to the Electronics section. If laid out properly, made to look good, and aided with clear diagrams, these are very helpful for many engineering tasks. I find myself using them often!
 * Increase the amount of reader interaction (i.e. comments) on the site. There are over 200 published pages but only 32 comments.
 * Remove some of the dead links on the site. No one likes the "Page not found" error. I have the awesome [Wordpress plugin Broken Link Checker](http://w-shadow.com/blog/2007/08/05/broken-link-checker-for-wordpress/) which monitors the site continuously for dead links. Currently there are 33 dead links.
 * Increase website exposure. Currently this site gets about 4,500 visits per month. Part of the plan to increase exposure is perform SEO on the websites pages and images.

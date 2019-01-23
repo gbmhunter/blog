@@ -4,7 +4,6 @@ date: 2015-03-15 06:49:57+00:00
 draft: false
 title: Site Running Slowly (Does That Mean It's Walking?)
 type: post
-url: /site-admin/site-running-slowly-does-that-mean-its-walking
 categories:
 - Site Admin
 tags:

@@ -4,7 +4,6 @@ date: 2015-01-01 03:21:41+00:00
 draft: false
 title: Happy New Year, Plans For 2015
 type: post
-url: /site-admin/happy-new-year-plans-2015
 categories:
 - Site Admin
 tags:

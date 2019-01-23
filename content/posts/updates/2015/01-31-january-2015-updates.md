@@ -4,7 +4,6 @@ date: 2015-01-31 02:20:51+00:00
 draft: false
 title: January 2015 Updates
 type: post
-url: /updates/january-2015-updates
 categories:
 - Updates
 ---
@@ -14,10 +13,10 @@ categories:
 * Columbus radio project complete! See more on the [Columbus Radio project page](/electronics/projects/columbus-radio).
 * Updates to the [Time Measurement Systems page](/programming/general/time-measurement-systems).
 * New page on [Vacuum Tubes](/electronics/components/vacuum-tubes) under Electronics->Components.
-* Begun to use Embedly to embed PDF's into pages throughout this site.
+* Begun to use Embedly to embed PDFs into pages throughout this site.
 * Moved info from the PCB Design page to a new child page called [Pads, Vias And Holes](/pcb-design/pads-vias-holes). Added information to this page about direct-connect vs. thermal-relief style pad/via connections.  
   
-{{< figure src="/images/2015/01/pads-with-direct-connect-and-thermal-relief.png" width="440px" caption="The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style."  >}}
+    {{< figure src="/images/2015/01/pads-with-direct-connect-and-thermal-relief.png" width="440px" caption="The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style." >}}
 
 * Installation of the [Easy FancyBox Wordpress plugin](https://wordpress.org/plugins/easy-fancybox/) which should make images throughout the site look much better when clicked upon.
 * New section called [Removing Exposed-Pad Vias That Are Automatically Added By The Footprint Wizard](/electronics/general/altium/altium-tricks-and-standards/#removing-exposed-pad-vias-that-are-automatically-added-by-the-footprint-wizard) added to the Altium Tricks And Standards page.

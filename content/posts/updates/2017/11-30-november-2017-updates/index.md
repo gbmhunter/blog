@@ -58,7 +58,7 @@ tags:
 
 * Fixed many of the broken links (approx. 60) on this blog, via the help of the great Wordpress plugin [Broken Link Checker](https://en-ca.wordpress.org/plugins/broken-link-checker/).  
 
-* Added new ~~[Git Subtrees page](/programming/version-control-systems/git/git-subtrees)~~ under Programming->Version Control Systems->Git.  
+* Added new ~~\[Git Subtrees page\](/programming/version-control-systems/git/git-subtrees)~~ under Programming->Version Control Systems->Git.  
 
 * Created a new repo called [CppTemplate](https://github.com/gbmhunter/CppTemplate) (on GitHub), with the purpose being for it to provide a way to quick start development on a new C++ project.  
 

@@ -4,8 +4,7 @@ date: 2015-07-13 02:04:20+00:00
 draft: false
 title: Conflict With "Child Page List" And "Code Highlighter" Style Plugins
 type: post
-url: /site-admin/conflict-with-child-page-list-and-code-highlighter-style-plugins
-categories:
+ategories:
 - Site Admin
 tags:
 - bug

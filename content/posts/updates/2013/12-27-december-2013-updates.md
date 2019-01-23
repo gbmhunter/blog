@@ -12,7 +12,7 @@ There have been many updates this month!
 
 * More [candy-calc](https://github.com/gbmhunter/candy-calc) and [eng-calc-js](https://github.com/gbmhunter/eng-calcs-js) updates (including a name change, it used to be called Js-EngCalcs).
 
-* New ~~[Miller Effect page](/electronics/circuit-design/miller-effect)~~ (under Electronics->Circuit Design).
+* New ~~\[Miller Effect page\](/electronics/circuit-design/miller-effect)~~ (under Electronics->Circuit Design).
 
 * Info on the Miller Effect and [Isolated Gate Drives](/electronics/components/transistors/mosfets/#isolated-gate-drives) to the [MOSFET page](/electronics/components/transistors/mosfets/).
 

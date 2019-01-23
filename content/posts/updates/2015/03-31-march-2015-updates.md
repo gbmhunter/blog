@@ -4,7 +4,6 @@ date: 2015-03-31 05:02:33+00:00
 draft: false
 title: March 2015 Updates
 type: post
-url: /updates/march-2015-updates
 categories:
 - Updates
 tags:
@@ -30,7 +29,8 @@ tags:
 	{{< figure src="/images/2015/04/apple-logo.png" width="152px" caption="The Apple logo."  >}}
 
 * New [WLCSP package](/pcb-design/component-packages/wlcsp-component-package) added to the Component Package database.
-{{< figure src="/images/2015/03/wlcsp5-component-package-3d-render.jpg" width="236px" caption="A 3D render of the WLCSP5 component package."  >}}
+
+	{{< figure src="/images/2015/03/wlcsp5-component-package-3d-render.jpg" width="236px" caption="A 3D render of the WLCSP5 component package."  >}}
 
 * Added [Civil Footnotes plugin](https://wordpress.org/plugins/civil-footnotes/) for adding footnotes to posts/pages.
 * Moved the info on buck converters from the [Power Regulators page](/electronics/components/power-regulators) onto it's own [Buck Converters page](/electronics/components/power-regulators/buck-converters).

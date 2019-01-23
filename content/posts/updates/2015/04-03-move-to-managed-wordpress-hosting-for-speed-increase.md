@@ -4,7 +4,6 @@ date: 2015-04-03 04:38:23+00:00
 draft: false
 title: Move To Managed Wordpress Hosting For Speed Increase
 type: post
-url: /site-admin/move-to-managed-wordpress-hosting-for-speed-increase
 categories:
 - Site Admin
 tags:

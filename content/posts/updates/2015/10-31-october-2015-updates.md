@@ -4,7 +4,6 @@ date: 2015-10-31 05:26:04+00:00
 draft: false
 title: October 2015 Updates
 type: post
-url: /updates/october-2015-updates
 categories:
 - Updates
 tags:

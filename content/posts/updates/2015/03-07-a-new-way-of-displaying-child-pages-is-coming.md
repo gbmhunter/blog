@@ -4,7 +4,6 @@ date: 2015-03-07 04:15:29+00:00
 draft: false
 title: A new way of displaying child pages is coming...
 type: post
-url: /updates/a-new-way-of-displaying-child-pages-is-coming
 categories:
 - Updates
 tags:

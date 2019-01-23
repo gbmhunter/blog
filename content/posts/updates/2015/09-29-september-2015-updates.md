@@ -4,7 +4,6 @@ date: 2015-09-29 21:07:58+00:00
 draft: false
 title: September 2015 Updates
 type: post
-url: /updates/september-2015-updates
 categories:
 - Updates
 ---
