@@ -37,10 +37,10 @@ The ignore file has to be called .hgignore and be placed in the root folder loca
 
 Glob Syntax (no longer maintained):
 
-* [Altium Designer](/programming/microcontrollers/general/version-control-systems/altium-version-control-with-mercurial)
+* [Altium Designer](/electronics/general/altium/altium-version-control/)
 * [PSoC Creator](/programming/version-control-systems/mercurial/ignore-files/mercurial-ignore-file-code-for-psoc-creator/)
-* [uVision 4](/programming/microcontrollers/general/version-control-systems/uvision-version-control-with-mercurial)
-* [Visual C#](/programming/microcontrollers/general/version-control-systems/visual-studio-version-control-with-mercurial)
+* [uVision 4](/programming/version-control-systems/mercurial/ignore-files/uvision-version-control-with-mercurial/)
+* [Visual C#](/programming/version-control-systems/mercurial/ignore-files/visual-studio-version-control-with-mercurial/)
 
 **Mercurial/Tortoise HG Error Messages**
 

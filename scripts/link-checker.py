@@ -178,8 +178,11 @@ class LinkChecker:
 
     def ask_user(self):
 
+        count = 0
         for invalid_url, invalid_url_info_list in self.invalid_urls.items():
             print('')
+            print(f'Error {count + 1} of {len(self.invalid_urls)}.')
+            count += 1
             print('Locations of invalid URL:')
             for invalid_url_info in invalid_url_info_list:
                 file_path = invalid_url_info['file_path']

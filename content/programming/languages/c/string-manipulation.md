@@ -204,7 +204,7 @@ Memory manipulation functions are also useful for string manipulation. Some of t
 
 ## Decoding/Encoding Strings
 
-`strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](/electronics/circuit-design/communication-protocols/nmea-protocol). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
+`strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](/electronics/communication-protocols/nmea-protocol/). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
 
 `getopt()` is a standard function for finding command-line arguments passed into main() as an array of strings. It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable locally [here](docs/getopt.zip) (taken from GCC gLibC v2.17).
 

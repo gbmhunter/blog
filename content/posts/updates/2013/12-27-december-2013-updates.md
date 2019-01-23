@@ -18,7 +18,7 @@ There have been many updates this month!
 
 * New [Eclipse page](/programming/general/eclipse) under Programming->General Programming.
 
-* New info on [ASCII character codes and text formatting](/programming/languages/bash#formatting-terminal-text) on the [Bash page](/programming/languages/bash).
+* New info on [ASCII character codes and text formatting](/programming/languages/bash/) on the [Bash page](/programming/languages/bash).
 
 * New [MOSFET gate-drive graph](/electronics/components/transistors/mosfets/#dead-time) on the [MOSFETs page](/electronics/components/transistors/mosfets/).  
 

@@ -28,7 +28,7 @@ tags:
 - updates
 ---
 
-* Added [Desmear and Etchback page](/electronics/pcb-design/desmear-and-etchback) under Electronics->PCB Design.  
+* Added [Desmear and Etch/pcb-design/desmear-and-etchback/nd-etchback) under Electronics->PCB Design.  
 
     {{< figure src="/images/2014/11/etchback-after-plating.png" width="219px" caption="A via which has been plated after etchback was done, notice the 'three-point connection'."  >}}
 
@@ -42,11 +42,11 @@ tags:
     {{< figure src="/images/2014/11/ims-pcb-aluminium-side-on-photo.png" width="653px" caption="A side on photo of a IMS PCB with an aluminium base."  >}}
 
 * New [.bss Section page](/programming/languages/c/bss-section) under Programming->Languages->C.
-* Added more info and photos to the [Castellation page.](/electronics/pcb-design/castellation)
+* Added more info and photos to the [Castellation page.](/pcb-design/castellation/)
 * Added more information about [current-sense resistors](/electronics/components/resistors#current-sense-resistors) to the [Resistors page](/electronics/components/resistors).
 * Added more information about analogue and digital temperature sensors to the [Temperature Sensor page](/electronics/components/sensors/temperature-sensors/).
-* Fixed the problem with the asterisks appearing after page headers throughout the website, for more info is the post [Two Bugs Which Need Fixing Soon...](/site-admin/two-bugs-which-need-fixing-soon).
-* Starting using HTML5 canvas objects to draw diagrams. See the [IMS PCBs page](/electronics/pcb-design/ims-insulated-metal-substrate-pcbs#single-sided-single-layer-ims-pcb) for some examples.
+* Fixed the problem with the asterisks appearing after page headers throughout the website, for more info is the post [Two Bugs Which Need Fixing Soon...](/posts/updates/2014/11-05-two-bugs-which-need-fixing-soon/).
+* Starting using HTML5 canvas objects to draw diagrams. See the [IMS PCBs page](/pcb-design/ims-insulated-metal-substrate-pcbs/#single-sided-single-layer-ims-pcb) for some examples.
 * Fixed plugin conflict between Raw HTML Pro and Preserved HTML Editor Markup, which were both trying to do the same thing and somehow causing HTML/Javascript code in posts to get corrupted. I disabled the Preserved HTML Editor Markup plugin and now Raw HTML Pro seems to be working fine (raw HTML/Javascript is preserved when saving, and also when switching between the visual and text editor).
 * Updated [candy-calc](https://github.com/gbmhunter/candy-calc), fixed bug where characters where being deleted from inputs if non-numeric.
 * Removed non-embedded engineering related pages from website.
@@ -57,7 +57,7 @@ tags:
 * Updates to the [AltiumScriptCentral repo](https://github.com/gbmhunter/AltiumScriptCentral), including a new polygon generator!
 * Updates to the [Altium Scripting page](/electronics/general/altium/altium-scripting-and-using-the-api) and the [VBScript page](/programming/languages/vbscript).
 * New RF Design section under Electronics. Added the first pages, [Link Budgets](/electronics/rf-design/link-budgets) and RF Black Magic.
-* New [page on 2D Coordinate Rotation](/mathematics/2d-coordinate-rotation) under Mathematics.  
+* New [page on 2D Coordinate Rotation](/mathematics/geometry/2d-coordinate-rotation/) under Mathematics.  
 
     {{< figure src="/images/2014/12/2d-co-ordinate-rotation-equations.png" width="375px" caption="2D co-ordinate rotation equations."  >}}
 

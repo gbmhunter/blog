@@ -21,7 +21,7 @@ tags:
 
 Updates for December 2014:
 
-* New [Insulated-Gate Bipolar Transistors (IGBTs) page](/electronics/components/insulated-gate-bipolar-transistors-igbts).
+* New [Insulated-Gate Bipolar Transistors (IGBTs) page](/electronics/components/transistors/insulated-gate-bipolar-transistors-igbts/).
 * New [Charge Pumps page](/electronics/components/power-regulators/charge-pumps).
 * New [Bluetooth page](/electronics/components/bluetooth). under Electronics->Circuit Design->Communication Protocols
 
@@ -32,5 +32,5 @@ Updates for December 2014:
 
     {{< figure src="/images/2014/12/screenshot-playing-around-with-rthostimugl.png" width="657px" caption="Playing around with RTHostIMUGL and a connected IMU through an Arduino."  >}}
 
-* Added a new [Magnetometers page](/electronics/components/magnetometers) and a new [Accelerometers page](/electronics/components/accelerometers).
+* Added a new [Magnetometers page](/electronics/components/sensors/magnetometers/) and a new [Accelerometers page](/electronics/components/sensors/accelerometers/).
 

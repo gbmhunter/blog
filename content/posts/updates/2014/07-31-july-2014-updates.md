@@ -54,12 +54,12 @@ Probably one of the biggest months of updates ever!
 * Updates to the Programming->Languages->C->[Enumerations page](/programming/languages/c/enumerations), adding info about how to change the data type of enumerations and enumeration syntax.
 * New page, Programming->Operating Systems->FreeRTOS->[Common Mistakes](/programming/operating-systems/freertos/common-mistakes). Added info about the main() stack getting overriden when vTaskStartScheduler() gets called.
 * PCB Design got promoted to be a sub-menu of Electronics.
-* New component package added, [SOD-123F](/pcb-design/component-packages/#sod-123f), to the [Component Packages page](/pcb-design/component-packages/). {{< figure src="/images/electronics-packages/component-package-sod-123f-3d-model-2.jpg" caption="A 3D model of the SOD-123F component package."   >}}
+* New component package added, [SOD-123F](/pcb-design/component-packages/sod-123f-component-package/), to the [Component Packages page](/pcb-design/component-packages/). {{< figure src="/images/electronics-packages/component-package-sod-123f-3d-model-2.jpg" caption="A 3D model of the SOD-123F component package."   >}}
 * New GitHub repo, [TemplateCodeFiles](https://github.com/gbmhunter/TemplateCodeFiles), which currently contains template code for the C and C++ languages.
 * New GitHub repo, [FreeRtosWrapper-Cpp](https://github.com/gbmhunter/FreeRtosWrapper-Cpp). Contains wrappers to use FreeRTOS in a object-orientated C++ environment, including the ability to make a class function (a method), a task.
 * Corrected some info on the [Using C++ With PSoC Creator page](/programming/microcontrollers/psoc/using-cplusplus-with-psoc-creator), and added more info about thread-safe static initialisation and virtual functions.
 * New section Methodologies under Programming. New page Inversion of Control (IoC) (**as of Dec 2017, URL unavailable**).
-* New page on [PCB Stencils](/electronics/pcb-design/soldermask-stencils) under Electronics->PCB Design. This includes information of the different etching processes as well as terminology such as aperture size and aspect ratio.
+* New page on [PCB Stencils](/pcb-design/soldermask-stencils/) under Electronics->PCB Design. This includes information of the different etching processes as well as terminology such as aperture size and aspect ratio.
 * Updated to the [RingBuff-Cpp](https://github.com/gbmhunter/RingBuff-Cpp) GitHub repo. {{< figure src="/images/misc/github-ringbuff-readme-screenshot.png"    >}}
 * Updates to the [Microcontroller IDE Comparison page](/programming/general/microcontroller-ide-comparison) relating to AVR Studio.
-* New page on [PCB Castellation](/electronics/pcb-design/castellation).
+* New page on [PCB Castellation](/pcb-design/castellation/).

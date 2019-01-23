@@ -16,6 +16,6 @@ type: "post"
 
 * Big updates to the [Algorithm Time Complexity page](/programming/algorithms-and-data-structures/algorithm-time-complexity/).
 
-* Added new page on [Python sets](/programming/languages/python/sets/).
+* Added new page on [Python sets](/programming/languages/python/python-sets/).
 
 * All github.com/mbedded-ninja repos were moved to [github.com/gbmhunter](github.com/gbmhunter) and the mbedded-ninja organization on GitHub was deleted as it was not really serving any useful purpose.

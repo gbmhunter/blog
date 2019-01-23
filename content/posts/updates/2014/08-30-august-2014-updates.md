@@ -12,13 +12,13 @@ Here's the updates for this month! However, the thing that shadows all these poi
 
 * Added Op-Amp banner.
 * Moved the Control Methodology from under Programming->Languages->C to Programming->General, as it now contains information applicable to all programming languages.
-* New page, [Abstraction Layers](/programming/methodologies/abstraction-layers) under Programming->Methodlogies. Added an example of an abstraction layer for a operating system (OSAL), and for microcontroller hardware peripherals such as GPIO and UART.
+* New page, [Abstraction Layers](/programming/design-patterns/abstraction-layers/) under Programming->Methodlogies. Added an example of an abstraction layer for a operating system (OSAL), and for microcontroller hardware peripherals such as GPIO and UART.
 * Updates to repo [RingBuffCpp](https://github.com/gbmhunter/RingBuffCpp).
 * Creation of new GitHub repo [MStringCpp](https://github.com/gbmhunter/MStringCpp).
 * Moved content on OpenCart page to [OpenCart->General](/programming/website-design/opencart/general).
 * Added info to the [OpenCart->General page](/programming/website-design/opencart/general) on how to disable vdmod logging.
 * Updated the [Electrical Supplier page](/electronics/general/electrical-suppliers) with info about Samtec and fixed some of the formatting issues on the page. Fixed some external links on this page.
 * New page, [C++->Operator Overloading](/programming/languages/c-plus-plus/operator-overloading) which explains how to perform operator overloading in C++.
-* New page Electronics->Communication Protocols->[AT Protocol](/electronics/circuit-design/communication-protocols/at-protocol).
+* New page Electronics->Communication Protocols->[AT Protocol](/electronics/communication-protocols/at-protocol/).
 * PSoC USB pins can be used as GPIO, but only when the drive mode is in one of two configurations. Info added to the [pins section of the PSoC Components page](http://cladlab.com/programming/microcontrollers/psoc/components#pins).
 * Moved all GitHub repos from user gbmhunter to new organisation [mbedded-ninja](https://github.com/gbmhunter).
