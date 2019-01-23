@@ -4,7 +4,6 @@ date: 2015-04-07 02:18:22+00:00
 draft: false
 title: TO-Leadless Component Package
 type: page
-url: /pcb-design/component-packages/to-leadless-component-package
 ---
 
 ## Overview

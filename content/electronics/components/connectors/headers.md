@@ -4,7 +4,6 @@ date: 2015-11-30 04:24:27+00:00
 draft: false
 title: Headers
 type: page
-url: /electronics/components/connectors/headers
 ---
 
 ## Overview

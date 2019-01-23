@@ -3,6 +3,7 @@
 import glob
 import os
 import re
+from collections import defaultdict
 
 import difflib
 
@@ -20,6 +21,11 @@ class LinkChecker:
         self.invalid_urls = {}
         self.valid_anchors = {}
 
+        # Because we modify the files and change the length of the text, we have
+        # to keep track of the offset so that every match span after the first one in a file
+        # is still valid!
+        self.file_offsets = defaultdict(int)
+
     def run(self):
         files = glob.glob('../content/**/*.md', recursive=True)
         for i, file_path in enumerate(files):
@@ -31,9 +37,9 @@ class LinkChecker:
             self.valid_urls.append(file_path[9:])
 
         for i, file_path in enumerate(files):
-            # file_path = '../content/electronics/circuit-design/bldc-motor-control/index.md'
+            # file_path = '../content/posts/updates/2015-04-30-april-2015-updates.md'
             self.check_file(file_path)
-            # if i == 100:
+            # if i == 0:
                 # break
         
         # print(f'invalid_urls = {self.invalid_urls}')
@@ -80,18 +86,20 @@ class LinkChecker:
 
     def check_file(self, file_path):
 
-        # print(file_path)
+        print(f'check_file() called with file_path = {file_path}.')
 
         with open(file_path, 'r', encoding='utf-8') as file:
             filedata = file.read()
             match_itr = pattern.finditer(filedata)
             for match in match_itr:
                 if match is not None:
-                    # print(match.group(0))
-                    # print(match.group(1))
+                    print(f'match = {match}')
+                    print(f'group(0) = {match.group(0)}')
+                    print(f'group(1) = {match.group(1)}')
+                    print(f'span(1) = {match.span(1)}')
                     url = match.group(1)
                     if url.startswith('/'):
-                        # print(f'match = {match}')
+                        print(f'URL starts with /')
      
                         success, error_reason = self.check_url(url)
                         if not success:
@@ -188,8 +196,13 @@ class LinkChecker:
             print(f'invalid_url_base = {invalid_url_base}')
             print(f'anchor = {anchor}')
 
+            if anchor is not None:
+                url_to_match = invalid_url_base + anchor
+            else:
+                url_to_match = invalid_url_base
+
             # if invalid_url_info_list[0]['error_reason'] == 'url_base_invalid':
-            close_urls = difflib.get_close_matches(invalid_url_base, self.valid_urls, n=20)
+            close_urls = difflib.get_close_matches(url_to_match, self.valid_urls, n=20)
             print(f'Did you mean:')
             print(f'0. Ignore.')
             for i, close_match in enumerate(close_urls):
@@ -260,10 +273,16 @@ class LinkChecker:
         with open(file_path, 'r', encoding='utf-8') as file:
             file_content = file.read()
 
-        print(f'replacing {file_content[span[0]:span[1]]} with {valid_url}.')
-        file_content = file_content[0:span[0]] + valid_url + file_content[span[1]:]
+        text_start = span[0] + self.file_offsets[file_path]
+        text_end = span[1] + self.file_offsets[file_path]
+        text_to_replace = file_content[text_start:text_end]
+        print(f'replacing {text_to_replace} with {valid_url}.')
+        file_content = file_content[0:text_start] + valid_url + file_content[text_end:]
         with open(file_path, 'w') as file:
             file.write(file_content)
+
+        # Update the file offset with difference in new text and old text
+        self.file_offsets[file_path] += len(valid_url) - len(text_to_replace)
 
 
     def _anchor_sanitizer(self, text) -> str:

@@ -32,13 +32,13 @@ It's update time! Here is a list of some of most important updates that have hap
 
 	{{< figure src="/images/misc/new-image-layout-for-component-packages-screenshot.jpg" caption="A new image layout for images of component packages."  width="500px" >}}
 
-2. There has been new packages added to the [Component Package page](/pcb-design/component-packages/), including [TO-Leadless](/pcb-design/component-packages/#to-leadless), [LGA](/pcb-design/component-packages/#lga), and [SIM cards (including all variants)](/pcb-design/component-packages/#sim-cards).
+2. There has been new packages added to the [Component Package page](/pcb-design/component-packages/), including [TO-Leadless](/pcb-design/component-packages/to-leadless-component-package/), [LGA](/pcb-design/component-packages/lga-component-package/), and [SIM cards (including all variants)](/pcb-design/component-packages/sim-card-sizes/).
 
 	{{< figure src="/images/misc/to-leadless-package-screenshot.jpg" caption="TO-Leadless is one new package that has been added to the Component Packages page."  width="500px" >}}
 
 3. There has been heaps updates to [Altium-Script-Central](https://github.com/gbmhunter/Altium-Script-Central), a GitHub repo which contains useful scripts when designing PCBs in Altium.
 
-4. Updates to the [Connectors page](/electronics/components/connectors), including the new sections [Headers](/electronics/components/connectors#headers) and [Circular Connectors](/electronics/components/connectors#circular-connectors).
+4. Updates to the [Connectors page](/electronics/components/connectors), including the new sections [Headers](/electronics/components/connectors/headers/) and [Circular Connectors](/electronics/components/connectors#circular-connectors).
 
 	{{< figure src="/images/misc/headers-on-connectors-page-screenshot.jpg" caption="The Connectors page has been updated with the new sections 'Headers' and 'Circular Connectors'."  width="500px" >}}
 
@@ -46,7 +46,7 @@ It's update time! Here is a list of some of most important updates that have hap
 
 6. There are new pages under Web Design on [node.js](/programming/website-design/nodejs) (or just called node) and [JSON](/programming/serialization-formats/jason/).
 
-7. There is a new calculator on the [Resistors page](/electronics/components/resistors), called the [Standard Resistance Calculator](/electronics/components/resistors#standard-values). You pass it any resistance, and it will find the closest standard resistance according the series you specify (e.g. E12, E48 series).
+7. There is a new calculator on the [Resistors page](/electronics/components/resistors), called the [Standard Resistance Calculator](/electronics/components/resistors/#the-e-series). You pass it any resistance, and it will find the closest standard resistance according the series you specify (e.g. E12, E48 series).
 
 	{{< figure src="/images/misc/standard-resistance-value-calculator-screenshot.jpg" caption="The new standard resistance calculator."  width="500px" >}}
 

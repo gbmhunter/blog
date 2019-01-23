@@ -17,7 +17,7 @@ tags:
 - update
 ---
 
-Grrrr...I updated the NextGEN gallery plugin, and it wiped all of my code that created a nice border and caption around images that where supplied with the parameter template=caption in the short code (see the post [NextGEN Template Code Gives Images A Caption And Fresh Look](/site-admin/nextgen-template-code-gives-images-a-caption-and-fresh-look) for more info).
+Grrrr...I updated the NextGEN gallery plugin, and it wiped all of my code that created a nice border and caption around images that where supplied with the parameter template=caption in the short code (see the post [NextGEN Template Code Gives Images A Caption And Fresh Look](/posts/updates/2013/05-02-nextgen-template-code-gives-images-a-caption-and-fresh-look/) for more info).
 
 The border made the images look nicer, and the caption was very helpful at explaining what the image is all about!
 

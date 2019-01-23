@@ -24,7 +24,7 @@ tags:
 ---
 
 
-* Updates to the [UART](/electronics/communication-protocols/uart-protocol) and [RS-232](/electronics/communication-protocols/rs-232-protocol) communication protocol pages.  
+* Updates to the [UART](/electronics/communication-protocols/uart-communication-protocol/) and [RS-232](/electronics/communication-protocols/rs-232-protocol) communication protocol pages.  
 
 	{{< figure src="/images/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg" width="200px" >}}
 
@@ -34,7 +34,7 @@ tags:
 
 * Updated the [Fixed Point Mathematics page](/programming/general/fixed-point-mathematics) with more information of multiplication, division and modulo.
 
-* NinjaCalc got a new 'Two Coordinate Geodesics' calculator. This has it's [own post here](/ninjacalc/geodesic-calculator-added-to-ninjacalc).  
+* NinjaCalc got a new 'Two Coordinate Geodesics' calculator. This has it's [own post here](/posts/updates/2018-02-26-geodesic-calculator-added-to-ninjacalc/).  
 
 	{{< figure src="/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png" width="300px" >}}
 

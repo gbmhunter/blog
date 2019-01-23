@@ -28,7 +28,7 @@ tags:
 
 	{{< figure src="/images/2015/01/thread-needle-icon.png"   >}}
 
-* Updates to the [Yocto Project->Recipes page](/programming/embedded-linux/yocto-project/recipes).  
+* Updates to the [Yocto Project->Recipes page](/programming/embedded-linux/yocto-project/yocto-recipes/).  
 
 * New [Qt page](/programming/languages/c-plus-plus/qt-cute) under Programming->Languages->C++.  
 

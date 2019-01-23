@@ -40,7 +40,7 @@ tags:
 * New Tools section under Electronics.
 * New [Flux page](/electronics/tools/flux) under Electronics->Tools.
 * The [Javascript page](/programming/languages/javascript) was moved from under Website Design to under Programming Languages.
-* New [Varistors page](/electronics/components/varistors) under Electronics->Components.  
+* New [Varistors page](/electronics/components/circuit-protection/varistors-vdrs/) under Electronics->Components.  
 
     {{< figure src="/images/2015/11/varistor-schematic-symbol.png" width="327px" caption="The schematic symbol for a varistor (a.k.a. voltage-dependent resistor, VDR)."  >}}  
 

@@ -42,13 +42,13 @@ It's been a buuuussssyyyyyy month around here. A list of the updates for this mo
 
 	{{< figure src="/images/misc/lt3745-calculator-screenshot.jpg" caption="A screenshot of the calculator on the LT3745 Design Guide page."   >}}
 
-* New [1-wire Communications Protocol page](/electronics/circuit-design/communication-protocols/1-wire-protocol)
+* New [1-wire Communications Protocol page](/electronics/communication-protocols/1-wire-protocol/)
 
 * Installed the [SEO Smart Links plugin](http://wordpress.org/plugins/seo-automatic-links/), which links pages to others based on scanned text
 
-* Information added about [digital temperature sensors ](/electronics/components/temperature-sensors#digital-sensors)added to the[ Temperature Sensors page](/electronics/components/temperature-sensors).
+* Information added about [digital temperature sensors ](/electronics/components/sensors/temperature-sensors/digital-temperature-sensors/)added to the[ Temperature Sensors page](/electronics/components/sensors/temperature-sensors/).
 
-* [rsync](/programming/operating-systems/linux/rsync) and [ddclient](/programming/operating-systems/linux/ddclient) pages in the [Linux page](/programming/operating-systems/linux)
+* [rsync](/programming/operating-systems/linux/programs/rsync/) and [ddclient](/programming/operating-systems/linux/programs/ddclient/) pages in the [Linux page](/programming/operating-systems/linux)
 
 * Info on [LED lens types](/electronics/components/diodes/leds#lens-shapes) on the [LED page](/electronics/components/diodes/leds)
 
@@ -56,7 +56,7 @@ It's been a buuuussssyyyyyy month around here. A list of the updates for this mo
 
 * More info added to the [Windows](/programming/operating-systems/windows) and [Batch file](/programming/languages/batch-files) pages
 
-* A new [Impedance Controlled Routing page](/electronics/circuit-design/impedance-controlled-routing)
+* A new [Impedance Controlled Routing page](/pcb-design/impedance-controlled-routing/)
 
 * New info on the [Cellular Modem page](/electronics/components/cellular-modems), and a [Telit HE910 Design Notes page](/electronics/components/cellular-modems/he910-design-notes)
 

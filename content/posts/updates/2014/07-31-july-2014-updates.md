@@ -43,7 +43,7 @@ Probably one of the biggest months of updates ever!
 * New Compilers section under Programming with [GCC page](/programming/compilers/gcc).
 * New page, How To Properly Use FreeRTOS (**as of Dec 2017, URL unavailable**).
 * New pages, [Naming Conventions](/programming/general/naming-conventions), under Programming->General, and [C Naming Conventions](/programming/languages/c/c-naming-conventions), under Programming->Languages->C.
-* Removed disqus ads, see [this post](/site-admin/disqus-ads-removed).
+* Removed disqus ads, see [this post](/posts/updates/2014/07-19-disqus-ads-removed/).
 * New page, Programming->Languages->C->[Standards And Versions](/programming/languages/c/standards-and-versions).
 * Version Control Systems promoted to a sub-menu of Programming.
 * New commands added to the [.](/programming/version-control-systems/mercurial/mercurial-speed-guide)

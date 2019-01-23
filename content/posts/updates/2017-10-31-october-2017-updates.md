@@ -25,7 +25,7 @@ tags:
 ---
 
 
-* New [GCC Bugs page](/programming/compilers-build-systems/gcc/gcc-bugs) under Programming->Compilers->GCC.  
+* New [GCC Bugs page](/programming/compilers/gcc/gcc-bugs/) under Programming->Compilers->GCC.  
 
 	{{< figure src="/images/2014/07/gcc-compiler-logo.png" width="151px" caption="The GCC logo."  >}}
 

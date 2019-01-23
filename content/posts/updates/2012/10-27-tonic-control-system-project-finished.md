@@ -27,7 +27,7 @@ This meant that we were working well into the night (even after it opened to the
 
 More information can be found on the project page at Electronics->Projects->[Luxcity UV Tonic Control System](/electronics/projects/luxcity-uv-tonic-control-system).
 
-The previous post about starting the project can be found [here](/electronics/luxcity-uv-tonic-project-started).
+The previous post about starting the project can be found [here](/posts/updates/2012/10-12-luxcity-uv-tonic-project-started/).
 
 {{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/lcd-screen-tonic-active.jpg" caption="The LCD screen working. This part was a breeze, it was an Arduino capable LCD shield, and there was a pre-written library for the firmware. It literally took less than 5 minutes to get working."  width="600px" >}}
 

@@ -3,7 +3,6 @@ author: gbmhunter
 date: 2015-04-04
 title: LGA Component Package
 type: page
-url: /pcb-design/component-packages/lga-component-package
 ---
 
 ## Overview

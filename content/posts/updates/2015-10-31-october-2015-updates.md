@@ -49,10 +49,10 @@ tags:
 
 * Section on low-pass LC filters added to the "Passive Filters" page.
 * New [RS-485 Protocol page](/electronics/communication-protocols/rs-485-protocol) under Communication Protocols.
-* Updates under the [Addressing section of the I2C Communication Protocol page](/electronics/communication-protocols/i2c-protocol#addressing) on I2C address pins present on slave devices.
+* Updates under the [Addressing section of the I2C Communication Protocol page](/electronics/communication-protocols/i2c-communication-protocol/#addressing) on I2C address pins present on slave devices.
 * Tidied up the [PSoC page](/programming/microcontrollers/psoc).
 * New [Schematic Tips And Tricks page](/pcb-design/schematic-tips-and-tricks) under PCB Design.
-* Added information about the [MTA-100 colour codes to the Connectors page](/electronics/components/connectors#mta-cst-100-connectors).
+* Added information about the [MTA-100 colour codes to the Connectors page](/electronics/components/connectors/wire-to-board-wtb/#mta-cst-100-connectors).
 * Added information about the [SOT-23-8 package to the SOT-23 component package page](/pcb-design/component-packages/sot-23-component-package).
 * New [Tips And Tricks page](/programming/languages/c/tips-and-tricks) under Programming->Languages->C.
 * New [Testpoints page](/pcb-design/testpoints) under [PCB Design](/pcb-design).  

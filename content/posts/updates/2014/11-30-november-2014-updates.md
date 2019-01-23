@@ -44,7 +44,7 @@ tags:
 * New [.bss Section page](/programming/languages/c/bss-section) under Programming->Languages->C.
 * Added more info and photos to the [Castellation page.](/electronics/pcb-design/castellation)
 * Added more information about [current-sense resistors](/electronics/components/resistors#current-sense-resistors) to the [Resistors page](/electronics/components/resistors).
-* Added more information about analogue and digital temperature sensors to the [Temperature Sensor page](/electronics/components/temperature-sensors).
+* Added more information about analogue and digital temperature sensors to the [Temperature Sensor page](/electronics/components/sensors/temperature-sensors/).
 * Fixed the problem with the asterisks appearing after page headers throughout the website, for more info is the post [Two Bugs Which Need Fixing Soon...](/site-admin/two-bugs-which-need-fixing-soon).
 * Starting using HTML5 canvas objects to draw diagrams. See the [IMS PCBs page](/electronics/pcb-design/ims-insulated-metal-substrate-pcbs#single-sided-single-layer-ims-pcb) for some examples.
 * Fixed plugin conflict between Raw HTML Pro and Preserved HTML Editor Markup, which were both trying to do the same thing and somehow causing HTML/Javascript code in posts to get corrupted. I disabled the Preserved HTML Editor Markup plugin and now Raw HTML Pro seems to be working fine (raw HTML/Javascript is preserved when saving, and also when switching between the visual and text editor).

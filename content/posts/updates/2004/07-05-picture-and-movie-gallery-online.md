@@ -12,4 +12,4 @@ tags:
 - video
 ---
 
-[Picture and movie gallery](/pyrotechnics/general/pyrotechnic-videos) online. Adding pictures in the next few days. There's a movie of a stick rocket in the movie gallery.
+[Picture and movie gallery](/pyrotechnics/pyrotechnic-videos/) online. Adding pictures in the next few days. There's a movie of a stick rocket in the movie gallery.
