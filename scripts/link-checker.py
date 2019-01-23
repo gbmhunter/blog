@@ -260,6 +260,7 @@ class LinkChecker:
         with open(file_path, 'r') as file:
             file_content = file.read()
 
+        print(f'replacing {file_content[span[0]:span[1]]} with {valid_url}.')
         file_content = file_content[0:span[0]] + valid_url + file_content[span[1]:]
         with open(file_path, 'w') as file:
             file.write(file_content)

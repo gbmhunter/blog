@@ -44,7 +44,7 @@ It's update time! Here is a list of some of most important updates that have hap
 
 5. The is a new page on [Memory](/electronics/components/memory) under Components.
 
-6. There are new pages under Web Design on [node.js](/programming/website-design/nodejs) (or just called node) and [JSON](/programming/website-design/json).
+6. There are new pages under Web Design on [node.js](/programming/website-design/nodejs) (or just called node) and [JSON](/programming/serialization-formats/jason/).
 
 7. There is a new calculator on the [Resistors page](/electronics/components/resistors), called the [Standard Resistance Calculator](/electronics/components/resistors#standard-values). You pass it any resistance, and it will find the closest standard resistance according the series you specify (e.g. E12, E48 series).
 
