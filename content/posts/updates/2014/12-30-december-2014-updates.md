@@ -4,7 +4,6 @@ date: 2014-12-30 20:16:41+00:00
 draft: false
 title: December 2014 Updates
 type: post
-url: /updates/december-2014-updates
 categories:
 - Updates
 tags:

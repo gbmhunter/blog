@@ -4,7 +4,6 @@ date: 2014-11-05 09:28:59+00:00
 draft: false
 title: Two Bugs Which Need Fixing Soon...
 type: post
-url: /site-admin/two-bugs-which-need-fixing-soon
 categories:
 - Site Admin
 tags:

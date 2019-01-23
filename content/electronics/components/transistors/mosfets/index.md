@@ -160,7 +160,7 @@ Do you want the huge equation that tells you how the threshold voltage changes? 
     \(V_{SB}\) = the source to body (substrate) voltage [Volts]<br>
 </p>
 
-## The Substrate (Body) Connection
+## The Substrate (Body) Connection
 
 You generic MOSFET's actually have four leads (pins). It's just that one of them, the substrate (body) lead, is normally connected internally to the source, and so you only get three external connections.
 

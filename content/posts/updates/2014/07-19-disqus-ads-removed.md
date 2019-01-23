@@ -4,7 +4,6 @@ date: 2014-07-19 01:51:13+00:00
 draft: false
 title: Disqus "Ads" Removed
 type: post
-url: /site-admin/disqus-ads-removed
 categories:
 - Site Admin
 tags:

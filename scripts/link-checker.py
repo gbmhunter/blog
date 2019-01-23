@@ -25,9 +25,10 @@ class LinkChecker:
         for i, file_path in enumerate(files):
             file_path = file_path
             self.valid_urls.append(self.get_valid_url_and_anchors(file_path))
-            # print(self.valid_anchors)
-            # if i == 10:
-                # return
+
+        static_files = glob.glob('../static/**/*.*', recursive=True)
+        for i, file_path in enumerate(static_files):
+            self.valid_urls.append(file_path[9:])
 
         for i, file_path in enumerate(files):
             # file_path = '../content/electronics/circuit-design/bldc-motor-control/index.md'
@@ -67,8 +68,7 @@ class LinkChecker:
         for match in match_itr:
             title = match.group(1)
             # Convert title into a valid anchor
-            title = title.lower()
-            title = title.replace(' ', '-')
+            title = self._anchor_sanitizer(title)
             if url in self.valid_anchors:
                 self.valid_anchors[url].append(title)
             else:
@@ -235,7 +235,7 @@ class LinkChecker:
                     elif user_input == 1:
                         sel_anchor = ''
                     else:
-                        sel_anchor = close_anchors[user_input - 1]
+                        sel_anchor = close_anchors[user_input - 2]
                 except ValueError as e:
                     # Treat input as URL
                     sel_anchor = user_input
@@ -264,7 +264,12 @@ class LinkChecker:
         with open(file_path, 'w') as file:
             file.write(file_content)
 
-            
+
+    def _anchor_sanitizer(self, text) -> str:
+        text = text.lower()
+        # Replace any group which is non-alphanumeric with a single `-`
+        text = re.sub('[^0-9a-z]+', '-', text)
+        return text
         
 
 if __name__ == '__main__':

@@ -3,7 +3,6 @@ author: gbmhunter
 date: 2014-07-08
 title: February-June 2014 Updates
 type: post
-url: /updates/february-june-2014-updates
 tags:
 - latex
 - op-amp

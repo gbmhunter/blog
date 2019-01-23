@@ -4,7 +4,6 @@ date: 2013-06-27 05:26:36+00:00
 draft: false
 title: Image Captions Gone On NextGEN Update
 type: post
-url: /site-admin/image-captions-gone-on-nextgen-update
 categories:
 - Site Admin
 tags:
@@ -22,6 +21,6 @@ Grrrr...I updated the NextGEN gallery plugin, and it wiped all of my code that c
 
 The border made the images look nicer, and the caption was very helpful at explaining what the image is all about!
 
-Hopefully I can replace this code rather easily. I have regular backups which I save in Google Drive, and I wrote down the code changes I made on the page [Wordpress Plugins That This Site Uses](/programming/website-design/wordpress/wordpress-plugins-that-this-site-uses).
+Hopefully I can replace this code rather easily. I have regular backups which I save in Google Drive, and I wrote down the code changes I made on the page [Wordpress Plugins That This Site Uses](/programming/website-design/content-management-systems/wordpress/wordpress-plugins-that-this-site-uses/).
 
 Expect to see the captions back soon!

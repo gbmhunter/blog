@@ -4,7 +4,6 @@ date: 2013-08-01 23:44:10+00:00
 draft: false
 title: Site Wide Disappearance Of Most Images
 type: post
-url: /site-admin/site-wide-disappearance-of-most-images
 categories:
 - Site Admin
 tags:

@@ -4,7 +4,6 @@ date: 2013-12-27 22:18:00+00:00
 draft: false
 title: December 2013 Updates
 type: post
-url: /uncategorized/december-2013-updates
 ---
 
 There have been many updates this month!

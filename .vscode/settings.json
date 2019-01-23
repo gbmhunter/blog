@@ -5,6 +5,7 @@
         "BLAC",
         "Karnaugh",
         "adcs",
+        "bjts",
         "bldc",
         "brushless",
         "cmos",
@@ -13,6 +14,8 @@
         "drupal",
         "eiaj",
         "fets",
+        "fpgas",
+        "igbt",
         "kinect",
         "mesfets",
         "mfcs",
@@ -20,13 +23,16 @@
         "mosfet",
         "mosfets",
         "nema",
+        "oled",
         "pcbs",
         "posix",
         "psus",
+        "rfid",
         "uart",
         "vdac",
         "vias",
-        "wordpress"
+        "wordpress",
+        "xilinx"
     ],
     "cSpell.language": "en-GB"
 }

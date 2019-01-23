@@ -4,7 +4,6 @@ date: 2013-05-02 08:33:55+00:00
 draft: false
 title: NextGEN Template Code Gives Images A Caption And Fresh Look
 type: post
-url: /site-admin/nextgen-template-code-gives-images-a-caption-and-fresh-look
 categories:
 - Site Admin
 tags:

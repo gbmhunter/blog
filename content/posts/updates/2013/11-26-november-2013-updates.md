@@ -4,7 +4,6 @@ date: 2013-11-26 07:12:28+00:00
 draft: false
 title: November 2013 Updates!
 type: post
-url: /updates/november-2013-updates
 categories:
 - Updates
 tags:
@@ -35,7 +34,7 @@ tags:
 
 It's been a buuuussssyyyyyy month around here. A list of the updates for this month:
 
-* [candy-calc firmware project](https://github.com/gbmhunter/candy-calc) started on GitHub. I am hoping to eventually convert [all calculators on this site](/electronics/general/online-calculators) to use this framework.  
+* [candy-calc firmware project](https://github.com/gbmhunter/candy-calc) started on GitHub. I am hoping to eventually convert ~~[all calculators on this site](/electronics/general/online-calculators)~~ to use this framework.  
 
 	{{< figure src="/images/misc/candy-calc-readme-screenshot.jpg" caption="A screenshot of the candy-calc repo on GitHub."   >}}
 
