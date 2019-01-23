@@ -20,10 +20,10 @@ categories:
 {{< figure src="/images/2015/01/pads-with-direct-connect-and-thermal-relief.png" width="440px" caption="The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style."  >}}
 
 * Installation of the [Easy FancyBox Wordpress plugin](https://wordpress.org/plugins/easy-fancybox/) which should make images throughout the site look much better when clicked upon.
-* New section called [Removing Exposed-Pad Vias That Are Automatically Added By The Footprint Wizard](/electronics/general/altium/altium-tricks-and-standards#removing-exposed-pad-vias-automatically-added-by-the-footprint-wizard) added to the Altium Tricks And Standards page.
+* New section called [Removing Exposed-Pad Vias That Are Automatically Added By The Footprint Wizard](/electronics/general/altium/altium-tricks-and-standards/#removing-exposed-pad-vias-that-are-automatically-added-by-the-footprint-wizard) added to the Altium Tricks And Standards page.
 * Information added to the Time Measurement Systems page about [Leap Smears](/programming/general/time-measurement-systems#leap-smears).
 * Additions to the Power Management page about [UVLO (under-voltage lockout).](/electronics/circuit-design/power-management#uvlo-under-voltage-lockout)
-* Added info about [Low-capacitance TVD diodes](/electronics/components/diodes#low-capacitance) to the Diodes page.
+* Added info about [Low-capacitance TVD diodes](/electronics/components/diodes/tvs-diodes/#low-capacitance) to the Diodes page.
 * New page, [Arithmetic Operators, under Programming->Languages->C.](/programming/languages/c/arithmetic-operators)
 * Added information about the [atomicity of the C language's increment and decrement operators](/programming/languages/c/arithmetic-operators#atomicity).
 * Added new page, [Pumps](/mechanical/pumps), under Mechanical.

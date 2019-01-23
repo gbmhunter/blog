@@ -218,7 +218,7 @@ class LinkChecker:
                 print(f'0. Ignore.')
                 print(f'1. Remove anchor.')
                 for i, close_anchor in enumerate(close_anchors):
-                    print(f'{i+2}. "{close_anchor}')
+                    print(f'{i+2}. "{close_anchor}"')
                 
                 user_input = input("Selection? ")
                 if user_input == '':
@@ -267,6 +267,9 @@ class LinkChecker:
 
     def _anchor_sanitizer(self, text) -> str:
         text = text.lower()
+        text = text.strip()
+        while not text[-1].isalnum():
+            text = text[:-1]
         # Replace any group which is non-alphanumeric with a single `-`
         text = re.sub('[^0-9a-z]+', '-', text)
         return text
