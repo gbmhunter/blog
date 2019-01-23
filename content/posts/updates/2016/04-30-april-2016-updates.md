@@ -4,7 +4,6 @@ date: 2016-04-30 06:56:21+00:00
 draft: false
 title: April 2016 Updates
 type: post
-url: /updates/april-2016-updates
 categories:
 - Updates
 tags:

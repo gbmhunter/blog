@@ -4,7 +4,6 @@ date: 2018-02-28 05:33:19+00:00
 draft: false
 title: February 2018 Updates
 type: post
-url: /updates/february-2018-updates
 categories:
 - Updates
 tags:

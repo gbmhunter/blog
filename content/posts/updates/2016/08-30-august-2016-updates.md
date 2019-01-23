@@ -4,7 +4,6 @@ date: 2016-08-30 12:03:53+00:00
 draft: false
 title: August 2016 Updates
 type: post
-url: /updates/august-2016-updates
 categories:
 - Updates
 tags:

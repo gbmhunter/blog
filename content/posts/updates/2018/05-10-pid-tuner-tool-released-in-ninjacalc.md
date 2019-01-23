@@ -4,7 +4,6 @@ date: 2018-05-10 21:53:38+00:00
 draft: false
 title: PID Tuner Tool Released In NinjaCalc
 type: post
-url: /ninjacalc/pid-tuner-tool-released-in-ninjacalc
 categories:
 - NinjaCalc
 tags:

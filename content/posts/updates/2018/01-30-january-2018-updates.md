@@ -4,7 +4,6 @@ date: 2018-01-30 19:14:42+00:00
 draft: false
 title: January 2018 Updates
 type: post
-url: /updates/january-2018-updates
 categories:
 - Updates
 tags:

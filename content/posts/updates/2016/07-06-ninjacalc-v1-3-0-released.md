@@ -4,7 +4,6 @@ date: 2016-07-06 10:35:24+00:00
 draft: false
 title: NinjaCalc v1.3.0 Released
 type: post
-url: /ninjacalc/ninjacalc-v1-3-0-released
 categories:
 - NinjaCalc
 tags:

@@ -4,7 +4,6 @@ date: 2017-10-31 01:14:41+00:00
 draft: false
 title: October 2017 Updates
 type: post
-url: /updates/october-2017-updates
 categories:
 - Updates
 tags:
