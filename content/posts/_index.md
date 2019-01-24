@@ -1,5 +1,4 @@
 ---
+date: 2004-01-01
 title: Posts
-date: 2017-03-23
-publishdate: 2017-03-24
 ---
