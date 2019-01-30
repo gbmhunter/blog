@@ -2,6 +2,8 @@
 author: gbmhunter
 date: 2017-06-11
 draft: false
+lastmod: 2019-01-29
+tags: [ "sorting", "algorithms", "Big-O", "complexity", "merge sort", "integer sort", "comparison sort", "counting sort", "insertion sort" ]
 title: Sorting Algorithms
 type: page
 ---
@@ -12,25 +14,20 @@ Once you have a basic understanding of sorting algorithms, make sure to check ou
 
 **Comparison Sorts**
 
-Comparison sorts are limited by a lower bound of `\(O(n\log{}n)\)`.
+Comparison sorts are limited by a lower bound of `\( \mathcal{O}(n\log{n}) \)`.
 
 **Integer Sorts**
 
 Data is indexed by an integer key. Integer sorts are usually faster than comparison sorts.
 
-**Performance**
-
-`\( O(n) \)` is called linear time  
-
-`\( O(n^2) \)` is called quadratic time
 
 ## Counting Sort
 
 * Type: Integer  
 * Style: Out-of-place  
-* Worst-case Performance: `\( O(n + k) \)`
-* Average-case Performance: `\( O(n + k) \)`
-* Best-case Performance: `\( O(n + k) \)`
+* Worst-case Performance: `\( \mathcal{O}(n + k) \)`
+* Average-case Performance: `\( \mathcal{O}(n + k) \)`
+* Best-case Performance: `\( \mathcal{O}(n + k) \)`
 * Stability: Stable
 
 where `\( n \)` is the number of element in the array and `\( k \)` is a number such that all keys are in the range `\( 0..k-1 \)`.
@@ -43,9 +40,9 @@ where `\( n \)` is the number of element in the array and `\( k \)` is a number 
 
 * Type: Comparison  
 * Style: In place  
-* Worst-case Performance: `\(O(n^2)\)` comparisons, `\(O(n^2)\)` swaps  
-* Average-case Performance: `\(O(n^2)\)` comparisons, `\(O(n^2)\)` swaps  
-* Best-case Performance: `\( O(n) \)` comparisons, no swaps  
+* Worst-case Performance: `\(\mathcal{O}(n^2)\)` comparisons, `\(\mathcal{O}(n^2)\)` swaps  
+* Average-case Performance: `\(\mathcal{O}(n^2)\)` comparisons, `\(\mathcal{O}(n^2)\)` swaps  
+* Best-case Performance: `\( \mathcal{O}(n) \)` comparisons, no swaps  
 * Stability: Stable
 
 Insertion sort builds the final sorted array one element at a time. It takes the first element from the right-hand side unsorted array, and compares it with each element in the sorted array (starting from the right-most element). If the new element is less than the compared element, it performs a swap.

@@ -33,24 +33,15 @@ Note: Replace `<AltiumProjectRoot>` with the name of the folder all your Altium 
 # use glob syntax  
 syntax: glob
 
-
-
-
 #********************  
 # ALTIUM IGNORE FILES  
 #********************
-
-
-
 
 ## Backup Files  
 <AltiumProjectRoot>/*.SchDoc.Zip                # Backup of schematics  
 <AltiumProjectRoot>/**/*.SchDoc.Zip  
 <AltiumProjectRoot>/*.PrjPcb.Zip                # Backup of pcb fle  
 <AltiumProjectRoot>/**/*.PrjPcb.Zip
-
-
-
 
 ## Preview Files  
 <AltiumProjectRoot>/*.SchDocPreview  
@@ -74,9 +65,6 @@ syntax: glob
 <AltiumProjectRoot>/*.CSVPreview  
 <AltiumProjectRoot>/**/*.CSVPreview
 
-
-
-
 ## Reporting Files  
 <AltiumProjectRoot>/*.LOG  
 <AltiumProjectRoot>/**/*.LOG  
@@ -84,9 +72,6 @@ syntax: glob
 <AltiumProjectRoot>/**/*.drc  
 <AltiumProjectRoot>/*.html                      # Report thats generated when a file is opened, or command executed  
 <AltiumProjectRoot>/**/*.html
-
-
-
 
 ## Other Files  
 <AltiumProjectRoot>/*.orig  
@@ -99,9 +84,6 @@ syntax: glob
 <AltiumProjectRoot>/**/*.PrjPcbStructure  
 <AltiumProjectRoot>/*.REPPreview                # Gerber preview file  
 <AltiumProjectRoot>/**/*.REPPreview
-
-
-
 
 ## Directories  
 <AltiumProjectRoot>/History/  
