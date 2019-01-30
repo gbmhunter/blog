@@ -30,11 +30,9 @@ The CSV format is well supported, with CSV libraries available for almost every 
 ### Example
 
 ```csv
-id, temp
-0, 23
-1, 27
-2, 19
-3, 18
+name, age, address
+Charmander, 21, Fire St
+Charmander, 22, Electric St
 ```
 
 ### Review
@@ -69,11 +67,18 @@ JSON is a ubiquitous human-readable data serialization format that is supported 
 ### Example
 
 ```json
-{
-    "id": 0,
-    "temp": 27,
-    "name": "Lounge"
-}
+[
+    {
+        "name": "Charmander",
+        "age": 21,
+        "address": "Fire Street"
+    },
+    {
+        "name": "Picachu",
+        "age": 22,
+        "address": "Electric Street"
+    },
+]
 ```
 
 ### Review
@@ -93,11 +98,28 @@ Protobuf is a binary serialization protocol developed by Google. It is not human
 
 XML is a human-readable serialization protocol. XMl can be considered quite verbose as it requires descriptive end tags. A well known XML-like format is HTML which is used to determine the structure of web pages.
 
+### Example
+
+```xml
+<person>
+    <name>Charmander</name>
+    <age>21</age>
+    <address>Fire St</address>
+</person>
+<person>
+    <name>Pikachu</name>
+    <age>22</age>
+    <address>Electric Street</address>
+</person>
+```
+
+### Review
+
 Property         | Value
 -----------------|---------
 Human Readability| 5/10
 Language Support | 9/10
-Speed            | ?
+Speed            | 9/10
 Standardization  | /10
 Website          | <>
 
