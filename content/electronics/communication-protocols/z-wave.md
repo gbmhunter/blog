@@ -4,7 +4,6 @@ date: 2016-04-21 21:42:07+00:00
 draft: false
 title: Z-Wave
 type: page
-url: /electronics/communication-protocols/z-wave
 ---
 
 ## Overview

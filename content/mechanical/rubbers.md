@@ -4,7 +4,6 @@ date: 2012-03-18 21:48:21+00:00
 draft: false
 title: Rubbers
 type: page
-url: /mechanical/rubbers
 ---
 
 ## Overview
@@ -12,7 +11,6 @@ url: /mechanical/rubbers
 The hardness of most rubbers is specified using the Shore A scale (while the Shore D scale is used for harder materials). There are formulas ([Wikipedia's version](http://en.wikipedia.org/wiki/Shore_durometer), [3D Vision's  version](http://www.3dvision.com/wordpress/index.php/2011/07/14/convert-durometer-to-youngs-modulus/)) which gives an equation to convert Shore A hardness values into a Youngs Modulus, useful when you want to calculate the force required to compress the rubber by a certain amount. Each version of the equation gives different results, so treat the values with caution.
 
 ## Nitrile Rubber
-
 
 Nitrile is has a better resistance to fuel than Neoprene. It is also slightly more expensive (see the Price Guide). Unique property is that you can get it in white
 

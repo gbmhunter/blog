@@ -4,7 +4,6 @@ date: 2017-10-30 18:02:32+00:00
 draft: false
 title: Perlin Noise
 type: page
-url: /mathematics/perlin-noise
 ---
 
 ## Overview

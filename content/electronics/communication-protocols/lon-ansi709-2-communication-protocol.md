@@ -2,7 +2,7 @@
 author: "gbmhunter"
 date: 2015-02-13
 draft: false
-tags: [ "LON", "communication protocol", "Echelon", "LonTalk", wiring topology", "routers" ]
+tags: [ "LON", "communication protocol", "Echelon", "LonTalk", wiring topology", "routers", "ANSI709.2" ]
 title: "LON (ANSI709.2) Communication Protocol"
 type: "page"
 ---
@@ -45,7 +45,7 @@ A "LonMark" is given to products which met the LonMark guidelines that allow it 
 
 LonWorks 2.0 is the name given to the "next-generation" devices, aimed at increasing the capability of the LON network while decreasing node cost.
 
-The LON devices can use an affiliate internet protocol tunneling standard (ISO/IEC 14908-4) to connect devices on LON networks to remote internet aware devices.
+The LON devices can use an affiliate internet protocol tunnelling standard (ISO/IEC 14908-4) to connect devices on LON networks to remote internet aware devices.
 
 ## Protocol
 
@@ -78,7 +78,11 @@ The transceivers usually run of a 5.0V power supply.
 
 ## Transmission Medium
 
-Many transmission mediums are supported by LON. These include:  * Twisted-pair cabling  * Powerlines  * Fiber optics
+Many transmission mediums are supported by LON. These include:
+
+* Twisted-pair cabling
+* Powerlines
+* Fibre optics
 
 This diversity is enabled by transceiver IC which goes between the transmission line and the Neuron microprocessor. There is a dedicated transceiver for every transmission medium.
 
@@ -93,8 +97,9 @@ A "segment" is a single piece of wire. Up to 64 nodes can be connected to a sing
 ## Wiring Topology
 
 There are two different wiring topologies for the FTT-10 transceiver:   
-Free Topology  
-Doubly Terminated
+
+* Free Topology  
+* Doubly Terminated
 
 Free topology uses a single termination module installed anywhere on the segment, and allows up to 500m of cable on one segment.
 
@@ -102,7 +107,7 @@ Doubly terminated uses a termination module at each end of a segment, and does n
 
 ## Net Names
 
-NETA and NETB are commonly used net names for the twisted-pair differential LON signals.
+`NETA` and `NETB` are commonly used net names for the twisted-pair differential LON signals.
 
 ## Repeaters
 
@@ -114,7 +119,12 @@ Routers are used to manage network traffic, extend the length of a channel (simi
 
 The ability of a router to partition traffic and selectively let messages through reduces the total amount of traffic on a LON system.
 
-There a four different routing algorithm types to choose from:  * Repeater  * Bridge  * Configured router  * Learning router
+There a four different routing algorithm types to choose from:
+
+* Repeater
+* Bridge
+* Configured router
+* Learning router
 
 ## Transformers
 
@@ -178,10 +188,11 @@ The FT5000 requires at least 2kB of external serial EEPROM for storing it's conf
 
 {{< figure src="/images/2015/02/ft5000-allowed-external-memory-configurations.png" width="270px" caption="The permitted external memory configurations for the FT5000 processor."  >}}
 
-Because the way of writing SPI flash memory can very slightly between manufacturers (reads are all the same), a small function resides in the EEPROM that instructs the FT5000 how to correctly write to the device. Echelon provides three memory IC's which have been "qualified" to work with the FT5000. These are:  * Atmel® AT25F512B 512-Kilobit 2.7-volt  
-Minimum SPI Serial Flash Memory.  * Numonyx™ M25P05-A 512-Kbit, serial  
-flash memory, 50MHz SPI bus interface.  * Silicon Storage Technology  
-SST25VF512A 512 Kbit SPI Serial Flash.
+Because the way of writing SPI flash memory can very slightly between manufacturers (reads are all the same), a small function resides in the EEPROM that instructs the FT5000 how to correctly write to the device. Echelon provides three memory ICs which have been "qualified" to work with the FT5000. These are:
+
+* Atmel AT25F512B 512-Kilobit 2.7-volt Minimum SPI Serial Flash Memory.
+* Numonyx M25P05-A 512-Kbit, serial flash memory, 50MHz SPI bus interface.
+* Silicon Storage Technology SST25VF512A 512 kBit SPI Serial Flash.
 
 The onboard microprocessors can run up to a speed of 80MHz.
 

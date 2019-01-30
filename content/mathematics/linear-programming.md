@@ -4,7 +4,6 @@ date: 2017-06-05 23:07:19+00:00
 draft: false
 title: Linear Programming
 type: page
-url: /mathematics/linear-programming
 ---
 
 ## Overview

@@ -1,7 +1,8 @@
 ---
 author: gbmhunter
-date: 2017-04-17 20:31:49+00:00
+date: 2017-04-17
 draft: false
+tags: [ "Linux", "Zynq", "Xilinx", "ZC702", "evaluation kit", "Yocto", "meta-xilinx", "VMware", "bit-bake", "poky", "SD card" ]
 title: Building Linux For The Zynq ZC702 Eval Kit Using Yocto
 type: page
 ---
@@ -12,7 +13,7 @@ Xilinx provides device and board information for the Zynq SoC for Yocto through 
 
 This tutorial has been tested on Ubuntu 16.04 64bit, running inside a VMware virtual machine on a Windows host. Exact procedure and commands might have to be changed slightly for other configurations.
 
-More information on building and booting Linux on the Zyqn ZC702 using Yocto can be found at the Xilinx pages [https://github.com/Xilinx/meta-xilinx/blob/master/meta-xilinx-bsp/README.building.md](https://github.com/Xilinx/meta-xilinx/blob/master/meta-xilinx-bsp/README.building.md) and [https://github.com/Xilinx/meta-xilinx/blob/master/meta-xilinx-bsp/README.booting.md](https://github.com/Xilinx/meta-xilinx/blob/master/meta-xilinx-bsp/README.booting.md).
+More information on building and booting Linux on the Zynq ZC702 using Yocto can be found at the Xilinx pages [https://github.com/Xilinx/meta-xilinx/blob/master/meta-xilinx-bsp/README.building.md](https://github.com/Xilinx/meta-xilinx/blob/master/meta-xilinx-bsp/README.building.md) and [https://github.com/Xilinx/meta-xilinx/blob/master/meta-xilinx-bsp/README.booting.md](https://github.com/Xilinx/meta-xilinx/blob/master/meta-xilinx-bsp/README.booting.md).
 
 ## Download/Setup Yocto
 
@@ -24,7 +25,7 @@ Firstly, install all the dependencies needed by Yocto:
 ~$ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python python3 python-pip libsdl1.2-dev xterm
 ```
 
-Then we need to get a Yocto release. We will use the pocky release for this tutorial:
+Then we need to get a Yocto release. We will use the `poky` release for this tutorial:
 
 ```sh    
 ~$ git clone git://git.yoctoproject.org/poky
@@ -36,7 +37,7 @@ Now enter the poky directory:
 ~$ cd poky/
 ```
 
-Switch to the morty branch:
+Switch to the `morty` branch:
 
 ```sh    
 ~/poky$ git checkout morty
@@ -52,7 +53,7 @@ To start this step, we need to clone the meta-xilinx repository into the Yocto s
 ~/poky$ git clone https://github.com/Xilinx/meta-xilinx.git
 ```
 
-This should clone the repo into ~/poky/meta-xilinx/.
+This should clone the repo into `~/poky/meta-xilinx/`.
 
 We then need to make sure the branch of meta-xilinx is the same as the branch of poky.
 
@@ -61,20 +62,20 @@ We then need to make sure the branch of meta-xilinx is the same as the branch of
 ~/poky/meta-xilinx$ git checkout morty
 ```
 
-Then go back to the poky directory, and initialise the build environment:
+Then go back to the `poky` directory, and initialise the build environment:
 
 ```sh    
 ~/poky/meta-xilinx$ cd ..
 ~/poky$ source oe-init-build-env
 ```
 
-You should now automatically be in the ~/poky/build directory. Tell bitbake about the new meta-xilinx layer:
+You should now automatically be in the `~/poky/build/` directory. Tell bitbake about the new `meta-xilinx` layer:
 
 ```sh   
 ~/poky/build$ bitbake-layers add-layer "$HOME/poky/meta-xilinx"
 ```
 
-Add the following line to the conf/local.conf file:
+Add the following line to the `conf/local.conf` file:
 
 ```    
 <code>MACHINE ?= "zc702-zynq7"</code>
@@ -96,19 +97,19 @@ The ZC702 can be configured to boot a Yocto Linux distribution from the SD card.
 
 **Setting Up A Bootable SD Card**
 
-Use dd to erase the first sector (replace X with the number of the SD card):
+Use `dd` to erase the first sector (replace `X` with the number of the SD card):
 
 ```sh
 ~$ dd if=/dev/zero of=/dev/sdX bs=1024 count=1
 ```
 
-Now let's partition the SD card using the interactive fdisk command:
+Now let's partition the SD card using the interactive `fdisk` command:
 
 ```sh    
 ~$ sudo fdisk /dev/sdX
 ```    
 
-Follow the following procedure, entering commands such as n, a and t where shown (the rest is fdisk output).
+Follow the following procedure, entering commands such as `n`, `a` and `t` where shown (the rest is `fdisk` output).
 
 ```    
 Command (m for help): n Partition type: p primary (0 primary, 0 extended, 4 free) e extended Select (default p): p Partition number (1-4, default 1): 1 First sector (2048-15759359, default 2048): Using default value 2048 Last sector, +sectors or +size{K,M,G} (2048-15759359, default 15759359): +200M Command (m for help): n Partition type: p primary (1 primary, 0 extended, 3 free) e extended Select (default p): p Partition number (1-4, default 2): 2 First sector (411648-15759359, default 411648): Using default value 411648 Last sector, +sectors or +size{K,M,G} (411648-15759359, default 15759359): Using default value 15759359
@@ -164,7 +165,7 @@ Create file systems on the new partitions (this would cause VirtualBox to crash,
 ~$ sudo mkfs.ext4 -L root /dev/sdX2
 ```
 
-Mount the partitions, sdX1 being the first partition (boot), and sdX2 being the second partition (where the root filesystem will be placed).
+Mount the partitions, `sdX1` being the first partition (boot), and `sdX2` being the second partition (where the root filesystem will be placed).
 
 ```sh    
 ~$ sudo mkdir -p /mnt/sdX1
@@ -175,7 +176,7 @@ Mount the partitions, sdX1 being the first partition (boot), and sdX2 being the 
 
 **Copying Build Output Onto SD Card**
 
-You will want to copy over the following files from poky/build/tmp/deploy/<image>/ onto the first partition (boot partition) of the SD card.
+You will want to copy over the following files from `poky/build/tmp/deploy/<image>/` onto the first partition (boot partition) of the SD card.
 
 ```sh    
 $ sudo cp boot.bin /mnt/sdX1/
@@ -195,7 +196,7 @@ $ sudo tar x -C /mnt/sdX2/ -f core-image-minimal-zc702-zynq7.tar.gz
 If you now insert this SD into windows, you should be able to see the files on the first (boot) partition, but not those on the second partition.
 {{% /note %}}
 
-uEnv.txt should contain information similar to the following:
+`uEnv.txt` should contain information similar to the following:
 
 ```    
 kernel_image=uImage
@@ -214,7 +215,7 @@ Insert the SD card onto the ZC702 dev board. Make sure the DIP switches (SW16) o
 * 4 -> HIGH
 * 5 -> LOW
 
-Connect a cable from the mini-USB port on the dev. board (labelled J17 or "USB UART") to your computer. Open a terminal on the COM port with the following settings:
+Connect a cable from the mini-USB port on the dev. board (labelled `J17` or `USB UART`) to your computer. Open a terminal on the COM port with the following settings:
 
 * Baud rate = 115000
 * Num. data bits = 8
@@ -226,7 +227,7 @@ Now turn on the power switch to the dev. board. Hopefully, you should see it boo
 
 {{< figure src="/images/2017/04/terminal-output-start-of-zynq-zc702-linux-boot-using-yocty.png" width="1656px" caption="The terminal output during the start of a Linux boot built using Yocty, and running on the Xilinx ZC702 dev. board."  >}}
 
-You should be able to log in as user root, with no password.
+You should be able to log in as user `root`, with no password.
 
 ## Booting Via TFTP
 
@@ -238,7 +239,7 @@ You must remember that U-Boot is required to be already present on the embedded 
 setenv bootcmd 'tftpboot 0x2000000 uImage; tftpboot 0x3000000 core-image-minimal-zc702-zynq7.cpio.gz.u-boot; tftpboot 0x2A00000 uImage-zynq-zc702.dtb; bootm 0x2000000 0x3000000 0x2A00000'
 ```
 
-The above command assumes you have set up tftp on your server and then copied the Yocto build output into your tftpboot folder (e.g. /tftpboot/). Even better, you can make /tftpboot a symlink to your build directory:
+The above command assumes you have set up tftp on your server and then copied the Yocto build output into your tftpboot folder (e.g. `/tftpboot/`). Even better, you can make `/tftpboot` a symlink to your build directory:
 
 ```sh    
 $ sudo ln -s ~/poky/build-real/tmp/deploy/images/zc702-zynq7/ /tftpboot
@@ -254,7 +255,7 @@ In my experience, it usually takes about 30s from the time you type boot to the 
 
 ## Booting Via Flash
 
-Yocto produces a boot.bin file when building a Linux image for the ZC-702 (using the _meta-xilinx_ layer), but this doesn't seem to be directly suitable for QSPI flash boot.
+Yocto produces a `boot.bin` file when building a Linux image for the ZC-702 (using the _meta-xilinx_ layer), but this doesn't seem to be directly suitable for QSPI flash boot.
 
 ## Create A FSBL Using Xilinx SDK
 
@@ -278,7 +279,7 @@ Xilinx also has instructions for creating a Zynq FSBL at [https://www.xilinx.com
 
 ## Create bootimage.bif
 
-Manually create a bootimage.bif (bif is an acronym for _Bootable Image Format_) file using a text editor. It is pretty simple, and just needs to contain the following code:
+Manually create a `bootimage.bif` (bif is an acronym for _Bootable Image Format_) file using a text editor. It is pretty simple, and just needs to contain the following code:
 
 ```sh    
 the_ROM_image:
@@ -288,11 +289,11 @@ the_ROM_image:
 }
 ```
 
-This file is used as a configuration file for bootgen (see below).
+This file is used as a configuration file for `bootgen` (see below).
 
 ## Create Flash Image Using bootgen
 
-bootgen is a command-line application provided by the Xilinx SDK. It is used to stitch together the many files needed for an embedded OS to boot properly into one image file. For myself, it was located at /opt/Xilinx/SDK/2017.1/bin/.
+`bootgen` is a command-line application provided by the Xilinx SDK. It is used to stitch together the many files needed for an embedded OS to boot properly into one image file. For myself, it was located at `/opt/Xilinx/SDK/2017.1/bin/`.
 
 Use the following command:
 
@@ -300,17 +301,17 @@ Use the following command:
 $ bootgen -image bootimage.bif -o BOOT.bin -w
 ```
 
-This creates a BOOT.bin file from the bootimage.bif and the sources listed in the bootimage.bif file.
+This creates a `BOOT.bin` file from the `bootimage.bif` and the sources listed in the `bootimage.bif` file.
 
 More information about bootgen can be found in Appendix A - Using Bootgen (page 55) of [https://www.xilinx.com/support/documentation/user_guides/ug821-zynq-7000-swdev.pdf](https://www.xilinx.com/support/documentation/user_guides/ug821-zynq-7000-swdev.pdf).
 
 ## Program The Flash
 
-You can program the flash connected to the Zynq on the ZC-702 using Xilinx's xsdb and program_flash utilities.
+You can program the flash connected to the Zynq on the ZC-702 using Xilinx's `xsdb` and `program_flash` utilities.
 
-Firstly, make sure the micro-USB cable to the JTAG device on the ZC-702 (U23) is connected to your Linux OS (see the [Installing xsdb And JTAG Drivers page](/programming/embedded-linux/zynq/installing-xsdb-and-jtag-drivers) for more info).
+Firstly, make sure the micro-USB cable to the JTAG device on the ZC-702 (`U23`) is connected to your Linux OS (see the [Installing xsdb And JTAG Drivers page](/programming/embedded-linux/zynq/installing-xsdb-and-jtag-drivers) for more info).
 
-The, connect to the target using xsdb:
+The, connect to the target using `xsdb`:
 
 ```    
 ./xsdb
@@ -318,7 +319,7 @@ connect
 target
 ```
 
-Then use the program_flash utility to write the BOOT.bin file generated above to the flash:
+Then use the `program_flash` utility to write the `BOOT.bin` file generated above to the flash:
 
 ```sh  
 ~$ program_flash -f BOOT.bin -offset 0x0 -flash_type qspi_single -verify -cable type xilinx_tcf url tcp:localhost:3121
@@ -334,7 +335,7 @@ This assumes you have poky already downloaded onto your computer (see above). Cr
 ~/poky$ source oe-init-build-env build-qemu
 ```
 
-Note how an argument was provided to oe-init-build-env this time (build-qemu). This tells oe-init-build-env to initialise a build directory called build-qemu/ instead of the default, which is just build/ (we will keep build/ for the Linux build that runs on the real hardware).
+Note how an argument was provided to `oe-init-build-env` this time (`build-qemu`). This tells `oe-init-build-env` to initialise a build directory called `build-qemu/` instead of the default, which is just `build/` (we will keep `build/` for the Linux build that runs on the real hardware).
 
 Start the Linux build:
 
@@ -350,7 +351,7 @@ Now run QEMU, passing in the location of the just-built QEMU configuration file.
 
 {{< figure src="/images/2017/04/xilinx-zc702-yocto-linux-build-qemu-boot-console-screenshot.png" width="728px" caption="The final stages of a Yocto Linux (built for the Xilinx ZC702 dev. board) boot running in QEMU."  >}}
 
-You should be able to log onto the Linux system with the username root, no password required.
+You should be able to log onto the Linux system with the username `root`, no password required.
 
 ## Help! I Get A "No Recipes Available For..." Error
 
@@ -362,7 +363,7 @@ ERROR: No recipes available for:
 /home/username/poky/meta-xilinx/recipes-microblaze/glibc/glibc_2.25.bbappend
 ```
 
-This can happen if you forgot to checkout the correct branch of meta-xilinx. Remember, when you use the command git clone https://github.com/Xilinx/meta-xilinx, it will checkout the master branch. You then need to checkout the branch which matches the branch of poky you are using (this was morty when I did it), e.g.
+This can happen if you forgot to checkout the correct branch of meta-xilinx. Remember, when you use the command `git clone https://github.com/Xilinx/meta-xilinx`, it will checkout the master branch. You then need to checkout the branch which matches the branch of poky you are using (this was `morty` when I did it), e.g.
 
 ```sh    
 ~/poky/meta-xilinx$ git checkout morty
