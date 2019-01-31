@@ -4,7 +4,6 @@ date: 2014-02-11 20:30:39+00:00
 draft: false
 title: SMBus
 type: page
-url: /electronics/communication-protocols/smbus
 ---
 
 ## Overview
@@ -48,7 +47,7 @@ The official specifications for the SMBus can be found at [http://smbus.org/spec
 
 ## Comparison With I2C
 
-## Simularities
+## Similarities
 
 * Both use pull-up resistors (or constant-current sources) with an open-drain drive methodology.
 * Both use the names SCL and SDA to the clock and data lines, respectively.

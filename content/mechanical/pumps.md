@@ -4,7 +4,6 @@ date: 2015-01-07 23:44:57+00:00
 draft: false
 title: Pumps
 type: page
-url: /mechanical/pumps
 ---
 
 ## Overview

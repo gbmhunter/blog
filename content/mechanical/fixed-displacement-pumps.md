@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2014-02-24 04:21:06+00:00
+date: 2014-02-24
 draft: false
 title: Fixed-Displacement Pumps
 type: page
-url: /mechanical/fixed-displacement-pumps
 ---
 
 However "fixed" fixed displacement pumps are, you can still have a small variation in volume per cycle depending on the speed the motor is going at. This can be problematic when trying to work out the flow rate by measuring the number of cycles the pump does.

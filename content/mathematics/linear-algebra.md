@@ -4,7 +4,6 @@ date: 2018-08-09 02:18:21+00:00
 draft: false
 title: Linear Algebra
 type: page
-url: /mathematics/linear-algebra
 ---
 
 ## Matrix Condition Number
