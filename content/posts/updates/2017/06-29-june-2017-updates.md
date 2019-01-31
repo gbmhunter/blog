@@ -6,15 +6,7 @@ title: June 2017 Updates
 type: post
 categories:
 - Updates
-tags:
-- c
-- linear programming
-- linux
-- memory
-- protobuf
-- serial ports
-- serialization
-- valgrind
+tags: [ "C", "linear programming", "Linux", "memory", "protobuf", "serial port", "serialization", "Valgrind" ]
 ---
 
 * New [Linear Programming page](/mathematics/linear-programming) under Mathematics.

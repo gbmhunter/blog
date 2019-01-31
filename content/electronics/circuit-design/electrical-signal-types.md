@@ -40,12 +40,12 @@ TI SN65LVELT23 converts LVPECL and LVDS to LVTTL.
 
 ### Stats
 
-Mode                                  | Differential
---------------------------------------|------------------------
-Logic High ($$V_{OH}$$)               | 1.55mV (+3.5mA through 100Ω)
-Logic Out Low ($$V_{OL}$$)            | 0.95mV (-3.5mA through 100Ω)
-Common-mode Voltage ($$V_{CMO}$$)     | 1.20V
-Power ($$P$$)                         | 8.75mW (@ $$V_{CC}=2.5V$$)</td>
+Mode                                    | Differential
+----------------------------------------|------------------------
+Logic High (`\(V_{OH}\)`)               | 1.55mV (+3.5mA through 100Ω)
+Logic Out Low (`\(V_{OL}\)`)            | 0.95mV (-3.5mA through 100Ω)
+Common-mode Voltage (`\(V_{CMO}\)`)     | 1.20V
+Power (`\(P\)`)                         | 8.75mW (@`\($V_{CC}=2.5V\)`
 
 Because the current is kept constant (3.5mA), it doesn't put as much pressure on the decoupling capacitors to provide the energy during switching states. The low common-mode voltage (1.20V), allows this signalling standard to be used with a wide variety of ICs with power supplies down to 2.5V or lower.
 

@@ -2,6 +2,7 @@
 author: gbmhunter
 date: 2012-09-03
 draft: false
+tags: [ "enclosures", "aluminium", "connectors", "heatsink" ]
 title: Enclosures
 type: page
 ---

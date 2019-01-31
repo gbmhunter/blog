@@ -2,6 +2,7 @@
 author: gbmhunter
 date: 2015-03-05
 draft: false
+tags: [ "MFi", "Apple", "iPod", "iPhone", "USB", "electronics", "device", "hardware" ]
 title: "Made For iPod/iPhone/iPad (MFi)"
 type: page
 ---

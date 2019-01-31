@@ -2,6 +2,7 @@
 author: gbmhunter
 date: 2019-01-27
 draft: true
+tags: [ "serialization", "format", "comparison" ]
 title: A Comparison Of Serialization Formats
 type: page
 ---
@@ -101,16 +102,20 @@ XML is a human-readable serialization protocol. XMl can be considered quite verb
 ### Example
 
 ```xml
-<person>
-    <name>Charmander</name>
-    <age>21</age>
-    <address>Fire St</address>
-</person>
-<person>
-    <name>Pikachu</name>
-    <age>22</age>
-    <address>Electric Street</address>
-</person>
+<people>
+    <person>
+        <id>0</id>
+        <name>Charmander</name>
+        <age>21</age>
+        <address>Fire St</address>
+    </person>
+    <person>
+        <id>1</id>
+        <name>Pikachu</name>
+        <age>22</age>
+        <address>Electric Street</address>
+    </person>
+</people>
 ```
 
 ### Review
