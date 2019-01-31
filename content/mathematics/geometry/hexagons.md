@@ -4,7 +4,6 @@ date: 2017-12-12 18:41:04+00:00
 draft: false
 title: Hexagons
 type: page
-url: /mathematics/geometry/hexagons
 ---
 
 ## Overview

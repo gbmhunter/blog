@@ -4,7 +4,6 @@ date: 2013-09-04 10:53:19+00:00
 draft: false
 title: Circle Geometry
 type: page
-url: /mathematics/geometry/circle-geometry
 ---
 
 Inscribed angle: An angle made from points sitting on the circles circumference.

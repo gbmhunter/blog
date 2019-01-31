@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2014-11-13 06:32:52+00:00
+date: 2014-11-13
 draft: false
-title: 2D Coordinate Rotation
+title: "2D Coordinate Rotation"
 type: page
-url: /mathematics/geometry/2d-coordinate-rotation
 ---
 
 A 2D coordinate `\((x_1, y_1)\)` can be easily rotated by `\(\theta\)` around another point `\((x_c, y_c)\)` to give the new rotated point `\((x_2, y_2)\)` with the equation:

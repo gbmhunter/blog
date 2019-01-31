@@ -4,7 +4,6 @@ date: 2017-11-02 20:18:31+00:00
 draft: false
 title: Analytical Geometry
 type: page
-url: /mathematics/geometry/analytical-geometry
 ---
 
 ## How To Check If A Point Is Inside A Rectangle?

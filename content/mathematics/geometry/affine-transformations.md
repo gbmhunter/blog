@@ -4,7 +4,6 @@ date: 2017-11-14 18:06:33+00:00
 draft: false
 title: Affine Transformations
 type: page
-url: /mathematics/geometry/affine-transformations
 ---
 
 ## Overview
