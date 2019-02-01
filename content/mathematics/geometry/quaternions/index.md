@@ -8,6 +8,16 @@ type: page
 
 ## Overview
 
+A quaternion (pronounced qwa-ter-ne-ion) is a object which contains four numbers. Arguably, the most useful quaternions is a subset of all quaternions, called **unit quaternions** (or **versors**), which can be used to describe a rotation in 3D space. This page focuses on these unit quaternions.
+
+There are a number of different ways to describe rotations. These include:
+
+* Euler angles (roll, pitch, yaw)
+* Rotation matrices
+* Quaternions
+
+Quaternions do not suffer from the **gimbal lock** that Euler angles do. A quaternion describes a rotation from one coordinate system to another. When they are used purely to represent a rotation (e.g. no reference coordinate system specified), they are called **rotation quaternions**. They can also be used to decribe an orientation, as long as a reference coordinate system is supplied (in which the quaternion specifies the orientation as a rotation from the reference coordinate system to the coordinate system of the rotated object). In this case they are called **orientation quaternions**.
+
 ## Scalar And Vector
 
 A quaternion can be divided up into a scalar part and a vector part.
