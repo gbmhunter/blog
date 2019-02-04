@@ -22,7 +22,7 @@ There is no one-size-fits-all serialization format, as the best format for the j
 
 ## CSV
 
-CSV is well suited to storing large amounts of tabulated data in a human-readable format. It is not well suited to storing objects or hash table like data structures. CSV is not very well standardized. [RFC 4180](https://tools.ietf.org/html/rfc4180)  was an attempt to standardize the format, however the name "CSV" may refer to files which are delimited by non-comma characters such as spaces, tabs or semi-colons.
+CSV is well suited to storing large amounts of tabulated data in a human-readable format. It is not well suited to storing objects or hash table like data structures. CSV is not very well standardized. [RFC 4180](https://tools.ietf.org/html/rfc4180)  was an attempt to standardize the format, however the name "CSV" may refer to files which are delimited by non-comma characters such as spaces, tabs or semi-colons. In fact, it used to be called **Delimiter Separated Values (DSV)**, although unfortunately CSV seems like the more prevalent term these days.
 
 The CSV format allows an optional __header line__ appearing as the first line in the file. If present, it contains field names for each value in a record. This header line is very useful the labelling the data and should almost always be present.
 
@@ -139,6 +139,23 @@ Language Support | 6/10
 Speed            | 4/10
 Standardization  | 8/10
 Website          | <https://yaml.org/>
+
+## Speed Comparison (Benchmarking)
+
+The following libraries were used:
+
+Format      | Python                                | C++
+------------|---------------------------------------|---------------------------------------------------------------------------
+CSV         | csv (built-in)                        | fast-cpp-csv-parser (https://github.com/ben-strasser/fast-cpp-csv-parser)
+JSON        | json (built-in)                       | json (https://github.com/nlohmann/json)
+Protobuf    | protobuf                              | protobuf
+TOML        | toml (https://github.com/uiri/toml)   | cpptoml (https://github.com/skystrife/cpptoml)
+YAML        | PyYAML (https://pyyaml.org/)          | yaml-cpp (https://github.com/jbeder/yaml-cpp)
+XML         | ElementTree (built-in)                | tinyxml2 (https://github.com/leethomason/tinyxml2)
+
+Python v3.7 was used for all Python tests. C++17/GCC compiler was used for all C++ tests. Tests ran on a Debian machine running inside a virtual machine, however the purpose of this test was to show relative performance, which should be unchanged when running inside a virtual machine.
+
+As to be representative of how the serialization data might be used, tests included reading and writing the data to disk.
 
 ## Other Formats
 

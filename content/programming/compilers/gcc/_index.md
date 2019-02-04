@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2014-07-17 06:21:37+00:00
+date: 2014-07-17
 draft: false
 title: GCC
 type: page

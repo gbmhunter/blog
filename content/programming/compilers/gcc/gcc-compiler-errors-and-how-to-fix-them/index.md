@@ -1,0 +1,15 @@
+---
+author: gbmhunter
+date: 2019-02-02
+draft: false
+title: "GCC Compiler Errors And How To Fix Them"
+type: page
+---
+
+## undefined reference to `pthread_create'
+
+This error usually occurs when trying to compile C++ code which uses threads on Linux. This error can usually be fixed by adding the option `-pthread` to the call to `g++`, e.g.:
+
+```sh
+$ g++ -pthread main.cpp
+```

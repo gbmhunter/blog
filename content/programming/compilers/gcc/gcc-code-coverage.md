@@ -1,8 +1,8 @@
 ---
 author: gbmhunter
-date: 2017-11-29 18:01:05+00:00
+date: 2017-11-29
 draft: false
-title: GCC Code Coverage
+title: "GCC Code Coverage"
 type: page
 ---
 

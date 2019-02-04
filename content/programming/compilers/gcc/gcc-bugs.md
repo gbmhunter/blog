@@ -1,8 +1,8 @@
 ---
 author: gbmhunter
-date: 2017-10-05 22:46:15+00:00
+date: 2017-10-05
 draft: false
-title: GCC Bugs
+title: "GCC Bugs"
 type: page
 ---
 
