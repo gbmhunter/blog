@@ -1,8 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-06-28 06:03:35+00:00
+date: 2013-06-28
 draft: false
-title: Assembly
+tags: [ "assembly" ]
+title: "Assembly"
 type: page
 ---
 
@@ -44,7 +45,7 @@ You can download the NASM compiler for Ubuntu and other Debian-like systems with
 $ sudo apt install nasm
 ```
 
-To compile a NASM .asm file, first convert it to an object file with the nasm program:
+To compile a NASM `.asm` file, first convert it to an object file with the nasm program:
 
 ```sh    
 $ nasm -f elf test.asm

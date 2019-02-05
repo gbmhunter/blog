@@ -1,18 +1,22 @@
 ---
 author: gbmhunter
-date: 2013-05-12 23:47:37+00:00
+date: 2013-05-12
 draft: false
+lastmod: 2019-02-04
+tags: [ "Linux", "UNIX", "Bash", "special characters", "file name", "directory", "shell", "programming language", "script", "scripting", ".sh", ".bash", "shebang", "symlink", "argument parsing", "CLI", "command-line", "shflags" ]
 title: Bash
 type: page
 ---
 
 ## Overview
 
-Bash, apart from being a UNIX shell, is also a programming language in it's own right. It is commonly referred to as a _scripting language_ because the script is not compiled, but rather interpreted at runtime.
+Bash, apart from being a UNIX shell, is also a **programming language in it's own right**. It is commonly referred to as a _scripting language_ because the script is not compiled, but rather interpreted at runtime.
 
 ## Shebang
 
-The recommended shebang to use at the top of a bash script is:
+A **shebang** at the top of a Bash script allows you to run the script directly from the command-line as if it was an executable, e.g. by calling `./my_script.sh`. This is because the shebang tells your shell (which may or may not be Bash) to call the mentioned program, and pass in the script as the first parameter.
+
+The recommended **shebang** to use at the top of a bash script is:
 
 ```sh
 #!/usr/bin/env bash
@@ -138,3 +142,47 @@ echo $A
 ```
 
 It is recommended that you use the `$()` syntax rather than `` ` ``, as `$()` is standardized by POSIX and should work for most shells.
+
+## Dealing With Special Characters In Filenames And Directories
+
+You can run into issues when trying to create, copy, move, delete or otherwise manipulate files and directories in bash when the names contain special characters such as `-`, `$`, `#` and `;` (which are all allowed to be included in file names and directory names as per the UNIX specification).
+
+The following sections show you how to deal with these special characters.
+
+### Hyphens
+
+File names which start with hyphens can be troublesome to manage. Most programs (note: **not the shell, but the program**) will interpret the hyphen as a option specifier and try and parse the start of the filename as an option.
+
+There are two common ways to deal with this problem. The first is to use the `--` specifier. For most common utility programs (e.g. `touch`, `mv`, `cp`, `rm`) everything after a `--` is not parsed for options:
+
+```sh
+$ rm -rf -- -file_starting_with_hyphen.txt
+```
+
+or you explicitly include the current directory in the path:
+
+```sh
+$ rm -rf ./*
+```
+
+## Hashes
+
+Hashes cannot be dealt with in the same way as hyphens, **because they are interpreted differently by the shell (e.g. bash), not the program**. The `--` method will not work. However, you can prefix the file with the current directory:
+
+```sh
+$ touch ./#file.txt
+```
+
+You can enclose the filename in `'` quotes, which tell bash not to interpret the `#`:
+
+```sh
+$ rm '#file.txt'
+```
+
+## Semicolons
+
+Bash uses semicolons to delimit separate commands, and so you have to enclose filenames and directories in single quotes (`'`), which will tell Bash not to interpret the `;` as a command separator:
+
+```sh
+touch ';test.txt'
+```
