@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-07-14 22:31:05+00:00
+date: 2013-07-14
 draft: false
-title: Lua
+title: "Lua"
 type: page
-url: /programming/languages/lua
 ---
 
 Lua is an extension-based embeddable language. Lua itself is implemented as a stand-alone library, with the goal of being embedded in other applications. It does not have it's own `main()`, it has to be called from a host program running in a different language (e.g. C).

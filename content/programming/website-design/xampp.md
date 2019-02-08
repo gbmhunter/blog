@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-06-06 10:58:44+00:00
+date: 2013-06-06
 draft: false
-title: XAMPP
+title: "XAMPP"
 type: page
-url: /programming/website-design/xampp
 ---
 
 XAMPP is a great tool for running a "website" server on your local computer. It can run things like php scripts and handle MySQL requests, before serving the HTML to your browser.

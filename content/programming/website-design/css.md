@@ -1,15 +1,14 @@
 ---
 author: gbmhunter
-date: 2011-09-15 07:42:06+00:00
+date: 2011-09-15
 draft: false
-title: CSS
+title: "CSS"
 type: page
-url: /programming/website-design/css
 ---
 
 ## Overview
 
-CSS, or content style sheet, is a language for speicifying how elements on an HTML page are displayed. It is a very powerful way of customising the look and feel of a website, and allowing single point control (i.e. instant change) of the display of your web pages.
+CSS, or content style sheet, is a language for specifying how elements on an HTML page are displayed. It is a very powerful way of customising the look and feel of a website, and allowing single point control (i.e. instant change) of the display of your web pages.
 
 ## CSS3
 
@@ -32,7 +31,7 @@ To target an object, use the following syntax
 }
 ```
 
-To target a specifc class of objects, replace the first line of code above with
+To target a specific class of objects, replace the first line of code above with
 
 ```css    
 <object name>.<class>

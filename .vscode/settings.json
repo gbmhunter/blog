@@ -35,6 +35,7 @@
         "modfets",
         "mosfet",
         "mosfets",
+        "mvvc",
         "nasm",
         "nema",
         "nmea",
@@ -53,6 +54,7 @@
         "vdac",
         "vias",
         "wordpress",
+        "xampp",
         "xilinx",
         "yocto",
         "zynq"

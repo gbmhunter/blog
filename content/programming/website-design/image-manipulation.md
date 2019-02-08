@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-08-23 08:55:33+00:00
+date: 2013-08-23
 draft: false
-title: Image Manipulation
+title: "Image Manipulation"
 type: page
-url: /programming/website-design/image-manipulation
 ---
 
 You can install GIMP on Ubuntu with the command

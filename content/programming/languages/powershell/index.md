@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2014-09-29 01:59:39+00:00
+date: 2014-09-29
 draft: false
-title: PowerShell
+title: "PowerShell"
 type: page
-url: /programming/languages/powershell
 ---
 
 ## Single Quotes Vs. Double Quotes

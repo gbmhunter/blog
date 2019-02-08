@@ -1,8 +1,9 @@
 ---
 author: gbmhunter
-date: 2016-12-08 15:17:46+00:00
+date: 2016-12-08
 draft: false
-title: protobuf
+lastmod: 2019-02-08
+title: "protobuf"
 type: page
 ---
 
@@ -33,136 +34,23 @@ Messages defines in .proto files can be composed of variables which have scalar 
 
 The valid scalar types are:
 
-<table>
-    <thead>
-        <tr>
-            <th>Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody >
-<tr >
-
-<td >int32
-</td>
-
-<td >Uses variable length encoding, but inefficient at encoding negative numbers.
-</td>
-</tr>
-<tr >
-
-<td >int64
-</td>
-
-<td >Uses variable length encoding, but inefficient at encoding negative numbers.
-</td>
-</tr>
-<tr >
-
-<td >uint32
-</td>
-
-<td >
-</td>
-</tr>
-<tr >
-
-<td >uint64
-</td>
-
-<td >
-</td>
-</tr>
-<tr >
-
-<td >sint32
-</td>
-
-<td >
-</td>
-</tr>
-<tr >
-
-<td >sint64
-</td>
-
-<td >
-</td>
-</tr>
-<tr >
-
-<td >fixed32
-</td>
-
-<td >
-</td>
-</tr>
-<tr >
-
-<td >fixed64
-</td>
-
-<td >
-</td>
-</tr>
-<tr >
-
-<td >sfixed32
-</td>
-
-<td > Always 32 bytes.
-</td>
-</tr>
-<tr >
-
-<td >sfixed64
-</td>
-
-<td > Always 64 bytes.
-</td>
-</tr>
-<tr >
-
-<td >float
-</td>
-
-<td >32-bit floating-point number.
-</td>
-</tr>
-<tr >
-
-<td >double
-</td>
-
-<td >64-bit floating-point number.
-</td>
-</tr>
-<tr >
-
-<td >bool
-</td>
-
-<td >
-</td>
-</tr>
-<tr >
-
-<td >string
-</td>
-
-<td > A string can contain UTF-8 or 7-bit ASCII encoded text.
-</td>
-</tr>
-<tr >
-
-<td >bytes
-</td>
-
-<td > An arbitrary sequence of bytes.
-</td>
-</tr>
-</tbody>
-</table>
+Type        | Description
+------------|------------------------------------------------------------------------------------
+`int32`     | Uses variable length encoding, but inefficient at encoding negative numbers.
+`int64`     | Uses variable length encoding, but inefficient at encoding negative numbers.
+`uint32`    |
+`uint64`    |
+`sint32`    |
+`sint64`    |
+`fixed32`   |
+`fixed64`   |
+`sfixed32`  | Always 32 bytes.
+`sfixed64`  | Always 64 bytes.
+`float`     | 32-bit floating-point number.
+`double`    | 64-bit floating-point number.
+`bool`      |
+`string`    | A string can contain UTF-8 or 7-bit ASCII encoded text.
+`bytes`     | An arbitrary sequence of bytes.
 
 Each one of these scalar types maps to a correspond type your language of choice. See [https://developers.google.com/protocol-buffers/docs/proto#scalar](https://developers.google.com/protocol-buffers/docs/proto#scalar) for more details.
 

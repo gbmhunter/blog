@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2012-07-22 01:49:50+00:00
+date: 2012-07-22
 draft: false
-title: HTML
+title: "HTML"
 type: page
-url: /programming/website-design/html
 ---
 
 ## Comments
@@ -19,7 +18,7 @@ Comments within HTML code are added using the following syntax.
 
 The common command send when you type a URL into your browser is GET.
 
-You can use the program curl on Linux-systems to send different commands to URL's.
+You can use the program curl on Linux-systems to send different commands to URLs.
 
 ```sh    
 $ curl -i -X GET http://my.url
@@ -29,7 +28,7 @@ Or you can use a web-based app such as the [Simple REST Client](https://chrome.g
 
 ## API Design
 
-Apiary ([http://apiary.io/](http://apiary.io/)) is a useful tool for designing web-based API's (API's using HTML requests). It allows instant API mock creation with automatic documentation and testing. It is free for single, non-commercial users (aka hackers).
+Apiary ([http://apiary.io/](http://apiary.io/)) is a useful tool for designing web-based APIs (APIs using HTML requests). It allows instant API mock creation with automatic documentation and testing. It is free for single, non-commercial users (aka hackers).
 
 ## Dynamic Content
 

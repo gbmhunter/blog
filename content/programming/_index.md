@@ -1,8 +1,7 @@
 ---
 author: gbmhunter
-date: 2011-09-04 22:52:07+00:00
+date: 2011-09-04
 draft: false
-title: Programming
+title: "Programming"
 type: page
-url: /programming
 ---

@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-05-05 22:47:37+00:00
+date: 2013-05-05
 draft: false
-title: VHDL
+title: "VHDL"
 type: page
-url: /programming/languages/vhdl
 ---
 
 ## 2-Input AND Gate

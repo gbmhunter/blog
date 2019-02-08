@@ -1,8 +1,8 @@
 ---
 author: gbmhunter
-date: 2013-04-29 08:19:56+00:00
+date: 2013-04-29
 draft: false
-title: PHP
+title: "PHP"
 type: page
 ---
 

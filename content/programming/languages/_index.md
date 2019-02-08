@@ -1,8 +1,7 @@
 ---
 author: gbmhunter
-date: 2011-09-07 00:59:12+00:00
+date: 2011-09-07
 draft: false
-title: Programming Languages
+title: "Programming Languages"
 type: page
-url: /programming/languages
 ---

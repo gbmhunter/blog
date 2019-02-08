@@ -1,12 +1,12 @@
 ---
 author: gbmhunter
-date: 2013-06-02 21:39:16+00:00
+date: 2013-06-02
 draft: false
-title: Batch Files
+title: "Batch Files"
 type: page
 ---
 
-> MS-DOS comands use a `/` character to signify a flag. All command syntax on this page uses square brackets for optional parameters.
+> MS-DOS commands use a `/` character to signify a flag. All command syntax on this page uses square brackets for optional parameters.
 
 ## Overview
 
@@ -74,7 +74,7 @@ set myVar2 = %myVar%
 
 ## Replacing Substrings Within Strings
 
-Batch files provides a way to replace substrings withing a string (or more generically, find and replace parts of a variable).
+Batch files provides a way to replace substrings within a string (or more generically, find and replace parts of a variable).
 
 ```    
 set str1=%1

@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-04-22 05:30:55+00:00
+date: 2013-04-22
 draft: false
-title: XML
+title: "XML"
 type: page
-url: /programming/languages/xml
 ---
 
 ## Overview

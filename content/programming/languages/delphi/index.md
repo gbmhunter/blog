@@ -1,8 +1,8 @@
 ---
 author: gbmhunter
-date: 2012-07-02 23:21:46+00:00
+date: 2012-07-02
 draft: false
-title: Delphi
+title: "Delphi"
 type: page
 ---
 

@@ -4,7 +4,6 @@ date: 2012-03-13 04:23:35+00:00
 draft: false
 title: Wireframes
 type: page
-url: /programming/website-design/wireframes
 ---
 
 Wireframes are really good in the design stage of a website for getting an idea of the layout and feel of a website. They are good at communicating these ideas with the client/customer (if there is such one). When using a good wireframe tool/program, they are really easy to create.

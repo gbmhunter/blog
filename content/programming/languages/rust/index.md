@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
-date: 2015-05-13 11:01:30+00:00
+date: 2015-05-13
 draft: false
-title: Rust
+tags: [ "Rust", "programming", "language", "code", "software", "compiled" ]
+title: "Rust"
 type: page
-url: /programming/languages/rust
 ---
 
 ## Overview
@@ -29,6 +29,6 @@ You can write and run Rust test code online at the [Rust playpen](https://play.r
 
 ## Embedded Platforms
 
-Rust is beginning to be used on embedded platforms (however, it is still in a mostly experimental manner). There is dicussion of the suitability of rust for an embedded platform at [Atomic Object](http://spin.atomicobject.com/2015/02/20/rust-language-c-embedded/).
+Rust is beginning to be used on embedded platforms (however, it is still in a mostly experimental manner). There is discussion of the suitability of rust for an embedded platform at [Atomic Object](http://spin.atomicobject.com/2015/02/20/rust-language-c-embedded/).
 
 [zinc.rs](http://zinc.rs/) is an attempt to write an ARM stack (similar to CMSIS or mbed in functionality, which are both written in C) using the rust programming language.
