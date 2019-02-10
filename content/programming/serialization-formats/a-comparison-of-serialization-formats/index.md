@@ -95,6 +95,10 @@ Website          | <https://www.json.org/>
 
 Protobuf is a binary serialization protocol developed by Google. It is not human readable.
 
+## TOML
+
+TOML suffers from verbose syntax when it comes to arrays.
+
 ## XML
 
 XML is a human-readable serialization protocol. XMl can be considered quite verbose as it requires descriptive end tags. A well known XML-like format is HTML which is used to determine the structure of web pages.
@@ -155,7 +159,9 @@ XML         | ElementTree (built-in)                | tinyxml2 (https://github.c
 
 Python v3.7 was used for all Python tests. C++17/GCC compiler was used for all C++ tests. Tests ran on a Debian machine running inside a virtual machine, however the purpose of this test was to show relative performance, which should be unchanged when running inside a virtual machine.
 
-As to be representative of how the serialization data might be used, tests included reading and writing the data to disk.
+As to be representative of how the serialization data might be used, all write tests where passed the same input data, either a `vector` (for the C++ tests) or a `List` (for the Python tests) of `Person` objects. Each `Person` contains an ID (an integer starting from 0), a name (random string of 5 ASCII chars), and address (random string of 30 ASCII chars) and an age (float). Each test was required to serialize the data to the required format (using the libraries mentioned above) and then write the serialized data to disk. All read tests performed the opposite task, reading a data file, deserializing and creating a `vector`/`List` of `Person` objects. 
+
+3 iterations of each test where performed, and the smallest run time of the three was selected as the most representative. Larger runtimes are typically the result of the OS performing extraneous tasks.
 
 ## Other Formats
 
