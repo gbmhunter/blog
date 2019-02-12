@@ -9,3 +9,6 @@ type: "post"
 ---
 
 * Updates to the [Bash Programming page](/programming/languages/bash#dealing-with-special-characters) with a tutorial on how to deal with special characters in filenames and directories.
+
+* New [Python Classes And Object Orientated Programming page](/programming/languages/python/python-classes-and-object-orientated-programming).
+

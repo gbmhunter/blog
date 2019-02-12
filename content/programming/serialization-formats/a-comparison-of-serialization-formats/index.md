@@ -2,8 +2,9 @@
 author: gbmhunter
 date: 2019-01-27
 draft: true
-tags: [ "serialization", "format", "comparison" ]
-title: A Comparison Of Serialization Formats
+lastmod: 2019-02-11
+tags: [ "serialization", "format", "comparison", "CSV", "JSON", "protobuf", "TOML", "XML", "YAML", "file size", "speed", "benchmark", "review", "Python", "C++" ]
+title: "A Comparison Of Serialization Formats"
 type: page
 ---
 
@@ -164,6 +165,18 @@ As to be representative of how the serialization data might be used, all write t
 3 iterations of each test where performed, and the smallest run time of the three was selected as the most representative. Larger runtimes are typically the result of the OS performing extraneous tasks.
 
 It is also interesting to see how the serializations respond to a change in the data size. If the size of the data doubles, does it take twice as long to read/write (linear response), or does it behave differently (e.g. quadratic, log(n), ...). This is called the complexity of the serialization algorithm. To test this, I increased the `people` array from 10,000 to 100,000 (increased by a factor of 10). This was the result...
+{{< img src="serialization-formats-conversion-times-10k-cpp.png" width="600px" caption="C++ conversion times for popular serialization formats." >}}
+
+{{< img src="serialization-formats-conversion-times-10k-python.png" width="600px" caption="Python conversion times for popular serialization formats." >}}
+
+
+## File Size Comparison
+
+When serializing large amounts of data, another important aspect is the verbosity of the format. To compare the verbosity of the different formats, we can pass each format the same data, dump the data to disk, and compare the file sizes.
+
+{{< img src="serialization-formats-file-sizes.png" width="600px" caption="Comparative file sizes for popular serialization formats." >}}
+
+
 
 ## Other Formats
 
