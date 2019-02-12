@@ -164,11 +164,33 @@ As to be representative of how the serialization data might be used, all write t
 
 3 iterations of each test where performed, and the smallest run time of the three was selected as the most representative. Larger runtimes are typically the result of the OS performing extraneous tasks.
 
+Format   | C++ Deserialization (s) | C++ Serialization (s)     | Python Deserialization | Python Serialization
+---------|-------------------------|---------------------------|------------------------|-----------------------
+csv      | 0.030                   | 0.022                     | 0.027                  | 0.034
+json     | 0.16                    | 0.13                      | 0.023                  | 0.16
+protobuf | 0.015                   | 0.025                     | 0.26                   | 0.38
+toml     | 0.23                    | 0.22                      | 1.08                   | 0.23
+xml      | 0.12                    | 0.16                      | 0.063                  | 0.25
+yaml     | 0.48                    | 0.55                      | 6.84                   | 3.84
+
+{{< img src="serialization-formats-conversion-times-10k-cpp.png" width="600px" caption="C++ conversion times for 10k objects in popular serialization formats." >}}
+
+{{< img src="serialization-formats-conversion-times-10k-python.png" width="600px" caption="Python conversion times for 10k objects in popular serialization formats." >}}
+
 It is also interesting to see how the serializations respond to a change in the data size. If the size of the data doubles, does it take twice as long to read/write (linear response), or does it behave differently (e.g. quadratic, log(n), ...). This is called the complexity of the serialization algorithm. To test this, I increased the `people` array from 10,000 to 100,000 (increased by a factor of 10). This was the result...
-{{< img src="serialization-formats-conversion-times-10k-cpp.png" width="600px" caption="C++ conversion times for popular serialization formats." >}}
 
-{{< img src="serialization-formats-conversion-times-10k-python.png" width="600px" caption="Python conversion times for popular serialization formats." >}}
+Format   | C++ Deserialization (s) | C++ Serialization (s)     | Python Deserialization | Python Serialization
+---------|-------------------------|---------------------------|------------------------|-----------------------
+csv      | 0.26                    | 0.18                      | 0.22                   | 0.38
+json     | 1.53                    | 1.50                      | 0.20                   | 1.59
+protobuf | 0.13                    | 0.24                      | 2.62                   | 3.61
+toml     | 2.23                    | 2.19                      | 9.86                   | 2.08
+xml      | 0.85                    | 1.74                      | 0.78                   | 2.58
+yaml     | 4.96                    | 5.70                      | 69.67                  | 36.87
 
+{{< img src="serialization-formats-conversion-times-100k-cpp.png" width="600px" caption="C++ conversion times for 100k objects in popular serialization formats." >}}
+
+{{< img src="serialization-formats-conversion-times-100k-python.png" width="600px" caption="Python conversion times for 100k objects in popular serialization formats." >}}
 
 ## File Size Comparison
 
