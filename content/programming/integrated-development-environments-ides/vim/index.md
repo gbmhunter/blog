@@ -2,8 +2,8 @@
 author: "gbmhunter"
 date: 2018-12-03
 description: "Regex find/replace, back-references and more info about the text-editor vim."
-lastmod: 2019-01-15
-tags: [ "vim", "text editor", "linux", "command-line", "regex", "IDE", "copy", "paste", "system clipboard", "yank", "indenting" ]
+lastmod: 2019-02-12
+tags: [ "vim", "text editor", "Linux", "command-line", "regex", "IDE", "copy", "paste", "system clipboard", "yank", "indenting", "plugins" ]
 title: "vim"
 type: "page"
 ---
@@ -106,3 +106,25 @@ Unfortunately, the selection is deselected as soon as you press the `<` or `>` k
 When in normal mode, you can press `>>` or `<<` to shift the current line.
 
 When in insert mode, you can use `Ctrl-T` to indent right and `Ctrl-D` to indent left (unindent).
+
+## Plugins And Plugin Managers
+
+vim supports third-party plugins which can add extra functionality to the program, however there is no built-in plugin manager. A number of third-party plugin managers exist which can be used to easily install and use plugins.
+
+### dein.vim
+
+* Website: https://github.com/Shougo/dein.vim
+
+neobundle is deprecated in favour of this vim plugin manager.
+
+### neobundle
+
+* Website: https://github.com/Shougo/neobundle.vim
+
+neobundle has been deprecated in favour of dein.vim.
+
+### vundle
+
+* Website: https://github.com/VundleVim/Vundle.vim
+
+vundle manages your plugins from the .vimrc file. It is easy to install and setup. vundle supports automatic installation of vim plugins from GitHub.

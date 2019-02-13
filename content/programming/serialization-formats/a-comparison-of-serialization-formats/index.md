@@ -196,14 +196,23 @@ yaml     | 4.96                    | 5.70                      | 69.67          
 
 When serializing large amounts of data, another important aspect is the verbosity of the format. To compare the verbosity of the different formats, we can pass each format the same data, dump the data to disk, and compare the file sizes.
 
+Format   | File Size (MiB, 10k records) | File Size (MiB, 100k records)
+---------|-------------------------------------------------------------
+csv      | 0.41                         | 4.2 
+json     | 0.81                         | 8.2
+protobuf | 0.38                         | 3.9
+toml     | 0.94                         | 9.5
+xml      | 1.50                         | 15
+yaml     | 0.80                         | 8.1
+
 {{< img src="serialization-formats-file-sizes.png" width="600px" caption="Comparative file sizes for popular serialization formats." >}}
 
 
 
-## Other Formats
+## Other Formats That Weren't Considered
 
-* BSON
-* MessagePack
+* BSON.
+* MessagePack. This looks similar to protobuf (uses binary encoding). Has libraries for a wide variety of languages.
 
 ## Template
 
