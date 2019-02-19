@@ -10,6 +10,8 @@ type: page
 
 ## Overview
 
+Went you want to save, send or receive data from a piece of software, there are many different serialization formats to choose from. What is the best choice for your use case? This page aims to answer this question by comparing some of the most popular serialization formats.
+
 The following serialization formats will be reviewed:
 
 * CSV
@@ -19,52 +21,65 @@ The following serialization formats will be reviewed:
 * XML
 * YAML
 
-There is no one-size-fits-all serialization format, as the best format for the jobs depends on things such as the type and amount of data that is being serialized. 
+There is no one-size-fits-all serialization format, as the best format for the jobs depends on things such as the type/amount of data that is being serialized and the software that will be reading it. 
 
 ## CSV
 
-CSV is well suited to storing large amounts of tabulated data in a human-readable format. It is not well suited to storing objects or hash table like data structures. CSV is not very well standardized. [RFC 4180](https://tools.ietf.org/html/rfc4180)  was an attempt to standardize the format, however the name "CSV" may refer to files which are delimited by non-comma characters such as spaces, tabs or semi-colons. In fact, it used to be called **Delimiter Separated Values (DSV)**, although unfortunately CSV seems like the more prevalent term these days.
+{{< img src="file-icon-csv.png" width="100px" caption="" >}}
+
+CSV is well suited to storing large amounts of tabulated data in a human-readable format. It is not well suited to storing objects or hash table like data structures (unlike every other serialization format that is reviewed here). CSV is not very well standardized. [RFC 4180](https://tools.ietf.org/html/rfc4180) was an attempt to standardize the format, however the name "CSV" may refer to files which are delimited by non-comma characters such as spaces, tabs or semi-colons. In fact, it used to be called **Delimiter Separated Values (DSV)**, although unfortunately CSV seems like the more prevalent term these days.
 
 The CSV format allows an optional __header line__ appearing as the first line in the file. If present, it contains field names for each value in a record. This header line is very useful the labelling the data and should almost always be present.
 
 The CSV format is well supported, with CSV libraries available for almost every popular programming language.
+
+For a human-readable format, CSV is quite concise (see the File Size section for more info). However, it can be difficult to work out what column is what, especially when there are a large number of rows (there is only one header column right at the top of the file), there are a large number of columns (there is no requirement of the columns being equal-spaced, and so you end up counting the commas from the left), and/or if there are empty fields (i.e. `,,`).
 
 ### Example
 
 ```csv
 name, age, address
 Charmander, 21, Fire St
-Charmander, 22, Electric St
+Pikachu, 22, Electric St
 ```
 
 ### Review
 
-Property         | Value
------------------|---------
-Human Readability| 5/10
-Language Support | 9/10
-Relational Data  | No
-Speed            | 8/10
-Standardization  | 3/10
-Website          | 
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>           <th>Value</th>      <th>Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="ok">
+            <td>Brevity</td>            <td>9/10</td>       <td>With only commas separating values, CSV is very concise.</td>
+        </tr>
+        <tr class="warning">
+            <td>Human Readability</td>  <td>5/10</td>       <td>CSV is readable, although it easy to get lost with a large amount of data.</td>
+        </tr>
+        <tr class="ok">
+            <td>Language Support</td>   <td>9/10</td>       <td>CSV is wide support and is readable is almost every major language.</td>
+        </tr>
+        <tr class="error">
+            <td>Data Structure Support</td><td>3/10</td>    <td>CSV only supports tabular/array-like data. It does not support dictionary/map-like data, nor relational data.</td>
+        </tr>
+        <tr class="ok">
+            <td>Speed</td>              <td>8/10</td>       <td>CSV is very fast to serialize/deserialize.</td>
+        </tr>
+        <tr class="error">
+            <td>Standardization</td>    <td>3/10</td>       <td>CSV is not well standardized.</td>
+        </tr>
+    </tbody>
+</table>
 
 ## JSON
 
-JSON is a ubiquitous human-readable data serialization format that is supported by almost every popular programming language.
+{{< img src="file-icon-json.png" width="100px" caption="" >}}
 
-### Pros And Cons
+JSON is a ubiquitous human-readable data serialization format that is supported by almost every popular programming language. Data structures closely represent common objects in many languages, e.g. a Python `dict` can be represented by a JSON `object`, and a Python `list` by a JSON `array`. Note there are caveats to this!
 
-**Pros:**
-
-* Widely supported by almost all popular languages.
-* Typically faster to parse than YAML or TOML.
-* Human readable.
-* Data structures closely represent common objects in many languages, e.g. a Python `dict` can be represented by a JSON `object`, and a Python `list` by a JSON `array`. Note there are caveats to this!
-
-**Cons:**
-
-* JSON syntax does not support comments! The best you can do is add a `__comment__` name/value pair to JSON objects, which is a poor solution.
-* The name in a JSON object's name/value pairs always has to be a string.
+Unfortunately, the JSON syntax does not support comments! The best you can do is add a `__comment__` name/value pair to JSON objects, which is a poor solution. The name in a JSON object's name/value pairs always has to be a string. It also does not support any type of date format.
 
 ### Example
 
@@ -76,7 +91,7 @@ JSON is a ubiquitous human-readable data serialization format that is supported 
         "address": "Fire Street"
     },
     {
-        "name": "Picachu",
+        "name": "Pikachu",
         "age": 22,
         "address": "Electric Street"
     },
@@ -85,24 +100,77 @@ JSON is a ubiquitous human-readable data serialization format that is supported 
 
 ### Review
 
-Property         | Value
------------------|---------
-Human Readability| 5/10
-Language Support | 9/10
-Standardization  | 9/10
-Website          | <https://www.json.org/>
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>           <th>Value</th>      <th>Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="ok">
+            <td>Brevity</td>            <td>8/10</td>       <td>JSON has concise syntax.</td>
+        </tr>
+        <tr class="warning">
+            <td>Human Readability</td>  <td>5/10</td>       <td>JSON is human-readable. It loses some marks because it does not support comments.</td>
+        </tr>
+        <tr class="ok">
+            <td>Language Support</td>   <td>9/10</td>       <td></td>
+        </tr>
+        <tr class="error">
+            <td>Data Type Support</td>  <td>6/10</td>       <td>JSON supports array and map (object) structures. It supports many different data types including strings, numbers, boolean, null, e.t.c, but not dates.</td>
+        </tr>
+        <tr class="ok">
+            <td>Speed</td>              <td>7/10</td>       <td>JSON is usually fast to serialize/deserialize.</td>
+        </tr>
+        <tr class="error">
+            <td>Standardization</td>    <td>9/10</td>       <td>JSON has an official standards body. https://www.json.org/</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Protocol Buffers (Protobuf)
 
-Protobuf is a binary serialization protocol developed by Google. It is not human readable.
+{{< img src="protobuf-icon" width="200px" caption="" >}}
+
+Protobuf is a binary serialization protocol developed by Google. Since it serializes to binary, it is not human readable (although you can still pick out strings when viewing the file as ASCII text, see the example below).
+
+### Example
+
+Since protobuf serializes to a binary format, the example is not really human-readable, although you can see the raw strings like `Pikachu` and `Fire Street` embedded within the file, when the binary file is rendered as ASCII text.
+
+```
+#^R^Charmander^Z^Fire Street%<A2>@
+^A^R^Pikachu^Z^Electric Street%<F1>'OA
+```
 
 ## TOML
 
-TOML suffers from verbose syntax when it comes to arrays.
+{{< img src="toml-icon" width="200px" caption="" >}}
+
+TOML (Tom's Obvious, Minimal Language) is a newer (relative to the others in this review) human-readable serialization format.
+
+TOML suffers from verbose syntax when it comes to expressing an array of objects (on in TOML speak, an array of tables). This can be seen in the example below where each pokemon object in the array is delimited with `[[pokemon]]`.
+
+```toml
+[[pokemon]]
+id = 0
+name = "Charmander"
+address = "Fire Street"
+age = 21
+
+[[pokemon]]
+name = "Pikachu"
+address = "Electric Street"
+age = 22
+```
 
 ## XML
 
-XML is a human-readable serialization protocol. XMl can be considered quite verbose as it requires descriptive end tags. A well known XML-like format is HTML which is used to determine the structure of web pages.
+{{< img src="xml-file-icon" width="150px" caption="" >}}
+
+XML is a human-readable serialization protocol. A well known XML-like format is HTML which is used to determine the structure of web pages.
+
+One disadvantage of XML is it's verbosity. It's descriptive end tags which require you to re-type the name of the element that is being closed adds to the byte count of XML data.
 
 ### Example
 
@@ -131,7 +199,7 @@ Human Readability| 5/10
 Language Support | 9/10
 Speed            | 9/10
 Standardization  | /10
-Website          | <>
+Website          | <https://www.w3.org/TR/xml/> (the W3C standard)
 
 ## YAML
 
@@ -151,12 +219,12 @@ The following libraries were used:
 
 Format      | Python                                | C++
 ------------|---------------------------------------|---------------------------------------------------------------------------
-CSV         | csv (built-in)                        | fast-cpp-csv-parser (https://github.com/ben-strasser/fast-cpp-csv-parser)
-JSON        | json (built-in)                       | json (https://github.com/nlohmann/json)
-Protobuf    | protobuf                              | protobuf
-TOML        | toml (https://github.com/uiri/toml)   | cpptoml (https://github.com/skystrife/cpptoml)
-YAML        | PyYAML (https://pyyaml.org/)          | yaml-cpp (https://github.com/jbeder/yaml-cpp)
-XML         | ElementTree (built-in)                | tinyxml2 (https://github.com/leethomason/tinyxml2)
+CSV         | csv (built-in)                        | fast-cpp-csv-parser (<https://github.com/ben-strasser/fast-cpp-csv-parser>)
+JSON        | json (built-in)                       | json (<https://github.com/nlohmann/json>)
+Protobuf    | protobuf                              | protobuf (<https://github.com/protocolbuffers/protobuf>)
+TOML        | toml (<https://github.com/uiri/toml>) | cpptoml (<https://github.com/skystrife/cpptoml>)
+YAML        | PyYAML (<https://pyyaml.org/>)        | yaml-cpp (<https://github.com/jbeder/yaml-cpp>)
+XML         | ElementTree (built-in)                | tinyxml2 (<https://github.com/leethomason/tinyxml2<>)
 
 Python v3.7 was used for all Python tests. C++17/GCC compiler was used for all C++ tests. Tests ran on a Debian machine running inside a virtual machine, however the purpose of this test was to show relative performance, which should be unchanged when running inside a virtual machine.
 
@@ -197,7 +265,7 @@ yaml     | 4.96                    | 5.70                      | 69.67          
 When serializing large amounts of data, another important aspect is the verbosity of the format. To compare the verbosity of the different formats, we can pass each format the same data, dump the data to disk, and compare the file sizes.
 
 Format   | File Size (MiB, 10k records) | File Size (MiB, 100k records)
----------|-------------------------------------------------------------
+---------|------------------------------|------------------------------
 csv      | 0.41                         | 4.2 
 json     | 0.81                         | 8.2
 protobuf | 0.38                         | 3.9
@@ -205,13 +273,15 @@ toml     | 0.94                         | 9.5
 xml      | 1.50                         | 15
 yaml     | 0.80                         | 8.1
 
+As expected, the file sizes grow linearly with the number of records stored (10x amount of data = 10x the file size).
+
 {{< img src="serialization-formats-file-sizes.png" width="600px" caption="Comparative file sizes for popular serialization formats." >}}
 
 
 
 ## Other Formats That Weren't Considered
 
-* BSON.
+* BSON. A binary format popularized by MongoDB that is based on JSON.
 * MessagePack. This looks similar to protobuf (uses binary encoding). Has libraries for a wide variety of languages.
 
 ## Template

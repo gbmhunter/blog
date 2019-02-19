@@ -130,6 +130,18 @@ div.content td li {
     text-align: left; /* Left aligns text in lists */
 }
 
+div.content tr.ok {
+    background-color: #d7fcd3;
+}
+
+div.content tr.warning {
+    background-color: #f5f5d3;
+}
+
+div.content tr.error {
+    background-color: #ffe3e3;
+}
+
 /* Allow for special paragraphs that have centered text */
 div.content p.centered {
     text-align: center;
