@@ -2,10 +2,31 @@
 author: gbmhunter
 date: 2018-11-29
 draft: false
-title: matplotlib
+lastmod: 2019-02-20
+title: "matplotlib"
 type: page
-url: /programming/languages/python/matplotlib
 ---
+
+## Importing
+
+`matplotlib`, just like `numpy`, is one of those libraries which has so much legacy behind the import statement that it's worth breaking Python style rules and using the `at` keyword to change the name of the imported library. Traditionally, `matplotlib.pyplot` is imported as `plt`, with the statement:
+
+```py
+import matplotlib.pyplot as plt
+```
+
+## Using subplots
+
+```py
+# Create two plots, in a grid with 2 rows and 1 column
+# (plots will be stacked vertically)
+fig, axs = plt.subplots(1, 2)
+
+ax1 = axs[0]
+ax2 = axs[1]
+
+# Use each axX object normally...
+```
 
 ## Two Y-Axis Example
 

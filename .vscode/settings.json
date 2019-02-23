@@ -51,6 +51,7 @@
         "qspi",
         "rfid",
         "shebang",
+        "slerp",
         "snvts",
         "staticmethod",
         "tftp",

@@ -2,6 +2,8 @@
 author: gbmhunter
 date: 2014-11-13
 draft: false
+lastmod: 2019-02-14
+tags: [ "quaternion", "matrix", "rotation", "complex", "SLERP", "interpolation", "Euler", "angle", "RPY", "gimbal lock", "attitude", "orientation", "vector" ]
 title: "Quaternions"
 type: page
 ---
@@ -16,7 +18,7 @@ There are a number of different ways to describe rotations. These include:
 * Rotation matrices
 * Quaternions
 
-Quaternions do not suffer from the **gimbal lock** that Euler angles do. A quaternion describes a rotation from one coordinate system to another. When they are used purely to represent a rotation (e.g. no reference coordinate system specified), they are called **rotation quaternions**. They can also be used to decribe an orientation, as long as a reference coordinate system is supplied (in which the quaternion specifies the orientation as a rotation from the reference coordinate system to the coordinate system of the rotated object). In this case they are called **orientation quaternions**.
+Quaternions do not suffer from the **gimbal lock** that Euler angles do. A quaternion describes a rotation from one coordinate system to another. When they are used purely to represent a rotation (e.g. no reference coordinate system specified), they are called **rotation quaternions**. They can also be used to describe an orientation, as long as a reference coordinate system is supplied (in which the quaternion specifies the orientation as a rotation from the reference coordinate system to the coordinate system of the rotated object). In this case they are called **orientation quaternions**.
 
 ## Scalar And Vector
 
@@ -40,7 +42,7 @@ Given two quaternion rotations that are to be applied consecutively, `\( R_A \)`
 
 <div>$$ R_C = R_B R_A $$</div>
 
-Remember that quaternion multiplication is not associative, so the ordering of `\( R_A \)` and `\( R_B \)` is important.
+Remember that **quaternion multiplication is not associative**, so the ordering of `\( R_A \)` and `\( R_B \)` is important.
 
 ## Some Useful Quaternions
 
@@ -56,3 +58,11 @@ $$ q = [\sqrt{0.5}, 0, 0, \sqrt{0.5}] $$</div>  | Rotation of 90 around Z axis.
 $$ q = [\sqrt{0.5}, -\sqrt{0.5}, 0, 0] $$</div> | Rotation of -90 around X axis.
 $$ q = [\sqrt{0.5}, 0, -\sqrt{0.5}, 0] $$</div> | Rotation of -90 around Y axis.
 $$ q = [\sqrt{0.5}, 0, 0, -\sqrt{0.5}] $$</div> | Rotation of -90 around Z axis.
+
+## Interpolation
+
+### SLERP
+
+SLERP is shorthand for **spherical linear interpolation**. It is commonly used with quaternions to produce a smooth rotation of a 3D body from one orientation to another.
+
+[https://en.wikipedia.org/wiki/Slerp](https://en.wikipedia.org/wiki/Slerp) has some code examples in Python and C++ that perform SLERP on quaternions.
