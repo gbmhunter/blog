@@ -38,9 +38,9 @@ For a human-readable format, CSV is quite concise (see the File Size section for
 ### Example
 
 ```csv
-name, age, address
-Charmander, 21, Fire St
-Pikachu, 22, Electric St
+id, name, age, address
+4, Charmander, 12.34, Fire St
+25, Pikachu, 56.78, Electric St
 ```
 
 ### Review
@@ -86,13 +86,15 @@ Unfortunately, the JSON syntax does not support comments! The best you can do is
 ```json
 [
     {
+        "id": 4,
         "name": "Charmander",
-        "age": 21,
+        "age": 12.34,
         "address": "Fire Street"
     },
     {
+        "id": 25,
         "name": "Pikachu",
-        "age": 22,
+        "age": 56.78,
         "address": "Electric Street"
     },
 ]
@@ -108,7 +110,7 @@ Unfortunately, the JSON syntax does not support comments! The best you can do is
     </thead>
     <tbody>
         <tr class="ok">
-            <td>Brevity</td>            <td>8/10</td>       <td>JSON has concise syntax.</td>
+            <td>Brevity</td>            <td>8/10</td>       <td>JSON has concise syntax, although not as concise as YAML and TOML in most situations.</td>
         </tr>
         <tr class="warning">
             <td>Human Readability</td>  <td>5/10</td>       <td>JSON is human-readable. It loses some marks because it does not support comments.</td>
@@ -116,13 +118,13 @@ Unfortunately, the JSON syntax does not support comments! The best you can do is
         <tr class="ok">
             <td>Language Support</td>   <td>9/10</td>       <td></td>
         </tr>
-        <tr class="error">
+        <tr class="ok">
             <td>Data Type Support</td>  <td>6/10</td>       <td>JSON supports array and map (object) structures. It supports many different data types including strings, numbers, boolean, null, e.t.c, but not dates.</td>
         </tr>
         <tr class="ok">
             <td>Speed</td>              <td>7/10</td>       <td>JSON is usually fast to serialize/deserialize.</td>
         </tr>
-        <tr class="error">
+        <tr class="ok">
             <td>Standardization</td>    <td>9/10</td>       <td>JSON has an official standards body. https://www.json.org/</td>
         </tr>
     </tbody>
@@ -136,33 +138,94 @@ Protobuf is a binary serialization protocol developed by Google. Since it serial
 
 ### Example
 
-Since protobuf serializes to a binary format, the example is not really human-readable, although you can see the raw strings like `Pikachu` and `Fire Street` embedded within the file, when the binary file is rendered as ASCII text.
-
 ```
 #^R^Charmander^Z^Fire Street%<A2>@
 ^A^R^Pikachu^Z^Electric Street%<F1>'OA
 ```
 
+### Review
+
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>           <th>Value</th>      <th>Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="ok">
+            <td>Brevity</td>            <td>9/10</td>       <td>Protobuf, being a binary format, is very concise. Would get 10/10 if it implemented some type of encoding scheme.</td>
+        </tr>
+        <tr class="error">
+            <td>Human Readability</td>  <td>1/10</td>       <td>Protobuf is not designed to be human-readable.</td>
+        </tr>
+        <tr class="ok">
+            <td>Language Support</td>   <td>7/10</td>       <td>Protobuf supports C, C++, C#, Dart, Go, Java, , Objective-C, PHP, Python and Ruby.</td>
+        </tr>
+        <tr class="ok">
+            <td>Data Type Support</td>  <td>8/10</td>       <td>Protobuf allows you to define data structures in .proto files. Protobuf supports many basic primitive types, which can be combined into classes, which can then be combined into other classes.</td>
+        </tr>
+        <tr class="ok">
+            <td>Speed</td>              <td>9/10</td>       <td>Protobuf is very fast, especially in C++ (relative to other serialization formats).</td>
+        </tr>
+        <tr class="ok">
+            <td>Standardization</td>    <td>9/10</td>       <td>Protobuf is standardized by Google.</td>
+        </tr>
+    </tbody>
+</table>
+
 ## TOML
 
 {{< img src="toml-icon" width="200px" caption="" >}}
 
-TOML (Tom's Obvious, Minimal Language) is a newer (relative to the others in this review) human-readable serialization format.
+TOML (Tom's Obvious, Minimal Language) is a newer (relative to the others in this review) human-readable serialization format. It is quite similar to YAML in that is is aimed towards configuration files, but is strives to be simpler format (YAML can get quite complex, and this can be seen in the much slower YAML parse times).
+
+TOML has syntax highlighters for Atom, Visual Studio, Visual Studio Code and other IDEs.
 
 TOML suffers from verbose syntax when it comes to expressing an array of objects (on in TOML speak, an array of tables). This can be seen in the example below where each pokemon object in the array is delimited with `[[pokemon]]`.
 
 ```toml
 [[pokemon]]
-id = 0
+id = 4
 name = "Charmander"
 address = "Fire Street"
-age = 21
+age = 12.34
 
 [[pokemon]]
+id = 25
 name = "Pikachu"
 address = "Electric Street"
-age = 22
+age = 56.78
 ```
+
+### Review
+
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>           <th>Value</th>      <th>Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="ok">
+            <td>Brevity</td>            <td>7/10</td>       <td>TOML is quite concise, except for when it comes to arrays of tables.</td>
+        </tr>
+        <tr class="error">
+            <td>Human Readability</td>  <td>9/10</td>       <td>One of TOML's primary goals was to be very easy to understand.</td>
+        </tr>
+        <tr class="ok">
+            <td>Language Support</td>   <td>7/10</td>       <td></td>
+        </tr>
+        <tr class="ok">
+            <td>Data Type Support</td>  <td>9/10</td>       <td>TOML does not support references like YAML does (probably because TOML aimes to be simple).</td>
+        </tr>
+        <tr class="warning">
+            <td>Speed</td>              <td>6/10</td>       <td>TOML is on the slower end of the spectrum, but is faster than YAML.</td>
+        </tr>
+        <tr class="ok">
+            <td>Standardization</td>    <td>9/10</td>       <td>TOML is well standardized.</td>
+        </tr>
+    </tbody>
+</table>
 
 ## XML
 
@@ -172,20 +235,22 @@ XML is a human-readable serialization protocol. A well known XML-like format is 
 
 One disadvantage of XML is it's verbosity. It's descriptive end tags which require you to re-type the name of the element that is being closed adds to the byte count of XML data.
 
+The specification for XML can be found at <https://www.w3.org/TR/xml/>.
+
 ### Example
 
 ```xml
 <people>
     <person>
-        <id>0</id>
+        <id>4</id>
         <name>Charmander</name>
-        <age>21</age>
+        <age>12.34</age>
         <address>Fire St</address>
     </person>
     <person>
-        <id>1</id>
+        <id>25</id>
         <name>Pikachu</name>
-        <age>22</age>
+        <age>56.78</age>
         <address>Electric Street</address>
     </person>
 </people>
@@ -193,25 +258,74 @@ One disadvantage of XML is it's verbosity. It's descriptive end tags which requi
 
 ### Review
 
-Property         | Value
------------------|---------
-Human Readability| 5/10
-Language Support | 9/10
-Speed            | 9/10
-Standardization  | /10
-Website          | <https://www.w3.org/TR/xml/> (the W3C standard)
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>           <th>Value</th>      <th>Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="error">
+            <td>Brevity</td>            <td>3/10</td>       <td>XML is not known for being short and sweet.</td>
+        </tr>
+        <tr class="warning">
+            <td>Human Readability</td>  <td>5/10</td>       <td>Human-readable, although you can get lost in-between all the tags in-front of your eyes.</td>
+        </tr>
+        <tr class="ok">
+            <td>Language Support</td>   <td>9/10</td>       <td>Supported in all major languages, usually with built-in libraries.</td>
+        </tr>
+        <tr class="ok">
+            <td>Data Type Support</td>  <td>9/10</td>       <td>XML is very flexible as each element can have attributes and arbitrary child elements.</td>
+        </tr>
+        <tr class="ok">
+            <td>Speed</td>              <td>9/10</td>       <td>See the <a href="#speed-comparison-benchmarking">Speed Comparison Benchmarking section for more info.</a>.</td>
+        </tr>
+        <tr class="ok">
+            <td>Standardization</td>    <td>9/10</td>       <td></td>
+        </tr>
+    </tbody>
+</table>
 
 ## YAML
 
-The YAML specification is much larger the the JSON specification. YAML allows for relational data (references) using anchors (`)
+{{< img src="yaml-file-icon" width="150px" caption="" >}}
 
-Property         | Value
------------------|---------
-Human Readability| 9/10
-Language Support | 6/10
-Speed            | 4/10
-Standardization  | 8/10
-Website          | <https://yaml.org/>
+The YAML specification is much larger the the JSON specification. YAML allows for relational data (references) using anchors (`). YAML gets some bonus style points since the YAML homepage is even displayed in YAML (<https://yaml.org/>).
+
+```yaml
+- { id: 0, name: Charmander, age: 12.34, address: "Fire Street" }
+- { id: 25, name: Pikachu, age: 56.78, address: "Electric Street" }
+```
+
+### Review
+
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>           <th>Value</th>      <th>Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="error">
+            <td>Brevity</td>            <td>9/10</td>       <td>Values can default to strings, allowing you to omit quote marks. It has terser syntax than TOML for arrays of objects (in TOML you have proceed each element with [[array_name]]).</td>
+        </tr>
+        <tr class="warning">
+            <td>Human Readability</td>  <td>7/10</td>       <td>Basic YAML is really easy to read, however YAML's complexity can confuse a reader when using it's advanced features.</td>
+        </tr>
+        <tr class="warning">
+            <td>Language Support</td>   <td>6/10</td>       <td></td>
+        </tr>
+        <tr class="ok">
+            <td>Data Type Support</td>  <td>10/10</td>       <td>YAML even supports references (relational data)!</td>
+        </tr>
+        <tr class="error">
+            <td>Speed</td>              <td>3/10</td>       <td>YAML showed the slowest serialization/deserialization runtimes out of any format I tested, in both C++ and Python.</td>
+        </tr>
+        <tr class="ok">
+            <td>Standardization</td>    <td>9/10</td>       <td></td>
+        </tr>
+    </tbody>
+</table>
 
 ## Speed Comparison (Benchmarking)
 
@@ -260,6 +374,8 @@ yaml     | 4.96                    | 5.70                      | 69.67          
 
 {{< img src="serialization-formats-conversion-times-100k-python.png" width="600px" caption="Python conversion times for 100k objects in popular serialization formats." >}}
 
+The code that performed these tests can be found at <https://github.com/gbmhunter/BlogAssets/tree/master/Programming/serialization-formats>.
+
 ## File Size Comparison
 
 When serializing large amounts of data, another important aspect is the verbosity of the format. To compare the verbosity of the different formats, we can pass each format the same data, dump the data to disk, and compare the file sizes.
@@ -277,8 +393,6 @@ As expected, the file sizes grow linearly with the number of records stored (10x
 
 {{< img src="serialization-formats-file-sizes.png" width="600px" caption="Comparative file sizes for popular serialization formats." >}}
 
-
-
 ## Other Formats That Weren't Considered
 
 * BSON. A binary format popularized by MongoDB that is based on JSON.
@@ -293,3 +407,7 @@ Language Support | /10
 Speed            | /10
 Standardization  | /10
 Website          | <>
+
+1-3: Error
+4-6: Warning
+7-10: Ok
