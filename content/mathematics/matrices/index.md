@@ -12,7 +12,7 @@ type: page
 
 ### Numpy
 
-The dot product of arrays of vectors can be calculated with:
+The dot product of arrays of vectors can be calculated using Numpy with:
 
 ```python
 import numpy as np
