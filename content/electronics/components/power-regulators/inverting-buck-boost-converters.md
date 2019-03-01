@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-04-13 08:22:46+00:00
+date: 2015-04-13
 draft: false
-title: Inverting Buck-Boost Converters
+title: "Inverting Buck-Boost Converters"
 type: page
-url: /electronics/components/power-regulators/inverting-buck-boost-converters
 ---
 
 ## Overview

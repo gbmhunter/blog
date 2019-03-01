@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2014-11-09 03:57:49+00:00
+date: 2014-11-09
 draft: false
-title: Linear Regulators
+title: "Linear Regulators"
 type: page
-url: /electronics/components/power-regulators/linear-regulators
 ---
 
 ## Overview
@@ -54,13 +53,17 @@ While you easily blow up regulators in the 1990's, even the very cheap modern-da
 
 Variable output-voltage linear regulators usually have a feedback pin for setting the voltage. This pin is normally connected to the centre of a resistor divider between the output pin and ground. The ratio of the resistances determines the output voltage. When using these types of linear regulators, it can help to have a **bypass capacitor** between the output pin and the feedback pin. These are also known as **feedforward capacitors**.
 
-Adding capacitance here helps improve the AC characteristics of the linear regulator, which includes:  * Better transient response to load changes  * Increases the PSRR (power supply rejection ratio)  * Decreases the noise added to the line by the linear regulator
+Adding capacitance here helps improve the AC characteristics of the linear regulator, which includes:
+
+* Better transient response to load changes
+* Increases the PSRR (power supply rejection ratio)
+* Decreases the noise added to the line by the linear regulator
 
 A typical value of a bypass capacitor is `\(10nF\)`.
 
 ## DDR Termination Regulators
 
-DDR termination regulators are special-purpose linear regulators designed for powering DDR memory ICs. They usually provide the multiple voltage rails that are required to drive DDR memory, along with the power control logic required to meet the DDR spec (incl. suspend to RAM, suspend to disk states).
+DDR termination regulators are special-purpose linear regulators designed for powering DDR memory ICs. They usually provide the multiple voltage rails that are required to drive DDR memory, along with the power control logic required to meet the DDR spec. (incl. suspend to RAM, suspend to disk states).
 
 {{< figure src="/images/2014/11/tps51206-ti-ddr-termination-regulator-simplified-application-schematic.png" width="470px" caption="The Texas Instruments TPS51206 IC, a DDR termination regulator (linear). Image from http://www.ti.com/."  >}}
 

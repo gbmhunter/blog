@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2014-12-01 02:44:46+00:00
+date: 2014-12-01
 draft: false
-title: Charge Pumps
+title: "Charge Pumps"
 type: page
-url: /electronics/components/power-regulators/charge-pumps
 ---
 
 ## Overview
