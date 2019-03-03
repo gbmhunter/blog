@@ -1,8 +1,8 @@
 ---
 author: gbmhunter
 date: 2019-01-27
-draft: true
-lastmod: 2019-02-11
+draft: false
+lastmod: 2019-03-03
 tags: [ "serialization", "format", "comparison", "CSV", "JSON", "protobuf", "TOML", "XML", "YAML", "file size", "speed", "benchmark", "review", "Python", "C++" ]
 title: "A Comparison Of Serialization Formats"
 type: page
@@ -21,19 +21,25 @@ The following serialization formats will be reviewed:
 * XML
 * YAML
 
-There is no one-size-fits-all serialization format, as the best format for the jobs depends on things such as the type/amount of data that is being serialized and the software that will be reading it. 
+**There is no one-size-fits-all serialization format**, as the best format for the jobs depends on things such as the type/amount of data that is being serialized and the software that will be reading it.
+
+The examples in the following sections show how different formats store the same data. I chose a simple, repeatable data structure which was supported by all reviewed serialization formats (two `Pokemon` objects, each which had `id`, `name`, `age` and `address` fields). Note that many of these serialization formats can store non-repeatable, randomly structured data  (in fact, all can except CSV).
+
+In each review section, a score between 1-3 is highlighted red, 4-6 orange, and 6-10 green.
 
 ## CSV
 
 {{< img src="file-icon-csv.png" width="100px" caption="" >}}
 
-CSV is well suited to storing large amounts of tabulated data in a human-readable format. It is not well suited to storing objects or hash table like data structures (unlike every other serialization format that is reviewed here). CSV is not very well standardized. [RFC 4180](https://tools.ietf.org/html/rfc4180) was an attempt to standardize the format, however the name "CSV" may refer to files which are delimited by non-comma characters such as spaces, tabs or semi-colons. In fact, it used to be called **Delimiter Separated Values (DSV)**, although unfortunately CSV seems like the more prevalent term these days.
+CSV is well suited to storing large amounts of tabulated data in a human-readable format. It is not well suited to storing objects or hash table like data structures (unlike every other serialization format that is reviewed here).
 
-The CSV format allows an optional __header line__ appearing as the first line in the file. If present, it contains field names for each value in a record. This header line is very useful the labelling the data and should almost always be present.
+CSV is not very well standardized. [RFC 4180](https://tools.ietf.org/html/rfc4180) was an attempt to standardize the format, however the name "CSV" may refer to files which are delimited by non-comma characters such as spaces, tabs or semi-colons. In fact, it used to be called **Delimiter Separated Values (DSV)**, although unfortunately CSV seems like the more prevalent term these days.
+
+The CSV format allows an optional __header line__ appearing as the first line in the file. If present, it contains field names for each value in a record. This header line is very useful the labelling the data and **should almost always be present**.
 
 The CSV format is well supported, with CSV libraries available for almost every popular programming language.
 
-For a human-readable format, CSV is quite concise (see the File Size section for more info). However, it can be difficult to work out what column is what, especially when there are a large number of rows (there is only one header column right at the top of the file), there are a large number of columns (there is no requirement of the columns being equal-spaced, and so you end up counting the commas from the left), and/or if there are empty fields (i.e. `,,`).
+For a human-readable format, CSV is quite concise (see the [File Size section](#file-size-comparison) for more info). However, it can be difficult to work out what column is what, especially when there are a large number of rows (there is only one header column right at the top of the file), there are a large number of columns (there is no requirement of the columns being equal-spaced, and so you end up counting the commas from the left), and/or if there are empty fields (i.e. `,,`).
 
 ### Example
 
@@ -290,7 +296,13 @@ The specification for XML can be found at <https://www.w3.org/TR/xml/>.
 
 {{< img src="yaml-file-icon" width="150px" caption="" >}}
 
+YAML (*YAML Ain't Markup Language*)
+
 The YAML specification is much larger the the JSON specification. YAML allows for relational data (references) using anchors (`). YAML gets some bonus style points since the YAML homepage is even displayed in YAML (<https://yaml.org/>).
+
+YAML is a strict super-set of JSON, which means you can parse JSON with a YAML parser (the YAML parser will probably take longer though, so don't use this trick with large amounts of JSON data!).
+
+### Example
 
 ```yaml
 - { id: 0, name: Charmander, age: 12.34, address: "Fire Street" }
@@ -306,10 +318,10 @@ The YAML specification is much larger the the JSON specification. YAML allows fo
         </tr>
     </thead>
     <tbody>
-        <tr class="error">
+        <tr class="ok">
             <td>Brevity</td>            <td>9/10</td>       <td>Values can default to strings, allowing you to omit quote marks. It has terser syntax than TOML for arrays of objects (in TOML you have proceed each element with [[array_name]]).</td>
         </tr>
-        <tr class="warning">
+        <tr class="ok">
             <td>Human Readability</td>  <td>7/10</td>       <td>Basic YAML is really easy to read, however YAML's complexity can confuse a reader when using it's advanced features.</td>
         </tr>
         <tr class="warning">
@@ -319,28 +331,28 @@ The YAML specification is much larger the the JSON specification. YAML allows fo
             <td>Data Type Support</td>  <td>10/10</td>       <td>YAML even supports references (relational data)!</td>
         </tr>
         <tr class="error">
-            <td>Speed</td>              <td>3/10</td>       <td>YAML showed the slowest serialization/deserialization runtimes out of any format I tested, in both C++ and Python.</td>
+            <td>Speed</td>              <td>3/10</td>       <td>YAML showed the slowest serialization/deserialization runtimes out of any format I tested, in both C++ and Python (see the <a href="#speed-comparison-benchmarking">Speed Comparison section</a>) for more info).</td>
         </tr>
         <tr class="ok">
-            <td>Standardization</td>    <td>9/10</td>       <td></td>
+            <td>Standardization</td>    <td>9/10</td>       <td>YAML is well standardized.</td>
         </tr>
     </tbody>
 </table>
 
 ## Speed Comparison (Benchmarking)
 
-The following libraries were used:
+The following libraries were used for the speed comparison tests:
 
 Format      | Python                                | C++
 ------------|---------------------------------------|---------------------------------------------------------------------------
 CSV         | csv (built-in)                        | fast-cpp-csv-parser (<https://github.com/ben-strasser/fast-cpp-csv-parser>)
 JSON        | json (built-in)                       | json (<https://github.com/nlohmann/json>)
-Protobuf    | protobuf                              | protobuf (<https://github.com/protocolbuffers/protobuf>)
+Protobuf    | protobuf (<https://github.com/protocolbuffers/protobuf>) | protobuf (<https://github.com/protocolbuffers/protobuf>)
 TOML        | toml (<https://github.com/uiri/toml>) | cpptoml (<https://github.com/skystrife/cpptoml>)
 YAML        | PyYAML (<https://pyyaml.org/>)        | yaml-cpp (<https://github.com/jbeder/yaml-cpp>)
 XML         | ElementTree (built-in)                | tinyxml2 (<https://github.com/leethomason/tinyxml2<>)
 
-Python v3.7 was used for all Python tests. C++17/GCC compiler was used for all C++ tests. Tests ran on a Debian machine running inside a virtual machine, however the purpose of this test was to show relative performance, which should be unchanged when running inside a virtual machine.
+Python v3.7 was used for all Python tests. C++17/GCC compiler was used for all C++ tests. Tests ran on a Debian machine running inside a virtual machine. The purpose of this test was to show relative performance between the different serialization formats, which should be not be affected by running inside a virtual machine.
 
 As to be representative of how the serialization data might be used, all write tests where passed the same input data, either a `vector` (for the C++ tests) or a `List` (for the Python tests) of `Person` objects. Each `Person` contains an ID (an integer starting from 0), a name (random string of 5 ASCII chars), and address (random string of 30 ASCII chars) and an age (float). Each test was required to serialize the data to the required format (using the libraries mentioned above) and then write the serialized data to disk. All read tests performed the opposite task, reading a data file, deserializing and creating a `vector`/`List` of `Person` objects. 
 
@@ -393,21 +405,9 @@ As expected, the file sizes grow linearly with the number of records stored (10x
 
 {{< img src="serialization-formats-file-sizes.png" width="600px" caption="Comparative file sizes for popular serialization formats." >}}
 
+Being the only binary, non-human readable format that was compared, it's with no surprise that protobuf is the most concise format. Closely behind protobuf was CSV. Because CSV does not support irregular, non-flat data structures, it only requires a value delimiter (e.g. `,`) and end of line character (e.g. `\n`).
+
 ## Other Formats That Weren't Considered
 
 * BSON. A binary format popularized by MongoDB that is based on JSON.
 * MessagePack. This looks similar to protobuf (uses binary encoding). Has libraries for a wide variety of languages.
-
-## Template
-
-Property         | Value
------------------|---------
-Human Readability| /10
-Language Support | /10
-Speed            | /10
-Standardization  | /10
-Website          | <>
-
-1-3: Error
-4-6: Warning
-7-10: Ok
