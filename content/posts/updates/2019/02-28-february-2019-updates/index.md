@@ -3,7 +3,7 @@ date: 2019-02-28
 description: "Blog updates during February 2019."
 draft: false
 lastmod: 2019-02-28
-tags: []
+tags: [ "Bash", "terminal", "shell", "Python", "class", "object orientated", "OO", "Quaternion", "SLERP", "WebSocket" ]
 title: "February 2019 Updates"
 type: "post"
 ---
@@ -12,3 +12,6 @@ type: "post"
 
 * New [Python Classes And Object Orientated Programming page](/programming/languages/python/python-classes-and-object-orientated-programming).
 
+* New [WebSockets page](/programming/website-design/websockets) with a basic introduction only.
+
+* Updates to the [Quaternions page](/mathematics/geometry/quaternions/) including info on combining rotations, useful Quaternions and interpolation with SLERP.

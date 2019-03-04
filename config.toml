@@ -9,6 +9,10 @@ pygmentsCodeFences = "true"
 disqusShortname = "blog-mbedded-ninja"
 googleAnalytics = "UA-92834105-2"
 
+# This preserves the capitilization of tags, which is important for 
+# tags such as "CSS", "C++", "GPS", e.t.c.
+preserveTaxonomyNames = "true" 
+
 [params]
     author = "Geoffrey Hunter"
     description = "An embedded engineering site that's got your back."    

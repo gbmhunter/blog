@@ -1,25 +1,16 @@
 ---
 author: gbmhunter
-date: 2017-08-30 16:45:39+00:00
+date: 2017-08-30
 draft: false
-title: August 2017 Updates
+title: "August 2017 Updates"
 type: post
 categories:
 - Updates
-tags:
-- bindings
-- c
-- communication protocols
-- lightbox
-- linux
-- lvds
-- magic statics
-- memory
-- python
+tags: [ "bindings", "C", "communication protocols", "lightbox", "Linux", "LVDS", "magic statics", "memory", "Python" ]
 ---
 
 
-* New [Python SWIG Bindings Froms C/C++ page](/programming/languages/python/python-swig-bindings-from-cplusplus) under Programming->Languages->Python.
+* New [Python SWIG Bindings From C/C++ page](/programming/languages/python/python-swig-bindings-from-cplusplus) under Programming->Languages->Python.
 
 * New [LVDS (Low-Voltage Differential Signalling) page](/electronics/communication-protocols/lvds-low-voltage-differential-signalling) under Electronics->Communication Protocols.  
 

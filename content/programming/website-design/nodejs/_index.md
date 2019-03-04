@@ -1,34 +1,26 @@
 ---
 author: gbmhunter
-date: 2013-09-27 09:23:28+00:00
+date: 2013-09-27
 draft: false
 title: nodejs
 type: page
-url: /programming/website-design/nodejs
 ---
 
 ## Overview
 
-node.js is a platform built on the Chrome Javascript runtime engine. It uses a non-blocking, event-driven I/O model and uses the Javascript programming language. It comes with a standard set of pacakges to make life easier.
+node.js is a platform built on the Chrome Javascript runtime engine. It uses a non-blocking, event-driven I/O model and uses the Javascript programming language. It comes with a standard set of packages to make life easier.
 
 ## Child Pages
 
 <table>
 <tbody>
 <tr>
-<td >[Using Connect](/programming/website-design/nodejs/using-connect)
-</td>
-
-<td >How to use the Connect extension.
-</td>
+<td >[Using Connect](/programming/website-design/nodejs/using-connect)</td>
+<td >How to use the Connect extension.</td>
 </tr>
 <tr >
-
-<td >[Using Express](/programming/website-design/nodejs/using-express)
-</td>
-
-<td >How to make a server using the Express extension.
-</td>
+<td >[Using Express](/programming/website-design/nodejs/using-express)</td>
+<td >How to make a server using the Express extension.</td>
 </tr>
 </tbody>
 </table>
@@ -127,7 +119,7 @@ A giant list of node modules can be found at [https://github.com/joyent/node/wi
 
 ## RaspberryPi GPIO
 
-Make sure you start the nodejs script with admin privlages (sudo node myScript.js), otherwise you won't be able to control the GPIO (you will get an error similar to).
+Make sure you start the nodejs script with admin privileges (sudo node myScript.js), otherwise you won't be able to control the GPIO (you will get an error similar to).
 
 ## Packages I Have Found Useful
 
