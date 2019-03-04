@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2018-06-25 21:28:41+00:00
+date: 2018-06-25
 draft: false
 title: Numpy
 type: page
-url: /programming/languages/python/packages/numpy
 ---
 
 ## The Array

@@ -3,6 +3,7 @@ author: gbmhunter
 date: 2018-11-29
 draft: false
 lastmod: 2019-02-20
+tags: [ "matplotlib", "Python", "code", "programming", "graphs", "numpy", "pyplot", "pie chart", "chart" ]
 title: "matplotlib"
 type: page
 ---

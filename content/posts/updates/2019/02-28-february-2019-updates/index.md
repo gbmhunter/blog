@@ -10,7 +10,11 @@ type: "post"
 
 * Updates to the [Bash Programming page](/programming/languages/bash#dealing-with-special-characters) with a tutorial on how to deal with special characters in filenames and directories.
 
+    {{< img src="terminal-icon.png" width="200px" caption=""  >}}
+
 * New [Python Classes And Object Orientated Programming page](/programming/languages/python/python-classes-and-object-orientated-programming).
+
+    {{< img src="python-icon.png" width="200px" caption=""  >}}
 
 * New [WebSockets page](/programming/website-design/websockets) with a basic introduction only.
 
