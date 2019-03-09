@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
-date: 2014-02-08 03:28:52+00:00
+date: 2014-02-08
 draft: false
-title: Git
+lastmod: 2019-03-08
+title: "Git"
 type: page
-url: /programming/version-control-systems/git
 ---
 
 ## Pulling In Temporary Changes To Your Branch
