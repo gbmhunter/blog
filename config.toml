@@ -1,5 +1,7 @@
 # Making the baseURL empty allows links to work correctly on both
 # dev and prod
+# UPDATE 2019-03-10: Discovered sitemap.xml is incorrect when baseURL is empty,
+# recommendation is to set to prod URL
 baseURL = "https://blog.mbedded.ninja/"
 
 languageCode = "en-us"
