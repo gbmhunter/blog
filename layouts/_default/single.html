@@ -1,9 +1,10 @@
-{{/* USED FOR POSTS */}}
+{{/* USED FOR PAGES */}}
 {{ define "header" }}
    {{/* We can override any block in the baseof file be defining it in the template */}}
   {{ partial "page-header.html" . }}
 {{ end }}
 
 {{ define "main" }}
+    {{ partial "shuriken" . }}
     {{ partial "main_content" . }}
 {{ end }}
