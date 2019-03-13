@@ -1,22 +1,22 @@
 
-var shuriken;
+var shurikenCountEl;
+var shurikenImageEl;
 var count;
 
 function onLoad() {
   // Called when the page is loaded
-    getCount()
-    shuriken = document.getElementById('shuriken-count');
-    shuriken.onclick = onclick;
+  getCount()
+  shurikenCountEl = document.getElementById('shuriken-count');
+  shurikenImageEl = document.getElementById('shuriken-image')
 }
 
-const baseUrl = 'https://m5rhluaw6e.execute-api.us-east-1.amazonaws.com/dev/'
-const apiPrefix = 'plus-ones/'
+const baseUrl = 'https://qyw2xwnf7c.execute-api.us-east-1.amazonaws.com/dev/'
+const apiPrefix = 'shuriken/'
 
 function hello() {
   // This is the test end-point of the API
   const xhr = new XMLHttpRequest();
-  const addOnePrefix = 'hello'
-  xhr.open("GET", baseUrl + apiPrefix + addOnePrefix, true);
+  xhr.open("GET", baseUrl + apiPrefix + 'hello', true);
   xhr.send();
   xhr.onreadystatechange=(e)=>{
     console.log(xhr.responseText)
@@ -25,18 +25,13 @@ function hello() {
 
 function getCount() {
   const xhr = new XMLHttpRequest();
-  const addOnePrefix = 'get?url=' + window.location.href
-  url = baseUrl + apiPrefix + addOnePrefix
+  const prefix = 'get?url=' + window.location.href
+  url = baseUrl + apiPrefix + prefix
   xhr.open("GET", url, true);
-  console.log('Calling get with URL = ' + url)
   xhr.send();
   xhr.onreadystatechange = (e) => {
     if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-      console.log('respone text = ' + xhr.responseText)
       var data = JSON.parse(xhr.responseText)
-      console.log('data =')
-      console.log(data.count)
-
       count = data.count
       updateShuriken(data.count)
     }
@@ -45,10 +40,7 @@ function getCount() {
 
 function add() {
   const xhr = new XMLHttpRequest();
-  const addOnePrefix = 'add'
-  xhr.open("POST", baseUrl + apiPrefix + addOnePrefix, true);
-  // Http.setRequestHeader('Content-Type', 'text/xml');
-  console.log('Adding one...')
+  xhr.open("POST", baseUrl + apiPrefix + 'add', true);
   xhr.send(JSON.stringify({ "url": window.location.href }));
   xhr.onreadystatechange=(e)=>{
     if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
@@ -62,16 +54,17 @@ function add() {
   count += 1
   updateShuriken(count)
 
-  // To retrigger the animation we have to remove the HTML element from the DOM,
-  // and add it back in again.
-  const shurikenImage = document.getElementById('shuriken-image')
-  var newShurikenImage = shurikenImage.cloneNode(true);
-  shurikenImage.parentNode.replaceChild(newShurikenImage, shurikenImage);
-  document.getElementById('shuriken-image').classList.add('animate');
+  // To retrigger the animation we have to
+  // remove the animate class and add it back at a later
+  // time (1 ms in the future is good enough) 
+  shurikenImageEl.classList.remove("animate");
+  setTimeout(function(){
+       shurikenImageEl.classList.add("animate");
+    }, 1)
 }
 
 function updateShuriken(count) {
-  shuriken.innerHTML = '<div>' + count + '</div>';
+  shurikenCountEl.innerHTML = '<div>' + count + '</div>';
 }
 
 window.onload = onLoad;
