@@ -1,68 +1,73 @@
 
 var shuriken;
+var count;
 
 function onLoad() {
-
-    getOnes()
-
+  // Called when the page is loaded
+    getCount()
     shuriken = document.getElementById('shuriken-count');
-
     shuriken.onclick = onclick;
 }
 
-function onclick() {
-    console.log('Clicked')
-}
-
 const baseUrl = 'https://m5rhluaw6e.execute-api.us-east-1.amazonaws.com/dev/'
+const apiPrefix = 'plus-ones/'
 
 function hello() {
-  const Http = new XMLHttpRequest();
-  const apiPrefix = 'plus-ones/';
+  // This is the test end-point of the API
+  const xhr = new XMLHttpRequest();
   const addOnePrefix = 'hello'
-  Http.open("GET", baseUrl + apiPrefix + addOnePrefix, true);
-  console.log('Getting +1s...')
-  Http.send();
-  Http.onreadystatechange=(e)=>{
-    console.log(Http.responseText)
+  xhr.open("GET", baseUrl + apiPrefix + addOnePrefix, true);
+  xhr.send();
+  xhr.onreadystatechange=(e)=>{
+    console.log(xhr.responseText)
   }
 }
 
-function getOnes() {
-  const Http = new XMLHttpRequest();
-  const apiPrefix = 'plus-ones/';
+function getCount() {
+  const xhr = new XMLHttpRequest();
   const addOnePrefix = 'get?url=' + window.location.href
   url = baseUrl + apiPrefix + addOnePrefix
-  Http.open("GET", url, true);
+  xhr.open("GET", url, true);
   console.log('Calling get with URL = ' + url)
-  Http.send();
-  Http.onreadystatechange=(e)=>{
-    if (Http.readyState == XMLHttpRequest.DONE && Http.status == 200) {
-      console.log('respone text = ' + Http.responseText)
-      var data = JSON.parse(Http.responseText)
+  xhr.send();
+  xhr.onreadystatechange = (e) => {
+    if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+      console.log('respone text = ' + xhr.responseText)
+      var data = JSON.parse(xhr.responseText)
       console.log('data =')
       console.log(data.count)
 
+      count = data.count
       updateShuriken(data.count)
     }
   }
 }
 
 function add() {
-  const Http = new XMLHttpRequest();
-  const apiPrefix = 'plus-ones/';
+  const xhr = new XMLHttpRequest();
   const addOnePrefix = 'add'
-  Http.open("POST", baseUrl + apiPrefix + addOnePrefix, true);
+  xhr.open("POST", baseUrl + apiPrefix + addOnePrefix, true);
   // Http.setRequestHeader('Content-Type', 'text/xml');
   console.log('Adding one...')
-  Http.send(JSON.stringify({ "url": window.location.href }));
-  Http.onreadystatechange=(e)=>{
-    if (Http.readyState == XMLHttpRequest.DONE && Http.status == 200) {
-      console.log(Http.responseText)
-      var data = JSON.parse(Http.responseText)
-      updateShuriken(data.count)
+  xhr.send(JSON.stringify({ "url": window.location.href }));
+  xhr.onreadystatechange=(e)=>{
+    if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+      // Don't actually update the count from the return value, as it gives noticeable lag. Instead,
+      // the count is updated as soon as the shuriken is clicked
+      // console.log(Http.responseText)
+      var data = JSON.parse(xhr.responseText)
+      // updateShuriken(data.count)
     }
   }
+  count += 1
+  updateShuriken(count)
+
+  // To retrigger the animation we have to remove the HTML element from the DOM,
+  // and add it back in again.
+  const shurikenImage = document.getElementById('shuriken-image')
+  var newShurikenImage = shurikenImage.cloneNode(true);
+  shurikenImage.parentNode.replaceChild(newShurikenImage, shurikenImage);
+  document.getElementById('shuriken-image').classList.add('animate');
 }
 
 function updateShuriken(count) {
