@@ -5,9 +5,9 @@ var count;
 
 function onLoad() {
   // Called when the page is loaded
-  getCount()
   shurikenCountEl = document.getElementById('shuriken-count');
   shurikenImageEl = document.getElementById('shuriken-image')
+  getCount()
 }
 
 const baseUrl = 'https://qyw2xwnf7c.execute-api.us-east-1.amazonaws.com/dev/'
@@ -25,8 +25,11 @@ function hello() {
 
 function getCount() {
   const xhr = new XMLHttpRequest();
-  const prefix = 'get?url=' + window.location.href
+
+  // Remove all parts of the URL after and including the first question mark
+  const prefix = 'get?url=' + window.location.href.split("?")[0]
   url = baseUrl + apiPrefix + prefix
+  console.log(url)
   xhr.open("GET", url, true);
   xhr.send();
   xhr.onreadystatechange = (e) => {
