@@ -795,6 +795,7 @@ as you cannot easily hover on touch screen */
 
 #shuriken-image {
     width: 50px;
+    cursor: pointer;
 }
 
 #shuriken-image.animate {
