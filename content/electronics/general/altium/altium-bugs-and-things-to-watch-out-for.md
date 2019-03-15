@@ -2,9 +2,9 @@
 author: gbmhunter
 date: 2012-04-27 00:26:19+00:00
 draft: false
+tags: [ "Altium", "bugs", "crash", "error" ]
 title: Altium Bugs And Things To Watch Out For
 type: page
-url: /electronics/general/altium/altium-bugs-and-things-to-watch-out-for
 ---
 
 ## Overview
@@ -50,7 +50,7 @@ I have got fatal "Argument out of range" errors while performing basic routing t
 
 ## Vias Disappearing While Routing Tracks
 
-UPDATE, March 2016: This does seem to occur anymore with at least either AD15 or AD16.
+**UPDATE, March 2016: This does seem to occur anymore with at least either AD15 or AD16.**
 
 Vias disappearing when you route tracks to them. This is a weird one which has been around for a while. It only happens in certain situations...
 
@@ -70,11 +70,14 @@ UPDATE, March 2016: This does not seem to be happening anymore with AD15 or AD15
 
 Altium decides whether or not it wants to export holes/vias in step files. Upon importing these step files into a 3D CAD program, more often than not you will find that some of the holes have been covered (or partially covered) up by a very thin solid on the top and/or bottom. I have tried removing copper, silkscreen, soldermask and solderpaste layers to see if these were causing the trouble, but have had no luck in finding out why Altium does this. It is very annoying when it doesn't create the mounting holes, and you can't check that the PCB will work with the rest of the mechanical design (which is normally one of the reasons why you'd be exporting a 3D model).
 
-<table><tbody ><tr >
-<td >{{< figure src="/images/2012/04/altium-not-exporting-holes-properly-before.jpg" width="369px" caption="Hole in PCB."  >}}
-</td>
-<td >{{< figure src="/images/2012/04/altium-not-exporting-holes-properly-after.jpg" width="382px" caption="Hole covered over in step file output."  >}}
-</td></tr></tbody></table>
+<table>
+    <tbody>
+        <tr>
+            <td>{{< figure src="/images/2012/04/altium-not-exporting-holes-properly-before.jpg" width="369px" caption="Hole in PCB." >}}</td>
+            <td>{{< figure src="/images/2012/04/altium-not-exporting-holes-properly-after.jpg" width="382px" caption="Hole covered over in step file output." >}}</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Variants With Multi-part Components
 
@@ -188,23 +191,23 @@ The split-planes which Altium pours automatically do not ignore on-layer (i.e. o
 
 I have used the personal vault and come across the following issues:
 
-## There Is No Option To Set Default Parameters
+### There Is No Option To Set Default Parameters
 
-Remember when using schematic libraries (.SchLib), and you were able to set "shown-by-default" component parameters which would be visible when using the component on a schematic? Well, they no longer exist (as of Jan 2014), and there is no option in the component libraries (.CmpLib) to make any of those parameter you add shown by default. This means you have to manually go and make them visible for **every component you add from the vault** (e.g. resistance for resistors, capacitance and voltage for capacitors). This gets kinda annoying!
+Remember when using schematic libraries (`.SchLib`), and you were able to set "shown-by-default" component parameters which would be visible when using the component on a schematic? Well, they no longer exist (as of Jan 2014), and there is no option in the component libraries (`.CmpLib`) to make any of those parameter you add shown by default. This means you have to manually go and make them visible for **every component you add from the vault** (e.g. resistance for resistors, capacitance and voltage for capacitors). This gets kinda annoying!
 
 In the same vein, if you update a shcematic component with a new version from the vault via the "Properties for Schematic Component..." window, you lose all of the displayed parameters and have to tick them all over again.
 
-## The Personal Vault Looses Track Of Who Is Logged In
+### The Personal Vault Looses Track Of Who Is Logged In
 
 In the scenario where more than 3 people may access the vault (not all at the same time), I have had Altium lock me out because it believed 3 other users were currently using it, even though Altium was shutdown on their computers. The only fix I have found is to restart the server that the vault is running on.
 
-## No Way To Re-arrange Groups In Component Libraries
+### No Way To Re-arrange Groups In Component Libraries
 
-There is no way to re-arrange "Groups" in Component Libraries (.CmpLib). You can re-arrange components by clicking and dragging, but the groups are stuck in the same position as when you first created them. This can be annoying in the instance say, you created a component library for resistors, and you had a group called 0402, 0603 and 0805. Unless you create them in the correct order at the start, there is no way to re-arrange them from smallest to largest size in the future.
+There is no way to re-arrange "Groups" in Component Libraries (`.CmpLib`). You can re-arrange components by clicking and dragging, but the groups are stuck in the same position as when you first created them. This can be annoying in the instance say, you created a component library for resistors, and you had a group called 0402, 0603 and 0805. Unless you create them in the correct order at the start, there is no way to re-arrange them from smallest to largest size in the future.
 
 Also, the first group you create is always going to be the first group (due to the fact you cannot insert a new group above an old one, only below)!
 
-UPDATE (2014-11-04): As of Altium Vault 2.0 (released in 2014), this is no longer an issue, as the "Group" concept in the vaults has been changed significantly.
+**UPDATE (2014-11-04): As of Altium Vault 2.0 (released in 2014), this is no longer an issue, as the "Group" concept in the vaults has been changed significantly.**
 
 ## A Component Cannot Have Sub-Components
 

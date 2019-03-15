@@ -4,7 +4,6 @@ date: 2011-09-05 06:20:22+00:00
 draft: false
 title: Altium
 type: page
-url: /electronics/general/altium
 ---
 
 ## Overview

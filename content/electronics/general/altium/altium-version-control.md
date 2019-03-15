@@ -1,7 +1,8 @@
 ---
 author: gbmhunter
-date: 2011-09-05 06:23:30+00:00
+date: 2011-09-05
 draft: false
+tags: [ "Altium", "verison control", "Mercurial", "Git" ]
 title: Altium Version Control
 type: page
 ---
@@ -12,14 +13,14 @@ Although Altium Designer 10 (AD10) incorporates it's own proprietary collaborate
 
 This code prevents the following files and folders from being version controlled:
 
-* <AltiumProjectRoot>/*.SchDocPreview - A recent image of the schematic document, used to display a preview of the file at times such as when you hover the mouse over the project in the project window
-* <AltiumProjectRoot>/*.PcbDocPreview - Same as SchDocPreview, except for the PCB file
-* <AltiumProjectRoot>/*.TxtPreview - Ditto, except for a txt files
-* <AltiumProjectRoot>/*.errPreview - Ditto, except for simulation error files
-* <AltiumProjectRoot>/*.nsxPreview - Ditto, except for simulation netlist files
-* <AltiumProjectRoot>/*.LOG - Log files are pretty pointless, you don't want to commit these! I made sure that
-* <AltiumProjectRoot>/History - This folder contains zip files of previous versions of the SchDoc and PcbDoc files. These could potentially be helpful id you ever wanted to revert back to an old state, but since your now using Mercurial for version control, these shouldn't be needed if you remember to commit regularly!
-* <AltiumProjectRoot>/ProjectOutputs - 'Output' files that Altium creates when you do something like create a BOM
+* `*.SchDocPreview` - A recent image of the schematic document, used to display a preview of the file at times such as when you hover the mouse over the project in the project window
+* `*.PcbDocPreview` - Same as SchDocPreview, except for the PCB file
+* `*.TxtPreview` - Ditto, except for a txt files
+* `*.errPreview` - Ditto, except for simulation error files
+* `*.nsxPreview` - Ditto, except for simulation netlist files
+* `*.LOG` - Log files are pretty pointless, you don't want to commit these! I made sure that
+* `History/` - This folder contains zip files of previous versions of the SchDoc and PcbDoc files. These could potentially be helpful id you ever wanted to revert back to an old state, but since your now using Mercurial for version control, these shouldn't be needed if you remember to commit regularly!
+* `ProjectOutputs/` - 'Output' files that Altium creates when you do something like create a BOM
 
 As you may of noticed, I make sure that the files are inside the Altium project root directory before excluding them. This is a safety feature incase you have files in the same repository of the same extension that aren't Altium's. I know that the chances of finding a SchDocPreview out side of Altium is next to none, but you might have log or html files that you want in the repository, and without this safety catch they will get excluded also. This however makes the ignore file less generic, as you have to make sure that <AltiumProjectRoot> corresponds to the project directory for each repository you use it for. One way to get around this is to standardize your Altium project folder name (e.g. PCB). In this case, <AltiumProjectRoot> will become PCB. Note that every excluded file type has to have two entries, one to exclude any files in the root directory and one to exclude the file if it exists in any sub-directories. I haven't been able to work out how to condense this into one line with glob syntax. However, I still highly recommend using the glob syntax, it is conceptually simpler to understand and this glob code is tested and completed to a higher degree the RegExp syntax that is below it.
 

@@ -2,9 +2,9 @@
 author: gbmhunter
 date: 2013-12-16 20:31:35+00:00
 draft: false
+tags: [ "Altium", "vault" ]
 title: Altium Vaults
 type: page
-url: /electronics/general/altium/altium-vaults
 ---
 
 ## Overview

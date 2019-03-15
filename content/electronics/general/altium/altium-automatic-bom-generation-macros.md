@@ -2,6 +2,7 @@
 author: "gbmhunter"
 date: 2012-07-13
 draft: false
+tags: [ "Altium", "BOM", "template", "Excel" ]
 title: "Altium BOM Template Files (Excel)"
 type: "page"
 ---

@@ -4,44 +4,27 @@ date: 2013-12-26 03:12:38+00:00
 draft: false
 title: iNursery
 type: page
-url: /electronics/projects/inursery
 ---
 
 ## Stats
 
 <table>
-	<tbody >
-		<tr >
-			
-<td >Project Started:
-</td>
-			
-<td >25/12/2013
-</td>
+	<tbody>
+		<tr>
+            <td>Project Started:</td>
+			<td>2013-12-25</td>
 		</tr>
-		<tr >
-			
-<td >Project Finished:
-</td>
-			
-<td >31/12/2013
-</td>
+		<tr>
+            <td>Project Finished:</td>
+			<td>2013-12-31</td>
 		</tr>
-		<tr >
-			
-<td >Time Taken:
-</td>
-			
-<td >41 hours
-</td>
+		<tr>
+			<td>Time Taken:</td>
+			<td>41 hours</td>
 		</tr>
-		<tr >
-			
-<td >Cost:
-</td>
-			
-<td >NZ$166.86 (excluding the chiller/heater which got given to me for free)
-</td>
+		<tr>
+			<td>Cost:</td>
+			<td>NZ$166.86 (excluding the chiller/heater which got given to me for free)</td>
 		</tr>
 	</tbody>
 </table>
@@ -95,27 +78,27 @@ Here are the measurements...
 			<td colspan="3" ><b>Cooling</b></td>
 		</tr>
 		<tr>
-			<td >Max</td>
-			<td >Unknown</td>
-			<td ></td>
+			<td>Max</td>
+			<td>Unknown</td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>Stabilised</td>
-			<td >12V, 4.20A = 50W</td>
-			<td >Internal Temp = 12C (ambient = 23C)</td>
+			<td>12V, 4.20A = 50W</td>
+			<td>Internal Temp = 12C (ambient = 23C)</td>
 		</tr>
 		<tr>
 			<td colspan="3" ><b>Heating</b></td>
 		</tr>
 		<tr>
 			<td>Max</td>
-			<td >12V, 4.95A = 59W</td>
+			<td>12V, 4.95A = 59W</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>Stabilised</td>
-			<td >12V, 3.70A = 44W</td>
-			<td >Internal Temp = 40C (ambient = 23C)</td>
+			<td>12V, 3.70A = 44W</td>
+			<td>Internal Temp = 40C (ambient = 23C)</td>
 		</tr>
 	</tbody>
 </table>

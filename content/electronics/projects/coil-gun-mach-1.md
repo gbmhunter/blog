@@ -4,7 +4,6 @@ date: 2011-09-06 06:07:54+00:00
 draft: false
 title: Coil Gun Mach 1
 type: page
-url: /electronics/projects/coil-gun-mach-1
 ---
 
 * Project Start Date: April 2006

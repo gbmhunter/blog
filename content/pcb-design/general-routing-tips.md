@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-07-14 08:13:40+00:00
+date: 2015-07-14
 draft: false
-title: General Routing Tips
+title: "General Routing Tips"
 type: page
-url: /pcb-design/general-routing-tips
 ---
 
 ## Overview
