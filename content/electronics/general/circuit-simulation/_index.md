@@ -4,7 +4,6 @@ date: 2011-09-05 06:42:54+00:00
 draft: false
 title: Circuit Simulation
 type: page
-url: /electronics/general/circuit-simulation
 ---
 
 ## Overview
@@ -13,7 +12,7 @@ Circuit simulation is a useful tool for prototyping and testing circuit designs.
 
 1. Draw a schematic of the circuit in a software package that supports simulations.
 2. Attach simulation models to the various components in the schematic. These models describe the electrical behaviour of the component. SPICE is a common language used to describe the models (see below).
-3. Attach voltage supplies, input/outputs, and probes to the various places in the schematic. These are usually specific symbols related to simulation only, therefore if you are using an integrated software package these are likely to have their own menu or library (Altium has it's own libraries (under <AltiumInstallationRootFolder>/Libraries/Simulation)).
+3. Attach voltage supplies, input/outputs, and probes to the various places in the schematic. These are usually specific symbols related to simulation only, therefore if you are using an integrated software package these are likely to have their own menu or library (Altium has it's own libraries under `<AltiumInstallationRootFolder>/Libraries/Simulation`).
 4. Define test points/analysis locations on the circuit. These are the nets you want to investigate.
 5. Run a simulation. There are many different types of simulation, from DC analysis, AC analysis, transient analysis, frequency sweeps, noise analysis, and even monte carlo (which varies the values of components within their specified tolerances, so simulate a circuit made with real-world components).
 

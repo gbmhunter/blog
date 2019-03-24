@@ -4,11 +4,10 @@ date: 2012-09-28 05:41:27+00:00
 draft: false
 title: Luxcity UV Tonic Control System
 type: page
-url: /electronics/projects/luxcity-uv-tonic-control-system
 ---
 
-* Project Start Date: 27/09/2012  
-* Project Completion 21/10/2012  
+* Project Start Date: 2012-09-27  
+* Project Completion: 2012-10-21
 * Status: Complete
 
 ## The Challenge
@@ -26,7 +25,7 @@ or the Luxcity page on EventFinder ([http://www.eventfinder.co.nz/2012/luxcity/c
 
 {{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-event-october-2012-christchurch.jpg" caption="Luxcity event poster for Christchurch 2012."  width="600px" >}}
 
-EDIT 30/10/2012:
+**EDIT 2012-10-30:**
 
 Post-event there have been another news article:
 
@@ -73,7 +72,7 @@ The I2C controlled shield provides 8 outputs that can drive standard relays. Bei
 
 * Manufacturer: HR Products
 * Supplier: HR Products
-* Datasheet: http://www.hrproducts.com.au/resources/Valves%20MV%20Series/MV80.pdf (**as of Dec 2017, URL unavailable**)  
+* Datasheet: ~~http://www.hrproducts.com.au/resources/Valves%20MV%20Series/MV80.pdf~~ (**as of Dec 2017, URL unavailable**)  
 * Operating Voltage: 12V  
 * Inrush Current: 320mA  
 * Holding Current: 260mA  
@@ -83,7 +82,7 @@ The I2C controlled shield provides 8 outputs that can drive standard relays. Bei
 
 62 solenoids are needed to either allow tonic or air to flow into one of the 31 pipes. When I first received them, I had a horrible feeling as I blew in one end and the solenoid let air through with some resistance. This was until I realised that they have a minimum operating pressure of 20kPA.
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/solenoid-minimum-operating-pressure.png"   width="500px" >}}
+{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/solenoid-minimum-operating-pressure.png" width="500px" >}}
 
 ## 1x Ardunio Uno
 

@@ -3,7 +3,7 @@ date: 2019-03-31
 description: "Blog updates during March 2019."
 draft: false
 lastmod: 2019-03-31
-tags: [ "serialization formats", "CSV", "JSON", "YAML", "TOML", "XML", "DNS", "domain name server", "shuriken" ]
+tags: [ "serialization formats", "CSV", "JSON", "YAML", "TOML", "XML", "DNS", "domain name server", "shuriken", "QGIS", "GUI" ]
 title: "March 2019 Updates"
 type: "post"
 ---
@@ -17,3 +17,5 @@ type: "post"
 * Added new "shuriken" feature to posts and pages. You can now click on the shuriken to "upvote" content! You can get more information on the [Adding Shurikens post](/posts/updates/2019/03-10-adding-shurikens/).
 
     {{< img src="shuriken-icon" width="100px" caption="+1's, likes, thumb's up and claps have been done before, this blog uses shurikens!"  >}}
+
+* Added a [QGIS page](/space/qgis) (open-source, free-to-use GUI software to working with geospatial images) with information on how to add tile servers, start multiple instances of QGIS and more.

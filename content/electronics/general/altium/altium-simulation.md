@@ -1,7 +1,8 @@
 ---
 author: gbmhunter
-date: 2011-09-05 06:36:55+00:00
+date: 2011-09-05
 draft: false
+tags: [ "Altium", "simulation", "SPICE", "simulator", "circuit", "schematic", "XSPICE", "mdl", "ckt", "SimModel", "frequency response" ]
 title: Altium Simulation
 type: page
 ---
@@ -71,13 +72,13 @@ A pulsed voltage source has the following important parameters:
 
 There are two types of file extensions that Altium accepts, .mdl and .ckt. MDL files (model files) are used for basic circuit simulation, and CKT files (subcircuit file) are for more advanced components that are built from many primary spice circuit elements (e.g. op-amps).
 
-Altium simulation files are located at C:\Users\Public\Documents\Altium\AD14\Library\Simulation. These files include basic items you will need while doing simulations, including math functions, simulation voltage and current sources, transmission lines and PSPICE functions.
+Altium simulation files are located at `C:\Users\Public\Documents\Altium\AD14\Library\Simulation` (for Altium Designer 14, path may vary for other versions). These files include basic items you will need while doing simulations, including math functions, simulation voltage and current sources, transmission lines and PSPICE functions.
 
 ## Vault-Based Simulation Components
 
-You are allowed to use hyphens in the .mdl and .ckt files if using vault-based simulation components.
+You are allowed to use hyphens in the `.mdl` and `.ckt` files if using vault-based simulation components.
 
-Simulation models are linked to vault-based components in Component Library files (.CmpLib), .ckt files in the same manner as schematic symbols and PCB footprints. I should point out here that .mdl and .ckt files cannot be used directly, you first have to create a .SimModel file, push it to the vault, and then link that to the component (just like you have to for schematic symbols and PCB footprints).
+Simulation models are linked to vault-based components in Component Library files (`.CmpLib`), `.ckt` files in the same manner as schematic symbols and PCB footprints. I should point out here that `.mdl` and `.ckt` files cannot be used directly, you first have to create a `.SimModel` file, push it to the vault, and then link that to the component (just like you have to for schematic symbols and PCB footprints).
 
 ## SimModel Files
 

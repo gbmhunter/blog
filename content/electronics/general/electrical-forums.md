@@ -4,7 +4,6 @@ date: 2011-09-05 06:44:45+00:00
 draft: false
 title: Electrical Forums
 type: page
-url: /electronics/general/electrical-forums
 ---
 
 AllAboutCircuits Forum ([http://forum.allaboutcircuits.com/](http://forum.allaboutcircuits.com/)) - A popular forum from the website which catalogs free ebooks on electronics.
