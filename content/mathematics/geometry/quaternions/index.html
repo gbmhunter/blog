@@ -1,0 +1,249 @@
+---
+author: gbmhunter
+date: 2014-11-13
+draft: false
+lastmod: 2019-03-24
+tags: [ "quaternion", "matrix", "rotation", "complex", "SLERP", "interpolation", "Euler", "angle", "RPY", "gimbal lock", "attitude", "orientation", "vector", "calculator", "conversion" ]
+title: "Quaternions"
+type: page
+---
+
+<h2>Overview</h2>
+
+<p>A quaternion (pronounced qwa-ter-ne-ion) is a object which contains four numbers. Arguably, the most useful quaternions is a subset of all quaternions, called <b>unit quaternions</b> (or <b>versors</b>), which can be used to describe a rotation in 3D space. This page focuses on these unit quaternions.</p>
+
+<p>There are a number of different ways to describe rotations. These include:</p>
+
+<ul>
+    <li>Euler angles (roll, pitch, yaw)</li>
+    <li>Rotation matrices</li>
+    <li>Quaternions</li>
+</ul>
+
+<p>Quaternions do not suffer from the <b>gimbal lock</b> that Euler angles do. A quaternion describes a rotation from one coordinate system to another. When they are used purely to represent a rotation (e.g. no reference coordinate system specified), they are called <b>rotation quaternions</b>. They can also be used to describe an orientation, as long as a reference coordinate system is supplied (in which the quaternion specifies the orientation as a rotation from the reference coordinate system to the coordinate system of the rotated object). In this case they are called <b>orientation quaternions</b>.</p>
+
+<h2>Scalar And Vector</h2>
+
+<p>A quaternion can be divided up into a scalar part and a vector part.</p>
+
+<div>$$ q = (r, v) $$</div>
+
+<h2>Rotating A Vector</h2>
+
+<div>$$
+P = [ 0, p_x, p_y, p_z ] \\
+R = [ w, x, y, z ] \\
+R' = [ w, -x, -y, -z ]
+$$</div>
+
+<h2>Combining Rotations</h2>
+
+<p>Rotations can be easily combined when using quaternions.</p>
+
+<p>Given two quaternion rotations that are to be applied consecutively, \( R_A \) and then \( R_B \), the total rotation \( R_C \) is found with:</p>
+
+<p>$$ R_C = R_B R_A $$</p>
+
+<p>Remember that <b>quaternion multiplication is not associative</b>, so the ordering of \( R_A \) and \( R_B \) is important.</p>
+
+<h2>Some Useful Quaternions</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Quaternion</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$$ q = [1, 0, 0, 0] $$</td>
+            <td>Identity quaternion, no rotation.</td>
+        </tr>
+        <tr>
+            <td>$$ q = [0, 1, 0, 0] $$</td>
+            <td>Rotation of 180 around X axis.</td>
+        </tr>
+        <tr>
+            <td>$$ q = [0, 0, 1, 0] $$</td>
+            <td>Rotation of 180 around Y axis.</td>
+        </tr>
+        <tr>
+            <td>$$ q = [0, 0, 0, 1] $$</td>
+            <td>Rotation of 180 around Z axis.</td>
+        </tr>
+        <tr>
+            <td>$$ q = [\sqrt{0.5}, \sqrt{0.5}, 0, 0] $$</td>
+            <td>Rotation of 90 around X axis.</td>
+        </tr>
+        <tr>
+            <td>$$ q = [\sqrt{0.5}, 0, \sqrt{0.5}, 0] $$</td>
+            <td>Rotation of 90 around Y axis.</td>
+        </tr>
+        <tr>
+            <td>$$ q = [\sqrt{0.5}, 0, 0, \sqrt{0.5}] $$</td>
+            <td>Rotation of 90 around Z axis.</td>
+        </tr>
+        <tr>
+            <td>$$ q = [\sqrt{0.5}, -\sqrt{0.5}, 0, 0] $$</td>
+            <td>Rotation of -90 around X axis.</td>
+        </tr>
+        <tr>
+            <td>$$ q = [\sqrt{0.5}, 0, -\sqrt{0.5}, 0] $$</td>
+            <td>Rotation of -90 around Y axis.</td>
+        </tr>
+        <tr>
+            <td>$$ q = [\sqrt{0.5}, 0, 0, -\sqrt{0.5}] $$</td>
+            <td>Rotation of -90 around Z axis.</td>
+        </tr>
+</table>
+
+<h2>Interpolation</h2>
+
+<h3>SLERP</h3>
+
+<p>SLERP is shorthand for <b>spherical linear interpolation</b>. It is commonly used with quaternions to produce a smooth rotation of a 3D body from one orientation to another.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Slerp">https://en.wikipedia.org/wiki/Slerp</a> has some code examples in Python and C++ that perform SLERP on quaternions.</p>
+
+<h2>Conversion From Quaternion To Rotation Matrix</h2>
+
+<p>Use this tool to convert quaternions to rotation matrices.</p>
+
+<div class="hbox">
+
+    <div class="vbox">
+        <b>Quaternion</b>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td>w</td>
+                    <td><input id="quatW"></input></td>
+                </tr>
+                <tr>
+                    <td>x</td>
+                    <td><input id="quatX"></input></td>
+                </tr>
+                <tr>
+                    <td>y</td>
+                    <td><input id="quatY"></input></td>
+                </tr>
+                <tr>
+                    <td>z</td>
+                    <td><input id="quatZ"></input></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="width: 1em;"></div>
+
+    <div class="vbox">
+        <b>Rotation Matrix</b>
+        <table id="matrix">
+            <tbody>
+                <tr>
+                    <td><label id="matrix00">0</label></td>
+                    <td><label id="matrix01">0</label></td>
+                    <td><label id="matrix02">0</label></td>
+                </tr>
+                <tr>
+                    <td><label id="matrix10">0</label></td>
+                    <td><label id="matrix11">0</label></td>
+                    <td><label id="matrix12">0</label></td>
+                </tr>
+                <tr>
+                    <td><label id="matrix20">0</label></td>
+                    <td><label id="matrix21">0</label></td>
+                    <td><label id="matrix22">0</label></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!--
+######################################################################
+# SCRIPTS
+######################################################################
+-->
+
+<script src=https://code.jquery.com/jquery-3.3.1.min.js></script>
+
+<script>
+$('#quatW').on('input', function (e) {
+    quatToRotMatrix()
+})
+$('#quatX').on('input', function (e) {
+    quatToRotMatrix()
+})
+$('#quatY').on('input', function (e) {
+    quatToRotMatrix()
+})
+$('#quatZ').on('input', function (e) {
+    quatToRotMatrix()
+})
+
+function quatToRotMatrix() {
+    const w = $('#quatW').val()
+    const x = $('#quatX').val()
+    const y = $('#quatY').val()
+    const z = $('#quatZ').val()
+
+    var matrix = [
+      [1 - 2*y*y - 2*z*z, 2*x*y - 2*z*w, 2*x*z + 2*y*w],
+      [2*x*y + 2*z*w, 1 - 2*x*x - 2*z*z, 2*y*z - 2*x*w],
+      [2*x*z - 2*y*w, 2*y*z + 2*x*w, 1 - 2*x*x - 2*y*y],
+    ]
+
+    $('#matrix00').text(matrix[0][0].toPrecision(4))
+    $('#matrix01').text(matrix[0][1].toPrecision(4))
+    $('#matrix02').text(matrix[0][2].toPrecision(4))
+    $('#matrix10').text(matrix[1][0].toPrecision(4))
+    $('#matrix11').text(matrix[1][1].toPrecision(4))
+    $('#matrix12').text(matrix[1][2].toPrecision(4))
+    $('#matrix20').text(matrix[2][0].toPrecision(4))
+    $('#matrix21').text(matrix[2][1].toPrecision(4))
+    $('#matrix22').text(matrix[2][2].toPrecision(4))
+}
+</script>
+
+<style>
+
+div.hbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+div.vbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+table#matrix {
+    border-spacing: 0px;
+}
+
+
+table#matrix tr:nth-of-type(even) {
+background:#E8E8E8;
+}
+
+table#matrix tr:nth-of-type(odd) {
+    background:#E8E8E8;
+}
+
+table#matrix td {
+    width: 2em;
+}
+
+</style>
+
+
+
