@@ -8,6 +8,9 @@ title: "Quaternions"
 type: page
 ---
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 <h2>Overview</h2>
 
 <p>A quaternion (pronounced qwa-ter-ne-ion) is a object which contains four numbers. Arguably, the most useful quaternions is a subset of all quaternions, called <b>unit quaternions</b> (or <b>versors</b>), which can be used to describe a rotation in 3D space. This page focuses on these unit quaternions.</p>
@@ -22,20 +25,36 @@ type: page
 
 <p>Quaternions do not suffer from the <b>gimbal lock</b> that Euler angles do. A quaternion describes a rotation from one coordinate system to another. When they are used purely to represent a rotation (e.g. no reference coordinate system specified), they are called <b>rotation quaternions</b>. They can also be used to describe an orientation, as long as a reference coordinate system is supplied (in which the quaternion specifies the orientation as a rotation from the reference coordinate system to the coordinate system of the rotated object). In this case they are called <b>orientation quaternions</b>.</p>
 
-<h2>Scalar And Vector</h2>
+<h2>Representation</h2>
 
-<p>A quaternion can be divided up into a scalar part and a vector part.</p>
+<p>The basic form of a quaternion is:</p>
 
-<div>$$ q = (r, v) $$</div>
+<p>$$ \mathbf{q} = a + b\mathbf{i} + c\mathbf{j} + d\mathbf{k} $$</p>
 
+<p>In software, quaternions are described with a vector in where \(w, x, y, z\) are used instead of \(a, b, c, d\):</p>
+
+<p>$$ \mathbf{q} = \begin{bmatrix}w\\x\\y\\z\end{bmatrix} $$</p>
+
+<p>The \(w\) represents the scalar part of the quaternions and the \(x, y, z\) represents the vector part. You may see a quaternion written with an \(r\) for the scalar part and a \(v\) for the vector part.</p>
+
+<p>$$ \mathbf{q} = (r, v) $$</p>
+
+<p>Unit quaternions (the most common and useful type) are quaternions in which the magnitude of the vector is 1 (i.e. a <b>unit vector</b>).</p>
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 <h2>Rotating A Vector</h2>
 
-<div>$$
+<p>$$
 P = [ 0, p_x, p_y, p_z ] \\
 R = [ w, x, y, z ] \\
 R' = [ w, -x, -y, -z ]
-$$</div>
+$$</p>
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 <h2>Combining Rotations</h2>
 
 <p>Rotations can be easily combined when using quaternions.</p>
@@ -46,6 +65,9 @@ $$</div>
 
 <p>Remember that <b>quaternion multiplication is not associative</b>, so the ordering of \( R_A \) and \( R_B \) is important.</p>
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 <h2>Some Useful Quaternions</h2>
 
 <table>
@@ -98,6 +120,9 @@ $$</div>
         </tr>
 </table>
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 <h2>Interpolation</h2>
 
 <h3>SLERP</h3>
@@ -106,6 +131,27 @@ $$</div>
 
 <p><a href="https://en.wikipedia.org/wiki/Slerp">https://en.wikipedia.org/wiki/Slerp</a> has some code examples in Python and C++ that perform SLERP on quaternions.</p>
 
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<h2>Conversion From Axis-Angle Form To Quaternion</h2>
+
+<p>A rotation in axis-angle form:</p>
+
+<p>$$ axis = \begin{bmatrix}a_x\\a_y\\a_z\end{bmatrix} angle = \theta $$</p>
+
+<p>can be converted into a quaternion with:</p>
+
+<p>$$ \mathbf{q} = \begin{bmatrix}q_w\\q_x\\q_y\\q_z\end{bmatrix} = \begin{bmatrix} 
+    \cos{\frac{\theta}{2}} \\
+    a_x \sin{\frac{\theta}{2}} \\
+    a_y \sin{\frac{\theta}{2}} \\
+    a_z \sin{\frac{\theta}{2}} \\
+    \end{bmatrix} $$</p>
+
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
+<!-- ###################################################################### -->
 <h2>Conversion From Quaternion To Rotation Matrix</h2>
 
 <p>If you have a quaternion in the form:</p>
@@ -114,7 +160,7 @@ $$</div>
 
 <p>Then the equivalent rotation matrix is:</p>
 
-<p>$$
+<p>$$ \mathbf{R} = 
 \begin{bmatrix}
 1 - 2q_y^2 - 2q_z^2     & 2q_xq_y - 2q_zq_w    & 2q_xq_z + 2q_yq_w \\
 2q_xq_y + 2q_zq_w       & 1 - 2q_x^2 - 2q_z^2  & 2q_yq_z - 2q_xq_w \\
