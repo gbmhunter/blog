@@ -852,3 +852,51 @@ footer {
     display: flex;
     justify-content: center;
 } 
+
+/* ========================================================================= */
+/* MATRIX (using a table)                                                    */
+/* ========================================================================= */
+
+/* This adds matrix looking brackets to the side of the table */
+
+.matrix {
+    position: relative;
+}
+
+.matrix:before, .matrix:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    border: 1px solid #000;
+    width: 6px;
+    height: 100%;
+}
+.matrix:before {
+    left: -6px;
+    border-right: 0px;
+}
+.matrix:after {
+    right: -6px;
+    border-left: 0px;
+}
+
+table.matrix tr:nth-of-type(even) {
+    background: white;
+}
+
+table.matrix tr:nth-of-type(odd) {
+    background: white;
+}
+
+.matrix td {
+    padding: 5px;    
+    text-align: center;
+}
+
+.matrix {
+    border-spacing: 0px;
+}
+
+.matrix td {
+    width: 2em;
+}

@@ -108,6 +108,20 @@ $$</div>
 
 <h2>Conversion From Quaternion To Rotation Matrix</h2>
 
+<p>If you have a quaternion in the form:</p>
+
+<p>$$ \mathbf{q} = \begin{bmatrix}q_w\\q_x\\q_y\\q_z\end{bmatrix} $$</p>
+
+<p>Then the equivalent rotation matrix is:</p>
+
+<p>$$
+\begin{bmatrix}
+1 - 2q_y^2 - 2q_z^2     & 2q_xq_y - 2q_zq_w    & 2q_xq_z + 2q_yq_w \\
+2q_xq_y + 2q_zq_w       & 1 - 2q_x^2 - 2q_z^2  & 2q_yq_z - 2q_xq_w \\
+2q_xq_z - 2q_yq_w       & 2q_yq_z + 2q_xq_w    & 1 - 2q_x^2 - 2q_y^2
+\end{bmatrix}
+$$</p>
+
 <p>Use this tool to convert quaternions to rotation matrices.</p>
 
 <div class="hbox">
@@ -137,11 +151,11 @@ $$</div>
         </table>
     </div>
 
-    <div style="width: 1em;"></div>
+    <div style="width: 2em;"></div>
 
     <div class="vbox">
         <b>Rotation Matrix</b>
-        <table id="matrix">
+        <table class="matrix">
             <tbody>
                 <tr>
                     <td><label id="matrix00">0</label></td>
@@ -224,23 +238,6 @@ div.vbox {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-table#matrix {
-    border-spacing: 0px;
-}
-
-
-table#matrix tr:nth-of-type(even) {
-background:#E8E8E8;
-}
-
-table#matrix tr:nth-of-type(odd) {
-    background:#E8E8E8;
-}
-
-table#matrix td {
-    width: 2em;
 }
 
 </style>
