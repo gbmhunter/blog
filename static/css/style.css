@@ -7,9 +7,8 @@
 /* HEADING AND PARAGRAPH STYLING                                             */
 /* ========================================================================= */
 
-p, h1, h2, h3, ul, li, a, div, td, th {    
+p, h1, h2, h3, ul, li, a, div, td, th, input {    
     font-family: 'avenir next' ,'avenir', sans-serif;
-    
 }
 
 /* Styling for page titles */
@@ -60,7 +59,11 @@ body {
     font-size: 1.2rem;
 }
 
-p, li, div, td, th {
+input {
+    font-size: 0.9rem;
+}
+
+p, li, div, td, th, input {
     line-height: 1.7;
     color: rgb(85, 85, 85);
 }
@@ -899,4 +902,42 @@ table.matrix tr:nth-of-type(odd) {
 
 .matrix td {
     width: 2em;
+}
+
+/* ========================================================================= */
+/* CALCULATORS                                                               */
+/* ========================================================================= */
+
+.calculator input {
+    width: 6em;
+    height: 1.5em;
+}
+
+.calculator table tr:nth-of-type(even) {
+    background: white;
+}
+
+.calculator table tr:nth-of-type(odd) {
+    background: white;
+}
+
+/* ========================================================================= */
+/* HBOX and VBOX                                                             */
+/* ========================================================================= */
+
+/* Handy hbox and vbox elements that can be used around the site to layout child
+elements */
+
+div.hbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+div.vbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

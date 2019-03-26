@@ -1,8 +1,9 @@
 ---
 author: gbmhunter
-date: 2017-08-16 16:09:37+00:00
+date: 2017-08-16
 draft: false
-title: Strings
+tags: [ "Python", "string", "concatenation", "repetition", "indexing", "slicing", "length" ]
+title: Python Strings
 type: page
 ---
 

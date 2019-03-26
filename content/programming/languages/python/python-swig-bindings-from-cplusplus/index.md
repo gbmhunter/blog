@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2017-08-16 16:35:59+00:00
+date: 2017-08-16
 draft: false
+lastmod: 2019-03-25
+tags: [ "Python", "SWIG", "binding", "C", "C++", "interface", "CMake", "typemaps", "directors" ]
 title: Python SWIG Bindings From C/C++
 type: page
-url: /programming/languages/python/python-swig-bindings-from-cplusplus
 ---
 
 ## Overview

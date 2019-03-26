@@ -1,17 +1,18 @@
 ---
 author: gbmhunter
-date: 2018-08-30 22:54:36+00:00
+categories: [ "Mathematics", "Statistics" ]
+date: 2018-08-30
 draft: false
+tags: [ "normal", "distribution", "statistics", "probability density" ]
 title: Normal Distributions
 type: page
-url: /mathematics/statistics/normal-distributions
 ---
 
-## Probability Density Function
+<h2>Probability Density Function</h2>
 
-The probability density function of a normal distribution is given by:
+<p>The probability density function of a normal distribution is given by:</p>
 
-<div>$$ f(x, \mu | \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}} $$</div>
+<p>$$ f(x, \mu | \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2\sigma^2}} $$</p>
 
 <p class="centered">
 where:<br>
@@ -21,13 +22,13 @@ where:<br>
 
 {{< figure src="/images/2018/09/normal-distribution-pdf-examples.png" width="500px" caption="A few example probability density functions (PDFs) for the normal distribution."  >}}
 
-See [https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution](https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution) for the code which generated these graphs.
+<p>See <a href="https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution">https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution</a> for the code which generated these graphs.</p>
 
-## Capped Normal Distribution
+<h2>Capped Normal Distribution</h2>
 
-<div>
+<p>
 $$ \sigma_{overall}^2 = \frac{1}{\sqrt{2\pi} \sigma_{nd} + c} \left [\int_{-\infty}^{-c} +\int_{c}^{\infty} x^2 e^{(-\frac{1}{2} (\frac{x - c}{\sigma_{nd}})^2)} dx + \int_{-c}^{c} x^2 dx \right ] $$
-</div>
+</p>
 
 <p class="centered">
 where:<br>

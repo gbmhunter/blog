@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
-date: 2018-02-15 22:11:29+00:00
+date: 2018-02-15
 draft: false
+tags: [ "sphere", "intersection", "arc", "geometry", "spherical", "geospatial", "earth" ]
 title: Finding The Intersection Of Two Arcs That Lie On A Sphere
 type: page
-url: /mathematics/geometry/spherical-geometry/finding-the-intersection-of-two-arcs-that-lie-on-a-sphere
 ---
 
 ## Finding The Intersection Of Two Arcs That Lie On A Sphere

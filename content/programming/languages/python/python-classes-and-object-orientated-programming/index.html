@@ -1,0 +1,53 @@
+---
+author: "gbmhunter"
+date: 2019-02-11
+description: "A tutorial on Python classes and object-orientated design in Python."
+draft: false
+lastmod: 2019-03-25
+tags: [ "Python", "programming", "language", "software", "OOP", "object orientated", "class", "design", "issubclass" ]
+title: "Python Classes And Object Orientated Design"
+type: "page"
+---
+
+<p>Since Python v3.3, you can use both the `@staticmethod` and `@abstractmethod` decorators on the same class function (and the `@abstractstaticmethod` decorator has been depreciated).</p>
+
+{{< highlight python >}}
+import abc
+
+class MyClass:
+
+    @staticmethod
+    @abstractmethod
+    def my_func():
+        pass
+{{< /highlight >}}
+
+{{% note %}}
+You have to make sure to specify `@staticmethod` before `@abstractmethod` or it will not work.
+{{% /note %}}
+
+<h2>Checking If A Class Is A Subclass Of Another</h2>
+
+<p>You can check if one class is a sub-class of another with the <code>issublass()</code> function:</p>
+
+{{< highlight python >}}
+class ParentClass:
+    pass
+
+class ChildClass(ParentClass):
+    pass
+
+class StandaloneClass:
+    pass
+
+print(issubclass(ChildClass, ParentClass))
+# stdout: True
+
+print(issubclass(StandaloneClass, ParentClass))
+# stdout: False
+
+# Works with variables which are assigned to a class too
+my_class = ChildClass
+print(issubclass(my_class, ParentClass))
+# stdout: True
+{{< /highlight >}}

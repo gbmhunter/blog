@@ -150,6 +150,10 @@ $$</p>
     a_z \sin{\frac{\theta}{2}} \\
     \end{bmatrix} $$</p>
 
+<p>Use this tool to convert from a rotation expressed as an axis-angle to a quaternion:</p>
+
+{{< calculators/axis-angle-to-quaternion >}}
+
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -171,123 +175,7 @@ $$</p>
 
 <p>Use this tool to convert quaternions to rotation matrices.</p>
 
-<div class="hbox">
-
-    <div class="vbox">
-        <b>Quaternion</b>
-
-        <table>
-            <tbody>
-                <tr>
-                    <td>w</td>
-                    <td><input id="quatW"></input></td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td><input id="quatX"></input></td>
-                </tr>
-                <tr>
-                    <td>y</td>
-                    <td><input id="quatY"></input></td>
-                </tr>
-                <tr>
-                    <td>z</td>
-                    <td><input id="quatZ"></input></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div style="width: 2em;"></div>
-
-    <div class="vbox">
-        <b>Rotation Matrix</b>
-        <table class="matrix">
-            <tbody>
-                <tr>
-                    <td><label id="matrix00">0</label></td>
-                    <td><label id="matrix01">0</label></td>
-                    <td><label id="matrix02">0</label></td>
-                </tr>
-                <tr>
-                    <td><label id="matrix10">0</label></td>
-                    <td><label id="matrix11">0</label></td>
-                    <td><label id="matrix12">0</label></td>
-                </tr>
-                <tr>
-                    <td><label id="matrix20">0</label></td>
-                    <td><label id="matrix21">0</label></td>
-                    <td><label id="matrix22">0</label></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-</div>
-
-<!--
-######################################################################
-# SCRIPTS
-######################################################################
--->
-
-<script src=https://code.jquery.com/jquery-3.3.1.min.js></script>
-
-<script>
-$('#quatW').on('input', function (e) {
-    quatToRotMatrix()
-})
-$('#quatX').on('input', function (e) {
-    quatToRotMatrix()
-})
-$('#quatY').on('input', function (e) {
-    quatToRotMatrix()
-})
-$('#quatZ').on('input', function (e) {
-    quatToRotMatrix()
-})
-
-function quatToRotMatrix() {
-    const w = $('#quatW').val()
-    const x = $('#quatX').val()
-    const y = $('#quatY').val()
-    const z = $('#quatZ').val()
-
-    var matrix = [
-      [1 - 2*y*y - 2*z*z, 2*x*y - 2*z*w, 2*x*z + 2*y*w],
-      [2*x*y + 2*z*w, 1 - 2*x*x - 2*z*z, 2*y*z - 2*x*w],
-      [2*x*z - 2*y*w, 2*y*z + 2*x*w, 1 - 2*x*x - 2*y*y],
-    ]
-
-    $('#matrix00').text(matrix[0][0].toPrecision(4))
-    $('#matrix01').text(matrix[0][1].toPrecision(4))
-    $('#matrix02').text(matrix[0][2].toPrecision(4))
-    $('#matrix10').text(matrix[1][0].toPrecision(4))
-    $('#matrix11').text(matrix[1][1].toPrecision(4))
-    $('#matrix12').text(matrix[1][2].toPrecision(4))
-    $('#matrix20').text(matrix[2][0].toPrecision(4))
-    $('#matrix21').text(matrix[2][1].toPrecision(4))
-    $('#matrix22').text(matrix[2][2].toPrecision(4))
-}
-</script>
-
-<style>
-
-div.hbox {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-div.vbox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-</style>
+{{< calculators/quaternion-to-rotation-matrix >}}
 
 
 
