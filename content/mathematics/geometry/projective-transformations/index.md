@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2017-11-16 17:47:38+00:00
+date: 2017-11-16
 draft: false
 title: Projective Transformations
 type: page
