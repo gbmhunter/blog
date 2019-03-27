@@ -1,6 +1,7 @@
 ---
+categories: [ "Post", "Update" ]
 date: 2019-03-10
-description: ""
+description: "Shurikens were added to this blog as a simple upvoting and reader interaction mechanism."
 draft: true
 lastmod: 2019-03-10
 tags: [ "shuriken", "AWS", "Amazon Web Services", "DynamoDB", "CloudWatch", "Lambda functions", "upvote", "clap", "API", "rest" ]
@@ -16,7 +17,7 @@ Since I am no longer using Wordpress and a continuously running server to host t
 
 Continuing with the Ninja theme, rather than likes, +1's, thumb ups or claps, this blog has "shurikens" (Ninja stars).
 
-{{< img src="shuriken-icon" width="100px" caption="+1's, likes, thumb's up and claps have been done before, this blog uses shurikens!"  >}}
+{{< img src="shuriken-icon.png" width="100px" caption="+1's, likes, thumb's up and claps have been done before, this blog uses shurikens!"  >}}
 
 You can see the backend code at <https://github.com/gbmhunter/shuriken-backend>. The front-end is embedded in the code that generates this blog, which can be found at <https://github.com/gbmhunter/blog>. Files of interest in the `blog` repository include:
 
@@ -26,8 +27,7 @@ You can see the backend code at <https://github.com/gbmhunter/shuriken-backend>.
 
 You can see the final result in this .gif below (or just look at this webpage!):
 
-<img src="shuriken.gif" width="700" style="margin: auto;" />
-
+{{< img src="shuriken.gif" width="700px" caption="Demo of the shurikens."  >}}
 
 ## AWS Infrastructure
 
