@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2018-07-01 23:58:02+00:00
+date: 2018-07-01
 draft: false
 title: Polynomial Curve Fitting
 type: page
-url: /mathematics/curve-fitting/polynomial-curve-fitting
 ---
 
 ## Overview

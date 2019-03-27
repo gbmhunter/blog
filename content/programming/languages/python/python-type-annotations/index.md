@@ -1,5 +1,6 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Languages", "Python" ]
 date: 2018-08-20
 description: "A tutorial on Python type annotations, including basic types, Optional, casts and mypy."
 draft: false

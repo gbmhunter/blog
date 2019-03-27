@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
-date: 2011-09-06 22:04:21+00:00
+date: 2011-09-06
 draft: false
+tags: [ "C", "programming", "software", "language" ]
 title: C Programming
 type: page
-url: /programming/languages/c
 ---
 
 ## Overview

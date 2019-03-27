@@ -1,6 +1,7 @@
 ---
 author: gbmhunter
-date: 2012-04-27 00:26:19+00:00
+categories: [ "Electronics", "General", "Altium" ]
+date: 2012-04-27
 draft: false
 tags: [ "Altium", "bugs", "crash", "error" ]
 title: Altium Bugs And Things To Watch Out For

@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-08-21 02:52:56+00:00
+categories: [ "Programming", "Languages", "ReStructuredText" ]
+date: 2013-08-21
 draft: false
+tags: [ "programming", "language", "ReStructuredText", "section", "title", "table", "example", "code", "software", "images" ]
 title: ReStructuredText
 type: page
 ---
