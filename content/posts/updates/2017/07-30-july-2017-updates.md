@@ -8,13 +8,13 @@ categories:
 - Updates
 tags:
 - algorithms
-- altium
-- can bus
+- Altium
+- CAN bus
 - data structures
-- hdlc
-- linux
+- HDLC
+- Linux
 - shortcuts
-- socketcan
+- SocketCAN
 - time complexity
 ---
 

@@ -1,41 +1,40 @@
 ---
 author: gbmhunter
-date: 2017-05-31 01:21:51+00:00
+date: 2017-05-31
 draft: false
 title: May 2017 Updates
 type: post
 categories:
 - Updates
 tags:
-- c
-- clion
-- docker
+- C
+- CLion
+- Docker
 - mocking
-- python
-- sgp4
+- Python
+- SGP4
 - simplified perturbations models
 - space
 - threading
-- tle
+- TLE
 - two-line element
 - unit testing
 - volumes
 ---
 
-
 * New [Threading page](/programming/languages/c-plus-plus/threading/) under Programming->Programming Languages->C++.  
 
-	{{< figure src="/images/2015/01/thread-needle-icon.png"   >}}
+	{{< figure src="/images/2015/01/thread-needle-icon.png" width="200px" >}}
 
 * New [Volumes page](/programming/virtual-machines-and-containers/docker/volumes) under Programming->Virtual Machines And Containers->Docker.
 * New [Running External Commands page](/programming/languages/python/running-external-commands) under Programming->Languages->Python.
 * New [CLion page](/programming/integrated-development-environments-ides/clion) under Programming->Integrated Development Environments (IDEs).  
 
-	{{< figure src="/images/2017/05/clion-logo.png" width="261px" caption="The CLion logo."  >}}
+	{{< figure src="/images/2017/05/clion-logo.png" width="261px" caption="The CLion logo." >}}
 
 * New [Space sub-site](/space) added to www.mbedded.ninja.  
 
-	{{< figure src="/images/2017/06/planet-icon-space.png"   >}}
+	{{< figure src="/images/2017/06/planet-icon-space.png" width="200px" >}}
 
 * New [Simplified Perturbations Models](/space/simplified-perturbations-models) page under Space.
 * New [Unit Testing And Mocking page](/programming/languages/c-plus-plus/unit-testing-and-mocking) under Programming->Languages->C++.

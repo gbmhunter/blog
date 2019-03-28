@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2017-09-30 00:20:47+00:00
+date: 2017-09-30
 draft: false
 title: September 2017 Updates
 type: post
@@ -8,14 +8,14 @@ categories:
 - Updates
 tags:
 - bindings
-- c++. threading
+- C++ threading
 - condition variables
 - locks
-- python
-- qt
+- Python
+- Qt
 - recipes
-- swig
-- yocto
+- Swig
+- Yocto
 ---
 
 
@@ -25,7 +25,7 @@ tags:
 
 * Updates to the [C++ Threading page](/programming/languages/c-plus-plus/threading) regarding condition variables and locks.  
 
-	{{< figure src="/images/2015/01/thread-needle-icon.png"   >}}
+	{{< figure src="/images/2015/01/thread-needle-icon.png" width="200px" >}}
 
 * Updates to the [Yocto Project->Recipes page](/programming/embedded-linux/yocto-project/yocto-recipes/).  
 

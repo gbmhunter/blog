@@ -1,26 +1,26 @@
 ---
 author: gbmhunter
-date: 2017-10-31 01:14:41+00:00
-draft: false
-title: October 2017 Updates
-type: post
 categories:
 - Updates
+date: 2017-10-31
+draft: false
 tags:
 - assembly
 - bugs
-- c
+- C
 - concurrency
 - coordinate conversion
-- gcc
+- GCC
 - geometry
 - memory barriers
-- perlin noise
+- Perlin noise
 - priority
 - space
 - thread
 - threading
 - virtual methods
+title: October 2017 Updates
+type: post
 ---
 
 
@@ -34,12 +34,12 @@ tags:
 * New [Memory Barriers page](/programming/design-patterns/memory-barriers) under Programming->Design Patterns.
 * New [Coordinate Conversion page](/space/coordinate-conversion) under Space.  
 
-	{{< figure src="/images/2017/05/satellite-orbit-on-2d-map-propagator.png"   >}}
+	{{< figure src="/images/2017/05/satellite-orbit-on-2d-map-propagator.png" width="500px" >}}
 
 * Updates to the [Assembly page](/programming/languages/assembly).  
 
-	{{< figure src="/images/2013/06/assembly-programming-language-icon.png"   >}}
+	{{< figure src="/images/2013/06/assembly-programming-language-icon.png" width="500px" >}}
 
 * New [Perlin Noise page](/mathematics/perlin-noise) under Mathematics.  
 
-	{{< figure src="/images/2017/10/perlin-noise-cloud-example.png" width="374px" caption="Rendered Perlin noise that has been configured to make realistic looking clouds."  >}}
+	{{< figure src="/images/2017/10/perlin-noise-cloud-example.png" width="374px" caption="Rendered Perlin noise that has been configured to make realistic looking clouds." >}}

@@ -27,6 +27,6 @@ tags: [ "bindings", "C", "communication protocols", "lightbox", "Linux", "LVDS",
 
 * New [Magic Statics page](/programming/languages/c-plus-plus/magic-statics) under Programming->Programming Languages->C++.  
 
-	{{< figure src="/images/2017/08/magic-statics-icon-bunny-hat-code.png"   >}}
+	{{< figure src="/images/2017/08/magic-statics-icon-bunny-hat-code.png" width="400px" >}}
 
 * New [Communication Protocol Theory page](/electronics/communication-protocols/communication-protocol-theory) under Electronics->Communication Protocols.

@@ -1,16 +1,16 @@
 ---
 author: gbmhunter
-date: 2017-12-30 21:24:58+00:00
+date: 2017-12-30
 draft: false
 title: December 2017 Updates
 type: post
 categories:
 - Updates
 tags:
-- c
+- C
 - date
 - library
-- sgp4
+- SGP4
 - time
 ---
 
