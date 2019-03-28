@@ -1,3 +1,9 @@
+# Overview
+
+This repo contains the code which is used to build my blog at <blog.mbedded.ninja>.
+
+The static site generator Hugo is used to build the website from the files in this repo. Netlify is used to host the website, along with a few AWS services (built with serverless) to host an API/database for the shurikens.
+
 # Development
 
 The recommended code editor is [Visual Studio Code](https://code.visualstudio.com/).
@@ -7,13 +13,13 @@ Follow the instructions [here](https://gohugo.io/getting-started/installing) to 
 To start a development server that will watch for file changes and build drafts:
 
 ```sh
-$ hugo server -w -D
+$ hugo server -wD
 ```
 
 Sometimes hugo gets out of sync with the latest file changes. If this happens, you can force hugo to rebuild everything when detecting a file change (warning: this slows down build times):
 
 ```sh
-$ hugo server -w -D --disableFastRender
+$ hugo server -wD --disableFastRender
 ```
 
 # To Build
@@ -26,22 +32,21 @@ $ hugo
 
 # Directory Structure
 
-<table>
-    <tbody>
-        <tr>
-            <td>content/</td>
-            <td>Markdown files which contain the content which creates the sites pages and posts.</td>
-        </tr>
-        <tr>
-            <td>old/</td>
-            <td>Deprecated content which is kept around just in case I need it again.</td>
-        </tr>
-        <tr>
-            <td>scripts/</td>
-            <td>Useful Python scripts to automate some labourous tasks.</td>
-        </tr>
-    </tbody>
-</table>
+<ul>
+  <li><b>content/</b> <i>Markdown files which contain the content which creates the sites pages and posts.</i></li>
+  <li><b>layouts/</b>
+    <ul>
+      <li>
+        <b>shortcodes</b> <i>Hugo shortcodes.</i>
+        <ul>
+          <li><b>calculators</b> <i>Contains the HTML/CSS/jQuery based interactive calculators which are embedded into certain pages.</i></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><b>old</b> <i>Deprecated content which is kept around just in case I need it again.</i></li>
+  <li><b>scripts/</b> <i>Useful Python scripts to automate some labourous tasks.</i></li>
+</ul>
 
 # Broken Link Checking
 
@@ -55,6 +60,7 @@ $ pipenv install --two LinkChecker
 
 # Recommended VS Code Plugins
 
-* Better TOML
-* Code Spell Checker
-* Vim (if your're a vim fan!)
+* Code Spell Checker (prevents spelling mistakes)
+* Vim (if you're a vim fan!)
+* EditorConfig for VS Code (promotes consistent coding styles)
+

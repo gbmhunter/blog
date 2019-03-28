@@ -18,9 +18,10 @@
   <figure {{ with .Get "class" }}class="{{.}}"{{ end }} itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <!-- The vbox here centers the image in the middle of the div -->
     <div class="img vbox" style="width: 100%;" {{ if .Parent }} style="background-image: url('{{ print .Site.BaseURL $thumb }}');"{{ end }}{{ with .Get "size" }} data-size="{{.}}"{{ end }}>
-      <img itemprop="thumbnail" src="{{ $thumb.RelPermalink }}" {{ with .Get "alt" | default (.Get "caption") }}alt="{{.}}"{{ end }} style="width: {{ $width_without_px }}px;"/><!-- <img> hidden if in .gallery -->
+      <!-- We must use an absolute permalink (which is just Permalink) and not RelPermalink for the image source otherwise the image will not be displayed when the URL is not the page/posts URL (e.g. it won't be displayed on the main page if the page/post happens to be recently updated) -->
+      <img itemprop="thumbnail" src="{{ $thumb.Permalink }}" {{ with .Get "alt" | default (.Get "caption") }}alt="{{.}}"{{ end }} style="width: {{ $width_without_px }}px;"/><!-- <img> hidden if in .gallery -->
     </div>
-    {{ with .Get "link" | default (.Get "src") }}<a href="{{ $image.RelPermalink }}" itemprop="contentUrl"></a>{{ end }}
+    {{ with .Get "link" | default (.Get "src") }}<a href="{{ $image.Permalink }}" itemprop="contentUrl"></a>{{ end }}
     {{- if (.Get "caption") }}
       <figcaption>
           <p>
