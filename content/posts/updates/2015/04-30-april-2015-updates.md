@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2015-04-30 09:33:23+00:00
+date: 2015-04-30
 draft: false
 title: April 2015 Updates
 type: post
@@ -8,6 +8,7 @@ categories:
 - Updates
 tags:
 - component packages
+- DPAK
 - futures and promises
 - inductors
 - inverting buck-boost
@@ -21,9 +22,9 @@ tags:
 - watermarks
 ---
 
-* Tidyied up the Mercurial ignore file section of the website.
+* Tidied up the Mercurial ignore file section of the website.
 
-	{{< figure src="/images/2015/05/mercurial-hg-scm-logo.jpg" width="225px" caption="The Mecruial (Hg) SCM logo."  >}}
+	{{< figure src="/images/2015/05/mercurial-hg-scm-logo.jpg" width="225px" caption="The Mercurial (Hg) SCM logo."  >}}
 
 * Moved the SMA (DO-214AC), D2PAK (TO-263), DO-35, DO-41, E-Line, EEP, HC-49/US, LGA, Mini-DIP SPM, QIP, SIP, SMD35, SOD-110, SOD-123F, SOD-128, SOD-323 (SC-76), SOD-723, SOJ, SOP-4, SOT-1193, SOT-1226, SOT-223, SOT-23, SOT-323, SOT-363, SOT-523F, SOT-563, SOT-762-1, SOT-886, SOT-902, SPM23, TO-220AB component packages onto their own pages.
 * Added a section on [Saturation](/electronics/components/inductors/#saturation-current) to the Inductors page.

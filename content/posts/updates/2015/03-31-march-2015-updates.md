@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2015-03-31 05:02:33+00:00
+date: 2015-03-31
 draft: false
 title: March 2015 Updates
 type: post
@@ -12,13 +12,13 @@ tags:
 - component packages
 - diodes
 - mfi
-- mosfets
+- MOSFET
 - power regulators
-- smps
-- sot-1226
+- SMPS
+- SOT-1226
 - theme
-- usb
-- wlcsp
+- USB
+- WLCSP
 ---
 
 * The biggest update for March was the switch from a Linux/CPanel shared server to a managed Wordpress service, and the theme change to Avada! See the [Move To Managed Wordpress Hosting For Speed Increase post](/posts/updates/2015-04-03-move-to-managed-wordpress-hosting-for-speed-increase/) for more info.

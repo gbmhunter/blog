@@ -1,33 +1,33 @@
 ---
 author: gbmhunter
-date: 2015-04-03 04:38:23+00:00
+date: 2015-04-03
 draft: false
 title: Move To Managed Wordpress Hosting For Speed Increase
 type: post
 categories:
 - Site Admin
 tags:
-- avada
+- Avada
 - caching
-- cms
-- cpanel
+- CMS
+- CPanel
 - cron
-- css
+- CSS
 - fast
 - file manager
-- ftp
+- FTP
 - godaddy
-- html
-- linux
+- HTML
+- Linux
 - managed
 - performance
-- php
+- PHP
 - slow
 - speed
 - ssh
 - theme
 - website
-- wordpress
+- Wordpress
 ---
 
 [blog.mbedded.ninja](/) has been moved from a Linux-based shared server on GoDaddy to one of their ["managed wordpress" services](https://support.godaddy.com/help/article/8926/what-is-managed-wordpress). It is about the same price, and instead of CPanel, they provide you with a pre-installed Wordpress CMS (with a powerful and quick import from existing Wordpress installation tool). The server is still shared, but is configured to run efficiently run Wordpress-based websites.

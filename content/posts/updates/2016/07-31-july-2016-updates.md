@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2016-07-31 06:27:25+00:00
+date: 2016-07-31
 draft: false
 title: July 2016 Updates
 type: post
@@ -9,11 +9,11 @@ categories:
 tags:
 - concurrency
 - converter
-- ftdi
-- java
+- FTDI
+- Java
 - serial
-- uart
-- usb
+- UART
+- USB
 ---
 
 * New [USB-to-Serial Converters page](/electronics/tools/usb-to-serial-converters) under Electronics->Tools.  

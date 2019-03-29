@@ -1,22 +1,22 @@
 ---
 author: gbmhunter
-date: 2016-02-29 09:32:57+00:00
+date: 2016-02-29
 draft: false
 title: February 2016 Updates
 type: post
 categories:
 - Updates
 tags:
-- api
+- API
 - bit mask
 - dependency injection
 - dew point
 - humidity
-- i2c
-- magnus
-- object-orientated c
-- psoc
-- qp
+- I2C
+- Magnus
+- object-rientated c
+- PSoC
+- QP
 ---
 
 * New [Object Orientated C page](/programming/languages/c/object-orientated-c).
@@ -34,6 +34,6 @@ tags:
 
 * New [Bit Masking page](/programming/languages/c/bit-fields-and-bit-manipulation-masking) under Programming->Languages->C.  
 
-	{{< figure src="/images/2016/03/binary-sparse-matrix-style.jpg" caption="Sparse binary code done in a 'Matrix' style."  >}}
+	{{< figure src="/images/2016/03/binary-sparse-matrix-style.jpg" width="500px" >}}
 
 * Info on the dew point and the Magnus equation added to the [Humidity Sensors page](/electronics/components/sensors/humidity-sensors).

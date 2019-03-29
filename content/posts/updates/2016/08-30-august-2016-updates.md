@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2016-08-30 12:03:53+00:00
+date: 2016-08-30
 draft: false
 title: August 2016 Updates
 type: post
@@ -8,9 +8,9 @@ categories:
 - Updates
 tags:
 - diode
-- pin
+- PIN
 - reverse recovery
-- rf
+- RF
 ---
 
 * New [PIN Diodes page](/electronics/components/diodes/pin-diodes).  

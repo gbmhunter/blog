@@ -1,11 +1,12 @@
 ---
 author: gbmhunter
-date: 2015-01-01 03:21:41+00:00
+date: 2015-01-01
 draft: false
 title: Happy New Year, Plans For 2015
 type: post
 categories:
 - Site Admin
+- Updates
 tags:
 - comments
 - component package
@@ -16,7 +17,7 @@ tags:
 - mbedded.ninja
 - plans
 - referrers
-- seo
+- SEO
 - statistics
 - visitors
 ---

@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2016-07-06 10:35:24+00:00
+date: 2016-07-06
 draft: false
 title: NinjaCalc v1.3.0 Released
 type: post
@@ -10,10 +10,10 @@ tags:
 - algorithm
 - calculator
 - checksum
-- crc
+- CRC
 - custom
 - cyclic redundancy check
-- ninjacalc
+- NinjaCalc
 - polynomial
 - update
 ---

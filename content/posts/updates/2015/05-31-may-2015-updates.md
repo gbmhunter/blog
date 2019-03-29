@@ -1,8 +1,8 @@
 ---
 author: gbmhunter
-date: 2015-06-09 10:54:29+00:00
+date: 2015-05-30
 draft: false
-title: April 2015 Updates
+title: May 2015 Updates
 type: post
 categories:
 - Updates
@@ -10,11 +10,11 @@ tags:
 - air
 - battery
 - component package
-- dsop advance
+- DSOP advance
 - programming language
 - rust
-- vson
-- wson
+- VSON
+- WSON
 - zinc
 ---
 

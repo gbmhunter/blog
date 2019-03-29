@@ -1,13 +1,13 @@
 ---
 author: gbmhunter
-date: 2015-06-29 22:52:18+00:00
+date: 2015-06-29 
 draft: false
 title: June 2015 Updates
 type: post
 categories:
 - Updates
 tags:
-- altium tricks
+- Altium tricks
 - calculator
 - candy-calc
 - clocks

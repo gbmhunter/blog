@@ -1,13 +1,14 @@
 ---
 author: gbmhunter
-date: 2015-03-07 04:15:29+00:00
+date: 2015-03-07
 draft: false
 title: A new way of displaying child pages is coming...
 type: post
 categories:
+- Site Admin
 - Updates
 tags:
-- altium
+- Altium
 - automatic list
 - child pages
 - child pages shortcode
@@ -17,9 +18,9 @@ tags:
 - mega menu
 - parent pages
 - plugins
-- sb child list
+- SB Child List
 - website design
-- wordpress
+- Wordpress
 ---
 
 With this site getting rather large (536 published pages as of March 2015), and being designed in a hierarchical manner (i.e. predominately using Wordpress _Pages_ rather than _Posts_), it was becoming harder and harder to manage the navigation in a user friendly way.

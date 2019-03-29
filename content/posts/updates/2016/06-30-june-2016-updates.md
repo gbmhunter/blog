@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2016-06-30 01:21:07+00:00
+date: 2016-06-30
 draft: false
 title: June 2016 Updates
 type: post
@@ -11,16 +11,16 @@ tags:
 - compiler
 - diode
 - em probes
-- freertos
-- ide
-- intellij
-- java
-- javafx
-- mplab
+- FreeRTOS
+- IDE
+- IntelliJ
+- Java
+- JavaFX
+- MPLAB
 - off-line switcher
-- smps
-- tvs
-- xc
+- SMPS
+- TVS
+- XC
 ---
 
 * New [Java page](/programming/languages/java) under Programming->Programming Languages. Java child pages [JavaFX](/programming/languages/java/javafx), ~~\[Unit Tests\](/programming/languages/java/unit-tests)~~, [Primitive Data Types](/programming/languages/java/primitive-data-types), [Exceptions](/programming/languages/java/exceptions), [Enumerations](/programming/languages/java/enumerations), [Guava EventBus](/programming/languages/java/guava-eventbus), [Implementing The Observer Pattern In Java](/programming/languages/java/implementing-the-observer-pattern-in-java), [Serial Ports](/programming/languages/java/serial-ports), [Logging](/programming/languages/java/logging) also added.  
