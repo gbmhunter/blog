@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-07-18 00:30:05+00:00
+categories: [ "Programming", "CPU Architectures", "ARM Cortex-M3" ]
+date: 2013-07-18
 draft: false
+tags: [ "programming", "ARM Cortex-M3", "microcontroller", "MCU", "CPU", "architecture" ]
 title: ARM Cortex-M3
 type: page
 ---
@@ -94,8 +96,21 @@ Supports core debug/trace facilities.
 
 ## Microcontrollers Which Use This Architecture
 
+* Atmel SAM3A
+* Atmel SAM3N
+* Atmel SAM3S
+* Atmel SAM3U
+* Atmel SAM3X
+* Energy Micro EFM32
+* Cypress PSoC 5
+* Cypress PSoC 5LP
+* NXP LPC1300
+* NXP LPC1700 (used by mbed)
+* NXP LPC1300
 * [PSoC 5](/programming/microcontrollers/psoc)
 * [PSoC 5 LP](/programming/microcontrollers/psoc)
+* STM32
+
 
 ## External Links
 

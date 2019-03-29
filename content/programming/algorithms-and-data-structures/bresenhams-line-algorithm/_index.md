@@ -1,5 +1,6 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Algorithms And Data Structures" ]
 date: 2019-01-03
 draft: false
 lastmod: 2019-01-03

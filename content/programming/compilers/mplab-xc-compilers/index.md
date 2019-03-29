@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2016-06-16 05:14:49+00:00
+categories: [ "Programming", "Compilers" ]
+date: 2016-06-16
 draft: false
+tags: [ "MPLAB", "compiler", "XC", "Microchip", "C", "C++", "PIC", "microcontroller", "MPLAB X", "IDE", "licensing", "variadic macro", "compiler error" ]
 title: MPLAB XC Compilers
 type: page
 ---
