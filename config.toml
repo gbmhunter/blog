@@ -21,8 +21,9 @@ preserveTaxonomyNames = "true"
     description = "An embedded engineering site that's got your back."    
 
     # This is used by default for Facebook/Twitter links to content if no image is specified in the
-    # frontmatter in the content file itself
-    images = [ "images/logo/cartoon-ninja.jpg" ] 
+    # frontmatter in the content file itself.
+    # UPDATE: It looks like it's working for twitter, but not for Facebook (no open graph meta tag created?)
+    images = [ "/images/logo/mbedded-ninja-twitter-card-600x300.png" ] 
 
 [blackfriday]
     fractions = false
