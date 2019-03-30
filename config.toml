@@ -20,6 +20,10 @@ preserveTaxonomyNames = "true"
     author = "Geoffrey Hunter"
     description = "An embedded engineering site that's got your back."    
 
+    # This is used by default for Facebook/Twitter links to content if no image is specified in the
+    # frontmatter in the content file itself
+    images = [ "images/logo/cartoon-ninja.jpg" ] 
+
 [blackfriday]
     fractions = false
     extensionsmask = ["autolink"] # Prevent naked URL from being converted into links, as this creates problems when the are URLs in figure captions.
