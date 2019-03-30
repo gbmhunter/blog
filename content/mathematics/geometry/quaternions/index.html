@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Mathematics", "Geometry" ]
 date: 2014-11-13
 description: "A tutorial on quaternions, including calculators to convert between quaternions, rotation matrices and axis-angle notations."
 draft: false
@@ -30,31 +31,91 @@ type: page
 
 <p>The basic form of a quaternion is:</p>
 
-<p>$$ \hat{q} = a + b\hat{i} + c\hat{j} + d\hat{k} $$</p>
+<p>$$ \mathbf{q} = w + x\mathbf{i} + y\mathbf{j} + z\mathbf{k} $$</p>
 
-<p>In software, quaternions are described with a vector in where \(w, x, y, z\) are used instead of \(a, b, c, d\):</p>
+<p>in where the multiplication rules are:</p>
 
-<p>$$ \hat{q} = \begin{bmatrix}w\\x\\y\\z\end{bmatrix} $$</p>
+<p>$$ \mathbf{i}^2 = \mathbf{j}^2 = \mathbf{k}^2 = \mathbf{ijk} = -1 $$</p>
+
+<p>In software, quaternions are described with a vector in where \(w, x, y, z\) are the coefficients of \(mathbf{i,j,k}\):</p>
+
+<p>$$ \mathbf{q} = \begin{bmatrix}w\\x\\y\\z\end{bmatrix} $$</p>
 
 <p>The \(w\) represents the scalar part of the quaternions and the \(x, y, z\) represents the vector part. You may see a quaternion written with an \(r\) for the scalar part and a \(v\) for the vector part.</p>
 
-<p>$$ \hat{q} = (r, v) $$</p>
+<p>$$ \mathbf{q} = (r, v) $$</p>
 
-<p>Unit quaternions (the most common and useful type) are quaternions in which the magnitude of the vector is 1 (i.e. a <b>unit vector</b>).</p>
+<p>Unit quaternions (the most common and useful type) are quaternions in which the magnitude of the vector is 1 (i.e. a <b>unit vector</b>). This is when:</p>
+
+<p>$$ w^2 + x^2 + y^2 + z^2 = 1 $$</p>
+
+<p>All quaternions have a conjugate. The conjugate is:</p>
+
+<p>$$ \mathbf{\bar{q}} = w - x\mathbf{i} - y\mathbf{j} - z\mathbf{k} $$</p>
+
+<p>A pure quaternion is a quaternion where \(w=0\). This results in a quaternion:</p>
+
+<p>$$ \mathbf{q} = x\mathbf{i} + y\mathbf{j} + z\mathbf{k} $$</p>
+
+<p>This also happens to represent a vector in 3D space.</p>
 
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <h2>Rotating A Vector</h2>
 
+<p>You can rotate a vector \(v\) in 3D space to \(v'\) with:</p>
+
+<p>$$ v' = qvq' $$</p>
+
+<p>using the <i>Hamilton product</i>.</p>
+
+<p>Lets assume we have the vector:</p>
+
+<p>$$ v = \begin{bmatrix}1\\0\\0\end{bmatrix} $$</p>
+
+<p>And we want to rotate it with the quaternion:</p>
+
+<p>$$ q = \begin{bmatrix}\sqrt{0.5} \\ 0 \\ \sqrt{0.5} \\ 0]\end{bmatrix} $$</p>
+
+<p>This quaternion just so happens to be a rotation of \(90\) around the y-axis.</p>
+
+<p>Combine into:</p>
+
 <p>$$
-P = [ 0, p_x, p_y, p_z ] \\
-R = [ w, x, y, z ] \\
-R' = [ w, -x, -y, -z ]
+  v' = 
+  \begin{bmatrix}\sqrt{0.5} \\ 0 \\ \sqrt{0.5} \\ 0]\end{bmatrix}
+  \begin{bmatrix}0\\1\\0\\0\end{bmatrix}
+  \begin{bmatrix}\sqrt{0.5} \\ 0 \\ -\sqrt{0.5} \\ 0]\end{bmatrix}
+$$</p>
+
+<p>To calculate the multiplication of two quaternions, you can use the Hamilton product. If you have the equation:</p>
+
+<p>$$q3 = q1*q2$$</p>
+
+<p>where each quaternion is composed in the following manner:</p>
+
+<p>$$ q1 = q1_w + q1_x \mathbf{i} + q1_y \mathbf{y} + q1_z \mathbf{z} $$</p>
+
+<p>then using the Hamilton product, the values of each component in \(q3\) are<a href="#1"><sup>1</sup></a>:</p>
+
+<p> 
+$$
+  q3_w = q1_w q2_w - q1_x q2_x - q1_y q2_y - q1_z q2_z \\
+  q3_x = q1_x q2_w + q1_w q2_x - q1_z q2_y + q1_y q2_z \\
+  q3_y = q1_y q2_w + q1_z q2_x + q1_w q2_y - q1_x q2_z \\
+  q3_x = q1_z q2_w - q1_y q2_x + q1_x q2_y + q1_w q2_z
 $$</p>
 
 <!-- ###################################################################### -->
+<!-- ROTATION MATRIX                                                        -->
 <!-- ###################################################################### -->
+<h2>Rotation Matrix</h2>
+
+<p>You can calculate a 3x3 rotation matrix from a quaternion. This is useful if you want to express the rotation as a matrix instead of a quaternion, but comes at the expense of having to store 9 numbers rather than 4!</p>
+
+<!-- ###################################################################### -->
+<!-- COMBINING ROTATIONS                                                    -->
 <!-- ###################################################################### -->
 <h2>Combining Rotations</h2>
 
@@ -80,43 +141,43 @@ $$</p>
     </thead>
     <tbody>
         <tr>
-            <td>$$ q = [1, 0, 0, 0] $$</td>
+            <td>$$ \mathbf{q} = [1, 0, 0, 0] $$</td>
             <td>Identity quaternion, no rotation.</td>
         </tr>
         <tr>
-            <td>$$ q = [0, 1, 0, 0] $$</td>
+            <td>$$ \mathbf{q} = [0, 1, 0, 0] $$</td>
             <td>Rotation of 180 around X axis.</td>
         </tr>
         <tr>
-            <td>$$ q = [0, 0, 1, 0] $$</td>
+            <td>$$ \mathbf{q} = [0, 0, 1, 0] $$</td>
             <td>Rotation of 180 around Y axis.</td>
         </tr>
         <tr>
-            <td>$$ q = [0, 0, 0, 1] $$</td>
+            <td>$$ \mathbf{q} = [0, 0, 0, 1] $$</td>
             <td>Rotation of 180 around Z axis.</td>
         </tr>
         <tr>
-            <td>$$ q = [\sqrt{0.5}, \sqrt{0.5}, 0, 0] $$</td>
+            <td>$$ \mathbf{q} = [\sqrt{0.5}, \sqrt{0.5}, 0, 0] $$</td>
             <td>Rotation of 90 around X axis.</td>
         </tr>
         <tr>
-            <td>$$ q = [\sqrt{0.5}, 0, \sqrt{0.5}, 0] $$</td>
+            <td>$$ \mathbf{q} = [\sqrt{0.5}, 0, \sqrt{0.5}, 0] $$</td>
             <td>Rotation of 90 around Y axis.</td>
         </tr>
         <tr>
-            <td>$$ q = [\sqrt{0.5}, 0, 0, \sqrt{0.5}] $$</td>
+            <td>$$ \mathbf{q} = [\sqrt{0.5}, 0, 0, \sqrt{0.5}] $$</td>
             <td>Rotation of 90 around Z axis.</td>
         </tr>
         <tr>
-            <td>$$ q = [\sqrt{0.5}, -\sqrt{0.5}, 0, 0] $$</td>
+            <td>$$ \mathbf{q} = [\sqrt{0.5}, -\sqrt{0.5}, 0, 0] $$</td>
             <td>Rotation of -90 around X axis.</td>
         </tr>
         <tr>
-            <td>$$ q = [\sqrt{0.5}, 0, -\sqrt{0.5}, 0] $$</td>
+            <td>$$ \mathbf{q} = [\sqrt{0.5}, 0, -\sqrt{0.5}, 0] $$</td>
             <td>Rotation of -90 around Y axis.</td>
         </tr>
         <tr>
-            <td>$$ q = [\sqrt{0.5}, 0, 0, -\sqrt{0.5}] $$</td>
+            <td>$$ \mathbf{q} = [\sqrt{0.5}, 0, 0, -\sqrt{0.5}] $$</td>
             <td>Rotation of -90 around Z axis.</td>
         </tr>
 </table>
@@ -133,7 +194,7 @@ $$</p>
 <p><a href="https://en.wikipedia.org/wiki/Slerp">https://en.wikipedia.org/wiki/Slerp</a> has some code examples in Python and C++ that perform SLERP on quaternions.</p>
 
 <!-- ###################################################################### -->
-<!-- ###################################################################### -->
+<!-- CONVERSION -->
 <!-- ###################################################################### -->
 <h2>Conversion From Axis-Angle Form To Quaternion</h2>
 
@@ -178,4 +239,4 @@ $$</p>
 {{< calculators/quaternion-to-rotation-matrix >}}
 
 
-
+<a name="1">https://www.mathworks.com/help/aeroblks/quaternionmultiplication.html</a>
