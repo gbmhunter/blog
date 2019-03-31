@@ -15,17 +15,8 @@ type: page
 <!-- ###################################################################### -->
 <h2>Overview</h2>
 
-<p>A quaternion (pronounced qwa-ter-ne-ion) is a object which contains four numbers. Arguably, the most useful quaternions is a subset of all quaternions, called <b>unit quaternions</b> (or <b>versors</b>), which can be used to describe a rotation in 3D space. This page focuses on these unit quaternions.</p>
+<p>A quaternion (pronounced <i>qwa-ter-ne-ion</i>) is a complex-number like system which contains three imaginary components and one real comonent. Arguably, the most useful quaternions is a subset of all quaternions called <b>unit quaternions</b> (or <b>versors</b>), which can be used to describe a rotation in 3D space. This page focuses primarily on these unit quaternions.</p>
 
-<p>There are a number of different ways to describe rotations. These include:</p>
-
-<ul>
-    <li>Euler angles (roll, pitch, yaw)</li>
-    <li>Rotation matrices</li>
-    <li>Quaternions</li>
-</ul>
-
-<p>Quaternions do not suffer from the <b>gimbal lock</b> that Euler angles do. A quaternion describes a rotation from one coordinate system to another. When they are used purely to represent a rotation (e.g. no reference coordinate system specified), they are called <b>rotation quaternions</b>. They can also be used to describe an orientation, as long as a reference coordinate system is supplied (in which the quaternion specifies the orientation as a rotation from the reference coordinate system to the coordinate system of the rotated object). In this case they are called <b>orientation quaternions</b>.</p>
 
 <h2>Representation</h2>
 
@@ -33,17 +24,24 @@ type: page
 
 <p>$$ \mathbf{q} = w + x\mathbf{i} + y\mathbf{j} + z\mathbf{k} $$</p>
 
-<p>in where the multiplication rules are:</p>
+<p class="centered">
+  where:<br />
+  \(w, x, y, z\) are real numbers<br />
+  \(\mathbf{i, j, k}\) are the <i>quaternion units</i><br />
+  (which can be seen as similar to the complex number \(\mathbf{i}\))
+</p>
+
+<p>The multiplication rules for the quaternion units are:</p>
 
 <p>$$ \mathbf{i}^2 = \mathbf{j}^2 = \mathbf{k}^2 = \mathbf{ijk} = -1 $$</p>
 
-<p>In software, quaternions are described with a vector in where \(w, x, y, z\) are the coefficients of \(mathbf{i,j,k}\):</p>
+<p>In software, quaternions are described with a vector/array in the following form:</p>
 
 <p>$$ \mathbf{q} = \begin{bmatrix}w\\x\\y\\z\end{bmatrix} $$</p>
 
-<p>The \(w\) represents the scalar part of the quaternions and the \(x, y, z\) represents the vector part. You may see a quaternion written with an \(r\) for the scalar part and a \(v\) for the vector part.</p>
+<p>The \(w\) represents the scalar part of the quaternions and the \(x, y, z\) represents the vector part. You may see a quaternion written with an \(w\) for the scalar part and a \(\vec{r}\) for the vector part.</p>
 
-<p>$$ \mathbf{q} = (r, v) $$</p>
+<p>$$ \mathbf{q} = (w, \vec{r}) $$</p>
 
 <p>Unit quaternions (the most common and useful type) are quaternions in which the magnitude of the vector is 1 (i.e. a <b>unit vector</b>). This is when:</p>
 
@@ -57,8 +55,22 @@ type: page
 
 <p>$$ \mathbf{q} = x\mathbf{i} + y\mathbf{j} + z\mathbf{k} $$</p>
 
-<p>This also happens to represent a vector in 3D space.</p>
+<p>This also happens to represent a vector in 3D space. This is also called a <i>vector quaternion</i>.</p>
 
+<h2>Why Use Quaternions To Describe Rotations?</h2>
+
+<p>There are a number of different ways to describe rotations. These include:</p>
+
+<ul>
+    <li>Axis-angle representation</li>
+    <li>Euler angles (roll, pitch, yaw)</li>
+    <li>Rotation matrices</li>
+    <li>Quaternions</li>
+</ul>
+
+<p>Why choose Quaternions? One reason is that Quaternions do not suffer from the <b>gimbal lock</b> that Euler angles do. This also is related to the fact that they are differentiable (i.e. very small changes in rotation cause very small changes in the quaternion values), which allows for smooth interpolation, important for many use cases including 3D animation. They are also more compact with only four numbers need to be stored than a 9 number rotation matrix. Quaternions are also easily converted into the angle-axis representation and back again.</p>
+  
+  
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
 <!-- ###################################################################### -->
@@ -79,6 +91,10 @@ type: page
 <p>$$ q = \begin{bmatrix}\sqrt{0.5} \\ 0 \\ \sqrt{0.5} \\ 0]\end{bmatrix} $$</p>
 
 <p>This quaternion just so happens to be a rotation of \(90\) around the y-axis.</p>
+
+<p>We turn the vector into a vector quaternion by adding a fourth value of 0 (which is the \(w\)):</p>
+
+<p>$$ v = \begin{bmatrix}0\\1\\0\\0\end{bmatrix} $$</p>
 
 <p>Combine into:</p>
 
@@ -106,6 +122,14 @@ $$
   q3_y = q1_y q2_w + q1_z q2_x + q1_w q2_y - q1_x q2_z \\
   q3_x = q1_z q2_w - q1_y q2_x + q1_x q2_y + q1_w q2_z
 $$</p>
+
+<p>You can also rotate a vector \(\vec{v}\) by a quaternion \(q\) by decomposing the quaternion into it's scalar part \(w\) and it's vector part \(\vec{r}\):</p>
+
+<p>$$ \mathbf{q} = (w, \vec{r}) $$</p>
+
+<p>and then using the following formula to calculate the rotated vector \(v_{rotated}\):</p>
+
+<p>$$ v_{rotated} = \vec{v} + 2\vec{r} \times (\vec{r} \times \vec{v} + w\vec{v}) $$</p>
 
 <!-- ###################################################################### -->
 <!-- ROTATION MATRIX                                                        -->
