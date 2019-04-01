@@ -14,12 +14,12 @@ tags:
 - embedded
 - embedit pro
 - engineering
-- html
-- javascript
-- ohms law
+- HTML
+- Javascript
+- Ohm's Law
 - online
 - resistor
-- wordpress
+- Wordpress
 ---
 
 The electronic online calculators have been upgraded! They now

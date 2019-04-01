@@ -1,17 +1,18 @@
 ---
 author: gbmhunter
-date: 2011-09-07 00:57:27+00:00
+categories: [ "Programming", "Languages", "TeX" ]
+date: 2011-09-07
 draft: false
+tags: [ "TeX", "typesetting", "Latex" ]
 title: TeX
 type: page
-url: /programming/languages/tex
 ---
 
 ## Overview
 
 TeX is a typesetting language for producing documents. It is one of the most popular alternatives to WYSIWYG text editors such as Microsoft Word. The language largely resembles a programming language, and is then compiled to produce professional looking documents.
 
-The advantage of TeX typesetting over an editor such as Microsoft Word is the conformity and standardization that comes naturally when writing a document using 'code'. For example, figures are always labeled correctly and in the same manner, page margins are identical, and bibliographic references are identical and always match correctly with the reference. The large disadvantage with TeX typesetting is the lack of instant feedback (although there are some packages that now support live feedback), and the complexity in understanding and knowing how to write in the TeX language.
+The advantage of TeX typesetting over an editor such as Microsoft Word is the conformity and standardization that comes naturally when writing a document using 'code'. For example, figures are always labelled correctly and in the same manner, page margins are identical, and bibliographic references are identical and always match correctly with the reference. The large disadvantage with TeX typesetting is the lack of instant feedback (although there are some packages that now support live feedback), and the complexity in understanding and knowing how to write in the TeX language.
 
 There is a difference between a TeX distribution and a TeX editor.
 
@@ -46,35 +47,19 @@ There is a difference between a TeX distribution and a TeX editor.
 
 <td >\(\frac{x}{y}\)
 </td>
-
 <td >\frac{x}{y}
 </td>
 </tr>
 <tr >
-
-<td >\frac{x}{y}
-</td>
-
-<td >Prints a fraction.
-</td>
-
-<td >\(\frac{x}{y}\)
-</td>
-
-<td >\dfrac{x}{y}
-</td>
+<td >\frac{x}{y}</td>
+<td >Prints a fraction.</td>
+<td >\(\frac{x}{y}\)</td>
+<td >\dfrac{x}{y}</td>
 </tr>
 <tr >
-
-<td >\text{This is normal text.}
-</td>
-
-<td >Print normal text (not math-style text). This also means spaces are preserved.
-</td>
-
-<td >\(\text{This is normal text.} \\ This is maths text.\)
-</td>
-
+<td >\text{This is normal text.}</td>
+<td >Print normal text (not math-style text). This also means spaces are preserved.</td>
+<td >\(\text{This is normal text.} \\ This is maths text.\)</td>
 <td >
 </td>
 </tr>

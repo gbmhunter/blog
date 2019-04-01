@@ -7,9 +7,9 @@ type: post
 categories:
 - Electronics
 tags:
-- altium
+- Altium
 - electric skateboard
-- pcb
+- PCB
 - routing
 ---
 

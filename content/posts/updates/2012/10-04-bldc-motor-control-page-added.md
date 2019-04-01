@@ -7,15 +7,15 @@ type: post
 categories:
 - Electronics
 tags:
-- bldc
+- BLDC
 - brushless
 - commutation
 - control
 - controller
 - encoder
-- esc
+- ESC
 - hall-effect
-- ic
+- IC
 - motor
 - sensor-less
 ---

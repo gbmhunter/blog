@@ -8,16 +8,16 @@ categories:
 - Electronics
 - Projects
 tags:
-- arduino
-- auckland
-- christchurch
+- Arduino
+- Auckland
+- Christchurch
 - control
 - lights
 - luxcity
-- nz
+- NZ
 - system
 - tonic
-- uv
+- UV
 ---
 
 {{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/luxcity-tonic-logo-small.png" caption="The Luxcity Tonic logo."  width="320px" >}}

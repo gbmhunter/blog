@@ -8,7 +8,7 @@ categories:
 - Updates
 tags:
 - comms
-- i2c
+- I2C
 - screenshots
 ---
 

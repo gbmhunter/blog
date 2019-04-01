@@ -8,17 +8,17 @@ categories:
 - Electronics
 - Projects
 tags:
-- arduino
-- auckland
-- christchurch
+- Arduino
+- Auckland
+- Christchurch
 - control
 - lights
 - luxcity
-- nz
+- NZ
 - project
 - system
 - tonic
-- uv
+- UV
 ---
 
 Last weekend the Luxcity event went down in Christchurch, NZ. The Tonic control system was brought down and the whole system was set up on Saturday. Unfortunately, some problems were encountered during the set-up, namely the sagging of the tensioned structure (the dimensions weren't quite right, and when the crane pulled the structure up, it didn't come together correctly). The manifold system also started leaking from every possible connection (and with 58 sets of couplings, reducers, splitters, and solenoids, there were 100's of leaks :-0).

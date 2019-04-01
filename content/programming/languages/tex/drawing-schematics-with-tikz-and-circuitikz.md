@@ -1,15 +1,16 @@
 ---
 author: gbmhunter
-date: 2014-06-28 10:24:23+00:00
+categories: [ "Programming", "Languages", "TeX" ]
+date: 2014-06-28
 draft: false
+tags: [ "TikZ", "CircuitikZ", "Latex", "TeX", "QuickLatex", "circuit", "schematic" ]
 title: Drawing Schematics With TikZ And CircuitikZ
 type: page
-url: /programming/languages/tex/drawing-schematics-with-tikz-and-circuitikz
 ---
 
 ## QuickLatex Setup
 
- The code below shows the basic setup to draw a Circuitikz diagram in a Wordpress post using the QuickLatex plugin.
+The code below shows the basic setup to draw a Circuitikz diagram in a Wordpress post using the QuickLatex plugin.
 
 ```    
 \begin{tikzpicture}

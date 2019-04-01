@@ -8,7 +8,7 @@ categories:
 - Site Admin
 tags:
 - ads
-- disqus
+- Disqus
 ---
 
 It was only when I viewed my website from another person's computer that I realised that the [disqus commenting system](http://www.disqus.com/) was adding ads (an "Around The Web" section) to the bottom of this site's pages. I have a strong aversion to ads (especially IRRELEVANT ones like disqus was adding), even though they could potentially earn me money (I had earnt around US$12 so far, sarcastic yay!).

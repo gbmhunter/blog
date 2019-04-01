@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2010-12-13 04:51:20+00:00
+date: 2010-12-13
 draft: false
 title: Added Facebook Social Plugin
 type: post

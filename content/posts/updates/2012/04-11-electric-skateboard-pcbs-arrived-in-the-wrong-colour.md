@@ -9,8 +9,8 @@ categories:
 tags:
 - electric skateboard
 - gross orange
-- pcb
-- pcb cart
+- PCB
+- PCB Cart
 - soldermask
 - wrong colour
 - yellow

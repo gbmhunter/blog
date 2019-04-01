@@ -11,7 +11,7 @@ tags:
 - crashed
 - error
 - menu
-- wordpress
+- Wordpress
 ---
 
 O.K., so the menu system in Wordpress just started crashing after trying to add a page, giving me a "The given object id is not of that menu item" error many times over.

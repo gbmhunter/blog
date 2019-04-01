@@ -7,29 +7,29 @@ type: post
 categories:
 - Updates
 tags:
-- 1-wire
+- 1-Wire
 - antenna
 - batch files
-- c2000
+- C2000
 - calculator
 - candy-calc
 - cellular modem
 - ddclient
-- google charts
-- he910
+- Google charts
+- HE910
 - impedance
-- led
+- LED
 - lens
-- linux
-- lt3745
-- mcu
+- Linux
+- LT3745
+- MCU
 - routing
 - rsync
-- seo
+- SEO
 - smart links
 - teli
 - updates
-- windows
+- Windows
 ---
 
 It's been a buuuussssyyyyyy month around here. A list of the updates for this month:

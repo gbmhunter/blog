@@ -7,12 +7,12 @@ type: post
 categories:
 - Programming
 tags:
-- c
+- C
 - compiler
-- cplusplus
+- C++
 - creator
 - programming
-- psoc
+- PSoC
 ---
 
 Ever wanted to write C++ for the PSoC 5 or 5LP chips in PSoC Creator?

@@ -8,8 +8,8 @@ categories:
 - Electric Skateboard
 tags:
 - electric skateboard
-- pcb cart
-- pcbs
+- PCB cart
+- PCB
 - red
 ---
 

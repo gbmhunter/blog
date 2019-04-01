@@ -15,10 +15,13 @@ type: page
 <!-- ###################################################################### -->
 <h2>Overview</h2>
 
-<p>A quaternion (pronounced <i>qwa-ter-ne-ion</i>) is a complex-number like system which contains three imaginary components and one real comonent. Arguably, the most useful quaternions is a subset of all quaternions called <b>unit quaternions</b> (or <b>versors</b>), which can be used to describe a rotation in 3D space. This page focuses primarily on these unit quaternions.</p>
+<p>A quaternion (pronounced <i>qwa-ter-ne-ion</i>) is a complex-number like system which contains three imaginary components and one real component. Arguably, the most useful quaternions is a subset of all quaternions called <b>unit quaternions</b> (or <b>versors</b>), which can be used to describe a rotation in 3D space. This page focuses primarily on these unit quaternions.</p>
 
 
-<h2>Representation</h2>
+<!-- ###################################################################### -->
+<!-- DEFINING EQUATION AND IDENTITIES                                       -->
+<!-- ###################################################################### -->
+<h2>Defining Equation And Identities</h2>
 
 <p>The basic form of a quaternion is:</p>
 
@@ -35,28 +38,92 @@ type: page
 
 <p>$$ \mathbf{i}^2 = \mathbf{j}^2 = \mathbf{k}^2 = \mathbf{ijk} = -1 $$</p>
 
-<p>In software, quaternions are described with a vector/array in the following form:</p>
+<p>From these rule above, you can determine some identities:</p>
 
-<p>$$ \mathbf{q} = \begin{bmatrix}w\\x\\y\\z\end{bmatrix} $$</p>
+<p>$$ \mathbf{ijk} = -1 $$</p>
 
-<p>The \(w\) represents the scalar part of the quaternions and the \(x, y, z\) represents the vector part. You may see a quaternion written with an \(w\) for the scalar part and a \(\vec{r}\) for the vector part.</p>
+<p>Multiply both sides by \(\mathbf{i}\):</p>
 
-<p>$$ \mathbf{q} = (w, \vec{r}) $$</p>
+<p>$$ \mathbf{i}^2\mathbf{jk} = -\mathbf{i} $$</p>
 
-<p>Unit quaternions (the most common and useful type) are quaternions in which the magnitude of the vector is 1 (i.e. a <b>unit vector</b>). This is when:</p>
+<p>Using the rule that \(\mathbf{i}^2 = -1\):</p>
 
-<p>$$ w^2 + x^2 + y^2 + z^2 = 1 $$</p>
+<p>$$ -\mathbf{jk} = -\mathbf{i} $$</p>
 
-<p>All quaternions have a conjugate. The conjugate is:</p>
+<p>And thus:</p>
+
+<p>$$ \mathbf{i} = \mathbf{jk} $$</p>
+
+<p>The same process can be applied the other way around and also to \(\mathbf{j}\) and \(\mathbf{k}\) resulting in the following six identities:</p>
+
+<p>$$ \begin{align}
+  \mathbf{i} &= \mathbf{jk} \\
+  \mathbf{j} &= -\mathbf{ik} \\
+  \mathbf{k} &= \mathbf{ij} \\
+  \mathbf{-i} &= \mathbf{kj} \\
+  \mathbf{-j} &= -\mathbf{ki} \\
+  \mathbf{-k} &= \mathbf{ji} \\
+\end{align} $$</p>
+
+<p>These identities are used to <b>simplify terms when applying the product rule to quaternion multiplication</b>.</p>
+
+<!-- ###################################################################### -->
+<!-- QUATERNION CONJUGATES                                                  -->
+<!-- ###################################################################### -->
+<h2>Quaternion Conjugates</h2>
+
+<p>All quaternions have a conjugate. The conjugate of a quaternion \(\mathbf{q}\) is:</p>
 
 <p>$$ \mathbf{\bar{q}} = w - x\mathbf{i} - y\mathbf{j} - z\mathbf{k} $$</p>
+
+<!-- ###################################################################### -->
+<!-- PURE/VECTOR QUATERNIONS                                                -->
+<!-- ###################################################################### -->
+<h2>Pure/Vector Quaternions</h2>
 
 <p>A pure quaternion is a quaternion where \(w=0\). This results in a quaternion:</p>
 
 <p>$$ \mathbf{q} = x\mathbf{i} + y\mathbf{j} + z\mathbf{k} $$</p>
 
-<p>This also happens to represent a vector in 3D space. This is also called a <i>vector quaternion</i>.</p>
+<p>This three-valued quaternion also happens to be able to represent a vector in 3D space, and so it is also called a <i>vector quaternion</i>. A vector quaternion is used to represent either a vector or point in 3D space when you want to apply a quaternion rotation to it (more on this below).</p>
 
+<!-- ###################################################################### -->
+<!-- SCALAR/VECTOR NOTATION                                                 -->
+<!-- ###################################################################### -->
+<h2>Scalar/Vector Notation</h2>
+
+<p>You can split a quaternion into a scalar and a vector component. The \(w\) represents the <i>scalar</i> part of the quaternions and the \(x, y, z\) represents the <i>vector</i> part. You may see a quaternion written with an \(w\) for the scalar part and a \(\vec{r}\) for the vector part.</p>
+
+<p>$$ \mathbf{q} = (w, \vec{r}) $$</p>
+
+<!-- ###################################################################### -->
+<!-- UNIT QUATERNIONS                                                       -->
+<!-- ###################################################################### -->
+<h2>Unit Quaternions</h2>
+
+<p>Unit quaternions are quaternions in which the coefficients have been <i>normalized</i> as follows:</p>
+
+<p>$$ w^2 + x^2 + y^2 + z^2 = 1 $$</p>
+
+<p>Interestingly, all rotations in 3D space (which is called the 3D rotation group, or \(\mathbf{SO(3)}\)) can be represented by the unit quaternions (which is a sub-set of all quaternions). In fact, you will rarely ever deal with a quaternion that is not a unit quaternion!</p>
+
+<!-- ###################################################################### -->
+<!-- REPRESENTATION IN SOFTWARE/PROGRAMMING                                 -->
+<!-- ###################################################################### -->
+<h2>Representation In Software/Programming</h2>
+
+<p>In software, quaternions are typically 
+  described with a vector/array (in the programming sense of the word) in the following form:</p>
+
+<p>$$ \mathbf{q} = \begin{bmatrix}w\\x\\y\\z\end{bmatrix} $$</p>
+
+<p>in where the coefficients are stored in an array and the quaternion units \(\) are implied by position.</p>
+
+<p>It is important to note that <b>although it is common to represent a quaternion with vector-like syntax, it is definitely not a vector</b> (in the mathematical sense of the word). For one, quaternion multiplication does not follow the dot or cross-product multiplication rules that vectors do.</p>
+
+<!-- ###################################################################### -->
+<!-- WHY USE QUATERNIONS TO DESCRIBE ROTATIONS?                             -->
+<!-- ###################################################################### -->
 <h2>Why Use Quaternions To Describe Rotations?</h2>
 
 <p>There are a number of different ways to describe rotations. These include:</p>
@@ -72,15 +139,15 @@ type: page
   
   
 <!-- ###################################################################### -->
-<!-- ###################################################################### -->
+<!-- ROTATING A VECTOR                                                      -->
 <!-- ###################################################################### -->
 <h2>Rotating A Vector</h2>
 
 <p>You can rotate a vector \(v\) in 3D space to \(v'\) with:</p>
 
-<p>$$ v' = qvq' $$</p>
+<p>$$ \begin{bmatrix}0\\v'\end{bmatrix} = q \begin{bmatrix}0\\v\end{bmatrix}q' $$</p>
 
-<p>using the <i>Hamilton product</i>.</p>
+<p>Because the vector is squashed between the quaternion and it's conjugate, this is sometimes referred to as the "sandwich product". The multiplications can be done by the basic product rule, or more easily using the <i>Hamilton product</i>.</p>
 
 <p>Lets assume we have the vector:</p>
 
@@ -131,6 +198,11 @@ $$</p>
 
 <p>$$ v_{rotated} = \vec{v} + 2\vec{r} \times (\vec{r} \times \vec{v} + w\vec{v}) $$</p>
 
+<p class="cenetered">
+  where:<br />
+  \( \times \) is the vector cross-product<br />
+</p>
+
 <!-- ###################################################################### -->
 <!-- ROTATION MATRIX                                                        -->
 <!-- ###################################################################### -->
@@ -152,7 +224,7 @@ $$</p>
 <p>Remember that <b>quaternion multiplication is not associative</b>, so the ordering of \( R_A \) and \( R_B \) is important.</p>
 
 <!-- ###################################################################### -->
-<!-- ###################################################################### -->
+<!-- SOME USEFUL QUATERNIONS                                                -->
 <!-- ###################################################################### -->
 <h2>Some Useful Quaternions</h2>
 
@@ -207,7 +279,7 @@ $$</p>
 </table>
 
 <!-- ###################################################################### -->
-<!-- ###################################################################### -->
+<!-- INTERPOLATION                                                          -->
 <!-- ###################################################################### -->
 <h2>Interpolation</h2>
 
@@ -218,7 +290,7 @@ $$</p>
 <p><a href="https://en.wikipedia.org/wiki/Slerp">https://en.wikipedia.org/wiki/Slerp</a> has some code examples in Python and C++ that perform SLERP on quaternions.</p>
 
 <!-- ###################################################################### -->
-<!-- CONVERSION -->
+<!-- CONVERSION                                                             -->
 <!-- ###################################################################### -->
 <h2>Conversion From Axis-Angle Form To Quaternion</h2>
 
@@ -240,7 +312,7 @@ $$</p>
 {{< calculators/axis-angle-to-quaternion >}}
 
 <!-- ###################################################################### -->
-<!-- ###################################################################### -->
+<!-- CONVERSION FROM QUATERNIONS TO ROTATION MATRIX                         -->
 <!-- ###################################################################### -->
 <h2>Conversion From Quaternion To Rotation Matrix</h2>
 

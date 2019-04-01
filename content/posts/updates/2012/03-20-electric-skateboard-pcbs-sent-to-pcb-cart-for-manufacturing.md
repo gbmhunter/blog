@@ -2,7 +2,7 @@
 author: gbmhunter
 date: 2012-03-20 03:04:25+00:00
 draft: false
-title: Electric Skateboard PCB's Sent To PCB Cart For Manufacturing
+title: Electric Skateboard PCBs Sent To PCB Cart For Manufacturing
 type: post
 categories:
 - Electric Skateboard
@@ -11,8 +11,8 @@ tags:
 - electric skateboard
 - etching
 - panel
-- pcb
-- pcb cart
+- PCB
+- PCB Cart
 - silver circuits
 ---
 

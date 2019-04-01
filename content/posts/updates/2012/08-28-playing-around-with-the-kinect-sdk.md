@@ -7,21 +7,21 @@ type: post
 categories:
 - Programming
 tags:
-- 3d
-- c
+- 3D
+- C
 - drivers
 - embedded
-- kinect
+- Kinect
 - mapping
-- microsoft
+- Microsoft
 - modelling
 - open
-- pc
+- PC
 - problems
-- sdk
+- SDK
 - source
 - visual
-- xbox
+- Xbox
 ---
 
 I got excited about 3D modelling and brought a Microsoft Kinect a few weeks ago. I choose to get the 'PC' version, even though it was $100+ more than the Xbox version, purely because it was touted that Microsoft engineers had worked had at making it better for hacking, and it had more features such as 'Close Up' mode (I'm beginning to regret this decision, see below).

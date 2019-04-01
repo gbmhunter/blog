@@ -7,11 +7,11 @@ categories:
 - Electric Skateboard
 tags:
 - alarm
-- bjt
+- BJT
 - electric skateboard
 - full-bridge
 - motion sensor
-- psoc
+- PSoC
 ---
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/2012-03-04-21-17-27.jpg" caption="The MS24 motion sensor (works in any direction, unlike most tilt sensors)."  width="250px" >}}

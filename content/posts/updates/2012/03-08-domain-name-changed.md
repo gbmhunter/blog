@@ -11,7 +11,8 @@ tags:
 - interconnectit
 - mbedded.ninja
 - migration
-- php script
+- PHP
+- script
 - server down
 ---
 
@@ -21,4 +22,4 @@ The subscription for this sites default domain name, www.undergroundmadlabs.com,
 
 So now, after a week of hassle to get blog.mbedded.ninja transferred to justhost.com, and then moving the WordPress installation from one account to another, it's finally working! The site was out for a few days while I struggled to get the WordPress installation working happily on the new server. I couldn't of done this without interconnectIT's tutorial "[Migrating A Wordpress/WPMU/Buddypress Website](http://interconnectit.com/719/migrating-a-wordpresswpmubuddypress-website/)" and the php script "[Wordpress (and others) Safe Search And Replace Tool](http://interconnectit.com/124/search-and-replace-for-wordpress-databases/)", again by interconnectIT.
 
-{{< figure src="/images/misc/interconnect-it-logo.jpg"   width="320px" >}}
+{{< figure src="/images/misc/interconnect-it-logo.jpg"  width="320px" >}}

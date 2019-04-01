@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2014-12-30 20:16:41+00:00
+date: 2014-12-30
 draft: false
 title: December 2014 Updates
 type: post
@@ -8,15 +8,15 @@ categories:
 - Updates
 tags:
 - accelerometer
-- bluetooth
-- c programming
-- charge pumps
-- igbts
-- imu
+- Bluetooth
+- C
+- charge pump
+- IGBT
+- IMU
 - linkage
-- linux
+- Linux
 - magnetometer
-- transistors
+- transistor
 ---
 
 Updates for December 2014:

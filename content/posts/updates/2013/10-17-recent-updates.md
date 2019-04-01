@@ -13,16 +13,16 @@ tags:
 - connectors
 - images
 - json
-- lga
+- LGA
 - memory
 - modem
 - node
 - packages
 - script
-- seo
-- sim
+- SEO
+- SIM
 - smart links
-- to-leadless
+- TO-Leadless
 - updates
 ---
 

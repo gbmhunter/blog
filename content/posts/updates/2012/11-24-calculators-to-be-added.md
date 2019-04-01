@@ -10,12 +10,12 @@ tags:
 - calculator
 - electronics
 - embedit pro
-- html
-- javascript
-- ohms law
+- HTML
+- Javascript
+- Ohm's law
 - resistors
 - topic-specific
-- wordpress
+- Wordpress
 ---
 
 {{< figure src="/images/electronics-misc/calculator.jpg" caption="A calculator?!?. Yes."  width="320px" >}}

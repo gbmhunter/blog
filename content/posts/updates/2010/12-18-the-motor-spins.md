@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2010-12-18 04:59:12+00:00
+date: 2010-12-18
 draft: false
 title: The Motor Spins
 type: post

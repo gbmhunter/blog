@@ -6,6 +6,7 @@ title: Changes Over The Last 3 Months
 type: post
 categories:
 - Updates
+- Site Admin
 tags:
 - code
 - descendants
@@ -14,7 +15,7 @@ tags:
 - plugins
 - programming
 - syntax
-- wordpress
+- Wordpress
 ---
 
 The [C](/programming/languages/c), [C++](/programming/languages/c-plus-plus), and [C#](/programming/languages/c-sharp) programming pages have been updated with lots more info.

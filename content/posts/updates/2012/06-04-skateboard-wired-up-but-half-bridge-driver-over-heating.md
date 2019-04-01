@@ -10,7 +10,7 @@ tags:
 - electric skateboard
 - half-bridge
 - heating
-- lm5104
+- LM5104
 - wiring
 ---
 

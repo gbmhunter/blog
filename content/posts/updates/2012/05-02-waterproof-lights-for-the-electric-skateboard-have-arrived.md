@@ -8,7 +8,7 @@ categories:
 - Electric Skateboard
 tags:
 - 12v
-- deal extreme
+- Deal Extreme
 - electric skateboard
 - lights
 - photo

@@ -8,9 +8,10 @@ categories:
 - Site Admin
 tags:
 - growth
-- jetpack. visitors
+- jetpack
+- visitors
 - stats
-- wordpress
+- Wordpress
 ---
 
 I installed the Wordpress Jetpack plugin just over a year ago, and with it came the  site statistics page, which gives you a nice overview of how many visitors visit your site. It has been interesting seeing the growth over the last year.

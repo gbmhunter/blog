@@ -10,13 +10,13 @@ tags:
 - admin
 - backup
 - caption
-- css
-- html
+- CSS
+- HTML
 - nextgen
-- php
+- PHP
 - plugin
 - singlepic
-- wordpress
+- Wordpress
 ---
 
 Finally! I scared myself a bit, I first had a look at [/programming/website-design/wordpress/wordpress-plugins-that-this-site-uses](/programming/website-design/content-management-systems/wordpress/wordpress-plugins-that-this-site-uses/) and it turned out I hadn't written down the majority of the PHP code which actually does all the work when creating the captions. Fortunately, I had done a site backup which had file with all the code in it, and once I had worked that out, I managed to restore the functionality pretty quickly.

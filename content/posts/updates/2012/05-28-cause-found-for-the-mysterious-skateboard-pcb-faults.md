@@ -9,8 +9,8 @@ categories:
 tags:
 - electric skateboard
 - flux
-- leds
-- pcbs
+- LED
+- PCB
 - soldering
 - sporadically
 ---

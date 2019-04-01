@@ -4,7 +4,7 @@ date: 2014-07-08
 title: February-June 2014 Updates
 type: post
 tags:
-- latex
+- Latex
 - op-amp
 - jumpers
 - resistors

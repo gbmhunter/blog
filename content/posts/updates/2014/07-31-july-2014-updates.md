@@ -8,22 +8,21 @@ categories:
 - Updates
 tags:
 - aperture
-- avr studio
-- c
+- AVR studio
+- C
 - code
 - component packages
-- cplusplus
-- cpp
+- C++
 - dependency injection
-- freertos
-- github
-- ide
+- FreeRTOS
+- GitHub
+- IDE
 - inversion of control
-- ioc
+- IOC
 - microcontroller
-- pcb
+- PCB
 - programming
-- psoc creator
+- PSoC Creator
 - stencils
 - updates
 ---

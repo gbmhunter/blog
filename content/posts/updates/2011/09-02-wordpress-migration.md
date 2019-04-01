@@ -1,16 +1,16 @@
 ---
 author: gbmhunter
-date: 2011-09-02 12:20:39+00:00
+date: 2011-09-02
 draft: false
 title: Wordpress Migration
 type: post
 categories:
 - Site Admin
 tags:
-- drupal
+- Drupal
 - migration
 - site admin
-- wordpress
+- Wordpress
 ---
 
 I know CladLabs has just been migrated to Drupal, but it is time for a change again. Drupal was great, except I couldn't invest the time required to manage it. Being complex and technical (not that these are bad things), Drupal is beginning to fall over with errors and database conflicts. I'm sure that these can all be solved, however they will require significant time and effort.

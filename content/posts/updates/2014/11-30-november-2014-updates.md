@@ -7,7 +7,7 @@ type: post
 categories:
 - Updates
 tags:
-- altium
+- Altium
 - bss
 - candy-calc
 - canvas
@@ -15,15 +15,15 @@ tags:
 - desmear
 - etchback
 - gerber
-- html 5
-- ims
-- ipc-2581b
+- HTML
+- IMS
+- IPC-2581b
 - odb++
 - resistors
-- rf design
+- RF design
 - rotation
 - scripts
-- sepic
+- SEPIC
 - temperature sensors
 - updates
 ---

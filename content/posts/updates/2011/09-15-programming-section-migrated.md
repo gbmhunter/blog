@@ -7,10 +7,10 @@ type: post
 categories:
 - Site Admin
 tags:
-- drupal
+- Drupal
 - migration
 - site admin
-- wordpress
+- Wordpress
 ---
 
 The programming section has been fully migrated from Drupal to Wordpress, and is now live on this site. There are still a few dead links it it, mainly due to the fact I haven't be able to upload .rar files yet. Working on it :-)...

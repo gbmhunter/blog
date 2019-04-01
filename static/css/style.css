@@ -941,3 +941,13 @@ div.vbox {
     justify-content: center;
     align-items: center;
 }
+
+/* ========================================================================= */
+/* STRIKE-TRHOUGH (DEL)                                                      */
+/* ========================================================================= */
+
+del {
+    text-decoration: line-through;
+    background-color: #fbb;
+    color: #555;
+}

@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
-date: 2013-08-19 21:33:08+00:00
+date: 2013-08-19
 draft: false
+tags: [ "VBScript", "script", "programming language", "Altium", "regex", "comment", "integer", "function pointer", "set", "trigonometry" ]
 title: VBScript
 type: page
-url: /programming/languages/vbscript
 ---
 
 ## Overview
@@ -69,31 +69,18 @@ The RegExp object provides 3 properties and 3 methods. The properties are:
             <th>Description</th>
         </tr>
     </thead>
-<tbody >
-
-<tr >
-
-<td >Pattern
-</td>
-
-<td >A string containing the regex pattern to match input with. This is a core part of the object! This must be set before any RegExp methods are called.
-</td>
+<tbody>
+<tr>
+<td>Pattern</td>
+<td>A string containing the regex pattern to match input with. This is a core part of the object! This must be set before any RegExp methods are called.</td>
 </tr>
-<tr >
-
-<td >IgnoreCase
-</td>
-
-<td >A boolean that when True ignores the case (case insensitive) when matching the pattern.
-</td>
+<tr>
+<td>IgnoreCase</td>
+<td>A boolean that when True ignores the case (case insensitive) when matching the pattern.</td>
 </tr>
-<tr >
-
-<td >Global
-</td>
-
-<td >A boolean that if True, will match only the first pattern it finds. If False, the regex engine will find all patterns. Default is False.
-</td>
+<tr>
+<td>Global</td>
+<td>A boolean that if True, will match only the first pattern it finds. If False, the regex engine will find all patterns. Default is False.</td>
 </tr>
 </tbody>
 </table>
@@ -108,30 +95,18 @@ The methods are:
             <th>Description</th>
         </tr>
     </thead>
-<tbody >
-<tr >
-
-<td >Test(searchString)
-</td>
-
-<td >Returns True if the regex pattern set by Pattern can be matched in searchString, otherwise False.
-</td>
+<tbody>
+<tr>
+<td>Test(searchString)</td>
+<td>Returns True if the regex pattern set by Pattern can be matched in searchString, otherwise False.</td>
 </tr>
-<tr >
-
-<td >Replace(searchString, replaceString)
-</td>
-
-<td >Replaces any match of Pattern in searchString by replaceString, and returns the new string. If no matches were found, the original string (searchString) is returned.
-</td>
+<tr>
+<td>Replace(searchString, replaceString)</td>
+<td>Replaces any match of Pattern in searchString by replaceString, and returns the new string. If no matches were found, the original string (searchString) is returned.</td>
 </tr>
-<tr >
-
-<td >Execute(searchString)
-</td>
-
-<td >Returns a Matches collection object, containing a Match object for each successful match of Pattern in searchString. It doesn't modify searchString.
-</td>
+<tr>
+<td>Execute(searchString)</td>
+<td>Returns a Matches collection object, containing a Match object for each successful match of Pattern in searchString. It doesn't modify searchString.</td>
 </tr>
 </tbody>
 </table>
@@ -141,7 +116,6 @@ The methods are:
 
 The Match object is returned when the Execute method of the RegExp object is called. It has three properties:
 
-
 <table>
     <thead>
         <tr>
@@ -150,33 +124,21 @@ The Match object is returned when the Execute method of the RegExp object is cal
         </tr>
     </thead>
 <tbody >
-<tr >
-
-<td >FirstIndex
-</td>
-
-<td >The position within the original string where the match occured. This is zero-based (the first position is 0).
-</td>
+<tr>
+<td>FirstIndex</td>
+<td>The position within the original string where the match occured. This is zero-based (the first position is 0).</td>
 </tr>
-<tr >
-
-<td >Length
+<tr>
+<td>Length
 </td>
-
-<td >The total length of the matched string.
-</td>
+<td>The total length of the matched string.</td>
 </tr>
-<tr >
-
-<td >Value
-</td>
-
-<td >A string of the matched text. This is the default property when accessing the Match object.
-</td>
+<tr>
+<td>Value</td>
+<td>A string of the matched text. This is the default property when accessing the Match object.</td>
 </tr>
 </tbody>
 </table>
-
 
 ## Test() Example
 

@@ -97,3 +97,9 @@ or, if the inline equations are inside an HTML element, that backticks can be re
 ```html
 <p>\( equation goes here \)</p>
 ```
+
+## HTML Elements
+
+Use the &lt;del&gt; tag for most text which requires a strike-through.
+
+Use the class <code>centered</code> on block elements to center text within it.

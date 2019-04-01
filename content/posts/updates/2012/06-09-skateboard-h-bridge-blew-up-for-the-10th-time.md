@@ -8,12 +8,12 @@ categories:
 - Electric Skateboard
 tags:
 - blow up
-- dac
+- DAC
 - electric skateboard
-- emf
+- EMF
 - half-bridge
 - motor
-- pwm
+- PWM
 ---
 
 So the half-bridge blew up again. This time it was bad, since it was my final design (printed on proper PCB). It is also the design I thought I had prototyped enough that I was confident that it would work. It blew up while stopping the motor suddenly from about 1/4 speed (with no load).

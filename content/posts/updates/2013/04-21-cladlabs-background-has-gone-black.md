@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-04-21 08:42:00+00:00
+date: 2013-04-21
 draft: false
 title: CladLabs Background Has Gone Black
 type: post

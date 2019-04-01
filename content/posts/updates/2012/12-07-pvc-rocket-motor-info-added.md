@@ -7,10 +7,10 @@ categories:
 - Pyrotechnics
 tags:
 - 38pvc
-- diy
+- DIY
 - homemade
 - motor
-- pvc
+- PVC
 - rocket
 - rocketboard
 - skateboard

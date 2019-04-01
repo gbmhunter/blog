@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-05-02 08:33:55+00:00
+date: 2013-05-02
 draft: false
 title: NextGEN Template Code Gives Images A Caption And Fresh Look
 type: post
@@ -8,14 +8,14 @@ categories:
 - Site Admin
 tags:
 - caption
-- html
+- HTML
 - images
 - nextgen
-- php
+- PHP
 - plugin
 - singlepic
 - template
-- wordpress
+- Wordpress
 ---
 
 After playing around with the NextGen plugin PHP files and this sites CSS style file, I have created what NextGEN calls a "template" for a single picture (in NextGEN lingo, a singlepic), which adds a border and the caption to the image. Which by-the-way, is a feature that NextGEN lacks, and should implement themselves!

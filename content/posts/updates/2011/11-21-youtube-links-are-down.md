@@ -9,7 +9,7 @@ categories:
 tags:
 - rocket pack
 - site admin
-- youtube
+- YouTube
 ---
 
 After upgrading the Rocket Pack plugin all of the embedded YouTube videos have been reduced to links. Fixing...
