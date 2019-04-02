@@ -2,7 +2,7 @@
 author: gbmhunter
 date: 2015-07-15
 draft: false
-tags: [ "FPGA", "power supply". "boot-up", "Xilinx", "CMOS" ]
+tags: [ "FPGA", "power supply", "boot-up", "Xilinx", "CMOS" ]
 title: FPGAs
 type: page
 ---

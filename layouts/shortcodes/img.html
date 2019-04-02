@@ -2,6 +2,15 @@
 {{- if not ($.Page.Scratch.Get "figurecount") }}<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />{{ end }}
 {{- $.Page.Scratch.Add "figurecount" 1 -}}
 {{- $image := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) }}
+
+{{- if not $image -}}
+  {{- errorf "Image resource not found for image '%s' on page '%s'." (.Get "src") ($.Page.Permalink) -}}
+{{- end -}}
+
+{{- if not (.Get "width") -}}
+  {{- errorf "Width not specified for image '%s' on page '%s'." (.Get "src") ($.Page.Permalink) -}}
+{{- end -}}
+
 {{- $width_without_px := index (findRE "^[0-9]+" (.Get "width")) 0 -}}
 {{- $thumb := 0 -}}
 {{- if eq (index (split (.Get "src") ".") 1) "gif" -}}
