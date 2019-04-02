@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2014-06-28 05:15:24+00:00
+categories: [ "Programming", "Languages", "TeX" ]
+date: 2014-06-28
 draft: false
+tags: [ "TikZ", "PGF", "QuickLatex", "Latex", "Wordpress", "tikzpicture", "line", "box", "arrow", "text" ]
 title: TikZ And PGF Tutorial
 type: page
-url: /programming/languages/tex/tikz-and-pgf-tutorial
 ---
 
 ## Overview

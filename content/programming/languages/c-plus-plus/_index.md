@@ -1,21 +1,20 @@
 ---
 author: gbmhunter
-date: 2012-10-22 20:48:14+00:00
+date: 2012-10-22
 draft: false
 title: C++ Programming
 type: page
-url: /programming/languages/c-plus-plus
 ---
 
-## Overview
+<h2>Overview</h2>
 
-This page covers C++ programming and it's use in embedded programming.
+<p>This page covers C++ programming and it's use in embedded programming.</p>
 
-<blockquote>**DID YOU KNOW?** - C++ started out as a preprocessor for C, before later developing into it's own language.</blockquote>
+<blockquote>C++ started out as a preprocessor for C, before later developing into it's own language.</blockquote>
 
 One of my favourite quotes:
 
-> C makes it easy to shoot yourself in the foot...C++ makes it harder, but when you do, it blows your whole leg off. - Bjame Stroustrup
+<blockquote>C makes it easy to shoot yourself in the foot...C++ makes it harder, but when you do, it blows your whole leg off. - Bjame Stroustrup</blockquote>
 
 ## Benefits Over C
 
@@ -48,11 +47,11 @@ C code can be mixed (aka compiled) with/alongside C++ code. One important thing 
 
 ## Name Mangling
 
-Name mangling is a technique used by C++ compilers to distinguish overloaded functions of the same name. The compiler adds some seemingly unintelligable characters to the end of overloaded functions (these characters are related to the input variables). C compilers do not do this as the C standard does not support overloaded functions (even though it looks like it, printf(string, variable1, variable2, ...) is not overloaded!). When cross-compiling, this has to be taken into consideration.
+<p>Name mangling is a technique used by C++ compilers to distinguish overloaded functions of the same name. The compiler adds some seemingly unintelligable characters to the end of overloaded functions (these characters are related to the input variables). C compilers do not do this as the C standard does not support overloaded functions (even though it looks like it, <code>printf(string, variable1, variable2, ...)</code> is not overloaded!). When cross-compiling, this has to be taken into consideration.</p>
 
-## Compilers
+<h2>Compilers</h2>
 
-Most embedded C++ compilers use GCC. The main competitor to the GCC compiler is Clang, however it is not as common in embedded environments (I have never personally used Clang to compile for an embedded application).
+<p>Most embedded C++ compilers use GCC. The main competitor to the GCC compiler is Clang, however it is not as common in embedded environments (I have never personally used Clang to compile for an embedded application).</p>
 
 See the [Linux Bash Commands For C++ page](/programming/languages/c-plus-plus/linux-bash-commands-for-cpp) for a quickstart C++ guide for Linux.
 
@@ -62,7 +61,7 @@ There is a syntax ambiguity in C++ which normally appears when you are trying to
 
 Constructors cannot be declared static, as it makes sense that they only belong to an object of that class type. If you want to initialise static member variables, you do this in the normal C way, outside of the class definition.
 
-Constructors can take **parameter lists**, which along with constructors, is a new concept that is not present in C.
+Constructors can take <i>parameter lists</i>, which along with constructors, is a new concept that is not present in C.
 
 ## Namespaces
 
@@ -71,15 +70,12 @@ Namespaces give you the ability to wrap functions and variables into groups. Cal
 This removes the need for the common C convention of prefixing all functions with the name of the file they are in (for example, files in Uart.c would be called things like Uart_PutString() and Uart_GetChar().
 
 ```c++
-namespace Uart
-{
-    void PutString(char *string)
-    {
+namespace Uart {
+    void PutString(char *string) {
         // code
     }
 
-    char GetChar()
-    {
+    char GetChar() {
         // code
     }
 }
@@ -111,16 +107,13 @@ Static can be a good way to get around the annoying "pointer to non-static membe
 Forward declarations can be used to resolve circular dependencies of pointers to classes (but only pointers, and not circular dependencies of objects, these are illegal).
 
 ```c++    
-namespace NsB
-{
+namespace NsB {
     // Forward declaration
     class B;
 }
 
-namespace NsA
-{
-    class A
-    {
+namespace NsA {
+    class A {
         // This is legal since there
         // is a forward declaration above
         B* b;
@@ -128,7 +121,7 @@ namespace NsA
 }
 ```
 
-Note that you cannot write a forward declaration for a class in a different namespace using the `<namespace name>::<class name>` syntax, you have to fully "open" the namespace using the namespace `<namespace name> { class <class name>; }` syntax, as shown below.
+<p>Note that you cannot write a forward declaration for a class in a different namespace using the <code>&lt;namespace name&gt;::&lt;class name&gt;</code> syntax, you have to fully "open" the namespace using the namespace <code>&lt;namespace name&gt; { class &lt;class name&gt;; }</code> syntax, as shown below.</p>
 
 ```c++    
 // Illegal forward declaration
@@ -136,8 +129,7 @@ Note that you cannot write a forward declaration for a class in a different name
 class NsB::B;
 
 // Legal forward declaration
-namespace NsB
-{
+namespace NsB {
     class B;
 }
 ```
