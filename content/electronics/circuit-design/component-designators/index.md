@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Circuit Design" ]
 date: 2011-09-03
 draft: false
 tags: [ "component", "designators", "electronincs", "engineering", "symbol", "PCB", "silkscreen" ]
@@ -30,7 +31,7 @@ Sorted by alphabetic order...
 </tr>
 <tr >
     <td>AGND</td>
-    <td>{{< figure src="/images/2011/09/ground-analogue.png" caption="The schematic symbol for analogue ground (AGND)."  >}}</td>
+    <td>{{< img src="ground-analogue.png" caption="The schematic symbol for analogue ground (AGND)." width="200px" >}}</td>
     <td>Analogue ground. See also DGND and GND.</td>
 </tr>
 <tr >
@@ -45,18 +46,18 @@ Sorted by alphabetic order...
 </tr>
 <tr >
     <td>C</td>
-    <td>{{< figure src="/images/2011/09/non-polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a non-polarised capacitor."  >}}
-    {{< figure src="/images/2011/09/polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a polarised capacitor."  >}}</td>
+    <td>{{< img src="non-polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a non-polarised capacitor." width="200px" >}}
+    {{< img src="polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a polarised capacitor." width="200px" >}}</td>
     <td>Capacitor (both polarised and non-polarised)</td>
 </tr>
 <tr>
     <td>D</td>
-    <td>{{< figure src="/images/2011/09/led-schematic-symbol.png" caption="The schematic symbol for an LED."  >}}</td>
+    <td>{{< img src="led-schematic-symbol.png" caption="The schematic symbol for an LED." width="200px" >}}</td>
     <td>Diode (standard, Schottky, zener, e.t.c). Note that many different variations on the schematic symbol exist for the different types of diodes.</td>
 </tr>
 <tr>
 <td>DGND</td>
-<td>{{< figure src="/images/2011/09/digital-ground-schematic-symbol.png" caption="The schematic symbol for digital ground."  >}}</td>
+<td>{{< img src="digital-ground-schematic-symbol.png" caption="The schematic symbol for digital ground." width="200px" >}}</td>
 <td>Digital ground. See also AGND and GND.</td>
 </tr>
 <tr>
@@ -71,18 +72,18 @@ Sorted by alphabetic order...
 </tr>
 <tr>
 <td>FB</td>
-<td>{{< figure src="/images/2011/09/ferrite-bead-schematic-symbol.png" caption="The schematic symbol for a ferrite bead."  >}}</td>
+<td>{{< img src="ferrite-bead-schematic-symbol.png" caption="The schematic symbol for a ferrite bead." width="200px" >}}</td>
 <td>Ferrite bead. Sometimes the designator FEB is used instead.
 </td>
 </tr>
 <tr>
 <td>FID</td>
-<td>{{< figure src="/images/2011/09/fiducial-schematic-symbol.png" caption="The schematic symbol for a fiducial."  >}}</td>
+<td>{{< img src="fiducial-schematic-symbol.png" caption="The schematic symbol for a fiducial." width="200px" >}}</td>
 <td>Fiducial.</td>
 </tr>
 <tr>
 <td>GND</td>
-<td>{{< figure src="/images/2011/09/general-common-ground-schematic-symbol.png" caption="The schematic symbol for a general or common ground."  >}}</td>
+<td>{{< img src="general-common-ground-schematic-symbol.png" caption="The schematic symbol for a general or common ground." width="200px" >}}</td>
 <td>Common/General Ground (also see AGND and DGND).</td>
 </tr>
 <tr>
@@ -123,8 +124,8 @@ Sorted by alphabetic order...
 <tr >
 <td >Q</td>
 <td>
-{{< figure src="/images/2011/09/n-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for an N-channel MOSFET."  >}}
-{{< figure src="/images/2011/09/p-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for a P-channel MOSFET."  >}}
+{{< img src="n-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for an N-channel MOSFET." width="200px" >}}
+{{< img src="p-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for a P-channel MOSFET." width="200px" >}}
 </td>
 <td >Transistor (BJT's, MOSFETs, JFET's, e.t.c). Sometimes this is used for an integrated circuit, but I prefer using 'U'.</td>
 </tr>
@@ -148,7 +149,7 @@ Sorted by alphabetic order...
 <tr >
 <td >SG</td>
 <td >
-{{< figure src="/images/2011/09/spark-gap-schematic-symbol-triangular-200um-no-bom.png" caption="A schematic symbol for a spark gap. This spark gap is created with two triangles of copper on the PCB, with a gap of 200um between them. As this is made purely from the PCB, there is no BOM component needed."  >}}
+{{< img src="spark-gap-schematic-symbol-triangular-200um-no-bom.png" caption="A schematic symbol for a spark gap. This spark gap is created with two triangles of copper on the PCB, with a gap of 200um between them. As this is made purely from the PCB, there is no BOM component needed." width="200px" >}}
 </td>
 <td >Spark gap.</td>
 </tr>
@@ -171,7 +172,7 @@ Sorted by alphabetic order...
 <tr >
 <td >VR</td>
 <td >
-{{< figure src="/images/2011/09/variable-resistor-potentiometer-schematic-symbol.png" caption="The schematic symbol for a variable resistor (potentiometer)."  >}}
+{{< img src="variable-resistor-potentiometer-schematic-symbol.png" caption="The schematic symbol for a variable resistor (potentiometer)." width="200px" >}}
 </td>
 <td >Variable resistor (potentiometer).</td>
 </tr>
@@ -183,7 +184,7 @@ Sorted by alphabetic order...
 <tr>
 <td>XC</td>
 <td>
-{{< figure src="/images/2011/09/crystal-schematic-symbol.png" caption="The schematic symbol for a crystal."  >}}
+{{< img src="crystal-schematic-symbol.png" caption="The schematic symbol for a crystal." width="200px" >}}
 </td>
 <td>Timing crystals. XTAL or Y are also used.</td>
 </tr>

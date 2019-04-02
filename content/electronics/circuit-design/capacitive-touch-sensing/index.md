@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
-date: 2012-01-09 09:49:05+00:00
+date: 2012-01-09
 draft: false
+tags: [ "capacitance", "capacitive", "capacitor", "touch sensing", "capacitive touch sensing", "buttons", "ESD protection" ]
 title: Capacitive Touch Sensing
 type: page
-url: /electronics/circuit-design/capacitive-touch-sensing
 ---
 
 ## Overview
@@ -21,7 +21,7 @@ Capacitive touch sensing is a relatively new interface method for electronics, w
 
 There are two main methods, single and differential.
 
-{{< figure src="/images/2012/01/cap-sense-button-diagram-cypress.jpg" width="395px" caption="How simple cap sense buttons work."  >}}
+{{< img src="cap-sense-button-diagram-cypress.jpg" width="395px" caption="How simple cap sense buttons work."  >}}
 
 ## Detection Limits
 
@@ -31,7 +31,7 @@ Most capacitance detection hardware has VERY good resolution and can detect capa
 
 The button footprint can vary between the designs. One of the easiest is simply a copper circle (typically around 10mm in diameter).
 
-{{< figure src="/images/2012/01/atmel-recommended-cap-button-shape.jpg" width="430px" caption="A recommended cap button shape by Atmel. Image from atmel.com."  >}}
+{{< img src="atmel-recommended-cap-button-shape.jpg" width="430px" caption="A recommended cap button shape by Atmel. Image from atmel.com."  >}}
 
 ## ESD Protection
 
