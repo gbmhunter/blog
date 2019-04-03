@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2017-11-09 17:56:40+00:00
+date: 2017-11-09
 draft: false
 title: Auto (Specifier)
 type: page
-url: /programming/languages/c-plus-plus/auto-specifier
 ---
 
 ## Overview
