@@ -9,9 +9,9 @@ type: "page"
 
 ## Overview
 
-Electrostatic discharge (ESD) is a unintended quick high-voltage transient waveform which appears on conductors within an electrical circuit. The high voltages and current peaks caused by ESD can cause devices such as static sensitive IC's to fail. Human contact is a common source of an ESD. Even if there is no direct human contact with the circuit, devices such as capacitive sense switches can allow charge to be coupled through onto electrical conductors. ESD protection is needed in cases were ESD discharges could potentially cause a circuit to fail.
+Electrostatic discharge (ESD) is a unintended quick high-voltage transient waveform which appears on conductors within an electrical circuit. The high voltages and current peaks caused by ESD can cause devices such as static sensitive ICs to fail. Human contact is a common source of an ESD. Even if there is no direct human contact with the circuit, devices such as capacitive sense switches can allow charge to be coupled through onto electrical conductors. ESD protection is needed in cases were ESD discharges could potentially cause a circuit to fail.
 
-{{< figure src="/images/2011/09/esd-protectors-schematic-symbol.png" width="770px" caption="The schematic symbol for ESD protectors. Image from http://www.bourns.com/data/global/pdfs/MLC.pdf."  >}}
+{{< img src="esd-protectors-schematic-symbol.png" width="400px" caption="The schematic symbol for ESD protectors. Image from http://www.bourns.com/data/global/pdfs/MLC.pdf." >}}
 
 ## ESD Protection Devices
 
@@ -33,12 +33,12 @@ The table below summarizes the different components you can use for ESD protecti
 		<tr >
 			<td>Zener Diode</td>
 			<td>Average</td>
-			<td >Zener diodes were designed for voltage regulation rather than ESD protection, but they can be used for low-power ESD protection. For more information, see the [Diodes](/electronics/components/diodes) page.</td>
+			<td >Zener diodes were designed for voltage regulation rather than ESD protection, but they can be used for low-power ESD protection. For more information, see the <a href="/electronics/components/diodes/">Diodes page</a>.</td>
 		</tr>
 		<tr>
 			<td>TVS Diode</td>
 			<td>Excellent</td>
-			<td>These things are designed to handle high-power ESD surges. Turn on time is very good also. Uni-directional TVS diodes have a much faster turn-on time (e.g. 4ps) as opposed to bi-directional types (e.g. 4ns). For more information, see the [Diodes](/electronics/components/diodes) page.</td>
+			<td>These things are designed to handle high-power ESD surges. Turn on time is very good also. Uni-directional TVS diodes have a much faster turn-on time (e.g. 4ps) as opposed to bi-directional types (e.g. 4ns). For more information, see the <a href="/electronics/components/diodes/">Diodes page</a>.</td>
 		</tr>
 	</tbody>
 </table>
@@ -72,7 +72,7 @@ You can normally diagnose this by noting the the "unpowered" rail will be one di
 
 Extra diodes, external to the IC, can be added to prevent leakage currents through CMOS IO pins on devices which have ESD protection diodes to VCC and GND. The following image shows how they would be connected to the IC of interest.
 
-{{< figure src="/images/2011/09/protection-diodes-to-disable-esd-diodes-on-cmos-io.png" width="489px" caption="Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf."  >}}
+{{< img src="protection-diodes-to-disable-esd-diodes-on-cmos-io.png" width="489px" caption="Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf."  >}}
 
 However, this approach has it's disadvantages. The actual supply voltage seen by the IC is reduced by twice the voltage drop (`\(V_f\)`) across the diodes (normally 2x 0.5-0.7V = 1.0-1.4V). Also, the IC ground is now significantly different from the system ground. This can upset single-ended ADC measurements and other analogue functions.
 
@@ -83,7 +83,7 @@ I would explain this, but I found an application note by Silicon Labs to explain
 <blockquote>
 The most common method of external ESD protection is adding a small series resistance in-line between the source of ESD energy and the integrated circuit pin to be protected. Somewhat counter-intuitively, a resistance as small as 50Ω can double the ESD immunity of a CMOS IC. Higher immunity is possible; a higher level of protection is somewhat proportional to increased series resistance.
 
-This method works for two reasons. First, the series resistance works with the IC's parasitic pin capacitance (typically 5 to 10 pF) to create a single-pole low pass filter with a cutoff frequency below 1 GHz. This causes the series resistor to attenuate a majority of an ESD event's high-frequency energy (as much as 90% of the rising-edge power in an HBM discharge). Second, when the IC's protection circuits are operating normally, their impedance is very low (on the order of tens of ohms or less). This low resistance works with the series resistance to create a voltage divider, so that the high voltage from an ESD event can only bias the IC's built-in protection circuits with a portion of the total ESD voltage. This attenuation is in addition to rising-edge filtering. The sum of these effects from a simple external series resistor dramatically improves ESD performance in a demanding application.
+This method works for two reasons. First, the series resistance works with the ICs parasitic pin capacitance (typically 5 to 10 pF) to create a single-pole low pass filter with a cut-off frequency below 1 GHz. This causes the series resistor to attenuate a majority of an ESD event's high-frequency energy (as much as 90% of the rising-edge power in an HBM discharge). Second, when the ICs protection circuits are operating normally, their impedance is very low (on the order of tens of ohms or less). This low resistance works with the series resistance to create a voltage divider, so that the high voltage from an ESD event can only bias the ICs built-in protection circuits with a portion of the total ESD voltage. This attenuation is in addition to rising-edge filtering. The sum of these effects from a simple external series resistor dramatically improves ESD performance in a demanding application.
 </blockquote>
 
 ## Optimal Placement

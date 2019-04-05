@@ -3,13 +3,14 @@ author: "gbmhunter"
 date: 2013-01-31
 draft: true
 lastmod: 2019-01-10
+tags: [ "capacitor", "encoder", "capacitive encoder", "design" ]
 title: "Capacitor Encoder Design"
 type: "page"
 ---
 
 ## Overview
 
-This page describes how to design a capacitor encoder with just two PCB's with cleverly etched tracks, a capacitance-to-digital converter IC, and a microcontroller with some signal processing/algorithm code.
+This page describes how to design a capacitor encoder with just two PCBs with cleverly etched tracks, a capacitance-to-digital converter IC, and a microcontroller with some signal processing/algorithm code.
 
 ## Terminology
 
@@ -52,7 +53,7 @@ I have achieved resolutions of up to 4/100 of a degree with custom-built absolut
 
 ## PCB Design
 
-**Soldermask** must be applied to all parts of both tracks which are rubbing against each other. You want the circuit to be capacitivly coupled, not a direct short. The soldermask acts as a dielectric (but more dielectric material should be added, see below).
+**Soldermask** must be applied to all parts of both tracks which are rubbing against each other. You want the circuit to be capacitively coupled, not a direct short. The soldermask acts as a dielectric (but more dielectric material should be added, see below).
 
 ## What PCB Is Active And What Is Passive
 
@@ -67,36 +68,36 @@ The Altium script takes input variables such as N track length, number of passiv
 
 ## Linear
 
-<table style="width: 800px;" border="0" class="aligncenter" >
-      <tbody >
-            <tr >
-                  <td >{{< figure src="/images/electronics-capacitiveencoders/linear-nm1-cap-encoder-passive-pcb-image.png" caption="A linear capacitive encoder passive PCB."  width="400px" >}}</td>
-                  <td >{{< figure src="/images/electronics-capacitiveencoders/linear-nm1-cap-encoder-active-pcb-image.png" caption="A linear capacitive encoder active PCB."  width="400px" >}}</td>
-            </tr>
-      </tbody>
+<table>
+  <tbody>
+    <tr>
+      <td>{{< img src="linear-nm1-cap-encoder-passive-pcb-image.png" caption="A linear capacitive encoder passive PCB."  width="400px" >}}</td>
+      <td>{{< img src="linear-nm1-cap-encoder-active-pcb-image.png" caption="A linear capacitive encoder active PCB."  width="400px" >}}</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Rotational
 
 A rotational capacitive encoder design is very much like the linear one, except everything is drawn on polar co-ordinate system rather than a cartesian. The biggest difference is that the rotational one can be continuous (i.e. the tracks can rotate a full 360, and there is no stop or end point).
-<table style="width: 800px;" border="0" class="aligncenter" >
-      <tbody >
-            <tr >
-                  <td >{{< figure src="/images/electronics-capacitiveencoders/rotational-nm1-capacitive-encoder-passive-pcb-image.png" caption="A rotational capacitive encoder passive PCB."  width="400px" >}}</td>
-                  <td >{{< figure src="/images/electronics-capacitiveencoders/rotational-nm1-capacitive-encoder-active-pcb-image.png" caption="A rotational capacitive encoder active PCB."  width="400px" >}}</td>
-            </tr>
-      </tbody>
+<table>
+  <tbody>
+    <tr>
+      <td>{{< img src="rotational-nm1-capacitive-encoder-passive-pcb-image.png" caption="A rotational capacitive encoder passive PCB." width="400px" >}}</td>
+      <td>{{< img src="rotational-nm1-capacitive-encoder-active-pcb-image.png" caption="A rotational capacitive encoder active PCB." width="400px" >}}</td>
+    </tr>
+  </tbody>
 </table>
 
 ## The Dielectric
 
 I recommend adding a dielectric between the PCBs (as well as the soldermask). Counter-intuitively, any dielectric added decreases the total capacitance. This is because although the dielectric increases the dielectric constant, it also increases the distance between the plates. This distance increase as a bigger effect on the capacitance than the dielectric increase, as per the [parallel-plate equation on the Capacitors page](/electronics/components/capacitors).
 
-The reason I recommend adding a dielectric is that it **stabilizes** the capacitances. It reduces the change in capacitance due to the two PCB's moving away from each other and also when moving out of alignment (the sliding mechanism is never perfect), making signal processing a whole lot easier.
+The reason I recommend adding a dielectric is that it **stabilizes** the capacitances. It reduces the change in capacitance due to the two PCBs moving away from each other and also when moving out of alignment (the sliding mechanism is never perfect), making signal processing a whole lot easier.
 
 I achieved good results when using 0.165mm thick acrylic adhesive transfer tape (3M code 467MP), as shown below.
 
-{{< figure src="/images/electronics-capacitiveencoders/165um-dielectric-3m-467mp-half-peeled-off-backing.jpg" caption="165um plastic dielectric (3M 467MP)."  width="400px" >}}
+{{< img src="165um-dielectric-3m-467mp-half-peeled-off-backing.jpg" caption="165um plastic dielectric (3M 467MP)."  width="400px" >}}
 
 ## Maximum Velocities
 
@@ -112,15 +113,15 @@ The skewing can be prevented by:
 
 The following image shows the individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm).
 
-{{< figure src="/images/electronics-capacitiveencoders/cap-encoder-individual-cdc-waveform-graphs-for-both-tracks.jpg" caption="The individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm)."  width="800px" >}}
+{{< img src="cap-encoder-individual-cdc-waveform-graphs-for-both-tracks.jpg" caption="The individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm)."  width="800px" >}}
 
 The following image shows the grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm).
 
-{{< figure src="/images/electronics-capacitiveencoders/cap-encoder-grouped-cdc-waveform-graphs-for-both-tracks.jpg" caption="The grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm)."  width="800px" >}}
+{{< img src="cap-encoder-grouped-cdc-waveform-graphs-for-both-tracks.jpg" caption="The grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm)."  width="800px" >}}
 
 What makes the signal processing difficult is that the channels of CDC values can have different offset's. The graph below shows this (notice the light green channel which has a much higher offset than all the others.
 
-{{< figure src="/images/electronics-capacitiveencoders/cdc-vs-time-graph-showing-different-offsets-of-each-channel.jpg" caption="CDC values vs. time graph showing the different offsets each channel can have."  width="800px" >}}
+{{< img src="cdc-vs-time-graph-showing-different-offsets-of-each-channel.jpg" caption="CDC values vs. time graph showing the different offsets each channel can have."  width="800px" >}}
 
 ## Firmware And Algorithm
 
@@ -142,12 +143,11 @@ Note that the following example uses doubles and math operations such as `pow()`
 //!                                     capVals[]. Adjusted because values will be pulled out of a much larger
 //!                                     array.
 //! @param   arraySize                  Number of elements in the arrays (per array)
-double Maths_CalcCorrelCo(double capVals[], double adjustedCurveSignature[], double arraySize)
-{
+double Maths_CalcCorrelCo(double capVals[], double adjustedCurveSignature[], double arraySize) {
+
    double sumX, sumY, sumXY, sumX2, sumY2;
-   // Calculate intermediatry values
-   for (x = 0; x &lt; arraySize; x++)
-   {
+   // Calculate intermediary values
+   for (x = 0; x &lt; arraySize; x++) {
       sumX += capVals[x];
       sumY += adjustedCurveSignature[x];
       sumXY += capVals[x] * adjustedCurveSignature[x];
@@ -170,7 +170,7 @@ double Maths_CalcCorrelCo(double capVals[], double adjustedCurveSignature[], dou
 
 ## The Signature Waveform
 
-The following code shows how to convert the current high-precision double-type signature waveform array to a lower precision in **Octave **(an open-source Matlab equivalent), to save embedded memory space and speed up the execution time.  It reads comma-separated values from a text file (which conveniently is how you initialise the array in C, just remove the data type, variable name, and curly braces), rounds the data to the precision specified by scalingFactor, and then saves the array (again, as comma-separated values) to output.txt.
+The following code shows how to convert the current high-precision double-type signature waveform array to a lower precision in Octave (an open-source Matlab equivalent), to save embedded memory space and speed up the execution time.  It reads comma-separated values from a text file (which conveniently is how you initialise the array in C, just remove the data type, variable name, and curly braces), rounds the data to the precision specified by scalingFactor, and then saves the array (again, as comma-separated values) to output.txt.
 
 The array is scaled from `0` to `scalingFactor`, so is designed for unsigned data types. For example, if scaling factor was set to `255`, it would produce an array of `uint8`.
 
@@ -196,7 +196,7 @@ The absolute position can be found if the capacitive encoder has two tracks (usi
 
 The phase difference between the tracks increments stepwise every time the N track loop phase distance loops from max to 0 (the encoder is moving in the forward direction) decrements in the same fashion every time the phase distance loops from 0 to max. The graph below shows the phase difference incrementing (nosily) by about 0.95 everytime the N track completes one cycle.
 
-{{< figure src="/images/electronics-capacitiveencoders/cdc-phase-difference-graph-showing-noisy-stepwise-increments.jpg" caption="Graph showing the stepwise incrementing of the phase difference between the two calculated positions of the CDC tracks."  width="800px" >}}
+{{< img src="cdc-phase-difference-graph-showing-noisy-stepwise-increments.jpg" caption="Graph showing the stepwise incrementing of the phase difference between the two calculated positions of the CDC tracks."  width="800px" >}}
 
 A maths function, `Maths_RoundToPrecision()` needs to be used to round the phase difference to the closest expected value.
 
@@ -207,16 +207,13 @@ A maths function, `Maths_RoundToPrecision()` needs to be used to round the phase
 //! @param   xnm1                 Measured position (in mm) in wavelength of track N-1
 //! @param   xnWavelengthMm       Wavelength (in mm) of encoder track N
 //! @param   xnm1WavelengthMm     Wavelength (in mm) of encoder track N-1
-void CalcAbsPos(double xn, double xnm1, double xnWavelengthMm, double xnm1WavelengthMm)
-{
+void CalcAbsPos(double xn, double xnm1, double xnWavelengthMm, double xnm1WavelengthMm) {
+
    double phaseDiffMm;
    // Calculate the phase difference and corrects for negative values
-   if(xnm1 - xn &gt; 0)
-   {
+   if(xnm1 - xn > 0) {
       phaseDiffMm = xnm1 - xn;
-   }
-   else
-   {
+   } else {
       phaseDiffMm = (xnm1 - xn) + xnm1WavelengthMm;
    }
 
@@ -230,7 +227,7 @@ void CalcAbsPos(double xn, double xnm1, double xnWavelengthMm, double xnm1Wavele
    numElapsedWavelengths = phaseDiff/xnWavelengthMm;
 
    // The absolute distance is the sum of the distance up to the start of the current
-   // wavelength (number of elapsed N wavelenghths * N wavelength period)
+   // wavelength (number of elapsed N wavelengths * N wavelength period)
    // plus the distance through the current wavelength (xn)
    absDistance = numElapsedWavelengths*xnWavelengthMm + xn;
 }

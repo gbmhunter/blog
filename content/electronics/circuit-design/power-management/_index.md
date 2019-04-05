@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-05 07:23:03+00:00
+date: 2011-09-05
 draft: false
 title: Power Management
 type: page
@@ -21,11 +21,11 @@ The following points need to be considered:
 
 ## Disabling Sections Of A Circuit
 
-Disabling sections of the circuit is an easy way to save power. This can be done with  low-side or high-side switch. High side switches disconnect the load from the positive voltage rail (an source current to the load), while low-side switches connect the load to ground (and conversly sink current from the load). This can be done with a number of components, their advantages/disadvantages are explained below:
+Disabling sections of the circuit is an easy way to save power. This can be done with  low-side or high-side switch. High side switches disconnect the load from the positive voltage rail (an source current to the load), while low-side switches connect the load to ground (and conversely sink current from the load). This can be done with a number of components, their advantages/disadvantages are explained below:
 
-* MOSFET's - An n-channel can be used for low-side switching or a p-channel for high-side switching. You could combine an n and p to perform high-side switching with a standard non-inverted logic signal. This is one of the cheapest options. However, MOSFET's can have quite a large leakage current (0.1 to 1uA @ 25C), which climbs rapidly as the temperature increases. If this is a concern, a JFET maybe a better option.
-* JFET's - A benefit of using a JFET is the tiny leakage currents (nano-amps). However a dis-advantage of using a JFET is the large on-resistance compared to that of a MOSFET, you will only be able to switch mA's of current. Also, they require about 4-4.5V to switch them, meaning they are not compatible with 3.3V or lower circuitry.
-* Integrated Load Switch/Smart Power Switch - These are essentially MOSFET's and supporting components built into a small chip for ease of use. Some feature the mentioned n and p combo to make it easy to control the load from a micro-controller. They normally also have build in ESD protection, thermal protection, overvoltage protection and current limiting which makes them hardened against all-sorts of abuse.
+* MOSFETs - An n-channel can be used for low-side switching or a p-channel for high-side switching. You could combine an n and p to perform high-side switching with a standard non-inverted logic signal. This is one of the cheapest options. However, MOSFETs can have quite a large leakage current (0.1 to 1uA @ 25C), which climbs rapidly as the temperature increases. If this is a concern, a JFET maybe a better option.
+* JFETs - A benefit of using a JFET is the tiny leakage currents (nano-amps). However a dis-advantage of using a JFET is the large on-resistance compared to that of a MOSFET, you will only be able to switch mA's of current. Also, they require about 4-4.5V to switch them, meaning they are not compatible with 3.3V or lower circuitry.
+* Integrated Load Switch/Smart Power Switch - These are essentially MOSFETs and supporting components built into a small chip for ease of use. Some feature the mentioned n and p combo to make it easy to control the load from a micro-controller. They normally also have build in ESD protection, thermal protection, over-voltage protection and current limiting which makes them hardened against all-sorts of abuse.
 * Voltage Regulator - Voltage regulators can be used to turn off power to circuits as long as they have a shut-down pin. Not the cheapest solution or the most power efficient (especially if it's a linear voltage regulator), but you might just happen to already be using one.
 
 ## The "Suicide Switch"
@@ -34,9 +34,9 @@ In low-power, battery operated devices, when the battery is running flat, you ne
 
 For it to work, you need to have a single device downstream of the battery which has a shutdown function. Linear regulators are great for this. The image below shows the suicide switch logic to disconnect the load from the battery, until the USB is plugged in.
 
-{{< figure src="/images/2011/09/circuit-schematic-suicide-switch-with-usb-powered-lipo-charger.png" width="1331px" caption="A circuit schematic of a 'suicide switch' powered from a USB port."  >}}
+{{< img src="circuit-schematic-suicide-switch-with-usb-powered-lipo-charger.png" width="1331px" caption="A circuit schematic of a 'suicide switch' powered from a USB port."  >}}
 
-The microcontroller disconnects the load (which includes itself) by pulling the SHUTDOWN pin low until the RC circuit discharges (about 4s). The only load on the battery is the shutdown current on the linear regulator, which is very low. As soon as the USB is plugged in, SHUTDOWN once again goes high, which enables the load, turns the microcontroller on, which takes over control of pulling the line high until such a time to disconnect again.
+The microcontroller disconnects the load (which includes itself) by pulling the `SHUTDOWN` pin low until the RC circuit discharges (about 4s). The only load on the battery is the shutdown current on the linear regulator, which is very low. As soon as the USB is plugged in, SHUTDOWN once again goes high, which enables the load, turns the microcontroller on, which takes over control of pulling the line high until such a time to disconnect again.
 
 ## UVLO (Under-voltage Lockout)
 
@@ -50,7 +50,7 @@ UVLO pins are sometimes named LBI (low battery input) instead (Texas Instrument
 
 ## Stabilising UVLO
 
-One issue with UVLO pins is that they introduce instabilities when there is any kind of resistance between the power supply and the IC. If powering the IC from a battery, this **includes the internal resistance** of the battery. When the voltage drops below the threshold, the IC turns off, reducing the load current. Because of the source resistance, this causes the voltage the IC see's to increase, potentially rising above the threshold and turning the IC on again. This cycle will repeat and the IC will quickly oscillate between the on and off states.
+One issue with UVLO pins is that they introduce instabilities when there is any kind of resistance between the power supply and the IC. If powering the IC from a battery, this **includes the internal resistance** of the battery. When the voltage drops below the threshold, the IC turns off, reducing the load current. Because of the source resistance, this causes the voltage the IC sees to increase, potentially rising above the threshold and turning the IC on again. This cycle will repeat and the IC will quickly oscillate between the on and off states.
 
 The solution to this is to add the right amount of hysteresis. The IC may already have hysteresis, but it may not be enough (especially if it wasn't specifically designed for battery or other high-resistance power source operation). The hysteresis can be increased by the designed by adding a resistor between `\( V_{OUT} \)` and the UVLO pin.
 
@@ -71,4 +71,4 @@ The two equations are:
 
 The [Texas Instruments INA226](http://www.ti.com/product/ina226) is an example of a voltage/current and power monitoring IC. It relies on an external high or low-side current-sense resistor. It is controlled via I2C. 
 
-{{< figure src="/images/2011/09/ina226-power-monitor-ic-internal-diagram-with-external-filtering.png" width="878px" caption="The internal diagram (with some external filtering circuitry) of the INA226 voltage/current/power monitoring IC. Image from http://www.ti.com/."  >}}
+{{< img src="ina226-power-monitor-ic-internal-diagram-with-external-filtering.png" width="878px" caption="The internal diagram (with some external filtering circuitry) of the INA226 voltage/current/power monitoring IC. Image from http://www.ti.com/." >}}

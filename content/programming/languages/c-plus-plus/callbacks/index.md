@@ -2,13 +2,15 @@
 author: gbmhunter
 date: 2014-01-17
 draft: false
-title: Callbacks
+title: C++ Callbacks
 type: page
 ---
 
 ## Overview
 
-Callbacks are a vital part of event-driven, decoupled programming. C++, being a strongly-typed object-orientated language, makes callbacks that much harder to implement than, say in C (non-object orientated) or Javasciprt (object orientated but NOT strongly typed).
+Callbacks are functions which are passed to other functions (or modules, libraries e.t.c) that then call the function at their choosing.
+
+C++, being a strongly-typed object-orientated language, makes callbacks  that much harder to implement than, say in C (non-object orientated) or Javascript (object orientated but NOT strongly typed). Note that you can perform C-style callbacks just as easily in C++, what we are referring to here is class-based callbacks.
 
 {{% note %}}
 I have written an open-source C++ callback library called slotmachine-cpp, which you can download from [GitHub here](https://github.com/gbmhunter/slotmachine-cpp).
@@ -74,9 +76,9 @@ functorObj myFunctorObj;     // A functor object (the () operator is overloaded)
 myFunctorObj();              // Using the object like a function
 ```
 
-## A Type Indepedent Method
+## A Type Independent Method
 
-The ideal callback can be passes around with the callee knowing nothing about the object it is calling. This allows for the creation of proper, decoupled, re-usable librares. With a bit of what may first seem like C++ black-magic, you can implement type agnostic callbacks in C++.
+The ideal callback can be passes around with the callee knowing nothing about the object it is calling. This allows for the creation of proper, decoupled, re-usable libraries. With a bit of what may first seem like C++ black-magic, you can implement type agnostic callbacks in C++.
 
 A key trick is that at some point you have to strip away the type to pass the object and method address from a type-knowing object to a type-agnostic object. This uses `memcpy()`. Sounds dangerous?
 
@@ -93,42 +95,42 @@ A key trick is that at some point you have to strip away the type to pass the ob
 			<th>Link</th>
 		</tr>
 	</thead>
-<tbody>
-<tr>
-<td>cpgf</td>
-<td>
-	<ul>
-		<li>Uses the signals and slots syntax</li>
-		<li>Callbacks can be functions, member methods, virtual methods...</li>
-		<li>Really easy to use syntax.</li>
-		<li>Powerful.</li>
-	</ul>
-</td>
-<td></td>
-<td>Apache License, Version 2.0</td>
-<td>9/10</td>
-<td>[http://www.cpgf.org/](http://www.cpgf.org/)</td>
-</tr>
-<tr>
-<td>libsigc++</td>
-<td>
-	<ul>
-		<li>Supports signals and slots.</li>
-		<li>Many features.</li>
-		<li>Powerful.</li>
-	</ul>
-</td>
-<td >
-	<ul>
-		<li>Uses advanced C++ compiler features</li>
-		<li>Somewhat complex to use</li>
-	</ul>
-</td>
-<td>GNU Library General Public License</td>
-<td>7/10</td>
-<td><a href="http://libsigc.sourceforge.net/">http://libsigc.sourceforge.net/</a></td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>cpgf</td>
+      <td>
+        <ul>
+          <li>Uses the signals and slots syntax</li>
+          <li>Callbacks can be functions, member methods, virtual methods...</li>
+          <li>Really easy to use syntax.</li>
+          <li>Powerful.</li>
+        </ul>
+      </td>
+      <td></td>
+      <td>Apache License, Version 2.0</td>
+      <td>9/10</td>
+      <td>[http://www.cpgf.org/](http://www.cpgf.org/)</td>
+    </tr>
+    <tr>
+      <td>libsigc++</td>
+      <td>
+        <ul>
+          <li>Supports signals and slots.</li>
+          <li>Many features.</li>
+          <li>Powerful.</li>
+        </ul>
+      </td>
+      <td >
+        <ul>
+          <li>Uses advanced C++ compiler features</li>
+          <li>Somewhat complex to use</li>
+        </ul>
+      </td>
+      <td>GNU Library General Public License</td>
+      <td>7/10</td>
+      <td><a href="http://libsigc.sourceforge.net/">http://libsigc.sourceforge.net/</a></td>
+    </tr>
+  </tbody>
 </table>
 
 ## External Resources

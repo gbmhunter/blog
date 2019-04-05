@@ -11,7 +11,7 @@ type: "page"
 
 Antennas are an import part of any circuit design which incorporates RF frequencies.
 
-{{< figure src="/images/2013/10/rf-antenna-with-sma-connection.jpg" width="306px" caption="A standard 1-3GHz RF antenna with an SMA connection." >}}
+{{< img src="rf-antenna-with-sma-connection.jpg" width="306px" caption="A standard 1-3GHz RF antenna with an SMA connection." >}}
 
 ## Terminology
 
@@ -27,7 +27,7 @@ The voltage in a dipole is maximum at the ends, and 0 at the middle. The current
 
 You have to consider the placement of other components surrounding the PCB antenna. The following diagram shows the minimum recommended clearances between a PCB antenna and other components.
 
-{{< figure src="/images/2013/10/typical-minimum-component-clearances-from-pcb-antenna.png" width="812px" caption="The minimum recommended clearances between a PCB antenna and other components. Image from http://www.antenova-m2m.com/resources/literature.">}}
+{{< img src="typical-minimum-component-clearances-from-pcb-antenna.png" width="812px" caption="The minimum recommended clearances between a PCB antenna and other components. Image from http://www.antenova-m2m.com/resources/literature.">}}
 
 ## Shorting Antennas
 
