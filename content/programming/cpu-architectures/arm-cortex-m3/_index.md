@@ -17,11 +17,11 @@ The ARM Cortex-M3 is a computer CPU architecture introduced in 2004 and designed
 
 The processor supports two modes of operation, thread mode and handler mode. Both privileged and user code can run in thread-mode, while only privileged code can run in handler mode.
 
-## Privileged Mode
+### Privileged Mode
 
 When the CPU is running in privileged mode, the code can do anything it wants (think of a system administrator). The processor starts running in privileged mode when it comes out of reset.
 
-## User (Un-Privileged) Mode
+### User (Un-Privileged) Mode
 
 User mode is a "safer" way of running code on the Cortex-M3. When the processor is running in user mode, the executed code can be restricted from using certain instructions and also access to certain registers (such as system control registers).
 
@@ -35,7 +35,7 @@ The Cortex-M3 has two stack pointers, the main stack pointer (MSP) and the proce
 
 The memory on the Cortex-M3 has a single continuously mapped memory address space. The memory map is shown below.
 
-{{< figure src="/images/programming-misc/arm-cortex-m3-complete-fixed-memory-map.png" caption="The ARM Cortex-M3 CPU fixed memory map. Image from http://infocenter.arm.com/help/topic/com.arm.doc.ddi0337e/DDI0337E_cortex_m3_r1p1_trm.pdf."  width="700px" >}}
+{{< img src="arm-cortex-m3-complete-fixed-memory-map.png" caption="The ARM Cortex-M3 CPU fixed memory map. Image from http://infocenter.arm.com/help/topic/com.arm.doc.ddi0337e/DDI0337E_cortex_m3_r1p1_trm.pdf."  width="700px" >}}
 
 ## Data Types
 
@@ -57,7 +57,7 @@ The Cortex-M3 supports up to maximum of 240 interrupts, although the exact numbe
 
 It supports both level and pulse triggered interrupts, dynamic re-prioritisation, priority grouping (see below), tail-chaining of interrupts, and automatic saving of the processor state on input and restoration on output, with no extra overhead).
 
-## Interrupt Control Register
+### Interrupt Control Register
 
 Address: 0xE000ED04
 
@@ -72,17 +72,17 @@ else
    // No interrupt is active
 ```
 
-## Interrupt Active Registers
+### Interrupt Active Registers
 
 The Cortex-M3 has a group of registers which can be read to find out which (if any) interrupt is active. These registers are called the "Active Bit" registers. The reason I say registers is that because there are 240 interrupts, multiple 32-bit registers are required. They start at memory address 0xE000E300  to 0xE000E31C. All of their values on reset are 0x00000000.
 
 You can use these registers to find out in code if the processor is currently executing code from within an interrupt (although using the interrupt control register is easier).
 
-## Priority Grouping
+### Priority Grouping
 
-The Cortex-M3 NVIC supports priority grouping of interrupts. This is controlled by the single bit field PRIGROUP in the Application Interrupt and Reset Control Register.
+The Cortex-M3 NVIC supports priority grouping of interrupts. This is controlled by the single bit field `PRIGROUP` in the Application Interrupt and Reset Control Register.
 
-The grouping divides the 8-bit priority register for each interrupt into two sections, one part for the pre-emption field, and the other part for the subpriority field. the PRIGROUP register allows you to change the ratio of pre-emption bits to subpriority bits (e.g. 7:1, 5:3, 2:6). The pre-emption field can have no bits, but the subpriority field always has to have at least 1.
+The grouping divides the 8-bit priority register for each interrupt into two sections, one part for the pre-emption field, and the other part for the subpriority field. the `PRIGROUP` register allows you to change the ratio of pre-emption bits to subpriority bits (e.g. 7:1, 5:3, 2:6). The pre-emption field can have no bits, but the subpriority field always has to have at least 1.
 
 ## SysTick
 
@@ -94,7 +94,7 @@ CMSIS (Cortex-M Software Interface Standard) is a vendor-independent hardware ab
 
 Supports core debug/trace facilities.
 
-## Microcontrollers Which Use This Architecture
+### Microcontrollers Which Use This Architecture
 
 * Atmel SAM3A
 * Atmel SAM3N

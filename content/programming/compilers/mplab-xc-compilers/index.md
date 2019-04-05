@@ -12,13 +12,13 @@ type: page
 
 The MPLAB XC compilers are a range of compilers built by Microchip, which **compile C/C++ source code for 8, 16 and 32-bit PIC microcontrollers**, as well as the dsPIC DSCs.
 
-{{< figure src="/images/2016/06/mplab-xc-compiler-microchip-logo.png" width="282px" caption="The logo for the range of MPLAB XC compilers. Image from http://www.microchip.com/."  >}}
+{{< img src="mplab-xc-compiler-microchip-logo.png" width="282px" caption="The logo for the range of MPLAB XC compilers. Image from http://www.microchip.com/."  >}}
 
 ## Licensing
 
 The _Free_ versions of the MPLAB XC compilers allow for limited optimisation (both in w.r.t. size and speed). The _Standard_ and _Pro_ versions allow for increased optimisation levels.
 
-{{< figure src="/images/2016/06/mplab-xc-compiler-build-status-output-memory-summary-licensing.png" width="540px" caption="Build status output from the free version of the MPLAB XC compiler."  >}}
+{{< img src="mplab-xc-compiler-build-status-output-memory-summary-licensing.png" width="540px" caption="Build status output from the free version of the MPLAB XC compiler."  >}}
 
 ## MPLAB X IDE Integration
 
@@ -26,9 +26,9 @@ The MPLAB XC compilers are designed to be used with the MPLAB X IDE, also provid
 
 ## Delays
 
-Delays are provided by the compiler/library through the __delay_us() and __delay_ms() functions.
+Delays are provided by the compiler/library through the `__delay_us()` and `__delay_ms()` functions.
 
-{{< figure src="/images/2016/06/built-in-pic-microcontroller-delay-functions.png" width="719px" caption="A screenshot of the built-in delay functions provided in the PIC microcontroller libraries. This screenshot was taken from pic18.h."  >}}
+{{< img src="built-in-pic-microcontroller-delay-functions.png" width="719px" caption="A screenshot of the built-in delay functions provided in the PIC microcontroller libraries. This screenshot was taken from pic18.h."  >}}
 
 {{% note %}}
 You have to manually define the macro `_XTAL_FREQ` correctly before you can use these delays.
@@ -49,7 +49,7 @@ int main(void) {
 }
 ```
 
-The limitation with using the double-brackets technique is that you **don't have individual access to any of the parameters** in the macro. The only thing you can do is pass them onto a variadic function (although the XC compiler doesn't support variadic macros, it DOES support variadic functions). `DPRINTF()' as defined above is pretty useless, so let's make a better version:
+The limitation with using the double-brackets technique is that you **don't have individual access to any of the parameters** in the macro. The only thing you can do is pass them onto a variadic function (although the XC compiler doesn't support variadic macros, it DOES support variadic functions). `DPRINTF()` as defined above is pretty useless, so let's make a better version:
     
 ```c
 #define DPRINTF(arguments) \

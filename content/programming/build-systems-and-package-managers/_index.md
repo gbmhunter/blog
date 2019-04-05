@@ -1,8 +1,8 @@
 ---
 author: gbmhunter
-date: 2018-03-15 18:13:21+00:00
+categories: [ "Programming", "Build Systems And Package Managers"]
+date: 2018-03-15
 draft: false
 title: Build Systems And Package Managers
 type: page
-url: /programming/build-systems-and-package-managers
 ---

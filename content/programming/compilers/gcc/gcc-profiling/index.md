@@ -144,4 +144,4 @@ $ gprof2dot ./profiling.txt | dot -Tpng -o profiling.png
 
 This created the below image for the example code above:
 
-{{< figure src="/images/2017/11/gprof2dot-profiling-dot-graph.png" width="442px" caption="A profile of the execution time of the example code. Graph was created using gprof and the gprof2dot tool."  >}}
+{{< img src="gprof2dot-profiling-dot-graph.png" width="442px" caption="A profile of the execution time of the example code. Graph was created using gprof and the gprof2dot tool."  >}}

@@ -1,0 +1,28 @@
+---
+author: gbmhunter
+categories: [ "Programming", "Build Systems And Package Managers", "CMake" ]
+date: 2017-05-29 21:43:06+00:00
+draft: false
+title: How To Install Your Program Using CMake
+type: page
+---
+
+## Installation Folder
+
+By default, CMake sets the CMAKE_INSTALL_PREFIX to /usr/local on UNIX systems.
+
+It is common to install shared libraries to `/usr/local/bin` and header files to `/usr/local/include/<project-name>/`. This can be done by adding the following commands to your `CMakeLists.txt`:
+
+```cmake
+cmake install(TARGETS yourLibName
+    DESTINATION lib)
+
+install(DIRECTORY ${projectName_SOURCE_DIR}/include
+    DESTINATION include)
+```
+
+It is NOT recommended to install to `/usr/bin/` and `/usr/local/` as these are typically **reserved for applications managed by the primary package manager** for the UNIX distribution, e.g. `apt-get` on Ubuntu and other Debian systems.
+
+`install(DIRECTORY ...` copies the entire contents of the directory (excluding the directory itself) into the destination directory.
+
+It is recommended to bundle all the headers of your application **under a single `src/include/<project-name>` directory** in your source code. This means that CMake can easily copy this directory into `/usr/local/include` with a single `install(DIRECTORY` command. The `<project-name>` directory under your `src/include/` directory is so that **your header files don't pollute** the `/usr/local/include/` directory, as this directory can get large, making it hard to uninstall your program, and increases the risk of naming conflicts!

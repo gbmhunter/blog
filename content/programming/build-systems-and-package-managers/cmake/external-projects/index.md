@@ -1,0 +1,38 @@
+---
+author: gbmhunter
+categories: [ "Programming", "Build Systems And Package Managers", "CMake" ]
+date: 2017-01-15
+draft: false
+title: External Projects
+type: page
+---
+
+## Overview
+
+An external project in a CMake system is a separate, self-contained CMake project that can be turned into a target, which can then be used as a dependency on other targets in your build system.
+
+The `ExternalProject` module runs it's commands at build time.
+
+## Adding An External Project
+
+An external project can be added with the command `ExternalProject_Add()`.
+
+`CMAKE_ARGS` can be used to provide command-line style arguments to the `CMakeLists.txt` file in this external project.
+
+You can use this to "pass-in parameters" to the called CMakeLists.txt file by using the `-D` option to create a cache entry.
+
+```cmake
+ExternalProject_Add(
+    ...
+    CMAKE_ARGS -DMY_VARIABLE=1
+    ...
+)
+```
+
+Add CMake-enabled projects to an existing CMake-enabled project can become quite a complex task. The article at [https://coderwall.com/p/y3zzbq/use-cmake-enabled-libraries-in-your-cmake-project](https://coderwall.com/p/y3zzbq/use-cmake-enabled-libraries-in-your-cmake-project) details an elegant solution.
+
+## Difference Between ExternalProject_Add() And add_subdirectory()
+
+It can be confusing when you want to add-in a CMake-managed project into your current project, which is also CMake-managed. There are a few ways of doing so, one being `ExternalProject_Add()` and the other `add_subdirectory()`. After-all, `add_subdirectory()` **doesn't have to actually be a subdirectory** (it can be any directory on the system).
+
+`ExternalProject_Add()` is much more powerful than `add_subdirectory()`.

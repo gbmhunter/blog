@@ -14,7 +14,7 @@ The _Yocto Project_, or more commonly just called _Yocto_, is a build system use
 It is important to note **that it is not a Linux distribution itself**, but a collection of tools to generate a custom Linux distribution for your specific embedded hardware.
 {{% /note %}}
 
-{{< figure src="/images/2017/04/the-yocto-project-logo.png" width="404px" caption="The logo for the Yocto project."  >}}
+{{< img src="the-yocto-project-logo.png" width="404px" caption="The logo for the Yocto project."  >}}
 
 ## Quick Start
 
@@ -43,7 +43,7 @@ $ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib bu
 
 ## Clone Yocto's poky Repository
 
-_poky_ is a _Yocto project release_. As of April 2017, this is the most recent release. Run the following command, which should clone poky into ~/poky/.
+_poky_ is a _Yocto project release_. As of April 2017, this is the most recent release. Run the following command, which should clone poky into `~/poky/`.
 
 ```sh    
 $ git clone git://git.yoctoproject.org/poky
@@ -62,7 +62,7 @@ Switch to the morty branch:
 $ git checkout morty
 ```
 
-(with new versions of git, this will automatically set it up to track origin/morty).
+(with new versions of git, this will automatically set it up to track `origin/morty`).
 
 ## Initialise Build Environment
 
@@ -72,13 +72,13 @@ Before you can start a Linux build, you need to initialise the Yocto build envir
 $ source oe-init-build-env
 ```
 
-After running this command, you should of automatically been moved into the poky/build/ directory.
+After running this command, you should of automatically been moved into the `poky/build/` directory.
 
 This command needs to be re-run everytime your environment variables get reset (e.g. everytime you login).
 
 ## Build Linux
 
-We're almost at Linux building time! We won't touch any of the config files for now, and just build Linux using Yocto's default settings. Run the following command (from the poky/build/ directory):
+We're almost at Linux building time! We won't touch any of the config files for now, and just build Linux using Yocto's default settings. Run the following command (from the `poky/build/` directory):
 
 ```sh    
 $ bitbake core-image-sato
@@ -86,7 +86,7 @@ $ bitbake core-image-sato
 
 Now go grab a coffee. Or better yet, take your family out to a restaurant for a nice meal. This is going to **TAKE A WHILE**.
 
-{{< figure src="/images/2017/04/yocto-linux-build-in-progress-showing-cpu-usage.png" width="1491px" caption="An embedded Linux build in progress (using Yocto), note the CPU usage!"  >}}
+{{< img src="yocto-linux-build-in-progress-showing-cpu-usage.png" width="1491px" caption="An embedded Linux build in progress (using Yocto), note the CPU usage!"  >}}
 
 **Make sure your computer is not set to go to sleep/shutdown after 1-2 hours of activity, otherwise you might find the build won't complete!**
 
@@ -94,7 +94,7 @@ Yocto will calculate all dependencies, download them, and compile! (make sure yo
 
 You can safely ignore (usually)  most of the orange "Failed to fetch URL..." warnings that pop-up as the build progresses, as Yocto can attempt to download them from other sources.
 
-After the build was complete, Yocto had used about 35GB of hard drive memory. The output build images should be in poky/build/tmp/deploy/images/. You can now test out the Linux image you just built by running it in QEMU:
+After the build was complete, Yocto had used about 35GB of hard drive memory. The output build images should be in `poky/build/tmp/deploy/images/`. You can now test out the Linux image you just built by running it in QEMU:
 
 ```sh    
 $ runqemu qemux86
@@ -102,11 +102,11 @@ $ runqemu qemux86
 
 This should load up a separate window, and display a GUI of the Linux image you just built.
 
-{{< figure src="/images/2017/04/yocto-running-qemu-after-building-default-linux-image.png" width="1327px" caption="Running the finished Yocto build in QEMU (an emulator)."  >}}
+{{< img src="yocto-running-qemu-after-building-default-linux-image.png" width="1327px" caption="Running the finished Yocto build in QEMU (an emulator)."  >}}
 
 ## The Project Configuration File
 
-The main configuration for a Yocto project is located at poky/build/conf/local.conf.
+The main configuration for a Yocto project is located at `poky/build/conf/local.conf`.
 
 ## Moving The Entire Yocto Project Directory Somewhere Else
 
@@ -114,13 +114,13 @@ Moving the entire Yocto project directory isn't as straightforward as you might 
 
 You will probably receive an error message along the lines of:
 
-Oh no! I have to rebuild? But that took hours! Luckily, you can fix this without having to do a complete rebuild. Upon receiving this error, open up the poky/build/tmp/saved_tmpdir file in a text editor, and update the path to the new location (the path should be the only thing in this file).
+Oh no! I have to rebuild? But that took hours! Luckily, you can fix this without having to do a complete rebuild. Upon receiving this error, open up the `poky/build/tmp/saved_tmpdir` file in a text editor, and update the path to the new location (the path should be the only thing in this file).
 
 You should now be able to run bitbake ... without any errors, and without having to restart the build from scratch.
 
 ## Disabling sanity Checks
 
-Although not recommended, sometimes it is necessary to disable the sanity checks. This can be done by commenting out the out the INHERIT += "sanity" line from the file meta/conf/sanity.conf, so it looks like the following:
+Although not recommended, sometimes it is necessary to disable the sanity checks. This can be done by commenting out the out the `INHERIT += "sanity"` line from the file `meta/conf/sanity.conf`, so it looks like the following:
 
 ```sh    
 # Sanity checks for common user misconfigurations
@@ -142,6 +142,6 @@ SITE_CONF_VERSION  ?= "1"
 
 This will disable all sanity checks, including:
 
-* Do not use Bitbake as root 
-* Error, TMPDIR has changed location 
-* The TMPDIR: <path> can't be located on nfs. 
+* `Do not use Bitbake as root`
+* `Error, TMPDIR has changed location`
+* The `TMPDIR: <path> can't be located on nfs`. 

@@ -35,75 +35,61 @@ Plenty of the methods return a boolean true/false value to indicate whether the 
 ## Operating System
 
 <table>
-    <thead>
-        <tr>
-            <th>Method</th>
-            <th>Description</th>
-            <th>OS's Known To Be Applicable For And Their Respective Code</th>
-        </tr>
-    </thead>
-<tbody >
-<tr >
-
-<td >osal.DelayThreadMs(double milliseconds)
-</td>
-
-<td >Delays the current thread for a certain amount of milliseconds.
-</td>
-
-<td>
-    <ul>
-        <li>FreeRTOS (vTaskDelay(milliseconds/portTICK_RATE_MS))</li>
-        <li>Linux</li>
-    </ul>
-</td>
-</tr>
-<tr >
-
-<td >osal.EnterCritical()
-</td>
-
-<td >Enters a critical section (no other threads or OS aware interrupts will run in a critical section).
-</td>
-
-<td >
-    <ul>
-        <li>FreeRTOS (taskENTER_CRITICAL())</li>
-    </ul>
-</td>
-</tr>
-<tr >
-<td >osal.ExitCritical()
-</td>
-<td >Exits a critical section (no other threads or OS aware interrupts will run in a critical section).
-</td>
-<td >
-    <ul>
-        <li>FreeRTOS (taskEXIT_CRITICAL())</li>
-    </ul>
-</td>
-</tr>
-<tr >
-<td >osal.Free()
-</td>
-<td >Performs an OS-safe free of memory from the heap. Related to osal.Malloc().
-</td>
-<td >
-    <ul>
-        <li>FreeRTOS (pvPortFree())</li>
-    </ul>
-</td>
-</tr>
-<tr >
-<td >osal.Malloc()</td>
-<td >Performs an OS-safe memory allocation on the heap. This can includes things like thread-safety and memory coalescence which the standard C/C++ library versions will not neccessarily provide. Related to osal.Free().</td>
-<td>
-    <ul>
-        <li>FreeRTOS (pvPortMalloc())</li>
-    </ul>
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+      <th>OS's Known To Be Applicable For And Their Respective Code</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr>
+      <td>osal.DelayThreadMs(double milliseconds)</td>
+      <td>Delays the current thread for a certain amount of milliseconds.</td>
+      <td>
+        <ul>
+          <li>FreeRTOS (vTaskDelay(milliseconds/portTICK_RATE_MS))</li>
+          <li>Linux</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>osal.EnterCritical()</td>
+      <td>Enters a critical section (no other threads or OS aware interrupts will run in a critical section).</td>
+      <td>
+        <ul>
+          <li>FreeRTOS (taskENTER_CRITICAL())</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><code>osal.ExitCritical()</code></td>
+      <td>Exits a critical section (no other threads or OS aware interrupts will run in a critical section).</td>
+      <td>
+        <ul>
+          <li>FreeRTOS (taskEXIT_CRITICAL())</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><code>osal.Free()</code></td>
+      <td>Performs an OS-safe free of memory from the heap. Related to osal.Malloc().</td>
+      <td>
+        <ul>
+          <li>FreeRTOS (pvPortFree())</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><code>osal.Malloc()</code></td>
+      <td>Performs an OS-safe memory allocation on the heap. This can includes things like thread-safety and memory coalescence which the standard C/C++ library versions will not neccessarily provide. Related to osal.Free().</td>
+      <td>
+        <ul>
+          <li>FreeRTOS (pvPortMalloc())</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 Other operations not mentioned above that might be OS specific are the memory allocations functions such as `malloc()` and friends, `new`, `delete` (as well as their brothers `new[]` and `delete[]`). The OS may provide enhanced version of these memory allocation functions that provide things such as thread-safety and anti-fragmentation abilities (e.g. coalescence). For example, FreeRTOS provides you with the functions pvPortMalloc() and vFree().
@@ -117,91 +103,86 @@ I have written a OSAL template module in C++ called Osal-Cpp which is freely ava
 GPIO can be one of the easiest peripherals to write a hardware abstraction layer for.
 
 <table>
-    <thead>
-        <tr>
-            <th>Method</th>
-            <th>Description</th>
-            <th>Platforms Known To Be Applicable For And Respective Code</th>
-        </tr>
-    </thead>
-<tbody >
-<tr >
-<td >HalGpio.Set(GpioStates gpioState)</td>
-<td >Sets the GPIO pin either LOW or HIGH, when the GPIO is configured as a digital output.</td>
-<td >
-    <ul>
-        <li>ATmega</li>
-        <li>PSoC (CyPin.Set(), CyPin.Clear())</li>
-    </ul>
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+      <th>Platforms Known To Be Applicable For And Respective Code</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr>
+      <td>HalGpio.Set(GpioStates gpioState)</td>
+      <td>Sets the GPIO pin either LOW or HIGH, when the GPIO is configured as a digital output.</td>
+      <td>
+        <ul>
+          <li>ATmega</li>
+          <li>PSoC (CyPin.Set(), CyPin.Clear())</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 ## UART
 
 <table>
-    <thead>
-        <tr>
-            <th>Method</th>
-            <th>Description</th>
-            <th>Platforms Known To Be Applicable For And Respective Code</th>
-        </tr>
-    </thead>
-<tbody >
-<tr>
-<td >bool HalUart.PutChar(char myChar)
-</td>
-
-<td >Writes a single character to the UART hardware register(s). Blocks until write is complete. Returns true if write successful, otherwise false.
-</td>
-
-<td>
-    <ul>
-        <li>ATmega</li>
-        <li>PSoC (CyUart.PutChar(char myChar))</li>
-    </ul>
-</td>
-</tr>
-<tr>
-<td >bool HalUart.PutMsg(const char * msg)
-</td>
-<td >Writes a block of characters (i.e. a message or C string) to the hardware UART registers. Returns true if write successful, otherwise false. Blocks until message is sent. I do not recommend using this method, as it will chew up processing time. Rather, implement a software ring buffer and insert the characters one-by-one into the hardware register(s) as space becomes available.
-</td>
-<td>
-    <ul>
-        <li>ATmega</li>
-        <li>PSoC (CyUart.PutString(const char * string))</li>
-    </ul>
-</td>
-</tr>
-<tr>
-<td >bool HalUart.SetBaudRate(BuadRates baudRate)</td>
-<td >Changes the baud rate for the UART. Most embedded systems come with a discrete number of availiable baud rates, hence the use of an enumeration BaudRates. Note that different platforms may support a different number of baud rates. Returns true if buadRate is valid for a particular platform and buad rate was changed successfully, otherwise returns false.</td>
-<td >
-    <ul>
-        <li>ATmega</li>
-        <li>PSoC</li>
-    </ul>
-</td>
-</tr>
-<tr>
-<td >bool HalUart.Start()</td>
-<td >Initialises/configures/starts the UART (the constructor could also do this). Returns true if starting of UART was successful, otherwise false.</td>
-<td >
-    <ul>
-        <li>PSoC (CyUart.Start())</li>
-    </ul>
-</td>
-</tr>
-<tr >
-<td>bool HalUart.Stop()</td>
-<td>Deinitialises/stops the UART (the destructor could also do this). Returns true if stopping of UART was successful, otherwise false.</td>
-<td >
-    <ul>
-        <li>PSoC (CyUart.Stop())</li>
-    </ul>
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+      <th>Platforms Known To Be Applicable For And Respective Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>bool HalUart.PutChar(char myChar)</code></td>
+      <td>Writes a single character to the UART hardware register(s). Blocks until write is complete. Returns true if write successful, otherwise false.</td>
+      <td>
+        <ul>
+          <li>ATmega</li>
+          <li>PSoC (CyUart.PutChar(char myChar))</li>
+        </ul>
+      </td>
+    </tr>
+      <tr>
+      <td><code>bool HalUart.PutMsg(const char * msg)</code></td>
+      <td>Writes a block of characters (i.e. a message or C string) to the hardware UART registers. Returns true if write successful, otherwise false. Blocks until message is sent. I do not recommend using this method, as it will chew up processing time. Rather, implement a software ring buffer and insert the characters one-by-one into the hardware register(s) as space becomes available.
+      </td>
+      <td>
+        <ul>
+          <li>ATmega</li>
+          <li>PSoC (CyUart.PutString(const char * string))</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><code>bool HalUart.SetBaudRate(BuadRates baudRate)</code></td>
+      <td>Changes the baud rate for the UART. Most embedded systems come with a discrete number of availiable baud rates, hence the use of an enumeration BaudRates. Note that different platforms may support a different number of baud rates. Returns true if buadRate is valid for a particular platform and buad rate was changed successfully, otherwise returns false.</td>
+      <td>
+        <ul>
+          <li>ATmega</li>
+          <li>PSoC</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><code>bool HalUart.Start()</code></td>
+      <td>Initialises/configures/starts the UART (the constructor could also do this). Returns true if starting of UART was successful, otherwise false.</td>
+      <td>
+        <ul>
+          <li>PSoC (CyUart.Start())</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><code>bool HalUart.Stop()</code></td>
+      <td>Deinitialises/stops the UART (the destructor could also do this). Returns true if stopping of UART was successful, otherwise false.</td>
+      <td>
+        <ul>
+          <li>PSoC (CyUart.Stop())</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
 </table>
