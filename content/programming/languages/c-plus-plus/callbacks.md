@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2014-01-17 03:36:28+00:00
+date: 2014-01-17
 draft: false
 title: Callbacks
 type: page
@@ -124,10 +124,12 @@ A key trick is that at some point you have to strip away the type to pass the ob
 		<li>Somewhat complex to use</li>
 	</ul>
 </td>
-<td >GNU Library General Public License</td>
-<td >7/10</td>
-<td >[http://libsigc.sourceforge.net/](http://libsigc.sourceforge.net/)
-</td></tr></tbody></table>
+<td>GNU Library General Public License</td>
+<td>7/10</td>
+<td><a href="http://libsigc.sourceforge.net/">http://libsigc.sourceforge.net/</a></td>
+</tr>
+</tbody>
+</table>
 
 ## External Resources
 

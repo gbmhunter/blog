@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Programming Languages", "C++" ]
 date: 2017-11-09
 draft: false
 title: Auto (Specifier)
@@ -8,7 +9,7 @@ type: page
 
 ## Overview
 
-The auto specifier (commonly referred to as a keyword) was introduced in C++11. It allows the programmer to tell the compiler to work out the type of the variable, rather than the programmer having to specify it in the code.
+The `auto` specifier (commonly referred to as a keyword) was introduced in C++11. It allows the programmer to tell the compiler to work out the type of the variable, rather than the programmer having to specify it in the code.
 
 ```c++    
 auto x = 5;
@@ -20,9 +21,9 @@ The compiler works out what the type of a auto variable should be from it's init
 
 `auto` can be used as the return type for functions, both for traditional functions and lambdas.
 
-For the above function `Foo()`, the compiler deduces the return type as int, as this is again the default type for an integer.
+For the above function <code>Foo()</code>, the compiler deduces the return type as <code>int</code>, as this is again the default type for an integer.
 
-```c++   
+```c++
 auto Foo() {
     return 4;
 }
@@ -30,13 +31,13 @@ auto Foo() {
 
 In the below example, the auto return type saves much typing/code mess!
 
-```c++    
+```c++
 auto Foo() {
     std::map<std::string, std::vector<uint8_t>> myVar;
     return myVar;
 }
 ```
 
-## decltype
+<h2>decltype</h2>
 
-Although they are similar and often used in the same lines of code, auto should not be confused with decltype. auto operates on types, while decltype operates on expressions.
+<p>Although they are similar and often used in the same lines of code, auto should not be confused with <code>decltype</code>. <code>auto</code> operates on types, while <code>decltype</code> operates on expressions.</p>
