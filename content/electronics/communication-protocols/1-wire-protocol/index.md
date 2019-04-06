@@ -10,7 +10,7 @@ type: page
 
 <p>The 1-wire protocol is a one wire, half-duplex, bi-directional, multi-drop, wired communication protocol.</p>
 
-{{< figure src="/images/2013/10/1-wire-ic-schematic-ds18b20-high-zoom-logo.png" width="181px" caption="A high-zoom schematic screenshot of the DS18B20, a Maxim 1-wire temperature sensor."  >}}
+{{< img src="1-wire-ic-schematic-ds18b20-high-zoom-logo.png" width="181px" caption="A high-zoom schematic screenshot of the DS18B20, a Maxim 1-wire temperature sensor."  >}}
 
 <table>
     <tbody>

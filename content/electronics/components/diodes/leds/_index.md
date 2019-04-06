@@ -88,7 +88,7 @@ Reverse mounting LED's are SMD LEDs which have the light source emitting in the 
 Be careful when soldering reverse-mount LEDs by hand, it is very easy to push too hard on the LED body and bend the legs!
 {{% /warning %}}
 
-{{< figure src="/images/2012/03/osram-ls-p47k-reverse-mount-led-photo.png" width="440px" caption="An Osram reverse-mount LED (P47K series)."  >}}
+{{< img src="osram-ls-p47k-reverse-mount-led-photo.png" width="440px" caption="An Osram reverse-mount LED (P47K series)."  >}}
 
 ## Multiplexing
 
@@ -99,9 +99,9 @@ Multiplexing is normally done in a row/column configuration, where the LED's are
 <div>$$y = (\frac{x}{2})^2$$</div>
 
 <p class="centered">
-    where:<br>
-    \(y\) = number of LEDs<br>
-    \(x\) = number of microcontroller pins<br>
+    where:<br />
+    \(y\) = number of LEDs<br />
+    \(x\) = number of microcontroller pins<br />
 </p>
 
 ## Charlieplexing
@@ -110,7 +110,7 @@ Charlieplexing is a more efficient (in terms of number of drive signals used) wa
 
 The following equation is given linking the number of pins used and the number of LEDs:
 
-<div>$$y = x^2 - x$$</div>
+<p>$$y = x^2 - x$$</p>
 
 ## ESD
 

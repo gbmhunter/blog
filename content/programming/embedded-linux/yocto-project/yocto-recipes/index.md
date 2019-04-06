@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2017-04-19 23:42:51+00:00
+date: 2017-04-19
 draft: false
 title: Yocto Recipes
 type: page
@@ -18,13 +18,13 @@ What about private repositories? Private repositories have the added complexity 
 
 To make Yocto use a GitHub repository:
 
-```
+```text
 SRC_URI="git://git@github.com/group_name/repo_name.git;protocol=ssh"
 ```
 
 GitLab repositories require a slightly different syntax:
 
-```    
+```text
 SRC_URI = "git://git@gitlab.company_name.com:~/group_name/repo_name.git;protocol=ssh"
 ```
 
@@ -44,7 +44,7 @@ By default, Yocto will not clone submodules when cloning a git repository. This 
 
 Luckily, Yocto provides a way to tell it to check out all git submodules in a recipe. All you have to do is replace the `git://` statement with `gitsm://`. e.g.
 
-```
+```text
 SRC_URI="gitsm://git@github.com/group_name/repo_name.git;protocol=ssh"
 ```
 
@@ -52,7 +52,7 @@ SRC_URI="gitsm://git@github.com/group_name/repo_name.git;protocol=ssh"
 
 This is a complete example of a Yocto recipe that downloads and builds the source code from a remote Git repository.
 
-```    
+```text
 DESCRIPTION = "An example recipe using a remote Git repo."
 SECTION = "examples"
 DEPENDS = ""
@@ -82,7 +82,7 @@ This assumes the CMakeLists.txt contains at least one INSTALL command. bitbake w
 
 Most source code/binary packages and remote repositories will include a **LICENSE file in the root directory**. Here is an example snippet from a recipe which points to the license file called LICENSE within the root directory of the repository:
 
-```    
+```text
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=96af5705d6f64a88e035781ef00e98a8"
 ```
@@ -95,7 +95,7 @@ LIC_FILES_CHKSUM is a checksum of a file  which includes the license (or, a spec
 
 The following directory contains license definitions for most common licenses:
 
-```    
+```text
 poky/meta/files/common-licenses
 ```
 
@@ -105,7 +105,7 @@ This includes BSD, GPL-3.0 and MIT.
 
 Yocto supports patches, which is a way of **modifying third-party code** before it is included in the build, **without first having to duplicate the source code** or ask the maintainer to make the change for you.
 
-{{< figure src="/images/2017/04/patch-icon-band-aid.png" width="202px" caption="Patch icon (band-aid)."  >}}
+{{< img src="patch-icon-band-aid.png" width="202px" caption="Patch icon (band-aid)."  >}}
 
 Patches can be **easily created using Git**. If you can download the third-party source code as a Git repository, this is definitely the easiest solution. After downloading the repository, make the required changes to the code, and add these changes to the repository as a new commit. You can then tell Git to make a patch file.
 
@@ -119,7 +119,7 @@ These generated patches should be **bundled with your recipe files**. The patche
 
 The following diagram shows the correct directory structure for both the recipes (.bb file) and the patch(es) (.patch file(s)). We will pretend we are creating a recipe to include gtest (the Google unit test library) in our image.
 
-```    
+```text
 meta-example
     |--recipes-example
         |--gtest
@@ -130,7 +130,7 @@ meta-example
 
 The last thing you have to do is add a path to your patch in the recipe file.
 
-```    
+```text
 SRC_URI = "\
     https://github.com/google/googletest/archive/release-1.7.0.zip \
     file://my-patch.patch \

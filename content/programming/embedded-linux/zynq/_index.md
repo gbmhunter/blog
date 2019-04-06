@@ -1,21 +1,16 @@
 ---
 author: gbmhunter
-date: 2017-04-12 04:05:40+00:00
+date: 2017-04-12
 draft: false
 title: Zynq
 type: page
-url: /programming/embedded-linux/zynq
 ---
 
 ## Overview
 
 **The Zynq is a family of Xilinx FPGAs which incorporate both programmable logic and one or more dedicated ARM Cortex-A9 processors** (because of the inclusion of the processor, it can be referred to as a SoC instead of an FPGA).
 
-{{< figure src="/images/2017/04/xilinx-zynq-7000-ZC720-evaluation-kit-photo.png" width="773px" caption="The Xilinx ZC720 Evaluation Kit featuring the Zynq-7000 SoC."  >}}
-
-## Child Pages
-
-[sb_child_list template=2 orderby=title order=asc nest_level=1]
+{{< img src="xilinx-zynq-7000-ZC720-evaluation-kit-photo.png" width="773px" caption="The Xilinx ZC720 Evaluation Kit featuring the Zynq-7000 SoC."  >}}
 
 ## Acronyms
 
@@ -52,7 +47,7 @@ You can run a number of different operating systems on the Cortex-A9 processor i
 
 The device trees are located at:
 
-```
+```text
 meta-xilinx/recipes-bsp/device-tree/
 ```
 

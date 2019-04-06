@@ -32,7 +32,7 @@ This means that if you want to track it for longer than 89minutes, you will have
 
 One way is use software overflow protection, as shown below. This takes a overflow-is-possible 32-bit number and converts it into a 64-bit number. It uses probability to determine whether an overflow has occured, based on the difference between the previous and current 32-bit value. The only requirement for this to work correctly is that it is called often enough that the encoder value **cannot change more that half full-scale of the 32-bit number between two successive calls**.
 
-{{< highlight c >}}
+```c
 int64_t Encoder::Get64BitVal() {
     // Remember the prev encoder count
     static int32_t prevEncCount = 0;
@@ -84,7 +84,7 @@ int64_t Encoder::Get64BitVal() {
 
     return encCount64;
 }
-{{< /highlight >}}
+```
 
 ## Embedded Hardware Encoder Peripherals
 
@@ -94,4 +94,4 @@ The [PSoC range of microcontrollers](/programming/microcontrollers/psoc) contain
 
 The datasheet for the Baumer BHK series of incremental encoders has an error on the encoders wiring diagram. The pinout on page (3/4) for the 8-pin connector, used for the 05A series, is mislabelled. All the pin numbers around the circumference need to be rotated anti-clockwise by one pin. Pin 2 should be pin 1, pin 3 should be pin 2, e.t.c. Pin 8 remains the same.
 
-{{< figure src="/images/electronics-misc/incorrect-pinout-on-baumer-bhk-05a-encoder.png" caption="The incorrect pinout on a Baumer BHK-05A encoder datasheet."  width="400px" >}}
+{{< img src="incorrect-pinout-on-baumer-bhk-05a-encoder.png" caption="The incorrect pinout on a Baumer BHK-05A encoder datasheet."  width="400px" >}}

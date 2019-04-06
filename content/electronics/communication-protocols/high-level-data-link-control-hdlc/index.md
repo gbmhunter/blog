@@ -8,7 +8,9 @@ type: "page"
 
 ## Overview
 
-**High-Level Data Link Control (HDLC) is a synchronous data-link layer protocol**. It was developed by the International Organization for Standardization (ISO).{{< figure src="/images/2017/07/high-level-data-link-control-icon.png"   >}}
+**High-Level Data Link Control (HDLC) is a synchronous data-link layer protocol**. It was developed by the International Organization for Standardization (ISO).
+
+{{< img src="high-level-data-link-control-icon.png" width="300px" >}}
 
 It only describes the data-link layer (layer 2 in the OSI model), and therefore is not really considered an communication protocol in it's own right. It may be used by other communication protocols such as LVDS.
 
@@ -26,7 +28,7 @@ It only describes the data-link layer (layer 2 in the OSI model), and therefore 
         </tr>
         <tr>
             <td>Cisco HDLC</td>
-            <td >An extension to HDLC created by Cisco. Also known as _cHDLC_. Cisco HDLC uses an alternative framing structure to ISO HDLC.</td>
+            <td >An extension to HDLC created by Cisco. Also known as <i>cHDLC</i>. Cisco HDLC uses an alternative framing structure to ISO HDLC.</td>
         </tr>
         <tr>
             <td>Frame</td>

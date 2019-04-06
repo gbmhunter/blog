@@ -732,7 +732,7 @@ The leakage current through a capacitor can be modeled with a resistor in parall
 
 For electrolytics, the maximum leakage current is usually specified in terms of the capacitance.
 
-<div>$$ I_{leakage} = xC $$</div>
+<p>$$ I_{leakage} = xC $$</p>
 
 <p class="centered">
     where:<br>
@@ -747,7 +747,7 @@ When specified this way, the current is <b>completely independent on voltage</b>
 
 The leakage current for MLCC capacitors is specified by an **insulation resistance**. To work out the leakage current, you just use Ohm's law as follows:
 
-<div>$$ I_{leakage} = \frac{V}{R_{insulation}} $$</div>
+<p>$$ I_{leakage} = \frac{V}{R_{insulation}} $$</p>
 
 <p class="centered">
     where:<br>
@@ -777,7 +777,7 @@ The good news is this can be manipulated to make things such as voltage-controll
 
 The bad news is that this also adversely affects the capacitance in situations where you want it to stay constant. This can actually be a very significant problems, especially with small [package](/pcb-design/component-packages/) size ceramic capacitors (such as 0603 and 0805 SMD chip capacitors). An excellent explanation on this effects if Maxim Integrated's "[Temperature and Voltage Variation of Ceramic Capacitors, or Why Your 4.7uF Capacitor Becomes a 0.33uF Capacitor](http://www.maximintegrated.com/app-notes/index.mvp/id/5527)". The following graph is from Maxim's page, and just serves as an example to show by how much the capacitance can vary in normal operation conditions!
 
-{{< figure src="/images/2011/09/graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors.png" width="925px" caption="Graph of the capacitance variation (w.r.t. voltage) of a select group of 4.7uF ceramic chip capacitors, Image from http://www.maximintegrated.com/app-notes/index.mvp/id/5527."  >}}
+{{< img src="graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors.png" width="925px" caption="Graph of the capacitance variation (w.r.t. voltage) of a select group of 4.7uF ceramic chip capacitors, Image from http://www.maximintegrated.com/app-notes/index.mvp/id/5527."  >}}
 
 This can upset op-amp gains, frequency cut-off points of filters, and the time constant of RC oscillators.
 
@@ -785,7 +785,7 @@ This can upset op-amp gains, frequency cut-off points of filters, and the time c
 
 Capacitors are commonly used for decoupling, as this following schematic shows (taken from the Raspberry-Pi PCB design).
 
-{{< figure src="/images/2011/09/decoupling-caps-schematic-example-on-r-pi-pcb.png" width="396px" caption="Example usage of decoupling capacitors for ICs. Schematic is from the Raspberry-Pi PCB. Image from http://www.raspberrypi.org/wp-content/uploads/2012/04/Raspberry-Pi-Schematics-R1.0.pdf."  >}}
+{{< img src="decoupling-caps-schematic-example-on-r-pi-pcb.png" width="396px" caption="Example usage of decoupling capacitors for ICs. Schematic is from the Raspberry-Pi PCB. Image from http://www.raspberrypi.org/wp-content/uploads/2012/04/Raspberry-Pi-Schematics-R1.0.pdf."  >}}
 
 ## Mains Line Filters
 

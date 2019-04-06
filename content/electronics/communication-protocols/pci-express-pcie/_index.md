@@ -45,30 +45,31 @@ The transmission speed in software is not defined as a absolute bits/seconds, bu
 {{% /note %}}
 
 <table>
-    <thead>
-        <tr>
-            <th>PCIe Version</th>
-            <th>Transfer Speed</th>
-        </tr>
-    </thead>
-    <tbody>
-<tr >
-<td >v1.x
-</td>
-<td >2.5GT/s
-</td></tr><tr >
-<td >v2.x
-</td>
-<td >5.0GT/s
-</td></tr><tr >
-<td >v3.0
-</td>
-<td >8.0GT/s
-</td></tr><tr >
-<td >v4.0
-</td>
-<td >16.0GT/s
-</td></tr></tbody></table>
+  <thead>
+    <tr>
+      <th>PCIe Version</th>
+      <th>Transfer Speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>v1.x</td>
+      <td>2.5GT/s</td>
+    </tr>
+    <tr>
+      <td>v2.x</td>
+      <td>5.0GT/s</td>
+    </tr>
+    <tr>
+      <td>v3.0</td>
+      <td>8.0GT/s</td>
+    </tr>
+    <tr>
+      <td>v4.0</td>
+      <td>16.0GT/s</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Links
 
@@ -88,7 +89,7 @@ PCI devices have a set of registers referred to as the _configuration space_, an
 
 The configuration space is a standardized section of memory on PCIe cards that allows PCIe cards to configure correctly.
 
-{{< figure src="/images/2015/02/pci-type-0-non-bridge-config-space-diagram-v2.png" width="624px" caption="The standardised registers that belong to the PCI/PCIe Type 0 (non-bridge) configuration space. Image from https://en.wikipedia.org."  >}}
+{{< img src="pci-type-0-non-bridge-config-space-diagram-v2.png" width="624px" caption="The standardised registers that belong to the PCI/PCIe Type 0 (non-bridge) configuration space. Image from https://en.wikipedia.org."  >}}
 
 ## What Are BARs?
 
@@ -114,11 +115,11 @@ The way to detect and explore the PCIe device depends on the OS that the compute
 
 The built-in Device Manager gives a very brief overview of detected PCI cards.
 
-{{< figure src="/images/2015/02/screenshot-of-custom-pcie-card-in-device-manager.png" width="341px" caption="A screenshot of Windows Device Manager showing the presence of a custom PCIe card."  >}}
+{{< img src="screenshot-of-custom-pcie-card-in-device-manager.png" width="341px" caption="A screenshot of Windows Device Manager showing the presence of a custom PCIe card."  >}}
 
 RWEverything is a great Windows tool that allows you to read and write from any available memory location on the PCIe card (not just the configuration memory, as many other tools provide).
 
-{{< figure src="/images/2015/02/screenshot-of-custom-pcie-card-in-rw-everything.png" width="883px" caption="A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC."  >}}
+{{< img src="screenshot-of-custom-pcie-card-in-rw-everything.png" width="883px" caption="A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC."  >}}
 
 {{% note %}}
 Many browsers and anti-virus software packages will state that RWEverything is a virus/malware. Chrome doesn't even let you download the file. However, I have used RWEverything many times and not discovered any problems from using the software. I suspect that this program is picked up by anti-virus software because it allows low-level read/write access to the systems memory and peripherals.

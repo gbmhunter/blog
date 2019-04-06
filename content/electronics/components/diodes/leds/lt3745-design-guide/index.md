@@ -19,11 +19,11 @@ The LT3745 LED driver by Linear Technology is a advanced driver which can indivi
 
 The LT3745 datasheet gives a table of common resistances and the corresponding switching frequency, but it does not give you an equation to work it out. I grabbed the values from the datasheet, plotted them, and fitted a trend-line to get an equation, as shown in the following image (but note, Excel has rounded the co-efficient has been rounded too-much, see the equation again below the image for better accuracy):
 
-{{< figure src="/images/electronics-lt3745/lt3745-resistance-vs-switching-frequency-graph.png" caption="A graph of the resistance of RT, versus the switching frequency for the LT3745 LED driver IC. The power-based equation fits the data well! Note that Excel rounded the co-efficient shown by too great an amount!"  width="800px" >}}
+{{< img src="lt3745-resistance-vs-switching-frequency-graph.png" caption="A graph of the resistance of RT, versus the switching frequency for the LT3745 LED driver IC. The power-based equation fits the data well! Note that Excel rounded the co-efficient shown by too great an amount!"  width="800px" >}}
 
 The resulting power-based equation is (with better accuracy):
 
-<div>$$ R_T = \frac{2.25167e^{11}}{f_{sw(act)}^{1.114}} $$</div>
+<p>$$ R_T = \frac{2.25167e^{11}}{f_{sw(act)}^{1.114}} $$</p>
 
 which had a regression coefficient of `\(R^2 = 0.9994\)`, not a bad fit!
 

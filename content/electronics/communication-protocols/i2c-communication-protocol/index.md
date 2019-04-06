@@ -9,9 +9,9 @@ type: "page"
 
 ## Overview
 
-The I²C bus is a communication protocol commonly used for PCB level transmissions between IC's and microcontrollers. It is a half-duplex synchronous protocol which requires 2 non-power-related wires (4 if you include power and ground). It uses device addressing to indicate the recipient of the data. It is commonly used for sending small packets of information to IC's (such as configuration settings, or a sensor value), while [SPI](http://localhost/?q=node/135) is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C can support multiple masters through software protocols.
+The I²C bus is a communication protocol commonly used for PCB level transmissions between ICs and microcontrollers. It is a half-duplex synchronous protocol which requires 2 non-power-related wires (4 if you include power and ground). It uses device addressing to indicate the recipient of the data. It is commonly used for sending small packets of information to ICs (such as configuration settings, or a sensor value), while [SPI](/electronics/communication-protocols/spi-communication-protocol/) is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C can support multiple masters through software protocols.
 
-{{< figure src="/images/2011/09/i2c-logo.gif" width="200px" caption="The I2C logo."  >}}
+{{< img src="i2c-logo.gif" width="200px" caption="The I2C logo."  >}}
 
 ## Typical Electrical Specs
 
@@ -70,7 +70,7 @@ The I²C bus is a communication protocol commonly used for PCB level transmissi
 
 The I²C bus uses open-drain drivers to allow for **compatibility** between chips that run of different voltages, bus arbitration, and hot-swapping. Thus pull-up resistors are essential for the bus to work. 
 
-{{< figure src="/images/2011/09/i2c-pull-up-resistors.png" width="488px" caption="I2C pull-up resistors."  >}}
+{{< img src="i2c-pull-up-resistors.png" width="488px" caption="I2C pull-up resistors."  >}}
 
 **The value of the resistor determines the maximum speed of the bus (the lower the resistance, the faster the bus can operate).** The resistance is limited at the lower end by the maximum bus current that the I²C chips can supply, and maximum power consumption if relevant. The I2C specification states that an I2C compliant device must be able to sink at least 3mA from the I2C bus lines and have a logic low voltage of no higher than `\(V_{OL} = 0.4V\)` while doing this. Using this information, it is easy to come up with the equation for the minimum allowed resistance:
 
@@ -195,7 +195,7 @@ There are variants on the I2C bus, defined and implemented by various manufactur
 * Telecom/networking
 * Radio/T.V.
 
-{{< figure src="/images/2011/09/typical-application-schematic-for-i2c-io-expander.png" width="411px" caption="A typical application schematic for an I2C I/O expander."  >}}
+{{< img src="typical-application-schematic-for-i2c-io-expander.png" width="411px" caption="A typical application schematic for an I2C I/O expander."  >}}
 
 ## Addressing
 
@@ -207,53 +207,55 @@ Connecting two identical devices (e.g. lets say you have two temperature sensors
 
 Newer pin-constrained I2C slave devices allow you to connect the address pins up to SCL and SDA to further increase the number of assignable addresses. With two address pins, and the possibility of connecting each up to either `\(V_{CC}\)`, GND, SCL or SDA, gives a total of 16 different I2C addresses.
 
-{{< figure src="/images/2011/09/i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png" width="826px" caption="The logic table (truth table) of the I2C address pins on the TI INA226 IC. Notice how you can connect the address pins up to SCL or SDA as well as the standard VS and GND, to give a total of 16 possible I2C addresses."  >}}
+{{< img src="i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png" width="826px" caption="The logic table (truth table) of the I2C address pins on the TI INA226 IC. Notice how you can connect the address pins up to SCL or SDA as well as the standard VS and GND, to give a total of 16 possible I2C addresses."  >}}
 
 ## Reserved I2C Addresses
 
 The I2C specification reserves some addresses for special purposes. Because of these reserved addresses, only 112 addresses are available to I2C devices using the 7-bit address scheme. Do not set your device to use these addresses listed below.
 
 <table>
-    <thead>
-        <tr>
-            <th>Reserved Address</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody>
-<tr >
-<td >0000000 0
-</td>
-<td >General call.
-</td></tr><tr >
-<td >0000000 1
-</td>
-<td >Start byte.
-</td></tr><tr >
-<td >0000001 x
-</td>
-<td >CBUS addresses.
-</td></tr><tr >
-<td >0000010 x
-</td>
-<td >Reserved for different bus formats.
-</td></tr><tr >
-<td >0000011 x
-</td>
-<td >Reserved for future purposes.
-</td></tr><tr >
-<td >00001xx x
-</td>
-<td >High-speed master code.
-</td></tr><tr >
-<td >11110xx x
-</td>
-<td >10-bit slave addressing.
-</td></tr><tr >
-<td >11111xx x
-</td>
-<td >Reserved for future purposes.
-</td></tr></tbody></table>
+  <thead>
+    <tr>
+      <th>Reserved Address</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0000000 0</code></td>
+      <td>General call.</td>
+    </tr>
+    <tr>
+      <td><code>0000000 1</code></td>
+      <td>Start byte.</td>
+    </tr>
+    <tr>
+      <td><code>0000001 x</code></td>
+      <td>CBUS addresses.</td>
+    </tr>
+    <tr>
+      <td><code>0000010 x</code></td>
+      <td>Reserved for different bus formats.</td>
+    </tr>
+    <tr>
+      <td><code>0000011 x</code></td>
+      <td>Reserved for future purposes.</td>
+    </tr>
+    <tr>
+      <td><code>00001xx x</code></td>
+      <td>High-speed master code.</td>
+    </tr>
+    <tr>
+      <td><code>11110xx x</code></td>
+      <td>10-bit slave addressing.</td>
+    </tr>
+    <tr>
+      <td><code>11111xx x</code></td>
+      <td>Reserved for future purposes.
+    </td>
+    </tr>
+  </tbody>
+</table>
 
 ## General Call
 
@@ -265,7 +267,7 @@ The I2C specification reserves some addresses for special purposes. Because of t
 
 ## CBUS
 
-0000001(x) is the I2C address reserved for CBUS addresses. CBUS is a three-wire bus with a different transmission format to I2C, and is used in home automation products. This reserved address allows CBUS receivers to be connected to I2C buses. I2C devices should ignore any messages sent to this address.
+`0000001(x)` is the I2C address reserved for CBUS addresses. CBUS is a three-wire bus with a different transmission format to I2C, and is used in home automation products. This reserved address allows CBUS receivers to be connected to I2C buses. I2C devices should ignore any messages sent to this address.
 
 CBUS addressing over I2C is very uncommon.
 
@@ -273,23 +275,23 @@ CBUS addressing over I2C is very uncommon.
 
 Due to the rise in popularity of the I2C protocol and the limited amount of addresses available with the original 7-bit addressing scheme (leading to address clashes), a 10-bit addressing scheme was introduced. 10-bit addressing gives an additional 1024 unique addresses.
 
-The 10-bit addressing scheme involves two address bytes (instead of just one). The first byte includes the bits 11110 (in bit positions 7:3) which is a _reserved code_ to indicate that a 10-bit address follows. The actual 10-bit address is sent in bits 2:1 of the first address byte (the MSB) and bits 7:0 of the second address byte (LSB).
+The 10-bit addressing scheme involves two address bytes (instead of just one). The first byte includes the bits `11110` (in bit positions `7:3`) which is a _reserved code_ to indicate that a 10-bit address follows. The actual 10-bit address is sent in bits `2:1` of the first address byte (the MSB) and bits `7:0` of the second address byte (LSB).
 
-{{< figure src="/images/2011/09/i2c-10-bit-addressing-scheme-bit-pattern-of-address-bytes-1.gif" width="1023px" caption="The bit pattern of the two address bytes in the I2C 10-bit addressing scheme. Image from http://www.i2c-bus.org/."  >}}
+{{< img src="i2c-10-bit-addressing-scheme-bit-pattern-of-address-bytes.gif" width="1000px" caption="The bit pattern of the two address bytes in the I2C 10-bit addressing scheme. Image from http://www.i2c-bus.org/." >}}
 
-Bit 0 of the first address byte is the read/not-write (RnW) bit. **Note that when using the 10-bit addressing scheme, this must be set to 0.** Thus, to perform a read operation, a _combined transfer_ must be used. In a _combined transfer_, the above two bytes are sent with the RnW bit set to 0, then a repeated start, then the first address byte again, but with the RnW bit set to 1. A read operation then may be performed as usual.
+Bit `0` of the first address byte is the read/not-write (RnW) bit. **Note that when using the 10-bit addressing scheme, this must be set to 0.** Thus, to perform a read operation, a _combined transfer_ must be used. In a _combined transfer_, the above two bytes are sent with the RnW bit set to `0`, then a repeated start, then the first address byte again, but with the RnW bit set to `1`. A read operation then may be performed as usual.
 
 The 10-bit addressing scheme has been to designed so that it can work on a bus alongside the 7-bit addressing scheme.
 
 ## Transmission Distances And Buffer's
 
-{{< figure src="/images/2011/09/i2c-buffer-ic-example.jpg" width="800px" caption="An example from a NXP application note showing how their P82B96 I2C-bus buffering IC can utilise buffering and twisted pairs to increase the I2C communication distance."  >}}
+{{< img src="i2c-buffer-ic-example.jpg" width="800px" caption="An example from a NXP application note showing how their P82B96 I2C-bus buffering IC can utilise buffering and twisted pairs to increase the I2C communication distance."  >}}
 
 If you are following the I2C spec, the transmission distance is usually limited to a few metres due the max line capacitance rated at 400pF. Speaking from personal experience, when trying to get I2C to work through long cables, cross-talk is usually the problem which stops the communications from working. The cross-capacitance between the SCL and SDA lines results in the signals mixing together, and often your start condition won't work because the SDA line being pulled low will couple into the SCL and pull that low too, invalidating the transmission. Slowing down the transition speeds could help this (aka drive strength), but the rise /fall times is typically limited to a maximum of 300ns.
 
 The picture below shows how cross-coupling can introduce noise onto the SDA and SCL lines when using long cables. This shows SCL (yellow) and SDA (blue) over an 8m ethernet cable.
 
-{{< figure src="/images/2011/09/i2c-noise-from-long-cable.jpg" width="387px" caption="The cross-talk noise that occurs on long I2C transmission lines. This shows SCL (yellow) and SDA (blue) over a 20m ethernet cable."  >}}
+{{< img src="i2c-noise-from-long-cable.jpg" width="387px" caption="The cross-talk noise that occurs on long I2C transmission lines. This shows SCL (yellow) and SDA (blue) over a 20m ethernet cable."  >}}
 
 ## Using Twisted Pair Cabling And A Buffer IC
 
@@ -297,7 +299,7 @@ I have had very good results with using twisted-pair cabling along with the P82B
 
 The picture below shows the difference grounding the other wire in a pair makes when transmitting I2C over twisted pair cables. The yellow trace is SCK (for reference), the white trace is SDA with the second wire floating, and the blue trace is SDA when the second wire is either grounded or connected to VCC. Notice a great reduction in cross-coupling on the blue trace.
 
-{{< figure src="/images/2011/09/i2c-long-cable-ground-no-ground.jpg" width="364px" caption="The difference grounding the other wire in a pair makes when transmitting I2C over twisted pair cables. The yellow trace is SCK (for reference), the white trace is SDA with the second wire floating, and the blue trace is SDA when the second wire is either grounded or connected to VCC. Notice a great reduction in cross-coupling on the blue trace. This was over a 20m ethernet cable."  >}}
+{{< img src="i2c-long-cable-ground-no-ground.jpg" width="364px" caption="The difference grounding the other wire in a pair makes when transmitting I2C over twisted pair cables. The yellow trace is SCK (for reference), the white trace is SDA with the second wire floating, and the blue trace is SDA when the second wire is either grounded or connected to VCC. Notice a great reduction in cross-coupling on the blue trace. This was over a 20m ethernet cable."  >}}
 
 The I2C transmission distance can also be extended by using I2C buffer IC's. These chips buffer the inputs and provide high output drive signals useful for sending down long cables. Some also support RX/TX splitting (sending the RX and TX signals from the SDA down separate lines to increase transmission times), as well as differential line driving). Buffering the I2C lines introduces a 'lock-up' problem, in which if the bus is driven low, the receiver will keep it low even after the sender has released it. To stop this from happening, manufacturers cleverly introduced two 'logic-low' levels, which both conform to the logic-low of the I2C standard. Typically anything 0.5V is counted as a true 'low' (which is propagated through the buffer), while anything between 0.5V and 0.9V is a buffer-generated low which is not propagated.
 
@@ -325,25 +327,25 @@ A slave device can indicate that it is not ready to receive new data by holding 
 * I2C Multiplexers/Switches - Performs voltage translation/isolation and multiplexing of I2C traces. Useful when dealing with mixed-voltage I2C systems and for resolving address conflicts 
 * USB-to-I2c Bridges - These provide a interface between your computer and an external I2C communication line. Certain FTDI chips/cables with an in-built MPSSE (multi-purpose synchronous serial engine) support USB-to-I2C communication. See this application note here ([Application Note AN-190: C232HM MPSSE Cable in USB to I2C/SMBus interface](http://www.ftdichip.com/Support/Documents/AppNotes/AN_190_C232HM_MPSSE_Cable_in_USB_to_I2C_Interface.pdf)).  
   
-{{< figure src="/images/2011/09/c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg" width="265px" caption="The C232HM-DDHSL-0 FTDI USB-to-MPSSE cable. Creates a bridge between your computer and a number of serial comm protocols such as SPI, I2C and UART."  >}}
+{{< img src="c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg" width="265px" caption="The C232HM-DDHSL-0 FTDI USB-to-MPSSE cable. Creates a bridge between your computer and a number of serial comm protocols such as SPI, I2C and UART."  >}}
 
 ## Typical I2C Operation
 
 I2C is typically used to configure and talk to digital sensor IC's in an embedded environment. IC's such as accelerometers, capacitive sensors, digital thermometers usually have an I2c protocol for configuration and/or data transfer.
 
-{{< figure src="/images/2011/09/typical-i2c-waveform.jpg" width="483px" caption="A typical I2C waveform. The top waveform is the clock (SCK), and the bottom waveform is the data (SDA). This shows a master trying to communicate with the slave, but the slave does not acknowledge (the ninth bit is high)."  >}}
+{{< img src="typical-i2c-waveform.jpg" width="483px" caption="A typical I2C waveform. The top waveform is the clock (SCK), and the bottom waveform is the data (SDA). This shows a master trying to communicate with the slave, but the slave does not acknowledge (the ninth bit is high)."  >}}
 
 Typically, the IC has a 7-bit address which if right-shifted with the read/write bit being the LSB. If the IC detects its address, it issues an acknowledge. The second word (which may or may not be a byte, this depends on the size of the registers on the chip, typically 1 or 2bytes) sent by the master over I2C writes to an address pointer, this determines what register is going to be read to/written from. This is always a write operation.
 
 At this point, if the master is performing a write, the master's third word will write to the register pointed to by the address pointer (which was sent as the second word). The address pointer is automatically incremented by one a this point, allowing the master to write consecutive registers all at once without having to do separate I2C transmissions.
 
-{{< figure src="/images/electronics-misc/i2c-waveform-example-saleae-logic-analyser.png" caption="i2c-waveform-example-saleae-logic-analyser" caption="An I2C waveform." >}}
+{{< img src="i2c-waveform-example-saleae-logic-analyser.png" caption="i2c-waveform-example-saleae-logic-analyser" width="800px" caption="An I2C waveform." >}}
 
 But if instead the master is performing a read, a repeated start is normally issued after writing to the address pointer. Then the master issues a read command (the IC's 7-bit address and the read/write bit set correctly). The master then provides clock pulses while the slave 'reads' out register contents beginning at the register set in the address pointer in the previous write cycle. Just as with a write, the address pointer is incremented automatically, allowing multiple registers to be read at once.
 
 The following image shows an I2C slave that is not responding. Notice the absence of an "ACK" on the SDA line on the 9th clock pulse. The slave should of pulled this low.
 
-{{< figure src="/images/electronics-misc/i2c-waveform-with-nak-saleae-logic-analyser.png" width="600px" caption="An I2C slave that doesn't respond, no ACK on the 9th clock pulse."  >}}
+{{< img src="i2c-waveform-with-nak-saleae-logic-analyser.png" width="800px" caption="An I2C slave that doesn't respond, no ACK on the 9th clock pulse."  >}}
 
 ## Prototyping
 

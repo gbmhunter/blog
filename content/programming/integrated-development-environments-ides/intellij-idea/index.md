@@ -2,6 +2,7 @@
 author: gbmhunter
 date: 2016-06-26
 draft: false
+lastmod: 2019-04-05
 title: IntelliJ IDEA
 type: page
 ---
@@ -73,3 +74,11 @@ type: page
     </tr>
   </tbody>
 </table>
+
+## vim Plugin
+
+IntelliJ supports the [IdeaVim](https://plugins.jetbrains.com/plugin/164-ideavim) plugin which adds vim-like functionality to the IDE.
+
+This plugin support configuration using a `~/.ideavimrc` file, which is similar in format to a typical `.vimrc` file, except that it allows special extensions to directly control IntelliJ through an API.
+
+I have noticed that IdeaVim cannot deal with large files that well (e.g. a 50,000 line `.json` file), and I have to disable the plugin to be able to work with these files.

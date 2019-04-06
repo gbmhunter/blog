@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2011-09-05 06:10:43+00:00
+date: 2011-09-05
 draft: false
 title: Connectors
 type: page
-url: /electronics/components/connectors
 ---
 
 ## Overview
@@ -21,80 +20,44 @@ Unlike most other electrical components, most connector manufacturers do not app
 		</tr>
 	</thead>
 <tbody >
-<tr >
-<td >Female
-</td>
-
-<td >See socket.
-</td>
+<tr>
+<td>Female</td>
+<td>See socket.</td>
 </tr>
-<tr >
-
-<td >Genderless
-</td>
-
-<td >A connector that can be mated with it's self (i.e. there is no seperate male/female or plug/receptacle parts).
-</td>
+<tr>
+<td>Genderless</td>
+<td>A connector that can be mated with it's self (i.e. there is no seperate male/female or plug/receptacle parts).</td>
 </tr>
-<tr >
-
-<td >Header
-</td>
-
-<td >Can either stand for a particular style of connector (see the Header section), or it can stand for a male gender connector.
-</td>
+<tr>
+<td>Header</td>
+<td>Can either stand for a particular style of connector (see the Header section), or it can stand for a male gender connector.</td>
 </tr>
-<tr >
-
-<td >Hermaphroditic
-</td>
-
-<td >See genderless.
-</td>
+<tr>
+<td>Hermaphroditic</td>
+<td>See genderless.</td>
 </tr>
-<tr >
-
-<td >Loaded
-</td>
-
-<td >On connectors with a large number of pins, this indicated how many of the pins come shipped with contacts. The contact pattern can also vary.
-</td>
+<tr>
+<td>Loaded</td>
+<td>On connectors with a large number of pins, this indicated how many of the pins come shipped with contacts. The contact pattern can also vary.</td>
 </tr>
-<tr >
-
-<td >Male
-</td>
-
-<td >See plug.
-</td>
+<tr>
+<td>Male</td>
+<td>See plug.</td>
 </tr>
-<tr >
-
-<td >Plug
-</td>
-
-<td >A connector which has rod-shaped part for plugging into socket. Also called a male connector, or header.
-</td>
+<tr>
+<td>Plug</td>
+<td>A connector which has rod-shaped part for plugging into socket. Also called a male connector, or header.</td>
 </tr>
-<tr >
-
-<td >Receptacle
-</td>
-
-<td >See socket.
-</td>
+<tr>
+<td>Receptacle</td>
+<td>See socket.</td>
 </tr>
-<tr >
-
-<td >Socket
-</td>
-
-<td >A connector which has holes that accepts plug pins. Also called a female connector or receptacle.
-</td>
+<tr>
+<td>Socket</td>
+<td>A connector which has holes that accepts plug pins. Also called a female connector or receptacle.</td>
 </tr>
 </tbody>
 </table>
-
 
 ## Connector Manufacturers
 
@@ -247,7 +210,7 @@ Selecting gold tinned contacts can add a good US$0.50 or more to the price of th
 
 Mixing the two plating metals is not recommended! The corrosion rate is greatly increased when two dissimilar metals come into contact with each other (this is due to the difference in the metal's electrode potentials, which is +1.5V for gold, and only +0.15V for tin).
 
-{{< figure src="/images/electronics-components/gold-and-tin-plated-contacts.jpg" caption="You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/."  width="900px" >}}
+{{< img src="gold-and-tin-plated-contacts.jpg" caption="You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/."  width="900px" >}}
 
 ## Mass Pinned Header's
 
@@ -259,17 +222,17 @@ Example: Harting 0903 296 6825 96pin DIN41612 Socket Element14 Code: 1096910
 
 USB plug assemblies (non pre-assembled plugs) are hard to come by. However, they do exist. Here is a picture of a Molex Mini-USB Type-B plug assembly.
 
-{{< figure src="/images/electronics-connectors/molex-mini-usb-type-b-plug-assembly-photo.jpg" caption="The Molex Mini Usb Type B plug assembly."  width="400px" >}}
+{{< img src="molex-mini-usb-type-b-plug-assembly-photo.jpg" caption="The Molex Mini Usb Type B plug assembly."  width="400px" >}}
 
 ## Jumpers
 
 Jumpers are used to connect adjacent pins on a header together. They can also be called **zero-Ohm links **or** zero-Ohm resistors. **
 
-{{< figure src="/images/electronics-connectors/using-jumpers-to-connect-pin-headers-to-test-leads.jpg" caption="A clever way of using jumpers to connect test leads to header pins. Image from http://hackadaycom.files.wordpress.com/2013/06/dgcaicca.jpg."  width="550px" >}}
+{{< img src="using-jumpers-to-connect-pin-headers-to-test-leads.jpg" caption="A clever way of using jumpers to connect test leads to header pins. Image from http://hackadaycom.files.wordpress.com/2013/06/dgcaicca.jpg."  width="550px" >}}
 
 The term zero Ohm resistor is usually reserved for a resistor package whose resistance is close to zero ohms. In recent years these have tended to be in small SMD packages such as the 0603 chip package. A problem with these zero Ohm resistors is that they usually have quite a high resistance compared to a similar sized track on the PCB. Manufacturers also make "true" zero links in these packages, designed to have a much smaller resistance. One such example is the Keystone 5110, an 0603 sized zero-ohm jumper.
 
-{{< figure src="/images/2011/09/keystone-5110-smd-0604-jumper-3d-model.jpg" width="222px" caption="3D model of the Keystone 0603 'true' zero-Ohm jumper. Image from http://www.keyelco.com/product.cfm/Zero-ohm-SMT-Jumpers/0603-Zero-ohm-SMT-Jumper/product_id/14038."  >}}
+{{< img src="keystone-5110-smd-0604-jumper-3d-model.jpg" width="222px" caption="3D model of the Keystone 0603 'true' zero-Ohm jumper. Image from http://www.keyelco.com/product.cfm/Zero-ohm-SMT-Jumpers/0603-Zero-ohm-SMT-Jumper/product_id/14038."  >}}
 
 ## Spring-Loaded (Pogo) Connectors
 
@@ -277,11 +240,11 @@ Spring-loaded connectors (also called Pogo connectors after the similarity to a 
 
 One company which is doing interesting things with spring-loaded connectors is Tag-Connect. They sell a range of spring-loaded pin based wire-to-board connectors.
 
-{{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-photo.png" width="562px" caption="Photo of the TC2050-IDC-NL connector by Tag-Connect."  >}}
+{{< img src="tc2050-idc-nl-pogo-pin-connector-photo.png" width="562px" caption="Photo of the TC2050-IDC-NL connector by Tag-Connect."  >}}
 
 They sell legged and no-legged versions. The legged versions have retainers (legs) which clip the connector to the PCB and are designed for a more persistant, hands-free connection. The no-legged versions have no retainers (legs), and a smaller footprint. You have to physically hold the connector against the board while using and are designed for a quick, non-persistant connection.
 
-{{< figure src="/images/2011/09/tc2050-idc-nl-pogo-pin-connector-pcb-footprint.png" width="806px" caption="The recommended PCB footprint for accepting the TC2050-IDC-NL connector by Tag-Connect."  >}}
+{{< img src="tc2050-idc-nl-pogo-pin-connector-pcb-footprint.png" width="806px" caption="The recommended PCB footprint for accepting the TC2050-IDC-NL connector by Tag-Connect."  >}}
 
 ## Circular Connectors
 
@@ -316,4 +279,4 @@ This is still a relatively new field compared to other forms of connectors, and 
 
 TE Connectivity make a range under the family name [ARISO](http://www.digikey.co.nz/en/product-highlight/t/te-connectivity-amp/ariso-contactless-connectivity). They are capable to transmitting up to 12W of power at 24VDC.
 
-{{< figure src="/images/2011/09/te-connectivity-ariso-m30-contactless-connector-pair-photo.png" width="640px" caption="A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com."  >}}
+{{< img src="te-connectivity-ariso-m30-contactless-connector-pair-photo.png" width="640px" caption="A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com."  >}}

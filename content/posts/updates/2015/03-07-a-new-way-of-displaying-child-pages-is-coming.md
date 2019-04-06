@@ -37,7 +37,7 @@ Most of them provided shortcodes for the user to insert into a page, which woul
 
 The child pages menu is then inserted into the parent with the shortcode:
 
-```    
+```text
 [sb_child_list template="2"]
 ```
 

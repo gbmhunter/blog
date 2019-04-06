@@ -1,17 +1,16 @@
 ---
 author: gbmhunter
-date: 2017-03-27 23:00:18+00:00
+date: 2017-03-27
 draft: false
 title: Embedded Linux
 type: page
-url: /programming/embedded-linux
 ---
 
 ## Overview
 
 Embedded Linux is the name given to the Linux operating system when it is run on **resource-constrained systems**, as opposed to traditional laptop, desktop or server style computers.
 
-{{< figure src="/images/2017/03/embedded-linux-icon.png" width="308px" caption="Embedded Linux icon."  >}}
+{{< img src="embedded-linux-icon.png" width="308px" caption="Embedded Linux icon."  >}}
 
 ## Differences With "Standard" Linux
 
@@ -49,17 +48,10 @@ BusyBox is a bunch of stripped down Linux tools that are compiled into one execu
 
 ## Embedded ABI
 
-
-
-
 An _embedded application binary interface (EABI)_ is very similar to a normal ABI. It specifies:
 
-
-
-
-
-	  * File formats
-	  * Data types
-	  * Register usage
-	  * Stack frame organisation
+* File formats
+* Data types
+* Register usage
+* Stack frame organisation
 
