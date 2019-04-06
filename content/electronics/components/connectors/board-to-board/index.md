@@ -20,4 +20,4 @@ Some board-to-board connector families are have wire-to-board support, with a s
 
 The Hirose DF-59 family is a set of board-to-board/board-to-wire connectors. The special feature about this family is the "floating" contact which allows up to 0.5mm of mis-alignment between the boards.
 
-{{< ing src="df59-hirose-board-to-board-connector-with-special-floating-feature.pdf.png" width="402px" caption="Diagram of the Hirose DF-59 family of board-to-board connectors, showing their special 'floating' feature."  >}}
+{{< img src="df59-hirose-board-to-board-connector-with-special-floating-feature.pdf.png" width="402px" caption="Diagram of the Hirose DF-59 family of board-to-board connectors, showing their special 'floating' feature."  >}}
