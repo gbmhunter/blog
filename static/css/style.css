@@ -133,6 +133,8 @@ div.content td li {
     text-align: left; /* Left aligns text in lists */
 }
 
+/* OK, WARNING AND ERROR ROWS IN A TABLE */
+
 div.content tr.ok {
     background-color: #d7fcd3;
 }
@@ -153,6 +155,26 @@ div.content p.centered {
 /* Center single images on the page */
 div.box {
     margin: auto;
+}
+
+
+/* ========================================================================= */
+/* OK, WARNING, ERROR SPANS                                                  */
+/* ========================================================================= */
+
+span.ok {
+    color: #00b300;
+    font-weight: bold;
+}
+
+span.warning {
+    color: orange;
+    font-weight: bold;
+}
+
+span.error {
+    color: red;
+    font-weight: bold;
 }
 
 /* ========================================================================= */

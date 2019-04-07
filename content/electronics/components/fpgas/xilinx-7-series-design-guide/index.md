@@ -15,20 +15,20 @@ This is in no way meant to replace the comprehensive Xilinx design guides for 7 
 The pins in a bank are labelled something like `IO_L14P_T2_SRCC_14`. What does this mean?
 
 <table>
-<tbody>
-<tr>
-<td>IO</td>
-<td>This pin can be used as general IO.</td>
-</tr>
-<tr>
-<td>L14P</td>
-<td>This pin is part of a differential pair. The pair number is 14, and this is the positive (P) pin.</td>
-</tr>
-<tr>
-<td>T2</td>
-<td>The pin is part of bank T2.</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>IO</td>
+      <td>This pin can be used as general IO.</td>
+    </tr>
+    <tr>
+      <td>L14P</td>
+      <td>This pin is part of a differential pair. The pair number is 14, and this is the positive (P) pin.</td>
+    </tr>
+    <tr>
+      <td>T2</td>
+      <td>The pin is part of bank T2.</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Decoupling Capacitors
@@ -47,12 +47,12 @@ Reverse-aspect capacitors can be used for when ultra-low parasitic inductances 
 
 ## Un-used I/O Banks
 
-Using a large device for a small project could mean that there are entire banks of usused I/O pins. In these cases you are allowed to leave the bank's `Vcco` pins (e.g. `Vcco_14`) and I/O pins disconnected. However, for ESD reasons, it is better to connect these pins to either (in order of preference): `GND`, a valid `Vcco` voltage, or a floating plane.
+Using a large device for a small project could mean that there are entire banks of unused I/O pins. In these cases you are allowed to leave the bank's `Vcco` pins (e.g. `Vcco_14`) and I/O pins disconnected. However, for ESD reasons, it is better to connect these pins to either (in order of preference): `GND`, a valid `Vcco` voltage, or a floating plane.
 
-## MGT's
+## MGTs
 
-The Xilinx 7 Series FPGA's have in-built Multi-Gigabit Transceivers (MGT's). These are SerDes capable of 1Gbps+ transmission rates.
+The Xilinx 7 Series FPGAs have in-built Multi-Gigabit Transceivers (MGTs). These are SerDes capable of 1Gbps+ transmission rates.
 
-The MGT's on-board a 7 Series FPGA can be used to implement high-speed communication protocols such as PCIe (PCI Express).
+The MGTs on-board a 7 Series FPGA can be used to implement high-speed communication protocols such as PCIe (PCI Express).
 
-The MGT's have decision-feedback equalisation (DFE) blocks, which aim to reduce the reduce the inter-symbol interference (ISI) on the current symbol.
+The MGTs have decision-feedback equalisation (DFE) blocks, which aim to reduce the reduce the inter-symbol interference (ISI) on the current symbol.

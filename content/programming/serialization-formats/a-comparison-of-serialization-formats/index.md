@@ -2,7 +2,8 @@
 author: gbmhunter
 date: 2019-01-27
 draft: false
-lastmod: 2019-03-03
+images: [ "serialization-formats-conversion-times-10k-python.png" ]
+lastmod: 2019-04-07
 tags: [ "serialization", "format", "comparison", "CSV", "JSON", "protobuf", "TOML", "XML", "YAML", "file size", "speed", "benchmark", "review", "Python", "C++" ]
 title: "A Comparison Of Serialization Formats"
 type: page
@@ -10,7 +11,7 @@ type: page
 
 ## Overview
 
-Went you want to save, send or receive data from a piece of software, there are many different serialization formats to choose from. What is the best choice for your use case? This page aims to answer this question by comparing some of the most popular serialization formats.
+Went you want to save, send or receive data passed around in applications, there are many different serialization formats to choose from. What is the best choice for your use case? This page aims to help answer this question by comparing some of the most popular serialization formats used today.
 
 The following serialization formats will be reviewed:
 
@@ -21,11 +22,11 @@ The following serialization formats will be reviewed:
 * XML
 * YAML
 
-**There is no one-size-fits-all serialization format**, as the best format for the jobs depends on things such as the type/amount of data that is being serialized and the software that will be reading it.
+Lets begin with a disclaimer: **There is no one-size-fits-all serialization format** --- the best format for the jobs depends on things such as the type/amount of data that is being serialized and the software that will be reading it.
 
-The examples in the following sections show how different formats store the same data. I chose a simple, repeatable data structure which was supported by all reviewed serialization formats (two `Pokemon` objects, each which had `id`, `name`, `age` and `address` fields). Note that many of these serialization formats can store non-repeatable, randomly structured data  (in fact, all can except CSV).
+The examples in the following sections show how different formats store the same data. I chose a simple, repeatable data structure which was supported by all reviewed serialization formats (two `Pokemon` objects, each which had `id`, `name`, `age` and `address` fields). Note that many of these serialization formats can store non-repeatable, randomly structured data  (in fact, all can except CSV)., so in a way I am tailoring to the lowest common denominator, which influences the results.
 
-In each review section, a score between 1-3 is highlighted red, 4-6 orange, and 6-10 green.
+In each review section, a score between 1-3 is highlighted <span class="error">red</span>, 4-6 <span class="warning">orange</span>, and 6-10 <span class="ok">green</span>.
 
 ## CSV
 
@@ -59,19 +60,19 @@ id, name, age, address
     </thead>
     <tbody>
         <tr class="ok">
-            <td>Brevity</td>            <td>9/10</td>       <td>With only commas separating values, CSV is very concise.</td>
+            <td>Brevity</td>            <td>9/10</td>       <td>With only commas separating values, CSV is very concise for a human-readable format.</td>
         </tr>
         <tr class="warning">
-            <td>Human Readability</td>  <td>5/10</td>       <td>CSV is readable, although it easy to get lost with a large amount of data.</td>
+            <td>Human Readability</td>  <td>5/10</td>       <td>CSV is readable, although it easy to get lost within a row with a large amount of data.</td>
         </tr>
         <tr class="ok">
-            <td>Language Support</td>   <td>9/10</td>       <td>CSV is wide support and is readable is almost every major language.</td>
+            <td>Language Support</td>   <td>9/10</td>       <td>CSV is wide support and is readable is almost every major language (and if there is no support, it is really easy to write a parser yourself!).</td>
         </tr>
         <tr class="error">
             <td>Data Structure Support</td><td>3/10</td>    <td>CSV only supports tabular/array-like data. It does not support dictionary/map-like data, nor relational data.</td>
         </tr>
         <tr class="ok">
-            <td>Speed</td>              <td>8/10</td>       <td>CSV is very fast to serialize/deserialize.</td>
+            <td>Speed</td>              <td>8/10</td>       <td>CSV is very fast to serialize/deserialize. See the <a href="#speed-comparison-benchmarking">Speed Comparison section</a> for more info.</td>
         </tr>
         <tr class="error">
             <td>Standardization</td>    <td>3/10</td>       <td>CSV is not well standardized.</td>
@@ -83,9 +84,9 @@ id, name, age, address
 
 {{< img src="file-icon-json.png" width="100px" caption="" >}}
 
-JSON is a ubiquitous human-readable data serialization format that is supported by almost every popular programming language. Data structures closely represent common objects in many languages, e.g. a Python `dict` can be represented by a JSON `object`, and a Python `list` by a JSON `array`. Note there are caveats to this!
+JSON is a ubiquitous human-readable data serialization format that is supported by almost every popular programming language. JSON's data structures closely represent common objects in many languages, e.g. a Python `dict` can be represented by a JSON `object`, and a Python `list` by a JSON `array`. Note there are caveats to this!
 
-Unfortunately, the JSON syntax does not support comments! The best you can do is add a `__comment__` name/value pair to JSON objects, which is a poor solution. The name in a JSON object's name/value pairs always has to be a string. It also does not support any type of date format.
+It is important to note that the JSON syntax does not support comments! This can be a blessing (but mostly a curse). For large amounts of data that get read into software and written back to disk, comments would be pretty much useless anyway because they would not be preserved when re-written to file. If you do need comments, the common workaround is to add a `__comment__` name/value pair or similar to JSON objects. The name in a JSON object's name/value pairs always has to be a string. It also does not support any type of date format.
 
 ### Example
 
@@ -102,7 +103,7 @@ Unfortunately, the JSON syntax does not support comments! The best you can do is
         "name": "Pikachu",
         "age": 56.78,
         "address": "Electric Street"
-    },
+    }
 ]
 ```
 
@@ -116,22 +117,22 @@ Unfortunately, the JSON syntax does not support comments! The best you can do is
     </thead>
     <tbody>
         <tr class="ok">
-            <td>Brevity</td>            <td>8/10</td>       <td>JSON has concise syntax, although not as concise as YAML and TOML in most situations.</td>
+            <td>Brevity</td>            <td>7/10</td>       <td>JSON has concise syntax, although not as concise as YAML and TOML in most situations.</td>
         </tr>
         <tr class="warning">
             <td>Human Readability</td>  <td>5/10</td>       <td>JSON is human-readable. It loses some marks because it does not support comments.</td>
         </tr>
         <tr class="ok">
-            <td>Language Support</td>   <td>9/10</td>       <td></td>
+            <td>Language Support</td>   <td>9/10</td>       <td>JSON has very good language support.</td>
         </tr>
-        <tr class="ok">
+        <tr class="warning">
             <td>Data Type Support</td>  <td>6/10</td>       <td>JSON supports array and map (object) structures. It supports many different data types including strings, numbers, boolean, null, e.t.c, but not dates.</td>
         </tr>
         <tr class="ok">
-            <td>Speed</td>              <td>7/10</td>       <td>JSON is usually fast to serialize/deserialize.</td>
+            <td>Speed</td>              <td>9/10</td>       <td>JSON is one of the fastest human-readable formats to serialize/deserialize that I reviewed. See the <a href="#speed-comparison-benchmarking">Speed Comparison section</a> for more info.</td>
         </tr>
         <tr class="ok">
-            <td>Standardization</td>    <td>9/10</td>       <td>JSON has an official standards body. https://www.json.org/</td>
+            <td>Standardization</td>    <td>9/10</td>       <td>JSON has an official standards body. See <a href="https://www.json.org/">https://www.json.org/</a>.</td>
         </tr>
     </tbody>
 </table>
@@ -171,7 +172,7 @@ Protobuf is a binary serialization protocol developed by Google. Since it serial
             <td>Data Type Support</td>  <td>8/10</td>       <td>Protobuf allows you to define data structures in .proto files. Protobuf supports many basic primitive types, which can be combined into classes, which can then be combined into other classes.</td>
         </tr>
         <tr class="ok">
-            <td>Speed</td>              <td>9/10</td>       <td>Protobuf is very fast, especially in C++ (relative to other serialization formats).</td>
+            <td>Speed</td>              <td>9/10</td>       <td>Protobuf is very fast, especially in C++ (relative to other serialization formats). See the <a href="#speed-comparison-benchmarking">Speed Comparison section</a> for more info.</td>
         </tr>
         <tr class="ok">
             <td>Standardization</td>    <td>9/10</td>       <td>Protobuf is standardized by Google.</td>
@@ -187,7 +188,7 @@ TOML (Tom's Obvious, Minimal Language) is a newer (relative to the others in thi
 
 TOML has syntax highlighters for Atom, Visual Studio, Visual Studio Code and other IDEs.
 
-TOML suffers from verbose syntax when it comes to expressing an array of objects (on in TOML speak, an array of tables). This can be seen in the example below where each pokemon object in the array is delimited with `[[pokemon]]`.
+TOML suffers from somewhat verbose syntax when it comes to expressing an array of objects (on in TOML speak, an array of tables). This can be seen in the example below where each pokemon object in the array is delimited with `[[pokemon]]`.
 
 ```toml
 [[pokemon]]
@@ -225,7 +226,7 @@ age = 56.78
             <td>Data Type Support</td>  <td>9/10</td>       <td>TOML does not support references like YAML does (probably because TOML aimes to be simple).</td>
         </tr>
         <tr class="warning">
-            <td>Speed</td>              <td>6/10</td>       <td>TOML is on the slower end of the spectrum, but is faster than YAML.</td>
+            <td>Speed</td>              <td>6/10</td>       <td>TOML is on the slower end of the spectrum, but is faster than YAML. See the <a href="#speed-comparison-benchmarking">Speed Comparison section</a> for more info.</td>
         </tr>
         <tr class="ok">
             <td>Standardization</td>    <td>9/10</td>       <td>TOML is well standardized.</td>
@@ -319,16 +320,16 @@ YAML is a strict super-set of JSON, which means you can parse JSON with a YAML p
     </thead>
     <tbody>
         <tr class="ok">
-            <td>Brevity</td>            <td>9/10</td>       <td>Values can default to strings, allowing you to omit quote marks. It has terser syntax than TOML for arrays of objects (in TOML you have proceed each element with [[array_name]]).</td>
+            <td>Brevity</td>            <td>9/10</td>       <td>Values can default to strings, allowing you to omit quote marks. It has terser syntax than TOML for arrays of objects (in TOML you have proceed each element with <code>[[array_name]]</code>).</td>
         </tr>
         <tr class="ok">
             <td>Human Readability</td>  <td>7/10</td>       <td>Basic YAML is really easy to read, however YAML's complexity can confuse a reader when using it's advanced features.</td>
         </tr>
         <tr class="warning">
-            <td>Language Support</td>   <td>6/10</td>       <td></td>
+            <td>Language Support</td>   <td>6/10</td>       <td>YAML is popular enough for there to be libraries for most popular languages, but it is not as ubiquitous as CSV or JSON.</td>
         </tr>
         <tr class="ok">
-            <td>Data Type Support</td>  <td>10/10</td>       <td>YAML even supports references (relational data)!</td>
+            <td>Data Type Support</td>  <td>10/10</td>       <td>YAML even supports references (relational data) and external data!</td>
         </tr>
         <tr class="error">
             <td>Speed</td>              <td>3/10</td>       <td>YAML showed the slowest serialization/deserialization runtimes out of any format I tested, in both C++ and Python (see the <a href="#speed-comparison-benchmarking">Speed Comparison section</a>) for more info).</td>
@@ -343,14 +344,47 @@ YAML is a strict super-set of JSON, which means you can parse JSON with a YAML p
 
 The following libraries were used for the speed comparison tests:
 
-Format      | Python                                | C++
-------------|---------------------------------------|---------------------------------------------------------------------------
-CSV         | csv (built-in)                        | fast-cpp-csv-parser (<https://github.com/ben-strasser/fast-cpp-csv-parser>)
-JSON        | json (built-in)                       | json (<https://github.com/nlohmann/json>)
-Protobuf    | protobuf (<https://github.com/protocolbuffers/protobuf>) | protobuf (<https://github.com/protocolbuffers/protobuf>)
-TOML        | toml (<https://github.com/uiri/toml>) | cpptoml (<https://github.com/skystrife/cpptoml>)
-YAML        | PyYAML (<https://pyyaml.org/>)        | yaml-cpp (<https://github.com/jbeder/yaml-cpp>)
-XML         | ElementTree (built-in)                | tinyxml2 (<https://github.com/leethomason/tinyxml2<>)
+<table style="word-break: break-all;">
+  <thead>
+    <tr>
+      <th style="width: 5em;">Format</th>
+      <th>Python</th>
+      <th>C++</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CSV</td>
+      <td>csv (built-in)</td>
+      <td>fast-cpp-csv-parser (<a href="https://github.com/ben-strasser/fast-cpp-csv-parser">https://github.com/ben-strasser/fast-cpp-csv-parser</a>)</td>
+    </tr>
+    <tr>
+      <td>JSON</td>
+      <td>json (built-in)</td>
+      <td>json (<a href="https://github.com/nlohmann/json">https://github.com/nlohmann/json</a>)</td>
+    </tr>
+    <tr>
+      <td>Protobuf</td>
+      <td>protobuf (<a href="https://github.com/protocolbuffers/protobuf">https://github.com/protocolbuffers/protobuf</a>)</td>
+      <td>protobuf (<a href="https://github.com/protocolbuffers/protobuf">https://github.com/protocolbuffers/protobuf</a>)</td>
+    </tr>
+    <tr>
+      <td>TOML</td>
+      <td>toml (<a href="https://github.com/uiri/toml">https://github.com/uiri/toml</a>)</td>
+      <td>cpptoml (<a href="https://github.com/skystrife/cpptoml">https://github.com/skystrife/cpptoml</a>)</td>
+    </tr>
+    <tr>
+      <td>XML</td>
+      <td>ElementTree (built-in)</td>
+      <td>tinyxml2 (<a href="https://github.com/leethomason/tinyxml2">https://github.com/leethomason/tinyxml2</a>)</td>
+    </tr>
+    <tr>
+      <td>YAML</td>
+      <td>PyYAML (<a href="https://pyyaml.org/">https://pyyaml.org/</a>)</td>
+      <td>yaml-cpp (<a href="https://github.com/jbeder/yaml-cpp">https://github.com/jbeder/yaml-cpp</a>)</td>
+    </tr>
+  </tbody>
+</table>
 
 Python v3.7 was used for all Python tests. C++17/GCC compiler was used for all C++ tests. Tests ran on a Debian machine running inside a virtual machine. The purpose of this test was to show relative performance between the different serialization formats, which should be not be affected by running inside a virtual machine.
 
@@ -358,7 +392,7 @@ As to be representative of how the serialization data might be used, all write t
 
 3 iterations of each test where performed, and the smallest run time of the three was selected as the most representative. Larger runtimes are typically the result of the OS performing extraneous tasks.
 
-Format   | C++ Deserialization (s) | C++ Serialization (s)     | Python Deserialization | Python Serialization
+Format   | C++ Deserialization (s) | C++ Serialization (s)     | Python Deserialization (s) | Python Serialization (s)
 ---------|-------------------------|---------------------------|------------------------|-----------------------
 csv      | 0.030                   | 0.022                     | 0.027                  | 0.034
 json     | 0.16                    | 0.13                      | 0.023                  | 0.16
