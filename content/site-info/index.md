@@ -72,7 +72,11 @@ This is when I switched from using a light theme to a dark theme.
 * Name: mbedded.minja
 * URL: www.mbedded.ninja  
 
+{{< img src="mbedded-ninja-front-page-header-2014.png" width="800px" caption="A screenshot of the frontpage header just after blog was moved from cladlabs.com to mbedded.ninja (the theme was essentially kept the same)." >}}
+
 ## 2015: Updated To The Wordpress TwentyFifteen Theme
+
+In 2015, in an attempt to simplify the aesthetics of the blog and reduce "clutter", the blog underwent it's biggest design transition --- from a dark-based theme (as shown above), to the custom light-based theme that was loosely based of the stock [Wordpress TwentyFifteeen theme](https://en-ca.wordpress.org/themes/twentyfifteen/).
 
 <div style='position:relative; padding-bottom:48.37%'><iframe src='https://gfycat.com/ifr/EnlightenedInferiorBluegill' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
   

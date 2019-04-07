@@ -26,10 +26,12 @@ function hello() {
 function getCount() {
   const xhr = new XMLHttpRequest();
 
-  // Remove all parts of the URL after and including the first question mark
-  const prefix = 'get?url=' + window.location.href.split("?")[0]
+  // Remove all parts of the URL after the last slash (this includes any ? or #xxx for
+  // anchors), otherwise they will count as different shuriken counts in the database
+  lastSlash = window.location.href.lastIndexOf('/')
+  var href = window.location.href.substring(0, lastSlash + 1)
+  const prefix = 'get?url=' + href
   url = baseUrl + apiPrefix + prefix
-  console.log(url)
   xhr.open("GET", url, true);
   xhr.send();
   xhr.onreadystatechange = (e) => {

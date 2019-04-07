@@ -519,7 +519,7 @@ Some useful equations...
 
 Flux = Magnetic field lines per unit area
 
-## Related IC's
+## Related ICs
 
 FSB50825US - Fairchild Smart Power Module (SPM)  
 

@@ -6,7 +6,6 @@
 	],
 	"settings": {
 		"cSpell.words": [
-			"fpga",
 			"Atmel",
 			"BEMF",
 			"BLAC",
@@ -26,7 +25,9 @@
 			"dtll",
 			"eeprom",
 			"eiaj",
+			"fairchild",
 			"fets",
+			"fpga",
 			"fpgas",
 			"fsbl",
 			"ftdi",
