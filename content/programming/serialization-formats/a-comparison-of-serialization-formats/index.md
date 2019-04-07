@@ -217,14 +217,14 @@ age = 56.78
         <tr class="ok">
             <td>Brevity</td>            <td>7/10</td>       <td>TOML is quite concise, except for when it comes to arrays of tables.</td>
         </tr>
-        <tr class="error">
+        <tr class="ok">
             <td>Human Readability</td>  <td>9/10</td>       <td>One of TOML's primary goals was to be very easy to understand.</td>
         </tr>
         <tr class="ok">
-            <td>Language Support</td>   <td>7/10</td>       <td></td>
+            <td>Language Support</td>   <td>7/10</td>       <td>TOML is a relatively new serialization format and does not have the same number of libraries as say JSON, CSV or XML for various programming languages.</td>
         </tr>
         <tr class="ok">
-            <td>Data Type Support</td>  <td>9/10</td>       <td>TOML does not support references like YAML does (probably because TOML aimes to be simple).</td>
+            <td>Data Type Support</td>  <td>9/10</td>       <td>TOML does not support references like YAML does (probably because TOML aims to be simple).</td>
         </tr>
         <tr class="warning">
             <td>Speed</td>              <td>6/10</td>       <td>TOML is on the slower end of the spectrum, but is faster than YAML. See the <a href="#speed-comparison-benchmarking">Speed Comparison section</a> for more info.</td>
@@ -286,10 +286,10 @@ The specification for XML can be found at <https://www.w3.org/TR/xml/>.
             <td>Data Type Support</td>  <td>9/10</td>       <td>XML is very flexible as each element can have attributes and arbitrary child elements.</td>
         </tr>
         <tr class="ok">
-            <td>Speed</td>              <td>9/10</td>       <td>See the <a href="#speed-comparison-benchmarking">Speed Comparison Benchmarking section for more info.</a>.</td>
+            <td>Speed</td>              <td>8/10</td>       <td>XML is quite fast, although typically slower to parse than JSON. See the <a href="#speed-comparison-benchmarking">Speed Comparison Benchmarking section for more info.</a>.</td>
         </tr>
         <tr class="ok">
-            <td>Standardization</td>    <td>9/10</td>       <td></td>
+            <td>Standardization</td>    <td>10/10</td>       <td>XML is standardized by the W3C. W3C also recommends the use of the XSD (<i>XML Schema Definition</i>, also referred to as WXS) as the primary schema for use with XML. </td>
         </tr>
     </tbody>
 </table>
@@ -333,10 +333,10 @@ YAML is a strict super-set of JSON, which means you can parse JSON with a YAML p
             <td>Data Type Support</td>  <td>10/10</td>       <td>YAML even supports references (relational data) and external data!</td>
         </tr>
         <tr class="error">
-            <td>Speed</td>              <td>3/10</td>       <td>YAML showed the slowest serialization/deserialization runtimes out of any format I tested, in both C++ and Python (see the <a href="#speed-comparison-benchmarking">Speed Comparison section</a>) for more info).</td>
+            <td>Speed</td>              <td>2/10</td>       <td>YAML showed the slowest serialization/deserialization runtimes out of any format I tested, in both C++ and Python (see the <a href="#speed-comparison-benchmarking">Speed Comparison section</a>) for more info).</td>
         </tr>
         <tr class="ok">
-            <td>Standardization</td>    <td>9/10</td>       <td>YAML is well standardized.</td>
+            <td>Standardization</td>    <td>8/10</td>       <td>YAML is well standardized, but it can be hard to find extra functionality such as schema validators (I have had to reach for <a href="https://json-schema.org/">jsonschema</a> to validate YAML)..</td>
         </tr>
     </tbody>
 </table>
