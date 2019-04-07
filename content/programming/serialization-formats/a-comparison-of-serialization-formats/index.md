@@ -2,7 +2,7 @@
 author: gbmhunter
 date: 2019-01-27
 draft: false
-images: [ "serialization-formats-conversion-times-10k-python.png" ]
+images: [ "/programming/serialization-formats/a-comparison-of-serialization-formats/serialization-formats-conversion-times-10k-python.png" ]
 lastmod: 2019-04-07
 tags: [ "serialization", "format", "comparison", "CSV", "JSON", "protobuf", "TOML", "XML", "YAML", "file size", "speed", "benchmark", "review", "Python", "C++" ]
 title: "A Comparison Of Serialization Formats"
@@ -390,7 +390,7 @@ Python v3.7 was used for all Python tests. C++17/GCC compiler was used for all C
 
 As to be representative of how the serialization data might be used, all write tests where passed the same input data, either a `vector` (for the C++ tests) or a `List` (for the Python tests) of `Person` objects. Each `Person` contains an ID (an integer starting from 0), a name (random string of 5 ASCII chars), and address (random string of 30 ASCII chars) and an age (float). Each test was required to serialize the data to the required format (using the libraries mentioned above) and then write the serialized data to disk. All read tests performed the opposite task, reading a data file, deserializing and creating a `vector`/`List` of `Person` objects. 
 
-3 iterations of each test where performed, and the smallest run time of the three was selected as the most representative. Larger runtimes are typically the result of the OS performing extraneous tasks.
+3 iterations of each test where performed, and the smallest run time of the three was selected as the most representative. Larger runtimes are typically the result of the OS performing extraneous tasks which should not be included in these runtimes.
 
 Format   | C++ Deserialization (s) | C++ Serialization (s)     | Python Deserialization (s) | Python Serialization (s)
 ---------|-------------------------|---------------------------|------------------------|-----------------------
@@ -405,7 +405,7 @@ yaml     | 0.48                    | 0.55                      | 6.84           
 
 {{< img src="serialization-formats-conversion-times-10k-python.png" width="600px" caption="Python conversion times for 10k objects in popular serialization formats." >}}
 
-It is also interesting to see how the serializations respond to a change in the data size. If the size of the data doubles, does it take twice as long to read/write (linear response), or does it behave differently (e.g. quadratic, log(n), ...). This is called the complexity of the serialization algorithm. To test this, I increased the `people` array from 10,000 to 100,000 (increased by a factor of 10). This was the result...
+It is also interesting to see how the serializations respond to a change in the data size. If the size of the data doubles, does it take twice as long to read/write (linear response), or does it behave differently (e.g. quadratic, `\(log(n)\)`, ...)?. This is called the complexity of the serialization algorithm. To test this, I increased the `people` array from 10,000 to 100,000 (increased by a factor of 10). This was the result...
 
 Format   | C++ Deserialization (s) | C++ Serialization (s)     | Python Deserialization | Python Serialization
 ---------|-------------------------|---------------------------|------------------------|-----------------------
@@ -443,5 +443,6 @@ Being the only binary, non-human readable format that was compared, it's with no
 
 ## Other Formats That Weren't Considered
 
-* BSON. A binary format popularized by MongoDB that is based on JSON.
-* MessagePack. This looks similar to protobuf (uses binary encoding). Has libraries for a wide variety of languages.
+* <a href="http://bsonspec.org/">BSON</a>. A binary format popularized by MongoDB that is based on JSON.
+* <a href="https://capnproto.org/">CAP'N PROTO</a>. A "cerealization protocol"...see their website for more details :-D. 
+* <a href="https://msgpack.org/index.html">MessagePack</a>. This looks similar to protobuf (uses binary encoding). Has libraries for a wide variety of languages.
