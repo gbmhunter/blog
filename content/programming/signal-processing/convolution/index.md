@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2018-06-05 21:55:54+00:00
+date: 2018-06-05
 draft: false
 title: Convolution
 type: page
-url: /programming/signal-processing/convolution
 ---
 
 ## Overview
@@ -15,22 +14,22 @@ Convolution can be thought of as a measure of the amount of overlap of one funct
 
 ## Formal Definition
 
-<div>$$ f \ast g = \int_{-\infty}^{\infty} f(\tau)\ g(t - \tau) d \tau $$</div>
+<p>$$ f \ast g = \int_{-\infty}^{\infty} f(\tau)\ g(t - \tau) d \tau $$</p>
 
 ## Mathematical Properties
 
 Convolution is **commutative**:
 
-<div>$$ f \ast g = g \ast f $$</div>
+<p>$$ f \ast g = g \ast f $$</p>
 
 Convolution is **associative**:
 
-<div>$$ (f \ast g) \ast h = f \ast (g \ast h) $$</div>
+<p>$$ (f \ast g) \ast h = f \ast (g \ast h) $$</p>
 
 Convolution is **distributive**:
 
-<div>$$ f \ast (g + h) = f \ast g + f \ast h $$</div>
+<p>$$ f \ast (g + h) = f \ast g + f \ast h $$</p>
 
 These other properties also hold true:
 
-<div>$$ a (f \ast g) = (af) \ast g $$</div>
+<p>$$ a (f \ast g) = (af) \ast g $$</p>

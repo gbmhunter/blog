@@ -1,5 +1,6 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Signal Processing", "Filters" ]
 date: 2014-02-26
 draft: false
 tags: [ "moving average", "filter", "ADC", "DAC", "time domain", "discrete", "frequency response", "exponentially weighted", "multiple pass", "signal processing" ]
@@ -20,67 +21,47 @@ Some equations use frequency `\( f \)`, while others use angular frequency `\( \
 ## Terminology
 
 <table>
-    <thead>
-        <tr>
-            <th>Term</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody>
-<tr >
-
-<td >\(M\)
-</td>
-
-<td >The number of data points used in a moving average filter. This is called the "size of the window".
-</td>
-</tr>
-<tr >
-
-<td >\(F\)
-</td>
-
-<td >The normalised frequency, units \(cycles/sample\). This is a frequency in the discrete time-domain. Do not confuse with \( f \),, which is a frequency in the continuous time-domain.
-</td>
-</tr>
-<tr >
-
-<td >\(f\)
-</td>
-
-<td >A frequency of a waveform in the continuous time-domain. Do not confuse with \( F \), which is a frequency in the discrete time-domain.
-</td>
-</tr>
-<tr >
-
-<td >\(f_s\)
-</td>
-
-<td >The sample frequency of a waveform, measured in the continuous time-domain. This parameter is used when you want to convert a input waveform frequency from a continuous time-domain frequency to a normalised discrete time-domain frequency (see more here).
-</td>
-</tr>
-<tr >
-
-<td >\( \omega \)
-</td>
-
-<td >The normalised frequency, in units \(radians/sample\).
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(M\)</td>
+      <td>The number of data points used in a moving average filter. This is called the "size of the window".</td>
+    </tr>
+    <tr>
+      <td>\(F\)</td>
+      <td>The normalised frequency, units \(cycles/sample\). This is a frequency in the discrete time-domain. Do not confuse with \( f \),, which is a frequency in the continuous time-domain.</td>
+    </tr>
+    <tr>
+      <td>\(f\)</td>
+      <td>A frequency of a waveform in the continuous time-domain. Do not confuse with \( F \), which is a frequency in the discrete time-domain.</td>
+    </tr>
+    <tr>
+      <td>\(f_s\)</td>
+      <td>The sample frequency of a waveform, measured in the continuous time-domain. This parameter is used when you want to convert a input waveform frequency from a continuous time-domain frequency to a normalised discrete time-domain frequency (see more here).</td>
+    </tr>
+    <tr>
+      <td>\( \omega \)</td>
+      <td>The normalised frequency, in units \(radians/sample\).</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Converting From A Continuous Time-Domain To Normalised Discrete Time-Domain Frequency
 
 Remember, to map a continuous time-domain frequency to the discrete time-domain, use the following equation:
 
-<div>$$ F = \frac{f}{f_s} $$</div>
+<p>$$ F = \frac{f}{f_s} $$</p>
 
 <p class="centered">
-    where:<br>
-    \( F \) is the frequency in the discrete time-domain, in \(cycles/sample\)<br>
-    \( f \) is the frequency in the continuous time-domain, in \(Hz\) (or \(cycles/second\))<br>
-    \( f_s \) is the sample frequency in the continuous time-domain, in \(Hz\) (or \(samples/second\))<br>
+    where:<br />
+    \( F \) is the frequency in the discrete time-domain, in \(cycles/sample\)<br />
+    \( f \) is the frequency in the continuous time-domain, in \(Hz\) (or \(cycles/second\))<br />
+    \( f_s \) is the sample frequency in the continuous time-domain, in \(Hz\) (or \(samples/second\))<br />
 </p>
 
 ## Simple Moving Average Filter (aka Sliding Window Filter)
@@ -89,26 +70,26 @@ The simple moving average filter is one of the most commonly used digital filter
 
 A left-hand simple moving average filter can be represented by:
 
-<div>$$ y[i] = \frac{1}{M} \sum\limits_{j=0}^{M-1} x[i+j] $$</div>
+<p>$$ y[i] = \frac{1}{M} \sum\limits_{j=0}^{M-1} x[i+j] $$</p>
 
 <p class="centered">
-    where:<br>
-    \( x \) = the input signal<br>
-    \( y \) = the output signal<br>
-    \( M \) = the number of points in the average (the width of the window)<br>
+    where:<br/>
+    \( x \) = the input signal<br/>
+    \( y \) = the output signal<br/>
+    \( M \) = the number of points in the average (the width of the window)<br/>
  </p>
 
 For example, for the points `\( x[0] = 2, x[1] = 6, x[2] = 9, x[3] = 4, x[4] = 3 \)`, with a windows size of `\(M = 3\)`, then `\( y[1] = \frac{6 + 9 + 4}{3} \)`. Left-handed filters of this type can be calculated in real-time (`\(y[i]\)` can be found as soon as `\(x[i]\)` is known).
 
 The window can also be centered aroung the output signal (a symmetric moving average filter), with the following adjustment of the limits:
 
-<div>$$ y[i] = \frac{1}{M} \sum\limits_{j=-(M-1)/2}^{+(M-1)/2} x[i+j] $$</div>
+<p>$$ y[i] = \frac{1}{M} \sum\limits_{j=-(M-1)/2}^{+(M-1)/2} x[i+j] $$</p>
 
 Symmetric simple moving averages require `\(N\)` to be odd, so that there is an equal number of points either side. One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore is not real time.
 
 When treating a simple moving average filter as a FIR, the coefficients are all equal. The order of the filter is 1 less than the value you divide each value by. The coefficients are given by the following equation:
 
-<div>$$b_i = \frac{1}{N + 1}$$</div>
+<p>$$b_i = \frac{1}{N + 1}$$</p>
 
 A simple moving average filter can also be seen as a convolution between the input signal and a rectangular pulse whose area is 1.
 
@@ -116,7 +97,7 @@ A simple moving average filter can also be seen as a convolution between the inp
 
 The frequency response for a simple moving average filter is given by:
 
-<div>$$ |H(f)| = \frac{1}{M}\left|\frac{sin(pi F M)}{sin(\pi F)}\right| $$</div>
+<p>$$ |H(f)| = \frac{1}{M}\left|\frac{sin(pi F M)}{sin(\pi F)}\right| $$</p>
 
 <p class="centered">
     where:<br>
@@ -131,7 +112,7 @@ To avoid division by zero, use `\( H(0) = M \)`. The magnitude follows the shape
 
 Or it can be written as:
 
-<div>$$ H(\omega) = \frac{1}{M}(\frac{1 - e^{-j\omega L}}{1 - e^{-j\omega}}) $$</div>
+<p>$$ H(\omega) = \frac{1}{M}(\frac{1 - e^{-j\omega L}}{1 - e^{-j\omega}}) $$</p>
 
 <p class="centered">
     wher`e:<br>
@@ -142,24 +123,21 @@ Or it can be written as:
 
 The following code shows how to create a `\( n = 1 \)` simple moving average filter, using the Math.Net Neodym C# library.
 
-```    
+```c#
 MathNet.SignalProcessing.Filter.FIR.OnlineFirFilter filter;
 
 // Create a simple n=1 averaging filter
-private void CreateFilter(int numberOfCo)
-{
+private void CreateFilter(int numberOfCo) {
     // Create coefficients
     IList<double> filterCo = new List<double>();
-    for (int x = 0; x < numberOfCo; x++)
-        {
-            filterCo.Add(1.0/(double)numberOfCo);
-        }
+    for (int x = 0; x < numberOfCo; x++) {
+        filterCo.Add(1.0/(double)numberOfCo);
+    }
     // Instantiate filter
     filter = new MathNet.SignalProcessing.Filter.FIR.OnlineFirFilter(filterCo);
 }
 
-private double RunFilter(double input)
-{
+private double RunFilter(double input) {
     // Run filter
     return filter.ProcessSample(input);
 }
@@ -181,7 +159,7 @@ It is identical to the **discrete first-order low-pass filter**.
 
 The equation for an exponential moving average filter is:
 
-<div>$$ y_n = y_{n-1} \cdot (1 - \alpha) + x_n \cdot \alpha $$</div>
+<p>$$ y_n = y_{n-1} \cdot (1 - \alpha) + x_n \cdot \alpha $$</p>
 
 <p class="centered">
     where:<br>

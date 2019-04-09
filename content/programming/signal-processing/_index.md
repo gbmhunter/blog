@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-01-08 01:48:21+00:00
+date: 2013-01-08
 draft: false
 title: Signal Processing
 type: page
-url: /programming/signal-processing
 ---
 
 ## Overview
@@ -13,7 +12,7 @@ The [Math.Net project](http://www.mathdotnet.com/) contains the ["Neodym" librar
 
 To fix this, I needed to use sn.exe (a tool provided with Visual Studio and the Windows SDK, download either to use it), and to use the follow commands to skip strong name validation.
 
-```    
+```text
 C:\project\mathnet-neodym\build\Debug>sn.exe -Vr *
 ```    
 
@@ -58,7 +57,7 @@ I have written a C library, [LocalExtrema](https://github.com/gbmhunter/LocalExt
 
 Correlation is the measure of "likeness" between sets of data. The correlation coefficient tells you how well the two sets of data match. The Pearson's correlation coefficient is given by:
 
-<div>$$r_{xy} = \frac{ \sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})} {\sqrt{ \sum_{i=1}^{n} (X_i - \bar{X})^2} \sqrt{ \sum_{i=1}^{n} (Y_i - \bar{Y})^2 }}$$</div>
+<p>$$r_{xy} = \frac{ \sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y})} {\sqrt{ \sum_{i=1}^{n} (X_i - \bar{X})^2} \sqrt{ \sum_{i=1}^{n} (Y_i - \bar{Y})^2 }}$$</p>
 
 <p class="centered">
     wher`e:<br>
