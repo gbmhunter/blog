@@ -5,20 +5,20 @@ description: "A review of popular serialization formats (CSV, JSON, YAML, e.t.c)
 draft: false
 images: [ "/programming/serialization-formats/a-comparison-of-serialization-formats/serialization-formats-conversion-times-10k-python.png" ]
 lastmod: 2019-04-07
-tags: [ "serialization", "format", "comparison", "CSV", "JSON", "protobuf", "TOML", "XML", "YAML", "file size", "speed", "benchmark", "review", "Python", "C++" ]
+tags: [ "serialization", "format", "comparison", "CSV", "JSON", "Protobuf", "TOML", "XML", "YAML", "file size", "speed", "benchmark", "review", "Python", "C++" ]
 title: "A Comparison Of Serialization Formats"
 type: page
 ---
 
 ## Overview
 
-Went you want to save, send or receive data passed around in applications, there are many different serialization formats to choose from. What is the best choice for your use case? This page aims to help answer this question by comparing some of the most popular serialization formats used today.
+When you want to save, send or receive data passed around in applications, there are many different serialization formats to choose from. What is the best choice for your use case? This page aims to help answer this question by comparing some of the most popular serialization formats used today.
 
 The following serialization formats will be reviewed:
 
 * CSV
 * JSON
-* Protobuf
+* Protobuf (Protocol Buffers)
 * TOML
 * XML
 * YAML
@@ -243,7 +243,7 @@ XML is a human-readable serialization protocol. A well known XML-like format is 
 
 One disadvantage of XML is it's verbosity. It's descriptive end tags which require you to re-type the name of the element that is being closed adds to the byte count of XML data.
 
-It is well standarized, with plenty of tooling available to generate XML and validate it with schemas. The specification for XML can be found at <https://www.w3.org/TR/xml/>.
+It is well standardized, with plenty of tooling available to generate XML and validate it with schemas. The specification for XML can be found at <https://www.w3.org/TR/xml/>.
 
 XML supports both standard (DOM style) parsers and streaming (SAX style) parsers.
 
@@ -410,7 +410,7 @@ yaml     | 0.48                    | 0.55                      | 6.84           
 
 It is also interesting to see how the serializations respond to a change in the data size. If the size of the data doubles, does it take twice as long to read/write (linear response), or does it behave differently (e.g. quadratic, `\(log(n)\)`, ...)?. This is called the complexity of the serialization algorithm. To test this, I increased the `people` array from 10,000 to 100,000 (increased by a factor of 10). This was the result...
 
-Format   | C++ Deserialization (s) | C++ Serialization (s)     | Python Deserialization | Python Serialization
+Format   | C++ Deserialization (s) | C++ Serialization (s)     | Python Deserialization (s) | Python Serialization (s)
 ---------|-------------------------|---------------------------|------------------------|-----------------------
 csv      | 0.26                    | 0.18                      | 0.22                   | 0.38
 json     | 1.53                    | 1.50                      | 0.20                   | 1.59
@@ -447,8 +447,9 @@ Being the only binary, non-human readable format that was compared, it's with no
 ## Other Formats That Weren't Considered
 
 * [Apache Avro](http://avro.apache.org/): A binary-based data serialization standard by Apache.
-* <a href="http://bsonspec.org/">BSON</a>. A binary format popularized by MongoDB that is based on JSON.
-* <a href="https://capnproto.org/">CAP'N PROTO</a>. A "cerealization protocol"...see their website for more details :-D.
+* [BSON](http://bsonspec.org/). A binary format popularized by MongoDB that is based on JSON.
+* [CAN'N PROTO](https://capnproto.org/). A "cerealization protocol"...:-D. See their website for more details.
+* [JSON5](https://github.com/json5/json5). A superset of JSON which allows for multi-line strings, comments, single-quote string delimiters, and more.
 * [HOCON](https://github.com/lightbend/config): A serialization format that seems popular in Java.
-* <a href="https://msgpack.org/index.html">MessagePack</a>. This looks similar to protobuf (uses binary encoding). Has libraries for a wide variety of languages.
+* [MessagePack](https://msgpack.org/index.html). This looks similar to protobuf (uses binary encoding). Has libraries for a wide variety of languages.
 * [XDR](https://tools.ietf.org/html/rfc4506) (RFC4506): The _External Data Representation_ (XDR) is a well-used but specialized (i.e. the average developer does not use this protocol on a day-to-day basis) serialization protocol.
