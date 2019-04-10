@@ -1,0 +1,45 @@
+
+---
+author: gbmhunter
+categories: [ "Programming", "Virtual Machines And Containers", "Docker" ]
+date: 2018-04-09
+draft: false
+lastmod: 2018-04-09
+tags: [ "Docker", "volumes", "space", "AUFS", "storage", "clean-up", "/var/lib/docker/" ]
+title: Cleaning Up After Docker
+type: page
+---
+
+## Overview
+
+Docker can end up eating a large amount of hard drive space. Here are some ways of cleaning up after Docker...
+
+## System Prune
+
+Docker provides a command to remove dangling images, stopped containers, networks that are not used by any containers, and build cache:
+
+```bash
+$ docker system prune
+```
+
+For an even more agressive prune, you can add the `all` and `force` flags (which it easy to remember due to a rude nmemonic with the acronym `af`):
+
+```bash
+$ docker system prune -af
+```
+
+When `-af` is provided, **all unused images will be removed** (not just dangling ones), and there will be no confirmation prompt.
+
+## When All Else Fails
+
+Sometimes, the above methods just won't clean up enough space. Docker stores some of the build data in the directory `/var/lib/docker`. This includes container rootfs layers if docker is using the _AUFS_ storage driver (which is the default driver). This directory can get quite large quite quickly, I have seen 50-100GB directories after 6 months of regular docker usage on the machine.
+
+> Looks like Docker, Inc. have some contracts with computer data storage manufacturers.
+
+Below is a brute force method to wipe out this directory, which will delete all containers, images and volumes. This will not ruin your Docker installation as Docker does not store any critical executables or configuration in this directory.
+
+```bash
+$ sudo service docker start
+$ sudo rm -rf /var/lib/docker/
+$ sudo service docker stop
+```

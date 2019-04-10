@@ -26,6 +26,6 @@ $ docker run -it -v my-volume:/root container
 Any existing files in <code>/root/</code> will be shadowed by this mount. This means that you cannot expose pre-existing files that reside in the container to the root system using this method.
 {{% /note %}}
 
-<h2>Using A Dockerfile</h2>
+## Using A Dockerfile
 
-<p>Be careful with your placement of the `VOLUME` command inside a Dockerfile, as it essentially creates an immutable folder structure from that point forwards. Any modifications to the mount directory (or any sub-directory) will not be present when you create a container from the built image.</p>
+Be careful with your placement of the `VOLUME` command inside a Dockerfile, as it essentially creates an immutable folder structure from that point forwards. Any modifications to the mount directory (or any sub-directory) will not be present when you create a container from the built image.
