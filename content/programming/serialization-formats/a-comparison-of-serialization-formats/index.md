@@ -73,7 +73,7 @@ id, name, age, address
             <td>Data Structure Support</td><td>3/10</td>    <td>CSV only supports tabular/array-like data. It does not support dictionary/map-like data, nor relational data.</td>
         </tr>
         <tr class="ok">
-            <td>Speed</td>              <td>8/10</td>       <td>CSV is very fast to serialize/deserialize. See the <a href="#speed-comparison-benchmarking">Speed Comparison section</a> for more info.</td>
+            <td>Speed</td>              <td>10/10</td>       <td>CSV is very fast to serialize/deserialize. When serializing/deserializing 10,000 small objects, CSV beat even Protobuf in Python, and was a close second to Protobuf in C++. See the <a href="#speed-comparison-benchmarking">Speed Comparison section</a> for more info.</td>
         </tr>
         <tr class="error">
             <td>Standardization</td>    <td>3/10</td>       <td>CSV is not well standardized.</td>
@@ -161,7 +161,7 @@ Protobuf is a binary serialization protocol developed by Google. Since it serial
     </thead>
     <tbody>
         <tr class="ok">
-            <td>Brevity</td>            <td>9/10</td>       <td>Protobuf, being a binary format, is very concise. Would get 10/10 if it implemented some type of encoding scheme.</td>
+            <td>Brevity</td>            <td>9/10</td>       <td>Protobuf, being a binary format, is very concise. It also uses variable-bit encoding for data types such as integers to reduce the number of bytes when the numbers are small. Would get 10/10 if it implemented some type of encoding scheme.</td>
         </tr>
         <tr class="error">
             <td>Human Readability</td>  <td>1/10</td>       <td>Protobuf is not designed to be human-readable.</td>
@@ -220,8 +220,8 @@ age = 56.78
         <tr class="ok">
             <td>Human Readability</td>  <td>9/10</td>       <td>One of TOML's primary goals was to be very easy to understand.</td>
         </tr>
-        <tr class="ok">
-            <td>Language Support</td>   <td>7/10</td>       <td>TOML is a relatively new serialization format and does not have the same number of libraries as say JSON, CSV or XML for various programming languages.</td>
+        <tr class="warning">
+            <td>Language Support</td>   <td>6/10</td>       <td>TOML is a relatively new serialization format and does not have the same number of libraries as say JSON, CSV or XML for various programming languages.</td>
         </tr>
         <tr class="ok">
             <td>Data Type Support</td>  <td>9/10</td>       <td>TOML does not support references like YAML does (probably because TOML aims to be simple).</td>
@@ -243,7 +243,9 @@ XML is a human-readable serialization protocol. A well known XML-like format is 
 
 One disadvantage of XML is it's verbosity. It's descriptive end tags which require you to re-type the name of the element that is being closed adds to the byte count of XML data.
 
-The specification for XML can be found at <https://www.w3.org/TR/xml/>.
+It is well standarized, with plenty of tooling available to generate XML and validate it with schemas. The specification for XML can be found at <https://www.w3.org/TR/xml/>.
+
+XML supports both standard (DOM style) parsers and streaming (SAX style) parsers.
 
 ### Example
 
@@ -444,6 +446,9 @@ Being the only binary, non-human readable format that was compared, it's with no
 
 ## Other Formats That Weren't Considered
 
+* [Apache Avro](http://avro.apache.org/): A binary-based data serialization standard by Apache.
 * <a href="http://bsonspec.org/">BSON</a>. A binary format popularized by MongoDB that is based on JSON.
-* <a href="https://capnproto.org/">CAP'N PROTO</a>. A "cerealization protocol"...see their website for more details :-D. 
+* <a href="https://capnproto.org/">CAP'N PROTO</a>. A "cerealization protocol"...see their website for more details :-D.
+* [HOCON](https://github.com/lightbend/config): A serialization format that seems popular in Java.
 * <a href="https://msgpack.org/index.html">MessagePack</a>. This looks similar to protobuf (uses binary encoding). Has libraries for a wide variety of languages.
+* [XDR](https://tools.ietf.org/html/rfc4506) (RFC4506): The _External Data Representation_ (XDR) is a well-used but specialized (i.e. the average developer does not use this protocol on a day-to-day basis) serialization protocol.
