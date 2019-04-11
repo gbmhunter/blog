@@ -35,7 +35,7 @@ In each review section, a score between 1-3 is highlighted <span class="error">r
 
 CSV is well suited to storing large amounts of tabulated data in a human-readable format. It is not well suited to storing objects or hash table like data structures (unlike every other serialization format that is reviewed here).
 
-CSV is not very well standardized. [RFC 4180](https://tools.ietf.org/html/rfc4180) was an attempt to standardize the format, however the name "CSV" may refer to files which are delimited by non-comma characters such as spaces, tabs or semi-colons. In fact, it used to be called **Delimiter Separated Values (DSV)**, although unfortunately CSV seems like the more prevalent term these days.
+CSV is not very well standardized. [RFC 4180](https://tools.ietf.org/html/rfc4180) was an attempt to standardize the format, however the name "CSV" may refer to files which are delimited by non-comma characters such as spaces, tabs or semi-colons. In fact, it used to be called **Delimiter Separated Values (DSV)**, although unfortunately CSV seems like the more prevalent term these days. And the format of the data between the delimiters is completely user defined (e.g. there is no specified way of defining dates).
 
 The CSV format allows an optional __header line__ appearing as the first line in the file. If present, it contains field names for each value in a record. This header line is very useful the labelling the data and **should almost always be present**.
 
@@ -144,6 +144,8 @@ It is important to note that the JSON syntax does not support comments! This can
 
 Protobuf is a binary serialization protocol developed by Google. Since it serializes to binary, it is not human readable (although you can still pick out strings when viewing the file as ASCII text, see the example below).
 
+The types of data that Protobuf can contain are well defined and include common types such as strings, integers, floats and dates.
+
 ### Example
 
 ```
@@ -224,7 +226,7 @@ age = 56.78
             <td>Language Support</td>   <td>6/10</td>       <td>TOML is a relatively new serialization format and does not have the same number of libraries as say JSON, CSV or XML for various programming languages.</td>
         </tr>
         <tr class="ok">
-            <td>Data Type Support</td>  <td>9/10</td>       <td>TOML does not support references like YAML does (probably because TOML aims to be simple).</td>
+            <td>Data Type Support</td>  <td>9/10</td>       <td>TOML supports most common types of data including strings, integers, floats and dates. TOML does not support references like YAML does (probably because TOML aims to be simple).</td>
         </tr>
         <tr class="warning">
             <td>Speed</td>              <td>6/10</td>       <td>TOML is on the slower end of the spectrum, but is faster than YAML. See the <a href="#speed-comparison-benchmarking">Speed Comparison section</a> for more info.</td>
@@ -332,7 +334,7 @@ YAML is a strict super-set of JSON, which means you can parse JSON with a YAML p
             <td>Language Support</td>   <td>6/10</td>       <td>YAML is popular enough for there to be libraries for most popular languages, but it is not as ubiquitous as CSV or JSON.</td>
         </tr>
         <tr class="ok">
-            <td>Data Type Support</td>  <td>10/10</td>       <td>YAML even supports references (relational data) and external data!</td>
+            <td>Data Type Support</td>  <td>10/10</td>       <td>YAML supports most common types of data including strings, integers, floats and dates. YAML even supports references (relational data) and external data!</td>
         </tr>
         <tr class="error">
             <td>Speed</td>              <td>2/10</td>       <td>YAML showed the slowest serialization/deserialization runtimes out of any format I tested, in both C++ and Python (see the <a href="#speed-comparison-benchmarking">Speed Comparison section</a>) for more info).</td>
