@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2014-11-04 09:29:10+00:00
+date: 2014-11-04
 draft: false
 title: .bss Section
 type: page
-url: /programming/languages/c/bss-section
 ---
 
 ## Overview

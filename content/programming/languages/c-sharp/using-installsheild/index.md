@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-07-31 00:23:55+00:00
+date: 2013-07-31
 draft: false
 title: Using InstallSheild
 type: page
@@ -42,64 +42,38 @@ To change this so that newer versions will update or replace files from the olde
 
 You can build a release from the command line by using ISCmdBld.exe for both Windows Installer and InstallScript projects.
 
-
 ## Non-optional Options
 
 <table>
-<tbody>
-<tr >
-
-<td >-p "path"
-</td>
-
-<td >Path to the .ism file you wish to build.
-</td>
-</tr>
-<tr >
-
-<td >-r "name"
-</td>
-
-<td >The name of the release.
-</td>
-</tr>
-<tr >
-
-<td >-a "build xxx"
-</td>
-
-<td >The build configuration.
-</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td><code>-p "path"</code></td>
+      <td>Path to the .ism file you wish to build.</td>
+    </tr>
+    <tr>
+      <td><code>-r "name"</code></td>
+      <td>The name of the release.</td>
+    </tr>
+    <tr>
+      <td><code>-a "build xxx"</code></td>
+      <td>The build configuration.</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Optional Options
 
 <table>
-<tbody >
-<tr >
-
-<td >-y "1.0.5"
-</td>
-
-<td >Specify the version number. This is really helpful if you wish to increment the build number automatically!
-</td>
-</tr>
-<tr >
-
-<td >
-</td>
-
-<td >
-</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td><code>-y "1.0.5"</code></td>
+      <td>Specify the version number. This is really helpful if you wish to increment the build number automatically!
+    </td>
+    </tr>
+  </tbody>
 </table>
 
-
 ## Launching Program On Install
-
 
 By default, if you select the option to allow the user to launch program on install, the checkbox will not work.
 

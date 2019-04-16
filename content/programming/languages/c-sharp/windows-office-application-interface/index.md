@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-01-08 04:37:05+00:00
+date: 2012-01-08
 draft: false
 title: Windows Office Application Interface
 type: page
@@ -12,7 +12,9 @@ A good tutorial on the Word API can be found [here](http://msdn.microsoft.com/e
 
 ## Tutorial
 
-{{< figure src="/images/programming-misc/add-microsoft-word-object-library-reference.png" caption="Adding the Microsoft Word x.x (14.0 in this case) Object Library to a C# project."  width="320px" >}} To create a word application (the first steps no matter what your doing) is to add the Microsoft Word x.x Object Library reference to your C# project. Right click on your project in the solution explorer, click 'Add Reference', click the 'COM' tab, and then select Microsoft Word x.x Object Library from the list as shown in the picture. Click 'OK' to add it to your project. Note that I was using Microsoft Office 2010 and the Microsoft Word 14.0 Object Library when writing this tutorial, so features/processes could be slightly different for other versions.
+{{< figure src="/images/programming-misc/add-microsoft-word-object-library-reference.png" caption="Adding the Microsoft Word x.x (14.0 in this case) Object Library to a C# project."  width="320px" >}}
+
+To create a word application (the first steps no matter what your doing) is to add the Microsoft Word x.x Object Library reference to your C# project. Right click on your project in the solution explorer, click 'Add Reference', click the 'COM' tab, and then select Microsoft Word x.x Object Library from the list as shown in the picture. Click 'OK' to add it to your project. Note that I was using Microsoft Office 2010 and the Microsoft Word 14.0 Object Library when writing this tutorial, so features/processes could be slightly different for other versions.
 
 Now that the reference has been added, add the following use code to make typing easier
 

@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-05-31 00:42:25+00:00
+date: 2013-05-31
 draft: false
 title: Detecting Key Presses
 type: page
@@ -21,18 +21,15 @@ TextBox tb = new TextBox();
 tb.KeyDown += new KeyEventHandler(tb_KeyDown);
 
 // The event handler
-private void tb_KeyDown(object sender, KeyEventArgs e)
-{
-    if (e.KeyCode == Keys.Enter)
-    {
-            //Enter key is down
+private void tb_KeyDown(object sender, KeyEventArgs e) {
+    if (e.KeyCode == Keys.Enter) {
+        //Enter key is down
 
-            //Capture the text
-            if (sender is TextBox)
-            {
-                TextBox txb = (TextBox)sender;
-                MessageBox.Show(txb.Text);
-            }
+        //Capture the text
+        if (sender is TextBox) {
+            TextBox txb = (TextBox)sender;
+            MessageBox.Show(txb.Text);
+        }
     }
 }
 ```
@@ -53,10 +50,8 @@ TextBox tb = new TextBox();
 // Assign a new event handler
 tb.KeyDown += new KeyEventHandler(tb_KeyDown);
 
-private void tb_KeyDown(object sender, KeyEventArgs e)
-{
-    if (e.Key == Key.Enter)
-    {
+private void tb_KeyDown(object sender, KeyEventArgs e) {
+    if (e.Key == Key.Enter) {
         e.Handled = true;
         MessageBox.Show("You pressed Enter!");
     }

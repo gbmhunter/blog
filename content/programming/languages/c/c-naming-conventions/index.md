@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2014-07-17 21:31:18+00:00
+date: 2014-07-17
 draft: false
 title: C Naming Conventions
 type: page
-url: /programming/languages/c/c-naming-conventions
 ---
 
 ## Overview
@@ -16,8 +15,7 @@ This page explains my preferred naming convention style for C code.
 All local variables (variables within a function) begin with a lower-case letter and use camel-case, including function pointers. Only the first letter in an acronym is capitalised, e.g.
 
 ```c
-void MyFunction()
-{
+void MyFunction() {
     uint8_t activeGpsAnt;
 }
 ```    
@@ -27,8 +25,7 @@ All file-level and global variable use the same syntax except with an underscore
 ```c    
 uint8_t _activeGpsAnt;
 
-void MyFunction()
-{
+void MyFunction() {
     // code here...
 }
 ```    
@@ -43,7 +40,7 @@ void Gps_GetLocation();
 
 ## Typedefs
 
-Typedefs aways end in _t. The helps the reader instantly distinguish a data type from anything else, and also serves to distinguish user defined data types (e.g. uint8_t, myType_t) from system data types (e.g. char, double, int).
+Typedefs aways end in `_t`. The helps the reader instantly distinguish a data type from anything else, and also serves to distinguish user defined data types (e.g. `uint8_t`, `myType_t`) from system data types (e.g. `char`, `double`, `int`).
 
 ## Acronyms
 

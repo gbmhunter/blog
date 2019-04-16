@@ -18,6 +18,6 @@ $str1 = ", world."
 $singleQuotesStr = 'Hello $str1'
 $doubleQuoteStr = "Hello $str1"
 
-Write-Host $singleQuotesStr # Prints "Hello $str1", no interpolation occured
-Write-Host $doubleQuotesStr # Prints "Hello, world.", interpolation occured
+Write-Host $singleQuotesStr # Prints "Hello $str1", no interpolation occurred
+Write-Host $doubleQuotesStr # Prints "Hello, world.", interpolation occurred
 ```

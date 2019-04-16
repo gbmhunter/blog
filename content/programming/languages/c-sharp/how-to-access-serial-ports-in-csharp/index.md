@@ -1,12 +1,10 @@
 ---
 author: gbmhunter
-date: 2013-04-11 04:15:47+00:00
+date: 2013-04-11
 draft: false
 title: How To Access Serial Ports In C#
 type: page
-url: /programming/languages/c-sharp/how-to-access-serial-ports-in-c
 ---
-
 
 The pre-installed Visual Studio C# class for manipulating serial ports in C# is found in the following namespace:
 
@@ -23,7 +21,7 @@ To get a string list of the current active COM ports on the computer, and then p
 ComboBoxComPorts.ItemsSource = System.IO.Ports.SerialPort.GetPortNames();
 ```
 
-The SerialPort class contains an handy enumeration of commonly available baud rates. The following code shows how to populate a combo box with these values.
+The `SerialPort` class contains an handy enumeration of commonly available baud rates. The following code shows how to populate a combo box with these values.
 
 ```c# 
 // An enumeration of common baud rates is used to populate
@@ -32,7 +30,7 @@ foreach (int i in Enum.GetValues(typeof(SerialPort.BaudRate)))
     ComboBoxBaudRate.Items.Add(i);
 ```
 
-To set up the SerialPort class for use, you have to set the parameters shown in the code below.
+To set up the `SerialPort` class for use, you have to set the parameters shown in the code below.
 
 ```c# 
 SerialPort serialPort;
@@ -43,8 +41,7 @@ public void ComPortSetup(
     string portName,
     StopBits stopBits,
     Parity parity,
-    int readBufferSize)
-{
+    int readBufferSize) {
     this.serialPort = new SerialPort();
     // Set up serial comms
     this.serialPort.BaudRate = baudRate;
@@ -61,16 +58,12 @@ Then you can use code like shown below to open and close the serial port for use
 ```c#
 // Opens the port. If already open, will close first.
 // If null, returns false.
-public bool OpenPort()
-{
-    try
-    {
+public bool OpenPort() {
+    try {
         if (this.IsOpen())
             this.CloseAndDisposePort();
         serialPort.Open();
-    }
-    catch (Exception e)
-    {
+    } catch (Exception e) {
         MessageBox.Show(Convert.ToString(e));
         return false;
     }
@@ -82,8 +75,7 @@ public bool OpenPort()
 /// Checks whether serial port is open. 
 /// </summary>
 /// <returns>Returns true is serial port is open, returns false if serial port is closed or null.</returns>
-public bool IsOpen()
-{
+public bool IsOpen() {
     if (serialPort != null)
         return serialPort.IsOpen;
     else
@@ -93,8 +85,7 @@ public bool IsOpen()
 /// <summary>
 /// Closes and disposes of serial port.
 /// </summary>
-public void CloseAndDisposePort()
-{
+public void CloseAndDisposePort() {
     serialPort.Close();
     serialPort.Dispose();
 }

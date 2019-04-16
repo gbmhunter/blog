@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-04-11 03:58:48+00:00
+date: 2013-04-11
 draft: false
 title: Threading
 type: page
@@ -14,8 +14,7 @@ As long as the class you are calling supports the `Dispatcher` object (all UI cl
 
 ```c#    
 // Need to do this because called from another thread
-_mainWindowHndle.Dispatcher.BeginInvoke(new Action(delegate() 
-    { 
+_mainWindowHndle.Dispatcher.BeginInvoke(new Action(delegate() { 
         _mainWindowHndle.WriteToConsole("Writing message from different thread!"); 
     }));
 ```
@@ -53,7 +52,7 @@ void MethodUsedInMultipleThreads() {
 
 ## Queues
 
-Queues are a good way of passing information between two asynchronous threads. The .NET language supports queues with the System.Collections.Generic.Queue<T>  class.
+Queues are a good way of passing information between two asynchronous threads. The .NET language supports queues with the `System.Collections.Generic.Queue<T>` class.
 
 The actual objects that are queued can be defined as any standard class. To be thread-safe, reading and writing from the queue (enqueue and dequeue respectively), requires the use of a lock so you don't happen to be half way through writing to it when you start to read from it.
 

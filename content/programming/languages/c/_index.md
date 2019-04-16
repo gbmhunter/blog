@@ -17,19 +17,17 @@ Endless loops are usually used in embedded programming for the main function. Th
 
 ```c
 // Endless loop method one (1 could be replaced by a similar constant, such as true)
-while(1)
-{
+while(1) {
     // Put code here
 }
 
 // Endless loop method two
-for(;;)
-{
+for(;;) {
     // Put code here
 }
 
 // A code trap is an endless loop with no executable code inside it.
-// It causes the processor to halt indefintely at the statement
+// It causes the processor to halt indefinitely at the statement
 // and is good for debugging. It is commonly written like this
 while(1);
 // or this
@@ -40,7 +38,9 @@ In an embedded operating system based environment, there may be more than one en
 
 ## Coding Standards
 
-The Joint Strike Fighter C++ Coding Standards (semi-applicable to C also). Created by Lockhead Martin. A bit of a hefty read (I would never read this cover-to-cover unless I had too), but there is some good stuff in there. [scribd id=3969122 key=key-2kngufjhmo9zcs93g4mf mode=list] There are programs out there which format and tidy up your code. One such example is AStyle (or Artistic Stylle), a open-source program which is a
+The Joint Strike Fighter C++ Coding Standards (semi-applicable to C also). Created by Lockheed Martin. A bit of a hefty read (I would never read this cover-to-cover unless I had too), but there is some good stuff in there. It can be viewed [here](/programming/languages/c/c-naming-conventions/lockheed-martin-joint-strike-fighter-air-vehicle-cpp-coding-standards.pdf).
+
+There are programs out there which format and tidy up your code. One such example is AStyle (or Artistic Style), a open-source program which is a:
 
 <blockquote>...source code indenter, formatter, and beautifier for the C, C++, C# and Java programming languages</blockquote>
 

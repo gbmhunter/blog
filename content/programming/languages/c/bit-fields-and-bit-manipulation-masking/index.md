@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2016-02-12 05:58:03+00:00
+date: 2016-02-12
 draft: false
 title: Bit Fields And Bit Manipulation/Masking
 type: page

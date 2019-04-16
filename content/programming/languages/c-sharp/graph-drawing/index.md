@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-04-11 04:05:03+00:00
+date: 2013-04-11
 draft: false
 title: Graph Drawing
 type: page
-url: /programming/languages/c-sharp/graph-drawing
 ---
 
 ## NPlot
@@ -17,7 +16,7 @@ url: /programming/languages/c-sharp/graph-drawing
 * Data Binding Support: ?
 * Tutorials: 1/5
 * User Base: 1/5
-* Licnese/Price: Open Source
+* License/Price: Open Source
 
 Graphing program that hasn't had much development recently, but still relatively powerful. Nice interactive scaling/scrolling features of graphs, making it easy to look at lots of data on one chart! Owing to the age and little popularity for this control, tutorials and help are severely limited.
 
@@ -31,7 +30,7 @@ External Link: [http://netcontrols.org/nplot/wiki/](http://netcontrols.org/nplo
 * Data Binding Support: 5/5
 * Tutorials: 1/5
 * User Base: 2/5
-* Licnese/Price: Open Source
+* License/Price: Open Source
 * NuGet Supported: Yes
 
 External Link: [http://oxyplot.codeplex.com/](http://oxyplot.codeplex.com/)
@@ -56,10 +55,10 @@ ls.smooth = true;
 * Supported Platforms: .NET (WinForms, WPF)
 * Dimension Support : 2D
 * User Control Interface:
-* Data Binding Support: Databse, XML, DataSet, List, Array
+* Data Binding Support: Database, XML, DataSet, List, Array
 * Tutorials: 5/5
 * User Base: 4/5
-* Licnese/Price: Yearly License Fee
+* License/Price: Yearly License Fee
 
 Although slightly expensive, this is awesome graph/charting software (and not limited to just graphs either).
 
@@ -67,11 +66,8 @@ External Link: [http://www.telerik.com/products/winforms.aspx](http://www.teler
 
 ### Some QuickStart RadChart Examples
 
-_(click on any code example to expand)_
-
 ```c#    
-private void DrawInstantaneousGraph(RadChart radChart)
-{
+private void DrawInstantaneousGraph(RadChart radChart) {
     radChart.ChartTitle.TextBlock.Text = "Instantanious CDC Values";
 
     // Set-up bar chart
@@ -96,8 +92,7 @@ private void DrawInstantaneousGraph(RadChart radChart)
     // Get the last datarow from the dataTable
     DataRow dataRow0 = serialStreamDecoder1.dataTable1.Rows.Find(serialStreamDecoder1.dataTable1.Rows.Count - 1);
 
-    for (int i = 0; i < dataNames.Count(); i++)
-    {
+    for (int i = 0; i < dataNames.Count(); i++) {
         ChartSeriesItem chartSeriesItem = new ChartSeriesItem();
         // Increment x to spread bars across the graph (otherwise they will be
         // piled ontop of one-another)
@@ -134,11 +129,8 @@ External Link: [http://sourceforge.net/projects/zedgraph/](http://sourceforge.n
 
 ### Some QuickStart ZedGraph Examples
 
-_(click on any code example to expand)_
-
 ```c#
-private void DrawInstantaneousGraph(ZedGraph.ZedGraphControl zedGraph, DataRow dataRow, graphRows graphRow)
-{
+private void DrawInstantaneousGraph(ZedGraph.ZedGraphControl zedGraph, DataRow dataRow, graphRows graphRow) {
     zedGraph.GraphPane.Title.Text = "Instantaneous CDC Values";
 
     // Set-up bar chart

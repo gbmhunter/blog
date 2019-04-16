@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-05-23 04:36:06+00:00
+date: 2013-05-23
 draft: false
 title: Closing Your Application
 type: page
-url: /programming/languages/c-sharp/closing-your-application
 ---
 
 ## WPF

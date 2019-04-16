@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-03-18 03:05:25+00:00
+date: 2013-03-18
 draft: false
 title: Redirecting The Command-line To A Text Block
 type: page

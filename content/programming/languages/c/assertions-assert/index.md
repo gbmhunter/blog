@@ -1,7 +1,8 @@
 ---
 author: gbmhunter
-date: 2013-06-17 21:34:52+00:00
+date: 2013-06-17
 draft: false
+tags: [ "C", "programming", "assert", "asserts", "exception", "firmware", "macro", "pre-processor", "GCC" ]
 title: Assertions (assert())
 type: page
 ---
@@ -52,17 +53,17 @@ Even more useful than just having the filename and line number is also printing 
 #define ASSERT(exp) (exp ? : AssertFailed(__FILE__, __LINE__, #exp))
 ```
 
-The function which handled the failed assert() would then have the following declaration:
+The function which handled the failed `assert()` would then have the following declaration:
 
 ```c    
 void AssertRaised(const char * filename, int lineNumber, const char * expression);
 ```
 
-Note that this would **consume much more flash memory** than `__FILE__` alone would, as rarely any of the const char * expression string literals would be the same .
+Note that this would **consume much more flash memory** than `__FILE__` alone would, as rarely any of the `const char *` expression string literals would be the same.
 
 ## Preventing Side-Effects
 
-`assert()` checks **should NOT have any side effects**. That is, they should only do a boolean comparison between two variables/values. You should not embed assignments or function calls inside assert() checks. This is to prevent the logic of your application changing when enabling/disabling assert()'s.
+`assert()` checks **should NOT have any side effects**. That is, they should only do a boolean comparison between two variables/values. You should not embed assignments or function calls inside `assert()` checks. This is to prevent the logic of your application changing when enabling/disabling `assert()`'s.
 
 ```c    
 // This is good
@@ -77,7 +78,7 @@ assert(x = 1);
 assert(myFunc(x));
 ```
 
-The `assert()` macro can be re-written to stop developers from writing assert()'s with side effects. This can be done by **making clever use of the C comma operator** (note that this is not the same as the comma used as a separator between variables in a function call).
+The `assert()` macro can be re-written to stop developers from writing `assert()`'s with side effects. This can be done by **making clever use of the C comma operator** (note that this is not the same as the comma used as a separator between variables in a function call).
 
 ```c    
 #define ASSERT(a)  ((void)(exp), (exp ? : AssertFailed(__FILE__, __LINE__, #exp)))
@@ -95,13 +96,13 @@ Note that I was using gcc-5.1 when I was presented with this error.
 
 ## Complete Code Example
 
-I have written a working assert() example at [http://ideone.com/CSX6wN](http://ideone.com/CSX6wN). It employs all of the functionality described above, including filename and line number reporting, expression printing, and syntax which disallows the use of assignments or function calls within the parameter passed to assert().
+I have written a working `assert()` example at [http://ideone.com/CSX6wN](http://ideone.com/CSX6wN). It employs all of the functionality described above, including filename and line number reporting, expression printing, and syntax which disallows the use of assignments or function calls within the parameter passed to `assert()`.
 
 {{< figure src="/images/2013/06/assert-example-code-on-ide-one.png" width="1060px" caption="Example assert() code on Ideone (http://ideone.com/CSX6wN)."  >}}
 
 ## Assert With printf() Style Messages
 
-The below macro allows you to use assert with printf() style messages:
+The below macro allows you to use assert with `printf()` style messages:
 
 ```c    
 #define LOG_ERROR(M, ...) fprintf(stderr, "[ERROR] (%s:%d) " M "\r\n", __FILE__, __LINE__, ##__VA_ARGS__)
