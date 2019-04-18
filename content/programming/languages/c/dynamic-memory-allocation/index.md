@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-03-18 03:47:49+00:00
+date: 2013-03-18
 draft: false
 title: Dynamic Memory Allocation
 type: page

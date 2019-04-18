@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-07-18 02:05:32+00:00
+date: 2013-07-18
 draft: false
 title: Inserting Assembly Code Into C
 type: page

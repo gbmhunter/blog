@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-07 00:55:55+00:00
+date: 2011-09-07
 draft: false
 title: Header Guards
 type: page
