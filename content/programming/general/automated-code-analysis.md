@@ -8,7 +8,7 @@ type: page
 
 ## Overview
 
-Automated code analysis is when code reviews other code. It can also be called static analysis, as most programs which do this check the source code without actually running the program (which is where the term static comes from).
+Automated code analysis is when code reviews other code. It can also be called static analysis, as most programs which do this check the source code without actually running the program (which is where the term static comes from).
 
 ## Static vs. Dynamic
 
@@ -106,7 +106,7 @@ Flawfinder is written in Python and designed to run on Linux. Author still respo
 
 Frama-C is built in a modular way that is plug-in centric. It is designed to that plugins are easy to write, easy to install, and so that the output of one can easily be the input of another (plugin chaining).
 
-Frama-C supports deductive verification, in where it validates functions by the rules written in the comments above the function. These rules are written in the ANSI/ISO specification language.
+Frama-C supports deductive verification, in where it validates functions by the rules written in the comments above the function. These rules are written in the ANSI/ISO specification language.
 
 ## PC Lint
 
@@ -128,4 +128,4 @@ Frama-C supports deductive verification, in where it validates functions by the
 <td >[http://www.gimpel.com/html/pcl.htm](http://www.gimpel.com/html/pcl.htm)
 </td></tr></tbody></table>
 
-PCLint uses knowledge of certain well-known C/C++ library  functions to improve it's error checking capabilities. May C/C++ library functions have certain pre and post-conditions which must be met (e.g. the fopen() args is never null, assert() never returns, e.t.c). Where possible, PC Lint will check that these are satisfied.
+PCLint uses knowledge of certain well-known C/C++ library  functions to improve it's error checking capabilities. May C/C++ library functions have certain pre and post-conditions which must be met (e.g. the fopen() args is never null, assert() never returns, e.t.c). Where possible, PC Lint will check that these are satisfied.

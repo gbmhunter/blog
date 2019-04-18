@@ -57,7 +57,7 @@ url: /pcb-design/component-packages/sod-123-component-package
 </td></tr><tr >
 <td >Dimensions
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >3D Models
 </td>
@@ -80,4 +80,4 @@ The SOD-123 component package has narrow, flat leads protruding from the base of
 
 {{< figure src="/images/2015/06/sod-123-component-package-dimensions-and-recommended-footprint.png" width="584px" caption="Dimensions and a recommended footprint (land pattern) for the SOD-123 component package."  >}}
 
-Note that the pins in the above diagram are labelled with the diode anode being pin 2, and the cathode being pin 1. This is not what I would consider to be intuitive numbering!
+Note that the pins in the above diagram are labelled with the diode anode being pin 2, and the cathode being pin 1. This is not what I would consider to be intuitive numbering!

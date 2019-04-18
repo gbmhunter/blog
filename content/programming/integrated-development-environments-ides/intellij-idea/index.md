@@ -34,7 +34,7 @@ type: page
         Shift-F10 (Windows)<br />
         Ctrl-R (Mac)
       </td>
-      <td>Runs the last active configuration. Debugging IS NOT enabled.</td>
+      <td>Runs the last active configuration. Debugging IS NOT enabled.</td>
     </tr>
     <tr>
       <td>Run (with debugging)</td>
@@ -52,7 +52,7 @@ type: page
     <tr>
       <td>Step Into</td>
       <td>F7 (Windows)</td>
-      <td>Use to "step into" the current line of code while debugging. This will enter the method (if any) on the current line of code.</td>
+      <td>Use to "step into" the current line of code while debugging. This will enter the method (if any) on the current line of code.</td>
     </tr>
     <tr>
       <td>Resume Program</td>
@@ -70,12 +70,12 @@ type: page
     <tr>
       <td>Show Code Structure Window</td>
       <td>Alt-7 (Windows)</td>
-      <td>This gives a great overview of the class inside the current file (e.g. it lists all the variables and methods).</td>
+      <td>This gives a great overview of the class inside the current file (e.g. it lists all the variables and methods).</td>
     </tr>
     <tr>
       <td>Quick Documentation</td>
-      <td>Ctrl-Q (Windows)</td>
-      <td>Great for checking up on what a class or method does as you are about to use it.</td>
+      <td>Ctrl-Q (Windows)</td>
+      <td>Great for checking up on what a class or method does as you are about to use it.</td>
     </tr>
     <tr>
       <td colspan="3">Code</td>

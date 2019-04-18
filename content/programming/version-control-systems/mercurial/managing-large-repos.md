@@ -9,7 +9,7 @@ url: /programming/version-control-systems/mercurial/managing-large-repos
 
 ## Truncating History
 
-Removing history from Mercurial is one way to reduce the size of the repository (the stuff in the .hg folder).
+Removing history from Mercurial is one way to reduce the size of the repository (the stuff in the .hg folder).
 
 Unlike Git, Mercurial does not support a proper shallow copy. You can make a new repository based on a subset of the commits from an existing one, but these repos will not be considered related, the changeset IDs will change for each commit, and you cannot push or merge changes between the two.
 
@@ -19,11 +19,11 @@ The following command can be used to truncate history from a Mercurial repositor
 $ hg convert --config convert.hg.startrev=1234 <source-repository> <new-repository>
 ```
 
- Where `1234` is the revision you want to start your new repository from, `<source-repository>` is the path to the existing repository, and `<new-repository>` is the path to a folder where the new, truncated repository will be created in.
+ Where `1234` is the revision you want to start your new repository from, `<source-repository>` is the path to the existing repository, and `<new-repository>` is the path to a folder where the new, truncated repository will be created in.
 
 Anyone else using the existing repository will have to stop using it and clone the new, truncated one if they wish to continue development (this can be a big problem).
 
-This does need the convert extension to be enabled (it comes shipped with Mercurial), which can be done by adding the following line under [extensions] in your mercurial.ini file.
+This does need the convert extension to be enabled (it comes shipped with Mercurial), which can be done by adding the following line under [extensions] in your mercurial.ini file.
 
 ```
 [extensions]

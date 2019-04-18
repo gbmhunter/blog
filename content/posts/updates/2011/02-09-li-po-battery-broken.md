@@ -15,4 +15,4 @@ tags:
 - Li-Po
 ---
 
-Li-Po battery broken! One of the 8 balancing leads does not read any voltage! Dissection is the next step...check out the [Li-Po Battery Dissection](/electronics/projects/electric-skateboard/electric-skateboard-the-li-po-battery-dissection). Also updated the [Electrical Supplier's](/electronics/general/electrical-suppliers/) page.
+Li-Po battery broken! One of the 8 balancing leads does not read any voltage! Dissection is the next step...check out the [Li-Po Battery Dissection](/electronics/projects/electric-skateboard/electric-skateboard-the-li-po-battery-dissection). Also updated the [Electrical Supplier's](/electronics/general/electrical-suppliers/) page.

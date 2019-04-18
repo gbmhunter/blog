@@ -34,7 +34,7 @@ These calculators are useful for both electrical engineers and hobbyists alike w
 * Calculating capacitor time constants
 * When using super-capacitors
 * Working out how long a capacitor will power a circuit for
-* Working out the available energy in cap banks for coil guns and other high-energy electronic  devices
+* Working out the available energy in cap banks for coil guns and other high-energy electronic  devices
 * Working out the effectiveness of a capacitor for transient voltage suppression
 * Much more!
 
@@ -42,4 +42,4 @@ They can be found individually on the [Capacitors page](/electronics/components/
 
 {{< figure src="/images/electronics-misc/two-new-capacitor-charge-and-energy-calculators.jpg" caption="Two new electrical-engineering-themed calculators. One calculator is for the capacitor charge equation, Q = CV, which involves charge, capacitance and voltage. The other is for the capacitor energy equation, E = 1/2CV^2 which involves energy, capacitance and voltage." width="600px" >}}
 
-Also, updates were made to the [RFID page](/electronics/circuit-design/rfid) (regarding 13.56MHz RFID standards and transceivers) and also the [OLED page](/electronics/components/oled-screens) (regarding the SSD1306 driver IC and manufacturers/distributors).
+Also, updates were made to the [RFID page](/electronics/circuit-design/rfid) (regarding 13.56MHz RFID standards and transceivers) and also the [OLED page](/electronics/components/oled-screens) (regarding the SSD1306 driver IC and manufacturers/distributors).

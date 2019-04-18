@@ -71,7 +71,7 @@ Remember, the ADP is used for detecting devices when Vbus is turned off. If Vbus
 
 ## Session Request Protocol (SRP)
 
-A device can use the Session Request Protocol (SRP) to request that the Vbus be turned back on by an EH or OTG system. The device makes the request by turning on the pull-up to either the D+ line (full and high-speed devices) or D- (low-speed devices) for 5-10ms. The host detects this increase in voltage on the line and turns on Vbus.
+A device can use the Session Request Protocol (SRP) to request that the Vbus be turned back on by an EH or OTG system. The device makes the request by turning on the pull-up to either the D+ line (full and high-speed devices) or D- (low-speed devices) for 5-10ms. The host detects this increase in voltage on the line and turns on Vbus.
 
 An E or OTG system which turns off Vbus and has a series-A plug MUST support SRP.
 
@@ -107,13 +107,13 @@ The USB spec enforces a decoupling capacitance between Vbus of between 1-10uF on
 
 USB was not originally designed for low-power applications. However, it can be successfully used in small battery powered devices with careful design, and use of the amendments to the original specifications which allow lower energy consumption.
 
-The current required while actually performing a transmission is still quite high. The table below gives you an idea on the currents used when a microcontroller is in different USB transmission modes.
+The current required while actually performing a transmission is still quite high. The table below gives you an idea on the currents used when a microcontroller is in different USB transmission modes.
 
 {{< img src="at32uc3-dynamic-usb-power-consumtpion-table.png" width="743px" caption="Table showing the dynamic USB power consumption of a AT32UC3A3 microcontroller during various USB transmission modes. Image from page 976 of http://www.atmel.com/Images/doc32072.pdf."  >}}
 
 ## Inrush Currents
 
-The USB specification puts restrictions around the inrush currents allowed when two USB devices are connected together. Inrush currents need to be considered for two reasons:
+The USB specification puts restrictions around the inrush currents allowed when two USB devices are connected together. Inrush currents need to be considered for two reasons:
 
 
 1. Too large a inrush current can pull down `\(V_{bus}\)` so much that it causes other USB devices to fail.
@@ -130,11 +130,11 @@ This circuit example from FTDI Application Note AN_146 does exactly that:
 
 If you prefer a powerful, one component solution, you can get a variety of load switches which also perform inrush-current limiting.
 
-The nifty [USB Electrical Analysis Tool (USBET) provided free by www.usb.org](http://www.usb.org/developers/tools/usb20_tools/) can analyse scope captures of current in csv, txt, bin or wfm form and analyse them, informing you of any inrush current faults. It provides a graphical interface and a detailed report on a self-generated html page, along with graphs. I have personally found this tool to be really helpful.
+The nifty [USB Electrical Analysis Tool (USBET) provided free by www.usb.org](http://www.usb.org/developers/tools/usb20_tools/) can analyse scope captures of current in csv, txt, bin or wfm form and analyse them, informing you of any inrush current faults. It provides a graphical interface and a detailed report on a self-generated html page, along with graphs. I have personally found this tool to be really helpful.
 
 ### Worked Example
 
-Here is an example of what happens when you don't limit inrush currents to PCBs powered from USB correctly. Current measurements where taken with a `\(1\Omega\)` resistor connected between the PCB ground and the negative terminal of the +5.0V supply simulating VBUS (probe grounds where connected on the PCB side , and the current waveform inverted).
+Here is an example of what happens when you don't limit inrush currents to PCBs powered from USB correctly. Current measurements where taken with a `\(1\Omega\)` resistor connected between the PCB ground and the negative terminal of the +5.0V supply simulating VBUS (probe grounds where connected on the PCB side , and the current waveform inverted).
 
 There was about 50uF of total capacitance on the +3.3V rail. The +3.3V rail was powered by a linear regulator from VBUS, and took approx. 900us to start turning on (as shown below).
 
@@ -150,7 +150,7 @@ And here is what happens after you add a current-limiting IC between VBUS and th
 
 The USB spec recommends ferrite beads on `\(V_{bus}\)`. It is common to combine them will bulk decoupling capacitors to make a [Pi filter](/electronics/circuit-design/filtering/passive-filters/#low-pass-pi-and-t-filters).
 
-The USB specification prehibits ferrite beads on the D+ and D- signals. 
+The USB specification prehibits ferrite beads on the D+ and D- signals. 
 
 ## USB Protocol Analyzers
 
@@ -184,7 +184,7 @@ Routing USB traces takes some thought because of the high speed the signals trav
 
 ## The Connectors
 
-Non-assembled USB plugs are much rarer than USB receptacles. I think this is because the USB protocol is not meant to be broken, so there is no reason with the many available pre-build USB cables for sale that you would ever need to build your own. But they do exist! Molex makes a mini type B plug (part number 47014-0008) that you can use to make custom USB cables (see the Non-Standard Uses section below).
+Non-assembled USB plugs are much rarer than USB receptacles. I think this is because the USB protocol is not meant to be broken, so there is no reason with the many available pre-build USB cables for sale that you would ever need to build your own. But they do exist! Molex makes a mini type B plug (part number 47014-0008) that you can use to make custom USB cables (see the Non-Standard Uses section below).
 
 ## Wiring Scheme
 
@@ -235,7 +235,7 @@ If you want to use all 5 connections (+ shield, so actually 6!) on USB connectio
 
 The [FTDI FT4222H](http://www.digikey.co.nz/en/product-highlight/f/ftdi/ft4222h-bridge-ic) is a USB 2.0 to Quad SPI/I2C bridge. It supports all four modes of SPI transfer at up to 30MHz. It supports the I2C speed modes, SM, FM, FM+ and HS (i.e. every speed mode from 100kbs to 3.4Mbs). It also has dedicated charging port (DCP) support, and USB controlled GPIO.
 
-The [Exar XR21B142x ICs](http://www.digikey.co.nz/en/product-highlight/e/exar-corporation/xr21b1421-24-usb-2-to-uart-bridge-devices) are USB 2.0 to UART interface bridges. 
+The [Exar XR21B142x ICs](http://www.digikey.co.nz/en/product-highlight/e/exar-corporation/xr21b1421-24-usb-2-to-uart-bridge-devices) are USB 2.0 to UART interface bridges. 
 
 ## Licensed/Trademarked Images
 

@@ -37,4 +37,4 @@ You can implement custom subscriber callbacks by using the boost::bind class.
 
 Subscribers have built-in smart pointer like behaviour.
 
-Once all copies of a subscriber go out of scope, the callback function will not be called anymore. Once all subscribers for a particular topic go out of scope, the topic will be unsubscribed.
+Once all copies of a subscriber go out of scope, the callback function will not be called anymore. Once all subscribers for a particular topic go out of scope, the topic will be unsubscribed.

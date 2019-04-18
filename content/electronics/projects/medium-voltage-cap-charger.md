@@ -15,7 +15,7 @@ Current State: Completed
 Input Voltage: 12V
 Maximum Charge Voltage: 500V
 
-This was before I knew what a boost converter was, so I used the Aahz's Boost Converter  design (member of the www.4hv.org forum). A blurry schematic (the only one I have!) of his design is shown below.
+This was before I knew what a boost converter was, so I used the Aahz's Boost Converter  design (member of the www.4hv.org forum). A blurry schematic (the only one I have!) of his design is shown below.
 
 {{< figure src="/images/electronics-mediumvoltagecapcharger/aahzs-boost-converter-schematic.jpg" width="400px" >}}
 

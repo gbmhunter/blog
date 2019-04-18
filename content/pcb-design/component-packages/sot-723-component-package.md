@@ -76,7 +76,7 @@ None
 <td >Pitch
 </td>
 
-<td > 0.80mm (distance between the two pad centres on the same side)
+<td > 0.80mm (distance between the two pad centres on the same side)
 </td>
 </tr>
 <tr >
@@ -151,6 +151,6 @@ Here is a 3D render of the SOT-723 component package.
 
 ## Dimensions
 
-Here are the dimensions and a recommended footprint for the SOT-723 component package.
+Here are the dimensions and a recommended footprint for the SOT-723 component package.
 
 {{< figure src="/images/2015/04/sot-723-component-package-dimensions-and-footprint.png" width="686px" caption="Dimensions and a recommended footprint for the SOT-723 component package. Image from http://www.onsemi.com/pub_link/Collateral/ESD7C3.3D-D.PDF."  >}}

@@ -27,7 +27,7 @@ url: /pcb-design/component-packages/sot-346-component-package
 </td></tr><tr >
 <td >Variants
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Similar To
 </td>
@@ -39,11 +39,11 @@ url: /pcb-design/component-packages/sot-346-component-package
 </td></tr><tr >
 <td >Pin Count
 </td>
-<td > 3
+<td > 3
 </td></tr><tr >
 <td >Pitch
 </td>
-<td > 1.90mm
+<td > 1.90mm
 </td></tr><tr >
 <td >Solderability
 </td>
@@ -64,7 +64,7 @@ Datasheets rate BJT transistors in the SOT-346 package, mounted on a standard fo
 
 Body = 2.9x1.5mm  
 Component Area = 7.98mm² (2.9x2.75mm)  
-Standard Footprint Land Area = 11.22mm² (3.3x3.4mm)
+Standard Footprint Land Area = 11.22mm² (3.3x3.4mm)
 
 </td></tr><tr >
 <td >3D Models

@@ -8,7 +8,7 @@ type: page
 
 ## Elementary SPICE Components
 
-Note: The `XXXXXXX` syntax in the general form describing elementary SPICE components is to dominate a user choosen alpha-numeric identifier (e.g. `RXXXXXXX` could stand for `R1`, `RC1` or `RMYNAME`).
+Note: The `XXXXXXX` syntax in the general form describing elementary SPICE components is to dominate a user choosen alpha-numeric identifier (e.g. `RXXXXXXX` could stand for `R1`, `RC1` or `RMYNAME`).
 
 ## Voltage And Current Controlled Switches
 

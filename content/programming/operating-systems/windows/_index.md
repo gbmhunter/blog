@@ -14,7 +14,7 @@ These pages are all about the Windows operating system and the command-line inte
 
 ## Auto-complete
 
-Did you know that MS-DOS has an auto-complete function, just like Linux, except **it's turned OFF by default?** To turn it on, type the following into the command line:
+Did you know that MS-DOS has an auto-complete function, just like Linux, except **it's turned OFF by default?** To turn it on, type the following into the command line:
 
 ```  
 cmd /f
@@ -26,7 +26,7 @@ And to turn it off again (why would you ever want to do such a thing!):
 cmd /f:off
 ```
 
-Now, to use it! It works slightly different to Linux. Instead of one button (_tab_), there are two. Press _Ctrl-D_ to auto-complete directories, or _Ctrl-F_ to auto-complete files.
+Now, to use it! It works slightly different to Linux. Instead of one button (_tab_), there are two. Press _Ctrl-D_ to auto-complete directories, or _Ctrl-F_ to auto-complete files.
 
 If there are multiple choices, pressing the button repeatedly will cycle through the options.
 
@@ -58,13 +58,13 @@ dir /X
 
 ## xcopy
 
-`xcopy` is a native Windows command which copies files and folders. It has more features than the copy command.
+`xcopy` is a native Windows command which copies files and folders. It has more features than the copy command.
 
-Syntax: `xcopy source [destination] [/a] [/b] [/c] [/d [:date]] [/e] [/f] [/g] [/h] [/i] [/j] [/k] [/l] [/m] [/n] [/o] [/p] [/q] [/r] [/s] [/t] [/u] [/v] [/w] [/x] [/y] [/-y] [/z] [/exclude:file1[+file2][+file3]...] [/?]`
+Syntax: `xcopy source [destination] [/a] [/b] [/c] [/d [:date]] [/e] [/f] [/g] [/h] [/i] [/j] [/k] [/l] [/m] [/n] [/o] [/p] [/q] [/r] [/s] [/t] [/u] [/v] [/w] [/x] [/y] [/-y] [/z] [/exclude:file1[+file2][+file3]...] [/?]`
 
 `xcopy` does not have any support for resuming an interrupted command. So if you are in the middle of copying a large number of files, and it gets interrupted (the connection drops, a fileame is too long, e.t.c), you will have to start again.
 
-In Windows 95 and 98, two versions of `xcopy` are natively available, `xcopy` and `xcopy32`. When using `xcopy`, `xcopy32` is automatically called if inside a Windows environment. For this reason, **you never have to call xcopy32 directly**.
+In Windows 95 and 98, two versions of `xcopy` are natively available, `xcopy` and `xcopy32`. When using `xcopy`, `xcopy32` is automatically called if inside a Windows environment. For this reason, **you never have to call xcopy32 directly**.
 
 There are more advanced command-line Windows copy programs, such as `robocopy`, which supports resuming. If you are looking for a GUI, try RichCopy. Although I have had RichCopy v4.0 crash on me when coming across multiple files which have file names too long for Windows to support.
 
@@ -80,7 +80,7 @@ The standard syntax is:
 robocopy source_folder destination_folder [files_to_copy] [options]
 ```
 
-where files_to_copy defaults to `*.*` (all files) if nothing is provided.
+where files_to_copy defaults to `*.*` (all files) if nothing is provided.
 
 The most popular options are (in rough order of popularity):
 
@@ -98,7 +98,7 @@ The most popular options are (in rough order of popularity):
         </tr>
         <tr>
             <td>\MOV</td>
-            <td>Move files rather than copy them (i.e. delete after copy). This does not delete directories, use \MOVE for that.</td>
+            <td>Move files rather than copy them (i.e. delete after copy). This does not delete directories, use \MOVE for that.</td>
         </tr>
         <tr>
             <td>\MOVE</td>

@@ -12,7 +12,7 @@ SPI stands for _Serial Peripheral Interface_, and was initially developed by Mot
 
 ## Advantages
 
-* SPI has much higher throughput compared to other board-level communication protocols (such as I2C or 1-wire), primarily because the bus lines are driven both high and low, and there is a separate wire for transmit and receive (full-duplex)
+* SPI has much higher throughput compared to other board-level communication protocols (such as I2C or 1-wire), primarily because the bus lines are driven both high and low, and there is a separate wire for transmit and receive (full-duplex)
 * SPI can have an arbitrary data/frame length
 * Most logic analysers support SPI decoding
 
@@ -22,7 +22,7 @@ SPI stands for _Serial Peripheral Interface_, and was initially developed by Mot
 
 ## Physical Layer
 
-SPI can either be _three wire_ (when there is only one slave and the slave does not require any signal on this line), or _four wire_ (when there are multiple slaves, and the slave select line needs to be used). For every slave there needs to be new select line, but the other three traces can be shared.
+SPI can either be _three wire_ (when there is only one slave and the slave does not require any signal on this line), or _four wire_ (when there are multiple slaves, and the slave select line needs to be used). For every slave there needs to be new select line, but the other three traces can be shared.
 
 {{< img src="typical-spi-connections.jpg" width="181px" caption="The typical SPI connections that an IC will have."  >}}
 
@@ -107,9 +107,9 @@ Some devices that support daisy chaining are Microchips MCP42xxx digital potenti
 
 ## Point-to-Point SPI
 
-Some slave devices only support _point-to-point_ SPI communication. This means that there can only be one master on the bus, and also only one slave (the device which supports point-to-point SPI).
+Some slave devices only support _point-to-point_ SPI communication. This means that there can only be one master on the bus, and also only one slave (the device which supports point-to-point SPI).
 
-The Freescale FXOS8700CQ magnetometer is one such example.
+The Freescale FXOS8700CQ magnetometer is one such example.
 
 {{< img src="fxos8700cq-freescale-magnetometer-note-supports-only-point-to-point-spi-protocol.pdf.png" width="745px" caption="The note from the Freescale FXOS8700CQ magnetometer stating that it only supports the 'point-to-point' SPI protocol."  >}}
 
@@ -125,4 +125,4 @@ The mSPI bus is a modification of the SPI bus that enforces that the comms proto
 
 ## RapidS
 
-The RapidS term is used by [Atmel](http://www.atmel.com/) and [Adesto Technologies](http://www.adestotech.com/). It is commonly present on memory chips such as EEPROM and Flash memory ICs. The RapidS serial interface is SPI compatible for frequencies up to 33MHz. The RapidS protocol is different to the Rapid8 protocol, which is a **parallel interface**.
+The RapidS term is used by [Atmel](http://www.atmel.com/) and [Adesto Technologies](http://www.adestotech.com/). It is commonly present on memory chips such as EEPROM and Flash memory ICs. The RapidS serial interface is SPI compatible for frequencies up to 33MHz. The RapidS protocol is different to the Rapid8 protocol, which is a **parallel interface**.

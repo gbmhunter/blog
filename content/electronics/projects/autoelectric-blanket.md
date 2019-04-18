@@ -80,11 +80,11 @@ To design a smart phone controlled electric blanket.
 
 I needed a later version of nodejs than sudo apt-get install nodejs would offer, so I downloaded the node v0.11.6 binary from [http://nodejs.org/dist/v0.11.6/](http://nodejs.org/dist/v0.11.6/).
 
-I ran out of room with the standard Raspian image on my harddrive. Used the option in raspi-config to expand the partition to the full SD card size.
+I ran out of room with the standard Raspian image on my harddrive. Used the option in raspi-config to expand the partition to the full SD card size.
 
-I got some weird `cb() never called!` errors when trying to install express with `npm install express`. `npm cache clear` seemed to fix it.
+I got some weird `cb() never called!` errors when trying to install express with `npm install express`. `npm cache clear` seemed to fix it.
 
-I installed geany (`sudo apt-get install geany`), to get a better code editor than `nano` or `leafpad`.
+I installed geany (`sudo apt-get install geany`), to get a better code editor than `nano` or `leafpad`.
 
 {{< figure src="/images/project-autoelectricblanket/raspberry-pi-with-lots-of-cables-filtered.jpg" caption="The RaspberryPi while testing."  width="800px" >}}
 
@@ -97,7 +97,7 @@ I installed geany (`sudo apt-get install geany`), to get a better code editor th
 
 ## Controlling GPIO
 
-The `ENOENT read /sys/class/gpio/gpio4/direction` error caught me out for along time, until I realised I had to run the node module using `sudo node server.js` (with administrator privlages).
+The `ENOENT read /sys/class/gpio/gpio4/direction` error caught me out for along time, until I realised I had to run the node module using `sudo node server.js` (with administrator privlages).
 
 {{< figure src="/images/project-autoelectricblanket/simple-led-connected-to-raspberry-pi-gpio.jpg" caption="I used a single LED connected up to one of the RaspberryPi's GPIO pins for basic testing."  width="800px" >}}
 
@@ -123,7 +123,7 @@ The server checks to see if it can resolve the address www.google.com every 5 se
 
 I discovered rsync was one of the best ways of enabling me write code on my Windows computer, and then transfer it to the RaspberryPi quickly and easily for running.
 
-I used the following command when currently in the repo directory on my PC (note the `.` after `--delete` ,this is important!):
+I used the following command when currently in the repo directory on my PC (note the `.` after `--delete` ,this is important!):
 
 ```sh
 rsync -arvz --delete . pi@192.168.1.51:~/autoeb
@@ -133,11 +133,11 @@ rsync -arvz --delete . pi@192.168.1.51:~/autoeb
 
 ## Dynamic DNS
 
-I used this awesome and simple guide, [http://blog.mivia.dk/2013/03/free-dynamic-dns-for-raspberry-pi/](http://blog.mivia.dk/2013/03/free-dynamic-dns-for-raspberry-pi/)
+I used this awesome and simple guide, [http://blog.mivia.dk/2013/03/free-dynamic-dns-for-raspberry-pi/](http://blog.mivia.dk/2013/03/free-dynamic-dns-for-raspberry-pi/)
 
 ddclient
 
-You can reconfigure ddclient with the command dpkg-reconfigure ddclient. You can print out found internet addresses using the command ddclient --query.
+You can reconfigure ddclient with the command dpkg-reconfigure ddclient. You can print out found internet addresses using the command ddclient --query.
 
 The fixed name I gave the RaspberryPi was aeb.flashserv.net.
 
@@ -149,11 +149,11 @@ I gave the RaspberryPi a fixed internal address by configuring settings on the r
 
 We want the RaspberryPi server to automatically run on start-up. To do this, I edited some configuration files to make the RaspberryPi automatically login at turn on, and then set it up so a script ran automatically whenever that user logged in, hence it would run at start-up.
 
-This guide is easy to follow...[http://raspberrypi.stackexchange.com/questions/8734/execute-script-on-start-up](http://raspberrypi.stackexchange.com/questions/8734/execute-script-on-start-up) and so is this. [http://www.akeric.com/blog/?p=1976](http://www.akeric.com/blog/?p=1976).
+This guide is easy to follow...[http://raspberrypi.stackexchange.com/questions/8734/execute-script-on-start-up](http://raspberrypi.stackexchange.com/questions/8734/execute-script-on-start-up) and so is this. [http://www.akeric.com/blog/?p=1976](http://www.akeric.com/blog/?p=1976).
 
 ## Forwarding Ports
 
-I set up port forwarding on the router for port 8000. This worked fine for a Vodafone router, however, when I tried to set up the same port forwarding on an Orcon router, it complained that the port 8000 was already in use by something called a "USB Server". I had to change all references of the port to 8001, which meant changing both the node server code and the Android app code.
+I set up port forwarding on the router for port 8000. This worked fine for a Vodafone router, however, when I tried to set up the same port forwarding on an Orcon router, it complained that the port 8000 was already in use by something called a "USB Server". I had to change all references of the port to 8001, which meant changing both the node server code and the Android app code.
 
 ## Fixed IP
 
@@ -170,7 +170,7 @@ The file /etc/network/interfaces contains a list of the present network adaptors
 iface wlan0 inet manual
 ```
 
-There were many tutorials online on how to modify this file. However, most of them didn't seem to work in my case. The one that did ([http://kerneldriver.wordpress.com/2012/10/21/configuring-wpa2-using-wpa_supplicant-on-the-raspberry-pi/](http://kerneldriver.wordpress.com/2012/10/21/configuring-wpa2-using-wpa_supplicant-on-the-raspberry-pi/)) was when I changed it to:
+There were many tutorials online on how to modify this file. However, most of them didn't seem to work in my case. The one that did ([http://kerneldriver.wordpress.com/2012/10/21/configuring-wpa2-using-wpa_supplicant-on-the-raspberry-pi/](http://kerneldriver.wordpress.com/2012/10/21/configuring-wpa2-using-wpa_supplicant-on-the-raspberry-pi/)) was when I changed it to:
 
 ```sh
 # allow-hotplug wlan0

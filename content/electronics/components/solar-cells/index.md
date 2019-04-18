@@ -12,7 +12,7 @@ To draw the most power from the solar panel, a certain current must be drawn fro
 
 The peak power point is usually specified as a voltage and current on the datasheet for the solar cell (multiply them together to get power), and is typically at a voltage around 80% of the open-circuit voltage (the open-circuit voltage and short-circuit current are also normally specified on the datasheet.
 
-Many chip vendors have IC's that can perform maximum power point tracking (MPPT). Texas Instruments manufactur the [BQ24650](http://focus.ti.com/docs/prod/folders/print/bq24650.html), which performs MPPT using the fixed voltage technique. It accepts an input voltage range from 5 to 28V. Linear Technology produces MPPT tracking chips for lower voltages, including single cell applications (?500mV). Chips like their [LTC3105](http://www.linear.com/product/ltc3105) can operate down to 225mV!
+Many chip vendors have IC's that can perform maximum power point tracking (MPPT). Texas Instruments manufactur the [BQ24650](http://focus.ti.com/docs/prod/folders/print/bq24650.html), which performs MPPT using the fixed voltage technique. It accepts an input voltage range from 5 to 28V. Linear Technology produces MPPT tracking chips for lower voltages, including single cell applications (?500mV). Chips like their [LTC3105](http://www.linear.com/product/ltc3105) can operate down to 225mV!
 
 ## Partial Illumination
 
@@ -48,5 +48,5 @@ Sensors - Article: Using A Small Solar Cell And A Supercapacitor In A Wireless S
 Good article explaining a small wireless sensor system using a solar cell and supercapacitor. No MPPT is used.
 
 Electropedia - Article: Solar Power (Technology and Economics)
-URL: [http://www.mpoweruk.com/solar_power.htm](http://www.mpoweruk.com/solar_power.htm)
+URL: [http://www.mpoweruk.com/solar_power.htm](http://www.mpoweruk.com/solar_power.htm)
 Very good article explaing solar irradiation, solar insolation, the avaliable solar energy to us, the variance due to earth rotation/tilt and panel technology backed up with helpful animated figures.

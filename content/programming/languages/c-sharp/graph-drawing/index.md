@@ -20,7 +20,7 @@ type: page
 
 Graphing program that hasn't had much development recently, but still relatively powerful. Nice interactive scaling/scrolling features of graphs, making it easy to look at lots of data on one chart! Owing to the age and little popularity for this control, tutorials and help are severely limited.
 
-External Link: [http://netcontrols.org/nplot/wiki/](http://netcontrols.org/nplot/wiki/)
+External Link: [http://netcontrols.org/nplot/wiki/](http://netcontrols.org/nplot/wiki/)
 
 ## OxyPlot
 
@@ -33,9 +33,9 @@ External Link: [http://netcontrols.org/nplot/wiki/](http://netcontrols.org/nplo
 * License/Price: Open Source
 * NuGet Supported: Yes
 
-External Link: [http://oxyplot.codeplex.com/](http://oxyplot.codeplex.com/)
+External Link: [http://oxyplot.codeplex.com/](http://oxyplot.codeplex.com/)
 
-OxyPlot is a good plotting control when you are using WPF (Windows Presentation Foundation). It uses portable class libraries (PCL), so the same assembly can be used with WinForms, WPF, Silverlight and Windows Store apps. However, this causes a error message to appear in the visual designer when using the PCL library in a WPF application created with Visual Studio 2012. It still compiles/runs fine, it just prevents the graph from being seen visually at design time. This error is discussed extensively here, and a workaround package [OxyPlot.Wpf_NoPCL](http://nuget.org/packages/OxyPlot.Wpf_NoPCL/) created.
+OxyPlot is a good plotting control when you are using WPF (Windows Presentation Foundation). It uses portable class libraries (PCL), so the same assembly can be used with WinForms, WPF, Silverlight and Windows Store apps. However, this causes a error message to appear in the visual designer when using the PCL library in a WPF application created with Visual Studio 2012. It still compiles/runs fine, it just prevents the graph from being seen visually at design time. This error is discussed extensively here, and a workaround package [OxyPlot.Wpf_NoPCL](http://nuget.org/packages/OxyPlot.Wpf_NoPCL/) created.
 
 ## Smoothing The Lines
 
@@ -55,14 +55,14 @@ ls.smooth = true;
 * Supported Platforms: .NET (WinForms, WPF)
 * Dimension Support : 2D
 * User Control Interface:
-* Data Binding Support: Database, XML, DataSet, List, Array
+* Data Binding Support: Database, XML, DataSet, List, Array
 * Tutorials: 5/5
 * User Base: 4/5
 * License/Price: Yearly License Fee
 
 Although slightly expensive, this is awesome graph/charting software (and not limited to just graphs either).
 
-External Link: [http://www.telerik.com/products/winforms.aspx](http://www.telerik.com/products/winforms.aspx)
+External Link: [http://www.telerik.com/products/winforms.aspx](http://www.telerik.com/products/winforms.aspx)
 
 ### Some QuickStart RadChart Examples
 
@@ -123,9 +123,9 @@ private void DrawInstantaneousGraph(RadChart radChart) {
 * User Base: 4/5
 * Licnese/Price: Free/Open Source
 
-Probably the most powerful and easy-to-use free graphing utility out there if you just want to draw 2D graphs. Fast drawing and not system resource intensive. Supports only Windows Forms, and not WPF. However, you can still use ZedGraph in a WPF application by embedding the ZedGraph in a WindowsFormsHost object in the WPF project. [See here for detailed instructions](http://hintdesk.com/wpf-use-zedgraph-in-wpf-application/).
+Probably the most powerful and easy-to-use free graphing utility out there if you just want to draw 2D graphs. Fast drawing and not system resource intensive. Supports only Windows Forms, and not WPF. However, you can still use ZedGraph in a WPF application by embedding the ZedGraph in a WindowsFormsHost object in the WPF project. [See here for detailed instructions](http://hintdesk.com/wpf-use-zedgraph-in-wpf-application/).
 
-External Link: [http://sourceforge.net/projects/zedgraph/](http://sourceforge.net/projects/zedgraph/)
+External Link: [http://sourceforge.net/projects/zedgraph/](http://sourceforge.net/projects/zedgraph/)
 
 ### Some QuickStart ZedGraph Examples
 

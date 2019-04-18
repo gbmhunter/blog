@@ -58,7 +58,7 @@ Knowing what each file can do is helpful when working out what to include in a S
 </td>
 <td >?
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >_**ProjectName**._cyprj
 </td>

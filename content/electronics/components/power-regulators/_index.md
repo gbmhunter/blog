@@ -134,7 +134,7 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 </td>
 <td >Uses an inductor, capacitor and switching element to increase the input voltage.
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Buck-Boost
 </td>
@@ -153,7 +153,7 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 </td>
 <td >This is basically a combination buck and boost converter in one, and so can either increase or decrease the input voltage.
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Charge Pump
 </td>
@@ -172,9 +172,9 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 </td>
 <td >Uses capacitors, diodes, and a oscillating switch to move charge from one capacitor to another, and in the process, increasing the voltage on the second cap. Normally the voltage is doubled, and multiple elements can be connected together to create larger voltage increases.
 </td>
-<td > 
+<td > 
 </td></tr><tr >
-<td > Joule Thief
+<td > Joule Thief
 </td>
 <td >
 <ul>
@@ -188,7 +188,7 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
     <li>Low power</li>
 </ul>
 </td>
-<td > Used in low power and cheap applications, e.g. powering an LED from a 1.5V battery.
+<td > Used in low power and cheap applications, e.g. powering an LED from a 1.5V battery.
 </td>
 <td >{{< figure src="/images/electronics-misc/joule-thief.jpg" caption="A tiny Joule Thief made for a single coin battery that can power an LED."  width="160px" >}}
 </td></tr></tbody></table>
@@ -201,15 +201,15 @@ DC/DC converters and controllers are ICs which contain all of the logic and most
 
 Most DC/DC converters and controllers require at least an external input capacitor, switching inductor, and output capacitor. Some however, like Linear Technology uModule range, have the inductor/capacitors built in also. These tend to be rather expensive!
 
-Two important patents in the history of DC/DC converters are patent [US3040271](http://www.google.com/patents/US3040271) and [US4097773](http://www.google.com/patents/US4097773).
+Two important patents in the history of DC/DC converters are patent [US3040271](http://www.google.com/patents/US3040271) and [US4097773](http://www.google.com/patents/US4097773).
 
-DC/DC converters are also used to charge batteries from solar panels. In this case, they are operated in an unusual fashion, because you want to regulate the input voltage to what provides maximum power extraction from the solar panel, rather than regulating the output voltage. Sometimes AC/DC power supplies are called LPS, which is an acronym for "**limited power supply**". This term is related to the IEC60950-1 standard.
+DC/DC converters are also used to charge batteries from solar panels. In this case, they are operated in an unusual fashion, because you want to regulate the input voltage to what provides maximum power extraction from the solar panel, rather than regulating the output voltage. Sometimes AC/DC power supplies are called LPS, which is an acronym for "**limited power supply**". This term is related to the IEC60950-1 standard.
 
 {{< figure src="/images/electronics-misc/ul60950-limited-power-circuits-graph.png" caption="A graph of voltage vs. current for a LPS (limited power supply)."  width="400px" >}}
 
 ## Efficiencies
 
-The efficiency of DC/DC converters can be as high as 96-98%!  You will see a figure like this quoted in most DC/DC converter IC datasheets. However, this efficiency only applies when the **converter is operating at one specific point** (the right input voltage, output voltage, load current, and temperature). Your own personal design will most likely be using the converter at a variety of different operating points, which may or may not include the one for maximum efficiency. When in actual use over a range of operating conditions, an average of about 80% efficiency is common from a good DC/DC converter. **Only use this rating for comparing the quality of one DC/DC converter against another.**
+The efficiency of DC/DC converters can be as high as 96-98%!  You will see a figure like this quoted in most DC/DC converter IC datasheets. However, this efficiency only applies when the **converter is operating at one specific point** (the right input voltage, output voltage, load current, and temperature). Your own personal design will most likely be using the converter at a variety of different operating points, which may or may not include the one for maximum efficiency. When in actual use over a range of operating conditions, an average of about 80% efficiency is common from a good DC/DC converter. **Only use this rating for comparing the quality of one DC/DC converter against another.**
 
 ## Burst Mode
 
@@ -227,7 +227,7 @@ A great technical article on current sharing can be found at <http://powerpartne
 
 ## Buck-Boost Converter
 
-A buck-boost power converter is a power supply which can produce an output voltage which can be both higher or lower than the input voltage. A buck-boost converter is similar to a SEPIC converter. Buck-boosts are not used unless an output voltage which could be both lower and higher than the input voltage is specifically required, as usually a sole buck or boost converter is cheaper, has a lower part count, and is more efficient. Maxim claims that a boost with linear regulator instead of a buck circuit can out perform a buck/boost in certain applications.
+A buck-boost power converter is a power supply which can produce an output voltage which can be both higher or lower than the input voltage. A buck-boost converter is similar to a SEPIC converter. Buck-boosts are not used unless an output voltage which could be both lower and higher than the input voltage is specifically required, as usually a sole buck or boost converter is cheaper, has a lower part count, and is more efficient. Maxim claims that a boost with linear regulator instead of a buck circuit can out perform a buck/boost in certain applications.
 
 ## Joule Thieves
 

@@ -32,7 +32,7 @@ url: /pcb-design/component-packages/dpack-component-package
 <td >Variants</td>
 <td >
     <ul>
-        <li>DPAK3 (TO-252-3, TO-252AA)</li>
+        <li>DPAK3 (TO-252-3, TO-252AA)</li>
         <li>TO-252-5-P1 (5-pin, square and short tab)</li>
         <li>TO-252-5-P2 (5-pin, rounded and longer tab). If there is no suffix listed, it will likely be this variant.</li>
     </ul>
@@ -100,7 +100,7 @@ url: /pcb-design/component-packages/dpack-component-package
 <td >
 <ul>
 <li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=444823">DPAK, TO-252AA, by Bill Brooks (this is DPAK3)</a></li>
-<li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=432344">DPAK-5, by Alexey Olehnovich</a> </li>
+<li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=432344">DPAK-5, by Alexey Olehnovich</a> </li>
 </ul>
 </td>
 </tr>

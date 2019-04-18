@@ -45,7 +45,7 @@ Czech Saaz Alpha 2.9%
 </tr>
 <tr >
 
-<td >Mash Temp (°C)
+<td >Mash Temp (°C)
 </td>
 
 <td >66
@@ -78,7 +78,7 @@ Czech Saaz Alpha 2.9%
 <tbody >
 <tr >
 
-<td >Sparge Temp (°C)
+<td >Sparge Temp (°C)
 </td>
 
 <td >80
@@ -97,12 +97,12 @@ Czech Saaz Alpha 2.9%
 <td >Sparge Volume (L)
 </td>
 
-<td > Enough water to make 27L at start of boil
+<td > Enough water to make 27L at start of boil
 </td>
 </tr>
 <tr >
 
-<td > Gravities During Sparge
+<td > Gravities During Sparge
 </td>
 
 <td >@5L: 1.036

@@ -50,4 +50,4 @@ If you are applying solder paste by hand (as opposed to using a template), you c
 
 ## Pre/Post Soldering Heaters
 
-Many components require controlled pre-heating and post-cooling to solder effectively.  
+Many components require controlled pre-heating and post-cooling to solder effectively.  

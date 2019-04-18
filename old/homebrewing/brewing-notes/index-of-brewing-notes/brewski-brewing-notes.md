@@ -86,7 +86,7 @@ Malt
 </tr>
 <tr >
 
-<td >Mash Start Temp (°C)
+<td >Mash Start Temp (°C)
 </td>
 
 <td >65
@@ -94,7 +94,7 @@ Malt
 </tr>
 <tr >
 
-<td >Mash End Temp (°C)
+<td >Mash End Temp (°C)
 </td>
 
 <td >64
@@ -102,7 +102,7 @@ Malt
 </tr>
 <tr >
 
-<td >Mash Time (min)
+<td >Mash Time (min)
 </td>
 
 <td >60
@@ -121,7 +121,7 @@ Malt
 <td >Mash Volume
 </td>
 
-<td > <20L (inch above the grain surface
+<td > <20L (inch above the grain surface
 </td>
 </tr>
 </tbody>
@@ -138,7 +138,7 @@ None.
 <tbody >
 <tr >
 
-<td >Sparge Temp (°C)
+<td >Sparge Temp (°C)
 </td>
 
 <td >91
@@ -352,7 +352,7 @@ None
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
 <td >19

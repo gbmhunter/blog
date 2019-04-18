@@ -18,7 +18,7 @@ Also known as UMC or XFL connectors.
 
 ## Schematic Symbol
 
-There is no "standard" schematic symbol for the male, SMD mount UFL connector, so I normally decide to go with some that is visually resembles the actual connector part, as shown below:
+There is no "standard" schematic symbol for the male, SMD mount UFL connector, so I normally decide to go with some that is visually resembles the actual connector part, as shown below:
 
 {{< img src="ufl-umc-umcc-rf-connector-schematic-symbol.png" width="510px" caption="A schematic symbol for the male, SMD, UFL (a.k.a. UMC, UMCC) style RF connector."  >}}
 

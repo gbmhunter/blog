@@ -109,7 +109,7 @@ type: "page"
 <ul>
 <li>SOT-323-3: Tja = 380°C/W (mounted on 10x8x0.6mm FR4, still air)</li>
 
-<li>SOT-323-8: Tja = 70-90°C/W</li>
+<li>SOT-323-8: Tja = 70-90°C/W</li>
 </ul>
 
 </td>

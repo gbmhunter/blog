@@ -12,15 +12,15 @@ Assembly code can be inserted into C code. This is usually done when you want to
 
 There are two types, "**basic inline"** assembly, and "**extended"** assembly.
 
-If you are using the GCC compiler, you can insert assembly code using the `__asm voltaile { (assembly code as a string here) }` wrapper (that with two underscores at the start). `asm("assembly code as a string here")` also works.
+If you are using the GCC compiler, you can insert assembly code using the `__asm voltaile { (assembly code as a string here) }` wrapper (that with two underscores at the start). `asm("assembly code as a string here")` also works.
 
-Note that the assembly code has to be written as a single string, with each new line of assembly being delimited by the `\n` character. Use compiler string concatenation to spread the assembly over multiple lines of source code to make it more readable.
+Note that the assembly code has to be written as a single string, with each new line of assembly being delimited by the `\n` character. Use compiler string concatenation to spread the assembly over multiple lines of source code to make it more readable.
 
 ## The Volatile Keyword
 
-The keyword volatile is used when you don't want the compiler to perform any optimisation on the assembly code. Without the volatile keyword, the compiler may move the code around, take it out of a loop, or delete in entirely if it deems it unnecessary. To stop this from happening, add the word volatile after the asm keyword and before the opening curly brace.
+The keyword volatile is used when you don't want the compiler to perform any optimisation on the assembly code. Without the volatile keyword, the compiler may move the code around, take it out of a loop, or delete in entirely if it deems it unnecessary. To stop this from happening, add the word volatile after the asm keyword and before the opening curly brace.
 
-Note that the `\n` (newline characters) at the end of each line are important for GCC to correctly parse the assembly code.
+Note that the `\n` (newline characters) at the end of each line are important for GCC to correctly parse the assembly code.
 
 ## An Example
 

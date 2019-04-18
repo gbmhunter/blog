@@ -12,4 +12,4 @@ tags:
 - pyrotechnics
 ---
 
-Tidied up the entire Kaboom section! After I started revamping the site, the pyrotechnics section got left behind. Fixed most of the broken links, changed all pages to the new format. The movie gallery now has embedded YouTube videos.
+Tidied up the entire Kaboom section! After I started revamping the site, the pyrotechnics section got left behind. Fixed most of the broken links, changed all pages to the new format. The movie gallery now has embedded YouTube videos.

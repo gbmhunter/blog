@@ -11,10 +11,10 @@ url: /programming/general/debugging-embedded-system
 
 Debugging on an embedded system is very different to debugging software on a fully-fledged computer.
 
-Differences between computer and microcontroller debugging:  * Debugging tools are not as powerful/comprehensive  * You have the external world to worry about. Pausing an embedded system to do step-by-step debugging doesn't stop the stuff that is connected up to it's pins. This has consequences. Usually, it means that you will miss UART data, fail to update the LCD screen in time, e.t.c.
+Differences between computer and microcontroller debugging:  * Debugging tools are not as powerful/comprehensive  * You have the external world to worry about. Pausing an embedded system to do step-by-step debugging doesn't stop the stuff that is connected up to it's pins. This has consequences. Usually, it means that you will miss UART data, fail to update the LCD screen in time, e.t.c.
 
 ## Powerful Debug Printing
 
-Please see [this code on ideone](https://ideone.com/WbufDi) for an example on how to implement advanced debug printing functionality on a microcontroller. This code uses variadic arguments, the special preprocessor variables __FUNC__ and __LINE__ and other tricks to provide a powerful debug printing macro for use in embedded systems.
+Please see [this code on ideone](https://ideone.com/WbufDi) for an example on how to implement advanced debug printing functionality on a microcontroller. This code uses variadic arguments, the special preprocessor variables __FUNC__ and __LINE__ and other tricks to provide a powerful debug printing macro for use in embedded systems.
 
 Remember to try and place debug statements directly BEFORE it's related code, so that if the code causes a crash, assert, or whatever, you are more likely so see the message.

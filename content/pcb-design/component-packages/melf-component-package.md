@@ -118,7 +118,7 @@ url: /pcb-design/component-packages/melf-component-package
 </tbody>
 </table>
 
-The MELF component package is a cylindrical shaped package. Not very popular because they have a tendency to roll around when soldering.
+The MELF component package is a cylindrical shaped package. Not very popular because they have a tendency to roll around when soldering.
 
 ## Images
 

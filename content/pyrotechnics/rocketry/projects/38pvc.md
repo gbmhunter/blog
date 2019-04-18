@@ -10,7 +10,7 @@ url: /pyrotechnics/rocketry/projects/38pvc
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/03-anchor-holes-and-disk.jpg"   width="320px" >}}
 
 * Project Start: July 2007
-* Project End:  July 2007
+* Project End:  July 2007
 
 One of these made it onto a skateboard, and the result was "Rocket Board".
 
@@ -64,7 +64,7 @@ The thermal sleeve consisted of one layer of 0.28mm thick cardboard around the i
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/38-afterburn-03.jpg" width="320px" >}}
 
-Motor worked successfully and propelled skateboard across the concrete. Average speed over the first second was 40km/h. Burnthrough of PVC pipe occurred 40mm from the nozzle end just where the plaster of paris stopped and the thermal sleeve began. Made a hole 25x3mm and caused the skateboard to do a 360° spin 1.0s into travel. Plaster of paris nozzle was pushed out by 2mm. One of the lugs had snapped of. Nozzle was very close to being blasted out. 4x11mm holes around the circumference of the pipe produced the lugs when the plaster of paris was cast. End cap unharmed. PVC pipe slightly deformed due to heat. PVC pipe was very soft just after firing.
+Motor worked successfully and propelled skateboard across the concrete. Average speed over the first second was 40km/h. Burnthrough of PVC pipe occurred 40mm from the nozzle end just where the plaster of paris stopped and the thermal sleeve began. Made a hole 25x3mm and caused the skateboard to do a 360° spin 1.0s into travel. Plaster of paris nozzle was pushed out by 2mm. One of the lugs had snapped of. Nozzle was very close to being blasted out. 4x11mm holes around the circumference of the pipe produced the lugs when the plaster of paris was cast. End cap unharmed. PVC pipe slightly deformed due to heat. PVC pipe was very soft just after firing.
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/33-rocketboard-02.jpg" width="600px" >}}
 

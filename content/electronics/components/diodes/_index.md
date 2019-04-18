@@ -14,7 +14,7 @@ Diodes are passive semiconductor components consisting of a single P-N junction.
 
 ## Parameters
 
-These are some of the important parameters shared by all types of diode (in a rough order of importance):
+These are some of the important parameters shared by all types of diode (in a rough order of importance):
 
 <table >
     <thead>
@@ -28,7 +28,7 @@ These are some of the important parameters shared by all types of diode (in a r
 <tr >
 <td >Maximum Continuous Forward Current
 </td>
-<td >\( I_{f(cont)} \)
+<td >\( I_{f(cont)} \)
 </td>
 <td >The maximum continuous current the diode can withstain, usually limited by overheating. Typically 20-500V.
 </td></tr><tr >
@@ -55,7 +55,7 @@ Some other important properties of diodes are their ability to prevent conductio
 
 {{< img src="schematic-symbol-general-diode.png" width="221px" caption="The schematic symbol for a general diode."  >}}
 
-Diodes come in many [component packages](/pcb-design/component-packages/), one of the most common being the [through-hole DO-41 package](/pcb-design/component-packages/do-41-component-package/). They also come in standard SMD packages. It is a good idea to add polarity marks to the silkscreen layer on  diode footprints. The picture below shows polarity marks being added to a diode with a 0603 footprint.
+Diodes come in many [component packages](/pcb-design/component-packages/), one of the most common being the [through-hole DO-41 package](/pcb-design/component-packages/do-41-component-package/). They also come in standard SMD packages. It is a good idea to add polarity marks to the silkscreen layer on  diode footprints. The picture below shows polarity marks being added to a diode with a 0603 footprint.
 
 {{< img src="silkscreen-polarity-marks-on-0603-diode-footprint.png" width="504px" caption="Polarity marks have been added to the silkscreen layer for these 0603 diodes."  >}}
 
@@ -83,9 +83,9 @@ Uses for zener diodes include:
 * Over-voltage protection for low power applications (use TVS diodes to dissipate high energy voltage spikes)
 * To turn on a sub-circuit once a certain voltage level is reached (e.g. an LED in a simple battery charging circuit)
 
-You can purchase Zeners with a reverse voltage drop as low as 1.8V all the way to above 100V. For voltage drops less than 1.8V, you can stack (i.e. place in series) multiple normal or schottky diodes in forward bias.
+You can purchase Zeners with a reverse voltage drop as low as 1.8V all the way to above 100V. For voltage drops less than 1.8V, you can stack (i.e. place in series) multiple normal or schottky diodes in forward bias.
 
-For more information, see the [ESD Protection](/electronics/circuit-design/esd-protection) page.
+For more information, see the [ESD Protection](/electronics/circuit-design/esd-protection) page.
 
 ## Photo Diodes
 
@@ -113,13 +113,13 @@ Diodes can be used as temperature sensors, as their forward voltage changes depe
 
 ## Steering Diodes
 
-Steering diodes is a name given to a configuration of two or more diodes that changes the direction of current depending on the polarity of the waveform.
+Steering diodes is a name given to a configuration of two or more diodes that changes the direction of current depending on the polarity of the waveform.
 
 They can be used to provide transient ESD protection.
 
 {{< img src="steering-diodes-used-for-transient-esd-protection.png" width="484px" caption="Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf."  >}}
 
-They can be used alongside a potentiometer and 555 timer to create a PWM circuit.
+They can be used alongside a potentiometer and 555 timer to create a PWM circuit.
 
 {{< img src="schematic-steering-diodes-used-for-555-timer-pwm-circuit.png" width="736px" caption="Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications)."  >}}
 

@@ -34,7 +34,7 @@ P2 %= ~(1<<2); // Set channel P2.2 low
 Open-drain allows for higher voltages to be present on the pin than with push/pull drive. However it cannot source current, so if you are switching a signal using an open-drain configuration you will notice the rise-time is much slower than the fall time (since the rise-time will be set by external pull-ups, if any). The code for configuring a digital output with push/pull procedure is followed, except that the bit in P2MDOUT is cleared rather than set. So that it now becomes:
 
 ```c
-P2MDOUT &= ~(1<<2); // Set channel P2.2 as open-drain drive
+P2MDOUT &= ~(1<<2); // Set channel P2.2 as open-drain drive
 ```
 
 ## Configuring A Digital Input
@@ -42,10 +42,10 @@ P2MDOUT &= ~(1<<2); // Set channel P2.2 as open-drain drive
 The following code sets channel P1.7 for use as a digital input
 
 ```c
-P2SKIP |= (1<<2);  // Set channel P1.7 to skip cross-bar assignment
-P1MDIN |= (1<<7);  // Set channel P1.7 as digital I/O
-P2MDOUT &= ~(1<<2);  // Set channel P1.7 with open-drain drive
-P2 |= (1<<2);   // Set channel 2.2 high (actually disables both drives since open-drain)
+P2SKIP |= (1<<2);  // Set channel P1.7 to skip cross-bar assignment
+P1MDIN |= (1<<7);  // Set channel P1.7 as digital I/O
+P2MDOUT &= ~(1<<2);  // Set channel P1.7 with open-drain drive
+P2 |= (1<<2);   // Set channel 2.2 high (actually disables both drives since open-drain)
 ```
 
 ## Configuring An Analog Input
@@ -53,18 +53,18 @@ P2 |= (1<<2);   // Set channel 2.2 high (actually disables both drives since o
 Setting a pin to an analog input disables all digital drivers and allows the pin to be used for an analog function such as the ADC. The analog input configuration is the lowest power state for a pin, and it is recommended to set any unused pins to analog inputs when designing a low power circuit. The last two lines of code are not strictly necessary, but are good practice. This code uses channel P2.2 as the example pin.
 
 ```c
-P2SKIP |= (1<<1);  // Set channel P2.2 to skip cross-bar assignment
-P2MDIN &= ~(1<<1);  // Set port 2.2 to analog input
-P2MDOUT &= ~(1<<1);    // Set channel 2.2 with open-drain drive
-P2 |= (1<<1);   // Set channel 2.2 high (actually disables both drives since open-drain)
+P2SKIP |= (1<<1);  // Set channel P2.2 to skip cross-bar assignment
+P2MDIN &= ~(1<<1);  // Set port 2.2 to analog input
+P2MDOUT &= ~(1<<1);    // Set channel 2.2 with open-drain drive
+P2 |= (1<<1);   // Set channel 2.2 high (actually disables both drives since open-drain)
 ```
 
 ## Macro For Specific Pin Addressing
 
-Keil allows a method of writing a function macro so that from that point on you can address a pin directly (as opposed to above where we were modifying the whole byte).  The first step is to define a function typically called SBIT (although it could be named anything)
+Keil allows a method of writing a function macro so that from that point on you can address a pin directly (as opposed to above where we were modifying the whole byte).  The first step is to define a function typically called SBIT (although it could be named anything)
 
 ```c
-#define SBIT(name, addr, bit)  sbit  name = addr^bit
+#define SBIT(name, addr, bit)  sbit  name = addr^bit
 ```
 
 This function takes a word to represent the pin, the special function register that controls the entire port that the pin is on, and the pin number on that port. The next trick is to associate a word with a pin, and use the sbit function as a macro to replace the word whenever you use it in the code.

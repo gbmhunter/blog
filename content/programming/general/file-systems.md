@@ -10,7 +10,7 @@ type: page
 
 ## FatFs
 
-URL: [http://elm-chan.org/fsw/ff/00index_e.html](http://elm-chan.org/fsw/ff/00index_e.html)
+URL: [http://elm-chan.org/fsw/ff/00index_e.html](http://elm-chan.org/fsw/ff/00index_e.html)
 
 A generic file-system module designed for embedded systems which supports a Windows-compatible FAT file structure. It is written in compliance with ANSI C and is separated from the disk I/O layer, therefore is independent of hardware. Supports RTOS (i.e. supports threading/tasks).
 

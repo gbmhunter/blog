@@ -9,7 +9,7 @@ url: /programming/languages/javascript/namespaces
 
 ## Overview
 
-Unlike many object-orientated languages such as C++ and C#, namespaces are not natively supported in JavaScript.
+Unlike many object-orientated languages such as C++ and C#, namespaces are not natively supported in JavaScript.
 
 However, they can be "faked" in a number of different ways. One of the easiest is to enclose everything within a variable:
     

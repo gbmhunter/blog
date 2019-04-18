@@ -10,7 +10,7 @@ The best tutorial of Binding in WPF that I've found is [here](http://blog.cylewi
 
 ## ObservableCollection
 
-The `ObservableCollection()`  class is used plenty when it comes to binding.
+The `ObservableCollection()`  class is used plenty when it comes to binding.
 
 ## Searching For And Selecting A Particular Element
 

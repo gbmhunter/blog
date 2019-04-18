@@ -30,7 +30,7 @@ HASL is one of the most widely used surface finishes. It involves dipping the ci
 
 HASL used to be the de-facto surface finish for most PCB's. As component footprint has shrunk, the limitations of HASL have begun to cause serious issues.
 
-The major issue is the uneven surface that HASL provides. With 0.5-0.8mm pitch QFN and BGA components, this irregular solder deposit can bridge pads and create shorts.
+The major issue is the uneven surface that HASL provides. With 0.5-0.8mm pitch QFN and BGA components, this irregular solder deposit can bridge pads and create shorts.
 
 The thermal shock from dipping the PCB into a pool of molten solder can damage tiny vias and tracks, even causing a via to crack. This may result in the board working fine at room temperatures, but failing at -10°C as the metal in the via contracts.
 
@@ -68,13 +68,13 @@ Immersion silver is good alternative to ENIG.
 
 * Moderately expensive
 * Finger-grease and solvents can cause wetting problems
-* Gets attacked in acidic and sulphur environments
+* Gets attacked in acidic and sulphur environments
 
 PCB's plated with IAg must not be handled directly or cleaned with a solvent prior to soldering, as finger-grease and solvents can cause wetting problems.
 
 ## Electroless Nickel Immersion Gold (ENIG)
 
-ENIG is becoming more and more popular as component package pitch sizes drop, and RoHS regulation becomes more common place.
+ENIG is becoming more and more popular as component package pitch sizes drop, and RoHS regulation becomes more common place.
 
 {{< figure src="/images/2015/10/example-of-immersion-gold-pcb-surface-finish.jpg" width="1557px" caption="Example of an immersion gold PCB surface finish. Image from http://www.standardpcb.com/."  >}}
 

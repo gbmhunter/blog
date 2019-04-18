@@ -25,7 +25,7 @@ Max Distance Between Charges: >15km (haven't tested this yet either!)
 
 Total Man Hours To Complete: 551.2
 Time From First Starting Project: 2-years
-Total Money Spent:  NZ$3611
+Total Money Spent:  NZ$3611
 
 **And Time For Some Photos:**
 

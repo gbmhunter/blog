@@ -12,7 +12,7 @@ A class can be basically seen as a super-charged structure. It can do all the th
 
 ## A Simple Class Example
 
-The following example defines a class for a `Point` (user chosen name).
+The following example defines a class for a `Point` (user chosen name).
 
 ```c++
 class Point {
@@ -39,7 +39,7 @@ We can then go and use the Point class to create Point objects.
 Point myFirstPoint = new Point();
 ```
 
-The above statement says two things, first it says that myFirstPoint is of type Point (Point myFirstPoint), and then it is equal to a new Point object (`= new Point();`). The first part **declares** the variable, the second part **initialises** the variable.
+The above statement says two things, first it says that myFirstPoint is of type Point (Point myFirstPoint), and then it is equal to a new Point object (`= new Point();`). The first part **declares** the variable, the second part **initialises** the variable.
 
 Note that a class by itself doesn't create an objects you can use (the exception to this rule is `static` members).
 

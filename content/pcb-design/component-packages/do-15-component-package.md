@@ -24,7 +24,7 @@ url: /pcb-design/component-packages/do-15-component-package
 <tr >
 <td >Variants</td>
 
-<td > 
+<td > 
 </td>
 </tr>
 <tr >
@@ -80,7 +80,7 @@ url: /pcb-design/component-packages/do-15-component-package
 <td >Land Area
 </td>
 
-<td >38mm2 (with 10.16mm pitch)
+<td >38mm2 (with 10.16mm pitch)
 </td>
 </tr>
 <tr >
@@ -98,9 +98,9 @@ url: /pcb-design/component-packages/do-15-component-package
 
 <td >
 <ul>
-<li><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=258357">DO-204AC</a> (horizontal, variable pitch, but red!)</li>
-<li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=345968">DO-204AC</a> (horizontal, fixed 12.7mm pitch)</li>
-<li><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=348667">DO-204AC</a> (vertical, fixed 2.54mm pitch)</li>
+<li><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=258357">DO-204AC</a> (horizontal, variable pitch, but red!)</li>
+<li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=345968">DO-204AC</a> (horizontal, fixed 12.7mm pitch)</li>
+<li><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=348667">DO-204AC</a> (vertical, fixed 2.54mm pitch)</li>
 </ul>
 </td>
 </tr>

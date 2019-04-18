@@ -24,7 +24,7 @@ tags:
 
     {{< figure src="/images/2016/05/internal-schematic-of-low-capacitance-tvs-diode-annotated.png" width="454px" caption="The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component." >}}  
 
-* Added sections to the [PTC Type Thermistor page](/electronics/components/circuit-protection/ptc-type-thermistor) about [PTC Thermistors vs. Fuses](/electronics/components/circuit-protection/ptc-type-thermistor#ptc-thermistors-vs-fuses) and [How To Calculate The Triggered Resistance](/electronics/components/circuit-protection/ptc-type-thermistor#how-to-calculate-the-triggered-resistance).  
+* Added sections to the [PTC Type Thermistor page](/electronics/components/circuit-protection/ptc-type-thermistor) about [PTC Thermistors vs. Fuses](/electronics/components/circuit-protection/ptc-type-thermistor#ptc-thermistors-vs-fuses) and [How To Calculate The Triggered Resistance](/electronics/components/circuit-protection/ptc-type-thermistor#how-to-calculate-the-triggered-resistance).  
 
     {{< figure src="/images/2016/03/positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png" width="402px" caption="Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor." >}}  
 

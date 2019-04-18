@@ -9,13 +9,13 @@ url: /programming/version-control-systems/mercurial/ignore-files/visual-studio-v
 
 ## Overview
 
-Following is an Mercurial ignore file for excluding the unnecessary files from a Visual Studio C# project (written when using the 2010 version, but should work with others). The ignore file is written using regex syntax.
+Following is an Mercurial ignore file for excluding the unnecessary files from a Visual Studio C# project (written when using the 2010 version, but should work with others). The ignore file is written using regex syntax.
 
-It only excludes files that are within a folder called <Visual Studio root folder>. This is to stop the ignore file excluding other files with the same extension from other sections of the repository. Replace <Visual Studio root folder> with whatever folder name you choose to put the code in, or delete  <Visual Studio root folder>/ completely and it will ignore these files anywhere in your repository.
+It only excludes files that are within a folder called <Visual Studio root folder>. This is to stop the ignore file excluding other files with the same extension from other sections of the repository. Replace <Visual Studio root folder> with whatever folder name you choose to put the code in, or delete  <Visual Studio root folder>/ completely and it will ignore these files anywhere in your repository.
 
 The type of file excluded is commented beside each line, just incase you want to re-introduce some of these files for some reason.
 
-Copy this code into the .hgignore file found in the root directory of your repository.
+Copy this code into the .hgignore file found in the root directory of your repository.
 
 ## Ignore File
 

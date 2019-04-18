@@ -87,7 +87,7 @@ Malt
 </tr>
 <tr >
 
-<td >Mash Temp (°C)
+<td >Mash Temp (°C)
 </td>
 
 <td >69
@@ -95,7 +95,7 @@ Malt
 </tr>
 <tr >
 
-<td >Mash Time (min)
+<td >Mash Time (min)
 </td>
 
 <td >60
@@ -114,7 +114,7 @@ Malt
 <td >Mash Volume
 </td>
 
-<td > <20L (inch above the grain surface
+<td > <20L (inch above the grain surface
 </td>
 </tr>
 </tbody>
@@ -131,10 +131,10 @@ The mash temperature was a little higher than hoped. Due to the large amount of 
 <tbody >
 <tr >
 
-<td >Sparge Temp (°C)
+<td >Sparge Temp (°C)
 </td>
 
-<td > 69
+<td > 69
 </td>
 </tr>
 <tr >
@@ -142,7 +142,7 @@ The mash temperature was a little higher than hoped. Due to the large amount of 
 <td >Sparge Time (min)
 </td>
 
-<td > 30
+<td > 30
 </td>
 </tr>
 <tr >
@@ -199,7 +199,7 @@ The mash temperature was a little higher than hoped. Due to the large amount of 
 <td >Start SG (g/mL)
 </td>
 
-<td > 1.038
+<td > 1.038
 </td>
 </tr>
 <tr >
@@ -207,7 +207,7 @@ The mash temperature was a little higher than hoped. Due to the large amount of 
 <td >End Volume (L)
 </td>
 
-<td > 24
+<td > 24
 </td>
 </tr>
 <tr >
@@ -215,7 +215,7 @@ The mash temperature was a little higher than hoped. Due to the large amount of 
 <td >End SG (g/mL)
 </td>
 
-<td > 1.072
+<td > 1.072
 </td>
 </tr>
 </tbody>
@@ -308,7 +308,7 @@ Thankfully, this time around, the kettle filter didn't get as clogged as much as
 <td >Start SG (g/mL)
 </td>
 
-<td > 1.072
+<td > 1.072
 </td>
 </tr>
 <tr >
@@ -337,7 +337,7 @@ Thankfully, this time around, the kettle filter didn't get as clogged as much as
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
 <td >16

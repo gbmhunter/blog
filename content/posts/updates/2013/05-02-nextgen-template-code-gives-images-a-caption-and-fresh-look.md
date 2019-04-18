@@ -32,6 +32,6 @@ But...it's not perfect...yet. As you can see below, in certain situations the im
 
 {{< figure src="/images/misc/cladlab-nextgen-custom-template-image-code-not-fully-working.png" caption="When the NextGEN custom template code isn't working correctly, this happens."  width="650px" >}}
 
-I am no full-time website designer. Playing with HTML objects like div's  and getting the right float setting, width, height, margin, alignment e.t.c can be a guestimate at the best of times. I will hopefully work out how to fix this sometime soon...
+I am no full-time website designer. Playing with HTML objects like div's  and getting the right float setting, width, height, margin, alignment e.t.c can be a guestimate at the best of times. I will hopefully work out how to fix this sometime soon...
 
 Note that this custom template has been disabled for the images in this post, otherwise you'd get the mirror-in-a-mirror look which would be utterly confusing.

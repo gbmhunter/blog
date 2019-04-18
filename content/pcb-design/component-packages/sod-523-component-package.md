@@ -38,7 +38,7 @@ url: /pcb-design/component-packages/sod-523-component-package
 <td >Similar To
 </td>
 
-<td > 
+<td > 
 </td>
 </tr>
 <tr >
@@ -78,7 +78,7 @@ url: /pcb-design/component-packages/sod-523-component-package
 <td >Thermal Resistance
 </td>
 
-<td > 
+<td > 
 </td>
 </tr>
 <tr >
@@ -88,7 +88,7 @@ url: /pcb-design/component-packages/sod-523-component-package
 
 <td >
     <ul>
-        <li>Length = 1.65mm</li>
+        <li>Length = 1.65mm</li>
         <li>Width = 0.85mm</li>
         <li>Height = 0.65mm</li>
     </ul>

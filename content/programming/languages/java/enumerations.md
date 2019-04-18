@@ -13,7 +13,7 @@ Enumerations in Java are treated as proper objects.
 
 ## Iterating Over A Enum
 
-An enum can be iterated over by using a for in the following way:
+An enum can be iterated over by using a for in the following way:
     
 ```java
 for(MyEnum myEnum: MyEnum.values()) {
@@ -23,8 +23,8 @@ for(MyEnum myEnum: MyEnum.values()) {
 
 ## Indexing An Array Using An Enum
 
-Because enumerations are proper objects, there is no way to directly use an enumeration as a index to a array (or any type of Collection for that matter). This is unlike C++, in where an enum is essentially a integer, and can be treated as such.
+Because enumerations are proper objects, there is no way to directly use an enumeration as a index to a array (or any type of Collection for that matter). This is unlike C++, in where an enum is essentially a integer, and can be treated as such.
 
-The recommended way is not use a enum as an array index at all, but rather replace the use of the array with a EnumMap instead.
+The recommended way is not use a enum as an array index at all, but rather replace the use of the array with a EnumMap instead.
 
-O.K., so you really, really want to use an enum as an array index? This is not recommended, but you can use a Java enum as an array index by using the method enum.toOrdinal().  
+O.K., so you really, really want to use an enum as an array index? This is not recommended, but you can use a Java enum as an array index by using the method enum.toOrdinal().  

@@ -8,13 +8,13 @@ type: page
 
 ## Overview
 
-Zinc-air batteries are batteries characterised by their use of zinc and a reaction with atmospheric oxygen. There is both non-rechargeable (primary) and rechargeable (secondary) zinc-air batteries, although the primary batteries are far more common.
+Zinc-air batteries are batteries characterised by their use of zinc and a reaction with atmospheric oxygen. There is both non-rechargeable (primary) and rechargeable (secondary) zinc-air batteries, although the primary batteries are far more common.
 
 {{< img src="zinc-air-battery-cut-away-annotated.jpg" width="458px" caption="A cut-away of a zinc-air button cell with annotations. Image from http://hear-better.com/."  >}}
 
 ## Chemistry
 
-A zinc-air battery is a specific type of metal-air battery. 
+A zinc-air battery is a specific type of metal-air battery. 
 
 The reactions at each part of the battery are shown below:
 
@@ -46,7 +46,7 @@ The theoretical voltage of a zinc-air cell is 1.65V (based on the chemistry). In
 
 ## Energy Density
 
-One of zinc-air's unique properties is that they consume atmospheric oxygen as part of the chemical reaction. This means that they can have higher energy densities than other similar batteries because one of the reactants is not actually contained within the battery.
+One of zinc-air's unique properties is that they consume atmospheric oxygen as part of the chemical reaction. This means that they can have higher energy densities than other similar batteries because one of the reactants is not actually contained within the battery.
 
 ## Storage
 
@@ -54,4 +54,4 @@ Zinc-air batteries can be stored without losing much energy as long as oxygen is
 
 ## Applications
 
-Most digital hearing aids use zinc-air button cells. You remove a tab to allow air into the battery, starting the reaction that produces an electro-motive force (i.e. the voltage).
+Most digital hearing aids use zinc-air button cells. You remove a tab to allow air into the battery, starting the reaction that produces an electro-motive force (i.e. the voltage).

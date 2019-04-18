@@ -17,7 +17,7 @@ The second prototype h-bridge circuit blew up! It was working when powering a li
 
 ### 25/01/2012
 
-News is that the PCB's won't be made by Massey anymore, so I'm going to have to submit them to a professional PCB manufacturer. Considering either [Circuit Labs](http://www.circuitlabs.co.nz/) or [PCB Zone](http://www.pcbzone.net/) (see more info on PCB manufacturers [here](/electronics/general/electrical-suppliers/)).
+News is that the PCB's won't be made by Massey anymore, so I'm going to have to submit them to a professional PCB manufacturer. Considering either [Circuit Labs](http://www.circuitlabs.co.nz/) or [PCB Zone](http://www.pcbzone.net/) (see more info on PCB manufacturers [here](/electronics/general/electrical-suppliers/)).
 
 ### 07/01/2012
 
@@ -101,7 +101,7 @@ Parts from Hobby King arrived in the mail! See the photo's below...
 
 **09/12/2010**
 
-BLDC motor, speed controller, Li-Po batteries, charger and other motor accessories ordered from [www.hobbyking.com](http://www.hobbyking.com/)
+BLDC motor, speed controller, Li-Po batteries, charger and other motor accessories ordered from [www.hobbyking.com](http://www.hobbyking.com/)
 
 **25/06/2010**
 

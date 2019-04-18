@@ -54,7 +54,7 @@ The protocol is based of the concept of an _open network_, in where there **no m
 
 ## Standard network-variable types (SNVTs)
 
-_Standard network-variable types_ (SNVTs) are used for sharing data over the network. 
+_Standard network-variable types_ (SNVTs) are used for sharing data over the network. 
 
 They contain variable context (e.g. temperature, height), unit of measure (e.g. voltage, time, current) and dimension (e.g. volts, milliseconds, GPM).
 
@@ -97,7 +97,7 @@ A "segment" is a single piece of wire. Up to 64 nodes can be connected to a sing
 
 ## Wiring Topology
 
-There are two different wiring topologies for the FTT-10 transceiver:   
+There are two different wiring topologies for the FTT-10 transceiver:   
 
 * Free Topology  
 * Doubly Terminated
@@ -112,7 +112,7 @@ Doubly terminated uses a termination module at each end of a segment, and does n
 
 ## Repeaters
 
-Repeaters can be connected to the transmission medium to amplify the incoming signal and pass it on.  
+Repeaters can be connected to the transmission medium to amplify the incoming signal and pass it on.  
 
 ## Routers
 
@@ -143,25 +143,25 @@ Each node's Neuron processor contains a unique 48-bit ID. Each node is also assi
 
 Domains can be used to keep two network applications that share the same transmission medium separate from each other. Nodes must be on the same domain to communicate. Nodes can be a member of up to two domains (this feature is not often used).
 
-A LON domain has an identifier of 0, 1, 3, or 6 byte length. The length is variable so that you can optimise it for a particular network. Since the domain identifier is part of every packet, the domain ID's length has a big impact in the network performance. For example, a private network may only use 1 byte for the domain length, while a public network (or one on a more open network medium such as powerlines or RF) may choose to use the full 6 bytes.
+A LON domain has an identifier of 0, 1, 3, or 6 byte length. The length is variable so that you can optimise it for a particular network. Since the domain identifier is part of every packet, the domain ID's length has a big impact in the network performance. For example, a private network may only use 1 byte for the domain length, while a public network (or one on a more open network medium such as powerlines or RF) may choose to use the full 6 bytes.
 
 A domain with a 0-byte identifier is referred to as the _zero-length domain_, and should be reserved for network management purposes only.
 
 ## Subnet
 
-A subnet is the logical grouping of up to 127 nodes from one or more channels (a channel is a set of all LON devices that are connected to the same transmission medium). Each LON domain can accommodate up to 255 subnets. 
+A subnet is the logical grouping of up to 127 nodes from one or more channels (a channel is a set of all LON devices that are connected to the same transmission medium). Each LON domain can accommodate up to 255 subnets. 
 
 A subnet is usually associated with one channel only, whereas the reverse is not normally true.
 
 ## Node Address
 
-The node address is a subnet-unique address for the node. It is a numerical identifier in  the range 1-127. It is used to uniquely identify a node on a subnet. Routers ignore the node address. This is not to be confused with the unique 48-bit ID contained in the Neuron processor.
+The node address is a subnet-unique address for the node. It is a numerical identifier in  the range 1-127. It is used to uniquely identify a node on a subnet. Routers ignore the node address. This is not to be confused with the unique 48-bit ID contained in the Neuron processor.
 
 The subnet and node addresses can be referred together as _subnet/node-ID addressing_ (S/N addressing).
 
 ## Broadcasts
 
-The LON network supports broadcasting, which is when a message is sent to all nodes in a particular scope. The scope can either be a subnet or the entire domain. 
+The LON network supports broadcasting, which is when a message is sent to all nodes in a particular scope. The scope can either be a subnet or the entire domain. 
 
 ## Group Addressing
 
@@ -185,11 +185,11 @@ The Echelon FT5000 (manf. part number 14305R-ES) is a modern (as of Feb 2015) LO
 
 ### Memory
 
-The FT5000 requires at least 2kB of external serial EEPROM for storing it's configuration data. The maximum size the EEPROM is allowed to be is 64kB. You also need space to store your user application code (since the FT5000 itself does not have any internal NVM). You can either use the EEPROM data, or if that is not big enough, use an external SPI flash IC. Note that although the FT5000 supports I2C flash, the datasheet says that as of it's publication date, it is not aware of any I2C flash which meets the FT5000's specifications. I am not aware of any size restrictions for the flash memory.
+The FT5000 requires at least 2kB of external serial EEPROM for storing it's configuration data. The maximum size the EEPROM is allowed to be is 64kB. You also need space to store your user application code (since the FT5000 itself does not have any internal NVM). You can either use the EEPROM data, or if that is not big enough, use an external SPI flash IC. Note that although the FT5000 supports I2C flash, the datasheet says that as of it's publication date, it is not aware of any I2C flash which meets the FT5000's specifications. I am not aware of any size restrictions for the flash memory.
 
 {{< img src="ft5000-allowed-external-memory-configurations.png" width="270px" caption="The permitted external memory configurations for the FT5000 processor."  >}}
 
-Because the way of writing SPI flash memory can very slightly between manufacturers (reads are all the same), a small function resides in the EEPROM that instructs the FT5000 how to correctly write to the device. Echelon provides three memory ICs which have been "qualified" to work with the FT5000. These are:
+Because the way of writing SPI flash memory can very slightly between manufacturers (reads are all the same), a small function resides in the EEPROM that instructs the FT5000 how to correctly write to the device. Echelon provides three memory ICs which have been "qualified" to work with the FT5000. These are:
 
 * Atmel AT25F512B 512-Kilobit 2.7-volt Minimum SPI Serial Flash Memory.
 * Numonyx M25P05-A 512-Kbit, serial flash memory, 50MHz SPI bus interface.
@@ -203,11 +203,11 @@ The FT5000 is designed to run of a 3.3V supply. In receive mode, it typically dr
 
 ### Transmission Mediums
 
-It can be used with the FT-X3 communications transformer to use as a TF/PT-10 node. It also supports the older FT-X2 and FT-X1 transformers.
+It can be used with the FT-X3 communications transformer to use as a TF/PT-10 node. It also supports the older FT-X2 and FT-X1 transformers.
 
 ### Application Code
 
-Because the FT5000 uses a proprietary architecture and instruction set (this is called the Neuron core), the code can only be compiled with either the NodeBuilder FX Development Tool or the Mini FX Evaluation Kit.
+Because the FT5000 uses a proprietary architecture and instruction set (this is called the Neuron core), the code can only be compiled with either the NodeBuilder FX Development Tool or the Mini FX Evaluation Kit.
 
 The FT5000 supports JTAG for production-time testing of devices.
 
@@ -215,16 +215,16 @@ It has 12 I/O, all of which can be configured to one or more of 35 predefined I/
 
 ### More Resources
 
-The [FT5000 datasheet](http://downloads.echelon.com/support/documentation/datashts/142x5R_FT_5000_Smart_Transceiver.pdf) (local copy [here](/images/2015/02/Echelon-142x5R-FT5000-Smart-Transceiver-Datasheet.pdf)) provides a brief 9-page overview of the FT5000.
+The [FT5000 datasheet](http://downloads.echelon.com/support/documentation/datashts/142x5R_FT_5000_Smart_Transceiver.pdf) (local copy [here](/images/2015/02/Echelon-142x5R-FT5000-Smart-Transceiver-Datasheet.pdf)) provides a brief 9-page overview of the FT5000.
 
-You might then want to move onto the heavier 194-page [Series 5000 Chip Data Book](http://www.echelon.com/assets/bltf1b015c7aa71641a/005-0199-01B_Series_5000_Databook.pdf) (local copy [here](/images/2015/02/Echelon-005-0199-01B-Series-5000-Chip-Data-Book.pdf)).  
+You might then want to move onto the heavier 194-page [Series 5000 Chip Data Book](http://www.echelon.com/assets/bltf1b015c7aa71641a/005-0199-01B_Series_5000_Databook.pdf) (local copy [here](/images/2015/02/Echelon-005-0199-01B-Series-5000-Chip-Data-Book.pdf)).  
 
-For the firmware developers interested in writing code for running on the FT5000, you would want to read the [LonWorks Host Application Programmer's Guide](http://www.echelon.com/assets/blt7a0ec688f1e43c90/078-0016-01B.pdf) (local copy [here](/images/2015/02/LonWorks-Host-Application-Programmers-Guide-Revision-2.pdf)).
+For the firmware developers interested in writing code for running on the FT5000, you would want to read the [LonWorks Host Application Programmer's Guide](http://www.echelon.com/assets/blt7a0ec688f1e43c90/078-0016-01B.pdf) (local copy [here](/images/2015/02/LonWorks-Host-Application-Programmers-Guide-Revision-2.pdf)).
 
 ## FT 6000 Family
 
 The FT 6000 family of LON microcontrollers (known as _smart transceivers_) are the latest generation (as of Dec 2015) of LON network controller ICs. They supersede the FT 5000 family of microcontrollers.
 
-The FT 6000 family of microcontrollers have identical pin and package layouts to the FT 5000 series, so they should be interchangeable.
+The FT 6000 family of microcontrollers have identical pin and package layouts to the FT 5000 series, so they should be interchangeable.
 
 The FT 6000 transceiver also has a Neuron 6000 processor onboard. The internal system clock can run at speeds up to 80MHz. It has 64kB of internal RAM and 16kB of internal ROM, with the option of adding additional external RAM, up to 256kB in size.

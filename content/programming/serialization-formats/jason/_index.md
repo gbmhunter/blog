@@ -12,7 +12,7 @@ type: "page"
 
 JSON (JavaScript object notation) is a way of describing data that follows the syntax for creating an object in JavaScript. It is commonly used to pass messages across the internet, as an alternative to XML.
 
-JSON files have the file extension .json.
+JSON files have the file extension .json.
 
 ## Comments
 
@@ -33,7 +33,7 @@ Below is an example of a comment inside a JSON file:
 ]}
 ```
 
-You can have multiple comments with the same `"_comment"`  identifier (this is called a key), this does not break any strict rules.
+You can have multiple comments with the same `"_comment"`  identifier (this is called a key), this does not break any strict rules.
 
 ## Libraries
 

@@ -21,8 +21,8 @@ The loop made with the probe tip and it's ground connection forms an unshielded 
 
 Most general-purpose oscilloscope have very poor common-mode rejection. The common-mode rejection capability of an oscilloscope probe can be gauged by firstly connecting the probe tip and ground together, and then connecting both up a noisy PCB track. Ideally, the oscilloscope waveform should still be a flat line. The more noise seen on the oscilloscope, the poorer the probe's common-mode rejection.
 
-The impedance mismatch between the noise source, the tracks, the scope probe and oscilloscope may cause reflections to reduce the accuracy of your noise measurements. 
+The impedance mismatch between the noise source, the tracks, the scope probe and oscilloscope may cause reflections to reduce the accuracy of your noise measurements. 
 
-For example, the output impedance of a SMPS may be a few `\(m\Omega\)`, which then connects to the PCB tracks and scope probe, which may have an impedance of `\(50\Omega\)`. This then connects to the oscilloscope which has an impedance in the `\(M\Omega\)`. 
+For example, the output impedance of a SMPS may be a few `\(m\Omega\)`, which then connects to the PCB tracks and scope probe, which may have an impedance of `\(50\Omega\)`. This then connects to the oscilloscope which has an impedance in the `\(M\Omega\)`. 
 
-These reflections can be minimised by adding the appropriate termination resistors, e.g. a `\(50\Omega\)` resistor in series with the SMPS (as close to the SMPS output as you can), and then another `\(50\Omega\)` resistor in parallel (shunt to ground), as close to the oscilloscope input as you can. All noise measurements
+These reflections can be minimised by adding the appropriate termination resistors, e.g. a `\(50\Omega\)` resistor in series with the SMPS (as close to the SMPS output as you can), and then another `\(50\Omega\)` resistor in parallel (shunt to ground), as close to the oscilloscope input as you can. All noise measurements

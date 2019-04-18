@@ -13,7 +13,7 @@ url: /pcb-design/component-packages/d2pak-to-263-component-package
 <tbody><tr >
 <td >Name
 </td>
-<td > Transistor Outline 263
+<td > Transistor Outline 263
 </td></tr><tr >
 <td>Synonyms</td>
 <td>
@@ -31,7 +31,7 @@ url: /pcb-design/component-packages/d2pak-to-263-component-package
 <td >
 <ul>
 <li>TO-263-X1X2 (where X1 is the lead count and X2 is the length of the centre pin).</li>
-<li>TO-263 THIN (a thinner variant of the standard TO-263 package by Texas Instruments)</li>
+<li>TO-263 THIN (a thinner variant of the standard TO-263 package by Texas Instruments)</li>
 </ul>
 </td></tr><tr >
 <td >Similar To
@@ -109,7 +109,7 @@ url: /pcb-design/component-packages/d2pak-to-263-component-package
 
 ## The Standard Package (TO-263)
 
-This package can be considered the SMT version of the TO-220AB. It is a 3, 5 or 7 leaded heavy-duty package that allows for good heat-sinking due to a large pad on it's underside. Used frequently for high power MOSFETs, LDOs and SMPS. Comes with either a normal middle lead (X2 = nothing) or a short, cut-off middle lead (X2 = S).
+This package can be considered the SMT version of the TO-220AB. It is a 3, 5 or 7 leaded heavy-duty package that allows for good heat-sinking due to a large pad on it's underside. Used frequently for high power MOSFETs, LDOs and SMPS. Comes with either a normal middle lead (X2 = nothing) or a short, cut-off middle lead (X2 = S).
 
 {{< figure src="/images/2015/04/d2pak-to-263-component-package-3d-render.jpg" width="345px" caption="A 3D render of the D2PAK (TO-263) component package."  >}}
 

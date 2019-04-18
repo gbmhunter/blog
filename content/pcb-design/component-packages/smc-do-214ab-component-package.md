@@ -59,7 +59,7 @@ url: /pcb-design/component-packages/smc-do-214ab-component-package
 </td>
 <td >
 <ul>
-<li>50.6mm2 (package only)</li>
+<li>50.6mm2 (package only)</li>
 <li>50.6mm2 (package with recommended land pattern)</li>
 </ul>
 </td></tr><tr >

@@ -10,9 +10,9 @@ type: page
 
 ## Overview
 
-This page is about electrical devices that glow due to _**electroluminescence**_. For other electrical components that emit light, check out the [IR Devices page,](/electronics/components/ir-devices) the [LED page](/electronics/components/diodes/leds), [LCD Screen page](/electronics/components/lcd-screens), or the [OLED page](/electronics/components/oled-screens).
+This page is about electrical devices that glow due to _**electroluminescence**_. For other electrical components that emit light, check out the [IR Devices page,](/electronics/components/ir-devices) the [LED page](/electronics/components/diodes/leds), [LCD Screen page](/electronics/components/lcd-screens), or the [OLED page](/electronics/components/oled-screens).
 
-The principle way electroluminescence is created in current electronics is by applying an AC waveform across a thin layer of **phosphor**. This can be treated as a capacitor, with the phosphor being the dielectric. The phosphor glows as a small amount of  current passes through it.
+The principle way electroluminescence is created in current electronics is by applying an AC waveform across a thin layer of **phosphor**. This can be treated as a capacitor, with the phosphor being the dielectric. The phosphor glows as a small amount of  current passes through it.
 
 ## EL Wire
 

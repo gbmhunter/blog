@@ -11,7 +11,7 @@ url: /programming/website-design/nodejs/using-express
 
 Express is a web application framework for node. The Express framework itself uses Connect for some of it's functionality, a middleware framework for node.
 
-It's website is [http://expressjs.com/](http://expressjs.com/).
+It's website is [http://expressjs.com/](http://expressjs.com/).
 
 ## Installing
 
@@ -38,4 +38,4 @@ app.get('/', function(req, res){
 app.listen(3000);
 ```
 
-To run this, save the code as a .js file, and instruct node to run this file from the command line by typing node filename.js.
+To run this, save the code as a .js file, and instruct node to run this file from the command line by typing node filename.js.

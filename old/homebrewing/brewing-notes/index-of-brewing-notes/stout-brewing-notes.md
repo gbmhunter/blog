@@ -149,7 +149,7 @@ The combination of berries and hops made draining after the boil finished a nigh
 </tr>
 <tr >
 
-<td >Mash Start Temp (°C)
+<td >Mash Start Temp (°C)
 </td>
 
 <td >65
@@ -157,7 +157,7 @@ The combination of berries and hops made draining after the boil finished a nigh
 </tr>
 <tr >
 
-<td >Mash End Temp (°C)
+<td >Mash End Temp (°C)
 </td>
 
 <td >65
@@ -165,7 +165,7 @@ The combination of berries and hops made draining after the boil finished a nigh
 </tr>
 <tr >
 
-<td >Mash Time (min)
+<td >Mash Time (min)
 </td>
 
 <td >60
@@ -184,7 +184,7 @@ The combination of berries and hops made draining after the boil finished a nigh
 <td >Mash Volume
 </td>
 
-<td > (inch above the grain surface)
+<td > (inch above the grain surface)
 </td>
 </tr>
 </tbody>
@@ -200,7 +200,7 @@ The combination of berries and hops made draining after the boil finished a nigh
 <tbody >
 <tr >
 
-<td >Sparge Temp (°C)
+<td >Sparge Temp (°C)
 </td>
 
 <td >80
@@ -498,7 +498,7 @@ The combination of berries and hops made draining after the boil finished a nigh
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
 <td >?
@@ -557,7 +557,7 @@ The combination of berries and hops made draining after the boil finished a nigh
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
 <td >n/a

@@ -52,31 +52,31 @@ A list of some of the supported operating systems and downloads for them can be 
 
 ### Occidentalis
 
-A port of the Raspian OS by Adafruit industries which makes the OS more hacker friendly. It provides hardware SPI and I2C support, Realtek RTL8188CUS WiFi support (a common chipset used in USB WiFi modules).
+A port of the Raspian OS by Adafruit industries which makes the OS more hacker friendly. It provides hardware SPI and I2C support, Realtek RTL8188CUS WiFi support (a common chipset used in USB WiFi modules).
 
 ### Pidora
 
-URL: [http://pidora.ca/](http://pidora.ca/)
+URL: [http://pidora.ca/](http://pidora.ca/)
 
 Pidora is a mod of Fedora for the RPi.
 
 ### Raspian
 
-URL: [http://www.raspbian.org/](http://www.raspbian.org/)
+URL: [http://www.raspbian.org/](http://www.raspbian.org/)
 
 A Debian-based (Ubuntu-like) operating system optimised for running on the RPi. It is one of the most popular operating systems for the RPi. Provides a config menu the first time you boot, where you can change settings such as the password, enabling SSH, expanding the file system to use the entire SD card, and configuring the keyboard/mouse.
 
-You can bring up the config menu at any time by typing the command sudo raspi-config.
+You can bring up the config menu at any time by typing the command sudo raspi-config.
 
 To load up the GUI from the command-line, type startx.
 
-To shutdown the GUI from the command-line, type sudo shutdown "now" (this also shuts down any other processes).
+To shutdown the GUI from the command-line, type sudo shutdown "now" (this also shuts down any other processes).
 
-The nano text editor comes pre-installed, type nano to load it.
+The nano text editor comes pre-installed, type nano to load it.
 
 ### RISC OS
 
-URL: [https://www.riscosopen.org/wiki/documentation/show/Welcome%20to%20RISC%20OS%20Pi](https://www.riscosopen.org/wiki/documentation/show/Welcome%20to%20RISC%20OS%20Pi)
+URL: [https://www.riscosopen.org/wiki/documentation/show/Welcome%20to%20RISC%20OS%20Pi](https://www.riscosopen.org/wiki/documentation/show/Welcome%20to%20RISC%20OS%20Pi)
 
 A version of the RISC OS (a operating system dating back to 1987 for 32-bit ARM chips) for the RPi.
 
@@ -97,7 +97,7 @@ A version of the RISC OS (a operating system dating back to 1987 for 32-bit ARM 
 
 
   * Apple AirPlay
-  * DLNA streaming from phone/tablet
+  * DLNA streaming from phone/tablet
   * Google Music
   * MP3/OGG/FLAC/AAC (on SD Card, USB or Network)
   * Spotify
@@ -177,10 +177,10 @@ A version of the RISC OS (a operating system dating back to 1987 for 32-bit ARM 
 </tr>
 <tr >
 
-<td > 
+<td > 
 </td>
 
-<td > 
+<td > 
 </td>
 </tr>
 <tr >
@@ -197,7 +197,7 @@ A version of the RISC OS (a operating system dating back to 1987 for 32-bit ARM 
 
 Comments:
 
-Volumio began as the RaspyFi project in December 2012. It then expanded to support many embedded platforms including the Udoo and BeagleBoard. IMO, Volumio looks more polished than the Pi MusicBox.
+Volumio began as the RaspyFi project in December 2012. It then expanded to support many embedded platforms including the Udoo and BeagleBoard. IMO, Volumio looks more polished than the Pi MusicBox.
 
 ## RPi Store
 
@@ -247,7 +247,7 @@ You can log into a RaspberryPi from another computer using SSH. Type the followi
 ssh 192.168.1.100 -l pi
 ```    
 
-where you replace 192.168.1.100 with the IP address of the RaspberryPi (this is the RaspberryPi's local address, which is only accessible via another computer on the intranet). The flag -l pi tells SSH to login with the username pi, not the default username of the calling terminal.
+where you replace 192.168.1.100 with the IP address of the RaspberryPi (this is the RaspberryPi's local address, which is only accessible via another computer on the intranet). The flag -l pi tells SSH to login with the username pi, not the default username of the calling terminal.
 
 ## Useful Packages To Install
 
@@ -317,5 +317,5 @@ The RPi is great for educating people about computers, as it is cheap and readil
 
 QW Home Automation
 
-Website: [http://qwhomeautomation.com/](http://qwhomeautomation.com/)
+Website: [http://qwhomeautomation.com/](http://qwhomeautomation.com/)
 Works with [Insteon products](http://www.insteon.com).

@@ -12,7 +12,7 @@ type: page
 
 Analogue switches are electrical circuits which connect and disconnect analogue signals.
 
-They are also useful for certain digital signals which have analogue characteristics. An example would be the [I2C bus](/electronics/communication-protocols/i2c-communication-protocol/). Although driven low (with sharp edges), the I2C bus lines are pulled high, causing the voltage to rise in a exponential fashion. Digital switches would turn this into a sharp rise, once the voltage reached a certain threshold. Analogue switches will let the waveform through unchanged, resulting in proper I2C operation.
+They are also useful for certain digital signals which have analogue characteristics. An example would be the [I2C bus](/electronics/communication-protocols/i2c-communication-protocol/). Although driven low (with sharp edges), the I2C bus lines are pulled high, causing the voltage to rise in a exponential fashion. Digital switches would turn this into a sharp rise, once the voltage reached a certain threshold. Analogue switches will let the waveform through unchanged, resulting in proper I2C operation.
 
 ## Crosstalk
 

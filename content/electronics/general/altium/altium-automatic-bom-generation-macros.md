@@ -9,7 +9,7 @@ type: "page"
 
 ## Overview
 
-It also provides the ability to customise an generated Excel BOM with the use of a template file. This ability is poorly documented, so I thought it would be good to explain it in more detail.
+It also provides the ability to customise an generated Excel BOM with the use of a template file. This ability is poorly documented, so I thought it would be good to explain it in more detail.
 
 The exact process depends on the component data storage method (e.g. libraries, databases, or Altium vaults).
 
@@ -43,4 +43,4 @@ Altium lacks the native support for partial components, that is, when you want t
 
 Essentially what we need to be able to do is set the "Quantity" parameter to a fraction of 1.
 
-One way to do this is to add a QuantityMultiplier parameter to components. If you don't add it, you can treat it as equalling 1, which means to you only have to add it to partial components. Set up Altium to pass this parameter to the Excel BOM file, and then write a macro to multiply the quantity by this value to get the actual quantity. The sub-total is then calculated by multiplying this new quantity with the Supplier unit price (called Supplier Unit Price 1 if you are using vault components).
+One way to do this is to add a QuantityMultiplier parameter to components. If you don't add it, you can treat it as equalling 1, which means to you only have to add it to partial components. Set up Altium to pass this parameter to the Excel BOM file, and then write a macro to multiply the quantity by this value to get the actual quantity. The sub-total is then calculated by multiplying this new quantity with the Supplier unit price (called Supplier Unit Price 1 if you are using vault components).

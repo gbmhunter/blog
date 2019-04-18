@@ -46,7 +46,7 @@ Some of the well-known uses for capacitors are:
 * Touch/proximity sensors and screens
 * Distance measurement (e.g. the technique used in digital calipers)
 
-A **feedforward capacitor** is the name given to capacitor between the VOUT and ADJ pins of a linear regulator to improve stability.
+A **feedforward capacitor** is the name given to capacitor between the VOUT and ADJ pins of a linear regulator to improve stability.
 
 ## Types
 
@@ -92,7 +92,7 @@ Ceramic capacitors can generate audible noise when operated at certain frequenci
 
 ### Ceramic Di-electrics
 
-The following table lists the common ceramic dielectric codes. 
+The following table lists the common ceramic dielectric codes. 
 
 **Class 1 (Temperature Compensating)**
 
@@ -142,33 +142,33 @@ The following are based on the EIA RS-198 standard.
 <tbody >
 <tr>
 <td>X = -55°C (-67°F)</td>
-<td>4 = +65°C (+149°F)</td>
-<td>P = ±10%</td>
+<td>4 = +65°C (+149°F)</td>
+<td>P = ±10%</td>
 </tr>
 <tr>
 <td>Y = -30°C (-22°F)</td>
-<td>5 = +85°C (185°F)</td>
-<td>R = ±15%</td>
+<td>5 = +85°C (185°F)</td>
+<td>R = ±15%</td>
 </tr>
 <tr>
-<td>Z = +10°C (+50°F)</td>
-<td>6 = +105°C (221°F)</td>
-<td>S = ±22%</td>
+<td>Z = +10°C (+50°F)</td>
+<td>6 = +105°C (221°F)</td>
+<td>S = ±22%</td>
 </tr>
 <tr>
-<td> </td>
-<td>7 = +125°C (257°F)</td>
-<td>T = +22/-33%</td>
+<td> </td>
+<td>7 = +125°C (257°F)</td>
+<td>T = +22/-33%</td>
 </tr>
 <tr>
-<td> </td>
-<td>8 = +150°C (302°F)</td>
-<td>U = +22/-56%</td>
+<td> </td>
+<td>8 = +150°C (302°F)</td>
+<td>U = +22/-56%</td>
 </tr>
 <tr>
-<td> </td>
-<td>9 = +200°C (392°F)</td>
-<td>V = +22/-82%</td>
+<td> </td>
+<td>9 = +200°C (392°F)</td>
+<td>V = +22/-82%</td>
 </tr>
 </tbody>
 </table>
@@ -194,7 +194,7 @@ The following table lists the class 2 codes defined by the JIS standard.
 </td>
 <td >-25°C to +85°C
 </td>
-<td >+/- 10%
+<td >+/- 10%
 </td>
 </tr>
 </tbody>
@@ -381,7 +381,7 @@ Tantalum capacitors are more susceptible to reverse and over-voltage than their 
 </tr>
 <tr>
 <td>Polarized</td>
-<td>Yes (mark indicates negative side)</td>
+<td>Yes (mark indicates negative side)</td>
 </tr>
 <tr>
 <td>Typical Marking</td>
@@ -391,9 +391,9 @@ Tantalum capacitors are more susceptible to reverse and over-voltage than their 
 <td>Uses</td>
 <td>
 <ul>
-    <li>Filtering of low frequency voltage ripple, usually due to large and low-frequency pulse currents.</li>
-    <li>As an energy storage alternative to a battery</li>
-    <li>To be hooked up in parallel with batteries to provide good pulse-current capabilities to battery chemistries which typically lack in that regard (i.e. those which have a large internal resistance,). This is a common practice with lithium thionyl chloride batteries.</li>
+    <li>Filtering of low frequency voltage ripple, usually due to large and low-frequency pulse currents.</li>
+    <li>As an energy storage alternative to a battery</li>
+    <li>To be hooked up in parallel with batteries to provide good pulse-current capabilities to battery chemistries which typically lack in that regard (i.e. those which have a large internal resistance,). This is a common practice with lithium thionyl chloride batteries.</li>
     <li>To provide extra support for bass in audio systems (essentially providing a low-source impedance energy source for when the bass goes boom)</li>
 </ul>
 </td>
@@ -403,11 +403,11 @@ Tantalum capacitors are more susceptible to reverse and over-voltage than their 
 
 Supercapacitors are actually a special type of electrolytic capacitor.
 
-They typically range from 10mF up to 1000F (in a single capacitor). Stacks of these capacitors can produce capacitances as high as your imagination.
+They typically range from 10mF up to 1000F (in a single capacitor). Stacks of these capacitors can produce capacitances as high as your imagination.
 
-You have to be careful, the leakage current of large supercapacitors (10F and greater) can be quite high (100's uA or mA's!). Even worse, some datasheets don't even mention the leakage current! The ESR of a supercapacitor usually decreases with increasing capacitance.
+You have to be careful, the leakage current of large supercapacitors (10F and greater) can be quite high (100's uA or mA's!). Even worse, some datasheets don't even mention the leakage current! The ESR of a supercapacitor usually decreases with increasing capacitance.
 
-Through-hole and SMD super capacitor packages exist.
+Through-hole and SMD super capacitor packages exist.
 
 ## Door Knob Capacitors
 
@@ -446,7 +446,7 @@ Sorted by alphabetic order.
 <tr >
 <td >Formica</td>
 <td >4.6-4.9</td>
-<td > </td>
+<td > </td>
 </tr>
 <tr >
 <td >Glass</td>
@@ -633,7 +633,7 @@ The force exerted on the two parallel plates of a capacitor is:
 
 {{< img src="diagram-for-disc-capacitance-equation.png" caption="Diagram for the disc-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf."  width="320px" >}}
 
-The capacitance of a single thin plate, with  a ground at 'infinity' (or more practically, just very far away) is:
+The capacitance of a single thin plate, with  a ground at 'infinity' (or more practically, just very far away) is:
 
 <div>$$C = 35.4 \times 10^{-12} \epsilon_r d$$</div>
 
@@ -722,7 +722,7 @@ Absorption currents are due to quantum tunnelling of electrons at the metal/cera
 
 Desorption currents (depolarization) flow when the voltage on a capacitor is decreased (e.g. when it is shorted). These currents can actually recharge a previously discharged capacitor, sometimes up to dangerous voltages (people experimenting with coil/rail guns can have this problem)!
 
-Capacitors that have had a relatively constant voltage across them for a decent amount of time typically exhibit far less absorption current than one which has not been charged in the short-term past. This is due to a phenomenon called ‘self-healing’, in where a charged capacitor will heal defects in the electrolyte. Uncharged electrolytic capacitors may have weakened electrolyte due to ‘dissolution’, the destruction of the dielectric when no charge is present.
+Capacitors that have had a relatively constant voltage across them for a decent amount of time typically exhibit far less absorption current than one which has not been charged in the short-term past. This is due to a phenomenon called ‘self-healing’, in where a charged capacitor will heal defects in the electrolyte. Uncharged electrolytic capacitors may have weakened electrolyte due to ‘dissolution’, the destruction of the dielectric when no charge is present.
 
 The leakage current through a capacitor can be modeled with a resistor in parallel with the actual capacitance, as shown in the image below:
 
@@ -763,7 +763,7 @@ Ceramic capacitors are rated with an initial minimum insulation resistance (e.g.
 
 ## Why Leakage Currents Are Important
 
-Leakage current becomes an important parameter to consider when designing long-life battery powered circuits. This is especially true for circuits powered of primary batteries with high internal resistance, such as lithium thionyl chloride batteries (LiSOCl2), because large (>100uF) capacitors can be required to help provide energy during high pulse current situations. These capacitors can have significant leakage current.
+Leakage current becomes an important parameter to consider when designing long-life battery powered circuits. This is especially true for circuits powered of primary batteries with high internal resistance, such as lithium thionyl chloride batteries (LiSOCl2), because large (>100uF) capacitors can be required to help provide energy during high pulse current situations. These capacitors can have significant leakage current.
 
 ## Measuring The Leakage Current Of A Capacitor
 
@@ -843,7 +843,7 @@ It is commonly used as a simple way of driving the gate of a n-doped silicon swi
     \(V\) the voltage (Volts)<br>
 </p>
 
-However, if you really want to optimise the charge pump capacitor, this rule does not suffice. The Fairchild Semiconductor Application Note, ["Design And Application Guide Of Bootstrap Circuit For High-Voltage Gate-Drive IC"](http://www.fairchildsemi.com/an/AN/AN-6076.pdf) has an in-depth analysis of the bootstrap capacitor and surrounding circuit.
+However, if you really want to optimise the charge pump capacitor, this rule does not suffice. The Fairchild Semiconductor Application Note, ["Design And Application Guide Of Bootstrap Circuit For High-Voltage Gate-Drive IC"](http://www.fairchildsemi.com/an/AN/AN-6076.pdf) has an in-depth analysis of the bootstrap capacitor and surrounding circuit.
 
 The following circuit shows a charge pump circuit used to generate -5V from a +5V PWM signal.
 
@@ -865,7 +865,7 @@ Ceramic chip capacitors usually have a three letter code which describes the max
             <th>3rd Character</th>
             <th>Change Over Temp (max)</th>
         </tr>
-        <tr >CharTemp (°C)NumTemp (°C)CharChange (%)</tr>
+        <tr >CharTemp (°C)NumTemp (°C)CharChange (%)</tr>
 <tbody >
 <tr>
 <td>Z
@@ -1019,7 +1019,7 @@ Feedthrough (or feedthru) capacitors are special three-terminal capacitors (some
 
 {{< img src="feedthrough-capacitor-3d-render-0603-1608-3-connections.jpg" width="314px" caption="A 3D render of an 0603-sized feedthrough capacitor with 3 connections. Image from www.digikey.com." >}}
 
-Their advantage over a standard decoupling capacitor to ground is **lower parasitic series inductance**, which offers a lower impedance path for RF noise to ground.
+Their advantage over a standard decoupling capacitor to ground is **lower parasitic series inductance**, which offers a lower impedance path for RF noise to ground.
 
 ## Schematic Symbol
 
@@ -1027,11 +1027,11 @@ Their advantage over a standard decoupling capacitor to ground is **lower paras
 
 ## Component Package
 
-Many smaller, PCB suitable feedthrough capacitors come in [chip packages](/pcb-design/component-packages/chip-eia-component-packages/), such as the 0603 or 0402 size. They can be distinguished from normal capacitors by the fact that the package will have three or four terminals rather than the standard two.
+Many smaller, PCB suitable feedthrough capacitors come in [chip packages](/pcb-design/component-packages/chip-eia-component-packages/), such as the 0603 or 0402 size. They can be distinguished from normal capacitors by the fact that the package will have three or four terminals rather than the standard two.
 
 ## Uses
 
-Feedthrough capacitors are commonly used in [RC, LC, π and t-type filters](/electronics/circuit-design/filtering/passive-filters) when good RF performance is required.
+Feedthrough capacitors are commonly used in [RC, LC, π and t-type filters](/electronics/circuit-design/filtering/passive-filters) when good RF performance is required.
 
 ## Repairing Electrolytics
 
@@ -1045,7 +1045,7 @@ This can be done with power supply set the rated voltage and a high-power (e.g. 
 
 ## Energy Loss While Charging A Capacitor
 
-An interesting phenomenon occurs when charging a capacitor from a fixed voltage source (e.g. battery or power supply). Assuming a real-world world situation, there is always going to be some resistance between the voltage source and capacitor. **Exactly the same amount of energy** is dissipated through this resistance as is stored in the capacitor when charging it up to the voltage source voltage `\(V_{cc}\)`. It **doesn't matter how large or small** this resistance is! The resistance could just be the ESR of the capacitor, or it could be a dedicated resistor placed in series to limit the inrush current.
+An interesting phenomenon occurs when charging a capacitor from a fixed voltage source (e.g. battery or power supply). Assuming a real-world world situation, there is always going to be some resistance between the voltage source and capacitor. **Exactly the same amount of energy** is dissipated through this resistance as is stored in the capacitor when charging it up to the voltage source voltage `\(V_{cc}\)`. It **doesn't matter how large or small** this resistance is! The resistance could just be the ESR of the capacitor, or it could be a dedicated resistor placed in series to limit the inrush current.
 
 Here is an example schematic:
 
@@ -1057,43 +1057,43 @@ This quite significant and fixed energy loss has implications when it comes to c
 
 Let's start from the basics.
 
-We know total energy in the circuit is the integral of power over time:
+We know total energy in the circuit is the integral of power over time:
 
-<div>$$ E_{in} = \int{P_{in} \cdot dt} $$</div>
+<div>$$ E_{in} = \int{P_{in} \cdot dt} $$</div>
 
 Using the basic equation for electrical power `\( P = VI \)` we can write:
 
 <div>$$ P_{in} = V_{in} \cdot I_{in} $$</div>
 
-Substituting the power equation into integral equation, we get an equation for the energy in terms of the voltage and current:
+Substituting the power equation into integral equation, we get an equation for the energy in terms of the voltage and current:
 
-<div>$$ E_{in} = \int{  V_{in} I_{in} \cdot dt } $$</div>
+<div>$$ E_{in} = \int{  V_{in} I_{in} \cdot dt } $$</div>
 
-If we assume a fixed DC voltage source, `\( V_{in} \)`, that does not vary over time, we can bring it outside the integral:
+If we assume a fixed DC voltage source, `\( V_{in} \)`, that does not vary over time, we can bring it outside the integral:
 
-<div>$$ E_{in} = V_{in} \int{  I_{in} \cdot dt } $$</div>
+<div>$$ E_{in} = V_{in} \int{  I_{in} \cdot dt } $$</div>
 
 Now using the equation for charge in it's integral form `\( Q = \int{I \cdot dt} \)` we can write:
 
-<div>$$ Q_{in} = \int{I_{in} \cdot dt} $$</div>
+<div>$$ Q_{in} = \int{I_{in} \cdot dt} $$</div>
 
-We can substitute the charge equation into for energy equation:
+We can substitute the charge equation into for energy equation:
 
-<div>$$ E_{in} = V_{in} Q_{in} $$</div>
+<div>$$ E_{in} = V_{in} Q_{in} $$</div>
 
-Assuming the cap was fully charged to `\( V_{in} \)` (o.k., this would take an infinite amount of time, but lets just be realistic and say 99.9% is fully charged), and using the basic formula for the energy in a capacitor (`\( E = \frac{1}{2}CV^2 \)`), we can write:
+Assuming the cap was fully charged to `\( V_{in} \)` (o.k., this would take an infinite amount of time, but lets just be realistic and say 99.9% is fully charged), and using the basic formula for the energy in a capacitor (`\( E = \frac{1}{2}CV^2 \)`), we can write:
 
-<div>$$ E_{cap} = \frac{1}{2}CV_{in}^2 $$</div>
+<div>$$ E_{cap} = \frac{1}{2}CV_{in}^2 $$</div>
 
-Now, all of the input charge `\(Q_{in}\)` referred to in charge equation got to the capacitor since the resistor and capacitor share the same current. The equation for the energy in the capacitor can be re-written in terms of charge (using `\(Q=CV\)`):
+Now, all of the input charge `\(Q_{in}\)` referred to in charge equation got to the capacitor since the resistor and capacitor share the same current. The equation for the energy in the capacitor can be re-written in terms of charge (using `\(Q=CV\)`):
 
-<div>$$ E_{cap} = \frac{1}{2} V_{in} Q_{in} $$</div>
+<div>$$ E_{cap} = \frac{1}{2} V_{in} Q_{in} $$</div>
 
 We now have an equation for the energy given out by the voltage source, and an equation for the amount of energy given to the capacitor. Subtracting the two will give the amount of energy lost to the resistance during charging:
 
-<div>$$ E_{res} = E_{in} - E_{cap} $$</div>
-<div>$$ = V_{in} Q_{in} - \frac{1}{2} V_{in} Q_{in} $$</div>
-<div>$$ = \frac{1}{2} V_{in} Q_{in} $$</div>
+<div>$$ E_{res} = E_{in} - E_{cap} $$</div>
+<div>$$ = V_{in} Q_{in} - \frac{1}{2} V_{in} Q_{in} $$</div>
+<div>$$ = \frac{1}{2} V_{in} Q_{in} $$</div>
 
 Woah, hang on a moment, this is the same as the energy in the capacitor!
 

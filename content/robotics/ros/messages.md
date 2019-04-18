@@ -30,5 +30,5 @@ ROS messages may include a special header. This can contain a time stamp and fra
 If the message types are not the same, you will normally get a runtime error on launch similar to:
 
 ```    
-[ERROR] [1481703140.912974056, 0.100000000]: Client [<node_name>] wants topic <topic_name> to have datatype/md5sum [<path>/cd5e73d190d741a2f92e81eda573aca7], but our version has [<path>/2d3a8cd499b9b4a0249fb98fd05cfa48]. Dropping connection.
+[ERROR] [1481703140.912974056, 0.100000000]: Client [<node_name>] wants topic <topic_name> to have datatype/md5sum [<path>/cd5e73d190d741a2f92e81eda573aca7], but our version has [<path>/2d3a8cd499b9b4a0249fb98fd05cfa48]. Dropping connection.
 ```

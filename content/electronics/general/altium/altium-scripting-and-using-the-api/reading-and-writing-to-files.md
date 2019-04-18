@@ -8,7 +8,7 @@ type: "page"
 
 ## Overview
 
-You have the ability to write to and read from files inside Altium scripts. This can be useful for saving user configuration data that persists between each time the script is run, or providing input/output data for a particular script that needs to interact with the operating system.
+You have the ability to write to and read from files inside Altium scripts. This can be useful for saving user configuration data that persists between each time the script is run, or providing input/output data for a particular script that needs to interact with the operating system.
 
 The objects of interest are `TIniFile`.
 
@@ -41,7 +41,7 @@ You can write a boolean-based data point using:
 iniFile.WriteBool category, key, trueFalse
 ```
 
-where `category` and `key` are `strings`, and `trueFalse` is a `boolean.
+where `category` and `key` are `strings`, and `trueFalse` is a `boolean.
 
 You can read a boolean-based data point from an `INI` file using:
 
@@ -71,4 +71,4 @@ You can read a data set from an INI file using:
 value = iniFile.ReadString category, key
 ```
 
-Have a look at the file [UserData.vbs](https://github.com/gbmhunter/AltiumScriptCentral/blob/master/src/UserData/UserData.vbs) in the [AltiumScriptCentral repo on GitHub](https://github.com/gbmhunter/AltiumScriptCentral) for INI file read/write examples.
+Have a look at the file [UserData.vbs](https://github.com/gbmhunter/AltiumScriptCentral/blob/master/src/UserData/UserData.vbs) in the [AltiumScriptCentral repo on GitHub](https://github.com/gbmhunter/AltiumScriptCentral) for INI file read/write examples.

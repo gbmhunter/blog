@@ -36,7 +36,7 @@ Notice that the number of mutual inductances grows with `\(N^2\)`.
 
 ## Coupling Coefficient
 
-The coupling coefficient is usually denoted K. It is used extensively in SPICE simulations ([see Linear Technology: Using Transformers in LTspice/SwitcherCAD III by Mike Engelhardt](http://cds.linear.com/docs/en/lt-journal/LTMag-V16N3-23-LTspice_Transformers-MikeEngelhardt.pdf)). The leakage inductance can be calculated from the coupling coefficient using the following formula:
+The coupling coefficient is usually denoted K. It is used extensively in SPICE simulations ([see Linear Technology: Using Transformers in LTspice/SwitcherCAD III by Mike Engelhardt](http://cds.linear.com/docs/en/lt-journal/LTMag-V16N3-23-LTspice_Transformers-MikeEngelhardt.pdf)). The leakage inductance can be calculated from the coupling coefficient using the following formula:
 
 <div>$$L_{leakage} = L_{wind} \cdot (1 - K^2)$$</div>
 
@@ -44,11 +44,11 @@ The coupling coefficient is usually denoted K. It is used extensively in SPICE s
 
 There are three main types of losses that occur in a non-ideal (real-world) transformer. These are resistive losses, hysteresis losses, and eddy current losses.
 
-In large power transformers, with the appropriate design to reduce the non-ideal losses mentioned below, the efficiency of the transformer can be up around 98%, closely approximating an ideal transformer.
+In large power transformers, with the appropriate design to reduce the non-ideal losses mentioned below, the efficiency of the transformer can be up around 98%, closely approximating an ideal transformer.
 
 ## Resistive Losses
 
-These losses occur due to the windings of the transformer having a non-zero resistance. The power lost by resistive losses is:
+These losses occur due to the windings of the transformer having a non-zero resistance. The power lost by resistive losses is:
 
 <div>$$ P = I^2 \cdot R $$</div>
 
@@ -66,4 +66,4 @@ The hysteresis loss can be seen on the BH (flux-density vs. field strength) curv
 
 Because the core is conductive, it too gets an EMF generated in it, just like the secondary. This causes a current to flow in the core, which is dissipated as heat energy due to the resistance of the core material. To reduce eddy currents, most transformers use a core built up from many **laminated** sheets of metal, sandwiched between insulating layers.
 
- 
+ 

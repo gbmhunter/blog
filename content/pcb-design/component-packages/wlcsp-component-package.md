@@ -24,7 +24,7 @@ url: /pcb-design/component-packages/wlcsp-component-package
 <td >Synonyms</td>
 <td >
 <ul>
-	<li>LCSPW (W has changed position)</li>
+	<li>LCSPW (W has changed position)</li>
 </ul>
 </td>
 </tr>
@@ -33,7 +33,7 @@ url: /pcb-design/component-packages/wlcsp-component-package
 <td >Variants
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 <tr >
@@ -105,7 +105,7 @@ url: /pcb-design/component-packages/wlcsp-component-package
 <td >3D Models
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 <tr >
@@ -126,7 +126,7 @@ url: /pcb-design/component-packages/wlcsp-component-package
 
 The WLCSP package can either be rectangular or square in shape.
 
-The pin numbering follows the standard [BGA](/pcb-design/component-packages/bga-component-package) convention, the columns are labelled with letters (A, B, C, ...) and the rows with numbers (1, 2, 3, ...). Thus pins are referred to as A1, C3, D11, e.t.c.
+The pin numbering follows the standard [BGA](/pcb-design/component-packages/bga-component-package) convention, the columns are labelled with letters (A, B, C, ...) and the rows with numbers (1, 2, 3, ...). Thus pins are referred to as A1, C3, D11, e.t.c.
 
 The rows of bumps maybe aligned in a grid or offset, again like BGA.
 
@@ -134,14 +134,14 @@ As of March 2015, WLCSP offers the smallest possible footprint of any component 
 
 ## Photosensitivity
 
-Unusually, the WLCSP package is sensitive to high-intensity, long wavelength light. This was due to the photoelectric effect, where the light hitting the top and sides of the semiconductor-based package causes current to flow in the die and can disrupt proper operation.
+Unusually, the WLCSP package is sensitive to high-intensity, long wavelength light. This was due to the photoelectric effect, where the light hitting the top and sides of the semiconductor-based package causes current to flow in the die and can disrupt proper operation.
 
 WLCSP packages can come with a backside laminate (BSL) which blocks light from disrupting the IC. Fairchild Semiconductor explain that having a BSL is not significant for board-level reliability.
 
 {{< figure src="/images/2015/03/paragraph-on-backside-laminate-for-wlcsp-package-farchild-an-5075.png" width="517px" caption="Paragraph on backside laminate (BSL) for WLCSP component packages. Image from https://www.fairchildsemi.com/application-notes/AN/AN-5075.pdf."  >}}
 
-## RaspberryPi 2 Bug
+## RaspberryPi 2 Bug
 
 The photosensitivity of the WLCSP package manifested itself as a bug on the RaspberryPi 2. The regulator that provided power to the RaspberryPi 2 core was in a WLCSP package, and when exposed to a high-intensity, long wavelength light (like a xenon camera flash), the RaspberryPi 2 would reset.
 
-The current caused by "normal" camera flashes do not seem to be able to permanently damage the chip.
+The current caused by "normal" camera flashes do not seem to be able to permanently damage the chip.

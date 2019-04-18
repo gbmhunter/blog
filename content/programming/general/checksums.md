@@ -11,7 +11,7 @@ url: /programming/general/checksums
 
 Transmitter Methodology
 
-1. Calculate checksum on raw  data
+1. Calculate checksum on raw  data
 2. Using the raw data and the newly found checksum, calculate the checkbytes
 3. Add the checkbytes to the end of the data packet
 4. Transmit data

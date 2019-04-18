@@ -42,7 +42,7 @@ An analogy to electrical resistance...
 
 ## List Of Component Package Thermal Resistances
 
-See the [Component Packages page](/pcb-design/component-packages/). This has many of the common component packages and their thermal resistances.
+See the [Component Packages page](/pcb-design/component-packages/). This has many of the common component packages and their thermal resistances.
 
 Below is a condensed list of experimentally found internal thermal resistances (junction-to-case).
 

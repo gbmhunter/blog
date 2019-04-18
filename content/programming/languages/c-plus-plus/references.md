@@ -19,7 +19,7 @@ C++ introduces the reference operator, `&`, which works slightly different than 
     // a now = 2
 ```
 
-For those who come from a C background and understand pointers, treat it as though `double &b = a` goes to `double *b = &a` and all the subsequent usage of `b` is replaced with `*b`. Note that the double that `b` points to cannot be changed! This is unlike a normal pointer, `double *b = &a`, in where you could later write `b = &c`. This will not work with a reference.
+For those who come from a C background and understand pointers, treat it as though `double &b = a` goes to `double *b = &a` and all the subsequent usage of `b` is replaced with `*b`. Note that the double that `b` points to cannot be changed! This is unlike a normal pointer, `double *b = &a`, in where you could later write `b = &c`. This will not work with a reference.
 
 ## What Are They Good For?
 

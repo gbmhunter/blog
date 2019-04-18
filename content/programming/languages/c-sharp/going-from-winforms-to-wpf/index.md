@@ -10,7 +10,7 @@ The layout of what is traditionally known as the "forms" is described in an enti
 
 Form objects no longer have a `Text` property, and instead they use a `Content` property.
 
-The standard message box class (MessageBo) does not exist anymore (it used to be found in System.Windows.Forms). Instead, you left to create your own, or install a third-party package! Create your own? Pah! I have found the [Gat Controls MessageBox](http://messagebox.codeplex.com/documentation) to be very useful.
+The standard message box class (MessageBo) does not exist anymore (it used to be found in System.Windows.Forms). Instead, you left to create your own, or install a third-party package! Create your own? Pah! I have found the [Gat Controls MessageBox](http://messagebox.codeplex.com/documentation) to be very useful.
 
 The timer found in `System.Windows.Threading` doesn't work like it used to! It creates a new thread or something, and doesn't like being made to call functions in the calling parent class. Instead, use the `Despatcher` timer, found in the same place as the old one (`System.Windows.Threading`).
 

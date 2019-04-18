@@ -18,12 +18,12 @@ Obviously, if a shallow copy has not been performed, the size of the history is 
 
 ## Shallow Clones
 
-Git allows a shallow copy, keeping only the latest n commits, with the command:
+Git allows a shallow copy, keeping only the latest n commits, with the command:
 
 ```sh    
 $ git clone --depth n
 ```
 
-Git version 1.9 improved the capabilities of shallow clones dramatically, giving them full push/pull support between the shallow copy repo and a repo with the entire history.
+Git version 1.9 improved the capabilities of shallow clones dramatically, giving them full push/pull support between the shallow copy repo and a repo with the entire history.
 
 As of 2015-01, [Mercurial does not support this feature](/programming/version-control-systems/mercurial/managing-large-repos).

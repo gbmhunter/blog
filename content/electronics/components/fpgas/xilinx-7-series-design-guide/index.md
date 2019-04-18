@@ -43,11 +43,11 @@ There is a range specified for the ESR, it is also bad to have too-little series
 
 The Kintex and Virtex-7 devices has some in-built decoupling capacitors for the larger package sizes (you still need to add external decoupling caps, just not as many).
 
-Reverse-aspect capacitors can be used for when ultra-low parasitic inductances are required.
+Reverse-aspect capacitors can be used for when ultra-low parasitic inductances are required.
 
 ## Un-used I/O Banks
 
-Using a large device for a small project could mean that there are entire banks of unused I/O pins. In these cases you are allowed to leave the bank's `Vcco` pins (e.g. `Vcco_14`) and I/O pins disconnected. However, for ESD reasons, it is better to connect these pins to either (in order of preference): `GND`, a valid `Vcco` voltage, or a floating plane.
+Using a large device for a small project could mean that there are entire banks of unused I/O pins. In these cases you are allowed to leave the bank's `Vcco` pins (e.g. `Vcco_14`) and I/O pins disconnected. However, for ESD reasons, it is better to connect these pins to either (in order of preference): `GND`, a valid `Vcco` voltage, or a floating plane.
 
 ## MGTs
 

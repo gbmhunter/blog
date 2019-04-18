@@ -8,7 +8,7 @@ type: page
 
 ## Overview
 
-The hardness of most rubbers is specified using the Shore A scale (while the Shore D scale is used for harder materials). There are formulas ([Wikipedia's version](http://en.wikipedia.org/wiki/Shore_durometer), [3D Vision's  version](http://www.3dvision.com/wordpress/index.php/2011/07/14/convert-durometer-to-youngs-modulus/)) which gives an equation to convert Shore A hardness values into a Youngs Modulus, useful when you want to calculate the force required to compress the rubber by a certain amount. Each version of the equation gives different results, so treat the values with caution.
+The hardness of most rubbers is specified using the Shore A scale (while the Shore D scale is used for harder materials). There are formulas ([Wikipedia's version](http://en.wikipedia.org/wiki/Shore_durometer), [3D Vision's  version](http://www.3dvision.com/wordpress/index.php/2011/07/14/convert-durometer-to-youngs-modulus/)) which gives an equation to convert Shore A hardness values into a Youngs Modulus, useful when you want to calculate the force required to compress the rubber by a certain amount. Each version of the equation gives different results, so treat the values with caution.
 
 ## Nitrile Rubber
 
@@ -348,7 +348,7 @@ P = poor, F = fair, G = good, E = excellent
 
 ## NZ Rubber And Foam
 
-* Website: [http://www.nzrubberandfoam.co.nz/](http://www.nzrubberandfoam.co.nz/)
+* Website: [http://www.nzrubberandfoam.co.nz/](http://www.nzrubberandfoam.co.nz/)
 * Location: New Zealand
 * Supply: Rubbers (such as Nitrile, Neoprene)
 

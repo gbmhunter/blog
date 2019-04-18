@@ -8,11 +8,11 @@ type: page
 
 The standard C library provides functions for writing input and output to files.
 
-Most of the file input/output functions are declared in header stdio.h. Add the line `#include <stdio.h>` to your source code to use file I/O functions.
+Most of the file input/output functions are declared in header stdio.h. Add the line `#include <stdio.h>` to your source code to use file I/O functions.
 
 ## fopen()
 
-`fopen()` is used to open a file.
+`fopen()` is used to open a file.
 
 The function declaration changed in C99, by adding the keyword restrict. Before C99 it was:
 
@@ -110,8 +110,8 @@ mode: Null-terminated string that determines the file access mode
   </tbody>
 </table>
 
-`fopen()` returns pointer to opened file stream on success, otherwise a `NULL` pointer on fail.
+`fopen()` returns pointer to opened file stream on success, otherwise a `NULL` pointer on fail.
 
-You have to be careful when using `fopen()` on a system with multiple threads, there is the possibility of creating race conditions.
+You have to be careful when using `fopen()` on a system with multiple threads, there is the possibility of creating race conditions.
 
 

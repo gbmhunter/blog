@@ -82,7 +82,7 @@ The results from the 2012 embedded survey were interesting...
 	<li>STK600</li>
 	<li>QT600</li>
 	<li>AVRISP MKII</li>
-	<li>AVR Dragon</li>
+	<li>AVR Dragon</li>
 </ul>
 			
 </td>

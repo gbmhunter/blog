@@ -18,13 +18,13 @@ You can change the permissions of a folder and all sub-folders by using the foll
 $ find ./MyDirectory -type d -exec chmod -v 0755 '{}' \;
 ```
 
-You can do a similar thing, but this time with files in the current folder and all sub-folders by changing the `-type d` to `-type f` as in the following command:
+You can do a similar thing, but this time with files in the current folder and all sub-folders by changing the `-type d` to `-type f` as in the following command:
 
 ```sh    
 $ find ./MyDirectory -type f -exec chmod -v 0755 '{}' \;
 ```
 
-You can do a test run to make sure it will do the right thing by inserting the command `echo` between `-exec` and `chmod`, as shown in the following command:
+You can do a test run to make sure it will do the right thing by inserting the command `echo` between `-exec` and `chmod`, as shown in the following command:
 
 ```sh    
 $ find ./MyDirectory -type d -exec echo chmod -v 0755 '{}' \;

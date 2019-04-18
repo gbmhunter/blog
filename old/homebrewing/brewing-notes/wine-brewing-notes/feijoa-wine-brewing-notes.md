@@ -222,7 +222,7 @@ Fermentation took awhile to start, with it taking two days before the first visi
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
 <td >?
@@ -281,7 +281,7 @@ Fermentation took awhile to start, with it taking two days before the first visi
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
 <td >?

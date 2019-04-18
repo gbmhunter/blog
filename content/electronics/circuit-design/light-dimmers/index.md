@@ -9,11 +9,11 @@ type: "page"
 
 ## Overview
 
-Light dimmers are circuits which vary the amount of power going to a light source. The common one associated with the word "light dimmer" is a circuit which dims incandescent bulbs running of a mains (110, 230VAC) supply.
+Light dimmers are circuits which vary the amount of power going to a light source. The common one associated with the word "light dimmer" is a circuit which dims incandescent bulbs running of a mains (110, 230VAC) supply.
 
 ## Resistive Dimming
 
-The most basic way to dim a light is to put a variable resistor in series with the light. This is very simple but has the following disadvantages:  1. It is not very efficient, and the resistor dissipates the remaining energy that is not used by the light, causing heating issues for any moderate dimmer circuit.  2. The colour "temperature" of a tungsten light gets worse with increased dimming, as the voltage across the light drops. 
+The most basic way to dim a light is to put a variable resistor in series with the light. This is very simple but has the following disadvantages:  1. It is not very efficient, and the resistor dissipates the remaining energy that is not used by the light, causing heating issues for any moderate dimmer circuit.  2. The colour "temperature" of a tungsten light gets worse with increased dimming, as the voltage across the light drops. 
 
 ## Phase Cutting
 

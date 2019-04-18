@@ -19,6 +19,6 @@ It supports a wide-range of programmers and microcontrollers.
 
 ## The Micro Won't Program, What Do I Do?
 
-Sometimes the bit rate that the programmer is trying to talk to the micro at can be a little to fast. You can slow it down with the bit rate option (-B). The bit-rate option requires a floating-point number which determines _half_ the period of the programming waveform, in microseconds. That's right. Half. What? So -B 2.5 would set the period to be 5us, or 200kHz.
+Sometimes the bit rate that the programmer is trying to talk to the micro at can be a little to fast. You can slow it down with the bit rate option (-B). The bit-rate option requires a floating-point number which determines _half_ the period of the programming waveform, in microseconds. That's right. Half. What? So -B 2.5 would set the period to be 5us, or 200kHz.
 
 Do NOT get this confused with the baudrate option (-b), which determines the serial baudrate at which the computer talks to serial-based programmers at.

@@ -20,7 +20,7 @@ The contrast is normally controlled by a potentiometer connected to one of the p
 
 ## The Interface
 
-LCD screens are typically use 8-bit interfaces which can usually support a reduced pin-count 4-bit mode. The following schematic shows how a typical character LCD screen is connected when using four-bit mode. The 7 lines D-RS, D-R/W, D-EN and D-D4 through D-D7 are connected to a microcontroller or similar interface. The contrast  of the screen is set by potentiometer VR1. Note that for a LCD requiring a negative contrast supply (the one shown is for a LCD with an internal negative-voltage generator), VR1 is connected differently with the pin connected to +5V-SCAP instead connected to a negative supply (typically between -2 and -3V).
+LCD screens are typically use 8-bit interfaces which can usually support a reduced pin-count 4-bit mode. The following schematic shows how a typical character LCD screen is connected when using four-bit mode. The 7 lines D-RS, D-R/W, D-EN and D-D4 through D-D7 are connected to a microcontroller or similar interface. The contrast  of the screen is set by potentiometer VR1. Note that for a LCD requiring a negative contrast supply (the one shown is for a LCD with an internal negative-voltage generator), VR1 is connected differently with the pin connected to +5V-SCAP instead connected to a negative supply (typically between -2 and -3V).
 
 {{< img src="lcd-schematic.jpg" caption="Schematic for a character LCD."  width="500px" >}}
 
@@ -40,7 +40,7 @@ The image below shows what a reverse-mounted LCD screen will look like from the 
 
 A TFT screen is a form of LCD which uses thin-film technology.
 
-In 2013, FTDI released the EVE chip, which is a combined graphics/sound/touch screen processor designed for embedded applications which can be run from an 8-bit microcontroller. It supports QVGA and WQVGA resolution TFT displays with 24-bit true colour support, 256k internal object memory, and up to 2,000 objects. It communicates with the microcontroller via an [I2C](/electronics/communication-protocols/i2c-communication-protocol/) or [SPI](/electronics/communication-protocols/spi-communication-protocol/) interface. It is available in a [QFN-48 package](/pcb-design/component-packages/qfn-component-package/).
+In 2013, FTDI released the EVE chip, which is a combined graphics/sound/touch screen processor designed for embedded applications which can be run from an 8-bit microcontroller. It supports QVGA and WQVGA resolution TFT displays with 24-bit true colour support, 256k internal object memory, and up to 2,000 objects. It communicates with the microcontroller via an [I2C](/electronics/communication-protocols/i2c-communication-protocol/) or [SPI](/electronics/communication-protocols/spi-communication-protocol/) interface. It is available in a [QFN-48 package](/pcb-design/component-packages/qfn-component-package/).
 
 More on [EVE on the FTDI website](http://www.ftdichip.com/EVE.htm).
 

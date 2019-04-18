@@ -28,23 +28,23 @@ Linear regulators are great when you want a cheap, low power voltage regulation 
 
 The power lost as heat through a linear regulator is:
 
-<div>$$ P_t = (V_{out} - V_{in})I$$</div>
+<div>$$ P_t = (V_{out} - V_{in})I$$</div>
 
 <p class="centered">
     where:<br>
-    \( V_{out} \) is the output voltage<br>
-    \( V_{in} \) is the input voltage<br>
-    \( I \) is the current through the regulator.<br>
+    \( V_{out} \) is the output voltage<br>
+    \( V_{in} \) is the input voltage<br>
+    \( I \) is the current through the regulator.<br>
 </p>
 
 The regulator has to be able to dissipate this power without exceeding the maximum operating temperature. The temperature that the linear regulator will operate at is given by:
 
-<div>$$ T_j = P_{t}T_{j-a} + T_a$$</div>
+<div>$$ T_j = P_{t}T_{j-a} + T_a$$</div>
 
 <p class="centered">
     where:<br>
-    \( T_{j-a} \) is the junction-to-ambient thermal resistance<br>
-    \( T_a \) is the ambient temperature<br>
+    \( T_{j-a} \) is the junction-to-ambient thermal resistance<br>
+    \( T_a \) is the ambient temperature<br>
 </p>
 
 ## Protection
@@ -65,11 +65,11 @@ A typical value of a bypass capacitor is `\(10nF\)`.
 
 ## DDR Termination Regulators
 
-DDR termination regulators are special-purpose linear regulators designed for powering DDR memory ICs. They usually provide the multiple voltage rails that are required to drive DDR memory, along with the power control logic required to meet the DDR spec. (incl. suspend to RAM, suspend to disk states).
+DDR termination regulators are special-purpose linear regulators designed for powering DDR memory ICs. They usually provide the multiple voltage rails that are required to drive DDR memory, along with the power control logic required to meet the DDR spec. (incl. suspend to RAM, suspend to disk states).
 
 {{< img src="tps51206-ti-ddr-termination-regulator-simplified-application-schematic.png" width="470px" caption="The Texas Instruments TPS51206 IC, a DDR termination regulator (linear). Image from http://www.ti.com/."  >}}
 
-DDR memory draws current in quick surges of around 2-3A. Most DDR termination regulators support both the sinking and sourcing of current, which means they can clamp the voltage if an overshoot occurs due to a fast switching transient. Standard linear regulators cannot do this, and only source current.
+DDR memory draws current in quick surges of around 2-3A. Most DDR termination regulators support both the sinking and sourcing of current, which means they can clamp the voltage if an overshoot occurs due to a fast switching transient. Standard linear regulators cannot do this, and only source current.
 
 ## Example Devices
 

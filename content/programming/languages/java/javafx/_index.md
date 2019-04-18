@@ -8,21 +8,21 @@ type: page
 
 ## Overview
 
-JavaFX is a Java-based UI platform for developing desktop applications on a variety of platforms. It is pitched as a replacement for Swing.
+JavaFX is a Java-based UI platform for developing desktop applications on a variety of platforms. It is pitched as a replacement for Swing.
 
 {{< figure src="/images/2016/06/javafx-logo.png" width="404px" caption="The JavaFX logo."  >}}
 
 ## FXML Files
 
-JavaFX UIs can be described using FXML files (.fxml). FXML files are a special type of XML file for describing the UI in a similar way to HTML. This style of designing a UI is called a _declarative style_. The alternative method to create JavaFX UIs is to use a _procedural style_, using normal Java code.
+JavaFX UIs can be described using FXML files (.fxml). FXML files are a special type of XML file for describing the UI in a similar way to HTML. This style of designing a UI is called a _declarative style_. The alternative method to create JavaFX UIs is to use a _procedural style_, using normal Java code.
 
-The FXML method is great for describing static (or semi-static) JavaFX UI elements. That is, all of the UI elements which don't change (or only partially change) at run time. FXML is not good for creating the UI elements which are dynamically created at runtime.
+The FXML method is great for describing static (or semi-static) JavaFX UI elements. That is, all of the UI elements which don't change (or only partially change) at run time. FXML is not good for creating the UI elements which are dynamically created at runtime.
 
-Both design methodologies can be implemented in the same project.
+Both design methodologies can be implemented in the same project.
 
 ## Layout Controls
 
-JavaFX sports a number of different layout controls to arrange your UI with. These include (sorted in alphabetical order):
+JavaFX sports a number of different layout controls to arrange your UI with. These include (sorted in alphabetical order):
 
 
 <table>
@@ -34,15 +34,15 @@ JavaFX sports a number of different layout controls to arrange your UI with. Th
     </thead>
 <tbody >
 <tr >
-<td >AnchorPane 
+<td >AnchorPane 
 </td>
 
-<td >Allows child controls to be anchored to the top, bottom, left, right or center of the AnchorPane.
+<td >Allows child controls to be anchored to the top, bottom, left, right or center of the AnchorPane.
 </td>
 </tr>
 <tr >
 
-<td >BorderPane 
+<td >BorderPane 
 </td>
 
 <td >Allows child controls to be placed and the top, bottom, left, right or center of the BorderPane.
@@ -50,31 +50,31 @@ JavaFX sports a number of different layout controls to arrange your UI with. Th
 </tr>
 <tr >
 
-<td >FlowPane 
+<td >FlowPane 
 </td>
 
-<td >Arranges all of it's child controls either horizontally or vertically and then wraps once it reaches a certain size limit. Like a TilePane except each child control gets allocated a different amount of space.
-</td>
-</tr>
-<tr >
-
-<td >GridPane 
-</td>
-
-<td >Arranges it's child controls in a grid (aka table).
+<td >Arranges all of it's child controls either horizontally or vertically and then wraps once it reaches a certain size limit. Like a TilePane except each child control gets allocated a different amount of space.
 </td>
 </tr>
 <tr >
 
-<td >HBox 
+<td >GridPane 
 </td>
 
-<td >Arranges it's child controls horizontally.
+<td >Arranges it's child controls in a grid (aka table).
 </td>
 </tr>
 <tr >
 
-<td >StackPane 
+<td >HBox 
+</td>
+
+<td >Arranges it's child controls horizontally.
+</td>
+</tr>
+<tr >
+
+<td >StackPane 
 </td>
 
 <td >Stacks all of it's child controls on-top of each other.
@@ -82,10 +82,10 @@ JavaFX sports a number of different layout controls to arrange your UI with. Th
 </tr>
 <tr >
 
-<td >TilePane 
+<td >TilePane 
 </td>
 
-<td >Arranges all of it's child controls either horizontally or vertically and then wraps once it reaches a certain size limit. Like a FlowPane except each child control gets allocated the same amount of space.
+<td >Arranges all of it's child controls either horizontally or vertically and then wraps once it reaches a certain size limit. Like a FlowPane except each child control gets allocated the same amount of space.
 </td>
 </tr>
 <tr >
@@ -100,17 +100,17 @@ JavaFX sports a number of different layout controls to arrange your UI with. Th
 </table>
 
 
-One thing that annoys me is that there is no row or column sub-controls (like <tr> in HTML) for table-like controls such as the GridPane. To arrange sub-controls within a GridPane, you have to manually specify the row and colomn number of each sub-control, making re-arrangement of the GridPane tedious.
+One thing that annoys me is that there is no row or column sub-controls (like <tr> in HTML) for table-like controls such as the GridPane. To arrange sub-controls within a GridPane, you have to manually specify the row and colomn number of each sub-control, making re-arrangement of the GridPane tedious.
 
 ## Buttons
 
 ## Circular Buttons
 
-Circular buttons can be easily made by modifying the -fx-background-radius property.
+Circular buttons can be easily made by modifying the -fx-background-radius property.
 
 ## Attaching To Button Pressed And Released Events
 
-Sometimes, just responding to an "on click" event is not enough, and you need to be able to determine when the user both pressed and released the mouse (or finger) on the button. Handlers for MOUSE_PRESSED  and MOUSE_RELEASED events can be attached to JavaFX buttons using the following code:
+Sometimes, just responding to an "on click" event is not enough, and you need to be able to determine when the user both pressed and released the mouse (or finger) on the button. Handlers for MOUSE_PRESSED  and MOUSE_RELEASED events can be attached to JavaFX buttons using the following code:
 
 ```java    
 button.addEventFilter(
@@ -146,7 +146,7 @@ Note that it gets slightly more difficult if you need to detect single-clicks al
 
 ## Adding Properties To Custom Controls
 
-Properties can be added to custom controls by providing a getter and a setter. Once this has been done, they can be set in a .fxml file in the same manner as any other property:
+Properties can be added to custom controls by providing a getter and a setter. Once this has been done, they can be set in a .fxml file in the same manner as any other property:
 
 ```html    
 <MyCustomControl text="Testing..." />

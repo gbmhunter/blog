@@ -18,7 +18,7 @@ tags:
 
 {{< figure src="/images/programming-misc/bit-bucket-logo.png" caption="The BitBucket logo. Image from https://bitbucket.org/."  width="300px" >}}
 
-The firmware has been made public and can be downloaded as a Mercurial repo on www.bitbucket.com from [https://bitbucket.org/gbmhunter/electric-skateboard-firmware](https://bitbucket.org/gbmhunter/proj-electricskateboardfirmware).
+The firmware has been made public and can be downloaded as a Mercurial repo on www.bitbucket.com from [https://bitbucket.org/gbmhunter/electric-skateboard-firmware](https://bitbucket.org/gbmhunter/proj-electricskateboardfirmware).
 
 Note that this is quite a large repo, as it contains the most recent and old versions of code, which were for different platforms.
 

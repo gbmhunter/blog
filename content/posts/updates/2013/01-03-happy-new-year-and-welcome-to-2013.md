@@ -17,7 +17,7 @@ tags:
 - website statistics
 ---
 
-{{< figure src="/images/misc/2013-sign-new-year-ahead.jpg" caption="Image from http://blog.mailermailer.com/industry-news/2013-is-coming-is-your-email-ready."  width="320px" >}} Happy new year and welcome to 2013 from the [CladLabs team](http://en.gravatar.com/gbmhunter)! (well, that's just me, aka Geoffrey Hunter). Feel privileged, for this is one of the rare semi-personal, non-engineering posts that are ever presented on this site.
+{{< figure src="/images/misc/2013-sign-new-year-ahead.jpg" caption="Image from http://blog.mailermailer.com/industry-news/2013-is-coming-is-your-email-ready."  width="320px" >}} Happy new year and welcome to 2013 from the [CladLabs team](http://en.gravatar.com/gbmhunter)! (well, that's just me, aka Geoffrey Hunter). Feel privileged, for this is one of the rare semi-personal, non-engineering posts that are ever presented on this site.
 
 First off, thanks to everyone who has visited this site. And a bigger thanks for anyone who has commented or learnt something from it! I hope that this site has provided useful engineering-related information for people doing anything from constructing DIY electronic circuits to getting involved with pyrotechnics and rocketry.
 
@@ -39,7 +39,7 @@ Website goals for this year:
 
 * Add more ~~\[online calculators\](/electronics/general/online-calculators)~~ to the Electronics section. If laid out properly, made to look good, and aided with clear diagrams, these are very helpful for many engineering tasks. I find myself using them often!
 * Increase the amount of reader interaction (i.e. comments) on the site. There are over 200 published pages but only 32 comments.
-* Remove some of the dead links on the site. No one likes the "Page not found" error. I have the awesome [Wordpress plugin Broken Link Checker](http://w-shadow.com/blog/2007/08/05/broken-link-checker-for-wordpress/) which monitors the site continuously for dead links. Currently there are 33 dead links.
+* Remove some of the dead links on the site. No one likes the "Page not found" error. I have the awesome [Wordpress plugin Broken Link Checker](http://w-shadow.com/blog/2007/08/05/broken-link-checker-for-wordpress/) which monitors the site continuously for dead links. Currently there are 33 dead links.
 * Increase website exposure. Currently this site gets about 4,500 visits per month. Part of the plan to increase exposure is perform SEO on the websites pages and images.
 * Tidy up some of the "work-in-progress" pages
 * Add more rotating image banners. These images are useful at highlighting some of the best parts of this site. Currently, there are only four banner images in rotation. Two I intend to add are for the [Component Packages page](/pcb-design/component-packages/) and the [32PVC Rocket Project page](/pyrotechnics/rocketry/projects/32pvc).

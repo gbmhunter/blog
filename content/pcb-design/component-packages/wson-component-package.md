@@ -16,7 +16,7 @@ url: /pcb-design/component-packages/wson-component-package
 </td></tr><tr >
 <td >Synonyms
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Variants
 </td>
@@ -45,7 +45,7 @@ SOIC
 </td></tr><tr >
 <td >Thermal Resistance
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Dimensions
 </td>
@@ -53,14 +53,14 @@ SOIC
     <p><strong>WSON-8</strong>  </p>
     <ul>
         <li>Package: 6.0x5.0x0.80mm (w<em>l</em>h, Winbond package code ZP)</li>
-        <li>Recommended Land Pattern: 6.10x5.10mm (31.11mm2)</li>
+        <li>Recommended Land Pattern: 6.10x5.10mm (31.11mm2)</li>
     </ul>
 </td>
 </tr>
 <tr >
 <td >3D Models
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Common Uses
 </td>
@@ -75,7 +75,7 @@ SOIC
 
 ## Comments
 
-The WSON package has a exposed thermal pad on the underside. However, it is not normally electrically connected to anything, and is optionally soldered to the PCB. It is recommended to be soldered when the PCB has a large amount of flex, else left unconnected.
+The WSON package has a exposed thermal pad on the underside. However, it is not normally electrically connected to anything, and is optionally soldered to the PCB. It is recommended to be soldered when the PCB has a large amount of flex, else left unconnected.
 
 {{% warning %}}
 Texas Instruments has a WSON package which does not have a pitch of 1.27mm!

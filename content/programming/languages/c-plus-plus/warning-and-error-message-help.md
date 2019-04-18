@@ -15,7 +15,7 @@ This warning can also be an error!
 
 ## error: undefined reference to `typeinfo for [classname]`
 
-This can come about if you have run-time info disabled via the -fno-rtti GCC compiler option.
+This can come about if you have run-time info disabled via the -fno-rtti GCC compiler option.
 
 This can also come about from forgetting to declare non-pure virtual functions, as the following snippet from GCC suggests.
 

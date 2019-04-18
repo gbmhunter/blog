@@ -10,7 +10,7 @@ type: page
 
 The AT32UC3 series of microcontrollers come with a pre-loaded USB bootloader. This allows you to program the devices through a USB connection with a computer without the need for an ISP or JTAG programmer.
 
-This tutorial explains how to re-program, and/or modify the AT32UC3 bootloader. Atmel does not make this an easy task. Think again if you thought you could do it with a few clicks from within Atmel Studio 6. The documentation is sparse, the downloads (yes it requires many different programs) scattered around the back corners of their website, it involves many command-line operations, and the process filled with little gotchas and workarounds. Anyway, always look on the bright side of life? Right? Let us continue...
+This tutorial explains how to re-program, and/or modify the AT32UC3 bootloader. Atmel does not make this an easy task. Think again if you thought you could do it with a few clicks from within Atmel Studio 6. The documentation is sparse, the downloads (yes it requires many different programs) scattered around the back corners of their website, it involves many command-line operations, and the process filled with little gotchas and workarounds. Anyway, always look on the bright side of life? Right? Let us continue...
 
 ## Choose An Operating System To Work Within
 
@@ -24,9 +24,9 @@ The first thing to do is get the bootloader source code. This is contained withi
 $ unzip AVR-UC3-SoftwareFramework-1.7.0.zip
 ```
 
-This should put all the files into a directory called 1.7.0-ATUC3. Sweet! Now you can find the bootloader source code at 1.7.0-AT32UC3/SERVICES/USB/CLASS/DFU/EXAMPLES/ISP. In this directory you should find the source code and associated headers (isp.c/h, usb_dfu.c/h). There are also sub-directories containing files specific to the different sub-families of the AT32UC3 (e.g. AT32UC3A, AT32UC3A3, AT32UC3B, ...).
+This should put all the files into a directory called 1.7.0-ATUC3. Sweet! Now you can find the bootloader source code at 1.7.0-AT32UC3/SERVICES/USB/CLASS/DFU/EXAMPLES/ISP. In this directory you should find the source code and associated headers (isp.c/h, usb_dfu.c/h). There are also sub-directories containing files specific to the different sub-families of the AT32UC3 (e.g. AT32UC3A, AT32UC3A3, AT32UC3B, ...).
 
-At this point I will pick a particular sub-family for the rest of the tutorial, the AT32UC3A. Obviously, replace all occurrences of this name with your particular sub-family. If you navigate into the AT32UC3A sub-folder, you will find an IAR and a GCC folder. Since we are using Linux, and the license for GCC does not cost any money, we will choose GCC. Go into the GCC folder.
+At this point I will pick a particular sub-family for the rest of the tutorial, the AT32UC3A. Obviously, replace all occurrences of this name with your particular sub-family. If you navigate into the AT32UC3A sub-folder, you will find an IAR and a GCC folder. Since we are using Linux, and the license for GCC does not cost any money, we will choose GCC. Go into the GCC folder.
 
 Your path should now be:
 
@@ -40,7 +40,7 @@ If you just run make, you get the error:
 *** multiple target patterns. Stop.
 ```
 
-So, it turns out someone at Atmel forgot to do a `make clean` before zipping up the project. The folder structure has residual `.d` files from a previous build step. These `.d` files contain Windows style paths. The Makefile is trying to parse these `.d` files and this is what is causing the multiple target patterns error. So you need to deleting all of the `.d` files to fix this.
+So, it turns out someone at Atmel forgot to do a `make clean` before zipping up the project. The folder structure has residual `.d` files from a previous build step. These `.d` files contain Windows style paths. The Makefile is trying to parse these `.d` files and this is what is causing the multiple target patterns error. So you need to deleting all of the `.d` files to fix this.
 
 ## Downloading The Toolchain
 
@@ -92,20 +92,20 @@ You will also have to change the board.
 
 Run the command make.
 
-Ohoh, the size of the .bin file is more than 8kB! I believe this is because Atmel used the IAR compiler, which results in slightly less code than the GCC compiler, even with the `-Os` optimisation flag set (this is set by default in config.mk). The pre-compiled bootloader binary that Atmel provides for the AT32UC3A3 microcontroller family (at32uc3a3-isp-1.0.3.bin) clocks in at a tidy 7,617B. 
+Ohoh, the size of the .bin file is more than 8kB! I believe this is because Atmel used the IAR compiler, which results in slightly less code than the GCC compiler, even with the `-Os` optimisation flag set (this is set by default in config.mk). The pre-compiled bootloader binary that Atmel provides for the AT32UC3A3 microcontroller family (at32uc3a3-isp-1.0.3.bin) clocks in at a tidy 7,617B. 
 
 ## Modifying The Bootloader Size
 
 In `conf_isp.h`, you'll want to change
 
 ```c
-#define PROGRAM_START_OFFSET          0x00002000
+#define PROGRAM_START_OFFSET          0x00002000
 ```
 
 to
 
 ```c
-#define PROGRAM_START_OFFSET          0x00004000
+#define PROGRAM_START_OFFSET          0x00004000
 ```
 
 ## Post-Build Programming
@@ -118,13 +118,13 @@ Need to change permissions of `post-build.sh` file.
 $ sudo chmod +x post-build.sh
 ```
 
-Run it. You should get the error: `cannot find avr32program`. To fix this, download the linux version of AVR32 Studio v2.6 (it must be v2.6, v2.5 does not have the available tools) from  
-[http://www.atmel.com/tools/Archive/AVR32STUDIO2_6.aspx](http://www.atmel.com/tools/Archive/AVR32STUDIO2_6.aspx) to /opt/. Unzip with   
+Run it. You should get the error: `cannot find avr32program`. To fix this, download the linux version of AVR32 Studio v2.6 (it must be v2.6, v2.5 does not have the available tools) from  
+[http://www.atmel.com/tools/Archive/AVR32STUDIO2_6.aspx](http://www.atmel.com/tools/Archive/AVR32STUDIO2_6.aspx) to /opt/. Unzip with   
 unzip avr32studio-ide-2.6.0.753-linux-gtk.x86_64.zip. This will unzip all the files into a directory called as4e-ide.
 
 `avr32program` should be found at `as4e-ide/plugins/com.atmel.avr.utilities.linux.x86_64_3.0.0.201009140848/os/linux/x86_64/bin`. This needs to be added to your path.
 
-But wait, what about `atprogram`, the newer replacement for `avr32program`, can we use that? Yes. And this would be the way I recommend. The commands to program the bootloader are:
+But wait, what about `atprogram`, the newer replacement for `avr32program`, can we use that? Yes. And this would be the way I recommend. The commands to program the bootloader are:
 
 ```sh
 atprogram -t jtagice3 -i jtag -d at32uc3a3256 chiperase

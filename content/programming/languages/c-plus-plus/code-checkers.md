@@ -9,7 +9,7 @@ url: /programming/languages/c-plus-plus/code-checkers
 
 ## Cppcheck
 
-Website: [http://cppcheck.sourceforge.net/ ](http://cppcheck.sourceforge.net/)
+Website: [http://cppcheck.sourceforge.net/ ](http://cppcheck.sourceforge.net/)
 
 Platform: Linux/Windows  
 Licensing: Free, opensource  

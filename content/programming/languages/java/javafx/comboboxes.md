@@ -9,7 +9,7 @@ url: /programming/languages/java/javafx/comboboxes
 
 ## Associating With An Enum
 
-One of the tidiest ways of populating a JavaFX ComboBox is to associate it with an enumeration. The enumeration defines the objects you can select from in the ComboBox, as well as how to display these objects (their String representations).
+One of the tidiest ways of populating a JavaFX ComboBox is to associate it with an enumeration. The enumeration defines the objects you can select from in the ComboBox, as well as how to display these objects (their String representations).
 
 First, we need to create an enum:
 
@@ -35,13 +35,13 @@ public enum MyEnum {
 }
 ```
 
-Then, to populate the ComboBox, just type:
+Then, to populate the ComboBox, just type:
 
 ```java    
 myComboBox.getItems().setAll(MyEnum.values());
 ```
 
-To select an item from code (useful for say, setting the default value of the ComboBox ), type:
+To select an item from code (useful for say, setting the default value of the ComboBox ), type:
 
 ```java    
 myComboBox.getSelectionModel().select(MyEnum.OPTION_1);

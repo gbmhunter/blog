@@ -11,9 +11,9 @@ url: /programming/languages/java/serial-ports
 
 ## Response Times
 
-If you are used to designing on an embedded platform, you'll have to get used to much slower response times for Java-running serial ports.
+If you are used to designing on an embedded platform, you'll have to get used to much slower response times for Java-running serial ports.
 
-Below is a breakdown of what response times are achievable when communicating with external devices using a serial port in Java. These times are measured from when the last byte of input data is received on the computer's serial port to when the first byte of data is sent from the computer's serial port.  * < 5ms: Not really possible  * 5-20ms: Achievable, but not really guaranteed.  * >20ms: Comms should work most of time. However, remember that on non-real-time systems such as Windows and standard Linux distributions that there is no absolute guarantee your message will be sent out in time.
+Below is a breakdown of what response times are achievable when communicating with external devices using a serial port in Java. These times are measured from when the last byte of input data is received on the computer's serial port to when the first byte of data is sent from the computer's serial port.  * < 5ms: Not really possible  * 5-20ms: Achievable, but not really guaranteed.  * >20ms: Comms should work most of time. However, remember that on non-real-time systems such as Windows and standard Linux distributions that there is no absolute guarantee your message will be sent out in time.
 
 ## Summary of COM Port Libraries
 

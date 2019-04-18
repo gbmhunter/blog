@@ -18,7 +18,7 @@ The DE-15 connector is commonly used for VGA connections between computers and s
 
 ## Schematic Symbol
 
-I recommend using the unique schematic symbol style below for the range of D-sub-miniature connectors. It immediately identifies the connector to the viewer.
+I recommend using the unique schematic symbol style below for the range of D-sub-miniature connectors. It immediately identifies the connector to the viewer.
 
 {{< img src="connector-db25-schematic-symbol.png" width="185px" caption="An easy-to-identify schematic symbol style for representing D sub-miniature connectors."  >}}
 
@@ -82,7 +82,7 @@ The available sizes are:
 </td></tr><tr >
 <td >DC-37
 </td>
-<td >37 (19-18) 
+<td >37 (19-18) 
 </td>
 <td >DC-62
 </td>
@@ -92,34 +92,34 @@ The available sizes are:
 </td>
 <td >79 (26-27-26)
 </td></tr><tr >
-<td > DD-50
+<td > DD-50
 </td>
-<td >50 (17-16-17) 
+<td >50 (17-16-17) 
 </td>
 <td >DD-78
 </td>
-<td >78  (20-19-20-19)
+<td >78  (20-19-20-19)
 </td>
 <td >DD-100
 </td>
 <td >100 (26-25-24-25)
 </td></tr><tr >
-<td > 
+<td > 
 </td>
-<td > 
+<td > 
 </td>
 <td >DF-104
 </td>
 <td >104 (21-21-21-21-20)
 </td>
-<td > 
+<td > 
 </td>
-<td > 
+<td > 
 </td></tr></tbody></table>
 
 ## Backshells
 
-D-subminiature connectors which are **attached to cables** (i.e. are not PCB mounted or panel mounted) are designed to be fitted with a _backshell_. The backshell **protects/encloses** the wire connections from from the cable, as well providing **mechancial support and strain relief** for the cable.
+D-subminiature connectors which are **attached to cables** (i.e. are not PCB mounted or panel mounted) are designed to be fitted with a _backshell_. The backshell **protects/encloses** the wire connections from from the cable, as well providing **mechancial support and strain relief** for the cable.
 
 ## Termination Styles
 
@@ -129,7 +129,7 @@ Solder Lug: Designed so that wires can be soldered onto the pins. This style of 
 
 ## Uses
 
-Many older consumer products and prototype circuits of all ages use the DE-9 connector for [RS-232 communications](/electronics/communication-protocols/rs-232-protocol). However, it is becoming less common, with USB-to-UART cables becoming more popular, which get connected directly to a microcontrollers pins through flying leads, standard header, or USB connector (in this case the USB-to-UART converter is usually on the board itself, i.e. [Arduino boards](/programming/microcontrollers/arduino)).
+Many older consumer products and prototype circuits of all ages use the DE-9 connector for [RS-232 communications](/electronics/communication-protocols/rs-232-protocol). However, it is becoming less common, with USB-to-UART cables becoming more popular, which get connected directly to a microcontrollers pins through flying leads, standard header, or USB connector (in this case the USB-to-UART converter is usually on the board itself, i.e. [Arduino boards](/programming/microcontrollers/arduino)).
 
 ## Filtered D-sub Connectors
 
@@ -141,7 +141,7 @@ Compared to implementing the filtering on say, the PCB, filtering at the connect
 
 ## Screw Kits
 
-You can buy pre-made screw kits, such as the [TE Connectivity 5205817-1](http://www.digikey.co.nz/product-search/en?vendor=0&keywords=5205817-1&stock=1), which comes with all the necessary screws and associated hardware to secure two D-sub connectors together (I might point out here that screws **are not required** to make a connection, but help to make it more secure).
+You can buy pre-made screw kits, such as the [TE Connectivity 5205817-1](http://www.digikey.co.nz/product-search/en?vendor=0&keywords=5205817-1&stock=1), which comes with all the necessary screws and associated hardware to secure two D-sub connectors together (I might point out here that screws **are not required** to make a connection, but help to make it more secure).
 
 {{< img src="te-connectivity-5205817-1-d-sub-screw-kit.jpg" width="254px" caption="The TE Connectivity 5205817-1 D-Sub screw kit."  >}}
 

@@ -157,7 +157,7 @@ Malt
 </tr>
 <tr >
 
-<td >Mash Start Temp (°C)
+<td >Mash Start Temp (°C)
 </td>
 
 <td >67
@@ -165,7 +165,7 @@ Malt
 </tr>
 <tr >
 
-<td >Mash End Temp (°C)
+<td >Mash End Temp (°C)
 </td>
 
 <td >66
@@ -173,7 +173,7 @@ Malt
 </tr>
 <tr >
 
-<td >Mash Time (min)
+<td >Mash Time (min)
 </td>
 
 <td >60
@@ -192,7 +192,7 @@ Malt
 <td >Mash Volume
 </td>
 
-<td > <20L (inch above the grain surface)
+<td > <20L (inch above the grain surface)
 </td>
 </tr>
 </tbody>
@@ -209,7 +209,7 @@ None.
 <tbody >
 <tr >
 
-<td >Sparge Temp (°C)
+<td >Sparge Temp (°C)
 </td>
 
 <td >80
@@ -360,7 +360,7 @@ None.
 <td >10
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 <tr >
@@ -374,7 +374,7 @@ None.
 <td >1
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 </tbody>
@@ -394,7 +394,7 @@ None
 <td >Start Date
 </td>
 
-<td > ?
+<td > ?
 </td>
 </tr>
 <tr >
@@ -402,7 +402,7 @@ None
 <td >Start SG (g/mL)
 </td>
 
-<td > 1.050
+<td > 1.050
 </td>
 </tr>
 <tr >
@@ -410,7 +410,7 @@ None
 <td >Yeast
 </td>
 
-<td > Safbrew Wheat Yeast WB-06
+<td > Safbrew Wheat Yeast WB-06
 </td>
 </tr>
 <tr >
@@ -418,7 +418,7 @@ None
 <td >Cooling Method
 </td>
 
-<td > Immersion chiller
+<td > Immersion chiller
 </td>
 </tr>
 <tr >
@@ -426,7 +426,7 @@ None
 <td >Gravities During Fermentation
 </td>
 
-<td > ?
+<td > ?
 </td>
 </tr>
 <tr >
@@ -434,7 +434,7 @@ None
 <td >End Date
 </td>
 
-<td > ?
+<td > ?
 </td>
 </tr>
 <tr >
@@ -442,15 +442,15 @@ None
 <td >End SG (g/mL)
 </td>
 
-<td > 1.010
+<td > 1.010
 </td>
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
-<td > ?
+<td > ?
 </td>
 </tr>
 <tr >
@@ -458,7 +458,7 @@ None
 <td >Fermentation Time (days)
 </td>
 
-<td > ?
+<td > ?
 </td>
 </tr>
 </tbody>
@@ -478,7 +478,7 @@ None
 <td >Start Date
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 <tr >
@@ -486,7 +486,7 @@ None
 <td >Start SG (g/mL)
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 <tr >
@@ -494,7 +494,7 @@ None
 <td >End Date
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 <tr >
@@ -502,15 +502,15 @@ None
 <td >End SG (g/mL)
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 <tr >
@@ -518,7 +518,7 @@ None
 <td >Fermentation Time (days)
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 </tbody>
@@ -554,7 +554,7 @@ No secondary fermentation
 <td >Bottle/Filter Date
 </td>
 
-<td > ?
+<td > ?
 </td>
 </tr>
 <tr >
@@ -562,7 +562,7 @@ No secondary fermentation
 <td >Filter Size (micron)
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 <tr >
@@ -570,7 +570,7 @@ No secondary fermentation
 <td >Volume Of Beer After Filtering
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 <tr >
@@ -578,7 +578,7 @@ No secondary fermentation
 <td >SG Before Sugar Added
 </td>
 
-<td > n/a
+<td > n/a
 </td>
 </tr>
 <tr >
@@ -586,7 +586,7 @@ No secondary fermentation
 <td >Sugar Type Added
 </td>
 
-<td > Sucrose
+<td > Sucrose
 </td>
 </tr>
 <tr >
@@ -594,7 +594,7 @@ No secondary fermentation
 <td >Sugar Weight (g)
 </td>
 
-<td > ?
+<td > ?
 </td>
 </tr>
 <tr >
@@ -602,7 +602,7 @@ No secondary fermentation
 <td >Expected Carbonation Level
 </td>
 
-<td > ?
+<td > ?
 </td>
 </tr>
 <tr >

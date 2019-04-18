@@ -175,7 +175,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 </tr>
 <tr >
 
-<td >Mash Start Temp (°C)
+<td >Mash Start Temp (°C)
 </td>
 
 <td >69
@@ -183,7 +183,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 </tr>
 <tr >
 
-<td >Mash End Temp (°C)
+<td >Mash End Temp (°C)
 </td>
 
 <td >67
@@ -191,7 +191,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 </tr>
 <tr >
 
-<td >Mash Time (min)
+<td >Mash Time (min)
 </td>
 
 <td >?
@@ -227,7 +227,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 <tbody >
 <tr >
 
-<td >Sparge Temp (°C)
+<td >Sparge Temp (°C)
 </td>
 
 <td >90
@@ -449,7 +449,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
 <td >20
@@ -509,7 +509,7 @@ Brewed for the Massey Handball fundraiser party, so it was designed to be cheap!
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
 <td >20

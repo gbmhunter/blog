@@ -16,8 +16,8 @@ It supports the use of the [MPLAB XC compilers](/programming/compilers/mplab-xc-
 
 ## Refactoring
 
-MPLAB X has basic refactoring support, including the ability to rename, move, copy, or change the function parameters.
+MPLAB X has basic refactoring support, including the ability to rename, move, copy, or change the function parameters.
 
-## Code Modification Detection
+## Code Modification Detection
 
-MPLAB comes with code modification detection which allows team members to easily detect what code has been changed in the recent past.
+MPLAB comes with code modification detection which allows team members to easily detect what code has been changed in the recent past.

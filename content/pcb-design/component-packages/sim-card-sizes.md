@@ -42,7 +42,7 @@ There a four standard SIM card sizes.
 </td>
 <td>ETSI TS 102 221 V9.0.0, Mini-UICC
 </td>
-<td> 
+<td> 
 </td></tr><tr >
 <td>Nano-SIM
 </td>
@@ -50,14 +50,14 @@ There a four standard SIM card sizes.
 </td>
 <td >ETSI TS 102 221 V11.0.0
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Embedded-SIM
 </td>
 <td >6.00x5.00x1.00</td>
 <td >JEDEC Design Guide 4.8, SON-8
 </td>
-<td >Designed to be directly mounted onto a circuit board. 
+<td >Designed to be directly mounted onto a circuit board. 
 </td></tr></tbody></table>
 
 {{< figure src="/images/2015/10/stack-of-sim-card-component-packages-3d-render.jpeg" width="404px" caption="A 3D render of a stack of standard-sized SIM cards."  >}}

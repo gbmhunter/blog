@@ -58,7 +58,7 @@ This rocket was built in under 5 minutes. It has a cardboard body and a black po
 
 ## Rocketboard
 
-A homemade class "H" rocket motor attached to a skateboard. Propellant is potassium nitrate/dextrose
+A homemade class "H" rocket motor attached to a skateboard. Propellant is potassium nitrate/dextrose
 (KNDX) in a PVC casing.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/SPJvFzGbNCA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

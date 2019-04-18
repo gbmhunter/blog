@@ -92,7 +92,7 @@ url: /pcb-design/component-packages/sot-1193-component-package
 <td >Land Area
 </td>
 
-<td >2.56mm² (1.60x1.60mm)
+<td >2.56mm² (1.60x1.60mm)
 </td>
 </tr>
 <tr >

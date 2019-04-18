@@ -10,10 +10,10 @@ type: page
 
 Java has 8 primitive data types. It does not support unsigned primitive types (all primitive numerical types are signed).
 
-You cannot use the new keyword with primitive data types as they are not considered objects.
+You cannot use the new keyword with primitive data types as they are not considered objects.
 
 {{% note %}}
-The `String` class, although it has special support by the language, is not a primitive data type.
+The `String` class, although it has special support by the language, is not a primitive data type.
 {{% /note %}}
 
 ## byte
@@ -76,10 +76,10 @@ The `String` class, although it has special support by the language, is not a p
 <td >Signed two's complement.
 </td></tr></tbody></table>
 
-`int` literals can be created by just writing integers directly in the code. An integer is always of type int unless it is prefixed with an `L` or `l`, in which case it is of type long.
+`int` literals can be created by just writing integers directly in the code. An integer is always of type int unless it is prefixed with an `L` or `l`, in which case it is of type long.
     
 ```java
-int i = 1234; // The 1234 is an integer literal
+int i = 1234; // The 1234 is an integer literal
 ```
 
 ## long
@@ -142,7 +142,7 @@ int i = 1234; // The 1234 is an integer literal
 <td >Double-precision 64-bit IEEE 754 floating point.
 </td></tr></tbody></table>
 
-The double  type should be your default go-to for any general-purpose decimal number. If you are using many of them and space/performance is an issue, consider using the smaller, lower accuracy float type instead.
+The double  type should be your default go-to for any general-purpose decimal number. If you are using many of them and space/performance is an issue, consider using the smaller, lower accuracy float type instead.
 
 ## boolean
 
@@ -164,7 +164,7 @@ The double  type should be your default go-to for any general-purpose decimal n
 <td >Not specified by Java standard.
 </td></tr></tbody></table>
 
-Even though a boolean can only be used to represent one bit of information, the amount of memory it uses isn't specified by the Java standard.
+Even though a boolean can only be used to represent one bit of information, the amount of memory it uses isn't specified by the Java standard.
 
 ## char
 
@@ -186,9 +186,9 @@ Even though a boolean can only be used to represent one bit of information, th
 <td >A single 16-bit Unicode character.
 </td></tr></tbody></table>
 
-## Converting Between byte And int
+## Converting Between byte And int
 
-Notice that the only 8-bit number representation Java has is for a signed two complement. This means that you can only store the numbers -128 to +127 in a byte.
+Notice that the only 8-bit number representation Java has is for a signed two complement. This means that you can only store the numbers -128 to +127 in a byte.
 
 ```java
 byte myByte;
@@ -203,11 +203,11 @@ myByte = 240;
 myByte = (byte)(240);
 ```
 
-Note here that when converting from an int to a byte, the bit pattern will not be changed (`0b11110000` is still `0b11110000`), but the decimal representation will (e.g. `240` is now `-16`).
+Note here that when converting from an int to a byte, the bit pattern will not be changed (`0b11110000` is still `0b11110000`), but the decimal representation will (e.g. `240` is now `-16`).
 
-People with a C/C++ background would be used to datatype `uint8_t`, which is an unsigned 8-bit number, and allows you to store numbers between 0 to 255.
+People with a C/C++ background would be used to datatype `uint8_t`, which is an unsigned 8-bit number, and allows you to store numbers between 0 to 255.
 
-Above we have shown you how to convert from a int to a byte. Converting back is slightly different...
+Above we have shown you how to convert from a int to a byte. Converting back is slightly different...
 
 ```java
 // myByte will equal -16 after this assignment

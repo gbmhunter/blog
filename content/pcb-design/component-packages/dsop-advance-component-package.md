@@ -24,7 +24,7 @@ url: /pcb-design/component-packages/dsop-advance-component-package
 </td></tr><tr >
 <td >Similar To
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Mounting
 </td>
@@ -51,7 +51,7 @@ url: /pcb-design/component-packages/dsop-advance-component-package
 <td >
     <ul>
         <li>\(50^{\circ}C/W\) (device mounted copper PCB with large pads designed for heatsinking)</li>
-        <li>\(142^{\circ}C/W\) (device mounted on standard PCB with minimal pad land pattern)</li>
+        <li>\(142^{\circ}C/W\) (device mounted on standard PCB with minimal pad land pattern)</li>
     </ul>
 </td></tr><tr >
 <td >Dimensions

@@ -49,9 +49,9 @@ http.createServer( function(req, res)
 }).listen('8124');
 ```
 
-This will respond with the text NodeJs says hi. It may respond with the message twice, as some browsers (e.g. Chrome) also put in a separate HTTP request for favicon.ico. The function passed into createServer() gets called when the request event fires. If you want to know more about the http object methods, see the [API reference](http://nodejs.org/api/http.html#http_class_http_server).
+This will respond with the text NodeJs says hi. It may respond with the message twice, as some browsers (e.g. Chrome) also put in a separate HTTP request for favicon.ico. The function passed into createServer() gets called when the request event fires. If you want to know more about the http object methods, see the [API reference](http://nodejs.org/api/http.html#http_class_http_server).
 
-A simple way to stop this from happening is to investigate the req variable.
+A simple way to stop this from happening is to investigate the req variable.
 
 ```js
 var http = require('http');
@@ -106,7 +106,7 @@ Node packages are installed locally (in the current directory) with the followin
 $ npm install package-name
 ```
 
-They are installed globally by adding the -g flag:
+They are installed globally by adding the -g flag:
 
 ```sh 
 $ npm install -g package-name
@@ -114,7 +114,7 @@ $ npm install -g package-name
 
 Local packages are installed in the current directory under ./node_modules/.
 
-A giant list of node modules can be found at [https://github.com/joyent/node/wiki/modules](https://github.com/joyent/node/wiki/modules). You can print a list of all installed modules with the command npm -ls.
+A giant list of node modules can be found at [https://github.com/joyent/node/wiki/modules](https://github.com/joyent/node/wiki/modules). You can print a list of all installed modules with the command npm -ls.
 
 
 ## RaspberryPi GPIO

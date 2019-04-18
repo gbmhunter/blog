@@ -45,10 +45,10 @@ public class HelloEventGenerator {
 }
 ```
 
-Since the interface is public, it has to be described in it's own file.
+Since the interface is public, it has to be described in it's own file.
 
 ## java.util.Observer/Observable
 
-The Java framework provides the java.lang.Observer and java.lang.Observable classes to standardise the way the observer pattern is implemented.
+The Java framework provides the java.lang.Observer and java.lang.Observable classes to standardise the way the observer pattern is implemented.
 
-The problem is you can attach any Observer object to any Observable object, creating potential incorrect-type issues, especially when a project starts to grow in size.
+The problem is you can attach any Observer object to any Observable object, creating potential incorrect-type issues, especially when a project starts to grow in size.

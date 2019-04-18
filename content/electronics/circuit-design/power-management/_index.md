@@ -21,7 +21,7 @@ The following points need to be considered:
 
 ## Disabling Sections Of A Circuit
 
-Disabling sections of the circuit is an easy way to save power. This can be done with  low-side or high-side switch. High side switches disconnect the load from the positive voltage rail (an source current to the load), while low-side switches connect the load to ground (and conversely sink current from the load). This can be done with a number of components, their advantages/disadvantages are explained below:
+Disabling sections of the circuit is an easy way to save power. This can be done with  low-side or high-side switch. High side switches disconnect the load from the positive voltage rail (an source current to the load), while low-side switches connect the load to ground (and conversely sink current from the load). This can be done with a number of components, their advantages/disadvantages are explained below:
 
 * MOSFETs - An n-channel can be used for low-side switching or a p-channel for high-side switching. You could combine an n and p to perform high-side switching with a standard non-inverted logic signal. This is one of the cheapest options. However, MOSFETs can have quite a large leakage current (0.1 to 1uA @ 25C), which climbs rapidly as the temperature increases. If this is a concern, a JFET maybe a better option.
 * JFETs - A benefit of using a JFET is the tiny leakage currents (nano-amps). However a dis-advantage of using a JFET is the large on-resistance compared to that of a MOSFET, you will only be able to switch mA's of current. Also, they require about 4-4.5V to switch them, meaning they are not compatible with 3.3V or lower circuitry.
@@ -42,15 +42,15 @@ The microcontroller disconnects the load (which includes itself) by pulling the 
 
 UVLO pins usually monitor the supply voltage and turn of the IC if the supply voltage drops below a set threshold. They normally indirectly measure the supply voltage by using an external resistor divider. This reduced voltage is then compared against an internally sourced reference voltage (e.g. 1.2V). The resistor divider lets the PCB designer choose the supply cut-off voltage by adjusting the ratio of the resistances.
 
-Because the supply voltage can be slow-changing, UVLO pins usually have some form of hysteresis to prevent rapid triggering on the boundary between low and high (the threshold voltage). The hysteresis is either built in (e.g. 40mV of hysteresis), or a user-customisable hysteresis is provided. Customisable hysteresis is usually provided by the chip manufacturer making the UVLO pin sink a small amount of current when the pin is below the threshold. The user then chooses an appropriate resistor connected to the UVLO pin to provide the right amount of hysteresis.
+Because the supply voltage can be slow-changing, UVLO pins usually have some form of hysteresis to prevent rapid triggering on the boundary between low and high (the threshold voltage). The hysteresis is either built in (e.g. 40mV of hysteresis), or a user-customisable hysteresis is provided. Customisable hysteresis is usually provided by the chip manufacturer making the UVLO pin sink a small amount of current when the pin is below the threshold. The user then chooses an appropriate resistor connected to the UVLO pin to provide the right amount of hysteresis.
 
-UVLO pins are popular on DC/DC converter ICs. 
+UVLO pins are popular on DC/DC converter ICs. 
 
-UVLO pins are sometimes named LBI (low battery input) instead (Texas Instruments uses this term for there battery-related ICs).
+UVLO pins are sometimes named LBI (low battery input) instead (Texas Instruments uses this term for there battery-related ICs).
 
 ## Stabilising UVLO
 
-One issue with UVLO pins is that they introduce instabilities when there is any kind of resistance between the power supply and the IC. If powering the IC from a battery, this **includes the internal resistance** of the battery. When the voltage drops below the threshold, the IC turns off, reducing the load current. Because of the source resistance, this causes the voltage the IC sees to increase, potentially rising above the threshold and turning the IC on again. This cycle will repeat and the IC will quickly oscillate between the on and off states.
+One issue with UVLO pins is that they introduce instabilities when there is any kind of resistance between the power supply and the IC. If powering the IC from a battery, this **includes the internal resistance** of the battery. When the voltage drops below the threshold, the IC turns off, reducing the load current. Because of the source resistance, this causes the voltage the IC sees to increase, potentially rising above the threshold and turning the IC on again. This cycle will repeat and the IC will quickly oscillate between the on and off states.
 
 The solution to this is to add the right amount of hysteresis. The IC may already have hysteresis, but it may not be enough (especially if it wasn't specifically designed for battery or other high-resistance power source operation). The hysteresis can be increased by the designed by adding a resistor between `\( V_{OUT} \)` and the UVLO pin.
 
@@ -58,7 +58,7 @@ The two equations are:
 
 <div>$$ \frac{V_{BAT} - V_{UVLO}}{R1} + \frac{V_{OUT} - V_{UVLO}}{R3} = \frac{V_{UVLO}}{R_2} $$</div>
 
-<div>$$ \frac{V_{BAT} - V_{UVLO}}{R1} = \frac{V_{UVLO}}{R_2} + \frac{V_{UVLO}}{R_3} $$</div>
+<div>$$ \frac{V_{BAT} - V_{UVLO}}{R1} = \frac{V_{UVLO}}{R_2} + \frac{V_{UVLO}}{R_3} $$</div>
 
 <p class="centered">
     where:<br>
@@ -69,6 +69,6 @@ The two equations are:
 
 ## Voltage/Current/Power Monitoring
 
-The [Texas Instruments INA226](http://www.ti.com/product/ina226) is an example of a voltage/current and power monitoring IC. It relies on an external high or low-side current-sense resistor. It is controlled via I2C. 
+The [Texas Instruments INA226](http://www.ti.com/product/ina226) is an example of a voltage/current and power monitoring IC. It relies on an external high or low-side current-sense resistor. It is controlled via I2C. 
 
 {{< img src="ina226-power-monitor-ic-internal-diagram-with-external-filtering.png" width="878px" caption="The internal diagram (with some external filtering circuitry) of the INA226 voltage/current/power monitoring IC. Image from http://www.ti.com/." >}}

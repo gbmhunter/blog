@@ -12,9 +12,9 @@ USB wasn't initially designed for charging batteries in devices such as phones a
 
 {{< img src="generic-usb-charger.jpg" width="393px" caption="A generic 5V wall-socket USB charger."  >}}
 
-Even so, most devices managed to draw 500mA and get away with it (one exception is Sony, which designed chargers/devices that strictly followed the USB 2.0 protocol). Soon however, the 500mA limit of the standard USB 2.0 specification began to limit the speed at which you could charge things.
+Even so, most devices managed to draw 500mA and get away with it (one exception is Sony, which designed chargers/devices that strictly followed the USB 2.0 protocol). Soon however, the 500mA limit of the standard USB 2.0 specification began to limit the speed at which you could charge things.
 
-Thus, the USB Implementers Forum (USB-IF) formally added charger specifications in 2010 to USB 2.0. They are designed to allow devices to safely draw more than 500mA of current. The specification covers the limits, detection, control and reporting mechanisms for this. They are backwards compatible with USB 2.0 hosts and peripherals. This is contained in the Battery Charging Specification (at revision 1.2, as of March 2015).
+Thus, the USB Implementers Forum (USB-IF) formally added charger specifications in 2010 to USB 2.0. They are designed to allow devices to safely draw more than 500mA of current. The specification covers the limits, detection, control and reporting mechanisms for this. They are backwards compatible with USB 2.0 hosts and peripherals. This is contained in the Battery Charging Specification (at revision 1.2, as of March 2015).
 
 ## Terminology
 
@@ -26,7 +26,7 @@ Other terms are described as they introduced below.
 
 ## Accessory Charger Adapter (ACA)
 
-An accessory charger adapter (ACA) has one upstream port, and zero or more downstream ports.
+An accessory charger adapter (ACA) has one upstream port, and zero or more downstream ports.
 
 ## Charging Downstream Port (CDP)
 

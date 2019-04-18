@@ -36,7 +36,7 @@ Most SMD tantalum capacitors follow a standard set of sizes given in the followi
 </td>
 <td >1.2
 </td>
-<td >EIA 3216-12
+<td >EIA 3216-12
 </td></tr><tr >
 <td >A
 </td>
@@ -60,7 +60,7 @@ Most SMD tantalum capacitors follow a standard set of sizes given in the followi
 </td>
 <td >1.2
 </td>
-<td >EIA 3528-12
+<td >EIA 3528-12
 </td></tr><tr >
 <td >B
 </td>
@@ -84,7 +84,7 @@ Most SMD tantalum capacitors follow a standard set of sizes given in the followi
 </td>
 <td >1.5
 </td>
-<td >EIA 6032-15
+<td >EIA 6032-15
 </td></tr><tr >
 <td >C
 </td>
@@ -108,7 +108,7 @@ Most SMD tantalum capacitors follow a standard set of sizes given in the followi
 </td>
 <td >3.8
 </td>
-<td >EIA 7260-38
+<td >EIA 7260-38
 </td></tr><tr >
 <td >V
 </td>
@@ -120,7 +120,7 @@ Most SMD tantalum capacitors follow a standard set of sizes given in the followi
 </td>
 <td >2.0
 </td>
-<td >EIA 7343-20
+<td >EIA 7343-20
 </td></tr><tr >
 <td >D
 </td>

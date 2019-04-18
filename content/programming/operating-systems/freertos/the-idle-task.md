@@ -17,7 +17,7 @@ The idle task is responsible for freeing memory of tasks which have been recentl
 
 ## Creating An Idle Hook
 
-To create an idle hook, configUSE_IDLE_HOOK must be set to 1 in FreeRTOSConfig.h, and then define a function with the following prototype:
+To create an idle hook, configUSE_IDLE_HOOK must be set to 1 in FreeRTOSConfig.h, and then define a function with the following prototype:
 
 ```c
 void vApplicationIdleHook();

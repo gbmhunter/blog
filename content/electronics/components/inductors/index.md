@@ -108,7 +108,7 @@ This is shown in the diagram below:
 </tr>
 <tr >
 <td >Metal Composite</td>
-<td > </td>
+<td > </td>
 </tr>
 </tbody>
 </table>
@@ -267,7 +267,7 @@ Air-cored inductors represent any inductor which contains no ferromagnetic mater
 
 ## Disadvantages
 
-* Air-cored inductors have to have more  and/or larger turns to achieve the same inductance value as a ferro-magnetic core. This is because **ferro-magnetic cores have a higher permeability than air**.
+* Air-cored inductors have to have more  and/or larger turns to achieve the same inductance value as a ferro-magnetic core. This is because **ferro-magnetic cores have a higher permeability than air**.
 * Air-cored inductors radiate more electromagnetic fields over a wider area, and also pickup more radiation. This is because ferro-magnetic-cores constrain the magnetic field lines better.
 
 ## Ferrite Beads
@@ -284,11 +284,11 @@ Inductor kickback is a significant design issue when using [relays](/electronics
 
 ## Saturation Current
 
-Inductors only behave like inductors over a **limited current range**. As the current continues to increase, the apparent inductance of the inductor decreased. Above a certain current, they become what is called saturated. 
+Inductors only behave like inductors over a **limited current range**. As the current continues to increase, the apparent inductance of the inductor decreased. Above a certain current, they become what is called saturated. 
 
 > Saturation is the state reached when an increase in applied external magnetizing field H cannot increase the magnetization of the material any further.
 
-The below image shows a typical inductance vs. current curve for a ferrite core, SMD inductor that could be used on a 3A SMPS design. It's rated saturation current is 4.2A. Notice how after the current increases beyond this point, the inductance of the inductor drops of rapidly.
+The below image shows a typical inductance vs. current curve for a ferrite core, SMD inductor that could be used on a 3A SMPS design. It's rated saturation current is 4.2A. Notice how after the current increases beyond this point, the inductance of the inductor drops of rapidly.
 
 {{< img src="inductance-vs-current-graph-wurth-7447789003-3.3uh.png" width="502px" caption="Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A."  >}}
 
@@ -298,13 +298,13 @@ Reaching saturation is not always a bad thing. Saturation is desirable in self-s
 
 ## Rated Current
 
-The rated current of an inductor is the maximum DC current allowed before the inductor gets"too hot". "Too hot" is usually defined as a certain temperature rise above ambient (e.g. `\( 40^{\circ}C \)`) when the inductor is mounted using a standard footprint on a standard PCB; again, both defined by the manufacturer. 
+The rated current of an inductor is the maximum DC current allowed before the inductor gets"too hot". "Too hot" is usually defined as a certain temperature rise above ambient (e.g. `\( 40^{\circ}C \)`) when the inductor is mounted using a standard footprint on a standard PCB; again, both defined by the manufacturer. 
 
 ## Saturation Current vs. Rated Current
 
 There are usually two maximum current ratings on an inductor's datasheet, the saturation current and the rated current.
 
-Confusing? The most simple Simon design approach is to pick the lower maximum current of the two and treat that as the maximum current allowed through the inductor. A seasoned inductor sensei will realise that the rated current is not applicable to short current peaks, and so it is safe to exceed this for brief periods of time, as long as the saturation current is not exceeded (disclaimer: in some cases, even exceeding the saturation current limit is o.k. or even desirable, but see the Saturation Current section for more info on this.
+Confusing? The most simple Simon design approach is to pick the lower maximum current of the two and treat that as the maximum current allowed through the inductor. A seasoned inductor sensei will realise that the rated current is not applicable to short current peaks, and so it is safe to exceed this for brief periods of time, as long as the saturation current is not exceeded (disclaimer: in some cases, even exceeding the saturation current limit is o.k. or even desirable, but see the Saturation Current section for more info on this.
 
 ## Inductor Packages
 

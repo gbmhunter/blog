@@ -23,7 +23,7 @@ The LT3745 datasheet gives a table of common resistances and the corresponding s
 
 The resulting power-based equation is (with better accuracy):
 
-<p>$$ R_T = \frac{2.25167e^{11}}{f_{sw(act)}^{1.114}} $$</p>
+<p>$$ R_T = \frac{2.25167e^{11}}{f_{sw(act)}^{1.114}} $$</p>
 
 which had a regression coefficient of `\(R^2 = 0.9994\)`, not a bad fit!
 

@@ -43,7 +43,7 @@ Typical impedances and their associated uses are:
 <td >RS-485 bus
 </td></tr></tbody></table>
 
-## When Should I Worry About Impedance?
+## When Should I Worry About Impedance?
 
 There is a well-known rule-of-thumb for applies to digital waveforms:
 
@@ -52,20 +52,20 @@ There is a well-known rule-of-thumb for applies to digital waveforms:
 <p class="centered">
     where:<br>
     \( t_r \) is the maximum rise time from 10 to 90% (this is stated in the USB spec.), in seconds (s).<br>  
-    \( BW \) the resulting maximum bandwidth the track has to support, in Hertz (Hz). You can also think of this as a maximum frequency, since the bandwidth starts at 0Hz.<br>
+    \( BW \) the resulting maximum bandwidth the track has to support, in Hertz (Hz). You can also think of this as a maximum frequency, since the bandwidth starts at 0Hz.<br>
 </p>
 
-For example, the USB 2.0 specification states a maximum rise time of 4ns. Using the equation above, this gives us a bandwidth of approximately 87.5MHz. 
+For example, the USB 2.0 specification states a maximum rise time of 4ns. Using the equation above, this gives us a bandwidth of approximately 87.5MHz. 
 
-From this, we can calculate the wavelength of an 87.5MHz signal travelling down a track on standard FR-4 PCB.
+From this, we can calculate the wavelength of an 87.5MHz signal travelling down a track on standard FR-4 PCB.
 
 <div>$$ \lambda = \frac{c}{f\sqrt{\epsilon_r}} $$</div>
 
 <p class="centered">
 where:<br>
 \( c \) is the speed of light, in meters per second<br>
-\(  f \) is the frequency that you worked out above (which we called bandwidth)<br>
-\( \epsilon_r \) is the di-electric of the material the electro-magnetic wave is travelling through, and is unitless. In our case this will be the di-electric of the PCB. For standard FR4, this is about 4.35.<br>
+\(  f \) is the frequency that you worked out above (which we called bandwidth)<br>
+\( \epsilon_r \) is the di-electric of the material the electro-magnetic wave is travelling through, and is unitless. In our case this will be the di-electric of the PCB. For standard FR4, this is about 4.35.<br>
 </p>
 
 > The impedance of a PCB track is not important if it is at least 10 times smaller than the wavelength of the signal.
@@ -82,8 +82,8 @@ Although you can't see it in the image above, there is a ground plane underneath
 
 ## The Effects Of Vias
 
-Vias are a bit of a nuisance when it comes to impedance controlled traces. They create imep
+Vias are a bit of a nuisance when it comes to impedance controlled traces. They create imep
 
 ## External Links
 
-A good impedance calculator for a number of different transmission lines is found at [http://www.eeweb.com/toolbox/wire-microstrip-impedance/](http://www.eeweb.com/toolbox/wire-microstrip-impedance/).
+A good impedance calculator for a number of different transmission lines is found at [http://www.eeweb.com/toolbox/wire-microstrip-impedance/](http://www.eeweb.com/toolbox/wire-microstrip-impedance/).

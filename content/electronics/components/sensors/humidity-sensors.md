@@ -17,9 +17,9 @@ Humidity sensors are commonly used in the following equipment:  * Air conditioni
 
 ## Relative Humidity
 
-Relative humidity is defined as the ratio of the water vapour pressure to the saturation water vapour pressure, at the current gas temperature.
+Relative humidity is defined as the ratio of the water vapour pressure to the saturation water vapour pressure, at the current gas temperature.
 
-It is ratio of the actual amount of water in the air to the total amount it could when saturated.
+It is ratio of the actual amount of water in the air to the total amount it could when saturated.
 
 $$ RH = \frac{P_W}{P_{WS}}\cdot 100% $$
 
@@ -47,7 +47,7 @@ First we find an intermediary value called gamma (`\(\gamma\)`):
 
 <div>$$ T_{dp} = \frac{c\gamma(T, RH)}{b - \gamma(T, RH)} $$</div>
 
-The values of the constants `\(a\)`, `\(b\)` and `\(c\)` can vary depending on the data set and method used to calculate them (this is an empirical formula). Common values for them are:
+The values of the constants `\(a\)`, `\(b\)` and `\(c\)` can vary depending on the data set and method used to calculate them (this is an empirical formula). Common values for them are:
 
 `\(a = 6.112millibar\)`
 `\(b = 17.67\)`

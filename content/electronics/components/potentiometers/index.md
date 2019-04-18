@@ -63,12 +63,12 @@ There are two types of taper codes (confusing!).
 
 ## Partial-turn
 
-Partial-turn potentiometers are the most common and cheapest form of potentiometer. The _total mechanical travel_ (rotation) is usually between 250-330°. The _total electrical travel_ is usually less than this, which means there is some dead-zone and the start and end of the travel in where the resistance does not changed.
+Partial-turn potentiometers are the most common and cheapest form of potentiometer. The _total mechanical travel_ (rotation) is usually between 250-330°. The _total electrical travel_ is usually less than this, which means there is some dead-zone and the start and end of the travel in where the resistance does not changed.
 
-Partial-turn potentiometers are commonly used in human-operated situations (the potentiometer is rotated by hand). They provide enough resolution for things such as amplifier volume control.
+Partial-turn potentiometers are commonly used in human-operated situations (the potentiometer is rotated by hand). They provide enough resolution for things such as amplifier volume control.
 
 ## Multi-turn
 
-A common number of turns for multi-turn potentiometers is 10. They are usually MUCH MORE expensive than their partial turn counterparts (as of June 2016, US$20 (100) for a "cheap" 3-turn wire-wound potentiometer).
+A common number of turns for multi-turn potentiometers is 10. They are usually MUCH MORE expensive than their partial turn counterparts (as of June 2016, US$20 (100) for a "cheap" 3-turn wire-wound potentiometer).
 
-Multi-turn potentiometers are used when more resolution is required, or the "thing" rotating the potentiometer is going to go through 1 or more revolutions (e.g. if the potentiometer was connected to an axle or pulley which rotated back and forth through 4 revolutions). 
+Multi-turn potentiometers are used when more resolution is required, or the "thing" rotating the potentiometer is going to go through 1 or more revolutions (e.g. if the potentiometer was connected to an axle or pulley which rotated back and forth through 4 revolutions). 

@@ -25,20 +25,20 @@ Lets recall the well-known rule-of-thumb:
 <p class="centered">
     where:<br>
     \( t_r \) is the maximum rise time from 10 to 90% (this is stated in the USB spec.), in seconds (s).<br>  
-    \( BW \) the resulting maximum bandwidth the track has to support, in Hertz (Hz). You can also think of this as a maximum frequency, since the bandwidth starts at 0Hz.<br>
+    \( BW \) the resulting maximum bandwidth the track has to support, in Hertz (Hz). You can also think of this as a maximum frequency, since the bandwidth starts at 0Hz.<br>
 </p>
 
-The USB specification states a maximum rise time of 4ns. Using the equation above, this gives us a bandwidth of approximately 87.5MHz. 
+The USB specification states a maximum rise time of 4ns. Using the equation above, this gives us a bandwidth of approximately 87.5MHz. 
 
-From this, we can calculate the wavelength of an 87.5MHz signal travelling down a track on standard FR-4 PCB.
+From this, we can calculate the wavelength of an 87.5MHz signal travelling down a track on standard FR-4 PCB.
 
 <div>$$ \lambda = \frac{c}{f\sqrt{\epsilon_r}} $$</div>
 
 <p class="centered">
     where:<br>
     \( c \) is the speed of light, in meters per second<br>
-    \(  f \) is the frequency that you worked out above (which we called bandwidth)<br>
-    \( \epsilon_r \) is the di-electric of the material the electro-magnetic wave is travelling through, and is unitless. In our case this will be the di-electric of the PCB. For standard FR4, this is about 4.35.<br>
+    \(  f \) is the frequency that you worked out above (which we called bandwidth)<br>
+    \( \epsilon_r \) is the di-electric of the material the electro-magnetic wave is travelling through, and is unitless. In our case this will be the di-electric of the PCB. For standard FR4, this is about 4.35.<br>
 </p>
 
 > Another general rule-of-thumb is that the impedance of a PCB track is not important if it is at least 10 times smaller than the wavelength of the signal.
@@ -49,7 +49,7 @@ Thus, the minimum wavelength of the USB full-speed signal is 1.65m, and the char
     <thead>
         <tr>
             <th>USB Standard</th>
-            <th>Minimum Rise Time, \( t_r \)</th>
+            <th>Minimum Rise Time, \( t_r \)</th>
             <th>Track Length At Which Impedance Matters</th>
         </tr>
     </thead>
@@ -57,26 +57,26 @@ Thus, the minimum wavelength of the USB full-speed signal is 1.65m, and the char
 <tr>
 <td >2.0 Low-speed (1.5Mb/s)
 </td>
-<td >75ns (USB Spec Rev 2.0, Table 7-10)
+<td >75ns (USB Spec Rev 2.0, Table 7-10)
 </td>
 <td >3.1m
 </td></tr><tr >
 <td >2.0 Full-speed (12Mb/s)
 </td>
-<td >4ns (USB Spec Rev 2.0, Table 7-9)
+<td >4ns (USB Spec Rev 2.0, Table 7-9)
 </td>
 <td >165mm
 </td></tr><tr >
-<td > 2.0 High-speed (480Mb/s)
+<td > 2.0 High-speed (480Mb/s)
 </td>
 <td >500ps (USB Spec Rev 2.0, Table 7-8)
 </td>
 <td >20.5mm
 </td></tr></tbody></table>
 
-As you can see from the above table, for most PCB's designs, you don't really have to worry about USB2.0 low-speed tracks, you might be concerned about really long USB2.0 full-speed tracks, and you have to control the impedance for all but the smallest USB2.0 high-speed tracks.
+As you can see from the above table, for most PCB's designs, you don't really have to worry about USB2.0 low-speed tracks, you might be concerned about really long USB2.0 full-speed tracks, and you have to control the impedance for all but the smallest USB2.0 high-speed tracks.
 
-For more information, see the [Impedance Controlled Routing page](/pcb-design/impedance-controlled-routing) in the [PCB Design section](/pcb-design) of this website.
+For more information, see the [Impedance Controlled Routing page](/pcb-design/impedance-controlled-routing) in the [PCB Design section](/pcb-design) of this website.
 
 ## What Should My Impedance Be?
 
@@ -94,19 +94,19 @@ The impedance depends on the USB standard.
 <tr >
 <td >1.0
 </td>
-<td > 
+<td > 
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >2.0 Full-speed (12Mb/s)
 </td>
 <td >\( 90 \Omega \pm 15\% \)
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >2.0 High-speed (480Mb/s)
 </td>
 <td >\( 90 \Omega \pm 15\% \)
 </td>
-<td > \( 45 \Omega \pm 10\% \)
+<td > \( 45 \Omega \pm 10\% \)
 </td></tr></tbody></table>

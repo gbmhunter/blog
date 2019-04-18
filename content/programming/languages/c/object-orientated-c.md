@@ -11,15 +11,15 @@ url: /programming/languages/c/object-orientated-c
 
 Although C is not generally thought of as an object-orientated language, it's flexibility does allow **object-orientated style code** to be written, albeit with slightly more verbose syntax than a "object-orientated" language such as C++.
 
-Object-orientated code is a broad term for a number of different coding ideas. These include:  * _Encapsulation_. An object encapsulates all of it's data and functions (called methods in the object-orientated world).  * _Abstraction_. The user of an object can only see and use it's public interface, and has no knowledge of it's internal workings.  * _Polymorphism_.  * _Inheritance_.
+Object-orientated code is a broad term for a number of different coding ideas. These include:  * _Encapsulation_. An object encapsulates all of it's data and functions (called methods in the object-orientated world).  * _Abstraction_. The user of an object can only see and use it's public interface, and has no knowledge of it's internal workings.  * _Polymorphism_.  * _Inheritance_.
 
-The above points can be implemented in C with varying levels of success and simplicity. 
+The above points can be implemented in C with varying levels of success and simplicity. 
 
 Also miss out on compiler-enforced encapsulation and abstraction.
 
 ## The Basic Object
 
-In C, _structures_ (`typedef struct`) can be used to represent an object. Here is C code which defines a very simple object, which only holds data and contains no functions. Think of a struct in C being the equivalent of a class in dedicated OO-languages.
+In C, _structures_ (`typedef struct`) can be used to represent an object. Here is C code which defines a very simple object, which only holds data and contains no functions. Think of a struct in C being the equivalent of a class in dedicated OO-languages.
     
 ```c
 typedef struct {
@@ -38,13 +38,13 @@ void main () {
 }
 ```
 
-Note that by itself, the above code is not very object-orientated, even non-OO styled C would make extensive use of structures. This is where methods come in (functions which belong to an object).
+Note that by itself, the above code is not very object-orientated, even non-OO styled C would make extensive use of structures. This is where methods come in (functions which belong to an object).
 
 ## Methods
 
 A method is just a name for a **function which belongs to an object**. When we say "belong" we mean that the function can **manipulate the data** or call other methods of a particular object instance.
 
-In stronger OO languages, methods are declared as part of a _class_, and a pointer to the current instance of the object (the keyword this) is automatically passed into each method.
+In stronger OO languages, methods are declared as part of a _class_, and a pointer to the current instance of the object (the keyword this) is automatically passed into each method.
 
 We don't have such luxuries in C, and so have to declare our methods as normal functions, and pass in the pointer to the object instance explicitly.
 
@@ -54,13 +54,13 @@ double ComplexNum_GetMagnitude(complexNum_t * obj) {
 }
 ```
 
-The first (and only, in this case) argument passed into this "method" is a pointer to instance of a complexNum_t object that you wish to operate on. **All non-static methods of an object will have this as their first argument.** Note I choose to use the name obj rather than this to prevent any confusion to viewers or the compiler if it also understands C++.
+The first (and only, in this case) argument passed into this "method" is a pointer to instance of a complexNum_t object that you wish to operate on. **All non-static methods of an object will have this as their first argument.** Note I choose to use the name obj rather than this to prevent any confusion to viewers or the compiler if it also understands C++.
 
 ## Wait, What About A Constructor?
 
-In OO-universe, a constructor is a special method which is run automatically when a new instance of an object is created. Unfortunately, in C, there is no way to enforce a method to run upon creation of our `struct` object (o.k., yes you could wrap the creation of a struct inside a macro which also called a method).
+In OO-universe, a constructor is a special method which is run automatically when a new instance of an object is created. Unfortunately, in C, there is no way to enforce a method to run upon creation of our `struct` object (o.k., yes you could wrap the creation of a struct inside a macro which also called a method).
 
-A simple way to have constructor-like behaviour is to create an `Init()` method.
+A simple way to have constructor-like behaviour is to create an `Init()` method.
 
 ```
 void ComplexNum_Init(complexNum_t * obj) {
@@ -84,13 +84,13 @@ void main() {
 
 Both Microsoft Direct X, the Linux kernel, GObject use C polymorphism.
 
-## Interfacing To Imperative Code
+## Interfacing To Imperative Code
 
-You may be happy-as-Larry, writing all your C code in an OO style. But what happens when you want to interface with third-party (or previously written) code which is written in the standard C "imperative" style.
+You may be happy-as-Larry, writing all your C code in an OO style. But what happens when you want to interface with third-party (or previously written) code which is written in the standard C "imperative" style.
 
-The example I will use is based around the PSoC family of microcontrollers. When you create a new UART for the microcontroller (via the graphical schematic editor in the PSoC Creator IDE), the PSoC libraries provide an associated set of functions to control the UART (e.g., if you had named the UART component CyUart1, then you would be given functions such as CyUart1_Start(), CyUart2_Read(), e.t.c). This functions are not written in an OO-style.
+The example I will use is based around the PSoC family of microcontrollers. When you create a new UART for the microcontroller (via the graphical schematic editor in the PSoC Creator IDE), the PSoC libraries provide an associated set of functions to control the UART (e.g., if you had named the UART component CyUart1, then you would be given functions such as CyUart1_Start(), CyUart2_Read(), e.t.c). This functions are not written in an OO-style.
 
-The solution I propose is to create your own object-orientated UART driver, which wraps provides an interface from the imperative-style PSoC UART functions to the rest of your OO code.
+The solution I propose is to create your own object-orientated UART driver, which wraps provides an interface from the imperative-style PSoC UART functions to the rest of your OO code.
 
 Here is an complete, working example:
 

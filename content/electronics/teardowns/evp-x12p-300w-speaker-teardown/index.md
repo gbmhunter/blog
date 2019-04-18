@@ -7,15 +7,15 @@ title: EVP-X12P 300W Speaker Teardown
 type: page
 ---
 
-Here is a little teardown of a Wharfedale EVP-X12P 300W active speaker.
+Here is a little teardown of a Wharfedale EVP-X12P 300W active speaker.
 
-> BACKSTORY: So I borrowed two Wharfedale EVP-X12P active speakers for DJing at a 21st party, and half-way through the set, as Skrillex was playing, I happened to blow one up (if I remove the theatrics, what I really mean is that one of the bass/mid cone speakers stopped working). It turned off, and I smelt that 'burnt electronics' smell. It turned back in about 10minutes, however was not producing any sound from the cone speaker. I managed to survive the rest of the set with just one.
+> BACKSTORY: So I borrowed two Wharfedale EVP-X12P active speakers for DJing at a 21st party, and half-way through the set, as Skrillex was playing, I happened to blow one up (if I remove the theatrics, what I really mean is that one of the bass/mid cone speakers stopped working). It turned off, and I smelt that 'burnt electronics' smell. It turned back in about 10minutes, however was not producing any sound from the cone speaker. I managed to survive the rest of the set with just one.
 
 On the premise I over-drove it, I was looking for visibly wrong things such as blown fuses or dried up/non-existant thermal compound. All components were through-hole, so that made things easier to investigate...
 
 {{< figure src="/images/electronics-evp-x12p-speaker-teardown/rear-panel-with-active-amp.jpg" caption="The rear panel of the speaker, which has all the circuitry bolted onto it."  width="800px" >}}
 
-It has thermal PTC  resettable fuses, so these couldn't of blown...
+It has thermal PTC  resettable fuses, so these couldn't of blown...
 
 {{< figure src="/images/electronics-evp-x12p-speaker-teardown/ptc-resettable-fuses.jpg" caption="PTC resettable fuses on the main PCB."  width="800px" >}}
 
@@ -33,8 +33,8 @@ I measured the signals on the 6-pin connector going from the input board to the 
 
 * Pin 1: (unknown use) +1.4V
 * Pin 2: (unknown use) -1.68V
-* Pin 3: (unknown use, possibly ground) 0V
-* Pin 4: (unknown use, possibly ground) 0V
+* Pin 3: (unknown use, possibly ground) 0V
+* Pin 4: (unknown use, possibly ground) 0V
 * Pin 5: Audio Shield
 * Pin 6: Audio Signal
 

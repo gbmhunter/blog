@@ -61,7 +61,7 @@ type: page
 </td></tr><tr >
 <td >IRNSS
 </td>
-<td >IRNSS is an acronym for <b>Indian Regional Navigation Satellite System</b>. It is a GNSS under the control of the Indian government.
+<td >IRNSS is an acronym for <b>Indian Regional Navigation Satellite System</b>. It is a GNSS under the control of the Indian government.
 </td></tr><tr >
 <td >ISRO
 </td>
@@ -92,7 +92,7 @@ type: page
 <td >VSWR is an acronym for <b>voltage standing wave ratio</b>. It is a type of SWR.
 </td></tr></tbody></table>
 
-##  Frequencies
+##  Frequencies
 
 <table>
     <thead>
@@ -174,7 +174,7 @@ Typical parameter values:
 </tbody>
 </table>
 
-Chip antennas are SMD components which look similar to chip resistors or chip capacitors. Chip antennas come in two types; **on ground types**, that require a **ground below them and a clearance around them**, and **ground-cleared** types, that require a **ground-free area** underneath them. Ground-cleared types have the useful ability of being able to be **reverse mounted** onto PCBs. Examples of GNSS chip antenna manufacturers include [Pulse Electronics](http://www.pulseelectronics.com/products/antennas), Antenova, Taiyo Yuden (who also manufacture chip resistors and capacitors), Johanson Technology, and Ethertronics.
+Chip antennas are SMD components which look similar to chip resistors or chip capacitors. Chip antennas come in two types; **on ground types**, that require a **ground below them and a clearance around them**, and **ground-cleared** types, that require a **ground-free area** underneath them. Ground-cleared types have the useful ability of being able to be **reverse mounted** onto PCBs. Examples of GNSS chip antenna manufacturers include [Pulse Electronics](http://www.pulseelectronics.com/products/antennas), Antenova, Taiyo Yuden (who also manufacture chip resistors and capacitors), Johanson Technology, and Ethertronics.
 
 {{< img src="gps-chip-antenna-3d-model.jpg" width="278px" caption="Photo of a small GPS chip antenna. Image from www.digikey.com."  >}}
 
@@ -206,4 +206,4 @@ GNSS satellites have to account for relativity, otherwise devices uses these sat
 
 ## Communications With Microcontroller
 
-GPS modules typically output NMEA protocol data, plus the option for a proprietary protocol that usually contains more information or allows extra features.  
+GPS modules typically output NMEA protocol data, plus the option for a proprietary protocol that usually contains more information or allows extra features.  

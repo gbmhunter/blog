@@ -8,11 +8,11 @@ type: page
 
 ## The Idea...
 
-To bring a old, broken valve-based antique radio into the digital age with the ability to stream audio from the internet, plugged in USB stick, or a networked computer. All while keeping the classic retro radio look.
+To bring a old, broken valve-based antique radio into the digital age with the ability to stream audio from the internet, plugged in USB stick, or a networked computer. All while keeping the classic retro radio look.
 
 ## The Original Radio
 
-My partner brought this lovely vintage, but worn valve-based radio an auction many years ago for NZ$5. Bargain! 
+My partner brought this lovely vintage, but worn valve-based radio an auction many years ago for NZ$5. Bargain! 
 
 {{< figure src="/images/2014/11/columbus-radio-010-original-front.jpg" width="535px" caption="The original front-panel of the Columbus radio."  >}}
 
@@ -20,11 +20,11 @@ Even though it was worn and torn, you could tell it had been beautifully made an
 
 {{< figure src="/images/2014/11/columbus-radio-020-original-radio-from-back.jpg" width="589px" caption="The original rear of the cabinet. Valves, air capacitors and pully systems!"  >}}
 
- The original electronics!
+ The original electronics!
 
 {{< figure src="/images/2014/11/columbus-radio-250-the-original-electronics-woah.jpg" width="763px" caption="The original electronics of the Columbus radio, housed in the underside of the metal case which sat in the radio cabinet."  >}}
 
-Woah! I had seen nothing like it before. I had heard of the style of **board-less circuit design** in where the components themselves supported one another, but only ever seen "new age" artistic examples of it (for instance a digital audio amplifier). And the component density was crazy! There were **bare wires** running past each over in free space with only mm's of clearance. Tabs had been added to the metal enclosure at frequent intervals around the outside to serve both as a grounding point and a mechanical support.
+Woah! I had seen nothing like it before. I had heard of the style of **board-less circuit design** in where the components themselves supported one another, but only ever seen "new age" artistic examples of it (for instance a digital audio amplifier). And the component density was crazy! There were **bare wires** running past each over in free space with only mm's of clearance. Tabs had been added to the metal enclosure at frequent intervals around the outside to serve both as a grounding point and a mechanical support.
 
 Oh and don't forget the classic speaker...
 
@@ -32,22 +32,22 @@ Oh and don't forget the classic speaker...
 
 UPDATE 2015-01-12: I found [this webpage](http://www.radio-restoration.com/Columbus.html) which describes the Columbus radio brand and it's origins. Based on this information, the radio was made in New Zealand sometime between 1937 and 1961.
 
-## Mechanical 
+## Mechanical 
 
-## Stripping The Cabinet
+## Stripping The Cabinet
 
-The radio's enclosure was in a pretty sad state when I first laid hands on it. The wood had a faded, mottled and cracked look to it. The knobs and their pulley systems (yes, it had pulley systems) had jammed. The glass panel with the screen printed radio bands on it had bits of text missing.
+The radio's enclosure was in a pretty sad state when I first laid hands on it. The wood had a faded, mottled and cracked look to it. The knobs and their pulley systems (yes, it had pulley systems) had jammed. The glass panel with the screen printed radio bands on it had bits of text missing.
 
 I tried a few different paint strippers (because my father had all of these lying around).
 
 <table><tbody ><tr >
-<td >   
+<td >   
 {{< figure src="/images/2014/11/columbus-radio-050-maxistrip-paint-stripper.jpg" width="253px" caption="The Maxistrip paint stripper."  >}}
 </td>
-<td >   
+<td >   
 {{< figure src="/images/2014/11/columbus-radio-060-easy-spray-paint-stripper.jpg" width="171px" caption="The 'Dad's Easy Spray' paint stripper."  >}}
 </td>
-<td >   
+<td >   
 {{< figure src="/images/2014/11/columbus-radio-070-coopers-paint-stripper.jpg" width="176px" caption="The Cooper's stripper."  >}}
 </td></tr></tbody></table>
 
@@ -97,7 +97,7 @@ The Cooper's "wood restoration" product line also includes some moisturiser that
 
 {{< figure src="/images/2014/11/columbus-radio-155-moisturising-the-cabinent.jpg" width="492px" caption="Moisturising the cabinet."  >}}
 
- The moisturisier does not give it a hard surface, nor does it stain the wood, but rather soaks into it and brings out the original colour.
+ The moisturisier does not give it a hard surface, nor does it stain the wood, but rather soaks into it and brings out the original colour.
 
 {{< figure src="/images/2014/11/columbus-radio-190-finished-the-cabinent.jpg" width="656px" caption="The cabinet looking swag after moisturising!"  >}}
 
@@ -109,7 +109,7 @@ The existing cabinet had quite a few appearance-degrading borer holes on the fro
 
 ## Cleaning The Glass
 
-The glass panel had to be handled carefully, the radio frequencies and other text printed on it I wanted to keep for retro reasons, yet it looked like it would flake of and the gentlest touch.
+The glass panel had to be handled carefully, the radio frequencies and other text printed on it I wanted to keep for retro reasons, yet it looked like it would flake of and the gentlest touch.
 
 ## Electronics
 
@@ -119,7 +119,7 @@ I decided on using a **RaspberryPi** with the [Volumio distribution](http://volu
 
 {{< figure src="/images/2014/11/columbus-radio-300-raspberry-pi-b-plus.jpg" width="444px" caption="The RaspberryPi B+ I used as for the smarts inside Columbus radio."  >}}
 
-The **RaspberryPi B+ was preferable** over the older A or B soley because of the improved audio output. The first versions of the Pi shared a single regulator between the audio output DAC and a few other peripherals. These peripherals, when in use, caused some **significant distortion/noise** of the audio output. They have fixed this in the B+ and given the DAC it's own dedicated voltage regulator.
+The **RaspberryPi B+ was preferable** over the older A or B soley because of the improved audio output. The first versions of the Pi shared a single regulator between the audio output DAC and a few other peripherals. These peripherals, when in use, caused some **significant distortion/noise** of the audio output. They have fixed this in the B+ and given the DAC it's own dedicated voltage regulator.
 
 ## Amplifier
 
@@ -127,11 +127,11 @@ I was initially looking at a 100W amplifier from DealExtreme like the TA2024 or 
 
 ## Speakers
 
-I could of kept this speaker and gone for a "classic sound" as well as a "classic look", but I really preferred something with a bit more clarity and punch, so I decided to replace the speaker with two 40W RMS 6x9 speakers I had lying around after my Ford Laser got wrecked.
+I could of kept this speaker and gone for a "classic sound" as well as a "classic look", but I really preferred something with a bit more clarity and punch, so I decided to replace the speaker with two 40W RMS 6x9 speakers I had lying around after my Ford Laser got wrecked.
 
 {{< figure src="/images/2014/11/columbus-radio-200-removing-the-original-speaker.jpg" width="371px" caption="Removing the existing Columbus radio speaker."  >}}
 
-Unfortunately, these didn't quite fit side-by-side when facing forwards in the enclosure! So for better or worse, I decided to face one backwards (goodbye stereo). Here is the front speaker being installed:
+Unfortunately, these didn't quite fit side-by-side when facing forwards in the enclosure! So for better or worse, I decided to face one backwards (goodbye stereo). Here is the front speaker being installed:
 
 <table><tbody ><tr >
 <td >{{< figure src="/images/2014/11/columbus-radio-210-installing-6x9-mount.jpg" width="268px" caption="Installing the 6x9 mount for the front speaker."  >}}
@@ -141,7 +141,7 @@ Unfortunately, these didn't quite fit side-by-side when facing forwards in the e
 
 </td></tr></tbody></table>
 
- Installing the rear speaker:
+ Installing the rear speaker:
 
 {{< figure src="/images/2014/11/columbus-radio-241-rear-facing-speaker.jpg" width="564px" caption="Installing the rear 6x9 speaker."  >}}
 
@@ -149,13 +149,13 @@ EDIT (post completion): One backwards facing speaker **didn't seem to be that de
 
 ## PSU
 
- This was an easy design choice, I needed both +5V @ 500mA and +12V @ whatever speakers take (approx. 1A continuous, 5A peak per speaker, based on the speakers power ratings). I had some old computer ATX PSU's lying around, so choose a suitably sized one (this wasn't hard either, there was plenty of space in the back of the Columbus radio).
+ This was an easy design choice, I needed both +5V @ 500mA and +12V @ whatever speakers take (approx. 1A continuous, 5A peak per speaker, based on the speakers power ratings). I had some old computer ATX PSU's lying around, so choose a suitably sized one (this wasn't hard either, there was plenty of space in the back of the Columbus radio).
 
 {{< figure src="/images/2014/11/columbus-radio-230-making-room-for-psu.jpg" width="417px" caption="Chiseling away some small bits of wood in the cabinet to make room for the PSU."  >}}
 
 ## LEDs Are Not Retro, Woops
 
-There used to be some sort of valve-based indicator which poked out onto the front glass panel.
+There used to be some sort of valve-based indicator which poked out onto the front glass panel.
 
 <table><tbody ><tr >
 <td >{{< figure src="/images/2014/11/columbus-radio-345-removing-old-indicator.jpg" width="250px" caption="Removing the existing valve-based indicator."  >}}
@@ -163,7 +163,7 @@ There used to be some sort of valve-based indicator which poked out onto the fr
 <td >{{< figure src="/images/2014/11/columbus-radio-350-place-for-indicator.jpg" width="257px" caption="I now had to find something to fit into the gap..."  >}}
 </td></tr></tbody></table>
 
-I got the great idea to use LEDs to indicate two things, when the power was on, and when the radio had internet connectivity. I busily spent many hours buying the high-power LEDs, working out how to diffuse their light, making a reflective backing for them to push more light forwards, and installing them into the radio. I was just glueing up the little housing I made for them with epoxy when I realised, crap, LEDs are not retro at all! 
+I got the great idea to use LEDs to indicate two things, when the power was on, and when the radio had internet connectivity. I busily spent many hours buying the high-power LEDs, working out how to diffuse their light, making a reflective backing for them to push more light forwards, and installing them into the radio. I was just glueing up the little housing I made for them with epoxy when I realised, crap, LEDs are not retro at all! 
 
 Heartbreakingly I decided to rip them out right then and there before the epoxy set, and start anew. This time I used a tungsten based bulb instead, wrapping it in black cardboard to make up a mount that would fit the original hole.
 
@@ -175,11 +175,11 @@ Heartbreakingly I decided to rip them out right then and there before the epoxy 
 
 ## User Interface Inputs
 
-Even though the unit is designed to be controlled by the **Volumio web interface**, I thought it would be nice to be able to turn it on/off, control the volume and skip to the next track without having to use a computer/phone. 
+Even though the unit is designed to be controlled by the **Volumio web interface**, I thought it would be nice to be able to turn it on/off, control the volume and skip to the next track without having to use a computer/phone. 
 
-There are 5 dials on the Columbus radio, The central one is a SPST switch for controlling the power. Then there are two potentiometers, which I'm guessing one would of been for volume, not sure on the other. Then there was one dial which controlled a pully system that moved the plate capacitor and another dial which switched between the different radio-frequency bands.
+There are 5 dials on the Columbus radio, The central one is a SPST switch for controlling the power. Then there are two potentiometers, which I'm guessing one would of been for volume, not sure on the other. Then there was one dial which controlled a pully system that moved the plate capacitor and another dial which switched between the different radio-frequency bands.
 
-I decided to use the two existing potentiometers to control the volume and to switch to the next track. The volume one is self-explanatory, for the "next track" functionality I had the idea to make it so you just twiddle it in any direction by at least a small threshold amount to get it to go to the next track in the playlist.
+I decided to use the two existing potentiometers to control the volume and to switch to the next track. The volume one is self-explanatory, for the "next track" functionality I had the idea to make it so you just twiddle it in any direction by at least a small threshold amount to get it to go to the next track in the playlist.
 
 {{< figure src="/images/2014/11/columbus-radio-360-wiring-up-a-pot.jpg" width="600px" caption="Wiring up from the RaspberryPi daughter board to an existing potentiometer on the Columbus radio. This one was used for volume control."  >}}
 
@@ -210,41 +210,41 @@ The following table shows what GPIO header pins I decided to use and what they a
         </tr>
     </thead>
 <tbody><tr >
-<td > 11
+<td > 11
 </td>
 <td >GPIO17
 </td>
-<td > To drive the gate of MOSFET to control the +12V, 100mA status bulb.
+<td > To drive the gate of MOSFET to control the +12V, 100mA status bulb.
 </td></tr><tr >
-<td >17 
+<td >17 
 </td>
-<td >3V3 
+<td >3V3 
 </td>
 <td >The MCP3008 (ADC) VCC.
 </td></tr><tr >
-<td >19 
+<td >19 
 </td>
-<td > GPIO10, SPI1_MOSI
+<td > GPIO10, SPI1_MOSI
 </td>
-<td >The MCP3008 (ADC) MOSI. 
+<td >The MCP3008 (ADC) MOSI. 
 </td></tr><tr >
-<td >21 
+<td >21 
 </td>
-<td >GPIO9, SPI1_MISO 
+<td >GPIO9, SPI1_MISO 
 </td>
-<td >The MCP3008 (ADC) MISO. 
+<td >The MCP3008 (ADC) MISO. 
 </td></tr><tr >
-<td >23 
+<td >23 
 </td>
-<td >GPIO11, SPI0_SCLK 
+<td >GPIO11, SPI0_SCLK 
 </td>
 <td >The MCP3008 (ADC) CLK
 </td></tr><tr >
-<td >24 
+<td >24 
 </td>
-<td >GPIO8, SPI0_CE0_N 
+<td >GPIO8, SPI0_CE0_N 
 </td>
-<td >The MCP3008 (ADC) CS. 
+<td >The MCP3008 (ADC) CS. 
 </td></tr><tr >
 <td >25
 </td>
@@ -262,16 +262,16 @@ Here is a photo of the completed daughter board:
 ## The Software
 
 {{% note %}}
-All software for the Columbus radio project can be found on GitHub at [https://github.com/gbmhunter/ColumbusRadio](https://github.com/gbmhunter/ColumbusRadio).
+All software for the Columbus radio project can be found on GitHub at [https://github.com/gbmhunter/ColumbusRadio](https://github.com/gbmhunter/ColumbusRadio).
 {{% /note %}}
 
-[Volumio](http://volumio.org/) was easy to install. The Volumio v1.51 (the most recent as of 2014-12-29) image was downloaded and then written to a SD card. When the RaspberryPi is booted with this SD card and plugged into a router with an ethernet cable, you should be able to visit the Volumio WebUI by navigating to volumio.local/ on your computer's web browser. At this point I changed the name of the 
+[Volumio](http://volumio.org/) was easy to install. The Volumio v1.51 (the most recent as of 2014-12-29) image was downloaded and then written to a SD card. When the RaspberryPi is booted with this SD card and plugged into a router with an ethernet cable, you should be able to visit the Volumio WebUI by navigating to volumio.local/ on your computer's web browser. At this point I changed the name of the 
 
-You can SSH into the volumio platform with the network name columbus (or whatever you changed it to), and both the username and password as volumio (type `ssh columbus -l volumio`, and then enter in the password `volumio` when prompted). If you need root access (as I did, to enable the SPI controller), you can use the same credentials as above, except replace the username with root.
+You can SSH into the volumio platform with the network name columbus (or whatever you changed it to), and both the username and password as volumio (type `ssh columbus -l volumio`, and then enter in the password `volumio` when prompted). If you need root access (as I did, to enable the SPI controller), you can use the same credentials as above, except replace the username with root.
 
 The wireless was easy to setup and was working as soon as the SSID and password was entered via LAN connection. I could even change WiFi dongles and not have to re-enter this information.
 
-Getting SPI working was more difficult. When running lsmod on the default volumio install it listed spi-bcm2708 but no spi-dev (this didn't turn out to be an issue in the end, even though online tutorials suggest that spi-dev has to be present before the SPI will work).
+Getting SPI working was more difficult. When running lsmod on the default volumio install it listed spi-bcm2708 but no spi-dev (this didn't turn out to be an issue in the end, even though online tutorials suggest that spi-dev has to be present before the SPI will work).
 
 I ran `apt-get update` and `apt-get -y upgrade`.
 
@@ -279,7 +279,7 @@ I ran `apt-get update` and `apt-get -y upgrade`.
 
 modprobe spidev seemed to run o.k. with no errors. It wasn't listed under lsmod, but I could see the two SPI devices in /dev (run ls /dev).
 
-Installing the spidev python module with `python setup.py install`. It gave me the error 
+Installing the spidev python module with `python setup.py install`. It gave me the error 
     
 ```sh
 spidev_module.c:20:20: fatal error: Python.h: No such file or directory
@@ -293,13 +293,13 @@ sudo apt-get install python-dev
 
 This took a decent amount of time to install, primarily because the download speed was a mere 50kB/s. I think this was because the RaspberryPi was connected via WiFi and was out in the garage, with low reception back to the router in the house. The fact that I even got reception was pretty impressive considering I was only using a tiny chip-antenna based USB WiFi dongle on the RaspberryPi!
 
-This fixed the Python.h error! Now an attempt to read the ADC value.
+This fixed the Python.h error! Now an attempt to read the ADC value.
 
 Even though the potentiometer wasn't moving, the read back ADC values kept varying as shown in the below image.
 
 {{< figure src="/images/2014/11/potentiometer-not-moving-but-adc-values-changing.png" width="654px" caption="Screenshot a python script reading back the ADC value from the old potentiometer and converting it into the volume. Even though the potentiometer was not moving, the volume value was varying wildely."  >}}
 
-I had a feeling this was due to the** high resistance** of the volume potentiometer, it's full scale value is 870kΩR. The **input impedance** of the ADC channel upon measuring must of been low enough compared to the potentiometer resistance to cause the ADC voltage to fluctuate during measurement. I fixed this jitter by adding a 470nF, 50V electrolytic capacitor on the ADC channel 0 input as close to the ADC IC as possible. My first attempt with a large 47uF capacitor didn't work because it took to long to charge (time constant RC is too big)!
+I had a feeling this was due to the** high resistance** of the volume potentiometer, it's full scale value is 870kΩR. The **input impedance** of the ADC channel upon measuring must of been low enough compared to the potentiometer resistance to cause the ADC voltage to fluctuate during measurement. I fixed this jitter by adding a 470nF, 50V electrolytic capacitor on the ADC channel 0 input as close to the ADC IC as possible. My first attempt with a large 47uF capacitor didn't work because it took to long to charge (time constant RC is too big)!
 
 The potentiometer for the "next track" functionality also had this issue, except mush worse, because it's full-scale resistance was 8MR. I had to add a smaller 10nF capacitor otherwise again, it would take too long to charge. However, because I was using this pot to implement a binary "next track" or "not next track" command, I could easily increase the thresholding in software to get rid of false triggering.
 
@@ -312,7 +312,7 @@ root@volumio:/etc# mpc
 error: Connection refused
 ```
 
-And then I discovered that the web interface had stopped working. Oh oh. I tried a number of things like restarting the MPD server and trying the following shell commands:
+And then I discovered that the web interface had stopped working. Oh oh. I tried a number of things like restarting the MPD server and trying the following shell commands:
     
 ```sh
 sudo /etc/init.d/mpd stop
@@ -331,7 +331,7 @@ Checking init scripts...
 WARNING: init script for nginx not found.
 ```
 
- There is also this message, in where I choose "N" (keep currently-installed version).
+ There is also this message, in where I choose "N" (keep currently-installed version).
     
 ```sh
 Configuration file '/etc/monit/monitrc'
@@ -353,21 +353,21 @@ Also tried `sudo rpi-update` (and then a reboot). This also didn't work.
 
 ## The Way That Worked
 
-So I gave up on sudo apt-get update, and  apt-get -y upgrade as they seemed to break the Volumio Web UI. Given I couldn't run the proper SPI code without running that command, I luckily discovered a bit-banged python code module ([https://learn.adafruit.com/reading-a-analog-in-and-controlling-audio-volume-with-the-raspberry-pi/script](https://learn.adafruit.com/reading-a-analog-in-and-controlling-audio-volume-with-the-raspberry-pi/script)) that can talk to the MCP3008.
+So I gave up on sudo apt-get update, and  apt-get -y upgrade as they seemed to break the Volumio Web UI. Given I couldn't run the proper SPI code without running that command, I luckily discovered a bit-banged python code module ([https://learn.adafruit.com/reading-a-analog-in-and-controlling-audio-volume-with-the-raspberry-pi/script](https://learn.adafruit.com/reading-a-analog-in-and-controlling-audio-volume-with-the-raspberry-pi/script)) that can talk to the MCP3008.
 
-I also found instruction on how to install the python RPi.GPIO module without having to use `sudo apt-get install python` (which required the `sudo apt-get update` call first).
+I also found instruction on how to install the python RPi.GPIO module without having to use `sudo apt-get install python` (which required the `sudo apt-get update` call first).
     
 ```sh
 wget http://sourceforge.net/projects/raspberry-gpio-python/files/raspbian-wheezy/python-rpi.gpio_0.5.8-1_armhf.deb
 ```
 
- And the to install it:
+ And the to install it:
     
 ```sh
 sudo dpkg -i python-rpi.gpio_0.5.8-1_armhf.deb
 ```
 
- I copied all of the custom code to the RaspberryPi using the command (note this is after changing the "name" of the Volumio platform from volumio to columbus:
+ I copied all of the custom code to the RaspberryPi using the command (note this is after changing the "name" of the Volumio platform from volumio to columbus:
     
 ```sh
 rsync -avz /home/gbmhunter/GoogleDrive/Projects/ColumbusRadio/repo root@columbus:~/ColumbusRadio
@@ -377,7 +377,7 @@ rsync -avz /home/gbmhunter/GoogleDrive/Projects/ColumbusRadio/repo root@columbus
 
 ## The Python Hardware UI Script
 
-Volumio took care of the web interface, but I still needed some code to control the dials and bulb. I decided to use Python as there was no compiling needed and it's allows for pretty quick development.
+Volumio took care of the web interface, but I still needed some code to control the dials and bulb. I decided to use Python as there was no compiling needed and it's allows for pretty quick development.
 
 I originally went for a basic mega main-loop code architecture. The basic tasks I had to perform were:
 
@@ -386,20 +386,20 @@ I originally went for a basic mega main-loop code architecture. The basic tasks 
  
  {{< figure src="/images/2014/11/columbus-radio-430-screenshot-of-python-hardware-ui-code.png" width="630px" caption="Screenshot of part of the Python 'hardware UI' script."  >}}
 
-Note that the complete hardware UI code can be found in the [GitHub ColumbusRadio repo](https://github.com/gbmhunter/ColumbusRadio) at hardware-ui/hardware-ui.py.
+Note that the complete hardware UI code can be found in the [GitHub ColumbusRadio repo](https://github.com/gbmhunter/ColumbusRadio) at hardware-ui/hardware-ui.py.
 
-I was discovering that the **main loop lag** introduced when checking for an internet connection was disrupting and causing errors in my potentiometer control code. As much as I didn't want the extra complexity/bugs/troubleshooting time, I decided at this point that I would have to implement threading (it was a good excuse for me to learn more about python's threading abilities). 
+I was discovering that the **main loop lag** introduced when checking for an internet connection was disrupting and causing errors in my potentiometer control code. As much as I didn't want the extra complexity/bugs/troubleshooting time, I decided at this point that I would have to implement threading (it was a good excuse for me to learn more about python's threading abilities). 
 
-Although getting a thread to start running was pretty trivial, getting multiple threads to exit gracefully when Ctrl-C was pressed (or the script exits in any other way for that matter), was a little more difficult.
+Although getting a thread to start running was pretty trivial, getting multiple threads to exit gracefully when Ctrl-C was pressed (or the script exits in any other way for that matter), was a little more difficult.
 
-I followed [this tutorial on regexprn.com](http://www.regexprn.com/2010/05/killing-multithreaded-python-programs.html) for the most part, but discovered the example code was buggy, and Ctrl-C was not causing all the threads to exit! I had to modify the code example by replacing:
+I followed [this tutorial on regexprn.com](http://www.regexprn.com/2010/05/killing-multithreaded-python-programs.html) for the most part, but discovered the example code was buggy, and Ctrl-C was not causing all the threads to exit! I had to modify the code example by replacing:
     
 ```python
 try:
         threads = [t.join(1) for t in threads if t is not None and t.isAlive()
 ```
 
- with:
+ with:
     
 ```python
 for i in range(len(threads)):
@@ -416,13 +416,13 @@ After I did that, the threads started working correctly! I had one thread for co
 
 ## Getting The Hardware UI Script To Run On Startup
 
-I needed the hardware UI script to run automatically whenever the RaspberryPi booted up. To do this I created another small bash script called launcher.sh that ran the python hardware UI script.
+I needed the hardware UI script to run automatically whenever the RaspberryPi booted up. To do this I created another small bash script called launcher.sh that ran the python hardware UI script.
     
 ```sh
 sudo python ~/ColumbusRadio/hardware-ui/hardware-ui.py 
 ```
 
-This launcher.sh script was added to the root user's crontab with the command:
+This launcher.sh script was added to the root user's crontab with the command:
 
 ```sh 
 # Write out current crontab
@@ -435,19 +435,19 @@ crontab mycron
 rm mycron
 ```
 
-crontab would start the script on startup of the RaspberryPi, and it would run under the user root (which is good, because we have got all privileges, and means we don't have to use sudo all the time).
+crontab would start the script on startup of the RaspberryPi, and it would run under the user root (which is good, because we have got all privileges, and means we don't have to use sudo all the time).
 
 ## Power Supply Woes
 
 During prototyping/testing, the red power LED on the RaspberryPi **kept flashing**. I discovered that this was mainly due to a large dropout between the USB wall-charger and the RaspberryPi's +5V lines! And this was when the device was only drawing about 300mA max.
 
-I fixed this by powering the device through the USB port from a bench-top power supply, and shortening the USB lead. I had to turn up the benchtop power supply voltage to +5.3V (ouch, not a good practise people!) to bring the RaspberryPi's +5V line up to 5V.
+I fixed this by powering the device through the USB port from a bench-top power supply, and shortening the USB lead. I had to turn up the benchtop power supply voltage to +5.3V (ouch, not a good practise people!) to bring the RaspberryPi's +5V line up to 5V.
 
 This didn't turn out to be an issue in the final product, as the RaspberryPi was powered directly from the PSU's +5V. It was also powered directly to +5V on the GPIO header, meaning it bypassed the low but still significant resistance between the USB VBUS and the +5V rail. This came at the expense of **bypassing protection circuitry**. Hopefully the PSU doesn't inject any voltage spikes onto the rail!
 
-##  The End Result
+##  The End Result
 
-Here is a photo of the finished media-streaming, internet aware radio!
+Here is a photo of the finished media-streaming, internet aware radio!
 
 {{< figure src="/images/2014/11/columbus-radio-420-closeup-on-stand-with-effect.jpg" width="904px" caption="The finished Columbus radio, streaming music from the internet using Volumio and Spotify!"  >}}
 
@@ -493,19 +493,19 @@ The time spent on the Columbus Radio project (as a percentage) by category:
 
 {{< figure src="/images/2014/11/columbus-radio-620-graph-time-worked-by-category.png" width="699px" caption="Time spent by category on the Columbus Radio project."  >}}
 
-## Material Cost Statistics
+## Material Cost Statistics
 
 The individual material costs of each item used to build the Columbus Radio.
 
 {{< figure src="/images/2014/11/columbus-radio-630-table-material-cost.png" width="864px" caption="The material costs of each component used to build the Columbus Radio."  >}}
 
- And now as a pretty pie chart (as a percentage of the total cost):
+ And now as a pretty pie chart (as a percentage of the total cost):
 
 {{< figure src="/images/2014/11/columbus-radio-640-graph-material-cost-by-component.png" width="818px" caption="The material costs (as a percentage) of the components used to build the Columbus Radio."  >}}
 
 ## Things To Improve On
 
-1. The volume control dial is very sensitive, and the volume only changes a distinguishable amount over a small segment of the potentiometers full range of motion. I believe this a compounded problem due to the potentiometer itself being logarithmic, but the code treating it like a linear pot, and the volumio volume control being quite sensitive in the upper volume regions to start of with.
-2. If you pull the radio's power cord out from the wall (or turn it off at the wall), you have to go around the back and set up the head unit to the correct volume and sound source (aux). The head unit is designed to have the continuous power source from the battery when in a vehicle, a battery that the radio does not have. Turning the radio on/off by it's front on/off switch does not cause this problem as I leave a residual power feed on that goes to the head unit. Unfortunately this means that the PSU and RaspberryPi also continuously run, which may shorten their life and definitely consumes more mains power than necessary!
+1. The volume control dial is very sensitive, and the volume only changes a distinguishable amount over a small segment of the potentiometers full range of motion. I believe this a compounded problem due to the potentiometer itself being logarithmic, but the code treating it like a linear pot, and the volumio volume control being quite sensitive in the upper volume regions to start of with.
+2. If you pull the radio's power cord out from the wall (or turn it off at the wall), you have to go around the back and set up the head unit to the correct volume and sound source (aux). The head unit is designed to have the continuous power source from the battery when in a vehicle, a battery that the radio does not have. Turning the radio on/off by it's front on/off switch does not cause this problem as I leave a residual power feed on that goes to the head unit. Unfortunately this means that the PSU and RaspberryPi also continuously run, which may shorten their life and definitely consumes more mains power than necessary!
 3. Simultaneous playback. It would be really neat to have other devices around the house that can be set up to play the same song at the same time. I'm guessing this feature would be best built into the Volumio player that I am using.
-4. The software does not turn itself off when the power switch of the radio is turned off (the power switch just turns of the amplifier). This is a good thing in terms of start-up speed, as music is pretty much instantly available as soon as you turn it back on. However, it does mean that volumio keeps streaming music from the internet, which can chew up bandwidth if you have a long playlist and/or set it into repeat mode. A better way would be for the power switch to also pause the music, and then start it again when it turns back on, starting off from where you left it.
+4. The software does not turn itself off when the power switch of the radio is turned off (the power switch just turns of the amplifier). This is a good thing in terms of start-up speed, as music is pretty much instantly available as soon as you turn it back on. However, it does mean that volumio keeps streaming music from the internet, which can chew up bandwidth if you have a long playlist and/or set it into repeat mode. A better way would be for the power switch to also pause the music, and then start it again when it turns back on, starting off from where you left it.

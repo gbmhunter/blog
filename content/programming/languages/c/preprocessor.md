@@ -8,13 +8,13 @@ type: page
 
 ## Overview
 
-Preprocessor directives (also known as precompiler directives) are pieces of code that are executed by the pre-compiler. The directives themselves do not appear in the final assembly files, but they are really useful for defining values for replacement through-out the code (e.g. a centralised place to define a constant that is used many times throughout the code), or to include/exclude blocks of code depending on the configuration you want.
+Preprocessor directives (also known as precompiler directives) are pieces of code that are executed by the pre-compiler. The directives themselves do not appear in the final assembly files, but they are really useful for defining values for replacement through-out the code (e.g. a centralised place to define a constant that is used many times throughout the code), or to include/exclude blocks of code depending on the configuration you want.
 
 They are also used to clever assert and debug messages which can be built to automatically report the filename and line number of the code.
 
 ## General Syntax
 
-All preprocessor functions in C start with the # character, telling the preprocessor that it must parse this line.
+All preprocessor functions in C start with the # character, telling the preprocessor that it must parse this line.
 
 ## Macros (#define)
 
@@ -27,7 +27,7 @@ There are two basic types of macros, object-style macros, and function-style mac
 The general syntax for a object-style macro is:
 
 ```c
-#define <identifier>
+#define <identifier>
 ```
 
 The first syntax layout just defines a identifier to be present. This doesn't do much on it's own, but can be used to control the outcome of conditional preprocessor directives (which are explained below). A typical example would be:
@@ -41,7 +41,7 @@ One would assume this states that the PWM frequency needs to be set to 50kHz, an
 The second object-style macro syntax offers a replacement variable. Anywhere in the code that the preprocessor finds the `<identifier>`, it will replace it with the `<replacement>`.
 
 ```c
-#define <identifier> <replacement>
+#define <identifier> <replacement>
 ```
 
 A common example is to define a constant
@@ -57,7 +57,7 @@ while(x < NUM_OF_COUNTS)
 }
 ```
 
-During a build sequence, before the code reaches the compiler, the preprocessor will replace and instances of `NUM_OF_COUNTS` with the variable 12.
+During a build sequence, before the code reaches the compiler, the preprocessor will replace and instances of `NUM_OF_COUNTS` with the variable 12.
 
 ## Function-Style Macros
 
@@ -108,7 +108,7 @@ Main_SendDebugMsg("My number = %u.\r\n", myNumber);
 
 Variadic macros were added as part of the C99 standard. The GCC compiler had supported them long before this standard was introduced, but only in the format args....
 
-The example below uses a variadic macro along with the special macros `__FILE__` and `__LINE__` to create a powerful debug message printer (very useful on embedded platforms).
+The example below uses a variadic macro along with the special macros `__FILE__` and `__LINE__` to create a powerful debug message printer (very useful on embedded platforms).
 
 ```c
 #define PRINT_DEBUG(...) \
@@ -122,7 +122,7 @@ The example below uses a variadic macro along with the special macros `__FILE__`
     }
 ```
 
-The `UartDebug_PutString()` function in the code above is part of the hardware abstraction layer on an embedded platform, and prints the passed in string to the debug UART.
+The `UartDebug_PutString()` function in the code above is part of the hardware abstraction layer on an embedded platform, and prints the passed in string to the debug UART.
 
 ## Stringification
 
@@ -167,7 +167,7 @@ Conditional statements are used just like normal C if statements, except you mus
 
 An annoying limitation of preprocessor conditional statements is that it only supports comparisons against integers, aka you cannot use floats/doubles in the comparison. Thus if you wanted to make sure double1 was less than double2, you would have to do that at run-time.
 
-A general formatting rule I follow with `#if` statements is that I only indent the enclosed #if  code if it is a few lines and you can see the #endif  at the same time on the screen. For larger blocks I do not indent, and I add the #if  part as a comment at the end of the #endif , so you know what to associate the #endif with.
+A general formatting rule I follow with `#if` statements is that I only indent the enclosed #if  code if it is a few lines and you can see the #endif  at the same time on the screen. For larger blocks I do not indent, and I add the #if  part as a comment at the end of the #endif , so you know what to associate the #endif with.
     
 ```c
 #if SOME_CONDITION
@@ -192,7 +192,7 @@ A general formatting rule I follow with `#if` statements is that I only indent 
 
 ## Commenting Blocks Of Code
 
-You can use #if statements for commenting out sections of code. This is useful is you want to comment out a large section of code (e.g. an entire C file), which has heaps of `/* comment */`  style comments in it's body. Because `/*` style comments don't nest, you can't use them again to comment out blocks of code which already contain them. #if 0  is a great alternative.
+You can use #if statements for commenting out sections of code. This is useful is you want to comment out a large section of code (e.g. an entire C file), which has heaps of `/* comment */`  style comments in it's body. Because `/*` style comments don't nest, you can't use them again to comment out blocks of code which already contain them. #if 0  is a great alternative.
     
 ```c
 #if 0
@@ -209,9 +209,9 @@ void aFunction()
 
 ## Include (#include)
 
-The #include directive is used to include the text contents of one file into another. #include can be called from both .c and .h files, and can be used to include both .c and .h files. However, I strongly recommend that you **don't use it to include .c files!** There is normally no reason to do this. .c files are compiled individually into object files, and then linked together by the linker. By including a .c file, you are kinda doing the linkers job, AND, you will end with **messy multiple definition errors**.
+The #include directive is used to include the text contents of one file into another. #include can be called from both .c and .h files, and can be used to include both .c and .h files. However, I strongly recommend that you **don't use it to include .c files!** There is normally no reason to do this. .c files are compiled individually into object files, and then linked together by the linker. By including a .c file, you are kinda doing the linkers job, AND, you will end with **messy multiple definition errors**.
 
-The exact #include syntax depends on whether you are including system or user files. To include a system file, wrap the file name in < and > brackets as shown below:
+The exact #include syntax depends on whether you are including system or user files. To include a system file, wrap the file name in < and > brackets as shown below:
 
 ```c
 // Including a system file
@@ -225,7 +225,7 @@ To include a user file, wrap the file name in " quotes as shown below:
 #include "MyFile.h"
 ```    
 
-I make no rule about where #include should be called from, and although some people will say otherwise (e.g. only put them in header files), I recommend placing #include in any file which depends on objects/definitions from another!
+I make no rule about where #include should be called from, and although some people will say otherwise (e.g. only put them in header files), I recommend placing #include in any file which depends on objects/definitions from another!
 
 **The order in which #include files are added can be important.** If one header file depends on types (enums, structures) that are defined in other header files, if the header file with the definition is not included first, the compiler may not recognise it (it won't, unless the header file requiring the definitions includes the header file with the definition as mentioned above).
 
@@ -249,7 +249,7 @@ To show an error (and stop compilation), use the following syntax:
 
 ## Comments
 
-Some pre-compilers support the ability to print messages to the standard output without using #warning or #error. This includes the GCC pre-compiler.
+Some pre-compilers support the ability to print messages to the standard output without using #warning or #error. This includes the GCC pre-compiler.
 
 To print a message (there are normally two supported syntaxes), type:
 
@@ -284,9 +284,9 @@ You can override the preprocessors current line number at any point with the dir
 
 ## Tidying Up Preprocessor Code
 
-Unfortunately, unlike the compiler, the preprocessor is pretty dumb, and won't give you warnings like #define SOMETHING is not used. This means you can end up with heaps of redundant code, which confuses both you and whoever is going to look at your code in the future.
+Unfortunately, unlike the compiler, the preprocessor is pretty dumb, and won't give you warnings like #define SOMETHING is not used. This means you can end up with heaps of redundant code, which confuses both you and whoever is going to look at your code in the future.
 
-The obvious but not necessarily quickest nor safest way to find redundant #define's is to comment them out and check if it still compiles. However, the precompiler doesn't need to have a variable declared to use it in a conditional statement (remember the #ifdef  directive?), so just because it compiles doesn't mean it is not used, and it can also change the behaviour of your code.
+The obvious but not necessarily quickest nor safest way to find redundant #define's is to comment them out and check if it still compiles. However, the precompiler doesn't need to have a variable declared to use it in a conditional statement (remember the #ifdef  directive?), so just because it compiles doesn't mean it is not used, and it can also change the behaviour of your code.
 
 A better way is to use another program to check for these. Some expensive programs exist, but you can do it quite easily yourself by utilising some command-line Linux programs.
 

@@ -48,9 +48,9 @@ Notice how traditional PCB prepreg has a very poor thermal conductivity at `\(0.
 
 ## Design
 
-Basic ones allow for components to be placed on one side only. White and black are common soldermask and silkscreen colours for IMS PCBs. More advanced ones follow normal stack-up rules, except one or more "cores" in the PCB is replaced with a metallic material. Prepreg and normal copper layers still used. However prepreg layers are small (typically 20-100um thick), and they have poor thermal conductivity! However we can't make the dielectric too thin or the dielectric strength will be too low (and we will get breakdowns). Special prepreg can be used that is ceramic or boron-filled to increase it's thermal conductivity while keeping it's insulating properties.
+Basic ones allow for components to be placed on one side only. White and black are common soldermask and silkscreen colours for IMS PCBs. More advanced ones follow normal stack-up rules, except one or more "cores" in the PCB is replaced with a metallic material. Prepreg and normal copper layers still used. However prepreg layers are small (typically 20-100um thick), and they have poor thermal conductivity! However we can't make the dielectric too thin or the dielectric strength will be too low (and we will get breakdowns). Special prepreg can be used that is ceramic or boron-filled to increase it's thermal conductivity while keeping it's insulating properties.
 
-An IMS PCB can be plated using most common plating techniques. However, HASL is not preferred due to the uneven surface it creates compared to other processes such as Cu-OSP, immersion Sn or NiAu (ENIG).
+An IMS PCB can be plated using most common plating techniques. However, HASL is not preferred due to the uneven surface it creates compared to other processes such as Cu-OSP, immersion Sn or NiAu (ENIG).
 
 ## Single-Sided, Single-Layer IMS PCB
 
@@ -60,7 +60,7 @@ This is the most basic and cheapest IMS PCB design layout. It consists of one el
 
 ## Single-Sided, Double-Layered IMS PCB
 
-This design is not much more complex than a single-layer, single-sided IMS PCB. All it is is an extra electrical copper layer just below the top electrical layer. A thin two-layer PCB is made using the normal PCB processes, and then the metallic substrate is added to complete the PCB.
+This design is not much more complex than a single-layer, single-sided IMS PCB. All it is is an extra electrical copper layer just below the top electrical layer. A thin two-layer PCB is made using the normal PCB processes, and then the metallic substrate is added to complete the PCB.
 
 {{< img src="example-stack-up-of-single-sided-double-layered-ims-pcb.png" width="388px" caption="An example stack-up of a single-sided, double-layered IMS PCB."  >}}
 
@@ -79,11 +79,11 @@ Minimum conductor spacing: 200um
 Min. annular ring: 150um  
 Min via (pth): 0.3mm  
 Glass transition temp for dielectric layer: 130C  
-Er (permittivity): 4.2-4.7. 
+Er (permittivity): 4.2-4.7. 
 
 ## Thermal Management Alternatives To IMS
 
-Moving from a traditional PCB to a IMS PCB can be quite a large design/manufacturing change. Before doing this, think, "Can I get improve the thermal properties of my PCB in any other way?". Here are some alternatives to IMS PCBs:
+Moving from a traditional PCB to a IMS PCB can be quite a large design/manufacturing change. Before doing this, think, "Can I get improve the thermal properties of my PCB in any other way?". Here are some alternatives to IMS PCBs:
 
 * Thermal vias (note that these can be also used in conjunction with IMS PCBs)
-* Thicker copper layers. 35um (1 oz.) thick copper is standard, but most PCB manufacturers allow you to increase the thickness by a large amount!
+* Thicker copper layers. 35um (1 oz.) thick copper is standard, but most PCB manufacturers allow you to increase the thickness by a large amount!

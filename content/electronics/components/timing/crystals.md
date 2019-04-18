@@ -22,13 +22,13 @@ Unfortunately, many different designator prefixes are used to represent a crysta
 
 ## Important Parameters
 
-Sorted alphabetically.
+Sorted alphabetically.
 
 ## Accuracy
 
 Like stability, this is measured in ppm.
 
-Combined with the stability, this gives you the total error you can expect from a crystal operating over a particular temperature range.
+Combined with the stability, this gives you the total error you can expect from a crystal operating over a particular temperature range.
 
 ## Frequency
 
@@ -54,7 +54,7 @@ Typical operating temperatures are -40 to +85°C.
 
 The power consumption of a crystal is a measure of how much **power** the **crystal consumes** during normal operation. This can be of concern for extremely low power designs.
 
-Typical power consumption for a TH/SMD crystal is around 50uW.
+Typical power consumption for a TH/SMD crystal is around 50uW.
 
 Note that this is the power consumption of the crystal itself, and **does not take into account the power consumption of the associated drive circuitry** (which can be much greater!).
 
@@ -62,7 +62,7 @@ Note that this is the power consumption of the crystal itself, and **does not ta
 
 Stability is a measure of how repetitive, or stable, the clocks frequency is over time. It is measured in parts-per-million (ppm).
 
-Typical stability is around 30-50ppm.
+Typical stability is around 30-50ppm.
 
 ## What The Crystal Output Looks Like...
 
@@ -76,9 +76,9 @@ High-performance crystal oscillators are kept with temperature-controlled enviro
 
 {{< figure src="/images/2012/01/n4a-series-oven-controlled-crystal-oscillator-ocxo-photo.gif" width="264px" caption="A photo of an N4A series OXCO. Image from http://www.bliley.com/."  >}}
 
-The crystals are designed to have a _turning-point_, a point of greatest stability, close to the oven temperature. OXCOs, rather than having a temperature stability in the ppm (parts-per-million) range like normal crystals, have a stability in the ppb (parts-per-billion) range (20ppb would be a viable stability).
+The crystals are designed to have a _turning-point_, a point of greatest stability, close to the oven temperature. OXCOs, rather than having a temperature stability in the ppm (parts-per-million) range like normal crystals, have a stability in the ppb (parts-per-billion) range (20ppb would be a viable stability).
 
-Peltier devices can be used as the "oven" to keep the crystal's temperature constant.
+Peltier devices can be used as the "oven" to keep the crystal's temperature constant.
 
 ## Popular Crystal Packages
 

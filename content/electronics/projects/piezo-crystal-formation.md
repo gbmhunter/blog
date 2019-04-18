@@ -14,7 +14,7 @@ I can't claim that this project was my work, as my brother had the idea and did 
 
 The piezo crystal is potassium sodium tartrate, a double salt which exhibits piezoelectricity. The advantage of this chemical is that it can be made easily from common household items.
 
-The piezo synthesis at RimStar was followed ([http://rimstar.org/materials/piezo/how_to_make_rochelle_salt_piezoelectric_crystal.htm](http://rimstar.org/materials/piezo/how_to_make_rochelle_salt_piezoelectric_crystal.htm)). To promote the growth of one large crystal, any small crystals were removed as soon as they started to form. Unfortunately I have no photos of the synthesis (which took a few weeks).
+The piezo synthesis at RimStar was followed ([http://rimstar.org/materials/piezo/how_to_make_rochelle_salt_piezoelectric_crystal.htm](http://rimstar.org/materials/piezo/how_to_make_rochelle_salt_piezoelectric_crystal.htm)). To promote the growth of one large crystal, any small crystals were removed as soon as they started to form. Unfortunately I have no photos of the synthesis (which took a few weeks).
 
 The first photo I got was once the crystals had been grown. The size of the largest crystal is shown below.
 

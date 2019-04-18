@@ -13,9 +13,9 @@ Reading user input is the process of prompting the user for input, and then rece
 
 ## Using scanf()
 
-`scanf()`  is one of the most common ways of getting user input from a terminal in Linux.
+`scanf()`  is one of the most common ways of getting user input from a terminal in Linux.
 
-The simplest example is that which gets an integer displayed by the user and stores it in a variable called input .
+The simplest example is that which gets an integer displayed by the user and stores it in a variable called input .
 
 ```c
 int32_t input;

@@ -61,7 +61,7 @@ I also got this multi-chemistry battery charger shown below to charge it.
 
 ## Wheels And Axles
 
-The wheels and axles where brought of TradeMe, New Zealands equivalent of eBay. I needed axles and wheels that would allow me to transfer power from the motor somehow. After much consideration, and tossing up the idea of making them myself, I decided to buy some axles and wheels that were designed for skateboards in the first place (half-cheating, I know, but it would of added so much more work to the project, and it had enough already).
+The wheels and axles where brought of TradeMe, New Zealands equivalent of eBay. I needed axles and wheels that would allow me to transfer power from the motor somehow. After much consideration, and tossing up the idea of making them myself, I decided to buy some axles and wheels that were designed for skateboards in the first place (half-cheating, I know, but it would of added so much more work to the project, and it had enough already).
 
 There were two wheel/axle variants, a smaller package for street only use and a larger package for off-roading. I decided to go with the off-road version. They are huge! The wheels are self-sealing pneumatic tires and the axles are huge (and heavy :-(...). Although this adds a decent amount of weight to the board, they will be able to take on shallow curbs and ruts which I was worried about when flying down the streets in the dark. Being large they offer more side-to-side stability, but also increase the centre of weight, which is bad for stability. It's a healthy compromise...
 <table>
@@ -87,7 +87,7 @@ There were two wheel/axle variants, a smaller package for street only use and a 
 
 ## Drive Cog
 
-The drive cog was brought from the same place as the wheels and axles. Fortunately, the cog was designed for a 10mm shaft, exactly what my motor shaft happened to be. However, the cog was a 'D' type so it could deliver torque, while the motor shaft was circular. Thankfully, the kind folk at [Nivens Engineering](http://www.nivenengineering.co.nz/)[ ](http://www.nivenengineering.co.nz/)were able to machine a D into the shaft, as well as drilling and treading a hole in the side of the cog for a retaining grub screw.
+The drive cog was brought from the same place as the wheels and axles. Fortunately, the cog was designed for a 10mm shaft, exactly what my motor shaft happened to be. However, the cog was a 'D' type so it could deliver torque, while the motor shaft was circular. Thankfully, the kind folk at [Nivens Engineering](http://www.nivenengineering.co.nz/)[ ](http://www.nivenengineering.co.nz/)were able to machine a D into the shaft, as well as drilling and treading a hole in the side of the cog for a retaining grub screw.
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/cog_02.jpg" caption="The grub screw added to the cog."  width="400px" >}}
 
@@ -99,7 +99,7 @@ The motor mount on the rear axle was not designed for the BLDC motor (it was des
 
 ## The Prototype Motherboard
 
-The first prototype control circuitry (aka motherboard), was assembled on strip-board. I used an ATmega8L-8PC microcontroller since the [DIP package](http://localhost/?q=node/50) makes it easy to hand solder into strip board, requiring no breakout PCB.
+The first prototype control circuitry (aka motherboard), was assembled on strip-board. I used an ATmega8L-8PC microcontroller since the [DIP package](http://localhost/?q=node/50) makes it easy to hand solder into strip board, requiring no breakout PCB.
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0136.jpg" caption="The first electric skateboard prototype circuit." width="600px" >}}
 
@@ -115,9 +115,9 @@ To make prototyping easier, I created a breakout board for the Xbee (the module 
 
 {{< figure src="/images/electronics-electricskateboard/xbee-on-breakout-board-01.jpg" caption="The Xbee module on a homemade breakout board."  width="600px" >}}
 
-However, if you want your own Xbee breakout board, I suggest you look on [SparkFun](http://www.sparkfun.com/). They have much better looking and cheaper [Xbee breakout boards](https://www.sparkfun.com/products/8276), along with [Dongles](https://www.sparkfun.com/products/9819), so that you can customise the way the Xbee module works with the free X-CTU software.
+However, if you want your own Xbee breakout board, I suggest you look on [SparkFun](http://www.sparkfun.com/). They have much better looking and cheaper [Xbee breakout boards](https://www.sparkfun.com/products/8276), along with [Dongles](https://www.sparkfun.com/products/9819), so that you can customise the way the Xbee module works with the free X-CTU software.
 
-The first wireless controller looked awesome, if your a prototyping geek like me. However, any product designer would of barfed as soon as they glimpsed at it's rat's nest of cables and  duct tape.
+The first wireless controller looked awesome, if your a prototyping geek like me. However, any product designer would of barfed as soon as they glimpsed at it's rat's nest of cables and  duct tape.
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/testing-the-pwm-with-remote-and-light-bulb.jpg" caption=" "  width="700px" >}}
 
@@ -127,7 +127,7 @@ I needed to measure the RPM range of the motor to work out what gearing I needed
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/rpm-counter-01.jpg" caption="A bit of KNEX was glued onto the motor to interrupt the infrared beam twice per revolution." width="600px" >}}
 
-When the motor spun, the infrared transistor would essentially switch from 'off' to 'on' when the beam was blocked by the KNEX. This happened twice per revolution and I could measure this on my oscilloscope. The infrared diode and transistor set-up to the left of the motor. My old-school oscilloscope picking up the rod cutting the infrared beam twice per revolution.
+When the motor spun, the infrared transistor would essentially switch from 'off' to 'on' when the beam was blocked by the KNEX. This happened twice per revolution and I could measure this on my oscilloscope. The infrared diode and transistor set-up to the left of the motor. My old-school oscilloscope picking up the rod cutting the infrared beam twice per revolution.
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/rpm-counter-02.jpg" caption="The RPM counter output on the oscilloscope." width="600px" >}}
 
@@ -153,7 +153,7 @@ The remote uses far less power than the board, and is largely consumed by the co
 
 The test board was to make sure the basic principle worked, and to make sure I hadn't done something fundamentally wrong such as brought motor that was utterly too small or wheels/gear-ratio combo that wouldn't work properly. The mechanical part was as simple as mounting the axles onto a piece of MDF.
 
-The proto-type electronics were stuck onto the top, and after lots of testing and debugging, I finally managed to get it moving! With code bugs and problems using the RC trigger pot, I wasn't able to get the electric skateboard up to full speed, but I still managed to break the 30km/h mark. The [ESC](http://localhost/?q=content/hardware) got damn hot! This may need heatsinking in the future...
+The proto-type electronics were stuck onto the top, and after lots of testing and debugging, I finally managed to get it moving! With code bugs and problems using the RC trigger pot, I wasn't able to get the electric skateboard up to full speed, but I still managed to break the 30km/h mark. The [ESC](http://localhost/?q=content/hardware) got damn hot! This may need heatsinking in the future...
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/img_6323.jpg" width="600px" >}}
 
@@ -161,7 +161,7 @@ The proto-type electronics were stuck onto the top, and after lots of testing an
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0138.jpg" caption="The first electric skateboard prototype circuit up close." width="600px" >}}
 
-After fixing up the code, it was time to take the board a little further down the road. I decided to heatsink the ESC to the trucks after discovering it was burning hot after the last test. I covered the heatsink side of the [ESC](http://localhost/?q=content/hardware) with heat transfer compound and duct taped it securely to the rear truck.
+After fixing up the code, it was time to take the board a little further down the road. I decided to heatsink the ESC to the trucks after discovering it was burning hot after the last test. I covered the heatsink side of the [ESC](http://localhost/?q=content/hardware) with heat transfer compound and duct taped it securely to the rear truck.
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/adding-silicone-heat-transfer-to-esc.jpg" caption="Adding silicone heat transfer paste to the ESC for better heatsinking."  width="400px" >}}
 
@@ -173,7 +173,7 @@ Getting ready for a test run to work!
 
 ## An Explosion
 
-Unfortunately, the BLDC ESC blew up about half way to work (a few kilometers into the test run). My best guess is that both the RC plane designed motor and  controller were under-powered for the job (even though rated well enough). The picture on the right shows the blown ESC.
+Unfortunately, the BLDC ESC blew up about half way to work (a few kilometers into the test run). My best guess is that both the RC plane designed motor and  controller were under-powered for the job (even though rated well enough). The picture on the right shows the blown ESC.
 <table>
 <tbody >
 <tr >
@@ -207,7 +207,7 @@ The next attempt at motor control was done, using a brushed DC motor and a homem
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/img_6628.jpg" caption=" "  width="400px" >}}
 
-Alas, it kept blowing up (see the post [Skateboard H-Bridge Blew Up (for the +10th time](/posts/updates/2012/06-09-skateboard-h-bridge-blew-up-for-the-10th-time/)). The MOSFETs were getting very warm, and there was an oscillating signal on the gates of the half-bridge MOSFETs.
+Alas, it kept blowing up (see the post [Skateboard H-Bridge Blew Up (for the +10th time](/posts/updates/2012/06-09-skateboard-h-bridge-blew-up-for-the-10th-time/)). The MOSFETs were getting very warm, and there was an oscillating signal on the gates of the half-bridge MOSFETs.
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/2012-02-18-16-17-26.jpg" caption="The oscillating gate drive to the MOSFETs."  width="500px" >}}
 
@@ -242,7 +242,7 @@ And built this test circuit on breadboard. There is a PSoC development kit in th
 
 ## The Final PCB Design
 
-Once the electronic design had been verified with the prototypes, it was time to get some professional PCB's made. The PCB's were designed in Altium. I used a PSoC 5 [microcontroller](http://localhost/?q=node/56) from Cypress for the final designs.
+Once the electronic design had been verified with the prototypes, it was time to get some professional PCB's made. The PCB's were designed in Altium. I used a PSoC 5 [microcontroller](http://localhost/?q=node/56) from Cypress for the final designs.
 
 <table>
 <tbody >
@@ -299,7 +299,7 @@ They can be downloaded [here](/images/2011/09/Half-Bridge-Driver-v1.1-Schematics
 
 ## PCB Manufacturing
 
-Once the PCB's were designed, I had them etched by [PCB Cart](http://www.pcbcart.com/) (see the [Electrical Suppliers page](/electronics/general/electrical-suppliers/)). The PCB's came back in a colour what I like to call 'spew orange', which was less than ideal, since I wanted orange.
+Once the PCB's were designed, I had them etched by [PCB Cart](http://www.pcbcart.com/) (see the [Electrical Suppliers page](/electronics/general/electrical-suppliers/)). The PCB's came back in a colour what I like to call 'spew orange', which was less than ideal, since I wanted orange.
 
 {{< figure src="/images/electronics-electricskateboard/2012-04-04-15-45-02.jpg" caption="This photo shows the gross orange colour of the electric skateboard PCB's compared to the kind of yellow I was expecting."  width="500px" >}}
 
@@ -307,7 +307,7 @@ I got to the point where PCB Cart would redo them in red if I paid for half the 
 
 {{< figure src="/images/electronics-electricskateboard/2012-04-25-13-28-16.jpg" caption=" "  width="500px" >}}
 
-See the post [Electric Skateboard PCB’s Arrived In The Wrong Colour](/posts/updates/2012/04-11-electric-skateboard-pcbs-arrived-in-the-wrong-colour/) for more info. Most of the components were populated by hand, with the help of a infrared rework station for soldering the PSoC 5 chips (in TQFP packages).
+See the post [Electric Skateboard PCB’s Arrived In The Wrong Colour](/posts/updates/2012/04-11-electric-skateboard-pcbs-arrived-in-the-wrong-colour/) for more info. Most of the components were populated by hand, with the help of a infrared rework station for soldering the PSoC 5 chips (in TQFP packages).
 
 {{< figure src="/images/electronics-electricskateboard/2012-04-27-18-48-39.jpg" caption=" "  width="500px" >}}
 
@@ -337,7 +337,7 @@ I ran into plenty of mysterious problems while testing the firmware, such as LED
 
 {{< figure src="/images/electronics-electricskateboard/2012-05-21-21-13-45.jpg" caption="Fluxite, soldering paste which caused all sorts of problems since it is a plumbers flux which is not designed for electronics."  width="500px" >}}
 
-I managed to blow up and Xbee and PSoC microcontroller while testing. I accidentally connected two circuits with grounds at a potential difference of over 30V.
+I managed to blow up and Xbee and PSoC microcontroller while testing. I accidentally connected two circuits with grounds at a potential difference of over 30V.
 
 {{< figure src="/images/electronics-electricskateboard/2012-05-29-18-04-31.jpg" caption="The fried PSoC and Xbee module after I accidentally connected two circuits with grounds at a potential difference of over 30V. Purple sparks and smoke came from the PSoC, but I was surprised that the Xbee died too."  width="500px" >}}
 
@@ -351,7 +351,7 @@ The final board was made from fibreglass and plywood. Here is an image of all th
 
 {{< figure src="/images/electronics-electricskateboard-fibreglassing/gear-for-fibreglassing.jpg" caption="The basic gear you need for fibreglassing."  width="500px" >}}
 
-The skateboard 'board'  is hand-made from fibreglass and plywood. The structural part is made from two layers of 4mm thick, 3ply wood with 3 layers of Fibreglass chop stran mat in the middle, held together with polyester resin.
+The skateboard 'board'  is hand-made from fibreglass and plywood. The structural part is made from two layers of 4mm thick, 3ply wood with 3 layers of Fibreglass chop stran mat in the middle, held together with polyester resin.
 
 {{< figure src="/images/electronics-electricskateboard-fibreglassing/just-before-the-boards-are-sandwidched-together.jpg" caption="Wet fibreglass, taken just before the plywood was sandwidched together."  width="500px" >}}
 
@@ -620,7 +620,7 @@ The electronics was then added to the handheld controller along with the trigger
 
 ## Giving Up On The DIY Half-Bridge
 
-So the motor controller that I eventually ended up using...a quarter-bridge motor controller from AliExpress. Yes, a bit of a cop-out considering this board was meant to be homemade, but at least it works! The unfortunate thing about the quarter bridge is that it has no breaking ability, meaning the skateboard has not breaks. Something to fix in the future...
+So the motor controller that I eventually ended up using...a quarter-bridge motor controller from AliExpress. Yes, a bit of a cop-out considering this board was meant to be homemade, but at least it works! The unfortunate thing about the quarter bridge is that it has no breaking ability, meaning the skateboard has not breaks. Something to fix in the future...
 
 {{< figure src="/images/electronics-electricskateboard/2012-06-15-18-31-28.jpg" caption="The quarter-bridge motor driver that I ended up buying from AliExpress."  width="600px" >}}
 
@@ -658,7 +658,7 @@ Tires = 1.42kg (each)
 ## Timesheet
 
 
-I kept a timesheet because I thought it would be interesting to see how much time was spent on the project. This following graph shows the days and the number of hours in that day that I spent I working on the skateboard.
+I kept a timesheet because I thought it would be interesting to see how much time was spent on the project. This following graph shows the days and the number of hours in that day that I spent I working on the skateboard.
 
 {{< figure src="/images/electronics-electricskateboard-final-mech/electric-skateboard-timesheet-hours.png" caption="Graph of the hours spent on the Electric Skateboard project."  width="600px" >}}
 

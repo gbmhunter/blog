@@ -9,24 +9,24 @@ url: /programming/languages/java/exceptions
 
 ## Checked Exceptions
 
-Any exception that is a subclass of Exception (or Exception itself), except for RuntimeException and it's subclasses, is a _checked exception_.
+Any exception that is a subclass of Exception (or Exception itself), except for RuntimeException and it's subclasses, is a _checked exception_.
 
-The Java compiler forces you to catch checked exceptions (and either swallow or re-throw).
+The Java compiler forces you to catch checked exceptions (and either swallow or re-throw).
 
-Some common examples of checked exceptions are:
+Some common examples of checked exceptions are:
 
 * IOException
 * FileNotFoundException
 * ClassNotFoundException
 * InvocationTargetException
 * SQLException
-* DataAccessException 
+* DataAccessException 
 
 ## ConcurrentModificationException
 
-The exception can be thrown while trying to remove an element from a Collection (e.g. an ArrayList) while iterating over it using a standard for loop.
+The exception can be thrown while trying to remove an element from a Collection (e.g. an ArrayList) while iterating over it using a standard for loop.
 
-Another way a ConcurrentModificationException can be thrown is if you forget to copy a Collection and rather take a reference to it, and then try and access the Collection.
+Another way a ConcurrentModificationException can be thrown is if you forget to copy a Collection and rather take a reference to it, and then try and access the Collection.
 
 For example, the following line won't actually copy the entire list:
 

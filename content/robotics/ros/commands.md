@@ -13,7 +13,7 @@ The following page lists terminal commands (i.e. commands that can be run in bas
 
 ## Terminal Commands
 
-Creates a new ROS master, parameter server, and a rosout logging node.
+Creates a new ROS master, parameter server, and a rosout logging node.
 
 ```sh    
 $ roscore
@@ -22,7 +22,7 @@ $ roscore
 Runs a ROS application.
 
 ```sh
-$ rosrun <package> <executable> 
+$ rosrun <package> <executable> 
 ```
 
 Prints information about a node.

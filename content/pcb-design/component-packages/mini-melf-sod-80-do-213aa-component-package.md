@@ -69,7 +69,7 @@ url: /pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package
 
 ## Comments
 
-Cylindrical shaped components. Not very popular because they have a tendency to roll around when soldering.
+Cylindrical shaped components. Not very popular because they have a tendency to roll around when soldering.
 
 ## Photos
 

@@ -12,7 +12,7 @@ type: page
 
 A TRIAC is a 4-layer semiconductor device that conducts current in either direction when given a signal.
 
-The name TRIAC is a generic trademark and is an abbreviation of _TRIode for Alternating Current_. The formal names for a TRIAC are _bidirectional triode thyristor_ or _bilateral triode thyristor_, although these names are rarely used.
+The name TRIAC is a generic trademark and is an abbreviation of _TRIode for Alternating Current_. The formal names for a TRIAC are _bidirectional triode thyristor_ or _bilateral triode thyristor_, although these names are rarely used.
 
 ## Schematic Symbol
 
@@ -22,7 +22,7 @@ The schematic symbol for the TRIAC is shown below:
 
 The anodes A1 and A2 may be called Main Terminal 1 (MT1) and Main Terminal 2 (MT2) respectively.
 
-## Component Parameter Descriptions
+## Component Parameter Descriptions
 
 **Repetitive Peak Off-State Voltage (50-60Hz)**
 

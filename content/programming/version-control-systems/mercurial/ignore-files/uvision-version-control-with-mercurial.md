@@ -9,13 +9,13 @@ url: /programming/version-control-systems/mercurial/ignore-files/uvision-version
 
 ## Overview
 
-Following is an Mercurial ignore file for excluding the unnecessary files from uVision 4. The ignore file is written using regex syntax. It only excludes files that are within a directory named `<uVision root dir>`. This is to stop the ignore file excluding other files with the same extension from other sections of the repository. Replace `<uVision root dir>` with the appropriate folder name, or choose to get rid of it entirely to have these ignore rules apply to the whole repository.
+Following is an Mercurial ignore file for excluding the unnecessary files from uVision 4. The ignore file is written using regex syntax. It only excludes files that are within a directory named `<uVision root dir>`. This is to stop the ignore file excluding other files with the same extension from other sections of the repository. Replace `<uVision root dir>` with the appropriate folder name, or choose to get rid of it entirely to have these ignore rules apply to the whole repository.
 
 The type of file excluded is commented beside each line, just incase you want to re-introduces some of these files for some reason.
 
 Copy this code into the .hgignore file found in the root directory of your repository.
 
-A list of the file types supported by uVision can be found here: [http://www.keil.com/support/man/docs/uv4/uv4_b_filetypes.htm](http://www.keil.com/support/man/docs/uv4/uv4_b_filetypes.htm).
+A list of the file types supported by uVision can be found here: [http://www.keil.com/support/man/docs/uv4/uv4_b_filetypes.htm](http://www.keil.com/support/man/docs/uv4/uv4_b_filetypes.htm).
 
 ## Ignore File
 

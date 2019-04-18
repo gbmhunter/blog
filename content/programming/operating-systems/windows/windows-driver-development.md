@@ -12,7 +12,7 @@ IOCTL is a UNIX term.
 
 From the Wikipedia article, "[ioctl](http://en.wikipedia.org/wiki/Ioctl)".
 
-A Win32 `DeviceIoControl` takes as parameters:
+A Win32 `DeviceIoControl` takes as parameters:
 
 1. an open object handle (the Win32 equivalent of a file descriptor)
 2. a request code number (the "control code")
@@ -20,7 +20,7 @@ A Win32 `DeviceIoControl` takes as parameters:
 4. length of the input buffer
 5. a buffer for output results
 6. length of the output buffer
-7. an `OVERLAPPED` structure, if overlapped I/O is being used.
+7. an `OVERLAPPED` structure, if overlapped I/O is being used.
 
 ## Interrupt Request Level (IRQL)
 
@@ -47,7 +47,7 @@ No information.
 ## IRQL 3+ (DIRQL)
 
 
-Level 3 and above (except for one, called HIGH_LEVEL, see below) are interrupts reserved for connecting to hardware devices, and are known as (DIRQL ).
+Level 3 and above (except for one, called HIGH_LEVEL, see below) are interrupts reserved for connecting to hardware devices, and are known as (DIRQL ).
 
 
 ## Driver Stack

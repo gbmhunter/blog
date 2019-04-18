@@ -12,4 +12,4 @@ tags:
 - tutorial
 ---
 
-DJ Tutorial has been put aside for the moment. Created a set list page in the DJing section. It contains hot songs categorised by either genre or time, and contains songs that I am likely to play while DJing.
+DJ Tutorial has been put aside for the moment. Created a set list page in the DJing section. It contains hot songs categorised by either genre or time, and contains songs that I am likely to play while DJing.

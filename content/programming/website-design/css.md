@@ -14,7 +14,7 @@ CSS, or content style sheet, is a language for specifying how elements on an HTM
 
 CSS3 is the latest CSS standard.
 
-Some cool, open-source CSS2 animations can be found at [http://daneden.me/animate/](http://daneden.me/animate/)
+Some cool, open-source CSS2 animations can be found at [http://daneden.me/animate/](http://daneden.me/animate/)
 
 ## Dynamic Debugging
 

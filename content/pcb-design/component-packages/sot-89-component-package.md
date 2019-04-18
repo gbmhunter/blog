@@ -60,7 +60,7 @@ url: /pcb-design/component-packages/sot-89-component-package
 </td></tr><tr >
 <td >Dimensions
 </td>
-<td > 4.6x4.25mm
+<td > 4.6x4.25mm
 </td></tr><tr >
 <td >3D Models
 </td>
@@ -75,7 +75,7 @@ url: /pcb-design/component-packages/sot-89-component-package
 
 SOT-89 is a small, surface-mount family of similar component packages. There are two variants within the family, the SOT-89-3 (with three leads), and the SOT-89-5 (with 5 leads).
 
-All packages in this family have a number of rectangular leads and a central single tab-shaped lead. The tab-shaped lead improves the thermal performance of the package (decreases it's thermal resistance).
+All packages in this family have a number of rectangular leads and a central single tab-shaped lead. The tab-shaped lead improves the thermal performance of the package (decreases it's thermal resistance).
 
 ## SOT-89-5
 

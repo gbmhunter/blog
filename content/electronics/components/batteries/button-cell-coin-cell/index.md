@@ -16,7 +16,7 @@ The insulated top cap of a button cell is the negative terminal, the base is the
 
 ## Internal Resistance
 
-The internal resistance of a coin cell battery starts of at a rather large 10Ω. This then rapidly increases as the batteries energy is consumed. Where high pulse currents are needed, coin cell batteries can be used in conjunction with high-valued capacitors.
+The internal resistance of a coin cell battery starts of at a rather large 10Ω. This then rapidly increases as the batteries energy is consumed. Where high pulse currents are needed, coin cell batteries can be used in conjunction with high-valued capacitors.
 
 A rule of thumb for coin cell batteries is that 10mA is the maximum current draw.
 

@@ -12,7 +12,7 @@ This page is all about using InstallShield with Visual Studio projects to create
 
 ## Creating A Single setup.exe
 
-For smaller projects and things that will be downloaded over the internet, you'll most likely want to create a single file called setup.exe or similar that users can run to install the program. This is not the default way to do things with InstallShield, so you have to configure it to make this happen.
+For smaller projects and things that will be downloaded over the internet, you'll most likely want to create a single file called setup.exe or similar that users can run to install the program. This is not the default way to do things with InstallShield, so you have to configure it to make this happen.
 
 The key part, once you've created an InstallShield project in your solution, is to go to the Visual Studio Configuration Manager window and change the build configuration for the InstallShield project to "SingleImage".
 
@@ -20,7 +20,7 @@ The key part, once you've created an InstallShield project in your solution, is 
 
 ## Version Numbers
 
-The product version must follow the syntax aaa.bbb.ccccc where the aaa is the major version number, bbb is the minor version number, and ccccc is the build number. You are limited to a maximum number of 255 (unsigned 8-bit) for both aaa and bbb, and a maximum number of 65,535 (unsigned 16-bit) for ccccc. You can include a fourth field, dddd, but the InstallShield does not use it.
+The product version must follow the syntax aaa.bbb.ccccc where the aaa is the major version number, bbb is the minor version number, and ccccc is the build number. You are limited to a maximum number of 255 (unsigned 8-bit) for both aaa and bbb, and a maximum number of 65,535 (unsigned 16-bit) for ccccc. You can include a fourth field, dddd, but the InstallShield does not use it.
 
 ## Upgrading From Older Versions
 

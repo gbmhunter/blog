@@ -9,11 +9,11 @@ url: /programming/version-control-systems/mercurial/ignore-files/mercurial-ignor
 
 ## Overview
 
-Following is a Mercurial ignore file for excluding the unnecessary files created by PSoC Creator. The ignore files is written using regex syntax. It only excludes files that are within a specified sub-directory within the repository (commonly called code or something like that). This is to stop the ignore file excluding other files with the same extension from other sections of the repository.
+Following is a Mercurial ignore file for excluding the unnecessary files created by PSoC Creator. The ignore files is written using regex syntax. It only excludes files that are within a specified sub-directory within the repository (commonly called code or something like that). This is to stop the ignore file excluding other files with the same extension from other sections of the repository.
 
 Where possible, the type of file excluded is commented beside each line, just incase you want to re-introduce the file for some reason.
 
-Just copy the code below into the .hgignore file found in the root directory of your repository, replacing <psoc code root dir> with the directory the code will be placed in (or delete this and the / if you want it to apply to the whole repo).
+Just copy the code below into the .hgignore file found in the root directory of your repository, replacing <psoc code root dir> with the directory the code will be placed in (or delete this and the / if you want it to apply to the whole repo).
 
 ## Ignore File
 

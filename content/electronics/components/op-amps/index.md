@@ -9,9 +9,9 @@ type: "page"
 
 ## Overview
 
-At it's most basic level, an operational amplifier (op-amp) is a discrete analogue integrated circuit which acts as a voltage-amplifier with very high gain.
+At it's most basic level, an operational amplifier (op-amp) is a discrete analogue integrated circuit which acts as a voltage-amplifier with very high gain.
 
-Note that an op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). It can also be converted into a current amplifier.
+Note that an op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). It can also be converted into a current amplifier.
 
 ## Schematic Symbol
 
@@ -71,7 +71,7 @@ G = 2 $$
 
 {{< img src="non-inverting-op-amp-amplifier-simulation-schematic.png" width="465px" caption="The simulation schematic for a non-inverting op-amp amplifier."  >}}
 
-The results of the simulation are shown below. As you can see, the output voltage `\(V_{out}\)` is exactly twice the input voltage `\(V_{in}\)`.
+The results of the simulation are shown below. As you can see, the output voltage `\(V_{out}\)` is exactly twice the input voltage `\(V_{in}\)`.
 
 {{< img src="vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png" width="1700px" caption="A graph of Vout vs. Vin for a non-inverting op-amp amplifier circuit."  >}}
 
@@ -87,7 +87,7 @@ The equation for the gain of an inverting amplifier is:
 
 The negative sign is to show that the output is the inverse polarity of the input. Notice that, unlike the non-inverting amplifier, **an inverting amplifier lets you obtain a gain of less than 1**.
 
-Below is the schematic used for simulating the behaviour of an inverting op-amp. Note how is requires a negative voltage power supply.
+Below is the schematic used for simulating the behaviour of an inverting op-amp. Note how is requires a negative voltage power supply.
 
 {{< img src="inverting-op-amp-simulation-schematic.png" width="584px" caption="A schematic for simulating the behaviour of an inverting op-amp."  >}}
 
@@ -101,11 +101,11 @@ A differential amplifier amplifies the difference between two electrical signals
 
 {{< img src="op-amp-schematic-differential-amplifier.png" width="489px" caption="An op-amp configured as a differential amplifier."  >}}
 
-The output voltage is given by the equation:
+The output voltage is given by the equation:
 
 <div>$$ v_o = \frac{R_4}{R_3 + R_4}(1 + \frac{R_2}{R_1})v_2 - \frac{R_2}{R_1}v_1 $$</div>
 
-Below is a schematic for simulating the behaviour of a differential op-amp:
+Below is a schematic for simulating the behaviour of a differential op-amp:
 
 {{< img src="differential-op-amp-simulation-schematic.png" width="822px" caption="A schematic for simulating the behaviour of a differential op-amp."  >}}
 
@@ -127,11 +127,11 @@ A way to fix this problem is to insert a high-valued feedback resistor, `\(R_f\)
 
 ## Transconductance Amplifier
 
-A _transconductance amplifier_ is an op-amp topology which is used to **convert a voltage into a current**. Coincidentally, it is also known as a _voltage-to-current converter_.
+A _transconductance amplifier_ is an op-amp topology which is used to **convert a voltage into a current**. Coincidentally, it is also known as a _voltage-to-current converter_.
 
 A basic transconductance amplifier can be built with an op-amp in a non-inverting configuration.
 
-A transconductance amplifier is useful creating an industry standard 4-20mA (or 0-20mA) current-loop signal. The input voltage can come from something like a potentiometer or microcontroller (coupled with either using a VDAC peripheral or PWM/RC-filter technique to create a variable voltage).
+A transconductance amplifier is useful creating an industry standard 4-20mA (or 0-20mA) current-loop signal. The input voltage can come from something like a potentiometer or microcontroller (coupled with either using a VDAC peripheral or PWM/RC-filter technique to create a variable voltage).
 
 One dis-advantage with this design is that the current output is not ground referenced, that is, ground is not used as the return path for the current. This complicates the wiring.
 
@@ -141,9 +141,9 @@ Sorted alphabetically.
 
 ## Gain-Bandwidth (GBW) Product
 
-The gain-bandwidth product can be initialised as _GBWP_, _GBW_, _GBP_ or _GB_. It is an important parameter which basically puts a limit on the maximum gain and frequency. **An op-amp's maximum possible gain reduces as the frequency of the signal increases.** The multiplication of the gain with the frequency gives the gain-bandwidth product, which is **relatively constant** for a particular op-amp.
+The gain-bandwidth product can be initialised as _GBWP_, _GBW_, _GBP_ or _GB_. It is an important parameter which basically puts a limit on the maximum gain and frequency. **An op-amp's maximum possible gain reduces as the frequency of the signal increases.** The multiplication of the gain with the frequency gives the gain-bandwidth product, which is **relatively constant** for a particular op-amp.
 
-Hence if the gain bandwidth of a particular op-amp is 1Mhz, and the gain is 10, the maximum frequency that the op-amp can operate linearly at (still provide a gain of 10) is at 100kHz. Or if the gain was set to 100, then the maximum frequency is 10kHz. **This also means that an op-amp has a built-in low-pass filter, as the gain drops for very high frequencies.**
+Hence if the gain bandwidth of a particular op-amp is 1Mhz, and the gain is 10, the maximum frequency that the op-amp can operate linearly at (still provide a gain of 10) is at 100kHz. Or if the gain was set to 100, then the maximum frequency is 10kHz. **This also means that an op-amp has a built-in low-pass filter, as the gain drops for very high frequencies.**
 
 An example of an ultra-high gain bandwidth is 1700MHz, which are present in 'Wideband CFB" op-amps, designed for applications such as RGB line drivers (such as the OPA695). A 'normal' GBW can be anywhere between 100kHz and 10MHz. A low gain-bandwidth is around 1kHz (reminiscent of less advanced, older op-amps). **Remember gain is unit-less (V/V), so gain bandwidth is expressed as a frequency only.** Not realising this can be confusing! The GBW product is closely related to the slew rate (see below).
 
@@ -175,7 +175,7 @@ For a fixed-gain, cascading op-amps can also be used to **increase the bandwidth
 
 When cascading op-amps, the total gain is the product of all of the individual op-amps gains, i.e.:
 
-<div>$$ A_{total} = A_0 A_1 A_2 ... A_n $$</div>
+<div>$$ A_{total} = A_0 A_1 A_2 ... A_n $$</div>
 
 ## The Bandwidth
 
@@ -200,10 +200,10 @@ As a rule-of-thumb, you should use the lowest acceptable resistances in op-amp f
 
 ## Rail-to-Rail Op-amps
 
-What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-amps that can run from a single voltage supply, rather than requiring a dual positive/negative supply) market op-amps as _rail-to-rail_, and that the output of the op-amp can swing from ground to the positive rail. This is not exactly true. The op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. This voltage drop increases with the amount of current the op-amp is supplying to the load.
+What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-amps that can run from a single voltage supply, rather than requiring a dual positive/negative supply) market op-amps as _rail-to-rail_, and that the output of the op-amp can swing from ground to the positive rail. This is not exactly true. The op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. This voltage drop increases with the amount of current the op-amp is supplying to the load.
 
 {{% warning %}}
-"_Rail-to-rail_" op-amps cannot really output either rail voltage. A negative power supply is always required if you want the op-amp to be able to output a true 0V.
+"_Rail-to-rail_" op-amps cannot really output either rail voltage. A negative power supply is always required if you want the op-amp to be able to output a true 0V.
 {{% /warning %}}
 
 **To achieve a true ground output, you need a negative voltage supply.** There are dedicated IC's designed to provide a small negative power supply to op-amps so that they can output true ground. One such example is the [Texas Instruments LM7705](http://www.ti.com/product/LM7705), a "_Low Noise Negative Bias Generator_". This IC only generates -230mV, which allows the designer to use CMOS-based op-amps which usually have a maximum supply voltage of 5.5V.
@@ -224,7 +224,7 @@ Below are some examples of op-amps that stand out from the crowd for some reason
     </thead>
 <tbody><tr >
 <td>AD860x</td>
-<td>Good for high precision stuff! Awesome for [photo-diode amplification](http://localhost/?q=ir-devices) (both current-to-voltage and voltage-to-voltage configurations).</td>
+<td>Good for high precision stuff! Awesome for [photo-diode amplification](http://localhost/?q=ir-devices) (both current-to-voltage and voltage-to-voltage configurations).</td>
 <td>$3.50</td>
 </tr>
 <tr>
@@ -239,7 +239,7 @@ Below are some examples of op-amps that stand out from the crowd for some reason
 </tr>
 <tr>
 <td>OPA695</td>
-<td>This is a ultra-wideband, current-feedback op-amp. If you need an op-amp with a ridiculously high gain-bandwidth product, this is along the lines of what you want to use. It has a GBW of 1700Mhz and a maximum slew-rate of 4300V/us.</td>
+<td>This is a ultra-wideband, current-feedback op-amp. If you need an op-amp with a ridiculously high gain-bandwidth product, this is along the lines of what you want to use. It has a GBW of 1700Mhz and a maximum slew-rate of 4300V/us.</td>
 <td>$3.50</td>
 </tr>
 </tbody>
@@ -251,6 +251,6 @@ Isolation amplifiers provide galvanic isolation between the input (sensor) and o
 
 {{< img src="fully-differential-isolation-amplfier-ti-amc1200-simplified-schematic.pdf.png" width="753px" caption="A simplified schematic of the Texas Instruments AMC1200, a fully-differential isolated amplifier. Image from http://www.ti.com/." >}}
 
-A common application would be to isolate and amplify the voltage across a current-sense resistor on a high-power motor, or to protect humans with medical sensors connected to them from the measurement system.
+A common application would be to isolate and amplify the voltage across a current-sense resistor on a high-power motor, or to protect humans with medical sensors connected to them from the measurement system.
 
-Basic isolation amplifiers require two power supplies (one for each side of isolation), while others incorporate built-in transformers so that you only have to provide one power source.
+Basic isolation amplifiers require two power supplies (one for each side of isolation), while others incorporate built-in transformers so that you only have to provide one power source.

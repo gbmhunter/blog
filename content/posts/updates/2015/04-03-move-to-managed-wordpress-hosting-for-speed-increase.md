@@ -34,13 +34,13 @@ tags:
 
 {{< figure src="/images/2015/04/screenshot-godaddy-managed-wordpress-plans.png" width="692px" caption="Screenshot of GoDaddy's managed Wordpress plans as of 2015-04-03."  >}}
 
-The idea was to hopefully speed things up, as [blog.mbedded.ninja](/) has been running really slow lately (30-60s load times!, see the [Site Running Slowly, Does That Mean It's Walking? post](/posts/updates/2015-03-15-site-running-slowly-does-that-mean-its-walking/)). So far so good, the page load times seem to have dropped dramatically. Now the front page takes 6.43s to load the first time, and 4.47s to load on a repeat view. See the screenshot below:
+The idea was to hopefully speed things up, as [blog.mbedded.ninja](/) has been running really slow lately (30-60s load times!, see the [Site Running Slowly, Does That Mean It's Walking? post](/posts/updates/2015-03-15-site-running-slowly-does-that-mean-its-walking/)). So far so good, the page load times seem to have dropped dramatically. Now the front page takes 6.43s to load the first time, and 4.47s to load on a repeat view. See the screenshot below:
 
 {{< figure src="/images/2015/04/web-page-test-on-mbedded-ninja-after-moving-to-managed-wordpress-service.png" width="1032px" caption="A webpage speed test run on blog.mbedded.ninja after the site was moved to a GoDaddy managed wordpress service."  >}}
 
 I think one of the big speed improvements came from the new way of caching. It suggests that the caching plugin I was using before was not working correctly.
 
-At the same time, I decided to change themes. The reason behind this was because I wanted a "responsive" design, one that would look good on smart phones and tablets as well as the traditional computer monitor. Because I am no pro web designer, I wanted a framework to get me started, which I could then tweak to fit my needs. Call me a sheep, but I decided to go with the [Avada theme](http://themeforest.net/item/avada-responsive-multipurpose-theme/2833226), as it was very popular and had tons of good reviews.
+At the same time, I decided to change themes. The reason behind this was because I wanted a "responsive" design, one that would look good on smart phones and tablets as well as the traditional computer monitor. Because I am no pro web designer, I wanted a framework to get me started, which I could then tweak to fit my needs. Call me a sheep, but I decided to go with the [Avada theme](http://themeforest.net/item/avada-responsive-multipurpose-theme/2833226), as it was very popular and had tons of good reviews.
 
 {{< figure src="/images/2015/04/screenshot-avada-wordpress-theme-homepage.png" width="716px" caption="A screenshot of the Avada Wordpress theme homepage as of 2015-04-03. Image from http://theme-fusion.com/avada/."  >}}
 
@@ -48,14 +48,14 @@ It did cost a fair amount (US$58), so I was expecting it to be pretty easy to se
 
 * Resizing the websites logo to the desired size in the header
 * Adding the site name and slogan to the header
-* Colouring alternate rows of a table a different colour
+* Colouring alternate rows of a table a different colour
 * Adding a Revolution Slider to the header
 * Remove the huge featured image from the start of every page
 
 Because of the speed improvements, I still wouldn't go back to the Linux/CPanel style hosting, but a managed Wordpress service does have it's disadvantages:
 
 * No CPanel! (most of the following disadvantages are sub-issues due to this fact!)
-* No SSH, unless you pay for the Business or Pro managed Wordpress services (these are expensive), and even then, SSH is still limited
+* No SSH, unless you pay for the Business or Pro managed Wordpress services (these are expensive), and even then, SSH is still limited
 * No cron jobs
 * No file manager (uploading many files is slow, as you can't upload a zip file and then unzip)
 

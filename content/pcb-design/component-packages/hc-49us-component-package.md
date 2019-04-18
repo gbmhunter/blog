@@ -101,7 +101,7 @@ url: /pcb-design/component-packages/hc-49us-component-package
 <tr>
 <td >3D Models</td>
 <td >
-<p><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=137229">HC49/US </a></p>
+<p><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=137229">HC49/US </a></p>
 </td>
 </tr>
 <tr>

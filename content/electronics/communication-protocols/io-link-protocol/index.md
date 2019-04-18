@@ -18,8 +18,8 @@ Process data is sent every communication cycle (typically 2ms).
 
 ## Service Data
 
-Service data is used to send large amounts of non-periodic data at the request of the recipient. 
+Service data is used to send large amounts of non-periodic data at the request of the recipient. 
 
 ## Events
 
-Events are unsolicited messages that convey information such as alarm status or info.
+Events are unsolicited messages that convey information such as alarm status or info.

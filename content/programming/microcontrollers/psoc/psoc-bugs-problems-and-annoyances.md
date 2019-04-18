@@ -59,7 +59,7 @@ Sometimes PSoC Creator crashes when running the debugger. If I investigate the e
 
 I've also had PSoC Creator crash while attempting to program a PSoC, if the PSoC chip has been programmed before, but now unavailable because it is unpowered/disconnected from MiniProg header. PSoC Creator crashes while the "Selecting Target" message is displayed at the bottom of the screen.
 
-I have found that you can recover from this error by closing the "Select Debug Target" application from Task Manager, without killing PSoC Creator (and without losing any unsaved work).
+I have found that you can recover from this error by closing the "Select Debug Target" application from Task Manager, without killing PSoC Creator (and without losing any unsaved work).
 
 {{< figure src="/images/programming-psoc/psoc-debug-target-in-task-manager.png" caption="Closing the 'Select Debug Target' application from Windows task manager can unfreeze PSoC Creator when it crashes during a programming attempt."  width="600px" >}}
 
@@ -89,7 +89,7 @@ This is caused it you select "True" for the "Browse Information" setting under B
 
 ## Math Functions Won't Work In PSoC 5
 
-If you keep getting "undefined reference errors" at build time when trying to use PSoC 5 math functions, don't fret. This is a well known problem, and the fix is discussed in [this documentation on the PSoC website](http://www.cypress.com/?rID=42838). Basically, you have to type 'm' into the Additional Libraries field in the linker settings.
+If you keep getting "undefined reference errors" at build time when trying to use PSoC 5 math functions, don't fret. This is a well known problem, and the fix is discussed in [this documentation on the PSoC website](http://www.cypress.com/?rID=42838). Basically, you have to type 'm' into the Additional Libraries field in the linker settings.
 
 ## Find/Replace Stepwise Search Resets On Edit
 

@@ -9,11 +9,11 @@ url: /programming/microcontrollers/atmel/atmel-at32-family
 
 ## Overview
 
-The AT32 family of microcontrollers are manufactured by ATMEL. They use the proprietary Atmel AVR architecture for the core part of the microcontroller. The memory and data paths are 32-bits wide, and they come with varying amounts of flash memory and hardware peripherals.
+The AT32 family of microcontrollers are manufactured by ATMEL. They use the proprietary Atmel AVR architecture for the core part of the microcontroller. The memory and data paths are 32-bits wide, and they come with varying amounts of flash memory and hardware peripherals.
 
 {{< figure src="/images/2011/09/atmel-avr-at32-3d-render-of-ic-www-teckhat-com.gif" width="259px" caption="A 3D render of the AT32UC3L, an Atmel AVR AT32 microcontroller. Image from http://teckhat.com/."  >}}
 
-Because of their large pin count, AT32 microcontrollers normally in high-density packages such as QFN and BGA.
+Because of their large pin count, AT32 microcontrollers normally in high-density packages such as QFN and BGA.
 
 ## Programming
 
@@ -21,7 +21,7 @@ They support both JTAG and programming via pre-installed bootloader over USB (on
 
 ## I/o Multiplexing
 
-The AT32 microcontrollers feature an I/O controller which controls the functionality of each individual IO pin. The pin can either be selected to be GPIO or connected to 1 of 4 peripheral channels.
+The AT32 microcontrollers feature an I/O controller which controls the functionality of each individual IO pin. The pin can either be selected to be GPIO or connected to 1 of 4 peripheral channels.
 
 ## TWI Peripheral
 

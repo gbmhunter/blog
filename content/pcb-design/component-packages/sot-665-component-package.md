@@ -20,7 +20,7 @@ url: /pcb-design/component-packages/sot-665-component-package
 </td></tr><tr >
 <td >Variants
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Similar To
 </td>
@@ -47,7 +47,7 @@ url: /pcb-design/component-packages/sot-665-component-package
 </td></tr><tr >
 <td >Thermal Resistance
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Dimensions
 </td>

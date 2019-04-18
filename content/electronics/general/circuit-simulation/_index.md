@@ -20,7 +20,7 @@ There are a few circuit simulation languages, but SPICE (and it's variants), see
 
 There are heaps of software packages that allow you to simulate components, including:
 
-* [Altium](http://localhost/?q=node/83) ([www.altium.com](http://localhost/?q=www.altium.com)) - Expensive but powerful SPICE simulator, benefits for being a fully integrated pcb development program, so no external software needed. Supports SPICE3f5, XSpice and PSpice file formats.
+* [Altium](http://localhost/?q=node/83) ([www.altium.com](http://localhost/?q=www.altium.com)) - Expensive but powerful SPICE simulator, benefits for being a fully integrated pcb development program, so no external software needed. Supports SPICE3f5, XSpice and PSpice file formats.
 * Tina Design Suite ([www.tina.com](http://localhost/?q=www.tina.com)) - Priarily a SPICE simulator, but also features a PCB desginer.
 * LTspice ([http://www.linear.com/designtools/software/](http://www.linear.com/designtools/software/)) - Linear Technologies spice simulator orientated towards testing their own components. This SPICE simulator is once of the best free options out there, with some people quoting that it's better than most paid for programs!
 

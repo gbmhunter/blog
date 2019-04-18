@@ -84,12 +84,12 @@ This basic example does not have any support for differing exception types.
 
 Note that this primitive form of exception handling does not come with all advanced functionality you get with higher-level languages. For example, higher-level languages will automatically deallocate memory when an object's constructor throws an exception (not that you have objects in C anyway).
 
-If you are interested in this and still want more information, see [http://www.di.unipi.it/~nids/docs/longjump_try_trow_catch.html](http://www.di.unipi.it/~nids/docs/longjump_try_trow_catch.html) for a basic implementation. [http://www.on-time.com/ddj0011.htm](http://www.on-time.com/ddj0011.htm) also has some nice explanations and worked tutorial code.
+If you are interested in this and still want more information, see [http://www.di.unipi.it/~nids/docs/longjump_try_trow_catch.html](http://www.di.unipi.it/~nids/docs/longjump_try_trow_catch.html) for a basic implementation. [http://www.on-time.com/ddj0011.htm](http://www.on-time.com/ddj0011.htm) also has some nice explanations and worked tutorial code.
 
 [https://code.google.com/p/exceptions4c/](https://code.google.com/p/exceptions4c/) is a C-based exception library.
 
 ## A Word Of Caution To C++ Users
 
-The C standard for the setjmp() and longjmp() functions makes no assurances that the destructors will be called for objects that are created after setjmp() (aka TRY) and before longjmp() (aka CATCH) (essentially the portion of code that will be "unwound"). In fact, the behaviour in these cases is undefined. 
+The C standard for the setjmp() and longjmp() functions makes no assurances that the destructors will be called for objects that are created after setjmp() (aka TRY) and before longjmp() (aka CATCH) (essentially the portion of code that will be "unwound"). In fact, the behaviour in these cases is undefined. 
 
-Therefore, these functions can be very dangerous to use in C++, causing unexpected behaviour and memory leaks. I once investigated the use of these functions as a replacement for the traditional exceptions for embedded microcontrollers, but ruled it out due to this issue.
+Therefore, these functions can be very dangerous to use in C++, causing unexpected behaviour and memory leaks. I once investigated the use of these functions as a replacement for the traditional exceptions for embedded microcontrollers, but ruled it out due to this issue.

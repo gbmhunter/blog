@@ -23,7 +23,7 @@ The code below shows the basic setup to draw a Circuitikz diagram in a Wordpress
 \end{tikzpicture}
 ```
 
-Add the actual Circuitikz code between the end of the preamble and the end of the tikzpicture elements.
+Add the actual Circuitikz code between the end of the preamble and the end of the tikzpicture elements.
 
 ## Adding A Background
 
@@ -136,4 +136,4 @@ It took me awhile to get dashed lines to work, here is the correct way to draw t
     (-0.5,0) -- (2,0);
 ```
 
- Make sure to use a separate draw command for dashed lines, rather than tacking it onto another one, otherwise you will find all lines in that draw command will become dashed.
+ Make sure to use a separate draw command for dashed lines, rather than tacking it onto another one, otherwise you will find all lines in that draw command will become dashed.

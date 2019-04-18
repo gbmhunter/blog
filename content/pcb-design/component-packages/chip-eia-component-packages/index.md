@@ -88,13 +88,13 @@ Sorted from smallest to largest package size.
     </thead>
     <tbody>
 <tr >
-<td > ?
+<td > ?
 </td>
 <td >01005
 </td>
 <td >1/32
 </td>
-<td > 
+<td > 
 </td>
 <td >Ridiculously small chip package that can barely be seen by the naked eye.
 </td></tr><tr >
@@ -186,7 +186,7 @@ Sorted from smallest to largest package size.
 </td>
 <td >14.4mm2
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >5025
 </td>
@@ -196,7 +196,7 @@ Sorted from smallest to largest package size.
 </td>
 <td >12.5mm2
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >6432
 </td>

@@ -11,7 +11,7 @@ Following is an Mercurial ignore file for excluding the unnecessary files create
 
 Where possible, the type of file excluded is commented beside each line, just incase you want to re-introduce the file for some reason.
 
-Just copy and append the code below into the .hgignore file found in the root directory of your repository, and change <Altium root dir> to the directory of your choice (or delete <Altium root dir>/ so it will apply to the entire repo.
+Just copy and append the code below into the .hgignore file found in the root directory of your repository, and change <Altium root dir> to the directory of your choice (or delete <Altium root dir>/ so it will apply to the entire repo.
 
 ```    
 #*************************************************************************

@@ -15,4 +15,4 @@ The endpoints can be configured in the hardware.xml file, which has to be progra
 
 ## Over-The-Air (OTA) Programming
 
-The BLE113 module supports OTA programming for a limited number of sections in the device. 
+The BLE113 module supports OTA programming for a limited number of sections in the device. 

@@ -18,16 +18,16 @@ The newest compiler for the PIC18 family of microcontrollers (as of July 2016) i
 
 ## EEPROM
 
-The old-style (now deprecated) way of reading and writing to EEPROM was to use the following macros (defined in `pic18.h`):
+The old-style (now deprecated) way of reading and writing to EEPROM was to use the following macros (defined in `pic18.h`):
 
 ```c
 EEPROM_READ(addr)
 EEPROM_WRITE(addr, value)
 ```
 
-Note that these are now depreciated and if using MPLAB X, these macros get turned into empty shells which don't actually do anything (well, unless `#if _EEPROMSIZE > 0 && defined(_PLIB)` is true, which it is not by default). and they don't raise any compiler warnings/errors, meaning your EEPROM may not work and you don't know about it!).
+Note that these are now depreciated and if using MPLAB X, these macros get turned into empty shells which don't actually do anything (well, unless `#if _EEPROMSIZE > 0 && defined(_PLIB)` is true, which it is not by default). and they don't raise any compiler warnings/errors, meaning your EEPROM may not work and you don't know about it!).
 
-What you can do is forgo the nice API and use direct manipulation instead. I have written the following two functions which read/write to EEPROM using register manipulation, and provide similar functionality to what the deprecated API did:
+What you can do is forgo the nice API and use direct manipulation instead. I have written the following two functions which read/write to EEPROM using register manipulation, and provide similar functionality to what the deprecated API did:
 
 ```c
 //! @brief      Reads a single byte of data from the EEPROM.
@@ -91,11 +91,11 @@ void Eeprom_WriteByte(uint16_t address, uint8_t data)
 
 Default data can be written to the EEPROM when programming the PIC18 microcontroller by using the `__EEPROM_DATA()` macro.
 
-This macro takes 8 single-bye arguments, which writes 8 bytes of EEPROM data at once. This macro starts writing from address 0x0000 and auto-increments by 0x8 on every call.
+This macro takes 8 single-bye arguments, which writes 8 bytes of EEPROM data at once. This macro starts writing from address 0x0000 and auto-increments by 0x8 on every call.
 
 ## GPIO
 
-The TRISx registers (where x  is the port letter, e.g. `TRISA`, `TRISB`) control the direction of the GPIO pins on that port. They can either be set as inputs or outputs.
+The TRISx registers (where x  is the port letter, e.g. `TRISA`, `TRISB`) control the direction of the GPIO pins on that port. They can either be set as inputs or outputs.
 
 ## SPI
 

@@ -10,21 +10,21 @@ type: page
 
 PCB data formats are used to convey PCB manufacturing and assembling information from the designer using CAD software to the company(s) making the PCB.
 
-There are few different types of formats which are explained in more detail below.
+There are few different types of formats which are explained in more detail below.
 
 ## Gerber Files
 
 ## Overview
 
-Gerbers are files which hold PCB design information. It is an old format, first developed in 1980, but as of 2014 is still the most commonly accepted format for providing PCB design information to PCB manufacturers for both PCB creation and assembly. A CAD program used to design PCBs will normally output a set of Gerber files (e.g. one for each copper layer, silkscreen layer, soldermask layer, solderpaste layer, mechanical layer and one for component placement of each side of the PCB).
+Gerbers are files which hold PCB design information. It is an old format, first developed in 1980, but as of 2014 is still the most commonly accepted format for providing PCB design information to PCB manufacturers for both PCB creation and assembly. A CAD program used to design PCBs will normally output a set of Gerber files (e.g. one for each copper layer, silkscreen layer, soldermask layer, solderpaste layer, mechanical layer and one for component placement of each side of the PCB).
 
-A Gerber file has no information about the number or names of electrical nets.
+A Gerber file has no information about the number or names of electrical nets.
 
 ## Versions
 
 There are two versions of the Gerber format:  * Standard Gerber (RS-274-D)  * Extended Gerber (RS-274X)
 
-Extended Gerber is the most common Gerber format, the standard Gerber format is **depreciated**. 
+Extended Gerber is the most common Gerber format, the standard Gerber format is **depreciated**. 
 
 ## Layers
 
@@ -43,37 +43,37 @@ Layers are sorted alphabetically by extension.
 </td>
 <td >Bottom Layer
 </td>
-<td > The bottom copper layer.
+<td > The bottom copper layer.
 </td></tr><tr >
 <td >.GBO
 </td>
 <td >Bottom Overlay (Silkscreen)
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >.GBP
 </td>
 <td >Bottom Paste
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >.GBS
 </td>
 <td >Bottom Soldermask
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >.GKO
 </td>
 <td >Keep Out Layer
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >.GMx
 </td>
 <td >Mechanical Layer x (x is normally 1-16)
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >.GPx
 </td>
@@ -85,7 +85,7 @@ Layers are sorted alphabetically by extension.
 </td>
 <td >Bottom Pad Master
 </td>
-<td >Includes only the copper pads on the bottom layer, it removes all vias, tracks, fills and arcs.
+<td >Includes only the copper pads on the bottom layer, it removes all vias, tracks, fills and arcs.
 </td></tr><tr >
 <td >.GPT
 </td>
@@ -103,25 +103,25 @@ Layers are sorted alphabetically by extension.
 </td>
 <td >Top Overlay (Silkscreen)
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >.GTP
 </td>
 <td >Top Paste
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >.GTS
 </td>
 <td >Top Soldermask
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >.GTS
 </td>
 <td >Top Soldermask
 </td>
-<td > 
+<td > 
 </td></tr></tbody></table>
 
 Notice how the top and bottom pad master file extensions do not follow the same format as the other "Top" and "Bottom" classed files, with their extensions being GPT/GPB rather than GTP/GBP.
@@ -140,7 +140,7 @@ For anything greater than a 2 layer board, the PCB manufacturer can have trouble
 
 ## ODB++
 
-ODB++ is a database format originally developed by Valor to convey all the PCB information in a single file. ODB++ is now a format proprietry to Mentor Graphics who aquired Valor.
+ODB++ is a database format originally developed by Valor to convey all the PCB information in a single file. ODB++ is now a format proprietry to Mentor Graphics who aquired Valor.
 
 As of 2014, about 10% of all PCB designs are submitted in ODB++ format. It would be the second most popular choice after the Gerber format.
 

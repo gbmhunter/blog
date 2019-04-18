@@ -9,13 +9,13 @@ type: "page"
 
 ## Overview
 
-With a few hacks, you can compile C++ with the [PSoC Creator IDE](http://www.cypress.com/?id=2494) and run C++ code on PSoC microcontrollers!
+With a few hacks, you can compile C++ with the [PSoC Creator IDE](http://www.cypress.com/?id=2494) and run C++ code on PSoC microcontrollers!
 
 For more information about C++, check out the pages under Programming->Languages->C++.
 
 ## Using "-x c++"
 
-To some degree PSoC Creator disregards the code file extensions, and passes all files to GCC, so that calling the file main.cpp will not force it to compile as C++. This is why you need to enable the command-line parameter -x c++ to force GCC to use the C++ compiler.
+To some degree PSoC Creator disregards the code file extensions, and passes all files to GCC, so that calling the file main.cpp will not force it to compile as C++. This is why you need to enable the command-line parameter -x c++ to force GCC to use the C++ compiler.
 
 But you'll notice that if you right-click a file called main.cpp, the 'Build Settings' option has gone! To get this back, from the same menu, select properties. **Then change the "File Type" to C_FILE.** Now the "Build Settings" option will be availiable for main.cpp. Select this, and navigate to Compiler->Command Line. In the "Custom Flags" box, enter the flag -x c++.
 
@@ -27,7 +27,7 @@ Note that you **add -x c++ to the build settings of each individual C++ file**, 
 
 ## Main Has To Return An Int
 
-If you start a new PSoC project, and add `-x c++`  to the global build setting parameters, you will get the compiler error `.\main.c:14: error '::main' must return 'int'`. This has got to be the easiest fix, just obey the compiler and modify `void main()` to `int main()` in `main.c`, as shown in the following code.
+If you start a new PSoC project, and add `-x c++`  to the global build setting parameters, you will get the compiler error `.\main.c:14: error '::main' must return 'int'`. This has got to be the easiest fix, just obey the compiler and modify `void main()` to `int main()` in `main.c`, as shown in the following code.
 
 ```c
 #include <device.h>
@@ -49,7 +49,7 @@ int main() {
 
 ## Wrapping External C Code
 
-Wrap extern C{< C code goes here>} around all C header includes or global C functions (including device.h), that don't have inbuilt protection. This is to provide C linkage. You don't have to do this for standard C libraries, they all have this protection built into them.
+Wrap extern C{< C code goes here>} around all C header includes or global C functions (including device.h), that don't have inbuilt protection. This is to provide C linkage. You don't have to do this for standard C libraries, they all have this protection built into them.
 
 The following code shows an example.
 
@@ -125,7 +125,7 @@ When using the `nothrow` keyword, new will return `NULL` if the memory allocatio
 
 ## Virtual Functions
 
-If you get the linker error `undefined reference to "__cxa_pure_virtual"`, it's probably because you are trying to use virtual functions (it's related to the vtable). Use the compiler flag `-fno-rtti` to suppress this error.
+If you get the linker error `undefined reference to "__cxa_pure_virtual"`, it's probably because you are trying to use virtual functions (it's related to the vtable). Use the compiler flag `-fno-rtti` to suppress this error.
 
 An alternative is to provide the missing function, as shown below:
     
@@ -141,7 +141,7 @@ Because it's only the linker that looks for this function, you can normally get 
 
 ## Guard Acquire And Guard Release Errors
 
-If you get the error `undefined reference to '__cxa_guard_aquire'` and/or `undefined reference to '__cxa_guard_release'`, it's because C++ is looking for a few functions which implement thread safety for static variables. You usually get this error while initialising static variables/classes which are inside functions (statics that are global to the file will not cause this error).
+If you get the error `undefined reference to '__cxa_guard_aquire'` and/or `undefined reference to '__cxa_guard_release'`, it's because C++ is looking for a few functions which implement thread safety for static variables. You usually get this error while initialising static variables/classes which are inside functions (statics that are global to the file will not cause this error).
 
 To prevent this error, add the compile flag `-fno-threadsafe-statics` to the build options for that C++ file. Note that you must make sure that the static is only used in one thread (or provide your own locks to make it thread-safe)!
 
@@ -167,7 +167,7 @@ Because it's only the linker that looks for these functions, you can normally ge
 
 The standard C++ library contains many powerful utilities, however, most of these come at the expense of using plenty of code/RAM space, as well as potentially using exceptions (I have not got exceptions to work correctly on a PSoC device).
 
-For example, including `<iostream>` can cause your memory to instantly overflow. I assume this is probably because of advanced features such a locale support. Upon removing the include, the memory usage didn't shrink back to normal until I did a clean build.
+For example, including `<iostream>` can cause your memory to instantly overflow. I assume this is probably because of advanced features such a locale support. Upon removing the include, the memory usage didn't shrink back to normal until I did a clean build.
 
 Because of this, I almost use no standard C++ library features for embedded firmware. Instead, I have written a number of firmware modules which emulate the most useful standard C++ library features (such as strings, vectors, e.t.c) but are suitable for running on microcontrollers. You can download the modules from the [MToolkit repository on GitHub](https://github.com/gbmhunter/MToolkit).
 
@@ -185,7 +185,7 @@ C++ code can be debugged using the MiniProg3 and the in-built debugging faciliti
 
 ## Interrupts
 
-A useful feature about interrupts on the PSoC is that you can create one schematically, and then pass in a callback function for the interrupt using the auto-generated API `Interrupt_StartEx(&CallbackFunction);`. However, this poses a problem if you are creating a class, and want the interrupt to call one of the classes functions. C++ will not allow you to take the address of the member function (as a single parameter, although you can have method callbacks if you store both the object and a method reference, see the project [slotmachine-cpp](https://github.com/gbmhunter/slotmachine-cpp)). One way to get around this is to declare your class interrupt callback functions as static  as shown in the following code.
+A useful feature about interrupts on the PSoC is that you can create one schematically, and then pass in a callback function for the interrupt using the auto-generated API `Interrupt_StartEx(&CallbackFunction);`. However, this poses a problem if you are creating a class, and want the interrupt to call one of the classes functions. C++ will not allow you to take the address of the member function (as a single parameter, although you can have method callbacks if you store both the object and a method reference, see the project [slotmachine-cpp](https://github.com/gbmhunter/slotmachine-cpp)). One way to get around this is to declare your class interrupt callback functions as static  as shown in the following code.
 
 ```c
 // Assumes ISR component is added on schematic called
@@ -233,4 +233,4 @@ Can we use exceptions with the PSoC microcontroller? Yes, I know they can be res
 
 ## External Resources
 
-There are some instructions on using C++ with PSoC Creator [here](http://www.egr.msu.edu/classes/ece480/capstone/fall11/group01/doc-6-notes-from-matt.pdf). However, this method shows you how to edit custom machine-generated xml, which I don't think you should unless absolutely needed.
+There are some instructions on using C++ with PSoC Creator [here](http://www.egr.msu.edu/classes/ece480/capstone/fall11/group01/doc-6-notes-from-matt.pdf). However, this method shows you how to edit custom machine-generated xml, which I don't think you should unless absolutely needed.

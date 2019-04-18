@@ -8,7 +8,7 @@ type: page
 
 ## Creating A List View In FXML
 
-Although this would not be the standard way to do it (normally a ListView would be populated by the backend Java code), you can create a ListView node using pure fxml code:
+Although this would not be the standard way to do it (normally a ListView would be populated by the backend Java code), you can create a ListView node using pure fxml code:
 
 ```html    
 <ListView>
@@ -24,4 +24,4 @@ Although this would not be the standard way to do it (normally a ListView woul
 </ListView>
 ```
 
-Note that is important to wrap the String objects inside a `ObservableArrayList` object.
+Note that is important to wrap the String objects inside a `ObservableArrayList` object.

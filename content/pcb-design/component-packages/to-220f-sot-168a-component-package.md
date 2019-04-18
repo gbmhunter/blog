@@ -45,7 +45,7 @@ url: /pcb-design/component-packages/to-220f-sot-168a-component-package
 </td></tr><tr >
 <td >Solderability
 </td>
-<td >Easily soldered by hand, but tab requires a fair amount of power to solder.
+<td >Easily soldered by hand, but tab requires a fair amount of power to solder.
 </td></tr><tr >
 <td >Thermal Resistance
 </td>

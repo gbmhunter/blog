@@ -12,9 +12,9 @@ Heatsinks are used in circuit design to conduct heat away from a component faste
 
 {{< img src="typical-to-220-heatsink-with-fins.jpg" width="411px" caption="A typical TO-220 heatsink with fins. Image from www.digikey.com."  >}}
 
-Typical components that require heatsinking are high current [linear regulators](/electronics/components/power-regulators), MOSFET's on [H-bridges](/electronics/circuit-design/h-bridges), power amplifier BJT's and [MOSFET's](/electronics/components/transistors/mosfets/), and power limiting resistors. Most heatsinks are made from black anodized aluminium.
+Typical components that require heatsinking are high current [linear regulators](/electronics/components/power-regulators), MOSFET's on [H-bridges](/electronics/circuit-design/h-bridges), power amplifier BJT's and [MOSFET's](/electronics/components/transistors/mosfets/), and power limiting resistors. Most heatsinks are made from black anodized aluminium.
 
-Their heatsinking capability is rated with a thermal resistance, which has the units \( ^{\circ} C / W \). Common packages that heatsinks are made for include [TO-220](/pcb-design/component-packages/to-220ab-component-package/), [SOT-223](/pcb-design/component-packages/sot-23-component-package/).
+Their heatsinking capability is rated with a thermal resistance, which has the units \( ^{\circ} C / W \). Common packages that heatsinks are made for include [TO-220](/pcb-design/component-packages/to-220ab-component-package/), [SOT-223](/pcb-design/component-packages/sot-23-component-package/).
 
 You can get heatsinks with twisted fins, which gives better cooling due to increased air turbulance and convection flow.
 

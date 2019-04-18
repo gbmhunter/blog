@@ -9,10 +9,10 @@ url: /programming/languages/java/thread-safety-concurrency
 
 ## Overview
 
-Thread safety is largely built into the Java language, either via specialised keywords such as synchronized or via standard library objects.
+Thread safety is largely built into the Java language, either via specialised keywords such as synchronized or via standard library objects.
 
 ## synchronized
 
-The synchronized keyword (recognised by the Java compiler) can be used to enforce synchronous access (i.e. non-concurrent) to class methods.
+The synchronized keyword (recognised by the Java compiler) can be used to enforce synchronous access (i.e. non-concurrent) to class methods.
 
-It is a quick tool to reach for if you have basic concurrency issues.
+It is a quick tool to reach for if you have basic concurrency issues.

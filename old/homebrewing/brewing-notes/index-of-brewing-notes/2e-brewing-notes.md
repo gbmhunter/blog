@@ -25,7 +25,7 @@ url: /homebrewing/brewing-notes/index-of-brewing-notes/2e-brewing-notes
 <td >Description
 </td>
 
-<td >mit Honig/mit Zucker (different description for each half-batch) es kann aber schlecht schmecken.
+<td >mit Honig/mit Zucker (different description for each half-batch) es kann aber schlecht schmecken.
 </td>
 </tr>
 <tr >
@@ -163,7 +163,7 @@ Malt
 </tr>
 <tr >
 
-<td >Mash Start Temp (°C)
+<td >Mash Start Temp (°C)
 </td>
 
 <td >?
@@ -171,7 +171,7 @@ Malt
 </tr>
 <tr >
 
-<td >Mash End Temp (°C)
+<td >Mash End Temp (°C)
 </td>
 
 <td >?
@@ -179,7 +179,7 @@ Malt
 </tr>
 <tr >
 
-<td >Mash Time (min)
+<td >Mash Time (min)
 </td>
 
 <td >?
@@ -198,7 +198,7 @@ Malt
 <td >Mash Volume
 </td>
 
-<td > (inch above the grain surface)
+<td > (inch above the grain surface)
 </td>
 </tr>
 </tbody>
@@ -214,7 +214,7 @@ Malt
 <tbody >
 <tr >
 
-<td >Sparge Temp (°C)
+<td >Sparge Temp (°C)
 </td>
 
 <td >?
@@ -450,7 +450,7 @@ Malt
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
 <td >?
@@ -509,7 +509,7 @@ Malt
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
 <td >?

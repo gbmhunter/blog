@@ -88,7 +88,7 @@ SOT-363 is used for smaller SMD transistors and MOSFET's. It has a lead-pitch ha
 
 ## Polarity
 
-Some components using the SOT-363 package do not require any polarity marking as the pins are rotationally symmetric. This is a common configuration for a two-device MOSFET component, in where the pinout is shown below:
+Some components using the SOT-363 package do not require any polarity marking as the pins are rotationally symmetric. This is a common configuration for a two-device MOSFET component, in where the pinout is shown below:
 
 {{< figure src="/images/2015/04/dmn63d8ldw-dual-device-mosfet-in-sot-363-component-package-internal-schematic.png" width="322px" caption="Internal schematic of a dual-MOSFET component in a SOT-363 package. Notice it is not polarity sensitive. Image from http://www.diodes.com/."  >}}
 

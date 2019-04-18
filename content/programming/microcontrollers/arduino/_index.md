@@ -12,7 +12,7 @@ The Arduino is a low-cost, easy-to-use, microcontroller development environment.
 
 {{< img src="arduino-uno-r3-photo.jpg" width="425px" caption="A photo of the Arduino Uno (revision r3). Image from https://www.wikimedia.org/."  >}}
 
-The Arduino platform was used in the [Luxcity Tonic UV Control System project](/electronics/projects/luxcity-uv-tonic-control-system) that I designed.
+The Arduino platform was used in the [Luxcity Tonic UV Control System project](/electronics/projects/luxcity-uv-tonic-control-system) that I designed.
 
 ## Windows 8
 
@@ -28,7 +28,7 @@ An embedded platform that runs the .NET Micro framework.
 
 ## FezDomino
 
-Website: [http://www.ghielectronics.com/catalog/product/133](http://www.ghielectronics.com/catalog/product/133) An embedded platform that run the .NET Micro framework.
+Website: [http://www.ghielectronics.com/catalog/product/133](http://www.ghielectronics.com/catalog/product/133) An embedded platform that run the .NET Micro framework.
 
 ## The IDE And Extensions
 

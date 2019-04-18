@@ -11,10 +11,10 @@ General I/O are pins that are used for non-specific purposes. Non-specific purpo
 
 ## Configuring Ports
 
-x = port letter (A, B or C), e.g. PORTA PORTB PORTC
+x = port letter (A, B or C), e.g. PORTA PORTB PORTC
 n = pin number (0 to 7)
 
-If the pin is used as input, setting PORTxn  controls pull-up for the pin (0 = disabled, 1 = enabled). If the pin is used as an output, PORTxn  is used to control the voltage at the pin. PINx  reads the value of the pin (for the whole port at once)
+If the pin is used as input, setting PORTxn  controls pull-up for the pin (0 = disabled, 1 = enabled). If the pin is used as an output, PORTxn  is used to control the voltage at the pin. PINx  reads the value of the pin (for the whole port at once)
 
 ## Writing To Ports
 

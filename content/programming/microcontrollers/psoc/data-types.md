@@ -8,7 +8,7 @@ type: page
 
 ## Standard Data Types
 
-Note: The pre-defined variable types that come with the PSoC programming suites are defined both with and without the `_t` suffix that most people use to define a `typedef` (e.g. `uint8_t`). I recommend using the version with the underscore, as this increases portability (this is also supported by Linux and other Unix-like systems). It is better practice to use the data types whose size is explicitly stated (e.g. `uint32_t` rather than `unsigned int` as the latter's size is platform-dependant). The following data types are valid for all PSoC families.
+Note: The pre-defined variable types that come with the PSoC programming suites are defined both with and without the `_t` suffix that most people use to define a `typedef` (e.g. `uint8_t`). I recommend using the version with the underscore, as this increases portability (this is also supported by Linux and other Unix-like systems). It is better practice to use the data types whose size is explicitly stated (e.g. `uint32_t` rather than `unsigned int` as the latter's size is platform-dependant). The following data types are valid for all PSoC families.
 
 ```c
 // Standard C data types (implicit sizes)
@@ -60,7 +60,7 @@ uint32
 </td>
 <td >0-255
 </td>
-<td > 
+<td > 
 </td>
 <td >%c
 </td></tr><tr >
@@ -68,9 +68,9 @@ uint32
 </td>
 <td >2
 </td>
-<td > 
+<td > 
 </td>
-<td > 
+<td > 
 </td>
 <td >%i
 </td></tr><tr >
@@ -78,9 +78,9 @@ uint32
 </td>
 <td >4
 </td>
-<td > 
+<td > 
 </td>
-<td > 
+<td > 
 </td>
 <td >%i
 </td></tr><tr >
@@ -88,9 +88,9 @@ uint32
 </td>
 <td >4
 </td>
-<td > 
+<td > 
 </td>
-<td > 
+<td > 
 </td>
 <td >%u
 </td></tr><tr >
@@ -98,9 +98,9 @@ uint32
 </td>
 <td >4
 </td>
-<td > 
+<td > 
 </td>
-<td > 
+<td > 
 </td>
 <td >%i
 </td></tr><tr >
@@ -108,7 +108,7 @@ uint32
 </td>
 <td >4
 </td>
-<td > 
+<td > 
 </td>
 <td >7
 </td>
@@ -118,11 +118,11 @@ uint32
 </td>
 <td >8
 </td>
-<td > 
+<td > 
 </td>
 <td >15
 </td>
 <td >%f
 </td></tr></tbody></table>
 
-These were discovered using the `sizeof()` command, and printing the result to a debug terminal.
+These were discovered using the `sizeof()` command, and printing the result to a debug terminal.

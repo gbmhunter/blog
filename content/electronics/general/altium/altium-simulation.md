@@ -9,7 +9,7 @@ type: page
 
 ## Overview
 
-Note that this page is about the specifics of using Altium Designer for circuit simulation (which uses SPICE). For more detailed information about SPICE, including the various components and parameters it supports, see the [SPICE Simulation page](/electronics/general/circuit-simulation/spice-simulation).
+Note that this page is about the specifics of using Altium Designer for circuit simulation (which uses SPICE). For more detailed information about SPICE, including the various components and parameters it supports, see the [SPICE Simulation page](/electronics/general/circuit-simulation/spice-simulation).
 
 Alitum has a built-in mixed-signal (analog and digital) simulator. It uses an enhanced version of the event-driven XSPICE, and is fully compatible with SPICE3f5.
 
@@ -17,7 +17,7 @@ Simulating circuits in Altium can be a little confusing, so I've written this li
 
 This has been written for Altium Designer Summer 08, but steps should be similar if not identical for other versions of Altium also (it still seems applicable for AD14.3 in July 2014).
 
-## Voltage/Current Sources
+## Voltage/Current Sources
 
 A pulsed voltage source has the following important parameters:
 
@@ -35,7 +35,7 @@ A pulsed voltage source has the following important parameters:
 </td>
 <td >V
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Period
 </td>
@@ -55,17 +55,17 @@ A pulsed voltage source has the following important parameters:
 </td>
 <td >The time it takes the signal to go from 0% to 100%. Related to fall time.
 </td></tr><tr >
-<td > 
+<td > 
 </td>
-<td > 
+<td > 
 </td>
-<td > 
+<td > 
 </td></tr><tr >
-<td > 
+<td > 
 </td>
-<td > 
+<td > 
 </td>
-<td > 
+<td > 
 </td></tr></tbody></table>
 
 ## Simulation Models
@@ -160,67 +160,67 @@ The Altium SPICE model for a MOSFET contains the following level-1 parameters (s
 </td>
 <td >Area of the drain diffusion (m2).
 </td></tr><tr >
-<td > 
+<td > 
 </td>
 <td >Drain Perimeter
 </td>
 <td >Perimeter of the drain junction (m). Default = 0m.
 </td></tr><tr >
-<td > 
+<td > 
 </td>
 <td >Initial B-S Voltage
 </td>
 <td >Voltage across the bulk(substrate)-source at time = 0 (V).
 </td></tr><tr >
-<td > 
+<td > 
 </td>
 <td >Initial G-S Voltage
 </td>
 <td >Voltage across the gate-source at time = 0 (V).
 </td></tr><tr >
-<td > 
+<td > 
 </td>
 <td >Initial D-S Voltage
 </td>
 <td >Voltage across the drain-source at time = 0 (V).
 </td></tr><tr >
-<td > 
+<td > 
 </td>
 <td >Length
 </td>
 <td >The channel length (m).
 </td></tr><tr >
-<td > 
+<td > 
 </td>
 <td >NRD
 </td>
 <td >Equivalent number of squares of the drain diffusion. Default = 1.
 </td></tr><tr >
-<td > 
+<td > 
 </td>
-<td >NRS 
+<td >NRS 
 </td>
-<td >Equivalent number of squares of the source diffusion. Default = 1.
+<td >Equivalent number of squares of the source diffusion. Default = 1.
 </td></tr><tr >
 <td >AS
 </td>
 <td >Source Area
 </td>
-<td >Area of the source diffusion (m2).
+<td >Area of the source diffusion (m2).
 </td></tr><tr >
-<td > 
+<td > 
 </td>
 <td >Source Perimeter
 </td>
-<td > 
+<td > 
 </td></tr><tr >
-<td > 
+<td > 
 </td>
 <td >Starting Condition
 </td>
-<td > 
+<td > 
 </td></tr><tr >
-<td > 
+<td > 
 </td>
 <td >Temperature
 </td>
@@ -228,9 +228,9 @@ The Altium SPICE model for a MOSFET contains the following level-1 parameters (s
 </td></tr><tr >
 <td >W
 </td>
-<td > Width
+<td > Width
 </td>
-<td > The channel width (m).
+<td > The channel width (m).
 </td></tr></tbody></table>
 
 Note that some manufactures choose to provide a sub-circuit model instead of using this built-in MOSFET model. This gives them the ability to better characterise the MOSFET, but there have been complaints of MOSFET sub-circuits having a big performance hit when it comes to simulation time.
@@ -257,4 +257,4 @@ All things going well, you should now have a graph of the frequency response! Th
 
 I have experienced a weird bug with Altium 08, in where Altium would lose track of one of the 'pin to model' links that you assign in the port map window, making simulation impossible. Did not find a fix for it, so had to get rid of component from simulation entirely.
 
-I have found another bug in Altium 15 (2015-06-12), in where Altium will fail to include a vault-based component (with simulation model), until one of the parameters in the simulation model for that component has been modified (even if it's set back to what it originally was!).
+I have found another bug in Altium 15 (2015-06-12), in where Altium will fail to include a vault-based component (with simulation model), until one of the parameters in the simulation model for that component has been modified (even if it's set back to what it originally was!).

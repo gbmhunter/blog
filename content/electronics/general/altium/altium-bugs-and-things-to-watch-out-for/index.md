@@ -36,7 +36,7 @@ UPDATE: As of Altium v14.0, running on a Windows 8 machine, I have noticed far f
 
 ## Closing Altium When It Crashes
 
-The easiest way to close Altium when it crashes it to hit Ctrl-Alt-Delete, bring up the task manager, go to the processes tab, and close DXP.exe. This is plenty faster than closing the program Altium.exe from the same task manager (almost instant, rather than 30+ seconds).
+The easiest way to close Altium when it crashes it to hit Ctrl-Alt-Delete, bring up the task manager, go to the processes tab, and close DXP.exe. This is plenty faster than closing the program Altium.exe from the same task manager (almost instant, rather than 30+ seconds).
 
 {{< figure src="/images/2012/04/task-manager-quickly-closing-altium-end-task.png" width="445px" caption="Quickly closing Altium when it crashes."  >}}
 
@@ -45,7 +45,7 @@ The easiest way to close Altium when it crashes it to hit Ctrl-Alt-Delete, bring
 Applicable Versions: _Altium 16  
 _Last Updated:_ April 2016_
 
-I have got fatal "Argument out of range" errors while performing basic routing tasks on the PCB. There is no way to save any work when this occurs, and after clicking the "O.K." button of the many "Argument out or range" boxes that pop-up (which are glitchy), Altium crashes and closes automatically.
+I have got fatal "Argument out of range" errors while performing basic routing tasks on the PCB. There is no way to save any work when this occurs, and after clicking the "O.K." button of the many "Argument out or range" boxes that pop-up (which are glitchy), Altium crashes and closes automatically.
 
 {{< figure src="/images/2012/04/altium-bug-argument-out-of-range-error-while-pcb-routing.png" width="580px" caption="The fatal 'Argument out of range' error that can occur while routing tracks in Altium."  >}}
 
@@ -96,7 +96,7 @@ When searching through a library, Altium will only search from the first letter 
 
 {{< figure src="/images/2012/04/altium-library-search-without-asterisk.jpg" width="800px" caption="Searching an Altium component library without an asterisk."  >}} {{< figure src="/images/2012/04/altium-library-search-with-asterisk.jpg" width="800px" caption="Searching an Alitum component library with an asterisk."  >}}
 
-##  Timestamping Output Files
+##  Timestamping Output Files
 
 Timestamping output files is a good idea of keeping track of releases intended for pcb manufacturer's/assemblers (as well as version numbers). Timestamping can be added to the automatic file generation by selecting the option under the advanced tab of the "Output Container" properties window. However, Altium follows your system clock format when creating this timestamp, so it will likely be in a dd-mm-yyyy or mm-dd-yyyy format, which when sorted alphanumerically, does not sort in chronological order. To fix this, change your system time to the yyyy-mm-dd format.
 
@@ -154,7 +154,7 @@ Every so often small screen artifacts can appear. These are defintely one of the
 
 ## Clearing Cells In Parameter Manger Takes Ages
 
-When clearing a large number of cells (>20) in the Parameter Manager , Altium can take plenty of time, stalling the program in the process (it looks as though Altium has locked up).
+When clearing a large number of cells (>20) in the Parameter Manager , Altium can take plenty of time, stalling the program in the process (it looks as though Altium has locked up).
 
 {{< figure src="/images/2012/04/altium-parameter-manager-clearing-cells-takes-a-long-time-bug.png" width="1196px" caption="When clearing a large number of cells (>20) in the Parameter Manager , Altium can take plenty of time, stalling the program in the process (it looks as though Altium has locked up)."  >}}
 
@@ -164,7 +164,7 @@ When you unlock component primitives on a PCB and start editing them (say you wa
 
 ## PCB Objects Going Out Side Of The Editor Boundary
 
-When creating PCB footprints in Altium's PCB editor, you can sometimes accidentally places things outside of the editors boundary. This can happen for example by accidentally typing the wrong number in the Move by X, Y command, a buggy script, or hitting copy/paste at the wrong time.
+When creating PCB footprints in Altium's PCB editor, you can sometimes accidentally places things outside of the editors boundary. This can happen for example by accidentally typing the wrong number in the Move by X, Y command, a buggy script, or hitting copy/paste at the wrong time.
 
 Once this occurs, it can be ridiculously hard to delete this objects, because they cannot be selected (even with Select->Outside Rectangle). These objects then appear during the PCB design (you may not even realise they are there) at times when you want to zoom to fit, or creating PCB print outputs (in which everything will be zoomed out by way to much to accommodate these far-away objects).
 
@@ -236,7 +236,7 @@ This would be very useful for certain component/package combinations which use m
 
 {{< figure src="/images/2012/04/p-channel-mosfet-schematic-symbol-altium-soic-8-hidden-pins-annotated.png" width="881px" caption="The schematic symbol of a P-channel MOSFET in the Altium schematic symbol editor. The particualr MOSFET is in a SOIC-8N (8-pin) package, and I have attempted to hide the extra pins to keep the symbol looking clean."  >}}
 
-The only solution is to ditch the "hide" ability altogether and stack the pins ontop of each other. One downside to this approach is that Altium will show a multiple connection dot on the schematics when you wire up to pins stacked ontop of each other. But then again, maybe this is not such a bad thing?
+The only solution is to ditch the "hide" ability altogether and stack the pins ontop of each other. One downside to this approach is that Altium will show a multiple connection dot on the schematics when you wire up to pins stacked ontop of each other. But then again, maybe this is not such a bad thing?
 
 ## Table: Field name Missing Error On BOM Open
 
@@ -250,9 +250,9 @@ Parameters are allowed to have no value, but not no name. To fix this, delete al
 
 ## PCB Editor Can't Handle Unicode Characters In Component Descriptions
 
-Unicode characters (which are not ASCII), such as the Ohm symbol and the degree symbol, while supported by the schematic editor, component libraries and vault system, are not supported by the PCB editor.
+Unicode characters (which are not ASCII), such as the Ohm symbol and the degree symbol, while supported by the schematic editor, component libraries and vault system, are not supported by the PCB editor.
 
-Because of this, the PCB editor will continuously try and update component descriptions which contain Unicode characters on every "Update Changes From Schematics" command.
+Because of this, the PCB editor will continuously try and update component descriptions which contain Unicode characters on every "Update Changes From Schematics" command.
 
 {{< figure src="/images/2012/04/altium-pcb-editor-cant-handle-unicode-chars-ohms-symbols.png" width="1146px" caption="Altium's PCB editor can't handle Unicode characters such as the Ohm (Omega) and degree symbol. This image shows how Altium will continuously try and update components that contain these symbols."  >}}
 
@@ -262,6 +262,6 @@ This is unfortunate, as symbols like `\(\Omega\)` and `\(^{\circ}\)` are great t
 
 Affected Versions: AD15, AD16
 
-The .BomDoc file allows you to define the supplier of each PCB component. It is compatible with the Component libraries and the vault system.
+The .BomDoc file allows you to define the supplier of each PCB component. It is compatible with the Component libraries and the vault system.
 
-The problem is that the .BomDoc file decides to reload in live supplier data at inconvenient times. This file modifications can clutter file change history (when Altium is used within a version control system such as Git or Mercurial).
+The problem is that the .BomDoc file decides to reload in live supplier data at inconvenient times. This file modifications can clutter file change history (when Altium is used within a version control system such as Git or Mercurial).

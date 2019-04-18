@@ -74,7 +74,7 @@ url: /pcb-design/component-packages/tssop-component-package
 
 ## Variants
 
-There is a variant of the TSSOP with a solder pad on the underside. Texas Instruments calls this the HTSSOP package. It is used for ICs which require good thermal conductivity (e.g. half-bridges).
+There is a variant of the TSSOP with a solder pad on the underside. Texas Instruments calls this the HTSSOP package. It is used for ICs which require good thermal conductivity (e.g. half-bridges).
 
 {{< figure src="/images/2015/04/htssop-28-component-package-3d-render-with-thermal-pad.jpg" width="370px" caption="A 3D render of the 28-pin TSSOP component package that has a thermal pad (HTSSOP-28)."  >}}
 
@@ -99,7 +99,7 @@ The HTTSOP-28 component package has the following thermal resistances:
 </td>
 <td >Junction-to-case (top) thermal resistance
 </td>
-<td >\(15.9 ^{\circ}C/W\)
+<td >\(15.9 ^{\circ}C/W\)
 </td></tr><tr >
 <td >\( R_{\theta JC (bottom)} \)
 </td>
@@ -107,9 +107,9 @@ The HTTSOP-28 component package has the following thermal resistances:
 </td>
 <td >\(1.4^{\circ}C/W\)
 </td></tr><tr >
-<td >\( R_{\theta JB} \) 
+<td >\( R_{\theta JB} \) 
 </td>
-<td >Junction-to-board thermal resistance 
+<td >Junction-to-board thermal resistance 
 </td>
 <td >\(5.6^{\circ}C/W\)
 </td></tr></tbody></table>

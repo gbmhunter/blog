@@ -20,7 +20,7 @@ This is my terminology, and may not be consistent with other designs (as far as 
 
 * Encoders: A encoder is a complete system which can be used to measure a position. It may have one (relative) or more (two for absolute) **tracks**.
 * Tracks: A sequence of capacitance pads and tracks used for measuring the position of an object. One or more of these make up a complete **encoder**. A track contains many **channels**.
-* Channels: A channel is a single electrical circuit in which the capacitance can be measured. A **track** consists of many channels (e.g. 6). The channels capacitance varies as the PCBs slide across one another.
+* Channels: A channel is a single electrical circuit in which the capacitance can be measured. A **track** consists of many channels (e.g. 6). The channels capacitance varies as the PCBs slide across one another.
 * Signature Waveform: The expected shape of the waveform made when you group together the capacitance channels for a track. The measured capacitance values are made into an array and the compared with the signature waveform by calculating the **correlation coefficient**.
 
 ## How They Work
@@ -57,14 +57,14 @@ I have achieved resolutions of up to 4/100 of a degree with custom-built absolut
 
 ## What PCB Is Active And What Is Passive
 
-* The PCB with the cap measuring circuitry (requiring power) is **Active**.
-* The PCB with only etched tracks is **Passive.**
+* The PCB with the cap measuring circuitry (requiring power) is **Active**.
+* The PCB with only etched tracks is **Passive.**
 
 ## Altium Script
 
 I wrote an Altium script to draw the tracks for me. Although you could do it by hand (a linear one would be of medium difficulty to draw manually, a rotational one would be even harder, even with the rotational co-ordinate functionality in Altium).
 
-The Altium script takes input variables such as N track length, number of passive pads in the N track, number of active fingers per wavelength, desired  total width, minimum copper clearance e.t.c and using plenty of trigonometry, creates the tracks automatically, saving tons of time!
+The Altium script takes input variables such as N track length, number of passive pads in the N track, number of active fingers per wavelength, desired  total width, minimum copper clearance e.t.c and using plenty of trigonometry, creates the tracks automatically, saving tons of time!
 
 ## Linear
 
@@ -101,7 +101,7 @@ I achieved good results when using 0.165mm thick acrylic adhesive transfer tape 
 
 ## Maximum Velocities
 
-When using multiple capacitive channels to more accurately measure motion, the maximum velocity is limited by the conversion delay of the CDC circuit. The CDC circuit has to be fast enough to measure all capacitance channels before the sensor moves too much that the values change by an appreciable amount. **Skewing** will occur if the CDC is too slow, i.e. the first channel will be measured correctly, the 2nd channel will be slightly wrong, the 3rd even more wrong, the 4th even worse e.t.c.
+When using multiple capacitive channels to more accurately measure motion, the maximum velocity is limited by the conversion delay of the CDC circuit. The CDC circuit has to be fast enough to measure all capacitance channels before the sensor moves too much that the values change by an appreciable amount. **Skewing** will occur if the CDC is too slow, i.e. the first channel will be measured correctly, the 2nd channel will be slightly wrong, the 3rd even more wrong, the 4th even worse e.t.c.
 
 The skewing can be prevented by:
 
@@ -170,7 +170,7 @@ double Maths_CalcCorrelCo(double capVals[], double adjustedCurveSignature[], dou
 
 ## The Signature Waveform
 
-The following code shows how to convert the current high-precision double-type signature waveform array to a lower precision in Octave (an open-source Matlab equivalent), to save embedded memory space and speed up the execution time.  It reads comma-separated values from a text file (which conveniently is how you initialise the array in C, just remove the data type, variable name, and curly braces), rounds the data to the precision specified by scalingFactor, and then saves the array (again, as comma-separated values) to output.txt.
+The following code shows how to convert the current high-precision double-type signature waveform array to a lower precision in Octave (an open-source Matlab equivalent), to save embedded memory space and speed up the execution time.  It reads comma-separated values from a text file (which conveniently is how you initialise the array in C, just remove the data type, variable name, and curly braces), rounds the data to the precision specified by scalingFactor, and then saves the array (again, as comma-separated values) to output.txt.
 
 The array is scaled from `0` to `scalingFactor`, so is designed for unsigned data types. For example, if scaling factor was set to `255`, it would produce an array of `uint8`.
 
@@ -194,7 +194,7 @@ Relative position can be determined when the capacitive encoder has one track. A
 
 The absolute position can be found if the capacitive encoder has two tracks (using the N-1 method). The algorithm below shows how to calculate the absolute distance from the two position-in-period measurements (one for each track).
 
-The phase difference between the tracks increments stepwise every time the N track loop phase distance loops from max to 0 (the encoder is moving in the forward direction) decrements in the same fashion every time the phase distance loops from 0 to max. The graph below shows the phase difference incrementing (nosily) by about 0.95 everytime the N track completes one cycle.
+The phase difference between the tracks increments stepwise every time the N track loop phase distance loops from max to 0 (the encoder is moving in the forward direction) decrements in the same fashion every time the phase distance loops from 0 to max. The graph below shows the phase difference incrementing (nosily) by about 0.95 everytime the N track completes one cycle.
 
 {{< img src="cdc-phase-difference-graph-showing-noisy-stepwise-increments.jpg" caption="Graph showing the stepwise incrementing of the phase difference between the two calculated positions of the CDC tracks."  width="800px" >}}
 

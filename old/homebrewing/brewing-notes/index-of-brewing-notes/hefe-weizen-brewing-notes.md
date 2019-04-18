@@ -70,7 +70,7 @@ Brew End Date: n/a
 </tr>
 <tr >
 
-<td >Mash Temp (°C)
+<td >Mash Temp (°C)
 </td>
 
 <td >67
@@ -106,7 +106,7 @@ Large grain bill, required about 20L of water to cover entire grain. Because of 
 <tbody >
 <tr >
 
-<td >Sparge Temp (°C)
+<td >Sparge Temp (°C)
 </td>
 
 <td >80

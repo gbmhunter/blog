@@ -43,4 +43,4 @@ Z-Wave operates on frequencies around 900MHz. The exact frequency depends on cou
 
 ## Network Topology
 
-Z-Wave uses a source-routed mesh network topology. The mesh network allows devices to send messages through other Z-Wave devices before reaching the destination, allowing the message to "hop" between devices to extend the communication range and overcome RF dead spots.
+Z-Wave uses a source-routed mesh network topology. The mesh network allows devices to send messages through other Z-Wave devices before reaching the destination, allowing the message to "hop" between devices to extend the communication range and overcome RF dead spots.

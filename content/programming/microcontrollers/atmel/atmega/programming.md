@@ -11,7 +11,7 @@ url: /programming/microcontrollers/atmel/atmega/programming
 
 Programming a micro-controller is the process of downloading the code you have written on a computer, onto the on-board memory of the micro-controller so it can then run and execute it.
 
-Programming of most Atmel chips can be done with either one of the range of Atmel or 3rd party/self built programmers (this is a piece of hardware). To download the code you need some software that support the hardware device that you are going to use. Atmel supplies some inbuilt with AVR Studio, or you can download external, free ones such as the popular GUI based [PonyProg](http://www.lancos.com/prog.html) (supports most nix and Windows operating systems, but as of early 2011 some manipulation was required to get it running on 64x windows) or the command line interface [AVRDUDE](/programming/microcontrollers/atmel/avrdude).
+Programming of most Atmel chips can be done with either one of the range of Atmel or 3rd party/self built programmers (this is a piece of hardware). To download the code you need some software that support the hardware device that you are going to use. Atmel supplies some inbuilt with AVR Studio, or you can download external, free ones such as the popular GUI based [PonyProg](http://www.lancos.com/prog.html) (supports most nix and Windows operating systems, but as of early 2011 some manipulation was required to get it running on 64x windows) or the command line interface [AVRDUDE](/programming/microcontrollers/atmel/avrdude).
 
 {{< figure src="/images/2011/09/atmel-avr-mk2-programmer-photo-www-robotics-org-zajpg.jpg" width="293px" caption="A photo of the Atmel AVR MkII programmer, suitable for ISP programming of a range of Atmel microcontrollers."  >}}
 
@@ -27,6 +27,6 @@ If you connect the MkII up and it flashes orange (it's got some fancy smarts ins
 
 The reset line is dual purpose, in normal operation it can be used to perform a "traditional" reset of the microcontroller's firmware. It is also used when programming.
 
-The reset line is active-low logic. It is usually controlled/driven by the programmer (e.g. the AVR MkII ISP programmer). While the reset line is active, all GPIO on the microcontroller are turned in inputs with pull-ups disabled.
+The reset line is active-low logic. It is usually controlled/driven by the programmer (e.g. the AVR MkII ISP programmer). While the reset line is active, all GPIO on the microcontroller are turned in inputs with pull-ups disabled.
 
-The reset line is held active (low) for almost all of the programming sequence. The one exception is at the end of an erase cycle (which is usually part of the programming sequence).
+The reset line is held active (low) for almost all of the programming sequence. The one exception is at the end of an erase cycle (which is usually part of the programming sequence).

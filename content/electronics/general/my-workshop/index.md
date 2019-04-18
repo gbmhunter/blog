@@ -63,15 +63,15 @@ As of 2012 I got a new oscilloscope, a Rigol ADS 1102CAL. It has a 100MHz bandwi
 
 {{< img src="2012-07-19-19-13-37.jpg" caption="The new Rigol ADS 1102CAL oscilloscope."  width="500px" >}}
 
-Newer oscilloscopes like this one usually have USB ports for saving captures of waveforms to. You can usually select from a range of file formats such as an image (.png, .jpeg), comma-separated values (.csv), or a proprietary binary format such as .wfm. I have found .csv files to be to most useful, since it gives you all of the raw data. I'm pretty sure the .wfm files also store all of the data, but for some reason I have had trouble trying to extract the timing information from them.
+Newer oscilloscopes like this one usually have USB ports for saving captures of waveforms to. You can usually select from a range of file formats such as an image (.png, .jpeg), comma-separated values (.csv), or a proprietary binary format such as .wfm. I have found .csv files to be to most useful, since it gives you all of the raw data. I'm pretty sure the .wfm files also store all of the data, but for some reason I have had trouble trying to extract the timing information from them.
 
-I have used the .csv files to display graphs via Google visualizations on various pages on this site. My GitHub repo [eng-graphs-js](https://github.com/gbmhunter/eng-graphs-js) has all the graph data as well as the rendering code.
+I have used the .csv files to display graphs via Google visualizations on various pages on this site. My GitHub repo [eng-graphs-js](https://github.com/gbmhunter/eng-graphs-js) has all the graph data as well as the rendering code.
 
 ### Logic Analyser
 
 Logic analysers are great tools for looking a digital circuits! Most oscilloscopes are great for looking at analogue waveforms, but have serious limitations when looking at digital waveforms (except fancy versions, which have digital analysers built in, or offer a hardware extension).
 
-Logic analysers usually have 8 or more inputs. They record the 1's and 0's on the inputs, and often have advanced features like comm protocol decode support. This means they can decode the information sent across common communication protocols, making debugging easier as you no longer have to look at each individual bit and work out what was sent. They commonly support protocols such as [UART](/electronics/communication-protocols/uart-communication-protocol), [SPI](/electronics/communication-protocols/spi-communication-protocol/), and [I2C](/electronics/communication-protocols/i2c-communication-protocol/), and less commonly LIN and CAN.
+Logic analysers usually have 8 or more inputs. They record the 1's and 0's on the inputs, and often have advanced features like comm protocol decode support. This means they can decode the information sent across common communication protocols, making debugging easier as you no longer have to look at each individual bit and work out what was sent. They commonly support protocols such as [UART](/electronics/communication-protocols/uart-communication-protocol), [SPI](/electronics/communication-protocols/spi-communication-protocol/), and [I2C](/electronics/communication-protocols/i2c-communication-protocol/), and less commonly LIN and CAN.
 
 The particular [Saleae](http://www.saleae.com/) "[Logic](http://www.saleae.com/logic)" logic analyser below uses a [PSoC microcontroller](/programming/microcontrollers/psoc).
 
@@ -175,6 +175,6 @@ Altium is a CAD package for designing circuit boards. It is a very expensive (li
 
 ### Console Calculator
 
-Website: [http://www.zoesoft.com/console-calculator/](http://www.zoesoft.com/console-calculator/)
+Website: [http://www.zoesoft.com/console-calculator/](http://www.zoesoft.com/console-calculator/)
 
 I can happily say that console calculator is the best software-based calculator in the world. It is an open-source, cross-platform calculator with powerful features in a tidy and easy to use interface. It kind of looks like a command prompt window (or console window for you 'nix' fans), that accepts maths commands. Console Calculator supports many built in functions, the ability to create your own, quick conversion between units, the ability to add your own units, customizable rounding/display modes, ridiculous 269 digit floating point precision (many other calculators are only 64-bit), decimal, hexadecimal and binary number system support, and more!

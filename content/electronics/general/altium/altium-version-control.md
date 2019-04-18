@@ -9,7 +9,7 @@ type: page
 
 ## Overview
 
-Although Altium Designer 10 (AD10) incorporates it's own proprietary collaborate, compare and merge feature, you may still want another version control system to manage your entire project (since your project is not likely just going to consist of Altium files. I recommend using Mercurial (see the [Version Control Systems](http://localhost/?q=node/69) page). Below is a recommended Mercurial ignore file for any project containing Altium files to exclude all the junk that Altium creates.
+Although Altium Designer 10 (AD10) incorporates it's own proprietary collaborate, compare and merge feature, you may still want another version control system to manage your entire project (since your project is not likely just going to consist of Altium files. I recommend using Mercurial (see the [Version Control Systems](http://localhost/?q=node/69) page). Below is a recommended Mercurial ignore file for any project containing Altium files to exclude all the junk that Altium creates.
 
 This code prevents the following files and folders from being version controlled:
 
@@ -39,9 +39,9 @@ syntax: glob
 #********************
 
 ## Backup Files  
-<AltiumProjectRoot>/*.SchDoc.Zip                # Backup of schematics  
+<AltiumProjectRoot>/*.SchDoc.Zip                # Backup of schematics  
 <AltiumProjectRoot>/**/*.SchDoc.Zip  
-<AltiumProjectRoot>/*.PrjPcb.Zip                # Backup of pcb fle  
+<AltiumProjectRoot>/*.PrjPcb.Zip                # Backup of pcb fle  
 <AltiumProjectRoot>/**/*.PrjPcb.Zip
 
 ## Preview Files  
@@ -71,19 +71,19 @@ syntax: glob
 <AltiumProjectRoot>/**/*.LOG  
 <AltiumProjectRoot>/*.drc  
 <AltiumProjectRoot>/**/*.drc  
-<AltiumProjectRoot>/*.html                      # Report thats generated when a file is opened, or command executed  
+<AltiumProjectRoot>/*.html                      # Report thats generated when a file is opened, or command executed  
 <AltiumProjectRoot>/**/*.html
 
 ## Other Files  
 <AltiumProjectRoot>/*.orig  
 <AltiumProjectRoot>/**/*.orig  
-<AltiumProjectRoot>/*.pcbdoc_viewstate          # Viewstate of .pcbdoc file  
+<AltiumProjectRoot>/*.pcbdoc_viewstate          # Viewstate of .pcbdoc file  
 <AltiumProjectRoot>/**/*.pcbdoc_viewstate  
-<AltiumProjectRoot>/*.pcblib_viewstate          # Viewstate of PCB library  
+<AltiumProjectRoot>/*.pcblib_viewstate          # Viewstate of PCB library  
 <AltiumProjectRoot>/**/*.pcblib_viewstate  
 <AltiumProjectRoot>/*.PrjPcbStructure  
 <AltiumProjectRoot>/**/*.PrjPcbStructure  
-<AltiumProjectRoot>/*.REPPreview                # Gerber preview file  
+<AltiumProjectRoot>/*.REPPreview                # Gerber preview file  
 <AltiumProjectRoot>/**/*.REPPreview
 
 ## Directories  

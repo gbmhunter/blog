@@ -77,7 +77,7 @@ end;
 
 ## Get The User To Select Objects
 
-To prompt the user to select objects, use the function `GetObjectAtCursor();` on a PCB board (`IPCB_Board`) object. It's syntax is:
+To prompt the user to select objects, use the function `GetObjectAtCursor();` on a PCB board (`IPCB_Board`) object. It's syntax is:
     
 ```delphi
 IPCB_Primative GetObjectAtCursor(
@@ -88,7 +88,7 @@ IPCB_Primative GetObjectAtCursor(
 
 where `objectSet` is a list of all object types that the user can select (think of it as a mask), `layerSet` is a list of all layers that objects can be selected on (yet again, a mask), and `statusBarText` is the text you want to display in the status bar while the user selects the objects.
 
-The `TObjectSet` variable is normally made by calling the function `MkSet()`, which makes a set from the passed in object(s) (this only required when scripting in Delphi, as Delphi doesn't natively support sets). The objects you can pass into `MkSet()` are part of the TObjectID enumeration and include:
+The `TObjectSet` variable is normally made by calling the function `MkSet()`, which makes a set from the passed in object(s) (this only required when scripting in Delphi, as Delphi doesn't natively support sets). The objects you can pass into `MkSet()` are part of the TObjectID enumeration and include:
     
 ```delphi
 eNoObject
@@ -183,7 +183,7 @@ Make `Aclockwise` be `true` if going clockwise, `false` if going clockwise.
 
 ## The Generate A Straight Section Of A Region
 
-Use the following function to create a line segment and add it to a contour (which will be used once all the segments have been added to generate the region). Note that it is slightly simpler to add a line segment to a contour than an arc, basically because for a line all you have to do is define the start and end points.
+Use the following function to create a line segment and add it to a contour (which will be used once all the segments have been added to generate the region). Note that it is slightly simpler to add a line segment to a contour than an arc, basically because for a line all you have to do is define the start and end points.
     
 ```delphi
 contour.AddPoint(x : interger, y : integer);
@@ -301,7 +301,7 @@ You can get the following error when trying to save if you haven't called `PCBSe
 
 {{< figure src="/images/altium/pcb-script-bug-a-command-is-currently-active-and-save-cannot-be-completed-at-this-time.png" caption="You might get this error in Altium when trying to save because you have run a script which hasn't called PSBServer.PostProcess an equal number of times as PCBServer.PostProcess."  width="800px" >}}
 
-## Updating Component  Links
+## Updating Component  Links
 
 You can open the "Edit Component Links" window by running the following commands (VBscript):
     
@@ -326,7 +326,7 @@ Call RunProcess("PCB:Zoom")
 
 ## PCB Layer Info
 
-You can get the currently selected PCB layer with the code:
+You can get the currently selected PCB layer with the code:
     
 ```delphi
 Board.CurrentLayer
@@ -334,7 +334,7 @@ Board.CurrentLayer
 
 On a valid `IPCB_Board` object.
 
-You can use the `LayerToString()` and `StringToLayer()` functions to convert a PCB layer object into a human readable string and back again. For example, if the PCB was currently on the top copper layer, you could do the following:
+You can use the `LayerToString()` and `StringToLayer()` functions to convert a PCB layer object into a human readable string and back again. For example, if the PCB was currently on the top copper layer, you could do the following:
     
 ```delphi
 ShowMessage(LayerToString(Board.CurrentLayer))
@@ -349,4 +349,4 @@ PCB Components have a child object called Name, which refers the the designator.
 
 ## The Name Object
 
-The confusing thing is, while the parameter Width refers to its width, the parameter Size refers to the designator height.
+The confusing thing is, while the parameter Width refers to its width, the parameter Size refers to the designator height.

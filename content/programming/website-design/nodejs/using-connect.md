@@ -30,4 +30,4 @@ connect()
     .use(connect.static(__dirname + '/public'))
 ```
 
-`__dirname` is a special variable which represents the current directory the code file is in.
+`__dirname` is a special variable which represents the current directory the code file is in.

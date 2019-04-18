@@ -47,7 +47,7 @@ The Cortex-M3 supports 3 data types:
 
 Note that you are **not limited to only these data types in C!** We are talking about the data types that the CPU natively supports, but with the appropriate assembly/C code, you can use many more.
 
-The processor can access memory in either little-endian or big-endian format, however the code (usually stored in Flash) has to be stored as little-endian. The processor has a pin called `BIGEND` which allows you to select the endianess of the memory at reset. Note that is up to the vendor's discretion to route this "pin" to an actual hardware pin on the microcontroller. More often than not you will not have access to this pin, as the memory on a microcontroller is usually incorporated into silicon chip itself, so the endianess is known at production.
+The processor can access memory in either little-endian or big-endian format, however the code (usually stored in Flash) has to be stored as little-endian. The processor has a pin called `BIGEND` which allows you to select the endianess of the memory at reset. Note that is up to the vendor's discretion to route this "pin" to an actual hardware pin on the microcontroller. More often than not you will not have access to this pin, as the memory on a microcontroller is usually incorporated into silicon chip itself, so the endianess is known at production.
 
 ## Interrupts
 
@@ -59,9 +59,9 @@ It supports both level and pulse triggered interrupts, dynamic re-prioritisation
 
 ### Interrupt Control Register
 
-Address: 0xE000ED04
+Address: 0xE000ED04
 
-You can use bits `[8:0]` from this register to check if an interrupt is currently active, as shown in the example code below.
+You can use bits `[8:0]` from this register to check if an interrupt is currently active, as shown in the example code below.
 
 ```c
 volatile uint32_t* INT_CTRL_REG = (volatile uint32_t*)0xE000ED04;
@@ -74,13 +74,13 @@ else
 
 ### Interrupt Active Registers
 
-The Cortex-M3 has a group of registers which can be read to find out which (if any) interrupt is active. These registers are called the "Active Bit" registers. The reason I say registers is that because there are 240 interrupts, multiple 32-bit registers are required. They start at memory address 0xE000E300  to 0xE000E31C. All of their values on reset are 0x00000000.
+The Cortex-M3 has a group of registers which can be read to find out which (if any) interrupt is active. These registers are called the "Active Bit" registers. The reason I say registers is that because there are 240 interrupts, multiple 32-bit registers are required. They start at memory address 0xE000E300  to 0xE000E31C. All of their values on reset are 0x00000000.
 
 You can use these registers to find out in code if the processor is currently executing code from within an interrupt (although using the interrupt control register is easier).
 
 ### Priority Grouping
 
-The Cortex-M3 NVIC supports priority grouping of interrupts. This is controlled by the single bit field `PRIGROUP` in the Application Interrupt and Reset Control Register.
+The Cortex-M3 NVIC supports priority grouping of interrupts. This is controlled by the single bit field `PRIGROUP` in the Application Interrupt and Reset Control Register.
 
 The grouping divides the 8-bit priority register for each interrupt into two sections, one part for the pre-emption field, and the other part for the subpriority field. the `PRIGROUP` register allows you to change the ratio of pre-emption bits to subpriority bits (e.g. 7:1, 5:3, 2:6). The pre-emption field can have no bits, but the subpriority field always has to have at least 1.
 

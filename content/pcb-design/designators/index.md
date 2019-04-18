@@ -19,10 +19,10 @@ There are pros and cons to resetting the designators on a PCB:
 
 **PROS**
 
-* You get to re-order the designators, this is especially true if there are now "gaps" (e.g. R8 and R10 exist, but there is no R9) after component changes have been made.
+* You get to re-order the designators, this is especially true if there are now "gaps" (e.g. R8 and R10 exist, but there is no R9) after component changes have been made.
 
 **CONS**
 
 * Component numbers may no longer match up between versions. This can be confusing when people refer to a component as "U7" on one version, but it is "U4" on the next.
 * Changing designator text lengths may cause silk-screen violations on PCB. For example, if the designator used to be "C96", and is renamed to "C102", it will now be longer and may, say, run into a copper pad on the PCB.
-* Component targeted rules and other design methodologies may stop working correctly if the CAD package uses the designators to identify the component. This is true with Alitum when defining classes and rules based of the designators.
+* Component targeted rules and other design methodologies may stop working correctly if the CAD package uses the designators to identify the component. This is true with Alitum when defining classes and rules based of the designators.

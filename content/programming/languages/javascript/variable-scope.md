@@ -13,7 +13,7 @@ Variable scope is a way to determining the lifespan of a variable in code.
 
 ## Function Scope
 
-Function scope is given to a JavaScript variable with the var keyword.
+Function scope is given to a JavaScript variable with the var keyword.
 
 ```js
 function myFunc() {
@@ -23,8 +23,8 @@ function myFunc() {
 // myVar does not exist here
 ```
 
-The above myVar variable cannot be accessed outside of the function myFunc().
+The above myVar variable cannot be accessed outside of the function myFunc().
 
 ## Block Scope
 
-As of EMCAScript 2015, JavaScript has block scoping capabilities. This is enabled with the introduction of the let keyword.
+As of EMCAScript 2015, JavaScript has block scoping capabilities. This is enabled with the introduction of the let keyword.

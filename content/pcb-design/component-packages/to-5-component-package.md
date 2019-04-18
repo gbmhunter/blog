@@ -36,7 +36,7 @@ The diameter of the pin circumference can also vary. Diameters of 0.200" and 0.2
 </td></tr><tr >
 <td >Relevant Standards
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Similar To
 </td>
@@ -54,11 +54,11 @@ The diameter of the pin circumference can also vary. Diameters of 0.200" and 0.2
 </td></tr><tr >
 <td >Pin Count
 </td>
-<td > 3, 4, 6, 8, 10
+<td > 3, 4, 6, 8, 10
 </td></tr><tr >
 <td >Pitch
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Solderability
 </td>
@@ -66,15 +66,15 @@ The diameter of the pin circumference can also vary. Diameters of 0.200" and 0.2
 </td></tr><tr >
 <td >Thermal Resistance
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Dimensions
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >3D Models
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Common Uses
 </td>

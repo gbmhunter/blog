@@ -58,9 +58,9 @@ Accessing variables created in `main()` from tasks could result in segmentatoin 
 
 ## Interpreting portTICK_RATE_MS Incorrectly
 
-What causes this confusion is that portTICK_RATE_MS is incorrectly named. It doesn't represent the number of ticks per millisecond as the name suggests, but rather the number of milliseconds per tick. A better name would be `portTICK_PERIOD_MS`.
+What causes this confusion is that portTICK_RATE_MS is incorrectly named. It doesn't represent the number of ticks per millisecond as the name suggests, but rather the number of milliseconds per tick. A better name would be `portTICK_PERIOD_MS`.
 
-The incorrect way of using portTICK_RATE_MS to delay the current task for 400 milliseconds would be:
+The incorrect way of using portTICK_RATE_MS to delay the current task for 400 milliseconds would be:
 
 ```c
 vTaskDelay(400*portTICK_RATE_MS);

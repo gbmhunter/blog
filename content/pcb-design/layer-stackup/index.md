@@ -15,4 +15,4 @@ The layer stack-up defines the number and thickness of the layers that are sandw
 
 ## Design Tools
 
-There is some great PCB layer stack design software at [https://isodesign.isola-group.com/isostack/](https://isodesign.isola-group.com/isostack/).
+There is some great PCB layer stack design software at [https://isodesign.isola-group.com/isostack/](https://isodesign.isola-group.com/isostack/).

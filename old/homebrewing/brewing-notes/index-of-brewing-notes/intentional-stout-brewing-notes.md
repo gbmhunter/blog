@@ -97,7 +97,7 @@ Brew End Date: n/a
 </tr>
 <tr >
 
-<td >Mash Start Temp (°C)
+<td >Mash Start Temp (°C)
 </td>
 
 <td >65
@@ -105,7 +105,7 @@ Brew End Date: n/a
 </tr>
 <tr >
 
-<td >Mash End Temp (°C)
+<td >Mash End Temp (°C)
 </td>
 
 <td >65
@@ -113,7 +113,7 @@ Brew End Date: n/a
 </tr>
 <tr >
 
-<td >Mash Time (min)
+<td >Mash Time (min)
 </td>
 
 <td >60
@@ -132,7 +132,7 @@ Brew End Date: n/a
 <td >Mash Volume
 </td>
 
-<td > <20L (inch above the grain surface
+<td > <20L (inch above the grain surface
 </td>
 </tr>
 </tbody>
@@ -149,7 +149,7 @@ Mash temperature was quite low, which resulted in the beer being quite dry. Used
 <tbody >
 <tr >
 
-<td >Sparge Temp (°C)
+<td >Sparge Temp (°C)
 </td>
 
 <td >80
@@ -457,7 +457,7 @@ Wort frothed up at the start of the boil and briefly overflowed over the sides o
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
 <td >
@@ -475,7 +475,7 @@ Wort frothed up at the start of the boil and briefly overflowed over the sides o
 </table>
 **Notes:**
 
-Primary fermentation was racked after a week because we wanted to get rid of the large layer of hop sediment due to the beer not being filtered when poured into the fermenter. We were worried that if we had left it any longer the hops would have adversely affected the taste.
+Primary fermentation was racked after a week because we wanted to get rid of the large layer of hop sediment due to the beer not being filtered when poured into the fermenter. We were worried that if we had left it any longer the hops would have adversely affected the taste.
 
 
 # Secondary Fermentation
@@ -517,7 +517,7 @@ Primary fermentation was racked after a week because we wanted to get rid of the
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
 <td >

@@ -23,7 +23,7 @@ Vias are simply the name given to plated holes which are used to connect to trac
 
 **DESIGN TIP:** As a rule of thumb, a via with a certain diameter can carry 3 times as much current than a track with the same width.
 
-The above rule-of thumb stems from the fact that when a via wall is unrolled into a 2D track shape, it would be `\(\pi \cdot d\)` wide (`\(c = 2\pi r\)`), where `\(\pi\)` is approximately equal to 3. This assumes that the via wall is the same thickness as the copper track (e.g. 32um or 1oz. copper)). This does not take into account the difference between an external track and a via which is surrounded by PCB material. Since PCB material is more thermally conductive than air, this rule is on the safe side.
+The above rule-of thumb stems from the fact that when a via wall is unrolled into a 2D track shape, it would be `\(\pi \cdot d\)` wide (`\(c = 2\pi r\)`), where `\(\pi\)` is approximately equal to 3. This assumes that the via wall is the same thickness as the copper track (e.g. 32um or 1oz. copper)). This does not take into account the difference between an external track and a via which is surrounded by PCB material. Since PCB material is more thermally conductive than air, this rule is on the safe side.
 
 NinjaCalc (which can be downloaded for free from [here](http://mbedded-ninja.github.io/NinjaCalc/)) has a via current calculator.
 
@@ -37,14 +37,14 @@ Vias can be drilled out easily to break connections when re-wiring, modifying ex
 
 ## Microvias
 
-_Microvias_ are tiny vias that are usually characterised by a diameter of **150um or less** (this is the formal IPC definition). At these diameters, the vias cannot be formed with standard drill bits. Other forms of technology have to be used. These include:
+_Microvias_ are tiny vias that are usually characterised by a diameter of **150um or less** (this is the formal IPC definition). At these diameters, the vias cannot be formed with standard drill bits. Other forms of technology have to be used. These include:
 
 * Photovias
 * Laservias
 
 Microvias are used extensively as part of _via-in-pad technology_, in where the via is placed directly on the pad of a component, compared to placing it beside the pad a running a short copper track to it. This offers significant space reductions in high-density PCBs.
 
-Microvias are part of the technology set that make up _HDI (High-Density Interconnect)_ PCBs.
+Microvias are part of the technology set that make up _HDI (High-Density Interconnect)_ PCBs.
 
 The advantage of additive and semi-additive PCB design processes is that microvias can be drilled prior to plating the surface.
 
@@ -66,7 +66,7 @@ Most PCB manufacturers specify a minimum annular ring distance. The annular ring
 
 ## Direct Connect Vs. Thermal Relief
 
-Thermal relief is a connection style between copper pours (typically power or ground pours) and other copper elements on the PCB connected to the same net (typically component pads, although this can apply to vias also). A four-point connection is the most common style of thermal relief.
+Thermal relief is a connection style between copper pours (typically power or ground pours) and other copper elements on the PCB connected to the same net (typically component pads, although this can apply to vias also). A four-point connection is the most common style of thermal relief.
 
 The image below shows a a direct-connect style pad on the left, and a thermal relief style pad on the right.
 
@@ -96,8 +96,8 @@ The aspect ratio is an important parameter of a hole on a PCB. It is defined as:
 
 The `\( hole\;height \)` is the same as the PCB thickness if the start and finish layers of the hole are the top and bottom layers of the PCB. This is true in most cases, but will not be the case for all holes in a PCB design that uses **buried** or **blind vias**.
 
-For example, a hole with a 0.5mm diameter going entirely through a 1.6mm thick PCB has an aspect ratio of
+For example, a hole with a 0.5mm diameter going entirely through a 1.6mm thick PCB has an aspect ratio of
 
 <div>$$ \frac{1.6mm}{0.5mm} = 3.2 $$</div>
 
-The maximum aspect ratio present on a PCB is an important parameter for the PCB manufacturers. Most manufacturers have an upper limit on the aspect ratio that they can manufacture reliably. This is normally about an aspect ratio of 10-12. 
+The maximum aspect ratio present on a PCB is an important parameter for the PCB manufacturers. Most manufacturers have an upper limit on the aspect ratio that they can manufacture reliably. This is normally about an aspect ratio of 10-12. 

@@ -9,7 +9,7 @@ type: "page"
 
 ## Overview
 
-The I²C bus is a communication protocol commonly used for PCB level transmissions between ICs and microcontrollers. It is a half-duplex synchronous protocol which requires 2 non-power-related wires (4 if you include power and ground). It uses device addressing to indicate the recipient of the data. It is commonly used for sending small packets of information to ICs (such as configuration settings, or a sensor value), while [SPI](/electronics/communication-protocols/spi-communication-protocol/) is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C can support multiple masters through software protocols.
+The I²C bus is a communication protocol commonly used for PCB level transmissions between ICs and microcontrollers. It is a half-duplex synchronous protocol which requires 2 non-power-related wires (4 if you include power and ground). It uses device addressing to indicate the recipient of the data. It is commonly used for sending small packets of information to ICs (such as configuration settings, or a sensor value), while [SPI](/electronics/communication-protocols/spi-communication-protocol/) is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C can support multiple masters through software protocols.
 
 {{< img src="i2c-logo.gif" width="200px" caption="The I2C logo."  >}}
 
@@ -68,18 +68,18 @@ The I²C bus is a communication protocol commonly used for PCB level transmissi
 
 ## Pull-Up Resistors
 
-The I²C bus uses open-drain drivers to allow for **compatibility** between chips that run of different voltages, bus arbitration, and hot-swapping. Thus pull-up resistors are essential for the bus to work. 
+The I²C bus uses open-drain drivers to allow for **compatibility** between chips that run of different voltages, bus arbitration, and hot-swapping. Thus pull-up resistors are essential for the bus to work. 
 
 {{< img src="i2c-pull-up-resistors.png" width="488px" caption="I2C pull-up resistors."  >}}
 
-**The value of the resistor determines the maximum speed of the bus (the lower the resistance, the faster the bus can operate).** The resistance is limited at the lower end by the maximum bus current that the I²C chips can supply, and maximum power consumption if relevant. The I2C specification states that an I2C compliant device must be able to sink at least 3mA from the I2C bus lines and have a logic low voltage of no higher than `\(V_{OL} = 0.4V\)` while doing this. Using this information, it is easy to come up with the equation for the minimum allowed resistance:
+**The value of the resistor determines the maximum speed of the bus (the lower the resistance, the faster the bus can operate).** The resistance is limited at the lower end by the maximum bus current that the I²C chips can supply, and maximum power consumption if relevant. The I2C specification states that an I2C compliant device must be able to sink at least 3mA from the I2C bus lines and have a logic low voltage of no higher than `\(V_{OL} = 0.4V\)` while doing this. Using this information, it is easy to come up with the equation for the minimum allowed resistance:
 
 <div>$$ R_{min} = \frac{V_{CC} - V_{OL}}{I_{OL}} $$</div>
 
 <p class="centered">
 where:<br>
 \( V_{CC} \) is the supply voltage that one side of the pull-up resistor is connected to, in Volts<br>
-\( V_{OL} \) is the maximum voltage allowed on the bus while the device is sinking \) I_{OL} \), in Volts<br>
+\( V_{OL} \) is the maximum voltage allowed on the bus while the device is sinking \) I_{OL} \), in Volts<br>
 \( I_{OL} \) is the maximum current the I2C device pulling the bus line low is required to sink (typ. 3mA), in Amps<br>
 </p>
 
@@ -87,7 +87,7 @@ Given the fixed known values, this can be simplified to:
 
 <div>$$ R_{P, min} = \frac{V_{CC} - 0.4V}{3mA} $$</div>
 
-Because of I2C's open-collector topology, it is **solely the pull-up resistors duty to pull the line high** when a device releases it (i.e. stops pulling it to ground). The pull-up resistor, along with the bus capacitance `\( C_{BUS} \)`, creates a time constant which slows the rise time of the bus voltage. The I2C specification states that a voltage above `\( V_{IH} = 0.7V_{CC} \)` must be considered logic high by all devices.
+Because of I2C's open-collector topology, it is **solely the pull-up resistors duty to pull the line high** when a device releases it (i.e. stops pulling it to ground). The pull-up resistor, along with the bus capacitance `\( C_{BUS} \)`, creates a time constant which slows the rise time of the bus voltage. The I2C specification states that a voltage above `\( V_{IH} = 0.7V_{CC} \)` must be considered logic high by all devices.
 
 <div>$$ R_{P, max} = \frac{T_R}{0.847298C_{BUS}} $$</div>
 
@@ -97,7 +97,7 @@ Because of I2C's open-collector topology, it is **solely the pull-up resistors
     \( C_{BUS} \) is the total bus capacitance, in Farads<br>
 </p>
 
-The maximum rise time `\( T_R \)` is specified by the I2C standard for each I2C mode as shown in the table below:
+The maximum rise time `\( T_R \)` is specified by the I2C standard for each I2C mode as shown in the table below:
 
 <table>
     <thead>
@@ -118,11 +118,11 @@ The maximum rise time `\( T_R \)` is specified by the I2C standard for each I2
     </tbody>
 </table>
 
-Note that this is not the only thing which limits the maximum pull-up resistance, the **high-level input current**, `\( I_{IH} \)` also puts a restriction on the maximum resistance (it is usually higher than that imposed by the maximum rise time, and therefore rarely considered). The high-level input current is due to leakage current through the digital input pins connected to the bus, which creates a constant voltage drop over the pull-up resistors (remember, it's the resistors which are pulling the bus line high).
+Note that this is not the only thing which limits the maximum pull-up resistance, the **high-level input current**, `\( I_{IH} \)` also puts a restriction on the maximum resistance (it is usually higher than that imposed by the maximum rise time, and therefore rarely considered). The high-level input current is due to leakage current through the digital input pins connected to the bus, which creates a constant voltage drop over the pull-up resistors (remember, it's the resistors which are pulling the bus line high).
 
 Typical pull-up resistor values are 10kΩ for up to a 100kHz bud rate, and 1kΩ for up to a 400kHz baud rate. External pull-up resistors should be used as normally, the internal pull-up of microcontroller ports and other I2C compliant devices have too high a resistance (100kΩ-1MΩ).
 
-A **gotcha** during PCB design is to unintentionally **add multiple pull-up resistors to each bus line**. Maybe you added pull-up resistors to every I2C slave device, and then connected them to the same bus? Maybe you designed a plug-in board which had an I2C slave on it, and added resistors to that too? In any case, **try and make sure there is only one set of pull-up resistors**, associated with the I2C bus master. If you do need to have multiple resistors, make sure their **combined equivalent resistance does not violate** the I2C specifications.
+A **gotcha** during PCB design is to unintentionally **add multiple pull-up resistors to each bus line**. Maybe you added pull-up resistors to every I2C slave device, and then connected them to the same bus? Maybe you designed a plug-in board which had an I2C slave on it, and added resistors to that too? In any case, **try and make sure there is only one set of pull-up resistors**, associated with the I2C bus master. If you do need to have multiple resistors, make sure their **combined equivalent resistance does not violate** the I2C specifications.
 
 ## Transmission Speeds
 
@@ -167,7 +167,7 @@ Fast mode is a mode of operation for the I2C bus that allows devices to communic
 
 ## Fast Mode Plus (Fm+)
 
-Fast mode plus (Fm+) is an extension of I2C Fast mode which allows devices to communicate at speeds of up to 1Mbps. It was introduced by Phillips Semiconductors (which is now NXP) in April 2006. It is occasionally used for I2C devices which require high data throughput.
+Fast mode plus (Fm+) is an extension of I2C Fast mode which allows devices to communicate at speeds of up to 1Mbps. It was introduced by Phillips Semiconductors (which is now NXP) in April 2006. It is occasionally used for I2C devices which require high data throughput.
 
 ## High-Speed
 
@@ -199,19 +199,19 @@ There are variants on the I2C bus, defined and implemented by various manufactur
 
 ## Addressing
 
-All I2C slave devices must have an address. This address is used by the master to select which device to talk with. All addresses are 7 bits long (EDIT April 2016, this is no longer true, see the **10-bit Addressing section** on this page, and are left shifted by one and packed into the first byte which is sent across the I2C bus by the master (the final bit, bit 0, of the first byte, is used to signal whether a read or write operation is about to take place).
+All I2C slave devices must have an address. This address is used by the master to select which device to talk with. All addresses are 7 bits long (EDIT April 2016, this is no longer true, see the **10-bit Addressing section** on this page, and are left shifted by one and packed into the first byte which is sent across the I2C bus by the master (the final bit, bit 0, of the first byte, is used to signal whether a read or write operation is about to take place).
 
 ## Multiple ICs, Same Address?
 
-Connecting two identical devices (e.g. lets say you have two temperature sensors) onto the same I2C bus, both with the same pre-programmed I2C address means that that the master cannot address them individually and functionality is serverly reduced. To overcome this, many I2C slave ICs also come with a few address pins. These address pins are digital inputs and control what I2C address the slave will respond to. A device with two address pins allows the designer to connect up to four identical ICs to the same I2C bus by connecting the address pins to different combinations of Vcc and GND.
+Connecting two identical devices (e.g. lets say you have two temperature sensors) onto the same I2C bus, both with the same pre-programmed I2C address means that that the master cannot address them individually and functionality is serverly reduced. To overcome this, many I2C slave ICs also come with a few address pins. These address pins are digital inputs and control what I2C address the slave will respond to. A device with two address pins allows the designer to connect up to four identical ICs to the same I2C bus by connecting the address pins to different combinations of Vcc and GND.
 
-Newer pin-constrained I2C slave devices allow you to connect the address pins up to SCL and SDA to further increase the number of assignable addresses. With two address pins, and the possibility of connecting each up to either `\(V_{CC}\)`, GND, SCL or SDA, gives a total of 16 different I2C addresses.
+Newer pin-constrained I2C slave devices allow you to connect the address pins up to SCL and SDA to further increase the number of assignable addresses. With two address pins, and the possibility of connecting each up to either `\(V_{CC}\)`, GND, SCL or SDA, gives a total of 16 different I2C addresses.
 
 {{< img src="i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png" width="826px" caption="The logic table (truth table) of the I2C address pins on the TI INA226 IC. Notice how you can connect the address pins up to SCL or SDA as well as the standard VS and GND, to give a total of 16 possible I2C addresses."  >}}
 
 ## Reserved I2C Addresses
 
-The I2C specification reserves some addresses for special purposes. Because of these reserved addresses, only 112 addresses are available to I2C devices using the 7-bit address scheme. Do not set your device to use these addresses listed below.
+The I2C specification reserves some addresses for special purposes. Because of these reserved addresses, only 112 addresses are available to I2C devices using the 7-bit address scheme. Do not set your device to use these addresses listed below.
 
 <table>
   <thead>
@@ -259,7 +259,7 @@ The I2C specification reserves some addresses for special purposes. Because of t
 
 ## General Call
 
-0000000(0) is the I2C address for a general call. It is used by the **master to address all the slaves on an I2C bus at once**. The second byte contains the command the master wishes to send all the slaves. These commands, as they are generic, are also specified as part of the I2C protocol.
+0000000(0) is the I2C address for a general call. It is used by the **master to address all the slaves on an I2C bus at once**. The second byte contains the command the master wishes to send all the slaves. These commands, as they are generic, are also specified as part of the I2C protocol.
 
 ## Start Byte
 
@@ -269,17 +269,17 @@ The I2C specification reserves some addresses for special purposes. Because of t
 
 `0000001(x)` is the I2C address reserved for CBUS addresses. CBUS is a three-wire bus with a different transmission format to I2C, and is used in home automation products. This reserved address allows CBUS receivers to be connected to I2C buses. I2C devices should ignore any messages sent to this address.
 
-CBUS addressing over I2C is very uncommon.
+CBUS addressing over I2C is very uncommon.
 
 ## 10-bit Addressing
 
 Due to the rise in popularity of the I2C protocol and the limited amount of addresses available with the original 7-bit addressing scheme (leading to address clashes), a 10-bit addressing scheme was introduced. 10-bit addressing gives an additional 1024 unique addresses.
 
-The 10-bit addressing scheme involves two address bytes (instead of just one). The first byte includes the bits `11110` (in bit positions `7:3`) which is a _reserved code_ to indicate that a 10-bit address follows. The actual 10-bit address is sent in bits `2:1` of the first address byte (the MSB) and bits `7:0` of the second address byte (LSB).
+The 10-bit addressing scheme involves two address bytes (instead of just one). The first byte includes the bits `11110` (in bit positions `7:3`) which is a _reserved code_ to indicate that a 10-bit address follows. The actual 10-bit address is sent in bits `2:1` of the first address byte (the MSB) and bits `7:0` of the second address byte (LSB).
 
 {{< img src="i2c-10-bit-addressing-scheme-bit-pattern-of-address-bytes.gif" width="1000px" caption="The bit pattern of the two address bytes in the I2C 10-bit addressing scheme. Image from http://www.i2c-bus.org/." >}}
 
-Bit `0` of the first address byte is the read/not-write (RnW) bit. **Note that when using the 10-bit addressing scheme, this must be set to 0.** Thus, to perform a read operation, a _combined transfer_ must be used. In a _combined transfer_, the above two bytes are sent with the RnW bit set to `0`, then a repeated start, then the first address byte again, but with the RnW bit set to `1`. A read operation then may be performed as usual.
+Bit `0` of the first address byte is the read/not-write (RnW) bit. **Note that when using the 10-bit addressing scheme, this must be set to 0.** Thus, to perform a read operation, a _combined transfer_ must be used. In a _combined transfer_, the above two bytes are sent with the RnW bit set to `0`, then a repeated start, then the first address byte again, but with the RnW bit set to `1`. A read operation then may be performed as usual.
 
 The 10-bit addressing scheme has been to designed so that it can work on a bus alongside the 7-bit addressing scheme.
 
@@ -309,13 +309,13 @@ If you follow by example, Nintendo's Wii hand controller is a good example of a 
 
 ## Rise-time Accelerators
 
-Rise-time accelerators, such as those used on the [NXP PCA9507 2-wire Serial Bus Extender](http://www.nxp.com/documents/data_sheet/PCA9507.pdf), can be used to extend the length of an I2C bus. They work by intelligently detecting when the bus voltage is rising (being pulled up by the pull-up resistors), and then injecting current to shorten the time it takes for the bus to reach a logic high voltage level. The current injector is then quickly turned off, allowing the I2C line to be pulled low again.
+Rise-time accelerators, such as those used on the [NXP PCA9507 2-wire Serial Bus Extender](http://www.nxp.com/documents/data_sheet/PCA9507.pdf), can be used to extend the length of an I2C bus. They work by intelligently detecting when the bus voltage is rising (being pulled up by the pull-up resistors), and then injecting current to shorten the time it takes for the bus to reach a logic high voltage level. The current injector is then quickly turned off, allowing the I2C line to be pulled low again.
 
 ## Hot-Swapping
 
 ## Precharging
 
-A clever I2C trick for hot-swapping capability is to pre-charge the bus lines, as used on the [NXP PCA9511 Hot-swappable I2C Bus Buffer](http://www.marutsu.co.jp/contents/shop/marutsu/datasheet/PCA9511.pdf) (this also features rise-time accelerators). During insertion (assuming this chip is on a hot-swappable device which uses I2C), the bus lines are pre-charged to about 1V, which limits the worst-case capacitive disturbances on insertion due the I2C lines being a different voltage levels.
+A clever I2C trick for hot-swapping capability is to pre-charge the bus lines, as used on the [NXP PCA9511 Hot-swappable I2C Bus Buffer](http://www.marutsu.co.jp/contents/shop/marutsu/datasheet/PCA9511.pdf) (this also features rise-time accelerators). During insertion (assuming this chip is on a hot-swappable device which uses I2C), the bus lines are pre-charged to about 1V, which limits the worst-case capacitive disturbances on insertion due the I2C lines being a different voltage levels.
 
 ## Clock Stretching
 
@@ -325,7 +325,7 @@ A slave device can indicate that it is not ready to receive new data by holding 
 
 * I/O Expanders - Used for trace reduction and routing simplification. Basically an IC with digital ports that can be turned on or off through I2C communication. Used to compliment processors with limited I/O, and drive port-hungry peripherals such as keypads (you can also get dedicated I2C keypad controllers)
 * I2C Multiplexers/Switches - Performs voltage translation/isolation and multiplexing of I2C traces. Useful when dealing with mixed-voltage I2C systems and for resolving address conflicts 
-* USB-to-I2c Bridges - These provide a interface between your computer and an external I2C communication line. Certain FTDI chips/cables with an in-built MPSSE (multi-purpose synchronous serial engine) support USB-to-I2C communication. See this application note here ([Application Note AN-190: C232HM MPSSE Cable in USB to I2C/SMBus interface](http://www.ftdichip.com/Support/Documents/AppNotes/AN_190_C232HM_MPSSE_Cable_in_USB_to_I2C_Interface.pdf)).  
+* USB-to-I2c Bridges - These provide a interface between your computer and an external I2C communication line. Certain FTDI chips/cables with an in-built MPSSE (multi-purpose synchronous serial engine) support USB-to-I2C communication. See this application note here ([Application Note AN-190: C232HM MPSSE Cable in USB to I2C/SMBus interface](http://www.ftdichip.com/Support/Documents/AppNotes/AN_190_C232HM_MPSSE_Cable_in_USB_to_I2C_Interface.pdf)).  
   
 {{< img src="c232hm-ddhsl-0-ftdi-usb-to-mpsse-cable.jpg" width="265px" caption="The C232HM-DDHSL-0 FTDI USB-to-MPSSE cable. Creates a bridge between your computer and a number of serial comm protocols such as SPI, I2C and UART."  >}}
 
@@ -353,4 +353,4 @@ I try to use SPI or UART over I2C (if the option exists, and there are no other 
 
 ## Microcontroller Support
 
-I2C is a very popular protocol and is supported by most microcontrollers. Some examples of microcontroller I2C support include the TI MSP430 Enhanced Universal Serial Communication Interface (eUSCI),[ PSoC 3, 4, and 5LP I2C drag'n'drop modules](/programming/microcontrollers/psoc/components#i2c) (both integrated and hardware fabric versions), and the Atmel Atmega TWI peripheral.
+I2C is a very popular protocol and is supported by most microcontrollers. Some examples of microcontroller I2C support include the TI MSP430 Enhanced Universal Serial Communication Interface (eUSCI),[ PSoC 3, 4, and 5LP I2C drag'n'drop modules](/programming/microcontrollers/psoc/components#i2c) (both integrated and hardware fabric versions), and the Atmel Atmega TWI peripheral.

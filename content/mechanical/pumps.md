@@ -8,7 +8,7 @@ type: page
 
 ## Overview
 
-Pumps develop differential pressure. That is, they add to whatever pressure is already at the input.
+Pumps develop differential pressure. That is, they add to whatever pressure is already at the input.
 
 ## Converting Between Head And Pressure
 
@@ -23,7 +23,7 @@ You can convert between head and pressure by using the following equation:
     \( SG \) = specific gravity of the fluid | no units<br>
 </p>
 
-Conveniently, The SG for water is 1.
+Conveniently, The SG for water is 1.
 
 ## High Pressure
 

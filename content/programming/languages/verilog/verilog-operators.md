@@ -127,7 +127,7 @@ Reduction operators are similar to bitwise operators, except they act on all bit
 
 ## Shift Operators
 
-Shift operators shift the bits in a variable left or right by a number of specified places. The basic shifts are very similar to the shift operations in other languages, such as [C](/programming/languages/c). The arithmetic shift operators preserve the sign of the value when dealing with variables that represent signed numbers (this is done automatically in C, depending on the type of the variable).
+Shift operators shift the bits in a variable left or right by a number of specified places. The basic shifts are very similar to the shift operations in other languages, such as [C](/programming/languages/c). The arithmetic shift operators preserve the sign of the value when dealing with variables that represent signed numbers (this is done automatically in C, depending on the type of the variable).
 
 <table>
     <thead>

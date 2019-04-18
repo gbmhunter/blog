@@ -22,7 +22,7 @@ This contains examples of the most common functions, designed to jog your memory
 <tr >
 <td >**GENERAL TASK MANIPULATION**
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >
     
@@ -44,11 +44,11 @@ This contains examples of the most common functions, designed to jog your memory
     xTimerCreate();
 
 </td>
-<td >Used to create a software timer, based of the system ticks. #configUSE_TIMERS has to be set to 1 and #configTIMER_TASK_PRIORITY set before this function is available (in "FreeRTOSConfig.h").
+<td >Used to create a software timer, based of the system ticks. #configUSE_TIMERS has to be set to 1 and #configTIMER_TASK_PRIORITY set before this function is available (in "FreeRTOSConfig.h").
 </td></tr><tr >
 <td >**TASK MAINTENANCE/DEBUG**
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >
     
@@ -69,7 +69,7 @@ This contains examples of the most common functions, designed to jog your memory
 </td></tr><tr >
 <td >**QUEUES**
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >
     
@@ -87,7 +87,7 @@ This contains examples of the most common functions, designed to jog your memory
        portTickType, xTicksToWait);
 
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >
     
@@ -101,7 +101,7 @@ This contains examples of the most common functions, designed to jog your memory
 </td></tr><tr >
 <td >**SEMAPHORES**
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >
     
@@ -148,4 +148,4 @@ This contains examples of the most common functions, designed to jog your memory
 <td >Interrupt safe version of xSemaphoreGive().
 </td></tr></tbody></table>
 
-tskIDLE_PRIORITY - Priority of the idle task. Usually used as a way of setting the priority of other tasks relative to the idle task (e.g. tskIDLE_PRIORITY + 1). portTICK_RATE_MS -  Period of the ticks (in milli-seconds). Used when calling timing/delay functions so that you can specify a delay in ms rather than ticks
+tskIDLE_PRIORITY - Priority of the idle task. Usually used as a way of setting the priority of other tasks relative to the idle task (e.g. tskIDLE_PRIORITY + 1). portTICK_RATE_MS -  Period of the ticks (in milli-seconds). Used when calling timing/delay functions so that you can specify a delay in ms rather than ticks

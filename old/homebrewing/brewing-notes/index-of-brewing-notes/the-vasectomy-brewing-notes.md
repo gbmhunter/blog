@@ -159,7 +159,7 @@ We called this one The Vasectomy since after 4 spoiled batches we did everything
 </tr>
 <tr >
 
-<td >Mash Start Temp (°C)
+<td >Mash Start Temp (°C)
 </td>
 
 <td >61
@@ -167,7 +167,7 @@ We called this one The Vasectomy since after 4 spoiled batches we did everything
 </tr>
 <tr >
 
-<td >Mash End Temp (°C)
+<td >Mash End Temp (°C)
 </td>
 
 <td >60
@@ -175,7 +175,7 @@ We called this one The Vasectomy since after 4 spoiled batches we did everything
 </tr>
 <tr >
 
-<td >Mash Time (min)
+<td >Mash Time (min)
 </td>
 
 <td >60
@@ -194,7 +194,7 @@ We called this one The Vasectomy since after 4 spoiled batches we did everything
 <td >Mash Volume
 </td>
 
-<td > <20L (inch above the grain surface
+<td > <20L (inch above the grain surface
 </td>
 </tr>
 </tbody>
@@ -211,7 +211,7 @@ None.
 <tbody >
 <tr >
 
-<td >Sparge Temp (°C)
+<td >Sparge Temp (°C)
 </td>
 
 <td >82
@@ -436,7 +436,7 @@ None
 <td >End Date
 </td>
 
-<td > 10/10/11
+<td > 10/10/11
 </td>
 </tr>
 <tr >
@@ -444,15 +444,15 @@ None
 <td >End SG (g/mL)
 </td>
 
-<td > 1.010
+<td > 1.010
 </td>
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
-<td > 20
+<td > 20
 </td>
 </tr>
 <tr >
@@ -460,7 +460,7 @@ None
 <td >Fermentation Time (days)
 </td>
 
-<td > 11
+<td > 11
 </td>
 </tr>
 </tbody>
@@ -496,7 +496,7 @@ Lots of sediment at the bottom after primary fermentation was finished!
 <td >End Date
 </td>
 
-<td > 16/11/11
+<td > 16/11/11
 </td>
 </tr>
 <tr >
@@ -504,15 +504,15 @@ Lots of sediment at the bottom after primary fermentation was finished!
 <td >End SG (g/mL)
 </td>
 
-<td > 1.010
+<td > 1.010
 </td>
 </tr>
 <tr >
 
-<td >Temperature (°C)
+<td >Temperature (°C)
 </td>
 
-<td > 20
+<td > 20
 </td>
 </tr>
 <tr >
@@ -520,7 +520,7 @@ Lots of sediment at the bottom after primary fermentation was finished!
 <td >Fermentation Time (days)
 </td>
 
-<td > 6
+<td > 6
 </td>
 </tr>
 </tbody>

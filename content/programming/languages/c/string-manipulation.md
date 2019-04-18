@@ -11,11 +11,11 @@ url: /programming/languages/c/string-manipulation
 
 ## Null Character
 
-The null character (represented by '\0' , 0x00 , or a constant defined as NULL ) is used to terminate strings and arrays (essentially the same thing anyway). Most string-based commands will automatically insert the null character at the end of a string, while memory commands won't. Special care has to be taken to make sure the memory set aside for a string can accommodate the null character (when talking in bytes, the number of ASCII characters + 1).
+The null character (represented by '\0' , 0x00 , or a constant defined as NULL ) is used to terminate strings and arrays (essentially the same thing anyway). Most string-based commands will automatically insert the null character at the end of a string, while memory commands won't. Special care has to be taken to make sure the memory set aside for a string can accommodate the null character (when talking in bytes, the number of ASCII characters + 1).
 
 ## Carriage Return And New Line
 
-These two characters are used to being a new line of text. The carriage return moves the cursor back to the start of the line, and the new line shifts the cursor down one line. These characters are reminiscent of the typewriter days. The carriage return is inserted into code using  \r , and a new line using \n . The standard order is to write the carriage return first, and then the new line \r\n .
+These two characters are used to being a new line of text. The carriage return moves the cursor back to the start of the line, and the new line shifts the cursor down one line. These characters are reminiscent of the typewriter days. The carriage return is inserted into code using  \r , and a new line using \n . The standard order is to write the carriage return first, and then the new line \r\n .
 
 ```c    
 stringBuff[100];
@@ -44,7 +44,7 @@ A
 
 Strings in C are arrays where each element of the array holds an ascii character. When they are defined using double quotes, they are called a string literal. Normally these are 8-bit elements representing the standard ascii format (click for ascii table). The arrays can be defined first, and then ascii characters assigned to them, of the ascii values can be assigned easily when the array is defined as follows:
 
-This will define a 7 byte string, 6 bytes to hold "abc123" and then the 7th to terminate the string with \0 (0x00) . Here are two ways of writing this.
+This will define a 7 byte string, 6 bytes to hold "abc123" and then the 7th to terminate the string with \0 (0x00) . Here are two ways of writing this.
 
 ```c    
 char* myString = "abc123";
@@ -96,7 +96,7 @@ Typically, both the carriage return and new line characters are used for making 
 
 ## Copying
 
-`strcpy()` is a standard library function for copying the contents of one C string to another.
+`strcpy()` is a standard library function for copying the contents of one C string to another.
 
 Did you know: The following short piece of code...
 
@@ -142,7 +142,7 @@ Most C compiler installations include standard C libraries for manipulating stri
 <tr >
 <td >{{% code %}}`long int atol(char* stringBuffer)`{{% code %}}</td>
 <td >Converts a string into a long integer (typically 32-bit)</td>
-<td >{{% code %}}`<stdlib.h>`{{% code %}}</td><td > 
+<td >{{% code %}}`<stdlib.h>`{{% code %}}</td><td > 
 </td>
 </tr>
 </tbody>
@@ -163,7 +163,7 @@ There is a better alternative `strtod()`, which allows you to test for this cond
 
 ## strtod()
 
-This stands for (string-to-double). It is a safer way of converting strings to doubles than `atof()`. The code example below shows how to use `strtod()` to convert a string to a double and also how to check that the input string contained a valid number.
+This stands for (string-to-double). It is a safer way of converting strings to doubles than `atof()`. The code example below shows how to use `strtod()` to convert a string to a double and also how to check that the input string contained a valid number.
 
 ```c    
 double ConvertStringToDouble(char* input)
@@ -204,19 +204,19 @@ Memory manipulation functions are also useful for string manipulation. Some of t
 
 ## Decoding/Encoding Strings
 
-`strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](/electronics/communication-protocols/nmea-protocol/). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
+`strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](/electronics/communication-protocols/nmea-protocol/). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
 
 `getopt()` is a standard function for finding command-line arguments passed into main() as an array of strings. It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable locally [here](docs/getopt.zip) (taken from GCC gLibC v2.17).
 
 ## printf (And It's Variants)
 
-`printf()` can be a very taxing function on the processor, and may disrupt the real-time deadlines of code (especially relevant to embedded programming). It is a good idea to keep `printf()` function calls away from high-priority interrupts and control loops, and instead use them in background tasks that can be pre-empted (either by interrupts or a higher-priority threads when running a RTOS).
+`printf()` can be a very taxing function on the processor, and may disrupt the real-time deadlines of code (especially relevant to embedded programming). It is a good idea to keep `printf()` function calls away from high-priority interrupts and control loops, and instead use them in background tasks that can be pre-empted (either by interrupts or a higher-priority threads when running a RTOS).
 
 ## printf()
 
-`printf()` is the most commonly used string output function. It is a variadic funciton (it takes a variable number of arguments, note that this is not the same as function overloading, which is something that C does not support).
+`printf()` is the most commonly used string output function. It is a variadic funciton (it takes a variable number of arguments, note that this is not the same as function overloading, which is something that C does not support).
 
-On Linux, this will print the string to the calling terminal window. Most embedded systems do not support `printf()` as their is no "standard output" (although this can be re-wired to say, a UART). Instead, in embedded applications, printf's variants like `sprintf()` are more common.
+On Linux, this will print the string to the calling terminal window. Most embedded systems do not support `printf()` as their is no "standard output" (although this can be re-wired to say, a UART). Instead, in embedded applications, printf's variants like `sprintf()` are more common.
 
 If you want to print an already-formulated string using `printf` (with no additional arguments to be inserted), do not use the syntax `printf(msg)`. Instead, use the format `printf(%s, msg)`.
 
@@ -233,13 +233,13 @@ printf(msg);
 printf(%s, msg);
 ```
 
-The `printf()` function takes format specifiers which tell the function how you want the numbers displayed.
+The `printf()` function takes format specifiers which tell the function how you want the numbers displayed.
 
 ## Conversion Specifiers
 
-Conversion specifiers determine how `printf(`) interprets the input variables and displays their value as a string. Conversion specifiers are added in the input string after the `%` character (optional format specifiers may be added between the `%` symbol and the conversion specifier).
+Conversion specifiers determine how `printf(`) interprets the input variables and displays their value as a string. Conversion specifiers are added in the input string after the `%` character (optional format specifiers may be added between the `%` symbol and the conversion specifier).
 
-Although the basic behaviour is defined in the ANSI standard, the exact implementation of `printf()` is likely to vary slightly between C libraries.
+Although the basic behaviour is defined in the ANSI standard, the exact implementation of `printf()` is likely to vary slightly between C libraries.
 
 <table>
     <thead>
@@ -257,7 +257,7 @@ Although the basic behaviour is defined in the ANSI standard, the exact implemen
 <td >Prints a single ASCII character, given a 8-bit number
 </td>
 
-<td >printf("%c", 103);  // Prints "g"
+<td >printf("%c", 103);  // Prints "g"
 </td>
 </tr>
 <tr >
@@ -329,17 +329,17 @@ Although the basic behaviour is defined in the ANSI standard, the exact implemen
 </tbody>
 </table>
 
-If you actually wanted to print the % character rather than use it to specify a conversion, use two of them (printf("%%"); // prints "%").
+If you actually wanted to print the % character rather than use it to specify a conversion, use two of them (printf("%%"); // prints "%").
 
 ## Format Specifiers
 
-There are plenty of format specifiers that you can use with `printf()` which changes the way the text is formatted. Format specifiers go between the % symbol and the conversion specifier, mentioned above. They are optional, but if used, have to be added in the correct order.
+There are plenty of format specifiers that you can use with `printf()` which changes the way the text is formatted. Format specifiers go between the % symbol and the conversion specifier, mentioned above. They are optional, but if used, have to be added in the correct order.
 
-I have come across embedded implementations of `printf()` which do not support string padding (e.g. `%5s` or `%-6s`). This includes the version used with the [PSoC 5](/programming/microcontrollers/psoc).
+I have come across embedded implementations of `printf()` which do not support string padding (e.g. `%5s` or `%-6s`). This includes the version used with the [PSoC 5](/programming/microcontrollers/psoc).
 
 ## Portable size_t Printing
 
-For portability, you can use the z format specifier when you want to print a value of size_t (e.g. the number returned by sizeof()).
+For portability, you can use the z format specifier when you want to print a value of size_t (e.g. the number returned by sizeof()).
 
 ```c    
 // Portable way of printing a size_t number,
@@ -348,13 +348,13 @@ For portability, you can use the z format specifier when you want to print a va
 printf("Size of int = %zi.\r\n", sizeof(int));
 ```
 
-This was introduced in ISO C99. Z (upper-case z) was a GNU extension predating this standard addition and should not be used in new code.
+This was introduced in ISO C99. Z (upper-case z) was a GNU extension predating this standard addition and should not be used in new code.
 
 ## snprintf()
 
-`sprintf()` has plenty of special characters you can add to format the output number exactly how you want it.
+`sprintf()` has plenty of special characters you can add to format the output number exactly how you want it.
 
-The length parameter specifies the length of the variable (for example, you can have 8-bit, 16-bit, 32-bit, e.t.c integers). In the Keil C51 compiler, the 'b' or 'B' length specifier is used to tell sprintf that the number is 8-bit. If you don't use this, 8-bit numbers stored in uint8_t  or char data types will not print properly. You do not have to use the b /B  specifier when using GCC.
+The length parameter specifies the length of the variable (for example, you can have 8-bit, 16-bit, 32-bit, e.t.c integers). In the Keil C51 compiler, the 'b' or 'B' length specifier is used to tell sprintf that the number is 8-bit. If you don't use this, 8-bit numbers stored in uint8_t  or char data types will not print properly. You do not have to use the b /B  specifier when using GCC.
 
 ```c    
 // Print a float to 2 decimal places

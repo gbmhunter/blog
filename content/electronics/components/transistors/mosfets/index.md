@@ -65,14 +65,14 @@ Sorted by alphabetical order, including subscripts.
 </td>
 <td >Threshold voltage.
 </td>
-<td >The voltage between the gate-source at which the MOSFET begins to turn on.  The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet.
+<td >The voltage between the gate-source at which the MOSFET begins to turn on.  The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet.
 </td></tr></tbody></table>
 
 ## How To Use Them?
 
 The amount of current through the drain-source in controlled by a voltage on the gate. To make a basic switch, you can insert an N-Channel MOSFET between the load and ground. The source is connected to ground, and the drain to the negative terminal of the load. If the gate is given 0V (aka connected to ground), the switch will be off. If more than `\(V_{GS(th)}\)` is applied to the gate, the MOSFET will turn on (start conducting), and the load will get power.
 
-P-channels work in a similar manner to N-channels, the difference being that a negative `\(V_{GS}\)` has to be applied to turn them off (that is, the voltage on the gate has to be less than that on the source). This results in them commonly being used for high-side switching, in where the source is connected to Vcc, the drain to the load, and the gate voltage pulled low to turn it on, or pulled-up to `\(V_{cc}\)` to turn it off.
+P-channels work in a similar manner to N-channels, the difference being that a negative `\(V_{GS}\)` has to be applied to turn them off (that is, the voltage on the gate has to be less than that on the source). This results in them commonly being used for high-side switching, in where the source is connected to Vcc, the drain to the load, and the gate voltage pulled low to turn it on, or pulled-up to `\(V_{cc}\)` to turn it off.
 
 In any case, do not leave the MOSFET gate floating. Since it has a very high impedance input, if the gate is not driven, then noise can change the voltage on the gate, and cause the MOSFET to conduct/have undefined behaviour.
 
@@ -146,7 +146,7 @@ CMOS devices have PNPN structures. This forms a parasitic thyristor, which can c
 
 The body effect (also known as the Substrate Bias Effect of a MOSFET describes how the threshold voltage of a MOSFET, `\(V_{TH}\)` is affected by the voltage difference between the substrate and source, `\(V_{SB}\)`. Because the source-to-body voltage can effect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_.
 
-Note that most discrete MOSFET's that you can buy internally tie the substrate to the source, meaning `\(V_{SB} = 0V\)`. This prevents any body effect from occurring.
+Note that most discrete MOSFET's that you can buy internally tie the substrate to the source, meaning `\(V_{SB} = 0V\)`. This prevents any body effect from occurring.
 
 Do you want the huge equation that tells you how the threshold voltage changes? Here you go:
 
@@ -162,21 +162,21 @@ Do you want the huge equation that tells you how the threshold voltage changes? 
 
 ## The Substrate (Body) Connection
 
-You generic MOSFET's actually have four leads (pins). It's just that one of them, the substrate (body) lead, is normally connected internally to the source, and so you only get three external connections.
+You generic MOSFET's actually have four leads (pins). It's just that one of them, the substrate (body) lead, is normally connected internally to the source, and so you only get three external connections.
 
 {{% note %}}
-There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
+There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
 {{% /note %}}
 
-{{< figure src="/images/2011/09/mosfet-four-terminal-internal-diagram.gif" width="311px" caption="Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/."  >}}
+{{< figure src="/images/2011/09/mosfet-four-terminal-internal-diagram.gif" width="311px" caption="Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/."  >}}
 
-The substrate lead is pretty self-explanatory, it is connected to the substrate (body) of the MOSFET.
+The substrate lead is pretty self-explanatory, it is connected to the substrate (body) of the MOSFET.
 
 Another interesting note is that without the connection of the substrate to the source, the MOSFET source and drain connections would be identical, and there would be no need to separately identify them
 
-**Q. Why is the substrate normally connected to the source?**
+**Q. Why is the substrate normally connected to the source?**
 
- A. Because when it isn't, a MOSFET becomes much harder to use. If the substrate is not connected to the source, you have to consider the _body effect_. It is easier/better to connect the substrate to ground internally (less connection resistance, one less lead, e.t.c) rather than to leave it up to the circuit designed to connect it externally. Manufacturers of ICs with integrated MOSFET's may choose to connect the substrate to something else. A common choice is ground.
+ A. Because when it isn't, a MOSFET becomes much harder to use. If the substrate is not connected to the source, you have to consider the _body effect_. It is easier/better to connect the substrate to ground internally (less connection resistance, one less lead, e.t.c) rather than to leave it up to the circuit designed to connect it externally. Manufacturers of ICs with integrated MOSFET's may choose to connect the substrate to something else. A common choice is ground.
 
 The 3N163 is an example of a MOSFET which provides you with a fourth pin for the substrate connection.
 
@@ -215,6 +215,6 @@ The PMV45EN is a low cost, very low RDS(on) N-Channel MOSFET which I use as the 
 
 ## External Resources
 
-Fairchild's application note, [AN-558 - Introduction To Power MOSFET's And Their Applications](http://www.fairchildsemi.com/an/AN/AN-558.pdf) is a great resource when using MOSFETs for power applications.
+Fairchild's application note, [AN-558 - Introduction To Power MOSFET's And Their Applications](http://www.fairchildsemi.com/an/AN/AN-558.pdf) is a great resource when using MOSFETs for power applications.
 
 Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.co.uk/temp/gdt/gdt2.html).

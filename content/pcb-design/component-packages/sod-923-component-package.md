@@ -23,7 +23,7 @@ url: /pcb-design/component-packages/sod-923-component-package
 </td></tr><tr >
 <td >Similar To
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Mounting
 </td>
@@ -35,7 +35,7 @@ url: /pcb-design/component-packages/sod-923-component-package
 </td></tr><tr >
 <td >Pitch
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Solderability
 </td>
@@ -43,7 +43,7 @@ url: /pcb-design/component-packages/sod-923-component-package
 </td></tr><tr >
 <td >Thermal Resistance
 </td>
-<td > 
+<td > 
 </td></tr><tr >
 <td >Dimensions
 </td>
@@ -59,7 +59,7 @@ url: /pcb-design/component-packages/sod-923-component-package
 
 ## Comments
 
- Nothing here yet.
+ Nothing here yet.
 
 ## 3D Render
 

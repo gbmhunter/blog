@@ -9,7 +9,7 @@ url: /programming/microcontrollers/psoc/useful-psoc-macros
 
 ## Working Out What PSoC IC You Are Using
 
-PSoC Creator will define the following variable-like macros depending on what IC you've instructed it to compile for. These are useful for including IC-specific blocks of code using the preprocessor `#ifdef` directives. These macros are defined in cytypes.h, which is in the cy_boot folder under "Generated_Source" in the Workspace Explorer window in PSoC Creator. They are included if you include the standard PSoC catch-all header `<device.h>` into your code.
+PSoC Creator will define the following variable-like macros depending on what IC you've instructed it to compile for. These are useful for including IC-specific blocks of code using the preprocessor `#ifdef` directives. These macros are defined in cytypes.h, which is in the cy_boot folder under "Generated_Source" in the Workspace Explorer window in PSoC Creator. They are included if you include the standard PSoC catch-all header `<device.h>` into your code.
     
 ```c
 CY_PSOC3 // Any PSoC3 device

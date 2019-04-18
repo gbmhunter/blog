@@ -17,6 +17,6 @@ Now that hooks have been added, the CSS file can be edited to change the appeara
 
 {{< figure src="/images/programming-opencart/open-cart-adding-box-specials-css-class.jpg" caption="Modifying the CSS to change the appearance of the OpenCart specials module."  width="800px" >}}
 
-The main thing I wanted to do was to change the appearance of the title background to a red colour. Just using CSS to set it to red would make the heading too 'blocky'. I decided to use GIMP to create a reddish gradient  image that could be repeated in the x direction.
+The main thing I wanted to do was to change the appearance of the title background to a red colour. Just using CSS to set it to red would make the heading too 'blocky'. I decided to use GIMP to create a reddish gradient  image that could be repeated in the x direction.
 
 {{< figure src="/images/programming-opencart/open-cart-creating-title-background-with-gimp.jpg" caption="Creating a title background for the OpenCart specials module with GIMP."  width="600px" >}}

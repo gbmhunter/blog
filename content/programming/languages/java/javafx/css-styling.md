@@ -8,13 +8,13 @@ type: page
 
 ## Overview
 
-JavaFX-based UI objects can be styled using CSS files (similar to how HTML objects can be styled). Note that the CSS attribute names are normally different to those used to style HTML. However, most are just the equivalent for HTML with an added -fx-  prefix.
+JavaFX-based UI objects can be styled using CSS files (similar to how HTML objects can be styled). Note that the CSS attribute names are normally different to those used to style HTML. However, most are just the equivalent for HTML with an added -fx-  prefix.
 
 ## Height And Width
 
-Please note that the width and height properties of UI objects are read only (i.e. you cannot set them). They reflect the current ACTUAL width and height of the object. The width and height of an UI object maybe manipulated by setting the minWidth, prefWidth, maxWidth (ditto for height) properties.
+Please note that the width and height properties of UI objects are read only (i.e. you cannot set them). They reflect the current ACTUAL width and height of the object. The width and height of an UI object maybe manipulated by setting the minWidth, prefWidth, maxWidth (ditto for height) properties.
 
-CSS styling can be used by applying it to a JavaFX Scene object, using the following code within a .java file:
+CSS styling can be used by applying it to a JavaFX Scene object, using the following code within a .java file:
 
 ```java    
 myScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
@@ -22,7 +22,7 @@ myScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm(
 
 ## Background
 
-The background of JavaFX nodes can be styled using a variety of `-fx-background-XXX` properties.
+The background of JavaFX nodes can be styled using a variety of `-fx-background-XXX` properties.
 
 ## Basic Colour
 
@@ -48,7 +48,7 @@ You can also provide multiple values to the background colour property. The foll
         -fx-body-color;
 ```
 
-`-fx-shadow-highlight-color` and all the other values used above are predefined by JavaFX.
+`-fx-shadow-highlight-color` and all the other values used above are predefined by JavaFX.
 
 ## Colour Gradient
 

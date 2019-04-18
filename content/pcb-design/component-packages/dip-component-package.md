@@ -63,7 +63,7 @@ url: /pcb-design/component-packages/dip-component-package
 <td>Land Area</td>
 <td>
     <p>The general land area formula for DIP packages A = ((n/2)*2.54) * (width + 1.65mm)  
-where n is the number of pins and the width is the rated package width in mm (e.g.  7.62 (300mil), 15.24 (600mil)).</p>
+where n is the number of pins and the width is the rated package width in mm (e.g.  7.62 (300mil), 15.24 (600mil)).</p>
     <ul>
         <li>DIP-300-8 : 94.2mm2</li>
         <li>DIP-300-16: 188.4mm2</li>

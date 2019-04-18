@@ -30,17 +30,17 @@ Right-click on your project, and select _Build Settings_. Navigate to ARM GCC x.
 
 There are a few port-specific functions that you have to write code for, before emWin will work properly. These functions concern reading/writing to the output buffer that the image data will be written to. These are:  * CYGRAPHICS_WRITE()  * CYGRAPHICS_READ()  * CYGRAPHICS_IS_VBLANKING()  * CYGRAPHICS_WRITE_FRAME()
 
-If you just want basic control, the only function you have to write code for is CYGRAPHICS_WRITE() . The rest can be left blank.
+If you just want basic control, the only function you have to write code for is CYGRAPHICS_WRITE() . The rest can be left blank.
 
 ## Setting The Draw Position
 
-The draw position can be set with GUI_GotoXY(x, y), where x in the x-axis position, and y is the u-axis position (both measured in pixels). The draw position is incremented automatically when commands that place strings of text are used.
+The draw position can be set with GUI_GotoXY(x, y), where x in the x-axis position, and y is the u-axis position (both measured in pixels). The draw position is incremented automatically when commands that place strings of text are used.
 
 ## Fonts
 
 ## Available Fonts
 
-Only some of the fonts listed in the emWin manual are available in the PSoC version. These include proportional fonts such as  monospaced fonts such as GUI_Font4x6, GUI_Font8x8.
+Only some of the fonts listed in the emWin manual are available in the PSoC version. These include proportional fonts such as  monospaced fonts such as GUI_Font4x6, GUI_Font8x8.
 
 ## Using Fonts
 
@@ -50,7 +50,7 @@ To start using a font, type the command:
 GUI_SetFont(&GUI_Font4x6);
 ```
 
-This will use the font from this point onwards, until `GUI_SetFont()` is called again.
+This will use the font from this point onwards, until `GUI_SetFont()` is called again.
 
 ## Displaying Text
 

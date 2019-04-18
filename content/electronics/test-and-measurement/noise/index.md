@@ -20,11 +20,11 @@ With the oscilloscope in averaging mode and it set up to trigger of a specific e
 
 ## RMS, dB, dBm, SD, Huh?
 
-Noise measurements come in many different units. It can become very confusing when trying to compare different units or convert between them.
+Noise measurements come in many different units. It can become very confusing when trying to compare different units or convert between them.
 
 AC coupled waveforms become a little simpler...
 
-> For a waveform that has no DC component, the RMS value is the same as the standard deviation.
+> For a waveform that has no DC component, the RMS value is the same as the standard deviation.
 
 Typically, when doing noise measurements with an oscilloscope, AC coupling is turned on, which removes the DC component. This means that the standard deviation and the RMS measurements are equal.
 
@@ -39,7 +39,7 @@ This comes from the equation:
 <p class="centered">
     where:<br>
     \( x_{rms} \) is the RMS value of waveform x<br>
-    \( \bar{x} \) is the average (mean) of waveform x<br>
+    \( \bar{x} \) is the average (mean) of waveform x<br>
     \( \sigma_{x} \) is the standard deviation of waveform x<br>
 </p>
 

@@ -8,7 +8,7 @@ type: page
 
 You can use C# to manipulate Microsoft Office programs such as Word and Excel. You can open, create, edit and do essentially everything you can do in the programs natively using instead C# (albeit a little longer...) and libraries provided by Microsoft.
 
-A good tutorial on the Word API can be found [here](http://msdn.microsoft.com/en-us/library/aa192495(v=office.11).aspx#wordobject_link8) in the MSDN library.
+A good tutorial on the Word API can be found [here](http://msdn.microsoft.com/en-us/library/aa192495(v=office.11).aspx#wordobject_link8) in the MSDN library.
 
 ## Tutorial
 

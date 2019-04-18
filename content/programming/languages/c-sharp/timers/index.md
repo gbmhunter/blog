@@ -6,9 +6,9 @@ title: Timers
 type: page
 ---
 
-The `System.Windows.Threading.DispatcherTimer` dispatch timer is used when you only want a single event. It fires of an event, and DOES NOT create a new thread. However, this means that the timer function will not run while other code in the  same thread is executing.
+The `System.Windows.Threading.DispatcherTimer` dispatch timer is used when you only want a single event. It fires of an event, and DOES NOT create a new thread. However, this means that the timer function will not run while other code in the  same thread is executing.
 
-The `System.Timers.Timer` timer creates a new thread for the timer expired event. This can be a useful way of creating a multi-threaded application without going into the hassle of creating the thread yourself.
+The `System.Timers.Timer` timer creates a new thread for the timer expired event. This can be a useful way of creating a multi-threaded application without going into the hassle of creating the thread yourself.
 
 ```c#
 // Timer is used for main control loop

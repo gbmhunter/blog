@@ -10,13 +10,13 @@ type: page
 
 There are two types of comments in PHP, single line comments, and multi-line comments.
 
-Single-line comments are started with `//` and continue until a new line.
+Single-line comments are started with `//` and continue until a new line.
 
 ```php
 $variable = 2; // This is a single-line comment
 ```
 
-Multi-line comments start with `/*` and continue until `*/`.
+Multi-line comments start with `/*` and continue until `*/`.
 
 ```php
 $var1 = 4.5;
@@ -34,15 +34,15 @@ Printing to the current HTML page is an easy way of debugging, as long as you do
 
 ## echo
 
-`ech`o is a simple command which outputs text back to the HTML page, from within a PHP code block (something surrounded by `<?php` and `?>`.
+`ech`o is a simple command which outputs text back to the HTML page, from within a PHP code block (something surrounded by `<?php` and `?>`.
 
 ## get_defined_vars()
 
-You can use the function `get_defined_vars()` to return an array of all defined variables in the scope of where this function is called. Note that this returns all variables, no matter whether they were defined by the system or the user.
+You can use the function `get_defined_vars()` to return an array of all defined variables in the scope of where this function is called. Note that this returns all variables, no matter whether they were defined by the system or the user.
 
 ## print_r()
 
-`print_r()` converts almost any object into a human-readable text output.
+`print_r()` converts almost any object into a human-readable text output.
 
 ## serialize()
 
@@ -50,7 +50,7 @@ You can convert almost any object into a string using the function `serialize()`
 
 ## Opening/Closing PHP In Html
 
-A PHP code block in the middle of an HTML page is opened with <?php and closed with ?>.
+A PHP code block in the middle of an HTML page is opened with <?php and closed with ?>.
 
 ```php    
 /* To open */
@@ -70,13 +70,13 @@ Commonly, you will find yourself wanting to find the current path of the php scr
 realpath(__FILE__));
 ```
 
-If you want to just get the current directory, you can use the dirname() function to parse the `__FILE__` variable as follows:
+If you want to just get the current directory, you can use the dirname() function to parse the `__FILE__` variable as follows:
 
 ```php 
 $dir = realpath(dirname(__FILE__));
 ```
 
-If you want to use this to insert into HTML to load things such as Javascript files that were located relative to the script, you must remove the first parts of the `__FILE__` all the way up the the string `public_html`. You can use the `preg()` function to do this as follows (note this function also replaces and `\` with `/`, which is a good thing to do to make sure paths are in NIX notation.
+If you want to use this to insert into HTML to load things such as Javascript files that were located relative to the script, you must remove the first parts of the `__FILE__` all the way up the the string `public_html`. You can use the `preg()` function to do this as follows (note this function also replaces and `\` with `/`, which is a good thing to do to make sure paths are in NIX notation.
 
 ```php
 // Replace any \ with / (Linux notation)

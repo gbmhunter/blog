@@ -32,7 +32,7 @@ Description
 
 
 
-A good beer recipe that is relatively simple to make, and doesn't call for strict requirements on any of the ingredients (which is useful when you have a limited supply to brewing ingredients). I have made this once (in 2007), and the flavour improved greatly after a few months. Nice pale gold colour that cleared up nicely after settling. Recipe is based of the ['English Pale Ale](http://hbd.org/cgi-bin/recipator/recipator?group=1&item=6541)' on ['The Beer Recipator](http://hbd.org/recipator/)'.
+A good beer recipe that is relatively simple to make, and doesn't call for strict requirements on any of the ingredients (which is useful when you have a limited supply to brewing ingredients). I have made this once (in 2007), and the flavour improved greatly after a few months. Nice pale gold colour that cleared up nicely after settling. Recipe is based of the ['English Pale Ale](http://hbd.org/cgi-bin/recipator/recipator?group=1&item=6541)' on ['The Beer Recipator](http://hbd.org/recipator/)'.
 
 
 ## Pictures
