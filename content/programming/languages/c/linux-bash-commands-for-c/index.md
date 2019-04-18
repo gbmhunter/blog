@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-03-18 08:46:31+00:00
+date: 2013-03-18
 draft: false
 title: Linux Bash Commands For C
 type: page
-url: /programming/languages/c/linux-bash-commands-for-c
 ---
 
 {{< figure src="/images/programming-misc/essential-bash-commands-for-c-screenshot.png" caption="Screenshot of essential bash commands for C being used in a terminal on Ubuntu."  width="450px" >}}

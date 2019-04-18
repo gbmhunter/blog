@@ -24,7 +24,7 @@ Note that the `\n` (newline characters) at the end of each line are important fo
 
 ## An Example
 
-Here is an example from the FreeRTOS PSoC port which uses inserted assembly into the C code in port.c.
+Here is an example from the FreeRTOS PSoC port which uses inserted assembly into the C code in `port.c`.
 
 ```c
 void vPortSVCHandler(void) {
