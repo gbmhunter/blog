@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-04-25 01:44:56+00:00
+date: 2013-04-25
 draft: false
 title: C Related File Extensions
 type: page
@@ -19,35 +19,35 @@ The following table lists the standard file extensions used for C-related files.
   </thead>
   <tbody>
     <tr>
-      <td>file-name.c</td>
-      <td >C source code which must be preprocessed.</td>
+      <td><code>file-name.c</code></td>
+      <td>C source code which must be preprocessed.</td>
     </tr>
     <tr>
-      <td>file-name.i</td>
+      <td><code>file-name.i</code></td>
       <td>C source code which should not be preprocessed.</td>
     </tr>
     <tr>
-      <td>file-name.h</td>
+      <td><code>file-name.h</code></td>
       <td>C header file (not to be compiled or linked).</td>
     </tr>
     <tr>
-      <td>file-name.s</td>
+      <td><code>file-name.s</code></td>
       <td>Assembler code.</td>
     </tr>
     <tr >
-      <td>file-name.S</td>
+      <td><code>file-name.S</code></td>
       <td>Assembler code which must be preprocessed.</td>
     </tr>
     <tr>
-      <td>file-name.o</td>
+      <td><code>file-name.o</code></td>
       <td>Object file by default, the object file name for a source file is made by replacing the extension .c, .i, .s etc with .o. This can be changed with a command line parameter.</td>
     </tr>
     <tr>
-      <td>file-name</td>
+      <td><code>file-name</code></td>
       <td>If the file has no extension, this is usually the final executable (NIX systems).</td>
     </tr>
     <tr>
-      <td>file-name.exe, .dll, .com</td>
+      <td><code>file-name.exe, .dll, .com</code></td>
       <td>The final executable on a Windows system.</td>
     </tr>
   </tbody>

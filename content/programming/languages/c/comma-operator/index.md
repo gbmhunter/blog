@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2016-06-24 03:58:12+00:00
+date: 2016-06-24
 draft: false
 title: Comma Operator
 type: page
-url: /programming/languages/c/comma-operator
 ---
 
 ## Overview
@@ -25,8 +24,7 @@ For example:
 
 ```c
 char * rxBuffer;
-while(getData(rxBuffer), strlen(rxBuffer) > 0)
-{
+while(getData(rxBuffer), strlen(rxBuffer) > 0) {
     // Process characters in rxBuffer here
     // ...
 }
@@ -37,8 +35,7 @@ The non-comma operator way would be to do it like this:
 ```c    
 char * rxBuffer;
 GetData(rxBuffer);
-while(strlen(rxBuffer) > 0)
-{
+while(strlen(rxBuffer) > 0) {
     // Process characters in rxBuffer here
     // ...
 
@@ -48,10 +45,10 @@ while(strlen(rxBuffer) > 0)
 
 ## Prevent Side-Effects In assert() Statements
 
-Another good use is a clever manipulation of the comma operator to **prevent programmers from adding side-effects to their assert statements**. For example, an assert() macro defined as:
+Another good use is a clever manipulation of the comma operator to **prevent programmers from adding side-effects to their assert statements**. For example, an `assert()` macro defined as:
 
 ```c
 #define ASSERT(exp)  ((void)(exp), (exp ? : AssertFailed(__FILE__, __LINE__, #exp)))
 ```
 
-will allow programmers to write `ASSERT(x == 3)` but not `ASSERT(x = 3)`. The comma operator helps achieve this (the comma operator is after the (void)(exp) bit). For more information on this, see the [C Assertions page](/programming/languages/c/assertions-assert).
+will allow programmers to write `ASSERT(x == 3)` but not `ASSERT(x = 3)`. The comma operator helps achieve this (the comma operator is after the `(void)(exp)` bit). For more information on this, see the [C Assertions page](/programming/languages/c/assertions-assert).

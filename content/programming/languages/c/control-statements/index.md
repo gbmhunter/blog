@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-11-18 22:26:55+00:00
+date: 2015-11-18
 draft: false
 title: Control Statements
 type: page
-url: /programming/languages/c/control-statements
 ---
 
 ## Overview

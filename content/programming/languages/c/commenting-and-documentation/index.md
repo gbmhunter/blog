@@ -1,16 +1,15 @@
 ---
 author: gbmhunter
-date: 2013-04-14 05:30:21+00:00
+date: 2013-04-14
 draft: false
 title: Commenting And Documentation
 type: page
-url: /programming/languages/c/commenting-and-documentation
 ---
 
 ## General Tips
 
-* Always use \\ style comments where possible. This allows you to use /* style comments for commenting out large blocks of code when debugging. If you want to comment a block of code which has /* comments inside it, you will run into problems! (unfortunately, */ style comments don't nest in c).
-* However, sometimes you still need to comment out blocks of code which have /* comments already inside them (maybe your using someone else's code?). To do this, you can use the preprocessor trick #if 0 (see code below).
+* Always use `\\` style comments where possible. This allows you to use `/*` style comments for commenting out large blocks of code when debugging. If you want to comment a block of code which has `/*` comments inside it, you will run into problems! (unfortunately, `*/` style comments don't nest in c).
+* However, sometimes you still need to comment out blocks of code which have `/*` comments already inside them (maybe your using someone elses code?). To do this, you can use the preprocessor trick `#if 0` (see code below).
 
 ```c    
 // This is a single lined comment, and the preferred way of doing things
@@ -40,7 +39,7 @@ Did you know that:
 http://www.google.com
 ```
 
- is valid syntax in C? Wait, what? O.K., I was lying, C doesn't support URL's, but the syntax is still valid! What it actually represents is a label (http:), followed by a single-line comment (//www.google.com).
+is valid syntax in C? Wait, what? O.K., I was lying, C doesn't support URLs, but the syntax is still valid! What it actually represents is a label (`http:`), followed by a single-line comment (`//www.google.com`).
 
 ## Commenting Styles
 
