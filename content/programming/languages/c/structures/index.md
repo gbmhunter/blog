@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-03-18 07:35:28+00:00
+date: 2013-03-18
 draft: false
 title: Structures
 type: page
@@ -12,7 +12,7 @@ Structures can be used to do a "object-orientated" style of programming in C, a 
 
 ## Initialising Structures
 
-Initialising structures is way of defining what the values of the variables inside the struct will be at the time of creation. Note that there is a big syntax difference between initialising structures in C and in C++.
+Initialising structures is way of defining what the values of the variables inside the `struct` will be at the time of creation. Note that there is a big syntax difference between initialising structures in C and in C++.
 
 ```c   
 Defining a structure type

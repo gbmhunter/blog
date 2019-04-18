@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2017-08-14 22:59:29+00:00
+date: 2017-08-14
 draft: false
 title: Unions
 type: page
-url: /programming/languages/c/unions
 ---
 
 ## Overview

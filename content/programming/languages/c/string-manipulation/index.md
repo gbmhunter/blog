@@ -1,21 +1,20 @@
 ---
 author: gbmhunter
-date: 2013-03-18 04:50:53+00:00
+date: 2013-03-18
 draft: false
 title: String Manipulation
 type: page
-url: /programming/languages/c/string-manipulation
 ---
 
 ## ASCII Characters
 
 ## Null Character
 
-The null character (represented by '\0' , 0x00 , or a constant defined as NULL ) is used to terminate strings and arrays (essentially the same thing anyway). Most string-based commands will automatically insert the null character at the end of a string, while memory commands won't. Special care has to be taken to make sure the memory set aside for a string can accommodate the null character (when talking in bytes, the number of ASCII characters + 1).
+The null character (represented by `'\0'` , `0x00` , or a constant defined as `NULL`) is used to terminate strings and arrays (essentially the same thing anyway). Most string-based commands will automatically insert the null character at the end of a string, while memory commands won't. Special care has to be taken to make sure the memory set aside for a string can accommodate the null character (when talking in bytes, the number of ASCII characters + 1).
 
 ## Carriage Return And New Line
 
-These two characters are used to being a new line of text. The carriage return moves the cursor back to the start of the line, and the new line shifts the cursor down one line. These characters are reminiscent of the typewriter days. The carriage return is inserted into code using  \r , and a new line using \n . The standard order is to write the carriage return first, and then the new line \r\n .
+These two characters are used to being a new line of text. The carriage return moves the cursor back to the start of the line, and the new line shifts the cursor down one line. These characters are reminiscent of the typewriter days. The carriage return is inserted into code using `\r`, and a new line using `\n`. The standard order is to write the carriage return first, and then the new line `\r\n`.
 
 ```c    
 stringBuff[100];
@@ -34,17 +33,17 @@ The case of ASCII characters can be switched in code by inverting the 5th bit. I
 
 ```c    
 printf("A" ^ " ");
-a
+// stdout: a
 
 printf("a" ^ " ");
-A
+// stdout: A
 ```
 
 ## Strings
 
 Strings in C are arrays where each element of the array holds an ascii character. When they are defined using double quotes, they are called a string literal. Normally these are 8-bit elements representing the standard ascii format (click for ascii table). The arrays can be defined first, and then ascii characters assigned to them, of the ascii values can be assigned easily when the array is defined as follows:
 
-This will define a 7 byte string, 6 bytes to hold "abc123" and then the 7th to terminate the string with \0 (0x00) . Here are two ways of writing this.
+This will define a 7 byte string, 6 bytes to hold "abc123" and then the 7th to terminate the string with `\0` (`0x00`). Here are two ways of writing this.
 
 ```c    
 char* myString = "abc123";
@@ -108,7 +107,7 @@ is the equivalent to the standard library function `strcpy(p, q)`!
 
 ## Number To String Manipulation
 
-Most C compiler installations include standard C libraries for manipulating strings. A common one is stdio.h, usually included into a C file using the syntax `#include <stdio.h>`. This library contains string copy, concatenate, string build and many others. Most of them rely on null-terminated strings to function properly. Some of the most widely used ones are shown below.
+Most C compiler installations include standard C libraries for manipulating strings. A common one is `stdio.h`, usually included into a C file using the syntax `#include <stdio.h>`. This library contains string copy, concatenate, string build and many others. Most of them rely on null-terminated strings to function properly. Some of the most widely used ones are shown below.
 
 
 <table>
@@ -122,7 +121,7 @@ Most C compiler installations include standard C libraries for manipulating stri
     </thead>
 <tbody >
 <tr >
-<td >{{% code %}}`snprintf(char* stringBuff, int limit, <string>, <input variable 1>, <input variable 2>, ...);`{{% code %}}</td>
+<td ><code>snprintf(char* stringBuff, int limit, &lt;string&gt;, &lt;input variable 1&gt;, &lt;input variable 2&gt;, ...);</code></td>
 <td >Safe version of sprintf, which builds a null-terminated string based on input parameters.</td>
 <td >{{% code %}}`<stdio.h>`{{% code %}}</td>
 <td >One of the most (if not the most) useful string functions in C!</td>

@@ -1,17 +1,21 @@
 ---
 author: gbmhunter
-date: 2016-02-04 21:12:58+00:00
+date: 2016-02-04
 draft: false
 title: Object-Orientated C
 type: page
-url: /programming/languages/c/object-orientated-c
 ---
 
 ## Overview
 
 Although C is not generally thought of as an object-orientated language, it's flexibility does allow **object-orientated style code** to be written, albeit with slightly more verbose syntax than a "object-orientated" language such as C++.
 
-Object-orientated code is a broad term for a number of different coding ideas. These include:  * _Encapsulation_. An object encapsulates all of it's data and functions (called methods in the object-orientated world).  * _Abstraction_. The user of an object can only see and use it's public interface, and has no knowledge of it's internal workings.  * _Polymorphism_.  * _Inheritance_.
+Object-orientated code is a broad term for a number of different coding ideas. These include:
+
+* _Encapsulation_. An object encapsulates all of it's data and functions (called methods in the object-orientated world).
+* _Abstraction_. The user of an object can only see and use it's public interface, and has no knowledge of it's internal workings.
+* _Polymorphism_.
+* _Inheritance_.
 
 The above points can be implemented in C with varying levels of success and simplicity. 
 
@@ -62,7 +66,7 @@ In OO-universe, a constructor is a special method which is run automatically whe
 
 A simple way to have constructor-like behaviour is to create an `Init()` method.
 
-```
+```c
 void ComplexNum_Init(complexNum_t * obj) {
     obj->real = 0.0;
     obj->imag = 0.0;
@@ -71,7 +75,7 @@ void ComplexNum_Init(complexNum_t * obj) {
 
 The downside of this is that we have to remember to call it every time we create a new `complexNum_t` object.
     
-```
+```c
 void main() {
     complexNum_t myComplexNum;
     // We have to remember to call the "constructor"
@@ -88,7 +92,7 @@ Both Microsoft Direct X, the Linux kernel, GObject use C polymorphism.
 
 You may be happy-as-Larry, writing all your C code in an OO style. But what happens when you want to interface with third-party (or previously written) code which is written in the standard C "imperative" style.
 
-The example I will use is based around the PSoC family of microcontrollers. When you create a new UART for the microcontroller (via the graphical schematic editor in the PSoC Creator IDE), the PSoC libraries provide an associated set of functions to control the UART (e.g., if you had named the UART component CyUart1, then you would be given functions such as CyUart1_Start(), CyUart2_Read(), e.t.c). This functions are not written in an OO-style.
+The example I will use is based around the PSoC family of microcontrollers. When you create a new UART for the microcontroller (via the graphical schematic editor in the PSoC Creator IDE), the PSoC libraries provide an associated set of functions to control the UART (e.g., if you had named the UART component `CyUart1`, then you would be given functions such as `CyUart1_Start()`, `CyUart2_Read()`, e.t.c). This functions are not written in an OO-style.
 
 The solution I propose is to create your own object-orientated UART driver, which wraps provides an interface from the imperative-style PSoC UART functions to the rest of your OO code.
 

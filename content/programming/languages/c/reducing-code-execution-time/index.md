@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-03-18 09:09:10+00:00
+date: 2013-03-18
 draft: false
 title: Reducing Code Execution Time
 type: page

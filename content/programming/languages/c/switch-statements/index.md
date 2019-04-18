@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-01-10 01:29:01+00:00
+date: 2015-01-10
 draft: false
 title: Switch Statements
 type: page
-url: /programming/languages/c/switch-statements
 ---
 
 ## Fall-through

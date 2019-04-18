@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2014-07-19 02:55:18+00:00
+date: 2014-07-19
 draft: false
 title: Standards And Versions
 type: page
-url: /programming/languages/c/standards-and-versions
 ---
 
 ## C99

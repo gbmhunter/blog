@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-07 00:56:48+00:00
+date: 2011-09-07
 draft: false
 title: Preprocessor
 type: page
@@ -14,7 +14,7 @@ They are also used to clever assert and debug messages which can be built to aut
 
 ## General Syntax
 
-All preprocessor functions in C start with the # character, telling the preprocessor that it must parse this line.
+All preprocessor functions in C start with the `#` character, telling the preprocessor that it must parse this line.
 
 ## Macros (#define)
 
@@ -126,7 +126,7 @@ The `UartDebug_PutString()` function in the code above is part of the hardware a
 
 ## Stringification
 
-## Basic Stringification
+### Basic Stringification
 
 _Stringification_ is the process of turning macros into C-style strings.
 
@@ -143,7 +143,7 @@ char* msg = #REPLACEMENT_STRING;
 char* msg = "This is a message";
 ```    
 
-## Replacing Strings Inside Other Strings
+### Replacing Strings Inside Other Strings
 
 A problem exists when you want to put a macro inside a string. You can use a function-style macro for this. This is a classic C pre-processor problem.
 
@@ -192,7 +192,7 @@ A general formatting rule I follow with `#if` statements is that I only indent t
 
 ## Commenting Blocks Of Code
 
-You can use #if statements for commenting out sections of code. This is useful is you want to comment out a large section of code (e.g. an entire C file), which has heaps of `/* comment */`  style comments in it's body. Because `/*` style comments don't nest, you can't use them again to comment out blocks of code which already contain them. #if 0  is a great alternative.
+You can use #if statements for commenting out sections of code. This is useful is you want to comment out a large section of code (e.g. an entire C file), which has heaps of `/* comment */`  style comments in it's body. Because `/*` style comments don't nest, you can't use them again to comment out blocks of code which already contain them. `#if 0` is a great alternative.
     
 ```c
 #if 0
@@ -209,9 +209,9 @@ void aFunction()
 
 ## Include (#include)
 
-The #include directive is used to include the text contents of one file into another. #include can be called from both .c and .h files, and can be used to include both .c and .h files. However, I strongly recommend that you **don't use it to include .c files!** There is normally no reason to do this. .c files are compiled individually into object files, and then linked together by the linker. By including a .c file, you are kinda doing the linkers job, AND, you will end with **messy multiple definition errors**.
+The #include directive is used to include the text contents of one file into another. #include can be called from both `.c` and `.h` files, and can be used to include both `.c` and `.h` files. However, I strongly recommend that you **don't use it to include .c files!** There is normally no reason to do this. `.c` files are compiled individually into object files, and then linked together by the linker. By including a `.c` file, you are kinda doing the linkers job, AND, you will end with **messy multiple definition errors**.
 
-The exact #include syntax depends on whether you are including system or user files. To include a system file, wrap the file name in < and > brackets as shown below:
+The exact `#include` syntax depends on whether you are including system or user files. To include a system file, wrap the file name in `<` and `>` brackets as shown below:
 
 ```c
 // Including a system file
@@ -225,7 +225,7 @@ To include a user file, wrap the file name in " quotes as shown below:
 #include "MyFile.h"
 ```    
 
-I make no rule about where #include should be called from, and although some people will say otherwise (e.g. only put them in header files), I recommend placing #include in any file which depends on objects/definitions from another!
+I make no rule about where `#include` should be called from, and although some people will say otherwise (e.g. only put them in header files), I recommend placing `#include` in any file which depends on objects/definitions from another!
 
 **The order in which #include files are added can be important.** If one header file depends on types (enums, structures) that are defined in other header files, if the header file with the definition is not included first, the compiler may not recognise it (it won't, unless the header file requiring the definitions includes the header file with the definition as mentioned above).
 
@@ -249,7 +249,7 @@ To show an error (and stop compilation), use the following syntax:
 
 ## Comments
 
-Some pre-compilers support the ability to print messages to the standard output without using #warning or #error. This includes the GCC pre-compiler.
+Some pre-compilers support the ability to print messages to the standard output without using `#warning` or `#error`. This includes the GCC pre-compiler.
 
 To print a message (there are normally two supported syntaxes), type:
 
@@ -276,7 +276,7 @@ prints `'/myFolder/myCfile.c:8 note: #pragma message: TODO - Remember to fix thi
 
 When the preprocessor runs through source code, it updates variables remembering the current file name and line number that the preprocessor is executing from. These are called _predefined macros_. These are useful to use if you want to print out debug information to the user (similar to how a compiler reports back file names/line numbers when it encounters a warning/error), or when it comes to [**using assertions**](/programming/languages/c/assertions-assert).
 
-You can override the preprocessors current line number at any point with the directive:
+You can override the pre-processors current line number at any point with the directive:
     
 ```c
 #line 230
@@ -286,7 +286,7 @@ You can override the preprocessors current line number at any point with the dir
 
 Unfortunately, unlike the compiler, the preprocessor is pretty dumb, and won't give you warnings like #define SOMETHING is not used. This means you can end up with heaps of redundant code, which confuses both you and whoever is going to look at your code in the future.
 
-The obvious but not necessarily quickest nor safest way to find redundant #define's is to comment them out and check if it still compiles. However, the precompiler doesn't need to have a variable declared to use it in a conditional statement (remember the #ifdef  directive?), so just because it compiles doesn't mean it is not used, and it can also change the behaviour of your code.
+The obvious but not necessarily quickest nor safest way to find redundant `#define`'s is to comment them out and check if it still compiles. However, the precompiler doesn't need to have a variable declared to use it in a conditional statement (remember the `#ifdef` directive?), so just because it compiles doesn't mean it is not used, and it can also change the behaviour of your code.
 
 A better way is to use another program to check for these. Some expensive programs exist, but you can do it quite easily yourself by utilising some command-line Linux programs.
 

@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2014-07-10 04:24:05+00:00
+date: 2014-07-10
 draft: false
 title: Variadic Functions
 type: page
-url: /programming/languages/c/variadic-functions
 ---
 
 ## Overview

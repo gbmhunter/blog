@@ -1,13 +1,12 @@
 ---
 author: gbmhunter
-date: 2014-07-19 05:55:03+00:00
+date: 2014-07-19
 draft: false
 title: Portability
 type: page
-url: /programming/languages/c/portability
 ---
 
-Use data types defined in stdint.h for better portability. These include:
+Use data types defined in `stdint.h` for better portability. These include:
 
 ```c
 int8_t

@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-07-17 23:47:50+00:00
+date: 2013-07-17
 draft: false
 title: System Calls
 type: page
-url: /programming/languages/c/system-calls
 ---
 
 Most standard C libraries depend on a number of subroutine calls for interacting with system services. These are called system calls.

@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-07-09 10:16:44+00:00
+date: 2013-07-09
 draft: false
 title: Processing Command-Line Input
 type: page
-url: /programming/languages/c/processing-command-line-input
 ---
 
 ## Overview
@@ -13,70 +12,41 @@ This page concerns itself largely on the GNU implementation of `getopt()` and it
 
 ## First, A Little Terminology
 
-
 <table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Example</th>
-        </tr>
-    </thead>
-<tbody>
-<tr>
-<td >Command-line
-</td>
-<td >A text-based program (called a terminal) that is used to call and control other programs.
-</td>
-
-<td >
-</td>
-</tr>
-<tr >
-
-<td >Options
-</td>
-
-<td >Optional arguments in a command-line message.
-</td>
-
-<td >In git commit -m "Example" , -m is the option.
-</td>
-</tr>
-<tr >
-
-<td >Long Options
-</td>
-
-<td >Long options are distinguished from just "options" by the fact they use more than one ASCII character to describe them. This is a GNU extension to the POSIX standard.
-</td>
-
-<td >In git commit --verbose, --verbose is a long option.
-</td>
-</tr>
-<tr >
-
-<td >Parameters
-</td>
-
-<td >Non-optional arguments in the command-line message.
-</td>
-
-<td >
-</td>
-</tr>
-<tr >
-
-<td >Option Arguments
-</td>
-
-<td >Options can have associated values. They may non-optional or optional. The fact that they are name option arguments and that **they can be optional themselves** can lead to confusion!
-</td>
-
-<td >In git commit -m "Example", "Example" is the non-optional option argument.
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+  <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Command-line</td>
+      <td>A text-based program (called a terminal) that is used to call and control other programs.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Options</td>
+      <td>Optional arguments in a command-line message.</td>
+      <td>In git commit -m "Example" , -m is the option.</td>
+    </tr>
+    <tr>
+      <td>Long Options</td>
+      <td>Long options are distinguished from just "options" by the fact they use more than one ASCII character to describe them. This is a GNU extension to the POSIX standard.</td>
+      <td>In git commit --verbose, --verbose is a long option.</td>
+    </tr>
+    <tr>
+      <td>Parameters</td>
+      <td>Non-optional arguments in the command-line message.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Option Arguments</td>
+      <td>Options can have associated values. They may non-optional or optional. The fact that they are name option arguments and that **they can be optional themselves** can lead to confusion!</td>
+      <td>In git commit -m "Example", "Example" is the non-optional option argument.</td>
+    </tr>
+  </tbody>
 </table>
 
 ## getopt()
