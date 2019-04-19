@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2011-09-14 21:23:46+00:00
+date: 2011-09-14
 draft: false
 title: ATmega General I/O
 type: page
-url: /programming/microcontrollers/atmel/atmega/general-io
 ---
 
 General I/O are pins that are used for non-specific purposes. Non-specific purposes are those not requiring any of the on-board peripherals that come with the ATmega micro-controllers (such as USART, timers). They are essentially pins which can be set either to digital high or digital low by the software.

@@ -12,6 +12,10 @@ type: "page"
 
 **This tutorial shows you how to manipulate SocketCAN interfaces using the Linux command-line**. This includes finding out what SocketCAN interfaces are available, printing detailed info about them, and then sending/receiving data.
 
+If you are looking for help controlling a SocketCAN interface from C software, see the [How To Use SocketCAN With C In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-c-in-linux/).
+
+If you are looking for more information about the CAN bus protocol itself, see the [CAN Protocol page](/electronics/communication-protocols/can-protocol/).
+
 {{< figure src="/images/2017/07/socketcan-image.png" width="337px" caption="Icon for SocketCAN. Image from https://github.com/linux-can/can-utils."  >}}
 
 ## What Types of CAN Interfaces Are There?

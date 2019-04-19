@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2015-05-19 06:32:12+00:00
+date: 2015-05-19
 draft: false
 title: Re-programming And/Or Modifying The DFU Bootloader
 type: page
@@ -24,9 +24,9 @@ The first thing to do is get the bootloader source code. This is contained withi
 $ unzip AVR-UC3-SoftwareFramework-1.7.0.zip
 ```
 
-This should put all the files into a directory called 1.7.0-ATUC3. Sweet! Now you can find the bootloader source code at 1.7.0-AT32UC3/SERVICES/USB/CLASS/DFU/EXAMPLES/ISP. In this directory you should find the source code and associated headers (isp.c/h, usb_dfu.c/h). There are also sub-directories containing files specific to the different sub-families of the AT32UC3 (e.g. AT32UC3A, AT32UC3A3, AT32UC3B, ...).
+This should put all the files into a directory called `1.7.0-ATUC3`. Sweet! Now you can find the bootloader source code at `1.7.0-AT32UC3/SERVICES/USB/CLASS/DFU/EXAMPLES/ISP`. In this directory you should find the source code and associated headers (`isp.c/h`, `usb_dfu.c/h`). There are also sub-directories containing files specific to the different sub-families of the `AT32UC3` (e.g. `AT32UC3A`, `AT32UC3A3`, `AT32UC3B`, ...).
 
-At this point I will pick a particular sub-family for the rest of the tutorial, the AT32UC3A. Obviously, replace all occurrences of this name with your particular sub-family. If you navigate into the AT32UC3A sub-folder, you will find an IAR and a GCC folder. Since we are using Linux, and the license for GCC does not cost any money, we will choose GCC. Go into the GCC folder.
+At this point I will pick a particular sub-family for the rest of the tutorial, the `AT32UC3A`. Obviously, replace all occurrences of this name with your particular sub-family. If you navigate into the `AT32UC3A` sub-folder, you will find an `IAR` and a `GCC` folder. Since we are using Linux, and the license for `GCC` does not cost any money, we will choose `GCC`. Go into the `GCC` folder.
 
 Your path should now be:
 
@@ -90,13 +90,13 @@ You will also have to change the board.
 
 ## Building
 
-Run the command make.
+Run the command `make`.
 
-Ohoh, the size of the .bin file is more than 8kB! I believe this is because Atmel used the IAR compiler, which results in slightly less code than the GCC compiler, even with the `-Os` optimisation flag set (this is set by default in config.mk). The pre-compiled bootloader binary that Atmel provides for the AT32UC3A3 microcontroller family (at32uc3a3-isp-1.0.3.bin) clocks in at a tidy 7,617B. 
+Ohoh, the size of the `.bin` file is more than 8kB! I believe this is because Atmel used the IAR compiler, which results in slightly less code than the GCC compiler, even with the `-Os` optimisation flag set (this is set by default in `config.mk`). The pre-compiled bootloader binary that Atmel provides for the AT32UC3A3 microcontroller family (`at32uc3a3-isp-1.0.3.bin`) clocks in at a tidy 7,617B. 
 
 ## Modifying The Bootloader Size
 
-In `conf_isp.h`, you'll want to change
+In `conf_isp.h`, you'll want to change:
 
 ```c
 #define PROGRAM_START_OFFSET          0x00002000
@@ -134,4 +134,4 @@ atprogram -t jtagice3 -i jtag -d at32uc3a3256 write -o 0x808001FC --values 0x929
 atprogram -t jtagice3 -i jtag -d at32uc3a3256 program -o 0x80000000 -f at32uc3a3-isp.bin --verify write -fs -o 0xFFFE1410 --values FFF7FFFF
 ```
 
-This was designed for the JTAG ICE 3 and the AT32UC3A3256. Change these accordingly.
+This was designed for the JTAG ICE 3 and the `AT32UC3A3256`. Change these accordingly.

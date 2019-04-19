@@ -12,6 +12,10 @@ type: "page"
 
 The Linux C/C++ API allows you to control a SocketCAN interface via a C/C++ application.
 
+If you are looking for help interfacing with SocketCAN from the Linux command-line, see the [How To Use SocketCAN With The Command-Line In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux/).
+
+If you are looking for more information about the CAN bus protocol itself, see the [CAN Protocol page](/electronics/communication-protocols/can-protocol/).
+
 SocketCAN supports _standard frame format_ (SFF), _extended frame format_ (EFF) and _CAN FD_ frames.
 
 ## Reading And Writing

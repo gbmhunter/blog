@@ -14,6 +14,10 @@ type: "page"
 
 {{< img src="can-bus-logo-bosch.png" width="270px" caption="The CAN bus logo. Image from www.bosch.com."  >}}
 
+If you are looking for help interfacing with SocketCAN from the Linux command-line, see the [How To Use SocketCAN With The Command-Line In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux/).
+
+If you are looking for help controlling a SocketCAN interface from C software, see the [How To Use SocketCAN With C In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-c-in-linux/).
+
 A alternative communications protocol used in similar applications is the LIN protocol.
 
 ## Bit Rate And Transmission Distances

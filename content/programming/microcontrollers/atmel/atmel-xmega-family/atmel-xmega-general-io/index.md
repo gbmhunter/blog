@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-15 07:24:03+00:00
+date: 2011-09-15
 draft: false
 title: ATMEL Xmega - General I/O
 type: page

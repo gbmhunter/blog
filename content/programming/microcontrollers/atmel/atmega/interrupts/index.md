@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2011-09-14 21:57:08+00:00
+date: 2011-09-14
 draft: false
 title: ATmega Interrupts
 type: page
-url: /programming/microcontrollers/atmel/atmega/interrupts
 ---
 
 ## Overview

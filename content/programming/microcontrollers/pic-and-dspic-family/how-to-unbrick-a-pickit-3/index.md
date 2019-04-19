@@ -1,18 +1,24 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Embedded", "Microcontrollers" ]
 date: 2014-04-14
 draft: false
+tags: [ "unbrick", "bricked", "PICkit", "PICkit 3", "Microchip", "programmer", "microcontroller" ]
 title: "How To Unbrick A PICkit 3"
 type: "page"
 ---
 
 ## Overview
 
-You can quite easily brick a PICkit 3 when using it with the buggy standalone apps Microchip has written (especially when attempting to download the standalone OS to it). Here is how to unbrick a unresponsive PICkit3.
+You can quite easily brick a PICkit3 when using it with the buggy standalone apps Microchip has written (especially when attempting to download the standalone OS to it). Here is how to unbrick a unresponsive PICkit3.
 
 ## You Will Need
 
-Aside from the bricked PICkit3 you a trying to fix, you will also need:  * A working PICkit3 to program the bricked PICkit3 with.  * A standard 6-pin, 2.54mm header strip and some small bits of wire for converting J2 on the bricked PICkit3 into a something we can program with the working PICkit3  * The standalone PICkit3 v3.01 or similar application written by Microchip that allows you to program with the PICkit3 (it also provides the hex file we will be downloading to the bricked PICkit3).
+Aside from the bricked PICkit3 you a trying to fix, you will also need:
+
+* A working PICkit3 to program the bricked PICkit3 with.
+* A standard 6-pin, 2.54mm header strip and some small bits of wire for converting `J2` on the bricked PICkit3 into a something we can program with the working PICkit3
+* The standalone PICkit3 v3.01 or similar application written by Microchip that allows you to program with the PICkit3 (it also provides the hex file we will be downloading to the bricked PICkit3).
 
 ## Unbricking Steps
 
@@ -45,7 +51,6 @@ Aside from the bricked PICkit3 you a trying to fix, you will also need:  * A wor
 7. The PICkit 3 should now be unbricked!  
   
     {{< figure src="/images/2014/04/08-led-on-its-now-fixed.jpg" width="455px" caption="The bricked PICkit3 is now fixed, the LED's come on correctly!"  >}}  
-  
 8. If you want to keep the programming header attached just in case it happens again, I suggest wrapping tape around the header so that you don't cause any shorts.  
   
     {{< figure src="/images/2014/04/10-taping-up-the-header-to-prevent-shorts.jpg" width="1000px" caption="Taping up the header to prevent shorts. I decided to keep this attached just in case it happens again..."  >}}  

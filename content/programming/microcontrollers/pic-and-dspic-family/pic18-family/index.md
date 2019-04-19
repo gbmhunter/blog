@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2016-06-19 23:46:51+00:00
+categories: [ "Programming", "Embedded", "Microcontrollers" ]
+date: 2016-06-19
 draft: false
+tags: [ "Microchip", "PIC18", "PIC", "compiler", "EEPROM", "GPIO", "SPI", "microcontroller", "MPLAB", "PIC18F", "PIC18C" ]
 title: PIC18 Family
 type: page
 ---
@@ -35,8 +37,7 @@ What you can do is forgo the nice API and use direct manipulation instead. I hav
 //!                         16-bits of this variable may be supported).
 //! @returns    The byte of data read from EEPROM.
 //! @warning    This function does not return until read operation is complete.
-uint8_t Eeprom_ReadByte(uint16_t address)
-{
+uint8_t Eeprom_ReadByte(uint16_t address) {
 
     // Set address registers
     EEADRH = (uint8_t)(address >> 8);
@@ -59,8 +60,7 @@ uint8_t Eeprom_ReadByte(uint16_t address)
 //!                         16-bits of this variable may be supported).
 //! @param      data        The data to write to EEPROM.
 //! @warning    This function does not return until write operation is complete.
-void Eeprom_WriteByte(uint16_t address, uint8_t data)
-{    
+void Eeprom_WriteByte(uint16_t address, uint8_t data) {
     // Set address registers
     EEADRH = (uint8_t)(address >> 8);
     EEADR = (uint8_t)address;
