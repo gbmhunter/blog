@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2016-12-16 09:24:51+00:00
+date: 2016-12-16
 draft: false
 title: NuttX
 type: page
-url: /programming/operating-systems/nuttx
 ---
 
 ## Overview

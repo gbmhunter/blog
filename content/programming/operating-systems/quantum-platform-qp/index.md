@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2016-02-10 22:33:47+00:00
+date: 2016-02-10
 draft: false
 title: Quantum Platform (QP)
 type: page
-url: /programming/operating-systems/quantum-platform-qp
 ---
 
 ## Overview

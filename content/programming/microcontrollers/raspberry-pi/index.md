@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-03-23 23:59:27+00:00
+date: 2013-03-23
 draft: false
 title: RaspberryPi
 type: page
-url: /programming/microcontrollers/raspberry-pi
 ---
 
 ## Overview
@@ -15,29 +14,21 @@ The RaspberryPi is a cheap, fully-functional micro-computer.
 
 ## Quick Setup
 
-www.raspberrypi.com has released software called NOOBS (new out-of-the-box software), which makes it really easy to setup the RPi. Just download NOOBS (which was just over 1GB at v1.2.1), format ([go here](https://www.sdcard.org/downloads/formatter_4/)) then unpack NOOBS onto the SD card, and your good to plug the SD card into the RPi and power up (NOOBS will present you with various operating systems to install on start-up).
+[www.raspberrypi.com](www.raspberrypi.com) has released software called NOOBS (new out-of-the-box software), which makes it really easy to setup the RPi. Just download NOOBS (which was just over 1GB at v1.2.1), format ([go here](https://www.sdcard.org/downloads/formatter_4/)) then unpack NOOBS onto the SD card, and your good to plug the SD card into the RPi and power up (NOOBS will present you with various operating systems to install on start-up).
 
 At the bare minimum, you'll also need a USB keyboard, mouse (hard-outs may be able to forgo this) and either an HDMI or composite screen.
 
-<table >
-<tbody >
-<tr >
-
-<td >Default username:
-</td>
-
-<td >pi
-</td>
-</tr>
-<tr >
-
-<td >Default password:
-</td>
-
-<td >raspberry
-</td>
-</tr>
-</tbody>
+<table>
+  <tbody>
+    <tr>
+      <td>Default username:</td>
+      <td>pi</td>
+    </tr>
+    <tr>
+      <td>Default password:</td>
+      <td>raspberry</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Longer Setups
@@ -66,13 +57,13 @@ URL: [http://www.raspbian.org/](http://www.raspbian.org/)
 
 A Debian-based (Ubuntu-like) operating system optimised for running on the RPi. It is one of the most popular operating systems for the RPi. Provides a config menu the first time you boot, where you can change settings such as the password, enabling SSH, expanding the file system to use the entire SD card, and configuring the keyboard/mouse.
 
-You can bring up the config menu at any time by typing the command sudo raspi-config.
+You can bring up the config menu at any time by typing the command `sudo raspi-config`.
 
-To load up the GUI from the command-line, type startx.
+To load up the GUI from the command-line, type `startx`.
 
-To shutdown the GUI from the command-line, type sudo shutdown "now" (this also shuts down any other processes).
+To shutdown the GUI from the command-line, type `sudo shutdown "now"` (this also shuts down any other processes).
 
-The nano text editor comes pre-installed, type nano to load it.
+The nano text editor comes pre-installed, type `nano` to load it.
 
 ### RISC OS
 
@@ -84,115 +75,62 @@ A version of the RISC OS (a operating system dating back to 1987 for 32-bit ARM 
 
 ### Pi MusicBox
 
-
 <table>
-<tbody >
-<tr >
-
-<td >Supported Music Sources
-</td>
-
-<td >
-
-
-
-  * Apple AirPlay
-  * DLNA streaming from phone/tablet
-  * Google Music
-  * MP3/OGG/FLAC/AAC (on SD Card, USB or Network)
-  * Spotify
-  * Soma FM
-  * SoundCloud
-  * Subsonic
-
-
-</td>
-</tr>
-<tr >
-
-<td >Supported Platforms
-</td>
-
-<td >
-
-
-
-  * Raspberry Pi
-
-
-</td>
-</tr>
-<tr >
-
-<td >Structure
-</td>
-
-<td >
-
-
-
-  * Mopidy (which itself is MPD)
-
-
-</td>
-</tr>
-<tr >
-
-<td >Licensing
-</td>
-<td >
-  * Open Source
-</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>Supported Music Sources</td>
+      <td>
+      <ul>
+        <li>Apple AirPlay</li>
+        <li>DLNA streaming from phone/tablet</li>
+        <li>Google Music</li>
+        <li>MP3/OGG/FLAC/AAC (on SD Card, USB or Network)</li>
+        <li>Spotify</li>
+        <li>Soma FM</li>
+        <li>SoundCloud</li>
+        <li>Subsonic</li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Supported Platforms</td>
+      <td>Raspberry Pi</td>
+    </tr>
+    <tr>
+      <td>Structure</td>
+      <td>Mopidy (which itself is MPD)</td>
+    </tr>
+    <tr>
+      <td>Licensing</td>
+      <td>Open Source</td>
+    </tr>
+  </tbody>
 </table>
 
 ### Volumio
 
-
 <table>
-<tbody >
-<tr >
-
-<td >Supported Music Sources
-</td>
-
-<td >
-  * Apple Airplay
-</td>
-</tr>
-<tr >
-
-<td >Supported Platforms
-</td>
-
-<td >
-  * Cubox
-  * Beaglebone Black
-  * Raspberry Pi
-  * Udoo
-
-
-</td>
-</tr>
-<tr >
-
-<td > 
-</td>
-
-<td > 
-</td>
-</tr>
-<tr >
-
-<td >Licensing
-</td>
-
-<td >
-  * Open Source
-</td>
-</tr>
-</tbody>
+  <tbody >
+    <tr>
+      <td>Supported Music Sources</td>
+      <td>Apple Airplay</td>
+    </tr>
+    <tr>
+      <td>Supported Platforms</td>
+      <td>
+        <ul>
+          <li>Cubox</li>
+          <li>Beaglebone Black</li>
+          <li>Raspberry Pi</li>
+          <li>Udoo</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Licensing</td>
+      <td>Open Source</td>
+    </tr>
+  </tbody>
 </table>
 
 Comments:
@@ -276,7 +214,7 @@ sudo apt-get install libboost-dev libboost-program-options-dev libboost-thread-d
 
 Node.js will work with the hard-float version of Raspian Wheezy. It takes aggggeeeesss to compile from the source code, but luckily, there is a pre-compiled binary available for the ARM processor which will work on the RaspberryPi.
 
-You can install Node.js on Wheezy by just typing sudo apt-get install nodejs. See below for the harder way.
+You can install Node.js on Wheezy by just typing `sudo apt-get install nodejs`. See below for the harder way.
 
 ```sh
 sudo mkdir /opt/node
@@ -285,7 +223,7 @@ tar xvzf node-v0.10.2-linux-arm-pi.tar.gz
 sudo cp -r node-v0.10.2-linux-arm-pi/* /opt/node
 ```
 
-Then Node.js has to be added to your PATH variable, to do this, type
+Then Node.js has to be added to your `PATH` variable, to do this, type
 
 ```sh    
 nano /etc/profile

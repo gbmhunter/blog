@@ -108,7 +108,7 @@ If you then want to send/receive data on the CAN interface, you should install `
 
 The repository for can-utils can be found at [https://github.com/linux-can/can-utils](https://github.com/linux-can/can-utils).
 
-**To send data to the CAN bus**, use the cansend utility:
+**To send data to the CAN bus**, use the `cansend` utility:
 
 ```sh    
 ~$ cansend can0 123#1122334455667788

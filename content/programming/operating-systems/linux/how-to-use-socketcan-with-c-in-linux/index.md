@@ -1,7 +1,9 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Communication Protocols", "C++" ]
 date: 2017-07-21
 draft: false
+tags: [ "SocketCAN", "C++", "Linux", "API", "CAN", "CANbus", "communication protocol", "libsocketcan", "kernel", "network" ]
 title: "How To Use SocketCAN With C++ In Linux"
 type: "page"
 ---
@@ -14,7 +16,7 @@ SocketCAN supports _standard frame format_ (SFF), _extended frame format_ (EFF) 
 
 ## Reading And Writing
 
-The data for reading and writing to the CAN bus is communicated through the can_frame struct which is declared and defined in <linux/can.h>.
+The data for reading and writing to the CAN bus is communicated through the `can_frame` struct which is declared and defined in `<linux/can.h>`.
 
 ```c
 struct can_frame {

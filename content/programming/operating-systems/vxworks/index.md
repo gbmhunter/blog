@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2017-04-24 16:22:02+00:00
+date: 2017-04-24
 draft: false
 title: VxWorks
 type: page
-url: /programming/operating-systems/vxworks
 ---
 
 ## Overview
