@@ -67,7 +67,7 @@ Constructors can take <i>parameter lists</i>, which along with constructors, is 
 
 Namespaces give you the ability to wrap functions and variables into groups. Calling functions or accessing variables within a namespace requires you to use the :: syntax, or by using the using namespace blah syntax (see the code examples below).
 
-This removes the need for the common C convention of prefixing all functions with the name of the file they are in (for example, files in Uart.c would be called things like Uart_PutString() and Uart_GetChar().
+This removes the need for the common C convention of prefixing all functions with the name of the file they are in (for example, files in `Uart.c` would be called things like `Uart_PutString()` and `Uart_GetChar()`.
 
 ```c++
 namespace Uart {
@@ -80,7 +80,7 @@ namespace Uart {
     }
 }
 
-// We are outside the Uart namespace. To call these functions, we need to prepend the function calls with the namespace name and the '::' syntax
+// We are outside the Uart namespace. To call these functions, we need to prepend the function calls with the namespace name and the `::` syntax
 Uart::PutString("blah");
 char char1 = Uart::GetChar();
 

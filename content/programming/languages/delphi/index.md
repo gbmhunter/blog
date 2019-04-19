@@ -39,7 +39,7 @@ Multi-line comments are started with either `{` or `(*` and finished with `}` or
 
 ## Rounding
 
-Rounding in Delphi can be done with the in-built function Round(). It rounds a number to the nearest integer. To round to a specified number of decimal places, you can use this function in conjunction with the divide/multiply technique.
+Rounding in Delphi can be done with the in-built function `Round()`. It rounds a number to the nearest integer. To round to a specified number of decimal places, you can use this function in conjunction with the divide/multiply technique.
 
 Divide the number by the precision you want, use the Round function, and then multiply it again by the precision.
 

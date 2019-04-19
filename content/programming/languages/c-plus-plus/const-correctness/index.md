@@ -1,0 +1,63 @@
+---
+author: gbmhunter
+date: 2015-09-28
+draft: false
+title: Const Correctness
+type: page
+---
+
+## Overview
+
+`const` is a modifier in C++ which does the obvious, it indicates that something is constant.
+
+Correct usage of the `const` keyword in C++ is important to get right (it is called **const correctness**). Is is hard to correct an existing code base because of the **ripple effect** when adding the const modifier.
+
+## Decoding The const Keyword
+
+The `const` keyword can be confusing, especially when used with pointers. What is `const int * myInt` compared to `int const * myInt` compared to `int * const myInt`?
+
+The official rule is:
+
+> The const keyword applies the item on it's left, unless there is none, in which it refers to the item on the right.
+
+The only time there will not be an item on its left is when it is at the start of an expression (e.g. the start of a line). Lets take a look at the following example:
+
+```c++    
+int const * myInt;
+```
+
+Since there is an `int` to the left of the `const`, this is saying that `myInt` is a pointer to a constant integer. You cannot change the value of the variable the pointer points to.
+
+What about:
+
+```c++   
+int * const myInt;
+```
+
+Again, since there is a pointer (`*`) to the left of the `const`, this is saying that `myInt` is a constant pointer to an integer. You cannot change the value of the pointer (i.e. where the pointer is pointing at).
+
+Our third and final example:
+
+```c++    
+const int * myInt;
+```
+
+Since there is no item to the left of the `const`, it applies to the `int` on its right. This is saying the exact same thing as the first example, `myInt` is a pointer to a constant integer.
+
+So `int const * myInt;` is exactly the same as `const int * myInt;`. I recommend only using the first version, as then your code reads the same way in every instance, the `const` always applies to the item on the left.
+
+## Multiple Const's
+
+After learning the rule above, reading multiple `const`'s in a single expression should be easy. Exactly the same rules apply. Take for example:
+
+```c++   
+int const * const myInt;
+```
+
+This is saying that `myInt` is a constant pointer to a constant `int`. This means that you cannot change what the pointer is pointing at, nor change the value of the int that the pointer points to. This is the same as writing:
+
+```c++    
+const int * const myInt;
+```
+
+Again, I discourage the use of this syntax.

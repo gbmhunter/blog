@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-15 07:44:32+00:00
+date: 2011-09-15
 draft: false
 title: JavaScript
 type: page
@@ -14,13 +14,15 @@ The most common use for JavaScript today is to enrich basic HTML webpages, as we
 
 ## Adding JavaScript Code In An HTML Page
 
-There are two basic ways to add Javascript code into a web page. You can either: Include a JavaScript file (.js)
+There are two basic ways to add Javascript code into a web page. You can either:
+
+**Include a JavaScript file (.js)**
 
 ```html    
 <script type="text/javascript" src="myJavascriptFile.js"></script>
 ```
 
-Or include the JavaScript code directly into the web page
+**Or include the JavaScript code directly into the web page:**
 
 ```html    
 <script type="text/javascript">
@@ -85,7 +87,7 @@ var trueFalse = myObj.var2;
 
 ## Message Boxes
 
-A simple message box can be created easily in JavaScript by using the alert() function.
+A simple message box can be created easily in JavaScript by using the `alert()` function.
 
 ```js    
 // Show a simple message box
@@ -94,7 +96,7 @@ alert("This is a simple message box using alert().");
 
 ## The Console
 
-Many browsers support writing to the console with the command console.log() , in a similar manner that you would use printf for C/C++ in a Linux environment. The added ability of console.log() is that it can be passed most objects, and these will be printed with their own ToString() method.
+Many browsers support writing to the console with the command `console.log()`, in a similar manner that you would use `printf` for C/C++ in a Linux environment. The added ability of `console.log()` is that it can be passed most objects, and these will be printed with their own `ToString()` method.
 
 ```js    
 console.log('Printing a simple message to the console.");
@@ -110,11 +112,11 @@ console.log(randomObject);
 
 ## Strings
 
-Strings can be defined with either the " or ' character. Both are allowed, to distinguish between HTML strings and JavaScript strings when JavaScript is wrapped in HTML. In this case, you need to use the ' character for JavaScript strings, and the " character for HTML strings.
+Strings can be defined with either the `"` or `'` character. Both are allowed, to distinguish between HTML strings and JavaScript strings when JavaScript is wrapped in HTML. In this case, you need to use the `'` character for JavaScript strings, and the `"` character for HTML strings.
 
 ## String To Number Conversion
 
-You can use the native javascript function parseFloat() .
+You can use the native javascript function `parseFloat()`.
 
 ```js    
 // Create a string which represents a double
