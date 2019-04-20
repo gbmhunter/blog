@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-12-03 22:08:04+00:00
+date: 2013-12-03
 draft: false
 title: Ultrasonic Sensors
 type: page
-url: /electronics/components/sensors/ultrasonic-sensors
 ---
 
 ## Overview
@@ -14,235 +13,129 @@ Ultrasound is sound waves that are at a frequency **above** the audible range. T
 ## Terminology
 
 <table>
-    <thead>
-        <tr>
-            <th>Term</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody >
-<tr >
-<td>Acoustic Impedance
-</td>
-
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+<tbody>
+<tr>
+<td>Acoustic Impedance</td>
 <td>The acoustic impedance of a material is a measure of it's opposition to displacement by ultrasonic waves. The symbol for acoustic impedance is \(Z\).
 </td>
 </tr>
-<tr >
-
-<td>Apodization
-</td>
-
-<td>When referring to ultrasound, _apodization_ is usually referring to the technique of shaping the wave so that the intensity of the side lobes is reduced. Used in medical ultrasound machines.
+<tr>
+<td>Apodization</td>
+<td>When referring to ultrasound, <i>apodization</i> is usually referring to the technique of shaping the wave so that the intensity of the side lobes is reduced. Used in medical ultrasound machines.
 </td>
 </tr>
-<tr >
-
-<td>Bandwidth
-</td>
-
-<td>The _bandwidth_ of a ultrasonic transducer is the frequency range at which the transducer can operate within.
+<tr>
+<td>Bandwidth</td>
+<td>The <i>bandwidth</i> of a ultrasonic transducer is the frequency range at which the transducer can operate within.
 </td>
 </tr>
-<tr >
-
-<td>Bulk Waves
-</td>
-
-<td>_Bulk waves_ are ultrasonic waves that do not depend on the surface or boundary of the medium it is travelling through. Two types of bulks waves can exist in an isotropic medium, longitudinal and shear waves.
+<tr>
+<td>Bulk Waves</td>
+<td><i>Bulk waves</i> are ultrasonic waves that do not depend on the surface or boundary of the medium it is travelling through. Two types of bulks waves can exist in an isotropic medium, longitudinal and shear waves.
 </td>
 </tr>
-<tr >
-
-<td>Capacitance
-</td>
-
-<td>When talking about piezo-electric transducers, this refers to the capacitance of the transducer, which is typically around 180pF-2.2nF.
-</td>
+<tr>
+<td>Capacitance</td>
+<td>When talking about piezo-electric transducers, this refers to the capacitance of the transducer, which is typically around 180pF-2.2nF.</td>
+</tr>
+<tr>
+<td>CMUT</td>
+<td>CMUT (or cMUT) is an initialism for <i>Capacitive Micromachined Ultrasonic Transducers</i>. They emit ultrasonic waves from a cavity in silicon as their capacitance changes. They work easily at high frequencies due to their small size.</td>
+</tr>
+<tr>
+<td>Collapse Voltage</td>
+<td>Applies to CMUT transducers only. Also see <i>Snapback Voltage</i>.</td>
+</tr>
+<tr>
+<td>Couplant</td>
+<td>A medium which is used to transfer ultrasonic energy from the transducer to the medium under investigation. Common couplants are water, oil or glycerine.</td>
 </tr>
 <tr >
-
-<td>CMUT
-</td>
-
-<td>CMUT (or cMUT) is an initialism for "**Capacitive Micromachined Ultrasonic Transducers**". They emit ultrasonic waves from a cavity in silicon as their capacitance changes. They work easily at high frequencies due to their small size.
-</td>
+<td>Directivity</td>
+<td>A measure of the interaction angle of a ultrasonic sensor with the medium under investigation. Normally defined as the angle range at which the signal is no less the -3dB than the peak. Normally 5-15°.</td>
 </tr>
 <tr >
-
-<td>Collapse Voltage
-</td>
-
-<td>Applies to CMUT transducers only. Also see _Snapback Voltage_.
-</td>
+<td>Fixed Capacitance</td>
+<td>Applies to <i>CMUT</i> transducers only.</td>
 </tr>
 <tr >
-
-<td>Couplant
-</td>
-
-<td>A medium which is used to transfer ultrasonic energy from the transducer to the medium under investigation. Common couplants are water, oil or glycerine.
-</td>
+<td>Free Capacitance</td>
+<td>Applies to <i>CMUT</i> transducers only.</td>
 </tr>
 <tr >
-
-<td>Directivity
-</td>
-
-<td>A measure of the interaction angle of a ultrasonic sensor with the medium under investigation. Normally defined as the angle range at which the signal is no less the -3dB than the peak. Normally 5-15°.
-</td>
+<td>Heterodyne Laser Interferometer</td>
+<td>A laser-based tool that can be used to detect ultrasonic waves.</td>
 </tr>
 <tr >
-
-<td>Fixed Capacitance
-</td>
-
-<td>Applies to _CMUT_ transducers only.
-</td>
+<td>Input Voltage</td>
+<td>When talking about piezo-electric ultrasonic sensors, this is normally the maximum peak-to-peak voltage that can be applied across it's two pins. Normally between 30-200Vp2p.</td>
 </tr>
 <tr >
-
-<td>Free Capacitance
-</td>
-
-<td>Applies to _CMUT_ transducers only.
-</td>
+<td>Kundt's Tube</td>
+<td>Kundt's tube is a long glass tube held in the horizontal direction with lycopodium powder sprinkled inside it. When ultrasonic waves pass through the tube the power forms heaps at the nodal points and is blown off the antinodal points. This works as long as the wavelength of the ultrasound is not too small.</td>
 </tr>
 <tr >
-
-<td>Heterodyne Laser Interferometer
-</td>
-
-<td>A laser-based tool that can be used to detect ultrasonic waves.
-</td>
+<td>LNA</td>
+<td>LNA is an initialism for <i>low noise amplifier</i>. LNAs are used on the front-end of ultra-sonic transducer circuits.</td>
 </tr>
 <tr >
-
-<td>Input Voltage
-</td>
-
-<td>When talking about piezo-electric ultrasonic sensors, this is normally the maximum peak-to-peak voltage that can be applied across it's two pins. Normally between 30-200Vp2p.
-</td>
+<td>Longitudinal Waves</td>
+<td><i>Longitudinal waves</i> (also called distortional, compression or primary waves) are waves whose particles motion is parallel to the direction of the wave propagation. This is opposed to shear waves.</td>
 </tr>
 <tr >
-
-<td>Kundt's Tube
-</td>
-
-<td>Kundt's tube is a long glass tube held in the horizontal direction with lycopodium powder sprinkled inside it. When ultrasonic waves pass through the tube the power forms heaps at the nodal points and is blown off the antinodal points. This works as long as the wavelength of the ultrasound is not too small.
-</td>
+<td>Phased Array</td>
+<td>An array of ultrasonic transducers that is designed to produce a linear wavefront, as opposed to a singular transducer which produces a circular wavefront.</td>
 </tr>
 <tr >
-
-<td>LNA
-</td>
-
-<td>LNA is an initialism for _**low noise amplifier**_. LNAs are used on the front-end of ultra-sonic transducer circuits.
-</td>
+<td>PRF</td>
+<td>PRF is an initialism for <i>pulse repetition frequency</i>. It is the number of ultrasound pulses per second.</td>
 </tr>
 <tr >
-
-<td>Longitudinal Waves
-</td>
-
-<td>_**Longitudinal waves**_ (also called distortional, compression or primary waves) are waves whose particles motion is parallel to the direction of the wave propagation. This is opposed to shear waves.
-</td>
+<td>Ringing</td>
+<td>The is the self-oscillation of a piezo-electric sensor after it has just been driven. The ringing limits the minimum distance that can be measured.</td>
 </tr>
 <tr >
-
-<td>Phased Array
-</td>
-
-<td>An array of ultrasonic transducers that is designed to produce a linear wavefront, as opposed to a singular transducer which produces a circular wavefront.
-</td>
-</tr>
-<tr >
-
-<td>PRF
-</td>
-
-<td>PRF is an initialism for _**pulse repetition frequency**_. It is the number of ultrasound pulses per second.
-</td>
-</tr>
-<tr >
-
-<td>Ringing
-</td>
-
-<td>The is the self-oscillation of a piezo-electric sensor after it has just been driven. The ringing limits the minimum distance that can be measured.
-</td>
-</tr>
-<tr >
-
-<td>Sensitivity
-</td>
-
+<td>Sensitivity</td>
 <td>Used to describe an ultrasonic transducers electrical response to received ultrasonic energy, usually measure in \(dB\). Common values are around \(-75dB\).
 </td>
 </tr>
 <tr >
-
-<td>Shear Waves
-</td>
-
-<td>Shear waves (also called distortional, transverse or secondary waves) are waves whose particle motion is perpendicular to the direction of the wave propagation. This is opposed to longitudinal waves.
-</td>
+<td>Shear Waves</td>
+<td>Shear waves (also called distortional, transverse or secondary waves) are waves whose particle motion is perpendicular to the direction of the wave propagation. This is opposed to longitudinal waves.</td>
 </tr>
 <tr >
-
-<td>Snapback Voltage
-</td>
-
-<td>Applies to CMUT transducers only. Also see _Collapse Voltage_.
-</td>
+<td>Snapback Voltage</td>
+<td>Applies to CMUT transducers only. Also see <i>Collapse Voltage</i>.</td>
 </tr>
 <tr >
-
-<td>Sonotrode
-</td>
-
-<td>A sonotrode is a tool used in ultrasonic welding to apply the vibration energy to the material to be welded.
-</td>
+<td>Sonotrode</td>
+<td>A sonotrode is a tool used in ultrasonic welding to apply the vibration energy to the material to be welded.</td>
 </tr>
 <tr >
-
-<td>SPL
-</td>
-
-<td>SPL is an initialism for _**Sound Pressure Level**_. A common value for an ultrasonic transducer is \(110dB\).
-</td>
+<td>SPL</td>
+<td>SPL is an initialism for <i>Sound Pressure Level</i>. A common value for an ultrasonic transducer is \(110dB\).</td>
 </tr>
 <tr >
-
-<td>Temporal Resolution
-</td>
-
-<td>A ability to accurately locate events at a particular instant in time. Related to _Spatial Resolution_.
-</td>
+<td>Temporal Resolution</td>
+<td>A ability to accurately locate events at a particular instant in time. Related to <i>Spatial Resolution</i>.</td>
 </tr>
 <tr >
-
-<td>TGA
-</td>
-
-<td>TGA is an initialism for _**T****ime Gain Amplifier**_. They are used on the front-end of ultrasonic transducer circuits to compensate for the fact that returning ultrasonic signals are attenuated the further they travel.
-</td>
+<td>TGA</td>
+<td>TGA is an initialism for <i>Time Gain Amplifier</i>. They are used on the front-end of ultrasonic transducer circuits to compensate for the fact that returning ultrasonic signals are attenuated the further they travel.</td>
 </tr>
 <tr >
-
-<td>TOF
-</td>
-
-<td>TOF is an initialism for _**Time Of Flight**_. It is when the time is measured between emitted and received waveforms, and distance information is determined from this, when knowing the speed and which the wave travels through the medium.
-</td>
+<td>TOF</td>
+<td>TOF is an initialism for <i>Time Of Flight</i>. It is when the time is measured between emitted and received waveforms, and distance information is determined from this, when knowing the speed and which the wave travels through the medium.</td>
 </tr>
 <tr >
-
-<td>TOFD
-</td>
-
-<td>TOFD is an initialism for _**Time Of Flight Diffraction**_. It is used for the non-destructive testing of weld defects.
-</td>
+<td>TOFD</td>
+<td>TOFD is an initialism for <i>Time Of Flight Diffraction</i>. It is used for the non-destructive testing of weld defects.</td>
 </tr>
 </tbody>
 </table>
@@ -259,7 +152,7 @@ Ultrasound sensors are not effected by the translucence of the target object. Fo
 
 Open and closed types. The following image shows a open type piezo-electric ultrasonic transducer commonly used by electronic hobbyists, robiticists, and the maker community, called the HC-SR04. These modules integrate easily with the Arduino microcontroller platform.
 
-{{< figure src="/images/2013/12/arduino-ultrasound-module.jpg" width="1200px" caption="An Arduino compatible ultrasound module."  >}}
+{{< img src="arduino-ultrasound-module.jpg" width="1200px" caption="An Arduino compatible ultrasound module."  >}}
 
 High-power types have a power rating between 40-150W. These types of ultrasonic transmitters are used for ultrasonic cleaning.
 
@@ -268,11 +161,13 @@ High-power types have a power rating between 40-150W. These types of ultrasonic 
 * Ultrasound modules for tank level measurement. They normally can measure a range of liquids including water, black water, oil, petrol, diesel without any adjustment (liquid type agnostic). Range is typically from 100mm to 4m. Some have focusers made of materials such as glass-reinforced polypropylene to produce narrow beams.
 * Ultrasound cleaners are used to clean objects by vibrating the dirt/greese from them. They are commonly used to clean the resin of circuit boards after soldering.
 * High-end wind sensors (anemometers) use ultrasound to measure the wind speed and direction (or more concisely, it's velocity).
-{{< figure src="/images/2013/12/3d-sonic-anemometer.jpg" width="149px" caption="A 3D sonic anemometer. Image from http://www.thiesclima.com/ultrasonic_anemometer_3d_e.html."  >}}
-  
+
+    {{< img src="3d-sonic-anemometer.jpg" width="149px" caption="A 3D sonic anemometer. Image from http://www.thiesclima.com/ultrasonic_anemometer_3d_e.html."  >}}
+    
 * Similar to anemometers, ultrasonic flowmeters can be used to determine the speed and direction of liquid within pipes.
 * Ultrasonic devices are used in the medical world for getting images of body parts (e.g. an unborn baby). Human tissue attenuates ultrasound by approximately 1dB/cm/MHz.
-{{< figure src="/images/2013/12/medical-ultrasonic-sensor-sonosite-c60x.jpg" width="286px" caption="The C60X medical ultrasound sensor by Sonosite. Image from http://www.sonosite.com/accessories/c60x-0."  >}}
+  
+    {{< img src="medical-ultrasonic-sensor-sonosite-c60x.jpg" width="286px" caption="The C60X medical ultrasound sensor by Sonosite. Image from http://www.sonosite.com/accessories/c60x-0."  >}}
 
 * Parking sensors in vehicles commonly use ultrasound sensors for distance detection.
 * Manufacturing processes such as flaw detection, thickness gauging, weld inspection.
@@ -291,7 +186,7 @@ High-power types have a power rating between 40-150W. These types of ultrasonic 
 
 With a simple single transducer acting as both the receiver and transmitter, the further away the object you wish to detect, the slower your maximum sample frequency can be, as you have to wait longer for the ultrasonic wave to return.
 
-{{< figure src="/images/2013/12/detection-beam-pattern-of-sonarange-ups-ultrasonic-transducers.png" width="358px" caption="The detection beam pattern of some ultrasonic transducers by Sonarange. Image from http://www.sntag.ch/data/Datenblatt%20e%20UPS.pdf."  >}}
+{{< img src="detection-beam-pattern-of-sonarange-ups-ultrasonic-transducers.png" width="358px" caption="The detection beam pattern of some ultrasonic transducers by Sonarange. Image from http://www.sntag.ch/data/Datenblatt%20e%20UPS.pdf."  >}}
 
 ## Minimum Range
 
@@ -303,7 +198,7 @@ The minimum range of a single ultrasonic transmitter/receiver is primarily deter
 
 The combination of these three factors creates a dead-zone right in-front of the transducer at which the ultrasonic transceiver cannot detect anything. A larger rise-time, a larger ring-down time, or a denser medium (one which ultrasound travels faster through), will all increase the dead-zone distance. A separate transmitter/receiver circuit like the one shown below does not suffer from the first two issues.
 
-{{< figure src="/images/2013/12/ultrasonic-proximity-detector-circuit-with-seperate-transmitter-and-receiver.png" width="988px" caption="A ultrasonic proximity detector circuit with separate transmitter and receiver. Image from http://www.datasheetarchive.com/dl/Scans-004/Scans-0082375.pdf."  >}}
+{{< img src="ultrasonic-proximity-detector-circuit-with-seperate-transmitter-and-receiver.png" width="988px" caption="A ultrasonic proximity detector circuit with separate transmitter and receiver. Image from http://www.datasheetarchive.com/dl/Scans-004/Scans-0082375.pdf."  >}}
 
 ## Maximum Range
 
@@ -320,7 +215,7 @@ The maximum range of a ultrasonic transducer is primarily determined by:
 
 Higher frequency ultrasonic waveforms lose energy quicker when travelling through a medium. For this reason low-frequency (40kHZ) is normally used when air is the medium. Higher frequencies such as 1MHz are used when the medium is water or metal.
 
-{{< figure src="/images/2013/12/graph-of-audible-and-ultrasound-frequency-range-with-subsections.png" width="561px" caption="A graph showing the audible and ultrasound ranges of the sound spectrum, with subsections. Image from http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf."  >}}
+{{< img src="graph-of-audible-and-ultrasound-frequency-range-with-subsections.png" width="561px" caption="A graph showing the audible and ultrasound ranges of the sound spectrum, with subsections. Image from http://www.olympus-ims.com/data/File/panametrics/UT-technotes.en.pdf."  >}}
 
 When using ultrasound for imaging, the frequency of the ultrasound determines the image resolution.
 
@@ -349,140 +244,72 @@ Speed of sound through various mediums:
     </thead>
 <tbody >
 <tr>
-
-<td >Air
-</td>
-
-<td >331.32
-</td>
+<td >Air</td>
+<td >331.32</td>
 </tr>
 <tr >
-
-<td >Ammonia
-</td>
-
-<td >414.83
-</td>
+<td >Ammonia</td>
+<td >414.83</td>
 </tr>
 <tr >
-
-<td >Argon
-</td>
-
-<td >301.90
-</td>
+<td >Argon</td>
+<td >301.90</td>
 </tr>
 <tr >
-
-<td >Carbon Dioxide
-</td>
-
-<td >257.86 (low freq), 268.53 (high freq)
-</td>
+<td >Carbon Dioxide</td>
+<td >257.86 (low freq), 268.53 (high freq)</td>
 </tr>
 <tr >
-
-<td >Carbon Disulfide
-</td>
-
-<td >184.71
-</td>
+<td >Carbon Disulfide</td>
+<td >184.71</td>
 </tr>
 <tr >
-
-<td >Carbon Monoxide
-</td>
-
-<td >337.12
-</td>
+<td >Carbon Monoxide</td>
+<td >337.12</td>
 </tr>
 <tr >
-
-<td >Chlorine
-</td>
-
-<td >205.44
-</td>
+<td >Chlorine</td>
+<td >205.44</td>
 </tr>
 <tr >
-
-<td >Ethylene
-</td>
-
-<td >313.94
-</td>
+<td >Ethylene</td>
+<td >313.94</td>
 </tr>
 <tr >
-
-<td >Helium
-</td>
-
-<td >969.87
-</td>
+<td >Helium</td>
+<td >969.87</td>
 </tr>
 <tr >
-
-<td >Hydrogen
-</td>
-
-<td >1269.49
-</td>
+<td >Hydrogen</td>
+<td >1269.49</td>
 </tr>
 <tr >
-
-<td >Methane
-</td>
-
-<td >431.90
-</td>
+<td >Methane</td>
+<td >431.90</td>
 </tr>
 <tr >
-
-<td >Neon
-</td>
-
-<td >434.95
-</td>
+<td >Neon</td>
+<td >434.95</td>
 </tr>
 <tr >
-
-<td >Nitric Oxide
-</td>
-
-<td >324.92
-</td>
+<td >Nitric Oxide</td>
+<td >324.92</td>
 </tr>
 <tr >
-
-<td >Nitrogen
-</td>
-
-<td >334.06
-</td>
+<td >Nitrogen</td>
+<td >334.06</td>
 </tr>
 <tr >
-
-<td >Nitrous Oxide
-</td>
-
-<td >261.82
-</td>
+<td >Nitrous Oxide</td>
+<td >261.82</td>
 </tr>
 <tr >
-
-<td >Oxygen
-</td>
-
-<td >317.30
-</td>
+<td >Oxygen</td>
+<td >317.30</td>
 </tr>
 <tr >
-
-<td >Steam (100°C)
-</td>
-
-<td >403.25
-</td>
+<td >Steam (100°C)</td>
+<td >403.25</td>
 </tr>
 </tbody>
 </table>
@@ -533,33 +360,19 @@ Acoustic impedance is the measure of opposition to deflection of a mediums parti
 <tr >
 <td >Air (room temperature)
 </td>
-
-<td >415
-</td>
+<td >415</td>
 </tr>
 <tr >
-
-<td >Lead
-</td>
-
-<td >246
-</td>
+<td >Lead</td>
+<td >246</td>
 </tr>
 <tr >
-
-<td >Steel (1020)
-</td>
-
-<td >454
-</td>
+<td >Steel (1020)</td>
+<td >454</td>
 </tr>
 <tr >
-
-<td >Tin
-</td>
-
-<td >242
-</td>
+<td >Tin</td>
+<td >242</td>
 </tr>
 </tbody>
 </table>
@@ -611,9 +424,9 @@ Detected objects can be classified as follows:
 * (B) Cylindrical objects such as cans, bottles and human bodies
 * (C) Powders and chunky objects such as minerals, rocks, coal, plastic, rubbish
 
-## CMUT's
+## CMUTs
 
-CMUTs use a change in capacitance to perform energy transduction. They are micromachined (i.e. small), and therefore easier to assemble into 2D and 3D arrays than traditional pizeo transducers. They have a large frequency bandwidth.
+CMUTs use a change in capacitance to perform energy transduction. They are micromachined (i.e. small), and therefore easier to assemble into 2D and 3D arrays than traditional piezo transducers. They have a large frequency bandwidth.
 
 ## External Resources
 

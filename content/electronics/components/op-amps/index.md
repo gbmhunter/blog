@@ -1,8 +1,10 @@
 ---
 author: "gbmhunter"
+categories: [ "Electronics", "Components" ]
 date: 2011-09-05
 draft: false
 lastmod: 2019-01-10
+tags: [ "op-amps", "schematic symbol", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "component" ]
 title: "Op-Amps"
 type: "page"
 ---
@@ -79,7 +81,7 @@ The results of the simulation are shown below. As you can see, the output voltag
 
 A op-amp amplifier in the inverting configuration is shown below:
 
-{{< figure src="/images/2011/09/op-amp-schematic-inverting-amplifier.png" width="473px" caption="An op-amp configured as an inverting amplifier."  >}}
+{{< img src="op-amp-schematic-inverting-amplifier.png" width="473px" caption="An op-amp configured as an inverting amplifier."  >}}
 
 The equation for the gain of an inverting amplifier is:
 

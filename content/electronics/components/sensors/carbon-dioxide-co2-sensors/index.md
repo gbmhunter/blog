@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-04-03 07:15:06+00:00
+date: 2013-04-03
 draft: false
 title: Carbon Dioxide (CO2) Sensors
 type: page
-url: /electronics/components/sensors/carbon-dioxide-co2-sensors
 ---
 
 ## Overview

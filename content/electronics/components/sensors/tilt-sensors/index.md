@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-10-13 21:32:47+00:00
+date: 2013-10-13
 draft: false
 title: Tilt Sensors
 type: page
-url: /electronics/components/sensors/tilt-sensors
 ---
 
 ## Overview

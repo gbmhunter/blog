@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2016-02-04 20:48:53+00:00
+date: 2016-02-04
 draft: false
 title: Humidity Sensors
 type: page
-url: /electronics/components/sensors/humidity-sensors
 ---
 
 ## Types
@@ -13,7 +12,13 @@ Humidity sensors can either contain just the humidity sensing component (which m
 
 ## Uses
 
-Humidity sensors are commonly used in the following equipment:  * Air conditioning, heating and ventilation  * Refrigerators  * Industrial automation  * Asset and goods tracking  * Medical equipment (respiratory devices)
+Humidity sensors are commonly used in the following equipment:
+
+* Air conditioning, heating and ventilation
+* Refrigerators
+* Industrial automation
+* Asset and goods tracking
+* Medical equipment (respiratory devices)
 
 ## Relative Humidity
 
@@ -21,7 +26,7 @@ Relative humidity is defined as the ratio of the water vapour pressure to the sa
 
 It is ratio of the actual amount of water in the air to the total amount it could when saturated.
 
-$$ RH = \frac{P_W}{P_{WS}}\cdot 100% $$
+<p>$$ RH = \frac{P_W}{P_{WS}}\cdot 100% $$</p>
 
 ## Dew Point
 
@@ -56,32 +61,32 @@ The values of the constants `\(a\)`, `\(b\)` and `\(c\)` can vary depending on t
 The following is a code example in C showing a function which converts temperature and relative humidity into a dew point, using the simple Magnus equation.
 
 ```c
-    #include <math.h>
-    
-    //! @brief		The B constant for the Magnus equation to calculate the dew point.
-    #define DEW_POINT_CONSTANT_B_NO_UNIT	17.67
-    
-    //! @brief		The C constant for the Magnus equation to calculate the dew point.
-    #define DEW_POINT_CONSTANT_C_DEG_C		243.5
-    
-    //! @brief		Calculates the dew point (in degrees Celcius) from the temperature and relative humidity.
-    //! @details 	Uses the Magnus formula, given at https://en.wikipedia.org/wiki/Dew_point.
-    //! @param		temperature_DegC 		The temperature of the atmosphere at which the relative humidity was measured.
-    //! @param		relHumidity_Perc 		The relative humidity (as a percentage from 0-100) of the atmosphere measured.
-    //! @returns 	The dew point (in degrees Celcius) of the atmosphere.
-    double Humidity_CalcDewPointDegC(double temperature_DegC, double relHumidity_Perc) {
-    	
-    	// This uses the Magnus equation as explained at https://en.wikipedia.org/wiki/Dew_point
-    	
-    	// Calculate gamma, which is just a way of splitting up the equation into two operations
-    	double gamma = log(relHumidity_Perc/100.0) + (DEW_POINT_CONSTANT_B_NO_UNIT*temperature_DegC)/(DEW_POINT_CONSTANT_C_DEG_C + temperature_DegC);
-    	
-    	// Finally, calculate the dew point (in degrees Celcius)
-    	double dewPoint_DegC = (DEW_POINT_CONSTANT_C_DEG_C*gamma)/(DEW_POINT_CONSTANT_B_NO_UNIT - gamma);
-    	
-    	return dewPoint_DegC;
-    	
-    }
+#include <math.h>
+
+//! @brief		The B constant for the Magnus equation to calculate the dew point.
+#define DEW_POINT_CONSTANT_B_NO_UNIT	17.67
+
+//! @brief		The C constant for the Magnus equation to calculate the dew point.
+#define DEW_POINT_CONSTANT_C_DEG_C		243.5
+
+//! @brief		Calculates the dew point (in degrees Celcius) from the temperature and relative humidity.
+//! @details 	Uses the Magnus formula, given at https://en.wikipedia.org/wiki/Dew_point.
+//! @param		temperature_DegC 		The temperature of the atmosphere at which the relative humidity was measured.
+//! @param		relHumidity_Perc 		The relative humidity (as a percentage from 0-100) of the atmosphere measured.
+//! @returns 	The dew point (in degrees Celcius) of the atmosphere.
+double Humidity_CalcDewPointDegC(double temperature_DegC, double relHumidity_Perc) {
+  
+  // This uses the Magnus equation as explained at https://en.wikipedia.org/wiki/Dew_point
+  
+  // Calculate gamma, which is just a way of splitting up the equation into two operations
+  double gamma = log(relHumidity_Perc/100.0) + (DEW_POINT_CONSTANT_B_NO_UNIT*temperature_DegC)/(DEW_POINT_CONSTANT_C_DEG_C + temperature_DegC);
+  
+  // Finally, calculate the dew point (in degrees Celcius)
+  double dewPoint_DegC = (DEW_POINT_CONSTANT_C_DEG_C*gamma)/(DEW_POINT_CONSTANT_B_NO_UNIT - gamma);
+  
+  return dewPoint_DegC;
+  
+}
 ```
 
 ## Examples

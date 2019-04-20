@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Components" ]
 date: 2012-05-14
 draft: false
+tags: [ "resistor", "resistors", "component", "electronics", "schematic symbol", "tolerance", "E series", "packages", "thick film", "thin film" ]
 title: Resistors
 type: page
 ---
@@ -82,13 +84,13 @@ An interesting example I have seen of a resistor divider powering a circuit was 
 
 The [NinjaCalc program](http://mbedded-ninja.github.io/NinjaCalc/) has a calculator that can work out voltages, resistances and currents of a resistor divider.
 
-{{< img src="screenshot-of-ninjacalc-resistor-divider-calculator.png" width="604px" caption="A screenshot of the NinjaCalc's 'Resistor Divider' calculator, being used to find the top resistance."  >}}
+{{< img src="screenshot-of-ninjacalc-resistor-divider-calculator.png" width="604px" caption="A screenshot of the NinjaCalc's 'Resistor Divider' calculator, being used to find the top resistance." >}}
 
 ## Variable Resistors
 
 The output of a potentiometer varies depending on the wiper position. If varies from 0R when the wiper is at both ends of the pot to a maximum of Rpot/4 when the wiper is in the middle.
 
-You call also get variable resistors which can be changed digitially (called DPOT's). They have their own page which can be found [here](/electronics/components/dpots).
+You call also get variable resistors which can be changed digitially (called DPOTs). They have their own page which can be found [here](/electronics/components/dpots).
 
 ## Tolerances
 
@@ -215,7 +217,7 @@ Power resistors is a term used with resistors which are usually rated to dissipa
 
 They can be used to intentionally heat things, as the picture below shows. This image below is a common 5W resistor being used to heat a small container of oil, with a copper thermostat from a hot water cylinder being used to control the temperature.
 
-{{< figure src="/images/2012/05/using-a-power-resistor-to-heat-oil.jpg" width="1600px" caption="Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature."  >}}
+{{< img src="using-a-power-resistor-to-heat-oil.jpg" width="1600px" caption="Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature."  >}}
 
 ## Current-Sense Resistors
 

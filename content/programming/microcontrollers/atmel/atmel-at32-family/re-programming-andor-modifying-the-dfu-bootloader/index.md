@@ -26,7 +26,8 @@ $ unzip AVR-UC3-SoftwareFramework-1.7.0.zip
 
 This should put all the files into a directory called `1.7.0-ATUC3`. Sweet! Now you can find the bootloader source code at `1.7.0-AT32UC3/SERVICES/USB/CLASS/DFU/EXAMPLES/ISP`. In this directory you should find the source code and associated headers (`isp.c/h`, `usb_dfu.c/h`). There are also sub-directories containing files specific to the different sub-families of the `AT32UC3` (e.g. `AT32UC3A`, `AT32UC3A3`, `AT32UC3B`, ...).
 
-At this point I will pick a particular sub-family for the rest of the tutorial, the `AT32UC3A`. Obviously, replace all occurrences of this name with your particular sub-family. If you navigate into the `AT32UC3A` sub-folder, you will find an `IAR` and a `GCC` folder. Since we are using Linux, and the license for `GCC` does not cost any money, we will choose `GCC`. Go into the `GCC` folder.
+At this point I will pick a particular sub-family for the rest of the tutorial, the `AT32UC3A`. Obviously, replace all occurrences of this name with your particular sub-family. If you navigate into the `AT32UC3A` sub-folder, you will find an `IAR` and a `GCC` folder. Since we are using Linux, and the license for `GCC` does not cost any money, we will choose `GCC`. Go into the `GCC`
+ folder.
 
 Your path should now be:
 

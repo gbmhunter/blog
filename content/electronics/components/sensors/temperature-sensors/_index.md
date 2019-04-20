@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-11-08 05:09:44+00:00
+date: 2012-11-08
 draft: false
 title: Temperature Sensors
 type: page
@@ -10,7 +10,7 @@ type: page
 
 Temperature sensors are electronic transducers which measure the temperature of the nearby body (which in many cases is the temperature sensor itself) and then converts it into either a analogue or digital electrical signal.
 
-{{< figure src="/images/2012/11/schematic-icon-for-temperature-sensor.png" width="343px" caption="A schematic icon for a temperature sensor."  >}}
+{{< img src="schematic-icon-for-temperature-sensor.png" width="343px" caption="A schematic icon for a temperature sensor."  >}}
 
 ## Thermostats
 

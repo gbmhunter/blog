@@ -64,3 +64,6 @@ $ pipenv install --two LinkChecker
 * Vim (if you're a vim fan!)
 * EditorConfig for VS Code (promotes consistent coding styles)
 
+# Markdown Extensions
+
+The syntax `<www.google.com>` can be used (instead of `[www.google.com](www.google.com)`) to include a link in where the displayed text is the same as the href.

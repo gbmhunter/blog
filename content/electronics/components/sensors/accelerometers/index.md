@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2014-12-11 21:18:35+00:00
+date: 2014-12-11
 draft: false
 title: Accelerometers
 type: page

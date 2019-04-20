@@ -198,7 +198,9 @@ Patch antennas are common on circuit boards (PCBs), and also for plug in antenna
 
 They are normally made from a base ceramic material (and called ceramic patch antennas). They are typically more expensive than chip antennas but cheaper than helical antennas.
 
-{{< img src="gps-patch-antenna-02-photo.jpg" width="358px" caption="Photo of a SMD mounted GPS patch antenna. Image from www.digikey.com."  >}} {{< figure src="/images/2013/10/gps-external-patch-antenna-photo.jpg" width="407px" caption="Photo of an external (to PCB) GPS patch antenna. Image from www.digikey.com."  >}}
+{{< img src="gps-patch-antenna-02-photo.jpg" width="358px" caption="Photo of a SMD mounted GPS patch antenna. Image from www.digikey.com."  >}}
+
+{{< img src="gps-external-patch-antenna-photo.jpg" width="407px" caption="Photo of an external (to PCB) GPS patch antenna. Image from www.digikey.com."  >}}
 
 ## Relativity
 

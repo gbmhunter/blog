@@ -35,7 +35,7 @@ The pins in a bank are labelled something like `IO_L14P_T2_SRCC_14`. What does t
 
 Xilinx gives strict recommendations on the parameters of the capacitors used for decoupling. The following image shows a table with the ESL, ESR and body size limits for the various-valued capacitances.
 
-{{< figure src="/images/2015/08/xilinx-7-series-decoupling-capacitor-parameter-value-recommendations.png" width="447px" caption="The parameter value recommendations for decoupling caps used for a Xilinx 7 Series FPGA." >}}
+{{< img src="xilinx-7-series-decoupling-capacitor-parameter-value-recommendations.png" width="447px" caption="The parameter value recommendations for decoupling caps used for a Xilinx 7 Series FPGA." >}}
 
 {{% note %}}
 There is a range specified for the ESR, it is also bad to have too-little series resistance.

@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2014-12-02 21:10:33+00:00
+date: 2014-12-02
 draft: false
 title: Inertial Measurement Units (IMUs)
 type: page
@@ -16,7 +16,7 @@ The can include digital motion processors (DMPs). This offloads some of the proc
 
 The accelerometers usually exploit the Coriolis effect and a capacitor sensor to measure the angular rate in a axis.
 
-Some IMU's negate the temperature drift by measuring their own temperature and performing self-compensation for these errors.
+Some IMUs negate the temperature drift by measuring their own temperature and performing self-compensation for these errors.
 
 ## Performance
 
@@ -24,7 +24,7 @@ The performance of IMU is normally expressed as a full-scale range and resolutio
 
 ## Navigation
 
-IMU's calculate their current position based on data from it's last known position(s), and they suffer from locational errors which accumulate over time. This is called **dead reckoning**. GPS does not have this problem.
+IMUs calculate their current position based on data from it's last known position(s), and they suffer from locational errors which accumulate over time. This is called **dead reckoning**. GPS does not have this problem.
 
 ## Communication
 
@@ -36,13 +36,13 @@ More and more GPS units are beginning to support integration with an IMU unit to
 
 ## Software
 
-[RTIMULib](https://github.com/RTIMULib/RTIMULib) is a pretty nice software package which makes it easier to get IMU's working with operating systems (including "embedded" ones such as the RaspberryPi). The writer, "richards-tech", also has a version of this for the Arduino, which makes it easy to use the Arduino as an I2C host to read back data from popular IMU's, send it via UART to a computer, where it can be processed.
+[RTIMULib](https://github.com/RTIMULib/RTIMULib) is a pretty nice software package which makes it easier to get IMUs working with operating systems (including "embedded" ones such as the RaspberryPi). The writer, "richards-tech", also has a version of this for the Arduino, which makes it easy to use the Arduino as an I2C host to read back data from popular IMUs, send it via UART to a computer, where it can be processed.
 
-{{< figure src="/images/2014/12/screenshot-playing-around-with-rthostimugl.png" width="782px" caption="Playing around with RTHostIMUGL and a connected IMU through an Arduino."  >}}
+{{< img src="screenshot-playing-around-with-rthostimugl.png" width="782px" caption="Playing around with RTHostIMUGL and a connected IMU through an Arduino." >}}
 
 ## Packages
 
-A big advantage of an IMU is the reduced PCB footprint due the the combination of multiple sensors into a single package. These are sometimes called system-in-packages (SIP's). 3x3x1mm package.
+A big advantage of an IMU is the reduced PCB footprint due the the combination of multiple sensors into a single package. These are sometimes called system-in-packages (SIPs). 3x3x1mm package.
 
 ## Examples
 
@@ -51,31 +51,18 @@ A big advantage of an IMU is the reduced PCB footprint due the the combination o
 <table>
 <tbody >
 <tr >
-
-<td >Manufacturer
-</td>
-
-<td >IvenSense
-</td>
+<td >Manufacturer</td>
+<td >IvenSense</td>
 </tr>
 <tr >
-
-<td >Part Number
-</td>
-
-<td >MPU-9250
-</td>
+<td >Part Number</td>
+<td >MPU-9250</td>
 </tr>
 <tr >
-
-<td >Supply Voltage
-</td>
-
-<td >2.4-3.6V
-</td>
+<td >Supply Voltage</td>
+<td >2.4-3.6V</td>
 </tr>
 <tr >
-
 <td >Gyroscope Full-scale Range
 </td>
 
@@ -177,128 +164,67 @@ It has an on-board digital motion processor (DMP). Note that although the QFN pa
 
 ## LSM9DS1
 
-
 <table>
 <tbody >
 <tr >
-
-<td >Manufacturer
-</td>
-
-<td >ST
-</td>
+<td >Manufacturer</td>
+<td >ST</td>
 </tr>
 <tr >
-
-<td >Part Number
-</td>
-
-<td >LSM9DS1
-</td>
+<td >Part Number</td>
+<td >LSM9DS1</td>
 </tr>
 <tr >
-
-<td >Supply Voltage
-</td>
-
-<td >1.9-3.6V
-</td>
+<td >Supply Voltage</td>
+<td >1.9-3.6V</td>
 </tr>
 <tr >
-
-<td >Gyroscope Full-scale Range
-</td>
-
-<td >±245º/s, ±500º/s, ±2000º/s
-</td>
+<td >Gyroscope Full-scale Range</td>
+<td >±245º/s, ±500º/s, ±2000º/s</td>
 </tr>
 <tr >
-
-<td >Gyroscope Sensitivity (max)
-</td>
-
-<td >7.48mº/LSB
-</td>
+<td >Gyroscope Sensitivity (max)</td>
+<td >7.48mº/LSB</td>
 </tr>
 <tr >
-
-<td >Gyroscope Accuracy
-</td>
-
-<td >±%
-</td>
+<td >Gyroscope Accuracy</td>
+<td >±%</td>
 </tr>
 <tr >
-
-<td >Accelerometer Full-scale Range
-</td>
-
-<td >±2g, ±4g, ±8g
-</td>
+<td >Accelerometer Full-scale Range</td>
+<td >±2g, ±4g, ±8g</td>
 </tr>
 <tr >
-
-<td >Accelerometer Sensitivity (max)
-</td>
-
-<td >61.0ug/LSB
-</td>
+<td >Accelerometer Sensitivity (max)</td>
+<td >61.0ug/LSB</td>
 </tr>
 <tr >
-
-<td >Accelerometer Accuracy (initial)
-</td>
-
-<td >±%
-</td>
+<td >Accelerometer Accuracy (initial)</td>
+<td >±%</td>
 </tr>
 <tr >
-
-<td >Magnetometer Full-scale Range
-</td>
-
-<td >±400uT, ±800uT, ±1200uT,±1600uT
-</td>
+<td >Magnetometer Full-scale Range</td>
+<td >±400uT, ±800uT, ±1200uT,±1600uT</td>
 </tr>
 <tr >
-
-<td >Magnetometer Sensitivity
-</td>
-
-<td >12.2nT/LSB
-</td>
+<td >Magnetometer Sensitivity</td>
+<td >12.2nT/LSB</td>
 </tr>
 <tr >
-
-<td >Magnetometer Accuracy (initial calibration accuracy)
-</td>
-
-<td >±uT
-</td>
+<td >Magnetometer Accuracy (initial calibration accuracy)</td>
+<td >±uT</td>
 </tr>
 <tr >
-
-<td >Communication Interfaces
-</td>
-
-<td >I2C, SPI
-</td>
+<td >Communication Interfaces</td>
+<td >I2C, SPI</td>
 </tr>
 <tr >
-
-<td >Package
-</td>
-
-<td >LGA-24L (3.5x3.0x1.0mm)
-</td>
+<td >Package</td>
+<td >LGA-24L (3.5x3.0x1.0mm)</td>
 </tr>
 <tr >
-
-<td >Price (as of Dec 2014)
-</td>
-
-<td >US$8.35 (1)
-</td>
+<td >Price (as of Dec 2014)</td>
+<td >US$8.35 (1)</td>
 </tr>
 </tbody>
 </table>
@@ -307,11 +233,11 @@ The LSM9DS1 is part of the iNEMO family.
 
 ## Others
 
-Analog devices makes high-end military grade IMU's.
+Analog devices makes high-end military grade IMUs.
 
 ST makes the iNEMO family of IMU modules.
 
-DigiKey lists IMU's under the section [Sensors, Transducers -> Multifunction](http://www.digikey.com/product-search/en/sensors-transducers/multifunction/). The [STMicroelectronics LSM330TR](http://www.digikey.com/product-detail/en/LSM330TR/497-14381-1-ND/) is the cheapest accelerometer/gyro I could find on DigiKey as of Dec 2014 with a price of US$3.40 (100).
+DigiKey lists IMUs under the section [Sensors, Transducers -> Multifunction](http://www.digikey.com/product-search/en/sensors-transducers/multifunction/). The [STMicroelectronics LSM330TR](http://www.digikey.com/product-detail/en/LSM330TR/497-14381-1-ND/) is the cheapest accelerometer/gyro I could find on DigiKey as of Dec 2014 with a price of US$3.40 (100).
 
 ST and InvenSense are the dominant manufacturers of the chips used on the [Sparkfun IMU modules](https://www.sparkfun.com/categories/160).
 

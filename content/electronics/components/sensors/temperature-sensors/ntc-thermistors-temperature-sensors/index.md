@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2016-04-12 03:39:24+00:00
+date: 2016-04-12
 draft: false
 title: NTC Thermistors (Temperature Sensors)
 type: page
-url: /electronics/components/sensors/temperature-sensors/ntc-thermistors-temperature-sensors
 ---
 
 ## Overview
