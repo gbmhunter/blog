@@ -2,6 +2,7 @@
 author: gbmhunter
 date: 2011-09-03
 draft: false
+tags: [ "MOSFET", "transistor", "field-effect transistor", "metal oxide semiconductor", "schematic", "electronics", "switch", "inverter", "H-bridge", "half-bridge", "switch-mode" ]
 title: MOSFETs
 type: page
 ---
@@ -25,7 +26,7 @@ MOSFETs should not be confused with MODFETs (modulation-doped FETs) or MESFETs (
 
 The following image shows the schematic symbol and pin names for both an N-channel and P-channel MOSFET.
 
-{{< figure src="/images/electronics-misc/mosfet-schematic-symbols-n-ch-p-ch.png" caption="The schematic symbol and pin names for both an n-channel and p-channel MOSFET."  width="400px" >}}
+{{< img src="mosfet-schematic-symbols-n-ch-p-ch.png" caption="The schematic symbol and pin names for both an n-channel and p-channel MOSFET."  width="400px" >}}
 
 ## Important Parameters
 
@@ -43,30 +44,27 @@ Sorted by alphabetical order, including subscripts.
     </thead>
 <tbody>
 <tr >
-<td >\(R_{DS(on)}\)
-</td>
-<td >On-state drain-source resistance.
-</td>
-<td >The resistance between drain and source when the MOSFET is turned on. Usually around 1-10Ω for smaller MOSFETs, and can be as low as 1m for larger power MOSFETs.
-</td></tr><tr >
-<td >\(V_{DS(max)}\)
-</td>
-<td >Maximum drain-source voltage.
-</td>
-<td >The maximum allowed voltage between the drain and source. A higher voltage can cause the MOSFET to breakdown.
-</td></tr><tr >
-<td >\(V_{GS(max)}\)
-</td>
-<td >Maximum gate-source voltage
-</td>
-<td >The maximum allowed gate-source voltage. Voltages above this may destroy the MOSFET due to gate punch-through.
-</td></tr><tr >
-<td >\(V_{GS(th)}\)
-</td>
-<td >Threshold voltage.
-</td>
-<td >The voltage between the gate-source at which the MOSFET begins to turn on.  The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet.
-</td></tr></tbody></table>
+<td >\(R_{DS(on)}\)</td>
+<td >On-state drain-source resistance.</td>
+<td >The resistance between drain and source when the MOSFET is turned on. Usually around 1-10Ω for smaller MOSFETs, and can be as low as 1m for larger power MOSFETs.</td>
+</tr>
+<tr >
+<td >\(V_{DS(max)}\)</td>
+<td >Maximum drain-source voltage.</td>
+<td >The maximum allowed voltage between the drain and source. A higher voltage can cause the MOSFET to breakdown.</td>
+</tr>
+<tr >
+<td >\(V_{GS(max)}\)</td>
+<td >Maximum gate-source voltage</td>
+<td >The maximum allowed gate-source voltage. Voltages above this may destroy the MOSFET due to gate punch-through.</td>
+</tr>
+<tr >
+<td >\(V_{GS(th)}\)</td>
+<td >Threshold voltage.</td>
+<td >The voltage between the gate-source at which the MOSFET begins to turn on.  The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet.</td>
+</tr>
+</tbody>
+</table>
 
 ## How To Use Them?
 
@@ -84,9 +82,13 @@ If you need lower leakage currents that what you can achieve with a MOSFET, try 
 
 ## Failure Modes
 
-There are three ways in which a MOSFET can generally fail:  * Gate punch-through: Occurs when a large voltage spike appears on the gate that exceeds the maximum gate-source voltage (typically 10-20V). It punches a hole in the weak oxide layer.  * The drain-source voltage exceeds the rated maximum  * Overheating
+There are three ways in which a MOSFET can generally fail:
 
-To prevent over-voltage failure's, TVS diodes, zener diodes, or snubber circuits can be used to protect the pins. TVS and zener diodes are the most common ways to do this, and are used to clamp the voltages to a safe level.
+* Gate punch-through: Occurs when a large voltage spike appears on the gate that exceeds the maximum gate-source voltage (typically 10-20V). It punches a hole in the weak oxide layer.
+* The drain-source voltage exceeds the rated maximum
+* Overheating
+
+To prevent over-voltage failure's, TVS diodes, Zener diodes, or snubber circuits can be used to protect the pins. TVS and Zener diodes are the most common ways to do this, and are used to clamp the voltages to a safe level.
 
 Almost always, a MOSFET will short out the drain and source when it fails. This mean the MOSFET goes into conduction, and can destroy even more circuitry! Either make sure that your MOSFET won't fail, or take precautions against large currents if it does. I experienced plenty of MOSFET failures when designing the half-bridge for the [Electric Skateboard project](/electronics/projects/electric-skateboard)).
 
@@ -94,15 +96,15 @@ Almost always, a MOSFET will short out the drain and source when it fails. This 
 
 The drain-source resistance of a MOSFET increases with an increase in temperature (a BJT behaves in the opposite manner, it's collector-emitter resistance decreases with an increase in temperature).
 
-This means that MOSFET's can share current with each other easily. The positive temperature-to-resistance coefficient creates a self-balancing current mechanism for MOSFET's connected in parallel. Just make sure each MOSFET has its own gate drive resistor! Directly connected MOSFET gates can cause weird oscilllary problems.
+This means that MOSFETs can share current with each other easily. The positive temperature-to-resistance coefficient creates a self-balancing current mechanism for MOSFETs connected in parallel. Just make sure each MOSFET has its own gate drive resistor! Directly connected MOSFET gates can cause weird oscillation problems.
 
 ## Dead-Time
 
-Dead-time is a technique which is commonly applied to MOSFET driving when the MOSFETs are in a H-Bridge (or half-bridge) configuration. Dead-time is the time between when one MOSFET(s) is turned off and another MOSFET(s) is turned on. It is used to prevent **shoot-through**, which is when two MOSFET's on the same leg of a H-bridge are on at the same time, creating a direct short between `\(V_{cc}\)` and `\(GND\)`. Shoot-through occurs because of the turn-off delay time of a MOSFET.
+Dead-time is a technique which is commonly applied to MOSFET driving when the MOSFETs are in a H-Bridge (or half-bridge) configuration. Dead-time is the time between when one MOSFET(s) is turned off and another MOSFET(s) is turned on. It is used to prevent **shoot-through**, which is when two MOSFETs on the same leg of a H-bridge are on at the same time, creating a direct short between `\(V_{cc}\)` and `\(GND\)`. Shoot-through occurs because of the turn-off delay time of a MOSFET.
 
 ## Turn On/Turn Off Times
 
-In precise pulse-drive situations, it is desirable for the MOSFET to have similar turn-on and turn-off times. This is so the output pulse, although delayed by these parameters, has roughly the same width as the input pulse to the gate. This is imporatant in applications such as laser range-finding.
+In precise pulse-drive situations, it is desirable for the MOSFET to have similar turn-on and turn-off times. This is so the output pulse, although delayed by these parameters, has roughly the same width as the input pulse to the gate. This is important in applications such as laser range-finding.
 
 ## Industry Names
 
@@ -111,13 +113,13 @@ In precise pulse-drive situations, it is desirable for the MOSFET to have simila
 
 ## FinFET's
 
-FinFET's are multi-fin FET's which overcome issues once MOSFET approach very small sizes (such as 22nm).
+FinFETs are multi-fin FETs which overcome issues once MOSFET approach very small sizes (such as 22nm).
 
-{{< figure src="/images/electronics-misc/3d-model-of-the-structure-of-a-multi-fin-finfet.png" caption="The 3D structure of a multi-fin MOSFET (FinFET)."  width="600px" >}}
+{{< img src="3d-model-of-the-structure-of-a-multi-fin-finfet.png" caption="The 3D structure of a multi-fin MOSFET (FinFET)."  width="600px" >}}
 
 ## Load Switching
 
-MOSFET's can be used for load switches, as shown on the [Load Switches page](/electronics/circuit-design/power-management/load-switches/). They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
+MOSFETs can be used for load switches, as shown on the [Load Switches page](/electronics/circuit-design/power-management/load-switches/). They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
 
 ## Isolated Gate Drives
 
@@ -146,7 +148,7 @@ CMOS devices have PNPN structures. This forms a parasitic thyristor, which can c
 
 The body effect (also known as the Substrate Bias Effect of a MOSFET describes how the threshold voltage of a MOSFET, `\(V_{TH}\)` is affected by the voltage difference between the substrate and source, `\(V_{SB}\)`. Because the source-to-body voltage can effect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_.
 
-Note that most discrete MOSFET's that you can buy internally tie the substrate to the source, meaning `\(V_{SB} = 0V\)`. This prevents any body effect from occurring.
+Note that most discrete MOSFETs that you can buy internally tie the substrate to the source, meaning `\(V_{SB} = 0V\)`. This prevents any body effect from occurring.
 
 Do you want the huge equation that tells you how the threshold voltage changes? Here you go:
 
@@ -162,13 +164,13 @@ Do you want the huge equation that tells you how the threshold voltage changes? 
 
 ## The Substrate (Body) Connection
 
-You generic MOSFET's actually have four leads (pins). It's just that one of them, the substrate (body) lead, is normally connected internally to the source, and so you only get three external connections.
+You generic MOSFETs actually have four leads (pins). It's just that one of them, the substrate (body) lead, is normally connected internally to the source, and so you only get three external connections.
 
 {{% note %}}
 There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
 {{% /note %}}
 
-{{< figure src="/images/2011/09/mosfet-four-terminal-internal-diagram.gif" width="311px" caption="Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/."  >}}
+{{< img src="mosfet-four-terminal-internal-diagram.gif" width="311px" caption="Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/."  >}}
 
 The substrate lead is pretty self-explanatory, it is connected to the substrate (body) of the MOSFET.
 
@@ -176,19 +178,19 @@ Another interesting note is that without the connection of the substrate to the 
 
 **Q. Why is the substrate normally connected to the source?**
 
- A. Because when it isn't, a MOSFET becomes much harder to use. If the substrate is not connected to the source, you have to consider the _body effect_. It is easier/better to connect the substrate to ground internally (less connection resistance, one less lead, e.t.c) rather than to leave it up to the circuit designed to connect it externally. Manufacturers of ICs with integrated MOSFET's may choose to connect the substrate to something else. A common choice is ground.
+ A. Because when it isn't, a MOSFET becomes much harder to use. If the substrate is not connected to the source, you have to consider the _body effect_. It is easier/better to connect the substrate to ground internally (less connection resistance, one less lead, e.t.c) rather than to leave it up to the circuit designed to connect it externally. Manufacturers of ICs with integrated MOSFETs may choose to connect the substrate to something else. A common choice is ground.
 
 The 3N163 is an example of a MOSFET which provides you with a fourth pin for the substrate connection.
 
-{{< figure src="/images/2011/09/3n163-mosfet-drawing-with-substrate-connection.png" width="348px" caption="A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html."  >}}
+{{< img src="3n163-mosfet-drawing-with-substrate-connection.png" width="348px" caption="A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html."  >}}
 
 You may also note that some IC designs do not connect the substrate to the source. The TPS2020 load switch by Texas Instruments is one example. You can see in the diagram below that the substrate pin is connected to ground. I'm not entirely sure why, but it might have something to do with the devices ability to block reverse current. Normally this is achieved with back-to-back MOSFETs, but this diagram almost suggests that they pull it off using only the one MOSFET.
 
-{{< figure src="/images/2011/09/tps2020-functional-diagram-with-mosfet-body-grounded-annotated.png" width="611px" caption="Functional block diagram of the TPS2020 load switch. Note how the substrate of the MOSFET (top middle) is not connected to the source, but instead connected to ground. Image from http://www.ti.com/lit/ds/symlink/tps2020.pdf."  >}}
+{{< img src="tps2020-functional-diagram-with-mosfet-body-grounded-annotated.png" width="611px" caption="Functional block diagram of the TPS2020 load switch. Note how the substrate of the MOSFET (top middle) is not connected to the source, but instead connected to ground. Image from http://www.ti.com/lit/ds/symlink/tps2020.pdf."  >}}
 
 Interestingly, the block diagram for the [NCP380 high-side load switch by On Semiconductor](http://www.onsemi.com/pub_link/Collateral/NCP380-D.PDF) may shed more light on this matter. Notice how in the image below, the substrate of the MOSFET is connected to two switches, which can either connect it to the input or the output.
 
-{{< figure src="/images/2013/11/ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png" width="711px" caption="A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed."  >}}
+{{< img src="ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png" width="711px" caption="A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed."  >}}
 
 ## The Transconductance Of A MOSFET
 
@@ -215,6 +217,6 @@ The PMV45EN is a low cost, very low RDS(on) N-Channel MOSFET which I use as the 
 
 ## External Resources
 
-Fairchild's application note, [AN-558 - Introduction To Power MOSFET's And Their Applications](http://www.fairchildsemi.com/an/AN/AN-558.pdf) is a great resource when using MOSFETs for power applications.
+Fairchild's application note, [AN-558 - Introduction To Power MOSFETs And Their Applications](http://www.fairchildsemi.com/an/AN/AN-558.pdf) is a great resource when using MOSFETs for power applications.
 
 Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.co.uk/temp/gdt/gdt2.html).

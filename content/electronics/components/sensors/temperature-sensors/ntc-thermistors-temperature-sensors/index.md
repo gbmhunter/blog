@@ -10,7 +10,7 @@ type: page
 
 **A _negative-temperature coefficient_ (NTC) thermistor can be used as a temperature sensor.** A NTC thermistor is a resistor which has a non-linear change in resistance in a response to a change in temperature. It is a _passive sensor_.
 
-{{< figure src="/images/2016/04/ntc-thermistor-with-lug-vishay-ntcalug03a103gc-v2.jpg" width="372px" caption="An example of a NTC thermistor built into a metal lug, and provided with a cable and connector. Vishay component NTCALUG03A103GC. Image from www.digikey.com."  >}}
+{{< img src="ntc-thermistor-with-lug-vishay-ntcalug03a103gc-v2.jpg" width="372px" caption="An example of a NTC thermistor built into a metal lug, and provided with a cable and connector. Vishay component NTCALUG03A103GC. Image from www.digikey.com."  >}}
 
 ## NTCs vs RTDs
 
@@ -75,7 +75,9 @@ Re-arranged so that we can calculate a temperature from a measured resistance, a
 
 <div>$$ \frac{1}{T} = \frac{1}{T_0} + \frac{1}{\beta}ln(\frac{R}{R_0}) $$</div>
 
-{{< figure src="/images/2016/04/ninja-calc-logo-v2-no-transparency.png" caption="ninja-calc-logo-v2-no-transparency"  >}}The free embedded-engineering calculator app, [NinjaCalc](http://mbedded-ninja.github.io/NinjaCalc/), features a calculator for working out the thermistor temperature (or any other variable) using the Beta equation.
+{{< img src="ninja-calc-logo-v2-no-transparency.png" width="500px" caption="ninja-calc-logo-v2-no-transparency" >}}
+
+The free embedded-engineering calculator app, [NinjaCalc](http://mbedded-ninja.github.io/NinjaCalc/), features a calculator for working out the thermistor temperature (or any other variable) using the Beta equation.
 
 ## Steinhart-Hart Equation
 

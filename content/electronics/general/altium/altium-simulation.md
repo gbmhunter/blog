@@ -11,7 +11,7 @@ type: page
 
 Note that this page is about the specifics of using Altium Designer for circuit simulation (which uses SPICE). For more detailed information about SPICE, including the various components and parameters it supports, see the [SPICE Simulation page](/electronics/general/circuit-simulation/spice-simulation).
 
-Alitum has a built-in mixed-signal (analog and digital) simulator. It uses an enhanced version of the event-driven XSPICE, and is fully compatible with SPICE3f5.
+Altium has a built-in mixed-signal (analogue and digital) simulator. It uses an enhanced version of the event-driven XSPICE, and is fully compatible with SPICE3f5.
 
 Simulating circuits in Altium can be a little confusing, so I've written this little guide to help anybody attempting it!
 
@@ -22,51 +22,35 @@ This has been written for Altium Designer Summer 08, but steps should be similar
 A pulsed voltage source has the following important parameters:
 
 <table>
-    <thead>
-        <tr>
-            <th>Parameter Name</th>
-            <th>Units</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody >
-<tr >
-<td >AC Magnitude
-</td>
-<td >V
-</td>
-<td > 
-</td></tr><tr >
-<td >Period
-</td>
-<td >s
-</td>
-<td >The period of the pulsed waveform. This should be equal or larger than the pulse width.
-</td></tr><tr >
-<td >Pulse Width
-</td>
-<td >s
-</td>
-<td >This should be equal to or less than the period.
-</td></tr><tr >
-<td >Rise Time
-</td>
-<td >s
-</td>
-<td >The time it takes the signal to go from 0% to 100%. Related to fall time.
-</td></tr><tr >
-<td > 
-</td>
-<td > 
-</td>
-<td > 
-</td></tr><tr >
-<td > 
-</td>
-<td > 
-</td>
-<td > 
-</td></tr></tbody></table>
+  <thead>
+    <tr>
+      <th>Parameter Name</th>
+      <th>Units</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AC Magnitude</td>
+      <td>V</td>
+      <td></td>
+    </tr><tr >
+      <td>Period</td>
+      <td>s</td>
+      <td>The period of the pulsed waveform. This should be equal or larger than the pulse width.</td>
+    </tr>
+    <tr>
+      <td>Pulse Width</td>
+      <td>s</td>
+      <td>This should be equal to or less than the period.</td>
+    </tr>
+    <tr>
+      <td>Rise Time</td>
+      <td>s</td>
+      <td>The time it takes the signal to go from 0% to 100%. Related to fall time.</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Simulation Models
 
@@ -86,7 +70,7 @@ The "Model Name" parameter in a SimModel file has to be the same as the model na
 
 ## Component Value Multipliers
 
-The Altium simulator supports the following value prefix multipliers. Note the non-standard K for 103 and the Meg for 106 (the prefixs are case insensitive so M would actually give you 10-3)! Also note the use of mil, which can be used to describe millionth's of an inch.
+The Altium simulator supports the following value prefix multipliers. Note the non-standard `K` for `10e3` and the `Meg` for `10e6` (the prefixes are case insensitive so `M` would actually give you `10e-3`)! Also note the use of mil, which can be used to describe millionth's of an inch.
 
 <table>
     <thead>
@@ -97,46 +81,47 @@ The Altium simulator supports the following value prefix multipliers. Note the n
     </thead>
 <tbody>
 <tr>
-<td >f
-</td>
-<td >10-15
-</td></tr><tr >
-<td >p
-</td>
-<td >10-12
-</td></tr><tr >
-<td >n
-</td>
-<td >10-9
-</td></tr><tr >
-<td >u
-</td>
-<td >10-6
-</td></tr><tr >
-<td >mil
-</td>
-<td >25.4-6
-</td></tr><tr >
-<td >m
-</td>
-<td >10-3
-</td></tr><tr >
-<td >K
-</td>
-<td >103
-</td></tr><tr >
-<td >Meg
-</td>
-<td >106
-</td></tr><tr >
-<td >G
-</td>
-<td >109
-</td></tr><tr >
-<td >T
-</td>
-<td >1012
-</td></tr></tbody></table>
+<td >f</td>
+<td >10-15</td>
+</tr>
+<tr >
+<td >p</td>
+<td >10-12</td>
+</tr>
+<tr >
+<td >n</td>
+<td >10-9</td>
+</tr>
+<tr >
+<td >u</td>
+<td >10-6</td>
+</tr>
+<tr >
+<td >mil</td>
+<td >25.4-6</td>
+</tr>
+<tr >
+<td >m</td>
+<td >10-3</td>
+</tr>
+<tr >
+<td >K</td>
+<td >103</td>
+</tr>
+<tr >
+<td >Meg</td>
+<td >106</td>
+</tr>
+<tr >
+<td >G</td>
+<td >109</td>
+</tr>
+<tr >
+<td >T</td>
+<td >1012</td>
+</tr>
+</tbody>
+</table>
 
 Exponential notation is also supported, so you can write 1000 like this 1e3.
 
@@ -145,17 +130,16 @@ Exponential notation is also supported, so you can write 1000 like this 1e3.
 The Altium SPICE model for a MOSFET contains the following level-1 parameters (sorted alphabetically):
 
 <table>
-    <thead>
-        <tr>
-            <th>Symbol</th>
-            <th>Parameter</th>
-            <th>Description</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Parameter</th>
+      <th>Description</th>
+    </tr>
+  </thead>
 <tbody>
 <tr >
-<td >AD
-</td>
+<td >AD</td>
 <td >Drain Area
 </td>
 <td >Area of the drain diffusion (m2).

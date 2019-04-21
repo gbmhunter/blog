@@ -1,6 +1,7 @@
 ---
 author: gbmhunter
-date: 2011-09-05 06:22:16+00:00
+categories: [ "PCB" ]
+date: 2011-09-05
 draft: false
 tags: [ "Altium", "keyboard", "shortcut" ]
 title: Altium Keyboard Shortcuts
@@ -123,7 +124,7 @@ You may notice that although some keyboard shortcuts that perform the same funct
 
 **Ctrl-G**: Open the Grid Editor window. This is where you can set the grid snap distances.  
 
-**L**: Show the _Layers_ dialog box to adjust the visible layers and/or enable/disable layers.  
+**L**: Show the _Layers_ dialogue box to adjust the visible layers and/or enable/disable layers.  
 
 **G**: Cycle through the predefined grids.
 

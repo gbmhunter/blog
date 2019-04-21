@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-12-17 01:21:25+00:00
+date: 2015-12-17
 draft: false
 title: Oscillators
 type: page
-url: /electronics/components/timing/oscillators
 ---
 
 ## Overview

@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-05 06:38:02+00:00
+date: 2011-09-05
 draft: false
 tags: [ "Altium", "rules" ]
 title: Altium Rules
