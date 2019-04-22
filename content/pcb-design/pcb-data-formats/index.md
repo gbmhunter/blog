@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-10-04 02:13:44+00:00
+date: 2013-10-04
 draft: false
 title: PCB Data Formats
 type: page
@@ -31,98 +31,85 @@ Extended Gerber is the most common Gerber format, the standard Gerber format is 
 Layers are sorted alphabetically by extension.
 
 <table>
-    <thead>
-        <tr>
-            <th>Extension</th>
-            <th>Layer Name</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody ><tr >
-<td >.GBL
-</td>
-<td >Bottom Layer
-</td>
-<td > The bottom copper layer.
-</td></tr><tr >
-<td >.GBO
-</td>
-<td >Bottom Overlay (Silkscreen)
-</td>
-<td > 
-</td></tr><tr >
-<td >.GBP
-</td>
-<td >Bottom Paste
-</td>
-<td > 
-</td></tr><tr >
-<td >.GBS
-</td>
-<td >Bottom Soldermask
-</td>
-<td > 
-</td></tr><tr >
-<td >.GKO
-</td>
-<td >Keep Out Layer
-</td>
-<td > 
-</td></tr><tr >
-<td >.GMx
-</td>
-<td >Mechanical Layer x (x is normally 1-16)
-</td>
-<td > 
-</td></tr><tr >
-<td >.GPx
-</td>
-<td >Inner Plane Layer X
-</td>
-<td >These are **negative layers**, where there are objects on this layer is where there will **not** be copper on the final PCB.
-</td></tr><tr >
-<td >.GPB
-</td>
-<td >Bottom Pad Master
-</td>
-<td >Includes only the copper pads on the bottom layer, it removes all vias, tracks, fills and arcs.
-</td></tr><tr >
-<td >.GPT
-</td>
-<td >Top Pad Master
-</td>
-<td >Includes only the copper pads on the top layer, it removes all vias, tracks, fills and arcs.
-</td></tr><tr >
-<td >.GTL
-</td>
-<td >Top Layer
-</td>
-<td >The top copper layer.
-</td></tr><tr >
-<td >.GTO
-</td>
-<td >Top Overlay (Silkscreen)
-</td>
-<td > 
-</td></tr><tr >
-<td >.GTP
-</td>
-<td >Top Paste
-</td>
-<td > 
-</td></tr><tr >
-<td >.GTS
-</td>
-<td >Top Soldermask
-</td>
-<td > 
-</td></tr><tr >
-<td >.GTS
-</td>
-<td >Top Soldermask
-</td>
-<td > 
-</td></tr></tbody></table>
+  <thead>
+    <tr>
+      <th>Extension</th>
+      <th>Layer Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+<tbody><tr >
+<td>.GBL</td>
+<td>Bottom Layer</td>
+<td> The bottom copper layer.</td>
+</tr>
+<tr>
+<td>.GBO</td>
+<td>Bottom Overlay (Silkscreen)</td>
+<td></td>
+</tr>
+<tr>
+<td>.GBP</td>
+<td>Bottom Paste</td>
+<td></td>
+</tr>
+<tr>
+<td>.GBS</td>
+<td>Bottom Soldermask</td>
+<td></td>
+</tr>
+<tr >
+<td >.GKO</td>
+<td >Keep Out Layer</td>
+<td ></td>
+</tr>
+<tr >
+<td >.GMx</td>
+<td >Mechanical Layer x (x is normally 1-16)</td>
+<td ></td>
+</tr>
+<tr >
+<td >.GPx</td>
+<td >Inner Plane Layer X</td>
+<td >These are <i>negative layers</i>, where there are objects on this layer is where there will <i>not</i> be copper on the final PCB.</td>
+</tr>
+<tr >
+<td >.GPB</td>
+<td >Bottom Pad Master</td>
+<td >Includes only the copper pads on the bottom layer, it removes all vias, tracks, fills and arcs.</td>
+</tr>
+<tr >
+<td >.GPT</td>
+<td >Top Pad Master</td>
+<td >Includes only the copper pads on the top layer, it removes all vias, tracks, fills and arcs.</td>
+</tr>
+<tr >
+<td >.GTL</td>
+<td >Top Layer</td>
+<td >The top copper layer.</td>
+</tr>
+<tr >
+<td >.GTO</td>
+<td >Top Overlay (Silkscreen)</td>
+<td ></td>
+</tr>
+<tr >
+<td >.GTP</td>
+<td >Top Paste</td>
+<td ></td>
+</tr>
+<tr >
+<td >.GTS</td>
+<td >Top Soldermask</td>
+<td > </td>
+</tr>
+<tr >
+<td >.GTS</td>
+<td >Top Soldermask</td>
+<td ></td>
+</tr>
+</tbody>
+</table>
 
 Notice how the top and bottom pad master file extensions do not follow the same format as the other "Top" and "Bottom" classed files, with their extensions being GPT/GPB rather than GTP/GBP.
 
@@ -140,7 +127,7 @@ For anything greater than a 2 layer board, the PCB manufacturer can have trouble
 
 ## ODB++
 
-ODB++ is a database format originally developed by Valor to convey all the PCB information in a single file. ODB++ is now a format proprietry to Mentor Graphics who aquired Valor.
+ODB++ is a database format originally developed by Valor to convey all the PCB information in a single file. ODB++ is now a format proprietary to Mentor Graphics who acquired Valor.
 
 As of 2014, about 10% of all PCB designs are submitted in ODB++ format. It would be the second most popular choice after the Gerber format.
 

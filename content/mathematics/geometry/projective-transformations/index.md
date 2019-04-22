@@ -42,7 +42,7 @@ Four pairs of points `\( \hat{p} = (p_x, p_y), \hat{q} = (q_x, q_y) \)` (four po
 
 The above projection algorithm can be used to perform "quad-to-quad" projection between 2 2D spaces (or two 2D coordinate systems). A quadrilateral (four sided polygon) is defined both in the input space and the output space. **It is guaranteed that there is exactly one transformation** that will map points from the input space to the output space as defined by the quadrilaterals.
 
-{{< figure src="/images/2017/11/quad-to-quad-transformation-complex-image.png" width="598px" caption="A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges."  >}}
+{{< img src="quad-to-quad-transformation-complex-image.png" width="598px" caption="A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges."  >}}
 
 **Quadrilateral restrictions: No three of the four points in the quadrilateral can be collinear (i.e. lie on the same line).** That is the same as saying that the quadrilateral must have four distinct edges.
 
@@ -91,7 +91,7 @@ Once `\(\hat{x}\)` has been found, `\(\mathbf{T}\)` can be made from the values 
 
 For example, take the square (which is a simple quadrilateral) defined by (0, 0), (1, 0), (1, 1), (0, 1) (the blue square below) and a second quadrilateral defined by (1, 2), (1, 4), (3, 4), (3, 2) (the red square below). _Find the transformation matrix `\(T\)` which maps points from `\(P\)` to `\(Q\)`._
 
-{{< figure src="/images/2017/11/quad-to-quad-transformation-simple-square.png" width="455px" caption="A simple quad-to-quad transformation of the square P to the square Q."  >}}
+{{< img src="quad-to-quad-transformation-simple-square.png" width="455px" caption="A simple quad-to-quad transformation of the square P to the square Q."  >}}
 
 We can then pair the points together, i.e. `\(p1 = (0, 0)\)` maps to `\(q1 = (1, 2)\)`.
 
@@ -135,12 +135,12 @@ Python code for this worked example can be found at [https://github.com/gbmhunte
 
 Of course, Quad-to-Quad transformations do not have to use simple square, any four sided polygon can be used in the transformation, as shown in the below image:
 
-{{< figure src="/images/2017/11/quad-to-quad-transformation-complex-image.png" width="616px" caption="A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges." >}}
+{{< img src="quad-to-quad-transformation-complex-image.png" width="616px" caption="A quad-to-quad transformation of an image, going from a rectangle to a complex non-rectangular quadrilateral with no parallel edges." >}}
 
 **Code Libraries**
 
 Qt provides a `QTranform::quadToQuad()` method which can be used to create a transformation object that can then be applied to things such as images. Note how ever that that when transforming an image, **"extra" translation is removed from the output so that the translated image is contained within the smallest number of pixels possible**. Qt also specifies the structure of the transformation matrix slightly differently, **with the order of each element being different from "standard"** (it looks like it has been mirrored around the leading diagonal).
 
-{{< figure src="/images/2017/11/qt-transformation-matrix-element-order.png" width="827px" caption="The structure of a Qt transformation matrix. Notice how the ordering is different to 'standard' ( it looks like the matrix has been mirrored around the leading diagonal)."  >}}
+{{< img src="qt-transformation-matrix-element-order.png" width="827px" caption="The structure of a Qt transformation matrix. Notice how the ordering is different to 'standard' (it looks like the matrix has been mirrored around the leading diagonal)." >}}
 
 Python's image library (PIL) provides a `transform()` function with can do perspective transformations, along with interpolation (this is what is used to transform the above "Hello" image).

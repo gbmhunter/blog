@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-08-27 05:21:24+00:00
+date: 2013-08-27
 draft: false
 title: Soldering
 type: page

@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2014-07-23 23:14:49+00:00
+date: 2014-07-23
 draft: false
 title: Soldermask Stencils
 type: page

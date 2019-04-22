@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2015-10-21 09:47:20+00:00
+date: 2015-10-21
 draft: false
 title: Prototyping
 type: page
@@ -8,7 +8,7 @@ type: page
 
 ## Overview
 
-PCB's are costly and take time. Complex ones even more so. Even the best PCB designers make mistakes. Prototyping is the building and testing of any circuit before the point where the designer considers the design finished and tested.
+PCBs are costly and take time. Complex ones even more so. Even the best PCB designers make mistakes. Prototyping is the building and testing of any circuit before the point where the designer considers the design finished and tested.
 
 You may wish to build up a small prototype circuit on stripboard of the analogue signal processing/amplifying circuitry in the design, or of this custom digital multiplexor, before making a proper PCB.
 

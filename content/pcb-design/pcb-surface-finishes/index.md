@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2015-10-06 03:35:21+00:00
+date: 2015-10-06
 draft: false
 title: PCB Surface Finishes
 type: page
@@ -28,7 +28,7 @@ HASL is one of the most widely used surface finishes. It involves dipping the ci
 * Thermally shocks the PCB (decreased reliability)
 * Plugs (or partially plugs) plated through-holes
 
-HASL used to be the de-facto surface finish for most PCB's. As component footprint has shrunk, the limitations of HASL have begun to cause serious issues.
+HASL used to be the de-facto surface finish for most PCBs. As component footprint has shrunk, the limitations of HASL have begun to cause serious issues.
 
 The major issue is the uneven surface that HASL provides. With 0.5-0.8mm pitch QFN and BGA components, this irregular solder deposit can bridge pads and create shorts.
 

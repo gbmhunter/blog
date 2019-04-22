@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2015-10-21 09:38:12+00:00
+date: 2015-10-21
 draft: false
 title: Schematic Tips And Tricks
 type: page

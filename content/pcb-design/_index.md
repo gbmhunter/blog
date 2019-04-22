@@ -11,57 +11,28 @@ type: "page"
 Here's a list of some useful design tools which come in useful when making PCB's.
 
 <table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Comment</th>
-            <th>Picture</th>
-            <th>Link</th>
-        </tr>
-    <thead>
-<tbody >
-<tr >
-<td >Saturn PCB Toolkit
-</td>
-
-<td >Very simple but extensive PCB design aid. And it's free! Includes a via current calculator, trace width calculator, bandwidth calculator, differential pair calculator, mechanical data, conductor impedance calculator, unit conversions, planar inductor calculator, thermal resistance calculator and more!
-</td>
-
-<td >{{< figure src="/images/electronics-misc/saturn-pcb-toolkit-screenshot.gif" caption="A screen-shot of the Saturn PCB toolkit."  width="160px" >}}
-</td>
-
-<td >[http://saturnpcb.com/pcb_toolkit.htm](http://saturnpcb.com/pcb_toolkit.htm)
-</td>
-</tr>
-<tr >
-
-<td >Standard Resistor Calculator
-</td>
-
-<td >Invaluable when working out the closest manufactured resistor to the value you need in your design. There are tons of web-based calculators out there, and most let you choose a resistor series (e.g. E12, E24 e.t.c), or a precision (e.g. 5%, 1%). The higher the precisioin (1% is higher than 5%), the more expensive the resistor.
-</td>
-
-<td >{{< figure src="/images/electronics-misc/resistor-calculator-screenshot.jpg" caption="Screenshot of the resistor calculator."  width="160px" >}}
-</td>
-
-<td >[http://www.daycounter.com/Calculators/Standard-Resistor-Value-Calculator.phtml](http://www.daycounter.com/Calculators/Standard-Resistor-Value-Calculator.phtml)
-</td>
-</tr>
-<tr >
-
-<td >Cladlab Calculators
-</td>
-
-<td >And of course, there is this site's own calculators, can help you choose component values when it comes to things like resistive voltage dividers, and low-pass RC filters.
-</td>
-
-<td >
-</td>
-
-<td >[/electronics/general/online-calculators](http://www.daycounter.com/Calculators/Standard-Resistor-Value-Calculator.phtml)
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Comment</th>
+      <th>Picture</th>
+      <th>Link</th>
+    </tr>
+  <thead>
+  <tbody>
+    <tr>
+      <td>Saturn PCB Toolkit</td>
+      <td>Very simple but extensive PCB design aid. And it's free! Includes a via current calculator, trace width calculator, bandwidth calculator, differential pair calculator, mechanical data, conductor impedance calculator, unit conversions, planar inductor calculator, thermal resistance calculator and more!</td>
+      <td>{{< figure src="/images/electronics-misc/saturn-pcb-toolkit-screenshot.gif" caption="A screen-shot of the Saturn PCB toolkit."  width="160px" >}}</td>
+      <td>[http://saturnpcb.com/pcb_toolkit.htm](http://saturnpcb.com/pcb_toolkit.htm)</td>
+    </tr>
+    <tr>
+      <td>Standard Resistor Calculator</td>
+      <td>Invaluable when working out the closest manufactured resistor to the value you need in your design. There are tons of web-based calculators out there, and most let you choose a resistor series (e.g. E12, E24 e.t.c), or a precision (e.g. 5%, 1%). The higher the precisioin (1% is higher than 5%), the more expensive the resistor.</td>
+      <td>{{< figure src="/images/electronics-misc/resistor-calculator-screenshot.jpg" caption="Screenshot of the resistor calculator."  width="160px" >}}</td>
+      <td>[http://www.daycounter.com/Calculators/Standard-Resistor-Value-Calculator.phtml](http://www.daycounter.com/Calculators/Standard-Resistor-Value-Calculator.phtml)</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Soldermask

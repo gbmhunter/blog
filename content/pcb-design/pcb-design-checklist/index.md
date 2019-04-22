@@ -1,7 +1,9 @@
 ---
 author: "gbmhunter"
+categories: [ "PCB Design" ]
 date: 2012-05-22
 draft: false
+tags: [ "PCB", "design", "CAD", "checklist", "production", "schematics", "routings", "rules" ]
 title: "PCB Design Checklist"
 type: "page"
 ---
@@ -19,7 +21,7 @@ type: "page"
 ### Other ICs
 
 * Decoupling is added were needed
-* Voltage difference problems between IC's that communicate and run of different voltage supplies is considered
+* Voltage difference problems between ICs that communicate and run of different voltage supplies is considered
 
 ### Communications
 
@@ -32,7 +34,7 @@ type: "page"
 * Do not rely on standard Altium libraries (pinouts and footprints can be wrong). Use Beta Solutions libraries and add to it. Make sure variable labelling is consistent.
 * P-Ch [MOSFET's](/electronics/components/transistors/mosfets/) have their SOURCE connected to the high-side voltage (e.g. Vcc)
 * N-Ch [MOSFET's](/electronics/components/transistors/mosfets/) have their SOURCE connected to the low-side voltage (e.g. ground)
-* Make sure voltages are not applied to any pins of IC's that are shut-down by removing power (unless the are designed to handle it). Leakage currents can occur.
+* Make sure voltages are not applied to any pins of ICs that are shut-down by removing power (unless the are designed to handle it). Leakage currents can occur.
 * Systematically check BOM with every component on schematics to weed out labelling errors and component variant problems.
 
 ### Final
@@ -48,7 +50,7 @@ type: "page"
 * Appropriate test points included. Untented vias can be used as test points when space is a premium. Make sure there are enough ground test points (both analogue and digital if applicable) for connecting multimeter leads and the ground connections of oscilloscope probe leads.
 * The way the PCB is mounted is considered and taken account for (e.g. screw holes or sticky pads)
 * No reference to client if requested (due to intellectual property protection)
-* The layer stack-up is specified (core/prepeg/copper material and thicknesses)
+* The layer stack-up is specified (core/prepreg/copper material and thickness's)
 * The impedance is specified (if applicable). This is normally related to the stack-up.
 * Component links (between schematics and pcb file) are updated. This is done from the PCB editor.
 * Mechanical layers are used correctly. This default is:
@@ -76,7 +78,7 @@ type: "page"
 * As a general rule, make the polygon clearance to anything at least 2x the minimum track clearance. Shorts are more likely to occur between a large polygon and a track rather than between two tracks.
 * Flip the board (shortcut V, B) when routing and checking correct pin connections on the bottom layer of the PCB (otherwise pins will appear the wrong way around)
 * Make sure similar amounts of total copper are on each layer. A good way to ensure this is to fill each layer with a plane (either ground or a power plane). This is to prevent the PCB from going ‘banana’ during manufacturing.
-* Large fiducials are placed as far apart as possible on PCB (typically two, one in each diagonally opposite corner on a square board). Micro fiducials are placed on the diagonals of fine pitch chips (such as BGA’s).
+* Large fiducials are placed as far apart as possible on PCB (typically two, one in each diagonally opposite corner on a square board). Micro fiducials are placed on the diagonals of fine pitch chips (such as BGAs).
 * Circular speckles of solder mask are applied to chips with large exposed pads rather than the entire area, to prevent the chip from floating during reflow soldering. This applies to chips such as QFN and DFN.
 * Large exposed pads on the undersides of SMD packages are connected following the instructions on the datasheet. Most are either connected to ground or left floating.
 * Tracks and vias are large enough to handle their current requirements.
@@ -103,7 +105,7 @@ type: "page"
 
 ### Manufacturer
 
-* Find out wether manufacturer wants paste on Fiducials (not usually)
+* Find out whether manufacturer wants paste on fiducials (not usually)
 * Make sure Gerber output contains all the required files (including a file for every copper layer)
 * Do not send the keep-out layer to the manufacturer. Some people use it just as a board outline, while others use it to also prevent Altium from drawing on layers in other specific places on the PCB (such as adding clearances to objects). This creates confusion. Use Mechanical 1 to define the board outline and any routed holes.
 * Make sure manufacture information is added to the top copper layer (copper layer is good because it is included in Gerbers). This should include:
@@ -116,8 +118,8 @@ type: "page"
 6. Minimum track clearance
 7. Minimum annular ring
 8. Minimum hole size
-9. How many individual boards are on a PCB (if it has been panelized)
-10. How board are going to be cut (e.g. v-scoring or routing, if panelized)
+9. How many individual boards are on a PCB (if it has been panelised)
+10. How board are going to be cut (e.g. v-scoring or routing, if panelised)
 11. Soldermask colour
 
 * Include additional images with PCB project to instruct manufacturer on how to build/assemble PCB. These include images for counter-sunk holes and components which need gluing
