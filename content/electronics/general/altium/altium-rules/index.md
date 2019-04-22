@@ -2,7 +2,7 @@
 author: gbmhunter
 date: 2011-09-05
 draft: false
-tags: [ "Altium", "rules" ]
+tags: [ "Altium", "rules", "CAD", "PCB design", "electronics" ]
 title: Altium Rules
 type: page
 ---
@@ -29,4 +29,4 @@ When designing a PCB, you have to make sure that all copper stays a certain dist
 
 The following picture shows the rule in Altium.
 
-{{< figure src="/images/electronics-misc/altium-power-plane-pull-back-rule.jpg" caption="Setting a pull-back rule for a power plane in Altium."  width="700px" >}}
+{{< img src="altium-power-plane-pull-back-rule.jpg" caption="Setting a pull-back rule for a power plane in Altium."  width="700px" >}}

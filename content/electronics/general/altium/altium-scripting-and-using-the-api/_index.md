@@ -74,7 +74,7 @@ End Sub
 
 Save the script file. Now run the script file by clicking _DXP->Run Script_ and then selecting the HelloWorld function (which should be listed underneath the filename of the script, see the below image). When run in Altium, this code should display a message box with the text "Hello, world!".
 
-{{< figure src="/images/2012/02/running-hello-world-script-in-altium.png" width="893px" caption="Running the Hello, world script in Altium."  >}}
+{{< img src="running-hello-world-script-in-altium.png" width="893px" caption="Running the Hello, world script in Altium."  >}}
 
 The Delphi equivalent is shown below:
 
@@ -129,7 +129,7 @@ This sections covers code non-specific to either the schematics or PCB.
 
 Projects are represented as `IProject` objects. To get the currently active project, you can use the `DM_FocusedProject` function on an `IWorkspace` object, as shown in the following Delphi example:
     
-```
+```text
 Workspace  := GetWorkspace;
 PCBProject := Workspace.DM_FocusedProject;
 
@@ -146,7 +146,7 @@ Everytime you modify something with an Altium script, you should inform Altium t
 
 The following code examples show the `RobotManager` being used for schematic operations.
     
-```
+```text
 ' CREATING/DELETING AN OBJECT
 Call SchServer.RobotManager.SendMessage(Component.I_ObjectAddress, c_BroadCast, SCHM_PrimitiveRegistration, Param.I_ObjectAddress)
 
@@ -173,7 +173,7 @@ Usually, if you do something that throws an exception, the script will halt at t
 
 However, in my experience, you run into problems if you close the first (main) script form, and then an exception is thrown. You get an "unhandled exception" error, and you can't debug the code at the current stop point. To prevent this, I make sure I never close the main form, but instead resize it to the smallest area possible before loading up a child form.
 
-{{< figure src="/images/2012/02/altium-script-visual-studio-just-in-time-debugger-unhandled-exception-crash.png" width="438px" caption="What happens when an exception is thrown in an Altium script."  >}}
+{{< img src="altium-script-visual-studio-just-in-time-debugger-unhandled-exception-crash.png" width="438px" caption="What happens when an exception is thrown in an Altium script."  >}}
 
 You get into some nasty situations where Altium will "lock-up", if an unhandled exception is thrown and there are forms hidden but still active.
 
@@ -365,7 +365,7 @@ Note that there is a minimum window size to Altium script forms which keeps the 
 
 `TRadioGroup` controls are useful for when you have multiple "sets" of radio buttons on one UI. They allow multiple radio buttons to be selected (from different groups of course), without all other on the UI being deselected.
 
-{{< figure src="/images/2012/02/altium-script-radio-group-example-screenshot.png" width="890px" caption="Adding a TRadioGroup control to an Altium script UI.R"  >}}
+{{< img src="altium-script-radio-group-example-screenshot.png" width="890px" caption="Adding a TRadioGroup control to an Altium script UI." >}}
 
 Individual radio buttons are added to a radio group through the Items property, in where you add a new radio button on a new line.
 
@@ -379,7 +379,7 @@ The [DeleteSchematicParameters,vbs script in the AltiumScriptCentral](https://gi
 
 You can get the following error when trying to save if you haven't called PCBServer.PostProcess an equal number of times as PCBServer.PostProcess. So far, if this does occur, I haven't worked out how to save the document (all changes since the last save are lost!).
 
-{{< figure src="/images/altium/pcb-script-bug-a-command-is-currently-active-and-save-cannot-be-completed-at-this-time.png" caption="You might get this error in Altium when trying to save because you have run a script which hasn't called PSBServer.PostProcess an equal number of times as PCBServer.PostProcess."  width="800px" >}}
+{{< img src="pcb-script-bug-a-command-is-currently-active-and-save-cannot-be-completed-at-this-time.png" caption="You might get this error in Altium when trying to save because you have run a script which hasn't called PSBServer.PostProcess an equal number of times as PCBServer.PostProcess."  width="800px" >}}
 
 See the Undo section for information.
 
@@ -404,7 +404,7 @@ begin
 
 For example. you cannot set a pads soldermask and pastemask expansion values (useful if you want to remove them all together) using the properties `pad.SolderMaskExpansion` and `pad.PasteMaskExpansion`. The only way I have found to do this is to create a pad cache, set the expansion values for the cache, and then assign the cache to the pad as per the following example.
 
-```    
+```text
 procedure SetPadExpansionValues();
 var
    pad : IPCB_Pad;

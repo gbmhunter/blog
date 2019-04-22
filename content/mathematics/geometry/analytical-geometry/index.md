@@ -10,7 +10,7 @@ type: page
 
 **The Area Method**
 
-1. Form a triangle between the point and every pair of consecutive verticies on the rectangle.
+1. Form a triangle between the point and every pair of consecutive vertices on the rectangle.
 2. Calculate the area of this triangle
 3. Sum up the areas of all of these triangles.
 4. If the sum of these areas is greater than the area of the rectangle, then the point is outside the rectangle, else the sum of the areas must equal the area of the rectangle and the point is either inside or on the edge of the rectangle.
@@ -20,8 +20,8 @@ This method works not just for a rectangle but for any polygon!
 
 **The Angle Method**
 
-1. Travel around the verticies of the rectangle in a clockwise fashion.
-2. For each line segment, calculate the angle between this line and a line formed from the point and the first verticy which makes up the line.
+1. Travel around the vertices of the rectangle in a clockwise fashion.
+2. For each line segment, calculate the angle between this line and a line formed from the point and the first vertex which makes up the line.
 3. If all the angles are positive (incl. 0), then the point is inside the rectangle. If all the angles are positive and one or more is 0, then the point is on the edge of the rectangle (if one is 0, then it is on the edge, if two are 0, then the point is on one of the rectangle's corners).
 4. If one or more angles is negative, then the point is outside the rectangle.
 
@@ -57,7 +57,7 @@ Given two points `\(x_1\)` and `\(x_2\)` which form a line in 3D space, and a th
 
 Assume we have points `\(\mathbf{p1}\)` and `\(\mathbf{p2}\)` which form a line, and we want to find the shortest distance from this line to a point `\(\mathbf{p3}\)`.
 
-{{< figure src="/images/2017/11/3d-point-to-line-distance-diagram-p1-p2-p3-p4.png" width="475px" caption="A diagram showing a 3D point to line distance problem."  >}}
+{{< img src="3d-point-to-line-distance-diagram-p1-p2-p3-p4.png" width="475px" caption="A diagram showing a 3D point to line distance problem."  >}}
 
 We will first find the point `\(\mathbf{p4}\)` which is the closest point to `\(\mathbf{p3}\)` which is on the line. Once we have this, finding the distance of the line which goes from `\(\mathbf{p3}\)` to `\(\mathbf{p4}\)` will be trivial.
 

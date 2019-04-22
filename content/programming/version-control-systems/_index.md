@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-15 07:34:05+00:00
+date: 2011-09-15
 draft: false
 title: Version Control Systems
 type: page
@@ -25,9 +25,9 @@ Version control systems usually originate from command-line roots, and then get 
 
 Mercurial will not copy folders into the repo if there are no files in them. Why would you have empty folder you ask? Well, one reason would be if you had a template folder structure for new projects that you wanted in the repo.
 
-One of my favourite SCMs! It is very similar to Git, and hence Git it also one of my favourite. Mercurial only creates one folder in the root directory of your project (SVN creates one in every folder). [TortoiseHG](http://tortoisehg.bitbucket.org/) is an awesome Windows shell extension for Mercurial. I never get errors and irreversable lockouts with Mercurial as I did with SVN.
+One of my favourite SCMs! It is very similar to Git, and hence Git it also one of my favourite. Mercurial only creates one folder in the root directory of your project (SVN creates one in every folder). [TortoiseHG](http://tortoisehg.bitbucket.org/) is an awesome Windows shell extension for Mercurial. I never get errors and irreversible lockouts with Mercurial as I did with SVN.
 
-Mercurial assigns every commit on your machine a revision number. This **IS NOT a unique number**! It is very much likely that another user of the repo will have the exact same revision number for a different commit. If you after a unique number, you have to use the changeset ID. This is a 160-bit number (Mercurial normally only shows you the first 10 characters) found by using the [SHA-1 hash](http://en.wikipedia.org/wiki/SHA-1) on the current commit data, the previous commits hash, the username, and the date. Note that when I say unique, I mean probablistically impossible, although two different revisions could in theory produce the same changeset ID (as of July 2012, no collisions have been discovered).
+Mercurial assigns every commit on your machine a revision number. This **IS NOT a unique number**! It is very much likely that another user of the repo will have the exact same revision number for a different commit. If you after a unique number, you have to use the changeset ID. This is a 160-bit number (Mercurial normally only shows you the first 10 characters) found by using the [SHA-1 hash](http://en.wikipedia.org/wiki/SHA-1) on the current commit data, the previous commits hash, the username, and the date. Note that when I say unique, I mean probabilistically impossible, although two different revisions could in theory produce the same changeset ID (as of July 2012, no collisions have been discovered).
 
 ## Mercurial Ignore Files
 
@@ -45,7 +45,7 @@ Glob Syntax (no longer maintained):
 **Mercurial/Tortoise HG Error Messages**
 
 * "Unknown Parent" - Occurs when trying to pull changesets from another repository. Normally means some part of your repo is corrupted. The only solution I have found is to delete your repo and clone a working one, after copying all the files you want to save of course...
-* "The system cannot find the file specified" error message occuring when you attempt to commit your repo. This is normally due to one of two reasons. The first one is if you deleted a file between clicking the 'Refresh files' button and clicking 'Commit'. The second reason is if the absolute path name of the file exceeds 255 characters. Tortoise HG will recognise the file and display it, but will fail when trying to commit. There is an extension called ['Win32LongFileNamesExtension' (aka win32lfn)](https://www.mercurial-scm.org/wiki/Win32LongFileNamesExtension) that is meant to fix this, but I have not be able to get it to work.
+* "The system cannot find the file specified" error message occurring when you attempt to commit your repo. This is normally due to one of two reasons. The first one is if you deleted a file between clicking the 'Refresh files' button and clicking 'Commit'. The second reason is if the absolute path name of the file exceeds 255 characters. Tortoise HG will recognise the file and display it, but will fail when trying to commit. There is an extension called ['Win32LongFileNamesExtension' (aka win32lfn)](https://www.mercurial-scm.org/wiki/Win32LongFileNamesExtension) that is meant to fix this, but I have not be able to get it to work.
 * "abandoned transaction found - run hg recover" - This normally occurs if the connection between the local and remote repo is disconnected mid-way through a push/pull operation.  
 
 {{< figure src="/images/programming-misc/mercurial-error-msg-abandoned-transaction-found.png" caption="The 'abandoned transaction found' Mercurial error message."  width="300px" >}}
@@ -56,14 +56,14 @@ You need to add the path of the server to the hgrc file in the Mercurial .hg fol
 
 The syntax follows:
 
-```    
+```text
 [paths]
 default = \\<server-name>\<repo location>
 ```
 
 For example:
 
-```    
+```text
 [paths]
 default = \\mainserver\projects\Electric Skateboa
 ```
@@ -76,7 +76,7 @@ Long file names of over 260 characters in Windows can cause issues for Mercurial
 
 A very popular version control system that is well integrated into a fair amount of third party software. Manages on a file-to-file basis, which gives the main benefit of a user being able to checkout a section of a project, work on it, and commit it back to the main repository without ever downloading the rest.
 
-An annoying problem of SVN is the errors I keep getting. I am not sure if I use it right, but somewhere along the line of using  SVN for project (be it a day, or a few weeks later), a clash arises from trying to merge to files together or accidently renaming a folder. This normally locks the directory and I can never get the clean up function to work properly, resulting in SVN becoming useless. This is why I prefer Mercurial/Git.
+An annoying problem of SVN is the errors I keep getting. I am not sure if I use it right, but somewhere along the line of using  SVN for project (be it a day, or a few weeks later), a clash arises from trying to merge to files together or accidentally renaming a folder. This normally locks the directory and I can never get the clean up function to work properly, resulting in SVN becoming useless. This is why I prefer Mercurial/Git.
 
 ## CVS
 

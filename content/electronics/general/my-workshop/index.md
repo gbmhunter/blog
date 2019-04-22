@@ -44,7 +44,7 @@ I brought a cheap 0-30V, 0-5A power supply from AliExpress. It is the YH-305D, a
 
 I also have a high-power DC-DC buck converter that I use when I need high current. It is a 12A, 4.5-30V in, 0.8-28V out (adjustable) buck converter that is rated to 100W without a fan and up to 200W with active cooling. It was about NZ$13 (US$9) on [AliExpress](http://www.aliexpress.com/). Here is a [link to the product](http://www.ebay.com/itm/ws/eBayISAPI.dll?ViewItem&item=321013571373&ssPageName=ADME:X:AAQ:US:1123).
 
-{{< figure src="/images/my-workshop/12a-buck-converter-from-aliexpress.jpg" caption="A 12A, 4.5-30V in, 0.8-28V out DC-DC buck converter from AliExpress. Rated power is 100W without active cooling, 200W with active cooling."  width="400px" >}}
+{{< img src="12a-buck-converter-from-aliexpress.jpg" caption="A 12A, 4.5-30V in, 0.8-28V out DC-DC buck converter from AliExpress. Rated power is 100W without active cooling, 200W with active cooling."  width="400px" >}}
 
 ### Oscilloscope
 
