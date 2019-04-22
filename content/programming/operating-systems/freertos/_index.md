@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-10-29 01:56:38+00:00
+date: 2012-10-29
 draft: false
 title: FreeRTOS
 type: page
@@ -53,7 +53,7 @@ It is recommended that you make use of it in your code for once-only and continu
 
 Some of the files in the demo folder are nested deeply within others, giving large file paths. When the FreeRTOS directory is itself put in a reasonably large directory, this can easily result in file paths over 260 characters, which on a Windows system, will cause issues (such as the SCM Mercurial not working correctly, or errors when trying to copy/cut/paste directories). Long file names include:
 
-```
+```text
 FreeRTOS\Demo\ARM7_AT91SAM7X256_Eclipse\.metadata\.plugins\org.eclipse.core.runtime\.settings\org.eclipse.cdt.core.prj-RTOSDemo.prefs
 FreeRTOS\Demo\ARM7_AT91SAM7X256_Eclipse\.metadata\.plugins\org.eclipse.core.runtime\.settings\org.eclipse.cdt.managedbuilder.core.prefs
 FreeRTOS\Demo\ARM7_LPC2368_Eclipse\.metadata\.plugins\org.eclipse.core.resources\.projects\RTOSDemo\.indexes\33\5b\e7\4\history.index

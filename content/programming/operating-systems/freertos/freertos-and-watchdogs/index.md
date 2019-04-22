@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2017-03-27 01:48:03+00:00
+date: 2017-03-27
 draft: false
 title: FreeRTOS And Watchdogs
 type: page
-url: /programming/operating-systems/freertos/freertos-and-watchdogs
 ---
 
 ## Overview

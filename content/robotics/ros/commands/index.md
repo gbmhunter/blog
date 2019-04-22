@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2016-12-01 14:30:40+00:00
+date: 2016-12-01
 draft: false
 title: Commands
 type: page
-url: /robotics/ros/commands
 ---
 
 ## Overview
@@ -13,7 +12,7 @@ The following page lists terminal commands (i.e. commands that can be run in bas
 
 ## Terminal Commands
 
-Creates a new ROS master, parameter server, and a rosout logging node.
+Creates a new ROS master, parameter server, and a `rosout` logging node.
 
 ```sh    
 $ roscore

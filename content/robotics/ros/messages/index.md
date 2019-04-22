@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2016-12-09 09:47:57+00:00
+date: 2016-12-09
 draft: false
 title: Messages
 type: page
-url: /robotics/ros/messages
 ---
 
 ## Pre-defined Messages
@@ -17,9 +16,9 @@ Sensor-based messages are contained within the directory:
 
 ## Defining Custom Messages
 
-ROS messages are defined in .msg files.
+ROS messages are defined in `.msg` files.
 
-An automatic MD5 sum of the .msg file is created and is checked when nodes try and publish/subscribe to topics. Nodes can only communicate when both the message type and MD5 sums match.
+An automatic MD5 sum of the `.msg` file is created and is checked when nodes try and publish/subscribe to topics. Nodes can only communicate when both the message type and MD5 sums match.
 
 ## The Header
 
@@ -29,6 +28,6 @@ ROS messages may include a special header. This can contain a time stamp and fra
 
 If the message types are not the same, you will normally get a runtime error on launch similar to:
 
-```    
+```text
 [ERROR] [1481703140.912974056, 0.100000000]: Client [<node_name>] wants topic <topic_name> to have datatype/md5sum [<path>/cd5e73d190d741a2f92e81eda573aca7], but our version has [<path>/2d3a8cd499b9b4a0249fb98fd05cfa48]. Dropping connection.
 ```

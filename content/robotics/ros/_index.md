@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2016-12-01 14:23:58+00:00
+date: 2016-12-01
 draft: false
 title: ROS
 type: page
-url: /robotics/ros
 ---
 
 ## Overview

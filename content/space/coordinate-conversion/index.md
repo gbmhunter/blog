@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2017-10-23 16:31:00+00:00
+date: 2017-10-23
 draft: false
 title: Coordinate Conversion
 type: page
@@ -8,7 +8,7 @@ type: page
 
 ## Haversine Formula
 
-The _Haversine_ formula can be used to find the shortest distance (great circle distance) between two points on the earths surface, given their latitude and longitude coordinates.
+The _Haversine_ formula can be used to find the shortest distance (great circle distance) between two points on the earth's surface, given their latitude and longitude coordinates.
 
 <div>$$ d = 2r \cdot arcsin(\sqrt{sin^2(\frac{\varphi_2 - \varphi_1}{2}) + cos(\varphi_1)cos(\varphi_2)sin^2(\frac{\lambda_2 - \lambda_1}{2})}) $$</div>
 

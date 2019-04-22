@@ -4,7 +4,6 @@ author: "gbmhunter"
 date: "2014-01-08"
 type: "page"
 draft: false
-url: "/programming/operating-systems/linux/keyboard-shortcuts"
 ---
 
 <table>

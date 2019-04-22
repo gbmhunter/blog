@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2013-07-31 23:54:57+00:00
+categories: [ "Embedded", "Software", "Operating Systems" ]
+date: 2013-07-31
 draft: false
+tags: [ "FreeRTOS", "idle task", "hook", "vApplicationIdleHook", "freeing memory" ]
 title: The Idle Task
 type: page
-url: /programming/operating-systems/freertos/the-idle-task
 ---
 
 The idle task is the default task that the FreeRTOS scheduler will enter into if their are no tasks waiting for execution time. It is created automatically by the FreeRTOS core, and cannot be disabled. There are two ways of getting access to the idle function (so you can write you own code inside it).
@@ -17,7 +18,7 @@ The idle task is responsible for freeing memory of tasks which have been recentl
 
 ## Creating An Idle Hook
 
-To create an idle hook, configUSE_IDLE_HOOK must be set to 1 in FreeRTOSConfig.h, and then define a function with the following prototype:
+To create an idle hook, `configUSE_IDLE_HOOK` must be set to `1` in `FreeRTOSConfig.h`, and then define a function with the following prototype:
 
 ```c
 void vApplicationIdleHook();

@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2017-05-31 00:23:46+00:00
+date: 2017-05-31
 draft: false
 title: Two-line Elements
 type: page
-url: /space/two-line-elements
 ---
 
 ## Overview

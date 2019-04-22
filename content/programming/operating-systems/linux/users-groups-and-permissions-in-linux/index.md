@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2018-07-04 20:23:00+00:00
+date: 2018-07-04
 draft: false
 title: Users, Groups, And Permissions In Linux
 type: page
-url: /programming/operating-systems/linux/users-groups-and-permissions-in-linux
 ---
 
 ## User Manipulation

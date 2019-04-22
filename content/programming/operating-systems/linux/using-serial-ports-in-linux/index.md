@@ -11,20 +11,20 @@ type: page
 Serial ports typically show up as files under the `/dev/` folder. They are usually prefixed with tty. Common names include:
 
 <table>
-    <tbody>
-        <tr>
-            <td><code>ttyUSB0</code></td>
-            <td>A common name for a generic USB-to-serial adapter. Most FTDI or Prolific adapters show up with this name.</td>
-        </tr>
-        <tr>
-            <td><code>ttyACM0</code></td>
-            <td>Ardunios show up under this name. ACM stands for "Abstract Control Model".</td>
-        </tr>
-        <tr>
-            <td><code>ttyS0</code></td>
-            <td>Some UART ports on SoC devices (such as the Xilinx Zynq) show up with this name.</td>
-        </tr>
-    </tbody>
+  <tbody>
+    <tr>
+      <td><code>ttyUSB0</code></td>
+      <td>A common name for a generic USB-to-serial adapter. Most FTDI or Prolific adapters show up with this name.</td>
+    </tr>
+    <tr>
+      <td><code>ttyACM0</code></td>
+      <td>Arduinos show up under this name. ACM stands for "Abstract Control Model".</td>
+    </tr>
+    <tr>
+      <td><code>ttyS0</code></td>
+      <td>Some UART ports on SoC devices (such as the Xilinx Zynq) show up with this name.</td>
+    </tr>
+</tbody>
 </table>
 
 ## Changing The Permissions On A Serial Port
