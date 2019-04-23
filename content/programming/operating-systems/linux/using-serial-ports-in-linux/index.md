@@ -8,7 +8,7 @@ type: page
 
 ## Where Do Serial Ports Show Up In Linux?
 
-Serial ports typically show up as files under the `/dev/` folder. They are usually prefixed with tty. Common names include:
+Serial ports typically show up as files under the `/dev/` folder. They are usually prefixed with `tty`. Common names include:
 
 <table>
   <tbody>
