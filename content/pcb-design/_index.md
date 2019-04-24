@@ -44,30 +44,30 @@ All values are typical: Minimum Solder Mask Sliver = 0.1016mm (4mill) Solder Mas
 The silkscreen is a printed layer which is used to convey information to the user(s) of the board. It usually contains outlines of components, component polarity indicators, component designators, test-point information, and the PCB designer/version. The silkscreen layer(s) helps greatly when manually placing components and soldering the board. The silkscreen is printed on-top of the soldermask, on one or both sides of the board. On really cheap PCB runs, the silkscreen is left-off altogether (because it is not a necessary layer for the board to function).  For good readability, it should contrast well with the colour of the soldermask. Common silkscreen colours are:
 
 <table>
-    <thead>
-        <tr>
-            <th>Silkscreen Colour</th>
-            <th>Relative Cost (out of 5)</th>
-            <th>Compatible Soldermask Colours</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>White</td>
-            <td>1</td>
-            <td>Green, Red, Black</td>
-        </tr>
-        <tr>
-            <td>Black</td>
-            <td>2</td>
-            <td>Green, White, Yellow</td>
-        </tr>
-        <tr>
-            <td>Red</td>
-            <td>4</td>
-            <td>White, Yellow</td>
-        </tr>
-    </tbody>
+  <thead>
+      <tr>
+        <th>Silkscreen Colour</th>
+        <th>Relative Cost (out of 5)</th>
+        <th>Compatible Soldermask Colours</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>White</td>
+      <td>1</td>
+      <td>Green, Red, Black</td>
+    </tr>
+    <tr>
+      <td>Black</td>
+      <td>2</td>
+      <td>Green, White, Yellow</td>
+    </tr>
+    <tr>
+      <td>Red</td>
+      <td>4</td>
+      <td>White, Yellow</td>
+    </tr>
+  </tbody>
 </table>
 
 The silkscreen has to printed on either soldermask or bare PCB, it cannot be printed onto bare or tinned copper. For this reason, you cannot have soldermask ontop of component pads. {{< figure src="/images/electronics-pcbdesign/connector-protruding-over-edge-of-pcb.png" caption="A right-angled connector protruding over the edge of the PCB."  width="320px" >}} For components that protrude of the edge of the PCB (for example, connectors, or right-angled switches/leds, see the picture to the left), it is useful to indicate this on the silkscreen layer with diagonal lines as shown in the image below.
@@ -135,7 +135,7 @@ Antennas can also be used for stress relief during soldering for stress-sensitiv
 
 ## Undesired Antennas
 
-Any PCB antenna that isn't for radio transmission or stress relief is probably a **bad** thing. These are cause by tracks end in the middle of nowwhere, and are often created un-intentionally when routing the PCB.
+Any PCB antenna that isn't for radio transmission or stress relief is probably a **bad** thing. These are cause by tracks end in the middle of nowhere, and are often created un-intentionally when routing the PCB.
 
 ## Heatsinking
 
@@ -173,9 +173,9 @@ This is an example of a PCB which I really like. It is called "[The Mojo](http:/
 
 "Late cycle rework" is the term given to PCB reworking done at the late stages, just before being sent of to the PCB manufacturer. Late cycle work is normally a bad thing, it is estimated that work done in this stage cost 10x as much as it does in the earlier stage.
 
-## Panelization
+## Panelisation
 
-Panelization is when you combine multiple PCB designs onto one PCB board, with the normal intention of saving costs associated with producing individual PCB's. Most PCB manufacturers support panelization and will route/v-score each design out for you, so you can separate them easily.
+Panelisation is when you combine multiple PCB designs onto one PCB board, with the normal intention of saving costs associated with producing individual PCBs. Most PCB manufacturers support panelisation and will route/v-score each design out for you, so you can separate them easily.
 
 [Altium](/electronics/general/altium) supports panelization. There is also software called [GerbMerge](https://github.com/unwireddevices/gerbmerge), an open-source tool which merges Gerber files together.
 

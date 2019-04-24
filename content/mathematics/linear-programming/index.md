@@ -1,23 +1,17 @@
 ---
 author: gbmhunter
-date: 2017-06-05 23:07:19+00:00
+date: 2017-06-05
 draft: false
 title: Linear Programming
 type: page
 ---
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
 <h2>Overview</h2>
 
 <p>This page provides an introduction to linear programming, with examples which use GNU Linear Programming Toolkit C API.</p>
 
-{{< figure src="/images/2017/06/linear-programming-example-2d-graph-feasible-region-wikipedia.png" width="203px" caption="An example of linear programming with 2 variables. Image from www.wikipedia.com."  >}}
+{{< img src="linear-programming-example-2d-graph-feasible-region-wikipedia.png" width="203px" caption="An example of linear programming with 2 variables. Image from www.wikipedia.com."  >}}
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
 <h2>What Is Linear Programming Good For?</h2>
 
 <p>Linear programming is good for **solving problems in the below form:</p>
@@ -52,9 +46,6 @@ $$ x_1 > 10 \\
  x_1 <= 30 $$
 </p>
 
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
-<!-- ###################################################################### -->
 <h2>GLPK</h2>
 
 <h3>Building GLPK</h3>

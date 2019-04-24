@@ -2,7 +2,7 @@
 author: gbmhunter
 date: 2018-11-29
 draft: false
-lastmod: 2019-02-20
+lastmod: 2019-04-24
 tags: [ "matplotlib", "Python", "code", "programming", "graphs", "numpy", "pyplot", "pie chart", "chart" ]
 title: "matplotlib"
 type: page
@@ -57,3 +57,34 @@ plt.show()
 This will produce the following graph:
 
 {{< figure src="/images/programming/languages/python/matplotlib-two-y-axis-example.png" width="500px" caption="Example matplotlib graph using two separate Y-axis." >}}
+
+## Matching The Legend Text Color To The Plot Line Color
+
+It can be a handy visual aid to set the legend color to the same color as the corresponding line on the plot. This can be done with the following code:
+
+{{< highlight py "hl_lines=15-16" >}}
+fig, ax = plt.subplots()
+
+x = np.linspace(0, 10, 100)
+y_x = x
+y_2x = 2*x
+y_3x = 3*x
+
+ax.plot(x, y_x, label='$y = x$')
+ax.plot(x, y_2x, label='$y = 2x$')
+ax.plot(x, y_3x, label='$y = 3x$')
+
+leg = ax.legend()
+
+# Set legend text color to line color
+for line, text in zip(leg.get_lines(), leg.get_texts()):
+    text.set_color(line.get_color())
+
+plt.title('Legend Text Color Matches Plot Line Color')
+
+plt.savefig('legend-text-color-matches-plot-line-color.png')
+{{< /highlight >}}
+
+This will produce a plot which looks like:
+
+{{% img src="legend-text-color-matches-plot-line-color.png" width="700px" %}}

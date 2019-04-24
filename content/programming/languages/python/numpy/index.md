@@ -1,8 +1,9 @@
 ---
 author: gbmhunter
-categories: [ "Programming", "Languages", "Python" ]
+categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-06-25
 draft: false
+lastmod: 2019-04-24
 tags: [ "programming", "languages", "Python", "Numpy", "array", "axis", "computation", "dimension", "np", "example", "code", "tutorial", "slicing", "indexing" ]
 title: Numpy
 type: page
@@ -72,7 +73,7 @@ array([[1., 0., 0.],
         [0., 0., 1.]])
 ```
 
-Another really useful way of creating arrays is with np.arange(). This does exactly what is says, it creates an array with a range of values:
+Another really useful way of creating arrays is with `np.arange()`. This does exactly what is says, it creates an array with a range of values:
 
 ```py    
 >>> np.arange(4)
@@ -91,6 +92,10 @@ array([[0, 1, 2],
 >>> np.linspace(4.0, 10.0, 5)
 array([ 4. ,  5.5,  7. ,  8.5, 10. ])
 ```
+
+{{% warning %}}
+The difference between `np.arange()` and `np.linspace()` is subtle but important to understand. `arange()` lets you specify the step size, and will create equally spaced points from the start up to (but not necessarily including) the end point. Whether the end point is included or not depends if the step size fits an integer number of times into the interval. `linspace()` lets you specify the number of steps in the interval, and will always include the start and end points.
+{{% /warning %}}
 
 ## Indexing And Reading/Writing
 
