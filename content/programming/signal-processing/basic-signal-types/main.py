@@ -2,6 +2,11 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as tck
 import numpy as np
 
+def main():
+    plot_sinusoidal()
+    plot_exponential()
+    plot_unit_step()
+
 def plot_sinusoidal():
 
     A = 2.0
@@ -25,7 +30,7 @@ def plot_sinusoidal():
     ax.plot(x, y_1cosx, label="$f(t) = \cos(t)$")
     ax.plot(x, y_2cosx, label="$f(t) = 2\cos(t)$")
     ax.plot(x, y_cos2x, label="$f(t) = \cos(2t)$")
-    ax.plot(x, y_cosxshift, label="$f(t) = \cos(t + \\frac{}{})$")
+    ax.plot(x, y_cosxshift, label="$f(t) = \cos(t + \\frac{\pi}{4})$")
 
     ax.axis([x_min, x_max, y_min, y_max])
     ax.set_xlabel('$t$')
@@ -46,7 +51,6 @@ def plot_exponential():
 
     x_min = 0.0
     x_max = 3.0
-
     y_min = 0.0
     y_max = 10.0
 
@@ -76,6 +80,105 @@ def plot_exponential():
     plt.title("Examples of Basic Real Exponential Signals")
     plt.savefig('examples-of-basic-real-exponential-signals.png')
 
+def plot_unit_step():
+
+    x_min = -1.0
+    x_max = 1.0
+    y_min = -0.5
+    y_max = 1.5
+
+    x = np.array([-1, 0, 0, 1])
+    y = np.array([0, 0, 1, 1])
+    
+    fig, ax = plt.subplots()
+
+    ax.plot(x, y, label="$H(t)$")
+    ax.set_xlim([x_min, x_max])
+    ax.set_ylim([y_min, y_max])
+    ax.set_xlabel('$t$')
+    ax.set_ylabel('$H(t)$')
+    leg = ax.legend()
+
+    # Set legend text color to line color
+    for line, text in zip(leg.get_lines(), leg.get_texts()):
+        text.set_color(line.get_color())
+
+    plt.title("The Unit-Step Function (Heaviside Function)")
+    plt.savefig('the-unit-step-function-heaviside.png')
+
+    # H(0) = 0
+    fig, ax = plt.subplots()
+
+    ax.plot(x[0:2], y[0:2], label="$H(t)$", marker='o', markevery=[1])
+    ax.plot(x[2:4], y[2:4], color='C0', marker='o', markevery=[0], markerfacecolor='none')
+    ax.set_xlim([x_min, x_max])
+    ax.set_ylim([y_min, y_max])
+    ax.set_xlabel('$t$')
+    ax.set_ylabel('$H(t)$')
+    leg = ax.legend()
+
+    # Set legend text color to line color
+    for line, text in zip(leg.get_lines(), leg.get_texts()):
+        text.set_color(line.get_color())
+
+    plt.title('Heaviside Function where $H(0) = 0$')
+    plt.savefig('heaviside-unit-step-function-h0-eq-0.png')
+
+    # H(0) = 0.5
+    fig, ax = plt.subplots()
+
+    ax.plot(x[0:2], y[0:2], label="$H(t)$", marker='o', markevery=[1], markerfacecolor='none')
+    ax.plot([0], [0.5], color='C0', marker='o')
+    ax.plot(x[2:4], y[2:4], color='C0', marker='o', markevery=[0], markerfacecolor='none')
+    ax.set_xlim([x_min, x_max])
+    ax.set_ylim([y_min, y_max])
+    ax.set_xlabel('$t$')
+    ax.set_ylabel('$H(t)$')
+    leg = ax.legend()
+
+    # Set legend text color to line color
+    for line, text in zip(leg.get_lines(), leg.get_texts()):
+        text.set_color(line.get_color())
+
+    plt.title('Heaviside Function where $H(0) = 0.5$')
+    plt.savefig('heaviside-unit-step-function-h0-eq-0p5.png')
+
+    # H(0) = 1
+    fig, ax = plt.subplots()
+
+    ax.plot(x[0:2], y[0:2], label="$H(t)$", marker='o', markevery=[1], markerfacecolor='none')
+    ax.plot(x[2:4], y[2:4], color='C0', marker='o', markevery=[0])
+    ax.set_xlim([x_min, x_max])
+    ax.set_ylim([y_min, y_max])
+    ax.set_xlabel('$t$')
+    ax.set_ylabel('$H(t)$')
+    leg = ax.legend()
+
+    # Set legend text color to line color
+    for line, text in zip(leg.get_lines(), leg.get_texts()):
+        text.set_color(line.get_color())
+
+    plt.title('Heaviside Function where $H(0) = 1$')
+    plt.savefig('heaviside-unit-step-function-h0-eq-1.png')
+
+    # H(0) = [0, 1]
+    fig, ax = plt.subplots()
+
+    ax.plot(x[0:2], y[0:2], label="$H(t)$", marker='o', markevery=[1])
+    ax.plot(x[2:4], y[2:4], color='C0', marker='o', markevery=[0])
+    ax.set_xlim([x_min, x_max])
+    ax.set_ylim([y_min, y_max])
+    ax.set_xlabel('$t$')
+    ax.set_ylabel('$H(t)$')
+    leg = ax.legend()
+
+    # Set legend text color to line color
+    for line, text in zip(leg.get_lines(), leg.get_texts()):
+        text.set_color(line.get_color())
+
+    plt.title('Heaviside Function where $H(0) = [0, 1]$')
+    plt.savefig('heaviside-unit-step-function-h0-eq-set-0-1.png')
+
+
 if __name__ == '__main__':
-    plot_sinusoidal()
-    plot_exponential()
+    main()

@@ -1,6 +1,8 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Python" ]
 date: 2018-11-29
+description: "Matplotlib tutorial including useful tricks and tips with code examples."
 draft: false
 lastmod: 2019-04-24
 tags: [ "matplotlib", "Python", "code", "programming", "graphs", "numpy", "pyplot", "pie chart", "chart" ]
