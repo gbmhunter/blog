@@ -1,11 +1,11 @@
 ---
 author: "gbmhunter"
-categories: [ "Programming" ]
+categories: [ "Programming", "Signal Processing" ]
 date: 2019-04-23
-description: ""
+description: "A tutorial on the basic types of signals/waveforms you will come across in engineering."
 draft: false
-lastmod: 2019-04-23
-tags: [ "signals", "sinusoidal", "unit-step function", "Heaviside", "exponential", "unit-impulse function", "waveform", "complex numbers" ]
+lastmod: 2019-04-25
+tags: [ "signals", "sinusoidal", "unit-step function", "Heaviside", "exponential", "unit-impulse function", "waveform", "complex numbers", "Euler's formula" ]
 title: "Basic Signal Types"
 type: "page"
 ---
@@ -47,7 +47,7 @@ An example sinusoidal where `\( f(t) = 2\sin(2t + \frac{\pi}{4}) \)` is shown be
 
 Complex sinusoidal signals are introduced after exponential signals are explained.
 
-## Exponential
+## Exponential Signals
 
 The general form for an exponential signal is:
 
@@ -68,7 +68,34 @@ When `\(\lambda > 1\)`, the signal exhibits _exponential growth_ (this typically
 
 ### Complex Exponential Signals
 
-If the restriction that `\(A\)` and `\(\lambda\)` must be real numbers is removed from the general form for an exponential signal, and they are now complex numbers, a different class of signals arise.
+If the restriction that `\(A\)` and `\(\lambda\)` must be real numbers is removed from the general form for an exponential signal, and they are now complex numbers, a different class of signals arise. We substitute `\(\lambda\)` in the general form for a exponential signal for the complex number `\(z = \sigma + i\omega \)` to give:
+
+<p>$$ f(t) = Ae^{(\sigma + i\omega)t} $$</p>
+
+<p class="centered">
+  where:<br/>
+  \(\sigma\) is the attenuation constant<br/>
+  \(\omega\) is the angular frequency
+</p>
+
+Recap Euler's formula:
+
+<p>$$ e^{it} = \cos(t) + i\sin(t) $$</p>
+
+Also,
+
+<p>$$ A = |A|e^{i\theta} $$</p>
+
+This allows us to separate out the real and imaginary parts into individual terms:
+
+<p>\begin{align}
+f(t)  &= Ae^{\lambda t} \\
+      &= |A|e^{i\theta}e^{(\sigma + i \omega)t} \\
+      &= |A|e^{i\theta}e^{\sigma t + i \omega t} \\
+      &= |A|e^{i\theta}e^{\sigma t}e^{i \omega t} \\
+      &= |A|e^{\sigma t}e^{i (\omega t + \theta)} \\
+      &= |A|e^{\sigma t} \cos(\omega t + \theta) + i |A|e^{\sigma t} \sin(\omega t + \theta)
+\end{align}</p>
 
 ## Heaviside (Unit-Step) Function
 
@@ -100,12 +127,13 @@ H(t) =
 \end{cases}
 $$</p>
 
-{{% img src="heaviside-unit-step-function-h0-eq-0" width="500px" %}}
+This is how the NIST DLMF (_Digital Library of Mathematical Functions_) defines the Heaviside function (see [section 1.16.13](https://dlmf.nist.gov/1.16#E13)). This version of the Heaviside function is left-continuous at `\(t = 0\)` but not right continuous.
 
+{{% img src="heaviside-unit-step-function-h0-eq-0" width="500px" %}}
 
 **H(0) = 0.5**
 
-If the convention `\(H(0) = 0.5\)` is used, you might see the Heaviside function defined as:
+If the convention `\(H(0) = 0.5\)` is used, the Heaviside function defined as:
 
 <p>$$
 H(t) =
@@ -115,6 +143,12 @@ H(t) =
 1 & \text{for $t > 0$}
 \end{cases}
 $$</p>
+
+This is the version of the Heaviside function which seems to be most often used. The [Numpy documentation](https://docs.scipy.org/doc/numpy/reference/generated/numpy.heaviside.html) for `numpy.heaviside` states that `\(H(0) = 0.5\)` is often used. This format of the Heaviside is also closely related to the [signum function](https://en.wikipedia.org/wiki/Sign_function) (the function used to extract the sign of a real number), by the following equation (shifted up by 1 and then halved in magnitude):
+
+<p>$$ H(t) = \frac{1 + sgn (t)}{2} $$</p>
+
+Drawn on a graph it looks like:
 
 {{% img src="heaviside-unit-step-function-h0-eq-0p5" width="500px" %}}
 
@@ -128,20 +162,31 @@ H(t) =
 \end{cases}
 $$</p>
 
+`\(H(0) = 1\)` is how ISO 80000-2:2009 defines the Heaviside function {{< ref id="ref-iso-80000" >}}. This version of the Heaviside function is right-continuous at `\(t = 0\)` but not left continuous. It also allows the Heaviside function to be defined as the integration of the unit impulse (Dirac delta) function:
+
+<p>$$ H(t) = \int_{-\infty}^{t} \delta(x) dx $$</p>
+
+Drawn on a graph it looks like:
+
 {{% img src="heaviside-unit-step-function-h0-eq-1" width="500px" %}}
 
-`\(H(0) = 1\)` is what ISO 80000-2:2009 uses {{< ref id="ref-iso-80000" >}}. The Haversine function is right-continuous at `\(t = 0\)` but not left continuous.
+The Heaviside function is usually defined like this when used in the context of cumulative distributions for statistical purposes. 
 
 **H(0) = [0, 1]**
 
 `\(H(0) = [0, 1]\)` is when the Heaviside equals both `\(0\)` and `\(1\)` (a set) at `\(t = 0\)`. This approach is not as common, but is used in optimization and game theory {{< ref id="ref1" >}}.
 
+Drawn on a graph it looks like:
+
 {{% img src="heaviside-unit-step-function-h0-eq-set-0-1" width="500px" %}}
 
+### Shifted Heaviside
 
-## Unit Impulse Function
+TODO
 
-The unit-impulse function is defined as:
+## Unit Impulse (Dirac Delta) Function
+
+The unit-impulse function (known as a the _Dirac delta function_ in the mathematical world) is defined as:
 
 <p>$$
 f(t) = 0 \text{ for } t \neq 0 \text{ and} \\
