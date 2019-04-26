@@ -22,6 +22,8 @@ Sometimes hugo gets out of sync with the latest file changes. If this happens, y
 $ hugo server -wD --disableFastRender
 ```
 
+There is a test page filled with different shortcode and style tests. It is located at `/posts/test-page/`.
+
 # To Build
 
 To build site and place files in `public` directory:
@@ -60,7 +62,7 @@ $ pipenv install --two LinkChecker
 
 # Recommended VS Code Plugins
 
-* Code Spell Checker (prevents spelling mistakes)
+* Code Spell Checker (prevents spelling mistakes). Additional dictionary definitions are included in `vscode.code-workspace`.
 * Vim (if you're a vim fan!)
 * EditorConfig for VS Code (promotes consistent coding styles)
 

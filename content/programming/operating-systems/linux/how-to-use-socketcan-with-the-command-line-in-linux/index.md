@@ -1,10 +1,11 @@
 ---
-title: "How To Use SocketCAN With The Command-Line In Linux"
-description: "How to open, configure, read and write to SocketCAN devices in Linux using the command-line."
-tags: [ "CAN bus", "SocketCAN", "command-line", "Linux", "vcan", "slcan", "interface", "communication protocol" ]
 author: "gbmhunter"
 date: 2017-07-21
-lastmod: 2018-12-29
+description: "How to open, configure, read and write to SocketCAN devices in Linux using the command-line."
+images: [ "/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux/socketcan-image.png" ] 
+lastmod: 2019-04-26
+tags: [ "CAN bus", "SocketCAN", "command-line", "Linux", "vcan", "slcan", "interface", "communication protocol" ]
+title: "How To Use SocketCAN With The Command-Line In Linux"
 type: "page"
 ---
 
@@ -16,7 +17,7 @@ If you are looking for help controlling a SocketCAN interface from C software, s
 
 If you are looking for more information about the CAN bus protocol itself, see the [CAN Protocol page](/electronics/communication-protocols/can-protocol/).
 
-{{< figure src="/images/2017/07/socketcan-image.png" width="337px" caption="Icon for SocketCAN. Image from https://github.com/linux-can/can-utils."  >}}
+{{< img src="socketcan-image.png" width="337px" caption="Icon for SocketCAN. Image from https://github.com/linux-can/can-utils." >}}
 
 ## What Types of CAN Interfaces Are There?
 

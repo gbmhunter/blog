@@ -69,10 +69,10 @@ Data is buffered internally, which means for virtual interfaces, you can do a wr
 
 ## libsocketcan
 
-_**libsocketcan**_ is a Linux library that provides some userspace functionality to control a SocketCAN interface. It provides functions such as **can_set_bitrate()**, **can_do_start()** and **can_do_stop()**.
+_**libsocketcan**_ is a Linux library that provides some userspace functionality to control a SocketCAN interface. It provides functions such as `can_set_bitrate()`, `can_do_start()` and `can_do_stop()`.
 
 {{% warning %}}
-Although _libsocketcan_ seems to work fine for physical CAN interfaces (e.g. can0), **I have had issues when using it with a virtual CAN interface** (e.g. vcan0). Specifically, functions such as can_get_state() do not seem to work correctly.
+Although _libsocketcan_ seems to work fine for physical CAN interfaces (e.g. `can0`), **I have had issues when using it with a virtual CAN interface** (e.g. `vcan0`). Specifically, functions such as `can_get_state()` do not seem to work correctly.
 {{% /warning %}}
 
 You can install `libsocketcan` on your Linux machine by following the below steps:
