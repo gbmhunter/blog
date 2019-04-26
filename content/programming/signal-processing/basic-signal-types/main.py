@@ -5,6 +5,7 @@ import numpy as np
 def main():
     plot_sinusoidal()
     plot_exponential()
+    plot_complex_exponential()
     plot_unit_step()
 
 def plot_sinusoidal():
@@ -80,6 +81,66 @@ def plot_exponential():
     plt.title("Examples of Basic Real Exponential Signals")
     plt.savefig('examples-of-basic-real-exponential-signals.png')
 
+def plot_complex_exponential():
+
+    x_min = 0.0
+    x_max = 10.0
+    y_min = -10.0
+    y_max = 10.0
+
+    x = np.linspace(x_min, x_max, 500)
+
+    sigma = 0.2
+    omega = 2*np.pi
+    theta = 0.0
+    y_growing_real = 1*np.exp(sigma*x)*np.cos(omega*x + theta) 
+    y_growing_env_top = np.exp(sigma*x)
+    y_growing_env_bottom = -np.exp(sigma*x)
+    fig, ax = plt.subplots()
+
+    ax.plot(x, y_growing_real, label="$Re\{f(t)\} = |A|e^{\sigma t} \cos(\omega t + \\theta)$", color='C0')
+    ax.plot(x, y_growing_env_top, color='C0', linestyle='--')
+    ax.plot(x, y_growing_env_bottom, color='C0', linestyle='--')
+    ax.text(2, 2.5, '$|A|e^{\sigma t}$', ha='center', va='center')
+    ax.text(2, -2.5, '$-|A|e^{\sigma t}$', ha='center', va='center')
+    ax.set_xlim([x_min, x_max])
+    ax.set_ylim([y_min, y_max])
+    ax.set_xlabel('$t$')
+    ax.set_ylabel('$Re\{f(t)\}$')
+    leg = ax.legend()
+
+    # Set legend text color to line color
+    for line, text in zip(leg.get_lines(), leg.get_texts()):
+        text.set_color(line.get_color())
+
+    plt.title('The Real Component of a Growing Complex\nExponential Signal ($\sigma > 0$)')
+    plt.savefig('complex-exponential-signals-real-component-growing.png')
+
+    a = 7
+    sigma = sigma*-1
+    y_decaying_real = a*np.exp(sigma*x)*np.cos(omega*x + theta) 
+    y_growing_env_top = a*np.exp(sigma*x)
+    y_growing_env_bottom = -a*np.exp(sigma*x)
+    fig, ax = plt.subplots()
+
+    ax.plot(x, y_decaying_real, label="$Re\{f(t)\} = |A|e^{\sigma t} \cos(\omega t + \\theta)$", color='C0')
+    ax.plot(x, y_growing_env_top, color='C0', linestyle='--')
+    ax.plot(x, y_growing_env_bottom, color='C0', linestyle='--')
+    ax.text(2, 6.5, '$|A|e^{\sigma t}$', ha='center', va='center')
+    ax.text(2, -6.5, '$-|A|e^{\sigma t}$', ha='center', va='center')
+    ax.set_xlim([x_min, x_max])
+    ax.set_ylim([y_min, y_max])
+    ax.set_xlabel('$t$')
+    ax.set_ylabel('$Re\{f(t)\}$')
+    leg = ax.legend()
+
+    # Set legend text color to line color
+    for line, text in zip(leg.get_lines(), leg.get_texts()):
+        text.set_color(line.get_color())
+
+    plt.title('The Real Component of a Decaying Complex\nExponential Signal ($\sigma < 0$)')
+    plt.savefig('complex-exponential-signals-real-component-decaying.png')
+
 def plot_unit_step():
 
     x_min = -1.0
@@ -103,7 +164,7 @@ def plot_unit_step():
     for line, text in zip(leg.get_lines(), leg.get_texts()):
         text.set_color(line.get_color())
 
-    plt.title("The Unit-Step Function (Heaviside Function)")
+    plt.title("The Heaviside (Unit-Step) Function")
     plt.savefig('the-unit-step-function-heaviside.png')
 
     # H(0) = 0

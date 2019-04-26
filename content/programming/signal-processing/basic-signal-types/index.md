@@ -97,6 +97,12 @@ f(t)  &= Ae^{\lambda t} \\
       &= |A|e^{\sigma t} \cos(\omega t + \theta) + i |A|e^{\sigma t} \sin(\omega t + \theta)
 \end{align}</p>
 
+Below are graphs of the real component of both growing and decaying complex exponential signals. **You can see how the signal is enveloped by `\(\pm |A|e^{\sigma t}\)`**. This is because the signal is the product of an exponential component and a `\(\cos()\)` component, and the `\(\cos()\)` component always varies between `\(-1\)` and `\(1\)`.
+
+{{% img src="complex-exponential-signals-real-component-growing" width="700px" caption="The real component of a growing complex exponential signal. In this case \(|A| = 1, \sigma = 0.2, \omega = 2\pi , \theta = 0\)." %}}
+
+{{% img src="complex-exponential-signals-real-component-decaying" width="700px" caption="The real component of a decaying complex exponential signal. In this case \(|A| = 7, \sigma = -0.2, \omega = 2\pi , \theta = 0\)." %}}
+
 ## Heaviside (Unit-Step) Function
 
 The **Heaviside function**, named after [Oliver Heaviside](https://en.wikipedia.org/wiki/Oliver_Heaviside) (also known as the **unit-step function**) can be defined as:
@@ -112,6 +118,8 @@ $$</p>
 The Heaviside function looks something like the signal below, however the point at `\(H(0)\)` can be drawn in different ways (more on that below):
 
 {{% img src="the-unit-step-function-heaviside.png" width="700px" %}}
+
+Oliver Heaviside used his equation to calculate the current in an electrical circuit when it is first switched on {{< ref id="heaviside-wikipedia" >}}.
 
 ### The Different Conventions For H(0)
 
@@ -144,7 +152,7 @@ H(t) =
 \end{cases}
 $$</p>
 
-This is the version of the Heaviside function which seems to be most often used. The [Numpy documentation](https://docs.scipy.org/doc/numpy/reference/generated/numpy.heaviside.html) for `numpy.heaviside` states that `\(H(0) = 0.5\)` is often used. This format of the Heaviside is also closely related to the [signum function](https://en.wikipedia.org/wiki/Sign_function) (the function used to extract the sign of a real number), by the following equation (shifted up by 1 and then halved in magnitude):
+This is the version of the Heaviside function which seems to be most often used. The [Numpy documentation](https://docs.scipy.org/doc/numpy/reference/generated/numpy.heaviside.html) for `numpy.heaviside()` states that `\(H(0) = 0.5\)` is often used. This format of the Heaviside is also closely related to the [signum function](https://en.wikipedia.org/wiki/Sign_function) (the function used to extract the sign of a real number), by the following equation (shifted up by 1 and then halved in magnitude):
 
 <p>$$ H(t) = \frac{1 + sgn (t)}{2} $$</p>
 
@@ -200,4 +208,5 @@ The unit-impulse function is `\(0\)` everywhere except for `\(t = 0\)` where it 
 <ul id="ref-list">
   <li id="ref1"><a href="https://www.quora.com/What-is-the-value-of-the-unit-step-function-at-T-0">https://www.quora.com/What-is-the-value-of-the-unit-step-function-at-T-0</a></li>
   <li id="ref-iso-80000"><a href="https://www.iso.org/standard/31887.html">https://www.iso.org/standard/31887.html</a></li>
+  <li id="heaviside-wikipedia"><a href="https://en.wikipedia.org/wiki/Oliver_Heaviside">https://en.wikipedia.org/wiki/Oliver_Heaviside</a></li>
 </ul>
