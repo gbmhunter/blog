@@ -1,14 +1,14 @@
 ---
 author: gbmhunter
-date: 2015-04-04 23:07:40+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-04
 draft: false
+tags: [ "component package", "PCB design", "Micro-MELF" ]
 title: Micro-MELF Component Package
 type: page
-url: /pcb-design/component-packages/micro-melf-component-package
 ---
 
 ## Overview
-
 
 <table>
 <tbody >
@@ -35,10 +35,10 @@ url: /pcb-design/component-packages/micro-melf-component-package
 <tr>
 <td >Similar To</td>
 <td>
-    <ul>
-        <li><a href="/pcb-design/component-packages/melf-component-package">MELF</a></li>
-        <li><a href="/pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package">Mini-MELF (SOD-80, DO-213AA)</a></li>
-    </ul>
+  <ul>
+    <li>{{% link-rel text="MEL" src="melf-component-package/" %}}</li>
+    <li>{{% link-rel text="Mini-MELF (SOD-80, DO-213AA)" src="mini-melf-sod-80-do-213aa-component-package" %}}</li>
+  </ul>
 </td>
 </tr>
 <tr >

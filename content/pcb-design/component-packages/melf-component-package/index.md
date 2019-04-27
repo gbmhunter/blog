@@ -29,8 +29,8 @@ type: page
 <td>
   <ul>
     <li>SOD-80</li>
-    <li>{{% link-rel text="Mini-MELF" src="" %}}</li>
-    <li>Micro-MELF</li>
+    <li>{{% link-rel text="Mini-MELF" src="mini-melf-sod-80-do-213aa-component-package/" %}}</li>
+    <li>{{% link-rel text="Micro-MELF" stc="micro-melf-component-package/" %}}</li>
   </ul>
 </td>
 </tr>
@@ -43,60 +43,36 @@ type: page
 <td >2</td>
 </tr>
 <tr >
-
-<td >Pitch
-</td>
-
-<td >Variable
-</td>
+<td >Pitch</td>
+<td >Variable</td>
 </tr>
 <tr >
-
-<td >Solderability
-</td>
-
-<td >Easy to solder by hand, but doesn't stay in one place!
-</td>
+<td >Solderability</td>
+<td >Easy to solder by hand, but doesn't stay in one place!</td>
 </tr>
 <tr >
-
-<td >Thermal Resistance
-</td>
-
-<td >n/a
-</td>
+<td >Thermal Resistance</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Land Area
-</td>
-
-<td >n/a
-</td>
+<td >Land Area</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Height
-</td>
-
-<td >n/a
-</td>
+<td >Height</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >3D Models
-</td>
-
-<td >n/a
-</td>
+<td >3D Models</td>
+<td >n/a</td>
 </tr>
 <tr>
 <td >Common Uses</td>
 <td>
-    <ul>
-        <li>Resistors</li>
-        <li>Diodes</li>
-    </ul>
+  <ul>
+    <li>Resistors</li>
+    <li>Diodes</li>
+  </ul>
 </td>
 </tr>
 </tbody>

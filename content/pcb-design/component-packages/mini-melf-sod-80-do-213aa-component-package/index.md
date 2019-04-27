@@ -1,47 +1,52 @@
 ---
 author: gbmhunter
-date: 2015-04-06 01:07:01+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "Mini-MELF", "DO213-AA", "SOD-80", "LL-34" ]
 title: Mini-MELF (SOD-80, DO-213AA) Component Package
 type: page
-url: /pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package
 ---
 
 ## Overview
 
-<table ><tbody ><tr >
-<td >Name
+<table>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Mini-MELF</td>
+</tr>
+<tr>
+<td>Synonyms</td>
+<td>
+  <ul>
+    <li>DO213-AA</li>
+    <li>LL-34</li>
+    <li>SOD-80 (Small-outline Diode 80)</li>
+  </ul>
 </td>
-<td >Mini-MELF
-</td></tr><tr >
-<td >Synonyms
-</td>
-<td >
-<ul>
-<li>DO213-AA</li>
-<li>LL-34</li>
-<li>SOD-80 (Small-outline Diode 80)</li>
-</ul>
-</td></tr><tr >
-<td >Variants
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Similar To
-</td>
-<td>MELF</td></tr><tr >
-<td>Mounting
-</td>
-<td >SMD
-</td></tr><tr >
-<td >Pin Count
-</td>
-<td >2
-</td></tr><tr >
-<td >Pitch
-</td>
-<td >n/a
-</td></tr><tr >
+</tr>
+<tr>
+<td>Variants</td>
+<td >n/a</td>
+</tr>
+<tr>
+  <td>Similar To</td>
+  <td>{{% link-rel text="MELF" src="melf-component-package/" %}}</td>
+</tr>
+<tr >
+<td>Mounting</td>
+<td >SMD</td>
+</tr>
+<tr >
+<td >Pin Count</td>
+<td >2</td>
+</tr>
+<tr >
+<td >Pitch</td>
+<td >n/a</td>
+</tr>
+<tr >
 <td >Solderability
 </td>
 <td >Easy to solder by hand, but doesn't stay in one place!
@@ -65,7 +70,9 @@ url: /pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package
 <td >Common Uses
 </td>
 <td>Diodes</td>
-</tr></tbody></table>
+</tr>
+</tbody>
+</table>
 
 ## Comments
 

@@ -1,33 +1,35 @@
 ---
 author: gbmhunter
-date: 2015-10-26 06:25:53+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-10-26
 draft: false
+tags: [ "component package", "PCB design", "PP3", "9V", "battery" ]
 title: PP3 Component Package
 type: page
-url: /pcb-design/component-packages/pp3-component-package
 ---
 
 ## Overview
 
-<table ><tbody ><tr >
-<td >Name
-</td>
-<td >PP3
-</td></tr><tr >
-<td >Synonyms
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Variants
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Similar To
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Mounting
-</td>
+<table>
+<tbody>
+<tr >
+<td >Name</td>
+<td >PP3</td>
+</tr>
+<tr >
+<td >Synonyms</td>
+<td >n/a</td>
+</tr>
+<tr >
+<td >Variants</td>
+<td >n/a</td>
+</tr>
+<tr>
+  <td>Similar To</td>
+  <td>{{% link-rel text="PP9" src="pp9-component-package/" %}}</td>
+</tr>
+<tr >
+<td >Mounting</td>
 <td >Snap Contacts
 </td></tr><tr >
 <td >Pin Count

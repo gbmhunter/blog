@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-01-08 22:31:45+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-01-08
 draft: false
+tags: [ "component package", "PCB design", "MSOP", "Micro SOP", "MSE", "uSOP", "uMAX", "RM-8", "RM-10" ]
 title: MSOP Component Package
 type: page
-url: /pcb-design/component-packages/msop-component-package
 ---
 
 ## Overview
@@ -12,34 +13,36 @@ url: /pcb-design/component-packages/msop-component-package
 <table>
 <tbody>
 <tr>
-    <td>Name</td>
-    <td>Micro Small Outline Package</td>
+  <td>Name</td>
+  <td>Micro Small Outline Package</td>
 </tr>
 <tr>
-    <td>Synonyms</td>
-    <td>
-        <ul>
-            <li>Micro SOP</li>
-            <li>RM-8, RM-10 (Analog Devices, no pad)</li>
-            <li>MINI<em>SO</em>EP, RH-8-1, RH-10-1 (Analog Devices, with pad)</li>
-            <li>MSE (Linear Technology)</li>
-            <li>uSOP (Maxim Integrated)</li>
-            <li>uMAX (Maxim Integrated)</li>
-            <li>u8+1 (Maxim Integrated package code for MSOP-8 P0.65mm)</li>
-        </ul>
-</td>
-</tr><tr >
-<td >Variants
-</td>
-<td >n/a
-</td></tr><tr >
-<td>Similar To</td>
-<td>SSOP</td>
-</tr><tr >
-<td >Mounting
-</td>
-<td >SMD
-</td></tr><tr >
+  <td>Synonyms</td>
+  <td>
+    <ul>
+      <li>Micro SOP</li>
+      <li>RM-8, RM-10 (Analog Devices, no pad)</li>
+      <li>MINI<em>SO</em>EP, RH-8-1, RH-10-1 (Analog Devices, with pad)</li>
+      <li>MSE (Linear Technology)</li>
+      <li>uSOP (Maxim Integrated)</li>
+      <li>uMAX (Maxim Integrated)</li>
+      <li>u8+1 (Maxim Integrated package code for MSOP-8 P0.65mm)</li>
+    </ul>
+  </td>
+</tr>
+<tr>
+  <td>Variants</td>
+  <td>n/a</td>
+</tr>
+<tr>
+  <td>Similar To</td>
+  <td>SSOP</td>
+</tr>
+<tr>
+  <td>Mounting</td>
+  <td>SMD</td>
+</tr>
+<tr >
 <td >Lead-type
 </td>
 <td >Gull-wing
