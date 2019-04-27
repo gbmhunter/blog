@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 01:45:21+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOP-4", "relays" ]
 title: SOP-4 Component Package
 type: page
-url: /pcb-design/component-packages/sop-4-component-package
 ---
 
 ## Overview
@@ -85,7 +86,7 @@ url: /pcb-design/component-packages/sop-4-component-package
 </tr>
 <tr >
 
-<td >Power Dissapation
+<td >Power Dissipation
 </td>
 
 <td >170mW (no heatsink)

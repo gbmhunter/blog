@@ -1,9 +1,10 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
+tags: [ "component package", "PCB design", "SOD-123F", "DO-219AA", "PDMU", "M1F" ]
 title: SOD-123F Component Package
 type: page
-url: /pcb-design/component-packages/sod-123f-component-package
 ---
 
 ## Overview
@@ -11,30 +12,29 @@ url: /pcb-design/component-packages/sod-123f-component-package
 <table >
 <tbody>
 <tr>
-    <td>Name</td>
-    <td>SOD-123F (Small-outline diode 123F)</td>
+  <td>Name</td>
+  <td>SOD-123F (Small-outline diode 123F)</td>
 </tr>
 <tr>
-    <td>Synonyms</td>
-    <td>
-        <ul>
-            <li>DO-219AA</li>
-            <li>PDMU (Rohm)</li>
-            <li>M1F (Fagor Electronica)</li>
-        </ul>
-    </td>
-</tr>
-<tr >
-
-<td >Variants
-</td>
-
-<td >n/a
-</td>
+  <td>Synonyms</td>
+  <td>
+    <ul>
+      <li>DO-219AA</li>
+      <li>PDMU (Rohm)</li>
+      <li>M1F (Fagor Electronica)</li>
+    </ul>
+  </td>
 </tr>
 <tr>
-<td>Similar To</td>
-<td>SOD-123W</td>
+<td>Variants</td>
+<td>n/a</td>
+</tr>
+<tr>
+  <td>Similar To</td>
+  <td>
+    <li>{{% link-rel text="SOD-123" src="sod-123-component-package/" %}}</li>
+    <li>SOD-123W</li>
+  </td>
 </tr>
 <tr>
 <td>Mounting</td>

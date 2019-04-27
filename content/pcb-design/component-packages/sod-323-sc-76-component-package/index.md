@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 00:52:38+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOD-323", "SC-76", "small-outline", "diode" ]
 title: SOD-323 (SC-76) Component Package
 type: page
-url: /pcb-design/component-packages/sod-323-sc-76-component-package
 ---
 
 ## Overview

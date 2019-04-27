@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 00:57:52+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOD-723", "small-outline", "diode" ]
 title: SOD-723 Component Package
 type: page
-url: /pcb-design/component-packages/sod-723-component-package
 ---
 
 ## Overview
@@ -12,21 +13,16 @@ url: /pcb-design/component-packages/sod-723-component-package
 <table>
 <tbody >
 <tr>
-<td >Name</td>
-<td >Small-outline Diode 723</td>
+<td>Name</td>
+<td>SOD-723 (Small-outline Diode 723)</td>
 </tr>
 <tr >
-
 <td >Synonyms</td>
 <td >n/a</td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >n/a
-</td>
+<td >Variants</td>
+<td >n/a</td>
 </tr>
 <tr >
 
@@ -115,16 +111,14 @@ url: /pcb-design/component-packages/sod-723-component-package
 </tbody>
 </table>
 
-## Comments
-
-n/a
-
 ## 3D Render
 
 {{< figure src="/images/2015/04/sod-723-component-package-3d-render.jpg" width="351px" caption="A 3D render of the SOD-723 component package."  >}}
 
-## Other Images
+## Land Pattern
 
 {{< figure src="/images/electronics-packages/package-sod-723-recommended-land-pattern.png" caption="The recommended PCB land pattern for the SOD-723 component package."  width="500px" >}}
+
+## Dimensions
 
 {{< figure src="/images/electronics-packages/package-sod-723-2d-dimensions.png" caption="2D dimensions drawing of the SOD-723 package. Taken from the NXP SOD-723 datasheet (http://www.nxp.com/documents/outline_drawing/sod723_po.pdf)."  width="500px" >}}

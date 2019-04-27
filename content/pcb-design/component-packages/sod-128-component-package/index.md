@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 00:46:50+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOD-128", "small-outline", "diode" ]
 title: SOD-128 Component Package
 type: page
-url: /pcb-design/component-packages/sod-128-component-package
 ---
 
 ## Overview
@@ -13,35 +14,21 @@ url: /pcb-design/component-packages/sod-128-component-package
 <tbody >
 <tr >
 
-<td >Name
-</td>
-
-<td >SOD-128 (Small-outline Diode 128)
-</td>
+<td >Name</td>
+<td >SOD-128 (Small-outline Diode 128)</td>
+</tr>
+<tr >
+<td >Synonyms</td>
+<td >n/a</td>
+</tr>
+<tr >
+<td >Variants</td>
+<td >n/a</td>
 </tr>
 <tr >
 
-<td >Synonyms
-</td>
-
-<td >n/a
-</td>
-</tr>
-<tr >
-
-<td >Variants
-</td>
-
-<td >n/a
-</td>
-</tr>
-<tr >
-
-<td >Similar To
-</td>
-
-<td >n/a
-</td>
+<td >Similar To</td>
+<td >n/a</td>
 </tr>
 <tr >
 

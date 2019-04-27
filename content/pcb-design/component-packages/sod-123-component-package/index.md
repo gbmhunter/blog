@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-06-19 06:05:19+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-06-19
 draft: false
+tags: [ "component package", "PCB design", "SOD-123", "small-outline", "diode", "D6", "SC-109D" ]
 title: SOD-123 Component Package
 type: page
-url: /pcb-design/component-packages/sod-123-component-package
 ---
 
 ## Overview
@@ -26,17 +27,18 @@ url: /pcb-design/component-packages/sod-123-component-package
 <td >Variants
 </td>
 <td >n/a
-</td></tr><tr >
-<td >Similar To
+</td></tr>
+<tr>
+<td>Similar To</td>
+<td>
+  <ul>
+    <li>{{% link-rel text="SOD-123F" src="sod-123f-component-package/" %}}</li>
+    <li>SOD-123W</li>
+  </ul>
 </td>
-<td >
-<ul>
-<li>SOD-123F</li>
-<li>SOD-123W</li>
-</ul>
-</td></tr><tr >
-<td >Mounting
-</td>
+</tr>
+<tr >
+<td >Mounting</td>
 <td >SMD
 </td></tr><tr >
 <td >Pin Count

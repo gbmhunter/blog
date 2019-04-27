@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 01:19:09+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOJ", "SOIJC" ]
 title: SOJ (SOIJC) Component Package
 type: page
-url: /pcb-design/component-packages/soj-soijc-component-package
 ---
 
 ## Overview
@@ -19,28 +20,16 @@ url: /pcb-design/component-packages/soj-soijc-component-package
 </td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
-<td >SOIJC (Small-outline IC J-leaded Package)
-</td>
+<td >Synonyms</td>
+<td >SOIJC (Small-outline IC J-leaded Package)</td>
 </tr>
-<tr >
-
-<td >Variants
-</td>
-
-<td >Varying number of pins.
-</td>
+<tr>
+<td>Variants</td>
+<td>Varying number of pins.</td>
 </tr>
-<tr >
-
-<td >Similar To
-</td>
-
-<td >SOIC
-</td>
+<tr>
+  <td>Similar To</td>
+  <td>{{% link-rel text="SOIC" src="soic-component-package/" %}}</td>
 </tr>
 <tr >
 

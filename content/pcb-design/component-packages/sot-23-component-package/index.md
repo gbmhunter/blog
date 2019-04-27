@@ -1,38 +1,33 @@
 ---
 author: gbmhunter
-date: 2015-04-06 20:16:54+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOT-23", "SOT-23-3", "Micro3", "SC-59", "SOT-346", "SSOT3", "SOT-753", SOT-457", "SC-74A" ]
 title: SOT-23 Component Package
 type: page
-url: /pcb-design/component-packages/sot-23-component-package
 ---
 
 ## Overview
 
-<table style="width: 600px;" ><tbody ><tr >
-<td >Name
-</td>
-<td >SOT-23 (Small Outline Transistor 23)
-</td></tr><tr >
-<td >Synonyms
-</td>
+<table>
+<tbody>
+<tr >
+<td >Name</td>
+<td >SOT-23 (Small Outline Transistor 23)</td>
+</tr>
+<tr >
+<td >Synonyms</td>
 <td >
-
 <p><strong>SOT-23-3</strong></p>
 
 <ul>
 <li>Micro3</li>
-
 <li>SC-59 (JEITA)</li>
-
 <li>SOT-23 (TopLine)</li>
-
 <li>SOT-346</li>
-
 <li>SSOT3 (Fairchild Semiconductor)</li>
-
 <li>TO-236AA (JEDEC)</li>
-
 <li>TO-236AB (NXP)</li>
 </ul>
 
@@ -40,9 +35,7 @@ url: /pcb-design/component-packages/sot-23-component-package
 
 <ul>
 <li>SC-74A (JEITA)</li>
-
 <li>SOT-753</li>
-
 <li>SOT-25 (TopLine)</li>
 </ul>
 
@@ -50,11 +43,8 @@ url: /pcb-design/component-packages/sot-23-component-package
 
 <ul>
 <li>SC-74 (JEITA)</li>
-
 <li>SMT6 (ROhm)</li>
-
 <li>SOT-26 (SOT-23-6 by TopLine)</li>
-
 <li>SOT-457 (JEDEC)</li>
 </ul>
 
@@ -62,9 +52,7 @@ url: /pcb-design/component-packages/sot-23-component-package
 
 <ul>
 <li>RJ-8 (Analog Devices)</li>
-
 <li>SM8 (Diodes Incorporated)</li>
-
 <li>SOT-28 (TopLine)</li>
 </ul>
 </td></tr><tr >
@@ -116,9 +104,9 @@ url: /pcb-design/component-packages/sot-23-component-package
 <li>Linear regulators</li>
 <li>Op-amps</li>
 <li>Transistors</li>
-<li>MOSFET's</li>
+<li>MOSFETs</li>
 <li>Diodes (including diode arrays)</li>
-<li>Battery management IC's</li>
+<li>Battery management ICs</li>
 <li>Analogue active linear temperature sensors</li>
 </ul>
 </td></tr></tbody></table>
@@ -131,7 +119,7 @@ The SOT-23 family probably has the largest number of differing variant names whi
 
 {{< figure src="/images/2015/04/sot-23-component-package-photo.jpg" width="262px" caption="A 3D render of the SOT-23 component package."  >}}
 
-The number of pins used not only depends on the required number of connections but also the desired thermal resistance (high-current SOT23 devices may use more than one pin for the same net to improve thermal performance). Used commonly for FET's transistors, diodes, and other components only having a small number of leads. SparkFun makes a [SOT-23 to DIP breakout board](http://www.sparkfun.com/products/717).
+The number of pins used not only depends on the required number of connections but also the desired thermal resistance (high-current SOT23 devices may use more than one pin for the same net to improve thermal performance). Used commonly for FETs transistors, diodes, and other components only having a small number of leads. SparkFun makes a [SOT-23 to DIP breakout board](http://www.sparkfun.com/products/717).
 
 {{< figure src="/images/2015/04/component-package-sot-23-6-sc-74a-sot-457-3d-render.jpg" width="297px" caption="A 3D render of the SOT-23-6 (SOT-457) component package."  >}}
 

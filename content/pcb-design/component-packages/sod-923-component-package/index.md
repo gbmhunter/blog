@@ -1,17 +1,19 @@
 ---
 author: gbmhunter
-date: 2015-10-25 21:08:41+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-10-25
 draft: false
+tags: [ "component package", "PCB design", "SOD-923", "small-outline", "diode" ]
 title: SOD-923 Component Package
 type: page
-url: /pcb-design/component-packages/sod-923-component-package
 ---
 
 ## Overview
 
-<table style="width: 600px;" ><tbody ><tr >
-<td >Name
-</td>
+<table>
+<tbody>
+<tr >
+<td >Name</td>
 <td >SOD-923 (Small Outline Diode 923)
 </td></tr><tr >
 <td >Synonyms
@@ -55,11 +57,9 @@ url: /pcb-design/component-packages/sod-923-component-package
 <tr>
 <td >Common Uses</td>
 <td>ESD protection diodes</td>
-</tr></tbody></table>
-
-## Comments
-
- Nothing here yet.
+</tr>
+</tbody>
+</table>
 
 ## 3D Render
 

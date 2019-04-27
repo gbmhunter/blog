@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2014-12-03 03:42:19+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2014-12-03
 draft: false
+tags: [ "component package", "PCB design", "SON", "DFN", "DSG", "MLP", "MLPD", "MLPM", "VDFPN", "QFN" ]
 title: SON Component Package
 type: page
-url: /pcb-design/component-packages/son-component-package
 ---
 
 ## Overview
@@ -38,15 +39,11 @@ url: /pcb-design/component-packages/son-component-package
 </tr>
 <tr>
 <td>Similar To</td>
-<td>QFN (note that some may call SON a variant of QFN)</td>
+<td>{{% link-rel text="QFN" src="qfn-component-package" %}} (note that some may call SON a variant of QFN)</td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >SMD
-</td>
+<td >Mounting</td>
+<td >SMD</td>
 </tr>
 <tr >
 
@@ -77,9 +74,9 @@ url: /pcb-design/component-packages/son-component-package
 	<td>
 		<b>SON-8</b>
 		<ul>
-			<li>Tja = 333°C/W (free-air)</li>
-			<li>Tja = 65.3°C/W (mounted on PCB with standard land pattern)</li>
-			<li>Tjc (bottom) = 12.8°C/W (thermal resistance between junction and the thermal pad)</li>
+			<li>\(T_{ja}\) = 333°C/W (free-air)</li>
+			<li>\(T_{ja}\) = 65.3°C/W (mounted on PCB with standard land pattern)</li>
+			<li>\(T_{jc}\) (bottom) = 12.8°C/W (thermal resistance between junction and the thermal pad)</li>
 		</ul>
 	</td>
 </tr>
@@ -104,7 +101,7 @@ url: /pcb-design/component-packages/son-component-package
 <td>Common Uses</td>
 <td>
 	<ul>
-		<li>MOSFET's</li>
+		<li>MOSFETs</li>
 		<li>Embedded SIM cards</li>
 		<li>Solid-state load switches</li>
 		<li>Flash memory ICs</li>

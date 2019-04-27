@@ -1,31 +1,24 @@
 ---
 author: gbmhunter
-date: 2015-04-05 21:46:04+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-05
 draft: false
+tags: [ "component package", "PCB design", "SOD-110", "small-outline", "diode" ]
 title: SOD-110 Component Package
 type: page
-url: /pcb-design/component-packages/sod-110-component-package
 ---
 
 ## Overview
 
-
 <table>
 <tbody>
 <tr >
-<td >Name
-</td>
-
-<td >SOD-110 (Small-outline Diode 110)
-</td>
+<td >Name</td>
+<td >SOD-110 (Small-outline Diode 110)</td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
-<td >n/a
-</td>
+<td >Synonyms</td>
+<td >n/a</td>
 </tr>
 <tr >
 

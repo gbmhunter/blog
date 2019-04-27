@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2014-11-09 03:29:01+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2014-11-09
 draft: false
+tags: [ "component package", "PCB design", "SOD-523", "SC-79", "SSMini2", "small-outline", "diode" ]
 title: SOD-523 Component Package
 type: page
-url: /pcb-design/component-packages/sod-523-component-package
 ---
 
 ## Overview
@@ -19,27 +20,19 @@ url: /pcb-design/component-packages/sod-523-component-package
 <tr >
 <td >Synonyms</td>
 <td >
-    <ul>
-        <li>SC-79</li>
-        <li>SSMini2</li>
-    </ul>
+  <ul>
+    <li>SC-79</li>
+    <li>SSMini2</li>
+  </ul>
 </td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >None
-</td>
+<td >Variants</td>
+<td >None</td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
-<td > 
-</td>
+<td>Similar To</td>
+<td>n/a</td>
 </tr>
 <tr >
 

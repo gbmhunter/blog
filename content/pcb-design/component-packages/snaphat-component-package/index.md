@@ -8,53 +8,34 @@ title: SNAPHAT Component Package
 type: page
 ---
 
+
 ## Overview
 
 <table>
 <tbody>
 <tr>
-<td >Name</td>
-<td >SNAPHAT</td>
+<td>Name</td>
+<td>SNAPHAT</td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
-<td >n/a
-</td>
+<td >Synonyms</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >n/a
-</td>
+<td >Variants</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
-<td >n/a
-</td>
+<td >Similar To</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >TH
-</td>
+<td >Mounting</td>
+<td >TH</td>
 </tr>
 <tr >
-
-<td >Pin Count
-</td>
-
-<td >28, 44
-</td>
+<td >Pin Count</td>
+<td >28, 44</td>
 </tr>
 <tr >
 
