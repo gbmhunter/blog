@@ -1,62 +1,46 @@
 ---
 author: gbmhunter
-date: 2014-11-09 03:37:38+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2014-11-09
 draft: false
+tags: [ "component package", "PCB design", "MELF", "LL-34" ]
 title: MELF Component Package
 type: page
-url: /pcb-design/component-packages/melf-component-package
 ---
 
 ## Overview
 
-
 <table>
 <tbody >
 <tr >
-
-<td >Name
-</td>
-
-<td >Metal Electrode Leadless Face
-</td>
+<td >Name</td>
+<td >Metal Electrode Leadless Face</td>
 </tr>
 <tr>
 <td >Synonyms</td>
 <td>LL-34</td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >n/a
-</td>
+<td >Variants</td>
+<td >n/a</td>
 </tr>
 <tr>
 <td >Similar To</td>
 <td>
-    <ul>
-        <li>SOD-80</li>
-        <li>Mini-MELF</li>
-        <li>Micro-MELF</li>
-    </ul>
+  <ul>
+    <li>SOD-80</li>
+    <li>{{% link-rel text="Mini-MELF" src="" %}}</li>
+    <li>Micro-MELF</li>
+  </ul>
 </td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >SMD
-</td>
+<td >Mounting</td>
+<td >SMD</td>
 </tr>
 <tr >
-
-<td >Pin Count
-</td>
-
-<td >2
-</td>
+<td >Pin Count</td>
+<td >2</td>
 </tr>
 <tr >
 
