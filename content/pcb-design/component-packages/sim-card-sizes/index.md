@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-10-26 06:30:00+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-10-26
 draft: false
+tags: [ "component package", "PCB design", "SIM card", "cellphone" ]
 title: SIM Card Sizes
 type: page
-url: /pcb-design/component-packages/sim-card-sizes
 ---
 
 ## Overview

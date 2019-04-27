@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-05 06:04:40+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-05
 draft: false
+tags: [ "component package", "PCB design", "SMD35", "Seti", "UV" ]
 title: SMD35 Component Package
 type: page
-url: /pcb-design/component-packages/smd35-component-package
 ---
 
 ## Overview
@@ -66,19 +67,15 @@ url: /pcb-design/component-packages/smd35-component-package
 <tr >
 <td >Dimensions</td>
 <td>
-    <ul>
-        <li>WxLxH = 3.50x3.50x0.80mm</li>
-        <li>Land Area = 12.25mm2 (3.50x3.50mm)</li>
-    </ul>
+  <ul>
+    <li>WxLxH = 3.50x3.50x0.80mm</li>
+    <li>Land Area = 12.25mm2 (3.50x3.50mm)</li>
+  </ul>
 </td>
 </tr>
 <tr >
-
-<td >3D Models
-</td>
-
-<td >n/a
-</td>
+<td >3D Models</td>
+<td >n/a</td>
 </tr>
 <tr>
 <td >Common Uses</td>

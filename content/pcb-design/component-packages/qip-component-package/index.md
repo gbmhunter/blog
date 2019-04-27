@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-05 02:55:54+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-05
 draft: false
+tags: [ "component package", "PCB design", "QIP", "QIL", "DIP", "SIP" ]
 title: QIP Component Package
 type: page
-url: /pcb-design/component-packages/qip-component-package
 ---
 
 ## Overview
@@ -30,10 +31,10 @@ url: /pcb-design/component-packages/qip-component-package
 <tr >
 <td >Similar To</td>
 <td >
-<ul>
-<li>DIP</li>
-<li>SIP</li>
-</ul>
+  <ul>
+    <li>{{% link-rel text="DIP" src="dip-component-package" %}}</li>
+    <li>{{% link-rel text="SIP" src="sip-component-package" %}}</li>
+  </ul>
 </td>
 </tr>
 <tr >
@@ -43,44 +44,24 @@ url: /pcb-design/component-packages/qip-component-package
 </td>
 </tr>
 <tr >
-
-<td >Pin Count
-</td>
-
-<td >4-24
-</td>
+<td >Pin Count</td>
+<td >4-24</td>
 </tr>
 <tr >
-
-<td >Pitch
-</td>
-
-<td >2.54mm (100mill)
-</td>
+<td >Pitch</td>
+<td >2.54mm (100mill)</td>
 </tr>
 <tr >
-
-<td >Solderability
-</td>
-
-<td >Very easy to solder by hand.
-</td>
+<td >Solderability</td>
+<td >Very easy to solder by hand.</td>
 </tr>
 <tr >
-
-<td >Thermal Resistance
-</td>
-
-<td >n/a
-</td>
+<td >Thermal Resistance</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Dimensions
-</td>
-
-<td >n/a
-</td>
+<td >Dimensions</td>
+<td >n/a</td>
 </tr>
 <tr >
 

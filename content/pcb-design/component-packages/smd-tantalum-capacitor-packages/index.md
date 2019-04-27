@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-10-26 02:11:04+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-10-26
 draft: false
+tags: [ "component package", "PCB design", "SMD", "tantalum", "capacitor", "Kemet", "AVX", "EIA" ]
 title: SMD Tantalum Capacitor Packages
 type: page
-url: /pcb-design/component-packages/smd-tantalum-capacitor-packages
 ---
 
 ## Overview
@@ -14,18 +15,18 @@ Most SMD tantalum capacitors follow a standard set of sizes given in the followi
 {{< figure src="/images/2015/10/smd-tantalum-capacitor-package-photo.jpg" width="262px" caption="A photo of a SMD tantalum capacitor package."  >}}
 
 <table>
-    <thead>
-        <tr>
-            <th>Kemet Code</th>
-            <th>AVX Code</th>
-            <th>Length (mm)</th>
-            <th>Width (mm)</th>
-            <th>Height (mm)</th>
-            <th>EIA Standard</th>
-        </tr>
-    </thead>
-    <tbody>
-    <tr >
+  <thead>
+    <tr>
+      <th>Kemet Code</th>
+      <th>AVX Code</th>
+      <th>Length (mm)</th>
+      <th>Width (mm)</th>
+      <th>Height (mm)</th>
+      <th>EIA Standard</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr >
 <td >S
 </td>
 <td >S

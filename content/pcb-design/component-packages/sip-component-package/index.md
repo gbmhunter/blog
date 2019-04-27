@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-05 06:02:06+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-05
 draft: false
+tags: [ "component package", "PCB design", "SIP", "single inline package" ]
 title: SIP Component Package
 type: page
-url: /pcb-design/component-packages/sip-component-package
 ---
 
 ## Overview
@@ -13,38 +14,25 @@ url: /pcb-design/component-packages/sip-component-package
 <table >
 <tbody >
 <tr >
-
-<td >Name
-</td>
+<td >Name</td>
 
 <td >SIP (Single Inline Package)
 </td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
-<td >n/a
-</td>
+<td >Synonyms</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >n/a
-</td>
+<td >Variants</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
+<td >Similar To</td>
 <td >
     <ul>
-        <li>DIP</li>
-        <li>QIP</li>
+        <li>{{% link-rel text="DIP" src="dip-component-package" %}}</li>
+        <li>{{% link-rel text="QIP" src="qip-component-package" %}}</li>
     </ul>
 </td>
 </tr>

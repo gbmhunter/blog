@@ -1,23 +1,20 @@
 ---
 author: gbmhunter
-date: 2015-04-05 21:15:54+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-05
 draft: false
+tags: [ "component package", "PCB design", "SNAPHAT", "battery", "rechargeable" ]
 title: SNAPHAT Component Package
 type: page
-url: /pcb-design/component-packages/snaphat-component-package
 ---
 
 ## Overview
 
-
 <table>
 <tbody>
 <tr>
-<td >Name
-</td>
-
-<td >SNAPHAT
-</td>
+<td >Name</td>
+<td >SNAPHAT</td>
 </tr>
 <tr >
 
@@ -108,18 +105,8 @@ url: /pcb-design/component-packages/snaphat-component-package
 </td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
-<td >
-
-
-
-  * Back-up powered time keeping on PCB's
-
-
-</td>
+<td >Common Uses</td>
+<td >Back-up powered time keeping on PCBs</td>
 </tr>
 </tbody>
 </table>

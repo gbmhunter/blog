@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-03-09 09:59:27+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-03-09
 draft: false
+tags: [ "component package", "PCB design", "SMC", "DO-214AD", "diode" ]
 title: SMC (DO-214AB) Component Package
 type: page
-url: /pcb-design/component-packages/smc-do-214ab-component-package
 ---
 
 ## Overview
@@ -24,12 +25,14 @@ url: /pcb-design/component-packages/smc-do-214ab-component-package
 </td></tr><tr >
 <td >Similar To
 </td>
-<td >
-<ul>
-<li>DO-214AA</li>
-<li>DO-214AC</li>
-</ul>
-</td></tr><tr >
+<td>
+  <ul>
+    <li>{{% link-rel text="SMA (DO-214AC)" src="sma-do-214ac-component-package/" %}}</li>
+    <li>{{% link-rel text="SMB (DO-214AA)" src="smb-do-214aa-component-package/" %}}</li>
+  </ul>
+</td>
+</tr>
+<tr >
 <td >Mounting
 </td>
 <td >SMD

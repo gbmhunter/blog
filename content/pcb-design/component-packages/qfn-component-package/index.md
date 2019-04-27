@@ -1,14 +1,14 @@
 ---
 author: gbmhunter
-date: 2014-12-04 09:55:02+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2014-12-04
 draft: false
+tags: [ "component package", "PCB design", "QFN", "LFCSP", "MLF", "DO-214AC", "solderpaste", "soldermask", "singulation", "voiding", "lead styles", "JEDEC" ]
 title: QFN Component Package
 type: page
-url: /pcb-design/component-packages/qfn-component-package
 ---
 
 ## Overview
-
 
 <table >
 <tbody >
@@ -20,17 +20,17 @@ url: /pcb-design/component-packages/qfn-component-package
 <tr >
 <td >Synonyms</td>
 <td >
-    <ul>
-        <li><strong>2077-02</strong> | Freescale QFN-16 Pins-5x3 Body-3x3mm)</li>
-        <li><strong>CP-32-2</strong> | Analog Devices QFN-32 Pins-8x8 Pitch-0.50mm Body-5x5mm)</li>
-        <li><strong>DO-214AC</strong></li>
-        <li><strong>LFCSP</strong> | Analog Devices</li>
-        <li><strong>MLF</strong> | Micro-leadframe</li>
-        <li><strong>QFN-UT</strong> | Ultra-thin QFN packages by Samtech</li>
-        <li><strong>RQZ</strong> | QFN-48, 7x7mm, 050mm pitch by Texas Instruments</li>
-        <li><strong>RSB</strong> | QFN-40 by Texas Instruments</li>
-        <li><strong>SOT....</strong> | NXP's name for it's QFN range of packages, not this does not include packages such as the SOT-23, which are NOT QFN packages)</li>
-    </ul>
+  <ul>
+    <li><strong>2077-02</strong> | Freescale QFN-16 Pins-5x3 Body-3x3mm)</li>
+    <li><strong>CP-32-2</strong> | Analog Devices QFN-32 Pins-8x8 Pitch-0.50mm Body-5x5mm)</li>
+    <li><strong>DO-214AC</strong></li>
+    <li><strong>LFCSP</strong> | Analog Devices</li>
+    <li><strong>MLF</strong> | Micro-leadframe</li>
+    <li><strong>QFN-UT</strong> | Ultra-thin QFN packages by Samtech</li>
+    <li><strong>RQZ</strong> | QFN-48, 7x7mm, 050mm pitch by Texas Instruments</li>
+    <li><strong>RSB</strong> | QFN-40 by Texas Instruments</li>
+    <li><strong>SOT....</strong> | NXP's name for it's QFN range of packages, not this does not include packages such as the SOT-23, which are NOT QFN packages)</li>
+  </ul>
 </td>
 </tr>
 <tr >
@@ -42,18 +42,13 @@ url: /pcb-design/component-packages/qfn-component-package
 </td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
-<td >
-<ul>
-<li><a href="/pcb-design/component-packages/son-component-package">SON (DFN)</a></li>
-
-<li>UQFN</li>
-
-<li>VQFN</li>
-</ul>
+<td >Similar To</td>
+<td>
+  <ul>
+    <li>{{% link-rel text="SON (DFN)" src="son-component-package/" %}}</li>
+    <li>{{% link-rel text="UQFN" src="uqfn-component-package/" %}}</li>
+    <li>{{% link-rel text="VQFN" src="vqfn-component-package/" %}}</li>
+  </ul>
 </td>
 </tr>
 <tr >
@@ -61,23 +56,16 @@ url: /pcb-design/component-packages/qfn-component-package
 <td >SMD</td>
 </tr>
 <tr >
-
-<td >Pin Count
-</td>
-
-<td >12-108
-</td>
+<td >Pin Count</td>
+<td >12-108</td>
 </tr>
 <tr >
-
-<td >Pitch
-</td>
-
+<td >Pitch</td>
 <td >
 <ul>
-    <li>0.40mm</li>
-    <li>0.50mm</li>
-    <li>0.65mm</li>
+  <li>0.40mm</li>
+  <li>0.50mm</li>
+  <li>0.65mm</li>
 </ul>
 </td>
 </tr>
@@ -155,14 +143,14 @@ url: /pcb-design/component-packages/qfn-component-package
 <td>
     <ul>
         <li>Microcontrollers</li>
-        <li>High-pin count, low footprint area IC's</li>
+        <li>High-pin count, low footprint area ICs</li>
     </ul>
 </td>
 </tr>
 </tbody>
 </table>
 
-The QFN component package is commonly used today for higher pin-count IC's such as microcontrollers. It is a **near chip-scale package**, with all the pins being around the perimeter and an optional thermal pad(s) in the center. It is one of the highest pin-density SMD packages without resorting to BGA. Note that there are different pitch footprints within the QFN family! And QFN packages do not have to be square (square is the most common), some rectangular versions exist with a different number of leads on the two sides (they always have the same number of pins on the opposite side).
+The QFN component package is commonly used today for higher pin-count ICs such as microcontrollers. It is a **near chip-scale package**, with all the pins being around the perimeter and an optional thermal pad(s) in the center. It is one of the highest pin-density SMD packages without resorting to BGA. Note that there are different pitch footprints within the QFN family! And QFN packages do not have to be square (square is the most common), some rectangular versions exist with a different number of leads on the two sides (they always have the same number of pins on the opposite side).
 
 QFN packages offer benefits over other packages for high-speed circuits, as well as high heat dissipation capabilities. QFN packages are lacking gull-wing leads (like that present on the QFP package), which create noise in high-speed applications.
 
@@ -205,8 +193,8 @@ It may be necessary to mask or plug vias in the center pad to prevent solder pas
 
 There are two singulation methods for QFN packages:
 
-* Punch singulation: This is used on individually-molded QFN packages.
-* Saw singulation: This is used on _molded array_ QFN packages.
+* Punch singulation: This is used on individually-moulded QFN packages.
+* Saw singulation: This is used on _moulded array_ QFN packages.
 
 The main difference between these two singulation methods is the cross-sectional profile. Punch singulation gives a tapered cross-section (larger cross-section at the bottom than the top), while sawn singulation gives a completely square cross-section.
 

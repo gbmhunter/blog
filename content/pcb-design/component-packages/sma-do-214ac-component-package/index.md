@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-04 22:14:27+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-04
 draft: false
+tags: [ "component package", "PCB design", "SMA", "DO-214AC", "diode" ]
 title: SMA (DO-214AC) Component Package
 type: page
-url: /pcb-design/component-packages/sma-do-214ac-component-package
 ---
 
 ## Overview
@@ -17,19 +18,21 @@ url: /pcb-design/component-packages/sma-do-214ac-component-package
 <td >Synonyms
 </td>
 <td >SMA
-</td></tr><tr >
+</td></tr>
+<tr >
 <td >Variants
 </td>
 <td >n/a
-</td></tr><tr >
-<td >Similar To
+</td></tr>
+<tr >
+<td >Similar To</td>
+<td>
+  <ul>
+    <li>{{% link-rel text="SMB (DO-214AA)" src="smb-do-214aa-component-package/" %}}</li>
+    <li>{{% link-rel text="SMC (DO-214AB)" src="smc-do-214ab-component-package/" %}}</li>
+  </ul>
 </td>
-<td >
-<ul>
-<li>DO-214AA</li>
-<li>DO-214AB</li>
-</ul>
-</td></tr><tr >
+</tr><tr >
 <td >Mounting
 </td>
 <td >SMD
