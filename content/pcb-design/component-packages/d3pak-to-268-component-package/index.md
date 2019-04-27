@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-07 01:01:06+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "D3PAK", "TO-268", "DDDPAK", "Decawatt", "TO-268AA", "TO-268-3", "component package" ]
 title: D3PAK (TO-268) Component Package
 type: page
-url: /pcb-design/component-packages/d3pak-to-268-component-package
 ---
 
 ## Overview
@@ -13,8 +14,8 @@ url: /pcb-design/component-packages/d3pak-to-268-component-package
 <table>
 <tbody>
 <tr>
-    <td>Name</td>
-    <td>TO-263 (D3PAK)</td>
+  <td>Name</td>
+  <td>TO-263 (D3PAK)</td>
 </tr>
 <tr>
     <td>Synonyms</td>
@@ -106,9 +107,9 @@ url: /pcb-design/component-packages/d3pak-to-268-component-package
 <td>Common Uses</td>
 <td>
     <ul>
-        <li>Microsemi power MOSFET's</li>
+        <li>Microsemi power MOSFETs</li>
         <li>Microsemi power diodes</li>
-        <li>Microsemi power IGBT's</li>
+        <li>Microsemi power IGBTs</li>
     </ul>
 </td>
 </tr>

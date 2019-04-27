@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2011-09-03 02:11:53+00:00
+date: 2011-09-03
 draft: false
 title: Component Packages
 type: page
@@ -28,7 +28,7 @@ Some items such as the [PP3 9V battery case](/pcb-design/component-packages/pp3-
 
 {{< figure src="/images/electronics-misc/sparkfun-break-out-board.jpg" caption="A SOIC-8 to DIP break-out board made by SparkFun."  width="160px" >}}
 
-Break-out boards are useful for converting one package footprint into another. They are particular common for converting smaller SMT package footprints into 100mil DIP packages for prototyping with modern IC's.
+Break-out boards are useful for converting one package footprint into another. They are particular common for converting smaller SMT package footprints into 100mil DIP packages for prototyping with modern ICs.
 
 If not brought from the right place, these break-out board's can be very expensive!
 

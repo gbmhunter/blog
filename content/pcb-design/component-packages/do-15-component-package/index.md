@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-07 07:05:30+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "DO-15", "DO-204AC", "diode" ]
 title: DO-15 Component Package
 type: page
-url: /pcb-design/component-packages/do-15-component-package
 ---
 
 ## Overview
@@ -23,25 +24,15 @@ url: /pcb-design/component-packages/do-15-component-package
 </tr>
 <tr >
 <td >Variants</td>
-
-<td > 
-</td>
+<td > </td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
-<td >n/a
-</td>
+<td >Similar To</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >TH
-</td>
+<td >Mounting</td>
+<td >TH</td>
 </tr>
 <tr >
 

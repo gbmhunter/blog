@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-03-08
 draft: false
+tags: [ "component package", "PCB design", "DIP", "N Package", "PDIP", "CDIP", "dual inline package" ]
 title: DIP Component Package
 type: page
-url: /pcb-design/component-packages/dip-component-package
 ---
 
 ## Overview
@@ -18,11 +19,11 @@ url: /pcb-design/component-packages/dip-component-package
 <tr >
 <td >Synonyms</td>
 <td>
-    <ul>
-        <li>N Package (Analog Devices)</li>
-        <li>PDIP (plastic dual-inline package)</li>
-        <li>CDIP (ceramic dual-inline package)</li>
-    </ul>
+  <ul>
+    <li>N Package (Analog Devices)</li>
+    <li>PDIP (plastic dual-inline package)</li>
+    <li>CDIP (ceramic dual-inline package)</li>
+  </ul>
 </td>
 </tr>
 <tr>
@@ -32,11 +33,11 @@ url: /pcb-design/component-packages/dip-component-package
 <tr>
 <td >Similar To</td>
 <td>
-    <ul>
-        <li>SIP</li>
-        <li>QIP</li>
-        <li>SOIC</li>
-    </ul>
+  <ul>
+    <li>{{% link-rel src="sip-component-package" text="SIP" %}}</li>
+    <li>{{% link-rel src="qip-component-package" text="QIP" %}}</li>
+    <li>{{% link-rel src="soic-component-package" text="SOIC" %}}</li>
+  </ul>
 </td>
 </tr>
 <tr>
@@ -53,7 +54,7 @@ url: /pcb-design/component-packages/dip-component-package
 </tr>
 <tr>
 <td>Solderability</td>
-<td >Easiest chip package to solder! Perfect for protoyping, fits into standard 100mill pitch prototype board.</td>
+<td >Easiest chip package to solder! Perfect for prototyping, fits into standard 100mill pitch prototype board.</td>
 </tr>
 <tr >
 <td>Thermal Resistance</td>
@@ -91,7 +92,7 @@ where n is the number of pins and the width is the rated package width in mm (e.
 <td>Common Uses</td>
 <td >
     <ul>
-        <li>Through-hole IC's</li>
+        <li>Through-hole ICs</li>
         <li>DIP switches</li>
         <li>Relays/reed switches</li>
         <li>7-segment, 4-digit LCD character display footprints (with different package)</li>

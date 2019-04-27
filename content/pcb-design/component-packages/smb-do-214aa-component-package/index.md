@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-03-09 08:52:22+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-03-09
 draft: false
+tags: [ "component package", "PCB design", "SMB", "DO-214AA" ]
 title: SMB (DO-214AA) Component Package
 type: page
 ---
@@ -19,53 +21,56 @@ type: page
 </td></tr><tr >
 <td >Variants
 </td>
-<td >n/a
-</td></tr><tr >
-<td >Similar To
-</td>
+<td >n/a</td>
+</tr>
+<tr >
+<td >Similar To</td>
 <td >
-<ul>
-<li>DO-214AB</li>
-<li>DO-214AC</li>
-</ul>
-</td></tr><tr >
-<td >Mounting
+  <ul>
+    <li>{{% link-rel src="do-214aa-component-package" text="DO-214AB" %}}</li>
+    <li>{{% link-rel src="do-214ac-component-package" text="DO-214AC" %}}</li>
+    <li>DO-214AC</li>
+  </ul>
 </td>
-<td >SMD
-</td></tr><tr >
-<td >Pin Count
-</td>
-<td >2
-</td></tr><tr >
-<td >Pitch
-</td>
-<td >3.97mm
-</td></tr><tr >
-<td >Solderability
-</td>
-<td >Easy to solder by hand. Don't use a really fine tip, as the two pins need a fair amount of heat.
-</td></tr><tr >
-<td >Thermal Resistance
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Land Area
-</td>
-<td >5.59mm*3.94mm=22.0mm2
-</td></tr><tr >
-<td >Height
-</td>
-<td >2.44mm
-</td></tr><tr >
-<td >3D Models
-</td>
-<td>
-<p><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=85500">Link</a></p>
-</td></tr><tr >
-<td >Common Uses
-</td>
+</tr>
+<tr >
+<td >Mounting</td>
+<td >SMD</td>
+</tr>
+<tr >
+<td >Pin Count</td>
+<td >2</td>
+</tr>
+<tr >
+<td >Pitch</td>
+<td >3.97mm</td>
+</tr>
+<tr >
+<td >Solderability</td>
+<td >Easy to solder by hand. Don't use a really fine tip, as the two pins need a fair amount of heat.</td>
+</tr>
+<tr >
+<td >Thermal Resistance</td>
+<td >n/a</td>
+</tr>
+<tr >
+<td >Land Area</td>
+<td >5.59mm*3.94mm=22.0mm2</td>
+</tr>
+<tr >
+<td >Height</td>
+<td >2.44mm</td>
+</tr>
+<tr >
+<td >3D Models</td>
+<td><p><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=85500">Link</a></p></td>
+</tr>
+<tr >
+<td >Common Uses</td>
 <td>Diodes</td>
-</tr></tbody></table>
+</tr>
+</tbody>
+</table>
 
 ## Comments
 

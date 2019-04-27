@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "D2PAK", "TO-263", "DDPAK", "TO-263AB", "TO-279", "SMD-220" ]
 title: D2PAK (TO-263) Component Package
 type: page
-url: /pcb-design/component-packages/d2pak-to-263-component-package
 ---
 
 ## Overview
@@ -34,9 +35,10 @@ url: /pcb-design/component-packages/d2pak-to-263-component-package
 <li>TO-263 THIN (a thinner variant of the standard TO-263 package by Texas Instruments)</li>
 </ul>
 </td></tr><tr >
-<td >Similar To
-</td>
-<td>TO-220AB</td></tr><tr >
+<td >Similar To</td>
+<td>{{% link-rel src="to-220ab-component-package" text="TO-220AB" %}}</td>
+</tr>
+<tr >
 <td >Mounting
 </td>
 <td >SMD
@@ -101,8 +103,8 @@ url: /pcb-design/component-packages/d2pak-to-263-component-package
 </td>
 <td >
 <ul>
-<li>High power MOSFET's</li>
-<li>High power LDO's</li>
+<li>High power MOSFETs</li>
+<li>High power LDOs</li>
 <li>High power SMPS (usually with integrated switching element)</li>
 </ul>
 </td></tr></tbody></table>

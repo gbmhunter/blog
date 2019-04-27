@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-04 22:50:04+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-04
 draft: false
+tags: [ "component package", "PCB design", "HC-49US", "SMD", "crystals" ]
 title: HC-49/US Component Package
 type: page
-url: /pcb-design/component-packages/hc-49us-component-package
 ---
 
 ## Overview
@@ -76,7 +77,7 @@ url: /pcb-design/component-packages/hc-49us-component-package
 <td >Thermal Resistance
 </td>
 
-<td >n/a (this package is used for low power crytals, not normally relevant)
+<td >n/a (this package is used for low power crystals, not normally relevant)
 </td>
 </tr>
 <tr >

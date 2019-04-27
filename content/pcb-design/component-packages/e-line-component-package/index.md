@@ -1,92 +1,56 @@
 ---
 author: gbmhunter
-date: 2015-04-04 22:37:06+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-04
 draft: false
+tags: [ "component package", "PCB design", "E-Line", "TO-92" ]
 title: E-Line Component Package
 type: page
-url: /pcb-design/component-packages/e-line-component-package
 ---
 
 ## Overview
 
-
 <table >
 <tbody >
 <tr >
-
-<td >Name
-</td>
-
-<td >E-Line
-</td>
+<td >Name</td>
+<td >E-Line</td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
-<td >n/a
-</td>
+<td >Synonyms</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >n/a
-</td>
+<td >Variants</td>
+<td >n/a</td>
+</tr>
+<tr>
+<td>Similar To</td>
+<td>{{% link-rel text="TO-92" src="to-92-to-226-component-package" %}}</td>
 </tr>
 <tr >
-<td >Similar To</td>
-<td>TO-92</td>
+<td >Mounting</td>
+<td >TH</td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >TH
-</td>
+<td >Pin Count</td>
+<td >2, 3</td>
 </tr>
 <tr >
-
-<td >Pin Count
-</td>
-
-<td >2, 3
-</td>
+<td >Pitch</td>
+<td >Multiples of 2.54mm (100mill)</td>
 </tr>
 <tr >
-
-<td >Pitch
-</td>
-
-<td >Multiples of 2.54mm (100mill)
-</td>
+<td >Solderability</td>
+<td >Easy to solder by hand.</td>
 </tr>
 <tr >
-
-<td >Solderability
-</td>
-
-<td >Easy to solder by hand.
-</td>
+<td >Thermal Resistance</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Thermal Resistance
-</td>
-
-<td >n/a
-</td>
-</tr>
-<tr >
-
-<td >Land Area
-</td>
-
-<td >n/a
-</td>
+<td >Land Area</td>
+<td >n/a</td>
 </tr>
 <tr >
 
@@ -96,24 +60,17 @@ url: /pcb-design/component-packages/e-line-component-package
 <td >n/a
 </td>
 </tr>
-<tr >
-
-<td >3D Models
-</td>
-
-<td >[E-Line](http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=356143)
-</td>
+<tr>
+<td>3D Models</td>
+<td><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=356143">E-Line</a></td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
+<td >Common Uses</td>
 <td>
-    <ul>
-        <li>Transistors</li>
-        <li>Voltage References</li>
-    </ul>
+  <ul>
+    <li>Transistors</li>
+    <li>Voltage References</li>
+  </ul>
 </td>
 </tr>
 </tbody>

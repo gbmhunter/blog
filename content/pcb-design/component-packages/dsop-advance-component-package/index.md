@@ -1,27 +1,30 @@
 ---
 author: gbmhunter
-date: 2015-05-13 06:44:59+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-05-13
 draft: false
+tags: [ "component package", "PCB design", "DSOP" ]
 title: DSOP Advance Component Package
 type: page
-url: /pcb-design/component-packages/dsop-advance-component-package
 ---
 
 ## Overview
 
-<table><tbody ><tr >
-<td >Name
-</td>
-<td >DSOP Advance Component Package
-</td></tr><tr >
-<td >Synonyms
-</td>
-<td >  * 2-5S1A (Toshiba)
-</td></tr><tr >
-<td >Variants
-</td>
-<td >n/a
-</td></tr><tr >
+<table>
+<tbody>
+<tr >
+<td >Name</td>
+<td >DSOP Advance Component Package</td>
+</tr>
+<tr >
+<td >Synonyms</td>
+<td>2-5S1A (Toshiba)</td>
+</tr>
+<tr >
+<td >Variants</td>
+<td >n/a</td>
+</tr>
+<tr >
 <td >Similar To
 </td>
 <td > 
@@ -56,26 +59,23 @@ url: /pcb-design/component-packages/dsop-advance-component-package
 </td></tr><tr >
 <td >Dimensions
 </td>
-<td >
-
-The package is 5x6x0.73mm (nominal)
-
-</td></tr><tr >
+<td >The package is 5x6x0.73mm (nominal)</td>
+</tr>
+<tr >
 <td >Weight
 </td>
-<td >
-
-98mg
-
-</td></tr><tr >
-<td >3D Models
-</td>
+<td >98mg</td>
+</tr>
+<tr >
+<td >3D Models</td>
 <td>n/a</td>
 </tr>
 <tr >
-    <td >Common Uses</td>
-    <td>High-power Toshiba MOSFETs</td>
-</tr></tbody></table>
+  <td >Common Uses</td>
+  <td>High-power Toshiba MOSFETs</td>
+</tr>
+</tbody>
+</table>
 
 ## Thermal Resistance
 

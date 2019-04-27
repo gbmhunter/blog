@@ -1,34 +1,29 @@
 ---
 author: gbmhunter
-date: 2015-04-04 22:40:32+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-04
 draft: false
+tags: [ "component package", "PCB design", "EEP", "SMPS", "Texas Instruments", "R-PDSS-T5", "R-PDSS-T6" ]
 title: EEP Component Package
 type: page
-url: /pcb-design/component-packages/eep-component-package
 ---
 
 ## Overview
 
 
-<table style="width: 500px;" >
+<table>
 <tbody >
 <tr >
-
-<td >Name
-</td>
-
-<td >EEP
-</td>
+<td >Name</td>
+<td >EEP</td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
+<td >Synonyms</td>
 <td >
-    <ul>
-        <li>R-PDSS-T5</li>
-        <li>R-PDSS-T6</li>
-    </ul>
+  <ul>
+    <li>R-PDSS-T5</li>
+    <li>R-PDSS-T6</li>
+  </ul>
 </td>
 </tr>
 <tr >
@@ -52,70 +47,40 @@ url: /pcb-design/component-packages/eep-component-package
 <td >Mounting
 </td>
 
-<td >TH
-</td>
+<td >TH</td>
 </tr>
 <tr >
-
-<td >Pin Count
-</td>
-
+<td >Pin Count</td>
 <td >4-6
 </td>
 </tr>
 <tr >
-
-<td >Pitch
-</td>
-
-<td >Multiples of 2.54mm (100mill)
-</td>
+<td >Pitch</td>
+<td >Multiples of 2.54mm (100mill)</td>
 </tr>
 <tr >
-
-<td >Solderability
-</td>
-
-<td >Easy to solder by hand.
-</td>
+<td >Solderability</td>
+<td >Easy to solder by hand.</td>
 </tr>
 <tr >
-
-<td >Thermal Resistance
-</td>
-
-<td >n/a (it's a module)
-</td>
+<td >Thermal Resistance</td>
+<td >n/a (it's a module)</td>
 </tr>
 <tr >
-
-<td >Land Area
-</td>
-
-<td >n/a
-</td>
+<td >Land Area</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Height
-</td>
-
-<td >n/a
-</td>
+<td >Height</td>
+<td >n/a</td>
 </tr>
 <tr >
-
 <td >3D Models</td>
-<td><p><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=356143">E-Line</a></p>
-</td>
+<td>n/a</td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
-<td>DC/DC converters</td>
-</tr>
+<td >Common Uses</td>
+<td>DC/DC converters</td></tr>
 </tbody>
 </table>
 

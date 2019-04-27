@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-04 22:30:30+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-04
 draft: false
+tags: [ "component package", "PCB design", "DO-35", "DO-214AH", "diode" ]
 title: DO-35 (DO-214AH) Component Package
 type: page
-url: /pcb-design/component-packages/do-35-do-214ah-component-package
 ---
 
 ## Overview

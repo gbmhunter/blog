@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-07 06:56:11+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "DPACK", "SC-63", "SOT-428", "TO-252", "TO-252AA", "CPD", "Case 369C" ]
 title: DPACK Component Package
 type: page
-url: /pcb-design/component-packages/dpack-component-package
 ---
 
 ## Overview
@@ -40,15 +41,11 @@ url: /pcb-design/component-packages/dpack-component-package
 </tr>
 <tr >
 <td >Similar To</td>
-<td >TO-220AB</td>
+<td>{{% link-rel text="TO-220AB" src="to-220ab-component-package/" %}}</td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >SMD
-</td>
+<td >Mounting</td>
+<td >SMD</td>
 </tr>
 <tr >
 <td >Pin Count</td>
@@ -98,22 +95,19 @@ url: /pcb-design/component-packages/dpack-component-package
 <tr >
 <td >3D Models</td>
 <td >
-<ul>
-<li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=444823">DPAK, TO-252AA, by Bill Brooks (this is DPAK3)</a></li>
-<li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=432344">DPAK-5, by Alexey Olehnovich</a> </li>
-</ul>
+  <ul>
+    <li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=444823">DPAK, TO-252AA, by Bill Brooks (this is DPAK3)</a></li>
+    <li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=432344">DPAK-5, by Alexey Olehnovich</a> </li>
+  </ul>
 </td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
+<td >Common Uses</td>
 <td >
-<ul>
-<li>MOSFET's</li>
-<li>Linear voltage regulators</li>
-</ul>
+  <ul>
+    <li>MOSFETs</li>
+    <li>Linear voltage regulators</li>
+  </ul>
 </td>
 </tr>
 </tbody>
@@ -121,7 +115,7 @@ url: /pcb-design/component-packages/dpack-component-package
 
 ## Comments
 
-Commonly used for power MOSFET's and high power voltage regulators. Features a large tab/pin which can be soldered directly onto the PCB, providing good heatsinking capabilities.
+Commonly used for power MOSFETs and high power voltage regulators. Features a large tab/pin which can be soldered directly onto the PCB, providing good heatsinking capabilities.
 
 If DPAK is referred to by itself, with no pin number indication (e.g. DPAK3, DPAK5), it is usually referring to the 3-pin version.
 

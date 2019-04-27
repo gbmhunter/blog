@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-10-25 23:46:07+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-10-25
 draft: false
+tags: [ "component package", "PCB design", "chip", "EIA", "0603", "0805", "1206" ]
 title: "Chip (EIA) Component Packages"
 type: page
 ---
@@ -72,7 +74,7 @@ type: page
 
 The following are a description of the most popular chip packages. Chip packages are standardized small SMT footprints primarily used for 2 lead passive components such as resistors, capacitors and ferrite beads. They are defined by four-digit number which represents the total footprint width and height, respectively (assuming the two footprint pads are on the left and right rather than the top or bottom, or more formally, the axis of the component runs parallel to the width).
 
-The standard is to define them in the metric scale, however most manufacturers, and hence suppliers still use the imperial units. In **metric** units, the format is to use two number each to describe the width and height in tenths of a millimeter, e.g. a chip package size '2012' tells you the width is 2.0mm and the height is 1.2mm. In **imperial**, the numbers are in hundreths of an inch (which is NOT mills; that is thousandths of an inch). For example, an 0805 chip package tells you the width is 0.08inch, and the height 0.05inch. This is equivalent to the '2012' metric representation. Below is a short description on the most popular chip packages. The imperial size of the footprint is listed first, and then the metric equivalent is followed in brackets.
+The standard is to define them in the metric scale, however most manufacturers, and hence suppliers still use the imperial units. In **metric** units, the format is to use two number each to describe the width and height in tenths of a millimeter, e.g. a chip package size '2012' tells you the width is 2.0mm and the height is 1.2mm. In **imperial**, the numbers are in hundredths of an inch (which is NOT mills; that is thousandths of an inch). For example, an 0805 chip package tells you the width is 0.08inch, and the height 0.05inch. This is equivalent to the '2012' metric representation. Below is a short description on the most popular chip packages. The imperial size of the footprint is listed first, and then the metric equivalent is followed in brackets.
 
 Sorted from smallest to largest package size.
 

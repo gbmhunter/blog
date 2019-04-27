@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-04-04 22:21:41+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-04
 draft: false
+tags: [ "component package", "PCB design", "DO-41", "DO-204", "diode" ]
 title: DO-41 Component Package
 type: page
 ---
@@ -27,34 +29,20 @@ type: page
 </td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >n/a
-</td>
+<td >Variants</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
+<td >Similar To</td>
 <td >
-
-
-
-  * DO-31
-
-
+  <ul>
+    <li>DO-31</li>
+  </ul>
 </td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >TH
-</td>
+<td >Mounting</td>
+<td >TH</td>
 </tr>
 <tr >
 
