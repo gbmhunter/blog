@@ -1,15 +1,18 @@
 ---
 author: gbmhunter
-date: 2015-04-07 01:15:40+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
-title: TO-39 (TO-205AD) Component Package
+tags: [ "component package", "PCB design", "transistor", "TO-39", "TO-205AD" ]
+title: TO-39 Component Package
 type: page
-url: /pcb-design/component-packages/to-39-to-205ad-component-package
 ---
 
 ## Overview
 
-<table><tbody ><tr >
+<table>
+<tbody>
+<tr>
     <td>Name</td>
     <td >TO-39 (Transistor Outline 39)</td>
 </tr>
@@ -95,11 +98,11 @@ url: /pcb-design/component-packages/to-39-to-205ad-component-package
 
 The TO-39 package is a metallic can package used for hermetically sealing semiconductor devices. It usually has three legs (the TO-39-3 variant), but variants with up to 10 legs are in use. The metal case can be gold coated. As a large through-hole package, it is being used less in recent years, although it still finds applications with high-end, sensitive electronic devices such as UV LEDs and IR thermometers.
 
-The TO-39 package has a small polarising tab on the side of the metal case. However this is merely an indication and does not prevent the user from inserting the package incorrectly. The 3-pin variant can only be inserted in one way because it's 3 pins are not symmteric around the centre (it's the same as the 4-pin version, but with one pin missing).
+The TO-39 package has a small polarising tab on the side of the metal case. However this is merely an indication and does not prevent the user from inserting the package incorrectly. The 3-pin variant can only be inserted in one way because it's 3 pins are not symmetric around the centre (it's the same as the 4-pin version, but with one pin missing).
 
 The TO-39 package comes in different heights, two of which are commonly called low profile and high profile.
 
-The ground pin of the TO-39 package is usually connected to the metal case. The TO-39 can sit directly on the PCB, so it's important to consider that it could short out any unmasked nets running underneath the package. This also applies to the pads surrounding the non-ground pins. I measured the clearance around the non-ground pins and the maximum diameter of the pad surrounding the hole was about 1.60mm before it would short to ground. The pad on the overside of the PCB can be as large as you want.
+The ground pin of the TO-39 package is usually connected to the metal case. The TO-39 can sit directly on the PCB, so it's important to consider that it could short out any unmasked nets running underneath the package. This also applies to the pads surrounding the non-ground pins. I measured the clearance around the non-ground pins and the maximum diameter of the pad surrounding the hole was about 1.60mm before it would short to ground. The pad on the other side of the PCB can be as large as you want.
 
 You can get clip-on heatsinks for the TO-39 package with thermal resistances of around `\(30-40^{\circ}{\rm C}/W\)`, which drops the `\(T_{JA}\)` to around `\(45-55^{\circ}{\rm C}\)`.
 

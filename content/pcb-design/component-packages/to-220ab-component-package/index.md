@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 22:01:00+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "transistor", "TO-220AB", "TO-220-3" ]
 title: TO-220AB Component Package
 type: page
-url: /pcb-design/component-packages/to-220ab-component-package
 ---
 
 ## Overview
@@ -18,34 +19,22 @@ url: /pcb-design/component-packages/to-220ab-component-package
 </td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
+<td >Synonyms</td>
 <td >TO-220-3</td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
+<td >Variants</td>
 <td >
-
 <ul>
 <li>TO-220AC</li>
-
 <li>TO-220F</li>
 </ul>
-
 </td>
 </tr>
 <tr >
 
-<td >Similar To
-</td>
-
-<td >n/a
-</td>
+<td >Similar To</td>
+<td >n/a</td>
 </tr>
 <tr >
 

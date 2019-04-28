@@ -4,7 +4,6 @@ date: 2015-04-06 22:31:15+00:00
 draft: false
 title: TO-220AC Component Package
 type: page
-url: /pcb-design/component-packages/to-220ac-component-package
 ---
 
 ## Overview
@@ -72,7 +71,7 @@ url: /pcb-design/component-packages/to-220ac-component-package
 <td >Common Uses
 </td>
 <td >
-MOSFET's
+MOSFETs
 </td></tr></tbody></table>
 
 ## Comments

@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "transistor", "TO-3", "TO-204AD" ]
 title: TO-3 Component Package
 type: page
 ---
@@ -31,20 +33,12 @@ type: page
     </td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
-<td >TO-23
-</td>
+<td >Similar To</td>
+<td >TO-23</td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >TH
-</td>
+<td >Mounting</td>
+<td >TH</td>
 </tr>
 <tr >
 

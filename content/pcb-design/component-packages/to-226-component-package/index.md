@@ -1,8 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-04-06 23:35:43+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
-tags: [ "component package", "TO-226", "TO-92" ]
+tags: [ "component package", "PCB design", "transistor", "TO-226" ]
 title: TO-226 Component Package
 type: page
 ---

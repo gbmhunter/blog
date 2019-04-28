@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 22:38:22+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "transistor", "TO-220F" ]
 title: TO-220F (SOT-186A) Component Package
 type: page
-url: /pcb-design/component-packages/to-220f-sot-168a-component-package
 ---
 
 ## Overview

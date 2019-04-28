@@ -1,27 +1,29 @@
 ---
 author: gbmhunter
-date: 2015-04-07 01:19:35+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "transistor", "TO-92", "Z Package", "TO-226AA", "TO-226AB" ]
 title: TO-92 (TO-226) Component Package
 type: page
-url: /pcb-design/component-packages/to-92-to-226-component-package
 ---
 
 ## Overview
 
 <table>
-    <tbody>
-        <tr>
-            <td>Name</td>
-            <td>TO-92 (Transistor Outline 92)</td>
-        </tr>
-        <tr>
+  <tbody>
+    <tr>
+      <td>Name</td>
+      <td>TO-92 (Transistor Outline 92)</td>
+    </tr>
+    <tr>
 <td>Synonyms</td>
 <td>
-    <ul>
-        <li>Z Package (Analog Devices)</li>
-        <li>29-11 (On Semiconductor)</li>
-    </ul>    
+  <ul>
+    <li>TO-226</li>
+    <li>Z Package (Analog Devices)</li>
+    <li>29-11 (On Semiconductor)</li>
+  </ul>    
 </td>
 </tr>
 <tr>
@@ -33,21 +35,21 @@ url: /pcb-design/component-packages/to-92-to-226-component-package
         <li>TO-92/18 (TO-226AB, TO-92MOD)</li>
     </ul>
 </td>
-</tr><tr >
-<td >Similar To
-</td>
-<td >TO-226
-</td></tr><tr >
-<td >Mounting
-</td>
-<td >TH
-</td></tr><tr >
-<td >Pin Count
-</td>
-<td >3
-</td></tr><tr >
-<td >Pitch
-</td>
+</tr>
+<tr>
+<td>Similar To</td>
+<td>{{% link-rel text="TO-226" src="to-226-component-package/" %}}</td>
+</tr>
+<tr >
+<td >Mounting</td>
+<td >TH</td>
+</tr>
+<tr >
+<td >Pin Count</td>
+<td >3</td>
+</tr>
+<tr >
+<td >Pitch</td>
 <td >Variable, commonly adjusted to 2.54mm.
 </td></tr><tr >
 <td >Solderability

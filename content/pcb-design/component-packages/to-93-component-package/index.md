@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-07 01:24:22+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "transistor", "TO-93", "TO-209AB", "SCR" ]
 title: TO-93 (TO-209AB) Component Package
 type: page
-url: /pcb-design/component-packages/to-93-to-209ab-component-package
 ---
 
 ## Overview
@@ -13,42 +14,21 @@ url: /pcb-design/component-packages/to-93-to-209ab-component-package
 <table>
 <tbody >
 <tr >
-
-<td >Name
-</td>
-
+<td >Name</td>
 <td >TO-93 (Transistor Outline 93)
 </td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
-<td >
-
-
-
-  * TO-209AB
-
-
-</td>
+<td >Synonyms</td>
+<td >TO-209AB</td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >n/a
-</td>
+<td >Variants</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
-<td >n/a
-</td>
+<td >Similar To</td>
+<td >n/a</td>
 </tr>
 <tr >
 
@@ -119,7 +99,7 @@ url: /pcb-design/component-packages/to-93-to-209ab-component-package
 <td >Common Uses
 </td>
 
-<td >High-power SCR's
+<td >High-power SCRs
 </td>
 </tr>
 </tbody>
@@ -128,7 +108,7 @@ url: /pcb-design/component-packages/to-93-to-209ab-component-package
 
 ## Comments
 
-Large panel mount package used for high-power SCR's. Has good heat-sinking capabilities. Thread is 28.5mm in diameter, so fits 29-30mm hole. The metal case/thread is usually used as the anode, and the thick cable the cathode (there normally is a flying lead for the cathode also), along with a white flying lead for the gate.
+Large panel mount package used for high-power SCRs. Has good heat-sinking capabilities. Thread is 28.5mm in diameter, so fits 29-30mm hole. The metal case/thread is usually used as the anode, and the thick cable the cathode (there normally is a flying lead for the cathode also), along with a white flying lead for the gate.
 
 ## Photos
 

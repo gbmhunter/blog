@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-10-27 01:46:12+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-10-27
 draft: false
+tags: [ "component package", "PCB design", "transistor", "TO-5" ]
 title: TO-5 Component Package
 type: page
-url: /pcb-design/component-packages/to-5-component-package
 ---
 
 ## Overview
@@ -37,17 +38,19 @@ The diameter of the pin circumference can also vary. Diameters of 0.200" and 0.2
 <td >Relevant Standards
 </td>
 <td > 
-</td></tr><tr >
-<td >Similar To
+</td></tr>
+<tr>
+<td>Similar To</td>
+<td>
+  <ul>
+    <li>TO-18</li>
+    <li>{{% link-rel text="TO-39" src="to-39-to-205ad-component-package/" %}}</li>
+    <li>TO-46</li>
+    <li>TO-205 (this almost supersedes the TO-5 package)</li>
+  </ul>
 </td>
-<td >
-<ul>
-<li>TO-18</li>
-<li>TO-39</li>
-<li>TO-46</li>
-<li>TO-205 (this almost supersedes the TO-5 package)</li>
-</ul>
-</td></tr><tr >
+</tr>
+<tr >
 <td >Mounting
 </td>
 <td >TH
