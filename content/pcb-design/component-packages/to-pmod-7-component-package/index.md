@@ -1,14 +1,14 @@
 ---
 author: gbmhunter
-date: 2015-04-07 02:21:40+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "transistor", "TO-PMOD-7" ]
 title: TO-PMOD-7 Component Package
 type: page
-url: /pcb-design/component-packages/to-pmod-7-component-package
 ---
 
 ## Overview
-
 
 <table>
 <tbody >
@@ -65,7 +65,7 @@ url: /pcb-design/component-packages/to-pmod-7-component-package
 <td >Pitch
 </td>
 
-<td >1.27mm (between the six pins, exluding the pad)
+<td >1.27mm (between the six pins, excluding the pad)
 </td>
 </tr>
 <tr >

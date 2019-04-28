@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-07 02:34:46+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "UQFN" ]
 title: UQFN Component Package
 type: page
-url: /pcb-design/component-packages/uqfn-component-package
 ---
 
 ## Overview
@@ -32,15 +33,12 @@ url: /pcb-design/component-packages/uqfn-component-package
 </td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
+<td >Similar To</td>
 <td>
-    <ul>
-        <li>QFN</li>
-        <li>VQFN</li>
-    </ul>
+  <ul>
+    <li>{{% link-rel text="QFN" src="qfn-component-package/" %}}</li>
+    <li>{{% link-rel text="VQFN" src="vqfn-component-package/" %}}</li>
+  </ul>
 </td>
 </tr>
 <tr >
@@ -108,12 +106,8 @@ url: /pcb-design/component-packages/uqfn-component-package
 </td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
-<td >IC's
-</td>
+<td >Common Uses</td>
+<td >ICs</td>
 </tr>
 </tbody>
 </table>

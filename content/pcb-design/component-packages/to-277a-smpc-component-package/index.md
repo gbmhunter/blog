@@ -1,57 +1,36 @@
 ---
 author: gbmhunter
-date: 2015-04-07 01:06:22+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "transistor", "TO-277A", "SMPC" ]
 title: TO-277A (SMPC) Component Package
 type: page
-url: /pcb-design/component-packages/to-277a-smpc-component-package
 ---
 
 ## Overview
 
-
 <table>
 <tbody >
 <tr >
-<td >Name (JEDEC)
-</td>
-
-<td >TO-277A (Transistor Outline 277A)
-</td>
+<td >Name (JEDEC)</td>
+<td >TO-277A (Transistor Outline 277A)</td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
-<td >SMPC (Vishay)
-
-
-</td>
+<td >Synonyms</td>
+<td >SMPC (Vishay)</td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >n/a
-</td>
+<td >Variants</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
-<td >n/a
-</td>
+<td >Similar To</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >SMD
-</td>
+<td >Mounting</td>
+<td >SMD</td>
 </tr>
 <tr >
 

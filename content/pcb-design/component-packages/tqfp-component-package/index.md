@@ -1,14 +1,14 @@
 ---
 author: gbmhunter
-date: 2015-04-07 02:31:51+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "transistor", "TQFP", "thin quad flat pack" ]
 title: TQFP Component Package
 type: page
-url: /pcb-design/component-packages/tqfp-component-package
 ---
 
 ## Overview
-
 
 <table>
 <tbody >
@@ -109,12 +109,8 @@ url: /pcb-design/component-packages/tqfp-component-package
 </td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
-<td >IC's
-</td>
+<td >Common Uses</td>
+<td >ICs</td>
 </tr>
 </tbody>
 </table>

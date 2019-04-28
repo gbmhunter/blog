@@ -1,15 +1,18 @@
 ---
 author: gbmhunter
-date: 2015-01-21 20:58:38+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-01-21
 draft: false
+tags: [ "component package", "PCB design", "WSON", "SOIC", "flash memory" ]
 title: WSON Component Package
 type: page
-url: /pcb-design/component-packages/wson-component-package
 ---
 
 ## Overview
 
-<table><tbody ><tr >
+<table>
+<tbody>
+<tr >
 <td >Name
 </td>
 <td >WSON (Small-outline No-lead Package)
@@ -22,11 +25,10 @@ url: /pcb-design/component-packages/wson-component-package
 </td>
 <td >Varying number of pins.
 </td></tr><tr >
-<td >Similar To
-</td>
-<td >
-SOIC
-</td></tr><tr >
+<td>Similar To</td>
+<td>{{% link-rel text="SOIC" src="soic-component-package" %}}</td>
+</tr>
+<tr >
 <td >Mounting
 </td>
 <td >SMD

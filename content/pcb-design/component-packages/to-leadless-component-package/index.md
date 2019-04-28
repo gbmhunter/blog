@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-04-07 02:18:22+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "transistor", "TO-Leadless" ]
 title: TO-Leadless Component Package
 type: page
 ---
@@ -104,7 +106,7 @@ type: page
 
 ## Comments
 
-As far as I know, the TO-Leadless package is solely used by Infineon for a range of it's high power MOSFETs. In this package, Infineons MOSFETs can achieve on-resistances as low as 0.4mΩ. It's package size is 60% smaller than the D2PAK 7-pin package.
+As far as I know, the TO-Leadless package is solely used by Infineon for a range of it's high power MOSFETs. In this package, Infineon's MOSFETs can achieve on-resistances as low as 0.4mΩ. It's package size is 60% smaller than the D2PAK 7-pin package.
 
 ## 3D Render
 

@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-07 02:25:27+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "transistor", "TSOC", "thin small-outline C-Lead" ]
 title: TSOC Component Package
 type: page
-url: /pcb-design/component-packages/tsoc-component-package
 ---
 
 ## Overview
@@ -13,7 +14,7 @@ url: /pcb-design/component-packages/tsoc-component-package
 <tbody>
 <tr>
     <td>Name</td>
-    <td>Thin Smal-Outline C-Lead</td>
+    <td>Thin Small-Outline C-Lead</td>
 </tr>
 <tr>
     <td>Synonyms</td>

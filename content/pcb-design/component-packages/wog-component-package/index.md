@@ -1,14 +1,14 @@
 ---
 author: gbmhunter
-date: 2015-04-07 02:41:09+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "WOG", "bridge rectifier" ]
 title: WOG Component Package
 type: page
-url: /pcb-design/component-packages/wog-component-package
 ---
 
 ## Overview
-
 
 <table >
 <tbody >
@@ -109,12 +109,8 @@ url: /pcb-design/component-packages/wog-component-package
 </td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
-<td >Bridge rectifier's
-</td>
+<td >Common Uses</td>
+<td >Bridge rectifiers</td>
 </tr>
 </tbody>
 </table>

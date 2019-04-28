@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-04-07 02:38:26+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "VQFN", "QFN" ]
 title: VQFN Component Package
 type: page
 ---
@@ -11,28 +13,16 @@ type: page
 <table>
 <tbody >
 <tr >
-
-<td >Name
-</td>
-
-<td >VQFN (Very-thin Quad Flat Non-leaded)
-</td>
+<td >Name</td>
+<td >VQFN (Very-thin Quad Flat Non-leaded)</td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
-<td >n/a
-</td>
+<td >Synonyms</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >n/a
-</td>
+<td >Variants</td>
+<td >n/a</td>
 </tr>
 <tr >
 <td >Similar To</td>
@@ -112,7 +102,7 @@ type: page
 <td >Common Uses
 </td>
 
-<td >IC's
+<td >ICs
 </td>
 </tr>
 </tbody>

@@ -1,24 +1,21 @@
 ---
 author: gbmhunter
-date: 2015-03-24 01:53:53+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-03-24
 draft: false
+tags: [ "component package", "PCB design", "WLCSP", "LCSPW", "BGA" ]
 title: WLCSP Component Package
 type: page
-url: /pcb-design/component-packages/wlcsp-component-package
 ---
 
 ## Overview
 
 
-<table style="width: 600px;" >
+<table>
 <tbody >
 <tr >
-
-<td >Name
-</td>
-
-<td >Wafer-level Chip-scale Package (WLCSP)
-</td>
+<td >Name</td>
+<td >Wafer-level Chip-scale Package (WLCSP)</td>
 </tr>
 <tr >
 <td >Synonyms</td>
@@ -40,7 +37,7 @@ url: /pcb-design/component-packages/wlcsp-component-package
 <td >Similar To</td>
 <td>
 	<ul>
-		<li><a href="/pcb-design/component-packages/bga-component-package">BGA</a></li>
+		<li>{{% link-rel src="bga-component-package/" text="BGA" %}}</li>
 	</ul>
 </td>
 </tr>
@@ -126,7 +123,7 @@ url: /pcb-design/component-packages/wlcsp-component-package
 
 The WLCSP package can either be rectangular or square in shape.
 
-The pin numbering follows the standard [BGA](/pcb-design/component-packages/bga-component-package) convention, the columns are labelled with letters (A, B, C, ...) and the rows with numbers (1, 2, 3, ...). Thus pins are referred to as A1, C3, D11, e.t.c.
+The pin numbering follows the standard {{% link-rel text="BGA" src="bga-component-package/" %}} convention, the columns are labelled with letters (A, B, C, ...) and the rows with numbers (1, 2, 3, ...). Thus pins are referred to as A1, C3, D11, e.t.c.
 
 The rows of bumps maybe aligned in a grid or offset, again like BGA.
 
@@ -134,7 +131,7 @@ As of March 2015, WLCSP offers the smallest possible footprint of any component 
 
 ## Photosensitivity
 
-Unusually, the WLCSP package is sensitive to high-intensity, long wavelength light. This was due to the photoelectric effect, where the light hitting the top and sides of the semiconductor-based package causes current to flow in the die and can disrupt proper operation.
+Unusually, **the WLCSP package is sensitive to high-intensity, long wavelength light**. This was due to the photoelectric effect, where the light hitting the top and sides of the semiconductor-based package causes current to flow in the die and can disrupt proper operation.
 
 WLCSP packages can come with a backside laminate (BSL) which blocks light from disrupting the IC. Fairchild Semiconductor explain that having a BSL is not significant for board-level reliability.
 

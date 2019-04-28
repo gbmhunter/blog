@@ -1,25 +1,27 @@
 ---
 author: gbmhunter
-date: 2015-04-07 02:28:48+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-07
 draft: false
+tags: [ "component package", "PCB design", "transistor", "TSSOP", "thin scale small-outline package", "HTSSOP" ]
 title: TSSOP Component Package
 type: page
-url: /pcb-design/component-packages/tssop-component-package
 ---
 
 ## Overview
 
-<table><tbody ><tr >
-<td >Name
-</td>
-<td >TSSOP (Thin Scale Small Outline Package)
-</td></tr><tr >
-<td >Synonyms
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Variants
-</td>
+<table>
+<tbody>
+<tr >
+<td >Name</td>
+<td >TSSOP (Thin Scale Small Outline Package)</td>
+</tr>
+<tr >
+<td >Synonyms</td>
+<td >n/a</td>
+</tr>
+<tr >
+<td >Variants</td>
 <td >
     <ul>
         <li>Variant with pad on bottom for power ICs (e.g. half-bridges), known as HTSSOP.</li>
@@ -66,7 +68,7 @@ url: /pcb-design/component-packages/tssop-component-package
 </td>
 <td >
     <ul>
-        <li>General IC's</li>
+        <li>General ICs</li>
         <li>H-bridges (the HTSSOP variant)</li>
     </ul>
 </td>
