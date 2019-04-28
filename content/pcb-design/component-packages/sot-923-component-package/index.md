@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 21:52:58+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOT-923", "small-outline", "transistor" ]
 title: SOT-923 Component Package
 type: page
-url: /pcb-design/component-packages/sot-923-component-package
 ---
 
 ## Overview

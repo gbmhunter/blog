@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-27 06:10:24+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-27
 draft: false
+tags: [ "component package", "PCB design", "SOT-723", "small-outline", "transistor" ]
 title: SOT-723 Component Package
 type: page
-url: /pcb-design/component-packages/sot-723-component-package
 ---
 
 ## Overview
@@ -45,14 +46,13 @@ None
 
 </td>
 </tr>
-<tr >
-<td >Similar To
-</td>
-<td >
-<ul>
-<li><a href="/pcb-design/component-packages/sot-23-component-package">SOT-23</a></li>
-<li><a href="/pcb-design/component-packages/sot-523f">SOT-523F</a></li>
-</ul>
+<tr>
+<td>Similar To</td>
+<td>
+  <ul>
+    <li>{{% link-rel src="sot-23-component-package/" text="SOT-23" %}}</li>
+    <li>{{% link-rel src="sot-523f-component-package/" text="SOT-523F" %}}</a></li>
+  </ul>
 </td>
 </tr>
 <tr >
@@ -101,38 +101,27 @@ None
 </td>
 
 <td >
-
 X = 1.2mm  
 Y = 1.2mm  
 Z = 0.50mm
-
 PCB Land Area (package only) = \(1.44mm^2\)  
 PCB Land Area (incl. recommended footprint) = \(1.88mm^2\)
-
 </td>
 </tr>
 <tr >
-
-<td >3D Models
-</td>
-
+<td >3D Models</td>
 <td >
 <ul>
-<li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=196277">SOT-723 (by ON Semiconductor)</a></li>
+  <li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=196277">SOT-723 (by ON Semiconductor)</a></li>
 </ul>
-
 </td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
+<td >Common Uses</td>
 <td >
-
 <ul>
-<li>MOSFET's</li>
-<li>Digital transistors (BRT's)</li>
+<li>MOSFETs</li>
+<li>Digital transistors (BRTs)</li>
 <li>Small-signal switching diodes</li>
 <li>Low power rectifiers</li>
 <li>ESD diodes</li>
@@ -141,7 +130,6 @@ PCB Land Area (incl. recommended footprint) = \(1.88mm^2\)
 </tr>
 </tbody>
 </table>
-
 
 ## 3D Renders
 

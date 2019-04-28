@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 20:22:59+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOT-363", "small-outline", "transistor" ]
 title: SOT-363 (SC-88) Component Package
 type: page
-url: /pcb-design/component-packages/sot-363-sc-88-component-package
 ---
 
 ## Overview
@@ -21,11 +22,13 @@ url: /pcb-design/component-packages/sot-363-sc-88-component-package
 <td >Variants
 </td>
 <td >n/a
-</td></tr><tr >
-<td >Similar To
 </td>
-<td >SOT-323
-</td></tr><tr >
+</tr>
+<tr>
+<td>Similar To</td>
+<td>{{% link-rel text="SOT-323" src="sot-323-component-package/" %}}</td>
+</tr>
+<tr >
 <td >Mounting
 </td>
 <td >SMD
@@ -76,7 +79,7 @@ url: /pcb-design/component-packages/sot-363-sc-88-component-package
 
 ## Comments
 
-SOT-363 is used for smaller SMD transistors and MOSFET's. It has a lead-pitch half of that of the SOT-323.
+SOT-363 is used for smaller SMD transistors and MOSFETs. It has a lead-pitch half of that of the SOT-323.
 
 ## Dimensions
 

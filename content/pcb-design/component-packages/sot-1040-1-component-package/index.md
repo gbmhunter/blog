@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 01:51:39+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOT-1040-1", "small-outline", "transistor", "RFID" ]
 title: SOT-1040-1 Component Package
 type: page
-url: /pcb-design/component-packages/sot-1040-1-component-package
 ---
 
 ## Overview

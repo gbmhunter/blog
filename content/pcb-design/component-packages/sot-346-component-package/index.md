@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-10-15 03:25:27+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-10-15
 draft: false
+tags: [ "component package", "PCB design", "SOT-346", "small-outline", "transistor" ]
 title: SOT-346 Component Package
 type: page
-url: /pcb-design/component-packages/sot-346-component-package
 ---
 
 ## Overview

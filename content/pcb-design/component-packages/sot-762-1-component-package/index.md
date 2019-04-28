@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 20:35:55+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOT-672-1", "small-outline", "transistor", "MO-241" ]
 title: SOT-762-1 Component Package
 type: page
-url: /pcb-design/component-packages/sot-762-1-component-package
 ---
 
 ## Overview
@@ -34,13 +35,9 @@ url: /pcb-design/component-packages/sot-762-1-component-package
 <td >n/a
 </td>
 </tr>
-<tr >
-
-<td >Similar To
-</td>
-
-<td >QFN
-</td>
+<tr>
+<td>Similar To</td>
+<td>{{% link-rel text="QFN" src="qfn-component-package" %}}</td>
 </tr>
 <tr >
 

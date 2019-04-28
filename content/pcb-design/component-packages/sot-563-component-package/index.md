@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 20:31:55+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOT-563", "SC-89-6", "small-outline", "transistor" ]
 title: SOT-563 Component Package
 type: page
-url: /pcb-design/component-packages/sot-563-component-package
 ---
 
 ## Overview
@@ -60,8 +61,10 @@ url: /pcb-design/component-packages/sot-563-component-package
 </td></tr><tr >
 <td >Common Uses
 </td>
-<td >MOSFET's
-</td></tr></tbody></table>
+<td >MOSFETs
+</td></tr>
+</tbody>
+</table>
 
 ## Comments
 

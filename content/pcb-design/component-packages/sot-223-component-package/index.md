@@ -1,8 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-01-08 03:04:07+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-01-08
 draft: false
-tags: [ "component package", "SOT-223", "DCQ", "DCY", "MP04A", "PG-SOT-223-4", "TO-261-4", "R-PDSO-G6", "footprint", "land pattern", "PCB", "dimensions", "linear regulator" ]
+tags: [ "component package", "PCB design", "SOT-223", "DCQ", "DCY", "MP04A", "PG-SOT-223-4", "TO-261-4", "R-PDSO-G6", "footprint", "land pattern", "PCB", "dimensions", "linear regulator" ]
 title: SOT-223 Component Package
 type: page
 ---
@@ -43,7 +44,7 @@ type: page
     <td>Similar To</td>
     <td>
         <ul>
-            <li><a href="/pcb-design/component-packages/sot-23-component-package">SOT-23</a></li>
+            <li>{{% link-rel src="sot-23-component-package/" text="SOT-23" %}}</li>
         </ul>
     </td>
 </tr>
@@ -72,17 +73,11 @@ type: page
 </td>
 </tr>
 <tr >
-
-<td >Solderability
-</td>
-
-<td >Easily solderable by hand
-</td>
+<td >Solderability</td>
+<td >Easily solderable by hand</td>
 </tr>
 <tr >
-
-<td >Thermal Resistance
-</td>
+<td >Thermal Resistance</td>
 
 <td>
     <b>SOT-223-3</b>
@@ -113,7 +108,7 @@ type: page
 
 <td >
     <ul>
-        <li>MOSFET's</li>
+        <li>MOSFETs</li>
         <li>Load switches</li>
         <li>High-power linear regulators</li>
         <li>Current sources</li>
@@ -139,7 +134,7 @@ The SOT-223-3 (TO-261AA) component package is the most common variant within the
 
 It is commonly used for medium-power linear regulators and load switches.
 
-## Thermal Resistance
+### Thermal Resistance
 
 Texas Instruments gives the following thermal resistance data for the SOT-223-3 package (taken from http://www.ti.com/lit/ds/symlink/tps7b6933-q1.pdf, **as of Dec 2017, URL is unavailable**).
 
@@ -213,13 +208,13 @@ All of the parameters in the above table were measured with the SOT-223-3 packag
 
 {{< figure src="/images/2015/01/to-216aa-sot-223-component-package-thermal-resistance.jpg" width="400px" caption="The thermal resistance of the TO-261AA (SOT-223-3) component package for various PCB footprints."  >}}
 
-## Standard Linear Regulator Pinout
+### Standard Linear Regulator Pinout
 
 The SOT-223-3 package is commonly used for small, medium-power linear regulators. There is a de-facto standard pinout that many manufacturers use when incorporating a linear regulator into the SOT-223-3 package:
 
 {{< figure src="/images/2015/01/sot-223-3-component-package-footprint-layout-example-linear-regulator-with-caps.png" width="441px" caption="The de-facto standard pinout for a linear regulator inside a SOT-223-3 package. This image also shows the standard PCB footprint used to achieve a low thermal resistance. Image from http://www.ti.com/."  >}}
 
-## Standard Load Switch Pinout
+### Standard Load Switch Pinout
 
 The SOT-223-3 package is commonly used for smaller low and high-side load switches. As such, there is a de-facto standard pinout that many manufacturers use for load switches in the SOT-223-3 package:
 
@@ -233,19 +228,19 @@ This variant can be confused with the three pin and one pad variant (SOT-223-3) 
 
 ## SOT-223-5
 
-## Dimensions
+### Dimensions
 
 Below are the dimensions of the SOT-223-5 package as specified by Texas Instruments.
 
 {{< figure src="/images/2015/01/sot-223-5-component-package-dimensions-ti.png" width="695px" caption="The dimensions of the SOT-223-5 component package. Image from http://www.ti.com/."  >}}
 
-## Footprint (Land Pattern)
+### Footprint (Land Pattern)
 
 Below is the recommended footprint (land pattern) for the SOT-223-5 component package as specified by Texas Instruments.
 
 {{< figure src="/images/2015/01/sot-223-5-component-package-recommended-footprint-land-pattern-ti.png" width="858px" caption="A recommended footprint (land pattern) for the SOT-223-5 component package. Image from http://www.ti.com/."  >}}
 
-## Thermal Resistance
+### Thermal Resistance
 
 Below is a graph showing the thermal resistance of the SOT-223-5 package with varying copper area.
 

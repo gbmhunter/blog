@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 20:26:46+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOT-523F", "SC-89-3", "small-outline", "transistor" ]
 title: SOT-523F
 type: page
-url: /pcb-design/component-packages/sot-523f
 ---
 
 ## Overview

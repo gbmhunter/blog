@@ -1,7 +1,9 @@
 ---
 author: "gbmhunter"
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2014-11-09
 draft: false
+tags: [ "component package", "PCB design", "SOT-323", "small-outline", "transistor" ]
 title: "SOT-323 Component Package"
 type: "page"
 ---
@@ -16,10 +18,7 @@ type: "page"
 </td>
 </tr>
 <tr >
-
-<td >Synonyms
-</td>
-
+<td >Synonyms</td>
 <td >
 <ul>
 <li>SC-70 (SOT323-3, JEITA)</li>
@@ -38,29 +37,19 @@ type: "page"
 
 <ul>
 <li>SOT-323-3 (3 lead)</li>
-
 <li>SOT-323-5 (5 lead)</li>
-
 <li>SOT-323-8 (8 lead)</li>
 </ul>
-
 </td>
 </tr>
 <tr >
 
-<td >Similar To
-</td>
-
-<td >SOT-363
-</td>
+<td>Similar To</td>
+<td>{{% link-rel text="SOT-363" src="sot-363-sc-88-component-package/" %}}</td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >SMD
-</td>
+<td >Mounting</td>
+<td >SMD</td>
 </tr>
 <tr >
 
@@ -86,19 +75,14 @@ type: "page"
 
 <ul>
 <li>0.50mm (SOT-323-8, SC8)</li>
-
 <li>0.65mm (all other variants)</li>
 </ul>
 
 </td>
 </tr>
 <tr >
-
-<td >Solderability
-</td>
-
-<td >Difficult to solder by hand (but possible).
-</td>
+<td >Solderability</td>
+<td >Difficult to solder by hand (but possible).</td>
 </tr>
 <tr >
 
@@ -108,19 +92,13 @@ type: "page"
 <td >
 <ul>
 <li>SOT-323-3: Tja = 380°C/W (mounted on 10x8x0.6mm FR4, still air)</li>
-
 <li>SOT-323-8: Tja = 70-90°C/W</li>
 </ul>
-
 </td>
 </tr>
 <tr >
-
-<td >Land Area
-</td>
-
-<td >2.10x2.00mm (4.20mm2)
-</td>
+<td >Land Area</td>
+<td >2.10x2.00mm (4.20mm2)</td>
 </tr>
 <tr >
 
@@ -139,14 +117,10 @@ type: "page"
 </td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
+<td >Common Uses</td>
 <td >
 <ul>
 <li>Diodes (SOT-323-3)</li>
-
 <li>Voltage regulators (SOT-323-8)</li>
 </ul>
 

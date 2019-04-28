@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 21:56:38+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SPM23" ]
 title: SPM23 Component Package
 type: page
-url: /pcb-design/component-packages/spm23-component-package
 ---
 
 ## Overview
@@ -37,20 +38,12 @@ url: /pcb-design/component-packages/spm23-component-package
 </td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
-<td >Mini-DIP SPM
-</td>
+<td >Similar To</td>
+<td >{{% link-rel text="Mini-DIP SPM" src="mini-dip-spm-component-package" %}}</td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >SMD
-</td>
+<td >Mounting</td>
+<td >SMD</td>
 </tr>
 <tr >
 
@@ -114,10 +107,8 @@ url: /pcb-design/component-packages/spm23-component-package
 </td>
 
 <td >
-
 <ul>
 <li>Motor drivers</li>
-
 <li>Inverters</li>
 </ul>
 </td>
@@ -127,7 +118,7 @@ url: /pcb-design/component-packages/spm23-component-package
 
 ## Comments
 
-Package proprietary to Fairchild Semiconductor, used for some of their motor driver IC's. Similar to a through-hole version called the Mini-DIP SPM. The package is designed to have a large flat top surface for heat sinking.
+Package proprietary to Fairchild Semiconductor, used for some of their motor driver ICs. Similar to a through-hole version called the Mini-DIP SPM. The package is designed to have a large flat top surface for heat sinking.
 
 ## Photos
 

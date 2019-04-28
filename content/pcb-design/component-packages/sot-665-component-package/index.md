@@ -1,34 +1,36 @@
 ---
 author: gbmhunter
-date: 2015-11-12 02:54:50+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-11-12
 draft: false
+tags: [ "component package", "PCB design", "SOT-665", "small-outline", "transistor" ]
 title: SOT-665 Component Package
 type: page
-url: /pcb-design/component-packages/sot-665-component-package
 ---
 
 ## Overview
 
-<table><tbody ><tr >
+<table>
+<tbody>
+<tr>
 <td>Name</td>
-<td >SOT-665 (Small Outline Transistor 665)
-</td></tr><tr >
-<td >Synonyms
-</td>
+<td>SOT-665 (Small Outline Transistor 665)</td>
+</tr>
+<tr >
+<td >Synonyms</td>
+<td>n/a</td>
+</tr>
+<tr >
+<td >Variants</td>
+<td >n/a</td>
+</tr>
+<tr >
+<td >Similar To</td>
 <td >
-
-</td></tr><tr >
-<td >Variants
-</td>
-<td > 
-</td></tr><tr >
-<td >Similar To
-</td>
-<td >
-<ul>
-<li>SOT-663</li>
-<li>SOT-666IP</li>
-</ul>
+  <ul>
+    <li>SOT-663</li>
+    <li>SOT-666IP</li>
+  </ul>
 </td></tr><tr >
 <td >Mounting
 </td>
@@ -63,7 +65,7 @@ url: /pcb-design/component-packages/sot-665-component-package
 
 ## Footprint
 
-A recommended footprint (land pattern) for the SOT-665 component package is shown below:
+A recommended footprint (land pattern) for the `SOT-665` component package is shown below:
 
 {{< figure src="/images/2015/11/sot-665-component-package-footprint-land-pattern.png" width="736px" caption="A recommended footprint (land pattern) for the SOT-665 component package. Image from http://www.st.com/."  >}}
 

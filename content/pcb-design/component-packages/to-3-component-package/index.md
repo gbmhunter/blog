@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-04-07 01:11:08+00:00
+date: 2015-04-07
 draft: false
 title: TO-3 Component Package
 type: page
-url: /pcb-design/component-packages/to-3-component-package
 ---
 
 ## Overview

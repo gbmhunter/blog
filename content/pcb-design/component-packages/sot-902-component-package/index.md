@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 21:46:43+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOT-902", "small-outline", "transistor", "XQFN8U", "XQFN8" ]
 title: SOT-902 Component Package
 type: page
-url: /pcb-design/component-packages/sot-902-component-package
 ---
 
 ## Overview
@@ -42,18 +43,13 @@ url: /pcb-design/component-packages/sot-902-component-package
 </ul>
 </td>
 </tr>
-<tr >
-
-<td >Similar To
-</td>
-
-<td >
-
-<ul>
-<li>SOT-1193</li>
-
-<li>SOIC</li>
-</ul>
+<tr>
+<td>Similar To</td>
+<td>
+  <ul>
+    <li>{{% link-rel text="SOIC" src="soic-component-package" %}}</li>
+    <li>{{% link-rel text="SOT-1193" src="sot-1193-component-package" %}}</li>
+  </ul>
 </td>
 </tr>
 <tr >

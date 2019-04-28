@@ -1,10 +1,12 @@
 ---
 author: gbmhunter
-date: 2015-11-11 04:16:09+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-11-11
 draft: false
+tags: [ "component package", "PCB design", "SOT-89", "small-outline", "transistor", "SC-62", "TO-2
+43" ]
 title: SOT-89 Component Package
 type: page
-url: /pcb-design/component-packages/sot-89-component-package
 ---
 
 ## Overview
@@ -18,22 +20,23 @@ url: /pcb-design/component-packages/sot-89-component-package
 </td>
 <td >
 <ul>
-<li>SC-62</li>
-<li>TO-243</li>
+  <li>SC-62</li>
+  <li>TO-243</li>
 </ul>
-</td></tr><tr >
-<td >Variants
 </td>
+</tr>
+<tr >
+<td >Variants</td>
 <td>
 <ul>
-<li>SOT-89-3</li>
-<li>SOT-89-5</li>
+  <li>SOT-89-3</li>
+  <li>SOT-89-5</li>
 </ul>
 </td></tr><tr >
-<td >Similar To
-</td>
-<td >n/a
-</td></tr><tr >
+<td >Similar To</td>
+<td >n/a</td>
+</tr>
+<tr >
 <td >Mounting
 </td>
 <td >SMD

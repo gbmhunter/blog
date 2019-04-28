@@ -1,40 +1,38 @@
 ---
 author: gbmhunter
-date: 2015-03-26 04:54:56+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-03-26
 draft: false
+tags: [ "component package", "PCB design", "SOT-1226", "small-outline", "transistor" ]
 title: SOT-1226 Component Package
 type: page
-url: /pcb-design/component-packages/sot-1226-component-package
 ---
 
 ## Overview
 
-<table><tbody ><tr >
-<td >Name
-</td>
-<td >Small Outline Transistor 1226 (SOT-1226)
-</td></tr><tr >
-<td >3D Render
-</td>
+<table>
+<tbody >
+<tr >
+<td >Name</td>
+<td >SOT-1226 (Small Outline Transistor 1226)</td>
+</tr>
+<tr >
+<td >3D Render</td>
 <td >
-
 {{< figure src="/images/2015/03/sot-1226-component-package-3d-render-top-bottom.gif" caption="A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html. "  >}}
-
 </td></tr><tr >
-<td >Synonyms
-</td>
-<td >  * X2SON5 (NXP)
-</td></tr><tr >
-<td >Variants
-</td>
+<td >Synonyms</td>
+<td>X2SON5 (NXP)</td>
+</tr>
+<tr >
+<td >Variants</td>
 <td >n/a
 </td></tr><tr >
-<td >Similar To
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Mounting
-</td>
+<td >Similar To</td>
+<td >n/a</td>
+</tr>
+<tr >
+<td >Mounting</td>
 <td >SMD
 </td></tr><tr >
 <td >Pin Count

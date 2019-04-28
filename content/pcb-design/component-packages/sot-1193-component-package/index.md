@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-04-06 02:03:06+00:00
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
 draft: false
+tags: [ "component package", "PCB design", "SOT-1193", "small-outline", "transistor", "RFID" ]
 title: SOT-1193 Component Package
 type: page
-url: /pcb-design/component-packages/sot-1193-component-package
 ---
 
 ## Overview
@@ -39,13 +40,9 @@ url: /pcb-design/component-packages/sot-1193-component-package
 </ul>
 </td>
 </tr>
-<tr >
-
-<td >Similar To
-</td>
-
-<td >SOT-902
-</td>
+<tr>
+<td>Similar To</td>
+<td>{{% link-rel text="SOT-902" src="sot-902-component-package/" %}}</td>
 </tr>
 <tr >
 
