@@ -11,32 +11,36 @@ type: page
 ## Overview
 
 <table>
-<tbody><tr >
-<td >Name
-</td>
-<td > Transistor Outline 263
-</td></tr><tr >
+<tbody>
+<tr>
+<td>Name</td>
+<td>Transistor Outline 263</td>
+</tr>
+<tr>
 <td>Synonyms</td>
 <td>
-    <ul>
-        <li>TO-263 (Transistor Outline 263)</li>
-        <li>D2PAK (Double Decawatt package)</li>
-        <li>DDPAK</li>
-        <li>TO-263AB (TO-263-3S only)</li>
-        <li>TO-279 (TO-263 THIN only)</li>
-        <li>SMD-220 (because the TO-263 is the SMD equivalent of the TO-220).</li>
-    </ul>
-</td></tr><tr >
-<td >Variants
+  <ul>
+    <li>TO-263 (Transistor Outline 263)</li>
+    <li>D2PAK (Double Decawatt package)</li>
+    <li>DDPAK</li>
+    <li>TO-263AB (TO-263-3S only)</li>
+    <li>TO-279 (TO-263 THIN only)</li>
+    <li>SMD-220 (because the TO-263 is the SMD equivalent of the TO-220).</li>
+  </ul>
 </td>
-<td >
-<ul>
-<li>TO-263-X1X2 (where X1 is the lead count and X2 is the length of the centre pin).</li>
-<li>TO-263 THIN (a thinner variant of the standard TO-263 package by Texas Instruments)</li>
-</ul>
-</td></tr><tr >
-<td >Similar To</td>
-<td>{{% link-rel src="to-220ab-component-package" text="TO-220AB" %}}</td>
+</tr>
+<tr>
+<td>Variants</td>
+<td>
+  <ul>
+    <li>TO-263-X1X2 (where X1 is the lead count and X2 is the length of the centre pin).</li>
+    <li>TO-263 THIN (a thinner variant of the standard TO-263 package by Texas Instruments)</li>
+  </ul>
+</td>
+</tr>
+<tr>
+<td>Similar To</td>
+<td>{{% link src="to-220-component-package" text="TO-220" %}}</td>
 </tr>
 <tr >
 <td >Mounting

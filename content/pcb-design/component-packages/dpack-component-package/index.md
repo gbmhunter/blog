@@ -29,86 +29,78 @@ type: page
     </ul>
 </td>
 </tr>
-<tr >
-<td >Variants</td>
-<td >
+<tr>
+  <td>Variants</td>
+  <td>
     <ul>
-        <li>DPAK3 (TO-252-3, TO-252AA)</li>
-        <li>TO-252-5-P1 (5-pin, square and short tab)</li>
-        <li>TO-252-5-P2 (5-pin, rounded and longer tab). If there is no suffix listed, it will likely be this variant.</li>
+      <li>DPAK3 (TO-252-3, TO-252AA)</li>
+      <li>TO-252-5-P1 (5-pin, square and short tab)</li>
+      <li>TO-252-5-P2 (5-pin, rounded and longer tab). If there is no suffix listed, it will likely be this variant.</li>
     </ul>
-</td>
+  </td>
 </tr>
-<tr >
-<td >Similar To</td>
-<td>{{% link-rel text="TO-220AB" src="to-220ab-component-package/" %}}</td>
+<tr>
+  <td>Similar To</td>
+  <td>{{% link text="TO-220" src="to-220-component-package/" %}}</td>
 </tr>
-<tr >
-<td >Mounting</td>
-<td >SMD</td>
+<tr>
+  <td>Mounting</td>
+  <td>SMD</td>
 </tr>
-<tr >
-<td >Pin Count</td>
-<td>
+<tr>
+  <td>Pin Count</td>
+  <td>
     <ul>
-        <li>3 (DPAK)</li>
-        <li>5 (TO-252-5)</li>
+      <li>3 (DPAK)</li>
+      <li>5 (TO-252-5)</li>
     </ul>
-</td>
+  </td>
 </tr>
-<tr >
-
-<td >Pitch
-</td>
-
-<td >1.27mm (50mill)
-</td>
+<tr>
+  <td>Pitch</td>
+  <td>1.27mm (50mill)</td>
 </tr>
-<tr >
-
-<td >Solderability
-</td>
-
-<td >Quite easy to hand-solder, although the large tab can make things difficult because of it's heatsinking capabilities.
-</td>
+<tr>
+  <td>Solderability</td>
+  <td>Quite easy to hand-solder, although the large tab can make things difficult because of it's heatsinking capabilities.</td>
 </tr>
-<tr >
-<td >Thermal Resistance</td>
-<td>
+<tr>
+  <td>Thermal Resistance</td>
+  <td>
     <p>TO-252-3 (DPAK)</p>
     <ul>
-        <li>\(T_{JA} = 80^{\circ}{\rm C}/W\) (pads only, no copper fill)</li>
+      <li>\(T_{JA} = 80^{\circ}{\rm C}/W\) (pads only, no copper fill)</li>
     </ul>
     <p>TO-252-5-xx (both P1 and P2 suffixes)</p>
     <ul>
-        <li>\(T_{JA} = 59^{\circ}{\rm C}/W\) (pads only, no copper fill)</li>
-        <li>\(T_{JA} = 26^{\circ}{\rm C}/W\) (high-wattage land pattern)</li>
-        <li>\(T_{JA} = 20^{\circ}{\rm C}/W\) (one square inch of copper surrounding package, connected to ground)</li>
-        <li>\(T_{JA} = 7^{\circ}{\rm C}/W\) (high-wattage land pattern with thermal vias to bottom layer)</li>
+      <li>\(T_{JA} = 59^{\circ}{\rm C}/W\) (pads only, no copper fill)</li>
+      <li>\(T_{JA} = 26^{\circ}{\rm C}/W\) (high-wattage land pattern)</li>
+      <li>\(T_{JA} = 20^{\circ}{\rm C}/W\) (one square inch of copper surrounding package, connected to ground)</li>
+      <li>\(T_{JA} = 7^{\circ}{\rm C}/W\) (high-wattage land pattern with thermal vias to bottom layer)</li>
     </ul>
-</td>
+  </td>
 </tr>
-<tr >
-<td >Dimensions</td>
-<td >n/a</td>
+<tr>
+  <td>Dimensions</td>
+  <td>n/a</td>
 </tr>
-<tr >
-<td >3D Models</td>
-<td >
+<tr>
+<td>3D Models</td>
+<td>
   <ul>
     <li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=444823">DPAK, TO-252AA, by Bill Brooks (this is DPAK3)</a></li>
     <li><a href="http://www.3dcontentcentral.com/download-model.aspx?catalogid=171&amp;id=432344">DPAK-5, by Alexey Olehnovich</a> </li>
   </ul>
 </td>
 </tr>
-<tr >
-<td >Common Uses</td>
-<td >
-  <ul>
-    <li>MOSFETs</li>
-    <li>Linear voltage regulators</li>
-  </ul>
-</td>
+<tr>
+  <td>Common Uses</td>
+  <td>
+    <ul>
+      <li>MOSFETs</li>
+      <li>Linear voltage regulators</li>
+    </ul>
+  </td>
 </tr>
 </tbody>
 </table>

@@ -1,0 +1,8 @@
+{{- $src := .Get "src" -}}
+{{- $permalink := 0 }}
+{{- if eq (substr $src 0 1) "/" -}}
+  {{ $permalink = ref . $src }}
+{{- else -}}
+  {{ $permalink = relref . $src }}
+{{- end -}}
+<a href="{{ $permalink }}">{{- .Get "text" -}}</a>

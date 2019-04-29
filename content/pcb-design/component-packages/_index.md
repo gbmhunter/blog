@@ -14,7 +14,7 @@ Standardizing components sizes and shapes makes it easier for the component manu
 
 ## Component Package Database
 
-Packages are listed alphabetically.
+Packages are listed alphabetically under the "Child Pages" heading at the top of this page. Click on any package to see more information.
 
 All land-area (occupied PCB space) calculations are based around the minimum-sized square that encloses the entire package. This does not take into account the size of the pads required on the PCB, which would increase the calculation by a small amount. Nominal package dimensions used for calculation. All 3D models are from [http://www.3dcontentcentral.com](http://www.3dcontentcentral.com/).
 
@@ -22,7 +22,7 @@ Click on any photo to expand into a full-sized version.
 
 Component packages with many names (synonyms) are listed by the most common, or most "popular" name, which is not necessarily the technically correct name.
 
-Some items such as the [PP3 9V battery case](/pcb-design/component-packages/pp3-component-package), and [SIM card sizes](/pcb-design/component-packages/sim-card-sizes), may not be strictly component packages, but are included here for completeness.
+Some items such as the {{% link text="PP3 9V battery case" src="pp3-component-package/" %}}, and {{% link text="SIM card sizes" src="sim-card-sizes/" %}}, may not be strictly component packages, but are included here for completeness.
 
 ## Break-out Boards
 
@@ -30,7 +30,7 @@ Some items such as the [PP3 9V battery case](/pcb-design/component-packages/pp3-
 
 Break-out boards are useful for converting one package footprint into another. They are particular common for converting smaller SMT package footprints into 100mil DIP packages for prototyping with modern ICs.
 
-If not brought from the right place, these break-out board's can be very expensive!
+If not brought from the right place, these break-out boards can be very expensive!
 
 SparkFun is the cheapest supplier of break-out boards that I've found. Element14 also sells them, but at a much higher price.
 

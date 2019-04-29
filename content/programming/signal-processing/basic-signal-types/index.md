@@ -119,7 +119,7 @@ The Heaviside function looks something like the signal below, however the point 
 
 {{% img src="the-unit-step-function-heaviside.png" width="700px" %}}
 
-Oliver Heaviside used his equation to calculate the current in an electrical circuit when it is first switched on {{< ref id="heaviside-wikipedia" >}}.
+Oliver Heaviside used his equation to calculate the current in an electrical circuit when it is first switched on {{< bib id="heaviside-wikipedia" >}}.
 
 ### The Different Conventions For H(0)
 
@@ -170,7 +170,7 @@ H(t) =
 \end{cases}
 $$</p>
 
-`\(H(0) = 1\)` is how ISO 80000-2:2009 defines the Heaviside function {{< ref id="ref-iso-80000" >}}. This version of the Heaviside function is right-continuous at `\(t = 0\)` but not left continuous. It also allows the Heaviside function to be defined as the integration of the unit impulse (Dirac delta) function:
+`\(H(0) = 1\)` is how ISO 80000-2:2009 defines the Heaviside function {{< bib id="ref-iso-80000" >}}. This version of the Heaviside function is right-continuous at `\(t = 0\)` but not left continuous. It also allows the Heaviside function to be defined as the integration of the unit impulse (Dirac delta) function:
 
 <p>$$ H(t) = \int_{-\infty}^{t} \delta(x) dx $$</p>
 
@@ -182,7 +182,7 @@ The Heaviside function is usually defined like this when used in the context of 
 
 **H(0) = [0, 1]**
 
-`\(H(0) = [0, 1]\)` is when the Heaviside equals both `\(0\)` and `\(1\)` (a set) at `\(t = 0\)`. This approach is not as common, but is used in optimization and game theory {{< ref id="ref1" >}}.
+`\(H(0) = [0, 1]\)` is when the Heaviside equals both `\(0\)` and `\(1\)` (a set) at `\(t = 0\)`. This approach is not as common, but is used in optimization and game theory{{< bib id="ref1" >}}.
 
 Drawn on a graph it looks like:
 

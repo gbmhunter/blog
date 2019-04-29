@@ -30,11 +30,11 @@ A divider below:
 
 ## References
 
-A reference to first resource {{< ref id="ref1" >}}.
+A reference to first resource {{< bib id="ref1" >}}.
 
-Second ref is{{< ref id="ref2" >}}between here.
+Second ref is{{< bib id="ref2" >}}between here.
 
-A second link to first resource {{< ref id="ref1" >}}.
+A second link to first resource {{< bib id="ref1" >}}.
 
 ## Tables
 
@@ -88,3 +88,9 @@ int y = x;
   <li id="ref1">The first reference.</li>
   <li id="ref2">The second reference.</li>
 </ul>
+
+## Links
+
+{{% link src="/posts/test-page/_index.md" text="Absolute link." %}}
+
+{{% link src="relative-page.md" text="Relative link." %}}
