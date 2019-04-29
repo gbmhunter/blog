@@ -2,7 +2,10 @@
 author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
+description: "
+"
 draft: false
+lastmod: 2019-04-29
 tags: [ "component package", "PCB design", "transistor", "TO-220", "TO-220AB", "TO-220-3", "JEDEC" ]
 title: TO-220 Component Package
 type: page
@@ -24,9 +27,10 @@ type: page
       <td>Variants</td>
       <td>
         <ul>
-          <li>TO-220AB</li>
-          <li>TO-220AC</li>
-          <li>TO-220F</li>
+          <li>{{% link text="TO-220AB" src="#to-220ab" %}}</li>
+          <li>{{% link text="TO-220AC" src="#to-220ac" %}}</li>
+          <li>{{% link text="TO-220F" src="#to-220f" %}}</li>
+          <li>{{% link text="TO-220FM" src="#to-220fm" %}}</li>
         </ul>
       </td>
     </tr>
@@ -57,10 +61,15 @@ type: page
     <tr>
       <td>Thermal Resistance</td>
       <td>
+        <p>TO-220AB</p>
         <ul style="width: 300px;">
           <li>\(T_{JC} = 0.5-3^{\circ}{\rm C}/W\)</li>
           <li>\(T_{JA} = 34^{\circ}{\rm C}/W\) (typical heatsink)</li>
           <li>\(T_{JA} = 70^{\circ}{\rm C}/W\) (no heatsink)</li>
+        </ul>
+        <p>TO-220F</p>
+        <ul style="width: 300px;">
+          <li>\(T_{JC} = 4.2^{\circ}{\rm C}/W\) {{% bib id="cs306am" %}}</li>
         </ul>
       </td>
     </tr>
@@ -103,8 +112,42 @@ The tab is commonly connected electrically to one of the legs, and sometimes iso
 
 ## TO-220AC
 
-A variant on the TO-220 package with only two leads and the pad (which still means it could have three distinct connections). Use for some high power diodes.
+The `TO-220AC` is a variant on the `TO-220` package with only two leads and the pad (which still means it could have three distinct connections). Use for some high power diodes.
 
 {{< figure src="/images/2015/04/to-220ac-component-package-photo.jpg" width="271px" caption="A photo of the TO-220AC component package."  >}}
 
-{{< figure src="/images/2015/04/to-220ac-component-package-dimensions.png" width="637px" caption="The dimensions of the TO-220AC component package."  >}}
+{{< figure src="/images/2015/04/to-220ac-component-package-dimensions.png" width="637px" caption="The dimensions of the TO-220AC component package." >}}
+
+## TO-220F
+
+The TO-220F is a variant of the TO-220 package which has an **insulated metal tab, which is not electrically connected to any of its pins**. Some thermal performance is sacrificed because of this insulating layer.
+
+This insulating tab is added to remove one of the disadvantages of the TO-220AB package -- the metal tab, which although great for heatsinking reasons, is electrically connected to the middle pin of the component. This usually requires either an insulated heatsink or an insulated thermal pad between the tab and heatsink to prevent unwanted connections (such as a short-circuit to ground).
+
+TO-220F generally refers to the 3-pin version, although sometimes it may be called TO-220F-3, to distinguish it from {{< link text="TO-220FM" src="#to-220fm" >}} (a 2-pin variant).
+
+### 3D Renders
+
+{{< figure src="/images/2015/04/to-220f-component-package-3d-render.jpg" width="338px" caption="A 3D render of the TO-220F component package."  >}}
+
+### Dimensions
+
+The dimensions of the TO-220F are shown below:
+
+{{< figure src="/images/2015/04/component-package-to-220f-dimensions.png" width="574px" caption="The dimensions for the TO-220F component package."  >}}
+
+### Photos
+
+{{< figure src="/images/2015/04/component-packages-to-220f-photo.jpg" width="329px" caption="A photo of the TO-220F component package."  >}}
+
+## TO-220FM
+
+The TO-220FM is a variant of the TO-220 package which is identical to the {{% link text="TO-220F" src="#to-220f" %}} except it has two legs instead of three. The middle leg is cut short, so it only just protrudes from the epoxy case (and it is not meant to be used).
+
+{{< img src="to-220fm-component-package-dimensions.png" width="700px" caption="Dimensions of the TO-220FM component package. Image from https://d1d2qsbl8m0m72.cloudfront.net/en/techdata_basic/power/dimension/SiC_TO-220FM-e.pdf." >}}
+
+## References
+
+<ul id="ref-list">
+  <li id="cs306am">https://www.mouser.ca/datasheet/2/348/cs306am-e-1519302.pdf</li>
+</ul>
