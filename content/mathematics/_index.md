@@ -1,10 +1,11 @@
 ---
 author: "gbmhunter"
 date: 2013-09-04
+description: "The Mathematics subsection of this blog."
 draft: false
-lastmod: 2019-03-27
-title: "Mathematics"
+lastmod: 2019-04-28
 tags: [ "mathematics", "maths", "curve fitting", "geometry", "linear algebra", "linear programming", "perlin noise", "statistics" ]
+title: "Mathematics"
 type: "page"
 ---
 
@@ -34,6 +35,12 @@ type: "page"
 
 <p>$$ q = a + b\mathbf{i} + c\mathbf{j} + d\mathbf{k} $$</p>
 
-<p>A bar is used to indicate a conjugate:</p>
+A bar is used to indicate a conjugate:
 
 <p>$$ \bar{x} $$</p>
+
+The "triangle equals" is used to denote "is defined by":
+
+<p>$$ F \triangleq ma $$</p>
+
+
