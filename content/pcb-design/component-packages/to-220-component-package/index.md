@@ -21,7 +21,7 @@ type: page
     </tr>
     <tr>
       <td>Synonyms</td>
-      <td>TO-220-3</td>
+      <td>n/a</td>
     </tr>
     <tr>
       <td>Variants</td>
@@ -29,6 +29,7 @@ type: page
         <ul>
           <li>{{% link text="TO-220AB" src="#to-220ab" %}}</li>
           <li>{{% link text="TO-220AC" src="#to-220ac" %}}</li>
+          <li>{{% link text="TO-220-5" src="#to-220-5" %}}</li>
           <li>{{% link text="TO-220F" src="#to-220f" %}}</li>
           <li>{{% link text="TO-220FM" src="#to-220fm" %}}</li>
         </ul>
@@ -92,35 +93,41 @@ type: page
   </tbody>
 </table>
 
-## TO-220AB
+## TO-220AB (TO-220-3)
 
-`TO-220AB` is a variant on the `TO-220` package with three leads and the pad (but only has three distinct connections). Commonly used in power electronics for components which require high heat-dissipation. Can dissipate about 1W of power without a heatsink.
+TO-220AB (also known as TO-220-3) is a variant on the TO-220 package with three leads and the pad (but only has three distinct connections). Commonly used in power electronics for components which require high heat-dissipation. Can dissipate about 1W of power without a heatsink.
 
-The tab is commonly connected electrically to one of the legs, and sometimes isolated heatsinks or isolating thermal pads (between the tab on the `TO-220AB` and the heatsink) are required.
+The tab is commonly connected electrically to one of the legs, and sometimes isolated heatsinks or isolating thermal pads (between the tab on the TO-220AB and the heatsink) are required.
 
 ### 3D Renders
 
 {{< figure src="/images/2015/04/to-220ab-to-220-3-component-package-3d-render.jpg" width="378px" caption="A 3D render of the TO-220AB component package."  >}}
 
-### Images
+### Dimensions
 
 {{< figure src="/images/electronics-packages/component-package-to-220ab-dimensions.png" caption="The dimensions of the TO-220AB component package."  width="500px" >}}
+
+### Photos
 
 {{< figure src="/images/electronics-packages/component-package-to-220ab-photo.jpg" caption="A photo of the TO-220AB component package."  width="300px" >}}
 
 {{< figure src="/images/electronics-packages/component-package-to-220ab-mounted-on-heatsink.jpg" caption="A photo of the TO-220AB component package, mounted on a heatsink."  width="300px" >}}
 
-## TO-220AC
+## TO-220AC (TO-220-2)
 
-The `TO-220AC` is a variant on the `TO-220` package with only two leads and the pad (which still means it could have three distinct connections). Use for some high power diodes.
+The TO-220AC (also known as the TO-220-2) is a variant on the TO-220 package with only two leads and the pad (which still means it could have three distinct connections). Use for some high power diodes.
 
 {{< figure src="/images/2015/04/to-220ac-component-package-photo.jpg" width="271px" caption="A photo of the TO-220AC component package."  >}}
 
 {{< figure src="/images/2015/04/to-220ac-component-package-dimensions.png" width="637px" caption="The dimensions of the TO-220AC component package." >}}
 
-## TO-220F
+## TO-220-5 (SOT-263B)
 
-The TO-220F is a variant of the TO-220 package which has an **insulated metal tab, which is not electrically connected to any of its pins**. Some thermal performance is sacrificed because of this insulating layer.
+The TO-220-5 (also known as SOT263B{{% bib id="bib-to-220-5" %}}) is a 5 leg variant of the TO-220 package.
+
+## TO-220F (SOT-186A)
+
+The TO-220F (also known as the SOT-186A) is a variant of the TO-220 package which has an **insulated metal tab, which is not electrically connected to any of its pins**. Some thermal performance is sacrificed because of this insulating layer.
 
 This insulating tab is added to remove one of the disadvantages of the TO-220AB package -- the metal tab, which although great for heatsinking reasons, is electrically connected to the middle pin of the component. This usually requires either an insulated heatsink or an insulated thermal pad between the tab and heatsink to prevent unwanted connections (such as a short-circuit to ground).
 
@@ -150,4 +157,5 @@ The TO-220FM is a variant of the TO-220 package which is identical to the {{% li
 
 <ul id="ref-list">
   <li id="cs306am">https://www.mouser.ca/datasheet/2/348/cs306am-e-1519302.pdf</li>
+  <li id="bib-to-220-5">https://www.nexperia.com/packages/SOT263B.html</li>
 </ul>
