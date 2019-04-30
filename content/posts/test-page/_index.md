@@ -28,13 +28,13 @@ A divider below:
 
 ---
 
-## References
+## References (bib shortcode)
 
-A reference to first resource {{< bib id="ref1" >}}.
+A reference to first resource{{< bib id="ref1" >}}.
 
 Second ref is{{< bib id="ref2" >}}between here.
 
-A second link to first resource {{< bib id="ref1" >}}.
+A second link to first resource{{< bib id="ref1" >}}.
 
 ## Tables
 
@@ -84,8 +84,8 @@ int y = x;
 ```
 
 
-<ul id="ref-list">
-  <li id="ref1">The first reference.</li>
+<ul id="bib-list">
+  <li id="ref1">The first reference. <b>This should be bold.</b></li>
   <li id="ref2">The second reference.</li>
 </ul>
 

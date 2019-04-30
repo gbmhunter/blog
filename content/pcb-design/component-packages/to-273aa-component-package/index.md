@@ -93,6 +93,6 @@ The TO-273AA (also known as the Super-220) can be considered a variant of the TO
 
 ## References
 
-<ul id="ref-list">
+<ul id="bib-list">
   <li id="ips0551t">http://www.irf.com/product-info/datasheets/data/ips0551t.pdf</li>
 </ul>

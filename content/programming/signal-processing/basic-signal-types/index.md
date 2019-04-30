@@ -4,7 +4,7 @@ categories: [ "Programming", "Signal Processing" ]
 date: 2019-04-23
 description: "A tutorial on the basic types of signals/waveforms you will come across in engineering."
 draft: false
-lastmod: 2019-04-25
+lastmod: 2019-04-29
 tags: [ "signals", "sinusoidal", "unit-step function", "Heaviside", "exponential", "unit-impulse function", "waveform", "complex numbers", "Euler's formula" ]
 title: "Basic Signal Types"
 type: "page"
@@ -205,7 +205,7 @@ The unit-impulse function is `\(0\)` everywhere except for `\(t = 0\)` where it 
 
 ## References
 
-<ul id="ref-list">
+<ul id="bib-list">
   <li id="ref1"><a href="https://www.quora.com/What-is-the-value-of-the-unit-step-function-at-T-0">https://www.quora.com/What-is-the-value-of-the-unit-step-function-at-T-0</a></li>
   <li id="ref-iso-80000"><a href="https://www.iso.org/standard/31887.html">https://www.iso.org/standard/31887.html</a></li>
   <li id="heaviside-wikipedia"><a href="https://en.wikipedia.org/wiki/Oliver_Heaviside">https://en.wikipedia.org/wiki/Oliver_Heaviside</a></li>

@@ -155,7 +155,7 @@ The TO-220FM is a variant of the TO-220 package which is identical to the {{% li
 
 ## References
 
-<ul id="ref-list">
-  <li id="cs306am">https://www.mouser.ca/datasheet/2/348/cs306am-e-1519302.pdf</li>
+<ul id="bib-list">
+  <li id="cs306am"><a href="https://www.mouser.ca/datasheet/2/348/cs306am-e-1519302.pdf">https://www.mouser.ca/datasheet/2/348/cs306am-e-1519302.pdf</a></li>
   <li id="bib-to-220-5">https://www.nexperia.com/packages/SOT263B.html</li>
 </ul>
