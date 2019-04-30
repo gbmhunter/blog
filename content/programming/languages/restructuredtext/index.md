@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Programming", "Languages", "ReStructuredText" ]
+categories: [ "Programming", "Programming Languages" ]
 date: 2013-08-21
 draft: false
 tags: [ "programming", "language", "ReStructuredText", "section", "title", "table", "example", "code", "software", "images" ]

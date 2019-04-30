@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2017-11-29 17:31:24+00:00
+date: 2017-11-29
 draft: false
 title: November 2017 Updates
 type: post
@@ -9,23 +9,23 @@ categories:
 tags:
 - affine
 - auto
-- c
+- C
 - code coverage
 - gcc
 - git
-- github
+- GitHub
 - matrix
 - projection
-- python
+- Python
 - recipes
 - repo
 - streams
 - subtrees
-- swig
+- SWIG
 - template
 - transformations
-- visual studio code
-- yocto
+- Visual Studio Code
+- Yocto
 ---
 
 

@@ -1,14 +1,16 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Microcontrollers", "Cortex-M3" ]
 date: 2013-04-19
 draft: false
+tags: [ "PSoC", "microcontroller", "IDE", "Cortex-M3" ]
 title: PSoC Creator
 type: page
 ---
 
 ## Overview
 
-Cypress provides PSoC Designer (for PSoC 1's) and PSoC Creator (for PSoC 3 and 5's). PSoC 5 uses the Cortex M3 ARM architecture, and uses a free GCC compiler. As of writing, PSoC Creator 2 has just been released which has more pre-made modules and integration into 3rd party IDE's (as of Feb 2013, only Keil, but Cypress plans on extending this in the next year).
+Cypress provides PSoC Designer (for PSoC 1's) and PSoC Creator (for PSoC 3 and 5's). PSoC 5 uses the Cortex-M3 ARM architecture, and uses a free GCC compiler. As of writing, PSoC Creator 2 has just been released which has more pre-made modules and integration into 3rd party IDE's (as of Feb 2013, only Keil, but Cypress plans on extending this in the next year).
 
 ## Installing
 

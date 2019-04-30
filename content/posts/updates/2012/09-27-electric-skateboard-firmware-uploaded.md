@@ -1,18 +1,18 @@
 ---
 author: gbmhunter
-date: 2012-09-27 07:08:32+00:00
+date: 2012-09-27
 draft: false
 title: Electric Skateboard Firmware Uploaded
 type: post
 categories:
 - Electric Skateboard
 tags:
-- bitbucket
+- BitBucket
 - download
 - electric skateboard
 - firmware
-- mercurial
-- psoc
+- Mercurial
+- PSoC
 - repository
 ---
 

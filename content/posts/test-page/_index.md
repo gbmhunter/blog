@@ -83,6 +83,16 @@ x[3] = 4;
 int y = x;
 ```
 
+## Footnotes
+
+This is a footnote[^foot-1].
+
+This is another footnote[^foot-2].
+
+[^foot-1]: The footnote text.
+[^foot-2]: Another footnote
+
+## References
 
 <ul id="bib-list">
   <li id="ref1">The first reference. <b>This should be bold.</b></li>

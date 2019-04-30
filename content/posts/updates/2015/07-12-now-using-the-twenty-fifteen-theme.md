@@ -1,20 +1,20 @@
 ---
 author: gbmhunter
-date: 2015-07-12 09:13:51+00:00
+date: 2015-07-12
 draft: false
 title: Now Using The Twenty Fifteen Theme
 type: post
 categories:
 - Updates
 tags:
-- avada
-- css
-- html
+- Avada
+- CSS
+- HTML
 - mbedded.ninja
-- php
+- PHP
 - theme
 - twenty fifteen
-- wordpress
+- Wordpress
 ---
 
 I have recently upgraded this sites theme from [Avada](http://themeforest.net/item/avada-responsive-multipurpose-theme/2833226) to [Twenty Fifteen](https://wordpress.org/themes/twentyfifteen/).

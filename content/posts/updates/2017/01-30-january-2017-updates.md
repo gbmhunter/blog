@@ -18,7 +18,7 @@ tags:
 - git
 - gradle
 - link
-- linux
+- Linux
 - ln
 - move
 - mv

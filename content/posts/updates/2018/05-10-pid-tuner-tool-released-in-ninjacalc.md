@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2018-05-10 21:53:38+00:00
+date: 2018-05-10
 draft: false
 title: PID Tuner Tool Released In NinjaCalc
 type: post
@@ -10,8 +10,8 @@ tags:
 - controller
 - jet engine
 - mass/spring/damper
-- ninjacalc
-- pid
+- NinjaCalc
+- PID
 - process
 - simulation
 - system

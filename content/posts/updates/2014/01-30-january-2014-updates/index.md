@@ -7,9 +7,9 @@ type: post
 categories:
 - Updates
 tags:
-- belkin
-- c
-- linux
+- Belkin
+- C
+- Linux
 - makefile
 - programming
 - programs

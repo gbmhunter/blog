@@ -1,9 +1,9 @@
 ---
 author: gbmhunter
-categories: [ "Programming", "Languages", "Python" ]
+categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-09-24
 draft: false
-tags: [ "programming", "languages", "Python", "pybind11", "C++", "C", "binding", "example" ]
+tags: [ "programming", "programming languages", "Python", "pybind11", "C++", "C", "binding", "example" ]
 title: pybind11
 type: page
 ---

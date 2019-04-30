@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2018-02-28 05:33:19+00:00
+date: 2018-02-28
 draft: false
 title: February 2018 Updates
 type: post
@@ -14,10 +14,10 @@ tags:
 - geodesic
 - geometry
 - mathematics
-- ninjacalc
-- qt
-- rs-232
-- uart
+- NinjaCalc
+- QT
+- RS-232
+- UART
 - vectors
 - warnings
 ---

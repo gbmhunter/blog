@@ -14,6 +14,11 @@
             <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div></a>
         </li>
     {{ end }}
+    {{ with .Site.GetPage "/categories" }}
+        <li class="dropdown">
+            <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div></a>
+        </li>
+    {{ end }}
     {{ with .Site.GetPage "/tags" }}
         <li class="dropdown">
             <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div></a>

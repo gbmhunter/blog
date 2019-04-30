@@ -17,13 +17,13 @@ tags:
 - great circle
 - haversine
 - intermediate point
-- ninjacalc
+- NinjaCalc
 - online
 - web app
 - world
 ---
 
-[NinjaCalc has a new calculator, a "Two Coordinate Geodesics" calculator](http://ninja-calc.mbedded.ninja/calc/distance-between-two-coordinates) that can help you analyse properties of two coordinates/points on the earths surface (defined by latitude/longitude).
+[NinjaCalc has a new calculator, a "Two Coordinate Geodesics" calculator](http://ninja-calc.mbedded.ninja/calc/distance-between-two-coordinates) that can help you analyse properties of two coordinates/points on the earth's surface (defined by latitude/longitude).
 
 Given two points in latitude/longitude form (both degrees and radians supported), the calculator can give you the great circle (shortest) distance between the two points, and the initial/final bearings. This calculator can also find an intermediate coordinate/point between the two coordinates, given a fractional amount (such as 0.5). All of these properties are calculated using the [Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula).
 

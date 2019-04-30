@@ -8,6 +8,6 @@ title: CPU Architectures
 type: page
 ---
 
-<h2>Overview</h2>
+##Overview
 
-<p>Information on specific CPU architectures such as the ARM Cortex M3 and the Texas C2000.</p>
+Information on specific CPU architectures such as the ARM Cortex-M3 and the Texas C2000.

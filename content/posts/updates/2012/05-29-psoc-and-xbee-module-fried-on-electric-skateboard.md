@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-05-29 10:26:24+00:00
+date: 2012-05-29
 draft: false
 title: PSoC And Xbee Module Fried On Electric Skateboard
 type: post
@@ -16,7 +16,7 @@ tags:
 - smoke
 - spare
 - sparks
-- xbee
+- Xbee
 - USB
 ---
 

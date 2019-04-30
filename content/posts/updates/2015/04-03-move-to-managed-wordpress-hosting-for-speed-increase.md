@@ -16,7 +16,7 @@ tags:
 - fast
 - file manager
 - FTP
-- godaddy
+- GoDaddy
 - HTML
 - Linux
 - managed

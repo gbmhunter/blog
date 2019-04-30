@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Programming", "Languages", "TeX" ]
+categories: [ "Programming", "Programming Languages" ]
 date: 2014-06-28
 draft: false
 tags: [ "TikZ", "PGF", "QuickLatex", "Latex", "Wordpress", "tikzpicture", "line", "box", "arrow", "text" ]

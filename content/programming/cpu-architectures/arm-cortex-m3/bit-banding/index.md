@@ -1,9 +1,9 @@
 ---
 author: gbmhunter
-categories: [ "Programming", "CPU Architectures", "ARM Cortex M3" ]
+categories: [ "Programming", "CPU Architectures", "ARM Cortex-M3" ]
 date: 2014-09-30
 draft: false
-tags: [ "programming", "CPU architectures", "ARM Cortex M3", "bit banding", "ANSI C", "C", "memory", "alias" ]
+tags: [ "programming", "CPU architectures", "ARM Cortex-M3", "bit banding", "ANSI C", "C", "memory", "alias" ]
 title: Bit Banding
 type: page
 ---

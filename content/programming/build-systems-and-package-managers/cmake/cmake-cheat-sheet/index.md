@@ -5,7 +5,7 @@ date: 2017-01-08
 description: "A cheat sheet for the CMake build tool."
 draft: false
 lastmod: 2019-01-01
-tags: [ "CMake", "cheat", "sheet", "C", "C++", "build system", "code", "compile", install" ]
+tags: [ "CMake", "cheat", "sheet", "C", "C++", "build system", "code", "compile", "install" ]
 title: "CMake Cheat Sheet"
 type: page
 ---

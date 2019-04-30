@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Electronics", "Communication Protocols" ]
 date: 2015-02-13
 draft: false
-tags: [ "LON", "communication protocol", "Echelon", "LonTalk", wiring topology", "routers", "ANSI709.2" ]
+tags: [ "LON", "communication protocol", "Echelon", "LonTalk", "wiring topology", "routers", "ANSI709.2" ]
 title: "LON (ANSI709.2) Communication Protocol"
 type: "page"
 ---

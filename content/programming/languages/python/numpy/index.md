@@ -4,7 +4,7 @@ categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-06-25
 draft: false
 lastmod: 2019-04-24
-tags: [ "programming", "languages", "Python", "Numpy", "array", "axis", "computation", "dimension", "np", "example", "code", "tutorial", "slicing", "indexing" ]
+tags: [ "programming", "programming languages", "Python", "Numpy", "array", "axis", "computation", "dimension", "np", "example", "code", "tutorial", "slicing", "indexing" ]
 title: Numpy
 type: page
 ---

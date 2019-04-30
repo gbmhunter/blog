@@ -1,15 +1,15 @@
 ---
 author: gbmhunter
-date: 2012-02-05 01:36:43+00:00
+date: 2012-02-05
 draft: false
-title: Changing The Layout Of The Skateboard PCB's...
+title: Changing The Layout Of The Skateboard PCBs...
 type: post
 categories:
 - Electric Skateboard
 - Electronics
 tags:
 - electric skateboard
-- pcb
+- PCB
 ---
 
 {{< figure src="/images/electronics-electricskateboard/remote-2d-pcb-layout.jpg" caption="The 2D layout of the Remote PCB v1."  width="300px" >}}

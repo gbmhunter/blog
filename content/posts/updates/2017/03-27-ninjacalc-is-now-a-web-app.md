@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2017-03-27 00:27:19+00:00
+date: 2017-03-27
 draft: false
 title: NinjaCalc Is Now A Web App
 type: post
@@ -11,10 +11,10 @@ tags:
 - embedded
 - engineering
 - git
-- github
-- heroku
-- java
-- ninjacalc
+- GitHub
+- Heroku
+- Java
+- NinjaCalc
 - porting
 - server
 - vue.js

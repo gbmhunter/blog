@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "PCB" ]
+categories: [ "PCB Design" ]
 date: 2011-09-05
 draft: false
 tags: [ "Altium", "keyboard", "shortcut" ]

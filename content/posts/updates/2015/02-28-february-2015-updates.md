@@ -1,20 +1,20 @@
 ---
 author: gbmhunter
-date: 2015-02-28 01:02:31+00:00
+date: 2015-02-28
 draft: false
 title: February 2015 Updates
 type: post
 categories:
 - Updates
 tags:
-- ansi709.2
-- axi bus
-- ble112
-- ble113
-- bluetooth
-- lon
-- pci express
-- pcie
+- ANSI709.2
+- AXI bus
+- BLE112
+- BLE113
+- Bluetooth
+- LON
+- PCI express
+- PCIe
 ---
 
 * New page on the [LON (ANSI709.2) Communication Protocol](/electronics/communication-protocols/lon-ansi709-2-communication-protocol).

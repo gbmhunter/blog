@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2015-12-31 09:52:23+00:00
+date: 2015-12-31
 draft: false
 title: December 2015 Updates
 type: post
@@ -9,7 +9,7 @@ categories:
 tags:
 - board-to-board
 - connectors
-- pcb card edge
+- PCB card edge
 - strip lines
 - terminal blocks
 - wire-to-board

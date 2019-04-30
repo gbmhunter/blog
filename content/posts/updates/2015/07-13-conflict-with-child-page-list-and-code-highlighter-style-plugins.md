@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2015-07-13 02:04:20+00:00
+date: 2015-07-13
 draft: false
 title: Conflict With "Child Page List" And "Code Highlighter" Style Plugins
 type: post
@@ -15,11 +15,11 @@ tags:
 - error
 - excerpt
 - manual
-- php
+- PHP
 - plugin
 - sb child list
 - syntax highlighter
-- wordpress
+- Wordpress
 ---
 
 Certain pages around this website where **not displaying source code** correctly. I was using [Crayon Syntax Highlighter](https://wordpress.org/plugins/crayon-syntax-highlighter/) to style the code. Instead of nicely formatted code like this:
@@ -32,7 +32,7 @@ I was left with Crayon shortcodes in the form
 
 It seemed that shortcodes with the form `[crayon-55a318c46df22443583779/]` were somehow not being processed (it might be that all shortcodes were not being processed, I did not test any others).
 
-After about 5 long hours I managed to hunt down the cause, this single line in wp-content/plugins/sb_child_list.php (line 352 in the sb_cl_render_child_list() function):
+After about 5 long hours I managed to hunt down the cause, this single line in `wp-content/plugins/sb_child_list.php` (line 352 in the `sb_cl_render_child_list()` function):
 
 ```php
 $template = str_replace('[post_excerpt]', sb_cl_get_the_excerpt($p->ID), $template);

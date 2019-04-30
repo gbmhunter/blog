@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Test And Measuremenet" ]
+categories: [ "Electronics", "Test And Measurement" ]
 date: 2015-09-25
 draft: false
 tags: [ "current probe", "current probes", "hall-effect", "fluxgate", "magnetometer" ]

@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Microcontrollers", "Cortex-M3" ]
 date: 2013-03-19
 draft: false
+tags: [ "PSoC", "microcontroller", "Cortex-M3" ]
 title: Components
 type: page
 ---
@@ -246,7 +248,7 @@ Note that the trigger mode for interrupts can only be set to rising edge or leve
 
 {{< figure src="/images/2013/03/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png" width="1054px" caption="6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge." >}}
 
-If you are using a PSoC5/PSoC5 LP, you can use the ARM Cortex M3 `NVIC_IABR0-NVIC_IABR7` registers to determine whether an ISR is currently being executed. These registers span the address range `0xE000E300-0xE000E31C`. See [this link](http://infocenter.arm.com/help/topic/com.arm.doc.dui0552a/DUI0552A_cortex_m3_dgug.pdf) for more information.
+If you are using a PSoC5/PSoC5 LP, you can use the ARM Cortex-M3 `NVIC_IABR0-NVIC_IABR7` registers to determine whether an ISR is currently being executed. These registers span the address range `0xE000E300-0xE000E31C`. See [this link](http://infocenter.arm.com/help/topic/com.arm.doc.dui0552a/DUI0552A_cortex_m3_dgug.pdf) for more information.
 
 ## LCD Drivers
 
