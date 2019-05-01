@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Programming", "Communication Protocols", "C++" ]
 date: 2017-07-21
 draft: false
-tags: [ "SocketCAN", "C++", "Linux", "API", "CAN", "CANbus", "communication protocol", "libsocketcan", "kernel", "network" ]
+tags: [ "SocketCAN", "C++", "Linux", "API", "CAN bus", "communication protocol", "libsocketcan", "kernel", "network" ]
 title: "How To Use SocketCAN With C++ In Linux"
 type: "page"
 ---

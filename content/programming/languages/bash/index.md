@@ -3,7 +3,7 @@ author: gbmhunter
 date: 2013-05-12
 draft: false
 lastmod: 2019-02-04
-tags: [ "Linux", "UNIX", "Bash", "special characters", "file name", "directory", "shell", "programming language", "script", "scripting", ".sh", ".bash", "shebang", "symlink", "argument parsing", "CLI", "command-line", "shflags" ]
+tags: [ "Linux", "UNIX", "Bash", "special characters", "file name", "directory", "shell", "programming language", "script", "scripting", "shebang", "symlink", "argument parsing", "CLI", "command-line", "shflags" ]
 title: Bash
 type: page
 ---

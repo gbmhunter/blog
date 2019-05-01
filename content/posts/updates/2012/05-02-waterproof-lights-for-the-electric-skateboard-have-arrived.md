@@ -1,13 +1,13 @@
 ---
 author: gbmhunter
-date: 2012-05-02 01:15:12+00:00
+date: 2012-05-02
 draft: false
 title: Waterproof Lights For The Electric Skateboard Have Arrived
 type: post
 categories:
 - Electric Skateboard
 tags:
-- 12v
+- 12V
 - Deal Extreme
 - electric skateboard
 - lights

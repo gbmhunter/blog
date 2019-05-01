@@ -5,7 +5,7 @@ categories: [ "Programming", "Virtual Machines And Containers", "Docker" ]
 date: 2018-04-09
 draft: false
 lastmod: 2018-04-09
-tags: [ "Docker", "volumes", "space", "AUFS", "storage", "clean-up", "/var/lib/docker/" ]
+tags: [ "Docker", "volumes", "space", "AUFS", "storage", "clean-up" ]
 title: Cleaning Up After Docker
 type: page
 ---
