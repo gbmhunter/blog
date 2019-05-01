@@ -2,7 +2,7 @@
 author: gbmhunter
 date: 2011-09-03
 draft: false
-tags: [ "MOSFET", "transistor", "field-effect transistor", "metal oxide semiconductor", "schematic", "electronics", "switch", "inverter", "H-bridge", "half-bridge", "switch-mode" ]
+tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode" ]
 title: MOSFETs
 type: page
 ---

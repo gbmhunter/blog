@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2012-09-20
 draft: false
 tags: [ "encoder", "PSoC", "incremental", "overflow protection" ]

@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-03-25
 draft: false
 tags: [ "analogue", "analog", "switch", "crosstalk", "power consumption" ]

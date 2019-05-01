@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2014-06-24
 draft: false
 tags: [ "comparators", "op-amp", "voltage reference", "hysteresis", "PCB", "surface leakage", "non-inverting", "inverting" ]

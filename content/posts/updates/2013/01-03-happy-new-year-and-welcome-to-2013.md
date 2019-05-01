@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-01-03 00:25:59+00:00
+date: 2013-01-0300
 draft: false
 title: Happy New Year And Welcome To 2013
 type: post
@@ -10,7 +10,6 @@ tags:
 - '2013'
 - cladlabs
 - engineering
-- geoffrey hunter
 - new year
 - roadmap
 - site plan

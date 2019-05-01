@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2013-06-24
 draft: false
 tags: [ "potentiometer", "resistor", "rotational", "linear", "taper", "linear", "log" ]

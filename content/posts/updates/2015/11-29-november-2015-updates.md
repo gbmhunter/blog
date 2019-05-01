@@ -8,9 +8,9 @@ categories:
 - Updates
 tags:
 - comparators
-- component
+- components
 - D-Subminiature
-- diac
+- DIACs
 - ferrite beads
 - flux
 - isolators
@@ -20,7 +20,7 @@ tags:
 - pulse extending
 - SOT-363
 - SOT-89
-- triac
+- triacs
 - varistors
 ---
 

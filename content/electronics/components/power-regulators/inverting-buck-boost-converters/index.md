@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components", "Power Regulators" ]
+categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2015-04-13
 draft: false
 tags: [ "SMPS", "buck-boost", "converter" ]

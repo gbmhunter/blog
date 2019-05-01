@@ -1,8 +1,8 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components", "Diodes", "LEDs" ]
+categories: [ "Electronics", "Electronic Components", "Diodes", "LEDs" ]
 date: 2013-11-12
-tag: [ "LT3745", "design guide", "LED", "LED driver" ]
+tag: [ "LT3745", "design guide", "LEDs", "LED drivers" ]
 title: LT3745 Design Guide
 type: page
 ---

@@ -1,6 +1,6 @@
 ---
 author: "gbmhunter"
-categories: [ "Electronics", "Components", "Diodes" ]
+categories: [ "Electronics", "Electronic Components", "Diodes" ]
 date: 2011-09-05
 draft: false
 tags: [ "diodes", "diode", "component", "current", "schematic symbol", "TVS", "Schottky", "bridge rectifier" ]

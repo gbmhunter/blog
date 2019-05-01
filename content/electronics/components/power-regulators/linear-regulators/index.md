@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2014-11-09
 draft: false
 tags: [ "power regulator", "linear regulator", "bypass capacitor", "PSRR", "CMRR" ]

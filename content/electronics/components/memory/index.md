@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2013-10-02
 draft: false
 tags: [ "memory", "EEPROM", "flash", "I2C", "M25P128" ]

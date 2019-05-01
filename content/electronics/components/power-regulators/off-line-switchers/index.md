@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components", "Power Regulators" ]
+categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2016-06-28
 draft: false
 tags: [ "power regulator", "off-line switchers", "isolation" ]

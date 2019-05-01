@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 draft: false
 tags: [ "capacitor", "component", "schematic symbol", "circuit", "ceramic", "electrolytic", "tantalum", "packages", "film", "feedthrough", "decoupling" ]

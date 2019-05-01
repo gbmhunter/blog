@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Electronics", "Circuit Design" ]
 date: 2011-09-08
 draft: false
-tags: [ "GPRS", "module", "cullular", "data", "AT command" ]
+tags: [ "GPRS", "modules", "cullular", "data", "AT commands" ]
 title: "GPRS"
 type: "page"
 ---
@@ -24,15 +24,15 @@ They can also have native support for speakers and microphones for phone calls, 
 
 ## Popular AT Commands
 
-AT+E1 - Enable echoing of commands  
+`AT+E1` - Enable echoing of commands  
 
-AT+E0 - Disable echoing of commands  
+`AT+E0` - Disable echoing of commands  
 
-AT+CGPRS - Check to see if modem is in GPRS coverage  
+`AT+CGPRS` - Check to see if modem is in GPRS coverage  
 
-AT+MIPCALL - Creates a wireless PPP connection with the server and returns a IP address for the modem  
+`AT+MIPCALL` - Creates a wireless PPP connection with the server and returns a IP address for the modem  
 
-AT+CSQ - Return signal strength (RSSI) and bit error information
+`AT+CSQ` - Return signal strength (RSSI) and bit error information
 
 ## Examples
 

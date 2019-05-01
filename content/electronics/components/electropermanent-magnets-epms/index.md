@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2014-06-22
 draft: false
 tags: [ "electropermanent magnet", "EPM", "component", "electronics", "stepper motor", "OpenGrab" ]

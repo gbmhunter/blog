@@ -1,6 +1,6 @@
 ---
 author: "gbmhunter"
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 draft: false
 lastmod: 2019-01-10

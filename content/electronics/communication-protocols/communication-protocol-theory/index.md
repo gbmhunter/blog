@@ -2,6 +2,7 @@
 author: "gbmhunter"
 date: 2017-08-30
 draft: false
+tags: [ "communication protocols" ]
 title: "Communication Protocol Theory"
 type: "page"
 ---

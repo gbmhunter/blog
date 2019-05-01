@@ -94,26 +94,26 @@ This particular converter comes with standard DB9 connector and also a breakout 
 Supported transmission speeds are:
 
 <table>
-    <thead>
-        <tr>
-            <th>Distance</th>
-            <th>Transmission Speed</th>
-        </tr>
-    </thead>
-<tbody >
-<tr>
-    <td>300m</td>
-    <td>921600bps</td>
-</tr>
-<tr>
-<td>600m</td>
-<td>38400bps</td>
-</tr>
-<tr>
-<td>1200m</td>
-<td>9600bps</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Distance</th>
+      <th>Transmission Speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>300m</td>
+        <td>921600bps</td>
+    </tr>
+    <tr>
+      <td>600m</td>
+      <td>38400bps</td>
+    </tr>
+    <tr>
+      <td>1200m</td>
+      <td>9600bps</td>
+    </tr>
+  </tbody>
 </table>
 
 {{< img src="dt5019-usb-to-rs-485-converter-photo.jpg" caption="The DT-5019 USB-to-RS-485 converter, with supplied terminal block breakout board."  width="600px" >}}
@@ -129,31 +129,31 @@ Large capacitors are a geeks version of a flash car or a huge plasma screen. Exc
 These pics below are of my largest capacitors, 20 1800uF, 500V monstrosities. I got these for a total of NZ$40 from TradeMe of someone who didn't know they actual worth (possibly NZ$1000's!, I don't even think they knew they were capacitors). I have yet to use them for anything but shorting out pieces of wire (and with only two in parallel). A coil gun HAS to be made from these soon.
 
 <table>
-<tbody>
-<tr>
-<td>{{< img src="1800uf_500v_caps_01.jpg" caption="They are big, and they are powerful."  width="250px" >}}</td>
-<td >{{< img src="1800uf_500v_caps_02.jpg" caption="Capacitor size comparison."  width="250px" >}}</td>
-<td >{{< img src="1800uf_500v_caps_03.jpg" caption="The collection of large capacitors."  width="250px" >}}</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>{{< img src="1800uf_500v_caps_01.jpg" caption="They are big, and they are powerful."  width="250px" >}}</td>
+      <td>{{< img src="1800uf_500v_caps_02.jpg" caption="Capacitor size comparison."  width="250px" >}}</td>
+      <td>{{< img src="1800uf_500v_caps_03.jpg" caption="The collection of large capacitors."  width="250px" >}}</td>
+    </tr>
+  </tbody>
 </table>
 
 My 'monster' cap bank. Me and a mate made this in 2005 for a coil gun. Each capacitor is from a disposable camera. They are 7 rows with 20 capacitors in each, and they are all connected in parallel The voltage is 330V and the capacitance of each ranges from 80-120µF. The total approximate capacitance is 14,000µF. But the poor camera cap charging circuits just couldn't handle the jandle. So it never got used. Unfortunately as of Jan 2011 it is broken (I think a car ran into it, long story). I might get around to fixing this sometime...
 
 <table>
-    <tbody>
-        <tr>
-            <td>{{< img src="monster_cap_bank_01.jpg" caption="The bank from above. Made with disposable camera caps."  width="250px" >}}</td>
-            <td>{{< img src="monster_cap_bank_05.jpg" caption="Damaged caps."  width="250px" >}}</td>
-        </tr>
-        <tr>
-            <td>{{< img src="monster_cap_bank_06.jpg" caption="Width comparison."  width="250px" >}}</td>
-            <td>{{< img src="monster_cap_bank_04.jpg" caption="Damaged tracks! I think someone ran over it."  width="250px" >}}</td>
-        </tr>
-    </tbody>
+  <tbody>
+    <tr>
+      <td>{{< img src="monster_cap_bank_01.jpg" caption="The bank from above. Made with disposable camera caps."  width="250px" >}}</td>
+      <td>{{< img src="monster_cap_bank_05.jpg" caption="Damaged caps."  width="250px" >}}</td>
+    </tr>
+    <tr>
+      <td>{{< img src="monster_cap_bank_06.jpg" caption="Width comparison."  width="250px" >}}</td>
+      <td>{{< img src="monster_cap_bank_04.jpg" caption="Damaged tracks! I think someone ran over it."  width="250px" >}}</td>
+    </tr>
+  </tbody>
 </table>
 
-### PCB's
+### PCBs
 
 PCBs are useful when developing a circuit past the quick prototype stage. I have both blank copper PCB sheets as well as protoboard (copper tracks running parallel with each other), and variations on proto-board designed to make it easier to hook up ICs and other chips.
 

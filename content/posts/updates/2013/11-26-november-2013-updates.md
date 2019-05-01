@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-11-26 07:12:28+00:00
+date: 2013-11-26
 draft: false
 title: November 2013 Updates!
 type: post
@@ -18,7 +18,7 @@ tags:
 - Google charts
 - HE910
 - impedance
-- LED
+- LEDs
 - lens
 - Linux
 - LT3745
@@ -36,11 +36,11 @@ It's been a buuuussssyyyyyy month around here. A list of the updates for this mo
 
 * [candy-calc firmware project](https://github.com/gbmhunter/candy-calc) started on GitHub. I am hoping to eventually convert ~~\[all calculators on this site\](/electronics/general/online-calculators)~~ to use this framework.  
 
-	{{< figure src="/images/misc/candy-calc-readme-screenshot.jpg" caption="A screenshot of the candy-calc repo on GitHub."   >}}
+  	{{< figure src="/images/misc/candy-calc-readme-screenshot.jpg" caption="A screenshot of the candy-calc repo on GitHub."   >}}
 
 * LT3745 Design Guide page (**as of Dec 2017, URL not available**) and calculator using the [candy-calc](https://github.com/gbmhunter/candy-calc) framework  
 
-	{{< figure src="/images/misc/lt3745-calculator-screenshot.jpg" caption="A screenshot of the calculator on the LT3745 Design Guide page."   >}}
+  	{{< figure src="/images/misc/lt3745-calculator-screenshot.jpg" caption="A screenshot of the calculator on the LT3745 Design Guide page."   >}}
 
 * New [1-wire Communications Protocol page](/electronics/communication-protocols/1-wire-protocol/)
 
@@ -52,7 +52,7 @@ It's been a buuuussssyyyyyy month around here. A list of the updates for this mo
 
 * Info on [LED lens types](/electronics/components/diodes/leds#lens-shapes) on the [LED page](/electronics/components/diodes/leds)
 
-	{{< figure src="/images/misc/led-lens-shapes-screenshot.jpg" caption="Info on LED lens shapes has been added to the LED page." >}}[](/electronics/components/diodes/leds)
+  	{{< figure src="/images/misc/led-lens-shapes-screenshot.jpg" caption="Info on LED lens shapes has been added to the LED page." >}}[](/electronics/components/diodes/leds)
 
 * More info added to the [Windows](/programming/operating-systems/windows) and [Batch file](/programming/languages/batch-files) pages
 
@@ -62,7 +62,7 @@ It's been a buuuussssyyyyyy month around here. A list of the updates for this mo
 
 * New page on [Antenna Design](/electronics/circuit-design/antenna-design), incorporating the use of [Google Charts](https://developers.google.com/chart/)
 
-	{{< figure src="/images/misc/antenna-page-screenshot.jpg" caption="A screenshot of the Antenna page." >}}[](https://developers.google.com/chart/)
+  	{{< figure src="/images/misc/antenna-page-screenshot.jpg" caption="A screenshot of the Antenna page." >}}[](https://developers.google.com/chart/)
 
 * New page on the [TI C2000 MCU architecture](/programming/cpu-architectures/c2000)
 

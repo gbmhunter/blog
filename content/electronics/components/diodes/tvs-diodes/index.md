@@ -1,14 +1,16 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Electronic Components" ]
 date: 2016-05-10
 draft: false
+tags: [ "TVS diodes", "diodes", "Zener diodes", "ESD protection", "RS-485" ]
 title: TVS Diodes
 type: page
 ---
 
 ## Overview
 
-TVS (transient voltage suppressor) diodes are used to protect traces from high voltage spikes. They work by shunting currents when the voltage exceeds the **avalanche breakdown potential**. They are basically **high-power zeners**. They start conducting at a preset voltage and are tailored for low on-times.
+TVS (transient voltage suppressor) diodes are used to protect traces from high voltage spikes. They work by shunting currents when the voltage exceeds the **avalanche breakdown potential**. They are basically **high-power Zener diodes**. They start conducting at a preset voltage and are tailored for low on-times.
 
 They can be grouped into IC packages called arrays. A typical schematic symbol for a diode array is shown below.
 
@@ -17,61 +19,37 @@ They can be grouped into IC packages called arrays. A typical schematic symbol f
 ## Important Parameters
 
 <table>
-    <thead>
-        <tr>
-            <th>Parameter</th>
-            <th>Symbol</th>
-            <th>Units</th>
-            <th>Description</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Symbol</th>
+      <th>Units</th>
+      <th>Description</th>
+    </tr>
+  </thead>
 <tbody >
 <tr id="breakdown-voltage" >
-
-<td >Breakdown Voltage
-</td>
-
-<td >\( V_{breakdown} \)
-</td>
-
-<td >\( V \)
-</td>
-
-<td >Also called the reverse breakdown voltage. This is the reverse voltage (cathode-to-anode) at which the diode "begins" to conduct. The point at which the diode begins to conduct is usually specified as a fixed current, typically 1mA. Also see [standoff voltage](/electronics/components/diodes/tvs-diodes/).
-</td>
+<td>Breakdown Voltage</td>
+<td>\( V_{breakdown} \)</td>
+<td>\( V \)</td>
+<td>Also called the reverse breakdown voltage. This is the reverse voltage (cathode-to-anode) at which the diode "begins" to conduct. The point at which the diode begins to conduct is usually specified as a fixed current, typically 1mA. Also see [standoff voltage](/electronics/components/diodes/tvs-diodes/).</td>
 </tr>
 <tr id="rated-power" >
-
-<td >Rated Power
-</td>
-
-<td >\( P \)
-</td>
-
-<td >\( W \)
-</td>
-
-<td >The maximum power the TVS diode can dissipate, for a specified time period. Typical values range between 400W-1.5kW.
-</td>
+<td>Rated Power</td>
+<td>\( P \)</td>
+<td>\( W \)</td>
+<td>The maximum power the TVS diode can dissipate, for a specified time period. Typical values range between 400W-1.5kW.</td>
 </tr>
 <tr id="standoff-voltage" >
-
-<td >Standoff Voltage
-</td>
-
-<td >\( V_{standoff} \)
-</td>
-
-<td >\( V \)
-</td>
-
-<td >This is the reverse voltage that the diode can withstand without drawing "any" current. This is one of the most important parameters, as you usually match this voltage to the maximum operating voltage of the wire you are connecting it to. Note that there is a small amount of current drawn at this voltage, this is called the reverse leakage current.
-</td>
+<td>Standoff Voltage</td>
+<td>\( V_{standoff} \)</td>
+<td>\( V \)</td>
+<td>This is the reverse voltage that the diode can withstand without drawing "any" current. This is one of the most important parameters, as you usually match this voltage to the maximum operating voltage of the wire you are connecting it to. Note that there is a small amount of current drawn at this voltage, this is called the reverse leakage current.</td>
 </tr>
 </tbody>
 </table>
 
-They are part of a family of components used for ESD (electro-static discharge) protection, which also includes zener diodes. TVS diodes can handle large amounts of peak power (hundred's or thousands of Watts), but zeners have a tighter voltage tolerance. TVS diodes have more capacitance than zeners, which could be detrimental in some circumstances (e.g. when protecting the gate signal on a MOSFET).
+They are part of a family of components used for ESD (electro-static discharge) protection, which also includes zener diodes. TVS diodes can handle large amounts of peak power (hundred's or thousands of Watts), but Zeners have a tighter voltage tolerance. TVS diodes have more capacitance than Zeners, which could be detrimental in some circumstances (e.g. when protecting the gate signal on a MOSFET).
 
 They come in either uni-directional or bi-directional flavours. Uni-directional diodes block up to the rated voltage in one direction, and behave like a normal conducting diode in the other. Bi-directional block up to the rated voltage in both directions (good for protecting AC waveforms). Use uni-directional diodes if possible, they are cheaper, and they have much faster turn-on times than their bi-directional counterparts (e.g. 4ps compared to 4ns).
 
@@ -103,9 +81,9 @@ This low capacitance is achieved by adding a forward-biased general purpose diod
 
 The forward-biased general purpose diode has a much smaller parasitic capacitance than the zener diode. Because the parasitic capacitances are in series (grey capacitors in diagram), the total capacitance of the component is greatly reduced!
 
-<h2>Special-Purpose TVS Diodes</h2>
+## Special-Purpose TVS Diodes
 
-<h3>RS-485 TVS Diodes</h3>
+### RS-485 TVS Diodes
 
 TVS diodes built specifically for protecting RS-485 communication protocol bus lines are bi-directional and have two different hold-off voltages to meet the RS-485 spec. They normally include the character sequence "SM712" in their part name (e.g. SM712-02HTG by Littelfuse and SM712-TP by Micro Commerical).
 

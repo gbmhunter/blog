@@ -4,7 +4,7 @@ categories: [ "Programming", "Algorithms And Data Structures" ]
 date: 2019-01-03
 draft: false
 lastmod: 2019-01-03
-tags: [ "algorithm", "code", "software", "programming", "data structure" ]
+tags: [ "algorithms", "code", "software", "programming", "data structures" ]
 title: "Bresenham's Line Algorithm"
 type: "page"
 ---

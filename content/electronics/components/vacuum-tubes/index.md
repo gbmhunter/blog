@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-01-07
 draft: false
 tags: [ "vacuum tube", "vacuum tubes", "component" ]

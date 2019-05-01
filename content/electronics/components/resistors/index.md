@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2012-05-14
 draft: false
 tags: [ "resistor", "resistors", "component", "electronics", "schematic symbol", "tolerance", "E series", "packages", "thick film", "thin film" ]

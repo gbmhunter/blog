@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-10-13
 draft: false
 tags: [ "Peltier", "thermoelectric", "PWM", "component", "electronics" ]

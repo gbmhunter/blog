@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2013-10-25
 draft: false
 tags: [ "GNSS", "GPS", "module", "chip antenna", "patch antenna", "frequencies" ]

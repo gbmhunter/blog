@@ -4,7 +4,7 @@ date: 2019-01-07
 description: "A tutorial on Python sets."
 draft: false
 lastmod: 2019-01-07
-tags: [ "Python", "set", "code", "software", "data structure", "container", "iteration", "unordered", "union", "intersection", "difference", "symmetric", "superset", "subset" ]
+tags: [ "Python", "sets", "code", "software", "data structures", "containers", "iterations", "unordered", "unions", "intersections", "differences", "symmetric", "supersets", "subsets" ]
 title: "Python Sets"
 type: "page"
 ---

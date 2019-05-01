@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2012-02-10
 draft: false
 tags: [ "OLED", "screen", "resolution", "pixel", "I2C", "communication", "driver ICs", "Solomon", "charge pump" ]

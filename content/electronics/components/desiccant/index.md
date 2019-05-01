@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2012-12-07
 draft: false
 tags: [ "desiccant", "recharging", "moisture", "PCB" ]

@@ -4,7 +4,7 @@ categories: [ "Electronics", "Communication Protocols" ]
 date: 2015-10-19
 draft: false
 lastmod: 2019-01-13
-tags: [ "RS-485", "communication protocol", "transmitter", "receiver", "data", "bus", "serial", "node", "SAE J1708", "transmission distance" ]
+tags: [ "RS-485", "communication protocols", "transmitters", "receivers", "data", "bus", "serial", "nodes", "SAE J1708", "transmission distances" ]
 title: "RS-485 Protocol"
 type: "page"
 ---
@@ -20,7 +20,7 @@ It is a very common protocol used in industry for between-room control system to
 Property        | Value 
 ----------------|--------------
 Name            | RS-485
-Drive Mode      | Differental
+Drive Mode      | Differential
 Multi-drop      | Yes
 Duplexity       | Half-duplex
 Max. Data Rate  | 10Mbps
@@ -52,42 +52,41 @@ RS-485 transceivers usually top out at about 50-100Mbps.
 
 ## Node Count
 
-Higher baud rate transceiver IC's usually support a lower number of total nodes on the RS-485 bus.
+Higher baud rate transceiver ICs usually support a lower number of total nodes on the RS-485 bus.
 
 RS-485 introduces the term unit load. A unit load is a specified load impedance on the RS-485 bus. Transceivers are rated by the equivalent unit loads of impedance they introduce when connected to the bus.
 
 <table>
-    <thead>
-        <tr>
-            <th>Unit Load</th>
-            <th>No. of Nodes</th>
-            <th>Min. Receiver Input Impedance</th>
-        </tr>
-    </thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>32</td>
-<td>\(12k\Omega\)</td>
-</tr>
-<tr>
-<td>\(\frac{1}{2}\)</td>
-<td>64</td>
-<td>\(24k\Omega\)</td>
-</tr>
-<tr>
-<td>\(\frac{1}{4}\)</td>
-<td>128</td>
-<td>\(48k\Omega\)</td>
-</tr>
-<tr>
-<td>\(\frac{1}{8}\)</td>
-<td>256</td>
-<td>\(96k\Omega\)</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Unit Load</th>
+      <th>No. of Nodes</th>
+      <th>Min. Receiver Input Impedance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>32</td>
+      <td>\(12k\Omega\)</td>
+    </tr>
+    <tr>
+      <td>\(\frac{1}{2}\)</td>
+      <td>64</td>
+      <td>\(24k\Omega\)</td>
+    </tr>
+    <tr>
+      <td>\(\frac{1}{4}\)</td>
+      <td>128</td>
+      <td>\(48k\Omega\)</td>
+    </tr>
+    <tr>
+      <td>\(\frac{1}{8}\)</td>
+      <td>256</td>
+      <td>\(96k\Omega\)</td>
+    </tr>
+  </tbody>
 </table>
-
 
 ## Termination Resistors
 
@@ -104,14 +103,14 @@ Receiver hysteresis is normally around 80mV.
 There is somewhat of a standard pinout for RS-485 transceivers in 8-pin component packages as follows:
 
 <table>
-    <thead>
-        <tr>
-            <th>Pin Number</th>
-            <th>Pin Name</th>
-            <th>Pin Description</th>
-        </tr>
-    </thead>
-    <tbody>
+  <thead>
+    <tr>
+      <th>Pin Number</th>
+      <th>Pin Name</th>
+      <th>Pin Description</th>
+    </tr>
+  </thead>
+  <tbody>
 <tr>
 <td>1</td>
 <td>R, RO</td>
@@ -120,7 +119,7 @@ There is somewhat of a standard pinout for RS-485 transceivers in 8-pin componen
 <tr>
 <td>2</td>
 <td>nRE, RE*</td>
-<td>Active-low receiver outout enable.</td>
+<td>Active-low receiver out enable.</td>
 </tr>
 <tr>
 <td>3</td>

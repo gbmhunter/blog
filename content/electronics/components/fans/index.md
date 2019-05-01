@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-10-29
 draft: false
 tags: [ "fans", "computer fans", "speed control", "PWM" ]

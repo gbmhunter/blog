@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2012-06-05
 draft: false
 tags: [ "LCD", "screens", "mounting", "TFT", "software" ]

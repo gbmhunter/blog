@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-02
 draft: false
 tags: [ "TRIAC", "component", "semiconductor", "schematic symbol" ]

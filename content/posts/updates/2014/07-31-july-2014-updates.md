@@ -7,8 +7,8 @@ type: post
 categories:
 - Updates
 tags:
-- aperture
-- AVR studio
+- apertures
+- AVR Studio
 - C
 - code
 - component packages
@@ -19,8 +19,8 @@ tags:
 - IDE
 - inversion of control
 - IOC
-- microcontroller
-- PCB
+- microcontrollers
+- PCBs
 - programming
 - PSoC Creator
 - stencils
@@ -55,7 +55,7 @@ Probably one of the biggest months of updates ever!
 
 * New pages, [Naming Conventions](/programming/general/naming-conventions), under Programming->General, and [C Naming Conventions](/programming/languages/c/c-naming-conventions), under Programming->Languages->C.
 
-* Removed disqus ads, see [this post](/posts/updates/2014/07-19-disqus-ads-removed/).
+* Removed Disqus ads, see [this post](/posts/updates/2014/07-19-disqus-ads-removed/).
 
 * New page, Programming->Languages->C->[Standards And Versions](/programming/languages/c/standards-and-versions).
 
@@ -63,7 +63,7 @@ Probably one of the biggest months of updates ever!
 
 * New commands added to the [.](/programming/version-control-systems/mercurial/mercurial-speed-guide)
 
-* New page, Programming->Languages->C->[Portabillity](/programming/languages/c/portability).
+* New page, Programming->Languages->C->[Portability](/programming/languages/c/portability).
 
 * Updates to the Programming->Languages->C->[Pointers page](/programming/languages/c/pointers).
 

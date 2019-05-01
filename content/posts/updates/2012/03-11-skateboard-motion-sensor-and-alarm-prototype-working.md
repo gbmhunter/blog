@@ -6,11 +6,11 @@ type: post
 categories:
 - Electric Skateboard
 tags:
-- alarm
-- BJT
-- electric skateboard
-- full-bridge
-- motion sensor
+- alarms
+- BJTs
+- electric skateboards
+- full-bridges
+- motion sensors
 - PSoC
 ---
 

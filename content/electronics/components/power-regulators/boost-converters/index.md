@@ -1,7 +1,7 @@
 ---
 author: gbmhunter
 date: 2014-06-13
-tags: [ "boost converter", "voltage converter", "current converter", "SMPS", "inductance", "MOSFET", "burst-mode", "duty cycle", "PWM", "diode", "capacitor" ]
+tags: [ "boost converters", "voltage converters", "current converters", "SMPS", "inductance", "MOSFETs", "burst-mode", "duty cycle", "PWM", "diodes", "capacitors" ]
 title: "Boost Converters"
 type: page
 ---

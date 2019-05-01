@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2013-08-22
 draft: false
 tags: [ "electroluminescence", "phosphor", "EL wire", "EL panels" ]

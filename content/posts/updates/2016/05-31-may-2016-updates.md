@@ -1,21 +1,21 @@
 ---
 author: gbmhunter
-date: 2016-05-31 10:37:18+00:00
+date: 2016-05-31
 draft: false
 title: May 2016 Updates
 type: post
 categories:
 - Updates
 tags:
-- converter
-- current source
+- converters
+- current sources
 - diodes
 - Howland
 - low capacitance
 - PTC
-- resistance
-- thermistor
-- triggered resistance
+- resistances
+- thermistors
+- triggered resistances
 - TVS
 - voltage-to-current
 ---

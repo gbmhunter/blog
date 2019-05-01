@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components", "Power Regulators" ]
+categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2015-03-24
 draft: false
 tags: [ "SEPIC", "converter", "SMPS", "PWM", "boost converter", "boost", "schematic", "inductor", "capacitor" ]

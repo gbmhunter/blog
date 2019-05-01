@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-05-28 08:35:32+00:00
+date: 2012-05-28
 draft: false
 title: Cause Found For The Mysterious Skateboard PCB Faults
 type: post
@@ -9,7 +9,7 @@ categories:
 tags:
 - electric skateboard
 - flux
-- LED
+- LEDs
 - PCB
 - soldering
 - sporadically

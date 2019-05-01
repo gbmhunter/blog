@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Components" ]
+categories: [ "Electronics", "Electronic Components" ]
 date: 2013-02-24
 draft: false
 tags: [ "transformer", "transformers", "coupling coefficient", "resistive losses", "hysteresis" ]

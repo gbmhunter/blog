@@ -4,7 +4,7 @@ date: 2018-11-24
 description: "A tutorial on Python dictionaries, including how to check if keys exits, delete items while iterating, and more."
 draft: false
 lastmod: 2019-01-07
-tags: [ "Python", "dict", "dictionary", "code", "software", "data structure", "container", "iteration", "hash table" ]
+tags: [ "Python", "dict", "dictionary", "code", "software", "data structures", "containers", "iterations", "hash tables" ]
 title: "Python Dictionaries"
 type: "page"
 ---

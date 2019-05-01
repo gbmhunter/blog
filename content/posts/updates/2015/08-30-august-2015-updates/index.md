@@ -6,7 +6,7 @@ title: "August 2015 Updates"
 type: post
 categories:
 - Updates
-tags: [ "BJT", "C", "design guide", "IGBT", "MOSFET", "PCIe", "smart pointers", "transistors", "Xilinx" ]
+tags: [ "BJTs", "C", "design guides", "IGBTs", "MOSFETs", "PCIe", "smart pointers", "transistors", "Xilinx" ]
 ---
 
 * New [PCIe Hardware Design Guide sub-page](https://vd1i-19vteete-10p0a6-x--953a--8013--6ogcwyzr.proxify.net:904/electronics/communication-protocols/pci-express-pcie/pcie-hardware-design-guide) of the PCIe page.  
