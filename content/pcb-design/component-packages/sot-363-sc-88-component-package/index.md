@@ -26,7 +26,7 @@ type: page
 </tr>
 <tr>
 <td>Similar To</td>
-<td>{{% link-rel text="SOT-323" src="sot-323-component-package/" %}}</td>
+<td>{{% link text="SOT-323" src="sot-323-component-package/" %}}</td>
 </tr>
 <tr >
 <td >Mounting

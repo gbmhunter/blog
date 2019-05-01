@@ -8,4 +8,4 @@ title: DO-214AA Component Package
 type: page
 ---
 
-See the {{% link-rel text="SMB (DO-214AA) Component Package" src="smb-do-214aa-component-package/" %}}.
+See the {{% link text="SMB (DO-214AA) Component Package" src="smb-do-214aa-component-package/" %}}.

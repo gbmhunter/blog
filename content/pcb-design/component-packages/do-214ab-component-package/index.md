@@ -8,4 +8,4 @@ title: DO-214AB Component Package
 type: page
 ---
 
-See the {{% link-rel text="SMC (DO-214AB) Component Package" src="smc-do-214ab-component-package/" %}}.
+See the {{% link text="SMC (DO-214AB) Component Package" src="smc-do-214ab-component-package/" %}}.

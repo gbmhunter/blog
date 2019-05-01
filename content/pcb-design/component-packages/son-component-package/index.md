@@ -39,7 +39,7 @@ type: page
 </tr>
 <tr>
 <td>Similar To</td>
-<td>{{% link-rel text="QFN" src="qfn-component-package" %}} (note that some may call SON a variant of QFN)</td>
+<td>{{% link text="QFN" src="qfn-component-package" %}} (note that some may call SON a variant of QFN)</td>
 </tr>
 <tr >
 <td >Mounting</td>

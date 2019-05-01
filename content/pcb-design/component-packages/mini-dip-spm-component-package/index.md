@@ -33,7 +33,7 @@ type: page
 </tr>
 <tr>
   <td>Similar To</td>
-  <td>{{% link-rel text="DIP" src="dip-component-package/" %}}</td>
+  <td>{{% link text="DIP" src="dip-component-package/" %}}</td>
 </tr>
 <tr>
 <td>Mounting</td>

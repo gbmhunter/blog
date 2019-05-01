@@ -8,4 +8,4 @@ title: SOT-753 Component Package
 type: page
 ---
 
-SOT-753 is a synonym for the {{% link-rel text="SOT-23 component package" src="sot-23-component-package/" %}}.
+SOT-753 is a synonym for the {{% link text="SOT-23 component package" src="sot-23-component-package/" %}}.

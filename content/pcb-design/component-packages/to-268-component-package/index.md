@@ -8,4 +8,4 @@ title: TO-268 Component Package
 type: page
 ---
 
-TO-268 is a synonym for the {{% link-rel text="D3PAK component package" src="d3pak-to-268-component-package/" %}}.
+TO-268 is a synonym for the {{% link text="D3PAK component package" src="d3pak-to-268-component-package/" %}}.

@@ -45,9 +45,9 @@ type: page
 <td >Similar To</td>
 <td>
   <ul>
-    <li>{{% link-rel text="SON (DFN)" src="son-component-package/" %}}</li>
-    <li>{{% link-rel text="UQFN" src="uqfn-component-package/" %}}</li>
-    <li>{{% link-rel text="VQFN" src="vqfn-component-package/" %}}</li>
+    <li>{{% link text="SON (DFN)" src="son-component-package/" %}}</li>
+    <li>{{% link text="UQFN" src="uqfn-component-package/" %}}</li>
+    <li>{{% link text="VQFN" src="vqfn-component-package/" %}}</li>
   </ul>
 </td>
 </tr>

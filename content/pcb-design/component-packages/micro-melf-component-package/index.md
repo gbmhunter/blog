@@ -36,8 +36,8 @@ type: page
 <td >Similar To</td>
 <td>
   <ul>
-    <li>{{% link-rel text="MEL" src="melf-component-package/" %}}</li>
-    <li>{{% link-rel text="Mini-MELF (SOD-80, DO-213AA)" src="mini-melf-sod-80-do-213aa-component-package" %}}</li>
+    <li>{{% link text="MEL" src="melf-component-package/" %}}</li>
+    <li>{{% link text="Mini-MELF (SOD-80, DO-213AA)" src="mini-melf-sod-80-do-213aa-component-package" %}}</li>
   </ul>
 </td>
 </tr>

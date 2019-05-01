@@ -8,4 +8,4 @@ title: SOT-457 Component Package
 type: page
 ---
 
-SOT-457 is a synonym for the {{% link-rel text="SOT-23 component package" src="sot-23-component-package/" %}}.
+SOT-457 is a synonym for the {{% link text="SOT-23 component package" src="sot-23-component-package/" %}}.

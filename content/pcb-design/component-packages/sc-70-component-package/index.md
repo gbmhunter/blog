@@ -8,4 +8,4 @@ title: SC-70 Component Package
 type: page
 ---
 
-SC-70 is a synonym for the {{% link-rel text="SOT-323 component package" src="sot-323-component-package/" %}}.
+SC-70 is a synonym for the {{% link text="SOT-323 component package" src="sot-323-component-package/" %}}.

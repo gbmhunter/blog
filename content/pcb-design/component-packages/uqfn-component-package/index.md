@@ -36,8 +36,8 @@ type: page
 <td >Similar To</td>
 <td>
   <ul>
-    <li>{{% link-rel text="QFN" src="qfn-component-package/" %}}</li>
-    <li>{{% link-rel text="VQFN" src="vqfn-component-package/" %}}</li>
+    <li>{{% link text="QFN" src="qfn-component-package/" %}}</li>
+    <li>{{% link text="VQFN" src="vqfn-component-package/" %}}</li>
   </ul>
 </td>
 </tr>

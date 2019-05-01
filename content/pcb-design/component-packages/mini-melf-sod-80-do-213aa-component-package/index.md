@@ -32,7 +32,7 @@ type: page
 </tr>
 <tr>
   <td>Similar To</td>
-  <td>{{% link-rel text="MELF" src="melf-component-package/" %}}</td>
+  <td>{{% link text="MELF" src="melf-component-package/" %}}</td>
 </tr>
 <tr >
 <td>Mounting</td>

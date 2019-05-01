@@ -8,4 +8,4 @@ title: DO-204AC Component Package
 type: page
 ---
 
-See the {{% link-rel text="DO-15 Component Package" src="do-15-component-package" %}}.
+See the {{% link text="DO-15 Component Package" src="do-15-component-package" %}}.

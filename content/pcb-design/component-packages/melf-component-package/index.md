@@ -29,8 +29,8 @@ type: page
 <td>
   <ul>
     <li>SOD-80</li>
-    <li>{{% link-rel text="Mini-MELF" src="mini-melf-sod-80-do-213aa-component-package/" %}}</li>
-    <li>{{% link-rel text="Micro-MELF" stc="micro-melf-component-package/" %}}</li>
+    <li>{{% link text="Mini-MELF" src="mini-melf-sod-80-do-213aa-component-package/" %}}</li>
+    <li>{{% link text="Micro-MELF" stc="micro-melf-component-package/" %}}</li>
   </ul>
 </td>
 </tr>

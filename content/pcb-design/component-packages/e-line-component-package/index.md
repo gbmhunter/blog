@@ -26,7 +26,7 @@ type: page
 </tr>
 <tr>
 <td>Similar To</td>
-<td>{{% link-rel text="TO-92" src="to-92-component-package" %}}</td>
+<td>{{% link text="TO-92" src="to-92-component-package" %}}</td>
 </tr>
 <tr >
 <td >Mounting</td>

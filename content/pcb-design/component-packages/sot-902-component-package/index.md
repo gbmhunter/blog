@@ -47,8 +47,8 @@ type: page
 <td>Similar To</td>
 <td>
   <ul>
-    <li>{{% link-rel text="SOIC" src="soic-component-package" %}}</li>
-    <li>{{% link-rel text="SOT-1193" src="sot-1193-component-package" %}}</li>
+    <li>{{% link text="SOIC" src="soic-component-package" %}}</li>
+    <li>{{% link text="SOT-1193" src="sot-1193-component-package" %}}</li>
   </ul>
 </td>
 </tr>

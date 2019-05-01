@@ -29,7 +29,7 @@ type: page
 </tr>
 <tr>
   <td>Similar To</td>
-  <td>{{% link-rel text="SOIC" src="soic-component-package/" %}}</td>
+  <td>{{% link text="SOIC" src="soic-component-package/" %}}</td>
 </tr>
 <tr >
 

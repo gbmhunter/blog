@@ -8,4 +8,4 @@ title: SC-74A Component Package
 type: page
 ---
 
-SC-74A is a synonym for the {{% link-rel text="SOT-23 component package" src="sot-23-component-package/" %}}.
+SC-74A is a synonym for the {{% link text="SOT-23 component package" src="sot-23-component-package/" %}}.

@@ -44,7 +44,7 @@ The diameter of the pin circumference can also vary. Diameters of 0.200" and 0.2
 <td>
   <ul>
     <li>TO-18</li>
-    <li>{{% link-rel text="TO-39" src="to-39-component-package/" %}}</li>
+    <li>{{% link text="TO-39" src="to-39-component-package/" %}}</li>
     <li>TO-46</li>
     <li>TO-205 (this almost supersedes the TO-5 package)</li>
   </ul>

@@ -50,8 +50,8 @@ None
 <td>Similar To</td>
 <td>
   <ul>
-    <li>{{% link-rel src="sot-23-component-package/" text="SOT-23" %}}</li>
-    <li>{{% link-rel src="sot-523f-component-package/" text="SOT-523F" %}}</a></li>
+    <li>{{% link src="sot-23-component-package/" text="SOT-23" %}}</li>
+    <li>{{% link src="sot-523f-component-package/" text="SOT-523F" %}}</a></li>
   </ul>
 </td>
 </tr>

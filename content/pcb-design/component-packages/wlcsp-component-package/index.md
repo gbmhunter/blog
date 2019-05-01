@@ -37,7 +37,7 @@ type: page
 <td >Similar To</td>
 <td>
 	<ul>
-		<li>{{% link-rel src="bga-component-package/" text="BGA" %}}</li>
+		<li>{{% link src="bga-component-package/" text="BGA" %}}</li>
 	</ul>
 </td>
 </tr>
@@ -123,7 +123,7 @@ type: page
 
 The WLCSP package can either be rectangular or square in shape.
 
-The pin numbering follows the standard {{% link-rel text="BGA" src="bga-component-package/" %}} convention, the columns are labelled with letters (A, B, C, ...) and the rows with numbers (1, 2, 3, ...). Thus pins are referred to as A1, C3, D11, e.t.c.
+The pin numbering follows the standard {{% link text="BGA" src="bga-component-package/" %}} convention, the columns are labelled with letters (A, B, C, ...) and the rows with numbers (1, 2, 3, ...). Thus pins are referred to as A1, C3, D11, e.t.c.
 
 The rows of bumps maybe aligned in a grid or offset, again like BGA.
 
