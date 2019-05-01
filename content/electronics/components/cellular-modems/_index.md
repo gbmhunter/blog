@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2013-10-13 22:40:15+00:00
+categories: [ "Electronics", "Electronic Components" ]
+date: 2014-12-02
+date: 2013-10-13
 draft: false
 title: Cellular Modems
 type: page
-url: /electronics/components/cellular-modems
 ---
 
 ## Overview

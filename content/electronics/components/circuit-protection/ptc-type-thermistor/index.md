@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Electronic Components" ]
 date: 2016-03-08
 draft: false
 title: PTC Type Thermistor
@@ -27,6 +28,8 @@ I use the designator prefix `\(RT\)` for thermistors (**R**esistance depends on 
 Linear thermistors are those which have a roughly linear response in resistance to a temperature change. They are also known as _silistors_, as the are normally made with silicon.
 
 ## Switching
+
+TODO
 
 ## PTC Thermistors vs. Fuses
 

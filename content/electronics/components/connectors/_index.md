@@ -2,6 +2,7 @@
 author: gbmhunter
 date: 2011-09-05
 draft: false
+tags: [ "connectors", "electronic components" ]
 title: Connectors
 type: page
 ---
@@ -26,7 +27,7 @@ Unlike most other electrical components, most connector manufacturers do not app
 </tr>
 <tr>
 <td>Genderless</td>
-<td>A connector that can be mated with it's self (i.e. there is no seperate male/female or plug/receptacle parts).</td>
+<td>A connector that can be mated with it's self (i.e. there is no separate male/female or plug/receptacle parts).</td>
 </tr>
 <tr>
 <td>Header</td>

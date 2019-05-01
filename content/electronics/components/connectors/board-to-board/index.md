@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-30
 draft: false
 title: Board-to-Board
@@ -8,9 +9,9 @@ type: page
 
 ## Overview
 
-Board-to-board connectors which connect to PCB's side-by-side are called _coplanar_ connectors.
+Board-to-board connectors which connect to PCBs side-by-side are called _coplanar_ connectors.
 
-Board-to-board-connectors which connect PCB's ontop of one another are called _mezzanine_ or _stacked_ connectors.
+Board-to-board-connectors which connect PCBs ontop of one another are called _mezzanine_ or _stacked_ connectors.
 
 {{< img src="stacked-board-to-board-connector-photo.png" width="700px" caption="An example of a 'mezzanine' or 'stacked' style of board-to-board connector."  >}}
 

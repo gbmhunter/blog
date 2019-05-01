@@ -1,5 +1,6 @@
 ---
 author: "gbmhunter"
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-23
 draft: false
 title: "Varistors (VDRs)"
@@ -22,15 +23,15 @@ Because their resistance in not fixed, they are called non-Ohmic devices. Note t
 
 ## Important Parameters
 
-## Varistor Voltage
+### Varistor Voltage
 
 This is the voltage at which the varistor starts to "conduct". The varistor is considered conducting when the current through it exceeds some small threshold amperage (typically 1mA).
 
-## Surge Current
+### Surge Current
 
 The surge current rating is an indication of how much current the varistor can withstand during a voltage transient event.
 
-## Energy Rating
+### Energy Rating
 
 Typically a one-off (non-repetitive) and repetitive pulse energy rating is given for the varistor. The ratings are normally given for standardised transients, such as the 8/10 or 10/1000.
 

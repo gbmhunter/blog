@@ -26,6 +26,7 @@
 			"arduinos",
 			"backlight",
 			"bgas",
+			"bluetooth",
 			"boms",
 			"brts",
 			"brushless",
@@ -116,6 +117,7 @@
 			"mosfet",
 			"mosfets",
 			"mosi",
+			"movs",
 			"msop",
 			"multimeter",
 			"mutex",
@@ -237,6 +239,7 @@
 			"xtal",
 			"yocto",
 			"zener",
+			"zeners",
 			"zynq"
 		]
 	}
