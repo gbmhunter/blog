@@ -1,8 +1,9 @@
 ---
 author: "gbmhunter"
+categories: [ "Electronics", "Circuit Design" ]
 date: 2011-09-03
 draft: false
-tags: [ "ESD", "diode", "electrostatic discharge", "high voltage", "electronics", "series resistance" ]
+tags: [ "ESD", "diodes", "electrostatic discharge", "high voltage", "electronics", "series resistance" ]
 title: "ESD Protection"
 type: "page"
 ---

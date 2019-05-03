@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Web Design" ]
 date: 2014-01-05
 draft: false
+tags: [ "programming", "web design" ]
 title: jQuery
 type: page
 ---

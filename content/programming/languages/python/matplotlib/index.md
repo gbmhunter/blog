@@ -4,7 +4,7 @@ categories: [ "Programming", "Python" ]
 date: 2018-11-29
 description: "Matplotlib tutorial including useful tricks and tips with code examples."
 draft: false
-lastmod: 2019-04-24
+lastmod: 2019-05-02
 tags: [ "matplotlib", "Python", "code", "programming", "graphs", "numpy", "pyplot", "pie chart", "chart" ]
 title: "matplotlib"
 type: page
@@ -90,3 +90,7 @@ plt.savefig('legend-text-color-matches-plot-line-color.png')
 This will produce a plot which looks like:
 
 {{% img src="legend-text-color-matches-plot-line-color.png" width="700px" %}}
+
+## Creating Animated Plots
+
+When using the `pillow` writer, the GIF will not loop. When using the `imagemagick` writer, the GIF will loop.

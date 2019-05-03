@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2011-09-15 07:23:09+00:00
+categories: [ "Programming", "Microcontrollers" ]
+date: 2011-09-15
 draft: false
+tags: [ "programming", "microcontrollers", "Atmel", "XMEGA" ]
 title: Atmel Xmega Family
 type: page
-url: /programming/microcontrollers/atmel/atmel-xmega-family
 ---
 
 ## Overview

@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Web Design" ]
 date: 2019-03-03
 draft: false
+tags: [ "programming", "web design" ]
 title: Domain Name Servers (DNS)
 type: page
 ---

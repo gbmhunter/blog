@@ -117,6 +117,8 @@ t, &\text{for $0 \le t < 1$} \\
 \end{cases}
 $$</p>
 
+{{% img src="convolution-two-box-car-functions.gif" width="700px" caption="An animated .gif showing the convolution of two box-car functions. The value of the convolution function at any time t (bottom line in red) is the amount area shown in red in the top plot, which mathematically is the integral of f(t)*g(t)." %}}
+
 ## Convolution With Unit Impulse (Dirac Delta) Function
 
 Convolution of any function `\(g(t)\)` with the unit impulse function (also known as the _Dirac delta_ function) will always result in `\(g(t)\)` (the original function, unmodified).

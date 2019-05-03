@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-04-15 10:01:58+00:00
+date: 2013-04-15
 draft: false
 title: Removing Product Count From Categories
 type: page
-url: /programming/website-design/opencart/removing-product-count-from-categories
 ---
 
 The product count that is automatically added to product categories can disrupt the visual appearance of the site, gives the user no really useful information, and can make your store look empty or poorly maintained if you have a small number of products.

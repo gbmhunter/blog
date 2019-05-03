@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-08-06 21:23:43+00:00
+date: 2013-08-06
 draft: false
 title: Verilog Operators
 type: page
-url: /programming/languages/verilog/verilog-operators
 ---
 
 Operators are used to manipulate variables.
@@ -13,50 +12,32 @@ Operators are used to manipulate variables.
 
 Bitwise operators act on the individual bits of a variable. They are very similar to the bitwise operations in other languages, such as [C](/programming/languages/c).
 <table>
-    <thead>
-        <tr>
-            <th>Function</th>
-            <th>Operator</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Operator</th>
+    </tr>
+  </thead>
 <tbody >
 <tr >
-<td >AND
-</td>
-<td >&amp;
-</td>
+<td >AND</td>
+<td >&amp;</td>
 </tr>
 <tr >
-
-<td >OR
-</td>
-
-<td >|
-</td>
+<td >OR</td>
+<td >|</td>
 </tr>
 <tr >
-
-<td >XOR
-</td>
-
-<td >^
-</td>
+<td >XOR</td>
+<td >^</td>
 </tr>
 <tr >
-
-<td >XNOR
-</td>
-
-<td >~^
-</td>
+<td >XNOR</td>
+<td >~^</td>
 </tr>
 <tr >
-
-<td >NOT
-</td>
-
-<td >~
-</td>
+<td >NOT</td>
+<td >~</td>
 </tr>
 </tbody>
 </table>
@@ -75,132 +56,82 @@ Reduction operators are similar to bitwise operators, except they act on all bit
     </thead>
 <tbody >
 <tr >
-
-<td >AND
-</td>
-
-<td >&amp;
-</td>
+<td >AND</td>
+<td >&amp;</td>
 </tr>
 <tr >
-
-<td >NAND
-</td>
-
-<td >~&amp;
-</td>
+<td >NAND</td>
+<td >~&amp;</td>
 </tr>
 <tr >
-
-<td >OR
-</td>
-
-<td >|
-</td>
+<td >OR</td>
+<td >|</td>
 </tr>
 <tr >
-
-<td >XOR
-</td>
-
-<td >~|
-</td>
+<td >XOR</td>
+<td >~|</td>
 </tr>
 <tr >
-
-<td >XNOR
-</td>
-
-<td >^
-</td>
+<td >XNOR</td>
+<td >^</td>
 </tr>
 <tr >
-
-<td >NOT
-</td>
-
-<td >~^
-</td>
+<td >NOT</td>
+<td >~^</td>
 </tr>
 </tbody>
 </table>
 
 ## Shift Operators
 
-Shift operators shift the bits in a variable left or right by a number of specified places. The basic shifts are very similar to the shift operations in other languages, such as [C](/programming/languages/c). The arithmetic shift operators preserve the sign of the value when dealing with variables that represent signed numbers (this is done automatically in C, depending on the type of the variable).
+Shift operators shift the bits in a variable left or right by a number of specified places. The basic shifts are very similar to the shift operations in other languages, such as {{% link text="C" src="/programming/languages/c" %}}. The arithmetic shift operators preserve the sign of the value when dealing with variables that represent signed numbers (this is done automatically in C, depending on the type of the variable).
 
 <table>
-    <thead>
-        <tr>
-            <th>Function</th>
-            <th>Operator</th>
-        </tr>
-    </thead>
-<tbody >
-<tr >
-
-<td >Left Shift
-</td>
-
-<td ><<
-</td>
-</tr>
-<tr >
-
-<td >Right Shift
-</td>
-
-<td >>>
-</td>
-</tr>
-<tr >
-
-<td >Arithmetic Left Shift
-</td>
-
-<td ><<<
-</td>
-</tr>
-<tr >
-
-<td >Arithmetic Right Shift
-</td>
-
-<td >>>>
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Operator</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Left Shift</td>
+      <td>&lt;&lt;</td>
+    </tr>
+    <tr>
+      <td>Right Shift</td>
+      <td>&gt;&gt;</td>
+    </tr>
+    <tr>
+      <td>Arithmetic Left Shift</td>
+      <td>&lt;&lt;&lt;</td>
+    </tr>
+    <tr>
+      <td>Arithmetic Right Shift</td>
+      <td>&gt;&gt;&gt;</td>
+    </tr>
+  </tbody>
 </table>
 
-
 ## Concatenation And Replication Operators
-
 
 Concatenation is used to combine two input variables into a wider output variable. Replication is used to repeat a variables many times in a pattern.
 
 <table>
-    <thead>
-        <tr>
-            <th>Function</th>
-            <th>Operator</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Operator</th>
+    </tr>
+  </thead>
 <tbody >
 <tr >
-
-<td >Concatenation
-</td>
-
-<td >{,}
-</td>
+<td >Concatenation</td>
+<td >{,}</td>
 </tr>
 <tr >
-
-<td >Replication
-</td>
-
-<td >{{}}
-</td>
+<td >Replication</td>
+<td >{{}}</td>
 </tr>
 </tbody>
 </table>
@@ -211,60 +142,36 @@ Concatenation is used to combine two input variables into a wider output variabl
 Arithmetic operators are used to perform basic mathematics on variables. Most follow the same syntax as C, except the power operator (**), which is not supported in C.
 
 <table>
-    <thead>
-        <tr>
-            <th>Function</th>
-            <th>Operator</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Operator</th>
+    </tr>
+  </thead>
 <tbody >
 <tr >
-
-<td >Addition
-</td>
-
-<td >+
+<td >Addition</td>
+<td >+</td>
+</tr>
+<tr >
+<td >Subtraction</td>
+<td >-</td>
+</tr>
+<tr >
+<td >Multiplication</td><td >*
 </td>
 </tr>
 <tr >
-
-<td >Subtraction
-</td>
-
-<td >-
-</td>
+<td >Division</td>
+<td >/</td>
 </tr>
 <tr >
-
-<td >Multiplication
-</td>
-
-<td >*
-</td>
+<td >Modulus</td>
+<td >%</td>
 </tr>
 <tr >
-
-<td >Division
-</td>
-
-<td >/
-</td>
-</tr>
-<tr >
-
-<td >Modulus
-</td>
-
-<td >%
-</td>
-</tr>
-<tr >
-
-<td >Power
-</td>
-
-<td >**
-</td>
+<td >Power</td>
+<td >**</td>
 </tr>
 </tbody>
 </table>

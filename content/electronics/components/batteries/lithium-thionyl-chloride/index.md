@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2014-02-09 09:18:17+00:00
+date: 2014-02-09
 draft: false
 title: Lithium Thionyl Chloride
 type: page
-url: /electronics/components/batteries/lithium-thionyl-chloride
 ---
 
 ## Overview
@@ -17,7 +16,7 @@ Lithium thionyl chloride batteries have a nominal voltage of 3.6V.
 
 ## Current Draw
 
-This is where Lithium thionyl chloride batteries show their weakness. They are really bad at providing large pulse currents, due to their high internal resistnace. This can make the batteries bad at powering pulse-current drawing things like cellular modems. You can add super-capacitors to provide the pulse current in some applications. Some manufacturers have begun selling a combined battery/supercap module which allows for higher pulse currents.
+This is where Lithium thionyl chloride batteries show their weakness. They are really bad at providing large pulse currents, due to their high internal resistance. This can make the batteries bad at powering pulse-current drawing things like cellular modems. You can add super-capacitors to provide the pulse current in some applications. Some manufacturers have begun selling a combined battery/supercap module which allows for higher pulse currents.
 
 ## Leakage Current
 
@@ -33,7 +32,7 @@ They have an energy density of 970mWh/cm^3 (when the discharge current is 100uA)
 
 ## Temperature Range
 
-They can be used over a wide temperautre range of `\(-55^\circ C\)` to `\(+85^\circ C\)`.
+They can be used over a wide temperature range of `\(-55^\circ C\)` to `\(+85^\circ C\)`.
 
 ## Chemical Reaction
 
@@ -42,30 +41,18 @@ Lithium thionyl chloride batteries use liquid thionyl chloride (`\(SOCl_2\)` as 
 Note that the following table describes the reactions for **discharging**, the reactions occur in the opposite direction when the battery is **recharging**.
 
 <table >
-	<tbody >
-		<tr >
-			
-<td >Positive Reaction:
-</td>
-			
-<td >$$2SOCl_2 + 4Li^+ + 4e^- -> 4LiCl + S + SO_2$$
-</td>
+	<tbody>
+		<tr>
+      <td>Positive Reaction:</td>
+      <td>$$2SOCl_2 + 4Li^+ + 4e^- -> 4LiCl + S + SO_2$$</td>
 		</tr>
-		<tr >
-			
-<td >Negative Reaction:
-</td>
-			
-<td >$$Li -> Li^+ + e^-$$
-</td>
-		</tr>
-		<tr >
-			
-<td >Combined Reaction:
-</td>
-			
-<td >$$2SOCl_2 + 4Li -> 4LiCl + S + SO_2$$
-</td>
+		<tr>
+			<td>Negative Reaction:</td>
+			<td>$$Li -> Li^+ + e^-$$</td>
+    </tr>
+		<tr>
+			<td>Combined Reaction:</td>
+			<td>$$2SOCl_2 + 4Li -> 4LiCl + S + SO_2$$</td>
 		</tr>
 	</tbody>
 </table>

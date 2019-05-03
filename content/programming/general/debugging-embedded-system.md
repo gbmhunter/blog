@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-01-10 01:08:58+00:00
+date: 2015-01-10
 draft: false
 title: Debugging On An Embedded System
 type: page
-url: /programming/general/debugging-embedded-system
 ---
 
 ## Overview

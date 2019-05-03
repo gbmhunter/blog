@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2012-12-02 08:36:14+00:00
+date: 2012-12-02
 draft: false
 title: 38PVC
 type: page
-url: /pyrotechnics/rocketry/projects/38pvc
 ---
 
 {{< figure src="/images/pyrotechnics-rocketry-38pvc/03-anchor-holes-and-disk.jpg"   width="320px" >}}

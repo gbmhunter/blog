@@ -3,6 +3,7 @@ author: "gbmhunter"
 categories: [ "Electronics", "Circuit Design" ]
 date: 2015-11-01
 draft: false
+tags: [ "electronics", "circuit design", "light dimmers", "resistive dimming", "Atmel", "zero-cross detection" ]
 title: "Light Dimmers"
 type: "page"
 ---
@@ -17,7 +18,10 @@ The most basic way to dim a light is to put a variable resistor in series with t
 
 ## Phase Cutting
 
-There are two types of phase-cutting:  1. Leading-edge phase-cutting  2. Trailing-edge phase-cutting
+There are two types of phase-cutting:
+
+1. Leading-edge phase-cutting
+1. Trailing-edge phase-cutting
 
 ## Zero-Cross Detection
 

@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-07-09 21:52:06+00:00
+date: 2013-07-09
 draft: false
 title: Code Licenses
 type: page
-url: /programming/general/code-licenses
 ---
 
 ## Overview

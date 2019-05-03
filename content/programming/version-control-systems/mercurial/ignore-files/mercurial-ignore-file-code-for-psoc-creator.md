@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2012-01-15 22:13:15+00:00
+date: 2012-01-15
 draft: false
 title: Mercurial Ignore File For PSoC Creator In Glob Syntax
 type: page
-url: /programming/version-control-systems/mercurial/ignore-files/mercurial-ignore-file-code-for-psoc-creator
 ---
 
 ## Overview
@@ -13,11 +12,11 @@ Following is a Mercurial ignore file for excluding the unnecessary files created
 
 Where possible, the type of file excluded is commented beside each line, just incase you want to re-introduce the file for some reason.
 
-Just copy the code below into the .hgignore file found in the root directory of your repository, replacing <psoc code root dir> with the directory the code will be placed in (or delete this and the / if you want it to apply to the whole repo).
+Just copy the code below into the .hgignore file found in the root directory of your repository, replacing `<psoc code root dir>` with the directory the code will be placed in (or delete this and the / if you want it to apply to the whole repo).
 
 ## Ignore File
 
-```
+```text
 #*************************************************************************
 #*************************** PSOC IGNORE FILES ***************************
 #*************************************************************************

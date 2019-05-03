@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-08-24 00:15:06+00:00
+date: 2013-08-24
 draft: false
 title: Continuous Integration
 type: page
-url: /programming/general/continuous-integration
 ---
 
 ## Travis CI
@@ -21,7 +20,7 @@ For a GitHub project to be supported by Travis CI, it must have a .travis.yml fi
 
 The following is a simple example yml file for a C++ project that uses the GCC C++ compiler (G++) and has a make file in it's root directory.
 
-```
+```yml
 language: cpp
 compiler:
     - gcc

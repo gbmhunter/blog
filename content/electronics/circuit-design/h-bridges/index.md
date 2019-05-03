@@ -5,7 +5,7 @@ date: 2011-09-03
 description: "Schematics, circuits, half-bridges, transistor-based design, motors, controlling bi-color LEDs and more info about H-bridges."
 draft: false
 lastmod: 2018-12-31
-tags: [ "H-bridge", "half-bridge", "circuits", "transistors", "MOSFETs", "motors", "LEDs" ]
+tags: [ "electronics", "circuit design", "H-bridges", "half-bridges", "circuits", "transistors", "MOSFETs", "motors", "LEDs" ]
 title: "H-Bridges (and Half-Bridges)"
 type: page
 ---

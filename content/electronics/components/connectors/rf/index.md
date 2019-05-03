@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-26
 draft: false
+tags: [ "electronics", "electronic components", "connectors", "RF", "high-frequency" ]
 title: RF
 type: page
 ---

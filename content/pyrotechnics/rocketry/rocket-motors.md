@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2012-12-02 04:00:02+00:00
+date: 2012-12-02
 draft: false
 title: Rocket Motors
 type: page
-url: /pyrotechnics/rocketry/rocket-motors
 ---
 
 Rocket motors are the part of the rocket which provides the thrust.

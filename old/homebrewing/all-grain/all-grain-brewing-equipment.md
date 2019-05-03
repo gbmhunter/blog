@@ -1,14 +1,12 @@
 ---
 author: gbmhunter
-date: 2011-09-07 06:00:38+00:00
+date: 2011-09-07
 draft: false
 title: All-Grain Brewing Equipment
 type: page
-url: /homebrewing/all-grain/all-grain-brewing-equipment
 ---
 
 # The Boiler
-
 
 Added a weldless bi-metal thermometer. This was brought from MashMaster ([http://mashmaster.com.au](http://mashmaster.com.au/)). It cost NZ$57 and about NZ$2o to ship it to New Zealand from Australia. The exact thermometer can be found on [this webpage](http://mashmaster.com.au/p/923730/weldless-bi-metal-thermometer-3-dial-face--short-thread---for-pots-and-kegs.html).
 

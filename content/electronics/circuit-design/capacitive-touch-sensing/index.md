@@ -1,8 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Circuit Design" ]
 date: 2012-01-09
 draft: false
-tags: [ "capacitance", "capacitive", "capacitor", "touch sensing", "capacitive touch sensing", "buttons", "ESD protection" ]
+tags: [ "capacitance", "capacitive", "capacitors", "touch sensing", "capacitive touch sensing", "buttons", "ESD protection" ]
 title: Capacitive Touch Sensing
 type: page
 ---
@@ -35,13 +36,13 @@ The button footprint can vary between the designs. One of the easiest is simply 
 
 ## ESD Protection
 
-ESD protection can be important in certain applications due to the human body getting very close to the capacitive touch pads, which can capacitively couple static into the system. However careful consideration must be taken in what ESD protection is employed as to not affect the circuits operation. In general, TVS diodes are unacceptable as theri parasitic capacitance and leakage currents greatly reduce the button sensitivity. Series resistors are a much better option (between 50 and 200R).
+ESD protection can be important in certain applications due to the human body getting very close to the capacitive touch pads, which can capacitively couple static into the system. However careful consideration must be taken in what ESD protection is employed as to not affect the circuits operation. In general, TVS diodes are unacceptable as their parasitic capacitance and leakage currents greatly reduce the button sensitivity. Series resistors are a much better option (between 50 and 200R).
 
 The Silicon Labs application note [AN376](http://www.silabs.com/Support%20Documents/TechnicalDocs/AN376.pdf) explains this in greater detail.
 
 ## Manufacturers
 
-The Cypress range of PSoC micro-controllers have in-built hardware to support self-capacitance touch sensoring.
+The Cypress range of PSoC micro-controllers have in-built hardware to support self-capacitance touch sensing.
 
 Analog Devices make a range of stand-alone capacitance sensing chips that use mutual capacitance and range from 12 to 24-bit.
 

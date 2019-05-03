@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-10-09 03:00:45+00:00
+date: 2013-10-09
 draft: false
 title: Satellite Modems
 type: page
-url: /electronics/components/satellite-modems
 ---
 
 ## Overview
@@ -16,28 +15,21 @@ They typically have tight technical voltage supply specifications (such as 40mVp
 ## Terminology
 
 <table>
-    <thead>
-        <tr>
-            <th>Term</th>
-            <th>Description</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Description</th>
+    </tr>
+  </thead>
 <tbody >
 <tr >
-
-<td >Globalstar
-</td>
-
+<td >Globalstar</td>
 <td >A popular manufacturer of satellite modems.
 </td>
 </tr>
 <tr >
-
-<td >Iridium
-</td>
-
-<td >A popular manufacturer of satellite modems.
-</td>
+<td >Iridium</td>
+<td >A popular manufacturer of satellite modems.</td>
 </tr>
 <tr >
 

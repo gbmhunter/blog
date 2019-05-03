@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Circuit Design" ]
 date: 2013-08-02
 draft: false
-tags: [ "button", "debouncing", "hardware", "firmware", "schematic" ]
+tags: [ "buttons", "debouncing", "hardware", "firmware", "schematics" ]
 title: Debouncing
 type: page
 ---

@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Electronics", "Circuit Design" ]
 date: 2011-09-08
 draft: false
-tags: [ "GPRS", "modules", "cullular", "data", "AT commands" ]
+tags: [ "GPRS", "modules", "cellular", "data", "AT commands" ]
 title: "GPRS"
 type: "page"
 ---

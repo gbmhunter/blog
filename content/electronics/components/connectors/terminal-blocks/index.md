@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-30
 draft: false
+tags: [ "electronics", "electronic components", "connectors", "terminal blocks" ]
 title: Terminal Blocks
 type: page
 ---
@@ -42,30 +44,30 @@ However, because they do not enforce a specific wiring configuration, they are p
 Common pitches for terminal blocks are:
 
 <table>
-    <thead>
-        <tr>
-            <th>Pitch</th>
-            <th>Use</th>
-        </tr>
-    </thead>
-<tbody >
-<tr>
-<td>2.54mm (100mill)</td>
-<td>Imperial pitch used for small wires (16-30AWG). While this is a very common pitch for other connectors, the design of terminal blocks actually makes this result in very small connections, hence larger pitches are more popular.</td>
-</tr>
-<tr>
-<td>3.5mm</td>
-<td>This is a metric pitch.</td>
-</tr>
-<tr>
-<td>3.84mm (150mill)</td>
-<td>This is a common terminal block imperial pitch</td>
-</tr>
-<tr>
-<td>5.08mm (200mill)</td>
-<td>This is a very common imperial pitch.</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Pitch</th>
+      <th>Use</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr>
+      <td>2.54mm (100mill)</td>
+      <td>Imperial pitch used for small wires (16-30AWG). While this is a very common pitch for other connectors, the design of terminal blocks actually makes this result in very small connections, hence larger pitches are more popular.</td>
+    </tr>
+    <tr>
+      <td>3.5mm</td>
+      <td>This is a metric pitch.</td>
+    </tr>
+    <tr>
+      <td>3.84mm (150mill)</td>
+      <td>This is a common terminal block imperial pitch</td>
+    </tr>
+    <tr>
+      <td>5.08mm (200mill)</td>
+      <td>This is a very common imperial pitch.</td>
+    </tr>
+  </tbody>
 </table>
 
 A word of caution: **DO NOT** completely tin the ends of wires that go in the terminal block. Under the pressure of the screw, solder will creep over time, and the connection will become loose, either falling out, or making a high resistance connection. It is acceptable to lightly tin **the very ends** of the wires to keep the individual strands from fraying, but nothing more.
@@ -79,29 +81,30 @@ A better way to fix this problem is to use wire ferrules. These are small hollow
 Terminal blocks have many different connection types:
 
 <table>
-    <thead>
-        <tr>
-            <th>Connection Type</th>
-            <th>Image</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody><tr >
-<td>Screw</td>
-<td>{{< img src="terminal-block-screw-style.jpg" width="181px" caption="A terminal block with a screw-style connection method."  >}}</td>
-<td>The most basic terminal block connection type. I don't particularly like this connection style, especially when clamping bare wires (i.e. no wire ferrule), as the screw can pinch and break the individual wire strands, as well as the screw completely missing some/all of the wire strands if they ride up the sides of the metal enclosure. This problem is exasperated when the gauge of the wire is small compared to the size of the terminal block.</td>
-</tr>
-<tr>
-<td>Rising Cage</td>
-<td>{{< img src="terminal-block-rising-cage-close-up.jpg" width="148px" caption="A terminal block with a rising-cage style connection method."  >}}</td>
-<td>Screw with rising cage clamp is my preferred connection type. This is where the bottom side of a square cage rises up and clamps the wire when you tighten the screw. This does not pinch and break the wire as often as the basic screw connection type terminal block does.</td>
-</tr>
-<tr>
-<td>Spring</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Connection Type</th>
+      <th>Image</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>Screw</td>
+    <td>{{< img src="terminal-block-screw-style.jpg" width="181px" caption="A terminal block with a screw-style connection method."  >}}</td>
+    <td>The most basic terminal block connection type. I don't particularly like this connection style, especially when clamping bare wires (i.e. no wire ferrule), as the screw can pinch and break the individual wire strands, as well as the screw completely missing some/all of the wire strands if they ride up the sides of the metal enclosure. This problem is exasperated when the gauge of the wire is small compared to the size of the terminal block.</td>
+  </tr>
+  <tr>
+    <td>Rising Cage</td>
+    <td>{{< img src="terminal-block-rising-cage-close-up.jpg" width="148px" caption="A terminal block with a rising-cage style connection method."  >}}</td>
+    <td>Screw with rising cage clamp is my preferred connection type. This is where the bottom side of a square cage rises up and clamps the wire when you tighten the screw. This does not pinch and break the wire as often as the basic screw connection type terminal block does.</td>
+  </tr>
+  <tr>
+    <td>Spring</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
 </table>
 
 ## Terminal Block Covers

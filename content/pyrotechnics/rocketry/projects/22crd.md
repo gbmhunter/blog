@@ -3,7 +3,6 @@ author: gbmhunter
 date: 2012-12-02
 title: 22CRD
 type: page
-url: /pyrotechnics/rocketry/projects/22crd
 ---
 
 I only have the motor burn calculations for this one!

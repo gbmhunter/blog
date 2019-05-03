@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2011-09-08 08:44:32+00:00
+date: 2011-09-08
 draft: false
 title: Hefeweizen Brewing Notes Added
 type: post
-url: /homebrewing-2/hefeweizen-brewing-notes-added
 categories:
 - Homebrewing
 tags:

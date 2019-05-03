@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Web Design" ]
 date: 2019-02-28
 draft: false
 lastmod: 2019-02-28

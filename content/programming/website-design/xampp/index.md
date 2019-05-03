@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Web Design" ]
 date: 2013-06-06
 draft: false
+tags: [ "programming", "web design", "XAMPP", "server" ]
 title: "XAMPP"
 type: page
 ---

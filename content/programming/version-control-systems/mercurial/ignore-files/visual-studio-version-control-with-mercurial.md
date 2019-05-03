@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2011-09-15 07:37:39+00:00
+date: 2011-09-15
 draft: false
 title: Visual Studio Version Control With Mercurial
 type: page
-url: /programming/version-control-systems/mercurial/ignore-files/visual-studio-version-control-with-mercurial
 ---
 
 ## Overview
@@ -19,7 +18,7 @@ Copy this code into the .hgignore file found in the root directory of your repos
 
 ## Ignore File
 
-```    
+```text
 #*************************************************************************
 #***************************** C# IGNORE FILES ***************************
 #*************************************************************************

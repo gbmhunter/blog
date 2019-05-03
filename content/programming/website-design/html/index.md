@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Web Design" ]
 date: 2012-07-22
 draft: false
+tags: [ "programming", "web design" ]
 title: "HTML"
 type: page
 ---

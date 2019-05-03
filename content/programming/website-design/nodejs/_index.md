@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Web Design" ]
 date: 2013-09-27
 draft: false
 title: nodejs

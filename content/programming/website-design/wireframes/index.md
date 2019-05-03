@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2012-03-13 04:23:35+00:00
+categories: [ "Programming", "Web Design" ]
+date: 2012-03-13
 draft: false
+tags: [ "programming", "web design" ]
 title: Wireframes
 type: page
 ---

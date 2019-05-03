@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-30
 draft: false
+tags: [ "electronics", "electronic components", "connectors", "wire-to-board", "WTD" ]
 title: Wire-To-Board (WTB)
 type: page
 ---
@@ -37,26 +39,28 @@ Molex's PicoBlade connector families are quite popular. They have a 1.25mm pitch
 MTA-100 connectors are colour coded according the wire size they accept.
 
 <table>
-    <thead>
-        <tr>
-            <th>Connector Colour</th>
-            <th>Wire Size</th>
-        </tr>
-    </thead>
-<tbody ><tr >
-<td style="text-align: center;" >Red
-</td>
-<td style="text-align: center;" >22AWG
-</td></tr><tr >
-<td style="text-align: center;" >White
-</td>
-<td style="text-align: center;" >24AWG
-</td></tr><tr >
-<td style="text-align: center;" >Blue
-</td>
-<td style="text-align: center;" >26AWG
-</td></tr><tr >
-<td style="text-align: center;" >Green
-</td>
-<td style="text-align: center;" >28AWG
-</td></tr></tbody></table>
+  <thead>
+    <tr>
+      <th>Connector Colour</th>
+      <th>Wire Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Red</td>
+      <td>22AWG</td>
+    </tr>
+    <tr>
+      <td>White</td>
+      <td>24AWG</td>
+    </tr>
+    <tr>
+      <td>Blue</td>
+      <td>26AWG</td>
+    </tr>
+    <tr>
+      <td>Green</td>
+      <td>28AWG</td>
+    </tr>
+  </tbody>
+</table>

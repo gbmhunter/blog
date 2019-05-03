@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-04-15 10:32:03+00:00
+date: 2013-04-15
 draft: false
 title: Extending The Background
 type: page
-url: /programming/website-design/opencart/extending-the-background
 ---
 
 Sometimes you run into the issue of the background "running out" before the page has finished, as shown below.

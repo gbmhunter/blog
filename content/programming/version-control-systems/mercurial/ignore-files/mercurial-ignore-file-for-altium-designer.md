@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-08-02 00:29:25+00:00
+date: 2013-08-02
 draft: false
 title: Mercurial Ignore File For Altium Designer
 type: page
-url: /programming/version-control-systems/mercurial/ignore-files/mercurial-ignore-file-for-altium-designer
 ---
 
 Following is an Mercurial ignore file for excluding the unnecessary files created by Altium Designer. The ignore files is written using regexp syntax. It only excludes files that are within a specified sub-directory within the repository. This is to stop the ignore file excluding other files with the same extension from other sections of the repository.
@@ -13,7 +12,7 @@ Where possible, the type of file excluded is commented beside each line, just in
 
 Just copy and append the code below into the .hgignore file found in the root directory of your repository, and change <Altium root dir> to the directory of your choice (or delete <Altium root dir>/ so it will apply to the entire repo.
 
-```    
+```text
 #*************************************************************************
 #************************* ALTIUM IGNORE FILES ***************************
 #*************************************************************************

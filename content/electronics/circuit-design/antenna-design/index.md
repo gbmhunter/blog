@@ -1,5 +1,6 @@
 ---
 author: "gbmhunter"
+categories: [ "Electronics", "Circuit Design" ]
 date: 2013-10-30
 draft: false
 tags: [ "antenna", "design", "terminology", "dipoles", "PCB" ]

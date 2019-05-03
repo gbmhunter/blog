@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2011-09-03 02:06:28+00:00
+categories: [ "Electronics", "Circuit Design" ]
+date: 2011-09-03
 draft: false
+tags: [ "electronics", "circuit design", "active filters", "filters", "Butterworth", "Tschebyscheff", "Bessel", "gain" ]
 title: Active Filters
 type: page
 ---

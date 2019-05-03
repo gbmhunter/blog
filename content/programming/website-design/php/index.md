@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Web Design" ]
 date: 2013-04-29
 draft: false
+tags: [ "programming", "web design" ]
 title: "PHP"
 type: page
 ---

@@ -1,5 +1,6 @@
 ---
 author: "gbmhunter"
+categories: [ "Electronics", "Circuit Design" ]
 date: 2013-12-16
 draft: false
 title: "Electrical Signal Types"

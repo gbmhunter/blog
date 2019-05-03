@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2014-08-13 07:31:51+00:00
+date: 2014-08-13
 draft: false
 title: General
 type: page
-url: /programming/website-design/opencart/general
 ---
 
 ## Overview
@@ -15,7 +14,7 @@ I have used it when building an web store for a friend. Below are some tips and 
 
 ## Folder Structure
 
-OpenCart uses the [MVC(+L) folder structure](http://en.wikipedia.org/wiki/Model-view-controller). This structure seperates the information stored in the database from the user interaction and display of it. OpenCart uses this to provide easier ways to 'skin' the store and also to upgrade the main code without losing any customisations you may have made. Helping this cause even further is vQmod (see below).
+OpenCart uses the [MVC(+L) folder structure](http://en.wikipedia.org/wiki/Model-view-controller). This structure separates the information stored in the database from the user interaction and display of it. OpenCart uses this to provide easier ways to 'skin' the store and also to upgrade the main code without losing any customisations you may have made. Helping this cause even further is vQmod (see below).
 
 ## Plug-Ins Using vQmod
 
@@ -40,16 +39,16 @@ The [vQmod XML File Generator](http://www.opencart-extensions.co.uk/vqgen/) is a
 
 The vQmod log file can end up taking up all of your spare server space if you are not careful. It has no automatic periodic delete function, and if there is any error at all occuring in vQmod, this file will just continue to grow and grow. Of course, I recommend you fix the error as the preferential way of preventing this problem, however, sometimes the error is not that important, and in those cases, you can disable the vQmod logging functionality by following the following steps.
 
-1. Open up the vqmod.php file in a text editor.
+1. Open up the `vqmod.php` file in a text editor.
 
 2. Search for:
 		
-	```php
-	public $logging = true;
+    ```php
+    public $logging = true;
     ```		
 
 3. And replace with:
 		
-	```php
-	public $logging = false;
-	```
+    ```php
+    public $logging = false;
+    ```

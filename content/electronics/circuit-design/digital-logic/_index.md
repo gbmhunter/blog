@@ -1,6 +1,7 @@
 ---
 author: gbmhunter
-date: 2012-08-06 00:02:09+00:00
+categories: [ "Electronics", "Circuit Design" ]
+date: 2012-08-06
 draft: false
 title: Digital Logic
 type: page

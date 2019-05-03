@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2011-09-15 07:36:20+00:00
+date: 2011-09-15
 draft: false
 title: uVision Version Control With Mercurial
 type: page
-url: /programming/version-control-systems/mercurial/ignore-files/uvision-version-control-with-mercurial
 ---
 
 ## Overview
@@ -19,7 +18,7 @@ A list of the file types supported by uVision can be found here: [http://www.kei
 
 ## Ignore File
 
-```    
+```text
 #************************************************************************
 #************************* UVISION 4 IGNORE FILES ***********************
 #************************************************************************

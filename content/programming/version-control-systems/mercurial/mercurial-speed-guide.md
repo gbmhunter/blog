@@ -1,13 +1,14 @@
 ---
 author: gbmhunter
-date: 2013-08-02 00:21:15+00:00
+categories: [ "Programming", "Version Control Systems" ]
+date: 2013-08-02
 draft: false
+tags: [ "programming", "version control systems", "VCS", "Mercurial", "speed guide", "how to", "cheat sheet" ]
 title: Mercurial Speed Guide
 type: page
-url: /programming/version-control-systems/mercurial/mercurial-speed-guide
 ---
 
-Note: Many of these commands use shortened versions of the full-length commands (e.g. addrem instead of addrem, stat instead of status), afterall, this is a speed guide!
+Note: Many of these commands use shortened versions of the full-length commands (e.g. `addrem` instead of `addremove`, `stat instead` of `status`), afterall, this is a speed guide!
 
 ```sh
 # Find the status of a repo (any uncomitted changes, revision id, e.t.c)

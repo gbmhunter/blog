@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-04-15 09:35:55+00:00
+date: 2013-04-15
 draft: false
 title: Adding Things To The Top Vertical Menu
 type: page
-url: /programming/website-design/opencart/adding-things-to-the-top-vertical-menu
 ---
 
 One way to add a hyperlink to the top menu is to hard code it in the `"catalog/view/theme/_<current theme name>_/template/common/header.tpl"` file. Look for the comment in the following html code (near the bottom).

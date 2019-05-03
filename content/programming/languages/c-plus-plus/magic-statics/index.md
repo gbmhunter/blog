@@ -1,10 +1,11 @@
 ---
 author: gbmhunter
-date: 2017-08-29 00:28:52+00:00
+categories: [ "Programming", "Programming Languages" ]
+date: 2017-08-29
 draft: false
+tags: [ "programming", "programming languages", "C++", "magic statics", "function-local static initialization", "threads", "C++11", "singletons" ]
 title: Magic Statics
 type: page
-url: /programming/languages/c-plus-plus/magic-statics
 ---
 
 ## Overview

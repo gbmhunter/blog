@@ -1,46 +1,33 @@
 ---
 author: gbmhunter
-date: 2014-04-06 23:02:20+00:00
+date: 2014-04-06
 draft: false
 title: ELF Files
 type: page
-url: /programming/general/elf-files
 ---
 
 ELF is an initialism for executable and linkable format. ELF files are binary object files. There are three different types of object files that an ELF could be:
 
-
-
 <table>
-    <thead>
-		<tr>
-            <th>Type Of Object File</th>
-            <th>Description</th>
-		</tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Type Of Object File</th>
+      <th>Description</th>
+    </tr>
+  </thead>
 <tbody>
-
 <tr>	
-<td >Relocatable File
-</td>		
+<td >Relocatable File</td>		
 <td >A relocatable object file holds code and data suitable for linking with other object files to create an exectuable file or shared-object file.
 </td>
 		</tr>
 		<tr >
-			
-<td >Executable File
-</td>
-			
-<td >An executable files holds a program suitable for execution. These files typically have either a .elf extension or no extension.
-</td>
+			<td >Executable File</td>
+			<td >An executable files holds a program suitable for execution. These files typically have either a .elf extension or no extension.</td>
 		</tr>
 		<tr >
-			
-<td >Shared-Object File
-</td>
-			
-<td >These are also known as shared library files (as opposed to static library files). These files normally have a lib prefix and a .so extension.
-</td>
+			<td >Shared-Object File</td>
+			<td >These are also known as shared library files (as opposed to static library files). These files normally have a lib prefix and a .so extension.</td>
 		</tr>
 	</tbody>
 </table>

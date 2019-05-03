@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Programming", "Communication Protocols" ]
 date: 2013-03-16
-tags: [ "communication protocols", "embedded", "PCB", "serial", "parallel" ]
+tags: [ "communication protocols", "embedded", "PCBs", "serial", "parallel" ]
 title: Communication Protocols
 type: page
-url: /electronics/communication-protocols
 ---
 
 ## Overview

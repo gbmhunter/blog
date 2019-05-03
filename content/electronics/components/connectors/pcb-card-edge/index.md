@@ -1,14 +1,16 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-30
 draft: false
+tags: [ "connectors", "PCB", "card edge", "electronic components" ]
 title: PCB Card Edge
 type: page
 ---
 
 ## Overview
 
-This is a cheap and many-pin capable solution when you want to connect two PCB's together. PCB card edge connector involve using the edge of one of the mating PCB's as the connector, by etching/routing "fingers" on the PCB. The other mating part of the connector is designed to accept these fingers. Most card edge connectors are used when the PCB's are at right-angles to each other, although you can get connectors designed for parallel and co-planar connections.
+This is a cheap and many-pin capable solution when you want to connect two PCBs together. PCB card edge connector involve using the edge of one of the mating PCBs as the connector, by etching/routing "fingers" on the PCB. The other mating part of the connector is designed to accept these fingers. Most card edge connectors are used when the PCBs are at right-angles to each other, although you can get connectors designed for parallel and co-planar connections.
 
 The fingers that are etched on the PCB are usually gold plated to make the contacts more reliable (the normal lead/tin coating oxidises too quickly). This is a special process that most PCB manufacturers will support, and does not add much to the cost of the PCB. The supported PCB thickness of most of these connectors is around 1.60mm (which is pretty standard). Also, it is recommended to add a small bevel to the inserted end of the PCB to facilitate mating. Again, most quality PCB manufacturers will support this.
 

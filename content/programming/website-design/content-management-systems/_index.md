@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2011-09-15 07:43:35+00:00
+date: 2011-09-15
 draft: false
 title: Content Management Systems
 type: page
-url: /programming/website-design/content-management-systems
 ---
 
 ## Overview

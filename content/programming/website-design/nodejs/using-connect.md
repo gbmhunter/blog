@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
-date: 2013-10-11 03:13:06+00:00
+categories: [ "Programming", "Web Design" ]
+date: 2013-10-11
 draft: false
 title: Using Connect
 type: page
-url: /programming/website-design/nodejs/using-connect
 ---
 
 ## Overview

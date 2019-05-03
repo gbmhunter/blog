@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Web Design" ]
 date: 2014-09-05
 draft: false
+tags: [ "programming", "web design" ]
 title: "Folder And File Permissions"
 type: page
 ---

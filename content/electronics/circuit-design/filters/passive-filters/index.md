@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-01-03 04:10:26+00:00
+categories: [ "Electronics", "Circuit Design" ]
+date: 2013-01-03
 draft: false
+tags: [ "electronics", "circuit design", "filters", "passive filters", "RC", "low-pass", "high-pass", "LC" ]
 title: Passive Filters
 type: page
 ---

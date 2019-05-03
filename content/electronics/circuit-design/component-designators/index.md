@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Circuit Design" ]
 date: 2011-09-03
 draft: false
-tags: [ "component", "designators", "electronincs", "engineering", "symbol", "PCB", "silkscreen" ]
+tags: [ "components", "designators", "electronics", "engineering", "symbols", "PCBs", "silkscreen" ]
 title: Component Designators
 type: page
 ---

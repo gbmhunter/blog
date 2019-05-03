@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-10-05 23:13:20+00:00
+date: 2015-10-05
 draft: false
 title: Atmel
 type: page
-url: /programming/microcontrollers/atmel
 ---
 
 ## Overview

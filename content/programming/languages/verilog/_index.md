@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-05-20 23:22:18+00:00
+date: 2013-05-20
 draft: false
 title: Verilog
 type: page
-url: /programming/languages/verilog
 ---
 
 ## Counters

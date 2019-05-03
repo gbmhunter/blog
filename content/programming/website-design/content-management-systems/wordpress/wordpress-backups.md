@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2017-04-09 02:01:03+00:00
+date: 2017-04-09
 draft: false
 title: Wordpress Backups
 type: page
-url: /programming/website-design/content-management-systems/wordpress/wordpress-backups
 ---
 
 ## Folders To Ignore

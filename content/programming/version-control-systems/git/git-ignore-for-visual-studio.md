@@ -1,13 +1,12 @@
 ---
 author: gbmhunter
-date: 2013-05-29 21:04:14+00:00
+date: 2013-05-29
 draft: false
 title: Git Ignore For Visual Studio
 type: page
-url: /programming/version-control-systems/git/git-ignore-for-visual-studio
 ---
 
-```
+```text
 #OS junk files
 [Tt]humbs.db
 *.DS_Store

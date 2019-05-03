@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Web Design" ]
 date: 2013-08-23
 draft: false
+tags: [ "programming", "web design" ]
 title: "Image Manipulation"
 type: page
 ---

@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-12-10 02:39:29+00:00
+date: 2013-12-10
 draft: false
 title: Eclipse
 type: page
-url: /programming/general/eclipse
 ---
 
 ## Cheat Sheet
@@ -12,18 +11,11 @@ url: /programming/general/eclipse
 <table>
 <tbody >
 <tr >
-
-<td >Ctrl + Tab
-</td>
-
-<td >Switch between source and header files.
-</td>
+<td >Ctrl + Tab</td>
+<td >Switch between source and header files.</td>
 </tr>
 <tr >
-
-<td >F3
-</td>
-
+<td >F3</td>
 <td >Switch between declaration and definition (for functions/methods/variables e.t.c).
 </td>
 </tr>

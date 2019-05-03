@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Electronic Components" ]
 date: 2016-03-02
 draft: false
+tags: [ "mains power", "electronic components", "IEC 60320", "jug plugs", "connectors" ]
 title: Mains Power
 type: page
 ---

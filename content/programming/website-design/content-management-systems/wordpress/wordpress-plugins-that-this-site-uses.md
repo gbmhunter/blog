@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-02-23 08:33:12+00:00
+date: 2013-02-23
 draft: false
 title: Wordpress Plugins That This Site Uses
 type: page
-url: /programming/website-design/content-management-systems/wordpress/wordpress-plugins-that-this-site-uses
 ---
 
 ## Add Descendants As Menu Items

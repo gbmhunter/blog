@@ -1,10 +1,11 @@
 ---
-title: "BLDC Motor Control"
-description: "Positional sensing, trapezoidal control, sinusoidal control, sensor field orientated control, the Clark and Park transformations, PWM and more info on BLDC motor control"
-tags: [ "BLDC", "motor", "trapezoidal", "sinusoidal", "FOC", "PWM", "Clark transformation", "Park transformation", "control loop", "deadtime", "feedback", "closed-loop", "maths", "enclosures", "equations", "encoder" ]
 author: "gbmhunter"
+categories: [ "Electronics", "Circuit Design" ]
 date: 2012-08-02
+description: "Positional sensing, trapezoidal control, sinusoidal control, sensor field orientated control, the Clark and Park transformations, PWM and more info on BLDC motor control"
 lastmod: 2019-01-20
+tags: [ "BLDC", "motors", "trapezoidal", "sinusoidal", "FOC", "PWM", "Clark transformation", "Park transformation", "control loops", "deadtime", "feedback", "closed-loop", "maths", "enclosures", "equations", "encoders" ]
+title: "BLDC Motor Control"
 type: "page"
 ---
 

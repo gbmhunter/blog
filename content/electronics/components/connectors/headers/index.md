@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-30
 draft: false
+tags: [ "connectors", "electronic components", "headers", "pins", "sockets" ]
 title: Headers
 type: page
 ---
@@ -26,9 +28,9 @@ Male headers (plugs) are normally numbered from left-to-right, when the connecto
 
 ## Using Headers For Board-to-Board Connections
 
-They are also a great, cheap way of connecting two or more PCB's together, as shown in the following image. A disadvantage is that this method is not as mechanically strong as some more expensive custom board-to-board connection methods.
+They are also a great, cheap way of connecting two or more PCBs together, as shown in the following image. A disadvantage is that this method is not as mechanically strong as some more expensive custom board-to-board connection methods.
 
-{{< img src="2-54mm-smd-right-angle-header-plug-and-jack-mosaic.jpg" width="1200px" caption="Header plugs and jacks (male and female parts) are a good way of connecting PCB's together."  >}}
+{{< img src="2-54mm-smd-right-angle-header-plug-and-jack-mosaic.jpg" width="1200px" caption="Header plugs and jacks (male and female parts) are a good way of connecting PCBs together."  >}}
 
 ## Part Links
 

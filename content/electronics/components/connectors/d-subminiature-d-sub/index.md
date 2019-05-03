@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-30
 draft: false
+tags: [ "connectors", "subminiature", "DE-9", "DB-9", "DB-25", "electronic components" ]
 title: D-Subminiature (D-sub)
 type: page
 ---
@@ -119,11 +121,11 @@ The available sizes are:
 
 ## Backshells
 
-D-subminiature connectors which are **attached to cables** (i.e. are not PCB mounted or panel mounted) are designed to be fitted with a _backshell_. The backshell **protects/encloses** the wire connections from from the cable, as well providing **mechancial support and strain relief** for the cable.
+D-subminiature connectors which are **attached to cables** (i.e. are not PCB mounted or panel mounted) are designed to be fitted with a _backshell_. The backshell **protects/encloses** the wire connections from from the cable, as well providing **mechanical support and strain relief** for the cable.
 
 ## Termination Styles
 
-PCB Mount: The connectors has protroding pins (in either straight or right-angle orientation) so that the connector can be soldered to a PCB.
+PCB Mount: The connectors has protruding pins (in either straight or right-angle orientation) so that the connector can be soldered to a PCB.
 
 Solder Lug: Designed so that wires can be soldered onto the pins. This style of connector is designed to be panel mounted (**not PCB mounted**). Also called _solder bucket_.
 

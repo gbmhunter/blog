@@ -1,10 +1,9 @@
 ---
 author: gbmhunter
-date: 2015-01-12 04:47:58+00:00
+date: 2015-01-12
 draft: false
 title: Managing Large Repos
 type: page
-url: /programming/version-control-systems/git/managing-large-repos
 ---
 
 ## Overview

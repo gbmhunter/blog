@@ -1,10 +1,10 @@
 ---
 author: gbmhunter
-date: 2013-10-11 02:56:55+00:00
+categories: [ "Programming", "Web Design" ]
+date: 2013-10-11
 draft: false
 title: Using Express
 type: page
-url: /programming/website-design/nodejs/using-express
 ---
 
 ## Overview
@@ -38,4 +38,4 @@ app.get('/', function(req, res){
 app.listen(3000);
 ```
 
-To run this, save the code as a .js file, and instruct node to run this file from the command line by typing node filename.js.
+To run this, save the code as a `.js` file, and instruct node to run this file from the command line by typing `node filename.js`.
