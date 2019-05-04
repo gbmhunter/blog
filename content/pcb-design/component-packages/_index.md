@@ -26,7 +26,7 @@ Some items such as the {{% link text="PP3 9V battery case" src="pp3-component-pa
 
 ## Break-out Boards
 
-{{< figure src="/images/electronics-misc/sparkfun-break-out-board.jpg" caption="A SOIC-8 to DIP break-out board made by SparkFun."  width="160px" >}}
+{{< img src="sparkfun-break-out-board.jpg" caption="A SOIC-8 to DIP break-out board made by SparkFun." width="160px" >}}
 
 Break-out boards are useful for converting one package footprint into another. They are particular common for converting smaller SMT package footprints into 100mil DIP packages for prototyping with modern ICs.
 

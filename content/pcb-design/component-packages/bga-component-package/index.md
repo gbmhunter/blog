@@ -90,7 +90,7 @@ The package with the densest pin density out there, BGAs are used to either make
 
 A 3D render of the BGA-144 component package.
 
-{{< figure src="/images/2015/03/bga-144-component-package-3d-render.jpg" width="372px" caption="A 3D render of the BGA-144 component package."  >}}
+{{< img src="bga-144-component-package-3d-render.jpg" width="372px" caption="A 3D render of the BGA-144 component package."  >}}
 
 ## Ball Layout
 
@@ -106,15 +106,15 @@ The pad diameter for a BGA footprint can be determined by one of three methods:
 
 ## Soldermask Considerations
 
-{{< figure src="/images/2015/03/example-of-nsmd-pcb-pad-solder-joint-xilinx.png" width="507px" caption="Example of a NSMD (non-soldermask defined) solder joint on a BGA package. Image from http://www.xilinx.com/."  >}}
+{{< img src="example-of-nsmd-pcb-pad-solder-joint-xilinx.png" width="507px" caption="Example of a NSMD (non-soldermask defined) solder joint on a BGA package. Image from http://www.xilinx.com/."  >}}
 
 ## Variants
 
-## DSBGA
+### DSBGA
 
 DSBGA (Die Sized BGA) is the name given by Texas Instruments for their family of BGA packages in where the die size is the same as the package size. They are also known by the term Wafer-Level Chip Scale Package (WLCSP). As of October 2015, they are available in 0.30, 0.35, 0.40, and 0.50mm pitches. 
 
-{{< figure src="/images/2015/03/dsbga-component-package-4-25-bump-size-comparison-ti.png" width="282px" caption="A size comparison of the 4 to 25 bump DSBGA component packages. Image from http://www.ti.com/."  >}}
+{{< img src="dsbga-component-package-4-25-bump-size-comparison-ti.png" width="282px" caption="A size comparison of the 4 to 25 bump DSBGA component packages. Image from http://www.ti.com/."  >}}
 
 Texas Instruments also assigns a package code to each package within the DSBGA family. Here are some example (this is in no way an exhaustive list):
 
@@ -125,30 +125,30 @@ Texas Instruments also assigns a package code to each package within the DSBGA f
       <th>Description</th>
     </tr>
   </thead>
-<tbody>
-<tr>
-<td>YDC</td>
-<td>DSBGA, 4 Leads, Pitch 0.5mm, Body 1.1x1.1mm, Height 0.4mm</td>
-</tr>
-<tr>
-<td>YEA</td>
-<td>DSBGA, 5 Leads, Pitch 0.5mm, Body 0.9x1.4mm, Height 0.5mm</td>
-</tr>
-<tr>
-<td>YEB</td>
-<td>DSBGA, 4 Leads, Pitch 0.5mm, Body 1.3x1.3mm, Height 0.625mm</td>
-</tr>
-<tr>
-<td>YEC</td>
-<td>DSBGA, 6 Leads, Pitch 0.5mm, Body 1.8x1.3mm, Height 0.625mm</td>
-</tr>
-<tr>
-<td>YZP</td>
-<td>DSBGA, 8 Leads, Pitch 0.5mm, Body 1.9x0.9mm, Height 0.5mm</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>YDC</td>
+      <td>DSBGA, 4 Leads, Pitch 0.5mm, Body 1.1x1.1mm, Height 0.4mm</td>
+    </tr>
+    <tr>
+      <td>YEA</td>
+      <td>DSBGA, 5 Leads, Pitch 0.5mm, Body 0.9x1.4mm, Height 0.5mm</td>
+    </tr>
+    <tr>
+      <td>YEB</td>
+      <td>DSBGA, 4 Leads, Pitch 0.5mm, Body 1.3x1.3mm, Height 0.625mm</td>
+    </tr>
+    <tr>
+      <td>YEC</td>
+      <td>DSBGA, 6 Leads, Pitch 0.5mm, Body 1.8x1.3mm, Height 0.625mm</td>
+    </tr>
+    <tr>
+      <td>YZP</td>
+      <td>DSBGA, 8 Leads, Pitch 0.5mm, Body 1.9x0.9mm, Height 0.5mm</td>
+    </tr>
+  </tbody>
 </table>
 
 Note that confusingly, the three letter Texas Instrument's code is **not unique** for a particular package. For example, the code "YZP" may refer to a 5, 6, or 8 ball DSBGA package, which also may have **different** height, width and length dimensions. 
 
-{{< figure src="/images/2015/03/dsbga-8-component-package-2d-pcb-footprint-birds-eye.png" width="236px" caption="A 2D birds-eye view of the CAD model for the DSBGA-8 component package."  >}}
+{{< img src="dsbga-8-component-package-2d-pcb-footprint-birds-eye.png" width="236px" caption="A 2D birds-eye view of the CAD model for the DSBGA-8 component package."  >}}

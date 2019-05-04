@@ -86,9 +86,13 @@ The designator `D` can be used for most diodes. Sometimes `Z` is used for a Zene
 
 * `D`
 
-Recommended symbol(s):
+<u>Recommended symbol(s):</u>
 
-{{< img src="led-schematic-symbol.png" caption="The schematic symbol for an LED." width="200px" >}}
+<div class="hbox">
+  {{< img src="diode-general-purpose-d1-schematic-symbol.png" caption="The recommended schematic symbol for an general purpose diode." width="200px" >}}
+  {{< img src="diode-led-d1-schematic-symbol.png" caption="The recommended schematic symbol for an LED." width="200px" >}}
+  {{< img src="diode-zener-d1-schematic-symbol.png" caption="The recommended schematic symbol for a Zener diode." width="200px" >}}
+</div>
 
 ### Fuse/Fuse Holders (F, XF)
 
