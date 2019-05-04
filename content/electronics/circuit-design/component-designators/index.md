@@ -38,9 +38,10 @@ There are a number of different schematic symbols for an antenna, but they all l
 
 <u>Recommended schematic symbols(s):</u>
 
-{{< img src="antenna-schematic-symbol.png" caption="A schematic symbol for an antenna." width="100px" >}}
-
-{{< img src="antenna-schematic-symbol-2.png" caption="Another schematic symbol for an antenna." width="100px" >}}
+<div class="hbox">
+  {{< img src="antenna-schematic-symbol.png" caption="A schematic symbol for an antenna." width="100px" >}}
+  {{< img src="antenna-schematic-symbol-2.png" caption="Another schematic symbol for an antenna." width="100px" >}}
+</div>
 
 ### Assemblies (A)
 
@@ -62,7 +63,7 @@ The designator `BT` is commonly used for a battery. The schematic symbol shown b
 
 {{< img src="battery-schematic-symbol-bt1.png" width="200px" caption="The schematic symbol for a battery." >}}
 
-### Capacitors (C)
+### Capacitors \(C)
 
 `C` is the recommended designator for capacitors (both polarised and non-polarised). Sometimes you will see `VC` used for a variable capacitor (these are not common). I recommend using two different schematic symbols, flat plates for a non-polarised capacitor, and one plate which is curved for a polarised capacitor.
 
@@ -72,9 +73,10 @@ The designator `BT` is commonly used for a battery. The schematic symbol shown b
 
 <u>Recommended schematic symbol(s):</u>
 
-{{< img src="non-polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a non-polarised capacitor." width="200px" >}}
-
-{{< img src="polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a polarised capacitor." width="200px" >}}
+<div class="hbox">
+  {{< img src="non-polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a non-polarised capacitor." width="200px" >}}
+  {{< img src="polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a polarised capacitor." width="200px" >}}
+</div>
 
 ### Diodes (D)
 
@@ -224,7 +226,11 @@ Sometimes you will see `LDR` for light-dependent resistors. For more info see th
 
 <u>Recommended schematic symbol(s):</u>
 
+<div class="hbox">
+{{< img src="resistor-schematic-symbol-r1.png" caption="The schematic symbol for a standard resistor." width="200px" >}}
+
 {{< img src="variable-resistor-potentiometer-schematic-symbol.png" caption="The schematic symbol for a variable resistor (potentiometer)." width="200px" >}}
+</div>
 
 ### Switches (S, SW)
 
@@ -262,8 +268,10 @@ Sometimes you will see `LDR` for light-dependent resistors. For more info see th
 
 <u>Recommended schematic symbol(s):</u>
 
-{{< img src="n-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for an N-channel MOSFET." width="200px" >}}
-{{< img src="p-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for a P-channel MOSFET." width="200px" >}}
+<div class="hbox">
+  {{< img src="n-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for an N-channel MOSFET." width="200px" >}}
+  {{< img src="p-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for a P-channel MOSFET." width="200px" >}}
+</div>
 
 ### Test Point (TP)
 
