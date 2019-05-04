@@ -40,10 +40,13 @@ body {
     counter-reset: h2counter;
 }
 
+.content h2 {
+    counter-reset: h3counter;
+}
+
 .content h2:before {
     content: counter(h2counter) ".\0000a0\0000a0";
     counter-increment: h2counter;
-    counter-reset: h3counter;
 }
 
 .content h3:before {

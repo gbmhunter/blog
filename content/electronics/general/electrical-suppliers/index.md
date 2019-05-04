@@ -3,6 +3,7 @@ author: gbmhunter
 date: 2011-09-05
 draft: false
 tags: [ "electronics", "engineering", "supplier", "batteries", "hardware", "PCB", "EMS", "components" ]
+title: Electrical Suppliers
 type: page
 ---
 

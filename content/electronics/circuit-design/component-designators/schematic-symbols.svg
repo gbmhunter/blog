@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.9195959"
-     inkscape:cx="54.398617"
-     inkscape:cy="47.240654"
+     inkscape:zoom="3.959798"
+     inkscape:cx="187.45723"
+     inkscape:cy="97.833968"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -142,5 +142,163 @@
          x="11.830696"
          y="278.86865"
          style="font-size:4.93888903px;stroke-width:0.26458332">BT1</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.51639777;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 55,282 H 30"
+       id="path3715-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="stroke-width:0.1;stroke-miterlimit:4;stroke-dasharray:none;fill:none"
+       id="rect4655"
+       width="12"
+       height="4"
+       x="32.000004"
+       y="280" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.51639777;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4660"
+       width="15"
+       height="4"
+       x="35"
+       y="280" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="35.138359"
+       y="278.34113"
+       id="text4638-8"><tspan
+         sodipodi:role="line"
+         id="tspan4636-3"
+         x="35.138359"
+         y="278.34113"
+         style="font-size:3.52777767px;stroke-width:0.26458332">F1</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.46188024;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4660-7"
+       width="20"
+       height="20"
+       x="30"
+       y="252" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 30,257 H 25"
+       id="path3715-8-3"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 30,262 H 25"
+       id="path3715-8-3-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 30,267 H 25"
+       id="path3715-8-3-8-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 55,257 H 50"
+       id="path3715-8-3-8-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 55,262 H 50"
+       id="path3715-8-3-8-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 55,267 H 50"
+       id="path3715-8-3-8-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="30.900478"
+       y="258.0206"
+       id="text4638-8-0"><tspan
+         sodipodi:role="line"
+         id="tspan4636-3-3"
+         x="30.900478"
+         y="258.0206"
+         style="font-size:3.52777767px;stroke-width:0.26458332">Vcc</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="41.448582"
+       y="268.23236"
+       id="text4638-8-0-2"><tspan
+         sodipodi:role="line"
+         id="tspan4636-3-3-6"
+         x="41.448582"
+         y="268.23236"
+         style="font-size:3.52777767px;stroke-width:0.26458332">GND</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="30.958252"
+       y="263.08514"
+       id="text4638-8-0-9"><tspan
+         sodipodi:role="line"
+         id="tspan4636-3-3-9"
+         x="30.958252"
+         y="263.08514"
+         style="font-size:3.52777767px;stroke-width:0.26458332">R1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="41.043156"
+       y="258.13611"
+       id="text4638-8-0-9-4"><tspan
+         sodipodi:role="line"
+         id="tspan4636-3-3-9-7"
+         x="41.043156"
+         y="258.13611"
+         style="font-size:3.52777767px;stroke-width:0.26458332">Vout</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="40.33881"
+       y="263.27429"
+       id="text4638-8-0-9-4-4"><tspan
+         sodipodi:role="line"
+         id="tspan4636-3-3-9-7-9"
+         x="40.33881"
+         y="263.27429"
+         style="font-size:3.52777767px;stroke-width:0.26458332">TIME</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="30.822355"
+       y="268.36145"
+       id="text4638-8-0-9-2"><tspan
+         sodipodi:role="line"
+         id="tspan4636-3-3-9-2"
+         x="30.822355"
+         y="268.36145"
+         style="font-size:3.52777767px;stroke-width:0.26458332">NC</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="30.148659"
+       y="251.35368"
+       id="text4638-8-9"><tspan
+         sodipodi:role="line"
+         id="tspan4636-3-6"
+         x="30.148659"
+         y="251.35368"
+         style="font-size:3.52777767px;stroke-width:0.26458332">U1</tspan></text>
   </g>
 </svg>
