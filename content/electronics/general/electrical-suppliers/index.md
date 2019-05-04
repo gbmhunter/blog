@@ -365,7 +365,7 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
             <td>No</td>
             <td>Australia</td>
             <td>Australia, New Zealand</td>
-            <td>Manufacturer of small-runs of PCB's, usually for a prototyping or small manufacturer service. Very good customer support. Also produce/supply membranes, decals, stencils and LCD screens.</td>
+            <td>Manufacturer of small-runs of PCBs, usually for a prototyping or small manufacturer service. Very good customer support. Also produce/supply membranes, decals, stencils and LCD screens.</td>
         </tr>
         <tr>
             <td>PCB Zone ([website](http://www.pcbzone.net/))</td>

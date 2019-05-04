@@ -8,7 +8,7 @@ type: "page"
 
 ## PCB Design Tools
 
-Here's a list of some useful design tools which come in useful when making PCB's.
+Here's a list of some useful design tools which come in useful when making PCBs.
 
 <table>
   <thead>
@@ -106,9 +106,9 @@ Typical copper to board-edge clearance : 0.3048mm (12mill) This is the closest y
 
 The copper to copper and copper width clearance are usually have the same value. This is commonly called the 'Track and Gap' clearance. **Typical Values:**
 
-* 0.5mm - Homemade PCB's
-* 0.2mm - Professionally printed PCB's
-* 0.1mm - High-end PCB's
+* 0.5mm - Homemade PCBs
+* 0.2mm - Professionally printed PCBs
+* 0.1mm - High-end PCBs
 
 ## Multi-Layer Routing
 

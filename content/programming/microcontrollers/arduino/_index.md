@@ -8,7 +8,7 @@ type: page
 
 ## Overview
 
-The Arduino is a low-cost, easy-to-use, microcontroller development environment. It consists of a range of hardware PCB's, and the Arduino software and supporting libraries.
+The Arduino is a low-cost, easy-to-use, microcontroller development environment. It consists of a range of hardware PCBs, and the Arduino software and supporting libraries.
 
 {{< img src="arduino-uno-r3-photo.jpg" width="425px" caption="A photo of the Arduino Uno (revision r3). Image from https://www.wikimedia.org/."  >}}
 

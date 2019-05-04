@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Communication Protocols" ]
 date: 2011-09-05
 draft: false
+tags: [ "electronics", "communication protocols", "USB", "master", "slave", "encoding", "bus", "OTG", "TPL" ]
 title: "USB Protocol"
 type: "page"
 ---
@@ -47,7 +49,7 @@ Embedded hosts and OTG systems MUST have a TPL.
 
 ## Embedded Hosts (EH)
 
-An Embedded Host (EH) is a host that supports a limited number of peripheral types, rather than a conventional USB host that supports the full range of peripherals. The are typically implemented in embedded systems (PCB's with microcontrollers, FPGA's) while conventional hosts are found on desktop/laptop computers. Note that embedded computers, such as the RaspberryPi and BeagleBone, are Conventional Hosts, not Embedded Hosts.
+An Embedded Host (EH) is a host that supports a limited number of peripheral types, rather than a conventional USB host that supports the full range of peripherals. The are typically implemented in embedded systems (PCBs with microcontrollers, FPGAs) while conventional hosts are found on desktop/laptop computers. Note that embedded computers, such as the RaspberryPi and BeagleBone, are Conventional Hosts, not Embedded Hosts.
 
 The current requirement for an Embedded Host is much less restricted than that for a Conventional Host. It has to:
 

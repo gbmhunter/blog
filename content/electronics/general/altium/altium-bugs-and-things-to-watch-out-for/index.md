@@ -232,7 +232,7 @@ On the surface, it seems like Altium gives you the option to hide pins on a sche
 
 {{< img src="altium-schematic-symbol-pin-properties-highlighting-hidden-pin-connect-to.png" width="486px" caption="The 'Pin Properties' window in the Altium schematic symbol library editor. The 'Hide' and 'Connect To' fields give the allusion you can hide a pin and connect it to another, visible pin."  >}}
 
-This would be very useful for certain component/package combinations which use multiple pins for the same purpose. Such an example are MOSFET's in the SOIC-8N component package. The standard pinout for connecting the three MOSFET terminals to the 8-pin SOIC-8N package is source = pins 1 to 3, gate = pin 4, drain = pins 5 to 8.
+This would be very useful for certain component/package combinations which use multiple pins for the same purpose. Such an example are MOSFETs in the SOIC-8N component package. The standard pinout for connecting the three MOSFET terminals to the 8-pin SOIC-8N package is source = pins 1 to 3, gate = pin 4, drain = pins 5 to 8.
 
 {{< img src="p-channel-mosfet-schematic-symbol-altium-soic-8-hidden-pins-annotated.png" width="881px" caption="The schematic symbol of a P-channel MOSFET in the Altium schematic symbol editor. The particular MOSFET is in a SOIC-8N (8-pin) package, and I have attempted to hide the extra pins to keep the symbol looking clean."  >}}
 

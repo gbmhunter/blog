@@ -35,8 +35,9 @@ Ileakage = 5nA (typ), 90nA (max)
 
 The Intersil ISL43L410 is a low on-resistance, low-voltage single-supply, DPDT analogue switch. One of its main selling points is it's low power consumption:
 
-<div>$$ I_q = 25nA (typ), 40nA (max) $$</div>
-<div>$$ I_{leakage} = 5nA (typ), 90nA (max) $$</div>
+<p>$$ I_q = 25nA (typ), 40nA (max) $$</p>
+
+<p>$$ I_{leakage} = 5nA (typ), 90nA (max) $$</p>
 
 {{< img src="intersil-isl43l410-analogue-switch-functional-diagram.png" width="256px" caption="Functional diagram of the Intersil ISL43L410 analogue switch. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf."  >}}
 

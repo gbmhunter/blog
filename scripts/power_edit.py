@@ -57,9 +57,14 @@ class PowerEdit:
             file_path: Absolute path to the file you wish to perform find/replace on.
             regex_str: The regex pattern (as a string) that you want to match against.
             replace: If replace is a string, the matched pattern will be replaced directly with this
-                string. If replace is a function, the function will be called, passing in the 
-                found text as the first and only parameter. The found text will be replaced with 
-                whatever the function returns.
+                string. If replace is a function, the function will be called.
+                The function must match one of the following definitions:
+                    def replace_fn(found_text)
+                    def replace_fn(found_text, file_path)
+                    def replace_fn(found_text, file_path, regex_match)
+                The found text will be replaced with  whatever the function returns (must be a
+                
+                string)
             multiline: If True, matching will be performed with the re.MULTILINE and re.DOTALL flags
                 enabled.
         Returns:
@@ -95,6 +100,8 @@ class PowerEdit:
                     replacement_text = replace(group)
                 elif len(sig.parameters) == 2:
                     replacement_text = replace(group, file_path)
+                elif len(sig.parameters) == 3:
+                    replacement_text = replace(group, file_path, match)
                 else:
                     raise ValueError('Provided function does not have the correct number of parameters.')
 

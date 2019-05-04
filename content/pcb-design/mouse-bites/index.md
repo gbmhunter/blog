@@ -21,4 +21,4 @@ I use the following symbol to define mouse bites on schematics:
 
 ## PCB Considerations
 
-There is no routing around the mousebite (see the break in the purple line in the image below), resulting in the PCB's staying together. However, the drilled holes makes it easy to snap the PCBs out of the panel once the boards have been populated and soldered.
+There is no routing around the mousebite (see the break in the purple line in the image below), resulting in the PCBs staying together. However, the drilled holes makes it easy to snap the PCBs out of the panel once the boards have been populated and soldered.

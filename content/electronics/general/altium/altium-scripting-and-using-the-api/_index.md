@@ -17,7 +17,7 @@ Lots of third-party scripts can be downloaded from the Google Code Project, foun
 
 Unfortunately, the original scripts that used to be included with Altium disappeared from Altium Designer 10. I've uploaded a zip of all these scripts that can be downloaded [here](/docs/The-Original-Altium-Scripts-All-Languages.zip).
 
-Also, I have a project called [AltiumScriptCentral which can be downloaded from GitHub](https://github.com/gbmhunter/AltiumScriptCentral). It has a collection of useful scripts for increasing productivity and validating PCB's before being sent of for manufacturing. They are all written in VBScript, and can be used as code examples to write your own.
+Also, I have a project called [AltiumScriptCentral which can be downloaded from GitHub](https://github.com/gbmhunter/AltiumScriptCentral). It has a collection of useful scripts for increasing productivity and validating PCBs before being sent of for manufacturing. They are all written in VBScript, and can be used as code examples to write your own.
 
 ## How To Write Your Own Scripts
 

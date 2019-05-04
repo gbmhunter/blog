@@ -276,7 +276,7 @@ See the [Ferrite Beads page](/electronics/components/ferrite-beads).
 
 ## Inductor Kickback
 
-Inductor kickback is when an inductor the current through an inductor is quickly stopped, usually by making an open circuit. Because inductors "want to keep the current flowing", they generate a very large voltage spike in attempt to keep the current going. This large voltage spike can jump switch gaps, fry MOSFET's, destroy other sensitive circuitry, and give people dangerous shocks.
+Inductor kickback is when an inductor the current through an inductor is quickly stopped, usually by making an open circuit. Because inductors "want to keep the current flowing", they generate a very large voltage spike in attempt to keep the current going. This large voltage spike can jump switch gaps, fry MOSFETs, destroy other sensitive circuitry, and give people dangerous shocks.
 
 A more technical way of looking a kickback is by analysing the [voltage-inductance equation](/electronics/components/inductors#inductance-equation). From this is should be obvious that the inductors voltage is proportional to the change in current. Making an inductor open-circuit is creating a very large change in current, and hence it produces a very large voltage spike.
 

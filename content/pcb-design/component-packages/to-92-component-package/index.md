@@ -59,39 +59,43 @@ type: page
 <td >Thermal Resistance
 </td>
 <td>
-    <ul>
-        <li>\(220^{\circ}{\rm C}/W\) (package only)</li>
-        <li>\(175^{\circ}{\rm C}/W\) (plated through-holes)</li>
-        <li>\(145^{\circ}{\rm C}/W\) (plated through-holes and \(0.25inch^2\) pad per lead)</li>
-    </ul>
-</td></tr><tr >
-<td >Land Area
+  <ul>
+    <li>\(220^{\circ}{\rm C}/W\) (package only)</li>
+    <li>\(175^{\circ}{\rm C}/W\) (plated through-holes)</li>
+    <li>\(145^{\circ}{\rm C}/W\) (plated through-holes and \(0.25inch^2\) pad per lead)</li>
+  </ul>
 </td>
-<td >n/a
-</td></tr><tr >
-<td >Height
-</td>
-<td >10mm (typical, including body and enough space to get the through-hole legs mounted in the PCB).
-</td></tr><tr >
-<td >3D Models
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Common Uses
-</td>
+</tr>
+<tr >
+<td >Land Area</td>
+<td >n/a</td>
+</tr>
+<tr >
+<td >Height</td>
+<td >10mm (typical, including body and enough space to get the through-hole legs mounted in the PCB).</td>
+</tr>
+<tr >
+<td >3D Models</td>
+<td >n/a</td>
+</tr>
+<tr >
+<td >Common Uses</td>
 <td>
-    <ul>
-        <li>BJTs</li>
-        <li>MOSFETs</li>
-        <li>Linear regulators</li>
-        <li>Active linear analogue temperature sensors</li>
-        <li>Digital 1-wire temperature sensors</li>
-    </ul>
-</td></tr></tbody></table>
+  <ul>
+    <li>BJTs</li>
+    <li>MOSFETs</li>
+    <li>Linear regulators</li>
+    <li>Active linear analogue temperature sensors</li>
+    <li>Digital 1-wire temperature sensors</li>
+  </ul>
+</td>
+</tr>
+</tbody>
+</table>
 
 ## Usage
 
-TO-92 is a very common package for low-power through-hole transistors, MOSFET's, and linear regulators.
+TO-92 is a very common package for low-power through-hole transistors, MOSFETs, and linear regulators.
 
 ## Variants
 

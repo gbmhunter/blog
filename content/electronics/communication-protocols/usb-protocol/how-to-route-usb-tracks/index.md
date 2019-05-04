@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Communication Protocols" ]
 date: 2015-10-05
 draft: false
+tags: [ "electronics", "communication protocols", "USB", "routing", "PCBs" ]
 title: How To Route USB Tracks
 type: page
 ---
@@ -46,14 +48,14 @@ From this, we can calculate the wavelength of an 87.5MHz signal travelling down 
 Thus, the minimum wavelength of the USB full-speed signal is 1.65m, and the characteristic impedance of the track is only important if the total track length is greater than 165mm.
 
 <table>
-    <thead>
-        <tr>
-            <th>USB Standard</th>
-            <th>Minimum Rise Time, \( t_r \)</th>
-            <th>Track Length At Which Impedance Matters</th>
-        </tr>
-    </thead>
-    <tbody>
+  <thead>
+    <tr>
+      <th>USB Standard</th>
+      <th>Minimum Rise Time, \( t_r \)</th>
+      <th>Track Length At Which Impedance Matters</th>
+    </tr>
+  </thead>
+  <tbody>
 <tr>
 <td >2.0 Low-speed (1.5Mb/s)
 </td>
@@ -74,7 +76,7 @@ Thus, the minimum wavelength of the USB full-speed signal is 1.65m, and the char
 <td >20.5mm
 </td></tr></tbody></table>
 
-As you can see from the above table, for most PCB's designs, you don't really have to worry about USB2.0 low-speed tracks, you might be concerned about really long USB2.0 full-speed tracks, and you have to control the impedance for all but the smallest USB2.0 high-speed tracks.
+As you can see from the above table, for most PCBs designs, you don't really have to worry about USB2.0 low-speed tracks, you might be concerned about really long USB2.0 full-speed tracks, and you have to control the impedance for all but the smallest USB2.0 high-speed tracks.
 
 For more information, see the [Impedance Controlled Routing page](/pcb-design/impedance-controlled-routing) in the [PCB Design section](/pcb-design) of this website.
 
@@ -83,13 +85,13 @@ For more information, see the [Impedance Controlled Routing page](/pcb-design/im
 The impedance depends on the USB standard.
 
 <table>
-    <thead>
-        <tr>
-            <th>USB Standard</th>
-            <th>Differential Impedance</th>
-            <th>Single-ended Impedance</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>USB Standard</th>
+      <th>Differential Impedance</th>
+      <th>Single-ended Impedance</th>
+    </tr>
+  </thead>
 <tbody>
 <tr >
 <td >1.0
@@ -109,4 +111,7 @@ The impedance depends on the USB standard.
 <td >\( 90 \Omega \pm 15\% \)
 </td>
 <td > \( 45 \Omega \pm 10\% \)
-</td></tr></tbody></table>
+</td>
+</tr>
+</tbody>
+</table>

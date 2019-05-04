@@ -20,7 +20,7 @@ The schematic the prototype board was made from.
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/half-bridge-schematic-for-eda-forums.jpg"   width="320px" >}}
 
-Testing it with a motor. I was able to stand on it for short times! (last time the MOSFET's blew).
+Testing it with a motor. I was able to stand on it for short times! (last time the MOSFETs blew).
 
 {{< figure src="/images/electronics-electricskateboard-secondprototype/2012-02-18-17-08-37.jpg"   width="320px" >}}
 

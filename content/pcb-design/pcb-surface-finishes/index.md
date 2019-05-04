@@ -51,7 +51,7 @@ Immersion tin is
 
 * Short shelf-life (3-6 months)
 
-The biggest issue with ISn is that the copper and tin layers slowly diffuse into one another over time. This creates "tin wiskers", and limits the shelf-life of ISn PCB's (before soldering) to about 3-6 months.
+The biggest issue with ISn is that the copper and tin layers slowly diffuse into one another over time. This creates "tin wiskers", and limits the shelf-life of ISn PCBs (before soldering) to about 3-6 months.
 
 ## Immersion Silver (IAg)
 
@@ -70,7 +70,7 @@ Immersion silver is good alternative to ENIG.
 * Finger-grease and solvents can cause wetting problems
 * Gets attacked in acidic and sulphur environments
 
-PCB's plated with IAg must not be handled directly or cleaned with a solvent prior to soldering, as finger-grease and solvents can cause wetting problems.
+PCBs plated with IAg must not be handled directly or cleaned with a solvent prior to soldering, as finger-grease and solvents can cause wetting problems.
 
 ## Electroless Nickel Immersion Gold (ENIG)
 

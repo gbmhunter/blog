@@ -241,7 +241,7 @@ And built this test circuit on breadboard. There is a PSoC development kit in th
 
 ## The Final PCB Design
 
-Once the electronic design had been verified with the prototypes, it was time to get some professional PCB's made. The PCB's were designed in Altium. I used a PSoC 5 [microcontroller](http://localhost/?q=node/56) from Cypress for the final designs.
+Once the electronic design had been verified with the prototypes, it was time to get some professional PCBs made. The PCBs were designed in Altium. I used a PSoC 5 [microcontroller](http://localhost/?q=node/56) from Cypress for the final designs.
 
 <table>
 <tbody >
@@ -298,21 +298,21 @@ They can be downloaded [here](/images/2011/09/Half-Bridge-Driver-v1.1-Schematics
 
 ## PCB Manufacturing
 
-Once the PCB's were designed, I had them etched by [PCB Cart](http://www.pcbcart.com/) (see the [Electrical Suppliers page](/electronics/general/electrical-suppliers/)). The PCB's came back in a colour what I like to call 'spew orange', which was less than ideal, since I wanted orange.
+Once the PCBs were designed, I had them etched by [PCB Cart](http://www.pcbcart.com/) (see the [Electrical Suppliers page](/electronics/general/electrical-suppliers/)). The PCBs came back in a colour what I like to call 'spew orange', which was less than ideal, since I wanted orange.
 
-{{< figure src="/images/electronics-electricskateboard/2012-04-04-15-45-02.jpg" caption="This photo shows the gross orange colour of the electric skateboard PCB's compared to the kind of yellow I was expecting."  width="500px" >}}
+{{< figure src="/images/electronics-electricskateboard/2012-04-04-15-45-02.jpg" caption="This photo shows the gross orange colour of the electric skateboard PCBs compared to the kind of yellow I was expecting."  width="500px" >}}
 
 I got to the point where PCB Cart would redo them in red if I paid for half the manufacturing cost. They came back with a much better colour scheme (and you can actually read the silkscreen).
 
 {{< figure src="/images/electronics-electricskateboard/2012-04-25-13-28-16.jpg" caption=" "  width="500px" >}}
 
-See the post [Electric Skateboard PCB’s Arrived In The Wrong Colour](/posts/updates/2012/04-11-electric-skateboard-pcbs-arrived-in-the-wrong-colour/) for more info. Most of the components were populated by hand, with the help of a infrared rework station for soldering the PSoC 5 chips (in TQFP packages).
+See the post [Electric Skateboard PCBs Arrived In The Wrong Colour](/posts/updates/2012/04-11-electric-skateboard-pcbs-arrived-in-the-wrong-colour/) for more info. Most of the components were populated by hand, with the help of a infrared rework station for soldering the PSoC 5 chips (in TQFP packages).
 
 {{< figure src="/images/electronics-electricskateboard/2012-04-27-18-48-39.jpg" caption=" "  width="500px" >}}
 
 The hardest things to solder were the transistors for the speaker h-bridge. They were in the tiny 6-pin packages shown below.
 
-{{< figure src="/images/electronics-electricskateboard/2012-05-14-18-33-17.jpg" caption="One of the hardest packages to solder on the electric skateboard PCB's, these tiny 6-pin packages were for the full-bridge transistors that drove the speaker."  width="500px" >}}
+{{< figure src="/images/electronics-electricskateboard/2012-05-14-18-33-17.jpg" caption="One of the hardest packages to solder on the electric skateboard PCBs, these tiny 6-pin packages were for the full-bridge transistors that drove the speaker."  width="500px" >}}
 
 I designed the half-bridge motor controller high-current tracks to have no soldermask. This enabled me to thicken up the tracks with solder.
 

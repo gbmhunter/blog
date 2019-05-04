@@ -10,7 +10,10 @@ x_max = 3
 num_frames = 100
 
 # Create 2 plots stacked vertically which share an x-axis
-fig, ax = plt.subplots(2, sharex=True)
+# Plot 0: f(t), g(t)
+# Plot 1: f(t)*g(t)
+# Plot 2: (f \ast g)(t)
+fig, ax = plt.subplots(3, sharex=True)
 
 ax[0].set_xlim((x_min, x_max))
 ax[0].set_ylim((-0.5, 1.5))
@@ -22,26 +25,35 @@ ax[1].set_ylim([-0.5, 1.5])
 ax[1].set_xlabel('$\\tau$')
 # ax[1].set_ylabel('$(f \\ast g)(\\tau)$')
 
+ax[2].set_xlim([x_min, x_max])
+ax[2].set_ylim([-0.5, 1.5])
+ax[2].set_xlabel('$\\tau$')
+
 line_fx, = ax[0].plot([], [], lw=2, label='$f(\\tau)$')
 line_gx, = ax[0].plot([], [], lw=2, label='$g(t - \\tau)$')
+
+# Add vertical lines for time t to each plot
 line_t_ax0 = ax[0].axvline(0, color='black')
 line_t_ax1 = ax[1].axvline(0, color='black')
+line_t_ax2 = ax[2].axvline(0, color='black')
 
 # Draw a thick line at y=0
 ax[0].plot([x_min, x_max], [0, 0], lw=3, color='black')
 
-# Create a rectangle to show the shared area of f(t) and g(t)
+# Create a rectangle to show the area of f(t)*g(t)
 rect = mpatches.Rectangle([0, 0], 1, 1, ec="none", fc='C2')
-ax[0].add_patch(rect)
+ax[1].add_patch(rect)
 
+line_fmultg, = ax[1].plot([], [], lw=2, label='$f(\\tau)g(\\tau)$', color='C3')
 
-line_conv, = ax[1].plot([], [], lw=2, color='C2', label='$(f \\ast g)(t)$')
+line_conv, = ax[2].plot([], [], lw=2, color='C2', label='$(f \\ast g)(t)$')
 conv = []
 conv_t = []
 
 
 ax[0].legend(loc='upper right')
 ax[1].legend(loc='upper right')
+ax[2].legend(loc='upper right')
 
 ax[0].set_title('Convolution of Two Box Car Functions')
 
@@ -67,6 +79,8 @@ def animate(i):
     # Draw unit step function (reversed)
     g_x = np.where((x > t - 1) & (x < t), 1, 0)
 
+    f_mult_g = f_x*g_x
+
     conv_t.append(t)
 
     if t >= 0 and t < 1.0:
@@ -81,8 +95,10 @@ def animate(i):
 
     line_t_ax0.set_data([t, t], [0, 1])
     line_t_ax1.set_data([t, t], [0, 1])
+    line_t_ax2.set_data([t, t], [0, 1])
     line_fx.set_data(x, f_x)
     line_gx.set_data(x, g_x)
+    line_fmultg.set_data(x, f_mult_g)
     line_conv.set_data(conv_t, np.array(conv))
     ax[0].set_xticks([t])
     ax[0].set_xticklabels(['$t$'])

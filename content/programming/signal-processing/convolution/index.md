@@ -26,8 +26,7 @@ Convolution can be thought of as a measure of the amount of overlap of one funct
 </p>
 
 {{% warning %}}
-It is important to notice the distinction between `\(t\)` (standard letter t) and `\(\tau\)` (lower-case tau). t is a constant (i.e. we are going to produce an equation which evaluates the convolution at time `\(t\)`, while `\(\tau\)` is the variable which you are integrating with. `\(\tau\)` will disappear from the convolution function as a result of the integration, while `\(t\)` will remain, allowing us to calculate the value of the convolution at any time `\(t\)`.
-
+It is important to notice the distinction between `\(t\)` (standard letter t) and `\(\tau\)` (lower-case tau). t is a constant (i.e. we are going to produce an equation which evaluates the convolution at time `\(t\)`, while `\(\tau\)` is the variable which you are integrating with (it is introduced by the definition of convolution). `\(\tau\)` will disappear from the convolution function when the limits are substituted into the integrated function (a _definite integral_), while `\(t\)` will remain, allowing us to calculate the value of the convolution at any time `\(t\)`.
 {{% /warning %}}
 
 The result will be another function which varies with time.
@@ -117,7 +116,7 @@ t, &\text{for $0 \le t < 1$} \\
 \end{cases}
 $$</p>
 
-{{% img src="convolution-two-box-car-functions.gif" width="700px" caption="An animated .gif showing the convolution of two box-car functions. The value of the convolution function at any time t (bottom line in red) is the amount area shown in red in the top plot, which mathematically is the integral of f(t)*g(t)." %}}
+{{% img src="convolution-two-box-car-functions.gif" width="700px" caption="An animated .gif showing the convolution of two box-car functions. The value of the convolution function at any time t (bottom line in red) is the amount area shown in red in the middle plot, which is the area under the curve of f(t)g(t) (the two waveforms multiplied together)." %}}
 
 ## Convolution With Unit Impulse (Dirac Delta) Function
 

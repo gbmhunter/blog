@@ -32,8 +32,8 @@ type: "page"
 ### Schematics Components
 
 * Do not rely on standard Altium libraries (pinouts and footprints can be wrong). Use Beta Solutions libraries and add to it. Make sure variable labelling is consistent.
-* P-Ch [MOSFET's](/electronics/components/transistors/mosfets/) have their SOURCE connected to the high-side voltage (e.g. Vcc)
-* N-Ch [MOSFET's](/electronics/components/transistors/mosfets/) have their SOURCE connected to the low-side voltage (e.g. ground)
+* P-Ch [MOSFETs](/electronics/components/transistors/mosfets/) have their SOURCE connected to the high-side voltage (e.g. Vcc)
+* N-Ch [MOSFETs](/electronics/components/transistors/mosfets/) have their SOURCE connected to the low-side voltage (e.g. ground)
 * Make sure voltages are not applied to any pins of ICs that are shut-down by removing power (unless the are designed to handle it). Leakage currents can occur.
 * Systematically check BOM with every component on schematics to weed out labelling errors and component variant problems.
 
