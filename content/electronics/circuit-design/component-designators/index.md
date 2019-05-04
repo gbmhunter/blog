@@ -103,7 +103,7 @@ Recommended symbol(s):
 
 ### Ferrite Beads (FB, FEB)
 
-`FB` is the designator used for ferrite beads. Sometimes the designator `FEB` is used instead.
+`FB` is the designator used for ferrite beads. Sometimes the designator `FEB` is used instead. To learn more, see the {{% link text="Ferrite Beads page" src="/electronics/components/ferrite-beads/index.md" %}}.
 
 <u>Recommended designator(s):</u>
 
@@ -214,7 +214,7 @@ A plug/male connector. Also defined in IEEE 315 as the most moving part of a con
 
 ### Resistors (R, VR)
 
-Sometimes you will see `LDR` for light-dependent resistors.
+Sometimes you will see `LDR` for light-dependent resistors. For more info see the {{< link text="Resistors page" src="/electronics/components/resistors/index.md" >}}
 
 <u>Recommended designator(s):</u>
 

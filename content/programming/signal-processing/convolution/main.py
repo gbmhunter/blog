@@ -10,8 +10,8 @@ x_max = 3
 num_frames = 100
 
 # Create 2 plots stacked vertically which share an x-axis
-# Plot 0: f(t), g(t)
-# Plot 1: f(t)*g(t)
+# Plot 0: f(tau), g(t-tau)
+# Plot 1: f(tau)*g(t-tau)
 # Plot 2: (f \ast g)(t)
 fig, ax = plt.subplots(3, sharex=True)
 
@@ -19,6 +19,7 @@ ax[0].set_xlim((x_min, x_max))
 ax[0].set_ylim((-0.5, 1.5))
 ax[0].set_xlabel('$\\tau$')
 # ax[0].set_ylabel('$f(\\tau), g(\\tau)$')
+
 
 ax[1].set_xlim([x_min, x_max])
 ax[1].set_ylim([-0.5, 1.5])
@@ -38,13 +39,15 @@ line_t_ax1 = ax[1].axvline(0, color='black')
 line_t_ax2 = ax[2].axvline(0, color='black')
 
 # Draw a thick line at y=0
-ax[0].plot([x_min, x_max], [0, 0], lw=3, color='black')
+# ax[0].plot([x_min, x_max], [0, 0], lw=3, color='black')
+
+time_text = fig.text(0.1, 0.90, '$t = 0$')
 
 # Create a rectangle to show the area of f(t)*g(t)
 rect = mpatches.Rectangle([0, 0], 1, 1, ec="none", fc='C2')
 ax[1].add_patch(rect)
 
-line_fmultg, = ax[1].plot([], [], lw=2, label='$f(\\tau)g(\\tau)$', color='C3')
+line_fmultg, = ax[1].plot([], [], lw=2, label='$f(\\tau)g(t - \\tau)$', color='C3')
 
 line_conv, = ax[2].plot([], [], lw=2, color='C2', label='$(f \\ast g)(t)$')
 conv = []
@@ -100,8 +103,12 @@ def animate(i):
     line_gx.set_data(x, g_x)
     line_fmultg.set_data(x, f_mult_g)
     line_conv.set_data(conv_t, np.array(conv))
-    ax[0].set_xticks([t])
-    ax[0].set_xticklabels(['$t$'])
+
+    xticks = list(range(x_min, x_max + 1))
+    ax[0].set_xticks(xticks + [t])
+    ax[0].set_xticklabels(xticks + ['$t$'])
+
+    time_text.set_text(f'$t = {t:0.1f}$')
     return line_t_ax0, line_t_ax1, line_fx, line_gx, line_conv, rect
 
 anim = FuncAnimation(fig, animate, init_func=init,

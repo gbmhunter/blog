@@ -54,9 +54,9 @@ Two inductances which are in close proximity they can couple with each, this is 
 
 ## Inductors In Series And In Parallel
 
-The behaviour of inductors when connected together in series and in parallel is exactly the same behaviour resistors exhibit, and exactly the opposite behvaiour of what capacitors exhibit.
+The behaviour of inductors when connected together in series and in parallel is exactly the same behaviour resistors exhibit, and exactly the opposite behaviour of what capacitors exhibit.
 
-## Inductors In Parallel
+### Inductors In Parallel
 
 When two inductors are connected in parallel, the equivalent total inductance follows the inverse law, as long as there is no **mutual coupling** of their magnetic fields:
 
@@ -70,7 +70,7 @@ The following diagram shows this:
 
 {{< img src="inductors-in-parallel-with-equation.png" width="608px" caption="Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image."  >}}
 
-## Inductors In Series
+### Inductors In Series
 
 The equivalent inductance of two inductors connected in series is the sum of the individual inductances, as long as there is no **mutual coupling** of their magnetic fields.
 
@@ -78,45 +78,45 @@ The equivalent inductance of two inductors connected in series is the sum of the
 
 This is shown in the diagram below:
 
-{{< img src="inductor-in-series-with-equation.png" width="609px" caption="Two inductors in series are the equivalent of one inductor whose inductance is the sum of the indiviual inductances."  >}}
+{{< img src="inductor-in-series-with-equation.png" width="609px" caption="Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances." >}}
 
 ## Common Core Materials
 
 <table>
-    <thead>
-        <tr>
-            <th>Core Material</th>
-            <th>Uses</th>
-        </tr>
-    </thead>
-<tbody >
-<tr >
-<td >Air core</td>
-<td >Air core is used to describe any inductor which does not use a magnetic material for it's core (so they may infact, have something other than air for their core). Used in low inductance, RF applications because they lack any magnetic core to boost their inductance, but at the same time benefit from smaller core losses which can be significant in the RF spectrum. Go to the Air-Cored Inductors section for more info.</td>
-</tr>
-<tr >
-<td >Powdered Ferrite Core</td>
-<td >The powder is compressed into blocks before using (but don't confuse these with solid ferrite core inductors). Very lossy (resistive) at high frequencies. Used to make ferrite beads.</td>
-</tr>
-<tr >
-<td >Solid Iron (or Steel) Core</td>
-<td >Used in low resistance, high inductance applications. Has a higher saturation current than air-cored inductors, but lower one than powdered iron cores.</td>
-</tr>
-<tr >
-<td >Powerdered Iron Core</td>
-<td >Powered iron core inductors have a **distributed air gap**, which gives them a higher stauration current then solid iron cored inductors.</td>
-</tr>
-<tr >
-<td >Metal Composite</td>
-<td > </td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Core Material</th>
+      <th>Uses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Air core</td>
+      <td>Air core is used to describe any inductor which does not use a magnetic material for it's core (so they may in fact, have something other than air for their core). Used in low inductance, RF applications because they lack any magnetic core to boost their inductance, but at the same time benefit from smaller core losses which can be significant in the RF spectrum. Go to the Air-Cored Inductors section for more info.</td>
+    </tr>
+    <tr>
+      <td>Powdered Ferrite Core</td>
+      <td>The powder is compressed into blocks before using (but don't confuse these with solid ferrite core inductors). Very lossy (resistive) at high frequencies. Used to make ferrite beads.</td>
+    </tr>
+    <tr>
+      <td>Solid Iron (or Steel) Core</td>
+      <td>Used in low resistance, high inductance applications. Has a higher saturation current than air-cored inductors, but lower one than powdered iron cores.</td>
+    </tr>
+    <tr>
+      <td>Powdered Iron Core</td>
+      <td>Powered iron core inductors have a <i>distributed air gap</i>, which gives them a higher saturation current then solid iron cored inductors.</td>
+    </tr>
+    <tr>
+      <td>Metal Composite</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 
 
 ## Equations
 
-## Inductance Equation
+### Inductance Equation
 
 The equation relating the voltage, inductance and change in current is:
 
@@ -126,10 +126,10 @@ The equation relating the voltage, inductance and change in current is:
     where:<br>
     \(v\) is the voltage across the inductor<br>
     \(L\) is the inductance of the inductor<br>
-    \(\frac{di}{dt}\) is the instantanous change in current through the inductor<br>
+    \(\frac{di}{dt}\) is the instantaneous change in current through the inductor<br>
 </p>
 
-## Energy Equation
+### Energy Equation
 
 The energy stored in a inductor is given by:
 
@@ -144,7 +144,7 @@ The energy stored in a inductor is given by:
 
 This equation is only valid when the inductor is operating in it's linear region, that is, before the current reachs the point where the magnetic feild begins to **saturate**. Notice that it is similar to the [equation for energy in a capacitor](/electronics/components/capacitors#energy).
 
-## Simple Impedance Model
+### Simple Impedance Model
 
 An ideal inductor (no parasitic elements) has an impedance given by:
 
@@ -152,7 +152,8 @@ An ideal inductor (no parasitic elements) has an impedance given by:
 
 <p class="centered">
     where:<br>
-    \( Z_L \) = inductor's impendence (\( \Omega \))<br>
+    \( Z_L \) = inductor's impe
+    dance (\( \Omega \))<br>
     \( f \) = frequency of analysis (\( Hz \))<br>
     \( L \) = inductance of inductor (\( H \))<br>
 </p>
@@ -174,16 +175,16 @@ Impedance, although measured in Ohms, is **not the same as resistance**. A resis
 
 For a more accurate but complex model, see the Parasitic Model section.
 
-## Parasitic Model
+### Parasitic Model
 
 An inductor with parasitic components may be modelled by:
 
-<div>$$Z_L = \frac{1}{ \frac{1}{R_P} + \frac{1}{j \omega L + R_S} + j \omega C_P }$$</div>
+<p>$$Z_L = \frac{1}{ \frac{1}{R_P} + \frac{1}{j \omega L + R_S} + j \omega C_P }$$</p>
 
 <p class="centered">
     where:<br>
-    \( Z_L \) = inductor's impendence (\( \Omega \))<br>
-    \( R_P \) = parasitic parallel resistance (which is negliable for most simulations) (\( \Omega \))<br>
+    \( Z_L \) = inductor's impedance (\( \Omega \))<br>
+    \( R_P \) = parasitic parallel resistance (which is negligible for most simulations) (\( \Omega \))<br>
     \( \omega \) = frequency of analysis (\( rad/s \))<br>
     \( L \) = inductance of inductor (\( H \))<br>
     \( R_S \) = parasitic series resistance (\( \Omega \))<br>
@@ -192,7 +193,7 @@ An inductor with parasitic components may be modelled by:
 
 The main parasitic components are the series resistance (`\( R_S \)`) and the parallel capacitance (`\( C_P \)`). The series resistance arises from the resistance of the coil of wire which makes up the inductor. This thinner and longer the coil, the larger this resistance. The parallel capacitance is due to coil windings being very close to one another, each coil forming small capacitors to surrounding coils. This small capacitors can be lumped together and form the parallel capacitance.
 
-This model is a pretty good representation for most simulation purposes, and gives that characteristic decrease in performance (non-inductor-like behavior) at high-frequencies.
+This model is a pretty good representation for most simulation purposes, and gives that characteristic decrease in performance (non-inductor-like behaviour) at high-frequencies.
 
 Typical values might be:
 
@@ -203,13 +204,13 @@ Typical values might be:
 
 ## Inductor Networks
 
-## Inductors In Parallel
+### Inductors In Parallel
 
 Inductors in parallel behave just like resistors in parallel.
 
 <div>$$ \frac{1}{L_{eq}} = \frac{1}{L_1} + \frac{1}{L_2} + \ldots + \frac{1}{L_N} $$</div>
 
-## Inductors In Series
+### Inductors In Series
 
 Inductors in series behave just like resistors in series.
 
@@ -218,14 +219,14 @@ Inductors in series behave just like resistors in series.
 ## Important Parameters
 
 <table>
-    <thead>
-        <tr>
-            <th>Parameter Symbol</th>
-            <th>Parameter</th>
-            <th>Units</th>
-            <th>Important Because...</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Parameter Symbol</th>
+      <th>Parameter</th>
+      <th>Units</th>
+      <th>Important Because...</th>
+    </tr>
+  </thead>
 <tbody>
 <tr >
 <td >\(I\)</td>
@@ -254,25 +255,25 @@ Inductors in series behave just like resistors in series.
 </tbody>
 </table>
 
-Inductors are commonly used as an energy storage component in [DC/DC converters](/electronics/components/power-regulators).
+Inductors are commonly used as an energy storage component in {{% link text="DC/DC converters" src="/electronics/components/power-regulators/_index.md" %}}.
 
 ## Air-cored Inductors
 
 Air-cored inductors represent any inductor which contains no ferromagnetic material. This means that "air-cored" inductors also covers a range of inductors which use an insulator instead of air for the core, which includes materials such as glass or PTFE.
 
-## Advantages
+### Advantages
 
 * Unlike a ferro-magnetic cored inductor, an air-cored inductors **inductance does not vary with the amount current that is flowing with it**. Ferromagnetic cores work fine up until a point at which they **saturate**.
 * Air-cores do not have any iron losses. This advantage becomes more significant with increasing frequency.
 
-## Disadvantages
+### Disadvantages
 
 * Air-cored inductors have to have more  and/or larger turns to achieve the same inductance value as a ferro-magnetic core. This is because **ferro-magnetic cores have a higher permeability than air**.
-* Air-cored inductors radiate more electromagnetic fields over a wider area, and also pickup more radiation. This is because ferro-magnetic-cores constrain the magnetic field lines better.
+* Air-cored inductors radiate more electromagnetic fields over a wider area, and also pick up more radiation. This is because ferro-magnetic-cores constrain the magnetic field lines better.
 
 ## Ferrite Beads
 
-See the [Ferrite Beads page](/electronics/components/ferrite-beads).
+See the {{% link text="Ferrite Beads page" src="/electronics/components/ferrite-beads/index.md" %}}.
 
 ## Inductor Kickback
 
@@ -308,4 +309,4 @@ Confusing? The most simple Simon design approach is to pick the lower maximum cu
 
 ## Inductor Packages
 
-{{< img src="ipc-sm-782-component-dimensions-for-smd-inductors.png" width="709px" caption="Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard."  >}}
+{{< img src="ipc-sm-782-component-dimensions-for-smd-inductors.png" width="709px" caption="Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard." >}}

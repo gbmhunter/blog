@@ -21,27 +21,27 @@ For information on positive temperature coefficient resistors used as "fuses" in
 The most commonly-used resistor schematic symbols are shown below. I prefer the American-style resistor over the European (given my distaste for the American imperial system, I never thought I would ever say that!), and use the American style through-out the rest of this website.
 
 <table>
-    <tbody>
-        <tr>
-            <td>{{< img src="resistor-schematic-symbol-american.png" width="168px" caption="The American-styled schematic symbol for a resistor."  >}}</td>
-            <td>{{< img src="resistor-schematic-symbol-european.png" width="142px" caption="The European schematic symbol for a resistor."  >}}</td>
-            <td>{{< img src="resistor-schematic-symbol-variable-2-terminal.png" width="212px" caption="The schematic symbol for a 2-terminal variable resistor."  >}}</td>
-            <td>{{< img src="potentiometer-schematic-symbol.png" width="207px" caption="The schematic symbol for a potentiometer."  >}}</td>
-        </tr>
-        <tr>
-            <td>American-styled resistor.</td>
-            <td>European-style resistor.</td>
-            <td>Variable resistor (2-terminal component).</td>
-            <td>Potentiometer (3-terminal component).</td>
-        </tr>
-    </tbody>
+  <tbody>
+    <tr>
+      <td>{{< img src="resistor-schematic-symbol-american.png" width="168px" caption="The American-styled schematic symbol for a resistor."  >}}</td>
+      <td>{{< img src="resistor-schematic-symbol-european.png" width="142px" caption="The European schematic symbol for a resistor."  >}}</td>
+      <td>{{< img src="resistor-schematic-symbol-variable-2-terminal.png" width="212px" caption="The schematic symbol for a 2-terminal variable resistor."  >}}</td>
+      <td>{{< img src="potentiometer-schematic-symbol.png" width="207px" caption="The schematic symbol for a potentiometer."  >}}</td>
+    </tr>
+    <tr>
+      <td>American-styled resistor.</td>
+      <td>European-style resistor.</td>
+      <td>Variable resistor (2-terminal component).</td>
+      <td>Potentiometer (3-terminal component).</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Resistors In Series And In Parallel
 
 The behaviour of resistors when connected together in series and in parallel is exactly the same behaviour inductors exhibit, and exactly the opposite behaviour of what capacitors exhibit.
 
-## Resistors In Parallel.
+### Resistors In Parallel.
 
 When two resistors are connected in parallel, the equivalent total resistance follows the inverse law:
 
@@ -55,7 +55,7 @@ The following diagram shows this:
 
 {{< img src="resistors-in-parallel-equivalence-with-equation.png" width="723px" caption="Two resistors in parallel can be treated as one resistor using the shown equation."  >}}
 
-## Resistors In Series.
+### Resistors In Series.
 
 When two resistors are connected in series, the total equivalent resistance is equal to the sum of individual resistances.
 
@@ -90,7 +90,7 @@ The [NinjaCalc program](http://mbedded-ninja.github.io/NinjaCalc/) has a calcula
 
 The output of a potentiometer varies depending on the wiper position. If varies from 0R when the wiper is at both ends of the pot to a maximum of Rpot/4 when the wiper is in the middle.
 
-You call also get variable resistors which can be changed digitially (called DPOTs). They have their own page which can be found [here](/electronics/components/dpots).
+You call also get variable resistors which can be changed digitally (called DPOTs). They have their own page which can be found {{< link text="here" src="/electronics/components/dpots/index.md" >}}.
 
 ## Tolerances
 
@@ -135,12 +135,12 @@ Confusingly, for each series, you can get ever so slightly higher errors than wh
 
 
 <table>
-    <thead>
-        <tr>
-            <th>Series</th>
-            <th>Maximum Percentage Error</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Series</th>
+      <th>Maximum Percentage Error</th>
+    </tr>
+  </thead>
 <tbody >
 <tr>
 <td >E6
@@ -170,7 +170,7 @@ Confusingly, for each series, you can get ever so slightly higher errors than wh
 
 The E192 series is also used for 0.25% and 0.1% error resistors.
 
-Below are all the actual values for the common E series. They are written as initialised arrays in the [C programming language](/programming/languages/c), so that you can copy them and use them in code easily (some modifications may be required for other programming languages).
+Below are all the actual values for the common E series. They are written as initialised arrays in the {{% link text="C programming language" src="/programming/languages/c/_index.md" %}}, so that you can copy them and use them in code easily (some modifications may be required for other programming languages).
 
 ```c
 E6[6] = {10, 15, 22, 33, 47, 68};
@@ -179,7 +179,7 @@ E12[12] = {10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 82};
 ```
     
 
-Note how there are two digits of precision for E6, E12, and E24 values, while 3 digits of precision for E48, E96 and E192 values. These two sets of three series share special properties with one another. E6 is every second value from the E12 series, and E12 is every second value from the E24 series. Simarly, E48 is every second value from the E96 series, and E96 is every second value from the E192 series.
+Note how there are two digits of precision for E6, E12, and E24 values, while 3 digits of precision for E48, E96 and E192 values. These two sets of three series share special properties with one another. E6 is every second value from the E12 series, and E12 is every second value from the E24 series. Similarly, E48 is every second value from the E96 series, and E96 is every second value from the E192 series.
 
 The values come from the exponential number series, using the equation:
 
@@ -199,15 +199,15 @@ See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_numbe
 
 ## Manufacturing Processes
 
-## Thick Film
+### Thick Film
 
 Thick film is the most common type of resistor. Most 1% and 5% SMD chip package resistors (0402, 0603, e.t.c) use thick film technology.
 
-## Thin Film
+### Thin Film
 
 Most 0.1% SMD chip package resistors (0402, 0603, e.t.c) use thin film technology. Thin film resistors can be split into two sub-categories, commercial thin-film and precision thin-film.
 
-## Metal Foil
+### Metal Foil
 
 Even rarer than thick and thin film resistors, metal foil resistor technology allows the most precise resistors to be made.
 
@@ -225,7 +225,7 @@ Current-sense resistors are a label given to low-valued, high precision (1% or b
 
 {{< img src="current-sensing-resistor-large-four-lead.jpg" width="513px" caption="A large four-lead current sensing resistor."  >}}
 
-More information and schematics on how to make current-sense circuits can be found on the [Current-Sensing page](/electronics/circuit-design/current-sensing).
+More information and schematics on how to make current-sense circuits can be found on the {{< link text="Current-Sensing page" src="/electronics/circuit-design/current-sensing/index.md" >}}.
 
 ## Jumpers
 
@@ -237,7 +237,7 @@ Jumper resistors are not specified with a percentage tolerance as most other res
 
 ## Volume Resistance (Bulk Resistance)
 
-Volume resistance (also known as just resitivity, electrical resistivity, or bulk resistance) has the SI units `\(\Omega m\)`. It is a measure of how well a particular material conducts electricity, and is an intrinsic property of that material (it does not depend on how much of the material or what shape it is in). If the resistance between two conducting plates on opposite faces of a `\(1 \times 1 \times 1m\)` cube of material is measured to be `\(1\Omega\)`, then the material has a volume resistivity of `\(1\Omega m\)`. 
+Volume resistance (also known as just resistivity, electrical resistivity, or bulk resistance) has the SI units `\(\Omega m\)`. It is a measure of how well a particular material conducts electricity, and is an intrinsic property of that material (it does not depend on how much of the material or what shape it is in). If the resistance between two conducting plates on opposite faces of a `\(1 \times 1 \times 1m\)` cube of material is measured to be `\(1\Omega\)`, then the material has a volume resistivity of `\(1\Omega m\)`. 
 
 ## Packages
 
