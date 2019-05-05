@@ -23,7 +23,7 @@ UartCpComms_Start();
 
 // A clock component
 ClkCpTimer_Start();
-```    
+```
 
 {{< figure src="/images/2013/03/custom-user-c-code-in-psoc-api-files.png" width="688px" caption="The correct place to enter custom user code in automatically generated Cypress component API files."  >}}
 
@@ -135,7 +135,7 @@ Cypress supplies functions for creating software halt delays. They are included 
 ```c    
 void CyDelay(uint32 milliseconds);
 void CyDelayUs(uint16 microseconds)
-```    
+```
 
 On the Cypress forums there is also delay functions supplied in a c header (.h) and assembly (.asm) file.
 
@@ -222,7 +222,7 @@ To declare a interrupt function (i.e. the prototype, the bit at the top of your 
 // A function prototype for an interrupt
 // This goes near the top of the .c file
 CY_ISR_PROTO(UartRxISR);
-```    
+```
 
 To define the function (the actual interrupt code), do not just use the standard function syntax. Instead, use:
 
@@ -240,7 +240,7 @@ To get this function to be called from an interrupt, you need to pass the functi
 
 ```c    
 ISR_UART_RX_StartEx(UartRxIsr);
-```    
+```
 
 which would call the interrupt handler function `UartRxIsr()` defined above.
 
@@ -328,7 +328,7 @@ Uart_Start();
 
 // Send a message
 Uart_PutString("My first string!.");
-```    
+```
 
 ## USB2UART
 

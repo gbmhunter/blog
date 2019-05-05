@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-03-18 21:48:21+00:00
+date: 2012-03-18
 draft: false
 title: Rubbers
 type: page
@@ -14,18 +14,17 @@ The hardness of most rubbers is specified using the Shore A scale (while the Sho
 
 Nitrile is has a better resistance to fuel than Neoprene. It is also slightly more expensive (see the Price Guide). Unique property is that you can get it in white
 
-## Stats:
-
+## Stats
 
 P = poor, F = fair, G = good, E = excellent
 
 <table>
-    <thead>
-        <tr>
-            <th>Property</th>
-            <th>Value</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Value</th>
+    </tr>
+  </thead>
 <tbody >
 <tr >
 <td >Hardness (Shore A)
@@ -125,15 +124,15 @@ P = poor, F = fair, G = good, E = excellent
 </tbody>
 </table>
 
-## Price Guide
+### Price Guide
 
 <table>
-    <thead>
-        <tr>
-            <th>Thickness (mm)</th>
-            <th>Price (NZ$, as of 2012, exc. GST)</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Thickness (mm)</th>
+      <th>Price (NZ$, as of 2012, exc. GST)</th>
+    </tr>
+  </thead>
 <tbody >
 <tr >
 <td >1.5
@@ -181,17 +180,17 @@ P = poor, F = fair, G = good, E = excellent
 
 Neoprene is a very popular rubber due to it's good fuel, flame and sunlight resistance. Cheaper than Nitrile rubber (see the Price Guide).
 
-## Stats:
+### Stats
 
 P = poor, F = fair, G = good, E = excellent
 
 <table>
-    <thead>
-        <tr>
-            <th>Property</th>
-            <th>Value</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Value</th>
+    </tr>
+  </thead>
 <tbody >
 <tr >
 <td >Hardness (Shore A)
@@ -291,15 +290,15 @@ P = poor, F = fair, G = good, E = excellent
 </tbody>
 </table>
 
-## Price Guide:
+### Price Guide
 
 <table>
-    <thead>
-        <tr>
-            <th>Thickness (mm)</th>
-            <th>Price (NZ$, as of 2012, exc. GST)</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Thickness (mm)</th>
+      <th>Price (NZ$, as of 2012, exc. GST)</th>
+    </tr>
+  </thead>
 <tbody >
 
 <tr >
@@ -346,7 +345,7 @@ P = poor, F = fair, G = good, E = excellent
 
 ## Suppliers
 
-## NZ Rubber And Foam
+### NZ Rubber And Foam
 
 * Website: [http://www.nzrubberandfoam.co.nz/](http://www.nzrubberandfoam.co.nz/)
 * Location: New Zealand

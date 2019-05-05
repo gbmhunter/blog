@@ -12,7 +12,7 @@ type: page
 
 The code below shows the basic setup to draw a Circuitikz diagram in a Wordpress post using the QuickLatex plugin.
 
-```    
+```text
 \begin{tikzpicture}
 [+preamble]
     \usepackage{tikz}
@@ -29,7 +29,7 @@ Add the actual Circuitikz code between the end of the preamble and the end of th
 
 Sometimes in can be beneficial to add a background to the circuit drawing. This is true when using QuickLatex with Wordpress to render Circuitikz (as this site does), as by default it uses a transparent background, which is good for inline equations, but not so much for circuit drawings.
 
-```    
+```text
 \useasboundingbox [fill=white!10] (-1,-1) rectangle (3,3);	
 ```
 
@@ -46,7 +46,7 @@ The three types of capacitors used are easily drawn.
 \draw (0,0) to [pC, l=$C$] (0,2);
 % Draw a variable capacitor.
 \draw (0,0) to [vC, l=$C$] (0,2);
-```    
+```
 
 <table>
 <tbody >
@@ -108,7 +108,7 @@ Op-amps and caparators share the same symbol.
     (opamp.−) node[left] {$v_−$}
     (opamp.out) node[right] {$v_o$}
 ;	
-```    
+```
 
 ```
 \begin{tikzpicture}[scale=1]  
@@ -129,7 +129,7 @@ Op-amps and caparators share the same symbol.
 
 It took me awhile to get dashed lines to work, here is the correct way to draw them:
 
-```    
+```text
 % Make sure to use a separate draw command for dashed lines,
 % rather than tacking it onto another one!
 \draw[dashed]

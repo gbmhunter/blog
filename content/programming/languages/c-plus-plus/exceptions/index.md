@@ -22,17 +22,17 @@ try {
 } catch(exception_type exception) {
 	// Catch an exception of type exception_type here
 }
-```    
+```
 
 ## How The Exceptions Work
 
-## The Standard Exceptions
+### The Standard Exceptions
 
 `std::exception` doesn't support an additional message (it doesn't have an `e.what()`).
 
 The standard exceptions are defined in `<stdexcept>`. They are split into categories:
 
-## Logic Errors
+### Logic Errors
 
 <table>
 	<thead>
@@ -65,7 +65,7 @@ The standard exceptions are defined in `<stdexcept>`. They are split into catego
   </tbody>
 </table>
 
-## Runtime Errors
+### Runtime Errors
 
 <table >
 	<thead>
@@ -94,19 +94,19 @@ The standard exceptions are defined in `<stdexcept>`. They are split into catego
   </tbody>
 </table>
 
-## My Exception Message (e.what() Is Not Saying The Right Thing!
+### My Exception Message (e.what() Is Not Saying The Right Thing!
 
 The most common reason for this is that you have forgotten to catch by reference (`&`)! Make sure that your catch statement looks like this:
 
 ```c++    
 catch(std::exception& e) {}
-```    
+```
 
 and not like this:
 
 ```c++    
 catch(std::exception e) {}
-```    
+```
 
 Remember, the standard rule for exceptions in C++ is:
  

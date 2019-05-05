@@ -38,7 +38,7 @@ uint32_t  my32BitPtr = (uint32_t)0x00;
 my32BitPtr++;
 
 // my32BitPtr now equals 0x04!
-```    
+```
 
 ## Arrays Decaying To Pointers
 
@@ -127,7 +127,7 @@ int * const x;
 
 A constant pointer to a constant `int`:
 
-```    
+```c
 int const * const x;
 ```
 

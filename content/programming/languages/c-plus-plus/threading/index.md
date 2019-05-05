@@ -290,7 +290,7 @@ This runtime error usually occurs when your program tries to end while there are
 
 You will usually see the following terminal output:
 
-```    
+```text
 <previous program output>
 terminate called without an active exception
 gbmhunter@ubuntu:~$

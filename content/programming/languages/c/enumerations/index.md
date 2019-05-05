@@ -17,7 +17,7 @@ Enumerations are an alternative to using C preprocessor macros to create words w
 #define GREEN 	1
 #define BLUE	2
 #define YELLOW	3
-```    
+```
 
 If you find yourself doing this, think carefully, would an enumeration be a better way? You can achieve the exact same result with:
 
@@ -52,7 +52,7 @@ enum myColoursType {
 } colours_t;
 
 enum colours_t myColoursType = BLUE;
-```    
+```
 
 Or the typedef way:
    
@@ -78,7 +78,7 @@ typedef enum {
     BLUE,
     YELLOW = 8
 } colours_t;
-```    
+```
 
 If no value is specified, the compiler will increment by `1` as usual, so in the above case, `BLUE = 6`.
 
@@ -105,13 +105,13 @@ typedef enum {
     // ...
     FORCE_ENUM_WIDTH = MAX_INT // This here forces the enumeration to be at least a particular width
 } myEnum_t;
-```    
+```
 
 Some compilers support directives which will change the default size of an enumeration. For example, in GCC, you can add the compiler flag:
 	
 ```c    
 -fshort-enums
-```    
+```
 
 Which will make all enumerations use the smallest width suitable. You can selectively make enumerations smaller by using:
 

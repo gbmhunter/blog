@@ -37,7 +37,7 @@ Your path should now be:
 
 If you just run make, you get the error:
 
-```    
+```text
 *** multiple target patterns. Stop.
 ```
 

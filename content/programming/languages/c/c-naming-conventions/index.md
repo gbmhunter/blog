@@ -18,7 +18,7 @@ All local variables (variables within a function) begin with a lower-case letter
 void MyFunction() {
     uint8_t activeGpsAnt;
 }
-```    
+```
 
 All file-level and global variable use the same syntax except with an underscore in front of them.
 
@@ -28,7 +28,7 @@ uint8_t _activeGpsAnt;
 void MyFunction() {
     // code here...
 }
-```    
+```
 
 ## Functions
 
@@ -36,7 +36,7 @@ Functions start with the file/module name, an underscore, and then a description
 
 ```c    
 void Gps_GetLocation();
-```    
+```
 
 ## Typedefs
 

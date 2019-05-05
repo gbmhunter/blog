@@ -16,13 +16,13 @@ These pages are all about the Windows operating system and the command-line inte
 
 Did you know that MS-DOS has an auto-complete function, just like Linux, except **it's turned OFF by default?** To turn it on, type the following into the command line:
 
-```  
+```bat
 cmd /f
 ```
 
 And to turn it off again (why would you ever want to do such a thing!):
 
-``` 
+```bat
 cmd /f:off
 ```
 
@@ -34,7 +34,7 @@ If there are multiple choices, pressing the button repeatedly will cycle through
 
 There are two ways to display comments:
 
-```    
+```bat
 rem This is a comment
 
 : This is also a comment, and using a much simper keyword than rem
@@ -46,13 +46,13 @@ rem This is a comment
 
 To display a list of files and folders in the current directory, use the command:
 
-```    
+```bat
 dir
 ```
 
 This will display the full-length filenames/foldernames. To display the names in short format (6 letters, a matilda (~) and then a numeral, usually 1, followed by the extension), use the following:
 
-```
+```bat
 dir /X
 ```
 
@@ -76,7 +76,7 @@ If `xcopy` wasn't enough, there is also `robocopy`. `robocopy` first shipped wit
 
 The standard syntax is:
 
-```    
+```bat
 robocopy source_folder destination_folder [files_to_copy] [options]
 ```
 
@@ -115,7 +115,7 @@ The most popular options are (in rough order of popularity):
 
 Confusingly, windows has a range of different delete commands, and the one you need use depends on what version of windows you are running, and whether you are deleting files, empty folders, or folders containing files.
 
-```    
+```bat
 # Delete a file (1st way)
 del filename.ext
 

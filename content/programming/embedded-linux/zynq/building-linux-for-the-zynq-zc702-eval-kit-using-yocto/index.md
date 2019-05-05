@@ -77,7 +77,7 @@ You should now automatically be in the `~/poky/build/` directory. Tell bitbake a
 
 Add the following line to the `conf/local.conf` file:
 
-```    
+```text
 <code>MACHINE ?= "zc702-zynq7"</code>
 ```
 
@@ -107,17 +107,17 @@ Now let's partition the SD card using the interactive `fdisk` command:
 
 ```sh    
 ~$ sudo fdisk /dev/sdX
-```    
+```text
 
 Follow the following procedure, entering commands such as `n`, `a` and `t` where shown (the rest is `fdisk` output).
 
-```    
+```text
 Command (m for help): n Partition type: p primary (0 primary, 0 extended, 4 free) e extended Select (default p): p Partition number (1-4, default 1): 1 First sector (2048-15759359, default 2048): Using default value 2048 Last sector, +sectors or +size{K,M,G} (2048-15759359, default 15759359): +200M Command (m for help): n Partition type: p primary (1 primary, 0 extended, 3 free) e extended Select (default p): p Partition number (1-4, default 2): 2 First sector (411648-15759359, default 411648): Using default value 411648 Last sector, +sectors or +size{K,M,G} (411648-15759359, default 15759359): Using default value 15759359
 ```
 
 Now set the bootable flag for the first partition, and set the partition IDs:
 
-```    
+```text
 Command (m for help): a
 Partition number (1-4): 1
     
@@ -133,7 +133,7 @@ Hex code (type L to list codes): 83
 
 Check the new partition table is correct, and then write the changes:
 
-```    
+```text
 Command (m for help): p
     
 Disk /dev/sdb: 8068 MB, 8068792320 bytes
@@ -198,7 +198,7 @@ If you now insert this SD into windows, you should be able to see the files on t
 
 `uEnv.txt` should contain information similar to the following:
 
-```    
+```text
 kernel_image=uImage
 devicetree_image=uImage-zynq-zc702.dtb
 bootargs=console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait earlyprintk
@@ -235,7 +235,7 @@ You can also use TFTP to transfer and boot compiled images from your desktop com
 
 You must remember that U-Boot is required to be already present on the embedded device to support TFTP (you obviously need TFTP drivers to perform the communication, and this is what U-Boot provides). You can use TFTP to download the Linux kernel image, root filesystem and device tree.
 
-```    
+```text
 setenv bootcmd 'tftpboot 0x2000000 uImage; tftpboot 0x3000000 core-image-minimal-zc702-zynq7.cpio.gz.u-boot; tftpboot 0x2A00000 uImage-zynq-zc702.dtb; bootm 0x2000000 0x3000000 0x2A00000'
 ```
 
@@ -313,7 +313,7 @@ Firstly, make sure the micro-USB cable to the JTAG device on the ZC-702 (`U23`) 
 
 The, connect to the target using `xsdb`:
 
-```    
+```text
 ./xsdb
 connect
 target
@@ -357,7 +357,7 @@ You should be able to log onto the Linux system with the username `root`, no pas
 
 Is your error similar to:
 
-```    
+```text
 ERROR: No recipes available for:
 /home/username/poky/meta-xilinx/recipes-microblaze/glibc/glibc-initial_2.25.bbappend
 /home/username/poky/meta-xilinx/recipes-microblaze/glibc/glibc_2.25.bbappend

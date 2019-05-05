@@ -34,7 +34,7 @@ Note the inclusion of `~/` before `group_name` in the above URL (as well as the 
 
 By default, the master branch is used when looking for a particular commit as specified by the `SRCREV` hash. However, you can change this default behaviour and specify a particular branch by adding the `branch=<branch-name>` option to the `SRC_URI` parameter:
 
-```    
+```text
 SRC_URI = "git://github.com/gbmhunter/SerialFiller;branch=develop"
 ```
 

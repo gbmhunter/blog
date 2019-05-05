@@ -23,7 +23,7 @@ To actually store something (above, just a pointer was created, but assigned to 
 
 ```c++    
 const char* myCharPtr = "This is a string literal.";
-```    
+```
 
 Note the extra `const` qualifier in there, this is because a string literal is saved in program memory and should not be written to.
 

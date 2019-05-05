@@ -32,7 +32,7 @@ The following example looks for all files with the `.cpp` or `.hpp` file extensi
 
 ```sh    
 $ find . -name "*.cpp" -o -name "*.hpp"
-```    
+```
 
 ## Find In Path
 

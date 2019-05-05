@@ -271,7 +271,7 @@ Run the above example online at https://wandbox.org/permlink/hrJqJseiLbJQcHxI.
 ```c++    
 usleep() // Note this is deprecated, and not included in the latest POSIx specification, or the latest glibc!
 unsigned int sleep (unsigned int seconds)
-```    
+```
 
 Some examples...
 
@@ -294,7 +294,7 @@ int main() {
 
 ```c++    
 int nanosleep (const struct timespec *requested_time, struct timespec *remaining)
-```    
+```
 
 Note that when using `nanosleep()`, your resolution will likely be far smaller than the minimum time-step that the system supports, and your delay will be rounded
 

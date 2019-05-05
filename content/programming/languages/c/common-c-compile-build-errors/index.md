@@ -114,7 +114,7 @@ The "not in formal parameter list" build error is most likely to occur when you 
 void function1()
 // The "not in formal parameter list" build error will occur on this following line
 void function2();
-```    
+```
 
 ## double free or corruption
 
@@ -124,6 +124,6 @@ This error normally codes with another keyword at the end, e.g.
 
 ```c   
 double free or corruption (!prev)
-```    
+```
 
 It normally occurs when you accidentally `free()` the same piece of memory twice. I have also got this error due to a incremental-build bug in the Xilinx SDK (xsdk) for it's Zynq FGPAs/microcontroller chips.

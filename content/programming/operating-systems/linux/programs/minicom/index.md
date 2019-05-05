@@ -36,7 +36,7 @@ However, you can configure some of the most-used settings directly from the comm
 
 ```sh   
 $ minicom -D /dev/ttyUSB0
-```    
+```
 
 Use `-b` to set the baud rate:
 

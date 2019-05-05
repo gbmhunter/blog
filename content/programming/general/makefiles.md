@@ -99,10 +99,10 @@ You assign a value to a variable in the following ways:
 
 There are common names that most people use for variables, which are shown below.
 
-```    
+```text
 CC
 CFLAGS
-```    
+```text
 
 Using wildcards in variable assignment requires special syntax, see the Wildcards section.
 
@@ -112,30 +112,30 @@ Wildcards are a great way to make automatic makefiles, i.e. makefiles that you d
 
 One of the most common uses for a wildcard is with the "clean" rule, which is usually along the lines of:
 
-```    
+```text
 clean : 
 rm -f *.o
-```    
+```text
 
 The `*.o` string is called a [glob](http://en.wikipedia.org/wiki/Glob_(programming)). It will match any file names which end in `.o`. This will delete all object files in the current directory.
 
 
 **Wildcard expansion does not occur if you define a variable.** For this reason, if you use wildcards in variable assignments, you use the following syntax instead:
 
-```    
+```text
 objects := $(wildcard *.o)
-```    
+```text
 
 This will replace `$(wildcard *.o)` with a space-separated list of all object files in the current directory, e.g. `objects := objectfile1.o objectfile2.o`.
 
 What is also neat is you can combine the wildcard functions with other functions for string substitution and analysis. For example, you could create a list of "future" object files by scanning the directory for files using the wildcard function, and then substituting the `.c` for `.o`. In this way you can compile and link a whole directory of `.c` files automatically. The following example does this.
 
-```    
+```text
 objects := $(patsubst %.c,%.o,$(wildcard *.c))
 
 foo : $(objects)
 cc -o foo $(objects)
-```    
+```text
 
 ## Automatic Variables
 
@@ -207,14 +207,14 @@ You can easily call one makefile from another. This is useful when you have a pr
 
 The recommended to run another makefile is to write:
 
-```    
+```text
 # Run another makefile from this makefile
 $(MAKE) -C ./path/to/makefile/ all
-```    
+```text
 
 where all can be substituted for any other parameter you wish to pass to the secondary makefile. Note that this method is preferred over manually changing directory and calling make yourself, which can be done in the following manner:
 
-```    
+```text
 subsystem:
     cd subdir && $(MAKE)
 ```

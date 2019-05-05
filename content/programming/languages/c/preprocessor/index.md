@@ -65,13 +65,13 @@ Function style macros are similar in syntax and operation to standard functions 
 
 ```c
 #define MY_FUNC(x) x*x
-```    
+```
 
 And so when this is written in code somewhere
 
 ```c 
 MY_FUNC(2)
-```    
+```
 
 The preprocessor will replace it with `2*2`.
 
@@ -81,7 +81,7 @@ The C preprocessor allows variadic macros, just like the C compiler allows for v
 
 ```c
 #define eprintf(...) fprintf (stderr, __VA_ARGS__)
-```    
+```
 
 The variadic example below allows for conditional inclusion of debug statements, which behaves just like `printf()` does. Note that it also uses FreeRTOS and their semaphores for debug UART resource control.
 
@@ -97,14 +97,14 @@ The variadic example below allows for conditional inclusion of debug statements,
 #else
     #define Main_SendDebugMsg(...)   
 #endif
-```    
+```
 
 If `configPRINT_DEBUG_GPRS_MAIN` is not defined as 1, then all occurrences of the debug printing will be replaced with blank space. You would then use it like this:
 
 ```c
 uint32_t myNumber = 16;
 Main_SendDebugMsg("My number = %u.\r\n", myNumber);
-```    
+```
 
 Variadic macros were added as part of the C99 standard. The GCC compiler had supported them long before this standard was introduced, but only in the format args....
 
@@ -141,7 +141,7 @@ char* msg = #REPLACEMENT_STRING;
 
 // This ends up as (this is what the compiler sees)
 char* msg = "This is a message";
-```    
+```
 
 ### Replacing Strings Inside Other Strings
 
@@ -159,7 +159,7 @@ The example below uses two function-like macros. This allows the stringification
 uint32_t aNum = 378;
 
 printf("This is an " STR(PF_UINT32_T) ".", sNum);
-```    
+```
 
 ## Conditional Statements (#if, #else, ...)
 
@@ -205,7 +205,7 @@ void aFunction()
 }
 
 #endif // #if 0
-```    
+```
 
 ## Include (#include)
 
@@ -216,14 +216,14 @@ The exact `#include` syntax depends on whether you are including system or user 
 ```c
 // Including a system file
 #include <stdint.h>
-```    
+```
 
 To include a user file, wrap the file name in " quotes as shown below:
 
 ```c 
 // Including a user file
 #include "MyFile.h"
-```    
+```
 
 I make no rule about where `#include` should be called from, and although some people will say otherwise (e.g. only put them in header files), I recommend placing `#include` in any file which depends on objects/definitions from another!
 
@@ -239,13 +239,13 @@ To show a warning, use the following syntax:
 
 ```c
 #warning This is a warning.
-```    
+```
 
 To show an error (and stop compilation), use the following syntax:
 
 ```c 
 #error This is an error, and will stop compilation.
-```    
+```
 
 ## Comments
 
@@ -259,7 +259,7 @@ To print a message (there are normally two supported syntaxes), type:
 
 // Second syntax
 #pragma message "This is a message."
-```    
+```
 
 You can use these keywords to make up "groups" of messages, for example, a **TODO** group:
 
@@ -268,7 +268,7 @@ You can use these keywords to make up "groups" of messages, for example, a **TOD
 #define TODO(x) DO_PRAGMA(message ("TODO - " #x))
 
 TODO(Remember to fix this)
-```    
+```
 
 prints `'/myFolder/myCfile.c:8 note: #pragma message: TODO - Remember to fix this’`
 
@@ -280,7 +280,7 @@ You can override the pre-processors current line number at any point with the di
     
 ```c
 #line 230
-```    
+```
 
 ## Tidying Up Preprocessor Code
 
@@ -304,4 +304,4 @@ grep -r configNUM_OF_COUNTS ./*
 # that have the phrase "configNUM_OF_COUNTS" on 
 # them, in the files in the current directory.
 sed -i "/configNUM_OF_COUNTS/d" ./*.*
-```    
+```

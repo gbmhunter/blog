@@ -14,7 +14,7 @@ To fix this, I needed to use sn.exe (a tool provided with Visual Studio and the 
 
 ```text
 C:\project\mathnet-neodym\build\Debug>sn.exe -Vr *
-```    
+```
 
 ## Finite Impulse Response (FIR) Filters
 

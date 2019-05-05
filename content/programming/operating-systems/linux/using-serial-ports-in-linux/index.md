@@ -41,13 +41,13 @@ You can permanently change the permissions by adding the user to the group dialo
 
 ```sh   
 ~$ sudo adduser username dialout
-```    
+```
 
 which for the current user would just be:
 
 ```sh    
 ~$ sudo adduser $USER dialout
-```    
+```
 
 Note that this depends on the `username` and `dialout` group already existing (which is normally the case).
 

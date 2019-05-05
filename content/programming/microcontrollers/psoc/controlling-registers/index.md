@@ -16,7 +16,7 @@ uint32_t regVal = *myReg;
 
 // Write
 *myReg = 0x0000FFFF;
-```    
+```
 
 PSoC also provides macros and typedefs for this process.
 

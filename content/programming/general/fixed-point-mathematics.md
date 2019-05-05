@@ -34,7 +34,7 @@ Floating point numbers are just stored in software as regular integers (signed o
 
 For example, a Q4.12 number storing the value of 6.5 will be stored in a unsigned 16-bit integer (uint16_t) as:
 
-```    
+```text
 0110 1000 0000 0000
 ----|--------------
 int  frac

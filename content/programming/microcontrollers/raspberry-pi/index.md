@@ -183,7 +183,7 @@ You can log into a RaspberryPi from another computer using SSH. Type the followi
 
 ```sh    
 ssh 192.168.1.100 -l pi
-```    
+```
 
 where you replace 192.168.1.100 with the IP address of the RaspberryPi (this is the RaspberryPi's local address, which is only accessible via another computer on the intranet). The flag -l pi tells SSH to login with the username pi, not the default username of the calling terminal.
 
@@ -243,7 +243,7 @@ This [great tutorial on the Kitware blog](http://www.kitware.com/blog/home/post/
 
 ```sh    
 sudo apt-get install npm
-```    
+```
 
 ## Uses
 

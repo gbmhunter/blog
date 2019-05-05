@@ -24,7 +24,7 @@ Any character from the set `- ` : ' " ~ ^ _ * + # < >` may be used for the adorn
 
 You can nest section headers as much as you want, as long as you use a different character for the child and parent headers. The following example shows headers and child headers being declared.
 
-```    
+```text
 Chapter 1 Title
 ===============
 
@@ -51,7 +51,7 @@ Two different table formats are supported.
 
 Images can be embedded into the output by using the following image directive.
 
-```    
+```text
 .. image:: myPicture.png
 ```
 

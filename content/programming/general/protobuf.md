@@ -120,7 +120,7 @@ When working with protobuf, you usually want your build system to generate C++ s
 
 CMake ships with a `FindProtobuf.cmake` file, which allows you to do this in your `CMakeLists.txt`:
 
-```    
+```text
 find_package(Protobuf REQUIRED)
 ```
 
@@ -128,7 +128,7 @@ This will look for libprotobuf and the associated header files on your system.
 
 This then exposes the macro `PROTOBUF_GENERATE_CPP`, which you can use to generate C++ source code from your .proto files!
 
-```    
+```text
 # Gather together all .proto files in the same directory as
 # this CMakeLists.txt file
 file(GLOB ProtoFiles "${CMAKE_CURRENT_SOURCE_DIR}/*.proto")

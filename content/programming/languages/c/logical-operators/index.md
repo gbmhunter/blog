@@ -66,7 +66,7 @@ The conditional operator is the only tenary operator (operator which takes 3 ope
 
 ```c    
 condition ? resultIfTrue : resultIfFalse
-```    
+```
 
 If the condition is true, this whole code segment gets replaced with resultIfTrue, if the condition is false, the code segment gets replaced with resultIfFalse. Here is a real example:
 
@@ -81,7 +81,7 @@ It can be used to declare a `const` that is conditional on some other variable, 
 
 ```c   
 const int n = (x != 0) ? 10 : 20;
-```    
+```
 
 ## Logical Short-Circuit Evaluation
 
@@ -91,7 +91,7 @@ This makes it possible to do things like this:
 
 ```c    
 if (x != NULL && x->IsValid())
-```    
+```
 
 You should be able to see that if `x` was `NULL`, than calling `x->IsValid()` has undefined behaviour. However, this statement is valid because of short-circuit evaluation. `x->IsValid()` will only be called if `x! = NULL` evaluates to `true` and the program needs to find `x->IsValid()` to determine the outcome of the expression.
 
@@ -104,13 +104,13 @@ However, we can get the same effect by writing:
 ```c    
 // a ^^ b
 !a != !b
-```    
+```
 
 If you happen to know that `a` and `b` can only be boolean (i.e. `0` or `1`), then this can be simplified to:
 
 ```c    
 // a ^^ b (for booleans only)
 a != b
-```    
+```
 
 Notice that in the first example, you need the `!` symbols to normalise both `a` and `b` into booleans.

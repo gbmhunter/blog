@@ -30,13 +30,13 @@ Text stops being a comment once there is a new line.
 
 Echo is usually turned off to stop every line of code from being printed to the user:
 
-```    
+```text
 echo off
 ```
 
 Notice though, although no lines after echo off will be printed, echo off is still printed since it is not executed until after it has been printed. To stop this from happening, you can suppress echoing with the `@` symbol like so:
 
-```    
+```text
 @echo off
 ```
 
@@ -48,7 +48,7 @@ Naturally, you turn echo back on at any point with the command echo on.
 
 Variables are set to a value, or cleared/deleted by using the set command.
 
-```    
+```text
 :: This sets the variable to 3
 set myVar=3
 :: This clear the variable
@@ -59,7 +59,7 @@ set myVar=
 When setting a variable, anything after the equals sign, including white-space, is part of the variable, up-to the last non-white character. You have to be careful you don't accidentally add space to strings when assigning to them:
 {{% /warning %}}
 
-```    
+```text
 set myVar = This is a string
 echo "%myVar%"
 
@@ -68,7 +68,7 @@ echo "%myVar%"
 
 Variables are used by enclosing them with the `%` character, e.g. `%myVar%`.
 
-```    
+```text
 set myVar2 = %myVar%
 ```
 
@@ -76,7 +76,7 @@ set myVar2 = %myVar%
 
 Batch files provides a way to replace substrings within a string (or more generically, find and replace parts of a variable).
 
-```    
+```text
 set str1=%1
 set searchText=find me
 set replaceText=replacement text
@@ -91,13 +91,13 @@ You can process the output of a command by using a for loop. The `\f` flag is co
 
 If the command output only has one line, you can use:
 
-```    
+```text
 for /F %%G in ('hg id') do call :CheckId "%%G"
 ```
 
 If the command output contains multiple lines, you can use:
 
-```    
+```text
 setlocal enabledelayedexpansion
 set CONCAT_STR=
 for /f "delims=" %%i in ('hg status') do set "CONCAT_STR=!CONCAT_STR! %%i"
@@ -112,6 +112,6 @@ This a great method for preventing expansion of variables at parse time. It dela
 
 Delayed expansion can be set with the following command:
 
-```    
+```text
 setlocal enabledelayedexpansion
 ```

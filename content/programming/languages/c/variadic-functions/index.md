@@ -16,7 +16,7 @@ A variadic function is declared as:
 
 ```c
 MyFunction(uint32_t arg1, ...);
-```    
+```
 
 Where MyFunction is defined as a function which takes 1 required argument, and as many non-optional arguments as you want (up to the practical limit set by the maximum number of function arguments you are allowed).
 
@@ -27,7 +27,7 @@ MyFunction(arg1, ...)
 {
     // function code goes here
 }
-```    
+```
 
 But how do you access the variable arguments in your function definition? Use the function-like macros `va_start`, `va_arg` and `va_end` provided by `<varargs.h>`.
 

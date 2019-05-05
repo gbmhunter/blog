@@ -32,4 +32,4 @@ The `-q` option tells diff to print less output. When comparing folders, this wi
 
 ```sh    
 diff -q Folder1 Folder2
-```    
+```

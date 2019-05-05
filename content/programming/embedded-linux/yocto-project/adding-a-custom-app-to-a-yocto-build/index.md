@@ -57,7 +57,7 @@ And a matching `HelloWorld.h`:
 
 We also need a `LICENSE` file. Yocto is quite particular about licenses, to ensure that users can specify exactly what licensing restrictions are present in a particular build (e.g. make sure this build ONLY contains open-source code). Create a `LICENSE` file, we will use the MIT license for this one:
 
-```    
+```text
 The MIT License (MIT)
 
 Copyright (c) 2014 Dynamic Devices
@@ -83,7 +83,7 @@ SOFTWARE.
 
 We need a `configure.ac` file:
 
-```    
+```text
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
@@ -118,7 +118,7 @@ AC_OUTPUT
 
 Finally, make a `Makefile.am`:
 
-```    
+```text
 AUTOMAKE_OPTIONS = foreign
 
 CFLAGS = -Wall -pedantic
@@ -164,7 +164,7 @@ The config folder holds configuration data about the layer. `cd` into this direc
 
 Add the standard config code to `layer.conf` as shown below. This `layer.conf` file tells Yocto where the BitBake files are located in this package. We won't go into any more detail about this file, as this is beyond the scope of this tutorial.
 
-```    
+```text
 # We have a conf and classes directory, add to BBPATH 
 BBPATH := "${BBPATH}:${LAYERDIR}" 
 # We have a packages directory, add to BBFILES 
@@ -198,7 +198,7 @@ This `HelloWorld` folder is going to contain a file which says that the HelloWor
 
 This `HelloWorld_1.0.bb` is a BitBake file which points to the location that the HelloWorld app is stored (in our case, GitHub). It contains the following code:
 
-```    
+```text
 #
 # This file was derived from the 'Hello World!' example recipe in the
 # Yocto Project Development Manual.
@@ -246,7 +246,7 @@ The final step is to add the newly created layer to your build. Layers are not a
 
 The default `bblayers.conf` file might look something like this:
 
-```    
+```text
 # POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
 # changes incompatibly
 POKY_BBLAYERS_CONF_VERSION = "2"
@@ -263,7 +263,7 @@ BBLAYERS ?= " \
 
 We want to add our new layer to the `BBLAYERS` variable as shown below:
 
-```    
+```text
 BBLAYERS ?= " \
     /home/username/temp/poky/meta \
     /home/username/temp/poky/meta-poky \

@@ -98,7 +98,7 @@ void operator delete[](void * ptr)
 { 
     free(ptr); 
 }
-```    
+```
 
 ## Preventing Exceptions
 
@@ -135,7 +135,7 @@ extern "C" void __cxa_pure_virtual(void);
 
 // Definition
 void __cxa_pure_virtual(void) {}; 
-```    
+```
 
 Because it's only the linker that looks for this function, you can normally get by with only providing the declaration and omitting the definition, and the definition can be placed in any C file. Perhaps you want to replace this empty function with some error reporting/debug code to detect if you either attempt to call a derived class whose virtual function has not been defined.
 
@@ -159,7 +159,7 @@ extern "C" void __cxa_guard_abort (__guard *);
 int __cxa_guard_acquire(__guard *g) {return !*(char *)(g);}; 
 void __cxa_guard_release (__guard *g) {*(char *)g = 1;}; 
 void __cxa_guard_abort (__guard *) {}; 
-```    
+```
 
 Because it's only the linker that looks for these functions, you can normally get by with only providing the declarations and omitting the definitions, and they can be placed in any C file. Note that these functions only serve to stop the linker from complaining, and don't actually offer any thread-safe static support. This will have to be implemented yourself! (or only use an object from one thread).
 

@@ -34,7 +34,7 @@ $ cat filename.txt
 
 ```sh    
 $ cat >>filename.txt
-```    
+```
 
 Now type the text you want in the file. Press `CTRL-D` to exit and save the file. Warning: This will overwrite pre-existing files.
 

@@ -113,25 +113,25 @@ _Sorted alphabetically:_
 
 CMake has built-in support for creating SWIG bindings for your C++ project (for more information on CMake itself, see [/programming/build-systems-and-package-managers/cmake](/programming/build-systems-and-package-managers/cmake)). To use CMake to build SWIG bindings, make sure to include the SWIG package with the following command in your CMakeLists.txt:
 
-```    
+```text
 FIND_PACKAGE(SWIG REQUIRED)
 ```
 
 When using the CMake SWIG package, swig is automatically called for you by CMake. Don't worry, you can still provide arguments to calling swig via the `SET_SOURCE_FILES_PROPERTIES` command.
 
-```    
+```text
 SET_SOURCE_FILES_PROPERTIES(MySWIGInterfaceFile.i PROPERTIES SWIG_FLAGS "-threads")
 ```
 
 You also need to provide a list of all the source files required to generated the library/bindings:
 
-```    
+```text
 file(GLOB_RECURSE Swig_SRC "src/*.cpp")
 ```
 
 You create a Python module (a set of bindings created from settings in an interface file) by using the `SWIG_ADD_MODULE()` command.
 
-```    
+```text
 # Make sure to set all SWIG properties/config before calling the
 # below line! This makes a make target called "_<ModuleName>"
 SWIG_ADD_MODULE(<ModuleName> python MyInterfaceFile.i ${Swig_SRC})
@@ -144,7 +144,7 @@ SWIG generates a specific source file (normally with the extension .cxx if using
 
 If you want, you can modify the compiler flags used to compile this file with the ${swig_generated_file_fullname} parameter. For example, to compile with the C++11 standard:
 
-```    
+```text
 SET_SOURCE_FILES_PROPERTIES(${swig_generated_file_fullname}
         PROPERTIES COMPILE_FLAGS "-std=c++11")
 ```
@@ -157,7 +157,7 @@ You can instruct CMake to install the generated SWIG Python bindings onto your c
 
 Add the following code to your `CMakeLists.txt` file, after the `SWIG_ADD_MODULE(...)` line.
 
-```    
+```text
 # INSTALL PYTHON BINDINGS
 # Get the python site packages directory by invoking python
 execute_process(COMMAND python3 -c "import site; print(site.getsitepackages()[0])" OUTPUT_VARIABLE PYTHON_SITE_PACKAGES OUTPUT_STRIP_TRAILING_WHITESPACE)
@@ -180,7 +180,7 @@ There is a specific type of type map called a _typecheck_. The job of a typechec
 
 For example, say we provided a custom typemap for `std::vector<uint8_t>`, we should then provide a custom typecheck if we ever want to use call overloaded functions that accept a `std::vector<uint8_t>` from Python. Our SWIG interface file would then look like:
 
-```    
+```text
 %include "typemaps.i"
 %include "std_vector.i"
 %include "stdint.i"
@@ -226,19 +226,19 @@ Cross-language polymorphism is important when you are using interfaces. Some C++
 
 Thankfully, SWIG supports cross language polymorphism. They support the feature through the use of **_directors_**. To enable directors, make sure directors="1" is appended to the module keyword as below:
 
-```    
+```text
 %module(directors="1") <module name>
 ```
 
 However, you still need to tell SWIG what classes to create directors for. To do this, use %feature("director") as shown below. **To enable directors for all classes which have virtual methods, add:**
 
-```    
+```text
 %feature("director");
 ```
 
 **To enable directors for specific classes** (recommended for larger projects as the code bloat that directors introduces can be quite high):
 
-```    
+```text
 %feature("director") <class name>;
 ```
 
@@ -264,7 +264,7 @@ We will work through an example that creates typemaps such that int * output var
 
 Imagine we had this C++ code:
 
-```    
+```text
 // A concrete version of this class will be created
 // in Python
 class AbstractClass {
@@ -288,7 +288,7 @@ void CallMe(AbstractClass * abstractClass) {
 
 Place this code in your SWIG interface file (.i file):
 
-```    
+```text
 %typemap(directorin) int * {
     $input = PyList_New(1);
     PyList_SetItem($input, 0, PyInt_FromLong(*$1));
@@ -347,7 +347,7 @@ public:
 
 We will then create a SWIG interface file called example.i which creates bindings for the classes in the above Example.hpp file. We will make sure to enable directors, and then specifically specify the ICallback class as a director (this allows cross-language polymorphism).
 
-```    
+```text
 %module(directors="1") example
 
 %feature("director") ICallback;
@@ -414,13 +414,13 @@ As of September 2017, SWIG only has support for `std::shared_ptr`, but not `std:
 
 The SWIG support for `std::shared_ptr`, is quite automatic. You have to first include the `std::shared_ptr.i` file in your SWIG interface file:
 
-```    
+```text
 %include <std_shared_ptr.i>
 ```
 
 Once this is included, you then need to tell SWIG about all the types that will be used with a shared pointer. For example, if you want SWIG to handle `std::shared_ptr<std::vector<uint8_t>>` type variables, you would write:
 
-```    
+```text
 %shared_ptr(std::vector<uint8_t>)
 ```
 
@@ -428,7 +428,7 @@ Once this is done, shared pointers of this type should be created automatically 
 
 However, I have run into a problem with this feature, in where I could no longer pass the underlying type back and forth if I had used the %shared_ptr() macro on it. So instead of enabling this special shared pointer type mapping, I created a custom type map for the shared pointer:
 
-```    
+```text
 // Convert from Python --> C
 %typemap(in) std::shared_ptr<std::vector<uint8_t>> {
     auto temp = std::make_shared<ByteArray>();
@@ -443,7 +443,7 @@ The above type map allows you to call C++ code that asks for a `std::shared_ptr<
 
 A similar type map was created for the other direction (C++ to Python) in the case that your are using directors:
 
-```    
+```text
 // C++ --> Python director
 %typemap(directorin) std::shared_ptr<std::vector<uint8_t> {
     // Create Python object
@@ -483,7 +483,7 @@ void foo(std::string msg);
 
 But you have forgot to include the relevant typemaps for `uint32_t` and `std::string` in the SWIG interface file. In this particular instance, adding:
 
-```    
+```text
 %include "stdint.i"
 %include "std_string.i"
 ```

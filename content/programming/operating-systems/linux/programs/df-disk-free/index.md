@@ -22,6 +22,6 @@ However, this displays sizes in bytes, which on today's GB+ systems, is not very
 
 ```sh    
 $ df -h
-```    
+```
 
 This prints out sizes with human-readable prefixes (e.g. kB, MB, GB). The h stands for "Human readable". Note `-H` can also be used, but this will use powers of 1000 rather than 1024 is calculate sizes (this is normally not recommended, as the "correct" way is to use powers of 1024).

@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2015-01-07 23:44:57+00:00
+date: 2015-01-07
 draft: false
 title: Pumps
 type: page
@@ -24,8 +24,6 @@ You can convert between head and pressure by using the following equation:
 </p>
 
 Conveniently, The SG for water is 1.
-
-## High Pressure
 
 ## High Pressure Water Pumps
 

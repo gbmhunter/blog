@@ -16,7 +16,7 @@ To list the current crontabs type:
 
 ```sh   
 sudo crontab -l
-```    
+```
 
 ## Special Characters
 
@@ -106,6 +106,6 @@ By default, cron saves the output to the user's mailbox. You can save it to a se
 
 ```sh   
 * * * * * shell-command-here >> /var/log/cron-log-file.log 2>&1
-```    
+```
 
 This redirects both stdout and stderr to the file `cron-log-file.log`.

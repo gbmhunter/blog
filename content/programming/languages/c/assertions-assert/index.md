@@ -25,7 +25,7 @@ A basic assert macro could have the following definition:
 
 ```c
 #define ASSERT(exp) (exp ? : AssertFailed(__FILE__, __LINE__))
-```    
+```
 
 Note that the ternary operator is used here instead of an if statement.
 

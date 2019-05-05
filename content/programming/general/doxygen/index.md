@@ -114,7 +114,7 @@ I normally use the following file headers when documenting with Doxygen.
 
 The first time you use Doxygen, you open up your newly created documentation and discover that the first page (aka the main page or landing page) is blank. This is because Doxygen designed it this way, and to put stuff on it, you have to specifically tell Doxygen to do so. This can be done with the `@mainpage` command. The following example adds a main page with two sections.
 
-```    
+```text
 /*!
 
     @mainpage

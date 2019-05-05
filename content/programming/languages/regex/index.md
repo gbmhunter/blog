@@ -123,7 +123,7 @@ I have had issues using greedy operators (such as `*` and `+`) inside a lookahea
 
 You can use the following syntax to find a C/C++ function definitions based purely on the function name. This does not take into account the name or number of input variables, so in a language which supports function overloading (e.g. C++), this will **find all overloads** of a certain function. It works by looking for the function name, matching the `(`, and number of characters and a matching `)`, then any number of white space or new lines before a `{`, then any number of characters, white-space or new lines before the closing `}`.
 
-```    
+```text
 FuncName(.*)\s{(.*\n)*.*(\n)*}
 ```
 
@@ -133,25 +133,25 @@ Replace FuncName with the name of the function you wish to find.
 
 To match a directory, including the last `/` of a file path, use:
 
-```    
+```text
 (.*=?\\)
-```    
+```
 
 This will match `C:/test/` in `C:/test/reg.exe` and `root/samples/` in `root/samples/filename.txt`.
 
 To match the directory, excluding the last `/` of a file path, use:
 
-```    
+```text
 .*(?=/)
-```    
+```
 
 This will match `C:/test` in `C:/test/reg.exe` and `root/samples` in `root/samples/filename.txt`.
 
 To match all files, except those that begin with the tilda character (`~`), use:
 
-```    
+```text
 .*(?=/)/[^~]*
-```    
+```
 
 This will match `C:/dir/include.txt` **but NOT** `C:/dir/~exclude.txt`.
 
@@ -159,23 +159,23 @@ This will match `C:/dir/include.txt` **but NOT** `C:/dir/~exclude.txt`.
 
 The following regex will match strings enclosed by double or single quotations. Delete either enclosed in the square brackets to exclude that style of string delimiting from the match.
 
-```    
+```text
 (["'])(?:\\\1|.)*?\1
-```    
+```
 
 This will match `test string 1` and `test string 2` in this is `test string 1` and this is `test string 2`.
 
 The following regex expression matches all spaces, except those that are enclosed in double quotes. **Ignore the first and last double quotation** (it is just there to show you that a space exists at the start), and note the first character of the expression is a space. The expression can be useful in command-line processing applications.
 
-```    
+```text
 " (?=[^"]*("[^"]*"[^"]*)*$)"
-```    
+```
 
 ## Matching All Printable ASCII Characters
 
 The following matches all printable ASCII characters (which are grouped together on the ASCII table, from number 32 to 126).
 
-```    
+```text
 [ -~]
 ```
 

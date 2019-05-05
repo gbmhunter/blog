@@ -16,14 +16,14 @@ This page details how to install Mercurial extensions, and covers a few of the e
 
 Mercurial supports 3rd-party extensions that add additional functionality to the core repository engine. Mercurial extensions are usually enabled for a user by adding a line to the either the users Mercurial.ini (global) or hgrc (local to a repo) file, under the [extensions] section. Note that extension paths **cannot be delimited with quotation marks!** For example:
 
-```    
+```text
 [extensions]
 # This will not work!
 myExtension = "C:\path\in\quotations.py"
 
 ## This will work
 myExtension = C:\path\in\quotations.py
-```    
+```
 
 Mercurial can handle both forward-slash (Linux) and back-slash (Windows) paths quite easily, so you the format appropriate for your system. For more on extensions, see [here](https://www.mercurial-scm.org/wiki/UsingExtensions).
 
@@ -53,10 +53,10 @@ As of Jan 2014 I have discovered one bug with this plugin. When using the Tortoi
 
 Purge is a useful Mercurial extension for deleting untracked and/or ignored files from your local version of the repository. It is bundled with the base Mercurial install, but is not installed by default. To install it, add the following line underneath [extensions] in your Mercurial configuration file.
 
-```    
+```text
 [extensions]
 purge =
-```    
+```
 
 Purge can be run from the command line (both *nix systems and Windows) by typing:
 

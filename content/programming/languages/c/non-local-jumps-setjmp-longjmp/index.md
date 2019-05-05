@@ -19,7 +19,7 @@ Non-local jumps have complications, as the stack needs to be saved/modified when
 ```c
 int setjmp(jmp_buf env);
 void longjmp(jmp_buf env, int val);
-```    
+```
 
 `setjmp()` is used to declare a place you want to jump back to at some future point in time. `setjmp()` takes a `jmp_buf` type variable as it's input. This `jmp_buf` is used to save the state of the stack.
 
@@ -31,7 +31,7 @@ void longjmp(jmp_buf env, int val);
 
 ```c    
 #include <setjmp.h>
-```    
+```
 
 ## Making Your Own Exception Handlers In C
 
@@ -44,7 +44,7 @@ try {
 catch(SomeExceptionType e) {
     // Deal with error here
 }
-```    
+```
 
 C does not have native exception support, but you can make your own with some clever use of `setjmp()`, `longjmp()` and preprocessor macros.
 

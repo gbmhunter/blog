@@ -16,7 +16,7 @@ AVR-LibC provides a library to handle interrupt routines for ATmega chips. The f
 
 ```c    
 #include <avr/interrupt.h>
-```    
+```
 
 ## Writing Interrupt Handler Functions
 
@@ -27,13 +27,13 @@ ISR(<interrupt vector>)
 {
     <code to be executed>
 }
-```    
+```
 
 There is also a handler for an interrupt which you don't want to write any code for. This is typically used when the interrupt is going to wake the microcontroller up, but do nothing else. If you do not include a handler, the interrupt will default to calling BADISR_vect code, which by default restarts the application. It has no body (and hence no curly braces).
 
 ```c   
 EMPTY_INTERRUPT(<interrupt vector>);
-```    
+```
 
 ## Enabling/Disabling Interrupts
 

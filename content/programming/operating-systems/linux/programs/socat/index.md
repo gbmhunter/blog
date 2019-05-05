@@ -16,7 +16,7 @@ On Debian-based operating systems (such as Ubuntu), you can type:
 
 ```sh   
 $ sudo apt-get install socat
-```    
+```
 
 ## Connecting Two COM Ports Together
 
@@ -26,7 +26,7 @@ To set up the two-way communication, you type:
 
 ```sh    
 $ sudo socat -d -d pty,raw,echo=0 pty,raw,echo=0
-```    
+```
 
 A little explanation: The `-d -d` instructs socat to print fatal, error and warning message. `pty` instructs socat to connect to a pseudo-terminal (e.g. `/dev/pts/0`, `/dev/pts/1`, ...). `raw` instructs socat to do almost not processing on input/output, and just pass it untouched. `echo=0` tells socat not to echo any input characters back to the same terminal (which is normally the desired behaviour when connecting two COM ports).
 
