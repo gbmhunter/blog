@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categoires: [ "PCB Design" ]
+categories: [ "PCB Design" ]
 date: 2015-11-29
 draft: false
 title: Mouse Bites

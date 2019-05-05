@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categoires: [ "PCB Design" ]
+categories: [ "PCB Design" ]
 date: 2014-11-03
 draft: false
 title: Desmear And Etchback

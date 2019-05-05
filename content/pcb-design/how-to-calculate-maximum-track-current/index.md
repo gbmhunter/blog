@@ -1,6 +1,6 @@
 ---
 author: "gbmhunter"
-categoires: [ "PCB Design" ]
+categories: [ "PCB Design" ]
 date: 2016-04-11
 draft: false
 title: "How To Calculate Maximum Track Current"

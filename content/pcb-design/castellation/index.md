@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categoires: [ "PCB Design" ]
+categories: [ "PCB Design" ]
 date: 2014-07-28
 draft: false
 title: Castellation
@@ -21,7 +21,7 @@ Once soldered onto the parent PCB, it is a permanent attachment.
 
 ## Process
 
-Rows of holes are drilled around the edge of the PCB. Once the holes have been through-hole plated, the board edge is cut so that it runs right down the middle of these holes. The edge of the board now looks like the top of a castle wall, hence the word catellation.
+Rows of holes are drilled around the edge of the PCB. Once the holes have been through-hole plated, the board edge is cut so that it runs right down the middle of these holes. The edge of the board now looks like the top of a castle wall, hence the word castellation.
 
 ## Design
 

@@ -1,9 +1,10 @@
 ---
 author: gbmhunter
-categoires: [ "PCB Design" ]
+categories: [ "PCB Design" ]
 date: 2015-04-28
 draft: false
-title: Layer Stackup
+tags: [ "PCB design", "layer stack-up", "PCB stack-up", "PCBs", "cores", "prepreg", "manufacturing" ]
+title: Layer Stack-up
 type: page
 ---
 

@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categoires: [ "PCB Design" ]
+categories: [ "PCB Design" ]
 date: 2016-05-03
 draft: false
 title: EMI/EMC (Electromagnetic Interference/Compatibility)

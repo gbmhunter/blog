@@ -1,8 +1,9 @@
 ---
 author: gbmhunter
-categoires: [ "PCB Design" ]
+categories: [ "PCB Design" ]
 date: 2015-01-07
 draft: false
+tags: [ "PCB design", "pads", "vias", "holes", "PCBs", "manufacturing", "mounting", "microvias", "annular rings", "thermal relief", "aspect ratios" ]
 title: Pads, Vias And Holes
 type: page
 ---

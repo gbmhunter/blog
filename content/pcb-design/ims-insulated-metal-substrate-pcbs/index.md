@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categoires: [ "PCB Design" ]
+categories: [ "PCB Design" ]
 date: 2014-11-04
 draft: false
 title: IMS (Insulated Metal Substrate) PCBs
@@ -25,7 +25,7 @@ Aluminium is normally used as the substrate (with copper still being used for th
 
 The increased thermal conductivity of IMS PCBs allows for higher packing densities (you can have thinner copper tracks for the same current!), longer operating times, more reliable devices (reduces thermal stress and drops the MTBF).
 
-IMS PCBs are used for power LED PCBs, motor drivers. welding machines, SSR's, power conversion circuits and more.
+IMS PCBs are used for power LED PCBs, motor drivers. welding machines, SSRs, power conversion circuits and more.
 
 {{< img src="ims-pcb-copper-clad-top-down-photo.png" width="281px" caption="Top-down photo of a IMS PCB for high-power LEDs."  >}}
 
@@ -54,7 +54,7 @@ An IMS PCB can be plated using most common plating techniques. However, HASL is 
 
 ## Single-Sided, Single-Layer IMS PCB
 
-This is the most basic and cheapest IMS PCB design layout. It consists of one electrical layer sandwiched to a metallic substrate with some prepreg inbetween. It is commonly used for basic high-power LED PCBs and other simple circuits which don't require too much routing.
+This is the most basic and cheapest IMS PCB design layout. It consists of one electrical layer sandwiched to a metallic substrate with some prepreg in-between. It is commonly used for basic high-power LED PCBs and other simple circuits which don't require too much routing.
 
 {{< img src="example-stack-up-of-single-sided-single-layered-ims-pcb.png" width="407px" caption="An example stack-up of a single-sided, single-layered IMS PCB."  >}}
 

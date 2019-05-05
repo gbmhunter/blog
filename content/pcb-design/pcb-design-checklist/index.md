@@ -48,6 +48,7 @@ type: "page"
 * Solder mask layer is visible on all component pads
 * Remove very thin slivers of solder mask that will not ‘cure properly’. IMP minimum is 6mill (0.1524mm)
 * Appropriate test points included. Untented vias can be used as test points when space is a premium. Make sure there are enough ground test points (both analogue and digital if applicable) for connecting multimeter leads and the ground connections of oscilloscope probe leads.
+* Tracks that could be useful for debugging are accessible from the top or bottom layers (i.e. not completely buried in the middle layers if possible).
 * The way the PCB is mounted is considered and taken account for (e.g. screw holes or sticky pads)
 * No reference to client if requested (due to intellectual property protection)
 * The layer stack-up is specified (core/prepreg/copper material and thickness's)
