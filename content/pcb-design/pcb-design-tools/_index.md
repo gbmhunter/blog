@@ -1,11 +1,11 @@
 ---
 author: "gbmhunter"
-categories: []
+categories: [ "PCB Design" ]
 date: 2019-05-04
 description: ""
 draft: false
 lastmod: 2019-05-04
-tags: []
+tags: [ "PCB design", "tools", "Altium", "Saturn PCB Toolkit" ]
 title: "PCB Design Tools"
 type: "page"
 ---
@@ -25,7 +25,6 @@ Altium is a professional, licensed electronic CAD design package, whose two core
 Very simple but extensive PCB design aid. And it's free! Includes a via current calculator, trace width calculator, bandwidth calculator, differential pair calculator, mechanical data, conductor impedance calculator, unit conversions, planar inductor calculator, thermal resistance calculator and more!
 
 {{< img src="saturn-pcb-toolkit-screenshot.gif" width="500px" caption="A screen-shot of the Saturn PCB toolkit." >}}
-
 
 ## Standard Resistor Calculator
 

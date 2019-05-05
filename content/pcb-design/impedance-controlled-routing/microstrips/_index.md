@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2015-12-01 21:21:51+00:00
+date: 2015-12-01
 draft: false
 title: Microstrips
 type: page
@@ -53,7 +53,7 @@ Go to [http://ninja-calc.mbedded.ninja/calc/microstrip-impedance-calculator](htt
 
 The equation Altium uses (as of AD14, and in unsimplified form):
 
-<div>$$ w = \frac{\frac{5.98h1}{e^{\frac{Z}{\frac{60}{\sqrt{\epsilon_r\left(1 - e^{\frac{-1.55*(0.00002+h1)}{h1}}\right)}}}-h2}}}{0.8} $$</div>
+<p>$$ w = \frac{\frac{5.98h1}{e^{\frac{Z}{\frac{60}{\sqrt{\epsilon_r\left(1 - e^{\frac{-1.55*(0.00002+h1)}{h1}}\right)}}}-h2}}}{0.8} $$</p>
 
 <p class="centered">
     where:<br>
@@ -66,7 +66,7 @@ The equation Altium uses (as of AD14, and in unsimplified form):
 
 Or in computer equation form:
 
-```    
+```text
 w = ((5.98*h1)/exp(Z/(60/sqrt(Er*(1-exp(-1.55*(0.00002+h1)/h1)))))-h2)/0.8
 ```
     
@@ -82,4 +82,4 @@ Why not then make the ground plane really close to the microstrip then? Well, th
 
 ## Design Guidelines
 
-A rule of thumb is to keep co-planar ground at least 3x the microstrip width away from the edges of the microstrip. Close, co-planar ground reduces the impedance of the microstrip. Infact, putting the ground too close to the microstrip results in you making a co-planar waveguide (CPW) instead!
+A rule of thumb is to keep co-planar ground at least 3x the microstrip width away from the edges of the microstrip. Close, co-planar ground reduces the impedance of the microstrip. In fact, putting the ground too close to the microstrip results in you making a co-planar waveguide (CPW) instead!

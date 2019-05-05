@@ -3,6 +3,7 @@ author: "gbmhunter"
 categories: [ "PCB Design" ]
 date: 2016-04-11
 draft: false
+tags: [ "PCB design", "track current", "traces", "PCBs", "routing", "overheating", "thermal", "IPC-2221A", "IPC-2152" ]
 title: "How To Calculate Maximum Track Current"
 type: "page"
 ---
@@ -23,7 +24,7 @@ In the interests of circuit board longevity, the "maximum current" is usually sp
 
 There are two dominant standards in use when it comes to calculating track current.
 
-**One stroke of luck is that IPC-2221A seems to, if anything, under-estimate the current-carrying ability of a track rather than over-estimate.** This is why it can (and is!) still used with success, even with today's multilayer PCBs with complex geometery.
+**One stroke of luck is that IPC-2221A seems to, if anything, under-estimate the current-carrying ability of a track rather than over-estimate.** This is why it can (and is!) still used with success, even with today's multilayer PCBs with complex geometry.
 
 ## IPC-2221A
 
@@ -31,7 +32,7 @@ The first standard, IPC-2221A is quite old, and is based of an older standard ca
 
 IPC-2221A has a single graph (currently figure 6-4), which the following equation for calculating the track current `\(I\)` is derived from:
 
-<div>$$ I = k\Delta T^b A^c $$</div>
+<p>$$ I = k\Delta T^b A^c $$</p>
 
 <p class="centered">
     where:<br>
@@ -54,11 +55,11 @@ The temperature of the PCB material should NEVER exceed the relative thermal ind
 
 The second standard, IPC-2152, is a much newer standard. It has a more technical and presumably accurate method for calculating the maximum track current.
 
-## History
+### History
 
 The data in the IPC-2152 standard is based of two experiments. One was done by Mike Jouppi of Lockheed Martin, and the other by the Naval Surface Warface Center, Crane Division. The results from these two experiments was compiled into IPC-2152 under the heading "_Standard for Determining Current Carrying Capacity in Printed Board Design_"
 
-## The Calculation Steps
+### The Calculation Steps
 
 Unlike IPC-2221A, IPC-2152 is not just a simple equation.
 
@@ -67,7 +68,7 @@ Unlike IPC-2221A, IPC-2152 is not just a simple equation.
 
     {{< figure src="/images/2016/04/ipc-2152-universal-chart.png" width="641px" caption="The Universal Chart in IPC-2152 which gives an un-adjusted track cross-sectional area based upon the desired current and temperature rise."  >}}  
 
-2. Then, a bunch of co-efficients (modifiers) are found based on a number of other parameters. The parameters include:  
+2. Then, a bunch of coefficients (modifiers) are found based on a number of other parameters. The parameters include:  
 
     - Thermal conductivity of the PCB  
     - The PCB thickness  
@@ -78,7 +79,7 @@ Unlike IPC-2221A, IPC-2152 is not just a simple equation.
 
 4. The adjusted cross-sectional area
 
-## That's Hard Work, Can It Be Any Easier?
+### That's Hard Work, Can It Be Any Easier?
 
 Glad you asked! mbedded.ninja has developed a desktop application called [NinjaCalc](http://mbedded-ninja.github.io/NinjaCalc/), which includes IPC-2221A and IPC-2152 track current calculators (remember, use IPC-2152 wherever possible!).
 

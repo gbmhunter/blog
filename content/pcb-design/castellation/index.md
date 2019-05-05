@@ -3,6 +3,7 @@ author: gbmhunter
 categories: [ "PCB Design" ]
 date: 2014-07-28
 draft: false
+tags: [ "PCB design", "castellation", "half-vias", "edge-plating", "leadless chip carrier", "LCC"]
 title: Castellation
 type: page
 ---

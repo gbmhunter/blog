@@ -209,31 +209,34 @@ Sorted from smallest to largest package size.
 <td >20.48mm2
 </td>
 <td >One of the largest SMT chip packages you can get. Limited supply of components in this package, mainly power and current-sense resistors.
-</td></tr></tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
 
 The following image shows how you can easily route an 0.2mm thick trace between the pads of a 0805 component.
 
-{{< figure src="/images/electronics-packages/routing-between-0805-footprints.jpg" caption="Routing between the pads of a 0805 footprint (in Altium)."  width="500px" >}}
+{{< img src="routing-between-0805-footprints.jpg" caption="Routing between the pads of a 0805 footprint (in Altium)."  width="500px" >}}
 
 The following image is of 0603 (imperial) SMD components inside a small container.
 
-{{< figure src="/images/my-workshop/smd-container-open-and-closed.jpg" caption="A container from DealExtreme used for holding SMD components (capacitors in this picture)"  width="800px" >}}
+{{< img src="smd-container-open-and-closed.jpg" caption="A container from DealExtreme used for holding SMD components (capacitors in this picture)"  width="800px" >}}
 
 ## SMD Chip Resistors
 
 The following table shows the range of chip resistors package sizes (based on the EIAJ Chip Packages above), and typical parameters for each. Note that the maximum current rating is based on the thermal properties of the package and its leads, and does not take into account the actual resistance of the resistor (e.g. tested with a 0Ω). Obviously, the actual allowable current is likely to be much less due to resistance.
 
 <table>
-    <thead>
-        <tr>
-            <th>Package</th>
-            <th>Designator (metric)</th>
-            <th>Package</th>
-            <th>Designator (imperial)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Designator (metric)</th>
+      <th>Package</th>
+      <th>Designator (imperial)</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
 <td>1005</td>
 <td>0402
 </td>
@@ -290,12 +293,15 @@ The following table shows the range of chip resistors package sizes (based on th
 <td>3
 </td>
 <td>Yes
-</td></tr></tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
 
 ## Reverse-Aspect Chip Capacitors (LICC)
 
 Reverse-aspect chip capacitors (a.k.a LICC) have their leads on the long sides of the chip, as opposed to standard chip components which have the leads on the short sides. This reverse-geometry reduces the inductance in the PCB-to-capacitor connection, and is in high-speed designs where ultra-low inductance is required.
 
-{{< figure src="/images/2015/10/comparison-of-various-smd-chip-capacitor-internal-designs.mlcc-licc-mpdigest.png" width="483px" caption="A comparison of the different internal designs of various SMD chip capacitors. Image from http://www.mpdigest.com/." >}}
+{{< img src="comparison-of-various-smd-chip-capacitor-internal-designs-mlcc-licc-mpdigest.png" width="483px" caption="A comparison of the different internal designs of various SMD chip capacitors. Image from http://www.mpdigest.com/." >}}
 
 They are normally named the same as normal aspect chip capacitors except with the two numbers in reverse order, i.e. an 0603 sized capacitor now becomes a 0306 capacitor.
