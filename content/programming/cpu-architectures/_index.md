@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Programming", "CPU Architectures" ]
 date: 2013-07-18
 draft: false
-tags: [ "programming", "CPU architecture", "ARM", "Cortex", "C2000" ]
+tags: [ "programming", "CPU architectures", "ARM", "Cortex", "C2000" ]
 title: CPU Architectures
 type: page
 ---

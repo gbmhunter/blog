@@ -126,7 +126,7 @@ The Match object is returned when the Execute method of the RegExp object is cal
 <tbody >
 <tr>
 <td>FirstIndex</td>
-<td>The position within the original string where the match occured. This is zero-based (the first position is 0).</td>
+<td>The position within the original string where the match occurred. This is zero-based (the first position is 0).</td>
 </tr>
 <tr>
 <td>Length
@@ -217,7 +217,7 @@ Pi = 4 * Atn(1)
 
 This will give Pi to the maximum precision available on the platform you a running on. You can't ask for better!
 
-Thankfully, VBScript has built in support for the cos() and sin() family of functions. They take an input angle **in radians**. To convert between radians and degrees you can use the following expressions:
+Thankfully, VBScript has built in support for the `cos()` and `sin()` family of functions. They take an input angle **in radians**. To convert between radians and degrees you can use the following expressions:
 
 ```vb    
 ' Let's first get a value for Pi

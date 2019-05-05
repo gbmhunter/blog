@@ -2,7 +2,7 @@
 author: "gbmhunter"
 date: 2018-12-03
 description: "Regex find/replace, back-references and more info about the text-editor vim."
-lastmod: 2019-02-12
+lastmod: 2019-05-05
 tags: [ "vim", "text editor", "Linux", "command-line", "regex", "IDE", "copy", "paste", "system clipboard", "yank", "indenting", "plugins" ]
 title: "vim"
 type: "page"
@@ -31,7 +31,7 @@ Command   | Description
 
 To find every occurrence of `foo` and replace it with `bar` we can use the substitute command (`s`):
 
-```
+```text
 :%s/foo/bar/g
 ```
 
@@ -41,7 +41,7 @@ The _search pattern_ (which above is `foo`) supports regex.
 
 You can add a `c` at the end to ask for confirmation on each replace:
 
-```
+```text
 :%s/foo/bar/gc
 ```
 
@@ -69,9 +69,9 @@ When performing copy/paste operations in the above manner, vim will not use the 
 
 Copying/pasting to the system clipboard can be a little tricky.
 
-As long as your vim executable supports it, you can copy to the clipbaord using the `*` register. Select text using visual mode (e.g. `v`, `l`, `l` to select three characters), and then press:
+As long as your vim executable supports it, you can copy to the clipboard using the `*` register. Select text using visual mode (e.g. `v`, `l`, `l` to select three characters), and then press:
 
-```
+```text
 "*y
 ```
 
@@ -107,6 +107,12 @@ When in normal mode, you can press `>>` or `<<` to shift the current line.
 
 When in insert mode, you can use `Ctrl-T` to indent right and `Ctrl-D` to indent left (unindent).
 
+## Deleting The Char Under The Cursor
+
+To delete the single char under the cursor while in normal mode, press `x`.
+
+To delete the single char under the cursor while in normal mode, **and then enter insert mode**, press `s`. This is great for modifying single characters, and is one key stroke shorter than `i, Del` (it matters!).
+
 ## Plugins And Plugin Managers
 
 vim supports third-party plugins which can add extra functionality to the program, however there is no built-in plugin manager. A number of third-party plugin managers exist which can be used to easily install and use plugins.
@@ -127,4 +133,4 @@ neobundle has been deprecated in favour of dein.vim.
 
 * Website: https://github.com/VundleVim/Vundle.vim
 
-vundle manages your plugins from the .vimrc file. It is easy to install and setup. vundle supports automatic installation of vim plugins from GitHub.
+vundle manages your plugins from the `.vimrc file`. It is easy to install and setup. vundle supports automatic installation of vim plugins from GitHub.

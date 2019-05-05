@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-06-09 00:54:46+00:00
+date: 2012-06-09
 draft: false
 title: Skateboard H-Bridge Blew Up (for the +10th time)
 type: post
@@ -8,11 +8,11 @@ categories:
 - Electric Skateboard
 tags:
 - blow up
-- DAC
+- DACs
 - electric skateboard
 - EMF
-- half-bridge
-- motor
+- half-bridges
+- motors
 - PWM
 ---
 

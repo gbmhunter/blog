@@ -2,18 +2,21 @@
 author: gbmhunter
 categories: [ "Mathematics", "Signal Processing" ]
 date: 2018-06-05
+description: "A tutorial on convolution."
 draft: false
-lastmod: 2019-04-28
-tags: [ "convolution", "mathematics", "signal processing" ]
+lastmod: 2019-05-05
+tags: [ "signal processing", "mathematics", "convolution", "signal processing", "DSPs", "edge detection", "blurring", "sharpening" ]
 title: Convolution
 type: page
 ---
 
 ## Overview
 
-Convolution is a mathematic operation that can be performed on two functions, which produces a third output function which is a "blend" of the two inputs.
+Convolution is a mathematic operation that can be performed on two functions, which produces a third output function which is a "blend" of the two inputs. Physically, when convoluting a signal with another function, it somewhat represents the "smearing" of the signals energy (in time) with respect to the shape of the second function.
 
-Convolution can be thought of as a measure of the amount of overlap of one function as it is shifted completely over the other function.
+1D convolution is commonly used in digital signal processing (DSP) algorithms. 
+
+2D convolution is **commonly used in image processing to perform edge detection and blurring**. Conversely, deconvolution is commonly used to sharpen images. The image is convolved with a _kernel_ or _convolution matrix_, a typically small matrix which mixes the signal of one pixel with the surrounding pixels.
 
 ## Formal Definition
 
@@ -49,7 +52,9 @@ These other properties also hold true:
 
 <p>$$ a (f \ast g) = (af) \ast g $$</p>
 
-## Calculating A Convolution
+## Calculating A Convolution Of Two Box-Car Functions
+
+### Setup
 
 One of the easiest convolution calculations that has a closed-form solution is that of two "box-car" signals.
 
@@ -71,15 +76,41 @@ And `\(g(t)\)` is exactly the same:
 \end{cases}
 $$</p>
 
-We need to "flip and slide" `\(g(t)\)`:
+{{< img src="box-car-functions-ft-gt.png" width="700px" caption="" >}}
 
-When `\(t < 0\)` the two box-cars do not intersect at all, so:
+We need to "flip" `\(g(\tau)\)` to give `\(g(-\tau)\)`:
+
+{{< img src="g-tau-flipped.png" width="700px" caption="" >}}
+
+Then we need to shift `\(g(-\tau)\)` by `\(t\)` to give `\(g(t - \tau)\)`:
+
+{{< img src="g-tau-offset.png" width="700px" caption="" >}}
+
+Now we to vary `\(t\)` from `\(-\infty\)` to `\(+\infty\)`, and at each `\(t\)`, multiply the two signals together `\(f(\tau)g(t - \tau)\)`, and calculate the total area under this new signal (mathematically, the integral between `\(-\infty\)` and `\(+\infty\)`). This area is the value of the convolution at time `\(t\)`. 
+
+Obviously, varying `\(t\)` from `\(-\infty\)` to `\(+\infty\)` manually is impossible, but we can break this problem down into sections, and calculate the equation for the convolution function for each section. Because box-car functions are not continuous, we need to break the problem down into sections were each section can describe the convolution in a continuous form.
+
+---
+
+### `\(t < 0\)`
+
+When `\(t < 0\)` the two box-cars do not intersect at all, thus the product of `\(f\)` and `\(g\)` is always 0, and thus the area is also 0, which means the value of the convolution function when `\(t < 0\)` is also 0:
+
+{{< img src="when-t-less-than-0.png" width="400px" >}}
 
 <p>$$
-\int_{-\infty}^{-\infty} f(\tau)g(t - \tau)\,d\tau = 0
+  \int_{-\infty}^{-\infty} f(\tau)g(t - \tau)\,d\tau = 0
 $$</p>
 
-When `\(0 \le t < 1\)`:
+---
+
+### `\(0 \le t < 1\)`
+
+When `\(0 \le t < 1\)`, the two box-car functions begin to intersect, with the amount if intersection increasing with `\(t\)`. Where they intersect, the product of the two functions is also `\(1\)`. This product is shown as the green line below.
+
+{{< img src="when-0-lte-t-lt-1.png" width="400px" >}}
+
+From visual inspection of the green plot, it is obvious that the area under the curve is going to be width*height, which in this case is `\((t - 0)*1 = t\)`. Mathematically this can be calculated by:
 
 <p>\begin{align}
 \int_{-\infty}^{-\infty} f(\tau)g(t - \tau)\,d\tau &= \int_0^t 1*1\,d\tau \\
@@ -87,7 +118,15 @@ When `\(0 \le t < 1\)`:
 &= t
 \end{align}</p>
 
-When `\(1 \le t < 2\)`:
+---
+
+### `\(1 \le t < 2\)`
+
+When `\(1 \le t < 2\)`, the functions still intersect, but they are beginning to separate. The area is again width*height, where the width is from `\(t-1\)` to `\(1\)`, and the height is still `\(1\)`.
+
+{{< img src="when-1-lte-t-lt-2.png" width="400px" >}}
+
+We can calculate a function for the convolution in this interval with:
 
 <p>\begin{align}
 \int_{-\infty}^{-\infty} f(\tau)g(t - \tau)\,d\tau &= \int_{t-1}^1 1*1\,d\tau \\
@@ -96,15 +135,25 @@ When `\(1 \le t < 2\)`:
 &= 2 - t
 \end{align}</p>
 
-When `\(t \ge 2\)`, the two box-cars do not intersect at all, so:
+---
+
+### `\(t \ge 2\)`
+
+When `\(t \ge 2\)`, the two box-cars do not intersect at all (just like when `\(t < 0\)`):
+
+{{< img src="when-2-lte-t-lt-inf.png" width="400px" >}}
+
+Mathematically we can write this as:
 
 <p>$$
 \int_{-\infty}^{-\infty} f(\tau)g(t - \tau)\,d\tau = 0
 $$</p>
 
+---
 
+### Combining The Sections
 
-Putting all of this together:
+Now that we have derived functions for all of the relevant sections of the convolution function, we can combine them piece-wise to get the final answer:
 
 <p>$$
 (f \ast g)(t) =

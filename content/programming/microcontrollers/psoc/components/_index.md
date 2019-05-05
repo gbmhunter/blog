@@ -2,8 +2,9 @@
 author: gbmhunter
 categories: [ "Programming", "Microcontrollers", "Cortex-M3" ]
 date: 2013-03-19
+description: "Brief overview of the variety of components available in PSoc 3/4/5 MCUs."
 draft: false
-tags: [ "PSoC", "microcontroller", "Cortex-M3" ]
+tags: [ "PSoC", "microcontroller", "Cortex-M3", "components", "UART", "I2C", "interrupts", "pins" ]
 title: Components
 type: page
 ---
@@ -25,7 +26,7 @@ UartCpComms_Start();
 ClkCpTimer_Start();
 ```
 
-{{< figure src="/images/2013/03/custom-user-c-code-in-psoc-api-files.png" width="688px" caption="The correct place to enter custom user code in automatically generated Cypress component API files."  >}}
+{{< img src="custom-user-c-code-in-psoc-api-files.png" width="688px" caption="The correct place to enter custom user code in automatically generated Cypress component API files." >}}
 
 {{% note %}}
 This is not an exhaustive list, for a list of all components, download [PSoC Creator](http://www.cypress.com/?id=2494) and browse through the included library.
@@ -37,17 +38,17 @@ Most PSoC components do not like to be slept or woken twice in a row (by calling
 
 ## ADC (Delta-Sigma)
 
-Delta-Sigma ADC components are high precision voltage measuring devices. The trade-off is they take longer to perform a conversion than the SAR ADC's.
+Delta-Sigma ADC components are high precision voltage measuring devices. The trade-off is they take longer to perform a conversion than the SAR ADCs.
 
 ## ADC (SAR)
 
 A _successive-approximation register analogue-to-digital converter_ (SAR ADC) is the common way of measuring a PCB voltage with a microcontroller.
 
-The PSoC ADC component supports many different sources for the voltage reference, `\(V_{ref}\)`. One of the most common choices is the internally generated 1.024V, which allows you to measure a voltage between 0-2.048V. For ratiometric measurements (e.g. measuring the voltage of a [thermistor temperature sensor](/electronics/components/sensors/temperature-sensors/ntc-thermistors-temperature-sensors) connected in a resistor divider configuration), you can set `\(V_{ref}\)` to be `VDDA/2`. Please note that you cannot change the voltage reference for the ADC at run-time (i.e. it may only be adjusted at compile time).
+The PSoC ADC component supports many different sources for the voltage reference, `\(V_{ref}\)`. One of the most common choices is the internally generated 1.024V, which allows you to measure a voltage between 0-2.048V. For ratiometric measurements (e.g. measuring the voltage of a {{% link text="thermistor temperature sensor" src="/electronics/components/sensors/temperature-sensors/ntc-thermistors-temperature-sensors/index.md" %}} connected in a resistor divider configuration), you can set `\(V_{ref}\)` to be `VDDA/2`. Please note that you cannot change the voltage reference for the ADC at run-time (i.e. it may only be adjusted at compile time).
 
 Some of the higher-end PSoC microcontrollers contain 2 SAR ADCs. Remember that with an analogue multiplexor, you can use one ADC to take successive measurements of large numbers of analogue channels. And if you need precisely consecutive measurements, you still only need one ADC if you add 'sample and hold' components to the analogue inputs.
 
-The higher-end PSoC microcontrollers also have Delta-Sigma ADC's, which are more accurate than the SAR ADC's (albeit with a slower conversion time).
+The higher-end PSoC microcontrollers also have Delta-Sigma ADCs, which are more accurate than the SAR ADCs (albeit with a slower conversion time).
 
 {{% warning %}}
 Calling `AdcCp_StartConvert()` disables the SOC pin indefinitely if triggered mode is enabled (this always gets me).
@@ -59,7 +60,7 @@ The PSoC has some powerful analogue multiplexing capabilities. This includes mul
 
 The following picture shows a PSoC multiplexer being used to connect two analogue inputs up to a ADC (one of the most common uses for a analogue multiplexer).
 
-{{< figure src="/images/2013/03/psoc-component-analogue-multiplexor-mux.jpg" width="550px" caption="The analogue multiplexor (mux) component in PSoC Creator."  >}}
+{{< img src="psoc-component-analogue-multiplexor-mux.jpg" width="550px" caption="The analogue multiplexor (mux) component in PSoC Creator."  >}}
 
 ## Cap Sense
 
@@ -73,7 +74,7 @@ The cap sense peripheral uses a delta-sigma modulator.
 
 The screenshot below shows the GUI for configuring the capacitive elements in PSoC Creator.
 
-{{< figure src="/images/2013/03/psoc-creator-schematic-cap-sense-component.jpg" width="670px" caption="The cap sense configure window in PSoC Creator."  >}}
+{{< img src="psoc-creator-schematic-cap-sense-component.jpg" width="670px" caption="The cap sense configure window in PSoC Creator."  >}}
 
 ## Clocks
 
@@ -114,7 +115,7 @@ Take care if using a clock to reset a PSoC hardware component. PSoC clocks have 
 
 Most embedded engineers would of heard about counters. They are commonly included peripherals in microcontrollers. Counters enable you to, well, count stuff. PSoC has a highly configurable and flexible counter module. It counting modes support counting down (the typical method), counting up, or counting in both directions depending on an input bit. It has a user defined clock input, compare register and output, a capture mode, and an interrupt with configurable interrupt sources. The maximum count can be set to 8-bit, 16-bit, 24-bit or 32-bit.
 
-{{< figure src="/images/2013/03/psoc-component-schematic-counter-16bit.png" width="820px" caption="The PSoC counter component, set to be 16-bit (this is configurable)."  >}}
+{{< img src="psoc-component-schematic-counter-16bit.png" width="820px" caption="The PSoC counter component, set to be 16-bit (this is configurable)."  >}}
 
 One gripe with the up-down counter is that when counting upwards, you cannot get it to reset to 0 at a configurable count. It only supports reset on overflow (which can be 2^8, 2^16, 2^24 or 2^32). I encountered this problem when designing a hardware based quadrature encoder counter for BLDC motor control (although Cypress does provide a separate Quadrature Decoder component).
 
@@ -126,24 +127,24 @@ Cypress provides a handy hardware component that deals with the issue of switch 
 
 The component is really set-up and user, and the following image shows one of the most common ways you would set up the debouncer circuit.
 
-{{< figure src="/images/2013/03/psoc-debounce-component-with-pin-and-interrupt.png" width="590px" caption="The PSoC Debouncer. In the case, the switch pulled-up, and input goes low on press, which fires interrupt."  >}}
+{{< img src="psoc-debounce-component-with-pin-and-interrupt.png" width="590px" caption="The PSoC Debouncer. In the case, the switch pulled-up, and input goes low on press, which fires interrupt."  >}}
 
 ## Delays
 
-Cypress supplies functions for creating software halt delays. They are included in CyLib.c. There is:
+Cypress supplies functions for creating software halt delays. They are included in `CyLib.c`. There is:
 
 ```c    
 void CyDelay(uint32 milliseconds);
 void CyDelayUs(uint16 microseconds)
 ```
 
-On the Cypress forums there is also delay functions supplied in a c header (.h) and assembly (.asm) file.
+On the Cypress forums there is also delay functions supplied in a C header (`.h`) and assembly (`.asm`) file.
 
 ## Digital Filter Blocks (DFBs)
 
 The PSoC microcontroller features a digital filter block, a highly versatile and easy-to-use piece of analogue hardware that can configured graphically from the GUI.
 
-{{< figure src="/images/2013/03/psoc-filter-component-config-dialog-box.png" width="1118px" caption="The filter component configuration tab in PSoC Creator."  >}}
+{{< img src="psoc-filter-component-config-dialog-box.png" width="1118px" caption="The filter component configuration tab in PSoC Creator."  >}}
 
 ## I2C
 
@@ -151,7 +152,7 @@ Info Last Updated For: _I2C v3.5_
 
 The I2C component can be used to make the PSoC act as an I2C master or slave device, and allows communication with other I2C devices. It also supports multi-master buses.
 
-## Low-Level vs. High-Level Master API Functions
+### Low-Level vs. High-Level Master API Functions
 
 The PSoC I2C component provides both low-level and high-level API functions.
 
@@ -176,12 +177,12 @@ When reading bytes individually from the I2C bus using the low-level API, rememb
 
 The low-level I2C API functions can cause your application (or thread) to lock-up due to dangerous `while()` loops (see below). The higher-level functions have the advantage of always returning.
 
-## Dangerous While() Loops
+### Dangerous While() Loops
 
 In what I see as a rather poor design decision, some of the low-level PSoC I2C API functions have `while()` loops which, under certain conditions, never terminate. In a single threaded application (e.g. a mega-loop structure), this would cause your entire app to lock-up (except for interrupts). In a multi-threaded application, this would cause the calling thread to freeze. In any case, this is bad!
 
 
-{{< figure src="/images/2013/03/cypress-psoc-i2c-api-while-loops-in-master-functions-annotated.png" width="538px" caption="An example of the dangerous, un-bounded while() loops in the PSoC I2C API."  >}}
+{{< img src="cypress-psoc-i2c-api-while-loops-in-master-functions-annotated.png" width="538px" caption="An example of the dangerous, un-bounded while() loops in the PSoC I2C API."  >}}
 
 The following API functions in `I2C_MASTER.c` contain unbounded `while()` loops:
 
@@ -206,7 +207,7 @@ The following macros in `I2C.h` contain unbounded `while()` loops:
 
 The only work around I know of is to modify the PSoC I2C component (not nice, I know!) and add an upper-bound to the number of iterations of the `while()` loops.
 
-{{< figure src="/images/2013/03/psoc-i2c-api-with-upper-bounds-on-while-loops-annotated.png" width="857px" caption="An screenshot of an edited version of the PSoC I2C API with added upper-bounds on the number of while() loop iterations."  >}}
+{{< img src="psoc-i2c-api-with-upper-bounds-on-while-loops-annotated.png" width="857px" caption="An screenshot of an edited version of the PSoC I2C API with added upper-bounds on the number of while() loop iterations."  >}}
 
 Note that 5 new timeout error responses (e.g. `` `$INSTANCE_NAME`_MSTR_ERR_TIMEOUT_SEND_STOP ``) have been added as macros so the user code can determine if a timeout has occurred.
 
@@ -214,7 +215,7 @@ Note that 5 new timeout error responses (e.g. `` `$INSTANCE_NAME`_MSTR_ERR_TIMEO
 
 Most of the work in setting up an interrupt can be done graphically. When starting an interrupt, you can provide a function pointer to call instead of using the pre-defined version (which helps keep your code separated from the automatically generated Cypress stuff).
 
-{{< figure src="/images/2013/03/psoc-top-design-isr-component-connected-to-push-button.jpg" width="472px" caption="The ISR component, connected to a push button (digital input pin)."  >}}
+{{< img src="psoc-top-design-isr-component-connected-to-push-button.jpg" width="472px" caption="The ISR component, connected to a push button (digital input pin)."  >}}
 
 To declare a interrupt function (i.e. the prototype, the bit at the top of your file), use the following macro, where the ISR function name is the name of the function you want called when the interrupt occurs. For example:
 
@@ -246,7 +247,7 @@ which would call the interrupt handler function `UartRxIsr()` defined above.
 
 Note that the trigger mode for interrupts can only be set to rising edge or level, falling edge is not supported. However, you can use the power of the reconfigurable PSoC hardware to get around this. If you want to detect a falling edge, set the trigger mode to rising edge and put a inverting gate on the input to the interrupt. If you want to trigger on both edges, you can use two interrupts, with one before the inverting gate, and one after.
 
-{{< figure src="/images/2013/03/hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png" width="1054px" caption="6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge." >}}
+{{< img src="hall-effect-interrupts-from-bldc-motor-for-both-rise-and-fall.png" width="1054px" caption="6 PSoC interrupts to service the three hall-effect inputs from a BLDC motor. Six interrupts are required because the PSoC interrupt component only supports rising-edge triggering, and so a inverting gate and second interrupt per sensor is required to trigger on falling-edge." >}}
 
 If you are using a PSoC5/PSoC5 LP, you can use the ARM Cortex-M3 `NVIC_IABR0-NVIC_IABR7` registers to determine whether an ISR is currently being executed. These registers span the address range `0xE000E300-0xE000E31C`. See [this link](http://infocenter.arm.com/help/topic/com.arm.doc.dui0552a/DUI0552A_cortex_m3_dgug.pdf) for more information.
 
@@ -254,11 +255,11 @@ If you are using a PSoC5/PSoC5 LP, you can use the ARM Cortex-M3 `NVIC_IABR0-NVI
 
 One of the disadvantages of the character LCD driver is that it requires 7 consecutive pins on a port, beginning at either pin 0 or pin 1. This kind of goes against PSoC's 'route anywhere' maxim.
 
-{{< figure src="/images/2013/03/psoc-module-character-lcd.jpg" width="154px" caption="The PSoC Character LCD component. Not much to it right?"  >}}
+{{< img src="psoc-module-character-lcd.jpg" width="154px" caption="The PSoC Character LCD component. Not much to it right?"  >}}
 
 Pin description:
 
-{{< figure src="/images/2013/03/psoc-module-character-lcd-pin-description.jpg" width="800px" caption="The pin descriptions for the PSoC LCD component."  >}}
+{{< img src="psoc-module-character-lcd-pin-description.jpg" width="800px" caption="The pin descriptions for the PSoC LCD component."  >}}
 
 ## Pins
 
@@ -266,13 +267,13 @@ Yes, even the microcontrollers physical pins are "componentised" in PSoC Creator
 
 Pins on a PSoC microcontroller can be "ganged" together to provide more output current. They can be connected together in hardware (via the PSoC Creator schematic, as shown below), so you don't have to worry about setting them all at the same time in software. You must still make sure that the total amount of current for a port is not exceeded.
 
-{{< figure src="/images/2013/03/ganging-port-pins-together-to-provide-more-output-current.png" width="620px" caption="Ganging port pins together on a PSoC microcontroller to provide more output current. Be careful not to exceed to total allowed current per port."  >}}
+{{< img src="ganging-port-pins-together-to-provide-more-output-current.png" width="620px" caption="Ganging port pins together on a PSoC microcontroller to provide more output current. Be careful not to exceed to total allowed current per port."  >}}
 
-## USB Pins
+### USB Pins
 
 Most physical pins on a PSoC microcontroller can be connected to a GPIO pin component. One caveat is that your have to select the pin component to either "strong drive" or "open-drain pull low" before you can assign it to one of the two USB pins (`D+`, `D-`, or `P15[6]` and `P15[7]` on the PSoC 5/PSoC 5 LP). This is also mentioned on the [PSoC Bugs, Problems And Annoyances page](/programming/microcontrollers/psoc/psoc-bugs-problems-and-annoyances).
 
-## Synchronisation
+### Synchronisation
 
 By default, digital inputs are **double synchronised**, and analogue inputs are left alone (in makes no sense to synchronise a analogue signal). This is normally a good thing, since it will make your external signal compatible with internal PSoC digital logic. Note that synchronisation **will modify your input signal**. With a fast enough system clock, this is normally a non-issue since the edge-shifting will be small compared to the period of your signal.
 
@@ -282,7 +283,7 @@ However, you can turn the synchronisation off in the pin settings if you wish to
 
 The Pulse Converter component is useful to convert variable width input pulses into constant width output pulses. It is a purely hardware-based component, using two different clock inputs to change the pulse width.
 
-{{< figure src="/images/2013/03/psoc-component-pulse-converter-trigger-in-out.png" width="388px" caption="The PSoC Pulse Converter component, being used here to output constant-width pulses."  >}}
+{{< img src="psoc-component-pulse-converter-trigger-in-out.png" width="388px" caption="The PSoC Pulse Converter component, being used here to output constant-width pulses."  >}}
 
 {{% warning %}}
 With this component, there can (and likely will be) a delay between the rising edge of the input pulse and the rising edge of the output pulse, depending on the phase difference between the two clocks.
@@ -294,7 +295,7 @@ The quadrature decoder is a useful component when interfacing with incremental e
 
 I have used this for controlling a [BLDC motor](/electronics/circuit-design/bldc-motor-control) that had an incremental encoder attached to it's shaft at it worked perfectly! The picture below shows the component connected to the input pins of the incremental encoder. The N channel was not used as I did not want the count to be reset every cycle.
 
-{{< figure src="/images/2013/03/psoc-component-quadrature-decoder.png" width="1034px" caption="The PSoC quadrature decoder component. Takes the A, B and N inputs from an incremental encoder and converts it into a count."  >}}
+{{< img src="psoc-component-quadrature-decoder.png" width="1034px" caption="The PSoC quadrature decoder component. Takes the A, B and N inputs from an incremental encoder and converts it into a count."  >}}
 
 ## RTC
 
@@ -306,7 +307,7 @@ The RTC code is supplied as component that you drop into the top level design in
 
 While the PSoC 3 and 5/5LP microcontollers have dedicated UART, I2C and SPI modules, in the PSoC 4 they are all bundled together in a _Serial Communication Block (SCB)_.
 
-{{< figure src="/images/2013/03/psoc-creator-scb-component-as-uart-example-topdesign.png" width="307px" caption="A screenshot of a SCB block in the 'TopDesign.cysch' file in PSoC Creator. This SCB block is configured as a UART."  >}}
+{{< img src="psoc-creator-scb-component-as-uart-example-topdesign.png" width="307px" caption="A screenshot of a SCB block in the 'TopDesign.cysch' file in PSoC Creator. This SCB block is configured as a UART."  >}}
 
 The SCB can be either configured graphically at compile time or by using code at runtime to operate as a UART, I2C or SPI module.
 
@@ -344,11 +345,11 @@ The USB module supports interrupt, control, bulk and isosynchronous transfer typ
 
 The VDAC (digital-to-analogue voltage converter) component is used to convert a digital value into an analogue voltage. It is the opposite of an ADC.
 
-{{< figure src="/images/2013/03/vdac-component-routed-to-debug-pin-on-schematic.png" width="210px" caption="The PSoC VDAC component."  >}}
+{{< img src="vdac-component-routed-to-debug-pin-on-schematic.png" width="210px" caption="The PSoC VDAC component."  >}}
 
 The VDAC component can be very helpful while debugging. You can use it to "trace" where the execution point is of the processor. While a digital output port only allows 0 or 1, because the VDAC output supports 256 output levels, you can assign a level to a specific function or block of code, and use an oscilloscope to inspect where the processor is. Each different voltage level shown on the oscilloscope will correspond to a different section of code.
 
-{{< figure src="/images/2013/03/using-psoc-vdac-component-to-inspect-code-execution.jpg" width="579px" caption="The oscilloscope on the PSoC VDAC component output allows you to inspect code execution. Each different voltage level corresponds to a different section of code. This was taken while running a complex FreeRTOS-based program."  >}}
+{{< img src="using-psoc-vdac-component-to-inspect-code-execution.jpg" width="579px" caption="The oscilloscope on the PSoC VDAC component output allows you to inspect code execution. Each different voltage level corresponds to a different section of code. This was taken while running a complex FreeRTOS-based program."  >}}
 
 This technique gives both you the execution time of a block of code, as well as the order of execution, which is important to know when running an embedded operating system (such as FreeRTOS).
 
@@ -385,7 +386,7 @@ Some PSoC microcontrollers have a built-in hardware watchdog. Because the watchd
 
 The ILO (internal low-speed oscillator) is used to provide the watchdog with a clock source.
 
-The watchdog is started with the function CyWdtStart(). Note that once you make a call to `CyWdtStart()`, there is no way to disable the watchdog until an `IPOR` (imprecise power-on reset) event occurs. This is a purposeful design choice for application safety.
+The watchdog is started with the function `CyWdtStart()`. Note that once you make a call to `CyWdtStart()`, there is no way to disable the watchdog until an `IPOR` (imprecise power-on reset) event occurs. This is a purposeful design choice for application safety.
 
 NOTE: Although it seems like once you call `CyWdtStart()`, you are guaranteed that the device will reset if the watchdog is not fed, there is one exception. Putting the PSoC microcontroller into the _hibernate_ sleep mode will also halt the watchdog timer!
 
@@ -393,4 +394,4 @@ The watchdog is cleared (a.k.a. fed) with the function `CyWdtClear()`. This must
 
 Care must be taken when a watchdog is activated for an application that writes to either flash or EEPROM. It can take up to 20ms to perform a flash/EEPROM write, by which the watchdog could trigger an cause a reset.
 
-{{< figure src="/images/2013/03/care-with-psoc-watchdog-and-eeprom-flash-20ms-write-time.png" width="357px" caption="A screenshot taken from the PSoC 5 LP datasheet, stating care must be taken when using the watchdog in an application that also performs EEPROM or flash writes."  >}}
+{{< img src="care-with-psoc-watchdog-and-eeprom-flash-20ms-write-time.png" width="357px" caption="A screenshot taken from the PSoC 5 LP datasheet, stating care must be taken when using the watchdog in an application that also performs EEPROM or flash writes."  >}}

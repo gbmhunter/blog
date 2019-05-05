@@ -5,7 +5,7 @@ date: 2011-09-03
 description: "A tutorial on analog-to-digital converters (ADCs), including accuracy, resolution, measuring techniques, usage in microcontrollers and more."
 draft: false
 lastmod: 2019-01-20
-tags: [ "ADC", "microcontrollers", "accuracy", "resolution", "current loop", "analog-to-digital converter", "digital", "analogue", "analog" ]
+tags: [ "ADCs", "microcontrollers", "accuracy", "resolution", "current loop", "analog-to-digital converter", "digital", "analogue", "analog" ]
 title: "ADCs"
 type: "page"
 ---

@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Programming", "Signal Processing", "Filters" ]
 date: 2014-02-26
 draft: false
-tags: [ "moving average", "filter", "ADC", "DAC", "time domain", "discrete", "frequency response", "exponentially weighted", "multiple pass", "signal processing" ]
+tags: [ "moving average", "filter", "ADCs", "DACs", "time domain", "discrete", "frequency responses", "exponentially weighted", "multiple pass", "signal processing" ]
 title: "Moving Average Filters"
 type: "page"
 ---
