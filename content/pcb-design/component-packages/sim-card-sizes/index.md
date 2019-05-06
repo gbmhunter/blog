@@ -13,14 +13,14 @@ type: page
 There a four standard SIM card sizes.
 
 <table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>LxWxH (mm)</th>
-            <th>Applicable Standards</th>
-            <th>Comments</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>LxWxH (mm)</th>
+      <th>Applicable Standards</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
 <tbody>
 <tr>
 <td>Standard SIM/Full-size (FF)</td>
@@ -59,6 +59,9 @@ There a four standard SIM card sizes.
 <td >JEDEC Design Guide 4.8, SON-8
 </td>
 <td >Designed to be directly mounted onto a circuit board. 
-</td></tr></tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
 
-{{< figure src="/images/2015/10/stack-of-sim-card-component-packages-3d-render.jpeg" width="404px" caption="A 3D render of a stack of standard-sized SIM cards."  >}}
+{{< img src="stack-of-sim-card-component-packages-3d-render.jpeg" width="404px" caption="A 3D render of a stack of standard-sized SIM cards."  >}}

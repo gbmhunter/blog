@@ -12,11 +12,11 @@ type: page
 
 The following image shows the package sizes for Panasonic's electrolytic SMD capacitors. These Panasonic cap ranges (there are quite a few series) are commonly used when requiring SMD electrolytics.
 
-{{< figure src="/images/2015/10/smd-electrolytic-capacitor-package-photo.jpg" width="250px" caption="A photo of a SMD electrolytic capacitor package."  >}}
+{{< img src="smd-electrolytic-capacitor-package-photo.jpg" width="250px" caption="A photo of a SMD electrolytic capacitor package."  >}}
 
 The following image shows the recommend land pattern for each of the sizes mentioned above.
 
-{{< figure src="/images/electronics-packages/panasonic-electrolytic-smd-cap-land-patterns.png" caption="Recommended panasonic electrolytic SMD capacitor land patterns. Image from 'Panasonic SMT Aluminium Electrolytic Capacitors: Application Guidelines' (http://www.panasonic.com/industrial/components/pdf/aluminum_app_dne.pdf)."  width="500px" >}}
+{{< img src="panasonic-electrolytic-smd-cap-land-patterns.png" caption="Recommended panasonic electrolytic SMD capacitor land patterns. Image from 'Panasonic SMT Aluminium Electrolytic Capacitors: Application Guidelines' (http://www.panasonic.com/industrial/components/pdf/aluminum_app_dne.pdf)."  width="500px" >}}
 
 The following table shows the relationship between Panasonic cap packages and Chemi-Con cap packages.
 
@@ -68,4 +68,7 @@ The following table shows the relationship between Panasonic cap packages and Ch
 <td >K
 </td>
 <td >M
-</td></tr></tbody></table>
+</td>
+</tr>
+</tbody>
+</table>

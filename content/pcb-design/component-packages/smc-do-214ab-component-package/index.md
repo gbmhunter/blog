@@ -87,8 +87,8 @@ The largest in the DO-214xx range of diode packages, the DO214AB is a surface-mo
 
 ## 3D Renders
 
-{{< figure src="/images/2015/03/smc-do-214ab-component-package-3d-render.jpg" width="376px" caption="A 3D render of the SMC (DO-214AB) component package."  >}}
+{{< img src="smc-do-214ab-component-package-3d-render.jpg" width="376px" caption="A 3D render of the SMC (DO-214AB) component package."  >}}
 
-## Images
+## Dimensions And Recommended Land Pattern
 
-{{< figure src="/images/electronics-packages/component-package-smc-do-214ab-dimensions-and-land-pattern.png" caption="Dimensions and recommended land pattern for the DO-214AB (SMC) component package. Image from Vishay Outline Dimensions: SMC (http://www.vishay.com/docs/95023/smc.pdf)."  width="400px" >}}
+{{< img src="component-package-smc-do-214ab-dimensions-and-land-pattern.png" caption="Dimensions and recommended land pattern for the DO-214AB (SMC) component package. Image from Vishay Outline Dimensions: SMC (http://www.vishay.com/docs/95023/smc.pdf)."  width="400px" >}}

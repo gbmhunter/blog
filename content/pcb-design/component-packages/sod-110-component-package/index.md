@@ -106,8 +106,8 @@ n/a
 
 ## Photos
 
-{{< figure src="/images/2015/04/sod-110-component-package-photo.png" width="357px" caption="A photo of the SOD-110 component package."  >}}
+{{< img src="sod-110-component-package-photo.png" width="357px" caption="A photo of the SOD-110 component package."  >}}
 
-## Images
+## Dimensions
 
-{{< figure src="/images/electronics-packages/component-package-sod-110-2d-outline-with-dimensions.png" caption="The dimensions of the SOD-110 component package. Image from NXP SOD-110 Package Outline (http://www.nxp.com/documents/outline_drawing/sod110_po.pdf)"  width="600px" >}}
+{{< img src="component-package-sod-110-2d-outline-with-dimensions.png" caption="The dimensions of the SOD-110 component package. Image from NXP SOD-110 Package Outline (http://www.nxp.com/documents/outline_drawing/sod110_po.pdf)"  width="600px" >}}

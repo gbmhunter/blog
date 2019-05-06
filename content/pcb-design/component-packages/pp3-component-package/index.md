@@ -59,10 +59,13 @@ type: page
 <td >Common Uses
 </td>
 <td >9V batteries
-</td></tr></tbody></table>
+</td>
+</tr>
+</tbody>
+</table>
 
 ## Comments
 
 This is the most common 9V battery size. This is the battery size used in smoke alarms, remote control toys e.t.c. Most 9V battery chemistry come in the shape, including alkaline, lithium iron disulphide, lithium manganese dioxide and zinc chloride.
 
-{{< figure src="/images/2015/10/pp3-component-battery-9v-battery-photo.jpg" width="282px" caption="A photo of a 9V battery in the PP3 component package size."  >}}
+{{< img src="pp3-component-battery-9v-battery-photo.jpg" width="282px" caption="A photo of a 9V battery in the PP3 component package size."  >}}

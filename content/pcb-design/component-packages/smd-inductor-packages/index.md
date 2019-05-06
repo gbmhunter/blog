@@ -31,4 +31,4 @@ Inductor sizes are semi-standardized, that is, there are a few manufacturers tha
 </tbody>
 </table>
 
-{{< figure src="/images/2015/10/smd-inductor-component-package-photo.jpg" width="258px" caption="A SMD inductor component package." >}}
+{{< img src="smd-inductor-component-package-photo.jpg" width="258px" caption="A SMD inductor component package." >}}

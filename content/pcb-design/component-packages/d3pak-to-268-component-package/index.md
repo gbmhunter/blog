@@ -18,32 +18,32 @@ type: page
   <td>TO-263 (D3PAK)</td>
 </tr>
 <tr>
-    <td>Synonyms</td>
-    <td>
-        <ul>
-            <li>TO-263 (Transistor Outline 268)</li>
-            <li>D3PAK</li>
-            <li>DDDPAK</li>
-            <li>Decawatt Package 3</li>
-            <li>TO-268AA (TO-268-3)</li>
-        </ul>
-    </td>
+  <td>Synonyms</td>
+  <td>
+    <ul>
+      <li>TO-263 (Transistor Outline 268)</li>
+      <li>D3PAK</li>
+      <li>DDDPAK</li>
+      <li>Decawatt Package 3</li>
+      <li>TO-268AA (TO-268-3)</li>
+    </ul>
+  </td>
 </tr>
 <tr>
-    <td>Variants</td>
-    <td>n/a</td>
+  <td>Variants</td>
+  <td>n/a</td>
 </tr>
 <tr>
-    <td>Similar To</td>
-    <td>TO-263</td>
+  <td>Similar To</td>
+  <td>TO-263</td>
 </tr>
 <tr>
-    <td>Mounting</td>
-    <td>SMD</td>
+  <td>Mounting</td>
+  <td>SMD</td>
 </tr>
 <tr>
-    <td>Pin Count</td>
-    <td>3</td>
+  <td>Pin Count</td>
+  <td>3</td>
 </tr>
 <tr>
 <td>Pitch
@@ -61,15 +61,15 @@ type: page
 </td>
 </tr>
 <tr>
-    <td>Thermal Resistance</td>
-    <td>
-        <ul>
-            <li>\(T_{JC}: 0.24-1.18^{\circ}{\rm C}/W\)</li>
-            <li>\(T_{JA}: 40^{\circ}{\rm C}/W\)</li>
-            <li>\(T_{JA}: 21.9^{\circ}{\rm C}/W\) (13.5x17.5mm copper pad)</li>
-            <li>\(T_{JA}: 18^{\circ}{\rm C}/W\) (19x29.4mm copper pad)</li>
-        </ul>
-    </td>
+  <td>Thermal Resistance</td>
+  <td>
+    <ul>
+      <li>\(T_{JC}: 0.24-1.18^{\circ}{\rm C}/W\)</li>
+      <li>\(T_{JA}: 40^{\circ}{\rm C}/W\)</li>
+      <li>\(T_{JA}: 21.9^{\circ}{\rm C}/W\) (13.5x17.5mm copper pad)</li>
+      <li>\(T_{JA}: 18^{\circ}{\rm C}/W\) (19x29.4mm copper pad)</li>
+    </ul>
+  </td>
 </tr>
 <tr >
 
@@ -88,29 +88,22 @@ type: page
 </td>
 </tr>
 <tr >
-
-<td >Weight
-</td>
-
-<td >6.2g
-</td>
+<td >Weight</td>
+<td >6.2g</td>
 </tr>
 <tr >
-
-<td >3D Models
-</td>
-
+<td >3D Models</td>
 <td >[TO-268AA (D3PAK)](http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&id=399669)
 </td>
 </tr>
 <tr>
 <td>Common Uses</td>
 <td>
-    <ul>
-        <li>Microsemi power MOSFETs</li>
-        <li>Microsemi power diodes</li>
-        <li>Microsemi power IGBTs</li>
-    </ul>
+  <ul>
+    <li>Microsemi power MOSFETs</li>
+    <li>Microsemi power diodes</li>
+    <li>Microsemi power IGBTs</li>
+  </ul>
 </td>
 </tr>
 </tbody>
@@ -126,17 +119,17 @@ I have only ever seen this in the 3-pin variant (called TO-268-3).
 
 ## Recommended Land Pattern
 
-{{< figure src="/images/electronics-packages/to-268-component-package-land-pattern.png" width="500px" caption="Recommended land pattern for the D3PAK (TO-268) component package." >}}
+{{< img src="to-268-component-package-land-pattern.png" width="500px" caption="Recommended land pattern for the D3PAK (TO-268) component package." >}}
 
 ## Recommended Stencil
 
-{{< figure src="/images/electronics-packages/to-268-component-package-recommended-stencil-pattern.png" width="500px" caption="Recommended stencil pattern for the D3PAK (TO-268) component package." >}}
+{{< img src="to-268-component-package-recommended-stencil-pattern.png" width="500px" caption="Recommended stencil pattern for the D3PAK (TO-268) component package." >}}
 
 
 ## Package Dimensions
 
-{{< figure src="/images/electronics-packages/to-268-3-component-package-dimensions.png" width="500px" caption="Dimensions for the D3PAK (TO-268) component package." >}}
+{{< img src="to-268-3-component-package-dimensions.png" width="500px" caption="Dimensions for the D3PAK (TO-268) component package." >}}
 
 ## Photos
 
-{{< figure src="/images/2015/04/d3pak-to-268-component-package-photo.jpg" width="366px" caption="Photo of the D3PAK (TO-268) component package."  >}}
+{{< img src="d3pak-to-268-component-package-photo.jpg" width="366px" caption="Photo of the D3PAK (TO-268) component package."  >}}

@@ -101,8 +101,8 @@ Like BGAs, LGA packages can withstand up to 50% mis-alignment when soldering, as
 
 ## 3D Renders
 
-{{< figure src="/images/2015/04/lga-component-package-3d-render.jpg" width="342px" caption="A 3D render of the LGA component package." >}}
+{{< img src="lga-component-package-3d-render.jpg" width="342px" caption="A 3D render of the LGA component package." >}}
 
 ## Socket
 
-{{< figure src="/images/electronics-packages/lga-775-component-package-socket.jpg" width="500px" caption="Socket for the LGA-775 component package." >}}
+{{< img src="lga-775-component-package-socket.jpg" width="500px" caption="Socket for the LGA-775 component package." >}}

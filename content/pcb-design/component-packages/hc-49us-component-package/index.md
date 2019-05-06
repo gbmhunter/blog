@@ -118,10 +118,10 @@ Common footprint for larger SMD crystals. Internal circuitry is shielded by meta
 
 ## Photos
 
-{{< figure src="/images/2015/04/hc-49us-component-package-photo.jpg" width="339px" caption="A photo of the HC-49/US component package."  >}}
+{{< img src="hc-49us-component-package-photo.jpg" width="339px" caption="A photo of the HC-49/US component package."  >}}
 
 ## Images
 
-{{< figure src="/images/electronics-packages/hc49us-component-package-dimensions-land-pattern.png" caption="The dimensions and recommended land pattern for the HC-49/U-S component package."  width="800px" >}}
+{{< img src="hc49us-component-package-dimensions-land-pattern.png" caption="The dimensions and recommended land pattern for the HC-49/U-S component package."  width="800px" >}}
 
-{{< figure src="/images/electronics-packages/hc49us-component-package-photo.jpg" caption="HC-49/US"  width="400px" >}}
+{{< img src="hc49us-component-package-photo.jpg" caption="HC-49/US"  width="400px" >}}

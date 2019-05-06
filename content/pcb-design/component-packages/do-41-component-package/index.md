@@ -99,4 +99,4 @@ This package is normally mounted on the PCB in two ways, either flat with the le
 
 ## Photo
 
-{{< figure src="/images/2015/04/do-41-component-package-photo.jpg" width="369px" caption="A photo of the DO-41 component package." >}}
+{{< img src="do-41-component-package-photo.jpg" width="369px" caption="A photo of the DO-41 component package." >}}
