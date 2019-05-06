@@ -1,7 +1,8 @@
 ---
 author: gbmhunter
-date: 2012-10-23 05:16:51+00:00
+date: 2012-10-23
 draft: false
+tags: [ "mathematics", "fixed point"]
 title: Fixed Point Mathematics
 type: page
 ---
@@ -10,9 +11,9 @@ type: page
 
 Fixed-point mathematics is a method for representing numbers on a binary computer architecture. It allows the storage numbers with decimal points, similar to the float and double, but with the benefit of requiring less computation time. The trade-off is lower precision and flexibility.
 
-If you think about it, normal integers are just a special case of a fixed-point number in where the decimal point is to the right of the least-significant bit. A 32-bit unsigned integer (uint32), would be fp(32, 0). It is common to use the bit-width of the architecture as the default fixed-point length, as the architecture has native support for manipulating these variables (commonly 32-bit on the more powerful embedded microcontrollers).
+If you think about it, normal integers are just a special case of a fixed-point number in where the decimal point is to the right of the least-significant bit. A 32-bit unsigned integer (`uint32_t`), would be `fp(32, 0)`. It is common to use the bit-width of the architecture as the default fixed-point length, as the architecture has native support for manipulating these variables (commonly 32-bit on the more powerful embedded microcontrollers).
 
-Most programming languages and hardware that code runs on does not have native support for fixed-point mathematics (however there are many third-party libraries out there!). C++ has a nice advantage over C in the fact that it supports operator overloading, meaning that you can write a fixed-point library so that you could multiply/divide two fixed-point numbers just by using the '*' or '/' syntax, just like when dealing with other native number types (in C you would have to use functions/macros).
+Most programming languages and hardware that code runs on does not have native support for fixed-point mathematics (however there are many third-party libraries out there!). C++ has a nice advantage over C in the fact that it supports operator overloading, meaning that you can write a fixed-point library so that you could multiply/divide two fixed-point numbers just by using the `*` or `/` syntax, just like when dealing with other native number types (in C you would have to use functions/macros).
 
 ## Notation
 
@@ -32,7 +33,7 @@ For example, Q24.8 would represent a 32-bit fixed-point number with 24 integer b
 
 Floating point numbers are just stored in software as regular integers (signed or unsigned depends on your needs).
 
-For example, a Q4.12 number storing the value of 6.5 will be stored in a unsigned 16-bit integer (uint16_t) as:
+For example, a `Q4.12` number storing the value of `6.5` will be stored in a unsigned 16-bit integer (`uint16_t`) as:
 
 ```text
 0110 1000 0000 0000
