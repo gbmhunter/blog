@@ -116,10 +116,10 @@ type: page
 <tr >
 <td>Common Uses</td>
 <td>
-    <ul>
-        <li>Resistors</li>
-        <li>Diodes</li>
-    </ul>
+  <ul>
+    <li>Resistors</li>
+    <li>Diodes</li>
+  </ul>
 </td>
 </tr>
 </tbody>

@@ -13,11 +13,8 @@ type: page
 <table>
 <tbody >
 <tr >
-<td >Name
-</td>
-
-<td >Small-outline J-leaded Package
-</td>
+<td >Name</td>
+<td >Small-outline J-leaded Package</td>
 </tr>
 <tr >
 <td >Synonyms</td>
@@ -32,26 +29,15 @@ type: page
   <td>{{% link text="SOIC" src="soic-component-package/" %}}</td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >SMD
-</td>
+<td >Mounting</td>
+<td >SMD</td>
 </tr>
 <tr >
-
-<td >Pin Count
-</td>
-
-<td >4-40
-</td>
+<td >Pin Count</td>
+<td >4-40</td>
 </tr>
 <tr >
-
-<td >Pitch
-</td>
-
+<td >Pitch</td>
 <td >
 <ul>
 <li>SOJ-4: 5.50mm</li>
@@ -60,41 +46,23 @@ type: page
 </td>
 </tr>
 <tr >
-
-<td >Solderability
-</td>
-
-<td >Easy to solder by hand, infrared and reflow techniques.
-</td>
+<td >Solderability</td>
+<td >Easy to solder by hand, infrared and reflow techniques.</td>
 </tr>
 <tr >
-
-<td >Thermal Resistance
-</td>
-
-<td >n/a
-</td>
+<td >Thermal Resistance</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Land Area
-</td>
-
-<td >n/a
-</td>
+<td >Land Area</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Height
-</td>
-
+<td >Height</td>
 <td >SOJ-4: 2.5mm</td>
 </tr>
 <tr >
-
-<td >3D Models
-</td>
-
+<td >3D Models</td>
 <td >
 <ul>
 <li><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=132667">SOJ-28</a></li>
@@ -103,10 +71,7 @@ type: page
 </td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
+<td >Common Uses</td>
 <td>Crystal oscillators</td>
 </tr>
 </tbody>
@@ -118,8 +83,8 @@ Same general package dimensions as the standard SOIC but with J-type leads rathe
 
 ## 3D Renders
 
-{{< figure src="/images/2015/04/soj-component-package-3d-render.jpg" width="350px" caption="A 3D render of the SOJ component package."  >}}
+{{< img src="soj-component-package-3d-render.jpg" width="350px" caption="A 3D render of the SOJ component package."  >}}
 
-## Other Images
+## Photos
 
-{{< figure src="/images/electronics-packages/ic-package-soj-28.jpg" caption="Photo of a SOJ-28 package, a variant of the SOIC package with J-type leads."  width="500px" >}}
+{{< img src="ic-package-soj-28.jpg" caption="Photo of a SOJ-28 package, a variant of the SOIC package with J-type leads."  width="500px" >}}

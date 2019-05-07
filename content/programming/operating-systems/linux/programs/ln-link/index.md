@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2017-01-20
 draft: false
+tags: [ "programming", "operating systems", "Linux", "programs", "ln", "link", "soft link", "hard link" ]
 title: ln (link)
 type: page
 ---

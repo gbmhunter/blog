@@ -1,7 +1,9 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2018-01-16
 draft: false
+tags: [ "programming", "operating systems", "Linux", "programs" ]
 title: "apt"
 type: "page"
 ---

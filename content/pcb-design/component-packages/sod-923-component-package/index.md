@@ -63,4 +63,4 @@ type: page
 
 ## 3D Render
 
-{{< figure src="/images/2015/10/sod-923-component-package-3d-render.jpg" width="379px" caption="A 3D render of the SOD-923 component package."  >}}
+{{< img src="sod-923-component-package-3d-render.jpg" width="379px" caption="A 3D render of the SOD-923 component package."  >}}
