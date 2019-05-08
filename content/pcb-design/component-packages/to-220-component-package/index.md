@@ -112,25 +112,25 @@ The tab is commonly connected electrically to one of the legs, and sometimes iso
 
 ### 3D Renders
 
-{{< figure src="/images/2015/04/to-220ab-to-220-3-component-package-3d-render.jpg" width="378px" caption="A 3D render of the TO-220AB component package."  >}}
+{{< img src="to-220ab-to-220-3-component-package-3d-render.jpg" width="378px" caption="A 3D render of the TO-220AB component package."  >}}
 
 ### Dimensions
 
-{{< figure src="/images/electronics-packages/component-package-to-220ab-dimensions.png" caption="The dimensions of the TO-220AB component package."  width="500px" >}}
+{{< img src="component-package-to-220ab-dimensions.png" caption="The dimensions of the TO-220AB component package."  width="500px" >}}
 
 ### Photos
 
-{{< figure src="/images/electronics-packages/component-package-to-220ab-photo.jpg" caption="A photo of the TO-220AB component package."  width="300px" >}}
+{{< img src="component-package-to-220ab-photo.jpg" caption="A photo of the TO-220AB component package."  width="300px" >}}
 
-{{< figure src="/images/electronics-packages/component-package-to-220ab-mounted-on-heatsink.jpg" caption="A photo of the TO-220AB component package, mounted on a heatsink."  width="300px" >}}
+{{< img src="component-package-to-220ab-mounted-on-heatsink.jpg" caption="A photo of the TO-220AB component package, mounted on a heatsink."  width="300px" >}}
 
 ## TO-220AC (TO-220-2)
 
 The TO-220AC (also known as the TO-220-2) is a variant on the TO-220 package with only two leads and the pad (which still means it could have three distinct connections). Use for some high power diodes.
 
-{{< figure src="/images/2015/04/to-220ac-component-package-photo.jpg" width="271px" caption="A photo of the TO-220AC component package."  >}}
+{{< img src="to-220ac-component-package-photo.jpg" width="271px" caption="A photo of the TO-220AC component package."  >}}
 
-{{< figure src="/images/2015/04/to-220ac-component-package-dimensions.png" width="637px" caption="The dimensions of the TO-220AC component package." >}}
+{{< img src="to-220ac-component-package-dimensions.png" width="637px" caption="The dimensions of the TO-220AC component package." >}}
 
 ## TO-220F (TO-220FP, SOT-186A)
 
@@ -142,17 +142,17 @@ TO-220F generally refers to the 3-pin version, although sometimes it may be call
 
 ### 3D Renders
 
-{{< figure src="/images/2015/04/to-220f-component-package-3d-render.jpg" width="338px" caption="A 3D render of the TO-220F component package."  >}}
+{{< img src="to-220f-component-package-3d-render.jpg" width="338px" caption="A 3D render of the TO-220F component package."  >}}
 
 ### Dimensions
 
 The dimensions of the TO-220F are shown below:
 
-{{< figure src="/images/2015/04/component-package-to-220f-dimensions.png" width="574px" caption="The dimensions for the TO-220F component package."  >}}
+{{< img src="component-package-to-220f-dimensions.png" width="574px" caption="The dimensions for the TO-220F component package."  >}}
 
 ### Photos
 
-{{< figure src="/images/2015/04/component-packages-to-220f-photo.jpg" width="329px" caption="A photo of the TO-220F component package."  >}}
+{{< img src="component-packages-to-220f-photo.jpg" width="329px" caption="A photo of the TO-220F component package."  >}}
 
 ## TO-220FM
 

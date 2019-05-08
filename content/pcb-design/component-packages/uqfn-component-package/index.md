@@ -118,4 +118,4 @@ An ultra-thin QFN package. Commonly used for packaging 4 or 5 [TVSdiodes](http:/
 
 ## 3D Renders
 
-{{< figure src="/images/2015/04/uqfn-28-component-package-3d-render.jpg" width="313px" caption="A 3D render of the UQFN-28 component package."  >}}
+{{< img src="uqfn-28-component-package-3d-render.jpg" width="313px" caption="A 3D render of the UQFN-28 component package."  >}}

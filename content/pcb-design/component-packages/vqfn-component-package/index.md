@@ -114,4 +114,4 @@ These packages don't have leads, instead all of the pins are present as pads the
 
 ## Photos
 
-{{< figure src="/images/2015/04/vqfn-28-component-package-photo-top-bottom.jpg" width="392px" caption="A photo of the VQFN-28 component package."  >}}
+{{< img src="vqfn-28-component-package-photo-top-bottom.jpg" width="392px" caption="A photo of the VQFN-28 component package."  >}}

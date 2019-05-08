@@ -78,7 +78,7 @@ type: page
 
 There is a variant of the TSSOP with a solder pad on the underside. Texas Instruments calls this the HTSSOP package. It is used for ICs which require good thermal conductivity (e.g. half-bridges).
 
-{{< figure src="/images/2015/04/htssop-28-component-package-3d-render-with-thermal-pad.jpg" width="370px" caption="A 3D render of the 28-pin TSSOP component package that has a thermal pad (HTSSOP-28)."  >}}
+{{< img src="htssop-28-component-package-3d-render-with-thermal-pad.jpg" width="370px" caption="A 3D render of the 28-pin TSSOP component package that has a thermal pad (HTSSOP-28)."  >}}
 
 The HTTSOP-28 component package has the following thermal resistances:
 
@@ -118,4 +118,4 @@ The HTTSOP-28 component package has the following thermal resistances:
 
 ## 3D Renders
 
-{{< figure src="/images/2015/04/tssop-38-component-package-3d-render.jpg" width="297px" caption="A 3D render of the TSSOP-38 component package."  >}}
+{{< img src="tssop-38-component-package-3d-render.jpg" width="297px" caption="A 3D render of the TSSOP-38 component package."  >}}
