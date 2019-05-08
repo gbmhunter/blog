@@ -115,4 +115,4 @@ None
 
 ## Photos
 
-{{< figure src="/images/2015/04/sot-523f-component-package-photo.jpg" width="222px" caption="A photo of the SOT-523F component package."  >}}
+{{< img src="sot-523f-component-package-photo.jpg" width="222px" caption="A photo of the SOT-523F component package." >}}

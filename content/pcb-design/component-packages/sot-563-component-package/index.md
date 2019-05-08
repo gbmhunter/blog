@@ -76,14 +76,14 @@ The SOT-563 package has a 68% smaller footprint than the SOT-23-x package.
 
 Below is the dimensions for the SOT-563 component package as defined by Texas Instruments.
 
-{{< figure src="/images/2015/04/sot-563-component-package-dimensions-ti-drl-r-pdso-n6.png" width="556px" caption="Dimensions of the SOT-563 component package. Image from http://www.ti.com/."  >}}
+{{< img src="sot-563-component-package-dimensions-ti-drl-r-pdso-n6.png" width="556px" caption="Dimensions of the SOT-563 component package. Image from http://www.ti.com/."  >}}
 
 ## Recommended Footprint
 
 Below is the recommended footprint for the SOT-563 component package from Texas Instruments.
 
-{{< figure src="/images/2015/04/sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6.png" width="927px" caption="A recommended PCB footprint for the SOT-563 (TI DRL) component package. Image from http://www.ti.com/."  >}}
+{{< img src="sot-563-component-package-recommended-pcb-footprint-ti-drl-r-pdso-n6.png" width="927px" caption="A recommended PCB footprint for the SOT-563 (TI DRL) component package. Image from http://www.ti.com/."  >}}
 
 ## 3D Renders
 
-{{< figure src="/images/2015/04/sot-563-component-package-3d-render.jpg" width="362px" caption="A 3D render of the SOT-563 component package."  >}}
+{{< img src="sot-563-component-package-3d-render.jpg" width="362px" caption="A 3D render of the SOT-563 component package."  >}}

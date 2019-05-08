@@ -117,15 +117,15 @@ A very common surface-mount package that is used for a huge number of functions.
 
 The SOT-23 family probably has the largest number of differing variant names which all refer to the same packages.
 
-{{< figure src="/images/2015/04/sot-23-component-package-photo.jpg" width="262px" caption="A 3D render of the SOT-23 component package."  >}}
+{{< img src="sot-23-component-package-photo.jpg" width="262px" caption="A 3D render of the SOT-23 component package."  >}}
 
 The number of pins used not only depends on the required number of connections but also the desired thermal resistance (high-current SOT23 devices may use more than one pin for the same net to improve thermal performance). Used commonly for FETs transistors, diodes, and other components only having a small number of leads. SparkFun makes a [SOT-23 to DIP breakout board](http://www.sparkfun.com/products/717).
 
-{{< figure src="/images/2015/04/component-package-sot-23-6-sc-74a-sot-457-3d-render.jpg" width="297px" caption="A 3D render of the SOT-23-6 (SOT-457) component package."  >}}
+{{< img src="component-package-sot-23-6-sc-74a-sot-457-3d-render.jpg" width="297px" caption="A 3D render of the SOT-23-6 (SOT-457) component package."  >}}
 
 ## Dimensions
 
-{{< figure src="/images/2015/04/sot-23-8-component-package-dimensions-diodes-incorporated.png" width="1288px" caption="Dimensions for the SOT-23-8 component package. Image from http://www.diodes.com/."  >}}
+{{< img src="sot-23-8-component-package-dimensions-diodes-incorporated.png" width="1288px" caption="Dimensions for the SOT-23-8 component package. Image from http://www.diodes.com/."  >}}
 
 ## Footprint
 
@@ -133,20 +133,20 @@ The 3, 5, and 6 pin SOT-23 variants have the same pitch of 0.95mm, and all are c
 
 However, the 8 lead variant, SOT-23-8, has a smaller pitch of 0.65mm
 
-{{< figure src="/images/2015/04/sot-23-8-component-package-recommended-footprint-diodes-incorporated.png" width="1000px" caption="A recommended footprint for the SOT-23-8 component package. Image from http://www.diodes.com/."  >}}
+{{< img src="sot-23-8-component-package-recommended-footprint-diodes-incorporated.png" width="1000px" caption="A recommended footprint for the SOT-23-8 component package. Image from http://www.diodes.com/."  >}}
 
 ## SOT-23-6
 
-## Non-standard Pin Numbering
+### Non-standard Pin Numbering
 
 {{% warning %}}
 The SOT-23-6 package by Rohm (a.k.a IMT4, SOT-457, SMT6) has non-standard, clockwise pin numbering starting at the top right pin.
 {{% /warning %}}
 
-{{< figure src="/images/2015/04/rohm-sot-457-imt4-sot-23-6-component-package-non-standard-clockwise-pin-numbering-annotated.png" width="645px" caption="The Rohm SOT-23-6 component package (a.k.a. SOT-457, IMT4) with non-standard pin numbering."  >}}
+{{< img src="rohm-sot-457-imt4-sot-23-6-component-package-non-standard-clockwise-pin-numbering-annotated.png" width="645px" caption="The Rohm SOT-23-6 component package (a.k.a. SOT-457, IMT4) with non-standard pin numbering."  >}}
 
 Why you'd ever number the package in that manner is beyond me. It's dangerous, and bound to cause PCB designers to do board respins!
 
-## Other Images
+### Dimensions
 
-{{< figure src="/images/electronics-packages/package-dimensions-sot23-3.gif" caption="The dimensions of the SOT-23-5 component package."  width="500px" >}}
+{{< img src="package-dimensions-sot23-3.gif" caption="The dimensions of the SOT-23-5 component package."  width="500px" >}}

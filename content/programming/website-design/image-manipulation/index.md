@@ -8,10 +8,20 @@ title: "Image Manipulation"
 type: page
 ---
 
-You can install GIMP on Ubuntu with the command
+# Install
+
+You can install GIMP with the following commands:
+
+Ubuntu:
 
 ```sh    
-$ sudo apt-get install gimp
+$ sudo apt install gimp
+```
+
+Mac OSX:
+
+```sh
+$ brew cask install gimp
 ```
 
 ## Plugins

@@ -17,10 +17,6 @@ type: page
 <td >SOT-1226 (Small Outline Transistor 1226)</td>
 </tr>
 <tr >
-<td >3D Render</td>
-<td >
-{{< figure src="/images/2015/03/sot-1226-component-package-3d-render-top-bottom.gif" caption="A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html. "  >}}
-</td></tr><tr >
 <td >Synonyms</td>
 <td>X2SON5 (NXP)</td>
 </tr>
@@ -66,12 +62,14 @@ type: page
 <td >Common Uses
 </td>
 <td >
-<ul>
-<li>Logic gates</li>
-
-<li>Line drivers</li>
-</ul>
-</td></tr></tbody></table>
+  <ul>
+    <li>Logic gates</li>
+    <li>Line drivers</li>
+  </ul>
+</td>
+</tr>
+</tbody>
+</table>
 
 ## Comments
 
@@ -79,10 +77,14 @@ A unique feature of this package is the diamond-shaped pads.
 
 As of March 2015, NXP seems to be the only manufacturer using this package. NXP has a series of logic gates and line drivers in this package.
 
+## 3D Render
+
+{{< img src="sot-1226-component-package-3d-render-top-bottom.gif" caption="A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html. "  >}}
+
 ## Dimensions
 
-{{< figure src="/images/2015/03/sot-1226-component-package-dimensions.png" width="481px" caption="The dimensions of the SOT-1226 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1226_po.pdf."  >}}
+{{< img src="sot-1226-component-package-dimensions.png" width="481px" caption="The dimensions of the SOT-1226 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1226_po.pdf."  >}}
 
-## Recommended Footprint
+## Recommended Land Pattern/Footprint
 
-{{< figure src="/images/2015/03/sot-1226-component-package-recommended-footprint.png" width="443px" caption="The recommended footprint (land pattern) for the SOT-1226 component package."  >}}
+{{< img src="sot-1226-component-package-recommended-footprint.png" width="443px" caption="The recommended footprint (land pattern) for the SOT-1226 component package."  >}}
