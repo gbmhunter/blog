@@ -66,7 +66,7 @@ Unlike IPC-2221A, IPC-2152 is not just a simple equation.
 
 1. Firstly, use the _Universal Chart_ to calculate an unadjusted cross-sectional area.  
 
-    {{< figure src="/images/2016/04/ipc-2152-universal-chart.png" width="641px" caption="The Universal Chart in IPC-2152 which gives an un-adjusted track cross-sectional area based upon the desired current and temperature rise."  >}}  
+    {{< img src="ipc-2152-universal-chart.png" width="641px" caption="The Universal Chart in IPC-2152 which gives an un-adjusted track cross-sectional area based upon the desired current and temperature rise."  >}}  
 
 2. Then, a bunch of coefficients (modifiers) are found based on a number of other parameters. The parameters include:  
 

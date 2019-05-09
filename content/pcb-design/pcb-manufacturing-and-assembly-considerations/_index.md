@@ -43,21 +43,25 @@ For an assembler, these costs include:
 
 Don't forget to consider how the PCB is going to be mounted. One of the most common things accidentally left of a PCB. Normally all it requires is four holes (un-plated) in the corners for screwing in bolts/supports or just enough free PCB space to stick on rubber feet. M3 bolts and nuts are commonly used. Remember to consider the implications of using metal bolts next to/on-top of electrical signals. There are nylon bolts and washers when insulation is needed. Lock-tight can be good to prevent bolts/screws from undoing. The following picture shows the four mounting holes on a PCB. Notice one is underneath a component (the Xbee module).
 
-{{< figure src="/images/electronics-pcbdesign/pcb-showing-mounting-holes.png" caption="A PCB, showing the four mounting holes. Note that one is underneath a component (the Xbee module)."  width="800px" >}}
+{{< img src="pcb-showing-mounting-holes.png" caption="A PCB, showing the four mounting holes. Note that one is underneath a component (the Xbee module)."  width="800px" >}}
 
-{{< figure src="/images/electronics-misc/m3-12mm-pcb-standoff.jpg" caption="A M3 PCB standoff. Image from http://www.electronicparts.net.au/."  width="200px" >}}
+{{< img src="m3-12mm-pcb-standoff.jpg" caption="A M3 PCB standoff. Image from http://www.electronicparts.net.au/."  width="200px" >}}
 
 Standoffs are good for providing clearance between the PCB and the mounting surface. You can buy plastic or metallic standoffs for most electronic suppliers, and they come in round or hex shapes. Electrical enclosures usually come with standoffs built into the structure.
 
-{{< figure src="/images/electronics-misc/spherical-rubber-pcb-feet.jpg" caption="A stick-on spherical rubber PCB foot."  width="160px" >}}
+{{< img src="spherical-rubber-pcb-feet.jpg" caption="A stick-on spherical rubber PCB foot."  width="160px" >}}
 
 Below is an example of a SMD standoff from [Pem Engineering](http://www.pemnet.com/).
 
-{{< figure src="/images/electronics-pcbdesign/reelfast-smd-standoff-example.jpg" caption="An SMD standoff from Pen Engineering. Image from http://catalog.pemnet.com/viewitems/uts-and-spacers-standoffs-surface-mount-type-smtso/t-nuts-and-spacers-standoffs-br-type-smtso-unified."  width="500px" >}}
+{{< img src="reelfast-smd-standoff-example.jpg" caption="An SMD standoff from Pen Engineering. Image from http://catalog.pemnet.com/viewitems/uts-and-spacers-standoffs-surface-mount-type-smtso/t-nuts-and-spacers-standoffs-br-type-smtso-unified."  width="500px" >}}
 
 ## Desiccant
 
-Desiccant (a moisture absorbing compound), can be a good thing to use if your PCB is at risk of condensation. {{< figure src="/images/electronics-misc/dessicant-on-oven-tray.jpg" caption="Desiccant about to be dried on an oven tray."  width="400px" >}} See the [Desiccant page](/electronics/components/desiccant) for more info.
+Desiccant (a moisture absorbing compound), can be a good thing to use if your PCB is at risk of condensation.
+
+{{< img src="dessicant-on-oven-tray.jpg" caption="Desiccant about to be dried on an oven tray."  width="400px" >}}
+
+See the [Desiccant page](/electronics/components/desiccant) for more info.
 
 ## Making It Look Good
 
@@ -65,7 +69,7 @@ It could be said that PCB design is an art form. Personally, I take great pleasu
 
 This is an example of a PCB which I really like. It is called "[The Mojo](http://embeddedmicro.com/products/the-mojo)", and it is a Arduino-like FPGA development board. I love the black and green colour combination of the soldermask and silkscreen respectively.
 
-{{< figure src="/images/electronics-pcbdesign/the-mojo-fpga-pcb.jpg" caption="'The Mojo', a Arduino-like FPGA development that looks really nice. Image from http://embeddedmicro.com/products/the-mojo."  width="800px" >}}
+{{< img src="the-mojo-fpga-pcb.jpg" caption="'The Mojo', a Arduino-like FPGA development that looks really nice. Image from http://embeddedmicro.com/products/the-mojo."  width="800px" >}}
 
 ## Late Cycle Rework
 
@@ -85,7 +89,7 @@ For a review on different PCB manufacturers and their capabilities, see the [PCB
 
 Below is an example of a screwed PCB after too much rework was done on a 0.5mm pitch QFN package.
 
-{{< figure src="/images/electronics-pcbdesign/qfn-footprint-failure-after-too-much-resoldering.jpg" caption="The PCB was wrecked after doing too much re-soldering on a 0.5mm pitch QFN footprint."  width="600px" >}}
+{{< img src="qfn-footprint-failure-after-too-much-resoldering.jpg" caption="The PCB was wrecked after doing too much re-soldering on a 0.5mm pitch QFN footprint."  width="600px" >}}
 
 ## PCB Design Checklist
 

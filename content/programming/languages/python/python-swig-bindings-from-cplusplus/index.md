@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Programming Languages", "Python", "C++" ]
 date: 2017-08-16
 draft: false
 lastmod: 2019-03-25
@@ -43,7 +44,7 @@ The interface file typically has the file extension .i and is called something l
 
 Here is an example of a SWIG interface file:
 
-```   
+```c++
 /* File: example.i */
 %module example
 
@@ -119,19 +120,19 @@ FIND_PACKAGE(SWIG REQUIRED)
 
 When using the CMake SWIG package, swig is automatically called for you by CMake. Don't worry, you can still provide arguments to calling swig via the `SET_SOURCE_FILES_PROPERTIES` command.
 
-```text
+```cmake
 SET_SOURCE_FILES_PROPERTIES(MySWIGInterfaceFile.i PROPERTIES SWIG_FLAGS "-threads")
 ```
 
 You also need to provide a list of all the source files required to generated the library/bindings:
 
-```text
+```cmake
 file(GLOB_RECURSE Swig_SRC "src/*.cpp")
 ```
 
 You create a Python module (a set of bindings created from settings in an interface file) by using the `SWIG_ADD_MODULE()` command.
 
-```text
+```cmake
 # Make sure to set all SWIG properties/config before calling the
 # below line! This makes a make target called "_<ModuleName>"
 SWIG_ADD_MODULE(<ModuleName> python MyInterfaceFile.i ${Swig_SRC})
@@ -180,7 +181,7 @@ There is a specific type of type map called a _typecheck_. The job of a typechec
 
 For example, say we provided a custom typemap for `std::vector<uint8_t>`, we should then provide a custom typecheck if we ever want to use call overloaded functions that accept a `std::vector<uint8_t>` from Python. Our SWIG interface file would then look like:
 
-```text
+```c++
 %include "typemaps.i"
 %include "std_vector.i"
 %include "stdint.i"
@@ -224,21 +225,21 @@ without the dreaded `**NotImplementedError: Wrong number or type of arguments fo
 
 Cross-language polymorphism is important when you are using interfaces. Some C++ libraries use pure virtual (or just virtual) classes to describe interfaces to your application, which may be in Python.
 
-Thankfully, SWIG supports cross language polymorphism. They support the feature through the use of **_directors_**. To enable directors, make sure directors="1" is appended to the module keyword as below:
+Thankfully, SWIG supports cross language polymorphism. They support the feature through the use of **_directors_**. To enable directors, make sure `directors="1"` is appended to the `module` keyword as below:
 
-```text
+```c++
 %module(directors="1") <module name>
 ```
 
-However, you still need to tell SWIG what classes to create directors for. To do this, use %feature("director") as shown below. **To enable directors for all classes which have virtual methods, add:**
+However, you still need to tell SWIG what classes to create directors for. To do this, use `%feature("director")` as shown below. **To enable directors for all classes which have virtual methods, add:**
 
-```text
+```c++
 %feature("director");
 ```
 
 **To enable directors for specific classes** (recommended for larger projects as the code bloat that directors introduces can be quite high):
 
-```text
+```c++
 %feature("director") <class name>;
 ```
 
@@ -264,7 +265,7 @@ We will work through an example that creates typemaps such that int * output var
 
 Imagine we had this C++ code:
 
-```text
+```c++
 // A concrete version of this class will be created
 // in Python
 class AbstractClass {
@@ -288,7 +289,7 @@ void CallMe(AbstractClass * abstractClass) {
 
 Place this code in your SWIG interface file (.i file):
 
-```text
+```c++
 %typemap(directorin) int * {
     $input = PyList_New(1);
     PyList_SetItem($input, 0, PyInt_FromLong(*$1));
@@ -301,7 +302,7 @@ Place this code in your SWIG interface file (.i file):
 
 Now we can do this in the Python code:
 
-```  
+```python
 class ConcreteClass(AbstractClass):
     def AddOne(outputVar):
         # Notice outputVar is a list in Python!
@@ -414,13 +415,13 @@ As of September 2017, SWIG only has support for `std::shared_ptr`, but not `std:
 
 The SWIG support for `std::shared_ptr`, is quite automatic. You have to first include the `std::shared_ptr.i` file in your SWIG interface file:
 
-```text
+```c++
 %include <std_shared_ptr.i>
 ```
 
 Once this is included, you then need to tell SWIG about all the types that will be used with a shared pointer. For example, if you want SWIG to handle `std::shared_ptr<std::vector<uint8_t>>` type variables, you would write:
 
-```text
+```c++
 %shared_ptr(std::vector<uint8_t>)
 ```
 
@@ -428,7 +429,7 @@ Once this is done, shared pointers of this type should be created automatically 
 
 However, I have run into a problem with this feature, in where I could no longer pass the underlying type back and forth if I had used the %shared_ptr() macro on it. So instead of enabling this special shared pointer type mapping, I created a custom type map for the shared pointer:
 
-```text
+```c++
 // Convert from Python --> C
 %typemap(in) std::shared_ptr<std::vector<uint8_t>> {
     auto temp = std::make_shared<ByteArray>();
@@ -443,7 +444,7 @@ The above type map allows you to call C++ code that asks for a `std::shared_ptr<
 
 A similar type map was created for the other direction (C++ to Python) in the case that your are using directors:
 
-```text
+```c++
 // C++ --> Python director
 %typemap(directorin) std::shared_ptr<std::vector<uint8_t> {
     // Create Python object
@@ -466,7 +467,7 @@ This usually occurs if you are not providing the right include directory to your
 $ g++ -shared -fPIC Example.cpp example_wrap.cxx -o _example.so -I/anaconda3/include/python3.6m/
 ```
 
-Make sure the directory after -I is correct! (it should contain a Python.h file).
+Make sure the directory after `-I` is correct! (it should contain a `Python.h` file).
 
 **error: ‘SWIG_exception’ was not declared in this scope**
 
@@ -483,11 +484,11 @@ void foo(std::string msg);
 
 But you have forgot to include the relevant typemaps for `uint32_t` and `std::string` in the SWIG interface file. In this particular instance, adding:
 
-```text
+```c++
 %include "stdint.i"
 %include "std_string.i"
 ```
 
-before the code is added to the .i file fixes this error.
+before the code is added to the `.i` file fixes this error.
 
 If the function takes in arguments for which you have written custom typemaps, then you will also need to provide a typecheck typemap.

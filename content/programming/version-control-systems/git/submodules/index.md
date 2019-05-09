@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2017-01-20 10:50:58+00:00
+date: 2017-01-20
 draft: false
 title: Submodules
 type: page
