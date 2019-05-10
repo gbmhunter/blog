@@ -1,6 +1,8 @@
 ---
 author: gbmhunter
+categories: [ "Projects" ]
 date: 2011-09-06
+tags: [ "projects", "Santa Alarm", "ATmega" ]
 title: Santa Alarm
 type: page
 ---

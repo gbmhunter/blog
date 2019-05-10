@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Projects" ]
 date: 2012-09-28
 draft: false
+tags: [ "projects", "Luxcity", "UV", "tonic", "control systems", "FreeTronics", "relays", "solenoids", "Arduino", "Vixen", "C", "firmware" ]
 title: Luxcity UV Tonic Control System
 type: page
 ---

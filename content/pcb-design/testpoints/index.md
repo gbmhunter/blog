@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "PCB Design" ]
 date: 2015-10-23
 draft: false
+tags: [ "PCB design", "test points", "SMD", "PCBs", "vias", "clip" ]
 title: Testpoints
 type: page
 ---
@@ -14,7 +16,7 @@ Current-based test points are harder to implement as you have to provide a way t
 
 A common and easy way to add test points onto a PCB is to leave some vias **untented**. This means that they don't get covered in solder mask, and you can easily probe them. Their circular nature holds the probe well to! The picture below shows two untented-vias, A and B, being used a test points.
 
-{{< figure src="/images/electronics-misc/pcb-untented-vias-as-test-points.jpg" caption="Notice the untented vias on a PCB. These can be used as test-points in space-constrained designs."  width="500px" >}}
+{{< img src="pcb-untented-vias-as-test-points.jpg" caption="Notice the untented vias on a PCB. These can be used as test-points in space-constrained designs."  width="500px" >}}
 
 ## Purpose-Built Testpoints
 
@@ -23,12 +25,12 @@ If you want a more serious testpoint something you can clip something onto, many
 <table>
   <tbody>
     <tr>
-      <td>{{< figure src="/images/2015/10/keystone-minature-smd-testpoint.jpg" caption="A minature SMD testpoint made by Keystone."  >}}</td>
+      <td>{{< img src="keystone-minature-smd-testpoint.jpg" width="200px" caption="A minature SMD testpoint made by Keystone."  >}}</td>
       <td>Keystone Miniature SMT Test Point</td>
       <td>Element14 Number: 385-8030</td>
     </tr>
     <tr>
-      <td>{{< figure src="/images/electronics-misc/harwin-smt-test-point.jpg" caption="Harwin SMT Test Point"  width="160px" >}}</td>
+      <td>{{< img src="harwin-smt-test-point.jpg" caption="Harwin SMT Test Point"  width="160px" >}}</td>
       <td>Harwin SMT Test Point</td>
       <td>Element14 Number: 182-6282</td>
     </tr>

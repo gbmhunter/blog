@@ -10,7 +10,7 @@ type: page
 
 PCB stencils help you apply solder paste and a quick and even manner to a PCB during the reflow soldering process. They are usually made from either a sheet of stainless steel (for large manufacturing runs) or a plastic/wax paper (for cheap one off prototypes).
 
-{{< figure src="/images/2014/07/soldermask-example-stainless-steel-soldermask-dot-com.jpg" width="300px" caption="An example of a stainless steel soldermask stencil. Image from http://www.soldermask.com/."  >}}
+{{< img src="soldermask-example-stainless-steel-soldermask-dot-com.jpg" width="300px" caption="An example of a stainless steel soldermask stencil. Image from http://www.soldermask.com/."  >}}
 
 The sheet has apertures cut out of it in all places on the PCB in where you want solder paste to be applied. The stencil is placed on the surface of the PCB and solderpaste applied. The thickness of the stencil determines the paste density (how much paste will be applied for a given area).
 
@@ -50,7 +50,7 @@ The rule:
 
 This ratio should always be greater or equal to 0.66.
 
-{{< figure src="/images/2014/07/pcb-stencil-aspect-and-area-ratio-illustration.png" width="877px" caption="Diagram explaining the aspect and area ratios of PCB stencils. Image from http://www.ti.com/lit/an/slua271a/slua271a.pdf."  >}}
+{{< img src="pcb-stencil-aspect-and-area-ratio-illustration.png" width="877px" caption="Diagram explaining the aspect and area ratios of PCB stencils. Image from http://www.ti.com/lit/an/slua271a/slua271a.pdf."  >}}
 
 ## Prices
 

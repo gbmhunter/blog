@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-10-27 02:54:16+00:00
+date: 2012-10-27
 draft: false
 title: Tonic Control System Project Finished!
 type: post
@@ -13,7 +13,7 @@ tags:
 - Christchurch
 - control
 - lights
-- luxcity
+- Luxcity
 - NZ
 - project
 - system
@@ -25,12 +25,12 @@ Last weekend the Luxcity event went down in Christchurch, NZ. The Tonic control 
 
 This meant that we were working well into the night (even after it opened to the public) to try and get the whole thing functioning. We managed to get tonic into a few of the tubes and pumped around the structure (see pic below), but sadly we had to give up about half an hour before we then had to go and pack everything up again.
 
-More information can be found on the project page at Electronics->Projects->[Luxcity UV Tonic Control System](/electronics/projects/luxcity-uv-tonic-control-system).
+More information can be found on the project page at Electronics->Projects->{{% link text="Luxcity UV Tonic Control System" src="/electronics/projects/luxcity-uv-tonic-control-system/_index.md" %}}.
 
-The previous post about starting the project can be found [here](/posts/updates/2012/10-12-luxcity-uv-tonic-project-started/).
+The previous post about starting the project can be found {{% link text="here" src="/posts/updates/2012/10-12-luxcity-uv-tonic-project-started/_index.md" %}}.
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/lcd-screen-tonic-active.jpg" caption="The LCD screen working. This part was a breeze, it was an Arduino capable LCD shield, and there was a pre-written library for the firmware. It literally took less than 5 minutes to get working."  width="600px" >}}
+{{< img src="lcd-screen-tonic-active.jpg" caption="The LCD screen working. This part was a breeze, it was an Arduino capable LCD shield, and there was a pre-written library for the firmware. It literally took less than 5 minutes to get working."  width="600px" >}}
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/circle-of-solenoids.jpg" caption="Testing the system in my living room the night before it's to be used."  width="600px" >}}
+{{< img src="circle-of-solenoids.jpg" caption="Testing the system in my living room the night before it's to be used."  width="600px" >}}
 
-{{< figure src="/images/electronics-luxcityuvtoniccontrolsystem/pipes-with-tonic-and-uv.jpg" caption="The central structure and the tonic-filled pipes glowing under UV light."  width="600px" >}}
+{{< img src="pipes-with-tonic-and-uv.jpg" caption="The central structure and the tonic-filled pipes glowing under UV light."  width="600px" >}}
