@@ -18,4 +18,4 @@ type: "post"
 
 * Added new page on [Python sets](/programming/languages/python/python-sets/).
 
-* All github.com/mbedded-ninja repos were moved to [github.com/gbmhunter](github.com/gbmhunter) and the mbedded-ninja organization on GitHub was deleted as it was not really serving any useful purpose.
+* All github.com/mbedded-ninja repos were moved to [github.com/gbmhunter](http://github.com/gbmhunter) and the mbedded-ninja organization on GitHub was deleted as it was not really serving any useful purpose.
