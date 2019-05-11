@@ -2,7 +2,7 @@
 author: "gbmhunter"
 date: 2013-09-19
 draft: false
-tags: [ "ferrite bead", "component", "schematic", "inductor", "impedance", "PCB" ]
+tags: [ "ferrite bead", "component", "schematic", "inductor", "impedance", "PCBs" ]
 title: "Ferrite Beads"
 type: "page"
 ---

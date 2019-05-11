@@ -1,19 +1,11 @@
 ---
 author: gbmhunter
-date: 2012-04-11 01:08:41+00:00
+categories: [ "Electric Skateboard" ]
+date: 2012-04-11
 draft: false
+tags: [ "electric skateboard", "PCBs", "PCB Cart", "soldermask" ]
 title: Electric Skateboard PCBs Arrived In The Wrong Colour
 type: post
-categories:
-- Electric Skateboard
-tags:
-- electric skateboard
-- gross orange
-- PCB
-- PCB Cart
-- soldermask
-- wrong colour
-- yellow
 ---
 
 The Electric Skateboards arrived today from PCB Cart. The first thing I noticed is that the yellow soldermask I asked for was not yellow at all, but rather what can only be described as a dark spew orange. I was kind of disappointed about this, since I was hoping for a bright yellow that would match the colour of the pacman on the PCB. Also was the problem that the text on the remote PCB did not stand-out well against the dark orange, and it would be hard to read the user interface. I sent PCB Cart an email with a photo showing the colour, and they replied saying that it was the colour that they always used for yellow, and no one had complained about it before.

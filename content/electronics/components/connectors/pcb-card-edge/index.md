@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-30
 draft: false
-tags: [ "connectors", "PCB", "card edge", "electronic components" ]
+tags: [ "connectors", "PCBs", "card edge", "electronic components" ]
 title: PCB Card Edge
 type: page
 ---

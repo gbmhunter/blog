@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "PCB Design" ]
 date: 2012-05-22
 draft: false
-tags: [ "PCB", "design", "CAD", "checklist", "production", "schematics", "routings", "rules" ]
+tags: [ "PCBs", "design", "CAD", "checklist", "production", "schematics", "routings", "rules" ]
 title: "PCB Design Checklist"
 type: "page"
 ---

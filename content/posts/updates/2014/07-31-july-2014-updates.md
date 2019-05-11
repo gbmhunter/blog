@@ -1,30 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Updates" ]
 date: 2014-07-31
 draft: false
+tags: [ "apertures", "AVR Studio", "C", "code", "component packages", "C++", "dependency injection", "FreeRTOS", "GitHub", "IDE", "inversion of control", "IOC", "microcontrollers", "PCBs", "programming", "PSoC Creator", "stencils", "updates" ]
 title: July 2014 Updates
 type: post
-categories:
-- Updates
-tags:
-- apertures
-- AVR Studio
-- C
-- code
-- component packages
-- C++
-- dependency injection
-- FreeRTOS
-- GitHub
-- IDE
-- inversion of control
-- IOC
-- microcontrollers
-- PCBs
-- programming
-- PSoC Creator
-- stencils
-- updates
 ---
 
 Probably one of the biggest months of updates ever!
@@ -91,7 +72,9 @@ Probably one of the biggest months of updates ever!
 
 * New page on [PCB Stencils](/pcb-design/soldermask-stencils/) under Electronics->PCB Design. This includes information of the different etching processes as well as terminology such as aperture size and aspect ratio.
 
-* Updated to the [RingBuff-Cpp](https://github.com/gbmhunter/RingBuff-Cpp) GitHub repo. {{< figure src="/images/misc/github-ringbuff-readme-screenshot.png"    >}}
+* Updated to the [RingBuff-Cpp](https://github.com/gbmhunter/RingBuff-Cpp) GitHub repo.
+
+    {{< figure src="/images/misc/github-ringbuff-readme-screenshot.png"    >}}
 
 * Updates to the [Microcontroller IDE Comparison page](/programming/general/microcontroller-ide-comparison) relating to AVR Studio.
 

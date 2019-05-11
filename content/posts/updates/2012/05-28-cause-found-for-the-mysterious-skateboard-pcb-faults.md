@@ -1,18 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Electric Skateboard" ]
 date: 2012-05-28
 draft: false
+tags: [ "electric skateboard", "flux", "LEDs", "PCBs", "soldering" ]
 title: Cause Found For The Mysterious Skateboard PCB Faults
 type: post
-categories:
-- Electric Skateboard
-tags:
-- electric skateboard
-- flux
-- LEDs
-- PCB
-- soldering
-- sporadically
 ---
 
 So I finally fixed the problems with the skateboard circuit boards...

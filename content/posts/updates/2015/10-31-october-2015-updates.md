@@ -1,33 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Updates" ]
 date: 2015-10-31
 draft: false
+tags: [ "Atmel", "avrdude", "fans", "gcc", "I2C addressing", "LC filters", "MTA-100", "noise", "PCBs", "PSoC", "RMS", "RS-232", "RS-485", "SOD-923", "SOT-23-8", "SOT-346", "surface finish", "tests", "test points", "TO-5", "USB" ] 
 title: October 2015 Updates
 type: post
-categories:
-- Updates
-tags:
-- Atmel
-- avrdude
-- fans
-- gcc
-- I2C addressing
-- LC filters
-- MTA-100
-- noise
-- PCB
-- PSoC
-- RMS
-- RS-232
-- RS-485
-- SOD-923
-- SOT-23-8
-- SOT-346
-- surface finish
-- test
-- test points
-- TO-5
-- USB
 ---
 
 * Moved the [Noise page](/electronics/test-and-measurement/noise) to the Electronics->Test And Measurement section. Added info about standard deviations and RMS measurements of noise.

@@ -1,18 +1,9 @@
 ---
 author: gbmhunter
 date: 2014-07-08
+tags: [ "Latex", "op-amp", "jumpers", "resistors", "capacitors", "connectors", "component packages", "circuitikz", "tikz" ] 
 title: February-June 2014 Updates
 type: post
-tags:
-- Latex
-- op-amp
-- jumpers
-- resistors
-- capacitors
-- connectors
-- component packages
-- circuitikz
-- tikz
 ---
 
 So progress has been a little slower than usual lately, here are all the updates from Feburary 2014 to June 2014:

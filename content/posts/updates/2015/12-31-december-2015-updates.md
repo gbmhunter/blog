@@ -1,18 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Updates" ]
 date: 2015-12-31
 draft: false
+tags: [ "board-to-board", "connectors", "PCB card edge", "strip lines", "terminal blocks", "wire-to-board" ] 
 title: December 2015 Updates
 type: post
-categories:
-- Updates
-tags:
-- board-to-board
-- connectors
-- PCB card edge
-- strip lines
-- terminal blocks
-- wire-to-board
 ---
 
 * New [Wire-to-Board page](/electronics/components/connectors/wire-to-board-wtb) under Electronics->Components->Connectors.  

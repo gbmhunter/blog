@@ -4,7 +4,7 @@ categories: [ "PCB Design" ]
 date: 2011-09-05
 description: "Helpful hints, tricks and standardized ways of doing things to make using Altium Designer easier."
 lastmod: 2018-12-29
-tags: [ "Altium", "PCB", "CAD", "footprints", "components", "rules", "layers", "vias", "nets", "datasheets", "resistors", "capacitors", "PcbDoc", "PcbPrj", "AD", "schematic" ]
+tags: [ "Altium", "PCBs", "CAD", "footprints", "components", "rules", "layers", "vias", "nets", "datasheets", "resistors", "capacitors", "PcbDoc", "PcbPrj", "AD", "schematic" ]
 title: "Altium Tricks And Standards"
 type: "page"
 ---

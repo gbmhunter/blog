@@ -6,26 +6,7 @@ title: November 2014 Updates
 type: post
 categories:
 - Updates
-tags:
-- Altium
-- bss
-- candy-calc
-- canvas
-- castellation
-- desmear
-- etchback
-- gerber
-- HTML
-- IMS
-- IPC-2581b
-- odb++
-- resistors
-- RF design
-- rotation
-- scripts
-- SEPIC
-- temperature sensors
-- updates
+tags: [ "Altium", "bss", "candy-calc", "canvas", "castellation", "desmear", "etchback", "gerber", "HTML", "IMS", "IPC-2581b", "odb++", "resistors", "RF design", "rotation", "scripts", "SEPIC", "temperature sensors", "updates" ]
 ---
 
 * Added [Desmear and Etch/pcb-design/desmear-and-etchback/nd-etchback) under Electronics->PCB Design.  

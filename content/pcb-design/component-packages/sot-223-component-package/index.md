@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-01-08
 draft: false
-tags: [ "component package", "PCB design", "SOT-223", "DCQ", "DCY", "MP04A", "PG-SOT-223-4", "TO-261-4", "R-PDSO-G6", "footprint", "land pattern", "PCB", "dimensions", "linear regulator" ]
+tags: [ "component package", "PCB design", "SOT-223", "DCQ", "DCY", "MP04A", "PG-SOT-223-4", "TO-261-4", "R-PDSO-G6", "footprint", "land pattern", "PCBs", "dimensions", "linear regulator" ]
 title: SOT-223 Component Package
 type: page
 ---

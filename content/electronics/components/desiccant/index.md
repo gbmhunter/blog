@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Electronic Components" ]
 date: 2012-12-07
 draft: false
-tags: [ "desiccant", "recharging", "moisture", "PCB" ]
+tags: [ "desiccant", "recharging", "moisture", "PCBs" ]
 title: Desiccant
 type: page
 ---
