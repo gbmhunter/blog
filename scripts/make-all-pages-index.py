@@ -15,7 +15,7 @@ def rename_file(file_name, root):
 
     old_file_path = os.path.join(root, file_name)
 
-    if file_name == 'index.md':
+    if file_name == 'index.md' or file_name == 'index.html' or file_name == '_index.html':
         new_file_path = os.path.join(root, '_index.md')
         print(f'Renaming {old_file_path} to {new_file_path}.')
         if not DRY_RUN:
