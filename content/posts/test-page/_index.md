@@ -103,4 +103,4 @@ This is another footnote[^foot-2].
 
 {{% link src="/posts/test-page/_index.md" text="Absolute link." %}}
 
-{{% link src="relative-page.md" text="Relative link." %}}
+{{% link src="relative-page/_index.md" text="Relative link." %}}

@@ -3,7 +3,7 @@ import os
 DRY_RUN = False
 
 def main():
-    for root, dirs, files in os.walk(os.path.join('..', 'content')):
+    for root, dirs, files in os.walk(os.path.join('..', 'content/')):
         for file_name in files:
             print(f'file = {file_name}')
             if file_name != '_index.md' and (file_name.endswith('.md') or file_name.endswith('.html')):
