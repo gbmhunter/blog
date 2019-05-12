@@ -22,7 +22,7 @@ Click on any photo to expand into a full-sized version.
 
 Component packages with many names (synonyms) are listed by the most common, or most "popular" name, which is not necessarily the technically correct name.
 
-Some items such as the {{% link text="PP3 9V battery case" src="pp3-component-package/_index.md" %}}, and {{% link text="SIM card sizes" src="sim-card-sizes/" %}}, may not be strictly component packages, but are included here for completeness.
+Some items such as the {{% link text="PP3 9V battery case" src="pp3-component-package" %}}, and {{% link text="SIM card sizes" src="sim-card-sizes/" %}}, may not be strictly component packages, but are included here for completeness.
 
 ## Break-out Boards
 

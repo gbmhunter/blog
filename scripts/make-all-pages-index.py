@@ -1,9 +1,9 @@
 import os
 
-DRY_RUN = True
+DRY_RUN = False
 
 def main():
-    for root, dirs, files in os.walk(os.path.join('..', 'content/')):
+    for root, dirs, files in os.walk(os.path.join('..', 'content')):
         if len(dirs) == 0:
             is_leaf = True
         else:
