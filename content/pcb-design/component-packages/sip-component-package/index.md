@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-05
 draft: false
-tags: [ "component package", "PCB design", "SIP", "single inline package" ]
+tags: [ "component packages", "PCB design", "SIP", "single inline package" ]
 title: SIP Component Package
 type: page
 ---

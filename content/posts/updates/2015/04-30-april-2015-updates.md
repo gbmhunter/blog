@@ -7,7 +7,7 @@ type: post
 categories:
 - Updates
 tags:
-- component packages
+- component packagess
 - DPAK
 - futures and promises
 - inductors

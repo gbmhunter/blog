@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-04
 draft: false
-tags: [ "component package", "PCB design", "DO-35", "DO-214AH", "diode" ]
+tags: [ "component packages", "PCB design", "DO-35", "DO-214AH", "diodes" ]
 title: DO-35 (DO-214AH) Component Package
 type: page
 ---

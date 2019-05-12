@@ -2,7 +2,7 @@
 author: "gbmhunter"
 date: 2013-04-03
 draft: false
-tags: [ "C++", "PSoC", "PSoC Creator", "C", "IDE", "gcc", "g++", "microcontroller", "new", "delete", "vtable", "nothrow" ]
+tags: [ "C++", "PSoC", "PSoC Creator", "C", "IDEs", "gcc", "g++", "microcontroller", "new", "delete", "vtable", "nothrow" ]
 title: "Using C++ With PSoC Creator"
 type: "page"
 ---
@@ -110,7 +110,7 @@ and/or the reported error from PSoC Creator saying `undefined reference to __cxa
 
 {{< figure src="/images/programming-psoc/c-linker-error-undefined-reference-to-cxa-end-cleanup.png" caption="Add the custom compile flag '-fno-exceptions' to every .cpp file you want to compile in PSoC Creator to prevent the 'undefined reference to __cxa_end_cleanup' linker error."  width="600px" >}}
 
-To prevent this, you have the to include the build flag `-fno-exceptions` to **every .cpp file that produces this error**. To add the build flag to a particular file, right click the file in the Workspace Explorer and click "Build Settings". Then click "Compiler", then "Command Line", and enter `-fno-excpetions` to the "Custom Flags" field.
+To prevent this, you have the to include the build flag `-fno-exceptions` to **every .cpp file that produces this error**. To add the build flag to a particular file, right click the file in the Workspace Explorer and click "Build Settings". Then click "compilers", then "Command Line", and enter `-fno-excpetions` to the "Custom Flags" field.
 
 {{< figure src="/images/programming-psoc/psoc-creator-build-settings-to-use-new-delete-fno-exceptions.png" caption="Add the custom compile flag '-fno-exceptions' flag via the 'Build Settings' menu in PSoC Creator."  width="800px" >}}
 

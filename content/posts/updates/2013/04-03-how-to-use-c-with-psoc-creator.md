@@ -1,18 +1,11 @@
 ---
 author: gbmhunter
-date: 2013-04-03 06:17:59+00:00
+categories: [ "Programming" ]
+date: 2013-04-03
 draft: false
+tags: [ "C", "compiler", " C++", "creator", "programming", "PSoC" ]
 title: How To Use C++ With PSoC Creator
 type: post
-categories:
-- Programming
-tags:
-- C
-- compiler
-- C++
-- creator
-- programming
-- PSoC
 ---
 
 Ever wanted to write C++ for the PSoC 5 or 5LP chips in PSoC Creator?
@@ -41,7 +34,7 @@ It covers the four main steps:
 
 4. Prevent Exception Functionality
 
-    Preventing exception functionality to prevent linker errors such as `undefined reference to __gxx_personality_v0` and "undefined reference to __cxa_end_cleanup" (again, this is optional, and only applied if you want to use new and delete)
+    Preventing exception functionality to prevent linker errors such as `undefined reference to __gxx_personality_v0` and `undefined reference to __cxa_end_cleanup` (again, this is optional, and only applied if you want to use new and delete)
     
     {{< figure src="/images/programming-psoc/cplusplus-linker-error-undefined-reference-to-gxx-personality.png" caption="Add the custom compile flag '-fno-exceptions' to every .cpp file you want to compile in PSoC Creator to prevent the 'undefined reference to __gxx_personality_v0' linker error." width="600px" >}}
 

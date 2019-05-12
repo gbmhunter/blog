@@ -1,21 +1,11 @@
 ---
 author: gbmhunter
-date: 2013-03-28 05:05:50+00:00
+categories: [ "Updates", "Site Admin" ]
+date: 2013-03-28
 draft: false
+tags: [ "code", "descendants", "highlighter", "menu", "plugins", "programming", "syntax", "Wordpress" ]
 title: Changes Over The Last 3 Months
 type: post
-categories:
-- Updates
-- Site Admin
-tags:
-- code
-- descendants
-- highlighter
-- menu
-- plugins
-- programming
-- syntax
-- Wordpress
 ---
 
 The [C](/programming/languages/c), [C++](/programming/languages/c-plus-plus), and [C#](/programming/languages/c-sharp) programming pages have been updated with lots more info.

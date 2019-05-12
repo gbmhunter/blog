@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "transistor", "TO-277A", "SMPC" ]
+tags: [ "component packages", "PCB design", "transistor", "TO-277A", "SMPC" ]
 title: TO-277A (SMPC) Component Package
 type: page
 ---

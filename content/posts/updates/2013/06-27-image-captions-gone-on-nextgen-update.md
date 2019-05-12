@@ -1,20 +1,11 @@
 ---
 author: gbmhunter
-date: 2013-06-27 05:26:36+00:00
+categories: [ "Site Admin" ]
+date: 2013-06-27
 draft: false
+tags: [ "border", "caption", "code", "images", "nextgen", "plugin", "template", "update" ]
 title: Image Captions Gone On NextGEN Update
 type: post
-categories:
-- Site Admin
-tags:
-- border
-- caption
-- code
-- images
-- nextgen
-- plugin
-- template
-- update
 ---
 
 Grrrr...I updated the NextGEN gallery plugin, and it wiped all of my code that created a nice border and caption around images that where supplied with the parameter template=caption in the short code (see the post [NextGEN Template Code Gives Images A Caption And Fresh Look](/posts/updates/2013/05-02-nextgen-template-code-gives-images-a-caption-and-fresh-look/) for more info).

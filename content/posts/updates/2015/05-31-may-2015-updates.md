@@ -9,7 +9,7 @@ categories:
 tags:
 - air
 - battery
-- component package
+- component packages
 - DSOP advance
 - programming language
 - rust

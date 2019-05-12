@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "VQFN", "QFN" ]
+tags: [ "component packages", "PCB design", "VQFN", "QFN" ]
 title: VQFN Component Package
 type: page
 ---

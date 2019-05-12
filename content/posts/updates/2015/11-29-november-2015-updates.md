@@ -1,27 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Updates" ]
 date: 2015-11-29
 draft: false
+tags: [ "comparators", "components", " D-Subminiature", "DIACs", "ferrite beads", "flux", "isolators", "LEDs", "mouse bites", "package", "pulse extending", "SOT-363", "SOT-89", "triacs", "varistors" ]
 title: November 2015 Updates
 type: post
-categories:
-- Updates
-tags:
-- comparators
-- components
-- D-Subminiature
-- DIACs
-- ferrite beads
-- flux
-- isolators
-- LEDs
-- mouse bites
-- package
-- pulse extending
-- SOT-363
-- SOT-89
-- triacs
-- varistors
 ---
 
 * New [DIACs page](/electronics/components/diodes/diacs) under Electronics->Components.

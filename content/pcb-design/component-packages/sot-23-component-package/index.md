@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-tags: [ "component package", "PCB design", "SOT-23", "SOT-23-3", "Micro3", "SC-59", "SOT-346", "SSOT3", "SOT-753", SOT-457", "SC-74A" ]
+tags: [ "component packages", "PCB design", "SOT-23", "SOT-23-3", "Micro3", "SC-59", "SOT-346", "SSOT3", "SOT-753", SOT-457", "SC-74A" ]
 title: SOT-23 Component Package
 type: page
 ---

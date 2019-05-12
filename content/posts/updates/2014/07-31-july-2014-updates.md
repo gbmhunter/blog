@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Updates" ]
 date: 2014-07-31
 draft: false
-tags: [ "apertures", "AVR Studio", "C", "code", "component packages", "C++", "dependency injection", "FreeRTOS", "GitHub", "IDE", "inversion of control", "IOC", "microcontrollers", "PCBs", "programming", "PSoC Creator", "stencils", "updates" ]
+tags: [ "apertures", "AVR Studio", "C", "code", "component packages", "C++", "dependency injection", "FreeRTOS", "GitHub", "IDEs", "inversion of control", "IOC", "microcontrollers", "PCBs", "programming", "PSoC Creator", "stencils", "updates" ]
 title: July 2014 Updates
 type: post
 ---

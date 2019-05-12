@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-03-09
 draft: false
-tags: [ "component package", "PCB design", "SMB", "DO-214AA" ]
+tags: [ "component packages", "PCB design", "SMB", "DO-214AA" ]
 title: SMB (DO-214AA) Component Package
 type: page
 ---

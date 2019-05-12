@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-04
 draft: false
-tags: [ "component package", "PCB design", "DO-41", "DO-204", "diode" ]
+tags: [ "component packages", "PCB design", "DO-41", "DO-204", "diodes" ]
 title: DO-41 Component Package
 type: page
 ---

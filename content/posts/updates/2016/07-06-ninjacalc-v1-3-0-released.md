@@ -1,21 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "NinjaCalc" ]
 date: 2016-07-06
 draft: false
+tags: [ "algorithm", "calculator", "checksum", "CRC", "custom", "cyclic redundancy check", "NinjaCalc", "polynomial", "update" ]
 title: NinjaCalc v1.3.0 Released
 type: post
-categories:
-- NinjaCalc
-tags:
-- algorithm
-- calculator
-- checksum
-- CRC
-- custom
-- cyclic redundancy check
-- NinjaCalc
-- polynomial
-- update
 ---
 
 [NinjaCalc v1.3.0 has been released!](http://mbedded-ninja.github.io/NinjaCalc/) The biggest change is the addition of a **CRC calculator**, which allows you to calculate the CRC value for ASCII or hex data, using either **common pre-loaded CRC algorithms or your own custom algorithm**.

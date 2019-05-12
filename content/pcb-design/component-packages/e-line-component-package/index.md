@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-04
 draft: false
-tags: [ "component package", "PCB design", "E-Line", "TO-92" ]
+tags: [ "component packages", "PCB design", "E-Line", "TO-92" ]
 title: E-Line Component Package
 type: page
 ---

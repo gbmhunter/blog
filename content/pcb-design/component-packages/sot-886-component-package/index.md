@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-tags: [ "component package", "PCB design", "SOT-886", "small-outline", "transistor", "XSON-6", "6-XFDFN" ]
+tags: [ "component packages", "PCB design", "SOT-886", "small-outline", "transistor", "XSON-6", "6-XFDFN" ]
 title: SOT-886 Component Package
 type: page
 ---

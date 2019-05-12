@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2014-11-09
 draft: false
-tags: [ "component package", "PCB design", "SOD-523", "SC-79", "SSMini2", "small-outline", "diode" ]
+tags: [ "component packages", "PCB design", "SOD-523", "SC-79", "SSMini2", "small-outline", "diodes" ]
 title: SOD-523 Component Package
 type: page
 ---

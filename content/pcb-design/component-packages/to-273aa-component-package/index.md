@@ -5,7 +5,7 @@ date: 2019-04-29
 description: "Dimensions, land patterns, thermal resistances and more info on the TO-273AA (Super TO-220) component package."
 draft: false
 lastmod: 2019-04-29
-tags: [ "component package", "PCB design", "transistor", "TO-273AA", "Super TO-220", "TO-220", "JEDEC" ]
+tags: [ "component packages", "PCB design", "transistor", "TO-273AA", "Super TO-220", "TO-220", "JEDEC" ]
 title: TO-273AA Component Package
 type: page
 ---

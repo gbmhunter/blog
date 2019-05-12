@@ -1,11 +1,11 @@
 ---
-title: "Linux Serial Ports Using C/C++"
-description: "A walk-through on how to configure serial ports correctly in Linux."
-tags: [ "linux", "serial port", "termios", "file", "unix", "tty", "device", "configuration", "C", "C++", "example"]
 author: "gbmhunter"
 date: "2017-06-24"
-lastmod: "2018-12-26"
+description: "A walk-through on how to configure serial ports correctly in Linux."
 draft: false
+lastmod: "2018-12-26"
+tags: [ "Linux", "serial ports", "termios", "files", "unix", "tty", "devices", "configurations", "C", "C++", "examples"]
+title: "Linux Serial Ports Using C/C++"
 type: "page"
 ---
 
@@ -23,7 +23,7 @@ Common names are:
 * `/dev/ttyPS0` - Xilinx Zynq FPGAs running a Yocto-based Linux build will use this name for the default serial port that Getty connects to.
 * `/dev/ttyS0` - Standard COM ports will have this name. These are less common these days with newer desktops and laptops not having actual COM ports.
 * `/dev/ttyUSB0` - Most USB-to-serial cables will show up using a file named like this.
-* `/dev/pts/0` - A psuedo terminal. These can be generated with `socat`.
+* `/dev/pts/0` - A pseudo terminal. These can be generated with `socat`.
 
 {{< img src="linux-dev-dir-ttyacm0-arduino-serial" width="600px" caption="A listing of the /dev/ directory in Linux with a connected Arduino. The Arduino serial port is present as /dev/ttyACMO0." >}}
 
@@ -165,7 +165,7 @@ tty.c_lflag &= ~ECHONL; // Disable new-line echo
 
 ### Disable Signal Chars
 
-When the `ISIG` bit is set, `INTR`, `QUIT` and `SUSP` characters are intrepreted. We don't want this with a serial port, so clear this bit:
+When the `ISIG` bit is set, `INTR`, `QUIT` and `SUSP` characters are interpreted. We don't want this with a serial port, so clear this bit:
 
 ```c
 tty.c_lflag &= ~ISIG; // Disable interpretation of INTR, QUIT and SUSP

@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-06-19
 draft: false
-tags: [ "component package", "PCB design", "SOD-123", "small-outline", "diode", "D6", "SC-109D" ]
+tags: [ "component packages", "PCB design", "SOD-123", "small-outline", "diodes", "D6", "SC-109D" ]
 title: SOD-123 Component Package
 type: page
 ---

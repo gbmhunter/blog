@@ -1,19 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Site Admin" ]
 date: 2013-04-21
 draft: false
+tags: [ "cladlabs", "motion", "theme", "transparency", "tricks" ]
 title: CladLabs Background Has Gone Black
 type: post
-categories:
-- Site Admin
-tags:
-- black
-- cladlabs
-- grey
-- motion
-- theme
-- transparency
-- tricks
 ---
 
 Ever since I adopted the [Motion theme](http://wordpress.org/extend/themes/motion) I've been slowly tweaking it (with a child theme of course). I've always liked darker themes (Visual Studio's dark theme rocks!), so I decided today to change the sites background to a dark, dark grey.

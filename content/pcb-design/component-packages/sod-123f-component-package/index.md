@@ -2,7 +2,7 @@
 author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
-tags: [ "component package", "PCB design", "SOD-123F", "DO-219AA", "PDMU", "M1F" ]
+tags: [ "component packages", "PCB design", "SOD-123F", "DO-219AA", "PDMU", "M1F" ]
 title: SOD-123F Component Package
 type: page
 ---

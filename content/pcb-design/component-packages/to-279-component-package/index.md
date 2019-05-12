@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-25
 draft: false
-tags: [ "component package", "PCB design", "transistor", "TO-279", "D2PAK" ]
+tags: [ "component packages", "PCB design", "transistor", "TO-279", "D2PAK" ]
 title: TO-279 Component Package
 type: page
 ---

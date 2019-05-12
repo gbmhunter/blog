@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-05
 draft: false
-tags: [ "component package", "PCB design", "SMD35", "Seti", "UV" ]
+tags: [ "component packages", "PCB design", "SMD35", "Seti", "UV" ]
 title: SMD35 Component Package
 type: page
 ---

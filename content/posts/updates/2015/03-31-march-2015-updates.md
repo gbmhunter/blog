@@ -9,7 +9,7 @@ categories:
 tags:
 - Avada
 - buck converters
-- component packages
+- component packagess
 - diodes
 - MFI
 - MOSFETs

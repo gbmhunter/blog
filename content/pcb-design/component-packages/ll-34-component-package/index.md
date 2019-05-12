@@ -2,7 +2,7 @@
 author: "gbmhunter"
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2014-11-09
-tags: [ "component package", "PCB design", "LL-34", "Mini-MELF" ]
+tags: [ "component packages", "PCB design", "LL-34", "Mini-MELF" ]
 title: "LL-34 Component Package"
 type: "page"
 ---

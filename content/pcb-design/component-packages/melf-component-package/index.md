@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2014-11-09
 draft: false
-tags: [ "component package", "PCB design", "MELF", "LL-34" ]
+tags: [ "component packages", "PCB design", "MELF", "LL-34" ]
 title: MELF Component Package
 type: page
 ---

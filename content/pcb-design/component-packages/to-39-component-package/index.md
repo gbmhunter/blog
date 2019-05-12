@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "transistor", "TO-39", "TO-205AD" ]
+tags: [ "component packages", "PCB design", "transistor", "TO-39", "TO-205AD" ]
 title: TO-39 Component Package
 type: page
 ---

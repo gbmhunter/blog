@@ -13,7 +13,7 @@ tags:
 - child pages
 - child pages shortcode
 - code
-- component packages
+- component packagess
 - list pages shortcode
 - mega menu
 - parent pages

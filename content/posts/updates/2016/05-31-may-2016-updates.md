@@ -2,22 +2,11 @@
 author: gbmhunter
 date: 2016-05-31
 draft: false
+tags: [ "converters", "current sources", "diodes", "Howland", "low capacitance", "PTC", "resistances", "thermistors", "triggered resistances", "TVS", "voltage-to-current" ]
 title: May 2016 Updates
 type: post
 categories:
 - Updates
-tags:
-- converters
-- current sources
-- diodes
-- Howland
-- low capacitance
-- PTC
-- resistances
-- thermistors
-- triggered resistances
-- TVS
-- voltage-to-current
 ---
 
 * The TVS diode content from the [Diodes page](/electronics/components/diodes) was moved to it's own [child page](/electronics/components/diodes/tvs-diodes). Info on low-capacitance TVS diodes added to this page.  

@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "transistor", "TQFP", "thin quad flat pack" ]
+tags: [ "component packages", "PCB design", "transistor", "TQFP", "thin quad flat pack" ]
 title: TQFP Component Package
 type: page
 ---

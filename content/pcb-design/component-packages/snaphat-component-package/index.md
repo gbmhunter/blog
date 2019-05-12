@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-05
 draft: false
-tags: [ "component package", "PCB design", "SNAPHAT", "battery", "rechargeable" ]
+tags: [ "component packages", "PCB design", "SNAPHAT", "battery", "rechargeable" ]
 title: SNAPHAT Component Package
 type: page
 ---

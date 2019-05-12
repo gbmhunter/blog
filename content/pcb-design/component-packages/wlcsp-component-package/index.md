@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-03-24
 draft: false
-tags: [ "component package", "PCB design", "WLCSP", "LCSPW", "BGA" ]
+tags: [ "component packages", "PCB design", "WLCSP", "LCSPW", "BGA" ]
 title: WLCSP Component Package
 type: page
 ---

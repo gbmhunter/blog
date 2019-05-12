@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-15
 draft: false
-tags: [ "component package", "PCB design", "SOT-346", "small-outline", "transistor" ]
+tags: [ "component packages", "PCB design", "SOT-346", "small-outline", "transistor" ]
 title: SOT-346 Component Package
 type: page
 ---

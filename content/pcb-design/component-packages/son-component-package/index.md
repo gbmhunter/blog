@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2014-12-03
 draft: false
-tags: [ "component package", "PCB design", "SON", "DFN", "DSG", "MLP", "MLPD", "MLPM", "VDFPN", "QFN" ]
+tags: [ "component packages", "PCB design", "SON", "DFN", "DSG", "MLP", "MLPD", "MLPM", "VDFPN", "QFN" ]
 title: SON Component Package
 type: page
 ---

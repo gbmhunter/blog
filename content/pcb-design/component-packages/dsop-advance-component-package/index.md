@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-05-13
 draft: false
-tags: [ "component package", "PCB design", "DSOP" ]
+tags: [ "component packages", "PCB design", "DSOP" ]
 title: DSOP Advance Component Package
 type: page
 ---

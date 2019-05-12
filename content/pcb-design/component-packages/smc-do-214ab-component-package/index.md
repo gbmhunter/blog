@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-03-09
 draft: false
-tags: [ "component package", "PCB design", "SMC", "DO-214AD", "diode" ]
+tags: [ "component packages", "PCB design", "SMC", "DO-214AD", "diodes" ]
 title: SMC (DO-214AB) Component Package
 type: page
 ---

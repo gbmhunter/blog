@@ -11,7 +11,7 @@ tags:
 - calculator
 - candy-calc
 - clocks
-- component packages
+- component packagess
 - connectors
 - simulation
 - spice

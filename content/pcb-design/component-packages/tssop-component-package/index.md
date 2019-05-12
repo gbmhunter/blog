@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "transistor", "TSSOP", "thin scale small-outline package", "HTSSOP" ]
+tags: [ "component packages", "PCB design", "transistor", "TSSOP", "thin scale small-outline package", "HTSSOP" ]
 title: TSSOP Component Package
 type: page
 ---

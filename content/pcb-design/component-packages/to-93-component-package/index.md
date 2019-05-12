@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "transistor", "TO-93", "TO-209AB", "SCR" ]
+tags: [ "component packages", "PCB design", "transistor", "TO-93", "TO-209AB", "SCR" ]
 title: TO-93 (TO-209AB) Component Package
 type: page
 ---

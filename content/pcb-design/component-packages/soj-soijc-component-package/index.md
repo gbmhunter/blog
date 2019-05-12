@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-tags: [ "component package", "PCB design", "SOJ", "SOIJC" ]
+tags: [ "component packages", "PCB design", "SOJ", "SOIJC" ]
 title: SOJ (SOIJC) Component Package
 type: page
 ---

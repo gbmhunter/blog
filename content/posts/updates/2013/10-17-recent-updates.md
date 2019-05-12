@@ -1,29 +1,10 @@
 ---
-title: Recent Updates
 author: gbmhunter
+categories: [ "Updates" ]
 date: 2013-10-17
 draft: false
-categories:
-- Updates
-tags:
-- Altium
-- calculator
-- CladLab
-- component
-- connectors
-- images
-- json
-- LGA
-- memory
-- modem
-- node
-- packages
-- script
-- SEO
-- SIM
-- smart links
-- TO-Leadless
-- updates
+tags: [ "Altium", "calculator", "CladLab", "component", "connectors", "images", "json", "LGA", "memory", "modem", "node", "packages", "script", "SEO", "SIM", "smart links", "TO-Leadless", "updates" ]
+title: Recent Updates
 ---
 
 It's update time! Here is a list of some of most important updates that have happened on this site in the last month or so...

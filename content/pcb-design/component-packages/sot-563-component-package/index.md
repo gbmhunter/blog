@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-tags: [ "component package", "PCB design", "SOT-563", "SC-89-6", "small-outline", "transistor" ]
+tags: [ "component packages", "PCB design", "SOT-563", "SC-89-6", "small-outline", "transistor" ]
 title: SOT-563 Component Package
 type: page
 ---

@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-25
 draft: false
-tags: [ "component package", "PCB design", "uSOP", "MSOP" ]
+tags: [ "component packages", "PCB design", "uSOP", "MSOP" ]
 title: uSOP Component Package
 type: page
 ---

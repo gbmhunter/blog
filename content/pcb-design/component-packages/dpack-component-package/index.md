@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "DPACK", "SC-63", "SOT-428", "TO-252", "TO-252AA", "CPD", "Case 369C" ]
+tags: [ "component packages", "PCB design", "DPACK", "SC-63", "SOT-428", "TO-252", "TO-252AA", "CPD", "Case 369C" ]
 title: DPACK Component Package
 type: page
 ---

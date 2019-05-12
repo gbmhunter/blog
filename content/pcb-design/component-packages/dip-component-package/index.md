@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-03-08
 draft: false
-tags: [ "component package", "PCB design", "DIP", "N Package", "PDIP", "CDIP", "dual inline package" ]
+tags: [ "component packages", "PCB design", "DIP", "N Package", "PDIP", "CDIP", "dual inline package" ]
 title: DIP Component Package
 type: page
 ---

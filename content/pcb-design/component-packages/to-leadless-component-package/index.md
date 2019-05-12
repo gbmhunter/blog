@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "transistor", "TO-Leadless" ]
+tags: [ "component packages", "PCB design", "transistor", "TO-Leadless" ]
 title: TO-Leadless Component Package
 type: page
 ---

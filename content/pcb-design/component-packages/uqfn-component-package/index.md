@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "UQFN" ]
+tags: [ "component packages", "PCB design", "UQFN" ]
 title: UQFN Component Package
 type: page
 ---

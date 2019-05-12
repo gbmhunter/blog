@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "D2PAK", "TO-263", "DDPAK", "TO-263AB", "TO-279", "SMD-220" ]
+tags: [ "component packages", "PCB design", "D2PAK", "TO-263", "DDPAK", "TO-263AB", "TO-279", "SMD-220" ]
 title: D2PAK (TO-263) Component Package
 type: page
 ---

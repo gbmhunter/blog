@@ -1,18 +1,11 @@
 ---
 author: gbmhunter
-date: 2013-08-01 23:44:10+00:00
+categories: [ "Site Admin" ]
+date: 2013-08-01
 draft: false
+tags: [ "captions", "gallery", "images", "nextgen", "update", "Wordpress" ]
 title: Site Wide Disappearance Of Most Images
 type: post
-categories:
-- Site Admin
-tags:
-- captions
-- gallery
-- images
-- nextgen
-- update
-- Wordpress
 ---
 
 Just after I managed to get captions working again for images, there has been a side-wide disappearance of most images. The culprit is the newly released [NextGEN Gallery v2.0](http://www.nextgen-gallery.com/nextgen-gallery-2-0/), which as part of it's major restructuring has stopped the support of traditional templates (I used to use a single pic template file to add the additional markup). The idea behind this latest version of NextGEN sounds good, but from my brief use it feels a little buggy and it sounds like plenty of existing plugins will have to be re-written, which is bound to annoy people.

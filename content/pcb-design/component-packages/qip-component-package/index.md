@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-05
 draft: false
-tags: [ "component package", "PCB design", "QIP", "QIL", "DIP", "SIP" ]
+tags: [ "component packages", "PCB design", "QIP", "QIL", "DIP", "SIP" ]
 title: QIP Component Package
 type: page
 ---

@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-tags: [ "component package", "PCB design", "SOT-1193", "small-outline", "transistor", "RFID" ]
+tags: [ "component packages", "PCB design", "SOT-1193", "small-outline", "transistor", "RFID" ]
 title: SOT-1193 Component Package
 type: page
 ---

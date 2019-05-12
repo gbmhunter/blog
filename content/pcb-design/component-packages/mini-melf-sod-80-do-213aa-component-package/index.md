@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-tags: [ "component package", "PCB design", "Mini-MELF", "DO213-AA", "SOD-80", "LL-34" ]
+tags: [ "component packages", "PCB design", "Mini-MELF", "DO213-AA", "SOD-80", "LL-34" ]
 title: Mini-MELF (SOD-80, DO-213AA) Component Package
 type: page
 ---

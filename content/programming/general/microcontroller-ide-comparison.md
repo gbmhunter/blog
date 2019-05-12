@@ -2,7 +2,7 @@
 author: "gbmhunter"
 date: 2011-09-15
 draft: false
-tags: [ "IDE", "microcontroller", "comparison", "AVR Studio", "Eclipse", "Keil uVision", "programming" ]
+tags: [ "IDEs", "microcontroller", "comparison", "AVR Studio", "Eclipse", "Keil uVision", "programming" ]
 title: "Microcontroller IDE Comparison"
 type: "page"
 ---

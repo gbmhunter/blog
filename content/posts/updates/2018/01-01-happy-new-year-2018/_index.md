@@ -7,13 +7,10 @@ type: post
 categories:
 - Updates
 tags:
-- '2017'
-- '2018'
 - blog
 - blog.mbedded.ninja
 - happy new year
 - statistics
-- www.mbedded.ninja
 ---
 
 <p>Happy new year for 2018!</p>

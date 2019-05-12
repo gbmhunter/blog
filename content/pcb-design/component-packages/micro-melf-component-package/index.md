@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-04
 draft: false
-tags: [ "component package", "PCB design", "Micro-MELF" ]
+tags: [ "component packages", "PCB design", "Micro-MELF" ]
 title: Micro-MELF Component Package
 type: page
 ---

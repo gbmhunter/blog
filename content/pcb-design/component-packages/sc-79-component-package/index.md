@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-25
 draft: false
-tags: [ "component package", "PCB design", "SC-79", "SOD-523" ]
+tags: [ "component packages", "PCB design", "SC-79", "SOD-523" ]
 title: SC-79 Component Package
 type: page
 ---

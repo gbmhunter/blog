@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2013-12-27 22:18:00+00:00
+date: 2013-12-27
 draft: false
 title: December 2013 Updates
 type: post
@@ -22,7 +22,7 @@ There have been many updates this month!
 
 * New [MOSFET gate-drive graph](/electronics/components/transistors/mosfets/#dead-time) on the [MOSFETs page](/electronics/components/transistors/mosfets/).  
 
-      {{< figure src="/images/misc/two-mosfet-gate-drives-with-deadtime-graph-screenshot.png" caption="Screenshot of the MOSFET gate drive graph on the MOSFETs page."   >}}
+    {{< figure src="/images/misc/two-mosfet-gate-drives-with-deadtime-graph-screenshot.png" caption="Screenshot of the MOSFET gate drive graph on the MOSFETs page."   >}}
       
 * New [eng-graphs-js repo](https://github.com/gbmhunter/eng-graphs-js), which holds all the data/code for the graphs displayed in various places on this website.
 

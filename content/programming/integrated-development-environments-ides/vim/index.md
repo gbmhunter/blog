@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2018-12-03
 description: "Regex find/replace, back-references and more info about the text-editor vim."
 lastmod: 2019-05-05
-tags: [ "vim", "text editor", "Linux", "command-line", "regex", "IDE", "copy", "paste", "system clipboard", "yank", "indenting", "plugins" ]
+tags: [ "vim", "text editor", "Linux", "command-line", "regex", "IDEs", "copy", "paste", "system clipboard", "yank", "indenting", "plugins" ]
 title: "vim"
 type: "page"
 ---

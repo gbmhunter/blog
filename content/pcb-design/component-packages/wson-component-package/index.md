@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-01-21
 draft: false
-tags: [ "component package", "PCB design", "WSON", "SOIC", "flash memory" ]
+tags: [ "component packages", "PCB design", "WSON", "SOIC", "flash memory" ]
 title: WSON Component Package
 type: page
 ---

@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-tags: [ "component package", "PCB design", "SOT-902", "small-outline", "transistor", "XQFN8U", "XQFN8" ]
+tags: [ "component packages", "PCB design", "SOT-902", "small-outline", "transistor", "XQFN8U", "XQFN8" ]
 title: SOT-902 Component Package
 type: page
 ---

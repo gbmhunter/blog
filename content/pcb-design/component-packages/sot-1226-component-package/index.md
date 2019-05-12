@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-03-26
 draft: false
-tags: [ "component package", "PCB design", "SOT-1226", "small-outline", "transistor" ]
+tags: [ "component packages", "PCB design", "SOT-1226", "small-outline", "transistor" ]
 title: SOT-1226 Component Package
 type: page
 ---

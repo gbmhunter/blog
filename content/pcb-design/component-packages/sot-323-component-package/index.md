@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2014-11-09
 draft: false
-tags: [ "component package", "PCB design", "SOT-323", "small-outline", "transistor" ]
+tags: [ "component packages", "PCB design", "SOT-323", "small-outline", "transistor" ]
 title: "SOT-323 Component Package"
 type: "page"
 ---

@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-26
 draft: false
-tags: [ "component package", "PCB design", "inductor", "SMD" ]
+tags: [ "component packages", "PCB design", "inductor", "SMD" ]
 title: SMD Inductor Packages
 type: page
 ---

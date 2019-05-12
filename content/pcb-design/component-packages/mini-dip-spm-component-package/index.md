@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-05
 draft: false
-tags: [ "component package", "PCB design", "Mini DIP", "BLDC", "motor", "dual in-line package" ]
+tags: [ "component packages", "PCB design", "Mini DIP", "BLDC", "motor", "dual in-line package" ]
 title: Mini-DIP SPM
 type: page
 ---

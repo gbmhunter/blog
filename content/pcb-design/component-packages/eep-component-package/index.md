@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-04
 draft: false
-tags: [ "component package", "PCB design", "EEP", "SMPS", "Texas Instruments", "R-PDSS-T5", "R-PDSS-T6" ]
+tags: [ "component packages", "PCB design", "EEP", "SMPS", "Texas Instruments", "R-PDSS-T5", "R-PDSS-T6" ]
 title: EEP Component Package
 type: page
 ---

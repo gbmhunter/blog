@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-26
 draft: false
-tags: [ "component package", "PCB design", "SMD", "electrolytic", "capacitor", "Panasonic", "Chemi-Con" ]
+tags: [ "component packages", "PCB design", "SMD", "electrolytic", "capacitor", "Panasonic", "Chemi-Con" ]
 title: SMD Electrolytic Capacitor Packages
 type: page
 ---

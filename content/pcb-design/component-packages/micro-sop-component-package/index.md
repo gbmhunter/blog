@@ -2,7 +2,7 @@
 author: "gbmhunter"
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
-tags: [ "component package", "PCB design", "Micro SOP", "MSOP" ]
+tags: [ "component packages", "PCB design", "Micro SOP", "MSOP" ]
 title: "Micro SOP Component Package"
 type: "page"
 ---

@@ -1,15 +1,11 @@
 ---
 author: gbmhunter
-date: 2015-03-15 06:49:57+00:00
+categories: [ "Site Admin" ]
+date: 2015-03-15
 draft: false
+tags: [ "profilers", "website", "Discus", "nextgen", "debugging", "Wordpress", "performance", "tests", "plugin" ]
 title: Site Running Slowly (Does That Mean It's Walking?)
 type: post
-categories:
-- Site Admin
-tags:
-- profiler
-- website page discus nextgen debugging slow
-- wordpress speed performance test p3 plugin
 ---
 
 My apologies for the REALLY slow performance of this website at the moment.

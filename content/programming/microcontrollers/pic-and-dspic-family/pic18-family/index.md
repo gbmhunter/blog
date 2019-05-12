@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Programming", "Embedded", "Microcontrollers" ]
 date: 2016-06-19
 draft: false
-tags: [ "Microchip", "PIC18", "PIC", "compiler", "EEPROM", "GPIO", "SPI", "microcontroller", "MPLAB", "PIC18F", "PIC18C" ]
+tags: [ "Microchip", "PIC18", "PIC", "compilers", "EEPROM", "GPIO", "SPI", "microcontroller", "MPLAB", "PIC18F", "PIC18C" ]
 title: PIC18 Family
 type: page
 ---

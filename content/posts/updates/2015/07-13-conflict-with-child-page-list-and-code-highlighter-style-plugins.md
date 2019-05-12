@@ -1,25 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Site Admin" ] 
 date: 2015-07-13
 draft: false
+tags: [ "bug", "code", "crayon", "debugging", "display", "error", "excerpt", "manual", "PHP", "plugin", "sb child list", "syntax highlighter", "Wordpress" ] 
 title: Conflict With "Child Page List" And "Code Highlighter" Style Plugins
 type: post
-ategories:
-- Site Admin
-tags:
-- bug
-- code
-- crayon
-- debugging
-- display
-- error
-- excerpt
-- manual
-- PHP
-- plugin
-- sb child list
-- syntax highlighter
-- Wordpress
 ---
 
 Certain pages around this website where **not displaying source code** correctly. I was using [Crayon Syntax Highlighter](https://wordpress.org/plugins/crayon-syntax-highlighter/) to style the code. Instead of nicely formatted code like this:
@@ -38,11 +24,11 @@ After about 5 long hours I managed to hunt down the cause, this single line in `
 $template = str_replace('[post_excerpt]', sb_cl_get_the_excerpt($p->ID), $template);
 ```
 
-If this line of code happened to be called on a particular page because I had used the [sb_child_list] shortcode, and it had added links to child pages which hadn't had manual excerpts added, this would stop Crayon Syntax Highlighter code blocks from rendering correctly further down the page (leaving me with text like [crayon-55a318c46df22443583779/] as explained above).
+If this line of code happened to be called on a particular page because I had used the `[sb_child_list]` shortcode, and it had added links to child pages which hadn't had manual excerpts added, this would stop Crayon Syntax Highlighter code blocks from rendering correctly further down the page (leaving me with text like `[crayon-55a318c46df22443583779/]` as explained above).
 
 I tested all this on a development server with a fresh install of Wordpress and just these two plugins installed, so that rules out any older version incompatibilities or other plugin interaction issues.
 
-I could **comment out** that perpetrating line in sb_child_list.php, but then page excerpts would not be rendered correctly. So the **current workaround** is to make sure that all pages have a **manual excerpt** added (this problem doesn't occur if the child pages have manual excerpts.
+I could **comment out** that perpetrating line in `sb_child_list.php`, but then page excerpts would not be rendered correctly. So the **current workaround** is to make sure that all pages have a **manual excerpt** added (this problem doesn't occur if the child pages have manual excerpts.
 
 I have opened an [issue on the SB Child List's GitHub repository](https://github.com/aramk/crayon-syntax-highlighter/issues/269).
 

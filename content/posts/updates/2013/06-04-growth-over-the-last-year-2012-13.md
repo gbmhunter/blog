@@ -1,17 +1,11 @@
 ---
 author: gbmhunter
-date: 2013-06-04 09:19:57+00:00
+categories: [ "Site Admin" ]
+date: 2013-06-04
 draft: false
+tags: [ "growth", "jetpack", "visitors", "stats", "Wordpress" ]
 title: Growth Over The Last Year (2012-13)
 type: post
-categories:
-- Site Admin
-tags:
-- growth
-- jetpack
-- visitors
-- stats
-- Wordpress
 ---
 
 I installed the Wordpress Jetpack plugin just over a year ago, and with it came the  site statistics page, which gives you a nice overview of how many visitors visit your site. It has been interesting seeing the growth over the last year.

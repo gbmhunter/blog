@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-03-09
 draft: false
-tags: [ "component package", "PCB design", "DO-204AC", "DO-15" ]
+tags: [ "component packages", "PCB design", "DO-204AC", "DO-15" ]
 title: DO-204AC Component Package
 type: page
 ---

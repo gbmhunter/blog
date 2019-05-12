@@ -2,7 +2,7 @@
 author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-03-08
-tags: [ "component package", "PCB design", "BGA", "MO-207", "DSBGA" ]
+tags: [ "component packages", "PCB design", "BGA", "MO-207", "DSBGA" ]
 title: BGA Component Package
 type: page
 ---

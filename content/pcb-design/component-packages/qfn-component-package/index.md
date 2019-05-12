@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2014-12-04
 draft: false
-tags: [ "component package", "PCB design", "QFN", "LFCSP", "MLF", "DO-214AC", "solderpaste", "soldermask", "singulation", "voiding", "lead styles", "JEDEC" ]
+tags: [ "component packages", "PCB design", "QFN", "LFCSP", "MLF", "DO-214AC", "solderpaste", "soldermask", "singulation", "voiding", "lead styles", "JEDEC" ]
 title: QFN Component Package
 type: page
 ---

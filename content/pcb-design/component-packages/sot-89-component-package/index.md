@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-11-11
 draft: false
-tags: [ "component package", "PCB design", "SOT-89", "small-outline", "transistor", "SC-62", "TO-2
+tags: [ "component packages", "PCB design", "SOT-89", "small-outline", "transistor", "SC-62", "TO-2
 43" ]
 title: SOT-89 Component Package
 type: page

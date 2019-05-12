@@ -4,7 +4,7 @@ date: 2017-11-24
 description: "Shortcuts, key bindings, compiling C/C++ and more info about the Visual Studio Code IDE."
 draft: false
 lastmod: 2018-12-31
-tags: [ "Visual Studio Code", "VS Code", "key bindings", "keyboard shortcuts", "C", "C++", "IDE", "integrated development environment", "terminal", "editor", "Microsoft" ]
+tags: [ "Visual Studio Code", "VS Code", "key bindings", "keyboard shortcuts", "C", "C++", "IDEs", "integrated development environment", "terminal", "editor", "Microsoft" ]
 title: Visual Studio Code
 type: page
 ---

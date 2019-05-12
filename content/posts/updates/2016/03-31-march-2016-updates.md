@@ -2,29 +2,21 @@
 author: gbmhunter
 date: 2016-03-31
 draft: false
+tags: [ "circuit protection", "component packages", "connectors", "current loop", " D-subminiature", "D2PAK", "TO-263", "mains power", "SPI", "thermistor" ] 
 title: March 2016 Updates
 type: post
 categories:
 - Updates
-tags:
-- circuit protection
-- component package
-- connectors
-- current loop
-- D-subminiature
-- D2PAK
-- TO-263
-- mains power
-- SPI
-- thermistor
 ---
 
 * New [Mains Power page](/electronics/components/connectors/mains-power/) under Electronics->Components->Connectors.
+
 * Updates to the [SPI Protocol page](/electronics/communication-protocols/spi-communication-protocol/) under Electronics->Communication Protocols.  
 
     {{< figure src="/images/2011/09/typical-spi-connections.jpg" caption="The typical SPI connections that an IC will have." width="200px" >}}
   
 * New [Circuit Protection sub-section](/electronics/components/circuit-protection/) and [PTC Type Thermistor page](/electronics/components/circuit-protection/ptc-type-thermistor/).
+
 * Updates to the [D2PAK (TO-263) Component Package page](/pcb-design/component-packages/d2pak-to-263-component-package/), with more info on the TO-263 THIN package.  
 
     {{< figure src="/images/2015/04/d2pak-to-263-component-package-3d-render.jpg" width="300px" caption="A 3D render of the D2PAK (TO-263) component package." >}}

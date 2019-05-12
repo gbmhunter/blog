@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-04
 draft: false
-tags: [ "component package", "PCB design", "HC-49US", "SMD", "crystals" ]
+tags: [ "component packages", "PCB design", "HC-49US", "SMD", "crystals" ]
 title: HC-49/US Component Package
 type: page
 ---

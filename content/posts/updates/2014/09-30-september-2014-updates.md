@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2014-09-30 08:28:47+00:00
+date: 2014-09-30
 draft: false
 title: September 2014 Updates
 type: post

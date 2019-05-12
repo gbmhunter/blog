@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Programming", "Microcontrollers", "Cortex-M3" ]
 date: 2013-04-19
 draft: false
-tags: [ "PSoC", "microcontroller", "IDE", "Cortex-M3" ]
+tags: [ "PSoC", "microcontroller", "IDEs", "Cortex-M3" ]
 title: PSoC Creator
 type: page
 ---

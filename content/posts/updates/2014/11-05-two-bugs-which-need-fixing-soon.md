@@ -1,19 +1,11 @@
 ---
 author: gbmhunter
-date: 2014-11-05 09:28:59+00:00
+categories: [ "Site Admin" ]
+date: 2014-11-05
 draft: false
+tags: [ "anchors", "asterisks", "bugs", "headings", "quicklatex", "resistors", "symbols" ]
 title: Two Bugs Which Need Fixing Soon...
 type: post
-categories:
-- Site Admin
-tags:
-- anchors
-- asterisks
-- bugs
-- headings
-- quicklatex
-- resistors
-- symbols
 ---
 
 1. Lately, a strange asterisk has popped up next to all page headings. Clicking it takes you almost back up to the top of the page. I think this might have something to do with an upgrade to the [Better Anchor Links plugin](https://wordpress.org/plugins/better-anchor-links/) I use to automatically create a "Contents" section at the top of the page which has hyperlinks to all the the pages headings.

@@ -4,7 +4,7 @@ categories: [ "Programming", "Integrated Development Environments" ]
 date: 2016-06-26
 draft: false
 lastmod: 2019-04-05
-tags: [ "IDE", "IntelliJ", "IDEA", "Java", "editor", "code", "shortcuts" ]
+tags: [ "IDEs", "IntelliJ", "IDEA", "Java", "editor", "code", "shortcuts" ]
 title: IntelliJ IDEA
 type: page
 ---

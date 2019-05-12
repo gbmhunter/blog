@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-25
 draft: false
-tags: [ "component package", "PCB design", "chip", "EIA", "0603", "0805", "1206" ]
+tags: [ "component packages", "PCB design", "chip", "EIA", "0603", "0805", "1206" ]
 title: "Chip (EIA) Component Packages"
 type: page
 ---

@@ -1,25 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Site Admin", "Updates" ]
 date: 2015-01-01
 draft: false
+tags: [ "comments", "component packages", "content", "domain", "happy new year", "load times", "mbedded.ninja", "plans", "referrers", "SEO", "statistics", "visitors" ]
 title: Happy New Year, Plans For 2015
 type: post
-categories:
-- Site Admin
-- Updates
-tags:
-- comments
-- component package
-- content
-- domain
-- happy new year
-- load times
-- mbedded.ninja
-- plans
-- referrers
-- SEO
-- statistics
-- visitors
 ---
 
 Happy new year to all!

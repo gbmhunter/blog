@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-tags: [ "component package", "PCB design", "transistor", "TO-252", "DPACK" ]
+tags: [ "component packages", "PCB design", "transistor", "TO-252", "DPACK" ]
 title: TO-252 Component Package
 type: page
 ---

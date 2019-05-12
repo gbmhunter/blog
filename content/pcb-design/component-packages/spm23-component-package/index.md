@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-tags: [ "component package", "PCB design", "SPM23" ]
+tags: [ "component packages", "PCB design", "SPM23" ]
 title: SPM23 Component Package
 type: page
 ---

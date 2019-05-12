@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-tags: [ "component package", "PCB design", "SOP-4", "relays" ]
+tags: [ "component packages", "PCB design", "SOP-4", "relays" ]
 title: SOP-4 Component Package
 type: page
 ---

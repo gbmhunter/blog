@@ -1,35 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Updates" ]
 date: 2013-11-26
 draft: false
+tags: [ " 1-Wire", "antenna", "batch files", "C2000", "calculator", "candy-calc", "cellular modem", "ddclient", "Google charts", "HE910", "impedance", "LEDs", "lens", "Linux", "LT3745", "MCU", "routing", "rsync", "SEO", "smart links", "teli", "updates", "Windows" ]
 title: November 2013 Updates!
 type: post
-categories:
-- Updates
-tags:
-- 1-Wire
-- antenna
-- batch files
-- C2000
-- calculator
-- candy-calc
-- cellular modem
-- ddclient
-- Google charts
-- HE910
-- impedance
-- LEDs
-- lens
-- Linux
-- LT3745
-- MCU
-- routing
-- rsync
-- SEO
-- smart links
-- teli
-- updates
-- Windows
 ---
 
 It's been a buuuussssyyyyyy month around here. A list of the updates for this month:

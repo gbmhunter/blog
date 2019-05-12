@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-25
 draft: false
-tags: [ "component package", "PCB design", "SOD-923", "small-outline", "diode" ]
+tags: [ "component packages", "PCB design", "SOD-923", "small-outline", "diodes" ]
 title: SOD-923 Component Package
 type: page
 ---

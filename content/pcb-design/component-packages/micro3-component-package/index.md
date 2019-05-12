@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "Micro3", "SOT-23" ]
+tags: [ "component packages", "PCB design", "Micro3", "SOT-23" ]
 title: Micro3 Component Package
 type: page
 ---

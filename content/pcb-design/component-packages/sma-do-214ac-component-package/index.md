@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-04
 draft: false
-tags: [ "component package", "PCB design", "SMA", "DO-214AC", "diode" ]
+tags: [ "component packages", "PCB design", "SMA", "DO-214AC", "diodes" ]
 title: SMA (DO-214AC) Component Package
 type: page
 ---

@@ -9,7 +9,7 @@ categories:
 tags:
 - C
 - date
-- library
+- libraries
 - SGP4
 - time
 ---

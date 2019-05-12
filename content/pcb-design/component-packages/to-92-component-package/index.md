@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "transistor", "TO-92", "Z Package", "TO-226AA", "TO-226AB" ]
+tags: [ "component packages", "PCB design", "transistor", "TO-92", "Z Package", "TO-226AA", "TO-226AB" ]
 title: TO-92 (TO-226) Component Package
 type: page
 ---

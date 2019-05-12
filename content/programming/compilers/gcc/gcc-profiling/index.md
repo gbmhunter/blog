@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Programming", "Compilers", "GCC" ]
 date: 2017-11-16
 draft: false
-tags: [ "GCC", "compiler", "programming", "C", "C++", "profiling", "Fibonacci", "gprof", "gprof2dot", "graphviz" ]
+tags: [ "GCC", "compilers", "programming", "C", "C++", "profiling", "Fibonacci", "gprof", "gprof2dot", "graphviz" ]
 title: "GCC Profiling"
 type: page
 ---

@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "D3PAK", "TO-268", "DDDPAK", "Decawatt", "TO-268AA", "TO-268-3", "component package" ]
+tags: [ "D3PAK", "TO-268", "DDDPAK", "Decawatt", "TO-268AA", "TO-268-3", "component packages" ]
 title: D3PAK (TO-268) Component Package
 type: page
 ---

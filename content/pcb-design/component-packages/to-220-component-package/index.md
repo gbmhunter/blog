@@ -5,7 +5,7 @@ date: 2015-04-06
 description: "Dimensions, land patterns and more info for TO-220 package variants such as TO-220AB and TO-220AC."
 draft: false
 lastmod: 2019-04-29
-tags: [ "component package", "PCB design", "transistor", "TO-220", "TO-220AB", "TO-220-3", "TO-220NIS", "JEDEC" ]
+tags: [ "component packages", "PCB design", "transistor", "TO-220", "TO-220AB", "TO-220-3", "TO-220NIS", "JEDEC" ]
 title: TO-220 Component Package
 type: page
 ---

@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
-tags: [ "component package", "PCB design", "transistor", "TSOC", "thin small-outline C-Lead" ]
+tags: [ "component packages", "PCB design", "transistor", "TSOC", "thin small-outline C-Lead" ]
 title: TSOC Component Package
 type: page
 ---

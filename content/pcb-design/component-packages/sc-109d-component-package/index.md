@@ -2,7 +2,7 @@
 author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-25
-tags: [ "component package", "PCB design", "SC-109D", "SOD-123" ]
+tags: [ "component packages", "PCB design", "SC-109D", "SOD-123" ]
 title: "SC-109D Component Package"
 type: page
 ---

@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-05
 draft: false
-tags: [ "component package", "PCB design", "SOD-110", "small-outline", "diode" ]
+tags: [ "component packages", "PCB design", "SOD-110", "small-outline", "diodes" ]
 title: SOD-110 Component Package
 type: page
 ---

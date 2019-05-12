@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-27
 draft: false
-tags: [ "component package", "PCB design", "transistor", "TO-5" ]
+tags: [ "component packages", "PCB design", "transistor", "TO-5" ]
 title: TO-5 Component Package
 type: page
 ---

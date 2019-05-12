@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-tags: [ "component package", "PCB design", "SOT-672-1", "small-outline", "transistor", "MO-241" ]
+tags: [ "component packages", "PCB design", "SOT-672-1", "small-outline", "transistor", "MO-241" ]
 title: SOT-762-1 Component Package
 type: page
 ---

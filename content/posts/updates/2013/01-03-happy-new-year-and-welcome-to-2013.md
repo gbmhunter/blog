@@ -1,19 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Site Admin" ]
 date: 2013-01-0300
 draft: false
+tags: [ "cladlabs", "engineering", "new year", "roadmap", "site plan", "website statistics" ]
 title: Happy New Year And Welcome To 2013
 type: post
-categories:
-- Site Admin
-tags:
-- '2013'
-- cladlabs
-- engineering
-- new year
-- roadmap
-- site plan
-- website statistics
 ---
 
 {{< figure src="/images/misc/2013-sign-new-year-ahead.jpg" caption="Image from http://blog.mailermailer.com/industry-news/2013-is-coming-is-your-email-ready."  width="320px" >}} Happy new year and welcome to 2013 from the [CladLabs team](http://en.gravatar.com/gbmhunter)! (well, that's just me, aka Geoffrey Hunter). Feel privileged, for this is one of the rare semi-personal, non-engineering posts that are ever presented on this site.

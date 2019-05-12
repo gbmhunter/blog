@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-26
 draft: false
-tags: [ "component package", "PCB design", "PP3", "9V", "battery" ]
+tags: [ "component packages", "PCB design", "PP3", "9V", "battery" ]
 title: PP3 Component Package
 type: page
 ---

@@ -4,7 +4,8 @@ date: 2019-01-14
 description: "A quick tutorial on Boto 3, Amazon's Python-based API for AWS."
 draft: false
 lastmod: 2019-01-14
-tags: [ "Amazon", "AWS", "boto", "boto3", "Boto 3", "cloud", "Python", "API", "S3", "library" ]
+tags: [ "Amazon", "AWS", "boto", "boto3", "Boto 3", "cloud", "Python", "API
+", "S3", "libraries" ]
 title: "boto"
 type: "page"
 ---

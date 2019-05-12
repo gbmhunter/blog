@@ -1,22 +1,11 @@
 ---
 author: gbmhunter
-date: 2013-07-17 10:05:05+00:00
+categories: [ "Site Admin" ]
+date: 2013-07-17
 draft: false
+tags: [ "admin", "backup", "caption", "CSS", "HTML", "nextgen", "PHP", "plugin", "singlepic", "Wordpress" ]
 title: NextGen Captions Are Back
 type: post
-categories:
-- Site Admin
-tags:
-- admin
-- backup
-- caption
-- CSS
-- HTML
-- nextgen
-- PHP
-- plugin
-- singlepic
-- Wordpress
 ---
 
 Finally! I scared myself a bit, I first had a look at [/programming/website-design/wordpress/wordpress-plugins-that-this-site-uses](/programming/website-design/content-management-systems/wordpress/wordpress-plugins-that-this-site-uses/) and it turned out I hadn't written down the majority of the PHP code which actually does all the work when creating the captions. Fortunately, I had done a site backup which had file with all the code in it, and once I had worked that out, I managed to restore the functionality pretty quickly.

@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-01-21
 draft: false
-tags: [ "component package", "PCB design", "SOIC", "R-PSDO", "S8", "WSON", "S8E" ]
+tags: [ "component packages", "PCB design", "SOIC", "R-PSDO", "S8", "WSON", "S8E" ]
 title: SOIC Component Package
 type: page
 ---
