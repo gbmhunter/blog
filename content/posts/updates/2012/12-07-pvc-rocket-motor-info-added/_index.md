@@ -1,19 +1,10 @@
 ---
 author: gbmhunter
+categories: [ "Pyrotechnics" ] 
 date: 2012-12-07
+tags: [ "38pvc", "DIY", "homemade", "motors", "PVC", "rocket", "rocketboard", "skateboard" ]
 title: PVC Rocket Motor Info Added
 type: post
-categories:
-- Pyrotechnics
-tags:
-- 38pvc
-- DIY
-- homemade
-- motor
-- PVC
-- rocket
-- rocketboard
-- skateboard
 ---
 
 All the info I recorded about 38PVC, a experimental rocket motor I was playing around with in 2007, has got it's [own page](/pyrotechnics/rocketry/projects/38pvc).

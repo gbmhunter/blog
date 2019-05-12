@@ -1,17 +1,11 @@
 ---
 author: gbmhunter
+categories: [ "Electric Skateboard" ]
 date: 2012-02-19
 draft: false
+tags: [ "electric skateboard", "half-bridges", "heating", "MOSFETs", "motors" ]
 title: Electric Skateboard Half-Bridge Mach 4 Almost Working
 type: post
-categories:
-- Electric Skateboard
-tags:
-- electric skateboard
-- half-bridges
-- heating
-- MOSFETs
-- motors
 ---
 
 I finished building and started testing half-bridge mach 4 this weekend. To my surprise, it's working much better than the previous 3! For one, no MOSFETs blew up within the first few seconds of connecting it up to the motor. I have a feeling it's to do with the higher Vds (100V) of these MOSFETs over the previous ones (75V). This gives the drain-source TVS diodes plenty of play-room to kick in and absorb transients before the MOSFET gets damaged.

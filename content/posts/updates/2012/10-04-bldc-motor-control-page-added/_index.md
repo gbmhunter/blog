@@ -1,23 +1,11 @@
 ---
 author: gbmhunter
-date: 2012-10-04 05:14:44+00:00
+categories: [ "Electronics" ]
+date: 2012-10-04
 draft: false
+tags: [ "BLDC", "brushless", "commutation", "control", "controller", "encoder", "ESC", "hall-effect", "IC", "motors", "sensor-less" ]
 title: BLDC Motor Control Page Added
 type: post
-categories:
-- Electronics
-tags:
-- BLDC
-- brushless
-- commutation
-- control
-- controller
-- encoder
-- ESC
-- hall-effect
-- IC
-- motor
-- sensor-less
 ---
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/img_6210.jpg" caption="A supposedly '3kW' BLDC motor I got from Hobby King."  width="200px" >}}
