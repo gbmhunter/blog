@@ -5,7 +5,7 @@ date: 2018-06-05
 description: "A tutorial on convolution."
 draft: false
 lastmod: 2019-05-05
-tags: [ "signal processing", "mathematics", "convolution", "signal processing", "DSPs", "edge detection", "blurring", "sharpening" ]
+tags: [ "signal processing", "mathematics", "convolution", "signal processing", "DSPs", "edge detection", "blurring", "sharpening", "theorem" ]
 title: Convolution
 type: page
 ---
@@ -172,3 +172,15 @@ $$</p>
 Convolution of any function `\(g(t)\)` with the unit impulse function (also known as the _Dirac delta_ function) will always result in `\(g(t)\)` (the original function, unmodified).
 
 <p>$$ (\delta \ast g)(t) = \int_{-\infty}^{\infty} \delta(\tau) g(t - \tau) = g(t) $$</p>
+
+In this sense, the unit impulse function can be considered as the **identity function** when it comes to convolution (just like the identity matrix in matrix multiplication leaves the original matrix unchanged).
+
+## The Convolution Theorem
+
+The convolution theorem states that **convolution in the time domain is equal to multiplication in the frequency domain**. Mathematically:
+
+<p>$$ \mathcal{F} \{f \ast g\} = \mathcal{F}\{f\} \cdot \mathcal{F}\{g\} $$</p>
+
+We can write the above equation as:
+
+<p>$$ f \ast g = \mathcal{F}^{-1}\{\mathcal{F}\{f\} \cdot \mathcal{F}\{g\}\} $$</p>
