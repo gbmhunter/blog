@@ -92,3 +92,28 @@ The default log message size can be quite verbose. To condense each log message 
 ```sh
 $ git log --oneline -10
 ```
+
+## git reflog
+
+`git reflog`, although sounding much like `git log`, behaves very differently. The **`reflog` is actually a very special branch that records the position of `HEAD` (i.e. auto-commits every time `HEAD` changes) for the last 30 days (by default)**. It is a local branch that is not shared with remotes, so cloning will not preserve a `reflog`.
+
+{{% note %}}
+Think of `git reflog` as the undo history of your repo.
+{{% /note %}}
+
+The purpose of `git reflog` is to provide a fail-safe incase you do a `git` operation that would otherwise wipe your data. `git reflog` allows you to:
+
+- Recover from commits made on a detached `HEAD`
+- Fix a non-bare `push`
+
+If I run `git reflog` on this blog's repository, I see something similar to:
+
+```sh
+$ git reflog
+dd86ea25 (HEAD -> master, origin/master, origin/HEAD) HEAD@{0}: commit: Updates to the Linux user permissions and Git pages.
+d2193a14 HEAD@{1}: pull: Fast-forward
+830dbd09 HEAD@{2}: commit: Converted some images into page resources.
+2543c79d HEAD@{3}: pull: Fast-forward
+bd560630 HEAD@{4}: commit: Converting images into page resources.
+65ea09ac HEAD@{5}: commit: Converted images into page resources.
+```
