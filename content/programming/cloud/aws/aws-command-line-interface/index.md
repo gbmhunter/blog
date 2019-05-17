@@ -44,3 +44,21 @@ $ aws s3 sync <source> <destination>
 # Sync all objects with the prefix "my_prefix/" to the current directory 
 $ aws s3 sync s3://my_bucket/my_prefix/ ./
 ```
+
+### Speeding Up Copy And Sync Commands
+
+You can speed up copy and sync transfers (especially when small files are involved) by running the following commands:
+
+```text
+$ aws configure set default.s3.max_concurrent_requests 100
+$ aws configure set default.s3.max_queue_size 10000
+```
+
+This modifies the `default` profile. It will add the below to the `.aws/config` file:
+
+```text
+[default]
+s3 =
+    max_concurrent_requests = 100
+    max_queue_size = 10000
+```
