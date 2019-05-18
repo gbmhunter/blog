@@ -9,7 +9,7 @@ type: page
 
 ## Overview
 
-Although Altium Designer 10 (AD10) incorporates it's own proprietary collaborate, compare and merge feature, you may still want another version control system to manage your entire project (since your project is not likely just going to consist of Altium files. I recommend using a VCS such as Git or Mercurial (see the [Version Control Systems](http://localhost/?q=node/69) page). Below is a recommended Mercurial ignore file for any project containing Altium files to exclude all the junk that Altium creates.
+Although Altium Designer 10 (AD10) incorporates it's own proprietary collaborate, compare and merge feature, you may still want another version control system to manage your entire project (since your project is not likely just going to consist of Altium files. I recommend using a VCS such as Git or Mercurial (see the {{% link text="Version Control Systems" src="/programming/version-control-systems" %}} page). Below is a recommended Mercurial ignore file for any project containing Altium files to exclude all the junk that Altium creates.
 
 This code prevents the following files and folders from being version controlled:
 
@@ -30,7 +30,7 @@ As you may of noticed, I make sure that the files are inside the Altium project 
 
 Note: Replace `<AltiumProjectRoot>` with the name of the folder all your Altium files are stored in, relative to the repository root directory (e.g. `PCB`)
 
-```
+```text
 # use glob syntax  
 syntax: glob
 

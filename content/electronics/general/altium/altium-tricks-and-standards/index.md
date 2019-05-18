@@ -49,7 +49,7 @@ This is caused by Altium's _Automatically Remove Loops_ function removing vias a
 
 ## Version Control Systems
 
-If you are using Mercurial source control software for you Altium project, here is a recommended [Mercurial Ignore File](http://localhost/?q=node/82) to prevent the un-necessary files from being put under version control.
+If you are using Mercurial source control software for you Altium project, here is a recommended {{% link text="Mercurial Ignore File" src="/programming/version-control-systems/mercurial/ignore-files/mercurial-ignore-file-for-altium-designer" %}} to prevent the un-necessary files from being put under version control.
 
 ## The Board Shape
 

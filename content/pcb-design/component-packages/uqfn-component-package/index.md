@@ -114,7 +114,7 @@ type: page
 
 ## Comments
 
-An ultra-thin QFN package. Commonly used for packaging 4 or 5 [TVSdiodes](http://localhost/?q=node/28) together.
+An ultra-thin QFN package. Commonly used for packaging 4 or 5 {{% link text="TVS diodes" src="/electronics/components/diodes/tvs-diodes" %}} together.
 
 ## 3D Renders
 

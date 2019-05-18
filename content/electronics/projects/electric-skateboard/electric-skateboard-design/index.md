@@ -98,7 +98,7 @@ The motor mount on the rear axle was not designed for the BLDC motor (it was des
 
 ## The Prototype Motherboard
 
-The first prototype control circuitry (aka motherboard), was assembled on strip-board. I used an ATmega8L-8PC microcontroller since the [DIP package](http://localhost/?q=node/50) makes it easy to hand solder into strip board, requiring no breakout PCB.
+The first prototype control circuitry (aka motherboard), was assembled on strip-board. I used an ATmega8L-8PC microcontroller since the {{% link text="DIP package" src="/pcb-design/component-packages/dip-component-package" %}} makes it easy to hand solder into strip board, requiring no breakout PCB.
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0136.jpg" caption="The first electric skateboard prototype circuit." width="600px" >}}
 
@@ -152,7 +152,7 @@ The remote uses far less power than the board, and is largely consumed by the co
 
 The test board was to make sure the basic principle worked, and to make sure I hadn't done something fundamentally wrong such as brought motor that was utterly too small or wheels/gear-ratio combo that wouldn't work properly. The mechanical part was as simple as mounting the axles onto a piece of MDF.
 
-The proto-type electronics were stuck onto the top, and after lots of testing and debugging, I finally managed to get it moving! With code bugs and problems using the RC trigger pot, I wasn't able to get the electric skateboard up to full speed, but I still managed to break the 30km/h mark. The [ESC](http://localhost/?q=content/hardware) got damn hot! This may need heatsinking in the future...
+The proto-type electronics were stuck onto the top, and after lots of testing and debugging, I finally managed to get it moving! With code bugs and problems using the RC trigger pot, I wasn't able to get the electric skateboard up to full speed, but I still managed to break the 30km/h mark. The {{% link text="ESC" src="/electronics/projects/electric-skateboard/electric-skateboard-hardware" %}} got damn hot! This may need heatsinking in the future...
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/img_6323.jpg" width="600px" >}}
 
@@ -160,7 +160,7 @@ The proto-type electronics were stuck onto the top, and after lots of testing an
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/sam_0138.jpg" caption="The first electric skateboard prototype circuit up close." width="600px" >}}
 
-After fixing up the code, it was time to take the board a little further down the road. I decided to heatsink the ESC to the trucks after discovering it was burning hot after the last test. I covered the heatsink side of the [ESC](http://localhost/?q=content/hardware) with heat transfer compound and duct taped it securely to the rear truck.
+After fixing up the code, it was time to take the board a little further down the road. I decided to heatsink the ESC to the trucks after discovering it was burning hot after the last test. I covered the heatsink side of the {{% link text="ESC" src="/electronics/projects/electric-skateboard/electric-skateboard-hardware" %}} with heat transfer compound and duct taped it securely to the rear truck.
 
 {{< figure src="/images/electronics-electricskateboard-firstprototype/adding-silicone-heat-transfer-to-esc.jpg" caption="Adding silicone heat transfer paste to the ESC for better heatsinking."  width="400px" >}}
 
@@ -241,7 +241,7 @@ And built this test circuit on breadboard. There is a PSoC development kit in th
 
 ## The Final PCB Design
 
-Once the electronic design had been verified with the prototypes, it was time to get some professional PCBs made. The PCBs were designed in Altium. I used a PSoC 5 [microcontroller](http://localhost/?q=node/56) from Cypress for the final designs.
+Once the electronic design had been verified with the prototypes, it was time to get some professional PCBs made. The PCBs were designed in Altium. I used a {{% link text="PSoC 5 microcontroller" src="/programming/microcontrollers/psoc" %}} from Cypress for the final designs.
 
 <table>
 <tbody >

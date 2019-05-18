@@ -16,16 +16,8 @@ This restricts the available pins for mapping hardware peripherals, and is respo
 
 The Si100x supports digital compare interrupts on PORT's 0 and 1, with a total of two interrupt handlers to be called on logic level change events. The Si100x also supports standard micro interrupts such as ADC compares and timer overflows.
 
-## Supported IDE's
+## Supported IDEs
 
 * Silicon Labs IDE (proprietary)
 * Keil
 * Raisonance Ride 7
-
-## Code Tutorials
-
-[Si100x Low Level Functions](http://localhost/?q=node/149)
-
-[Si100x Inputs/Outputs](http://localhost/?q=node/141)
-
-[Timers](http://localhost/?q=node/107)

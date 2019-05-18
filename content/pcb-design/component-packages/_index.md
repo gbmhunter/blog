@@ -38,7 +38,7 @@ SparkFun is the cheapest supplier of break-out boards that I've found. Element14
 
 If there is one other site I would direct you to for PCB information, it would be [Tom Hausherr's blog](http://blogs.mentor.com/tom-hausherr/) on the Mentor Graphics website.
 
-3D models (which can be imported into Altium as step files) can be downloaded from 3D Content Central ([www.3dcontentcentral.com](http://localhost/?q=www.3dcontentcentral.com)). It is a combination of content submitted from both users and suppliers, can contains many standard component packages in 3D.
+3D models (which can be imported into Altium as step files) can be downloaded from 3D Content Central ([www.3dcontentcentral.com](www.3dcontentcentral.com)). It is a combination of content submitted from both users and suppliers, can contains many standard component packages in 3D.
 
 SiliconFarEast "IC Package Types" ([http://www.siliconfareast.com/ic-package-types.htm](http://www.siliconfareast.com/ic-package-types.htm)) - A short but tidy graphical table describing most footprints. Also has data on the body size, body thickness, and lead pitch for the most common variants of each package.
 

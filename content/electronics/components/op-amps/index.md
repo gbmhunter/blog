@@ -208,7 +208,7 @@ What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-
 "_Rail-to-rail_" op-amps cannot really output either rail voltage. A negative power supply is always required if you want the op-amp to be able to output a true 0V.
 {{% /warning %}}
 
-**To achieve a true ground output, you need a negative voltage supply.** There are dedicated IC's designed to provide a small negative power supply to op-amps so that they can output true ground. One such example is the [Texas Instruments LM7705](http://www.ti.com/product/LM7705), a "_Low Noise Negative Bias Generator_". This IC only generates -230mV, which allows the designer to use CMOS-based op-amps which usually have a maximum supply voltage of 5.5V.
+**To achieve a true ground output, you need a negative voltage supply.** There are dedicated ICs designed to provide a small negative power supply to op-amps so that they can output true ground. One such example is the [Texas Instruments LM7705](http://www.ti.com/product/LM7705), a "_Low Noise Negative Bias Generator_". This IC only generates -230mV, which allows the designer to use CMOS-based op-amps which usually have a maximum supply voltage of 5.5V.
 
 {{< img src="lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png" width="688px" caption="The typical application schematic for the Texas Instruments LM7705, a 'Low-Noise Negative Bias Generator' for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/."  >}}
 
@@ -217,16 +217,16 @@ What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-
 Below are some examples of op-amps that stand out from the crowd for some reason, be it popularity, years in service, or functionality wise.
 
 <table>
-    <thead>
-        <tr>
-            <th>Manufacturer Code</th>
-            <th>Description</th>
-            <th>Approximate Price (1 unit, US$)</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Manufacturer Code</th>
+      <th>Description</th>
+      <th>Approximate Price (1 unit, US$)</th>
+    </tr>
+  </thead>
 <tbody><tr >
 <td>AD860x</td>
-<td>Good for high precision stuff! Awesome for [photo-diode amplification](http://localhost/?q=ir-devices) (both current-to-voltage and voltage-to-voltage configurations).</td>
+<td>Good for high precision stuff! Awesome for photo-diode amplification (both current-to-voltage and voltage-to-voltage configurations).</td>
 <td>$3.50</td>
 </tr>
 <tr>
