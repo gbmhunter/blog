@@ -2,13 +2,14 @@
 author: gbmhunter
 date: 2018-07-04
 draft: false
+tags: [ "programming", "operating systems", "Linux", "users", "groups", "permissions", "chmod", "chown", "useradd", "ownership" ]
 title: Users, Groups, And Permissions In Linux
 type: page
 ---
 
 ## User Manipulation
 
-To add a user called bart:
+To add a user called `bart`:
 
 ```sh    
 $ sudo useradd bart
@@ -42,4 +43,18 @@ To change permissions recursively on a group of files, use:
 $ sudo chmod -R <mode flags> my_directory/
 ```
 
-Using a capital X instead of a lower-case x results in the executable bit only being set if the file is a directory or the executable bit is already set for some user. This is useful when applying changes to multiple files (using the recursive option -R), as you usually don't want to make things such as text files executable!
+Using a capital `X` instead of a lower-case `x` results in the executable bit only being set if the file is a directory or the executable bit is already set for some user. This is useful when applying changes to multiple files (using the recursive option `-R`), as you usually don't want to make things such as text files executable!
+
+## Ownership
+
+You can recursively change the ownership of all files and directories with the `-R` flag:
+
+```sh
+chown -R myuser:mygroup .
+```
+
+If the user or group contains a space, you must quote it:
+
+```sh
+chown -R "my user":"my group" .
+```

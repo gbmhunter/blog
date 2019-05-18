@@ -5,7 +5,7 @@ date: 2019-05-30
 description: "Blog updates during May 2019."
 draft: false
 lastmod: 2019-05-30
-tags: [ "component designators", "PCB design tools", "PCB layers", "less", "convolution" ]
+tags: [ "component designators", "PCB design tools", "PCB layers", "less", "convolution", "git", "fixup", "logs", "chown", "ownership", "Linux" ]
 title: "May 2019 Updates"
 type: "post"
 ---
@@ -23,3 +23,7 @@ type: "post"
 * Added a new page on {{% link text="less" src="/programming/operating-systems/linux/programs/less" %}}, the basic Linux command-line utility for displaying text.
 
 * Added a new {{% link text="Image Processing subsection" src="/programming/image-processing" %}} under Programming. Added a new {{% link text="Morphology page" src="/programming/image-processing/morphology" %}} under the Image Processing section.
+
+* Addition of information on `git commit --fixup` and `git log` to the {{% link text="git page" src="/programming/version-control-systems/git" %}}.
+
+* Addition of ownership (`chown`) information to the {{% link text="Users, Groups, And Permissions In Linux page" src="/programming/operating-systems/linux/users-groups-and-permissions-in-linux" %}}.
