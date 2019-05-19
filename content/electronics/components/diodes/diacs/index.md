@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Electronic Components", "Diodes" ]
 date: 2015-11-01
 draft: false
-tags: [ "DIAC", "diodes", "breakover voltage", "schematic symbol" ]
+tags: [ "DIAC", "diodes", "breakover voltage", "schematic symbols" ]
 title: DIACs
 type: page
 ---

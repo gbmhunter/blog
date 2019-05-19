@@ -256,4 +256,4 @@ A thing that caught me out is that the WebView URL has to have `http://` at the 
 
 ## Image Gallery
 
-{{< gallery dir="/images/project-autoelectricblanket" />}}
+{{< gallery dir="images/project-autoelectricblanket" />}}

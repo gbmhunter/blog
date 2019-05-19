@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 draft: false
 lastmod: 2019-01-10
-tags: [ "op-amps", "schematic symbol", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "component" ]
+tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components" ]
 title: "Op-Amps"
 type: "page"
 ---

@@ -16,4 +16,4 @@ Worked hard on the skateboard over the weekend, new photos have been added to th
 
 => {{% link text="Electric Skateboard Photo Gallery" src="/electronics/projects/electric-skateboard/electric-skateboard-photo-album" %}}
 
-{{< gallery dir="/images/electronics-electricskateboard-final-mech" />}}
+{{< gallery dir="images/electronics-electricskateboard-final-mech" />}}

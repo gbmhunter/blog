@@ -42,4 +42,4 @@ If you want more information about piezos and their use in electronics, see the 
 
 ## Picture Gallery
 
-{{< gallery dir="/images/electronics-piezocrystalformation" />}}
+{{< gallery dir="images/electronics-piezocrystalformation" />}}

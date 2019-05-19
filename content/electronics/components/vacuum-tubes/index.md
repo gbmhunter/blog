@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Electronic Components" ]
 date: 2015-01-07
 draft: false
-tags: [ "vacuum tube", "vacuum tubes", "component" ]
+tags: [ "vacuum tube", "vacuum tubes", "components" ]
 title: Vacuum Tubes
 type: page
 ---

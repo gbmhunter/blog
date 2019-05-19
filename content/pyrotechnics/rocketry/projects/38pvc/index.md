@@ -81,4 +81,4 @@ A video of the rocket-board.
 
 > Click any picture to bring up a gallery view
 
-{{< gallery dir="/images/pyrotechnics-rocketry-38pvc" />}}
+{{< gallery dir="images/pyrotechnics-rocketry-38pvc" />}}

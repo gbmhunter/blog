@@ -26,7 +26,7 @@ NinjaCalc, a "collection of embedded engineering related calculators", is now a 
 
 {{< figure src="/images/2017/03/ninja-calc-v2.2.0-screenshot-calc-selection-page.png" width="1920px" caption="NinjaCalc is now a web app! A screenshot while selecting a calculator using the new web app at http://ninja-calc.mbedded.ninja/."  >}}
 
-Up until now NinjaCalc has been a desktop app written in Java (as [NinjaTerm](http://mbedded-ninja.github.io/NinjaTerm/) still is). However, the functionality that NinjaCalc provided had no need to be a installable desktop app, and I had long desired to move it to the easily accessible web.
+Up until now NinjaCalc has been a desktop app written in Java (as [NinjaTerm](http://gbmhunter.github.io/NinjaTerm/) still is). However, the functionality that NinjaCalc provided had no need to be a installable desktop app, and I had long desired to move it to the easily accessible web.
 
 When I recently discovered [vue.js](https://vuejs.org/), I finally decided to make the move (after trying both [React](https://facebook.github.io/react/) and [AngularJS](https://angularjs.org/) a year or so ago but deciding not to use them). It was the simplicity and flexibility of vue.js which was the deciding factor. Porting took about 3 weeks of full-time work (luckily I was unemployed at the time).
 
@@ -37,5 +37,5 @@ The newest version of the Java based NinjaCalc (v1.3.0) can still be downloaded 
 Existing users of NinjaCalc may appreciate the similarity between the Java app and the web app. The results can be found below!
 
 GitHub Repo: [https://github.com/gbmhunter/NinjaCalc](https://github.com/gbmhunter/NinjaCalc)  
-GitHub Project Page: [http://mbedded-ninja.github.io/NinjaCalc/](http://mbedded-ninja.github.io/NinjaCalc/)  
+GitHub Project Page: [http://gbmhunter.github.io/NinjaCalc/](http://gbmhunter.github.io/NinjaCalc/)  
 NinjaCalc Web-app: [http://ninja-calc.mbedded.ninja/](http://ninja-calc.mbedded.ninja/)

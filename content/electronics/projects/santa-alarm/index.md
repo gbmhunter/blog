@@ -30,4 +30,4 @@ I'm in no way a morning person. This alarm is was designed to get me out of bed 
 
 ## Images
 
-{{< gallery dir="/images/electronics-santa-alarm" />}}
+{{< gallery dir="images/electronics-santa-alarm" />}}

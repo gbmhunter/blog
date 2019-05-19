@@ -574,4 +574,4 @@ inputStringPos = 0;
 ```
 # Gallery
 
-{{< gallery dir="/images/electronics-luxcityuvtoniccontrolsystem" />}}
+{{< gallery dir="images/electronics-luxcityuvtoniccontrolsystem" />}}

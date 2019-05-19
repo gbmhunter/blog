@@ -112,4 +112,4 @@ You can get clip-on heatsinks for the TO-39 package with thermal resistances of 
 
 ## Other Images
 
-{{< gallery dir="/images/electronics-packages/to-39" />}}
+{{< gallery dir="images/electronics-packages/to-39" />}}

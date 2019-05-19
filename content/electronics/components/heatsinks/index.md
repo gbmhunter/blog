@@ -1,7 +1,7 @@
 ---
 author: gbmhunter
 date: 2013-05-29
-tags: [ "heatsink", "circuit design", "component", "overheating", "thermal", "temperature", "packages" ]
+tags: [ "heatsink", "circuit design", "components", "overheating", "thermal", "temperature", "packages" ]
 title: "Heatsinks"
 type: page
 ---
@@ -12,15 +12,15 @@ Heatsinks are used in circuit design to conduct heat away from a component faste
 
 {{< img src="typical-to-220-heatsink-with-fins.jpg" width="411px" caption="A typical TO-220 heatsink with fins. Image from www.digikey.com."  >}}
 
-Typical components that require heatsinking are high current [linear regulators](/electronics/components/power-regulators), MOSFETs on [H-bridges](/electronics/circuit-design/h-bridges), power amplifier BJTs and [MOSFETs](/electronics/components/transistors/mosfets/), and power limiting resistors. Most heatsinks are made from black anodized aluminium.
+Typical components that require heatsinking are high current {{% link text="linear regulators" src="/electronics/components/power-regulators" %}}, MOSFETs on {{% link text="H-bridges" src="/electronics/circuit-design/h-bridges" %}}, power amplifier BJTs and {{% link text="MOSFETs" src="/electronics/components/transistors/mosfets" %}}, and power limiting resistors. Most heatsinks are made from black anodized aluminium.
 
-Their heatsinking capability is rated with a thermal resistance, which has the units \( ^{\circ} C / W \). Common packages that heatsinks are made for include [TO-220](/pcb-design/component-packages/to-220ab-component-package/), [SOT-223](/pcb-design/component-packages/sot-23-component-package/).
+Their heatsinking capability is rated with a thermal resistance, which has the units \( ^{\circ} C / W \). Common packages that heatsinks are made for include {{% link text="TO-220" src="/pcb-design/component-packages/to-220-component-package" %}}, {{% link text="SOT-223" src="/pcb-design/component-packages/sot-23-component-package" %}}.
 
-You can get heatsinks with twisted fins, which gives better cooling due to increased air turbulance and convection flow.
+You can get heatsinks with twisted fins, which gives better cooling due to increased air turbulence and convection flow.
 
 Phase change compounds can be used as thermal pads. Phase change compounds are designed to be solid at room temperature but become liquid at the operating temperature, which gives a better bond between the component and heatsink, lowering it's thermal resistance.
 
-For more information on thermal resistances, see the [Thermal Management page](/electronics/circuit-design/thermal-management).
+For more information on thermal resistances, see the {{% link text="Thermal Management page" src="/electronics/circuit-design/thermal-management" %}}.
 
 ## Where Does The Heat Go?
 
@@ -30,13 +30,13 @@ The following diagram is a thermal analysis of a SMD MOSFET mounted to a PCB.
 
 ## List Of Component Package Thermal Resistances
 
-See the [Component Packages page](/pcb-design/component-packages/). This has many of the common component packages and their thermal resistances.
+See the {{% link text="Component Packages page" src="/pcb-design/component-packages" %}}. This has many of the common component packages and their thermal resistances.
 
 ## Forced Convection
 
 The following image shows two graphs combined into one, the thermal performance of a heatsink with natural convection, and that with forced convection (e.g. a fan).
 
-{{< img src="heat-dissipation-graph-for-natural-and-forced-convection.png" width="960px" caption="Heat dissipation graph for both natural and forced convection. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf."  >}}
+{{< img src="heat-dissipation-graph-for-natural-and-forced-convection.png" width="960px" caption="Heat dissipation graph for both natural and forced convection. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf." >}}
 
 ## Packages
 

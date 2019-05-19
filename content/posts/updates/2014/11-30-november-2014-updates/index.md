@@ -35,7 +35,7 @@ type: post
 
 * Fixed the problem with the asterisks appearing after page headers throughout the website, for more info is the post [Two Bugs Which Need Fixing Soon...](/posts/updates/2014/11-05-two-bugs-which-need-fixing-soon/).
 
-* Starting using HTML5 canvas objects to draw diagrams. See the [IMS PCBs page](/pcb-design/ims-insulated-metal-substrate-pcbs/#single-sided-single-layer-ims-pcb) for some examples.
+* Starting using HTML5 canvas objects to draw diagrams. See the {{% link text="IMS PCBs page" src="/pcb-design/ims-insulated-metal-substrate-pcbs#single-sided-single-layer-ims-pcb" %}} for some examples.
 
 * Fixed plugin conflict between Raw HTML Pro and Preserved HTML Editor Markup, which were both trying to do the same thing and somehow causing HTML/Javascript code in posts to get corrupted. I disabled the Preserved HTML Editor Markup plugin and now Raw HTML Pro seems to be working fine (raw HTML/Javascript is preserved when saving, and also when switching between the visual and text editor).
 
@@ -45,7 +45,7 @@ type: post
 
 * Made Online Calculators a main menu entry.
 
-* The "Component Packages page" is now been moved to be a sub-page of PCB Design. I have now started creating a seperate page per package as the single page was getting a little too large.
+* The "Component Packages page" is now been moved to be a sub-page of PCB Design. I have now started creating a separate page per package as the single page was getting a little too large.
 
 * New [SOD-523 Component Package page](/pcb-design/component-packages/sod-523-component-package).
 
@@ -55,7 +55,7 @@ type: post
 
 * Updates to the [Altium Scripting page](/electronics/general/altium/altium-scripting-and-using-the-api) and the [VBScript page](/programming/languages/vbscript).
 
-* New RF Design section under Electronics. Added the first pages, [Link Budgets](/electronics/rf-design/link-budgets) and RF Black Magic.
+* New RF Design section under Electronics.
 
 * New [page on 2D Coordinate Rotation](/mathematics/geometry/2d-coordinate-rotation/) under Mathematics.  
 

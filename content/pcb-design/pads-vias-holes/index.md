@@ -26,7 +26,7 @@ Vias are simply the name given to plated holes which are used to connect to trac
 
 The above rule-of thumb stems from the fact that when a via wall is unrolled into a 2D track shape, it would be `\(\pi \cdot d\)` wide (`\(c = 2\pi r\)`), where `\(\pi\)` is approximately equal to 3. This assumes that the via wall is the same thickness as the copper track (e.g. 32um or 1oz. copper)). This does not take into account the difference between an external track and a via which is surrounded by PCB material. Since PCB material is more thermally conductive than air, this rule is on the safe side.
 
-NinjaCalc (which can be downloaded for free from [here](http://mbedded-ninja.github.io/NinjaCalc/)) has a via current calculator.
+NinjaCalc (which can be downloaded for free from [here](http://gbmhunter.github.io/NinjaCalc/)) has a via current calculator.
 
 {{< img src="ninja-calc-via-current-ipc-2221a-calculator-screenshot.png" width="890px" caption="A screenshot of the via current calculator (based of the IPC-2221A standard) in NinjaCalc."  >}}
 

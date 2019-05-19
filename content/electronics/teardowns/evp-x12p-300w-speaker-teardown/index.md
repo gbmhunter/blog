@@ -68,4 +68,4 @@ Now knowing that I needed a new bass-driver, I got the guys at [South Pacific Mu
 
 ## Pictures:
 
-{{< gallery dir="/images/electronics-evp-x12p-speaker-teardown" />}}
+{{< gallery dir="images/electronics-evp-x12p-speaker-teardown" />}}

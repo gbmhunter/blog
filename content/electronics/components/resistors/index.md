@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Electronic Components" ]
 date: 2012-05-14
 draft: false
-tags: [ "resistor", "resistors", "component", "electronics", "schematic symbol", "tolerance", "E series", "packages", "thick film", "thin film" ]
+tags: [ "resistors", "resistors", "components", "electronics", "schematic symbols", "tolerances", "E series", "packages", "thick film", "thin film" ]
 title: Resistors
 type: page
 ---
@@ -82,7 +82,7 @@ The exception to the above rule is when the two following conditions are met:
 
 An interesting example I have seen of a resistor divider powering a circuit was a low-power microcontroller being powered directly from a resistor-divider, diode and capacitor from mains supply (240VAC). The microcontroller only drew `\(uA\)` so met the two above conditions.
 
-The [NinjaCalc program](http://mbedded-ninja.github.io/NinjaCalc/) has a calculator that can work out voltages, resistances and currents of a resistor divider.
+The [NinjaCalc program](http://gbmhunter.github.io/NinjaCalc/) has a calculator that can work out voltages, resistances and currents of a resistor divider.
 
 {{< img src="screenshot-of-ninjacalc-resistor-divider-calculator.png" width="604px" caption="A screenshot of the NinjaCalc's 'Resistor Divider' calculator, being used to find the top resistance." >}}
 
@@ -193,7 +193,7 @@ The values come from the exponential number series, using the equation:
 
 See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_number), for information on these series.
 
-[NinjaCalc, a free embedded engineering calculator toolbox](http://mbedded-ninja.github.io/NinjaCalc/), can easily find the closest E-series resistance to your desired resistance.
+[NinjaCalc, a free embedded engineering calculator toolbox](http://gbmhunter.github.io/NinjaCalc/), can easily find the closest E-series resistance to your desired resistance.
 
 {{< img src="screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png" width="552px" caption="NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 2.34kΩ."  >}}
 

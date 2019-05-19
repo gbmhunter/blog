@@ -124,4 +124,4 @@ Large heatsinks designed for the TO-3 package can have thermal resistances as lo
 
 ## Other Images
 
-{{< gallery dir="/images/electronics-packages/to-3" />}}
+{{< gallery dir="images/electronics-packages/to-3" />}}

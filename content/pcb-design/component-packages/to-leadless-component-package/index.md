@@ -114,4 +114,4 @@ As far as I know, the TO-Leadless package is solely used by Infineon for a range
 
 ## Images
 
-{{< gallery dir="/images/electronics-packages/to-leadless" />}}
+{{< gallery dir="images/electronics-packages/to-leadless" />}}

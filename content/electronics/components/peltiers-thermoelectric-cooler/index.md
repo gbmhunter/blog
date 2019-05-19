@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Electronic Components" ]
 date: 2015-10-13
 draft: false
-tags: [ "Peltier", "thermoelectric", "PWM", "component", "electronics" ]
+tags: [ "Peltier", "thermoelectric", "PWM", "components", "electronics" ]
 title: Peltiers (Thermoelectric Cooler)
 type: page
 ---

@@ -2,7 +2,7 @@
 author: gbmhunter
 date: 2016-08-07
 draft: false
-tags: [ "component", "diodes", "PIN", "light detector", "RF", "reverse recovery"]
+tags: [ "components", "diodes", "PIN", "light detector", "RF", "reverse recovery"]
 title: PIN Diodes
 type: page
 ---

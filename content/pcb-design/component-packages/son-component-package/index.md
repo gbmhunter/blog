@@ -141,4 +141,4 @@ The VSON variant has a height of 1.00mm (max.)
 
 ## Images
 
-{{< gallery dir="/images/electronics-packages/son-6" />}}
+{{< gallery dir="images/electronics-packages/son-6" />}}

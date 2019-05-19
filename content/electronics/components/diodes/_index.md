@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components", "Diodes" ]
 date: 2011-09-05
 draft: false
-tags: [ "diodes", "diodes", "component", "current", "schematic symbol", "TVS", "Schottky", "bridge rectifier" ]
+tags: [ "diodes", "diodes", "components", "current", "schematic symbols", "TVS", "Schottky", "bridge rectifier" ]
 title: "Diodes"
 type: "page"
 ---

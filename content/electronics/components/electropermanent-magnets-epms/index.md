@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Electronic Components" ]
 date: 2014-06-22
 draft: false
-tags: [ "electropermanent magnet", "EPM", "component", "electronics", "stepper motor", "OpenGrab" ]
+tags: [ "electropermanent magnet", "EPM", "components", "electronics", "stepper motor", "OpenGrab" ]
 title: Electropermanent Magnets (EPMs)
 type: page
 ---

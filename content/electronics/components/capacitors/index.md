@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 draft: false
-tags: [ "capacitor", "component", "schematic symbol", "circuit", "ceramic", "electrolytic", "tantalum", "packages", "film", "feedthrough", "decoupling" ]
+tags: [ "capacitor", "components", "schematic symbols", "circuit", "ceramic", "electrolytic", "tantalum", "packages", "film", "feedthrough", "decoupling" ]
 title: Capacitors
 type: page
 ---
@@ -1027,11 +1027,11 @@ Their advantage over a standard decoupling capacitor to ground is **lower parasi
 
 ## Component Package
 
-Many smaller, PCB suitable feedthrough capacitors come in [chip packages](/pcb-design/component-packages/chip-eia-component-packages/), such as the 0603 or 0402 size. They can be distinguished from normal capacitors by the fact that the package will have three or four terminals rather than the standard two.
+Many smaller, PCB suitable feedthrough capacitors come in {{% link text="chip packages" src="/pcb-design/component-packages/chip-eia-component-packages" %}}, such as the 0603 or 0402 size. They can be distinguished from normal capacitors by the fact that the package will have three or four terminals rather than the standard two.
 
 ## Uses
 
-Feedthrough capacitors are commonly used in [RC, LC, π and t-type filters](/electronics/circuit-design/filtering/passive-filters) when good RF performance is required.
+Feedthrough capacitors are commonly used in {{% link text="RC, LC, π and t-type filters" src="/electronics/circuit-design/filters/passive-filters" %}}) when good RF performance is required.
 
 ## Repairing Electrolytics
 

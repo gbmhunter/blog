@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "PCB Design" ]
 date: 2015-11-29
 draft: false
-tags: [ "PCB design", "mouse bites", "drill", "holes", "schematic symbol" ]
+tags: [ "PCB design", "mouse bites", "drill", "holes", "schematic symbols" ]
 title: Mouse Bites
 type: page
 ---

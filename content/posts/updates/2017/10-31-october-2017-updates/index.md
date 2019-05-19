@@ -3,6 +3,7 @@ author: gbmhunter
 categories: [ "Updates" ]
 date: 2017-10-31
 draft: false
+lastmod: 2017-10-31
 tags: [ "assembly", "bugs", "C", "concurrency", "coordinate conversion", "GCC", "geometry", "memory barriers", "Perlin noise", "priority", "space", "thread", "threading", "virtual methods" ]
 title: October 2017 Updates
 type: post
@@ -30,4 +31,4 @@ type: post
 
 * New {{% link text="Perlin Noise page" src="/mathematics/perlin-noise" %}} under Mathematics.  
 
-    {{< figure src="/images/2017/10/perlin-noise-cloud-example.png" width="374px" caption="Rendered Perlin noise that has been configured to make realistic looking clouds." >}}
+    {{< img src="perlin-noise-cloud-example.png" width="374px" caption="Rendered Perlin noise that has been configured to make realistic looking clouds." >}}

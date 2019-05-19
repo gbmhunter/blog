@@ -306,4 +306,4 @@ If I ever made another version of improved this one, I probably would:
 
 ## Gallery
 
-{{< gallery dir="/images/project-inursery" />}}
+{{< gallery dir="images/project-inursery" />}}

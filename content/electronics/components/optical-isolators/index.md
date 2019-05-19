@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-02
 draft: false
-tags: [ "optical isolators", "phototriac", "schematic symbol", "component packages" ]
+tags: [ "optical isolators", "phototriac", "schematic symbols", "component packages" ]
 title: Optical Isolators
 type: page
 ---

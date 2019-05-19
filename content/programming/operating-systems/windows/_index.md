@@ -10,7 +10,7 @@ type: page
 
 ## Overview
 
-These pages are all about the Windows operating system and the command-line interface. For information about how to write batch scripts and it's programming syntax, see the [Batch Files page](/programming/languages/batch-files).
+These pages are all about the Windows operating system and the command-line interface. For information about how to write batch scripts and it's programming syntax, see the {{% link text="Batch page" src="/programming/languages/batch" %}}.
 
 ## Auto-complete
 
@@ -42,7 +42,7 @@ rem This is a comment
 
 ## File Manipulation
 
-## Displaying Files
+### Displaying Files
 
 To display a list of files and folders in the current directory, use the command:
 
@@ -56,7 +56,7 @@ This will display the full-length filenames/foldernames. To display the names in
 dir /X
 ```
 
-## xcopy
+### xcopy
 
 `xcopy` is a native Windows command which copies files and folders. It has more features than the copy command.
 
@@ -70,7 +70,7 @@ There are more advanced command-line Windows copy programs, such as `robocopy`, 
 
 {{< figure src="/images/programming-misc/rich-copy-crashed-on-long-file-names.png" caption="RichCopy has crashed for me when encountering a large number of files with filenames 'too long' for windows to deal with."  width="600px" >}}
 
-## robocopy
+### robocopy
 
 If `xcopy` wasn't enough, there is also `robocopy`. `robocopy` first shipped with the XP Resource Kit, and was provided standard with Windows 7 and 8.
 
@@ -111,7 +111,7 @@ The most popular options are (in rough order of popularity):
     </tbody>
 </table>
 
-## Deleting Files And Directories
+### Deleting Files And Directories
 
 Confusingly, windows has a range of different delete commands, and the one you need use depends on what version of windows you are running, and whether you are deleting files, empty folders, or folders containing files.
 

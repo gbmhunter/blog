@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Updates" ]
 date: 2013-10-17
 draft: false
-tags: [ "Altium", "calculator", "CladLab", "component", "connectors", "images", "json", "LGA", "memory", "modem", "node", "packages", "script", "SEO", "SIM", "smart links", "TO-Leadless", "updates" ]
+tags: [ "Altium", "calculator", "CladLab", "components", "connectors", "images", "json", "LGA", "memory", "modem", "node", "packages", "script", "SEO", "SIM", "smart links", "TO-Leadless", "updates" ]
 title: Recent Updates
 ---
 

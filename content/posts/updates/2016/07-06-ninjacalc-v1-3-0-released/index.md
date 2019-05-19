@@ -8,13 +8,13 @@ title: NinjaCalc v1.3.0 Released
 type: post
 ---
 
-[NinjaCalc v1.3.0 has been released!](http://mbedded-ninja.github.io/NinjaCalc/) The biggest change is the addition of a **CRC calculator**, which allows you to calculate the CRC value for ASCII or hex data, using either **common pre-loaded CRC algorithms or your own custom algorithm**.
+[NinjaCalc v1.3.0 has been released!](http://gbmhunter.github.io/NinjaCalc/) The biggest change is the addition of a **CRC calculator**, which allows you to calculate the CRC value for ASCII or hex data, using either **common pre-loaded CRC algorithms or your own custom algorithm**.
 
-{{< figure src="/images/2016/07/ninja-calc-crc-calculator-example.gif" width="1094px" caption="Example usage of the CRC Calculator within NinjaCalc (http://mbedded-ninja.github.io/NinjaCalc/)."  >}}
+{{< figure src="/images/2016/07/ninja-calc-crc-calculator-example.gif" width="1094px" caption="Example usage of the CRC Calculator within NinjaCalc (http://gbmhunter.github.io/NinjaCalc/)."  >}}
 
 The **custom algorithm section** allows you to enter a CRC width from 1-64 bits, a CRC polynomial, initial value, XOR-out value, and whether the input data and/or the output CRC value is reflected. Then it will calculate the resultant CRC value.
 
-**Either [download NinjaCalc v1.3.0 here](http://mbedded-ninja.github.io/NinjaCalc/)**, or open up your previous installation and click yes to update when prompted.
+**Either [download NinjaCalc v1.3.0 here](http://gbmhunter.github.io/NinjaCalc/)**, or open up your previous installation and click yes to update when prompted.
 
 More information on CRC algorithms can be found on the [CRCs (Cyclic Redundancy Checks) page](/programming/general/crcs-cyclic-redundancy-checks).
 

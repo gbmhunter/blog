@@ -14,4 +14,4 @@ My brother actually designed and made this fuel cell, I thought it was so cool I
 
 ## Images
 
-{{< gallery dir="/images/project-hhofuelcell" />}}
+{{< gallery dir="images/project-hhofuelcell" />}}

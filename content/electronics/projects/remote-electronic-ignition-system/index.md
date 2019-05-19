@@ -18,4 +18,4 @@ I made this along time before I wrote about the project, so sadly I can't give t
 
 Check out the photos below...
 
-{{< gallery dir="/images/electronics-remote-electronic-ignition-system" />}}
+{{< gallery dir="images/electronics-remote-electronic-ignition-system" />}}

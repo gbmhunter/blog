@@ -20,4 +20,4 @@ I made this with the idea I could make more of them and sell them for a profit. 
 
 ## Gallery
 
-{{< gallery dir="/images/electronics-calctopclink" />}}
+{{< gallery dir="images/electronics-calctopclink" />}}

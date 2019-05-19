@@ -81,7 +81,7 @@ Unlike IPC-2221A, IPC-2152 is not just a simple equation.
 
 ### That's Hard Work, Can It Be Any Easier?
 
-Glad you asked! mbedded.ninja has developed a desktop application called [NinjaCalc](http://mbedded-ninja.github.io/NinjaCalc/), which includes IPC-2221A and IPC-2152 track current calculators (remember, use IPC-2152 wherever possible!).
+Glad you asked! mbedded.ninja has developed a desktop application called [NinjaCalc](http://gbmhunter.github.io/NinjaCalc/), which includes IPC-2221A and IPC-2152 track current calculators (remember, use IPC-2152 wherever possible!).
 
 You can get to the IPC-2221A calculator directly by going to [http://ninja-calc.mbedded.ninja/calc/track-current-ipc-2221a-calculator](http://ninja-calc.mbedded.ninja/calc/track-current-ipc-2221a-calculator).
 

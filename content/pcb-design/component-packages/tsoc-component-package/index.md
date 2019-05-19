@@ -121,4 +121,4 @@ As far as I can tell, this package only comes in the 6-pin version (TSOC-6), and
 
 ## Images
 
-{{< gallery dir="/images/electronics-packages/tsoc" />}}
+{{< gallery dir="images/electronics-packages/tsoc" />}}

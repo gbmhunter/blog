@@ -77,7 +77,7 @@ Re-arranged so that we can calculate a temperature from a measured resistance, a
 
 {{< img src="ninja-calc-logo-v2-no-transparency.png" width="500px" caption="ninja-calc-logo-v2-no-transparency" >}}
 
-The free embedded-engineering calculator app, [NinjaCalc](http://mbedded-ninja.github.io/NinjaCalc/), features a calculator for working out the thermistor temperature (or any other variable) using the Beta equation.
+The free embedded-engineering calculator app, [NinjaCalc](http://gbmhunter.github.io/NinjaCalc/), features a calculator for working out the thermistor temperature (or any other variable) using the Beta equation.
 
 ## Steinhart-Hart Equation
 

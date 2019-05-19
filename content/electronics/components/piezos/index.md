@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 description: "The schematic symbol, frequency response, driver circuits, benders, multi-layer speakers, homemade crystals and more info about Piezos."
 date: 2012-05-02
 lastmod: 2018-12-29
-tags: [ "pizeo", "schematic symbol", "schematic", "frequency response", "driver circuit", "crystal" ]
+tags: [ "pizeo", "schematic symbols", "schematic", "frequency response", "driver circuit", "crystal" ]
 title: "Piezos"
 type: "page"
 ---

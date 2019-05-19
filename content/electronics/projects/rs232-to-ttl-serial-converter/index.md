@@ -32,4 +32,4 @@ About 2 hours...
 
 ## Images
 
-{{< gallery dir="/images/electronics-rs232-to-ttl" />}}
+{{< gallery dir="images/electronics-rs232-to-ttl" />}}

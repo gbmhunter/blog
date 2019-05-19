@@ -8,26 +8,26 @@ type: page
 
 ## The First Prototype
 
-{{< gallery dir="/images/electronics-electricskateboard-firstprototype" />}}
+{{< gallery dir="images/electronics-electricskateboard-firstprototype" />}}
 
 ## The Second Prototype
 
-{{< gallery dir="/images/electronics-electricskateboard-secondprototype" />}}
+{{< gallery dir="images/electronics-electricskateboard-secondprototype" />}}
 
 ## Final Board Photos
 
 ## Mechanical
 
-{{< gallery dir="/images/electronics-electricskateboard-final-mech" />}}
+{{< gallery dir="images/electronics-electricskateboard-final-mech" />}}
 
 ## PCB
 
-{{< gallery dir="/images/electronics-electricskateboard" />}}
+{{< gallery dir="images/electronics-electricskateboard" />}}
 
 ## Fibreglassing
 
-{{< gallery dir="/images/electronics-electricskateboard-fibreglassing" />}}
+{{< gallery dir="images/electronics-electricskateboard-fibreglassing" />}}
 
 ## Painting
 
-{{< gallery dir="/images/electronics-electricskateboard-final-paint" />}}
+{{< gallery dir="images/electronics-electricskateboard-final-paint" />}}

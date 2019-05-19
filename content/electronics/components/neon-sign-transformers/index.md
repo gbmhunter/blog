@@ -17,4 +17,4 @@ Neon sign transformers are largish transformers that step up mains power to 6-15
 
 ## Pictures
 
-{{< gallery dir="/images/neon-sign-transformer" />}}
+{{< gallery dir="images/neon-sign-transformer" />}}
