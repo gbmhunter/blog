@@ -43,3 +43,12 @@ Add the following to `keybindings.json` so that you can switch between the edito
     "when": "terminalFocus"
 }
 ```
+
+## Git Ignore File For Visual Studio Code
+
+```text
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+```
+
+You may want to include `*.code-workspace` files as they can contain cSpell configuration that you wish to share (such as user-added words).

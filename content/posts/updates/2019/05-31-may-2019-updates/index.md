@@ -27,3 +27,8 @@ type: "post"
 * Addition of information on `git commit --fixup` and `git log` to the {{% link text="git page" src="/programming/version-control-systems/git" %}}.
 
 * Addition of ownership (`chown`) information to the {{% link text="Users, Groups, And Permissions In Linux page" src="/programming/operating-systems/linux/users-groups-and-permissions-in-linux" %}}.
+
+* Added a `LICENSE.txt` (containing the MIT license) to many of my Git repos, including:
+    * [CppLinuxSerial](https://github.com/gbmhunter/CppLinuxSerial)
+    * [CppUtils](https://github.com/gbmhunter/CppUtils)
+    * [LinuxCanBus](https://github.com/gbmhunter/LinuxCanBus)

@@ -1,7 +1,10 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Signal Processing" ]
 date: 2018-06-02
 draft: false
+lastmod: 2019-05-18
+tags: [ "programming", "signal processing", "Fourier Transforms", "Fast Fourier Transforms", "FFTs" ]
 title: Fast Fourier Transforms (FFTs)
 type: page
 ---
@@ -24,7 +27,7 @@ The width of each bin (in Hertz) is equal to:
 
 The bins of interest are those from `\( 0 \)` to `\( \frac{N_{bins}}{2} \)`.
 
-## **Sampling Rate**
+## Sampling Rate
 
 By the Nyquist-Shannon sampling theorem, if the sampling rate is say, 10kHz, then the maximum captured frequency content will be 5kHz. This is true when using FFTs.
 
@@ -43,6 +46,30 @@ There is always a trade-off between frequency and temporal (time based) resoluti
 A FFT samples a waveform to a finite length (you don't/can't measure the signal for time negative infinity to positive infinity) in what is called the window. An FFT algorithm also assumes the signal within the window repeats forever. With most real-world signals, this will result in discontinuities at the edges of the window (the only time this does not happen is if the signal repeats itself, and the window happens to contain an exact integer number of cycles).
 
 If nothing is done to the edges of the window, you will get significant **spectral leakage**. One way to reduce the spectral leakage is to perform windowing, in where the signal is faded in and out in the first few/last few samples.
+
+## Fourier Transform On Images
+
+Because most images are stored digitally, the _Discrete Fourier Transform_ (DFT) is used.
+
+Taking an standard input image which is in the spatial domain, the 2D DFT converts the image into the frequency domain. Each pixel in the output image represents a particular frequency in the input spatial domain image.
+
+The number of frequencies in the image is equal to the number of pixels in the image. Obviously, this means that the frequency domain image will the same size as the spatial domain image.
+
+<p>$$ \mathcal{F}(k, l) = \sum_{i=0}^{N-1} \sum_{i=0}^{N-1} f(i,j) e^{-i2\pi (\frac{ki}{M} + \frac{lj}{N})} $$</p>
+
+<p class="centered">
+  where:<br>
+  \( f(i, j) \) is the image in the spatial domain
+</p>
+
+The basis functions are sine and cosine waves with increasing frequencies. `\(\mathcal{F}(0, 0)\)` represents the DC component in the image (the average brightness), all the way up to `\(\mathcal{F}(N-1, N-1)\)` which represents the highest frequency in the image. Note that `\(\mathcal{F}(0, 0)\)` is usually shifted to be in the center of the frequency domain image.
+
+The Fourier Transform of a real-numbered spatial image (i.e. a typical photo) produces a complex-valued image in the frequency domain. Obviously, we can't view an image made of complex numbers. What we can do is display the frequency domain image as two images, either:
+
+ * 1 image contains the real part of the complex number, the other image displays the imaginary part
+ * 1 image displays the magnitude, the other image displays the phase
+
+ Often in image processing, we are mostly interested in the magnitude image.
 
 ## Code Libraries
 

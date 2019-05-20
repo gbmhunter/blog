@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2013-09-04
 description: "The Mathematics subsection of this blog."
 draft: false
-lastmod: 2019-04-28
+lastmod: 2019-05-18
 tags: [ "mathematics", "maths", "curve fitting", "geometry", "linear algebra", "linear programming", "perlin noise", "statistics" ]
 title: "Mathematics"
 type: "page"
@@ -42,5 +42,7 @@ A bar is used to indicate a conjugate:
 The "triangle equals" is used to denote "is defined by":
 
 <p>$$ F \triangleq ma $$</p>
+
+The Fourier Transform is denoted with `\(\mathcal{F}\)`.
 
 
