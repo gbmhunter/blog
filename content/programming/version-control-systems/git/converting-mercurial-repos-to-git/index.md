@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
-date: 2013-05-20 08:33:16+00:00
+categories: [ "Programming", "Version Control Systems" ]
+date: 2013-05-20
 draft: false
+tags: [ "programming", "version control systems", "VCS", "git", "Mercurial", "conversion" ]
 title: Converting Mercurial Repos To Git
 type: page
 ---
@@ -10,20 +12,20 @@ I have tried many different ways of converting Mercurial (Hg) repositories to Gi
 
 Here is my favourite method, assuming you are using Linux (I was running Ubuntu). If you are not running Linux, I seriously recommend running it on a virtual machine just because it is easier to manipulate repositories that way.
 
-Firstly, download the hggit plugin for Mercurial. Don't get this confused with the githg plugin (which has similar, but different, functionality).
+Firstly, download the `hggit` plugin for Mercurial. Don't get this confused with the `githg` plugin (which has similar, but different, functionality).
 
 ```sh   
 $ sudo aptitude install mercurial-git
 ```
 
-Now, you have to add a few lines to your global Mercurial config file (~./.hgrc) so that Mercurial will load the hggit plugin next time you use it.
+Now, you have to add a few lines to your global Mercurial config file (`~/.hgrc`) so that Mercurial will load the `hggit` plugin next time you use it.
 
 ```text
 [extensions]
 hggit =
 ```
 
-Now, navigate to the root directory of your Mercurial repo that you wish to convert, and run the following command, which adds a "Master" branch to the repo, so that it is Git-compatible.
+Now, navigate to the root directory of your Mercurial repo that you wish to convert, and run the following command, which adds a `master` branch to the repo, so that it is Git-compatible.
 
 ```sh    
 $ hg bookmark -r default master

@@ -71,6 +71,8 @@ The Fourier Transform of a real-numbered spatial image (i.e. a typical photo) pr
 
  Often in image processing, we are mostly interested in the magnitude image.
 
+ {{% img src="fourier_stripes.gif" width="500px" caption="Stripes. The vertical red bar is a separator." %}}
+
 ## Code Libraries
 
 The opensource [Math.Net Numerics library](http://numerics.mathdotnet.com/) contains C# FFT code built for the .NET framework.

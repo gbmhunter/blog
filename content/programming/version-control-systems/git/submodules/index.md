@@ -1,8 +1,10 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Version Control Systems" ]
 date: 2017-01-20
 draft: false
-title: Submodules
+tags: [ "programming", "version control systems", "VCS", "git", "submodules" ]
+title: Git Submodules
 type: page
 ---
 
@@ -45,7 +47,7 @@ Sometimes you may wish to change an existing submodule to point to a completely 
 4. Delete the submodule (e.g. delete lib/mysubmodule).
 5. Run git submodule init then git submodule update. Note, you may get an error similar to:  
 
-	```
+	```text
     fatal: reference is not a tree: a094dcfeeb43...
 	```
 

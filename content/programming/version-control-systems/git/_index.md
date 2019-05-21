@@ -4,7 +4,7 @@ categories: [ "Programming", "Version Control Systems" ]
 date: 2014-02-08
 draft: false
 lastmod: 2019-05-13
-tags: [ "programming", "version control systems", "VCSs", "git", "amend", "fixup", "squash", "history", "commits" ]
+tags: [ "programming", "version control systems", "VCS", "git", "amend", "fixup", "squash", "history", "commits" ]
 title: Git
 type: page
 ---
@@ -18,7 +18,7 @@ $ git merge --no-commit --squash A
 $ git reset HEAD
 ```
 
-## Ammending To The Last Commit
+## Amending To The Last Commit
 
 Using `--amend` is a useful way to add more changes to the last commit. When using `--amend`, git will add staged changes to the last commit, rather than creating a new one. It will also let you modify the commit message (unless you pass the `--no-edit` flag).
 

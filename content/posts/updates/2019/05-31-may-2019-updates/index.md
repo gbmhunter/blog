@@ -29,6 +29,19 @@ type: "post"
 * Addition of ownership (`chown`) information to the {{% link text="Users, Groups, And Permissions In Linux page" src="/programming/operating-systems/linux/users-groups-and-permissions-in-linux" %}}.
 
 * Added a `LICENSE.txt` (containing the MIT license) to many of my Git repos, including:
+    * [AltiumScriptCentral](https://github.com/gbmhunter/AltiumScriptCentral)
     * [CppLinuxSerial](https://github.com/gbmhunter/CppLinuxSerial)
+    * [CppTemplate](https://github.com/gbmhunter/CppTemplate)
     * [CppUtils](https://github.com/gbmhunter/CppUtils)
+    * [FunctionPointerStateMachineExample](https://github.com/gbmhunter/FunctionPointerStateMachineExample)
+    * [MPid](https://github.com/gbmhunter/MPid)
+    * [MRingBuff](https://github.com/gbmhunter/MRingBuff)
     * [LinuxCanBus](https://github.com/gbmhunter/LinuxCanBus)
+    * [YoctoHelloWorldApp](https://github.com/gbmhunter/YoctoHelloWorldApp)
+
+* Released `v5.0.0` of [MPid](https://github.com/gbmhunter/MPid), which included the following changes:
+    * Added .gitignore file.
+    * Added `LICENSE.txt` (MIT license).
+    * Replaced Make build script with CMake.
+    * Replace the custom four number versioning with the standardized semantic versioning (three number).
+    * Changed README from ReStructuredText to Markdown format.

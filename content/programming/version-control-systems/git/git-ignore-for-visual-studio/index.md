@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Version Control Systems" ]
 date: 2013-05-29
 draft: false
+tags: [ "programming", "version control systems", "VCS", "git", "Visual Studio", "ignore files" ]
 title: Git Ignore For Visual Studio
 type: page
 ---
