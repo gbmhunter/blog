@@ -1,14 +1,18 @@
 ---
 author: gbmhunter
+categories: [ "Programming" ]
 date: 2012-10-01
+description: "A tutorial on PID control including equations, examples and simulations."
 draft: false
+lastmod: 2019-05-21
+tags: [ "programming", "control theory", "PID", "systems", "controllers", "setpoints", "integral windup", "simulation", "NinjaCalc" ]
 title: PID Control
 type: page
 ---
 
 ## Overview
 
-PID control is a very common technique for controlling a system in which you have a desired set-point for the system to be in, and are able to control this with one variable. PID is an acronym for proportional-derivative-integral, and describes the three mathematical processes used to decide on a output to the control system.
+PID control is a very common technique for controlling a system in which you have a desired set-point for the system to be in, and are able to control this with one variable. PID is an acronym for Proportional-Derivative-Integral, and describes the three mathematical processes used to decide on a output to the control system.
 
 You change the dynamics of the PID control loop by varying three parameters, the proportional, integral and derivative constants.
 
@@ -18,10 +22,9 @@ PID is a industry-standard way of controlling a system, given a single input con
 
 A PID controller compares a set-point (decided on by the user, e.g. this may the temperature you want the room to be at). It then compares this with the measured system variable (the actual temperature of the room). The difference between the set-point and the measured variable is called the error.
 
-This error is what is fed into the P (proportional), I (integral) and D (derivative) blocks.
+This error is what is fed into the `P` (proportional), `I` (integral) and `D` (derivative) blocks.
 
-
-{{< figure src="/images/2018/04/pid-controller-diagram-process-error-setpoint-measured-value.png" width="716px" caption="A block diagram of a PID controller."  >}}
+{{< figure src="/images/2018/04/pid-controller-diagram-process-error-setpoint-measured-value.png" width="716px" caption="A block diagram of a PID controller." >}}
 
 ## The Maths
 
@@ -134,7 +137,7 @@ We can simulate this system in code by discretizing the system into small time s
 
 6. Once the values for the velocity and displacement are updated, repeat steps 3-5 for the next time step. `\(F_{spring}\)` and `\(F_{damper}\)` will calculated for the next time step using these updated velocity and displacement values.
 
-## Firmwave Modules
+## Firmware Modules
 
 If you are looking for PID code for an embedded system, check out my [Pid project on GitHub (CP3id)](https://github.com/gbmhunter/CP3id). It is written in C++ and designed to be portable enough to run on many embedded systems, as well as Linux.
 

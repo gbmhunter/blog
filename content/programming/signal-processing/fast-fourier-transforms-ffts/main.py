@@ -9,9 +9,9 @@ def create_fourier_stripes_gif():
 
     frames = []
 
-    for i in range(6):
-        strip_width = 2**i
-        array_spatial = create_stripes(IMAGE_WIDTH, strip_width)
+    for i in range(6, 0, -1):
+        strip_width = (2**i)
+        array_spatial = create_stripes(IMAGE_WIDTH, strip_width/2)
         array_fourier = fourier_transform(i, array_spatial)
 
         array_spatial_rgb = np.stack([array_spatial, array_spatial, array_spatial], axis=-1).astype(np.uint8)
@@ -28,7 +28,7 @@ def create_fourier_stripes_gif():
         # get a drawing context
         drawContext = ImageDraw.Draw(img_combined)
         # drawContext.fontmode = "1" # Disable anti-aliasing
-        drawContext.text((50, 270), f"strip width = {strip_width}",font=font, fill=(255, 170, 170, 255))
+        drawContext.text((50, 270), f"wavelength = {strip_width}px",font=font, fill=(255, 170, 170, 255))
         frames.append(img_combined)
 
     frames[0].save('fourier_stripes.gif', format='GIF', append_images=frames[1:], save_all=True, duration=1000, loop=0)
