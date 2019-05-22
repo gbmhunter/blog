@@ -55,6 +55,12 @@ Taking an standard input image which is in the spatial domain, the 2D DFT conver
 
 The number of frequencies in the image is equal to the number of pixels in the image. Obviously, this means that the frequency domain image will the same size as the spatial domain image.
 
+The definition of the 2D Fourier transform (continuous):
+
+<p>$$ \mathcal{F}(u,v) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x,y) e^{-j2\pi(ux + vy)} dx\,dy $$</p>
+
+Converted into a 2D discrete Fourier transform, the equation becomes:
+
 <p>$$ \mathcal{F}(k, l) = \sum_{i=0}^{N-1} \sum_{i=0}^{N-1} f(i,j) e^{-i2\pi (\frac{ki}{M} + \frac{lj}{N})} $$</p>
 
 <p class="centered">
