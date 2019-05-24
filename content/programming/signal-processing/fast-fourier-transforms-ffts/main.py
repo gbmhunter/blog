@@ -1,9 +1,49 @@
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
+from typing import Tuple
 
 # For image color scheme, see https://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF
 CREATE_DEBUG_IMAGES = False
 IMAGE_WIDTH = 64
+
+def main():
+    create_fourier_stripes_gif()
+    create_sin_gif()
+
+def fourier_transform(i, array: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Calculates the fourier transform for the provided 2D image array.
+    """
+    print(f'fourier_transform() called. i = {i}, spatial_image =.')
+    print(array)
+
+    f = np.fft.fft2(array)
+    f_shift = np.fft.fftshift(f)
+
+    f_mag = np.abs(f_shift)
+    print('f_mag (before type conversion) =')
+    print(f_mag)
+    f_mag = 255*(f_mag - np.min(f_mag))/np.ptp(f_mag)
+    f_mag = f_mag.astype(np.uint8)
+    if np.min(f_mag) < 0 or np.max(f_mag) > 255:
+        raise RuntimeError(f'Value in f_mag will be truncated!'
+            f' min = {np.min(f_mag)}, max = {np.max(f_mag)}.')
+    
+
+    img = Image.fromarray(array)
+    if CREATE_DEBUG_IMAGES:
+        img.save(f'{i}_spatial.png')
+
+    img = Image.fromarray(f_mag)
+
+    if CREATE_DEBUG_IMAGES:
+        img.save(f'{i}_fourier.png')
+
+    return f_mag
+
+################################################################################
+# SQUARE
+################################################################################
 
 def create_fourier_stripes_gif():
 
@@ -33,34 +73,6 @@ def create_fourier_stripes_gif():
 
     frames[0].save('fourier_stripes.gif', format='GIF', append_images=frames[1:], save_all=True, duration=1000, loop=0)
 
-def fourier_transform(i, array):
-    print(f'fourier_transform() called. i = {i}, spatial_image =.')
-    print(array)
-
-    f = np.fft.fft2(array)
-    f_shift = np.fft.fftshift(f)
-
-    f_mag = np.abs(f_shift)
-    print('f_mag (before type conversion) =')
-    print(f_mag)
-    f_mag = 255*(f_mag - np.min(f_mag))/np.ptp(f_mag)
-    f_mag = f_mag.astype(np.uint8)
-    if np.min(f_mag) < 0 or np.max(f_mag) > 255:
-        raise RuntimeError(f'Value in f_mag will be truncated!'
-            f' min = {np.min(f_mag)}, max = {np.max(f_mag)}.')
-    
-
-    img = Image.fromarray(array)
-    if CREATE_DEBUG_IMAGES:
-        img.save(f'{i}_spatial.png')
-
-    img = Image.fromarray(f_mag)
-
-    if CREATE_DEBUG_IMAGES:
-        img.save(f'{i}_fourier.png')
-
-    return f_mag
-
 # Stripes
 def create_stripes(image_width_pix, stripe_width_pix):
     """
@@ -79,7 +91,7 @@ def create_stripes(image_width_pix, stripe_width_pix):
 
 def create_sin_image(image_width_px: int, freq_pixel: int) -> np.ndarray:
     """
-    Creates an image with a sinusoidal pattern in the a-axis.
+    Creates an image array with a sinusoidal pattern in the x-axis.
     """
 
     num_cycles_in_image = image_width_px/freq_pixel
@@ -121,5 +133,4 @@ def create_sin_gif():
     frames[0].save('sinusoidal.gif', format='GIF', append_images=frames[1:], save_all=True, duration=1000, loop=0)
 
 if __name__ == '__main__':
-    create_fourier_stripes_gif()
-    create_sin_gif()
+    main()

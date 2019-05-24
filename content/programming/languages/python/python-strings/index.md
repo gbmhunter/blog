@@ -1,8 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2017-08-16
 draft: false
-tags: [ "Python", "string", "concatenation", "repetition", "indexing", "slicing", "length" ]
+tags: [ "programming", "programming languages", "Python", "string", "concatenation", "repetition", "indexing", "slicing", "length" ]
 title: Python Strings
 type: page
 ---
