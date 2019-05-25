@@ -4,7 +4,7 @@ categories: [ "Programming", "Programming Languages", "Python", "C++" ]
 date: 2017-08-16
 draft: false
 lastmod: 2019-03-25
-tags: [ "Python", "SWIG", "binding", "C", "C++", "interface", "CMake", "typemaps", "directors" ]
+tags: [ "programming", "programming languages", "Python", "SWIG", "binding", "C", "C++", "interface", "CMake", "typemaps", "directors" ]
 title: Python SWIG Bindings From C/C++
 type: page
 ---

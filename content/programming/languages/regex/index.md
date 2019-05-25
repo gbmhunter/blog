@@ -1,5 +1,6 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Programming Languages" ]
 date: 2013-05-01
 description: "A quick reference and tutorial on regex (regular expressions) including lookahead and lookbehind."
 draft: false

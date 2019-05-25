@@ -5,7 +5,7 @@ date: 2018-08-20
 description: "A tutorial on Python type annotations, including basic types, Optional, casts and mypy."
 draft: false
 lastmod: 2019-01-15
-tags: [ "Python", "type hints", "type annotations", "syntax", "mypy", "PEP 526", "PEP 484", "code", "dmypy", "mypy daemon" ]
+tags: [ "programming", "programming languages", "Python", "type hints", "type annotations", "syntax", "mypy", "PEP 526", "PEP 484", "code", "dmypy", "mypy daemon" ]
 title: "Python Type Annotations"
 type: "page"
 ---

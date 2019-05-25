@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Programming Languages" ]
 date: 2013-08-19
 draft: false
 tags: [ "VBScript", "script", "programming language", "Altium", "regex", "comment", "integer", "function pointer", "set", "trigonometry" ]

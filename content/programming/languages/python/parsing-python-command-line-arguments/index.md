@@ -1,10 +1,11 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2019-01-17
 description: "A tutorial on parsing command-line arguments in Python."
 draft: false
 lastmod: 2019-01-17
-tags: [ "Python", "code", "software", "argparse", "argument parser", "command-line", "CLI", "sub-commands" ]
+tags: [ "programming", "programming languages", "Python", "code", "software", "argparse", "argument parser", "command-line", "CLI", "sub-commands" ]
 title: "Parsing Command-Line Arguments In Python"
 type: "page"
 ---

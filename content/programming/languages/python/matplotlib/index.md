@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Programming", "Python" ]
+categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-11-29
 description: "Matplotlib tutorial including useful tricks and tips with code examples."
 draft: false

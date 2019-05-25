@@ -1,7 +1,10 @@
 ---
 author: gbmhunter
-date: 2018-01-17 19:17:03+00:00
+categories: [ "Programming", "Programming Languages", "Python" ]
+date: 2018-01-17
 draft: false
+lastmod: 2018-01-17
+tags: [ "programming", "programming languages", "Python" ]
 title: Anaconda
 type: page
 ---

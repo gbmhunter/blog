@@ -1,9 +1,10 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2013-06-18
 draft: false
 lastmod: 2019-01-01
-tags: [ "Python", "programming", "language", "software" ]
+tags: [ "Python", "programming", "programming languages", "comments", "documentation", "docstrings" ]
 title: "Comments And Documentation"
 type: "page"
 ---

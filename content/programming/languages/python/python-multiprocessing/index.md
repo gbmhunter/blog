@@ -4,16 +4,27 @@ categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2019-05-23
 draft: false
 lastmod: 2019-05-23
-tags: [ "programming", "programming languages", "Python" ]
+tags: [ "programming", "programming languages", "Python", "multiprocessing", "processes", "pools", "workers", "children", "daemonic processes", "zombie processes", "Global Interpreter Lock" ]
 title: Python Multiprocessing
 type: page
 ---
 
 ## Overview
 
-Multiprocessing in Python is supported through the `multiprocessing` library.
+The Python `multiprocessing` library allows you to spawn multiple child processes from the main Python process. This allows you to take advantage of multiple cores inside of a processor to perform work in a parallel fashion, improving performance.
 
-## Pools Within Pools
+Multiprocessing is especially important in Python due to the GIL (Global Interpreter Lock) which prevents multithreading from being a good solution for resource bound applications (Python threads still work for I/O bound applications).
+
+The following differences must be remembered:
+* It is much harder/slower to share data when using multiprocessing than with multithreading. The Python `multiprocessing` library supports the somewhat simple passing of data between the parent and child processes, however it requires all objects to be serializable (which puts a restriction on what data can be shared). Sharing data between child processes requires the use of OS objects such as pipes or queues.
+* New processes use more OS resources than new threads.
+* Child processes do not crash the main process if they throw an exception/seg fault e.t.c, resulting in a more resiliant application than when using multithreading.
+
+## Multiprocessing Pools
+
+Python's `multiprocessing.Pool` allows you create a number of "workers" which run in child processes. The parent process can then give the `Pool` tasks, and the pool will distribute the tasks as evenly as possible across the workers. A `Pool` is a great way of distributing work across multiple processes without you having to manage the process creation/teardown and work dirstribution yourself.
+
+### Pools Within Pools
 
 If you try and create a `Pool` from within a child worker that was already created with a `Pool`, you will run into the error: `daemonic processes are not allowed to have children`.
 

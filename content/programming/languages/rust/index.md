@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Programming Languages" ]
 date: 2015-05-13
 draft: false
 tags: [ "Rust", "programming", "language", "code", "software", "compiled" ]

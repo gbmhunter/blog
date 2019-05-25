@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Programming Languages" ]
 date: 2013-08-06
 draft: false
 title: Verilog Operators

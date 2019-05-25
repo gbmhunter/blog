@@ -1,10 +1,11 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2019-01-07
 description: "A tutorial on Python sets."
 draft: false
 lastmod: 2019-01-07
-tags: [ "Python", "sets", "code", "software", "data structures", "containers", "iterations", "unordered", "unions", "intersections", "differences", "symmetric", "supersets", "subsets" ]
+tags: [ "programming", "programming languages", "Python", "sets", "code", "software", "data structures", "containers", "iterations", "unordered", "unions", "intersections", "differences", "symmetric", "supersets", "subsets" ]
 title: "Python Sets"
 type: "page"
 ---

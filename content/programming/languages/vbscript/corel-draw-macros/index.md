@@ -1,7 +1,9 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Programming Languages" ]
 date: 2015-12-28
 draft: false
+lastmod: 2015-12-28
 title: Corel Draw Macros
 type: page
 ---
@@ -30,7 +32,9 @@ The Application object contains all Document objects as well as all Window objec
 
 An empty Corel Draw document can be created with the code:
 
-`Application.CreateDocument`
+```text
+Application.CreateDocument
+```
 
 This is created in a new Corel Draw window.
 

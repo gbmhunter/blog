@@ -1,9 +1,10 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2017-05-24
 draft: false
 lastmod: 2019-03-25
-tags: [ "Python", "external command", "shlex", "system call", "subprocess", "Popen" ]
+tags: [ "programming", "programming languages", "Python", "external command", "shlex", "system call", "subprocess", "Popen" ]
 title: Running External Commands
 type: page
 ---

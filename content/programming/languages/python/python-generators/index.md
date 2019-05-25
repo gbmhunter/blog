@@ -1,5 +1,6 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2019-03-25
 description: "A tutorial on Python generators, including code examples and info on type annotations."
 draft: false
