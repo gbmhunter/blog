@@ -10,8 +10,9 @@ GIF_WIDTH = 800
 BACKGROUND_COLOR = (255, 255, 255, 255)
 
 def main():
-    create_fourier_stripes_gif()
-    create_sin_gif()
+    # create_fourier_stripes_gif()
+    create_sin_gif(create_sin_image, 'sinusoidal.gif')
+    create_sin_gif(create_stripes, 'square_wave.gif')
 
 def fourier_transform(i, array: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
     """
@@ -151,13 +152,13 @@ def create_sin_image(image_width_px: int, freq_pixel: int) -> np.ndarray:
     image_a = np.tile(image_x, (image_width_px, 1)).astype(np.uint8)
     return image_a
 
-def create_sin_gif():
+def create_sin_gif(spatial_img_fn, filename: str):
 
     frames = []
 
     for i in range(1, 7):
         strip_width = 2**i
-        array_spatial = create_sin_image(64, 2**i)
+        array_spatial = spatial_img_fn(64, 2**i)
         array_f_mag, array_f_phase = fourier_transform(0, array_spatial)
 
         array_spatial_rgb = np.stack([array_spatial, array_spatial, array_spatial], axis=-1).astype(np.uint8)
@@ -189,7 +190,7 @@ def create_sin_gif():
         drawContext.text((50, 290), f"wavelength = {strip_width}px", font=ImageFont.truetype('Verdana.ttf', 11), fill=(0, 0, 0, 255))
         frames.append(img_combined)
 
-    frames[0].save('sinusoidal.gif', format='GIF', append_images=frames[1:], save_all=True, duration=1000, loop=0)
+    frames[0].save(filename, format='GIF', append_images=frames[1:], save_all=True, duration=1000, loop=0)
 
 if __name__ == '__main__':
     main()
