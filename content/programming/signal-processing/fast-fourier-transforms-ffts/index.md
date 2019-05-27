@@ -77,7 +77,9 @@ The Fourier Transform of a real-numbered spatial image (i.e. a typical photo) pr
 
  Often in image processing, we are mostly interested in the magnitude image.
 
- {{% img src="fourier_stripes.gif" width="500px" caption="Stripes. The vertical red bar is a separator." %}}
+ {{% img src="fourier_stripes.gif" width="850px" caption="Stripes. The vertical red bar is a separator." %}}
+
+ {{% img src="sinusoidal.gif" width="850px" caption="Stripes. The vertical red bar is a separator." %}}
 
 ## Code Libraries
 
