@@ -75,7 +75,7 @@ The Fourier Transform of a real-numbered spatial image (i.e. a typical photo) pr
  * 1 image contains the real part of the complex number, the other image displays the imaginary part
  * 1 image displays the magnitude, the other image displays the phase
 
- Often in image processing, we are mostly interested in the magnitude image.
+ Often in image processing, we use the magnitude/phase representation, and are mostly interested in the magnitude image. The magnitude can be written as `\(|F(u,v)|\)`
 
  {{% img src="sinusoidal.gif" width="850px" caption="Stripes. The vertical red bar is a separator." %}}
 

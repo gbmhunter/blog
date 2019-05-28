@@ -4,7 +4,7 @@ date: 2019-01-27
 description: "A review of popular serialization formats (CSV, JSON, YAML, e.t.c), including speed and memory comparisons."
 draft: false
 images: [ "/programming/serialization-formats/a-comparison-of-serialization-formats/serialization-formats-conversion-times-10k-python.png" ]
-lastmod: 2019-04-07
+lastmod: 2019-05-27
 tags: [ "serialization", "format", "comparison", "CSV", "JSON", "Protobuf", "TOML", "XML", "YAML", "file size", "speed", "benchmark", "review", "Python", "C++" ]
 title: "A Comparison Of Serialization Formats"
 type: page
@@ -39,7 +39,7 @@ CSV is not very well standardized. [RFC 4180](https://tools.ietf.org/html/rfc418
 
 The CSV format allows an optional __header line__ appearing as the first line in the file. If present, it contains field names for each value in a record. This header line is very useful the labelling the data and **should almost always be present**.
 
-The CSV format is well supported, with CSV libraries available for almost every popular programming language.
+The CSV format is well supported, with CSV libraries available for almost every popular programming language. CSV is also really the only serialization format reviewed on this page which has good support in spreadsheet programs such as Excel.
 
 For a human-readable format, CSV is quite concise (see the [File Size section](#file-size-comparison) for more info). However, it can be difficult to work out what column is what, especially when there are a large number of rows (there is only one header column right at the top of the file), there are a large number of columns (there is no requirement of the columns being equal-spaced, and so you end up counting the commas from the left), and/or if there are empty fields (i.e. `,,`).
 
@@ -67,7 +67,7 @@ id, name, age, address
             <td>Human Readability</td>  <td>5/10</td>       <td>CSV is readable, although it easy to get lost within a row with a large amount of data.</td>
         </tr>
         <tr class="ok">
-            <td>Language Support</td>   <td>9/10</td>       <td>CSV is wide support and is readable is almost every major language (and if there is no support, it is really easy to write a parser yourself!).</td>
+            <td>Language Support</td>   <td>9/10</td>       <td>CSV is wide support and is readable is almost every major language (and if there is no support, it is really easy to write a parser yourself!). Spreadsheet programs also love CSV files.</td>
         </tr>
         <tr class="error">
             <td>Data Structure Support</td><td>3/10</td>    <td>CSV only supports tabular/array-like data. It does not support dictionary/map-like data, nor relational data.</td>
@@ -454,4 +454,5 @@ Being the only binary, non-human readable format that was compared, it's with no
 * [JSON5](https://github.com/json5/json5). A superset of JSON which allows for multi-line strings, comments, single-quote string delimiters, and more.
 * [HOCON](https://github.com/lightbend/config): A serialization format that seems popular in Java.
 * [MessagePack](https://msgpack.org/index.html). This looks similar to protobuf (uses binary encoding). Has libraries for a wide variety of languages.
+* [SDLang](https://sdlang.org/): A XML-like serialization format (but without the angled brackets) with libraries available in .NET, Java, PHP, Ruby and other languages.
 * [XDR](https://tools.ietf.org/html/rfc4506) (RFC4506): The _External Data Representation_ (XDR) is a well-used but specialized (i.e. the average developer does not use this protocol on a day-to-day basis) serialization protocol.
