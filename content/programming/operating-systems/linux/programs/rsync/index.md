@@ -10,11 +10,11 @@ type: page
 
 ## Overview
 
-`rsync` is a file copying utility for Linux which is similar to `scp` (secure copy), but with more functionality. It keeps a file table of all transferred files, and only transfers those that have been modified (hence the sync bit).
+`rsync` is a file copying utility for Linux which is similar to `scp` (secure copy), but with more functionality. It can be used to **copy/sync files locally or between computers connected on a network**. Unlike `scp`, it can **compare the source and destination and only copy over the differences**, reducing the amount of data transferred and the transfer time. It even supports the resuming of partially transferred files. For this reason it is very popular for backup purposes and other situations where either large files or a large amount of files need to be transferred.
 
 `rsync` can copy/sync locally or across a network.
 
-It has the following syntax:
+It has the following basic syntax:
 
 ```sh   
 $ rsync [options] source destination
@@ -24,61 +24,52 @@ $ rsync [options] source destination
 
 The most popular options are (sorted alphabetically by short option):
 
-<table>
-  <thead>
-    <tr>
-      <th>Short Option</th>
-      <th>Long Option</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>-a</code></td>
-      <td></td>
-      <td>Archive mode. This makes rsync also sync user and group settings for files and directories. Archive mode can be both extremely useful and extremely unhelpful. Archive mode will not work correctly if the source and destination systems do not have the same users and groups.</td>
-    </tr>
-    <tr>
-      <td><code>-n</code></td>
-      <td><code>--dry-run</code></td>
-      <td>Do a trial run which doesn't actually make any changes. This is usually used in conjunction with -v to make sure you are doing it correctly before make any modifications.</td>
-    </tr>
-    <tr>
-      <td><code></code></td>
-      <td><code>--progress</code></td>
-      <td>Prints the progress to <code>stdout</code>. This is very useful for large transfers!</td>
-    </tr>
-    <tr>
-      <td><code>-r</code></td>
-      <td></td>
-      <td>Recursive, will sync all files in child directories also.</td>
-    </tr>
-    <tr>
-      <td><code>-t</code></td>
-      <td></td>
-      <td>Preserves the modification times.</td>
-    </tr>
-    <tr>
-      <td><code>-u</code></td>
-      <td>--update</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><code>-v</code></td>
-      <td></td>
-      <td>Verbose. Will prints out more information when process is run. You can add extra v's (e.g. <code>-vv</code>) to make rsync print out even more info.</td>
-    </tr>
-    <tr>
-      <td><code>-z</code></td>
-      <td></td>
-      <td>Compress data while doing transfer. Some files cannot be compressed, which includes <code>gz zip z rpm deb iso bz2 tbz tgz 7z mp3 mp4 mov avi ogg jpg jpeg</code>.</td>
-    </tr>
-  </tbody>
-</table>
+### -a (Archive Mode)
 
+Short Option: `-a`
+Long Option: n/a
+
+Archive mode. This makes rsync also sync user and group settings for files and directories. Archive mode can be both extremely useful and extremely unhelpful. Archive mode will not work correctly if the source and destination systems do not have the same users and groups.
+
+### -n (Dry Run)
+
+Short Option: `-n`
+Long Option: `--dry-run`
+
+Do a trial run which doesn't actually make any changes. This is usually used in conjunction with -v to make sure you are doing it correctly before make any modifications.
+
+### --progress (Progress)
+
+Prints the progress to <code>stdout</code>. This is very useful for large transfers!
+
+### -r (Recursive)
+
+Recursive, will sync all files in child directories also.
+
+### -t (Preserve Modification Time)
+
+Preserves the modification times.
+
+### -u (Update)
+
+Short Option: `-u`
+Long Option: `--update`
+
+### -v (Verbose)
+
+Short Option: `-v`
+Long Option: `--verbose`
+
+Verbose. Will prints out more information when process is run. You can add extra v's (e.g. <code>-vv</code>) to make rsync print out even more info.
+
+### -z (Compress)
+
+Short Option: `-z`
+Long Option: n/a
+
+Compress data while doing transfer. Some files cannot be compressed, which includes <code>gz zip z rpm deb iso bz2 tbz tgz 7z mp3 mp4 mov avi ogg jpg jpeg</code>. WARNING: When using rsync to copy locally, compressing can SLOW DOWN the transfer as the time cost of compressing/decompressing outweights the slighty faster transfer time.
 
 Some of the most popular combinations of options are:
-
 
 <table>
     <thead>

@@ -45,3 +45,5 @@ type: "post"
     * Replaced Make build script with CMake.
     * Replace the custom four number versioning with the standardized semantic versioning (three number).
     * Changed README from ReStructuredText to Markdown format.
+
+* Updates to the {{% link text="rsync page" src="/programming/operating-systems/linux/programs/rsync" %}} including a redesign of the _Options_ section.
