@@ -117,3 +117,28 @@ d2193a14 HEAD@{1}: pull: Fast-forward
 bd560630 HEAD@{4}: commit: Converting images into page resources.
 65ea09ac HEAD@{5}: commit: Converted images into page resources.
 ```
+
+# git bisect
+
+```sh
+git bisect start COMMIT_1 COMMIT_2
+git bisect run
+git bisect reset
+```
+
+Suppose you want to add some custom changes to every run. You can `cherry-pick` some changes before running the test command:
+
+```sh
+git cherry-pick my-changes
+python test_program.py
+```
+
+DO NOT leave the repo status in a state other than what git bisect had configured it in.
+
+Bisecting, a merge base must be tested.
+
+To give you an indication on the number of commits involved in the bisection, you can manually print out a tidy list of all the commits between A and B with:
+
+```sh
+git log --oneline SHA_A ^SHA_B
+```
