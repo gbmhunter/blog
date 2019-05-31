@@ -2,8 +2,9 @@
 author: gbmhunter
 categories: [ "Programming", "Signal Processing" ]
 date: 2018-06-02
+description: "A tutorial on Fast Fourier Transforms (FFTs)."
 draft: false
-lastmod: 2019-05-18
+lastmod: 2019-05-29
 tags: [ "programming", "signal processing", "Fourier Transforms", "Fast Fourier Transforms", "FFTs" ]
 title: Fast Fourier Transforms (FFTs)
 type: page
@@ -12,6 +13,19 @@ type: page
 ## Overview
 
 A fast fourier transform is a way of calculating the DFT (discrete fourier transform) of a signal. A fourier transform is a way of looking at a waveform in the time domain to see what frequencies it is made up of. A fast fourier transform differentiates itself apart from a standard fourier transform by factorizing the DFT matrix into a produce of sparse (mostly zero) factors. This actions reduces the complexity of the DFT algorithm from `\( \mathcal{O}(n^2) \)` to `\( \mathcal{O}(n\log{n}) \)`. This speed increase means that the FFT is very popular in signal processing applications.
+
+## The "Slow" Fourier Transform
+
+The Fourier transform is defined by[^fourier-wikipedia]:
+
+<p>$$ F(s) = \int_{-\infty}^{\infty} f(x) e^{-2\pi ixs} dx $$</p>
+
+<p class="centered">
+  where<br/>
+  \(s\) is a real number
+</p>
+
+This is also called the _forward transform_. When the _independent variable_ `\(x\)` represents time (e.g. units in seconds), then the _transform variable_ `\(s\)` represents frequency (e.g. Hertz).
 
 ## Bin Size
 
@@ -75,11 +89,11 @@ The Fourier Transform of a real-numbered spatial image (i.e. a typical photo) pr
  * 1 image contains the real part of the complex number, the other image displays the imaginary part
  * 1 image displays the magnitude, the other image displays the phase
 
- Often in image processing, we use the magnitude/phase representation, and are mostly interested in the magnitude image. The magnitude can be written as `\(|F(u,v)|\)`
+ Often in image processing, we use the magnitude/phase representation, and are mostly interested in the magnitude image. The magnitude can be written as `\(|F(u,v)|\)`, the phase as `\(\phi F(u,v) \)`
 
- {{% img src="sinusoidal.gif" width="850px" caption="Stripes. The vertical red bar is a separator." %}}
+ {{% img src="sinusoidal.gif" width="850px" caption="A sinusoidal image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px." %}}
 
- {{% img src="square_wave.gif" width="850px" caption="Stripes. The vertical red bar is a separator." %}}
+ {{% img src="square_wave.gif" width="850px" caption="A square-waved (striped) image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px." %}}
 
 ## Code Libraries
 
@@ -88,3 +102,5 @@ The opensource [Math.Net Numerics library](http://numerics.mathdotnet.com/) cont
 ## External Resources
 
 [The Fourier Transform series on The Mobile Studio](http://www.themobilestudio.net/the-fourier-transform-part-1) must be one of the best online resources if you are looking into learning more about the Fourier Transform. It is a very detailed yet well explained step-by-step tutorial!
+
+[^fourier-wikipedia]: [https://en.wikipedia.org/wiki/Fourier_transform](https://en.wikipedia.org/wiki/Fourier_transform)

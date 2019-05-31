@@ -125,3 +125,28 @@ $ git config --global core.editor "vim"
 ```
 
 Now `vim` should load whenever git wants to present you with an editor, e.g. when calling  `git commit` without the `-m`.
+
+# git bisect
+
+```sh
+git bisect start COMMIT_1 COMMIT_2
+git bisect run
+git bisect reset
+```
+
+Suppose you want to add some custom changes to every run. You can `cherry-pick` some changes before running the test command:
+
+```sh
+git cherry-pick my-changes
+python test_program.py
+```
+
+DO NOT leave the repo status in a state other than what git bisect had configured it in.
+
+Bisecting, a merge base must be tested.
+
+To give you an indication on the number of commits involved in the bisection, you can manually print out a tidy list of all the commits between A and B with:
+
+```sh
+git log --oneline SHA_A ^SHA_B
+```
