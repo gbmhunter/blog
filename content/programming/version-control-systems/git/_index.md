@@ -1,12 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Version Control Systems" ]
 date: 2014-02-08
 draft: false
 lastmod: 2019-05-13
-tags: [ "programming", "version control systems", "VCS", "git", "amend", "fixup", "squash", "history", "commits" ]
-title: Git
-type: page
+tags: [ "programming", "version control systems", "VCS", "git", "amend", "fixup", "squash", "history", "commits", "vim" ]
+title: "Git"
+type: "page"
 ---
 
 ## Pulling In Temporary Changes To Your Branch
@@ -117,3 +117,11 @@ d2193a14 HEAD@{1}: pull: Fast-forward
 bd560630 HEAD@{4}: commit: Converting images into page resources.
 65ea09ac HEAD@{5}: commit: Converted images into page resources.
 ```
+
+# Set vim As The Default Editor For Git
+
+```sh
+$ git config --global core.editor "vim"
+```
+
+Now `vim` should load whenever git wants to present you with an editor, e.g. when calling  `git commit` without the `-m`.
