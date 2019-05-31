@@ -3,7 +3,7 @@ author: gbmhunter
 date: 2014-07-21
 description: "Basic improvements/additions that every installation of Linux should have."
 draft: false
-lastmod: 2019-02-04
+lastmod: 2019-05-30
 tags: [ "search history", "Linux", "multiple workspaces", "Linuxbrew", "fzf", "fd", "maximum number of files", "cd", "directory", "alias" ]
 title: "The Basic Essentials You Should Do After Installing Ubuntu"
 type: page
@@ -123,3 +123,11 @@ alias .....="cd ../../../../"
 ```
 
 Then you can just type `..` to go back one directory, `...` to go back two directories, e.t.c.
+
+## Make "ll" An Alias For "ls -l"
+
+The long form list directory command `ls -l` is so useful and frequenctly used that it is handy to create an alias for it (`ll` being the common and quick-to-type alias). Add the following to your `~/.bash_profile`:
+
+```sh
+alias ll="ls -l"
+```

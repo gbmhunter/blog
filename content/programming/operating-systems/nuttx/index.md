@@ -1,7 +1,10 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Operating Systems" ]
 date: 2016-12-16
 draft: false
+lastmod: 2016-12-16
+tags: [ "programming", "operating systems" ]
 title: NuttX
 type: page
 ---
