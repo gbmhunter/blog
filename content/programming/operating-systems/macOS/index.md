@@ -19,7 +19,7 @@ Enable "Natural Text Editing" in iTerm2 to incorporate typical macOS-style text 
 
 To enable Natural Text Editing, click _iTerm2_->_Preferences_->_Profiles_->_Keys_. Then click _Load Preset_, and select _Natural Text Editing_ from the dropdown.
 
-{{% img src="iterm2-enabling-natural-text-editing.png" width="500px" caption="Enabling the 'Natural Text Editing' key mapping reset in iTerm2." }}
+{{% img src="iterm2-enabling-natural-text-editing.png" width="500px" caption="Enabling the 'Natural Text Editing' key mapping reset in iTerm2." %}}
 
 ### Clearing The Buffer
 
