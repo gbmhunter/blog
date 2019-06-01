@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2014-07-21
 description: "Basic improvements/additions that every installation of Linux should have."
 draft: false

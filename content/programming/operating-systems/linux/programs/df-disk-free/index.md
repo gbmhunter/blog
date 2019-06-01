@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2017-04-13
 draft: false
 title: df (disk free)

@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2017-05-31
 draft: false
 title: fsck (File System Consistency checK)

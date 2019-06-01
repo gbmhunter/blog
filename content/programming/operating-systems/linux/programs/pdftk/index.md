@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2014-04-16
 draft: false
 title: pdftk

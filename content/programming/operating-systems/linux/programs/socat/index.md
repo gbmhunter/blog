@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2014-01-08
 draft: false
 title: socat

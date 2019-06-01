@@ -1,5 +1,6 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2019-02-04
 draft: false
 lastmod: 2019-02-04

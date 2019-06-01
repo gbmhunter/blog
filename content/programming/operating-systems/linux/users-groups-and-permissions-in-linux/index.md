@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2018-07-04
 draft: false
 tags: [ "programming", "operating systems", "Linux", "users", "groups", "permissions", "chmod", "chown", "useradd", "ownership" ]

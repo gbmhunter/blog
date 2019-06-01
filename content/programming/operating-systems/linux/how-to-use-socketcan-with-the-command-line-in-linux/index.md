@@ -1,5 +1,6 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2017-07-21
 description: "How to open, configure, read and write to SocketCAN devices in Linux using the command-line."
 images: [ "/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux/socketcan-image.png" ] 

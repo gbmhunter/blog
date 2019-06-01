@@ -23,8 +23,19 @@ To enable Natural Text Editing, click _iTerm2_->_Preferences_->_Profiles_->_Keys
 
 ### Clearing The Buffer
 
+Type the following command:
+
 ```sh
-$ reset
+$ clear
 ```
 
-`clear` will not clear the buffer, it only clears the view window.
+### imgcat
+
+Images can be displayed inline in a terminal with iTerm2's `imgcat` script.
+
+```sh
+$ imgcat my_image.png
+```
+
+There is also a 3rd party tool under the same `imgcat` name which provides similar functionality at [https://github.com/eddieantonio/imgcat](https://github.com/eddieantonio/imgcat).
+

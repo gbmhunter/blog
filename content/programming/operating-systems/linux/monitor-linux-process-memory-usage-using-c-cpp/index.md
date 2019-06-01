@@ -1,5 +1,6 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2017-08-25
 draft: false
 title: Monitor Linux Process Memory Usage Using C/C++

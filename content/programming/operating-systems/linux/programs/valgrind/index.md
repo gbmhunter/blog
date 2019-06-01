@@ -1,5 +1,6 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2017-06-12
 draft: false
 title: "valgrind"
