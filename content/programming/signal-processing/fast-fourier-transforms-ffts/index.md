@@ -27,6 +27,50 @@ The Fourier transform is defined by[^fourier-wikipedia]:
 
 This is also called the _forward transform_. When the _independent variable_ `\(x\)` represents time (e.g. units in seconds), then the _transform variable_ `\(s\)` represents frequency (e.g. Hertz).
 
+The finite signal in time has a continuous signal in frequency, and vice versa, a continuous signal in time has a finite signal in frequency.
+
+The Fourier transform can be thought of as a rotation of 90 around the time-frequency domain. In this sense, four applications of the Fourier transform should result in the original signal.
+
+There are four Fourier transformations:
+
+### Continuous-Time Fourier Transform (CTFT)
+
+CTFT: Continuous-time Fourier Transform. This is also commonly known just as _the_ Fourier Transform.
+
+<p>$$ F(f) = \int_{-\infty}^{\infty} f(t) e^{-j2\pi ft} dt $$</p>
+
+Inverse:
+
+<p>$$ f(t) = \int_{-\infty}^{\infty} F(f)e^{i2\pi ft} df $$</p>
+
+### Continuous-Time Fourier Series (CTFS)
+
+<p>$$ F_n = \frac{1}{T_0} \int_{-\frac{T_0}{2}}^{\frac{T_0}{2}} f(t) e^{\frac{-j2\pi nt}{T_0}}dt $$</p>
+
+Inverse:
+
+<p>$$ x(t) = \sum_{n=-\infty}^{\infty} F_n e^{\frac{j 2\pi nt}{T_0}} $$</p>
+
+### Discrete-time Fourier Transform (DTFT)
+
+The DTFT of a discrete time serious produces a frequency signal that is continuous and periodic.
+
+Forward:
+
+<p>$$ F(e^{j\omega}) = \sum_{n=-\infty}{\infty} f(nT)e^{-j2\pi fnT} $$</p>
+
+Inverse:
+
+<p>$$ f(nT) = \int_{-\frac{1}{2T}}^{\frac{1}{2T}} F(e^{j\omega})e^{j2\pi fnT} df $$</p>
+
+### Discrete Fourier Transform (DFT)
+
+<p>$$ F(\frac{k}{NT}) = \sum_{n=0}^{N-1} f(nT)e^{\frac{-j2\pi nk}{N}} $$</p>
+
+Inverse:
+
+<p>$$ f(nT) = \frac{1}{N} \sum_{k=0}^{N-1}F\frac{k}{NT}e^{\frac{i2\pi nk}{N}} $$</p>
+
 ## Bin Size
 
 The width of each bin (in Hertz) is equal to:
@@ -87,7 +131,7 @@ The basis functions are sine and cosine waves with increasing frequencies. `\(\m
 The Fourier Transform of a real-numbered spatial image (i.e. a typical photo) produces a complex-valued image in the frequency domain. Obviously, we can't view an image made of complex numbers. What we can do is display the frequency domain image as two images, either:
 
  * 1 image contains the real part of the complex number, the other image displays the imaginary part
- * 1 image displays the magnitude, the other image displays the phase
+ * 1 image displays the magnitude, the other image displays the phase (the _argument_ of the complex number)
 
  Often in image processing, we use the magnitude/phase representation, and are mostly interested in the magnitude image. The magnitude can be written as `\(|F(u,v)|\)`, the phase as `\(\phi F(u,v) \)`
 
