@@ -1,7 +1,8 @@
 ---
 author: gbmhunter
-date: 2012-11-28 05:06:57+00:00
+date: 2012-11-28
 draft: false
+lastmod: 2012-11-28
 title: Calculators Upgraded And Have Their Own Page
 type: post
 categories:
@@ -32,4 +33,4 @@ The electronic online calculators have been upgraded! They now
 
 The calculators now have their own ~~\[page\](/electronics/general/online-calculators)~~, which shows the collection of calculators that are used on the electrical pages of the ~~\[CladLabs site\](www.cladlabs.com)~~.
 
-{{< figure src="/images/electronics-misc/calculators-got-upgrade-and-have-their-own-page-with-border.jpg" caption="Screenshot of the Ohm's law and resistor divider online calculators."  width="600px" >}}
+{{< img src="calculators-got-upgrade-and-have-their-own-page-with-border.jpg" caption="Screenshot of the Ohm's law and resistor divider online calculators."  width="600px" >}}

@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-07-17 06:18:27+00:00
+date: 2012-07-17
 draft: false
 title: Electric Skateboard Project Finished!
 type: post
@@ -31,15 +31,15 @@ Total Money Spent:  NZ$3611
 
 Finishing of the wiring.
 
-{{< figure src="/images/electronics-electricskateboard-final-mech/2012-06-17-21-09-23.jpg" caption="Finishing off the last bit of wiring."  width="500px" >}}
+{{< img src="2012-06-17-21-09-23.jpg" caption="Finishing off the last bit of wiring."  width="500px" >}}
 
 A mug shot of the board next to some greenery...
 
-{{< figure src="/images/electronics-electricskateboard-final-mech/2012-06-18-10-59-10.jpg" caption="A mug shot of the finished board next to some greenery :-D."  width="500px" >}}
+{{< img src="2012-06-18-10-59-10.jpg" caption="A mug shot of the finished board next to some greenery :-D."  width="500px" >}}
 
 Here is what it looks like at night time.
 
-{{< figure src="/images/electronics-electricskateboard-final-mech/2012-06-16-19-17-34.jpg" caption="The electric skateboards lights proving useful at night."  width="500px" >}}
+{{< img src="2012-06-16-19-17-34.jpg" caption="The electric skateboards lights proving useful at night."  width="500px" >}}
 
 **More Info**
 

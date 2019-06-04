@@ -3,6 +3,7 @@ author: gbmhunter
 categories: [ "Site Admin", "Updates" ]
 date: 2015-01-01
 draft: false
+lastmod: 2015-01-01
 tags: [ "comments", "component packages", "content", "domain", "happy new year", "load times", "mbedded.ninja", "plans", "referrers", "SEO", "statistics", "visitors" ]
 title: Happy New Year, Plans For 2015
 type: post
@@ -10,7 +11,7 @@ type: post
 
 Happy new year to all!
 
-{{< figure src="/images/2015/01/happy-new-year-2015.jpg" width="693px" caption="Happy new year! Image from www.freechristmaswallpapers.net."  >}}
+{{< img src="happy-new-year-2015.jpg" width="693px" caption="Happy new year! Image from www.freechristmaswallpapers.net."  >}}
 
 First a few stats regarding mbedded.ninja in 2014.
 
@@ -18,31 +19,31 @@ First a few stats regarding mbedded.ninja in 2014.
 * Total num. of comments in 2014 = 31 (down 52% from 64 in 2013)
 * Most popular pages (views)  
 
-	1. [Altium Tricks And Standards](/electronics/general/altium/altium-tricks-and-standards) (22,229)  
+    1. [Altium Tricks And Standards](/electronics/general/altium/altium-tricks-and-standards) (22,229)  
 
-	2. [Component Packages](/pcb-design/component-packages) (17,921)  
+    2. [Component Packages](/pcb-design/component-packages) (17,921)  
 
-	3.[ Altium Bugs And Things To Watch Out For](/electronics/general/altium/altium-bugs-and-things-to-watch-out-for) (15,079)  
+    3.[ Altium Bugs And Things To Watch Out For](/electronics/general/altium/altium-bugs-and-things-to-watch-out-for) (15,079)  
 
-	4. [Home Page](/) (7,966)  
+    4. [Home Page](/) (7,966)  
 
-	5. [BLDC Motor Control](/electronics/circuit-design/bldc-motor-control) (5,554)
+    5. [BLDC Motor Control](/electronics/circuit-design/bldc-motor-control) (5,554)
 
-* Most popular referrers (num. of refers)  
+  * Most popular referrers (num. of refers)  
 
-	1. Search Engines (99,257)  
+    1. Search Engines (99,257)  
 
-	2. Wikipedia (1,985)  
+    2. Wikipedia (1,985)  
 
-	3. DigiKey (697)  
+    3. DigiKey (697)  
 
-	4. Disqus (382)  
+    4. Disqus (382)  
 
-	5. blog.mivia.dk (240)
+    5. blog.mivia.dk (240)
 
 And here is a screenshot of the number of visitors by month up to Jan 2015 since I started logging:
 
-{{< figure src="/images/2015/01/mbedded-ninja-visitor-stats-by-month-to-jan-2015.png" width="608px" caption="Num. of visitors to mbedded.ninja by month to January 2015."  >}}
+{{< img src="mbedded-ninja-visitor-stats-by-month-to-jan-2015.png" width="608px" caption="Num. of visitors to mbedded.ninja by month to January 2015."  >}}
 
 Things I hope to attempt this year:
 

@@ -1,12 +1,12 @@
 ---
 author: gbmhunter
+categories: [ "Updates" ]
 date: 2014-12-30
 draft: false
+lastmod: 2014-12-30
+tags: [ "accelerometer", "Bluetooth", " C", "charge pump", "IGBT", "IMU", "linkage", "Linux", "magnetometer", "transistor" ] 
 title: December 2014 Updates
 type: post
-categories:
-- Updates
-tags: [ "accelerometer", "Bluetooth", " C", "charge pump", "IGBT", "IMU", "linkage", "Linux", "magnetometer", "transistor" ] 
 ---
 
 Updates for December 2014:
@@ -17,12 +17,12 @@ Updates for December 2014:
 
 * New [Bluetooth page](/electronics/components/bluetooth). under Electronics->Circuit Design->Communication Protocols
 
-    {{< figure src="/images/2015/01/bluetooth-4-0-icon.jpg" width="379px" caption="The Bluetooth icon/logo."  >}}
+    {{< img src="bluetooth-4-0-icon.jpg" width="379px" caption="The Bluetooth icon/logo."  >}}
 
 * New page on [Linkage](/programming/languages/c/linkage) in the C programming language.
 
 * New [IMU page](/electronics/components/sensors/inertial-measurement-units-imus). under Electronics->Components
 
-    {{< figure src="/images/2014/12/screenshot-playing-around-with-rthostimugl.png" width="657px" caption="Playing around with RTHostIMUGL and a connected IMU through an Arduino."  >}}
+    {{< img src="screenshot-playing-around-with-rthostimugl.png" width="657px" caption="Playing around with RTHostIMUGL and a connected IMU through an Arduino."  >}}
 
 * Added a new [Magnetometers page](/electronics/components/sensors/magnetometers/) and a new [Accelerometers page](/electronics/components/sensors/accelerometers/).

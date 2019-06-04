@@ -1,7 +1,8 @@
 ---
 author: gbmhunter
-date: 2012-05-20 09:30:49+00:00
+date: 2012-05-20
 draft: false
+lastmod: 2012-05-20
 title: Cladlab Menu's Gone
 type: post
 categories:
@@ -20,7 +21,7 @@ Argh, so simple things such as reloading the old menu (using the back button on 
 
 Worst case scenario is I have to recreate the entire menu structure again. My website was basically entirely linked from within this menu. Groan...
 
-{{< figure src="/images/misc/clablab-menus-gone.jpg" caption="The CladLabs menus disappeared after a menu crash."  width="650px" >}}
+{{< img src="clablab-menus-gone.jpg" caption="The CladLabs menus disappeared after a menu crash."  width="650px" >}}
 
 _**EDIT (03-09-2012)**_
 

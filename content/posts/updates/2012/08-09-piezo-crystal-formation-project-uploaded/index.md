@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-08-09 06:17:28+00:00
+date: 2012-08-09
 draft: false
 title: Piezo Crystal Formation Project Uploaded!
 type: post
@@ -26,6 +26,6 @@ We managed to get about 50-60V generated across it when hitting it softly with t
 
 See the [Piezo Crystal Formation Project page](/electronics/projects/piezo-crystal-formation) for more info...
 
-{{< figure src="/images/electronics-piezocrystalformation/2012-07-16-22-21-30.jpg" caption="A large homemade piezo crystal."  width="600px" >}}
+{{< img src="2012-07-16-22-21-30.jpg" caption="A large homemade piezo crystal." width="600px" >}}
 
-{{< figure src="/images/electronics-piezocrystalformation/2012-07-21-19-42-57.jpg" caption="The voltage created when giving the piezo a large whack from the back-end of the screw driver."  width="600px" >}}
+{{< img src="2012-07-21-19-42-57.jpg" caption="The voltage created when giving the piezo a large whack from the back-end of the screw driver." width="600px" >}}

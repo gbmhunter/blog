@@ -46,3 +46,11 @@ bind -n C-l send-keys C-l \; clear-history
 ```
 
 This will emulate similar behaviour to pressing `Ctrl-K` in bash.
+
+## Killing Sessions
+
+Use `kill-session` to kill/delete a tmux session:
+
+```sh
+$ tmux kill-session -t my_session
+```

@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-date: 2012-05-04 11:15:26+00:00
+date: 2012-05-04
 draft: false
 title: The New Red PCBs Have Arrived
 type: post
@@ -15,6 +15,6 @@ tags:
 
 PCB Cart has finally re-produced the PCBs in a much nicer red colour. It's now time to populate these boards...
 
-{{< figure src="/images/electronics-electricskateboard/2012-04-25-13-28-16.jpg"   width="500px" >}}
+{{< img src="2012-04-25-13-28-16.jpg" width="500px" >}}
 
-{{< figure src="/images/electronics-electricskateboard/2012-04-25-13-54-54.jpg"   width="500px" >}}
+{{< img src="2012-04-25-13-54-54.jpg" width="500px" >}}

@@ -3,6 +3,8 @@ author: "gbmhunter"
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2017-06-12
 draft: false
+lastmod: 2017-06-12
+tags: [ "programming", "operating systems", "Linux", "programs", "Valgrind", "memory management", "C", "C++", "kcachegrind" ]
 title: "valgrind"
 type: "page"
 ---
@@ -11,7 +13,7 @@ type: "page"
 
 Valgrind is a tool that can be used to detect memory management and threading bugs.
 
-{{< figure src="/images/2017/06/valgrind-logo.jpg" width="316px" caption="The Valgrind logo."  >}}
+{{< img src="valgrind-logo.jpg" width="316px" caption="The Valgrind logo."  >}}
 
 ## Installation
 
@@ -62,7 +64,7 @@ Valgrind is a tool that can be used to detect memory management and threading bu
 
 ## Profiling With Valgrind
 
-The most simple way to run a program with valgrind is to call valgrind and pass in the executable at the only parameter:
+The most simple way to run a program with Valgrind is to call `valgrind` and pass in the executable at the only parameter:
 
 ```sh    
 ~$ valgrind ./profiling_test
@@ -79,7 +81,7 @@ To run callgrind, use the following command:
 The order of the optional parameters to valgrind is important! Make sure `--tool=callgrind` comes BEFORE the path to your executable.
 
 {{% warning %}}
-Again, callgrind will make your program run 4-10x slower than usual. If this slow down is unacceptable for whatever reason, but you still want to profile your application, you may want to check out GCC's gprof which in my experience, causes much less of a performance drop.
+Again, callgrind will make your program run 4-10x slower than usual. If this slow down is unacceptable for whatever reason, but you still want to profile your application, you may want to check out GCC's `gprof` which in my experience, causes much less of a performance drop.
 {{% /warning %}}
 
 This will generate a profile data file called `callgrind.out.<pid>` in the same folder as the exectuable. To display the results of the profiling:
@@ -106,4 +108,4 @@ $ kcachegrind
 
 You should then be presented with wonderful profiling data as shown below!
 
-{{< figure src="/images/2017/11/callgrind-profiling-output-displayed-in-kcachegrind.png" width="1310px" caption="The callgrind profiling output data being displayed in kcachegrind for a simple test application (with Fibonacci calculation and looping)."  >}}
+{{< img src="callgrind-profiling-output-displayed-in-kcachegrind.png" width="1310px" caption="The callgrind profiling output data being displayed in kcachegrind for a simple test application (with Fibonacci calculation and looping)." >}}

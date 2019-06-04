@@ -20,7 +20,7 @@ tags:
 - USB
 ---
 
-{{< figure src="/images/electronics-electricskateboard/2012-05-29-18-04-31.jpg" caption="The fried PSoC and Xbee module after I accidentally connected two circuits with grounds at a potential difference of over 30V. Purple sparks and smoke came from the PSoC, but I was surprised that the Xbee died too."  width="500px" >}}
+{{< img src="2012-05-29-18-04-31.jpg" caption="The fried PSoC and Xbee module after I accidentally connected two circuits with grounds at a potential difference of over 30V. Purple sparks and smoke came from the PSoC, but I was surprised that the Xbee died too."  width="500px" >}}
 
 The fried PSoC and Xbee module after I accidentally connected two circuits with grounds at a potential difference of over 30V. Purple sparks and smoke came from the PSoC, but I was surprised that the Xbee died too.
 

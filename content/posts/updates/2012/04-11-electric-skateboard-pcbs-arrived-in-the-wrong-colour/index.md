@@ -3,6 +3,7 @@ author: gbmhunter
 categories: [ "Electric Skateboard" ]
 date: 2012-04-11
 draft: false
+lastmod: 2012-04-11
 tags: [ "electric skateboard", "PCBs", "PCB Cart", "soldermask" ]
 title: Electric Skateboard PCBs Arrived In The Wrong Colour
 type: post
@@ -14,4 +15,4 @@ We reached an agreement that I could get them redone in another colour, paying h
 
 The photo below shows the gross orange colour compared to the kind of yellow I was expecting.
 
-{{< figure src="/images/electronics-electricskateboard/2012-04-04-15-45-02.jpg" caption="This photo shows the gross orange colour of the electric skateboard PCBs compared to the kind of yellow I was expecting."  width="600px" >}}
+{{< img src="2012-04-04-15-45-02.jpg" caption="This photo shows the gross orange colour of the electric skateboard PCBs compared to the kind of yellow I was expecting."  width="600px" >}}

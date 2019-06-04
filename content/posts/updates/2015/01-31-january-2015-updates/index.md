@@ -3,6 +3,7 @@ author: gbmhunter
 categories: [ "Updates" ]
 date: 2015-01-31
 draft: false
+lastmod: 2015-01-31
 tags: [ "CSS", "Wordpress", "TVS", "diodes", "C", "atomic", "repo", "switch statements", "Git", "inrush currents", "WSON", "component packages" ]
 title: January 2015 Updates
 type: post
@@ -22,7 +23,7 @@ type: post
 
 * Moved info from the PCB Design page to a new child page called [Pads, Vias And Holes](/pcb-design/pads-vias-holes). Added information to this page about direct-connect vs. thermal-relief style pad/via connections.  
   
-    {{< figure src="/images/2015/01/pads-with-direct-connect-and-thermal-relief.png" width="440px" caption="The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style." >}}
+    {{< img src="pads-with-direct-connect-and-thermal-relief.png" width="440px" caption="The pad on the left has a direct-connect style to the surrounded polygon pour, while the pad on the right has a thermal-relief connection style." >}}
 
 * Installation of the [Easy FancyBox Wordpress plugin](https://wordpress.org/plugins/easy-fancybox/) which should make images throughout the site look much better when clicked upon.
 
