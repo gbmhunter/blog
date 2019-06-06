@@ -2,9 +2,14 @@
 author: "gbmhunter"
 date: 2018-12-07
 draft: true
-tags: [ "GDAL", "imagery", "C", "C++" ]
+lastmod: 2019-06-04
+tags: [ "GDAL", "imagery", "C", "C++", "geotransform" ]
 title: "GDAL"
 ---
+
+## Overview
+
+The Geospatial Data Abstraction Library (GDAL) is a open-source software library for handling geospatial imagery data.
 
 ## RPC Metadata
 
@@ -44,3 +49,23 @@ transformed_points, shape = tr.TransformPoints(0, xy_points)
 # [ (lon0, lat0, height0), (lon1, lat1, height1), ... ]
 # where (lon0, lat0, height0) maps to (x0, y0)
 ```
+
+## The geotransform
+
+1. Top left X
+1. W-E pixel resolution (pixel size y*sin(res))
+1. Rotation
+1. Top left Y
+1. Rotation
+1. N-S pixel resolution
+
+The upper left corner of the upper left pixel will be placed at position gt[0], gt[3].
+
+If your projection was to WGS84 (lat, lon) then:
+
+gt[0]: Longitude of top left corner
+gt[1]: cos(alpha)*W-E resolution
+gt[2]: -sin(alpha_*W-E resolution)
+gt[3]: Latitude of top left corner
+gt[4]: sin(alpha)*N-S resolution
+gt[5]: cos(alpha)*N-S resolution

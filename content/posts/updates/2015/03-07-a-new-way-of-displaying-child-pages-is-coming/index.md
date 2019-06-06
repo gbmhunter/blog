@@ -1,20 +1,18 @@
 ---
 author: gbmhunter
+categories: [ "Site Admin", "Updates" ]
 date: 2015-03-07
 draft: false
 lastmod: 2015-03-07
 title: A new way of displaying child pages is coming...
 type: post
-categories:
-- Site Admin
-- Updates
 tags:
 - Altium
 - automatic list
 - child pages
 - child pages shortcode
 - code
-- component packagess
+- component packages
 - list pages shortcode
 - mega menu
 - parent pages

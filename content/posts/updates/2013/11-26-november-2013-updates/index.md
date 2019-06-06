@@ -39,7 +39,7 @@ It's been a buuuussssyyyyyy month around here. A list of the updates for this mo
 
 * New page on {{% link text="Antenna Design" src="/electronics/circuit-design/antenna-design" %}}, incorporating the use of [Google Charts](https://developers.google.com/chart/)
 
-  	{{< img src="antenna-page-screenshot.jpg" width="500px" caption="A screenshot of the Antenna page." >}}[](https://developers.google.com/chart/)
+  	{{< img src="antenna-page-screenshot.jpg" width="500px" caption="A screenshot of the Antenna page." >}}
 
 * New page on the {{% link text="TI C2000 MCU architecture" src="/programming/cpu-architectures/c2000" %}}
 

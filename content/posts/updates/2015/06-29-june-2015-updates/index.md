@@ -1,17 +1,17 @@
 ---
 author: gbmhunter
+categories: [ "Updates" ]
 date: 2015-06-29 
 draft: false
+lastmod: 2015-06-29
 title: June 2015 Updates
 type: post
-categories:
-- Updates
 tags:
 - Altium tricks
 - calculator
 - candy-calc
 - clocks
-- component packagess
+- component packages
 - connectors
 - simulation
 - spice

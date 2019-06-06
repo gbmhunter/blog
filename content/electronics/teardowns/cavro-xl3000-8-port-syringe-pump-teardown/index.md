@@ -3,19 +3,19 @@ author: gbmhunter
 categories: [ "Electronics", "Teardowns" ]
 date: 2013-03-03
 draft: false
-tags: [ "Cavro", "XL-3000", "syringe pump", "teardown", "electronics", "OEM" ]
+lastmod: 2013-03-03
+tags: [ "Cavro", "XL-3000", "syringe pump", "teardown", "electronics", "OEM", "Hamilton", "Tecan US", "Emerald Bio" ]
 title: "Cavro XL-3000 8-port Syringe Pump Teardown"
 type: "page"
 ---
 
-This was an OEM model, so the exact part number of the unit was a little hard to determine. I contacted both Tecan US and Emerald Bio with a request for the Operator's manual. This is the reply I got from Tecan US.
+This page details the teardown of a Cavro XL-3000 pump. I had an OEM model, so the exact part number of the unit was a little hard to determine. I contacted both Tecan US and Emerald Bio with a request for the Operator's manual. This is the reply I got from Tecan US.
 
 <blockquote>Sorry Geoff, Our company works direct with OEM's, and unless you have directly purchased product from us, we are not able to help with your inquiry. Please contact company where you purchased from for support. Thank you</blockquote>
 
 I found the schematic "[Metrolab Wiring Diagram](http://www.frankshospitalworkshop.com/equipment/documents/automated_analyzer/service_manuals/Metrolab%202300%20-%20Wiring%20diagram.pdf)" which had the following section in it.
 
 {{< img src="m2300p-cpu-to-cavro-xl3000-schematic.jpg" caption="Image from http://www.frankshospitalworkshop.com/equipment/documents/automated_analyzer/service_manuals/Metrolab%202300%20-%20Wiring%20diagram.pdf."  width="900px" >}}
-
 
 Although there was no reference to the PCB fingers on the XL3000, the pinout is strangely similar.
 
@@ -33,11 +33,11 @@ The bare minimum number of connections to get it working are 4, the +24V, GND, R
 
 {{< img src="communicating-via-rs-485-to-syringe-pump.jpg" caption="Communicating to the syringe pump via a USB-to-RS-485 converter."  width="700px" >}}
 
-<p>When 24V is applied, the port motor should rotate to the start position (if it is already at the start position, it will do a full rotation anyway. I presume this is so the optical encoder can work out where the motor is.</p>
+When 24V is applied, the port motor should rotate to the start position. If it is already at the start position, it will do a full rotation anyway. I presume this is so the optical encoder can work out where the motor is.
 
 <p>When connecting one motor, a jumper is need on <code>JP7</code> or <code>JP8</code>. They come shipped with a jumper on <code>JP7</code>. <code>SW1</code> controls the address of the pump. It should be set from <code>0x0</code> (which gives address <code>0x31</code>) to <code>0xE</code> (which gives address <code>0x3F</code>). Setting <code>SW1</code> to <code>0xF</code> makes the pump execute a self-test procedure.</p>
 
-There are two communication protocols, the OEM protocol and the DT (data terminal) protocol. The OEM protocol use more noise resistant and has checksums and return message formats. The DT protocol is basic and suitable for controlling directly from a data terminal. I used the following settings in the PuTTy terminal.
+There are two communication protocols, the OEM protocol and the DT (data terminal) protocol. The OEM protocol is more noise resistant, has checksums, and return message formats. The DT protocol is basic and suitable for controlling directly from a data terminal. I used the following settings in the PuTTy terminal. I decided to try the DT protocol.
 
 {{< img src="putty-configuration-for-comms-with-cavro-xl3000-syring-pump.png" caption="The PuTTY configuration settings for communicating to the syringe pump."  width="700px" >}}
 
@@ -47,7 +47,7 @@ Making sure the virtual COM port was installed correctly.
 
 {{< img src="dip-switch-sw2-configuration-cavro-xl3000-syringe-pump.png" caption="The DIP switch settings for SW2 on the XL-3000 syringe pump"  width="80px" >}}
 
-To get it running, the only setting I had to change was DIP switch 2 on SW2, from ON to OFF. This changed the message protocol from OEM to DT, allowing simple, no checksum needed comms from a terminal program on a PC.
+To get it running, the only setting I had to change was DIP switch 2 (`SW2`), from `ON` to `OFF`. This changed the message protocol from OEM to DT, allowing simple, no checksum needed comms from a terminal program on a PC.
 
 {{< img src="the-dip-switch-sw2-on-the-syringe-pump.jpg" caption="The DIP switch (SW2) on the XL-3000 syringe pump." width="700px" >}}
 

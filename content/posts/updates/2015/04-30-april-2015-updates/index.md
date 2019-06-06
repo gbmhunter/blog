@@ -1,13 +1,13 @@
 ---
 author: gbmhunter
+categories: [ "Updates" ]
 date: 2015-04-30
 draft: false
+lastmod: 2015-04-30
 title: April 2015 Updates
 type: post
-categories:
-- Updates
 tags:
-- component packagess
+- component packages
 - DPAK
 - futures and promises
 - inductors
