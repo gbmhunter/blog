@@ -1,8 +1,9 @@
 ---
 author: gbmhunter
-categories: [ "Electronics", "Test And Measurement" ]
+categories: [ "Electronics", "Circuit Design" ]
 date: 2013-10-16
 draft: false
+lastmod: 2013-10-16
 tags: [ "noise", "dB", "AC coupling", "thermal noise", "Johnson noise", "Nyquist noise" ]
 title: Noise
 type: page
@@ -30,11 +31,11 @@ Typically, when doing noise measurements with an oscilloscope, AC coupling is tu
 
 Uncorrelated noise sources add in a root-sum-of-squares manner.
 
-<div>$$ e_{total} = \sqrt{e_{1}^2 + e_{2}^2} $$</div>
+<p>$$ e_{total} = \sqrt{e_{1}^2 + e_{2}^2} $$</p>
 
 This comes from the equation:
 
-<div>$$ x_{rms}^2 = \bar{x}^2 + \sigma_{x}^2 $$</div>
+<p>$$ x_{rms}^2 = \bar{x}^2 + \sigma_{x}^2 $$</p>
 
 <p class="centered">
     where:<br>

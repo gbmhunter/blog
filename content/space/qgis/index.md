@@ -83,3 +83,26 @@ replacing `3.6` with the version of QGIS that you have installed.
 
 For non-Windows platforms, QGIS requires a system installed version of Python to run. This can lead to version conflicts if you use different versions of Pythons for other projects. One way to get around this is to use Python enviroments (as provided by software such as _pipenv_ and _Anaconda_).
 
+## QGIS Keyboard Shortcuts
+
+<table>
+  <thead>
+    <tr>
+      <th>macOS</th>
+      <th>Windows</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>⌘-N</code></td>
+      <td><code>Ctrl-N</code></td>
+      <td>New project.</td>
+    </tr>
+    <tr>
+      <td><code>⌘-Shift-R</code></td>
+      <td><code>Ctrl-Shift-R</code></td>
+      <td>Add new Raster layer.</td>
+    </tr>
+  </tbody>
+</table>

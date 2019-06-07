@@ -54,3 +54,25 @@ Use `kill-session` to kill/delete a tmux session:
 ```sh
 $ tmux kill-session -t my_session
 ```
+
+## Window Management
+
+`tmux` supports windows to allow multiple terminals per `tmux` session. These windows are also commonly called tabs, but they do not have visible tab UI element in the terminal.
+
+Useful `tmux` window keys (all of these have to be preceeded with the prefix key, which by default is `Ctrl-B`):
+
+```text
+c    New window.
+,    Name window.
+w    List windows (select with arrow keys and enter)
+f    Find window.
+&    Kill window.
+```
+
+### How To Prevent tmux From Renaming The Window
+
+Renaming windows is great for organisation once you have more than one or two in use at the same time. However, `tmux` can annoyingly decide it wants to automatically rename your windows based on the current `$PROMPT_COMMAND`. To prevent this from happening, add the following to your `.tmux.conf` file:
+
+```text
+set-option -g allow-rename off
+```
