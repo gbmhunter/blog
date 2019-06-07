@@ -5,7 +5,7 @@ date: 2013-10-21
 draft: false
 lastmod: 2019-05-15
 tags: [ "programming", "operating systems", "Linux", "programs", "rsync", "sync", "scp", "files", "backup", "tutorial" ]
-title: rsync
+title: "rsync"
 type: page
 ---
 

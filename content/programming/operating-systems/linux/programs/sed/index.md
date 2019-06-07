@@ -3,7 +3,8 @@ author: gbmhunter
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2014-01-05
 draft: false
-title: sed
+lastmod: 2014-01-05
+title: "sed"
 type: page
 ---
 
