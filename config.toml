@@ -16,6 +16,11 @@ googleAnalytics = "UA-92834105-2"
 # tags such as "CSS", "C++", "GPS", e.t.c.
 preserveTaxonomyNames = "true" 
 
+# Do not use Git commit time to replace lastmod parameter in frontmatter,
+# instead make sure to define lastmod per page (we don't want commits that fix typos e.t.c 
+# to change lastmod)
+enableGitInfo = false
+
 [params]
     author = "Geoffrey Hunter"
     description = "An embedded engineering site that's got your back."    
