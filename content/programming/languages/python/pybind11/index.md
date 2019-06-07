@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-09-24
 draft: false
+lastmod: 2018-09-24
 tags: [ "programming", "programming languages", "Python", "pybind11", "C++", "C", "binding", "example" ]
-title: pybind11
-type: page
+title: "pybind11"
+type: "page"
 ---
 
 ## Overview
