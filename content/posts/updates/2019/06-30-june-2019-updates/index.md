@@ -11,3 +11,5 @@ type: "post"
 ---
 
 * Page on electronic noise moved from Electronics->Test And Measurement to Electronics->Circuit Design.
+
+* Renamed the Fast Fourier Transform page to the Fourier Transform page, as it now contains information about other Fourier transforms.

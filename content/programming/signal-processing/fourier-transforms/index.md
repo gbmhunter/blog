@@ -1,41 +1,35 @@
 ---
-author: gbmhunter
+alias: [ "fast-fourier-transforms-ffts" ]
+author: "gbmhunter"
 categories: [ "Programming", "Signal Processing" ]
 date: 2018-06-02
-description: "A tutorial on Fast Fourier Transforms (FFTs)."
+description: "A tutorial on Fourier Transforms, including Fast Fourier Transforms (FFTs)."
 draft: false
-lastmod: 2019-05-29
-tags: [ "programming", "signal processing", "Fourier Transforms", "Fast Fourier Transforms", "FFTs" ]
-title: Fast Fourier Transforms (FFTs)
-type: page
+lastmod: 2019-06-08
+tags: [ "programming", "signal processing", "Fourier Transforms", "Fast Fourier Transforms", "FFTs", "time domain", "frequency domain" ]
+title: "Fourier Transforms"
+type: "page"
 ---
 
 ## Overview
 
-A fast fourier transform is a way of calculating the DFT (discrete fourier transform) of a signal. A fourier transform is a way of looking at a waveform in the time domain to see what frequencies it is made up of. A fast fourier transform differentiates itself apart from a standard fourier transform by factorizing the DFT matrix into a produce of sparse (mostly zero) factors. This actions reduces the complexity of the DFT algorithm from `\( \mathcal{O}(n^2) \)` to `\( \mathcal{O}(n\log{n}) \)`. This speed increase means that the FFT is very popular in signal processing applications.
+The Fourier transform is an operation which can transform a signal that is described in the time-domain (i.e. x-axis is time), into a signal that is described in the frequency-domain (the x-axis is frequency).
 
-## The "Slow" Fourier Transform
-
-The Fourier transform is defined by[^fourier-wikipedia]:
-
-<p>$$ F(s) = \int_{-\infty}^{\infty} f(x) e^{-2\pi ixs} dx $$</p>
-
-<p class="centered">
-  where<br/>
-  \(s\) is a real number
-</p>
-
-This is also called the _forward transform_. When the _independent variable_ `\(x\)` represents time (e.g. units in seconds), then the _transform variable_ `\(s\)` represents frequency (e.g. Hertz).
+{{% img src="1d-fourier-transform.png" width="700px" caption="The 1D FFT of a waveform made from two sinusoids." %}}
 
 The finite signal in time has a continuous signal in frequency, and vice versa, a continuous signal in time has a finite signal in frequency.
 
 The Fourier transform can be thought of as a rotation of 90 around the time-frequency domain. In this sense, four applications of the Fourier transform should result in the original signal.
 
-There are four Fourier transformations:
+There are four common Fourier transformations, which are described below:
 
 ### Continuous-Time Fourier Transform (CTFT)
 
-CTFT: Continuous-time Fourier Transform. This is also commonly known just as _the_ Fourier Transform.
+The Continuous-Time Fourier Transform (CTFT) is also commonly known just as _the_ Fourier Transform. There is a definition of the equation which converts a signal in time to a signal in frequency, which is called the _forward transform_, and one which goes from the frequency domain back to the time domain (it undoes the forward transform) called the _inverse transform_.
+
+Note that the variable `\(t\)` (the _independent variable_) does no have to necessarily represent time. However, when it does (e.g. units in seconds), then the _transform variable_ `\(f\)` represents frequency (e.g. Hertz). All of the equations below will use `t` and `f` since time and frequency are the most common units used with the Fourier transform.
+
+Forward:
 
 <p>$$ F(f) = \int_{-\infty}^{\infty} f(t) e^{-j2\pi ft} dt $$</p>
 
@@ -44,6 +38,8 @@ Inverse:
 <p>$$ f(t) = \int_{-\infty}^{\infty} F(f)e^{i2\pi ft} df $$</p>
 
 ### Continuous-Time Fourier Series (CTFS)
+
+Forward:
 
 <p>$$ F_n = \frac{1}{T_0} \int_{-\frac{T_0}{2}}^{\frac{T_0}{2}} f(t) e^{\frac{-j2\pi nt}{T_0}}dt $$</p>
 
@@ -57,7 +53,7 @@ The DTFT of a discrete time serious produces a frequency signal that is continuo
 
 Forward:
 
-<p>$$ F(e^{j\omega}) = \sum_{n=-\infty}{\infty} f(nT)e^{-j2\pi fnT} $$</p>
+<p>$$ F(e^{j\omega}) = \sum_{n=-\infty}^{\infty} f(nT)e^{-j2\pi fnT} $$</p>
 
 Inverse:
 
@@ -65,13 +61,19 @@ Inverse:
 
 ### Discrete Fourier Transform (DFT)
 
+Forward:
+
 <p>$$ F(\frac{k}{NT}) = \sum_{n=0}^{N-1} f(nT)e^{\frac{-j2\pi nk}{N}} $$</p>
 
 Inverse:
 
 <p>$$ f(nT) = \frac{1}{N} \sum_{k=0}^{N-1}F\frac{k}{NT}e^{\frac{i2\pi nk}{N}} $$</p>
 
-## Bin Size
+## The Fast Fourier Transform (FFT)
+
+A fast fourier transform is a way of calculating the DFT (discrete fourier transform) of a signal. A fourier transform is a way of looking at a waveform in the time domain to see what frequencies it is made up of. A fast fourier transform differentiates itself apart from a standard fourier transform by factorizing the DFT matrix into a produce of sparse (mostly zero) factors. This actions reduces the complexity of the DFT algorithm from `\( \mathcal{O}(n^2) \)` to `\( \mathcal{O}(n\log{n}) \)`. This speed increase means that the FFT is very popular in signal processing applications.
+
+### Bin Size
 
 The width of each bin (in Hertz) is equal to:
 
@@ -85,27 +87,27 @@ The width of each bin (in Hertz) is equal to:
 
 The bins of interest are those from `\( 0 \)` to `\( \frac{N_{bins}}{2} \)`.
 
-## Sampling Rate
+### Sampling Rate
 
 By the Nyquist-Shannon sampling theorem, if the sampling rate is say, 10kHz, then the maximum captured frequency content will be 5kHz. This is true when using FFTs.
 
 However, sampling just at the Nyquist rate does not give you great data. As a rule-of-thumb, if you want to accurately find the frequencies present in a signal with a reasonably low number of samples, the sample rate should be about 10x the maximum frequency of interest.
 
-## Number of Samples
+### Number of Samples
 
 FFT algorithms require a number of samples which is equal to an integer power of two (e.g. 2, 4, 8, 16, ...).
 
-## Frequency vs. Temporal Resolution
+### Frequency vs. Temporal Resolution
 
 There is always a trade-off between frequency and temporal (time based) resolution. At a fixed sample rate, increasing the frequency resolution decreases the temporal resolution. To increase the frequency resolution, you have to increase the number of bins. This will make a single FFT window take longer to run, which decreases the temporal resolution (all temporal info within a single FFT window is lost).
 
-## Windowing
+### Windowing
 
 A FFT samples a waveform to a finite length (you don't/can't measure the signal for time negative infinity to positive infinity) in what is called the window. An FFT algorithm also assumes the signal within the window repeats forever. With most real-world signals, this will result in discontinuities at the edges of the window (the only time this does not happen is if the signal repeats itself, and the window happens to contain an exact integer number of cycles).
 
 If nothing is done to the edges of the window, you will get significant **spectral leakage**. One way to reduce the spectral leakage is to perform windowing, in where the signal is faded in and out in the first few/last few samples.
 
-## Fourier Transform On Images
+## The 2D Fourier Transform And Images
 
 Because most images are stored digitally, the _Discrete Fourier Transform_ (DFT) is used.
 

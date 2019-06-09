@@ -8,7 +8,7 @@ The static site generator Hugo is used to build the website from the files in th
 
 The recommended code editor is [Visual Studio Code](https://code.visualstudio.com/).
 
-Follow the instructions [here](https://gohugo.io/getting-started/installing) to install Hugo.
+Follow the instructions [here](https://gohugo.io/getting-started/installing) to install Hugo (using `chocolatey` to install is recommended when running Windows).
 
 To start a development server that will watch for file changes (`w`), build drafts (`D`) and build future content (`F`):
 

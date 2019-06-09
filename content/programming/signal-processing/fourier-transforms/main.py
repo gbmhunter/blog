@@ -1,8 +1,8 @@
+import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from typing import Tuple
 
-# For image color scheme, see https://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF
 CREATE_DEBUG_IMAGES = False
 IMAGE_WIDTH = 64
 GIF_WIDTH = 800
@@ -10,9 +10,47 @@ GIF_WIDTH = 800
 BACKGROUND_COLOR = (255, 255, 255, 255)
 
 def main():
-    # create_fourier_stripes_gif()
-    create_gif(create_sin_image, 'sinusoidal.gif')
-    create_gif(create_square_image, 'square_wave.gif')
+    create_2d_transform()
+    # create_gif(create_sin_image, 'sinusoidal.gif')
+    # create_gif(create_square_image, 'square_wave.gif')
+
+def create_2d_transform():
+
+    Fs = 150.0 # sampling rate (Hz). Able to detect frequencies up to Fs/2
+    Ts = 1/Fs # sampling interval (s)
+
+    t_array = np.arange(0, 1, Ts)
+    # f(t) = sin(5*2pi*t)
+    ft_array = np.sin(5*2*np.pi*t_array) + 0.5*np.sin(10*2*np.pi*t_array)
+
+    n = len(ft_array) # number of samples
+    k = np.arange(0, n)
+    T = n/Fs
+    frq = k/T # two sided frequency range
+    print(f'frq = {frq}')
+    print(f'n = {n}')
+    frq = frq[0:int(n/2)] # one-sided frequency range, this will be the transform variable
+
+
+    Ft_array = np.fft.fft(ft_array)/n # Divide by n to normalize
+    Ft_array = Ft_array[0:int(n/2)]
+
+
+    fig, ax = plt.subplots(2, 1)
+
+    ax[0].plot(t_array, ft_array, label='$f(t) = sin(5* 2\pi t) + sin(10* 2\pi t)$')
+    ax[0].legend()
+    ax[0].set_xlabel('$t(s)$')
+    ax[0].set_ylabel('$f(t)$')
+
+    ax[1].plot(frq, np.abs(Ft_array), label='F(t)', color='C1')
+    ax[1].legend()
+    ax[1].set_xlabel('$f(Hz)$')
+    ax[1].set_ylabel('$Magnitude$')
+
+    plt.tight_layout()
+    plt.savefig('1d-fourier-transform.png')
+    
 
 def fourier_transform(i, array: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
     """
