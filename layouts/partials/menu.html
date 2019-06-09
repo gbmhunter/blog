@@ -1,7 +1,8 @@
 <ul class="menu">
     {{ with .Site.GetPage "/" }}
         {{ range .Sections.ByTitle }}
-            {{ if ne .Title "Posts" }}
+            {{/* We don't want a menu item for specific pages listed here */}}
+            {{ if (and (ne .Title "Posts") (ne .Title "Test Page")) }}
                 <li class="dropdown">
                     <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div><div class="right-arrow">▶</div></a>
                     {{ partial "menu_recursive.html" . }}

@@ -100,7 +100,7 @@ Migrated from Wordpress (full-blown CMS) to Hugo (static-site generator). The Gi
 
 <div style='position:relative; padding-bottom:48.37%; margin-top: 40px;'><iframe src='https://gfycat.com/ifr/MassiveHappygoluckyAntarcticgiantpetrel' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
 
-A full post with more information on this migration can be found [here](/posts/updates/2018/12-15-site-migration-to-hugo-complete/).
+A full post with more information on this migration can be found [here](/posts/2018/12-15-site-migration-to-hugo-complete/).
 
 {{< img src="page-view-decrease-migration-from-wordpress-to-hugo.png" width="800px" caption="The decrease in page views after the migration from a Wordpress powered site to a statically-generated site powered by Hugo. There were no domain/page URL changes during this migration." >}}
 

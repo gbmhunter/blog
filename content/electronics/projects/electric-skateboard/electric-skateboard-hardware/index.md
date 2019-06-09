@@ -73,7 +73,7 @@ Wire thickness (total, including shealth): 8mm (OD)
 
 ## Motor Controller
 
-The motor controller was brought after I gave up in frustration about trying to build my own half-bridge (and I didn't give up easily, see the post [Skateboard Half-Bridge Blew Up (for the 10th+ time)](/posts/updates/2012/06-09-skateboard-h-bridge-blew-up-for-the-10th-time/)).
+The motor controller was brought after I gave up in frustration about trying to build my own half-bridge (and I didn't give up easily, see the post [Skateboard Half-Bridge Blew Up (for the 10th+ time)](/posts/2012/06-09-skateboard-h-bridge-blew-up-for-the-10th-time/)).
 
 
 <table>
