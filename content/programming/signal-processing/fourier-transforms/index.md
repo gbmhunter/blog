@@ -15,6 +15,8 @@ type: "page"
 
 The Fourier transform is an operation which can transform a signal that is described in the time-domain (i.e. x-axis is time), into a signal that is described in the frequency-domain (the x-axis is frequency).
 
+> Fourier theorem states that a periodic function f(x) which is reasonably continuous may be expressed as the sum of a series of sine or cosine terms (called the Fourier series), each of which has specific amplitude and phase coefficients known as Fourier coefficients.[^fourier-theorem]
+
 {{% img src="1d-fourier-transform.png" width="700px" caption="The 1D FFT of a waveform made from two sinusoids." %}}
 
 The finite signal in time has a continuous signal in frequency, and vice versa, a continuous signal in time has a finite signal in frequency.
@@ -150,3 +152,4 @@ The opensource [Math.Net Numerics library](http://numerics.mathdotnet.com/) cont
 [The Fourier Transform series on The Mobile Studio](http://www.themobilestudio.net/the-fourier-transform-part-1) must be one of the best online resources if you are looking into learning more about the Fourier Transform. It is a very detailed yet well explained step-by-step tutorial!
 
 [^fourier-wikipedia]: [https://en.wikipedia.org/wiki/Fourier_transform](https://en.wikipedia.org/wiki/Fourier_transform)
+[^fourier-theorem]: [https://www.sfu.ca/sonic-studio-webdav/handbook/Fourier_Theorem.html](https://www.sfu.ca/sonic-studio-webdav/handbook/Fourier_Theorem.html)
