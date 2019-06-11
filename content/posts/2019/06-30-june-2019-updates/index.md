@@ -13,3 +13,11 @@ type: "post"
 * Page on electronic noise moved from Electronics->Test And Measurement to Electronics->Circuit Design.
 
 * Renamed the Fast Fourier Transform page to the Fourier Transform page, as it now contains information about other Fourier transforms.
+
+* Added graphs of 1D Fourier transformations:
+
+    and 2D Fourier transformations:
+
+* Updated the pytest page with info on `mark` (markers) and `pytest` naming conventions.
+
+* Removed the `updates` directory that all monthly update posts were under.
