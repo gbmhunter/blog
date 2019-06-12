@@ -5,7 +5,7 @@ date: 2019-06-05
 description: "A tutorial on pytest, a popular testing framework for Python."
 draft: false
 lastmod: 2019-06-10
-tags: [ "programming", "programming languages", "Python", "pytest", "marks", "markers", "Jenkins", "tests", "testing", "unit tests", "conftest.py" ]
+tags: [ "programming", "programming languages", "Python", "pytest", "marks", "markers", "Jenkins", "tests", "testing", "unit tests", "conftest.py", "xdist" ]
 title: "pytest"
 type: "page"
 ---
@@ -121,6 +121,25 @@ For more information of marks, see [https://docs.pytest.org/en/latest/example/ma
 `conftest.py` files are used to specify **directory-specific** `pytest` features. All `conftest.py` files that are **at the directory level of the test or closer to the root of the file system** will be used when executing `pytest`. You can have many `conftest.py` files per test project.
 
 Common things to include into `conftest.py` files include `pytest` hooks and fixtures, as well as loading external plugins specific to the tests in same directory.
+
+## Plugins
+
+### xdist
+
+xdist allows you to provide the `-n` option to distribute the tests to multiple CPUs:
+
+```bash
+$ pytest -n 4
+```
+
+Note however this will prevent all of your `print()` statements from working (as well as anything else the prints to `stdout`, e.g. log messages). As a workaround, you can redirect `stdout` to `stderr`:
+
+```python
+import sys
+sys.stdout = sys.stderr
+```
+
+This can be added to a `conftest.py` file so that it applies to all tests in it's directory and subdirectories. Be warned that all of the output will be interleaved, so it might make the output somewhat useless!
 
 ## Jenkins
 
