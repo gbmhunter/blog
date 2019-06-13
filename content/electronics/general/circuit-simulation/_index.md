@@ -56,8 +56,9 @@ Primarily a SPICE simulator, but also features a PCB designer.
 
 Website: [http://www.linear.com/designtools/software/](http://www.linear.com/designtools/software/)
 Cost: FREE
+Platforms: Windows (primary platform), Mac OS (very limited functionality!)
 Functionality:
-Usability:
+Usability: 3/10
 
 Linear Technologies spice simulator orientated towards testing their own components. This SPICE simulator is once of the best free options out there, with some people quoting that it's better than most paid for programs!
 

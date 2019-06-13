@@ -1,12 +1,25 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Programming Languages" ]
 date: 2018-06-26
+description: "A tutorial on Python debugging, including how to use pdb."
 draft: false
+lastmod: 2019-06-12
 tags: [ "programming", "programming languages", "Python", "pyrasite" ]
-title: Debugging
-type: page
+title: "Python Debugging"
+type: "page"
 ---
+
+## pdb
+
+Keyboard Shortcuts
+
+```text
+n   step to Next line or current function returns   
+c   continue until breakpoint is hit
+b <line_num> set breakpoint at line number in current file
+cl    clear all breakpoints (asks for confirmation)
+```
 
 ## Entering A Running Python Process
 
