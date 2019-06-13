@@ -31,3 +31,7 @@ type: "post"
     {{% img src="pandas_logo.png" width="700px" caption="The pandas logo." %}}
 
 * Updated the {{% link text="Python Debugging page" src="/programming/languages/python/python-debugging" %}} with more info on `pdb`.
+
+* Updated the {{% link text="Passive Filters page" src="/electronics/circuit-design/filters/passive-filters" %}} with more information on low-pass RC filters, including plots of the frequency response:
+
+    {{% figure src="/electronics/circuit-design/filters/passive-filters/rc-low-pass-filter-frequency-response.png" width="500px" %}}

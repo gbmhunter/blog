@@ -62,3 +62,5 @@ Usability: 3/10
 
 Linear Technologies spice simulator orientated towards testing their own components. This SPICE simulator is once of the best free options out there, with some people quoting that it's better than most paid for programs!
 
+While it has great support for Windows, the macOS version is almost unusable (because of things such as the toolbar is missing).
+

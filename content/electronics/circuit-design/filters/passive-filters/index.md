@@ -3,6 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Circuit Design" ]
 date: 2013-01-03
 draft: false
+lastmod: 2019-06-12
 tags: [ "electronics", "circuit design", "filters", "passive filters", "RC", "low-pass", "high-pass", "LC" ]
 title: Passive Filters
 type: page
@@ -16,11 +17,88 @@ Low-pass filters have an additional advantage when used on the analogue outputs 
 
 ## Low-Pass RC Filter
 
+### Schematic
+
 The low-pass RC filter consists of a single series resistor and then a single capacitor to ground.
+
+{{% img src="low-pass-rc-filter-schematic.png" width="500px" caption="Schematic of a simple low-pass RC filter. Schematic from https://workspace.circuitmaker.com/Projects/Details/GeoffreyHunter/mbedded-ninja." %}}
+
+The low-pass RC filter lets through low frequencies but dampens high frequencies.
+
+### How To Choose R And C
+
+The cut-off frequency is determined by **both the value of the resistor and the value of the capacitor**, and is equal to:
+
+<p>$$ f_{c} = \frac{1}{2\pi RC} $$</p>
+
+<p class="centered">
+  where:<br>
+  \(R\) is the resistance, in Ohms<br>
+  \(C\) is the capacitance, in Farads<br>
+  \(f_c\) is the cut-off frequency, in Hertz
+</p>
+
+As usual, the choice of `\(R\)` and `\(C\)` is a design decision which involves trade-offs. In terms of choosing `\(R\)`:
+
+* A resistance which is too small could draw too much current, either presenting too much load to the input, or overheating. It also could mean that the capacitor has to be very large and/or expensive to get the desired cut-off frequency.
+* A resistance which is too large increases the output impedance of the filter, resulting in distortions if too much load is applied to `\(V_{out}\)`. It also increases the noise susceptibility of the circuit.
+
+Typically, a resistance between `\(1k\Omega\)` and `\(100k\Omega\)` is used. Then the capacitance is chosen to give the desired cut-off frequency.
+
+### Frequency Response
+
+The cut-off frequency (also called the _break frequency_ or _turnover frequency_[^wikipedia-low-pass-filter]), `\(f_c\)` is not the frequency at which all higher frequencies are stopped (remember, this is an ideal filter, but in real-life they always let through some fraction of the higher-frequencies). Instead, it is the frequency at where:
+
+<p>$$ V_{out} = \frac{1}{\sqrt{2}} V_{in} = 0.707*V_{in} $$</p>
+
+A low-pass RC has a frequency roll-off of 20dB/decade. This can be seen in the following plot, which shows the frequency response (both magnitude and phase) of a low-pass RC filter with values of `\(R = 1k\Omega\)` and `\(C = 1\mu F\)`, which gives a cut-off frequency of `\(f_c = 159Hz\)`.
+
+{{% img src="rc-low-pass-filter-frequency-response.png" width="700px" caption="The frequency response (magnitude and phase) of a low-pass RC filter." %}}
+
+Low-pass RC filters are typically used for applications up to 100kHz, above 100kHz RLC filters are used[^elec-tutorial-filters].
+
+### Time Constant
+
+The time constant `\(\tau\)` of a low-pass RC filter is[^wikipedia-low-pass-filter]:
+
+<p>$$ \tau = RC $$</p>
+
+### Resistor Divider Analysis
+
+The magnitude of the RC output voltage `\(V_{out}\)` when in the input is a sine wave at frequency `\(f\)` and magnitude `\(V_{in}\)` is given by:
+
+<p>$$ V_{out} = V_{in} \frac{X_c}{\sqrt{R^2 + X_c^2}} $$</p>
+
+<p class="centered">
+  where:<br>
+  `\(V_{in}\)` is the magnitude of the input signal at frequency `\(f\)`, in Volts
+  `\(X_c\)` is the impedance of the capacitor at frequency `\(f\)`, in Ohms
+  `\(R\)` is the resistance of the resistor, in Ohms
+</p>
+
+Remember that the impedance of a capacitor is:
+
+<p>$$ X_c = \frac{1}{2\pi fC} $$</p>
+
+This allows you to determine the magnitude of the output voltage for any input voltage and frequency, which allows you to create the frequency response plots as shown in the [Frequency Response](#frequency-response) section.
+
+### Typical Uses
 
 The low-pass RC filter is one (if not) the most commonly used filters on circuit board designs. Its popularity results from it's simplicity (two passive components), low cost (one resistor, one capacitor), small size, and it's myriad of uses.
 
 Due to the presence of the resistor, it is a lossy filter, and therefore not suited for high-power applications (use a low-pass LC filter instead).
+
+The low-pass RC filter can be used to provide filtering on analogue inputs to a microcontroller before being sampled by the ADC. One example could be to filter the output of an analogue temperature sensor. Note that is **normally advantageous to place the filter as close as possible to the microcontroller**, rather than close to the sensor producing the voltage. This is because the series resistor of the RC filter increases the source impedance of the analogue signal, **making the PCB track less immune to noise once it passes through the resistor**.
+
+Another way to reduce the reduction in noise immunity due to the resistor in the RC low-pass filter is **to make the capacitor as large as practically possible** (for a particular cut-off frequency). Both the resistance and the capacitance influence the cut-off frequency. If you increase the capacitance by 10x, and reduce the resistance by 10x, you get the same cut-off frequency, but far better noise immunity since the source impedance is not altered as much.
+
+**Another consideration is the effect of the increase in source impedance (due to the resistor in the RC filter) when connecting the output to something like a [microcontroller ADC](/electronics/circuit-design/adcs).** The input impedance of an non-buffered ADC pin on a microcontroller is usually somewhere between `\(20-500k\Omega\)` (note that this is usually variable, and can change with sampling rate). This will form a resistor divider with the RC filter resistance, increasing the ADC measurement error. As a general rule, **you want the RC filter resistance to be much lower than the ADC input impedance**.
+
+<p>$$ R_{RC filter} << R_{ADC} $$</p>
+
+**A RC filter resistance which is at least 50x lower than the ADC input impedance is acceptable in most cases.** For a standard ADC input impedance of `\(50k\Omega\)`, this means that the resistor in the RC filter should be no more than `\(1k\Omega\)`.
+
+### Transient Response
 
 The equation for the voltage across the capacitor is:
 
@@ -41,19 +119,6 @@ This equation can be re-arranged to find the time `\(t\)`, and which the capacit
 
 This form of the equation can be useful to calculate the delay (aka the time `\(t\)`), that the RC circuit will provide before something happens.
 
-### Frequency Response
-
-{{% img src="rc-low-pass-filter-frequency-response.png" width="700px" caption="The frequency response (magnitude and phase) of a low-pass RC filter." %}}
-
-The low-pass RC filter can be used to provide filtering on analogue inputs to a microcontroller before being sampled by the ADC. One example could be to filter the output of an analogue temperature sensor. Note that is **normally advantageous to place the filter as close as possible to the microcontroller**, rather than close to the sensor producing the voltage. This is because the series resistor of the RC filter increases the source impedance of the analogue signal, **making the PCB track less immune to noise once it passes through the resistor**.
-
-Another way to reduce the reduction in noise immunity due to the resistor in the RC low-pass filter is **to make the capacitor as large as practically possible **(**for a particular cut-off frequency)**. Both the resistance and the capacitance influence the cut-off frequency. If you increase the capacitance by 10x, and reduce the resistance by 10x, you get the same cut-off frequency, but far better noise immunity since the source impedance is not altered as much.
-
-**Another consideration is the effect of the increase in source impedance (due to the resistor in the RC filter) when connecting the output to something like a [microcontroller ADC](/electronics/circuit-design/adcs).** The input impedance of an non-buffered ADC pin on a microcontroller is usually somewhere between `\(20-500k\Omega\)` (note that this is usually variable, and can change with sampling rate). This will form a resistor divider with the RC filter resistance, increasing the ADC measurement error. As a general rule, **you want the RC filter resistance to be much lower than the ADC input impedance**.
-
-<div>$$ R_{RC filter} << R_{ADC} $$</div>
-
-**A RC filter resistance which is at least 50x lower than the ADC input impedance is acceptable in most cases.** For a standard ADC input impedance of `\(50k\Omega\)`, this means that the resistor in the RC filter should be no more than `\(1k\Omega\)`.
 
 ## Building A VDAC From An ADC And Low-pass RC Filter
 
@@ -136,3 +201,6 @@ Both π and t filters may use [feedthrough capacitors](/electronics/components/c
 π and t filters can come in prepackaged components which take all the hassle out of designing the filter correctly and reduce the BOM count of your design. They are commonly in [EIAxxxx chip packages](/pcb-design/component-packages/chip-eia-component-packages/).
 
 One such example is the [TDK Corporation MEM Series](http://www.digikey.com/product-search/en?FV=ffec061a).
+
+[^wikipedia-low-pass-filter]: [https://en.wikipedia.org/wiki/Low-pass_filter](https://en.wikipedia.org/wiki/Low-pass_filter)
+[^elec-tutorial-filters]: [https://www.electronics-tutorials.ws/filter/filter_2.html](https://www.electronics-tutorials.ws/filter/filter_2.html)
