@@ -1,21 +1,24 @@
 ---
+aliases: [ "pwm" ]
 author: "gbmhunter"
 categories: [ "Electronics", "Circuit Design" ]
 date: 2012-10-04
 draft: false
-title: "PWM"
-type: page
+lastmod: 2012-10-04
+tags: [ "electronics", "circuit design", "pulse width modulation", "PWM" ]
+title: "Pulse Width Modulation (PWM)"
+type: "page"
 ---
 
 ## Operating Modes
 
 PWM hardware peripherals may not support every one these modes.
 
-## Edge-Aligned (aka Asymmetric)
+### Edge-Aligned (aka Asymmetric)
 
 **Edge-aligned, the most common (and usually the default) operating mode for a PWM peripheral, is when one edge of the switching from on/off is aligned with the edge of of the PWM period.** In it's most basic form it is simple to implement, requiring a counter, and two registers, one for resetting the counter (which determines the PWM period), and another for comparing with the count value, and switching the output if it's greater than/less than/some logical expression (this sets the duty cycle).
 
-## Centre-Aligned (aka Symmetric)
+### Centre-Aligned (aka Symmetric)
 
 Centre-aligned PWM is good for motor control as it generates fewer harmonics in the output voltage and current than asymmetric PWM. Some centre-aligned PWM hardware peripherals implement this by using a counter which changes direction every cycle. It counts up for the first cycle, down for the second, and then repeats. Doing this **effectively reduces the PWM frequency by 2**. So to arrive back at the same PWM frequency as when in asymmetric mode, you have to half the period (in terms of clock cycles). This reduces your duty cycle resolution.
 

@@ -21,9 +21,13 @@ def create_freq_response_plot():
     # Vout = Vin * (Xc / ( sqrt(Xc^2 + R^2) ))
     v_out_data = V_IN_VOLTS*(x_c_data/np.sqrt(x_c_data**2 + RESISTANCE_OHMS**2))
 
+    phase_shift_deg = np.rad2deg(-1*np.arctan(2*np.pi*freq_data*RESISTANCE_OHMS*CAPACITANCE_FARADS))
+
     fig, ax = plt.subplots(1)
 
-    ax.plot(freq_data, v_out_data, label='$V_{out}$')
+    line1, = ax.plot(freq_data, v_out_data, label='$|V_{out}|$')
+    ax2 = ax.twinx()
+    line2, = ax2.plot(freq_data, phase_shift_deg, label='$\phi(V_{out})$', color='C2')
 
     f_cutoff = 1 / (2*np.pi*RESISTANCE_OHMS*CAPACITANCE_FARADS)
     ax.axvline(x=f_cutoff, color='C1')
@@ -39,9 +43,15 @@ def create_freq_response_plot():
     ax.set_xticks(x_ticks)
     ax.set_xticklabels(x_ticks_labels)
     ax.set
-    ax.set_ylabel('Voltage Magnitude V (V)')
+    ax.set_ylabel('$V_{out}$ Magnitude V (V)')
+
+    ax2.set_ylabel('$V_{out}$ Phase $\phi$ (deg)')
+    ax2.set_ylim(-135, 45)
+
     ax.set_title('Frequency Response of a Low-Pass RC Filter')
-    ax.legend()
+
+    lines = [ line1, line2 ]
+    ax.legend(lines, [line.get_label() for line in lines ])
 
     plt.tight_layout()
     plt.savefig('rc-low-pass-filter-frequency-response.png')

@@ -1,12 +1,13 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Circuit Design" ]
 date: 2013-01-03
+description: "A tutorial on passive electronic filters, including low-pass/high-pass RC, LC and RLC filters."
 draft: false
 lastmod: 2019-06-12
-tags: [ "electronics", "circuit design", "filters", "passive filters", "RC", "low-pass", "high-pass", "LC" ]
-title: Passive Filters
-type: page
+tags: [ "electronics", "circuit design", "filters", "passive filters", "RC", "low-pass", "high-pass", "LC", "bode plot", "frequency response" ]
+title: "Passive Filters"
+type: "page"
 ---
 
 ## Overview
@@ -47,23 +48,9 @@ Typically, a resistance between `\(1k\Omega\)` and `\(100k\Omega\)` is used. The
 
 ### Frequency Response
 
-The cut-off frequency (also called the _break frequency_ or _turnover frequency_[^wikipedia-low-pass-filter]), `\(f_c\)` is not the frequency at which all higher frequencies are stopped (remember, this is an ideal filter, but in real-life they always let through some fraction of the higher-frequencies). Instead, it is the frequency at where:
-
-<p>$$ V_{out} = \frac{1}{\sqrt{2}} V_{in} = 0.707*V_{in} $$</p>
-
-A low-pass RC has a frequency roll-off of 20dB/decade. This can be seen in the following plot, which shows the frequency response (both magnitude and phase) of a low-pass RC filter with values of `\(R = 1k\Omega\)` and `\(C = 1\mu F\)`, which gives a cut-off frequency of `\(f_c = 159Hz\)`.
+The following plot shows the frequency response (also known as a _bode plot_) of a low-pass filter, with values `\(R = 1k\Omega\)` and `\(C = 1\mu F\)`. Magnitude is plotted in blue and phase in green.
 
 {{% img src="rc-low-pass-filter-frequency-response.png" width="700px" caption="The frequency response (magnitude and phase) of a low-pass RC filter." %}}
-
-Low-pass RC filters are typically used for applications up to 100kHz, above 100kHz RLC filters are used[^elec-tutorial-filters].
-
-### Time Constant
-
-The time constant `\(\tau\)` of a low-pass RC filter is[^wikipedia-low-pass-filter]:
-
-<p>$$ \tau = RC $$</p>
-
-### Resistor Divider Analysis
 
 The magnitude of the RC output voltage `\(V_{out}\)` when in the input is a sine wave at frequency `\(f\)` and magnitude `\(V_{in}\)` is given by:
 
@@ -80,7 +67,23 @@ Remember that the impedance of a capacitor is:
 
 <p>$$ X_c = \frac{1}{2\pi fC} $$</p>
 
-This allows you to determine the magnitude of the output voltage for any input voltage and frequency, which allows you to create the frequency response plots as shown in the [Frequency Response](#frequency-response) section.
+The low-pass RC filter also effects the phase of the signal. The higher the frequency, the greater the lag.
+
+<p>$$ \phi = -\arctan{(2\pi fRC)} $$</p>
+
+The cut-off frequency (also called the _break frequency_ or _turnover frequency_[^wikipedia-low-pass-filter]), `\(f_c\)` is not the frequency at which all higher frequencies are stopped (remember, this is an ideal filter, but in real-life they always let through some fraction of the higher-frequencies). Instead, it is the frequency at where:
+
+<p>$$ V_{out} = \frac{1}{\sqrt{2}} V_{in} = 0.707*V_{in} $$</p>
+
+The choice of resistor and capacitor above gives a cut-off frequency of `\(f_c = 159Hz\)`.
+
+Low-pass RC filters are typically used for applications up to 100kHz, above 100kHz RLC filters are used[^elec-tutorial-filters].
+
+### Time Constant
+
+The time constant `\(\tau\)` of a low-pass RC filter is[^wikipedia-low-pass-filter]:
+
+<p>$$ \tau = RC $$</p>
 
 ### Typical Uses
 
@@ -92,7 +95,7 @@ The low-pass RC filter can be used to provide filtering on analogue inputs to a 
 
 Another way to reduce the reduction in noise immunity due to the resistor in the RC low-pass filter is **to make the capacitor as large as practically possible** (for a particular cut-off frequency). Both the resistance and the capacitance influence the cut-off frequency. If you increase the capacitance by 10x, and reduce the resistance by 10x, you get the same cut-off frequency, but far better noise immunity since the source impedance is not altered as much.
 
-**Another consideration is the effect of the increase in source impedance (due to the resistor in the RC filter) when connecting the output to something like a [microcontroller ADC](/electronics/circuit-design/adcs).** The input impedance of an non-buffered ADC pin on a microcontroller is usually somewhere between `\(20-500k\Omega\)` (note that this is usually variable, and can change with sampling rate). This will form a resistor divider with the RC filter resistance, increasing the ADC measurement error. As a general rule, **you want the RC filter resistance to be much lower than the ADC input impedance**.
+**Another consideration is the effect of the increase in source impedance (due to the resistor in the RC filter) when connecting the output to something like a {{% link text="microcontroller ADC" src="/electronics/circuit-design/adcs" %}}).** The input impedance of an non-buffered ADC pin on a microcontroller is usually somewhere between `\(20-500k\Omega\)` (note that this is usually variable, and can change with sampling rate). This will form a resistor divider with the RC filter resistance, increasing the ADC measurement error. As a general rule, **you want the RC filter resistance to be much lower than the ADC input impedance**.
 
 <p>$$ R_{RC filter} << R_{ADC} $$</p>
 
@@ -122,7 +125,7 @@ This form of the equation can be useful to calculate the delay (aka the time `\(
 
 ## Building A VDAC From An ADC And Low-pass RC Filter
 
-**Low-pass RC filters can also be used to create a VDAC (voltage-based digital-to-analogue converter) from a [PWM signal](/electronics/circuit-design/pwm).** This is useful since many microcontrollers have one (or more) PWM peripherals, but rarely a built-in VDAC. A simple RC filter placed on the output pin of the PWM signal can convert it into a VDAC, in where the **duty cycle** determines the analogue voltage output.
+**Low-pass RC filters can also be used to create a VDAC (voltage-based digital-to-analogue converter) from a {{% link text="PWM signal" src="/electronics/circuit-design/pulse-width-modulation-pwm" %}}.** This is useful since many microcontrollers have one (or more) PWM peripherals, but rarely a built-in VDAC. A simple RC filter placed on the output pin of the PWM signal can convert it into a VDAC, in where the **duty cycle** determines the analogue voltage output.
 
 ## Low-Pass LC Filter
 

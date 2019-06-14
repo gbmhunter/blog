@@ -18,7 +18,7 @@ type: "post"
 
     {{% figure src="/programming/signal-processing/fourier-transforms/1d-fourier-transform.png" %}}
 
-    and animated .gif's of 2D Fourier transformations:
+    and animated .gifs of 2D Fourier transformations:
 
     {{% figure src="/programming/signal-processing/fourier-transforms/sinusoidal.gif" %}}
 
@@ -35,3 +35,5 @@ type: "post"
 * Updated the {{% link text="Passive Filters page" src="/electronics/circuit-design/filters/passive-filters" %}} with more information on low-pass RC filters, including plots of the frequency response:
 
     {{% figure src="/electronics/circuit-design/filters/passive-filters/rc-low-pass-filter-frequency-response.png" width="500px" %}}
+
+* I created a public mbedded.ninja project on CircuitMaker at [https://workspace.circuitmaker.com/Projects/Details/GeoffreyHunter/mbedded-ninja](https://workspace.circuitmaker.com/Projects/Details/GeoffreyHunter/mbedded-ninja). I am going to trial out CircuitMaker as a tool for drawing schematic diagrams for this blog. In the past I have used Altium (not free), MultisimLive and InkScape (free but is a general vector graphics editor, not a dedicated electronics CAD program).

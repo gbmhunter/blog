@@ -1,9 +1,9 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2018-05-10
 draft: false
-title: PID Tuner Tool Released In NinjaCalc
-type: post
+title: "PID Tuner Tool Released In NinjaCalc"
+type: "post"
 categories:
 - NinjaCalc
 tags:

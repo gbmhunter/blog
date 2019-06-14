@@ -1,8 +1,9 @@
 ---
 author: gbmhunter
-categories: [ "Mathematics" ]
-date: 2018-08-30 22:54:11+00:00
+categories: [ "Mathematics", "Statistics" ]
+date: 2018-08-30
 draft: false
+lastmod: 2018-08-30
 title: Statistics
 type: page
 ---
