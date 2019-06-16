@@ -16,11 +16,11 @@ Even in the pass-band, passive filters almost always increase the impedance of t
 
 Low-pass filters have an additional advantage when used on the analogue outputs from microcontrollers. If the DAC does not work properly for some reason (assuming you are using a DAC), you can sometimes implement the desired behaviour by using PWM instead. With the cut-off frequency set correctly, the PWM signal will be filtered so that a DC voltage proportional to the duty cycle remains, which is what you wished to implement with the DAC in the first place.
 
-## Low-Pass RC Filter
+## First-Order Low-Pass RC Filter
 
 ### Schematic
 
-The low-pass RC filter consists of a single series resistor and then a single capacitor to ground.
+A first-order low-pass RC filter consists of a single series resistor and then a single capacitor to ground.
 
 {{% img src="low-pass-rc-filter-schematic.png" width="500px" caption="Schematic of a simple low-pass RC filter. Schematic from https://workspace.circuitmaker.com/Projects/Details/GeoffreyHunter/mbedded-ninja." %}}
 
@@ -182,11 +182,11 @@ The equations for a 1st order filter are:
 <div>$$f_c = \frac{1}{\pi \sqrt{LC}}$$</div>
 
 <p class="centered">
-where:<br>
-\(C\) = total capacitance ,Farads<br>
-\(L\) = total inductance, Henrys<br>
-\(z_o\) = characteristic impedance, Ohms<br>
-\(f_c\) = -3dB cut-off frequency, Hz<br>
+  where:<br>
+  \(C\) = total capacitance ,Farads<br>
+  \(L\) = total inductance, Henrys<br>
+  \(z_o\) = characteristic impedance, Ohms<br>
+  \(f_c\) = -3dB cut-off frequency, Hz<br>
 </p>
 
 {{% note %}}
@@ -199,11 +199,27 @@ A t-filter is usually better at suppressing high-frequencies than a π-filter, a
 
 Both π and t filters may use [feedthrough capacitors](/electronics/components/capacitors#feedthrough-capacitors) instead of standard caps for better performance (feedthrough capacitors have lower parasitic series inductance).
 
-## Prepackaged Filters
+### Prepackaged Pi And T Filters
 
 π and t filters can come in prepackaged components which take all the hassle out of designing the filter correctly and reduce the BOM count of your design. They are commonly in [EIAxxxx chip packages](/pcb-design/component-packages/chip-eia-component-packages/).
 
 One such example is the [TDK Corporation MEM Series](http://www.digikey.com/product-search/en?FV=ffec061a).
+
+## Second-Order Filters And Beyond
+
+A second-order low pass RC filter is the result of chaining two first-order RC filters together in series. This chaining is also called _cascading_. The benefit of doing this is that a second-order filter has a roll-off of -40dB/decade, twice that of a first-order filter.
+
+### Second-Order Low-Pass RC
+
+The corner frequency `\(f_c\)` is equal to:
+
+<p>$$ f_c = \frac{1}{2\pi \sqrt{R_1C_1R_2C_2}} $$</p>
+
+Is is important to remember that for a second-order filter, the gain at the corner frequency is no longer -3dB. Instead it is -6dB. In general, the gain can be described for `\(n\)` stages with:
+
+<p>$$ G = \left( \frac{1}{\sqrt{2}} \right) ^n $$</p>
+
+The reduce the effects of each stages dynamic impedance effecting it's neighbours, its recommended that the following stages resistance should be around 10x the previous stage, and the capacitance 1/10th of the previous stage.
 
 [^wikipedia-low-pass-filter]: [https://en.wikipedia.org/wiki/Low-pass_filter](https://en.wikipedia.org/wiki/Low-pass_filter)
 [^elec-tutorial-filters]: [https://www.electronics-tutorials.ws/filter/filter_2.html](https://www.electronics-tutorials.ws/filter/filter_2.html)
