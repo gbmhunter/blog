@@ -118,7 +118,7 @@ bd560630 HEAD@{4}: commit: Converting images into page resources.
 65ea09ac HEAD@{5}: commit: Converted images into page resources.
 ```
 
-# Set vim As The Default Editor For Git
+## Set vim As The Default Editor For Git
 
 ```sh
 $ git config --global core.editor "vim"
@@ -151,7 +151,7 @@ To give you an indication on the number of commits involved in the bisection, yo
 git log --oneline SHA_A ^SHA_B
 ```
 
-# Force With Lease
+## Force With Lease
 
 "Force pushing" with git is common when you are working on a branch and using `git commit --amend` and `git rebase` to keep your commit history clean and rebase of master. However, `git push -f` can have disatorous consequences if someone else has pushed changes to the branch that you don't have in your local copy.
 
