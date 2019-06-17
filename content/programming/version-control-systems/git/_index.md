@@ -150,3 +150,23 @@ To give you an indication on the number of commits involved in the bisection, yo
 ```sh
 git log --oneline SHA_A ^SHA_B
 ```
+
+# Force With Lease
+
+"Force pushing" with git is common when you are working on a branch and using `git commit --amend` and `git rebase` to keep your commit history clean and rebase of master. However, `git push -f` can have disatorous consequences if someone else has pushed changes to the branch that you don't have in your local copy.
+
+To mitigate this, you can use the `--force-with-lease` option:
+
+```sh
+$ git push --force-with-lease
+```
+
+This will only force push as long as there are no new changes on the branch since last time you pulled or fectched from the remote. This will prevent you from accidentally wiping someones pushed changes on the branch. However, there is one major caveat, **`git push --force-with-lease` will not protect you from overwriting changes if you fetch from the origin and do not integrate the changes into your version of the branch.** This is because git checks your local `ref` for the remote branch and only lets you force push if it is the same as the remote `ref`. If you run `git fetch` (instead of `git pull`), this will update your local `ref` without incorporating the changes into your version of the branch.
+
+`--force-with-lease` is a finger-full to type. To make things easier, you can create an alias like so:
+
+```sh
+$ git config --global alias.pushf "push --force-with-lease"
+```
+
+To use, now just type `git pushf` at the command-line.
