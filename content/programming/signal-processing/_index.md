@@ -2,7 +2,7 @@
 author: gbmhunter
 categories: [ "Programming", "Signal Processing" ]
 date: 2013-01-08
-description: "Blog sub-section on signal processing." ]
+description: "Blog sub-section on signal processing."
 draft: false
 lastmod: 2013-01-08
 tags: [ "programming", "signal processing" ]
