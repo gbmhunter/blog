@@ -11,3 +11,11 @@ type: "page"
 ---
 
 ## Overview
+
+Given a cloud of points on a 2D plane, a convex hull is the smallest set of points which encloses all of the points.
+
+## The Jarvis March (Gift Wrapping Algorithm)
+
+Orientation:
+
+
