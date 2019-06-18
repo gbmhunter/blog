@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2017-06-11
+description: "A tutorial on popular sorting algorithms, including counting sort, inserting sort, merge sort, selection sort and more."
 draft: false
 lastmod: 2019-01-29
 tags: [ "sorting", "algorithms", "Big-O", "complexity", "merge sort", "integer sort", "comparison sort", "counting sort", "insertion sort" ]
-title: Sorting Algorithms
-type: page
+title: "Sorting Algorithms"
+type: "page"
 ---
 
 ## Overview
