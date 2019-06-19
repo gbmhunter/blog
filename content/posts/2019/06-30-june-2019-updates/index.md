@@ -37,3 +37,5 @@ type: "post"
     {{% figure src="/electronics/circuit-design/filters/passive-filters/rc-low-pass-filter-frequency-response.png" width="500px" %}}
 
 * I created a public mbedded.ninja project on CircuitMaker at [https://workspace.circuitmaker.com/Projects/Details/GeoffreyHunter/mbedded-ninja](https://workspace.circuitmaker.com/Projects/Details/GeoffreyHunter/mbedded-ninja). I am going to trial out CircuitMaker as a tool for drawing schematic diagrams for this blog. In the past I have used Altium (not free), MultisimLive and InkScape (free but is a general vector graphics editor, not a dedicated electronics CAD program).
+
+* Added the {{% link text="Command-Line CSV Viewer page" src="" %}}, which contains information on how to cleanly view CSV files from the Linux command-line.

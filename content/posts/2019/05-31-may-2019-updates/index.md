@@ -22,7 +22,7 @@ type: "post"
 
 * Added a new page on {{% link text="less" src="/programming/operating-systems/linux/programs/less" %}}, the basic Linux command-line utility for displaying text.
 
-* Added a new {{% link text="Image Processing subsection" src="/programming/image-processing" %}} under Programming. Added a new {{% link text="Morphology page" src="/programming/image-processing/morphology" %}} under the Image Processing section.
+* Added a new {{% link text="Image Processing subsection" src="/programming/algorithms-and-data-structures/image-processing" %}} under Programming->Algorithms And Data Structures. Added a new {{% link text="Morphology page" src="/programming/algorithms-and-data-structures/image-processing/morphology" %}} under the Image Processing section.
 
 * Addition of information on `git commit --fixup` and `git log` to the {{% link text="git page" src="/programming/version-control-systems/git" %}}.
 
