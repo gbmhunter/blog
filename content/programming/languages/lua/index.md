@@ -1,7 +1,10 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Programming Languages" ]
 date: 2013-07-14
 draft: false
+lastmod: 2013-07-14
+tags: [ "programming", "programming languages", "Lua" ]
 title: "Lua"
 type: page
 ---
