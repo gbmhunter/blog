@@ -1,10 +1,18 @@
 ---
 author: "gbmhunter"
+categories: [ "Programming", "Programming Languages", "C++" ]
 date: 2017-09-28
+description: "Info about the the Qt software framework/library, including threading, serial ports and more."
 draft: false
+lastmod: 2019-06-27
+tags: [ "programming", "programming languages", "C++", "Qt", "QSerialPort", "signals", "slots", "QObject", "PySide2" ]
 title: "Qt (cute)"
 type: "page"
 ---
+
+## Overview
+
+Qt is a software framework and library aimed at developing GUIs. It's primary API is exposed in C++, although it provides the ability to write the UI in Javacript (or at least partially) through the QML API and has Python bindings through the officially supported PySide2 bindings.
 
 ## Threading
 
@@ -14,13 +22,13 @@ All UI interaction must occur in one thread (the default UI thread). It is not a
 
 ## Serial Port (QSerialPort)
 
-Qt allows you to access serial ports on the machine via the QSerialPort class. Note that serial port operations such as reading and writing must be done from the same thread. In that respect, if you do need to do both reading and writing, it is best not to use a blocking approach for reading, as you can not both block on a read call and send data at the same time. The better alternative is to use the readyRead signal
+Qt allows you to access serial ports on the machine via the `QSerialPort` class. Note that serial port operations such as reading and writing must be done from the same thread. In that respect, if you do need to do both reading and writing, it is best not to use a blocking approach for reading, as you can not both block on a read call and send data at the same time. The better alternative is to use the readyRead signal
 
 ## Compatibility With std Library
 
 **Qt Threads and std::condition_variable**
 
-In my experience, `std::condition_variable` seems to work without an issues when within a Qt thread.
+In my experience, `std::condition_variable` seems to work without any issues when within a Qt thread.
 
 ## Unused Parameter 'xxx'
 
