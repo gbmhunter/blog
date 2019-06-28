@@ -36,3 +36,5 @@ Image correlation becomes more difficult when the images have different modaliti
 [MIND](http://iplab.dmi.unict.it/miss14/MISS2014-ReadingGroup00-All-Paper.pdf).
 
 MIND (Modality Independant Neighbourhood Descriptor) aims to extract structural content in the local region which is which can be seen in other modalities.
+
+The concept is based on the idea that each pixel in an image can be assigned a MIND descriptor, which is a vector of real numbers which desribes the local structure of that pixel. The number of elements in this vector depends on the choice of _search space_.

@@ -38,4 +38,8 @@ type: "post"
 
 * I created a public mbedded.ninja project on CircuitMaker at [https://workspace.circuitmaker.com/Projects/Details/GeoffreyHunter/mbedded-ninja](https://workspace.circuitmaker.com/Projects/Details/GeoffreyHunter/mbedded-ninja). I am going to trial out CircuitMaker as a tool for drawing schematic diagrams for this blog. In the past I have used Altium (not free), MultisimLive and InkScape (free but is a general vector graphics editor, not a dedicated electronics CAD program).
 
-* Added the {{% link text="Command-Line CSV Viewer page" src="" %}}, which contains information on how to cleanly view CSV files from the Linux command-line.
+* Added the {{% link text="Command-Line CSV Viewer page" src="/programming/operating-systems/linux/command-line-csv-viewer" %}}, which contains information on how to cleanly view CSV files from the Linux command-line.
+
+* Added a {{% link text="new page about the programming language Julia" src="/programming/languages/julia" %}}.
+
+    {{% img src="julia_programming_language_logo.png" width="200px" caption="The Julia logo." %}}
