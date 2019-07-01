@@ -2,7 +2,7 @@
 author: gbmhunter
 categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2019-06-18
-draft: true
+draft: false
 lastmod: 2019-06-18
 tags: [ "bash", "scripts", "CSV", "command-line", "viewer" ]
 title: "Command-Line CSV Viewer"
