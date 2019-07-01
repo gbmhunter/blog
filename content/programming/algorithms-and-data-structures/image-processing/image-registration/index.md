@@ -41,3 +41,24 @@ The concept is based on the idea that each pixel in an image can be assigned a M
 <p>$$ \text{MIND}(I, \vec{x}, \vec{r}) = \frac{1}{n} \exp\left(-\frac{D_p(I, \vec{x}, \vec{x} + \vec{r})}{V(I, \vec{x})}\right) \quad r \in \mathbb{R}  $$</p>
 
 An example image registration algorithm written in Matlab and using MIND/Gauss-Newton optimization can be found at: [http://www.ibme.ox.ac.uk/research/biomedia/julia-schnabel/Software](http://www.ibme.ox.ac.uk/research/biomedia/julia-schnabel/Software).
+
+### Worked Example
+
+We will demonstrate how MIND works with a very basic 2D 5x5 (25 pixel) greyscale image. For simplicity, the pixels intensities have been assigned the values 1 to 25 as shown in the below diagram (typically they will range from 0 to 255 or similar 2^n bit number).
+
+Pixel `\((0, 0)\)` is in the upper left corner. Pixels are indexed in `\((row, column)\)` order (which could also be thought of as `\((y, x)\)`). This matches the row-major indexing of Numpy and the C programming language.
+
+We will work through the process of calculating the MIND descriptor for pixel `\((1,2)\)`, which has an intensity of 8 and is shown in dark blue in the below image. We will using the following MIND parameters:
+
+* A search space of 4-neighbourhood (i.e. the pixels directly touching the pixel of interest), shown in light blue. The pixel we are calculating the MIND descriptor for is not in the search space.
+* A patch size of 3 (more on this later).
+
+{{% figure src="mind_descriptor_search_space.svg" width="500px" %}}
+
+For each one of the pixels in the search space, a 3x3 pixel _patch_ is formed, with the pixel in the center (and this time, the pixel IS included in the patch). We chose a patch with a width/height of 3 for simplicity, but this is a parameter which can be adjusted. In the below image on the left, the patch for the `\((1, 1)\)` pixel is shown. A patch centered on the MIND descriptor pixel is also formed.
+
+With these two patches, a _patch distance_ is calculated. This is an element-wise sum-of-squared differences calculation. For the below patches, this would be:
+
+<p>$$ \begin{align} SOS &= (2-1)^2 + (3-2)^2 + (4-3)^2 \\ &+ (7-6)^2 + (8-7)^2 + (9-8)^2 \\ &+ (12-11)^2 + (13-12)^2 + (14-13)^2 \\ &= \end{align}$$</p>
+
+{{% figure src="mind_descriptor_patch_comparison.svg" width="700px" %}}
