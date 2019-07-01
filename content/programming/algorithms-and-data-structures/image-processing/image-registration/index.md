@@ -57,8 +57,12 @@ We will work through the process of calculating the MIND descriptor for pixel `\
 
 For each one of the pixels in the search space, a 3x3 pixel _patch_ is formed, with the pixel in the center (and this time, the pixel IS included in the patch). We chose a patch with a width/height of 3 for simplicity, but this is a parameter which can be adjusted. In the below image on the left, the patch for the `\((1, 1)\)` pixel is shown. A patch centered on the MIND descriptor pixel is also formed.
 
+{{% figure src="mind_descriptor_patch_comparison.svg" width="700px" %}}
+
 With these two patches, a _patch distance_ is calculated. This is an element-wise sum-of-squared differences calculation. For the below patches, this would be:
 
-<p>$$ \begin{align} SOS &= (2-1)^2 + (3-2)^2 + (4-3)^2 \\ &+ (7-6)^2 + (8-7)^2 + (9-8)^2 \\ &+ (12-11)^2 + (13-12)^2 + (14-13)^2 \\ &= \end{align}$$</p>
+<p>$$ \begin{align} SOS &=(20-10)^2 + (10-17)^2 + (17-2)^2 \\ &+ (16-11)^2 + (11-4)^2 + (4-21)^2 \\ &+ (3-12)^2 + (12-1)^2 + (1-24)^2 \\ &= 1468 \end{align}$$</p>
 
-{{% figure src="mind_descriptor_patch_comparison.svg" width="700px" %}}
+This value of `\(1468\)` is attached to the `\((1, 1)\)` pixel in the search space. The same patch distance calculation is repeated for all pixels in the search space, which would give the results as shown in the below diagram:
+
+{{% figure src="mind_descriptor_patch_distances.svg" width="500px" %}}
