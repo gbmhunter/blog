@@ -1,7 +1,10 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Compilers", "GCC" ]
 date: 2017-11-29
 draft: false
+lastmod: 2017-11-29
+tags: [ "programming", "compilers", "GCC", "code coverage" ]
 title: "GCC Code Coverage"
 type: page
 ---

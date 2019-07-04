@@ -1,6 +1,6 @@
 ---
 author: gbmhunter
-categories: [ "Programming", "Algorithms And Data Structures" ]
+categories: [ "Programming", "Signal Processing" ]
 date: 2019-06-20
 description: ""
 draft: false
@@ -41,6 +41,12 @@ The concept is based on the idea that each pixel in an image can be assigned a M
 <p>$$ \text{MIND}(I, \vec{x}, \vec{r}) = \frac{1}{n} \exp\left(-\frac{D_p(I, \vec{x}, \vec{x} + \vec{r})}{V(I, \vec{x})}\right) \quad r \in \mathbb{R}  $$</p>
 
 An example image registration algorithm written in Matlab and using MIND/Gauss-Newton optimization can be found at: [http://www.ibme.ox.ac.uk/research/biomedia/julia-schnabel/Software](http://www.ibme.ox.ac.uk/research/biomedia/julia-schnabel/Software).
+
+### Pre-Normalizing Images
+
+Should you normalize images (e.g. between 0 and 1) before calculating the MIND descriptors for each pixel?
+
+If using the MIND descriptor to coregister two images, you should find that normalization should not have a significant effect on the objective function.
 
 ### Worked Example
 

@@ -13,7 +13,7 @@ type: page
 
 The main object that you throw around in NumPy is called a multidimensional array. Typically you store numbers in it. Each "dimension" is called an axes. For example, a single co-ordinate in 3D space could be stored as:
 
-```py    
+```python
 V = [2, 4, 3]
 ```
 
@@ -21,7 +21,7 @@ This has one axis (one dimension).
 
 A 2D rotation transformation could be described with:
 
-```py    
+```python
 R = [
     [2, 3, 5],
     [1, 7, 2]
@@ -34,7 +34,7 @@ This has two axes.
 
 NumPy arrays can be created with standard Python lists:
 
-```py    
+```python
 >>> import numpy as np
 >>> a = np.array([2,1,5])
 >>> a
@@ -43,7 +43,7 @@ array([2, 5, 1])
 
 If we wanted to create a 2 axis array we could pass in a list of lists:
 
-```py    
+```python
 >>> import numpy as np
 >>> a = np.array([[1,2,3],[4,5,6])
 >>> a
@@ -57,7 +57,7 @@ You can also create arrays with special values, such as arrays full of 1's, arra
 
 An array of 1's:
 
-```py    
+```python
 >>> a = np.ones([2,3])
 >>> a
 array([[1., 1., 1.],
@@ -66,7 +66,7 @@ array([[1., 1., 1.],
 
 An array with 1's on the diagonal:
 
-```py    
+```python
 >>> a
 array([[1., 0., 0.],
         [0., 1., 0.],
@@ -75,7 +75,7 @@ array([[1., 0., 0.],
 
 Another really useful way of creating arrays is with `np.arange()`. This does exactly what is says, it creates an array with a range of values:
 
-```py    
+```python
 >>> np.arange(4)
 array([0, 1, 2, 3])
 
@@ -88,7 +88,7 @@ array([[0, 1, 2],
 
 `np.linspace()` is another great array creating tool, which creates an array of linearly spaced numbers. The following example creates 5 numbers, linearly spaced from 4.0 to 10.0:
 
-```py    
+```python
 >>> np.linspace(4.0, 10.0, 5)
 array([ 4. ,  5.5,  7. ,  8.5, 10. ])
 ```
@@ -103,7 +103,7 @@ NumPy arrays have one index per axis, forming a tuple. The indexed are zero-inde
 
 Reading from a 1 axis array:
 
-```py    
+```python
 >>> a = np.array([2,1,5])
 >>> a[2]
 5
@@ -111,7 +111,7 @@ Reading from a 1 axis array:
 
 Reading from a 2 axis array:
 
-```py    
+```python
 >>> a = np.array([[2,5],[1,3]])
 >>> a[0,1]
 5
@@ -119,7 +119,7 @@ Reading from a 2 axis array:
 
 Writing to a 2-axis array:
 
-```py    
+```python
 >>> a = np.array([[2,5],[1,3]])
 >>> a[1,1] = 10
 >>> a
@@ -131,7 +131,7 @@ array([[ 2,  5],
 
 NumPy arrays can be added element wise with the `+` operator:
 
-```py    
+```python
 >>> a = np.array([[1,2,3],[4,5,6]])
 >>> b = np.array([[1,1,2],[2,2,1]])
 >>> a+b
@@ -141,7 +141,7 @@ array([[2, 3, 5],
 
 They can be multiplied element-wise with the `*` operator (this is the same as `np.multiply`):
 
-```py    
+```python
 >>> a = np.array([[2,5],[1,3]])
 >>> b = np.array([[1,4],[2,1]])
 >>> a*b
@@ -151,7 +151,7 @@ array([[ 2, 20],
 
 A dot-product of two arrays can be done with `np.dot()`:
 
-```py    
+```python
 >>> a = np.array([[2,5],[1,3]])
 >>> b = np.array([[1,4],[2,1]])
 >>> np.dot(a, b)
@@ -161,7 +161,7 @@ array([[12, 13],
 
 The cross-product of two arrays can be done with `np.cross()`:
 
-```py
+```python
 >>> a = np.array([4,5,1])
 >>> b = np.array([3,1,2])
 >>> np.cross(a, b)
@@ -176,7 +176,7 @@ One of the powerful features of Numpy arrays is the simple and terse slicing syn
 
 Very simple slicing is really the same as indexing:
 
-```py
+```python
 my_array = np.array([4, 5, 6])
 my_slice = my_array[1]
 # my_slice = 5
@@ -184,7 +184,7 @@ my_slice = my_array[1]
 
 Extract the first two elements:
 
-```py
+```python
 my_array = np.array([4, 5, 6])
 my_slice = my_array[0:2]
 # my_slice = array([4, 5])
@@ -196,7 +196,7 @@ Some of the real power of slicing is seen when you slice multidimensional arrays
 
 `my_array[:, 0]` tells Numpy to make a slice using all elements from the 1st axis (`:`), and only the first element from the second axis (`0`). An example of this slice is shown below:
 
-```py
+```python
 my_array = np.array([[1, 2, 3], [4, 5, 6])
 my_slice = my_array[:, 0] # Take all from 1st axis, and element 0 from second axis
 # my_slice = array([1], [4])
@@ -206,13 +206,13 @@ Note that `:` is the same as `0:<len - 1>`, and captures all data.
 
 This is commonly used to extract columns from data. For example, if you had the following array of x, y pairs:
 
-```py
+```python
 xy_pairs = np.array([[1, 2], [3, 4], [5, 6], [7, 8]])
 ```
 
 You could extract all the x values and all the y values with:
 
-```py
+```python
 x_values = xy_pairs[:, 0]
 y_values = xy_pairs[:, 1]
 
@@ -222,7 +222,7 @@ y_values = xy_pairs[:, 1]
 
 You can also use this to extract "rows" from an array:
 
-```py
+```python
 data = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]])
 two_rows = data[1:3, :]
 # two_rows = array([[4, 5, 6], [7, 8, 9]])
@@ -232,7 +232,7 @@ two_rows = data[1:3, :]
 
 You can also add a step size while slicing Numpy arrays, just as you can when using standard Python slicing. The step size is the third argument in the slice syntax, i.e. `start:stop:step`.
 
-```py
+```python
 data = np.arange(10)
 # data = array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 my_slice = data[3:8:2] # Slice from 3 to 8, with a step size of 2
@@ -243,7 +243,7 @@ my_slice = data[3:8:2] # Slice from 3 to 8, with a step size of 2
 
 You can use Numpy's `genfromtxt()` method to read in CSV files and convert the data into a Numpy array:
 
-```py
+```python
 data = np.genfromtxt('my_file.csv', delimiter=',')
 ```
 
@@ -266,7 +266,7 @@ The array would look like:
 
 You can skip a header line/row in the CSV file by providing `skip_header=1` to `genfromtxt()`:
 
-```py
+```python
 data = np.genfromtxt('my_file.csv', delimiter=',', skip_header=1)
 ```
 
@@ -282,7 +282,7 @@ Time (s), Depth (m), Width (m)
 
 **dot()**
 
-```py    
+```python
 np.dot(a, b, out=none)
 ```
 
@@ -292,7 +292,7 @@ Dot product of two arrays.
 
 Returns an array with 1's on the diagonal and 0's elsewhere (also known as an identity matrix).
 
-```py    
+```python
 my_array = np.eye(3)
 # my_array = array([
 #   [1, 0, 0],

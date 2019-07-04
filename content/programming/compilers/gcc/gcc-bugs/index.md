@@ -1,7 +1,10 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Compilers", "GCC" ]
 date: 2017-10-05
 draft: false
+lastmod: 2017-10-05
+tags: [ "programming", "compilers", "bugs", "ARM", "C++", "Zynq" ]
 title: "GCC Bugs"
 type: page
 ---

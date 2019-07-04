@@ -1,7 +1,10 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Compilers" ]
 date: 2019-02-02
 draft: false
+lastmod: 2019-02-02
+tags: [ "programming", "compilers", "GCC", "errors" ]
 title: "GCC Compiler Errors And How To Fix Them"
 type: page
 ---
