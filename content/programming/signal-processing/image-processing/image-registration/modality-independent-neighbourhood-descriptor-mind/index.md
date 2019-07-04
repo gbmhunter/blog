@@ -1,38 +1,16 @@
 ---
 author: gbmhunter
-categories: [ "Programming", "Signal Processing" ]
+categories: [ "Programming", "Signal Processing", "Image Processing" ]
 date: 2019-06-20
 description: ""
 draft: false
-lastmod: 2019-06-27
-tags: [ "programming", "image registration", "MI", "mutual information", "MIND", "modality independent neighbourhood descriptor", "modalities", "patch" ]
-title: "Image Registration"
+lastmod: 2019-07-03
+tags: [ "programming", "signal processing", "image processing", "image registration", "MI", "mutual information", "MIND", "modality independent neighbourhood descriptor", "modalities", "patch", "voxel", "SSC" ]
+title: "Modality Independent Neighbourhood Descriptor (MIND)"
 type: "page"
 ---
 
 ## Overview
-
-Some of the difficulties of image registration:
-
-* Non-rigid deformation. When the features in one image have been stretched or squeezed in the sense that the feature has undergone more than just a simple translation and rotation.
-* Intensity distortions. Different modalities (e.g. US and MRI) measure different physical phenomena to construct an image. These modalities may (and likely will) respond differently in intensity for the same feature in the image (e.g. in one modality, the feature may get linearly lighter from left to right, while in another, it gets exponentially darker).
-
-## Terminology
-
-* _image patch_: A small piece (generally rectangular) of a larger image. For example, you could examine 4x4 pixel patches of a 500x500 image.
-* _kernel_: A small image which is usually of a specific pattern, and is used in a convolution with another image to perform operations such as blurring, sharpening, and edge detection.
-
-## Cross-Correlation
-
-### Mutual Information
-
-MI (_Mutual information_) quantifies the information shared between two different images. It is different to cross-correlation in that the relationship between the two images does not have to be linear.
-
-### Modalities
-
-Image correlation becomes more difficult when the images have different modalities. A modality is a particular technique used to perform imaging. A typical example of image registration between images of different moldalities occurs in the medical domain with MR (magnetic resonance) and US (ultrasound) images.
-
-## MIND
 
 MIND (_Modality Independent Neighbourhood Descriptor_) is a cross-correlation algorithm that aims to extract structural content in the local region which is which can be seen in other modalities. The academic paper that introduces MIND can be found [here](http://iplab.dmi.unict.it/miss14/MISS2014-ReadingGroup00-All-Paper.pdf) ([cached local copy](2012-01-16-mind-modality-independent-neighbourhood-descriptor-article.pdf)). It supports non-rigid image registration and is generally more robust to different modalities than other registration algorithms such as MI.
 
@@ -42,13 +20,13 @@ The concept is based on the idea that each pixel in an image can be assigned a M
 
 An example image registration algorithm written in Matlab and using MIND/Gauss-Newton optimization can be found at: [http://www.ibme.ox.ac.uk/research/biomedia/julia-schnabel/Software](http://www.ibme.ox.ac.uk/research/biomedia/julia-schnabel/Software).
 
-### Pre-Normalizing Images
+## Pre-Normalizing Images
 
 Should you normalize images (e.g. between 0 and 1) before calculating the MIND descriptors for each pixel?
 
 If using the MIND descriptor to coregister two images, you should find that normalization should not have a significant effect on the objective function.
 
-### Worked Example
+## Worked Example
 
 We will demonstrate how MIND works with a very basic 2D 5x5 (25 pixel) greyscale image. For simplicity, the pixels intensities have been assigned the values 1 to 25 as shown in the below diagram (typically they will range from 0 to 255 or similar 2^n bit number).
 
@@ -72,3 +50,19 @@ With these two patches, a _patch distance_ is calculated. This is an element-wis
 This value of `\(1468\)` is attached to the `\((1, 1)\)` pixel in the search space. The same patch distance calculation is repeated for all pixels in the search space, which would give the results as shown in the below diagram:
 
 {{% figure src="mind_descriptor_patch_distances.svg" width="500px" %}}
+
+## Resources
+
+### Publications
+
+* [Self Similarity Image Registration Based on Reorientation of the Hessian](http://homepage.tudelft.nl/h5u3d/papers/SelfSimilarityImageRegistration.pdf) ([cached local copy](2013_self_similarity_image_registration_based_on_reorientation_of_the_hessian.pdf)) claims to be an efficiency improvement on the original MIND algorithm when dealing with deformation between the two images.
+
+* [Multimodal Fusion for Image-Guided Interventions using Self-Similarities](self_similarity_context_ssc.pdf) is a newer publication involving the same author as the original MIND publication (Mattias P. Heinrich) which claims to improve in the MIND algorithm by using patch distances between pixels surrounding the pixel of interest, but not including it, thereby reducing the algorithms sensitivity to noise in the pixel of interest.
+
+### Software
+
+* MATLAB implementations of the MIND and SSC algorithms can be found at [mpheinrich.de/software.html](http://www.mpheinrich.de/software.html).
+
+* The GitHub repo [cmirfin/BBR](https://github.com/cmirfin/BBR) contains MATLAB code of the MIND algorithm and a supporting Gauss-Newton optimizer to perform two-stage non-rigid registration of MR images.
+
+* [IBME - Julia Schnabel - Software](http://www.ibme.ox.ac.uk/research/biomedia/julia-schnabel/Software) contains MATLAB for the MIND algorithm as well as MIND/Gauss-Newton 2D registration code (again, in MATLAB).
