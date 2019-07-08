@@ -130,7 +130,17 @@ mind_descriptors =
         [0.528, 0.42 , 0.459, 0.18 ]]])
 ```
 
+## Using The MIND Descriptors To Register Two Images
+
+You may be thinking, great, you've shown me how to calculate the MIND descriptors for an image, but now what? How do I use these to register two images?
+
+
+
 ## Optimizations
+
+Convert the patch distance calculation into a correlation problem.
+
+The patch distance calculation involves computing a sum-of-squared differences. You can calculate the sqaured differences normally, but convert the summation into a correlation problem, and then compute the result of the correlation by converting the image into the frequency domain (via the FFT or _Fast Fourier Transform_), multiplying, and then performing an inverse FFT.
 
 ## Resources
 
