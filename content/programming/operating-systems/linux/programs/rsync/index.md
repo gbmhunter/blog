@@ -2,6 +2,7 @@
 author: gbmhunter
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2013-10-21
+description: "A tutorial on the popular file copying command-line tool rsync, including option explanations, code examples, common use cases and more."
 draft: false
 lastmod: 2019-05-15
 tags: [ "programming", "operating systems", "Linux", "programs", "rsync", "sync", "scp", "files", "backup", "tutorial" ]
@@ -41,7 +42,7 @@ Do a trial run which doesn't actually make any changes. This is usually used in 
 
 ### --progress (Progress)
 
-Prints the progress to <code>stdout</code>. This is very useful for large transfers!
+Prints the progress to `stdout`. This is very useful for large transfers!
 
 ### -r (Recursive)
 
@@ -61,42 +62,30 @@ Long Option: `--update`
 Short Option: `-v`
 Long Option: `--verbose`
 
-Verbose. Will prints out more information when process is run. You can add extra v's (e.g. <code>-vv</code>) to make rsync print out even more info.
+Verbose. Will prints out more information when process is run. You can add extra v's (e.g. `-vv`) to make rsync print out even more info.
 
 ### -z (Compress)
 
 Short Option: `-z`
 Long Option: n/a
 
-Compress data while doing transfer. Some files cannot be compressed, which includes <code>gz zip z rpm deb iso bz2 tbz tgz 7z mp3 mp4 mov avi ogg jpg jpeg</code>. WARNING: When using rsync to copy locally, compressing can SLOW DOWN the transfer as the time cost of compressing/decompressing outweights the slighty faster transfer time.
+Compress data while doing transfer. Some files cannot be compressed, which includes <code>gz zip z rpm deb iso bz2 tbz tgz 7z mp3 mp4 mov avi ogg jpg jpeg</code>. WARNING: When using rsync to copy locally, compressing can SLOW DOWN the transfer as the time cost of compressing/decompressing outweighs the slightly faster transfer time.
 
-Some of the most popular combinations of options are:
+## Popular Use Cases
 
-<table>
-    <thead>
-        <tr>
-            <th>Command</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody>
-<tr>
-<td >rsync -arvz source destination
-</td>
 
-<td >Good general purpose rsync use, without propagating deletions.
-</td>
-</tr>
-<tr >
+Good general purpose rsync use, without propagating deletions:
 
-<td >rsync -adrvz source destination
-</td>
+```
+rsync -arvz source destination
+```
 
-<td >Good general purpose rsync use with deletion propagation (be careful!)
-</td>
-</tr>
-</tbody>
-</table>
+Good general purpose rsync use with deletion propagation (be careful!):
+
+```
+rsync -adrvz source destination
+```
+
 
 `rsync` is a great tool for allowing you write code on a fully-fledged computer, and then transfer it to a RaspberryPi easily and quickly for running. Normally it only takes a matter to seconds to transfer after you have made modest code changes.
 
@@ -125,6 +114,8 @@ $ rsync username@ip_address:/directory_on_server/file_on_server.big --progress -
 
 `rsync` supports a glob-like syntax for matching against files/directories you wish to include/exclude.
 
+### Excluding Files
+
 You can use the `--exclude-from` flag to pass in a file containing a list of files/directories to exclude.
 
 `*` matches any partial substring of a **single directory**. `**` matches **any** substring of the path.
@@ -141,9 +132,19 @@ If you want to match against `__cache__` directories that could be at any level 
 $ rsync --exclude="**/__cache__"
 ```
 
-`***` can be used with `--include` so that when matching against directories, all sub-directoris and files below it will also be included.
+`***` can be used with `--include` so that when matching against directories, all sub-directories and files below it will also be included.
 
 An alternative to using `rsync`'s include/exclude rules is to combine `rsync` with the popular file-finding utility `find`.
+
+### Including Files
+
+You can choose to only include specific files by first matching them with `--include`, and then excluding everything with `--exclude='*'`:
+
+For example, to copy all `*.png` files from `~/source/` to `~/destination/`:
+
+```sh
+$ rsync -r --include="*.png" --exclude='8' ~/source/ ~/destination/
+```
 
 ## Combining rsync With find
 

@@ -1,4 +1,5 @@
 {
+    "cSpell.language": "en-GB",	
     "cSpell.words": [
         "ADCs",
         "Arduino",
@@ -303,6 +304,7 @@
         "subminiature",
         "submodule",
         "submodules",
+        "substring",
         "tartrate",
         "tcgetattr",
         "tcsanow",
