@@ -12,6 +12,7 @@
         "EEPROM",
         "Hirose",
         "Karnaugh",
+        "Nelder",
         "abstractmethod",
         "abstractstaticmethod",
         "adduser",

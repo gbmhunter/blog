@@ -13,7 +13,7 @@ type: "page"
 
 <p>Below is the mathematical typography that is used on this site.</p>
 
-<p>A non-bold standard letter is used to denote a scalar:</p>
+<p>A non-bold standard letter is used to denote a basic scalar:</p>
 
 <p>$$ c = 3e8 $$</p>
 
@@ -25,11 +25,11 @@ type: "page"
 
 <p>$$ \hat{x} = \begin{bmatrix}1\\0\\0\end{bmatrix} $$</p>
 
-<p>A bold capital letter is used to denote a matrix:</p>
+<p>A bold capital letter is used to denote a matrix or tensor:</p>
 
 <p>$$ \mathbf{B} = \begin{bmatrix}1&2&3\\4&5&6\\7&8&9\end{bmatrix} $$</p>
 
-<p>A bold lower-case letter is used to denote the imaginary component (in things such as complex numbers and quaternions).</p>
+<p>A bold lower-case letter is used to denote imaginary component(s) (in things such as complex numbers and quaternions).</p>
 
 <p>$$ c = a + b\mathbf{i} $$</p>
 
@@ -44,5 +44,9 @@ The "triangle equals" is used to denote "is defined by":
 <p>$$ F \triangleq ma $$</p>
 
 The Fourier Transform is denoted with `\(\mathcal{F}\)`.
+
+Belongs to uses the `\in` symbol from Latex (e.g. `\(x\)` belongs to the set of real numbers):
+
+<p>$$ x \in \mathbb{R} $$</p>
 
 

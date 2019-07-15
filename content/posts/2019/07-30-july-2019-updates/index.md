@@ -15,3 +15,5 @@ type: "post"
 * New tutorial on the Self-Similarity Context (SSC). This is related to MIND.
 
 * New section on Optimization.
+
+* New {{% link text="Satellites" src="/space/satellites" %}} section under Space.

@@ -2,6 +2,7 @@
 author: "gbmhunter"
 date: 2004-09-13
 draft: false
+lastmod: 2014-09-13
 tags: [ "test page" ]
 title: "Test Page"
 ---
@@ -18,11 +19,27 @@ Is the TOC working above ^^^ ???
 
 ### Heading (h3)
 
-Some display math:
+## MathJax
 
-<p>$$ f(x) = \frac{2}{3} $$</p>
+Some display math with a reference:
+
+<p>$$ f(x) = \frac{2}{3}$$</p>
 
 Some inline math. `\(f(x) = \frac{2}{3}\)`. More normal text.
+
+An equation with `\begin{equation}`, which should be automatically numbered:
+
+<p>
+\begin{equation}
+  \int_0^\infty \frac{x^3}{e^x-1}\,dx = \frac{\pi^4}{15}
+  \label{eq:sample}
+\end{equation}
+</p>
+
+And a reference to the above equation: In equation `\(\eqref{eq:sample}\)`, we find the value of an
+interesting integral.
+
+## Dividers
 
 A divider below:
 
@@ -32,7 +49,7 @@ A divider below:
 
 A reference to first resource{{< bib id="ref1" >}}.
 
-Second ref is{{< bib id="ref2" >}}between here.
+Second ref is{{< bib id="ref2" >}} between here.
 
 A second link to first resource{{< bib id="ref1" >}}.
 
@@ -104,3 +121,7 @@ This is another footnote[^foot-2].
 {{% link src="/test-page" text="Absolute link." %}}
 
 {{% link src="relative-page" text="Relative link." %}}
+
+## Other
+
+Footnotes, related content and tags sections should be below.

@@ -2,9 +2,9 @@
 author: gbmhunter
 categories: [ "Programming", "Signal Processing", "Image Processing" ]
 date: 2019-06-20
-description: ""
+description: "A tutorial (with step-by-step examples) on the MIND descriptor, and image registration algorithm that works well for multi-modal image registration."
 draft: false
-lastmod: 2019-07-07
+lastmod: 2019-07-17
 tags: [ "programming", "signal processing", "image processing", "image registration", "MI", "mutual information", "MIND", "modality independent neighbourhood descriptor", "modalities", "patch", "voxel", "SSC", "convolution", "Fourier transform" ]
 title: "Modality Independent Neighbourhood Descriptor (MIND)"
 type: "page"
@@ -12,11 +12,32 @@ type: "page"
 
 ## Overview
 
-MIND (_Modality Independent Neighbourhood Descriptor_) is a cross-correlation algorithm that aims to extract structural content in the local region which is which can be seen in other modalities. The academic paper that introduces MIND can be found [here](http://iplab.dmi.unict.it/miss14/MISS2014-ReadingGroup00-All-Paper.pdf) ([cached local copy](2012-01-16-mind-modality-independent-neighbourhood-descriptor-article.pdf)). It supports non-rigid image registration and is generally more robust to different modalities than other registration algorithms such as MI.
+MIND (_Modality Independent Neighbourhood Descriptor_) is an image registration algorithm that aims to extract structural content in the local region around each pixel/voxel which can also be seen in other modalities. The academic paper that introduces MIND can be found [here](http://iplab.dmi.unict.it/miss14/MISS2014-ReadingGroup00-All-Paper.pdf) ([cached local copy](2012-01-16-mind-modality-independent-neighbourhood-descriptor-article.pdf)). It supports non-rigid image registration and is generally more robust to different modalities (e.g. MRI and ultrasound images) than other registration algorithms such as MI (mutual information).
 
-The concept is based on the idea that each pixel in an image can be assigned a MIND descriptor, which is a vector of real numbers which describes the local structure of that pixel. The number of elements in this vector depends on the choice of _search space_. The search space involves a number of pixels in the area around the pixel that you are calculating the descriptor for. One of the most basic search spaces for a 2D image would be the _four-neighbourhood_, involving the pixel above, below, to the left and to the right of the pixel. For every pixel in the search space, a square _patch_ (for example, a 3x3 patch) of pixels is found. This is compared to the square patch centered on the pixel you are calculating the MIND descriptor for. For each pair of patches, the sum of squared differences is calculated. This value is assigned to the pixel in the search space.
+## How It Works
 
-<p>$$ \text{MIND}(I, \vec{x}, \vec{r}) = \frac{1}{n} \exp\left(-\frac{D_p(I, \vec{x}, \vec{x} + \vec{r})}{V(I, \vec{x})}\right) \quad r \in \mathbb{R}  $$</p>
+The concept is based on the idea that each pixel in an image can be assigned a _MIND descriptor_, which is a vector of real numbers which describes the local structure surrounding that pixel.
+
+Each value in the MIND descriptor for a pixel is described by the following equation[^mind]:
+
+<p>$$ \text{MIND}({\bf I}, \vec{x}, \vec{r}) = \frac{1}{n} \, \exp\left(-\frac{D_p(\mathbf{I}, \vec{x}, \vec{x} + \vec{r})}{V(\mathbf{I}, \vec{x})}\right) \quad \vec{r} \in \mathbb{R} \tag{1} $$</p>
+
+where:
+
+* `\({\bf I}\)` is the 2D greyscale image, as a 2D matrix of real values
+* `\(\vec{x}\)` is the pixel location you are currently calculating the MIND descriptor for (e.g. `\(\vec{x} = (2, 5)\)` would be the pixel at the 3rd column and 6th row)
+* `\(\vec{r}\)` is an element from the search space `\(\mathbb{R}\)` (e.g. `\(\vec{r} = (0,1)\)`)
+* `\(\mathbb{R}\)` is the set of all pixels (defined by relative shifts from `\(\vec{x}\)`) involved in the search space, e.g. for a 4-neighbourhood search space in a 2D image, `\(\mathbb{R} = ((-1, 0), (1, 0), (0, -1), (0, 1))\)`
+* `\(n\)` is a normalizing constant
+* `\(D_p({\bf I}, \vec{x}, \vec{x} + \vec{r})\)` is the patch distance between the descriptor pixel and search space pixel (more on this later)
+* `\(V({\bf I}, \vec{x})\)` is an estimate on the variance for the descriptor pixel (more on this later)
+
+Note that I have changed the syntax slightly from that listed in the publication as to fit the {{% link text="mathematical style guide" src="/mathematics" %}} for this blog.
+
+Given two images that need registering, you can calculate MIND descriptors for each pixel in both images. Then a simple and easily optimizable sum-of-squared differences is calculated between the MIND descriptors in each image. By transforming the compare image relative to the reference image, this value will vary. When this value is minimized, this represents the transformation which best registers the compare image ontop of the reference image. This forms the objective function for which you wish to minimize, and can be easily solved with traditional optimization algorithms such as Nelder-Mead or gradient descent.
+
+The number of elements in this vector depends on the choice of _search space_ `\(\mathbb{R}\)`. The search space involves a number of pixels in the area around the pixel that you are calculating the descriptor for. One of the most basic search spaces for a 2D image would be the _four-neighbourhood_, involving the pixel above, below, to the left and to the right of the pixel. For every pixel in the search space, a square _patch_ (for example, a 3x3 patch) of pixels is found. This is compared to the similar-sized square patch centered on the pixel you are calculating the MIND descriptor for. For each pair of patches, the sum of squared differences is calculated. This value is assigned to the pixel in the search space.
+
 
 An example image registration algorithm written in Matlab and using MIND/Gauss-Newton optimization can be found at: [http://www.ibme.ox.ac.uk/research/biomedia/julia-schnabel/Software](http://www.ibme.ox.ac.uk/research/biomedia/julia-schnabel/Software).
 
@@ -134,7 +155,11 @@ mind_descriptors =
 
 You may be thinking, great, you've shown me how to calculate the MIND descriptors for an image, but now what? How do I use these to register two images?
 
+### Sentinel-2 Satellite Imagery
 
+Dataset: S2B_MSIL2A_20190625T221609_N0212_R129_T60GUA_20190626T000320
+Download Link: https://scihub.copernicus.eu/dhus/odata/v1/Products('15de9330-30bd-4cb0-841a-bf9b88edd4ab')/$value
+Bands: B03 (GREEN), B08 (NIR) - both at 10m resolution
 
 ## Optimizations
 

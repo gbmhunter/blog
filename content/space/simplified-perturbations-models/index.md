@@ -2,6 +2,8 @@
 author: gbmhunter
 date: 2017-05-26
 draft: false
+lastmod: 2017-05-26
+tags: [ "space", "simplified perturbations models", "SGP4", "TLE" ]
 title: Simplified Perturbations Models
 type: page
 ---
