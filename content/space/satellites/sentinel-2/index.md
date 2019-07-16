@@ -102,3 +102,6 @@ Data from [Satellite Imaging Corporation](https://www.satimagingcorp.com/satelli
   </tbody>
 </table>
 
+## Imagery Format
+
+Whereas most satellite imagery is provided in the GeoTiff format (.tiff), Sentinel-2 imagery data comes in the JPEG-2000 format (.jp2).

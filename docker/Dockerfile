@@ -121,6 +121,8 @@ RUN wget -O ~/download/spark-2.4.3-bin-hadoop2.7.tgz http://apache.forsale.plus/
 RUN tar xvzf ~/download/spark-2.4.3-bin-hadoop2.7.tgz -C /usr/local/
 RUN ln -s /usr/local/spark-2.2.0-bin-hadoop2.7 /usr/local/spark
 
+RUN pip install opencv-python
+
 ###################################################################################################
 # FINAL
 ###################################################################################################
