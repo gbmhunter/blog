@@ -1,7 +1,10 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Integrated Development Environments (IDEs)" ]
 date: 2016-06-17
 draft: false
+lastmod: 2016-06-17
+tags: [ "programming", "integrated development environments", "IDEs", "MPLAB X" ]
 title: MPLAB X
 type: page
 ---

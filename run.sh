@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-hugo server -w -D
+hugo server -wDF

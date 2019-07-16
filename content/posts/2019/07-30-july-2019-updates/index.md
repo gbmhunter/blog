@@ -17,3 +17,5 @@ type: "post"
 * New section on Optimization.
 
 * New {{% link text="Satellites" src="/space/satellites" %}} section under Space.
+
+* New tutorial on {{% link text="Jupyter" src="/programming/integrated-development-environments-ides/jupyter" %}} (incl. Jupyter Notebooks and Jupyter Labs).
