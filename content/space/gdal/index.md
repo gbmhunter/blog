@@ -15,6 +15,19 @@ The Geospatial Data Abstraction Library (GDAL) is a open-source software library
 
 The command-line tool `gdalinfo` will print the RPC metadata if present.
 
+## Basic Reading/Writing Of GeoTiff Files
+
+Updating the same file is the simplest example, as you don't have to worry about creating a driver:
+
+```python
+import gdal
+ds = gdal.Open('image.tif', gdal.GA_Update)
+img = ds.GetRasterBand(1).ReadAsArray()
+# Change img as you see fit (it's a Numpy array)
+ds.GetRasterBand(1).WriteArray(img)
+ds = None
+```
+
 ## Always Make Sure To dataset=None
 
 Until a `dataset` object is set to `None` in Python, you cannot guarantee that all of the data has been written to the file system.
@@ -63,9 +76,11 @@ The upper left corner of the upper left pixel will be placed at position gt[0], 
 
 If your projection was to WGS84 (lat, lon) then:
 
+```
 gt[0]: Longitude of top left corner
 gt[1]: cos(alpha)*W-E resolution
 gt[2]: -sin(alpha_*W-E resolution)
 gt[3]: Latitude of top left corner
 gt[4]: sin(alpha)*N-S resolution
 gt[5]: cos(alpha)*N-S resolution
+```

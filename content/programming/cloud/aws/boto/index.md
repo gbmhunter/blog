@@ -4,9 +4,8 @@ categories: [ "Programming", "Cloud" ]
 date: 2019-01-14
 description: "A quick tutorial on Boto 3, Amazon's Python-based API for AWS."
 draft: false
-lastmod: 2019-01-14
-tags: [ "Amazon", "AWS", "boto", "boto3", "Boto 3", "cloud", "Python", "API
-", "S3", "libraries" ]
+lastmod: 2019-07-19
+tags: [ "Amazon", "AWS", "boto", "boto3", "Boto 3", "cloud", "Python", "API", "S3", "libraries", "copy", "bucket", "key" ]
 title: "boto"
 type: "page"
 ---
@@ -45,3 +44,21 @@ for bucket in s3.buckets.all():
 {{% note %}}
 This will print out the names of all buckets in the region specified by the credentials/config file.
 {{% /note %}}
+
+## Copying Between Two Buckets
+
+You can use `boto3` to copy an object from one S3 location to another using the following code example:
+
+```python
+import boto3
+
+client = boto3.client('s3')
+
+src = {
+    'Bucket': 'my-src-bucket',
+    'Key': 'my-file.txt',
+}
+
+# This will copy s3://my-src-bucket/my-file.txt to s3://my-dest-bucket/copy-of-my-file.txt
+client.copy(src, 'my-dest-bucket', 'copy-of-my-file.txt')
+```
