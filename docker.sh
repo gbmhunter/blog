@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Fail script on any error
+set -e
+
 # Build a docker image using the Dockerfile in the current directory
 docker build -t blog-docker ./docker/
 
