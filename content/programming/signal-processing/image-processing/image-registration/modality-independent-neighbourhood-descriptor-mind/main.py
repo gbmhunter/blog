@@ -16,8 +16,8 @@ from sentinelhub import AwsTile
 from sentinelhub import AwsProductRequest
 
 
-REF_IMAGE_PATH = '/root/scratch/imagery/S2A_MSIL1C_20171010T003621_N0205_R002_T01WCV_20171010T003615/01WCV,2017-10-10,0/B03.jp2'
-CMP_IMAGE_PATH = '/root/scratch/imagery/S2A_MSIL1C_20171010T003621_N0205_R002_T01WCV_20171010T003615/01WCV,2017-10-10,0/B08.jp2'
+REF_IMAGE_PATH = '/root/scratch/S2B_MSIL2A_20190625T221609_N0212_R129_T60GUA_20190626T000320.SAFE/GRANULE/L2A_T60GUA_A012024_20190625T221608/IMG_DATA/R10m/T60GUA_20190625T221609_B03_10m.jp2'
+CMP_IMAGE_PATH = '/root/scratch/S2B_MSIL2A_20190625T221609_N0212_R129_T60GUA_20190626T000320.SAFE/GRANULE/L2A_T60GUA_A012024_20190625T221608/IMG_DATA/R10m/T60GUA_20190625T221609_B08_10m.jp2'
 LINK = "https://scihub.copernicus.eu/dhus/odata/v1/Products('15de9330-30bd-4cb0-841a-bf9b88edd4ab')/$value"
 
 DOWNLOADED_IMAGERY_DIR = '/root/scratch/imagery/'
@@ -28,7 +28,7 @@ OUTPUT_IMAGE_HEIGHT_PIXELS = 500
 
 def main():
 
-    if not (os.path.isfile(DOWNLOADED_IMAGERY_ZIP_FILE_PATH)):
+    if True:#not (os.path.isfile(DOWNLOADED_IMAGERY_ZIP_FILE_PATH)):
         download_imagery()
     else:
         print(f'Imagery already downloaded.')
@@ -140,6 +140,9 @@ def download_imagery():
     os.system(cmd)
 
     print(f'Image downloaded.')
+
+def unzip_imagery():
+    pass
 if __name__ == '__main__':
     main()
 
