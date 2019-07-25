@@ -20,18 +20,22 @@ REF_IMAGE_PATH = '/root/scratch/S2B_MSIL2A_20190625T221609_N0212_R129_T60GUA_201
 CMP_IMAGE_PATH = '/root/scratch/S2B_MSIL2A_20190625T221609_N0212_R129_T60GUA_20190626T000320.SAFE/GRANULE/L2A_T60GUA_A012024_20190625T221608/IMG_DATA/R10m/T60GUA_20190625T221609_B08_10m.jp2'
 LINK = "https://scihub.copernicus.eu/dhus/odata/v1/Products('15de9330-30bd-4cb0-841a-bf9b88edd4ab')/$value"
 
+SCRATCH_DIR = '/root/scratch/'
 DOWNLOADED_IMAGERY_DIR = '/root/scratch/imagery/'
 DOWNLOADED_IMAGERY_ZIP_FILE_PATH = '/root/scratch/imagery.zip'
+
+REF_IMAGE_CROPPED_STRETCHED_FILE_PATH = os.path.join(SCRATCH_DIR, 'ref_image.png')
+CMP_IMAGE_CROPPED_STRETCHED_FILE_PATH = os.path.join(SCRATCH_DIR, 'cmp_image.png')
 
 OUTPUT_IMAGE_WIDTH_PIXELS = 500
 OUTPUT_IMAGE_HEIGHT_PIXELS = 500
 
 def main():
 
-    if True:#not (os.path.isfile(DOWNLOADED_IMAGERY_ZIP_FILE_PATH)):
-        download_imagery()
+    if not (os.path.isfile(REF_IMAGE_PATH) and os.path.isfile(CMP_IMAGE_PATH)):
+        download_and_unzip_imagery()
     else:
-        print(f'Imagery already downloaded.')
+        print(f'Imagery already downloaded/unzipped.')
 
     if not (os.path.isfile(REF_IMAGE_PATH) and os.path.isfile(CMP_IMAGE_PATH)):
         unzip_imagery()
@@ -113,16 +117,9 @@ def main():
     #     with rasterio.open('/root/scratch/cmp_full.tif', 'w', **kwds) as dst:
     #         dst.write(cmp_array_cropped.astype(rasterio.uint16), 1)
 
-def download_imagery():
+def download_and_unzip_imagery():
     print(f'Downloading imagery...')
-    tile_id = 'L2A_T60GUA_A012024_20190625T221608'
-    #tile_id = 'S2B_MSIL2A_20190625T221609_N0212_R129_T60GUA_20190626T000320'
-    #tile_id = 'S2A_OPER_MSI_L1C_TL_MTI__20151219T100121_A002563_T38TML_N02.01'
-
-    # product_id = 'S2A_MSIL1C_20171010T003621_N0205_R002_T01WCV_20171010T003615'
-
     product_id = 'S2B_MSIL2A_20190625T221609_N0212_R129_T60GUA_20190626T000320'
-    # L2A_T60GUA_A012024_20190625T221608
 
     # request = AwsProductRequest(product_id=product_id, data_folder=DOWNLOADED_IMAGERY_DIR)
 
@@ -140,6 +137,8 @@ def download_imagery():
     os.system(cmd)
 
     print(f'Image downloaded.')
+    print(f'Unzipping...')
+    cmd = f"unzip {DOWNLOADED_IMAGERY_ZIP_FILE_PATH}"
 
 def unzip_imagery():
     pass
