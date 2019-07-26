@@ -3,8 +3,8 @@ author: "gbmhunter"
 categories: [ "Programming", "Version Control Systems" ]
 date: 2014-02-08
 draft: false
-lastmod: 2019-05-13
-tags: [ "programming", "version control systems", "VCS", "git", "amend", "fixup", "squash", "history", "commits", "vim" ]
+lastmod: 2019-07-25
+tags: [ "programming", "version control systems", "VCS", "git", "amend", "fixup", "squash", "history", "commits", "vim", "merge-base", "diff", "bisect" ]
 title: "Git"
 type: "page"
 ---
@@ -126,7 +126,7 @@ $ git config --global core.editor "vim"
 
 Now `vim` should load whenever git wants to present you with an editor, e.g. when calling  `git commit` without the `-m`.
 
-# git bisect
+## git bisect
 
 ```sh
 git bisect start COMMIT_1 COMMIT_2
@@ -161,7 +161,7 @@ To mitigate this, you can use the `--force-with-lease` option:
 $ git push --force-with-lease
 ```
 
-This will only force push as long as there are no new changes on the branch since last time you pulled or fectched from the remote. This will prevent you from accidentally wiping someones pushed changes on the branch. However, there is one major caveat, **`git push --force-with-lease` will not protect you from overwriting changes if you fetch from the origin and do not integrate the changes into your version of the branch.** This is because git checks your local `ref` for the remote branch and only lets you force push if it is the same as the remote `ref`. If you run `git fetch` (instead of `git pull`), this will update your local `ref` without incorporating the changes into your version of the branch.
+This will only force push as long as there are no new changes on the branch since last time you pulled or fetched from the remote. This will prevent you from accidentally wiping someone's pushed changes on the branch. However, there is one major caveat, **`git push --force-with-lease` will not protect you from overwriting changes if you fetch from the origin and do not integrate the changes into your version of the branch.** This is because git checks your local `ref` for the remote branch and only lets you force push if it is the same as the remote `ref`. If you run `git fetch` (instead of `git pull`), this will update your local `ref` without incorporating the changes into your version of the branch.
 
 `--force-with-lease` is a finger-full to type. To make things easier, you can create an alias like so:
 
@@ -170,3 +170,29 @@ $ git config --global alias.pushf "push --force-with-lease"
 ```
 
 To use, now just type `git pushf` at the command-line.
+
+## Get A Diff Of All The Changes On Your Branch
+
+Once you have worked on your branch for a while, you may find that you want to get a `diff` of all the changes you have made. You may think that the following would work:
+
+```bash
+$ git diff my-branch master
+```
+
+The problem with the above command is that if other changes have made their way onto `master` since you branched of it, these will also be displayed in the diff along with the changes you have made on your branch. What you really want to do is display the diff between the `HEAD` of your branch and `master` at the point you branch of it. This is called the `merge-base`. You can find the `merge-base` commit hash with:
+
+```bash
+$ git merge-base master
+```
+
+However, git has special syntax which allows you to perform a comparison with the `merge-base` in a much simpler way using the triple dot `...`:
+
+```bash
+$ git diff master...my-branch
+```
+
+If you are currently on your branch, this can be simplified even further to:
+
+```bash
+$ git diff master...
+```

@@ -2,7 +2,10 @@
 author: "gbmhunter"
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2018-11-13
+description: "A tutorial on tmux, session management software for Linux."
 draft: false
+lastmod: 2019-07-25
+tags: [ "programming", "operating systems", "Linux", "programs", "tmux", "sessions", "detach", "windows", "panes", "scrollback", "buffers", "history" ]
 title: "tmux"
 type: "page"
 ---
@@ -76,3 +79,14 @@ Renaming windows is great for organisation once you have more than one or two in
 ```text
 set-option -g allow-rename off
 ```
+
+## Swapping/Moving Windows
+
+The easiest way IMHO is to add the following to your `.tmux.conf` file:
+
+```text
+bind-key -n C-S-Left swap-window -t -1
+bind-key -n C-S-Right swap-window -t +1
+```
+
+This will allow you to press `Ctrl-Shift-Left` and `Ctrl-Shift-Right` to move the currently active tmux window left and right (i.e. swapping positions with the neighbouring windows).
