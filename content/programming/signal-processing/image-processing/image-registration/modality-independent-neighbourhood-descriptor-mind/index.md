@@ -155,6 +155,8 @@ mind_descriptors =
 
 You may be thinking, great, you've shown me how to calculate the MIND descriptors for an image, but now what? How do I use these to register two images?
 
+{{< comment >}}
+
 ### Sentinel-2 Satellite Imagery
 
 * Dataset: S2B_MSIL2A_20190625T221609_N0212_R129_T60GUA_20190626T000320
@@ -177,6 +179,8 @@ We use a small image of 50x50 pixels because the MIND correlator would take too 
 Using a brute force search found the best correlation to be at `(-1.59, -1.49)`, which is what we expect! It pretty much undoes our artificial `(1.5, 1.5)` pixel shift we added to the `NIR` band.
 
 {{% img src="mind_obj_fn.png" width="600px" %}}
+
+{{< /comment >}}
 
 ## Optimizations
 

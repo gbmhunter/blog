@@ -91,6 +91,8 @@ This is a note.
 This is a warning.
 {{% /warning %}}
 
+## Code
+
 Some inline code. `x[2] = 3`. More text.
 
 Some block code:
@@ -99,6 +101,14 @@ Some block code:
 x[3] = 4;
 int y = x;
 ```
+
+## Code Comments
+
+You should not see anything rendered below until the next heading.
+
+{{< comment >}}
+If you can see this in the HTML, the comment shortcode is not working!
+{{< /comment >}}
 
 ## Footnotes
 
