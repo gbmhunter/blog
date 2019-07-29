@@ -16,6 +16,7 @@
         "Karnaugh",
         "Nelder",
         "RPCs",
+        "SIGKILL",
         "SWIR",
         "Xubuntu",
         "abstractmethod",
@@ -178,6 +179,7 @@
         "mathcal",
         "mathematic",
         "mattias",
+        "maxdepth",
         "mbedded",
         "mcus",
         "meanwell",
@@ -233,12 +235,14 @@
         "pdmu",
         "pecl",
         "peltier",
+        "performant",
         "perlin",
         "photovoltaics",
         "pids",
         "piezo",
         "piezos",
         "pinout",
+        "pkill",
         "playlist",
         "plcc",
         "pnpn",
@@ -368,6 +372,7 @@
         "wordpress",
         "wson",
         "xampp",
+        "xargs",
         "xbees",
         "xilinx",
         "xspice",
@@ -377,5 +382,6 @@
         "zener",
         "zeners",
         "zynq"
-    ]
+    ],
+    "python.pythonPath": "env/bin/python3"
 }

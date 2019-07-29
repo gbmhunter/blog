@@ -5,7 +5,7 @@ date: 2018-06-26
 description: "A tutorial on Python debugging, including how to use pdb."
 draft: false
 lastmod: 2019-06-12
-tags: [ "programming", "programming languages", "Python", "pyrasite" ]
+tags: [ "programming", "programming languages", "Python", "pyrasite", "pdb", "escaping" ]
 title: "Python Debugging"
 type: "page"
 ---
@@ -19,6 +19,21 @@ n   step to Next line or current function returns
 c   continue until breakpoint is hit
 b <line_num> set breakpoint at line number in current file
 cl    clear all breakpoints (asks for confirmation)
+```
+
+### Escaping Variables Which Conflict With PDB Commands
+
+Sometimes, you will run to run Python commands through the PDB console which will clash with PDB's own command set. One example would be if you had a variable called c, and wanted to assign to it:
+
+```python
+# (in a PDB debugging console)
+c = 23
+```
+
+Instead of assigning the variable `c` the value `23`, PDB will interpret the above `c` as it's continue command. To prevent this from happening, prefix the command with `!`:
+
+```python
+!c = 23
 ```
 
 ## Entering A Running Python Process
