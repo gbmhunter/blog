@@ -1,10 +1,10 @@
 ---
 author: "gbmhunter"
 categories: [ "Posts", "Updates" ]
-date: 2019-07-30
+date: 2019-07-31
 description: "Blog updates during July 2019."
 draft: false
-lastmod: 2019-07-30
+lastmod: 2019-07-31
 tags: [ "MIND", "SSC", "optimization", "rm", "remove", "satellites", "Jupyter" ]
 title: "July 2019 Updates"
 type: "post"

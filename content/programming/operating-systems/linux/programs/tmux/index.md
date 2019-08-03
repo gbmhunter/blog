@@ -14,6 +14,8 @@ type: "page"
 
 `tmux` uses an _alternate screen buffer_ which is the same height and width as the parent terminal.
 
+In all of the below code examples, `<prefix>` refers to the `tmux` prefix key combination. It is typically `Ctrl-B` by default, although it can vary from system to system.
+
 ## Create And Attach To Sessions
 
 To attach to an already created session:
@@ -65,11 +67,16 @@ $ tmux kill-session -t my_session
 Useful `tmux` window keys (all of these have to be preceeded with the prefix key, which by default is `Ctrl-B`):
 
 ```text
+s    List sessions (select with arrow keys and enter)
+$    Name session.
+(    Cycle forward through sessions.
+)    Cycle backward through sessions.
 c    New window.
 ,    Name window.
 w    List windows (select with arrow keys and enter)
 f    Find window.
 &    Kill window.
+t    Show a big clock (kind of like a screen saver)
 ```
 
 ### How To Prevent tmux From Renaming The Window
@@ -80,7 +87,7 @@ Renaming windows is great for organisation once you have more than one or two in
 set-option -g allow-rename off
 ```
 
-## Swapping/Moving Windows
+## Swapping/Moving Windows In The Same Session
 
 The easiest way IMHO is to add the following to your `.tmux.conf` file:
 
@@ -90,3 +97,25 @@ bind-key -n C-S-Right swap-window -t +1
 ```
 
 This will allow you to press `Ctrl-Shift-Left` and `Ctrl-Shift-Right` to move the currently active tmux window left and right (i.e. swapping positions with the neighbouring windows).
+
+## Moving Windows Between Sessions
+
+`tmux` allows you to move windows between different sessions with the `move-window` command.
+
+```text
+<prefix>:move-window -t dst_session:window_id
+```
+
+You have to move the window to a free `window_id` (i.e., not one in use).
+
+## Re-ordering tmux Sessions
+
+Unlike windows which can be arbitrarily re-ordered, `tmux` always orders sessions alphabetically by name. The best solution if you are looking to order sessions is to prefix them with sequential numeral/characters (e.g. `0_my_session`, `1_my_other_session`).
+
+You can rename your current session from within `tmux` by typing:
+
+```text
+<prefix> $
+```
+
+Enter a new name, and press `Return`.
