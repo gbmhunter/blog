@@ -108,3 +108,36 @@ int main() {
     connect(&qComboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &A::HandleActivated);
 }
 ```
+
+## Choosing A Kit
+
+* MSVC2017 64-bit
+* MinGW
+* Android
+
+## GUI Objects
+
+### TextEdit
+
+.hpp:
+
+```c++
+private slots:
+    void onTextChanged();
+```
+
+.cpp:
+
+```c++
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    connect(ui->textEdit1, SIGNAL(textChanged()), this, SLOT(onTextChanged()));
+}
+
+void MainWindow::onTextChanged() {
+    qDebug() << "Text changed!";
+}
+```
