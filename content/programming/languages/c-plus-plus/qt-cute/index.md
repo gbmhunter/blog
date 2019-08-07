@@ -14,6 +14,37 @@ type: "page"
 
 Qt is a software framework and library aimed at developing GUIs. It's primary API is exposed in C++, although it provides the ability to write the UI in Javacript (or at least partially) through the QML API and has Python bindings through the officially supported PySide2 bindings.
 
+## Installation
+
+No matter what platform you are installing Qt Creator on, the amount of disk space required can be very large, depending on the selected "kits".
+
+
+### macOS
+
+You need at least the Xcode command line tools installed so that Qt Creator can find/use the C++ compiler.
+
+{{% img src="qt-creator-you-need-to-install-xcode-command-line-tools.png" width="200px" caption="The Qt installer warning you that you need Xcode and the Xcode command-line tools installed. Note that you can make do with just the command-line tools." %}}
+
+You can download both Xcode and the Xcode command-line tools from the Apple app store.
+
+The Xcode command-line tools can be installed with:
+
+```bash
+$ xcode-select --install
+```
+
+Kits:
+
+* Desktop Qt x.x.x clang 64bit
+
+### Windows
+
+Kits:
+
+* MSVC2017 64-bit
+* MinGW
+* Android
+
 ## Threading
 
 Qt is designed around an event/listener paradigm (which they call _signals_ and _slots_) which promotes an event driven design over blocking method calls.
@@ -108,12 +139,6 @@ int main() {
     connect(&qComboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &A::HandleActivated);
 }
 ```
-
-## Choosing A Kit
-
-* MSVC2017 64-bit
-* MinGW
-* Android
 
 ## GUI Objects
 
