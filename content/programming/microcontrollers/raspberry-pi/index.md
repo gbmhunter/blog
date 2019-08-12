@@ -1,14 +1,17 @@
 ---
 author: gbmhunter
+categories: [ "Programming", "Microcontrollers", "RaspberryPi" ]
 date: 2013-03-23
 draft: false
+lastmod: 2019-08-10
+tags: [ "programming", "microcontrollers", "RaspberryPi", "omxplayer", "mp3", "sound", "AUX" ]
 title: RaspberryPi
 type: page
 ---
 
 ## Overview
 
-The RaspberryPi is a cheap, fully-functional micro-computer.
+The RaspberryPi is a family of cheap, fully-functional micro-computers.
 
 {{< figure src="/images/project-autoelectricblanket/raspberry-pi-with-lots-of-cables-filtered.jpg" caption="The RaspberryPi while testing."  width="800px" >}}
 
@@ -22,11 +25,11 @@ At the bare minimum, you'll also need a USB keyboard, mouse (hard-outs may be ab
   <tbody>
     <tr>
       <td>Default username:</td>
-      <td>pi</td>
+      <td><code>pi</code></td>
     </tr>
     <tr>
       <td>Default password:</td>
-      <td>raspberry</td>
+      <td><code>raspberry</code></td>
     </tr>
   </tbody>
 </table>
@@ -245,13 +248,27 @@ This [great tutorial on the Kitware blog](http://www.kitware.com/blog/home/post/
 sudo apt-get install npm
 ```
 
+### Playing An MP3 Through The Audio Jack
+
+You can use the `omxplayer` program to play mp3's from the RaspberryPi:
+
+```bash
+omxplayer -o local path_to_sound.mp3
+```
+
+If you want to loop a single sound file, you can add the option `--loop`:
+
+```bash
+omxplayer -o local --loop path_to_sound.mp3
+```
+
 ## Uses
 
-## Education
+### Education
 
 The RPi is great for educating people about computers, as it is cheap and readily available.
 
-## Home Automation
+### Home Automation
 
 QW Home Automation
 
