@@ -34,7 +34,7 @@ $ conda install pandas
 
 The core data structure in pandas is the `DataFrame`. A `DataFrame` is a container for holding tabular data (2D), and supports labelled rows and columns.
 
-You can create a `DataFrame` by passing in a `dict`:
+You can create a `DataFrame` by passing in a `dict`, where each key is a column name and the value is a List containing the data for that column (one entry per row):
 
 ```python
 df = pd.DataFrame({
@@ -70,7 +70,7 @@ The command above returns a dataframe.
 
 ### Selecting Rows Based On A Column Value
 
-To select all rows in a dataframe in where a particular column has a certain value, use the following code:
+To select all rows in a dataframe in where a particular column has a certain value (filtering), use the following code:
 
 ```python
 df.loc[df['column_name'] == some_value]
@@ -100,6 +100,22 @@ print(filtered_df)
 #    A    B
 # 0  1  foo
 # 3  3  foo
+# 4  4  foo
+```
+
+For more advanced selection criteria, you can provide your own filter function, which takes one argument, the current `row`:
+
+```python
+def filter(row): # This will filter out all rows where A is not an even number.
+    if row['A'] % 2 == 0:
+        return True
+    else:
+        return False
+
+filt_df = df.loc[df.apply(filter, axis=1)]
+print(filt_df)
+# A    B
+# 2  6  bar
 # 4  4  foo
 ```
 

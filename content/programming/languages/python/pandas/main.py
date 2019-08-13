@@ -38,3 +38,15 @@ print(filtered_df)
 # 0  1  foo
 # 3  3  foo
 # 4  4  foo
+
+def filter(row):
+    if row['A'] % 2 == 0:
+        return True
+    else:
+        return False
+
+filt_df = df.loc[df.apply(filter, axis=1)]
+print(filt_df)
+# A    B
+# 2  6  bar
+# 4  4  foo
