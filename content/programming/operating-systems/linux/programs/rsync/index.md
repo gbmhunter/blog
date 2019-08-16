@@ -76,22 +76,27 @@ Compress data while doing transfer. Some files cannot be compressed, which inclu
 
 Good general purpose rsync use, without propagating deletions:
 
-```
-rsync -arvz source destination
+```bash
+$ rsync -arvz source destination
 ```
 
 Good general purpose rsync use with deletion propagation (be careful!):
 
-```
-rsync -adrvz source destination
+```bash
+$ rsync -adrvz source destination
 ```
 
+Copy images from the server to the local working directory using glob-style pattern matching:
+
+```bash
+$ rsync user@1.2.3.4:/images/*.png .
+```
 
 `rsync` is a great tool for allowing you write code on a fully-fledged computer, and then transfer it to a RaspberryPi easily and quickly for running. Normally it only takes a matter to seconds to transfer after you have made modest code changes.
 
 An interesting side-note is that you can replicate the capabilities of the Mac OS time machine with rsync using the following commands (taken from [http://en.wikipedia.org/wiki/Rsync](http://en.wikipedia.org/wiki/Rsync)):
 
-```sh
+```bash
 #date=`date "+%Y-%m-%dT%H:%M:%S"`
 date=`date "+%FT%T"`
 rsync -aP --link-dest=$HOME/Backups/current /path/to/important_files $HOME/Backups/back-$date
@@ -143,7 +148,15 @@ You can choose to only include specific files by first matching them with `--inc
 For example, to copy all `*.png` files from `~/source/` to `~/destination/`:
 
 ```sh
-$ rsync -r --include="*.png" --exclude='8' ~/source/ ~/destination/
+$ rsync -r --include="*.png" --exclude='*' ~/source/ ~/destination/
+```
+
+### Glob Expressions In The File Path
+
+As well as the `--include` and `--exclude` syntax above, you can also select files by using glob syntax within the source path:
+
+```bash
+$ rsync /source_dir/*.png /dest_dir/
 ```
 
 ## Combining rsync With find
@@ -151,3 +164,13 @@ $ rsync -r --include="*.png" --exclude='8' ~/source/ ~/destination/
 ```sh
 find source_dir -iname '*.jpg' -print0 |  rsync -0 -v --files-from=- . destination_dir/
 ```
+
+## Skipping Non-Regular File
+
+Upon running `rsync`, you may see the message:
+
+```text
+skipping non-regular file <path_to_file>
+```
+
+This is usually printed when `rsync` comes across a symbolic link. The default action is to skip symbolic links (rather than copy them, or follow the link and copy the contents).
