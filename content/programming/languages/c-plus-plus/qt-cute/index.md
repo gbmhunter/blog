@@ -4,8 +4,8 @@ categories: [ "Programming", "Programming Languages", "C++" ]
 date: 2017-09-28
 description: "Info about the the Qt software framework/library, including threading, serial ports and more."
 draft: false
-lastmod: 2019-06-27
-tags: [ "programming", "programming languages", "C++", "Qt", "QSerialPort", "signals", "slots", "QObject", "PySide2" ]
+lastmod: 2019-08-18
+tags: [ "programming", "programming languages", "C++", "Qt", "QSerialPort", "signals", "slots", "QObject", "PySide2", "file names", "FAT32", "Qt Creator" ]
 title: "Qt (cute)"
 type: "page"
 ---
@@ -50,6 +50,20 @@ Kits:
 Qt is designed around an event/listener paradigm (which they call _signals_ and _slots_) which promotes an event driven design over blocking method calls.
 
 All UI interaction must occur in one thread (the default UI thread). It is not advisable to add blocking calls in this thread as this will make the UI unresponsive while the thread is blocked.
+
+## Allowing File Names With Capital Letters
+
+It seems a little strange, that by default, Qt Creator will not allow files with capital letters in them. This was probably done to prevent problems when using FAT32 file systems (e.g. older versions of Windows) that were case insensitive (yet _case preserving_). However, many common file naming standards for C++ along with many 3rd party libraries will use capital letters. Luckily, you can enable/allow capital letters in file names in the Qt Creator settings:
+
+1. Click _Tools_ from the top menu bar and then click on _Options_.
+
+    {{% img src="qt-creator-menu-tools-options.png" width="300px" %}}
+
+1. Uncheck the _Lower case file names_ checkbox.
+
+    {{% img src="qt-creator-uncheck-lower-case-filenames.png" width="700px" %}}
+
+1. Done!
 
 ## Serial Port (QSerialPort)
 

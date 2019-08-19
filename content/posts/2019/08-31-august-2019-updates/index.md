@@ -11,3 +11,7 @@ type: "post"
 ---
 
 * New tutorial on Standard Deviations.
+
+* Updated the Qt page with a section on how to allow file names with capital letters in Qt Creator.
+
+    {{% figure src="/programming/languages/c-plus-plus/qt-cute/qt-creator-uncheck-lower-case-filenames.png" width="300px" %}}
