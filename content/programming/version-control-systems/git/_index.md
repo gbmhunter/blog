@@ -128,27 +128,40 @@ Now `vim` should load whenever git wants to present you with an editor, e.g. whe
 
 ## git bisect
 
+`git bisect` is a useful tool to hunt down the exact commit which caused a regression in a test. It automatically does a binary search through all the commits from a known good to known bad commit, finding the first commit in where the est went from passing to failing.
+
 ```sh
-git bisect start COMMIT_1 COMMIT_2
-git bisect run
-git bisect reset
+$ git bisect start BAD_COMMIT GOOD_COMMIT
+$ git bisect run
+
+You can exit the git `bisect` state with `git bisect reset`:
+
+```sh
+$ git bisect reset
+```
+
+You can provide git bisect with a script to run on every iteration. You have the freedom to do anything you want in this script (e.g. run specific tests) as long as you return `0` if this commit is o.k., or a `1` if the commit is bad (fails.)
+
+```sh
+$ git bisect start BAD_COMMIT GOOD_COMMIT
+$ git bisect run ./my_script.py
 ```
 
 Suppose you want to add some custom changes to every run. You can `cherry-pick` some changes before running the test command:
 
 ```sh
-git cherry-pick my-changes
-python test_program.py
+$ git cherry-pick my-changes
+$ python test_program.py
 ```
 
 DO NOT leave the repo status in a state other than what git bisect had configured it in.
 
 Bisecting, a merge base must be tested.
 
-To give you an indication on the number of commits involved in the bisection, you can manually print out a tidy list of all the commits between A and B with:
+To give you an indication on the number of commits involved in the bisection, you can manually print out a tidy list of all the commits between `A` and `B` with:
 
 ```sh
-git log --oneline SHA_A ^SHA_B
+$ git log --oneline SHA_A ^SHA_B
 ```
 
 ## Force With Lease
