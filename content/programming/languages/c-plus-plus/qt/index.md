@@ -6,7 +6,7 @@ description: "Info about the the Qt software framework/library, including thread
 draft: false
 lastmod: 2019-08-18
 tags: [ "programming", "programming languages", "C++", "Qt", "QSerialPort", "signals", "slots", "QObject", "PySide2", "file names", "FAT32", "Qt Creator" ]
-title: "Qt (cute)"
+title: "Qt"
 type: "page"
 ---
 
@@ -154,9 +154,33 @@ int main() {
 }
 ```
 
+## QWidget GUI Layout
+
+GUI layout in Qt is done with both `QWidget` and `QLayout` objects. The GUI is based upon a hierarchy of `QWidget` objects. `Qwidget` objects can have multiple `QWidget`'s as children elements. You can create and assign a `QLayout` object to a `QWidget` object (using `my_widget->setLayout()`), and then the `QLayout` object will control the layout of the `QWidget`'s children.
+
+{{% note %}}
+`QLayout` objects cannot be assigned as children of a `QWidget` object. The `QWidget` objects are the only objects allowed in the GUI hierarchy tree, each `QLayout` must be assigned to a `QWidget`.
+{{% /note %}}
+
+### Layout Options
+
+QHBoxLayout
+
 ## GUI Objects
 
-### TextEdit
+All GUI elements in a standard Qt GUI application inherit from the base class `QWidget`.
+
+You do not have to manually delete `QWidget` objects that you have created, as long as they have a `QWidget` parent which will be deleted.
+
+### QScrollArea
+
+A `QScrollArea` inherits from `QWidget` and provides a block UI element which allows the user to scroll when the child widget(s) exceed the `QScrollArea` bounds.
+
+Passing in `true` to `QScrollArea::setWidgetResizeable()` gives the scroll area permission to resize it's child widgets. This means that `child_widget.resize()` may not have any effect.
+
+### QTextEdit
+
+**Watching For Text Changes**
 
 .hpp:
 

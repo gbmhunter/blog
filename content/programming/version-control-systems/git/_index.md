@@ -128,11 +128,23 @@ Now `vim` should load whenever git wants to present you with an editor, e.g. whe
 
 ## git bisect
 
-`git bisect` is a useful tool to hunt down the exact commit which caused a regression in a test. It automatically does a binary search through all the commits from a known good to known bad commit, finding the first commit in where the est went from passing to failing.
+`git bisect` is a useful tool to hunt down the exact commit which caused a regression in a test. It can do a manual or automatic binary search through all the commits from a known good to known bad commit, finding the first commit in where the test/build went from passing to failing.
+
+You can start a bisection with:
 
 ```sh
 $ git bisect start BAD_COMMIT GOOD_COMMIT
-$ git bisect run
+```
+
+Where `BAD_COMMIT` is the hash of a commit which is known to be bad (fails the tests), and `GOOD_COMMIT` is the hash of a commit which is known to be good (passes the tests). The next step depends on whether you want to do it somewhat manually by providing user input at each iteration, or completely automatically.
+
+### Automatic git bisect
+
+`git bisect` can be completely automated by providing a command to `git bisect run`. 
+
+```
+$ git bisect run <command>
+```
 
 You can exit the git `bisect` state with `git bisect reset`:
 
@@ -140,7 +152,13 @@ You can exit the git `bisect` state with `git bisect reset`:
 $ git bisect reset
 ```
 
-You can provide git bisect with a script to run on every iteration. You have the freedom to do anything you want in this script (e.g. run specific tests) as long as you return `0` if this commit is o.k., or a `1` if the commit is bad (fails.)
+You can view the current status of the bisection at any time with the command:
+
+```sh
+$ git bisect log
+```
+
+You can automate the entire process by provided `git bisect` with a script to run on every iteration. You have the freedom to do anything you want in this script (e.g. run specific tests) as long as you return `0` if this commit is o.k., or a `1` if the commit is bad (fails.)
 
 ```sh
 $ git bisect start BAD_COMMIT GOOD_COMMIT

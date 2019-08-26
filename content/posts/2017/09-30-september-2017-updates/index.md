@@ -19,6 +19,6 @@ type: post
 
 * Updates to the {{% link text="Yocto Project->Recipes page" src="/programming/embedded-linux/yocto-project/yocto-recipes" %}}.  
 
-* New {{% link text="Qt page" src="/programming/languages/c-plus-plus/qt-cute" %}} under Programming->Languages->C++.  
+* New {{% link text="Qt page" src="/programming/languages/c-plus-plus/qt" %}} under Programming->Languages->C++.  
 
 	  {{< figure src="/images/2017/09/qt-cute-software-logo.png" width="293px" caption="The QT (pronounced 'cute') logo."  >}}

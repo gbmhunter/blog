@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Updates" ]
 date: 2018-02-28
 draft: false
+lastmod: 2018-02-28
 tags: [ "compiler", "coordinate", "cross product", "fixed point", "geodesic", "geometry", "mathematics", "NinjaCalc", "QT", "RS-232", "UART", "vectors", "warnings" ]
-title: February 2018 Updates
-type: post
+title: "February 2018 Updates"
+type: "post"
 ---
 
 * Updates to the {{% link text="UART" src="/electronics/communication-protocols/uart-communication-protocol" %}} and {{% link text="RS-232" src="/electronics/communication-protocols/rs-232-protocol" %}} communication protocol pages.  
@@ -22,6 +23,6 @@ type: post
 
     {{< figure src="/images/2018/02/ninja-calc-two-coordinate-geodesics-calculator-screenshot.png" width="300px" >}}
 
-* Added information on "unused parameter" compiler warnings to the {{% link text="Qt page" src="/programming/languages/c-plus-plus/qt-cute" %}}.  
+* Added information on "unused parameter" compiler warnings to the {{% link text="Qt page" src="/programming/languages/c-plus-plus/qt" %}}.  
 
     {{< figure src="/images/2017/09/qt-cute-software-logo.png" width="200px" >}}
