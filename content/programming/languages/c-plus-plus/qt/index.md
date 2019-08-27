@@ -12,12 +12,19 @@ type: "page"
 
 ## Overview
 
-Qt is a software framework and library aimed at developing GUIs. It's primary API is exposed in C++, although it provides the ability to write the UI in Javacript (or at least partially) through the QML API and has Python bindings through the officially supported PySide2 bindings.
+Qt is a software framework and library aimed at developing GUIs. It's primary API is exposed in C++, although it provides the ability to write the UI in JavaScript (or at least partially) through the QML API and has Python bindings through the officially supported PySide2 bindings.
 
 ## Installation
 
 No matter what platform you are installing Qt Creator on, the amount of disk space required can be very large, depending on the selected "kits".
 
+### Linux
+
+On Debian-like machines (e.g. Ubuntu):
+
+```bash
+$ sudo apt install qt5-default
+```
 
 ### macOS
 
@@ -33,9 +40,11 @@ The Xcode command-line tools can be installed with:
 $ xcode-select --install
 ```
 
-Kits:
+Available Qt Kits For macOS:
 
 * Desktop Qt x.x.x clang 64bit
+
+Qt will typically install into your user directory, including a directory for both the version of Qt and the kit used. For example, using `v5.13.0` and the Clang 64-bit kit, the default install path would look something like `/Users/<user_name>/Qt/5.13.0/clang_64/`.
 
 ### Windows
 
@@ -204,3 +213,25 @@ void MainWindow::onTextChanged() {
     qDebug() << "Text changed!";
 }
 ```
+
+## Building/Deploying
+
+What is an app bundle?
+
+CICD services which support macOS? Azure does support macOS workers for building/deploying your application. TravisCI currently does not.
+
+### Linux
+
+The open-source program `linuxdeployqt` (available from [here](https://github.com/probonopd/linuxdeployqt) aims to mimic the functionality of `macdeployqt`, but for Linux instead of macOS. It aims to bundle all dependencies together to produce a single file that is executable.
+
+### macOS
+
+The Qt installation includes an executable called `macdeployqt` (located at `<Qt install dir>/bin/`). This command-line program can be used to create a disk image (`.dmg`) file from the app bundle.
+
+To create a `.dmg` file:
+
+```bash
+$ <Qt install dir>/macdeployqt <path to app bundle> -dmg
+```
+
+### Windows
