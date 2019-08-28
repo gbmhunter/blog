@@ -228,6 +228,8 @@ The open-source program `linuxdeployqt` (available from [here](https://github.co
 
 The Qt installation includes an executable called `macdeployqt` (located at `<Qt install dir>/bin/`). This command-line program can be used to create a disk image (`.dmg`) file from the app bundle.
 
+{{% img src="macdeployqt-cli-screenshot.png" width="500px" caption="Screenshot of the Qt macdeployqt CLI tool." %}}
+
 To create a `.dmg` file:
 
 ```bash

@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Programming", "Version Control Systems" ]
 date: 2014-02-08
 draft: false
-lastmod: 2019-07-25
+lastmod: 2019-08-26
 tags: [ "programming", "version control systems", "VCS", "git", "amend", "fixup", "squash", "history", "commits", "vim", "merge-base", "diff", "bisect" ]
 title: "Git"
 type: "page"
@@ -33,7 +33,7 @@ $ git commit --amend --no-edit
 ```
 
 {{% warning %}}
-Ammending a commit modifies the git history. You should ammend commits on private (local) branches, and never on public branches. Ammending commits that have been shared with other developers will cause history conflicts which are difficult to resolve.
+Amending a commit modifies the git history. You should amend commits on private (local) branches, and never on public branches. Amending commits that have been shared with other developers will cause history conflicts which are difficult to resolve.
 {{% /warning %}}
 
 If you are pushing a branch with an amended commit, you may have to use the `-f` (force) flag if the remote already has a copy of the commit you modified.
@@ -60,7 +60,7 @@ When using `--fixup`, you do not specify a commit message. **The commit message 
 Just like `--amend`, `--fixup` will also **modifies the git history** (once you rebase). You should `fixup` commits on private (local) branches, and never on public branches. Fixing up commits that have been shared with other developers will cause history conflicts which are difficult to resolve.
 {{% /warning %}}
 
-`--fixup` behaves slightly different to `--amend`, one of the main differences is that you can rewrite any commit in the current history, not just the last one as you can with `--amend`. `--fixup` is a great tool for keeping your git history clean when making small bug fixes and improvements to already committed features on a development brnach. This is best shown with an example:
+`--fixup` behaves slightly different to `--amend`, one of the main differences is that you can rewrite any commit in the current history, not just the last one as you can with `--amend`. `--fixup` is a great tool for keeping your git history clean when making small bug fixes and improvements to already committed features on a development branch. This is best shown with an example:
 
 ```sh
 $ git commit -m "My feature 1."
@@ -76,10 +76,12 @@ $ git commit --fixup af82c
 # Time to clean-up before submitting merge request. All commits
 # flagged as fixup will automatically be set to be squashed into
 # the feature commit you specified.
-$ git rebase -i --autosquash
+$ git rebase -i --autosquash 8f82c^
 ```
 
-You can permanentely change your `git` settings so that you don't have to add `--autosquash` every time you do a rebase:
+In the `rebase` command above, `8f82c^` was used to say "I want to rebase of the commit BEFORE `8f82c`. Note all these hashes are shortened versions of the full hash, which will as long as there are no hash collisions (with 5 characters, it's unlikely there will be for a small number of commits).
+
+You can permanently change your `git` settings so that you don't have to add `--autosquash` every time you do a rebase:
 
 ```sh
 $ git config --global rebase.autoSquash true
@@ -119,6 +121,8 @@ bd560630 HEAD@{4}: commit: Converting images into page resources.
 ```
 
 ## Set vim As The Default Editor For Git
+
+Run the following command to set `vim` as the default text editor for `git`:
 
 ```sh
 $ git config --global core.editor "vim"
