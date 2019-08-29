@@ -3,8 +3,8 @@ author: "gbmhunter"
 categories: [ "Programming", "Version Control Systems" ]
 date: 2014-02-08
 draft: false
-lastmod: 2019-08-26
-tags: [ "programming", "version control systems", "VCS", "git", "amend", "fixup", "squash", "history", "commits", "vim", "merge-base", "diff", "bisect" ]
+lastmod: 2019-08-29
+tags: [ "programming", "version control systems", "VCS", "git", "amend", "fixup", "squash", "history", "commits", "vim", "merge-base", "diff", "bisect", "cherry-pick" ]
 title: "Git"
 type: "page"
 ---
@@ -17,6 +17,14 @@ If you have some small improvements on branch `A` that make debugging/testing ea
 $ git merge --no-commit --squash A
 $ git reset HEAD
 ```
+
+If you don't want to bring in all the changes from branch `A` to branch `B`, you can instead `cherry-pick` specific commits:
+
+```sh
+$ git cherry-pick --no-commit A
+```
+
+The above command will just bring over the changes from the latest commit on `A`, not the entire history of the branch. You can of course replace `A` with a specific commit hash.
 
 ## Amending To The Last Commit
 

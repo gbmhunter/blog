@@ -361,6 +361,7 @@
         "tssop",
         "uart",
         "uint",
+        "unary",
         "unistd",
         "unos",
         "unsolderable",

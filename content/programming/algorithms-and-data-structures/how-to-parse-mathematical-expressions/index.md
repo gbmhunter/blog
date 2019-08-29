@@ -50,15 +50,13 @@ Evaluator: Processes the output of the parser, and produces the result the user 
 
 ## Grammar
 
-Grammar, the _language of languages_.
+
 
 Context-free grammars are the most common.
 
-### Basic Grammar
+Grammar is a way of formally describing the structure of a language. You can call grammar the _language of languages_. Grammar is usually written as a sequence of _rules_. Each rule has two parts, a _name_, and an _expansion_ of the name. The expansion shows what the name can built from. The idea of rules is to describe the syntax as a hierarchy, starting at the broad structure of the language and then breaking it down into smaller and smaller components. The _name_ can also be called a _non-terminal symbol_. This refers to the fact that it just an intermediary representation and will be expanded into smaller components. Things such as a `number` are called _terminal symbols_.
 
-EBNF is made up of a sequence of _rules_. Each rule has two parts, a _name_, and an _expansion_ of the name. The expansion shows what the name can built from. The idea of rules is to describe the syntax as a hierachy, starting at the broad structure of the language and then breaking it down into smaller and smaller components. The _name_ can also be called a _non-terminal symbol_. This refers to the fact that it just an intermediatary representation and will be expanded into smaller components. Things such as a `number` are called _terminal symbols_.
-
-We will use a simple calculator program as an example. The calculator allows you to type in _expressions_. Each _expression_ is built from two _terms_, which are added togeter.
+We will use a simple calculator program as an example. The calculator allows you to type in _expressions_. Each _expression_ is built from two _terms_, which are added together. We will 
 
 ```text
 expr -> term + term
@@ -66,11 +64,71 @@ term -> factor * factor
 factor -> number
 ```
 
-Of course, the basic syntax above is fairly limiting. While our calculator would accept `2*3 + 4*5`, it wouldn't accept `2*3 + 4*5 + 6*7` as it only allows for exactly two terms (and exactly two factors). We also couldn't type `2*3 - 4*5` as it only allows for addition! We need a way of grouping multiple operators together `+` and`-`, and expressing that an expression can be composed of any number of terms added together. This is where Extended Backus-Naur Form (EBNF) comes in useful (see below).
+Of course, the basic syntax above is fairly limiting. While our calculator would accept `2*3 + 4*5`, it wouldn't accept `2*3 + 4*5 + 6*7` as it only allows for exactly two terms (and exactly two factors in each term). We also couldn't type `2*3 - 4*5` as it only allows for addition! We need a way of grouping multiple operators together `+` and`-`, and expressing that an expression can be composed of any number of terms added together. We will improve the functionality of our calculator when we look at Extended Backus-Naur Form (EBNF) below.
 
 ### Extended Backus-Naur Form (EBNF)
 
-EBNF is a standardized way of describing grammar. All names are enclosed in angled brackets, e.g. `<name>`.
+EBNF is a standardized way of writing grammar. All names are enclosed in angled brackets, e.g. `<name>`. Let's write a basic calculator:
+
+```text
+<expr>   := number "+" number
+```
+
+So far, our calculator only allows an expression in the form `2+3`. Let's add more to this!
+
+The `|` in EBNF represents `OR`, e.g. an `expr` may consist of a `term + term` OR just a `term`.
+
+```text
+<expr>   := number "+" number
+         |  number
+```
+
+Now we can write expressions such as: `3 + 2`, or just `4` (typing just `4` on a calculator seems a little pointless, but we would expect it to work!).
+
+However, we still can't type `1 + 2 + 3`, as the grammar does not allow for more than two numbers. You can use curly braces `{` and `}` to indicate that what's inside can repeated zero or more times. The below example states that our calculator can accept an expression which equal to one term **plus zero or more terms**:
+
+```text
+<expr>   := <term> {"+" <term>}
+```
+
+Now we can write expressions such as: `1 + 2 + 3` and `4`.
+
+Note that we don't have to specify `| number` anymore, as the case in where the expression is just a single number is handled by zero repetitions of `{"+" <term>}`.
+
+We can use round braces `(` and `)` to group things together. The below example specifies that an expression is composed of any number of terms that are either added OR subtracted from one another:
+
+```text
+<expr> := number {( "+" | "-" ) number}
+```
+
+Now we can write things such as `1 - 2` and `1 + 2 - 3`.
+
+Lets now expand the calculators functionality so that we can also multiply! 
+
+```text
+<expr>   := <term> {("+" | "-") <term>}
+
+<term>   := number {("*" | "/") number}
+```
+
+Notice how we added a new rule for multiplication/division. Where everywhere previously we could use a `number` in the addition/subtraction rule, we now have a `<term>`. This further expands to say that `<term>` is composed of any amount of numbers separated by `*` or `/`. Structuring the grammar in this way captures the correct precedence of mathematical operators, **multiplication must occur before addition**.
+
+Now we can write things such as: `1*2 + 3*4` or `1 + 2*4` or `1*2`!
+
+We will now add support for negation symbols in front of numbers. Everything discussed so far has been a binary operator, i.e. it has operated on two numbers. The negation symbol is a unary operator (operates on one number). It is also optional, so we can enclose it in square brackets (`[` and `]`).
+
+```text
+<expr>   := <term> {("+" | "-") <term>}
+
+<term>   := <factor> {("*" | "/") <factor>}
+
+<factor> := [ "-" ] number
+```
+
+Now we can write expressions such as: `-1*2` or `1*-2` or `-1 + 2`! 
+
+
+Putting all of this together, the complete grammar for our calculator now becomes:
 
 ```text
 <expr>   := <term> "+" <term>
@@ -80,26 +138,6 @@ EBNF is a standardized way of describing grammar. All names are enclosed in angl
          |  <factor>
 
 <factor> := number
-```
-
-The `|` in EBNF represents `OR`, e.g. an `expr` may consist of a `term + term` OR just a `term`. This means our calculator allows an expression to be `3 + 2`, or just `4`.
-
-You can enclose things in square brackets to describe something that is optional. The following example specifies that you are allowed to add a negative sign in front of any number, which is surely what we want if we want the 
-
-```text
-<factor> := [ "-" ] number
-```
-
-You can use curly braces `{` and `}` to indicate that what's inside can repeated zero or more times. The below example states that our calculator can accept an expression which equal to one term **plus zero or more terms**:
-
-```text
-<expr> := <term> { "+" <term> }
-```
-
-We can use round braces `(` and `)` to group things together. The below example specifies that an expression is composed of any number of terms that are either added OR subtracted from one another:
-
-```text
-<expr> := <term> {( "+" | "-" ) <term>}
 ```
 
 
