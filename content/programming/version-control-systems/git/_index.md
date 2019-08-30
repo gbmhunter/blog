@@ -15,16 +15,17 @@ If you have some small improvements on branch `A` that make debugging/testing ea
 
 ```sh
 $ git merge --no-commit --squash A
-$ git reset HEAD
+$ git reset
 ```
 
 If you don't want to bring in all the changes from branch `A` to branch `B`, you can instead `cherry-pick` specific commits:
 
 ```sh
 $ git cherry-pick --no-commit A
+$ git reset
 ```
 
-The above command will just bring over the changes from the latest commit on `A`, not the entire history of the branch. You can of course replace `A` with a specific commit hash.
+The above command will just bring over the changes from the latest commit on `A`, not the entire history of the branch. The `git reset` removes the changes from your index. You can of course replace `A` with a specific commit hash.
 
 ## Amending To The Last Commit
 
