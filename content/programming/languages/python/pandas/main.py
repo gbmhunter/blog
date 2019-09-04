@@ -50,3 +50,29 @@ print(filt_df)
 # A    B
 # 2  6  bar
 # 4  4  foo
+
+#=================
+# SORTING
+#=================
+
+df = pd.DataFrame({
+    'A': [ 1, 5, 6, 3, 4 ],
+    'B': [ 'foo', 'bar', 'bar', 'foo', 'foo' ]
+})
+sorted_df = df.sort_values(by='A')
+print(sorted_df)
+#    A    B
+# 0  1  foo
+# 3  3  foo
+# 4  4  foo
+# 1  5  bar
+# 2  6  bar
+
+sorted_df = df.sort_values(by='A', ascending=False)
+print(sorted_df)
+#    A    B
+# 2  6  bar
+# 1  5  bar
+# 4  4  foo
+# 3  3  foo
+# 0  1  foo

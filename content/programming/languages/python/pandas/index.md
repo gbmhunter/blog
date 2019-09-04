@@ -2,17 +2,17 @@
 author: "gbmhunter"
 categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2019-06-11
-description: "A tutorial on pandas, a popular testing framework for Python."
+description: "A tutorial on pandas, a popular data analysis library for Python."
 draft: false
-lastmod: 2019-06-11
-tags: [ "programming", "programming languages", "Python", "pandas", "DataFrame", "CSV" ]
+lastmod: 2019-09-03
+tags: [ "programming", "programming languages", "Python", "pandas", "DataFrame", "CSV", "Jupyter", "Numpy" ]
 title: "pandas"
 type: "page"
 ---
 
 ## Overview
 
-pandas is a data analystics library for Python. It provides high-level data structures and analytics tools for data analysis.
+pandas is a data analysis library for Python. It provides high-level data structures and analytical tools for data analysis.
 
 {{% img src="pandas_logo.png" width="700px" caption="The pandas logo." %}}
 
@@ -24,7 +24,7 @@ pandas can be installed with `pip`:
 $ pip install pandas
 ```
 
-or conda:
+or `conda`:
 
 ```bash
 $ conda install pandas
@@ -34,7 +34,7 @@ $ conda install pandas
 
 The core data structure in pandas is the `DataFrame`. A `DataFrame` is a container for holding tabular data (2D), and supports labelled rows and columns.
 
-You can create a `DataFrame` by passing in a `dict`, where each key is a column name and the value is a List containing the data for that column (one entry per row):
+You can create a `DataFrame` by passing in a `dict`, where each key is a column name and the value is a `list` containing the data for that column (one entry per row):
 
 ```python
 df = pd.DataFrame({
@@ -119,12 +119,48 @@ print(filt_df)
 # 4  4  foo
 ```
 
+## Sorting
+
+You can sort a dataframe by a specific column using the `sort_values()` function, providing a column name to the `in` parameter to specify what column to sort by:
+
+```python
+df = pd.DataFrame({
+    'A': [ 1, 5, 6, 3, 4 ],
+    'B': [ 'foo', 'bar', 'bar', 'foo', 'foo' ]
+})
+sorted_df = df.sort_values(by='A')
+print(sorted_df)
+#    A    B
+# 0  1  foo
+# 3  3  foo
+# 4  4  foo
+# 1  5  bar
+# 2  6  bar
+```
+
+By default, `pandas` will sort in _ascending_ order. To sort in _descending_ order, provide the optional parameter `ascending=False`:
+
+```python
+sorted_df = df.sort_values(by='A')
+print(sorted_df, ascending=False)
+#    A    B
+# 2  6  bar
+# 1  5  bar
+# 4  4  foo
+# 3  3  foo
+# 0  1  foo
+```
+
 ## Parsing CSV Files
 
-pandas has first-tier support for CSV files. It can load in a CSV file directly into a `DataFrame`, ready for analyzing, without having to write any line-by-line CSV parsing. It will also label the columns if the CSV file has a header row (which is recommended!).
+`pandas` has first-tier support for CSV files. It can load in a CSV file directly into a `DataFrame`, ready for analyzing, without having to write any line-by-line CSV parsing. It will also label the columns if the CSV file has a header row (which is recommended!).
 
 To load a CSV file into a `DataFrame`:
 
 ```python
 df = pandas.read_csv('file_path.csv')
 ```
+
+## Integration With Jupyter
+
+`pandas` has good integration into Jupyter. It can render dataframes as formatted and styled HTML tables, either by typing the dataframe variable on the last line of a cell or by using the `display(my_dataframe)` syntax. When dealing with large amounts of data inside a dataframe, it will truncate internal cells (with `...`) to limit the table height and width (similar to when you print a large `numpy` array). 
