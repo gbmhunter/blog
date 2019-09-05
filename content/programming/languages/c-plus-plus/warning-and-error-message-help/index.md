@@ -8,14 +8,40 @@ type: page
 
 ## warning: ISO C++ says that these are ambiguous, even though the worst conversion for the first is better than the worst conversion for the second:
 
+* Compilers: Clang
+* Default Severity: Warning
+
 This is a form of overload ambiguity. It occurs because a candidate function is only better than another candidate function if `NONE` of it's parameters are a worst match than the parameters of the other, and at least one conversion is better.
 
-This warning can also be an error!
-
 ## error: undefined reference to `typeinfo for [classname]`
+
+* Compilers: Clang
+* Default Severity: Error
 
 This can come about if you have run-time info disabled via the `-fno-rtti` GCC compiler option.
 
 This can also come about from forgetting to declare non-pure virtual functions, as the following snippet from GCC suggests.
 
 > If the class declares any non-inline, non-pure virtual functions, the first one is chosen as the “key method” for the class, and the `vtable` is only emitted in the translation unit where the key method is defined.
+
+## no out-of-line virtual method definitions
+
+```text
+MyClass has no out-of-line virtual method definitions; its vtable will be emitted in every translation unit
+```
+
+* Compilers: Clang
+* Default Severity: Warning
+
+This warning is emitted by `Clang` whenever it can't find any virtual methods for a class outside of the class declaration. This condition typically arises when writing header-only classes. If you are writing a header-only class, you can safely ignore this warning, understanding that more code space will be consumed due to `vtable` duplication (which should be a big issue in most situations).
+
+To silence this warning, you can add:
+
+```c++
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wweak-vtables"
+
+// Your code here
+
+#pragma clang diagnostic pop
+```
