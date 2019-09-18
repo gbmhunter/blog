@@ -1,10 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2017-04-20
 draft: false
-title: du (disk usage)
-type: page
+lastmod: 2019-09-16
+tags: [ "programming", "operating systems", "Linux", "programs", "du", "disk usage", "mount", "file system", "directory" ]
+title: "du (disk usage)"
+type: "page"
 ---
 
 ## Overview
@@ -20,3 +22,13 @@ $ du -sh *
 ```
 
 This may take some time, as the command has to traverse the directory structure and count up all the file sizes.
+
+## Excluding Other File Systems
+
+You might want to run `du` to find out what directories/files are taking up the most space on a specific hard drive. When doing so, you want to exclude all mount points that belong to a different device. You can use the `-x` option to ignore all files/directories that are on a different file system to the one which the first directory/file belonged to.
+
+For example, to find out what files and directories are consuming the most space on your root-level device, use the following command:
+
+```sh
+$ du -shx /*
+```
