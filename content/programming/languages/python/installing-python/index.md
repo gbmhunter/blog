@@ -12,6 +12,13 @@ type: "page"
 
 ## Overview
 
+Python can be installed onto operating systems in a variety of different ways.
+
+## Windows
+
+The easiest way is to visit [https://www.python.org/downloads/](https://www.python.org/downloads/) and download the web-based installer which will downloaded the needed components at install time.
+
+The [Anaconda distribution](https://www.anaconda.com/) is also contains the Python interpreter. 
 
 ## CentOS
 
