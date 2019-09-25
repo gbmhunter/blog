@@ -1,19 +1,19 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming" ]
 date: 2013-04-03
 draft: false
 lastmod: 2013-04-03
 tags: [ "C", "compiler", " C++", "creator", "programming", "PSoC" ]
-title: How To Use C++ With PSoC Creator
-type: post
+title: "How To Use C++ With PSoC Creator"
+type: "post"
 ---
 
 Ever wanted to write C++ for the PSoC 5 or 5LP chips in PSoC Creator?
 
 Well, although PSoC Creator doesn't natively support it, you can quite easily **do a few 'hacks', and you'll be writing in C++ in no time**.
 
-A new page "[Using C++ With PSoC Creator](/programming/microcontrollers/psoc/using-cplusplus-with-psoc-creator)", under Programming->[PSoC](/programming/microcontrollers/psoc), explains the steps required to compile C++ code in Cypress's PSoC Creator.
+A new page {{% link text="Using C++ With PSoC Creator" src="/programming/microcontrollers/psoc/using-cplusplus-with-psoc-creator" %}}, explains the steps required to compile C++ code in Cypress's PSoC Creator.
 
 It covers the four main steps:
 
@@ -41,4 +41,4 @@ It covers the four main steps:
 
 The steps have pictures and code examples to help you through the process.
 
-Checkout the page [here](/programming/microcontrollers/psoc/using-cplusplus-with-psoc-creator).
+Checkout the page {{% link text="here" src="/programming/microcontrollers/psoc/using-cplusplus-with-psoc-creator" %}}.
