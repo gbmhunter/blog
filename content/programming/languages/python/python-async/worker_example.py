@@ -1,8 +1,7 @@
 import asyncio
 import random
 
-async def worker_fn(id, job_queue):
-
+async def worker_fn(id: str, job_queue: asyncio.Queue) -> None:
     while True:
         sleep_for = await job_queue.get()
 
@@ -12,13 +11,13 @@ async def worker_fn(id, job_queue):
 
         job_queue.task_done()
 
-async def main():
+async def main() -> None:
 
     queue = asyncio.Queue()
 
     # Create jobs for workers to complete
     print(f'Creating jobs...')
-    for i in range(1, 10):
+    for i in range(0, 10):
         sleep_for_s = random.uniform(0.1, 1.0)
         queue.put_nowait(sleep_for_s)
 
