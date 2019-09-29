@@ -9,6 +9,10 @@ title: "Standard Deviation"
 type: "page"
 ---
 
+{{% warning %}}
+This page is a work-in-progress.
+{{% /warning %}}
+
 ## Overview
 
 The standard deviation is a metric which is used to measure the amount of variation in a set of data values.
