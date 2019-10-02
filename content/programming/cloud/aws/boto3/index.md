@@ -1,12 +1,12 @@
 ---
 author: "gbmhunter"
-categories: [ "Programming", "Cloud" ]
+categories: [ "Programming", "Cloud", "AWS" ]
 date: 2019-01-14
 description: "A quick tutorial on Boto 3, Amazon's Python-based API for AWS."
 draft: false
 lastmod: 2019-07-19
-tags: [ "Amazon", "AWS", "boto", "boto3", "Boto 3", "cloud", "Python", "API", "S3", "libraries", "copy", "bucket", "key" ]
-title: "boto"
+tags: [ "programming", "cloud", "Amazon", "AWS", "boto", "boto3", "Boto 3", "cloud", "Python", "API", "S3", "libraries", "copy", "bucket", "key" ]
+title: "boto3"
 type: "page"
 ---
 
