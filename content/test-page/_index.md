@@ -39,6 +39,17 @@ An equation with `\begin{equation}`, which should be automatically numbered:
 And a reference to the above equation: In equation `\(\eqref{eq:sample}\)`, we find the value of an
 interesting integral.
 
+To align equations we can use:
+
+<div>
+\begin{align}
+A &= B\\
+  &= C\\
+  &= D
+\end{align}
+</div>
+
+
 ## Dividers
 
 A divider below:
