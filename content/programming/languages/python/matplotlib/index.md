@@ -5,7 +5,7 @@ date: 2018-11-29
 description: "Matplotlib tutorial including useful tricks and tips with code examples."
 draft: false
 lastmod: 2019-05-02
-tags: [ "matplotlib", "Python", "code", "programming", "graphs", "numpy", "pyplot", "pie chart", "chart" ]
+tags: [ "matplotlib", "Python", "code", "programming", "graphs", "numpy", "pyplot", "pie charts", "charts", "Basemap", "plotting" ]
 title: "matplotlib"
 type: page
 ---
@@ -48,7 +48,7 @@ ax2 = ax1.twinx()
 ax1.plot(x, y1, color='g')
 ax2.plot(x, y2, color='b')
 
-fig.suptitle('Two Y-Axis Example')
+fig.subtitle('Two Y-Axis Example')
 ax1.set_xlabel('x')
 ax1.set_ylabel('y1')
 ax2.set_ylabel('y2')
@@ -64,7 +64,7 @@ This will produce the following graph:
 
 It can be a handy visual aid to set the legend color to the same color as the corresponding line on the plot. This can be done with the following code:
 
-{{< highlight py "hl_lines=15-16" >}}
+```py
 fig, ax = plt.subplots()
 
 x = np.linspace(0, 10, 100)
@@ -85,7 +85,7 @@ for line, text in zip(leg.get_lines(), leg.get_texts()):
 plt.title('Legend Text Color Matches Plot Line Color')
 
 plt.savefig('legend-text-color-matches-plot-line-color.png')
-{{< /highlight >}}
+```
 
 This will produce a plot which looks like:
 
@@ -94,3 +94,36 @@ This will produce a plot which looks like:
 ## Creating Animated Plots
 
 When using the `pillow` writer, the GIF will not loop. When using the `imagemagick` writer, the GIF will loop.
+
+## Using The Basemap
+
+{{% warning %}}
+As of 2016, `Basemap` has been deprecated. However, it is still a viable choice for plotting maps in Python/Jupyter.
+{{% /warning %}}
+
+```py
+from mpl_toolkits.basemap import Basemap
+```
+
+### Using A Specific Axis
+
+Rather than `Basemap` automatically using/creating an axis for you, you can instead take a more object-orientated approach (which I recommend) and provide `Basemap` with the `Axis` object to use for drawing the map:
+
+```py
+fig = plt.figure(figsize=(15,10))
+ax = fig.add_subplot(111)
+map = Basemap(ax=ax) # Pass in the axis object to draw the basemap in
+# Proceed as usual
+```
+
+### Adjusting The Size Of The Map
+
+You can adjust the size of a basemap by calling `plt.figure(figsize(15,15))` before making any calls to the `Basemap` class:
+
+```py
+from mpl_toolkits.basemap import Basemap
+import matplotlib.pyplot as plt
+
+plt.figure(figsize(15, 10)) # Adjust the size of the map
+map = Basemap()
+```
