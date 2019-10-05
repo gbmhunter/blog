@@ -9,6 +9,14 @@ MathJax.Hub.Config({
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     MathJax.Hub.Config({
+      extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+      TeX: {
+        Macros: {
+          // Define macros here that can be used site-wise
+          bhat: ["{\\hat{\\mathbf{#1}}}", 1],
+          b: ["{\\mathbf{#1}}", 1],
+        }
+      },
       tex2jax: {
         inlineMath: [['\\(','\\)']],
         displayMath: [['$$','$$'], ['\\[','\\]']],
@@ -20,9 +28,7 @@ MathJax.Hub.Config({
             "AMSmath.js",
             "AMSsymbols.js"
           ],
-          Macros: {
-          }
-        }
+        },
       },
       // Enable line-breaks, which makes MathJAX wrap long display equations
       // This only occurs on the initial render, so if the page width is changed by user,
@@ -32,13 +38,15 @@ MathJax.Hub.Config({
       SVG: { linebreaks: { automatic: true } }
     });
 
-      MathJax.Hub.Queue(function() {
-        // Fix <code> tags after MathJax finishes running. This is a
-        // hack to overcome a shortcoming of Markdown. Discussion at
-        // https://github.com/mojombo/jekyll/issues/199
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i = 0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
+    console.log('heheheh')
+
+    MathJax.Hub.Queue(function() {
+      // Fix <code> tags after MathJax finishes running. This is a
+      // hack to overcome a shortcoming of Markdown. Discussion at
+      // https://github.com/mojombo/jekyll/issues/199
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i = 0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
     });
 </script>
