@@ -14,6 +14,8 @@ type: "page"
 
 S3 is a popular key-value storage service provided by Amazon Web Services (AWS). It offers cheap and moderately fast (not as fast as a hard-drive, but faster than deep archive systems) mechanism for the storage and retrieval of arbitrary files.
 
+{{% img src="aws-s3-logo.png" width="300px" caption="The AWS S3 logo." %}}
+
 ## S3 Doesn't Have Directories, But It Does
 
 **One major point of confusion when beginning to use S3 is the appearance of directories**. It is important to remember that S3 is purely a key-value type storage system. This means if you want to store an file (e.g. `myfile.txt`) on S3, you provide a key to store it at (e.g. `this_is_the_key`). Later, you can retrieve the object with the same key. That's all there is to it. **The confusion arises because it is common practise to use path-looking keys to store objects**. For example, I could choose to say `myfile.txt` to the key `user/my_usr/myfile.txt`. Further adding to the confusion is that when navigating through a bucket using the S3 web interface, it will detect path-like keys and show the user a directory tree structure.
