@@ -1,0 +1,187 @@
+
+<div id="calc-3d-rotation-graph" class="calculator hbox">
+  <div id="graph-container"></div>
+
+    <div class="vbox">
+        <b>Axis-Angle</b>
+        <table>
+            <tbody>
+                <tr>
+                    <td style="max-width: 20px;">\(\theta\)</td>
+                    <td><input name="angle" value="0"></input></td>
+                    <td style="padding-left: 0px;">rad</td>
+                </tr>
+                <tr>
+                    <td>x</td>
+                    <td><input name="axisX" value="0"/></td>
+                </tr>
+                <tr>
+                    <td>y</td>
+                    <td><input name="axisY" value="0"/></td>
+                </tr>
+                <tr>
+                    <td>z</td>
+                    <td><input name="axisZ" value="0"/></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="width: 2em;"></div>
+
+    <div class="vbox">
+        <b>Quaternion</b>
+        <table>
+            <tbody>
+                <tr>
+                    <td>w</td>
+                    <td><label name="quatW"></input></td>
+                </tr>
+                <tr>
+                    <td>x</td>
+                    <td><label name="quatX"></input></td>
+                </tr>
+                <tr>
+                    <td>y</td>
+                    <td><label name="quatY"></input></td>
+                </tr>
+                <tr>
+                    <td>z</td>
+                    <td><label name="quatZ"></input></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!--
+######################################################################
+# SCRIPTS
+######################################################################
+-->
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+
+function add_axis(data, x, y, z) {
+  data.push(
+    {
+      type: 'scatter3d',
+      mode: 'lines',
+      x: x,
+      y: y,
+      z: z,
+      opacity: 1.0,
+      line: {
+        width: 2,
+        color: 'blue',
+        colorscale: 'Viridis'
+      }
+    }
+  )
+}
+
+
+(function() {
+
+    // let calc = $('#')
+  var x1 = [0, 1];
+  var y1 = [0, 0];
+  var z1 = [0, 0];
+  var x2 = [0, 0];
+  var y2 = [0, 1];
+  var z2 = [0, 0];
+
+  TESTER = document.getElementById('graph-container');
+  var data = []
+  add_axis(data, [0, 1], [0, 0], [0, 0])
+  add_axis(data, [0, 0], [0, 1], [0, 0])
+  add_axis(data, [0, 0], [0, 0], [0, 1])
+
+  add_axis(data, [12, 13], [0, 0], [0,0])
+
+  var layout = {
+    scene:{
+    aspectmode: "manual",
+    aspectratio: {
+      x: 1, y: 1, z: 1,
+      },
+    xaxis: {
+      range: [-10, 10],
+    },
+    yaxis: {
+      range: [-10, 10],
+    },
+    zaxis: {
+      range: [-10, 10],
+    }},
+  };
+
+  Plotly.plot(TESTER, data, layout);
+
+
+    const angleEl = calc.find("[name='angle']")
+    const axisXEl = calc.find("[name='axisX']")
+    const axisYEl = calc.find("[name='axisY']")
+    const axisZEl = calc.find("[name='axisZ']")
+    const quatWEl = calc.find("[name='quatW']")
+    const quatXEl = calc.find("[name='quatX']")
+    const quatYEl = calc.find("[name='quatY']")
+    const quatZEl = calc.find("[name='quatZ']")
+
+    angleEl.on('input', function (e) {
+        angleAxisToQuat()
+    })
+    axisXEl.on('input', function (e) {
+        angleAxisToQuat()
+    })
+    axisYEl.on('input', function (e) {
+        angleAxisToQuat()
+    })
+    axisZEl.on('input', function (e) {
+        angleAxisToQuat()
+    })
+
+    function angleAxisToQuat() {
+        const angle = angleEl.val()
+        const axisX = axisXEl.val()
+        const axisY = axisYEl.val()
+        const axisZ = axisZEl.val()
+
+        const quatW = Math.cos(angle/2)
+        const quatX = axisX*Math.sin(angle/2)
+        const quatY = axisY*Math.sin(angle/2)
+        const quatZ = axisZ*Math.sin(angle/2)
+
+        quatWEl.text(quatW.toPrecision(4))
+        quatXEl.text(quatX.toPrecision(4))
+        quatYEl.text(quatY.toPrecision(4))
+        quatZEl.text(quatZ.toPrecision(4))
+    }
+
+    // Run once to initialise
+    angleAxisToQuat()
+})()
+</script>
+
+<style>
+
+div.hbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+div.vbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+</style>
+
+
+

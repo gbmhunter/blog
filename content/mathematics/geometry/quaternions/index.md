@@ -302,5 +302,8 @@ $$</p>
 
 {{< calculators/quaternion-to-rotation-matrix >}}
 
+## 3D Rotation
+
+{{< calculators/3d-rotation-graph >}}
 
 <a name="1">https://www.mathworks.com/help/aeroblks/quaternionmultiplication.html</a>
