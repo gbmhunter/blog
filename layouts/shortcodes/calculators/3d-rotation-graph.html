@@ -3,54 +3,56 @@
   <div id="graph-container"></div>
 
     <div class="vbox">
-        <b>Axis-Angle</b>
-        <table>
-            <tbody>
-                <tr>
-                    <td style="max-width: 20px;">\(\theta\)</td>
-                    <td><input name="angle" value="0"></input></td>
-                    <td style="padding-left: 0px;">rad</td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td><input name="axisX" value="0"/></td>
-                </tr>
-                <tr>
-                    <td>y</td>
-                    <td><input name="axisY" value="0"/></td>
-                </tr>
-                <tr>
-                    <td>z</td>
-                    <td><input name="axisZ" value="0"/></td>
-                </tr>
-            </tbody>
-        </table>
+      <b>Axis-Angle</b>
+      <input type="radio" name="inputType" value="axisAngle"/>
+      <table>
+        <tbody>
+          <tr>
+            <td style="max-width: 20px;">\(\theta\)</td>
+            <td><input name="angle" value="0"></input></td>
+            <td style="padding-left: 0px;">rad</td>
+          </tr>
+          <tr>
+            <td>x</td>
+            <td><input name="axisX" value="0"/></td>
+          </tr>
+          <tr>
+            <td>y</td>
+            <td><input name="axisY" value="0"/></td>
+          </tr>
+          <tr>
+            <td>z</td>
+            <td><input name="axisZ" value="0"/></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div style="width: 2em;"></div>
 
     <div class="vbox">
-        <b>Quaternion</b>
-        <table>
-            <tbody>
-                <tr>
-                    <td>w</td>
-                    <td><label name="quatW"></input></td>
-                </tr>
-                <tr>
-                    <td>x</td>
-                    <td><label name="quatX"></input></td>
-                </tr>
-                <tr>
-                    <td>y</td>
-                    <td><label name="quatY"></input></td>
-                </tr>
-                <tr>
-                    <td>z</td>
-                    <td><label name="quatZ"></input></td>
-                </tr>
-            </tbody>
-        </table>
+      <b>Quaternion</b>
+      <input type="radio" name="inputType" value="quaternion"/>
+      <table>
+        <tbody>
+          <tr>
+            <td>w</td>
+            <td><input name="quatW"></input></td>
+          </tr>
+          <tr>
+            <td>x</td>
+            <td><input name="quatX"></input></td>
+          </tr>
+          <tr>
+            <td>y</td>
+            <td><input name="quatY"></input></td>
+          </tr>
+          <tr>
+            <td>z</td>
+            <td><input name="quatZ"></input></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
 </div>
@@ -62,9 +64,15 @@
 -->
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.2/math.js"></script>
 <script>
 
-function add_axis(data, x, y, z) {
+function add_axis2(data, start_point, end_point) {
+  console.log('start_point='+start_point)
+  console.log('end_point='+end_point)
+  x = [start_point.get([0]), end_point.get([0])]
+  y = [start_point.get([1]), end_point.get([1])]
+  z = [start_point.get([2]), end_point.get([2])]
   data.push(
     {
       type: 'scatter3d',
@@ -82,8 +90,23 @@ function add_axis(data, x, y, z) {
   )
 }
 
+function quatToRotMatrix(quat) {
+  console.log('quat='+quat)
+  const w = quat.get([0])
+  const x = quat.get([1])
+  const y = quat.get([2])
+  const z = quat.get([3])
+  var matrixArray = [
+    [1 - 2*y*y - 2*z*z, 2*x*y - 2*z*w, 2*x*z + 2*y*w],
+    [2*x*y + 2*z*w, 1 - 2*x*x - 2*z*z, 2*y*z - 2*x*w],
+    [2*x*z - 2*y*w, 2*y*z + 2*x*w, 1 - 2*x*x - 2*y*y],
+  ]
+  return math.matrix(matrixArray)
+}
+
 
 (function() {
+  let calc = $('#calc-3d-rotation-graph')
 
     // let calc = $('#')
   var x1 = [0, 1];
@@ -95,11 +118,25 @@ function add_axis(data, x, y, z) {
 
   TESTER = document.getElementById('graph-container');
   var data = []
-  add_axis(data, [0, 1], [0, 0], [0, 0])
-  add_axis(data, [0, 0], [0, 1], [0, 0])
-  add_axis(data, [0, 0], [0, 0], [0, 1])
+  add_axis2(data, math.matrix([0,0,0]), math.matrix([1,0,0]))
+  add_axis2(data, math.matrix([0,0,0]), math.matrix([0,1,0]))
+  add_axis2(data, math.matrix([0,0,0]), math.matrix([0,0,1]))
 
-  add_axis(data, [12, 13], [0, 0], [0,0])
+  var quaternion = math.matrix([ 1.0, 0.5, 0.2, -0.5]) // wxyz
+  quaternion = math.divide(quaternion,math.norm(quaternion))
+  const rotMatrix = quatToRotMatrix(quaternion)
+
+  const translation = math.matrix([5, 0, 0])
+
+  var vector = math.matrix([1, 0, 0])
+  var result = math.multiply(rotMatrix, vector)
+  add_axis2(data, translation, math.add(translation,result))
+  vector = math.matrix([0, 1, 0])
+  result = math.multiply(rotMatrix, vector)
+  add_axis2(data, translation, math.add(translation,result))
+  vector = math.matrix([0, 0, 1])
+  result = math.multiply(rotMatrix, vector)
+  add_axis2(data, translation, math.add(translation,result))
 
   var layout = {
     scene:{
@@ -130,18 +167,113 @@ function add_axis(data, x, y, z) {
     const quatYEl = calc.find("[name='quatY']")
     const quatZEl = calc.find("[name='quatZ']")
 
-    angleEl.on('input', function (e) {
-        angleAxisToQuat()
+    const quatElGroup = [
+      quatWEl,
+      quatXEl,
+      quatYEl,
+      quatZEl,
+    ]
+
+    // angleEl.on('input', function (e) {
+    //     angleAxisToQuat()
+    // })
+    // axisXEl.on('input', function (e) {
+    //     angleAxisToQuat()
+    // })
+    // axisYEl.on('input', function (e) {
+    //     angleAxisToQuat()
+    // })
+    // axisZEl.on('input', function (e) {
+    //     angleAxisToQuat()
+    // })
+
+    quatWEl.on('input', function (e) {
+      quatChanged()
     })
-    axisXEl.on('input', function (e) {
-        angleAxisToQuat()
+    quatXEl.on('input', function (e) {
+      quatChanged()
     })
-    axisYEl.on('input', function (e) {
-        angleAxisToQuat()
+    quatYEl.on('input', function (e) {
+      quatChanged()
     })
-    axisZEl.on('input', function (e) {
-        angleAxisToQuat()
+    quatZEl.on('input', function (e) {
+      quatChanged()
     })
+
+    // Register radio buttons
+    $('input[type=radio][name=inputType]').change(function() {
+      if (this.value == 'axisAngle') {
+        for(const el of quatElGroup) {
+          el.prop('disabled', true)
+        }
+      } else if (this.value == 'quaternion') {
+        console.log('quaternion')
+      }
+    });
+
+    function quatChanged() {
+      const quatW = quatWEl.val()
+      const quatX = quatXEl.val()
+      const quatY = quatYEl.val()
+      const quatZ = quatZEl.val()
+      var quaternion = math.matrix([ quatW, quatX, quatY, quatZ ]) // wxyz
+      quaternion = math.divide(quaternion,math.norm(quaternion))
+      const rotMatrix = quatToRotMatrix(quaternion)
+
+      updateGraph(rotMatrix)
+    }
+
+    function updateGraph(rotMatrix) {
+      console.log('updateGraph() called. rotMatrix=' + rotMatrix)
+      let calc = $('#calc-3d-rotation-graph')
+
+      // let calc = $('#')
+      var x1 = [0, 1];
+      var y1 = [0, 0];
+      var z1 = [0, 0];
+      var x2 = [0, 0];
+      var y2 = [0, 1];
+      var z2 = [0, 0];
+
+      TESTER = document.getElementById('graph-container');
+      var data = []
+      add_axis2(data, math.matrix([0,0,0]), math.matrix([1,0,0]))
+      add_axis2(data, math.matrix([0,0,0]), math.matrix([0,1,0]))
+      add_axis2(data, math.matrix([0,0,0]), math.matrix([0,0,1]))
+
+      const translation = math.matrix([5, 0, 0])
+
+      var vector = math.matrix([1, 0, 0])
+      var result = math.multiply(rotMatrix, vector)
+      add_axis2(data, translation, math.add(translation,result))
+      vector = math.matrix([0, 1, 0])
+      result = math.multiply(rotMatrix, vector)
+      add_axis2(data, translation, math.add(translation,result))
+      vector = math.matrix([0, 0, 1])
+      result = math.multiply(rotMatrix, vector)
+      add_axis2(data, translation, math.add(translation,result))
+
+      var layout = {
+        scene:{
+          aspectmode: "manual",
+          aspectratio: {
+            x: 1, y: 1, z: 1,
+          },
+          xaxis: {
+            range: [-10, 10],
+          },
+          yaxis: {
+            range: [-10, 10],
+          },
+          zaxis: {
+            range: [-10, 10],
+          }
+        },
+      };
+
+      // react() updates existing plot
+      Plotly.react(TESTER, data, layout);
+    }
 
     function angleAxisToQuat() {
         const angle = angleEl.val()
