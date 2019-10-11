@@ -18,8 +18,10 @@
         "Hirose",
         "Jupyter",
         "Karnaugh",
+        "Kerberos",
         "LLVM",
         "MSVC",
+        "NTLM",
         "Naur",
         "Nelder",
         "RBAC",
@@ -37,6 +39,7 @@
         "alibaba",
         "altium's",
         "analog",
+        "apps",
         "arange",
         "arctan",
         "arduinos",
@@ -397,6 +400,7 @@
         "volumio",
         "voxel",
         "vqfn",
+        "vscodevim",
         "vson",
         "vtable",
         "vtime",
@@ -419,5 +423,6 @@
         "zeners",
         "zynq"
     ],
-    "python.pythonPath": "env/bin/python3"
+    "python.pythonPath": "env/bin/python3",
+    "vim.surround": true
 }

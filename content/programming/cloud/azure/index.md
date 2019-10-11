@@ -1,27 +1,17 @@
 ---
 author: "gbmhunter"
 categories: [ "Programming", "Cloud" ]
-date: 2019-01-14
+date: 2019-10-09
 draft: false
-lastmod: 2019-01-14
-tags: [ "programming", "cloud", "Azure" ]
+lastmod: 2019-10-11
+tags: [ "programming", "cloud", "Azure", "Active Directory", "Microsoft", "resources", "resource groups", "subscriptions", "tenants", "storage accounts", "load balancers", "RBAC", "file sync" ]
 title: "Azure"
 type: "page"
 ---
 
+{{% warning-is-notes %}}
 
-
-
-
-
-
-
-## Azure Hierarchy
-Accounts (Subscription)
-Resource Groups
-Resources
-
-Resource manager allows you delete everything within a resource group.
+## Resource Groups
 
 A resource is a single service instance in Azure. A resource group is a logical grouping of resources. A ARM (Azure Resource Manager) template is a .json file that allows you to declaratively describe a set of resources.
 
@@ -98,7 +88,29 @@ You can use _Azure Policy_ to create, assign and manage policies. Policies are c
 
 Azure supports both import and export file sync job.
 
-For really large files, you can use the data boxes.
+For really large files, you can use the data boxes (physical storage devices that get sent to your location and then shipped back to Azure).
 
-## Azure Web Apps
+## Permissions
 
+Permissions in Azure tie in heavily with the Azure Active Directory.
+
+Delegated: Used by apps the run with a signed-in user present
+Application: Used by apps that run without a signed-in user present
+
+It is best practise to use delegated permissions wherever possible. Only use application permissions when the app is non-interactive or the app runs without requiring a user to login.
+
+### Legacy Windows-based Authentication
+
+Users can login using Windows credentials with either _Kerberos_ or _NTLM_.
+
+## Azure Monitor
+
+### Application Insights
+
+Application insights can monitor request rates, response times, failure rates e.t.c. Exception stack traces from both the server and browser (client-side application code) are logged.
+
+Application Insights can then provide it's data via an API or through Visual Studio (for debugging). It can also create visualizations in the Azure dashboard.
+
+## Azure Search Service
+
+The _Azure Search Service_ is a managed search service provided by Azure. It allows you to import/connect to the underlying data and then easily create indexes.

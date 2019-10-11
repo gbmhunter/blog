@@ -1,12 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2017-11-24
 description: "Shortcuts, key bindings, compiling C/C++ and more info about the Visual Studio Code IDE."
 draft: false
-lastmod: 2018-12-31
-tags: [ "Visual Studio Code", "VS Code", "key bindings", "keyboard shortcuts", "C", "C++", "IDEs", "integrated development environment", "terminal", "editor", "Microsoft" ]
-title: Visual Studio Code
-type: page
+lastmod: 2019-10-11
+tags: [ "Visual Studio Code", "VS Code", "key bindings", "keyboard shortcuts", "C", "C++", "IDEs", "integrated development environment", "terminal", "editor", "Microsoft", "vim" ]
+title: "Visual Studio Code"
+type: "page"
 ---
 
 ## Overview
@@ -17,7 +17,11 @@ Visual Studio Code is a free, multi-platform, open-source code editor from Micro
 
 ## Keyboard Shortcuts
 
+```
 Reformat Code: Ctrl-Shift-I (Linux)
+ds<char>     Delete existing surround identified by <char>
+cs<existing char><new char>   Change existing surround <existing char> to <new char>
+```
 
 ## C/C++
 
@@ -52,3 +56,9 @@ Add the following to `keybindings.json` so that you can switch between the edito
 ```
 
 You may want to include `*.code-workspace` files as they can contain cSpell configuration that you wish to share (such as user-added words).
+
+## VS Code And vim
+
+The [vscodevim](https://github.com/VSCodeVim/Vim) plugin provides powerful vim capabilities.
+
+Unfortunately, `vscodevim` does load your `.vimrc` or `.vim` plugins. The best workaround is to implement the plugin functionality using `vscodevim`'s settings, or to use the provided _emulated plugins_. Thankfully, they have emulated some of the most popular plugins such as `vim-surround` and `vim-easymotion`.
