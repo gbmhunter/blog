@@ -36,6 +36,12 @@ Normally charged for egress of data, but not ingress.
 
 Supported operating systems: Windows Server, Windows Client, Ubuntu, Red Hat Enterprise Linux, SUSE Linux
 
+## Resources
+
+A _resource_ is a primary primitive in Azure. Almost every thing you create in Azure is a particular type of resource.
+
+Resources can be assigned _Resource Tags_. Resource tags can be used to logically organise resources. They are useful for the monitoring and billing of resources.
+
 ## Storage Accounts
 
 Storage account names have to be unique across all Azure storage accounts.
@@ -52,31 +58,47 @@ A traditional traffic manager that can balance traffic between VMs (or other Azu
 
 ### Traffic Managers
 
-A [traffic manager](https://azure.microsoft.com/en-ca/services/traffic-manager/) is a smart DNS form of load balancer can can resolve a CNAME based on performance/geographic requirements.
+A [traffic manager](https://azure.microsoft.com/en-ca/services/traffic-manager/) is a smart DNS form of load balancer can can resolve a `CNAME` based on performance/geographic requirements.
 
+## Azure Active Directory
 
+Azure Active Directory (Azure AD) is a cloud service that offers multi-tenant access and identity control.
 
+Pass-through authentication: 
 
+Federation: Federation is a collection of domains that have established trust.
 
+## Management Groups
 
+No management groups exists by default. Management groups can be used to group together subscriptions. Management groups exist in a tree-like hierarchy. 
 
+## Subscriptions
 
+A subscription is a logical unit of Azure services that is linked to an account. An Azure account is either an identity in Azure AD or a directory within Azure AD.
 
+## Role-based Access Control (RBAC)
 
+Built-in Roles:
 
+* Owners
+* Contributors
+* Readers
 
+What can be assigned to a role?
 
+* Users
+* Groups
+* Service Principals
 
+## Azure Policy
 
+You can use _Azure Policy_ to create, assign and manage policies. Policies are created from policy definitions. You can also determine the compliance for any policies.
 
+## File Sync
 
+Azure supports both import and export file sync job.
 
+For really large files, you can use the data boxes.
 
-
-
-
-
-
-
-
+## Azure Web Apps
 
