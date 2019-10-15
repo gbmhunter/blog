@@ -55,7 +55,47 @@
       </table>
     </div>
 
+    <div class="vbox spacer" style="width: 20px;"></div>
+
+    <div class="vbox">
+      <b>Rotation Matrix</b>
+      <input type="radio" name="inputType" value="rotMatrix"/>
+      <table class="rotMatrix">
+        <tbody>
+          <tr>
+            <td><input name="rot00"/></td>
+            <td><input name="rot01"/></td>
+            <td><input name="rot02"/></td>
+          </tr>
+          <tr>
+            <td><input name="rot10"/></td>
+            <td><input name="rot11"/></td>
+            <td><input name="rot12"/></td>
+          </tr>
+          <tr>
+            <td><input name="rot20"/></td>
+            <td><input name="rot21"/></td>
+            <td><input name="rot22"/></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
 </div>
+
+<style>
+#calc-3d-rotation-graph table tr td {
+  padding: 5px;
+}
+
+table.rotMatrix tr td {
+  padding: 2px;
+}
+.rotMatrix td input {
+  width: 40px;
+  padding: 2px;
+}
+</style>
 
 <!--
 ######################################################################
@@ -65,9 +105,8 @@
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.2/math.js"></script>
+
 <script>
-
-
 (function() {
 
   // Global constants
@@ -80,162 +119,155 @@
   const quatXEl = calc.find("[name='quatX']")
   const quatYEl = calc.find("[name='quatY']")
   const quatZEl = calc.find("[name='quatZ']")
+  const rot00El = calc.find("[name='rot00']")
+  const rot01El = calc.find("[name='rot01']")
+  const rot02El = calc.find("[name='rot02']")
+  const rot10El = calc.find("[name='rot10']")
+  const rot11El = calc.find("[name='rot11']")
+  const rot12El = calc.find("[name='rot12']")
+  const rot20El = calc.find("[name='rot20']")
+  const rot21El = calc.find("[name='rot21']")
+  const rot22El = calc.find("[name='rot22']")
 
-function add_axis2(data, start_point, end_point) {
-  console.log('start_point='+start_point)
-  console.log('end_point='+end_point)
-  x = [start_point.get([0]), end_point.get([0])]
-  y = [start_point.get([1]), end_point.get([1])]
-  z = [start_point.get([2]), end_point.get([2])]
-  data.push(
-    {
-      type: 'scatter3d',
-      mode: 'lines',
-      x: x,
-      y: y,
-      z: z,
-      opacity: 1.0,
-      line: {
-        width: 2,
-        color: 'blue',
-        colorscale: 'Viridis'
-      }
-    }
-  )
-}
-
-function quatToRotMatrix(quat) {
-  console.log('quat='+quat)
-  const w = quat.get([0])
-  const x = quat.get([1])
-  const y = quat.get([2])
-  const z = quat.get([3])
-  var matrixArray = [
-    [1 - 2*y*y - 2*z*z, 2*x*y - 2*z*w, 2*x*z + 2*y*w],
-    [2*x*y + 2*z*w, 1 - 2*x*x - 2*z*z, 2*y*z - 2*x*w],
-    [2*x*z - 2*y*w, 2*y*z + 2*x*w, 1 - 2*x*x - 2*y*y],
+  const quatElGroup = [
+    quatWEl,
+    quatXEl,
+    quatYEl,
+    quatZEl,
   ]
-  return math.matrix(matrixArray)
-}
 
-function rotToQuatMatrix(rotMatrix) {
-  m00 = rotMatrix.get([0,0])
-  m01 = rotMatrix.get([0,1])
-  m02 = rotMatrix.get([0,2])
-  m10 = rotMatrix.get([1,0])
-  m11 = rotMatrix.get([1,1])
-  m12 = rotMatrix.get([1,2])
-  m20 = rotMatrix.get([2,0])
-  m21 = rotMatrix.get([2,1])
-  m22 = rotMatrix.get([2,2])
-  if (m22 < 0) {
-    if (m00 >m11) {
-        t = 1 + m00 -m11 -m22;
-        q = math.matrix([m01+m10, m20+m02, m12-m21, t])
-    }
-    else {
-        t = 1 -m00 + m11 -m22;
-        q = math.matrix([t, m12+m21, m20-m02, m01+m10])
-    }
+  const axisAngleElGroup = [
+    angleEl,
+    axisXEl,
+    axisYEl,
+    axisZEl,
+  ]
+
+  const rotMatrixElGroup = [
+    rot00El,
+    rot01El,
+    rot02El,
+    rot10El,
+    rot11El,
+    rot12El,
+    rot20El,
+    rot21El,
+    rot22El,
+  ]
+
+  const PRECISION = 3
+
+  function add_axis(data, start_point, end_point, colorIn) {
+    console.log('start_point='+start_point)
+    console.log('end_point='+end_point)
+    console.log('colorIn=' + colorIn)
+    x = [start_point.get([0]), end_point.get([0])]
+    y = [start_point.get([1]), end_point.get([1])]
+    z = [start_point.get([2]), end_point.get([2])]
+    data.push(
+      {
+        type: 'scatter3d',
+        mode: 'lines',
+        x: x,
+        y: y,
+        z: z,
+        opacity: 1.0,
+        line: {
+          width: 2,
+          color: colorIn,
+          // colorscale: 'Viridis'
+        },
+        showlegend: false,
+      }
+    )
   }
-  else {
-      if (m00 < -m11) {
-          t = 1 -m00 -m11 + m22;
-          q = math.matrix([m12+m21, t, m01-m10, m20+m02])
+
+  function quatToRotMatrix(quat) {
+    console.log('quat='+quat)
+    const w = quat.get([0])
+    const x = quat.get([1])
+    const y = quat.get([2])
+    const z = quat.get([3])
+    var matrixArray = [
+      [1 - 2*y*y - 2*z*z, 2*x*y - 2*z*w, 2*x*z + 2*y*w],
+      [2*x*y + 2*z*w, 1 - 2*x*x - 2*z*z, 2*y*z - 2*x*w],
+      [2*x*z - 2*y*w, 2*y*z + 2*x*w, 1 - 2*x*x - 2*y*y],
+    ]
+    return math.matrix(matrixArray)
+  }
+
+  function rotToQuatMatrix(rotMatrix) {
+    m00 = rotMatrix.get([0,0])
+    m01 = rotMatrix.get([0,1])
+    m02 = rotMatrix.get([0,2])
+    m10 = rotMatrix.get([1,0])
+    m11 = rotMatrix.get([1,1])
+    m12 = rotMatrix.get([1,2])
+    m20 = rotMatrix.get([2,0])
+    m21 = rotMatrix.get([2,1])
+    m22 = rotMatrix.get([2,2])
+    if (m22 < 0) {
+      if (m00 >m11) {
+          t = 1 + m00 -m11 -m22;
+          q = math.matrix([m01+m10, m20+m02, m12-m21, t])
       }
       else {
-          t = 1 + m00 + m11 + m22;
-          q = math.matrix([m20-m02, m01-m10, t, m12-m21])
+          t = 1 -m00 + m11 -m22;
+          q = math.matrix([t, m12+m21, m20-m02, m01+m10])
       }
+    }
+    else {
+        if (m00 < -m11) {
+            t = 1 -m00 -m11 + m22;
+            q = math.matrix([m12+m21, t, m01-m10, m20+m02])
+        }
+        else {
+            t = 1 + m00 + m11 + m22;
+            q = math.matrix([m20-m02, m01-m10, t, m12-m21])
+        }
+    }
+    q = math.multiply(q, 0.5 / Math.sqrt(t))
+    return q
   }
-  q = math.multiply(q, 0.5 / Math.sqrt(t))
-  return q
-}
+
   function init() {
-
-      // let calc = $('#')
-    var x1 = [0, 1];
-    var y1 = [0, 0];
-    var z1 = [0, 0];
-    var x2 = [0, 0];
-    var y2 = [0, 1];
-    var z2 = [0, 0];
-
-    TESTER = document.getElementById('graph-container');
-    var data = []
-    add_axis2(data, math.matrix([0,0,0]), math.matrix([1,0,0]))
-    add_axis2(data, math.matrix([0,0,0]), math.matrix([0,1,0]))
-    add_axis2(data, math.matrix([0,0,0]), math.matrix([0,0,1]))
-
-    var quaternion = math.matrix([ 1.0, 0.5, 0.2, -0.5]) // wxyz
-    quaternion = math.divide(quaternion,math.norm(quaternion))
-    const rotMatrix = quatToRotMatrix(quaternion)
-
-    const translation = math.matrix([5, 0, 0])
-
-    var vector = math.matrix([1, 0, 0])
-    var result = math.multiply(rotMatrix, vector)
-    add_axis2(data, translation, math.add(translation,result))
-    vector = math.matrix([0, 1, 0])
-    result = math.multiply(rotMatrix, vector)
-    add_axis2(data, translation, math.add(translation,result))
-    vector = math.matrix([0, 0, 1])
-    result = math.multiply(rotMatrix, vector)
-    add_axis2(data, translation, math.add(translation,result))
-
-    var layout = {
-      scene:{
-      aspectmode: "manual",
-      aspectratio: {
-        x: 1, y: 1, z: 1,
-        },
-      xaxis: {
-        range: [-10, 10],
-      },
-      yaxis: {
-        range: [-10, 10],
-      },
-      zaxis: {
-        range: [-10, 10],
-      }},
-    };
-
-    // Plotly.plot(TESTER, data, layout);
-
-
-
-    const quatElGroup = [
-      quatWEl,
-      quatXEl,
-      quatYEl,
-      quatZEl,
-    ]
-
-    const axisAngleElGroup = [
-      angleEl,
-      axisXEl,
-      axisYEl,
-      axisYEl,
-    ]
 
     // Add event handler to radio buttons to enable/disable certain input types
     // Trigger on click so that we also run when jQuery .trigger('click') called
     $('input[type=radio][name=inputType]').bind('change click', function() {
       console.log('radiobutton change handler called.')
       if (this.value == 'axisAngle') {
+        for(const el of axisAngleElGroup) {
+          el.prop('disabled', false)
+        }
         for(const el of quatElGroup) {
           el.prop('disabled', true)
         }
-        for(const el of axisAngleElGroup) {
-          el.prop('disabled', false)
+        for(const el of rotMatrixElGroup) {
+          el.prop('disabled', true)
         }
       } else if (this.value == 'quaternion') {
-        for(const el of quatElGroup) {
-          el.prop('disabled', false)
-        }
         for(const el of axisAngleElGroup) {
           el.prop('disabled', true)
         }
+        for(const el of quatElGroup) {
+          el.prop('disabled', false)
+        }
+        for(const el of rotMatrixElGroup) {
+          el.prop('disabled', true)
+        }
+      } else if (this.value == 'rotMatrix') {
+        for(const el of axisAngleElGroup) {
+          el.prop('disabled', true)
+        }
+        for(const el of quatElGroup) {
+          el.prop('disabled', true)
+        }
+        for(const el of rotMatrixElGroup) {
+          el.prop('disabled', false)
+        }
+      } else {
+        throw Error('Unrecognized radio button value.')
       }
     });
 
@@ -250,35 +282,26 @@ function rotToQuatMatrix(rotMatrix) {
     console.log('Checking quat radio button...')
     $('input[type=radio][value=quaternion]').prop('checked', true).trigger('click')
 
+    drawGraph(math.matrix([[1,0,0],[0,1,0],[0,0,1]]))
     quatChanged()
 
     // Register event handler for user now that we have finished touching the values
-    for (const el of quatElGroup) {
-      el.on('input', function (e) {
-        quatChanged()
-      })
-    }
-
     for (const el of axisAngleElGroup) {
       el.on('input', function (e) {
         angleAxisChanged()
       })
     }
+    for (const el of quatElGroup) {
+      el.on('input', function (e) {
+        quatChanged()
+      })
+    }
+    for (const el of rotMatrixElGroup) {
+      el.on('input', function (e) {
+        rotMatrixChanged()
+      })
+    }
   } // init()
-
-  function quatChanged() {
-    console.log('quatChanged() called.')
-    const quatW = quatWEl.val()
-    const quatX = quatXEl.val()
-    const quatY = quatYEl.val()
-    const quatZ = quatZEl.val()
-    var quaternion = math.matrix([ quatW, quatX, quatY, quatZ ]) // wxyz
-    console.log('quat='+quaternion)
-    quaternion = math.divide(quaternion, math.norm(quaternion))
-    const rotMatrix = quatToRotMatrix(quaternion)
-
-    updateGraph(rotMatrix)
-  }
 
   function angleAxisChanged() {
     console.log('angleAxisChanged() called.')
@@ -292,30 +315,90 @@ function rotToQuatMatrix(rotMatrix) {
     const quatY = axisY*Math.sin(angle/2)
     const quatZ = axisZ*Math.sin(angle/2)
 
-    quatWEl.text(quatW.toPrecision(4))
-    quatXEl.text(quatX.toPrecision(4))
-    quatYEl.text(quatY.toPrecision(4))
-    quatZEl.text(quatZ.toPrecision(4))
-
     var quaternion = math.matrix([ quatW, quatX, quatY, quatZ ]) // wxyz
     quaternion = math.divide(quaternion, math.norm(quaternion))
     const rotMatrix = quatToRotMatrix(quaternion)
-    updateGraph(rotMatrix)
     updateQuatEl(rotMatrix)
+    updateRotMatrixEl(rotMatrix)
+    updateGraph(rotMatrix)
+  }
+
+  function quatChanged() {
+    console.log('quatChanged() called.')
+    const quatW = quatWEl.val()
+    const quatX = quatXEl.val()
+    const quatY = quatYEl.val()
+    const quatZ = quatZEl.val()
+    var quaternion = math.matrix([ quatW, quatX, quatY, quatZ ]) // wxyz
+    console.log('quat='+quaternion)
+    quaternion = math.divide(quaternion, math.norm(quaternion))
+    const rotMatrix = quatToRotMatrix(quaternion)
+
+    updateAngleAxisEl(rotMatrix)
+    updateRotMatrixEl(rotMatrix)
+    updateGraph(rotMatrix)
+  }
+
+  function rotMatrixChanged() {
+    m00 = parseFloat(rot00El.val())
+    m01 = parseFloat(rot01El.val())
+    m02 = parseFloat(rot02El.val())
+    m10 = parseFloat(rot10El.val())
+    m11 = parseFloat(rot11El.val())
+    m12 = parseFloat(rot12El.val())
+    m20 = parseFloat(rot20El.val())
+    m21 = parseFloat(rot21El.val())
+    m22 = parseFloat(rot22El.val())
+    rotArray = [[ m00, m01, m02 ], [ m10, m11, m12 ], [ m20, m21, m22 ]]
+    rotMatrix = math.matrix(rotArray)
+    updateAngleAxisEl(rotMatrix)
+    updateQuatEl(rotMatrix)
+    updateGraph(rotMatrix)
+  }
+
+  function updateAngleAxisEl(rotMatrix) {
+    m00 = rotMatrix.get([0,0])
+    m01 = rotMatrix.get([0,1])
+    m02 = rotMatrix.get([0,2])
+    m10 = rotMatrix.get([1,0])
+    m11 = rotMatrix.get([1,1])
+    m12 = rotMatrix.get([1,2])
+    m20 = rotMatrix.get([2,0])
+    m21 = rotMatrix.get([2,1])
+    m22 = rotMatrix.get([2,2])
+    angle = Math.acos((m00 + m11 + m22 - 1)/2)
+    x = (m21 - m12)/Math.sqrt((m21 - m12)*2+(m02 - m20)*2+(m10 - m01)*2)
+    y = (m02 - m20)/Math.sqrt((m21 - m12)*2+(m02 - m20)*2+(m10 - m01)*2)
+    z = (m10 - m01)/Math.sqrt((m21 - m12)*2+(m02 - m20)*2+(m10 - m01)*2)
+    angleEl.val(angle.toPrecision(PRECISION))
+    axisXEl.val(x.toPrecision(PRECISION))
+    axisYEl.val(y.toPrecision(PRECISION))
+    axisZEl.val(z.toPrecision(PRECISION))
   }
 
   function updateQuatEl(rotMatrix) {
     console.log('updateQuatEl() called')
     const quat = rotToQuatMatrix(rotMatrix)
-    console.log('quat=' + quat)
-    quatWEl.val(quat.get([0]))
-    quatXEl.val(quat.get([1]))
-    quatYEl.val(quat.get([2]))
-    quatZEl.val(quat.get([3]))
+    quatWEl.val(quat.get([0]).toPrecision(PRECISION))
+    quatXEl.val(quat.get([1]).toPrecision(PRECISION))
+    quatYEl.val(quat.get([2]).toPrecision(PRECISION))
+    quatZEl.val(quat.get([3]).toPrecision(PRECISION))
   }
 
-  function updateGraph(rotMatrix) {
-    console.log('updateGraph() called. rotMatrix=' + rotMatrix)
+  function updateRotMatrixEl(rotMatrix) {
+    rot00El.val(rotMatrix.get([0,0]).toPrecision(PRECISION))
+    rot01El.val(rotMatrix.get([0,1]).toPrecision(PRECISION))
+    rot02El.val(rotMatrix.get([0,2]).toPrecision(PRECISION))
+    rot10El.val(rotMatrix.get([1,0]).toPrecision(PRECISION))
+    rot11El.val(rotMatrix.get([1,1]).toPrecision(PRECISION))
+    rot12El.val(rotMatrix.get([1,2]).toPrecision(PRECISION))
+    rot20El.val(rotMatrix.get([2,0]).toPrecision(PRECISION))
+    rot21El.val(rotMatrix.get([2,1]).toPrecision(PRECISION))
+    rot22El.val(rotMatrix.get([2,2]).toPrecision(PRECISION))
+  }
+
+  function drawGraph(rotMatrix) {
+    console.log('drawGraph() called. rotMatrix=' + rotMatrix)
     let calc = $('#calc-3d-rotation-graph')
 
     // let calc = $('#')
@@ -328,21 +411,21 @@ function rotToQuatMatrix(rotMatrix) {
 
     graphContainerEl = document.getElementById('graph-container');
     var data = []
-    add_axis2(data, math.matrix([0,0,0]), math.matrix([1,0,0]))
-    add_axis2(data, math.matrix([0,0,0]), math.matrix([0,1,0]))
-    add_axis2(data, math.matrix([0,0,0]), math.matrix([0,0,1]))
+    add_axis(data, math.matrix([0,0,0]), math.matrix([1,0,0]), 'blue')
+    add_axis(data, math.matrix([0,0,0]), math.matrix([0,1,0]), 'blue')
+    add_axis(data, math.matrix([0,0,0]), math.matrix([0,0,1]), 'blue')
 
-    const translation = math.matrix([5, 0, 0])
+    const translation = math.matrix([0, 0, 0])
 
     var vector = math.matrix([1, 0, 0])
     var result = math.multiply(rotMatrix, vector)
-    add_axis2(data, translation, math.add(translation,result))
+    add_axis(data, translation, math.add(translation,result), 'orange')
     vector = math.matrix([0, 1, 0])
     result = math.multiply(rotMatrix, vector)
-    add_axis2(data, translation, math.add(translation,result))
+    add_axis(data, translation, math.add(translation,result), 'orange')
     vector = math.matrix([0, 0, 1])
     result = math.multiply(rotMatrix, vector)
-    add_axis2(data, translation, math.add(translation,result))
+    add_axis(data, translation, math.add(translation,result), 'orange')
 
     var layout = {
       scene:{
@@ -362,9 +445,76 @@ function rotToQuatMatrix(rotMatrix) {
       },
     };
 
-
     // react() updates existing plot
     Plotly.react(graphContainerEl, data, layout);
+  }
+
+  function updateGraph(rotMatrix) {
+    console.log('updateGraph() called. rotMatrix=' + rotMatrix)
+    let calc = $('#calc-3d-rotation-graph')
+
+    // let calc = $('#')
+    var x1 = [0, 1];
+    var y1 = [0, 0];
+    var z1 = [0, 0];
+    var x2 = [0, 0];
+    var y2 = [0, 1];
+    var z2 = [0, 0];
+
+    graphContainerEl = document.getElementById('graph-container');
+    var data = []
+    // add_axis(data, math.matrix([0,0,0]), math.matrix([1,0,0]), 'blue')
+    // add_axis(data, math.matrix([0,0,0]), math.matrix([0,1,0]), 'blue')
+    // add_axis(data, math.matrix([0,0,0]), math.matrix([0,0,1]), 'blue')
+
+    const translation = math.matrix([0, 0, 0])
+
+    var vector = math.matrix([1, 0, 0])
+    var result = math.multiply(rotMatrix, vector)
+    add_axis(data, translation, math.add(translation,result), 'orange')
+    vector = math.matrix([0, 1, 0])
+    result = math.multiply(rotMatrix, vector)
+    add_axis(data, translation, math.add(translation,result), 'orange')
+    vector = math.matrix([0, 0, 1])
+    result = math.multiply(rotMatrix, vector)
+    add_axis(data, translation, math.add(translation,result), 'orange')
+
+    var layout = {
+      scene:{
+        aspectmode: "manual",
+        aspectratio: {
+          x: 1, y: 1, z: 1,
+        },
+        xaxis: {
+          range: [-10, 10],
+        },
+        yaxis: {
+          range: [-10, 10],
+        },
+        zaxis: {
+          range: [-10, 10],
+        }
+      },
+    };
+
+    // react() updates existing plot
+    // Data array has to be wrapped in another array
+    Plotly.restyle(graphContainerEl, 
+      {
+        type: 'scatter3d',
+        mode: 'lines',
+        x: [[1,3]],
+        y: [[5,6]],
+        z: [[7,8]],
+        opacity: 1.0,
+        line: {
+          width: 2,
+          color: 'green',
+          // colorscale: 'Viridis'
+        },
+        showlegend: false,
+      },1);
+
   }
 
   // Call init() from anon function (namespace)

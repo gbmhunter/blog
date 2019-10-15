@@ -4,10 +4,10 @@ categories: [ "Mathematics", "Geometry" ]
 date: 2014-11-13
 description: "A tutorial on quaternions, including calculators to convert between quaternions, rotation matrices and axis-angle notations."
 draft: false
-lastmod: 2019-03-24
+lastmod: 2019-10-14
 tags: [ "quaternion", "matrix", "rotation", "complex", "SLERP", "interpolation", "Euler", "angle", "RPY", "gimbal lock", "attitude", "orientation", "vector", "calculator", "conversion" ]
 title: "Quaternions"
-type: page
+type: "page"
 ---
 
 ## Overview<
@@ -288,7 +288,7 @@ Use this tool to convert from a rotation expressed as an axis-angle to a quatern
 
 <p>$$ \mathbf{q} = \begin{bmatrix}q_w\\q_x\\q_y\\q_z\end{bmatrix} $$</p>
 
-<p>Then the equivalent rotation matrix is:</p>
+Then the equivalent rotation matrix is:
 
 <p>$$ \mathbf{R} = 
 \begin{bmatrix}
@@ -298,7 +298,7 @@ Use this tool to convert from a rotation expressed as an axis-angle to a quatern
 \end{bmatrix}
 $$</p>
 
-<p>Use this tool to convert quaternions to rotation matrices.</p>
+Use this tool to convert quaternions to rotation matrices.
 
 {{< calculators/quaternion-to-rotation-matrix >}}
 
