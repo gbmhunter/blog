@@ -471,6 +471,7 @@ table.rotMatrix tr td {
 
     var vector = math.matrix([1, 0, 0])
     var result = math.multiply(rotMatrix, vector)
+
     add_axis(data, translation, math.add(translation,result), 'orange')
     vector = math.matrix([0, 1, 0])
     result = math.multiply(rotMatrix, vector)
@@ -479,33 +480,15 @@ table.rotMatrix tr td {
     result = math.multiply(rotMatrix, vector)
     add_axis(data, translation, math.add(translation,result), 'orange')
 
-    var layout = {
-      scene:{
-        aspectmode: "manual",
-        aspectratio: {
-          x: 1, y: 1, z: 1,
-        },
-        xaxis: {
-          range: [-10, 10],
-        },
-        yaxis: {
-          range: [-10, 10],
-        },
-        zaxis: {
-          range: [-10, 10],
-        }
-      },
-    };
-
     // react() updates existing plot
     // Data array has to be wrapped in another array
     Plotly.restyle(graphContainerEl, 
       {
         type: 'scatter3d',
         mode: 'lines',
-        x: [[1,3]],
-        y: [[5,6]],
-        z: [[7,8]],
+        x: [data[0].x,data[1].x,data[2].x],
+        y: [data[0].y,data[1].y,data[2].y],
+        z: [data[0].z,data[1].z,data[2].z],
         opacity: 1.0,
         line: {
           width: 2,
@@ -513,7 +496,7 @@ table.rotMatrix tr td {
           // colorscale: 'Viridis'
         },
         showlegend: false,
-      },1);
+      },[3,4,5]);
 
   }
 
