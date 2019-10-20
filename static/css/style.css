@@ -1,3 +1,5 @@
+/* 800px is the cut-off point */
+
 * {
     /* Don't set font family for everything, as it messes with code blocks */
     /* font-family: 'avenir next' ,'avenir', sans-serif */
@@ -70,14 +72,15 @@ p, li, div, td, th, input {
     line-height: 1.7;
     color: rgb(85, 85, 85);
 }
-@media (max-width: 800px) {
-    p, li, div, td, th {
-        font-size: 3.0vw;
-    }
+
+p, li, div, td, th {
+    /* O.k. size on mobile */
+    font-size: 2.5vw;
 }
 @media (min-width: 800px) {
     p, li, div, td, th {
-        /* font-size: 1.3rem; */
+        /* 1.3rem was a little too large */
+        font-size: 1.1rem;
     }
 }
 
