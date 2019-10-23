@@ -304,6 +304,4 @@ Use this tool to convert quaternions to rotation matrices.
 
 ## 3D Rotation
 
-<iframe src="https://ninjacalc-nextjs.gbmhunter.now.sh/calculators/3d-rotations" style="width: 800px; height: 800px; border: 0;"></iframe>
-
-<a name="1">https://www.mathworks.com/help/aeroblks/quaternionmultiplication.html</a>
+<iframe src="https://calc-mbedded-ninja.gbmhunter.now.sh/calculators/3d-rotations" style="width: 800px; height: 800px; border: 0;"></iframe>
