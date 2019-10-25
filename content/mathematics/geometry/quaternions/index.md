@@ -73,77 +73,71 @@ The conjugate of a unit quaternion is the same as it's inverse.
 
 ## Pure/Vector Quaternions
 
-<p>A pure quaternion is a quaternion where \(w=0\). This results in a quaternion:</p>
+A pure quaternion is a quaternion where `\(w=0\)`. This results in a quaternion:
 
 <p>$$ \mathbf{q} = x\mathbf{i} + y\mathbf{j} + z\mathbf{k} $$</p>
 
-<p>This three-valued quaternion also happens to be able to represent a vector in 3D space, and so it is also called a <i>vector quaternion</i>. A vector quaternion is used to represent either a vector or point in 3D space when you want to apply a quaternion rotation to it (more on this below).</p>
+This three-valued quaternion also happens to be able to represent a vector in 3D space, and so it is also called a <i>vector quaternion</i>. A vector quaternion is used to represent either a vector or point in 3D space when you want to apply a quaternion rotation to it (more on this below).
 
 ## Scalar/Vector Notation
 
-<p>You can split a quaternion into a scalar and a vector component. The \(w\) represents the <i>scalar</i> part of the quaternions and the \(x, y, z\) represents the <i>vector</i> part. You may see a quaternion written with an \(w\) for the scalar part and a \(\vec{r}\) for the vector part.</p>
+You can split a quaternion into a scalar and a vector component. The `\(w\)` represents the **scalar** part of the quaternions and the `\(x, y, z\)` represents the **vector** part. You may see a quaternion written with an `\(w\)` for the scalar part and a `\(\vec{r}\)` for the vector part.
 
 <p>$$ \mathbf{q} = (w, \vec{r}) $$</p>
 
 ## Unit Quaternions
 
-<p>Unit quaternions are quaternions in which the coefficients have been <i>normalized</i> as follows:</p>
+Unit quaternions are quaternions in which the coefficients have been **normalized** as follows:
 
 <p>$$ w^2 + x^2 + y^2 + z^2 = 1 $$</p>
 
-<p>Interestingly, all rotations in 3D space (which is called the 3D rotation group, or \(\mathbf{SO(3)}\)) can be represented by the unit quaternions (which is a sub-set of all quaternions). In fact, you will rarely ever deal with a quaternion that is not a unit quaternion!</p>
+Interestingly, all rotations in 3D space (which is called the 3D rotation group, or `\(\mathbf{SO(3)}\))` can be represented by the unit quaternions (which is a sub-set of all quaternions). In fact, you will rarely ever deal with a quaternion that is not a unit quaternion!
 
 ## Representation In Software/Programming
 
-<p>In software, quaternions are typically 
-  described with a vector/array (in the programming sense of the word) in the following form:</p>
+In software, quaternions are typically described with a vector/array (in the programming sense of the word) in the following form:
 
 <p>$$ \mathbf{q} = \begin{bmatrix}w\\x\\y\\z\end{bmatrix} $$</p>
 
-<p>in where the coefficients are stored in an array and the quaternion units \(\) are implied by position.</p>
+in where the coefficients are stored in an array and the quaternion units are implied by position.
 
-<p>It is important to note that <b>although it is common to represent a quaternion with vector-like syntax, it is definitely not a vector</b> (in the mathematical sense of the word). For one, quaternion multiplication does not follow the dot or cross-product multiplication rules that vectors do.</p>
+It is important to note that **although it is common to represent a quaternion with vector-like syntax, it is definitely not a vector** (in the mathematical sense of the word). For one, quaternion multiplication does not follow the dot or cross-product multiplication rules that vectors do.
 
 ## Why Use Quaternions To Describe Rotations?
 
-<p>There are a number of different ways to describe rotations. These include:</p>
+There are a number of different ways to describe rotations. These include:
 
-<ul>
-    <li>Axis-angle representation</li>
-    <li>Euler angles (roll, pitch, yaw)</li>
-    <li>Rotation matrices</li>
-    <li>Quaternions</li>
-</ul>
+* Axis-angle representation
+* Euler angles (roll, pitch, yaw)
+* Rotation matrices
+* Quaternions
 
-<p>Why choose Quaternions? One reason is that Quaternions do not suffer from the <b>gimbal lock</b> that Euler angles do. This also is related to the fact that they are differentiable (i.e. very small changes in rotation cause very small changes in the quaternion values), which allows for smooth interpolation, important for many use cases including 3D animation. They are also more compact with only four numbers need to be stored than a 9 number rotation matrix. Quaternions are also easily converted into the angle-axis representation and back again.</p>
+Why choose Quaternions? One reason is that Quaternions do not suffer from the _gimbal lock_ that Euler angles do. This also is related to the fact that they are differentiable (i.e. very small changes in rotation cause very small changes in the quaternion values), which allows for smooth interpolation, important for many use cases including 3D animation. They are also more compact with only four numbers need to be stored than a 9 number rotation matrix. Quaternions are also easily converted into the angle-axis representation and back again.
   
   
-<!-- ###################################################################### -->
-<!-- ROTATING A VECTOR                                                      -->
-<!-- ###################################################################### -->
-<h2>Rotating A Vector</h2>
+## Rotating A Vector
 
-<p>You can rotate a vector \(v\) in 3D space to \(v'\) with:</p>
+You can rotate a vector `\(v\)` in 3D space to `\(v'\)` with:
 
 <p>$$ \begin{bmatrix}0\\v'\end{bmatrix} = q \begin{bmatrix}0\\v\end{bmatrix}q' $$</p>
 
-<p>Because the vector is squashed between the quaternion and it's conjugate, this is sometimes referred to as the "sandwich product". The multiplications can be done by the basic product rule, or more easily using the <i>Hamilton product</i>.</p>
+Because the vector is squashed between the quaternion and it's conjugate, this is sometimes referred to as the "sandwich product". The multiplications can be done by the basic product rule, or more easily using the _Hamilton product_.
 
-<p>Lets assume we have the vector:</p>
+Lets assume we have the vector:
 
 <p>$$ v = \begin{bmatrix}1\\0\\0\end{bmatrix} $$</p>
 
-<p>And we want to rotate it with the quaternion:</p>
+And we want to rotate it with the quaternion>
 
 <p>$$ q = \begin{bmatrix}\sqrt{0.5} \\ 0 \\ \sqrt{0.5} \\ 0]\end{bmatrix} $$</p>
 
-<p>This quaternion just so happens to be a rotation of \(90\) around the y-axis.</p>
+This quaternion just so happens to be a rotation of `\(90\)` around the y-axis>
 
-<p>We turn the vector into a vector quaternion by adding a fourth value of 0 (which is the \(w\)):</p>
+We turn the vector into a vector quaternion by adding a fourth value of 0 (which is the `\(w\)`):
 
 <p>$$ v = \begin{bmatrix}0\\1\\0\\0\end{bmatrix} $$</p>
 
-<p>Combine into:</p>
+Combine into:
 
 <p>$$
   v' = 
@@ -152,15 +146,15 @@ The conjugate of a unit quaternion is the same as it's inverse.
   \begin{bmatrix}\sqrt{0.5} \\ 0 \\ -\sqrt{0.5} \\ 0]\end{bmatrix}
 $$</p>
 
-<p>To calculate the multiplication of two quaternions, you can use the Hamilton product. If you have the equation:</p>
+To calculate the multiplication of two quaternions, you can use the Hamilton product. If you have the equation:
 
 <p>$$q3 = q1*q2$$</p>
 
-<p>where each quaternion is composed in the following manner:</p>
+where each quaternion is composed in the following manner:
 
 <p>$$ q1 = q1_w + q1_x \mathbf{i} + q1_y \mathbf{y} + q1_z \mathbf{z} $$</p>
 
-<p>then using the Hamilton product, the values of each component in \(q3\) are<a href="#1"><sup>1</sup></a>:</p>
+then using the Hamilton product, the values of each component in `\(q3\)` are<a href="#1"><sup>1</sup></a>:
 
 <p> 
 $$
@@ -170,11 +164,11 @@ $$
   q3_x = q1_z q2_w - q1_y q2_x + q1_x q2_y + q1_w q2_z
 $$</p>
 
-<p>You can also rotate a vector \(\vec{v}\) by a quaternion \(q\) by decomposing the quaternion into it's scalar part \(w\) and it's vector part \(\vec{r}\):</p>
+You can also rotate a vector `\(\vec{v}\)` by a quaternion `\(q\)` by decomposing the quaternion into it's scalar part `\(w\)` and it's vector part `\(\vec{r}\)`:
 
 <p>$$ \mathbf{q} = (w, \vec{r}) $$</p>
 
-<p>and then using the following formula to calculate the rotated vector \(v_{rotated}\):</p>
+and then using the following formula to calculate the rotated vector `\(v_{rotated}\)`:
 
 <p>$$ v_{rotated} = \vec{v} + 2\vec{r} \times (\vec{r} \times \vec{v} + w\vec{v}) $$</p>
 
@@ -195,12 +189,9 @@ Given two quaternion rotations that are to be applied consecutively, `\(R_A\)` a
 
 <p>$$ R_C = R_B R_A $$</p>
 
-<p>Remember that <b>quaternion multiplication is not associative</b>, so the ordering of \( R_A \) and \( R_B \) is important.</p>
+Remember that **quaternion multiplication is not associative**, so the ordering of `\( R_A \)` and `\( R_B \)` is important.</p>
 
-<!-- ###################################################################### -->
-<!-- SOME USEFUL QUATERNIONS                                                -->
-<!-- ###################################################################### -->
-<h2>Some Useful Quaternions</h2>
+## Some Useful Quaternions
 
 <table>
     <thead>
@@ -266,7 +257,7 @@ A rotation in axis-angle form:
 
 <p>$$ axis = \begin{bmatrix}a_x\\a_y\\a_z\end{bmatrix} \quad angle = \theta $$</p>
 
-can be converted into a quaternion with:</p>
+can be converted into a quaternion with:
 
 <p>$$ \mathbf{q} = \begin{bmatrix}q_w\\q_x\\q_y\\q_z\end{bmatrix} = \begin{bmatrix} 
     \cos{\frac{\theta}{2}} \\
@@ -279,12 +270,9 @@ Use this tool to convert from a rotation expressed as an axis-angle to a quatern
 
 {{< calculators/axis-angle-to-quaternion >}}
 
-<!-- ###################################################################### -->
-<!-- CONVERSION FROM QUATERNIONS TO ROTATION MATRIX                         -->
-<!-- ###################################################################### -->
-<h2>Conversion From Quaternion To Rotation Matrix</h2>
+## Conversion From Quaternion To Rotation Matrix
 
-<p>If you have a quaternion in the form:</p>
+If you have a quaternion in the form:
 
 <p>$$ \mathbf{q} = \begin{bmatrix}q_w\\q_x\\q_y\\q_z\end{bmatrix} $$</p>
 
