@@ -17,17 +17,17 @@ type: "page"
 
 <p>$$ c = 3e8 $$</p>
 
-<p>An arrow is used to denote a vector:</p>
+<p>Bold font and an arrow is used to denote a vector:</p>
 
-<p>$$ \vec{v} = \begin{bmatrix}1\\2\\3\end{bmatrix} $$</p>
+<p>$$ \b{\vec{v}} = \begin{bmatrix}1\\2\\3\end{bmatrix} $$</p>
 
-<p>A hat is used to denote a unit vector:</p>
+<p>Bold font and a hat is used to denote a unit vector:</p>
 
-<p>$$ \hat{x} = \begin{bmatrix}1\\0\\0\end{bmatrix} $$</p>
+<p>$$ \b{\hat{x}} = \begin{bmatrix}1\\0\\0\end{bmatrix} $$</p>
 
 <p>A bold capital letter is used to denote a matrix or tensor:</p>
 
-<p>$$ \mathbf{B} = \begin{bmatrix}1&2&3\\4&5&6\\7&8&9\end{bmatrix} $$</p>
+<p>$$ \b{B} = \begin{bmatrix}1&2&3\\4&5&6\\7&8&9\end{bmatrix} $$</p>
 
 <p>A bold lower-case letter is used to denote imaginary component(s) (in things such as complex numbers and quaternions).</p>
 

@@ -3,32 +3,34 @@ author: "gbmhunter"
 date: 2019-02-25
 description: "An introduction to rotation matrices. What they are, how to calculate them, and what they are useful for!"
 draft: false
-lastmod: 2019-10-03
-tags: [ "matrix", "interpolation", "angle", "attitude", "orientation", "vector", "rotation", "rotation matrix", "dot product", "reference frame", "coordinate system" ]
+lastmod: 2019-10-26
+tags: [ "matrix", "interpolation", "angle", "attitude", "orientation", "vector", "rotation", "rotation matrix", "dot product", "reference frame", "coordinate system", "RPY", "Euler angles", "origin" ]
 title: "Rotation Matrices"
 type: "page"
 ---
 
 ## Overview
 
-Rotation matrices are matrices which are used to describe the rotation of a rigid body from one orientation to another.
+Rotation matrices are matrices which are used to describe the **rotation of a rigid body from one orientation to another**.
 
-In R3 they form a 3x3 matrix.
+In `\(\mathbb{R3}\)` they form a 3x3 matrix.
 
 <p>$$
-\mathbf{R} = \begin{bmatrix} \bhat{u_x} & \bhat{v_x} & \bhat{w_x} \\ \bhat{u_y} & \bhat{v_y} & \bhat{w_y} \\ \bhat{u_z} & \bhat{v_z} & \bhat{w_z} \end{bmatrix}
+\mathbf{R} = \begin{bmatrix} \hat{u_x} & \hat{v_x} & \hat{w_x} \\ \hat{u_y} & \hat{v_y} & \hat{w_y} \\ \hat{u_z} & \hat{v_z} & \hat{w_z} \end{bmatrix}
 $$</p>
 
-such that:
+such that if `\(\vec{\b{a}}\)` was a point in 3D space, then we can rotate `\(\vec{\b{a}}\)` to `\(\vec{\b{b}}\)` around the origin by applying `\(\b{R}\)` in the following manner:
 
 <p>$$
-\b{Ra} = \b{b}
+\b{R}\vec{\b{a}} = \vec{\b{b}}
 $$</p>
 
 <p class="centered">
 where:<br>
 \(\b{a}\) and \(\b{b}\) are 1x3 vectors<br>
 </p>
+
+## 
 
 ## Combining Rotations
 
@@ -67,3 +69,31 @@ $$</p>
   \( \cdot \) is the matrix dot product<br>
   and everything else as above
 </p>
+
+## Creating A Rotation Matrix From RPY Values
+
+Roll-pitch-yaw (RPY) values can be easily converted into a rotation matrix. To represent a extrinsic rotation with Euler angles `\( \alpha \)`, `\( \beta \)`, `\( \gamma \)` are about axes `\( x \)`, `\( y\)`, `\( z \)` can be formed with the equation:
+
+<p>$$ \b{R} = \b{R}_z(\gamma) \b{R}_y(\beta) \b{R}_x(\alpha) $$</p>
+
+where:
+
+<p>$$
+\b{R}_x(\theta) = \begin{bmatrix}
+  1 & 0            & 0             \\
+  0 & \cos(\theta) & -\sin(\theta) \\
+  0 & \sin(\theta) & \cos(\theta)  \\
+\end{bmatrix} \\
+
+\b{R}_y(\theta) = \begin{bmatrix} 
+  \cos(\theta)  & 0 & \sin(\theta) \\
+  0             & 1 & 0            \\
+  -\sin(\theta) & 0 & \cos(\theta) \\
+\end{bmatrix} \\
+
+\b{R}_z(\theta) = \begin{bmatrix}
+  \cos(\theta) & -\sin(\theta) & 0 \\
+  \sin(\theta) & \cos(\theta)  & 0 \\
+  0            & 0             & 1
+\end{bmatrix}
+$$</p>
