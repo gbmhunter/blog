@@ -4,8 +4,8 @@ categories: [ "Programming", "Integrated Development Environments (IDEs)" ]
 date: 2019-07-15
 description: "A tutorial on Jupyter Notebooks and Jupyter Labs."
 draft: false
-lastmod: 2019-07-16
-tags: [ "programming", "integrated development environments", "IDEs", "Jupyter", "notebooks", "Jupyter Labs", "HTML", "IPython", "images", "server", "CSS" ]
+lastmod: 2019-10-28
+tags: [ "programming", "integrated development environments", "IDEs", "Jupyter", "notebooks", "Jupyter Labs", "HTML", "IPython", "images", "server", "CSS", "embedded", "base64", "requests" ]
 title: "Jupyter"
 type: "page"
 ---
@@ -61,3 +61,25 @@ display(HTML('<img src="http://localhost:8123/my_dir/image.png" style="width: 40
 ```
 
 Note that both of these methods will not embed the image into the HTML but rather link to it. This will result in fast load times but will require the file system/server to be available everytime you want to re-render the cell.
+
+### Embedded Images
+
+As shown above, adding images to the Jupyter notebook via HTML `<img>` tags and a basic file server is a flexible way of controlling how exactly to display the output of cells. However, this notebook will depend on the file server being available. This might be fine for general use, but could be an issue if you want to export the Jupyter notebook and distribute it to other people.
+
+To get around this, you can embed the images into the Jupyter notebook using `base64` encoding. The below code shows how to do this, creating a utility function called `embedded_image()` which you can re-use to embed the `base64` encoding of the image data in the HTML `<img>` tag.
+
+```python
+import base64
+import requests
+from IPython.core.display import HTML
+
+def embedded_image(url):
+    response = requests.get(url)
+    uri = ("data:" +
+       response.headers['Content-Type'] + ";" +
+       "base64," + str(base64.b64encode(response.content).decode('utf-8')))
+    return uri
+
+html = f'<img src="{embedded_image('https://upload.wikimedia.org/wikipedia/commons/5/56/Kosaciec_szczecinkowaty_Iris_setosa.jpg')}" />'
+HTML(html)
+```
