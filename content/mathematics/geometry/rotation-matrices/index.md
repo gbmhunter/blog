@@ -1,10 +1,10 @@
 ---
 author: "gbmhunter"
 date: 2019-02-25
-description: "An introduction to rotation matrices. What they are, how to calculate them, and what they are useful for!"
+description: "An introduction to rotation matrices. What they are, how to calculate them, and what they are useful for."
 draft: false
-lastmod: 2019-10-26
-tags: [ "matrix", "interpolation", "angle", "attitude", "orientation", "vector", "rotation", "rotation matrix", "dot product", "reference frame", "coordinate system", "RPY", "Euler angles", "origin" ]
+lastmod: 2019-11-04
+tags: [ "matrix", "interpolation", "angle", "attitude", "orientation", "vector", "rotation", "rotation matrix", "dot product", "reference frame", "coordinate system", "RPY", "Euler angles", "origin", "THREE.js" ]
 title: "Rotation Matrices"
 type: "page"
 ---
@@ -70,9 +70,9 @@ $$</p>
   and everything else as above
 </p>
 
-## Creating A Rotation Matrix From RPY Values
+## Creating A Rotation Matrix From Euler Angles (RPY)
 
-Roll-pitch-yaw (RPY) values can be easily converted into a rotation matrix. To represent a extrinsic rotation with Euler angles `\( \alpha \)`, `\( \beta \)`, `\( \gamma \)` are about axes `\( x \)`, `\( y\)`, `\( z \)` can be formed with the equation:
+A rotation expressed as Euler angles (which includes RPY or roll-pitch-yaw notation) can be easily converted into a rotation matrix. To represent a extrinsic rotation with Euler angles `\( \alpha \)`, `\( \beta \)`, `\( \gamma \)` are about axes `\( x \)`, `\( y\)`, `\( z \)` can be formed with the equation:
 
 <p>$$ \b{R} = \b{R}_z(\gamma) \b{R}_y(\beta) \b{R}_x(\alpha) $$</p>
 
@@ -97,3 +97,15 @@ where:
   0            & 0             & 1
 \end{bmatrix}
 $$</p>
+
+## Converting A Rotation Matrix To Euler Angles
+
+Whilst converting a rotation expressed as Euler angles is relatively trivial (see above), it is not no simple to go the other way and convert a rotation matrix to Euler angles. 
+
+### Javascript
+
+THREE.js has a `Euler` class with the function `.setFromRotationMatrix()` which can convert a rotation matrix to Euler angles. The supported Euler angle orders are `XYZ`, `YZX`, `ZXY`, `XZY`, `YXZ`, `ZYX`, and it only supports _intrinsic_ rotations.
+
+## External Resources
+
+https://www.andre-gaschler.com/rotationconverter/ is a great one-page rotation calculator.
