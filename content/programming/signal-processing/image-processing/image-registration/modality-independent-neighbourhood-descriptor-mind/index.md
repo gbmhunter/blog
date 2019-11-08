@@ -5,7 +5,7 @@ date: 2019-06-20
 description: "A tutorial (with step-by-step examples) on the MIND descriptor, and image registration algorithm that works well for multi-modal image registration."
 draft: false
 lastmod: 2019-07-17
-tags: [ "programming", "signal processing", "image processing", "image registration", "MI", "mutual information", "MIND", "modality independent neighbourhood descriptor", "modalities", "patch", "voxel", "SSC", "convolution", "Fourier transform", "Sentinel-2", "satellite", "NIR" ]
+tags: [ "programming", "signal processing", "image processing", "image registration", "MI", "mutual information", "MIND", "modality independent neighbourhood descriptor", "modalities", "patch", "voxel", "SSC", "convolution", "Fourier transform" ]
 title: "Modality Independent Neighbourhood Descriptor (MIND)"
 type: "page"
 ---
@@ -151,42 +151,11 @@ mind_descriptors =
         [0.528, 0.42 , 0.459, 0.18 ]]])
 ```
 
-## Using The MIND Descriptors To Register Two Images
-
-You may be thinking, great, you've shown me how to calculate the MIND descriptors for an image, but now what? How do I use these to register two images?
-
-{{< comment >}}
-
-### Sentinel-2 Satellite Imagery
-
-* Dataset: S2B_MSIL2A_20190625T221609_N0212_R129_T60GUA_20190626T000320
-* Download Link: [https://scihub.copernicus.eu/dhus/odata/v1/Products('15de9330-30bd-4cb0-841a-bf9b88edd4ab')/$value](https://scihub.copernicus.eu/dhus/odata/v1/Products\('15de9330-30bd-4cb0-841a-bf9b88edd4ab'\)/$value)
-* Bands: `B03` (`GREEN`), `B08` (`NIR`) - both at 10m resolution
-
-The `GREEN` band imagery is artificially shifted by `(1.5, 1.5)` pixels (a pure translation, no rotation, skew or projection), to test the MIND correlator into trying to find a non-zero correlation (it does not make it easier nor harder for the algorithm, but is more satisfying to see a non-zero correction).
-
-### Brute Force Correlation
-
-Brute force correlation does not use an optimizer. Instead, a exhaustive grid search for the maximum correlation is done over a pre-defined window size. This is the most expensive way of finding the correlation, but is the most robust. It also allows us to plot the objective function over the entire window size, which is good for validating the suitability of the objective function for use with an optimizer (i.e. it is smooth and there are no local minima!).
-
-We use a small image of 50x50 pixels because the MIND correlator would take too long in our Python implementation to run on much larger patches.  
-
-<div style="display: flex;">
-{{% img src="ref_image.png" width="350px" caption="50x50 pixel patch of imagery from the B03 (GREEN) band." %}}
-{{% img src="cmp_image.png" width="350px" caption="50x50 pixel patch of imagery from the B08 (NIR) band." %}}
-</div>
-
-Using a brute force search found the best correlation to be at `(-1.59, -1.49)`, which is what we expect! It pretty much undoes our artificial `(1.5, 1.5)` pixel shift we added to the `NIR` band.
-
-{{% img src="mind_obj_fn.png" width="600px" %}}
-
-{{< /comment >}}
-
 ## Optimizations
 
 Convert the patch distance calculation into a correlation problem.
 
-The patch distance calculation involves computing a sum-of-squared differences. You can calculate the sqaured differences normally, but convert the summation into a correlation problem, and then compute the result of the correlation by converting the image into the frequency domain (via the FFT or _Fast Fourier Transform_), multiplying, and then performing an inverse FFT.
+The patch distance calculation involves computing a sum-of-squared differences. You can calculate the squared differences normally, but convert the summation into a correlation problem, and then compute the result of the correlation by converting the image into the frequency domain (via the FFT or _Fast Fourier Transform_), multiplying, and then performing an inverse FFT.
 
 ## Resources
 
