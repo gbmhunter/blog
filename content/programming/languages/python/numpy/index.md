@@ -30,7 +30,7 @@ R = [
 
 This has two axes.
 
-## Creating An Array
+### Creating An Array
 
 NumPy arrays can be created with standard Python lists:
 
@@ -97,7 +97,7 @@ array([ 4. ,  5.5,  7. ,  8.5, 10. ])
 The difference between `np.arange()` and `np.linspace()` is subtle but important to understand. `arange()` lets you specify the step size, and will create equally spaced points from the start up to (but not necessarily including) the end point. Whether the end point is included or not depends if the step size fits an integer number of times into the interval. `linspace()` lets you specify the number of steps in the interval, and will always include the start and end points.
 {{% /warning %}}
 
-## Indexing And Reading/Writing
+### Indexing And Reading/Writing
 
 NumPy arrays have one index per axis, forming a tuple. The indexed are zero-indexed, like all sensible languages/libraries :-D.
 
@@ -127,7 +127,7 @@ array([[ 2,  5],
         [ 1, 10]])
 ```
 
-## Doing Basic Operations With Arrays
+### Doing Basic Operations With Arrays
 
 NumPy arrays can be added element wise with the `+` operator:
 
@@ -172,7 +172,7 @@ array([ 9, -5, -11])
 
 One of the powerful features of Numpy arrays is the simple and terse slicing syntax (which is built upon Python's slicing syntax). A slice is when you extract just a portion of the array for further use:
 
-## Simple Slicing
+### Simple Slicing
 
 Very simple slicing is really the same as indexing:
 
@@ -190,7 +190,7 @@ my_slice = my_array[0:2]
 # my_slice = array([4, 5])
 ```
 
-## Multidimensional Slicing
+### Multidimensional Slicing
 
 Some of the real power of slicing is seen when you slice multidimensional arrays (arrays with more than 1 axis).
 
@@ -228,7 +228,7 @@ two_rows = data[1:3, :]
 # two_rows = array([[4, 5, 6], [7, 8, 9]])
 ```
 
-## Adding A Step
+### Adding A Step
 
 You can also add a step size while slicing Numpy arrays, just as you can when using standard Python slicing. The step size is the third argument in the slice syntax, i.e. `start:stop:step`.
 
@@ -262,7 +262,7 @@ The array would look like:
 [ [0 1 2], [10 11 12] ]
 ```
 
-## Skip Header Rows
+### Skip Header Rows
 
 You can skip a header line/row in the CSV file by providing `skip_header=1` to `genfromtxt()`:
 
@@ -303,3 +303,41 @@ my_array = np.eye(3)
 **np.ravel()**
 
 Returns a flattened array.
+
+## Masked Arrays
+
+Numpy has a powerful feature called a masked array. A masked array is essentially composed of two arrays, one containing the data, and another containing a mask (a boolean `True` or `False` value for each element in the data array).
+
+Retrieving an array value which is masked will result in `masked` being returned.
+
+### Creating A Masked Array
+
+You can use the `np.ma.masked_equal()` function to create a masked array from a standard array:
+
+```python
+import numpy as np
+standard_array = np.arange(4)
+print(standard_array)
+# stdout: array([0, 1, 2, 3])
+masked_array = np.ma.masked_equal(standard_array, 2)
+print(masked_array)
+# stdout: masked_array(data=[0, 1, --, 3],
+#           mask=[False, False,  True, False],
+#           fill_value=2)
+```
+
+### Checking If An Array Is Masked
+
+You can check if an array is masked with `np.ma.is_masked()`:
+
+```python
+import numpy as np
+
+standard_array = np.arange(4)
+print(np.ma.is_masked(standard_array))
+# stdout: False
+
+masked_array = np.ma.masked_equal(standard_array, 2)
+print(np.ma.is_masked(masked_array))
+# stdout: True
+```

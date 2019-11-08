@@ -288,6 +288,7 @@
         "qspi",
         "raspberrypi",
         "raspian",
+        "rasterio",
         "rdwr",
         "reflow",
         "relref",
