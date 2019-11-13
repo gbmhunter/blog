@@ -1,9 +1,10 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2017-03-27
 draft: false
-title: FreeRTOS And Watchdogs
-type: page
+lastmod: 2017-03-27
+title: "FreeRTOS And Watchdogs"
+type: "page"
 ---
 
 ## Overview

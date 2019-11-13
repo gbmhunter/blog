@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Test And Measurement" ]
 date: 2015-09-25
 draft: false
+lastmod: 2015-09-25
 tags: [ "current probe", "current probes", "hall-effect", "fluxgate", "magnetometer" ]
-title: Current Probes
-type: page
+title: "Current Probes"
+type: "page"
 ---
 
 ## Overview
@@ -24,9 +25,9 @@ Current probes are not cheap! They are significantly more expensive than their v
 
 ## Hall-Effect Probes
 
-Hall-effect current probes use the hall-effect phenomonym to measure the current travelling through a conductor. Their main advantage over the transformer-based current probes is that they can measure DC currents. However, they do not perform well at higher frequencies (20kHz seems to be a rough upper limit).
+Hall-effect current probes use the hall-effect phenomenon to measure the current travelling through a conductor. Their main advantage over the transformer-based current probes is that they can measure DC currents. However, they do not perform well at higher frequencies (20kHz seems to be a rough upper limit).
 
-The hall-effect sensor is an active sensor, and therefor the probe requires an external power source. This may be provided by an internal replaceable battery (e.g. 9V battery), and external power supply connector, or from the oscilloscope through a specialised connector (this is common on the more expensive, brand specific ones).
+The hall-effect sensor is an active sensor, and therefore the probe requires an external power source. This may be provided by an internal replaceable battery (e.g. 9V battery), and external power supply connector, or from the oscilloscope through a specialised connector (this is common on the more expensive, brand specific ones).
 
 Like the AC transformer-based current probes, they require the wire to be inserted into a loop. 
 

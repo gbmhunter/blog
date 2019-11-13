@@ -1,14 +1,15 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2015-01-12
 draft: false
-title: Managing Large Repos
-type: page
+lastmod: 2015-01-12
+title: "Managing Large Repos"
+type: "page"
 ---
 
 ## Truncating History
 
-Removing history from Mercurial is one way to reduce the size of the repository (the stuff in the .hg folder).
+Removing history from Mercurial is one way to reduce the size of the repository (the stuff in the `.hg` folder).
 
 Unlike Git, Mercurial does not support a proper shallow copy. You can make a new repository based on a subset of the commits from an existing one, but these repos will not be considered related, the changeset IDs will change for each commit, and you cannot push or merge changes between the two.
 
@@ -22,7 +23,7 @@ Where `1234` is the revision you want to start your new repository from, `<sourc
 
 Anyone else using the existing repository will have to stop using it and clone the new, truncated one if they wish to continue development (this can be a big problem).
 
-This does need the convert extension to be enabled (it comes shipped with Mercurial), which can be done by adding the following line under [extensions] in your mercurial.ini file.
+This does need the convert extension to be enabled (it comes shipped with Mercurial), which can be done by adding the following line under `[extensions]` in your `mercurial.ini` file.
 
 ```text
 [extensions]

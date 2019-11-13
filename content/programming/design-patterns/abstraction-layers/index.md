@@ -1,9 +1,10 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2014-08-07
 draft: false
+lastmod: 2014-08-07
 title: "Abstraction Layers"
-type: page
+type: "page"
 ---
 
 ## Overview
@@ -12,11 +13,11 @@ Abstraction layers allow for portable code. They provide a custom **"in-house" a
 
 Some commons layers are the hardware abstraction layer (HAL) and the operating system abstraction layer (OSAL).
 
-**Should you provide an abstraction layer for every piece of third-party code?** No, probably not. For things like the C and C++ standard library (e.g. <stdint.h>, you can be pretty sure that these will be supported and consistant across multiple platforms/architectures. You are most likely just wasting your time and creating an extra layer on confusion by writing an abstraction layer for these. All consider, will I ever use a different library, or is someone else likely to? It the answers no, again, think twice before writing an abstraction layer for it.
+**Should you provide an abstraction layer for every piece of third-party code?** No, probably not. For things like the C and C++ standard library (e.g. `<stdint.h>`, you can be pretty sure that these will be supported and consistent across multiple platforms/architectures. You are most likely just wasting your time and creating an extra layer on confusion by writing an abstraction layer for these. All consider, will I ever use a different library, or is someone else likely to? It the answers no, again, think twice before writing an abstraction layer for it.
 
 ## How To Specify The Different Implementations?
 
-Each abstraction layer will need a different implementation with each target hardware/firmware combination. This can be achieved with #ifdef statements, conditionally compiling specific .cpp/.c files, or providing function pointers in the abstraction layer which are pointed to the correct functions at run time.
+Each abstraction layer will need a different implementation with each target hardware/firmware combination. This can be achieved with `#ifdef` statements, conditionally compiling specific `.cpp`/`.c` files, or providing function pointers in the abstraction layer which are pointed to the correct functions at run time.
 
 ## Vendor Lock-In
 
@@ -24,11 +25,11 @@ Be careful using a feature which is specific to a particular platform. An abstra
 
 ## Better Unit Testing
 
-The usage of abtraction layers allows for better unit tests. By creating fake/mock abstraction layers, it allows for unit tests to be run on a different setup, e.g. on a PC rather than a microcontroller. This can speed up testing, make it easier to automate, and can allow for better debugging abilities (most micrcontroller platforms do not have quite the same debugging abilities a full-blown computer has).
+The usage of abstraction layers allows for better unit tests. By creating fake/mock abstraction layers, it allows for unit tests to be run on a different setup, e.g. on a PC rather than a microcontroller. This can speed up testing, make it easier to automate, and can allow for better debugging abilities (most microcontroller platforms do not have quite the same debugging abilities a full-blown computer has).
 
 ## Abstraction Layer API Recommendations
 
-Below are recommended abstraction layer API's for various hardware peripherals and common 3rd party libraries that you will use when writing firmware. Code is written in C++, but all are also applicable to the C programming language. All methods are sorted alphabetically.
+Below are recommended abstraction layer APIs for various hardware peripherals and common 3rd party libraries that you will use when writing firmware. Code is written in C++, but all are also applicable to the C programming language. All methods are sorted alphabetically.
 
 Plenty of the methods return a boolean true/false value to indicate whether the operation was successful or not. In the case that it cannot fail on a particular platform, just always return true. Keep in mind that as these are designed for embedded systems, exceptions are not used.
 
@@ -94,7 +95,7 @@ Plenty of the methods return a boolean true/false value to indicate whether the 
 
 Other operations not mentioned above that might be OS specific are the memory allocations functions such as `malloc()` and friends, `new`, `delete` (as well as their brothers `new[]` and `delete[]`). The OS may provide enhanced version of these memory allocation functions that provide things such as thread-safety and anti-fragmentation abilities (e.g. coalescence). For example, FreeRTOS provides you with the functions pvPortMalloc() and vFree().
 
-The nice thing about C++ is that you can do a program-wide overide of the new/delete family of operations which can then in turn call the OS-specific versions, making your code very portable.
+The nice thing about C++ is that you can do a program-wide override of the new/delete family of operations which can then in turn call the OS-specific versions, making your code very portable.
 
 I have written a OSAL template module in C++ called Osal-Cpp which is freely available for download on GitHub at [https://github.com/gbmhunter/Osal-Cpp](https://github.com/gbmhunter/Osal-Cpp).
 

@@ -88,29 +88,29 @@ Take care if using a clock to reset a PSoC hardware component. PSoC clocks have 
 
 ## Counter
 
-<table >
-<tbody >
-<tr >
-<td >Available Resolutions:</td>
-<td >8, 16, 24, or 32-bit</td>
-</tr>
-<tr >
-<td >Clock Mode:</td>
-<td >Down counter (default), up counter, clock with up and down count, clock input and direction</td>
-</tr>
-<tr >
-<td >Interrupt Triggers:</td>
-<td >TC (period), compare, capture</td>
-</tr>
-<tr >
-<td >Run Modes</td>
-<td >Continuous, one-shot</td>
-</tr>
-<tr >
-<td >Other Features</td>
-<td >Optional compare output and capture input. Enable and reset inputs (thee functions can be controlled from both firmware and hardware)</td>
-</tr>
-</tbody>
+<table>
+  <tbody>
+    <tr>
+      <td>Available Resolutions:</td>
+      <td>8, 16, 24, or 32-bit</td>
+    </tr>
+    <tr>
+      <td>Clock Mode:</td>
+      <td>Down counter (default), up counter, clock with up and down count, clock input and direction</td>
+    </tr>
+    <tr>
+      <td>Interrupt Triggers:</td>
+      <td>TC (period), compare, capture</td>
+    </tr>
+    <tr>
+      <td>Run Modes</td>
+      <td>Continuous, one-shot</td>
+    </tr>
+    <tr>
+      <td>Other Features</td>
+      <td>Optional compare output and capture input. Enable and reset inputs (thee functions can be controlled from both firmware and hardware)</td>
+    </tr>
+  </tbody>
 </table>
 
 Most embedded engineers would of heard about counters. They are commonly included peripherals in microcontrollers. Counters enable you to, well, count stuff. PSoC has a highly configurable and flexible counter module. It counting modes support counting down (the typical method), counting up, or counting in both directions depending on an input bit. It has a user defined clock input, compare register and output, a capture mode, and an interrupt with configurable interrupt sources. The maximum count can be set to 8-bit, 16-bit, 24-bit or 32-bit.
@@ -307,7 +307,7 @@ The RTC code is supplied as component that you drop into the top level design in
 
 While the PSoC 3 and 5/5LP microcontollers have dedicated UART, I2C and SPI modules, in the PSoC 4 they are all bundled together in a _Serial Communication Block (SCB)_.
 
-{{< img src="psoc-creator-scb-component-as-uart-example-topdesign.png" width="307px" caption="A screenshot of a SCB block in the 'TopDesign.cysch' file in PSoC Creator. This SCB block is configured as a UART."  >}}
+{{< img src="psoc-creator-scb-component-as-uart-example-topdesign.png" width="307px" caption="A screenshot of a SCB block in the `TopDesign.cysch` file in PSoC Creator. This SCB block is configured as a UART." >}}
 
 The SCB can be either configured graphically at compile time or by using code at runtime to operate as a UART, I2C or SPI module.
 

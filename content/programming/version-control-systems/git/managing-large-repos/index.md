@@ -1,12 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Version Control Systems" ]
 date: 2015-01-12
 draft: false
 lastmod: 2015-01-12
 tags: [ "programming", "version control systems", "VCS", "git", "large", "shallow copy" ]
-title: Managing Large Repos
-type: page
+title: "Managing Large Repos"
+type: "page"
 ---
 
 ## Overview

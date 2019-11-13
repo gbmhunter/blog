@@ -46,7 +46,13 @@ Prints the progress to `stdout`. This is very useful for large transfers!
 
 ### -r (Recursive)
 
-Recursive, will sync all files in child directories also.
+`-r` will cause `rsync` to sync all files in child directories. If not included and you provide `rsync` with a directory with subdirectories, warnings like:
+
+```sh
+skipping directory .
+```
+
+will be printed, and only files in the provided directory will be synced.
 
 ### -t (Preserve Modification Time)
 

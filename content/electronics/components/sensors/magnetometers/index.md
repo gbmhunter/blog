@@ -1,9 +1,10 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2014-12-09
 draft: false
-title: Magnetometers
-type: page
+lastmod: 2014-12-09
+title: "Magnetometers"
+type: "page"
 ---
 
 ## Overview
@@ -34,4 +35,4 @@ This includes:
 
 ## Electromagnetic
 
-Magnetometers are not directly affected by electromagnetic waves. However, if these waves pass through conductive substances (including those inside the magnetometer itself), these can induce a current which inturn creates a magnetic field.
+Magnetometers are not directly affected by electromagnetic waves. However, if these waves pass through conductive substances (including those inside the magnetometer itself), these can induce a current which in turn creates a magnetic field.

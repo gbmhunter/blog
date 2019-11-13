@@ -13,3 +13,5 @@ type: "post"
 * New {{% link title="Introduction To rasterio page" src="" %}}.
 
 * Added information on masked arrays to the {{% link title="Numpy page" src="" %}}.
+
+* Added Euler Angle support to the 3D rotations calculator.
