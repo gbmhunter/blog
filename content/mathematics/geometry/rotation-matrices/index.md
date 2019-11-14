@@ -3,8 +3,8 @@ author: "gbmhunter"
 date: 2019-02-25
 description: "An introduction to rotation matrices. What they are, how to calculate them, and what they are useful for."
 draft: false
-lastmod: 2019-11-04
-tags: [ "matrix", "interpolation", "angle", "attitude", "orientation", "vector", "rotation", "rotation matrix", "dot product", "reference frame", "coordinate system", "RPY", "Euler angles", "origin", "THREE.js" ]
+lastmod: 2019-11-13
+tags: [ "matrix", "interpolation", "angle", "attitude", "orientation", "vector", "rotation", "rotation matrix", "dot product", "reference frame", "coordinate system", "RPY", "Euler angles", "origin", "THREE.js", "determinant", "orthogonal" ]
 title: "Rotation Matrices"
 type: "page"
 ---
@@ -30,7 +30,7 @@ where:<br>
 \(\b{a}\) and \(\b{b}\) are 1x3 vectors<br>
 </p>
 
-## 
+Rotation matrices are always **orthogonal matrices which have a determinant of 1**.
 
 ## Combining Rotations
 
