@@ -163,4 +163,4 @@ df = pandas.read_csv('file_path.csv')
 
 ## Integration With Jupyter
 
-`pandas` has good integration into Jupyter. It can render dataframes as formatted and styled HTML tables, either by typing the dataframe variable on the last line of a cell or by using the `display(my_dataframe)` syntax. When dealing with large amounts of data inside a dataframe, it will truncate internal cells (with `...`) to limit the table height and width (similar to when you print a large `numpy` array). 
+`pandas` has good integration into Jupyter. It can render dataframes as formatted and styled HTML tables, either by typing the dataframe variable on the last line of a cell or by using the `display(my_dataframe)` syntax. When dealing with large amounts of data inside a dataframe, it will truncate internal cells (with `...`) to limit the table height and width (similar to when you print a large `numpy` array). Typically you should always leverage Jupyter's dataframe rendering ability, rather than using `print(my_dataframe)` (which just prints the dataframe as a string).

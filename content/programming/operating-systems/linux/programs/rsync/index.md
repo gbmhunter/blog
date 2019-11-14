@@ -75,15 +75,19 @@ Verbose. Will prints out more information when process is run. You can add extra
 Short Option: `-z`
 Long Option: n/a
 
-Compress data while doing transfer. Some files cannot be compressed, which includes <code>gz zip z rpm deb iso bz2 tbz tgz 7z mp3 mp4 mov avi ogg jpg jpeg</code>. WARNING: When using rsync to copy locally, compressing can SLOW DOWN the transfer as the time cost of compressing/decompressing outweighs the slightly faster transfer time.
+Compress data while doing transfer. Some files cannot be compressed, which includes the following extensions: `gz zip z rpm deb iso bz2 tbz tgz 7z mp3 mp4 mov avi ogg jpg jpeg`. 
+
+{{% warning %}}
+When using rsync to copy locally, compressing can SLOW DOWN the transfer as the time cost of compressing/decompressing outweighs the slightly faster transfer time.
+{{% /warning %}}
 
 ## Popular Use Cases
 
 
-Good general purpose rsync use, without propagating deletions:
+Good general purpose rsync use, copying both files and subdirectories under `/source/` with compression, without propagating deletions:
 
 ```bash
-$ rsync -arvz source destination
+$ rsync -arvz /source/ /destination/
 ```
 
 Good general purpose rsync use with deletion propagation (be careful!):
