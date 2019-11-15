@@ -14,4 +14,6 @@ type: "post"
 
 * Added information on masked arrays to the {{% link title="Numpy page" src="" %}}.
 
-* Added Euler Angle support to the 3D rotations calculator.
+* Added Euler Angle support (e.g. RPY) to the 3D rotations calculator.
+
+* New introduction to different {{% link text="map projections" src="" %}}.

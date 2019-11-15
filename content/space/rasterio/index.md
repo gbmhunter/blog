@@ -38,11 +38,25 @@ pixels = dataset.read()
 # You have to remember to close the dataset yourself
 ```
 
-## Windowing
+## Reprojection
+
+`reproject()` does not create the destination array for you, you have to create the array yourself and pass it into the function.
 
 ```py
-Window()
+rasterio.reproject(
+    src_array,
+    dst_array,
+    src_transform,
+    src_crs,
+    dst_transform,
+    dst_crs,
+    resampling)
 ```
 
-## Polygons
+## Common Errors
 
+```text
+rasterio._err.CPLE_AppDefinedError: Too many points (10201 out of 10201) failed to transform, unable to compute output bounds.
+```
+
+This error usually occurs if you are trying to reproject an image into a projection space that does not contain the image (e.g. images are in completely different UTM zones).

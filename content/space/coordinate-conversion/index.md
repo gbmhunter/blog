@@ -1,9 +1,10 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2017-10-23
 draft: false
-title: Coordinate Conversion
-type: page
+lastmod: 2017-10-23
+title: "Coordinate Conversion"
+type: "page"
 ---
 
 ## Haversine Formula

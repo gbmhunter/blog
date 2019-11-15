@@ -1,10 +1,13 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2014-01-05
+description: "An introduction to the UNIX program find, which can be used to search for files and directories on your computer."
 draft: false
-title: find
-type: page
+lastmod: 2019-11-14
+tags: [ "programming", "operating systems", "Linux", "programs", "find", "UNIX", "files", "directories" ]
+title: "find"
+type: "page"
 ---
 
 ## Overview
@@ -13,7 +16,7 @@ type: page
 
 By default, `find` is recursive. It searches from the specified directory and looks in all sub-directories.
 
-By default, the search pattern uses glob-style pattern matching (not regex).
+By default, the search pattern uses glob-style pattern matching (not regex). However, regex can be supplied with the `-regex` option (more )
 
 ## Find File By Name
 
@@ -24,6 +27,10 @@ $ find . -name '*.cpp'
 ```
 
 You have to provide the `*` at the start because find matches against the whole path (it doesn't allow partial matches).
+
+{{% warning %}}
+Always make sure to make the search path **the first argument** to `find`, as `find` is sensitive to the argument order (even with optional arguments!).
+{{% /warning %}}
 
 ## Multiple Patterns
 
@@ -61,6 +68,14 @@ By default, `find` uses emacs style regex, which have different escaping rules t
 
 ```sh
 $ find . -regex '\./[0-9]+\.jpg' -E
+```
+
+## Finding Directories
+
+You can restrict `find` to searching just for directories by providing the `-type d` argument:
+
+```sh
+$ find . -type d -name "my_dir_name"
 ```
 
 ## Combining With sed
