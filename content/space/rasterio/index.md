@@ -1,21 +1,25 @@
 ---
 author: "gbmhunter"
+categories: [ "Space" ]
 date: 2019-10-04
+description: "An introduction to the Python library rasterio, used for manipulating geospatial data."
 draft: false
-lastmod: 2019-10-04
-tags: [ "space", "rasterio", "GDAL", "raster", "GeoTIFF", "geospatial", "API" ]
+lastmod: 2019-11-15
+tags: [ "space", "rasterio", "GDAL", "raster", "GeoTIFF", "geospatial", "API", "mapbox", "Python" ]
 title: "rasterio"
 ---
 
 ## Overview
 
-`rasterio` is a Python package which aims to provide a friendlier API to GDAL than GDAL's own Python API (which feels very C-like). 
+`rasterio` is a Python package which aims to provide a friendlier API to GDAL than GDAL's own Python API (which feels very C-like). It is an [open source project on GitHub](https://github.com/mapbox/rasterio) that is created and maintained by [mapbox](https://www.mapbox.com/).
 
 Most of the code examples below assume you have imported `rasterio` into the current module with:
 
 ```py
 import rasterio
 ```
+
+`rasterio`'s API documentation can be found at [https://rasterio.readthedocs.io/en/stable/index.html](https://rasterio.readthedocs.io/en/stable/index.html). Be warned that it is very incomplete (as of November 2019) --- there is missing documentation for many `rasterio` features.
 
 ## Reading A GeoTIFF
 
