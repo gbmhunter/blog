@@ -12,12 +12,12 @@ type: "page"
 
 ## Overview<
 
-<p>A quaternion (pronounced <i>qwa-ter-ne-ion</i>) is a complex-number like system which contains three imaginary components and one real component. Arguably, the most useful quaternions is a subset of all quaternions called <b>unit quaternions</b> (or <b>versors</b>), which can be used to describe a rotation in 3D space. This page focuses primarily on these unit quaternions.</p>
+A quaternion (pronounced _qwa-ter-ne-ion_) is a complex-number like system which contains three imaginary components and one real component. Arguably, the most useful quaternions is a subset of all quaternions called <b>unit quaternions</b> (or <b>versors</b>), which can be used to describe a rotation in 3D space. This page focuses primarily on these unit quaternions.
 
 
 ## Defining Equation And Identities
 
-<p>The basic form of a quaternion is:</p>
+The basic form of a quaternion is:
 
 <p>$$ \mathbf{q} = w + x\mathbf{i} + y\mathbf{j} + z\mathbf{k} $$</p>
 
@@ -28,15 +28,15 @@ type: "page"
   (which can be seen as similar to the complex number \(\mathbf{i}\))
 </p>
 
-<p>The multiplication rules for the quaternion units are:</p>
+The multiplication rules for the quaternion units are:
 
 <p>$$ \mathbf{i}^2 = \mathbf{j}^2 = \mathbf{k}^2 = \mathbf{ijk} = -1 $$</p>
 
-<p>From these rule above, you can determine some identities:</p>
+From these rule above, you can determine some identities:
 
 <p>$$ \mathbf{ijk} = -1 $$</p>
 
-<p>Multiply both sides by \(\mathbf{i}\):</p>
+Multiply both sides by `\(\mathbf{i}\)`:
 
 <p>$$ \mathbf{i}^2\mathbf{jk} = -\mathbf{i} $$</p>
 
@@ -245,9 +245,42 @@ Remember that **quaternion multiplication is not associative**, so the ordering 
 
 ## Interpolation
 
-## SLERP
+### SLERP
 
-SLERP is shorthand for *spherical linear interpolation*. It is commonly used with quaternions to produce a smooth rotation of a 3D body from one orientation to another.
+SLERP is shorthand for *spherical linear interpolation*. It is commonly used with quaternions to produce a smooth rotation of a 3D body from one orientation to another. Performing SLERP on two quaternions produces a smooth, continuous rotation with a constant angular velocity around a fixed rotation axis (the first quaternion describes the starting rotation, the second quaternion describes the end rotation).
+
+SLERP does not work well when the two quaternions are too similar. In this case it is safer to just perform linear interpolation on all four values quaternion values independently (making sure to normalize the resulting quaternion before using it).
+
+The following Python code example demonstrates the SLERP algorithm on a pair of quaternions [^wikipedia]:
+
+```python
+import numpy as np
+def slerp(v0, v1, t_array):
+    # >>> slerp([1,0,0,0],[0,0,0,1],np.arange(0,1,0.001))
+    t_array = np.array(t_array)
+    v0 = np.array(v0)
+    v1 = np.array(v1)
+    dot = np.sum(v0*v1)
+
+    if (dot < 0.0):
+        v1 = -v1
+        dot = -dot
+    
+    DOT_THRESHOLD = 0.9995
+    if (dot > DOT_THRESHOLD):
+        result = v0[np.newaxis,:] + t_array[:,np.newaxis]*(v1 - v0)[np.newaxis,:]
+        return (result.T / np.linalg.norm(result, axis=1)).T
+    
+    theta_0 = np.arccos(dot)
+    sin_theta_0 = np.sin(theta_0)
+
+    theta = theta_0*t_array
+    sin_theta = np.sin(theta)
+    
+    s0 = np.cos(theta) - dot * sin_theta / sin_theta_0
+    s1 = sin_theta / sin_theta_0
+    return (s0[:,np.newaxis] * v0[np.newaxis,:]) + (s1[:,np.newaxis] * v1[np.newaxis,:])
+```
 
 <p><a href="https://en.wikipedia.org/wiki/Slerp">https://en.wikipedia.org/wiki/Slerp</a> has some code examples in Python and C++ that perform SLERP on quaternions.</p>
 
@@ -293,3 +326,5 @@ Use this tool to convert quaternions to rotation matrices.
 ## 3D Rotation
 
 <iframe src="https://calc-mbedded-ninja.gbmhunter.now.sh/calculators/3d-rotations" style="width: 800px; height: 800px; border: 0;"></iframe>
+
+[^wikipedia]: https://en.wikipedia.org/wiki/Slerp
