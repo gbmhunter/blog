@@ -3,34 +3,49 @@ author: "gbmhunter"
 categories: [ "Programming", "Cloud", "AWS" ]
 date: 2019-01-14
 draft: false
+lastmod: 2019-11-21
 tags: [ "AWS", "CLI", "command-line interface", "boto3", "S3", "sync", "bucket", "file" ]
 title: "AWS Command-Line Interface"
 type: "page"
 ---
 
-<h2>S3</h2>
+## Installation
 
-<h3>Listing Files</h3>
+```bash
+$ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+$ unzip awscli-bundle.zip
+$ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+```
 
-<p>To list buckets:</p>
+## S3
 
-{{< highlight bash >}}
+### Creating A Bucket
+
+```bash
+$ aws s3 mb s3://<bucket_name> --region <region>
+```
+
+### Listing Files
+
+To list buckets:
+
+```bash
 $ aws s3 ls
-{{< /highlight >}}
+```
 
-<h3>Copying Files</h3>
+### Copying Files
 
 ```bash
 $ aws s3 cp <source> <destination>
 ```
 
-{{< highlight bash >}}
+```bash
 # Copy local file to S3
-$ aws s3 cp my_file.txt s3://&lt;my_bucket&gt;/&lt;my_prefix&gt;
+$ aws s3 cp my_file.txt s3://my_bucket/my_prefix
 
 # Copy file from S3 to local
-$ aws s3 cp s3://&lt;my_bucket&gt;/&lt;my_prefix&gt; my_file.txt
-{{< /highlight >}}
+$ aws s3 cp s3://my_bucket/my_prefix my_file.txt
+```
 
 ### Syncing Files
 
