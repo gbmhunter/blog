@@ -4,7 +4,7 @@ categories: [ "Programming", "Cloud", "AWS", "CloudFormation" ]
 date: 2019-11-21
 draft: false
 lastmod: 2019-11-21
-tags: [ "programming", "cloud", "AWS", "CloudFormation" ]
+tags: [ "programming", "cloud", "AWS", "CloudFormation", "stacks", "boto3", "CLI" ]
 title: "CloudFormation"
 type: "page"
 ---
@@ -16,5 +16,33 @@ type: "page"
 To delete a stack:
 
 ```bash
-aws cloudformation delete-stack --stack-name <stack_name> --region <region>
+$ aws cloudformation delete-stack --stack-name <stack_name> --region <region>
+```
+
+## Python API
+
+The first thing you have to do to interact with CloudFormation from `boto3` is to create a CloudFormation _client_:
+
+```python
+import boto3
+cf = boto3.client('cloudformation')
+```
+
+`describe_stacks()` returns an dictionary which contains a `Stacks` key. This `Stacks` key contains an array where each element is a dictionary containing information about a particular stack.
+
+```python
+import boto3
+
+cf = boto3.client('cloudformation')
+stacks = cf.describe_stacks(StackName='my-stack-name')
+print(stacks)
+# stdout:
+# {
+#   'Stacks': [
+#     {
+#       'StackId': 'foo',
+#       ...
+#     }
+#   ] 
+# }
 ```

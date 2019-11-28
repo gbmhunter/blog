@@ -1,9 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2013-01-31
 draft: false
-title: Wordpress
-type: page
+lastmod: 2013-01-31
+tags: [ "programming", "website design", "content management systems", "CMS", "Wordpress" ]
+title: "Wordpress"
+type: "page"
 ---
 
 ## Overview

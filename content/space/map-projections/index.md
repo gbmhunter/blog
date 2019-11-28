@@ -1,11 +1,11 @@
 ---
 author: "gbmhunter"
 categories: [ "Space", "Projections" ]
-date: 2019-10-04
+date: 2019-11-13
 draft: false
-lastmod: 2019-10-04
+lastmod: 2019-11-13
 tags: [ "space", "projections", "Mercator", "Google Maps", "Gerhard Kremer", "Gerhard Mercator", "WKT" ]
-title: "Projections"
+title: "Map Projections"
 ---
 
 ## Overview
