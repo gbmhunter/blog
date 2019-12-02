@@ -9,6 +9,10 @@ title: "React"
 type: "page"
 ---
 
+## Overview
+
+{{% img src="react-logo.png" width="400px" caption="The React logo." %}}
+
 ## Injecting Variables At Build Time
 
 React recognizes either environment variables or variables defined in a `.env` file located at the project root. React only recognizes variables which begin with `REACT_APP_`

@@ -10,12 +10,16 @@ title: "November 2019 Updates"
 type: "post"
 ---
 
-* New {{% link title="Introduction To rasterio page" src="/space/rasterio" %}}.
+* New {{% link text="Introduction To rasterio page" src="/space/rasterio" %}}.
 
-* Added information on masked arrays to the {{% link title="Numpy page" src="/programming/languages/python/numpy" %}}.
+    {{% figure src="/space/rasterio/raster-io-example-image.png" width="400px" %}}
+
+* Added information on masked arrays to the {{% link text="Numpy page" src="/programming/languages/python/numpy" %}}.
 
 * Added Euler Angle support (e.g. RPY) to the 3D rotations calculator.
 
 * New introduction to different {{% link text="map projections" src="/space/map-projections" %}}.
 
-* Added a new {{% link title="React page" src="/programming/website-design/user-interface-libraries/react" %}}.
+* Added a new {{% link text="React page" src="/programming/website-design/user-interface-libraries/react" %}}.
+
+    {{% figure src="/programming/website-design/user-interface-libraries/react/react-logo.png" width="300px" %}}

@@ -13,6 +13,8 @@ title: "rasterio"
 
 `rasterio` is a Python package which aims to provide a friendlier API to GDAL than GDAL's own Python API (which feels very C-like). It is an [open source project on GitHub](https://github.com/mapbox/rasterio) that is created and maintained by [mapbox](https://www.mapbox.com/).
 
+{{% img="raster-io-example-image.png" width="400px" caption="A GeoTIF file which has been reprojected and displayed using rasterio." %}}
+
 Most of the code examples below assume you have imported `rasterio` into the current module with:
 
 ```py
