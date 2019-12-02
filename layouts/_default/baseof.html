@@ -26,7 +26,9 @@
         <!-- Make page match the screen's width in device-independant pixels -->
         <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-        {{ .Hugo.Generator }}
+        <!-- This should output a meta tag looking like <meta name="generator" content="Hugo 0.55.0" /> -->
+        {{ hugo.Generator }}
+
         {{/* NOTE: For Production make sure you add `HUGO_ENV="production"` before your build command */}}
         {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
             <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
