@@ -10,7 +10,7 @@
     <!-- Get the most recent posts, from any section, and then paginate them -->
     {{ range (.Paginate (first 20 ( sort (where .Site.RegularPages "Section" "posts") "Date" "desc" )) 5 ).Pages }}
         <!-- {{ .Render "summary"}} -->
-        <a href="{{ .URL }}" class="post-title"><h1>{{ .Title }}</h1></a>
+        <a href="{{ .RelPermalink }}" class="post-title"><h1>{{ .Title }}</h1></a>
         <div>
             {{ .Content }}
         </div>
