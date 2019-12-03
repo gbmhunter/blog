@@ -1,5 +1,5 @@
 {{ if or (.Sections) (.Pages) }}
-    {{ $child_pages := union .Sections .Pages }}
+    {{ $child_pages := .Sections }}
     <ul class="submenu">
         {{ range $child_pages.ByTitle }}
             <li class="dropdown">

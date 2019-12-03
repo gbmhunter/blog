@@ -4,7 +4,7 @@ categories: [ "Space" ]
 date: 2019-10-04
 description: "An introduction to the Python library rasterio, used for manipulating geospatial data."
 draft: false
-lastmod: 2019-11-15
+lastmod: 2019-11-16
 tags: [ "space", "rasterio", "GDAL", "raster", "GeoTIFF", "geospatial", "API", "mapbox", "Python" ]
 title: "rasterio"
 ---

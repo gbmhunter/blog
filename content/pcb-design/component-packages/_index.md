@@ -1,9 +1,10 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2011-09-03
 draft: false
-title: Component Packages
-type: page
+lastmod: 2011-09-03
+title: "Component Packages"
+type: "page"
 ---
 
 ## Overview

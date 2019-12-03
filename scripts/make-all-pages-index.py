@@ -20,7 +20,7 @@ def rename_file(file_name, root, is_leaf):
     old_file_path = os.path.join(root, file_name)
 
     if is_leaf:
-        new_file_name = 'index.md'
+        new_file_name = '_index.md'
     else:
         new_file_name = '_index.md'
 

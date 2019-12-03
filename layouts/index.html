@@ -6,9 +6,8 @@
         {{.Content}}
     </div>
     <div>
-    <!-- Note that .Pages is the same as .Site.RegularPages on the homepage template. -->
     <!-- Get the most recent posts, from any section, and then paginate them -->
-    {{ range (.Paginate (first 20 ( sort (where .Site.RegularPages "Section" "posts") "Date" "desc" )) 5 ).Pages }}
+    {{ range (.Paginate (first 20 ( sort (where .Site.Pages "Section" "posts") "Date" "desc" )) 5 ).Pages }}
         <!-- {{ .Render "summary"}} -->
         <a href="{{ .RelPermalink }}" class="post-title"><h1>{{ .Title }}</h1></a>
         <div>
