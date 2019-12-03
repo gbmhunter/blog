@@ -2,6 +2,7 @@
 author: gbmhunter
 date: 2014-11-29
 draft: false
+lastmod: 2014-11-29
 title: Columbus Radio
 type: page
 ---
@@ -18,7 +19,7 @@ My partner brought this lovely vintage, but worn valve-based radio an auction ma
 
 Even though it was worn and torn, you could tell it had been beautifully made and with attention to detail. Different veneers were expertly crafted into each wooden face of the cabinet. The rear showed you the inner-workings, large valves, plate capacitors and pully systems!
 
-{{< img src="columbus-radio-020-original-radio-from-back.jpg" width="589px" caption="The original rear of the cabinet. Valves, air capacitors and pully systems!"  >}}
+{{< img src="columbus-radio-020-original-radio-from-back.jpg" width="589px" caption="The original rear of the cabinet. Valves, air capacitors and pulley systems!"  >}}
 
  The original electronics!
 
@@ -40,24 +41,26 @@ The radio's enclosure was in a pretty sad state when I first laid hands on it. T
 
 I tried a few different paint strippers (because my father had all of these lying around).
 
-<table><tbody ><tr >
-<td >   
-{{< img src="columbus-radio-050-maxistrip-paint-stripper.jpg" width="253px" caption="The Maxistrip paint stripper."  >}}
-</td>
-<td >   
-{{< img src="columbus-radio-060-easy-spray-paint-stripper.jpg" width="171px" caption="The 'Dad's Easy Spray' paint stripper."  >}}
-</td>
-<td >   
-{{< img src="columbus-radio-070-coopers-paint-stripper.jpg" width="176px" caption="The Cooper's stripper."  >}}
-</td></tr></tbody></table>
+<table>
+<tbody>
+<tr>
+<td>{{< img src="columbus-radio-050-maxistrip-paint-stripper.jpg" width="253px" caption="The Maxistrip paint stripper."  >}}</td>
+<td>{{< img src="columbus-radio-060-easy-spray-paint-stripper.jpg" width="171px" caption="The 'Dad's Easy Spray' paint stripper."  >}}</td>
+<td>{{< img src="columbus-radio-070-coopers-paint-stripper.jpg" width="176px" caption="The Cooper's stripper."  >}}</td>
+</tr>
+</tbody>
+</table>
 
 Here is me applying the stripper to the cabinet:
 
-<table><tbody ><tr >
-<td >{{< img src="columbus-radio-075-trying-the-maxistrip.jpg" width="232px" caption="Testing out the Maxistrip stripper."  >}}
-</td>
-<td >{{< img src="columbus-radio-080-coating-radio-with-stripper.jpg" width="421px" caption="Applying the stripper."  >}}
-</td></tr></tbody></table>
+<table>
+<tbody>
+<tr>
+<td>{{< img src="columbus-radio-075-trying-the-maxistrip.jpg" width="232px" caption="Testing out the Maxistrip stripper."  >}}</td>
+<td>{{< img src="columbus-radio-080-coating-radio-with-stripper.jpg" width="421px" caption="Applying the stripper."  >}}</td>
+</tr>
+</tbody>
+</table>
 
 This is left for about 20 minutes, and then the stripper removed with a combination of scraping, iron wool and water/washer.
 
@@ -160,21 +163,27 @@ EDIT (post completion): One backwards facing speaker **didn't seem to be that de
 
 There used to be some sort of valve-based indicator which poked out onto the front glass panel.
 
-<table><tbody ><tr >
-<td >{{< img src="columbus-radio-345-removing-old-indicator.jpg" width="250px" caption="Removing the existing valve-based indicator."  >}}
-</td>
-<td >{{< img src="columbus-radio-350-place-for-indicator.jpg" width="257px" caption="I now had to find something to fit into the gap..."  >}}
-</td></tr></tbody></table>
+<table>
+<tbody>
+<tr>
+<td>{{< img src="columbus-radio-345-removing-old-indicator.jpg" width="250px" caption="Removing the existing valve-based indicator."  >}}</td>
+<td>{{< img src="columbus-radio-350-place-for-indicator.jpg" width="257px" caption="I now had to find something to fit into the gap..."  >}}</td>
+</tr>
+</tbody>
+</table>
 
 I got the great idea to use LEDs to indicate two things, when the power was on, and when the radio had internet connectivity. I busily spent many hours buying the high-power LEDs, working out how to diffuse their light, making a reflective backing for them to push more light forwards, and installing them into the radio. I was just glueing up the little housing I made for them with epoxy when I realised, crap, LEDs are not retro at all! 
 
 Heartbreakingly I decided to rip them out right then and there before the epoxy set, and start anew. This time I used a tungsten based bulb instead, wrapping it in black cardboard to make up a mount that would fit the original hole.
 
-<table><tbody ><tr >
-<td >{{< img src="columbus-radio-353-new-indicator.jpg" width="300px" caption="Making up a mount for a 12V, 100mA bulb to replace the valve-based indicator."  >}}
-</td>
-<td >{{< img src="columbus-radio-356-gluing-new-indicator-into-place.jpg" width="300px" caption="Hot-gluing the bulb into the front glass face from the back."  >}}
-</td></tr></tbody></table>
+<table>
+<tbody>
+<tr>
+<td>{{< img src="columbus-radio-353-new-indicator.jpg" width="300px" caption="Making up a mount for a 12V, 100mA bulb to replace the valve-based indicator."  >}}</td>
+<td>{{< img src="columbus-radio-356-gluing-new-indicator-into-place.jpg" width="300px" caption="Hot-gluing the bulb into the front glass face from the back."  >}}</td>
+</tr>
+</tbody>
+</table>
 
 ## User Interface Inputs
 
@@ -192,11 +201,14 @@ The **RaspberryPi was not enough on it's own** to provide all of the I/O functio
 
 For this reason, I had to **craft a daughter board**. I used a piece of strip-board, shaped to that it would directly solder onto the RaspberryPi's GPIO header, and still allow the Pi to fit inside an enclosure.
 
-<table><tbody ><tr >
-<td >{{< img src="columbus-radio-310-cutting-out-daughter-board.jpg" width="378px" caption="Cutting out a RaspberryPi daughter board from strip-board prototyping PCB."  >}}
-</td>
-<td >{{< img src="columbus-radio-320-fitting-daughter-board.jpg" width="285px" caption="Fitting the daughter board directly onto the RaspberryPi's GPIO header. This was designed so the entire thing could still fit inside a standard Pi B+ enclosure."  >}}
-</td></tr></tbody></table>
+<table>
+<tbody>
+<tr>
+<td>{{< img src="columbus-radio-310-cutting-out-daughter-board.jpg" width="378px" caption="Cutting out a RaspberryPi daughter board from strip-board prototyping PCB."  >}}</td>
+<td>{{< img src="columbus-radio-320-fitting-daughter-board.jpg" width="285px" caption="Fitting the daughter board directly onto the RaspberryPi's GPIO header. This was designed so the entire thing could still fit inside a standard Pi B+ enclosure."  >}}</td>
+</tr>
+</tbody>
+</table>
 
 The layout of the GPIO on the RaspberryPi is shown below.
 
@@ -205,56 +217,51 @@ The layout of the GPIO on the RaspberryPi is shown below.
 The following table shows what GPIO header pins I decided to use and what they are connected up to on the daughter board (the circuit was so simple I didn't think it warranted actual schematics been drawn up):
 
 <table>
-    <thead>
-        <tr>
-            <th>GPIO Header Pin Number</th>
-            <th>GPIO Function(s)/Name</th>
-            <th>What I Used It For**</th>
-        </tr>
-    </thead>
-<tbody><tr >
-<td > 11
-</td>
-<td >GPIO17
-</td>
-<td > To drive the gate of MOSFET to control the +12V, 100mA status bulb.
-</td></tr><tr >
-<td >17 
-</td>
-<td >3V3 
-</td>
-<td >The MCP3008 (ADC) VCC.
-</td></tr><tr >
-<td >19 
-</td>
-<td > GPIO10, SPI1_MOSI
-</td>
-<td >The MCP3008 (ADC) MOSI. 
-</td></tr><tr >
-<td >21 
-</td>
-<td >GPIO9, SPI1_MISO 
-</td>
-<td >The MCP3008 (ADC) MISO. 
-</td></tr><tr >
-<td >23 
-</td>
-<td >GPIO11, SPI0_SCLK 
-</td>
-<td >The MCP3008 (ADC) CLK
-</td></tr><tr >
-<td >24 
-</td>
-<td >GPIO8, SPI0_CE0_N 
-</td>
-<td >The MCP3008 (ADC) CS. 
-</td></tr><tr >
-<td >25
-</td>
-<td >GND
-</td>
-<td >Ground for the entire daughter board.
-</td></tr></tbody></table>
+  <thead>
+    <tr>
+      <th>GPIO Header Pin Number</th>
+      <th>GPIO Function(s)/Name</th>
+      <th>What I Used It For**</th>
+    </tr>
+  </thead>
+<tbody>
+<tr >
+<td > 11</td>
+<td >GPIO17</td>
+<td > To drive the gate of MOSFET to control the +12V, 100mA status bulb.</td>
+</tr>
+<tr >
+<td >17 </td>
+<td >3V3 </td>
+<td >The MCP3008 (ADC) VCC.</td>
+</tr>
+<tr >
+<td >19 </td>
+<td > GPIO10, SPI1_MOSI</td>
+<td >The MCP3008 (ADC) MOSI. </td>
+</tr>
+<tr >
+<td >21 </td>
+<td >GPIO9, SPI1_MISO </td>
+<td >The MCP3008 (ADC) MISO.</td>
+</tr>
+<tr >
+<td >23 </td>
+<td >GPIO11, SPI0_SCLK</td>
+<td >The MCP3008 (ADC) CLK</td>
+</tr>
+<tr >
+<td >24 </td>
+<td >GPIO8, SPI0_CE0_N </td>
+<td >The MCP3008 (ADC) CS.</td>
+</tr>
+<tr >
+<td >25</td>
+<td >GND</td>
+<td >Ground for the entire daughter board.</td>
+</tr>
+</tbody>
+</table>
 
 The **RaspberryPi doesn't have any ADCs**, so I had to use the popular **MCP3008 ADC IC** as an interface to the analogue potentiometer signals.
 
@@ -291,7 +298,7 @@ spidev_module.c:20:20: fatal error: Python.h: No such file or directory
 So I installed the python development software with the command
     
 ```sh
-sudo apt-get install python-dev
+$ sudo apt-get install python-dev
 ```
 
 This took a decent amount of time to install, primarily because the download speed was a mere 50kB/s. I think this was because the RaspberryPi was connected via WiFi and was out in the garage, with low reception back to the router in the house. The fact that I even got reception was pretty impressive considering I was only using a tiny chip-antenna based USB WiFi dongle on the RaspberryPi!
@@ -408,7 +415,7 @@ with:
 for i in range(len(threads)):
     # Make sure thread still exists
     if threads[i] is not None:
-        print 'Attemping to join()...'
+        print 'Attempting to join()...'
         threads[i].join(1)
         if threads[i].isAlive() is False:
             print 'isAlive() is False, removing thread from list...'
