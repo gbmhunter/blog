@@ -21,6 +21,10 @@ preserveTaxonomyNames = "true"
 # to change lastmod)
 enableGitInfo = false
 
+# Increase from the default 10s as pages with many image resources can exceed this,
+# especially on build server
+timeout = 30000
+
 [params]
     author = "Geoffrey Hunter"
     description = "An embedded engineering site that's got your back."    
