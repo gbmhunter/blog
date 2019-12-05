@@ -90,3 +90,11 @@ Luckily, you can increase the timeout by adding/adjusting the `timeout` paramete
 ```toml
 timeout = 30s
 ```
+
+## Remove Build Cache
+
+If you need remove build cache, make sure to delete both the `public/` and `resources/` directories:
+
+```bash
+rm -rf public/ resources/
+```
