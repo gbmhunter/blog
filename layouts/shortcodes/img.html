@@ -1,7 +1,6 @@
-<!-- count how many times we've called this shortcode; load the css if it's the first time -->
-{{- if not ($.Page.Scratch.Get "figurecount") }}<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />{{ end }}
+{{ if not ($.Page.Scratch.Get "figurecount") -}}<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />{{- end -}}
 {{- $.Page.Scratch.Add "figurecount" 1 -}}
-{{- $image := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) }}
+{{- $image := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) -}}
 
 {{- if not $image -}}
   {{- errorf "Image resource not found for image '%s' on page '%s'." (.Get "src") ($.Page.Permalink) -}}
@@ -15,11 +14,11 @@
 {{- $thumb := 0 -}}
 {{- if eq (index (split (.Get "src") ".") 1) "gif" -}}
   <!-- If image is a .gif, don't do any resampling, as this will give us a static image -->
-  {{- $thumb = $image }}
+  {{- $thumb = $image -}}
 {{- else -}}
   <!-- Make sure to specify non-Box re-sampling, the default "Box" re-sampling looks horrible with graphs/text -->
   <!-- CatmullRom is a sharp bicubic filter -->
-  {{- $thumb = $image.Resize (printf "%s%s CatmullRom" $width_without_px "x") }}
+  {{- $thumb = $image.Resize (printf "%s%s CatmullRom" $width_without_px "x") -}}
 {{- end -}}
 <!-- The min-width of 200px makes sure than the caption text doesn't get too squashed when the width of the image is small (e.g. 100px). The user provided width gets set to max-width, which allows the actual width to scale smaller as the page
 width decreases -->
