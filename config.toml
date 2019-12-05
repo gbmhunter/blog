@@ -38,6 +38,11 @@ timeout = 30000
     fractions = false
     extensionsmask = ["autolink"] # Prevent naked URL from being converted into links, as this creates problems when the are URLs in figure captions.
 
+[markup.goldmark.renderer]
+    # This is so we can include HTML in shortcodes that do not start with {{<
+    # This had to be added when going from Hugo v0.59.1 to v0.60.0
+    unsafe = true
+
 [related]
     threshold= 80
     includeNewer = true
