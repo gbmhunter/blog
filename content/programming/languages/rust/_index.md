@@ -2,7 +2,9 @@
 author: gbmhunter
 categories: [ "Programming", "Programming Languages" ]
 date: 2015-05-13
+description: "A tutorial on the systems programming language Rust."
 draft: false
+lastmod: 2019-12-13
 tags: [ "Rust", "programming", "language", "code", "software", "compiled" ]
 title: "Rust"
 type: page
@@ -10,15 +12,76 @@ type: page
 
 ## Overview
 
-Rust is a "systems" programming language. 
+Rust is relatively new, statically typed, non garbage collected "systems" programming language. The most unique aspect about Rust compared to similar languages (such as C, C++) is Rusts _ownership model_ (more on this below), which aims to completely eliminate specific memory bugs and race conditions that are common in similar languages.
 
-{{< figure src="/images/2015/05/rust-programming-language-logo-white-background.png" width="393px" caption="The logo of the Rust programming language. Image from http://www.rust-lang.org/."  >}}
+{{< figure src="/images/2015/05/rust-programming-language-logo-white-background.png" width="300px" caption="The logo of the Rust programming language. Image from http://www.rust-lang.org/."  >}}
 
-## Memory
+## Getting Started
 
-Rust has a powerful, and well-thought out (IMO) ownership system for variables. This ownership system combines ownership, borrowing and copying concepts and relies heavily on zero-cost (no run-time influence) compiler checks to implement it. The system is designed to prevent common software issues relating to concurrency and data races.
+### Install Rustup
+
+The easiest way to get started with Rust is to install Rustup, a Rust installer and version management tool.
+
+On a Linux, macOS or other UNIX-like OS:
+
+```sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+This will typically provide you with a prompt with options --- accept the defaults to install.
+
+### Create A New Project With cargo
+
+```sh
+cargo new hello-world
+```
+
+`cargo` should setup a basic project for you. You can now run the template by doing the following:
+
+```sh
+cd hello-world
+cargo run
+   Compiling AdventOfCode2019 v0.1.0 (/Users/ghunter/code/AdventOfCode2019)
+warning: crate `AdventOfCode2019` should have a snake case name
+  |
+  = note: `#[warn(non_snake_case)]` on by default
+  = help: convert the identifier to snake case: `advent_of_code2019`
+
+    Finished dev [unoptimized + debuginfo] target(s) in 4.55s
+     Running `target/debug/AdventOfCode2019`
+Hello, world!
+```
+
+## Ownership
+
+**The most unique aspect of the Rust language is it's _ownership model_**. This ownership system combines ownership, borrowing and copying concepts and relies heavily on zero-cost (no run-time influence) compiler checks to implement it. The system is designed to prevent common software issues relating to concurrency and data races.
+
+```rust
+fn main() {
+
+}
+```
 
 You can read more about the ownership system in the [official Rust book](https://doc.rust-lang.org/book/ownership.html).
+
+## Casting
+
+Basic type casting is done is Rust with the `as` operator:
+
+```rust
+let x: u32 = 22;
+let y: i32 = x as i32;
+```
+
+## Printing To stdout
+
+Rust provides you with the `println!()` macro to perform basic printing to `stdout`. It supports a C-like variable length argument syntax with the string as the first parameter, and then successive parameters being the replacement variables. While C uses `%s`,`%u`, e.t.c to denote locations for replacement, Rust uses `{}`:
+
+```rust
+println!("My variable = {}", my_var);
+```
+
+You do not have to import any module to call `println!()`.
 
 ## Source Code
 
@@ -33,3 +96,7 @@ You can write and run Rust test code online at the [Rust playpen](https://play.r
 Rust is beginning to be used on embedded platforms (however, it is still in a mostly experimental manner). There is discussion of the suitability of rust for an embedded platform at [Atomic Object](http://spin.atomicobject.com/2015/02/20/rust-language-c-embedded/).
 
 [zinc.rs](http://zinc.rs/) is an attempt to write an ARM stack (similar to CMSIS or mbed in functionality, which are both written in C) using the rust programming language.
+
+## IDE Support
+
+The [_Rust (rls)_ extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust) adds Rust code completion, jump to definition, peek definition, find all references, symbol search, documentation on hover, code formatting, refactoring, error squiggles, snippets, build tasks and more.

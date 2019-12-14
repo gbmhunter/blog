@@ -18,10 +18,21 @@ In all of the below code examples, `<prefix>` refers to the `tmux` prefix key co
 
 ## Create And Attach To Sessions
 
-To attach to an already created session:
+To create and attach to a new, **named** tmux session, enter the following at the command prompt:
 
 ```sh
-$ tmux a -t <session_name>
+tmux new -s <session_name>
+```
+
+e.g.:
+```sh
+$ tmux new -s my_session
+```
+
+To attach to an already created **named** session:
+
+```sh
+tmux a -t <session_name>
 ```
 
 ## Detach From A Session
@@ -119,3 +130,17 @@ You can rename your current session from within `tmux` by typing:
 ```
 
 Enter a new name, and press `Return`.
+
+## Reloading The tmux Config File
+
+From within a tmux session:
+
+```sh
+:source-file ~/.tmux.conf
+```
+
+or from your shell:
+
+```sh
+$ tmux source-file ~/.tmux.conf
+```

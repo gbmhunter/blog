@@ -3,13 +3,13 @@ author: gbmhunter
 categories: [ "Updates" ]
 date: 2017-07-30
 draft: false
+lastmod: 2017-07-30
 tags: [ "algorithms", "Altium", "CAN bus", "data structures", "HDLC", "Linux", "shortcuts", "SocketCAN", "time complexity" ]
 title: July 2017 Updates
 type: post
 ---
 
-
-* New {{% link="Algorithms And Data Structures page" src="/programming/algorithms-and-data-structures" %}} under Programming.  
+* New {{% link text="Algorithms And Data Structures page" src="/programming/algorithms-and-data-structures" %}} under Programming.  
 
     {{< figure src="/images/2017/07/algorithms-data-structures-icon.png" width="300px" >}}
 

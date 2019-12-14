@@ -38,3 +38,7 @@ type: "post"
         [markup.goldmark.renderer]
             unsafe = true
         ```
+
+* Updated the {{% link text="Rust page" src="/programming/languages/rust" %}} with code examples showing how to use `cargo`, the basics of _ownership_, casting in Rust, and information on IDE support.
+
+* Added a new page on {{% link text="Map Tile Servers" src="/space/map-tile-servers" %}}.

@@ -53,3 +53,7 @@ timeout = 30000
     [[related.indices]]
         name = "tags"
         weight = 100
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"

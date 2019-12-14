@@ -33,18 +33,38 @@ Long Option: n/a
 
 Archive mode. This makes rsync also sync user and group settings for files and directories. Archive mode can be both extremely useful and extremely unhelpful. Archive mode will not work correctly if the source and destination systems do not have the same users and groups.
 
+### -L (Copy Links)
+
+Short Option: `-L`
+Long Option: `--copy-links`
+
+By default, `rsync` will skip over symbolic links, usually printing the message `skipping non-regular file xxx` when it does so. Adding the `-L` option will make `rsync` copy the symbolic links as files to the destination.
+
 ### -n (Dry Run)
 
 Short Option: `-n`
 Long Option: `--dry-run`
 
-Do a trial run which doesn't actually make any changes. This is usually used in conjunction with -v to make sure you are doing it correctly before make any modifications.
+Do a trial run which doesn't actually make any changes. This is usually used in conjunction with `-v` to make sure you are doing it correctly before make any modifications.
 
 ### --progress (Progress)
 
-Prints the progress to `stdout`. This is very useful for large transfers!
+Short Option: n/a
+Long Option: `--progress`
+
+Prints the progress to `stdout`. This is very useful for large transfers! It will print the current transfer percentage, rate and estimated remaining time **for the current file** to `stdout`.
+
+```text
+my_file.txt
+    22773760  16%    2.37MB/s    0:00:49
+```
+
+The above `--progress` option shows the progress per file, as tells you nothing about the total time remaining/percentage complete of a large transfer involving multiple files.
 
 ### -r (Recursive)
+
+Short Option: `-r`
+Long Option: ?
 
 `-r` will cause `rsync` to sync all files in child directories. If not included and you provide `rsync` with a directory with subdirectories, warnings like:
 
@@ -183,4 +203,4 @@ Upon running `rsync`, you may see the message:
 skipping non-regular file <path_to_file>
 ```
 
-This is usually printed when `rsync` comes across a symbolic link. The default action is to skip symbolic links (rather than copy them, or follow the link and copy the contents).
+This is usually printed when `rsync` comes across a symbolic link. The default action is to skip symbolic links (rather than copy them, or follow the link and copy the contents). Add the `-L` option if you want to copy symlinks as real files.
