@@ -4,8 +4,8 @@ categories: [ "Programming", "Programming Languages" ]
 date: 2015-05-13
 description: "A tutorial on the systems programming language Rust."
 draft: false
-lastmod: 2019-12-13
-tags: [ "Rust", "programming", "language", "code", "software", "compiled" ]
+lastmod: 2019-12-16
+tags: [ "Rust", "programming", "languages", "code", "software", "compiled", "panic", "containers", "HashMap", "hash", "maps", "dictionaries", "Rustup", "cargo", "ownership", "casting", "stdout", "IDEs" ]
 title: "Rust"
 type: page
 ---
@@ -100,3 +100,38 @@ Rust is beginning to be used on embedded platforms (however, it is still in a mo
 ## IDE Support
 
 The [_Rust (rls)_ extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust) adds Rust code completion, jump to definition, peek definition, find all references, symbol search, documentation on hover, code formatting, refactoring, error squiggles, snippets, build tasks and more.
+
+## Containers
+
+### HashMap
+
+Known in other languages as a _map_, _dictionary_ (Python).
+
+To add a value use the `insert()` method. The following example adds the value `2` to the key `"mykey"`.
+
+```rust
+my_hashmap.insert("mykey", 2);
+```
+
+To retrieve a value at a certain key, use the `get()` method:`
+
+```rust
+let value = my_hashmap.get("mykey");
+if let Some(v) = value {
+    println!("Got value of {}", value);
+}
+```
+
+## Dealing With Unrecoverable Errors
+
+You can cause the current thread to panic with the `panic!()` macro. This will cause the current thread to terminate. If you happen to be on the main application thread, this will cause the application to exit:
+
+```rust
+panic!("Something really bad happened!");
+```
+
+which will produce output similar to:
+
+```text
+thread 'main' panicked at 'Something really bad happened!', src/main.rs:2:5
+```
