@@ -4,8 +4,8 @@ categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2018-11-13
 description: "A tutorial on tmux, session management software for Linux."
 draft: false
-lastmod: 2019-07-25
-tags: [ "programming", "operating systems", "Linux", "programs", "tmux", "sessions", "detach", "windows", "panes", "scrollback", "buffers", "history" ]
+lastmod: 2019-12-18
+tags: [ "programming", "operating systems", "Linux", "programs", "tmux", "sessions", "detach", "windows", "panes", "scrollback", "buffers", "history", "installation", "install", "libevent", "ncurses" ]
 title: "tmux"
 type: "page"
 ---
@@ -15,6 +15,69 @@ type: "page"
 `tmux` uses an _alternate screen buffer_ which is the same height and width as the parent terminal.
 
 In all of the below code examples, `<prefix>` refers to the `tmux` prefix key combination. It is typically `Ctrl-B` by default, although it can vary from system to system.
+
+## Installing
+
+### Installing From Source
+
+This example uses libevent `v2.1.11`, ncurses `v6.1` and tmux `v3.0a`, but feel free to change the versions as long as they remain compatible with one another.
+
+Install `libevent`:
+
+```bash
+wget https://github.com/libevent/libevent/releases/download/release-2.1.11-stable/libevent-2.1.11-stable.tar.gz
+tar xvf libevent-2.1.11-stable.tar.gz
+cd libevent-2.1.11-stable/
+./configure
+make
+sudo make install
+```
+
+Install `ncurses`:
+
+```bash
+wget https://invisible-mirror.net/archives/ncurses/ncurses-6.1.tar.gz
+tar xvf ncurses-6.1.tar.gz
+cd ncurses-6.1/
+./configure
+make
+sudo make install
+```
+
+Then install tmux:
+
+```bash
+wget https://github.com/tmux/tmux/releases/download/3.0a/tmux-3.0a.tar.gz
+tar xvf tmux-3.0a.tar.gz
+cd tmux-3.0a
+./configure
+make
+sudo make install
+```
+
+If you get the error `configure: error: "libevent not found"` after running the tmux `./configure` step, make sure you have install `libevent` as per the above instructions.
+
+If you get the error: `/usr/local/bin/tmux: error while loading shared libraries: libevent-X.X.so.X: cannot open shared object file: No such file or directory`, you might need to run the below command before you can run `tmux`:
+
+```bash
+sudo ldconfig
+```
+
+The `tmux` source code can be found at [https://github.com/tmux/tmux](https://github.com/tmux/tmux).
+
+### Post-Installation Protocol Version Mismatch
+
+After installation, you might get a `protocol version mismatch` error when trying to start `tmux`, similar to the below example:
+
+```bash
+protocol version mismatch (client 7, server 8)
+```
+
+This occurs when there is a older version of the `tmux` server left running while you upgrade, and you are trying to connect to it post-upgrade with a newer `tmux` client. If you don't care about losing your existing `tmux` sessions, you can use `killall` to remove the server process and start afresh:
+
+```bash
+sudo killall -9 tmux
+```
 
 ## Create And Attach To Sessions
 
@@ -26,7 +89,7 @@ tmux new -s <session_name>
 
 e.g.:
 ```sh
-$ tmux new -s my_session
+tmux new -s my_session
 ```
 
 To attach to an already created **named** session:
