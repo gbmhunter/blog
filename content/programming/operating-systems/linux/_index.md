@@ -1,7 +1,8 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2013-07-16
 draft: false
-title: Linux
-type: page
+lastmod: 2013-07-16
+title: "Linux"
+type: "page"
 ---

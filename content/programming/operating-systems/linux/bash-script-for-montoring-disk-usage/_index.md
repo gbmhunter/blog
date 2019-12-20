@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2018-12-03
+description: "A bash script that can quickly monitor disk usage and report disk usage warnings to the user."
 draft: true
 lastmod: 2018-12-03
 tags: [ "bash", "scripts", "disks", "space", "df", "devices", "ssh" ]
-title: Bash Script For Monitoring Disk Usage
+title: "Bash Script For Monitoring Disk Usage"
 ---
 
 ## The Problem
