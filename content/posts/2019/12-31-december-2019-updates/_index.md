@@ -43,4 +43,4 @@ type: "post"
 
 * Added a new page on {{% link text="Map Tile Servers" src="/space/map-tile-servers" %}}.
 
-* Updated the tmux page with a walk-through on how to install tmux from source.
+* Updated the {{% link text="tmux page" src="/programming/operating-systems/linux/programs/tmux" %}} with a walk-through on how to install tmux from source.
