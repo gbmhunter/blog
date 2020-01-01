@@ -2,7 +2,9 @@
 author: gbmhunter
 categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
+description: "A introduction to capacitors, a fundamental component used in circuit design. A walk-though of the different types, properties, uses and capacitor equations."
 draft: false
+lastmod: 2020-01-01
 tags: [ "capacitor", "components", "schematic symbols", "circuit", "ceramic", "electrolytic", "tantalum", "packages", "film", "feedthrough", "decoupling" ]
 title: Capacitors
 type: page
@@ -50,7 +52,7 @@ A **feedforward capacitor** is the name given to capacitor between the VOUT and 
 
 ## Types
 
-## Ceramic
+### Ceramic
 
 <table>
 <tbody>
@@ -90,7 +92,7 @@ Ceramic capacitors can generate audible noise when operated at certain frequenci
 
 {{< img src="murata-deformation-of-pcb-by-electrostrictive-phenomenon.jpg" width="452px" caption="The deformation of a PCB due to the electrostrictive phenomenon in ceramic chip capacitors. Image from http://www.murata.com/products/capacitor/solution/naki.html."  >}}
 
-### Ceramic Di-electrics
+#### Ceramic Di-electrics
 
 The following table lists the common ceramic dielectric codes. 
 
@@ -202,7 +204,7 @@ The following table lists the class 2 codes defined by the JIS standard.
 
 There is also the two codes JB (which is similar to X5R) and CH (which is similar to C0G) produced by TDK. They are similar to the codes mentioned except optimised for a smaller temperature range.
 
-### Insulation Resistance
+#### Insulation Resistance
 
 The [insulation resistance](/electronics/components/capacitors#leakage-currents) limits for military MLCC's are:
 
@@ -210,67 +212,67 @@ IR > `\( 10^{11}\Omega \)` or `\( 10^3 M\Omega \cdot uF \)`, whichever is less, 
 
 IR > `\( 10^{10}\Omega \)` or `\( 10^2 M\Omega \cdot uF \)`, whichever is less, at `\( +125^{\circ}C \)`
 
-IR requirements for commercial MLCC's are about two times less.
+IR requirements for commercial MLCCs are about two times less.
 
-## Electrolytic
+### Electrolytic
 
 <table>
-<tbody>
-<tr>
-<td>Range</td>
-<td>100nF - 5000uF</td>
-</tr>
-<tr>
-<td>Polarized</td>
-<td>Yes (but some special ones aren't)</td>
-</tr>
-<tr>
-<td>Typical Marking</td>
-<td>Because of their large size, the capacitance is usually printed in it's absolute form on the cylinder.</td>
-</tr>
-<tr>
-<td>Uses</td>
-<td>
-    <ul>
-        <li>Power supply bulk decoupling</li>
-        <li>Filtering</li>
-        <li>Audio bypass capacitors</li>
-    </ul>
-</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>Range</td>
+      <td>100nF - 5000uF</td>
+    </tr>
+    <tr>
+      <td>Polarized</td>
+      <td>Yes (but some special ones aren't)</td>
+    </tr>
+    <tr>
+      <td>Typical Marking</td>
+      <td>Because of their large size, the capacitance is usually printed in it's absolute form on the cylinder.</td>
+    </tr>
+    <tr>
+      <td>Uses</td>
+      <td>
+        <ul>
+          <li>Power supply bulk decoupling</li>
+          <li>Filtering</li>
+          <li>Audio bypass capacitors</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 Electrolytic capacitors uses a very thin electrically deposited metal oxide film (`\(Al_2 O_3\)`)as their dielectric. They have a high capacitance density (well, that was before super-caps came along). They are usually cylindrical in shape, and come in through-hole (axial and radial) and surface-mount types.
 
 In over-voltage conditions, holes can be punched through the dielectric layer and the capacitor will begin to conduct. The good news is that if the over-voltage disappears quickly enough (e.g. just a surge or spike), the capacitor can self-heal. The bad news is that a if the capacitor heats up enough, the dielectric can boil, create vapours, and the cap explodes. Most electrolytics have a specific "weak spot" on the case which is designed to break in an over-pressure situation. This can make quite a bang, and can be dangerous if you happen to be peering closely at the circuit while this happened.
 
-## Tantalum
+### Tantalum
 
 <table>
-<tbody>
-<tr>
-<td>Range</td>
-<td>100nF-2mF (from 47nF to 10mF on DigiKey as of Jan 2014)</td>
-</tr>
-<tr>
-<td>Polarized</td>
-<td>Yes (mark indicates POSITIVE side)</td>
-</tr>
-<tr>
-<td>Typical Marking</td>
-<td>Capacitance is usually printed directly onto capacitor</td>
-</tr>
-<tr>
-<td>Uses</td>
-<td>
-    <ul>
-        <li>Power supply filtering on small PCBs</li>
-        <li>Medical and space equipment</li>
-    </ul>
-</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>Range</td>
+      <td>100nF-2mF (from 47nF to 10mF on DigiKey as of Jan 2014)</td>
+    </tr>
+    <tr>
+      <td>Polarized</td>
+      <td>Yes (mark indicates POSITIVE side)</td>
+    </tr>
+    <tr>
+      <td>Typical Marking</td>
+      <td>Capacitance is usually printed directly onto capacitor</td>
+    </tr>
+    <tr>
+      <td>Uses</td>
+      <td>
+        <ul>
+          <li>Power supply filtering on small PCBs</li>
+          <li>Medical and space equipment</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 Tantalum capacitors are actually special type of electrolytic capacitor. But they deserve their own category because of their special properties and wide-spread use. The have lower ESR, lower leakage and higher temperature ranges (up to 125°C) than their electrolytic counterparts.
@@ -279,21 +281,21 @@ Tantalum capacitors are actually special type of electrolytic capacitor. But the
 
 Most tantalum capacitors are made with a solid electrolyte, and therefore are not prone to the electrolyte evaporation/drying up problems normal electrolytics have. This makes them able to retain their rated capacitance for years, if not decades.
 
-### Construction
+#### Construction
 
 At the heart of a tantalum capacitor is a pellet of tantalum (`\( Ta_2 O_5 \)`).
 
 {{< img src="cross-section-of-tantalum-capacitor.png" width="489px" caption="Cross-section of a SMD tantalum capacitor." >}}
 
-### Packaging
+#### Packaging
 
 Tantalum capacitors come in both through-hole and SMD packages.
 
-### Price
+#### Price
 
 Tantalum capacitors tend to be more expensive than any other commonly used capacitor (electrolytic, ceramic), and so are usually reserved for applications when a large amount of capacitance with low ESR is needed in a tight space.
 
-### Issues
+#### Issues
 
 The SILLYEST THING about tantalum capacitors is that the polarity indicator is a stripe, next to the POSITIVE end. It goes against pretty much all other stripy-polarity-mark thingies, which all indicate which end is the negative end (think electrolytics, diodes, e.t.c). So, be very careful and vigilant when using these, for it is so easy for forget this rule!
 
@@ -301,13 +303,20 @@ Tantalum capacitors are more susceptible to reverse and over-voltage than their 
 
 <p>Because of their large operating temperature range, stability, and high price, they are often found in medical and space equipment.</p>
 
-## Film Capacitors
+### Film Capacitors
 
 <table>
 <tbody>
 <tr>
-<td>Synonyms</td>
-<td>MKT, MFCs (metallized film capacitors), power (film) capacitor</td>
+<td>Synonyms/Subfamilies</td>
+<td>
+  <ul>
+    <li>MKT</li>
+    <li>MFCs (metallized film capacitors)</li>
+    <li>MPFCs (metallized polyester film capacitors)</li>
+    <li>Power (film) capacitor</li>
+  </ul>
+</td>
 </tr>
 <tr>
 <td>Range</td>
@@ -328,20 +337,26 @@ Tantalum capacitors are more susceptible to reverse and over-voltage than their 
 <tr>
 <td>Uses</td>
 <td>
-    <ul>
-        <li>Power supplies</li>
-        <li>Audio circuits</li>
-    </ul>
+  <ul>
+    <li>Power supplies</li>
+    <li>Audio circuits</li>
+  </ul>
 </td>
 </tr>
 </tbody>
 </table>
 
-<p>MKT capacitors are a variant of polyester capacitors usually in a bright yellow, rectangular block.</p>
+Film capacitors are a family of capacitors which use thin insulating plastic film as the dielectric[^wikipedia-film-capacitor]. They are not polarity sensitive. The film can either be left as is or metallized, which makes it a metallized film capacitor[^capacitorguide.com].
 
-<p>Metallized film capacitors have a self-healing effect when an over-voltage even occurs, while others such as ceramic capacitors do not. This makes them safer to use in high-power applications.</p>
+**Metallized Polyester Film Capacitors**
 
-## Polyester (Green Cap)
+MFCs are used when long-term stability is required at a relatively low cost. They are usually recognized by their appearance of a bright yellow, rectangular block.
+
+Metallized film capacitors have a self-healing effect when an over-voltage even occurs, while others such as ceramic capacitors do not. This makes them safer to use in high-power applications.
+
+{{% img src="20191227-capacitor-blown-in-circuit.jpg" width="800px" caption="A broken 1uF metallized film capacitor (red bulge with cracks in it) inside a paper shredder." %}}
+
+### Polyester (Green Cap)
 
 <table>
 <tbody >
@@ -368,9 +383,9 @@ Tantalum capacitors are more susceptible to reverse and over-voltage than their 
 </tbody>
 </table>
 
-<p>Polyester capacitors use polyester plastic film for their dielectric. They have similar properties to disc ceramic capacitors. They are sometimes called green caps because they have a green outer plastic coating to protect them. The problem with that is that not all polyesters are green! Quite a few are brown, among other colours.</p>
+Polyester capacitors use polyester plastic film for their dielectric. They have similar properties to disc ceramic capacitors. They are sometimes called green caps because they have a green outer plastic coating to protect them. The problem with that is that not all polyesters are green! Quite a few are brown, among other colours.
 
-<h2>Supercapacitors</h2>
+### Supercapacitors
 
 <table>
 <tbody>
@@ -409,7 +424,7 @@ You have to be careful, the leakage current of large supercapacitors (10F and gr
 
 Through-hole and SMD super capacitor packages exist.
 
-## Door Knob Capacitors
+### Door Knob Capacitors
 
 Door knob (or barrel) capacitors are a form of ceramic capacitor named after their look-alike appearance to a door knob. They are usually rated for high voltages (kV's), and used in RF applications. They hav a low dielectric loss and linear temperature co-efficient of capacitance. They are typically used in the frequency range from 50kHz-100MHz.
 
@@ -546,9 +561,9 @@ The dielectric of air changes with humidity, pressure and temperature.
 
 ## Capacitors In Series And In Parallel
 
-The behaviour of capacitors when connected together in series and in parallel is exactly the opposite behvaiour of what resistors and inductors exhibit.
+The behaviour of capacitors when connected together in series and in parallel is exactly the opposite behaviour of what resistors and inductors exhibit.
 
-## Capacitors In Parallel
+### Capacitors In Parallel
 
 Capacitors in parallel can be treated as one capacitor with the equivalent capacitance of:
 
@@ -580,9 +595,9 @@ Capacitors in parallel can be treated as one capacitor with the equivalent capac
 
 <p>One of the benefits of connecting capacitors in series is that each capacitor only sees a portion of the total applied voltage, hence you can apply a higher voltage than the max rated voltage for any single capacitor. However, care must be taken to make sure the capacitors don't build up a <b>charge imbalance</b>, which could cause a single capacitor to take more than it's fair share of voltage, and blow up! A balancing circuit can be made by connecting a high-value resistor(e.g. \( 1M\Omega \)) across each capacitor. This causes any unbalanced build-up of charge to dissipate through the resistors, at the expense of increasing the leakage current of the circuit (remember, capacitors have an internal leakage current also). This is similar to how a battery cell charge balancing circuit works.</p>
 
-<h2>Formulas</h2>
+## Formulas
 
-<h3>Charge</h3>
+### Charge
 
 <p>The charge stored on the plates of a capacitor is related to the voltage and capacitance by:</p>
 
@@ -597,7 +612,7 @@ Capacitors in parallel can be treated as one capacitor with the equivalent capac
 
 If using this formula, see the Capacitor Charge Calculator.
 
-<h3>Energy</h3>
+### Energy
 
 The energy stored in a capacitor is:
 
@@ -614,7 +629,7 @@ As shown by the equation, the energy stored in a capacitor is related to both th
 
 If using this formula, see the Capacitor Energy Calculator.
 
-<h3>Force</h3>
+### Force
 
 The force exerted on the two parallel plates of a capacitor is:
 
@@ -629,7 +644,7 @@ The force exerted on the two parallel plates of a capacitor is:
     \(d\) = seperation distance between the two plates, in meters<br>
 </p>
 
-<h3>Single Disc Capacitance</h3>
+### Single Disc Capacitance
 
 {{< img src="diagram-for-disc-capacitance-equation.png" caption="Diagram for the disc-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf."  width="320px" >}}
 
@@ -644,7 +659,7 @@ The capacitance of a single thin plate, with  a ground at 'infinity' (or more pr
     \(d\) = diameter of the thin plate (meters)<br>
 </p>
 
-<h3>Sphere Capacitance</h3>
+### Sphere Capacitance
 
 {{< img src="diagram-for-sphere-capacitance-equation.png" caption="Diagram for the sphere-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf."  width="320px" >}}
 
@@ -673,7 +688,7 @@ where:<br>
 \(d\) = distance between the plates (meters)<br>
 </p>
 
-<h3>Concentric Cylinder Capacitance</h3>
+### Concentric Cylinder Capacitance
 
 {{< img src="diagram-for-coaxial-cylinders-capacitance-equation.png" caption="Diagram for the coaxial cylinder capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf."  width="320px" >}}
 
@@ -1021,15 +1036,15 @@ Feedthrough (or feedthru) capacitors are special three-terminal capacitors (some
 
 Their advantage over a standard decoupling capacitor to ground is **lower parasitic series inductance**, which offers a lower impedance path for RF noise to ground.
 
-## Schematic Symbol
+### Schematic Symbol
 
 {{< img src="feedthrough-capacitor-schematic-symbol-3-connection.png" width="422px" caption="The schematic symbol for a 3-terminal feedthrough capacitor."  >}}
 
-## Component Package
+### Component Package
 
 Many smaller, PCB suitable feedthrough capacitors come in {{% link text="chip packages" src="/pcb-design/component-packages/chip-eia-component-packages" %}}, such as the 0603 or 0402 size. They can be distinguished from normal capacitors by the fact that the package will have three or four terminals rather than the standard two.
 
-## Uses
+### Uses
 
 Feedthrough capacitors are commonly used in {{% link text="RC, LC, π and t-type filters" src="/electronics/circuit-design/filters/passive-filters" %}}) when good RF performance is required.
 
@@ -1053,7 +1068,7 @@ Here is an example schematic:
 
 This quite significant and fixed energy loss has implications when it comes to charging caps in low-power circuits (e.g. running of a battery), and sizing resistors (including NTC thermistors) for limiting the inrush current to capacitors, normally as part of the front end to a power supply or motor driver.
 
-## The Proof
+### The Proof
 
 Let's start from the basics.
 
@@ -1098,3 +1113,6 @@ We now have an equation for the energy given out by the voltage source, and an e
 Woah, hang on a moment, this is the same as the energy in the capacitor!
 
 This implies that when charging a capacitor from a fixed DC source, you dissipate just as much energy as heat as you store in the capacitor. It does not matter what the resistance is (it could just be the resistance of the wires and the ESR (equivalent series resistance) in the capacitor).
+
+[^capacitorguide.com]: [http://www.capacitorguide.com/film-capacitor/](http://www.capacitorguide.com/film-capacitor/)
+[^wikipedia-film-capacitor]: [https://en.wikipedia.org/wiki/Film_capacitor](https://en.wikipedia.org/wiki/Film_capacitor)
