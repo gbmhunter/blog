@@ -1,12 +1,21 @@
 """
 Renames all content files to either _index.md or index.md.
 """
+import argparse
 import os
 
-DRY_RUN = True
+DRY_RUN = False
 
 def main():
-    for root, dirs, files in os.walk(os.path.join('..', 'content')):
+
+    parser = argparse.ArgumentParser(description='Renames content to _index.md or index.md.')
+    parser.add_argument('root_path', metavar='N', type=str,
+                        help='Root path to rename files.')
+
+    args = parser.parse_args()
+    print(f'root_path = {args.root_path}')
+
+    for root, dirs, files in os.walk(args.root_path):
         if len(dirs) == 0:
             is_leaf = True
         else:
