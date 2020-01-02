@@ -98,7 +98,7 @@
                 <div class="header-section-3">
                     <!-- RECENTLY EDITED CONTENT -->
                     <!-- .Site.Pages includes both sections and leaf nodes -->
-                    {{ $byLastMod :=  .Site.Pages.ByLastmod }}
+                    {{ $byLastMod :=  .Site.RegularPages.ByLastmod }}
                     {{ $recent := ($byLastMod | last 5).Reverse }}
                     {{ partial "recently-edited-item" $recent }}
                 </div>  

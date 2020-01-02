@@ -5,7 +5,7 @@ date: 2011-09-05
 description: "A introduction to capacitors, a fundamental component used in circuit design. A walk-though of the different types, properties, uses and capacitor equations."
 draft: false
 lastmod: 2020-01-01
-tags: [ "capacitor", "components", "schematic symbols", "circuit", "ceramic", "electrolytic", "tantalum", "packages", "film", "feedthrough", "decoupling" ]
+tags: [ "capacitor", "components", "schematic symbols", "circuit", "ceramic", "electrolytic", "tantalum", "packages", "film", "feedthrough", "decoupling", "MFC" ]
 title: Capacitors
 type: page
 ---
@@ -332,29 +332,38 @@ Tantalum capacitors are more susceptible to reverse and over-voltage than their 
 </tr>
 <tr>
 <td>Typical Marking</td>
-<td>Because of their large size, the capacitance is usually printed in it's absolute form on the block somewhere.</td>
+<td>
+
+Because of their large size, the capacitance is usually either in `<number><number><multiplier><tolerance>` picofarad form (e.g. `105K` equals `10e^5pF` equals `1uF`), or because of their large size printed in it's absolute form (e.g. `0.1uF`) on the block somewhere.
+
+</td>
 </tr>
 <tr>
-<td>Uses</td>
-<td>
-  <ul>
-    <li>Power supplies</li>
-    <li>Audio circuits</li>
-  </ul>
-</td>
+  <td>Uses</td>
+  <td>
+    <ul>
+      <li>Power supplies</li>
+      <li>Audio circuits</li>
+    </ul>
+  </td>
 </tr>
 </tbody>
 </table>
 
 Film capacitors are a family of capacitors which use thin insulating plastic film as the dielectric[^wikipedia-film-capacitor]. They are not polarity sensitive. The film can either be left as is or metallized, which makes it a metallized film capacitor[^capacitorguide.com].
 
+How do you identify film capacitors? Film capacitors usually come in the following forms:
+
+1. A potted rectangular yellow block with the two leads typically coming out of the same side.
+1. A rounded, red case that has been coasted in a epoxy lacquer, with the leads typically coming out of the same side.
+
 **Metallized Polyester Film Capacitors**
 
-MFCs are used when long-term stability is required at a relatively low cost. They are usually recognized by their appearance of a bright yellow, rectangular block.
+_Metallized polyester film capacitors_ (MFCs) are used when long-term stability is required at a relatively low cost. They are usually recognized by their appearance of a bright yellow, rectangular block.
 
 Metallized film capacitors have a self-healing effect when an over-voltage even occurs, while others such as ceramic capacitors do not. This makes them safer to use in high-power applications.
 
-{{% img src="20191227-capacitor-blown-in-circuit.jpg" width="800px" caption="A broken 1uF metallized film capacitor (red bulge with cracks in it) inside a paper shredder." %}}
+{{% img src="20191227-capacitor-blown-in-circuit.jpg" width="800px" caption="A broken 1uF (marking 105K) 250VAC metallized film capacitor (red bulge with cracks in it) inside a paper shredder." %}}
 
 ### Polyester (Green Cap)
 

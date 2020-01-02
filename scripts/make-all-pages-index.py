@@ -1,6 +1,9 @@
+"""
+Renames all content files to either _index.md or index.md.
+"""
 import os
 
-DRY_RUN = False
+DRY_RUN = True
 
 def main():
     for root, dirs, files in os.walk(os.path.join('..', 'content')):
@@ -20,7 +23,7 @@ def rename_file(file_name, root, is_leaf):
     old_file_path = os.path.join(root, file_name)
 
     if is_leaf:
-        new_file_name = '_index.md'
+        new_file_name = 'index.md'
     else:
         new_file_name = '_index.md'
 
