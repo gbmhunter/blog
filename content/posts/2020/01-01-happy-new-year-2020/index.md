@@ -10,6 +10,8 @@ type: "post"
 
 {{< img src="happy-new-year-2020.png" width="500px" caption="Happy new year!" >}}
 
+A big happy new year to you from Geoff here at blog.mbedded.ninja. Looking back at this blog in 2019, below are some interesting statistics from the 2019 year.
+
 ## Statistics for 2019
 
 This is the second year in a row in which I have used Google Analytics for statistics.
@@ -63,27 +65,11 @@ For the first time ever, we see Linux-related pages take over the top positions 
 
 ### Acquisition
 
-5 most popular acquisition methods by number of users:
-
-2017            |       | 2018            |        |
-----------------|-------|-----------------|--------|
-Organic Search  | 34.4k | Organic Search  | 53.6k  |
-Direct          | 4.8k  | Direct          | 7.0k   |
-Referral        | 1.9k  | Referral        | 2.3k   |
-Social          | 247   | Social          | 147    |
-Other           | n/a   | Other           | 1      |
+{{% img src="20191231-google-analytics-top-channels-2019.png" width="400px" caption="The top channels of 2019. Image from Google Analytics." %}}
 
 ### Most Popular Referrers
 
-5 most popular referrers by number of users:
-
-2017                    |        | 2018              |     
-------------------------|--------|-------------------|-----
-en.wikipedia.org        | 710    | en.wikipedia.org  | 663
-duckduckgo.com          | 198    | duckduckgo.com    | 402
-disq.us                 | 186    | cn.bing.com       | 122
-cypress.com             | 129    | yandex.ru         | 71
-dangerousprototypes.com | 79     | r.duckduckgo.com  | 46
+{{% img src="20191231-google-analytics-top-referrers-2019.png" width="800px" caption="The top referrers of 2019. Image from Google Analytics." %}}
 
 ## Goal Completion
 

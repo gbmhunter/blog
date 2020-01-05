@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-06-25
 draft: false
-lastmod: 2019-04-24
+lastmod: 2019-04-2
 tags: [ "programming", "programming languages", "Python", "Numpy", "array", "axis", "computation", "dimension", "np", "example", "code", "tutorial", "slicing", "indexing" ]
 title: "Numpy"
 type: "page"
@@ -340,4 +340,49 @@ print(np.ma.is_masked(standard_array))
 masked_array = np.ma.masked_equal(standard_array, 2)
 print(np.ma.is_masked(masked_array))
 # stdout: True
+```
+
+## Numpy Warnings And How To Silence Them
+
+For example, running `np.mean([])` using Python 3.7 and a up-to-date version of Numpy will produce the following:
+
+```python
+>>> import numpy as np
+>>> np.mean([])
+/usr/local/lib/python3.7/site-packages/numpy/core/fromnumeric.py:3118: RuntimeWarning: Mean of empty slice.
+  out=out, **kwargs)
+/usr/local/lib/python3.7/site-packages/numpy/core/_methods.py:85: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+nan
+```
+
+Not how this is not an exception. Numpy prints a warning stating that you are trying to calculate a mean of an empty slice, as well as that there is an invalid value, but continues execution and returns `nan`. These warnings are usually helpful in debugging problems with the data you are providing, but in some cases you will want to silence the warnings as the data is as expected.
+
+The safest way to suppress Numpy warnings is to use the `np.errstate` context manager, which only changes the warning state while the content is active. However, this has some problems...
+
+```python
+with np.errstate(invalid='ignore'):
+   # Numpy "invalid number" warnings will be suppressed here,
+   # but not the "Mean of empty slice." warnings
+   np.mean([])
+
+# Warnings are back to normal here
+```
+
+However, the problem with this is that it will silence the `RuntimeWarning: invalid value encountered in double_scalars` warning, BUT NOT the `RuntimeWarning: Mean of empty slice.` warning. A better approach is to use the `warnings` module (which is shipped with Python), however this comes at the expense of silencing a larger group of warnings (what if a `RuntimeWarning` was emitted here for a different reason?):
+
+```python
+import warnings
+import numpy as np
+
+with warnings.catch_warnings():
+    warnings.simplefilter("ignore", category=RuntimeWarning)
+    # The better way! Both warnings from the line below are now silenced
+    np.mean([])
+```
+
+If you want to convert all warnings into exceptions, you can use the following code. This is particular dangerous as in applies to all code after this call.
+
+```python
+np.seterr(all='raise')
 ```
