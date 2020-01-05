@@ -7,7 +7,7 @@
                     <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div><div class="right-arrow">▶</div></a>
                     <!-- Using partialCached here offers significant build time speedup, as this recursive menu would otherwise be rebuilt for
                     every page! -->
-                    {{ partialCached "menu_recursive.html" . }}
+                    {{ partial "menu_recursive.html" . }}
                 </li>
             {{ end }}
         {{ end }}

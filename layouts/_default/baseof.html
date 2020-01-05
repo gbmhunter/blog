@@ -92,7 +92,8 @@
                 
                 <div class="header-section-2">
                     <!-- MAIN MENU -->
-                    {{ partial "menu.html" . }}
+                    <!-- Make sure this is cached! If not, the build will take a long, long time. -->
+                    {{ partialCached "menu.html" . }}
                 </div>
 
                 <div class="header-section-3">
