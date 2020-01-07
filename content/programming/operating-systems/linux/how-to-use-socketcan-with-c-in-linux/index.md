@@ -70,7 +70,7 @@ Data is buffered internally, which means for virtual interfaces, you can do a wr
 
 ## libsocketcan
 
-_**libsocketcan**_ is a Linux library that provides some userspace functionality to control a SocketCAN interface. It provides functions such as `can_set_bitrate()`, `can_do_start()` and `can_do_stop()`.
+_libsocketcan_ is a Linux library that provides some userspace functionality to control a SocketCAN interface. It provides functions such as `can_set_bitrate()`, `can_do_start()` and `can_do_stop()`.
 
 {{% warning %}}
 Although _libsocketcan_ seems to work fine for physical CAN interfaces (e.g. `can0`), **I have had issues when using it with a virtual CAN interface** (e.g. `vcan0`). Specifically, functions such as `can_get_state()` do not seem to work correctly.
@@ -78,13 +78,13 @@ Although _libsocketcan_ seems to work fine for physical CAN interfaces (e.g. `ca
 
 You can install `libsocketcan` on your Linux machine by following the below steps:
 
-1. Clone the **libsocketcan** git repository:  
+1. Clone the `libsocketcan` git repository:  
 
     ```sh    
     ~$ git clone https://git.pengutronix.de/git/tools/libsocketcan
     ```
 
-2. Build/install (libsocketcan uses the **_autotools_** build system):
+2. Build/install (libsocketcan uses the _autotools_ build system):
 
     ```sh    
     ~$ cd libsocketcan
@@ -94,7 +94,7 @@ You can install `libsocketcan` on your Linux machine by following the below step
     ~/libsocketcan$ sudo make install
     ```
 
-You should now have **libsocketcan.a** installed to **/usr/local/lib** and the header file** libsocketcan.h** installed to **/usr/local/include**.
+You should now have `libsocketcan.a` installed to `/usr/local/lib` and the header file `libsocketcan.h` installed to `/usr/local/include`.
 
 ## External Resources
 

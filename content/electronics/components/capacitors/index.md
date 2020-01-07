@@ -46,7 +46,7 @@ Some of the well-known uses for capacitors are:
 * High power energy supplies (e.g. for powering coil and rail guns)
 * Oscillators (along with resistors and/or inductors)
 * Touch/proximity sensors and screens
-* Distance measurement (e.g. the technique used in digital calipers)
+* Distance measurement (e.g. the technique used in digital callipers)
 
 A **feedforward capacitor** is the name given to capacitor between the VOUT and ADJ pins of a linear regulator to improve stability.
 
@@ -243,7 +243,7 @@ IR requirements for commercial MLCCs are about two times less.
   </tbody>
 </table>
 
-Electrolytic capacitors uses a very thin electrically deposited metal oxide film (`\(Al_2 O_3\)`)as their dielectric. They have a high capacitance density (well, that was before super-caps came along). They are usually cylindrical in shape, and come in through-hole (axial and radial) and surface-mount types.
+Electrolytic capacitors uses a very thin electrically deposited metal oxide film (`\(Al_2 O_3\)`) as their dielectric. They have a high capacitance density (well, that was before super-caps came along). They are usually cylindrical in shape, and come in through-hole (axial and radial) and surface-mount types.
 
 In over-voltage conditions, holes can be punched through the dielectric layer and the capacitor will begin to conduct. The good news is that if the over-voltage disappears quickly enough (e.g. just a surge or spike), the capacitor can self-heal. The bad news is that a if the capacitor heats up enough, the dielectric can boil, create vapours, and the cap explodes. Most electrolytics have a specific "weak spot" on the case which is designed to break in an over-pressure situation. This can make quite a bang, and can be dangerous if you happen to be peering closely at the circuit while this happened.
 
@@ -308,27 +308,27 @@ Tantalum capacitors are more susceptible to reverse and over-voltage than their 
 <table>
 <tbody>
 <tr>
-<td>Synonyms/Subfamilies</td>
-<td>
-  <ul>
-    <li>MKT</li>
-    <li>MFCs (metallized film capacitors)</li>
-    <li>MPFCs (metallized polyester film capacitors)</li>
-    <li>Power (film) capacitor</li>
-  </ul>
-</td>
+  <td>Synonyms/Subfamilies</td>
+  <td>
+    <ul>
+      <li>MKT</li>
+      <li>MFCs (metallized film capacitors)</li>
+      <li>MPFCs (metallized polyester film capacitors)</li>
+      <li>Power (film) capacitor</li>
+    </ul>
+  </td>
 </tr>
 <tr>
-<td>Range</td>
-<td>1nF - 10uF</td>
+  <td>Range</td>
+  <td>1nF - 10uF</td>
 </tr>
 <tr>
-<td>Polarized</td>
-<td>No</td>
+  <td>Polarized</td>
+  <td>No</td>
 </tr>
 <tr>
-<td>Dielectric</td>
-<td>Polyester, Polycarbonate</td>
+  <td>Dielectric</td>
+  <td>Polyester, Polycarbonate</td>
 </tr>
 <tr>
 <td>Typical Marking</td>
@@ -350,12 +350,26 @@ Because of their large size, the capacitance is usually either in `<number><numb
 </tbody>
 </table>
 
-Film capacitors are a family of capacitors which use thin insulating plastic film as the dielectric[^wikipedia-film-capacitor]. They are not polarity sensitive. The film can either be left as is or metallized, which makes it a metallized film capacitor[^capacitorguide.com].
+Film capacitors are a family of capacitors which use thin insulating plastic film as the dielectric[^wikipedia-film-capacitor]. They are not polarity sensitive. The film can either be **left as is** or **metallized**, which makes it a metallized film capacitor[^capacitorguide.com].
 
 How do you identify film capacitors? Film capacitors usually come in the following forms:
 
-1. A potted rectangular yellow block with the two leads typically coming out of the same side.
+1. A potted rectangular block with the two leads typically coming out of the same side (radial). Typical colors are yellow, blue, or white.
+
+    <table>
+      <tr>
+        <td>
+          {{< img src="yellow-potted-film-capacitor-alibaba.png" width="200px" caption="A yellow potted film capacitor. Image from alibaba.com." >}}
+        </td>
+        <td>
+          {{< img src="blue-potted-film-capacitor-hitano.png" width="200px" caption="A blue potted film capacitor from Hitano." >}}
+        </td>
+      </tr>
+    </table>
+
 1. A rounded, red case that has been coasted in a epoxy lacquer, with the leads typically coming out of the same side.
+
+    {{% img src="red-radial-film-capacitor-photo-ecq-p1h822gz3-digikey.png" width="300px" caption="A red radial film capacitor (Panasonic ECQ-P1H822GZ3). Image from digikey.com." %}}
 
 **Metallized Polyester Film Capacitors**
 
