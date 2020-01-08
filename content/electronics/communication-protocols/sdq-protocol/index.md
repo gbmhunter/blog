@@ -16,7 +16,7 @@ An example of an IC which uses this protocol is the [Texas Instruments BQ2024](h
 
 [8-bit CRC calculations](https://blog.mbedded.ninja/programming/general/crcs-cyclic-redundancy-checks/) are used within this protocol to ensure a high-degree of data integrity.
 
-A number of Apple products use the SDQ interface, including the Apple lightning connector, MagSafe, and iPhone/iPad batteries[^github-sdq-analyzer].
+A number of Apple products use the SDQ interface, including the Apple lightning connector, MagSafe, and iPhone/iPad batteries[^github-sdq-analyzer]. This page by [Ramtin Amin](http://ramtin-amin.fr/tristar.html) shows how one person managed to sniff the lightning cable and shows some info regarding the SDQ interface.
 
 The popular Saleae logic analyzer product range can support the SDQ protocol with the additional use of the free and open-source [SDQAnalyzer plugin](https://github.com/nezza/SDQAnalyzer).
 

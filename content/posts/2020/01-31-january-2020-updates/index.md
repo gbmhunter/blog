@@ -15,3 +15,5 @@ type: "post"
 * Renamed all leaf nodes filenames from `_index.md` to `index.md`, as using the former led to the tag pages not being created.
 
 * Information on handling warnings has been added to the {{% link text="Numpy page" src="" %}}.
+
+* Updated the {{% link text="TSOC-6 Component Package page" src="/pcb-design/component-packages/tsoc-component-package" %}} with more clarification on the differences between the different variants (D6+1, D6-1, D6N+1 and D6N-1).
