@@ -17,3 +17,5 @@ type: "post"
 * Information on handling warnings has been added to the {{% link text="Numpy page" src="" %}}.
 
 * Updated the {{% link text="TSOC-6 Component Package page" src="/pcb-design/component-packages/tsoc-component-package" %}} with more clarification on the differences between the different variants (D6+1, D6-1, D6N+1 and D6N-1).
+
+* Added a new {{% link text="QFP Component Package page" src="/pcb-design/component-packages/qfp-component-package" %}}, which will consolidate all of the variant information (e.g. TQFP) that existed on individual pages.

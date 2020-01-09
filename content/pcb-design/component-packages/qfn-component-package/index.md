@@ -170,19 +170,11 @@ Some QFN packages have an exposed metal feature on the underside to indicate pin
 
 It is recommended to reduce the amount of solder paste applied to the centre pad to prevent the QFN package from floating during reflow. A rule-of-thumb is to have between 50-80% coverage on the center pad (this obviously does not apply to QFN packages with no pad).
 
-<table >
-<tbody >
-<tr >
-
-<td >
-{{< img src="qfn-68-component-package-with-no-solder-paste-aperture-reduction-on-center-pad.png" width="359px" caption="A QFN-68 package with no solder paste aperture reduction on the center pad (not recommended)."  >}}
-
-</td>
-
-<td >
-{{< img src="qfn-68-component-package-with-solder-paste-aperture-reduction-on-center-pad.png" width="340px" caption="A QFN-68 package with solder paste aperture reduction on the center pad (recommended)."  >}}
-
-</td>
+<table>
+<tbody>
+<tr>
+<td>{{< img src="qfn-68-component-package-with-no-solder-paste-aperture-reduction-on-center-pad.png" width="359px" caption="A QFN-68 package with no solder paste aperture reduction on the center pad (not recommended)." >}}</td>
+<td>{{< img src="qfn-68-component-package-with-solder-paste-aperture-reduction-on-center-pad.png" width="340px" caption="A QFN-68 package with solder paste aperture reduction on the center pad (recommended)." >}}</td>
 </tr>
 </tbody>
 </table>
@@ -212,18 +204,12 @@ Because the QFN package sits directly on the PCB and has no standoff, they are l
 
 ## Lead Styles
 
-<table >
-<tbody >
-<tr >
-<td >
-{{< img src="qfn-package-e-style-leads-fully-exposed-on-side-of-package.png" width="205px" caption="A QFN package with 'e' style leads which are fully exposed on the side of the package (this is a good thing)."  >}}
-</td>
-<td >
-{{< img src="qfn-package-s-style-leads-not-exposed-on-side-of-package.png" width="207px" caption="A QFN package with 'S' style leads which are only partially exposed on the side of the package (this is a not a good thing)."  >}}
-</td>
-<td >
-{{< img src="qfn-package-wf-style-dimpled-leads.png" width="206px" caption="A QFN package with 'WF' style leads. They have dimples which allow for improved soldering."  >}}
-</td>
+<table>
+<tbody>
+<tr>
+<td>{{< img src="qfn-package-e-style-leads-fully-exposed-on-side-of-package.png" width="205px" caption="A QFN package with 'e' style leads which are fully exposed on the side of the package (this is a good thing)." >}}</td>
+<td>{{< img src="qfn-package-s-style-leads-not-exposed-on-side-of-package.png" width="207px" caption="A QFN package with 'S' style leads which are only partially exposed on the side of the package (this is a not a good thing)." >}}</td>
+<td>{{< img src="qfn-package-wf-style-dimpled-leads.png" width="206px" caption="A QFN package with 'WF' style leads. They have dimples which allow for improved soldering." >}}</td>
 </tr>
 </tbody>
 </table>
@@ -232,13 +218,11 @@ Because the QFN package sits directly on the PCB and has no standoff, they are l
 
 QFN packages exist in where the **corner pins have to be of a different shape** to all the others for **clearance reasons**. The only example of this I have ever seen is the package for the [IvenSense MPU-9250 IMU](https://www.invensense.com/products/motion-tracking/9-axis/mpu-9250/). It is a QFN package with 24 pins in a 3x3x1.0mm size with 6 0.40mm pitch pins on each edge. Because of the high pin density, the outer pins on each edge almost touch each other, and so a different pin shape is used. This also means you use a different pad shape for the package footprint.
 
-<table >
-<tbody >
-<tr >
-<td >
-{{< img src="qfn-24-component-package-with-unique-corner-pads-mpu-9250-dimensions.png" width="306px" caption="The corner pins on the QFN package used by the IvenSense MPU-9250 have a unique shape."  >}}</td>
-<td>
-{{< img src="qfn-24-component-package-with-unique-corner-pads-mpu-9250-land-pattern.png" width="260px" caption="The footprint for the IvenSense MPU-9250 IMU which uses a QFN package with unique corner pin shapes (notice how they are smaller)."  >}}</td>
+<table>
+<tbody>
+<tr>
+<td>{{< img src="qfn-24-component-package-with-unique-corner-pads-mpu-9250-dimensions.png" width="306px" caption="The corner pins on the QFN package used by the IvenSense MPU-9250 have a unique shape."  >}}</td>
+<td>{{< img src="qfn-24-component-package-with-unique-corner-pads-mpu-9250-land-pattern.png" width="260px" caption="The footprint for the IvenSense MPU-9250 IMU which uses a QFN package with unique corner pin shapes (notice how they are smaller)." >}}</td>
 </tr>
 </tbody>
 </table>
