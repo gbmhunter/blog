@@ -22,13 +22,19 @@ Rust is relatively new, statically typed, non garbage collected "systems" progra
 
 The easiest way to get started with Rust is to install Rustup, a Rust installer and version management tool.
 
-On a Linux, macOS or other UNIX-like OS:
+**On a Linux, macOS or other UNIX-like OS:**
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 This will typically provide you with a prompt with options --- accept the defaults to install.
+
+**On Windows:**
+
+Download `rustup-init.exe` [from the Rust website](https://www.rust-lang.org/tools/install) and run the installer.
+
+If you are using the _Windows Subsystem For Linux_ (WSL), you can use the instructions above for UNIX-like OS's.
 
 ### Create A New Project With cargo
 
@@ -59,6 +65,20 @@ Hello, world!
 ```rust
 fn main() {
 
+}
+```
+
+### Lifetimes Of References
+
+Every reference in Rust comes with a _lifetime_, although in many cases Rust will let you omit the lifetime syntax and the references lifetime will be implied by the context. Lifetimes are specified by `'<identifier>`, e.g. `'a` would read the "lifetime of `a`", and `'xyz` the "lifetime of xyz".
+
+```rust
+fn my_fn(my_object: MyObject&) { // Implied lifetime (length of function)
+  ...
+}
+
+struct MyStruct<'a> {
+  my_object: MyObject& 'a // Explicit lifetime
 }
 ```
 
