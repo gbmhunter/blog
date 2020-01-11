@@ -92,13 +92,14 @@
                 
                 <div class="header-section-2">
                     <!-- MAIN MENU -->
-                    {{ partial "menu.html" . }}
+                    <!-- Make sure this is cached! If not, the build will take a long, long time. -->
+                    {{ partialCached "menu.html" . }}
                 </div>
 
                 <div class="header-section-3">
                     <!-- RECENTLY EDITED CONTENT -->
                     <!-- .Site.Pages includes both sections and leaf nodes -->
-                    {{ $byLastMod :=  .Site.Pages.ByLastmod }}
+                    {{ $byLastMod :=  .Site.RegularPages.ByLastmod }}
                     {{ $recent := ($byLastMod | last 5).Reverse }}
                     {{ partial "recently-edited-item" $recent }}
                 </div>  
