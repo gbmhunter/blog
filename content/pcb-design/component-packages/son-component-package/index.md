@@ -36,28 +36,28 @@ type: page
 	</td>
 </tr>
 <tr>
-<td>Variants</td>
-<td>The SON package can have a varying number of pins. There are also VSON and WSON packages which are exactly the same as the SON package except for a different height.</td>
+  <td>Variants</td>
+  <td>The SON package can have a varying number of pins. There are also VSON and WSON packages which are exactly the same as the SON package except for a different height.</td>
 </tr>
 <tr>
-<td>Similar To</td>
-<td>{{% link text="QFN" src="qfn-component-package" %}} (note that some may call SON a variant of QFN)</td>
-</tr>
-<tr >
-<td >Mounting</td>
-<td >SMD</td>
+  <td>Similar To</td>
+  <td>{{% link text="QFN" src="qfn-component-package" %}} (note that some may call SON a variant of QFN)</td>
 </tr>
 <tr>
-<td>Pin Count</td>
-<td>6, 8 (all also have exposed thermal pad)</td>
+  <td>Mounting</td>
+  <td>SMD</td>
 </tr>
 <tr>
-<td>Pitch</td>
-<td>0.5mm</td>
+  <td>Pin Count</td>
+  <td>6, 8 (all also have exposed thermal pad)</td>
 </tr>
 <tr>
-<td>Solderability</td>
-<td>Hard to solder with a soldering iron due to underside thermal pad (some don't have a thermal pad, and in that case, your chances are better). The tiny pitch is not so much of an issue as unlike the TQFP package, solder bridges are really easy to remove. You can solder the exposed pad in some cases by drilling a hole in the centre of the pad and soldering from the underside.</td>
+  <td>Pitch</td>
+  <td>0.5mm</td>
+</tr>
+<tr>
+  <td>Solderability</td>
+  <td>Hard to solder with a soldering iron due to underside thermal pad (some don't have a thermal pad, and in that case, your chances are better). The tiny pitch is not so much of an issue as unlike the TQFP package, solder bridges are really easy to remove. You can solder the exposed pad in some cases by drilling a hole in the centre of the pad and soldering from the underside.</td>
 </tr>
 <tr>
 	<td>Thermal Resistance</td>
@@ -81,19 +81,19 @@ type: page
 	</td>
 </tr>
 <tr>
-<td >3D Models</td>
-<td><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=421849">DSG (S-PWSON-N8)</a></td>
+  <td>3D Models</td>
+  <td><a href="http://www.3dcontentcentral.com/secure/download-model.aspx?catalogid=171&amp;id=421849">DSG (S-PWSON-N8)</a></td>
 </tr>
 <tr>
-<td>Common Uses</td>
-<td>
-	<ul>
-		<li>MOSFETs</li>
-		<li>Embedded SIM cards</li>
-		<li>Solid-state load switches</li>
-		<li>Flash memory ICs</li>
-	</ul>
-</td>
+  <td>Common Uses</td>
+  <td>
+    <ul>
+      <li>MOSFETs</li>
+      <li>Embedded SIM cards</li>
+      <li>Solid-state load switches</li>
+      <li>Flash memory ICs</li>
+    </ul>
+  </td>
 </tr>
 </tbody>
 </table>
@@ -114,6 +114,27 @@ The SON package has a exposed thermal pad on the underside, similar to a QFN pac
 
 For a comparable TQFP package with the same pin count, the SON package (with an exposed pad) can usually handle more than twice the power dissipation.
 
+## SON-6
+
+<table>
+  <tr>
+    <td>{{% img src="son-6-component-package-3d-model.jpg" width="300px" caption="The 3D model of the SON-6 component package." %}}</td>
+    <td>{{% img src="son-6-component-package-with-two-thermal-pads.jpg" width="300px" caption="The 3D model of the SON-6 component package which has two thermal pads instead of one." %}}</td>
+  </tr>
+</table>
+
+## SON-8
+
+{{% img src="son-8-component-package-3d-model.jpg" width="400px" caption="The 3D model of the SON-8 component package." %}}
+
+{{% img src="son-8-component-package-dimensions.png" width="400px" caption="The package dimensions of the SON-8 component package." %}}
+
+{{% img src="son-8-component-package-exposed-thermal-pad.png" width="400px" caption="The package dimensions of the SON-8 component package with exposed thermal pad." %}}
+
+{{% img src="son-8-component-package-land-pattern-and-thermal-properties.png" width="400px" caption="The recommended land pattern and thermal properties of the SON-8 component package." %}}
+
+{{% img src="son-8-component-package-ti-land-pattern.png" width="400px" caption="The recommended land pattern (from TI) of the SON-8 component package." %}}
+
 ## WSON And VSON Variants
 
 The WSON and VSON variants of the SON package are identical to the SON package except for varying heights.
@@ -125,7 +146,3 @@ The WSON variant has a height of 0.80mm (max.)
 The VSON variant has a height of 1.00mm (max.)
 
 {{< img src="vson-component-package-height.png" width="471px" caption="An outline of the VSON component package showing it's height."  >}}
-
-## Images
-
-{{< gallery dir="images/electronics-packages/son-6" />}}
