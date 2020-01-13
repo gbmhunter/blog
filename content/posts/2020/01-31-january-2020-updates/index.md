@@ -19,3 +19,13 @@ type: "post"
 * Updated the {{% link text="TSOC-6 Component Package page" src="/pcb-design/component-packages/tsoc-component-package" %}} with more clarification on the differences between the different variants (D6+1, D6-1, D6N+1 and D6N-1).
 
 * Added a new {{% link text="QFP Component Package page" src="/pcb-design/component-packages/qfp-component-package" %}}, which will consolidate all of the variant information (e.g. TQFP) that existed on individual pages.
+
+* Updated the image formatting and headings on the {{% link text="TO-39 Component Package page" src="/pcb-design/component-packages/to-39-component-package" %}}.
+
+* Switched the site title and content title around in the HTML page title, such that it is now:
+
+    ```
+    <page title> | mbedded.nina
+    ```
+
+    This makes it easier to determine what the page is when you have a lot of tabs open on a tab-based browser such as Chrome or Edge.

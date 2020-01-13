@@ -8,7 +8,7 @@
         <!-- TITLE AND DESCRIPTION (SEO)
             NOTE: the Site's title, and if there is a page title, that is set too -->
 
-        <title>{{ block "title" . }}{{ .Site.Title }} {{ with .Params.Title }} | {{ . }}{{ end }}{{ end }}</title>
+        <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }} {{ end }}</title>
         <!--  For pages, this will use the description field if it's provided in the markdown metadata, otherwise
         it will will make the description up from a summary -->
         {{ if .IsHome }}
@@ -87,7 +87,7 @@
                 <div class="header-section-1">
                     <div class="logo-img"><a href="/"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} /></a></div>
                     <div class="site-title"><a href="/">mbedded.ninja</a></div>
-                    <div class="site-description">The embedded engineering webstie that's got your back.</div>
+                    <div class="site-description">The embedded engineering website that's got your back.</div>
                 </div>
                 
                 <div class="header-section-2">
