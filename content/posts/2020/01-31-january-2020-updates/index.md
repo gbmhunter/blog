@@ -20,7 +20,20 @@ type: "post"
 
 * Added a new {{% link text="QFP Component Package page" src="/pcb-design/component-packages/qfp-component-package" %}}, which will consolidate all of the variant information (e.g. TQFP) that existed on individual pages.
 
-* Updated the image formatting and headings on the {{% link text="TO-39 Component Package page" src="/pcb-design/component-packages/to-39-component-package" %}}.
+* Updated many component package pages, including:
+    * {{% link text="Micro3" src="/pcb-design/component-packages/micro3-component-package" %}}
+    * {{% link text="SOT-23" src="/pcb-design/component-packages/sot-23-component-package" %}}
+    * {{% link text="SOT-346" src="/pcb-design/component-packages/sot-346-component-package" %}}
+    * {{% link text="TO-3" src="/pcb-design/component-packages/to-3-component-package" %}}
+    * {{% link text="TO-39" src="/pcb-design/component-packages/to-39-component-package" %}}
+
+    And also added the following packages to the component package database:
+
+    * {{% link text="PDIP" src="/pcb-design/component-packages/pdip-component-package" %}}
+    * {{% link text="SMT3" src="/pcb-design/component-packages/smt3-component-package" %}}
+    * {{% link text="TO-23" src="/pcb-design/component-packages/to-23-component-package" %}}
+    * {{% link text="TO-236AA" src="/pcb-design/component-packages/to-236aa-component-package" %}}
+    * {{% link text="TO-236AB" src="/pcb-design/component-packages/to-236ab-component-package" %}}
 
 * Switched the site title and content title around in the HTML page title, such that it is now:
 

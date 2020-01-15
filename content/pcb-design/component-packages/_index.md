@@ -50,3 +50,76 @@ The SMT Code Book ([http://www.marsport.org.uk/smd/mainframe.htm](http://www.mar
 Suggested Pad Layouts For A Number Of Packages (Diodes INC) - Many recommended pad layouts/land patterns for common packages all in one PDF!
 
 Quick-tecks SMT Package Dimensions PDF, which contains hundreds of dimensions for common SMD component packages. You can [download it from here](http://www.quick-teck.co.uk/TechArticleDoc/9522698761347382744.pdf), or alternatively, use the local link [here](/docs/Quick-tecks SMT Package Dimensions.pdf).
+
+## Template
+
+The latest version of the summary template table used on each component package is shown below:
+
+<table>
+  <tbody>
+    <tr>
+      <td>Name</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Synonyms</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Variants</td>
+      <td>
+        <ul>
+          <li></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Similar To</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Mounting</td>
+      <td>TH | SMD</td>
+    </tr>
+    <tr>
+      <td>Pin Count</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Pitch</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Solderability</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Thermal Resistance</td>
+      <td>
+        <ul>
+          <li>\(T_{JC} = 0.0^{\circ}{\rm C}/W\)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Dimensions</td>
+      <td>0 \(0x0x0=0mm^2\)</td>
+    </tr>
+    <tr>
+      <td>Land Area</td>
+      <td></td>
+    </tr>
+    <tr>
+    <td>3D Models</td>
+    <td>n/a</td>
+    </tr>
+    <tr>
+      <td>Common Uses</td>
+      <td>
+        <ul>
+          <li></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
