@@ -1,11 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-03-08
 lastmod: 2015-03-08
 tags: [ "component packages", "PCB design", "BGA", "MO-207", "DSBGA" ]
-title: BGA Component Package
-type: page
+title: "BGA Component Package"
+type: "page"
 ---
 
 ## Overview
@@ -28,6 +28,7 @@ type: page
       <li>CTBGA</li>
       <li>DSBGA (Die-Size BGA). Used by Texas Instruments. JEDEC standard MO-207</li>
       <li>FBGA</li>
+      <li>FCBGA (Texas Instruments, used by mmWave ICs. Plastic case.)</li>
       <li>FGG484 (Xilinx)</li>
       <li>X-DSBGA (Very thin die-size BGA). JEDEC standard MO-211-C.</li>
       <li>xDSB (Square and rectangular die-size BGA). JEDEC standard MO-207N.</li>
@@ -35,16 +36,16 @@ type: page
   </td>
 </tr>
 <tr>
-<td>Similar To</td>
-<td>{{% link src="wlcsp-component-package" text="WLCSP" %}}</td>
+  <td>Similar To</td>
+  <td>{{% link src="wlcsp-component-package" text="WLCSP" %}}</td>
 </tr>
 <tr>
-<td>Mounting</td>
-<td>SMD</td>
+  <td>Mounting</td>
+  <td>SMD</td>
 </tr>
-<tr >
-<td >Pin Count</td>
-<td >4-1700+</td>
+<tr>
+  <td>Pin Count</td>
+  <td>4-1700+</td>
 </tr>
 <tr>
 <td>Pitch</td>
@@ -52,15 +53,15 @@ type: page
 </tr>
 <tr>
 <td>Solderability</td>
-<td>BGA usually requires reflow oven or infrared heater. Expert-level solderers can use the "dead-bug" prototyping method and attach super-thin wires to each ball when the package is upside down.</td>
+<td>BGA usually requires reflow oven or infrared heater. Expert-level solderers can use the "dead-bug" prototyping method and attach super-thin wires to each ball when the package is upside down, but do not consider this a reliable or fast method!</td>
 </tr>
 <tr>
-<td>Thermal Resistance</td>
-<td>n/a</td>
+  <td>Thermal Resistance</td>
+  <td>n/a</td>
 </tr>
 <tr>
-<td>Dimensions</td>
-<td>n/a</td>
+  <td>Dimensions</td>
+  <td>n/a</td>
 </tr>
 <tr>
 <td>3D Models</td>
@@ -83,7 +84,9 @@ type: page
     <li>Memory</li>
   </ul>
 </td>
-</tr></tbody></table>
+</tr>
+</tbody>
+</table>
 
 ## Comments
 

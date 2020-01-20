@@ -1,9 +1,10 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2014-11-13
 draft: false
-title: RF Design
-type: page
+lastmod: 2014-11-13
+title: "RF Design"
+type: "page"
 ---
 
 <h2>Link Budgets</h2>
