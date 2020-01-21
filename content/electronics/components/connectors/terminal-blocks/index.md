@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-30
 draft: false
-tags: [ "electronics", "electronic components", "connectors", "terminal blocks" ]
-title: Terminal Blocks
-type: page
+lastmod: 2020-01-21
+tags: [ "electronics", "electronic components", "connectors", "terminal blocks", "ceramic", "porcelain", "steatite" ]
+title: "Terminal Blocks"
+type: "page"
 ---
 
 ## Overview
@@ -116,3 +117,9 @@ Commonly, they clip onto the top of the terminal block and shield the terminal b
 {{< img src="terminal-block-cover-beside-block1.jpg" width="400px" caption="A terminal block cover beside the terminal block."  >}}
 
 {{< img src="terminal-block-cover-mounted-on-block.jpg" width="400px" caption="A terminal block cover mounted onto a terminal block."  >}}
+
+## Ceramic (Porcelain) Terminal Blocks
+
+Ceramic (also called _porcelain_) terminal blocks were used before plastic ones became widely available. They still find a niche in applications where they would be subjected to very high temperatures that would melt plastic. They can typically operate in temperatures of -40° to 650°C. This includes things such as heaters, thermocouple connections, machinery, and many other industrial uses. Steatite is a popular ceramic material used for construction of these types of terminal blocks.
+
+{{% img src="20150109-ceramic-terminal-block.jpg" width="400px" caption="A ceramic terminal block." %}}

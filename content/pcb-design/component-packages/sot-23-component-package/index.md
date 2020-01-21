@@ -56,7 +56,7 @@ type: "page"
         <li>SM8 (Diodes Incorporated)</li>
         <li>SOT-28 (TopLine)</li>
         </ul>
-        <p>{{% md %}}`R-PDSO-G` is the JEDEC package designator for SOT-23 in all it's variants[^jedec-mo-178-c].{{% /md %}}</p>
+        <p>{{< md >}}`R-PDSO-G` is the JEDEC package designator for SOT-23 in all it's variants[^jedec-mo-178-c].{{< /md >}}</p>
       </td>
     </tr>
     <tr>
