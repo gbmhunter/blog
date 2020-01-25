@@ -8,6 +8,8 @@ title: "MIPI CSI Communication Protocol"
 type: "page"
 ---
 
+{{% warning-is-notes %}}
+
 ## Overview
 
 The CSI communication protocol defines an physical, electrical and logical interface between a camera and host processor. The protocol defines OSI layers 1 (physical) through 7 (application). The CSI communication protocol is commonly used between the cameras in the smart phones and the main processor, in VR headsets, drones, and non-camera related sensing applications (such as mmWave sensors).
