@@ -1,9 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2013-03-18
+description: "A beginners tutorial on memory allocation in C (malloc(), free(), e.t.c.) for embedded systems."
 draft: false
-title: Dynamic Memory Allocation
-type: page
+lastmod: 2020-01-26
+tags: [ "programming", "C", "C++", "dynamic memory allocation", "memory", "allocation", "malloc()", "realloc", "calloc()", "alloca()", "free()", "MISRA", "memory pools", "stack", "heap", "GCC", "static allocation", "memory leak" ]
+title: "Dynamic Memory Allocation"
+type: "page"
 ---
 
 ## Overview
@@ -12,7 +15,7 @@ Dynamic memory allocation is the process of assigning space for variables at run
 
 The biggest risk with dynamic memory allocation is forgetting to free the memory after your finished with it. This can quickly lead to you running out of memory as more and more spaces in memory are assigned to the same variable (this is called a memory leak).
 
-The malloc-family of functions include `malloc()`, `calloc()`, `realloc()` and `free()`. Most C-programming IDE's link to a standard library with these functions. They are used by including `stdlib.h` into your project. These functions are also available in C++.
+The malloc-family of functions include `malloc()`, `calloc()`, `realloc()` and `free()`. Most C-programming IDEs link to a standard library with these functions. They are used by including `stdlib.h` into your project. These functions are also available in C++.
 
 ## Thread-Safety
 
@@ -82,7 +85,7 @@ You can use `alloca()` in your code after including `alloca.h` in your source fi
 
 If you are using GCC (and the glibc library), you should note that in most cases, the GCC compiler will inline the `alloca()` call and remove the function. It is normally replaced with just a single line of code that adjusts the stack pointer.
 
-On many systems, you cannot call `alloc()` from within the list of arguments for a function call, as the memory allocated would be interspersed with the arguments when the function is entered.
+On many systems, you cannot call `alloca()` from within the list of arguments for a function call, as the memory allocated would be interspersed with the arguments when the function is entered.
 
 ```c
 int main() {
@@ -108,7 +111,7 @@ When using dynamic memory allocation, you commonly want to add a new element to 
 void* AppendNewArrayElement(void* arrayStart, uint32_t currNumElements, uint32_t sizeOfElement) {
     // Create a new option at end of option array
     arrayStart = realloc(arrayStart , (currNumElements+1)*sizeOfElement);
-    // Cast to char pointer to get around the "arthimetic on type void* compiler warning)
+    // Cast to char pointer to get around the "arithmetic on type void* compiler warning)
     char* arrayStartChar = (char*)arrayStart;
     // Set to 0
     memset(arrayStartChar + (currNumElements*sizeOfElement), '\0', sizeOfElement);
@@ -116,3 +119,24 @@ void* AppendNewArrayElement(void* arrayStart, uint32_t currNumElements, uint32_t
     return arrayStart;
 }
 ```
+
+## Memory Allocation On Embedded Systems
+
+And why it can be a bad idea.
+
+Memory allocation is usually treated with great caution on embedded systems, with many embedded design standards or companies banning the use of it outright. Why is this? 
+
+1. **The first reason is that memory allocation can fail**. There is no guarantee that a call to `malloc()` will be successful. The spec says that if `malloc()` cannot find enough space to satisfy the memory request, it will return `NULL`. What should you do when `malloc()` returns `NULL`? For most applications running on desktops/servers, this will just mean the application will terminate, which could cause some annoyance for the users/customers of the application. However, if your embedded code is controlling the thrust of a rocket's engines, and your call to `malloc()` fails just after launch, the consequences could be much worse. Even if you can guarantee that there always be enough bytes of memory available for the worse-case scenario, you cannot guarantee that there will be enough in a contiguous block of memory, due to memory fragmentation (as memory is allocated and deallocated, it becomes fragmented).
+
+2. **The second reason is that dynamic allocation introduces a whole new category of bugs**. You can now accidentally cause memory leaks. You can now forget to initialize the memory your just allocated before reading from it. You called `free()` twice by accident and now have undefined behaviour. 
+
+3. **The third reason is that memory allocation is non-deterministic.** You do not know how long `malloc()` is going to take to allocate you memory, which could be unacceptable for hard real-time applications.
+
+C programming standards such as MISRA ban memory allocation outright.
+
+Banning memory allocation does restrict the flexibility of the application (e.g. you can no longer have a data type which represents an arbitrary length string). However, the following workarounds are used in embedded applications:
+
+1) **Static allocation**. Chunks of memory can be allocated statically (at compile time). You typically allocate enough memory for your worst-case runtime scenario. For example, you could allocate `500 bytes` for your receive buffer, and because of the protocol used, you know that you will never need more than that.
+2) **Memory pools**. A memory pool is a block of memory that is allocated statically. The pool is divided up into pieces which can be "dynamically assigned" at runtime. This gives the the application most of the benefits of dynamic memory allocation but you always know how many blocks you have left in the pool, the request for memory is deterministic, and you do not suffer from fragmentation.
+
+

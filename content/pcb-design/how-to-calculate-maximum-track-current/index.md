@@ -3,6 +3,7 @@ author: "gbmhunter"
 categories: [ "PCB Design" ]
 date: 2016-04-11
 draft: false
+lastmod: 2020-01-22
 tags: [ "PCB design", "track current", "traces", "PCBs", "routing", "overheating", "thermal", "IPC-2221A", "IPC-2152" ]
 title: "How To Calculate Maximum Track Current"
 type: "page"
@@ -57,7 +58,7 @@ The second standard, IPC-2152, is a much newer standard. It has a more technical
 
 ### History
 
-The data in the IPC-2152 standard is based of two experiments. One was done by Mike Jouppi of Lockheed Martin, and the other by the Naval Surface Warface Center, Crane Division. The results from these two experiments was compiled into IPC-2152 under the heading "_Standard for Determining Current Carrying Capacity in Printed Board Design_"
+The data in the IPC-2152 standard is based of two experiments. One was done by Mike Jouppi of Lockheed Martin, and the other by the Naval Surface Warfare Center, Crane Division. The results from these two experiments was compiled into IPC-2152 under the heading "_Standard for Determining Current Carrying Capacity in Printed Board Design_"
 
 ### The Calculation Steps
 
@@ -85,4 +86,10 @@ Glad you asked! mbedded.ninja has developed a desktop application called [NinjaC
 
 You can get to the IPC-2221A calculator directly by going to [http://ninja-calc.mbedded.ninja/calc/track-current-ipc-2221a-calculator](http://ninja-calc.mbedded.ninja/calc/track-current-ipc-2221a-calculator).
 
-You can fet to the IPC-2152 calculator directly by going to [http://ninja-calc.mbedded.ninja/calc/track-current-ipc-2152-calculator](http://ninja-calc.mbedded.ninja/calc/track-current-ipc-2152-calculator).
+You can get to the IPC-2152 calculator directly by going to [http://ninja-calc.mbedded.ninja/calc/track-current-ipc-2152-calculator](http://ninja-calc.mbedded.ninja/calc/track-current-ipc-2152-calculator).
+
+## External Resources
+
+[Jack Olsen - How To 2152 (pdf)](/pcb-design/how-to-calculate-maximum-track-current/JackOlson-HowTo2152.pdf)
+
+[Jack Olsen - How To 2152 (Excel based calculator)](/pcb-design/how-to-calculate-maximum-track-current/JackOlson-HowTo2152.xls)

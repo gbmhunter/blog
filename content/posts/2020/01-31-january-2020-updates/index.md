@@ -42,3 +42,8 @@ type: "post"
     ```
 
     This makes it easier to determine what the page is when you have a lot of tabs open on a tab-based browser such as Chrome or Edge.
+
+* Added cached external content to the {{% link text="How To Calculate Maximum Track Current page" src="" %}}.
+
+* Added more specific information about dynamic memory allocation on embedded systems to the {{% link text="Dynamic Memory Allocation page" src="" %}}.
+ 
