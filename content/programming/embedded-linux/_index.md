@@ -1,9 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2017-03-27
 draft: false
-title: Embedded Linux
-type: page
+lastmod: 2017-03-27
+tags: [ "prrogramming", "embedded Linux", "Linux", "embedded", "ABI", "EABI", "application binary interfaces", "MCU", "memory control units", "BusyBox" ]
+title: "Embedded Linux"
+type: "page"
 ---
 
 ## Overview

@@ -17,3 +17,18 @@ print(datetime.strftime(my_time, '%Y'))
 my_time = datetime.strptime('2020-01-17 13:24:03', '%Y-%m-%d %H:%M:%S')
 print(type(my_time))
 print(my_time)
+
+####################################################################################################
+# astropy.time
+####################################################################################################
+
+from astropy.time import Time
+
+my_time = Time('2020-01-17T13:24:03')
+print(my_time)
+
+# TimeDelta
+start_time = Time('2020-01-17T13:24:03')
+end_time = Time('2020-01-17T19:22:56')
+time_delta = end_time - start_time
+breakpoint()

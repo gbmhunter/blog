@@ -83,4 +83,34 @@ print(my_time)
 
 ## Astropy's time Module
 
+Astropy has a powerful `time` module which provides functionality over and above the `datetime` module that is bundled with Python.
+
+```python
+from astropy.time import Time
+
+my_time = Time('2020-01-17T13:24:03')
+print(my_time)
+# stdout: 2020-01-17T13:24:03.000
+```
+
+The first time you `import astropy.time`, it will download leap second information.
+
+Astropy's time module provides support for operating on "arrays" of times. It does this by building in array support to the `Time` class:
+
+```python
+Time([
+  '2020-01-01T00:00:00',
+  '2020-01-01T01:00:00',
+])
+```
+
+Subtracting two Astropy `Time` objects gives you a `TimeDelta` object (i.e. a duration):
+
+```python
+
+my_duration = 
+```
+
+See the [Astropy Time and Dates documentation](https://docs.astropy.org/en/stable/time/) for more information.
+
 ## Panda's Timestamp Class
