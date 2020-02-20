@@ -14,6 +14,7 @@ geopyspark==0.4.3
 imageio==2.5.0
 matplotlib==3.1.2
 numpy==1.16.4
+pandas==1.0.1
 Pillow==6.1.0
 protobuf==3.9.0
 pycparser==2.19
@@ -21,6 +22,7 @@ pyparsing==2.4.0
 python-dateutil==2.8.0
 pytz==2019.1
 rasterio==1.0.24
+scikit-learn==0.22.1
 Shapely==1.7a2
 six==1.12.0
 snuggs==1.4.6

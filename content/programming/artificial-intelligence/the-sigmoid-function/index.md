@@ -3,10 +3,23 @@ author: "gbmhunter"
 categories: [ "Programming", "Artificial Intelligence" ]
 date: 2020-02-04
 description: "What is the sigmoid function, and how is it used in neural networks?"
-draft: true
+draft: false
 lastmod: 2020-02-04
-tags: [ "programming", "artificial intelligence", "AI", "Sigmoid", "function" ]
+tags: [ "programming", "artificial intelligence", "AI", "Sigmoid", "function", "mathematics", "S curve", "machine learning" ]
 title: "The Sigmoid Function"
 type: "page"
 ---
 
+The sigmoid function is a mathematical function which when plotted, has a characteristic "S" shape or sigmoid curve. Sigmoid curves include many cumulative distribution functions (CDFs), including the CDF of the normal distribution. They are also used in neural networks as an activation function.
+
+## Logistic Function
+
+The logistic function is given by the following equation:
+
+<p>$$
+S(x) = \frac{1}{1 + e^{-x}}
+$$</p>
+
+Plotted from `\(x = -10\)` to `\(x = 10\)`, the function looks like this:
+
+{{% img src="graph-logistic-function.png" width="700px" caption="A graph of the logistic function." %}}
