@@ -45,7 +45,7 @@ print(iris_dataset.keys())
 The data key contains a 2D `numpy` array with 5 columns and 150 rows:
 
 ```python
-print(iris_dataset.data)
+print(iris_dataset['data'])
 # [[5.1 3.5 1.4 0.2]
 #  [4.9 3.  1.4 0.2]
 #  [4.7 3.2 1.3 0.2]
@@ -94,3 +94,14 @@ An easy way to split the data is to use `scikit-learn`'s `train_test_split()` fu
 from sklearn.model_selection import train_test_split
 X_train, X_test, Y_train, Y_test = train_test_split(iris_dataset['data'], iris_dataset['target'], test_size=0.2)
 ```
+
+{{% note %}}
+It is important to note the difference between the training and test set created here, and the training and test sets created as part of the `StratifiedKFold`. The test set created here will not be used again until we have a trained model, while as part of training, we further split the training set here into more training and tests sets.
+
+This dual purpose for a `test` set can be quite confusing for a newcomer.
+{{% /note %}}
+
+
+## Select A Model
+
+We will use _logistic regression_ for this machine learning example. It is beyond the scope of this tutorial to fully explain how logistic regression works
