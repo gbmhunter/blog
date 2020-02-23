@@ -41,7 +41,7 @@ type: "page"
 </tr>
 <tr>
   <td>Similar To</td>
-  <td>{{% link src="to-220-component-package" text="TO-220" %}}</td>
+  <td>{{% link src="../to-220-component-package" text="TO-220" %}}</td>
 </tr>
 <tr>
   <td>Mounting</td>

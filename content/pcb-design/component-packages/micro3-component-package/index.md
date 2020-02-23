@@ -9,4 +9,4 @@ title: "Micro3 Component Package"
 type: "page"
 ---
 
-Micro3 is a synonym for the `SOT-23-3` package used by Infineon/International Rectifier. See the {{% link text="SOT-23 Component Package page" src="sot-23-component-package" %}} for more information.
+Micro3 is a synonym for the `SOT-23-3` package used by Infineon/International Rectifier. See the {{% link text="SOT-23 Component Package page" src="../sot-23-component-package" %}} for more information.

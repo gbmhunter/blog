@@ -4,7 +4,7 @@ categories: [ "Programming", "Microcontrollers", "RaspberryPi" ]
 date: 2013-03-23
 draft: false
 lastmod: 2019-08-10
-tags: [ "programming", "microcontrollers", "RaspberryPi", "omxplayer", "mp3", "sound", "AUX" ]
+tags: [ "programming", "microcontrollers", "RaspberryPi", "omxplayer", "mp3", "sound" ]
 title: RaspberryPi
 type: page
 ---

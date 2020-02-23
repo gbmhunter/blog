@@ -30,7 +30,7 @@ type: page
       <td>Similar To</td>
       <td>
         <ul>
-          <li>{{% link src="to-220-component-package" text="TO-220" %}}</li>
+          <li>{{% link src="../to-220-component-package" text="TO-220" %}}</li>
         </ul>
       </td>
     </tr>

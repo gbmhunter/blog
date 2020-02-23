@@ -32,7 +32,7 @@ type: page
 <td>Similar To</td>
 <td>
   <ul>
-    <li>{{% link text="SOD-123F" src="sod-123f-component-package" %}}</li>
+    <li>{{% link text="SOD-123F" src="../sod-123f-component-package" %}}</li>
     <li>SOD-123W</li>
   </ul>
 </td>

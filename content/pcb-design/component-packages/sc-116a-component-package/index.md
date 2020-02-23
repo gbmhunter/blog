@@ -7,4 +7,4 @@ title: SC-116A Component Package
 type: page
 ---
 
-SC-116A is a synonym for the {{% link text="SOD-923 component package" src="sod-923-component-package" %}}.
+SC-116A is a synonym for the {{% link text="SOD-923 component package" src="../sod-923-component-package" %}}.

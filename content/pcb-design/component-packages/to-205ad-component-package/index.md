@@ -8,4 +8,4 @@ title: TO-205AD Component Package
 type: page
 ---
 
-TO-205AD is a synonym for the {{% link text="TO-39 component package" src="to-39-component-package" %}}.
+TO-205AD is a synonym for the {{% link text="TO-39 component package" src="../to-39-component-package" %}}.

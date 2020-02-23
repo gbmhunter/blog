@@ -9,4 +9,4 @@ title: "SC-59 Component Package"
 type: "page"
 ---
 
-SC-59 is a synonym for the {{% link text="SOT-23 component package" src="sot-23-component-package" %}}.
+SC-59 is a synonym for the {{% link text="SOT-23 component package" src="../sot-23-component-package" %}}.

@@ -38,9 +38,9 @@ type: page
 <td>Similar To</td>
 <td>
   <ul>
-    <li>{{% link src="sip-component-package" text="SIP" %}}</li>
-    <li>{{% link src="qip-component-package" text="QIP" %}}</li>
-    <li>{{% link src="soic-component-package" text="SOIC" %}}</li>
+    <li>{{% link src="../sip-component-package" text="SIP" %}}</li>
+    <li>{{% link src="../qip-component-package" text="QIP" %}}</li>
+    <li>{{% link src="../soic-component-package" text="SOIC" %}}</li>
   </ul>
 </td>
 </tr>

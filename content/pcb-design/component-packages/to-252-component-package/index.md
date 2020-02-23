@@ -8,4 +8,4 @@ title: TO-252 Component Package
 type: page
 ---
 
-TO-252 is a synonym for the {{% link text="DPACK component package" src="dpack-component-package" %}}.
+TO-252 is a synonym for the {{% link text="DPACK component package" src="../dpack-component-package" %}}.

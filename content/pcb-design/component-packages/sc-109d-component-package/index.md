@@ -7,4 +7,4 @@ title: "SC-109D Component Package"
 type: page
 ---
 
-SC-109D is a synonym for the {{% link text="SOD-123 component package" src="sod-123-component-package" %}}.
+SC-109D is a synonym for the {{% link text="SOD-123 component package" src="../sod-123-component-package" %}}.

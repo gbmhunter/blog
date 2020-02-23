@@ -39,7 +39,7 @@ type: page
 </tr>
 <tr >
 <td >Similar To</td>
-<td >{{% link text="Mini-DIP SPM" src="mini-dip-spm-component-package" %}}</td>
+<td >{{% link text="Mini-DIP SPM" src="../mini-dip-spm-component-package" %}}</td>
 </tr>
 <tr >
 <td >Mounting</td>

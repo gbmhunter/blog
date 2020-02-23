@@ -8,4 +8,4 @@ title: DO-219AA Component Package
 type: page
 ---
 
-See the {{% link text="SOD-123F Component Package" src="sod-123f-component-package" %}}.
+See the {{% link text="SOD-123F Component Package" src="../sod-123f-component-package" %}}.

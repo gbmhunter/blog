@@ -11,4 +11,4 @@ type: "page"
 
 ## Overview
 
-`SMD-220` is a synonym for the `TO-263` component package (because the `TO-263` is considered to be the surface-mount equivalent of the `TO-220` package). See the {{% link text="TO-263 Component Package page" src="to-263-component-package" %}} for more information.
+`SMD-220` is a synonym for the `TO-263` component package (because the `TO-263` is considered to be the surface-mount equivalent of the `TO-220` package). See the {{% link text="TO-263 Component Package page" src="../to-263-component-package" %}} for more information.

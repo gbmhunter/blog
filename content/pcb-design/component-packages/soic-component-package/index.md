@@ -45,7 +45,7 @@ type: page
 </tr>
 <tr>
 <td>Similar To</td>
-<td>{{% link text="SOJ" src="soj-soijc-component-package" %}}</td>
+<td>{{% link text="SOJ" src="../soj-soijc-component-package" %}}</td>
 </tr>
 <tr >
 <td >Mounting

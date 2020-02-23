@@ -7,4 +7,4 @@ title: "LL-34 Component Package"
 type: "page"
 ---
 
-LL-34 is a synonym for the {{% link text="Mini-MELF component package" src="mini-melf-sod-80-do-213aa-component-package" %}}.
+LL-34 is a synonym for the {{% link text="Mini-MELF component package" src="../mini-melf-sod-80-do-213aa-component-package" %}}.

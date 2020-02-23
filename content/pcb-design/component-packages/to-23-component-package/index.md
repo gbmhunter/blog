@@ -32,7 +32,7 @@ type: page
     </tr>
     <tr>
       <td>Similar To</td>
-      <td>{{% link text="TO-3" src="to-3-component-package" %}}</td>
+      <td>{{% link text="TO-3" src="../to-3-component-package" %}}</td>
     </tr>
     <tr>
       <td>Mounting</td>

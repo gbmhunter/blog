@@ -26,7 +26,7 @@ type: page
 </tr>
 <tr>
   <td>Similar To</td>
-  <td>{{% link text="SOIC" src="soic-component-package" %}}</td>
+  <td>{{% link text="SOIC" src="../soic-component-package" %}}</td>
 </tr>
 <tr >
 <td >Mounting</td>

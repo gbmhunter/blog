@@ -42,7 +42,7 @@ type: page
 </tr>
 <tr>
 <td>Similar To</td>
-<td>{{% link text="SOT-902" src="sot-902-component-package" %}}</td>
+<td>{{% link text="SOT-902" src="../sot-902-component-package" %}}</td>
 </tr>
 <tr >
 

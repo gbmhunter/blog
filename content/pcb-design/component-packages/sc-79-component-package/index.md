@@ -8,4 +8,4 @@ title: SC-79 Component Package
 type: page
 ---
 
-SC-79 is a synonym for the {{% link text="SOD-523 component package" src="sod-523-component-package" %}}.
+SC-79 is a synonym for the {{% link text="SOD-523 component package" src="../sod-523-component-package" %}}.

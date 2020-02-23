@@ -12,4 +12,4 @@ type: "page"
 
 ## Overview
 
-The `TO-236AA` component package is the `SOT-23-3` variant of the `SOT-23` package. See the {{% link text="SOT-23 Component Package page" src="sot-23-component-package" %}} for more info.
+The `TO-236AA` component package is the `SOT-23-3` variant of the `SOT-23` package. See the {{% link text="SOT-23 Component Package page" src="../sot-23-component-package" %}} for more info.

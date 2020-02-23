@@ -12,4 +12,4 @@ type: "page"
 
 ## Overview
 
-A variant of the QFP component package. See the {{% link text="QFP Component page" src="/pcb-design/component-packages/qfp-component-package" %}} for more info.
+A variant of the QFP component package. See the {{% link text="QFP Component page" src="../qfp-component-package" %}} for more info.
