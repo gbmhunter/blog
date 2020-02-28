@@ -4,8 +4,8 @@ categories: [ "Programming", "Cloud", "AWS" ]
 date: 2019-10-01
 description: "An introduction to S3, a popular key/value storage service provided by AWS."
 draft: false
-lastmod: 2020-02-11
-tags: [ "programming", "cloud", "Amazon", "AWS", "S3", "keys", "objects", "systems", "Amazon Web Services", "sync", "timestamps", "directories", "storage", "boto", "boto3", "CLI" ]
+lastmod: 2020-02-28
+tags: [ "programming", "cloud", "Amazon", "AWS", "S3", "buckets", "keys", "objects", "systems", "Amazon Web Services", "sync", "timestamps", "directories", "storage", "boto", "boto3", "CLI", "data consistency", "read-after-write", "eventual consistency" ]
 title: "S3"
 type: "page"
 ---
@@ -37,3 +37,13 @@ Note that `aws s3 sync` will not re-sync a changed file if it has the exact same
 {{% warning %}}
 Most of the time, you probably want to add the option `--exact-timestamps` so that `aws s3 sync` behaves as you would expect. 
 {{% /warning %}}
+
+## Data Consistency
+
+AWS S3 provides _read after write_ consistency for when you put an object under a new key into a bucket for the first time, as long as you haven't queried for that key in the past (if you have, then only _eventual consistency_ is guaranteed).
+
+S3 provides _eventual consistency_ when you overwrite an existing key in a bucket, or when you delete a key from a bucket. This means that if you update a key with a new object and then try and retrieve that object, you are not guaranteed to get the new version of the object.
+
+Buckets have a very similar consistency model to the keys mentioned above. Bear in mind that if you delete a bucket and then immediately list all your buckets, the deleted bucket may still in the list!
+
+See [AWS S3: Introduction - Consistency Model](https://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html#ConsistencyModel) for more information on the S3 data consistency model.

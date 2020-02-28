@@ -1,11 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Web Design" ]
 date: 2018-12-04
 description: "Information on the static-site builder Hugo."
-lastmod: 2019-12-04
-tags: [ "programming", "web design", "Hugo", "static site", "website", "go", "software", "server", "templating" ]
-title: Hugo
+lastmod: 2020-02-27
+tags: [ "programming", "web design", "Hugo", "static site", "website", "go", "software", "server", "templating", "errors" ]
+title: "Hugo"
 type: "page"
 ---
 
@@ -98,3 +98,11 @@ If you need remove build cache, make sure to delete both the `public/` and `reso
 ```bash
 rm -rf public/ resources/
 ```
+
+## Common Errors
+
+```text
+unrecognized character in shortcode action: U+007D '}'. Note: Parameters with non-alphanumeric args must be quoted
+```
+
+You will typically get this error when you forget to add a leading `%` or `>` prefix to the closing `}}` of a shortcode.

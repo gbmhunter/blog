@@ -10,7 +10,13 @@ title: "February 2020 Updates"
 type: "post"
 ---
 
-* Added information about `aws s3 sync` and the `--exact-timestamps` parameter to the {{% link text="AWS S3 page" src="/programming/cloud/aws/s3" %}}.
+* Added the following information to the {{% link text="AWS S3 page" src="/programming/cloud/aws/s3" %}}:
+
+    * `aws s3 sync` and the `--exact-timestamps` parameter.
+
+    * AWS S3's data consistency model (including _read after write_ and _eventual_ consistency).
+
+    {{% figure src="/programming/cloud/aws/s3/aws-s3-logo.png" width="250px" %}}
 
 * Added a new tutorial on {{% link text="The Sigmoid Function" src="/programming/artificial-intelligence/the-sigmoid-function" %}}, including the logistic function.
 

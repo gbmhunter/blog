@@ -449,7 +449,7 @@ Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core.
 <td >{{< img src="texas-instruments-logo.gif"   width="100px" >}}
 </td>
 
-<td >Selection of their components. A maximum of 5 can be ordered at once. They also provide free internaitonal shipping! They do not allow you to register for free samples with a free email address such as Gmail or Hotmail, so you have to use a company or University email address.
+<td >Selection of their components. A maximum of 5 can be ordered at once. They also provide free international shipping! They do not allow you to register for free samples with a free email address such as Gmail or Hotmail, so you have to use a company or University email address.
 </td>
 </tr>
 </tbody>
@@ -457,7 +457,7 @@ Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core.
 
 ## Electronic Manufacturing Service (EMS) Companies
 
-EMS companies specialise in component sourcing, component placing, soldering and general PCB assembly. They don't normally do the PCB design themselves (although some business do both, and others sub-contract this part to another company). A good EMS will support small-pitch components such as 0201's and BGA's (see [Component Packages](/pcb-design/component-packages/)), and have a large number of basic components on hand (such as resistors and capacitors).
+EMS companies specialise in component sourcing, component placing, soldering and general PCB assembly. They don't normally do the PCB design themselves (although some business do both, and others sub-contract this part to another company). A good EMS will support small-pitch components such as 0201s and BGAs (see [Component Packages](/pcb-design/component-packages/)), and have a large number of basic components on hand (such as resistors and capacitors).
 
 ## Precision Electronic Technologies
 
@@ -499,7 +499,7 @@ Gone through a series of name changes (used to be Aims, then Startronics, now SR
 
 ### Hobby King
 
-[www.hobbyking.com](http://www.hobbyking.com): Hobby site that sells anything to do with RC (radio controlled) toys. They sell brushless DC motors (BLDC's), speed controllers, batteries (both Li-Po and NiMH), battery chargers, as well as complete kits. I used this site to buy the motor and associated hardware for the electric skateboard. It should be noted however the first ever Turnigy Li-Po battery I brought from there was defective, as well as a connector on a battery charger being connected around the wrong way, and a faulty ESC card programmer! I was not that impressed. They also take a hard-line on refunds, giving only a 30-day warranty for Li-Po batteries and no refund if they have been tampered with.
+[www.hobbyking.com](http://www.hobbyking.com): Hobby site that sells anything to do with RC (radio controlled) toys. They sell brushless DC motors (BLDCs), speed controllers, batteries (both Li-Po and NiMH), battery chargers, as well as complete kits. I used this site to buy the motor and associated hardware for the electric skateboard. It should be noted however the first ever Turnigy Li-Po battery I brought from there was defective, as well as a connector on a battery charger being connected around the wrong way, and a faulty ESC card programmer! I was not that impressed. They also take a hard-line on refunds, giving only a 30-day warranty for Li-Po batteries and no refund if they have been tampered with.
 
 ### Deal Extreme
 
