@@ -103,17 +103,28 @@ As you can see from above, `\(P\)` is now a form of a sigmoid function.
 
 ## What Does The Logistic Function Look Like?
 
+So we have the basic logistic function equation:
+
+<p>$$
+P = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x)}}
+$$</p>
+
+<p class="centered">
+where:<br/>
+\(\beta_0\) and \(\beta_1\) are constants
+</p>
+
 What happens as we change `\(\beta_1\)`?
 
 {{% img src="logistic-function-changing-b1.gif" width="800px" %}}
 
-This is analogous to the slope in linear regression.
+It changes the shape of the curve, starting-off looking like a linear line, and progressively getting closer to looking like a step function. This `\(\beta_1\)` term is analogous to the slope `\(m\)` in linear regression.
 
 What happens as we change `\(\beta_0\)`?
 
-...
+{{% img src="logistic-function-changing-b0.gif" width="800px" %}}
 
-This is analogous to the y-intercept in linear regression.
+This is analogous to the y-intercept `\(c\)` in linear regression, except that `\(\beta_0\)` shifts the curve along the x-axis.
 
 ## External Resources
 
