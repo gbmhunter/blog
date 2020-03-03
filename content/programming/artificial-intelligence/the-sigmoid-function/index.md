@@ -4,7 +4,7 @@ categories: [ "Programming", "Artificial Intelligence" ]
 date: 2020-02-04
 description: "What is the sigmoid function, and how is it used in neural networks?"
 draft: false
-lastmod: 2020-02-04
+lastmod: 2020-03-04
 tags: [ "programming", "artificial intelligence", "AI", "Sigmoid", "function", "mathematics", "S curve", "machine learning", "logistic function", "logistic regression" ]
 title: "The Sigmoid Function"
 type: "page"

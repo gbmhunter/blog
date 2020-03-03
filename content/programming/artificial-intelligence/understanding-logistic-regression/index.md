@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Programming", "Artificial Intelligence" ]
 date: 2020-02-21
 description: "What is logistic regression, and how does it work?"
-draft: true
+draft: false
 lastmod: 2020-02-21
 tags: [ "programming", "artificial intelligence", "logistic regression", "logit regression", "probability", "odds" ]
 title: "Understanding Logistic Regression"
