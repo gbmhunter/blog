@@ -87,16 +87,16 @@ The ranges on both sides of the equation now match! The base of the logarithm do
 However, the equation is usually re-arranged with `\(P\)` on the LHS.
 
 <p>\begin{align}
-\ln(O)              &= \beta_0 + \beta_1 x\\
-O                   &= e^{\beta_0 + \beta_1 x}                         &\text{Take the exponential of both sides}\\
-\frac{P}{1 - P}     &= e^{\beta_0 + \beta_1 x}                         &\text{Substitute $O$ as per equation XXX}\\
-P                   &= e^{\beta_0 + \beta_1 x}(1 - P)                  &\text{Multiply both sides by $(1 - P)$}\\
-P                   &= e^{\beta_0 + \beta_1 x} - Pe^{\beta_0 + \beta_1 x}           &\text{Expand RHS}\\
-P + Pe^{\beta_0 + \beta_1 x}     &= e^{\beta_0 + \beta_1 x}                         &\text{Move all terms with $P$ to the LHS}\\
-P(1 + e^{\beta_0 + \beta_1 x})   &= e^{\beta_0 + \beta_1 x}                         &\text{Factor the $P$}\\
-P                   &= \frac{e^{\beta_0 + \beta_1 x}}{1 + e^{\beta_0 + \beta_1 x}}  &\text{Divide both sides of equation by $1 + e^{\beta_0 + \beta_1 x}$}\\
-P                   &= \frac{1}{\frac{1}{e^{\beta_0 + \beta_1 x}} + 1} &\text{Divide top and bottom of RHS fraction by $e^{\beta_0 + \beta_1 x}$}\\
-P                   &= \frac{1}{1 + e^{-(\beta_0 + \beta_1 x)}}        &\text{Use rule $\frac{1}{e^x} = e^{-x}$}
+\ln(O)                          &= \beta_0 + \beta_1 x\\
+O                               &= e^{\beta_0 + \beta_1 x}                                      &\text{Take the exponential of both sides}\\
+\frac{P}{1 - P}                 &= e^{\beta_0 + \beta_1 x}                                      &\text{Substitute $O$ as per equation XXX}\\
+P                               &= e^{\beta_0 + \beta_1 x}(1 - P)                               &\text{Multiply both sides by $(1 - P)$}\\
+P                               &= e^{\beta_0 + \beta_1 x} - Pe^{\beta_0 + \beta_1 x}           &\text{Expand RHS}\\
+P + Pe^{\beta_0 + \beta_1 x}    &= e^{\beta_0 + \beta_1 x}                                      &\text{Move all terms with $P$ to the LHS}\\
+P(1 + e^{\beta_0 + \beta_1 x})  &= e^{\beta_0 + \beta_1 x}                                      &\text{Factor the $P$}\\
+P                               &= \frac{e^{\beta_0 + \beta_1 x}}{1 + e^{\beta_0 + \beta_1 x}}  &\text{Divide both sides of equation by $1 + e^{\beta_0 + \beta_1 x}$}\\
+P                               &= \frac{1}{\frac{1}{e^{\beta_0 + \beta_1 x}} + 1}              &\text{Divide top and bottom of RHS fraction by $e^{\beta_0 + \beta_1 x}$}\\
+P                               &= \frac{1}{1 + e^{-(\beta_0 + \beta_1 x)}}                     &\text{Use rule $\frac{1}{e^x} = e^{-x}$}
 \end{align}</p>
 
 As you can see from above, `\(P\)` is now a form of a sigmoid function.
