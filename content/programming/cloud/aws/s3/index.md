@@ -44,6 +44,6 @@ AWS S3 provides _read after write_ consistency for when you put an object under 
 
 S3 provides _eventual consistency_ when you overwrite an existing key in a bucket, or when you delete a key from a bucket. This means that if you update a key with a new object and then try and retrieve that object, you are not guaranteed to get the new version of the object.
 
-Buckets have a very similar consistency model to the keys mentioned above. Bear in mind that if you delete a bucket and then immediately list all your buckets, the deleted bucket may still in the list!
+Buckets have a very similar consistency model to the keys mentioned above. Bear in mind that if you delete a bucket and then immediately list all your buckets, the deleted bucket may still in the list! Buckets which have public access seem to take longer to disappear from listings after they have been deleted, they can take many hours (or even days!) to disappear. Note you can't do anything with the bucket (if you try and copy an object into it an error will be thrown).
 
 See [AWS S3: Introduction - Consistency Model](https://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html#ConsistencyModel) for more information on the S3 data consistency model.
