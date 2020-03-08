@@ -4,7 +4,7 @@ categories: [ "Programming", "Artificial Intelligence" ]
 date: 2020-02-21
 description: "What is logistic regression, and how does it work?"
 draft: false
-lastmod: 2020-02-21
+lastmod: 2020-03-08
 tags: [ "programming", "artificial intelligence", "logistic regression", "logit regression", "probability", "odds" ]
 title: "Understanding Logistic Regression"
 type: "page"
@@ -125,6 +125,71 @@ What happens as we change `\(\beta_0\)`?
 {{% img src="logistic-function-changing-b0.gif" width="800px" %}}
 
 This is analogous to the y-intercept `\(c\)` in linear regression, except that `\(\beta_0\)` shifts the curve along the x-axis.
+
+## Worked Example
+
+We can use logistic regression to perform basic "machine learning" tasks. We will use the famous Iris dataset, and write the code in Python, leveraging `sklearn`'s logistic regression training class and various reporting tools. The Iris dataset is popular enough that it's bundled with a number of Python libraries, including `seaborn` (which is where we will grab it from):
+
+```python
+import seaborn as sns
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.model_selection import train_test_split
+```
+
+```python
+data = sns.load_dataset('iris')
+print(data.shape[0])
+# 150
+data.head())
+```
+
+{{% img src="data-head-iris.png" width="500px" caption="The first 5 rows of the Iris dataset." %}}
+
+Split the data into the features `x` and the target `y`:
+
+```python
+x = data.iloc[:, 0:-1] # All columns except "species"
+y = data.iloc[:, -1] # The "species" column
+```
+
+Now split the data into training and test data:
+
+```python
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0)
+```
+
+Let's train the model:
+
+```python
+model = LogisticRegression()
+model.fit(x_train, y_train) # Training the model
+```
+
+Make predictions:
+
+```python
+predictions = model.predict(x_test)
+print(predictions)
+```
+
+{{% img src="logistic-regression-iris-predictions.png" width="600px" caption="The predictions of the type of Iris for the test data." %}}
+
+Print a "classification report":
+
+```python
+print(classification_report(y_test, predictions))
+```
+
+{{% img src="logistic-regression-iris-classification-report.png" width="500px" caption="The classification report for our logistic regression model." %}}
+
+And let's print the accuracy score:
+
+```python
+print(accuracy_score(y_test, predictions))
+# 0.9666666666666667
+```
+
 
 ## External Resources
 
