@@ -993,39 +993,80 @@ del {
 
 
 
+/* ========================================================================= */
+/* SEARCH                                                                    */
+/* ========================================================================= */
+
+#fast-search-outer {
+  visibility: hidden;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 #fastSearch { 
-    visibility: hidden;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    display: inline-block;
-    width: 300px;
-  }      
+  visibility: inherit;
+  width: 80%;
+  max-width: 900px;
+  height: 80%;
+  display: inline-block;
+  color: white;
+}      
   
-  #fastSearch input { 
-    padding: 4px 10px;
-    width: 100%;
-    height: 31px;
-    font-size: 1.6em;
-    color: #aaa;
-    font-weight: bold;
-    background-color: #000;
-    border-radius: 3px 3px 0px 0px;
-    border: none;
-    outline: none;
-    text-align: left;
-    display: inline-block;
-  }
+#fastSearch input { 
+  padding: 4px 10px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 31px;
+  font-size: 1.2em;
+  color: rgb(34, 34, 34);
+  /*font-weight: bold;*/
+  background-color: white;
+  border-radius: 3px 3px 0px 0px;
+  border: none;
+  outline: none;
+  text-align: left;
+  display: inline-block;
+}
   
-  #searchResults li { 
-    list-style: none; 
-    margin-left: 0em;
-    background-color: #333; 
-    border-bottom: 1px dotted #000;
-  }
-    #searchResults li .title { font-size: 1.1em; margin-bottom: 10px; display: inline-block;}
-  
-  #searchResults { visibility: inherit; display: inline-block; width: 320px; }
-  #searchResults a { text-decoration: none !important; padding: 10px; display: inline-block; }
-    #searchResults a:hover, a:focus { outline: 0; background-color: #666; color: #fff; }
+#searchResults li { 
+  list-style: none; 
+  margin-left: 0em;
+  background-color: white; 
+  border-bottom: 1px dotted #000;
+}
+
+#searchResults li .title {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+#searchResults {
+  visibility: inherit;
+  display: inline-block;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+#searchResults a {
+  width: 100%;
+  box-sizing: border-box; /* Makes sure that the container + padding stays within parent */
+  text-decoration: none !important; padding: 10px; display: inline-block;
+  color: rgb(34, 34, 34);
+}
+
+#searchResults a:hover, a:focus {
+  outline: 0;
+  background-color: rgb(200, 200, 200);
+}
