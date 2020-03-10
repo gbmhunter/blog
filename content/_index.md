@@ -1,1 +1,6 @@
- 
+---
+outputs:
+- html
+- rss
+- json
+---
