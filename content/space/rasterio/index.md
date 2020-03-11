@@ -4,8 +4,8 @@ categories: [ "Space" ]
 date: 2019-10-04
 description: "An introduction to the Python library rasterio, used for manipulating geospatial data."
 draft: false
-lastmod: 2019-11-16
-tags: [ "space", "rasterio", "GDAL", "raster", "GeoTIFF", "geospatial", "API", "mapbox", "Python" ]
+lastmod: 2020-03-11
+tags: [ "space", "rasterio", "GDAL", "raster", "GeoTIFF", "geospatial", "APIs", "mapbox", "Python", "projections" ]
 title: "rasterio"
 ---
 
@@ -44,6 +44,32 @@ pixels = dataset.read()
 # You have to remember to close the dataset yourself
 ```
 
+## Getting Projection Info
+
+The projection information in obtained through the `Dataset.crs` property:
+
+```py
+dataset = rasterio.open('example.tif')
+dataset.crs
+# EPSG:4326
+```
+
+You can get also get the "Well Known Text" (WKT) syntax:
+
+```py
+dataset.crs.wkt
+# GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]
+```
+
+To get the Affine transformation:
+
+```py
+dataset.transform
+# | 0.00, 0.00, 26.04|
+# | 0.00,-0.00,-15.29|
+# | 0.00, 0.00, 1.00|
+```
+
 ## Reprojection
 
 `reproject()` does not create the destination array for you, you have to create the array yourself and pass it into the function.
@@ -58,6 +84,12 @@ rasterio.reproject(
     dst_crs,
     resampling)
 ```
+
+## Masking
+
+
+
+More on masking can be found at [https://rasterio.readthedocs.io/en/latest/api/rasterio.mask.html](https://rasterio.readthedocs.io/en/latest/api/rasterio.mask.html).
 
 ## Common Errors
 
