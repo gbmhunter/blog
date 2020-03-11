@@ -1,6 +1,6 @@
 // Based of https://discourse.gohugo.io/t/fast-keyboard-optimized-search-for-hugo/23824
 
-var fuse; // holds our search engine
+var flexSearch; // holds our search engine
 var searchVisible = false;
 var firstRun = true; // allow us to delay loading json data unless search activated
 var list = document.getElementById('searchResults'); // targets the <ul>
@@ -123,19 +123,35 @@ function loadSearch() {
   fetchJSONFile('/index.json', function (data) {
 
     console.log('Building index...')
-    var options = { // fuse.js options; check fuse.js website for details
-      shouldSort: true,
-      location: 0,
-      distance: 100,
-      threshold: 0.4,
-      minMatchCharLength: 2,
-      keys: [
-        'title',
-        'permalink',
-        'summary'
-      ]
-    };
-    fuse = new Fuse(data, options); // build the index from the json file
+    // var options = { // fuse.js options; check fuse.js website for details
+    //   shouldSort: true,
+    //   location: 0,
+    //   distance: 100,
+    //   threshold: 0.4,
+    //   minMatchCharLength: 2,
+    //   keys: [
+    //     'title',
+    //     'permalink',
+    //     'summary'
+    //   ]
+    // };
+    // fuse = new Fuse(data, options); // build the index from the json file
+
+    // Add id field to each object in the data for fastsearch
+    for(var i = 0; i < data.length; i++) {
+      data[i].id = i;
+    }
+
+    flexSearch = new FlexSearch({
+      profile: "default",
+      tokenize: "full", // "strict" will only match once whole words are typed, "forward" will allow you to match partial words from the start of the word, "full" will let you match any partial part of a word
+      encode: "icase", // Ignore case
+      doc: {
+        id: "id",
+        field: [ "title", "description", "tags", "contents" ], // "contents" is the huge one which contains the body of the page data
+      },
+    });
+    flexSearch.add(data)
     console.log('Indexing complete.')
   });
 }
@@ -151,13 +167,22 @@ function executeSearch(term) {
 
   // Sometimes during testing/debugging we won't trigger the loadSearch() the normal way, so check
   // here also
-  if (firstRun) {
-    loadSearch(); // loads our json data and builds fuse.js search index
-    firstRun = false; // let's never do this again
+  if (!flexSearch) {
+    throw Error('executeSearch() called but search index not yet created.')
   }
 
-  let results = fuse.search(term); // the actual query being run using fuse.js
+  // let results = fuse.search(term); // the actual query being run using fuse.js
   let searchitems = ''; // our results bucket
+
+  let results = flexSearch.search({
+    query: term,
+    limit: 25,
+    depth: 1,
+    bool: "or",
+    field: ["title", "contents"]
+  });
+  console.log('Search complete. results=')
+  console.log(results)
 
   if (results.length === 0) { // no results based on what was typed into the input box
     resultsAvailable = false;
@@ -166,7 +191,15 @@ function executeSearch(term) {
     for (let item in results.slice(0, 5)) { // only show first 5 results
       console.log('item=')
       console.log(results[item])
-      searchitems = searchitems + '<li><a href="' + results[item].permalink + '" tabindex="0">' + '<span class="title">' + results[item].title + '</span><br />— ' + results[item].date + ' — <em>' + results[item].description + '</em></a></li>';
+      if (results[item].description) {
+        description = results[item].description;
+      } else {
+        description = results[item].contents.substring(0,100);
+      }
+
+      searchitems = searchitems + '<li><a href="' + results[item].permalink + '" tabindex="0">' + '<span class="title">' + results[item].title + '</span>' 
+        + '<span style="float: right;">' + results[item].date + '</span>' 
+        + '<br/> — <em>' + description + '</em></a></li>';
     }
     resultsAvailable = true;
   }

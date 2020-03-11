@@ -12,6 +12,7 @@ type: "page"
 
 ## Overview
 
+
 _Logistic regression_ (or _logit regression_) is a very common and popular algorithm that is used in machine learning. It is used for making binary categorical predictions, such as "is it going to rain today?" or more precisely, it can be used to give a percentage chance of it raining today. Logistic regression can also be extended to make many-option categorical predictions, such as "is it more likely to be sunny, overcast, or rainy today?".
 
 ## Probability and Odds
@@ -190,6 +191,7 @@ print(accuracy_score(y_test, predictions))
 # 0.9666666666666667
 ```
 
+pocky
 
 ## External Resources
 
