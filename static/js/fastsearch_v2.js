@@ -119,8 +119,10 @@ function fetchJSONFile(path, callback) {
 // on first call of search box (CMD-/)
 //
 function loadSearch() {
+  console.log('Fetching index.json...')
   fetchJSONFile('/index.json', function (data) {
 
+    console.log('Building index...')
     var options = { // fuse.js options; check fuse.js website for details
       shouldSort: true,
       location: 0,
@@ -134,6 +136,7 @@ function loadSearch() {
       ]
     };
     fuse = new Fuse(data, options); // build the index from the json file
+    console.log('Indexing complete.')
   });
 }
 
