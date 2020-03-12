@@ -1014,13 +1014,28 @@ del {
 }
 
 #fastSearch { 
-  visibility: inherit;
   width: 80%;
   max-width: 900px;
   height: 80%;
-  display: inline-block;
+  display: none; /* This will get changed to inline-block by JS */
   color: white;
 }      
+
+#fast-search-please-wait {
+  width: 80%;
+  max-width: 900px;
+  height: 80%;
+  display: none; /* This will get changed to flex by JS */
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  background-color: rgba(40, 40, 40, 0.5);
+}
+
+#fast-search-please-wait-text {
+  color: white;
+}
   
 #fastSearch input { 
   padding: 4px 10px;

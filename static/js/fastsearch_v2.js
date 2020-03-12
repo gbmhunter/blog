@@ -19,15 +19,28 @@ $("#fast-search-button").click(function () {
   // Toggle visibility of search box
   if (!searchVisible) {
     $("#fast-search-outer").css("visibility", "visible");
-    document.getElementById("searchInput").focus(); // put focus in input box so you can just start typing
+    $("#searchInput").focus(); // put focus in input box so you can just start typing
     searchVisible = true; // search visible
   }
   else {
-    document.getElementById("fastSearch").style.visibility = "hidden"; // hide search box
-    document.activeElement.blur(); // remove focus from search box 
-    searchVisible = false; // search not visible
+    hideSearchModal()
   }
 });
+
+$("#fast-search-outer").click(function (e) {
+  // Make sure the user clicked on this div, and not any child div
+  if (e.target !== this)
+    return;
+  console.log("Outer clicked.")
+  $("#fast-search-outer").css("visibility", "hidden");
+})
+
+function hideSearchModal() {
+  console.log('hideSearchModal() called.')
+  $("#fast-search-outer").css("visibility", "hidden") // hide search box
+  document.activeElement.blur(); // remove focus from search box 
+  searchVisible = false; // search not visible
+}
 
 // ==========================================
 // The main keyboard event listener running the show
@@ -35,33 +48,31 @@ $("#fast-search-button").click(function () {
 document.addEventListener('keydown', function (event) {
 
   // CMD-/ to show / hide Search
-  if (event.metaKey && event.which === 191) {
-    // Load json search index if first time invoking search
-    // Means we don't load json unless searches are going to happen; keep user payload small unless needed
-    if (firstRun) {
-      loadSearch(); // loads our json data and builds fuse.js search index
-      firstRun = false; // let's never do this again
-    }
+  // if (event.metaKey && event.which === 191) {
+  //   // Load json search index if first time invoking search
+  //   // Means we don't load json unless searches are going to happen; keep user payload small unless needed
+  //   if (firstRun) {
+  //     loadSearch(); // loads our json data and builds fuse.js search index
+  //     firstRun = false; // let's never do this again
+  //   }
 
-    // Toggle visibility of search box
-    if (!searchVisible) {
-      document.getElementById("fastSearch").style.visibility = "visible"; // show search box
-      document.getElementById("searchInput").focus(); // put focus in input box so you can just start typing
-      searchVisible = true; // search visible
-    }
-    else {
-      document.getElementById("fastSearch").style.visibility = "hidden"; // hide search box
-      document.activeElement.blur(); // remove focus from search box 
-      searchVisible = false; // search not visible
-    }
-  }
+  //   // Toggle visibility of search box
+  //   if (!searchVisible) {
+  //     document.getElementById("fastSearch").style.visibility = "visible"; // show search box
+  //     document.getElementById("searchInput").focus(); // put focus in input box so you can just start typing
+  //     searchVisible = true; // search visible
+  //   }
+  //   else {
+  //     document.getElementById("fastSearch").style.visibility = "hidden"; // hide search box
+  //     document.activeElement.blur(); // remove focus from search box 
+  //     searchVisible = false; // search not visible
+  //   }
+  // }
 
   // Allow ESC (27) to close search box
   if (event.keyCode == 27) {
     if (searchVisible) {
-      document.getElementById("fastSearch").style.visibility = "hidden";
-      document.activeElement.blur();
-      searchVisible = false;
+      hideSearchModal()
     }
   }
 
@@ -91,9 +102,9 @@ document.addEventListener('keydown', function (event) {
 // ==========================================
 // execute search as each character is typed
 //
-document.getElementById("searchInput").onkeyup = function (e) {
+$("#searchInput").keyup(function (e) {
   executeSearch(this.value);
-}
+})
 
 
 // ==========================================
@@ -120,8 +131,11 @@ function fetchJSONFile(path, callback) {
 //
 function loadSearch() {
   console.log('Fetching index.json...')
+  $("#fast-search-please-wait").css("display", "flex")
+  $("#fast-search-please-wait-text").html("Fetching search data...")
   fetchJSONFile('/index.json', function (data) {
 
+    $("#fast-search-please-wait-text").html("Search data retrieved. Building index...")
     console.log('Building index...')
     // var options = { // fuse.js options; check fuse.js website for details
     //   shouldSort: true,
@@ -153,6 +167,10 @@ function loadSearch() {
     });
     flexSearch.add(data)
     console.log('Indexing complete.')
+    $("#fast-search-please-wait").css('display', 'none')
+    // $("#fast-search-please-wait").css("visibility", "hidden")
+    $("#fastSearch").css('display', 'inline-block')
+    $("#searchInput").focus(); // put focus in input box so you can just start typing
   });
 }
 
