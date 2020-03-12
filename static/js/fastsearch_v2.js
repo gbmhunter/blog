@@ -32,7 +32,7 @@ $("#fast-search-outer").click(function (e) {
   if (e.target !== this)
     return;
   console.log("Outer clicked.")
-  $("#fast-search-outer").css("visibility", "hidden");
+  hideSearchModal()
 })
 
 function hideSearchModal() {

@@ -1016,15 +1016,16 @@ del {
 #fastSearch { 
   width: 80%;
   max-width: 900px;
-  height: 80%;
+  height: 50%;
   display: none; /* This will get changed to inline-block by JS */
   color: white;
+  background-color: white;
 }      
 
 #fast-search-please-wait {
   width: 80%;
   max-width: 900px;
-  height: 80%;
+  height: 50%;
   display: none; /* This will get changed to flex by JS */
   justify-content: center;
   align-items: center;
@@ -1036,11 +1037,15 @@ del {
 #fast-search-please-wait-text {
   color: white;
 }
+
+#fast-search-input-wrapper {
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
   
 #fastSearch input { 
   padding: 4px 10px;
   box-sizing: border-box;
-  width: 100%;
   height: 31px;
   font-size: 1.2em;
   color: rgb(34, 34, 34);
@@ -1057,7 +1062,7 @@ del {
   list-style: none; 
   margin-left: 0em;
   background-color: white; 
-  border-bottom: 1px dotted #000;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.5);
 }
 
 #searchResults li .title {
