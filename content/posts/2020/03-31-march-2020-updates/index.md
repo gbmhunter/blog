@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Posts", "Updates" ]
 date: 2020-03-31
 description: "Blog updates during March 2020."
-draft: false
+draft: true
 lastmod: 2020-03-31
 tags: []
 title: "March 2020 Updates"
@@ -16,4 +16,4 @@ type: "post"
 
 * Added projection info to the {{% link text="rasterio page" src="/space/rasterio" %}}.
 
-* Added search functionality. When I first moved this blog from a "dynamic" Wordpress-based server to static hosting and Hugo, I thought search functionality was just one of those luxuries I would have to give up. But apparently not! As long as all the search data is assembled at site build time, we can perform the search functionality client side (i.e. on your computer, using your processor :-D).
+* Added search functionality. When I first moved this blog from a "dynamic" Wordpress-based server to static hosting and Hugo, I thought search functionality was just one of those luxuries I would have to give up. But apparently not! As long as all the search data is assembled at site build time, we can perform the search functionality client side (i.e. on your computer, using your processor :-D). See the blog post {{% link text="We Now Have Search" src="" %}} for more information!

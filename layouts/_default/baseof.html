@@ -118,23 +118,28 @@
             </div>
         </div>
 
+        <!-- ======================================= -->
+        <!-- SEARCH MODAL -->
+        <!-- ======================================= -->
+
+        <!-- This is outside of the normal document flow (modal dialogue box) -->
         <div id="fast-search-outer">
           <div id="fastSearch">
             <div id="fast-search-input-wrapper">
               <span>></span>
               <input id="searchInput" placeholder="search here" tabindex="0">
             </div>
-            <ul id="searchResults">
+            <ul id="searchResults"> <!-- This will get populated by JS -->
             </ul>
           </div>
           <div id="fast-search-please-wait">
             <div id="fast-search-please-wait-text">Testing</div> <!-- Text here will get changed by JS -->
           </div>
         </div>
-        <script src="/js/fuse.js"></script> <!-- download and copy over fuse.js file from fusejs.io -->
-        <script src="/js/fastsearch_v2.js"></script>
-        <script src="/js/flexsearch-0.6.22/flexsearch.es5.js"></script>
 
+        <!-- Javascript required for the search functionality -->
+        <script src="/js/flexsearch-0.6.22/flexsearch.min.js"></script>
+        <script src="/js/fastsearch.js"></script>
 
         {{ partial "mathjax-markdown-solution.html" . }}
         <!-- LOAD LIGHTBOX FOR IMAGES -->

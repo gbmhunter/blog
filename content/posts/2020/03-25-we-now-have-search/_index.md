@@ -5,7 +5,7 @@ date: 2020-03-31
 description: "Blog updates during March 2020."
 draft: true
 lastmod: 2020-03-31
-tags: [ "search", "fuse", "flexsearch", "Javascript", "Hugo", "client", "browser", "indexing", "blog", "JSON" ]
+tags: [ "search", "fuse", "flexsearch", "Javascript", "Hugo", "client", "browser", "indexing", "blog", "JSON", "dictionary" ]
 title: "We Now Have Search"
 type: "post"
 ---
@@ -14,8 +14,12 @@ When I switched from using Wordpress to Hugo I thought I was giving up on search
 
 The above-linked forum post used the Javascript library [fuse](https://fusejs.io/) to provide the search functionality. However I found this library to be somewhat slow given the large amount of text it had to index. Instead, I settled on the Javascript library [flexsearch](https://github.com/nextapps-de/flexsearch) which was much faster and gave me greater control over how the text was indexed.
 
-TODO: Add code example
+{{% img src="example-of-search-in-blog.gif" width="800px" %}}
 
-TODO: Add gif showing search
+The screenshot below of the Network panel in the Chrome Developer Tools shows the time it takes to download the blog's search dictionary (which is called `index.json`) to the client's browser. The HTTP2 protocol automatically compresses the 2.4MiB file down to only 786kiB (which is great, it means I don't have to implement compression myself!). This file is only download if the user clicks the "Search" button, as not to slowdown the pace of regular browsing or chew up data when it's not required. I'm hoping the browser will automatically cache this file so it is not re-downloaded on subsequent searches.
 
-TODO: Add network panel of debug tools when downloading dictionary
+{{% img src="search-dictionary-download-speed.png" width="700px" caption="The Network panel of the Chrome Developer Tools showing the time it takes to download the site's search dictionary (index.json) to the clients browser." %}}
+
+The complete Javascript file which powers this search functionality can be found at XXX
+
+* [http://meta.ath0.com/search/](http://meta.ath0.com/search/)
