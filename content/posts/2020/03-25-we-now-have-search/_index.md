@@ -20,6 +20,12 @@ The screenshot below of the Network panel in the Chrome Developer Tools shows th
 
 {{% img src="search-dictionary-download-speed.png" width="700px" caption="The Network panel of the Chrome Developer Tools showing the time it takes to download the site's search dictionary (index.json) to the clients browser." %}}
 
-The complete Javascript file which powers this search functionality can be found at XXX
+The code for this blog which add the search functionality can be found in the following places:
+
+* Static HTML: [https://github.com/gbmhunter/blog/blob/master/layouts/_default/baseof.html](https://github.com/gbmhunter/blog/blob/master/layouts/_default/baseof.html)
+* Javascript: [https://github.com/gbmhunter/blog/blob/master/static/js/fastsearch.js](https://github.com/gbmhunter/blog/blob/master/static/js/fastsearch.js)
+* CSS: [https://github.com/gbmhunter/blog/blob/master/static/css/style.css](https://github.com/gbmhunter/blog/blob/master/static/css/style.css).
+
+Other examples of static site search functionality can be found all over the web. Some examples include:
 
 * [http://meta.ath0.com/search/](http://meta.ath0.com/search/)
