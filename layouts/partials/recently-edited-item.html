@@ -1,12 +1,12 @@
 <div class="recent-updates">
-    <h2>Recent Updates:</h2>
-    <ul>
+    <p>Recent Updates:</p>
         {{ range . }}
-        <li>            
-            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-            <span class="modified">Modified: {{ .Lastmod.Format "2 January, 2006" }}</span>                        
-            <p class="description">{{ .Description }}</p>
-        </li>
+          <a href="{{ .Permalink }}" class="link">
+            <div class="item">            
+              <h2>{{ .Title }}</h2>
+              <span class="modified">Modified: {{ .Lastmod.Format "2 January, 2006" }}</span>                        
+              <p class="description">{{ .Description }}</p>
+            </div>
+          </a>
         {{ end }}
-    </ul>
 </div>
