@@ -4,8 +4,8 @@ categories: [ "Programming", "Integrated Development Environments" ]
 date: 2016-06-26
 description: "A tutorial on using IntelliJ, including keyboard shortcuts and how to use the IdeaVim plugin."
 draft: false
-lastmod: 2020-01-25
-tags: [ "IDEs", "IntelliJ", "IDEA", "Java", "editor", "code", "shortcuts", "IdeaVim", "vim", "Windows", "Mac", "Python" ]
+lastmod: 2020-03-17
+tags: [ "IDEs", "IntelliJ", "IDEA", "Java", "editor", "code", "shortcuts", "IdeaVim", "vim", "Windows", "Mac", "Python", "ssh", "deployments", "server" ]
 title: IntelliJ IDEA
 type: page
 ---
@@ -101,3 +101,13 @@ IntelliJ supports the [IdeaVim](https://plugins.jetbrains.com/plugin/164-ideavim
 This plugin supports configuration using a `~/.ideavimrc` file, which is similar in format to a typical `.vimrc` file, except that it allows special extensions to directly control IntelliJ through an API.
 
 I have noticed that IdeaVim cannot deal with large files that well (e.g. a 50,000 line `.json` file), and I have to disable the plugin to be able to work with these files.
+
+## Slow Deployment
+
+One problem I have noticed in IntelliJ is the slow upload of files to a server through SSH. Even though IntelliJ was configured to only upload changed files, it was still painfully slow in uploading the 10-20 file changes that occurred whenever I switched between `git` branches. Below is an example of the slow transfer speed as reported by IntelliJ after some local files changed:
+
+```text
+[17/03/20, 4:00 PM] Automatic upload completed in 11 minutes: 64 items deleted, 374 files transferred, 14 items failed (9.7 kbit/s)
+```
+
+In the end I gave up on using IntelliJ for this and instead used `rsync`, which was about 10-100x faster.
