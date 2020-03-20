@@ -14,7 +14,7 @@ type: "page"
 
 ## The pathlib Module
 
-The `pathlib` module was introduced in Python v3.4 ([PEP 428](https://www.python.org/dev/peps/pep-0428/)). It's purpose was to replace the much used functions such as `os.path.join()` and family with a simpler set of path manipulating classes/functions which work similarly across all platforms.
+The `pathlib` module was introduced in Python v3.4 ([PEP 428](https://www.python.org/dev/peps/pep-0428/)). It's purpose was to replace the much used functions such as `os.path.join()` and family with a simpler set of path manipulating classes/functions which work similarly across all platforms. In the words of `PEP 428`, it is "object-orientated file-system paths". 
 
 On Linux/macOS:
 
@@ -28,7 +28,7 @@ On Windows you would also use forward slashes to describe paths! The `Path` modu
 file_path = Path('C:/Users/my_file.txt')
 ```
 
-`os.path.join()` has long been the mainstay of concatenating paths in cross-platform way. For instance, `os.path.join('my_dir', 'my_file')` would result in the string `my_dir/my_file` in Linux-like systems, and `my_dir\my_file` on Windows systems. The `pathlib` module aims to make `os.path.join()` redundant by overloading the `/` (_slash_) operator to allow the concatenation of path segments:
+`os.path.join()` has long been the mainstay of concatenating paths in cross-platform way. For instance, `os.path.join('my_dir', 'my_file')` would result in the string `my_dir/my_file` in Linux-like (POSIX) systems, and `my_dir\my_file` on Windows systems. The `pathlib` module aims to make `os.path.join()` redundant by overloading the `/` (_slash_) operator to allow the concatenation of path segments:
 
 ```python
 file_path = Path('my_dir') / 'my_file'
