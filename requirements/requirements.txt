@@ -26,6 +26,7 @@ python-dateutil==2.8.0
 pytz==2019.1
 rasterio==1.0.24
 scikit-learn==0.22.1
+seaborn==0.10.0
 Shapely==1.7a2
 six==1.12.0
 snuggs==1.4.6

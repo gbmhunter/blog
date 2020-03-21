@@ -23,3 +23,5 @@ type: "post"
 * Added a new tutorial on {{% link text="geopandas" src="/programming/languages/python/a-tutorial-on-geopandas" %}}.
 
 * Added a the page {{% link text="Python And File Paths" src="/programming/languages/python/python-and-file-paths" %}} with information on the `pathlib` module.
+
+* Added a new page on the {{% link text="Harmonic mean" src="/mathematics/statistics/harmonic-mean" %}}.

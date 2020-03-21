@@ -4,8 +4,8 @@ categories: [ "Programming", "Artificial Intelligence" ]
 date: 2020-02-21
 description: "What is logistic regression, and how does it work?"
 draft: false
-lastmod: 2020-03-08
-tags: [ "programming", "artificial intelligence", "logistic regression", "logit regression", "probability", "odds" ]
+lastmod: 2020-03-21
+tags: [ "programming", "artificial intelligence", "logistic regression", "logit regression", "probability", "odds", "precision", "recall", "harmonic mean", "f1 score", "support", "classification" ]
 title: "Understanding Logistic Regression"
 type: "page"
 ---
@@ -184,6 +184,20 @@ print(classification_report(y_test, predictions))
 
 {{% img src="logistic-regression-iris-classification-report.png" width="500px" caption="The classification report for our logistic regression model." %}}
 
+For someone new to categorization, these terms in the classification report can be confusing. This is what they mean[^scikit-classification-report]:
+
+* The _precision_ is how well the classifier is at labelling an instance positive when it was actually positive. It can be thought of as: "For all instances labelled positive, what percentage of them are actually correct?
+
+    <p>$$ precision = \frac{true\,positive}{true\,positive + false\,positive} $$</p>
+
+* The _recall_ is the ability for a classifier to find all true positives. It can be though of as: "For all instances that where actually positive, what percentage were labelled correctly?"
+
+    <p>$$ recall = \frac{true\,positive}{true\,positive + false\,negative} $$</p>
+
+* The _f1-score_ is the {{% link text="harmonic mean" src="/mathematics/statistics/harmonic-mean" %}} of the precision and recall. Personally I find this the most difficult metric to understand intuitively. It is a score which incorporates both the _precision_ and _recall_, and varies between 0 and 1.
+
+* The _support_ is the number of actual occurrences of a class in a specific dataset.
+
 And let's print the accuracy score:
 
 ```python
@@ -196,3 +210,5 @@ pocky
 ## External Resources
 
 https://towardsdatascience.com/logit-of-logistic-regression-understanding-the-fundamentals-f384152a33d1
+
+[^scikit-classification-report]: https://www.scikit-yb.org/en/latest/api/classifier/classification_report.html
