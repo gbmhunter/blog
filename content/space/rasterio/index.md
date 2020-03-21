@@ -4,8 +4,8 @@ categories: [ "Space" ]
 date: 2019-10-04
 description: "An introduction to the Python library rasterio, used for manipulating geospatial data."
 draft: false
-lastmod: 2020-03-11
-tags: [ "space", "rasterio", "GDAL", "raster", "GeoTIFF", "geospatial", "APIs", "mapbox", "Python", "projections" ]
+lastmod: 2020-03-18
+tags: [ "space", "rasterio", "GDAL", "raster", "GeoTIFF", "geospatial", "APIs", "mapbox", "Python", "projections", "context manager" ]
 title: "rasterio"
 ---
 
@@ -25,7 +25,7 @@ import rasterio
 
 ## Reading A GeoTIFF
 
-There are two common ways to do this, with or without a context manager.
+There are two common ways to do this, with or without a _context manager_.
 
 With a context manager:
 
@@ -39,9 +39,16 @@ with rasterio.open('example.tif') as dataset:
 Without a context manager:
 
 ```py
-dataset = rasterio.open('example.tif')
-pixels = dataset.read()
+ds = rasterio.open('example.tif')
+pixels = ds.read()
 # You have to remember to close the dataset yourself
+ds.close()
+```
+
+The `read()` function as used above will read all bands of data from the `.tif` file. You can read a specific band by providing a band index to `read()`. The band indexes start from `1`, just as they do in GDAL. The following example just reads the first band:
+
+```py
+pixels = ds.read(1)
 ```
 
 ## Getting Projection Info

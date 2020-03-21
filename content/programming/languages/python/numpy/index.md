@@ -2,8 +2,9 @@
 author: "gbmhunter"
 categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-06-25
+description: "A tutorial on how to use Numpy, a popular library for Python that provides powerful array/matrix manipulation."
 draft: false
-lastmod: 2019-04-2
+lastmod: 2020-03-18
 tags: [ "programming", "programming languages", "Python", "Numpy", "array", "axis", "computation", "dimension", "np", "example", "code", "tutorial", "slicing", "indexing" ]
 title: "Numpy"
 type: "page"
@@ -312,7 +313,7 @@ Retrieving an array value which is masked will result in `masked` being returned
 
 ### Creating A Masked Array
 
-You can use the `np.ma.masked_equal()` function to create a masked array from a standard array:
+You can use the `np.ma.masked_equal()` function to create a masked array from a standard array, specifying the value you want to use as the mask as the second parameter:
 
 ```python
 import numpy as np
@@ -340,6 +341,17 @@ print(np.ma.is_masked(standard_array))
 masked_array = np.ma.masked_equal(standard_array, 2)
 print(np.ma.is_masked(masked_array))
 # stdout: True
+```
+
+### Removing Masked Values From An Array
+
+You can trim down an array and remove all masked values by using the `compressed()` function that belong to an `ndarray`:
+
+```python
+masked_array = np.ma.masked_equal([1, 2, 3, 4], 2)
+no_masked_values = masked_array.compressed()
+print(no_masked_values)
+# [1 3 4]
 ```
 
 ## Numpy Warnings And How To Silence Them
