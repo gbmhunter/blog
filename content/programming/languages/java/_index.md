@@ -1,10 +1,16 @@
 ---
-author: gbmhunter
-date: 2016-06-06 22:14:40+00:00
+author: "gbmhunter"
+date: 2016-06-06
 draft: false
-title: Java
-type: page
+lastmod: 2020-03-22
+tags: [ "programming", "programming language", "Java" ]
+title: "Java"
+type: "page"
 ---
+
+## Overview
+
+> If Java had true garbage collection, most programs would delete themselves upon execution. - Robert Sewell
 
 ## Logo
 

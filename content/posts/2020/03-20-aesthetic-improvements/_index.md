@@ -23,4 +23,4 @@ type: "post"
 
 ## Removing Shurikens
 
-I received feedback on a feeling I had had for sometime, the Shurikens were adding clutter to each page on the blog and not adding much usefulness. These were hard to remove as I had spent a good deal of time coding to get those to work. All is not lost however, as it was a good exercise in learning how to build a "serverless" application on AWS's lambda service. 
+I received feedback on a feeling I had had for sometime, the shurikens were adding clutter to each page on the blog and not adding much usefulness. These were hard to remove as I had spent a {{% link text="good deal of time coding to get those to work" src="/posts/2019/03-10-adding-shurikens" %}}. All is not lost however, as it was a good exercise in learning how to build a "serverless" application on AWS's lambda service. 
