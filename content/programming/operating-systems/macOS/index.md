@@ -2,9 +2,10 @@
 author: "gbmhunter"
 categories: [ "Programming", "Operating Systems" ]
 date: 2019-05-30
+description: "Info on the macOS operating system."
 draft: false
 lastmod: 2019-05-30
-tags: [ "programming", "operating systems", "macOS", "iTerm2" ]
+tags: [ "programming", "operating systems", "macOS", "iTerm2", "hidden files", "Mojave" ]
 title: "macOS"
 type: "page"
 ---
@@ -24,7 +25,7 @@ To enable Natural Text Editing, click _iTerm2_->_Preferences_->_Profiles_->_Keys
 ### Clearing The Buffer
 
 
-To clear iTerms scrollback buffer, you can enter the following command:
+To clear iTerm's scrollback buffer, you can enter the following command:
 ```sh
 printf '\e]50;ClearScrollback\a'
 ```
@@ -55,9 +56,20 @@ Once the tmux session has been started inside iTerm2, you can then also use stan
 
 * `Cmd-t`: Open new tab
 * `Cmd-n`: Open new window
-* `Cmd-d`: Split verticaly
+* `Cmd-d`: Split vertically
 * `Cmd-Shift-d`: Split horizontally
 
 {{% note %}}
 Note that an iTerm2 tmux session and a standard iTerm2 non-tmux session can not share the same tab, i.e. the tmux session has to be either a completely new tab or a new window.
 {{% /note %}}
+
+## Showing Hidden Files
+
+By default, Finder in macOS hides all files and folders which begin with `.`. To configure Finder to show hidden files, type the following at the macOS command prompt:
+
+```bash
+defaults write com.apple.finder AppleShowAllFiles TRUE
+killall Finder
+```
+
+This has been confirmed to work with macOS Mojave `v10.14.6`.

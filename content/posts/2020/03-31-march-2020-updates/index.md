@@ -24,4 +24,4 @@ type: "post"
 
 * Added a the page {{% link text="Python And File Paths" src="/programming/languages/python/python-and-file-paths" %}} with information on the `pathlib` module.
 
-* Added a new page on the {{% link text="Harmonic mean" src="/mathematics/statistics/harmonic-mean" %}}.
+* Added a new page on the {{% link text="The Three Classical Pythagorean Means" src="/mathematics/statistics/the-three-classical-pythagorean-means" %}}.
