@@ -1,20 +1,21 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Virtual Machines And Containers" ]
 date: 2017-01-23
 draft: false
-tags: [ "Docker", "container", "sudo", "images", "containers", "deleting", "programming", "service" ]
-title: Docker
-type: page
+lastmod: 2020-03-26
+tags: [ "Docker", "container", "sudo", "images", "containers", "deleting", "programming", "service", "mount points" ]
+title: "Docker"
+type: "page"
 ---
 
-<h2>Overview</h2>
+## Overview
 
-<p>Docker is container software. It is commonly used as a lightweight alternative to a virtual machine.</p>
+Docker is container software. It is commonly used as a lightweight alternative to a virtual machine.
 
 {{< img src="docker-logo.png" width="300px" >}}
 
-<h2>Running Docker Without sudo</h2>
+## Running Docker Without sudo
 
 <p>By default, Docker has to be run with sudo commands otherwise you will experience errors such as:</p>
 
@@ -58,95 +59,124 @@ $ dial unix /var/run/docker.sock: connect: permission denied
 <p>An image is a file which contains all the information/data about a particular system setup. When you run an image,
   you create a container of this image. You can create many containers based of the same image.</p>
 
-<h2>Images</h2>
+## Images
 
-<h3>Getting Images (docker pull)</h3>
+### Getting Images (docker pull)
 
-<p>Images can be downloaded from <a href="https://hub.docker.com/">Docker Hub</a> using the <code>docker pull</code> command.</p>
+Images can be downloaded from [Docker Hub](https://hub.docker.com/) using the `docker pull` command.
 
-{{< highlight bash >}}
-$ docker pull image_name
-{{< /highlight >}}
+```bash
+docker pull image_name
+```
 
-<p>Images can be removed with:</p>
+Images can be removed with:
 
-{{< highlight bash >}}
+```
 $ docker rmi image_name
-{{< /highlight >}}
+```
 
-<h3>Inspecting Local Images</h3>
+### Inspecting Local Images
 
-<p>You can view all of the docker images present on the local machine with:</p>
+You can view all of the docker images present on the local machine with:
 
-{{< highlight bash >}}
-$ docker images
-{{< /highlight >}}
+```bash
+docker images
+```
 
-<h2>Delete All Images</h2>
+### Building An Image From A Dockerfile
 
-<p>The following command will remove all Docker images from your system:</p>
+Change the working directory to the one that contains the `Dockerfile`, and then run:
 
-{{< highlight bash >}}
+```bash
+docker build .
+```
+
+If you want to provide your own name for the image, use the `-t` option:
+
+```bash
+docker built -t myimage
+```
+
+### Delete All Images
+
+The following command will remove all Docker images from your system:
+
+```bash
 $ docker rmi $(docker images -q)
-{{< /highlight >}}
+```
 
-<p>Sometimes this won't work because of the error: <code>image is referenced in multiple repositories</code>. To force
-  the delete, add the <code>-f</code> option:</p>
+Sometimes this won't work because of the error: `image is referenced in multiple repositories`. To force the delete, add the `-f` option:
 
-{{< highlight bash >}}
+```bash
 $ docker rmi -f $(docker images -q)
-{{< /highlight >}}
+```
 
+## Containers
 
-<h2>Containers</h2>
+### Inspecting
 
-<h3>Inspecting</h3>
+To show only running containers:
 
-<p>To show only running containers:</p>
-
-{{< highlight bash >}}
+```bash
 $ docker ps
-{{< /highlight >}}
+```
 
-<p>To show all containers (included those that are not running):</p>
+To show all containers (included those that are not running):
 
-{{< highlight bash >}}
+```bash
 $ docker ps -a
-{{< /highlight >}}
+```
 
-<h3>To Start A New Bash Session Within A Container</h3>
+### To Start A Container From An Image
 
-<p>Enter this on the a shell session running in the host computer to enter a shell session inside the docker container.
-</p>
+```bash
+docker run 
+```
 
-{{< highlight bash >}}
-$ docker exec -it &lt;container_id&gt; bash
-{{< /highlight >}}
+### To Start A Container With Mount Points
+
+The `-v` flag is used in conjunction with `docker run` to start a new container with mount points. A mount point is when you mount a directory (and all of it's contents) into the container at a certain position within the file system. The `-v` option must come before the image name.
+
+```bash
+docker run -v /host/directory:/container/directory <image_name> <cmd>
+```
+
+{{% note %}}
+The path to the host directory must be absolute, `docker run` does not allow you to specify a relative path.
+{{% /note %}}
+
+### To Start A New Bash Session Within A Running Container
+
+Enter this on the a shell session running in the host computer to enter a shell session inside the docker container.
+
+```bash
+$ docker exec -it <container_id> bash
+```
 
 {{% note %}}
 This assumes you already have a container running!
 {{% /note %}}
 
-<h3>To Exit A Container Without Stopping It</h3>
+### To Exit A Container Without Stopping It
 
-<p>If the container is being run inside a bash shell, you can press <code>Ctrl-P</code> then <code>Ctrl-Q</code>.</p>
+If the container is being run inside a bash shell, you can press <code>Ctrl-P</code> then <code>Ctrl-Q</code>.
 
-<h3>How To Stop/Remove All Containers At Once</h3>
+### How To Stop/Remove All Containers At Once
 
-{{< highlight bash >}}
+```bash
 $ docker stop $(docker ps -a -q)
 $ docker rm $(docker ps -a -q)
-{{< /highlight >}}
+```
 
 If there are many docker containers, these commands can take some time (seconds).
 
-<h2>Dockerfiles</h2>
+## Dockerfiles
 
-<p>Dockerfiles are configuration files which tell Docker how to build an image.</p>
+Dockerfiles are configuration files which tell Docker how to build an image.
 
-<p>Below is an example Dockerfile:</p>
+Below is an example Dockerfile:
 
-{{< highlight dockerfile >}}
+```bash
 # Extend base image ubuntu 16.04
 FROM ubuntu:16.04
 
@@ -155,10 +185,10 @@ RUN apt-get update
 
 ## Install git
 RUN apt-get install -y git
-{{< /highlight >}}
+```
 
-<p>If you are currently in the directory which has a Dockerfile, you can compile it with the following command:</p>
+If you are currently in the directory which has a Dockerfile, you can compile it with the following command:
 
-{{< highlight bash >}}
+```bash
 $ docker build -t my-docker-image .
-{{< /highlight >}}
+```
