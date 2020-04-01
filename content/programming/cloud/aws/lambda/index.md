@@ -12,6 +12,8 @@ type: "page"
 
 ## Overview
 
+AWS Lambda is a service that can run code in the cloud, without you having to worry about servers. It let's you upload your code and a `.zip` file and then run it on pre-determined runtime environments. You only pay for the service when your "lambda" function is running. Scalability is also built into the service, as multiple instances of a lambda function can be created with ease.
+
 Amazon Linux is what runs on EC2 instances, [https://hub.docker.com/_/amazonlinux/](https://hub.docker.com/_/amazonlinux/).
 
 ## Creating A Deployable Python Package
@@ -25,7 +27,6 @@ For Python:
 ```
 FROM lambci/lambda:build-python3.6
 ```
-
 
 ## AWS Lambda Container Image Converter Tool (img2lambda)
 

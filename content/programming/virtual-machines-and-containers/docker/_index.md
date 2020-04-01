@@ -4,7 +4,7 @@ categories: [ "Programming", "Virtual Machines And Containers" ]
 date: 2017-01-23
 draft: false
 lastmod: 2020-03-26
-tags: [ "Docker", "container", "sudo", "images", "containers", "deleting", "programming", "service", "mount points" ]
+tags: [ "Docker", "container", "sudo", "images", "containers", "deleting", "programming", "service", "mount points", "cache" ]
 title: "Docker"
 type: "page"
 ---
@@ -192,3 +192,11 @@ If you are currently in the directory which has a Dockerfile, you can compile it
 ```bash
 $ docker build -t my-docker-image .
 ```
+
+Docker caches the image after each command in the `Dockerfile`, this is called a _layer_. When re-building, Docker will used cached layers to speed up the build process unless it determines that the the cache is invalid.
+
+`COPY` and `ADD` are two commands that commonly invalidate cache and slow down rebuild steps.
+
+## How To Speed Up "sending build context to docker daemon"
+
+Adding a `.dockerignore` file and including everything in your project that is not used as part of the Docker build process can greatly speed up the `sending build context to docker daemon` process. Without a proper `dockerignore` you could be sending 100's of MiB or GiB of data to Docker, and the build process only uses a tiny fraction of it.

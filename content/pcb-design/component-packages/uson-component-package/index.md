@@ -78,3 +78,5 @@ type: "page"
 The [http://www.ti.com/packaging/docs/searchtipackages.tsp?packageName=SON](Texas Instruments Package Search - SON) page contains information on all of the `USON` packages that TI components use.
 
 {{% img src="texas-instruments-uson-packages-table.png" width="700px" caption="A screenshot of all the USON packages that TI component use. Image from http://www.ti.com/packaging/docs/searchtipackages.tsp?packageName=SON." %}}
+
+{{% img src="uson-component-package-ti-drn-dimensions.png" width="700px" caption="The dimensions for the Texas Instruments DRN package (a variant of the USON package). Image from http://www.ti.com/lit/ml/mpds165a/mpds165a.pdf." %}}
