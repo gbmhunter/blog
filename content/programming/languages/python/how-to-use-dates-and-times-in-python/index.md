@@ -5,7 +5,7 @@ date: 2020-02-03
 description: "A tutorial on using dates and times in Python."
 draft: true
 lastmod: 2020-02-03
-tags: [ "programming", "programming languages", "Python", "dates", "times", "tutorial", "datetime", "time zones", "UTC", "strftime", "strptime", "modules", "tzinfo" ]
+tags: [ "programming", "programming languages", "Python", "dates", "times", "tutorial", "datetime", "time zones", "UTC", "strftime", "strptime", "modules", "tzinfo", "ISO 8601" ]
 title: "How To Use Dates And Times In Python"
 type: "page"
 ---
@@ -79,6 +79,12 @@ print(type(my_time))
 # stdout: <class 'datetime.datetime'>
 print(my_time)
 # stdout: 2020-01-17 13:24:03
+```
+
+Since Python 3.7, you also have the option to use the `%z` specifier, which allows you to parse strings in ISO 8601 format:
+
+```python
+datetime.datetime.strptime('2019-01-04T16:41:24+0200', "%Y-%m-%dT%H:%M:%S%z")
 ```
 
 ## Astropy's time Module
