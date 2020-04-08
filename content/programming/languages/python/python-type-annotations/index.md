@@ -4,7 +4,7 @@ categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-08-20
 description: "A tutorial on Python type annotations, including basic types, Optional, casts and mypy."
 draft: false
-lastmod: 2019-01-15
+lastmod: 2020-04-08
 tags: [ "programming", "programming languages", "Python", "type hints", "type annotations", "syntax", "mypy", "PEP 526", "PEP 484", "code", "dmypy", "mypy daemon" ]
 title: "Python Type Annotations"
 type: "page"
@@ -57,7 +57,7 @@ my_dict: Dict[str, int] = {
 }
 
 # You specify the type for each variable in the Tuple
-my_tupe: Tuple[str, int, int] = ('foo', 1, 2)
+my_tuple: Tuple[str, int, int] = ('foo', 1, 2)
 ```
 
 {{% warning %}}
@@ -148,7 +148,7 @@ mypy can read a project level `mypy.ini` file which you can use to configure myp
 
 ### The mypy Daemon (dmypy)
 
-The mypy daemon (controlled with the executable `dmypy`), is a backround server process which caches program state, making mypy run much faster on successive runs (e.g. rather than mypy taking an agnozing 30s to run, it runs in <1s). The mypyp daemon is installed along with mypy.
+The mypy daemon (controlled with the executable `dmypy`), is a background server process which caches program state, making mypy run much faster on successive runs (e.g. rather than mypy taking an agonizing 30s to run, it runs in <1s). The mypy daemon is installed along with mypy.
 
 You can run the mypy daemon with (assuming your working directory is the root directory you want to check in):
 
@@ -167,3 +167,32 @@ If you have a free terminal window, you can even incorporate `watch` so the erro
 ```sh
 $ watch dmypy run -- --follow-imports=skip .
 ```
+
+### mypy And Reusing Variables With Different Types
+
+mypy does not like it when you re-use a variable for a different type:
+
+```python
+key = 'hello' # Storing a string in key
+my_dict2[key]
+
+key = 4 # Now storing an int in key, mypy won't like this!
+my_dict1[key]
+```
+
+One solution is to declare the variable as type `Any` the first time you use it:
+
+```python
+from typing import Any
+key: Any = 'hello'
+key = 4 # mypy won't complain about this anymore
+```
+
+However, this could be considered a bad coding practice as you are loosing all the advantages of type checking when casting to `Any`. Although it adds more code, a better alternative is sometimes to create separate variables:
+
+```python
+key_1 = 'hello'
+key_2 = 3
+```
+
+Hopefully you can come up with more descriptive names than just `key_1` and `key_2`.

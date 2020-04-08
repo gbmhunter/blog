@@ -1,9 +1,10 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2011-09-05
 draft: false
-title: Solar Cells
-type: page
+lastmod: 2011-09-05
+title: "Solar Cells"
+type: "page"
 ---
 
 ## The Peak Power Point

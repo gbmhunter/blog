@@ -4,8 +4,8 @@ categories: [ "Space" ]
 date: 2019-10-04
 description: "An introduction to the Python library rasterio, used for manipulating geospatial data."
 draft: false
-lastmod: 2020-03-18
-tags: [ "space", "rasterio", "GDAL", "raster", "GeoTIFF", "geospatial", "APIs", "mapbox", "Python", "projections", "context manager" ]
+lastmod: 2020-04-03
+tags: [ "space", "rasterio", "GDAL", "raster", "GeoTIFF", "geospatial", "APIs", "mapbox", "Python", "projections", "context manager", "coordinates", "pixels" ]
 title: "rasterio"
 ---
 
@@ -51,30 +51,48 @@ The `read()` function as used above will read all bands of data from the `.tif` 
 pixels = ds.read(1)
 ```
 
+You can also open a raster by passing in a `Path` object to `open()` (Python v3.4 or higher only):
+
+```py
+from pathlib import Path
+file_path = Path('example.tif')
+ds = rasterio.open(file_path)
+```
+
 ## Getting Projection Info
 
 The projection information in obtained through the `Dataset.crs` property:
 
 ```py
-dataset = rasterio.open('example.tif')
-dataset.crs
+ds = rasterio.open('example.tif')
+ds.crs
 # EPSG:4326
 ```
 
 You can get also get the "Well Known Text" (WKT) syntax:
 
 ```py
-dataset.crs.wkt
+ds.crs.wkt
 # GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AXIS["Latitude",NORTH],AXIS["Longitude",EAST],AUTHORITY["EPSG","4326"]]
 ```
 
 To get the Affine transformation:
 
 ```py
-dataset.transform
+ds.transform
 # | 0.00, 0.00, 26.04|
 # | 0.00,-0.00,-15.29|
 # | 0.00, 0.00, 1.00|
+```
+
+## Converting Coordinates To Pixels
+
+rasterio provides the `index()` function in the `Dataset` class to convert coordinates from the projection space (e.g. `(latitude, longitude)` if in WGS 84) of a dataset to `(x, y)` pixel coordinates in the image. 
+
+```py
+lat = [ 10.0, 20.0 ]
+lng = [ -120.0, -110.0 ]
+x, y = ds.index(lat, lng)
 ```
 
 ## Reprojection
@@ -94,8 +112,6 @@ rasterio.reproject(
 
 ## Masking
 
-
-
 More on masking can be found at [https://rasterio.readthedocs.io/en/latest/api/rasterio.mask.html](https://rasterio.readthedocs.io/en/latest/api/rasterio.mask.html).
 
 ## Common Errors
@@ -105,3 +121,7 @@ rasterio._err.CPLE_AppDefinedError: Too many points (10201 out of 10201) failed 
 ```
 
 This error usually occurs if you are trying to reproject an image into a projection space that does not contain the image (e.g. images are in completely different UTM zones).
+
+## External Info
+
+The documentation for the latest version of `rasterio` can be found at [https://rasterio.readthedocs.io/en/latest/](https://rasterio.readthedocs.io/en/latest/).

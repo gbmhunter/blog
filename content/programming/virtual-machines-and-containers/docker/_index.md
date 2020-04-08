@@ -2,9 +2,10 @@
 author: "gbmhunter"
 categories: [ "Programming", "Virtual Machines And Containers" ]
 date: 2017-01-23
+description: "An overview on Docker and the commands to manipulate containers and images."
 draft: false
-lastmod: 2020-03-26
-tags: [ "Docker", "container", "sudo", "images", "containers", "deleting", "programming", "service", "mount points", "cache" ]
+lastmod: 2020-04-07
+tags: [ "Docker", "container", "sudo", "images", "containers", "deleting", "programming", "service", "mount points", "cache", "stats" ]
 title: "Docker"
 type: "page"
 ---
@@ -169,6 +170,14 @@ $ docker rm $(docker ps -a -q)
 ```
 
 If there are many docker containers, these commands can take some time (seconds).
+
+### Runtime Statistics of Docker Containers (docker stats)
+
+The `docker stats` command gives you an overview of useful statistics for each running Docker container such as CPU usage, memory usage, network I/O, block I/O and PIDs. You can run this command with:
+
+```bash
+docker stats
+```
 
 ## Dockerfiles
 
