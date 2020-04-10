@@ -4,8 +4,8 @@ categories: [ "Electronics", "Components" ]
 date: 2020-04-08
 description: "Definition, configurations, uses, example circuit schematics and more information about shift registers."
 draft: false
-lastmod: 2020-04-08
-tags: [ "electronics", "components", "shift registers", "digital logic", "flip flops", "SISO", "SIPO", "PISO", "microcontrollers", "diagrams", "circuits", "bit shift", "C" ]
+lastmod: 2020-04-09
+tags: [ "electronics", "components", "shift registers", "digital logic", "flip flops", "SISO", "SIPO", "PISO", "microcontrollers", "diagrams", "circuits", "bit shift", "C", "595" ]
 title: "Shift Registers"
 type: "page"
 ---
@@ -16,7 +16,8 @@ A shift register is a digital logic circuit which consists of a cascade of flip 
 
 Shift registers can have either parallel or serial inputs, as well as parallel or serial outputs. Common configurations include "serial in, parallel out" (SIPO) and "parallel in, serial out" (PISO) shift registers.
 
-Shift registers are used as digital delay circuits, microcontroller pin expanders, the conversion of data from serial to parallel (and vise versa) and as primitive computer memory.
+Shift registers are used as digital delay circuits, microcontroller pin expanders, the conversion of data from serial to parallel (and vice versa) and as primitive computer memory.
+
 
 ## Serial-in, Serial-out (SISO) Shift Registers
 
@@ -36,6 +37,14 @@ SIPO shift registers are also used to drive electronics which requires a large n
 
 {{% img src="two-seven-segment-displays-driven-by-shift-registers-texas-instruments.png" width="600px" caption="Two 7-segment displays driven by Texas Instruments SN74HC595 shift registers. Image from https://www.ti.com/lit/an/sbva057/sbva057.pdf." %}}
 
+Likely to be the most popular SIPO shift register in the 74HC595 which is commonly abbreviated to just the "595" (similar to the "555" being the most popular timer IC) [^fastled-github-page].
+
+## Parallel-in, Serial-out (PISO) Shift Registers
+
+The most popular PISO shift register is the 74HC165.
+
 ## Bit Shifting In Code
 
 Most low-level programming languages allow you to perform "bit shift" operations on variables. For example, in C, the `<<` and `>>` operators perform left and right shifts. Left shifting a binary number by 1 is a quick way of multiplying the number by 2, whilst right shifting a binary number is a quick way of dividing by 2. Exactly how the hardware performs the bit shift is dependent on the CPU architecture, but typically they would use a digital circuit similar to the shift registers described above.
+
+[^fastled-github-page]: https://github.com/FastLED/FastLED

@@ -15,3 +15,5 @@ type: "post"
 * Added a new page on {{% link text="Shift Registers" src="/electronics/components/shift-registers" %}} (a digital logic circuit).
 
     {{% figure src="/electronics/components/shift-registers/serial-in-serial-out-shift-register.svg" width="500px" caption="Schematic for building a 4-bit SISO shift register from flip flops." %}}
+
+* Added a section on {{% link text="Tags to the AWS S3 page" src="/programming/cloud/aws/s3#tags" %}}.

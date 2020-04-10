@@ -4,8 +4,8 @@ categories: [ "Programming", "Cloud", "AWS" ]
 date: 2019-10-01
 description: "An introduction to S3, a popular key/value storage service provided by AWS."
 draft: false
-lastmod: 2020-02-28
-tags: [ "programming", "cloud", "Amazon", "AWS", "S3", "buckets", "keys", "objects", "systems", "Amazon Web Services", "sync", "timestamps", "directories", "storage", "boto", "boto3", "CLI", "data consistency", "read-after-write", "eventual consistency" ]
+lastmod: 2020-04-10
+tags: [ "programming", "cloud", "Amazon", "AWS", "S3", "buckets", "keys", "objects", "systems", "Amazon Web Services", "sync", "timestamps", "directories", "storage", "boto", "boto3", "CLI", "data consistency", "read-after-write", "eventual consistency", "tags", "tag set" ]
 title: "S3"
 type: "page"
 ---
@@ -20,7 +20,7 @@ S3 is a popular key-value storage service provided by Amazon Web Services (AWS).
 
 **One major point of confusion when beginning to use S3 is the appearance of directories**. It is important to remember that S3 is purely a key-value type storage system. This means if you want to store an file (e.g. `myfile.txt`) on S3, you provide a key to store it at (e.g. `this_is_the_key`). Later, you can retrieve the object with the same key. That's all there is to it. **The confusion arises because it is common practise to use path-looking keys to store objects**. For example, I could choose to say `myfile.txt` to the key `user/my_usr/myfile.txt`. Further adding to the confusion is that when navigating through a bucket using the S3 web interface, it will detect path-like keys and show the user a directory tree structure.
 
-However, once this is understood, this directory-like structure of the key-value storage (could we call it a key/directory duality?) is very useful for both intuitively grouping objects together and for providing a seamless mapping from a collection of files in a file system to their respective objects in S3 (you can `sync` a whole directory to S3 with the command `aws s3 sync ...`).
+However, once this is understood, this directory-like structure of the key-value storage (could we call it a key/directory duality?) is very useful for both intuitively grouping objects together and for providing a seamless mapping from a collection of files in a file system to their respective objects in S3 (you can `sync` a whole directory to S3 with the command `aws s3 sync ...`). The AWS CLI natively supports "directly" like operations (although it refers to a "directory"-like path as a _prefix_), through operations such as show all objects under a certain prefix, delete all objects under a certain prefix, e.t.c.
 
 ## sync
 
@@ -47,3 +47,54 @@ S3 provides _eventual consistency_ when you overwrite an existing key in a bucke
 Buckets have a very similar consistency model to the keys mentioned above. Bear in mind that if you delete a bucket and then immediately list all your buckets, the deleted bucket may still in the list! Buckets which have public access seem to take longer to disappear from listings after they have been deleted, they can take many hours (or even days!) to disappear. Note you can't do anything with the bucket (if you try and copy an object into it an error will be thrown).
 
 See [AWS S3: Introduction - Consistency Model](https://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html#ConsistencyModel) for more information on the S3 data consistency model.
+
+## Tags
+
+S3 allows you to add tags to each object. The group of tags that belong to a specific object in S3 is called the _tag set_. Each tag consists of both a `Key` (think of this as the tag name) and a `Value`. A _tag set_ is just an array of _tags_. Each tag set may contain up to 10 tags.
+
+Tags can be used for a variety of reasons:
+
+* You can use them to categorize your data
+* You can apply lifecycling rules to specific tags
+
+Using `boto3` in Python, you can specify a tag set when you upload the object using `put_object()`[^boto3-s3-client-put-object]:
+
+```python
+response = client.put_object(
+  Bucket='my_bucket',
+  Key='my_object_key',
+  Body='my_file',
+  Tagging={
+    'TagSet': [
+      {
+        'Key': 'my_key',
+        'Value': 'my_value'
+      },
+    ]
+  },
+)
+```
+
+Or you can specify a tag set for an object that already exists in S3 using the `put_object_tagging()` function[^boto3-s3-client-put-object-tagging]:
+
+```python
+response = client.put_object_tagging(
+  Bucket='my_bucket',
+  Key='my_object_key',
+  Tagging={
+    'TagSet': [
+      {
+        'Key': 'my_key',
+        'Value': 'my_value'
+      },
+    ]
+  },
+)
+```
+
+**Tag Limitations**
+
+As mentioned above, each object tag set may contain up to 10 tags. The `Key` for each tag can be up to 128 characters, and the `Value` for each tag can be up to 256 characters.
+
+[^boto3-s3-client-put-object]: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.put_object
+[^boto3-s3-client-put-object-tagging]: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.put_object_tagging
