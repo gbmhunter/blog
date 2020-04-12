@@ -194,7 +194,7 @@ For someone new to categorization, these terms in the classification report can 
 
     <p>$$ recall = \frac{true\,positive}{true\,positive + false\,negative} $$</p>
 
-* The _f1-score_ is the {{% link text="harmonic mean" src="/mathematics/statistics/harmonic-mean" %}} of the precision and recall. Personally I find this the most difficult metric to understand intuitively. It is a score which incorporates both the _precision_ and _recall_, and varies between 0 and 1.
+* The _f1-score_ is the {{% link text="harmonic mean" src="/mathematics/statistics/the-three-classical-pythagorean-means" %}} of the precision and recall. Personally I find this the most difficult metric to understand intuitively. It is a score which incorporates both the _precision_ and _recall_, and varies between 0 and 1.
 
 * The _support_ is the number of actual occurrences of a class in a specific dataset.
 

@@ -4,7 +4,7 @@ categories: [ "Programming", "Version Control Systems" ]
 date: 2014-02-08
 draft: false
 lastmod: 2019-08-29
-tags: [ "programming", "version control systems", "VCS", "git", "amend", "fixup", "squash", "history", "commits", "vim", "merge-base", "diff", "bisect", "cherry-pick" ]
+tags: [ "programming", "version control systems", "VCS", "git", "amend", "fixup", "squash", "history", "commits", "vim", "merge-base", "diff", "bisect", "cherry-pick", "stat" ]
 title: "Git"
 type: "page"
 ---
@@ -88,7 +88,7 @@ $ git commit --fixup af82c
 $ git rebase -i --autosquash 8f82c^
 ```
 
-In the `rebase` command above, `8f82c^` was used to say "I want to rebase of the commit BEFORE `8f82c`. Note all these hashes are shortened versions of the full hash, which will as long as there are no hash collisions (with 5 characters, it's unlikely there will be for a small number of commits).
+In the `rebase` command above, `8f82c^` was used to say "I want to rebase off the commit BEFORE `8f82c`. Note all these hashes are shortened versions of the full hash, which will as long as there are no hash collisions (with 5 characters, it's unlikely there will be for a small number of commits).
 
 You can permanently change your `git` settings so that you don't have to add `--autosquash` every time you do a rebase:
 
@@ -102,6 +102,12 @@ The default log message size can be quite verbose. To condense each log message 
 
 ```sh
 $ git log --oneline -10
+```
+
+To include information on what files where changed in each commit, add the `--stat` option:
+
+```sh
+git log --stat
 ```
 
 ## git reflog
