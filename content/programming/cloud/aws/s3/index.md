@@ -92,9 +92,23 @@ response = client.put_object_tagging(
 )
 ```
 
+To perform the above actions you will need the following S3 permissions:
+
+```yaml
+s3:PutObjectTagging
+s3:GetObjectTagging
+```
+
+By default, the bucket owner has these permissions and can grant them to other people.
+
 **Tag Limitations**
 
-As mentioned above, each object tag set may contain up to 10 tags. The `Key` for each tag can be up to 128 characters, and the `Value` for each tag can be up to 256 characters.
+As mentioned above, each object tag set may contain up to 10 tags. The `Key` for each tag can be up to 128 characters, and the `Value` for each tag can be up to 256 characters. 
+
+**Tag Costs**
+
+While on first thought you might think that S3 object tags are essentially free, **they do actually incur quite a significant cost at scale**. As of April 2020, the going rate is _US$0.01 per 10,000 tags per month_. This is absolutely nothing for a small number of objects, but the cost can get significant with larger number of objects and/or multiple tags per object.
+
 
 [^boto3-s3-client-put-object]: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.put_object
 [^boto3-s3-client-put-object-tagging]: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.put_object_tagging
