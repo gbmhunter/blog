@@ -83,3 +83,6 @@ def embedded_image(url):
 html = f'<img src="{embedded_image('https://upload.wikimedia.org/wikipedia/commons/5/56/Kosaciec_szczecinkowaty_Iris_setosa.jpg')}" />'
 HTML(html)
 ```
+
+### Module Reload
+
