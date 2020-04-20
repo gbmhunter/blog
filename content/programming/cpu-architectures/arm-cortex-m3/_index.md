@@ -3,13 +3,13 @@ author: gbmhunter
 categories: [ "Programming", "CPU Architectures", "ARM Cortex-M3" ]
 date: 2013-07-18
 draft: false
-tags: [ "programming", "ARM Cortex-M3", "microcontroller", "MCU", "CPU", "architecture" ]
+lastmod: 2013-07-18
+tags: [ "programming", "CPU architectures", "CPU", "ARM Cortex-M3", "microcontroller", "MCU" ]
 title: ARM Cortex-M3
 type: page
 ---
 
 ## Overview
-
 
 The ARM Cortex-M3 is a computer CPU architecture introduced in 2004 and designed for microcontrollers. It uses the 32-bit Thumb-2 instruction set (which supports the 16-bit Thumb instructions). It **does not** support ARM instructions.
 
@@ -29,7 +29,7 @@ The only way to go from user mode back into privileged mode is through the firin
 
 ## Stack Pointers
 
-The Cortex-M3 has two stack pointers, the main stack pointer (MSP) and the process stack pointer (PSP). The MSP is used when handling interrupts and optionally during normal execution, while the PSP is only used during normal processor execution. In a RTOS environment, ARM recommends that the MSP is used for both interrupts and kernal execution, while the PSP is used for thread/task execution.
+The Cortex-M3 has two stack pointers, the main stack pointer (MSP) and the process stack pointer (PSP). The MSP is used when handling interrupts and optionally during normal execution, while the PSP is only used during normal processor execution. In a RTOS environment, ARM recommends that the MSP is used for both interrupts and kernel execution, while the PSP is used for thread/task execution.
 
 ## Memory
 
@@ -90,7 +90,7 @@ The Cortex-M3 has a build in "systick" hardware peripheral. It is used in some p
 
 ## CMSIS
 
-CMSIS (Cortex-M Software Interface Standard) is a vendor-independent hardware abstraction layer for the entire Cotrex-M processor series.
+CMSIS (Cortex-M Software Interface Standard) is a vendor-independent hardware abstraction layer for the entire Cortex-M processor series.
 
 Supports core debug/trace facilities.
 

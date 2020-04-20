@@ -1,9 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2011-09-07
 draft: false
-title: Preprocessor
-type: page
+lastmod: 2020-04-13
+tags: [ "programming", "languages", "C", "preprocessor", "macros", "syntax", "code", "embedded", "microcontroller", "variadic", "stringification" ]
+title: "The C Preprocessor"
+type: "page"
 ---
 
 ## Overview

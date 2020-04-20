@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2013-07-19
 draft: false
+categories: [ "Programming", "Operating Systems", "Windows" ]
 lastmod: 2018-12-31
 tags: [ "Windows", "auto-complete", "DOS", "shell", "command-line interface", "CLI", "comments", "xcopy" ]
 title: "Windows"
-type: page
+type: "page"
 ---
 
 ## Overview

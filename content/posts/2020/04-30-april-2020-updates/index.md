@@ -17,3 +17,7 @@ type: "post"
     {{% figure src="/electronics/components/shift-registers/serial-in-serial-out-shift-register.svg" width="500px" caption="Schematic for building a 4-bit SISO shift register from flip flops." %}}
 
 * Added a section on {{% link text="Tags to the AWS S3 page" src="/programming/cloud/aws/s3#tags" %}}.
+
+* Added a section on {{% link text="NoCAN to the CAN Bus page" src="/electronics/communication-protocols/can-protocol#nocan" %}}.
+
+* Added a new page on {{% link text="UML Diagrams" src="/programming/general/uml-diagrams" %}}.

@@ -2,8 +2,9 @@
 author: "gbmhunter"
 date: 2012-12-12
 description: "Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol."
-lastmod: 2019-01-06
-tags: [ "CAN bus", "bus", "communication protocol", "CAN1.0", "CAN2.0", "CAN base frame", "CAN extended frame", "USB adapters" ]
+categories: [ "Electronics", "Communication Protocols" ]
+lastmod: 2020-04-20
+tags: [ "CAN bus", "bus", "communication protocol", "CAN1.0", "CAN2.0", "CAN base frame", "CAN extended frame", "USB adapters", "NoCAN", "encoding", "controller", "CANopen", "NEMA 2000" ]
 title: "CAN Protocol"
 type: "page"
 ---
@@ -28,7 +29,7 @@ The following equation can be used as a rule-of-thumb to calculate the maximum t
 
 <p class="centered">
     where:<br>
-    `\(BR\)` = bit rate (in Mbit/s)<br>
+    `\(BR\)` = bit rate (in MBit/s)<br>
     `\(L\)` = length (in m)<br>
 <p>
 
@@ -38,12 +39,12 @@ A table of common distances/transmission rates is shown below:
     <thead>
         <tr>
             <th>Speed</th>
-            <th>Distance**</th>
+            <th>Distance</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>1Mbit/s</td>
+            <td>1MBit/s</td>
             <td>25m</td>
         </tr>
         <tr >
@@ -162,26 +163,26 @@ Xilinx provides the [CAN 2.0B and CAN-FD Controller IP core](https://www.xilinx.
 
 ## Standards
 
-## ISO 11898
+### ISO 11898
 
 **ISO 11898 is a widely followed basic CAN standard, defining parts of the physical and data link layers**. There are many different versions of this standard:
 
 * ISO 11898-1:2015 - Specifies data-link layer and physical signalling
-* ISO 11898-2:2003 - Specifies the high-speed transmission (up to 1Mbit/s) medium access unit (MAU). **This has been revised by ISO 11898-2:2016.**
+* ISO 11898-2:2003 - Specifies the high-speed transmission (up to 1MBit/s) medium access unit (MAU). **This has been revised by ISO 11898-2:2016.**
 * ISO 11898-2:2016 - Specifies the high-speed physical media attachment (HS-PMA) component for the CAN bus.
 * ISO 11898-3:2006 - Specifies low-speed, fault tolerant CAN bus information transfer between road vehicles.
 
 **Related to ISO 11898 is ISO 16845, which details test suites and test requirements** for checking CAN bus/controller conformance to the specs.
 
-## CANopen
+### CANopen
 
 CANopen was developed for embedded devices in automation systems . It defines the OSI network layers that the basic CAN standards leaves unspecified, which includes the network layer and above.
 
-## NEMA 2000
+### NEMA 2000
 
 A communication protocol for ships which is based on the CAN standard.
 
-## PeliCAN
+### PeliCAN
 
 **PeliCAN is a CAN controller "mode" named by NXP with the arrival of their SJA1000 stand-alone CAN controller ICs**, which were a successor to the PCA82C200 CAN controller ICs (BasicCAN). PeliCAN supports all of the frame types defined by CAN 2.0B.
 
@@ -191,11 +192,11 @@ PeliCAN mode extensions include:
 * Error interrupt
 * Single-shot transmission (no re-transmission)
 * Listen only mode
-* Hot pluggin support
+* Hot plug-in support
 * Acceptance filter extension
 * Self reception support (can receive messages sent by self)
 
-## SAE J1939-11
+### SAE J1939-11
 
 Uses a shielded twisted pair. Used in trucks, agricultural and industrial equipment.
 
@@ -217,7 +218,7 @@ One example is the PCAN-USB, which support Windows and Linux.
 
 ## Drivers
 
-## SocketCAN
+### SocketCAN
 
 SocketCAN is a set of open-source CAN drivers and a networking stack for the Linux kernel.
 
@@ -227,7 +228,7 @@ CAN support was added to the Linux kernel in version 2.6.25.
 
 More information on SocketCAN, including information and code examples on how to send and receive CAN data from the terminal using SocketCAN, see the [How To Use SocketCAN With The Command-Line In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux) or the [How To Use SocketCAN With C++ In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-c-in-linux).
 
-## IC's
+## ICs
 
 Atmel T89C51CC01 Microcontroller. 8-bit 8051 architecture, with CAN interface. Supports bootloading from the CAN protocol
 
@@ -237,6 +238,12 @@ Atmel T89C51CC01 Microcontroller. 8-bit 8051 architecture, with CAN interface. S
 
 [MCP2551: Microchip Highspeed CAN Transceiver](http://ww1.microchip.com/downloads/en/DeviceDoc/21667f.pdf)
 
-The [Freescale MC9SO8D](http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=S08D) range of microcontrollers have built-in support for both CAN and LIN communication protocols. The CAN peripheral block is called an MSCAN.
+The [Freescale MC9SO8D](http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=S08D) range of microcontrollers have built-in support for both CAN and LIN communication protocols. The CAN peripheral block is called an _MSCAN_.
 
 {{< img src="freescale-mc9so8-microcontroller-mscan-hardware-peripheral.png" width="660px" caption="The Freescale MC9SO8 microcontroller MSCAN peripheral."  >}}
+
+## NoCAN
+
+NoCAN is a communications protocol that is **built on-top of the CAN bus**. It provides a layer of abstraction on-top of a 125kHz CAN bus which adds _publish-subscribe based messaging_ and _automated address assignment_. With many wireless options available for IoT devices, NoCAN was borne out the idea that there is a need for an easy-to-use wired communications solution for IoT devices. The protocol was created by Omzlo and was [funded in part by a KickStarter campaign](https://www.kickstarter.com/projects/1242572682/nocan-the-wired-iot-platform-for-makers) in 2019.
+
+{{% img src="omzlo-white.png" width="200px" caption="The Omzlo logo." %}}

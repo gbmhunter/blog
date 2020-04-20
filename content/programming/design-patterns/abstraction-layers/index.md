@@ -27,6 +27,10 @@ Be careful using a feature which is specific to a particular platform. An abstra
 
 The usage of abstraction layers allows for better unit tests. By creating fake/mock abstraction layers, it allows for unit tests to be run on a different setup, e.g. on a PC rather than a microcontroller. This can speed up testing, make it easier to automate, and can allow for better debugging abilities (most microcontroller platforms do not have quite the same debugging abilities a full-blown computer has).
 
+## Hardware Abstraction Layers (HALs)
+
+HALs also exist in Rust for a few embedded platforms such as the [STM32F30X](https://crates.io/crates/stm32f30x-hal).
+
 ## Abstraction Layer API Recommendations
 
 Below are recommended abstraction layer APIs for various hardware peripherals and common 3rd party libraries that you will use when writing firmware. Code is written in C++, but all are also applicable to the C programming language. All methods are sorted alphabetically.
