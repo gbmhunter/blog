@@ -23,3 +23,5 @@ type: "post"
 * Added a new page on {{% link text="UML Diagrams" src="/programming/general/uml-diagrams" %}}.
 
 * Added a section on {{% link text="Flyback Transformers to the Transformers page" src="/electronics/components/transformers#flyback-transformers" %}}.
+
+* Added info on {{% link text="non-standard QFN packages to the QFN Component Package page" src="/pcb-design/component-packages/qfn-component-package#completely-non-standard-qfn-packages" %}}.
