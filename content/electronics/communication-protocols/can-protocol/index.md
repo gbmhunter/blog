@@ -4,7 +4,7 @@ date: 2012-12-12
 description: "Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol."
 categories: [ "Electronics", "Communication Protocols" ]
 lastmod: 2020-04-20
-tags: [ "CAN bus", "bus", "communication protocol", "CAN1.0", "CAN2.0", "CAN base frame", "CAN extended frame", "USB adapters", "NoCAN", "encoding", "controller", "CANopen", "NEMA 2000" ]
+tags: [ "CAN bus", "bus", "communication protocol", "CAN1.0", "CAN2.0", "CAN base frame", "CAN extended frame", "USB adapters", "NoCAN", "encoding", "controller", "CANopen", "NEMA 2000", "termination resistors" ]
 title: "CAN Protocol"
 type: "page"
 ---
@@ -21,7 +21,9 @@ If you are looking for help controlling a SocketCAN interface from C software, s
 
 A alternative communications protocol used in similar applications is the LIN protocol.
 
-## Bit Rate And Transmission Distances
+## Physical Layer
+
+### Bit Rate And Transmission Distances
 
 The following equation can be used as a rule-of-thumb to calculate the maximum transmission speed for distances larger than 50m.
 
@@ -77,6 +79,18 @@ A table of common distances/transmission rates is shown below:
         </tr>
     </tbody>
 </table>
+
+### Termination Resistors
+
+For high-speed transmission on the CAN bus, **_termination resistors_ are required between the `CAN_H` and `CAN_L` wires at both ends of the cable**. However, make sure to only add them at the ends of the cable, **any CAN devices connected partway along the bus should not have termination resistors**. For a CAN bus in which devices may be arbitrarily connected and disconnected, it is common practise to add _switchable termination_, which can be connected manually with a typical mechanical switch or automatically controlled by firmware/software using an MOSFET-based switch or similar. Although required by the standard, termination resistors are not typically required for the CAN bus to function at slow speeds over small distances.
+
+Adding a single termination resistor of `120R` at each end of the bus is called _standard termination_. Sometimes a decoupling capacitor is also added in conjunction with the termination resistors. This is called _split termination_[^ti-importance-of-termination-resistors], as you have to use two termination resistors instead of one, with the capacitor "splitting" them in two. Using this combination of resistors and capacitor makes a _low-pass filter_ for the common-mode noise on the bus, which has a corner frequency given by the equation[^ti-importance-of-termination-resistors]:
+
+<p>$$ f_{corner} = \frac{1}{2\pi \cdot R_{term/2} \cdot C_{split}} $$</p>
+
+### Isolation
+
+When CAN bus receivers are incorporated onto PCBs with microcontrollers and other digital/analogue circuitry, it is common practise to isolate the CAN circuitry so that noise and voltage spikes from the CAN bus do not damage the circuitry.
 
 ## Arbitration
 
@@ -234,16 +248,20 @@ Atmel T89C51CC01 Microcontroller. 8-bit 8051 architecture, with CAN interface. S
 
 {{< img src="t89c51cc01-8bit-atmel-can-network-microcontroller.png" width="849px" caption="The Atmel T89C51CC01 microcontroller. An 8-bit 8051 architecture, with a CAN interface."  >}}
 
-[MCP2515: Microchip CAN Controller](http://www.microchip.com/wwwproducts/Devices.aspx?dDocName=en010406).
+[MCP2515: Microchip CAN Controller](http://www.microchip.com/wwwproducts/Devices.aspx?dDocName=en010406) is a standalone CAN controller 18-pin IC. It is designed to be connected to a microcontroller via SPI. It is used on the [RS-485 
+CAN HAT for Raspberry Pi by WaveStudio](https://www.waveshare.com/rs485-can-hat.htm).
 
 [MCP2551: Microchip Highspeed CAN Transceiver](http://ww1.microchip.com/downloads/en/DeviceDoc/21667f.pdf)
 
 The [Freescale MC9SO8D](http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=S08D) range of microcontrollers have built-in support for both CAN and LIN communication protocols. The CAN peripheral block is called an _MSCAN_.
 
-{{< img src="freescale-mc9so8-microcontroller-mscan-hardware-peripheral.png" width="660px" caption="The Freescale MC9SO8 microcontroller MSCAN peripheral."  >}}
+{{< img src="freescale-mc9so8-microcontroller-mscan-hardware-peripheral.png" width="660px" caption="The Freescale MC9SO8 microcontroller MSCAN peripheral." >}}
 
 ## NoCAN
 
 NoCAN is a communications protocol that is **built on-top of the CAN bus**. It provides a layer of abstraction on-top of a 125kHz CAN bus which adds _publish-subscribe based messaging_ and _automated address assignment_. With many wireless options available for IoT devices, NoCAN was borne out the idea that there is a need for an easy-to-use wired communications solution for IoT devices. The protocol was created by Omzlo and was [funded in part by a KickStarter campaign](https://www.kickstarter.com/projects/1242572682/nocan-the-wired-iot-platform-for-makers) in 2019.
 
 {{% img src="omzlo-white.png" width="200px" caption="The Omzlo logo." %}}
+
+
+[^ti-importance-of-termination-resistors]: [https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers](https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers)

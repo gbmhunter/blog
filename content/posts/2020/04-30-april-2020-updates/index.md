@@ -21,3 +21,5 @@ type: "post"
 * Added a section on {{% link text="NoCAN to the CAN Bus page" src="/electronics/communication-protocols/can-protocol#nocan" %}}.
 
 * Added a new page on {{% link text="UML Diagrams" src="/programming/general/uml-diagrams" %}}.
+
+* Added a section on {{% link text="Flyback Transformers to the Transformers page" src="/electronics/components/transformers#flyback-transformers" %}}.

@@ -1,8 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
+categories: [ "Electronics", "Components", "Transformers" ]
 date: 2011-09-03
-title: Neon Sign Transformers
-type: page
+lastmod: 2011-09-03
+tags: [ "electronics", "components", "transformers", "neon sign transformers", "high voltage", "Jacob's Ladder", "voltage multipliers" ]
+title: "Neon Sign Transformers"
+type: "page"
 ---
 
 ## Overview

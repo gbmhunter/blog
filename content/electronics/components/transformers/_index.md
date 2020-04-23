@@ -3,8 +3,9 @@ author: gbmhunter
 categories: [ "Electronics", "Electronic Components" ]
 date: 2013-02-24
 draft: false
-tags: [ "transformer", "transformers", "coupling coefficient", "resistive losses", "hysteresis" ]
-title: Transformers
+lastmod: 2020-04-21
+tags: [ "electronics", "components", "transformers", "coupling coefficients", "resistive losses", "hysteresis", "flyback transformers", "switching transformers", "SMPS transformers", "inductors" ]
+title: "Transformers"
 type: page
 ---
 
@@ -60,10 +61,16 @@ Remember that transformers work with an AC voltage/current. The tiny magnetic do
 
 The hysteresis loss can be seen on the BH (flux-density vs. field strength) curve.
 
-{{< img src="transformer-graph-explaining-hysteresis-losses.jpg" width="609px" caption="Graph explaining the hysteresis losses in a transformer. Image from http://ecetutorials.com/."  >}}
+{{< img src="transformer-graph-explaining-hysteresis-losses.jpg" width="609px" caption="Graph explaining the hysteresis losses in a transformer. Image from http://ecetutorials.com/." >}}
 
 ## Eddy Current Losses
 
 Because the core is conductive, it too gets an EMF generated in it, just like the secondary. This causes a current to flow in the core, which is dissipated as heat energy due to the resistance of the core material. To reduce eddy currents, most transformers use a core built up from many **laminated** sheets of metal, sandwiched between insulating layers.
+
+## Flyback Transformers
+
+_Flyback transformers_ are transformers used in the construction of a boost converter. They are also known as _switching transformers_ or _SMPS transformers_. Because of the way they operate, current does not flow in the primary and secondary windings at the same time. For this reason, it is conceptually appropriate to consider a _flyback transfer_ as _two parallel inductors_, rather than a true transformer. 
+
+Examples of flyback transformers can be found on [DigiKey under their Transformers->Switching Converter, SMPS Transformers section](https://www.digikey.com/products/en/transformers/switching-converter-smps-transformers/168).
 
  
