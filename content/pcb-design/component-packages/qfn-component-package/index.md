@@ -2,6 +2,7 @@
 author: "gbmhunter"
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2014-12-04
+description: "Dimensions, recommended footprints, thermal resistances, lead styles, singulation methods, synonyms and other info about the QFN component package."
 draft: false
 lastmod: 2020-04-23
 tags: [ "component packages", "PCB design", "QFN", "LFCSP", "MLF", "DO-214AC", "solder paste", "soldermask", "singulation", "voiding", "lead styles", "JEDEC", "package stress" ]
