@@ -33,6 +33,8 @@ You can navigate the schematic hierarchy using the _Navigate Schematic Hierarchy
 
 {{% img src="kicad-navigate-schematic-hierarchy-button.png" width="500px" caption="The 'Navigate Schematic Hierarchy' button in KiCAD." %}}
 
+**Keyboard Shortcuts**
+
 ```text
 Mouse Wheel           Zoom in/out
 Mouse Wheel + Ctrl    Pan left/right
@@ -52,9 +54,16 @@ C                     Duplicate symbol or label
 
 `.lib` files are text based, so play well with version control systems such as `.git`.
 
+By default, on Windows the symbol libraries are installed to: `C:\Program Files\KiCad\share\kicad\library`
+
+Each project can pull schematic symbols and footprints from two "tables" (groups) of libraries, _global libraries_ and _project libraries_.
+
+
 ## Board Routing
 
 ### Getting Around
+
+**Keyboard Shortcuts**
 
 ```text
 D          Start drawing a track
