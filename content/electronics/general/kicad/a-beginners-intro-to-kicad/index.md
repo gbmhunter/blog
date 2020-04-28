@@ -19,6 +19,18 @@ KiCAD organizes work into _projects_. Each project has a project file ending in 
 
 The two main sub-applications bundled with KiCAD are `Eeschema`, the schematic editing tool, and `PcbNew`, the PCB editing tool.
 
+## Installation
+
+### Debian-Like Linux (Ubuntu, Debian, ...)
+
+You can install KiCAD via the command-line with:
+
+```bash
+sudo add-apt-repository --yes ppa:js-reynaud/kicad-5.1
+sudo apt update
+sudo apt install --install-recommends kicad
+```
+
 ## Configuring The Global Symbol Library Table
 
 {{% img src="kicad-configure-global-symbol-library-table.png" width="500px" caption="The pop-up that occurs when you run KiCAD for the first time." %}}
