@@ -4,11 +4,15 @@ categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2014-07-21
 description: "Basic improvements/additions that every installation of Linux should have."
 draft: false
-lastmod: 2019-05-30
-tags: [ "search history", "Linux", "multiple workspaces", "Linuxbrew", "fzf", "fd", "maximum number of files", "cd", "directory", "alias" ]
+lastmod: 2020-04-30
+tags: [ "search history", "Linux", "multiple workspaces", "Linuxbrew", "fzf", "fd", "maximum number of files", "cd", "directory", "alias", "zsh", "shell", "Powerline10k" ]
 title: "The Basic Essentials You Should Do After Installing Ubuntu"
 type: page
 ---
+
+## Overview
+
+The following instructions should be compatible with `Ubuntu 18.04`.
 
 ## Make The Up/Down Keys Search History
 
@@ -43,25 +47,6 @@ This assumes you are using the Gnome terminal. This has been tested with Ubuntu 
     ```
 
 5. Done!
-
-## Turn On Multiple Workspaces
-
-Multiple workspaces (also called virtual desktops by Ubuntu) is a great feature to enable for increased productivity.
-
-Assuming you are using the unity interface (the default for Ubuntu v14.x or v16.x), navigate to _System Settings_, then click _Appearance_, and then click the _Behaviour_ tab. Tick the _Enable workspaces_ checkbox and you're done!
-
-To switch workspaces, press `Ctrl-Alt` (on a Windows keyboard) or `Cmd-Alt` (on a Mac keyboard) along with an arrow key, e.g. `Ctrl-Alt-RightArrow` to move to the workspace to the right.
-
-## To Add More Workspaces
-
-How to add more workspaces than the default 4 you get when enabling the option in the GUI? Easy, change the `vsize` and `hsize` settings! If you wanted 6 (2 across, 3 down), enter the following commands from the terminal:
-
- ```sh
- $ settings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize 2
- $ settings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize 3
- ```
-
-It always has to be arranged in a grid, but you can practically have as many as you want.
 
 ## Install Linuxbrew
 
@@ -120,6 +105,7 @@ alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
 alias .....="cd ../../../../"
+alias ......="cd ../../../../../"
 (repeat as needed)
 ```
 
@@ -132,3 +118,55 @@ The long form list directory command `ls -l` is so useful and frequenctly used t
 ```sh
 alias ll="ls -l"
 ```
+
+## Install The zsh Shell And The Powerline10k Theme
+
+My favourite shell is `zsh` with the Powerline10k theme. This combination provides smart auto-completion, git repo status markers on the prompt, and other useful features. To set this up, firstly install `zsh`:
+
+```sh
+sudo apt install -y zsh
+```
+
+Then install `oh-my-zsh`:
+
+```sh
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
+```
+
+Install the Powerline10k theme:
+
+```sh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+```
+
+Then set `ZSH_THEME="powerlevel10k/powerlevel10k"` in `~/.zshrc` and 
+
+## Deprecated Setup
+
+### Turn On Multiple Workspaces
+
+{{% warning %}}
+This no longer works for Ubuntu 18.04 or higher.
+{{% /warning %}}
+
+Multiple workspaces (also called virtual desktops by Ubuntu) is a great feature to enable for increased productivity.
+
+Assuming you are using the unity interface (the default for Ubuntu v14.x or v16.x), navigate to _System Settings_, then click _Appearance_, and then click the _Behaviour_ tab. Tick the _Enable workspaces_ checkbox and you're done!
+
+To switch workspaces, press `Ctrl-Alt` (on a Windows keyboard) or `Cmd-Alt` (on a Mac keyboard) along with an arrow key, e.g. `Ctrl-Alt-RightArrow` to move to the workspace to the right.
+
+### To Add More Workspaces
+
+{{% warning %}}
+This no longer works for Ubuntu 18.04 or higher.
+{{% /warning %}}
+
+How to add more workspaces than the default 4 you get when enabling the option in the GUI? Easy, change the `vsize` and `hsize` settings! If you wanted 6 (2 across, 3 down), enter the following commands from the terminal:
+
+ ```sh
+ $ settings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ hsize 2
+ $ settings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize 3
+ ```
+
+It always has to be arranged in a grid, but you can practically have as many as you want.

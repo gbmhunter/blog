@@ -66,7 +66,10 @@ C                     Duplicate symbol or label
 
 `.lib` files are text based, so play well with version control systems such as `.git`.
 
-By default, on Windows the symbol libraries are installed to: `C:\Program Files\KiCad\share\kicad\library`
+By default, the symbol libraries are installed to:
+
+* On Windows: `C:\Program Files\KiCad\share\kicad\library`
+* On Linux: `/usr/share/kicad/library/`
 
 Each project can pull schematic symbols and footprints from two "tables" (groups) of libraries, _global libraries_ and _project libraries_.
 
@@ -86,3 +89,7 @@ B          Show pours
 ```
 
 KiCAD has a push and shove router.
+
+### DRC Rules
+
+As of May 2020, there is no way to add a check for silkscreen over pad in the design rules. The best you can do is select `exclude pads from silkscreen` when exporting the gerbers, which will remove all silkscreen from pads. This is not as ideal though, as this may remove important information from the silkscreen such as designators, version numbers or polarization marks.
