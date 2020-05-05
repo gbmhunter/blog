@@ -1,7 +1,10 @@
 ---
 author: "gbmhunter"
+categories: [ "Electronics", "Components", "Diodes" ]
 date: 2012-03-15
 draft: false
+lastmod: 2020-05-04
+tags: [ "electronics", "components", "diodes", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "lazer diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution" ]
 title: "LEDs"
 type: "page"
 ---
@@ -14,57 +17,68 @@ There is a neat little [LED Wizard](http://led.linear1.org/led.wiz) from [LED Ce
 
 ## Important Parameters
 
+_Parameters are sorted alphabetically._
+
 <table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Parameter Symbol</th>
-            <th>Units</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody>
-<tr >
-<td >Forward Current
-</td>
-<td >\(I_F\)
-</td>
-<td >mA
-</td>
-<td > 
-</td></tr><tr >
-<td >Forward Surge Current
-</td>
-<td >\(I_{FM}\)
-</td>
-<td >mA
-</td>
-<td >Normally rated at a fixed temperature, duty cycle, and pulse length.
-</td></tr><tr >
-<td >Forward Voltage
-</td>
-<td >\(V_F\)
-</td>
-<td >V
-</td>
-<td >Rated at a fixed forward current.
-</td></tr><tr >
-<td >Reverse Voltage
-</td>
-<td >\(V_R\)
-</td>
-<td >V
-</td>
-<td > 
-</td></tr><tr >
-<td >Dominant Wavelength
-</td>
-<td >\(\lambda_{dom}\)
-</td>
-<td >nm
-</td>
-<td >This is the wavelength which determines the "colour" you see.
-</td></tr></tbody></table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Parameter Symbol</th>
+      <th>Typical Units</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Dominant Wavelength</td>
+      <td>\(\lambda_{dom}\)</td>
+      <td>nm</td>
+      <td>This is the wavelength of the apparent color the human eye "sees" the LED as. This is not the same thing as the peak wavelength.</td>
+    </tr>
+    <tr>
+      <td>Forward Current</td>
+      <td>\(I_F\)</td>
+      <td>mA</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Forward Surge Current</td>
+      <td>\(I_{FM}\)</td>
+      <td>mA</td>
+      <td>Normally rated at a fixed temperature, duty cycle, and pulse length.</td>
+    </tr>
+    <tr>
+      <td>Forward Voltage</td>
+      <td>\(V_F\)</td>
+      <td>V</td>
+      <td>Rated at a fixed forward current.</td>
+    </tr>
+    <tr>
+      <td>Peak Wavelength</td>
+      <td>\(\lambda_{peak}\)</td>
+      <td>nm</td>
+      <td>The wavelength at the peak of the spectral density curve. This is the wavelength at which the LED emits the most power (or flux). This is not the same thing as the dominant wavelength.</td>
+    </tr>
+    <tr>
+      <td>Radiation Pattern</td>
+      <td>\( n/a \)</td>
+      <td>relative intensity (0-1)</td>
+      <td>The radiation pattern (aka spatial distribution) is usually given on a semi-circular graph, showing the relative intensity of the emitted light vs. the angle from looking directly forward.</td>
+    </tr>
+    <tr>
+      <td>Reverse Voltage</td>
+      <td>\(V_R\)</td>
+      <td>V</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>View Angle</td>
+      <td>\( 2\theta_{\frac{1}{2}} \)</td>
+      <td>degrees</td>
+      <td>The total angle that the LED emits light at. This should be less than 180° as most LEDs emit light of a planar surface. The smaller this value the more focused the LED is. Some LEDs come package with a lens to focus the light.</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Limiting The LED Current
 

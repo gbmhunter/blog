@@ -23,12 +23,18 @@ The two main sub-applications bundled with KiCAD are `Eeschema`, the schematic e
 
 ### Debian-Like Linux (Ubuntu, Debian, ...)
 
-You can install KiCAD via the command-line with:
+You can install the most recent stable release of KiCAD via the command-line with:
 
 ```bash
 sudo add-apt-repository --yes ppa:js-reynaud/kicad-5.1
 sudo apt update
 sudo apt install --install-recommends kicad
+```
+
+To start KiCAD from the command line you can use:
+
+```bash
+kicad
 ```
 
 ## Configuring The Global Symbol Library Table

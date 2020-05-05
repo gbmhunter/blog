@@ -4,8 +4,8 @@ categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2014-07-21
 description: "Basic improvements/additions that every installation of Linux should have."
 draft: false
-lastmod: 2020-04-30
-tags: [ "search history", "Linux", "multiple workspaces", "Linuxbrew", "fzf", "fd", "maximum number of files", "cd", "directory", "alias", "zsh", "shell", "Powerline10k" ]
+lastmod: 2020-05-01
+tags: [ "search history", "Linux", "multiple workspaces", "Linuxbrew", "fzf", "fd", "maximum number of files", "cd", "directory", "alias", "zsh", "shell", "Powerline10k", "pm-utils", "suspend", "hibernate" ]
 title: "The Basic Essentials You Should Do After Installing Ubuntu"
 type: page
 ---
@@ -140,7 +140,25 @@ Install the Powerline10k theme:
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 
-Then set `ZSH_THEME="powerlevel10k/powerlevel10k"` in `~/.zshrc` and 
+Then set `ZSH_THEME="powerlevel10k/powerlevel10k"` in `~/.zshrc`. You can change your default login shell with `chsh`:
+
+```sh
+chsh
+```
+
+## Install pm-utils To Suspend
+
+I've had difficulty suspending computers running Ubunutu 18.04 using the default GUI. If you hold down `Alt` while on the top-right system menu in the Ubuntu 18.04 desktop, the power button should change to a "pause" and allow the computer to suspend. However this button has not worked for me. Instead, I install `pm-utils`:
+
+```sh
+sudo apt install -y pm-utils
+```
+
+And then I can suspend the computer with:
+
+```sh
+sudo pm-suspend
+```
 
 ## Deprecated Setup
 

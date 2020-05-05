@@ -3,6 +3,7 @@ author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components", "Diodes" ]
 date: 2011-09-05
 draft: false
+lastmod: 2020-05-04
 tags: [ "diodes", "diodes", "components", "current", "schematic symbols", "TVS", "Schottky", "bridge rectifier" ]
 title: "Diodes"
 type: "page"
@@ -16,40 +17,40 @@ Diodes are passive semiconductor components consisting of a single P-N junction.
 
 These are some of the important parameters shared by all types of diode (in a rough order of importance):
 
-<table >
-    <thead>
-        <tr>
-            <th>Parameter</th>
-            <th>Symbol</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody>
-<tr >
-<td >Maximum Continuous Forward Current
-</td>
-<td >\( I_{f(cont)} \)
-</td>
-<td >The maximum continuous current the diode can withstain, usually limited by overheating. Typically 20-500V.
-</td></tr><tr >
-<td >Forward Voltage
-</td>
-<td >\( V_f \)
-</td>
-<td >The forward voltage drop, usually rated at maximum continuous current (\( I_f \) ). An ideal diode would have no forward voltage drop. Schottky diodes have the lowest forward voltage drop of any diode. Generally, the smaller the forward voltage drop, the larger the reverse-leakage. The higher the temperature, the smaller the forward voltage drop. Typically 0.3-1.2V.
-</td></tr><tr >
-<td >Reverse-leakage Current
-</td>
-<td >\( I_R \)
-</td>
-<td >The leakage current when the diode is reverse-biased at the stand-off voltage. An ideal diode would have no reverse-leakage current. Generally, the smaller the reverse-leakage current, the larger the forward voltage drop. The higher the temperature, the higher the reverse-leakage current. Typically 10nA-1mA.
-</td></tr><tr >
-<td >Peak-surge forward current
-</td>
-<td >\( I_{FSM} \)
-</td>
-<td >The forward current the diode can handle for a small amount of time. The exact time depends on the standard used to calculate this value (usually JEDEC). The is normally so you can determine the diode can handle inrush current/inductive energy pulses of a particular circuit.
-</td></tr></tbody></table>
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Symbol</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>Maximum Continuous Forward Current</td>
+    <td>\( I_{f(cont)} \)</td>
+    <td>The maximum continuous current the diode can withstain, usually limited by overheating. Typically 20-500V.
+    </td>
+    </tr>
+    <tr>
+    <td>Forward Voltage</td>
+    <td>\( V_f \)</td>
+    <td>The forward voltage drop, usually rated at maximum continuous current (\( I_f \) ). An ideal diode would have no forward voltage drop. Schottky diodes have the lowest forward voltage drop of any diode. Generally, the smaller the forward voltage drop, the larger the reverse-leakage. The higher the temperature, the smaller the forward voltage drop. Typically 0.3-1.2V.
+    </td>
+    </tr>
+    <tr>
+    <td>Reverse-leakage Current</td>
+    <td>\( I_R \)</td>
+    <td>The leakage current when the diode is reverse-biased at the stand-off voltage. An ideal diode would have no reverse-leakage current. Generally, the smaller the reverse-leakage current, the larger the forward voltage drop. The higher the temperature, the higher the reverse-leakage current. Typically 10nA-1mA.
+    </td>
+    </tr>
+    <tr>
+    <td>Peak-surge forward current</td>
+    <td>\( I_{FSM} \)</td>
+    <td>The forward current the diode can handle for a small amount of time. The exact time depends on the standard used to calculate this value (usually JEDEC). The is normally so you can determine the diode can handle inrush current/inductive energy pulses of a particular circuit.</td>
+    </tr>
+  </tbody>
+</table>
 
 Some other important properties of diodes are their ability to prevent conduction until a certain, configurable breakdown voltage, and a conduction current that is related to the square of the voltage across it. On schematics, they have the designator "D", and the following symbol (for a general diode).
 
