@@ -24,4 +24,6 @@ type: "post"
 
 * Added a section on {{% link text="Flyback Transformers to the Transformers page" src="/electronics/components/transformers#flyback-transformers" %}}.
 
+    {{% figure src="/electronics/components/transformers/typical-flyback-schematic.png" width="600px" %}}
+
 * Added info on {{% link text="non-standard QFN packages to the QFN Component Package page" src="/pcb-design/component-packages/qfn-component-package#completely-non-standard-qfn-packages" %}}.

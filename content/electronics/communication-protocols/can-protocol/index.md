@@ -27,12 +27,12 @@ A alternative communications protocol used in similar applications is the LIN pr
 
 The following equation can be used as a rule-of-thumb to calculate the maximum transmission speed for distances larger than 50m.
 
-<div>$$ BR\times L\leq 60 $$</div>
+<p>$$ BR\times L\leq 60 $$</p>
 
 <p class="centered">
     where:<br>
-    `\(BR\)` = bit rate (in MBit/s)<br>
-    `\(L\)` = length (in m)<br>
+    \(BR\) = bit rate (in MBit/s)<br>
+    \(L\) = length (in m)<br>
 <p>
 
 A table of common distances/transmission rates is shown below:
@@ -42,40 +42,49 @@ A table of common distances/transmission rates is shown below:
         <tr>
             <th>Speed</th>
             <th>Distance</th>
+            <th>Commment</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>1MBit/s</td>
             <td>25m</td>
+            <td></td>
         </tr>
         <tr >
             <td>800kBit/s</td>
             <td>50m</td>
+            <td></td>
         </tr>
         <tr >
             <td>500kBit/s</td>
             <td>100m</td>
+            <td></td>
         </tr>
         <tr >
             <td>250kBit/s</td>
             <td>250m</td>
+            <td>Used by the J1939 standard.</td>
         </tr>
         <tr >
             <td>125kBit/s</td>
             <td>500m</td>
+            <td>Default speed for CANopen.</td>
         </tr>
         <tr>
             <td>50kBit/s</td>
             <td>1000m</td>
+            <td></td>
         </tr>
         <tr>
             <td>20kBit/s</td>
             <td>2500m</td>
+            <td></td>
         </tr>
         <tr>
             <td>10kBit/s</td>
             <td>5000m</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -262,6 +271,10 @@ The [Freescale MC9SO8D](http://www.freescale.com/webapp/sps/site/prod_summary.js
 NoCAN is a communications protocol that is **built on-top of the CAN bus**. It provides a layer of abstraction on-top of a 125kHz CAN bus which adds _publish-subscribe based messaging_ and _automated address assignment_. With many wireless options available for IoT devices, NoCAN was borne out the idea that there is a need for an easy-to-use wired communications solution for IoT devices. The protocol was created by Omzlo and was [funded in part by a KickStarter campaign](https://www.kickstarter.com/projects/1242572682/nocan-the-wired-iot-platform-for-makers) in 2019.
 
 {{% img src="omzlo-white.png" width="200px" caption="The Omzlo logo." %}}
+
+NoCAN only uses the _CAN Extended Mode_, which supports up to 8 bytes of data per message. However NoCAN provides the ability to send up to 64 bytes of data per message by chaining together up to 8 CAN messages (also called frames). For every NoCAN bus, there must be one (and only one) "special" node called a _Network Manager_, and one or more "standard" nodes. NoCAN also offers defines message formats for firmware update and bootloader control over the CAN bus.
+
+NoCAN supports up to 128 nodes on a CAN bus. 
 
 
 [^ti-importance-of-termination-resistors]: [https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers](https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers)

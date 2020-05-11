@@ -3,7 +3,7 @@ author: gbmhunter
 categories: [ "Electronics", "Electronic Components" ]
 date: 2013-02-24
 draft: false
-lastmod: 2020-04-21
+lastmod: 2020-05-06
 tags: [ "electronics", "components", "transformers", "coupling coefficients", "resistive losses", "hysteresis", "flyback transformers", "switching transformers", "SMPS transformers", "inductors" ]
 title: "Transformers"
 type: page
@@ -70,6 +70,8 @@ Because the core is conductive, it too gets an EMF generated in it, just like th
 ## Flyback Transformers
 
 _Flyback transformers_ are transformers used in the construction of a boost converter. They are also known as _switching transformers_ or _SMPS transformers_. Because of the way they operate, current does not flow in the primary and secondary windings at the same time. For this reason, it is conceptually appropriate to consider a _flyback transfer_ as _two parallel inductors_, rather than a true transformer. 
+
+{{% img src="typical-flyback-schematic.png" width="600px" caption="Schematic of a boost converter using a flyback transformer. Image from https://www.coilcraft.com/edu/flyback_transformer.cfm." %}}
 
 Examples of flyback transformers can be found on [DigiKey under their Transformers->Switching Converter, SMPS Transformers section](https://www.digikey.com/products/en/transformers/switching-converter-smps-transformers/168).
 

@@ -4,7 +4,7 @@ categories: [ "Electronics", "Components", "Diodes" ]
 date: 2012-03-15
 draft: false
 lastmod: 2020-05-04
-tags: [ "electronics", "components", "diodes", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "lazer diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution" ]
+tags: [ "electronics", "components", "diodes", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "lazer diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution", "irradiance", "radiometric" ]
 title: "LEDs"
 type: "page"
 ---
@@ -33,7 +33,7 @@ _Parameters are sorted alphabetically._
       <td>Dominant Wavelength</td>
       <td>\(\lambda_{dom}\)</td>
       <td>nm</td>
-      <td>This is the wavelength of the apparent color the human eye "sees" the LED as. This is not the same thing as the peak wavelength.</td>
+      <td>This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the peak wavelength.</td>
     </tr>
     <tr>
       <td>Forward Current</td>
@@ -54,10 +54,16 @@ _Parameters are sorted alphabetically._
       <td>Rated at a fixed forward current.</td>
     </tr>
     <tr>
+      <td>Irradiance</td>
+      <td>\( E \)</td>
+      <td>\( W/m^2 \)</td>
+      <td>Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol \(E\) as \(I\) is already used for radiant intensity. It is a radiometric quantitiy.</td>
+    </tr>
+    <tr>
       <td>Peak Wavelength</td>
       <td>\(\lambda_{peak}\)</td>
       <td>nm</td>
-      <td>The wavelength at the peak of the spectral density curve. This is the wavelength at which the LED emits the most power (or flux). This is not the same thing as the dominant wavelength.</td>
+      <td>The wavelength at the peak of the spectral density curve. This is the wavelength at which the LED emits the most power (or flux). It is a radiometric quantity, and is not the same thing as the dominant wavelength.</td>
     </tr>
     <tr>
       <td>Radiation Pattern</td>
@@ -66,9 +72,15 @@ _Parameters are sorted alphabetically._
       <td>The radiation pattern (aka spatial distribution) is usually given on a semi-circular graph, showing the relative intensity of the emitted light vs. the angle from looking directly forward.</td>
     </tr>
     <tr>
+      <td>Radiant Flux</td>
+      <td>\( \phi \)</td>
+      <td>Watts, \( W \)</td>
+      <td>The _radiant flux_ (also called the _power_) is the total amount of light energy per unit time radiated from one region to another. In the context of an LED it is typically used to describe the total amount of light energy emitted by the LED each second.</td>
+    </tr>
+    <tr>
       <td>Reverse Voltage</td>
-      <td>\(V_R\)</td>
-      <td>V</td>
+      <td>\( V_R \)</td>
+      <td>Volts, \( V \)</td>
       <td></td>
     </tr>
     <tr>

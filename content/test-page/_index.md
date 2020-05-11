@@ -49,6 +49,12 @@ A &= B\\
 \end{align}
 </div>
 
+Custom Latex macros:
+
+This should be bold: `\( \b{x} \)`
+
+This should be bold and have a hat: `\( \bhat{x} \)`
+
 
 ## Dividers
 
