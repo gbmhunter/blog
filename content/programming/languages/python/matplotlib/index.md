@@ -1,13 +1,13 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-11-29
 description: "Matplotlib tutorial including useful tricks and tips with code examples."
 draft: false
-lastmod: 2019-05-02
-tags: [ "matplotlib", "Python", "code", "programming", "graphs", "numpy", "pyplot", "pie charts", "charts", "Basemap", "plotting" ]
+lastmod: 2020-05-13
+tags: [ "matplotlib", "Python", "code", "programming", "graphs", "numpy", "pyplot", "pie charts", "charts", "Basemap", "plotting", "aspect ratio" ]
 title: "matplotlib"
-type: page
+type: "page"
 ---
 
 ## Importing
@@ -126,4 +126,48 @@ import matplotlib.pyplot as plt
 
 plt.figure(figsize(15, 10)) # Adjust the size of the map
 map = Basemap()
+```
+
+## Setting Aspect Ratio Equal For A 3D Plot
+
+Unfortunately, there is no built-in support for forcing the aspect ratio to be equal for a 3D plot. However you can do it yourself by calculating a bounding box from your plot objects and setting the limits yourself. Below is a function you can copy/paste into your own code. Pass in the `Axes` object to set the aspect ratio to equal. Note that you have to add the objects to the axes **BEFORE** calling this function.
+
+```py
+def set_axes_equal(ax) -> None:
+    """
+    Make axes of 3D plot have equal scale so that spheres appear as spheres,
+    cubes as cubes, etc..  This is one possible solution to Matplotlib's
+    ax.set_aspect('equal') and ax.axis('equal') not working for 3D.
+
+    Args:
+      ax: A matplotlib axis object.
+    """
+
+    x_limits = ax.get_xlim3d()
+    y_limits = ax.get_ylim3d()
+    z_limits = ax.get_zlim3d()
+
+    x_range = abs(x_limits[1] - x_limits[0])
+    x_middle = np.mean(x_limits)
+    y_range = abs(y_limits[1] - y_limits[0])
+    y_middle = np.mean(y_limits)
+    z_range = abs(z_limits[1] - z_limits[0])
+    z_middle = np.mean(z_limits)
+
+    # The plot bounding box is a sphere in the sense of the infinity
+    # norm, hence I call half the max range the plot radius.
+    plot_radius = 0.5*max([x_range, y_range, z_range])
+
+    ax.set_xlim3d([x_middle - plot_radius, x_middle + plot_radius])
+    ax.set_ylim3d([y_middle - plot_radius, y_middle + plot_radius])
+    ax.set_zlim3d([z_middle - plot_radius, z_middle + plot_radius])
+
+# Example usage below
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+
+# Add objects for axis here...
+
+ax.set_aspect('equal')
+plt.show()
 ```
