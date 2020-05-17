@@ -36,6 +36,12 @@ _Parameters are sorted alphabetically._
       <td>This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the peak wavelength.</td>
     </tr>
     <tr>
+      <td>Flux</td>
+      <td>n/a</td>
+      <td>n/a</td>
+      <td>This will be used as a shorthand for either <i>radiometric flux</i>, <i>spectral flux</i> or rarely, <i>photon flux</i>. You will have to deduce which based on the context.</td>
+    </tr>
+    <tr>
       <td>Forward Current</td>
       <td>\(I_F\)</td>
       <td>mA</td>
@@ -56,7 +62,7 @@ _Parameters are sorted alphabetically._
     <tr>
       <td>Irradiance</td>
       <td>\( E \)</td>
-      <td>\( W/m^2 \)</td>
+      <td>\( mW/m^2 \)</td>
       <td>Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol \(E\) as \(I\) is already used for radiant intensity. It is a radiometric quantitiy.</td>
     </tr>
     <tr>
@@ -66,6 +72,12 @@ _Parameters are sorted alphabetically._
       <td>The wavelength at the peak of the spectral density curve. This is the wavelength at which the LED emits the most power (or flux). It is a radiometric quantity, and is not the same thing as the dominant wavelength.</td>
     </tr>
     <tr>
+      <td>Photon Flux</td>
+      <td>\( \phi_e \)</td>
+      <td>\( umol/s \)</td>
+      <td>The number of photons emitted per second by the LED. This is a not a common property to be listed on LED datasheets, more typically the <i>radiometric flux</i> is given.</td>
+    </tr>
+    <tr>
       <td>Radiation Pattern</td>
       <td>\( n/a \)</td>
       <td>relative intensity (0-1)</td>
@@ -73,15 +85,15 @@ _Parameters are sorted alphabetically._
     </tr>
     <tr>
       <td>Radiant Flux</td>
-      <td>\( \phi \)</td>
-      <td>Watts, \( W \)</td>
-      <td>The _radiant flux_ (also called the _power_) is the total amount of light energy per unit time radiated from one region to another. In the context of an LED it is typically used to describe the total amount of light energy emitted by the LED each second.</td>
+      <td>\( \phi_e \)</td>
+      <td>Watts, \( mW \)</td>
+      <td>The <i>radiant flux</i> (also called the <i>radiant power</i>) is the total amount of light energy per unit time radiated from one region to another. In the context of an LED it is typically used to describe the total amount of light energy emitted by the LED each second. You can divide the radiant flux by the input power to calculate the efficiency of the LED, and to find out how much power will be lost as thermal energy. It is different to the photometric flux.</td>
     </tr>
     <tr>
       <td>Reverse Voltage</td>
       <td>\( V_R \)</td>
       <td>Volts, \( V \)</td>
-      <td></td>
+      <td>The maximum voltage the LED can withstand when reverse biased. Typically LEDs are forward biased but in some applications their diode property of only allowing current to flow in one direction is used.</td>
     </tr>
     <tr>
       <td>View Angle</td>
@@ -152,7 +164,9 @@ The schematic below shows how to connect an LED up to a general microcontroller 
 
 {{< img src="led-connected-to-micro-for-light-detection-schematic.png" width="502px" caption="Schematic showing how to connect an LED to a general microcontroller for light detection. The LED and resistor are connected to GPIO pins."  >}}
 
-The photocurrent of an LED is about 10-100 times smaller that that of a purpose-built photo-diode. The wavelength of peak sensitivity is usually a little less than the peak wavelength that it emits light at.
+The photocurrent of an LED is about 10-100 times smaller that that of a purpose-built photo-diode. The wavelength of peak sensitivity is usually a little less than the peak wavelength that it emits light at.HighLED is binned according to flux output. There are 5 bins:
+
+￼
 
 ## RGB LEDs
 
@@ -208,7 +222,7 @@ One way to fix this with hardware to to use a simple pulse-width extender circui
 
 This circuit uses an RC network to form a time delay. When the short pulse arrives, the MOSFET is turned on almost immediately, and the LED lights up. When the pulse stops, the diode prevents the capacitor from discharging immediately, and instead has to discharge slowly through the resistor. The MOSFET/LED remain on until the voltage on the capacitor drops below the MOSFET's gate-source threshold voltage (or something close to that).
 
-## Peak vs. Dominant Wavelength
+## Peak vs. Dominant Wavelengttitle: "LEh
 
 LEDs are usually given with two different quantifiers regarding their wavelength, both the _peak wavelength_ and the _dominant wavelength_.
 
