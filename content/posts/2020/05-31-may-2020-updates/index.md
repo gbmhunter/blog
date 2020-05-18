@@ -17,3 +17,5 @@ type: "post"
 * Added a How To Calculate The Angle Between Two Lines In 3D section to the Analytical Geomtery page.
 
 * Added a 'Importing Altium Projects Into KiCAD' page.
+
+* Added a {{% link text="Soldering Irons And Stations page" src="/electronics/tools/soldering-irons-and-stations" %}}, {{% link text="Reflow Ovens page" src="/electronics/tools/reflow-ovens" %}} and {{% link text="Digital Microscopes page" src="/electronics/tools/digital-microscopes" %}}.

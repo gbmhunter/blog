@@ -1,11 +1,13 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Tools" ]
 date: 2015-11-22
+description: "Rosin fluxes, organic fluxes, in-organic fluxes, no-clean types and more info about soldering flux."
 draft: false
-tags: [ "flux", "solder", "rosin", "organic acid", "inorganic acid", "no clean flux" ]
-title: Flux
-type: page
+lastmod: 2015-11-22
+tags: [ "electronics", "tools", "flux", "solder", "rosin", "organic acid", "inorganic acid", "no clean flux" ]
+title: "Flux"
+type: "page"
 ---
 
 ## Overview
