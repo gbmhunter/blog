@@ -18,4 +18,4 @@ type: "post"
 
 * Added a 'Importing Altium Projects Into KiCAD' page.
 
-* Added a {{% link text="Soldering Irons And Stations page" src="/electronics/tools/soldering-irons-and-stations" %}}, {{% link text="Reflow Ovens page" src="/electronics/tools/reflow-ovens" %}} and {{% link text="Digital Microscopes page" src="/electronics/tools/digital-microscopes" %}}.
+* Added a {{% link text="Soldering Irons And Stations page" src="/electronics/tools/soldering-irons-and-stations" %}}, {{% link text="Reflow Ovens page" src="/electronics/tools/reflow-ovens" %}}, {{% link text="Logic Analyzers page" src="/electronics/tools/logic-analyzers" %}} and {{% link text="Digital Microscopes page" src="/electronics/tools/digital-microscopes" %}}.
