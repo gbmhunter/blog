@@ -4,7 +4,7 @@ categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2014-12-04
 description: "Dimensions, recommended footprints, thermal resistances, lead styles, singulation methods, synonyms and other info about the QFN component package."
 draft: false
-lastmod: 2020-04-23
+lastmod: 2020-05-20
 tags: [ "component packages", "PCB design", "QFN", "LFCSP", "MLF", "DO-214AC", "solder paste", "soldermask", "singulation", "voiding", "lead styles", "JEDEC", "package stress" ]
 title: "QFN Component Package"
 type: "page"
@@ -228,3 +228,13 @@ Aside from the unique corner pins that QFN packages can have (as explained above
 JEDEC has a standard on the pinout of QFN packages for logic functions.
 
 [JESD75-5 - JEDEC Standard - QFN Pinouts For Logic Functions](/images/2014/12/JESD75-5-JEDEC-Standard-QFN-Pinouts-For-Logic-Functions.pdf)
+
+## Thermal Resistances
+
+### LFCSP-16
+
+<p>$$
+\theta_{JA} = 33.2^{\enspace \circ}C/W \\
+\theta_{JB} = 12.4^{\enspace \circ}C/W \\
+\theta_{JC} = 2.4^{\enspace \circ}C/W \\
+$$</p>
