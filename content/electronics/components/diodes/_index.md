@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components", "Diodes" ]
 date: 2011-09-05
 draft: false
-lastmod: 2020-05-04
+lastmod: 2020-05-22
 tags: [ "diodes", "diodes", "components", "current", "schematic symbols", "TVS", "Schottky", "bridge rectifier" ]
 title: "Diodes"
 type: "page"
@@ -85,6 +85,15 @@ Uses for zener diodes include:
 * To turn on a sub-circuit once a certain voltage level is reached (e.g. an LED in a simple battery charging circuit)
 
 You can purchase Zeners with a reverse voltage drop as low as 1.8V all the way to above 100V. For voltage drops less than 1.8V, you can stack (i.e. place in series) multiple normal or schottky diodes in forward bias.
+
+You can build a simple voltage limiting circuit from a Zener diode, a NPN BJT transistor, and a couple of resistors. The schematic below shows an example of this, used to limit the maximum voltage to the `\(V_{in}\,\)` pin of the ADP8140 LED driver IC.
+
+{{% img src="zener-and-npn-bjt-voltage-limiter-adp8140.png" width="600px" caption="A simple Zener/NPN based voltage limiter circuit for the input to the ADP8140 LED driver IC. Image from https://www.analog.com/media/en/technical-documentation/data-sheets/ADP8140.pdf." %}}
+
+The voltage at `\(V_{in}\,\)` is regulated to approximately `\( V_Z - 0.7V \)`. The current through `\(R_Z\)` is:
+
+
+<p>$$ I_{RZ} = \frac{V_{CC} - V_Z}{R_Z} $$</p>
 
 For more information, see the [ESD Protection](/electronics/circuit-design/esd-protection) page.
 

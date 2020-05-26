@@ -4,7 +4,7 @@ date: 2020-04-21
 description: "A beginners tutorial/introduction to KiCAD."
 categories: [ "Electronics", "General" ]
 lastmod: 2020-04-21
-tags: [ "electronics", "KiCAD", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries" ]
+tags: [ "electronics", "KiCAD", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries", "DigiKey" ]
 title: "A Beginners Intro To KiCAD"
 type: "page"
 ---
@@ -78,6 +78,8 @@ By default, the symbol libraries are installed to:
 * On Linux: `/usr/share/kicad/library/`
 
 Each project can pull schematic symbols and footprints from two "tables" (groups) of libraries, _global libraries_ and _project libraries_.
+
+DigiKey maintains the [digikey-kicad-library](https://github.com/Digi-Key/digikey-kicad-library), a KiCAD schematic and footprint library of a large number of components that can be supplied by DigiKey. The aim of this library is to provide collection of visually consistent, accurate library parts that have been curated by the DigiKey team. The organization of the library follows the DigiKey familay taxonomy.
 
 
 ## Board Routing
