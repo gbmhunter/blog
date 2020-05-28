@@ -16,7 +16,7 @@ When writing a Python application, you will likely pull in a number of third par
 
 The solution to this problem is to **create a separate installation space for all of the libraries, specific to the application that uses them**. This is called a _virtual environment_.
 
-Python has a few popular frameworks for creating vritual environments.
+Python has a few popular frameworks for creating virtual environments.
 
 ## virtualenv 
 
