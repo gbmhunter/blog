@@ -15,6 +15,8 @@ type: "page"
 
 KiCAD is an open-source electronic design CAD software package. It runs on Windows, Linux and MacOS.
 
+{{% img src="kicad-logo.png" width="300px" caption="The KiCAD logo." %}}
+
 KiCAD organizes work into _projects_. Each project has a project file ending in `.pro`. A _Project_ consists of _schematics_ (`.sch`), a _PCB design file_ (`.kicad_pcb`), _component library files_ (`.lib`), and more.
 
 The two main sub-applications bundled with KiCAD are `Eeschema`, the schematic editing tool, and `PcbNew`, the PCB editing tool.
