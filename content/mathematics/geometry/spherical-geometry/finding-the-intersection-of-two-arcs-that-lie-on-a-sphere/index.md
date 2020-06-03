@@ -94,13 +94,13 @@ We can determine if these intersection points lies within arc segments by doing 
 
 We will re-arrange for `\(\theta\)`:
 
-<p>$$ \theta = \arccos \frac{\b{a} \cdot \b{b}}{||\b{a}|| ||\b{b}|| } $$</p>
+<p>$$ \theta = \arccos \left( \frac{\b{a} \cdot \b{b}}{||\b{a}|| ||\b{b}|| } \right) $$</p>
 
 The angle from the start of arc 1 to intersecting point 1, and the angle from the end of arc 1 to intersecting point 1, and compare it against the angle between the start and end of arc 1.
 
 The intersecting point is within arc 1 if:
 
-<p>$$ \theta_{a1start,i1} + \theta_{a1end,i1} = \theta_{a1start,a1end} $$</p>
+<p>$$ \theta_{a1_start,i1} + \theta_{a1_end,i1} = \theta_{a1_start,a1_end} $$</p>
 
 Take note that if calculating this result using any data type that can lose precision (e.g. floats, doubles), you will have to check it is close to equal rather than exactly equal. This can be done by adding some epsilon. Usually `\(1^{-10}\)` is sufficient.
 
@@ -122,10 +122,11 @@ $$</p>
 Then convert them to spherical coordinates:
 
 <p>$$
+\newcommand{\pAOneStart}{\left[ {\begin{array}{c} 5896 \\ 2146 \\ 1106 \end{array} } \right]}
 \b{a_{11}} = R \cdot \left[ {\begin{array}{c} x_{11} \\ y_{11} \\ z_{11} \end{array} } \right] \\
        = \left[ {\begin{array}{c} \cos(\theta) \cos(\phi) \\ \cos(\theta) \sin(\phi) \\ \sin(\theta) \end{array} } \right] \\
        = \left[ {\begin{array}{c} \cos(10) \cos(20) \\ \cos(10) \sin(20) \\ \sin(10) \end{array} } \right] \\
-       = \left[ {\begin{array}{c} 5896 \\ 2146 \\ 1106 \end{array} } \right] \\
+       = \pAOneStart \\
 $$</p>
 
 And do the same for the other three points:
@@ -158,19 +159,62 @@ Now calculate the "normal of the normals":
 Now find the two points of intersection of the arc planes:
 
 <p>\begin{align}
+\newcommand{\iOne}{\left[ {\begin{array}{c} -0.5718 \\ -0.5149 \\ -0.6387 \end{array} } \right]}
 \b{I_1} &= \frac{ \b{L} }{ || \b{L}|| } \\
         &= \left[ {\begin{array}{c} -8.535e+14 \\ -7.686e+14 \\ -9.533e+14 \end{array} } \right] \cdot \frac{1}{ 1.493e15 } \\
-        &= \left[ {\begin{array}{c} -0.5717737 \\ -0.51491737 \\ -0.63869785 \end{array} } \right] \\
+        &= \iOne \\
 \b{I_2} &= -\b{I_1} \\
         &= \left[ {\begin{array}{c} 0.5717737 \\ 0.51491737 \\ 0.63869785 \end{array} } \right] \\
 \end{align}</p>
 
-Check if these intersecting points are within the original arc segments:
+Check if these intersecting points are within the original arc segments. Let's first check if `\( \b{I_1} \)` intersects with the arc `\( \b{a_1} \)` defined by the points `\( \b{P_{a1\_start}}\quad \)` and `\( \b{P_{a1\_end}}\quad \)`.
 
 <p>\begin{align}
-
+\theta_{a1\_start,i1} + \theta_{a1\_end,i1} = \theta_{a1\_start,a1\_end}
 \end{align}</p>
 
+We need to calculate `\( \theta_{a1\_start,i1}\quad \)`, `\( \theta_{a1\_end,i1}\quad \)`, and `\( \theta_{a1\_start,a1\_end}\quad \)`. Lets find `\( \theta_{a1\_start,i1}\quad \)` first:
+
+<p>\begin{align}
+\theta_{a1\_start,i1} &= \arccos \left( \frac{\b{P_{a1\_start}} \cdot \b{P_{i1}}}{||\b{P_{a1_start}}|| ||\b{P_{i1}}|| } \right) \\
+                      &= \arccos \left( \frac{ \pAOneStart \cdot \iOne }{|| \pAOneStart || || \iOne || } \right) \\
+                      &= 144.4
+\end{align}</p>
+
+We can use the same equation to find `\( \theta_{a1\_end,i1}\quad \)`, and `\( \theta_{a1\_start,a1\_end}\quad \)`:
+
+<p>\begin{align}
+\theta_{a1\_end,i1}           &= 144.2 \\
+\theta_{a1\_start,a2\_start}  &= 71.4 \\
+\end{align}</p>
+
+Now we can check the equality:
+
+<p>\begin{align}
+\theta_{a1\_start,i1} + \theta_{a1\_end,i1} &= \theta_{a1\_start,a1\_end} \\
+144.4 + 144.2 &= 71.4 \\
+288.6 &= 71.4 \\
+\end{align}</p>
+
+Obviouslty, this equality does not hold true! Therefore, potential intersection point `\( \b{P_{i1}} \)` does not lie on the arc `\( \b{a_1} \)` and we can rule it out as an intersection point (we do not need to test whether the potential intersection points lies on arc `\( \b{a_2} \)`, as if either of the equalities is false, we can immediately rule it out).
+
+Now we test if potential intersection point `\( \b{P_{i2}} \)` lies on both `\( a_{1} \)` and `\( a_{2} \)`. 
+
+<p>\begin{align}
+\theta_{a1\_start,i2} + \theta_{a1\_end,i2} &= \theta_{a1\_start,a1\_end} \\
+35.6 + 35.8 &= 71.4 \\
+71.4 &= 71.4 \\
+\end{align}</p>
+
+**The equality holds true**, `\( \b{P_{i2}} \)` lies on the first arc! Lets see if it lies on the second arc:
+
+<p>\begin{align}
+\theta_{a2\_start,i2} + \theta_{a2\_end,i2} &= \theta_{a2\_start,a2\_end} \\
+24.7 + 48.7 &= 73.4 \\
+73.4 &= 73.4 \\
+\end{align}</p>
+
+**This equality also holds true**, `\( \b{P_{i2}} \)` also lies on the second arc! Therefore we know that the point `\( \b{P_{i2}} \)` is a valid intersection point between the two arcs. Problem solved!
 
 ## External Resources
 

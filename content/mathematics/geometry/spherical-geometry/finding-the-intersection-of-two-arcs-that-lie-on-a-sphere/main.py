@@ -56,8 +56,12 @@ def check_if_point_intersects_arc(point, arc_point_1, arc_point_2):
     theta_a1_point = calc_angle(arc_point_1, point)
     theta_a2_point = calc_angle(arc_point_2, point)
     theta_a1_a2 = calc_angle(arc_point_1, arc_point_2)
+    print(f'theta_a1_point(deg)={np.rad2deg(theta_a1_point)}')
+    print(f'theta_a2_point(deg)={np.rad2deg(theta_a2_point)}')
+    print(f'theta_a1_a2(deg)={np.rad2deg(theta_a1_a2)}')
 
-    should_be_zero = theta_a1_a2 - theta_a1_point - theta_a2_point    
+    should_be_zero = theta_a1_a2 - theta_a1_point - theta_a2_point
+    print(f'should_be_zero={np.rad2deg(should_be_zero)}')
 
     # Due to floating point precision the value might be slightly off zero
     if should_be_zero > -1e-9 and should_be_zero < 1e-9:
@@ -66,7 +70,9 @@ def check_if_point_intersects_arc(point, arc_point_1, arc_point_2):
         return False
 
 for potential_intersection_point in [ i_1, i_2]:
+    print(f'Checking if point {potential_intersection_point} intersects with arc A1...')
     test_1 = check_if_point_intersects_arc(potential_intersection_point, line1_p1_sph, line1_p2_sph)
+    print(f'Checking if point {potential_intersection_point} intersects with arc A2...')
     test_2 = check_if_point_intersects_arc(potential_intersection_point, line2_p1_sph, line2_p2_sph)
     if test_1 and test_2:
         print(f'The arcs intersect at point {potential_intersection_point}.')
