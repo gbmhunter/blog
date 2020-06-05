@@ -56,7 +56,7 @@ All Big-O complexities examples below are assumed to be average-case, unless spe
 
 ### Constant Time
 
-{{< img src="graph-constant-time-complexity" width="700px" caption="The growth of constant time complexity compared with other common complexity classes." >}}
+{{< img src="graph-constant-time-complexity.png" width="700px" caption="The growth of constant time complexity compared with other common complexity classes." >}}
 
 The following algorithm just prints "hello" once, and doesn't depend on the number of elements (`\( n \)`). It will always run in constant time, and therefore is `\( \mathcal{\mathcal{O}}(1) \)`.
 
@@ -86,7 +86,7 @@ Even if an algorithm takes a long time to calculate something, e.g. computing a 
 
 ### log(n) Time
 
-{{< img src="graph-logarithmic-time-complexity" width="700px" caption="The growth of logarithmic time complexity compared with other common complexity classes." >}}
+{{< img src="graph-logarithmic-time-complexity.png" width="700px" caption="The growth of logarithmic time complexity compared with other common complexity classes." >}}
 
 `\(\mathcal{O}(\log{n})\)` is a time complexity where the **number of operations grows with the logarithm of the size of the input**. `\(\mathcal{O}(\log{n})\)` complexity is considered to be pretty good. You can think of it as: **Every time the size of the input doubles, the complexity increases by a constant amount**.
 
@@ -111,7 +111,7 @@ Common software operations that have `\( \mathcal{O}(\log{n}) \)` complexity are
 
 ### Linear Time
 
-{{< img src="graph-linear-time-complexity" width="700px" caption="The growth of linear time complexity compared with other common complexity classes." >}}
+{{< img src="graph-linear-time-complexity.png" width="700px" caption="The growth of linear time complexity compared with other common complexity classes." >}}
 
 Linear time is when an algorithm grows at a rate proportional to the number of elements, `\(n\)`. A simple for loop has `\(\mathcal{O}(n)\)` complexity:
 
@@ -131,7 +131,7 @@ Note that even though the above example prints "hello" for every second `\(n\)` 
 
 ### nlog(n) Time
 
-{{< img src="graph-nlogn-time-complexity" width="700px" caption="The growth of nlogn time complexity compared with other common complexity classes." >}}
+{{< img src="graph-nlogn-time-complexity.png" width="700px" caption="The growth of nlogn time complexity compared with other common complexity classes." >}}
 
 `\( \mathcal{O}(n\log{n}) \)` complexity can be thought of as a combination of `\( \mathcal{O}(n) \)` and `\( \mathcal{O}(\log{n}) \)` complexity (and more often than not, this is how the algorithm actually works). It is famously known as the **best complexity that you can sort an arbitrary collection of elements in**.
 
@@ -154,7 +154,7 @@ Examples of `\( \mathcal{O}(n\log{n}) \)` complexity:
 
 ### n^2 Time
 
-{{< img src="graph-n2-time-complexity" width="700px" caption="The growth of n^2 time complexity compared with other common complexity classes." >}}
+{{< img src="graph-n2-time-complexity.png" width="700px" caption="The growth of n^2 time complexity compared with other common complexity classes." >}}
 
 `\( \mathcal{O}(n^2) \)` complexity is proportional to the square of the number of elements `\( n \)`. This is a bad form of complexity to have, especially when `\( n \)` grows large.
 
@@ -182,7 +182,7 @@ Note that this is just a 2x repetition of a algorithm with `\( \mathcal{O}(n^2) 
 
 ### n^3 Time
 
-{{< img src="graph-n3-time-complexity" width="700px" caption="The growth of n^3 time complexity compared with other common complexity classes." >}}
+{{< img src="graph-n3-time-complexity.png" width="700px" caption="The growth of n^3 time complexity compared with other common complexity classes." >}}
 
 `\( \mathcal{O}(n^3) \)` complexity is rarely seen in a single software algorithms (but can easily arise from the combination of multiple algorithms to solve a problem).
 
@@ -197,7 +197,7 @@ Naturally, we could keep going forever explaining poorer and poorer complexities
 
 ### 2^n Time
 
-{{< img src="graph-2n-time-complexity" width="700px" caption="The growth of 2^n time complexity compared with other common complexity classes." >}}
+{{< img src="graph-2n-time-complexity.png" width="700px" caption="The growth of 2^n time complexity compared with other common complexity classes." >}}
 
 Exponential time is written as `\( \mathcal{O}(2^n) \)`. Exponential time is always greater than any polynomial time, e.g. `\( 2^n \)` grows faster than `\( n^{1000} \)`.
 

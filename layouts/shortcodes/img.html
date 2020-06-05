@@ -1,6 +1,6 @@
 {{ if not ($.Page.Scratch.Get "figurecount") -}}<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />{{- end -}}
 {{- $.Page.Scratch.Add "figurecount" 1 -}}
-{{- $image := .Page.Resources.GetMatch (printf "*%s*" (.Get "src")) -}}
+{{- $image := .Page.Resources.GetMatch (printf "%s" (.Get "src")) -}}
 
 {{- if not $image -}}
   {{- errorf "Image resource not found for image '%s' on page '%s'." (.Get "src") ($.Page.Permalink) -}}

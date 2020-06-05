@@ -1,13 +1,13 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Circuit Design" ]
 date: 2011-09-03
 description: "A list of the most popular component designators used on schematics and PCB silkscreens."
 draft: false
-lastmod: 2019-05-03
+lastmod: 2020-06-05
 tags: [ "electronics", "circuit design", "components", "designators", "engineering", "symbols", "PCBs", "silkscreen", "IEEE 315" ]
-title: Component Designators
-type: page
+title: "Component Designators"
+type: page"
 ---
 
 ## Overview
@@ -67,15 +67,15 @@ The designator `BT` is commonly used for a battery. The schematic symbol shown b
 
 `C` is the recommended designator for capacitors (both polarised and non-polarised). Sometimes you will see `VC` used for a variable capacitor (these are not common). I recommend using two different schematic symbols, flat plates for a non-polarised capacitor, and one plate which is curved for a polarised capacitor.
 
-<u>Recommended designator(s):</u>
+**Recommended designator(s):**
 
 * `C`
 
 <u>Recommended schematic symbol(s):</u>
 
 <div class="hbox">
-  {{< img src="non-polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a non-polarised capacitor." width="200px" >}}
-  {{< img src="polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a polarised capacitor." width="200px" >}}
+  {{% img src="non-polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a non-polarised capacitor." width="200px" %}}
+  {{% img src="polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a polarised capacitor." width="200px" %}}
 </div>
 
 ### Diodes (D)

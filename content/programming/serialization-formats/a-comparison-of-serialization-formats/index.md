@@ -140,7 +140,7 @@ It is important to note that the JSON syntax does not support comments! This can
 
 ## Protocol Buffers (Protobuf)
 
-{{< img src="protobuf-icon" width="200px" caption="" >}}
+{{< img src="protobuf-icon.png" width="200px" caption="" >}}
 
 Protobuf is a binary serialization protocol developed by Google. Since it serializes to binary, it is not human readable (although you can still pick out strings when viewing the file as ASCII text, see the example below).
 
@@ -185,7 +185,7 @@ The types of data that Protobuf can contain are well defined and include common 
 
 ## TOML
 
-{{< img src="toml-icon" width="200px" caption="" >}}
+{{< img src="toml-icon.png" width="200px" caption="" >}}
 
 TOML (Tom's Obvious, Minimal Language) is a newer (relative to the others in this review) human-readable serialization format. It is quite similar to YAML in that is is aimed towards configuration files, but is strives to be simpler format (YAML can get quite complex, and this can be seen in the much slower YAML parse times).
 
@@ -239,7 +239,7 @@ age = 56.78
 
 ## XML
 
-{{< img src="xml-file-icon" width="150px" caption="" >}}
+{{< img src="xml-file-icon.png" width="150px" caption="" >}}
 
 XML is a human-readable serialization protocol. A well known XML-like format is HTML which is used to determine the structure of web pages.
 
@@ -300,7 +300,7 @@ XML supports both standard (DOM style) parsers and streaming (SAX style) parsers
 
 ## YAML
 
-{{< img src="yaml-file-icon" width="150px" caption="" >}}
+{{< img src="yaml-file-icon.png" width="150px" caption="" >}}
 
 YAML (*YAML Ain't Markup Language*)
 

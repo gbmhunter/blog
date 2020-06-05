@@ -99,9 +99,9 @@ f(t)  &= Ae^{\lambda t} \\
 
 Below are graphs of the real component of both growing and decaying complex exponential signals. **You can see how the signal is enveloped by `\(\pm |A|e^{\sigma t}\)`**. This is because the signal is the product of an exponential component and a `\(\cos()\)` component, and the `\(\cos()\)` component always varies between `\(-1\)` and `\(1\)`.
 
-{{% img src="complex-exponential-signals-real-component-growing" width="700px" caption="The real component of a growing complex exponential signal. In this case \(|A| = 1, \sigma = 0.2, \omega = 2\pi , \theta = 0\)." %}}
+{{% img src="complex-exponential-signals-real-component-growing.png" width="700px" caption="The real component of a growing complex exponential signal. In this case \(|A| = 1, \sigma = 0.2, \omega = 2\pi , \theta = 0\)." %}}
 
-{{% img src="complex-exponential-signals-real-component-decaying" width="700px" caption="The real component of a decaying complex exponential signal. In this case \(|A| = 7, \sigma = -0.2, \omega = 2\pi , \theta = 0\)." %}}
+{{% img src="complex-exponential-signals-real-component-decaying.png" width="700px" caption="The real component of a decaying complex exponential signal. In this case \(|A| = 7, \sigma = -0.2, \omega = 2\pi , \theta = 0\)." %}}
 
 ## Heaviside (Unit-Step) Function
 
@@ -137,7 +137,7 @@ $$</p>
 
 This is how the NIST DLMF (_Digital Library of Mathematical Functions_) defines the Heaviside function (see [section 1.16.13](https://dlmf.nist.gov/1.16#E13)). This version of the Heaviside function is left-continuous at `\(t = 0\)` but not right continuous.
 
-{{% img src="heaviside-unit-step-function-h0-eq-0" width="500px" %}}
+{{% img src="heaviside-unit-step-function-h0-eq-0.png" width="500px" %}}
 
 **H(0) = 0.5**
 
@@ -158,7 +158,7 @@ This is the version of the Heaviside function which seems to be most often used.
 
 Drawn on a graph it looks like:
 
-{{% img src="heaviside-unit-step-function-h0-eq-0p5" width="500px" %}}
+{{% img src="heaviside-unit-step-function-h0-eq-0p5.png" width="500px" %}}
 
 **H(0) = 1**
 
@@ -176,7 +176,7 @@ $$</p>
 
 Drawn on a graph it looks like:
 
-{{% img src="heaviside-unit-step-function-h0-eq-1" width="500px" %}}
+{{% img src="heaviside-unit-step-function-h0-eq-1.png" width="500px" %}}
 
 The Heaviside function is usually defined like this when used in the context of cumulative distributions for statistical purposes. 
 
@@ -186,7 +186,7 @@ The Heaviside function is usually defined like this when used in the context of 
 
 Drawn on a graph it looks like:
 
-{{% img src="heaviside-unit-step-function-h0-eq-set-0-1" width="500px" %}}
+{{% img src="heaviside-unit-step-function-h0-eq-set-0-1.png" width="500px" %}}
 
 ### Shifted Heaviside
 

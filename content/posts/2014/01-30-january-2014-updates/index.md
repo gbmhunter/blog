@@ -31,7 +31,7 @@ It's been a busy month around here! Most updates have been to the C++ and C lang
   
     This is an example of the Electronics menu opened-up...
     
-    {{% img url="uber-menu-on-cladlab-opened-up.png" width="300px" %}}
+    {{% img src="uber-menu-on-cladlab-opened-up.png" width="300px" %}}
 
 * New [SimpleScreenRecorder page](/programming/operating-systems/linux/programs/simplescreenrecorder) under Linux.
 * Updates to clide-cpp.
@@ -48,6 +48,6 @@ It's been a busy month around here! Most updates have been to the C++ and C lang
 * More info added to [Programming->General->Makefiles](/programming/general/makefiles).
 * New page detailing a [Belkin Wemo teardown](/electronics/teardowns/belkin-wemo-teardown).
 
-    {{% img url="020-wimo-opened-up.jpg" width="300px" %}}
+    {{% img src="020-wimo-opened-up.jpg" width="300px" %}}
 
 
