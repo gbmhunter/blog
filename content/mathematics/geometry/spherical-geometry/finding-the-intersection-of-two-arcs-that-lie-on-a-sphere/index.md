@@ -15,51 +15,51 @@ This is a common problem which usually arises because you want to find if two gr
 
 **Let's Start With Our Inputs To The Problem**
 
-We will choose to define each of the two arcs with two points on the surface of the sphere/earth. We could use either the geocentric (x, y, z) or geodetic (lat/lon) coordinate system to define these points. Let's use geodetic for now:
+We will choose to define each of the two arcs with two points on the surface of the sphere/earth. We could use either the geocentric (also called _ECEF_, coordinates are provided in terms of x, y, z) or geodetic (latitude/longitude) coordinate system to define these points. Let's use geodetic for now:
 
-Points for arc 1: 
+Points for arc 1 (`\( a1 \)`): 
 
-<p>$$
- \b{a_{11}} = \left[ {\begin{array}{c} \lambda_{11} \\ \phi_{11} \end{array} } \right]  
- \b{a_{12}} = \left[ {\begin{array}{c} \lambda_{12} \\ \phi_{12} \end{array} } \right]  
- $$</p>
+<p>\begin{align}
+\b{P_{a11}} &= \left[ {\begin{array}{c} \lambda_{11} \\ \phi_{11} \end{array} } \right] \\
+\b{P_{a12}}   &= \left[ {\begin{array}{c} \lambda_{12} \\ \phi_{12} \end{array} } \right] \\
+\end{align}</p>
 
-Points for arc 2:
+Points for arc 2 (`\( a2 \)`):
 
-<p>$$
- \b{a_{21}} = \left[ {\begin{array}{c} \lambda_{21} \\ \phi_{21} \end{array} } \right]  
- \b{a_{22}} = \left[ {\begin{array}{c} \lambda_{22} \\ \phi_{22} \end{array} } \right]
- $$</p>
+<p>\begin{align}
+\b{P_{a21}}  &= \left[ {\begin{array}{c} \lambda_{21} \\ \phi_{21} \end{array} } \right] \\
+\b{P_{a22}}    &= \left[ {\begin{array}{c} \lambda_{22} \\ \phi_{22} \end{array} } \right] \\
+\end{align}</p>
 
 <p class="centered">
-    where:<br>
-    \( \lambda \) = latitude, in degrees<br>
-    \( \phi \) = longitude, in degrees<br>
+  where:<br>
+  \( \lambda \) = latitude, in degrees<br>
+  \( \phi \) = longitude, in degrees<br>
 </p>
 
 We will then convert these into spherical coordinates with the following equations:
 
-<div>
-    $$ x = \cos(\lambda) \, \sin(\phi) \\  
-    y = \cos(\lambda) \, \cos(\phi) \\  
-    z = \sin(\lambda) $$
-</div>
+<p>\begin{align}
+x = \cos(\lambda) \, \sin(\phi) \\  
+y = \cos(\lambda) \, \cos(\phi) \\  
+z = \sin(\lambda) \\
+\end{align}</p>
 
-<div>$$
-\b{a_{11}} = \left[ {\begin{array}{c} x_{11} \\ y_{11} \\ z_{11} \end{array} } \right]  
-\b{a_{12}} = \left[ {\begin{array}{c} x_{12} \\ y_{12} \\ z_{12} \end{array} } \right]  
-\b{a_{21}} = \left[ {\begin{array}{c} x_{21} \\ y_{21} \\ z_{21} \end{array} } \right]  
-\b{a_{22}} = \left[ {\begin{array}{c} x_{22} \\ y_{22} \\ z_{22} \end{array} } \right]
-$$</div>
+<p>\begin{align}
+\b{P_{a11}}  &= \left[ {\begin{array}{c} x_{11} \\ y_{11} \\ z_{11} \end{array} } \right] \\
+\b{P_{a12}}  &= \left[ {\begin{array}{c} x_{12} \\ y_{12} \\ z_{12} \end{array} } \right] \\
+\b{P_{a21}}  &= \left[ {\begin{array}{c} x_{21} \\ y_{21} \\ z_{21} \end{array} } \right] \\
+\b{P_{a22}}  &= \left[ {\begin{array}{c} x_{22} \\ y_{22} \\ z_{22} \end{array} } \right] \\
+\end{align}</p>
 
 **Calculate Cross-Products**
 
 We then need to calculate a cross-product for each arc, using the two vectors which define the arc as the inputs to the cross-product:
 
-<p>$$
-\b{N_1} = \b{a_{11}} \times \b{a_{12}} \\  
-\b{N_2} = \b{a_{21}} \times \b{a_{22}}
-$$</p>
+<p>\begin{align}
+\b{N_1} = \b{P_{a11}} \times \b{P_{a12}} \\  
+\b{N_2} = \b{P_{a21}} \times \b{P_{a22}} \\
+\end{align}</p>
 
 Note how we switched from using "point" to "vector" terminology here. Before we were talking about two "points" that lie on the sphere and define the arc. This is the easiest way to intuitively understand how two points can fully define an arc on the surface of a sphere. But now we can describe them as _vectors_. When we talk about them as _vectors_, we are referring to the vector which starts at `\( [0, 0, 0] \)` and passes through this _point_. 
 
@@ -100,7 +100,7 @@ The angle from the start of arc 1 to intersecting point 1, and the angle from th
 
 The intersecting point is within arc 1 if:
 
-<p>$$ \theta_{a1_start,i1} + \theta_{a1_end,i1} = \theta_{a1_start,a1_end} $$</p>
+<p>$$ \theta_{a11,i1} + \theta_{a12,i1} = \theta_{a11,a12} $$</p>
 
 Take note that if calculating this result using any data type that can lose precision (e.g. floats, doubles), you will have to check it is close to equal rather than exactly equal. This can be done by adding some epsilon. Usually `\(1^{-10}\)` is sufficient.
 
@@ -112,12 +112,12 @@ The same process has to be applied to potential intersecting point 2 (remember, 
 
 Let's define two arcs using two points each in geodetic (lat/lon) form (latitude and longitude are in degrees):
 
-<p>$$
-a_{11} = \left[ {\begin{array}{c} 10 \\ 20 \end{array} } \right]  
-a_{12} = \left[ {\begin{array}{c} 60 \\ 90 \end{array} } \right]  
-a_{21} = \left[ {\begin{array}{c} 50 \\ 10 \end{array} } \right]  
-a_{22} = \left[ {\begin{array}{c} 5 \\ 80 \end{array} } \right]
-$$</p>
+<p>\begin{align}
+P_{a11} = \left[ {\begin{array}{c} 10 \\ 20 \end{array} } \right]  
+P_{a12} = \left[ {\begin{array}{c} 60 \\ 90 \end{array} } \right] \\
+P_{a21} = \left[ {\begin{array}{c} 50 \\ 10 \end{array} } \right]  
+P_{a22} = \left[ {\begin{array}{c} 5 \\ 80 \end{array} } \right]
+\end{algin}</p>
 
 Then convert them to spherical coordinates:
 

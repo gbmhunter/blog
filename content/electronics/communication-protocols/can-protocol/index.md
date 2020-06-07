@@ -278,16 +278,13 @@ NoCAN supports up to 128 nodes on a CAN bus.
 
 ## DeviceNet (IEC 62026-3)
 
-_DeviceNet_ is a network/messaging layer ontop of the CAN bus protocol. It is commonly used in the automation industry.
+_DeviceNet_ is a network/messaging layer ontop of the CAN bus protocol. It is commonly used in the automation industry. 
 
 DeviceNet supports the following baud rates:
 
 * 125Kbits/s
 * 250Kbits/s
 * 500Kbits/s
-
-
-
 
 
 [^ti-importance-of-termination-resistors]: [https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers](https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers)
