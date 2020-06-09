@@ -13,3 +13,7 @@ type: "post"
 * Completed the unfinished worked example on the {{% link text="Finding The Intersection Of Two Arcs That Lie On A Sphere" src="" %}} page.
 
 * Fixed a bug with the custom `img` shortcode used on this site which was causing the wrong image to be displayed, or in some cases, no image at all.
+
+* Added a section on {{% link text="CAN Bus Repeaters to the CAN Protocol page" src="/electronics/communication-protocols/can-protocol#can-bus-repeaters" %}}.
+
+* Updated the {{% link text="CANopen section on the CAN Protocol page" src="/electronics/communication-protocols/can-protocol#canopen" %}}.
