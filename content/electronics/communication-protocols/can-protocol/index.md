@@ -41,14 +41,14 @@ The following equation can be used as a rule-of-thumb to calculate the maximum t
 
 {{% img src="can-bus-bit-rate-vs-bus-length.png" width="500px" caption="Graph showing the relationship between the CAN bus transmission rate and maximum bus length." %}}
 
-A table of common distances/transmission rates is shown below:
+A value `\(5ns/m\)` is typically used for the propagation time of the CAN bus signal down the twisted-pair cable when calculating maximum baud rates and/or cable lengths. A table of common distances/transmission rates is shown below. These cable lengths are for the cable _trunk_, and not for _stubs_.
 
 <table>
   <thead>
     <tr>
       <th>Speed</th>
       <th>Distance</th>
-      <th>Commment</th>
+      <th>Comment</th>
     </tr>
   </thead>
   <tbody>
@@ -159,7 +159,7 @@ Dominant bits are logic level 0, while recessive bits are logic level 1.
 
 _**SOF bit:**_ A dominant start of frame bit marks the start of a message. It is used to synchronize all the nodes on a bus after being idle. Transmitted by the sender.
 
-_**11-bit Identifier:**_ This 11-bit value is used to identify the contents packet. It is also used to prioritize packets, and identifiers with lower values will have higher priorities. It is important to note that the identifier is NOT a destination node address. It is puraly used to identifiy the type of message, and multiple CAN nodes may be listening/receiving this type of message.
+_**11-bit Identifier:**_ This 11-bit value is used to identify the contents packet. It is also used to prioritize packets, and identifiers with lower values will have higher priorities. It is important to note that the identifier is NOT a destination node address. It is purely used to identify the type of message, and multiple CAN nodes may be listening/receiving this type of message.
 
 _**RTR bit**_: The _Remote Transit Request_ bit differentiates between data and remote frames (a remote frame is a request for data). In data frames, this bit is dominant and in remote frames this bit is recessive. Thus, data being returned from a request always has a higher priority than a packet requesting the data (with the same identifier).
 
