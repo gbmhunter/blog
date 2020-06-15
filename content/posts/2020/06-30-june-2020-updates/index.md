@@ -17,3 +17,5 @@ type: "post"
 * Added a section on {{% link text="CAN Bus Repeaters to the CAN Protocol page" src="/electronics/communication-protocols/can-protocol#can-bus-repeaters" %}}.
 
 * Updated the {{% link text="CANopen section on the CAN Protocol page" src="/electronics/communication-protocols/can-protocol#canopen" %}}.
+
+* Added the new {{% link text="How To Simulate Circuits In KiCAD page" src="/electronics/general/kicad/how-to-simulate-circuits-in-kicad" %}} and {{% link text="How To Write Python Scripts For KiCAD page" src="/electronics/general/kicad/how-to-write-python-scripts-for-kicad" %}}.

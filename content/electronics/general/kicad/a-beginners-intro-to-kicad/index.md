@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2020-04-21
 description: "A beginners tutorial/introduction to KiCAD."
 categories: [ "Electronics", "General" ]
-lastmod: 2020-04-21
+lastmod: 2020-06-15
 tags: [ "electronics", "KiCAD", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries", "DigiKey" ]
 title: "A Beginners Intro To KiCAD"
 type: "page"
@@ -61,6 +61,7 @@ Mouse Wheel + Ctrl    Pan left/right
 Mouse Wheel + Shift   Pan up/down
 Ctrl-D                Load datasheet for selected component (opens web browser)
 
+E                     Show symbol properties (Edit item)
 M                     Move schematic item
 C                     Duplicate symbol or label
 ```
@@ -81,7 +82,7 @@ By default, the symbol libraries are installed to:
 
 Each project can pull schematic symbols and footprints from two "tables" (groups) of libraries, _global libraries_ and _project libraries_.
 
-DigiKey maintains the [digikey-kicad-library](https://github.com/Digi-Key/digikey-kicad-library), a KiCAD schematic and footprint library of a large number of components that can be supplied by DigiKey. The aim of this library is to provide collection of visually consistent, accurate library parts that have been curated by the DigiKey team. The organization of the library follows the DigiKey familay taxonomy.
+DigiKey maintains the [digikey-kicad-library](https://github.com/Digi-Key/digikey-kicad-library), a KiCAD schematic and footprint library of a large number of components that can be supplied by DigiKey. The aim of this library is to provide collection of visually consistent, accurate library parts that have been curated by the DigiKey team. The organization of the library follows the DigiKey family taxonomy.
 
 
 ## Board Routing
@@ -96,6 +97,7 @@ PgUp       Switch to top layer
 PgDwn      Switch to bottom layer
 Ctrl-B     Hide pours
 B          Show pours
+Ctrl-H     Toggle high contrast mode
 ```
 
 KiCAD has a push and shove router.

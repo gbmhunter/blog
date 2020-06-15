@@ -343,6 +343,10 @@ DeviceNet supports the following baud rates:
 
 Ideally, the CAN bus repeater would go into a sensible passive state when powered down and present high-impedance inputs to the connected CAN bus segments. It should also provide _glitch free_ power up and power down such that spurious signals are not emitted on the bus at start-up or shut-down.
 
+On Semiconductor manufactures the [AMIS-42770 IC](https://docs.rs-online.com/c9be/0900766b816f7ada.pdf) which can be configured to act as a CAN bus repeater with little external circuitry.
+
+{{% img src="amis-42770-on-semiconductor-can-bus-repeater-ic.png" width="600px" caption="Application diagram from the AMIS-42770 IC's datasheet which shows how it can be configured to act as a CAN bus repeater." %}}
+
 ### Examples
 
 **CAN Bus Repeater CRep S4 by EMS Wuensche**
