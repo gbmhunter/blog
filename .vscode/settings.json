@@ -306,6 +306,7 @@
         "ipath",
         "ipc",
         "isig",
+        "itoa",
         "ixany",
         "ixoff",
         "ixon",

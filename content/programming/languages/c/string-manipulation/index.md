@@ -1,12 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 catgories: [ "Programming", "Programming Languages", "C" ]
 date: 2013-03-18
 draft: false
 lastmod: 2014-03-18
-tags: [ "programming", "programming languages", "C", "strings", "ASCII", "char", "special characters" ]
-title: String Manipulation
-type: page
+tags: [ "programming", "programming languages", "C", "strings", "ASCII", "char", "special characters", "itoa()", "sprintf()", "snprintf()" ]
+title: "String Manipulation"
+type: "page"
 ---
 
 ## ASCII Characters
@@ -108,49 +108,69 @@ while (*p++ = *q++);
 
 is the equivalent to the standard library function `strcpy(p, q)`!
 
-## Number To String Manipulation
+
+## C Number To String Functions
+
+
+### printf (And It's Variants)
+
+`printf()` can be a very taxing function on the processor, and may disrupt the real-time deadlines of code (especially relevant to embedded programming). It is a good idea to keep `printf()` function calls away from high-priority interrupts and control loops, and instead use them in background tasks that can be pre-empted (either by interrupts or a higher-priority threads when running a RTOS).
+
+**printf()**
+
+`printf()` is the most commonly used string output function. It is a variadic function (it takes a variable number of arguments, note that this is not the same as function overloading, which is something that C does not support).
+
+On Linux, this will print the string to the calling terminal window. Most embedded systems do not support `printf()` as their is no "standard output" (although this can be re-wired to say, a UART). Instead, in embedded applications, `printf` variants like `sprintf()` are more common.
+
+If you want to print an already-formulated string using `printf` (with no additional arguments to be inserted), do not use the syntax `printf(msg)`. Instead, use the format `printf(%s, msg)`.
+
+```c    
+char* msg = "Example message";
+
+// This is the incorrect and unsafe way of printing
+// an already formulated string, and the compiler
+// should give you a warning.
+printf(msg);
+
+// The correct way of printing an already-formulated
+// string
+printf(%s, msg);
+```
+
+The `printf()` function takes format specifiers which tell the function how you want the numbers displayed.
+
 
 Most C compiler installations include standard C libraries for manipulating strings. A common one is `stdio.h`, usually included into a C file using the syntax `#include <stdio.h>`. This library contains string copy, concatenate, string build and many others. Most of them rely on null-terminated strings to function properly. Some of the most widely used ones are shown below.
 
 
-<table>
-  <thead>
-    <tr>
-      <th>Function</th>
-      <th>Description</th>
-      <th>Declared In</th>
-      <th>Comments</th>
-    </tr>
-  </thead>
-<tbody >
-<tr >
-<td ><code>snprintf(char* stringBuff, int limit, &lt;string&gt;, &lt;input variable 1&gt;, &lt;input variable 2&gt;, ...);</code></td>
-<td >Safe version of sprintf, which builds a null-terminated string based on input parameters.</td>
-<td >{{% code %}}`<stdio.h>`{{% code %}}</td>
-<td >One of the most (if not the most) useful string functions in C!</td>
-</tr>
-<tr >
-<td >{{% code %}}`int atoi(char* stringBuffer);`{{% code %}}</td>
-<td >Converts a string into an integer (typicaly 16-bit)</td>
-<td >{{% code %}}`<stdlib.h>`{{% code %}}</td>
-<td >'Undoes' the snprintf operation by accepting a string input and outputting a number.</td>
-</tr>
-<tr >
-<td >{{% code %}}`double atof(char* stringBuffer);`{{% code %}}</td>
-<td >Converts a string into a double.</td>
-<td >{{% code %}}`<stdlib.h>`{{% code %}}</td>
-<td >Has limitations (see below)</td>
-</tr>
-<tr >
-<td >{{% code %}}`long int atol(char* stringBuffer)`{{% code %}}</td>
-<td >Converts a string into a long integer (typically 32-bit)</td>
-<td >{{% code %}}`<stdlib.h>`{{% code %}}</td><td > 
-</td>
-</tr>
-</tbody>
-</table>
+### itoa()
 
-## atof()
+**`itoa()` is a widely implemented but non-standard extension to the C programming language**. Although widely implemented, it is not ubiquitous, as GCC on Linux does not support it (which has a huge share of the C compiler space). Even though it is not specified in the C programming standard, it is confusingly included via `stdlib.h` as it complements the existing functions in that header. It is typically defined as:
+
+```c
+char * itoa(int value, char * str, int base);
+```
+
+Usage:
+
+```c
+#include <stdlib.h>
+int main() {
+  int number = 436;
+  char buffer[10];
+  itoa(number, buffer, 10);
+  printf(buffer);
+}
+```
+
+`itoa()` can cause undefined behaviour if the buffer is not large enough to hold the string-representation of the passed in integer. If you have a restricted range of integer that are provided to `itoa()`, you can quite easily determine how big the buffer should be. If it could be any integer, you need a buffer that can handle `INT_MIN` (and a trailing `NULL`). A safer alternative (that is also portable) to `itoa()` is to use `snprintf("%d", ...)`.
+
+Another good reason to abandon `itoa()` is that it is not supported in C++.
+
+
+## C String To Number Functions
+
+### atof()
 
 The biggest let-down with `atof()` is that you cannot distinguish between the text input "0.0" and when there is no valid number to convert. This is because `atof()` returns `0.0` if it can't find a valid float number in the input string. For example:
 
@@ -163,7 +183,7 @@ result = atof("blah blah");
 
 There is a better alternative `strtod()`, which allows you to test for this condition, **if your system supports it**.
 
-## strtod()
+### strtod()
 
 This stands for (string-to-double). It is a safer way of converting strings to doubles than `atof()`. The code example below shows how to use `strtod()` to convert a string to a double and also how to check that the input string contained a valid number.
 
@@ -208,33 +228,6 @@ Memory manipulation functions are also useful for string manipulation. Some of t
 `strtok()` is a standard function which is useful for decoding strings. It splits a string up into a subset of strings, where the strings are split at specific delimiters which are passed into the function. It is useful when decoding ASCII-based (aka human readable) communication protocols, such as the command-line interface, or the [NMEA protocol](/electronics/communication-protocols/nmea-protocol/). Read more about it on the [C++ Reference site](http://www.cplusplus.com/reference/cstring/strtok/).
 
 `getopt()` is a standard function for finding command-line arguments passed into main() as an array of strings. It is included in the [GCC glibc library](http://www.gnu.org/software/libc/). The files are also downloadable locally [here](/docs/getopt.zip) (taken from GCC gLibC v2.17).
-
-## printf (And It's Variants)
-
-`printf()` can be a very taxing function on the processor, and may disrupt the real-time deadlines of code (especially relevant to embedded programming). It is a good idea to keep `printf()` function calls away from high-priority interrupts and control loops, and instead use them in background tasks that can be pre-empted (either by interrupts or a higher-priority threads when running a RTOS).
-
-### printf()
-
-`printf()` is the most commonly used string output function. It is a variadic function (it takes a variable number of arguments, note that this is not the same as function overloading, which is something that C does not support).
-
-On Linux, this will print the string to the calling terminal window. Most embedded systems do not support `printf()` as their is no "standard output" (although this can be re-wired to say, a UART). Instead, in embedded applications, `printf` variants like `sprintf()` are more common.
-
-If you want to print an already-formulated string using `printf` (with no additional arguments to be inserted), do not use the syntax `printf(msg)`. Instead, use the format `printf(%s, msg)`.
-
-```c    
-char* msg = "Example message";
-
-// This is the incorrect and unsafe way of printing
-// an already formulated string, and the compiler
-// should give you a warning.
-printf(msg);
-
-// The correct way of printing an already-formulated
-// string
-printf(%s, msg);
-```
-
-The `printf()` function takes format specifiers which tell the function how you want the numbers displayed.
 
 ### Conversion Specifiers
 
