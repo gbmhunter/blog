@@ -1,7 +1,9 @@
 ---
 author: "gbmhunter"
 date: 2011-09-03
+description: "A tutorial on the I2C communication protocol."
 draft: false
+lastmod: 2020-06-19
 tags: [ "I2C", "communication protocol", "bus", "serial", "microcontroller", "open-collector", "data", "transceiver", "TX", "RX" ]
 title: "I2C Communication Protocol"
 type: "page"
@@ -126,7 +128,7 @@ A **gotcha** during PCB design is to unintentionally **add multiple pull-up resi
 
 ## Transmission Speeds
 
-## Overview
+### Overview
 
 The data on an I2C bus can be transmitted at different rates, depending on what modes both the transmitter and receiver support. The following table outline the modes and the maximum speeds at which data can be transmitted on them. 
 
@@ -161,15 +163,15 @@ Because the data is clocked, there is almost no minimum speed (unless the device
     </tbody>
 </table>
 
-## Fast Mode (Fm)
+### Fast Mode (Fm)
 
 Fast mode is a mode of operation for the I2C bus that allows devices to communicate at speeds of up to 400kbps. It is supported by a great number of I2C devices.
 
-## Fast Mode Plus (Fm+)
+### Fast Mode Plus (Fm+)
 
 Fast mode plus (Fm+) is an extension of I2C Fast mode which allows devices to communicate at speeds of up to 1Mbps. It was introduced by Phillips Semiconductors (which is now NXP) in April 2006. It is occasionally used for I2C devices which require high data throughput.
 
-## High-Speed
+### High-Speed
 
 The high-speed mode allows for communcation rates of up to 3.4Mbps, which makes it the fastest I2C mode available. It is an **officially supported** mode of operation, however, not many I2C devices support this mode of operation (the competing [SPI communcation protocol](/electronics/communication-protocols/spi-communication-protocol/) seems to be the preferred way of doing things at >1Mbps). One of the key differences between normal I2C communcations and high-speed mode is the **current sourcing** capabilities of the master device. This allows the master to inject current onto the I2C lines to pull-them high faster than what pull-up resistors on their own would allow.
 
@@ -201,7 +203,7 @@ There are variants on the I2C bus, defined and implemented by various manufactur
 
 All I2C slave devices must have an address. This address is used by the master to select which device to talk with. All addresses are 7 bits long (EDIT April 2016, this is no longer true, see the **10-bit Addressing section** on this page, and are left shifted by one and packed into the first byte which is sent across the I2C bus by the master (the final bit, bit 0, of the first byte, is used to signal whether a read or write operation is about to take place).
 
-## Multiple ICs, Same Address?
+### Multiple ICs, Same Address?
 
 Connecting two identical devices (e.g. lets say you have two temperature sensors) onto the same I2C bus, both with the same pre-programmed I2C address means that that the master cannot address them individually and functionality is serverly reduced. To overcome this, many I2C slave ICs also come with a few address pins. These address pins are digital inputs and control what I2C address the slave will respond to. A device with two address pins allows the designer to connect up to four identical ICs to the same I2C bus by connecting the address pins to different combinations of Vcc and GND.
 
@@ -209,7 +211,7 @@ Newer pin-constrained I2C slave devices allow you to connect the address pins up
 
 {{< img src="i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png" width="826px" caption="The logic table (truth table) of the I2C address pins on the TI INA226 IC. Notice how you can connect the address pins up to SCL or SDA as well as the standard VS and GND, to give a total of 16 possible I2C addresses."  >}}
 
-## Reserved I2C Addresses
+### Reserved I2C Addresses
 
 The I2C specification reserves some addresses for special purposes. Because of these reserved addresses, only 112 addresses are available to I2C devices using the 7-bit address scheme. Do not set your device to use these addresses listed below.
 
@@ -257,21 +259,21 @@ The I2C specification reserves some addresses for special purposes. Because of t
   </tbody>
 </table>
 
-## General Call
+### General Call
 
 0000000(0) is the I2C address for a general call. It is used by the **master to address all the slaves on an I2C bus at once**. The second byte contains the command the master wishes to send all the slaves. These commands, as they are generic, are also specified as part of the I2C protocol.
 
-## Start Byte
+### Start Byte
 
 000000(1) is the I2C address for a **start byte**. The start byte was added to the I2C specification to allow microcontrollers without dedicated I2C peripherals to use the I2C bus without consuming too much power when having to poll the I2C lines at a high speed to detect the start of a transmission (a technique referred to as bit banging). Instead, the microcontroller only has to detect one of the seven 0's in the start byte at a slower polling speed, and then switch to a high rate for the rest of the transmission. The master transmits a start condition, the start byte, a **dummy acknowledge pulse**, a repeated start condition, and then the actual transmission.
 
-## CBUS
+### CBUS
 
 `0000001(x)` is the I2C address reserved for CBUS addresses. CBUS is a three-wire bus with a different transmission format to I2C, and is used in home automation products. This reserved address allows CBUS receivers to be connected to I2C buses. I2C devices should ignore any messages sent to this address.
 
 CBUS addressing over I2C is very uncommon.
 
-## 10-bit Addressing
+### 10-bit Addressing
 
 Due to the rise in popularity of the I2C protocol and the limited amount of addresses available with the original 7-bit addressing scheme (leading to address clashes), a 10-bit addressing scheme was introduced. 10-bit addressing gives an additional 1024 unique addresses.
 
@@ -293,7 +295,7 @@ The picture below shows how cross-coupling can introduce noise onto the SDA and 
 
 {{< img src="i2c-noise-from-long-cable.jpg" width="387px" caption="The cross-talk noise that occurs on long I2C transmission lines. This shows SCL (yellow) and SDA (blue) over a 20m ethernet cable."  >}}
 
-## Using Twisted Pair Cabling And A Buffer IC
+### Using Twisted Pair Cabling And A Buffer IC
 
 I have had very good results with using twisted-pair cabling along with the P82B96 buffer IC to extend the length of the I2C bus. With the SDA and SCL lines connected to wires in different pairs, and then either power or ground connected to the other wire in each pair, I have managed to transmit I2C at 50kHz through a 30m cable. Make sure power and ground are decoupled well at each end with 100nF ceramic capacitors. Using a data/clock line and either power or ground in a twisted pair couples them tightly together, and reduces the amount of emissions that couple onto other wires in the cable. Cat5e ethernet cable can be used (although you only use 2 of the 4 pairs if following the above example).
 
@@ -313,7 +315,7 @@ Rise-time accelerators, such as those used on the [NXP PCA9507 2-wire Serial Bus
 
 ## Hot-Swapping
 
-## Precharging
+### Precharging
 
 A clever I2C trick for hot-swapping capability is to pre-charge the bus lines, as used on the [NXP PCA9511 Hot-swappable I2C Bus Buffer](http://www.marutsu.co.jp/contents/shop/marutsu/datasheet/PCA9511.pdf) (this also features rise-time accelerators). During insertion (assuming this chip is on a hot-swappable device which uses I2C), the bus lines are pre-charged to about 1V, which limits the worst-case capacitive disturbances on insertion due the I2C lines being a different voltage levels.
 
@@ -354,3 +356,9 @@ I try to use SPI or UART over I2C (if the option exists, and there are no other 
 ## Microcontroller Support
 
 I2C is a very popular protocol and is supported by most microcontrollers. Some examples of microcontroller I2C support include the TI MSP430 Enhanced Universal Serial Communication Interface (eUSCI),[ PSoC 3, 4, and 5LP I2C drag'n'drop modules](/programming/microcontrollers/psoc/components#i2c) (both integrated and hardware fabric versions), and the Atmel Atmega TWI peripheral.
+
+### I2C Programmable Analog And Digital Noise Filters
+
+Some microcontrollers provide programmable analog and/or digital noise filters for their I2C peripherals.
+
+An example of a microcontroller that provides both analog and digital filters is the STM32F0 range by STmicroelectronics.

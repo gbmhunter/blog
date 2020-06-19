@@ -3,6 +3,8 @@ author: "gbmhunter"
 categories: [ "Electronics", "Circuit Design" ]
 date: 2013-12-16
 draft: false
+lastmod: 2020-06-19
+tags: [ "electronics", "circuit design", "electrical signal types", "CMOS", "TTL", "transistor-transistor logic" ]
 title: "Electrical Signal Types"
 type: "page"
 ---
@@ -76,4 +78,13 @@ The transistor-based equivalent of SCFL is PECL (emitter-coupled logic).
 
 ## TTL
 
-LVTTL is the low-voltage version of TTL.
+TTL (_transistor-transistor logic_) is a very common voltage level signal used by many embedded devices today. Even though the standard "high" is 5.0V, many systems transmit logic highs at 3.3V.
+
+Low: 0-0.8V
+High: 2-5.0V
+
+Power dissipation: 10mW per gate[^ni-differences-between-cmos-ttl]
+Propagation delay: 10ns when driving a 15pF/400Ohm load[^ni-differences-between-cmos-ttl]
+
+
+[^ni-differences-between-cmos-ttl]: [https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z000000P9yaSAC](https://knowledge.ni.com/KnowledgeArticleDetails?id=kA00Z000000P9yaSAC)

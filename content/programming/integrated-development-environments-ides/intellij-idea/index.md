@@ -1,13 +1,13 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Integrated Development Environments" ]
 date: 2016-06-26
 description: "A tutorial on using IntelliJ, including keyboard shortcuts and how to use the IdeaVim plugin."
 draft: false
 lastmod: 2020-03-17
 tags: [ "IDEs", "IntelliJ", "IDEA", "Java", "editor", "code", "shortcuts", "IdeaVim", "vim", "Windows", "Mac", "Python", "ssh", "deployments", "server" ]
-title: IntelliJ IDEA
-type: page
+title: "IntelliJ IDEA"
+type: "page"
 ---
 
 ## Quick Reference

@@ -60,11 +60,17 @@ Mouse Wheel           Zoom in/out
 Mouse Wheel + Ctrl    Pan left/right
 Mouse Wheel + Shift   Pan up/down
 Ctrl-D                Load datasheet for selected component (opens web browser)
+```
 
+The following keybaord shortcuts are to be pressed when the mouse cursor is over a component:
+
+```text
 E                     Show symbol properties (Edit item)
 M                     Move schematic item
 C                     Duplicate symbol or label
+G                     Grab the end of a wire and shorten/lengthen it
 ```
+
 
 ## Libraries
 
