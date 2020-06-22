@@ -1,9 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2011-09-05
 draft: false
-title: Transistors
-type: page
+lastmod: 2011-09-05
+tags: [ "electronics", "components" ]
+title: "Transistors"
+type: "page"
 ---
 
 ## Overview

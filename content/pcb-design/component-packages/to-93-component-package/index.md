@@ -1,11 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
 tags: [ "component packages", "PCB design", "transistor", "TO-93", "TO-209AB", "SCR" ]
-title: TO-93 (TO-209AB) Component Package
-type: page
+title: "TO-93 (TO-209AB) Component Package"
+type: "page"
 ---
 
 ## Overview
@@ -31,76 +31,40 @@ type: page
 <td >n/a</td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >Panel Mount
-</td>
+<td >Mounting</td>
+<td >Panel Mount</td>
 </tr>
 <tr >
-
-<td >Pin Count
-</td>
-
-<td >4 (typ)
-</td>
+<td >Pin Count</td>
+<td >4 (typ)</td>
 </tr>
 <tr >
-
-<td >Pitch
-</td>
-
-<td >n/a (terminals and flying leads)
-</td>
+<td >Pitch</td>
+<td >n/a (terminals and flying leads)</td>
 </tr>
 <tr >
-
-<td >Solderability
-</td>
-
-<td >Designed for hand soldering/screw lugs
-</td>
+<td >Solderability</td>
+<td >Designed for hand soldering/screw lugs</td>
 </tr>
 <tr >
-
-<td >Thermal Resistance
-</td>
-
-<td >n/a
-</td>
+<td >Thermal Resistance</td>
+<td >n/a</td>
 </tr>
 <tr >
-
-<td >Land Area
-</td>
-
-<td >n/a (panel mount)
-</td>
+<td >Land Area</td>
+<td >n/a (panel mount)</td>
 </tr>
 <tr >
-
-<td >Height
-</td>
-
-<td >49.5mm (exc. cable), 231mm (approx, cable fully extended)
-</td>
+<td >Height</td>
+<td >49.5mm (exc. cable), 231mm (approx, cable fully extended)</td>
 </tr>
 <tr >
-
-<td >3D Models
-</td>
-
-<td >n/a
-</td>
+<td >3D Models</td>
+<td >n/a</td>
 </tr>
-<tr >
-
-<td >Common Uses
-</td>
-
-<td >High-power SCRs
-</td>
+<tr>
+<td>Common Uses</td>
+<td>High-power SCRs</td>
 </tr>
 </tbody>
 </table>

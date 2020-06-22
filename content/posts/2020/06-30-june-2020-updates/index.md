@@ -25,3 +25,5 @@ type: "post"
 * Updated the {{% link text="Debouncing page" src="/electronics/circuit-design/debouncing" %}}.
 
 * Updated the {{% link text="Elecrical Signal Types page" src="/electronics/circuit-design/electrical-signal-types" %}}.
+
+* Added the new {{% link text="Silicon Controlled Recitifers (SCRS) page" src="/electronics/components/transistors/silicon-controlled-rectifiers-scrs" %}}.

@@ -1,15 +1,18 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
+categories: [ "Electronics", "Components" ]
 date: 2011-09-03
+description: "Schematic symbol, important parameters, leakage currents, failure modes, thermal stability, dead-time and more info about MOSFETs."
 draft: false
+lastmod: 2011-09-03
 tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode" ]
-title: MOSFETs
-type: page
+title: "MOSFETs"
+type: "page"
 ---
 
 ## Overview
 
-A MOSFET is a three-pin active semi-conductor device, used frequently in electronics design. In the most basic sense, they can be thought of as a voltage controlled switch, that can turn things on and off.
+A _MOSFET_ is a three-pin active semi-conductor device, used frequently in electronics design. In the most basic sense, they can be thought of as a voltage controlled switch, that can turn things on and off.
 
 MOSFETs should not be confused with MODFETs (modulation-doped FETs) or MESFETs (metal-semiconductor FETs).
 
