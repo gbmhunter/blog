@@ -1,6 +1,9 @@
 ---
 author: "gbmhunter"
+categories: [ "Electronics", "Communication Protocols" ]
 date: 2015-02-15
+description: "Layers, lanes, memory, BARs, usage on Windows, and more info about the PCI Express (PCIe) communication protocol."
+lastmod: 2015-02-15
 tags: [ "PCIe", "PCI", "express", "communication protocol", "serial", "TLPs", "data link layer", "lanes", "memory", "bridges" ]
 title: "PCI Express (PCIe)"
 type: "page"
@@ -16,13 +19,13 @@ PCIe is a packet based network, similar to Ethernet. However, it is accessed via
 
 The PCIe specification defines three networking layers, the transaction layer (the topmost layer), the data link layer, and the physical layer (the bottom layer).
 
-## The Transaction Layer
+### The Transaction Layer
 
 The transaction layer is where transaction layer packets (TLPs) are defined. This is the uppermost layer of the PCIe specification.
 
 There is a restriction of the maximum number of bytes per TLP. Typical maximums are 128, 256 or 512 bytes. Larger bits of information have to be split over multiple TLPs.
 
-## The Data Link Layer
+### The Data Link Layer
 
 The data link layer is responsible for making sure that every TLP (transaction layer packet, see above) arrives at it's destination correctly.
 
@@ -75,7 +78,7 @@ The transmission speed in software is not defined as a absolute bits/seconds, bu
 
 A link is a device-to-device connection consisting of 1 or more lanes.
 
-One of the cheapest FPGA's with PCIe support is the XC7A35T-1FTG256C, a Xilinx Artix-7 with 33280 cells in a BGA-256 package. In Feb 2015, it was available from Avnet Express is prices of US$37.89 (1) and US$29.17 (500).
+One of the cheapest FPGAs with PCIe support is the XC7A35T-1FTG256C, a Xilinx Artix-7 with 33280 cells in a BGA-256 package. In Feb 2015, it was available from Avnet Express is prices of US$37.89 (1) and US$29.17 (500).
 
 ## Data Transmission
 
@@ -117,7 +120,7 @@ The built-in Device Manager gives a very brief overview of detected PCI cards.
 
 {{< img src="screenshot-of-custom-pcie-card-in-device-manager.png" width="341px" caption="A screenshot of Windows Device Manager showing the presence of a custom PCIe card."  >}}
 
-RWEverything is a great Windows tool that allows you to read and write from any available memory location on the PCIe card (not just the configuration memory, as many other tools provide).
+_RWEverything_ is a great Windows tool that allows you to read and write from any available memory location on the PCIe card (not just the configuration memory, as many other tools provide).
 
 {{< img src="screenshot-of-custom-pcie-card-in-rw-everything.png" width="883px" caption="A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC."  >}}
 
