@@ -2,10 +2,10 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Components" ]
 date: 2011-09-03
-description: "Schematic symbol, important parameters, leakage currents, failure modes, thermal stability, dead-time and more info about MOSFETs."
+description: "Schematic symbol, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."
 draft: false
-lastmod: 2011-09-03
-tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode" ]
+lastmod: 2020-06-25
+tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate" ]
 title: "MOSFETs"
 type: "page"
 ---
@@ -38,33 +38,33 @@ Note that with all voltage parameters that mention two pins of a MOSFET (e.g. `\
 Sorted by alphabetical order, including subscripts.
 
 <table>
-    <thead>
-        <tr>
-            <th>Symbol</th>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
 <tbody>
-<tr >
-<td >\(R_{DS(on)}\)</td>
-<td >On-state drain-source resistance.</td>
-<td >The resistance between drain and source when the MOSFET is turned on. Usually around 1-10Ω for smaller MOSFETs, and can be as low as 1m for larger power MOSFETs.</td>
+<tr>
+<td>\(R_{DS(on)}\)</td>
+<td>On-state drain-source resistance.</td>
+<td>The resistance between drain and source when the MOSFET is turned on. Usually around 1-10Ω for smaller MOSFETs, and can be as low as 1m for larger power MOSFETs.</td>
 </tr>
-<tr >
-<td >\(V_{DS(max)}\)</td>
-<td >Maximum drain-source voltage.</td>
-<td >The maximum allowed voltage between the drain and source. A higher voltage can cause the MOSFET to breakdown.</td>
+<tr>
+<td>\(V_{DS(max)}\)</td>
+<td>Maximum drain-source voltage.</td>
+<td>The maximum allowed voltage between the drain and source. A higher voltage can cause the MOSFET to breakdown.</td>
 </tr>
-<tr >
-<td >\(V_{GS(max)}\)</td>
-<td >Maximum gate-source voltage</td>
-<td >The maximum allowed gate-source voltage. Voltages above this may destroy the MOSFET due to gate punch-through.</td>
+<tr>
+<td>\(V_{GS(max)}\)</td>
+<td>Maximum gate-source voltage</td>
+<td>The maximum allowed gate-source voltage. Voltages above this may destroy the MOSFET due to gate punch-through.</td>
 </tr>
-<tr >
-<td >\(V_{GS(th)}\)</td>
-<td >Threshold voltage.</td>
-<td >The voltage between the gate-source at which the MOSFET begins to turn on.  The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet.</td>
+<tr>
+<td>\(V_{GS(th)}\)</td>
+<td>Threshold voltage.</td>
+<td>The voltage between the gate-source at which the MOSFET begins to turn on.  The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet.</td>
 </tr>
 </tbody>
 </table>
@@ -114,7 +114,7 @@ In precise pulse-drive situations, it is desirable for the MOSFET to have simila
 * FRFET - A trademarked name by Fairchild used to label some of their fast-recovery MOSFETs used in inverter and [BLDC controller](/electronics/circuit-design/bldc-motor-control) design
 * PROFET - A name (it stands for protected-FET) used by [Siemens](http://www.siemens.com) and now [Infineon](http://www.infineon.com) to describe power MOSFETs with built in logic circuitry for "smart switches", designed for controlling current and voltage into a load. An document about PROFETs from Infineon can be found [here](http://www.infineon.com/dgdl?folderId=db3a30431400ef68011421b54e2e0564&fileId=db3a304332d040720132f7151b4a7955).
 
-## FinFET's
+## FinFETs
 
 FinFETs are multi-fin FETs which overcome issues once MOSFET approach very small sizes (such as 22nm).
 
@@ -128,7 +128,7 @@ MOSFETs can be used for load switches, as shown on the [Load Switches page](/ele
 
 One problem with MOSFETS (well, with any switched semiconductor) is dealing with the gate drive when either:
 
-* A) The source voltage is not constant or at a point where the gate-source voltage for turn-on is not easy to acheive
+* A) The source voltage is not constant or at a point where the gate-source voltage for turn-on is not easy to achieve
 * B) The MOSFET is dealing with large voltages and so electrical isolation between the load and the drive circuitry is desired/required (normally by law)
 
 In these cases, the gate drive has to be **isolated**.
@@ -149,7 +149,7 @@ CMOS devices have PNPN structures. This forms a parasitic thyristor, which can c
 
 ## The Body Effect (aka The Substrate Bias Effect)
 
-The body effect (also known as the Substrate Bias Effect of a MOSFET describes how the threshold voltage of a MOSFET, `\(V_{TH}\)` is affected by the voltage difference between the substrate and source, `\(V_{SB}\)`. Because the source-to-body voltage can effect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_.
+The body effect (also known as the _Substrate Bias Effect_) of a MOSFET describes how the threshold voltage of a MOSFET, `\(V_{TH}\)` is affected by the voltage difference between the substrate and source, `\(V_{SB}\)`. Because the source-to-body voltage can effect the threshold voltage, it can be thought of as a second gate, and the substrate sometimes called the _back gate_, and this effect called the _back-gate effect_.
 
 Note that most discrete MOSFETs that you can buy internally tie the substrate to the source, meaning `\(V_{SB} = 0V\)`. This prevents any body effect from occurring.
 
@@ -167,43 +167,47 @@ Do you want the huge equation that tells you how the threshold voltage changes? 
 
 ## The Substrate (Body) Connection
 
-You generic MOSFETs actually have four leads (pins). It's just that one of them, the substrate (body) lead, is normally connected internally to the source, and so you only get three external connections.
+Standard MOSFETs actually have four, not three, electrical connection points. However most discrete MOSFET components only provide 3 leads from the package. This is because the substrate (body) lead, is normally connected internally to the source (as mentioned above in the _The Body Effect_ section), so you only get three external connections (_Gate_, _Source/Substrate_, and _Drain_).
 
 {{% note %}}
 There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
 {{% /note %}}
 
-{{< img src="mosfet-four-terminal-internal-diagram.gif" width="311px" caption="Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/."  >}}
-
-The substrate lead is pretty self-explanatory, it is connected to the substrate (body) of the MOSFET.
+{{< img src="mosfet-four-terminal-internal-diagram.gif" width="311px" caption="Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/." >}}
 
 Another interesting note is that without the connection of the substrate to the source, the MOSFET source and drain connections would be identical, and there would be no need to separately identify them
 
 **Q. Why is the substrate normally connected to the source?**
 
- A. Because when it isn't, a MOSFET becomes much harder to use. If the substrate is not connected to the source, you have to consider the _body effect_. It is easier/better to connect the substrate to ground internally (less connection resistance, one less lead, e.t.c) rather than to leave it up to the circuit designed to connect it externally. Manufacturers of ICs with integrated MOSFETs may choose to connect the substrate to something else. A common choice is ground.
+A. Because when it isn't, a MOSFET becomes much harder to use. If the substrate is not connected to the source, you have to consider the _body effect_. It is easier/better to connect the substrate to ground internally (less connection resistance, one less lead, e.t.c) rather than to leave it up to the circuit designed to connect it externally. Manufacturers of ICs with integrated MOSFETs may choose to connect the substrate to something else. A common choice is ground.
 
 The 3N163 is an example of a MOSFET which provides you with a fourth pin for the substrate connection.
 
-{{< img src="3n163-mosfet-drawing-with-substrate-connection.png" width="348px" caption="A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html."  >}}
+{{< img src="3n163-mosfet-drawing-with-substrate-connection.png" width="348px" caption="A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html." >}}
 
 You may also note that some IC designs do not connect the substrate to the source. The TPS2020 load switch by Texas Instruments is one example. You can see in the diagram below that the substrate pin is connected to ground. I'm not entirely sure why, but it might have something to do with the devices ability to block reverse current. Normally this is achieved with back-to-back MOSFETs, but this diagram almost suggests that they pull it off using only the one MOSFET.
 
-{{< img src="tps2020-functional-diagram-with-mosfet-body-grounded-annotated.png" width="611px" caption="Functional block diagram of the TPS2020 load switch. Note how the substrate of the MOSFET (top middle) is not connected to the source, but instead connected to ground. Image from http://www.ti.com/lit/ds/symlink/tps2020.pdf."  >}}
+{{< img src="tps2020-functional-diagram-with-mosfet-body-grounded-annotated.png" width="611px" caption="Functional block diagram of the TPS2020 load switch. Note how the substrate of the MOSFET (top middle) is not connected to the source, but instead connected to ground. Image from http://www.ti.com/lit/ds/symlink/tps2020.pdf." >}}
 
 Interestingly, the block diagram for the [NCP380 high-side load switch by On Semiconductor](http://www.onsemi.com/pub_link/Collateral/NCP380-D.PDF) may shed more light on this matter. Notice how in the image below, the substrate of the MOSFET is connected to two switches, which can either connect it to the input or the output.
 
-{{< img src="ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png" width="711px" caption="A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed."  >}}
+{{< img src="ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png" width="711px" caption="A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed." >}}
 
 ## The Transconductance Of A MOSFET
 
 The transconductance of a MOSFET is the ratio of a change in output current (drain-source current, `\(I_{DS}\)`) due to the change in input voltage (gate-source voltage, `\(V_{GS}\)`) over an arbitrarily small range of operation.
 
-The range of operation has to be restricted because the transcondutance of a MOSFET changes depending on the operating point.
+The range of operation has to be restricted because the transconductance of a MOSFET changes depending on the operating point.
 
 ## Spice Model
 
 Information about the MOSFET Spice model can be found on the [Altium Simulation page](/electronics/general/altium/altium-simulation).
+
+## Floating-gate MOSFETs
+
+A _floating-gate MOSFET_ (FGMOS) is a type of MOSFET where the gate is completely isolated. Isolation in this sense refers to no connection via conductive materials such as copper or doped semiconductor. The gate is capacitively coupled to one or more "input gates". Because the gate is isolated (the gate can also be thought of as "floating"), any charge stored on it via the capacitive coupling remains there for a long time. This forms the basis of a _floating-gate memory cell_ which is used to provide the storage in non-volatile memory such as EEPROM and flash. The cell "remembers" the state it was last in, for long periods of time, even when power is removed from the circuit.
+
+**How long will floating-gate MOSFETs retain their charge, if un-powered?** As of 2020, the current mass-produced, consumer grade flash memory devices and SD cards claim to have a memory retention life of approximately 10 years, if left un-powered the entire time (if periodically plugged in, these devices can re-charge and "reset" the 10-year clock).
 
 ## Part Recommendations
 
