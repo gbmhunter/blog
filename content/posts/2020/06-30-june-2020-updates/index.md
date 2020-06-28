@@ -24,8 +24,8 @@ type: "post"
 
 * Updated the {{% link text="Debouncing page" src="/electronics/circuit-design/debouncing" %}}.
 
-* Updated the {{% link text="Elecrical Signal Types page" src="/electronics/circuit-design/electrical-signal-types" %}}.
+* Updated the {{% link text="Electrical Signal Types page" src="/electronics/circuit-design/electrical-signal-types" %}}.
 
-* Added the new {{% link text="Silicon Controlled Recitifers (SCRS) page" src="/electronics/components/transistors/silicon-controlled-rectifiers-scrs" %}}.
+* Added the new {{% link text="Silicon Controlled Rectifiers (SCRS) page" src="/electronics/components/transistors/silicon-controlled-rectifiers-scrs" %}}.
 
 * Added a section on {{% link text="floating-gate MOSFETS to the MOSFET page" src="/electronics/components/transistors/mosfets#floating-gate-mosfets" %}}.

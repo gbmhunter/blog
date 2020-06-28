@@ -55,8 +55,8 @@ A local cached copy of [SanDisk Whitepaper: SanDisk Flash Memory Cards Wear Leve
 
 A _multi-level cell_ is a individual storage element which can hold more than one bit of information.
 
-1. **SLC** (_Single Level Cell_) is the highest grade of NAND flash. It is very hard to purchase via standard retail outlets. [Example](https://nz.rs-online.com/web/p/micro-sd-cards/1448058/).
-2. **MLC** (_Multi Level Cell_). Read speeds are typically lower than _SLC_ because the controller may need to read the cell at two different voltages to help resolve errors[^wikipedia-multi-level-cell]. MLC cards are also marketed for industrial use.
+1. **SLC** (_Single Level Cell_) is the highest grade of NAND flash. Each cell only has one voltage level it is charged to, allowing only 1-bit to be stored per cell. It is very hard to purchase via standard retail outlets. [Example](https://nz.rs-online.com/web/p/micro-sd-cards/1448058/).
+2. **MLC** (_Multi Level Cell_) has 4 voltage levels per cell, allowing 2 bits of information to be stored. Read speeds are typically lower than _SLC_ because the controller may need to read the cell at two different voltages to help resolve errors[^wikipedia-multi-level-cell]. MLC cards are also marketed for industrial use. The Intel 8087 was one of the first mass-produced ICs to use MLC technology.
 
 [^sandisk-sd-oem-product-manual]: [https://datasheet.ciiva.com/26837/getdatasheetpartid-335894-26837658.pdf](https://datasheet.ciiva.com/26837/getdatasheetpartid-335894-26837658.pdf)
 [^wikipedia-multi-level-cell]: [https://en.wikipedia.org/wiki/Multi-level_cell](https://en.wikipedia.org/wiki/Multi-level_cell)
