@@ -29,3 +29,5 @@ type: "post"
 * Added the new {{% link text="Silicon Controlled Rectifiers (SCRS) page" src="/electronics/components/transistors/silicon-controlled-rectifiers-scrs" %}}.
 
 * Added a section on {{% link text="floating-gate MOSFETS to the MOSFET page" src="/electronics/components/transistors/mosfets#floating-gate-mosfets" %}}.
+
+* Added a new {{% link text="How To Change The IO Scheduling Class And Priority In Linux page" src="/programming/operating-systems/linux/how-to-change-io-scheduling-class-and-priority-in-linux" %}}. 

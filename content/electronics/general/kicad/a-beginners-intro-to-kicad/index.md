@@ -17,9 +17,17 @@ KiCAD is an open-source electronic design CAD software package. It runs on Windo
 
 {{% img src="kicad-logo.png" width="300px" caption="The KiCAD logo." %}}
 
+KiCAD is a C++ program which uses the wxWidgets library to provide the GUI elements.
+
 KiCAD organizes work into _projects_. Each project has a project file ending in `.pro`. A _Project_ consists of _schematics_ (`.sch`), a _PCB design file_ (`.kicad_pcb`), _component library files_ (`.lib`), and more.
 
-The two main sub-applications bundled with KiCAD are `Eeschema`, the schematic editing tool, and `PcbNew`, the PCB editing tool.
+KiCAD is not a single program, but rather a collection of applications that are bundled together. KiCAD consists of:
+* `KiCAD`: The self-titled project management tool. This can load `.pro` files and open other parts of the application such as Eeschema and PcbNew.
+* `Eeschema`: The schematic editing tool.
+* `PcbNew`: The PCB editing tool.
+* `GerbView`: The Gerber file viewer.
+
+Any of these programs can be run individually if desired.
 
 ## Installation
 

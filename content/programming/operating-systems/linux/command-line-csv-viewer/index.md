@@ -1,10 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2019-06-18
+description: "How to make a simple command-line CSV viewer for Linux."
 draft: false
 lastmod: 2019-06-18
-tags: [ "bash", "scripts", "CSV", "command-line", "viewer" ]
+tags: [ "bash", "scripts", "CSV", "command-line", "viewer", "Linux", "UNIX" ]
 title: "Command-Line CSV Viewer"
 ---
 
