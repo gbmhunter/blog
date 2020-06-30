@@ -47,7 +47,7 @@ $ hugo
     </ul>
   </li>
   <li><b>old</b> <i>Deprecated content which is kept around just in case I need it again.</i></li>
-  <li><b>scripts/</b> <i>Useful Python scripts to automate some labourous tasks.</i></li>
+  <li><b>scripts/</b> <i>Useful Python scripts to automate some laborious tasks.</i></li>
 </ul>
 
 # Broken Link Checking
@@ -69,3 +69,7 @@ $ pipenv install --two LinkChecker
 # Markdown Extensions
 
 The syntax `<www.google.com>` can be used (instead of `[www.google.com](www.google.com)`) to include a link in where the displayed text is the same as the href.
+
+# Diagrams
+
+Diagrams are typically drawn in _LibreOffice Draw_ and then exported to `.svg` to display on a page. The Draw file is usually located in the same content directory as the page the diagram is shown on.
