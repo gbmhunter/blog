@@ -220,6 +220,8 @@ Xilinx provides the [CAN 2.0B and CAN-FD Controller IP core](https://www.xilinx.
 
 CANopen was developed for embedded devices in automation systems . It defines the OSI network layers that the basic CAN standards leaves unspecified, which includes the network layer and above.
 
+{{% img src="can-open-logo.jpg" width="500px" caption="The CANopen logo." %}}
+
 The CANopen standard is defined by the CiA (CAN in Automation) group. The documents for these standards can be found at [https://www.can-cia.org/groups/specifications/](https://www.can-cia.org/groups/specifications/). The most important document is [CiA 301](), which defines the CANopen application layer. If the above link is down, you can view the [local cached copy, v4.2.0, accessed June 2020](cia-301-canopen-specification-document.pdf).
 
 All CANopen nodes must have a object dictionary.

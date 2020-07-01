@@ -10,4 +10,6 @@ title: "July 2020 Updates"
 type: "post"
 ---
 
-* Added a Input Resistors section to the Op-Amp page.
+* Added a {{% link text="Input Resistors section to the Op-Amp page" src="/electronics/components/op-amps#input-resistors" %}}.
+
+    {{% figure src="/electronics/components/op-amps/op-amp-input-pin-resistors.png" width="500px" %}}
