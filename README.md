@@ -46,7 +46,8 @@ $ hugo
       </li>
     </ul>
   </li>
-  <li><b>old</b> <i>Deprecated content which is kept around just in case I need it again.</i></li>
+  <li><b>old/</b> <i>Deprecated content which is kept around just in case I need it again.</i></li>
+  <li><b>requirements/</b> <i>Contains a requirements.txt used to create a Python virtual environment for running the various Python scripts in this repo.</i></li>
   <li><b>scripts/</b> <i>Useful Python scripts to automate some laborious tasks.</i></li>
 </ul>
 
@@ -72,4 +73,4 @@ The syntax `<www.google.com>` can be used (instead of `[www.google.com](www.goog
 
 # Diagrams
 
-Diagrams are typically drawn in _LibreOffice Draw_ and then exported to `.svg` to display on a page. The Draw file is usually located in the same content directory as the page the diagram is shown on.
+Diagrams are typically drawn in _LibreOffice Draw_ and then exported to `.svg` to display on a page. The Draw file (`.odg`) is usually located in the same content directory as the page the diagram is shown on.

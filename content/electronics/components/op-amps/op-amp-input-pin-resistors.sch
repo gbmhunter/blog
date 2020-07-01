@@ -1,0 +1,99 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Simulation_SPICE:OPAMP U1
+U 1 1 5EFC53D7
+P 2600 1700
+F 0 "U1" H 2650 1850 50  0000 L CNN
+F 1 "OPAMP" H 2944 1655 50  0001 L CNN
+F 2 "" H 2600 1700 50  0001 C CNN
+F 3 "~" H 2600 1700 50  0001 C CNN
+F 4 "Y" H 2600 1700 50  0001 L CNN "Spice_Netlist_Enabled"
+F 5 "V" H 2600 1700 50  0001 L CNN "Spice_Primitive"
+	1    2600 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5EFC8D0D
+P 2500 2000
+F 0 "#PWR?" H 2500 1750 50  0001 C CNN
+F 1 "GND" H 2505 1827 50  0000 C CNN
+F 2 "" H 2500 2000 50  0001 C CNN
+F 3 "" H 2500 2000 50  0001 C CNN
+	1    2500 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR?
+U 1 1 5EFC9C73
+P 2500 1400
+F 0 "#PWR?" H 2500 1250 50  0001 C CNN
+F 1 "VCC" H 2517 1573 50  0000 C CNN
+F 2 "" H 2500 1400 50  0001 C CNN
+F 3 "" H 2500 1400 50  0001 C CNN
+	1    2500 1400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2300 1800 2150 1800
+Wire Wire Line
+	2150 2250 2900 2250
+Wire Wire Line
+	2150 1800 2150 2250
+Wire Wire Line
+	2900 1700 2900 2250
+$Comp
+L Simulation_SPICE:VSIN V1
+U 1 1 5EFCE59A
+P 1650 1800
+F 0 "V1" H 1780 1800 50  0000 L CNN
+F 1 "VSIN" H 1780 1800 50  0001 L CNN
+F 2 "" H 1650 1800 50  0001 C CNN
+F 3 "~" H 1650 1800 50  0001 C CNN
+F 4 "Y" H 1650 1800 50  0001 L CNN "Spice_Netlist_Enabled"
+F 5 "V" H 1650 1800 50  0001 L CNN "Spice_Primitive"
+F 6 "sin(0 1 1k)" H 1780 1709 50  0001 L CNN "Spice_Model"
+	1    1650 1800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5EFCF7A4
+P 1650 2000
+F 0 "#PWR?" H 1650 1750 50  0001 C CNN
+F 1 "GND" H 1655 1827 50  0000 C CNN
+F 2 "" H 1650 2000 50  0001 C CNN
+F 3 "" H 1650 2000 50  0001 C CNN
+	1    1650 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R1
+U 1 1 5EFC6C9E
+P 2050 1600
+F 0 "R1" V 1950 1500 50  0000 C CNN
+F 1 "1k" V 1950 1650 50  0000 C CNN
+F 2 "" V 2090 1590 50  0001 C CNN
+F 3 "~" H 2050 1600 50  0001 C CNN
+	1    2050 1600
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1900 1600 1650 1600
+Wire Wire Line
+	2200 1600 2300 1600
+$EndSCHEMATC

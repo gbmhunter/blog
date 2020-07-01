@@ -2,8 +2,9 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
+description: "Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps)."
 draft: false
-lastmod: 2019-01-10
+lastmod: 2020-07-01
 tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components" ]
 title: "Op-Amps"
 type: "page"
@@ -59,17 +60,17 @@ A op-amp in the non-inverting amplifier configuration is shown below.
 
 The equation for the gain of the non-inverting amplifier is:
 
-<div>$$ v_o = (1 + \frac{R_f}{R_i} ) v_i $$</div>
+<p>$$ v_o = (1 + \frac{R_f}{R_i} ) v_i $$</p>
 
 Notice the `\(1\)` in the gain equation? This means that no matter what you set the resistors `\(R_f\)` and `\(R_i\)` to, you can **never get a gain which is less than one**. This is one of the disadvantages of the non-inverting amplifier (you can have a gain of less than one with an inverting amplifier).
 
 Here is a simulation schematic (circuit) for a non-inverting op-amp amplifier running from a single-ended supply. Because R1 (`\(R_f\)`) and R2 (`\(R_i\)`) are both `\(1k\Omega\)`, the op-amp has a gain of:
 
-<div>
+<p>
 $$ G = 1 + \frac{R_f}{R_i} \\  
 G = 1 + \frac{1k\Omega}{1k\Omega} \\  
 G = 2 $$
-</div>
+</p>
 
 {{< img src="non-inverting-op-amp-amplifier-simulation-schematic.png" width="465px" caption="The simulation schematic for a non-inverting op-amp amplifier."  >}}
 
@@ -85,7 +86,7 @@ A op-amp amplifier in the inverting configuration is shown below:
 
 The equation for the gain of an inverting amplifier is:
 
-<div>$$ v_o = - \frac{R_f}{R_i} v_i $$</div>
+<p>$$ v_o = - \frac{R_f}{R_i} v_i $$</p>
 
 The negative sign is to show that the output is the inverse polarity of the input. Notice that, unlike the non-inverting amplifier, **an inverting amplifier lets you obtain a gain of less than 1**.
 
@@ -105,7 +106,7 @@ A differential amplifier amplifies the difference between two electrical signals
 
 The output voltage is given by the equation:
 
-<div>$$ v_o = \frac{R_4}{R_3 + R_4}(1 + \frac{R_2}{R_1})v_2 - \frac{R_2}{R_1}v_1 $$</div>
+<p>$$ v_o = \frac{R_4}{R_3 + R_4}(1 + \frac{R_2}{R_1})v_2 - \frac{R_2}{R_1}v_1 $$</p>
 
 Below is a schematic for simulating the behaviour of a differential op-amp:
 
@@ -177,7 +178,7 @@ For a fixed-gain, cascading op-amps can also be used to **increase the bandwidth
 
 When cascading op-amps, the total gain is the product of all of the individual op-amps gains, i.e.:
 
-<div>$$ A_{total} = A_0 A_1 A_2 ... A_n $$</div>
+<p>$$ A_{total} = A_0 A_1 A_2 ... A_n $$</p>
 
 ## The Bandwidth
 
@@ -185,7 +186,7 @@ The bandwidth of cascaded op-amps is not as simple to calculate as the gain.
 
 If all of the op-amps are identical, then the following equation can be used:
 
-<div>$$ BW_{tot} = BW \times \sqrt{2^{\frac{1}{N}} - 1} $$</div>
+<p>$$ BW_{tot} = BW \times \sqrt{2^{\frac{1}{N}} - 1} $$</p>
 
 <p class="centered">
     where:<br>
@@ -256,3 +257,11 @@ Isolation amplifiers provide galvanic isolation between the input (sensor) and o
 A common application would be to isolate and amplify the voltage across a current-sense resistor on a high-power motor, or to protect humans with medical sensors connected to them from the measurement system.
 
 Basic isolation amplifiers require two power supplies (one for each side of isolation), while others incorporate built-in transformers so that you only have to provide one power source.
+
+## Input Resistors
+
+One of the first things you learn about an op-amp is that the input impedance on the input pins are very large (ideally infinite). So naturally you would start to question why resistors would be connected to the input pins of an op-amp like shown in the diagram below:
+
+{{% img src="op-amp-input-pin-resistors.png" width="500px" caption="Schematic showing a resistor on the positive input to a op-amp." %}}
+
+These input resistors serve to limit the input current if the voltage on the input pin goes above `\(V_{CC}\)`. Most op-amps have protection/clamping diodes from the input pins to `\(V_{CC}\)` (typically you can determines this if in the datasheet the input pins max voltage is rated to `\(V_{CC} + 0.3V\)`, which is one diode voltage drop). If there was no resistor there, the built-in diode would conduct and sink a large current from the input pin to `\(V_{CC}\)`, possibly damaging the op-amp. The resistor limits this current to a safe value.
