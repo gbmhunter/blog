@@ -98,7 +98,6 @@ Each project can pull schematic symbols and footprints from two "tables" (groups
 
 DigiKey maintains the [digikey-kicad-library](https://github.com/Digi-Key/digikey-kicad-library), a KiCAD schematic and footprint library of a large number of components that can be supplied by DigiKey. The aim of this library is to provide collection of visually consistent, accurate library parts that have been curated by the DigiKey team. The organization of the library follows the DigiKey family taxonomy.
 
-
 ## Board Routing
 
 ### Getting Around
@@ -119,3 +118,16 @@ KiCAD has a push and shove router.
 ### DRC Rules
 
 As of May 2020, there is no way to add a check for silkscreen over pad in the design rules. The best you can do is select `exclude pads from silkscreen` when exporting the gerbers, which will remove all silkscreen from pads. This is not as ideal though, as this may remove important information from the silkscreen such as designators, version numbers or polarization marks.
+
+## File Types
+
+```text
+.dcm
+.lib            # Schematic symbol library file
+-cache.lib
+-rescue.lib     # Rescued library file
+.pro            # KiCAD project file
+.sch            # Schematic sheet file
+.sch-bak        # Backup of a schematic file.
+sym-lib-table
+```
