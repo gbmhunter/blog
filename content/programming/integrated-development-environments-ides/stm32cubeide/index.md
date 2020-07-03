@@ -5,7 +5,7 @@ date: 2020-06-19
 description: "Info about STM32CubeIDE, an IDE for the STM32 family of microcontrollers."
 draft: false
 lastmod: 2020-06-22
-tags: [ "programming", "integrated development environments", "IDEs", "STM32CubeIDE", "C", "C++", "embedded", "microcontrollers", "STMicroelectronics", ".ioc", "arm-none-eabi-gcc", "arm-none-eabi-g++" ]
+tags: [ "programming", "integrated development environments", "IDEs", "STM32CubeIDE", "C", "C++", "embedded", "microcontrollers", "STMicroelectronics", "ioc", "arm-none-eabi-gcc", "arm-none-eabi-g++" ]
 title: "STM32CubeIDE"
 type: "page"
 ---
