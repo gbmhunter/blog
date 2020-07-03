@@ -15,3 +15,5 @@ type: "post"
     {{% figure src="/electronics/components/op-amps/op-amp-input-pin-resistors.png" width="500px" %}}
 
 * Added a section on {{% link text="CMOS latch-up to the Logic Families page" src="/electronics/circuit-design/logic-families#latch-up" %}}.
+
+    {{% figure src="/electronics/circuit-design/logic-families/cmos-latch-up-semiconductor-diagram.svg" width="700px" %}}

@@ -30,9 +30,13 @@ CMOS (_complementary metal-oxide semiconductor_) is the most widespread logic fa
 
 ### Latch-up
 
-CMOS logic suffers from a phenomenon known as _latch-up_. This is when a **short occurs between a power-rail and pin** in an CMOS-based IC, usually causing serious operation problems if not destruction of the IC. Once latch-up is triggered, it cannot be removed until the circuit is power-cycled.
+CMOS logic suffers from a phenomenon known as _latch-up_. This is when a **short occurs between a power-rail and ground** in an CMOS-based IC, usually causing serious operation problems if not destruction of the IC. Once latch-up is triggered, it cannot be removed until the circuit is power-cycled.
 
-Latch-up occurs because the PN junctions that form the **PMOS and NMOS switching elements form parasitic {{% link text="PNPN thyristors (SCRs)" src="/electronics/components/transistors/silicon-controlled-rectifiers-scrs" %}}**[^ti-latch-up-white-paper]. A latch-up has to be initially triggered by an over-voltage/current condition which causes the voltage on a pin to go at least one diode drop above the rail voltage.
+Latch-up occurs because the PN junctions that form the **PMOS and NMOS switching elements form parasitic {{% link text="PNPN thyristors (SCRs)" src="/electronics/components/transistors/silicon-controlled-rectifiers-scrs" %}}**[^ti-latch-up-white-paper]. A latch-up has to be initially triggered by an over-voltage/current condition which causes the voltage on a pin to go at least one diode drop above the rail voltage, or one voltage drop below the ground.
+
+{{% figure src="cmos-latch-up-semiconductor-diagram.svg" width="800px" caption="Diagram showing how parasitic BJT transistors (black transistors) are formed with the construction of a totem-pole CMOS driver circuit. These two transistors form a PNPN thyristor (also known as an SCR)." %}}
+
+Hot-plugging can cause latch-up issues.
 
 ### AUC
 
