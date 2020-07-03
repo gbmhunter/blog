@@ -67,16 +67,20 @@ You can navigate the schematic hierarchy using the _Navigate Schematic Hierarchy
 Mouse Wheel           Zoom in/out
 Mouse Wheel + Ctrl    Pan left/right
 Mouse Wheel + Shift   Pan up/down
-Ctrl-D                Load datasheet for selected component (opens web browser)
+Ctrl-d                Load datasheet for selected component (opens web browser)
 ```
 
-The following keybaord shortcuts are to be pressed when the mouse cursor is over a component:
+The following keyboard shortcuts are to be pressed when the mouse cursor is over a component:
 
 ```text
-E                     Show symbol properties (Edit item)
-M                     Move schematic item
-C                     Duplicate symbol or label
-G                     Grab the end of a wire and shorten/lengthen it
+e                     Show symbol properties (Edit item)
+Ctrl-e                Edit symbol (this loads up the symbol in the symbol editor)
+m                     Move schematic item
+c                     Duplicate symbol or label
+g                     Grab the end of a wire and shorten/lengthen it
+a                     Place symbol (Add component)
+p                     Place power net
+r                     Rotate item
 ```
 
 
@@ -87,7 +91,7 @@ G                     Grab the end of a wire and shorten/lengthen it
 .pretty  Folder for component footprints
 ```
 
-`.lib` files are text based, so play well with version control systems such as `.git`.
+Both the schematic `.lib` files and the component symbol files are text based, so they play well with version control systems such as `.git`.
 
 By default, the symbol libraries are installed to:
 
