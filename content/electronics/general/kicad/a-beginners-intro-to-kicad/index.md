@@ -73,14 +73,15 @@ Ctrl-d                Load datasheet for selected component (opens web browser)
 The following keyboard shortcuts are to be pressed when the mouse cursor is over a component:
 
 ```text
-e                     Show symbol properties (Edit item)
-Ctrl-e                Edit symbol (this loads up the symbol in the symbol editor)
-m                     Move schematic item
-c                     Duplicate symbol or label
-g                     Grab the end of a wire and shorten/lengthen it
-a                     Place symbol (Add component)
-p                     Place power net
-r                     Rotate item
+e                     Show symbol properties (Edit item).
+Ctrl-e                Edit symbol (this loads up the symbol in the symbol editor).
+m                     Move schematic item.
+c                     Duplicate symbol or label.
+g                     Grab the end of a wire and shorten/lengthen it.
+a                     Place symbol (Add component).
+p                     Place power net.
+r                     Rotate item.
+Del                   Delete item.
 ```
 
 
@@ -134,4 +135,5 @@ As of May 2020, there is no way to add a check for silkscreen over pad in the de
 .sch            # Schematic sheet file
 .sch-bak        # Backup of a schematic file.
 sym-lib-table
+fp-info-cache   # A cache file with info about footprints. This file is rebuilt often by KiCAD.
 ```
