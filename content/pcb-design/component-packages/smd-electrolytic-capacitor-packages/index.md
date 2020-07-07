@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-26
 draft: false
+lastmod: 2020-07-07
 tags: [ "component packages", "PCB design", "SMD", "electrolytic", "capacitor", "Panasonic", "Chemi-Con" ]
-title: SMD Electrolytic Capacitor Packages
-type: page
+title: "SMD Electrolytic Capacitor Packages"
+type: "page"
 ---
 
 ## Overview
@@ -13,6 +14,8 @@ type: page
 The following image shows the package sizes for Panasonic's electrolytic SMD capacitors. These Panasonic cap ranges (there are quite a few series) are commonly used when requiring SMD electrolytics.
 
 {{< img src="smd-electrolytic-capacitor-package-photo.jpg" width="250px" caption="A photo of a SMD electrolytic capacitor package."  >}}
+
+{{% img src="panasonic-electrolytic-smd-cap-land-patterns.png" width="600px" caption="Dimensions for the various Panasonic electrolytic SMD capacitor packages." %}}
 
 The following image shows the recommend land pattern for each of the sizes mentioned above.
 

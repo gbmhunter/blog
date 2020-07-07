@@ -137,3 +137,5 @@ As of May 2020, there is no way to add a check for silkscreen over pad in the de
 sym-lib-table
 fp-info-cache   # A cache file with info about footprints. This file is rebuilt often by KiCAD.
 ```
+
+KiCAD expects the PCB filename to have the same basename (i.e. excluding the `.pcb`) as the project file (`.pro`). This has to be true if you want to open the PCB from the KiCAD application by pressing the `PCB Layout Editor` button.
