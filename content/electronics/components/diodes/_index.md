@@ -2,6 +2,7 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components", "Diodes" ]
 date: 2011-09-05
+description: "Info about zener, PIN, TVS and general-purpose diodes."
 draft: false
 lastmod: 2020-05-22
 tags: [ "diodes", "diodes", "components", "current", "schematic symbols", "TVS", "Schottky", "bridge rectifier" ]
@@ -73,30 +74,6 @@ Some diodes, such as bi-directional TVS diodes, do not have a polarity.
 Schottky diodes are special diodes that have a lower voltage drop than standard diodes (typically 0.3V instead of 0.7V). They are used in applications where the input voltage is small, and in high power applications in where the power consumption of the diode needs to be kept to a minimum. The standard schematic symbol for a schottky diode is shown below (note the curls on the bar, which differs it from the standard diode symbol.
 
 {{< img src="schematic-symbol-schottky-diode.png" width="216px" caption="The schematic symbol for the schottky diode."  >}}
-
-## Zener Diodes
-
-Zener diodes are diodes which have a specified reverse blocking voltage at which they breakdown and begin to conduct. They are similar to TVS diodes, but generally have a more defined and precise breakdown voltage, but a lower power rating. Also, shunt voltage references are similar in concept to zener diodes, except that they are more precise but can't dissipate as much power.
-
-Uses for zener diodes include:
-
-* Low power/simple voltage reference
-* Over-voltage protection for low power applications (use TVS diodes to dissipate high energy voltage spikes)
-* To turn on a sub-circuit once a certain voltage level is reached (e.g. an LED in a simple battery charging circuit)
-
-You can purchase Zeners with a reverse voltage drop as low as 1.8V all the way to above 100V. For voltage drops less than 1.8V, you can stack (i.e. place in series) multiple normal or schottky diodes in forward bias.
-
-You can build a simple voltage limiting circuit from a Zener diode, a NPN BJT transistor, and a couple of resistors. The schematic below shows an example of this, used to limit the maximum voltage to the `\(V_{in}\,\)` pin of the ADP8140 LED driver IC.
-
-{{% img src="zener-and-npn-bjt-voltage-limiter-adp8140.png" width="600px" caption="A simple Zener/NPN based voltage limiter circuit for the input to the ADP8140 LED driver IC. Image from https://www.analog.com/media/en/technical-documentation/data-sheets/ADP8140.pdf." %}}
-
-The voltage at `\(V_{in}\,\)` is regulated to approximately `\( V_Z - 0.7V \)`. The current through `\(R_Z\)` is:
-
-
-<p>$$ I_{RZ} = \frac{V_{CC} - V_Z}{R_Z} $$</p>
-
-For more information, see the [ESD Protection](/electronics/circuit-design/esd-protection) page.
-
 ## Photo Diodes
 
 Note these are not be confused with photo-transistors, which are similar, but technically not photo diodes. Photo diodes have a faster response time than photo-transistors.
