@@ -3,7 +3,7 @@ author: "gbmhunter"
 categories: [ "Posts", "Updates" ]
 date: 2020-06-30
 description: "Blog updates during June 2020."
-draft: true
+draft: false
 lastmod: 2020-06-30
 tags: []
 title: "June 2020 Updates"
