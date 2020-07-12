@@ -17,3 +17,5 @@ type: "post"
 * Added a section on {{% link text="CMOS latch-up to the Logic Families page" src="/electronics/circuit-design/logic-families#latch-up" %}}.
 
     {{% figure src="/electronics/circuit-design/logic-families/cmos-latch-up-semiconductor-diagram.svg" width="700px" %}}
+
+* Added a new {{% link text="IEEE-488 (GLIB) page" src="/electronics/communication-protocols/ieee-488-glib" %}} under {{% link text="Communication Protocols" src="/electronics/communication-protocols" %}}. 
