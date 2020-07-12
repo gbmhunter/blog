@@ -32,7 +32,7 @@ Flash sometimes uses flip-flop style pin naming conventions. The M25P128 is one 
 
 ## SD Cards
 
-NAND flash is used as the main memory device inside of SD cards. There is also a memory controller IC (typically a microcontroller) which acts as an intermediary between the flash and the connected device reading/writing to/from the memory .
+NAND flash is used as the main memory device inside of SD cards. There is also a memory controller IC (typically a microcontroller) which acts as an intermediary between the flash and the connected device reading/writing to/from the memory.
 
 ### The TRIM command
 
@@ -51,12 +51,17 @@ There are two types of wear-levelling, _static_ and _global_.
 
 A local cached copy of [SanDisk Whitepaper: SanDisk Flash Memory Cards Wear Leveling, October 2003](/electronics/components/memory/sandisk-white-paper-flash-memory-cards-wear-leveling.pdf).
 
-### Multi-level Cells
+### Multi-level Cells (MLCs)
 
-A _multi-level cell_ is a individual storage element which can hold more than one bit of information.
+In the context of NAND memory, a cell is an individual storage element (essentially a MOSFET). The first NAND cells were used to store one 1-bit of information and are called _single-level cells_. A _multi-level cell_ (MLC) is a cell which can hold more than one bit of information. Most cheaper, high-density SD cards on the market in the 2010's/2020's utilize multi-level cell NAND flash to offer memory spaces of 64GB, 128GB and beyond. However, multi-level cells come at a cost --- they are less reliable than their single-layer cell (SLC) counterparts.
 
-1. **SLC** (_Single Level Cell_) is the highest grade of NAND flash. Each cell only has one voltage level it is charged to, allowing only 1-bit to be stored per cell. It is very hard to purchase via standard retail outlets. [Example](https://nz.rs-online.com/web/p/micro-sd-cards/1448058/).
+1. **SLC** (_Single Level Cell_) is the highest grade of NAND flash. Each cell only has one voltage level it is charged to, allowing only 1-bit to be stored per cell. It is very hard to purchase via standard retail outlets. [Example](https://nz.rs-online.com/web/p/micro-sd-cards/1448058/). As of 2020, 8GB class 10 SLC cards retail for approx. US$120, approx. 5-10x more expensive than their MLC counterparts[^digikey-sd-memory-cards-section].
 2. **MLC** (_Multi Level Cell_) has 4 voltage levels per cell, allowing 2 bits of information to be stored. Read speeds are typically lower than _SLC_ because the controller may need to read the cell at two different voltages to help resolve errors[^wikipedia-multi-level-cell]. MLC cards are also marketed for industrial use. The Intel 8087 was one of the first mass-produced ICs to use MLC technology.
+
+SLC memory is recommended for SD cards that are going to be used for intensive and/or critical applications in where the SD card will be written to frequently. This includes RaspberryPis that will be used frequently for more than just personal/hobbyist use. RaspberryPis typically use an SD card as it's main source of non-volatile RAM, and writing to the hard disk writes to the RaspberryPi.
+
+Cheaper MLC memory is recommended for typical, standard SD card applications such as storing photos, music and transferring files between devices.
 
 [^sandisk-sd-oem-product-manual]: [https://datasheet.ciiva.com/26837/getdatasheetpartid-335894-26837658.pdf](https://datasheet.ciiva.com/26837/getdatasheetpartid-335894-26837658.pdf)
 [^wikipedia-multi-level-cell]: [https://en.wikipedia.org/wiki/Multi-level_cell](https://en.wikipedia.org/wiki/Multi-level_cell)
+[^digikey-sd-memory-cards-section]: <https://www.digikey.com/products/en/memory-cards-modules/memory-cards/501>
