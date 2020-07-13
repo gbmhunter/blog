@@ -103,6 +103,22 @@ Each project can pull schematic symbols and footprints from two "tables" (groups
 
 DigiKey maintains the [digikey-kicad-library](https://github.com/Digi-Key/digikey-kicad-library), a KiCAD schematic and footprint library of a large number of components that can be supplied by DigiKey. The aim of this library is to provide collection of visually consistent, accurate library parts that have been curated by the DigiKey team. The organization of the library follows the DigiKey family taxonomy.
 
+### 3D Models
+
+3D models are stored at `/modules/packages3d`.
+
+e.g. on Linux:
+
+```
+/usr/share/kicad/modules/packages3d
+```
+
+This directory is saved to the KiCAD environment variable `KISYS3DMOD`. Inside this folder are folders named after part libraries with the suffix `.3dshapes`, e.g. `Capacitor_SMD.3dshapes`. Inside these folders are the 3D model `.wrl` files.
+
+Unfortunately KiCAD does not support relative file paths when linking 3D models to the footprints (relative to the footprint library). So you have two options:
+* Use an absolute URL (which will work fine for one user but may break if more than one user will be using the library)
+* Create a KiCAD environment variable which points to the location of your 3D models
+
 ## Board Routing
 
 ### Getting Around
