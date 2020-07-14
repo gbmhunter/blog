@@ -1,7 +1,8 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2014-07-23
 draft: false
-title: Design Patterns
-type: page
+lastmod: 2014-07-23
+title: "Design Patterns"
+type: "page"
 ---
