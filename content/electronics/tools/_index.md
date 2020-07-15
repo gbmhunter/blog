@@ -1,9 +1,12 @@
 ---
-author: gbmhunter
-date: 2015-11-22 23:37:55+00:00
+author: "gbmhunter"
+categories: [ "Electronics", "Tools" ]
+date: 2015-11-22
 draft: false
-title: Tools
-type: page
+lastmod: 2015-11-22
+tags: [ "electronics", "tools" ]
+title: "Tools"
+type: "page"
 ---
 
 ## Overview

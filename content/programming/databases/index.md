@@ -1,11 +1,16 @@
 ---
 author: "gbmhunter"
+categories: [ "Electronics", "Databases" ]
 date: 2020-07-14
+description: "Code examples for MariaDB."
 draft: false
-lastmod: 2020-07-24
+lastmod: 2020-07-14
+tags: [ "electronics", "databases", "MariaDB", "SQL", "table" ]
 title: "Databases"
 type: "page"
 ---
+
+{{% warning-is-notes %}}
 
 ## MariaDB
 

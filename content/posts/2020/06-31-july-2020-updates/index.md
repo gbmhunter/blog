@@ -19,3 +19,7 @@ type: "post"
     {{% figure src="/electronics/circuit-design/logic-families/cmos-latch-up-semiconductor-diagram.svg" width="700px" %}}
 
 * Added a new {{% link text="IEEE-488 (GLIB) page" src="/electronics/communication-protocols/ieee-488-glib" %}} under {{% link text="Communication Protocols" src="/electronics/communication-protocols" %}}. 
+
+* Added a new {{% link text="Databases page" src="/programming/databases" %}} under the _Programming_ section.
+
+* Added a new {{% link text="Multimeters page" src="/electronics/tools/multimeters" %}} under the _Electronics->Tools_ section.

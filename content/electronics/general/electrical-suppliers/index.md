@@ -1,10 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2011-09-05
+description: "Capabilities, quality, support and more info on a range of electronic suppliers."
 draft: false
+lastmod: 2020-07-15
 tags: [ "electronics", "engineering", "supplier", "batteries", "hardware", "PCBs", "EMS", "components" ]
-title: Electrical Suppliers
-type: page
+title: "Electrical Suppliers"
+type: "page"
 ---
 
 ## General Components
@@ -100,7 +102,7 @@ type: page
 </table>
 </div>
 
-## Avnet
+### Avnet
 
 <table >
 <tbody >
@@ -127,73 +129,42 @@ type: page
 
 Supplier of PSoC devices.
 
-## Digi-Key
+### Digi-Key
 
-<table >
-<tbody >
-<tr >
-
-<td >Logo
-</td>
-
-<td >{{< img src="digi-key-logo.jpg" caption="The Digi-Key logo."  width="100px" >}}
+<table>
+<tbody>
+<tr>
+<td>Logo</td>
+<td>{{< img src="digi-key-logo.jpg" caption="The Digi-Key logo."  width="100px" >}}</td>
+</tr>
+<tr>
+<td>Interface:</td>
+<td>3/5
 </td>
 </tr>
-<tr >
-
-<td >Interface:
-</td>
-
-<td >3/5
-</td>
+<tr>
+<td>Part Count</td>
+<td>5/5</td>
 </tr>
-<tr >
-
-<td >Part Count
-</td>
-
-<td >5/5
-</td>
+<tr>
+<td>Supplied Locations</td>
+<td>International</td>
 </tr>
-<tr >
-
-<td >Supplied Locations
-</td>
-
-<td >International
-</td>
+<tr>
+<td>Based In</td>
+<td>USA</td>
 </tr>
-<tr >
-
-<td >Based In
-</td>
-
-<td >USA
-</td>
+<tr>
+<td>Delivery Speed/Cost</td>
+<td>4/5</td>
 </tr>
-<tr >
-
-<td >Delivery Speed/Cost
-</td>
-
-<td >4/5
-</td>
+<tr>
+<td>Free Shipping?</td>
+<td>On orders above NZ$50 (as of 2020)</td>
 </tr>
-<tr >
-
-<td >Free Shipping?
-</td>
-
-<td >On orders above NZ$125
-</td>
-</tr>
-<tr >
-
-<td >Website
-</td>
-
-<td >[www.digikey.com](http://www.digikey.com/)
-</td>
+<tr>
+<td>Website</td>
+<td><a href="www.digikey.com" target="_blank">http://www.digikey.com/</a></td>
 </tr>
 </tbody>
 </table>
@@ -208,7 +179,11 @@ Automatic Part List/BOM/Order Creation. This speeds up the ordering process. Dir
 
 {{< img src="digi-key-automatic-bom-uploading-selecting-excel-columns.png" width="700px" >}}
 
-## NiceGear
+**DigiKey has a PandA (_Price and Availability_) tool** which allows you to check the pricing and availability for a list of products that you provide either manually in the web form, or by uploading a `.xls`, `.xlsx`, `.csv` or `.txt` file. 
+
+{{% figure src="digikey-panda-tool-logo.webp" width="400px" %}}
+
+### NiceGear
 
 <table >
 <tbody >
@@ -283,7 +258,7 @@ Automatic Part List/BOM/Order Creation. This speeds up the ordering process. Dir
 
 NiceGear sells a range of DIY electronics such as Arduino gear, cables and connectors, some components, and tools. The best thing about this electronics supplier is the friendly service and the fast shipping to NZ locations. Surprisingly, NiceGear also undercuts larger suppliers with pricing. For example, in 2013, they were selling the Arduino Due for about NZ$15 cheaper than Element14.
 
-## RS Components
+### RS Components
 
 <table >
 <tbody >
@@ -324,7 +299,7 @@ NiceGear sells a range of DIY electronics such as Arduino gear, cables and conne
 
 International online component store that stocks most electrical components. As of 09/12/2010 they were offering free shipping around New Zealand.
 
-## Samtec
+### Samtec
 
 In my opinion, Samtec has one of the best websites for finding/deciding on electrical connectors. They also have an awesome rapid free sample service, in where you can order samples and they will pay for everything (including shipping), with the goods typically arriving in a few days (and I live in New Zealand!).
 
@@ -394,7 +369,7 @@ In my opinion, Samtec has one of the best websites for finding/deciding on elect
 </table>
 </div>
 
-## PCB Cart
+### PCB Cart
 
 {{< img src="pcb-cart-logo.jpg" caption="The PCB Cart logo."  width="100px" >}}
 
@@ -459,7 +434,7 @@ Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core.
 
 EMS companies specialise in component sourcing, component placing, soldering and general PCB assembly. They don't normally do the PCB design themselves (although some business do both, and others sub-contract this part to another company). A good EMS will support small-pitch components such as 0201s and BGAs (see [Component Packages](/pcb-design/component-packages/)), and have a large number of basic components on hand (such as resistors and capacitors).
 
-## Precision Electronic Technologies
+### Precision Electronic Technologies
 
 * Location: Australia
 * Website: [http://www.precisionet.com.au/](http://www.precisionet.com.au/)
@@ -467,21 +442,21 @@ EMS companies specialise in component sourcing, component placing, soldering and
 
 Used to be called Precision Circuits (pre 2012).
 
-## Quick Circuits
+### Quick Circuits
 
 * Location: New Zealand
 * Website: [http://www.quickcircuit.co.nz/](http://www.quickcircuit.co.nz/)
 
 Helpful and have a good range of experience when it comes to PCB manufacturing. Capabilities include encapsulating/potting.
 
-## SRX Global
+### SRX Global
 
 * Location: New Zealand, Australia
 * Website: [http://www.srxglobal.com/](http://www.srxglobal.com/)
 
 Gone through a series of name changes (used to be Aims, then Startronics, now SRX Global).
 
-## Texmate
+### Texmate
 
 * Location: New Zealand. Have not done encapsulation before.
 
@@ -507,7 +482,7 @@ Gone through a series of name changes (used to be Aims, then Startronics, now SR
 
 ## Batteries
 
-## Shenzhen Shirui Battery Co.
+### Shenzhen Shirui Battery Co.
 
 * Location: Shenzhen, China
 * Chemistries: Li-Po
@@ -517,7 +492,7 @@ Gone through a series of name changes (used to be Aims, then Startronics, now SR
 
 Details: Shenzhen Shirui Battery Co. stock many different sized single-celled Li-Po batteries ranging from 30mAh up to 1000mAh+. In my experience, they have fast response times and more than eager to help (and profecient in English). Datasheets are not included on their website (as with many Asian suppliers), but they will provide them at your request.
 
-## SparkFun
+### SparkFun
 
 * Location: USA
 * Chemistries: Li-Po
@@ -533,7 +508,7 @@ See the [OLED Screens page](/electronics/components/oled-screens).
 
 ## Fibreglass
 
-## Gracol Enterprises
+### Gracol Enterprises
 
 Christchurch manufacturer of fibreglass pultrusion (different from protrusion!) and hand-made products. Useful stuff when building strong and light chassis or frames!
 
@@ -541,7 +516,7 @@ Christchurch manufacturer of fibreglass pultrusion (different from protrusion!) 
 * Address: 31 Wickham St., Bromley, 8062, Christchurch, New Zealand  
 * Website: [https://www.gracolcomposites.co.nz/](https://www.gracolcomposites.co.nz/)
 
-## GJH Fibreglass
+### GJH Fibreglass
 
 Palmerston North manufacturer of fibreglass products (especially moulded). Do not sell protruded fibreglass. Can purchase mat and resin.
 
@@ -551,4 +526,4 @@ Palmerston North manufacturer of fibreglass products (especially moulded). Do no
 
 **Prices (as of Jan 2011, GST inclusive)**
 
-Chop Stran Mat: NZ$11/metre (1.05m wide) Polyester Resin: NZ$16.50/L
+Chop Strand Mat: NZ$11/metre (1.05m wide) Polyester Resin: NZ$16.50/L
