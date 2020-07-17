@@ -67,21 +67,25 @@ You can navigate the schematic hierarchy using the _Navigate Schematic Hierarchy
 Mouse Wheel           Zoom in/out
 Mouse Wheel + Ctrl    Pan left/right
 Mouse Wheel + Shift   Pan up/down
-Ctrl-d                Load datasheet for selected component (opens web browser)
+Ctrl-D                Load datasheet for selected component (opens web browser)
 ```
 
 The following keyboard shortcuts are to be pressed when the mouse cursor is over a component:
 
 ```text
-e                     Show symbol properties (Edit item).
-Ctrl-e                Edit symbol (this loads up the symbol in the symbol editor).
-m                     Move schematic item.
-c                     Duplicate symbol or label.
-g                     Grab the end of a wire and shorten/lengthen it.
-a                     Place symbol (Add component).
-p                     Place power net.
-r                     Rotate item.
+E                     Show symbol properties (Edit item).
+Ctrl-E                Edit symbol (this loads up the symbol in the symbol editor).
+M                     Move schematic item.
+C                     Duplicate symbol or label.
+G                     Grab the end of a wire and shorten/lengthen it.
+A                     Place symbol (Add component).
+P                     Place power net.
+R                     Rotate item.
 Del                   Delete item.
+```
+
+```text
+Shift-Enter           Close a dialogue box (e.g. the edit symbol properties box)
 ```
 
 
