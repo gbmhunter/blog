@@ -78,9 +78,15 @@ p, li, div, td, th {
     font-size: 2.5vw;
 }
 @media (min-width: 800px) {
-    p, li, div, td, th {
+    p, li, div {
         /* 1.3rem was a little too large */
         font-size: 1.1rem;
+    }
+
+    /* Make tabular data a little smaller than standard paragraphs */
+    td, th, td ul li, td p {
+      font-size: 0.9rem;
+      line-height: 1.7;
     }
 }
 

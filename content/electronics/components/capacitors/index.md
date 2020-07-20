@@ -4,8 +4,8 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "A introduction to capacitors, a fundamental component used in circuit design. A walk-though of the different types, properties, uses and capacitor equations."
 draft: false
-lastmod: 2020-01-01
-tags: [ "capacitor", "components", "schematic symbols", "circuit", "ceramic", "electrolytic", "tantalum", "packages", "film", "feedthrough", "decoupling", "MFC" ]
+lastmod: 2020-07-20
+tags: [ "capacitor", "cap", "components", "schematic symbols", "circuit", "ceramic", "electrolytics", "tantalums", "packages", "film", "feedthrough", "decoupling", "MFC", "X5R", "X7R", "C0G", "NP0", "singing capacitors", "piezoelectric", "Class I", "Class II", "Class III", "audible noise", "dielectrics" ]
 title: Capacitors
 type: page
 ---
@@ -21,19 +21,19 @@ Capacitors are a passive electronic component that stores charge between two con
 Below is a table of most of the capacitor schematic symbols in use.
 
 <table>
-<tbody>
-<tr>
-<td>
-    {{< img src="capacitor-unpolarised-schematic-symbol.png" width="196px" caption="The schematic symbol for an unpolarised capacitor." >}}
-</td>
-<td>
-    {{< img src="capacitor-polarised-schematic-symbol.png" width="200px" caption="The schematic symbol for a polarised capacitor." >}}
-</td>
-<td>
-    {{< img src="capacitor-variable-schematic-symbol.png" width="185px" caption="The schematic symbol for a variable capacitor." >}}
-</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>
+          {{< img src="capacitor-unpolarised-schematic-symbol.png" width="196px" caption="The schematic symbol for an unpolarised capacitor." >}}
+      </td>
+      <td>
+          {{< img src="capacitor-polarised-schematic-symbol.png" width="200px" caption="The schematic symbol for a polarised capacitor." >}}
+      </td>
+      <td>
+          {{< img src="capacitor-variable-schematic-symbol.png" width="185px" caption="The schematic symbol for a variable capacitor." >}}
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 ## Uses
@@ -55,35 +55,35 @@ A **feedforward capacitor** is the name given to capacitor between the VOUT and 
 ### Ceramic
 
 <table>
-<tbody>
-<tr>
-<td>Range</td>
-<td>1pF - 100uF</td>
-</tr>
-<tr>
-<td>Polarized</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Typical Marking</td>
-<td>
-    <ul>
-        <li>Value in pF with multiplier (similar to resistors)</li>
-        <li>Nothing (small ceramic chip capacitors)</li>
-    </ul>
-</td>
-</tr>
-<tr>
-<td>Uses</td>
-<td>
-    <ul>
-        <li>General purpose (they are cheap)</li>
-        <li>RF circuits</li>
-        <li>Filter circuits</li>
-    </ul>
-</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>Range</td>
+      <td>1pF - 100uF</td>
+    </tr>
+    <tr>
+      <td>Polarized</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Typical Marking</td>
+      <td>
+        <ul>
+          <li>Value in pF with multiplier (similar to resistors)</li>
+          <li>Nothing (small ceramic chip capacitors)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Uses</td>
+      <td>
+        <ul>
+          <li>General purpose (they are cheap)</li>
+          <li>RF circuits</li>
+          <li>Filter circuits</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 Ceramic capacitors are named after the tiny disc of ceramic material they use for their dielectric. Values above 1nF are usually made from stacked ceramic plates and are called 'multilayer monolithics'.
@@ -92,117 +92,129 @@ Ceramic capacitors can generate audible noise when operated at certain frequenci
 
 {{< img src="murata-deformation-of-pcb-by-electrostrictive-phenomenon.jpg" width="452px" caption="The deformation of a PCB due to the electrostrictive phenomenon in ceramic chip capacitors. Image from http://www.murata.com/products/capacitor/solution/naki.html."  >}}
 
-#### Ceramic Di-electrics
+**Ceramic Di-electrics**
+
+Ceramic capacitors are made from two broad categories of dielectric, _Class 1_ ceramic capacitors have high stability and low losses, suitable for resonant circuit applications. _Class 2_ ceramic capacitors have high volumetric efficiency (more capacitance for the same size!) and are suitable for buffer, by-pass and coupling applications in where the exact capacitance value is usually not so critical.
+
+When talking about the high stability of _Class 1_ ceramic capacitors, we are usually referring to the stability of the capacitance over:
+
+* The operating temperature
+* DC operating voltage range (remember, the capacitance changes as the DC voltage across the capacitor changes!)
+* The life of the capacitor
 
 The following table lists the common ceramic dielectric codes. 
 
-**Class 1 (Temperature Compensating)**
+Class 1:
 
-<table>
-    <thead>
-        <tr>
-            <th>Standard</th>
-            <th>Symbol</th>
-            <th>Temperature Range</th>
-            <th>Capacitance Tolerance</th>
-        </tr>
-    </thead>
-<tbody >
-<tr>
-<td>JIS</td>
-<td>CH</td>
-<td>-25°C to +85°C</td>
-<td>+/- 60ppm/°C</td>
-</tr>
-<tr>
-<td>EIA</td>
-<td>C0G</td>
-<td>-55°C to +125°C</td>
-<td>+/- 30ppm/°C</td>
-</tr>
-<tr>
-<td>EIA</td>
-<td>NP0</td>
-<td>-55°C to +150°C</td>
-<td>+/- 30ppm/°C</td>
-</tr>
-</tbody>
+Class 1 capacitors are specified by the following EIA dielectric codes[^ceramic-dielectric-types]:
+
+<table class="small">
+  <thead>
+    <tr>
+      <th colspan=2>1ST CHARACTER</th>
+      <th colspan=2>2ND CHARACTER</th>
+      <th colspan=2>3RD CHARACTER</th>
+    </tr>
+    <tr>
+      <th>Letter</th>
+      <th>Significant Figures</th>
+      <th>Digit</th>
+      <th>Multiplier (10^X)</th>
+      <th>Letter</th>
+      <th>Tolerance (ppm/°C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>  <td>C</td>  <td>0.0</td>    <td>0</td>  <td>-1</td>     <td>G</td>  <td>±30</td>    </tr>
+    <tr>  <td>B</td>  <td>0.3</td>    <td>1</td>  <td>-10</td>    <td>H</td>  <td>±60</td>    </tr>
+    <tr>  <td>L</td>  <td>0.8</td>    <td>2</td>  <td>-100</td>   <td>J</td>  <td>±120</td>   </tr>
+    <tr>  <td>A</td>  <td>0.9</td>    <td>3</td>  <td>-1000</td>  <td>K</td>  <td>±250</td>   </tr>
+    <tr>  <td>M</td>  <td>1.0</td>    <td>4</td>  <td>+1</td>     <td>L</td>  <td>±500</td>   </tr>
+    <tr>  <td>P</td>  <td>1.5</td>    <td>6</td>  <td>+10</td>    <td>M</td>  <td>±1000</td>  </tr>
+    <tr>  <td>R</td>  <td>2.2</td>    <td>7</td>  <td>+100</td>   <td>N</td>  <td>±2500</td>  </tr>
+    <tr>  <td>S</td>  <td>3.3</td>    <td>8</td>  <td>+1000</td>  <td></td>   <td></td>       </tr>
+    <tr>  <td>T</td>  <td>4.7</td>    <td></td>   <td></td>       <td></td>   <td></td>       </tr>
+    <tr>  <td>V</td>  <td>5.6</td>    <td></td>   <td></td>       <td></td>   <td></td>       </tr>
+    <tr>  <td>U</td>  <td>7.5</td>    <td></td>   <td></td>       <td></td>   <td></td>       </tr>
+  </tbody>
 </table>
 
-**Class 2 (Temperature Stable)**
+_Significant Figures_ refers to the significant figure of the change in capacitance with temperature, in `ppm/°C`. The multiplier digit `5` is intentionally excluded (although I don't know why!).
+
+`NP0` is used to refer to the same material as `C0G`, and so they are the same thing. Some manufacturers use them interchangeably to refer to them together as `C0G/NP0`. `NP0` stands for "negative positive 0" and refers to the capacitance not have a positive or negative change with respect to temperature.
+
+{{% img src="c0g-np0-capacitor-temp-coeff-grouping-digikey.png" width="500px" caption="DigiKey, like many over suppliers, groups together C0G and NP0 as one temperature coefficient. Screenshot from https://www.digikey.com/product-detail/en/tdk-corporation/CGA4C2C0G1H392J060AA/445-6942-1-ND/2672960." %}}
+
+Class 2:
 
 The following are based on the EIA RS-198 standard.
 
-<table>
-    <thead>
-        <tr>
-            <th>First Character (lower temperature letter)</th>
-            <th>Second Character (upper temperature letter)</th>
-            <th>Third Character (change in capacitance over temperature)</th>
-        </tr>
-    </thead>
-<tbody >
-<tr>
-<td>X = -55°C (-67°F)</td>
-<td>4 = +65°C (+149°F)</td>
-<td>P = ±10%</td>
-</tr>
-<tr>
-<td>Y = -30°C (-22°F)</td>
-<td>5 = +85°C (185°F)</td>
-<td>R = ±15%</td>
-</tr>
-<tr>
-<td>Z = +10°C (+50°F)</td>
-<td>6 = +105°C (221°F)</td>
-<td>S = ±22%</td>
-</tr>
-<tr>
-<td> </td>
-<td>7 = +125°C (257°F)</td>
-<td>T = +22/-33%</td>
-</tr>
-<tr>
-<td> </td>
-<td>8 = +150°C (302°F)</td>
-<td>U = +22/-56%</td>
-</tr>
-<tr>
-<td> </td>
-<td>9 = +200°C (392°F)</td>
-<td>V = +22/-82%</td>
-</tr>
-</tbody>
+<table class="small">
+  <thead>
+    <tr>
+      <th>First Character (lower temperature letter)</th>
+      <th>Second Character (upper temperature letter)</th>
+      <th>Third Character (change in capacitance over temperature)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>X = -55°C (-67°F)</td>
+      <td>4 = +65°C (+149°F)</td>
+      <td>P = ±10%</td>
+    </tr>
+    <tr>
+      <td>Y = -30°C (-22°F)</td>
+      <td>5 = +85°C (185°F)</td>
+      <td>R = ±15%</td>
+    </tr>
+    <tr>
+      <td>Z = +10°C (+50°F)</td>
+      <td>6 = +105°C (221°F)</td>
+      <td>S = ±22%</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>7 = +125°C (257°F)</td>
+      <td>T = +22/-33%</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>8 = +150°C (302°F)</td>
+      <td>U = +22/-56%</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>9 = +200°C (392°F)</td>
+      <td>V = +22/-82%</td>
+    </tr>
+  </tbody>
 </table>
 
-The most common codes from the above table are X5R, X7R, and Y5V.
+The most common codes from the above table are `X5R`, `X7R`, `Y5V` and `Z5U`.
 
 The following table lists the class 2 codes defined by the JIS standard.
 
 <table>
-    <thead>
-        <tr>
-            <th>Standard</th>
-            <th>Symbol</th>
-            <th>Temperature Range</th>
-            <th>Capacitance Tolerance</th>
-        </tr>
+  <thead>
+    <tr>
+      <th>Standard</th>
+      <th>Symbol</th>
+      <th>Temperature Range</th>
+      <th>Capacitance Tolerance</th>
+    </tr>
     </thead>
-<tbody >
-<tr >
-<td >JIS
-</td>
-<td >JB
-</td>
-<td >-25°C to +85°C
-</td>
-<td >+/- 10%
-</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>JIS</td>
+      <td>JB</td>
+      <td>-25°C to +85°C</td>
+      <td>±10%</td>
+    </tr>
+  </tbody>
 </table>
 
-There is also the two codes JB (which is similar to X5R) and CH (which is similar to C0G) produced by TDK. They are similar to the codes mentioned except optimised for a smaller temperature range.
+There is also the two codes JB (which is similar to `X5R`) and CH (which is similar to `C0G`) produced by TDK. They are similar to the codes mentioned except optimised for a smaller temperature range.
 
 #### Insulation Resistance
 
@@ -213,6 +225,12 @@ IR > `\( 10^{11}\Omega \)` or `\( 10^3 M\Omega \cdot uF \)`, whichever is less, 
 IR > `\( 10^{10}\Omega \)` or `\( 10^2 M\Omega \cdot uF \)`, whichever is less, at `\( +125^{\circ}C \)`
 
 IR requirements for commercial MLCCs are about two times less.
+
+#### Singing Capacitors (Audible Noise)
+
+Sometimes you will hear ceramic capacitors make audible noise! This audible noise is caused due the piezoelectric effect which physically vibrates the capacitor, and can occur in ceramic capacitors which are ferroelectric. Both _Class II_ and _Class III_ ceramic capacitors are ferroelectric, and are susceptible to this problem. However, _Class I_ (e.g. `C0G/NP0`) capacitors are immune[^tdk-singing-capacitors].
+
+_Class II_ and _Class III_ capacitors are most likely to "sing" when the capacitor is subject to large current/voltage ripple.
 
 ### Electrolytic
 
@@ -1139,3 +1157,5 @@ This implies that when charging a capacitor from a fixed DC source, you dissipat
 
 [^capacitorguide.com]: [http://www.capacitorguide.com/film-capacitor/](http://www.capacitorguide.com/film-capacitor/)
 [^wikipedia-film-capacitor]: [https://en.wikipedia.org/wiki/Film_capacitor](https://en.wikipedia.org/wiki/Film_capacitor)
+[^ceramic-dielectric-types]: <https://www.electronics-notes.com/articles/electronic_components/capacitors/ceramic-dielectric-types-c0g-x7r-z5u-y5v.php>
+[^tdk-singing-capacitors]: <https://product.tdk.com/en/contact/faq/31_singing_capacitors_piezoelectric_effect.pdf>

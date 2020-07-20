@@ -2,9 +2,9 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Databases" ]
 date: 2020-07-14
-description: "Code examples for MariaDB."
+description: "Code examples for MariaDB and PostgreSQL."
 draft: false
-lastmod: 2020-07-14
+lastmod: 2020-07-20
 tags: [ "electronics", "databases", "MariaDB", "SQL", "table", "PostgreSQL", "inheritance", "object-orientated databases" ]
 title: "Databases"
 type: "page"
@@ -16,7 +16,7 @@ type: "page"
 
 To change the position of a column:
 
-```
+```sql
 ALTER TABLE tbl_name MODIFY COLUMN col_name column_definition AFTER col_name;
 ```
 
@@ -40,3 +40,13 @@ CREATE TABLE student (
 ```
 
 If a table already exists, you can inheritance via the `INHERIT` variant of the `ALTER TABLE` statement.
+
+### Working With PostgreSQL In Python
+
+One of the most popular PostgreSQL libraries for Python is `psycopg2`. To install it on Ubuntu you will also need the `libpg-dev` package on your system:
+
+```bash
+sudo apt install libpq-dev
+pip install psycopg2
+```
+
