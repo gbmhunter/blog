@@ -4,6 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "A introduction to capacitors, a fundamental component used in circuit design. A walk-though of the different types, properties, uses and capacitor equations."
 draft: false
+images: [ "/electronics/components/capacitors/container-of-th-tantalum-caps.jpg" ]
 lastmod: 2020-07-20
 tags: [ "capacitor", "cap", "components", "schematic symbols", "circuit", "ceramic", "electrolytics", "tantalums", "packages", "film", "feedthrough", "decoupling", "MFC", "X5R", "X7R", "C0G", "NP0", "singing capacitors", "piezoelectric", "Class I", "Class II", "Class III", "audible noise", "dielectrics" ]
 title: Capacitors
@@ -218,7 +219,7 @@ There is also the two codes JB (which is similar to `X5R`) and CH (which is simi
 
 #### Insulation Resistance
 
-The [insulation resistance](/electronics/components/capacitors#leakage-currents) limits for military MLCC's are:
+The [insulation resistance](/electronics/components/capacitors#leakage-currents) limits for military MLCCs are:
 
 IR > `\( 10^{11}\Omega \)` or `\( 10^3 M\Omega \cdot uF \)`, whichever is less, at `\( +25^{\circ}C \)`  
 

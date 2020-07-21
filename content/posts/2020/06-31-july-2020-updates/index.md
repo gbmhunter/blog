@@ -25,3 +25,5 @@ type: "post"
 * Added a new {{% link text="Multimeters page" src="/electronics/tools/multimeters" %}} under the _Electronics->Tools_ section.
 
 * Added information on ceramic capacitor classes to the Capacitor page.
+
+* Updated the {{% link text="SOIC Component Package page" src="/pcb-design/component-packages/soic-component-package" %}} with information about the `SO-4` package.
