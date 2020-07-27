@@ -27,3 +27,5 @@ type: "post"
 * Added information on ceramic capacitor classes to the Capacitor page.
 
 * Updated the {{% link text="SOIC Component Package page" src="/pcb-design/component-packages/soic-component-package" %}} with information about the `SO-4` package.
+
+* Added a new {{% link text="Constant Overhead Byte Stuffing page" src="/programming/serialization-formats/constant-overhead-byte-stuffing-cobs" %}}.
