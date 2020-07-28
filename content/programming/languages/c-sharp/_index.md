@@ -4,7 +4,7 @@ categories: [ "Programming", "Programming Languages", "C#" ]
 date: 2011-12-15
 draft: false
 lastmod: 2011-12-15
-tags: [ "programming", "programming languages", "C#", "string manipulation", "ComboBox", "GUI", ".NET", "dot net" ]
+tags: [ "programming", "programming languages", "C sharp", "string manipulation", "ComboBox", "GUI", ".NET", "dot net" ]
 title: "C# Programming"
 type: "page"
 ---
