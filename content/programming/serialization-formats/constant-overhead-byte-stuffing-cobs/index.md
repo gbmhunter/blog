@@ -22,4 +22,6 @@ COBS encoding transforms bytes in the range `[0, 255]` to `[1, 255]` so that `0x
 02 23 03 AA 81 00 
 ```
 
-I wrote C++ functions which can peform COBS encoding and decoding, they can be found at <https://github.com/gbmhunter/SerialFiller/blob/master/src/CobsTranscoder.cpp>.
+## Source Code
+
+I wrote C++ functions which can peform COBS encoding and decoding as part of an open source serial communications protocol, they can be found at <https://github.com/gbmhunter/SerialFiller/blob/master/src/CobsTranscoder.cpp>.
