@@ -1,9 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
+categories: [ "Programming", "Programming Languages", "C#" ]
 date: 2011-12-15
 draft: false
-title: C# Programming
-type: page
+lastmod: 2011-12-15
+tags: [ "programming", "programming languages", "C#", "string manipulation", "ComboBox", "GUI", ".NET", "dot net" ]
+title: "C# Programming"
+type: "page"
 ---
 
 ## String Manipulation

@@ -1,34 +1,37 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
+categories: [ "Programming", "Serilization Formats" ]
 date: 2014-04-08
+description: "Syntax, code examples, standards and more info about comma-separated value (CSV) files."
 draft: false
 lastmod: 2019-01-18
-title: CSV (Character-Seperated Value) Files
-type: page
+tags: [ "programming", "serialization formats", "CSV", "comma-seperated values", "files", "delimiter", "records", "fields", "RFC 4180" ]
+title: "CSV (Comma-Seperated Value) Files"
+type: "page"
 ---
 
 ## Terminology
 
-A CSV file is made up of many **records**, where a record is a single entire line in the file. Each new line is signified with the **record delimiter** (typically a carriage return and line feed character, CRLF or \r\n). A record is made up of many **fields**, each which a seperated by the **field delimiter** (typicallay a comma or a tab character).
+A CSV file is made up of many **records**, where a record is a single entire line in the file. Each new line is signified with the **record delimiter** (typically a carriage return and line feed character, `CRLF` or `\r\n`). A record is made up of many **fields**, each which a seperated by the **field delimiter** (typicallay a comma or a tab character).
 
 ## General Rules
 
 1. Each record is located on a different line, and each line is seperated by the carriage return and line break characters (the record delimiter).
 2. The last record in the file may or may not have a record delimiter at the end of it.  
 
-    ```
+    ```csv
     xxx,yyy,zzz CRLF (record delimiter on last line)  
     ```
 
     or  
 
-    ```
+    ```csv
     xxx,yyy,zzz (no record delimiter on last line)  
     ```
 
 3. There is an optional header record at the top of the file (the first line), with the same format as the rest of the records. The header contains names/descriptions of the fields in the file.  
 
-    ```
+    ```csv
     Field1Name, Field2Name, Field3Name  
 
     aaa,bbb,ccc  
