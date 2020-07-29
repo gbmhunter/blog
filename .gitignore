@@ -15,3 +15,6 @@ env/
 
 # LibreOffice temp files
 .~lock.*
+
+# MacOS thingies
+.DS_Store
