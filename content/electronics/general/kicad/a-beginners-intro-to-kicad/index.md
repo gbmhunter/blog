@@ -147,8 +147,8 @@ As of May 2020, there is no way to add a check for silkscreen over pad in the de
 ## File Types
 
 ```text
-.dcm
-.lib            # Schematic symbol library file
+.dcm            # Schematic symbol library file. Stores the description, datasheet and keyword fields.
+.lib            # Schematic symbol library file. Stores everything about a symbol except the description, datasheet and keyword fields.
 -cache.lib
 -rescue.lib     # Rescued library file
 .pro            # KiCAD project file
