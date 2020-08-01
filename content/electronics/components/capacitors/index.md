@@ -1,14 +1,14 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "A introduction to capacitors, a fundamental component used in circuit design. A walk-though of the different types, properties, uses and capacitor equations."
 draft: false
 images: [ "/electronics/components/capacitors/container-of-th-tantalum-caps.jpg" ]
 lastmod: 2020-07-20
-tags: [ "capacitor", "cap", "components", "schematic symbols", "circuit", "ceramic", "electrolytics", "tantalums", "packages", "film", "feedthrough", "decoupling", "MFC", "X5R", "X7R", "C0G", "NP0", "singing capacitors", "piezoelectric", "Class I", "Class II", "Class III", "audible noise", "dielectrics" ]
-title: Capacitors
-type: page
+tags: [ "capacitor", "cap", "components", "schematic symbols", "circuit", "ceramic", "electrolytics", "tantalums", "packages", "film", "feedthrough", "decoupling", "MFC", "X5R", "X7R", "C0G", "NP0", "singing capacitors", "piezoelectric", "Class I", "Class II", "Class III", "audible noise", "dielectrics", "bending flex", "FT-CAP" ]
+title: "Capacitors"
+type: "page"
 ---
 
 ## Overview
@@ -232,6 +232,10 @@ IR requirements for commercial MLCCs are about two times less.
 Sometimes you will hear ceramic capacitors make audible noise! This audible noise is caused due the piezoelectric effect which physically vibrates the capacitor, and can occur in ceramic capacitors which are ferroelectric. Both _Class II_ and _Class III_ ceramic capacitors are ferroelectric, and are susceptible to this problem. However, _Class I_ (e.g. `C0G/NP0`) capacitors are immune[^tdk-singing-capacitors].
 
 _Class II_ and _Class III_ capacitors are most likely to "sing" when the capacitor is subject to large current/voltage ripple.
+
+#### Flexibility
+
+Ceramic capacitors are sometimes tested and rated to be able to withstand a minimum _bending flex_. One example is the [Kemet VW80808 (FT-CAP)](https://content.kemet.com/datasheets/KEM_X7R_FT_VW_AUDI.pdf) range of ceramic capacitors which can withstand 5mm bending flex. These are aimed towards automotive use (but not exclusive to). The large bending flex specification is achieved by designing flexible termiation caps at each end of the capacitor, which stops the transfer of stress from the PCB to the fragile ceramic capacitor body.
 
 ### Electrolytic
 
