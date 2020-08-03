@@ -13,6 +13,8 @@ type: "page"
 
 ## Overview
 
+`STM32` is a family of 32-bit, ARM Cortex-M microcontrollers manufactured by ST Mircoelectronics. 
+
 All `STM32` micros are supported by ST's own {{% link text="STM32CubeIDE" src="/programming/integrated-development-environments-ides/stm32cubeide" %}}.
 
 ## Development Kits
