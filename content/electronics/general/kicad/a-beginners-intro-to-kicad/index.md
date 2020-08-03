@@ -41,11 +41,17 @@ sudo apt update
 sudo apt install --install-recommends kicad
 ```
 
+KiCAD will typically install to `/usr/share/kicad/`.
+
 To start KiCAD from the command line you can use:
 
 ```bash
 kicad
 ```
+
+### Windows
+
+Download and install the self-extracting installer from <https://kicad-pcb.org/download/windows/>.
 
 ## Configuring The Global Symbol Library Table
 
@@ -88,7 +94,6 @@ Del                   Delete item.
 Shift-Enter           Close a dialogue box (e.g. the edit symbol properties box)
 ```
 
-
 ## Libraries
 
 ```text
@@ -109,7 +114,7 @@ DigiKey maintains the [digikey-kicad-library](https://github.com/Digi-Key/digike
 
 ### 3D Models
 
-3D models are stored at `/modules/packages3d`.
+3D models are stored at `<kicad install dir>/modules/packages3d`.
 
 e.g. on Linux:
 
@@ -159,3 +164,24 @@ fp-info-cache   # A cache file with info about footprints. This file is rebuilt 
 ```
 
 KiCAD expects the PCB filename to have the same basename (i.e. excluding the `.pcb`) as the project file (`.pro`). This has to be true if you want to open the PCB from the KiCAD application by pressing the `PCB Layout Editor` button.
+
+## Plugins And Python Scripting
+
+On Linux, KiCAD uses the system-installed Python (whatever the command `python` points to). On all other platforms, KiCAD ships with it's own version of Python.
+
+On non-Linux platforms, you can find the Python executable at:
+
+```
+<KiCAD installation dir>/bin/python.exe
+
+e.g. on Windows:
+C:\Program Files\KiCad\bin\python.exe
+```
+
+Plugins are installed to:
+
+```text
+<KiCAD installation dir>\share\kicad\scripting\plugins
+```
+
+The Windows version of KiCAD ships with Python v2.7. If you want to use Python v3.x instead, you can rename `python.exe` located at `C:\Program Files\KiCad\bin\python.exe` to something like `python.exe.old`. This will cause the system Python to be invoked instead of the version shipped with KiCAD. The big limitation with this technique is that none of the scripts will be able to `import pcbnew`, so it only really suitable for running scripts which do not depend on the Python KiCAD API.
