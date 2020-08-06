@@ -666,6 +666,5 @@
         "zeners",
         "zynq"
     ],
-    "python.pythonPath": "/usr/bin/python3",
     "vim.surround": true
 }

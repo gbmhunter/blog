@@ -4,7 +4,7 @@ date: 2020-04-21
 description: "A beginners tutorial/introduction to KiCAD."
 categories: [ "Electronics", "General" ]
 lastmod: 2020-06-15
-tags: [ "electronics", "KiCAD", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries", "DigiKey" ]
+tags: [ "electronics", "KiCAD", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries", "DigiKey", "renaming", "project", "GerbView", "installation", "3D models", "wrl", "step" ]
 title: "A Beginners Intro To KiCAD"
 type: "page"
 ---
@@ -138,10 +138,17 @@ Unfortunately KiCAD does not support relative file paths when linking 3D models 
 D          Start drawing a track
 PgUp       Switch to top layer
 PgDwn      Switch to bottom layer
+F5         Switch to inner copper layer 1
+F6         Switch to inner copper layer 2
++          Next copper layer
+-          Previous copper layer
 Ctrl-B     Hide pours
 B          Show pours
 Ctrl-H     Toggle high contrast mode
+Alt-3      Load the 3D viewer
 ```
+
+For PCBs with up to 4 layers, you can use the `PgUp, PgDwn, F5, F6` shortcuts to switch between copper layers. However once you exceed 4 layers you will have to use the `+` and `-`. It might suit you to just use `+` and `-` for any sized board, as there is less muscle memory needed!
 
 KiCAD has a push and shove router.
 
@@ -185,3 +192,15 @@ Plugins are installed to:
 ```
 
 The Windows version of KiCAD ships with Python v2.7. If you want to use Python v3.x instead, you can rename `python.exe` located at `C:\Program Files\KiCad\bin\python.exe` to something like `python.exe.old`. This will cause the system Python to be invoked instead of the version shipped with KiCAD. The big limitation with this technique is that none of the scripts will be able to `import pcbnew`, so it only really suitable for running scripts which do not depend on the Python KiCAD API.
+
+## Renaming A KiCAD Project
+
+In earlier versions of KiCAD, it was unnecessarily difficult to rename a KiCAD project. However, when attempted in KiCAD `v5.1.6` it is now possible! To do so, you will want to rename the following files all at the same time (updating the `<ProjectName>` bit), and from outside KiCAD (make sure KiCAD is closed when you do this):
+
+* `<ProjectName>.pro`
+* `<ProjectName>.sch`: This is the "root level" schematic sheet. You don't to rename other schematic sheets, just the one at the top-level in the hierarchy.
+* `<ProjectName>.sch-bak`
+* `<ProjectName>.kicad_pcb`
+* `<ProjectName>.kicad_pcb-bak`
+
+Once you have renamed all those files, you should be able to open this project in KiCAD, your schematic/PCB links should work, and it will not complain about the changes!
