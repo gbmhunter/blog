@@ -178,7 +178,7 @@ On Linux, KiCAD uses the system-installed Python (whatever the command `python` 
 
 On non-Linux platforms, you can find the Python executable at:
 
-```
+```text
 <KiCAD installation dir>/bin/python.exe
 
 e.g. on Windows:
