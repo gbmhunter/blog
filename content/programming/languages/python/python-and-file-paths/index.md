@@ -4,7 +4,7 @@ categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2020-03-17
 description: "A tutorial on working with file paths in Python, including the pathlib module."
 draft: false
-lastmod: 2020-03-18
+lastmod: 2020-08-10
 tags: [ "programming", "programming languages", "Python", "paths", "pathlib", "PEP 428" ]
 title: "Python And File Paths"
 type: "page"
@@ -41,6 +41,22 @@ my_path = Path('my_file.txt')
 my_path.exists()
 # Returns True if text file exists
 ```
+
+### Getting Parts Of The Path
+
+The `Path` object provides many properties to extract different parts of a path:
+
+```python
+my_path = Path('/my_dir/my_file.txt')
+
+print(my_path.parent) # '/my_dir'
+print(my_path.name) # 'my_file.txt'
+print(my_path.suffix) # '.txt'
+print(my_path.root) # '/'
+print(my_path.parts) # ('/', 'my_dir', 'my_file.txt')
+```
+
+Note that in Linux systems, `.root` is typically `/`, while in Windows system, `.root` is typically `\\`.
 
 ### Backwards Compatibility
 

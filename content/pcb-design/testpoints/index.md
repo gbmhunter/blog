@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "PCB Design" ]
 date: 2015-10-23
 draft: false
+lastmod: 2015-10-23
 tags: [ "PCB design", "test points", "SMD", "PCBs", "vias", "clip" ]
-title: Testpoints
-type: page
+title: "Testpoints"
+type: "page"
 ---
 
 ## Overview
