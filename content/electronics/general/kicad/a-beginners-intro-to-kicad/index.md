@@ -146,6 +146,7 @@ Ctrl-B     Hide pours
 B          Show pours
 Ctrl-H     Toggle high contrast mode
 Alt-3      Load the 3D viewer
+Space      Reset the relative coordinate origin to 0,0 at the mouse cursor
 ```
 
 For PCBs with up to 4 layers, you can use the `PgUp, PgDwn, F5, F6` shortcuts to switch between copper layers. However once you exceed 4 layers you will have to use the `+` and `-`. It might suit you to just use `+` and `-` for any sized board, as there is less muscle memory needed!
