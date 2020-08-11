@@ -1,7 +1,7 @@
 ---
 author: "gbmhunter"
 categories: [ "PCB Design" ]
-date: 2020-08-20
+date: 2020-08-10
 description: "The resistance model, a via thermal resistance calculator and more info on thermal design for PCBs."
 draft: false
 lastmod: 2020-08-11
