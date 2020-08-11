@@ -266,6 +266,11 @@ code.has-jax span {
     clip: unset !important;
 }
 
+/* Should be rem, not em here! */
+code.has-jax span {
+  font-size: 0.8rem !important;
+}
+
 /* ========================================================================= */
 /* BLOCK QUOTES                                                              */
 /* ========================================================================= */

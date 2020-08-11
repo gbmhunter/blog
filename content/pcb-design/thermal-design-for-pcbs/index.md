@@ -2,9 +2,10 @@
 author: "gbmhunter"
 categories: [ "PCB Design" ]
 date: 2020-08-20
+description: "The resistance model, a via thermal resistance calculator and more info on thermal design for PCBs."
 draft: false
-lastmod: 2020-08-10
-tags: [ "PCB design", "thermal design", "junction", "ambient", "temperature", "power dissipation", "resistor model", "thermal resistance", "thermal conductivity", "vias" ]
+lastmod: 2020-08-11
+tags: [ "PCB design", "thermal design", "junction", "ambient", "temperature", "power dissipation", "resistor model", "thermal resistance", "thermal conductivity", "vias", "calculator" ]
 title: "Thermal Design For PCBs"
 type: "page"
 ---
@@ -32,13 +33,13 @@ One of the most common thermal resistances is the **junction-to-ambient thermal 
 
 ## The Thermal Resistance Of A Via
 
-For most metals, a thermal conductivity is specified, typically in the SI units `\( W \cdot m^{-1} \cdot K^{-1} \)` (Watts per meter-Kelvin). It is typically written as `\( W/mk \)`, but remember that the `\(m\)` is for meters, not milli-Kelvin!
+For most metals, a thermal conductivity is specified, typically in the SI units `\( W \cdot m^{-1} \cdot K^{-1} \)` (Watts per meter-Kelvin). It is typically written as `\( W/mK \)`, but remember that the `\(m\)` is for meters, not milli-Kelvin!
 
 Below are the thermal conductivities for common PCB materials:
 
 <table>
   <thead>
-    <tr><th>Material</th> <th>Thermal Conductivity \(W \cdot m^{-1} \cdot K^{-1} \)</th></tr>
+    <tr><th>Material</th> <th>Thermal Conductivity (\(W \cdot m^{-1} \cdot K^{-1}) \)</th></tr>
   </thead>
   <tbody>
     <tr><td>Aluminium</td>  <td>205</td></tr>
@@ -52,6 +53,10 @@ Below are the thermal conductivities for common PCB materials:
 Most of these values were obtained from <http://hyperphysics.phy-astr.gsu.edu/hbase/Tables/thrcn.html>[^hyperphysics-thermal-conductivity].
 
 Non-uniform materials such as FR-4 (which is a glass epoxy) have different thermal conductivities in the through-plane and across-plane directions.
+
+## Via Thermal Resistance Calculator
+
+<iframe src="https://calc-mbedded-ninja.gbmhunter.now.sh/calculators/via-thermal-resistance" style="width: 800px; height: 800px; border: 0;"></iframe>
 
 ## References
 
