@@ -71,3 +71,7 @@ Confusingly, even if you specify the project as a "C++ Project" when creating it
 The linker is called correctly regardless of the extension of `main` --- `arm-none-eabi-g++` will be called during the linking step.
 
 However, when you change the peripheral configurations using the `.ioc` file and re-generate code, it will also recreate the `main.c`.
+
+## STM32CubeMonitor
+
+{{% img src="stm32-cube-monitor-screenshot.png" width="800px" caption="A screenshot of the STM32CubeMonitor application running on Windows." %}}
