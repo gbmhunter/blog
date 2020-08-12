@@ -27,13 +27,34 @@ Just like resistance is defined via Ohm's law as `\( R = \frac{V}{I} \)`, therma
   \( P \) is the power dissipation, in \( W \)
 </p>
 
-One of the most common thermal resistances is the **junction-to-ambient thermal resistance**. This can be calculated with:
+When talking about thermal resistances, a resistor symbol is used to indicate the fixed thermal resistance of a component or piece of hardware, between two points or two surfaces. The difference in temperature is analogous to the voltage drop across a resistor, and the power dissipation is analogous to the current through the resistor. 
+
+{{% figure src="basic-thermal-resistance-principle.svg" width="300px" caption="The basic principle behind thermal resistance. Note the similarity to Ohm's law." %}}
+
+When looking through component datasheets, one of the most common thermal resistances is the _junction-to-ambient_ thermal resistance. This value is defined as:
 
 <p>$$ \theta_{JA} = \frac{T_J - T_A}{P} $$</p>
 
+<p class="centered">
+  where:<br>
+  \( T_J \) is the temperature at the junction (the silicon die) inside the IC, in °C<br>
+  \( T_A \) is the ambient temperature (temperature of air/environment PCB is in), in °C<br>
+  \( P \) is the power dissipation of the IC
+</p>
+
+However, **you have to be vigilant with specified junction-to-ambient values as they are not just a property of the component package**, but also of the PCB! When specified on a datasheet it is usually tested on a JEDEC standardized PCB and package land pattern.
+
+A much more useful thermal resistance in a components datasheet is the _junction-to-case_ thermal resistance. This is usually specified as `\( \theta_{JC} \)`. This typically represents the thermal resistance from the junction to the place on the PCB where the component is soldered. You can then take into account your PCB layout and estimate a _case-to-ambient_ thermal resistance.
+
+{{% figure src="ic-temperature-diagram-with-junction-case-ambient.svg" width="800px" caption="A diagram of the different temperature points used when defining thermal resistances for ICs mounted on PCBs." %}}
+
+Your case-to-ambient thermal resistance can be added to the manufacturer-specified junction-to-case thermal resistance to get the total junction-to-ambient resistance using simple addition:
+
+<p>$$ \theta_{JA} = \theta_{JC} + \theta_{CA} $$</p>
+
 ## The Thermal Resistance Of A Via
 
-For most metals, a thermal conductivity is specified, typically in the SI units `\( W \cdot m^{-1} \cdot K^{-1} \)` (Watts per meter-Kelvin). It is typically written as `\( W/mK \)`, but remember that the `\(m\)` is for meters, not milli-Kelvin!
+For most metals, a thermal conductivity is specified, typically in the SI units `\( W \cdot m^{-1} \cdot K^{-1} \)` (Watts per meter-Kelvin). It is typically written as `\( W/mK \)`, but **remember that the `\(m\)` is for meters, not milli-Kelvin**!
 
 Below are the thermal conductivities for common PCB materials:
 

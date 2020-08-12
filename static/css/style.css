@@ -268,7 +268,8 @@ code.has-jax span {
 
 /* Should be rem, not em here! */
 code.has-jax span {
-  font-size: 0.8rem !important;
+  /* Disabled this as it was creating rendering issues with latex subscript/superscript */
+  /* font-size: 0.8rem !important; */
 }
 
 /* ========================================================================= */
