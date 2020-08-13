@@ -28,8 +28,8 @@ type: "post"
 
 * Updated the {{% link text="SOIC Component Package page" src="/pcb-design/component-packages/soic-component-package" %}} with information about the `SO-4` package.
 
-* Added a new {{% link text="Constant Overhead Byte Stuffing page" src="/programming/serialization-formats/constant-overhead-byte-stuffing-cobs" %}}.
+* Added a new {{% link text="Consistent Overhead Byte Stuffing page" src="/programming/serialization-formats/consistent-overhead-byte-stuffing-cobs" %}}.
 
-    {{% figure src="/programming/serialization-formats/constant-overhead-byte-stuffing-cobs/cobs-encoding-diagram.png" width="800px" %}}
+    {{% figure src="/programming/serialization-formats/consistent-overhead-byte-stuffing-cobs/cobs-encoding-diagram.png" width="800px" %}}
 
 * Updated the {{% link text="SON Component Package page" src="/pcb-design/component-packages/son-component-package" %}}. Added a {{% link text="DFN Component Package page" src="/pcb-design/component-packages/dfn-component-package" %}} which links to the SON page.
