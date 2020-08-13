@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components" ]
 date: 2015-03-25
 draft: false
+lastmod: 2015-03-25
 tags: [ "analogue", "analog", "switch", "crosstalk", "power consumption" ]
-title: Analogue Switches
-type: page
+title: "Analogue Switches"
+type: "page"
 ---
 
 ## Overview
@@ -31,7 +32,7 @@ Ileakage = 5nA (typ), 90nA (max)
 
 ## Examples
 
-## Intersil ISL43L410
+### Intersil ISL43L410
 
 The Intersil ISL43L410 is a low on-resistance, low-voltage single-supply, DPDT analogue switch. One of its main selling points is it's low power consumption:
 

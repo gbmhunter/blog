@@ -124,6 +124,11 @@ div.content th {
     padding: 10px;
 }
 
+div.content td, div.content th {
+  font-size: 0.95em;
+  line-height: 1.0;
+}
+
 div.content tr:nth-of-type(even) {
     background:#E8E8E8;
 }
@@ -157,6 +162,10 @@ div.content tr.warning {
 
 div.content tr.error {
     background-color: #ffe3e3;
+}
+
+table.code th, table.code td {
+  font-family: monospace;
 }
 
 /* Allow for special paragraphs that have centered text */
