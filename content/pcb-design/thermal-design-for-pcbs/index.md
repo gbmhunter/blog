@@ -54,6 +54,14 @@ Your case-to-ambient thermal resistance can be added to the manufacturer-specifi
 
 ## The Thermal Resistance Of A Via
 
+Thermal vias are a very common way of dissipating heat away from an IC or other component. They are normally placed in and around the thermal pad of a component package. However, via-in-pads cause solder wicking issue. During the soldering process, both gravity and surface tension can push molten solder down the barrel of a via, sucking solder away from the pad. This can leave a pad which is under-soldered and a dry joint. Unfortunately, you cannot even rely on the solder wicking to completely "plug" a via, which would be advantageous in certain circumstances (it would decrease the thermal resistance of the vias). Instead, the via barrel typically only gets partially filled and has "voids" of air.
+
+There are a few ways to prevent wicking:
+
+* 0.3mm or smaller via diameter limits the amount of solder wicking that will occur.
+
+Adding more thermal vias is a case of dimensioning returns, due to the limited spreading of the heat in the horizontal direction.
+
 For most metals, a thermal conductivity is specified, typically in the SI units `\( W \cdot m^{-1} \cdot K^{-1} \)` (Watts per meter-Kelvin). It is typically written as `\( W/mK \)`, but **remember that the `\(m\)` is for meters, not milli-Kelvin**!
 
 Below are the thermal conductivities for common PCB materials:
@@ -75,9 +83,13 @@ Most of these values were obtained from <http://hyperphysics.phy-astr.gsu.edu/hb
 
 Non-uniform materials such as FR-4 (which is a glass epoxy) have different thermal conductivities in the through-plane and across-plane directions.
 
-## Via Thermal Resistance Calculator
+### Via Thermal Resistance Calculator
 
 <iframe src="https://calc-mbedded-ninja.gbmhunter.now.sh/calculators/via-thermal-resistance" style="width: 800px; height: 800px; border: 0;"></iframe>
+
+## Copper Planes
+
+(2oz.) copper is recommended for top and bottom layers.
 
 ## References
 
