@@ -14,7 +14,7 @@ type: "page"
 
 The resistor model is commonly used to calculate basic PCB operating temperatures.
 
-## The Resistor Model
+## The Thermal Resistor Model
 
 Just like resistance is defined via Ohm's law as `\( R = \frac{V}{I} \)`, thermal resistance is defined as:
 
@@ -61,6 +61,17 @@ There are a few ways to prevent wicking:
 * 0.3mm or smaller via diameter limits the amount of solder wicking that will occur.
 
 Adding more thermal vias is a case of dimensioning returns, due to the limited spreading of the heat in the horizontal direction.
+
+## What Is Thermal Conductivity?
+
+_Thermal conductivity_ is a property of a material which describes it's ability to conduct heat. Materials with a high thermal conductivity conduct heat well, and materials with a low thermal conductivity conduct heat poorly (they are called _thermal insulators_). The symbol `\( \lambda \)` (_lambda_) is typically used to represent thermal conductivity.
+
+_Thermal resistance_ is just the inverse (reciprocal) of thermal conductivity. **However, care has to be taken to distinguish between the two types of thermal resistances.**
+
+1. There is the thermal resistance which is the inverse of thermal conductivity, and is a property of the material, irrespective of it's shape, length, size, e.t.c. It has units `\( m \cdot K \cdot W^{-1} \)`.
+1. The thermal resistance used when talking about the thermal resistance of a via, copper plane, PCB, e.t.c. This value takes into account both the material and it's shape/length/size. This has units `\( °C \cdot W^{-1} \)`. This is the thermal resistance mentioned on component datasheets. 
+
+<p></p>
 
 For most metals, a thermal conductivity is specified, typically in the SI units `\( W \cdot m^{-1} \cdot K^{-1} \)` (Watts per meter-Kelvin). It is typically written as `\( W/mK \)`, but **remember that the `\(m\)` is for meters, not milli-Kelvin**!
 
