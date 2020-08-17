@@ -11,3 +11,5 @@ type: "post"
 ---
 
 * Updated the Python installation instructions.
+
+* Created a new {{% link text="Thermal Design For PCBs page" src="/pcb-design/thermal-design-for-pcbs" %}}.
