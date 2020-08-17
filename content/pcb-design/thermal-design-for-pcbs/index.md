@@ -2,10 +2,10 @@
 author: "gbmhunter"
 categories: [ "PCB Design" ]
 date: 2020-08-10
-description: "The resistance model, a via thermal resistance calculator and more info on thermal design for PCBs."
+description: "Thermal conductivity, the resistance model, TIMs, a via thermal resistance calculator and more info on thermal design for PCBs."
 draft: false
-lastmod: 2020-08-11
-tags: [ "PCB design", "thermal design", "junction", "ambient", "temperature", "power dissipation", "resistor model", "thermal resistance", "thermal conductivity", "vias", "calculator" ]
+lastmod: 2020-08-17
+tags: [ "PCB design", "thermal design", "junction", "ambient", "temperature", "power dissipation", "resistor model", "thermal resistance", "thermal conductivity", "vias", "calculator", "specific thermal conductance", "specific thermal resistance", "absolute thermal conductance", "absolute thermal resistance", "thermal interface material", "TIM" ]
 title: "Thermal Design For PCBs"
 type: "page"
 ---
@@ -14,15 +14,84 @@ type: "page"
 
 The resistor model is commonly used to calculate basic PCB operating temperatures.
 
+## What Is Thermal Conductivity?
+
+### Specific Thermal Conductivity
+
+_Specific thermal conductivity_ is a property of a material which describes it's ability to conduct heat. Materials with a high specific thermal conductivity conduct heat well, and materials with a low specific thermal conductivity conduct heat poorly (they are called _thermal insulators_). The symbol `\( \lambda \)` (_lambda_) is typically used to represent specific thermal conductivity.
+
+<p>$$ \lambda = \frac{P \cdot t}{A \cdot \Delta T} $$</p>
+
+<p class="centered">
+  where:<br/>
+  \( \lambda \) is the specific thermal conductivity in \( W \cdot m^{-1} \cdot K^{-1} \)<br/>
+  \( P \) is the power in \(Watts\)<br/>
+  \( t \) is the thickness, in \(meters\)<br/>
+  \( A \) is the surface area, in \(meters^2\)<br/>
+  \( \Delta T \) is the difference in temperature between the hot and cold surfaces in \(Kelvin\)</br>
+</p>
+
+_Thermal resistance_ is just the inverse (reciprocal) of thermal conductivity.
+
+### Absolute Thermal Conductivity
+
+Absolute thermal conductance is defined as:
+
+<p>$$ \lambda_A = \frac{P}{A \cdot \Delta T} $$</p>
+
+<p class="centered">
+  where:<br/>
+  \( \lambda_A \) is the absolute thermal conductivity in \( W \cdot K^{-1} \)<br/>
+  \( P \) is the power in \(Watts\)<br/>
+  \( A \) is the surface area, in \(meters^2\)<br/>
+  \( \Delta T \) is the difference in temperature between the hot and cold surfaces in \(Kelvin\)</br>
+</p>
+
+Notice how it is very similar to the formula for _specific thermal conductivity_, except it is missing the thickness `\(t\)`. **Care has to be taken to distinguish between the two types of thermal resistances!** To recap:
+
+1. _Specific thermal conductivity_ is a property of the material, irrespective of it's shape, length, size, e.t.c. It has units `\( W \cdot m^{-1} \cdot K^{-1} \)`. This is what we were talking about above.
+1. _Absolute thermal conductivity_ (and _absolute thermal resistance_) is used when talking about the thermal conductance of a via, copper plane, PCB, e.t.c. This value takes into account both the material and it's shape/length/size. This has units `\( W \cdot C^{-1} \)`. **Absolute thermal resistance is the value mentioned on component datasheets.**
+
+**However, both of these thermal conductivities are usually referred to without the "specific" or "absolute" qualifier**, leaving it up to you to work out what is being used based on the context and units. Remember, 99% of the time when a component datasheet mentioned "thermal resistance" they will be talking about "absolute thermal resistance". 
+
+### Temperature Dependence
+
+Thermal conductivity has some dependence on temperature (especially near `\(0 K\)`), however for most materials at common PCB temperatures the thermal conductivity can be considered constant.
+
+For most metals, a specific thermal conductivity is specified, typically in the SI units `\( W \cdot m^{-1} \cdot K^{-1} \)` (Watts per meter-Kelvin). It is typically written as `\( W/mK \)`, but **remember that the `\(m\)` is for meters, not milli-Kelvin**!
+
+Below are the specific thermal conductivities for common PCB materials:
+
+<table>
+  <thead>
+    <tr><th>Material</th> <th>Specific Thermal Conductivity (\(W \cdot m^{-1} \cdot K^{-1}) \)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Air</td>        <td>0.026</td></tr>
+    <tr><td>Aluminium</td>  <td>205</td></tr>
+    <tr><td>Copper</td>     <td>401</td></tr>
+    <tr><td>FR-4</td>       <td>0.29 (through-plane), 0.81 (across-plane)</td></tr>
+    <tr><td>Rogers 92ML</td><td>2.0 (through-plane)</td></tr>
+    <tr><td>Gold</td>       <td>314</td></tr>
+    <tr><td>Silver</td>     <td>406</td></tr>
+  </tbody>
+</table>
+
+Most of these values were obtained from <http://hyperphysics.phy-astr.gsu.edu/hbase/Tables/thrcn.html>[^hyperphysics-thermal-conductivity].
+
+Non-isotropic materials such as FR-4 (which is a glass epoxy) have different thermal conductivities in the through-plane (Z) and across-plane (XY) directions.
+
 ## The Thermal Resistor Model
 
-Just like resistance is defined via Ohm's law as `\( R = \frac{V}{I} \)`, thermal resistance is defined as:
+Remember, thermal resistance is the inverse of thermal conductance. When modelling the thermal properties of PCBs, it is **useful to use thermal resistance instead of conductance as the resistances sum when the materials are in series**, just like resistance values would. We use absolute thermal resistances here as we have taken into account the thickness.
 
-<p>$$ \theta = \frac{\Delta T}{P} $$</p>
+Just like resistance is defined via Ohm's law as `\( R = \frac{V}{I} \)`, thermal resistance (absolute) `\(R_\theta\)` is defined as:
+
+<p>$$ R_{\theta} = \frac{\Delta T}{P} $$</p>
 
 <p class="centered">
   where:<br>
-  \( \theta \) is the thermal resistance, in \( °C/W \) <br>
+  \( R_\theta \) is the thermal resistance, in \( °C/W \) <br>
   \( \Delta T \) is the difference in temperature, in \(°C\)<br>
   \( P \) is the power dissipation, in \( W \)
 </p>
@@ -62,38 +131,6 @@ There are a few ways to prevent wicking:
 
 Adding more thermal vias is a case of dimensioning returns, due to the limited spreading of the heat in the horizontal direction.
 
-## What Is Thermal Conductivity?
-
-_Thermal conductivity_ is a property of a material which describes it's ability to conduct heat. Materials with a high thermal conductivity conduct heat well, and materials with a low thermal conductivity conduct heat poorly (they are called _thermal insulators_). The symbol `\( \lambda \)` (_lambda_) is typically used to represent thermal conductivity.
-
-_Thermal resistance_ is just the inverse (reciprocal) of thermal conductivity. **However, care has to be taken to distinguish between the two types of thermal resistances.**
-
-1. There is the thermal resistance which is the inverse of thermal conductivity, and is a property of the material, irrespective of it's shape, length, size, e.t.c. It has units `\( m \cdot K \cdot W^{-1} \)`.
-1. The thermal resistance used when talking about the thermal resistance of a via, copper plane, PCB, e.t.c. This value takes into account both the material and it's shape/length/size. This has units `\( °C \cdot W^{-1} \)`. This is the thermal resistance mentioned on component datasheets. 
-
-<p></p>
-
-For most metals, a thermal conductivity is specified, typically in the SI units `\( W \cdot m^{-1} \cdot K^{-1} \)` (Watts per meter-Kelvin). It is typically written as `\( W/mK \)`, but **remember that the `\(m\)` is for meters, not milli-Kelvin**!
-
-Below are the thermal conductivities for common PCB materials:
-
-<table>
-  <thead>
-    <tr><th>Material</th> <th>Thermal Conductivity (\(W \cdot m^{-1} \cdot K^{-1}) \)</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Aluminium</td>  <td>205</td></tr>
-    <tr><td>Copper</td>     <td>401</td></tr>
-    <tr><td>FR-4</td>       <td>0.29 (through-plane), 0.81 (across-plane)</td></tr>
-    <tr><td>Gold</td>       <td>314</td></tr>
-    <tr><td>Silver</td>     <td>406</td></tr>
-  </tbody>
-</table>
-
-Most of these values were obtained from <http://hyperphysics.phy-astr.gsu.edu/hbase/Tables/thrcn.html>[^hyperphysics-thermal-conductivity].
-
-Non-uniform materials such as FR-4 (which is a glass epoxy) have different thermal conductivities in the through-plane and across-plane directions.
-
 ### Via Thermal Resistance Calculator
 
 <iframe src="https://calc-mbedded-ninja.gbmhunter.now.sh/calculators/via-thermal-resistance" style="width: 800px; height: 800px; border: 0;"></iframe>
@@ -101,6 +138,12 @@ Non-uniform materials such as FR-4 (which is a glass epoxy) have different therm
 ## Copper Planes
 
 (2oz.) copper is recommended for top and bottom layers.
+
+## Thermal Interface Material (TIM)
+
+* Thermal grease TIMs: Offers the best thermal conductivity, but can be messy and slow to apply.
+* Phase-change TIMs: Have a high thermal conductivity but require significant clamping force for correct operation.
+* Adhesive-based TIMs: Have the lowest thermal conductivity but require less clamping force.
 
 ## References
 
