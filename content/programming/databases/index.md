@@ -1,11 +1,11 @@
 ---
 author: "gbmhunter"
-categories: [ "Electronics", "Databases" ]
+categories: [ "Programming", "Databases" ]
 date: 2020-07-14
 description: "Code examples for MariaDB and PostgreSQL."
 draft: false
 lastmod: 2020-07-20
-tags: [ "electronics", "databases", "MariaDB", "SQL", "table", "PostgreSQL", "inheritance", "object-orientated databases" ]
+tags: [ "programming", "databases", "MariaDB", "SQL", "table", "PostgreSQL", "inheritance", "object-orientated databases" ]
 title: "Databases"
 type: "page"
 ---
