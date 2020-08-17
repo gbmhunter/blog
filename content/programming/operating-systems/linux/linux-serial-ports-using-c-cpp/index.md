@@ -4,6 +4,7 @@ categories: [ "Programming", "Operating Systems", "Linux" ]
 date: "2017-06-24"
 description: "A walk-through on how to configure serial ports correctly in Linux."
 draft: false
+images: [ "/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/linux-dev-dir-ttyacm0-arduino-serial.png" ]
 lastmod: "2018-12-26"
 tags: [ "Linux", "serial ports", "termios", "files", "unix", "tty", "devices", "configurations", "C", "C++", "examples"]
 title: "Linux Serial Ports Using C/C++"
