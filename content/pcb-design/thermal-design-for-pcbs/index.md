@@ -4,8 +4,8 @@ categories: [ "PCB Design" ]
 date: 2020-08-10
 description: "Thermal conductivity, the resistance model, TIMs, a via thermal resistance calculator and more info on thermal design for PCBs."
 draft: false
-lastmod: 2020-08-17
-tags: [ "PCB design", "thermal design", "junction", "ambient", "temperature", "power dissipation", "resistor model", "thermal resistance", "thermal conductivity", "vias", "calculator", "specific thermal conductance", "specific thermal resistance", "absolute thermal conductance", "absolute thermal resistance", "thermal interface material", "TIM" ]
+lastmod: 2020-08-18
+tags: [ "PCB design", "thermal design", "junction", "ambient", "temperature", "power dissipation", "resistor model", "thermal resistance", "thermal conductivity", "vias", "calculator", "specific thermal conductance", "specific thermal resistance", "absolute thermal conductance", "absolute thermal resistance", "thermal interface material", "TIM", "phase change" ]
 title: "Thermal Design For PCBs"
 type: "page"
 ---
@@ -54,11 +54,9 @@ Notice how it is very similar to the formula for _specific thermal conductivity_
 
 **However, both of these thermal conductivities are usually referred to without the "specific" or "absolute" qualifier**, leaving it up to you to work out what is being used based on the context and units. Remember, 99% of the time when a component datasheet mentioned "thermal resistance" they will be talking about "absolute thermal resistance". 
 
-### Temperature Dependence
+If you know the specific thermal conductivity, you can find the absolute thermal conductivity with:
 
-Thermal conductivity has some dependence on temperature (especially near `\(0 K\)`), however for most materials at common PCB temperatures the thermal conductivity can be considered constant.
-
-For most metals, a specific thermal conductivity is specified, typically in the SI units `\( W \cdot m^{-1} \cdot K^{-1} \)` (Watts per meter-Kelvin). It is typically written as `\( W/mK \)`, but **remember that the `\(m\)` is for meters, not milli-Kelvin**!
+<p>$$ \lambda_A = \frac{\lambda_A \cdot A}{t} $$</p>
 
 Below are the specific thermal conductivities for common PCB materials:
 
@@ -67,19 +65,37 @@ Below are the specific thermal conductivities for common PCB materials:
     <tr><th>Material</th> <th>Specific Thermal Conductivity (\(W \cdot m^{-1} \cdot K^{-1}) \)</th></tr>
   </thead>
   <tbody>
-    <tr><td>Air</td>        <td>0.026</td></tr>
-    <tr><td>Aluminium</td>  <td>205</td></tr>
-    <tr><td>Copper</td>     <td>401</td></tr>
-    <tr><td>FR-4</td>       <td>0.29 (through-plane), 0.81 (across-plane)</td></tr>
-    <tr><td>Rogers 92ML</td><td>2.0 (through-plane)</td></tr>
-    <tr><td>Gold</td>       <td>314</td></tr>
-    <tr><td>Silver</td>     <td>406</td></tr>
+    <tr><td>Air</td>            <td>0.026</td></tr>
+    <tr><td>Aluminium</td>      <td>205</td></tr>
+    <tr><td>Copper</td>         <td>401</td></tr>
+    <tr><td>FR-4</td>           <td>0.29 (through-plane), 0.81 (across-plane)</td></tr>
+    <tr><td>Rogers 92ML</td>    <td>2.0 (through-plane)</td></tr>
+    <tr><td>Gold</td>           <td>314</td></tr>
+    <tr><td>Silver</td>         <td>406</td></tr>
+    <tr><td>Solder, SnAgCu</td> <td>58</td></tr>
+    <tr><td>Soldermask</td>     <td>0.2</td></tr>
+    <tr><td>Plating, ENIG</td>  <td>58</td></tr>
+    <tr><td>TIM, phase change</td>  <td>2.23</td></tr>
   </tbody>
 </table>
 
-Most of these values were obtained from <http://hyperphysics.phy-astr.gsu.edu/hbase/Tables/thrcn.html>[^hyperphysics-thermal-conductivity].
+Most of these values were obtained from <http://hyperphysics.phy-astr.gsu.edu/hbase/Tables/thrcn.html>[^hyperphysics-thermal-conductivity]. `Solder, SnAgCu` and `Plating, ENIG` values sourced from <https://www.digikey.co.nz/en/articles/optimizing-pcb-thermal-performance-for-cree-xlamp-leds>. `TIM, phase change` was sourced from <https://www.laird.com/thermal-interface-materials/phase-change-materials/tpcm-900>.
+
+You can use these values to calculate an absolute thermal resistance for a particular layer in a PCB stack-up. For example, if we wanted to calculate the absolute thermal resistance `\( R_\theta \)` of a `\( 2cm^2 \)` area of soldermask that is `\( 20um \)` thick:
+
+<p>\begin{align}
+  R_\theta  &= \frac{1}{\lambda_{A}} \\
+            &= \frac{t}{\lambda \cdot A} \\
+            &= \frac{20um}{0.2Wm^{-1}K^{-1} \cdot 2cm^2} \\
+            &= 0.5KW^{-1} \\
+            &= 0.5°CW^{-1}
+\end{align}</p>
+
+Thermal conductivity has some dependence on temperature (especially near `\(0K\)`), however for most materials at common PCB temperatures the thermal conductivity can be considered constant.
 
 Non-isotropic materials such as FR-4 (which is a glass epoxy) have different thermal conductivities in the through-plane (Z) and across-plane (XY) directions.
+
+ASTM D5470 is a standard used to measure thermal conductivity.
 
 ## The Thermal Resistor Model
 
@@ -141,9 +157,15 @@ Adding more thermal vias is a case of dimensioning returns, due to the limited s
 
 ## Thermal Interface Material (TIM)
 
+Thermal interface materials (TIMs) are thin layers of compressible ("compliant") thermally conductive material that are used to provide good thermal coupling between two components. They are usually used between a PCB and a heatsink. Both the PCB and heatsink are made of hard materials that although they look flat, contain microscopic rough patches which when sandwiched together, create insulating air gaps and make the heatsinking inadequate. Inserting a thin TIM between the PCB and heatsink removes these air gaps and greatly reduces the thermal resistance of the system. Many TIMs try to be as thermally conductive as possible while being an electrical insulator (if only diamond was cheap enough!).
+
 * Thermal grease TIMs: Offers the best thermal conductivity, but can be messy and slow to apply.
 * Phase-change TIMs: Have a high thermal conductivity but require significant clamping force for correct operation.
 * Adhesive-based TIMs: Have the lowest thermal conductivity but require less clamping force.
+
+Phase-change TIMs are a flexible solid sheet at room temperature, but quickly soften at higher temperatures (e.g. 50°C and above) to fill in microscopic irregularities between the two surfaces and decrease thermal resistance. The thickness of phase-change TIMs is usually between 0.1 and 0.5mm. [Boron nitride](https://en.wikipedia.org/wiki/Boron_nitride) is an example of a compound which has phase-change abilities.
+
+{{% img src="thermal-resistance-vs-pressure-tim-t-global-tg-a1250.png" width="600px" caption="The relationship between pressure and thermal resistance for a silicon TIM from T-Global Technology (TG-A1250). Image acquired 2020-08-14 from http://www.tglobaltechnology.com/uploads/files/tds/TG-A1250.pdf." %}}
 
 ## References
 
