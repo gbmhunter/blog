@@ -1,12 +1,12 @@
 ---
 author: "gbmhunter"
 categories: [ "Programming", "Operating Systems", "Linux" ]
-date: "2017-06-24"
+date: 2017-06-24
 description: "A walk-through on how to configure serial ports correctly in Linux."
 draft: false
 images: [ "/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/linux-dev-dir-ttyacm0-arduino-serial.png" ]
-lastmod: "2018-12-26"
-tags: [ "Linux", "serial ports", "termios", "files", "unix", "tty", "devices", "configurations", "C", "C++", "examples"]
+lastmod: 2020-08-14
+tags: [ "Linux", "serial ports", "termios", "files", "unix", "tty", "devices", "configurations", "C", "C++", "examples", "getty", "Arduino", "code" ]
 title: "Linux Serial Ports Using C/C++"
 type: "page"
 ---
@@ -33,7 +33,9 @@ Common names are:
 
 ## Basic Setup In C
 
+{{% note %}}
 This code is also applicable to C++.
+{{% /note %}}
 
 First we want to include a few things:
 
@@ -80,8 +82,9 @@ We need access to the `termios` struct in order to configure the serial port. We
 
 ```c
 // Create new termios struc, we call it 'tty' for convention
+// No need for "= {0}" at the end as we'll immediately write the existing
+// config to this struct
 struct termios tty;
-memset(&tty, 0, sizeof tty);
 
 // Read in existing settings, and handle any error
 if(tcgetattr(serial_port, &tty) != 0) {
@@ -212,6 +215,8 @@ Both `OXTABS` and `ONOEOT` are not defined in Linux. Linux however does have the
 
 An important point to note is that `VTIME` means slightly different things depending on what `VMIN` is. When `VMIN` is 0, `VTIME` specifies a **time-out from the start of the read() call**. But when `VMIN` is > 0, `VTIME` specifies the **time-out from the start of the first received character**.
 
+Let's explore the different combinations:
+
 **VMIN = 0, VTIME = 0**: No blocking, return immediately with what is available  
 
 **VMIN > 0, VTIME = 0**: This will make `read()` always wait for bytes (exactly how many is determined by `VMIN`), so `read()` could block indefinitely.  
@@ -222,7 +227,7 @@ An important point to note is that `VTIME` means slightly different things depen
 
 `VMIN` and `VTIME` are both defined as the type `cc_t`, which I have always seen be an alias for unsigned char (1 byte). This puts an upper limit on the number of `VMIN` characters to be 255 and the maximum timeout of 25.5 seconds (255 deciseconds).
 
-"Returning as soon as any data is received" does not mean you will only get 1 byte at a time. Depending on the OS latency, serial port speed, hardware buffers and many other things you have no direct control over, you may receive any number of bytes.
+"Returning as soon as any data is received" does not mean you will only get 1 byte at a time. Depending on the OS latency, serial port speed, hardware buffers and many other things you have no direct control over, **you may receive any number of bytes**.
 
 For example, if we wanted to wait for up to 1s, returning as soon as any data was received, we could use:
 
@@ -233,7 +238,7 @@ tty.c_cc[VMIN] = 0;
 
 ## Baud Rate
 
-Rather than use bit fields as with all the other settings, the serial port baud rate is set by calling the functions `cfsetispeed()` and `cfsetospeed()`:
+Rather than use bit fields as with all the other settings, the serial port baud rate is set by calling the functions `cfsetispeed()` and `cfsetospeed()`, passing in a pointer to your `tty` struct and a `enum`:
 
 ```c
 // Set in/out baud rate to be 9600
@@ -290,7 +295,6 @@ Reading is done through the `read()` function. You have to provide a buffer for 
 ```c
 // Allocate memory for read buffer, set size according to your needs
 char read_buf [256];
-memset(&read_buf, '\0', sizeof(read_buf));
 
 // Read bytes. The behaviour of read() (e.g. does it block?,
 // how long does it block for?) depends on the configuration
@@ -326,7 +330,6 @@ int serial_port = open("/dev/ttyUSB0", O_RDWR);
 
 // Create new termios struc, we call it 'tty' for convention
 struct termios tty;
-memset(&tty, 0, sizeof tty);
 
 // Read in existing settings, and handle any error
 if(tcgetattr(serial_port, &tty) != 0) {
@@ -370,6 +373,10 @@ write(serial_port, "Hello, world!", sizeof(msg));
 
 // Allocate memory for read buffer, set size according to your needs
 char read_buf [256];
+
+// Normally you wouldn't do this memset() call, but since we will just receive
+// ASCII data for this example, we'll set everything to 0 so we can
+// call printf() easily.
 memset(&read_buf, '\0', sizeof(read_buf);
 
 // Read bytes. The behaviour of read() (e.g. does it block?,
@@ -391,11 +398,11 @@ close(serial_port)
 
 ## Issues With Getty
 
-Getty can cause issues with serial communication if it is trying to manage the same tty device that you are attempting to perform serial communications with.
+Getty can cause issues with serial communication if it is trying to manage the same `tty` device that you are attempting to perform serial communications with.
 
 **To Stop Getty:**
 
-Getty can be hard to stop, as by default, if you try and kill the process, and new process will start up immediately.
+Getty can be hard to stop, as by default if you try and kill the process, a new process will start up immediately.
 
 These instructions apply to older versions of Linux, and/or embedded Linux.
 
@@ -430,7 +437,7 @@ int main() {
 
 ## Examples
 
-For Linux serial port code examples see [https://github.com/gbmhunter/CppLinuxSerial](https://github.com/gbmhunter/CppLinuxSerial).
+For Linux serial port code examples see [https://github.com/gbmhunter/CppLinuxSerial](https://github.com/gbmhunter/CppLinuxSerial) (note that this library is written in C++, not C).
 
 ## External Resources
 
