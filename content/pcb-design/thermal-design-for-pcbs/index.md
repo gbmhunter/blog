@@ -4,7 +4,7 @@ categories: [ "PCB Design" ]
 date: 2020-08-10
 description: "Thermal conductivity, the resistance model, TIMs, a via thermal resistance calculator and more info on thermal design for PCBs."
 draft: false
-lastmod: 2020-08-18
+lastmod: 2020-08-19
 tags: [ "PCB design", "thermal design", "junction", "ambient", "temperature", "power dissipation", "resistor model", "thermal resistance", "thermal conductivity", "vias", "calculator", "specific thermal conductance", "specific thermal resistance", "absolute thermal conductance", "absolute thermal resistance", "thermal interface material", "TIM", "phase change" ]
 title: "Thermal Design For PCBs"
 type: "page"
@@ -20,7 +20,7 @@ The resistor model is commonly used to calculate basic PCB operating temperature
 
 _Specific thermal conductivity_ is a property of a material which describes it's ability to conduct heat. Materials with a high specific thermal conductivity conduct heat well, and materials with a low specific thermal conductivity conduct heat poorly (they are called _thermal insulators_). The symbol `\( \lambda \)` (_lambda_) is typically used to represent specific thermal conductivity.
 
-<p>$$ \lambda = \frac{P \cdot t}{A \cdot \Delta T} $$</p>
+<p>\begin{align} \lambda = \frac{P \cdot t}{A \cdot \Delta T} \end{align}</p>
 
 <p class="centered">
   where:<br/>
@@ -37,7 +37,7 @@ _Thermal resistance_ is just the inverse (reciprocal) of thermal conductivity.
 
 Absolute thermal conductance is defined as:
 
-<p>$$ \lambda_A = \frac{P}{A \cdot \Delta T} $$</p>
+<p>\begin{align} \lambda_A = \frac{P}{A \cdot \Delta T} \end{align}</p>
 
 <p class="centered">
   where:<br/>
@@ -56,7 +56,7 @@ Notice how it is very similar to the formula for _specific thermal conductivity_
 
 If you know the specific thermal conductivity, you can find the absolute thermal conductivity with:
 
-<p>$$ \lambda_A = \frac{\lambda_A \cdot A}{t} $$</p>
+<p>\begin{align} \lambda_A = \frac{\lambda_A \cdot A}{t} \end{align}</p>
 
 Below are the specific thermal conductivities for common PCB materials:
 
@@ -97,17 +97,23 @@ Non-isotropic materials such as FR-4 (which is a glass epoxy) have different the
 
 ASTM D5470 is a standard used to measure thermal conductivity.
 
+If the thickness of a material is known and constant, sometimes manufacturers will give a thermal resistance with units `\( °C \cdot m^2 \cdot W^{-1} \)` (or `\( °C \cdot in^2 \cdot W^{-1} \)`). This is common for areas of FR-4 PCB (when the thickness is defined as say, 1.6mm), or for TIM material with a defined thickness of say 0.1mm. When this is given, they have already taken the thickness `\(t\)` into account and applied it to the equation. In this sense the thermal resistance is half-way between a specific thermal resistance and an absolute thermal resistance. To fully calculate an absolute thermal resistance from this value, all you need to do is divide the resistance by the area of the material:
+
+
+<p>\begin{align} R_\theta = \frac{R_{\theta, °Cm^2W^{-1}}}{A} \end{align}</p>
+
+
 ## The Thermal Resistor Model
 
 Remember, thermal resistance is the inverse of thermal conductance. When modelling the thermal properties of PCBs, it is **useful to use thermal resistance instead of conductance as the resistances sum when the materials are in series**, just like resistance values would. We use absolute thermal resistances here as we have taken into account the thickness.
 
 Just like resistance is defined via Ohm's law as `\( R = \frac{V}{I} \)`, thermal resistance (absolute) `\(R_\theta\)` is defined as:
 
-<p>$$ R_{\theta} = \frac{\Delta T}{P} $$</p>
+<p>\begin{align} R_{\theta} = \frac{\Delta T}{P} \end{align}</p>
 
 <p class="centered">
   where:<br>
-  \( R_\theta \) is the thermal resistance, in \( °C/W \) <br>
+  \( R_\theta \) is the thermal resistance, in \( °C \cdot W^{-1} \) <br>
   \( \Delta T \) is the difference in temperature, in \(°C\)<br>
   \( P \) is the power dissipation, in \( W \)
 </p>
@@ -118,13 +124,13 @@ When talking about thermal resistances, a resistor symbol is used to indicate th
 
 When looking through component datasheets, one of the most common thermal resistances is the _junction-to-ambient_ thermal resistance. This value is defined as:
 
-<p>$$ \theta_{JA} = \frac{T_J - T_A}{P} $$</p>
+<p>\begin{align} \theta_{JA} = \frac{T_J - T_A}{P} \end{align}</p>
 
 <p class="centered">
   where:<br>
-  \( T_J \) is the temperature at the junction (the silicon die) inside the IC, in °C<br>
-  \( T_A \) is the ambient temperature (temperature of air/environment PCB is in), in °C<br>
-  \( P \) is the power dissipation of the IC
+  \( T_J \) is the temperature at the junction (the silicon die) inside the IC, in \(°C\)<br>
+  \( T_A \) is the ambient temperature (temperature of air/environment PCB is in), in \(°C\)<br>
+  \( P \) is the power dissipation of the IC, in \(W\)
 </p>
 
 However, **you have to be vigilant with specified junction-to-ambient values as they are not just a property of the component package**, but also of the PCB! When specified on a datasheet it is usually tested on a JEDEC standardized PCB and package land pattern.
@@ -135,7 +141,7 @@ A much more useful thermal resistance in a components datasheet is the _junction
 
 Your case-to-ambient thermal resistance can be added to the manufacturer-specified junction-to-case thermal resistance to get the total junction-to-ambient resistance using simple addition:
 
-<p>$$ \theta_{JA} = \theta_{JC} + \theta_{CA} $$</p>
+<p>\begin{align} \theta_{JA} = \theta_{JC} + \theta_{CA} \end{align}</p>
 
 ## The Thermal Resistance Of A Via
 
@@ -159,9 +165,9 @@ Adding more thermal vias is a case of dimensioning returns, due to the limited s
 
 Thermal interface materials (TIMs) are thin layers of compressible ("compliant") thermally conductive material that are used to provide good thermal coupling between two components. They are usually used between a PCB and a heatsink. Both the PCB and heatsink are made of hard materials that although they look flat, contain microscopic rough patches which when sandwiched together, create insulating air gaps and make the heatsinking inadequate. Inserting a thin TIM between the PCB and heatsink removes these air gaps and greatly reduces the thermal resistance of the system. Many TIMs try to be as thermally conductive as possible while being an electrical insulator (if only diamond was cheap enough!).
 
-* Thermal grease TIMs: Offers the best thermal conductivity, but can be messy and slow to apply.
-* Phase-change TIMs: Have a high thermal conductivity but require significant clamping force for correct operation.
-* Adhesive-based TIMs: Have the lowest thermal conductivity but require less clamping force.
+* **Thermal grease TIMs**: Offers the best thermal conductivity, but can be messy and slow to apply.
+* **Phase-change TIMs**: Have a high thermal conductivity but require significant clamping force for correct operation.
+* **Adhesive-based TIMs**: Have the lowest thermal conductivity but require less clamping force.
 
 Phase-change TIMs are a flexible solid sheet at room temperature, but quickly soften at higher temperatures (e.g. 50°C and above) to fill in microscopic irregularities between the two surfaces and decrease thermal resistance. The thickness of phase-change TIMs is usually between 0.1 and 0.5mm. [Boron nitride](https://en.wikipedia.org/wiki/Boron_nitride) is an example of a compound which has phase-change abilities.
 
