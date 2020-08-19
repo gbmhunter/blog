@@ -94,6 +94,10 @@ Del                   Delete item.
 Shift-Enter           Close a dialogue box (e.g. the edit symbol properties box)
 ```
 
+### Importing Schematic Sheets
+
+If you have an existing `.Sch` file you wish to add to your project, navigate to the parent schematic sheet you want to add the sheet to, and click _Place->Hierarchechal Sheet_. Replace the contents in the _file name_ box with the existing file, give it a logical _sheet name_ and click o.k. KiCAD will then prompt you saying "Filename already exists. Link sheet name to this file?". Click yes and you're done! 
+
 ## Libraries
 
 ```text
