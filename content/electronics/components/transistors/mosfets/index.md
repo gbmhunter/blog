@@ -4,8 +4,8 @@ categories: [ "Electronics", "Components" ]
 date: 2011-09-03
 description: "Schematic symbol, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."
 draft: false
-lastmod: 2020-06-25
-tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate" ]
+lastmod: 2020-08-27
+tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate" ]
 title: "MOSFETs"
 type: "page"
 ---
@@ -209,6 +209,10 @@ A _floating-gate MOSFET_ (FGMOS) is a type of MOSFET where the gate is completel
 
 **How long will floating-gate MOSFETs retain their charge, if un-powered?** As of 2020, the current mass-produced, consumer grade flash memory devices and SD cards claim to have a memory retention life of approximately 10 years, if left un-powered the entire time (if periodically plugged in, these devices can re-charge and "reset" the 10-year clock).
 
+## Split-Gate MOSFETs
+
+A very critical parameter for a MOSFET is it's on state resistance. The easiest way to reduce this is to increase the doping concentration of the epitaxial layer[^science-direct-split-gate-mosfet]. However this also decreases the breakdown voltage. The _Split Gate_ MOSFET structure is a design that has been developed to allow the on resistance to decrease whilst keeping a high breakdown voltage. Comparing a standard MOSFET with a split-gate MOSFET to which both have the same breakdown voltage, the on resistance of the split-gate MOSFET can be around 50% lower. 
+
 ## Part Recommendations
 
 ### Small, Low-Voltage, High Current Capability (aka low RDS(on)) and Cheap
@@ -227,3 +231,7 @@ The PMV45EN is a low cost, very low RDS(on) N-Channel MOSFET which I use as the 
 Fairchild's application note, [AN-558 - Introduction To Power MOSFETs And Their Applications](http://www.fairchildsemi.com/an/AN/AN-558.pdf) is a great resource when using MOSFETs for power applications.
 
 Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.co.uk/temp/gdt/gdt2.html).
+
+## References
+
+[^science-direct-split-gate-mosfet]: <https://www.sciencedirect.com/science/article/pii/S2589208820300041>
