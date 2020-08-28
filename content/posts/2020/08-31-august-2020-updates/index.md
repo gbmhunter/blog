@@ -17,3 +17,5 @@ type: "post"
 * Removed the "upvote" shurikens that were on each page/post. {{% link text="After introducing them about 1.5 years ago" src="/posts/2019/03-10-adding-shurikens" %}} I have found they make the pages cluttered and don't work well on mobile devices, so I decided to axe the idea.
 
 * Added a section on {{% link text="Split-Gate MOSFETs to the MOSFET page" src="/electronics/components/transistors/mosfets#split-gate-mosfets" %}}.
+
+* Adding a section on {{% link text="stacking and concatenation to the Numpy page" src="/programming/languages/python/numpy" %}}.

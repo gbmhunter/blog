@@ -4,7 +4,7 @@ categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-06-25
 description: "A tutorial on how to use Numpy, a popular library for Python that provides powerful array/matrix manipulation."
 draft: false
-lastmod: 2020-03-18
+lastmod: 2020-08-28
 tags: [ "programming", "programming languages", "Python", "Numpy", "array", "axis", "computation", "dimension", "np", "example", "code", "tutorial", "slicing", "indexing" ]
 title: "Numpy"
 type: "page"
@@ -238,6 +238,33 @@ data = np.arange(10)
 # data = array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 my_slice = data[3:8:2] # Slice from 3 to 8, with a step size of 2
 # my_slice = array([3, 5, 7])
+```
+
+## Stacking
+
+Stacking is used to join arrays along a _new_ axis. A classic example of this would be if you had two separate arrays of x and y values, and you wanted to to combine them into a single array of (x, y) coordinate pairs.
+
+```python
+x_vals = np.array([ 1, 2, 3, 4])
+y_vals = np.array([ 10, 20, 30, 40])
+coords = np.stack([x_vals, y_vals], axis=1)
+# coords = [
+#   [ 1 10]
+#   [ 2 20]
+#   [ 3 30]
+#   [ 4 40]
+# ]
+```
+
+## Concatenation
+
+If you want to start of with an empty array and add values to it in a loop, you can use concatenate, but you have to `reshape` your empty array first to make sure it has the right dimensions:
+
+```python
+data = np.array([]).reshape(0,3) # This reshape() call is important!
+for i in range(3)
+  np.concatenate([data, np.array([[ i*1, i*2, i*3]])])
+print(data)
 ```
 
 ## Reading A CSV File
