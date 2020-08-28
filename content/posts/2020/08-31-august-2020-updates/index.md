@@ -19,3 +19,7 @@ type: "post"
 * Added a section on {{% link text="Split-Gate MOSFETs to the MOSFET page" src="/electronics/components/transistors/mosfets#split-gate-mosfets" %}}.
 
 * Adding a section on {{% link text="stacking and concatenation to the Numpy page" src="/programming/languages/python/numpy" %}}.
+
+* Added a new page on {{% link text="Inferential Statistics" src="/mathematics/statistics/inferential-statistics" %}}.
+
+* Added information to the {{% link text="Component Package page about leadframes" src="/pcb-design/component-packages#leadframes" %}}.
