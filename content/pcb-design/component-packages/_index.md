@@ -2,7 +2,8 @@
 author: "gbmhunter"
 date: 2011-09-03
 draft: false
-lastmod: 2011-09-03
+lastmod: 2020-08-28
+tags: [ "PCB design", "component packages", "components", "packages", "footprints", "dimensions", "manufacturers", "database", "leadframes" ]
 title: "Component Packages"
 type: "page"
 ---
@@ -34,6 +35,16 @@ Break-out boards are useful for converting one package footprint into another. T
 If not brought from the right place, these break-out boards can be very expensive!
 
 SparkFun is the cheapest supplier of break-out boards that I've found. Element14 also sells them, but at a much higher price.
+
+## Leadframes
+
+_Leadframes_ are the metal structures that are use during the manufacturing of certain component packages (both through-hole and surface mount) to provide the electrical connection from the IC die to the outside world[^wikipedia-leadframe]. The pins (a.k.a. leads) form part of the leadframe.
+
+Examples of component packages that use leadframes:
+
+* DIP
+* QFN
+* QFP
 
 ## External References
 
@@ -123,3 +134,7 @@ The latest version of the summary template table used on each component package 
     </tr>
   </tbody>
 </table>
+
+## References
+
+[^wikipedia-leadframe]: <https://en.wikipedia.org/wiki/Lead_frame>
