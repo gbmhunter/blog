@@ -51,12 +51,15 @@ my_path = Path('/my_dir/my_file.txt')
 
 print(my_path.parent) # '/my_dir'
 print(my_path.name) # 'my_file.txt'
+print(my_path.stem) # 'my_file'
 print(my_path.suffix) # '.txt'
 print(my_path.root) # '/'
 print(my_path.parts) # ('/', 'my_dir', 'my_file.txt')
 ```
 
 Note that in Linux systems, `.root` is typically `/`, while in Windows system, `.root` is typically `\\`.
+
+`.stem` allows you to extract the filename without the extension, which replaces `os.path.splitext()[0]`
 
 ### Backwards Compatibility
 
