@@ -1,9 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
+category: [ "Programming", "Microcontrollers", "Arduino" ]
 date: 2011-11-10
 draft: false
-title: Arduino
-type: page
+lastmod: 2020-08-02
+tags: [ "Arduino", "microcontroller", "IDE", "NetDuino", "FezDomino", "MariaMole", "RTOS", "CLI", "board packages", "Board Manager", "BSPs" ]
+title: "Arduino"
+type: "page"
 ---
 
 ## Overview
@@ -32,11 +35,11 @@ Website: [http://www.ghielectronics.com/catalog/product/133](http://www.ghielect
 
 ## The IDE And Extensions
 
-## The Arduino IDE
+### The Arduino IDE
 
 Most importantly, the Arduino IDE is free and open-source. The complete tool-chain (compilers/linkers/assemblers/programmers e.t.c) is free to use.
 
-## MariaMole
+### MariaMole
 
 MariaMole is an IDE that runs over the Arduino install. I think it's main benefit is that it allows you to write code in a proper file/library structure (which is a serious downside to the native Arduino IDE). It provides the Workspace/project/file window that is a default to any good IDE.
 
@@ -44,17 +47,27 @@ MariaMole is an IDE that runs over the Arduino install. I think it's main benefi
 
 As of Mar 2013, MariaMole does not support Arduino v1.5.2, which is required to run the Due.
 
-## Visual Studio Plugin
+### Visual Studio Plugin
 
 There is a Visual Studio plugin called Visual Micro (downloadable from [this website](http://www.visualmicro.com/)), for the Arduino.
 
 ## RTOS
 
-There are a few RTOS's which can be run on Arduinos, including NilRTOS, ChibiOS/RT and FreeRTOS. NilRTOS runs on the AVR Arduinos (everything but the Due and Teensy 3.0), while both ChibiOS/RT and FreeRTOS run on both the AVR and ARM-based Arduinos. The best place for more information and to download these RTOS systems (which are pre-configured to run on the Arduino systems) is the Google group rtoslibs ([https://code.google.com/p/rtoslibs/](https://code.google.com/p/rtoslibs/)).
+There are a few RTOSs which can be run on Arduinos, including NilRTOS, ChibiOS/RT and FreeRTOS. NilRTOS runs on the AVR Arduinos (everything but the Due and Teensy 3.0), while both ChibiOS/RT and FreeRTOS run on both the AVR and ARM-based Arduinos. The best place for more information and to download these RTOS systems (which are pre-configured to run on the Arduino systems) is the Google group rtoslibs ([https://code.google.com/p/rtoslibs/](https://code.google.com/p/rtoslibs/)).
 
 ## Command-line Interface
 
-Ino - "Ino is a command line toolkit for working with Arduino hardware" Website: [http://inotool.org/](http://inotool.org/) Ino allows you to create, build, program, and serial monitor with the Arduino platform, doing away the need to use the Arduino GUI (although you still have to have it installed so it can use it's libraries). It currently works on Linux or MacOS systems. Great when wanting to automate the programming method (for example, if you want to program multiple Arduinos all at the same time.
+Ino: "Ino is a command line toolkit for working with Arduino hardware"
+Website: [http://inotool.org/](http://inotool.org/)
+Ino allows you to create, build, program, and serial monitor with the Arduino platform, doing away the need to use the Arduino GUI (although you still have to have it installed so it can use it's libraries). It currently works on Linux or MacOS systems. Great when wanting to automate the programming method (for example, if you want to program multiple Arduinos all at the same time.
+
+## Board Packages
+
+Board packages are installed by the _Board Manager_ to the following locations:
+
+* MacOS: `/Users/<username>/Library/Arduino15/packages`
+* Windows: `C:\Users\<username>\AppData\Local\Arduino15`
+
 
 ## External Links
 
