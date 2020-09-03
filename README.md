@@ -65,7 +65,8 @@ $ pipenv install --two LinkChecker
 
 * Code Spell Checker (prevents spelling mistakes). Additional dictionary definitions are included in `vscode.code-workspace`.
 * Vim (if you're a vim fan!)
-* EditorConfig for VS Code (promotes consistent coding styles)
+* EditorConfig for VS Code (promotes consistent coding styles, incl. indentation rules)
+* `Better TOML`: For syntax highlighting in the Hugo config file `config.toml`
 
 # Markdown Extensions
 

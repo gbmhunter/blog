@@ -3,8 +3,8 @@ author: "gbmhunter"
 date: 2020-06-19
 description: "Info about the STM32 range of microcontrollers."
 categories: [ "Programming", "Microcontrollers", "STM32" ]
-lastmod: 2020-06-19
-tags: [ "programming", "microcontrollers", "STM32", "STM32F0", "Cortex-M0", "ARM", "STM32CubeIDE", "Nucleo" ]
+lastmod: 2020-08-03
+tags: [ "programming", "microcontrollers", "STM32", "STM32F0", "Cortex-M0", "ARM", "STM32CubeIDE", "Nucleo", "STM32WLEx", "LoRa", "LoRaWAN" ]
 title: "STM32 Microcontrollers"
 type: "page"
 ---
@@ -45,3 +45,7 @@ Or as the following inputs:
 * High-impedance
 * Pull-up
 * Pull-down
+
+## STM32WLEx
+
+The `STM32WLEx` is a family of "SoC" microcontrollers featuring a STM32L4 coupled with a wireless radio IC that supports LoRaWAN (both of these are in the same physical IC).
