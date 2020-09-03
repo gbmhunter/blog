@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "atomic-algolia": "^0.3.19"
+  },
+  "scripts": {
+    "algolia": "atomic-algolia"
+  }
+}

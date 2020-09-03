@@ -1,6 +1,2 @@
 ---
-outputs:
-- html
-- rss
-- json
 ---

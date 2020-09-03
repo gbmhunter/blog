@@ -18,3 +18,9 @@ env/
 
 # MacOS thingies
 .DS_Store
+
+# Environment file which has sensitive Algolia admin key
+.env
+
+# npm libs
+node_modules/
