@@ -38,6 +38,13 @@ Latch-up occurs because the PN junctions that form the **PMOS and NMOS switching
 
 Hot-plugging can cause latch-up issues.
 
+ICs are sometimes tested against the EIA/JESD 78A IC latch-up standard and the IC is provided with a _latch-up class_. The tests involve:
+
+* Applying a supply overvoltage condition to the ICs power pins
+* A current injection to the ICs I/O pins
+
+{{% img src="static-latchup-tests-snippet-stm32f070xx.png" width="500px" caption="A snippet of the STM32F070xx microcontrollers datasheet showing the latch-up tests which were performed on the IC." %}}
+
 ### AUC
 
 Advanced ultra-low CMOS (AUC) is a CMOS logic family. It is optimised for 1.8V operation and voltage tolerant up to 3.6V.

@@ -11,61 +11,61 @@ type: "page"
 
 ## Overview
 
-The I²C bus is a communication protocol commonly used for PCB level transmissions between ICs and microcontrollers. It is a half-duplex synchronous protocol which requires 2 non-power-related wires (4 if you include power and ground). It uses device addressing to indicate the recipient of the data. It is commonly used for sending small packets of information to ICs (such as configuration settings, or a sensor value), while [SPI](/electronics/communication-protocols/spi-communication-protocol/) is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C can support multiple masters through software protocols.
+The I²C (_Inter-Integrated Circuit_, but pronounced _I-2-C_) bus is a communication protocol commonly used for PCB level transmissions between ICs and microcontrollers. It is a half-duplex synchronous protocol which requires 2 non-power-related wires (4 if you include power and ground). It uses device addressing to indicate the recipient of the data. It is commonly used for sending small packets of information to ICs (such as configuration settings, or a sensor value), while [SPI](/electronics/communication-protocols/spi-communication-protocol/) is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C can support multiple masters through software protocols.
 
-{{< img src="i2c-logo.gif" width="200px" caption="The I2C logo."  >}}
+{{< img src="i2c-logo.gif" width="200px" caption="The I2C logo." >}}
 
 ## Typical Electrical Specs
 
 <table>
-    <thead>
-        <tr>
-            <th>Specification</th>
-            <th>Value</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Bus Capacitive Load</td>
-            <td>400pF max (this limits cable length and fan-out)</td>
-        </tr>
-        <tr>
-            <td>Signal Rise Times</td>
-            <td>1000ns max (standard mode), 300ns max (fast-mode)</td>
-        </tr>
-        <tr>
-            <td>Maximum Pull-down Current</td>
-            <td>3mA (this limits the minimum pull-up resistance)</td>
-        </tr>
-        <tr>
-            <td>Signal Naming Conventions</td>
-            <td>SCK (clock), SDA (data)</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Specification</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bus Capacitive Load</td>
+      <td>400pF max (this limits cable length and fan-out)</td>
+    </tr>
+    <tr>
+      <td>Signal Rise Times</td>
+      <td>1000ns max (standard mode), 300ns max (fast-mode)</td>
+    </tr>
+    <tr>
+      <td>Maximum Pull-down Current</td>
+      <td>3mA (this limits the minimum pull-up resistance)</td>
+    </tr>
+    <tr>
+      <td>Signal Naming Conventions</td>
+      <td>SCK (clock), SDA (data)</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Signal Names
 
 <table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Flow</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>SCL (sometimes called SCK)</td>
-            <td>Master drives, slaves listen</td>
-            <td>Clock</td>
-        </tr>
-        <tr >
-            <td>SDA</td>
-            <td>Bi-directional</td>
-            <td>Data</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Flow</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SCL (sometimes called SCK)</td>
+      <td>Master drives, slaves listen</td>
+      <td>Clock</td>
+    </tr>
+    <tr>
+      <td>SDA</td>
+      <td>Bi-directional</td>
+      <td>Data</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Pull-Up Resistors
@@ -102,22 +102,22 @@ Because of I2C's open-collector topology, it is **solely the pull-up resistors d
 The maximum rise time `\( T_R \)` is specified by the I2C standard for each I2C mode as shown in the table below:
 
 <table>
-    <thead>
-        <tr>
-            <th>I2C Mode</th>
-            <th>Maximum Rise Time \( T_R \)</th>
-        </tr>
-    </thead>
-    <tbody >
-        <tr >
-            <td>Standard</td>
-            <td>1000ns</td>
-        </tr>
-        <tr>
-            <td>Fast Mode</td>
-            <td>300ns</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>I2C Mode</th>
+      <th>Maximum Rise Time \( T_R \)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Standard</td>
+      <td>1000ns</td>
+    </tr>
+    <tr>
+      <td>Fast Mode</td>
+      <td>300ns</td>
+    </tr>
+  </tbody>
 </table>
 
 Note that this is not the only thing which limits the maximum pull-up resistance, the **high-level input current**, `\( I_{IH} \)` also puts a restriction on the maximum resistance (it is usually higher than that imposed by the maximum rise time, and therefore rarely considered). The high-level input current is due to leakage current through the digital input pins connected to the bus, which creates a constant voltage drop over the pull-up resistors (remember, it's the resistors which are pulling the bus line high).
@@ -137,30 +137,30 @@ Because the data is clocked, there is almost no minimum speed (unless the device
 {{% /note %}}
 
 <table>
-    <thead>
-        <tr>
-            <th>I2C Mode</th>
-            <th>Maximum Speed (Kbps)</th>
-        </tr>
-    </thead>
-    <tbody>        
-        <tr>
-            <td>Standard</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td>Fast-mode (Fm)</td>
-            <td>400</td>
-        </tr>
-        <tr>
-            <td>Fast-mode Plus (Fm+)</td>
-            <td>1000</td>
-        </tr>
-        <tr>
-            <td>High-speed (HS)</td>
-            <td>3400</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>I2C Mode</th>
+      <th>Maximum Speed (Kbps)</th>
+    </tr>
+  </thead>
+  <tbody>        
+    <tr>
+      <td>Standard</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <td>Fast-mode (Fm)</td>
+      <td>400</td>
+    </tr>
+    <tr>
+      <td>Fast-mode Plus (Fm+)</td>
+      <td>1000</td>
+    </tr>
+    <tr>
+      <td>High-speed (HS)</td>
+      <td>3400</td>
+    </tr>
+  </tbody>
 </table>
 
 ### Fast Mode (Fm)
@@ -173,7 +173,7 @@ Fast mode plus (Fm+) is an extension of I2C Fast mode which allows devices to co
 
 ### High-Speed
 
-The high-speed mode allows for communcation rates of up to 3.4Mbps, which makes it the fastest I2C mode available. It is an **officially supported** mode of operation, however, not many I2C devices support this mode of operation (the competing [SPI communcation protocol](/electronics/communication-protocols/spi-communication-protocol/) seems to be the preferred way of doing things at >1Mbps). One of the key differences between normal I2C communcations and high-speed mode is the **current sourcing** capabilities of the master device. This allows the master to inject current onto the I2C lines to pull-them high faster than what pull-up resistors on their own would allow.
+The high-speed mode allows for communication rates of up to 3.4Mbps, which makes it the fastest I2C mode available. It is an **officially supported** mode of operation, however, not many I2C devices support this mode of operation (the competing {{% link text="SPI communication protocol" src="/electronics/communication-protocols/spi-communication-protocol" %}}) seems to be the preferred way of doing things at >1Mbps). One of the key differences between normal I2C communications and high-speed mode is the **current sourcing** capabilities of the master device. This allows the master to inject current onto the I2C lines to pull-them high faster than what pull-up resistors on their own would allow.
 
 Also, the clock signal has a high to low ratio of 1:2, which is different the the ratio of 1:1 for all other modes.
 
@@ -184,7 +184,7 @@ There are variants on the I2C bus, defined and implemented by various manufactur
 * SMBus - The System Management Bus. Only works with a single slave. Uses less current, but operates at a lower speed.
 * PMBus - Extends the SMBus functionality
 * IPMB - The Intelligent Platform Management Bus
-* TWI - The Two-Wire Interface. A name used by some vendors (including ATMEL), to describe a I2c bus (exactly identical).
+* TWI - The Two-Wire Interface. A name used by some vendors (including ATMEL), to describe a I2C bus (exactly identical).
 * ACCESS.bus
 * DDC, E-DDC - (Enhanced) Display Data Channel, used by the HDMI protocol send data from the sink to the source about what resolutions and frame rates it supports. The HDMI specification says it must support standard rate I2C (100kbit/s), with optional support for fast mode (400kbit/s).
 
@@ -197,7 +197,7 @@ There are variants on the I2C bus, defined and implemented by various manufactur
 * Telecom/networking
 * Radio/T.V.
 
-{{< img src="typical-application-schematic-for-i2c-io-expander.png" width="411px" caption="A typical application schematic for an I2C I/O expander."  >}}
+{{< img src="typical-application-schematic-for-i2c-io-expander.png" width="411px" caption="A typical application schematic for an I2C I/O expander." >}}
 
 ## Addressing
 
@@ -205,11 +205,11 @@ All I2C slave devices must have an address. This address is used by the master t
 
 ### Multiple ICs, Same Address?
 
-Connecting two identical devices (e.g. lets say you have two temperature sensors) onto the same I2C bus, both with the same pre-programmed I2C address means that that the master cannot address them individually and functionality is serverly reduced. To overcome this, many I2C slave ICs also come with a few address pins. These address pins are digital inputs and control what I2C address the slave will respond to. A device with two address pins allows the designer to connect up to four identical ICs to the same I2C bus by connecting the address pins to different combinations of Vcc and GND.
+Connecting two identical devices (e.g. lets say you have two temperature sensors) onto the same I2C bus, both with the same pre-programmed I2C address means that that the master cannot address them individually and functionality is severely reduced. To overcome this, many I2C slave ICs also come with a few address pins. These address pins are digital inputs and control what I2C address the slave will respond to. A device with two address pins allows the designer to connect up to four identical ICs to the same I2C bus by connecting the address pins to different combinations of Vcc and GND.
 
 Newer pin-constrained I2C slave devices allow you to connect the address pins up to SCL and SDA to further increase the number of assignable addresses. With two address pins, and the possibility of connecting each up to either `\(V_{CC}\)`, GND, SCL or SDA, gives a total of 16 different I2C addresses.
 
-{{< img src="i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png" width="826px" caption="The logic table (truth table) of the I2C address pins on the TI INA226 IC. Notice how you can connect the address pins up to SCL or SDA as well as the standard VS and GND, to give a total of 16 possible I2C addresses."  >}}
+{{< img src="i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png" width="826px" caption="The logic table (truth table) of the I2C address pins on the TI INA226 IC. Notice how you can connect the address pins up to SCL or SDA as well as the standard VS and GND, to give a total of 16 possible I2C addresses." >}}
 
 ### Reserved I2C Addresses
 

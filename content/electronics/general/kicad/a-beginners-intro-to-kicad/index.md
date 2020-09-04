@@ -3,8 +3,8 @@ author: "gbmhunter"
 date: 2020-04-21
 description: "A beginners tutorial/introduction to KiCAD."
 categories: [ "Electronics", "General" ]
-lastmod: 2020-06-15
-tags: [ "electronics", "KiCAD", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries", "DigiKey", "renaming", "project", "GerbView", "installation", "3D models", "wrl", "step" ]
+lastmod: 2020-08-04
+tags: [ "electronics", "KiCAD", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries", "DigiKey", "renaming", "project", "GerbView", "installation", "3D models", "wrl", "step", "schematic templates" ]
 title: "A Beginners Intro To KiCAD"
 type: "page"
 ---
@@ -96,7 +96,11 @@ Shift-Enter           Close a dialogue box (e.g. the edit symbol properties box)
 
 ### Importing Schematic Sheets
 
-If you have an existing `.Sch` file you wish to add to your project, navigate to the parent schematic sheet you want to add the sheet to, and click _Place->Hierarchechal Sheet_. Replace the contents in the _file name_ box with the existing file, give it a logical _sheet name_ and click o.k. KiCAD will then prompt you saying "Filename already exists. Link sheet name to this file?". Click yes and you're done! 
+If you have an existing `.Sch` file you wish to add to your project, navigate to the parent schematic sheet you want to add the sheet to, and click _Place->Hierarchical Sheet_. Replace the contents in the _file name_ box with the existing file, give it a logical _sheet name_ and click o.k. KiCAD will then prompt you saying "Filename already exists. Link sheet name to this file?". Click yes and you're done! 
+
+### Schematic Page Templates
+
+Click File->Page Settings to open the `Page Settings` window. You can select a template file for the `Page layout description file` field. The file must end in `.kicad_wks`.
 
 ## Libraries
 
@@ -115,6 +119,10 @@ By default, the symbol libraries are installed to:
 Each project can pull schematic symbols and footprints from two "tables" (groups) of libraries, _global libraries_ and _project libraries_.
 
 DigiKey maintains the [digikey-kicad-library](https://github.com/Digi-Key/digikey-kicad-library), a KiCAD schematic and footprint library of a large number of components that can be supplied by DigiKey. The aim of this library is to provide collection of visually consistent, accurate library parts that have been curated by the DigiKey team. The organization of the library follows the DigiKey family taxonomy.
+
+### Symbol Creation
+
+{{% img src="bulk-editing-pins-in-kicad-symbol-editor.png" width="500px" caption="Bulk editing pins in KiCAD's symbol editor." %}}
 
 ### 3D Models
 
@@ -179,6 +187,7 @@ As of May 2020, there is no way to add a check for silkscreen over pad in the de
 .sch-bak        # Backup of a schematic file.
 sym-lib-table
 fp-info-cache   # A cache file with info about footprints. This file is rebuilt often by KiCAD.
+.kicad_wks      # A schematic page template file. These can be used in the File->Page Settings window within EEschema.
 ```
 
 KiCAD expects the PCB filename to have the same basename (i.e. excluding the `.pcb`) as the project file (`.pro`). This has to be true if you want to open the PCB from the KiCAD application by pressing the `PCB Layout Editor` button.
