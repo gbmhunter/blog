@@ -5,7 +5,7 @@ date: 2020-08-31
 description: "Uses, brands, specifications, software and more info about thermal cameras."
 draft: false
 lastmod: 2020-09-03
-tags: [ "electronics", "tools", "thermal cameras", "thermal resistances", "heatsinking", "Keysight", "TrueIR", "FLIR", "Fluke", "Testo", "RS Pro", "infrared", "IR", "PCBs" ]
+tags: [ "electronics", "tools", "thermal cameras", "thermal resistances", "heatsinking", "Keysight", "TrueIR", "FLIR", "Fluke", "Testo", "RS Pro", "infrared", "IR", "PCBs", "NETD", "noise equivalent temperature difference" ]
 title: "Thermal Cameras"
 type: "page"
 ---
@@ -23,6 +23,10 @@ Thermal cameras are great tools to have in an electronics lab for inspecting the
 * Find short-circuits
 
 In the context of hand-held thermal cameras, 80x80 is a small number of pixels, 160x120 is moderate, and 640x480 is a large amount.
+
+## Parameters
+
+NETD: _Noise Equivalent Temperature Difference_: This is the minimum temperature difference that is resolvable by the camera. You could think of this as the _sensitivity_. It is bad practise to refer to this as the resolution as this will get confused with the pixel (spatial) resolution. NETD of thermal cameras is typically between 100-500mk (100-500m°C). The NETD is measure by pointing the camera at a very stable and uniform black body at a specific temperature. The NETD is the standard deviation of the varying pixel values recorded by the camera over a specific period of time[^movitherm-netd].
 
 ## Brands
 
@@ -50,7 +54,19 @@ I was not impressed with the FLIR software (called _Fluke Connect Desktop_). It 
 
 ### Fluke
 
+### Optris
+
+{{% img src="optris-xi-400-spot-finder-ir-camera-photo.jpg" width="500px" caption="A photo of the Optris Xi 400 spot finder IR camera." %}}
+
 ### Testo
+
+Testo 865: 160x120 pixels, measurement range -20 to 280°C.
+Testo 868: 160x120 pixels, measurement range -50 to 650°C.
+
+Minimum focal distance of 0.5m, not so suitable for viewing PCBs.
+
+"SuperResolution" takes the raw infrared pixel resolution of 160x120 and upscales it to 320x240pixels. However I'm not sure how more advanced this is other than just up-sampling the image in the digital realm.
+
 
 *Software*
 
@@ -59,3 +75,7 @@ IRsoft
 ### RS Pro
 
 RS Pro is RS Components self-owned brand.
+
+## References
+
+[^movitherm-netd]: <https://movitherm.com/knowledgebase/netd-thermal-camera/>

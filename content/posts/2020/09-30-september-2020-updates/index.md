@@ -11,3 +11,7 @@ type: "post"
 ---
 
 * Added info about {{% link text="board packages to the Arduino page" src="/programming/microcontrollers/arduino" %}}.
+
+* Added info about {{% link text="schematic page templates to the A Beginners Intro To KiCAD page" src="" %}}.
+
+* Added support for the search service Algolia.
