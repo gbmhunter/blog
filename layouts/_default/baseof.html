@@ -74,6 +74,18 @@
         <!-- jQuery required for calculators and image lightbox -->
         <script src=https://code.jquery.com/jquery-3.3.1.min.js></script>
 
+        <!-- Algolia Stylesheets -->
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.1/dist/instantsearch.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.1/dist/instantsearch-theme-algolia.min.css"
+        />
+
     </head>
 
     <body>
@@ -89,7 +101,7 @@
                     <div class="site-title"><a href="/">mbedded.ninja</a></div>
                     <div class="site-description">The embedded engineering website that's got your back.</div>
                 </div>
-                
+
                 <div class="header-section-2">
                     <!-- MAIN MENU -->
                     <!-- Make sure this is cached! If not, the build will take a long, long time. -->
@@ -124,25 +136,29 @@
 
         <!-- This is outside of the normal document flow (modal dialogue box) -->
         <div id="fast-search-outer">
-          <div id="fastSearch">
-            <div id="fast-search-input-wrapper">
-              <span>></span>
-              <input id="searchInput" placeholder="search here" tabindex="0">
+          <div id="search-inner" style="width: 80%; height: 80%; background-color: white; padding: 20px;">
+            
+            <div id="search-box">
+              <!-- SearchBox widget will appear here -->
             </div>
-            <ul id="searchResults"> <!-- This will get populated by JS -->
-            </ul>
-          </div>
-          <div id="fast-search-please-wait">
-            <div id="fast-search-please-wait-text">Testing</div> <!-- Text here will get changed by JS -->
+            <div id="hits">
+              <!-- Hits widget will appear here -->
+            </div>
           </div>
         </div>
 
         <!-- Javascript required for the search functionality -->
-        <script src="/js/flexsearch-0.6.22/flexsearch.min.js"></script>
+        <!-- <script src="/js/flexsearch-0.6.22/flexsearch.min.js"></script> -->
         <script src="/js/fastsearch.js"></script>
 
         {{ partial "mathjax-markdown-solution.html" . }}
         <!-- LOAD LIGHTBOX FOR IMAGES -->
         {{ partial "load-photoswipe.html" . }}
+
+        <!-- Instant Search library -->
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.1"></script>
+
+        <!-- Our Javascript -->
+        <script src="/js/app.js"></script>
   </body>
 </html>
