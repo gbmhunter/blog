@@ -13,13 +13,16 @@ const search = instantsearch(options);
 
 // create variable for custom hit template
 var hitTemplate =
-  '<a href="{{ permalink }}" class="List-item">' +
-  '<div class="List-image">' +
-  '<img src="https://res.cloudinary.com/harrycresswell/image/upload/w_auto,dpr_auto,c_scale/{{{featuredimage}}}" />' +
-  "</div>" +
-  '<div class="List-title">{{{_highlightResult.title.value}}}</div>' +
-  "</a>" +
-  '<div class="List-summary">{{{summary}}}</div>';
+  '<div class="List-item" style="display: flex;">' +
+    '<div class="List-image">' +
+      '<img src="{{images}}" style="width:200px;" />' +
+    '</div>' +
+    '<div style="width: 100px;"></div>' +
+    '<div class="List-title-and-summary">' +
+      '<div class="List-title"><a href="{{ permalink }}">{{{_highlightResult.title.value}}}</a></div>' +
+      '<div class="List-summary">{{{summary}}}</div>' + 
+    '</div>' +
+  '</a>';
 
 // initialize hits widget
 search.addWidget(
