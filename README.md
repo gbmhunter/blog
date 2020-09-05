@@ -32,6 +32,12 @@ To build site and place files in `public` directory:
 $ hugo
 ```
 
+To sync the Algolia index with the current state of the hugo site, make sure you've built the site by running `hugo`, and then:
+
+```sh
+yarn algolia
+```
+
 # Directory Structure
 
 <ul>
