@@ -1,8 +1,4 @@
 <ul class="menu">
-    <!-- Put search at top, most important -->
-    <li class="dropdown">
-      <a id="fast-search-button" href="#"><div class="menu-text">Search</div></a>
-    </li>
     {{ with .Site.GetPage "/" }}
         {{ range .Sections.ByTitle }}
             {{/* We don't want a menu item for specific pages listed here */}}
