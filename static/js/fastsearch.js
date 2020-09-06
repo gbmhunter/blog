@@ -2,31 +2,22 @@
 
 var flexSearch; // holds our search engine
 var searchVisible = false;
-var firstRun = true; // allow us to delay loading json data unless search activated
 // var list = document.getElementById('searchResults'); // targets the <ul>
 // var first = list.firstChild; // first child of search list
 // var last = list.lastChild; // last child of search list
 // var maininput = document.getElementById('searchInput'); // input box for search
 var resultsAvailable = false; // Did we get any search results?
 
-$("#fast-search-button").click(function () {
-  if (firstRun) {
-    // loadSearch(); // loads our json data and builds fuse.js search index
-    firstRun = false; // let's never do this again
-  }
-
+$("#search-box").click(function () {
   // Toggle visibility of search box
   if (!searchVisible) {
-    $("#fast-search-outer").css("visibility", "visible");
+    $("#search-outer").css("visibility", "visible");
     // $("#searchInput").focus(); // put focus in input box so you can just start typing
     searchVisible = true; // search visible
   }
-  else {
-    hideSearchModal()
-  }
 });
 
-$("#fast-search-outer").click(function (e) {
+$("#search-outer").click(function (e) {
   // Make sure the user clicked on this div, and not any child div
   if (e.target !== this)
     return;
@@ -34,7 +25,7 @@ $("#fast-search-outer").click(function (e) {
 })
 
 function hideSearchModal() {
-  $("#fast-search-outer").css("visibility", "hidden") // hide search box
+  $("#search-outer").css("visibility", "hidden") // hide search box
   document.activeElement.blur(); // remove focus from search box 
   searchVisible = false; // search not visible
 }

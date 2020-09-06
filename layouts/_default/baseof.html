@@ -102,6 +102,10 @@
                     <div class="site-description">The embedded engineering website that's got your back.</div>
                 </div>
 
+                <div id="search-box">
+                  <!-- SearchBox widget will appear here -->
+                </div>
+
                 <div class="header-section-2">
                     <!-- MAIN MENU -->
                     <!-- Make sure this is cached! If not, the build will take a long, long time. -->
@@ -118,35 +122,36 @@
             </div>
         </div>
 
-        <div class="right-column">
-            <div class="inner-right-column">
-                <!-- {{ block "header" . }}{{ partial "site-header.html" .}}{{ end }} -->
-                <!-- This main element wraps the main content of the page -->
-                <main role="main">
-                    {{ block "main" . }}{{ end }}
-                </main>
-                {{ block "footer" . }}{{ partial "site-footer.html" . }}{{ end }}
-                {{ block "scripts" . }}{{ partial "site-scripts.html" . }}{{ end }}
-            </div>
-        </div>
-
-        <!-- ======================================= -->
-        <!-- SEARCH MODAL -->
-        <!-- ======================================= -->
-
-        <!-- This is outside of the normal document flow (modal dialogue box) -->
-        <div id="fast-search-outer">
-          <!-- overflow: scroll allows the search results to be scrollable -->
-          <div id="search-inner" style="width: 80%; height: 80%; background-color: white; padding: 20px; overflow: scroll;">
-            
-            <div id="search-box">
-              <!-- SearchBox widget will appear here -->
-            </div>
-            <div id="hits">
-              <!-- Hits widget will appear here -->
-            </div>
+        <div class="right-column" style="position: relative;">
+          <div class="inner-right-column">
+              <!-- {{ block "header" . }}{{ partial "site-header.html" .}}{{ end }} -->
+              <!-- This main element wraps the main content of the page -->
+              <main role="main">
+                  {{ block "main" . }}{{ end }}
+              </main>
+              {{ block "footer" . }}{{ partial "site-footer.html" . }}{{ end }}
+              {{ block "scripts" . }}{{ partial "site-scripts.html" . }}{{ end }}
           </div>
+          <!-- ======================================= -->
+          <!-- SEARCH MODAL -->
+          <!-- ======================================= -->
+
+          <!-- This is outside of the normal document flow (modal dialogue box) -->
+          <!-- visibility will gets set to display by JS -->
+          <div id="search-outer" style="position: absolute; width: 100%; height: 100%; visibility: hidden;" >
+            <div id="search-pos-fixed" style="position: fixed; width: 100%; height: 100%; background-color: rgba(50,50,50,0.5); display: flex; align-items: center; justify-content: center;">
+              <!-- overflow: scroll allows the search results to be scrollable -->
+              <div id="search-inner" style="width: 80%; height: 80%; background-color: white; padding: 20px; overflow: scroll;">
+                
+                <div id="hits">
+                  <!-- Hits widget will appear here -->
+                </div>
+              </div> <!-- search-inner -->
+            </div>
+          </div> <!-- search-outer -->
         </div>
+
+
 
         <!-- Javascript required for the search functionality -->
         <!-- <script src="/js/flexsearch-0.6.22/flexsearch.min.js"></script> -->
