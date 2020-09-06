@@ -968,7 +968,7 @@ del {
 /* SEARCH                                                                    */
 /* ========================================================================= */
 
-#fast-search-outer {
+/* #fast-search-outer {
   visibility: hidden;
   position: absolute;
   top: 0px;
@@ -988,7 +988,7 @@ del {
   width: 80%;
   max-width: 900px;
   height: 50%;
-  display: none; /* This will get changed to inline-block by JS */
+  display: none; // This will get changed to inline-block by JS
   color: white;
   background-color: white;
 }      
@@ -997,7 +997,7 @@ del {
   width: 80%;
   max-width: 900px;
   height: 50%;
-  display: none; /* This will get changed to flex by JS */
+  display: none; // This will get changed to flex by JS
   justify-content: center;
   align-items: center;
 
@@ -1020,7 +1020,6 @@ del {
   height: 31px;
   font-size: 1.2em;
   color: rgb(34, 34, 34);
-  /*font-weight: bold;*/
   background-color: white;
   border-radius: 3px 3px 0px 0px;
   border: none;
@@ -1052,7 +1051,7 @@ del {
 
 #searchResults a {
   width: 100%;
-  box-sizing: border-box; /* Makes sure that the container + padding stays within parent */
+  box-sizing: border-box;
   text-decoration: none !important; padding: 10px; display: inline-block;
   color: rgb(34, 34, 34);
 }
@@ -1060,4 +1059,4 @@ del {
 #searchResults a:hover, a:focus {
   outline: 0;
   background-color: rgb(200, 200, 200);
-}
+} */
