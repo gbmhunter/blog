@@ -8,6 +8,8 @@ var searchVisible = false;
 // var maininput = document.getElementById('searchInput'); // input box for search
 var resultsAvailable = false; // Did we get any search results?
 
+// $("#search-box").find('input').blur()
+
 $("#search-box").click(function () {
   // Toggle visibility of search box
   if (!searchVisible) {
@@ -17,7 +19,7 @@ $("#search-box").click(function () {
   }
 });
 
-$("#search-outer").click(function (e) {
+$("#search-pos-fixed").click(function (e) {
   // Make sure the user clicked on this div, and not any child div
   if (e.target !== this)
     return;
