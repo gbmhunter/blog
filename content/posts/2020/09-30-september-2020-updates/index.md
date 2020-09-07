@@ -15,3 +15,5 @@ type: "post"
 * Added info about {{% link text="schematic page templates to the A Beginners Intro To KiCAD page" src="" %}}.
 
 * Added support for the search service Algolia.
+
+* Added a 555 timer calculator.
