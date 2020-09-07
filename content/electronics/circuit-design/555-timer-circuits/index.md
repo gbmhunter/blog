@@ -29,3 +29,13 @@ Astable mode is when the 555 timer is configured to output a continuous waveform
 Astable mode is also called running the 555 timer as a _multi-vibrator_. **The duty cycle of the output waveform cannot be reduced below 50%**. If you want a duty cycle lower than that, you have to use an inverter on the output.
 
 {{% img src="555-timer-schematic-for-astable-operation-ti.png" width="600px" caption="Schematic for putting the 555 timer into astable mode. Image from https://www.ti.com/lit/ds/symlink/sa555.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe." %}}
+
+Equations:
+
+<p>\begin{align} t_H = 0.693 \cdot (R_1 + R_2) \cdot C \end{align}</p>
+
+<p>\begin{align} t_L = 0.693 \cdot R_2 \cdot C \end{align}</p>
+
+<p>\begin{align} T = 0.693 \cdot (R_1 + 2R_2) \cdot C \end{align}</p>
+
+<p>\begin{align} f = \frac{1}{T} \end{align}</p>
