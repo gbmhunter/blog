@@ -1,9 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
+categories: [ "Electronics", "Components", "Transistors" ]
 date: 2015-08-10
 draft: false
-title: Bipolar Junction Transistors (BJTs)
-type: page
+lastmod: 2020-09-07
+tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode" ]
+title: "Bipolar Junction Transistors (BJTs)"
+type: "page"
 ---
 
 ## Overview
@@ -38,7 +41,7 @@ The bipolar part of their name comes from the fact they conduct by using both ma
 
 ## Important Parameters
 
-## Gain (hfe)
+### Gain (hfe)
 
 The gain of a BJT is the ratio between the base current and the collector current.
 
@@ -46,11 +49,11 @@ The gain of a BJT is the ratio between the base current and the collector curren
 
 The current through the base pin (`\(I_b\)`) and the current through the collector pin (`\(I_c\)`) always sums to give the current through the emitter pin (`\(I_e\)`).
 
-<div>$$ I_e = I_b + I_c $$</div>
+<p>$$ I_e = I_b + I_c $$</p>
 
 Because the collector current is usually much larger than the base current, for most scenarios you can treat the collector and emitter current as equal.
 
-<div>$$ I_e \approx I_c $$</div>
+<p>$$ I_e \approx I_c $$</p>
 
 As a general rule, NPN transistors are useful for connecting things to ground. PNP transistors are useful for connecting things to your power rail.
 
@@ -68,7 +71,7 @@ PNP transistors are good for high-side switching. Although not great at low-side
 
 ## Amplifier Topologies
 
-## Common Collector
+### Common Collector
 
 The common collector amplifier topology is also known as a _emitter follower amplifier_.
 
@@ -76,13 +79,13 @@ The common collector amplifier topology is also known as a _emitter follower amp
 
 The output voltage is almost equal to the input voltage, except for an approximately 0.7V diode drop. This means that the amplifier has a voltage gain of almost unity (1), or `\(0dB\)`.
 
-<div>$$ v_{out} = v_{in} - 0.7V $$</div>
+<p>$$ v_{out} = v_{in} - 0.7V $$</p>
 
 Here is a graph of `\(v_{in}\)` vs. `\(v_{out}\)` for the above circuit:
 
 {{< img src="vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png" width="1418px" caption="Vout vs. Vin for a basic common-collector BJT amplifier."  >}}
 
-## Constant-Current Sink
+### Constant-Current Sink
 
 BJTs can be configured to sink a relatively constant amount of current which is independent on the output-side voltage. This can be a useful way of driving an LED from a microcontroller with a constant current, no matter what voltage source is used to drive the LED.
 
@@ -90,11 +93,11 @@ BJTs can be configured to sink a relatively constant amount of current which is 
 
 The above schematic was designed to drive the LED with 10mA of current when the BJT was driven from a microcontroller running at +3.3V. Since +3.3V is applied to the base of the NPN transistor, the transistor will always turn on just enough so that the voltage at the emitter is 0.7V less, e.g.
 
-<div>$$ V_e = V_b - 0.7V $$</div>
+<p>$$ V_e = V_b - 0.7V $$</p>
 
 Since we know the emitter voltage is going to be +2.6V, we can choose the right resistor, `\(R_1\)` to get the LED current we desire (remember that the current out of the emitter is pretty much equal to the current into the collector).
 
-<div>$$ R_1 = \frac{V_e}{I_{LED}} $$</div>
+<p>$$ R_1 = \frac{V_e}{I_{LED}} $$</p>
 
 So if we want a LED current of 10mA, that means we need `\(R1 = 260\Omega\)`. The closest E12 value is `\(270\Omega\)`.
 
@@ -102,27 +105,33 @@ Notice how the LED current is independent of the +12V. The +12V can change to sa
 
 Below are the simulation results for the above schematic, showing the LED current to be indeed 10mA. It works!
 
-{{< img src="constant-current-bjt-based-led-driver-simulation-results.png" width="1691px" caption="The simulation results of a constant-current BJT-based LED driver."  >}}
+{{< img src="constant-current-bjt-based-led-driver-simulation-results.png" width="1691px" caption="The simulation results of a constant-current BJT-based LED driver." >}}
 
 ## Common BJTs
 
-548 and 558 are common numbers to see embedded in transistor part numbers.
+The `BC` range of BJTs, including the `BC547` and `BC548` are very common, low-cost general purpose BJT transistors that you will encounter in hobbyist and professional electronics designs alike. They originated with the `BC108` family of metal-cased transistors.
 
-BC548 - Common NPN transistor
+* `BC547`: Same as the BC548, but with a higher breakdown voltage.
+* `BC548`: Common NPN transistor, used for switching and amplification purposes.
+* `BC549`: Low noise version of the BC548.
 
 ## Multiple-Collector And Multiple-Emitter BJTs
 
 Multiple emitter and multiple collector BJTs are special types of BJTs which have more than one emitter or more than one collector.
 
-{{< img src="multiple-emitter-bjt-schematic-symbol-u1.png" width="322px" caption="The schematic symbol for a multiple-emitter BJT."  >}}
+{{< img src="multiple-emitter-bjt-schematic-symbol-u1.png" width="322px" caption="The schematic symbol for a multiple-emitter BJT." >}}
 
-In the case of a multiple collector BJT, the total collector current `\(I_{C,tot}\)` is set by the base current `\(I_B\)`. If all the collectors are the same size (the silicon is physically the same size), then the current is equally split across all collectors.
+In the case of a multiple collector BJT, the total collector current `\(I_{C,tot}\,\)` is set by the base current `\(I_B\)`. If all the collectors are the same size (the silicon is physically the same size), then the current is equally split across all collectors.
 
 **The multiple-emitter BJT can be used to implement AND logic.** The multiple-emitter BJT forms an integral part of the TTL AND input circuitry (e.g. the 7400 series of integrated circuits). They were introduced into digital logic design to replace the diodes of _diode-transistor logic (DTL)_, with the advantage of a lower switching time and lower power dissipation.
 
-{{< img src="basic-two-input-tll-nand-gate-schematic.png" width="843px" caption="The schematic of a basic two-input TTL NAND gate."  >}}
+{{< img src="basic-two-input-tll-nand-gate-schematic.png" width="843px" caption="The schematic of a basic two-input TTL NAND gate." >}}
 
 Multiple emitter BJTs were also used in older (e.g. from the 1960's) RAM. For example, Intel's first IC, the 3101 (64 bits of RAM!), **contains multiple emitter BJTs as part of the 2-state latch circuitry which holds one bit of information**. One emitter is used to select which cell to read or write, while the other emitter is used to read or write the data. See an excellent tear-down of the IC on [Ken Shirriff's blog](http://www.righto.com/2017/07/inside-intels-first-product-3101-ram.html).
+
+## Reverse Active Mode
+
+By utilizing the voltage regulation hysteresis behaviour of a BJT in reverse active mode, it can be used to create a simple single transistor LED blinker
 
 ## External References
 
