@@ -3,8 +3,8 @@ author: "gbmhunter"
 categories: [ "Electronics", "Components", "Diodes" ]
 date: 2012-03-15
 draft: false
-lastmod: 2020-05-04
-tags: [ "electronics", "components", "diodes", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "lazer diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution", "irradiance", "radiometric" ]
+lastmod: 2020-09-07
+tags: [ "electronics", "components", "diodes", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "laser diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution", "irradiance", "radiometric" ]
 title: "LEDs"
 type: "page"
 ---
@@ -63,7 +63,7 @@ _Parameters are sorted alphabetically._
       <td>Irradiance</td>
       <td>\( E \)</td>
       <td>\( mW/m^2 \)</td>
-      <td>Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol \(E\) as \(I\) is already used for radiant intensity. It is a radiometric quantitiy.</td>
+      <td>Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol \(E\) as \(I\) is already used for radiant intensity. It is a radiometric quantity.</td>
     </tr>
     <tr>
       <td>Peak Wavelength</td>
@@ -104,6 +104,39 @@ _Parameters are sorted alphabetically._
   </tbody>
 </table>
 
+LED forward voltages for common LED colours are listed in the table below. You will notice that the **forward voltage increases with the increasing frequency of the light** (in simple terms, it takes more input energy to create photos with a higher energy), and the forward voltage is largely independent on the manufacturer or manufacturing process of the LED.
+
+<table>
+  <thead>
+    <tr>
+      <th>Colour</th>
+      <th>Forward Voltage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Red</td>
+      <td>2.0V</td>
+    </tr>
+    <tr>
+      <td>Orange</td>
+      <td>2.0V</td>
+    </tr>
+    <tr>
+      <td>Yellow</td>
+      <td>2.1V</td>
+    </tr>
+    <tr>
+      <td>Green</td>
+      <td>2.2V</td>
+    </tr>
+    <tr>
+      <td>Blue</td>
+      <td>3.3V</td>
+    </tr>
+  </tbody>
+</table>
+
 ## Limiting The LED Current
 
 A common mistake when working out the value of a current limiting LED resistor is to forget to include the forward voltage drop of the diode into the equations. This has a bigger effect when running the LED at lower voltages. The equation for working out the resistance needed to limit the current in an LED is:
@@ -134,12 +167,12 @@ Multiplexing is a way of connecting LED's in an arrangement so that it minimises
 
 Multiplexing is normally done in a row/column configuration, where the LED's are connected in a grid-like fashion, and one microcontroller output pin is used for each row and column. This gives the following equation linking the number of pins used and the number of LEDs:
 
-<div>$$y = (\frac{x}{2})^2$$</div>
+<p>$$y = (\frac{x}{2})^2$$</p>
 
 <p class="centered">
-    where:<br />
-    \(y\) = number of LEDs<br />
-    \(x\) = number of microcontroller pins<br />
+  where:<br />
+  \(y\) = number of LEDs<br />
+  \(x\) = number of microcontroller pins<br />
 </p>
 
 ## Charlieplexing
@@ -166,19 +199,17 @@ The schematic below shows how to connect an LED up to a general microcontroller 
 
 The photocurrent of an LED is about 10-100 times smaller that that of a purpose-built photo-diode. The wavelength of peak sensitivity is usually a little less than the peak wavelength that it emits light at.HighLED is binned according to flux output. There are 5 bins:
 
-￼
-
 ## RGB LEDs
 
 RGB LEDs are LED's which have three diodes inside them, one red, one green, and one blue. Whats cool with these is, when controlled correctly, they can produce almost any visible colour (remember primary colours in science class?).
 
-RGB's usually have at least four pins, one each for one side of the red, green, and blue diodes (either all anode or all cathode), and a common which connects all three of the other sides of the diodes. They are more complicated to control than a normal LED, normally requiring 3 different PWM signals, and a bit of firmware to calculate the appropriate duty cycles.
+RGBs usually have at least four pins, one each for one side of the red, green, and blue diodes (either all anode or all cathode), and a common which connects all three of the other sides of the diodes. They are more complicated to control than a normal LED, normally requiring 3 different PWM signals, and a bit of firmware to calculate the appropriate duty cycles.
 
 You can get RGD LEDs which already have the control and drive circuitry (e.g. the constant current source) for the LEDs inside them. These are normally connected to a microcontroller via a digital communication bus (e.g. [SPI](/electronics/communication-protocols/spi-communication-protocol), or sometimes a custom protocol).
 
 One popular example, the WS8211, uses it's own custom communications protocol running at 800kHz.
 
-{{< img src="ws2811-rgb-led-front-and-back-photo.png" width="498px" caption="The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller."  >}}
+{{< img src="ws2811-rgb-led-front-and-back-photo.png" width="498px" caption="The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller." >}}
 
 ## LED Controllers
 
@@ -186,11 +217,11 @@ LED controllers are ICs designed specifically to make driving LEDs easier, by pr
 
 Some feature logarithmic current output levels to best match up with what the human eye perceives.
 
-## PWM vs Current Control
+### PWM vs Current Control
 
 There are two main ways to dim an LED, either by changing the current or with PWM. Since PWM only varies how long the LED is on for, and keeps the current through the LED the same, it does not really affect the colour of the LED, while the current-changing method does (the colour depends on the forward current).
 
-## Examples
+### Examples
 
 The [PCA9634 8-Channel 25mA I2C LED Controller by NXP](http://www.nxp.com/products/power_management/lighting_driver_and_controller_ics/i2c_led_display_control/series/PCA9634.html) is a simple LED driver for up to 8 single low-power (20mA) LEDs.
 
@@ -208,7 +239,7 @@ Laser diodes are LEDs which emits 'lasered' light using a similar method to stan
 
 Some laser diodes have integrated switching FETs and capacitors for high-speed, high-power applications (such as laser range finding).
 
-{{< img src="lazer-diode-with-integrated-fet-and-cap.png" width="473px" caption="A laser diode with an integrated FET and capacitor for high-seed, high-power switching."  >}}
+{{< img src="laser-diode-with-integrated-fet-and-cap.png" width="473px" caption="A laser diode with an integrated FET and capacitor for high-seed, high-power switching." >}}
 
 ## Pulse-Width Extending
 
@@ -222,7 +253,7 @@ One way to fix this with hardware to to use a simple pulse-width extender circui
 
 This circuit uses an RC network to form a time delay. When the short pulse arrives, the MOSFET is turned on almost immediately, and the LED lights up. When the pulse stops, the diode prevents the capacitor from discharging immediately, and instead has to discharge slowly through the resistor. The MOSFET/LED remain on until the voltage on the capacitor drops below the MOSFET's gate-source threshold voltage (or something close to that).
 
-## Peak vs. Dominant Wavelengttitle: "LEh
+## Peak vs. Dominant Wavelength
 
 LEDs are usually given with two different quantifiers regarding their wavelength, both the _peak wavelength_ and the _dominant wavelength_.
 
@@ -238,4 +269,4 @@ The dominant wavelength is important for user interface designers as it determin
 
 You can get LED's in a variety of SMD packages. Common SMD LED packages include the 0603 on 0402 chip packages.
 
-{{< img src="0603-led-up-close.jpg" width="1200px" caption="A picture of a 0603 LED up close on a PCB. You can see the filament running into the middle of the pad (the part which emits the light)."  >}}
+{{< img src="0603-led-up-close.jpg" width="1200px" caption="A picture of a 0603 LED up close on a PCB. You can see the filament running into the middle of the pad (the part which emits the light)." >}}

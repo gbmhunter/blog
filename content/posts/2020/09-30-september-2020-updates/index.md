@@ -15,3 +15,9 @@ type: "post"
 * Added info about {{% link text="schematic page templates to the A Beginners Intro To KiCAD page" src="" %}}.
 
 * Added support for the search service Algolia.
+
+* Updated information about the `BC` range of BJTs on the {{% link text="Bipolar Junction Transistors (BJTs) page" src="/electronics/components/transistors/bipolar-junction-transistors-bjts" %}}.
+
+* Added more online simulation tools to the {{% link text="Circuit Simulation page" src="/electronics/general/circuit-simulation" %}}.
+
+* Added a new page on {{% link text="555 Timer Circuits" src="/electronics/circuit-design/555-timer-circuits" %}}.
