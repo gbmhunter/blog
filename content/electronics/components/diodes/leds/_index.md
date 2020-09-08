@@ -2,9 +2,10 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Components", "Diodes" ]
 date: 2012-03-15
+description: "Parameters, current-limiting resistor calculations, multiplexing, ESD and more info about light-emitting diodes (LEDs)."
 draft: false
-lastmod: 2020-09-07
-tags: [ "electronics", "components", "diodes", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "laser diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution", "irradiance", "radiometric" ]
+lastmod: 2020-09-08
+tags: [ "electronics", "components", "diodes", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "laser diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution", "irradiance", "radiometric", "photosynthetic flux"", "PPF" ]
 title: "LEDs"
 type: "page"
 ---
@@ -13,7 +14,7 @@ type: "page"
 
 There is a neat little [LED Wizard](http://led.linear1.org/led.wiz) from [LED Centre](http://led.linear1.org/) for working out what parallel/series combination of LED's you should use given a certain input voltage and number of LEDs you want in your array.
 
-{{< img src="red-led-5mm-th-diffused.jpg" width="242px" caption="A diffused-lens, red, 5mm through-hole LED."  >}}
+{{< img src="red-led-5mm-th-diffused.jpg" width="242px" caption="A diffused-lens, red, 5mm through-hole LED." >}}
 
 ## Important Parameters
 
@@ -76,6 +77,12 @@ _Parameters are sorted alphabetically._
       <td>\( \phi_e \)</td>
       <td>\( umol/s \)</td>
       <td>The number of photons emitted per second by the LED. This is a not a common property to be listed on LED datasheets, more typically the <i>radiometric flux</i> is given.</td>
+    </tr>
+    <tr>
+      <td>Photosynthetic Flux</td>
+      <td>\( PPF \)</td>
+      <td>\( umol/s \)</td>
+      <td>Very similar to photon flux, except only photons within the photosynthetic active region (PAR) of 400-700nm are considered. Commonly used for LED light sources that will be used in agriculture for plant growth (e.g. hgih-pressure sodium lamps). Typical values range from 100-200umol/s</td>
     </tr>
     <tr>
       <td>Radiation Pattern</td>
