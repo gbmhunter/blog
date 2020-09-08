@@ -5,7 +5,7 @@ date: 2012-03-15
 description: "Parameters, current-limiting resistor calculations, multiplexing, ESD and more info about light-emitting diodes (LEDs)."
 draft: false
 lastmod: 2020-09-08
-tags: [ "electronics", "components", "diodes", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "laser diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution", "irradiance", "radiometric", "photosynthetic flux"", "PPF" ]
+tags: [ "electronics", "components", "diodes", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "laser diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution", "irradiance", "radiometric", "photosynthetic flux", "PPF" ]
 title: "LEDs"
 type: "page"
 ---
