@@ -39,3 +39,7 @@ Equations:
 <p>\begin{align} T = 0.693 \cdot (R_1 + 2R_2) \cdot C \end{align}</p>
 
 <p>\begin{align} f = \frac{1}{T} \end{align}</p>
+
+## 555 Timer Calculator
+
+{{% calculator id="555-timer-rt-rb-c" style="width: 500px;" %}}

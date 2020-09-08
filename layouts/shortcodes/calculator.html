@@ -1,0 +1,4 @@
+
+{{- $url := print "https://calc-mbedded-ninja.gbmhunter.now.sh/calculators/" (.Get "id") -}}
+{{- $style := .Get "style" -}}
+<iframe src="{{$url}}" style="width: 600px; height: 600px; border: 0;"></iframe>
