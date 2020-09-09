@@ -51,6 +51,10 @@ As of Mar 2013, MariaMole does not support Arduino v1.5.2, which is required to 
 
 There is a Visual Studio plugin called Visual Micro (downloadable from [this website](http://www.visualmicro.com/)), for the Arduino.
 
+### Visual Studio Code
+
+Visual Studio Code has good support for Arduino platforms via the Arduino plugin.
+
 ## RTOS
 
 There are a few RTOSs which can be run on Arduinos, including NilRTOS, ChibiOS/RT and FreeRTOS. NilRTOS runs on the AVR Arduinos (everything but the Due and Teensy 3.0), while both ChibiOS/RT and FreeRTOS run on both the AVR and ARM-based Arduinos. The best place for more information and to download these RTOS systems (which are pre-configured to run on the Arduino systems) is the Google group rtoslibs ([https://code.google.com/p/rtoslibs/](https://code.google.com/p/rtoslibs/)).
@@ -68,6 +72,31 @@ Board packages are installed by the _Board Manager_ to the following locations:
 * MacOS: `/Users/<username>/Library/Arduino15/packages`
 * Windows: `C:\Users\<username>\AppData\Local\Arduino15`
 
+## Variants
+
+A _variant_ is Arduino lingo for a board support package (BSP).
+
+Consist of:
+
+```
+ldscript.ld
+PeripheralPins.c
+PinNamesVar.h
+variant.cpp
+variant.h
+```
+
+### ldscript.ld
+
+Linker script for the microcontroller. Contains the flash and RAM sizes, minimum heap and stack sizes, start and stop locations for specific memory areas and order specific memory sections (like `.text`, `.data`, `.rodata`) into the physical memory address space.
+
+### PeripheralPins.c
+
+This source code file contains the pin map structures.
+
+### variant.h/cpp
+
+The .cpp file contains the system clock config (`SystemClock_Config()`).
 
 ## External Links
 
