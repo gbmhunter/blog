@@ -40,6 +40,6 @@ Equations:
 
 <p>\begin{align} f = \frac{1}{T} \end{align}</p>
 
-## 555 Timer Calculator
+## Astable 555 Timer Calculator
 
-{{% calculator id="555-timer-rt-rb-c" style="width: 500px;" %}}
+{{% calculator id="555-timer-rt-rb-c" style="width: 500px; height: 400px;" %}}
