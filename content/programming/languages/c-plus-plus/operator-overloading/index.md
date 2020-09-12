@@ -1,9 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2014-08-13
 draft: false
-title: Operator Overloading
-type: page
+lastmod: 2014-08-13
+tags: [ "programming", "C++", "operator overloading", "overloading" ]
+title: "Operator Overloading"
+type: "page"
 ---
 
 ## Overview
