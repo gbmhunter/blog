@@ -16,6 +16,7 @@ struct Callback<Ret(Params...)> {
 template <typename Ret, typename... Params>
 std::function<Ret(Params...)> Callback<Ret(Params...)>::func;
 
+// C-style API which just wants a standard function for callback
 void c_function_which_wants_callback(int (*func)(int num1, int num2)) {
    int o = func(1, 2);
    printf("Value: %i\n", o);
@@ -33,6 +34,8 @@ typedef int (*callback_t)(int,int);
 int main() {
     ClassWithCallback my_class;
     Callback<int(int,int)>::func = std::bind(&ClassWithCallback::method_to_callback, &my_class, std::placeholders::_1, std::placeholders::_2);
-    callback_t func = static_cast<callback_t>(Callback<int(int,int)>::callback);      
+    callback_t func = static_cast<callback_t>(Callback<int(int,int)>::callback);
+
+    // Now we can pass this function to a C API which just wants a standard function callback    
     c_function_which_wants_callback(func);      
 }
