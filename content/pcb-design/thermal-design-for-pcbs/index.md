@@ -99,7 +99,6 @@ ASTM D5470 is a standard used to measure thermal conductivity.
 
 If the thickness of a material is known and constant, sometimes manufacturers will give a thermal resistance with units `\( °C \cdot m^2 \cdot W^{-1} \)` (or `\( °C \cdot in^2 \cdot W^{-1} \)`). This is common for areas of FR-4 PCB (when the thickness is defined as say, 1.6mm), or for TIM material with a defined thickness of say 0.1mm. When this is given, they have already taken the thickness `\(t\)` into account and applied it to the equation. In this sense the thermal resistance is half-way between a specific thermal resistance and an absolute thermal resistance. To fully calculate an absolute thermal resistance from this value, all you need to do is divide the resistance by the area of the material:
 
-
 <p>\begin{align} R_\theta = \frac{R_{\theta, °Cm^2W^{-1}}}{A} \end{align}</p>
 
 
