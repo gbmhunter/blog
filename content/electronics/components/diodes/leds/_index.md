@@ -277,3 +277,13 @@ The dominant wavelength is important for user interface designers as it determin
 You can get LED's in a variety of SMD packages. Common SMD LED packages include the 0603 on 0402 chip packages.
 
 {{< img src="0603-led-up-close.jpg" width="1200px" caption="A picture of a 0603 LED up close on a PCB. You can see the filament running into the middle of the pad (the part which emits the light)." >}}
+
+## Lifetime And Reliability
+
+The expected lifetime and reliability is not typically given on standard-issue LED datasheets, mainly due to:
+
+* Typical LEDs last so long that lifetime of any product they are used in is determined by other factors
+* It is expensive and time-consuming to measure LED reliability
+* Lifetime and reliability information is considered somewhat confidential
+
+However, some LED manufacturers to give lifetime and reliability information. This is typically done for higher power, specific purpose LEDs such as powerful illumination LEDs (think streetlights, car headlights) or agricultural growing lights. The lifetime is typically expressed as a curve of _power maintenance_ over time (in terms of hours the LED has been on for). Power maintenance is how powerful the LED (in terms of light output power) compared to when it was new. Typical single-value lifetimes can be described as the number of hours until the LED light outputs power reduces to 70 or 50% of it's initial output power (a 70 ro 50% power maintenance).
