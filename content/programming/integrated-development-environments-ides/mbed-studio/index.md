@@ -94,7 +94,7 @@ Error Value: 0xA
 For more info, visit: https://mbed.com/s/error?error=0x80010130&tgt=NUCLEO_F070RB
 ```
 
-## API
+## APIs
 
 ### Timer
 

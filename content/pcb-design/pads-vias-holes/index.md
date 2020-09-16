@@ -4,23 +4,23 @@ categories: [ "PCB Design" ]
 date: 2015-01-07
 description: "All you need to know about pads, vias and holes in a PCB design."
 draft: false
-lastmod: 2020-09-15
-tags: [ "PCB design", "pads", "vias", "holes", "PCBs", "manufacturing", "mounting", "microvias", "annular rings", "thermal relief", "aspect ratios" ]
+lastmod: 2020-09-16
+tags: [ "PCB design", "pads", "vias", "holes", "PCBs", "manufacturing", "mounting", "microvias", "annular rings", "thermal relief", "aspect ratios", "tangency", "breakout" ]
 title: "Pads, Vias And Holes"
 type: "page"
 ---
 
 ## Holes
 
-Holes in PCBs are typically used to mount through-hole components (their main use), and to provide places to secure the board mechanically. Holes are typically plated (which makes them identical to vias), but non-plated also have their uses (mounting or connector location holes). Holes with copper rings have to obey the minimum annular ring size clearance. Most PCB manufacturers will have a pricing regime that is dependent on the smallest hole size used, the total number of holes, and also the number of different hole sizes.
+Holes in PCBs are typically used to mount through-hole components (their main use), and to provide places to secure the board mechanically. Holes are typically plated (which makes them identical to vias), but non-plated also have their uses (e.g. mounting or connector location holes). Holes with copper rings have to obey the minimum annular ring size clearance. Most PCB manufacturers will have a pricing regime that is dependent on the smallest hole size used, the total number of holes, and also the number of different hole sizes.
 
 The smallest hole PCB manufacturers can support is usually 0.1-0.2mm, with anything under 0.2mm becoming specialty and hence more expensive. Holes which are designed for component leads to go through require pads surrounding the holes on the top and/or bottom of the PCB. This allows a good solder bond between the component and the PCB tracks. A typical rule-of-thumb is to make the pad diameter twice the size of the hole diameter. The middle pad in the image below shows this.
 
-{{< img src="hole-size-versus-pad-size.png" width="767px" caption="Diagram showing different ratios between hole and pad size."  >}}
+{{< img src="hole-size-versus-pad-size.png" width="767px" caption="Diagram showing different ratios between hole and pad size." >}}
 
 ## Vias
 
-Vias are simply the name given to plated holes which are used to connect to tracks on different layers. Vias with a drilled hole size of 150um or less are called [microvias](/pcb-design/pads-vias-holes#microvias).
+Vias are simply the name given to plated holes which are used to connect to tracks on different layers rather than to mount through-hole components (remember that holes are primarily used to mount through-hole components, but also can connect tracks on different layers).
 
 ### Current-Carrying Ability
 
@@ -43,7 +43,7 @@ Vias can be drilled out easily to break connections when re-wiring, modifying ex
 _Microvias_ are tiny vias that are usually characterised by a diameter of **150um or less** (this is the formal IPC definition). At these diameters, the vias cannot be formed with standard drill bits. Other forms of technology have to be used. These include:
 
 * Photovias
-* Laservias
+* Laser Vias
 
 Microvias are used extensively as part of _via-in-pad technology_, in where the via is placed directly on the pad of a component, compared to placing it beside the pad a running a short copper track to it. This offers significant space reductions in high-density PCBs.
 
@@ -51,7 +51,7 @@ Microvias are part of the technology set that make up _HDI (High-Density Interco
 
 The advantage of additive and semi-additive PCB design processes is that microvias can be drilled prior to plating the surface.
 
-### Laservias
+### Laser Vias
 
 Trepanning is when the laser is moved in a circular pattern to make a large diameter via.
 
@@ -63,9 +63,13 @@ Trepanning is when the laser is moved in a circular pattern to make a large diam
 
 ## Annular Rings
 
-{{< img src="minimum-annular-ring.gif" width="124px" caption="The definition of an annular ring in PCB design."  >}}
+The annular ring is the width of the copper pad which surrounds the via/pad hole.
 
-Most PCB manufacturers specify a minimum annular ring distance. The annular ring distance is measured radially and is the pad/via diameter subtracted by the pad/via hole diameter. PCBs with smaller annular ring requirements usually cost more to manufacture. You normally have to be attention to the minimum annular ring when designing the vias.
+{{< img src="minimum-annular-ring.gif" width="124px" caption="The definition of an annular ring in PCB design." >}}
+
+Most PCB manufacturers specify a minimum annular ring distance, and may offer more expensive pricing tiers for smaller minimum annular rings. The minimum annular ring is typically **driven by the accuracy in which the PCB manufacturer can drill the via/pad hole**. The drill hole may wander from the desired center in the x and y direction, and they need a specify a minimum annular ring to guarantee there will always be a copper pad surrounding the drilled hole. If the drill hole touches the side of the copper pad (i.e. the annular ring reduces to 0), this error condition is called _tangency_. If the problem is even worse and the drill hole escapes the pad, this is called _breakout_[^pcb-directory-what-is-an-annular-ring].
+
+Typical minimum annular rings for standard commercial PCB manufacture is between 0.1-0.15mm (3.94 to 5.91mill). Coupled with a typical minimum hole size of 0.2mm, this puts the minimum via/pad size at 0.2mm + 0.1mm*2 = 0.4mm.
 
 ## Direct Connect Vs. Thermal Relief
 
@@ -113,3 +117,11 @@ For example, a hole with a 0.5mm diameter going entirely through a 1.6mm thick P
 <p>$$ \frac{1.6mm}{0.5mm} = 3.2 $$</p>
 
 The maximum aspect ratio present on a PCB is an important parameter for the PCB manufacturers. Most manufacturers have an upper limit on the aspect ratio that they can manufacture reliably. This is normally about an aspect ratio of 10-12. 
+
+## How To Calculate The Thermal Resistance Of Holes And Vias
+
+See the {{% link text="Thermal Design For PCBs page" src="/pcb-design/thermal-design-for-pcbs" %}} for equations and an online calculator to work out the thermal resistance of both PCB holes and vias.
+
+## References
+
+[^pcb-directory-what-is-an-annular-ring]: <https://www.pcbdirectory.com/community/what-is-an-annular-ring>, retrieved 2020-09-16.
