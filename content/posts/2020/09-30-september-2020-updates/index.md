@@ -23,3 +23,5 @@ type: "post"
 * Added more online simulation tools to the {{% link text="Circuit Simulation page" src="/electronics/general/circuit-simulation" %}}.
 
 * Added a new page on {{% link text="555 Timer Circuits" src="/electronics/circuit-design/555-timer-circuits" %}}.
+
+* Updated the {{% link text="Mbed Studio page" src="/programming/integrated-development-environments-ides/mbed-studio" %}}.
