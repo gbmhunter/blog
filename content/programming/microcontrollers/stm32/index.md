@@ -46,6 +46,10 @@ Or as the following inputs:
 * Pull-up
 * Pull-down
 
+Reference schematic for the STM32F030 (just power, clock and programming):
+
+{{% img src="stm32f030-reference-schematic.png" width="800px" caption="The reference schematic for the STM32F030 microcontroller. Image from https://www.st.com/resource/en/application_note/dm00089834-getting-started-with-stm32f030xx-and-stm32f070xx-series-hardware-development-stmicroelectronics.pdf." %}}
+
 ## STM32WLEx
 
 The `STM32WLEx` is a family of "SoC" microcontrollers featuring a STM32L4 coupled with a wireless radio IC that supports LoRaWAN (both of these are in the same physical IC).

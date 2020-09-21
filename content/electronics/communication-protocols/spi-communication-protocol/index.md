@@ -1,9 +1,12 @@
 ---
 author: gbmhunter
+categories: [ "Electronics", "Communication Protocols" ]
 date: 2011-09-03
 draft: false
-title: SPI Communication Protocol
-type: page
+lastmod: 2020-09-21
+tags: [ "electronics", "communication protocols", "SPI" ]
+title: "SPI Communication Protocol"
+type: "page"
 ---
 
 ## Overview
@@ -101,7 +104,7 @@ SPI _daisy-chaining_ is way of **overcoming** the routing/capability issue of ha
 
 The basic idea is that instead of data line being connected to every slave, the master's data line is connected to **one slave only**, and that slaves DOUT is connected to the next slaves data in, forming a _"daisy chain"_. The other difference is that a **single chip select line is routed to all slave ICs**.
 
-The data is passed from the microcontoller to the first slave, who stores it in a **shift register**. After a number of clock cycles, the data reaches the end of it's internal shift-register, and is passed onto the next slave. The microcontroller continues passing out data until all the slaves shift-registers are full, at which point a pulse is sent down the global chip select signal, which causes the slave devices to read/execute/do whatever with the data currently in it's shift register.
+The data is passed from the microcontroller to the first slave, who stores it in a **shift register**. After a number of clock cycles, the data reaches the end of it's internal shift-register, and is passed onto the next slave. The microcontroller continues passing out data until all the slaves shift-registers are full, at which point a pulse is sent down the global chip select signal, which causes the slave devices to read/execute/do whatever with the data currently in it's shift register.
 
 Some devices that support daisy chaining are Microchips MCP42xxx digital potentiometers and Linear Technologies LED drivers.
 
@@ -113,16 +116,26 @@ The Freescale FXOS8700CQ magnetometer is one such example.
 
 {{< img src="fxos8700cq-freescale-magnetometer-note-supports-only-point-to-point-spi-protocol.pdf.png" width="745px" caption="The note from the Freescale FXOS8700CQ magnetometer stating that it only supports the 'point-to-point' SPI protocol."  >}}
 
+## Dedicated Chip Select Pins
+
+Some microcontrollers have dedicated chip select pins which are connected to the SPI peripheral inside the microcontroller. This pin usually has a number of different purposes:
+
+* Used to select a slave device for communication (only really works when the SPI bus has only 1 slave on it)
+* Synchronize data frames
+* Detect conflicts between multiple masters
+
+On STM32 microcontrollers this pin is called `NSS` (which stands for _not slave select_, _not_ being because the signal is active low).
+
 ## Similar Protocols
 
-## Microwire (uWire)
+### Microwire (uWire)
 
 The Microwire protocol is a subset of the SPI communication protocol, and is a trademark of National Semiconductor.
 
-## mSPI (mini-SPI)
+### mSPI (mini-SPI)
 
 The mSPI bus is a modification of the SPI bus that enforces that the comms protocol always has 4-wires, no matter how many slave devices are attached. This simplifies the software needed on the slave devices. All devices share the same SS (slave select) line.
 
-## RapidS
+### RapidS
 
 The RapidS term is used by [Atmel](http://www.atmel.com/) and [Adesto Technologies](http://www.adestotech.com/). It is commonly present on memory chips such as EEPROM and Flash memory ICs. The RapidS serial interface is SPI compatible for frequencies up to 33MHz. The RapidS protocol is different to the Rapid8 protocol, which is a **parallel interface**.
