@@ -96,6 +96,8 @@ For more info, visit: https://mbed.com/s/error?error=0x80010130&tgt=NUCLEO_F070R
 
 ## APIs
 
+The `mbed-os` API is documented with Doxygen-style in-code comments.
+
 ### Timer
 
 Timers can be used to keep track of periods of time in a precise manner (with typically sub-microsecond accuracy).
