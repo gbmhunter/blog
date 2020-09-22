@@ -2,6 +2,8 @@
 author: "gbmhunter"
 date: 2013-04-08
 draft: false
+lastmod: 2013-04-08
+tags: [ "electronics", "communication protocols", "ethernet", "internet", "IP" ]
 title: "Ethernet Protocol"
 type: "page"
 ---
