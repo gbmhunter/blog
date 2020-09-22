@@ -25,3 +25,5 @@ type: "post"
 * Updated the {{% link text="Mbed Studio page" src="/programming/integrated-development-environments-ides/mbed-studio" %}}.
 
 * Migrated NinjaCalc from a Vue.js based app to Next.js/React based app.
+
+* Added a page on the EasyScale communication protocol.
