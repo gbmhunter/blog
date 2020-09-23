@@ -1,18 +1,19 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2015-03-24
 draft: false
+lastmod: 2020-09-23
 tags: [ "SMPS", "buck converter", "power electronics", "inductor", "capacitor", "regulation" ]
-title: Buck Converters
-type: page
+title: "Buck Converters"
+type: "page"
 ---
 
 ## Overview
 
 Buck converters use a switching element, inductor and capacitor to convert an input voltage into a lower output voltage.
 
-{{< img src="smps-buck-converter-simple.png" width="629px" caption="The basic parts of a buck converter."  >}}
+{{< img src="smps-buck-converter-simple.png" width="629px" caption="The basic parts of a buck converter." >}}
 
 When using a P-channel MOSFET for synchronous rectification, it's body diode is forward-biased when the converter is in shutdown mode. This can **drain the power source** into the output. More advanced buck converters have extra circuitry to disconnect this P-channel MOSFET when the device is not active.
 
@@ -86,9 +87,19 @@ You can find a buck converter calculator as part of [mbedded.ninja's NinjaCalc w
 
 {{< img src="ninja-calc-buck-converter-calculator-screenshot.png" width="956px" caption="A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0)." >}}
 
+## Operation Modes
+
+### Continuous Conduction Mode (CCM)
+
+CCM is the basic and default operating mode for most buck converters. It is a synchronous mode, meaning the switching frequency is constant and continuous.
+
+### Advanced Asynchronous Modulation (AAM)
+
+AAM is not supported by all buck converters, and is a mode used at low output currents to reduce the power consumption of the SMPS.
+
 ## Examples
 
-## Tiny (Nano) Buck Converters
+### Tiny (Nano) Buck Converters
 
 Texas Instruments released a series of very small (3.5x3.5x1.8mm) buck converter modules in 2015. One of the most impressive features is that this includes the inductor (external capacitors are still required). One example is the LMZ20502, which can provide up to 2A of current with an input voltage range of 2.7-5.5V and a output voltage range of 0.8-3.6V.
 

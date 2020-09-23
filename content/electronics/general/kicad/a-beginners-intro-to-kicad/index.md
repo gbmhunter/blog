@@ -169,6 +169,10 @@ KiCAD has a push and shove router.
 
 As of May 2020, there is no way to add a check for silkscreen over pad in the design rules. The best you can do is select `exclude pads from silkscreen` when exporting the gerbers, which will remove all silkscreen from pads. This is not as ideal though, as this may remove important information from the silkscreen such as designators, version numbers or polarization marks.
 
+### PCB Layers
+
+* Dwgs.User: Dimensions are placed on this layer by default
+
 ## Generating Manufacturing Outputs
 
 - Gerbers
