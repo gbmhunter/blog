@@ -337,6 +337,8 @@ DeviceNet supports the following baud rates:
 * 250Kbits/s
 * 500Kbits/s
 
+DeviceNet cable typically consists of two shielded, twisted pairs. One pair has a larger wire diameter for carrying power, and the other pair with a smaller wire diameter is for the data. 
+
 ## CAN Bus Repeaters
 
 **CAN bus repeaters are devices that allow you to extend the length of a CAN bus or make a fixed-length bus more resilient to external noise**. They do this by _regenerating_ (a.k.a. _buffering_) the CAN bus signal. They typically pass-through signals from one side to the other very quickly (a low _propagation delay_) and therefore are typically invisible to the other nodes on the CAN bus.
