@@ -1,14 +1,19 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components" ]
 date: 2012-11-21
 draft: false
-tags: [ "cable", "computer cable", "material", "insulation", "ETFE", "mPPE", "PDVF", "NEC" ]
-title: Cables
-type: page
+lastmod: 2020-09-28
+tags: [ "cable", "computer cable", "material", "insulation", "ETFE", "mPPE", "PDVF", "NEC", "UNITRONIC", "PROFIBUS" ]
+title: "Cables"
+type: "page"
 ---
 
-<h2>Insulation Materials And Their Properties</h2>
+## Overview
+
+Cables are an important design consideration for most electrical designs and installations. They typically provide power and data (although wireless transmission is becoming more common for data transmission) to and between electronic
+
+## Insulation Materials And Their Properties
 
 <table>
   <thead>
@@ -23,13 +28,13 @@ type: page
     <tr>
       <td>ETFE</td>
       <td>Ethylene tetraflouroethylene</td>
-      <td>-70 to +150</td>
+      <td>-70 to +150°C</td>
       <td>Used in wire-wrap applications.</td>
     </tr>
     <tr>
       <td>MG</td>
       <td>Mica glass</td>
-      <td>450</td>
+      <td>450°C</td>
       <td>
         <ul>
           <li>Used in high-temperature applications</li>
@@ -40,7 +45,7 @@ type: page
     <tr>
       <td>mPPE</td>
       <td>Modified polyphenylene ether</td>
-      <td>-40 to +105</td>
+      <td>-40 to +105°C</td>
       <td>
         <ul>
           <li>Excellent recyclability</li>
@@ -53,13 +58,13 @@ type: page
     <tr>
       <td>PDVF</td>
       <td>Polyvinylidene fluoride</td>
-      <td>-40 to +125</td>
+      <td>-40 to +125°C</td>
       <td>Used in wire-wrap applications.</td>
     </tr>
     <tr>
       <td>PTFE</td>
       <td>Polytetrafluoroethylene</td>
-      <td>-55 to +200</td>
+      <td>-55 to +200°C</td>
       <td>
         <ul>
           <li>High temperature range</li>
@@ -68,23 +73,35 @@ type: page
         </ul>
       </td>
     </tr>
+      <tr>
+      <td>PVC</td>
+      <td>Polyvinyl chloride</td>
+      <td>-40 to +90°C</td>
+      <td>
+        <ul>
+          <li>Very common, price competitive insulating material for cables.</li>
+          <li>Does not have a large temperature range.</li>
+          <li>See XL-PVC (cross-linked PVC) for PVC with a higher temperature resistance.</li>
+        </ul>
+      </td>
+    </tr>
     <tr>
       <td>Silicone</td>
       <td>Silicone</td>
-      <td>-40 to +150</td>
+      <td>-40 to +150°C</td>
       <td>
         <ul>
-          <li>High-voltage capability</li>
-          <li>Excellent flexibility</li>
-          <li>Excellent dielectric strength</li>
-          <li>Chemical resistance to radiation, corona and ozone</li>
+          <li>High-voltage capability.</li>
+          <li>Excellent flexibility.</li>
+          <li>Excellent dielectric strength.</li>
+          <li>Chemical resistance to radiation, corona and ozone.</li>
         </ul>
       </td>
     </tr>
     <tr>
       <td>TGGT</td>
       <td>Teflon-glass-glass-Teflon</td>
-      <td>+250</td>
+      <td>+250°C</td>
       <td>
         <ul>
           <li>Suitable for high-temperature applications</li>
@@ -97,7 +114,7 @@ type: page
     <tr>
       <td>XL-PVC</td>
       <td>Cross-linked PVC</td>
-      <td>-55 to 105</td>
+      <td>-55 to 105°C</td>
       <td>
         <ul>
           <li>Better abrasion and cut-through resistance than standard PVC</li>
@@ -109,7 +126,7 @@ type: page
     <tr>
       <td>XLPE</td>
       <td>Cross-linked polyethylene</td>
-      <td>-55 to 125</td>
+      <td>-55 to 125°C</td>
       <td>
         <ul>
           <li>Higher temperature rating than PVC</li>
@@ -119,36 +136,29 @@ type: page
   </tbody>
 </table>
 
-<h2>Standards</h2>
+## Standards
 
-<h3>NEC</h3>
+### NEC
 
-<p>The <i>National Electrical Code</i> (NEC) is an American standards body which defines a set of standards for certain
-  types of cabling and how they should be installed and used.</p>
+The _National Electrical Code_ (NEC) is an American standards body which defines a set of standards for certain types of cabling and how they should be installed and used.
 
-<p>NEC <i>types</i> are acronyms consisting of a prefix describing **cable type** (e.g. coax, CATV, fiber optic) and a
-  suffix indicating the type of <b>flame test</b> it has passed and where it can be <b>installed</b>.</p>
+NEC _types_ are acronyms consisting of a prefix describing **cable type** (e.g. coax, CATV, fiber optic) and a suffix indicating the type of flame test it has passed and where it can be installed.
 
-{{< img src="nec-2005-cable-standards-reference-cable-type-and-fire-resistance-summary.png" width="790px" caption="A summary of the cable types and flame tests from NEC. Image from http://www.associatedtelephone.com/."  >}}
+{{< img src="nec-2005-cable-standards-reference-cable-type-and-fire-resistance-summary.png" width="790px" caption="A summary of the cable types and flame tests from NEC. Image from http://www.associatedtelephone.com/." >}}
 
-<h2>Computer Cable</h2>
+## Computer Cable
 
-<h3>Overview</h3>
+Computer cable can also be called "Security" or "Alarm" cable.
 
-<p>Computer cable can also be called "Security" or "Alarm" cable.</p>
+### AWM
 
-<h3>AWM</h3>
+Underwriters Laboratories categorises some computer cable as <i>appliance wiring material</i> (AWM). It has become an <b>industry standard</b>. There are 5 different style numbers.
 
-<p>Underwriters Laboratories categorises some computer cable as <i>appliance wiring material</i> (AWM). It has become an
-  <b>industry standard</b>. There are 5 different style numbers.</p>
+AWM cable is designed for the internal wiring of factory-assembled, "listed" appliances such as computers, whitewear, and industrial equipment.
 
-<p>AWM cable is designed for the internal wiring of factory-assembled, "listed" appliances such as computers, whitewear,
-  and industrial equipment.</p>
+### UL2464
 
-<h3>UL2464</h3>
-
-<p>UL2464 is a loose standard defining some of the properties of computer cable, maintained by Underwriters
-  Laboratories.</p>
+UL2464 is a loose standard defining some of the properties of computer cable, maintained by Underwriters Laboratories.
 
 <table>
   <tbody>
@@ -173,7 +183,7 @@ type: page
   </tbody>
 </table>
 
-<p>Reference standard: UL Subject 758, UL 1581 & CSA C22.2 No.210.2</p>
+Reference standard: UL Subject 758, UL 1581 & CSA C22.2 No.210.2.
 
 <ul>
   <li>Stranded, bare or tinned copper conductor</li>
@@ -185,14 +195,14 @@ type: page
   <li>Passes UL VW-1SC & CSA FT1 vertical flame test</li>
 </ul>
 
-<p>Features Specifications: UL2464 Double Shielded Computer Cables</p>
+Features Specifications: UL2464 Double Shielded Computer Cables
 
 <ul>
   <li>Rated temperature: 80°C</li>
   <li>Rated voltage: 300V</li>
 </ul>
 
-<p>Reference standard: UL Subject 758, UL 1581 & CSA C22.2 No.210.2</p>
+Reference standard: UL Subject 758, UL 1581 & CSA C22.2 No.210.2
 
 <ul>
   <li>Stranded, bare or tinned copper conductor</li>
@@ -204,7 +214,7 @@ type: page
   <li>Passes UL VW-1SC & CSA FT1 vertical flame test</li>
 </ul>
 
-<p>Common Colours In UL2464 Cable:</p>
+Common Colours In UL2464 Cable:
 
 <ul>
   <li>Black</li>
@@ -222,7 +232,7 @@ type: page
   <li>Black-White</li>
 </ul>
 
-<p>Common Colours For 12 Core Cable:</p>
+Common Colours For 12 Core Cable:
 
 <ul>
   <li>Black</li>
@@ -239,3 +249,14 @@ type: page
   <li>Light Green</li>
   <li>Grey</li>
 </ul>
+
+## Combined Power/Data Cable
+
+Combined power/data cable refers to cable which makes special provision for carrying both moderate/large amounts of power and data through the same cable. All cables can carry "power" and data, but this category refers to two specific cases:
+
+* The cable contains cores of different gauges, with the large gauge for carrying moderate to large amounts of power, and the smaller gauge for data.
+* The cable contains both shielded, twisted pairs and non-shielded, non-twisted power cores.
+
+Some examples of combined power/data cables include:
+
+* Lapp UNITRONIC BUS PB COMBI 7-W cable. It contains 3x 1.0mm2 power cores and 1x2x0.64mm2 twisted pair core for data. The twisted pair is individually shielded (to protect it from noise on the power cores), and the whole cable is also shielded.

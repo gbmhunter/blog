@@ -24,6 +24,10 @@ type: "post"
 
 * Updated the {{% link text="Mbed Studio page" src="/programming/integrated-development-environments-ides/mbed-studio" %}}.
 
-* Migrated NinjaCalc from a Vue.js based app to Next.js/React based app.
+* Migrated [NinjaCalc](https://ninja-calc.mbedded.ninja/) from a [Vue.js](https://vuejs.org/) based app to [Next.js/React](https://nextjs.org/) based app. This took quite a long time to migrate, I'm estimating about 32 hours to migrate all functionality except for two calculators to Next.js. Deployments are now automatically done by [Vercel](https://vercel.com/) (I'm using the "Hobby" tier which is free forever). Unit/functional CICD testing has also been added with [GitHub Actions](https://github.com/features/actions).
 
 * Added a page on the EasyScale communication protocol.
+
+* Updated the {{% link text="Cables page" src="/electronics/components/cables" %}} with more information on cable insulation materials and combined power/data cables.
+
+* Added a [Cable Gauge Calculator to the NinjaCalc app](https://ninja-calc.mbedded.ninja/calculators/electronics/cabling/wire-gauge-calculator).
