@@ -161,7 +161,7 @@ There is somewhat of a standard pinout for RS-485 transceivers in 8-pin componen
 
 Do you need a higher-level communication protocol that works over a UART connection? See the [SerialFiller](https://github.com/gbmhunter/SerialFiller) library on GitHub (written in C++). SerialFiller uses a publish/subscribe mechanism and works well on point-to-point serial connections such as UART.
 
-{{% link text="PROFIBUS" src="/electronics/communication-protocols/profibus" %}} can use RS-485 as it's physical layer.
+{{% link text="PROFIBUS" src="/electronics/communication-protocols/profibus-protocol" %}} can use RS-485 as it's physical layer.
 
 ## Differential Voltage Specs
 

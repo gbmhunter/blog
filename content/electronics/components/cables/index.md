@@ -2,9 +2,10 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components" ]
 date: 2012-11-21
+description: "Insulation materials, cable types, standards, mutual capacitance and more info on cables."
 draft: false
-lastmod: 2020-09-28
-tags: [ "cable", "computer cable", "material", "insulation", "ETFE", "mPPE", "PDVF", "NEC", "UNITRONIC", "PROFIBUS" ]
+lastmod: 2020-09-29
+tags: [ "cable", "computer cable", "material", "insulation", "ETFE", "mPPE", "PDVF", "NEC", "UNITRONIC", "PROFIBUS", "mutual capacitance", "capacitance" ]
 title: "Cables"
 type: "page"
 ---
@@ -260,3 +261,7 @@ Combined power/data cable refers to cable which makes special provision for carr
 Some examples of combined power/data cables include:
 
 * Lapp UNITRONIC BUS PB COMBI 7-W cable. It contains 3x 1.0mm2 power cores and 1x2x0.64mm2 twisted pair core for data. The twisted pair is individually shielded (to protect it from noise on the power cores), and the whole cable is also shielded.
+
+## Mutual Capacitance
+
+For cables with screening, typically a conductor-to-conductor and conductor-to-screen capacitance is given. The conductor-to-conductor capacitance is typically 80-140nF and the conductor-to-screen capacitance is typically 100-180nF (slightly higher than the conductor-to-conductor capacitance). 
