@@ -2,6 +2,7 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Components", "Transistors" ]
 date: 2015-08-10
+description: "Types, schematic symbols, important parameters, amplifier topologies, and more info about bipolar junction transistors (BJTs)."
 draft: false
 lastmod: 2020-09-07
 tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode" ]
@@ -114,6 +115,8 @@ The `BC` range of BJTs, including the `BC547` and `BC548` are very common, low-c
 * `BC547`: Same as the BC548, but with a higher breakdown voltage.
 * `BC548`: Common NPN transistor, used for switching and amplification purposes.
 * `BC549`: Low noise version of the BC548.
+
+{{% img src="bc548-transistor-to92-photo.png" width="400px" caption="A photo of the ubiqituous BC548 BJT transistor in to TO-92 package. Image from https://www.dnatechindia.com/bc-548-npn-transistor-buy-online-india.html." %}}
 
 ## Multiple-Collector And Multiple-Emitter BJTs
 

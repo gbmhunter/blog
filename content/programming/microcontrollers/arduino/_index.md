@@ -17,6 +17,8 @@ The Arduino is a low-cost, easy-to-use, microcontroller development environment.
 
 The Arduino platform was used in the [Luxcity Tonic UV Control System project](/electronics/projects/luxcity-uv-tonic-control-system) that I designed.
 
+{{% figure src="arduino-logo.svg" width="300px" caption="The Arduino logo." %}}
+
 ## Windows 8
 
 The Arduino drivers do not currently work on Windows 8, because they have not been digitally signed. However "Louis Davis" on the Arduino forum created a signed cat file (signed with a test certificate) so that you can install the driver (INF) file on Windows 8 (see [forum](http://arduino.cc/forum/index.php/topic,94651.msg711489.html#msg711489)). Tested and it works!
