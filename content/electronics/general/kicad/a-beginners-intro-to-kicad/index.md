@@ -122,6 +122,10 @@ DigiKey maintains the [digikey-kicad-library](https://github.com/Digi-Key/digike
 
 ### Symbol Creation
 
+The default grid step size is the symbol editor is 50mil (0.050" or 1.27mm). I recommend you leave the symbol grid size to it's default when placing pins into symbols, as this will make the symbols consistent when placing onto schematics and prevent pins mis-aligning with the grid.
+
+The KiCAD symbol editor has a spreadsheet-style bulk pin editor window that lets you change the properties of multiple pins at once:
+
 {{% img src="bulk-editing-pins-in-kicad-symbol-editor.png" width="500px" caption="Bulk editing pins in KiCAD's symbol editor." %}}
 
 ### 3D Models
@@ -138,7 +142,7 @@ This directory is saved to the KiCAD environment variable `KISYS3DMOD`. Inside t
 
 Unfortunately KiCAD does not support relative file paths when linking 3D models to the footprints (relative to the footprint library). So you have two options:
 * Use an absolute URL (which will work fine for one user but may break if more than one user will be using the library)
-* Create a KiCAD environment variable which points to the location of your 3D models
+* Create a KiCAD environment variable which points to the location of your 3D models (recommended approach)
 
 ## Board Routing
 
