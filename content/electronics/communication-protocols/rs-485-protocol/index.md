@@ -2,9 +2,10 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Communication Protocols" ]
 date: 2015-10-19
+description: "Standards, transmission distances, baud rates, transceivers, high-level protocols and more info about the RS-485 communication protocol."
 draft: false
-lastmod: 2019-01-13
-tags: [ "RS-485", "communication protocols", "transmitters", "receivers", "data", "bus", "serial", "nodes", "SAE J1708", "transmission distances" ]
+lastmod: 2019-09-28
+tags: [ "RS-485", "communication protocols", "transmitters", "receivers", "data", "bus", "serial", "nodes", "SAE J1708", "transmission distances", "PROFIBUS", "Process Field Bus", "PNO", "PI", "FDL", "Fieldbus" ]
 title: "RS-485 Protocol"
 type: "page"
 ---
@@ -111,55 +112,56 @@ There is somewhat of a standard pinout for RS-485 transceivers in 8-pin componen
     </tr>
   </thead>
   <tbody>
-<tr>
-<td>1</td>
-<td>R, RO</td>
-<td>Receiver data output.</td>
-</tr>
-<tr>
-<td>2</td>
-<td>nRE, RE*</td>
-<td>Active-low receiver out enable.</td>
-</tr>
-<tr>
-<td>3</td>
-<td>DE</td>
-<td>Active-high RS-485 line driver enable. When high, the IC will be driving the RS-485 A and B wires, when low the A and B pins are put into high-impedance and the IC acts as a RS-485 receiver.</td>
-</tr>
-<tr>
-<td>4</td>
-<td>D, DI</td>
-<td>Driver data input. If the driver outputs are enabled (DE high), then a low on DI drives A low and B high, while a high on DI drives A high and B low.</td>
-</tr>
-<tr>
-<td>5</td>
-<td>GND</td>
-<td>Ground.</td>
-</tr>
-<tr>
-<td>6</td>
-<td>A</td>
-<td>RS-485 differential line A.</td>
-</tr>
-<tr>
-<td>7</td>
-<td>B</td>
-<td>RS-485 differential line B.</td>
-</tr>
-<tr>
-<td>8</td>
-<td>\( V_{CC} \)</td>
-<td>Supply voltage.</td>
-</tr>
-</tbody>
+    <tr>
+      <td>1</td>
+      <td>R, RO</td>
+      <td>Receiver data output.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>nRE, RE*</td>
+      <td>Active-low receiver out enable.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>DE</td>
+      <td>Active-high RS-485 line driver enable. When high, the IC will be driving the RS-485 A and B wires, when low the A and B pins are put into high-impedance and the IC acts as a RS-485 receiver.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>D, DI</td>
+      <td>Driver data input. If the driver outputs are enabled (DE high), then a low on DI drives A low and B high, while a high on DI drives A high and B low.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>GND</td>
+      <td>Ground.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>A</td>
+      <td>RS-485 differential line A.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>B</td>
+      <td>RS-485 differential line B.</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>\( V_{CC} \)</td>
+      <td>Supply voltage.</td>
+    </tr>
+  </tbody>
 </table>
-
 
 8-pin packages that RS-485 transceivers come include DIP-8, SOIC-8, TSSOP-8 and MSOP-8. Example transceivers that follow this "standard" include the [Texas Instruments DS485](http://www.ti.com/lit/ds/symlink/ds485.pdf), [Linear Technology LTC1480](http://cds.linear.com/docs/en/datasheet/1480fa.pdf).
 
 ## Higher-Level Protocols
 
 Do you need a higher-level communication protocol that works over a UART connection? See the [SerialFiller](https://github.com/gbmhunter/SerialFiller) library on GitHub (written in C++). SerialFiller uses a publish/subscribe mechanism and works well on point-to-point serial connections such as UART.
+
+{{% link text="PROFIBUS" src="/electronics/communication-protocols/profibus-protocol" %}} can use RS-485 as it's physical layer.
 
 ## Differential Voltage Specs
 
@@ -189,11 +191,11 @@ One such example is the Semtech SM712 diode array. Below is an image of the comp
 
 ## SAE J1708
 
-SAE J1708 is a communications protocol standard by SAE in 1986. It was intended to be used for serial communications between ECUs on heavy duty vehicles. Today, the [CAN Bus protocol](/electronics/communication-protocols/can-protocol) is usually used instead of SAE J1708.
+SAE J1708 is a communications protocol standard introduced by SAE in 1986. It was intended to be used for serial communications between ECUs on heavy duty vehicles. Today, the [CAN Bus protocol](/electronics/communication-protocols/can-protocol) is usually used instead of SAE J1708.
 
 The hardware used for SAE J1708 is usually a RS-485 transceiver that is wired for open collector operation. Transmission of bits is done through controlling the driver enable pin of the transceiver (rather than using the data in (DI) pin, which is used during normal RS-485 operation).
 
-{{< img src="rs-485-transceiver-with-open-collector-modifications-wired-or-sae-j1708.png" width="1167px" caption="A standard RS-485 transceiver with a modified bus connection to provide open collector (wired OR) arbitration for the SAE-J1708 bus. Image adopted from content found at http://www.ti.com/lit/an/snla038b/snla038b.pdf."  >}}
+{{< img src="rs-485-transceiver-with-open-collector-modifications-wired-or-sae-j1708.png" width="1167px" caption="A standard RS-485 transceiver with a modified bus connection to provide open collector (wired OR) arbitration for the SAE-J1708 bus. Image adopted from content found at http://www.ti.com/lit/an/snla038b/snla038b.pdf." >}}
 
 The receiver is always enabled (RE* pin connected to ground) so that the bus state can be checked on every attempted write of a bit. The bus state needs to be compared with the intended write bit, if they are different, another node is also writing on the bus and this bus has lost arbitration.
 
@@ -202,3 +204,6 @@ The modification to RS-485 essentially allows you to operate a multi-master (mul
 {{% note %}}
 This configuration means you will no longer be RS-485 compliant.
 {{% /note %}}
+
+## References
+

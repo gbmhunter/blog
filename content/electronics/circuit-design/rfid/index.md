@@ -3,16 +3,17 @@ author: "gbmhunter"
 categories: [ "Electronics", "Circuit Design" ]
 date: 2012-11-22
 draft: false
+lastmod: 2012-11-12
 tags: [ "RFID", "tag", "frequencies", "passive", "active", "wireless", "inlays", "labels" ]
 title: "RFID"
 type: "page"
 ---
 
-<h2>Overview</h2>
+## Overview
 
 RFID (radio-frequency identification) is a wireless method of transmitting data between a reader and tag, for the purposes of tracking and identification.
 
-<h2>Acronyms</h2>
+## Acronyms
 
 * Auto-ID: Automatic Identification
 * EPC: Electronic Product Code
@@ -84,8 +85,8 @@ Active tags are powered with a nearby physical power source, and don't rely on t
 
 Regulations normally use one of the two following units to regulate power:
 
-* \(EIRP\) (equivalent isotropic radiated power). Used mainly in the U.S.A
-* \(ERP\) (effective radiated power): Used mainly in Europe
+* `\(EIRP\)` (equivalent isotropic radiated power). Used mainly in the U.S.A
+* `\(ERP\)` (effective radiated power): Used mainly in Europe
 
 Note that the two are related by the following equation:
 
@@ -136,7 +137,7 @@ There are apparel label categories that tags can be certified for, these are:
 * C - Boxed items
 * D - Hanging apparel
 
-## Passive IC's
+## Passive ICs
 
 Murata makes a [MAGICSTRAP chip](http://www.murataamericas.com/rfid), which is a passive RFID device designed to be soldered onto a PCB for circuit board tracking and inventory management. The antenna is etched onto the PCB, and sections of the antenna make up the pads in which the chip is soldered to. It operates in the UHF band, and a 4-6m range is possible.
 
@@ -144,7 +145,7 @@ Murata makes a [MAGICSTRAP chip](http://www.murataamericas.com/rfid), which is a
 
 ## **Inlays/Labels**
 
-RFID inlays are a popular way form of cheap, disposable RIFD tags. They are usually paper thin, flat, and contain both an embedded RFID chip and flat planar metallic antenna.
+RFID inlays are a popular way form of cheap, disposable RFID tags. They are usually paper thin, flat, and contain both an embedded RFID chip and flat planar metallic antenna.
 
 {{< img src="alien-uhf-rfid-short-inlay-pattern.jpg" width="1218px" caption="An example of the antenna/chip layout on a RFID UHF inlay. This image is of the Alien ALN-9662 'Short' inlay. Image from http://www.alientechnology.com/tags/index.php."  >}}
 
@@ -182,7 +183,7 @@ Specialized tags/inlays exist for attaching/putting in close proximity to metal 
 
 The are different types of antenna used in different RFID designs. UHF antenna input is typically between 1-5W. 13.56MHz antennas between 100-200mW. Antennas can either be stand-along items, or part of a substrate/PCB. [AN1715: UHF RFID PCB Antenna Design](http://www.nxp.com/documents/application_note/AN171530.pdf) by NXP explains how to design an PCB-based UHF RFID antenna. One of the key parameters of an antenna is it's gain. The gain is usually expressed in `\(dBi\)` (decibels isotropic), or more rarely, `\(dBd\)` (decibels relative to a lossless half-wave dipole antenna). To convert between `\(dBi\)` and `\(dBd\)`, use the following equation:
 
-<div>$$dBi = dBd + 2.15dB$$</div>
+<p>$$dBi = dBd + 2.15dB$$</p>
 
 Smith charts are useful when designing impedance matching circuits between the antenna and RFID transceiver. A great free Smith chart program is [Smith by Fritz Dellsperger](http://www.fritz.dellsperger.net/).
 
@@ -210,25 +211,25 @@ The best method when the tag orientation could be anything. You lose at least 3d
 
 ## Standards
 
-## EPC Global Class 1 Generation 2 UHF Air Interface Protocol Standard "Gen 2"
+### EPC Global Class 1 Generation 2 UHF Air Interface Protocol Standard "Gen 2"
 
 One of (possibly the) most common standard for UHF RFID. Also called the EPC Global C1G2 standard. The international standard organization made it an amendment of the ISO18000-6C standard in 2006. A quote from the standards website:
 
 > "Commonly known as the "Gen 2" standard, this standard defines the physical and logical requirements for a passive-backscatter, Interrogator-talks-first (ITF), radio-frequency identification (RFID) system operating in the 860 MHz - 960 MHz frequency range. The system comprises Interrogators (also known as Readers), and Tags (also known as Labels)."
 
-## ISO/IEC 11784/11785
+### ISO/IEC 11784/11785
 
 Standards for RFID tags on animals.
 
-## ISO/IEC 14443
+### ISO/IEC 14443
 
 Standard for RFID ID cards operating at 13.56MHz.
 
-## ISO/IEC 15693
+### ISO/IEC 15693
 
 A standard for HF RFID. Also called I-Code 2, I-Code STL, or C370. It defines the frequency (13.56MHz) and the communication methods (but not the data itself, this is vendor specific).
 
-## ISO/IEC 18000-3
+### ISO/IEC 18000-3
 
 Part 3 of the ISO/IEC 18000 standard. It is a standard for passive RFID item identification operating at 13.56MHz. This standard contains "3 non-contending nodes",which are:
 
@@ -238,7 +239,7 @@ Part 3 of the ISO/IEC 18000 standard. It is a standard for passive RFID item ide
 
 Is is specially designed for high-performance tag reading when the tag antennas are small and closely packed. They can employ phase-jitter modulation (PJM) to read closely packed tags.
 
-## ISO/IEC 18000-6C
+### ISO/IEC 18000-6C
 
 Part 6 of the ISO/IEC 18000 standard. Defines parameters for RFID operating between 860-960MHz (UHF RFID). The EPC Global Class 1 Generation 2 UHF Air Interface Protocol Standard "Gen 2" standard was amended to this standard in 2006.
 
@@ -252,7 +253,7 @@ Most RFID reader development kits come with supporting software to get a RFID pr
 
 {{< img src="uhf-rfid-tag-read-results-astra-ex-to-usa.png" width="1042px" caption="Readout of RFID tags in the near vicinity by the ThingMagic AstraEX."  >}}
 
-## RFdump
+### RFdump
 
 Website: [http://www.rf-dump.org/](http://www.rf-dump.org/) In their own words:
 
@@ -282,7 +283,7 @@ You can use [www.veryfields.net](http://www.veryfields.net/) to do a parametric 
 
 [NXP](http://www.nxp.com/) manufacture the [HiTAG (LF), ICODE (HF), and UCODE (UHF) range of RFID tags](http://www.nxp.com/products/identification_and_security/smart_label_and_tag_ics/). These feature GPIO for simple open/closed circuit detection and also data communication with other chips.
 
-[Tageos](http://www.tageos.com) is a manufacter of UHF RFID inlays, using Alien or Impinj chips.
+[Tageos](http://www.tageos.com) is a manufacturer of UHF RFID inlays, using Alien or Impinj chips.
 
 [Skyetek](http://www.skyetek.com/) make HF and UHF reader modules.
 
