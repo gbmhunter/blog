@@ -154,7 +154,7 @@ Adding more thermal vias is a case of dimensioning returns, due to the limited s
 
 ### Via Thermal Resistance Calculator
 
-<iframe src="https://calc-mbedded-ninja.gbmhunter.now.sh/calculators/via-thermal-resistance" style="width: 800px; height: 800px; border: 0;"></iframe>
+{{% calculator id="calculators/electronics/pcb-design/via-thermal-resistance" style="width: 800px; height: 800px;" %}}
 
 ## Copper Planes
 

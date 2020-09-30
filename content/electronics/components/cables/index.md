@@ -265,3 +265,7 @@ Some examples of combined power/data cables include:
 ## Mutual Capacitance
 
 For cables with screening, typically a conductor-to-conductor and conductor-to-screen capacitance is given. The conductor-to-conductor capacitance is typically 80-140nF and the conductor-to-screen capacitance is typically 100-180nF (slightly higher than the conductor-to-conductor capacitance). 
+
+## Wire Guage Calculator
+
+{{% calculator id="electronics/cabling/wire-gauge-calculator" style="width: 800px; height: 800px;" %}}

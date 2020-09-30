@@ -1,5 +1,5 @@
 <!-- Shortcode to display a embedded (iframe) calculator given it's id -->
-<!-- Calculators designed at https://github.com/gbmhunter/calc-mbedded-ninja -->
-{{- $url := print "https://calc-mbedded-ninja.gbmhunter.now.sh/calculators/" (.Get "id") -}}
+<!-- Calculators designed at https://github.com/gbmhunter/NinjaCalc -->
+{{- $url := print "https://ninja-calc.mbedded.ninja/calculators/" (.Get "id") -}}
 {{- $style := .Get "style" | safeCSS -}}
 <iframe src="{{$url}}" style="{{$style}} border: 0px;"></iframe>
