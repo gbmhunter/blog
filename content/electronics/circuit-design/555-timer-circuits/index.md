@@ -42,4 +42,4 @@ Equations:
 
 ## Astable 555 Timer Calculator
 
-{{% calculator id="555-timer-rt-rb-c" style="width: 500px; height: 400px;" %}}
+{{% calculator id="electronics/ics/555-timer-astable-rt-rb-c" style="width: 500px; height: 400px;" %}}

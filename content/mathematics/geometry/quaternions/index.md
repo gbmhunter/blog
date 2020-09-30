@@ -299,10 +299,6 @@ can be converted into a quaternion with:
     a_z \sin{\frac{\theta}{2}} \\
     \end{bmatrix} $$</p>
 
-Use this tool to convert from a rotation expressed as an axis-angle to a quaternion:
-
-{{< calculators/axis-angle-to-quaternion >}}
-
 ## Conversion From Quaternion To Rotation Matrix
 
 If you have a quaternion in the form:
@@ -319,12 +315,10 @@ Then the equivalent rotation matrix is:
 \end{bmatrix}
 $$</p>
 
-Use this tool to convert quaternions to rotation matrices.
-
-{{< calculators/quaternion-to-rotation-matrix >}}
-
 ## 3D Rotation
 
-<iframe src="https://calc-mbedded-ninja.gbmhunter.now.sh/calculators/3d-rotations" style="width: 800px; height: 800px; border: 0;"></iframe>
+{{% calculator id="mathematics/geometry/3d-rotations" style="width: 800px; height: 800px;" %}}
+
+## References
 
 [^wikipedia]: https://en.wikipedia.org/wiki/Slerp
