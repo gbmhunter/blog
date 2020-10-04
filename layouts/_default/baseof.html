@@ -99,7 +99,13 @@
                 <div class="header-section-3">
                     <!-- RECENTLY EDITED CONTENT -->
                     <!-- .Site.Pages includes both sections and leaf nodes -->
-                    {{ $byLastMod :=  .Site.RegularPages.ByLastmod }}
+                    <!-- .Site.RegularPages only contains leaf nodes -->
+                    {{ $collection1 := .Site.Pages }}
+                    {{ $collection2 := .Site.Sections }}
+                    {{ $combined := $collection1 | append $collection2 }}             
+                    {{ $combined := where $combined "Section" "!=" "categories" }}
+                    {{ $combined := where $combined "Section" "!=" "tags" }}
+                    {{ $byLastMod :=  $combined.ByLastmod }}
                     {{ $recent := ($byLastMod | last 5).Reverse }}
                     {{ partial "recently-edited-item" $recent }}
                 </div>  

@@ -518,6 +518,8 @@ div.recent-updates .item {
   border-radius: 5px;
   margin: 10px 0px;
   padding: 5px;
+  /* Keep width sensible for left column (when is desktop mode) */
+  width: 250px;
 }
 
 div.recent-updates .item:hover {
