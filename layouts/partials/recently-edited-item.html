@@ -1,6 +1,13 @@
 <div class="recent-updates">
   <p>Recent Updates:</p>
-  {{ range . }}
+  <!-- .Site.Pages includes both sections and leaf nodes, but also tags and category pages! -->
+  <!-- .Site.RegularPages only contains leaf nodes -->
+  {{ $combined := .Site.Pages }}             
+  {{ $combined := where $combined "Section" "!=" "categories" }}
+  {{ $combined := where $combined "Section" "!=" "tags" }}
+  {{ $byLastMod :=  $combined.ByLastmod }}
+  {{ $recent := ($byLastMod | last 5).Reverse }}
+  {{ range $recent }}
     <a href="{{ .Permalink }}" class="link">
       <div class="item">            
         <h2>{{ .Title }}</h2>
