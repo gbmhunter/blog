@@ -1,10 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2011-09-05
 draft: false
-tags: [ "connectors", "electronic components" ]
-title: Connectors
-type: page
+lastmod: 2020-10-01
+tags: [ "electronics", "connectors", "electronic components", "circular connectors", "M12", "M8", "pogo", "TagConnect", "spring-loaded", "socket", "plug", "crimp", "plating", "contacts" ]
+title: "Connectors"
+type: "page"
 ---
 
 ## Overview
@@ -20,44 +21,44 @@ Unlike most other electrical components, most connector manufacturers do not app
 			<th>Description</th>
 		</tr>
 	</thead>
-<tbody >
-<tr>
-<td>Female</td>
-<td>See socket.</td>
-</tr>
-<tr>
-<td>Genderless</td>
-<td>A connector that can be mated with it's self (i.e. there is no separate male/female or plug/receptacle parts).</td>
-</tr>
-<tr>
-<td>Header</td>
-<td>Can either stand for a particular style of connector (see the Header section), or it can stand for a male gender connector.</td>
-</tr>
-<tr>
-<td>Hermaphroditic</td>
-<td>See genderless.</td>
-</tr>
-<tr>
-<td>Loaded</td>
-<td>On connectors with a large number of pins, this indicated how many of the pins come shipped with contacts. The contact pattern can also vary.</td>
-</tr>
-<tr>
-<td>Male</td>
-<td>See plug.</td>
-</tr>
-<tr>
-<td>Plug</td>
-<td>A connector which has rod-shaped part for plugging into socket. Also called a male connector, or header.</td>
-</tr>
-<tr>
-<td>Receptacle</td>
-<td>See socket.</td>
-</tr>
-<tr>
-<td>Socket</td>
-<td>A connector which has holes that accepts plug pins. Also called a female connector or receptacle.</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>Female</td>
+      <td>See socket.</td>
+    </tr>
+    <tr>
+      <td>Genderless</td>
+      <td>A connector that can be mated with it's self (i.e. there is no separate male/female or plug/receptacle parts).</td>
+    </tr>
+    <tr>
+      <td>Header</td>
+      <td>Can either stand for a particular style of connector (see the Header section), or it can stand for a male gender connector.</td>
+    </tr>
+    <tr>
+      <td>Hermaphroditic</td>
+      <td>See genderless.</td>
+    </tr>
+    <tr>
+      <td>Loaded</td>
+      <td>On connectors with a large number of pins, this indicated how many of the pins come shipped with contacts. The contact pattern can also vary.</td>
+    </tr>
+    <tr>
+      <td>Male</td>
+      <td>See plug.</td>
+    </tr>
+    <tr>
+      <td>Plug</td>
+      <td>A connector which has rod-shaped part for plugging into socket. Also called a male connector, or header.</td>
+    </tr>
+    <tr>
+      <td>Receptacle</td>
+      <td>See socket.</td>
+    </tr>
+    <tr>
+      <td>Socket</td>
+      <td>A connector which has holes that accepts plug pins. Also called a female connector or receptacle.</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Connector Manufacturers
@@ -73,128 +74,56 @@ Unlike most other electrical components, most connector manufacturers do not app
 			<th>Site Usability (1 bad, 10 good)</th>
 		</tr>
 	</thead>
-<tbody >
-<tr >
-
-<td >3M
-</td>
-
-<td >[http://www.3m.com/](http://www.3m.com/)
-</td>
-
-<td >Card edge (inc. latching)
-</td>
-
-<td >Yes, but not always for all parts in a connector family. (Step, IGES, Parasolid)
-</td>
-
-<td >3
-</td>
-
-<td >
-</td>
-</tr>
-<tr >
-
-<td >Harting
-</td>
-
-<td >[http://www.harting.com](http://www.harting.com/)
-</td>
-
-<td >Card edge
-</td>
-
-<td >Yes (Step)
-</td>
-
-<td >5
-</td>
-
-<td >
-</td>
-</tr>
-<tr >
-
-<td >Hirose
-</td>
-
-<td >[http://www.hirose.com/](http://www.hirose.com/)
-</td>
-
-<td >High-end circular
-</td>
-
-<td >Yes, after providing your paid-for email address. (Step)
-</td>
-
-<td >5
-</td>
-
-<td >
-</td>
-</tr>
-<tr >
-
-<td >Molex
-</td>
-
-<td >[http://www.molex.com](http://www.molex.com/)
-</td>
-
-<td >Card edge
-</td>
-
-<td >Yes (Step)
-</td>
-
-<td >3
-</td>
-
-<td >6
-</td>
-</tr>
-<tr >
-
-<td >Samtec
-</td>
-
-<td >[http://www.samtec.com](http://www.samtec.com/)
-</td>
-
-<td >Backplane, headers (various pitches, and both square-post and machined), rugged circular.
-</td>
-
-<td >Yes (Step).
-</td>
-
-<td >7
-</td>
-
-<td >8
-</td>
-</tr>
-<tr >
-
-<td >TE Connectivity
-</td>
-
-<td >[http://www.te.com](http://www.te.com/)
-</td>
-
-<td >Backplane
-</td>
-
-<td >?
-</td>
-
-<td >6
-</td>
-
-<td >
-</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>3M</td>
+      <td>[http://www.3m.com/](http://www.3m.com/)</td>
+      <td>Card edge (inc. latching)</td>
+      <td>Yes, but not always for all parts in a connector family. (Step, IGES, Parasolid)</td>
+      <td>3</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Harting</td>
+      <td>[http://www.harting.com](http://www.harting.com/)</td>
+      <td>Card edge</td>
+      <td>Yes (Step)</td>
+      <td>5</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Hirose</td>
+      <td>[http://www.hirose.com/](http://www.hirose.com/)</td>
+      <td>High-end circular</td>
+      <td>Yes, after providing your paid-for email address. (Step)</td>
+      <td>5</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Molex</td>
+      <td>[http://www.molex.com](http://www.molex.com/)</td>
+      <td>Card edge</td>
+      <td>Yes (Step)</td>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Samtec</td>
+      <td>[http://www.samtec.com](http://www.samtec.com/)</td>
+      <td>Backplane, headers (various pitches, and both square-post and machined), rugged circular.</td>
+      <td>Yes (Step).</td>
+      <td>7</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>TE Connectivity</td>
+      <td>[http://www.te.com](http://www.te.com/)</td>
+      <td>Backplane</td>
+      <td>?</td>
+      <td>6</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 
 ## Tin vs. Gold Plating
@@ -207,13 +136,13 @@ There is the 50:50:50 rule (taken from www.connector.com, as of **Dec 2017, link
 * The connector will experience 50 or less mating cycles
 * You can live with 50mOhms of contact resistance over time
 
-Selecting gold tinned contacts can add a good US$0.50 or more to the price of the connnector.
+Selecting gold tinned contacts can add a good US$0.50 or more to the price of the connector.
 
 Mixing the two plating metals is not recommended! The corrosion rate is greatly increased when two dissimilar metals come into contact with each other (this is due to the difference in the metal's electrode potentials, which is +1.5V for gold, and only +0.15V for tin).
 
 {{< img src="gold-and-tin-plated-contacts.jpg" caption="You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/."  width="900px" >}}
 
-## Mass Pinned Header's
+## Mass Pinned Headers
 
 These are good for making many connections between PCB boards, while holding the boards parallel or perpendicular to each other.
 
@@ -223,7 +152,7 @@ Example: Harting 0903 296 6825 96pin DIN41612 Socket Element14 Code: 1096910
 
 USB plug assemblies (non pre-assembled plugs) are hard to come by. However, they do exist. Here is a picture of a Molex Mini-USB Type-B plug assembly.
 
-{{< img src="molex-mini-usb-type-b-plug-assembly-photo.jpg" caption="The Molex Mini Usb Type B plug assembly."  width="400px" >}}
+{{< img src="molex-mini-usb-type-b-plug-assembly-photo.jpg" caption="The Molex Mini Usb Type B plug assembly." width="400px" >}}
 
 ## Jumpers
 
@@ -243,13 +172,13 @@ One company which is doing interesting things with spring-loaded connectors is T
 
 {{< img src="tc2050-idc-nl-pogo-pin-connector-photo.png" width="562px" caption="Photo of the TC2050-IDC-NL connector by Tag-Connect."  >}}
 
-They sell legged and no-legged versions. The legged versions have retainers (legs) which clip the connector to the PCB and are designed for a more persistant, hands-free connection. The no-legged versions have no retainers (legs), and a smaller footprint. You have to physically hold the connector against the board while using and are designed for a quick, non-persistant connection.
+They sell legged and no-legged versions. The legged versions have retainers (legs) which clip the connector to the PCB and are designed for a more persistant, hands-free connection. The no-legged versions have no retainers (legs), and a smaller footprint. You have to physically hold the connector against the board while using and are designed for a quick, non-persistent connection.
 
-{{< img src="tc2050-idc-nl-pogo-pin-connector-pcb-footprint.png" width="806px" caption="The recommended PCB footprint for accepting the TC2050-IDC-NL connector by Tag-Connect."  >}}
+{{< img src="tc2050-idc-nl-pogo-pin-connector-pcb-footprint.png" width="806px" caption="The recommended PCB footprint for accepting the TC2050-IDC-NL connector by Tag-Connect." >}}
 
 ## Circular Connectors
 
-## DIN Connectors
+### DIN Connectors
 
 The DIN connector was originally developed by the German National Standards Organisation. The known standards are:
 
@@ -260,15 +189,42 @@ The DIN connector was originally developed by the German National Standards Orga
 
 DIN connectors with different numbers of pins can sometimes mate with each other. For example, 3-pin DIN connectors used for mono audio can mate with the left-channel of larger 5-pin DIN stereo connections. DIN connectors were used for the PS/2 keyboard and mouse connectors (know succeeded by the USB connector).
 
-## Mini-DIN Connectors
+### Mini-DIN Connectors
 
 Mini-DIN connectors are smaller versions of the DIN connectors and are 9.5mm in diameter. A major difference between DIN and Mini-DIN connectors is that Mini-DIN connectors cannot be mated with any of different-number-of-pins Mini-DIN connectors.
 
 Mini-DIN connectors have been used for the S-video interface.
 
+### M8/M12 Connectors
+
+M8 and M12 connectors are circular connectors with a 12mm thread (note the thread in question is the thread joining the two mating connectors together, not the other threads which may be present on the M12 connector, such as panel-mount variants which typically have a 16mm thread for mounting to the panel). They are used for a variety of purposes across a large number of industries. A large number of these connectors are rated IP67 and prevent the ingress of water and dust.
+
+M8/M12 connectors have different _codings_. Each coding is a particular pin arrangement and key which prevents the same diameter and pin connector being mated with connectors with different codings.
+
+* A: Sensors, DC power (deprecated use), 1Gbit Ethernet
+* B: PROFIBUS
+* C: AC power (deprecated)
+* D: 100Mbit ethernet
+* K: AC power
+* L: PROFINET DC power
+* S: AC power (replacement for `C`)
+* T: DC power (replacement for `A` DC power)
+* X: 10Gbit Ethernet
+
+{{% img src="m8-m12-connector-codings-te-connectivity.png" width="700px" caption="Common codings for M8/M12 circular connectors. Image from https://www.te.com/content/dam/te-com/documents/industrial-automation-and-control/global/m8m12_product_presentation.pdf." %}}
+
+Common pin counts:
+
+* 4 (M8, M12)
+* 5 (M12, sometimes M8)
+* 8 (M12)
+* 12 (M12)
+
+Some of the panel mount M12 connectors have a M16mm panel mount thead, others have a PG9 (see [https://en.wikipedia.org/wiki/Panzergewinde](https://en.wikipedia.org/wiki/Panzergewinde)) thread.
+
 ## Telecom Connectors
 
-## BT Connector
+### BT Connector
 
 The connector called the "BT" connector (which is an acronym for the British Telecom connector) is commonly used through out houses in many countries (including the U.K. and New Zealand) to plug into a  Telecom jack that is mounted on the wall. It's proper name is the BS6312 431A plug. You can get cheap BT to RJ-11 adapters.
 
@@ -280,4 +236,4 @@ This is still a relatively new field compared to other forms of connectors, and 
 
 TE Connectivity make a range under the family name [ARISO](http://www.digikey.co.nz/en/product-highlight/t/te-connectivity-amp/ariso-contactless-connectivity). They are capable to transmitting up to 12W of power at 24VDC.
 
-{{< img src="te-connectivity-ariso-m30-contactless-connector-pair-photo.png" width="640px" caption="A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com."  >}}
+{{< img src="te-connectivity-ariso-m30-contactless-connector-pair-photo.png" width="640px" caption="A photo of TE Connectivity's ARISO M30 contactless connectors. Image from www.te.com." >}}
