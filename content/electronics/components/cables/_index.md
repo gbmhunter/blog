@@ -4,8 +4,8 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2012-11-21
 description: "Insulation materials, cable types, standards, mutual capacitance and more info on cables."
 draft: false
-lastmod: 2020-09-29
-tags: [ "cable", "computer cable", "material", "insulation", "ETFE", "mPPE", "PDVF", "NEC", "UNITRONIC", "PROFIBUS", "mutual capacitance", "capacitance" ]
+lastmod: 2020-10-05
+tags: [ "cable", "computer cable", "material", "insulation", "ETFE", "mPPE", "PDVF", "NEC", "UNITRONIC", "PROFIBUS", "mutual capacitance", "capacitance", "screens", "screening", "shielding", "shields", "Faraday cage" ]
 title: "Cables"
 type: "page"
 ---
@@ -51,7 +51,7 @@ Cables are an important design consideration for most electrical designs and ins
         <ul>
           <li>Excellent recyclability</li>
           <li>Excellent abrasion and cut-through resistance</li>
-          <li>Superior dielectic properties to PVC, allows wires to be 45% smaller in diameter and 40% lighter in weight
+          <li>Superior dielectric properties to PVC, allows wires to be 45% smaller in diameter and 40% lighter in weight
           </li>
         </ul>
       </td>
@@ -143,7 +143,7 @@ Cables are an important design consideration for most electrical designs and ins
 
 The _National Electrical Code_ (NEC) is an American standards body which defines a set of standards for certain types of cabling and how they should be installed and used.
 
-NEC _types_ are acronyms consisting of a prefix describing **cable type** (e.g. coax, CATV, fiber optic) and a suffix indicating the type of flame test it has passed and where it can be installed.
+NEC _types_ are acronyms consisting of a prefix describing **cable type** (e.g. coax, CATV, fibre optic) and a suffix indicating the type of flame test it has passed and where it can be installed.
 
 {{< img src="nec-2005-cable-standards-reference-cable-type-and-fire-resistance-summary.png" width="790px" caption="A summary of the cable types and flame tests from NEC. Image from http://www.associatedtelephone.com/." >}}
 
@@ -155,7 +155,7 @@ Computer cable can also be called "Security" or "Alarm" cable.
 
 Underwriters Laboratories categorises some computer cable as <i>appliance wiring material</i> (AWM). It has become an <b>industry standard</b>. There are 5 different style numbers.
 
-AWM cable is designed for the internal wiring of factory-assembled, "listed" appliances such as computers, whitewear, and industrial equipment.
+AWM cable is designed for the internal wiring of factory-assembled, "listed" appliances such as computers, white-wear, and industrial equipment.
 
 ### UL2464
 
@@ -266,6 +266,15 @@ Some examples of combined power/data cables include:
 
 For cables with screening, typically a conductor-to-conductor and conductor-to-screen capacitance is given. The conductor-to-conductor capacitance is typically 80-140nF and the conductor-to-screen capacitance is typically 100-180nF (slightly higher than the conductor-to-conductor capacitance). 
 
-## Wire Guage Calculator
+## Screens
+
+Cables (or specific cores within a cable) may be _screened_ (a.k.a. _shielded_) to prevent electromagnetic radiation from both entering and exiting the cores within the cable. There are two primary ways to screen a cable:
+
+* **Copper braid**: Braided strands of copper (or other conductive material, such as Aluminium) form the Faraday cage.
+* **Copper foil**: A continuous flexible, thin sheet of copper of other conductive material is wrapped around the cables to form the Faraday cage.
+
+The shield must be grounded (with respect to the signals/EMI) to be effective.
+
+## Wire Gauge Calculator
 
 {{% calculator id="electronics/cabling/wire-gauge-calculator" style="width: 800px; height: 800px;" %}}

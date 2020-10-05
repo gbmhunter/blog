@@ -1,6 +1,7 @@
 ---
 author: "gbmhunter"
 date: 2011-09-05
+description: "Terminology, types, manufacturers, common usages and more info on electrical connectors."
 draft: false
 lastmod: 2020-10-01
 tags: [ "electronics", "connectors", "electronic components", "circular connectors", "M12", "M8", "pogo", "TagConnect", "spring-loaded", "socket", "plug", "crimp", "plating", "contacts" ]
@@ -194,33 +195,6 @@ DIN connectors with different numbers of pins can sometimes mate with each other
 Mini-DIN connectors are smaller versions of the DIN connectors and are 9.5mm in diameter. A major difference between DIN and Mini-DIN connectors is that Mini-DIN connectors cannot be mated with any of different-number-of-pins Mini-DIN connectors.
 
 Mini-DIN connectors have been used for the S-video interface.
-
-### M8/M12 Connectors
-
-M8 and M12 connectors are circular connectors with a 12mm thread (note the thread in question is the thread joining the two mating connectors together, not the other threads which may be present on the M12 connector, such as panel-mount variants which typically have a 16mm thread for mounting to the panel). They are used for a variety of purposes across a large number of industries. A large number of these connectors are rated IP67 and prevent the ingress of water and dust.
-
-M8/M12 connectors have different _codings_. Each coding is a particular pin arrangement and key which prevents the same diameter and pin connector being mated with connectors with different codings.
-
-* A: Sensors, DC power (deprecated use), 1Gbit Ethernet
-* B: PROFIBUS
-* C: AC power (deprecated)
-* D: 100Mbit ethernet
-* K: AC power
-* L: PROFINET DC power
-* S: AC power (replacement for `C`)
-* T: DC power (replacement for `A` DC power)
-* X: 10Gbit Ethernet
-
-{{% img src="m8-m12-connector-codings-te-connectivity.png" width="700px" caption="Common codings for M8/M12 circular connectors. Image from https://www.te.com/content/dam/te-com/documents/industrial-automation-and-control/global/m8m12_product_presentation.pdf." %}}
-
-Common pin counts:
-
-* 4 (M8, M12)
-* 5 (M12, sometimes M8)
-* 8 (M12)
-* 12 (M12)
-
-Some of the panel mount M12 connectors have a M16mm panel mount thead, others have a PG9 (see [https://en.wikipedia.org/wiki/Panzergewinde](https://en.wikipedia.org/wiki/Panzergewinde)) thread.
 
 ## Telecom Connectors
 
