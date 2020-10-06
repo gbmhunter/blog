@@ -34,3 +34,5 @@ type: "post"
     ```
 
     I then tried Netlify options to rebuild the `HEAD` of the `master` branch without cache, and the build worked!
+
+* Added a page on the {{% link text="SOT-583 component package" src="/pcb-design/component-packages/sot-583-component-package" %}}.
