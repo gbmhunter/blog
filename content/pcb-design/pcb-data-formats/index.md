@@ -1,11 +1,13 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "PCB Design" ]
 date: 2013-10-04
+description: "Gerber files, layers, ODB+, IPC-2581 and more info on PCB data formats."
 draft: false
-tags: [ "PCB design", "data formats", "Gerber", "files", "manufacturing", "RS-274-D", "RS-274X", "ODB++" ]
-title: PCB Data Formats
-type: page
+lastmod: 2020-10-07
+tags: [ "PCB design", "data formats", "Gerber", "files", "manufacturing", "RS-274-D", "RS-274X", "ODB++", "IPC-2581" ]
+title: "PCB Data Formats"
+type: "page"
 ---
 
 ## Overview
@@ -18,9 +20,9 @@ There are few different types of formats which are explained in more detail belo
 
 ### Overview
 
-Gerbers are files which hold PCB design information. It is an old format, first developed in 1980, but as of 2014 is still the most commonly accepted format for providing PCB design information to PCB manufacturers for both PCB creation and assembly. A CAD program used to design PCBs will normally output a set of Gerber files (e.g. one for each copper layer, silkscreen layer, soldermask layer, solder paste layer, mechanical layer and one for component placement of each side of the PCB).
+Gerbers are files which hold PCB design information. It is an old format, first developed in 1980, but as of 2020 is still the most commonly accepted format for providing PCB design information to PCB manufacturers for both PCB creation and assembly. A CAD program used to design PCBs will normally output a set of Gerber files (e.g. one for each copper layer, silkscreen layer, soldermask layer, solder paste layer, mechanical layer and one for component placement of each side of the PCB).
 
-A Gerber file has no information about the number or names of electrical nets.
+A Gerber file has no information about the number or names of electrical nets. It also does not include orientation information, which puts the onous on the PCB assembler to determine this, which can be especially difficult for polarity-sensitive packages and the variety of different styles for indicating polarity (silkscreen dots for pin 1, thicker silkscreen lines for cathodes, different copper pad shapes for pin 1, e.t.c)
 
 ### Versions
 
@@ -43,77 +45,78 @@ Layers are sorted alphabetically by extension.
       <th>Description</th>
     </tr>
   </thead>
-<tbody><tr >
-<td>.GBL</td>
-<td>Bottom Layer</td>
-<td> The bottom copper layer.</td>
-</tr>
-<tr>
-<td>.GBO</td>
-<td>Bottom Overlay (Silkscreen)</td>
-<td></td>
-</tr>
-<tr>
-<td>.GBP</td>
-<td>Bottom Paste</td>
-<td></td>
-</tr>
-<tr>
-<td>.GBS</td>
-<td>Bottom Soldermask</td>
-<td></td>
-</tr>
-<tr >
-<td >.GKO</td>
-<td >Keep Out Layer</td>
-<td ></td>
-</tr>
-<tr >
-<td >.GMx</td>
-<td >Mechanical Layer x (x is normally 1-16)</td>
-<td ></td>
-</tr>
-<tr >
-<td >.GPx</td>
-<td >Inner Plane Layer X</td>
-<td >These are <i>negative layers</i>, where there are objects on this layer is where there will <i>not</i> be copper on the final PCB.</td>
-</tr>
-<tr >
-<td >.GPB</td>
-<td >Bottom Pad Master</td>
-<td >Includes only the copper pads on the bottom layer, it removes all vias, tracks, fills and arcs.</td>
-</tr>
-<tr >
-<td >.GPT</td>
-<td >Top Pad Master</td>
-<td >Includes only the copper pads on the top layer, it removes all vias, tracks, fills and arcs.</td>
-</tr>
-<tr >
-<td >.GTL</td>
-<td >Top Layer</td>
-<td >The top copper layer.</td>
-</tr>
-<tr >
-<td >.GTO</td>
-<td >Top Overlay (Silkscreen)</td>
-<td ></td>
-</tr>
-<tr >
-<td >.GTP</td>
-<td >Top Paste</td>
-<td ></td>
-</tr>
-<tr >
-<td >.GTS</td>
-<td >Top Soldermask</td>
-<td > </td>
-</tr>
-<tr >
-<td >.GTS</td>
-<td >Top Soldermask</td>
-<td ></td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>.GBL</td>
+      <td>Bottom Layer</td>
+      <td> The bottom copper layer.</td>
+    </tr>
+    <tr>
+      <td>.GBO</td>
+      <td>Bottom Overlay (Silkscreen)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>.GBP</td>
+      <td>Bottom Paste</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>.GBS</td>
+      <td>Bottom Soldermask</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>.GKO</td>
+      <td>Keep Out Layer</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>.GMx</td>
+      <td>Mechanical Layer x (x is normally 1-16)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>.GPx</td>
+      <td>Inner Plane Layer X</td>
+      <td>These are <i>negative layers</i>, where there are objects on this layer is where there will <i>not</i> be copper on the final PCB.</td>
+    </tr>
+    <tr>
+      <td>.GPB</td>
+      <td>Bottom Pad Master</td>
+      <td>Includes only the copper pads on the bottom layer, it removes all vias, tracks, fills and arcs.</td>
+    </tr>
+    <tr>
+      <td>.GPT</td>
+      <td>Top Pad Master</td>
+      <td>Includes only the copper pads on the top layer, it removes all vias, tracks, fills and arcs.</td>
+    </tr>
+    <tr>
+      <td>.GTL</td>
+      <td>Top Layer</td>
+      <td>The top copper layer.</td>
+    </tr>
+    <tr>
+      <td>.GTO</td>
+      <td>Top Overlay (Silkscreen)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>.GTP</td>
+      <td>Top Paste</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>.GTS</td>
+      <td>Top Soldermask</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>.GTS</td>
+      <td>Top Soldermask</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 
 Notice how the top and bottom pad master file extensions do not follow the same format as the other "Top" and "Bottom" classed files, with their extensions being GPT/GPB rather than GTP/GBP.
@@ -124,7 +127,7 @@ Altium loads up Camtastic (which comes installed with Altium) whenever you gener
 
 ### Disadvantages
 
-The Gerber file format has long been criticized for it's inability to accurately represent all of the PCB information required by the manufacturer and/or assembler. A typical example would be sending the PCB layer information in Gerber files, the drill file in Excellon format, notes for the PCB either added as text to a Gerber layer or in a Word document, the BOM in an Excel file, and schematics (if needed) in a PDF. This has led to the design of new PCB data file formats.
+**The Gerber file format has long been criticized for it's inability to accurately represent all of the PCB information required by the manufacturer and/or assembler**. A typical example would be sending the PCB layer information in Gerber files, the drill file in Excellon format, notes for the PCB either added as text to a Gerber layer or in a Word document, the BOM in an Excel file, and schematics (if needed) in a PDF. This has led to the design of new PCB data file formats.
 
 For anything greater than a 2 layer board, the PCB manufacturer can have trouble distinguishing the layer order from the Gerber files. This is because the inner copper layers and plane layers are numbered separately (both starting from 1), and therefore the order in which they should be in is ambiguous.
 
