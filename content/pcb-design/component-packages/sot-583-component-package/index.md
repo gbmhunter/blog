@@ -51,12 +51,41 @@ type: "page"
       <td>Hard to solder because of the tiny 0.5mm pitch.</td>
     </tr>
     <tr>
-      <td>Thermal Resistance</td>
-      <td>n/a</td>
+      <td>Thermal Parameters</td>
+      <td>
+        <table>
+          <tr>
+            <td>Junction-to-ambient thermal resistance</td>
+            <td>\( R_{θJA} \)</td>
+            <td>\( 110^\circ C \cdot W^{-1} \)</td>
+          </tr>
+          <tr>
+            <td>Junction-to-case (top) thermal resistance</td>
+            <td>\( R_{θJC(top)} \)</td>
+            <td>\( 41.3^\circ C \cdot W^{-1} \)</td>
+          </tr>
+          <tr>
+            <td>Junction-to-bottom (PCB) thermal resistance</td>
+            <td>\( R_{θJB} \)</td>
+            <td>\( 20^\circ C \cdot W^{-1} \)</td>
+          </tr>
+          <tr>
+            <td>Junction-to-top characterization parameter</td>
+            <td>\( \Psi_{JT} \)</td>
+            <td>\( 0.8^\circ C \cdot W^{-1} \)</td>
+          </tr>
+          <tr>
+            <td>Junction-to-bottom characterization parameter</td>
+            <td>\( \psi_{JB} \)</td>
+            <td>\( 20^\circ C \cdot W^{-1} \)</td>
+          </tr>
+        </table>
+        All thermal parameters from <a href="https://www.ti.com/lit/ds/symlink/tps628501-q1.pdf">https://www.ti.com/lit/ds/symlink/tps628501-q1.pdf</a>.     
+      </td>
     </tr>
     <tr>
       <td>Dimensions</td>
-      <td></td>
+      <td>2.1mm x 1.6 mm (incl. pins)</td>
     </tr>
     <tr>
       <td>3D Models</td>
@@ -80,3 +109,7 @@ type: "page"
 ## 3D Renders
 
 {{% img src="sot-583-component-package-3d-render-ti.png" width="200px" caption="A 3D render of the SOT-583 component package. Image from https://www.ti.com/product/TPS628512." %}}
+
+## References
+
+[^ti-tps628501-datasheet]: <https://www.ti.com/lit/ds/symlink/tps628501-q1.pdf>
