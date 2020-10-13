@@ -4,8 +4,8 @@ categories: [ "Electronics", "Components" ]
 date: 2011-09-03
 description: "Schematic symbol, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."
 draft: false
-lastmod: 2020-08-27
-tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate" ]
+lastmod: 2020-10-13
+tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate", "SOA diagram" ,"safe operating area", "thermal limits" ]
 title: "MOSFETs"
 type: "page"
 ---
@@ -45,28 +45,28 @@ Sorted by alphabetical order, including subscripts.
       <th>Description</th>
     </tr>
   </thead>
-<tbody>
-<tr>
-<td>\(R_{DS(on)}\)</td>
-<td>On-state drain-source resistance.</td>
-<td>The resistance between drain and source when the MOSFET is turned on. Usually around 1-10Ω for smaller MOSFETs, and can be as low as 1m for larger power MOSFETs.</td>
-</tr>
-<tr>
-<td>\(V_{DS(max)}\)</td>
-<td>Maximum drain-source voltage.</td>
-<td>The maximum allowed voltage between the drain and source. A higher voltage can cause the MOSFET to breakdown.</td>
-</tr>
-<tr>
-<td>\(V_{GS(max)}\)</td>
-<td>Maximum gate-source voltage</td>
-<td>The maximum allowed gate-source voltage. Voltages above this may destroy the MOSFET due to gate punch-through.</td>
-</tr>
-<tr>
-<td>\(V_{GS(th)}\)</td>
-<td>Threshold voltage.</td>
-<td>The voltage between the gate-source at which the MOSFET begins to turn on.  The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet.</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>\(R_{DS(on)}\)</td>
+      <td>On-state drain-source resistance.</td>
+      <td>The resistance between drain and source when the MOSFET is turned on. Usually around 1-10Ω for smaller MOSFETs, and can be as low as 1m for larger power MOSFETs.</td>
+    </tr>
+    <tr>
+      <td>\(V_{DS(max)}\)</td>
+      <td>Maximum drain-source voltage.</td>
+      <td>The maximum allowed voltage between the drain and source. A higher voltage can cause the MOSFET to breakdown.</td>
+    </tr>
+    <tr>
+      <td>\(V_{GS(max)}\)</td>
+      <td>Maximum gate-source voltage</td>
+      <td>The maximum allowed gate-source voltage. Voltages above this may destroy the MOSFET due to gate punch-through.</td>
+    </tr>
+    <tr>
+      <td>\(V_{GS(th)}\)</td>
+      <td>Threshold voltage.</td>
+      <td>The voltage between the gate-source at which the MOSFET begins to turn on.  The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet.</td>
+    </tr>
+  </tbody>
 </table>
 
 ## How To Use Them?
@@ -155,7 +155,7 @@ Note that most discrete MOSFETs that you can buy internally tie the substrate to
 
 Do you want the huge equation that tells you how the threshold voltage changes? Here you go:
 
-<div>$$ V_{TN} = V_{TO} + \gamma (\sqrt{|V_{SB} + 2\phi_F|} - \sqrt{|2\phi_F|}) $$</div>
+<p>$$ V_{TN} = V_{TO} + \gamma (\sqrt{|V_{SB} + 2\phi_F|} - \sqrt{|2\phi_F|}) $$</p>
 
 <p class="centered">
     where:<br>
@@ -226,12 +226,46 @@ Element 14 Price: NZ$0.29 (1), NZ$0.25 (100)
 
 The PMV45EN is a low cost, very low RDS(on) N-Channel MOSFET which I use as the work horse for most of my projects. It has an RDS(on) of only 35mOhm and is rated for a current of 5.4A. The maximum drain source voltage is 30V, making it suitable for most embedded, low voltage applications.
 
+## MOSFET Safe Operating Areas
+
+*The section is in notes format and needs tidying up.*
+
+When a MOSFET switches from OFF to ON, it will always go through a linear region.
+
+Hot-swap circuits.
+
+SOA plot, logarithmic axes (both x and y).
+
+Transient thermal impedance plot. This is a plot which shows how the effective thermal impedance of the MOSFET changes with a time-limited pulse of power (voltage x current). The thermal impedance reduces as the pulse period becomes shorter and shorter (these graphs usually show the change between 1us and 1s). 
+
+For moderate Vds voltages, manufacturers determine the lines on the SOA plot from the transient thermal impedance plot.
+
+_Spirito effect_: Named after Professor Paolo Spirito who showed that as MOSFET manufacturers have pushed for lower and lower Rds(on) values, they have also inadvertently increased the tendency for a MOSFET to fail by forming unstable hot spots. Modern-day high-spec MOSFETs are actually made of from an array of MOSFET cells on the silicon with their sources, drains and gates connected in parallel. As some cells become hotter, their threshold voltage decreases relative to the other cells, and then they conduct more current, which can lead to a thermal runaway effect, destroying the MOSFET.
+
+The Spirito effect is observed at high Vds voltages and low Id currents. High Vds voltages because this results in a greater change in cell power as the cell current changes. Low Id because this gives the cells more time to thermally runaway -- at higher currents the individual cells do not get a chance to thermally runaway since the entire package quickly hits it's thermal limit.
+
+{{% img src="mosfet-soa-diagram-with-annotations.png" width="700px" caption="A MOSFET SOA (safe operating area) diagram, showing the different limits which bound the area." %}}
+
+1. Rds(on) Limit: When `\(V_{DS}\)` is very low, it means that the MOSFET is driven to saturation, and the MOSFET acts if it has a fixed drain-source resistance, `\(R_{DS(on)}\)`. This gives a linear relationship between voltage and current and is the limit line in the upper-left section of the SOA graph.
+1. Package Current Limit: MOSFET datasheets will specify a maximum current, irrespective of the amount of power dissipation. The current limit is driven by physical parts inside the package which are not the silicon MOSFET cell(s), but the surrounding lead wires, bonding clips, e.t.c. This gives the upper-centre horizontal line on the SOA graph.
+1. Power Limit: The power limit line is determined by the maximum power dissipation the MOSFET can handle before the junction temperature exceeds it's maximum value (typically between 100-200°C). This line is dependent on the case-to-ambient thermal resistance (which is specific to the PCB/environment the MOSFET is used in!) and ambient temperature, so the best the MOSFET manufacturer can do is assume a sensible value (and hopefully state the assumption in the datasheet).
+1. Thermal Instability: Thermal instability occurs at lower `\(V_{GS})` voltages[^infineon-mosfet-safe-operating-diagram].
+1. Breakdown Voltage Limit: Above a certain drain-source voltage, the MOSFET "breaksdown" and stops working correctly. This puts a hard upper-limit on the `\(V_{DS}\)` voltage, shown by the far right vertical line on the SOA graph.
+
+
 ## External Resources
 
 Fairchild's application note, [AN-558 - Introduction To Power MOSFETs And Their Applications](http://www.fairchildsemi.com/an/AN/AN-558.pdf) is a great resource when using MOSFETs for power applications.
 
 Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.co.uk/temp/gdt/gdt2.html).
 
+<<<<<<< Updated upstream
 ## References
 
 [^science-direct-split-gate-mosfet]: <https://www.sciencedirect.com/science/article/pii/S2589208820300041>
+=======
+
+## References 
+
+[^infineon-mosfet-safe-operating-diagram]: <https://www.infineon.com/dgdl/Infineon-ApplicationNote_Linear_Mode_Operation_Safe_Operation_Diagram_MOSFETs-AN-v01_00-EN.pdf?fileId=db3a30433e30e4bf013e3646e9381200>
+>>>>>>> Stashed changes
