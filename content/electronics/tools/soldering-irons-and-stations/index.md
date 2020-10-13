@@ -4,7 +4,7 @@ categories: [ "Electronics", "Tools" ]
 date: 2020-05-18
 description: "A review of the different makes and models of both soldering irons and soldering stations."
 draft: false
-lastmod: 2020-05-18
+lastmod: 2020-10-13
 tags: [ "electronics", "tools", "soldering iron", "soldering station", "Hakko", "JBC", "Weller" ]
 title: "Soldering Irons And Stations"
 type: "page"
@@ -16,7 +16,7 @@ type: "page"
 * Maximum heating power
 * Heating rate (high quality soldering irons can heat-up to the set temperature within about 2 seconds!)
 * Stable temperature control under different loads
-_
+
 For all but the lightest of work you will want to choose a _soldering station_ instead of a _soldering iron_. The station provides a holder for the iron, keeping it in a safe place while you do other work (so you don't burn yourself!). It also allows to a lighter and higher power iron, as most of the electronics can now be located in the freestanding control unit rather than in the handheld iron.
 
 ## Brands
@@ -47,7 +47,11 @@ No quick change tips
 
 ### Hakko FM203-15
 
-Dual ports. For use with the FM-2027 soldering iron which takes the Hakko T12 range of tips. Note that the T12 range are quick-change, and you start paying more than double for quick-changes tips (versus the T18 range).
+A dual port soldering station. For use with the FM-2027 soldering iron which takes the Hakko _T12_ range of tips. Note that the T12 range are quick-change, and you start paying more than double for quick-changes tips (versus the T18 range).
+
+**Note that that tips are not truly quick change until you also purchase extra _Soldering Pencil Sleeves_**. These are proprietary hand-grips that slide onto the tip. Once each tip has one of these, you can quickly change tips by unclipping the sleeve + tip from the rest of the iron and inserting a new one. These sleeves also remove the need for using pliers or a rubber mat to remove hot tips.
+
+{{% img src="hakko-soldering-pencil-sleeve-green.png" width="300px" caption="A green soldering pencil sleeve from Hakko. You have to purchase one of these per tip before your soldering iron truly becomes 'quick change'. Image from https://nz.element14.com/hakko/b3219/soldering-pencil-sleeve-green/dp/1676853." %}}
 
 ### Weller WT 1010
 
