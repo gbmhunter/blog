@@ -36,3 +36,5 @@ type: "post"
     I then tried Netlify options to rebuild the `HEAD` of the `master` branch without cache, and the build worked!
 
 * Added a page on the {{% link text="SOT-583 component package" src="/pcb-design/component-packages/sot-583-component-package" %}}.
+
+* Added information about SOA (_Safe Operating Area_) graphs and how to use them to the {{% link text="MOSFET page" src="/electronics/components/transistors/mosfets#mosfet-safe-operating-areas" %}}
