@@ -4,32 +4,32 @@ categories: [ "Electronics", "Components" ]
 date: 2011-09-03
 description: "Schematic symbol, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."
 draft: false
-lastmod: 2020-10-13
-tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate", "SOA diagram" ,"safe operating area", "thermal limits" ]
+lastmod: 2020-10-14
+tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate", "SOA diagram" ,"safe operating area", "thermal limits", "Spirito effect" ]
 title: "MOSFETs"
 type: "page"
 ---
 
 ## Overview
 
-A _MOSFET_ is a three-pin active semi-conductor device, used frequently in electronics design. In the most basic sense, they can be thought of as a voltage controlled switch, that can turn things on and off.
+A _MOSFET_ (big breath now...it stands for..._Metal-Oxide-Semiconductor Field-Effect-Transformer_) is a **three-pin active semi-conductor device**, used frequently in electronics design. In the most basic sense, they can be thought of as a **voltage controlled switch** that can turn things on and off (or partially on!).
 
-MOSFETs should not be confused with MODFETs (modulation-doped FETs) or MESFETs (metal-semiconductor FETs).
+MOSFETs should not be confused with similar but different semiconductor devices such as _MODFETs_ (modulation-doped FETs) or _MESFETs_ (metal-semiconductor FETs).
 
 ## Uses
 
 * Basic electric switches (turn a load on/off)
 * Totem-pole drivers
-* [H-bridges](/electronics/circuit-design/h-bridges)
+* {{% link text="H-bridges" src="/electronics/circuit-design/h-bridges" %}}
 * 3-Phase Inverters
 * Current regulating shunts (with feedback)
-* Switch-mode PSUs
+* {{% link text="Switch-mode PSUs" src="/electronics/components/power-regulators" %}}
 
 ## Schematic Symbol
 
 The following image shows the schematic symbol and pin names for both an N-channel and P-channel MOSFET.
 
-{{< img src="mosfet-schematic-symbols-n-ch-p-ch.png" caption="The schematic symbol and pin names for both an n-channel and p-channel MOSFET."  width="400px" >}}
+{{< img src="mosfet-schematic-symbols-n-ch-p-ch.png" caption="The schematic symbol and pin names for both an n-channel and p-channel MOSFET." width="400px" >}}
 
 ## Important Parameters
 
@@ -71,11 +71,17 @@ Sorted by alphabetical order, including subscripts.
 
 ## How To Use Them?
 
-The amount of current through the drain-source in controlled by a voltage on the gate. To make a basic switch, you can insert an N-Channel MOSFET between the load and ground. The source is connected to ground, and the drain to the negative terminal of the load. If the gate is given 0V (aka connected to ground), the switch will be off. If more than `\(V_{GS(th)}\)` is applied to the gate, the MOSFET will turn on (start conducting), and the load will get power.
+The amount of current through the drain-source in controlled by a voltage on the gate. To make a basic switch, you can insert an N-Channel MOSFET between the load and ground. The source is connected to ground, and the drain to the negative terminal of the load. If the gate is given 0V (aka connected to ground), the switch will be off. If significantly more than `\(V_{GS(th)}\)` is applied to the gate, the MOSFET will fully turn on (conduct current), and the load will get power.
 
 P-channels work in a similar manner to N-channels, the difference being that a negative `\(V_{GS}\)` has to be applied to turn them off (that is, the voltage on the gate has to be less than that on the source). This results in them commonly being used for high-side switching, in where the source is connected to Vcc, the drain to the load, and the gate voltage pulled low to turn it on, or pulled-up to `\(V_{cc}\)` to turn it off.
 
-In any case, do not leave the MOSFET gate floating. Since it has a very high impedance input, if the gate is not driven, then noise can change the voltage on the gate, and cause the MOSFET to conduct/have undefined behaviour.
+**In any case, do not leave the MOSFET gate floating**. Since it has a very high impedance input, if the gate is not driven, then noise can change the voltage on the gate, and cause the MOSFET to conduct/have undefined behaviour.
+
+The above examples describing switching a MOSFET from it's fully off state to it's fully on state. But if you apply a `\(V_{GS}\)` at or just above `\(V_{GS(th)}\)`, the MOSFET will only partially turn on. You are now operating the MOSFET in it's _linear_ region.
+
+{{% note %}}
+The _linear_ region of a MOSFET is a very confusing term, and can **completely switch (ha, switch...get it?) meaning depending on the literature your're reading**! Let's now avoid confusion by calling the region when the MOSFET is partially on the _ohmic_ region, and the region when the MOSFET is fully on the _saturation_ region. For more discussion on this confusion, see this [StackExchange Electrical Engineering thread](https://electronics.stackexchange.com/questions/76071/meaning-of-mosfet-linear-region-in-the-context-of-switching-losses).
+{{% /note %}}
 
 ## Leakage Current
 
@@ -109,16 +115,27 @@ Dead-time is a technique which is commonly applied to MOSFET driving when the MO
 
 In precise pulse-drive situations, it is desirable for the MOSFET to have similar turn-on and turn-off times. This is so the output pulse, although delayed by these parameters, has roughly the same width as the input pulse to the gate. This is important in applications such as laser range-finding.
 
-## Industry Names
+## Different MOSFET Construction Methods And Industry Names
 
-* FRFET - A trademarked name by Fairchild used to label some of their fast-recovery MOSFETs used in inverter and [BLDC controller](/electronics/circuit-design/bldc-motor-control) design
-* PROFET - A name (it stands for protected-FET) used by [Siemens](http://www.siemens.com) and now [Infineon](http://www.infineon.com) to describe power MOSFETs with built in logic circuitry for "smart switches", designed for controlling current and voltage into a load. An document about PROFETs from Infineon can be found [here](http://www.infineon.com/dgdl?folderId=db3a30431400ef68011421b54e2e0564&fileId=db3a304332d040720132f7151b4a7955).
-
-## FinFETs
+### FinFETs
 
 FinFETs are multi-fin FETs which overcome issues once MOSFET approach very small sizes (such as 22nm).
 
 {{< img src="3d-model-of-the-structure-of-a-multi-fin-finfet.png" caption="The 3D structure of a multi-fin MOSFET (FinFET)."  width="600px" >}}
+
+### FRFET
+
+A trademarked name by Fairchild used to label some of their fast-recovery MOSFETs used in inverter and [BLDC controller](/electronics/circuit-design/bldc-motor-control) design
+
+### Lateral MOSFETs
+
+### PROFET
+
+A name (it stands for protected-FET) used by [Siemens](http://www.siemens.com) and now [Infineon](http://www.infineon.com) to describe power MOSFETs with built in logic circuitry for "smart switches", designed for controlling current and voltage into a load. An document about PROFETs from Infineon can be found [here](http://www.infineon.com/dgdl?folderId=db3a30431400ef68011421b54e2e0564&fileId=db3a304332d040720132f7151b4a7955).
+
+### Trench MOSFETs
+
+Trench MOSFETs give a very low `\( R_{DS(on)} \)` per unit silicon area.
 
 ## Load Switching
 
@@ -230,17 +247,13 @@ The PMV45EN is a low cost, very low RDS(on) N-Channel MOSFET which I use as the 
 
 *The section is in notes format and needs tidying up.*
 
-When a MOSFET switches from OFF to ON, it will always go through a linear region.
-
-Hot-swap circuits.
-
-SOA plot, logarithmic axes (both x and y).
+A MOSFET's SOA (_Safe Operating Area_) is usually shown as a graph in the datasheet. The SOA graph shows which combinations of drain-source voltages and drain currents are safe and which will likely damage the MOSFET. The graph takes into account steady-state operating conditions (i.e. infinite DC current) and also pulse operation. Different areas are provided for current pulses of different lengths. SOA graphs are particular important to understand for hot-swap circuits.
 
 Transient thermal impedance plot. This is a plot which shows how the effective thermal impedance of the MOSFET changes with a time-limited pulse of power (voltage x current). The thermal impedance reduces as the pulse period becomes shorter and shorter (these graphs usually show the change between 1us and 1s). 
 
-For moderate Vds voltages, manufacturers determine the lines on the SOA plot from the transient thermal impedance plot.
+For moderate `\(V_{DS}\)` voltages, manufacturers determine the lines on the SOA plot from the transient thermal impedance plot.
 
-_Spirito effect_: Named after Professor Paolo Spirito who showed that as MOSFET manufacturers have pushed for lower and lower Rds(on) values, they have also inadvertently increased the tendency for a MOSFET to fail by forming unstable hot spots. Modern-day high-spec MOSFETs are actually made of from an array of MOSFET cells on the silicon with their sources, drains and gates connected in parallel. As some cells become hotter, their threshold voltage decreases relative to the other cells, and then they conduct more current, which can lead to a thermal runaway effect, destroying the MOSFET.
+_Spirito effect_: Named after electronic engineer and professor [Paolo Spirito](https://ieeexplore.ieee.org/author/37282676100) who showed that as MOSFET manufacturers have pushed for lower and lower `\(R_{DS(on)}\)` values, they have also inadvertently increased the tendency for a MOSFET to fail by forming unstable hot spots. Modern-day high-spec MOSFETs are actually made of from an array of MOSFET cells on the silicon with their sources, drains and gates connected in parallel. As some cells become hotter, their threshold voltage decreases relative to the other cells, and then they conduct more current, which can lead to a thermal runaway effect, destroying the MOSFET. High-density trench-style MOSFETs are effected the most[^electronic-design-the-spirito-effect].
 
 The Spirito effect is observed at high Vds voltages and low Id currents. High Vds voltages because this results in a greater change in cell power as the cell current changes. Low Id because this gives the cells more time to thermally runaway -- at higher currents the individual cells do not get a chance to thermally runaway since the entire package quickly hits it's thermal limit.
 
@@ -249,7 +262,7 @@ The Spirito effect is observed at high Vds voltages and low Id currents. High Vd
 1. Rds(on) Limit: When `\(V_{DS}\)` is very low, it means that the MOSFET is driven to saturation, and the MOSFET acts if it has a fixed drain-source resistance, `\(R_{DS(on)}\)`. This gives a linear relationship between voltage and current and is the limit line in the upper-left section of the SOA graph.
 1. Package Current Limit: MOSFET datasheets will specify a maximum current, irrespective of the amount of power dissipation. The current limit is driven by physical parts inside the package which are not the silicon MOSFET cell(s), but the surrounding lead wires, bonding clips, e.t.c. This gives the upper-centre horizontal line on the SOA graph.
 1. Power Limit: The power limit line is determined by the maximum power dissipation the MOSFET can handle before the junction temperature exceeds it's maximum value (typically between 100-200°C). This line is dependent on the case-to-ambient thermal resistance (which is specific to the PCB/environment the MOSFET is used in!) and ambient temperature, so the best the MOSFET manufacturer can do is assume a sensible value (and hopefully state the assumption in the datasheet).
-1. Thermal Instability: Thermal instability occurs at lower `\(V_{GS})` voltages[^infineon-mosfet-safe-operating-diagram].
+1. Thermal Instability: Thermal instability occurs at lower `\(V_{GS}\)` voltages[^infineon-mosfet-safe-operating-diagram].
 1. Breakdown Voltage Limit: Above a certain drain-source voltage, the MOSFET "breaksdown" and stops working correctly. This puts a hard upper-limit on the `\(V_{DS}\)` voltage, shown by the far right vertical line on the SOA graph.
 
 
@@ -259,13 +272,8 @@ Fairchild's application note, [AN-558 - Introduction To Power MOSFETs And Their 
 
 Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.co.uk/temp/gdt/gdt2.html).
 
-<<<<<<< Updated upstream
 ## References
 
 [^science-direct-split-gate-mosfet]: <https://www.sciencedirect.com/science/article/pii/S2589208820300041>
-=======
-
-## References 
-
 [^infineon-mosfet-safe-operating-diagram]: <https://www.infineon.com/dgdl/Infineon-ApplicationNote_Linear_Mode_Operation_Safe_Operation_Diagram_MOSFETs-AN-v01_00-EN.pdf?fileId=db3a30433e30e4bf013e3646e9381200>
->>>>>>> Stashed changes
+[^electronic-design-the-spirito-effect]: <https://www.electronicdesign.com/power-management/article/21795492/the-spirito-effect-improved-my-designand-i-didnt-even-know-it#:~:text=Known%20as%20the%20Spirito%20Effect,trench%20devices%20are%20particularly%20impacted>
