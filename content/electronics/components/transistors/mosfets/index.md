@@ -49,7 +49,7 @@ Sorted by alphabetical order, including subscripts.
     <tr>
       <td>\(R_{DS(on)}\)</td>
       <td>On-state drain-source resistance.</td>
-      <td>The resistance between drain and source when the MOSFET is turned on. Usually around 1-10Ω for smaller MOSFETs, and can be as low as 1m for larger power MOSFETs.</td>
+      <td>The resistance between drain and source when the MOSFET is turned on (in the saturation region). Usually around 1-10Ω for smaller MOSFETs, and can be as low as 1mΩ for larger power MOSFETs.</td>
     </tr>
     <tr>
       <td>\(V_{DS(max)}\)</td>
@@ -117,6 +117,12 @@ In precise pulse-drive situations, it is desirable for the MOSFET to have simila
 
 ## Different MOSFET Construction Methods And Industry Names
 
+_Sorted alphabetically by name._
+
+### DMOS FET (Double-Diffused MOSFETs)
+
+The DMOS (_Double-Diffused MOSFET_) was first developed in 1969[^semantic-scholar-dmos]. 
+
 ### FinFETs
 
 FinFETs are multi-fin FETs which overcome issues once MOSFET approach very small sizes (such as 22nm).
@@ -127,7 +133,9 @@ FinFETs are multi-fin FETs which overcome issues once MOSFET approach very small
 
 A trademarked name by Fairchild used to label some of their fast-recovery MOSFETs used in inverter and [BLDC controller](/electronics/circuit-design/bldc-motor-control) design
 
-### Lateral MOSFETs
+### HEMT
+
+### LDMOS (Laterally-Diffused MOSFETs)
 
 ### PROFET
 
@@ -232,6 +240,8 @@ A very critical parameter for a MOSFET is it's on state resistance. The easiest 
 
 ## Part Recommendations
 
+Link to DigiKey's (US) MOSFET selection (single/discrete): <https://www.digikey.com/en/products/filter/transistors-fets-mosfets-single/278>
+
 ### Small, Low-Voltage, High Current Capability (aka low RDS(on)) and Cheap
 
 PMV45EN - N-Channel MOSFET
@@ -277,3 +287,4 @@ Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.
 [^science-direct-split-gate-mosfet]: <https://www.sciencedirect.com/science/article/pii/S2589208820300041>
 [^infineon-mosfet-safe-operating-diagram]: <https://www.infineon.com/dgdl/Infineon-ApplicationNote_Linear_Mode_Operation_Safe_Operation_Diagram_MOSFETs-AN-v01_00-EN.pdf?fileId=db3a30433e30e4bf013e3646e9381200>
 [^electronic-design-the-spirito-effect]: <https://www.electronicdesign.com/power-management/article/21795492/the-spirito-effect-improved-my-designand-i-didnt-even-know-it#:~:text=Known%20as%20the%20Spirito%20Effect,trench%20devices%20are%20particularly%20impacted>
+[^semantic-scholar-dmos]: <https://www.semanticscholar.org/paper/Diffusion-Selfaligned-MOST%3B-A-New-Approach-for-High-Tarui-Hayashi/c4ad0fa7b03e080cc027545f7152caa28633fa9a>
