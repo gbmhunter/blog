@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components" ]
 date: 2012-05-14
 draft: false
+lastmod: 2020-10-15
 tags: [ "resistors", "resistors", "components", "electronics", "schematic symbols", "tolerances", "E series", "packages", "thick film", "thin film" ]
-title: Resistors
-type: page
+title: "Resistors"
+type: "page"
 ---
 
 ## Overview
@@ -15,6 +16,8 @@ Resistors are a passive electronic component that restricts the flow of current 
 For information on positive temperature coefficient resistors used as "fuses" in circuit protection applications, see the [PTC Type Thermistor page](/electronics/components/circuit-protection/ptc-type-thermistor).
 
 **The mechanical equivalent of a resistor is friction.** The larger the resistance, the larger the friction. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
+
+{{% img src="ti-it-looks-like-weve-encountered-some-resistance.png" width="600px" caption="One should always appreciate a good pun. Texas Instruments 404 page as of October 2020." %}}
 
 ## Schematic Symbols
 

@@ -1,10 +1,11 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
+lastmod: 2015-04-06
 tags: [ "component packages", "PCB design", "transistor", "TO-252", "DPACK" ]
-title: TO-252 Component Package
+title: "TO-252 Component Package"
 type: page
 ---
 
