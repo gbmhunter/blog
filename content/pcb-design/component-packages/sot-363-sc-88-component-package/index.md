@@ -10,72 +10,73 @@ type: page
 
 ## Overview
 
-<table><tbody ><tr >
-<td >Name
-</td>
-<td >SOT-363 (Small Outline Transistor 363)
-</td></tr><tr >
-<td >Synonyms
-</td>
-<td >SC-88
-</td></tr><tr >
-<td >Variants
-</td>
-<td >n/a
-</td>
-</tr>
-<tr>
-<td>Similar To</td>
-<td>{{% link text="SOT-323" src="../sot-323-component-package" %}}</td>
-</tr>
-<tr >
-<td >Mounting
-</td>
-<td >SMD
-</td></tr><tr >
-<td >Pin Count
-</td>
-<td >6
-</td></tr><tr >
-<td >Pitch
-</td>
-<td >0.65mm
-</td></tr><tr >
-<td >Solderability
-</td>
-<td >Difficult to solder by hand because of it's small pitch (but possible). Reflow compatible.
-</td></tr><tr >
-<td >Thermal Resistance
-</td>
-<td >
-<ul>
-<li>\(R_{\theta JA} = 435^{\circ}/W\) (FR-4, single-sided, 1oz. copper, minimum recommended pad layout)</li>
-
-<li>\(R_{\theta JA} = 330^{\circ}/W\) (FR-4, double-sided, 2oz. copper, 1 inch square copper pad layout)</li>
-
-<li>\(R_{\theta JC} = 139^{\circ}/W\)</li>
-</ul>
-</td></tr><tr >
-<td >Dimensions
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Land Area
-</td>
-<td >n/a
-</td></tr><tr >
-<td >3D Models
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Common Uses
-</td>
-<td >
-<ul>
-<li>BJTs</li>
-<li>MOSFETs (with up to two per package)</li>
-</ul>
-</td></tr></tbody></table>
+<table>
+  <tbody>
+    <tr>
+      <td>Name</td>
+      <td>SOT-363 (Small Outline Transistor 363)</td>
+    </tr>
+    <tr>
+      <td>Synonyms</td>
+      <td>SC-88</td>
+    </tr>
+    <tr>
+      <td>Variants</td>
+      <td>n/a</td>
+    </tr>
+    <tr>
+      <td>Similar To</td>
+      <td>{{% link text="SOT-323" src="../sot-323-component-package/" %}}</td>
+    </tr>
+    <tr>
+      <td>Mounting</td>
+      <td>SMD</td>
+    </tr>
+    <tr>
+      <td>Pin Count</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Pitch</td>
+      <td>0.65mm</td>
+    </tr>
+    <tr>
+      <td>Solderability</td>
+      <td>Difficult to solder by hand because of it's small pitch (but possible). Reflow compatible.</td>
+    </tr>
+    <tr>
+      <td>Thermal Resistance</td>
+      <td>
+        <ul>
+          <li>\(R_{\theta JA} = 435^{\circ}/W\) (FR-4, single-sided, 1oz. copper, minimum recommended pad layout)</li>
+          <li>\(R_{\theta JA} = 330^{\circ}/W\) (FR-4, double-sided, 2oz. copper, 1 inch square copper pad layout)</li>
+          <li>\(R_{\theta JC} = 139^{\circ}/W\)</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Dimensions</td>
+      <td>n/a</td>
+    </tr>
+    <tr>
+      <td>Land Area</td>
+      <td>n/a</td>
+    </tr>
+    <tr>
+      <td>3D Models</td>
+      <td>n/a</td>
+    </tr>
+    <tr>
+      <td>Common Uses</td>
+      <td>
+        <ul>
+          <li>BJTs</li>
+          <li>MOSFETs (with up to two per package)</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Comments
 

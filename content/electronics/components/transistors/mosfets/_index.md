@@ -251,7 +251,7 @@ Manufacturer Code: PMV45EN
 Element 14 Code: 108-1483  
 Element 14 Price: NZ$0.29 (1), NZ$0.25 (100)
 
-The PMV45EN is a low cost, very low RDS(on) N-Channel MOSFET which I use as the work horse for most of my projects. It has an RDS(on) of only 35mOhm and is rated for a current of 5.4A. The maximum drain source voltage is 30V, making it suitable for most embedded, low voltage applications.
+The PMV45EN is a low cost, very low RDS(on) N-Channel MOSFET which I use as the work horse for most of my projects. It has an RDS(on) of only 35mOhm and is rated for a current of 5.4A. The maximum drain source voltage is 30V, making it suitable for most embedded, low voltage applications. Also in the `PMV` range is the `PMV90ENER`.
 
 ## MOSFET Safe Operating Areas
 
