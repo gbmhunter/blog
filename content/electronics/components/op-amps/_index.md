@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps)."
 draft: false
-lastmod: 2020-07-01
+lastmod: 2020-10-19
 tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components" ]
 title: "Op-Amps"
 type: "page"
@@ -12,7 +12,7 @@ type: "page"
 
 ## Overview
 
-At it's most basic level, an operational amplifier (op-amp) is a discrete analogue integrated circuit which acts as a voltage-amplifier with very high gain.
+At it's most basic level, an operational amplifier (op-amp) is a discrete analogue integrated circuit (IC) which acts as a voltage-amplifier with very high gain.
 
 Note that an op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). It can also be converted into a current amplifier.
 
@@ -36,7 +36,9 @@ Always take note of the position of the inverting (-) and non-inverting (+) inpu
 * Analogue mathematical operations (differentiators, integrators, summer, subtracters, e.t.c)
 * Voltage to current (transconductance) and current to voltage conversions (transimpedence)
 
-## Voltage Follower (aka Buffer)
+## Op-Amp Topologies
+
+### Voltage Follower (aka Buffer)
 
 A voltage follower (also known as a buffer) is one of the most basic circuits you can make with an op-amp.
 
@@ -52,7 +54,7 @@ The results of the simulation:
 
 {{< img src="output-voltage-vs-input-voltage-op-amp-voltage-follower.png" width="1400px" caption="The simulation results for an op-amp configured as a voltage-follower (buffer). Note how the output voltage mirrors the input voltage exactly."  >}}
 
-## Non-Inverting Amplifier
+### Non-Inverting Amplifier
 
 A op-amp in the non-inverting amplifier configuration is shown below.
 
@@ -78,7 +80,7 @@ The results of the simulation are shown below. As you can see, the output voltag
 
 {{< img src="vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png" width="1700px" caption="A graph of Vout vs. Vin for a non-inverting op-amp amplifier circuit."  >}}
 
-## Inverting Amplifier
+### Inverting Amplifier
 
 A op-amp amplifier in the inverting configuration is shown below:
 
@@ -98,7 +100,7 @@ And below are the simulation results for the above schematic:
 
 {{< img src="vout-vs-vin-inverting-op-amp-gain-neg-1.png" width="1420px" caption="Vout vs. Vin for an inverting op-amp with a gain of -1."  >}}
 
-## Differential Amplifier
+### Differential Amplifier
 
 A differential amplifier amplifies the difference between two electrical signals.
 
@@ -116,7 +118,7 @@ This schematic produces the following results:
 
 {{< img src="differential-op-amp-simulation-graph-vin1-vin2-vout.png" width="1686px" caption="A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier."  >}}
 
-## Integrator
+### Integrator
 
 It's output voltage is proportional to the integral of the input voltage w.r.t. time. The figure below shows an **ideal** op-amp based integrator.
 
@@ -128,7 +130,7 @@ A way to fix this problem is to insert a high-valued feedback resistor, `\(R_f\)
 
 {{< img src="op-amp-schematic-integrator-non-ideal.png" width="431px" caption="An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset."  >}}
 
-## Transconductance Amplifier
+### Transconductance Amplifier
 
 A _transconductance amplifier_ is an op-amp topology which is used to **convert a voltage into a current**. Coincidentally, it is also known as a _voltage-to-current converter_.
 
@@ -142,7 +144,7 @@ One dis-advantage with this design is that the current output is not ground refe
 
 Sorted alphabetically.
 
-## Gain-Bandwidth (GBW) Product
+### Gain-Bandwidth (GBW) Product
 
 The gain-bandwidth product can be initialised as _GBWP_, _GBW_, _GBP_ or _GB_. It is an important parameter which basically puts a limit on the maximum gain and frequency. **An op-amp's maximum possible gain reduces as the frequency of the signal increases.** The multiplication of the gain with the frequency gives the gain-bandwidth product, which is **relatively constant** for a particular op-amp.
 
@@ -150,23 +152,27 @@ Hence if the gain bandwidth of a particular op-amp is 1Mhz, and the gain is 10, 
 
 An example of an ultra-high gain bandwidth is 1700MHz, which are present in 'Wideband CFB" op-amps, designed for applications such as RGB line drivers (such as the OPA695). A 'normal' GBW can be anywhere between 100kHz and 10MHz. A low gain-bandwidth is around 1kHz (reminiscent of less advanced, older op-amps). **Remember gain is unit-less (V/V), so gain bandwidth is expressed as a frequency only.** Not realising this can be confusing! The GBW product is closely related to the slew rate (see below).
 
-## Slew Rate
+### High Level Output Voltage
+
+The high level output voltage (`\(V_{OH}\)`) defines the highest voltage which the op-amp can drive the output to (with respect to the power supply `\(V_+\)`).
+
+### Input Impedance
+
+The input impedance is the internal resistance to ground from the two input pins. In an ideal op-amp, this value is zero. For most op-amps, this value is somewhere between 1-10M.
+
+### Low Level Output Voltage
+
+The low level output voltage (`\(V_{OL}\)`) defines the lowest voltage which the op-amp can drive the output to. The LM324 is rumoured to only be able to drive the output near ground if it is sourcing current, but only to 0.5V minimum if sinking (see this EDA Forum post, [LM324 Opamp Gain Instability](http://www.edaboard.com/thread209783.html)).
+
+### Slew Rate
 
 Slew rate is another op-amp parameter. It defines the maximum rate the voltage can change with respect to time. In an ideal op-amp, this would be infinite. It has the SI units V/s, and is commonly expressed in uV/s. It can be thought of as the slope of the output waveform if one of the inputs of the input was subjected to a step voltage change. This parameter usually increases as the GBW increases.
 
-## Supply Current
+### Supply Current
 
 The supply current is generally constant for any supply voltage. It is normally rated as the no-load current. Obviously, if there is a load on the op-amp, the current through the power pins will be the sum of the no load 'supply current' and the current going through the load.
 
 Supply currents for standard op-amps are typically between 1.5-4mA. A 'low-power' op-amp has a typical supply current between 0.5-1.5mA (such as the LM258N). Then there are ultra-low power op-amps that only draw 5-20pA (such as the LMC6464). You normally sacrifice slew-rate and gain-bandwidth for ultra-low power.
-
-## Input Impedance
-
-The input impedance is the internal resistance to ground from the two input pins. In an ideal op-amp, this value is zero. For most op-amps, this value is somewhere between 1-10M.
-
-## Output Voltage Range
-
-This defines the voltage range at which the op-amp can drive the output. The LM324 is rumoured to only be able to drive the output near ground if it is sourcing current, but only to 0.5V minimum if sinking (see this EDA Forum post, [LM324 Opamp Gain Instability](http://www.edaboard.com/thread209783.html)).
 
 ## Cascading Op-Amps
 
@@ -174,13 +180,13 @@ Cascading op-amps is concept when the output of one op-amp is connected to the i
 
 For a fixed-gain, cascading op-amps can also be used to **increase the bandwidth**, as each individual op-amp now can operate at a lower gain and therefore has a larger bandwidth as defined by the gain-bandwidth product. Note though that each additional op-amp added to increase the bandwidth gives diminishing returns. Also important to note that op-amp bandwidth is defined as the -3dB gain points. Hence the bandwidth does not stay the same (total bandwidth gets smaller) when two identical op-amps are cascaded, as these will now the -6dB points. A practical limit for fixed-total-gain increased-bandwidth cascading is about 3-4 op-amps.
 
-## The Gain
+### The Gain
 
 When cascading op-amps, the total gain is the product of all of the individual op-amps gains, i.e.:
 
 <p>$$ A_{total} = A_0 A_1 A_2 ... A_n $$</p>
 
-## The Bandwidth
+### The Bandwidth
 
 The bandwidth of cascaded op-amps is not as simple to calculate as the gain.
 
@@ -201,9 +207,21 @@ The above equation gives diminishing returns with every additional op-amp added.
 
 As a rule-of-thumb, you should use the lowest acceptable resistances in op-amp feedback paths to reduce instabilities.
 
-## Rail-to-Rail Op-amps
+## Types Of Op-Amps
 
-What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-amps that can run from a single voltage supply, rather than requiring a dual positive/negative supply) market op-amps as _rail-to-rail_, and that the output of the op-amp can swing from ground to the positive rail. This is not exactly true. The op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. This voltage drop increases with the amount of current the op-amp is supplying to the load.
+### General Purpose
+
+General purpose op-amps typically have parameters in the following ranges:
+
+* Gain Bandwidth Product: 1MHz
+* Input Bias Current: 15pA
+* Input Voltage Offset: 1mV
+* Output Current: 20-50mA
+* Icc: 1mA
+
+### Rail-to-Rail Op-Amps
+
+What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-amps that can run from a single voltage supply, rather than requiring a dual positive/negative supply) market op-amps as _rail-to-rail_, and that the output of the op-amp can swing from ground to the positive rail. This is not exactly true. The op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. Rail-to-rail op-amps can just drive closer to the rails than general purpose op-amps can. This voltage drop increases with the amount of current the op-amp is supplying to the load. Look for the **low level output voltage** (`\(V_{OL}\)`) parameter in the op-amp's datasheet. For "rail-to-rail" op-amps, this will usually be about 100-200mV about ground at normal load currents.
 
 {{% warning %}}
 "_Rail-to-rail_" op-amps cannot really output either rail voltage. A negative power supply is always required if you want the op-amp to be able to output a true 0V.
@@ -231,8 +249,8 @@ Below are some examples of op-amps that stand out from the crowd for some reason
 <td>$3.50</td>
 </tr>
 <tr>
-<td>LM324</td>
-<td>A common op-amp that has been around for along time, this can operate of a single supply and can swing right to ground, but cannot swing to the rail voltage.</td>
+<td>LM32x</td>
+<td>A common family of op-amps that has been around for along time, they can operate of a single supply and can swing right to ground, but cannot swing to the rail voltage. The LM321 has one op-amp, the LM328 has two (dual), and the LM324 has 4 (quad).</td>
 <td></td>
 </tr>
 <tr>

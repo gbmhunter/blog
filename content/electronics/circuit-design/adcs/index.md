@@ -26,7 +26,9 @@ The resolution of an ADC normally depends on the number of bit's it supports. AD
 
 ## Measuring Techniques
 
-There are many ways to convert a analogue signal into a digital one. The two most popular ADC methodologies are _successive approximation register_ (SAR) and _Delta-Sigma_. SAR ADCs are usually faster but have a lower resolution (typically 8 to 12-bit) while Delta Sigma's are slower but offer greater accuracy (typically up to 20-bit). Delta-Sigma ADCs also take longer to switch between input signals (if measuring multiple signals with just one ADC) because they incorporate a filter which needs to be reset and stabilised before the measurements become accurate (essentially the filter's response time).
+There are many ways to convert a analogue signal into a digital one. The two most popular ADC methodologies are _successive approximation register_ (SAR) and _Delta-Sigma_. **SAR ADCs are usually faster but have a lower resolution (typically 8 to 12-bit) while Delta Sigma's are slower but offer greater accuracy (typically up to 20-bit)**. SAR ADCs typically have a sampling rate of 100kHz-1MHz while Sigma-Delta ADCs have a sampling rate of 1-20Hz.
+
+Delta-Sigma ADCs also take longer to switch between input signals (if measuring multiple signals with just one ADC) because they incorporate a filter which needs to be reset and stabilised before the measurements become accurate (essentially the filter's response time).
 
 ## Medical Uses
 
@@ -37,3 +39,7 @@ ADCs are commonly used in medical devices for biopotential measurements. One com
 ADCs can be used to read the value from a 4-20mA current loop signal with the help of a current-to-voltage converting resistors (what all resistors do, right?).
 
 See the {{% link text="4-20mA Current Loops page" src="/electronics/communication-protocols/4-20ma-current-loops" %}} for more info.
+
+## Suppliers
+
+* [DigiKey's Data Acquisition - Analog to Digital Converters (ADC) section](https://www.digikey.com/products/en/integrated-circuits-ics/data-acquisition-analog-to-digital-converters-adc/700) (US)
