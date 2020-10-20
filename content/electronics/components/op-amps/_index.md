@@ -142,7 +142,33 @@ One dis-advantage with this design is that the current output is not ground refe
 
 ## Important Variables
 
-Sorted alphabetically.
+Sorted by function.
+
+### Common-Mode Input Voltage Range
+
+The _common-mode input voltage range_ is the range of voltages that can appear at the input to the op-amp and it still work correctly. For standard single-supply op-amps, the typical range is approximately `\(0V\)` to `\(V_+ - 1.5V\)`. Note how it includes the most negative rail `\(V_-\)` (which is 0V for a single-supply op-amp) but only gets within `1.5V` of the most positive rail, `\(V_+\)`
+
+### Input Offset Voltage (Vio)
+
+The _input offset voltage_ `\(V_{IO}\)` is the voltage difference between the two input pins. It is a DC measurement parameter. In an ideal op-amp, the two inputs are always at the same potential, and so the input offset voltage is 0V. However, real-world op-amps always have some differences in the internal components that make up the op-amps, and thus the inputs are not perfectly identical. For general purpose op-amps, this input offset voltage is somewhere between 0.1-15mV. For example, the LM324 has a typical input offset voltage of 2mV and a maximum of 3mV, at `\(T_A = 25°C\)`[^ti-lm234-datasheet].
+
+A non-zero input offset voltage results in gain errors between the input and output of a op-amp.
+
+Input offset voltages vary by op-amp transistor technology. Bipolar op-amps typically have the lowest input offset voltage, followed by CMOS and the BiFET op-amps[^ti-app-report-input-offset-voltage].
+
+### Input Bias Current (Ib+ and Ib-)
+
+The _input bias current_ `\(I_{B+}\)` and `\(I_{B-}\)` describe the currents that flow in and out of the op-amps input pins. In an ideal op-amp, no current flows into/out of the input pins (the op-amp has infinite input impedance). In reality, always some small amount of current will flow. Typical input bias currents range from 1-10nA.
+
+The amount and behaviour of input bias current depends on the op-amp transistor technology. A FET-based op-amp's input bias current will double with every 10°C rise in temperature[^analog-devices-input-bias-current].
+
+Input bias currents are a problem because these currents will flow through external circuitry connected to the op-amps inputs. This current when flowing through resistors and other impedances will create unwanted voltages which will increase the systematic errors.
+
+The _input offset current_ `\(I_{OS}\)` is the difference between the input bias current at the `+` pin and the `-` pin.
+
+### Input Impedance
+
+The input impedance is the internal resistance to ground from the two input pins. In an ideal op-amp, this value is infinite. For most op-amps, this value is somewhere between 1-10MΩ.
 
 ### Gain-Bandwidth (GBW) Product
 
@@ -155,10 +181,6 @@ An example of an ultra-high gain bandwidth is 1700MHz, which are present in 'Wid
 ### High Level Output Voltage
 
 The high level output voltage (`\(V_{OH}\)`) defines the highest voltage which the op-amp can drive the output to (with respect to the power supply `\(V_+\)`).
-
-### Input Impedance
-
-The input impedance is the internal resistance to ground from the two input pins. In an ideal op-amp, this value is zero. For most op-amps, this value is somewhere between 1-10M.
 
 ### Low Level Output Voltage
 
@@ -221,13 +243,13 @@ General purpose op-amps typically have parameters in the following ranges:
 
 ### Rail-to-Rail Op-Amps
 
-What is a _rail-to-rail_ op-amp? The manufacturers of single-supply op-amps (op-amps that can run from a single voltage supply, rather than requiring a dual positive/negative supply) market op-amps as _rail-to-rail_, and that the output of the op-amp can swing from ground to the positive rail. This is not exactly true. The op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. Rail-to-rail op-amps can just drive closer to the rails than general purpose op-amps can. This voltage drop increases with the amount of current the op-amp is supplying to the load. Look for the **low level output voltage** (`\(V_{OL}\)`) parameter in the op-amp's datasheet. For "rail-to-rail" op-amps, this will usually be about 100-200mV about ground at normal load currents.
+A _rail-to-rail_ op-amp is an op-amp which supports input voltages **near** the power rails, and can drive the output close to the power rails. We must stress the word **NEAR**, as the op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. Rail-to-rail op-amps just support wider ranged input voltages and can drive closer to the rails than general purpose op-amps can. Look for the **low level output voltage** (`\(V_{OL}\)`) parameter in the op-amp's datasheet. For "rail-to-rail" op-amps, this will usually be about 100-200mV about ground at normal load currents.
 
 {{% warning %}}
-"_Rail-to-rail_" op-amps cannot really output either rail voltage. A negative power supply is always required if you want the op-amp to be able to output a true 0V.
+"_Rail-to-rail_" op-amps cannot really output either rail voltage, just closer to it that general purpose op-amps.
 {{% /warning %}}
 
-**To achieve a true ground output, you need a negative voltage supply.** There are dedicated ICs designed to provide a small negative power supply to op-amps so that they can output true ground. One such example is the [Texas Instruments LM7705](http://www.ti.com/product/LM7705), a "_Low Noise Negative Bias Generator_". This IC only generates -230mV, which allows the designer to use CMOS-based op-amps which usually have a maximum supply voltage of 5.5V.
+This also means that a rail-to-ral single-supply op-amp cannot output 0V. **To achieve a true ground output, you need a negative voltage supply.** There are dedicated ICs designed to provide a small negative power supply to op-amps so that they can output true ground. One such example is the [Texas Instruments LM7705](http://www.ti.com/product/LM7705), a "_Low Noise Negative Bias Generator_". This IC only generates -230mV, which allows the designer to use CMOS-based op-amps which usually have a maximum supply voltage of 5.5V.
 
 {{< img src="lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png" width="688px" caption="The typical application schematic for the Texas Instruments LM7705, a 'Low-Noise Negative Bias Generator' for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/."  >}}
 
@@ -243,27 +265,28 @@ Below are some examples of op-amps that stand out from the crowd for some reason
       <th>Approximate Price (1 unit, US$)</th>
     </tr>
   </thead>
-<tbody><tr >
-<td>AD860x</td>
-<td>Good for high precision stuff! Awesome for photo-diode amplification (both current-to-voltage and voltage-to-voltage configurations).</td>
-<td>$3.50</td>
-</tr>
-<tr>
-<td>LM32x</td>
-<td>A common family of op-amps that has been around for along time, they can operate of a single supply and can swing right to ground, but cannot swing to the rail voltage. The LM321 has one op-amp, the LM328 has two (dual), and the LM324 has 4 (quad).</td>
-<td></td>
-</tr>
-<tr>
-<td>LM833</td>
-<td>One of the cheapest 'audio' op-amps available (about US$0.20 as of 2011). Features a high GBW for it's price.</td>
-<td></td>
-</tr>
-<tr>
-<td>OPA695</td>
-<td>This is a ultra-wideband, current-feedback op-amp. If you need an op-amp with a ridiculously high gain-bandwidth product, this is along the lines of what you want to use. It has a GBW of 1700Mhz and a maximum slew-rate of 4300V/us.</td>
-<td>$3.50</td>
-</tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td>AD860x</td>
+      <td>Good for high precision stuff! Awesome for photo-diode amplification (both current-to-voltage and voltage-to-voltage configurations).</td>
+      <td>$3.50</td>
+    </tr>
+    <tr>
+      <td>LM32x</td>
+      <td>A common family of op-amps that has been around for along time, they can operate of a single supply and can swing right to ground, but cannot swing to the rail voltage. The LM321 has one op-amp, the LM328 has two (dual), and the LM324 has 4 (quad).</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>LM833</td>
+      <td>One of the cheapest 'audio' op-amps available (about US$0.20 as of 2011). Features a high GBW for it's price.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>OPA695</td>
+      <td>This is a ultra-wideband, current-feedback op-amp. If you need an op-amp with a ridiculously high gain-bandwidth product, this is along the lines of what you want to use. It has a GBW of 1700Mhz and a maximum slew-rate of 4300V/us.</td>
+      <td>$3.50</td>
+    </tr>
+  </tbody>
 </table>
 
 ## Isolation Amplifiers
@@ -283,3 +306,9 @@ One of the first things you learn about an op-amp is that the input impedance on
 {{% img src="op-amp-input-pin-resistors.png" width="500px" caption="Schematic showing a resistor on the positive input to a op-amp." %}}
 
 These input resistors serve to limit the input current if the voltage on the input pin goes above `\(V_{CC}\)`. Most op-amps have protection/clamping diodes from the input pins to `\(V_{CC}\)` (typically you can determines this if in the datasheet the input pins max voltage is rated to `\(V_{CC} + 0.3V\)`, which is one diode voltage drop). If there was no resistor there, the built-in diode would conduct and sink a large current from the input pin to `\(V_{CC}\)`, possibly damaging the op-amp. The resistor limits this current to a safe value.
+
+## References
+
+[^ti-lm234-datasheet]: <https://www.ti.com/lit/ds/snosc16d/snosc16d.pdf>, retrieved 2020-10-20.
+[^ti-app-report-input-offset-voltage]: <https://www.ti.com/lit/an/sloa059/sloa059.pdf>, retrieved 2020-10-20.
+[^analog-devices-input-bias-current]: <https://www.analog.com/media/en/training-seminars/tutorials/MT-038.pdf>, retrieved 2020-10-20.

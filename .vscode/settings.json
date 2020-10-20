@@ -620,6 +620,7 @@
         "strerror",
         "strftime",
         "striplines",
+        "strlen",
         "strptime",
         "strtod",
         "strtok",
