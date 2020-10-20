@@ -1,6 +1,6 @@
 ---
 author: "gbmhunter"
-catgories: [ "Programming", "Programming Languages", "C" ]
+categories: [ "Programming", "Programming Languages", "C" ]
 date: 2013-03-18
 draft: false
 lastmod: 2014-03-18
@@ -58,59 +58,87 @@ char myString[] = "abc123";
 Special characters can be added to strings using the escape character `\` followed by a single identifier.
 
 <table>
-    <thead>
-        <tr>
-            <th>Syntax</th>
-            <th>Special Character</th>
-            <th>Inserted Number (in Hex)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{% code %}}`\0`{{% /code %}}</td>
-            <td>{{% code %}}`NULL`{{% /code %}}</td>
-            <td>{{% code %}}`0x00`{{% /code %}}</td>
-        </tr>
-        <tr>
-            <td>{{% code %}}`\ddd`{{% /code %}}</td>
-            <td>Ascii char representing the three octal chars 'ddd'. Note that \0 is a special case of this more generic notation</td>
-            <td>n/a</td>
-        </tr>
-        <tr>
-            <td>{{% code %}}`\r`{{% /code %}}</td>
-            <td>Carriage Return</td>
-            <td>{{% code %}}`0x0D`{{% /code %}}</td>
-        </tr>
-        <tr>
-            <td>{{% code %}}`\n`{{% /code %}}</td>
-            <td>New line</td>
-            <td>{{% code %}}`0x0A`{{% /code %}}</td>
-        </tr>
-        <tr>
-            <td>{{% code %}}`\\`{{% /code %}}</td>
-            <td>Backslash (since a single backslash is the escape character)</td>
-            <td>{{% code %}}`0x5C`{{% /code %}}</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Syntax</th>
+      <th>Special Character</th>
+      <th>Inserted Number (in Hex)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{% code %}}`\0`{{% /code %}}</td>
+      <td>{{% code %}}`NULL`{{% /code %}}</td>
+      <td>{{% code %}}`0x00`{{% /code %}}</td>
+    </tr>
+    <tr>
+      <td>{{% code %}}`\ddd`{{% /code %}}</td>
+      <td>Ascii char representing the three octal chars 'ddd'. Note that \0 is a special case of this more generic notation</td>
+      <td>n/a</td>
+    </tr>
+    <tr>
+      <td>{{% code %}}`\r`{{% /code %}}</td>
+      <td>Carriage Return</td>
+      <td>{{% code %}}`0x0D`{{% /code %}}</td>
+    </tr>
+    <tr>
+      <td>{{% code %}}`\n`{{% /code %}}</td>
+      <td>New line</td>
+      <td>{{% code %}}`0x0A`{{% /code %}}</td>
+    </tr>
+    <tr>
+      <td>{{% code %}}`\\`{{% /code %}}</td>
+      <td>Backslash (since a single backslash is the escape character)</td>
+      <td>{{% code %}}`0x5C`{{% /code %}}</td>
+    </tr>
+  </tbody>
 </table>
 
 Typically, both the carriage return and new line characters are used for making a new line (and in that order). This is normally appended at the end of strings to be printed with `\r\n`.
+
+## Finding The Length
+
+Use the `strlen()` function provided by 
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+  char my_string[] = "Hello"; 
+  print("%z\n", strlen(my_string));
+  return 0;
+}
+// Prints "5"
+```
 
 ## Copying
 
 `strcpy()` is a standard library function for copying the contents of one C string to another.
 
+```c
+
+```
+
+{{% note %}}
 Did you know: The following short piece of code...
 
 ```c    
 while (*p++ = *q++);
 ```
+{{% /note %}}
 
 is the equivalent to the standard library function `strcpy(p, q)`!
 
+## Concatenating
+
+Unlike many higher level languages, you cannot just concatenate C "strings" together like so: `my_string_1 + my_string_2` (remember, they are just arrays of characters!). Instead you have to use the `strcat()` function:
+
+```c
+
+```
 
 ## C Number To String Functions
-
 
 ### printf (And It's Variants)
 
