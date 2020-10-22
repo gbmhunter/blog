@@ -41,17 +41,25 @@ type: "page"
     </tr>
     <tr>
       <td>Pitch</td>
-      <td></td>
+      <td>3.05mm</td>
     </tr>
     <tr>
       <td>Solderability</td>
-      <td></td>
+      <td>Easy enough to solder by hand.</td>
     </tr>
     <tr>
       <td>Thermal Resistance</td>
       <td>
+        <p>Device mounted on 25.4x25.4mm FR-4 PCB (10x10mm 1oz copper, minimum recommended pad layout on
+top layer and thermal vias to bottom layer ground plane)[^al5809-datasheet]:</p>
         <ul>
-          <li></li>
+          <li>\( T_{JC} = 27.15°C/W \)</li>
+          <li>\( T_{JA} = 148.61°C/W \)</li>
+        </ul>
+        <p>When mounted on 50.8mm x 50.8mm GETEK PCB with 25.4mm x 25.4mm copper pads[^al5809-datasheet]:</p>
+        <ul>
+          <li>\( T_{JC} = 17.81°C/W \)</li>
+          <li>\( T_{JA} = 81.39°C/W \)</li>
         </ul>
       </td>
     </tr>
@@ -88,3 +96,7 @@ PowerDI123 is a proprietary package by Diodes Incorporated.
 ## Recommended Footprint
 
 {{% img src="powerdi123-component-package-recommended-footprint.png" width="800px" caption="The recommended footprint for the PowerDI123 component package. Image from https://www.diodes.com/assets/Package-Files/PowerDI123-Type-B.pdf." %}}
+
+## References
+
+[^al5809-datasheet]: <https://www.diodes.com/assets/Datasheets/AL5809.pdf>
