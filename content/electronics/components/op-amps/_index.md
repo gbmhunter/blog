@@ -4,17 +4,17 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps)."
 draft: false
-lastmod: 2020-10-19
-tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components" ]
+lastmod: 2020-10-23
+tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components", "gain", "voltage follower" ]
 title: "Op-Amps"
 type: "page"
 ---
 
 ## Overview
 
-At it's most basic level, an operational amplifier (op-amp) is a discrete analogue integrated circuit (IC) which acts as a voltage-amplifier with very high gain.
+At it's most basic level, an operational amplifier (op-amp) is a discrete analogue integrated circuit which acts as a voltage-amplifier with very high gain.
 
-Note that an op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). It can also be converted into a current amplifier.
+An op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). This is almost always done for any op-amp that is used as an amplifier. External circuitry can also manpulate the op-amp to act as as a current amplifier.
 
 ## Schematic Symbol
 
@@ -30,7 +30,7 @@ Always take note of the position of the inverting (-) and non-inverting (+) inpu
 
 ## Uses
 
-* Buffers
+* Buffers (a.k.a. voltage followers)
 * Linear amplifiers, non-linear amplifiers
 * Pre-amplifiers (amplifier's with a input voltage of 10mV or less)
 * Analogue mathematical operations (differentiators, integrators, summer, subtracters, e.t.c)
@@ -38,11 +38,11 @@ Always take note of the position of the inverting (-) and non-inverting (+) inpu
 
 ## Op-Amp Topologies
 
-### Voltage Follower (aka Buffer)
+### Voltage Follower (a.k.a. Buffer)
 
-A voltage follower (also known as a buffer) is one of the most basic circuits you can make with an op-amp.
+A _voltage follower_ (also known as a _buffer_) is one of the most basic circuits you can make with an op-amp.
 
-{{< img src="op-amp-schematic-voltage-follower-buffer.png" width="517px" caption="An op-amp configured as a voltage follower (aka buffer)."  >}}
+{{< img src="op-amp-schematic-voltage-follower-buffer.png" width="517px" caption="An op-amp configured as a voltage follower (aka buffer)." >}}
 
 As shown in the above diagram, the output voltage is the same as the input voltage (`\(v_{o} = v_{i}\)`). Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
 
@@ -150,7 +150,9 @@ The _common-mode input voltage range_ is the range of voltages that can appear a
 
 ### Input Offset Voltage (Vio)
 
-The _input offset voltage_ `\(V_{IO}\)` is the voltage difference between the two input pins. It is a DC measurement parameter. In an ideal op-amp, the two inputs are always at the same potential, and so the input offset voltage is 0V. However, real-world op-amps always have some differences in the internal components that make up the op-amps, and thus the inputs are not perfectly identical. For general purpose op-amps, this input offset voltage is somewhere between 0.1-15mV. For example, the LM324 has a typical input offset voltage of 2mV and a maximum of 3mV, at `\(T_A = 25°C\)`[^ti-lm234-datasheet].
+The _input offset voltage_ `\(V_{IO}\)` is the voltage difference between the two input pins. It is a DC measurement parameter. In an ideal op-amp, the two inputs are always at the same potential, and so the input offset voltage is always 0V. However, real-world op-amps always have some differences in the internal components that make up the op-amps, and thus the inputs are not perfectly identical. For general purpose op-amps, this input offset voltage is somewhere between 0.1-15mV.
+
+For example, the LM324 has a typical input offset voltage of 2mV and a maximum of 3mV, at `\(T_A = 25°C\)`[^ti-lm234-datasheet]. "Low" input offset voltage op-amps will have a `\(V_{IO}\)` in the range of 50-200uV. For example, the OPAx196 family of op-amps has a max. `\(V_{IO}: 100uV\)`[^ti-opax196-datasheet].
 
 A non-zero input offset voltage results in gain errors between the input and output of a op-amp.
 
@@ -312,3 +314,4 @@ These input resistors serve to limit the input current if the voltage on the inp
 [^ti-lm234-datasheet]: <https://www.ti.com/lit/ds/snosc16d/snosc16d.pdf>, retrieved 2020-10-20.
 [^ti-app-report-input-offset-voltage]: <https://www.ti.com/lit/an/sloa059/sloa059.pdf>, retrieved 2020-10-20.
 [^analog-devices-input-bias-current]: <https://www.analog.com/media/en/training-seminars/tutorials/MT-038.pdf>, retrieved 2020-10-20.
+[^ti-opax196-datasheet]: <https://www.ti.com/lit/ds/symlink/opa196.pdf>

@@ -267,6 +267,8 @@ _Spirito effect_: Named after electronic engineer and professor [Paolo Spirito](
 
 The Spirito effect is observed at high Vds voltages and low Id currents. High Vds voltages because this results in a greater change in cell power as the cell current changes. Low Id because this gives the cells more time to thermally runaway -- at higher currents the individual cells do not get a chance to thermally runaway since the entire package quickly hits it's thermal limit.
 
+For a really good read on the Spirito effect, see [NASA's publication: Power MOSFET Thermal Instability Operation Characterization Support](/electronics/components/transistors/mosfets/nasa-tm-2010-216684-power-mosfet-thermal-instability-operation.pdf)
+
 {{% img src="mosfet-soa-diagram-with-annotations.png" width="700px" caption="A MOSFET SOA (safe operating area) diagram, showing the different limits which bound the area." %}}
 
 1. Rds(on) Limit: When `\(V_{DS}\)` is very low, it means that the MOSFET is driven to saturation, and the MOSFET acts if it has a fixed drain-source resistance, `\(R_{DS(on)}\)`. This gives a linear relationship between voltage and current and is the limit line in the upper-left section of the SOA graph.
