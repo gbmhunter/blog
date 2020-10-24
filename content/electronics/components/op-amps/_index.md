@@ -4,15 +4,15 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps)."
 draft: false
-lastmod: 2020-10-23
-tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components", "gain", "voltage follower" ]
+lastmod: 2020-10-24
+tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components", "gain", "voltage follower", "offset nulling", "input offset voltages" ]
 title: "Op-Amps"
 type: "page"
 ---
 
 ## Overview
 
-At it's most basic level, an operational amplifier (op-amp) is a discrete analogue integrated circuit which acts as a voltage-amplifier with very high gain.
+At it's most basic level, an operational amplifier (op-amp) is a **discrete analogue integrated circuit which acts as a voltage-amplifier with very high gain**.
 
 An op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). This is almost always done for any op-amp that is used as an amplifier. External circuitry can also manpulate the op-amp to act as as a current amplifier.
 
@@ -25,7 +25,7 @@ An op-amp is commonly drawn on schematics as:
 You may see this symbol with or without the voltage supply pins `\( V_{S+} \)` and `\( V_{S-} \)`. If they are not present, it is assumed that they are connected up to a power source which should be obvious from the design intent.
 
 {{% warning %}}
-Always take note of the position of the inverting (-) and non-inverting (+) input terminals. Sometimes they can be drawn swapped around relative to the symbol shown above.
+Always take note of the position of the inverting (-) and non-inverting (+) input terminals. **Sometimes they can be drawn swapped around relative to the symbol shown above**.
 {{% /warning %}}
 
 ## Uses
@@ -288,6 +288,11 @@ Below are some examples of op-amps that stand out from the crowd for some reason
       <td>This is a ultra-wideband, current-feedback op-amp. If you need an op-amp with a ridiculously high gain-bandwidth product, this is along the lines of what you want to use. It has a GBW of 1700Mhz and a maximum slew-rate of 4300V/us.</td>
       <td>$3.50</td>
     </tr>
+    <tr>
+      <td>OP07</td>
+      <td>A op-amp with a "ultra" low input offset voltage (resistors are trimmed at production time to achieve this), guranteed to be no more than 75uV. This op-amp also features offset nulling pins to further reduce the input offset voltage by performing trimming once the op-amp is installed in a circuit.</td>
+      <td>n/a</td>
+    </tr>
   </tbody>
 </table>
 
@@ -310,6 +315,8 @@ One of the first things you learn about an op-amp is that the input impedance on
 These input resistors serve to limit the input current if the voltage on the input pin goes above `\(V_{CC}\)`. Most op-amps have protection/clamping diodes from the input pins to `\(V_{CC}\)` (typically you can determines this if in the datasheet the input pins max voltage is rated to `\(V_{CC} + 0.3V\)`, which is one diode voltage drop). If there was no resistor there, the built-in diode would conduct and sink a large current from the input pin to `\(V_{CC}\)`, possibly damaging the op-amp. The resistor limits this current to a safe value.
 
 ## Offset Nulling Circuits
+
+Some op-amps which are designed to have very low input offset voltages also come with _offset nulling pins_ to further trim the input offset voltage once the op-amp is installed in circuit. The OP07 is one op-amp which has these pins. Typically, a `\(10-50k\Omega\)` potentiometer is connected across these pins with the wiper going to `\(V_{CC}\)`, as shown in the example schematic below:
 
 {{% img src="op07-op-amp-offset-nulling-circuit.png" width="500px" caption="Image from https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf." %}}
 
