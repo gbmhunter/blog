@@ -320,6 +320,10 @@ Some op-amps which are designed to have very low input offset voltages also come
 
 {{% img src="op07-op-amp-offset-nulling-circuit.png" width="500px" caption="Image from https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf." %}}
 
+## Chopper-Stabilised Op-Amps
+
+TODO
+
 ## References
 
 [^ti-lm234-datasheet]: <https://www.ti.com/lit/ds/snosc16d/snosc16d.pdf>, retrieved 2020-10-20.
