@@ -148,11 +148,15 @@ Sorted by function.
 
 The _common-mode input voltage range_ is the range of voltages that can appear at the input to the op-amp and it still work correctly. For standard single-supply op-amps, the typical range is approximately `\(0V\)` to `\(V_+ - 1.5V\)`. Note how it includes the most negative rail `\(V_-\)` (which is 0V for a single-supply op-amp) but only gets within `1.5V` of the most positive rail, `\(V_+\)`
 
-### Input Offset Voltage (Vio)
+### Input Offset Voltage (Vos/Vio)
 
-The _input offset voltage_ `\(V_{IO}\)` is the voltage difference between the two input pins. It is a DC measurement parameter. In an ideal op-amp, the two inputs are always at the same potential, and so the input offset voltage is always 0V. However, real-world op-amps always have some differences in the internal components that make up the op-amps, and thus the inputs are not perfectly identical. For general purpose op-amps, this input offset voltage is somewhere between 0.1-15mV.
+The _input offset voltage_ `\(V_{OS}\)` (or sometimes called `\(V_{IO}\)`) is the voltage difference required between the two input pins to force the output to 0. It is a DC measurement parameter. In an ideal op-amp, the op-amp only amplifies a difference between the inputs, and so the output is 0V when the difference is 0V. However, real-world op-amps always have some unavoidable differences in the internal components that make up the op-amps (specifically, in the input differential stage of the internal circuitry), and thus the inputs are not perfectly identical. The input offset voltage is typically in the following ranges:
 
-For example, the LM324 has a typical input offset voltage of 2mV and a maximum of 3mV, at `\(T_A = 25°C\)`[^ti-lm234-datasheet]. "Low" input offset voltage op-amps will have a `\(V_{IO}\)` in the range of 50-200uV. For example, the OPAx196 family of op-amps has a max. `\(V_{IO}: 100uV\)`[^ti-opax196-datasheet].
+* 1-5mV for good general purpose op-amps, 5-15mV for really bad ones.
+* 200uV-1mV for specialized low input offset voltage op-amps
+* 10uV-200uV for the best "ultra" low input offset voltage op-amps 
+
+For example, the general purpose LM324 has a typical input offset voltage of 2mV and a maximum of 3mV, at `\(T_A = 25°C\)`[^ti-lm234-datasheet]. "Low" input offset voltage op-amps will have a `\(V_{OS}\)` in the range of 50-200uV. For example, the OPAx196 family of op-amps has a max. `\(V_{IO}: 100uV\)`[^ti-opax196-datasheet].
 
 A non-zero input offset voltage results in gain errors between the input and output of a op-amp.
 
