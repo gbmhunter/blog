@@ -128,7 +128,7 @@ However, this circuit is normally not practical in real world situations. Any er
 
 A way to fix this problem is to insert a high-valued feedback resistor, `\(R_f\)`, to limit the DC gain, as well as a resistor, `\(R_{bias}\)`, on the non-inverting input terminal to compensate for the input bias current.
 
-{{< img src="op-amp-schematic-integrator-non-ideal.png" width="431px" caption="An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset."  >}}
+{{< img src="op-amp-schematic-integrator-non-ideal.png" width="430px" caption="An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset." >}}
 
 ### Transconductance Amplifier
 
@@ -138,7 +138,7 @@ A basic transconductance amplifier can be built with an op-amp in a non-invertin
 
 A transconductance amplifier is useful creating an industry standard 4-20mA (or 0-20mA) current-loop signal. The input voltage can come from something like a potentiometer or microcontroller (coupled with either using a VDAC peripheral or PWM/RC-filter technique to create a variable voltage).
 
-One dis-advantage with this design is that the current output is not ground referenced, that is, ground is not used as the return path for the current. This complicates the wiring.
+One disadvantage with this design is that the current output is not ground referenced, that is, ground is not used as the return path for the current. This complicates the wiring.
 
 ## Important Variables
 
