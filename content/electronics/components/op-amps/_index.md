@@ -259,6 +259,28 @@ This also means that a rail-to-ral single-supply op-amp cannot output 0V. **To a
 
 {{< img src="lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png" width="688px" caption="The typical application schematic for the Texas Instruments LM7705, a 'Low-Noise Negative Bias Generator' for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/."  >}}
 
+### Micropower Op-Amps
+
+_Micropower_ is a termed used for extremely low quiescent current op-amps that are designed for battery or energy recovery-based power supplies. The supply current of micropower op-amps is typically within the range of 50-100uA at a supply voltage of 2-10V. Because they are designed for battery-based systems, they are also commonly single-supply op-amps.
+
+## Manufacturer Part Number Families
+
+* LT: The prefix Linear Technology (now Analog Devices) uses for their range of op-amps.
+  * LT1006: Precision, single-supply op-amp.
+  * LT1077: Micropower, single-supply op-amp.
+* OP07: Analog Devices/Texas Instruments ranges of low input offset voltage op-amps.
+  * OP07C: ±3-18V VCC, -40 to +85°C industrial temp. range
+    * OP07CP: DIP-8 package
+    * OP07CS SOIC-8 package
+  * OP07D: ±4-18V VCC
+  * OP07E: 0 to 70°C commercial temp. range
+* OPA: Texas Instruments (previously Burr-Brown) family of op-amps.
+  * OPA241: Single-supply
+  * OPA251: Dual-supply
+  * OPA27: Texas Instruments (previously Burr-Brown) family of ultra-low noise, precision op-amps. Internally compensated for unity-gain stability.
+  * OPA37: Uncompensated version of the OPA27.
+* TLE202: Texas Instruments family of "high-speed low-power" precision operational amplifiers. Belong to the _Excalibur_ family of TI op-amps which uses "isolated vertical PNP transistors" to give unity-gain bandwidth and slew rate improvements.
+
 ## Examples
 
 Below are some examples of op-amps that stand out from the crowd for some reason, be it popularity, years in service, or functionality wise.
