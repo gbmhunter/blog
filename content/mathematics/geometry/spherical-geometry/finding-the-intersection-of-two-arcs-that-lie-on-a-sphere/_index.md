@@ -3,8 +3,8 @@ author: gbmhunter
 categories: [ "Mathematics", "Geometry", "Spherical Geometry" ]
 date: 2018-02-15
 draft: false
-lastmod: 2020-06-02
-tags: [ "sphere", "intersection", "arc", "geometry", "spherical", "geospatial", "earth" ]
+lastmod: 2020-10-27
+tags: [ "sphere", "intersection", "arc", "geometry", "spherical", "geospatial", "earth", "geodetic" ]
 title: "Finding The Intersection Of Two Arcs That Lie On A Sphere"
 type: "page"
 ---
@@ -117,25 +117,29 @@ P_{a11} = \left[ {\begin{array}{c} 10 \\ 20 \end{array} } \right]
 P_{a12} = \left[ {\begin{array}{c} 60 \\ 90 \end{array} } \right] \\
 P_{a21} = \left[ {\begin{array}{c} 50 \\ 10 \end{array} } \right]  
 P_{a22} = \left[ {\begin{array}{c} 5 \\ 80 \end{array} } \right]
-\end{algin}</p>
+\end{align}</p>
 
-Then convert them to spherical coordinates:
+Then convert them to spherical coordinates, with units in kilometers:
 
-<p>$$
+<p>\begin{align}
 \newcommand{\pAOneStart}{\left[ {\begin{array}{c} 5896 \\ 2146 \\ 1106 \end{array} } \right]}
 \b{a_{11}} = R \cdot \left[ {\begin{array}{c} x_{11} \\ y_{11} \\ z_{11} \end{array} } \right] \\
        = \left[ {\begin{array}{c} \cos(\theta) \cos(\phi) \\ \cos(\theta) \sin(\phi) \\ \sin(\theta) \end{array} } \right] \\
        = \left[ {\begin{array}{c} \cos(10) \cos(20) \\ \cos(10) \sin(20) \\ \sin(10) \end{array} } \right] \\
        = \pAOneStart \\
-$$</p>
+\end{align}</p>
+
+<p class="centered">where:<br/>
+\( R \) equals the radius of the earth, in kilometers (for this example we choose 6371km)</br>
+</p>
 
 And do the same for the other three points:
 
-<p>$$
+<p>\begin{align}
 \b{a_{12}} = \left[ {\begin{array}{c} 0.0 \\ 3186 \\ 5517 \end{array} } \right]  
 \b{a_{21}} = \left[ {\begin{array}{c} 4033 \\ 711 \\ 4880 \end{array} } \right]  
 \b{a_{22}} = \left[ {\begin{array}{c} 1102 \\ 6250 \\ 555 \end{array} } \right]
-$$</p>
+\end{align}</p>
 
 Now calculate the normal vectors for arc 1 and 2 by taking the cross-product:
 
