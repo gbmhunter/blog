@@ -102,6 +102,10 @@ If you have an existing `.Sch` file you wish to add to your project, navigate to
 
 Click File->Page Settings to open the `Page Settings` window. You can select a template file for the `Page layout description file` field. The file must end in `.kicad_wks`.
 
+### Power Symbols
+
+Unfortunately, power and ground symbols in KiCAD are just standard library schematic symbols with the voltage baked into the part itself. This means you have to create a new library component if you want to have a rail with a voltage which isn't in the default set of rail voltage symbols they provide with the installation! Ideally the voltage should just be considered part of the net name that is defined at schematic time, so you don't have to keep creating library parts for custom voltage rails in your design! 
+
 ## Libraries
 
 ```text

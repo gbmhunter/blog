@@ -4,8 +4,8 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps)."
 draft: false
-lastmod: 2020-10-24
-tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components", "gain", "voltage follower", "offset nulling", "input offset voltages" ]
+lastmod: 2020-10-28
+tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components", "gain", "voltage follower", "offset nulling", "input offset voltages", "instrumentation amplifiers" ]
 title: "Op-Amps"
 type: "page"
 ---
@@ -249,7 +249,7 @@ General purpose op-amps typically have parameters in the following ranges:
 
 ### Rail-to-Rail Op-Amps
 
-A _rail-to-rail_ op-amp is an op-amp which supports input voltages **near** the power rails, and can drive the output close to the power rails. We must stress the word **NEAR**, as the op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. Rail-to-rail op-amps just support wider ranged input voltages and can drive closer to the rails than general purpose op-amps can. Look for the **low level output voltage** (`\(V_{OL}\)`) parameter in the op-amp's datasheet. For "rail-to-rail" op-amps, this will usually be about 100-200mV about ground at normal load currents.
+A _rail-to-rail_ op-amp is an op-amp which supports input voltages **near** the power rails, and can drive the output close to the one or more  of the power rails. We must stress the word **NEAR**, as the op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. Rail-to-rail op-amps just support wider ranged input voltages and can drive closer to the rails than general purpose op-amps can. Look for the **low level output voltage** (`\(V_{OL}\)`) parameter in the op-amp's datasheet. For "rail-to-rail" op-amps, this will usually be about 100-200mV about ground at normal load currents.
 
 {{% warning %}}
 "_Rail-to-rail_" op-amps cannot really output either rail voltage, just closer to it that general purpose op-amps.
@@ -263,23 +263,31 @@ This also means that a rail-to-ral single-supply op-amp cannot output 0V. **To a
 
 _Micropower_ is a termed used for extremely low quiescent current op-amps that are designed for battery or energy recovery-based power supplies. The supply current of micropower op-amps is typically within the range of 50-100uA at a supply voltage of 2-10V. Because they are designed for battery-based systems, they are also commonly single-supply op-amps.
 
+### Instrumentation Amplifiers
+
+Instrumentation amplifiers are analog voltage amplifier circuits that, although are drawn the the same symbol as an op-amp, are typically made up internally from three op-amps (and passives). You can either make an instrumentation amplifier out of discrete op-amps or purchase a instrumentation amplifier IC which contains all the op-amps within the same chip.
+
 ## Manufacturer Part Number Families
 
-* LT: The prefix Linear Technology (now Analog Devices) uses for their range of op-amps.
-  * LT1006: Precision, single-supply op-amp.
-  * LT1077: Micropower, single-supply op-amp.
-* OP07: Analog Devices/Texas Instruments ranges of low input offset voltage op-amps.
-  * OP07C: ±3-18V VCC, -40 to +85°C industrial temp. range
-    * OP07CP: DIP-8 package
-    * OP07CS SOIC-8 package
-  * OP07D: ±4-18V VCC
-  * OP07E: 0 to 70°C commercial temp. range
-* OPA: Texas Instruments (previously Burr-Brown) family of op-amps.
-  * OPA241: Single-supply
-  * OPA251: Dual-supply
-  * OPA27: Texas Instruments (previously Burr-Brown) family of ultra-low noise, precision op-amps. Internally compensated for unity-gain stability.
-  * OPA37: Uncompensated version of the OPA27.
-* TLE202: Texas Instruments family of "high-speed low-power" precision operational amplifiers. Belong to the _Excalibur_ family of TI op-amps which uses "isolated vertical PNP transistors" to give unity-gain bandwidth and slew rate improvements.
+* **INAx126**: Precision instrumentation amplifiers by Texas Instruments. The INA126 has one amplifier per package, the INA2126 has two. 
+* **LT**: The prefix Linear Technology (now Analog Devices) uses for their range of op-amps.
+  * **LT1006**: Precision, single-supply op-amp.
+  * **LT1077**: Micropower, single-supply op-amp.
+  * **LT1167**: Instrumentation amplifier.
+* **MAX**: Op-amps by Maxim.
+  * **MAX4194**: Instrumentation amplifier.
+* **OP07**: Analog Devices/Texas Instruments ranges of low input offset voltage op-amps.
+  * **OP07C**: ±3-18V VCC, -40 to +85°C industrial temp. range
+    * **OP07CP**: DIP-8 package
+    * **OP07CS**: SOIC-8 package
+  * **OP07D**: ±4-18V VCC
+  * **OP07E**: 0 to 70°C commercial temp. range
+* **OPA**: Texas Instruments (previously Burr-Brown) family of op-amps.
+  * **OPA241**: Single-supply
+  * **OPA251**: Dual-supply
+  * **OPA27**: Texas Instruments (previously Burr-Brown) family of ultra-low noise, precision op-amps. Internally compensated for unity-gain stability.
+  * **OPA37**: Uncompensated version of the OPA27.
+* **TLE202**: Texas Instruments family of "high-speed low-power" precision operational amplifiers. Belong to the _Excalibur_ family of TI op-amps which uses "isolated vertical PNP transistors" to give unity-gain bandwidth and slew rate improvements.
 
 ## Examples
 
@@ -321,6 +329,10 @@ Below are some examples of op-amps that stand out from the crowd for some reason
     </tr>
   </tbody>
 </table>
+
+## Negative Voltage Rails
+
+Dedicated charge-pump topology power supply ICs are available that supply a small negative voltage to the op-amps `V-` pin.
 
 ## Isolation Amplifiers
 

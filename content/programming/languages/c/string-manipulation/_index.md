@@ -126,9 +126,11 @@ Did you know: The following short piece of code...
 ```c    
 while (*p++ = *q++);
 ```
-{{% /note %}}
 
 is the equivalent to the standard library function `strcpy(p, q)`!
+{{% /note %}}
+
+
 
 ## Concatenating
 
@@ -200,7 +202,9 @@ Another good reason to abandon `itoa()` is that it is not supported in C++.
 
 ### atof()
 
-The biggest let-down with `atof()` is that you cannot distinguish between the text input "0.0" and when there is no valid number to convert. This is because `atof()` returns `0.0` if it can't find a valid float number in the input string. For example:
+`atof()` is a historic way of converting a string to a double-precision float (yes, even though the function has `f` in it's name, it actually returns a `double`).
+
+The biggest let-down with `atof()` is that you cannot distinguish between the text input `"0.0"` and when there is no valid number to convert. This is because `atof()` returns `0.0` if it can't find a valid float number in the input string. For example:
 
 ```c    
 // Result is the same (0.0) in both of these cases).
@@ -213,7 +217,7 @@ There is a better alternative `strtod()`, which allows you to test for this cond
 
 ### strtod()
 
-This stands for (string-to-double). It is a safer way of converting strings to doubles than `atof()`. The code example below shows how to use `strtod()` to convert a string to a double and also how to check that the input string contained a valid number.
+This stands for (string-to-double). It is a safer way of converting strings to doubles than `atof()`. The code example below shows how to use `strtod()` to convert a string to a double and also how to check that the input string contained a valid number. Newer versions of C/C++ also provide `strtof()` which performs the same function but returns a `float` rather than a `double`.
 
 ```c    
 double ConvertStringToDouble(char* input) {
@@ -231,6 +235,10 @@ double ConvertStringToDouble(char* input) {
     }
 }
 ```
+
+### strtol()
+
+`strtol()` behaves very similarly to `strtod()` except parses the string into a `long int` rather than a `double`.
 
 Memory manipulation functions are also useful for string manipulation. Some of the useful functions are shown below.
 
@@ -273,85 +281,44 @@ Although the basic behaviour is defined in the ANSI standard, the exact implemen
   </thead>
 <tbody>
 <tr>
-<td >%c
-</td>
-
-<td >Prints a single ASCII character, given a 8-bit number
-</td>
-
-<td >printf("%c", 103);  // Prints "g"
-</td>
+<td>{{% md %}}`%c`{{% /md %}}</td>
+<td>Prints a single ASCII character, given a 8-bit number</td>
+<td>{{% md %}}`printf("%c", 103);  // Prints "g"`{{% /md %}}</td>
 </tr>
-<tr >
-
-<td >%i
-</td>
-
-<td >Prints a signed integer (whose exact width is implementation-specific, usually 16 or 32-bit).
-</td>
-
-<td >printf("%i", -34); // Prints "-34"
-</td>
+<tr>
+<td>{{% md %}}`%i`{{% /md %}}</td>
+<td>Prints a signed integer (whose exact width is implementation-specific, usually 16 or 32-bit).</td>
+<td>{{% md %}}`printf("%i", -34); // Prints "-34"`{{% /md %}}</td>
 </tr>
-<tr >
-
-<td >%u
-</td>
-
-<td >Prints an un-signed integer (whose exact width is implementation-specific, usually 16 or 32-bit).
-</td>
-
-<td >printf("%u", 456); // Prints "456"
-</td>
+<tr>
+<td>{{% md %}}`%u`{{% /md %}}</td>
+<td>Prints an un-signed integer (whose exact width is implementation-specific, usually 16 or 32-bit).</td>
+<td>{{% md %}}`printf("%u", 456); // Prints "456"`{{% /md %}}</td>
 </tr>
-<tr >
-
-<td >%s
-</td>
-
-<td >Prints a null-delimited string of ASCII characters (of arbitrary length).
-</td>
-
-<td >printf("%s", "This is a string"); // Prints "This is a string"
-</td>
+<tr>
+<td>{{% md %}}`%s`{{% /md %}}</td>
+<td>Prints a null-delimited string of ASCII characters (of arbitrary length).</td>
+<td>{{% md %}}`printf("%s", "This is a string"); // Prints "This is a string"`{{% /md %}}</td>
 </tr>
-<tr >
-
-<td >%x
-</td>
-
-<td >Prints a hexidecimal number
-</td>
-
-<td >printf("%x", 10); // Prints "a"
-</td>
+<tr>
+<td>{{% md %}}`%x`{{% /md %}}</td>
+<td>Prints a hexidecimal number</td>
+<td>{{% md %}}`printf("%x", 10); // Prints "a"`{{% /md %}}</td>
 </tr>
-<tr >
-
-<td >%X
-</td>
-
-<td >Same as %x, except it prints all in upper-case.
-</td>
-
-<td >printf("%X", 10); // Prints "A"
-</td>
+<tr>
+<td>{{% md %}}`%X`{{% /md %}}</td>
+<td>Same as %x, except it prints all in upper-case.</td>
+<td>{{% md %}}`printf("%X", 10); // Prints "A"`{{% /md %}}</td>
 </tr>
-<tr >
-
-<td >%f
-</td>
-
-<td >Prints a float (or double). All floats are converted to doubles anyway via default argument promotions.
-</td>
-
-<td >printf("%f", 2.345); // Prints "2.345"
-</td>
+<tr>
+<td>{{% md %}}`%f`{{% /md %}}</td>
+<td>Prints a float (or double). All floats are converted to doubles anyway via default argument promotions.</td>
+<td>{{% md %}}`printf("%f", 2.345); // Prints "2.345"`{{% /md %}}</td>
 </tr>
 </tbody>
 </table>
 
-If you actually wanted to print the % character rather than use it to specify a conversion, use two of them (printf("%%"); // prints "%").
+If you actually wanted to print the % character rather than use it to specify a conversion, use two of them (`printf("%%"); // prints "%"`).
 
 ### Format Specifiers
 
@@ -370,7 +337,7 @@ For portability, you can use the `z` format specifier when you want to print a v
 printf("Size of int = %zi.\r\n", sizeof(int));
 ```
 
-This was introduced in ISO C99. Z (upper-case z) was a GNU extension predating this standard addition and should not be used in new code.
+This was introduced in ISO C99. `Z` (upper-case `z`) was a GNU extension predating this standard addition and should not be used in new code.
 
 ### snprintf()
 
@@ -380,7 +347,7 @@ The length parameter specifies the length of the variable (for example, you can 
 
 ```c    
 // Print a float to 2 decimal places
-snprintf(txBuffer, sizeof(txbuffer), "Float to 2dp: %.2f", float1);
+snprintf(txBuffer, sizeof(txBuffer), "Float to 2dp: %.2f", float1);
 
 // Print a 8-bit number in the Keil C51 compiler, using the length specifier 'b' ('B' can be used also)
 uint8 eightBitNum = 23;
