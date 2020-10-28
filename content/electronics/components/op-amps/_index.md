@@ -269,7 +269,9 @@ Instrumentation amplifiers are analog voltage amplifier circuits that, although 
 
 ## Manufacturer Part Number Families
 
-* **INAx126**: Precision instrumentation amplifiers by Texas Instruments. The INA126 has one amplifier per package, the INA2126 has two. 
+* **INA**
+  * **INAx126**: Precision instrumentation amplifiers by Texas Instruments. The INA126 has one amplifier per package, the INA2126 has two.
+  * **INA290**: Precision current-sense amplifier.
 * **LT**: The prefix Linear Technology (now Analog Devices) uses for their range of op-amps.
   * **LT1006**: Precision, single-supply op-amp.
   * **LT1077**: Micropower, single-supply op-amp.
