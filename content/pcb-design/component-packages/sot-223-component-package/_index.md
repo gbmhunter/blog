@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-01-08
 draft: false
+lastmod: 2020-11-02
 tags: [ "component packages", "PCB design", "SOT-223", "DCQ", "DCY", "MP04A", "PG-SOT-223-4", "TO-261-4", "R-PDSO-G6", "footprint", "land pattern", "PCBs", "dimensions", "linear regulator" ]
-title: SOT-223 Component Package
-type: page
+title: "SOT-223 Component Package"
+type: "page"
 ---
 
 ## Overview
@@ -49,28 +50,16 @@ type: page
   </td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >SMD
-</td>
+<td >Mounting</td>
+<td >SMD</td>
 </tr>
 <tr >
-
-<td >Pin Count
-</td>
-
-<td >3, 4, 5 (excl. tab)
-</td>
+<td >Pin Count</td>
+<td >3, 4, 5 (excl. tab)</td>
 </tr>
 <tr >
-
-<td >Pitch
-</td>
-
-<td >n/a
-</td>
+<td >Pitch</td>
+<td >n/a</td>
 </tr>
 <tr >
 <td >Solderability</td>
@@ -101,10 +90,7 @@ type: page
 <td>n/a</td>
 </tr>
 <tr >
-
-<td >Common Uses
-</td>
-
+<td >Common Uses</td>
 <td >
   <ul>
     <li>MOSFETs</li>
@@ -120,7 +106,7 @@ type: page
 ## Conflicting Naming Conventions
 
 {{% warning %}}
-Some manufacturers use the term SOT-223-3 to refer to the 3-pin, 1 -tab package, while others count the tab as a "pin", and so name it SOT-223-4. However this conflicts with the first lot of manufacturers who use the term SOT-223-4 to refer to the package with 4 pins and 1 tab. In summary, BE CAREFUL.
+Some manufacturers use the term SOT-223-3 to refer to the 3-pin, 1-tab package, while others count the tab as a "pin", and so name it SOT-223-4. However this conflicts with the first lot of manufacturers who use the term SOT-223-4 to refer to the package with 4 pins and 1 tab. In summary, BE CAREFUL.
 {{% /warning %}}
 
 This page associates the x in SOT-223-x to stand for the **number of pins excluding the tab**. This is the most popular convention.
@@ -129,9 +115,13 @@ This page associates the x in SOT-223-x to stand for the **number of pins exclud
 
 The SOT-223-3 (TO-261AA) component package is the most common variant within the SOT-223 family. It looks similar to the SOT-23 package, but with a tab on one side instead of legs.
 
-{{< img src="to-261aa-sot-223-component-package-3d-model.jpg" width="341px" caption="A 3D render of the TO-261AA (SOT-223-3) component package."  >}}
+{{< img src="to-261aa-sot-223-component-package-3d-model.jpg" width="341px" caption="A 3D render of the TO-261AA (SOT-223-3) component package." >}}
 
 It is commonly used for medium-power linear regulators and load switches.
+
+The tab is sometimes electrically connected to pin 2 (the middle pin on the other side of the package), or sometimes electrically isolated for all other pins and called pin 4. For example, the AZ1117I linear regulator from Diodes Incorporated connects the tab to pin 2:
+
+{{% img src="az1117i-diodes-incorporated-sot223-pin-diagram-tab-connected-to-pin-2.png" width="400px" caption="The pin diagram for the AZ1117I in a SOT-223 package. Note how the tab is connected to pin 2." %}}
 
 ### Thermal Resistance
 
@@ -149,56 +139,28 @@ Texas Instruments gives the following thermal resistance data for the SOT-223-3 
 <tr >
 <td >Junction-to-ambient thermal resistance
 </td>
-
-<td >\(R_{\theta JA}\)
-</td>
-
-<td >\(64.2^{\circ}C/W\)
-</td>
+<td >\(R_{\theta JA}\)</td>
+<td >\(64.2^{\circ}C/W\)</td>
 </tr>
 <tr >
-
-<td >Junction-to-case (top) thermal resistance
-</td>
-
-<td >\(R_{\theta JC(top)}\)
-</td>
-
-<td >\(46.8^{\circ}C/W\)
-</td>
+<td >Junction-to-case (top) thermal resistance</td>
+<td >\(R_{\theta JC(top)}\)</td>
+<td >\(46.8^{\circ}C/W\)</td>
 </tr>
 <tr >
-
-<td >Junction-to-board thermal resistance
-</td>
-
-<td >\(R_{\theta JB}\)
-</td>
-
-<td >\(13.3^{\circ}C/W\)
-</td>
+<td >Junction-to-board thermal resistance</td>
+<td >\(R_{\theta JB}\)</td>
+<td >\(13.3^{\circ}C/W\)</td>
 </tr>
 <tr >
-
-<td >Junction-to-top characterisation parameter
-</td>
-
-<td >\(R_{\psi JT}\)
-</td>
-
-<td >\(6.3^{\circ}C/W\)
-</td>
+<td >Junction-to-top characterisation parameter</td>
+<td >\(R_{\psi JT}\)</td>
+<td >\(6.3^{\circ}C/W\)</td>
 </tr>
 <tr >
-
-<td >Junction-to-board characterisation parameter
-</td>
-
-<td >\(R_{\psi JB}\)
-</td>
-
-<td >\(13.2^{\circ}C/W\)
-</td>
+<td >Junction-to-board characterisation parameter</td>
+<td >\(R_{\psi JB}\)</td>
+<td >\(13.2^{\circ}C/W\)</td>
 </tr>
 </tbody>
 </table>

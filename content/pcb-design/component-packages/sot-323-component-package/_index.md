@@ -115,7 +115,7 @@ type: "page"
 
 This package is a little confusing because it shares two common names, the SOT-323-x and the SC-70-x. And it also can have a different pitch (the SOT-323-8, aka SC-70-8 or SC8 has a 0.5mm pitch). It has a lead-pitch double that of the SOT-363.
 
-If the pin number isn't specified, it is likely to be the 3 pin variant (this is the most common).
+If the pin number isn't specified, it is likely to be the 3 pin variant (this is the most common). The SOT-323 package has a significantly smaller PCB footprint than the SOT-23. 
 
 ## SOT-323-3
 
