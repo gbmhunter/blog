@@ -156,9 +156,13 @@ The `SOT-23-6` has a pitch of 0.95mm.
 
 {{< img src="package-dimensions-sot23-3.gif" caption="The dimensions of the SOT-23-3 component package."  width="500px" >}}
 
+## SOT-23-5
+
+Also called _SOT-753_ or _SC-74A_.
+
 ## SOT-23-6
 
-The `SOT-23-6` has a pitch of 0.95mm.
+The `SOT-23-6` has a pitch of 0.95mm. Also called _SC-74_.
 
 ### Non-standard Pin Numbering
 
