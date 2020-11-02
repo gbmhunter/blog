@@ -238,6 +238,12 @@ A _floating-gate MOSFET_ (FGMOS) is a type of MOSFET where the gate is completel
 
 A very critical parameter for a MOSFET is it's on state resistance. The easiest way to reduce this is to increase the doping concentration of the epitaxial layer[^science-direct-split-gate-mosfet]. However this also decreases the breakdown voltage. The _Split Gate_ MOSFET structure is a design that has been developed to allow the on resistance to decrease whilst keeping a high breakdown voltage. Comparing a standard MOSFET with a split-gate MOSFET to which both have the same breakdown voltage, the on resistance of the split-gate MOSFET can be around 50% lower. 
 
+## Current Sensing MOSFETs
+
+The [IXTN660N04T4](https://www.littelfuse.com/~/media/electronics/datasheets/discrete_mosfets/littelfuse_discrete_mosfets_n-channel_trench_gate_ixtn660n04t4_datasheet.pdf.pdf) by IXYS is one example of a current-sensing MOSFET.
+
+[On Semiconductors application note AND8093/D](https://www.onsemi.com/pub/Collateral/AND8093-D.PDF) has some great reading material on current sensing MOSFETs.
+
 ## Part Recommendations
 
 Link to DigiKey's (US) MOSFET selection (single/discrete): <https://www.digikey.com/en/products/filter/transistors-fets-mosfets-single/278>
