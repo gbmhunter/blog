@@ -39,6 +39,10 @@ type: "post"
 
 * Added a page on the {{% link text="SOT-883 component package" src="/pcb-design/component-packages/sot-883-component-package" %}}.
 
+    {{% figure src="/pcb-design/component-packages/sot-883-component-package/sot-883-component-package-3d-render.png" width="400px" %}}
+
 * Added a page on the {{% link text="PowerDI123 component package" src="/pcb-design/component-packages/powerdi123-component-package/" %}}.
 
 * Added information about SOA (_Safe Operating Area_) graphs and how to use them to the {{% link text="MOSFET page" src="/electronics/components/transistors/mosfets#mosfet-safe-operating-areas" %}}
+
+    {{% figure src="/electronics/components/transistors/mosfets/mosfet-soa-diagram-with-annotations.png" width="700px" %}}
