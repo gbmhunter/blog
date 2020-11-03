@@ -61,6 +61,7 @@ type: "page"
       <td>
       <ul>
         <li>0.40mm</li>
+        <li>0.45mm</li>
         <li>0.50mm</li>
         <li>0.65mm</li>
       </ul>
