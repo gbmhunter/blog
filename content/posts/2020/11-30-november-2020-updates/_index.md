@@ -10,6 +10,6 @@ title: "November 2020 Updates"
 type: "post"
 ---
 
-* Started a new page (in notes form) on {{% link text="Digital-to-Analogue Converters (DACs)" src="/electronics/components/digital-to-analogue-converters-dacs/" %}}.
+* Started a new page (in notes form) on {{% link text="Digital-to-Analogue Converters (DACs)" src="/electronics/components/digital-to-analogue-converters-dacs" %}}.
 
-* Started a new page (in notes form) on {{% link text="Voltage References" src="/electronics/components/power-regulators/voltage-references/" %}}.
+* Started a new page (in notes form) on {{% link text="Voltage References" src="/electronics/components/power-regulators/voltage-references" %}}.
