@@ -1,11 +1,13 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2015-03-24
+description: "Schematic examples, output voltage equations and more info about SEPIC converters."
 draft: false
+lastmod: 2015-03-24
 tags: [ "SEPIC", "converter", "SMPS", "PWM", "boost converter", "boost", "schematic", "inductor", "capacitor" ]
 title: "SEPIC Converters"
-type: page
+type: "page"
 ---
 
 ## Overview
@@ -22,7 +24,7 @@ Like other SMPS, the SEPIC converter uses a switching element of control the out
 
 In continuous-conduction mode (CCM), the equation linking the input and output voltage of a SEPIC is:
 
-<div>$$ D = \frac{V_{OUT}}{V_{OUT} + V_{IN}} $$</div>
+<p>$$ D = \frac{V_{OUT}}{V_{OUT} + V_{IN}} $$</p>
 
 ## Inductor(s)
 
@@ -30,13 +32,13 @@ The SEPIC is usually identified by it's two inductors, rather than as most other
 
 The equations are different for coupled and un-coupled inductor designs. For a coupled inductor, the equation is:
 
-<div>$$ L = \frac{V_{IN}^2 d_{min}^2}{2f_s P_{OUT(min)}(1 + d_{min}\frac{1 - n}{n})} $$</div>
+<p>$$ L = \frac{V_{IN}^2 d_{min}^2}{2f_s P_{OUT(min)}(1 + d_{min}\frac{1 - n}{n})} $$</p>
 
 And for two uncoupled inductors:
 
-<div>$$ L_1 = \frac{d_{min} V_{IN(max)}^2 n}{2f_s P_{OUT(min)}} $$</div>
+<p>$$ L_1 = \frac{d_{min} V_{IN(max)}^2 n}{2f_s P_{OUT(min)}} $$</p>
 
-<div>$$ L_2 = \frac{(1 - d_{min}) V_{OUT}^2}{2f_s P_{OUT(min)}} $$</div>
+<p>$$ L_2 = \frac{(1 - d_{min}) V_{OUT}^2}{2f_s P_{OUT(min)}} $$</p>
 
 The above equations determines the minimum inductance required for CCM operation at maximum input voltage and minimum load (the worst-case scenario for a SEPIC).
 

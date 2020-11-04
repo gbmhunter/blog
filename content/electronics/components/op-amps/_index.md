@@ -290,6 +290,8 @@ Instrumentation amplifiers are analog voltage amplifier circuits that, although 
   * **OPA27**: Texas Instruments (previously Burr-Brown) family of ultra-low noise, precision op-amps. Internally compensated for unity-gain stability.
   * **OPA37**: Uncompensated version of the OPA27.
 * **TLE202**: Texas Instruments family of "high-speed low-power" precision operational amplifiers. Belong to the _Excalibur_ family of TI op-amps which uses "isolated vertical PNP transistors" to give unity-gain bandwidth and slew rate improvements.
+* **TLV**: Texas Instruments family of op-amps.
+  **TLV27**:
 
 ## Examples
 
