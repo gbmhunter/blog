@@ -14,9 +14,23 @@ type: "page"
 
 ## Architectures
 
+* String DAC
 * R-2R
 * Sigma-Delta
-* String DAC
+* Multiplying DAC (MDAC)
+
+### String
+
+String is the easiest to understand.
+
+{{% figure src="dac-architecture-string.svg" width="600px" caption="The internal schematics of a string DAC." %}}
+
+`\(2^n - 1\)` resistors are required in the string, where `\(n\)` is the number of bits of the DAC. For example:
+
+* 8bit DAC: 255 resistors
+* 10bit DAC: 1023 resistors
+* 12bit DAC: 4095 resistors
+* 16bit DAC: 65535 resistors!!!
 
 ### R-2R
 
@@ -27,6 +41,8 @@ An N-bit R-2R DAC requires 2N resistors[^analog-mt015-basic-dac-architectures].
 ### Sigma-Delta
 
 Sigma-Delta DACs provide the highest precision DACs compared to any other common architecture. You typically find Sigma-Delta DACs with a resolution of 18-24 bits.
+
+
 
 ## Output Types
 
