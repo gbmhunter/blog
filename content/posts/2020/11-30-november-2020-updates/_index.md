@@ -12,4 +12,6 @@ type: "post"
 
 * Started a new page (in notes form) on {{% link text="Digital-to-Analogue Converters (DACs)" src="/electronics/components/digital-to-analogue-converters-dacs" %}}.
 
+    {{% figure src="/electronics/components/digital-to-analogue-converters-dacs/dac-architecture-string.svg" width="600px" %}}
+
 * Started a new page (in notes form) on {{% link text="Voltage References" src="/electronics/components/power-regulators/voltage-references" %}}.
