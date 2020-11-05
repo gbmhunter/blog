@@ -5,7 +5,7 @@ date: 2020-11-03
 description: "Architectures, how to read the datasheets, manufacturer part numbers and more info about Digital-to-Analogue Converters (DACs)."
 draft: false
 lastmod: 2020-11-05
-tags: [ "electronics", "components", "digital-to-analogue converters", "DACs" ]
+tags: [ "electronics", "components", "digital-to-analogue converters", "DACs", "string DAC", "MDAC", "R2R", "R-2R", "Kelvin divider", "voltage switching DAC", "delta-sigma" ]
 title: "Digital-to-Analogue Converters (DACs)"
 type: "page"
 ---
