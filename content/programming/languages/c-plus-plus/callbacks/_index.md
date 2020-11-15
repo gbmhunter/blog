@@ -1,9 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
+categories: [ "Programming", "Languages", "C++" ]
 date: 2014-01-17
 draft: false
-title: C++ Callbacks
-type: page
+lastmod: 2020-11-13
+tags: [ "programming", "languages", "C++", "callbacks", "methods", "functors", "functions", "Vlpp", "libsigc++", "signals", "slots", "callee" ]
+title: "C++ Callbacks"
+type: "page"
 ---
 
 ## Overview
@@ -132,6 +135,10 @@ A key trick is that at some point you have to strip away the type to pass the ob
     </tr>
   </tbody>
 </table>
+
+## Vlpp
+
+_Vlpp_ is an open source C++ library which provides cross-platform replacements for `<functional>` (among other std libraries). Typically, the `<functional>` library provided by the C++ standard library will not work on embedded systems (simple test: try and include it and use `std::function` to see if your platform supports it). _Vlpp_ can be used as a substitute, allowing you to use `vl::Func<void(void)>` to replace `std::function<void(void)>` and implement callbacks in this manner on embedded platforms.
 
 ## External Resources
 
