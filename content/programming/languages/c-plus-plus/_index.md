@@ -1,25 +1,26 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2012-10-22
 draft: false
-title: C++ Programming
-type: page
+lastmod: 2012-10-22
+title: "C++ Programming"
+type: "page"
 ---
 
-<h2>Overview</h2>
+## Overview
 
-<p>This page covers C++ programming and it's use in embedded programming.</p>
+This page covers C++ programming and it's use in embedded programming.
 
-<blockquote>C++ started out as a preprocessor for C, before later developing into it's own language.</blockquote>
+> C++ started out as a preprocessor for C, before later developing into it's own language.
 
 One of my favourite quotes:
 
-<blockquote>C makes it easy to shoot yourself in the foot...C++ makes it harder, but when you do, it blows your whole leg off. - Bjame Stroustrup</blockquote>
+> C makes it easy to shoot yourself in the foot...C++ makes it harder, but when you do, it blows your whole leg off. - Bjame Stroustrup
 
 ## Benefits Over C
 
 * Namespaces
-* Classes (which are just fancy and more powerful structs!)
+* Classes (which can be viewed as fancy and more powerful `struct`s!)
 * Function overloading (differing number of input variables for the same function name)
 * Operator overloading (e.g. a + sign could do whatever you want it to do, not necessarily add. Good for making things like imaginary number and fixed-point arithmetic intuitive).
 * Stricter variable type conversions, resulting in less type related errors (with more cast keywords such as static_cast<>() , dynamic_cast<>() e.t.c)
@@ -47,13 +48,13 @@ C code can be mixed (aka compiled) with/alongside C++ code. One important thing 
 
 ## Name Mangling
 
-<p>Name mangling is a technique used by C++ compilers to distinguish overloaded functions of the same name. The compiler adds some seemingly unintelligable characters to the end of overloaded functions (these characters are related to the input variables). C compilers do not do this as the C standard does not support overloaded functions (even though it looks like it, <code>printf(string, variable1, variable2, ...)</code> is not overloaded!). When cross-compiling, this has to be taken into consideration.</p>
+Name mangling is a technique used by C++ compilers to distinguish overloaded functions of the same name. The compiler adds some seemingly unintelligable characters to the end of overloaded functions (these characters are related to the input variables). C compilers do not do this as the C standard does not support overloaded functions (even though it looks like it, `printf(string, variable1, variable2, ...)` is not overloaded!). When cross-compiling, this has to be taken into consideration.
 
-<h2>Compilers</h2>
+## Compilers
 
-<p>Most embedded C++ compilers use GCC. The main competitor to the GCC compiler is Clang, however it is not as common in embedded environments (I have never personally used Clang to compile for an embedded application).</p>
+Most embedded C++ compilers use GCC. The main competitor to the GCC compiler is Clang, however it is not as common in embedded environments (I have never personally used Clang to compile for an embedded application).
 
-See the [Linux Bash Commands For C++ page](/programming/languages/c-plus-plus/linux-bash-commands-for-cpp) for a quickstart C++ guide for Linux.
+See the {{% link text="Linux Bash Commands For C++ page" src="/programming/languages/c-plus-plus/linux-bash-commands-for-cpp" %}} for a quickstart C++ guide for Linux.
 
 ## Constructors
 
@@ -61,7 +62,7 @@ There is a syntax ambiguity in C++ which normally appears when you are trying to
 
 Constructors cannot be declared static, as it makes sense that they only belong to an object of that class type. If you want to initialise static member variables, you do this in the normal C way, outside of the class definition.
 
-Constructors can take <i>parameter lists</i>, which along with constructors, is a new concept that is not present in C.
+Constructors can take _parameter lists_, which along with constructors, is a new concept that is not present in C.
 
 ## Namespaces
 

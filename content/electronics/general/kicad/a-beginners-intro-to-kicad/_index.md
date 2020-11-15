@@ -106,6 +106,10 @@ Click File->Page Settings to open the `Page Settings` window. You can select a t
 
 Unfortunately, power and ground symbols in KiCAD are just standard library schematic symbols with the voltage baked into the part itself. This means you have to create a new library component if you want to have a rail with a voltage which isn't in the default set of rail voltage symbols they provide with the installation! Ideally the voltage should just be considered part of the net name that is defined at schematic time, so you don't have to keep creating library parts for custom voltage rails in your design! 
 
+**The PWR_FLAG Symbol**
+
+The `PWR_FLAG` symbol is a special symbol in KiCAD with one output power pin. This is typically attached to a power net which has no other output power pin attached (e.g. a connector pin which provides power to board, yet the pin is defined as electrically passive) so that the ERC knows that this net is provided power.
+
 ## Libraries
 
 ```text
