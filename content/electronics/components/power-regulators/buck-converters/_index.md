@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2015-03-24
 draft: false
 lastmod: 2020-11-16
-tags: [ "electronics", "components", "power regulators", "SMPS", "buck converter", "power electronics", "inductor", "capacitor", "regulation", "control methods", "constant frequency", "current-mode" ]
+tags: [ "electronics", "components", "power regulators", "SMPS", "buck converter", "power electronics", "inductor", "capacitor", "regulation", "control methods", "constant frequency", "current-mode", "SNVA555", "PCM", "peak current mode", "CCM", "constant current mode" ]
 title: "Buck Converters"
 type: "page"
 ---
@@ -31,6 +31,10 @@ Constant frequency, current-mode control is a very common control method for buc
 Peak current measurement is a common way of "measuring" the average output current.
 
 A transconductance amplifier (amplifier that converts a input voltage to an output current) is used to compare the voltage at a feedback pin (typically labelled _FB_) to an internal voltage reference.
+
+PCM: Peak current mode
+
+See the excellent [SNVA555: Understanding and Applying Current-Mode Control Theory](https://www.ti.com.cn/cn/lit/an/snva555/snva555.pdf) by TI for more information on current-mode control theory.
 
 ## Inductor Selection
 

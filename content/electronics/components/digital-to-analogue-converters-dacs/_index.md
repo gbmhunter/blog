@@ -52,10 +52,9 @@ A R-2R DAC can have large glitch errors, due to timing differences in the switch
 
 The MDAC architecture is very similar to the R-2R architecture.
 
-### Sigma-Delta
+### Delta-Sigma
 
-Sigma-Delta DACs provide the highest precision DACs compared to any other common architecture. You typically find Sigma-Delta DACs with a resolution of 18-24 bits.
-
+Delta-Sigma (or Sigma-Delta) DACs provide the highest precision DACs compared to any other common architecture. You typically find Sigma-Delta DACs with a resolution of 18-24 bits.
 
 ## Output Types
 
