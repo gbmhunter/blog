@@ -3,19 +3,34 @@ author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2015-03-24
 draft: false
-lastmod: 2020-09-23
-tags: [ "SMPS", "buck converter", "power electronics", "inductor", "capacitor", "regulation" ]
+lastmod: 2020-11-16
+tags: [ "electronics", "components", "power regulators", "SMPS", "buck converter", "power electronics", "inductor", "capacitor", "regulation", "control methods", "constant frequency", "current-mode" ]
 title: "Buck Converters"
 type: "page"
 ---
 
 ## Overview
 
-Buck converters use a switching element, inductor and capacitor to convert an input voltage into a lower output voltage.
+Buck converters use a switching element, inductor and capacitor to convert an input voltage into a lower output voltage. It is a type of _switch-mode power supply_ (SMPS).
 
 {{< img src="smps-buck-converter-simple.png" width="629px" caption="The basic parts of a buck converter." >}}
 
 When using a P-channel MOSFET for synchronous rectification, it's body diode is forward-biased when the converter is in shutdown mode. This can **drain the power source** into the output. More advanced buck converters have extra circuitry to disconnect this P-channel MOSFET when the device is not active.
+
+## Control Methods
+
+Almost all control methods aim to regulate the output voltage.
+
+### Constant Frequency, Current-Mode Control
+
+Constant frequency, current-mode control is a very common control method for buck converters. It has the benefits of:
+
+* Permitting smaller output capacitances
+* Simplifying the external frequency compensation
+
+Peak current measurement is a common way of "measuring" the average output current.
+
+A transconductance amplifier (amplifier that converts a input voltage to an output current) is used to compare the voltage at a feedback pin (typically labelled _FB_) to an internal voltage reference.
 
 ## Inductor Selection
 
@@ -23,7 +38,7 @@ You can use the following equations to select the main inductor for a buck conve
 
 First, calculate the maximum average inductor current using:
 
-<div>$$ I_L = I_{OUT} \frac{V_{OUT}}{0.8 V_{IN}} $$</div>
+<p>$$ I_L = I_{OUT} \frac{V_{OUT}}{0.8 V_{IN}} $$</p>
 
 <p class="centered">
     where:<br>
@@ -33,7 +48,7 @@ First, calculate the maximum average inductor current using:
 
 Then, calculate the value of inductance required with:
 
-<div>$$ L = \frac{V_{IN} (V_{OUT} - V_{IN})}{\Delta I_L \cdot f \cdot V_{OUT}} $$</div>
+<p>$$ L = \frac{V_{IN} (V_{OUT} - V_{IN})}{\Delta I_L \cdot f \cdot V_{OUT}} $$</p>
 
 <p class="centered">
     where:<br>
@@ -46,7 +61,7 @@ and everything else as mentioned previously<br>
 
 The output capacitance is primarily determined by the maximum allowed output voltage ripple. This ripple is determined by the capacitance of the capacitor and it's ESR (equivalent series resistance). The output capacitance of a boost converter can be found using the following equation.
 
-<div>$$ C_{min} = \dfrac{I_O (V_{OUT} - V_{IN})}{f  \Delta V V_{OUT}} $$</div>
+<p>$$ C_{min} = \dfrac{I_O (V_{OUT} - V_{IN})}{f  \Delta V V_{OUT}} $$</p>
 
 <p class="centered">
 where:<br>
@@ -56,7 +71,7 @@ and everything else as mentioned previously<br>
 
 The actual ripple will be slightly larger than this due to the ESR of the capacitor.
 
-<div>$$ \Delta V_{ESR} = I_O R_{ESR} $$</div>
+<p>$$ \Delta V_{ESR} = I_O R_{ESR} $$</p>
 
 <p class="centered">
     where:<br>
