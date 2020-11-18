@@ -4,7 +4,7 @@ date: 2011-09-03
 description: "A tutorial on the I2C communication protocol."
 draft: false
 lastmod: 2020-06-19
-tags: [ "I2C", "communication protocol", "bus", "serial", "microcontroller", "open-collector", "data", "transceiver", "TX", "RX" ]
+tags: [ "I2C", "communication protocol", "bus", "serial", "microcontroller", "open-collector", "data", "transceiver", "TX", "RX", "SCL", "SDA" ]
 title: "I2C Communication Protocol"
 type: "page"
 ---
