@@ -13,7 +13,7 @@ type: "page"
 
 ## Overview
 
-The _I3C communication protocol_ (pronounced eye-three-see) is a standard by the Sensor Working Group at the MIPI Alliance. The name is intended to indicate it's similarity to {{% link text="I2C" src="i2c-communication-protocol/" %}}, with the bus having the same two-wire _SCL_ and _SDA_ wires and being **backwards compatible with I2C** (with some caveats).
+The _I3C communication protocol_ (pronounced eye-three-see) is a standard by the Sensor Working Group at the MIPI Alliance. The name is intended to indicate it's similarity to {{% link text="I2C" src="i2c-communication-protocol" %}}, with the bus having the same two-wire _SCL_ and _SDA_ wires and being **backwards compatible with I2C** (with some caveats).
 
 ## History
 
