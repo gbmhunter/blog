@@ -29,9 +29,11 @@ The MIPI I3C Basic specification states that I3C has significant energy consumpt
 
 The speed improvement over I2C is enabled mostly by the ability for I3C to **switch from open-drain to push-pull drive** in certain modes. I2C uses open-drain drive at all times, which limits the rise-time of the signal (the signal is pulled high by a "slow" resistor). I3C can switch from open-drain to push-pull once the initial bus arbitration has taken place, allowing much faster communication (up to rates comparable with SPI).
 
+I3C does not need external pull-up resistors --- the pull-up resistors are provided by the I3C master(s).
+
 ## Backwards Compatibility With I2C
 
-**I2C devices can be connected to an I3C bus** and communicate with I2C and I3C nodes at I2C bit rates. The standard allows the **bit rate to increase** when an I3C node is communicating with another I3C node. 
+**I2C devices can be connected to an I3C bus** and communicate with I2C and I3C nodes at I2C bit rates. The standard allows the **bit rate to increase** when an I3C node is communicating with another I3C node. While I2C slaves are supported on an I3C bus, I2C masters are not (the master on a I3C must be a I3C device). 
 
 ## References
 

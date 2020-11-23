@@ -76,7 +76,7 @@ The I²C bus uses open-drain drivers to allow for **compatibility** between chip
 
 **The value of the resistor determines the maximum speed of the bus (the lower the resistance, the faster the bus can operate).** The resistance is limited at the lower end by the maximum bus current that the I²C chips can supply, and maximum power consumption if relevant. The I2C specification states that an I2C compliant device must be able to sink at least 3mA from the I2C bus lines and have a logic low voltage of no higher than `\(V_{OL} = 0.4V\)` while doing this. Using this information, it is easy to come up with the equation for the minimum allowed resistance:
 
-<div>$$ R_{min} = \frac{V_{CC} - V_{OL}}{I_{OL}} $$</div>
+<p>$$ R_{min} = \frac{V_{CC} - V_{OL}}{I_{OL}} $$</p>
 
 <p class="centered">
 where:<br>
@@ -87,11 +87,11 @@ where:<br>
 
 Given the fixed known values, this can be simplified to:
 
-<div>$$ R_{P, min} = \frac{V_{CC} - 0.4V}{3mA} $$</div>
+<p>$$ R_{P, min} = \frac{V_{CC} - 0.4V}{3mA} $$</p>
 
 Because of I2C's open-collector topology, it is **solely the pull-up resistors duty to pull the line high** when a device releases it (i.e. stops pulling it to ground). The pull-up resistor, along with the bus capacitance `\( C_{BUS} \)`, creates a time constant which slows the rise time of the bus voltage. The I2C specification states that a voltage above `\( V_{IH} = 0.7V_{CC} \)` must be considered logic high by all devices.
 
-<div>$$ R_{P, max} = \frac{T_R}{0.847298C_{BUS}} $$</div>
+<p>$$ R_{P, max} = \frac{T_R}{0.847298C_{BUS}} $$</p>
 
 <p class="centered">
     where:<br>
@@ -355,10 +355,18 @@ I try to use SPI or UART over I2C (if the option exists, and there are no other 
 
 ## Microcontroller Support
 
-I2C is a very popular protocol and is supported by most microcontrollers. Some examples of microcontroller I2C support include the TI MSP430 Enhanced Universal Serial Communication Interface (eUSCI),[ PSoC 3, 4, and 5LP I2C drag'n'drop modules](/programming/microcontrollers/psoc/components#i2c) (both integrated and hardware fabric versions), and the Atmel Atmega TWI peripheral.
+**I2C is a very popular protocol and is supported by most microcontrollers**. Some examples of microcontroller I2C support include the TI MSP430 Enhanced Universal Serial Communication Interface (eUSCI),[ PSoC 3, 4, and 5LP I2C drag'n'drop modules](/programming/microcontrollers/psoc/components#i2c) (both integrated and hardware fabric versions), and the Atmel Atmega TWI peripheral.
 
 ### I2C Programmable Analog And Digital Noise Filters
 
 Some microcontrollers provide programmable analog and/or digital noise filters for their I2C peripherals.
 
 An example of a microcontroller that provides both analog and digital filters is the STM32F0 range by STmicroelectronics.
+
+### SCL Spike Filters
+
+The I2C specification requires that I2C devices ignore any high signal on the SCL wire that lasts less than 50ns. This specification is not universally implemented, typically because in most cases it does not effect operation. However, the {{% link text="I3C communication protocol" src="i3c-communication-protocol" %}} uses this feature for some of it's _high data rate_ (HDR) modes which allow I2C slaves with spike filters to co-exist on the bus while the HDR transmission takes places between two I3C devices.
+
+## Alternatives To I2C
+
+A popular alternative to I2C is the {{% link text="SPI bus" src="spi-communication-protocol" %}}. {{% link text="I3C" src="i3c-communication-protocol" %}} is less widely used but "improvement" on I2C in terms of baud rate, features and power usage.
