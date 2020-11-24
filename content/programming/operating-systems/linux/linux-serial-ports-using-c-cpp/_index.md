@@ -5,7 +5,7 @@ date: 2017-06-24
 description: "A walk-through on how to configure serial ports correctly in Linux."
 draft: false
 images: [ "/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/linux-dev-dir-ttyacm0-arduino-serial.png" ]
-lastmod: 2020-09-27
+lastmod: 2020-11-24
 tags: [ "Linux", "serial ports", "termios", "files", "unix", "tty", "devices", "configurations", "C", "C++", "examples", "getty", "Arduino", "code" ]
 title: "Linux Serial Ports Using C/C++"
 type: "page"
@@ -27,7 +27,7 @@ Common names are:
 * `/dev/ttyUSB0` - Most USB-to-serial cables will show up using a file named like this.
 * `/dev/pts/0` - A pseudo terminal. These can be generated with `socat`.
 
-{{< img src="linux-dev-dir-ttyacm0-arduino-serial.png" width="600px" caption="A listing of the /dev/ directory in Linux with a connected Arduino. The Arduino serial port is present as /dev/ttyACMO0." >}}
+{{< img src="linux-dev-dir-ttyacm0-arduino-serial.png" width="600px" caption="A listing of the /dev/ directory in Linux with a connected Arduino. The Arduino serial port is present as /dev/ttyACM0." >}}
 
 **To write to a serial port, you write to the file. To read from a serial port, you read from the file.** Of course, this allows you to send/receive data, but how do you set the serial port parameters such as baud rate, parity, e.t.c? This is set by a special `tty` configuration `struct`.
 
@@ -56,7 +56,7 @@ Then we want to open the serial port device (which appears as a file under `/dev
 ```c 
 int serial_port = open("/dev/ttyUSB0", O_RDWR);
 
-# Check for errors
+// Check for errors
 if (serial_port < 0) {
     printf("Error %i from open: %s\n", errno, strerror(errno));
 }
@@ -81,7 +81,7 @@ When modifying any configuration value, it is best practice to only modify the b
 We need access to the `termios` struct in order to configure the serial port. We will create a new `termios` struct, and then write the existing configuration of the serial port to it using `tcgetattr()`, before modifying the parameters as needed and saving the settings with `tcsetattr()`.
 
 ```c
-// Create new termios struc, we call it 'tty' for convention
+// Create new termios struct, we call it 'tty' for convention
 // No need for "= {0}" at the end as we'll immediately write the existing
 // config to this struct
 struct termios tty;
@@ -95,11 +95,22 @@ if(tcgetattr(serial_port, &tty) != 0) {
 }
 ```
 
-We can now change `tty`'s settings as needed, as shown in the following sections.
+We can now change `tty`'s settings as needed, as shown in the following sections. Before we get onto that, here is the definition of the `termios` struct if you're interested (pulled from `termbits.h`):
+
+```c
+struct termios {
+	tcflag_t c_iflag;		/* input mode flags */
+	tcflag_t c_oflag;		/* output mode flags */
+	tcflag_t c_cflag;		/* control mode flags */
+	tcflag_t c_lflag;		/* local mode flags */
+	cc_t c_line;			/* line discipline */
+	cc_t c_cc[NCCS];		/* control characters */
+};
+```
 
 ## Control Modes (c_cflags)
 
-The `c_cflags` member of the `termios` struct contains control parameter fields.
+The `c_cflag` member of the `termios` struct contains control parameter fields.
 
 ### PARENB (Parity)
 
@@ -256,7 +267,19 @@ If you want to remain UNIX compliant, the baud rate must be chosen from one of t
 B0,  B50,  B75,  B110,  B134,  B150,  B200, B300, B600, B1200, B1800, B2400, B4800, B9600, B19200, B38400, B57600, B115200, B230400, B460800
 ```
 
-If you are compiling with the GNU C library, you can forgo these enumerations and just specify an integer baud rate directly, e.g.:
+Some implementation of Linux provide a helper function `cfsetspeed()` which sets both the input and output speeds at the same time:
+
+```c
+cfsetspeed(&tty, B9600);
+```
+
+### Custom Baud Rates
+
+As you are now fully aware that configuring a Linux serial port is no trivial matter, you're probably unfazed to learn that setting custom baud rates is just as difficult. There is **no portable way of doing this, so be prepared to experiment** with the following code examples to find out what works on your target system.
+
+**GNU/Linux Method**
+
+If you are compiling with the GNU C library, you can forgo the standard enumerations above just specify an integer baud rate directly to `cfsetispeed()` and `cfsetospeed()`, e.g.:
 
 ```c
 // Specifying a custom baud rate when using GNU C
@@ -264,9 +287,64 @@ cfsetispeed(&tty, 104560);
 cfsetospeed(&tty, 104560);
 ```
 
-Not all hardware will support all baud rates, so it is best to stick with one of the standard `BXXX` rates above if you have the option to do so. If you have no idea what the baud rate is and you are trying to communicate with a 3rd party system, try `B9600`, then `B57600` and then `B115200` as they are the most common rates.
+**termios2 Method**
 
-**For Linux serial port code examples see [https://github.com/gbmhunter/CppLinuxSerial](https://github.com/gbmhunter/CppLinuxSerial).**
+This method relied on using a `termios2` struct, which is like a `termios` struct but with sightly more functionality. I'm unsure on exactly what UNIX systems `termios2` is defined on, but if it is, it is usually defined in `termbits.h` (it was on the Xubuntu 18.04 with GCC system I was doing these tests on):
+
+```c
+struct termios2 {
+	tcflag_t c_iflag;		/* input mode flags */
+	tcflag_t c_oflag;		/* output mode flags */
+	tcflag_t c_cflag;		/* control mode flags */
+	tcflag_t c_lflag;		/* local mode flags */
+	cc_t c_line;			/* line discipline */
+	cc_t c_cc[NCCS];		/* control characters */
+	speed_t c_ispeed;		/* input speed */
+	speed_t c_ospeed;		/* output speed */
+};
+```
+
+Which is very similar to plain old `termios`, except with the addition of the `c_ispeed` and `c_ospeed`. We can use these to directly set a custom baud rate! We can pretty much set everything other than the baud rate in exactly the same manner as we could for `termios`, except for the reading/writing of the terminal attributes to and from the file descriptor --- instead of using `tcgetattr()` and `tcsetattr()` we have to use `ioctl()`.
+
+Let's first update our includes, we have to remove `termios.h` and add the following:
+
+```c
+// #include <termios.h> This must be removed! 
+// Otherwise we'll get "redefinition of ‘struct termios’" errors
+#include <sys/ioctl.h> // Used for TCGETS2/TCSETS2, which is required for custom baud rates
+```
+
+```c
+struct termios2 tty;
+
+// Read in the terminal settings using ioctl instead
+// of tcsetattr (tcsetattr only works with termios, not termios2)
+ioctl(fd, TCGETS2, &tty);
+
+// Set everything but baud rate as usual
+// ...
+// ...
+
+// Set custom baud rate
+tty.c_cflag &= ~CBAUD;
+tty.c_cflag |= CBAUDEX;
+// On the internet there is also talk of using the "BOTHER" macro here:
+// tty.c_cflag |= BOTHER;
+// I never had any luck with it, so omitting in favour of using
+// CBAUDEX
+tty.c_ispeed = 123456; // What a custom baud rate!
+tty.c_ospeed = 123456;
+
+// Write terminal settings to file descriptor
+ioctl(serial_port, TCSETS2, &tty);
+
+```
+
+Please read the comment above about `BOTHER`. Perhaps on your system this method will work!
+
+{{% note %}}
+Not all hardware will support all baud rates, so it is best to stick with one of the standard `BXXX` rates above if you have the option to do so. If you have no idea what the baud rate is and you are trying to communicate with a 3rd party system, try `B9600`, then `B57600` and then `B115200` as they are the most common rates.
+{{% /note %}}
 
 ## Saving termios
 
@@ -316,7 +394,7 @@ This is a simple as:
 close(serial_port)
 ```
 
-## Full Example
+## Full Example (Standard Baud Rates)
 
 ```c++
 // C library headers
@@ -406,6 +484,8 @@ int main() {
   return 0; // success
 }
 ```
+
+**For Linux serial port code examples see [https://github.com/gbmhunter/CppLinuxSerial](https://github.com/gbmhunter/CppLinuxSerial).**
 
 ## Issues With Getty
 
