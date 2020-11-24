@@ -1,0 +1,55 @@
+---
+author: "gbmhunter"
+categories: [ "Programming", "Programming Languages", "Python" ]
+date: 2019-09-16
+description: "How to install Python on Windows, MacOS and Linux."
+draft: false
+lastmod: 2020-11-18
+tags: [ "Python", "programming", "programming languages", "software", "installing", "Windows", "Linux", "PATH", "pip", "App Execution Aliases", "Windows 10" ]
+title: "Installing Python"
+type: "page"
+---
+
+## Overview
+
+Python can be installed onto operating systems in a variety of different ways.
+
+## Windows
+
+The easiest way is to visit [https://www.python.org/downloads/](https://www.python.org/downloads/) and download the web-based installer which will downloaded the needed components at install time.
+
+You may have to add the `python.exe` install location to your system `PATH` manually. Python will typically be installed to:
+
+```text
+C:\Users\<username>\AppData\Local\Programs\Python\Python<version>\
+```
+
+when installed for a single user on Windows 10. You will also want to add the `Scripts\` folder so that you can call `pip` from the command-line, so also add the following to your `PATH`:
+
+```text
+C:\Users\<username>\AppData\Local\Programs\Python\Python<version>\Scripts\
+```
+
+The [Anaconda distribution](https://www.anaconda.com/) is also contains the Python interpreter.
+
+Windows 10 introduced what I consider a really annoying "feature" called _App Execution Aliases_. What this means is that if you don't have python installed on your system but try and execute `python.exe`, Windows will jump in a load up the Windows Store to prompt you to download and install it. While good natured in principle, it causes many headaches as 3rd party software which tried to invoke python will not get the error message it expects.
+
+You can disable App Execution Aliases for `python.exe` and `python3.exe` by searching for _Managing App Execution Aliases_ in the Windows Search. Load up the settings window and deselect all versions of `python`.
+
+{{% img src="windows-manage-app-execution-aliases-python.png" width="400px" caption="Deselect all flavours of python.exe from the App Execution Aliases settings dialogue in Windows to prevent the Windows Store from opening when you try and invoke a non-existent python.exe." %}}
+
+You might get an error like shown below if you try and invoke a non-existent `python.exe` when arguments are provided (Windows Store will NOT load in this case):
+
+`Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Manage App Execution Aliases.`
+
+## CentOS
+
+### ModuleNotFoundError: No module named '_ctypes'
+
+This is likely due to `libffi-dev` (Debian-like) or `libffi-devel` (RedHat-like) missing from your systems. Install with (on RedHat-like systems):
+
+```bash
+$ sudo yum install libffi-devel
+```
+
+and then try building Python again.
