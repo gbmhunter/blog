@@ -1,11 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
+lastmod: 2020-11-18
 tags: [ "component packages", "PCB design", "transistor", "TSSOP", "thin scale small-outline package", "HTSSOP" ]
-title: TSSOP Component Package
-type: page
+title: "TSSOP Component Package"
+type: "page"
 ---
 
 ## Overview
@@ -54,25 +55,27 @@ type: page
 </td></tr><tr >
 <td >Land Area
 </td>
-<td >n/a
-</td></tr><tr >
-<td >Height
-</td>
-<td >n/a
-</td></tr><tr >
-<td >3D Models
-</td>
-<td >n/a
-</td></tr><tr >
-<td >Common Uses
-</td>
+<td >n/a</td>
+</tr>
+<tr >
+<td >Height</td>
+<td >n/a</td>
+</tr>
+<tr >
+<td >3D Models</td>
+<td >n/a</td>
+</tr>
+<tr >
+<td >Common Uses</td>
 <td >
-    <ul>
-        <li>General ICs</li>
-        <li>H-bridges (the HTSSOP variant)</li>
-    </ul>
+  <ul>
+    <li>General ICs</li>
+    <li>H-bridges (the HTSSOP variant)</li>
+  </ul>
 </td>
-</tr></tbody></table>
+</tr>
+</tbody>
+</table>
 
 ## Variants
 
@@ -83,13 +86,13 @@ There is a variant of the TSSOP with a solder pad on the underside. Texas Instru
 The HTTSOP-28 component package has the following thermal resistances:
 
 <table>
-    <thead>
-        <tr>
-            <th>Symbol</th>
-            <th>Description</th>
-            <th>Thermal Resistance</th>
-        </tr>
-    <tbody>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Description</th>
+      <th>Thermal Resistance</th>
+    </tr>
+  <tbody>
 <tr >
 <td >\( R_{\theta JA} \)
 </td>

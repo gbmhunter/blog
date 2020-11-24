@@ -285,6 +285,7 @@ Instrumentation amplifiers are analog voltage amplifier circuits that, although 
   * **OP07D**: ±4-18V VCC
   * **OP07E**: 0 to 70°C commercial temp. range
 * **OPA**: Texas Instruments (previously Burr-Brown) family of op-amps.
+  * **OPAx187**: Zero-drift 36V rail-to-rail op-amps. Includes the OPA187 (1 op-amp), OPA2187 (2 op-amps) and OPA4187 (4 op-amps).
   * **OPA241**: Single-supply
   * **OPA251**: Dual-supply
   * **OPA27**: Texas Instruments (previously Burr-Brown) family of ultra-low noise, precision op-amps. Internally compensated for unity-gain stability.
