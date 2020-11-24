@@ -18,4 +18,6 @@ type: "post"
 
 * Added information about the _Vlpp_ open source library to the {{% link text="C++ Callbacks page" src="/programming/languages/c-plus-plus/callbacks" %}}.
 
-* Added a new page (just in notes form) on the {{% link text="I3C Communication Protocol" src="/electronics/communication-protocols/i3c-communication-protocol" %}}
+* Added a new page (just in notes form) on the {{% link text="I3C Communication Protocol" src="/electronics/communication-protocols/i3c-communication-protocol" %}}.
+
+* Fleshed out the Linux Serial Ports Using C/C++ page with more info on {{% link text="custom baud rates" src="/programming/operating-systems/linux/linux-serial-ports-using-c-cpp#baud-rate" %}}.
