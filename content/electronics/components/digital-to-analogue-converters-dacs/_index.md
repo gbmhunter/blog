@@ -4,8 +4,8 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2020-11-03
 description: "Architectures, how to read the datasheets, manufacturer part numbers and more info about Digital-to-Analogue Converters (DACs)."
 draft: false
-lastmod: 2020-11-05
-tags: [ "electronics", "components", "digital-to-analogue converters", "DACs", "string DAC", "MDAC", "R2R", "R-2R", "Kelvin divider", "voltage switching DAC", "delta-sigma" ]
+lastmod: 2020-11-25
+tags: [ "electronics", "components", "digital-to-analogue converters", "DACs", "string DAC", "MDAC", "R2R", "R-2R", "Kelvin divider", "voltage switching DAC", "delta-sigma", "unipolar", "single-supply", "bipolar", "ppm", "voltage references" ]
 title: "Digital-to-Analogue Converters (DACs)"
 type: "page"
 ---
@@ -20,6 +20,8 @@ When looking for a DAC for your next project, you might stumble across a few dif
 * R-2R DAC (Voltage Switching DAC)
 * Multiplying DAC (MDAC)
 * Sigma-Delta
+
+**Any of these architectures can be _unipolar_ or _bipolar_**. _Unipolar_ (a.k.a. _single supply_) DACs only convert digital values into either positive or negative values, while _bipolar_ DACs can output both negative and positive output values.
 
 We will discuss these further in the following sections:
 
@@ -58,10 +60,16 @@ Delta-Sigma (or Sigma-Delta) DACs provide the highest precision DACs compared to
 
 ## Output Types
 
-* Buffered voltage outputs
-* Unbuffered voltage outputs
+* **Buffered voltage outputs**: The output from the digital-to-analogue conversion circuitry is fed into an op-amp to buffer the circuitry, lowering the output impedance and making the output less sensitive to current draw and noise.
+* **Unbuffered voltage outputs**: No op-amp is added to buffer the output voltage. 
 
 ## Voltage References
+
+**The voltage reference is a very important piece of a DAC circuit**. The voltage reference provides the full-scale voltage that the DAC will output (or a fixed multiplier of the full-scale output if there is an output buffer with multiplier). It is important to consider the accuracy of the voltage reference over temperature changes. Typically an error in `\(ppm/°C\)` is provided, with a value of `\(10-100ppm/°C\)` being normal.
+
+### Internal Voltage References
+
+Many DACs come with built in internal voltage references (as well as allowing you to connect an external voltage reference if required).
 
 ### External Voltage References
 
@@ -69,15 +77,17 @@ Most DACs have a requirement for the external voltage reference to be no less th
 
 ## Datasheet Specifications
 
-* Resolution: Number of bits
-* Zero Code Error: Voltage when the DAC is instructed to output 0V. Typically 0.5-10mV.
-* Offset Error: 
-* Output Power-Up Voltage: Within a family of DACs, sometimes there are different physical variants of the IC which will output different voltages on power-up. The most common output voltage is 0V on start-up.
+* **Resolution**: This is normally given as the number of bits. This determines what the smallest output step change will be in-response to the smallest digital code change (and change in the LSB). For example, a 10-bit DAC will have 2^10=1024 steps, an so the smallest output step change will be 1/1024 of the reference voltage. Not to be confused with _accuracy_.
+* **Zero Code Error**: Voltage when the DAC is instructed to output 0V (the zero code). Typically 0.5-10mV. In a unipolar DAC, this is the same as the _offset error_. In a bipolar DAC, this is different to the _offset error_.
+* **Offset Error**: The different between the ideal output and measured output at the lowest possible voltage. For a unipolar DAC the lowest possible voltage is 0V, so this is the same as the _zero code error_. For a bipolar DAC, this will be the most negative voltage and different from the _zero code error_.
+* **Output Power-Up Voltage**: Within a family of DACs, sometimes there are different physical variants of the IC which will output different voltages on power-up. The most common output voltage is 0V on start-up.
 
 ## Manufacturer Part Families
 
 * **AD**: Range of DACs by Analog Devices
   * **AD7**: 
+* **LTC**: Range of DACs by Linear Technology (now owned by Analog Devices).
+  * **LTC2664**: Precision reference DAC.
 
 ## References
 

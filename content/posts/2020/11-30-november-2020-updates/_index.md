@@ -20,4 +20,6 @@ type: "post"
 
 * Added a new page (just in notes form) on the {{% link text="I3C Communication Protocol" src="/electronics/communication-protocols/i3c-communication-protocol" %}}.
 
+    {{% figure src="/electronics/communication-protocols/i3c-communication-protocol/mipi-alliance-logo.jpg" width="500px" %}}
+
 * Fleshed out the Linux Serial Ports Using C/C++ page with more info on {{% link text="custom baud rates" src="/programming/operating-systems/linux/linux-serial-ports-using-c-cpp#baud-rate" %}}.
