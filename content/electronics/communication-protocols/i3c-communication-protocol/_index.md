@@ -15,6 +15,8 @@ type: "page"
 
 The _I3C communication protocol_ (pronounced eye-three-see) is a standard by the Sensor Working Group at the MIPI Alliance. The name is intended to indicate it's similarity to {{% link text="I2C" src="i2c-communication-protocol" %}}, with the bus having the same two-wire _SCL_ and _SDA_ wires and being **backwards compatible with I2C** (with some caveats).
 
+{{% img src="mipi-alliance-logo.jpg" width="700px" caption="The MIPI Alliance logo. I couldn't find a logo specifically for the I3C protocol so this is the best substitute. Image from https://www.fierceelectronics.com/components/mipi-alliance-releases-mipi-i3c-sensor-interface-specification." %}}
+
 MIPI membership (and $$$) is required to get the full I3C specification. However, there is a publicly available subset of the full specification called MIPI I3C Basic, which can be downloaded for free from the [MIPI Alliance website](https://resources.mipi.org/mipi-i3c-basic-v1-download).
 
 ## History
