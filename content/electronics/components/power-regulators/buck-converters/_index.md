@@ -2,8 +2,10 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2015-03-24
+description: "Control methods, component selection, equations, operation modes, schematics, examples and more info on buck converters."
 draft: false
-lastmod: 2020-11-16
+images: [ "/electronics/components/power-regulators/buck-converters/smps-buck-converter-simple.png" ]
+lastmod: 2020-11-30
 tags: [ "electronics", "components", "power regulators", "SMPS", "buck converter", "power electronics", "inductor", "capacitor", "regulation", "control methods", "constant frequency", "current-mode", "SNVA555", "PCM", "peak current mode", "CCM", "constant current mode" ]
 title: "Buck Converters"
 type: "page"
@@ -60,6 +62,25 @@ Then, calculate the value of inductance required with:
     \( f \) = the switching frequency<br>
 and everything else as mentioned previously<br>
 </p>
+
+### Types Of Inductors
+
+Inductors used for buck converters can generally be classified into one of three different types:
+
+1. **Wire-wound ferrite core**: Copper wound around a ferrite core.
+1. **Metal composite**: Metal powders moulded around copper windings at high pressure.
+
+    {{% img src="metal-composite-inductor-construction-kemet-mpx.png" width="300px" caption="Internal construction of a metal composite inductor. Image by Kemet, retrieved from https://media.digikey.com/pdf/Data%20Sheets/Kemet%20PDFs/MPXV_Series_DS.pdf on 2020-11-30." %}}
+
+1. **Multilayer**: Laminated sheets.
+
+The various advantages of each of explored in the following table:
+
+| Type                     | Inductance
+|--------------------------|-----------------------
+| Wire-wound ferrite core  | High (up to 200uH)
+| Metal composite          | Medium (up to 10uF)
+| Multilayer               | Low (up to 1uH)
 
 ## Capacitor Selection
 
