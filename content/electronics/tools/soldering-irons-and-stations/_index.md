@@ -4,11 +4,13 @@ categories: [ "Electronics", "Tools" ]
 date: 2020-05-18
 description: "A review of the different makes and models of both soldering irons and soldering stations."
 draft: false
-lastmod: 2020-10-13
-tags: [ "electronics", "tools", "soldering iron", "soldering station", "Hakko", "JBC", "Weller" ]
+lastmod: 2020-11-30
+tags: [ "electronics", "tools", "soldering iron", "soldering station", "Hakko", "JBC", "Weller", "infrared", "pre-heating station", "rework" ]
 title: "Soldering Irons And Stations"
 type: "page"
 ---
+
+{{% warning-is-notes %}}
 
 ## Overview
 
@@ -62,3 +64,23 @@ Single port. 95W. 550°C max temp. For use with the WTP90 soldering iron, which 
 Dual port.
 75W x2
 450°C
+
+## Preheating Stations
+
+Most heater elements are between 600-1200W. The body material of the heating element is usually ceramic.
+
+Yihua
+UYUE
+
+### PUHUI T-862
+
+Adjustable temp. range from 0-450°C.
+
+### GORDAK 853
+
+250x220x110mm
+600W
+
+### PJLSW
+
+430x350x180mm
