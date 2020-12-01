@@ -21,35 +21,34 @@ Two inductances which are in close proximity they can couple with each, this is 
 ## Terminology
 
 <table>
-    <thead>
-        <tr>
-            <th>Term</th>
-            <th>Definition</th>
-        </tr>
-    </thead>
-<tbody>
-<tr>
-<td>Core</td>
-<td>Inductors are made from turns of wire. The core of an inductor is the area enclosed by these turns of wires.
-</td>
-</tr>
-<tr>
-<td>Ferro-magnetic</td>
-<td></td>
-</tr>
-<tr>
-<td>Inductance</td>
-<td>The inductance of an inductor is it's primary parameter. It is a measure of how much energy the inductance can store. It is also a measure of the voltage the inductor will generate in response to a current change. This parameter is used to calculate it's impedance, for a given frequency.</td>
-</tr>
-<tr>
-<td>Permeability</td>
-<td></td>
-</tr>
-<tr>
-<td>Self-resonance</td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Core</td>
+      <td>Inductors are made from turns of wire. The core of an inductor is the area enclosed by these turns of wires.</td>
+    </tr>
+    <tr>
+      <td>Ferro-magnetic</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Inductance</td>
+      <td>The inductance of an inductor is it's primary parameter. It is a measure of how much energy the inductance can store. It is also a measure of the voltage the inductor will generate in response to a current change. This parameter is used to calculate it's impedance, for a given frequency.</td>
+    </tr>
+    <tr>
+      <td>Permeability</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Self-resonance</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 
 ## Inductors In Series And In Parallel
@@ -60,11 +59,11 @@ The behaviour of inductors when connected together in series and in parallel is 
 
 When two inductors are connected in parallel, the equivalent total inductance follows the inverse law, as long as there is no **mutual coupling** of their magnetic fields:
 
-<div>$$ L_{total} = \dfrac{1}{\dfrac{1}{L1} + \dfrac{1}{L2}} $$</div>
+<p>$$ L_{total} = \dfrac{1}{\dfrac{1}{L1} + \dfrac{1}{L2}} $$</p>
 
 It is usually easier to remember this equation as:
 
-<div>$$ \dfrac{1}{L_{total}} = \dfrac{1}{L1} + \dfrac{1}{L2} $$</div>
+<p>$$ \dfrac{1}{L_{total}} = \dfrac{1}{L1} + \dfrac{1}{L2} $$</p>
 
 The following diagram shows this:
 
@@ -74,7 +73,7 @@ The following diagram shows this:
 
 The equivalent inductance of two inductors connected in series is the sum of the individual inductances, as long as there is no **mutual coupling** of their magnetic fields.
 
-<div>$$ L_{total} = L1 + L2 $$</div>
+<p>$$ L_{total} = L1 + L2 $$</p>
 
 This is shown in the diagram below:
 
@@ -120,7 +119,7 @@ This is shown in the diagram below:
 
 The equation relating the voltage, inductance and change in current is:
 
-<div>$$v = L \frac{di}{dt}$$</div>
+<p>$$v = L \frac{di}{dt}$$</p>
 
 <p class="centered">
     where:<br>
@@ -133,7 +132,7 @@ The equation relating the voltage, inductance and change in current is:
 
 The energy stored in a inductor is given by:
 
-<div>$$E = \frac{1}{2}LI^2$$</div>
+<p>$$E = \frac{1}{2}LI^2$$</p>
 
 <p class="centered">
     where:<br>
@@ -148,12 +147,11 @@ This equation is only valid when the inductor is operating in it's linear region
 
 An ideal inductor (no parasitic elements) has an impedance given by:
 
-<div>$$Z_L = 2\pi fL$$</div>
+<p>$$Z_L = 2\pi fL$$</p>
 
 <p class="centered">
     where:<br>
-    \( Z_L \) = inductor's impe
-    dance (\( \Omega \))<br>
+    \( Z_L \) = inductor's impedance (\( \Omega \))<br>
     \( f \) = frequency of analysis (\( Hz \))<br>
     \( L \) = inductance of inductor (\( H \))<br>
 </p>
@@ -162,7 +160,7 @@ This shows that the impedance goes up as the frequency goes up. At DC levels, th
 
 You may also see this written as:
 
-<div>$$Z_L = \omega L$$</div>
+<p>$$Z_L = \omega L$$</p>
 
 <p class="centered">
     where:<br>
@@ -208,65 +206,64 @@ Typical values might be:
 
 Inductors in parallel behave just like resistors in parallel.
 
-<div>$$ \frac{1}{L_{eq}} = \frac{1}{L_1} + \frac{1}{L_2} + \ldots + \frac{1}{L_N} $$</div>
+<p>$$ \frac{1}{L_{eq}} = \frac{1}{L_1} + \frac{1}{L_2} + \ldots + \frac{1}{L_N} $$</p>
 
 ### Inductors In Series
 
 Inductors in series behave just like resistors in series.
 
-<div>$$ L_{eq} = L_1 + L_2 + \ldots + L_n $$</div>
+<p>$$ L_{eq} = L_1 + L_2 + \ldots + L_n $$</p>
 
 ## Important Parameters
 
-<table>
-  <thead>
-    <tr>
-      <th>Parameter Symbol</th>
-      <th>Parameter</th>
-      <th>Units</th>
-      <th>Important Because...</th>
-    </tr>
-  </thead>
-<tbody>
-<tr >
-<td >\(I\)</td>
-<td >Inductance</td>
-<td >Henrys (\(H\))</td>
-<td >This parameter determines the relationship between the rate of change in current through the inductor and the inductors voltage.</td>
-</tr>
-<tr >
-<td >\(DCR\)</td>
-<td >DC resistance</td>
-<td >Ohms (\(\Omega\))</td>
-<td >The DC resistance of the coil of wire that the inductor is made up from. You can use this to calculate resistive losses through the inductor. An ideal inductor has no DCR.</td>
-</tr>
-<tr >
-<td >\(I_{sat}\)</td>
-<td >Saturation Current</td>
-<td >Amps (\(A\))</td>
-<td >This is the most important current rating. Essentially, this is the maximum current the inductor can take before it stops working like an inductor. At higher currents, the inductor becomes much more lossy.</td>
-</tr>
-<tr >
-<td >\(I_{rated}\)</td>
-<td >Rated current</td>
-<td >Amps (\(A\))</td>
-<td >Be careful when choosing an inductor, normally it's the saturation current which is important, and it can be much lower than the rated current!</td>
-</tr>
-</tbody>
-</table>
+### Inductance
+
+Symbol: `\(I\)`
+Units: Henries (`\(H\)`)
+
+This parameter determines the relationship between the rate of change in current through the inductor and the inductors voltage.
+
+### DC resistance
+
+Symbol: `\(DCR\)`
+Units: Ohms (`\(\Omega\)`)
+
+The DC resistance of the coil of wire that the inductor is made up from. You can use this to calculate resistive losses through the inductor. An ideal inductor has no DCR. The DC resistance of an inductor can be easily measured by a good quality multimeter or benchtop Ohm meter.
+
+### Saturation Current
+
+Symbol: `\(I_{sat}\)`
+Units: Amps (`\(A\)`)
+
+This is the most important current rating. Essentially, this is the maximum current the inductor can take before it stops working like an inductor. At higher currents, the inductor becomes much more lossy.
+
+### Rated current
+
+Symbol: `\(I_{rated}\)`
+Units: Amps (`\(A\)`)
+
+This is typically given as the amount of current required to created a fixed temperature rise above ambient due to resistive losses in the copper winding. The temperature rise is usually 40°C.
+
+Be careful when choosing an inductor, normally it's the saturation current which is important, and it can be much lower than the rated current!
 
 Inductors are commonly used as an energy storage component in {{% link text="DC/DC converters" src="/electronics/components/power-regulators" %}}.
 
-## Air-cored Inductors
+## Types Of Inductors
+
+### Ferrite Drum Core Inductors
+
+Ferrite drum core inductors can be optionally shielded. They allow for high saturation currents.
+
+### Air-cored Inductors
 
 Air-cored inductors represent any inductor which contains no ferromagnetic material. This means that "air-cored" inductors also covers a range of inductors which use an insulator instead of air for the core, which includes materials such as glass or PTFE.
 
-### Advantages
+**Advantages**
 
 * Unlike a ferro-magnetic cored inductor, an air-cored inductors **inductance does not vary with the amount current that is flowing with it**. Ferromagnetic cores work fine up until a point at which they **saturate**.
 * Air-cores do not have any iron losses. This advantage becomes more significant with increasing frequency.
 
-### Disadvantages
+**Disadvantages**
 
 * Air-cored inductors have to have more  and/or larger turns to achieve the same inductance value as a ferro-magnetic core. This is because **ferro-magnetic cores have a higher permeability than air**.
 * Air-cored inductors radiate more electromagnetic fields over a wider area, and also pick up more radiation. This is because ferro-magnetic-cores constrain the magnetic field lines better.
