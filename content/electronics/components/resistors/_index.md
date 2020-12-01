@@ -2,8 +2,9 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components" ]
 date: 2012-05-14
+description: "Schematic symbols, series and parallel behaviour, manufacturing processes, the E series, tolerances, variable resistors, volume resistance and more info about the electrical components called resistors."
 draft: false
-lastmod: 2020-10-15
+lastmod: 2020-12-01
 tags: [ "resistors", "resistors", "components", "electronics", "schematic symbols", "tolerances", "E series", "packages", "thick film", "thin film" ]
 title: "Resistors"
 type: "page"
@@ -44,25 +45,25 @@ The most commonly-used resistor schematic symbols are shown below. I prefer the 
 
 The behaviour of resistors when connected together in series and in parallel is exactly the same behaviour inductors exhibit, and exactly the opposite behaviour of what capacitors exhibit.
 
-### Resistors In Parallel.
+### Resistors In Parallel
 
 When two resistors are connected in parallel, the equivalent total resistance follows the inverse law:
 
-<div>$$ R_{total} = \frac{1}{\frac{1}{R1} + \frac{1}{R2}} $$</div>
+<p>$$ R_{total} = \frac{1}{\frac{1}{R1} + \frac{1}{R2}} $$</p>
 
 It is usually easier to remember this equation as:
 
-<div>$$ \frac{1}{R_{total}} = \frac{1}{R1} + \frac{1}{R2} $$</div>
+<p>$$ \frac{1}{R_{total}} = \frac{1}{R1} + \frac{1}{R2} $$</p>
 
 The following diagram shows this:
 
 {{< img src="resistors-in-parallel-equivalence-with-equation.png" width="723px" caption="Two resistors in parallel can be treated as one resistor using the shown equation."  >}}
 
-### Resistors In Series.
+### Resistors In Series
 
 When two resistors are connected in series, the total equivalent resistance is equal to the sum of individual resistances.
 
-<div>$$ R_{total} = R1 + R2 $$</div>
+<p>$$ R_{total} = R1 + R2 $$</p>
 
 This is shown in the diagram below:
 
@@ -136,7 +137,6 @@ Simply, this means that each series guarantees you will be able to find a resist
 Confusingly, for each series, you can get ever so slightly higher errors than what is listed below. This is due to the final rounding process (e.g. E96 resistors are rounded to three significant figures).
 {{% /note %}}
 
-
 <table>
   <thead>
     <tr>
@@ -144,32 +144,33 @@ Confusingly, for each series, you can get ever so slightly higher errors than wh
       <th>Maximum Percentage Error</th>
     </tr>
   </thead>
-<tbody >
-<tr>
-<td >E6
-</td>
-<td >20%
-</td></tr><tr >
-<td >E12
-</td>
-<td >10%
-</td></tr><tr >
-<td >E24
-</td>
-<td >5%
-</td></tr><tr >
-<td >E48
-</td>
-<td >2%
-</td></tr><tr >
-<td >E96
-</td>
-<td >1%
-</td></tr><tr >
-<td >E192
-</td>
-<td >0.5%
-</td></tr></tbody></table>
+  <tbody>
+    <tr>
+      <td>E6</td>
+      <td>20%</td>
+    </tr>
+    <tr>
+      <td>E12</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>E24</td>
+      <td>5%</td>
+    </tr>
+    <tr>
+      <td>E48</td>
+      <td>2%</td>
+    </tr>
+    <tr>
+      <td>E96</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <td>E192</td>
+      <td>0.5%</td>
+    </tr>
+  </tbody>
+</table>
 
 The E192 series is also used for 0.25% and 0.1% error resistors.
 
@@ -180,13 +181,12 @@ E6[6] = {10, 15, 22, 33, 47, 68};
 
 E12[12] = {10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 82};
 ```
-    
 
 Note how there are two digits of precision for E6, E12, and E24 values, while 3 digits of precision for E48, E96 and E192 values. These two sets of three series share special properties with one another. E6 is every second value from the E12 series, and E12 is every second value from the E24 series. Similarly, E48 is every second value from the E96 series, and E96 is every second value from the E192 series.
 
 The values come from the exponential number series, using the equation:
 
-<div>$$v(i, n) = 10^{i/n}$$</div>
+<p>$$v(i, n) = 10^{i/n}$$</p>
 
 <p class="centered">
     where:<br>
@@ -196,9 +196,9 @@ The values come from the exponential number series, using the equation:
 
 See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_number), for information on these series.
 
-[NinjaCalc, a free embedded engineering calculator toolbox](http://gbmhunter.github.io/NinjaCalc/), can easily find the closest E-series resistance to your desired resistance.
+[The NinjaCalc Standard Resistance Finder calculator](https://ninja-calc.mbedded.ninja/calculators/electronics/basics/standard-resistance-finder), can easily find the closest E-series resistance to your desired resistance.
 
-{{< img src="screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png" width="552px" caption="NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 2.34kΩ."  >}}
+{{% img src="screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png" width="552px" caption="NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 10.3kΩ (with closest highest and closest lowest resistance)." %}}
 
 ## Manufacturing Processes
 
@@ -217,6 +217,8 @@ Even rarer than thick and thin film resistors, metal foil resistor technology al
 ## Power Resistors
 
 Power resistors is a term used with resistors which are usually rated to dissipate 1W or more of power (without heatsinking).
+
+{{% img src="bunch-of-ceramic-power-resistors.jpg" width="600px" caption="A bunch of ceramic power resistors rated from 5 to 25W of power dissipation." %}}
 
 They can be used to intentionally heat things, as the picture below shows. This image below is a common 5W resistor being used to heat a small container of oil, with a copper thermostat from a hot water cylinder being used to control the temperature.
 
