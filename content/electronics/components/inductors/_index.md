@@ -1,11 +1,13 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components" ]
 date: 2013-05-06
+description: "Important parameters, schematic symbols, series/parallel connections, core materials, construction methods, saturation currents, packages, uses/applications and more info on inductors."
 draft: false
-tags: [ "inductor", "inductors", "inductance", "permeability", "parallel", "series", "parasitic model", "saturation current", "packages" ]
-title: Inductors
-type: page
+lastmod: 2020-12-02
+tags: [ "inductor", "inductors", "inductance", "permeability", "parallel", "series", "parasitic model", "saturation current", "packages", "flat coil", "powdered iron", "ferrite", "toroidal" ]
+title: "Inductors"
+type: "page"
 ---
 
 ## Overview
@@ -252,7 +254,19 @@ Inductors are commonly used as an energy storage component in {{% link text="DC/
 
 ### Ferrite Drum Core Inductors
 
-Ferrite drum core inductors can be optionally shielded. They allow for high saturation currents.
+Ferrite drum core inductors can be optionally shielded. They allow for high saturation currents and high inductances (due to having a large number of turns).
+
+### Toroidal Inductors
+
+### Flat Coil Inductors
+
+Flat coil inductors have a very low profile (height from the surface of the PCB) allowing use in space-constrained designs. Flat coil inductors usually have a low number of turns, resulting in less inductance than ferrite drum core or toroidal inductors. The core is typically made up of powdered iron.
+
+### Metal Composite Inductors
+
+Metal composite inductors (also called _moulded power inductors_) are made with metal powders moulded around copper windings at high pressure.
+
+{{% img src="metal-composite-inductor-construction-kemet-mpx.png" width="300px" caption="Internal construction of a metal composite inductor. Image by Kemet, retrieved from https://media.digikey.com/pdf/Data%20Sheets/Kemet%20PDFs/MPXV_Series_DS.pdf on 2020-11-30." %}}
 
 ### Air-cored Inductors
 
