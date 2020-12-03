@@ -18,7 +18,7 @@ jupyter==1.0.0
 matplotlib==3.1.2
 numpy==1.16.4
 pandas==1.0.1
-Pillow==6.2.0
+Pillow==7.1.0
 protobuf==3.9.0
 pycparser==2.19
 pyparsing==2.4.0
