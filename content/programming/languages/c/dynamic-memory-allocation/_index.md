@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2013-03-18
 description: "A beginners tutorial on memory allocation in C (malloc(), free(), e.t.c.) for embedded systems."
 draft: false
-lastmod: 2020-01-26
+lastmod: 2020-12-06
 tags: [ "programming", "C", "C++", "dynamic memory allocation", "memory", "allocation", "malloc()", "realloc", "calloc()", "alloca()", "free()", "MISRA", "memory pools", "stack", "heap", "GCC", "static allocation", "memory leak" ]
 title: "Dynamic Memory Allocation"
 type: "page"
@@ -56,6 +56,8 @@ void DynamicMemoryAllocation() {
     free(dynamicArray);
 }
 ```
+
+{{% figure src="where-malloc-variables-get-added-heap.svg" width="600px" caption="When you call malloc(), space for the variable gets reserved (allocated) on the heap, which causes the heap to grow into the unused (grey) area. This memory arrangement in representative of a ARM Cortex microcontroller." %}}
 
 ## realloc()
 

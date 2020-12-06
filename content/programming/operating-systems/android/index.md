@@ -1,9 +1,10 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 date: 2013-10-10
 draft: false
-title: Android
-type: page
+lastmod: 2013-10-10
+title: "Android"
+type: "page"
 ---
 
 Android is an open-source Linux-based operating system designed for (but not limited to) touchscreen devices such as mobile phones and tablets.
