@@ -13,3 +13,7 @@ type: "post"
 * Started a new page (in notes form) on {{% link text="SiFive microcontrollers" src="/programming/microcontrollers/sifive" %}}.
 
     {{% figure src="/programming/microcontrollers/sifive/sifive-hifive-rev-b-dev-kit-stock-photo.png" width="450px" %}}
+
+* Started a new page (in notes form) on Azure RTOS ThreadX.
+
+* Added a diagram to the C Dynamic Memory Allocation page.
