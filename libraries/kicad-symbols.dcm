@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP Inverter_Small
+D Inverter, Small
+K TTL not inv
+$ENDCMP
+#
+#End Doc Library
