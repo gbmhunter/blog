@@ -5,7 +5,7 @@ date: 2019-06-11
 description: "A tutorial on pandas, a popular data analysis library for Python."
 draft: false
 lastmod: 2019-09-03
-tags: [ "programming", "programming languages", "Python", "pandas", "DataFrame", "CSV", "Jupyter", "Numpy" ]
+tags: [ "programming", "programming languages", "Python", "pandas", "DataFrame", "CSV", "Jupyter", "Numpy", "conda" ]
 title: "pandas"
 type: "page"
 ---
@@ -34,7 +34,7 @@ $ conda install pandas
 
 The core data structure in pandas is the `DataFrame`. A `DataFrame` is a container for holding tabular data (2D), and supports labelled rows and columns.
 
-You can create a `DataFrame` by passing in a `dict`, where each key is a column name and the value is a `list` containing the data for that column (one entry per row):
+You can create a `DataFrame` by passing in a `dict`, where each key is a column name (of `string` type) and the value is a `list` containing the data for that column (one entry per row):
 
 ```python
 df = pd.DataFrame({
