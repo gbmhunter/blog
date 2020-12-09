@@ -13,6 +13,8 @@ type: "page"
 
 A _charge pump_ (also known as a _switched capacitor_ circuit) is a voltage-converting circuit that uses capacitors, diodes, and a oscillating switch to move charge from one capacitor to another. Like a _buck converter_, charge pumps are typically used to produce an output voltage which is higher than the input voltage.
 
+The basic principle of a charge pump is to **charge capacitors individually (in parallel) from the input voltage, and then connect them in series to provide a higher output voltage**. Whilst this can be done manually or mechanically, almost every practical charge pump circuit uses electronic switches (diodes, MOSFETs, e.t.c) to change between series and parallel connectivity.
+
 Charge Pump                         | Boost Converter
 ------------------------------------|-------------------
 Efficient at low power (<10mA)      | Efficient at high power (>100mA)
