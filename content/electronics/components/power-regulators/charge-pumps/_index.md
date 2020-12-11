@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2014-12-01
 description: "Schematics, advantages/disadvantages to buck converters, uses/applications and more info about charge pumps (a type of SMPS)."
 draft: false
-lastmod: 2020-12-07
+lastmod: 2020-12-08
 tags: [ "electronics", "components", "power supplies", "charge pumps", "SMPS", "switch-mode power supplies", "op-amps", "MOSFETs", "buck converters", "LEDs", "drivers", "voltage doublers", "diodes", "schottky", "capacitors" ]
 title: "Charge Pumps"
 type: "page"
@@ -11,7 +11,7 @@ type: "page"
 
 ## Overview
 
-A _charge pump_ (also known as a _switched capacitor_ circuit) is a voltage-converting circuit that uses capacitors, diodes, and a oscillating switch to move charge from one capacitor to another. Like a _buck converter_, charge pumps are typically used to produce an output voltage which is higher than the input voltage.
+A _charge pump_ (also known as a _switched capacitor_ circuit) is a voltage-converting circuit that **uses capacitors, diodes, and a oscillating switch to move charge from one capacitor to another**. Like a _buck converter_, charge pumps are typically used to produce an output voltage which is higher than the input voltage. However, they can also be configured to reduce the input voltage (buck) or invert it.
 
 The basic principle of a charge pump is to **charge capacitors individually (in parallel) from the input voltage, and then connect them in series to provide a higher output voltage**. Whilst this can be done manually or mechanically, almost every practical charge pump circuit uses electronic switches (diodes, MOSFETs, e.t.c) to change between series and parallel connectivity.
 
@@ -28,6 +28,10 @@ A single capacitor/diode configuration (with additional smoothing capacitor on t
 {{% img src="charge-pump-voltage-doubler-schematic.png" width="700px" caption="The basic schematic for a voltage doubling charge pump circuit." %}}
 
 Schottky diodes are preferred because of their low forward voltage drop and higher switching speeds.
+
+## History
+
+The Greinacher voltage multiplier was invented by Swiss physicist Heinrich Greinacher in 1919[^edn-capacitive-voltage-conversion].
 
 ## Uses
 
@@ -48,3 +52,7 @@ Some LED drivers feature charge pumps to boost the supply voltage to a proper le
 N-channel MOSFETs are typically better performing (lower `\(R_{DS(on)}\)`, larger max. current limit) than P-channel MOSFETs. However, N-channel MOSFETs require a positive gate-source voltage (`\(V_{GS}\)`) to turn them on. This makes it problematic to use them as a high-side switch on a circuit, as you require a voltage on the gate which is higher than the load/input voltage (the load is connected to the source, which is at the same potential as the input voltage when the switch is on).
 
 The most common way to overcome this problem is to use a small charge pump circuit to power the gate. Many buck converters use this trick to use an N-channel rather than a P-channel MOSFET as the switching element.
+
+## References
+
+[^edn-capacitive-voltage-conversion]: <https://www.edn.com/capacitive-voltage-conversion-aka-the-charge-pump/>, retrieved 2020-12-08.

@@ -16,51 +16,51 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 
 <table>
     <thead>
-        <tr>
-            <th>Term</th>
-            <th>Description</th>
-        </tr>
+      <tr>
+        <th>Term</th>
+        <th>Description</th>
+      </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Boost converter</td>
-            <td>A DC/DC converter topology which converts an input voltage into a **higher** output voltage.</td>
+          <td>Boost converter</td>
+          <td>A DC/DC converter topology which converts an input voltage into a **higher** output voltage.</td>
         </tr>
         <tr>
-            <td>Buck converter</td>
-            <td>A DC/DC converter topology which converts an input voltage into a **lower** output voltage.</td>
+          <td>Buck converter</td>
+          <td>A DC/DC converter topology which converts an input voltage into a **lower** output voltage.</td>
         </tr>
         <tr>
-            <td>Controller</td>
-            <td>A power conversion device that requires a external switch (typically a MOSFET).</td>
+          <td>Controller</td>
+          <td>A power conversion device that requires a external switch (typically a MOSFET).</td>
         </tr>
         <tr>
-            <td>Converter</td>
-            <td>A power conversion device that has an integrated switch (typically a MOSFET).</td>
+          <td>Converter</td>
+          <td>A power conversion device that has an integrated switch (typically a MOSFET).</td>
         </tr>
         <tr>
-            <td>Cuk converter</td>
-            <td>A DC/DC converter topology which converts an input voltage into either a **higher** or **lower** output voltage. A Cuk converters output voltage is opposite in polarity to it's input voltage (which is a disadvantage in most cases).</td>
+          <td>Cuk converter</td>
+          <td>A DC/DC converter topology which converts an input voltage into either a **higher** or **lower** output voltage. A Cuk converters output voltage is opposite in polarity to it's input voltage (which is a disadvantage in most cases).</td>
         </tr>
         <tr>
-            <td>Down Conversion</td>
-            <td>Converting an input voltage into a lower output voltage.</td>
+          <td>Down Conversion</td>
+          <td>Converting an input voltage into a lower output voltage.</td>
         </tr>
         <tr>
-            <td>Ripple</td>
-            <td>Used when talking about voltages and currents, it is the **absolute or percentage change in voltage or current** (max - min) over an operating cycle. You typically don't want more than 20% ripple current through an inductor (w.r.t. it's average current).</td>
+          <td>Ripple</td>
+          <td>Used when talking about voltages and currents, it is the **absolute or percentage change in voltage or current** (max - min) over an operating cycle. You typically don't want more than 20% ripple current through an inductor (w.r.t. it's average current).</td>
         </tr>
         <tr>
-            <td>SEPIC</td>
-            <td>SEPIC (single-ended primary inductance converter) is a DC/DC converter topology similar to a buck-boost, which converts an input voltage into either a **higher** or **lower** output voltage.</td>
+          <td>SEPIC</td>
+          <td>SEPIC (single-ended primary inductance converter) is a DC/DC converter topology similar to a buck-boost, which converts an input voltage into either a **higher** or **lower** output voltage.</td>
         </tr>
         <tr>
-            <td>Synchronous rectification</td>
-            <td>When the diode in a simple DC/DC converter is replaced with a switched MOSFET to improve efficiencies. Synchronous rectification allows DC/DC converter to climb above 90% efficiency in ideal situations.</td>
+          <td>Synchronous rectification</td>
+          <td>When the diode in a simple DC/DC converter is replaced with a switched MOSFET to improve efficiencies. Synchronous rectification allows DC/DC converter to climb above 90% efficiency in ideal situations.</td>
         </tr>
         <tr>
-            <td>Topology</td>
-            <td>The type of design/technology of the converter (e.g. a buck converter is one type of topology, while a boost converter is another.</td>
+          <td>Topology</td>
+          <td>The type of design/technology of the converter (e.g. a buck converter is one type of topology, while a boost converter is another.</td>
         </tr>
     </tbody>
 </table>
@@ -69,13 +69,13 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
 
 <table>
     <thead>
-        <tr>
-            <th>Topology</th>
-            <th>Advantages</th>
-            <th>Disadvantages</th>
-            <th>Comments</th>
-            <th>Image</th>
-        </tr>
+      <tr>
+        <th>Topology</th>
+        <th>Advantages</th>
+        <th>Disadvantages</th>
+        <th>Comments</th>
+        <th>Image</th>
+      </tr>
     </thead>
 <tbody>
 <tr>
@@ -202,11 +202,11 @@ DC/DC converters are also used to charge batteries from solar panels. In this ca
 
 {{< img src="ul60950-limited-power-circuits-graph.png" caption="A graph of voltage vs. current for a LPS (limited power supply)."  width="400px" >}}
 
-## Efficiencies
+### Efficiencies
 
 The efficiency of DC/DC converters can be as high as 96-98%!  You will see a figure like this quoted in most DC/DC converter IC datasheets. However, this efficiency only applies when the **converter is operating at one specific point** (the right input voltage, output voltage, load current, and temperature). Your own personal design will most likely be using the converter at a variety of different operating points, which may or may not include the one for maximum efficiency. When in actual use over a range of operating conditions, an average of about 80% efficiency is common from a good DC/DC converter. **Only use this rating for comparing the quality of one DC/DC converter against another.**
 
-## Burst Mode
+### Burst Mode
 
 DC/DC converters can extend their efficient operating current range by enabling the converter to operate in what is called a "burst" mode at low currents. When a converter is in this mode, it provides a burst of pulses to power the output until the output voltage climbs over a set threshold, turns off, and doesn't turn back on again until the load voltage drops below a certain threshold. This turns out to be more efficient than continuous mode at low currents, but also **increases the total noise** radiated from the DC/DC converter. Most converters that employ this technique have a way of forcing the converter to stay in fixed frequency mode to reduce noise, which is useful for when powering devices such as GPS ICs.
 
