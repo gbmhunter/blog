@@ -23,3 +23,7 @@ type: "post"
 * Added a basic voltage-doubling charge pump schematic to the {{% link text="Charge Pumps page" src="/electronics/components/power-regulators/charge-pumps#schematics" %}}
 
     {{% figure src="/electronics/components/power-regulators/charge-pumps/charge-pump-voltage-doubler-schematic.png" width="700px" %}}
+
+* Added more SPICE simulation info to the {{% link text="A Beginners Intro To KiCad page" src="/electronics/general/kicad/a-beginners-intro-to-kicad" %}}.
+
+    {{% figure src="/electronics/general/kicad/a-beginners-intro-to-kicad/kicad-sallen-key-simulation-plots.png" width="600px" %}}
