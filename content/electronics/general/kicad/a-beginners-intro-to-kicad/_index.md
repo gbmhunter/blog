@@ -299,6 +299,34 @@ There are a few schematic symbol parameters which have dedicated purposes for SP
 * `Spice_Node_Sequence`: Seen on voltage sources (`VSOURCE`).
 * `SpiceMapping`: 
 
+### Voltage And Current Sources
+
+Refer to the [ngspice User Manual](http://ngspice.sourceforge.net/docs/ngspice-33-manual.pdf) for a complete list of voltage and current sources.
+
+These are called _independent_ sources.
+
+**SINE**
+
+`SINE(0 1.5 1k 0 0 0 0)`
+
+**PULSE**
+
+The `PULSE` voltage/current source can be used to create a single square pulse or continuous PWM signal. The syntax is:
+
+`PULSE(VL VH TD TR TF PW PER PHASE)`
+
+Name |Parameter       |Default Value   |Units 
+-----|----------------|----------------|-----------
+V1   |Initial value   |-               |V, A
+V2   |Pulsed value    |-               |V, A
+TD   |Delay time      |0.0             |sec
+TR   |Rise time       |TSTEP           |sec
+TF   |Fall time       |TSTEP           |sec
+PW   |Pulse width     |TSTOP           |sec
+PER  |Period          |TSTOP           |sec
+PHASE|Phase           |0.0             |degrees
+
+
 ### Placing Components
 
 Somewhat confusingly, KiCad comes with two SPICE symbol libraries:
@@ -307,3 +335,15 @@ Somewhat confusingly, KiCad comes with two SPICE symbol libraries:
 1. `Simulation_SPICE`: "Symbols specialized for SPICE circuit simulation (including ngspice)." --- Presumably newer symbols designed to work with the current bundled SPICE simulator `ngspice`.
 
 {{% img src="kicad-pspice-legacy-symbol-libraries.png" width="700px" caption="Searching for the PSPICE symbol libraries in KiCad." %}}
+
+### Naming Nets
+
+Standard Eeschema _net labels_ can be used to name nets which will be carried through to the ngspice simulation.
+
+### Specifying Simulation Type
+
+The easiest way is to add a text string on the schematic.
+
+**Transient**
+
+`.tran 1u 10m`
