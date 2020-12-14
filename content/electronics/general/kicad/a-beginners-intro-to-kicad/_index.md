@@ -292,7 +292,8 @@ KiCad comes with example simulation circuits located at `<KiCad installation dir
 
 There are a few schematic symbol parameters which have dedicated purposes for SPICE simulations. I've tried to list as many as I've encountered below:
 
-* `Spice_Primitive`: `R` for resistors, `C` for capacitors, `X` for ICs, e.t.c.
+* `Fieldname`: Typically `Value`.
+* `Spice_Primitive`: `R` for resistors, `C` for capacitors, `D` for diodes, `X` for ICs, e.t.c.
 * `Spice_Model`: Only needed when `Spice_Primitive = X`.
 * `Spice_Lib_File`: Filename (not full path) of SPICE library component that belongs to this symbol, e.g. `ad8051.lib`.
 * `Spice_Netlist_Enabled`: A boolean. either `Y` or `N`.
