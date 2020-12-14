@@ -24,3 +24,8 @@ env/
 
 # npm libs
 node_modules/
+
+# KiCad files
+sym-lib-table
+*.sch-bak
+*.pro

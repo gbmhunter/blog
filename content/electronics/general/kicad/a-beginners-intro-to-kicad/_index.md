@@ -302,9 +302,17 @@ There are a few schematic symbol parameters which have dedicated purposes for SP
 
 ### Voltage And Current Sources
 
-Refer to the [ngspice User Manual](http://ngspice.sourceforge.net/docs/ngspice-33-manual.pdf) for a complete list of voltage and current sources.
+Refer to the [ngspice User Manual](http://ngspice.sourceforge.net/docs/ngspice-33-manual.pdf) for a complete list of voltage and current sources. Voltage sources have their `Spice_Primitive` set to `V` and current sources to `I`.
 
 These are called _independent_ sources.
+
+**DC**
+
+For a simple DC voltage source, you can use the syntax:
+
+`DC VOLT`
+
+e.g. `DC 5` for a +5V voltage source.
 
 **SINE**
 
@@ -327,6 +335,11 @@ PW   |Pulse width     |TSTOP           |sec
 PER  |Period          |TSTOP           |sec
 PHASE|Phase           |0.0             |degrees
 
+For example, for a continuous pulse train alternating between 0 and 5V at 100kHz with a 50% duty cycle, with `10ns` rise and fall times:
+
+```text
+PULSE(0 5 0 10n 10n 5u 10u)
+```
 
 ### Placing Components
 
