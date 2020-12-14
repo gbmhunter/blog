@@ -14,11 +14,11 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L charge-pump-voltage-doubler-simulation-rescue:VSOURCE-rectifier_schlib V2
+L charge-pump-voltage-doubler-simulation-rescue:VSOURCE-rectifier_schlib-charge-pump-voltage-doubler-simulation-rescue V2
 U 1 1 57336052
 P 4200 4550
 F 0 "V2" H 3900 4600 50  0000 L CNN
-F 1 "PULSE(0 5 0 10n 10n 5u 10u)" H 2800 4500 50  0000 L CNN
+F 1 "PULSE(0 5 5u 10n 10n 5u 10u)" H 2800 4500 50  0000 L CNN
 F 2 "" H 4200 4550 50  0000 C CNN
 F 3 "" H 4200 4550 50  0000 C CNN
 F 4 "Value" H 4200 4550 60  0001 C CNN "Fieldname"
@@ -28,7 +28,7 @@ F 6 "1 2" H 3900 4750 60  0001 C CNN "Spice_Node_Sequence"
 	1    0    0    -1  
 $EndComp
 $Comp
-L charge-pump-voltage-doubler-simulation-rescue:GND-rectifier_schlib #PWR01
+L charge-pump-voltage-doubler-simulation-rescue:GND-rectifier_schlib-charge-pump-voltage-doubler-simulation-rescue #PWR01
 U 1 1 573360D3
 P 4200 4850
 F 0 "#PWR01" H 4200 4600 50  0001 C CNN
@@ -39,7 +39,7 @@ F 3 "" H 4200 4850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L charge-pump-voltage-doubler-simulation-rescue:D-rectifier_schlib D1
+L charge-pump-voltage-doubler-simulation-rescue:D-rectifier_schlib-charge-pump-voltage-doubler-simulation-rescue D1
 U 1 1 573361B8
 P 4500 3650
 F 0 "D1" H 4500 3435 50  0000 C CNN
@@ -53,7 +53,7 @@ F 6 "2 1" H 4500 3650 60  0001 C CNN "Spice_Node_Sequence"
 	-1   0    0    1   
 $EndComp
 $Comp
-L charge-pump-voltage-doubler-simulation-rescue:C-rectifier_schlib C1
+L charge-pump-voltage-doubler-simulation-rescue:C-rectifier_schlib-charge-pump-voltage-doubler-simulation-rescue C1
 U 1 1 5733628F
 P 5350 4000
 F 0 "C1" H 5465 4046 50  0000 L CNN
@@ -67,7 +67,7 @@ F 6 "1 2" H 5350 4000 60  0001 C CNN "SpiceMapping"
 	1    0    0    -1  
 $EndComp
 $Comp
-L charge-pump-voltage-doubler-simulation-rescue:R-rectifier_schlib R2
+L charge-pump-voltage-doubler-simulation-rescue:R-rectifier_schlib-charge-pump-voltage-doubler-simulation-rescue R2
 U 1 1 573362F7
 P 5700 4000
 F 0 "R2" H 5630 3954 50  0000 R CNN
@@ -96,7 +96,7 @@ vout
 Wire Wire Line
 	5350 3650 5700 3650
 $Comp
-L charge-pump-voltage-doubler-simulation-rescue:VSOURCE-rectifier_schlib V1
+L charge-pump-voltage-doubler-simulation-rescue:VSOURCE-rectifier_schlib-charge-pump-voltage-doubler-simulation-rescue V1
 U 1 1 5FD5E984
 P 3950 3850
 F 0 "V1" H 3650 3900 50  0000 L CNN
@@ -110,7 +110,7 @@ F 6 "1 2" H 3650 4050 60  0001 C CNN "Spice_Node_Sequence"
 	1    0    0    -1  
 $EndComp
 $Comp
-L charge-pump-voltage-doubler-simulation-rescue:C-rectifier_schlib C2
+L charge-pump-voltage-doubler-simulation-rescue:C-rectifier_schlib-charge-pump-voltage-doubler-simulation-rescue C2
 U 1 1 5FD681FD
 P 4800 4000
 F 0 "C2" H 4915 4046 50  0000 L CNN
@@ -124,10 +124,10 @@ F 6 "1 2" H 4800 4000 60  0001 C CNN "SpiceMapping"
 	1    0    0    -1  
 $EndComp
 $Comp
-L charge-pump-voltage-doubler-simulation-rescue:D-rectifier_schlib D?
+L charge-pump-voltage-doubler-simulation-rescue:D-rectifier_schlib-charge-pump-voltage-doubler-simulation-rescue D2
 U 1 1 5FD68D10
 P 5050 3650
-F 0 "D?" H 5050 3435 50  0000 C CNN
+F 0 "D2" H 5050 3435 50  0000 C CNN
 F 1 "1N4148" H 5050 3526 50  0000 C CNN
 F 2 "" H 5050 3650 50  0000 C CNN
 F 3 "" H 5050 3650 50  0000 C CNN
@@ -149,7 +149,7 @@ Wire Wire Line
 Wire Wire Line
 	4200 4750 4200 4850
 $Comp
-L charge-pump-voltage-doubler-simulation-rescue:GND-rectifier_schlib #PWR?
+L charge-pump-voltage-doubler-simulation-rescue:GND-rectifier_schlib-charge-pump-voltage-doubler-simulation-rescue #PWR?
 U 1 1 5FD69C41
 P 3950 4050
 F 0 "#PWR?" H 3950 3800 50  0001 C CNN
@@ -160,7 +160,7 @@ F 3 "" H 3950 4050 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L charge-pump-voltage-doubler-simulation-rescue:GND-rectifier_schlib #PWR?
+L charge-pump-voltage-doubler-simulation-rescue:GND-rectifier_schlib-charge-pump-voltage-doubler-simulation-rescue #PWR?
 U 1 1 5FD6A33F
 P 5500 4350
 F 0 "#PWR?" H 5500 4100 50  0001 C CNN

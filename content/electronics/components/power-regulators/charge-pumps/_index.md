@@ -39,6 +39,28 @@ The switching frequency is usually limited to 100-500kHz.
 
 MOSFETs can be wired to behave like a diode and are sometimes used instead of Schottky diodes. However the MOSFET-based charge pumps do not work as well at low voltages due to the large drain-source voltage drops across the MOSFETs.
 
+## Charge Pump Topologies
+
+### Basic Voltage Doubling Charge Pump
+
+This is the most basic type of charge pump.
+
+1. When voltage is first applied to the circuit, `\(V_{in}\)` provides current through D1 and D2 and charges up both C1 and C2 to almost 5V, except C1 sees one forward voltage drop (300mV, using Schottky diodes) across D1 and C2 two forward voltage drops D1 and D2.
+1. Then the pulse in transitions from 0V to 5V. Because C1 is already charged to 4.7V, and this 5V appears on the capacitors negative lead, it "pushes" the top lead of C1 up to 9.7V. This then causes a current from C1, through D2, into C2, charging it up past 5V.
+1. The pulse then transitions back to 0V, and the cycle begins again with C1 charing back up to 5V (remember that it would of dropped to somewhere between 0-5V when transferring charge to C2 in the previous step).
+1. After enough cycles, the output voltage an C2 stabilizes to `\(2*V_{in} - 2V_f\)`.
+
+{{% img src="charge-pump-voltage-doubler-schematic.png" width="700px" caption="The basic schematic for a voltage doubling charge pump circuit." %}}
+
+To demonstrate the behaviour of this circuit, I simulated it using KiCad and ngspice. The simulation files can be downloaded below:
+
+* <a href="/electronics/components/power-regulators/charge-pumps/charge-pump-voltage-doubler-simulation.sch" download>KiCad Schematics</a>
+* <a href="/electronics/components/power-regulators/charge-pumps/charge-pump-voltage-doubler-simulation-rescue.lib" download>KiCad Symbol Library</a>
+
+The below figure shows the behaviour of the voltage doubling charge pump. Notice that after about 5 cycles the output voltage stabilizes to it's steady state value of approximately 8.7V. This simulation assumed a perfect voltage source driven pulse input, in reality the pulse input has some non-zero output impedance which effects the stabilization time and output current capacity.
+
+{{% img src="charge-pump-voltage-doubler-simulation-plot.png" width="600px" caption="A plot of the simulation results for the above voltage doubling charge pump circuit." %}}
+
 ### Voltage Inverting Charge Pump
 
 

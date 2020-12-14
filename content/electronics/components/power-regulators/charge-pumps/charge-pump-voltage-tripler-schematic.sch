@@ -16,24 +16,24 @@ $EndDescr
 $Comp
 L power:GND #PWR?
 U 1 1 5FCDE4C9
-P 4600 3900
-F 0 "#PWR?" H 4600 3650 50  0001 C CNN
-F 1 "GND" H 4605 3727 50  0000 C CNN
-F 2 "" H 4600 3900 50  0001 C CNN
-F 3 "" H 4600 3900 50  0001 C CNN
-	1    4600 3900
+P 4800 3900
+F 0 "#PWR?" H 4800 3650 50  0001 C CNN
+F 1 "GND" H 4805 3727 50  0000 C CNN
+F 2 "" H 4800 3900 50  0001 C CNN
+F 3 "" H 4800 3900 50  0001 C CNN
+	1    4800 3900
 	1    0    0    -1  
 $EndComp
 Wire Notes Line
 	3450 3800 3450 4000
 Wire Notes Line
-	3450 4000 2750 4000
+	3450 4000 2900 4000
 Wire Notes Line
-	2750 4000 2750 3800
+	2900 4000 2900 3800
 Wire Notes Line
-	2750 3800 3450 3800
-Text Notes 2750 3950 0    50   ~ 0
-pulse
+	2900 3800 3450 3800
+Text Notes 2950 3950 0    50   ~ 0
+clock
 $Comp
 L Device:CP1 C1
 U 1 1 5FCDF66E
@@ -105,8 +105,37 @@ Wire Wire Line
 Wire Wire Line
 	4400 3400 4800 3400
 Connection ~ 4400 3400
+$Comp
+L kicad-symbols:Inverter_Small U?
+U 1 1 5FCEBBC1
+P 3650 3900
+F 0 "U?" H 3650 4125 50  0001 C CNN
+F 1 "Inverter_Small" H 3650 4034 50  0001 C CNN
+F 2 "" H 3650 3900 50  0001 C CNN
+F 3 "" H 3650 3900 50  0001 C CNN
+	1    3650 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L kicad-symbols:Inverter_Small U?
+U 1 1 5FCED833
+P 4150 3900
+F 0 "U?" H 4150 4125 50  0001 C CNN
+F 1 "Inverter_Small" H 4150 4034 50  0001 C CNN
+F 2 "" H 4150 3900 50  0001 C CNN
+F 3 "" H 4150 3900 50  0001 C CNN
+	1    4150 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3850 3900 3900 3900
+Connection ~ 3900 3900
+Wire Wire Line
+	3900 3900 3950 3900
 Wire Wire Line
 	3900 3800 3900 3900
+Wire Wire Line
+	4350 3900 4400 3900
 Wire Wire Line
 	4400 3900 4400 3800
 $Comp
@@ -158,15 +187,4 @@ F 3 "" H 4800 3400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 4800 3400
-Wire Wire Line
-	4400 3900 4600 3900
-Connection ~ 4600 3900
-Wire Wire Line
-	4600 3900 4800 3900
-Wire Wire Line
-	3450 3900 3900 3900
-Text Notes 3050 4000 0    31   ~ 0
-0V
-Text Notes 3050 3900 0    31   ~ 0
-Vin
 $EndSCHEMATC
