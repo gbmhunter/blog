@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# charge-pump-voltage-doubler-simulation-rescue_C-rectifier_schlib
+# C-rectifier_schlib
 #
-DEF charge-pump-voltage-doubler-simulation-rescue_C-rectifier_schlib C 0 10 N Y 1 F N
+DEF C-rectifier_schlib C 0 10 N Y 1 F N
 F0 "C" 25 100 50 H V L CNN
-F1 "charge-pump-voltage-doubler-simulation-rescue_C-rectifier_schlib" 25 -100 50 H V L CNN
+F1 "C-rectifier_schlib" 25 -100 50 H V L CNN
 F2 "" 38 -150 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -26,11 +26,11 @@ X ~ 2 0 -150 110 U 40 40 1 1 P
 ENDDRAW
 ENDDEF
 #
-# charge-pump-voltage-doubler-simulation-rescue_D-rectifier_schlib
+# D-rectifier_schlib
 #
-DEF charge-pump-voltage-doubler-simulation-rescue_D-rectifier_schlib D 0 40 N N 1 F N
+DEF D-rectifier_schlib D 0 40 N N 1 F N
 F0 "D" 0 100 50 H V C CNN
-F1 "charge-pump-voltage-doubler-simulation-rescue_D-rectifier_schlib" 0 -100 50 H V C CNN
+F1 "D-rectifier_schlib" 0 -100 50 H V C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -48,11 +48,11 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# charge-pump-voltage-doubler-simulation-rescue_GND-rectifier_schlib
+# GND-rectifier_schlib
 #
-DEF charge-pump-voltage-doubler-simulation-rescue_GND-rectifier_schlib #PWR 0 0 Y Y 1 F P
+DEF GND-rectifier_schlib #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "charge-pump-voltage-doubler-simulation-rescue_GND-rectifier_schlib" 0 -123 30 H V C CNN
+F1 "GND-rectifier_schlib" 0 -123 30 H V C CNN
 F2 "" 0 0 60 H V C CNN
 F3 "" 0 0 60 H V C CNN
 DRAW
@@ -61,11 +61,11 @@ X GND 1 0 0 0 D 20 30 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# charge-pump-voltage-doubler-simulation-rescue_R-rectifier_schlib
+# R-rectifier_schlib
 #
-DEF charge-pump-voltage-doubler-simulation-rescue_R-rectifier_schlib R 0 0 N Y 1 F N
+DEF R-rectifier_schlib R 0 0 N Y 1 F N
 F0 "R" 80 0 50 V V C CNN
-F1 "charge-pump-voltage-doubler-simulation-rescue_R-rectifier_schlib" 0 0 50 V V C CNN
+F1 "R-rectifier_schlib" 0 0 50 V V C CNN
 F2 "" -70 0 50 V V C CNN
 F3 "" 0 0 50 H V C CNN
 $FPLIST
@@ -79,11 +79,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# charge-pump-voltage-doubler-simulation-rescue_VSOURCE-rectifier_schlib
+# VSOURCE-rectifier_schlib
 #
-DEF charge-pump-voltage-doubler-simulation-rescue_VSOURCE-rectifier_schlib V 0 40 Y Y 1 F N
+DEF VSOURCE-rectifier_schlib V 0 40 Y Y 1 F N
 F0 "V" 200 200 50 H V C CNN
-F1 "charge-pump-voltage-doubler-simulation-rescue_VSOURCE-rectifier_schlib" 250 100 50 H I C CNN
+F1 "VSOURCE-rectifier_schlib" 250 100 50 H I C CNN
 F2 "" 0 0 50 H V C CNN
 F3 "" 0 0 50 H V C CNN
 F4 "Value" 0 0 60 H I C CNN "Fieldname"
