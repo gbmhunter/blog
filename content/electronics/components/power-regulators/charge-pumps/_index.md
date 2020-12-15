@@ -3,8 +3,8 @@ author: "gbmhunter"
 date: 2014-12-01
 description: "Schematics, advantages/disadvantages to buck converters, uses/applications and more info about charge pumps (a type of SMPS)."
 draft: false
-lastmod: 2020-12-14
-tags: [ "electronics", "components", "power supplies", "charge pumps", "SMPS", "switch-mode power supplies", "op-amps", "MOSFETs", "buck converters", "LEDs", "drivers", "voltage doublers", "diodes", "schottky", "capacitors", "RS-232", "flying capacitor", "reservoir capacitor", "Dickson charge pump" ]
+lastmod: 2020-12-15
+tags: [ "electronics", "components", "power supplies", "charge pumps", "SMPS", "switch-mode power supplies", "op-amps", "MOSFETs", "buck converters", "LEDs", "drivers", "voltage doublers", "diodes", "schottky", "capacitors", "RS-232", "flying capacitor", "reservoir capacitor", "Dickson charge pump", "half-wave doubler" ]
 title: "Charge Pumps"
 type: "page"
 ---
@@ -43,7 +43,7 @@ MOSFETs can be wired to behave like a diode and are sometimes used instead of Sc
 
 ### Basic Voltage Doubling Charge Pump
 
-This is the most basic type of charge pump.
+This is the most basic type of charge pump. We'll go through each step of the process to show how exactly charge is moved around to have the effect of doubling the input voltage. This concept of "shunting around" charge (hence the _pump_ part in the name) is the key concept of any charge pump topology.
 
 1. When voltage is first applied to the circuit, `\(V_{in}\)` provides current through D1 and D2 and charges up both C1 and C2 to almost 5V, except C1 sees one forward voltage drop (300mV, using Schottky diodes) across D1 and C2 two forward voltage drops D1 and D2.
 1. Then the pulse in transitions from 0V to 5V. Because C1 is already charged to 4.7V, and this 5V appears on the capacitors negative lead, it "pushes" the top lead of C1 up to 9.7V. This then causes a current from C1, through D2, into C2, charging it up past 5V.
@@ -67,7 +67,7 @@ The below figure shows the behaviour of the voltage doubling charge pump. Notice
 
 ## History
 
-The _Greinacher voltage multiplier_ was invented by Swiss physicist Heinrich Greinacher in 1919[^edn-capacitive-voltage-conversion].
+The _Greinacher voltage multiplier_ (a.k.a. _half-wave doubler_) was invented by Swiss physicist Heinrich Greinacher in 1919[^edn-capacitive-voltage-conversion].
 
 John F. Dickson patented what is known as the "Dickson charge pump" in the late 1970's (filed in 1978, patent dated July 22, 1980)[^justia-patents-john-f-dickson]. It is very similar to the Greinacher doubler except it runs of an DC input. It was primarily used to generate programming/rewrite voltages in EEPROM/flash memory ICs.
 
