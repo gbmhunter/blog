@@ -56,10 +56,15 @@ To demonstrate the behaviour of this circuit, I simulated it using KiCad and ngs
 
 * <a href="/electronics/components/power-regulators/charge-pumps/charge-pump-voltage-doubler-simulation.sch" download>KiCad Schematics</a>
 * <a href="/electronics/components/power-regulators/charge-pumps/charge-pump-voltage-doubler-simulation-rescue.lib" download>KiCad Symbol Library</a>
+* <a href="/electronics/components/power-regulators/charge-pumps/1n5817.lib" download>1N5817 SPICE model</a>
+
+The following KiCad schematics were used to perform the simulation:
+
+{{% figure src="/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-schematics.png" width="800px" caption="The schematics for the voltage-doubling charge pump simulation." %}}
 
 The below figure shows the behaviour of the voltage doubling charge pump. Notice that after about 5 cycles the output voltage stabilizes to it's steady state value of approximately 8.7V. This simulation assumed a perfect voltage source driven pulse input, in reality the pulse input has some non-zero output impedance which effects the stabilization time and output current capacity.
 
-{{% img src="charge-pump-voltage-doubler-simulation-plot.png" width="600px" caption="A plot of the simulation results for the above voltage doubling charge pump circuit." %}}
+{{% figure src="charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-plot.png" width="600px" caption="A plot of the simulation results for the above voltage doubling charge pump circuit." %}}
 
 ### Voltage Inverting Charge Pump
 

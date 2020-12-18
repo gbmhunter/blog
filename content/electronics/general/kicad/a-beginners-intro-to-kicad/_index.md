@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2020-04-21
 description: "A beginners tutorial/introduction to KiCad."
 categories: [ "Electronics", "General" ]
-lastmod: 2020-12-12
+lastmod: 2020-12-18
 tags: [ "electronics", "KiCad", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries", "DigiKey", "renaming", "project", "GerbView", "installation", "3D models", "wrl", "step", "schematic templates", "SPICE", "simulation", "ngspice", "Sallen Key", "schematics" ]
 title: "A Beginners Intro To KiCad"
 type: "page"
@@ -275,7 +275,7 @@ Removing/fixing up these dangling 3D model links may remove the access violation
 
 ## Simulation
 
-The KiCad schematic editor (EESchema) supports **SPICE simulation using the [ngspice](http://ngspice.sourceforge.net/) SPICE engine**. Unfortunately, the simulation feature of KiCad is not very well documented. Your best bet is to start with one of the working examples provided by KiCad, and learn from there (see below).
+The KiCad schematic editor (EESchema) supports **mixed-signal SPICE simulation using the [ngspice](http://ngspice.sourceforge.net/) SPICE engine**. Unfortunately, the simulation feature of KiCad is not very well documented. Your best bet is to start with one of the working examples provided by KiCad, and learn from there (see below).
 
 KiCad comes with example simulation circuits located at `<KiCad installation dir>/share/kicad/demos/simulation/`. In this directory there is the following simulation schematic example directories:
 
@@ -292,13 +292,44 @@ KiCad comes with example simulation circuits located at `<KiCad installation dir
 
 There are a few schematic symbol parameters which have dedicated purposes for SPICE simulations. I've tried to list as many as I've encountered below:
 
-* `Fieldname`: Typically `Value`.
-* `Spice_Primitive`: `R` for resistors, `C` for capacitors, `D` for diodes, `X` for ICs, e.t.c.
+* `Fieldname`: Typically `Value`, pointing to the `Value` symbol property. Think of this as a symbol property pointer?
+* `Spice_Primitive`: This determines the _element type_ (ngspice nomenclature) `R` for resistors, `C` for capacitors, `D` for diodes, `X` for subcircuits (anything that is built out of many primitives, i.e. ICs), e.t.c. See the below table for a list of all the supported primitives.
 * `Spice_Model`: Only needed when `Spice_Primitive = X`.
-* `Spice_Lib_File`: Filename (not full path) of SPICE library component that belongs to this symbol, e.g. `ad8051.lib`.
+* `Spice_Lib_File`: Filename (not full path) of SPICE library component that belongs to this symbol, e.g. `ad8051.lib`. This `.lib` file must be located in the same directory as the `.sch` file containing the component. Clicking `Edit Spice Model` should bring up a dialogue box with the text from the `.lib` file.
 * `Spice_Netlist_Enabled`: A boolean. either `Y` or `N`.
-* `Spice_Node_Sequence`: Seen on voltage sources (`VSOURCE`).
+* `Spice_Node_Sequence`: This is used to map KiCAD pin numbering with the pin numbering that ngspice expects. The value for this parameter is a space separated list of integers which map the KiCad pins to the ngspice pins. For example, almost all diodes in KiCad number the cathode as pin 1, and the anode as pin 2. ngspice expects things the other way around, with the anode as pin 1, cathode as pin 2. So simulation diodes should have a `Spice_Node_Sequence=2 1`.
 * `SpiceMapping`: 
+
+The following table lists all the supported KiCad SPICE primitive types (what ngspice calls the _element type_) as of `KiCad v5.1.6`:
+
+First letter  | Element description
+--------------|--------------------------------------------------
+A             | XSPICE code model
+B             | Behavioral (arbitrary) source
+C             | Capacitor
+D             | Diode
+E             | Voltage-controlled voltage source (VCVS)
+F             | Current-controlled current source (CCCs)
+G             | Voltage-controlled current source (VCCS)
+H             | Current-controlled voltage source (CCVS)
+I             | Current source
+J             | Junction field effect transistor (JFET)
+K             | Coupled (Mutual) Inductors
+L             | Inductor
+M             | Metal oxide field effect transistor (MOSFET)
+N             | Numerical device for GSS
+O             | Lossy transmission line
+P             | Coupled multiconductor line (CPL)
+Q             | Bipolar junction transistor (BJT)
+R             | Resistor
+S             | Switch (voltage-controlled)
+T             | Lossless transmission line
+U             | Uniformly distributed RC line
+V             | Voltage source
+W             | Switch (current-controlled)
+X             | Subcircuit
+Y             | Single lossy transmission line (TXL)
+Z             | Metal semiconductor field effect transistor (MESFET)
 
 ### Voltage And Current Sources
 
@@ -341,6 +372,10 @@ For example, for a continuous pulse train alternating between 0 and 5V at 100kHz
 PULSE(0 5 0 10n 10n 5u 10u)
 ```
 
+### Custom Model Files
+
+ngspice model files typically have the `.lib` extension --- the same extension as used by KiCad symbol libraries. Thus it's easy to get these two confused, and makes it harder to search for system installed ngspice model files in the KiCad installation directory. 
+
 ### Placing Components
 
 Somewhat confusingly, KiCad comes with two SPICE symbol libraries:
@@ -354,7 +389,15 @@ Somewhat confusingly, KiCad comes with two SPICE symbol libraries:
 
 Standard Eeschema _net labels_ can be used to name nets which will be carried through to the ngspice simulation.
 
-### Specifying Simulation Type
+### Modes Of Analysis
+
+There are three main modes of analysis:
+
+* DC analysis: The time varying behaviour of reactive elements is ignored.
+  * Basic DC analysis: Analysis of the circuit with each voltage/current source at a single DC level.
+  * Swept DC analysis: Basic DC analysis but repeated at a number of different DC input levels for the voltage/current sources.
+* AC analysis: The simulator outputs magnitude and phase information as a function of frequency.
+* Transient analysis: The entire circuit, including DC and reactive elements is simulated. The output is the voltage and currents at each node as a function of time.
 
 The easiest way is to add a text string on the schematic.
 
