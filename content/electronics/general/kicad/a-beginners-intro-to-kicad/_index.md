@@ -404,3 +404,12 @@ The easiest way is to add a text string on the schematic.
 **Transient**
 
 `.tran 1u 10m`
+
+### Common Simulation Errors
+
+I have got the following error when the wrong `Spice_Primitive` was set (the component was a diode, `Spice_Primitive` was set to `X` for sub-circuit, was meant to be set to `D`).
+
+```
+Error: unknown subckt: xd1 <net name> 0 1n5817
+Error: there aren't any circuits loaded.
+```

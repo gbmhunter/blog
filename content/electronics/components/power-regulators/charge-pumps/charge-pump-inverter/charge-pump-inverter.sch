@@ -1,0 +1,160 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L power:GND #PWR?
+U 1 1 5FCDE4C9
+P 4600 3900
+F 0 "#PWR?" H 4600 3650 50  0001 C CNN
+F 1 "GND" H 4605 3727 50  0000 C CNN
+F 2 "" H 4600 3900 50  0001 C CNN
+F 3 "" H 4600 3900 50  0001 C CNN
+	1    4600 3900
+	1    0    0    -1  
+$EndComp
+Wire Notes Line
+	3300 3300 3300 3500
+Wire Notes Line
+	3300 3500 2600 3500
+Wire Notes Line
+	2600 3500 2600 3300
+Wire Notes Line
+	2600 3300 3300 3300
+Text Notes 2600 3450 0    50   ~ 0
+pulse
+$Comp
+L Device:CP1 C1
+U 1 1 5FCDF66E
+P 3650 3400
+F 0 "C1" V 3900 3350 50  0000 L CNN
+F 1 "100nF" V 3800 3300 50  0000 L CNN
+F 2 "" H 3650 3400 50  0001 C CNN
+F 3 "~" H 3650 3400 50  0001 C CNN
+	1    3650 3400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:CP1 C2
+U 1 1 5FCE0482
+P 4400 3650
+F 0 "C2" H 4600 3600 50  0000 C CNN
+F 1 "100nF" H 4500 3700 50  0000 L CNN
+F 2 "" H 4400 3650 50  0001 C CNN
+F 3 "~" H 4400 3650 50  0001 C CNN
+	1    4400 3650
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:D D1
+U 1 1 5FCE0E3A
+P 3900 3650
+F 0 "D1" V 3950 3850 50  0000 C CNN
+F 1 "1N5817" V 3850 3850 50  0000 C CNN
+F 2 "" H 3900 3650 50  0001 C CNN
+F 3 "~" H 3900 3650 50  0001 C CNN
+	1    3900 3650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:D D2
+U 1 1 5FCE1833
+P 4150 3400
+F 0 "D2" H 4150 3650 50  0000 C CNN
+F 1 "1N5817" H 4150 3550 50  0000 C CNN
+F 2 "" H 4150 3400 50  0001 C CNN
+F 3 "~" H 4150 3400 50  0001 C CNN
+	1    4150 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3300 3400 3500 3400
+Wire Wire Line
+	3800 3400 3900 3400
+Wire Wire Line
+	3900 3500 3900 3400
+Connection ~ 3900 3400
+Wire Wire Line
+	3900 3400 4000 3400
+Wire Wire Line
+	4300 3400 4400 3400
+Wire Wire Line
+	4400 3400 4400 3500
+Wire Wire Line
+	4400 3400 4800 3400
+Connection ~ 4400 3400
+Wire Wire Line
+	3900 3800 3900 3900
+Wire Wire Line
+	4400 3900 4400 3800
+$Comp
+L Device:R_US Rload
+U 1 1 5FCEFFE1
+P 4800 3650
+F 0 "Rload" H 4868 3650 50  0000 L CNN
+F 1 "R_US" H 4868 3605 50  0001 L CNN
+F 2 "" V 4840 3640 50  0001 C CNN
+F 3 "~" H 4800 3650 50  0001 C CNN
+	1    4800 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4800 3800 4800 3900
+Wire Wire Line
+	4800 3500 4800 3400
+Wire Wire Line
+	3000 3450 3050 3450
+Wire Wire Line
+	3050 3450 3050 3350
+Wire Wire Line
+	3050 3350 3100 3350
+Wire Wire Line
+	3100 3350 3100 3450
+Wire Wire Line
+	3100 3450 3150 3450
+Wire Wire Line
+	3150 3450 3150 3350
+Wire Wire Line
+	3150 3350 3200 3350
+Wire Wire Line
+	3200 3350 3200 3450
+Wire Wire Line
+	3200 3450 3250 3450
+Text Label 4600 3250 0    50   ~ 0
+Vout(-Vin)
+$Comp
+L power:+3V3 #PWR?
+U 1 1 5FCF5E94
+P 4800 3400
+F 0 "#PWR?" H 4800 3250 50  0001 C CNN
+F 1 "+3V3" H 4815 3573 50  0001 C CNN
+F 2 "" H 4800 3400 50  0001 C CNN
+F 3 "" H 4800 3400 50  0001 C CNN
+	1    4800 3400
+	1    0    0    -1  
+$EndComp
+Connection ~ 4800 3400
+Wire Wire Line
+	4400 3900 4600 3900
+Connection ~ 4600 3900
+Wire Wire Line
+	4600 3900 4800 3900
+Text Notes 2900 3500 0    31   ~ 0
+0V
+Text Notes 2900 3400 0    31   ~ 0
+Vin
+Wire Wire Line
+	3900 3900 4400 3900
+Connection ~ 4400 3900
+$EndSCHEMATC

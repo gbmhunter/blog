@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2014-12-01
 description: "Schematics, advantages/disadvantages to buck converters, uses/applications and more info about charge pumps (a type of SMPS)."
 draft: false
-lastmod: 2020-12-15
+lastmod: 2020-12-19
 tags: [ "electronics", "components", "power supplies", "charge pumps", "SMPS", "switch-mode power supplies", "op-amps", "MOSFETs", "buck converters", "LEDs", "drivers", "voltage doublers", "diodes", "schottky", "capacitors", "RS-232", "flying capacitor", "reservoir capacitor", "Dickson charge pump", "half-wave doubler" ]
 title: "Charge Pumps"
 type: "page"
@@ -60,7 +60,7 @@ To demonstrate the behaviour of this circuit, I simulated it using KiCad and ngs
 
 The following KiCad schematics were used to perform the simulation:
 
-{{% figure src="/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-schematics.png" width="800px" caption="The schematics for the voltage-doubling charge pump simulation." %}}
+{{% figure src="charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-schematics.png" width="800px" caption="The schematics for the voltage-doubling charge pump simulation." %}}
 
 The below figure shows the behaviour of the voltage doubling charge pump. Notice that after about 5 cycles the output voltage stabilizes to it's steady state value of approximately 8.7V. This simulation assumed a perfect voltage source driven pulse input, in reality the pulse input has some non-zero output impedance which effects the stabilization time and output current capacity.
 
@@ -68,7 +68,13 @@ The below figure shows the behaviour of the voltage doubling charge pump. Notice
 
 ### Voltage Inverting Charge Pump
 
+Notice how while the voltage doubling charge pump requires two inputs (`\(V_{in}\)` and `\(V_{pulse}\)`), a voltage inverting charge pump only requires one --- `\(V_{pulse}\)`.
 
+{{% figure src="charge-pump-inverter/charge-pump-inverter-schematic.png" width="600px" caption="A schematic for a voltage-inverting charge pump." %}}
+
+The simulation results:
+
+{{% figure src="charge-pump-inverter/charge-pump-inverter-simulation-results.png" width="600px" caption="A schematic for a voltage-inverting charge pump." %}}
 
 ## History
 
