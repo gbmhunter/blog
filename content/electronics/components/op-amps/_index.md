@@ -142,6 +142,22 @@ One disadvantage with this design is that the current output is not ground refer
 
 ### Current Sink
 
+An op-amp can be easily wired up with a MOSFET and sense resistor to make a voltage controlled current sink. The following schematic shows such a device which can control between 0-1A through the load (shown as `\(R_{load}\)`):
+
+{{% figure src="current-sink/op-amp-current-sink-schematic.png" width="700px" caption="Schematic of a basic op-amp based current sink." %}}
+
+You set the desired load current by providing a voltage to `\(V_{in}\)`. This voltage typically comes from a resistor divider (fixed current), potentiometer (manually variable current) or DAC (digitally variable current). The load current is given by the simple Ohm's law equation:
+
+<p>$$ I_{load} = \frac{V_{in}}{R_{sense}} $$</p>
+
+The circuit works like this:
+1. Desired voltage to set current is provided to `\(V_{in}\)` which is applied to the positive input of the op-amp, `\(V_{op+}\)`.
+1. The op-amp will then drive it's output high in an attempt to bring it's `\(V_{op-}\)` to the same voltage.
+1. As the op-amp raises the voltage on it's output, this is connected to the gate of the MOSFET, which will begin to turn it on.
+1. As the MOSFET turns on, current begins to flow through the load and sense resistor, `\(R_{sense}\)`.
+1. The op-amp will keep turning the MOSFET on until the voltage drop across `\(R_{sense}\)` is equal to `\(V_{in}\)`.
+1. This voltage drop will occur when we have the desired amount of current flowing through it, leading to the equation `\( I_{load} = \frac{V_{in}}{R_{sense}} \)`.
+
 The accuracy of the current sink primarily depends of three aspects:
 
 * The input offset voltage of the op-amp.

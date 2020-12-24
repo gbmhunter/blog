@@ -244,6 +244,10 @@ The [IXTN660N04T4](https://www.littelfuse.com/~/media/electronics/datasheets/dis
 
 [On Semiconductors application note AND8093/D](https://www.onsemi.com/pub/Collateral/AND8093-D.PDF) has some great reading material on current sensing MOSFETs.
 
+## Manufacturer Part Number Families
+
+* **2N7002**: N-channel, 60V, 300mA MOSFET from a variety of manufacturers. 
+
 ## Part Recommendations
 
 Link to DigiKey's (US) MOSFET selection (single/discrete): <https://www.digikey.com/en/products/filter/transistors-fets-mosfets-single/278>
