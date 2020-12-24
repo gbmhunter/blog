@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2020-04-21
 description: "A beginners tutorial/introduction to KiCad."
 categories: [ "Electronics", "General" ]
-lastmod: 2020-12-18
+lastmod: 2020-12-24
 tags: [ "electronics", "KiCad", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries", "DigiKey", "renaming", "project", "GerbView", "installation", "3D models", "wrl", "step", "schematic templates", "SPICE", "simulation", "ngspice", "Sallen Key", "schematics" ]
 title: "A Beginners Intro To KiCad"
 type: "page"
@@ -279,10 +279,13 @@ The KiCad schematic editor (EESchema) supports **mixed-signal SPICE simulation u
 
 KiCad comes with example simulation circuits located at `<KiCad installation dir>/share/kicad/demos/simulation/`. In this directory there is the following simulation schematic example directories:
 
-* laser_driver
+* **laser_driver**: Good example if you want to know how to include op-amps and transistors into your simulation. Notice that the pinout for the op-amp used in this schematic is very different to that of the op-amps in KiCAD's two built-in simulation component libraries.
+
+    {{% img src="kicad-laser-driver-simulation-schematic-screenshot.png" width="600px" caption="A screenshot of the Laser Driver simulation example that comes shipped with KiCad. Layout of circuit slightly adjusted to improve screenshot." %}}
+
 * rectifier
 * pspice
-* sallen_key
+* **sallen_key**
 
 {{% img src="kicad-sallen-key-simulation-schematic-screenshot.png" width="600px" caption="A screenshot of the Sallen Key simulation example that comes shipped with KiCad. Layout of circuit slightly adjusted to improve screenshot."%}}
 
@@ -371,6 +374,28 @@ For example, for a continuous pulse train alternating between 0 and 5V at 100kHz
 ```text
 PULSE(0 5 0 10n 10n 5u 10u)
 ```
+
+### MOSFETs
+
+For discrete MOSFETs, the recommended approach is to use the `VDMOS` intrinsic model. This uses a standard 3-pin MOSFET symbol in the following order:
+
+* Pin 1: Drain
+* Pin 2: Gate
+* Pin 3: Source
+
+Make sure the symbol reference starts with an `M`, e.g. `M1`. Make sure the `Value` parameter contains the model name, and then add a line of text to the schematic containing the model parameters, e.g.:
+
+```text
+.model 2N7002 VDMOS(Rg=3 Vto=1.6 Rd=0 Rs=.75 Rb=.14 Kp=.17 mtriode=1.25 Cgdmax=80p Cgdmin=12p Cgs=50p Cjo=50p Is=.04p ksubthres=.1)
+```
+
+{{% img src="crucial-discrete-mosfet-simulation-setup-in-kicad.png" width="800px" caption="Screenshot showing the crucial setup required to simulate discrete MOSFETs in KiCAD with ngspice." %}}
+
+See the section [11.3 Power MOSFET model (VDMOS) in the ngspice User Manual](http://ngspice.sourceforge.net/docs/ngspice-33-manual.pdf) for more information.
+
+For MOSFETs built into integrated circuits, use the `BSIM3` model. For the `BSIM3` model, ngspice expects four pins rather than the usual three, gate, drain, source and bulk (substrate). In standard 3-pin MOSFETs the bulk is typically connected internally to the source, so for most simulations you can just do that externally to mimic a standard MOSFET.
+
+See <https://forum.kicad.info/t/generic-mosfets-solved/11155/3>.
 
 ### Custom Model Files
 
