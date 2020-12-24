@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps)."
 draft: false
-lastmod: 2020-10-28
+lastmod: 2020-12-24
 tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components", "gain", "voltage follower", "offset nulling", "input offset voltages", "instrumentation amplifiers" ]
 title: "Op-Amps"
 type: "page"
@@ -14,7 +14,7 @@ type: "page"
 
 At it's most basic level, an operational amplifier (op-amp) is a **discrete analogue integrated circuit which acts as a voltage-amplifier with very high gain**.
 
-An op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). This is almost always done for any op-amp that is used as an amplifier. External circuitry can also manpulate the op-amp to act as as a current amplifier.
+An op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). This is almost always done for any op-amp that is used as an amplifier. External circuitry can also manipulate the op-amp to act as as a current amplifier or perform "mathematical" operations on signals.
 
 ## Schematic Symbol
 
@@ -139,6 +139,15 @@ A basic transconductance amplifier can be built with an op-amp in a non-invertin
 A transconductance amplifier is useful creating an industry standard 4-20mA (or 0-20mA) current-loop signal. The input voltage can come from something like a potentiometer or microcontroller (coupled with either using a VDAC peripheral or PWM/RC-filter technique to create a variable voltage).
 
 One disadvantage with this design is that the current output is not ground referenced, that is, ground is not used as the return path for the current. This complicates the wiring.
+
+### Current Sink
+
+The accuracy of the current sink primarily depends of three aspects:
+
+* The input offset voltage of the op-amp.
+* The accuracy of the DAC (or other voltage source) providing the voltage to `\(V_{in}\)`.
+* The tolerance of the current-sense resistor.
+
 
 ## Important Variables
 
