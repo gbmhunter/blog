@@ -4,8 +4,8 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps)."
 draft: false
-lastmod: 2020-12-24
-tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components", "gain", "voltage follower", "offset nulling", "input offset voltages", "instrumentation amplifiers" ]
+lastmod: 2020-12-25
+tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components", "gain", "voltage follower", "offset nulling", "input offset voltages", "instrumentation amplifiers", "capacitive loading", "current source" ]
 title: "Op-Amps"
 type: "page"
 ---
@@ -80,7 +80,7 @@ The results of the simulation are shown below. As you can see, the output voltag
 
 {{< img src="vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png" width="1700px" caption="A graph of Vout vs. Vin for a non-inverting op-amp amplifier circuit."  >}}
 
-### Inverting Amplifier
+### Inverting Amplifiers
 
 A op-amp amplifier in the inverting configuration is shown below:
 
@@ -100,7 +100,7 @@ And below are the simulation results for the above schematic:
 
 {{< img src="vout-vs-vin-inverting-op-amp-gain-neg-1.png" width="1420px" caption="Vout vs. Vin for an inverting op-amp with a gain of -1."  >}}
 
-### Differential Amplifier
+### Differential Amplifiers
 
 A differential amplifier amplifies the difference between two electrical signals.
 
@@ -118,7 +118,7 @@ This schematic produces the following results:
 
 {{< img src="differential-op-amp-simulation-graph-vin1-vin2-vout.png" width="1686px" caption="A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier."  >}}
 
-### Integrator
+### Integrators
 
 It's output voltage is proportional to the integral of the input voltage w.r.t. time. The figure below shows an **ideal** op-amp based integrator.
 
@@ -130,7 +130,7 @@ A way to fix this problem is to insert a high-valued feedback resistor, `\(R_f\)
 
 {{< img src="op-amp-schematic-integrator-non-ideal.png" width="430px" caption="An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset." >}}
 
-### Transconductance Amplifier
+### Transconductance Amplifiers
 
 A _transconductance amplifier_ is an op-amp topology which is used to **convert a voltage into a current**. Coincidentally, it is also known as a _voltage-to-current converter_.
 
@@ -140,7 +140,7 @@ A transconductance amplifier is useful creating an industry standard 4-20mA (or 
 
 One disadvantage with this design is that the current output is not ground referenced, that is, ground is not used as the return path for the current. This complicates the wiring.
 
-### Current Sink
+### Current Sinks
 
 An op-amp can be easily wired up with a MOSFET and sense resistor to make a voltage controlled current sink. The following schematic shows such a device which can control between 0-1A through the load (shown as `\(R_{load}\)`):
 
@@ -155,8 +155,16 @@ The circuit works like this:
 1. The op-amp will then drive it's output high in an attempt to bring it's `\(V_{op-}\)` to the same voltage.
 1. As the op-amp raises the voltage on it's output, this is connected to the gate of the MOSFET, which will begin to turn it on.
 1. As the MOSFET turns on, current begins to flow through the load and sense resistor, `\(R_{sense}\)`.
-1. The op-amp will keep turning the MOSFET on until the voltage drop across `\(R_{sense}\)` is equal to `\(V_{in}\)`.
+1. The op-amp will keep turning the MOSFET on until the voltage drop across `\(R_{sense}\)` is equal to `\(V_{in}\)`, meaning `\(V_{op-}\)` is the same as `\(V_{op+}\)`.
 1. This voltage drop will occur when we have the desired amount of current flowing through it, leading to the equation `\( I_{load} = \frac{V_{in}}{R_{sense}} \)`.
+
+Things to note:
+
+* The op-amp is powered here with a slightly negative voltage rail on it's `\(V_{SS}\)` pin. This is that the op-amp remains operational when you set it at low current levels. At low current levels, the voltages at `\(V_{op+}\)` and `\(V_{op-}\)` are very close to zero. Even rail-to-rail op-amps can have trouble performing well if the negative voltage rail was at `\(0V\)`.
+* The power dissipation through the MOSFET and sense resistor has to be considered. The sense resistor is easy, just make sure it can handle the power given by `\(P = I^2 R\)` at the maximum current. The MOSFET power dissipation will depend on the load current and voltage drop across it. The MOSFET is used in it's active region --- the region where it is not fully on nor fully off. The MOSFET will drop the remaining voltage from the voltage source provided to the load, once the load voltage drop and sense resistor voltage drop has been subtracted. Use the equation `\(P = VI\)` to determine the power dissipation in the MOSFET.
+* The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. See below to recommended compensation circuitry to add to the basic schematic to make the design more stable.
+
+**Current Sinking Accuracy**
 
 The accuracy of the current sink primarily depends of three aspects:
 
@@ -164,6 +172,13 @@ The accuracy of the current sink primarily depends of three aspects:
 * The accuracy of the DAC (or other voltage source) providing the voltage to `\(V_{in}\)`.
 * The tolerance of the current-sense resistor.
 
+**MOSFET Gate Capacitance Compensation**
+
+The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. Compensation circuitry can be added as shown in the below circuit to limit the phase lag and prevent the circuit from becoming unstable.
+
+{{% img src="lt1492-voltage-controlled-current-sink.png" width="500px" caption="A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492. Image retrieved 2020-12-25 from https://www.analog.com/media/en/technical-documentation/data-sheets/14923f.pdf." %}}
+
+Read <https://electronics.stackexchange.com/questions/69506/stability-problem-in-unity-gain-opamp> for more information.
 
 ## Important Variables
 
@@ -391,6 +406,8 @@ Some op-amps which are designed to have very low input offset voltages also come
 ## Chopper-Stabilised Op-Amps
 
 TODO
+
+## Capacitive Loading
 
 ## References
 

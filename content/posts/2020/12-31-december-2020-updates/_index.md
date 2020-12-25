@@ -27,3 +27,7 @@ type: "post"
 * Added more SPICE simulation info to the {{% link text="A Beginners Intro To KiCad page" src="/electronics/general/kicad/a-beginners-intro-to-kicad" %}}.
 
     {{% figure src="/electronics/general/kicad/a-beginners-intro-to-kicad/kicad-sallen-key-simulation-plots.png" width="600px" %}}
+
+* Added schematics and explanations around {{% link text="op-amp based current sinks to the Op-Amp page" src="/electronics/components/op-amps#current-sinks" %}}.
+
+    {{% figure src="/electronics/components/op-amps/current-sink/op-amp-current-sink-schematic.png" width="500px" %}}
