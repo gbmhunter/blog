@@ -118,7 +118,7 @@ Wire Wire Line
 	4300 4250 5300 4250
 Text Label 4300 3750 0    60   ~ 0
 vrsense
-Text Notes 3050 4950 0    50   ~ 0
+Text Notes 2350 4900 0    50   ~ 0
 .model 2N7002 VDMOS(Rg=3 Vto=1.6 Rd=0 Rs=.75 Rb=.14 Kp=.17 mtriode=1.25 Cgdmax=80p Cgdmin=12p Cgs=50p Cjo=50p Is=.04p ksubthres=.1)
 $Comp
 L op-amp-current-sink-simulation-rescue:GND-rectifier_schlib-charge-pump-voltage-doubler-simulation-rescue-charge-pump-voltage-doubler-simulation-rescue-charge-pump-voltage-doubler-simulation-rescue-charge-pump-voltage-doubler-simulation-rescue #PWR?
@@ -220,4 +220,6 @@ F 3 "~" H 5900 3650 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6000 3850 6000 4000
+Text Notes 3900 3150 0    50   ~ 0
+.control\nversion\n.endc
 $EndSCHEMATC

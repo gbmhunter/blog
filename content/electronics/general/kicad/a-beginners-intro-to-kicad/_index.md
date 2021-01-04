@@ -430,6 +430,20 @@ The easiest way is to add a text string on the schematic.
 
 `.tran 1u 10m`
 
+### Printing Out The Version Of ngspice
+
+You can print out the version of ngspice by adding the following text to the schematic:
+
+```text
+.control
+version
+.endc
+```
+
+ngspice will then print out the following information when the simulation is run:
+
+{{% img src="adding-control-text-to-print-ngspice-version-in-kicad.png" width="500px" caption="Adding the shown text anywhere on the KiCAD schematic will trigger ngspice to print out version/build information when you run the simulation." %}}
+
 ### Common Simulation Errors
 
 I have got the following error when the wrong `Spice_Primitive` was set (the component was a diode, `Spice_Primitive` was set to `X` for sub-circuit, was meant to be set to `D`).
