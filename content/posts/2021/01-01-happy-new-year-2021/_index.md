@@ -1,7 +1,7 @@
 ---
 date: 2021-01-01
 description: "A post introducing 2021 and reflecting on the 2020 year (including blog statistics)."
-draft: false
+draft: true
 lastmod: 2021-01-01
 tags: [ "new year", "2021", "statistics", "Google Analytics", "page view", "user", "referral", "Hugo", "GitHub", "blog" ]
 title: "Happy New Year 2021"
