@@ -1,7 +1,7 @@
 ---
 date: 2021-01-01
 description: "A post introducing 2021 and reflecting on the 2020 year (including blog statistics)."
-draft: true
+draft: false
 lastmod: 2021-01-01
 tags: [ "new year", "2021", "statistics", "Google Analytics", "page view", "user", "referral", "Hugo", "GitHub", "blog" ]
 title: "Happy New Year 2021"
@@ -24,7 +24,7 @@ This year, I thought it would be interesting to also include the total number of
   <thead>
     <tr>
       <th>Year</th>
-      <th>No. Pages (on Jan 1st of that year)</th>
+      <th>Num. of New Content Pages</th>
       <th>No. Page Views</th>
       <th>No. Users</th>
     </tr>
@@ -32,28 +32,29 @@ This year, I thought it would be interesting to also include the total number of
   <tbody>
     <tr>
       <td>2017</td>
-      <td></td>
+      <td>(no data)</td>
       <td>83k</td>
       <td>41k</td>
     </tr>
     <tr>
       <td>2018</td>
-      <td></td>
+      <td>(no data at SOY, but 925 content pages at EOY)</td>
       <td>116k</td>
       <td>63k</td>
     </tr>
     <tr>
       <td>2019</td>
-      <td></td>
+      <td>80 (1005 content pages at EOY)</td>
       <td>99k</td>
       <td>49k</td>
     </tr>
     <tr>
       <td>2020</td>
-      <td></td>
+      <td>84 (1089 content pages at EOY)</td>
       <td>134k</td>
       <td>97k</td>
     </tr>
+    <tr>
   </tbody>
 </table>
 
@@ -89,4 +90,5 @@ Looking back at the Happy New Year 2020 page the goals were rather light, in fac
 
 ## Plans For This Year
 
-* More content! (this is never not a goal)
+* **More content!** (this is never not a goal)
+* **More diagrams**: I'm beginning to think that some of the content on this blog is getting too text heavy, and there are not enough images. I hope to pad out text with more images this year, using LibreOffice Draw for diagrams, screenshots from KiCAD for schematics, and photos for examples. 
