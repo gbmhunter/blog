@@ -18,7 +18,13 @@ This is the third year in a row in which I have used Google Analytics for statis
 
 ### Summary
 
-This year, I thought it would be interesting to also include the total number of pages on the blog, as counted on Jan 1st of the year. I am only counting human created "pages" and "posts" in this tally, and not the automatically generated large number of "tag" and "category" pages.
+This year, I thought it would be interesting to also include the total number of pages on the blog, as counted on Jan 1st of the year. I am only counting human created "pages" and "posts" in this tally, and not the automatically generated large number of "tag" and "category" pages. To find the last commit made in a given calender year I used the `git` command:
+
+```bash
+git rev-list -1 --before="Jan 01 2020" master
+```
+
+This spits out the hash of the desired commit. After checking out that commit I wrote a small Python script for tallying the number of `_index.md` files in the `content` directory of this blog.
 
 <table>
   <thead>
