@@ -2,10 +2,12 @@
 author: gbmhunter
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-25
+description: "Sizes, dimensions, recommended land patterns and more info for the chip (EIA xxxx) component package, which is commonly used for SMD resistors and capacitors."
 draft: false
-tags: [ "component packages", "PCB design", "chip", "EIA", "0603", "0805", "1206" ]
+lastmod: 2021-01-17
+tags: [ "component packages", "PCB design", "chip", "EIA", "0603", "0805", "1206", "MEMS", "oscillators", "crystals" ]
 title: "Chip (EIA) Component Packages"
-type: page
+type: "page"
 ---
 
 ## Overview
@@ -79,15 +81,15 @@ The standard is to define them in the metric scale, however most manufacturers, 
 Sorted from smallest to largest package size.
 
 <table>
-    <thead>
-        <tr>
-            <th>Package Designator (metric)</th>
-            <th>Package Designator (imperial)</th>
-            <th>Typical Power Rating (W)</th>
-            <th>Land Area</th>
-            <th>Comments</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Package Designator (metric)</th>
+      <th>Package Designator (imperial)</th>
+      <th>Typical Power Rating (W)</th>
+      <th>Land Area</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
     <tbody>
 <tr >
 <td > ?
@@ -305,3 +307,9 @@ Reverse-aspect chip capacitors (a.k.a LICC) have their leads on the long sides o
 {{< img src="comparison-of-various-smd-chip-capacitor-internal-designs-mlcc-licc-mpdigest.png" width="483px" caption="A comparison of the different internal designs of various SMD chip capacitors. Image from http://www.mpdigest.com/." >}}
 
 They are normally named the same as normal aspect chip capacitors except with the two numbers in reverse order, i.e. an 0603 sized capacitor now becomes a 0306 capacitor.
+
+## MEMS Oscillators
+
+Some MEMS oscillators uses chip package sizes, but with extra pins for power and ground. One common package size is 2012 (2.0x1.2mm) which is sometimes used for 32.768kHz crystal oscillators (XTAL):
+
+{{% img src="2012-smd-mems-oscillator-component-package.png" width="300px" caption="Photo of the underside of a MEMS oscillator in a modified (2 extra pins) 2012 (2.0x1.2mm) chip package. Image from https://www.mouser.com/ProductDetail/SiTime/SiT1533AI-H4-AA3-32768E/?qs=dMZC7um9hO9NUxlac12G7g%3D%3D." %}}
