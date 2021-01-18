@@ -57,7 +57,7 @@ Some other important properties of diodes are their ability to prevent conductio
 
 {{< img src="schematic-symbol-general-diode.png" width="221px" caption="The schematic symbol for a general diode."  >}}
 
-Diodes come in many [component packages](/pcb-design/component-packages/), one of the most common being the [through-hole DO-41 package](/pcb-design/component-packages/do-41-component-package/). They also come in standard SMD packages. It is a good idea to add polarity marks to the silkscreen layer on  diode footprints. The picture below shows polarity marks being added to a diode with a 0603 footprint.
+Diodes come in many {{% link text="component packages" src="/pcb-design/component-packages" %}}, one of the most common being the {{% link text="through-hole DO-41 package" src="/pcb-design/component-packages/do-41-component-package" %}}. They also come in standard SMD packages. It is a good idea to add polarity marks to the silkscreen layer on  diode footprints. The picture below shows polarity marks being added to a diode with a 0603 footprint.
 
 {{< img src="silkscreen-polarity-marks-on-0603-diode-footprint.png" width="504px" caption="Polarity marks have been added to the silkscreen layer for these 0603 diodes."  >}}
 
@@ -86,7 +86,7 @@ Sometimes they can be operated above their maximum reverse voltage for short per
 
 APDs are used in range-finders and optical communications.
 
-## Bridge Recitifers
+## Bridge Rectifiers
 
 Bridge rectifiers are 4 diodes connected in such a way that they rectify an AC voltage waveform into a DC one. The image below shows a bridge rectifier being used after a transformer to convert 12Vac into 12Vdc. Note that the frequency of the ripple will be twice the AC input frequency (2x 50Hz = 100Hz).
 
@@ -96,7 +96,7 @@ Bridge rectifiers can have snubber elements attached to each diode. This helps r
 
 ## Temperature Sensors
 
-Diodes can be used as temperature sensors, as their forward voltage changes depending on the temperature. Most 3-pin active linear temperature sensors use a diode for the temperature measurement, along with additional circuitry to linearise and scale the reading. See the [Temperature Sensors page](/electronics/components/sensors/temperature-sensors/) for more information.
+Diodes can be used as temperature sensors, as their forward voltage changes depending on the temperature. Most 3-pin active linear temperature sensors use a diode for the temperature measurement, along with additional circuitry to linearise and scale the reading. See the {{% link text="Temperature Sensors page" src="/electronics/components/sensors/temperature-sensors" %}} for more information.
 
 ## Steering Diodes
 
@@ -104,7 +104,7 @@ Steering diodes is a name given to a configuration of two or more diodes that ch
 
 They can be used to provide transient ESD protection.
 
-{{< img src="steering-diodes-used-for-transient-esd-protection.png" width="484px" caption="Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf."  >}}
+{{< img src="steering-diodes-used-for-transient-esd-protection.png" width="484px" caption="Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf." >}}
 
 They can be used alongside a potentiometer and 555 timer to create a PWM circuit.
 
