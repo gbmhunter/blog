@@ -1,9 +1,10 @@
 ---
 author: "gbmhunter"
 date: 2012-01-05
+description: "Crystals (XTALs), load capacitance, frequency accuracy and stability, schematic symbols, MEMS oscillators, and more info about oscillators."
 draft: false
-lastmod: 2021-01-17
-tags: [ "electronics", "components", "oscillators", "crystals", "MEMS", "XTAL", "XC", "XO", "OCXO", "frequency", "clocks", "power consumption", "stability" ]
+lastmod: 2021-01-18
+tags: [ "electronics", "components", "oscillators", "crystals", "MEMS", "XTAL", "XC", "XO", "OCXO", "frequency", "clocks", "power consumption", "stability", "accuracy", "ultrasonic baths" ]
 title: "Oscillators"
 type: "page"
 ---
@@ -117,7 +118,9 @@ The start-up time for most oscillators is within the range 2-20ms. This start-up
 
 MEMS oscillators are built using small mechanical structures (less than 0.1mm in any dimension) that vibrate at set frequencies when electrostatic forces are applied. This mechanical vibratory part of a MEMS oscillator is called the MEMS resonator. This is etched into a silicon die, and surrounding electronics contain both the driving, measuring, and compensation circuitry.
 
-They use less power than a crystal-based oscillator, making them suitable for battery-powered devices. They are manufactured using standard IC manufacturing processes, so they are also more durable.
+They use less power than a crystal-based oscillator, making them suitable for battery-powered devices. They are manufactured using standard IC manufacturing processes, so they are also more durable. They typically have better frequency stability over their operating temperature range, with common values being 10ppm at room temperature and 100pm over their entire operating temperature range.
+
+**MEMS oscillators do not like ultrasonic cleaning baths**. Ultrasonic baths may permanently damage the oscillator or cause long term reliability issues[^sit1533-mems-oscillator-datasheet].
 
 ### Packaging
 
@@ -130,3 +133,6 @@ MEMS oscillators have been made in packages which are also commonly used for cry
 * **SiT1533AI**: SiTime standard clock oscillators and MEMS oscillators.
   * **SiT1533AI-H4-D14-32.768G**: MEMS clock oscillator.
 
+## References
+
+[^sit1533-mems-oscillator-datasheet]: <https://www.mouser.com/datasheet/2/371/SiT1533_rev1.4_03202018-1324419.pdf>, retrieved 2021-01-18.
