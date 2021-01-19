@@ -4,11 +4,13 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2021-01-18
 description: "Schematic symbols, designators, manufacturing part numbers are more info about common-mode chokes."
 draft: false
-lastmod: 2021-01-18
+lastmod: 2021-01-19
 tags: [ "electronics", "components", "common-mode chokes" ]
 title: "Common-mode Chokes"
 type: "page"
 ---
+
+{{% warning-is-notes %}}
 
 ## Overview
 
@@ -23,6 +25,12 @@ Find them on DigiKey under [Filters -> Common Mode Chokes](https://www.digikey.c
 **A common-mode choke is typically drawn as two inductors separated by two lines**. The two lines represent the inductive coupling between the two inductors. A common-mode choke has 4 pins. Typical designator prefixes are `L` (which is also used for a single inductor) or `FL` (for FiLter).
 
 {{% img src="common-mode-choke-schematic-symbol.png" width="300px" caption="The schematic symbol for a common-mode choke." %}}
+
+## How It Works
+
+A common-mode choke blocks common-mode noise (noise which is equal in voltage/current at the same time on two signals, typically power and ground). At this point you might be wondering, how can the current be going in the same direction down both wires, doesn't the current need a return path? The key is to understand that **common-noise finds a way back to it's source through an external ground and capacitive coupling**. The following diagram attempts to illustrate this: 
+
+{{% figure src="common-mode-choke-how-it-works-diagram.svg" width="600px" caption="Diagram showing how a common-mode choke works." %}}
 
 ## Manufacturer Part Numbers
 
