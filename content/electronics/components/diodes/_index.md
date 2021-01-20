@@ -2,10 +2,10 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components", "Diodes" ]
 date: 2011-09-05
-description: "Info about zener, PIN, TVS and general-purpose diodes."
+description: "Info about zener, PIN, TVS, Schottky and general-purpose diodes."
 draft: false
-lastmod: 2020-05-22
-tags: [ "diodes", "diodes", "components", "current", "schematic symbols", "TVS", "Schottky", "bridge rectifier" ]
+lastmod: 2021-01-18
+tags: [ "electronics", "diodes", "components", "current", "schematic symbols", "TVS", "Schottky", "bridge rectifier" ]
 title: "Diodes"
 type: "page"
 ---
@@ -117,3 +117,7 @@ The short answer: No!
 The slightly longer answer...
 
 Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, e.tc e.t.c, until one is conduction almost all the current. This even occurs when the diodes are "identical", due to the fact their will be small differences in any two identical diodes.One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg. They should be identical in resistance and have to drop at least 0.3-0.4V (when the diode has a nominal voltage drop of around 0.7V) to be effective.
+
+## Manufacturer Part Numbers
+
+* **1N58xx**: Common Schottky diode family.
