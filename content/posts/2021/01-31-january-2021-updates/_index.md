@@ -19,3 +19,5 @@ type: "post"
 * Added a new page on {{% link text="Common-mode Chokes" src="/electronics/components/common-mode-chokes" %}}.
 
   {{% figure src="/electronics/components/common-mode-chokes/common-mode-choke-how-it-works-diagram.svg" width="600px" %}}
+
+* Added a section on {{% text="IDC Connectors to the Connector page" src="/electronics/components/connectors#idc-connectors" %}}.
