@@ -4,8 +4,8 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2020-11-03
 description: "Architectures, how to read the datasheets, manufacturer part numbers and more info about Digital-to-Analogue Converters (DACs)."
 draft: false
-lastmod: 2020-11-29
-tags: [ "electronics", "components", "digital-to-analogue converters", "DACs", "string DAC", "MDAC", "R2R", "R-2R", "Kelvin divider", "voltage switching DAC", "delta-sigma", "unipolar", "single-supply", "bipolar", "ppm", "voltage references", "monotonic", "monotonicity", "multiplying DAC" ]
+lastmod: 2021-01-20
+tags: [ "electronics", "components", "digital-to-analogue converters", "DACs", "string DAC", "MDAC", "R2R", "R-2R", "Kelvin divider", "voltage switching DAC", "delta-sigma", "unipolar", "single-supply", "bipolar", "ppm", "voltage references", "monotonic", "monotonicity", "multiplying DAC", "TUE", "total unadjusted error" ]
 title: "Digital-to-Analogue Converters (DACs)"
 type: "page"
 ---
@@ -83,7 +83,6 @@ Most DACs have a requirement for the external voltage reference to be no less th
 
 This is normally given as the number of bits. This determines what the smallest output step change will be in-response to the smallest digital code change (and change in the LSB). For example, a 10-bit DAC will have 2^10=1024 steps, an so the smallest output step change will be 1/1024 of the reference voltage. Not to be confused with _accuracy_.
 
-
 ### Monotonicity
 
 Typically when specified as a number of bits, this is the number of bits which are guaranteed to give a monotonic increase in the output voltage. Monotonicity is when the output always increases or stays the same (never decreases) as the digital codes increase. For example, a 16-bit DAC may have monotonicity guaranteed for the first 12 bits (MSBs).
@@ -106,7 +105,7 @@ Most buffered output DACs will be able to sink/source current (push/pull) and so
 
 ### Integral Non-linearity (INL)
 
-Integral non-linearity (INL) is a measure of the difference between the actual output voltage and ideal output voltage for a particular digital input code. **It is measured after offset and gain errors are compensated for**. To compensate, the typical "ideal output voltage" is taken as a linear line through the minimum and maximum output voltages of the DAC.
+Integral non-linearity (INL) is a measure of the difference between the actual output voltage and ideal output voltage for a particular digital input code. **It is measured after offset and gain errors are compensated for**. To compensate, the typical "ideal output voltage" is taken as a linear line through the minimum and maximum output voltages of the DAC. Integral non-linearity can also be called _relative accuracy_.
 
 {{% figure src="dac-integral-non-linearity.svg" width="500px" caption="The integral non-linearity for digital input code 010 is shown. Note how the 'ideal line' has been offset and gain compensated for, in this case by going through the DACs min and max. output voltages." %}}
 
@@ -123,6 +122,16 @@ INL_{bits} &= \frac{4.3mV}{\frac{2.5V}{2^{10}}} \\
            &= \frac{4.3mV}{2.44mV} \\
            &= 1.8 bits
 \end{align}</p>
+
+### Total Unadjusted Error (TUE)
+
+No, DACs do not have more error on a Tuesday. _Total unadjusted error_ (TUE) is an error metric of a DAC which combines the INL, gain and offset errors into a single metric.
+
+<p>\begin
+e_{TUE} = \sqrt{ e_{INL}^2 + e_{gain}^2 + e_{offset}^2 }
+\end</p>
+
+This equation only holds true if the three noise sources are **uncorrelated and each follow a normal distribution**. 
 
 ## Manufacturer Part Families
 
