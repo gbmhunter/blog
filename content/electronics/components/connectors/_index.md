@@ -3,8 +3,8 @@ author: "gbmhunter"
 date: 2011-09-05
 description: "Terminology, types, manufacturers, common usages and more info on electrical connectors."
 draft: false
-lastmod: 2020-10-01
-tags: [ "electronics", "connectors", "electronic components", "circular connectors", "M12", "M8", "pogo", "TagConnect", "spring-loaded", "socket", "plug", "crimp", "plating", "contacts" ]
+lastmod: 2021-01-20
+tags: [ "electronics", "connectors", "electronic components", "circular connectors", "M12", "M8", "pogo", "TagConnect", "spring-loaded", "socket", "plug", "crimp", "plating", "contacts", "IDC", "insulation displacement connectors" ]
 title: "Connectors"
 type: "page"
 ---
@@ -195,6 +195,20 @@ DIN connectors with different numbers of pins can sometimes mate with each other
 Mini-DIN connectors are smaller versions of the DIN connectors and are 9.5mm in diameter. A major difference between DIN and Mini-DIN connectors is that Mini-DIN connectors cannot be mated with any of different-number-of-pins Mini-DIN connectors.
 
 Mini-DIN connectors have been used for the S-video interface.
+
+## IDC Connectors
+
+IDC (_insulation displacement connector_) connectors are very common style of connector used to carry low speed communications and low current power between multiple circuit boards and between circuit boards and other devices. They are distinguishable by the typically black, square and sharp edged connectors, with a ribbon cable coming out the side.
+
+{{% img src="idc-connector-plug-and-socket-photo.png" width="400px" caption="A photo of a IDC plug and socket. The top piece of black plastic squashes the ribbon cable into the sharp blades and keeps the cable clamped." %}}
+
+The namesake comes from the way the connector attaches to the ribbon cable --- the connector has sharp "razor" style blades with a notch cut through the center of each one. The ribbon cable is pushed onto the end of the blades, and the blades pierce the ribbon cable and make contact with the blades (hence "displacing the insulation"). This removes the need to strip the end of the ribbon cable and connect via crimps/soldering/screw terminals and thus makes them extremely easy to construct.
+
+Sometimes jokingly referred to as "**I**t **D**id not **C**onnect" connectors, they can make for unreliable connections when hand assembled or not constructed in the correct manner. Unlike terminal blocks or crimped connectors, it is hard to visually confirm that the connections were made correctly given the clamp obscures the connection points.
+
+The socket (least-moving piece, the side that gets soldered onto a PCB) is shrouded and keyed to make sure the parts mate in the correct way.
+
+The pitch of the PCB pins on an IDC connector is almost always 2.54mm (0.1"). Because IDC connectors always have two rows of pins, this requires that the cable has a conductor pitch of 1.27mm (0.05").
 
 ## Telecom Connectors
 
