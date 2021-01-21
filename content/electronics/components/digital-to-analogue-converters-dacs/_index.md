@@ -4,8 +4,8 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2020-11-03
 description: "Architectures, how to read the datasheets, manufacturer part numbers and more info about Digital-to-Analogue Converters (DACs)."
 draft: false
-lastmod: 2021-01-20
-tags: [ "electronics", "components", "digital-to-analogue converters", "DACs", "string DAC", "MDAC", "R2R", "R-2R", "Kelvin divider", "voltage switching DAC", "delta-sigma", "unipolar", "single-supply", "bipolar", "ppm", "voltage references", "monotonic", "monotonicity", "multiplying DAC", "TUE", "total unadjusted error" ]
+lastmod: 2021-01-21
+tags: [ "electronics", "components", "digital-to-analogue converters", "DACs", "string DAC", "MDAC", "R2R", "R-2R", "Kelvin divider", "voltage switching DAC", "delta-sigma", "unipolar", "single-supply", "bipolar", "ppm", "voltage references", "monotonic", "monotonicity", "multiplying DAC", "TUE", "total unadjusted error", "differential non-linearity", "DNL", "glitches", "glitch energy" ]
 title: "Digital-to-Analogue Converters (DACs)"
 type: "page"
 ---
@@ -105,7 +105,10 @@ Most buffered output DACs will be able to sink/source current (push/pull) and so
 
 ### Integral Non-linearity (INL)
 
-Integral non-linearity (INL) is a measure of the difference between the actual output voltage and ideal output voltage for a particular digital input code. **It is measured after offset and gain errors are compensated for**. To compensate, the typical "ideal output voltage" is taken as a linear line through the minimum and maximum output voltages of the DAC. Integral non-linearity can also be called _relative accuracy_.
+Integral non-linearity (INL, also called _relative accuracy_) is a measure of the difference between the actual output voltage and ideal output voltage for a particular digital input code. **It is measured after offset and gain errors are compensated for**. To compensate for this, the typical "ideal output voltage" is to determined. Confusingly, there are two different ways the "ideal output voltage" may be calculated:
+
+1. **End point line**: A line through the minimum and maximum output voltages of the DAC. The error will be 0 for the first and last points.
+2. **Best fitting line**: A line fitted using linear least-squares regression.
 
 {{% figure src="dac-integral-non-linearity.svg" width="500px" caption="The integral non-linearity for digital input code 010 is shown. Note how the 'ideal line' has been offset and gain compensated for, in this case by going through the DACs min and max. output voltages." %}}
 
@@ -123,15 +126,41 @@ INL_{bits} &= \frac{4.3mV}{\frac{2.5V}{2^{10}}} \\
            &= 1.8 bits
 \end{align}</p>
 
+### Differential Non-linearity (DNL)
+
+Differential non-linearity measures the deviation from ideal in two analogue output values corresponding to two adjacent digital input values. For example, if the analogue output voltage changes by 1.2LSB when the digital input increments by 1LSB (the smallest step size), then the differential non-linearity is 0.2LSB. The value specified in the DAC datasheet is the worst-case differential non-linearity for any input step change.
+
+The differential non-linearity for any step is given by:
+
+<p>\begin{align}
+DNL(i) = \frac{V_{out}(i + 1) - V_{out}(i)}{ideal LSB output} - 1
+\end{align}</p>
+
+And then the value given on the datasheet is just the maximum \(DNL\) across the whole operating range:
+
+<p>\begin{align}
+DNL_{max} = max (\sum_{i=0}^{i=n-1} DNL(i))
+\end{align}</p>
+
+A differential non-linearity of more than 1LSB may lead to a non-monotonic transfer function (a.k.a. missing codes).
+
 ### Total Unadjusted Error (TUE)
 
 No, DACs do not have more error on a Tuesday. _Total unadjusted error_ (TUE) is an error metric of a DAC which combines the INL, gain and offset errors into a single metric.
 
-<p>\begin
+<p>\begin{align}
 e_{TUE} = \sqrt{ e_{INL}^2 + e_{gain}^2 + e_{offset}^2 }
-\end</p>
+\end{align}</p>
 
 This equation only holds true if the three noise sources are **uncorrelated and each follow a normal distribution**. 
+
+### Glitch Energy
+
+Ideally, the output of a DAC would move smoothly from one voltage level to another when the input code is changed. In reality, because the output voltage is determined by discrete switching elements, and each switching element may have slightly different switching times, the output voltage can swing/spike to unexpected voltages while the DAC is transitioning. Even if the internal DAC switches could switch instantaneously, they may be purposely designed with break-before-make behaviour to prevent current shorts in the internal circuitry (very similar to the concept of dead-time in a H-bridge). Resistor ladder DACs have small glitch energies, while R-2R DACs produce large glitch energies.
+
+A simple way to reduce the glitch energy is to add a large capacitor on the output of the DAC. This capacitor, driven by the output impedance of the DAC, will create a low-pass filter and reduce the amplitude of the glitch. However, this capacitor can also slow the settling time of the DAC, which might be undesirable in high-frequency applications.
+
+Another way to reduce the glitch energy is to add a external track/hold amplifier to the output of the DAC. This method can almost completely get rid of any glitching, however it requires additional circuitry and complex timing control between the DAC and track/hold amplifier[^maxim-deglitching-techniques-for-high-voltage-r-2r-dacs].
 
 ## Manufacturer Part Families
 
@@ -143,3 +172,4 @@ This equation only holds true if the three noise sources are **uncorrelated and 
 ## References
 
 [^analog-mt015-basic-dac-architectures]: <https://www.analog.com/media/ru/training-seminars/tutorials/MT-015.pdf>, retrieved 2020-11-03.
+[^maxim-deglitching-techniques-for-high-voltage-r-2r-dacs]: <https://www.maximintegrated.com/en/design/technical-documents/app-notes/5/583.html>, retrieved 2021-01-21.
