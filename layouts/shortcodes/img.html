@@ -15,6 +15,9 @@
 {{- if eq (index (split (.Get "src") ".") 1) "gif" -}}
   <!-- If image is a .gif, don't do any resampling, as this will give us a static image -->
   {{- $thumb = $image -}}
+{{- else if eq (index (split (.Get "src") ".") 1) "svg" -}}
+  <!-- If image is a .svg, don't do any resampling, does not make sense for vector image! -->
+  {{- $thumb = $image -}}
 {{- else -}}
   <!-- Make sure to specify non-Box re-sampling, the default "Box" re-sampling looks horrible with graphs/text -->
   <!-- CatmullRom is a sharp bicubic filter -->

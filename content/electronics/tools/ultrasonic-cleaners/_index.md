@@ -12,6 +12,8 @@ type: "page"
 
 {{% warning-is-notes %}}
 
+## Overview 
+
 Fill up with mixture of water and detergent. Standard kitchen detergent will do. Expensive cleaning solutions aimed at the professional electronics market. Do they perform any better?
 
 GT Sonic Ultrasonic Cleaner 6L: Large enough for most PCBs.
