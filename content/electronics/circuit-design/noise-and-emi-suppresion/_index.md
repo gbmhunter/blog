@@ -49,3 +49,12 @@ As you can see, if the average of the waveform is 0 (as in the case when the wav
 ## Purpose-built Noise Generators
 
 Noise generators can be built for testing circuits.
+
+## EMI Suppression
+
+Common-mode noise
+Differential-mode noise
+
+Class-X and class-Y capacitors
+Bypass capacitors
+
