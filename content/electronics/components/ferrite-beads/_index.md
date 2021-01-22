@@ -27,6 +27,8 @@ The most basic ferrite bead is a piece of wire with encased in ferrite material,
 
 {{< img src="usb-cable-with-ferrite-beads-annotated.png" width="450px" caption="A USB cable with the in-cable ferrite bead highlighted."  >}}
 
+Ferrite beads are good at filtering out high frequency differential mode noise. For filtering out common-mode noise, see the {{% link text="Common-mode Choke page" src="/electronics/components/common-mode-chokes" %}}.
+
 ## Schematic Symbol
 
 The IEEE 315 standard dictates that a ferrite bead should have the following schematic symbol:
@@ -53,7 +55,7 @@ The frequency is usually 100MHz. This is good for comparing one ferrite bead aga
 
 Ferrite beads are commonly placed in series on the power supply rails of electronic circuits.
 
-{{% figure src="differential-noise-diagram.svg" width="600px" caption="Simple schematic showing how ferrite beads absorb/block high frequency noise." %}}
+{{% img src="differential-noise-diagram.svg" width="600px" caption="Simple schematic showing how ferrite beads absorb/block high frequency noise." %}}
 
 ## Their Frequency Response Explained...
 
