@@ -1,17 +1,27 @@
 ---
 author: "gbmhunter"
 date: 2013-09-19
+description: "Impedance graphs, schematic symbols, important datasheet parameters, uses, example circuits and more info on ferrite beads."
 draft: false
-tags: [ "ferrite bead", "components", "schematic", "inductor", "impedance", "PCBs" ]
+images: [ "/electronics/components/ferrite-beads/ferrite-bead-schematic-symbol-ieee-315-slanted-rectangle.png" ]
+lastmod: 2021-01-22
+tags: [ "ferrite bead", "components", "schematic", "inductor", "impedance", "PCBs", "filter", "high frequency" ]
 title: "Ferrite Beads"
 type: "page"
 ---
 
 ## Overview
 
-Ferrite beads (also called ferrite chips) are inductors which are used for filtering out high frequencies. To do this, they are designed to have a large resistance at high frequency (i.e. they are lossy). They absorb this high frequency energy and dissipate it as heat. The following graph shows the typical impedance of a ferrite bead across a range of frequencies.
+Ferrite beads (also called ferrite chips) are inductors which are used for filtering out high frequencies. To do this, they are designed to have a large resistance at high frequency (i.e. they are lossy).
+
+ The following graph shows the typical impedance of a ferrite bead across a range of frequencies.
 
 {{< img src="impedance-frequency-characteristics-graph-of-ferrite-beads.png" width="644px" caption="Graph showing the impedance-frequency characteristics of a range of ferrite beads."  >}}
+
+This high impedance at high frequency property of ferrite beads reduces noise via two mechanisms:
+
+1. Absorbs this high frequency noise and dissipate it as heat.
+1. Present a high impedance path for high frequency noise, forcing it to travel through other components. This is commonly achieved by making a pi-filter from a ferrite bead and two capacitors.
 
 The most basic ferrite bead is a piece of wire with encased in ferrite material, it is this ferrite material which is lossy at high frequencies.
 
@@ -35,13 +45,15 @@ However, although technically correct (a ferrite bead is an inductor, and does h
 
 ## Important Parameters
 
-## Impedance (@ Frequency)
+### Impedance (@ Frequency)
 
 The frequency is usually 100MHz. This is good for comparing one ferrite bead against another. Manufacturers usually provide a frequency vs. impedance graph if you want more information.
 
 ## Use In Circuits
 
 Ferrite beads are commonly placed in series on the power supply rails of electronic circuits.
+
+{{% figure src="differential-noise-diagram.svg" width="600px" caption="Simple schematic showing how ferrite beads absorb/block high frequency noise." %}}
 
 ## Their Frequency Response Explained...
 

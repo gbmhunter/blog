@@ -32,6 +32,10 @@ A common-mode choke blocks common-mode noise (noise which is equal in voltage/cu
 
 {{% figure src="common-mode-choke-how-it-works-diagram.svg" width="600px" caption="Diagram showing how a common-mode choke works." %}}
 
+The other type of noise, differential noise, is not blocked with a common-mode choke. To block differential noise, you need to use something such as a ferrite bead in a pi-filter configuration (the capacitors are not needed, but greatly help!).
+
+{{% figure src="differential-noise-diagram.svg" width="600px" caption="Diagram showing what differential noise is and how it is commonly suppressed." %}}
+
 ## Manufacturer Part Numbers
 
 * **BNX023-01L**: Expensive but performant power-line filter by Murata. 
