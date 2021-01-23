@@ -5,8 +5,8 @@ date: 2013-10-16
 draft: false
 lastmod: 2013-10-16
 tags: [ "noise", "dB", "AC coupling", "thermal noise", "Johnson noise", "Nyquist noise" ]
-title: Noise
-type: page
+title: "Noise And EMI Suppression"
+type: "page"
 ---
 
 ## Thermal Noise
