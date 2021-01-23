@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2012-05-14
 description: "Schematic symbols, series and parallel behaviour, manufacturing processes, the E series, tolerances, variable resistors, volume resistance and more info about the electrical components called resistors."
 draft: false
-lastmod: 2020-12-01
+lastmod: 2021-01-23
 tags: [ "resistors", "resistors", "components", "electronics", "schematic symbols", "tolerances", "E series", "packages", "thick film", "thin film" ]
 title: "Resistors"
 type: "page"
@@ -75,9 +75,16 @@ Resistor dividers are two or more resistors in a series configuration such that 
 
 The simplest voltage divider consists of just two resistors in series.
 
-{{< img src="basic-resistor-divider-schematic-with-equation.png" width="556px" caption="A basic schematic of a resistor divider, showing the equation which determines the output voltage."  >}}
+{{< img src="basic-resistor-divider-schematic-with-equation.png" width="556px" caption="A basic schematic of a resistor divider, showing the equation which determines the output voltage." >}}
 
-Note that the DC output impedance of a resistor divider is normally quite high (it is equal to R1), and for this reason, **you cannot normally use a resistor divider to drop the voltage and provide power for a device**. This is a common mistake that people learning electronics do, when in reality you should either be using a linear regulator, a SMPS, or a transformer. Voltage dividers should normally only be used to provide a voltage to a high-impedance input (e.g. op-amp input, comparator input, microcontroller ADC input, or voltage-level translation for comms signals).
+The small-signal output impedance of a resistor divider is equivalent the `\(R1\)` in parallel with `\(R2\)`:
+
+<p>\begin{align}
+\b{Z_O} &= R1 || R2 \\
+    &= \frac{R1 \cdot R2}{R1 + R2}
+\end{align}</p>
+
+Note that the output impedance of a resistor divider is normally quite high, compared to other "standard" voltage sources. For this reason, **you cannot normally use a resistor divider to drop the voltage and provide power to a device**. This is a common mistake that people learning electronics do, when in reality you should either be using a linear regulator, a SMPS, or a transformer. Voltage dividers should normally only be used to provide a voltage to a high-impedance input (e.g. op-amp input, comparator input, microcontroller ADC input, or voltage-level translation for comms signals).
 
 The exception to the above rule is when the two following conditions are met:
 

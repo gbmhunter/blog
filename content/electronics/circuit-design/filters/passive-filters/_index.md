@@ -4,7 +4,7 @@ categories: [ "Electronics", "Circuit Design" ]
 date: 2013-01-03
 description: "A tutorial on passive electronic filters, including low-pass/high-pass RC, LC and RLC filters."
 draft: false
-lastmod: 2019-06-12
+lastmod: 2021-01-23
 tags: [ "electronics", "circuit design", "filters", "passive filters", "RC", "low-pass", "high-pass", "LC", "bode plot", "frequency response" ]
 title: "Passive Filters"
 type: "page"
@@ -105,7 +105,7 @@ Another way to reduce the reduction in noise immunity due to the resistor in the
 
 The equation for the voltage across the capacitor is:
 
-<div>$$V_c = V_s(1 - e^{(\frac{t}{RC})})$$</div>
+<p>$$V_c = V_s(1 - e^{(\frac{t}{RC})})$$</p>
 
 <p class="centered">
     where:<br>
@@ -118,7 +118,7 @@ The equation for the voltage across the capacitor is:
 
 This equation can be re-arranged to find the time `\(t\)`, and which the capacitor is at a certain voltage:
 
-<div>$$t = -log(\frac{V-V_c}{V})RC$$</div>
+<p>$$t = -log(\frac{V-V_c}{V})RC$$</p>
 
 This form of the equation can be useful to calculate the delay (aka the time `\(t\)`), that the RC circuit will provide before something happens.
 
@@ -139,11 +139,11 @@ This makes an LC low-pass filter suitable for higher-power applications. You wil
 
 The cut-off frequency is given by the following equation:
 
-<div>$$ f_c = \frac{1}{2\pi \sqrt{LC}} $$</div>
+<p>$$ f_c = \frac{1}{2\pi \sqrt{LC}} $$</p>
 
 The characteristic impedance is:
 
-<div>$$ Z = \sqrt{LC} $$</div>
+<p>$$ Z = \sqrt{LC} $$</p>
 
 which you will notice is also present in the cut-off frequency equation.
 
@@ -159,15 +159,15 @@ This is equivalent to a low-pass RLC filter.
 
 The quality factor is equal to:
 
-<div>$$ Q = \frac{2\pi f}{R} $$</div>
+<p>$$ Q = \frac{2\pi f}{R} $$</p>
 
 As you increase the series resistance, the quality factor decreases.
 
 The damping factor is equal to:
 
-<div>$$ d_0 = \frac{1}{Q} $$</div>
+<p>$$ d_0 = \frac{1}{Q} $$</p>
 
-<div>$$ d_0 = \frac{R}{2\pi fL} $$</div>
+<p>$$ d_0 = \frac{R}{2\pi fL} $$</p>
 
 ## Low-Pass Pi And t Filters
 
@@ -177,9 +177,11 @@ A 1st-order low-pass π-filter has two capacitors and one inductor. The first ca
 
 The equations for a 1st order filter are:
 
-<div>$$C = \frac{z_o}{\pi f_c}$$</div>
-<div>$$L = \frac{1}{z_o \pi f_c}$$</div>
-<div>$$f_c = \frac{1}{\pi \sqrt{LC}}$$</div>
+<p>$$C = \frac{z_o}{\pi f_c}$$</p>
+
+<p>$$L = \frac{1}{z_o \pi f_c}$$</p>
+
+<p>$$f_c = \frac{1}{\pi \sqrt{LC}}$$</p>
 
 <p class="centered">
   where:<br>
@@ -220,6 +222,12 @@ Is is important to remember that for a second-order filter, the gain at the corn
 <p>$$ G = \left( \frac{1}{\sqrt{2}} \right) ^n $$</p>
 
 The reduce the effects of each stages dynamic impedance effecting it's neighbours, its recommended that the following stages resistance should be around 10x the previous stage, and the capacitance 1/10th of the previous stage.
+
+## Passive RC Networks With Voltage Gain > 1
+
+It might seem hard to believe, but you can build RC networks which increase the input voltage at specific frequencies. See [Herman Epstein - Synthesis Of Passive RC Networks With Gains Greater Than Unity](http://www.oldfriend.url.tw/article/IEEE_paper/Synthesis%20of%20Passive%20RC%20Networks%20with%20Gains.pdf) [(cached copy, 2021-01-23)](./herman-epstein-synthesis-of-passive-rc-networks-with-gains-greater-than-unity.pdf) for a detailed analysis.
+
+## References
 
 [^wikipedia-low-pass-filter]: [https://en.wikipedia.org/wiki/Low-pass_filter](https://en.wikipedia.org/wiki/Low-pass_filter)
 [^elec-tutorial-filters]: [https://www.electronics-tutorials.ws/filter/filter_2.html](https://www.electronics-tutorials.ws/filter/filter_2.html)
