@@ -21,3 +21,5 @@ type: "post"
   {{% figure src="/electronics/components/common-mode-chokes/common-mode-choke-how-it-works-diagram.svg" width="600px" %}}
 
 * Added a section on {{% link text="IDC Connectors to the Connector page" src="/electronics/components/connectors#idc-connectors" %}}.
+
+* Add a new page (currently in notes form) on {{% link text="Small-Signal Analysis" src="/electronics/circuit-design/small-signal-analysis" %}}.
