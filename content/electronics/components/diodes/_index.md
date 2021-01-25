@@ -2,10 +2,10 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components", "Diodes" ]
 date: 2011-09-05
-description: "Info about zener, PIN, TVS, Schottky and general-purpose diodes."
+description: "Info about zener, PIN, TVS, Schottky, Zener and general-purpose diodes."
 draft: false
-lastmod: 2021-01-18
-tags: [ "electronics", "diodes", "components", "current", "schematic symbols", "TVS", "Schottky", "bridge rectifier" ]
+lastmod: 2021-01-25
+tags: [ "electronics", "diodes", "components", "current", "schematic symbols", "TVS", "Schottky", "bridge rectifier", "Zener", "dynamic resistance", "impedance" ]
 title: "Diodes"
 type: "page"
 ---
@@ -73,7 +73,8 @@ Some diodes, such as bi-directional TVS diodes, do not have a polarity.
 
 Schottky diodes are special diodes that have a lower voltage drop than standard diodes (typically 0.3V instead of 0.7V). They are used in applications where the input voltage is small, and in high power applications in where the power consumption of the diode needs to be kept to a minimum. The standard schematic symbol for a schottky diode is shown below (note the curls on the bar, which differs it from the standard diode symbol.
 
-{{< img src="schematic-symbol-schottky-diode.png" width="216px" caption="The schematic symbol for the schottky diode."  >}}
+{{< img src="schematic-symbol-schottky-diode.png" width="216px" caption="The schematic symbol for the Schottky diode."  >}}
+
 ## Photo Diodes
 
 Note these are not be confused with photo-transistors, which are similar, but technically not photo diodes. Photo diodes have a faster response time than photo-transistors.
@@ -118,6 +119,48 @@ The slightly longer answer...
 
 Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, e.tc e.t.c, until one is conduction almost all the current. This even occurs when the diodes are "identical", due to the fact their will be small differences in any two identical diodes.One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg. They should be identical in resistance and have to drop at least 0.3-0.4V (when the diode has a nominal voltage drop of around 0.7V) to be effective.
 
+## Zener Diodes
+
+### Overview
+
+Zener diodes are diodes which have a specified reverse blocking voltage at which they breakdown and begin to conduct. They are similar to TVS diodes, but generally have a more defined and precise breakdown voltage, but a lower power rating. The allows Zeners to be used a shunt-style voltage regulators to power small circuits. Shunt voltage references are similar in concept to zener diodes, except that they are more precise but can't dissipate as much power.
+
+Uses for zener diodes include:
+
+* Low power/simple voltage reference
+* Over-voltage protection for low power applications (use TVS diodes to dissipate high energy voltage spikes)
+* To turn on a sub-circuit once a certain voltage level is reached (e.g. an LED in a simple battery charging circuit)
+
+You can purchase Zeners with a reverse voltage drop as low as 1.8V all the way to above 100V. For voltage drops less than 1.8V, you can stack (i.e. place in series) multiple normal or schottky diodes in forward bias.
+
+### Schematic Symbols
+
+{{% img src="zener-diode-schematic-symbol-triangle-outline.png" width="400px" caption="The schematic symbol for a Zener diode." %}}
+
+### How To Read A Zener Diode Datasheet
+
+A zener voltage `\( V_Z \)` is given at a Zener test current `\( I_{ZT} \)`. `\( V_Z \)` is the voltage the Zener regulates to. The test current typically a current large enough to overcome the "knee" in the voltage vs. current curve, and put the Zener into it's "voltage regulation" state (where the voltage stays relatively stable with large changes in current).
+
+### Regulation Performance And Dynamic Resistance
+
+Low voltage (1-4V) Zener diodes are notoriously bad at voltage regulation due to their high dynamic resistance compared to their high-voltage siblings.
+
+### Simple Voltage-Limiting Circuit With A Zener Diode
+
+You can build a simple voltage limiting circuit from a Zener diode, a NPN BJT transistor, and a couple of resistors. The schematic below shows an example of this, used to limit the maximum voltage to the `\(V_{in}\,\)` pin of the ADP8140 LED driver IC.
+
+{{% img src="zener-and-npn-bjt-voltage-limiter-adp8140.png" width="600px" caption="A simple Zener/NPN based voltage limiter circuit for the input to the ADP8140 LED driver IC. Image from https://www.analog.com/media/en/technical-documentation/data-sheets/ADP8140.pdf." %}}
+
+The voltage at `\(V_{in}\,\)` is regulated to approximately `\( V_Z - 0.7V \)`. The current through `\(R_Z\)` is:
+
+<p>$$ I_{RZ} = \frac{V_{CC} - V_Z}{R_Z} $$</p>
+
+For more information, see the {{% link text="ESD Protection" src="/electronics/circuit-design/esd-protection" %}} page.
+
+
 ## Manufacturer Part Numbers
 
 * **1N58xx**: Common Schottky diode family.
+* **MM3Z**: Family of Zener diodes from Fairchild Semiconductor (now On Semiconductor). 
+* **MMSZ52**: Family of Zener diodes from Diodes Incorporated.
+

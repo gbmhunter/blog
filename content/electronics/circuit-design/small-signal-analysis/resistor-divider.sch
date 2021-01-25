@@ -1,0 +1,200 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Device:R_US R1
+U 1 1 600DFC16
+P 4350 3150
+F 0 "R1" H 4418 3196 50  0000 L CNN
+F 1 "1k" H 4418 3105 50  0000 L CNN
+F 2 "" V 4390 3140 50  0001 C CNN
+F 3 "~" H 4350 3150 50  0001 C CNN
+	1    4350 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R2
+U 1 1 600E018A
+P 4350 3450
+F 0 "R2" H 4418 3496 50  0000 L CNN
+F 1 "4k" H 4418 3405 50  0000 L CNN
+F 2 "" V 4390 3440 50  0001 C CNN
+F 3 "~" H 4350 3450 50  0001 C CNN
+	1    4350 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Simulation_SPICE:VDC V1
+U 1 1 600E0DAE
+P 3800 3300
+F 0 "V1" H 3930 3346 50  0000 L CNN
+F 1 "5V" H 3930 3255 50  0000 L CNN
+F 2 "" H 3800 3300 50  0001 C CNN
+F 3 "~" H 3800 3300 50  0001 C CNN
+F 4 "Y" H 3800 3300 50  0001 L CNN "Spice_Netlist_Enabled"
+F 5 "V" H 3800 3300 50  0001 L CNN "Spice_Primitive"
+F 6 "dc(5)" H 3930 3209 50  0001 L CNN "Spice_Model"
+	1    3800 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 3100 3800 3000
+Wire Wire Line
+	3800 3000 4350 3000
+Wire Wire Line
+	3800 3600 4350 3600
+Wire Wire Line
+	3800 3500 3800 3600
+Wire Wire Line
+	4350 3300 4700 3300
+Connection ~ 4350 3300
+Wire Wire Line
+	4350 3600 4700 3600
+Connection ~ 4350 3600
+Text Notes 4650 3500 0    50   ~ 0
+Vout
+$Comp
+L Device:R_US R1
+U 1 1 600E00DF
+P 4350 4100
+F 0 "R1" H 4418 4146 50  0000 L CNN
+F 1 "1k" H 4418 4055 50  0000 L CNN
+F 2 "" V 4390 4090 50  0001 C CNN
+F 3 "~" H 4350 4100 50  0001 C CNN
+	1    4350 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R2
+U 1 1 600E00E5
+P 4350 4400
+F 0 "R2" H 4418 4446 50  0000 L CNN
+F 1 "4k" H 4418 4355 50  0000 L CNN
+F 2 "" V 4390 4390 50  0001 C CNN
+F 3 "~" H 4350 4400 50  0001 C CNN
+	1    4350 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 3950 4350 3950
+Wire Wire Line
+	3800 4550 4350 4550
+Wire Wire Line
+	4350 4250 4700 4250
+Connection ~ 4350 4250
+Wire Wire Line
+	4350 4550 4700 4550
+Connection ~ 4350 4550
+Text Notes 4650 4450 0    50   ~ 0
+Vout
+Wire Wire Line
+	3800 3950 3800 4550
+$Comp
+L Device:R_US R1
+U 1 1 600E108D
+P 4050 5100
+F 0 "R1" H 4118 5146 50  0000 L CNN
+F 1 "1k" H 4118 5055 50  0000 L CNN
+F 2 "" V 4090 5090 50  0001 C CNN
+F 3 "~" H 4050 5100 50  0001 C CNN
+	1    4050 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US R2
+U 1 1 600E1093
+P 4350 5100
+F 0 "R2" H 4418 5146 50  0000 L CNN
+F 1 "4k" H 4418 5055 50  0000 L CNN
+F 2 "" V 4390 5090 50  0001 C CNN
+F 3 "~" H 4350 5100 50  0001 C CNN
+	1    4350 5100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 4950 4700 4950
+Connection ~ 4350 4950
+Wire Wire Line
+	4350 5250 4700 5250
+Connection ~ 4350 5250
+Text Notes 4650 5150 0    50   ~ 0
+Vout
+Wire Wire Line
+	4050 5250 4350 5250
+Wire Wire Line
+	4050 4950 4350 4950
+$Comp
+L power:GND #PWR?
+U 1 1 600E2D1D
+P 4350 3600
+F 0 "#PWR?" H 4350 3350 50  0001 C CNN
+F 1 "GND" H 4355 3427 50  0000 C CNN
+F 2 "" H 4350 3600 50  0001 C CNN
+F 3 "" H 4350 3600 50  0001 C CNN
+	1    4350 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 600E3968
+P 4350 4550
+F 0 "#PWR?" H 4350 4300 50  0001 C CNN
+F 1 "GND" H 4355 4377 50  0000 C CNN
+F 2 "" H 4350 4550 50  0001 C CNN
+F 3 "" H 4350 4550 50  0001 C CNN
+	1    4350 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 600E402E
+P 4350 5250
+F 0 "#PWR?" H 4350 5000 50  0001 C CNN
+F 1 "GND" H 4355 5077 50  0000 C CNN
+F 2 "" H 4350 5250 50  0001 C CNN
+F 3 "" H 4350 5250 50  0001 C CNN
+	1    4350 5250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_US Req
+U 1 1 600E8997
+P 4350 5850
+F 0 "Req" H 4418 5896 50  0000 L CNN
+F 1 "800R" H 4418 5805 50  0000 L CNN
+F 2 "" V 4390 5840 50  0001 C CNN
+F 3 "~" H 4350 5850 50  0001 C CNN
+	1    4350 5850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 5700 4700 5700
+Wire Wire Line
+	4350 6000 4700 6000
+Connection ~ 4350 6000
+Text Notes 4650 5900 0    50   ~ 0
+Vout
+$Comp
+L power:GND #PWR?
+U 1 1 600E89A4
+P 4350 6000
+F 0 "#PWR?" H 4350 5750 50  0001 C CNN
+F 1 "GND" H 4355 5827 50  0000 C CNN
+F 2 "" H 4350 6000 50  0001 C CNN
+F 3 "" H 4350 6000 50  0001 C CNN
+	1    4350 6000
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC

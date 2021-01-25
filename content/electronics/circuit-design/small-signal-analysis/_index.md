@@ -14,7 +14,7 @@ type: "page"
 
 ## Overview
 
-
+Small-signal analysis can be used to find the input/output impedances of various sections of circuitry.
 
 ## Small-Signal Analysis Method
 
@@ -26,10 +26,21 @@ type: "page"
 
 Taking it a step further: The complete solution is just the sum of the DC operating point + the small-signal solution.
 
-## Resistor Divider
+## Analysis Of A Resistor Divider
 
-{{% img src="resistor-divider-before-replacing-vin.png" width="500px" caption="Resistor divider, before replacing Vin." %}}
+
+{{% img src="resistor-divider-01-before-replacing-vin.png" width="500px" caption="Resistor divider, before replacing Vin." %}}
 
 We assume Vin is a perfect voltage source, therefore we can replace it with a short.
 
-{{% img src="resistor-divider-vin-replaced-with-short.png" width="500px" caption="Resistor divider, Vin replaced with short." %}}
+
+{{% img src="resistor-divider-02-vin-replaced-with-short.png" width="500px" caption="Resistor divider, Vin replaced with short." %}}
+
+These two resistors are now in parallel, we can re-arrange the circuit as below to clearly show this:
+
+{{% img src="resistor-divider-03-rearranged.png" width="500px" caption="Circuit re-arranged to highlight both resistors in parallel." %}}
+
+The two resistors in parallel can be replaced with a single equivalent resistor (remembering `\( R_{parallel
+} = \frac{R_1 R_2}{R_1 + R_2} \)`):
+
+{{% img src="resistor-divider-04-equivalent-output-resistance.png" width="500px" caption="Equivalent resistance of the two resistors in parallel." %}}
