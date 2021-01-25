@@ -1,0 +1,63 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# mbedded-ninja-kicad-symbols_R_POT_US
+#
+DEF mbedded-ninja-kicad-symbols_R_POT_US VR 0 40 Y N 1 F N
+F0 "VR" -175 0 50 V V C CNN
+F1 "mbedded-ninja-kicad-symbols_R_POT_US" -100 0 50 V V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Potentiometer*
+$ENDFPLIST
+DRAW
+P 2 0 1 0 0 -90 0 -100 N
+P 2 0 1 0 0 100 0 90 N
+P 2 0 1 0 100 0 60 0 N
+P 4 0 1 0 45 0 90 20 90 -20 45 0 F
+P 5 0 1 0 0 -30 40 -45 0 -60 -40 -75 0 -90 N
+P 5 0 1 0 0 30 40 15 0 0 -40 -15 0 -30 N
+P 5 0 1 0 0 90 40 75 0 60 -40 45 0 30 N
+X 1 1 0 150 50 D 50 50 1 1 P
+X 2 2 150 0 50 L 50 50 1 1 P
+X 3 3 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# mbedded-ninja-kicad-symbols_VDC
+#
+DEF mbedded-ninja-kicad-symbols_VDC V 0 1 N Y 1 F N
+F0 "V" 100 100 50 H V L CNN
+F1 "mbedded-ninja-kicad-symbols_VDC" 100 0 50 H V L CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+F4 "Y" 0 0 50 H I L CNN "Spice_Netlist_Enabled"
+F5 "V" 0 0 50 H I L CNN "Spice_Primitive"
+F6 "dc(1)" 100 -100 50 H V L CNN "Spice_Model"
+DRAW
+C 0 0 100 0 1 10 f
+T 0 0 75 50 0 0 0 + Normal 0 C C
+P 2 0 0 0 -50 10 50 10 N
+P 2 0 0 0 -30 -10 -50 -10 N
+P 2 0 0 0 10 -10 -10 -10 N
+P 2 0 0 0 50 -10 30 -10 N
+X ~ 1 0 200 100 D 50 50 1 1 P
+X ~ 2 0 -200 100 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# power_GND
+#
+DEF power_GND #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -250 50 H I C CNN
+F1 "power_GND" 0 -150 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
+X GND 1 0 0 0 D 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
+#End Library

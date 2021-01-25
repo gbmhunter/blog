@@ -4,8 +4,8 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2012-05-14
 description: "Schematic symbols, series and parallel behaviour, manufacturing processes, the E series, tolerances, variable resistors, volume resistance and more info about the electrical components called resistors."
 draft: false
-lastmod: 2021-01-23
-tags: [ "resistors", "resistors", "components", "electronics", "schematic symbols", "tolerances", "E series", "packages", "thick film", "thin film" ]
+lastmod: 2021-01-25
+tags: [ "resistors", "resistors", "components", "electronics", "schematic symbols", "tolerances", "E series", "packages", "thick film", "thin film", "potentiometers", "rheostats", "variable resistors" ]
 title: "Resistors"
 type: "page"
 ---
@@ -29,17 +29,15 @@ The most commonly-used resistor schematic symbols are shown below. I prefer the 
     <tr>
       <td>{{< img src="resistor-schematic-symbol-american.png" width="168px" caption="The American-styled schematic symbol for a resistor."  >}}</td>
       <td>{{< img src="resistor-schematic-symbol-european.png" width="142px" caption="The European schematic symbol for a resistor."  >}}</td>
-      <td>{{< img src="resistor-schematic-symbol-variable-2-terminal.png" width="212px" caption="The schematic symbol for a 2-terminal variable resistor."  >}}</td>
-      <td>{{< img src="potentiometer-schematic-symbol.png" width="207px" caption="The schematic symbol for a potentiometer."  >}}</td>
     </tr>
     <tr>
       <td>American-styled resistor.</td>
       <td>European-style resistor.</td>
-      <td>Variable resistor (2-terminal component).</td>
-      <td>Potentiometer (3-terminal component).</td>
     </tr>
   </tbody>
 </table>
+
+See the [Potentiometers And Rheostats (Variable Resistors) section](#potentiometers-and-rheostats-variable-resistors) for more schematic symbols.
 
 ## Resistors In Series And In Parallel
 
@@ -77,18 +75,20 @@ The simplest voltage divider consists of just two resistors in series.
 
 {{< img src="basic-resistor-divider-schematic-with-equation.png" width="556px" caption="A basic schematic of a resistor divider, showing the equation which determines the output voltage." >}}
 
-The small-signal output impedance of a resistor divider is equivalent the `\(R1\)` in parallel with `\(R2\)`:
+The output impedance of a resistor divider is equivalent the `\(R1\)` in parallel with `\(R2\)`:
 
 <p>\begin{align}
 \b{Z_O} &= R1 || R2 \\
     &= \frac{R1 \cdot R2}{R1 + R2}
 \end{align}</p>
 
+This output impedance is relevant for both small signals are large signals. See the {{% link text="Analysis Of A Resistor Divider section on the Small-Signal Analysis page" src="/electronics/circuit-design/small-signal-analysis#analysis-of-a-resistor-divider" %}} for more information.
+
 Note that the output impedance of a resistor divider is normally quite high, compared to other "standard" voltage sources. For this reason, **you cannot normally use a resistor divider to drop the voltage and provide power to a device**. This is a common mistake that people learning electronics do, when in reality you should either be using a linear regulator, a SMPS, or a transformer. Voltage dividers should normally only be used to provide a voltage to a high-impedance input (e.g. op-amp input, comparator input, microcontroller ADC input, or voltage-level translation for comms signals).
 
 The exception to the above rule is when the two following conditions are met:
 
-* The device will draw so little current that the voltage sag due to the extra current through R1 is acceptable.
+* The device will draw a small enough current that the voltage sag due to the extra current through R1 is acceptable (and the current is not too variable).Ω
 * The extra current going through R1 will not cause it to overheat.
 
 An interesting example I have seen of a resistor divider powering a circuit was a low-power microcontroller being powered directly from a resistor-divider, diode and capacitor from mains supply (240VAC). The microcontroller only drew `\(uA\)` so met the two above conditions.
@@ -97,9 +97,63 @@ The [NinjaCalc program](http://gbmhunter.github.io/NinjaCalc/) has a calculator 
 
 {{< img src="screenshot-of-ninjacalc-resistor-divider-calculator.png" width="604px" caption="A screenshot of the NinjaCalc's 'Resistor Divider' calculator, being used to find the top resistance." >}}
 
-## Variable Resistors
+## Potentiometers And Rheostats (Variable Resistors)
 
-The output of a potentiometer varies depending on the wiper position. If varies from 0R when the wiper is at both ends of the pot to a maximum of Rpot/4 when the wiper is in the middle.
+### Overview
+
+_Potentiometers_ are 3 terminal resistors whose resistance can be varied by means of a mechanical wiper or similar actuating device. They consist of two outer terminals which provide connections to a fixed resistance made from a conductive track, and a middle pin which connects to the wiper. The potentiometer can be turned so that the wiper slides from one end of the track to the other, changing the resistance between it and the two outer pins. A rheostat is simply a potentiometer but with one of the outside pins missing. They typically come in values of 5, 10, 20, 50 and 100kΩ.
+
+{{% img src="potentiometer-photo-amplified-parts-dot-com.png" width="300px" caption="A photo of a common through-hole potentiometer. Image from https://www.amplifiedparts.com/products/potentiometer-alpha-linear-pc-mount-marshall, retrieved 2021-01-25." %}}
+
+The _style_ of a potentiometer can be:
+
+* Rotary (most common)
+* Trimmer
+* Slide
+
+The _taper_ of a potentiometer can either be:
+
+* Linear
+* Logarithmic
+* Reverse logarithmic
+
+Tolerance on potentiometers normally ranges from 2-15%. Note that this is much higher than standard 1% chip SMD fixed resistors, don't expect potentiometers to be as cheap and accurate!
+
+### Designator Prefixes And Schematic Symbols
+
+Designator prefixes for potentiometers and rheostats include:
+
+* `VR` (**V**ariable **R**esistor, my preferred choice)
+* `RV` (`VR` the other way around, KiCAD style)
+* `POT`
+
+The schematic symbol looks like a normal resistor, but with a third pin added to the side of the resistor with an arrow, indicating the wiper. An example (with the US style squiggly resistor) is shown below:
+
+{{% img src="potentiometer-schematic-symbol.png" width="400px" caption="The schematic symbol for a potentiometer, with the US-style 'squiggly' resistor." %}}
+
+See the {{% link text="Resistors section of the Component Designators page" src="/electronics/circuit-design/component-designators#resistors-r-vr" %}} for more information.
+
+### Common Uses And Example Circuits
+
+The most common use for a potentiometer to provide a variable output voltage based on how the far the potentiometer has been turned. This voltage then can be used to control any number of things, such as the volume of music as the user turns the volume dial. The two ends of the potentiometer are connected across a constant voltage source, in the example below, this is `\( 5V \)`. The wiper then forms the variable mid-point of a voltage divider. As you turn the potentiometer, one of the "resistors" increases while the other decreases, and thus the wiper varies in voltage from one end point to the other. In the example below the wiper voltage varies from `\( 0V \)` to `\( 5V \)`:
+
+{{% img src="potentiometer-common-resistor-divider-circuit.png" width="600px" caption="A very common way to use a potentiometer in a circuit to provide a variable output voltage." %}}
+
+A word of caution...Make sure you do not draw too much current from the wiper. Ignoring the wiper resistance, the output impedance of the potentiometer changes depending on the wiper position. When the wiper is at either end, the output impedance is `\( 0 \Omega \)` (great you may say). But the output impedance increases to the worst case when the wiper is exactly half-way between the two ends, in which case it is `\( \frac{R_{pot}}{4} \, \Omega \)` (two resistors in parallel, each resistor being `\( \frac{R_{pot}}{2} \, \Omega \)`).
+
+If we assume the worst-case, **the output impedance of a potentiometer is**:
+
+<p>\begin{align}
+\b{Z_O} = \frac{R_{pot}}{4}
+\end{align}</p>
+
+<p class="centered">
+where<br/>
+\(\b{Z_O}\) is the output impedance, in \( \Omega \)<br/>
+\( R_{pot} \) is the end-to-end resistance of the potentiometer, in \( \Omega \)
+</p>
+
+### More Notes
 
 You call also get variable resistors which can be changed digitally (called DPOTs). They have their own page which can be found {{< link text="here" src="/electronics/components/dpots" >}}.
 
@@ -129,6 +183,8 @@ With the advent of SMD resistors, the difference in price between 1% and 5% resi
 **The long answer.** You will never get a worse tolerance by putting two resistors in series or parallel. BUT, you may get a better distribution of values, depending on the distribution of the original resistors. If you assume (and this is a bad assumption) that the resistor values followed a Gaussian distribution, then the resulting distribution is a better Gaussian distribution (skinnier/smaller deviation). If the original resistors had a flat distribution, the resulting distribution is a triangle shape.
 
 However, the distribution of resistor values could be any number of shapes. For example, the manufacturer might make heaps of 5% `\(1k\Omega\)` resistors, which are then measured. If the resistance falls within 1% of `\(1k\Omega\)`, then they are made into 1% resistors. This would leave the 5% resistor bin with a double peak, with a valley right in the middle of the distribution.
+
+Also, correlation between resistors from the same manufacturing batch run may mean that you do not get any standard deviation improvements.
 
 ## Manually Tweaking Resistance
 

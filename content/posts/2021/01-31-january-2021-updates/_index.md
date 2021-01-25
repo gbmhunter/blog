@@ -23,3 +23,7 @@ type: "post"
 * Added a section on {{% link text="IDC Connectors to the Connector page" src="/electronics/components/connectors#idc-connectors" %}}.
 
 * Add a new page (currently in notes form) on {{% link text="Small-Signal Analysis" src="/electronics/circuit-design/small-signal-analysis" %}}.
+
+* Added more information about {{% link text="potentiometers to the Resistors page" src="/electronics/components/resistors#potentiometers-and-rheostats-variable-resistors" %}}.
+
+  {{% figure src="/electronics/components/resistors/potentiometer-common-resistor-divider-circuit.png" width="400px" %}}

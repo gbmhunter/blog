@@ -4,10 +4,10 @@ categories: [ "Electronics", "Circuit Design" ]
 date: 2011-09-03
 description: "A list of the most popular component designators used on schematics and PCB silkscreens."
 draft: false
-lastmod: 2020-09-28
-tags: [ "electronics", "circuit design", "components", "designators", "engineering", "symbols", "PCBs", "silkscreen", "IEEE 315" ]
+lastmod: 2021-01-25
+tags: [ "electronics", "circuit design", "components", "designators", "engineering", "symbols", "PCBs", "silkscreen", "IEEE 315", "schematics", "prefix" ]
 title: "Component Designators"
-type: page"
+type: "page"
 ---
 
 ## Overview
@@ -226,7 +226,7 @@ Recommended designator(s):
 
 * `R`: Standard 2-pin resistors
 * `RN`: Resistor networks (more than one resistor in the same package, sometimes sharing a common connection).
-* `VR`: Variable resistors (aka potentiometers)
+* `VR`: Variable resistors (aka potentiometers or rheostats). I have seen the reverse, `RV` is use before, along with `POT`. 
 
 Recommended schematic symbol(s):
 

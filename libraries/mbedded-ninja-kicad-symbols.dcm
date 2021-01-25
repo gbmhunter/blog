@@ -1,0 +1,26 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP Inverter_Small
+D Inverter, Small
+K TTL not inv
+$ENDCMP
+#
+$CMP R_POT_US
+D Potentiometer, US symbol
+K resistor variable
+F ~
+$ENDCMP
+#
+$CMP R_US
+D Resistor, US symbol
+K R res resistor
+F ~
+$ENDCMP
+#
+$CMP VDC
+D Voltage source, DC
+K simulation
+F ~
+$ENDCMP
+#
+#End Doc Library
