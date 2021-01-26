@@ -1,0 +1,24 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# mbedded-ninja-kicad-symbols_SHUNT_REGULATOR
+#
+DEF mbedded-ninja-kicad-symbols_SHUNT_REGULATOR U 0 20 N N 1 F N
+F0 "U" -100 100 50 H V C CNN
+F1 "mbedded-ninja-kicad-symbols_SHUNT_REGULATOR" 0 -100 50 H I C CNN
+F2 "" 0 -150 50 H I C CIN
+F3 "" 0 0 50 H I C CIN
+$FPLIST
+ SOT*89*
+$ENDFPLIST
+DRAW
+P 3 0 1 0 -50 0 0 0 50 0 N
+P 3 0 1 0 -30 30 30 0 -30 -30 F
+P 4 0 1 10 20 -40 30 -30 30 30 30 30 N
+X REF 1 0 100 100 D 50 50 1 1 P
+X A 2 -100 0 50 R 50 50 1 1 P
+X K 3 100 0 50 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+#End Library

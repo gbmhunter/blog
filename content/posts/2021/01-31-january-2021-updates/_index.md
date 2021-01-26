@@ -27,3 +27,7 @@ type: "post"
 * Added more information about {{% link text="potentiometers to the Resistors page" src="/electronics/components/resistors#potentiometers-and-rheostats-variable-resistors" %}}.
 
   {{% figure src="/electronics/components/resistors/potentiometer-common-resistor-divider-circuit.png" width="400px" %}}
+
+* Added a new page on {{% link text="Shunt Regulators" src="/electronics/components/power-regulators/shunt-regulators" %}}
+
+  {{% figure src="/electronics/components/power-regulators/shunt-regulators/three-pin-shunt-regulator-schematic-symbol.png" width="300px" %}}

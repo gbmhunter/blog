@@ -17,4 +17,15 @@ K R res resistor
 F ~
 $ENDCMP
 #
+$CMP SHUNT_REGULATOR
+D Shunt Regulator, SOT-89
+K diode device shunt regulator
+$ENDCMP
+#
+$CMP VDC
+D Voltage source, DC
+K simulation
+F ~
+$ENDCMP
+#
 #End Doc Library
