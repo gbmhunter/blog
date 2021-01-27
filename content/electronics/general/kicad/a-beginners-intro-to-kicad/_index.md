@@ -383,7 +383,7 @@ For discrete MOSFETs, the recommended approach is to use the `VDMOS` intrinsic m
 * Pin 2: Gate
 * Pin 3: Source
 
-Make sure the symbol reference starts with an `M`, e.g. `M1`. Make sure the `Value` parameter contains the model name, and then add a line of text to the schematic containing the model parameters, e.g.:
+Make sure the symbol reference starts with an `M`, e.g. `M1`. Make sure the `Value` parameter contains the model name(e.g. `2N7002`), and then add a line of text to the schematic containing the model parameters, e.g.:
 
 ```text
 .model 2N7002 VDMOS(Rg=3 Vto=1.6 Rd=0 Rs=.75 Rb=.14 Kp=.17 mtriode=1.25 Cgdmax=80p Cgdmin=12p Cgs=50p Cjo=50p Is=.04p ksubthres=.1)
@@ -396,6 +396,12 @@ See the section [11.3 Power MOSFET model (VDMOS) in the ngspice User Manual](htt
 For MOSFETs built into integrated circuits, use the `BSIM3` model. For the `BSIM3` model, ngspice expects four pins rather than the usual three, gate, drain, source and bulk (substrate). In standard 3-pin MOSFETs the bulk is typically connected internally to the source, so for most simulations you can just do that externally to mimic a standard MOSFET.
 
 See <https://forum.kicad.info/t/generic-mosfets-solved/11155/3>.
+
+Looking for `VDMOS` intrinsic models? LTspice ships with over a 1000 of them. Once you install LTspice, you can find all the models within a single text file at `LTspice<version>/lib/cmp/standard.mos`. For example, on Windows with `LTspice XVII` the full path would be:
+
+```text
+C:\Program Files\LTC\LTspiceXVII\lib\cmp\standard.mos
+```
 
 ### Custom Model Files
 
@@ -424,11 +430,17 @@ There are three main modes of analysis:
 * AC analysis: The simulator outputs magnitude and phase information as a function of frequency.
 * Transient analysis: The entire circuit, including DC and reactive elements is simulated. The output is the voltage and currents at each node as a function of time.
 
-The easiest way is to add a text string on the schematic.
+Although KiCad allows you to configure modes of analysis through the simulation GUI window, this information is not saved with the schematic and gets lost every time you restart. I recommend you add a text string on the schematic instead.
 
 **Transient**
 
-`.tran 1u 10m`
+Syntax: `.tran <step period> <simulation period>`
+
+e.g.
+
+```text
+.tran 1u 10m
+```
 
 ### Printing Out The Version Of ngspice
 
@@ -446,9 +458,30 @@ ngspice will then print out the following information when the simulation is run
 
 ### Common Simulation Errors
 
+#### unknown subckt
+
 I have got the following error when the wrong `Spice_Primitive` was set (the component was a diode, `Spice_Primitive` was set to `X` for sub-circuit, was meant to be set to `D`).
 
 ```
 Error: unknown subckt: xd1 <net name> 0 1n5817
 Error: there aren't any circuits loaded.
+```
+
+#### There are duplicate components. You need to annotate schematics first.
+
+{{% img src="kicad-simulation-there-are-duplicate-components-error.png" width="300px" caption="Screenshot of the 'There are duplicate components' simulation error in KiCad." %}}
+
+This error usually arises if you have not assigned unique designators to all components. Perhaps there are still `R?`, `C?` e.t.c designators on the schematic? Or multiple instances of properly labelled components, such as two `R1`'s. The best way to fix this is just to reset and re-annotate the schematics.
+
+#### You need to select the simulation settings first
+
+This error pops up if ngspice cannot find a mode of analysis directive. Rather than choosing the simulation settings, I recommend you enter the directive in as text on the schematic instead.
+
+See the _Modes of Analysis_ section for more info.
+
+#### doAnalyses: iteration limit reached
+
+```text
+doAnalyses: iteration limit reached
+run simulation(s) aborted
 ```
