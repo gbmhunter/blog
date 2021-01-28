@@ -1,9 +1,13 @@
 ---
-author: gbmhunter
-date: 2011-09-03 02:17:41+00:00
+author: "gbmhunter"
+categories: [ "Electronics", "Components" ]
+date: 2011-09-03
+description: "Brushed DC, brushless, AC inductor, universal motors, half-bridge/full-bridge driver circuits and more info on electrical motors."
 draft: false
-title: Motors
-type: page
+lastmod: 2011-09-03
+tags: [ "electronics", "components", "motors" ]
+title: "Motors"
+type: "page"
 ---
 
 ## Brushed DC Motors
