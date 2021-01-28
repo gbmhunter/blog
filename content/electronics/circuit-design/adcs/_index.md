@@ -12,9 +12,9 @@ type: "page"
 
 ## Overview
 
-An analogue-to-digital converter (ADC) is a device which converts an input analogue voltage level into a representative digital value. They are commonly used in embedded electronics to measure the value of an analogue sensor. They are very popular and many microcontrollers have one or more built in ADCs, as well as stand-alone ADC ICs which normally offer greater precision and resolutions.
+An _analogue-to-digital converter_ (ADC) is a device which converts an input analogue voltage level into a representative digital value. They are commonly used in embedded electronics to measure the value of an analogue sensor. They are very popular and many microcontrollers have one or more built in ADCs, as well as stand-alone ADC ICs which normally offer greater precision and resolutions.
 
-{{< img src="adc-symbol-analogue-to-digital.png" width="376px" caption="A symbol representing a analogue-to-digital converter (ADC)."  >}}
+{{< img src="adc-symbol-analogue-to-digital.png" width="376px" caption="A symbol representing a analogue-to-digital converter (ADC)." >}}
 
 ## Microcontroller ADCs
 

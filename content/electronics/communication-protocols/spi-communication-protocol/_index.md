@@ -51,7 +51,7 @@ The clock polarity (CPOL) determines whether the idle state of the clock signal 
 
 The clock phase (CPHA) determines whether data is captured/sent on the rising or falling edge. **If CPHA = 0, then data is sampled on the first clock edge. If CPHA = 1, then data is sampled on the second clock edge.** This is true no matter what the clock polarity (CPOL) is set to. Note that if CPHA = 0, then data must be setup before the first clock edge.
 
-The following table shows the naming conventions for _Microchip PIC_ or _ARM-based _microcontrollers:
+The following table shows the naming conventions for _Microchip PIC_ or _ARM-based_ microcontrollers:
 
 <table>
   <thead>
