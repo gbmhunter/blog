@@ -33,3 +33,5 @@ type: "post"
   {{% figure src="/electronics/components/power-regulators/shunt-regulators/three-pin-shunt-regulator-schematic-symbol.png" width="300px" %}}
 
   * Added a new page on {{% link text="Multiplexers And Demultiplexers" src="/electronics/components/multiplexers-and-demultiplexers" %}}.
+
+* Added info on the KiCad page on how to create resistor and Zener simulation components.

@@ -53,42 +53,31 @@ The clock phase (CPHA) determines whether data is captured/sent on the rising or
 
 The following table shows the naming conventions for _Microchip PIC_ or _ARM-based_ microcontrollers:
 
-<table>
-  <thead>
-    <tr>
-      <th>Clock Polarity (CPOL)</th>
-      <th>Clock Phase (CPHA)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0</td>
-      <td>3</td>
-    </tr>
-  </tbody>
-</table>
+SPI Mode | Clock Polarity (CPOL) | Clock Phase (CPHA) | Which Clock Edge Is Used To Sample/Shift?
+---------|-----------------------|--------------------|--------------------------------------------------------------
+0        | 0                     | 0                  | Data sampled on rising edge and shifted out on falling edge.
+1        | 0                     | 1                  | Data sampled on falling edge and shifted out on rising edge.
+2        | 1                     | 0                  | Data sampled on falling edge and shifted out on rising edge.
+3        | 1                     | 1                  | Data sampled on rising edge and shifted out on falling edge.
+
+A common point of confusion is what clock phase (CPHA) means for data sampling/shifting for the different clock polarities. I have seen many sites and diagrams online which state that a clock phase of `0` means that data is sampled on the rising edge for 
 
 The standard defines these different modes to allow for greater variability in the master and slave devices that can use SPI.
+
+### What Is The Idle State?
+
+The idle state is defined as the periods when:
+
+* CS is high and transitioning to low at the start of a transmission
+* CS is low and transitioning to high at the end of a transmission
 
 {{% note %}}
 Many devices do not support all four SPI modes. It is common (especially for slave devices) to only support two of the four modes.
 {{% /note %}}
+
+### Can A Single Master Support Multiple SPI Modes On The Same Bus?
+
+The short answer is yes, as long as the master can be configured to all the relevant modes (most SPI peripherals inside microcontrollers support multiple SPI modes). The SPI slaves do not care what happens on the SCLK, MOSI and MISO lines while their chip select is inactive (high). So other slave devices that use other SPI modes can be communicated with whilst the chip select is held high for all other slave devices (as per normal operation). Care must be taken to change the clock polarity to what the slave node expects before making it's chip select active.
 
 ## Timing
 

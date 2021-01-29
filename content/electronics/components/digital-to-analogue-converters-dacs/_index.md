@@ -103,11 +103,12 @@ Within a family of DACs, sometimes there are different physical variants of the 
 
 Most buffered output DACs will be able to sink/source current (push/pull) and so the output impedance will be applicable over a negative and positive current ranges. Typically 50-200mΩ.
 
-### Integral Non-linearity (INL)
+### Integral Non-linearity (INL, aka Relative Accuracy)
 
 Integral non-linearity (INL, also called _relative accuracy_) is a measure of the difference between the actual output voltage and ideal output voltage for a particular digital input code. **It is measured after offset and gain errors are compensated for**. To compensate for this, the typical "ideal output voltage" is to determined. Confusingly, there are two different ways the "ideal output voltage" may be calculated:
 
-1. **End point line**: A line through the minimum and maximum output voltages of the DAC. The error will be 0 for the first and last points.
+1. **End point line**: A line through the minimum and maximum output voltages of the DAC. The error will be 0 for the first and last points. Sometimes, because of additional errors near the end-points, the line is taken between two codes offset from the extreme limits of the DAC. For example, the 12-bit Texas Instruments DAC7678 DAC provides a relative accuracy measured by a line passing through codes 30 and 4050 (with code 4095 being the upper-limit for a 12-bit DAC)[^ti-dac7678-datasheet].
+
 2. **Best fitting line**: A line fitted using linear least-squares regression.
 
 {{% figure src="dac-integral-non-linearity.svg" width="500px" caption="The integral non-linearity for digital input code 010 is shown. Note how the 'ideal line' has been offset and gain compensated for, in this case by going through the DACs min and max. output voltages." %}}
@@ -173,3 +174,4 @@ Another way to reduce the glitch energy is to add a external track/hold amplifie
 
 [^analog-mt015-basic-dac-architectures]: <https://www.analog.com/media/ru/training-seminars/tutorials/MT-015.pdf>, retrieved 2020-11-03.
 [^maxim-deglitching-techniques-for-high-voltage-r-2r-dacs]: <https://www.maximintegrated.com/en/design/technical-documents/app-notes/5/583.html>, retrieved 2021-01-21.
+[^ti-dac7678-datasheet]: <https://www.ti.com/lit/ds/symlink/dac7678.pdf>, retrieved 2021-01-29.
