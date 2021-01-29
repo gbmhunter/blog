@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2020-04-21
 description: "A beginners tutorial/introduction to KiCad."
 categories: [ "Electronics", "General" ]
-lastmod: 2020-12-24
+lastmod: 2021-01-29
 tags: [ "electronics", "KiCad", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries", "DigiKey", "renaming", "project", "GerbView", "installation", "3D models", "wrl", "step", "schematic templates", "SPICE", "simulation", "ngspice", "Sallen Key", "schematics" ]
 title: "A Beginners Intro To KiCad"
 type: "page"
@@ -375,7 +375,55 @@ For example, for a continuous pulse train alternating between 0 and 5V at 100kHz
 PULSE(0 5 0 10n 10n 5u 10u)
 ```
 
-### MOSFETs
+### Components
+
+#### Resistors
+
+To simulate say, a 10k resistor, start with any two pin symbol (using a resistor symbol would make sense, but that is not a requirement, you could use a two-pin smily face emoji if you want :-D) and make the following changes to it's symbol properties (adding new properties where they don't already exist):
+
+Name                    | Value
+------------------------|-----------
+Value                   | 10k
+Spice_Primitive         | R
+
+Change the `Value` field for different resistances, e.g. 
+
+* `600` (600 Ohms)
+* `2M` (2 megaOhms)
+
+Note that KiCAD automatically converts the commonly used `M` for megaOhms into the SPICE compatible `meg` (you may use `meg` directly if you want). Adding the symbol property with `Name=Fieldname` and `Value=Value` is not needed, this seems to be ignored, and KiCad will always use the `Value` property as the resistance. The symbol property `SpiceMapping` is also not needed, this seems like an older version of `Spice_Node_Sequence` and we do not need to adjust the pin mapping for a resistor anyway.
+
+#### Capacitors
+
+Name                    | Value
+------------------------|-----------
+Value                   | 100n
+Spice_Primitive         | C
+
+#### Zener Diodes
+
+To simulate a basic Zener diode, start with the `D_Zener` KiCAD symbol, and make the following changes to it's symbol properties (adding new properties where they don't already exist):
+
+Name                    | Value
+------------------------|-----------
+Spice_Primitive         | D
+Spice_Model             | D_Zener
+Spice_Netlist_Enabled   | Y
+Spice_Node_Sequence     | 2 1
+
+Then add the following text to the schematic:
+
+```text
+.model D_Zener D bv=5.0
+```
+
+OR add another symbol property called `Spice_Lib_File` and add the path to a `.lib` file containing the same line as you would of added to a text field above.
+
+Change the value `5.0` to whatever the blocking voltage of your Zener is.
+
+Click [here](kicad-spice-dc-voltage-sweep-zener-files.zip) to download source files for a simulation that includes a Zener diode.
+
+#### MOSFETs
 
 For discrete MOSFETs, the recommended approach is to use the `VDMOS` intrinsic model. This uses a standard 3-pin MOSFET symbol in the following order:
 
@@ -432,7 +480,7 @@ There are three main modes of analysis:
 
 Although KiCad allows you to configure modes of analysis through the simulation GUI window, this information is not saved with the schematic and gets lost every time you restart. I recommend you add a text string on the schematic instead.
 
-**Transient**
+#### Transient (.tran)
 
 Syntax: `.tran <step period> <simulation period>`
 
@@ -441,6 +489,24 @@ e.g.
 ```text
 .tran 1u 10m
 ```
+
+#### DC Sweep (.dc)
+
+The DC sweep analysis mode (`.dc`) has many different forms and supports many different types of analysis.
+
+Syntax: ``
+
+To do a basic sweep of voltage source `V1` (which must exist in your schematic with designator `V1`) from `0V` to `5.0V` in increments of `0.1V`:
+
+```text
+.dc V1 0.0 5.0 0.1
+```
+
+{{% img src="kicad-spice-dc-voltage-sweep-zener-schematic.png" width="500px" caption="A KiCAD simulation schematic with a text box defining a DC sweep analysis, sweeping V1 from 0V to 5V in increments of 0.1V." %}}
+
+{{% img src="kicad-spice-dc-voltage-sweep-zener-plot.png" width="500px" caption="KiCAD SPICE simulation plot of a DC sweep from 0-5V, showing the input voltage and the voltage across a 3.3V Zener diode." %}}
+
+Click [here](kicad-spice-dc-voltage-sweep-zener-files.zip) to download the source files for this simulation example.
 
 ### Printing Out The Version Of ngspice
 
