@@ -38,6 +38,12 @@ timeout = 30000
     fractions = false
     extensionsmask = ["autolink"] # Prevent naked URL from being converted into links, as this creates problems when the are URLs in figure captions.
 
+[markup]
+  [markup.tableOfContents]
+    endLevel = 10
+    ordered = false
+    startLevel = 2
+
 [markup.goldmark.renderer]
     # This is so we can include HTML in shortcodes that do not start with {{<
     # This had to be added when going from Hugo v0.59.1 to v0.60.0
@@ -58,15 +64,5 @@ timeout = 30000
   category = "categories"
   tag = "tags"
 
-[outputFormats.Algolia]
-  baseName = "algolia"
-  isPlainText = true
-  mediaType = "application/json"
-  notAlternative = true
-
-[params.algolia]
-  vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
-  params = ["categories", "tags"]
-
 [outputs]
-    home = ["HTML", "RSS", "Algolia"]
+    home = ["HTML", "RSS"]
