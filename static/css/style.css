@@ -32,7 +32,9 @@ h3 {
     justify-content: flex-end;
 }
 
+/* ===================================== */
 /* HEADING NUMBERING */
+/* ===================================== */
 
 body {
     counter-reset: h2counter;
@@ -46,6 +48,10 @@ body {
     counter-reset: h3counter;
 }
 
+.content h3 {
+  counter-reset: h4counter;
+}
+
 .content h2:before {
     content: counter(h2counter) ".\0000a0\0000a0";
     counter-increment: h2counter;
@@ -54,6 +60,11 @@ body {
 .content h3:before {
     content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
     counter-increment: h3counter;
+}
+
+.content h4:before {
+  content: counter(h2counter) "." counter(h3counter) "." counter(h4counter) ".\0000a0\0000a0";
+  counter-increment: h4counter;
 }
 
 /* END OF HEADING NUMBERING */
