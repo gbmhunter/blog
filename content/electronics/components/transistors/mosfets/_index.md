@@ -4,7 +4,7 @@ categories: [ "Electronics", "Components" ]
 date: 2011-09-03
 description: "Schematic symbol, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."
 draft: false
-lastmod: 2020-10-14
+lastmod: 2021-01-31
 tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate", "SOA diagram" ,"safe operating area", "thermal limits", "Spirito effect" ]
 title: "MOSFETs"
 type: "page"
@@ -49,7 +49,7 @@ Sorted by alphabetical order, including subscripts.
     <tr>
       <td>\(R_{DS(on)}\)</td>
       <td>On-state drain-source resistance.</td>
-      <td>The resistance between drain and source when the MOSFET is turned on (in the saturation region). Usually around 1-10Ω for smaller MOSFETs, and can be as low as 1mΩ for larger power MOSFETs.</td>
+      <td>The resistance between drain and source when the MOSFET is turned on with a strong gate drive and low \(V_{DS}\) (hence in the linear, Ohmic region of operation). Usually around 1-10Ω for smaller MOSFETs, and can be as low as 1mΩ for larger power MOSFETs.</td>
     </tr>
     <tr>
       <td>\(V_{DS(max)}\)</td>
@@ -77,10 +77,10 @@ P-channels work in a similar manner to N-channels, the difference being that a n
 
 **In any case, do not leave the MOSFET gate floating**. Since it has a very high impedance input, if the gate is not driven, then noise can change the voltage on the gate, and cause the MOSFET to conduct/have undefined behaviour.
 
-The above examples describing switching a MOSFET from it's fully off state to it's fully on state. But if you apply a `\(V_{GS}\)` at or just above `\(V_{GS(th)}\)`, the MOSFET will only partially turn on. You are now operating the MOSFET in it's _linear_ region.
+The above examples describing switching a MOSFET from it's fully off state to it's fully on state. But if you apply a `\(V_{GS}\)` at or just above `\(V_{GS(th)}\)`, the MOSFET will only partially turn on.
 
 {{% note %}}
-The _linear_ region of a MOSFET is a very confusing term, and can **completely switch (ha, switch...get it?) meaning depending on the literature your're reading**! Let's now avoid confusion by calling the region when the MOSFET is partially on the _ohmic_ region, and the region when the MOSFET is fully on the _saturation_ region. For more discussion on this confusion, see this [StackExchange Electrical Engineering thread](https://electronics.stackexchange.com/questions/76071/meaning-of-mosfet-linear-region-in-the-context-of-switching-losses).
+The _linear_ and _saturation_ region of a MOSFET are easy to get mixed up, and can **completely switch (ha, switch...get it?) meaning depending on the literature you're reading**! At strong gate drives and low `\(V_{DS}\)`, the MOSFET is operating in the _ohmic_ or _linear_ region, where `\( V_{DS} \propto I_D \)`. With weaker gate drive and high `\(V_{DS}\)`, the MOSFET's current `\(I_D\)` is roughly constant with varying `\(V_{DS}\)`, and is in the _saturation_ region (the current is saturated). For more discussion on this confusion, see this [StackExchange Electrical Engineering thread](https://electronics.stackexchange.com/questions/76071/meaning-of-mosfet-linear-region-in-the-context-of-switching-losses "test1").
 {{% /note %}}
 
 ## Leakage Current
