@@ -79,6 +79,8 @@ P-channels work in a similar manner to N-channels, the difference being that a n
 
 The above examples describing switching a MOSFET from it's fully off state to it's fully on state. But if you apply a `\(V_{GS}\)` at or just above `\(V_{GS(th)}\)`, the MOSFET will only partially turn on.
 
+{{% img src="mosfet-vds-vs-id-for-different-vgs-showing-linear-and-saturation-regions.svg" width="500px" caption="" %}}
+
 {{% note %}}
 The _linear_ and _saturation_ region of a MOSFET are easy to get mixed up, and can **completely switch (ha, switch...get it?) meaning depending on the literature you're reading**! At strong gate drives and low `\(V_{DS}\)`, the MOSFET is operating in the _ohmic_ or _linear_ region, where `\( V_{DS} \propto I_D \)`. With weaker gate drive and high `\(V_{DS}\)`, the MOSFET's current `\(I_D\)` is roughly constant with varying `\(V_{DS}\)`, and is in the _saturation_ region (the current is saturated). For more discussion on this confusion, see this [StackExchange Electrical Engineering thread](https://electronics.stackexchange.com/questions/76071/meaning-of-mosfet-linear-region-in-the-context-of-switching-losses "test1").
 {{% /note %}}
