@@ -1,0 +1,7 @@
+<!--
+  If URL starts with http://, open link in new page.
+  Relative links (within blog) will be opened in same page.
+  Supports the syntax:
+  [<url_text>](<url> "<url_title>")
+-->
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank"{{ end }}>{{ .Text | markdownify }}</a>
