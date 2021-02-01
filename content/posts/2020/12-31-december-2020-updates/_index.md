@@ -24,9 +24,9 @@ type: "post"
 
     {{% figure src="/electronics/components/power-regulators/charge-pumps/charge-pump-voltage-doubler-schematic.png" width="700px" %}}
 
-* Added more SPICE simulation info to the {{% link text="A Beginners Intro To KiCad page" src="/electronics/general/kicad/a-beginners-intro-to-kicad" %}}.
+* Added more SPICE simulation info to the {{% link text="A Beginners Intro To KiCad page" src="/electronics/general/kicad/kicad-tips-and-tricks" %}}.
 
-    {{% figure src="/electronics/general/kicad/a-beginners-intro-to-kicad/kicad-sallen-key-simulation-plots.png" width="600px" %}}
+    {{% figure src="/electronics/general/kicad/kicad-tips-and-tricks/kicad-sallen-key-simulation-plots.png" width="600px" %}}
 
 * Added schematics and explanations around {{% link text="op-amp based current sinks to the Op-Amp page" src="/electronics/components/op-amps#current-sinks" %}}.
 

@@ -3,9 +3,9 @@ author: "gbmhunter"
 date: 2020-04-21
 description: "A beginners tutorial/introduction to KiCad."
 categories: [ "Electronics", "General" ]
-lastmod: 2021-01-29
+lastmod: 2021-02-01
 tags: [ "electronics", "KiCad", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries", "DigiKey", "renaming", "project", "GerbView", "installation", "3D models", "wrl", "step", "schematic templates", "SPICE", "simulation", "ngspice", "Sallen Key", "schematics" ]
-title: "A Beginners Intro To KiCad"
+title: "KiCad Tips And Tricks"
 type: "page"
 ---
 

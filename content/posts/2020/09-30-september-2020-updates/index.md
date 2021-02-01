@@ -14,7 +14,7 @@ type: "post"
 
     {{% figure src="/programming/microcontrollers/arduino/arduino-logo.svg" width="200px" %}}
 
-* Added info about {{% link text="schematic page templates to the A Beginners Intro To KiCAD page" src="/electronics/general/kicad/a-beginners-intro-to-kicad" %}}.
+* Added info about {{% link text="schematic page templates to the A Beginners Intro To KiCAD page" src="/electronics/general/kicad/kicad-tips-and-tricks" %}}.
 
 * Added support for the search service Algolia.
 
