@@ -298,7 +298,8 @@ There are a few schematic symbol parameters which have dedicated purposes for SP
 * `Fieldname`: Typically `Value`, pointing to the `Value` symbol property. Think of this as a symbol property pointer?
 * `Spice_Primitive`: This determines the _element type_ (ngspice nomenclature) `R` for resistors, `C` for capacitors, `D` for diodes, `X` for subcircuits (anything that is built out of many primitives, i.e. ICs), e.t.c. See the below table for a list of all the supported primitives.
 * `Spice_Model`: Only needed when `Spice_Primitive = X`.
-* `Spice_Lib_File`: Filename (not full path) of SPICE library component that belongs to this symbol, e.g. `ad8051.lib`. This `.lib` file must be located in the same directory as the `.sch` file containing the component. Clicking `Edit Spice Model` should bring up a dialogue box with the text from the `.lib` file.
+* `Spice_Lib_File`: Filename (not full path) of SPICE library component that belongs to this symbol, e.g. `ad8051.lib`. Clicking `Edit Spice Model` should bring up a dialogue box with the text from the `.lib` file.
+  * The path can be either relative or absolute. If relative, it can be relative to the same directory as the `.sch` file containing the component. Use forward-slashes in the path as these work on all major platforms (even Windows).
 * `Spice_Netlist_Enabled`: A boolean. either `Y` or `N`.
 * `Spice_Node_Sequence`: This is used to map KiCAD pin numbering with the pin numbering that ngspice expects. The value for this parameter is a space separated list of integers which map the KiCad pins to the ngspice pins. For example, almost all diodes in KiCad number the cathode as pin 1, and the anode as pin 2. ngspice expects things the other way around, with the anode as pin 1, cathode as pin 2. So simulation diodes should have a `Spice_Node_Sequence=2 1`.
 * `SpiceMapping`: 
@@ -417,7 +418,7 @@ Then add the following text to the schematic:
 .model D_Zener D bv=5.0
 ```
 
-OR add another symbol property called `Spice_Lib_File` and add the path to a `.lib` file containing the same line as you would of added to a text field above.
+OR add another symbol property called `Spice_Lib_File` and add the path to a `.lib` file containing the same line as you would of added to a text field above. `Spice_Lib_File` can be either absolute or relative to a library root path.
 
 Change the value `5.0` to whatever the blocking voltage of your Zener is.
 
