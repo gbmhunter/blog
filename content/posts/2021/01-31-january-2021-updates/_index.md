@@ -10,9 +10,9 @@ title: "January 2021 Updates"
 type: "post"
 ---
 
-* Merged the Oscillators and Crystal pages (which were grouped under a section called _Timing_) into the single Oscillators page.
+* Merged the Oscillators and Crystal pages (which were grouped under a section called _Timing_) into the single {{% link text="Oscillators page" src="/electronics/components/oscillators" %}}.
 
-* Added information on MEMS Oscillators to the Oscillators and Chip Package pages.
+* Added information on MEMS Oscillators to the  {{% link text="Oscillators page" src="/electronics/components/oscillators" %}} and {{% link text="Chip Package" src="/pcb-design/component-packages/chip-eia-component-packages" %}} pages.
 
 * Added a {{% link text="Components That Don't Like Ultrasonic Baths section to the Ultrasonic Cleaners page" src="/electronics/tools/ultrasonic-cleaners#components-that-dont-like-ultrasonic-baths" %}}.
 
@@ -34,4 +34,6 @@ type: "post"
 
 * Added a new page on {{% link text="Multiplexers And Demultiplexers" src="/electronics/components/multiplexers-and-demultiplexers" %}}.
 
-* Added info on the KiCad page on how to create resistor and Zener simulation components.
+  {{% figure src="/electronics/components/multiplexers-and-demultiplexers/cd4051b-functional-diagram-ti.png" width="400px" %}}
+
+* Added info on the {{% link text="KiCad Tips And Tricks page" src="/electronics/general/kicad/kicad-tips-and-tricks" %}} on how to create resistor and Zener simulation components.

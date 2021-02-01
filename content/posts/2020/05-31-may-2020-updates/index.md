@@ -20,6 +20,6 @@ type: "post"
 
 * Added a {{% link text="Importing Altium Projects Into KiCAD" src="/electronics/general/kicad/importing-altium-projects-into-kicad" %}} page.
 
-    {{% figure src="/electronics/general/kicad/a-beginners-intro-to-kicad/kicad-logo.png" width="300px" %}}
+    {{% figure src="/electronics/general/kicad/kicad-tips-and-tricks/kicad-logo.png" width="300px" %}}
 
 * Added a {{% link text="Soldering Irons And Stations page" src="/electronics/tools/soldering-irons-and-stations" %}}, {{% link text="Reflow Ovens page" src="/electronics/tools/reflow-ovens" %}}, {{% link text="Logic Analyzers page" src="/electronics/tools/logic-analyzers" %}} and {{% link text="Digital Microscopes page" src="/electronics/tools/digital-microscopes" %}}.
