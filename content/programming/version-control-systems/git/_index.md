@@ -203,7 +203,7 @@ $ git log --oneline SHA_A ^SHA_B
 
 ## Force With Lease
 
-"Force pushing" with git is common when you are working on a branch and using `git commit --amend` and `git rebase` to keep your commit history clean and rebase of master. However, `git push -f` can have disatorous consequences if someone else has pushed changes to the branch that you don't have in your local copy.
+"Force pushing" with git is common when you are working on a branch and using `git commit --amend` and `git rebase` to keep your commit history clean and rebase of master. However, `git push -f` can have disastrous consequences if someone else has pushed changes to the branch that you don't have in your local copy.
 
 To mitigate this, you can use the `--force-with-lease` option:
 
