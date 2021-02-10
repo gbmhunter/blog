@@ -4,7 +4,7 @@ categories: [ "Electronics", "Components" ]
 date: 2011-09-03
 description: "Schematic symbol, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."
 draft: false
-lastmod: 2021-01-31
+lastmod: 2021-02-10
 tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate", "SOA diagram" ,"safe operating area", "thermal limits", "Spirito effect" ]
 title: "MOSFETs"
 type: "page"
@@ -29,7 +29,17 @@ MOSFETs should not be confused with similar but different semiconductor devices 
 
 The following image shows the schematic symbol and pin names for both an N-channel and P-channel MOSFET.
 
+The arrow has it's origins from a simple diode, in which the arrow points from the P-type substrate to the N-type substrate (which is also the direction of conventional current flow through a diode).
+
 {{< img src="mosfet-schematic-symbols-n-ch-p-ch.png" caption="The schematic symbol and pin names for both an n-channel and p-channel MOSFET." width="400px" >}}
+
+Almost all discrete (a.k.a. power) MOSFETs have the substrate (body) connected internally to the source, which reduces the need for 4 leads down to 3. This is also shown in the symbol with the solid line as shown below:
+
+{{% img src="mosfet-symbol-highlighting-substrate-to-source-connection.png" width="500px" caption="Schematic symbol of a N-channel enhancement-mode MOSFET highlighting the built-in short between the substrate (body) and source of the MOSFET present in almost all discrete (aka power) MOSFETs." %}}
+
+MOSFETs inside ICs do not normally have the substrate connected to the source, an are instead drawn as four pin devices, of which the additional fourth pin is connected to the substrate. For N-channel MOSFETs this is typically connected to the negative voltage rail (e.g. `\(0V\)`), and for P-channel MOSFETs it is connected to the positive voltage rail (e.g. `\(V_{DD}\)`). Note also that as soon as you disconnect the substrate from the source, the drain and source pins no longer have any differences, i.e. they can be interchanged and the device will still work as expected.
+
+The difference between N-channel and P-channel MOSFETs may be instead distinguished by adding a inverting-style circle on the gate pin, this symbolises that, in a way, a P-channel is the inverse of the more typical/standard N-channel.
 
 ## Important Parameters
 
