@@ -25,7 +25,7 @@ MOSFETs should not be confused with similar but different semiconductor devices 
 * Current regulating shunts (with feedback)
 * {{% link text="Switch-mode PSUs" src="/electronics/components/power-regulators" %}}
 
-## Schematic Symbol
+## Schematic Symbols
 
 The following image shows the schematic symbol and pin names for both an N-channel and P-channel MOSFET.
 
