@@ -47,6 +47,10 @@ $ git remote set-url origin https://new-url
 # Remove remote push location added in previous command (in this case origin)
 $ git remote rm origin
 
+# Delete local branches that are not present on remote
+$ git remote prune origin
+$ git remote prune origin --dry-run # Only list them, don't delete
+
 # Push to Github repo added in above command
 $ git push origin
 
