@@ -11,19 +11,29 @@ K transistor NMOS N-MOS N-MOSFET
 F ~
 $ENDCMP
 #
+$CMP Q_NMOS_DGS_4PIN
+D N-MOSFET transistor, drain/gate/source
+K transistor NMOS N-MOS N-MOSFET
+F ~
+$ENDCMP
+#
 $CMP Q_NMOS_DGS_DEPL
 D N-MOSFET transistor, drain/gate/source
 K transistor NMOS N-MOS N-MOSFET
 F ~
 $ENDCMP
 #
-$CMP Q_NMOS_DGS_copy
-D N-MOSFET transistor, drain/gate/source
-K transistor NMOS N-MOS N-MOSFET
+$CMP Q_PMOS_DGS
+D P-MOSFET transistor, drain/gate/source
+K transistor PMOS P-MOS P-MOSFET
 F ~
 $ENDCMP
 #
-$CMP Q_PMOS_DGS
+$CMP Q_PMOS_DGS_4PIN
+F ~
+$ENDCMP
+#
+$CMP Q_PMOS_DGS_DEPL
 D P-MOSFET transistor, drain/gate/source
 K transistor PMOS P-MOS P-MOSFET
 F ~
