@@ -4,7 +4,7 @@ categories: [ "Electronics", "Components" ]
 date: 2011-09-03
 description: "Schematic symbol, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."
 draft: false
-lastmod: 2021-02-10
+lastmod: 2021-02-11
 tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate", "SOA diagram" ,"safe operating area", "thermal limits", "Spirito effect" ]
 title: "MOSFETs"
 type: "page"
@@ -27,11 +27,13 @@ MOSFETs should not be confused with similar but different semiconductor devices 
 
 ## Schematic Symbols
 
-The following image shows the schematic symbol and pin names for both an N-channel and P-channel MOSFET.
+Unfortunately for the keen circuit designer learning about MOSFETs, there is a dizzying variety of MOSFET symbols in use, owing to the fact that there are a larger number of different MOSFET types, and that no one can agree on a single standard. This section will walk you through all the various types. Firstly, shown below is the commonly used schematic symbols for enhancement and depletion mode MOSFETs, showing both the N-channel and P-channel variant for each mode.
+
+{{% img src="mosfet-schematic-symbols-enhancement-and-depletion-modes-n-ch-p-ch.png" caption="One form of schematic symbol and pin names for enhancement mode and depletion mode MOSFETs, each showing the N-channel and P-channel types." width="700px" %}}
 
 The arrow has it's origins from a simple diode, in which the arrow points from the P-type substrate to the N-type substrate (which is also the direction of conventional current flow through a diode).
 
-{{< img src="mosfet-schematic-symbols-n-ch-p-ch.png" caption="The schematic symbol and pin names for both an n-channel and p-channel MOSFET." width="400px" >}}
+Some people/CAD programs may omit the outer circle to reduce the "noisyness" of the above symbols.
 
 Almost all discrete (a.k.a. power) MOSFETs have the substrate (body) connected internally to the source, which reduces the need for 4 leads down to 3. This is also shown in the symbol with the solid line as shown below:
 
