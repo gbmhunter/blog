@@ -39,6 +39,8 @@ Almost all discrete (a.k.a. power) MOSFETs have the substrate (body) connected i
 
 {{% img src="mosfet-symbol-highlighting-substrate-to-source-connection.png" width="500px" caption="Schematic symbol of a N-channel enhancement-mode MOSFET highlighting the built-in short between the substrate (body) and source of the MOSFET present in almost all discrete (aka power) MOSFETs." %}}
 
+{{% img src="mosfet-schematic-symbols-alternate-style.png" width="500px" caption="An alternative style for a MOSFET symbol. Note the different convention used for the direction of the arrows! There is also no distinction between depletion and enhancement-mode MOSFETs in the alternative style (assume it is enhancement-mode if in doubt)." %}}
+
 MOSFETs inside ICs do not normally have the substrate connected to the source, an are instead drawn as four pin devices, of which the additional fourth pin is connected to the substrate. For N-channel MOSFETs this is typically connected to the negative voltage rail (e.g. `\(0V\)`), and for P-channel MOSFETs it is connected to the positive voltage rail (e.g. `\(V_{DD}\)`). Note also that as soon as you disconnect the substrate from the source, the drain and source pins no longer have any differences, i.e. they can be interchanged and the device will still work as expected.
 
 The difference between N-channel and P-channel MOSFETs may be instead distinguished by adding a inverting-style circle on the gate pin, this symbolises that, in a way, a P-channel is the inverse of the more typical/standard N-channel.
@@ -299,8 +301,7 @@ For a really good read on the Spirito effect, see [NASA's publication: Power MOS
 1. Package Current Limit: MOSFET datasheets will specify a maximum current, irrespective of the amount of power dissipation. The current limit is driven by physical parts inside the package which are not the silicon MOSFET cell(s), but the surrounding lead wires, bonding clips, e.t.c. This gives the upper-centre horizontal line on the SOA graph.
 1. Power Limit: The power limit line is determined by the maximum power dissipation the MOSFET can handle before the junction temperature exceeds it's maximum value (typically between 100-200°C). This line is dependent on the case-to-ambient thermal resistance (which is specific to the PCB/environment the MOSFET is used in!) and ambient temperature, so the best the MOSFET manufacturer can do is assume a sensible value (and hopefully state the assumption in the datasheet).
 1. Thermal Instability: Thermal instability occurs at lower `\(V_{GS}\)` voltages[^infineon-mosfet-safe-operating-diagram].
-1. Breakdown Voltage Limit: Above a certain drain-source voltage, the MOSFET "breaksdown" and stops working correctly. This puts a hard upper-limit on the `\(V_{DS}\)` voltage, shown by the far right vertical line on the SOA graph.
-
+1. Breakdown Voltage Limit: Above a certain drain-source voltage, the MOSFET experiences "breakdown" and stops working correctly. This puts a hard upper-limit on the `\(V_{DS}\)` voltage, shown by the far right vertical line on the SOA graph.
 
 ## External Resources
 
