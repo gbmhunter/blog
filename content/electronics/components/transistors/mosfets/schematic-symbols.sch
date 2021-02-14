@@ -165,4 +165,44 @@ Text Notes 4450 4600 0    50   ~ 0
 B
 Text Notes 5050 4600 0    50   ~ 0
 B
+$Comp
+L mbedded-ninja-kicad-symbols:Q_NMOS_NO_BODY Q1
+U 1 1 6027449C
+P 4200 5300
+F 0 "Q1" H 4350 5300 50  0000 L CNN
+F 1 "Q_NMOS_NO_BODY" H 4388 5255 50  0001 L CNN
+F 2 "" H 4400 5400 50  0001 C CNN
+F 3 "~" H 4200 5300 50  0001 C CNN
+	1    4200 5300
+	1    0    0    -1  
+$EndComp
+Text Notes 4250 5000 0    50   ~ 0
+Alternate Style
+Text Notes 3950 5250 0    50   ~ 0
+G
+Text Notes 4200 5550 0    50   ~ 0
+S
+Text Notes 4200 5100 0    50   ~ 0
+D
+Text Notes 4150 5600 0    25   ~ 0
+N-channel
+Text Notes 4750 5600 0    25   ~ 0
+P-channel
+Text Notes 4550 5250 0    50   ~ 0
+G
+Text Notes 4800 5100 0    50   ~ 0
+D
+Text Notes 4800 5550 0    50   ~ 0
+S
+$Comp
+L mbedded-ninja-kicad-symbols:Q_PMOS_NO_BODY Q2
+U 1 1 60279B91
+P 4800 5300
+F 0 "Q2" H 4950 5300 50  0000 L CNN
+F 1 "Q_PMOS_NO_BODY" H 4988 5345 50  0001 L CNN
+F 2 "" H 5000 5400 50  0001 C CNN
+F 3 "~" H 4800 5300 50  0001 C CNN
+	1    4800 5300
+	1    0    0    1   
+$EndComp
 $EndSCHEMATC
