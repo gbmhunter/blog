@@ -552,3 +552,7 @@ See the _Modes of Analysis_ section for more info.
 doAnalyses: iteration limit reached
 run simulation(s) aborted
 ```
+
+## CICD
+
+The GitHub user [productize](https://github.com/productize) has created some Python scripts in the [GitHub repo kicad-automation-scripts](https://github.com/productize/kicad-automation-scripts) which automate some core KiCad processes such as running ERC (electrical rules check on the schematics) and DRC (design rules check on the PCB). Along with committing the KiCad design files to version control systems such as Git, these tools can be used to implement CICD workflows that run automatically on changes/commits.
