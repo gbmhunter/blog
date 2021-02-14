@@ -31,9 +31,11 @@ Unfortunately for the keen circuit designer learning about MOSFETs, there is a d
 
 {{% img src="mosfet-schematic-symbols-enhancement-and-depletion-modes-n-ch-p-ch.png" caption="One form of schematic symbol and pin names for enhancement mode and depletion mode MOSFETs, each showing the N-channel and P-channel types." width="700px" %}}
 
-The arrow has it's origins from a simple diode, in which the arrow points from the P-type substrate to the N-type substrate (which is also the direction of conventional current flow through a diode).
+The arrow has it's origins from a simple diode, in which the arrow points from the P-type substrate to the N-type substrate (which is also the direction of conventional current flow through a diode). Some people/CAD programs may omit the outer circle to reduce the "noisyness" of the above symbols.
 
-Some people/CAD programs may omit the outer circle to reduce the "noisyness" of the above symbols.
+Sometimes the body connection is removed altogether from the schematic symbol, and a simplified variant as below is used:
+
+TODO: Add image here
 
 Almost all discrete (a.k.a. power) MOSFETs have the substrate (body) connected internally to the source, which reduces the need for 4 leads down to 3. This is also shown in the symbol with the solid line as shown below:
 
