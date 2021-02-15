@@ -67,6 +67,23 @@ D Shunt Regulator, SOT-89
 K diode device shunt regulator
 $ENDCMP
 #
+$CMP Tran_BJT_NCh
+D 800mA Ic, 50V Vce, NPN Transistor, TO-39
+K NPN Transistor
+$ENDCMP
+#
+$CMP Tran_BJT_NPN
+K NPN transistor CJT
+$ENDCMP
+#
+$CMP Tran_BJT_PCh
+K BJT PNP transistor
+$ENDCMP
+#
+$CMP Tran_BJT_PNP
+K BJT PNP transistor
+$ENDCMP
+#
 $CMP VDC
 D Voltage source, DC
 K simulation
