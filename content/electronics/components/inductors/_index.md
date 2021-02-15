@@ -12,13 +12,13 @@ type: "page"
 
 ## Overview
 
-Inductors are passive electronic components which store energy as a magnetic field. They are made by coiling wire around a material (be it air, or something else). They are not as common as [resistors](/electronics/components/resistors) and [capacitors](/electronics/components/capacitors) in electronic circuits. They are related to [transformers](/electronics/components/transformers).
+Inductors are passive electronic components which store energy as a magnetic field. They are made by coiling wire around a material (be it air, or something else). They are not as common as [resistors](/electronics/components/resistors) and {{% link text="capacitors" src="/electronics/components/capacitors" %}} in electronic circuits. They are related to [transformers](/electronics/components/transformers).
 
 {{< img src="3-35uh-20a-large-inductor.jpg" caption="A 3.35uH 20A large inductor." width="400px" >}}
 
 **The mechanical equivalent of an inductor is mass.** The larger the inductance, the larger the mass. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
-Two inductances which are in close proximity they can couple with each, this is called **mutual inductance**. This is the basic principle behind a [transformer](/electronics/components/transformers).
+Two inductances which are in close proximity they can couple with each, this is called **mutual inductance**. This is the basic principle behind a {{% link text="transformer" src="/electronics/components/transformers" %}}.
 
 ## Terminology
 
@@ -53,6 +53,101 @@ Two inductances which are in close proximity they can couple with each, this is 
   </tbody>
 </table>
 
+
+## Important Parameters
+
+### Inductance
+
+Symbol: `\(I\)`
+Units: Henries (`\(H\)`)
+
+This parameter determines the relationship between the rate of change in current through the inductor and the inductors voltage.
+
+### K-factor
+
+### DC resistance
+
+Symbol: `\(DCR\)`
+Units: Ohms (`\(\Omega\)`)
+
+The DC resistance of the coil of wire that the inductor is made up from. You can use this to calculate resistive losses through the inductor. An ideal inductor has no DCR. The DC resistance of an inductor can be easily measured by a good quality multimeter or benchtop Ohm meter.
+
+### Saturation Current
+
+Symbol: `\(I_{sat}\)`
+Units: Amps (`\(A\)`)
+
+This is the most important current rating. Essentially, this is the maximum current the inductor can take before it stops working like an inductor. At higher currents, the inductor becomes much more lossy.
+
+### Rated current
+
+Symbol: `\(I_{rated}\)`
+Units: Amps (`\(A\)`)
+
+This is typically given as the amount of current required to created a fixed temperature rise above ambient due to resistive losses in the copper winding. The temperature rise is usually 40°C.
+
+Be careful when choosing an inductor, normally it's the saturation current which is important, and it can be much lower than the rated current!
+
+Inductors are commonly used as an energy storage component in {{% link text="DC/DC converters" src="/electronics/components/power-regulators" %}}.
+
+## Types Of Inductors
+
+### Ferrite Drum Core Inductors
+
+Ferrite drum core inductors can be optionally shielded. They allow for high saturation currents and high inductances (due to having a large number of turns).
+
+### Toroidal Inductors
+
+### Flat Coil Inductors
+
+Flat coil inductors have a very low profile (height from the surface of the PCB) allowing use in space-constrained designs. Flat coil inductors usually have a low number of turns, resulting in less inductance than ferrite drum core or toroidal inductors. The core is typically made up of powdered iron.
+
+### Metal Composite Inductors
+
+Metal composite inductors (also called _moulded power inductors_) are made with metal powders moulded around copper windings at high pressure.
+
+{{% img src="metal-composite-inductor-construction-kemet-mpx.png" width="300px" caption="Internal construction of a metal composite inductor. Image by Kemet, retrieved from https://media.digikey.com/pdf/Data%20Sheets/Kemet%20PDFs/MPXV_Series_DS.pdf on 2020-11-30." %}}
+
+### Air-cored Inductors
+
+Air-cored inductors represent any inductor which contains no ferromagnetic material. This means that "air-cored" inductors also covers a range of inductors which use an insulator instead of air for the core, which includes materials such as glass or PTFE.
+
+**Advantages**
+
+* Unlike a ferro-magnetic cored inductor, an air-cored inductors **inductance does not vary with the amount current that is flowing with it**. Ferromagnetic cores work fine up until a point at which they **saturate**.
+* Air-cores do not have any iron losses. This advantage becomes more significant with increasing frequency.
+
+**Disadvantages**
+
+* Air-cored inductors have to have more  and/or larger turns to achieve the same inductance value as a ferro-magnetic core. This is because **ferro-magnetic cores have a higher permeability than air**.
+* Air-cored inductors radiate more electromagnetic fields over a wider area, and also pick up more radiation. This is because ferro-magnetic-cores constrain the magnetic field lines better.
+
+## Ferrite Beads
+
+See the {{% link text="Ferrite Beads page" src="/electronics/components/ferrite-beads" %}}.
+
+## Common Core Materials
+
+### Air Core
+
+Air core is used to describe any inductor which does not use a magnetic material for it's core (so they may in fact, have something other than air for their core). Used in low inductance, RF applications because they lack any magnetic core to boost their inductance, but at the same time benefit from smaller core losses which can be significant in the RF spectrum. Go to the Air-Cored Inductors section for more info.
+
+### Powdered Ferrite Core
+
+The powder is compressed into blocks before using (but don't confuse these with solid ferrite core inductors). Very lossy (resistive) at high frequencies. Used to make ferrite beads.
+
+### Solid Iron (or Steel) Core
+
+Used in low resistance, high inductance applications. Has a higher saturation current than air-cored inductors, but lower one than powdered iron cores.
+
+### Powdered Iron Core
+
+Powered iron core inductors have a _distributed air gap_, which gives them a higher saturation current then solid iron cored inductors.
+
+### Metal Composite
+
+While ferrite cored inductors seem to have similar current ratings (based of thermal performance) as their saturation current, metal composite inductors typically have a saturation current between 1-2x their current rating (e.g. a current rating of 3A, and a saturation current between 3-6A).
+
 ## Inductors In Series And In Parallel
 
 The behaviour of inductors when connected together in series and in parallel is exactly the same behaviour resistors exhibit, and exactly the opposite behaviour of what capacitors exhibit.
@@ -80,40 +175,6 @@ The equivalent inductance of two inductors connected in series is the sum of the
 This is shown in the diagram below:
 
 {{< img src="inductor-in-series-with-equation.png" width="609px" caption="Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances." >}}
-
-## Common Core Materials
-
-<table>
-  <thead>
-    <tr>
-      <th>Core Material</th>
-      <th>Uses</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Air core</td>
-      <td>Air core is used to describe any inductor which does not use a magnetic material for it's core (so they may in fact, have something other than air for their core). Used in low inductance, RF applications because they lack any magnetic core to boost their inductance, but at the same time benefit from smaller core losses which can be significant in the RF spectrum. Go to the Air-Cored Inductors section for more info.</td>
-    </tr>
-    <tr>
-      <td>Powdered Ferrite Core</td>
-      <td>The powder is compressed into blocks before using (but don't confuse these with solid ferrite core inductors). Very lossy (resistive) at high frequencies. Used to make ferrite beads.</td>
-    </tr>
-    <tr>
-      <td>Solid Iron (or Steel) Core</td>
-      <td>Used in low resistance, high inductance applications. Has a higher saturation current than air-cored inductors, but lower one than powdered iron cores.</td>
-    </tr>
-    <tr>
-      <td>Powdered Iron Core</td>
-      <td>Powered iron core inductors have a <i>distributed air gap</i>, which gives them a higher saturation current then solid iron cored inductors.</td>
-    </tr>
-    <tr>
-      <td>Metal Composite</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
 
 ## Equations
 
@@ -143,7 +204,7 @@ The energy stored in a inductor is given by:
     \(I\) is the current flowing through the inductor<br>
 </p>
 
-This equation is only valid when the inductor is operating in it's linear region, that is, before the current reachs the point where the magnetic feild begins to **saturate**. Notice that it is similar to the [equation for energy in a capacitor](/electronics/components/capacitors#energy).
+This equation is only valid when the inductor is operating in it's linear region, that is, before the current reaches the point where the magnetic field begins to **saturate**. Notice that it is similar to the {{% link text="equation for energy in a capacitor" src="/electronics/components/capacitors#energy" %}}.
 
 ### Simple Impedance Model
 
@@ -216,76 +277,6 @@ Inductors in series behave just like resistors in series.
 
 <p>$$ L_{eq} = L_1 + L_2 + \ldots + L_n $$</p>
 
-## Important Parameters
-
-### Inductance
-
-Symbol: `\(I\)`
-Units: Henries (`\(H\)`)
-
-This parameter determines the relationship between the rate of change in current through the inductor and the inductors voltage.
-
-### DC resistance
-
-Symbol: `\(DCR\)`
-Units: Ohms (`\(\Omega\)`)
-
-The DC resistance of the coil of wire that the inductor is made up from. You can use this to calculate resistive losses through the inductor. An ideal inductor has no DCR. The DC resistance of an inductor can be easily measured by a good quality multimeter or benchtop Ohm meter.
-
-### Saturation Current
-
-Symbol: `\(I_{sat}\)`
-Units: Amps (`\(A\)`)
-
-This is the most important current rating. Essentially, this is the maximum current the inductor can take before it stops working like an inductor. At higher currents, the inductor becomes much more lossy.
-
-### Rated current
-
-Symbol: `\(I_{rated}\)`
-Units: Amps (`\(A\)`)
-
-This is typically given as the amount of current required to created a fixed temperature rise above ambient due to resistive losses in the copper winding. The temperature rise is usually 40°C.
-
-Be careful when choosing an inductor, normally it's the saturation current which is important, and it can be much lower than the rated current!
-
-Inductors are commonly used as an energy storage component in {{% link text="DC/DC converters" src="/electronics/components/power-regulators" %}}.
-
-## Types Of Inductors
-
-### Ferrite Drum Core Inductors
-
-Ferrite drum core inductors can be optionally shielded. They allow for high saturation currents and high inductances (due to having a large number of turns).
-
-### Toroidal Inductors
-
-### Flat Coil Inductors
-
-Flat coil inductors have a very low profile (height from the surface of the PCB) allowing use in space-constrained designs. Flat coil inductors usually have a low number of turns, resulting in less inductance than ferrite drum core or toroidal inductors. The core is typically made up of powdered iron.
-
-### Metal Composite Inductors
-
-Metal composite inductors (also called _moulded power inductors_) are made with metal powders moulded around copper windings at high pressure.
-
-{{% img src="metal-composite-inductor-construction-kemet-mpx.png" width="300px" caption="Internal construction of a metal composite inductor. Image by Kemet, retrieved from https://media.digikey.com/pdf/Data%20Sheets/Kemet%20PDFs/MPXV_Series_DS.pdf on 2020-11-30." %}}
-
-### Air-cored Inductors
-
-Air-cored inductors represent any inductor which contains no ferromagnetic material. This means that "air-cored" inductors also covers a range of inductors which use an insulator instead of air for the core, which includes materials such as glass or PTFE.
-
-**Advantages**
-
-* Unlike a ferro-magnetic cored inductor, an air-cored inductors **inductance does not vary with the amount current that is flowing with it**. Ferromagnetic cores work fine up until a point at which they **saturate**.
-* Air-cores do not have any iron losses. This advantage becomes more significant with increasing frequency.
-
-**Disadvantages**
-
-* Air-cored inductors have to have more  and/or larger turns to achieve the same inductance value as a ferro-magnetic core. This is because **ferro-magnetic cores have a higher permeability than air**.
-* Air-cored inductors radiate more electromagnetic fields over a wider area, and also pick up more radiation. This is because ferro-magnetic-cores constrain the magnetic field lines better.
-
-## Ferrite Beads
-
-See the {{% link text="Ferrite Beads page" src="/electronics/components/ferrite-beads" %}}.
-
 ## Inductor Kickback
 
 Inductor kickback is when an inductor the current through an inductor is quickly stopped, usually by making an open circuit. Because inductors "want to keep the current flowing", they generate a very large voltage spike in attempt to keep the current going. This large voltage spike can jump switch gaps, fry MOSFETs, destroy other sensitive circuitry, and give people dangerous shocks.
@@ -318,6 +309,13 @@ There are usually two maximum current ratings on an inductor's datasheet, the sa
 
 Confusing? The most simple Simon design approach is to pick the lower maximum current of the two and treat that as the maximum current allowed through the inductor. A seasoned inductor sensei will realise that the rated current is not applicable to short current peaks, and so it is safe to exceed this for brief periods of time, as long as the saturation current is not exceeded (disclaimer: in some cases, even exceeding the saturation current limit is o.k. or even desirable, but see the Saturation Current section for more info on this.
 
+## Manufacturer Part Numbers
+
+* **DR1050**: Series of inductors by Eaton (previously Cooper Bussmann).
+* **NRx**: Popular series of inductors from Taiyo Yuden. `x` denotes the coating resin, options are `NR`, `NRH`, `NRS` and `NRV`. The series contains a number of different SMD package sizes and inductances.
+
 ## Inductor Packages
+
+Unfortunately for the PCB designer, almost all SMD inductor packages are non-standard and unique to the manufacturer and series.
 
 {{< img src="ipc-sm-782-component-dimensions-for-smd-inductors.png" width="709px" caption="Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard." >}}

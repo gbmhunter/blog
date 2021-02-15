@@ -14,7 +14,7 @@ type: "page"
 
 A _MOSFET_ (big breath now...it stands for..._Metal-Oxide-Semiconductor Field-Effect-Transformer_) is a **three-pin active semi-conductor device**, used frequently in electronics design. In the most basic sense, they can be thought of as a **voltage controlled switch** that can turn things on and off (or partially on!).
 
-MOSFETs should not be confused with similar but different semiconductor devices such as _MODFETs_ (modulation-doped FETs) or _MESFETs_ (metal-semiconductor FETs).
+MOSFETs should not be confused with similar but different semiconductor devices such as _MODFETs_ (modulation-doped FETs) or _MESFETs_ (metal-semiconductor FETs). Depletion-mode MOSFETs are closely related to their sibling JFETs.
 
 ## Uses
 
@@ -25,7 +25,7 @@ MOSFETs should not be confused with similar but different semiconductor devices 
 * Current regulating shunts (with feedback)
 * {{% link text="Switch-mode PSUs" src="/electronics/components/power-regulators" %}}
 
-## Schematic Symbols
+## Types And Schematic Symbols
 
 Unfortunately for the keen circuit designer learning about MOSFETs, there is a dizzying variety of MOSFET symbols in use, owing to the fact that there are a larger number of different MOSFET types, and that no one can agree on a single standard. This section will walk you through all the various types. Firstly, shown below is the commonly used schematic symbols for enhancement and depletion mode MOSFETs, showing both the N-channel and P-channel variant for each mode.
 
@@ -35,13 +35,11 @@ The arrow has it's origins from a simple diode, in which the arrow points from t
 
 Sometimes the body connection is removed altogether from the schematic symbol, and a simplified variant as below is used:
 
-TODO: Add image here
+{{% img src="mosfet-schematic-symbols-alternate-style.png" width="500px" caption="An alternative style for a MOSFET symbol. Note the different convention used for the direction of the arrows! There is also no distinction between depletion and enhancement-mode MOSFETs in the alternative style (assume it is enhancement-mode if in doubt)." %}}
 
 Almost all discrete (a.k.a. power) MOSFETs have the substrate (body) connected internally to the source, which reduces the need for 4 leads down to 3. This is also shown in the symbol with the solid line as shown below:
 
 {{% img src="mosfet-symbol-highlighting-substrate-to-source-connection.png" width="500px" caption="Schematic symbol of a N-channel enhancement-mode MOSFET highlighting the built-in short between the substrate (body) and source of the MOSFET present in almost all discrete (aka power) MOSFETs." %}}
-
-{{% img src="mosfet-schematic-symbols-alternate-style.png" width="500px" caption="An alternative style for a MOSFET symbol. Note the different convention used for the direction of the arrows! There is also no distinction between depletion and enhancement-mode MOSFETs in the alternative style (assume it is enhancement-mode if in doubt)." %}}
 
 MOSFETs inside ICs do not normally have the substrate connected to the source, an are instead drawn as four pin devices, of which the additional fourth pin is connected to the substrate. For N-channel MOSFETs this is typically connected to the negative voltage rail (e.g. `\(0V\)`), and for P-channel MOSFETs it is connected to the positive voltage rail (e.g. `\(V_{DD}\)`). Note also that as soon as you disconnect the substrate from the source, the drain and source pins no longer have any differences, i.e. they can be interchanged and the device will still work as expected.
 
@@ -53,37 +51,23 @@ Note that with all voltage parameters that mention two pins of a MOSFET (e.g. `\
 
 Sorted by alphabetical order, including subscripts.
 
-<table>
-  <thead>
-    <tr>
-      <th>Symbol</th>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>\(R_{DS(on)}\)</td>
-      <td>On-state drain-source resistance.</td>
-      <td>The resistance between drain and source when the MOSFET is turned on with a strong gate drive and low \(V_{DS}\) (hence in the linear, Ohmic region of operation). Usually around 1-10Ω for smaller MOSFETs, and can be as low as 1mΩ for larger power MOSFETs.</td>
-    </tr>
-    <tr>
-      <td>\(V_{DS(max)}\)</td>
-      <td>Maximum drain-source voltage.</td>
-      <td>The maximum allowed voltage between the drain and source. A higher voltage can cause the MOSFET to breakdown.</td>
-    </tr>
-    <tr>
-      <td>\(V_{GS(max)}\)</td>
-      <td>Maximum gate-source voltage</td>
-      <td>The maximum allowed gate-source voltage. Voltages above this may destroy the MOSFET due to gate punch-through.</td>
-    </tr>
-    <tr>
-      <td>\(V_{GS(th)}\)</td>
-      <td>Threshold voltage.</td>
-      <td>The voltage between the gate-source at which the MOSFET begins to turn on.  The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet.</td>
-    </tr>
-  </tbody>
-</table>
+### Rds(on)
+
+`\(R_{DS(on)}\)` is the _on-state drain-source resistance_. The resistance between drain and source when the MOSFET is turned on with a strong gate drive and low `\(V_{DS}\)` (hence in the linear, Ohmic region of operation). Usually around `\(1-10\Omega\)` for smaller MOSFETs, and can be as low as `\(1m\Omega\)` for larger power MOSFETs. `\(R_{DS(on)}\)` is roughly linear with the maximum drain-source voltage of the MOSFET. For this reason BJTs or IGBTs (which both have a BJT like output) are instead preferred for high-voltage high-current applications, when the voltage starts to exceed 400V.
+
+### Vds(max)
+
+`\(V_{DS(max)}\)` is the _maximum drain-source voltage_. It is the maximum allowed voltage between the drain and source. A higher voltage can cause the MOSFET to breakdown. This is commonly just called the _voltage rating_ of the MOSFET, as it describes the maximum voltage it can withstand between it's "switching" terminals.
+
+### Vgs(max)
+
+`\(V_{GS(max)}\)` is the _absolute maximum gate-source voltage_ (aka _gate-source breakdown voltage_). Voltages above this may irreversibly destroy the MOSFET. This is due to the very thin gate-oxide layer (100nm thick, or less!) that separates the gate from the MOSFET channel, which is easily destroyed by a "high" voltage. This can be called _oxide breakdown_. `\(V_{GS(max)}\)` is very commonly `\(\pm 20V\)` for a huge variety of MOSFET families.
+
+Because of the very high impedance of the gate pin, MOSFET devices are very sensitive to static electricity. Especially so when not soldered into any circuitry. It does not take much charge on the gate to exceed the max. gate-source voltage and destroy the MOSFET. Anti-static precautions are recommended when handling individual MOSFETs (i.e. anti-static mats, discharge wrist straps).
+
+### Vgs(th)
+
+`\(V_{GS(th)}\)` is the _gate-source threshold voltage_ (or just _threshold voltage_). The voltage between the gate-source at which the MOSFET begins to turn on. The point at which it "begins to turn on" is defined by the manufacturer and should be mentioned in the datasheet. Typically is is a certain drain current, e.g. `\(1uA\)`.
 
 ## How To Use Them?
 
