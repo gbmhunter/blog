@@ -4,8 +4,8 @@ categories: [ "Electronics", "Components" ]
 date: 2011-09-03
 description: "Schematic symbol, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."
 draft: false
-lastmod: 2021-02-11
-tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate", "SOA diagram" ,"safe operating area", "thermal limits", "Spirito effect" ]
+lastmod: 2021-02-16
+tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate", "SOA diagram" ,"safe operating area", "thermal limits", "Spirito effect", "common-source amplifier" ]
 title: "MOSFETs"
 type: "page"
 ---
@@ -147,13 +147,15 @@ A name (it stands for protected-FET) used by [Siemens](http://www.siemens.com) a
 
 Trench MOSFETs give a very low `\( R_{DS(on)} \)` per unit silicon area.
 
-## Load Switching
+## MOSFET Applications
+
+### Load Switching
 
 MOSFETs can be used for load switches, as shown on the {{% link text="Load Switches page" src="/electronics/circuit-design/power-management/load-switches" %}}. They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
 
 {{% figure src="/electronics/circuit-design/power-management/load-switches/bjt-current-source-to-turn-p-channel-on.png" width="500px" caption="Schematic example of load switching with a P-channel MOSFET. See the Load Switches page for more info." %}}
 
-## Isolated Gate Drives
+### Isolated Gate Drives
 
 One problem with MOSFETS (well, with any switched semiconductor) is dealing with the gate drive when either:
 
@@ -164,17 +166,23 @@ In these cases, the gate drive has to be **isolated**.
 
 [IRF - Application Note AN-937 - Gate Drive Characteristics And Requirements for HEXFET Power MOSFETs](http://www.irf.com/technical-info/appnotes/an-937.pdf) is a great article on isolated gate drive techniques.
 
+### Amplifiers
+
+#### Common-Source Enhancement-mode MOSFET Amplifier
+
+A _common-source enhancement-mode MOSFET amplifier_ is a basic MOSFET-based amplifier. The most popular variant is based of an N-channel enhancement-mode MOSFET (although you can make common-source amplifiers with P-channels too!), in which the source is grounded. It is **called a "common-source" amplifier because the source is a shared (common) terminal between the input and output**. It is closely related to the BJT common-emitter amplifier. Like the common-emitter amplifier, it is an inverting amplifier.
+
+{{% img src="common-source-amplifier.svg" width="500px" caption="Schematic of a basic common-mode N-channel MOSFET amplifier." %}}
+
 ## Internal Diodes
 
-Because any PN junction is inherently a diode, a regular MOSFET has two of them.
-
-One of the diodes is removed when the substrate is connected to the source.
+Because any PN junction is inherently a diode, a regular MOSFET has two of them. One of the diodes is removed when the substrate is connected to the source.
 
 ## The Internal BJT
 
 So know we know that MOSFETs naturally have two internal diodes, did you know they also contain a BJT. The source-substrate-drain layers form either an NPN or PNP BJT. You don't normally have to worry about this "parasitic" element.
 
-CMOS devices have PNPN structures. This forms a parasitic thyristor, which can cause latchup.
+CMOS devices have PNPN structures. This forms a parasitic thyristor, which can cause latch-up.
 
 ## The Body Effect (aka The Substrate Bias Effect)
 
