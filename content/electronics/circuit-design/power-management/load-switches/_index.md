@@ -1,8 +1,11 @@
 ---
 author: "gbmhunter"
+categories: [ "Electronics", "Circuit Design" ]
 date: 2013-11-08
+description: "Schematics, circuit explanations, equations and more info on load switches."
 draft: false
-lastmod: 2021-02-15
+lastmod: 2021-02-16
+tags: [ "electronics", "circuit design", "load switches", "MOSFETs", "BJTs", "power supplies", "loads", "current sinks", "ICs" ]
 title: "Load Switches"
 type: "page"
 ---
@@ -11,7 +14,7 @@ type: "page"
 
 The following image shows a {{% link text="MOSFET" src="/electronics/components/transistors/mosfets" %}} based high-side switch:
 
-{{< img src="high-side-mosfet-load-switch-schematic.png" width="678px" caption="A high-side load switch made from a N-Channel and P-Channel MOSFET."  >}}
+{{< img src="high-side-mosfet-load-switch-schematic.png" width="678px" caption="A high-side load switch made from a N-Channel and P-Channel MOSFET." >}}
 
 ### BJT Current Sink Driving P-Channel MOSFET Load Switch
 
@@ -37,6 +40,7 @@ V_{GS}  &= -I \cdot R_1 \\
         &= -10V
 \end{align}</p>
 
+`\(R_G\)` is added as good standard practise to limit gate current and gate voltages. In the above example, `\(V_{IN}\)` can vary from approx. 11V right up to the maximum allowed drain-source or collector-emitter voltages (for example, `\(48V\)`), whilst keeping `\(V_{GS} = -10V\)`.
 
 ## IC Based
 

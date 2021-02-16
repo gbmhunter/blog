@@ -152,6 +152,7 @@ This is another footnote[^foot-2].
 ## Colors
 
 Blue: `#3465a4`
+Orange: `#ea7500`
 
 ## Other
 
