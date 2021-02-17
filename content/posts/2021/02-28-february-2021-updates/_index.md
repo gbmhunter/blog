@@ -16,4 +16,4 @@ type: "post"
 
 * Added {{% link text="schematics, explanations and equations" src="/electronics/circuit-design/power-management/load-switches" %}} for a P-channel load switch which is turned on by a BJT current-sink.
 
-    {{% figure src="/electronics/circuit-design/power-management/load-switches/bjt-current-source-to-turn-p-channel-on.png" width="500px" %}}
+    {{% figure src="/electronics/circuit-design/power-management/load-switches/bjt-current-source-to-turn-p-channel-on.svg" width="500px" %}}
