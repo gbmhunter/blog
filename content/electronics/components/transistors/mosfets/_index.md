@@ -153,7 +153,7 @@ Trench MOSFETs give a very low `\( R_{DS(on)} \)` per unit silicon area.
 
 MOSFETs can be used for load switches, as shown on the {{% link text="Load Switches page" src="/electronics/circuit-design/power-management/load-switches" %}}. They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
 
-{{% figure src="/electronics/circuit-design/power-management/load-switches/bjt-current-source-to-turn-p-channel-on.png" width="500px" caption="Schematic example of load switching with a P-channel MOSFET. See the Load Switches page for more info." %}}
+{{% figure src="/electronics/circuit-design/power-management/load-switches/bjt-current-source-to-turn-p-channel-on.svg" width="500px" caption="Schematic example of load switching with a P-channel MOSFET. See the Load Switches page for more info." %}}
 
 ### Isolated Gate Drives
 

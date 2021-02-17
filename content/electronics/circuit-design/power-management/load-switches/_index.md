@@ -22,7 +22,7 @@ A simple resistor divider can be used to provide the correct `\(V_{GS}\)` to tur
 
 A better option in this case is to use a BJT current sink to set the desired `\(V_{GS}\)` across a resistor, as shown in the following diagram:
 
-{{% img src="bjt-current-source-to-turn-p-channel-on.png" width="500px" caption="Rather than using a simple resistor divider to provide the necessary gate-source voltage to turn on a P-channel load switch, you can use a BJT current sink, which has the added benefit of providing a constant Vgs over a wide range of input voltages." %}}
+{{% img src="bjt-current-source-to-turn-p-channel-on.svg" width="700px" caption="Rather than using a simple resistor divider to provide the necessary gate-source voltage to turn on a P-channel load switch, you can use a BJT current sink, which has the added benefit of providing a constant Vgs over a wide range of input voltages." %}}
 
 We assume the BJT is switched with `\(+3.3V\)` coming from a microcontroller or similar. The BJT is configured to be a simple current sink, with the current given by:
 
