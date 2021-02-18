@@ -24,7 +24,7 @@ A better option in this case is to use a BJT current sink to set the desired `\(
 
 {{% img src="bjt-current-source-to-turn-p-channel-on.svg" width="700px" caption="Rather than using a simple resistor divider to provide the necessary gate-source voltage to turn on a P-channel load switch, you can use a BJT current sink, which has the added benefit of providing a constant Vgs over a wide range of input voltages." %}}
 
-We assume the BJT is switched with `\(+3.3V\)` coming from a microcontroller or similar. The BJT is configured to be a simple current sink, with the current given by:
+We assume the BJT (`\(Q_1\)`) is switched with `\(+3.3V\)` coming from a microcontroller or similar. The BJT is configured to be a simple current sink, with the current given by:
 
 <p>\begin{align}
 I_C &= \frac{V_B - 0.7V}{R_E} \\
@@ -32,7 +32,7 @@ I_C &= \frac{V_B - 0.7V}{R_E} \\
     &= 1mA
 \end{align}</p>
 
-This current goes through `\(R_1\)`, which provides the necessary `\(V_{GS}\)` to turn the P-channel MOSFET on:
+This current goes through `\(R_1\)`, which provides the necessary `\(V_{GS}\)` to turn the P-channel MOSFET (`\(Q_2\)`) on:
 
 <p>\begin{align}
 V_{GS}  &= -I \cdot R_1 \\

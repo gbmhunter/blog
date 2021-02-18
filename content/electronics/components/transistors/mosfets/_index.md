@@ -2,10 +2,10 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Components" ]
 date: 2011-09-03
-description: "Schematic symbol, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."
+description: "Schematic symbols, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."
 draft: false
-lastmod: 2021-02-16
-tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate", "SOA diagram" ,"safe operating area", "thermal limits", "Spirito effect", "common-source amplifier" ]
+lastmod: 2021-02-18
+tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate", "SOA diagram" ,"safe operating area", "thermal limits", "Spirito effect", "common-source amplifier", "HEMT" ]
 title: "MOSFETs"
 type: "page"
 ---
@@ -27,23 +27,31 @@ MOSFETs should not be confused with similar but different semiconductor devices 
 
 ## Types And Schematic Symbols
 
-Unfortunately for the keen circuit designer learning about MOSFETs, there is a dizzying variety of MOSFET symbols in use, owing to the fact that there are a larger number of different MOSFET types, and that no one can agree on a single standard. This section will walk you through all the various types. Firstly, shown below is the commonly used schematic symbols for enhancement and depletion mode MOSFETs, showing both the N-channel and P-channel variant for each mode.
+### Enhancement-Mode
 
-{{% img src="mosfet-schematic-symbols-enhancement-and-depletion-modes-n-ch-p-ch.png" caption="One form of schematic symbol and pin names for enhancement mode and depletion mode MOSFETs, each showing the N-channel and P-channel types." width="700px" %}}
+Unfortunately for the keen circuit designer learning about MOSFETs, there is a dizzying variety of MOSFET symbols in use, owing to the fact that there are a larger number of different MOSFET types, and that no one can agree on a single standard. This section will walk you through all the various types. Firstly, shown below is the commonly used schematic symbols for enhancement-mode MOSFETs, showing both the N-channel and P-channel variant.
 
-The arrow has it's origins from a simple diode, in which the arrow points from the P-type substrate to the N-type substrate (which is also the direction of conventional current flow through a diode). Some people/CAD programs may omit the outer circle to reduce the "noisyness" of the above symbols.
+{{% img src="mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch.svg" caption="Schematic symbols for enhancement-mode N-channel and P-channel MOSFETs. D=drain, S=source, G=gate. This is one of the most popular variants of symbol for these device types, and contains the most information (e.g. shows the body diode, so you can't forget it exists when designing your circuit!)." width="700px" %}}
 
-Sometimes the body connection is removed altogether from the schematic symbol, and a simplified variant as below is used:
+The arrow has it's origins from a simple diode, in which the arrow points from the P-type substrate to the N-type substrate (which is also the direction of conventional current flow through a diode). Sometimes an **outer circle is added to the above symbols**, since a MOSFET is a transistor and by convention transistors are drawn with circles (e.g. think about a BJT symbol). However this has been omitted from the above symbols as it does contribute somewhat to the "noisyness", I find the circle-less symbol much cleaner. Totally a personal preference though.
 
-{{% img src="mosfet-schematic-symbols-alternate-style.png" width="500px" caption="An alternative style for a MOSFET symbol. Note the different convention used for the direction of the arrows! There is also no distinction between depletion and enhancement-mode MOSFETs in the alternative style (assume it is enhancement-mode if in doubt)." %}}
+### Depletion-Mode
 
-Almost all discrete (a.k.a. power) MOSFETs have the substrate (body) connected internally to the source, which reduces the need for 4 leads down to 3. This is also shown in the symbol with the solid line as shown below:
+{{% img src="mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.svg" width="700px" %}}
 
-{{% img src="mosfet-symbol-highlighting-substrate-to-source-connection.png" width="500px" caption="Schematic symbol of a N-channel enhancement-mode MOSFET highlighting the built-in short between the substrate (body) and source of the MOSFET present in almost all discrete (aka power) MOSFETs." %}}
+### Alternate Style #1
 
-MOSFETs inside ICs do not normally have the substrate connected to the source, an are instead drawn as four pin devices, of which the additional fourth pin is connected to the substrate. For N-channel MOSFETs this is typically connected to the negative voltage rail (e.g. `\(0V\)`), and for P-channel MOSFETs it is connected to the positive voltage rail (e.g. `\(V_{DD}\)`). Note also that as soon as you disconnect the substrate from the source, the drain and source pins no longer have any differences, i.e. they can be interchanged and the device will still work as expected.
+Sometimes the body connection, body diode and enhancement/depletion mode indicators are removed altogether from the schematic symbol, and a simplified set of symbols as below are used:
+
+{{% img src="mosfet-schematic-symbols-simplified-style-n-ch-p-ch.svg" width="800px" caption="An simplified/alternate style for a MOSFET symbol. Note the different convention used for the direction of the arrows! There is also no distinction between depletion and enhancement-mode MOSFETs in the alternative style (assume it is enhancement-mode if in doubt)." %}}
+
+### Alternate Style #2
 
 The difference between N-channel and P-channel MOSFETs may be instead distinguished by adding a inverting-style circle on the gate pin, this symbolises that, in a way, a P-channel is the inverse of the more typical/standard N-channel.
+
+### CMOS 4-pin MOSFETS
+
+MOSFETs inside ICs do not normally have the substrate connected to the source, an are instead drawn as four pin devices, of which the additional fourth pin is connected to the substrate. For N-channel MOSFETs this is typically connected to the negative voltage rail (e.g. `\(0V\)`), and for P-channel MOSFETs it is connected to the positive voltage rail (e.g. `\(V_{DD}\)`). Note also that as soon as you disconnect the substrate from the source, the drain and source pins no longer have any differences, i.e. they can be interchanged and the device will still work as expected.
 
 ## Important Parameters
 
@@ -73,7 +81,7 @@ Because of the very high impedance of the gate pin, MOSFET devices are very sens
 
 The amount of current through the drain-source in controlled by a voltage on the gate. To make a basic switch, you can insert an N-Channel MOSFET between the load and ground. The source is connected to ground, and the drain to the negative terminal of the load. If the gate is given 0V (aka connected to ground), the switch will be off. If significantly more than `\(V_{GS(th)}\)` is applied to the gate, the MOSFET will fully turn on (conduct current), and the load will get power.
 
-P-channels work in a similar manner to N-channels, the difference being that a negative `\(V_{GS}\)` has to be applied to turn them off (that is, the voltage on the gate has to be less than that on the source). This results in them commonly being used for high-side switching, in where the source is connected to Vcc, the drain to the load, and the gate voltage pulled low to turn it on, or pulled-up to `\(V_{cc}\)` to turn it off.
+P-channels work in a similar manner to N-channels, the difference being that a negative `\(V_{GS}\)` has to be applied to turn them off (that is, the voltage on the gate has to be less than that on the source). This results in them commonly being used for high-side switching, in where the source is connected to `\(V_{CC}\)`, the drain to the load, and the gate voltage pulled low to turn it on, or pulled-up to `\(V_{CC}\)` to turn it off.
 
 **In any case, do not leave the MOSFET gate floating**. Since it has a very high impedance input, if the gate is not driven, then noise can change the voltage on the gate, and cause the MOSFET to conduct/have undefined behaviour.
 
@@ -87,9 +95,9 @@ The _linear_ and _saturation_ region of a MOSFET are easy to get mixed up, and c
 
 ## Leakage Current
 
-Leakage current is an important parameter to consider when you are using the MOSFET for switching on-and-off other circuitry in a low power design. MOSFET have both a gate-to-source and a drain-to-source leakage current. Typically the drain-to-source leakage current is 10x greater than the gate-to-source leakage current. The drain-to-source leakage current increases greatly with an increase in temperature. Typical values at 25°C are 100nA for the gate-to-source leakage current and 1uA for the drain-to-source leakage current.
+Leakage current is an important parameter to consider when you are using the MOSFET for switching on-and-off other circuitry in a low power design. MOSFET have both a gate-to-source and a drain-to-source leakage current. Typically the drain-to-source leakage current is 10x greater than the gate-to-source leakage current. The drain-to-source leakage current increases greatly with an increase in temperature. Typical values at 25°C are `\(100nA\)` for the gate-to-source leakage current and `\(1uA\)` for the drain-to-source leakage current.
 
-If you need lower leakage currents that what you can achieve with a MOSFET, try using a J-FET. They have typical leakage currents of 1-10nA.
+If you need lower leakage currents that what you can achieve with a MOSFET, try using a J-FET. They have typical leakage currents of `\(1-10nA\)`.
 
 ## Failure Modes
 
@@ -111,7 +119,7 @@ This means that MOSFETs can share current with each other easily. The positive t
 
 ## Dead-Time
 
-Dead-time is a technique which is commonly applied to MOSFET driving when the MOSFETs are in a H-Bridge (or half-bridge) configuration. Dead-time is the time between when one MOSFET(s) is turned off and another MOSFET(s) is turned on. It is used to prevent **shoot-through**, which is when two MOSFETs on the same leg of a H-bridge are on at the same time, creating a direct short between `\(V_{cc}\)` and `\(GND\)`. Shoot-through occurs because of the turn-off delay time of a MOSFET.
+Dead-time is a technique which is commonly applied to MOSFET driving when the MOSFETs are in a H-Bridge (or half-bridge) configuration. Dead-time is the time between when one MOSFET(s) is turned off and another MOSFET(s) is turned on. It is used to prevent **shoot-through**, which is when two MOSFETs on the same leg of a H-bridge are on at the same time, creating a direct short between `\(V_{CC}\)` and `\(GND\)`. Shoot-through occurs because of the turn-off delay time of a MOSFET.
 
 ## Turn On/Turn Off Times
 
@@ -136,6 +144,8 @@ FinFETs are multi-fin FETs which overcome issues once MOSFET approach very small
 A trademarked name by Fairchild used to label some of their fast-recovery MOSFETs used in inverter and [BLDC controller](/electronics/circuit-design/bldc-motor-control) design
 
 ### HEMT
+
+The _high-electron-mobility transistor_ (HEMT) is not technically as MOSFET, but is very closely related. It is a field-effect transistor which contains a junction between two materials with different band gaps[^wikipedia-hemt].
 
 ### LDMOS (Laterally-Diffused MOSFETs)
 
@@ -173,6 +183,8 @@ In these cases, the gate drive has to be **isolated**.
 A _common-source enhancement-mode MOSFET amplifier_ is a basic MOSFET-based amplifier. The most popular variant is based of an N-channel enhancement-mode MOSFET (although you can make common-source amplifiers with P-channels too!), in which the source is grounded. It is **called a "common-source" amplifier because the source is a shared (common) terminal between the input and output**. It is closely related to the BJT common-emitter amplifier. Like the common-emitter amplifier, it is an inverting amplifier.
 
 {{% img src="common-source-amplifier.svg" width="500px" caption="Schematic of a basic common-mode N-channel MOSFET amplifier." %}}
+
+The huge problem with the above circuit is the non-linearity. 
 
 ## Internal Diodes
 
@@ -311,3 +323,4 @@ Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.
 [^infineon-mosfet-safe-operating-diagram]: <https://www.infineon.com/dgdl/Infineon-ApplicationNote_Linear_Mode_Operation_Safe_Operation_Diagram_MOSFETs-AN-v01_00-EN.pdf?fileId=db3a30433e30e4bf013e3646e9381200>
 [^electronic-design-the-spirito-effect]: <https://www.electronicdesign.com/power-management/article/21795492/the-spirito-effect-improved-my-designand-i-didnt-even-know-it#:~:text=Known%20as%20the%20Spirito%20Effect,trench%20devices%20are%20particularly%20impacted>
 [^semantic-scholar-dmos]: <https://www.semanticscholar.org/paper/Diffusion-Selfaligned-MOST%3B-A-New-Approach-for-High-Tarui-Hayashi/c4ad0fa7b03e080cc027545f7152caa28633fa9a>
+[^wikipedia-hemt]: <https://en.wikipedia.org/wiki/High-electron-mobility_transistor>, accessed 2021-02-18.
