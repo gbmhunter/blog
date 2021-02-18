@@ -6,10 +6,13 @@ MathJax.Hub.Config({
 });
 </script>
 
+<!-- Make sure to use the CommonHTML renderer rather than the HTML-CSS renderer, as the latter
+causes slight rendering issues including padding problems with surrounding text -->
 <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
     MathJax.Hub.Config({
       extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+      jax: ["input/TeX", "output/HTML-CSS"],
       TeX: {
         Macros: {
           // Define macros here that can be used site-wise
@@ -34,11 +37,9 @@ MathJax.Hub.Config({
       // This only occurs on the initial render, so if the page width is changed by user,
       // the equation may still overflow the page.
       CommonHTML: { linebreaks: { automatic: true } },
-      "HTML-CSS": { linebreaks: { automatic: true } },
-      SVG: { linebreaks: { automatic: true } }
+      // "HTML-CSS": { linebreaks: { automatic: true } },
+      // SVG: { linebreaks: { automatic: true } }
     });
-
-    console.log('heheheh')
 
     MathJax.Hub.Queue(function() {
       // Fix <code> tags after MathJax finishes running. This is a
