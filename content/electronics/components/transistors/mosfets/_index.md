@@ -37,7 +37,15 @@ The arrow has it's origins from a simple diode, in which the arrow points from t
 
 ### Depletion-Mode
 
+Although not as popular as enhancement-mode MOSFETs, depletion-mode MOSFETs are a very important MOSFET type. They are typically distinguished on schematics from enhancement-mode types by drawing a solid line rather than a dashed line for the channel, as shown in the below figure:
+
 {{% img src="mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.svg" width="700px" %}}
+
+The easiest way to show the difference between enhancement and depletion-mode MOSFETs is to plot a `\(V_{GS}\)` vs. `\(I_D\)` graph as shown below:
+
+{{% img src="vgs-vs-id-enhancement-and-depletion-mode.svg" width="700px" caption="Vgs vs. Id for enhancement-mode and depletion-mode N-channel MOSFETs. Fictional example (not based from real data)." %}}
+
+The curve for the depletion-mode MOSFET is shown on the left. As you can see, the device is OFF (not conducting current) when `\(V_{GS}\)` is around `\(-4V\)` and is well and truly on when `\(V_{GS}\)` gets to `\(0V\)`. In comparison, the enhancement-mode MOSFET is fully off when `\(V_{GS} = 0V\)`, and takes around `\(+3V\)` before it starts conducting. 
 
 ### Alternate Style #1
 
