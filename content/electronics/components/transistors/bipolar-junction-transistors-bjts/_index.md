@@ -26,13 +26,13 @@ The differences between the NPN and PNP transistor types are analogous to the [N
 
 The schematic symbols for NPN and PNP transistors are shown below:
 
-{{< img src="transistors-pnp-and-npn-schematic-symbols.png" width="498px" caption="Schematics symbols for NPN and PNP transistors. Note that the collector and emitter have flipped positions for the PNP, as commonly drawn on schematics." >}}
+{{< img src="bjt-schematic-symbols-npn-pnp.svg" width="800px" caption="Schematics symbols for NPN and PNP transistors. Note that the collector and emitter have flipped positions for the PNP, as commonly drawn on schematics." >}}
 
 Notice that the collector and emitter have been flipped for the PNP (compared to the NPN), this is how they are normally drawn on schematics.
 
 The **arrow** is always on the **emitter** leg of the BJT. To differentiate between the two, the arrow on the NPN points **away** from the transistor, the arrow on a PNP points **towards** the transistor.
 
-Sometimes you will see the transistors drawn with **circles** around them, they represent exactly the same thing as the symbols above.
+Sometimes you will see the transistors drawn without the **circles** around them, they represent exactly the same thing as the symbols above.
 
 ## How They Work
 
@@ -78,7 +78,7 @@ The common collector amplifier topology is also known as a _emitter follower amp
 
 {{< img src="basic-common-collector-bjt-amplifier-schematic.png" width="640px" caption="The basic schematic of a common-collector BJT amplifier."  >}}
 
-The output voltage is almost equal to the input voltage, except for an approximately 0.7V diode drop. This means that the amplifier has a voltage gain of almost unity (1), or `\(0dB\)`.
+The output voltage is almost equal to the input voltage, except for an approximately `\(0.7V\)` diode drop. This means that the amplifier has a voltage gain of almost unity (1), or `\(0dB\)`.
 
 <p>$$ v_{out} = v_{in} - 0.7V $$</p>
 
@@ -92,19 +92,19 @@ BJTs can be configured to sink a relatively constant amount of current which is 
 
 {{< img src="constant-current-bjt-based-led-driver.png" width="465px" caption="The simulation schematic for a constant-current BJT-based LED driver."  >}}
 
-The above schematic was designed to drive the LED with 10mA of current when the BJT was driven from a microcontroller running at +3.3V. Since +3.3V is applied to the base of the NPN transistor, the transistor will always turn on just enough so that the voltage at the emitter is 0.7V less, e.g.
+The above schematic was designed to drive the LED with 10mA of current when the BJT was driven from a microcontroller running at `\(+3.3V\)`. Since `\(+3.3V\)` is applied to the base of the NPN transistor, the transistor will always turn on just enough so that the voltage at the emitter is `\(0.7V\)` less, e.g.
 
 <p>$$ V_e = V_b - 0.7V $$</p>
 
-Since we know the emitter voltage is going to be +2.6V, we can choose the right resistor, `\(R_1\)` to get the LED current we desire (remember that the current out of the emitter is pretty much equal to the current into the collector).
+Since we know the emitter voltage is going to be `\(+2.6V\)`, we can choose the right resistor, `\(R_1\)` to get the LED current we desire (remember that the current out of the emitter is pretty much equal to the current into the collector).
 
 <p>$$ R_1 = \frac{V_e}{I_{LED}} $$</p>
 
 So if we want a LED current of 10mA, that means we need `\(R1 = 260\Omega\)`. The closest E12 value is `\(270\Omega\)`.
 
-Notice how the LED current is independent of the +12V. The +12V can change to say, +9V and the LED current will still be 10mA. The current draw from the microcontroller into the base of the transistor will be very low (somewhere around 100uA).
+Notice how the LED current is independent of the `\(+12V\)`. The `\(+12V\)` can change to say, `\(+9V\)` and the LED current will still be `\(10mA\)`. The current draw from the microcontroller into the base of the transistor will be very low (somewhere around `\(100uA\)`).
 
-Below are the simulation results for the above schematic, showing the LED current to be indeed 10mA. It works!
+Below are the simulation results for the above schematic, showing the LED current to be indeed `\(10mA\)`. It works!
 
 {{< img src="constant-current-bjt-based-led-driver-simulation-results.png" width="1691px" caption="The simulation results of a constant-current BJT-based LED driver." >}}
 
