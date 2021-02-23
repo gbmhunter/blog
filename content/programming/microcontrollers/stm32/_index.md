@@ -3,8 +3,8 @@ author: "gbmhunter"
 date: 2020-06-19
 description: "Info about the STM32 range of microcontrollers."
 categories: [ "Programming", "Microcontrollers", "STM32" ]
-lastmod: 2020-10-12
-tags: [ "programming", "microcontrollers", "STM32", "STM32F0", "Cortex-M0", "ARM", "STM32CubeIDE", "Nucleo", "STM32WLEx", "LoRa", "LoRaWAN", "ST-LINK/V2", "virtual COM ports", "VCPs" ]
+lastmod: 2021-02-22
+tags: [ "programming", "microcontrollers", "STM32", "STM32F0", "Cortex-M0", "ARM", "STM32CubeIDE", "Nucleo", "STM32WLEx", "LoRa", "LoRaWAN", "ST-LINK/V2", "virtual COM ports", "VCPs", "LoRaWAN" ]
 title: "STM32 Microcontrollers"
 type: "page"
 ---
@@ -84,7 +84,7 @@ Reference schematic for the STM32F030 (just power, clock and programming):
 
 ## STM32WLEx
 
-The `STM32WLEx` is a family of "SoC" microcontrollers featuring a STM32L4 coupled with a wireless radio IC that supports LoRaWAN (both of these are in the same physical IC).
+The `STM32WLEx` is a family of "SoC" microcontrollers featuring a `STM32L4` coupled with a wireless radio IC that supports LoRaWAN (both of these are in the same physical IC).
 
 ## References
 

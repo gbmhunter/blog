@@ -89,7 +89,7 @@ APDs are used in range-finders and optical communications.
 
 ## Bridge Rectifiers
 
-Bridge rectifiers are 4 diodes connected in such a way that they rectify an AC voltage waveform into a DC one. The image below shows a bridge rectifier being used after a transformer to convert 12Vac into 12Vdc. Note that the frequency of the ripple will be twice the AC input frequency (2x 50Hz = 100Hz).
+Bridge rectifiers are 4 diodes connected in such a way that they rectify an AC voltage waveform into a DC one. The image below shows a bridge rectifier being used after a transformer to convert `\(12VAC\)` into `\(12VDC\)`. Note that the frequency of the ripple will be twice the AC input frequency (2x `\(50Hz = 100Hz\)`).
 
 {{< img src="transformer-bridge-recitifier-cap-240vac-to-12vdc.png" width="1232px" caption="A schematic of an AC-DC power-supply that uses a bridge rectifier."  >}}
 
@@ -117,13 +117,13 @@ The short answer: No!
 
 The slightly longer answer...
 
-Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, e.tc e.t.c, until one is conduction almost all the current. This even occurs when the diodes are "identical", due to the fact their will be small differences in any two identical diodes.One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg. They should be identical in resistance and have to drop at least 0.3-0.4V (when the diode has a nominal voltage drop of around 0.7V) to be effective.
+Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, e.tc e.t.c, until one is conduction almost all the current. This even occurs when the diodes are "identical", due to the fact their will be small differences in any two identical diodes.One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg. They should be identical in resistance and have to drop at least `\(0.3-0.4V\)` (when the diode has a nominal voltage drop of around `\(0.7V\)`) to be effective.
 
 ## Zener Diodes
 
 ### Overview
 
-Zener diodes are diodes which have a specified reverse blocking voltage at which they breakdown and begin to conduct. They are similar to TVS diodes, but generally have a more defined and precise breakdown voltage, but a lower power rating. The allows Zeners to be used a shunt-style voltage regulators to power small circuits. Shunt voltage references are similar in concept to zener diodes, except that they are more precise but can't dissipate as much power.
+Zener diodes are diodes which have a specified reverse blocking voltage at which they breakdown and begin to conduct. They are similar to TVS diodes, but generally have a more defined and precise breakdown voltage, but a lower power rating. The allows Zeners to be used a shunt-style voltage regulators to power small circuits and as such, are sometimes called _voltage regulator diodes_. Shunt voltage references are similar in concept to zener diodes, except that they are more precise but can't dissipate as much power.
 
 Uses for zener diodes include:
 
@@ -131,7 +131,7 @@ Uses for zener diodes include:
 * Over-voltage protection for low power applications (use TVS diodes to dissipate high energy voltage spikes)
 * To turn on a sub-circuit once a certain voltage level is reached (e.g. an LED in a simple battery charging circuit)
 
-You can purchase Zeners with a reverse voltage drop as low as 1.8V all the way to above 100V. For voltage drops less than 1.8V, you can stack (i.e. place in series) multiple normal or schottky diodes in forward bias.
+You can purchase Zeners with a reverse voltage drop as low as `\(1.8V\)` all the way to above `\(100V\)`. For voltage drops less than 1.8V, you can stack (i.e. place in series) multiple normal or schottky diodes in forward bias.
 
 ### Schematic Symbols
 
@@ -161,6 +161,9 @@ For more information, see the {{% link text="ESD Protection" src="/electronics/c
 ## Manufacturer Part Numbers
 
 * **1N58xx**: Common Schottky diode family.
+* **BZX384**: Series of Zeners in a SOD-323 package from Nexperia.
+  * **BZX384-B**: ±2% tolerance range.
+  * **BZX384-C**: ±5% tolerance range.
 * **MM3Z**: Family of Zener diodes from Fairchild Semiconductor (now On Semiconductor). 
 * **MMSZ52**: Family of Zener diodes from Diodes Incorporated.
 
