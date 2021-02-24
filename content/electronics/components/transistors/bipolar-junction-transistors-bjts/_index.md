@@ -44,7 +44,12 @@ The bipolar part of their name comes from the fact they conduct by using both ma
 
 ### Gain (hfe)
 
-The gain of a BJT is the ratio between the base current and the collector current.
+The gain of a BJT is the ratio between the base current and the collector current. There are few different gains and symbols used, so it's important to know what exact gain is being talked about:
+
+* `\(h_{fe}\)`: Small-signal gain
+* `\(H_{fe}\)`: DC (large-signal) gain
+
+Temperature has a major influence on the gain of a BJT.
 
 ## Circuit Design Basics With BJTs
 
