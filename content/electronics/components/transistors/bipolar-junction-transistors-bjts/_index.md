@@ -4,7 +4,7 @@ categories: [ "Electronics", "Components", "Transistors" ]
 date: 2015-08-10
 description: "Types, schematic symbols, important parameters, amplifier topologies, and more info about bipolar junction transistors (BJTs)."
 draft: false
-lastmod: 2020-09-07
+lastmod: 2021-02-25
 tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode" ]
 title: "Bipolar Junction Transistors (BJTs)"
 type: "page"
@@ -20,7 +20,7 @@ It was the first type of transistor to ever be mass produced.
 
 BJTs come in two flavours, NPN or PNP. They both have three terminals, the collector (C), the base (B) and the emitter (E).
 
-The differences between the NPN and PNP transistor types are analogous to the [N-Channel and P-Channel MOSFET](/electronics/components/transistors/mosfets) types.
+The differences between the NPN and PNP transistor types are analogous to the {{% link text="N-Channel and P-Channel MOSFET" src="/electronics/components/transistors/mosfets" %}} types.
 
 ## Schematic Symbols
 
@@ -42,14 +42,27 @@ The bipolar part of their name comes from the fact they conduct by using both ma
 
 ## Important Parameters
 
-### Gain (hfe)
+### Beta And Gain (B, hfe)
 
-The gain of a BJT is the ratio between the base current and the collector current. There are few different gains and symbols used, so it's important to know what exact gain is being talked about:
+The gain of a BJT is the ratio between the base current and the collector current (hence it is a _current gain_), typically when measured with the BJT in a common-emitter configuration. There are few different gains and symbols used, so it's important to know what exact gain is being talked about:
 
-* `\(h_{fe}\)`: Small-signal gain
-* `\(H_{fe}\)`: DC (large-signal) gain
+* `\(\beta\)`: DC (large-signal) gain
+* `\(H_{fe}\)` (or `\(h_{FE}\)`): DC (large-signal) gain, part of the H-parameter model (same as `\(\beta\)`)
+* `\(h_{fe}\)`: Small-signal gain, part of the H-parameter model
+
+
+
+<p>$$ I_C = \beta I_B $$</p>
+
+The `\(FE\)` part of the two H-parameter gains represents:
+* `\(F\)`: The _**F**orward_ current amplification
+* `\(E\)`: As measured with the BJT in the _common-**E**mitter_ configuration 
 
 Temperature has a major influence on the gain of a BJT.
+
+### Early Voltage (Va)
+
+
 
 ## Circuit Design Basics With BJTs
 
@@ -144,3 +157,5 @@ By utilizing the voltage regulation hysteresis behaviour of a BJT in reverse act
 ## External References
 
 [This](https://www.youtube.com/watch?v=t0UOSIUve9E) is a great video on two not-so-common transistor biasing configurations.
+
+The you are looking for a slice of history and some informative transistor information, check out the [1964 edition of the GE Transistor Manual](ge-transistor-manual-1964.pdf).
