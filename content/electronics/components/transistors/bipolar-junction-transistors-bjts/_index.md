@@ -5,7 +5,7 @@ date: 2015-08-10
 description: "Types, schematic symbols, important parameters, amplifier topologies, and more info about bipolar junction transistors (BJTs)."
 draft: false
 lastmod: 2021-02-25
-tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode" ]
+tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode", "amplifiers", "common-collector", "common-base", "grounded base" ]
 title: "Bipolar Junction Transistors (BJTs)"
 type: "page"
 ---
@@ -47,10 +47,10 @@ The bipolar part of their name comes from the fact they conduct by using both ma
 The gain of a BJT is the ratio between the base current and the collector current (hence it is a _current gain_), typically when measured with the BJT in a common-emitter configuration. There are few different gains and symbols used, so it's important to know what exact gain is being talked about:
 
 * `\(\beta\)`: DC (large-signal) gain
-* `\(H_{fe}\)` (or `\(h_{FE}\)`): DC (large-signal) gain, part of the H-parameter model (same as `\(\beta\)`)
+* `\(H_{fe}\)` (or `\(h_{FE}\)`): DC (large-signal) gain, part of the H-parameter (Hybrid parameter) model (same as `\(\beta\)`). Also sometimes written as `\(h_{21}\)`
 * `\(h_{fe}\)`: Small-signal gain, part of the H-parameter model
 
-
+All of them depend somewhat other parameters such as collector current and temperature, but typically the gain is treated as a constant. The main thing to remember is **to not expect the current gain to equal an exact number, even between the same BJT transistor from the same manufacturing batch**.
 
 <p>$$ I_C = \beta I_B $$</p>
 
@@ -92,9 +92,9 @@ PNP transistors are good for high-side switching. Although not great at low-side
 
 ### Common Collector
 
-The common collector amplifier topology is also known as a _emitter follower amplifier_.
+The BJT _common-collector_ amplifier is one of the three basic single-stage BJT amplifier topologies. The common collector amplifier topology is also known as a _emitter follower amplifier_.
 
-{{< img src="basic-common-collector-bjt-amplifier-schematic.png" width="640px" caption="The basic schematic of a common-collector BJT amplifier."  >}}
+{{% img src="basic-common-collector-bjt-amplifier-schematic.png" width="640px" caption="The basic schematic of a common-collector BJT amplifier." %}}
 
 The output voltage is almost equal to the input voltage, except for an approximately `\(0.7V\)` diode drop. This means that the amplifier has a voltage gain of almost unity (1), or `\(0dB\)`.
 
@@ -102,7 +102,33 @@ The output voltage is almost equal to the input voltage, except for an approxima
 
 Here is a graph of `\(v_{in}\)` vs. `\(v_{out}\)` for the above circuit:
 
-{{< img src="vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png" width="1418px" caption="Vout vs. Vin for a basic common-collector BJT amplifier."  >}}
+{{% img src="vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png" width="1418px" caption="Vout vs. Vin for a basic common-collector BJT amplifier." %}}
+
+### Common-Base
+
+The BJT _common-base_ (a.k.a. _grounded-base_, and sometimes just abbreviated to _CB_ or _GB_) amplifier is one of the three basic single-stage BJT amplifier topologies. The base of the BJT is connected to ground and shared with the output signal, hence the "common-base". The input signal is fed to the emitter and the output comes from the collector. It is not as popular in discrete low-frequency circuits as the common-collector or common-emitter BJT amplifiers.
+
+A basic schematic of a common-base NPN BJT amplifier is shown below, excluding DC biasing components:
+
+{{% img src="common-base-amplifier.svg" width="400px" caption="Basic schematic of a NPN BJT common-base amplifier. DC biasing componentry is not shown." %}}
+
+Note that the above circuit is not realistic because it does not show the DC biasing componentry, however it is useful to illustrate the basic principle of the amplifier. The following schematic shows a common-base amplifier with the DC biasing component included:
+
+{{% img src="common-base-amplifier-dc-bias.svg" width="700px" caption="Schematic of a NPN BJT common-base amplifier with DC biasing componentry shown." %}}
+
+#### Input Resistance
+
+The small-signal input resistance of the common-base BJT amplifier is equal to:
+
+<p>\begin{align}
+r_{in} &= \frac{v_{in}}{i_{in}} \\
+       &= \frac{v_e}{i_e} \\
+       &= \frac{i_e \cdot (r'e\,||\,R_E)}{i_e}  &\text{Replacing $v_e$} \\
+       &= r'e\,||\,R_E                          &\text{$i_e$'s cancel out}
+\end{align}</p>
+
+
+## Other BJT Circuits
 
 ### Constant-Current Sink
 
