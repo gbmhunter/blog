@@ -4,8 +4,8 @@ categories: [ "Electronics", "Components", "Transistors" ]
 date: 2015-08-10
 description: "Types, schematic symbols, important parameters, amplifier topologies, and more info about bipolar junction transistors (BJTs)."
 draft: false
-lastmod: 2021-02-25
-tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode", "amplifiers", "common-collector", "common-base", "grounded base" ]
+lastmod: 2021-02-26
+tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode", "amplifiers", "common-emitter", "CE", "common-collector", "CC", "common-base", "CB", "grounded base" ]
 title: "Bipolar Junction Transistors (BJTs)"
 type: "page"
 ---
@@ -128,6 +128,14 @@ r_{in} &= \frac{v_{in}}{i_{in}} \\
 \end{align}</p>
 
 
+### Basic Topology Summary
+
+Topology         | Voltage Gain (AV) | Current Gain (AI) | Input Resistance | Output Resistance
+-----------------|-------------------|-------------------|------------------|---------------------
+Common-emitter   | Moderate (-Rc/Re) | Moderate (B)      | High             | High
+Common-collector | Low (approx. 1)   | Moderate (B + 1)  | High             | Low
+Common-base      | High              | Low               | Low              | High
+
 ## Other BJT Circuits
 
 ### Constant-Current Sink
@@ -180,8 +188,12 @@ Multiple emitter BJTs were also used in older (e.g. from the 1960's) RAM. For ex
 
 By utilizing the voltage regulation hysteresis behaviour of a BJT in reverse active mode, it can be used to create a simple single transistor LED blinker
 
-## External References
+## External Resources
 
 [This](https://www.youtube.com/watch?v=t0UOSIUve9E) is a great video on two not-so-common transistor biasing configurations.
 
 The you are looking for a slice of history and some informative transistor information, check out the [1964 edition of the GE Transistor Manual](ge-transistor-manual-1964.pdf).
+
+## References
+
+[^penn-ese319-lecture-notes]: <https://www.seas.upenn.edu/~ese319/Lecture_Notes/Lec_9_CCandCBDesigns_08.pdf>
