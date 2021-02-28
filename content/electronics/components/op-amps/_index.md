@@ -4,8 +4,8 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps)."
 draft: false
-lastmod: 2020-12-25
-tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifier", "inverting", "buffer", "non-inverting", "components", "gain", "voltage follower", "offset nulling", "input offset voltages", "instrumentation amplifiers", "capacitive loading", "current source" ]
+lastmod: 2021-02-28
+tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifiers", "inverting", "buffers", "non-inverting", "components", "gain", "voltage followers", "offset nulling", "input offset voltages", "instrumentation amplifiers", "capacitive loading", "current sources", "quiescent currents", "GBW", "slew rates" ]
 title: "Op-Amps"
 type: "page"
 ---
@@ -234,13 +234,17 @@ The low level output voltage (`\(V_{OL}\)`) defines the lowest voltage which the
 
 ### Slew Rate
 
-Slew rate is another op-amp parameter. It defines the maximum rate the voltage can change with respect to time. In an ideal op-amp, this would be infinite. It has the SI units V/s, and is commonly expressed in uV/s. It can be thought of as the slope of the output waveform if one of the inputs of the input was subjected to a step voltage change. This parameter usually increases as the GBW increases.
+The _slew rate_ of an op-amp defines the **maximum rate the output voltage can change with respect to time**. In an ideal op-amp, this would be infinite. It has the SI units V/s, and is commonly expressed in uV/s. It can be thought of as the slope of the output waveform if one of the inputs of the input was subjected to a step voltage change. 
 
-### Supply Current
+Op-amps have a limited output slew rate due to internal compensation capacitor combined with a finite output drive current. Charing a capacitive output with a constant current (a good approximation) gives a linear increase in voltage (recall that the equation relating voltage to current for a capacitor is `\(i = C \frac{dV}{dt}\)`).
 
-The supply current is generally constant for any supply voltage. It is normally rated as the no-load current. Obviously, if there is a load on the op-amp, the current through the power pins will be the sum of the no load 'supply current' and the current going through the load.
+The **max. slew rate of an op-amp limits the amplitude of output waveforms it can produce at high frequencies without distortion**. This parameter usually increases as the GBW of the op-amp increases. Higher slew rate op-amps also tend to have higher quiescent currents.
 
-Supply currents for standard op-amps are typically between 1.5-4mA. A 'low-power' op-amp has a typical supply current between 0.5-1.5mA (such as the LM258N). Then there are ultra-low power op-amps that only draw 5-20pA (such as the LMC6464). You normally sacrifice slew-rate and gain-bandwidth for ultra-low power.
+### Quiescent Current
+
+The _quiescent current_ (current with no load, device in steady-state) is generally constant over the total rated supply voltage range. Obviously, if there is a load on the op-amp, the current drawn through the power pins (the supply current) will be the sum of the quiescent current and the current going through the load.
+
+Quiescent currents for standard op-amps are typically between 1.5-4mA. A 'low-power' op-amp has a typical quiescent current between 0.5-1.5mA (such as the `LM258N`). Then there are ultra-low power op-amps that only draw 5-20pA (such as the `LMC6464`). You normally sacrifice slew-rate and gain-bandwidth for ultra-low power. Likewise, higher gain-bandwidth and higher slew rate op-amps typically have larger quiescent currents. 
 
 ## Cascading Op-Amps
 

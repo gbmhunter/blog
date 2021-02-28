@@ -5,7 +5,7 @@ date: 2015-08-10
 description: "Types, schematic symbols, important parameters, amplifier topologies, and more info about bipolar junction transistors (BJTs)."
 draft: false
 lastmod: 2021-02-26
-tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode", "amplifiers", "common-emitter", "CE", "common-collector", "CC", "common-base", "CB", "grounded base" ]
+tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode", "amplifiers", "common-emitter", "CE", "common-collector", "CC", "common-base", "CB", "grounded base", "Miller capacitance" ]
 title: "Bipolar Junction Transistors (BJTs)"
 type: "page"
 ---
@@ -62,6 +62,7 @@ Temperature has a major influence on the gain of a BJT.
 
 ### Early Voltage (Va)
 
+### Miller Capacitance
 
 
 ## Circuit Design Basics With BJTs
