@@ -19,3 +19,7 @@ type: "post"
     {{% figure src="/electronics/circuit-design/power-management/load-switches/bjt-current-source-to-turn-p-channel-on.svg" width="500px" %}}
 
 * Updated the schematic symbols on the {{% link text="BJT Transistors page" src="/electronics/components/transistors/bipolar-junction-transistors-bjts" %}}.
+
+* Added an example of a common-base amplifier to the BJT Transistors page.
+
+* Added more info on quiescent currents and slew rates to the op-amp page.
