@@ -22,4 +22,6 @@ type: "post"
 
 * Added an example of a common-base amplifier to the BJT Transistors page.
 
+    {{% figure src="/electronics/components/transistors/bipolar-junction-transistors-bjts/common-base-amplifier-dc-bias.svg" width="700px" %}}
+
 * Added more info on quiescent currents and slew rates to the op-amp page.
