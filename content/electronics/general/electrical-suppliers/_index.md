@@ -3,8 +3,8 @@ author: "gbmhunter"
 date: 2011-09-05
 description: "Capabilities, quality, support and more info on a range of electronic suppliers."
 draft: false
-lastmod: 2020-07-15
-tags: [ "electronics", "engineering", "supplier", "batteries", "hardware", "PCBs", "EMS", "components" ]
+lastmod: 2021-03-03
+tags: [ "electronics", "engineering", "suppliers", "batteries", "hardware", "PCBs", "EMS", "components", "JLC PCB", "PCB Cart", "manufacturers" ]
 title: "Electrical Suppliers"
 type: "page"
 ---
@@ -393,6 +393,16 @@ Notes:  Cheap supplier for boards, but they do take a while to manufacture. Offe
 Here is a similar 4-layer, 1.6mm thick PCB stack-up, except with only one core.
 
 {{< img src="pcb-cart-4-layer-1-core-1-6mm-layer-stackup.jpg"   width="400px" >}}
+
+### JLC PCB
+
+{{% img src="jlc-pcb-logo.png" width="400px" caption="The logo for JLC PCB. Image from https://www.crunchbase.com/organization/jlcpcb, retrieved 2021-03-03." %}}
+
+* Website: <https://jlcpcb.com/>
+* Instant Quote: Yes
+* Based In: China
+
+JLC PCB is (and I quote from their website) "China's Largest PCB Prototype Manufacturer". I believe them on this, they are an absolutely huge PCB fabrication house in China, and offer a very streamlined, fast and cheap PCB manufacturing service for "standard" PCB designs. Pricing can be laughably cheap for 2-layer/4-layer boards (e.g. on USD$5 for a 4-layer PCB!), as long as you don't have any non-standard manufacturing requirements.
 
 ## Suppliers With Free Samples!
 
