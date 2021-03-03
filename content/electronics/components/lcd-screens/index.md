@@ -1,14 +1,13 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components" ]
 date: 2012-06-05
 draft: false
+lastmod: 2012-06-05
 tags: [ "LCD", "screens", "mounting", "TFT", "software" ]
-title: LCD Screens
-type: page
+title: "LCD Screens"
+type: "page"
 ---
-
-## Character LCD Screens
 
 ## Types
 
@@ -26,7 +25,7 @@ LCD screens are typically use 8-bit interfaces which can usually support a reduc
 
 ## Mounting
 
-## Reverse-mounted Onto PCB
+### Reverse-mounted Onto PCB
 
 The following image shows how you can reverse mount an LCD screen onto a PCB directly (using the PCB as the front panel).
 
