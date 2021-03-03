@@ -62,6 +62,14 @@ Temperature has a major influence on the gain of a BJT.
 
 ### Early Voltage (Va)
 
+The Early Voltage is normally denoted with `\(V_A\)`.
+
+As `\(V_{CE}\)` on a BJT increases, the reverse-bias on the `\(V_CB\)` junction increases (this is just a PN junction in reverse bias under typical operation). This increases the depletion region of this junction, which **reduces the effective width of the base**. Because the saturation current is inversely proportional to the effective width of the base, an increase in `\(V_{CE}\)` results in an increase in `\(I_C\)`.
+
+The effect of the collector-emitter current on collector current is given by the following equation:
+
+<p>\begin{align} I_C = I_{C(sat)} ( 1 + \frac{V_{CE}}{V_A} ) \end{align}</p>
+
 ### Miller Capacitance
 
 
@@ -85,9 +93,7 @@ A PNP transistor will only conduct when both the base and collector have a negat
 
 NPN transistors are good for low-side switching. You can connect the collector to the negative end of the load, the emitter to ground, and control the base with a digital low/high signal through a resistor (low/ground base signal = load off, high base signal = load on).
 
-They are not so good for high-side switching, as _negative feedback_ prevents them from entering saturation. Normally you would want to use a PNP transistor. However, in some situations, using a NPN transistor for high-side switching can be advantageous. This configuration is also called a _common collector amplifier_.
-
-PNP transistors are good for high-side switching. Although not great at low-side switching, they can be used in some cases.
+However, NPN transistors cannot be used as a simple high-side switch, as the emitter rises to the high-side load voltage. To keep the NPN transistor in saturation, this would mean the base voltage would need to be **higher than the high-side load voltage**, which is not usually viable (charge-pumps are sometimes used to overcome this, but more commonly seen when using N-channel MOSFETs as high-side switches). Normally you would want to use a PNP transistor for high-side switching.
 
 ## Amplifier Topologies
 
