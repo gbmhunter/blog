@@ -334,6 +334,10 @@ void main(void)
 }
 ```
 
+## Emulation
+
+Zephyr supports the targets `qemu_x86` and `qemu_cortex_m3` for running Zephyr applications on desktop computers. This is great for development, testing and CICD purposes.
+
 ## Common Errors
 
 ### File not found (on Windows)
