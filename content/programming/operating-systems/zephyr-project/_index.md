@@ -272,6 +272,87 @@ The _Zephyr SDK_ contains toolchains to compile, assemble, link and program/debu
 
 See <https://docs.zephyrproject.org/latest/boards/index.html#boards> for a comprehensive list of all the development boards supported by the Zephyr platform.
 
+## Device Trees
+
+Example device tree (for the STM32F070RB development board):
+
+```text
+/*
+ * Copyright (c) 2018 qianfan Zhao
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <st/f0/stm32f070Xb.dtsi>
+#include "arduino_r3_connector.dtsi"
+
+/ {
+	model = "STMicroelectronics NUCLEO-F070RB board";
+	compatible = "st,stm32f070rb-nucleo", "st,stm32f070";
+
+	chosen {
+		zephyr,console = &usart2;
+		zephyr,shell-uart = &usart2;
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		green_led_2: led_2 {
+			gpios = <&gpioa 5 GPIO_ACTIVE_HIGH>;
+			label = "User LD2";
+		};
+	};
+
+	gpio_keys {
+		compatible = "gpio-keys";
+		user_button: button {
+			label = "User";
+			gpios = <&gpioc 13 GPIO_ACTIVE_LOW>;
+		};
+	};
+
+	aliases {
+		led0 = &green_led_2;
+		sw0 = &user_button;
+	};
+};
+
+&usart1 {
+	current-speed = <115200>;
+	status = "okay";
+};
+
+&usart2 {
+	current-speed = <115200>;
+	status = "okay";
+};
+
+&i2c1 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+};
+
+&i2c2 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+};
+
+&spi1 {
+	status = "okay";
+};
+
+&spi2 {
+	status = "okay";
+};
+
+&iwdg {
+	status = "okay";
+};
+```
+
 ## Peripheral APIs
 
 The latest documentation for peripheral (UART, SPI, PWM, PIN, e.t.c.) APIs can be found at <https://docs.zephyrproject.org/latest/reference/peripherals/index.html>.
