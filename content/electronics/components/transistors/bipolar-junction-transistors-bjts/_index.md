@@ -4,8 +4,8 @@ categories: [ "Electronics", "Components", "Transistors" ]
 date: 2015-08-10
 description: "Types, schematic symbols, important parameters, amplifier topologies, and more info about bipolar junction transistors (BJTs)."
 draft: false
-lastmod: 2021-02-26
-tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode", "amplifiers", "common-emitter", "CE", "common-collector", "CC", "common-base", "CB", "grounded base", "Miller capacitance" ]
+lastmod: 2021-03-05
+tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode", "amplifiers", "common-emitter", "CE", "common-collector", "CC", "common-base", "CB", "grounded base", "Miller capacitance", "Widlar", "Widlar current mirror", "current mirror" ]
 title: "Bipolar Junction Transistors (BJTs)"
 type: "page"
 ---
@@ -95,9 +95,9 @@ NPN transistors are good for low-side switching. You can connect the collector t
 
 However, NPN transistors cannot be used as a simple high-side switch, as the emitter rises to the high-side load voltage. To keep the NPN transistor in saturation, this would mean the base voltage would need to be **higher than the high-side load voltage**, which is not usually viable (charge-pumps are sometimes used to overcome this, but more commonly seen when using N-channel MOSFETs as high-side switches). Normally you would want to use a PNP transistor for high-side switching.
 
-## Amplifier Topologies
+## BJT Circuits
 
-### Common Collector
+### Common Collector Amplifier
 
 The BJT _common-collector_ amplifier is one of the three basic single-stage BJT amplifier topologies. The common collector amplifier topology is also known as a _emitter follower amplifier_.
 
@@ -111,7 +111,7 @@ Here is a graph of `\(v_{in}\)` vs. `\(v_{out}\)` for the above circuit:
 
 {{% img src="vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png" width="1418px" caption="Vout vs. Vin for a basic common-collector BJT amplifier." %}}
 
-### Common-Base
+### Common-Base Amplifier
 
 The BJT _common-base_ (a.k.a. _grounded-base_, and sometimes just abbreviated to _CB_ or _GB_) amplifier is one of the three basic single-stage BJT amplifier topologies. The base of the BJT is connected to ground and shared with the output signal, hence the "common-base". The input signal is fed to the emitter and the output comes from the collector. It is not as popular in discrete low-frequency circuits as the common-collector or common-emitter BJT amplifiers.
 
@@ -135,7 +135,7 @@ r_{in} &= \frac{v_{in}}{i_{in}} \\
 \end{align}</p>
 
 
-### Basic Topology Summary
+### Basic BJT Amplifier Topology Summary
 
 Topology         | Voltage Gain (AV) | Current Gain (AI) | Input Resistance | Output Resistance
 -----------------|-------------------|-------------------|------------------|---------------------
@@ -143,11 +143,9 @@ Common-emitter   | Moderate (-Rc/Re) | Moderate (B)      | High             | Hi
 Common-collector | Low (approx. 1)   | Moderate (B + 1)  | High             | Low
 Common-base      | High              | Low               | Low              | High
 
-## Other BJT Circuits
-
 ### Constant-Current Sink
 
-BJTs can be configured to sink a relatively constant amount of current which is independent on the output-side voltage. This can be a useful way of driving an LED from a microcontroller with a constant current, no matter what voltage source is used to drive the LED.
+BJTs can be configured to sink a relatively constant amount of current which is independent on the output-side voltage. This can be a useful way of driving an LED from a microcontroller with a constant current, no matter what voltage source is used to drive the LED. BJT current sinks and sources are good for simple, cheap situations in where high precision is not the name of the game. If you want high precision, you're best bet is to build a {{% link text="current-sink from an op-amp" src="/electronics/components/op-amps#current-sinks" %}}.
 
 {{< img src="constant-current-bjt-based-led-driver.png" width="465px" caption="The simulation schematic for a constant-current BJT-based LED driver."  >}}
 
@@ -166,6 +164,59 @@ Notice how the LED current is independent of the `\(+12V\)`. The `\(+12V\)` can 
 Below are the simulation results for the above schematic, showing the LED current to be indeed `\(10mA\)`. It works!
 
 {{< img src="constant-current-bjt-based-led-driver-simulation-results.png" width="1691px" caption="The simulation results of a constant-current BJT-based LED driver." >}}
+
+#### Using A Resistor Divider To Drive The Base
+
+A resistor divider can simple way to drive the base of an NPN current-sink if you don't need active control. This works well if the supply voltage is known and stable, as the current will fluctuate with supply voltage (if this is going to be an issue, consider using a Zener-based circuit to drive the base of the NPN BJT). Schematics of the design are shown below:
+
+{{% img src="current-source-npn-voltage-divider-base.svg" width="400px" caption="A NPN BJT current-sink using a resistor divider to drive the base." %}}
+
+**Design Procedure:**
+
+1. Choose the resistor-divider `\(R_1\)` and `\(R_2\)` to provide a voltage at the base of the transistor in the region of `\(2.0-5.0\)`V. I choose `\(R_1 = 10k\Omega\)` as this is a standard resistance, and then `\(R_2 = 2.2k\Omega\)` to give a `\(V_B = 2.16V\)`.
+1. Subtract `\(0.7V\)` of `\(V_B\)` to get `\(V_E\)`. In this case, `\(V_E = 1.46V\)`.
+1. Size `\(R_E\)` to set the desired current of your current sink. Using Ohm's Law, `\(R_E = \frac{V_E}{I}\)`. In this case we wanted `\(2mA\)` to drive an LED, so:
+    <p>\begin{align}
+      R_E &= \frac{1.46V}{2mA} \\
+          &= 730\Omega \\
+          &\approx 732 \, \text{(closest E96 value)}
+    \end{align}</p>
+1. As a sanity check, make sure the output impedance of the resistor divider is much less than the input impedance looking into the base of the BJT (otherwise the resistor divider output will get significantly loaded and it's output voltage will drop). That is:
+    <p>\begin{align}
+    R_1 || R_2 &\ll \beta R_E \\
+    \frac{10k\Omega \cdot 2.2k\Omega}{10k\Omega + 2.2k\Omega} &\ll 100 \cdot 732\Omega \\
+    1.80k\Omega &\ll 73.2k\Omega
+    \end{align}</p>
+
+    The above equation holds true so this design should work as a good current sink ✅
+
+### Current Mirrors
+
+A _current mirror_ is a current-copying circuit in where one the current in one BJT is programmed via a resistor and is used to control the current in a second BJT which is used to drive the same current into a load. The current-mirrors shown below are built with BJTs, but other active transistors such as {{% link text="MOSFETs" src="/electronics/components/transistors/mosfets" %}} can also be used.
+
+A basic PNP BJT-based current mirror is shown below: 
+
+{{% img src="current-mirror-pnp.svg" width="400px" caption="A basic PNP-based current mirror programmed to source 1mA into the load. Q1 and Q2 should be a matched transistor pair to achieve good mirroring of the current." %}}
+
+**Design Procedure:**
+
+1. Decide on the program current, `\(I_P\)`. This will also be the current through the load. We'll use this value later! For this example we'll choose `\(1mA\)`.
+1. Find the voltage across `\(R_1\)`, nothing that `\(Q_1\)` has a diode voltage drop of `\(0.7V\)` from emitter to base (with the emitter tied to `\(V_{CC}\)`), at that the base and collector of `\(Q_1\)` are tied together and hence at the same voltage:
+
+    <p>\begin{align}
+    V_{R1}  &= 12V - 0.7V \\
+            &= 11.3V
+    \end{align}<p>
+
+1. Set the resistance of `\(R_1\)` using Ohm's Law:
+
+    <p>\begin{align}
+    R_1 &= \frac{V_{R1}}{I_P} \\
+        &= \frac{11.3V}{1mA} \\
+        &= 11.3k\Omega
+    \end{align}</p>
+
+1. All done!
 
 ## Common BJTs
 
