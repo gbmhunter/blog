@@ -17,3 +17,9 @@ type: "post"
 * Added a new page on {{% link text="Light-Dependent Resistors (LDRs)" src="/electronics/components/light-dependent-resistors-ldrs" %}}.
 
 * Added data on the Early Voltage `\(V_A\)` to the Bipolar Junction Transistors (BJTs) page.
+
+* Added {{% link text="schematics and a design procedure" src="/electronics/components/transistors/bipolar-junction-transistors-bjts#using-a-resistor-divider-to-drive-the-base" %}} for a NPN BJT current-sink whose base is driven by a resistor divider.
+
+    {{% figure src="/electronics/components/transistors/bipolar-junction-transistors-bjts/current-source-npn-voltage-divider-base.svg" width="400px" %}}
+
+* Added {{% link text="schematics and a design procedure" src="/electronics/components/transistors/bipolar-junction-transistors-bjts#current-mirrors" %}} for a BJT current mirror.
