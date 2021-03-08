@@ -235,7 +235,7 @@ _Class II_ and _Class III_ capacitors are most likely to "sing" when the capacit
 
 #### Flexibility
 
-Ceramic capacitors are sometimes tested and rated to be able to withstand a minimum _bending flex_. One example is the [Kemet VW80808 (FT-CAP)](https://content.kemet.com/datasheets/KEM_X7R_FT_VW_AUDI.pdf) range of ceramic capacitors which can withstand 5mm bending flex. These are aimed towards automotive use (but not exclusive to). The large bending flex specification is achieved by designing flexible termiation caps at each end of the capacitor, which stops the transfer of stress from the PCB to the fragile ceramic capacitor body.
+Ceramic capacitors are sometimes tested and rated to be able to withstand a minimum _bending flex_. One example is the [Kemet VW80808 (FT-CAP)](https://content.kemet.com/datasheets/KEM_X7R_FT_VW_AUDI.pdf) range of ceramic capacitors which can withstand 5mm bending flex. These are aimed towards automotive use (but not exclusive to). The large bending flex specification is achieved by designing flexible termination caps at each end of the capacitor, which stops the transfer of stress from the PCB to the fragile ceramic capacitor body.
 
 ### Electrolytic
 
@@ -269,6 +269,8 @@ Ceramic capacitors are sometimes tested and rated to be able to withstand a mini
 Electrolytic capacitors uses a very thin electrically deposited metal oxide film (`\(Al_2 O_3\)`) as their dielectric. They have a high capacitance density (well, that was before super-caps came along). They are usually cylindrical in shape, and come in through-hole (axial and radial) and surface-mount types.
 
 In over-voltage conditions, holes can be punched through the dielectric layer and the capacitor will begin to conduct. The good news is that if the over-voltage disappears quickly enough (e.g. just a surge or spike), the capacitor can self-heal. The bad news is that a if the capacitor heats up enough, the dielectric can boil, create vapours, and the cap explodes. Most electrolytics have a specific "weak spot" on the case which is designed to break in an over-pressure situation. This can make quite a bang, and can be dangerous if you happen to be peering closely at the circuit while this happened.
+
+The common size codes and sizes of SMD Electrolytic capacitors, see the {{% link text="SMD Electrolytic Capacitor Packages page" src="/pcb-design/component-packages/smd-electrolytic-capacitor-packages" %}}.
 
 ### Tantalum
 

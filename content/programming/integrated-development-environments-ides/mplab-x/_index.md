@@ -1,12 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Integrated Development Environments (IDEs)" ]
 date: 2016-06-17
 draft: false
 lastmod: 2016-06-17
 tags: [ "programming", "integrated development environments", "IDEs", "MPLAB X" ]
-title: MPLAB X
-type: page
+title: "MPLAB X"
+type: "page"
 ---
 
 ## Overview
@@ -15,7 +15,7 @@ MPLAB X is an integrated development environment (IDE) by Microchip to cater for
 
 ## Compiler Support
 
-It supports the use of the [MPLAB XC compilers](/programming/compilers/mplab-xc-compilers).
+It supports the use of the {{% link text="MPLAB XC compilers" src="/programming/compilers/mplab-xc-compilers" %}}.
 
 ## Refactoring
 
