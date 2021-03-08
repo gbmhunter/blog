@@ -23,3 +23,7 @@ type: "post"
     {{% figure src="/electronics/components/transistors/bipolar-junction-transistors-bjts/current-source-npn-voltage-divider-base.svg" width="400px" %}}
 
 * Added {{% link text="schematics and a design procedure" src="/electronics/components/transistors/bipolar-junction-transistors-bjts#current-mirrors" %}} for a BJT current mirror.
+
+* New {{% link text="PlatformIO page" src="/programming/integrated-development-environments-ides/platform-io" %}}.
+
+* Updated the {{% link text="size codes on the SMD Electrolytic Capacitor Packages page" src="/pcb-design/component-packages/smd-electrolytic-capacitor-packages" %}}.
