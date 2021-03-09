@@ -72,6 +72,9 @@ The effect of the collector-emitter current on collector current is given by the
 
 ### Miller Capacitance
 
+## Hybrid-Pi Model
+
+{{% img src="hybrid-pi-model.svg" width="800px" caption="A simplified Hybrid-Pi model of a BJT transistor." %}}
 
 ## Circuit Design Basics With BJTs
 
