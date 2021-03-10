@@ -72,9 +72,63 @@ The effect of the collector-emitter current on collector current is given by the
 
 ### Miller Capacitance
 
-## Hybrid-Pi Model
+TODO: Add notes here
+
+### Thermal Voltage
+
+The thermal voltage of a BJT transistor is the voltage across a PN junction caused by the temperature of the junction.
+
+<p>\begin{align}
+V_T = \frac{kT}{q}
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(k\) is Boltzmann's constant in Joules per Kelvin, which is \(1.38\times 10^{-23}JK^{-1}\)<br/>
+\(T\) is the temperature of the junction, in Kelvin \(K\)</br>
+\(q\) is the charge on a electron in Coulombs, which is \(1.6\times 10^{-19}C\)
+</p>
+
+At a room temperature of `\(22^{\circ}C\)`, `\(V_T\)` is approximately `\(25mV\)`. `\(25mV\)` is a good enough approximation for the thermal voltage in many scenarios without taking the actual junction temperature into account. The thermal voltage is used in the hybrid-pi model of the BJT transistor.
+
+## BJT Transistor Models
+
+### Ebers-Moll Transistor Model
+
+TODO: Add info here
+
+### Hybrid-Pi Transistor Model
+
+The hybrid-pi model is a well-used model for approximating the small-signal behaviour of transistors at low frequencies. There are a few variants of the hybrid-pi model, the simplest being the small-signal linearized version.
+
+#### Small-Signal Linearized Hybrid-Pi Model
+
+The small-signal linearized hybrid-pi model is a simplification of the complete hybrid-pi model.
 
 {{% img src="hybrid-pi-model.svg" width="800px" caption="A simplified Hybrid-Pi model of a BJT transistor." %}}
+
+Inputs (independent variables) to the model are:
+
+* Small-signal base-emitter voltage `\(v_\pi\)`
+* Small-signal collector-emitter voltage `\(v_{CE}\)`
+
+From this the model calculates the following outputs (dependent variables):
+
+* Small-signal base current `\(i_B\)`
+* Small-signal collector current `\(i_C\)`
+
+The transconductance `\(g_m\)` can be calculated with:
+
+<p>\begin{align}
+g_m &= \frac{i_C}{v_{BE}} & \text{when $v_{CE} = 0$} \\
+    &= \frac{I_C}{V_T}
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(I_C\) is the DC bias collector current (not the small-signal collector current)
+\(V_T\) is the thermal voltage
+</p>
 
 ## Circuit Design Basics With BJTs
 
