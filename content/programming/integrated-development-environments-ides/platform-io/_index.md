@@ -4,7 +4,7 @@ categories: [ "Programming", "Integrated Development Environments (IDEs)" ]
 date: 2021-03-08
 description: "A basic tutorial and in-depth notes on PlatformIO, a build manager/IDE for embedded systems."
 draft: false
-lastmod: 2021-03-08
+lastmod: 2021-03-10
 tags: [ "programming", "integrated development environments", "IDEs", "PlatformIO", "PlatformIO Core", "PlatformIO IDE", "Core", "LDF", "Library Dependency Finder" ]
 title: "PlatformIO"
 type: "page"
@@ -13,6 +13,10 @@ type: "page"
 {{% warning-is-notes %}}
 
 ## Overview
+
+PlatformIO is a cross-platform CLI tool and IDE extension (primarily for Visual Studio Code) that allows you to build and upload firmware to embedded devices. Unlike other tools such as Arduino, mbed or Zephyr, it is purely a build tool and does not provide it's own API (framework) that you can call when writing firmware. Instead, it supports a number of frameworks including Arduino, mbed and Zephyr. It is designed to automatically pull down, install and run the toolchains/compilers required to compile your firmware for the target architecture so that you don't have to manage these yourself.
+
+{{% img src="platformio-icon.png" width="500px" caption="The icon for PlatformIO. Retrieved from https://platformio.org on 2021-03-10." %}}
 
 _PlatformIO Core_ is the command-line tool that contains most of PlatformIO's core logic (the IDE makes calls to this). _PlatformIO IDE_ is an extension to Visual Studio Code which provides GUI access to the functions provided by _PlatformIO Core_, as well as the usual text editing and syntax highlighting.
 
@@ -41,14 +45,30 @@ Local libraries can be stored in the `lib/` directory.
 
 ## How To Create A PlatformIO Project
 
+Create a new project in the current directory:
+
 ```cmd
 pio project init --board uno
 ```
 
+Build the project:
+
+```cmd
+pio run
+```
+
 ## The PlatformIO Config File
+
+Data not specific to any one environment goes under the `[platformio]` section in the `platformio.ini` file.
 
 Want to use a private package for a particular project? The good news is that PlatformIO supports SSH-style Git URLs and will use your default SSH key to attempt to `git clone` the package. You can specify a URL to a private package repo in `platformio.ini` with the following line: 
 
 ```ini
 platform_packages = framework-arduino-samd-privatepackage @ git@github.org:my-company-name/my-private-repo.git
+```
+
+A specific branch or tag can be specified by appending a `#` and then the name of the branch/tag (note that `#` denotes the start of a comment in an `INI` file, but this tag name is processed by the parser...it feels a little strange to be doing this):
+
+```ini
+platform_packages = framework-arduino-samd-privatepackage @ git@github.org:my-company-name/my-private-repo.git#my-tag-or-branch-name
 ```
