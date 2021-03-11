@@ -22,9 +22,11 @@ The [main repo can be found on GitHub](https://github.com/zephyrproject-rtos/zep
 
 Zephyr provides cooperative and preemptive scheduling.
 
-Uses a [CMake](/programming/build-systems-and-package-managers/cmake) build environment.
+Uses a {{% link text="CMake" src="/programming/build-systems-and-package-managers/cmake" %}} build environment.
 
 Zephyr is cross-platform (i.e. you can build projects and flash embedded devices) and supported on Linux, Windows and macOS. However, you will experience the least amount of issues and friction running Zephyr on Linux. Linux is also the only platform currently supported by the Zephyr SDK.
+
+Zephyr is also a platform supported by the {{% link text="PlatformIO" src="/programming/integrated-development-environments-ides/platform-io" %}} build system and IDE.
 
 ## Installation
 
