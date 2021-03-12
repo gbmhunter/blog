@@ -12,7 +12,7 @@ type: "page"
 
 ## Overview
 
-At it's most basic level, an operational amplifier (op-amp) is a **discrete analogue integrated circuit which acts as a voltage-amplifier with very high gain**.
+At it's most basic level, an _operational amplifier_ (op-amp) is a **discrete analogue integrated circuit which acts as a voltage-amplifier with very high gain**.
 
 An op-amp's gain can be adjusted with the appropriate external circuitry (the op-amp's internal gain does not change, but the gain of the entire circuit does). This is almost always done for any op-amp that is used as an amplifier. External circuitry can also manipulate the op-amp to act as as a current amplifier or perform "mathematical" operations on signals.
 
@@ -316,6 +316,7 @@ Instrumentation amplifiers are analog voltage amplifier circuits that, although 
 * **INA**
   * **INAx126**: Precision instrumentation amplifiers by Texas Instruments. The INA126 has one amplifier per package, the INA2126 has two.
   * **INA290**: Precision current-sense amplifier.
+* **LM741**: Very popular and old "741" style op-amp produced by Texas Instruments, ON Semiconductor and Rochester Electronics. 
 * **LT**: The prefix Linear Technology (now Analog Devices) uses for their range of op-amps.
   * **LT1006**: Precision, single-supply op-amp.
   * **LT1077**: Micropower, single-supply op-amp.
@@ -337,6 +338,38 @@ Instrumentation amplifiers are analog voltage amplifier circuits that, although 
 * **TLE202**: Texas Instruments family of "high-speed low-power" precision operational amplifiers. Belong to the _Excalibur_ family of TI op-amps which uses "isolated vertical PNP transistors" to give unity-gain bandwidth and slew rate improvements.
 * **TLV**: Texas Instruments family of op-amps.
   **TLV27**:
+
+## The Different Types Of Gain, Explained
+
+Open-loop gain `\(A_V\)` is the gain of the op-amp without any feedback.
+
+Closed loop gain `\(G_V\)` is the over-all gain of the op-amp with feedback.
+
+{{% img src="open-loop-vs-closed-loop-op-amp-gain-bode-plot.svg" width="500px" caption="How the open-loop and closed-loop gain of an op-amp changes with increasing frequency." %}}
+
+We can generalize the circuit of an op-amp with negative feedback to the block diagram shown below. 
+
+{{% img src="generalized-negative-feedback-block-diagram.svg" width="700px" caption="A block diagram showing a generalized op-amp configuration with negative feedback." %}}
+
+From the above block diagram we can write an equation for `\(v_{out}\)`:
+
+<p>\begin{align}
+v_{out} &= A(v_{in} - Bv_{out}) \\
+\end{align}</p>
+
+What we are really interested is an equation for the closed-loop gain `\(G_V\)` which is equal to `\(\frac{v_{out}}{v_{in}}\)`...all we need to do is to re-arrange the equation as shown below:
+
+<p>\begin{align}
+v_{out} &= Av_{in} - ABv_{out}  & \text{Expanding} \\
+v_{out}(1 - AB) &= Av_{in}      & \text{Shift $v_{out}$ onto left side and factor.} \\
+\frac{v_{out}}{v_{in}} &= \frac{A}{1 - AB}  & \text{Jiggle things to get $\frac{v_{out}}{v_{in}}$} \\
+\end{align}</p>
+
+And so we come to an equation for the closed loop gain `\(G_V\)` as:
+
+<p>\begin{align}
+G_V &= \frac{A}{1 - AB}
+\end{align}</p>
 
 ## Examples
 
