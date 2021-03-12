@@ -35,3 +35,5 @@ type: "post"
     {{% figure src="/electronics/components/transistors/bipolar-junction-transistors-bjts/hybrid-pi-model.svg" width="600px" %}}
 
 * Added a new page on {{% link text="Reliability Engineering For Electronics" src="/electronics/circuit-design/reliability-engineering-for-electronics" %}}
+
+* Added a open-loop vs. closed-loop bode plot and generalized negative feedback block diagram (with equations) to the Op-Amps page.
