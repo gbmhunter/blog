@@ -33,3 +33,5 @@ type: "post"
 * Added info on the {{% link text="hybrid-pi transistor model to the Bipolar Junction Transistors (BJTs) page" src="/electronics/components/transistors/bipolar-junction-transistors-bjts#hybrid-pi-transistor-model" %}}.
 
     {{% figure src="/electronics/components/transistors/bipolar-junction-transistors-bjts/hybrid-pi-model.svg" width="600px" %}}
+
+* Added a new page on {{% link text="Reliability Engineering For Electronics" src="/electronics/circuit-design/reliability-engineering-for-electronics" %}}

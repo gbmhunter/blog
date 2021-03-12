@@ -1,4 +1,5 @@
 ---
+aliases: [ "test-alias" ]
 author: "gbmhunter"
 date: 2004-09-13
 draft: false
