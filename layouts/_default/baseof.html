@@ -114,7 +114,9 @@
               {{ block "footer" . }}{{ partial "site-footer.html" . }}{{ end }}
               {{ block "scripts" . }}{{ partial "site-scripts.html" . }}{{ end }}
           </div>
-        </div>        
+        </div>
+
+
 
         {{ partial "mathjax-markdown-solution.html" . }}
         <!-- LOAD LIGHTBOX FOR IMAGES -->
@@ -123,4 +125,8 @@
         <!-- Instant Search library -->
         <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.1"></script>                
   </body>
+          <!-- 'Back to Top' button -->
+          <!-- Based of code at https://codepen.io/rdallaire/pen/apoyx -->
+          <a href="javascript:" id="return-to-top"><i class="fas fa-chevron-up"></i></a>
+          <script src="/js/scroll-to-top.js"></script>
 </html>
