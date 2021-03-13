@@ -39,3 +39,5 @@ type: "post"
 * Added a open-loop vs. closed-loop bode plot and generalized negative feedback block diagram (with equations) to the Op-Amps page.
 
 * Added new page on the {{% link text="TO-99 Component Package" src="/pcb-design/component-packages/to-99-component-package" %}}.
+
+    {{% figure src="/pcb-design/component-packages/to-99-component-package/lm741h-op-amp-to-99-component-package-photo.jpg" width="200px" %}}
