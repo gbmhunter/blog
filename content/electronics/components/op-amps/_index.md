@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps)."
 draft: false
-lastmod: 2021-02-28
+lastmod: 2021-03-13
 tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifiers", "inverting", "buffers", "non-inverting", "components", "gain", "voltage followers", "offset nulling", "input offset voltages", "instrumentation amplifiers", "capacitive loading", "current sources", "quiescent currents", "GBW", "slew rates" ]
 title: "Op-Amps"
 type: "page"
@@ -341,7 +341,7 @@ Instrumentation amplifiers are analog voltage amplifier circuits that, although 
 
 ## The Different Types Of Gain, Explained
 
-Open-loop gain `\(A_V\)` is the gain of the op-amp without any feedback.
+Open-loop gain `\(A_V\)` (sometimes written as `\(A_{OL}\)`) is the gain of the op-amp without any feedback.
 
 Closed loop gain `\(G_V\)` is the over-all gain of the op-amp with feedback.
 
@@ -354,7 +354,8 @@ We can generalize the circuit of an op-amp with negative feedback to the block d
 From the above block diagram we can write an equation for `\(v_{out}\)`:
 
 <p>\begin{align}
-v_{out} &= A(v_{in} - Bv_{out}) \\
+v_{out} &= A\times v_{sum} \\
+        &= A(v_{in} - Bv_{out}) \\
 \end{align}</p>
 
 What we are really interested is an equation for the closed-loop gain `\(G_V\)` which is equal to `\(\frac{v_{out}}{v_{in}}\)`...all we need to do is to re-arrange the equation as shown below:
@@ -370,6 +371,18 @@ And so we come to an equation for the closed loop gain `\(G_V\)` as:
 <p>\begin{align}
 G_V &= \frac{A}{1 - AB}
 \end{align}</p>
+
+We can take this one step further, since normally the open-loop gain `\(A\)` for an op-amp is very large, in the range of `\(100,000\)` to `\(1,000,000\)`. With that, we can simply the closed loop gain to be:
+
+<p>\begin{align}
+G_V &\approx \frac{1}{B}
+\end{align}</p>
+
+Name       | Equation
+-----------|-----------
+Open-loop gain | `\(A\)`
+Loop gain  | `\(-AB\)` 
+Closed-loop gain | $$\approx \frac{1}{B}$$
 
 ## Examples
 

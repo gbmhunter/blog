@@ -4,7 +4,7 @@ categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2014-12-04
 description: "Dimensions, recommended footprints, thermal resistances, lead styles, singulation methods, synonyms and other info about the QFN component package."
 draft: false
-lastmod: 2020-05-20
+lastmod: 2021-03-13
 tags: [ "component packages", "PCB design", "QFN", "LFCSP", "MLF", "DO-214AC", "solder paste", "soldermask", "singulation", "voiding", "lead styles", "JEDEC", "package stress" ]
 title: "QFN Component Package"
 type: "page"
@@ -169,6 +169,8 @@ It is recommended to reduce the amount of solder paste applied to the centre pad
 </table>
 
 It may be necessary to mask or plug vias in the center pad to prevent solder paste being carried through the via and away from the pad during reflow. Small holed vias (such as vias with a hole diameter of 0.3mm or less) do not normally cause a big problem.
+
+{{% img src="qfn-footprint-with-solder-paste.jpg" width="500px" caption="A photo of a 0.5mm pitch QFN footprint on a circuit board with solder paste applied (applied manually with a free-standing stencil, so the alignment is not spot-on, but good enough). You can clearly see the windowing (16 windows in total) on the center pad to reduce the amount of solder paste." %}}
 
 The central pad may not necessarily be electrically connected to anything.
 
