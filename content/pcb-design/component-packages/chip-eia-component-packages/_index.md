@@ -4,8 +4,8 @@ categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-25
 description: "Sizes, dimensions, recommended land patterns and more info for the chip (EIA xxxx) component package, which is commonly used for SMD resistors and capacitors."
 draft: false
-lastmod: 2021-01-17
-tags: [ "component packages", "PCB design", "chip", "EIA", "0603", "0805", "1206", "MEMS", "oscillators", "crystals" ]
+lastmod: 2021-03-14
+tags: [ "component packages", "PCB design", "chip", "EIA", "0603", "0805", "1206", "MEMS", "oscillators", "crystals", "tombstoning", "head-in-pillow" ]
 title: "Chip (EIA) Component Packages"
 type: "page"
 ---
@@ -233,7 +233,7 @@ The following table shows the range of chip resistors package sizes (based on th
     <tr>
       <th>Package</th>
       <th>Designator (metric)</th>
-      <th>Package</th>
+      <th>Max. Current (A)</th>
       <th>Designator (imperial)</th>
     </tr>
   </thead>
@@ -299,6 +299,12 @@ The following table shows the range of chip resistors package sizes (based on th
 </tr>
 </tbody>
 </table>
+
+## Footprints
+
+Every PCB CAD program worth it's weight in salt will provide footprints for the standard chip packages in their default libraries.
+
+There are reports that the default 0402 (imperial) footprint that is shipped with Eagle is non-ideal and causes "head-in-pillow" and/or tombstoning. See <https://www.worthingtonassembly.com/perfect-0402-footprint> for more details.
 
 ## Reverse-Aspect Chip Capacitors (LICC)
 
