@@ -556,3 +556,11 @@ run simulation(s) aborted
 ## CICD
 
 The GitHub user [productize](https://github.com/productize) has created some Python scripts in the [GitHub repo kicad-automation-scripts](https://github.com/productize/kicad-automation-scripts) which automate some core KiCad processes such as running ERC (electrical rules check on the schematics) and DRC (design rules check on the PCB). Along with committing the KiCad design files to version control systems such as Git, these tools can be used to implement CICD workflows that run automatically on changes/commits.
+
+## Handy KiCad Plugins
+
+### InteractiveHtmlBom
+
+Website: <https://github.com/openscopeproject/InteractiveHtmlBom>
+
+This plugin shows you a render of the PCB alongside the BOM and lets you select component lines on the BOM, which highlights all the components on the PCB. It's a great tool to use when hand assembling prototype PCBs.
