@@ -108,6 +108,12 @@ figure a {
     bottom: 0;
 }
 
+/* Added by gbmhunter on 2021-03-16 to prevent URL links within captions
+from being effected by the position: absolute applied above! */
+figure figcaption a {
+  position: relative;
+}
+
 /*
 figcaption styles
 */

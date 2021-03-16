@@ -38,7 +38,7 @@ width decreases -->
     {{- if (.Get "caption") -}}
     <figcaption>
       <p>
-        {{- .Get "caption" -}}
+        {{- .Get "caption" | markdownify -}}
       </p>
     </figcaption>
     {{- end -}}
