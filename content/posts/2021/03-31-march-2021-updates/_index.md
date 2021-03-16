@@ -45,3 +45,7 @@ type: "post"
 * Added a new page on the {{% link text="Thermoelectric Effect" src="/electronics/circuit-design/thermoelectric-effect" %}}.
 
     {{% figure src="/electronics/circuit-design/thermoelectric-effect/seebeck-effect-two-wires-across-temp-differential.svg" width="600px" %}}
+
+* Added a new page on the {{% link text="TO-247 Component Package" src="/pcb-design/component-packages/to-247-component-package" %}}.
+
+    {{% figure src="/pcb-design/component-packages/to-247-component-package/to-247ac-component-package-3d-render-infineon.jpg" width="300px" %}}
