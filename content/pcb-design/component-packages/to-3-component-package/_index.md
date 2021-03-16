@@ -1,12 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
 lastmod: 2020-01-13
 tags: [ "component packages", "PCB design", "transistor", "TO-3", "TO-204AD" ]
-title: TO-3 Component Package
-type: page
+title: "TO-3 Component Package"
+type: "page"
 ---
 
 ## Overview
