@@ -1,10 +1,12 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Electronics", "Circuit Design" ]
 date: 2013-08-21
 draft: false
+lastmod: 2013-08-21
+tags: [ "electronics", "circuit design", "thermal management" ]
 title: "Thermal Management"
-type: page
+type: "page"
 ---
 
 ## Thermal Resistance
