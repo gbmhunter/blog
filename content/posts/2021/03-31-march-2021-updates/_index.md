@@ -49,3 +49,5 @@ type: "post"
 * Added a new page on the {{% link text="TO-247 Component Package" src="/pcb-design/component-packages/to-247-component-package" %}}.
 
     {{% figure src="/pcb-design/component-packages/to-247-component-package/to-247ac-component-package-3d-render-infineon.jpg" width="300px" %}}
+
+* Updated the `img` shortcode so that caption text is now rendered as markdown (done by calling the hugo function `| markdownify` on the passed in parameter). This allows things such as the ability to add URL links into the image caption, great when referencing the source of the image.
