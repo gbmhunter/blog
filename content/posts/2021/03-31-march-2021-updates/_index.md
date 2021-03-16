@@ -41,3 +41,7 @@ type: "post"
 * Added new page on the {{% link text="TO-99 Component Package" src="/pcb-design/component-packages/to-99-component-package" %}}.
 
     {{% figure src="/pcb-design/component-packages/to-99-component-package/lm741h-op-amp-to-99-component-package-photo.jpg" width="200px" %}}
+
+* Added a new page on the {{% link text="Thermoelectric Effect" src="/electronics/circuit-design/thermoelectric-effect" %}}.
+
+    {{% figure src="/electronics/circuit-design/thermoelectric-effect/seebeck-effect-two-wires-across-temp-differential.svg" width="600px" %}}
