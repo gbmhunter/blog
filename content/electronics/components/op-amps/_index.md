@@ -4,8 +4,8 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps)."
 draft: false
-lastmod: 2021-03-13
-tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifiers", "inverting", "buffers", "non-inverting", "components", "gain", "voltage followers", "offset nulling", "input offset voltages", "instrumentation amplifiers", "capacitive loading", "current sources", "quiescent currents", "GBW", "slew rates" ]
+lastmod: 2021-03-23
+tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifiers", "inverting", "buffers", "non-inverting", "components", "gain", "voltage followers", "offset nulling", "input offset voltages", "instrumentation amplifiers", "capacitive loading", "current sources", "quiescent currents", "GBW", "slew rates", "negative impedance converters", "NICs" ]
 title: "Op-Amps"
 type: "page"
 ---
@@ -453,11 +453,19 @@ Some op-amps which are designed to have very low input offset voltages also come
 
 {{% img src="op07-op-amp-offset-nulling-circuit.png" width="500px" caption="Image from https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf." %}}
 
+## Negative Impedance Converters (NICs)
+
+{{% img src="negative-impedance-converter-nic.svg" width="500px" caption="Schematic of a negative impedance converter (NIC) created from an op-amp and a few passive components." %}}
+
+TODO: Add equations.
+
 ## Chopper-Stabilised Op-Amps
 
 TODO
 
 ## Capacitive Loading
+
+TODO
 
 ## References
 
