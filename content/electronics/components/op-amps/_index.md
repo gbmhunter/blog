@@ -457,7 +457,81 @@ Some op-amps which are designed to have very low input offset voltages also come
 
 {{% img src="negative-impedance-converter-nic.svg" width="500px" caption="Schematic of a negative impedance converter (NIC) created from an op-amp and a few passive components." %}}
 
-TODO: Add equations.
+Typically the two resistances are the same (`\(R1 = R2\)`), and then the input impedance `\(Z_{IN}\)` is:
+
+<p>\begin{align}
+Z_{IN} = -Z
+\end{align}</p>
+
+<p class="centered">
+\(Z_{IN}\) is the input impedance, in Ohms (\(\Omega\))<br/>
+\(-Z\) is the impedance of the component connected between the inverting terminal and ground, as shown on the diagram, in Ohms (\(\Omega\))
+</p>
+
+To prove this, we need to find the input current at inverting terminal, and then use `\(Z_{IN} = \frac{V}{I_{IN}}\)`. The input current can be found by application of Ohm's law and the golden rules of op-amps. Using the rule that the voltage at the two input terminals will be the same, we know the voltage across the impedance `\(Z\)` is going to be:
+
+<p>\begin{align}
+\label{eqn:vzeqv}
+V_Z = V
+\end{align}</p>
+
+Using Ohm's law, the current through the impedance `\(Z\)` is therefore:
+
+<p>\begin{align}
+I_Z = \frac{V}{Z}
+\end{align}</p>
+
+Because there is no current going into the inverting terminal of the op-amp, this current `\(I_Z\)` must also be flowing through `\(R2\)`:
+
+<p>\begin{align}
+\label{eqn:i_r2}
+I_{R2} = \frac{V}{Z}
+\end{align}</p>
+
+Now knowing the voltage at the inverting terminal and the current through `\(R2\)` we can write an equation for the voltage at the output of the op-amp:
+
+<p>\begin{align}
+\label{eqn:vout_eq}
+V_{OUT} &= V_Z + V_{R2} \\
+        &= V_Z + I_{R2} \cdot R \\
+        &= V + \frac{V}{Z} \cdot R & \text{Subs. in \ref{eqn:vzeqv} and \ref{eqn:i_r2}}
+\end{align}</p>
+
+Now that we know the voltage on both sides of `\(R1\)` we can find the voltage across it:
+
+<p>\begin{align}
+\label{eqn:v_r1}
+V_{R1} &= V_{OUT} - V \\
+       &= V + \frac{V}{Z} \cdot R - V   & \text{Subs. in \ref{eqn:vout_eq}} \\
+       &= \frac{V}{Z} \cdot R           & \text{Simplifying}
+\end{align}</p>
+
+Now we know the voltage across `\(R1\)` we can find the current going through it using Ohm's law:
+
+<p>\begin{align}
+\label{eqn:i_r1}
+I_{R1} &= \frac{V_{R1}}{R} \\
+       &= \frac{\frac{V}{Z} \cdot R}{R}   & \text{Subs. in \ref{eqn:v_r1}} \\
+       &= \frac{V}{Z}                     & \text{Simplifying}
+\end{align}</p>
+
+Because the voltage on the right-hand side of `\(R1\)` is higher, this current is flowing right-to-left. Since no current flows into the inverting terminal of the op-amp, this also must be current flowing "out" of the input terminal. Thus:
+
+<p>\begin{align}
+\label{eqn:i_in}
+I_{IN} = -\frac{V}{Z}
+\end{align}</p>
+
+Knowing the input current and voltage, we can finally write an equation for `\(Z_{IN}\)`:
+
+<p>\begin{align}
+\label{eqn:z_in}
+Z_{IN} &= \frac{V_{IN}}{I_{IN}}         & \text{Ohms law} \\
+       &= \frac{V}{-\frac{V}{Z}}        & \text{Subs. in \ref{eqn:i_in}} \\
+       &= -Z                            & \text{Simplifying}
+\end{align}</p>
+
+Proof complete!
 
 ## Chopper-Stabilised Op-Amps
 
