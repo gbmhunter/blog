@@ -455,6 +455,10 @@ Some op-amps which are designed to have very low input offset voltages also come
 
 ## Negative Impedance Converters (NICs)
 
+### What Is A NIC?
+
+A _negative impedance converter_ (NIC) is a clever op-amp circuit which creates negative impedance (you might be wondering what negative impedance actually is, more on this later). A NIC can be constructed from an op-amp and a few passive components as shown in the following schematic:
+
 {{% img src="negative-impedance-converter-nic.svg" width="500px" caption="Schematic of a negative impedance converter (NIC) created from an op-amp and a few passive components." %}}
 
 Typically the two resistances are the same (`\(R1 = R2\)`), and then the input impedance `\(Z_{IN}\)` is:
@@ -468,7 +472,21 @@ Z_{IN} = -Z
 \(-Z\) is the impedance of the component connected between the inverting terminal and ground, as shown on the diagram, in Ohms (\(\Omega\))
 </p>
 
-To prove this, we need to find the input current at inverting terminal, and then use `\(Z_{IN} = \frac{V}{I_{IN}}\)`. The input current can be found by application of Ohm's law and the golden rules of op-amps. Using the rule that the voltage at the two input terminals will be the same, we know the voltage across the impedance `\(Z\)` is going to be:
+### What Does Negative Impedance Actually Mean?
+
+What does negative impedance actually mean? If `\(Z\)` is just a simple resistor with resistance `\(R\)` (the most basic kind of NIC), then the impedance is `\(Z_{IN} = -R\)`. This means the circuit behaves just like a simple resistor connected to ground, **except that the current comes out of the resistor, not into it**.
+
+Things get more interesting when you replace this resistor with a capacitor.
+
+TODO: Add explanation of what happens when capacitor is added.
+
+### NIC Input Impedance Proof
+
+{{% note %}}
+Skip this section if you are not interested in the maths.
+{{% /note %}}
+
+To prove `\(Z_{IN} = -Z\)`, we need to find the input current at inverting terminal, and then use `\(Z_{IN} = \frac{V}{I_{IN}}\)`. The input current can be found by application of Ohm's law and the golden rules of op-amps. Using the rule that the voltage at the two input terminals will be the same, we know the voltage across the impedance `\(Z\)` is going to be:
 
 <p>\begin{align}
 \label{eqn:vzeqv}
@@ -494,25 +512,25 @@ Now knowing the voltage at the inverting terminal and the current through `\(R2\
 \label{eqn:vout_eq}
 V_{OUT} &= V_Z + V_{R2} \\
         &= V_Z + I_{R2} \cdot R \\
-        &= V + \frac{V}{Z} \cdot R & \text{Subs. in \ref{eqn:vzeqv} and \ref{eqn:i_r2}}
+        &= V + \frac{V}{Z} \cdot R &  &\text{Subs. in \ref{eqn:vzeqv} and \ref{eqn:i_r2}}
 \end{align}</p>
 
 Now that we know the voltage on both sides of `\(R1\)` we can find the voltage across it:
 
 <p>\begin{align}
 \label{eqn:v_r1}
-V_{R1} &= V_{OUT} - V \\
-       &= V + \frac{V}{Z} \cdot R - V   & \text{Subs. in \ref{eqn:vout_eq}} \\
-       &= \frac{V}{Z} \cdot R           & \text{Simplifying}
+V_{R1} &= V_{OUT} - V                   &\\
+       &= V + \frac{V}{Z} \cdot R - V   & &\text{Subs. in \ref{eqn:vout_eq}} \\
+       &= \frac{V}{Z} \cdot R           & &\text{Simplifying}
 \end{align}</p>
 
 Now we know the voltage across `\(R1\)` we can find the current going through it using Ohm's law:
 
 <p>\begin{align}
 \label{eqn:i_r1}
-I_{R1} &= \frac{V_{R1}}{R} \\
-       &= \frac{\frac{V}{Z} \cdot R}{R}   & \text{Subs. in \ref{eqn:v_r1}} \\
-       &= \frac{V}{Z}                     & \text{Simplifying}
+I_{R1} &= \frac{V_{R1}}{R}                &\\
+       &= \frac{\frac{V}{Z} \cdot R}{R}   & &\text{Subs. in \ref{eqn:v_r1}} \\
+       &= \frac{V}{Z}                     & &\text{Simplifying}
 \end{align}</p>
 
 Because the voltage on the right-hand side of `\(R1\)` is higher, this current is flowing right-to-left. Since no current flows into the inverting terminal of the op-amp, this also must be current flowing "out" of the input terminal. Thus:
@@ -526,9 +544,9 @@ Knowing the input current and voltage, we can finally write an equation for `\(Z
 
 <p>\begin{align}
 \label{eqn:z_in}
-Z_{IN} &= \frac{V_{IN}}{I_{IN}}         & \text{Ohms law} \\
-       &= \frac{V}{-\frac{V}{Z}}        & \text{Subs. in \ref{eqn:i_in}} \\
-       &= -Z                            & \text{Simplifying}
+Z_{IN} &= \frac{V_{IN}}{I_{IN}}       & &\text{Ohms law} \\
+       &= \frac{V}{-\frac{V}{Z}}      & &\text{Subs. in \ref{eqn:i_in}} \\
+       &= -Z                          & &\text{Simplifying}
 \end{align}</p>
 
 Proof complete!
