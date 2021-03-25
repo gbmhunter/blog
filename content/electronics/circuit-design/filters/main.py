@@ -1,8 +1,48 @@
-import matplotlib.pyplot as plt
+import csv
 import numpy as np
+import matplotlib.pyplot as plt
+from pathlib import Path
 
 def main():
     create_freq_response_plot()
+
+config = [
+    {
+        'data_path': Path('passive-lowpass-rc-gain-phase.csv'),
+        'legend': 'RC 1st Order',
+    },
+    {
+        'data_path': Path('active-lowpass-rc-2nd-order-gain-phase.csv'),
+        'legend': 'RC 2nd Order',
+    },
+    {
+        'data_path': Path('active-lowpass-sallen-key-gain-phase.csv'),
+        'legend': 'Sallen-Key, Standard',
+    },
+    {
+        'data_path': Path('lowpass-sallenkey-chebyshev3db-order2-fc1khz-gainphase.csv'),
+        'legend': 'Sallen-Key, -3dB Chebyshev',
+    },
+]
+
+def parse_row(data_in):
+    out = np.array(data_in)
+    out = out[1:-1]
+    out = out.astype(float)
+    return out
+
+def get_freq_mag_phase(csv_file_path):
+    with csv_file_path.open() as f:
+        reader = csv.reader(f, delimiter=';')
+        rows = [ row for row in reader ]
+        freq_data = parse_row(rows[0])
+        vout_mag_data = parse_row(rows[1])
+        vout_phase_data = parse_row(rows[2])
+    return {
+        'freq': freq_data,
+        'vout_mag': vout_mag_data,
+        'vout_phase': vout_phase_data,
+    }
 
 def create_freq_response_plot():
 
@@ -55,6 +95,32 @@ def create_freq_response_plot():
 
     plt.tight_layout()
     plt.savefig('rc-low-pass-filter-frequency-response.png')
+
+    # Low-pass filter comparison plots
+
+    data = [ get_freq_mag_phase(config_entry['data_path']) for config_entry in config ]
+
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(20, 10))
+
+    ax = axes[0]
+    for idx, config_entry in enumerate(config):    
+        ax.plot(data[idx]['freq'], data[idx]['vout_mag'], label=config_entry['legend'])
+    ax.set_title('Gain Response Of Different Low-Pass Filters\nfc=1kHz')
+    ax.set_xlabel('Frequency f (Hz)')
+    ax.set_xscale('log')
+    ax.set_ylabel('Gain (dB)')
+    ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
+    ax.legend()
+
+    ax = axes[1]
+    for idx, config_entry in enumerate(config):
+        ax.plot(data[idx]['freq'], data[idx]['vout_phase'], label=config_entry['legend'])
+    ax.set_title('Phase Response Of Different Low-Pass Filters\nfc=1kHz')
+    ax.set_xlabel('Frequency f (Hz)')
+    ax.set_xscale('log')
+    ax.set_ylabel('Gain (dB)')
+    ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
+    ax.legend();
 
 if __name__ == '__main__':
     main()
