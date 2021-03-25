@@ -5,25 +5,7 @@ from pathlib import Path
 
 def main():
     create_freq_response_plot()
-
-config = [
-    {
-        'data_path': Path('passive-lowpass-rc-gain-phase.csv'),
-        'legend': 'RC 1st Order',
-    },
-    {
-        'data_path': Path('active-lowpass-rc-2nd-order-gain-phase.csv'),
-        'legend': 'RC 2nd Order',
-    },
-    {
-        'data_path': Path('active-lowpass-sallen-key-gain-phase.csv'),
-        'legend': 'Sallen-Key, Standard',
-    },
-    {
-        'data_path': Path('lowpass-sallenkey-chebyshev3db-order2-fc1khz-gainphase.csv'),
-        'legend': 'Sallen-Key, -3dB Chebyshev',
-    },
-]
+    create_sallen_key_response_plot()
 
 def parse_row(data_in):
     out = np.array(data_in)
@@ -96,6 +78,50 @@ def create_freq_response_plot():
     plt.tight_layout()
     plt.savefig('rc-low-pass-filter-frequency-response.png')
 
+def create_sallen_key_response_plot():
+        # Low-pass filter comparison plots
+
+    data = get_freq_mag_phase(Path('low-pass-sallen-key/sim-results.csv'))
+
+    fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(8, 5), squeeze=False)
+
+    ax = axes[0][0]
+    color = 'C0'
+    ln1 = ax.plot(data['freq'], data['vout_mag'], label='Gain', color=color)
+    ax.set_title('Response Of A Low-Pass Sallen-Key Filter\n$f_c=1kHz$')
+    ax.set_xlabel('Frequency f (Hz)')
+    ax.set_xscale('log')
+    ax.set_ylabel('Gain (dB)', color=color)
+    ax.tick_params(axis='y', labelcolor=color)
+
+    ax2 = ax.twinx()
+    color = 'C1'
+    ln2 = ax2.plot(data['freq'], data['vout_phase'], label='Phase', color=color)
+    ax2.set_ylabel('Phase Shift ($^{\circ}$)', color=color)
+    ax2.tick_params(axis='y', labelcolor=color)
+
+    lns = ln1 + ln2
+    labs = [l.get_label() for l in lns]
+    ax.legend(lns, labs, loc=0)
+
+
+    ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
+    
+
+    # ax = axes[1]
+    # ax.plot(data[idx]['freq'], data[idx]['vout_phase'], label=config_entry['legend'])
+    # ax.set_title('Phase Response Of Different Low-Pass Filters\nfc=1kHz')
+    # ax.set_xlabel('Frequency f (Hz)')
+    # ax.set_xscale('log')
+    # ax.set_ylabel('Gain (dB)')
+    # ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
+    # ax.legend()
+
+    plt.tight_layout()
+    plt.savefig('low-pass-sallen-key/response.png')
+
+
+def create_low_pass_filter_comparison_plots():
     # Low-pass filter comparison plots
 
     data = [ get_freq_mag_phase(config_entry['data_path']) for config_entry in config ]

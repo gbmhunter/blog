@@ -861,5 +861,9 @@
         "zephyrproject",
         "zynq"
     ],
-    "vim.surround": true
+    "vim.surround": true,
+    "python.pythonPath": "c:\\Users\\gbmhu\\code\\blog\\.venv\\Scripts\\python.exe",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true
 }

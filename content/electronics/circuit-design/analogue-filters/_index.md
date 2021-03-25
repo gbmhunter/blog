@@ -269,11 +269,19 @@ A filter topology is an actual circuit configuration which can realize a number 
 
 Sallen-Key filters use the op-amp as an amplifier rather than an integrator. Also called a _voltage-controlled voltage source_ (VCVS).
 
+#### Low-Pass Sallen-Key Filter
+
+The schematic for a 2nd-order low-pass Sallen-Key filter is shown below:
+
+{{% figure src="low-pass-sallen-key/low-pass-sallen-key.svg" width="700px" caption="The schematic for a generic low-pass Sallen-Key filter." %}}
+
 A Sallen-Key filter has a gain which begins to increase again after a certain frequency in the stop band.
 
-TODO: Add schematic for Sallen-Key.
+We will simulate the response of a Sallen-Key filter designed with a cutoff frequency of 1kHz. Below is the KiCad schematic used for the simulation:
 
-TODO: Add simulation mag/phase plots.
+{{% figure src="low-pass-sallen-key/low-pass-sallen-key-simulation-schematic.png" width="800px" caption="Simulation schematics of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz." %}}
+
+{{% figure src="low-pass-sallen-key/response.png" width="800px" caption="The simulated gain (magnitude) and phase response of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz. The dotted line shows the cutoff frequency." %}}
 
 The KiCad schematic for this simulation can be <a href="low-pass-sallen-key/low-pass-sallen-key.sch" download>downloaded here</a>.
 
