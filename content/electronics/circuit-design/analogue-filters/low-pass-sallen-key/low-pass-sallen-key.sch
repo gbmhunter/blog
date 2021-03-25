@@ -31,27 +31,27 @@ $EndComp
 $Comp
 L mbedded-ninja-kicad-symbols-sim:DC12 V2
 U 1 1 605C572E
-P 7200 2800
-F 0 "V2" H 7328 2846 50  0000 L CNN
-F 1 "DC 12" H 7328 2755 50  0000 L CNN
-F 2 "" H 7200 2800 50  0000 C CNN
-F 3 "" H 7200 2800 50  0000 C CNN
-F 4 "V" H 7450 2550 60  0001 C CNN "Spice_Primitive"
-F 5 "1 2" H 7450 2650 60  0001 C CNN "Spice_Node_Sequence"
-	1    7200 2800
+P 6150 2900
+F 0 "V2" H 6278 2946 50  0000 L CNN
+F 1 "DC 12" H 6278 2855 50  0000 L CNN
+F 2 "" H 6150 2900 50  0000 C CNN
+F 3 "" H 6150 2900 50  0000 C CNN
+F 4 "V" H 6400 2650 60  0001 C CNN "Spice_Primitive"
+F 5 "1 2" H 6400 2750 60  0001 C CNN "Spice_Node_Sequence"
+	1    6150 2900
 	1    0    0    -1  
 $EndComp
 $Comp
 L mbedded-ninja-kicad-symbols-sim:DC12 V3
 U 1 1 605C61E3
-P 7200 3200
-F 0 "V3" H 7328 3246 50  0000 L CNN
-F 1 "DC 12" H 7328 3155 50  0000 L CNN
-F 2 "" H 7200 3200 50  0000 C CNN
-F 3 "" H 7200 3200 50  0000 C CNN
-F 4 "V" H 7450 2950 60  0001 C CNN "Spice_Primitive"
-F 5 "1 2" H 7450 3050 60  0001 C CNN "Spice_Node_Sequence"
-	1    7200 3200
+P 6150 3300
+F 0 "V3" H 6278 3346 50  0000 L CNN
+F 1 "DC 12" H 6278 3255 50  0000 L CNN
+F 2 "" H 6150 3300 50  0000 C CNN
+F 3 "" H 6150 3300 50  0000 C CNN
+F 4 "V" H 6400 3050 60  0001 C CNN "Spice_Primitive"
+F 5 "1 2" H 6400 3150 60  0001 C CNN "Spice_Node_Sequence"
+	1    6150 3300
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -94,19 +94,19 @@ $EndComp
 $Comp
 L power:GND #PWR?
 U 1 1 605C99D9
-P 7700 3050
-F 0 "#PWR?" H 7700 2800 50  0001 C CNN
-F 1 "GND" H 7705 2877 50  0000 C CNN
-F 2 "" H 7700 3050 50  0001 C CNN
-F 3 "" H 7700 3050 50  0001 C CNN
-	1    7700 3050
+P 6650 3150
+F 0 "#PWR?" H 6650 2900 50  0001 C CNN
+F 1 "GND" H 6655 2977 50  0000 C CNN
+F 2 "" H 6650 3150 50  0001 C CNN
+F 3 "" H 6650 3150 50  0001 C CNN
+	1    6650 3150
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7200 3000 7700 3000
+	6150 3100 6650 3100
 Wire Wire Line
-	7700 3000 7700 3050
-Connection ~ 7200 3000
+	6650 3100 6650 3150
+Connection ~ 6150 3100
 Text Label 5300 3450 0    50   ~ 0
 V+
 Text Label 5300 4050 0    50   ~ 0
@@ -191,9 +191,9 @@ F 3 "" H 3800 4050 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3800 3650 3900 3650
-Text Label 7200 2600 0    50   ~ 0
+Text Label 6150 2700 0    50   ~ 0
 V+
-Text Label 7200 3400 0    50   ~ 0
+Text Label 6150 3500 0    50   ~ 0
 V-
 Text Notes 4150 4450 0    50   ~ 0
 .ac dec 10 1 10Meg
