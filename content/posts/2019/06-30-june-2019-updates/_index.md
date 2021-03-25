@@ -32,7 +32,7 @@ type: "post"
 
 * Updated the {{% link text="Python Debugging page" src="/programming/languages/python/python-debugging" %}} with more info on `pdb`.
 
-* Updated the {{% link text="Filters page" src="/electronics/circuit-design/filters" %}} with more information on low-pass RC filters, including plots of the frequency response:
+* Updated the {{% link text="Filters page" src="/electronics/circuit-design/analogue-filters" %}} with more information on low-pass RC filters, including plots of the frequency response:
 
     {{% figure src="/electronics/circuit-design/filters/passive-filters/rc-low-pass-filter-frequency-response.png" width="500px" %}}
 
