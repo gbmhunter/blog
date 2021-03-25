@@ -6,7 +6,7 @@ description: "A tutorial on electronic filters, including low-pass/high-pass RC,
 draft: false
 lastmod: 2021-03-25
 tags: [ "electronics", "circuit design", "filters", "passive filters", "active filters", "RC", "low-pass", "high-pass", "LC", "bode plot", "frequency response" ]
-title: "Filters"
+title: "Analogue Filters"
 type: "page"
 ---
 
@@ -14,13 +14,28 @@ TODO: Need to tidy-up/reorganize this page.
 
 ## Overview
 
+### Passive vs. Active
+
 Even in the pass-band, passive filters almost always increase the impedance of the signal, post filter. For a trace on a circuit board, this actually makes the post-filter trace more susceptible to picking up external noise. For this reason, when using a passive filter to filter out induced noise of a sensitive trace, always place a passive filter as close as possible to the receiving end of the signal (e.g. as close as possible to an ADC pin on a microcontroller).
 
 Low-pass filters have an additional advantage when used on the analogue outputs from microcontrollers. If the DAC does not work properly for some reason (assuming you are using a DAC), you can sometimes implement the desired behaviour by using PWM instead. With the cut-off frequency set correctly, the PWM signal will be filtered so that a DC voltage proportional to the duty cycle remains, which is what you wished to implement with the DAC in the first place.
 
-## First-Order Low-Pass RC Filter
+Active filters are electronic waveform filters which require their own power source (such as any filter powered with an [op-amp](/electronics/components/op-amps)), as opposed to passive filters (such as RC filters) which do not require an external power source. Active filters allow higher roll-of and better transfer characteristics than passive filters, but require more componentry and consume power.
 
-### Schematic
+### Types of Filters
+
+* Filter topologies define the what components go where.
+* Filter tunings define the values of the components in a particular topology. Filter tunings include Butterworth, Chebyshev and Bessel.
+
+### Filter Parameters
+
+* Gain Factor: At frequencies `\(f << f_c\)`, the circuit multiplies the input signal by gain factor `K`.
+
+## 1st Order Filters
+
+### First-Order Low-Pass RC Filter
+
+#### Schematic
 
 A first-order low-pass RC filter consists of a single series resistor and then a single capacitor to ground.
 
@@ -28,7 +43,7 @@ A first-order low-pass RC filter consists of a single series resistor and then a
 
 The low-pass RC filter lets through low frequencies but dampens high frequencies.
 
-### How To Choose R And C
+#### How To Choose R And C
 
 The cut-off frequency is determined by **both the value of the resistor and the value of the capacitor**, and is equal to:
 
@@ -48,7 +63,7 @@ As usual, the choice of `\(R\)` and `\(C\)` is a design decision which involves 
 
 Typically, a resistance between `\(1k\Omega\)` and `\(100k\Omega\)` is used. Then the capacitance is chosen to give the desired cut-off frequency.
 
-### Frequency Response
+#### Frequency Response
 
 The following plot shows the frequency response (also known as a _bode plot_) of a low-pass filter, with values `\(R = 1k\Omega\)` and `\(C = 1\mu F\)`. Magnitude is plotted in blue and phase in green.
 
@@ -81,13 +96,13 @@ The choice of resistor and capacitor above gives a cut-off frequency of `\(f_c =
 
 Low-pass RC filters are typically used for applications up to 100kHz, above 100kHz RLC filters are used[^elec-tutorial-filters].
 
-### Time Constant
+#### Time Constant
 
 The time constant `\(\tau\)` of a low-pass RC filter is[^wikipedia-low-pass-filter]:
 
 <p>$$ \tau = RC $$</p>
 
-### Typical Uses
+#### Typical Uses
 
 The low-pass RC filter is one (if not) the most commonly used filters on circuit board designs. Its popularity results from it's simplicity (two passive components), low cost (one resistor, one capacitor), small size, and it's myriad of uses.
 
@@ -103,7 +118,7 @@ Another way to reduce the reduction in noise immunity due to the resistor in the
 
 **A RC filter resistance which is at least 50x lower than the ADC input impedance is acceptable in most cases.** For a standard ADC input impedance of `\(50k\Omega\)`, this means that the resistor in the RC filter should be no more than `\(1k\Omega\)`.
 
-### Transient Response
+#### Transient Response
 
 The equation for the voltage across the capacitor is:
 
@@ -125,11 +140,11 @@ This equation can be re-arranged to find the time `\(t\)`, and which the capacit
 This form of the equation can be useful to calculate the delay (aka the time `\(t\)`), that the RC circuit will provide before something happens.
 
 
-## Building A VDAC From An ADC And Low-pass RC Filter
+### Building A VDAC From An ADC And Low-pass RC Filter
 
 **Low-pass RC filters can also be used to create a VDAC (voltage-based digital-to-analogue converter) from a {{% link text="PWM signal" src="/electronics/circuit-design/pulse-width-modulation-pwm" %}}.** This is useful since many microcontrollers have one (or more) PWM peripherals, but rarely a built-in VDAC. A simple RC filter placed on the output pin of the PWM signal can convert it into a VDAC, in where the **duty cycle** determines the analogue voltage output.
 
-## Low-Pass LC Filter
+### Low-Pass LC Filter
 
 The basic low-pass LC filter consists of a single inductor and capacitor.
 
@@ -149,7 +164,7 @@ The characteristic impedance is:
 
 which you will notice is also present in the cut-off frequency equation.
 
-## Parasitic elements
+#### Parasitic elements
 
 The main parasitic element to consider with a low-pass LC filter is the parasitic coil resistance of the inductor. This dampens the output signal.
 
@@ -157,7 +172,7 @@ The main parasitic element to consider with a low-pass LC filter is the parasiti
 
 This is equivalent to a low-pass RLC filter.
 
-## Low-pass RLC Filter
+### Low-pass RLC Filter
 
 The quality factor is equal to:
 
@@ -171,7 +186,7 @@ The damping factor is equal to:
 
 <p>$$ d_0 = \frac{R}{2\pi fL} $$</p>
 
-## Low-Pass Pi And t Filters
+### Low-Pass Pi And t Filters
 
 Low-pass Pi (π) and t-filters are one step better than the low-pass LC or RC filter.
 
@@ -203,13 +218,13 @@ A t-filter is usually better at suppressing high-frequencies than a π-filter, a
 
 Both π and t filters may use [feedthrough capacitors](/electronics/components/capacitors#feedthrough-capacitors) instead of standard caps for better performance (feedthrough capacitors have lower parasitic series inductance).
 
-### Prepackaged Pi And T Filters
+### Pre-packaged Pi And T Filters
 
-π and t filters can come in prepackaged components which take all the hassle out of designing the filter correctly and reduce the BOM count of your design. They are commonly in [EIAxxxx chip packages](/pcb-design/component-packages/chip-eia-component-packages/).
+π and t filters can come in pre-packaged components which take all the hassle out of designing the filter correctly and reduce the BOM count of your design. They are commonly in [EIAxxxx chip packages](/pcb-design/component-packages/chip-eia-component-packages/).
 
 One such example is the [TDK Corporation MEM Series](http://www.digikey.com/product-search/en?FV=ffec061a).
 
-## Second-Order Filters And Beyond
+## 2nd-Order Filters
 
 A second-order low pass RC filter is the result of chaining two first-order RC filters together in series. This chaining is also called _cascading_. The benefit of doing this is that a second-order filter has a roll-off of -40dB/decade, twice that of a first-order filter.
 
@@ -225,34 +240,19 @@ Is is important to remember that for a second-order filter, the gain at the corn
 
 The reduce the effects of each stages dynamic impedance effecting it's neighbours, its recommended that the following stages resistance should be around 10x the previous stage, and the capacitance 1/10th of the previous stage.
 
-## Passive RC Networks With Voltage Gain > 1
+### Passive RC Networks With Voltage Gain > 1
 
 It might seem hard to believe, but you can build RC networks which increase the input voltage at specific frequencies. See [Herman Epstein - Synthesis Of Passive RC Networks With Gains Greater Than Unity](http://www.oldfriend.url.tw/article/IEEE_paper/Synthesis%20of%20Passive%20RC%20Networks%20with%20Gains.pdf) [(cached copy, 2021-01-23)](./herman-epstein-synthesis-of-passive-rc-networks-with-gains-greater-than-unity.pdf) for a detailed analysis.
 
-## Overview
-
-Active filters are electronic waveform filters which require their own power source (such as any filter powered with an [op-amp](/electronics/components/op-amps)), as opposed to passive filters (such as RC filters) which do not require an external power source. Active filters allow higher roll-of and better transfer characteristics than passive filters, but require more componentry and consume power.
-
-## Gain Factor
-
-At frequencies f << f_c, the circuit multiplies the input signal by gain factor `K`.
-
-## Types of Filters
-
-* Filter topologies define the what components go where.
-* Filter tunings define the values of the components in a particular topology. Filter tunings include Butterworth, Chebyshev and Bessel.
-
-### Overview
+### Filter Tunings
 
 * **Butterworth** (designed to give a flat gain response through the pass-band, at the expense of having a low transition between the pass and stop-band)
 * **Chebyshev**: Designed to have the steepest transition between the pass ad stop-band, at the expense of gain ripple through the pass-band. Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name.
 * **Bessel**
 
-## Filter Topologies
+### 2nd Order Filter Topologies
 
 A filter topology is an actual circuit configuration which can realize a number of different filter designs. This is different from the configurations such as Butterworth, Chebyshev and Bessel which define the component tuning
-
-### Overview
 
 * Sallen-Key (a.k.a. KRC filters)
 * Tow-Thomas
@@ -265,12 +265,6 @@ Sallen-Key filters use the op-amp as an amplifier rather than an integrator. Als
 
 A Sallen-Key filter has a gain which begins to increase again after a certain frequency in the stop band.
 
-## Filter Design
-
-## Gain
-
-Active filters can have gain. However, introducing gain introduces other issues, and the usual practise is to make any active filter have unity gain (a gain of one). Then what is the advantage of an active filter over a passive you may ask? A passive filter always has a gain of less than 1, which results it the output being attenuated to some degree. The gain of a passive filter also depends on the load, while an ideal active filter keeps the gain stable.
-
 ## Design Tools
 
 **OKAWA Filter Design and Analysis** ([http://sim.okawa-denshi.jp/en/Fkeisan.htm](http://sim.okawa-denshi.jp/en/Fkeisan.htm)) - Recommended Awesome site with web-based calculators and design tools for active and passive filters. Very detailed site with many configuration options and the site even outputs graphs of your designed filter response.
@@ -279,7 +273,7 @@ Active filters can have gain. However, introducing gain introduces other issues,
 
 ## External Resources
 
-* The [New Jersey Institue of Technology EE 494 Laboratory IV Part B lab manual](https://web.njit.edu/~gilhc/EE494/ee494b.pdf) is a great practical resource for learning how to design active filters.
+* The [New Jersey Institute of Technology EE 494 Laboratory IV Part B lab manual](https://web.njit.edu/~gilhc/EE494/ee494b.pdf) is a great practical resource for learning how to design active filters.
 * The [Design With Operational Amplifiers And Analog Integrated Circuits by Sergio Franco, Fourth Edition](https://www.mheducation.com/highered/product/design-operational-amplifiers-analog-integrated-circuits-franco/M9780078028168.html) is a great book to purchase if you are interesting in further reading and getting right into the weeds of analogue filter design!
 
 ## References
