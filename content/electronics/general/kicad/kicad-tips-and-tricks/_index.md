@@ -51,7 +51,17 @@ kicad
 
 ### Windows
 
+#### Self-Extracting Installer
+
 Download and install the self-extracting installer from <https://kicad-pcb.org/download/windows/>.
+
+#### choco
+
+You can use the Windows package manager [Chocolatey](https://chocolatey.org/) to install KiCad. If you have Chocolatey installed, use:
+
+```ps
+choco install kicad
+```
 
 ## Configuring The Global Symbol Library Table
 
@@ -285,11 +295,11 @@ KiCad comes with example simulation circuits located at `<KiCad installation dir
 
 * rectifier
 * pspice
-* **sallen_key**
+* **sallen_key**: Another example using op-amps, this time setup to perform AC analysis (i.e. produce gain and phase plots). Simulates a Sallen-Key low-pass filter.
 
-{{% img src="kicad-sallen-key-simulation-schematic-screenshot.png" width="600px" caption="A screenshot of the Sallen Key simulation example that comes shipped with KiCad. Layout of circuit slightly adjusted to improve screenshot."%}}
+    {{% img src="kicad-sallen-key-simulation-schematic-screenshot.png" width="600px" caption="A screenshot of the Sallen Key simulation example that comes shipped with KiCad. Layout of circuit slightly adjusted to improve screenshot."%}}
 
-{{% img src="kicad-sallen-key-simulation-plots.png" width="700px" caption="The simulation plots for the op-amp output of the KiCad Sallen Key simulation example." %}}
+    {{% img src="kicad-sallen-key-simulation-plots.png" width="700px" caption="The simulation plots for the op-amp output of the KiCad Sallen Key simulation example." %}}
 
 ### Simulation Specific Symbol Parameters
 
@@ -348,6 +358,16 @@ For a simple DC voltage source, you can use the syntax:
 `DC VOLT`
 
 e.g. `DC 5` for a +5V voltage source.
+
+**AC**
+
+Use the syntax:
+
+```text
+AC <VOLTAGE>
+```
+
+You may get the error `Warning: vX: has no value, DC 0 assumed` when running a simulation with an AC source which has no DC set point provided. This is generally o.k., as it will assume the DC operating point is `0V` which is normally what you want.
 
 **SINE**
 
@@ -473,11 +493,11 @@ Standard Eeschema _net labels_ can be used to name nets which will be carried th
 
 There are three main modes of analysis:
 
-* DC analysis: The time varying behaviour of reactive elements is ignored.
+* **DC analysis:** The time varying behaviour of reactive elements is ignored.
   * Basic DC analysis: Analysis of the circuit with each voltage/current source at a single DC level.
   * Swept DC analysis: Basic DC analysis but repeated at a number of different DC input levels for the voltage/current sources.
-* AC analysis: The simulator outputs magnitude and phase information as a function of frequency.
-* Transient analysis: The entire circuit, including DC and reactive elements is simulated. The output is the voltage and currents at each node as a function of time.
+* **AC analysis:** The simulator outputs magnitude and phase information as a function of frequency. Good for analyzing passive and op-amp based analogue filters.
+* **Transient analysis:** The entire circuit, including DC and reactive elements is simulated. The output is the voltage and currents at each node as a function of time.
 
 Although KiCad allows you to configure modes of analysis through the simulation GUI window, this information is not saved with the schematic and gets lost every time you restart. I recommend you add a text string on the schematic instead.
 
@@ -509,6 +529,14 @@ To do a basic sweep of voltage source `V1` (which must exist in your schematic w
 
 Click [here](kicad-spice-dc-voltage-sweep-zener-files.zip) to download the source files for this simulation example.
 
+#### AC Analysis (.ac)
+
+For example, to simulate the response of the circuit from `1Hz` to `10MHz`:
+
+```text
+.ac dec 10 1 10Meg
+```
+
 ### Printing Out The Version Of ngspice
 
 You can print out the version of ngspice by adding the following text to the schematic:
@@ -522,6 +550,12 @@ version
 ngspice will then print out the following information when the simulation is run:
 
 {{% img src="adding-control-text-to-print-ngspice-version-in-kicad.png" width="500px" caption="Adding the shown text anywhere on the KiCAD schematic will trigger ngspice to print out version/build information when you run the simulation." %}}
+
+### Saving Plots
+
+You can save the data on the plots through the GUI. Click _File->Save as .csv file_. The CSV file will be semi-colon delimited. Rather than outputting a header row with the names of the columns of data and then each successive row being a data point, the csv file will contain a row (new line) for each axis
+
+Note that is frequency is plotted on the x-axis, KiCad/ngspice will incorrectly export the data as `Time` in the csv file.
 
 ### Common Simulation Errors
 
