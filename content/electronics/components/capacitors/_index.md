@@ -1094,7 +1094,7 @@ Many smaller, PCB suitable feedthrough capacitors come in {{% link text="chip pa
 
 ### Uses
 
-Feedthrough capacitors are commonly used in {{% link text="RC, LC, π and t-type filters" src="/electronics/circuit-design/filters/passive-filters" %}}) when good RF performance is required.
+Feedthrough capacitors are commonly used in {{% link text="RC, LC, π and t-type filters" src="/electronics/circuit-design/filters" %}}) when good RF performance is required.
 
 ## Repairing Electrolytics
 
