@@ -55,3 +55,5 @@ type: "post"
 * Added a section to the Op-Amp page on Negative Impedance Converters (NICs).
 
     {{% figure src="/electronics/components/op-amps/negative-impedance-converter-nic.svg" width="500px" %}}
+
+* Merged the Passive Filters and Active Filters pages into a single new {{% link text="Analogue Filters page" src="/electronics/circuit-design/analogue-filters/" %}} and re-organized the entire page.

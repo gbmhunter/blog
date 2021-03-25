@@ -1,0 +1,52 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 100n
+D Generic, Cap
+K capacitor ceramic sim simulation
+$ENDCMP
+#
+$CMP 10k
+D Generic, Res
+K R res resistor sim simulation
+$ENDCMP
+#
+$CMP 2N7002
+D IC, MOSFET, N-Ch
+K transistor NMOS N-MOS N-MOSFET sim simulation
+F ~
+$ENDCMP
+#
+$CMP AD8051
+D IC, Op-Amp
+K op-amp sim simulation
+$ENDCMP
+#
+$CMP BSS84
+D IC, MOSFET, P-Ch
+K transistor PMOS P-MOS P-MOSFET sim simulation
+F ~
+$ENDCMP
+#
+$CMP DC12
+D Voltage Source, DC, 12V (add space between DC and 12)
+$ENDCMP
+#
+$CMP GEN_DIODE
+D Generic, Diode
+K diode sim simulation
+F ~
+$ENDCMP
+#
+$CMP GEN_DIODE_ZENER_3.3V
+D Generic, Diode, Zener, 3.3V
+K diode
+F ~
+$ENDCMP
+#
+$CMP VPULSE
+D Voltage Source, Pulse
+K sim simulation
+F ~
+$ENDCMP
+#
+#End Doc Library

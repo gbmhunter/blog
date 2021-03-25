@@ -2,15 +2,13 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Circuit Design" ]
 date: 2013-01-03
-description: "A tutorial on electronic filters, including low-pass/high-pass RC, LC and RLC filters."
+description: "A tutorial on analogue electronic filters, including low-pass/high-pass 1st order RC, LC and RLC filters and 2nd order RC, Sallen-Key filter topologies."
 draft: false
 lastmod: 2021-03-25
-tags: [ "electronics", "circuit design", "filters", "passive filters", "active filters", "RC", "low-pass", "high-pass", "LC", "bode plot", "frequency response" ]
+tags: [ "electronics", "circuit design", "filters", "passive filters", "active filters", "RC", "low-pass", "high-pass", "LC", "bode plot", "frequency response", "Sallen-Key", "voltage-controlled voltage source", "VCVS", "cutoff frequency", "corner frequency", "break frequency" ]
 title: "Analogue Filters"
 type: "page"
 ---
-
-TODO: Need to tidy-up/reorganize this page.
 
 ## Overview
 
@@ -29,7 +27,15 @@ Active filters are electronic waveform filters which require their own power sou
 
 ### Filter Parameters
 
-* Gain Factor: At frequencies `\(f << f_c\)`, the circuit multiplies the input signal by gain factor `K`.
+#### Cutoff Frequency (fc)
+
+The _cutoff frequency_ (a.k.a. _corner frequency_ or _break frequency_) is the frequency which marks the **transition from a pass band to a stop band**. It marks the frequency at which the energy (whether it be voltage, current or both) stops being passed through and begins being blocked. For any real filter, there is a transition from the passband to the stopband, as so the cutoff frequency is usually defined at the "-3dB" point --- the point at which the **signal degrades to -3dB (half power) of the nominal passband value**.
+
+The symbol `\(f_c\)` is usually used to represent the cutoff frequency. Sometimes you may see `\(f_{-3dB}\)` instead.
+
+#### Gain Factor (K)
+
+At frequencies `\(f << f_c\)`, the circuit multiplies the input signal by gain factor `K`.
 
 ## 1st Order Filters
 
@@ -264,6 +270,12 @@ A filter topology is an actual circuit configuration which can realize a number 
 Sallen-Key filters use the op-amp as an amplifier rather than an integrator. Also called a _voltage-controlled voltage source_ (VCVS).
 
 A Sallen-Key filter has a gain which begins to increase again after a certain frequency in the stop band.
+
+TODO: Add schematic for Sallen-Key.
+
+TODO: Add simulation mag/phase plots.
+
+The KiCad schematic for this simulation can be <a href="low-pass-sallen-key/low-pass-sallen-key.sch" download>downloaded here</a>.
 
 ## Design Tools
 
