@@ -37,6 +37,10 @@ The symbol `\(f_c\)` is usually used to represent the cutoff frequency. Sometime
 
 At frequencies `\(f << f_c\)`, the circuit multiplies the input signal by gain factor `K`.
 
+#### Component Spread
+
+Component spread is a measure of ratio between the highest and lowest valued components required to construct a filter. Low component spread is a good property for a filter to have, as it aids manufacturability.
+
 ## 1st Order Filters
 
 ### First-Order Low-Pass RC Filter
@@ -267,13 +271,15 @@ A filter topology is an actual circuit configuration which can realize a number 
 
 ### Sallen-Key
 
-Sallen-Key filters use the op-amp as an amplifier rather than an integrator. Also called a _voltage-controlled voltage source_ (VCVS).
+Sallen-Key filters use the op-amp as an amplifier rather than an integrator. Also called a _voltage-controlled voltage source_ (VCVS) or a _Sallen and Key_ filter. It was first introduced in 1955 by R.P. Sallen and E.L. Key of MIT's Lincoln Labs, whose last names give this filter it's name.
+
+The Sallen-Key filter is one of the most popular active 2nd order analogue filters. It has low _component spread_.
 
 #### Low-Pass Sallen-Key Filter
 
-The schematic for a 2nd-order low-pass Sallen-Key filter is shown below:
+The schematic for a unity-gain low-pass Sallen-Key filter is shown below:
 
-{{% figure src="low-pass-sallen-key/low-pass-sallen-key.svg" width="700px" caption="The schematic for a generic low-pass Sallen-Key filter." %}}
+{{% figure src="low-pass-sallen-key/low-pass-sallen-key.svg" width="700px" caption="The schematic for a unity-gain low-pass Sallen-Key filter." %}}
 
 A Sallen-Key filter has a gain which begins to increase again after a certain frequency in the stop band.
 
@@ -281,9 +287,17 @@ We will simulate the response of a Sallen-Key filter designed with a cutoff freq
 
 {{% figure src="low-pass-sallen-key/low-pass-sallen-key-simulation-schematic.png" width="800px" caption="Simulation schematics of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz." %}}
 
+The KiCad schematic for this simulation can be <a href="low-pass-sallen-key/low-pass-sallen-key.sch" download>downloaded here</a>. The simulated gain (magnitude) and phase response is shown below:
+
 {{% figure src="low-pass-sallen-key/response.png" width="800px" caption="The simulated gain (magnitude) and phase response of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz. The dotted line shows the cutoff frequency." %}}
 
-The KiCad schematic for this simulation can be <a href="low-pass-sallen-key/low-pass-sallen-key.sch" download>downloaded here</a>.
+TODO: Add info on how to calculate the values of the R's and C's.
+
+The transfer function:
+
+<p>\begin{align}
+\frac{v_{out}}{v_{in}} = \frac{\frac{1}{R1C1R2C2}}{s^2 + \left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)s + \frac{1}{R1C1R2C2}}
+\end{align}</p>
 
 ## Design Tools
 
