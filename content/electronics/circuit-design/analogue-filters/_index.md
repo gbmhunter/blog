@@ -39,7 +39,11 @@ At frequencies `\(f << f_c\)`, the circuit multiplies the input signal by gain f
 
 #### Component Spread
 
-Component spread is a measure of ratio between the highest and lowest valued components required to construct a filter. Low component spread is a good property for a filter to have, as it aids manufacturability.
+_Component spread_ is a measure of ratio between the highest and lowest valued components required to construct a filter. Low component spread is a good property for a filter to have, as it aids manufacturability.
+
+#### Filter Optimizations
+
+_Filter optimizations_ maximize a certain characteristic of a filter topology, such as maximum pass-band flatness or steepest roll-off. Butterworth, Chebyshev and Bessel are examples of filter optimizations.
 
 ## 1st Order Filters
 
@@ -236,7 +240,7 @@ One such example is the [TDK Corporation MEM Series](http://www.digikey.com/prod
 
 ## 2nd-Order Filters
 
-A second-order low pass RC filter is the result of chaining two first-order RC filters together in series. This chaining is also called _cascading_. The benefit of doing this is that a second-order filter has a roll-off of -40dB/decade, twice that of a first-order filter.
+This chaining is also called _cascading_. The benefit of doing this is that a second-order filter has a roll-off of -40dB/decade, twice that of a first-order filter.
 
 ### Second-Order Low-Pass RC
 
@@ -254,11 +258,31 @@ The reduce the effects of each stages dynamic impedance effecting it's neighbour
 
 It might seem hard to believe, but you can build RC networks which increase the input voltage at specific frequencies. See [Herman Epstein - Synthesis Of Passive RC Networks With Gains Greater Than Unity](http://www.oldfriend.url.tw/article/IEEE_paper/Synthesis%20of%20Passive%20RC%20Networks%20with%20Gains.pdf) [(cached copy, 2021-01-23)](./herman-epstein-synthesis-of-passive-rc-networks-with-gains-greater-than-unity.pdf) for a detailed analysis.
 
-### Filter Tunings
+### Filter Optimizations (Filter Coefficients)
 
-* **Butterworth** (designed to give a flat gain response through the pass-band, at the expense of having a low transition between the pass and stop-band)
-* **Chebyshev**: Designed to have the steepest transition between the pass ad stop-band, at the expense of gain ripple through the pass-band. Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name.
-* **Bessel**
+_Filter optimizations_ are specific tunings of filters to maximise a particular characteristic of it's response. These are also know as _filter coefficients_ as a filter optimization directly specifies what the filter coefficients must be.
+
+* **Butterworth** Optimized for the flattest response through the pass-band, at the expense of having a low transition between the pass and stop-band.
+* **Chebyshev**: Designed to have the steepest transition between the pass and stop-band, at the expense of gain ripple through the pass-band. Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name.
+* **Bessel**: Optimized for linear phase response up to (or down to for high-pass filters) the cutoff frequency `\(f_c\)`, at the expense of a slower transition to the stop-band. This is useful to minimizing the signal distortion (a linear _phase response_ in the frequency domain is a constant _time delay_ in the time domain).
+
+#### Chebyshev Optimization
+
+Chebyshev filters with even order numbers (e.g. 2nd order, 4th order, ...) generate ripples above the 0dB line, filters with odd order numbers (e.g. 3rd order, 5th order, ...) generate ripples below the 0dB line.
+
+**Chebyshev Coefficients For 3dB Passband Ripple**
+
+* `\(n\)` is the filter order
+* `\(i\)` is the partial filter order
+* `\(a_i\)` and `\(b_i\)` are the filter coefficients
+* `\(k_i\)` is the ratio between the corner frequency of the partial filter `\(f_{ci}\)` and the corner frequency of the overall filter `\(f_c\)`. In equation form:
+    <p>\begin{align} k_i = \frac{f_{ci}}{f_c} \end{align}</p>
+* `\(Q_i\)` is the quality factor of the partial filter
+
+`\(n\)` | `\(i\)` | `\(a_i\)` | `\(b_i\)` | `\(k_i\)` | `\(Q_i\)`
+----|------|--------|---------|---------|-----
+1   | 1    | 1.0000 | 0.0000  | 1.000   | n/a
+2   | 1    | 1.0650 | 1.9305  | 1.000   | 1.30
 
 ### 2nd Order Filter Topologies
 
@@ -291,13 +315,83 @@ The KiCad schematic for this simulation can be <a href="low-pass-sallen-key/low-
 
 {{% figure src="low-pass-sallen-key/response.png" width="800px" caption="The simulated gain (magnitude) and phase response of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz. The dotted line shows the cutoff frequency." %}}
 
-TODO: Add info on how to calculate the values of the R's and C's.
-
 The transfer function:
 
 <p>\begin{align}
 \frac{v_{out}}{v_{in}} = \frac{\frac{1}{R1C1R2C2}}{s^2 + \left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)s + \frac{1}{R1C1R2C2}}
 \end{align}</p>
+
+The resistors R1 and R2:
+
+<p>\begin{align}
+\label{eqn:r1r2eq}
+R1, R2 = \frac{a_1 C2 \mp \sqrt{a_1^2 C2^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2}
+\end{align}</p>
+
+where you use the `\(-\)` sign when calculating `\(R1\)` and the `\(+\)` sign for calculating `\(R2\)`.
+
+To obtain real values under the square root, `\(C2\)` must obey the follow condition:
+
+<p>\begin{align}
+\label{eqn:c2geq}
+C2 \geq C1 \frac{4b_1}{a_1^2}
+\end{align}</p>
+
+#### Design Example: 2nd Order Low Pass Sallen-Key Filter
+
+The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Chebyshev 3dB ripple coefficients (this will give us a sharp transition from the passband to the stopband) and a corner frequency must be `\(f_c = 1kHz\)`.
+
+1. Look up the Chebyshev filter coefficients. From the table we get:
+
+    <p>\begin{align}
+    a_1 = 1.0650 \\
+    b_1 = 1.9305
+    \end{align}</p>
+
+1. Choose a capacitance for `\(C1\)`. This is rather arbitrary, but a good recommended starting range is something between `\(1-100nF\)`. Lets pick:
+    
+    <p>\begin{align}
+    C1 = 10nF
+    \end{align}</p>
+
+1. Calculate the capacitance of `\(C2\)` from `\(Eq. \ref{eqn:c2geq}\)`:
+
+    <p>\begin{align}
+    C2 &\geq C1 \frac{4b_1}{a_1^2} \\
+       &\geq 10nF \frac{4\cdot1.9305}{1.0650^2} \\
+       &\geq 68.1nF
+    \end{align}</p>
+
+    Pick the next largest E12 value:
+
+    <p>\begin{align}
+    C2 = 82nF
+    \end{align}</p>
+
+1. Calculate `\(R1\)` and `\(R2\)` using `\(Eq. \ref{eqn:r1r2eq}\)`:
+
+    <p>\begin{align}
+    R1 &= \frac{a_1 C2 - \sqrt{a_1^2 C2^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2} \\
+       &= \frac{1.0650 \cdot 82nF - \sqrt{1.0650^2 \cdot 82nF^2 - 4 \cdot 1.9305 \cdot 10nF \cdot 82nF}}{4\pi \cdot 1kHz \cdot 10nF \cdot 82nF} \\
+       &= 4.98k\Omega
+    \end{align}</p>
+
+    <p>\begin{align}
+    R2 &= \frac{a_1 C2 + \sqrt{a_1^2 C2^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2} \\
+       &= \frac{1.0650 \cdot 82nF + \sqrt{1.0650^2 \cdot 82nF^2 - 4 \cdot 1.9305 \cdot 10nF \cdot 82nF}}{4\pi \cdot 1kHz \cdot 10nF \cdot 82nF} \\
+       &= 12.0k\Omega
+    \end{align}</p>
+
+    Pick the closest E96 values:
+
+    <p>\begin{align}
+    R1 = 4.99k\Omega \\
+    R2 = 12.1k\Omega
+    \end{align}</p>
+
+
+
+
 
 ## Design Tools
 
@@ -309,6 +403,7 @@ The transfer function:
 
 * The [New Jersey Institute of Technology EE 494 Laboratory IV Part B lab manual](https://web.njit.edu/~gilhc/EE494/ee494b.pdf) is a great practical resource for learning how to design active filters.
 * The [Design With Operational Amplifiers And Analog Integrated Circuits by Sergio Franco, Fourth Edition](https://www.mheducation.com/highered/product/design-operational-amplifiers-analog-integrated-circuits-franco/M9780078028168.html) is a great book to purchase if you are interesting in further reading and getting right into the weeds of analogue filter design!
+* [Op Amps For Everyone by Ron Mancini (SLOD006B)](https://web.mit.edu/6.101/www/reference/op_amps_everyone.pdf) has some detailed sections on op-amp filter circuits.
 
 ## References
 
