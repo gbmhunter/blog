@@ -258,9 +258,9 @@ The reduce the effects of each stages dynamic impedance effecting it's neighbour
 
 It might seem hard to believe, but you can build RC networks which increase the input voltage at specific frequencies. See [Herman Epstein - Synthesis Of Passive RC Networks With Gains Greater Than Unity](http://www.oldfriend.url.tw/article/IEEE_paper/Synthesis%20of%20Passive%20RC%20Networks%20with%20Gains.pdf) [(cached copy, 2021-01-23)](./herman-epstein-synthesis-of-passive-rc-networks-with-gains-greater-than-unity.pdf) for a detailed analysis.
 
-### Filter Optimizations (Filter Coefficients)
+### Filter Optimizations
 
-_Filter optimizations_ are specific tunings of filters to maximise a particular characteristic of it's response. These are also know as _filter coefficients_ as a filter optimization directly specifies what the filter coefficients must be.
+_Filter optimizations_ are specific tunings of filters to maximise a particular characteristic of it's response. Filter optimization directly specifies what the filter coefficients must be.
 
 * **Butterworth** Optimized for the flattest response through the pass-band, at the expense of having a low transition between the pass and stop-band.
 * **Chebyshev**: Designed to have the steepest transition between the pass and stop-band, at the expense of gain ripple through the pass-band. Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name.
@@ -269,6 +269,8 @@ _Filter optimizations_ are specific tunings of filters to maximise a particular 
 #### Chebyshev Optimization
 
 Chebyshev filters with even order numbers (e.g. 2nd order, 4th order, ...) generate ripples above the 0dB line, filters with odd order numbers (e.g. 3rd order, 5th order, ...) generate ripples below the 0dB line.
+
+#### Filter Coefficient Tables
 
 **Chebyshev Coefficients For 3dB Passband Ripple**
 
@@ -279,10 +281,12 @@ Chebyshev filters with even order numbers (e.g. 2nd order, 4th order, ...) gener
     <p>\begin{align} k_i = \frac{f_{ci}}{f_c} \end{align}</p>
 * `\(Q_i\)` is the quality factor of the partial filter
 
-`\(n\)` | `\(i\)` | `\(a_i\)` | `\(b_i\)` | `\(k_i\)` | `\(Q_i\)`
-----|------|--------|---------|---------|-----
-1   | 1    | 1.0000 | 0.0000  | 1.000   | n/a
-2   | 1    | 1.0650 | 1.9305  | 1.000   | 1.30
+| `\(n\)` | `\(i\)` | `\(a_i\)` | `\(b_i\)` | `\(k_i\)` | `\(Q_i\)`
+|---------|---------|-----------|-----------|-----------|----------
+| 1       | 1       | 1.0000    | 0.0000    | 1.000     | n/a
+| 2       | 1       | 1.0650    | 1.9305    | 1.000     | 1.30
+| 3       | 1       | 2.7994    | 0.0000    | 0.357     | n/a
+|         | 2       | 0.4300    | 1.2036    | 1.378     | 2.55
 
 ### 2nd Order Filter Topologies
 
@@ -293,17 +297,21 @@ A filter topology is an actual circuit configuration which can realize a number 
 * Multiple-Feedback Filters (a.k.a. infinite-gain filters)
 * State-Variable Filters: As known as _KHN filters_ after the inventors W. J. Kerwin, L. P. Huelsman and R. W. Newcomb, first reported in 1967[^sergio-franco-design-with-op-amps].
 
-### Sallen-Key
+## Sallen-Key Filters
 
 Sallen-Key filters use the op-amp as an amplifier rather than an integrator. Also called a _voltage-controlled voltage source_ (VCVS) or a _Sallen and Key_ filter. It was first introduced in 1955 by R.P. Sallen and E.L. Key of MIT's Lincoln Labs, whose last names give this filter it's name.
 
 The Sallen-Key filter is one of the most popular active 2nd order analogue filters. It has low _component spread_.
 
-#### Low-Pass Sallen-Key Filter
+### Low-Pass Sallen-Key Filter
 
 The schematic for a unity-gain low-pass Sallen-Key filter is shown below:
 
 {{% figure src="low-pass-sallen-key/low-pass-sallen-key.svg" width="700px" caption="The schematic for a unity-gain low-pass Sallen-Key filter." %}}
+
+{{% warning %}}
+Take note of labelling of the resistors and capacitors if reading other material on Sallen-Key filters, there is no one popular convention as the resistor and capacitor orders are switched frequently.
+{{% /warning %}}
 
 A Sallen-Key filter has a gain which begins to increase again after a certain frequency in the stop band.
 
@@ -321,43 +329,45 @@ The transfer function:
 \frac{v_{out}}{v_{in}} = \frac{\frac{1}{R1C1R2C2}}{s^2 + \left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)s + \frac{1}{R1C1R2C2}}
 \end{align}</p>
 
-The resistors R1 and R2:
+The resistance of the resistors `\(R1\)` and `\(R2\)` are related to the capacitances and filter coefficients by the following equation:
 
 <p>\begin{align}
 \label{eqn:r1r2eq}
-R1, R2 = \frac{a_1 C2 \mp \sqrt{a_1^2 C2^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2}
+R1, R2 = \frac{a_1 C1 \mp \sqrt{ (a_1 C1)^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2}
 \end{align}</p>
 
-where you use the `\(-\)` sign when calculating `\(R1\)` and the `\(+\)` sign for calculating `\(R2\)`.
+You use the `\(-\)` sign when calculating `\(R1\)` and the `\(+\)` sign for calculating `\(R2\)`.
 
-To obtain real values under the square root, `\(C2\)` must obey the follow condition:
+To obtain real values under the square root, `\(C1\)` must obey the follow condition:
 
 <p>\begin{align}
-\label{eqn:c2geq}
-C2 \geq C1 \frac{4b_1}{a_1^2}
+\label{eqn:c1geq}
+C1 \geq C2 \frac{4b_1}{a_1^2}
 \end{align}</p>
+
+These equations give you enough info to calculate all the resistances and capacitors for a Sallen-Key filter. See the design example below to show how you would go about it.
 
 #### Design Example: 2nd Order Low Pass Sallen-Key Filter
 
 The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Chebyshev 3dB ripple coefficients (this will give us a sharp transition from the passband to the stopband) and a corner frequency must be `\(f_c = 1kHz\)`.
 
-1. Look up the Chebyshev filter coefficients. From the table we get:
+1. Look up the [Chebyshev filter coefficients](#filter-coefficient-tables). From the table we get:
 
     <p>\begin{align}
     a_1 = 1.0650 \\
     b_1 = 1.9305
     \end{align}</p>
 
-1. Choose a capacitance for `\(C1\)`. This is rather arbitrary, but a good recommended starting range is something between `\(1-100nF\)`. Lets pick:
+1. Choose a capacitance for `\(C2\)`. This is rather arbitrary, but a good recommended starting range is something between `\(1-100nF\)`. Lets pick:
     
     <p>\begin{align}
-    C1 = 10nF
+    C2 = 10nF
     \end{align}</p>
 
-1. Calculate the capacitance of `\(C2\)` from `\(Eq. \ref{eqn:c2geq}\)`:
+1. Calculate the capacitance of `\(C1\)` from `\(Eq. \ref{eqn:c1geq}\)`:
 
     <p>\begin{align}
-    C2 &\geq C1 \frac{4b_1}{a_1^2} \\
+    C1 &\geq C2 \frac{4b_1}{a_1^2} \\
        &\geq 10nF \frac{4\cdot1.9305}{1.0650^2} \\
        &\geq 68.1nF
     \end{align}</p>
@@ -365,13 +375,13 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
     Pick the next largest E12 value:
 
     <p>\begin{align}
-    C2 = 82nF
+    C1 = 82nF
     \end{align}</p>
 
 1. Calculate `\(R1\)` and `\(R2\)` using `\(Eq. \ref{eqn:r1r2eq}\)`:
 
     <p>\begin{align}
-    R1 &= \frac{a_1 C2 - \sqrt{a_1^2 C2^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2} \\
+    R1 &= \frac{a_1 C1 - \sqrt{(a_1 C1)^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2} \\
        &= \frac{1.0650 \cdot 82nF - \sqrt{1.0650^2 \cdot 82nF^2 - 4 \cdot 1.9305 \cdot 10nF \cdot 82nF}}{4\pi \cdot 1kHz \cdot 10nF \cdot 82nF} \\
        &= 4.98k\Omega
     \end{align}</p>
@@ -389,9 +399,13 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
     R2 = 12.1k\Omega
     \end{align}</p>
 
+1. Build the circuit! It should look like this:
 
+    {{% figure src="low-pass-sallen-key-chebyshev-3db/schematic-print.svg" width="700px" caption="Schematic of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above." %}}
 
+1. And just good measure this was simulated, to make sure the response is as expected.
 
+    {{% figure src="low-pass-sallen-key-chebyshev-3db/response.png" width="700px" caption="Simulated response of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above." %}}
 
 ## Design Tools
 

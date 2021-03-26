@@ -5,7 +5,9 @@ from pathlib import Path
 
 def main():
     create_freq_response_plot()
-    create_sallen_key_response_plot()
+
+    create_sallen_key_response_plot(Path('low-pass-sallen-key'))
+    create_sallen_key_response_plot(Path('low-pass-sallen-key-chebyshev-3db'))
 
 def parse_row(data_in):
     out = np.array(data_in)
@@ -78,17 +80,18 @@ def create_freq_response_plot():
     plt.tight_layout()
     plt.savefig('rc-low-pass-filter-frequency-response.png')
 
-def create_sallen_key_response_plot():
+def create_sallen_key_response_plot(data_dir):
         # Low-pass filter comparison plots
 
-    data = get_freq_mag_phase(Path('low-pass-sallen-key/sim-results.csv'))
+    sim_results_path = data_dir / 'sim-results.csv'
+
+    data = get_freq_mag_phase(sim_results_path)
 
     fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(8, 5), squeeze=False)
 
     ax = axes[0][0]
     color = 'C0'
     ln1 = ax.plot(data['freq'], data['vout_mag'], label='Gain', color=color)
-    ax.set_title('Response Of A Low-Pass Sallen-Key Filter\n$f_c=1kHz$')
     ax.set_xlabel('Frequency f (Hz)')
     ax.set_xscale('log')
     ax.set_ylabel('Gain (dB)', color=color)
@@ -118,7 +121,9 @@ def create_sallen_key_response_plot():
     # ax.legend()
 
     plt.tight_layout()
-    plt.savefig('low-pass-sallen-key/response.png')
+
+    plot_path = data_dir / 'response.png'
+    plt.savefig(plot_path)
 
 
 def create_low_pass_filter_comparison_plots():
