@@ -149,13 +149,13 @@ def create_low_pass_filter_comparison_plots(config):
     data = [ get_freq_mag_phase(config_entry['data_path']) for config_entry in config ]
     xlim = [1e1, 1e4]
 
-    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(20, 10))
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(14, 7))
 
     ax = axes[0]
     for idx, config_entry in enumerate(config):
         db_gain = data[idx]['vout_mag']
         ax.plot(data[idx]['freq'], db_gain, label=config_entry['legend'])
-    ax.set_title('Gain Response Of Different Low-Pass Filters\nfc=1kHz')
+    ax.set_title('Gain Response Of Different Low-Pass Filter Optimizations/Tunings\nfc=1kHz')
     ax.set_xlabel('Frequency f (Hz)')
     ax.set_xscale('log')
     ax.set_xlim(xlim)
@@ -166,7 +166,7 @@ def create_low_pass_filter_comparison_plots(config):
     ax = axes[1]
     for idx, config_entry in enumerate(config):
         ax.plot(data[idx]['freq'], data[idx]['vout_phase'], label=config_entry['legend'])
-    ax.set_title('Phase Response Of Different Low-Pass Filters\nfc=1kHz')
+    ax.set_title('Phase Response Of Different Low-Pass Filter Optimizations/Tunings\nfc=1kHz')
     ax.set_xlabel('Frequency f (Hz)')
     ax.set_xscale('log')
     ax.set_xlim(xlim)
@@ -180,14 +180,14 @@ def create_low_pass_filter_comparison_plots(config):
 
 
     # Separate file for V/V gain
-    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(20, 10))
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(14, 7))
 
     ax = axes[0]
     for idx, config_entry in enumerate(config):
         db_gain = data[idx]['vout_mag']
         voltage_gain = np.power(10, db_gain/20)
         ax.plot(data[idx]['freq'], voltage_gain, label=config_entry['legend'])
-    ax.set_title('Gain Response Of Different Low-Pass Filters\nfc=1kHz')
+    ax.set_title('Gain Response Of Different Low-Pass Filter Optimizations/Tunings\nfc=1kHz')
     ax.set_xlabel('Frequency f (Hz)')
     ax.set_xscale('log')
     ax.set_xlim(xlim)
@@ -198,7 +198,7 @@ def create_low_pass_filter_comparison_plots(config):
     ax = axes[1]
     for idx, config_entry in enumerate(config):
         ax.plot(data[idx]['freq'], data[idx]['vout_phase'], label=config_entry['legend'])
-    ax.set_title('Phase Response Of Different Low-Pass Filters\nfc=1kHz')
+    ax.set_title('Phase Response Of Different Low-Pass Filter Optimizations/Tunings\nfc=1kHz')
     ax.set_xlabel('Frequency f (Hz)')
     ax.set_xscale('log')
     ax.set_xlim(xlim)
@@ -212,7 +212,7 @@ def create_low_pass_filter_comparison_plots(config):
 
     # Plot of phase difference with linear x-axis, helps visualize the linear
     # response of the Bessel filter
-    fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(5, 5), squeeze=False)
+    fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(7, 7), squeeze=False)
 
     ax = axes[0][0]
     for idx, config_entry in enumerate(config):
