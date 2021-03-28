@@ -258,7 +258,7 @@ The reduce the effects of each stages dynamic impedance effecting it's neighbour
 
 It might seem hard to believe, but you can build RC networks which increase the input voltage at specific frequencies. See [Herman Epstein - Synthesis Of Passive RC Networks With Gains Greater Than Unity](http://www.oldfriend.url.tw/article/IEEE_paper/Synthesis%20of%20Passive%20RC%20Networks%20with%20Gains.pdf) [(cached copy, 2021-01-23)](./herman-epstein-synthesis-of-passive-rc-networks-with-gains-greater-than-unity.pdf) for a detailed analysis.
 
-### Filter Optimizations
+## Filter Optimizations
 
 _Filter optimizations_ are specific tunings of filters to maximise a particular characteristic of it's response. Filter optimization directly specifies what the filter coefficients must be.
 
@@ -268,15 +268,13 @@ _Filter optimizations_ are specific tunings of filters to maximise a particular 
     * **Type 2:** _Type 2 Chebyshev filters_ (a.k.a. an _inverse Chebyshev filter_) have ripple in the stopband, but no ripple in the passband.
 * **Bessel**: Optimized for linear phase response up to (or down to for high-pass filters) the cutoff frequency `\(f_c\)`, at the expense of a slower transition to the stop-band. This is useful to minimizing the signal distortion (a linear _phase response_ in the frequency domain is a constant _time delay_ in the time domain).
 
-#### Chebyshev Optimization
+### Chebyshev Optimization
 
 Chebyshev filters with even order numbers (e.g. 2nd order, 4th order, ...) generate ripples above the 0dB line, filters with odd order numbers (e.g. 3rd order, 5th order, ...) generate ripples below the 0dB line.
 
 Because Chebyshev filters have ripple in the pass-band, **their cutoff frequency is usually defined in a completely different way to all other filter optimizations**. Rather than specifying `\(f_c\)` as the -3dB point, the `\(f_c\)` for Chebyshev filters is defined at the point at which the gain leaves the allowed ripple region (i.e. > 0.5dB for a 0.5dB Chebyshev filter, > 3dB for a 3dB Chebyshev filter).
 
-#### Filter Coefficient Tables
-
-**Chebyshev Coefficients For 3dB Passband Ripple**
+### Filter Coefficient Tables
 
 * `\(n\)` is the filter order
 * `\(i\)` is the partial filter order
@@ -284,6 +282,17 @@ Because Chebyshev filters have ripple in the pass-band, **their cutoff frequency
 * `\(k_i\)` is the ratio between the corner frequency of the partial filter `\(f_{ci}\)` and the corner frequency of the overall filter `\(f_c\)`. In equation form:
     <p>\begin{align} k_i = \frac{f_{ci}}{f_c} \end{align}</p>
 * `\(Q_i\)` is the quality factor of the partial filter
+
+#### Butterworth Coefficients
+
+| `\(n\)` | `\(i\)` | `\(a_i\)` | `\(b_i\)` | `\(k_i\)` | `\(Q_i\)`
+|---------|---------|-----------|-----------|-----------|----------
+| 1       | 1       | 1.0000    | 0.0000    | 1.000     | n/a
+| 2       | 1       | 1.4142    | 1.0000    | 1.000     | 0.71
+| 3       | 1       | 1.0000    | 0.0000    | 1.000     | n/a
+|         | 2       | 1.0000    | 1.0000    | 1.272     | 1.00
+
+#### Chebyshev Coefficients For 3dB Passband Ripple
 
 | `\(n\)` | `\(i\)` | `\(a_i\)` | `\(b_i\)` | `\(k_i\)` | `\(Q_i\)`
 |---------|---------|-----------|-----------|-----------|----------
