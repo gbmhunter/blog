@@ -263,16 +263,33 @@ It might seem hard to believe, but you can build RC networks which increase the 
 _Filter optimizations_ are specific tunings of filters to maximise a particular characteristic of it's response. Filter optimization directly specifies what the filter coefficients must be.
 
 * **Butterworth** Optimized for the flattest response through the pass-band, at the expense of having a low transition between the pass and stop-band.
-* **Chebyshev**: Designed to have the steepest transition between the pass and stop-band, at the expense of gain ripple in either the pass or stopband (_type 1_ or _type 2_). Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name. There are two types of Chebyshev filters:
+* **Chebyshev**: Designed to have a steep transition between the pass and stop-band, at the expense of gain ripple in either the pass or stopband (_type 1_ or _type 2_). Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name. There are two types of Chebyshev filters:
     * **Type 1:** _Type 1 Chebyshev filters_ (a.k.a. just a _Chebyshev filter_) have ripple in the passband, but no ripple in the stopband.
     * **Type 2:** _Type 2 Chebyshev filters_ (a.k.a. an _inverse Chebyshev filter_) have ripple in the stopband, but no ripple in the passband.
 * **Bessel**: Optimized for linear phase response up to (or down to for high-pass filters) the cutoff frequency `\(f_c\)`, at the expense of a slower transition to the stop-band. This is useful to minimizing the signal distortion (a linear _phase response_ in the frequency domain is a constant _time delay_ in the time domain).
+* **Elliptic:** Designed to have the fastest transition from the passband to the stopband, at the expense of ripple in both of these bands (Chebyshev optimization only produces ripple in one of the bands but is not as fast in the transition). Also called _Cauer_ filters or _Rational Chebyshev_ filters.
+
+The graphs below show the differences in response (bode plots, gain and phase) for these various filter optimizations:
+
+{{% figure src="low-pass-filter-optimization-comparison-gain-db.png" width="700px" caption="A comparison of different filter optimizations. Gain shown in dB." %}}
+
+Sometimes the differences can been visualized better by display the gain as V/V:
+
+{{% figure src="low-pass-filter-optimization-comparison-gain-vv.png" width="700px" caption="A comparison of different filter optimizations. Gain shown in V/V." %}}
+
+The linear phase delay of the Bessel filter is best visualized in the below plot where the phase in plotted on a linear scale rather than a logarithmic:
+
+{{% figure src="low-pass-filter-optimization-comparison-phase-linear.png" width="700px" caption="Phase delay of different filter optimizations, with the frequency plotted on a linear axis rather than a logarithmic axis. This is the best way to visualize the linear phase delay of the Bessel optimization." %}}
 
 ### Chebyshev Optimization
 
 Chebyshev filters with even order numbers (e.g. 2nd order, 4th order, ...) generate ripples above the 0dB line, filters with odd order numbers (e.g. 3rd order, 5th order, ...) generate ripples below the 0dB line.
 
 Because Chebyshev filters have ripple in the pass-band, **their cutoff frequency is usually defined in a completely different way to all other filter optimizations**. Rather than specifying `\(f_c\)` as the -3dB point, the `\(f_c\)` for Chebyshev filters is defined at the point at which the gain leaves the allowed ripple region (i.e. > 0.5dB for a 0.5dB Chebyshev filter, > 3dB for a 3dB Chebyshev filter).
+
+### Bessel Optimization
+
+Commonly used in analogue-crossover circuitry.
 
 ### Filter Coefficient Tables
 
@@ -300,6 +317,15 @@ Because Chebyshev filters have ripple in the pass-band, **their cutoff frequency
 | 2       | 1       | 1.0650    | 1.9305    | 1.000     | 1.30
 | 3       | 1       | 2.7994    | 0.0000    | 0.357     | n/a
 |         | 2       | 0.4300    | 1.2036    | 1.378     | 2.55
+
+#### Bessel Coefficients
+
+| `\(n\)` | `\(i\)` | `\(a_i\)` | `\(b_i\)` | `\(k_i\)` | `\(Q_i\)`
+|---------|---------|-----------|-----------|-----------|----------
+| 1       | 1       | 1.0000    | 0.0000    | 1.000     | n/a
+| 2       | 1       | 1.3617    | 0.6180    | 1.000     | 0.58
+| 3       | 1       | 0.7560    | 0.0000    | 1.323     | n/a
+|         | 2       | 0.9996    | 0.4772    | 1.414     | 0.69
 
 ### 2nd Order Filter Topologies
 
@@ -430,10 +456,6 @@ They are called VCVS filters because the op-amp is used as a voltage amplifier.
 
 {{% figure src="low-pass-vcvs-generic/low-pass-vcvs-generic.svg" width="700px" caption="Schematic of a generic VCVS filter. Note how it is very similar to the Sallen-Key filter, except with the additional resistors R3 and R4 to set a voltage gain other than unity." %}}
 
-## Elliptic Filters (Cauer Filters)
-
-TODO: Add info.
-
 ## Design Tools
 
 ### OKAWA Filter Design and Analysis
@@ -454,7 +476,8 @@ The PSoC microcontroller features an in-built and versatile digital filter block
 * The [Design With Operational Amplifiers And Analog Integrated Circuits by Sergio Franco, Fourth Edition](https://www.mheducation.com/highered/product/design-operational-amplifiers-analog-integrated-circuits-franco/M9780078028168.html) is a great book to purchase if you are interesting in further reading and getting right into the weeds of analogue filter design!
 * [Op Amps For Everyone by Ron Mancini (SLOD006B)](https://web.mit.edu/6.101/www/reference/op_amps_everyone.pdf) has some detailed sections on op-amp filter circuits.
 * [SLOA024B: Analysis of the Sallen-Key Architecture - Application Report, by Texas Instruments](https://www.ti.com/lit/an/sloa024b/sloa024b.pdf) can be used for further reading on the Sallen-Key and VCVS amplifiers (<a href="sloa024b-analysis-of-the-sallen-key-architecture-application-report-texas-instruments.pdf" download>cached local copy</a>).
-* Texas Instruments [Filter Designer](https://www.ti.com/design-resources/design-tools-simulation/filter-designer.html) is a free online tool to design  
+* Texas Instruments [Filter Designer](https://www.ti.com/design-resources/design-tools-simulation/filter-designer.html) is a free online tool to design filters.
+* The Analog Devices [Filter Wizard](https://tools.analog.com/en/filterwizard/) is an alternative to the Texas Instruments version.   
 
 ## References
 

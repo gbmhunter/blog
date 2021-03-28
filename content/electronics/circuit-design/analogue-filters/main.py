@@ -10,6 +10,7 @@ def main():
     create_sallen_key_response_plot(Path('low-pass-sallen-key-chebyshev-3db'))
     create_sallen_key_response_plot(Path('low-pass-sallen-key-butterworth'))
 
+    # Low-Pass Filter Comparison Plots
     config = [
         {
             'data_path': Path('low-pass-sallen-key-chebyshev-3db/sim-results.csv'),
@@ -18,6 +19,10 @@ def main():
         {
             'data_path': Path('low-pass-sallen-key-butterworth/sim-results.csv'),
             'legend': 'Butterworth',
+        },
+        {
+            'data_path': Path('low-pass-sallen-key-bessel/sim-results.csv'),
+            'legend': 'Bessel',
         },
     ]
     create_low_pass_filter_comparison_plots(config)
@@ -142,18 +147,18 @@ def create_low_pass_filter_comparison_plots(config):
     # Low-pass filter comparison plots
 
     data = [ get_freq_mag_phase(config_entry['data_path']) for config_entry in config ]
+    xlim = [1e1, 1e4]
 
     fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(20, 10))
 
     ax = axes[0]
     for idx, config_entry in enumerate(config):
         db_gain = data[idx]['vout_mag']
-        voltage_gain = np.power(10, db_gain/20)
-        ax.plot(data[idx]['freq'], voltage_gain, label=config_entry['legend'])
+        ax.plot(data[idx]['freq'], db_gain, label=config_entry['legend'])
     ax.set_title('Gain Response Of Different Low-Pass Filters\nfc=1kHz')
     ax.set_xlabel('Frequency f (Hz)')
     ax.set_xscale('log')
-    ax.set_xlim([1e1, 1e4])
+    ax.set_xlim(xlim)
     ax.set_ylabel('Gain (dB)')
     ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
     ax.legend()
@@ -164,12 +169,63 @@ def create_low_pass_filter_comparison_plots(config):
     ax.set_title('Phase Response Of Different Low-Pass Filters\nfc=1kHz')
     ax.set_xlabel('Frequency f (Hz)')
     ax.set_xscale('log')
-    ax.set_ylabel('Gain (dB)')
+    ax.set_xlim(xlim)
+    ax.set_ylabel('Phase Shift ($^\circ$)')
     ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
     ax.legend()
 
     plt.tight_layout()
-    plot_path = 'low-pass-filter-optimization-comparison.png'
+    plot_path = 'low-pass-filter-optimization-comparison-gain-db.png'
+    plt.savefig(plot_path)
+
+
+    # Separate file for V/V gain
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(20, 10))
+
+    ax = axes[0]
+    for idx, config_entry in enumerate(config):
+        db_gain = data[idx]['vout_mag']
+        voltage_gain = np.power(10, db_gain/20)
+        ax.plot(data[idx]['freq'], voltage_gain, label=config_entry['legend'])
+    ax.set_title('Gain Response Of Different Low-Pass Filters\nfc=1kHz')
+    ax.set_xlabel('Frequency f (Hz)')
+    ax.set_xscale('log')
+    ax.set_xlim(xlim)
+    ax.set_ylabel('Gain (V/V)')
+    ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
+    ax.legend()
+
+    ax = axes[1]
+    for idx, config_entry in enumerate(config):
+        ax.plot(data[idx]['freq'], data[idx]['vout_phase'], label=config_entry['legend'])
+    ax.set_title('Phase Response Of Different Low-Pass Filters\nfc=1kHz')
+    ax.set_xlabel('Frequency f (Hz)')
+    ax.set_xscale('log')
+    ax.set_xlim(xlim)
+    ax.set_ylabel('Phase Shift ($^\circ$)')
+    ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
+    ax.legend()
+
+    plt.tight_layout()
+    plot_path = 'low-pass-filter-optimization-comparison-gain-vv.png'
+    plt.savefig(plot_path)
+
+    # Plot of phase difference with linear x-axis, helps visualize the linear
+    # response of the Bessel filter
+    fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(5, 5), squeeze=False)
+
+    ax = axes[0][0]
+    for idx, config_entry in enumerate(config):
+        ax.plot(data[idx]['freq'], data[idx]['vout_phase'], label=config_entry['legend'])
+    ax.set_xlabel('Frequency f (Hz)')
+    # ax.set_xscale('log')
+    ax.set_xlim([0, 2e3])
+    ax.set_ylabel('Phase Shift ($^\circ$)')
+    ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
+    ax.legend()
+
+    plt.tight_layout()
+    plot_path = 'low-pass-filter-optimization-comparison-phase-linear.png'
     plt.savefig(plot_path)
 
 if __name__ == '__main__':
