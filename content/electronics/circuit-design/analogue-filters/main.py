@@ -8,6 +8,19 @@ def main():
 
     create_sallen_key_response_plot(Path('low-pass-sallen-key'))
     create_sallen_key_response_plot(Path('low-pass-sallen-key-chebyshev-3db'))
+    create_sallen_key_response_plot(Path('low-pass-sallen-key-butterworth'))
+
+    config = [
+        {
+            'data_path': Path('low-pass-sallen-key-chebyshev-3db/sim-results.csv'),
+            'legend': 'Chebyshev 3dB',
+        },
+        {
+            'data_path': Path('low-pass-sallen-key-butterworth/sim-results.csv'),
+            'legend': 'Butterworth',
+        },
+    ]
+    create_low_pass_filter_comparison_plots(config)
 
 def parse_row(data_in):
     out = np.array(data_in)
@@ -121,12 +134,11 @@ def create_sallen_key_response_plot(data_dir):
     # ax.legend()
 
     plt.tight_layout()
-
     plot_path = data_dir / 'response.png'
     plt.savefig(plot_path)
 
 
-def create_low_pass_filter_comparison_plots():
+def create_low_pass_filter_comparison_plots(config):
     # Low-pass filter comparison plots
 
     data = [ get_freq_mag_phase(config_entry['data_path']) for config_entry in config ]
@@ -134,11 +146,14 @@ def create_low_pass_filter_comparison_plots():
     fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(20, 10))
 
     ax = axes[0]
-    for idx, config_entry in enumerate(config):    
-        ax.plot(data[idx]['freq'], data[idx]['vout_mag'], label=config_entry['legend'])
+    for idx, config_entry in enumerate(config):
+        db_gain = data[idx]['vout_mag']
+        voltage_gain = np.power(10, db_gain/20)
+        ax.plot(data[idx]['freq'], voltage_gain, label=config_entry['legend'])
     ax.set_title('Gain Response Of Different Low-Pass Filters\nfc=1kHz')
     ax.set_xlabel('Frequency f (Hz)')
     ax.set_xscale('log')
+    ax.set_xlim([1e1, 1e4])
     ax.set_ylabel('Gain (dB)')
     ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
     ax.legend()
@@ -151,7 +166,11 @@ def create_low_pass_filter_comparison_plots():
     ax.set_xscale('log')
     ax.set_ylabel('Gain (dB)')
     ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
-    ax.legend();
+    ax.legend()
+
+    plt.tight_layout()
+    plot_path = 'low-pass-filter-optimization-comparison.png'
+    plt.savefig(plot_path)
 
 if __name__ == '__main__':
     main()
