@@ -57,3 +57,11 @@ type: "post"
     {{% figure src="/electronics/components/op-amps/negative-impedance-converter-nic.svg" width="500px" %}}
 
 * Merged the Passive Filters and Active Filters pages into a single new {{% link text="Analogue Filters page" src="/electronics/circuit-design/analogue-filters/" %}} and re-organized the entire page.
+
+* Added info on the {{% link text="Sallen-Key filter topology" src="/electronics/circuit-design/analogue-filters#sallen-key-filters" %}}.
+
+    {{% figure src="/electronics/circuit-design/analogue-filters/low-pass-sallen-key/low-pass-sallen-key.svg" width="800px" %}}
+
+* Added info on {{% link text="four common analogue filter optimizations/tunings (Butterworth, Chebyshev, Bessel and Elliptic)" src="/electronics/circuit-design/analogue-filters#filter-optimizations-1" %}}.
+
+    {{% figure src="/electronics/circuit-design/analogue-filters/low-pass-filter-optimization-comparison-gain-db.png" width="800px" %}}
