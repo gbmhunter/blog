@@ -196,5 +196,5 @@ V+
 Text Label 6150 3500 0    50   ~ 0
 V-
 Text Notes 4150 4450 0    50   ~ 0
-.ac dec 10 1 10Meg
+.ac dec 100 1 10Meg
 $EndSCHEMATC
