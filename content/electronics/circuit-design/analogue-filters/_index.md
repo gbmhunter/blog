@@ -338,9 +338,9 @@ A filter topology is an actual circuit configuration which can realize a number 
 
 ## Sallen-Key Filters
 
-The Sallen-Key filter is one of the most popular active 2nd-order analogue filters. It can be configured as a low-pass, high-pass, band-pass or band-stop filter. Also called a _Sallen and Key_ filter. It was first introduced in 1955 by R.P. Sallen and E.L. Key of MIT's Lincoln Labs, whose last names give this filter it's name.
+The Sallen-Key filter is one of the **most popular active 2nd-order analogue filters**. It can be configured as a low-pass, high-pass, band-pass or band-stop filter. Also called a _Sallen and Key_ filter. It was first introduced in 1955 by R.P. Sallen and E.L. Key of MIT's Lincoln Labs, whose last names give this filter it's name.
 
-It has low _component spread_ (low ratios of highest to lowest capacitor and resistor values). It also has a high input impedance and low output impedance, allowing for multiple filters to be chained together without intermediary buffers.
+It has low _component spread_ (low ratios of highest to lowest capacitor and resistor values). It also has a high input impedance and low output impedance, allowing for multiple filters to be chained together without intermediary buffers. However, one issue with the Sallen-Key filter is the strong dependence on the op-amp having low output impedance. An op-amp's output impedance rises with frequency, and thus the filtering ability begins to suffer around the 50-500kHz range.
 
 It is closely related to a  [_voltage-controlled voltage source_ (VCVS) filter](#voltage-controlled-voltage-source-vcvs-filters), however the VCVS filter also includes gain by connected a resistor divider from the output to the inverting terminal of the op-amp.
 
@@ -349,6 +349,9 @@ It is closely related to a  [_voltage-controlled voltage source_ (VCVS) filter](
 The schematic for a unity-gain low-pass Sallen-Key filter is shown below:
 
 {{% figure src="low-pass-sallen-key/low-pass-sallen-key.svg" width="700px" caption="The schematic for a unity-gain low-pass Sallen-Key filter." %}}
+
+It looks like 2 cascaded RC filters, except with the other terminal of the 1st capacitor connected to the op-amp's output rather than ground! What does this mean?
+TODO: Add more info here.
 
 {{% warning %}}
 Take note of labelling of the resistors and capacitors if reading other material on Sallen-Key filters, there is no one popular convention as the resistor and capacitor orders are switched frequently.
@@ -447,6 +450,14 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
 1. And just good measure this was simulated, to make sure the response is as expected.
 
     {{% figure src="low-pass-sallen-key-chebyshev-3db/response.png" width="700px" caption="Simulated response of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above." %}}
+
+### Dependence On Op-Amp Output Impedance
+
+A Sallen-Key filter is strongly dependent on the op-amp having a low output impedance. A op-amp's output impedance increases with increasing frequency, thus the performance of the Sallen-Key begins to suffer around the 50-500kHz range.
+
+This can be seen in the following bode plot for a 2nd-order low-pass Sallen-Key filter, with a cutoff frequecy `\(f_c\)` of 1kHz:
+
+TODO: Add plot
 
 ## Voltage-Controlled Voltage-Source (VCVS) Filters
 
