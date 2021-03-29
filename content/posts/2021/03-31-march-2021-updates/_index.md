@@ -65,3 +65,26 @@ type: "post"
 * Added info on {{% link text="four common analogue filter optimizations/tunings (Butterworth, Chebyshev, Bessel and Elliptic)" src="/electronics/circuit-design/analogue-filters#filter-optimizations-1" %}}.
 
     {{% figure src="/electronics/circuit-design/analogue-filters/low-pass-filter-optimization-comparison-gain-db.png" width="800px" %}}
+
+* Added info on overiding the standard library version of `malloc()` (and friends) with an application specific version:
+
+    ```c
+    #include <stdlib.h>
+
+    int main()
+    {
+        int* i = malloc(sizeof(int));
+        free(i);   
+    }
+
+    void* malloc(size_t s)
+    {
+        printf("My custom malloc() called");
+        return NULL;
+    }
+
+    void free(void* p)
+    {
+        printf("My custom free() called");
+    }
+    ```

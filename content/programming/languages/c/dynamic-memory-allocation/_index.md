@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2013-03-18
 description: "A beginners tutorial on memory allocation in C (malloc(), free(), e.t.c.) for embedded systems."
 draft: false
-lastmod: 2020-12-06
+lastmod: 2021-03-29
 tags: [ "programming", "C", "C++", "dynamic memory allocation", "memory", "allocation", "malloc()", "realloc", "calloc()", "alloca()", "free()", "MISRA", "memory pools", "stack", "heap", "GCC", "static allocation", "memory leak" ]
 title: "Dynamic Memory Allocation"
 type: "page"
@@ -141,4 +141,29 @@ Banning memory allocation does restrict the flexibility of the application (e.g.
 1) **Static allocation**. Chunks of memory can be allocated statically (at compile time). You typically allocate enough memory for your worst-case runtime scenario. For example, you could allocate `500 bytes` for your receive buffer, and because of the protocol used, you know that you will never need more than that.
 2) **Memory pools**. A memory pool is a block of memory that is allocated statically. The pool is divided up into pieces which can be "dynamically assigned" at runtime. This gives the the application most of the benefits of dynamic memory allocation but you always know how many blocks you have left in the pool, the request for memory is deterministic, and you do not suffer from fragmentation.
 
+## Overriding The Default Implementation Of malloc()
 
+You can override the default, standard library provided implementations of `malloc()` and friends just by specifying the functions (with the right input/output types) in your application code.
+
+For example:
+
+```c
+#include <stdlib.h>
+
+int main()
+{
+    int* i = malloc(sizeof(int));
+    free(i);   
+}
+
+void* malloc(size_t s)
+{
+    printf("My custom malloc() called");
+    return NULL;
+}
+
+void free(void* p)
+{
+    printf("My custom free() called");
+}
+```
