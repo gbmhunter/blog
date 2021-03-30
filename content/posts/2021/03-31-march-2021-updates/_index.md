@@ -88,3 +88,7 @@ type: "post"
         printf("My custom free() called");
     }
     ```
+
+* Added info on the {{% link text="MQTT broker Mosquitto and MQTT client Paho" src="/electronics/communication-protocols/mqtt-protocol" %}}.
+
+    {{% figure src="/electronics/communication-protocols/mqtt-protocol/mqtt-logo.png" width="400px" %}}
