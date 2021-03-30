@@ -27,6 +27,9 @@ def main():
     ]
     create_low_pass_filter_comparison_plots(config)
 
+    # Create plot showing Sallen-Key gain rise due to non-zero op-amp output impedance
+    create_sallen_key_bode_plot_showing_gain_rise()
+
 def parse_row(data_in):
     out = np.array(data_in)
     out = out[1:-1]
@@ -227,6 +230,27 @@ def create_low_pass_filter_comparison_plots(config):
     plt.tight_layout()
     plot_path = 'low-pass-filter-optimization-comparison-phase-linear.png'
     plt.savefig(plot_path)
+
+def create_sallen_key_bode_plot_showing_gain_rise():
+
+    data_dir_path = Path('low-pass-sallen-key-showing-gain-rise')
+
+    # Get data
+    data = get_freq_mag_phase(data_dir_path / 'sim-results.csv')
+
+    fig, axes = plt.subplots(nrows=1, ncols=1, figsize=(7, 7), squeeze=False)
+
+    ax = axes[0][0]
+    ax.plot(data['freq'], data['vout_mag'], label='Sallen-Key Low-Pass')
+    ax.set_xlabel('Frequency f (Hz)')
+    ax.set_xscale('log')
+    # ax.set_xlim(xlim)
+    ax.set_ylabel('Gain (dB)')
+    ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
+    ax.legend()
+
+    plt.tight_layout()
+    plt.savefig(data_dir_path / 'response.png')
 
 if __name__ == '__main__':
     main()
