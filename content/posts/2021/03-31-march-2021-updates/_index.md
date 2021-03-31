@@ -66,7 +66,7 @@ type: "post"
 
     {{% figure src="/electronics/circuit-design/analogue-filters/low-pass-filter-optimization-comparison-gain-db.png" width="800px" %}}
 
-* Added info on overiding the standard library version of `malloc()` (and friends) with an application specific version:
+* Added info on overriding the standard library version of `malloc()` (and friends) with an application specific version:
 
     ```c
     #include <stdlib.h>
