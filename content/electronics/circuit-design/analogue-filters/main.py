@@ -2,30 +2,31 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
+import matplotlib.ticker as ticker
 
 def main():
-    create_freq_response_plot()
+    # create_freq_response_plot()
 
-    create_sallen_key_response_plot(Path('low-pass-sallen-key'))
-    create_sallen_key_response_plot(Path('low-pass-sallen-key-chebyshev-3db'))
-    create_sallen_key_response_plot(Path('low-pass-sallen-key-butterworth'))
+    # create_sallen_key_response_plot(Path('low-pass-sallen-key'))
+    # create_sallen_key_response_plot(Path('low-pass-sallen-key-chebyshev-3db'))
+    # create_sallen_key_response_plot(Path('low-pass-sallen-key-butterworth'))
 
-    # Low-Pass Filter Comparison Plots
-    config = [
-        {
-            'data_path': Path('low-pass-sallen-key-chebyshev-3db/sim-results.csv'),
-            'legend': 'Chebyshev 3dB',
-        },
-        {
-            'data_path': Path('low-pass-sallen-key-butterworth/sim-results.csv'),
-            'legend': 'Butterworth',
-        },
-        {
-            'data_path': Path('low-pass-sallen-key-bessel/sim-results.csv'),
-            'legend': 'Bessel',
-        },
-    ]
-    create_low_pass_filter_comparison_plots(config)
+    # # Low-Pass Filter Comparison Plots
+    # config = [
+    #     {
+    #         'data_path': Path('low-pass-sallen-key-chebyshev-3db/sim-results.csv'),
+    #         'legend': 'Chebyshev 3dB',
+    #     },
+    #     {
+    #         'data_path': Path('low-pass-sallen-key-butterworth/sim-results.csv'),
+    #         'legend': 'Butterworth',
+    #     },
+    #     {
+    #         'data_path': Path('low-pass-sallen-key-bessel/sim-results.csv'),
+    #         'legend': 'Bessel',
+    #     },
+    # ]
+    # create_low_pass_filter_comparison_plots(config)
 
     # Create plot showing Sallen-Key gain rise due to non-zero op-amp output impedance
     create_sallen_key_bode_plot_showing_gain_rise()
@@ -248,6 +249,19 @@ def create_sallen_key_bode_plot_showing_gain_rise():
     ax.set_ylabel('Gain (dB)')
     ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
     ax.legend()
+
+    # ax.grid(b=True, which='major', color='#666666', linestyle='-')
+    # Show the minor grid lines with very faint and almost transparent grey lines
+    # ax.minorticks_on()
+    # ax.xaxis.set_minor_locator(MultipleLocator(1000000))
+    # ax.yaxis.set_minor_locator(MultipleLocator(10))
+    # ax.xaxis.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
+
+    # ax.grid(True, which='both')
+    ax.xaxis.set_minor_locator(ticker.LogLocator(base=10.0, numticks=15))
+    ax.yaxis.set_minor_locator(ticker.MultipleLocator(10))
+    ax.grid(which='major', alpha=1.0, linestyle='-')
+    ax.grid(which='minor', alpha=0.6, linestyle='--')
 
     plt.tight_layout()
     plt.savefig(data_dir_path / 'response.png')

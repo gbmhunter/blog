@@ -455,9 +455,9 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
 
 A Sallen-Key filter is strongly dependent on the op-amp having a low output impedance. A op-amp's output impedance increases with increasing frequency, thus the performance of the Sallen-Key begins to suffer around the 50-500kHz range.
 
-This can be seen in the following bode plot for a 2nd-order low-pass Sallen-Key filter, with a cutoff frequecy `\(f_c\)` of 1kHz:
+This can be seen in the following bode plot for a 2nd-order low-pass Sallen-Key filter, with a cutoff frequency `\(f_c\)` of 1kHz:
 
-TODO: Add plot
+{{% figure src="low-pass-sallen-key-showing-gain-rise/annotated-plot.svg" width="600px" caption="Gain plot of a low-pass Sallen-Key filter showing the reversal to increasing again once a certain frequency is reached, owing to the increasing op-amp output impedance." %}}
 
 ## Voltage-Controlled Voltage-Source (VCVS) Filters
 
