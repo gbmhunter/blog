@@ -2,6 +2,7 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Communication Protocols" ]
 date: 2014-02-16
+description: "History, brokers, clients, Mosquitto, Puho and more information about the MQTT communications protocol."
 draft: false
 lastmod: 2021-03-30
 tags: [ "electronics", "communication protocols", "MQTT" ]
