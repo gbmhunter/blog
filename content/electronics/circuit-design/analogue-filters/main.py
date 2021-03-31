@@ -5,28 +5,28 @@ from pathlib import Path
 import matplotlib.ticker as ticker
 
 def main():
-    # create_freq_response_plot()
+    create_freq_response_plot()
 
-    # create_sallen_key_response_plot(Path('low-pass-sallen-key'))
-    # create_sallen_key_response_plot(Path('low-pass-sallen-key-chebyshev-3db'))
-    # create_sallen_key_response_plot(Path('low-pass-sallen-key-butterworth'))
+    create_sallen_key_response_plot(Path('low-pass-sallen-key'))
+    create_sallen_key_response_plot(Path('low-pass-sallen-key-chebyshev-3db'))
+    create_sallen_key_response_plot(Path('low-pass-sallen-key-butterworth'))
 
-    # # Low-Pass Filter Comparison Plots
-    # config = [
-    #     {
-    #         'data_path': Path('low-pass-sallen-key-chebyshev-3db/sim-results.csv'),
-    #         'legend': 'Chebyshev 3dB',
-    #     },
-    #     {
-    #         'data_path': Path('low-pass-sallen-key-butterworth/sim-results.csv'),
-    #         'legend': 'Butterworth',
-    #     },
-    #     {
-    #         'data_path': Path('low-pass-sallen-key-bessel/sim-results.csv'),
-    #         'legend': 'Bessel',
-    #     },
-    # ]
-    # create_low_pass_filter_comparison_plots(config)
+    # Low-Pass Filter Comparison Plots
+    config = [
+        {
+            'data_path': Path('low-pass-sallen-key-chebyshev-3db/sim-results.csv'),
+            'legend': 'Chebyshev 3dB',
+        },
+        {
+            'data_path': Path('low-pass-sallen-key-butterworth/sim-results.csv'),
+            'legend': 'Butterworth',
+        },
+        {
+            'data_path': Path('low-pass-sallen-key-bessel/sim-results.csv'),
+            'legend': 'Bessel',
+        },
+    ]
+    create_low_pass_filter_comparison_plots(config)
 
     # Create plot showing Sallen-Key gain rise due to non-zero op-amp output impedance
     create_sallen_key_bode_plot_showing_gain_rise()
@@ -128,19 +128,12 @@ def create_sallen_key_response_plot(data_dir):
     lns = ln1 + ln2
     labs = [l.get_label() for l in lns]
     ax.legend(lns, labs, loc=0)
-
-
     ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
-    
 
-    # ax = axes[1]
-    # ax.plot(data[idx]['freq'], data[idx]['vout_phase'], label=config_entry['legend'])
-    # ax.set_title('Phase Response Of Different Low-Pass Filters\nfc=1kHz')
-    # ax.set_xlabel('Frequency f (Hz)')
-    # ax.set_xscale('log')
-    # ax.set_ylabel('Gain (dB)')
-    # ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
-    # ax.legend()
+    ax.xaxis.set_major_locator(ticker.LogLocator(base=10.0, numticks=15))
+    # ax.yaxis.set_minor_locator(ticker.MultipleLocator(10))
+    ax.grid(which='major', alpha=1.0, linestyle='-')
+    ax.grid(which='minor', alpha=0.6, linestyle='--')
 
     plt.tight_layout()
     plot_path = data_dir / 'response.png'
@@ -166,6 +159,10 @@ def create_low_pass_filter_comparison_plots(config):
     ax.set_ylabel('Gain (dB)')
     ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
     ax.legend()
+    ax.xaxis.set_major_locator(ticker.LogLocator(base=10.0, numticks=15))
+    ax.yaxis.set_minor_locator(ticker.MultipleLocator(10))
+    ax.grid(which='major', alpha=1.0, linestyle='-')
+    ax.grid(which='minor', alpha=0.6, linestyle='--')
 
     ax = axes[1]
     for idx, config_entry in enumerate(config):
@@ -177,6 +174,11 @@ def create_low_pass_filter_comparison_plots(config):
     ax.set_ylabel('Phase Shift ($^\circ$)')
     ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
     ax.legend()
+    ax.xaxis.set_major_locator(ticker.LogLocator(base=10.0))
+    ax.yaxis.set_major_locator(ticker.MultipleLocator(90)) # 90 makes sense for phase angle
+    ax.yaxis.set_minor_locator(ticker.MultipleLocator(45)) # 45 makes sense for phase angle
+    ax.grid(which='major', alpha=1.0, linestyle='-')
+    ax.grid(which='minor', alpha=0.6, linestyle='--')
 
     plt.tight_layout()
     plot_path = 'low-pass-filter-optimization-comparison-gain-db.png'
@@ -198,6 +200,12 @@ def create_low_pass_filter_comparison_plots(config):
     ax.set_ylabel('Gain (V/V)')
     ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
     ax.legend()
+    ax.xaxis.set_major_locator(ticker.LogLocator(base=10.0))
+    ax.yaxis.set_major_locator(ticker.MultipleLocator(0.5))
+    ax.yaxis.set_minor_locator(ticker.MultipleLocator(0.1))
+    ax.grid(which='major', alpha=1.0, linestyle='-')
+    ax.grid(which='minor', alpha=0.6, linestyle='--')
+
 
     ax = axes[1]
     for idx, config_entry in enumerate(config):
@@ -209,6 +217,11 @@ def create_low_pass_filter_comparison_plots(config):
     ax.set_ylabel('Phase Shift ($^\circ$)')
     ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
     ax.legend()
+    ax.xaxis.set_major_locator(ticker.LogLocator(base=10.0))
+    ax.yaxis.set_major_locator(ticker.MultipleLocator(90)) # 90 makes sense for phase angle
+    ax.yaxis.set_minor_locator(ticker.MultipleLocator(45)) # 45 makes sense for phase angle
+    ax.grid(which='major', alpha=1.0, linestyle='-')
+    ax.grid(which='minor', alpha=0.6, linestyle='--')
 
     plt.tight_layout()
     plot_path = 'low-pass-filter-optimization-comparison-gain-vv.png'
@@ -227,6 +240,12 @@ def create_low_pass_filter_comparison_plots(config):
     ax.set_ylabel('Phase Shift ($^\circ$)')
     ax.axvline(1e3, color='gray', linestyle='--') # Add line at fc
     ax.legend()
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(1000))
+    ax.xaxis.set_minor_locator(ticker.MultipleLocator(100))
+    ax.yaxis.set_major_locator(ticker.MultipleLocator(90)) # 90 makes sense for phase angle
+    ax.yaxis.set_minor_locator(ticker.MultipleLocator(45)) # 45 makes sense for phase angle
+    ax.grid(which='major', alpha=1.0, linestyle='-')
+    ax.grid(which='minor', alpha=0.6, linestyle='--')
 
     plt.tight_layout()
     plot_path = 'low-pass-filter-optimization-comparison-phase-linear.png'
@@ -265,6 +284,7 @@ def create_sallen_key_bode_plot_showing_gain_rise():
 
     plt.tight_layout()
     plt.savefig(data_dir_path / 'response.png')
+
 
 if __name__ == '__main__':
     main()
