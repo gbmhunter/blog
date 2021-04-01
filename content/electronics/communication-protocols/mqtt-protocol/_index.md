@@ -50,6 +50,12 @@ By default the above command will start a MQTT broker listening on port `1883`. 
 
 You can listen to all system topics by subscribing to `$SYS/#`.
 
+If you are experiencing problems when running `mosquitto`, you might want to run in verbose mode `-v` to print debug information, as by default very little information is printed to the command-line:
+
+```bash
+$ mosquitto -v
+```
+
 ## MQTT Clients
 
 Paho is a popular MQTT client.
