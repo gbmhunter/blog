@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2011-09-22
 description: "A step-by-step tutorial on building a function pointer based state machine."
 draft: false
-lastmod: 2019-01-01
+lastmod: 2021-04-02
 tags: [ "function pointer", "state machine", "C", "C++", "enumeration", "enum", "states", "events", "embedded", "logic" ]
 title: "A Function Pointer Based State Machine"
 type: "page"
@@ -68,7 +68,6 @@ typedef enum {
 
 ## The State Transition Matrix
 
-
 This following code defines a row in the state transition matrix (the state transition matrix is just an array of this structure). This structure contains the current state, an event, and the state to transition to.
 
 ```c
@@ -94,7 +93,6 @@ static stateTransMatrixRow_t stateTransMatrix[] = {
 ```
 
 ## The State Function Array
-
 
 The state function array holds a function pointer to the function which gets called for each state. In this example, we also store a printable state name for debugging purposes. Each row in the state function array is defined by a `struct`:
 
@@ -162,32 +160,14 @@ typedef struct {
 
 A pointer to this struct gets passed in as the first variable to all the state machine functions, just like the `this` object in an object-orientated world.
 
-## The Get Event Function
-
-The function provides the state machine with an event to act upon (incl. `EV_NONE`, if no real event occurred). In an embedded environment, this would do things like read GPIO pins to see if a button had been pushed, check a UART flag to see if a byte has been received, e.t.c.
-
-In our example world, we will just check the flag `buttonPushed`, which simulates a button press.
-
-```c    
-event_t StateMachine_GetEvent() {
-    if(buttonPushed) {
-        buttonPushed = false;
-        return EV_BUTTON_PUSHED;
-    }
-
-    // No event
-    return EV_NONE;
-}
-```
-
 ## The State Machine RunIteration() Function
 
-The `RunIteration()` function for this state machine is pretty generic and simple, and you don't usually have to modify it. All of the logic is controlled by the state transition matrix above. Essentially, the function gets an event (lets call it the current event), and then runs through the state transition matrix row by row to find a pre-defined state and event pair that match the current state and event. If so, it transitions to the specified next state, and then calls the state function pointed to by the function pointer.
+The `RunIteration()` function for this state machine is pretty generic and simple, and you don't usually have to modify it. All of the logic is controlled by the state transition matrix above. Essentially, the function gets passed in an event (lets call it the current event), and then runs through the state transition matrix row by row to find a pre-defined state and event pair that match the current state and event. If so, it transitions to the specified next state, and then calls the state function pointed to by the function pointer.
+
+The `event` would typically come from monitoring inputs, e.g. GPIO pins connected to buttons (suitably de-bounced) or events triggered by other firmware. You can pass in `EV_NONE` if no event has occurred (this is useful if you want to call `RunIteration()` every loop cycle but events may come in less frequently).
 
 ```c    
-void StateMachine_RunIteration(stateMachine_t *stateMachine) {
-    // Get an event
-    event = StateMachine_GetEvent();
+void StateMachine_RunIteration(stateMachine_t *stateMachine, event_t event) {
 
     // Iterate through the state transition matrix, checking if there is both a match with the current state
     // and the event
