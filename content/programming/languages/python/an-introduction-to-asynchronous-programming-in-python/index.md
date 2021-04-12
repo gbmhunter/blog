@@ -4,7 +4,7 @@ categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2019-09-16
 description: "An introduction to asynchronous programming in Python, including async/await, coroutines, event loops, queues, tasks and more."
 draft: false
-lastmod: 2019-09-28
+lastmod: 2021-04-12
 tags: [ "Python", "programming", "programming languages", "software", "async", "await", "asyncio", "coroutines", "event loops", "asynchronous programming", "asynchronous", "IO bound", "CPU bound", "queues", "yield", "generators", "tasks" ]
 title: "An Introduction To Asynchronous Programming In Python"
 type: "page"
@@ -22,11 +22,11 @@ When you wait for an event with the `await` keyword, Python can save the state o
 
 Python's style of **asynchronous programming goes a long way to prevent _call-back hell_**. _Call-back hell_ was a common problem in Javascript (and many other languages) before the use of `futures` and `promises` became popular. It occurred because the only way to perform asynchronous programming was to provide callbacks (lambda functions). These nested within each other, broke the flow of the code, and severely hindered the readability of the software.
 
-However smart are flexible asynchronous programming may be, synchronous programming is still the bread-and-butter of the Python language. Unfortunately, the two don't mix that well (you can't `await` a synchronous function --- and forgetting to await an asynchronous function will just return a `coroutine` object). You can think of synchronous Python and asynchronous Python as two separate programming styles, and **most of your libraries have to be specifically designed to work with the style you are using**.
+However smart and flexible asynchronous programming may be, synchronous programming is still the bread-and-butter of the Python language. Unfortunately, the two don't mix that well (you can't `await` a synchronous function --- and forgetting to await an asynchronous function will just return a `coroutine` object). You can think of synchronous Python and asynchronous Python as two separate programming styles, and **most of your libraries have to be specifically designed to work with the style you are using**.
 
 ## What Is A Coroutine?
 
-A coroutine is a Python function that has the keyword `await` before the `def`, e.g.:
+A coroutine is a Python function that has the keyword `async` before the `def`, e.g.:
 
 ```py
 async def my_coroutine():
@@ -98,22 +98,6 @@ And instead of using `await` to call the above coroutine, you would use the `yie
 
 ```py
 yield from my_coroutine()
-```
-
-## Calling Async Code From Sync
-
-Invariably, at some point you will want to call asynchronous code from a synchronous function. What you can't do is:
-
-```python
-def main():
-  await my_coroutine() # ERROR: We can't use `await` inside a synchronous function (main() is synchronous)
-```
-
-However, remember that we can always pass control over to the event loop from synchronous code. The easiest way to do this is with `asyncio.run()`:
-
-```python
-def main():
-  asyncio.run(my_coroutine) # Passes control to the event loop, which will run my_coroutine, and then return control to here.
 ```
 
 ## Creating A Worker Model
