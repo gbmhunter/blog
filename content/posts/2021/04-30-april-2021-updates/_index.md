@@ -10,4 +10,4 @@ title: "April 2021 Updates"
 type: "post"
 ---
 
-* 
+* Updates to the {{% link text="Python page on asyncio" src="" %}} including info and code examples on _Tasks_ and how they are scheduled for execution immediately.
