@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2012-12-12
 description: "Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol."
 categories: [ "Electronics", "Communication Protocols" ]
-lastmod: 2020-06-09
+lastmod: 2021-04-19
 tags: [ "CAN bus", "bus", "communication protocol", "CAN1.0", "CAN2.0", "CAN base frame", "CAN extended frame", "USB adapters", "NoCAN", "encoding", "controller", "CANopen", "NEMA 2000", "termination resistors", "FlexRay", "SAE", "J1850", "J1939", "ISO 11783", "ISOBUS", "isolation", "mailboxes" ]
 title: "CAN Protocol"
 type: "page"
@@ -176,6 +176,8 @@ _**16-bit CRC:**_ The Cyclic Redundancy Check (CRC) is used to detect errors in 
 _**2-bit ACK:**_ Based on the value of the CRC, the receiver uses first acknowledge bit to either positively or negatively acknowledge the message. The 2nd bit is a delimiter.
 
 _**7-bit EOF:**_ The End Of Frame is marked with 7 recessive bits.
+
+{{% figure src="st-can-frame-incorrect-acronym-ide.png" width="500px" caption="Don't always believe what you see in datasheets. There is definitely no 'Integrated Development Environment' bit in a CAN frame. Image from https://www.st.com/resource/en/application_note/dm00625700-fdcan-peripheral-on-stm32-devices-stmicroelectronics.pdf, accessed 2021-04-19." %}}
 
 **Extended Data/Remote Frame (29-bit Identifier)**
 
