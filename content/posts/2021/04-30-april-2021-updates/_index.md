@@ -11,3 +11,7 @@ type: "post"
 ---
 
 * Updates to the {{% link text="Python page on asyncio" src="" %}} including info and code examples on _Tasks_ and how they are scheduled for execution immediately.
+
+* Added info on {{% link text="industry standard package pinouts for op-amps" src="/electronics/components/op-amps#industry-standard-package-pinouts-for-op-amps" %}}.
+
+    {{% figure src="/electronics/components/op-amps/standard-8-pin-dual-op-amp-pinout.svg" width="400px" %}}
