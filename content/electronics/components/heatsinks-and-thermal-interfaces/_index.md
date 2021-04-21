@@ -1,12 +1,14 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
+categories: [ "Electronics", "Components" ]
 date: 2013-05-29
-tags: [ "heatsink", "circuit design", "components", "overheating", "thermal", "temperature", "packages" ]
-title: "Heatsinks"
-type: page
+lastmod: 2021-04-20
+tags: [ "heatsinks", "circuit design", "components", "overheating", "thermal", "temperature", "packages", "pads", "interfaces", "thermal interfaces" ]
+title: "Heatsinks And Thermal Interfaces"
+type: "page"
 ---
 
-## Overview
+## Heatsinks
 
 Heatsinks are used in circuit design to conduct heat away from a component faster than what air would do, usually to prevent high-power components from overheating and failing.
 
@@ -22,24 +24,37 @@ Phase change compounds can be used as thermal pads. Phase change compounds are d
 
 For more information on thermal resistances, see the {{% link text="Thermal Management page" src="/electronics/circuit-design/thermal-management" %}}.
 
-## Where Does The Heat Go?
+### Where Does The Heat Go?
 
 The following diagram is a thermal analysis of a SMD MOSFET mounted to a PCB.
 
-{{< img src="thermal-analysis-of-smd-mosfet-on-pcb.png" width="687px" caption="Thermal analysis of a SMD MOSFET mounted on a PCB. Image from http://www.fairchildsemi.com/an/AN/AN-1029.pdf."  >}}
+{{< img src="thermal-analysis-of-smd-mosfet-on-pcb.png" width="687px" caption="Thermal analysis of a SMD MOSFET mounted on a PCB. Image from http://www.fairchildsemi.com/an/AN/AN-1029.pdf, retrieved 2013-05-29." >}}
 
-## List Of Component Package Thermal Resistances
+### List Of Component Package Thermal Resistances
 
 See the {{% link text="Component Packages page" src="/pcb-design/component-packages" %}}. This has many of the common component packages and their thermal resistances.
 
-## Forced Convection
+### Forced Convection
 
 The following image shows two graphs combined into one, the thermal performance of a heatsink with natural convection, and that with forced convection (e.g. a fan).
 
-{{< img src="heat-dissipation-graph-for-natural-and-forced-convection.png" width="960px" caption="Heat dissipation graph for both natural and forced convection. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf." >}}
+{{< img src="heat-dissipation-graph-for-natural-and-forced-convection.png" width="960px" caption="Heat dissipation graph for both natural and forced convection. Image from http://www.aavid.com/sites/default/files/products/boardlevel/aavid-standard-heatsinks.pdf, retrieved 2013-05-29." >}}
 
-## Packages
+### Packages
 
 There is no standard package for heatsinks and the pitch for their support pins, although some more common pin spacings exist (such as 25.4mm (1inch) e.t.c).
 
-{{< img src="to-220-pcb-mount-heatsink-hs22-technical-drawing.png" width="1364px" caption="The technical drawing of a typical TO-220 heatsink. Image from www.digikey.com."  >}}
+{{< img src="to-220-pcb-mount-heatsink-hs22-technical-drawing.png" width="1364px" caption="The technical drawing of a typical TO-220 heatsink. Image from www.digikey.com, retrieved 2013-05-29." >}}
+
+## Thermal Interfaces
+
+Two packaging types:
+
+* Pad
+* Roll
+
+The thermal interface material may be filled with ceramic particles to improve thermal conductivity.
+
+Polymer with acrylic adhesive.
+
+Sometimes the electrical resistivity will not be specified, but a dielectric strength (in `kV/mm`) will be given. This is when the electric field becomes strong enough to pull outer valence electrons away from the material's atoms, and the material becomes conductive. 

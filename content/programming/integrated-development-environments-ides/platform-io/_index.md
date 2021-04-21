@@ -72,3 +72,23 @@ A specific branch or tag can be specified by appending a `#` and then the name o
 ```ini
 platform_packages = framework-arduino-samd-privatepackage @ git@github.org:my-company-name/my-private-repo.git#my-tag-or-branch-name
 ```
+
+## Enabling Floating-Point printf() Support When Using The mbed Platform
+
+If you are trying to print a floating point number using `printf()` (or other functions in the same family such as `snprintf()`) like so:
+
+```c
+printf("%f\n", 2.3);
+```
+
+but are just getting the string `%f`, it could be because floating-point `printf()` support is disabled. To enable it, create a file (if it doesn't already exist) called `mbed_app.json` in the root directory of your PlatformIO project, and add the following lines:
+
+```json
+{
+    "target_overrides": {
+      "*": {
+        "platform.minimal-printf-enable-floating-point": true
+      }
+    }
+}
+```
