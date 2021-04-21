@@ -90,8 +90,18 @@ The `STM32F1` is a family of "general purpose" STM32 microcontrollers. The famil
 
 The `STM32G` is a family of "general purpose" STM32 microcontrollers. The family uses a 64MHz ARM Cortex-M0+ CPU architecture (the M0+ instructions are an optimized superset of the M0, the M0+ also has a two-stage pipeline, while the M0 has a three-stage pipeline).
 
-* STM32G0x0: Value line.
-* STM32G0x1: 
+### STM32G0
+
+* STM32G0x0: _Value line_. Cheapest STM32G0 microcontrollers, with an entry-level set of analogue peripherals.
+* STM32G0x1: More analogue features than the STM32G0x0.
+
+### STMG4
+
+Family of mixed-signal microcontrollers, which include both DSP and FPU instructions. This family uses the ARM Cortex-M4F CPU architecture. This is further sub-divided into the following sub-families:
+
+* STM32G4x1: _Access line:_ General-purpose microcontrollers with entry-level set of analogue peripherals.
+* STM32G4x3: _Performance line:_ General-prpose microcontrollers with the maximum number of analogue peripherals.
+* STM32G4x4: _Hi-resolution line:_ Features a high-resolution timer and complex waveform builder plus event handler for digital power conversion.
 
 ## STM32WLEx
 

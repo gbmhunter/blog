@@ -89,15 +89,6 @@ type: "page"
       <td>4/5</td>
       <td>Good, cheap site with a fair amount of components. Supplier of SparkFun components to New Zealand customers, so you can skip the high shipping fee you would receive buying from the US.</td>
     </tr>
-    <tr>
-      <td>Mouser ([visit site](http://www.mouser.com))</td>
-      <td>{{< img src="mouser-logo.jpg" caption="The Mouser logo." width="100px" >}}</td>
-      <td>4/5</td>
-      <td>3/5</td>
-      <td>International</td>
-      <td>3/5</td>
-      <td>International online component store that has a large range of electronics. In my experience they are normally one of the cheapest and best stocked suppliers. Easy to use search engine, much like Element 14's.</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -183,17 +174,56 @@ Automatic Part List/BOM/Order Creation. This speeds up the ordering process. Dir
 
 {{% figure src="digikey-panda-tool-logo.webp" width="400px" %}}
 
+### Mouser
+
+<table>
+  <tbody>
+    <tr>
+      <td>Logo</td>
+      <td>{{< img src="mouser-logo.jpg" caption="The Mouser logo." width="100px" >}}</td>
+    </tr>
+    <tr>
+      <td>Interface:</td>
+      <td>4/5</td>
+    </tr>
+    <tr>
+      <td>Part Count</td>
+      <td>4/5</td>
+    </tr>
+    <tr>
+      <td>Supplied Locations</td>
+      <td>International</td>
+    </tr>
+    <tr>
+      <td>Based In</td>
+      <td>International</td>
+    </tr>
+    <tr>
+      <td>Delivery Speed/Cost</td>
+      <td>4/5</td>
+    </tr>
+    <tr>
+      <td>Free Shipping?</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Website</td>
+      <td><a href="http://www.mouser.com" target="_blank">http://www.mouser.com</a></td>
+    </tr>
+  </tbody>
+</table>
+
+International online component store that has a large range of electronics. In my experience they are normally one of the cheapest and best stocked suppliers. Generally cheaper than DigiKey. Easy to use search engine, much like Element 14's.
+
+Mouser supports reeling small component order quantities that are under the amount needed for a complete reel. They charge US$7 for each _MouseReel_.
+
 ### NiceGear
 
 <table >
 <tbody >
 <tr >
-
-<td >Logo
-</td>
-
-<td >n/a
-</td>
+<td >Logo</td>
+<td >n/a</td>
 </tr>
 <tr >
 
