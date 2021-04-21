@@ -559,6 +559,14 @@ TODO
 
 TODO
 
+## Industry Standard Package Pinouts For Op-Amps
+
+Op-amps are usually packaged in industry standard through-hole and surface mount packages. For many of these packages, there are industry standard pinouts which means you can easily find pin-compatible alternatives for any given op-amp. This section aims to illustrate some of these industry standard pinouts.
+
+For 8-pin packages:
+
+{{% figure src="standard-8-pin-dual-op-amp-pinout.svg" width="400px" caption="The standard pinout for two op-amps in an 8-pin package. This includes the DIP-8, TSSOP-8, SOIC-8 and MSOP-8 component packages." %}}
+
 ## References
 
 [^ti-lm234-datasheet]: <https://www.ti.com/lit/ds/snosc16d/snosc16d.pdf>, retrieved 2020-10-20.
