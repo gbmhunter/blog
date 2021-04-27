@@ -299,7 +299,9 @@ CAN support was added to the Linux kernel in version 2.6.25.
 
 More information on SocketCAN, including information and code examples on how to send and receive CAN data from the terminal using SocketCAN, see the [How To Use SocketCAN With The Command-Line In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux) or the [How To Use SocketCAN With C++ In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-c-in-linux).
 
-## Dedicated CAN Controller ICs
+## ICs
+
+### Dedicated CAN Controller ICs
 
 Some CAN controller ICs use the notion of _mailboxes_. These are areas of memory in which CAN messages can be read from or written to (similar to a buffer).
 
@@ -308,8 +310,11 @@ CAN HAT for Raspberry Pi by WaveStudio](https://www.waveshare.com/rs485-can-hat.
 
 [MCP2551: Microchip Highspeed CAN Transceiver](http://ww1.microchip.com/downloads/en/DeviceDoc/21667f.pdf)
 
+### Microcontrollers With CAN Peripherals
 
-## ICs
+Microcontrollers can come with built-in CAN peripherals. These CAN peripherals allow the firmware to write bytes into hardware registers for CAN transmission, and the peripheral will generate the correct CAN bits on designated pins. However you cannot connect these pins directly to a CAN bus, you still need a CAN transceiver to convert the low-power single-ended CMOS-level bit signals to a high-strength differential signal suitable for the CAN bus. Simlarly, the microcontroller CAN peripheral will listen to the CAN bus (again, through a suitable transceiver) and provide user configurable interrupts upon data receipt, allowing the firmware to read the data from hardware registers.
+
+Many microcontroller HALs do not provide an API for the CAN bus.
 
 Atmel T89C51CC01 Microcontroller. 8-bit 8051 architecture, with CAN interface. Supports bootloading from the CAN protocol
 
@@ -318,6 +323,12 @@ Atmel T89C51CC01 Microcontroller. 8-bit 8051 architecture, with CAN interface. S
 The [Freescale MC9SO8D](http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=S08D) range of microcontrollers have built-in support for both CAN and LIN communication protocols. The CAN peripheral block is called an _MSCAN_.
 
 {{< img src="freescale-mc9so8-microcontroller-mscan-hardware-peripheral.png" width="660px" caption="The Freescale MC9SO8 microcontroller MSCAN peripheral." >}}
+
+### TVS Diodes
+
+There are {{% link text="TVS diode components" src="/electronics/components/diodes/tvs-diodes" %}} specifically designed for CAN bus ESD suppression. Single diode 2-pin packages or double (termed a _diode array_) TVS diode 3-pin packages are common. Common standoff voltages are `\(12V\)` and `\(24V\)` and common power dissipations are `\(200-500W\)`.
+
+{{% figure src="can-bus-tvs-diodes-littelfuse-sm24canb-block-diagram-and-application-example.png" width="600px" caption="Block diagram and application example for the CAN bus AQ24CANFD TVS diode from LittelFuse. Image from <https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq24canfd_datasheet.pdf.pdf>, aquired 2021-04-27." %}}
 
 ## NoCAN
 

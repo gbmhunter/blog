@@ -174,6 +174,47 @@ Automatic Part List/BOM/Order Creation. This speeds up the ordering process. Dir
 
 {{% figure src="digikey-panda-tool-logo.webp" width="400px" %}}
 
+### Microchip Direct
+
+<table>
+  <tbody>
+    <tr>
+      <td>Logo</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Interface</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Part Count</td>
+      <td>2/5 (only sell Microchip parts, for obvious reasons)</td>
+    </tr>
+    <tr>
+      <td>Supplied Locations</td>
+      <td>International</td>
+    </tr>
+    <tr>
+      <td>Based In</td>
+      <td>International</td>
+    </tr>
+    <tr>
+      <td>Delivery Speed/Cost</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Free Shipping?</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Website</td>
+      <td><a href="https://www.microchipdirect.com" target="_blank">https://www.microchipdirect.com</a></td>
+    </tr>
+  </tbody>
+</table>
+
+If your favourite Microchip part is not available via common suppliers, you might still be able to find it on Microchip Direct.
+
 ### Mouser
 
 <table>
@@ -219,67 +260,39 @@ Mouser supports reeling small component order quantities that are under the amou
 
 ### NiceGear
 
-<table >
-<tbody >
-<tr >
-<td >Logo</td>
-<td >n/a</td>
+<table>
+<tbody>
+<tr>
+<td>Logo</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Interface:</td>
+<td>4/5</td>
+</tr>
+<tr>
+<td >Part Count</td>
+<td >3/5</td>
 </tr>
 <tr >
-
-<td >Interface:
-</td>
-
-<td >4/5
-</td>
+<td >Supplied Locations</td>
+<td >National/International?</td>
 </tr>
 <tr >
-
-<td >Part Count
-</td>
-
-<td >3/5
-</td>
+<td >Based In</td>
+<td >NZ</td>
 </tr>
 <tr >
-
-<td >Supplied Locations
-</td>
-
-<td >National/International?
-</td>
+<td >Delivery Speed/Cost</td>
+<td >5/5</td>
 </tr>
 <tr >
-
-<td >Based In
-</td>
-
-<td >NZ
-</td>
+<td >Free Shipping?</td>
+<td >On orders above NZ$50 (last updated August 2014)</td>
 </tr>
 <tr >
-
-<td >Delivery Speed/Cost
-</td>
-
-<td >5/5
-</td>
-</tr>
-<tr >
-
-<td >Free Shipping?
-</td>
-
-<td >On orders above NZ$50 (last updated August 2014)
-</td>
-</tr>
-<tr >
-
-<td >Website
-</td>
-
-<td >[https://nicegear.co.nz/](https://nicegear.co.nz/)
-</td>
+<td >Website</td>
+<td >[https://nicegear.co.nz/](https://nicegear.co.nz/)</td>
 </tr>
 </tbody>
 </table>
@@ -332,6 +345,10 @@ International online component store that stocks most electrical components. As 
 ### Samtec
 
 In my opinion, Samtec has one of the best websites for finding/deciding on electrical connectors. They also have an awesome rapid free sample service, in where you can order samples and they will pay for everything (including shipping), with the goods typically arriving in a few days (and I live in New Zealand!).
+
+### Win Source Electronics
+
+Not sure on credibility?
 
 ## PCB Manufacturers
 
