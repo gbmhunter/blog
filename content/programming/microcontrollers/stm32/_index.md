@@ -86,6 +86,13 @@ Reference schematic for the STM32F030 (just power, clock and programming):
 
 The `STM32F1` is a family of "general purpose" STM32 microcontrollers. The family uses a ARM Cortex-M3 CPU architecture.
 
+Some things to note:
+
+- All GPIO pins with the same integer last digit across each port (e.g. `PA1`, `PB1`, `PC1`, ...) are connected to the same interrupt, and only one pin may be connected to the interrupt at any one time. Be careful when routing signals to your GPIO pins!
+- Peripherals are divided into two APB buses. All peripherals connected to `APB1` run at half the main clock frequency, and peripherals connected to `APB2` run at the main clock frequency.
+
+To develop with STM32F1 microcontrollers you will need two PDFs, the specific "datasheet" for the exact microcontroller you are using, and the more general and much bigger [reference manual](https://www.st.com/resource/en/reference_manual/cd00171190-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf).
+
 ## STM32G
 
 The `STM32G` is a family of "general purpose" STM32 microcontrollers. The family uses a 64MHz ARM Cortex-M0+ CPU architecture (the M0+ instructions are an optimized superset of the M0, the M0+ also has a two-stage pipeline, while the M0 has a three-stage pipeline).
