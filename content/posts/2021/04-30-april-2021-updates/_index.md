@@ -17,3 +17,7 @@ type: "post"
     {{% figure src="/electronics/components/op-amps/standard-8-pin-dual-op-amp-pinout.svg" width="400px" %}}
 
 * Added Win Source Electronics and Microchip Direct to the Electronic Suppliers page.
+
+* Added an {{% link text="equivalent circuit model for a crystal" src="/electronics/components/oscillators#equivalent-circuit" %}} (piezoelectric resonator).
+
+    {{% figure src="/electronics/components/oscillators/crystal-equivalent-circuit.svg" width="600px" %}}

@@ -285,7 +285,9 @@ Removing/fixing up these dangling 3D model links may remove the access violation
 
 ## Simulation
 
-The KiCad schematic editor (EESchema) supports **mixed-signal SPICE simulation using the [ngspice](http://ngspice.sourceforge.net/) SPICE engine**. Unfortunately, the simulation feature of KiCad is not very well documented. Your best bet is to start with one of the working examples provided by KiCad, and learn from there (see below).
+The KiCad schematic editor (EESchema) supports **mixed-signal SPICE simulation using the [ngspice](http://ngspice.sourceforge.net/) SPICE engine**. Unfortunately, the simulation feature of KiCad is not very well documented. Your best bet is to start with one of the working examples provided by KiCad, and learn from there (see below). ngspice is bundled with KiCad so you do not need to download it separetly.
+
+For general information on SPICE simulation, also see the {{% link text="SPICE Simulation page" src="/electronics/general/circuit-simulation/spice-simulation" %}}.
 
 KiCad comes with example simulation circuits located at `<KiCad installation dir>/share/kicad/demos/simulation/`. In this directory there is the following simulation schematic example directories:
 
@@ -369,6 +371,8 @@ AC <VOLTAGE>
 
 You may get the error `Warning: vX: has no value, DC 0 assumed` when running a simulation with an AC source which has no DC set point provided. This is generally o.k., as it will assume the DC operating point is `0V` which is normally what you want.
 
+If you are going to run an AC analsysis (i.e. using the `.ac` command), you don't generally want more than one AC source in your schematic. If you have more than 1 AC source, the AC analysis results will be a superposition of all AC voltage sources and will be hard to interpret.
+
 **SINE**
 
 `SINE(0 1.5 1k 0 0 0 0)`
@@ -416,10 +420,21 @@ Note that KiCAD automatically converts the commonly used `M` for megaOhms into t
 
 #### Capacitors
 
+Follow the Resistor example above but use the following `Value` and `Spice_Primitive` values:
+
 Name                    | Value
 ------------------------|-----------
 Value                   | 100n
 Spice_Primitive         | C
+
+#### Inductors
+
+Follow the Resistor example above but use the following `Value` and `Spice_Primitive` values:
+
+Name                    | Value
+------------------------|-----------
+Value                   | 10m
+Spice_Primitive         | L
 
 #### Zener Diodes
 
@@ -489,6 +504,14 @@ Somewhat confusingly, KiCad comes with two SPICE symbol libraries:
 
 Standard Eeschema _net labels_ can be used to name nets which will be carried through to the ngspice simulation.
 
+**KiCad will append a `/` to the front of all manually added net labels**. This can be a pain if you were planning on using KiCad to just generate a SPICE netlist and running ngspice yourself, as you have to escape all net labels with the `/` by enclosing them in quotes (ngspice interprets `/` as the division operator). **KiCad will not append a `/` for global net labels**, so I recommend using those instead if you plan on running ngspice yourself.
+
+Another way of dealing with this is to set the `ngbehavior=ki` (there is built-in functionality to ngspice to deal with KiCad output):
+
+```text
+set ngbehavior=ki
+```
+
 ### Modes Of Analysis
 
 There are three main modes of analysis:
@@ -531,11 +554,24 @@ Click [here](kicad-spice-dc-voltage-sweep-zener-files.zip) to download the sourc
 
 #### AC Analysis (.ac)
 
+Syntax:
+
+```text
+.ac dec nd fstart fstop
+.ac oct no fstart fstop
+.ac lin np fstart fstop
+```
+
 For example, to simulate the response of the circuit from `1Hz` to `10MHz`:
 
 ```text
 .ac dec 10 1 10Meg
 ```
+
+If you are going to run an AC analsysis (i.e. using the `.ac` command), you don't generally want more than one AC source in your schematic. If you have more than 1 AC source, the AC analysis results will be a superposition of all AC voltage sources and will be hard to interpret. To quote the ngspice manual:
+
+> Note that in order for this analysis to be meaningful, at least one independent source must have been specified with an ac value. Typically it does not make much sense to specify more than one ac source. If you do, the result will be a superposition of all sources and difficult to interpret.
+
 
 ### Printing Out The Version Of ngspice
 
