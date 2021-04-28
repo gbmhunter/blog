@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2012-01-05
 description: "Crystals (XTALs), load capacitance, frequency accuracy and stability, schematic symbols, MEMS oscillators, and more info about oscillators."
 draft: false
-lastmod: 2021-01-18
+lastmod: 2021-04-28
 tags: [ "electronics", "components", "oscillators", "crystals", "MEMS", "XTAL", "XC", "XO", "OCXO", "frequency", "clocks", "power consumption", "stability", "accuracy", "ultrasonic baths" ]
 title: "Oscillators"
 type: "page"
@@ -13,11 +13,13 @@ type: "page"
 
 ## Crystals
 
-_Crystals_ (also called by the more generic term _oscillator_, although oscillators are also used to refer to other "oscillating" components) are electrical components which output a periodic waveform that can be used as a clock source for digital logic (which includes microcontrollers, it's main use). See the {{% link text="Oscillator page" src="" %}} for information on powered oscillators.
+_Crystals_ (also called by the more generic term _oscillator_, although oscillators are also used to refer to other "oscillating" components) are electrical components which output a periodic waveform that can be used as a clock source for digital logic (which includes microcontrollers, it's main use). They can also be called _piezoelectric resonators_. See the {{% link text="Oscillator page" src="" %}} for information on powered oscillators.
 
 {{< img src="crystal-schematic.png" width="275px" caption="A schematic of a crystal, usually connected to a microcontroller or other digital device that uses a clock. The load capacitance usually varies from 6-25pF per leg (see the crystals datasheet for the correct value)." >}}
 
 {{< img src="smd-tuning-fork-weird-name-for-crystal.png" width="275px" caption="Weird name for a crystal, don't you think? Image from http://www.foxonline.com/pdfs/fsrlf.pdf."  >}}
+
+_AT Cut_ crystals are the most common form of crystal. This is where the resonant frequency is determined by the thickness of the cut crystal.
 
 ### Schematic Symbol
 
@@ -78,6 +80,22 @@ The following waveform is the voltage on one of a 12MHz SMD crystals pins, when 
 
 {{< img src="12mhz-crystal-output-when-driven-by-microcontroller.jpg" width="1200px" caption="The output voltage waveform of a 12MHz crystal being driven by a standard microcontroller."  >}}
 
+### Equivalent Circuit
+
+A piezoelectric crystal resonator can be modelled as a series LCR circuit in parallel with a capacitor:
+
+{{% figure src="crystal-equivalent-circuit.svg" width="800px" caption="The equivalent circuit for a two-lead piezoelectric crystal resonator." %}}
+
+The series components `\(C_1\)`, `\(L_1\)`, and `\(R_1\)` model the physical properties of the piezoelectric crystal. They are not real physical electronic components inside the crystal. The parallel component `\(C_0\)` is the lead capacitance[^cts-app-note-crystal-basics].
+
+`\(L_1\)`: This models the mechanical mass of the quartz in motion. Lower frequency crystals have a value of `\(1-2H\)` (yes, that's whole Henries, much larger than micro/milli Henries of most real inductors!). This value can drop down to `\(1-100mH\)` for the higher frequency crystals, which are smaller and therefore less mass.
+
+`\(C_1\)`: This models a number of mechnical properties of the quartz crystal: the stiffness, the area of the electrodes, and the thickness/shape of the wafer. The value for fundamental mode crystals ranges between `\(0.005pF\)` and `\(0.030pF\)`.
+
+`\(R_1\)`: This models the impedance of the crystal when it is oscillating at it's series resonant frequency. When a series LC circuit is at resonant frequency, it's impedance is `\0\Omega\)`, therefore the impedance (and therefore current) is purely determined by this `\(R_1\)`. `\(R_1\)` is inversely proportional to the active area of the crystal, therefore smaller crystals have a larger `\(R_1\)`.
+
+`\(C_0\)`: This models the parallel capacitance (a.k.a. _shunt capacitance_) between the two leads of a crystal. It is the measured capacitance between the two leads when the crystal is not excited (i.e. not vibrating). `\(C_0\)` typically ranges from `\(1-7pF\)`.
+
 ### Oven-Controlled Crystal Oscillators (OCXOs)
 
 High-performance crystal oscillators are kept with temperature-controlled environments to increase the stability of the oscillator. They are called oven-controlled crystal oscillators (OCXOs).
@@ -93,6 +111,10 @@ Peltier devices can be used as the "oven" to keep the crystal's temperature cons
 The HC-49/U package is a popular choice for older through-hole crystals.
 
 Newer crystals come in small, custom SMD packages, with typically either 2 or 4 pins (with the 4-pin packages usually have two GND pins).
+
+### Simulation
+
+Crystal oscillators can be difficult to simulate accurately in most SPICE-based programs[^fast-crystal-oscillator-simulation-methodology]. Most SPICE programs use the Newton-Raphson algorithm for converging to a solution. Unfortunately, the Newton-Raphson algorithm is not suitable for very high Q circuits, of which a crystal resonantor is definitely one (Q values of `\(10,000\)` or more!). The time step has to be set so small for accurate simulation of crystal resonantor circuits that it can take days of simulation to "start-up" the ceramic resonantor (i.e. reach steady-state oscillation from power-on).
 
 ## Oscillators
 
@@ -136,3 +158,5 @@ MEMS oscillators have been made in packages which are also commonly used for cry
 ## References
 
 [^sit1533-mems-oscillator-datasheet]: <https://www.mouser.com/datasheet/2/371/SiT1533_rev1.4_03202018-1324419.pdf>, retrieved 2021-01-18.
+[^cts-app-note-crystal-basics]: <https://www.ctscorp.com/wp-content/uploads/Appnote-Crystal-Basics.pdf>, retrieved 2021-04-28.
+[^fast-crystal-oscillator-simulation-methodology]: <https://designers-guide.org/forum/Attachments/GEHRING_-_Fast_Crystal-Oscillator-Simulation_Methodology.pdf>, retrieved 2021-04-28.
