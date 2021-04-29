@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2012-01-05
 description: "Crystals (XTALs), load capacitance, frequency accuracy and stability, schematic symbols, MEMS oscillators, and more info about oscillators."
 draft: false
-lastmod: 2021-04-28
+lastmod: 2021-04-30
 tags: [ "electronics", "components", "oscillators", "crystals", "MEMS", "XTAL", "XC", "XO", "OCXO", "frequency", "clocks", "power consumption", "stability", "accuracy", "ultrasonic baths" ]
 title: "Oscillators"
 type: "page"
@@ -167,6 +167,21 @@ They use less power than a crystal-based oscillator, making them suitable for ba
 MEMS oscillators have been made in packages which are also commonly used for crystal packages, such as the 2012 SMD package.
 
 {{% img src="mems-vs-crystal-oscillator-package-size.png" width="700px" caption="A comparison between MEMS and crystal-based oscillators in CSP and larger 2012 SMD packages. Note how the MEMS oscillator sneaks in two extra pins between the standard 2012 pads for power and ground." %}}
+
+## Wein Bridge Oscillator
+
+One disadvantage of a Wein Bridge oscillator is that they need a gain of exactly 3 to function properly. If the gain is less than this, the oscillator will not start (or will stop if already started). If it is more than 3, the oscillator output will saturate and your sine wave output will start looking more like a square wave. Wein bridge oscillators typically need a non-linear component (a component which has a resistance which changes with applied voltage) to actively limit the gain and keep it at 3.
+
+Common methods of actively limiting the gain include using a incandescent bulb (resistance increases as it heats up), diodes (resistance decreases as voltage increases) or JFETs.
+
+{{% figure src="wein-bridge-oscillator/schematics.png" width="800px" caption="Wein Bridge oscillator circuit." %}}
+
+{{% figure src="wein-bridge-oscillator/v-sine-out.png" width="800px" caption="SPICE simulation results for the Wein Bridge oscillator circuit shown above. Note how the circuit takes approx. 350ms to start-up, relying on noise (which SPICE does simulate) for the initial 'kick' to begin oscillating." %}}
+
+You can download the following assets:
+
+* <a href="wein-bridge-oscillator/wein-bridge-oscillator-sim.sch" download>KiCad schematics</a>
+* <a href="wein-bridge-oscillator/wein-bridge-oscillator-sim.cir" download>SPICE netlist (generated from the KiCad schematics)</a>
 
 ## Manufacturer Part Numbers
 

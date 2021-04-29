@@ -10,6 +10,12 @@ D Generic, Res
 K R res resistor sim simulation
 $ENDCMP
 #
+$CMP 1N4148
+D Diode, General Purpose
+K diode sim simulation
+F ~
+$ENDCMP
+#
 $CMP 2N7002
 D IC, MOSFET, N-Ch
 K transistor NMOS N-MOS N-MOSFET sim simulation

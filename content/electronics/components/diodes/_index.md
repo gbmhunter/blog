@@ -69,6 +69,24 @@ Most diodes have their polarity marked with a single line near the cathode (the 
 Some diodes, such as bi-directional TVS diodes, do not have a polarity.
 {{% /note %}}
 
+## General Purpose Diodes
+
+SPICE model for the 1N4148 diode:
+
+```text
+.model 1N4148 D 
++ IS = 4.352E-9 
++ N = 1.906 
++ BV = 110 
++ IBV = 0.0001 
++ RS = 0.6458 
++ CJO = 7.048E-13 
++ VJ = 0.869 
++ M = 0.03 
++ FC = 0.5 
++ TT = 3.48E-9
+```
+
 ## Schottky Diodes
 
 Schottky diodes are special diodes that have a lower voltage drop than standard diodes (typically 0.3V instead of 0.7V). They are used in applications where the input voltage is small, and in high power applications in where the power consumption of the diode needs to be kept to a minimum. The standard schematic symbol for a schottky diode is shown below (note the curls on the bar, which differs it from the standard diode symbol.
@@ -160,6 +178,7 @@ For more information, see the {{% link text="ESD Protection" src="/electronics/c
 
 ## Manufacturer Part Numbers
 
+* **1N4148**: Common general-purpose diode family.
 * **1N58xx**: Common Schottky diode family.
 * **BZX384**: Series of Zeners in a SOD-323 package from Nexperia.
   * **BZX384-B**: ±2% tolerance range.
