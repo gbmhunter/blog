@@ -526,15 +526,17 @@ Although KiCad allows you to configure modes of analysis through the simulation 
 
 #### Transient (.tran)
 
-Transient analysis simulates the behaviour of the ciruit through time.
+Transient analysis simulates the behaviour of the circuit through time.
 
-Syntax: `.tran <step period> <simulation period>`
+Syntax: `.tran tstep tstop <tstart <tmax>>`
 
 e.g.
 
 ```text
 .tran 1u 10m
 ```
+
+`tstart` is optional. If no `tstart` is provided, `tstart` is assumed to be 0. Note that the transient analysis always begins at `t=0`, `tstart` specifies the time at which to begin recording data. This is useful if you want to let the circuit reach a steady-state before recording data.
 
 #### DC Sweep (.dc)
 
