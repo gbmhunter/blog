@@ -52,7 +52,9 @@ Typical Values: 8pF-20pF
 
 #### Operating Mode
 
-Most crystals operate in the "fundamental" operating mode, that is, they are running at their fundamental frequency.
+Most crystals operate in the "fundamental" operating mode, that is, they are running at their fundamental frequency. Most crystals below 30MHz operate in their fundamental operating mode. For frequencies higher than 30MHz, crystals begin to operate in the 3rd, 5th or sometimes 7th overtone. Only odd overtones are viable operating frequencies.
+
+Most crystals operating at a overtone frequency use series resonance to do so[^elec-tutorials-crystals].
 
 #### Operating Temperature
 
@@ -95,6 +97,22 @@ The series components `\(C_1\)`, `\(L_1\)`, and `\(R_1\)` model the physical pro
 `\(R_1\)`: This models the impedance of the crystal when it is oscillating at it's series resonant frequency. When a series LC circuit is at resonant frequency, it's impedance is `\0\Omega\)`, therefore the impedance (and therefore current) is purely determined by this `\(R_1\)`. `\(R_1\)` is inversely proportional to the active area of the crystal, therefore smaller crystals have a larger `\(R_1\)`.
 
 `\(C_0\)`: This models the parallel capacitance (a.k.a. _shunt capacitance_) between the two leads of a crystal. It is the measured capacitance between the two leads when the crystal is not excited (i.e. not vibrating). `\(C_0\)` typically ranges from `\(1-7pF\)`.
+
+### Quality Factor
+
+The quality factor for crystal oscillators is extremely large, typically 10,000 or greater. This is due to the very low series resistance (typically around `\(5\Omega\)`).
+
+The quality factor is determined by the following equation:
+
+<p>\begin{align}
+Q &= \frac{X_L}{R} \\
+  &= \frac{2\pi f L}{R} \\
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(X_L\) is the impedance of the inductor.
+</p>
 
 ### Oven-Controlled Crystal Oscillators (OCXOs)
 
@@ -160,3 +178,4 @@ MEMS oscillators have been made in packages which are also commonly used for cry
 [^sit1533-mems-oscillator-datasheet]: <https://www.mouser.com/datasheet/2/371/SiT1533_rev1.4_03202018-1324419.pdf>, retrieved 2021-01-18.
 [^cts-app-note-crystal-basics]: <https://www.ctscorp.com/wp-content/uploads/Appnote-Crystal-Basics.pdf>, retrieved 2021-04-28.
 [^fast-crystal-oscillator-simulation-methodology]: <https://designers-guide.org/forum/Attachments/GEHRING_-_Fast_Crystal-Oscillator-Simulation_Methodology.pdf>, retrieved 2021-04-28.
+[^elec-tutorials-crystals]: <https://www.electronics-tutorials.ws/oscillator/crystal.html>, retrieved 2021-04-29.

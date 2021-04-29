@@ -526,6 +526,8 @@ Although KiCad allows you to configure modes of analysis through the simulation 
 
 #### Transient (.tran)
 
+Transient analysis simulates the behaviour of the ciruit through time.
+
 Syntax: `.tran <step period> <simulation period>`
 
 e.g.

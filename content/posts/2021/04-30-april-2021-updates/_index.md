@@ -21,3 +21,7 @@ type: "post"
 * Added an {{% link text="equivalent circuit model for a crystal" src="/electronics/components/oscillators#equivalent-circuit" %}} (piezoelectric resonator).
 
     {{% figure src="/electronics/components/oscillators/crystal-equivalent-circuit.svg" width="600px" %}}
+
+* More info on crystal resonator operating modes.
+
+* Added new page with info on JFETS.
