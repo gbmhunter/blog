@@ -63,48 +63,48 @@ $EndComp
 $Comp
 L Bio-Sim:DC12 V1
 U 1 1 608A8BB9
-P 6200 1900
-F 0 "V1" H 6328 1946 50  0000 L CNN
-F 1 "DC 12" H 6328 1855 50  0000 L CNN
-F 2 "" H 6200 1900 50  0000 C CNN
-F 3 "" H 6200 1900 50  0000 C CNN
-F 4 "V" H 6450 1650 60  0001 C CNN "Spice_Primitive"
-F 5 "1 2" H 6450 1750 60  0001 C CNN "Spice_Node_Sequence"
-F 6 "ASK" H 6400 500 50  0001 C CNN "Substitution Category"
-	1    6200 1900
+P 6100 2100
+F 0 "V1" H 6228 2146 50  0000 L CNN
+F 1 "DC 12" H 6228 2055 50  0000 L CNN
+F 2 "" H 6100 2100 50  0000 C CNN
+F 3 "" H 6100 2100 50  0000 C CNN
+F 4 "V" H 6350 1850 60  0001 C CNN "Spice_Primitive"
+F 5 "1 2" H 6350 1950 60  0001 C CNN "Spice_Node_Sequence"
+F 6 "ASK" H 6300 700 50  0001 C CNN "Substitution Category"
+	1    6100 2100
 	1    0    0    -1  
 $EndComp
 $Comp
 L Bio-Sim:DC12 V2
 U 1 1 608A97CE
-P 6200 2300
-F 0 "V2" H 6328 2346 50  0000 L CNN
-F 1 "DC 12" H 6328 2255 50  0000 L CNN
-F 2 "" H 6200 2300 50  0000 C CNN
-F 3 "" H 6200 2300 50  0000 C CNN
-F 4 "V" H 6450 2050 60  0001 C CNN "Spice_Primitive"
-F 5 "1 2" H 6450 2150 60  0001 C CNN "Spice_Node_Sequence"
-F 6 "ASK" H 6400 900 50  0001 C CNN "Substitution Category"
-	1    6200 2300
+P 6100 2500
+F 0 "V2" H 6228 2546 50  0000 L CNN
+F 1 "DC 12" H 6228 2455 50  0000 L CNN
+F 2 "" H 6100 2500 50  0000 C CNN
+F 3 "" H 6100 2500 50  0000 C CNN
+F 4 "V" H 6350 2250 60  0001 C CNN "Spice_Primitive"
+F 5 "1 2" H 6350 2350 60  0001 C CNN "Spice_Node_Sequence"
+F 6 "ASK" H 6300 1100 50  0001 C CNN "Substitution Category"
+	1    6100 2500
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR03
 U 1 1 608AA1F3
-P 6650 2100
-F 0 "#PWR03" H 6650 1850 50  0001 C CNN
-F 1 "GND" H 6655 1927 50  0000 C CNN
-F 2 "" H 6650 2100 50  0001 C CNN
-F 3 "" H 6650 2100 50  0001 C CNN
-	1    6650 2100
+P 6550 2300
+F 0 "#PWR03" H 6550 2050 50  0001 C CNN
+F 1 "GND" H 6555 2127 50  0000 C CNN
+F 2 "" H 6550 2300 50  0001 C CNN
+F 3 "" H 6550 2300 50  0001 C CNN
+	1    6550 2300
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6650 2100 6200 2100
-Connection ~ 6200 2100
-Text GLabel 6200 2500 2    50   Input ~ 0
+	6550 2300 6100 2300
+Connection ~ 6100 2300
+Text GLabel 6100 2700 2    50   Input ~ 0
 V-
-Text GLabel 6200 1700 2    50   Input ~ 0
+Text GLabel 6100 1900 2    50   Input ~ 0
 V+
 Text GLabel 5200 2750 2    50   Input ~ 0
 V+
@@ -282,6 +282,4 @@ Wire Wire Line
 	4850 3650 4850 3150
 Wire Wire Line
 	4850 3150 5000 3150
-Text Notes 5750 3950 0    50   ~ 0
-.tran 10u 500m
 $EndSCHEMATC
