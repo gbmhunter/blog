@@ -32,14 +32,6 @@ from PySpice.Spice.NgSpice import Shared
 
 
 def exec_command(self, command, join_lines=True):
-    """
-    Execute a command and return the output.
-    
-    Monkeypatched version for NgSpiceShared class in .venv\Lib\site-packages\PySpice\Spice\NgSpice\Shared.py.
-    """
-
-    # Ngspice API: ngSpice_Command
-
     if len(command) > self.__MAX_COMMAND_LENGTH__:
         raise ValueError('Command must not exceed {} characters'.format(self.__MAX_COMMAND_LENGTH__))
 
@@ -91,6 +83,18 @@ def main():
 
     plt.tight_layout()
     plt.savefig('v-sine-out.png')
+
+    # Plot just a few cycles (i.e. zoomed in)
+    fig, ax = plt.subplots(1, figsize=(10, 5))
+    start_index = 50000
+    end_index = 52000
+    ax.plot(v_sine_out.abscissa.as_ndarray()[start_index:end_index], v_sine_out.as_ndarray()[start_index:end_index])
+    ax.legend(('SINE_OUT',), loc=(.8,.8))
+    ax.grid()
+    ax.set_xlabel('Time (s)')
+    ax.set_ylabel('Voltage (V)')
+    plt.tight_layout()
+    plt.savefig('v-sine-out-few-cycles.png')
 
 if __name__ == '__main__':
     main()

@@ -25,3 +25,10 @@ type: "post"
 * More info on crystal resonator operating modes.
 
 * Added new page with info on JFETS.
+
+* Added info on the {{% link text="Wien bridge oscillator to the Oscillators page" src="/electronics/components/oscillators#wien-bridge-oscillator" %}}. This includes schematics:
+    {{% figure src="/electronics/components/oscillators/wien-bridge-oscillator/schematic-traditional-as-bridge.svg" width="700px" %}}
+
+  and simulation results:
+
+    {{% figure src="/electronics/components/oscillators/wien-bridge-oscillator/v-sine-out.png" width="700px" %}}

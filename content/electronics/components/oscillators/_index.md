@@ -168,20 +168,62 @@ MEMS oscillators have been made in packages which are also commonly used for cry
 
 {{% img src="mems-vs-crystal-oscillator-package-size.png" width="700px" caption="A comparison between MEMS and crystal-based oscillators in CSP and larger 2012 SMD packages. Note how the MEMS oscillator sneaks in two extra pins between the standard 2012 pads for power and ground." %}}
 
-## Wein Bridge Oscillator
+## Wien Bridge Oscillator
 
-One disadvantage of a Wein Bridge oscillator is that they need a gain of exactly 3 to function properly. If the gain is less than this, the oscillator will not start (or will stop if already started). If it is more than 3, the oscillator output will saturate and your sine wave output will start looking more like a square wave. Wein bridge oscillators typically need a non-linear component (a component which has a resistance which changes with applied voltage) to actively limit the gain and keep it at 3.
+The Wien bridge oscillator is a relatively simple oscillator that can generate reasonably accurate sine waves. It is named after a bridge circuit designed by Max Wien in 1891 for the measurement of impedances.
+
+{{% figure src="wien-bridge-oscillator/schematic-traditional-as-bridge.svg" width="800px" caption="Schematics of a Wien bridge oscillator circuit, drawn in the traditional way with the RC and R networks shown as a bridge." %}}
+
+One disadvantage of a Wien Bridge oscillator is that they need a gain of exactly 3 to function properly. If the gain is less than this, the oscillator will not start (or will stop if already started). If it is more than 3, the oscillator output will saturate and your sine wave output will start looking more like a square wave. Wien bridge oscillators typically need a non-linear component (a component which has a resistance which changes with applied voltage) to actively limit the gain and keep it at 3.
 
 Common methods of actively limiting the gain include using a incandescent bulb (resistance increases as it heats up), diodes (resistance decreases as voltage increases) or JFETs.
 
-{{% figure src="wein-bridge-oscillator/schematics.png" width="800px" caption="Wein Bridge oscillator circuit." %}}
+The frequency of oscillation is determined by the RC networks connected to the non-inverting pin. Given the `\(R\)` and `\(C\)` are identical for both RC networks, the frequency is given by:
 
-{{% figure src="wein-bridge-oscillator/v-sine-out.png" width="800px" caption="SPICE simulation results for the Wein Bridge oscillator circuit shown above. Note how the circuit takes approx. 350ms to start-up, relying on noise (which SPICE does simulate) for the initial 'kick' to begin oscillating." %}}
+<p>\begin{align}
+  f = \frac{1}{2\pi RC}
+\end{align}</p>
+
+<p class="centered">
+  where:<br/>
+  \(f\) is the frequency of oscillation, in \(Hz\)<br/>
+  \(R\) is the resistance, in \(\Omega\)<br/>
+  \(C\) is the capacitance, in \(F\)
+</p>
+
+### Example And SPICE Simulation
+
+{{% figure src="wien-bridge-oscillator/schematics.png" width="800px" caption="Wien Bridge oscillator circuit." %}}
+
+The frequency is:
+
+<p>\begin{align}
+\label{eqn:example-freq-calc}
+f &= \frac{1}{2\pi RC} \\
+  &= \frac{1}{2\pi \cdot 80k\Omega \cdot 10nF} \\
+  &= 199 Hz
+\end{align}</p>
+
+
+{{% figure src="wien-bridge-oscillator/v-sine-out.png" width="800px" caption="SPICE simulation results for the Wien Bridge oscillator circuit shown above. Note how the circuit takes approx. 350ms to start-up, relying on noise (which SPICE does simulate) for the initial 'kick' to begin oscillating." %}}
+
+If we zoom in we can measure the frequency SPICE puts the oscillator at:
+
+{{% figure src="wien-bridge-oscillator/v-sine-out-few-cycles.png" width="800px" %}}
+
+You can count 3 cycles in 15ms, which puts the simulated frequency at:
+
+<p>\begin{align}
+f &= \frac{3}{15ms}
+  &= 200Hz
+\end{align}</p>
+
+which agrees well with what we calculated in `\(Eq. \ref{eqn:example-freq-calc}\)`.
 
 You can download the following assets:
 
-* <a href="wein-bridge-oscillator/wein-bridge-oscillator-sim.sch" download>KiCad schematics</a>
-* <a href="wein-bridge-oscillator/wein-bridge-oscillator-sim.cir" download>SPICE netlist (generated from the KiCad schematics)</a>
+* <a href="wien-bridge-oscillator/wien-bridge-oscillator-sim.sch" download>KiCad schematics</a>
+* <a href="wien-bridge-oscillator/wien-bridge-oscillator-sim.cir" download>SPICE netlist (generated from the KiCad schematics)</a>
 
 ## Manufacturer Part Numbers
 
