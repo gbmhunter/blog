@@ -22,13 +22,14 @@ type: "post"
 
     {{% figure src="/electronics/components/oscillators/crystal-equivalent-circuit.svg" width="600px" %}}
 
-* More info on crystal resonator operating modes.
+* More info on {{% link text="crystal resonator operating modes" src="/electronics/components/oscillators/#operating-mode" %}}.
 
-* Added new page with info on JFETS.
+* Added new page with info on {{% link text="JFETS" src="/electronics/components/transistors/junction-gate-field-effect-transistor-jfets" %}}.
 
 * Added info on the {{% link text="Wien bridge oscillator to the Oscillators page" src="/electronics/components/oscillators#wien-bridge-oscillator" %}}. This includes schematics:
-    {{% figure src="/electronics/components/oscillators/wien-bridge-oscillator/schematic-traditional-as-bridge.svg" width="700px" %}}
+
+    {{% figure src="/electronics/components/oscillators/wien-bridge-oscillator/schematic-traditional-as-bridge.svg" width="500px" %}}
 
   and simulation results:
 
-    {{% figure src="/electronics/components/oscillators/wien-bridge-oscillator/v-sine-out.png" width="700px" %}}
+    {{% figure src="/electronics/components/oscillators/wien-bridge-oscillator/v-sine-out.png" width="500px" %}}

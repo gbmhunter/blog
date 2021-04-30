@@ -174,6 +174,12 @@ The Wien bridge oscillator is a relatively simple oscillator that can generate r
 
 {{% figure src="wien-bridge-oscillator/schematic-traditional-as-bridge.svg" width="800px" caption="Schematics of a Wien bridge oscillator circuit, drawn in the traditional way with the RC and R networks shown as a bridge." %}}
 
+However the modern way to draw this is to split up the non-inverting and inverting feedback circuits like this:
+
+{{% figure src="wien-bridge-oscillator/schematic-modern.svg" width="800px" caption="The modern way to draw the Wien bridge oscillator circuit, separating the non-inverting and inverting feedback sections." %}}
+
+In my opinion this is a clearer way of drawing the circuit.
+
 One disadvantage of a Wien Bridge oscillator is that they need a gain of exactly 3 to function properly. If the gain is less than this, the oscillator will not start (or will stop if already started). If it is more than 3, the oscillator output will saturate and your sine wave output will start looking more like a square wave. Wien bridge oscillators typically need a non-linear component (a component which has a resistance which changes with applied voltage) to actively limit the gain and keep it at 3.
 
 Common methods of actively limiting the gain include using a incandescent bulb (resistance increases as it heats up), diodes (resistance decreases as voltage increases) or JFETs.
