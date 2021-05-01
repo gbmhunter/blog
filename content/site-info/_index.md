@@ -9,7 +9,7 @@ title: Site Info
 
 ## Site History
 
-## 2004: Blog Started As "Kaboom Pyrotechnics"  
+### 2004: Blog Started As "Kaboom Pyrotechnics"  
 
 * Name: Kaboom Pyrotechnics
 * Domain: [http://homepages.inspire.net.nz/~hunter](http://homepages.inspire.net.nz/~hunter)
@@ -22,28 +22,28 @@ This blog started of called "Kaboom Pyrotechnics". And yup, you guessed it, it s
 
 Yes and that is a `<marquee>` HTML element right underneath the main image there, I was so classy back then.
 
-## 2010: Blog Renamed geoWeb, Moved Hosting  
+### 2010: Blog Renamed geoWeb, Moved Hosting  
 
 * Name: geoWeb
 * Domain: [http://www.geoweb.hostei.com](http://www.geoweb.hostei.com/)
 * Hosted By: 000webhost (free)  
 * Powered By: Plain HTML, PHP and CSS
 
-## 2011-01: Blog Renamed CladLabs, Migrated To Drupal, Moved Onto Paid Hosting  
+### 2011-01: Blog Renamed CladLabs, Migrated To Drupal, Moved Onto Paid Hosting  
 
 * Name: CladLabs
 * Domain: [www.undergroundmadlabs.com](www.undergroundmadlabs.com)
 * Hosted By: Just Host (paid)  
 * Powered By: Drupal 7.x
 
-## 2011-09: Migrated To Wordpress
+### 2011-09: Migrated To Wordpress
 
 * Name: CladLabs
 * Domain: [cladlabs.wordpress.com](cladlabs.wordpress.com)
 * Hosted By: Just Host (paid)  
 * Powered By: Wordpress 3.x
 
-## April 2013: Background Darkened
+### 2013-04: Background Darkened
 
 This is when I switched from using a light theme to a dark theme.
 
@@ -67,27 +67,27 @@ This is when I switched from using a light theme to a dark theme.
 
 {{< img src="banner-980x300-op-amps.jpg" width="800px" caption="Banner image advertising the op-amp section of this blog." >}}
 
-## 2014: Blog Renamed To mbedded.ninja
+### 2014: Blog Renamed To mbedded.ninja
 
 * Name: mbedded.minja
 * URL: www.mbedded.ninja  
 
 {{< img src="mbedded-ninja-front-page-header-2014.png" width="800px" caption="A screenshot of the frontpage header just after blog was moved from cladlabs.com to mbedded.ninja (the theme was essentially kept the same)." >}}
 
-## 2015: Updated To The Wordpress TwentyFifteen Theme
+### 2015: Updated To The Wordpress TwentyFifteen Theme
 
 In 2015, in an attempt to simplify the aesthetics of the blog and reduce "clutter", the blog underwent it's biggest design transition --- from a dark-based theme (as shown above), to the custom light-based theme that was loosely based of the stock [Wordpress TwentyFifteeen theme](https://en-ca.wordpress.org/themes/twentyfifteen/).
 
 <div style='position:relative; padding-bottom:48.37%'><iframe src='https://gfycat.com/ifr/EnlightenedInferiorBluegill' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
   
-## 2017-03: Blog Moved To Subdomain blog.mbedded.ninja
+### 2017-03: Blog Moved To Subdomain blog.mbedded.ninja
 
 * Name: mbedded.ninja
 * URL: blog.mbedded.ninja
 * Hosted By: GoDaddy (shared Linux hosting)
 * Powered By: Wordpress
 
-## 2017-12: Blog Moved From Wordpress To Hugo
+### 2017-12: Blog Moved From Wordpress To Hugo
 
 * Name: mbedded.ninja
 * URL: blog.mbedded.ninja
@@ -103,29 +103,3 @@ Migrated from Wordpress (full-blown CMS) to Hugo (static-site generator). The Gi
 A full post with more information on this migration can be found [here](/posts/2018/12-15-site-migration-to-hugo-complete/).
 
 {{< img src="page-view-decrease-migration-from-wordpress-to-hugo.png" width="800px" caption="The decrease in page views after the migration from a Wordpress powered site to a statically-generated site powered by Hugo. There were no domain/page URL changes during this migration." >}}
-
-## Latex
-
-Display-style math equations should be surrounded with:
-
-```html
-<div>$$ equation goes here $$</div>
-```
-
-Inline-style math equations that are in markdown code should be surrounded with (note the backticks):
-
-```html
-`\( equation goes here \)`
-```
-
-or, if the inline equations are inside an HTML element, that backticks can be removed:
-
-```html
-<p>\( equation goes here \)</p>
-```
-
-## HTML Elements
-
-Use the &lt;del&gt; tag for most text which requires a strike-through.
-
-Use the class <code>centered</code> on block elements to center text within it.

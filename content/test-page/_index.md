@@ -50,6 +50,35 @@ A &= B\\
 \end{align}
 </div>
 
+These should be `\small` and `\tiny` equations:
+
+<p>\begin{align}
+\small y=x \\
+\tiny y=x
+\end{align}</p>
+
+Should have some descriptive text:
+
+<p>\begin{align}
+y &= x && \text{Because \(y=x\), duh.} \\
+  &= z && \text{Replacing \(x\) with \(z\).}
+\end{align}</p>
+
+First equation should not be numbered, second one should:
+
+<p>\begin{align}
+y &= x \nonumber \\
+  &= z
+\end{align}</p>
+
+None of the equations should be numbered (but still should be aligned):
+
+<p>\begin{align*}
+y &= x \\
+  &= z
+\end{align*}</p>
+
+
 Custom Latex macros:
 
 This should be bold: `\( \b{x} \)`
