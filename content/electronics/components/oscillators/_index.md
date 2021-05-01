@@ -189,37 +189,38 @@ Let's first look at the series and parallel RC circuits that provide the positiv
 The impedance `\(Z_S\)` of the series RC circuit is:
 
 <p>\begin{align}
-Z_S &= R + X_C \\
-    \label{eqn:zs}
-    &= R + \frac{1}{j\omega C}
+  Z_S &= R + X_C \nonumber \\
+  \label{eqn:zs}
+  &= R + \frac{1}{j\omega C}
 \end{align}</p>
 
 The impedance `\(Z_P\)` of the parallel RC circuit is:
 
 <p>\begin{align}
-Z_P &= R \; || \; X_C \\
-    &= R \; || \; \frac{1}{j\omega C} \\
-    &= \frac{R \frac{1}{j\omega C}}{R + \frac{1}{j\omega C}} && \text{Rule for impedances in parallel.} \\
+Z_P &= R \; || \; X_C \nonumber \\
+    &= R \; || \; \frac{1}{j\omega C} \nonumber \\
+    &= \frac{R \frac{1}{j\omega C}}{R + \frac{1}{j\omega C}} && \text{Rule for impedances in parallel.} \nonumber \\
     \label{eqn:zp}
     &= \frac{R}{j\omega RC + 1} && \text{Multiplying top and bottom by \(j\omega C\)}
 \end{align}</p>
 
 We can then write an equation for the voltage at the non-inverting pin of the op-amp in terms of the output voltage, and then describing it as a ratio we can get the gain of the RC network, `\(A_{RC}\)`:
 
-<p>\begin{align}
-v_{\text{non-inv}} &= \frac{Z_P}{Z_P + Z_S} v_{out} && \text{Resistor divider rule} \\
-\frac{v_{\text{non-inv}}}{v_{out}} &= A_{RC} = \frac{Z_P}{Z_P + Z_S} \\
-    &= \frac{ \frac{R}{j\omega RC + 1} }{ \frac{R}{j\omega RC + 1} +  R + \frac{1}{j\omega C} } && \text{Subs in \(Eq. \ref{eqn:zs}\) and \(Eq. \ref{eqn:zp}\)} \\
-    &= \frac{ R }{ R + R(j\omega RC + 1) + \frac{j\omega RC + 1}{j\omega C} } && \text{Multiplying top and bottom by \(j\omega RC\)} \\
-    &= \frac{ j\omega RC }{ j\omega RC + j\omega RC(j\omega RC + 1) + j\omega RC + 1 } && \text{Multiplying top and bottom by \(j\omega C\)} \\
-    &= \frac{ j\omega RC }{ j\omega RC + (j\omega RC)^2 + j\omega RC + j\omega RC + 1 } && \text{Expanding brackets} \\
-    &= \frac{ j\omega RC }{ (j\omega RC)^2 + 3j\omega RC + 1 } && \text{Collecting terms} \\
-    &= \frac{ j\omega RC }{ -(\omega RC)^2 + 3j\omega RC + 1 } && \text{Using the identity \(j^2 = -1\)} \\
+<p style="font-size: 1.0rem;">\begin{align}
+v_{\text{non-inv}} &= \frac{Z_P}{Z_P + Z_S} v_{out} && \tiny\text{Resistor divider rule} \nonumber \\
+\frac{v_{\text{non-inv}}}{v_{out}} &= A_{RC} = \frac{Z_P}{Z_P + Z_S}  \nonumber \\
+    &= \frac{ \frac{R}{j\omega RC + 1} }{ \frac{R}{j\omega RC + 1} +  R + \frac{1}{j\omega C} } && \tiny\text{Subs in \(Eq. \ref{eqn:zs}\) and \(Eq. \ref{eqn:zp}\)} \nonumber \\
+    &= \frac{ R }{ R + R(j\omega RC + 1) + \frac{j\omega RC + 1}{j\omega C} } && \tiny\text{Multiplying top and bottom by \(j\omega RC\)} \nonumber \\
+    &= \frac{ j\omega RC }{ j\omega RC + j\omega RC(j\omega RC + 1) + j\omega RC + 1 } && \tiny\text{Multiplying top and bottom by \(j\omega C\)} \nonumber \\
+    &= \frac{ j\omega RC }{ j\omega RC + (j\omega RC)^2 + j\omega RC + j\omega RC + 1 } && \tiny\text{Expanding brackets} \nonumber \\
+    &= \frac{ j\omega RC }{ (j\omega RC)^2 + 3j\omega RC + 1 } && \tiny\text{Collecting terms} \nonumber \\
+    &= \frac{ j\omega RC }{ -(\omega RC)^2 + 3j\omega RC + 1 } && \tiny\text{Using the identity \(j^2 = -1\)} \\
 \end{align}</p>
 
 Now if we focus on the purely resistive feedback network to the inverting pin of the op-amp, you should recognize this as the standard non-inverting gain configuration, where the gain is:
 
 <p>\begin{align}
+\require{ams}
 A_{non-inv} &= 1 + \frac{R_3}{R_4} && \text{Gain equation for non-inverting op-amp.} \\
 \end{align}</p>
 
@@ -236,14 +237,14 @@ A_{non-inv}A_{\text{RC}} = 1
 Now lets aim to separate the real and imaginary terms:
 
 <p>\begin{align}
-\left(1 + \frac{R_3}{R_4}\right) j\omega RC = -(\omega RC)^2 + 3j\omega RC + 1 \\
+\left(1 + \frac{R_3}{R_4}\right) j\omega RC = -(\omega RC)^2 + 3j\omega RC + 1 \nonumber \\
 \left(\frac{R_3}{R_4} - 2\right) j\omega RC =  1- \omega^2 R^2 C^2 
 \end{align}</p>
 
-At the resonant frequency, the imaginary term is 0 (voltage and current are in phase), as so:
+At the resonant frequency, the imaginary term is 0 (voltage and current are in phase), and so:
 
 <p>\begin{align}
-0       &=  1 - \omega^2 R^2 C^2 \\
+0       &=  1 - \omega^2 R^2 C^2 \nonumber \\
 \omega  &= \frac{1}{RC} && \text{Re-arranging for \(\omega\)}
 \end{align}</p>
 
@@ -253,6 +254,13 @@ Or in terms of natural frequency rather than angular frequency:
 f = \frac{1}{2\pi RC}
 \end{align}</p>
 
+To find the required gain of the circuit, we can make the real term 0, as so:
+
+<p>\begin{align}
+\left(\frac{R_3}{R_4} - 2\right) j\omega RC &= 0 \nonumber \\
+\frac{R_3}{R_4} - 2 &= 0 \nonumber \\
+R_3 &= 2R_4 \\
+\end{align}</p>
 
 One disadvantage of a Wien Bridge oscillator is that they need a gain of exactly 3 to function properly (to give a total _loop gain_ of exactly 1). If the gain is less than this, the oscillator will not start (or will stop if already started). If it is more than 3, the oscillator output will saturate and your sine wave output will start looking more like a square wave. Wien bridge oscillators typically need a non-linear component (a component which has a resistance which changes with applied voltage) to actively limit the gain and keep it at 3.
 
