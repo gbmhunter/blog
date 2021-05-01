@@ -170,7 +170,7 @@ MEMS oscillators have been made in packages which are also commonly used for cry
 
 ## Wien Bridge Oscillator
 
-The Wien bridge oscillator is a relatively simple oscillator that can generate reasonably accurate sine waves. It is named after a bridge circuit designed by Max Wien in 1891 for the measurement of impedances.
+The Wien bridge oscillator is a relatively simple oscillator that can generate reasonably accurate sine waves. It is named after a bridge circuit designed by Max Wien in 1891 for the measurement of impedances. William R. Hewlett (of Hewlett-Packard fame) designed the Wein bridge oscillator using the Wein bridge circuit and the differential amplifier. 
 
 {{% figure src="wien-bridge-oscillator/schematic-traditional-as-bridge.svg" width="800px" caption="Schematics of a Wien bridge oscillator circuit, drawn in the traditional way with the RC and R networks shown as a bridge." %}}
 
@@ -178,9 +178,83 @@ However the modern way to draw this is to split up the non-inverting and inverti
 
 {{% figure src="wien-bridge-oscillator/schematic-modern.svg" width="800px" caption="The modern way to draw the Wien bridge oscillator circuit, separating the non-inverting and inverting feedback sections." %}}
 
-In my opinion this is a clearer way of drawing the circuit.
+In my opinion this is a clearer way of drawing the circuit. Wien bridge oscillators are used in audio applications.
 
-One disadvantage of a Wien Bridge oscillator is that they need a gain of exactly 3 to function properly. If the gain is less than this, the oscillator will not start (or will stop if already started). If it is more than 3, the oscillator output will saturate and your sine wave output will start looking more like a square wave. Wien bridge oscillators typically need a non-linear component (a component which has a resistance which changes with applied voltage) to actively limit the gain and keep it at 3.
+The series RC and parallel RC circuits form high-pass and low-pass circuit elements, respectively.
+
+### Wien Bridge Equations
+
+Let's first look at the series and parallel RC circuits that provide the positive feedback.
+
+The impedance `\(Z_S\)` of the series RC circuit is:
+
+<p>\begin{align}
+Z_S &= R + X_C \\
+    \label{eqn:zs}
+    &= R + \frac{1}{j\omega C}
+\end{align}</p>
+
+The impedance `\(Z_P\)` of the parallel RC circuit is:
+
+<p>\begin{align}
+Z_P &= R \; || \; X_C \\
+    &= R \; || \; \frac{1}{j\omega C} \\
+    &= \frac{R \frac{1}{j\omega C}}{R + \frac{1}{j\omega C}} && \text{Rule for impedances in parallel.} \\
+    \label{eqn:zp}
+    &= \frac{R}{j\omega RC + 1} && \text{Multiplying top and bottom by \(j\omega C\)}
+\end{align}</p>
+
+We can then write an equation for the voltage at the non-inverting pin of the op-amp in terms of the output voltage, and then describing it as a ratio we can get the gain of the RC network, `\(A_{RC}\)`:
+
+<p>\begin{align}
+v_{\text{non-inv}} &= \frac{Z_P}{Z_P + Z_S} v_{out} && \text{Resistor divider rule} \\
+\frac{v_{\text{non-inv}}}{v_{out}} &= A_{RC} = \frac{Z_P}{Z_P + Z_S} \\
+    &= \frac{ \frac{R}{j\omega RC + 1} }{ \frac{R}{j\omega RC + 1} +  R + \frac{1}{j\omega C} } && \text{Subs in \(Eq. \ref{eqn:zs}\) and \(Eq. \ref{eqn:zp}\)} \\
+    &= \frac{ R }{ R + R(j\omega RC + 1) + \frac{j\omega RC + 1}{j\omega C} } && \text{Multiplying top and bottom by \(j\omega RC\)} \\
+    &= \frac{ j\omega RC }{ j\omega RC + j\omega RC(j\omega RC + 1) + j\omega RC + 1 } && \text{Multiplying top and bottom by \(j\omega C\)} \\
+    &= \frac{ j\omega RC }{ j\omega RC + (j\omega RC)^2 + j\omega RC + j\omega RC + 1 } && \text{Expanding brackets} \\
+    &= \frac{ j\omega RC }{ (j\omega RC)^2 + 3j\omega RC + 1 } && \text{Collecting terms} \\
+    &= \frac{ j\omega RC }{ -(\omega RC)^2 + 3j\omega RC + 1 } && \text{Using the identity \(j^2 = -1\)} \\
+\end{align}</p>
+
+Now if we focus on the purely resistive feedback network to the inverting pin of the op-amp, you should recognize this as the standard non-inverting gain configuration, where the gain is:
+
+<p>\begin{align}
+A_{non-inv} &= 1 + \frac{R_3}{R_4} && \text{Gain equation for non-inverting op-amp.} \\
+\end{align}</p>
+
+In steady-state oscillation, the reduction in amplitude of `\(v_{out}\)` to `\(v_{non-inv}\)` as to be exactly "countered" by the gain provided from `\(v_{non-inv}\)` to `\(v_{out}\)`, in other words:
+
+<p>\begin{align}
+A_{non-inv}A_{\text{RC}} = 1
+\end{align}</p>
+
+<p>\begin{align}
+\left(1 + \frac{R_3}{R_4}\right)\left(\frac{ j\omega RC }{ -(\omega RC)^2 + 3j\omega RC + 1 }\right) = 1
+\end{align}</p>
+
+Now lets aim to separate the real and imaginary terms:
+
+<p>\begin{align}
+\left(1 + \frac{R_3}{R_4}\right) j\omega RC = -(\omega RC)^2 + 3j\omega RC + 1 \\
+\left(\frac{R_3}{R_4} - 2\right) j\omega RC =  1- \omega^2 R^2 C^2 
+\end{align}</p>
+
+At the resonant frequency, the imaginary term is 0 (voltage and current are in phase), as so:
+
+<p>\begin{align}
+0       &=  1 - \omega^2 R^2 C^2 \\
+\omega  &= \frac{1}{RC} && \text{Re-arranging for \(\omega\)}
+\end{align}</p>
+
+Or in terms of natural frequency rather than angular frequency:
+
+<p>\begin{align}
+f = \frac{1}{2\pi RC}
+\end{align}</p>
+
+
+One disadvantage of a Wien Bridge oscillator is that they need a gain of exactly 3 to function properly (to give a total _loop gain_ of exactly 1). If the gain is less than this, the oscillator will not start (or will stop if already started). If it is more than 3, the oscillator output will saturate and your sine wave output will start looking more like a square wave. Wien bridge oscillators typically need a non-linear component (a component which has a resistance which changes with applied voltage) to actively limit the gain and keep it at 3.
 
 Common methods of actively limiting the gain include using a incandescent bulb (resistance increases as it heats up), diodes (resistance decreases as voltage increases) or JFETs.
 
@@ -196,6 +270,8 @@ The frequency of oscillation is determined by the RC networks connected to the n
   \(R\) is the resistance, in \(\Omega\)<br/>
   \(C\) is the capacitance, in \(F\)
 </p>
+
+Wien bridge oscillators can also be made from a single supply[^analog-devices-single-supply-wien-bridge].
 
 ### Example And SPICE Simulation
 
@@ -242,3 +318,4 @@ You can download the following assets:
 [^cts-app-note-crystal-basics]: <https://www.ctscorp.com/wp-content/uploads/Appnote-Crystal-Basics.pdf>, retrieved 2021-04-28.
 [^fast-crystal-oscillator-simulation-methodology]: <https://designers-guide.org/forum/Attachments/GEHRING_-_Fast_Crystal-Oscillator-Simulation_Methodology.pdf>, retrieved 2021-04-28.
 [^elec-tutorials-crystals]: <https://www.electronics-tutorials.ws/oscillator/crystal.html>, retrieved 2021-04-29.
+[^analog-devices-single-supply-wien-bridge]: <https://www.analog.com/media/en/technical-documentation/application-notes/AN-111.pdf>, retrieved 2021-05-01.
