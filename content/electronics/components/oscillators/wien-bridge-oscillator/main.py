@@ -1,4 +1,5 @@
 # pyspice-post-installation --install-ngspice-dll --ngspice-version=34
+# OR
 # Update pyspice_post_installation.py:
 # NGSPICE_RELEASE_URL = NGSPICE_BASE_URL + '/ng-spice-rework/old-releases'
 # Then:
@@ -65,14 +66,14 @@ def main():
     spice_library = SpiceLibrary(libraries_path)
 
     directory_path = Path(__file__).resolve().parent
-    kicad_netlist_path = directory_path.joinpath('wein-bridge-oscillator-sim.cir')
+    kicad_netlist_path = directory_path.joinpath('wien-bridge-oscillator-sim.cir')
     parser = SpiceParser(path=str(kicad_netlist_path))
     circuit = parser.build_circuit(ground=0)
     simulator = circuit.simulator(temperature=25, nominal_temperature=25)
-    analysis = simulator.transient(step_time=10@u_us, end_time=600@u_ms)
+    analysis = simulator.transient(step_time=10@u_us, end_time=60@u_ms)
 
     v_sine_out = analysis['SINE_OUT']
-    first_index_of_interest = np.where(v_sine_out.abscissa.as_ndarray() > 0.35)[0][0]
+    first_index_of_interest = np.where(v_sine_out.abscissa.as_ndarray() > 0.04)[0][0]
 
     fig, ax = plt.subplots(1, figsize=(10, 5))
     ax.plot(v_sine_out.abscissa.as_ndarray()[first_index_of_interest:], v_sine_out.as_ndarray()[first_index_of_interest:])
@@ -83,18 +84,6 @@ def main():
 
     plt.tight_layout()
     plt.savefig('v-sine-out.png')
-
-    # Plot just a few cycles (i.e. zoomed in)
-    fig, ax = plt.subplots(1, figsize=(10, 5))
-    start_index = 50000
-    end_index = 52000
-    ax.plot(v_sine_out.abscissa.as_ndarray()[start_index:end_index], v_sine_out.as_ndarray()[start_index:end_index])
-    ax.legend(('SINE_OUT',), loc=(.8,.8))
-    ax.grid()
-    ax.set_xlabel('Time (s)')
-    ax.set_ylabel('Voltage (V)')
-    plt.tight_layout()
-    plt.savefig('v-sine-out-few-cycles.png')
 
 if __name__ == '__main__':
     main()
