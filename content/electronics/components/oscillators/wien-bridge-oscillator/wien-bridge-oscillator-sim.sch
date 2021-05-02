@@ -14,22 +14,6 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L mbedded-ninja-kicad-symbols-sim:1N4148 D2
-U 1 1 608A7C60
-P 5050 4150
-F 0 "D2" H 5050 4250 50  0000 C CNN
-F 1 "1N4148" H 5050 4050 50  0000 C CNN
-F 2 "" H 5050 4150 50  0001 C CNN
-F 3 "~" H 5050 4150 50  0001 C CNN
-F 4 "D" H 5050 3650 50  0001 C CNN "Spice_Primitive"
-F 5 "1N4148" H 5050 3750 50  0001 C CNN "Spice_Model"
-F 6 "Y" H 5050 3850 50  0001 C CNN "Spice_Netlist_Enabled"
-F 7 "2 1" H 5050 3950 50  0001 C CNN "Spice_Node_Sequence"
-F 8 "sim\\1N4148.lib" H 5050 3550 50  0001 C CNN "Spice_Lib_File"
-	1    5050 4150
-	1    0    0    -1  
-$EndComp
-$Comp
 L mbedded-ninja-kicad-symbols-sim:1N4148 D1
 U 1 1 608A7F69
 P 5050 3850
@@ -41,7 +25,7 @@ F 4 "D" H 5050 3350 50  0001 C CNN "Spice_Primitive"
 F 5 "1N4148" H 5050 3450 50  0001 C CNN "Spice_Model"
 F 6 "Y" H 5050 3550 50  0001 C CNN "Spice_Netlist_Enabled"
 F 7 "2 1" H 5050 3650 50  0001 C CNN "Spice_Node_Sequence"
-F 8 "sim\\1N4148.lib" H 5050 3250 50  0001 C CNN "Spice_Lib_File"
+F 8 "1N4148.lib" H 5050 3250 50  0001 C CNN "Spice_Lib_File"
 	1    5050 3850
 	-1   0    0    1   
 $EndComp
@@ -56,7 +40,7 @@ F 3 "" H 5300 3050 50  0001 C CNN
 F 4 "X" H 5300 3300 50  0001 L CNN "Spice_Primitive"
 F 5 "AD8051" H 5300 3300 50  0001 L CNN "Spice_Model"
 F 6 "Y" H 5300 3300 50  0001 L CNN "Spice_Netlist_Enabled"
-F 7 "sim\\AD8051.lib" H 5300 3300 50  0001 L CNN "Spice_Lib_File"
+F 7 "AD8051.lib" H 5300 3300 50  0001 L CNN "Spice_Lib_File"
 	1    5300 3050
 	1    0    0    -1  
 $EndComp
@@ -115,11 +99,11 @@ SINE_OUT
 Wire Wire Line
 	5600 3050 5700 3050
 $Comp
-L mbedded-ninja-kicad-symbols-sim:10k R4
+L mbedded-ninja-kicad-symbols-sim:10k R1
 U 1 1 608B013F
 P 5150 2500
-F 0 "R4" V 4945 2500 50  0000 C CNN
-F 1 "80k" V 5036 2500 50  0000 C CNN
+F 0 "R1" V 4945 2500 50  0000 C CNN
+F 1 "15.9k" V 5036 2500 50  0000 C CNN
 F 2 "" H 5250 1800 50  0001 L CNN
 F 3 "" H 5150 2500 50  0001 L CNN
 F 4 "R" H 5300 2350 50  0001 C CNN "Spice_Primitive"
@@ -127,10 +111,10 @@ F 4 "R" H 5300 2350 50  0001 C CNN "Spice_Primitive"
 	0    1    1    0   
 $EndComp
 $Comp
-L mbedded-ninja-kicad-symbols-sim:100n C2
+L mbedded-ninja-kicad-symbols-sim:100n C1
 U 1 1 608B0C13
 P 5450 2500
-F 0 "C2" V 5198 2500 50  0000 C CNN
+F 0 "C1" V 5198 2500 50  0000 C CNN
 F 1 "10n" V 5289 2500 50  0000 C CNN
 F 2 "" H 5650 1700 50  0001 L CNN
 F 3 "" H 5450 2500 50  0001 L CNN
@@ -152,11 +136,11 @@ Connection ~ 5700 3050
 Wire Wire Line
 	5700 3050 5750 3050
 $Comp
-L mbedded-ninja-kicad-symbols-sim:10k R1
+L mbedded-ninja-kicad-symbols-sim:10k R2
 U 1 1 608B4708
 P 4300 2650
-F 0 "R1" H 4232 2604 50  0000 R CNN
-F 1 "80k" H 4232 2695 50  0000 R CNN
+F 0 "R2" H 4500 2600 50  0000 R CNN
+F 1 "15.9k" H 4600 2700 50  0000 R CNN
 F 2 "" H 4400 1950 50  0001 L CNN
 F 3 "" H 4300 2650 50  0001 L CNN
 F 4 "R" H 4450 2500 50  0001 C CNN "Spice_Primitive"
@@ -164,10 +148,10 @@ F 4 "R" H 4450 2500 50  0001 C CNN "Spice_Primitive"
 	-1   0    0    1   
 $EndComp
 $Comp
-L mbedded-ninja-kicad-symbols-sim:100n C1
+L mbedded-ninja-kicad-symbols-sim:100n C2
 U 1 1 608B5320
 P 4600 2650
-F 0 "C1" H 4485 2604 50  0000 R CNN
+F 0 "C2" H 4485 2604 50  0000 R CNN
 F 1 "10n" H 4485 2695 50  0000 R CNN
 F 2 "" H 4800 1850 50  0001 L CNN
 F 3 "" H 4600 2650 50  0001 L CNN
@@ -202,7 +186,7 @@ L mbedded-ninja-kicad-symbols-sim:10k R5
 U 1 1 608B9D87
 P 5450 3650
 F 0 "R5" V 5245 3650 50  0000 C CNN
-F 1 "4.7k" V 5336 3650 50  0000 C CNN
+F 1 "280" V 5336 3650 50  0000 C CNN
 F 2 "" H 5550 2950 50  0001 L CNN
 F 3 "" H 5450 3650 50  0001 L CNN
 F 4 "R" H 5600 3500 50  0001 C CNN "Spice_Primitive"
@@ -214,7 +198,7 @@ L mbedded-ninja-kicad-symbols-sim:10k R3
 U 1 1 608BA789
 P 5050 3650
 F 0 "R3" V 4845 3650 50  0000 C CNN
-F 1 "1k" V 4936 3650 50  0000 C CNN
+F 1 "1.92k" V 4936 3650 50  0000 C CNN
 F 2 "" H 5150 2950 50  0001 L CNN
 F 3 "" H 5050 3650 50  0001 L CNN
 F 4 "R" H 5200 3500 50  0001 C CNN "Spice_Primitive"
@@ -251,18 +235,6 @@ Wire Wire Line
 Wire Wire Line
 	5700 3650 5700 3050
 $Comp
-L mbedded-ninja-kicad-symbols-sim:10k R2
-U 1 1 608BF7F2
-P 4650 3650
-F 0 "R2" V 4445 3650 50  0000 C CNN
-F 1 "2.7k" V 4536 3650 50  0000 C CNN
-F 2 "" H 4750 2950 50  0001 L CNN
-F 3 "" H 4650 3650 50  0001 L CNN
-F 4 "R" H 4800 3500 50  0001 C CNN "Spice_Primitive"
-	1    4650 3650
-	0    1    1    0   
-$EndComp
-$Comp
 L power:GND #PWR02
 U 1 1 608C0372
 P 4450 3650
@@ -282,4 +254,32 @@ Wire Wire Line
 	4850 3650 4850 3150
 Wire Wire Line
 	4850 3150 5000 3150
+$Comp
+L mbedded-ninja-kicad-symbols-sim:10k R4
+U 1 1 608BF7F2
+P 4650 3650
+F 0 "R4" V 4445 3650 50  0000 C CNN
+F 1 "1k" V 4536 3650 50  0000 C CNN
+F 2 "" H 4750 2950 50  0001 L CNN
+F 3 "" H 4650 3650 50  0001 L CNN
+F 4 "R" H 4800 3500 50  0001 C CNN "Spice_Primitive"
+	1    4650 3650
+	0    1    1    0   
+$EndComp
+$Comp
+L mbedded-ninja-kicad-symbols-sim:1N4148 D2
+U 1 1 608A7C60
+P 5050 4150
+F 0 "D2" H 5050 4250 50  0000 C CNN
+F 1 "1N4148" H 5050 4050 50  0000 C CNN
+F 2 "" H 5050 4150 50  0001 C CNN
+F 3 "~" H 5050 4150 50  0001 C CNN
+F 4 "D" H 5050 3650 50  0001 C CNN "Spice_Primitive"
+F 5 "1N4148" H 5050 3750 50  0001 C CNN "Spice_Model"
+F 6 "Y" H 5050 3850 50  0001 C CNN "Spice_Netlist_Enabled"
+F 7 "2 1" H 5050 3950 50  0001 C CNN "Spice_Node_Sequence"
+F 8 "1N4148.lib" H 5050 3550 50  0001 C CNN "Spice_Lib_File"
+	1    5050 4150
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
