@@ -206,7 +206,7 @@ Z_P &= R \; || \; X_C \nonumber \\
 
 We can then write an equation for the voltage at the non-inverting pin of the op-amp in terms of the output voltage, and then describing it as a ratio we can get the gain of the RC network, `\(A_{RC}\)`:
 
-<p style="font-size: 1.0rem;">\begin{align}
+<p>\begin{align}
 v_{\text{non-inv}} &= \frac{Z_P}{Z_P + Z_S} v_{out} && \tiny\text{Resistor divider rule} \nonumber \\
 \frac{v_{\text{non-inv}}}{v_{out}} &= A_{RC} = \frac{Z_P}{Z_P + Z_S}  \nonumber \\
     &= \frac{ \frac{R}{j\omega RC + 1} }{ \frac{R}{j\omega RC + 1} +  R + \frac{1}{j\omega C} } && \tiny\text{Subs in \(Eq. \ref{eqn:zs}\) and \(Eq. \ref{eqn:zp}\)} \nonumber \\
@@ -221,30 +221,30 @@ Now if we focus on the purely resistive feedback network to the inverting pin of
 
 <p>\begin{align}
 \require{ams}
-A_{non-inv} &= 1 + \frac{R_3}{R_4} && \text{Gain equation for non-inverting op-amp.} \\
+A_{\text{non-inv}} &= 1 + \frac{R_3}{R_4} && \text{Gain equation for non-inverting op-amp.} \\
 \end{align}</p>
 
 In steady-state oscillation, the reduction in amplitude of `\(v_{out}\)` to `\(v_{non-inv}\)` as to be exactly "countered" by the gain provided from `\(v_{non-inv}\)` to `\(v_{out}\)`, in other words:
 
 <p>\begin{align}
-A_{non-inv}A_{\text{RC}} = 1
+A_{\text{non-inv}}A_{\text{RC}} = 1
 \end{align}</p>
 
 <p>\begin{align}
 \left(1 + \frac{R_3}{R_4}\right)\left(\frac{ j\omega RC }{ -(\omega RC)^2 + 3j\omega RC + 1 }\right) = 1
 \end{align}</p>
 
-Now lets aim to separate the real and imaginary terms:
+Now lets aim to separate the real and imaginary terms and write it as an equation which equals 0:
 
 <p>\begin{align}
 \left(1 + \frac{R_3}{R_4}\right) j\omega RC = -(\omega RC)^2 + 3j\omega RC + 1 \nonumber \\
-\left(\frac{R_3}{R_4} - 2\right) j\omega RC =  1- \omega^2 R^2 C^2 
+\left[ \left(\frac{R_3}{R_4} - 2\right) \omega RC \right] j + \left[ \omega^2 R^2 C^2 - 1 \right] =  0 \\
 \end{align}</p>
 
-At the resonant frequency, the imaginary term is 0 (voltage and current are in phase), and so:
+For this equation to hold true, both the real and imaginary parts must be equal to 0. If we focus on the real part first we can find `\(\omega\)` in terms of `\(R\)` and `\(C\)`:
 
 <p>\begin{align}
-0       &=  1 - \omega^2 R^2 C^2 \nonumber \\
+\omega^2 R^2 C^2 - 1 &=  0 \nonumber \\
 \omega  &= \frac{1}{RC} && \text{Re-arranging for \(\omega\)}
 \end{align}</p>
 
@@ -254,15 +254,26 @@ Or in terms of natural frequency rather than angular frequency:
 f = \frac{1}{2\pi RC}
 \end{align}</p>
 
-To find the required gain of the circuit, we can make the real term 0, as so:
+We can now look at the real part of the equation, which also must be 0. This gives us criterion for the ratio of the resistors `\(R_3\)` and `\(R_4\)`:
 
 <p>\begin{align}
-\left(\frac{R_3}{R_4} - 2\right) j\omega RC &= 0 \nonumber \\
+\left(\frac{R_3}{R_4} - 2\right) \omega RC &= 0 \nonumber \\
 \frac{R_3}{R_4} - 2 &= 0 \nonumber \\
+\label{eqn:r3-2-r4}
 R_3 &= 2R_4 \\
 \end{align}</p>
 
-One disadvantage of a Wien Bridge oscillator is that they need a gain of exactly 3 to function properly (to give a total _loop gain_ of exactly 1). If the gain is less than this, the oscillator will not start (or will stop if already started). If it is more than 3, the oscillator output will saturate and your sine wave output will start looking more like a square wave. Wien bridge oscillators typically need a non-linear component (a component which has a resistance which changes with applied voltage) to actively limit the gain and keep it at 3.
+We can plug this back into the equation for the non-inverting gain of the amplifier so see what gain this results in:
+
+<p>\begin{align}
+A_{\text{non-inv}} &= 1 + \frac{R_3}{R_4} \nonumber \\
+                  &= 1 + \frac{2R_4}{R_4} && \text{Subs. in \(Eq. \ref{eqn:r3-2-r4}\)} \nonumber \\
+                  &= 3
+\end{align}</p>
+
+### Realistic Wien Bridge Oscillator Circuits
+
+**There is a problem with the above Wien Bridge oscillator circuits which limits them to the realm of theory only**. It all comes back to the requirement that the Wien Bridge oscillator must have a _loop gain_ of exactly 1 to function properly. If the gain is less than this, the oscillator will not start (or will stop if already started). If it is more than 1, the oscillator output will saturate and your sine wave output will start looking more like a square wave. Wien bridge oscillators typically need a non-linear component (a component which has a resistance which changes with applied voltage) to actively limit the loop gain and keep it at 1.
 
 Common methods of actively limiting the gain include using a incandescent bulb (resistance increases as it heats up), diodes (resistance decreases as voltage increases) or JFETs.
 
