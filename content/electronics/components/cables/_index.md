@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2012-11-21
 description: "Insulation materials, cable types, standards, mutual capacitance and more info on cables."
 draft: false
-lastmod: 2020-10-05
+lastmod: 2021-05-03
 tags: [ "cable", "computer cable", "material", "insulation", "ETFE", "mPPE", "PDVF", "NEC", "UNITRONIC", "PROFIBUS", "mutual capacitance", "capacitance", "screens", "screening", "shielding", "shields", "Faraday cage" ]
 title: "Cables"
 type: "page"
@@ -261,6 +261,12 @@ Combined power/data cable refers to cable which makes special provision for carr
 Some examples of combined power/data cables include:
 
 * Lapp UNITRONIC BUS PB COMBI 7-W cable. It contains 3x 1.0mm2 power cores and 1x2x0.64mm2 twisted pair core for data. The twisted pair is individually shielded (to protect it from noise on the power cores), and the whole cable is also shielded.
+
+## Coaxial Cable
+
+_Coaxial cable_ (or just _coax cable_) is a type of cable consisting of single core surrounded by a circular outer shield, with a insulating dielectric sandwiched between the two. The term _coaxial_ comes from the inner conductor and outer shield sharing the same axis (they are concentric with one another). Coax is most commonly used to transmit high frequency signals over small (oscilloscope probes) and large distances (transatlantic phone cables).
+
+Coax cable has a capacitance of approx. 1pF/10mm, as measured between the central conductor and the outer shield. Precision capacitors can be from trimmed lengths of coax. cable.
 
 ## Mutual Capacitance
 

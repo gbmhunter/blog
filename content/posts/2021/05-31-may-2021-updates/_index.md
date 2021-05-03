@@ -11,3 +11,5 @@ type: "post"
 ---
 
 * Added equations/proofs involving the Wien bridge oscillator.
+
+* Added info on {{% link text="coaxial cables" src="/electronics/components/cables#coaxial-cable" %}}.
