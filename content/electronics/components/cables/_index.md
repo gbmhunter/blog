@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2012-11-21
 description: "Insulation materials, cable types, standards, mutual capacitance and more info on cables."
 draft: false
-lastmod: 2021-05-03
+lastmod: 2021-05-05
 tags: [ "cable", "computer cable", "material", "insulation", "ETFE", "mPPE", "PDVF", "NEC", "UNITRONIC", "PROFIBUS", "mutual capacitance", "capacitance", "screens", "screening", "shielding", "shields", "Faraday cage" ]
 title: "Cables"
 type: "page"
@@ -266,6 +266,18 @@ Some examples of combined power/data cables include:
 
 _Coaxial cable_ (or just _coax cable_) is a type of cable consisting of single core surrounded by a circular outer shield, with a insulating dielectric sandwiched between the two. The term _coaxial_ comes from the inner conductor and outer shield sharing the same axis (they are concentric with one another). Coax is most commonly used to transmit high frequency signals over small (oscilloscope probes) and large distances (transatlantic phone cables).
 
+{{% figure src="coax-cable-cut-away-annotated.png" width="700px" caption="The make-up of a standard coaxial cable. Relative dimensions accurate for RG-6 (dimensions taken from http://www.farnell.com/datasheets/1697593.pdf)." %}}
+
+RG-6 is one of the most common types of coaxial cable in residual homes due to it's use with TVs.
+
+Name    | Conductor Diameter (mm) | Insulator Diameter (mm)  | Shield Outer Diameter (mm) | Jacket Outer Diameter (mm)
+--------|-------------------------|--------------------------|----------------------------|---------------------------
+RG-6    | 1.0                     | 4.57                     | 5.2                        | 6.6
+
+[^pro-power-coaxial-rg6]
+
+### Precision Capacitors From Coaxial Cable
+
 Coax cable has a capacitance of approx. 1pF/10mm, as measured between the central conductor and the outer shield. Precision capacitors can be from trimmed lengths of coax. cable.
 
 ## Mutual Capacitance
@@ -284,3 +296,7 @@ The shield must be grounded (with respect to the signals/EMI) to be effective.
 ## Wire Gauge Calculator
 
 {{% calculator id="electronics/cabling/wire-gauge-calculator" style="width: 800px; height: 800px;" %}}
+
+## References
+
+[^pro-power-coaxial-rg6]: <http://www.farnell.com/datasheets/1697593.pdf>, retrieved 2021-05-04.
