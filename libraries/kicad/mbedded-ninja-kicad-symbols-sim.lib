@@ -66,6 +66,29 @@ X A 2 150 0 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# 2N5457
+#
+DEF 2N5457 Q 0 0 Y N 1 F N
+F0 "Q" 200 50 50 H V L CNN
+F1 "2N5457" 200 -50 50 H V L CNN
+F2 "" 200 100 50 H I C CNN
+F3 "" 0 -900 50 H I C CNN
+F4 "sim/2N5457.lib" 0 -500 50 H I C CNN "Spice_Lib_File"
+F5 "2N5457" 0 -600 50 H I C CNN "Spice_Model"
+F6 "Y" 0 -700 50 H I C CNN "Spice_Netlist_Enabled"
+F7 "J" 0 -800 50 H I C CNN "Spice_Primitive"
+DRAW
+C 50 0 111 0 1 10 N
+P 3 0 1 10 10 75 10 -75 10 -75 N
+P 3 0 1 0 100 -100 100 -50 10 -50 N
+P 3 0 1 0 100 100 100 55 10 55 N
+P 4 0 1 0 0 0 -40 15 -40 -15 0 0 F
+X D 1 100 200 100 D 50 50 1 1 P
+X G 2 -200 0 210 R 50 50 1 1 I
+X S 3 100 -200 100 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # 2N7002
 #
 DEF 2N7002 M 0 0 Y N 1 F N
@@ -126,10 +149,10 @@ F0 "M" 200 50 50 H V L CNN
 F1 "BSS84" 200 -50 50 H V L CNN
 F2 "" 200 100 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
-F4 "M" 200 50 50 H V L CNN "Spice_Primitive"
-F5 "BSS84" 200 50 50 H V L CNN "Spice_Model"
-F6 "Y" 200 50 50 H V L CNN "Spice_Netlist_Enabled"
-F7 "sim/BSS84.lib" 200 50 50 H V L CNN "Spice_Lib_File"
+F4 "M" 200 50 50 H I L CNN "Spice_Primitive"
+F5 "BSS84" 0 -600 50 H I L CNN "Spice_Model"
+F6 "Y" 0 -700 50 H I L CNN "Spice_Netlist_Enabled"
+F7 "sim/BSS84.lib" 0 -500 50 H I L CNN "Spice_Lib_File"
 DRAW
 C 65 0 110 0 1 10 N
 C 100 -70 10 0 1 0 F

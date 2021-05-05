@@ -1,0 +1,19 @@
+.title KiCad schematic
+.include 1N4148.lib
+.include 2N5457.lib
+.include AD8051.lib
+XU1 Net-_C2-Pad2_ Net-_R3-Pad2_ V+ V- SINE_OUT AD8051
+V1 V+ GND DC 12
+V2 GND V- DC 12
+R1 Net-_C1-Pad2_ Net-_C2-Pad2_ 15.9k
+C1 SINE_OUT Net-_C1-Pad2_ 10n
+R2 GND Net-_C2-Pad2_ 15.9k
+C2 GND Net-_C2-Pad2_ 10n
+R3 SINE_OUT Net-_R3-Pad2_ 2k
+R4 Net-_R3-Pad2_ GND 1.2k
+JQ1 Net-_Q1-Pad1_ Net-_C3-Pad2_ GND 2N5457
+D1 Net-_C3-Pad2_ SINE_OUT 1N4148
+R5 Net-_Q1-Pad1_ Net-_R3-Pad2_ 4.7k
+R6 GND Net-_C3-Pad2_ 470k
+C3 GND Net-_C3-Pad2_ 1u
+.end

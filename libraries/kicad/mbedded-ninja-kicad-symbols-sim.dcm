@@ -16,8 +16,14 @@ K diode sim simulation
 F ~
 $ENDCMP
 #
+$CMP 2N5457
+D Tran, JFET, N-Ch
+K transistor NJFET N-JFET
+F ~
+$ENDCMP
+#
 $CMP 2N7002
-D IC, MOSFET, N-Ch
+D Tran, MOSFET, N-Ch
 K transistor NMOS N-MOS N-MOSFET sim simulation
 F ~
 $ENDCMP
@@ -28,7 +34,7 @@ K op-amp sim simulation
 $ENDCMP
 #
 $CMP BSS84
-D IC, MOSFET, P-Ch
+D Tran, MOSFET, P-Ch
 K transistor PMOS P-MOS P-MOSFET sim simulation
 F ~
 $ENDCMP
