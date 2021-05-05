@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2012-01-05
 description: "Crystals (XTALs), load capacitance, frequency accuracy and stability, schematic symbols, MEMS oscillators, and more info about oscillators."
 draft: false
-lastmod: 2021-04-30
+lastmod: 2021-05-05
 tags: [ "electronics", "components", "oscillators", "crystals", "MEMS", "XTAL", "XC", "XO", "OCXO", "frequency", "clocks", "power consumption", "stability", "accuracy", "ultrasonic baths" ]
 title: "Oscillators"
 type: "page"
@@ -281,7 +281,7 @@ Common methods of actively limiting the gain include using:
 
 Wien bridge oscillators can also be made from a single supply[^analog-devices-single-supply-wien-bridge].
 
-### Example And SPICE Simulation
+### Diode Limited Example And SPICE Simulation
 
 {{% note %}}
 I have just used the calculated capacitance and resistance values, and not picked the nearest realistic E96 value so that it's easier to keep track of where the values come from.
@@ -351,6 +351,20 @@ You can download the following assets:
 
 * <a href="wien-bridge-oscillator/wien-bridge-oscillator-sim.sch" download>KiCad schematics</a>
 * <a href="wien-bridge-oscillator/wien-bridge-oscillator-sim.cir" download>SPICE netlist (generated from the KiCad schematics)</a>
+
+### JFET Gain-Limited Example
+
+Using a JFET to partially switch in another resistor in parallel with the ground-connected gain resistor `\(R_4\)` in the Wien bridge oscillator circuit is another method for preventing the oscillator for saturating (as opposed to the diode method shown above). **This JFET gain-limited approach is meant to introduce less distortion than the diode-limited approach above**, as the RC circuit driving the JFET's gate does not change much over a single cycle (assuming a suitable large RC time constant is picked).
+
+Schematics of this technique are shown below, with the circuit setup to oscillate at the same frequency as the diode gain-limited variant mentioned above.
+
+{{% figure src="wien-bridge-oscillator-jfet/schematics.png" width="700px" caption="A practical Wien bridge oscillator circuit using a JFET (Q1) as the non-element to actively limit the gain and prevent the oscillator from saturating." %}}
+
+Note the diode and RC circuit controlling the JFET's gate. When the circuit is first powered up, the gate is at ground and hence the gate-source voltage `\(V_{GS} = 0V\)`. Therefore the JFET is almost fully on (remember, JFET are depletion mode devices), and `\(R_5\)` is in parallel with `\(R_4\)`, increasing the gain of the op-amp. As the output voltage beings to oscillate, on the negative part of the cycle, diode `\(D_1\)` will conduct and charge the RC low-pass filter `\(C_3\)` and `\(R_6\)` with a negative voltage. This will decrease `\(V_{GS}\)` below `\(0V\)`, which will begin to turn the JFET off. This will then increase the equivalent resistance of `\(R_5\)` in parallel with `\(R_4\)` and decrease the op-amp gain. This will continue until the system reaches a steady-state and oscillates forever.
+
+And below are the simulation results for this circuit:
+
+{{% figure src="wien-bridge-oscillator-jfet/v-sine-out.png" width="800px" caption="SPICE simulation results for the JFET gain-limited Wien bridge oscillator circuit shown above. Notice the ringing on the gain that takes a few hundred milliseconds to stabilize." %}}
 
 ## Manufacturer Part Numbers
 

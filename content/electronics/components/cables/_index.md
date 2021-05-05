@@ -270,11 +270,24 @@ _Coaxial cable_ (or just _coax cable_) is a type of cable consisting of single c
 
 RG-6 is one of the most common types of coaxial cable in residual homes due to it's use with TVs.
 
+Properties of popular coaxial cable types[^pro-power-coaxial-rg6]:
+
 Name    | Conductor Diameter (mm) | Insulator Diameter (mm)  | Shield Outer Diameter (mm) | Jacket Outer Diameter (mm)
 --------|-------------------------|--------------------------|----------------------------|---------------------------
 RG-6    | 1.0                     | 4.57                     | 5.2                        | 6.6
 
-[^pro-power-coaxial-rg6]
+Properties of popular coaxial cable dielectrics[^rf-cafe-coax-chart]:
+
+Name                         | Propagation Velocity
+-----------------------------|-----------------------
+Solid Polyethylene (PE)      | 0.659c
+Foam Polyethylene (FE)       | 0.800c
+Foam Polystyrene (FS)        | 0.910c
+Air Space Polyethylene (ASP) | 0.840-0.880c
+Solid Teflon (ST)            | 0.694c
+Air Space Teflon (AST)       | 0.850-0.900c
+
+where `\(c=3e8ms^{-1}\)` is the speed of light in a vacuum.
 
 ### Precision Capacitors From Coaxial Cable
 
@@ -300,3 +313,4 @@ The shield must be grounded (with respect to the signals/EMI) to be effective.
 ## References
 
 [^pro-power-coaxial-rg6]: <http://www.farnell.com/datasheets/1697593.pdf>, retrieved 2021-05-04.
+[^rf-cafe-coax-chart]: <https://www.rfcafe.com/references/electrical/coax-chart.htm>, retrieved 2021-05-05.
