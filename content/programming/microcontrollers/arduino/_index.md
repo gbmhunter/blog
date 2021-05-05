@@ -3,7 +3,7 @@ author: "gbmhunter"
 category: [ "Programming", "Microcontrollers", "Arduino" ]
 date: 2011-11-10
 draft: false
-lastmod: 2020-08-02
+lastmod: 2021-05-05
 tags: [ "Arduino", "microcontroller", "IDE", "NetDuino", "FezDomino", "MariaMole", "RTOS", "CLI", "board packages", "Board Manager", "BSPs" ]
 title: "Arduino"
 type: "page"
@@ -56,6 +56,10 @@ There is a Visual Studio plugin called Visual Micro (downloadable from [this web
 ### Visual Studio Code
 
 Visual Studio Code has good support for Arduino platforms via the Arduino plugin.
+
+## The Arduino HAL (wiring)
+
+The base SPI class is `HardwareSPI`.
 
 ## RTOS
 
