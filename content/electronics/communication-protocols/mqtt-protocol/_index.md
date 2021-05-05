@@ -46,7 +46,9 @@ If you have added the installation directory to your system path, you can invoke
 mosquitto
 ```
 
-By default the above command will start a MQTT broker listening on port `1883`. The broker will not run as a daemon, so you can stop the broker with `Ctrl-C` (or equivalent).
+By default the above command will start a MQTT broker listening on port `1883`. The broker will not run as a daemon, so you can stop the broker with `Ctrl-C` (or equivalent). It also uses the following defaults:
+
+- No authentication
 
 You can listen to all system topics by subscribing to `$SYS/#`.
 
@@ -55,6 +57,10 @@ If you are experiencing problems when running `mosquitto`, you might want to run
 ```bash
 $ mosquitto -v
 ```
+
+#### Creating Password Files
+
+`mosquitto_passwd` is a utility provided alongside `mosquitto` which can generate password files for `mosquitto`. These password files control user access to the broker.
 
 ## MQTT Clients
 
