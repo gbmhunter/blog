@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2012-12-12
 description: "Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol."
 categories: [ "Electronics", "Communication Protocols" ]
-lastmod: 2021-04-19
+lastmod: 2021-05-06
 tags: [ "CAN bus", "bus", "communication protocol", "CAN1.0", "CAN2.0", "CAN base frame", "CAN extended frame", "USB adapters", "NoCAN", "encoding", "controller", "CANopen", "NEMA 2000", "termination resistors", "FlexRay", "SAE", "J1850", "J1939", "ISO 11783", "ISOBUS", "isolation", "mailboxes" ]
 title: "CAN Protocol"
 type: "page"
@@ -330,6 +330,23 @@ There are {{% link text="TVS diode components" src="/electronics/components/diod
 
 {{% figure src="can-bus-tvs-diodes-littelfuse-sm24canb-block-diagram-and-application-example.png" width="600px" caption="Block diagram and application example for the CAN bus AQ24CANFD TVS diode from LittelFuse. Image from <https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq24canfd_datasheet.pdf.pdf>, aquired 2021-04-27." %}}
 
+## CAN Controller Mailboxes
+
+Many microcontroller CAN peripherals contain CAN _mailboxes_. A mailbox is a storage place in hardware for a CAN frame (message) which is either being sent or received. Microcontrollers typically have 4-16 mailboxes, with them being a mixture of fixed transmit or receive mailboxes, or having the abilty of configure each mailbox as either for transmit or receive.. The concept of a _mailbox_ significantly reduces the CPU load on the microcontroller when transmitting and receiving CAN frames of interest. To send CAN frames, you will need to use at least one mailbox, but you can have multiple if needed. Multiple transmit mailboxes can be useful if you want to schedule multiple frames for transmission on the bus, and also provide a  priority (higher priority frames will be sent first).
+
+Receive mailboxes are configured with a receive mask that filter incoming frames. Only incoming frames which pass the filter are stored in the mailbox. The typical process is as follows:
+
+1. The frame ID is ANDed with the mask from the first receive mailbox.
+1. The masked frame ID is then compared with the filter value for the first receive mailbox.
+1. If the filter matches, the frame is accepted and the logic terminates here.
+1. If the filter does not match, steps 1-3 are tried with the next receive mailbox.
+1. If no matches occur, the frame is discarded.
+
+### Real Mailbox Examples
+
+- CANmodule-III is a HDL CAN controller module which has 16 receive mailboxes and 8 transmit mailboxes[^design-reuse-embedded-can-bus-controller].
+- STM32F microcontrollers with CAN peripherals have a number and transmit/receive mailboxes.
+
 ## NoCAN
 
 NoCAN is a communications protocol that is **built on-top of the CAN bus**. It provides a layer of abstraction on-top of a 125kHz CAN bus which adds _publish-subscribe based messaging_ and _automated address assignment_. With many wireless options available for IoT devices, NoCAN was borne out the idea that there is a need for an easy-to-use wired communications solution for IoT devices. The protocol was created by Omzlo and was [funded in part by a KickStarter campaign](https://www.kickstarter.com/projects/1242572682/nocan-the-wired-iot-platform-for-makers) in 2019.
@@ -382,9 +399,12 @@ One informative diagram in this document is the block-level architecture of the 
 
 {{% img src="reference-ti-can-repeater-design-tida-01487.png" width="700px" caption="The block-level architecture of the CAN bus repeater design by Texas Instruments. Image from http://www.ti.com/lit/ug/tidudb5a/tidudb5a.pdf?ts=1591658758534." %}}
 
+## References
 
 [^ti-importance-of-termination-resistors]: [https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers](https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers)
 
 [^elektromotus-can-bus-topology-recommendations]: [https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf](https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf)
 
 [^cia-can-physical-layer]: [http://www.inp.nsk.su/~kozak/canbus/canphy.pdf](http://www.inp.nsk.su/~kozak/canbus/canphy.pdf)
+
+[^design-reuse-embedded-can-bus-controller]: <https://www.design-reuse-embedded.com/product/auto_canmodule-iii_01>
