@@ -57,6 +57,12 @@ Build the project:
 pio run
 ```
 
+## PlatformIO Project Directory Structure
+
+```
+lib/   This is intended for project specific libraries. PlatformIO will automatically compile all projects in this directory as static libraries and then link them into the main executable. git submodules is a good way on managing libraries in this directory.
+```
+
 ## The PlatformIO Config File
 
 Data not specific to any one environment goes under the `[platformio]` section in the `platformio.ini` file.

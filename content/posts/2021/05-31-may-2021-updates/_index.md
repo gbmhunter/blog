@@ -23,3 +23,9 @@ type: "post"
     {{% figure src="/electronics/components/oscillators/wien-bridge-oscillator/schematics.png" width="600px" %}}
 
 * Added a JFET component to the KiCad simulation library.
+
+* Added info on CAN bus mailboxes.
+
+* Added a new page on Hashes.
+
+* More info added on the MQTT Paho library.
