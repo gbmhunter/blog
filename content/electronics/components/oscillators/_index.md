@@ -1,10 +1,10 @@
 ---
 author: "gbmhunter"
 date: 2012-01-05
-description: "Crystals (XTALs), load capacitance, frequency accuracy and stability, schematic symbols, MEMS oscillators, and more info about oscillators."
+description: "Crystals (XTALs), load capacitance, frequency accuracy and stability, schematic symbols, MEMS oscillators, Wien bridges, rings and more info about oscillators."
 draft: false
-lastmod: 2021-05-05
-tags: [ "electronics", "components", "oscillators", "crystals", "MEMS", "XTAL", "XC", "XO", "OCXO", "frequency", "clocks", "power consumption", "stability", "accuracy", "ultrasonic baths" ]
+lastmod: 2021-05-07
+tags: [ "electronics", "components", "oscillators", "crystals", "MEMS", "XTAL", "XC", "XO", "OCXO", "frequency", "clocks", "power consumption", "stability", "accuracy", "ultrasonic baths", "ring oscillators", "NOT gates" ]
 title: "Oscillators"
 type: "page"
 ---
@@ -365,6 +365,12 @@ Note the diode and RC circuit controlling the JFET's gate. When the circuit is f
 And below are the simulation results for this circuit:
 
 {{% figure src="wien-bridge-oscillator-jfet/v-sine-out.png" width="800px" caption="SPICE simulation results for the JFET gain-limited Wien bridge oscillator circuit shown above. Notice the ringing on the gain that takes a few hundred milliseconds to stabilize." %}}
+
+## Ring Oscillators
+
+A _ring oscillator_ is an electronic oscillator made up of a **chain of an odd-number of digital logic NOT gates**. The output of the last NOT gate is fed into the input of the first. The oscillator relies on the _propagation delay_ from the input of the first NOT gate to the output of the last NOT gate to set the oscillation frequency.
+
+{{% figure src="ring-oscillator-single/schematic.svg" width="500px" caption="The world's most basic ring oscillator, using one NOT gate." %}}
 
 ## Manufacturer Part Numbers
 
