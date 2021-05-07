@@ -487,6 +487,10 @@ Looking for `VDMOS` intrinsic models? LTspice ships with over a 1000 of them. On
 C:\Program Files\LTC\LTspiceXVII\lib\cmp\standard.mos
 ```
 
+#### Multiple Part Components
+
+KiCad can properly convert it's multiple part symbols (e.g. a op-amp IC with many op-amps, or a hex inverter IC) into a signal "component" when creating netlists for ngspice.
+
 ### Custom Model Files
 
 ngspice model files typically have the `.lib` extension --- the same extension as used by KiCad symbol libraries. Thus it's easy to get these two confused, and makes it harder to search for system installed ngspice model files in the KiCad installation directory. 

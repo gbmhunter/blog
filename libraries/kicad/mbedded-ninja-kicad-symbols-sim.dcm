@@ -28,6 +28,11 @@ K transistor NMOS N-MOS N-MOSFET sim simulation
 F ~
 $ENDCMP
 #
+$CMP 74HCU04
+D IC, Inverter, Single
+K TTL not inv
+$ENDCMP
+#
 $CMP AD8051
 D IC, Op-Amp
 K op-amp sim simulation

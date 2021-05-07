@@ -1,0 +1,6 @@
+.title KiCad schematic
+.include "74HCng.lib"
+V1 +5V GND DC 5
+XU1 GND NC_01 +5V GND 74HCU04
+.tran 0.1 1 
+.end
