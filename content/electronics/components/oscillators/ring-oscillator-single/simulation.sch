@@ -99,6 +99,30 @@ F 7 "74HCng.lib" H 4150 2350 50  0001 C CNN "Spice_Lib_File"
 $EndComp
 Wire Wire Line
 	3300 2400 3350 2400
-Text Label 3350 2400 0    50   ~ 0
-VOUT
+Text GLabel 3350 2400 2    50   Input ~ 0
+OUT
+$Comp
+L mbedded-ninja-kicad-symbols-sim:10k R1
+U 1 1 6095F44B
+P 3300 2550
+F 0 "R1" H 3368 2596 50  0000 L CNN
+F 1 "10k" H 3368 2505 50  0000 L CNN
+F 2 "" H 3400 1850 50  0001 L CNN
+F 3 "" H 3300 2550 50  0001 L CNN
+F 4 "R" H 3450 2400 50  0001 C CNN "Spice_Primitive"
+	1    3300 2550
+	1    0    0    -1  
+$EndComp
+Connection ~ 3300 2400
+$Comp
+L power:GND #PWR?
+U 1 1 60960813
+P 3300 2700
+F 0 "#PWR?" H 3300 2450 50  0001 C CNN
+F 1 "GND" H 3305 2527 50  0000 C CNN
+F 2 "" H 3300 2700 50  0001 C CNN
+F 3 "" H 3300 2700 50  0001 C CNN
+	1    3300 2700
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
