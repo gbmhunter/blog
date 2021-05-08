@@ -1,6 +1,28 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
+# mbedded-ninja-kicad-symbols-sim_10k
+#
+DEF mbedded-ninja-kicad-symbols-sim_10k R 0 0 N Y 1 F N
+F0 "R" 150 50 50 H V C CNN
+F1 "mbedded-ninja-kicad-symbols-sim_10k" 150 -50 50 H V C CNN
+F2 "" 100 -700 50 H I L CNN
+F3 "" 0 0 50 H I L CNN
+F4 "R" 150 -150 50 H I C CNN "Spice_Primitive"
+$FPLIST
+ R_*
+$ENDFPLIST
+DRAW
+P 2 0 1 0 0 -90 0 -100 N
+P 2 0 1 0 0 90 0 100 N
+P 5 0 1 0 0 -30 40 -45 0 -60 -40 -75 0 -90 N
+P 5 0 1 0 0 30 40 15 0 0 -40 -15 0 -30 N
+P 5 0 1 0 0 90 40 75 0 60 -40 45 0 30 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # mbedded-ninja-kicad-symbols-sim_74HCU04
 #
 DEF mbedded-ninja-kicad-symbols-sim_74HCU04 U 0 20 Y Y 2 L N
