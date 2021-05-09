@@ -1,0 +1,8 @@
+.title KiCad schematic
+.include MyHCU04.lib
+V1 +5V GND DC 5
+XU1 OUT Net-_U1-Pad2_ +5V GND MyHCU04
+XU2 Net-_U1-Pad2_ Net-_U2-Pad2_ +5V GND MyHCU04
+XU3 Net-_U2-Pad2_ OUT +5V GND MyHCU04
+.tran 100p 100n 
+.end

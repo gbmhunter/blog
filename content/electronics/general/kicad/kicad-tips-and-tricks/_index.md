@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2020-04-21
 description: "A beginners tutorial/introduction to KiCad."
 categories: [ "Electronics", "General" ]
-lastmod: 2021-02-01
+lastmod: 2021-05-09
 tags: [ "electronics", "KiCad", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries", "DigiKey", "renaming", "project", "GerbView", "installation", "3D models", "wrl", "step", "schematic templates", "SPICE", "simulation", "ngspice", "Sallen Key", "schematics" ]
 title: "KiCad Tips And Tricks"
 type: "page"
@@ -630,6 +630,15 @@ See the _Modes of Analysis_ section for more info.
 doAnalyses: iteration limit reached
 run simulation(s) aborted
 ```
+
+#### doAnalyses: Timestep too small
+
+```text
+doAnalyses: TRAN:  Timestep too small; time = 1.75691e-08, timestep = 1.25e-23: trouble with node "xu2.xay.60"
+run simulation(s) aborted
+```
+
+This error can occur during the time stepping of a transient analysis. SPICE has an internal timestep which keeps changing, if voltages/currents are changing slowly then SPICE keeps the timestep large, if voltages/currents are changing rapidly then SPICE reduces the timestep. This error occurs if SPICE keeps reducing the timestep and keeps failing to converge. As some point it hits a lower limit (which is typically orders of magnitude lower than the timestep you specified) and the simulation bails.
 
 ## CICD
 

@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2012-01-05
 description: "Crystals (XTALs), load capacitance, frequency accuracy and stability, schematic symbols, MEMS oscillators, Wien bridges, rings and more info about oscillators."
 draft: false
-lastmod: 2021-05-07
+lastmod: 2021-05-09
 tags: [ "electronics", "components", "oscillators", "crystals", "MEMS", "XTAL", "XC", "XO", "OCXO", "frequency", "clocks", "power consumption", "stability", "accuracy", "ultrasonic baths", "ring oscillators", "NOT gates" ]
 title: "Oscillators"
 type: "page"
@@ -368,9 +368,23 @@ And below are the simulation results for this circuit:
 
 ## Ring Oscillators
 
-A _ring oscillator_ is an electronic oscillator made up of a **chain of an odd-number of digital logic NOT gates**. The output of the last NOT gate is fed into the input of the first. The oscillator relies on the _propagation delay_ from the input of the first NOT gate to the output of the last NOT gate to set the oscillation frequency.
+A _ring oscillator_ (a.k.a. _RO_) is an electronic oscillator made up of a **chain of an odd-number of digital logic NOT gates**. The output of the last NOT gate is fed into the input of the first. The oscillator relies on the _propagation delay_ from the input of the first NOT gate to the output of the last NOT gate to set the oscillation frequency.
 
 {{% figure src="ring-oscillator-single/schematic.svg" width="500px" caption="The world's most basic ring oscillator, using one NOT gate." %}}
+
+### Simulation
+
+{{% figure src="ring-oscillator-triple/simulation.png" width="700px" caption="KiCad schematic of a three stage ring oscillator (ready for simulation)." %}}
+
+I ran into convergence issues when using the `74HCU04` SPICE model I found floating around on the internet (located in a file called [74HCng.lib](ring-oscillator-single/74HCng.lib)). Simulating one instance of the inverter worked fine, but I got the dreaded `doAnalyses: TRAN:  Timestep too small` error when connecting the second/third/e.t.c inverter in the ring. The convergence issue still occurred even when driving the first inverter instance from a slow frequency `PULSE` voltage source (rather than the driving it from the output of the last inverter), indicating it wasn't a problem with the ring structure.
+
+I then looked harder around the internet and found the `MyHCU04` SPICE model [posted on Google Groups by the late Jim Thompson](https://groups.google.com/g/sci.electronics.basics/c/k93fFgwnw-s?pli=1):
+
+> On popular request, 74HCU04 Spice Model rescued from 1993 archives and posted on the Device Models & Subcircuits page of my website...
+
+This SPICE model for an inverter fixed the convergence issues I was having (if anyone else is interested in this file, I've saved it [here](ring-oscillator-triple/MyHCU04.lib)). Hurrah!
+
+{{% figure src="ring-oscillator-triple/out.png" width="700px" caption="It's working! Simulated output of the three stage ring oscillator schematic shown above." %}}
 
 ## Manufacturer Part Numbers
 

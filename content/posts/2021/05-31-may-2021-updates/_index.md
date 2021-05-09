@@ -29,3 +29,7 @@ type: "post"
 * Added a new page on Hashes.
 
 * More info added on the MQTT Paho library.
+
+* Added a section on {{% link text="Ring Oscillators to the Oscillators page" src="/electronics/components/oscillators/#ring-oscillators" %}}. Added simulation results for a three stage ring oscillator.
+
+    {{% figure src="/electronics/components/oscillators/ring-oscillator-triple/out.png" width="600px" %}}

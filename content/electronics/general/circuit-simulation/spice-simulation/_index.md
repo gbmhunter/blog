@@ -67,4 +67,5 @@ Use `.control` to create a control block which can contain executable statements
 ## The Best SPICE Resources Out There
 
 1. ECircuitCenter ([http://www.ecircuitcenter.com](http://www.ecircuitcenter.com/)) - Top-notch and free resource of SPICE thoery and circuits.
-2. National Instruments SPICE Simulation Fundamentals ([http://zone.ni.com/devzone/cda/tut/p/id/5413#toc3](http://zone.ni.com/devzone/cda/tut/p/id/5413#toc3)) - Helpful, professional resources covering most aspects of SPICE simulation
+1. National Instruments SPICE Simulation Fundamentals ([http://zone.ni.com/devzone/cda/tut/p/id/5413#toc3](http://zone.ni.com/devzone/cda/tut/p/id/5413#toc3)) - Helpful, professional resources covering most aspects of SPICE simulation
+1. [Intusoft: Solving SPICE Convergence Problems](http://www.intusoft.com/articles/converg.pdf): Explains the common reasons for no convergence and the many ways to try and fix this.
