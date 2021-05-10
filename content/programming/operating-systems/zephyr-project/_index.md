@@ -421,6 +421,14 @@ void main(void)
 
 Zephyr supports the targets `qemu_x86` and `qemu_cortex_m3` for running Zephyr applications on desktop computers. This is great for development, testing and CICD purposes.
 
+## Un-supported C++ Features
+
+There are a number of C++ features that Zephyr does not support which removes C++ as a 1st tier language for writing Zephyr applications. This includes:
+
+- No dynamic memory allocation support via `new` or `delete`. Dynamic memory allocation in the embedded land is a contentious subject, but it's nice to be able to use it if it's a suitable choice for your application.
+- No RTTI (run-time type information)
+- No support for exceptions. Again, another contentious embedded subject, but nice to have the option of using them if you want.
+
 ## Common Errors
 
 ### File not found (on Windows)
