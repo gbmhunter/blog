@@ -3,9 +3,9 @@ author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 draft: false
-lastmod: 2020-11-05
+lastmod: 2021-05-11
 tags: [ "electronics", "components", "DPOT", "digital potentiometer", "resistor", "resistance", "rheostat", "communication", "I2C", "SPI" ]
-title: "DPOTs"
+title: "Digital Potentiometers (DPOTs)"
 type: "page"
 ---
 
@@ -46,7 +46,7 @@ Whilst standard potentiometers can handle any voltage on their terminals (within
 
 ## Manufacturer Part Numbers
 
-* **MCP4**: Family of DPOTs from Microchip.
+* **MCP4**: Family of DPOTs from Microchip. An Arduino library for driving these ICs can be found at <https://github.com/jmalloc/arduino-mcp4xxx>.
 * **TPL0401**: DPOT from Texas Instruments.
 
 ## Suppliers

@@ -98,3 +98,30 @@ but are just getting the string `%f`, it could be because floating-point `printf
     }
 }
 ```
+
+## The native Build Environment
+
+Note that none of the standard header files you rely on (`<Arduino.h>`, `<mbed.h>`) will be available when compiling for your native host. You will have to "stub" any functions/types that are platform specific before compilation will be successful.
+
+In `platformio.ini`:
+
+```text
+[env:native]
+platform = native
+```
+
+### Installtion On Windows
+
+When trying to compile on Windows you may get the following error:
+
+```text
+'g++' is not recognized as an internal or external command,
+```
+
+PlatformIO does not install `gcc` or `g++` executables for you autmatically, you have to provide them yourself. One way to do this on Windows is to install MinGW:
+
+1. Download MinGW from <https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download>.
+1. Install MinGW using the following settings:
+    - Architecture: x86_64
+    - Thread model: posix
+1. Add the `bin` directory of the MinGW installation to your system `PATH`. When I installed it the path to the `bin` directory was `C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin`.

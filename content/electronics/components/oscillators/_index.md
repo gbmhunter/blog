@@ -11,9 +11,11 @@ type: "page"
 
 ## Overview
 
+The page also includes discrete oscillator elements such are crystals.
+
 ## Crystals
 
-_Crystals_ (also called by the more generic term _oscillator_, although oscillators are also used to refer to other "oscillating" components) are electrical components which output a periodic waveform that can be used as a clock source for digital logic (which includes microcontrollers, it's main use). They can also be called _piezoelectric resonators_. See the {{% link text="Oscillator page" src="" %}} for information on powered oscillators.
+**_Crystals_ are piezoelectric components which can be used to build an oscillator**. Combined with driving circuitry, they form an oscillator which can be made to output a periodic waveform to be used as a clock source for digital logic (e.g. flipflops, microcontrollers, FPGAs, e.t.c.). They can also be called _piezoelectric resonators_.
 
 {{< img src="crystal-schematic.png" width="275px" caption="A schematic of a crystal, usually connected to a microcontroller or other digital device that uses a clock. The load capacitance usually varies from 6-25pF per leg (see the crystals datasheet for the correct value)." >}}
 
@@ -28,7 +30,6 @@ Unfortunately, many different designator prefixes are used to represent a crysta
 * XC
 * XO
 * OCXO (oven-controller crystal oscillator)
-
 
 ### Important Parameters
 
@@ -167,6 +168,15 @@ They use less power than a crystal-based oscillator, making them suitable for ba
 MEMS oscillators have been made in packages which are also commonly used for crystal packages, such as the 2012 SMD package.
 
 {{% img src="mems-vs-crystal-oscillator-package-size.png" width="700px" caption="A comparison between MEMS and crystal-based oscillators in CSP and larger 2012 SMD packages. Note how the MEMS oscillator sneaks in two extra pins between the standard 2012 pads for power and ground." %}}
+
+Some common industry sizes for oscillators include:
+
+- 1612: 1.6 mm × 1.2 mm
+- 2016: 2.0 mm × 1.6 mm
+- 2520: 2.5 mm × 2.0 mm
+- 3225: 3.2 mm × 2.5 mm
+- 5032: 5.0 mm × 3.2 mm
+- 7050: 7.0 mm × 5.0 mm
 
 ## Wien Bridge Oscillator
 
