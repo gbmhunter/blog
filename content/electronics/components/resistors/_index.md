@@ -155,7 +155,7 @@ where<br/>
 
 ### More Notes
 
-You call also get variable resistors which can be changed digitally (called DPOTs). They have their own page which can be found {{< link text="here" src="/electronics/components/dpots" >}}.
+You call also get variable resistors which can be changed digitally (called DPOTs). They have their own page which can be found {{< link text="here" src="/electronics/components/digital-potentiometers-dpots" >}}.
 
 ## Tolerances
 
