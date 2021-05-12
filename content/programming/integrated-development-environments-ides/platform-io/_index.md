@@ -125,3 +125,17 @@ PlatformIO does not install `gcc` or `g++` executables for you autmatically, you
     - Architecture: x86_64
     - Thread model: posix
 1. Add the `bin` directory of the MinGW installation to your system `PATH`. When I installed it the path to the `bin` directory was `C:\Program Files\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin`.
+
+## Testing
+
+To build the code in `src/` when `pio test` is run, add `test_build_project_src = true` to the environment in your `platform.io` file, e.g.:
+
+```text
+[env:myenv]
+platform = ...
+test_build_project_src = true
+```
+
+{{% warning %}}
+This is not the recommended way to solving the problem. The recommended way is to move the code you want to test into the `lib/` directory.
+{{% warning %}}

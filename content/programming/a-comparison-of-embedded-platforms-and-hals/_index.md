@@ -24,6 +24,7 @@ Shall be rated under the following categories:
 - Dependency Management
 - Library Support
 - IDE Support
+- Community Support: This one is a bit of a popularity contest. How many and how active are the forums on this platform? Are there lots of StackOverflow questions and responses?
 
 ## Arduino
 
@@ -41,6 +42,8 @@ The documentation for the Arduino API is o.k. Not bad, not great, but generally 
 
 **IDE Support: 9/10**
 
+**Community Support: x/10**
+
 ### Comments
 
 Most popular.
@@ -55,11 +58,11 @@ Many Arduino libraries make assumptions about what SPI/I2C peripheral you are us
 
 **HAL: n/a**
 
-Being a build system and package manager PlatformIO does not provide any HAL (as expected). 
+Being a build system and package manager PlatformIO does not provide any HAL. 
 
 **RTOS Support: n/a**
 
-Being a build system and package manager PlatformIO does not provide any RTOS (as expected). 
+Being a build system and package manager PlatformIO does not provide any RTOS. 
 
 **Dependency Management: 9/10**
 
@@ -68,6 +71,8 @@ Unsure of the amount of support for libraries of libraries (dependencies of depe
 **Library Support: 5/10**
 
 **IDE Support: x/10**
+
+**Community Support: x/10**
 
 ### Comments
 
@@ -78,13 +83,17 @@ PlatformIO is a package manager and build system. It can be used together with m
 
 **HAL: n/a**
 
-**RTOS Support: n/a**
+**RTOS Support: 8/10**
+
+The mbed HAL comes packaged with an RTOS. When not using multiple threads, a compile time switch disables the scheduler code and you are left with just the one thread.
 
 **Dependency Management: x/10**
 
 **Library Support: x/10**
 
 **IDE Support: x/10**
+
+**Community Support: x/10**
 
 ### Comments
 
