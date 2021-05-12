@@ -128,6 +128,8 @@ PlatformIO does not install `gcc` or `g++` executables for you autmatically, you
 
 ## Testing
 
+PlatformIO supports unit testing both on real hardware and on native (host) machines. It also supports testing via remote connection (e.g. the internet) to another device which has the target hardware connected to it (which is suitable for cloud-based CICD and cloud-based IDE development).
+
 To build the code in `src/` when `pio test` is run, add `test_build_project_src = true` to the environment in your `platform.io` file, e.g.:
 
 ```text
