@@ -130,6 +130,22 @@ PlatformIO does not install `gcc` or `g++` executables for you autmatically, you
 
 PlatformIO supports unit testing both on real hardware and on native (host) machines. It also supports testing via remote connection (e.g. the internet) to another device which has the target hardware connected to it (which is suitable for cloud-based CICD and cloud-based IDE development).
 
+To write some unit tests, first create a `test_main.cpp` in the `test/` directory of your PlatformIO project. Then include `<unity.h>`. Testing is started with `UNITY_BEGIN()` and finished with `UNITY_END()`:
+
+```c++
+#include <unity.h>
+
+int main() {
+    UNITY_BEGIN();
+    // Test functions goes here
+    UNITY_END();
+}
+```
+
+`RUN_TEST()` takes in a function pointer to the test you want to run. It accepts a C-style function pointer, so one unfortunate limiation is you cannot pass in member functions. The best workaround for this is to not use classes to define your test suite.
+
+### Building The Code In The src/ Directory
+
 To build the code in `src/` when `pio test` is run, add `test_build_project_src = true` to the environment in your `platform.io` file, e.g.:
 
 ```text
@@ -141,3 +157,37 @@ test_build_project_src = true
 {{% warning %}}
 This is not the recommended way to solving the problem. The recommended way is to move the code you want to test into the `lib/` directory.
 {{% warning %}}
+
+Output of `pio test` (with one test intentionally failing for demonstration purposes):
+
+```
+PS C:\Users\gbmhunter\pio-test> pio test
+Verbose mode can be enabled via `-v, --verbose` option
+Collected 1 items
+
+Processing * in testing environment
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Building...
+Uploading...
+Testing...
+If you don't see any output for the first 10 secs, please reset board (press reset button)
+
+test\test_main.cpp:17:test_led_builtin_pin_number:FAIL: Expected 13 Was 32      [FAILED]
+test\test_main.cpp:85:test_led_state_high       [PASSED]
+test\test_main.cpp:87:test_led_state_low        [PASSED]
+test\test_main.cpp:85:test_led_state_high       [PASSED]
+test\test_main.cpp:87:test_led_state_low        [PASSED]
+test\test_main.cpp:85:test_led_state_high       [PASSED]
+test\test_main.cpp:87:test_led_state_low        [PASSED]
+test\test_main.cpp:85:test_led_state_high       [PASSED]
+test\test_main.cpp:87:test_led_state_low        [PASSED]
+test\test_main.cpp:85:test_led_state_high       [PASSED]
+test\test_main.cpp:87:test_led_state_low        [PASSED]
+-----------------------
+11 Tests 1 Failures 0 Ignored
+=========================================================================================== [FAILED] Took 14.40 seconds ===========================================================================================
+Test    Environment    Status    Duration
+------  -------------  --------  ------------
+*       testing        FAILED    00:00:14.400
+====================================================================================== 1 failed, 0 succeeded in 00:00:14.400 ======================================================================================
+```
