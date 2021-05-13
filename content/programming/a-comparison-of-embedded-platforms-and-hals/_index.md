@@ -52,6 +52,8 @@ Global, constant definitions/peripherals can hinder the flexibility. `yield()` b
 
 Many Arduino libraries make assumptions about what SPI/I2C peripheral you are using. For example, most just assume (and use) the `SPI` interface), which is a global variable to your first SPI interface.
 
+Digital and analogue pins are read from/written to using global functions like `digitalRead()`. Whilst this is simple and easy to use, it does impose some limitations when trying to perform unit testing and create mock hardware. Without any Pin objects, you cannot really utilize dependency injection to replace real hardware pins with mocked test pins (although you could pass in the `digitalRead()` function, and then mock that?).
+
 ## PlatformIO
 
 ### Ratings
