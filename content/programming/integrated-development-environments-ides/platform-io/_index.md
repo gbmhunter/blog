@@ -25,17 +25,23 @@ _PlatformIO Core_ is the command-line tool that contains most of PlatformIO's co
 * `board`: A physical PCB containing a microcontroller that code can be built for and programmed.
 * `platform`: Examples of platforms include `atmelavr`, `atmelsam`, and `ststm32`. A `platform` uses `packages`. Default install directory for platforms is `core_dir/platforms`.
 * `package`: A _package_ is a tool of framework that can be used when compiling one or more `platform`s. Default install directory for packages is `core_dir/packages`.
-* `framework`: A firmware "framework" providing an API to call from your application to interface with hardware peripherals and device drivers. Available options include `arduino`, `zephyr`.
+* `framework`: A firmware "framework" providing an API to call from your application to interface with hardware peripherals and device drivers (a HAL). Available options include `arduino`, `mbed`, `zephyr`.
 
-## PlatformIO Core
+## Installation
 
-### Installation
-
-Via `pip`:
+You can install the PlatformIO _core_ via `pip`:
 
 ```cmd
-> pip install -U platformio
+$ pip install -U platformio
 ```
+
+You can install PlatformIO as an Extension in Visual Studio Code. If you do this, you do not need to install the CLI tool separately as it is bundled with the extension. However, you will only be able to call `pio` via the command line through a special "PlatformIO" terminal instance. If you want to call `pio` from any command-line instance, add:
+
+```text
+<platform-install-directory>/penv/Scripts
+```
+
+to your `PATH`. For example, on Windows you would add something similar to `C:\Users\<username>\.platformio\penv\Scripts` to your system `PATH`.
 
 ### Library Dependency Finder (LDF)
 
@@ -59,8 +65,19 @@ pio run
 
 ## PlatformIO Project Directory Structure
 
-```
+```text
 lib/   This is intended for project specific libraries. PlatformIO will automatically compile all projects in this directory as static libraries and then link them into the main executable. git submodules is a good way on managing libraries in this directory.
+|--my_lib_1/    // Example of a simple standalon lib which is not itself a PlatformIO project
+   |--main.cpp  // Source code directory in library root dir
+|--my_lib_2/    // Example of a lib which is it's own self-contained PlatformIO project
+   |--src
+      |--main.cpp
+   |--test
+src
+  |--main.cpp
+test                // Directory which contains test files
+  |--test_main.cpp  // Contains the main() for running the tests
+platformio.ini      // PlatformIO project configuration file. Defines environments, platforms, build flags, e.t.c
 ```
 
 ## The PlatformIO Config File
@@ -144,20 +161,6 @@ int main() {
 
 `RUN_TEST()` takes in a function pointer to the test you want to run. It accepts a C-style function pointer, so one unfortunate limiation is you cannot pass in member functions. The best workaround for this is to not use classes to define your test suite.
 
-### Building The Code In The src/ Directory
-
-To build the code in `src/` when `pio test` is run, add `test_build_project_src = true` to the environment in your `platform.io` file, e.g.:
-
-```text
-[env:myenv]
-platform = ...
-test_build_project_src = true
-```
-
-{{% warning %}}
-This is not the recommended way to solving the problem. The recommended way is to move the code you want to test into the `lib/` directory.
-{{% warning %}}
-
 Output of `pio test` (with one test intentionally failing for demonstration purposes):
 
 ```
@@ -191,3 +194,17 @@ Test    Environment    Status    Duration
 *       testing        FAILED    00:00:14.400
 ====================================================================================== 1 failed, 0 succeeded in 00:00:14.400 ======================================================================================
 ```
+
+### Building The Code In The src/ Directory
+
+To build the code in `src/` when `pio test` is run, add `test_build_project_src = true` to the environment in your `platform.io` file, e.g.:
+
+```text
+[env:myenv]
+platform = ...
+test_build_project_src = true
+```
+
+{{% warning %}}
+This is not the recommended way to solving the problem. The recommended way is to move the code you want to test into the `lib/` directory.
+{{% warning %}}

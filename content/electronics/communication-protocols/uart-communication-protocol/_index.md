@@ -3,7 +3,7 @@ author: "gbmhunter"
 date: 2011-09-12
 description: "A tutorial on the UART communication protocol, including types, baud rates, flow control, error checking, RS-232 and more."
 draft: false
-lastmod: 2019-01-13
+lastmod: 2021-05-17
 tags: [ "UART", "communication protocol", "USART", "microcontroller", "serial", "8n1", "universal asynchronous", "receiver", "transmitter", "RX", "TX" ]
 title: "UART Communication Protocol"
 type: "page"
@@ -273,6 +273,8 @@ It can view and send binary, hex, ASCII, ANSI, integers (both signed and unsigne
 {{< img src="realterm-window.jpg" width="620px" caption="A screenshot of RealTerm in action."  >}}
 
 I have noticed a few bugs with RealTerm, especially when it comes to changing the number of rows and columns, and scrolling back through received data (the scrollback variable is buggy also).
+
+**UPDATE 2021-05-17**: It seems like development on the SourceForge site has stopped long ago. There is a Realterm "Development Version" which can be found at <https://realterm.i2cchip.com/>, this has updates as recent as 2018.
 
 ### Terminal by Br@y (3.5/5)
 
