@@ -26,9 +26,11 @@ type: "post"
 
 * Added more online simulation tools to the {{% link text="Circuit Simulation page" src="/electronics/general/circuit-simulation" %}}.
 
-* Added a new page on {{% link text="555 Timer Circuits" src="/electronics/circuit-design/555-timer-circuits" %}}. Added a [555 timer calculator to NinjaCalc](https://ninja-calc.mbedded.ninja/calculators/electronics/ics/555-timer-astable-rt-rb-c) (which is also embedded on the 555 Timer Circuits page).
+* Added a new page on ~~555 Timer Circuits~~. Added a [555 timer calculator to NinjaCalc](https://ninja-calc.mbedded.ninja/calculators/electronics/ics/555-timer-astable-rt-rb-c) (which is also embedded on the 555 Timer Circuits page).
 
-    {{% figure src="/electronics/circuit-design/555-timer-circuits/555-timer-schematic-for-astable-operation-ti.png" width="400px" %}}
+    {{% figure src="/electronics/components/timers-and-multivibrators/555-timer-schematic-for-astable-operation-ti.png" width="400px" %}}
+    
+  **UPDATE 2021-05-22**: The 555 timer info has been moved to the {{% link text="Timers And Multivibrators page" src="/electronics/components/timers-and-multivibrators" %}}.
 
 * Updated the {{% link text="Mbed Studio page" src="/programming/integrated-development-environments-ides/mbed-studio" %}}.
 
