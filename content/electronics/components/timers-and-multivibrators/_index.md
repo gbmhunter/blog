@@ -1,28 +1,44 @@
 ---
 author: "gbmhunter"
-categories: [ "Electronics", "Circuit Design" ]
+categories: [ "Electronics", "Components" ]
 date: 2020-09-07
-description: "History, modes of operation, schematics and more info on the historic and ubiquitous 555 timer IC."
+description: "History, modes of operation, schematics and more info on the timers and multivibrators."
 draft: false
-lastmod: 2020-09-07
+lastmod: 2021-05-22
 tags: [ "electronics", "circuit design", "555", "timers", "ICs", "monostable", "astable", "PWM", "duty cycle", "multi-vibrator" ]
-title: "555 Timer Circuits"
+title: "Timers And Multivibrators"
 type: "page"
 ---
 
-## Internal Workings
+## Overview
+
+_Multivibrators_ are 2-state electronic circuits used to make simple waveforms, oscillators and timers.
+
+There are three main types of multivibrator:
+
+- **Astable multivibrator**: A circuit which is not stable (hence _astable_) in any state, in continuously switches from one state to the other.
+- **Monostable multivibrator**: One state is stable, while the other is not. A trigger input puts this circuit into the unstable state, and at some time after this, the circuit will automatically switch back to the stable state. This is also called a _one shot_.
+- **Bistable multivibrator**: The circuit is stable in both states. A trigger input is needed to switch from one state to the other. This circuit is much more commonly known as a _flip-flop_.
+
+## History
+
+The first recorded multivibrator was the Abraham-Bloch multivibrator oscillator in 1919. It functioned as a astable multivibrator oscillator. The circuit was called a multivibrator because the square wave output contained a large proportion of harmonics[^abraham-bloch-1919-paper]. Instead of being unwanted, these harmonics were actually useful in the calibration of RF devices.
+
+## The 555 Timer IC
+
+### Internal Workings
 
 {{% img src="555-timer-simplified-internal-schematic-ti.png" width="600px" caption="A simplified internal schematic of a 555 timer IC. Image from https://www.ti.com/lit/ds/symlink/sa555.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe." %}}
 
-## Modes Of Operation
+### Modes Of Operation
 
-### Monostable Mode (Time Delay Mode)
+#### Monostable Mode (Time Delay Mode)
 
 _Monostable mode_ is when the 555 timer is configured to output a single pulse after a fixed amount of time. It only outputs one pulse and then stops until it is externally reset. This mode is used for creating a time delay.
 
 {{% img src="555-timer-schematic-for-monostable-operation-ti.png" width="600px" caption="Schematic for putting the 555 timer into monostable mode. Image from https://www.ti.com/lit/ds/symlink/sa555.pdf?HQS=TI-null-null-digikeymode-df-pf-null-wwe." %}}
 
-### Astable Mode
+#### Astable Mode
 
 Astable mode is when the 555 timer is configured to output a continuous waveform with a fixed frequency and duty cycle. It is similar to monostable mode, except that it continually resets itself after every pulse.
 
@@ -40,6 +56,10 @@ Equations:
 
 <p>\begin{align} f = \frac{1}{T} \end{align}</p>
 
-## Astable 555 Timer Calculator
+### Astable 555 Timer Calculator
 
-{{% calculator id="electronics/ics/555-timer-astable-rt-rb-c" style="width: 500px; height: 400px;" %}}
+{{% calculator id="electronics/ics/555-timer-astable-rt-rb-c" style="width: 800px; height: 400px;" %}}
+
+## References
+
+[^abraham-bloch-1919-paper]: Abraham, H.; E. Bloch (1919). "Mesure en valeur absolue des périodes des oscillations électriques de haute fréquence". DOI: <https://doi.org/10.1051/anphys/191909120237>

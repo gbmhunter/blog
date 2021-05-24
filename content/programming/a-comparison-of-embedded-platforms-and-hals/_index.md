@@ -95,6 +95,8 @@ The mbed HAL comes packaged with an RTOS. When not using multiple threads, a com
 
 **IDE Support: x/10**
 
+Mbed provides the Mbed Studio IDE for firmware development and debugging.
+
 **Community Support: x/10**
 
 ### Comments
@@ -103,7 +105,7 @@ Only polling support for SPI.
 
 ## Zephyr
 
-Lacking  C++ support for:
+Lacking C++ support for:
 
 - Dynamic memory allocation via `new` or `delete`
 - No exception support
