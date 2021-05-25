@@ -33,3 +33,7 @@ type: "post"
 * Added a section on {{% link text="Ring Oscillators to the Oscillators page" src="/electronics/components/oscillators/#ring-oscillators" %}}. Added simulation results for a three stage ring oscillator.
 
     {{% figure src="/electronics/components/oscillators/ring-oscillator-triple/out.png" width="600px" %}}
+
+* Added schematics on a BJT-based astable multivibrator:
+
+    {{% figure src="/electronics/components/timers-and-multivibrators/classic-bjt-astable-multivibrator.svg" width="500px" %}}

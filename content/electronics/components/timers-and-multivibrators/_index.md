@@ -4,8 +4,8 @@ categories: [ "Electronics", "Components" ]
 date: 2020-09-07
 description: "History, modes of operation, schematics and more info on the timers and multivibrators."
 draft: false
-lastmod: 2021-05-22
-tags: [ "electronics", "circuit design", "555", "timers", "ICs", "monostable", "astable", "PWM", "duty cycle", "multi-vibrator" ]
+lastmod: 2021-05-25
+tags: [ "electronics", "circuit design", "555", "timers", "ICs", "monostable", "astable", "PWM", "duty cycle", "multivibrators", "BJT" ]
 title: "Timers And Multivibrators"
 type: "page"
 ---
@@ -23,6 +23,24 @@ There are three main types of multivibrator:
 ## History
 
 The first recorded multivibrator was the Abraham-Bloch multivibrator oscillator in 1919. It functioned as a astable multivibrator oscillator. The circuit was called a multivibrator because the square wave output contained a large proportion of harmonics[^abraham-bloch-1919-paper]. Instead of being unwanted, these harmonics were actually useful in the calibration of RF devices.
+
+## Basic BJT Astable Multivibrator
+
+A basic astable multivibrator can be made from two {{% link text="BJT NPN transistors" src="/electronics/components/transistors/bipolar-junction-transistors-bjts" %}} and a handful of passive components, as shown in the schematic below:
+
+{{% figure src="classic-bjt-astable-multivibrator.svg" width="600px" caption="A basic (and somewhat of a classic) BJT astable multivibrator." %}}
+
+{{% note %}}
+The capacitors do not need to be polarized, they are just shown as polarized as traditional for this circuit, and it helps you understand how the circuit works by showing the voltage polarity across each.
+{{% /note %}}
+
+As a throw back to the past, Dick Smith's Fun Way Into Electronics (first printed in 1979) contains a "flasher" which is exactly this circuit. This book is arguably what sparked my interest in Electronics!
+
+{{% figure src="flasher-schematics-dick-smiths-funway-into-electronics.png" width="600px" caption="'The flasher' circuit here is a BJT astable multivibrator. Diode and 390R resistor are just for protection in-case the 9V battery gets hooked up the wrong way. Image from Dick Smith's Fun Way Into Electronics, Eighth Printing, page 24." %}}
+
+### How It Works
+
+TODO: Add content here.
 
 ## The 555 Timer IC
 
