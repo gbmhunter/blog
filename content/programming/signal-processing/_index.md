@@ -1,20 +1,22 @@
 ---
-author: gbmhunter
+author: "gbmhunter"
 categories: [ "Programming", "Signal Processing" ]
 date: 2013-01-08
 description: "Blog sub-section on signal processing."
 draft: false
-lastmod: 2013-01-08
-tags: [ "programming", "signal processing" ]
-title: Signal Processing
-type: page
+lastmod: 2021-05-26
+tags: [ "programming", "signal processing", "filtering" ]
+title: "Signal Processing"
+type: "page"
 ---
 
 ## Overview
 
+The _Signal Processing_ section of this site covers digital filters (see {{% link text="Electronics->Circuit Design->Analogue Filters" src="/electronics/circuit-design/analogue-filters" %}} for the analgoue counterpart), curve fitting, correlation, and signal feature detection.
+
 The [Math.Net project](http://www.mathdotnet.com/) contains the ["Neodym" library](http://neodym.mathdotnet.com/) for signal processing in C#. The project can be downloaded, compiled in C# Express to produce a .dll, and then included as a resource in your own c# projects so you can then use the functions. I had issues using the DLL, and was getting the error "Could not load file: Strong name validation failed".
 
-To fix this, I needed to use sn.exe (a tool provided with Visual Studio and the Windows SDK, download either to use it), and to use the follow commands to skip strong name validation.
+To fix this, I needed to use `sn.exe` (a tool provided with Visual Studio and the Windows SDK, download either to use it), and to use the follow commands to skip strong name validation.
 
 ```text
 C:\project\mathnet-neodym\build\Debug>sn.exe -Vr *
@@ -43,17 +45,17 @@ A graph on noisy, but stable data showing problems with maxima and minima detect
 {{< figure src="/images/programming-signalprocessing/noisy-data-graph-with-no-threshold-on-maxima-minima-detection.png" caption="A graph on noisy, but stable data showing problems with maxima and minima detection without thresholding (false detections)."  width="800px" >}}
 
 
-## Iterating Over The Data
+### Iterating Over The Data
 
 Unlike global maxima/minima (the largest and smallest values for a set of data), local maxima/minima detection is, however loosely, an online algorithm. You can process data to determine maxima/minima as the data is given to you. I mention the word loosely, because you have to have some previous and future data points, depending on the sampling window size.
 
-## Sampling Window
+### Sampling Window
 
 You need to specify a sampling window in which you are going to look for a local maximum/minimum in. This needs to be small enough so that multiple maxima or minima are not included in the window at the same time. The Hence the window size needs to be less than one period. The most basic window is a symmetric window (i.e. looking at the same number to data points to the left and right of the current index). The smallest symmetric window you could use would be 3 values wide. You need one value each side to make sure they are both lower (for a local maxima), or both higher (for a local minima).
 
 However, real world data is not perfect, and is likely to have noise. This will cause false detections if only using a sample window of 3. Increasing this window size will decrease the number of false triggers due to noise. However, it won't get rid of them, to do this, you also need thresholding (see below).
 
-## Local Extrema Code Libraries
+### Local Extrema Code Libraries
 
 I have written a C library, [LocalExtrema](https://github.com/gbmhunter/LocalExtrema), capable of finding local maxima/minima and designed to be run on embedded systems. It is hosted on [GitHub here](https://github.com/gbmhunter/LocalExtrema).
 
@@ -85,7 +87,7 @@ The best you can do is make a statistical guess at which is more likely. In most
 
 Curve fitting is an essential part of signal processing.
 
-## Splines
+### Splines
 
 A spline is a **sufficiently smooth, piece-wise ploynomial function**. It is commonly used to fit a curve to a set of data. You also see them in vector-based drawing packages and 3D CAD programs.
 
