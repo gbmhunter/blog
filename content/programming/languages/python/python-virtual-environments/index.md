@@ -4,7 +4,7 @@ categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2019-06-28
 description: "Info on Python virtual environments."
 draft: false
-lastmod: 2019-06-28
+lastmod: 2021-05-26
 tags: [ "programming", "programming languages", "Python", "virtual environments", "virtualenv", "venv", "conda", "pipenv" ]
 title: "Python Virtual Environments"
 type: "page"
@@ -46,6 +46,18 @@ To deactivate:
 
 ```bash
 $ deactivate
+```
+
+To save all the libraries to a `requirements.txt` (Linux or Windows `cmd.exe`):
+
+```bash
+pip freeze > requirements.txt
+```
+
+Be careful if running the above command in PowerShell on Windows! By default, PowerShell will probably not use `UTF-8` encoding but a non-standard `UTF-16 LE`. To prevent this, use the following command instead:
+
+```powershell
+pip freeze | Out-File -Encoding UTF8 requirements.txt
 ```
 
 ## pipenv

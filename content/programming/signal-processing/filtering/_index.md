@@ -3,12 +3,19 @@ author: "gbmhunter"
 categories: [ "Programming", "Signal Processing", "Filters" ]
 date: 2014-02-26
 draft: false
-tags: [ "moving average", "filter", "ADCs", "DACs", "time domain", "discrete", "frequency responses", "exponentially weighted", "multiple pass", "signal processing" ]
-title: "Moving Average Filters"
+lastmod: 2021-05-26
+tags: [ "moving average", "filter", "ADCs", "DACs", "time domain", "discrete", "frequency responses", "exponentially weighted", "multiple pass", "signal processing", "Savitzky–Golay fFilters" ]
+title: "Filtering"
 type: "page"
 ---
 
-## Overview
+## Terminology
+
+_Casual_ filters are filters whose present output **does not** depend on future input. _Non-casual_ filters are those whose present output **does** depend on future input. Real-time filters must be casual, but filters which are either time delayed or do not act in the time domain can be non-casual.
+
+## Moving-Average Filters
+
+### Overview
 
 One of the classic examples of an FIR is a moving average (MA) filter. It can also be called a **box-car filter**. Although they are simple, they are the **best filter (optimal) at reducing random noise whilst retaining a sharp step respone**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to seperate one band of frequencies from another.
 
@@ -18,7 +25,7 @@ Moving average filters are also fast. In fact, they are the **fastest digital fi
 Some equations use frequency `\( f \)`, while others use angular frequency `\( \omega \)`.
 {{% /note %}}
 
-## Terminology
+### Terminology
 
 <table>
   <thead>
@@ -51,7 +58,7 @@ Some equations use frequency `\( f \)`, while others use angular frequency `\( \
   </tbody>
 </table>
 
-## Converting From A Continuous Time-Domain To Normalised Discrete Time-Domain Frequency
+### Converting From A Continuous Time-Domain To Normalised Discrete Time-Domain Frequency
 
 Remember, to map a continuous time-domain frequency to the discrete time-domain, use the following equation:
 
@@ -64,7 +71,7 @@ Remember, to map a continuous time-domain frequency to the discrete time-domain,
     \( f_s \) is the sample frequency in the continuous time-domain, in \(Hz\) (or \(samples/second\))<br />
 </p>
 
-## Simple Moving Average Filter (aka Sliding Window Filter)
+### Simple Moving Average Filter (aka Sliding Window Filter)
 
 The simple moving average filter is one of the most commonly used digital filters, due to it's simplicity and ease of use. There are two common types of simple moving average filters, left-hand and symmetric filters.
 
@@ -93,7 +100,7 @@ When treating a simple moving average filter as a FIR, the coefficients are all 
 
 A simple moving average filter can also be seen as a convolution between the input signal and a rectangular pulse whose area is 1.
 
-## Frequency Response
+### Frequency Response
 
 The frequency response for a simple moving average filter is given by:
 
@@ -119,7 +126,7 @@ Or it can be written as:
     \( M` \) = the number of points in the average (the width of the window)<br>
 </p>
 
-## Code Examples
+### Code Examples
 
 The following code shows how to create a `\( n = 1 \)` simple moving average filter, using the Math.Net Neodym C# library.
 
@@ -143,7 +150,7 @@ private double RunFilter(double input) {
 }
 ```
 
-## Fast Start-up
+### Fast Start-up
 
 Like all filters, the simple moving average filter introduces lag to the signal. You can use fast start-up logic to reduce the lag on start-up (and reset, if applicable). This is done by keeping track of how many data points have been passed through the filter, and if less have been passed through than the width of the window (i.e. some window elements are still at their initialised value, normally 0), you ignore them when calculating the average.
 
@@ -151,7 +158,7 @@ This is conceptially the same as having a variable-width window which increases 
 
 If you also know a what times the signal will jump significantly, you can reset the filter at these points to remove the lag from the output. You could even do this automatically by resetting the filter if the value jumps by some minimum threshold.
 
-## Exponentially Weighted Moving Average Filter
+### Exponentially Weighted Moving Average Filter
 
 A exponentially weighted moving average filter **places more weight on recent data by discounting old data in an exponential fashion**. It is a **low-pass, infinite-impulse response (IIR) filter**.
 
@@ -172,14 +179,16 @@ Notice that the calculation does not require the storage of past values of `\(x\
 
 The constant `\( \alpha \)` determines how aggressive the filter is. It can vary between 0 and 1 (inclusive). As `\( \alpha \to 0 \)`, the filter gets more and more aggressive, until at `\( \alpha = 0 \)`, where the input has no effect on the output (if the filter started like this, then the output would stay at 0). As `\( \alpha \to 1 \)`, the filter lets more of the raw input through at less filtered data, until at `\( \alpha = 1 \)`, where the filter is not "filtering" at all (pass-through from input to output).
 
-## External Resources
+### External Resources
 
 [https://stratifylabs.co/embedded%20design%20tips/2013/10/04/Tips-An-Easy-to-Use-Digital-Filter/](https://stratifylabs.co/embedded%20design%20tips/2013/10/04/Tips-An-Easy-to-Use-Digital-Filter/) is a great page explaining the exponential moving average filter.
 
-## Multiple Pass Moving Average Filters
+### Multiple Pass Moving Average Filters
 
 This is when a signal is passed through a moving avergae filter multiple times. Two passes through a simple moving average filter produces the same effect as a triangular moving average filter. After four or more passes, it is equivalent to a Gaussian filter.
 
-## Source Code
+### Source Code
 
 The opensource [Math.Net NeoDym library](http://neodym.mathdotnet.com/) contains C# code for using FIR filters.
+
+## Savitzky–Golay Filters
