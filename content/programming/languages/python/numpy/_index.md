@@ -4,7 +4,7 @@ categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-06-25
 description: "A tutorial on how to use Numpy, a popular library for Python that provides powerful array/matrix manipulation."
 draft: false
-lastmod: 2020-08-28
+lastmod: 2021-05-27
 tags: [ "programming", "programming languages", "Python", "Numpy", "array", "axis", "computation", "dimension", "np", "example", "code", "tutorial", "slicing", "indexing" ]
 title: "Numpy"
 type: "page"
@@ -383,6 +383,8 @@ print(no_masked_values)
 
 ## Numpy Warnings And How To Silence Them
 
+### Invalid Number
+
 For example, running `np.mean([])` using Python 3.7 and a up-to-date version of Numpy will produce the following:
 
 ```python
@@ -424,4 +426,30 @@ If you want to convert all warnings into exceptions, you can use the following c
 
 ```python
 np.seterr(all='raise')
+```
+
+### Divide Errors
+
+By default, Numpy will print warnings when you attempt to divide by 0. For example, the following code:
+
+```python
+a = np.array([1])
+b = np.array([0])
+c = a / b
+```
+
+will cause Numpy to print:
+
+```text
+<ipython-input-6-186705c1cfef>:3: RuntimeWarning: divide by zero encountered in true_divide
+  a/b
+```
+
+These warnings can be temporarily silenced with the `with np.errstate(divide='ignore')` context manager:
+
+```python
+a = np.array([1])
+b = np.array([0])
+with np.errstate(divide='ignore'):
+    c = a / b
 ```
