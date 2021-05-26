@@ -37,3 +37,5 @@ type: "post"
 * Added schematics on a BJT-based astable multivibrator:
 
     {{% figure src="/electronics/components/timers-and-multivibrators/classic-bjt-astable-multivibrator.svg" width="500px" %}}
+
+* Added info on noise power spectral density and noise amplitude spectral density. Added more info about thermal (Johnson-Nyquist) noise including equations and a worked example involving a `\(10k\Omega\)` resistor.
