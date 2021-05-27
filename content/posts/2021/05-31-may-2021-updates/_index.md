@@ -39,3 +39,9 @@ type: "post"
     {{% figure src="/electronics/components/timers-and-multivibrators/classic-bjt-astable-multivibrator.svg" width="500px" %}}
 
 * Added info on noise power spectral density and noise amplitude spectral density. Added more info about thermal (Johnson-Nyquist) noise including equations and a worked example involving a `\(10k\Omega\)` resistor.
+
+    {{% figure src="screenshot-thermal-johnson-nyquist-noise-equations.png" width="500px" %}}
+
+* Added graphs of a simple moving average (SMA) filter's frequency response.
+
+    {{% figure src="/programming/signal-processing/digital-filters/frequency-response-of-sma-magnitude.png" width="600px" %}}
