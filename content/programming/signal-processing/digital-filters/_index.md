@@ -2,11 +2,11 @@
 author: "gbmhunter"
 categories: [ "Programming", "Signal Processing", "Filters" ]
 date: 2014-02-26
-description: "Simple moving averages, exponential moving averages, Savizky-Golar filters, frequency responses, source code and more info on digital filtering (a form of signal processing)."
+description: "Simple moving averages, exponential moving averages, Savizky-Golay filters, frequency responses, source code and more info on digital filtering (a form of signal processing)."
 draft: false
 lastmod: 2021-05-27
 tags: [ "moving average", "filter", "ADCs", "DACs", "time domain", "discrete", "frequency responses", "exponentially weighted", "multiple pass", "signal processing", "Savitzky–Golay fFilters" ]
-title: "Filtering"
+title: "Digital Filters"
 type: "page"
 ---
 
@@ -14,7 +14,7 @@ type: "page"
 
 _Casual_ filters are filters whose present output **does not** depend on future input. _Non-casual_ filters are those whose present output **does** depend on future input. Real-time filters must be casual, but filters which are either time delayed or do not act in the time domain can be non-casual.
 
-_Cycles per sample_ is a convienient way of expressing a frequency w.r.t. the sample frequency. It is found by dividing the frequency in Hz (cycles/second) by the sampling rate in samples per second (samples/second), giving you units of cycles/sample.
+_Cycles per sample_ is a convenient way of expressing a frequency w.r.t. the sample frequency. It is found by dividing the frequency in Hz (cycles/second) by the sampling rate in samples per second (samples/second), giving you units of cycles/sample.
 
 ## Moving Average (MA) Filters
 
@@ -237,6 +237,16 @@ Notice that the calculation does not require the storage of past values of `\(x\
 
 The constant `\( \alpha \)` determines how aggressive the filter is. It can vary between 0 and 1 (inclusive). As `\( \alpha \to 0 \)`, the filter gets more and more aggressive, until at `\( \alpha = 0 \)`, where the input has no effect on the output (if the filter started like this, then the output would stay at 0). As `\( \alpha \to 1 \)`, the filter lets more of the raw input through at less filtered data, until at `\( \alpha = 1 \)`, where the filter is not "filtering" at all (pass-through from input to output).
 
+### A Comparison Of The Popular Windows
+
+All the windows shown below are centered windows (and not left-aligned). The window sample weights are normalized to 1.
+
+{{% figure src="window-comparison-shapes.png" width="600px" caption="A comparison of the popular window shapes for moving average filters." %}}
+
+And a comparison of the frequency responses of these windows is shown below: 
+
+{{% figure src="window-comparison-shapes.png" width="600px" caption="The frequency responses of the popular window shapes shown above, normalized w.r.t to the sampling frequency fs." %}}
+
 ### External Resources
 
 [https://stratifylabs.co/embedded%20design%20tips/2013/10/04/Tips-An-Easy-to-Use-Digital-Filter/](https://stratifylabs.co/embedded%20design%20tips/2013/10/04/Tips-An-Easy-to-Use-Digital-Filter/) is a great page explaining the exponential moving average filter.
@@ -248,6 +258,14 @@ The constant `\( \alpha \)` determines how aggressive the filter is. It can vary
 The opensource [Math.Net NeoDym library](http://neodym.mathdotnet.com/) contains C# code for using FIR filters.
 
 ## Savitzky–Golay Filters
+
+## Creating Digital Filters In Python
+
+Python is a great language for experimenting with digital filters. The popular `numpy` and `scipy` libraries provide a variety of functions to make it easy to create and visualize the behaviour of a digital filter.
+
+`scipy.fftpack.fft(x)` performs a discrete Fourier transform on the input data. Passing in a window (an array of the weighting at each sample in the window) will return an array of complex numbers.
+
+`scipy.fftpack.fftshift()` shifts the result from `fft()` so that the DC component is centered in the array.
 
 ## References
 

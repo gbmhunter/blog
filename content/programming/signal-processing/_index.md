@@ -4,15 +4,15 @@ categories: [ "Programming", "Signal Processing" ]
 date: 2013-01-08
 description: "Blog sub-section on signal processing."
 draft: false
-lastmod: 2021-05-26
-tags: [ "programming", "signal processing", "filtering" ]
+lastmod: 2021-05-27
+tags: [ "programming", "signal processing", "filtering", "Runge's phenomenon" ]
 title: "Signal Processing"
 type: "page"
 ---
 
 ## Overview
 
-The _Signal Processing_ section of this site covers digital filters (see {{% link text="Electronics->Circuit Design->Analogue Filters" src="/electronics/circuit-design/analogue-filters" %}} for the analgoue counterpart), curve fitting, correlation, and signal feature detection.
+The _Signal Processing_ section of this site covers {{% link text="digital filters" src="digital-filters" %}} (see {{% link text="Electronics->Circuit Design->Analogue Filters" src="/electronics/circuit-design/analogue-filters" %}} for the analogue counterpart), curve fitting, correlation, and signal feature detection.
 
 The [Math.Net project](http://www.mathdotnet.com/) contains the ["Neodym" library](http://neodym.mathdotnet.com/) for signal processing in C#. The project can be downloaded, compiled in C# Express to produce a .dll, and then included as a resource in your own c# projects so you can then use the functions. I had issues using the DLL, and was getting the error "Could not load file: Strong name validation failed".
 
@@ -22,11 +22,6 @@ To fix this, I needed to use `sn.exe` (a tool provided with Visual Studio and th
 C:\project\mathnet-neodym\build\Debug>sn.exe -Vr *
 ```
 
-## Finite Impulse Response (FIR) Filters
-
-Moving average filters are a type of FIR filter. Learn more about them on the [Moving Average Filters page](/programming/signal-processing/moving-average-filters/).
-
-## Infinite Impulse Response (IIR) Filters
 
 ## Source Code
 
@@ -43,7 +38,6 @@ The following image shows maxima/minima detection for six noisy, sine-like wavef
 A graph on noisy, but stable data showing problems with maxima and minima detection without thresholding (false detections).
 
 {{< figure src="/images/programming-signalprocessing/noisy-data-graph-with-no-threshold-on-maxima-minima-detection.png" caption="A graph on noisy, but stable data showing problems with maxima and minima detection without thresholding (false detections)."  width="800px" >}}
-
 
 ### Iterating Over The Data
 
@@ -70,7 +64,7 @@ Correlation is the measure of "likeness" between sets of data. The correlation c
     \( X_i \) = value in data set one which is paired with<br>
     \( Y_i \) = value in data set two<br>
     \( \bar{X} \) = average value of data set 1<br>
-    \( \`bar{Y} \) = average value of data set 2<br>
+    \( \bar{Y} \) = average value of data set 2<br>
 </p>
 
 ## Detecting Variable Wraparounds
@@ -89,10 +83,10 @@ Curve fitting is an essential part of signal processing.
 
 ### Splines
 
-A spline is a **sufficiently smooth, piece-wise ploynomial function**. It is commonly used to fit a curve to a set of data. You also see them in vector-based drawing packages and 3D CAD programs.
+A spline is a **sufficiently smooth, piece-wise polynomial function**. It is commonly used to fit a curve to a set of data. You also see them in vector-based drawing packages and 3D CAD programs.
 
 Splines are most commonly a piece-wise collection of polynomials of degree `\(n\)`, in where the first `\(n - 1\)` derivatives are equal at the points where the polynomials meet (remember it is piece-wise).
 
 The most common type of spline is a cubic spline (a spline of order 3). The two most popular cubic splines are the cubic B-spline and cubic Bezier spline.
 
-Splines have the advantage over a single polynomial in the fact the interpolaiton error can be lower for a given order (or for the same maximum interpolation error the order can be lower), which is less intensive computationally. Also, splines do no suffer from large edge-case errors as a single higher-degree polynomial would (Runge's phenomenon).
+Splines have the advantage over a single polynomial in the fact the interpolation error can be lower for a given order (or for the same maximum interpolation error the order can be lower), which is less intensive computationally. Also, splines do no suffer from large edge-case errors as a single higher-degree polynomial would (Runge's phenomenon).
