@@ -14,11 +14,13 @@ type: "page"
 
 _Casual_ filters are filters whose present output **does not** depend on future input. _Non-casual_ filters are those whose present output **does** depend on future input. Real-time filters must be casual, but filters which are either time delayed or do not act in the time domain can be non-casual.
 
+_Cycles per sample_ is a convienient way of expressing a frequency w.r.t. the sample frequency. It is found by dividing the frequency in Hz (cycles/second) by the sampling rate in samples per second (samples/second), giving you units of cycles/sample.
+
 ## Moving Average (MA) Filters
 
 ### Overview
 
-One of the classic examples of an FIR is a moving average (MA) filter. It can also be called a **box-car filter**. Although they are simple, they are the **best filter (optimal) at reducing random noise whilst retaining a sharp step respone**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to seperate one band of frequencies from another. There are many subtypes of moving average filter, including the _simple moving average_ (SMA) filter and _exponential moving average_ (EMA) filter.
+One of the classic examples of an FIR is a moving average (MA) filter. It can also be called a **box-car filter**. There are many subtypes of moving average filter, including the _simple moving average_ (SMA) filter and _exponential moving average_ (EMA) filter.
 
 Moving average filters are also fast. In fact, they are the **fastest digital filter availiable** (when recursion is used).
 
@@ -74,7 +76,9 @@ Remember, to map a continuous time-domain frequency to the discrete time-domain,
 
 ### Simple Moving Average Filter (aka Sliding Window Filter)
 
-The simple moving average filter is one of the most commonly used digital filters, due to it's simplicity and ease of use. There are two common types of simple moving average filters, left-hand and symmetric filters.
+The simple moving average filter is one of the most commonly used digital filters, due to it's simplicity and ease of use. Although SMA filters are simple, they are the **best filter (optimal) at reducing random noise whilst retaining a sharp step respone**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to seperate one band of frequencies from another[^analog-devices-dsp-book-ch15].
+
+There are two common types of simple moving average filters, left-hand and symmetric filters.
 
 A left-hand simple moving average filter can be represented by:
 
@@ -176,6 +180,9 @@ where:<br/>
 \(f_s\) is the sample frequency, in Hertz \(Hz\)
 </p>
 
+### Multiple Pass Moving Average Filters
+
+A _multiple pass simple moving average filter_ is a SMA filter which has been applied multiple times to the same signal. Two passes through a simple moving average filter produces the same effect as a triangular moving average filter. After four or more passes, it is equivalent to a Gaussian filter[^analog-devices-dsp-book-ch15].
 
 ### Code Examples
 
@@ -234,9 +241,7 @@ The constant `\( \alpha \)` determines how aggressive the filter is. It can vary
 
 [https://stratifylabs.co/embedded%20design%20tips/2013/10/04/Tips-An-Easy-to-Use-Digital-Filter/](https://stratifylabs.co/embedded%20design%20tips/2013/10/04/Tips-An-Easy-to-Use-Digital-Filter/) is a great page explaining the exponential moving average filter.
 
-### Multiple Pass Moving Average Filters
 
-This is when a signal is passed through a moving avergae filter multiple times. Two passes through a simple moving average filter produces the same effect as a triangular moving average filter. After four or more passes, it is equivalent to a Gaussian filter.
 
 ### Source Code
 
@@ -248,3 +253,4 @@ The opensource [Math.Net NeoDym library](http://neodym.mathdotnet.com/) contains
 
 [^pieter-p-sma]: <https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Digital-filters/Simple%20Moving%20Average/Simple-Moving-Average.html>, accessed 2021-05-27.
 [^dsp-stack-exchange-cut-off-freq-sma]: <https://dsp.stackexchange.com/questions/9966/what-is-the-cut-off-frequency-of-a-moving-average-filter>, accessed 2021-05-27.
+[^analog-devices-dsp-book-ch15]: <https://www.analog.com/media/en/technical-documentation/dsp-book/dsp_book_Ch15.pdf>, accessed 2021-05-27.
