@@ -2,8 +2,9 @@
 author: "gbmhunter"
 categories: [ "Programming", "Signal Processing", "Filters" ]
 date: 2014-02-26
+description: "Simple moving averages, exponential moving averages, Savizky-Golar filters, frequency responses, source code and more info on digital filtering (a form of signal processing)."
 draft: false
-lastmod: 2021-05-26
+lastmod: 2021-05-27
 tags: [ "moving average", "filter", "ADCs", "DACs", "time domain", "discrete", "frequency responses", "exponentially weighted", "multiple pass", "signal processing", "Savitzky–Golay fFilters" ]
 title: "Filtering"
 type: "page"
@@ -13,11 +14,11 @@ type: "page"
 
 _Casual_ filters are filters whose present output **does not** depend on future input. _Non-casual_ filters are those whose present output **does** depend on future input. Real-time filters must be casual, but filters which are either time delayed or do not act in the time domain can be non-casual.
 
-## Moving-Average Filters
+## Moving Average (MA) Filters
 
 ### Overview
 
-One of the classic examples of an FIR is a moving average (MA) filter. It can also be called a **box-car filter**. Although they are simple, they are the **best filter (optimal) at reducing random noise whilst retaining a sharp step respone**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to seperate one band of frequencies from another.
+One of the classic examples of an FIR is a moving average (MA) filter. It can also be called a **box-car filter**. Although they are simple, they are the **best filter (optimal) at reducing random noise whilst retaining a sharp step respone**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to seperate one band of frequencies from another. There are many subtypes of moving average filter, including the _simple moving average_ (SMA) filter and _exponential moving average_ (EMA) filter.
 
 Moving average filters are also fast. In fact, they are the **fastest digital filter availiable** (when recursion is used).
 
@@ -92,7 +93,7 @@ The window can also be centered aroung the output signal (a symmetric moving ave
 
 <p>$$ y[i] = \frac{1}{M} \sum\limits_{j=-(M-1)/2}^{+(M-1)/2} x[i+j] $$</p>
 
-Symmetric simple moving averages require `\(N\)` to be odd, so that there is an equal number of points either side. One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore is not real time.
+Symmetric simple moving averages require `\(N\)` to be odd, so that there is an equal number of points either side. One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore it is not real time (i.e. _non-casual_).
 
 When treating a simple moving average filter as a FIR, the coefficients are all equal. The order of the filter is 1 less than the value you divide each value by. The coefficients are given by the following equation:
 
@@ -125,6 +126,56 @@ Or it can be written as:
     wher`e:<br>
     \( M` \) = the number of points in the average (the width of the window)<br>
 </p>
+
+Lets design a SMA filter with a sampling rate of `\(1kHz\)` and a window size of `\(10\)`. This gives the following magnitude response:
+
+{{% figure src="frequency-response-of-sma-magnitude.png" width="700px" caption="The magnitude response of a SMA filter with fs=1kHz and a window size of 10. Frequency range is from 0Hz up to Nyquist (fs/2)." %}}
+
+and the phase:
+
+{{% figure src="frequency-response-of-sma-phase.png" width="700px" caption="The phase response of a SMA filter with fs=1kHz and a window size of 10. Frequency range is from 0Hz up to Nyquist (fs/2)." %}}
+
+### Cutoff Frequency
+
+When designing a SMA filter, you typically want to set the window size `\(N\)` based on the frequencies you want to pass through and those you want reject. The easiest figure of merit for this is the cutoff frequency `\(\omega_c\)` (or `\(f_c\)`), which we'll define here as the `\(\frac{1}{2}\)` power point (`\(-3dB\)` point). This is the frequency at which the power of the signal is reduced by half.
+
+We can find the equation for the cutoff frequency from `\(H(\omega)\)` above.
+
+<p>\begin{equation}
+\sin^2 \left(\frac{\omega_c N}{2}\right) - \frac{N^2}{2} \sin^2 \left( \frac{\omega_c}{2} \right) = 0
+\end{equation}</p>
+
+Unfortunetly, not general closed form solution for the cutoff frequency exists (i.e. there is no way to re-arrange this equation to solve for `\(\omega_c\)`). However, these are two ways to get around this problem.
+
+1. Solve the equation numerically, e.g. use the Newton-Raphson method.
+1. Use an equation which approximates the answer (easier method, recommended approach unless you really need the accuracy!)
+
+**Approximate Equation**
+
+An approximate equation can be found relating the window size to the cutoff frequency which is accurate to 0.5% for `\(N >= 4\)`[^dsp-stack-exchange-cut-off-freq-sma]:
+
+<p>\begin{align}
+N = \frac{\sqrt{0.196202 + F_c^2}}{F_c}
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(N\) is the window size, expressed as a number of samples<br/>
+\(F_c\) is the normalized cutoff frequency
+</p>
+
+Remember that `\(F_c\)` can be calculated with:
+
+<p>\begin{align}
+F_c = \frac{f_c}{f_s}
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(f_c\) is the cutoff frequency, in Hertz \(Hz\)<br/>
+\(f_s\) is the sample frequency, in Hertz \(Hz\)
+</p>
+
 
 ### Code Examples
 
@@ -192,3 +243,8 @@ This is when a signal is passed through a moving avergae filter multiple times. 
 The opensource [Math.Net NeoDym library](http://neodym.mathdotnet.com/) contains C# code for using FIR filters.
 
 ## Savitzky–Golay Filters
+
+## References
+
+[^pieter-p-sma]: <https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Digital-filters/Simple%20Moving%20Average/Simple-Moving-Average.html>, accessed 2021-05-27.
+[^dsp-stack-exchange-cut-off-freq-sma]: <https://dsp.stackexchange.com/questions/9966/what-is-the-cut-off-frequency-of-a-moving-average-filter>, accessed 2021-05-27.
