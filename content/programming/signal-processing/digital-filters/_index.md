@@ -93,7 +93,7 @@ A left-hand simple moving average filter can be represented by:
 
 For example, for the points `\( x[0] = 2, x[1] = 6, x[2] = 9, x[3] = 4, x[4] = 3 \)`, with a windows size of `\(M = 3\)`, then `\( y[1] = \frac{6 + 9 + 4}{3} \)`. Left-handed filters of this type can be calculated in real-time (`\(y[i]\)` can be found as soon as `\(x[i]\)` is known).
 
-The window can also be centered aroung the output signal (a symmetric moving average filter), with the following adjustment of the limits:
+The window can also be centered around the output signal (a symmetric moving average filter), with the following adjustment of the limits:
 
 <p>$$ y[i] = \frac{1}{M} \sum\limits_{j=-(M-1)/2}^{+(M-1)/2} x[i+j] $$</p>
 
@@ -109,7 +109,7 @@ A simple moving average filter can also be seen as a convolution between the inp
 
 The frequency response for a simple moving average filter is given by:
 
-<p>$$ |H(f)| = \frac{1}{M}\left|\frac{sin(pi F M)}{sin(\pi F)}\right| $$</p>
+<p>$$ |H(f)| = \frac{1}{M}\left|\frac{sin(\pi F M)}{sin(\pi F)}\right| $$</p>
 
 <p class="centered">
     where:<br>
@@ -149,7 +149,7 @@ We can find the equation for the cutoff frequency from `\(H(\omega)\)` above.
 \sin^2 \left(\frac{\omega_c N}{2}\right) - \frac{N^2}{2} \sin^2 \left( \frac{\omega_c}{2} \right) = 0
 \end{equation}</p>
 
-Unfortunetly, not general closed form solution for the cutoff frequency exists (i.e. there is no way to re-arrange this equation to solve for `\(\omega_c\)`). However, these are two ways to get around this problem.
+Unfortunately, no general closed form solution for the cutoff frequency exists (i.e. there is no way to re-arrange this equation to solve for `\(\omega_c\)`). However, these are two ways to get around this problem.
 
 1. Solve the equation numerically, e.g. use the Newton-Raphson method.
 1. Use an equation which approximates the answer (easier method, recommended approach unless you really need the accuracy!)
@@ -212,7 +212,7 @@ private double RunFilter(double input) {
 
 Like all filters, the simple moving average filter introduces lag to the signal. You can use fast start-up logic to reduce the lag on start-up (and reset, if applicable). This is done by keeping track of how many data points have been passed through the filter, and if less have been passed through than the width of the window (i.e. some window elements are still at their initialised value, normally 0), you ignore them when calculating the average.
 
-This is conceptially the same as having a variable-width window which increases from 1 to the maximum value, `\(x\)`, as the first `\(x\)` values are passed through the filter. The window width then stays at width `\(x\)` for evermore (or until the filter is reset/program restarts).
+This is conceptually the same as having a variable-width window which increases from 1 to the maximum value, `\(x\)`, as the first `\(x\)` values are passed through the filter. The window width then stays at width `\(x\)` for evermore (or until the filter is reset/program restarts).
 
 If you also know a what times the signal will jump significantly, you can reset the filter at these points to remove the lag from the output. You could even do this automatically by resetting the filter if the value jumps by some minimum threshold.
 
@@ -241,6 +241,8 @@ The constant `\( \alpha \)` determines how aggressive the filter is. It can vary
 
 All the windows shown below are centered windows (and not left-aligned). The window sample weights are normalized to 1.
 
+The frequency responses can be found by extending the window waveform with 0's, and then performing an FFT on the waveform. The resultant frequency domain waveform will be the frequency response of the window. This works because **a moving window is mathematically equivalent to a convolution, and convolution in the time domain is multiplication in the frequency domain**. Hence your input signal in the frequency domain will be multiplied by FFT of the window.
+
 {{% figure src="window-comparison-shapes.png" width="600px" caption="A comparison of the popular window shapes for moving average filters." %}}
 
 And a comparison of the frequency responses of these windows is shown below: 
@@ -266,6 +268,8 @@ Python is a great language for experimenting with digital filters. The popular `
 `scipy.fftpack.fft(x)` performs a discrete Fourier transform on the input data. Passing in a window (an array of the weighting at each sample in the window) will return an array of complex numbers.
 
 `scipy.fftpack.fftshift()` shifts the result from `fft()` so that the DC component is centered in the array.
+
+`fftfreq()` converts normalized frequencies into real frequencies.
 
 ## References
 
