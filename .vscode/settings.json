@@ -402,6 +402,7 @@
         "farnell",
         "feedforward",
         "fets",
+        "fftfreq",
         "fftpack",
         "ffts",
         "fftshift",

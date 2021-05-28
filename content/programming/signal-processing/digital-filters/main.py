@@ -95,6 +95,7 @@ def create_window_comparison_plots():
         with np.errstate(divide='ignore', invalid='ignore'):
             # fft() does not center the DC component, need to use fftshift() later
             # to do that
+            # 2048 significantly larger than window size, so 0 padding will occur
             A = fft(window, 2048) / (len(window)/2.0)
             freq = np.linspace(-0.5, 0.5, len(A)) # This is normalized frequency (w.r.t sampling frequency)
             response = 20 * np.log10(np.abs(fftshift(A / abs(A).max())))
