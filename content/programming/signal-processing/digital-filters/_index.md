@@ -4,7 +4,7 @@ categories: [ "Programming", "Signal Processing", "Filters" ]
 date: 2014-02-26
 description: "Simple moving averages, exponential moving averages, Savizky-Golay filters, frequency responses, source code and more info on digital filtering (a form of signal processing)."
 draft: false
-lastmod: 2021-05-27
+lastmod: 2021-05-29
 tags: [ "moving average", "filter", "ADCs", "DACs", "time domain", "discrete", "frequency responses", "exponentially weighted", "multiple pass", "signal processing", "Savitzky–Golay fFilters" ]
 title: "Digital Filters"
 type: "page"
@@ -154,6 +154,36 @@ Unfortunately, no general closed form solution for the cutoff frequency exists (
 1. Solve the equation numerically, e.g. use the Newton-Raphson method.
 1. Use an equation which approximates the answer (easier method, recommended approach unless you really need the accuracy!)
 
+**Numerically**
+
+The Newton-Raphson method can be used to solve the above equation. Below is a code example in Python which includes the function `get_sma_cutoff()` that can calculate the cutoff frequency `\(\omega_c\)` given the window size `\(N\)` to a high degree of accuracy[^pieter-p-sma]:
+
+```python
+import numpy as np
+import scipy.signal
+
+def get_sma_cutoff(N, **kwargs):
+    """
+    Function for calculating the cut-off frequency of a 
+    simple moving average filter. Uses the Newton-Raphson method to 
+    converge to the correct solution.
+
+    This function was initially written by Pieter P.
+    (https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/
+    Digital-filters/Simple%20Moving%20Average/Simple-Moving-Average.html).
+
+    Args:
+        N: Window size, in number of samples.
+
+    Returns:
+        The angular cut-off frequency, in rad/s.  
+    """
+    func = lambda w: np.sin(N*w/2) - N/np.sqrt(2) * np.sin(w/2)  # |H(e^jω)| = √2/2
+    deriv = lambda w: np.cos(N*w/2) * N/2 - N/np.sqrt(2) * np.cos(w/2) / 2  # dfunc/dx
+    omega_0 = np.pi/N  # Starting condition: halfway the first period of sin(Nω/2)
+    return scipy.optimize.newton(func, omega_0, deriv, **kwargs)
+```
+
 **Approximate Equation**
 
 An approximate equation can be found relating the window size to the cutoff frequency which is accurate to 0.5% for `\(N >= 4\)`[^dsp-stack-exchange-cut-off-freq-sma]:
@@ -259,7 +289,36 @@ And a comparison of the frequency responses of these windows is shown below:
 
 The opensource [Math.Net NeoDym library](http://neodym.mathdotnet.com/) contains C# code for using FIR filters.
 
-## Savitzky–Golay Filters
+## IIR Exponential Moving Average
+
+There is a exponential moving average filter which is a form of IIR filter. The nature of this IIR filter greatly simplifies the number of calculations required. Whilst a FIR EMA filter would have to keep track of the samples currently in the exponential window and perform `\(N\)` multiplications every time a new sample arrives, the IIR EMA filter has the luxury of using the previous output as does not require as many multiplications.
+
+The following code implements a IIR EMA filter in C++, suitable for microcontrollers and other embedded devices[^pieter-p-ema]. `K` is the number of fractional bits used in the fixed-point representation.
+
+```c++
+template <uint8_t K, class uint_t = uint16_t>
+class EMA {
+  public:
+    /// Update the filter with the given input and return the filtered output.
+    uint_t operator()(uint_t input) {
+        state += input;
+        uint_t output = (state + half) >> K;
+        state -= output;
+        return output;
+    }
+
+    static_assert(
+        uint_t(0) < uint_t(-1),  // Check that `uint_t` is an unsigned type
+        "The `uint_t` type should be an unsigned integer, otherwise, "
+        "the division using bit shifts is invalid.");
+
+    /// Fixed point representation of one half, used for rounding.
+    constexpr static uint_t half = 1 << (K - 1);
+
+  private:
+    uint_t state = 0;
+};
+```
 
 ## Creating Digital Filters In Python
 
@@ -274,5 +333,6 @@ Python is a great language for experimenting with digital filters. The popular `
 ## References
 
 [^pieter-p-sma]: <https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Digital-filters/Simple%20Moving%20Average/Simple-Moving-Average.html>, accessed 2021-05-27.
+[^pieter-p-ema]: <https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Digital-filters/Exponential%20Moving%20Average/C++Implementation.html#arduino-example>, accessed 2021-05-29.
 [^dsp-stack-exchange-cut-off-freq-sma]: <https://dsp.stackexchange.com/questions/9966/what-is-the-cut-off-frequency-of-a-moving-average-filter>, accessed 2021-05-27.
 [^analog-devices-dsp-book-ch15]: <https://www.analog.com/media/en/technical-documentation/dsp-book/dsp_book_Ch15.pdf>, accessed 2021-05-27.
