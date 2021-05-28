@@ -303,6 +303,18 @@ Multiple emitter BJTs were also used in older (e.g. from the 1960's) RAM. For ex
 
 By utilizing the voltage regulation hysteresis behaviour of a BJT in reverse active mode, it can be used to create a simple single transistor LED blinker
 
+## Transistor Testers
+
+Many older handheld multimeters contain transistor testers for testing BJT transistors in the popular TO-92 through-hole package.
+
+I also found this older "Micronta Transistor Tester" device:
+
+{{% figure src="micronta-transistor-tester-box.jpg" width="600px" caption="The front box." %}}
+
+{{% figure src="micronta-transistor-tester-front-panel.jpg" width="300px" caption="The front panel." %}}
+
+{{% figure src="micronta-transistor-tester-internals.jpg" width="300px" caption="The internal circuitry." %}}
+
 ## External Resources
 
 [This](https://www.youtube.com/watch?v=t0UOSIUve9E) is a great video on two not-so-common transistor biasing configurations.
