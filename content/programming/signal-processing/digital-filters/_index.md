@@ -39,8 +39,8 @@ Some equations use frequency `\( f \)`, while others use angular frequency `\( \
   </thead>
   <tbody>
     <tr>
-      <td>\(M\)</td>
-      <td>The number of data points used in a moving average filter. This is called the "size of the window".</td>
+      <td>\(N\)</td>
+      <td>The number of data points used in a moving average filter. This is called the "size of the window". \(M\) is another letter commonly used to represent the same thing.</td>
     </tr>
     <tr>
       <td>\(F\)</td>
@@ -76,26 +76,26 @@ Remember, to map a continuous time-domain frequency to the discrete time-domain,
 
 ### Simple Moving Average Filter (aka Sliding Window Filter)
 
-The simple moving average filter is one of the most commonly used digital filters, due to it's simplicity and ease of use. Although SMA filters are simple, they are the **best filter (optimal) at reducing random noise whilst retaining a sharp step respone**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to seperate one band of frequencies from another[^analog-devices-dsp-book-ch15].
+The simple moving average filter is one of the most commonly used digital filters, due to it's simplicity and ease of use. Although SMA filters are simple, they are first equal (there are other filters that perform as good as, but not better) **at reducing random noise whilst retaining a sharp step response**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to separate one band of frequencies from another[^analog-devices-dsp-book-ch15]. You can see their poor roll-off in the stop band in proceeding graphs.
 
 There are two common types of simple moving average filters, left-hand and symmetric filters.
 
 A left-hand simple moving average filter can be represented by:
 
-<p>$$ y[i] = \frac{1}{M} \sum\limits_{j=0}^{M-1} x[i+j] $$</p>
+<p>$$ y[i] = \frac{1}{N} \sum\limits_{j=0}^{N-1} x[i+j] $$</p>
 
 <p class="centered">
     where:<br/>
     \( x \) = the input signal<br/>
     \( y \) = the output signal<br/>
-    \( M \) = the number of points in the average (the width of the window)<br/>
+    \( N \) = the number of points in the average (the width of the window)<br/>
  </p>
 
-For example, for the points `\( x[0] = 2, x[1] = 6, x[2] = 9, x[3] = 4, x[4] = 3 \)`, with a windows size of `\(M = 3\)`, then `\( y[1] = \frac{6 + 9 + 4}{3} \)`. Left-handed filters of this type can be calculated in real-time (`\(y[i]\)` can be found as soon as `\(x[i]\)` is known).
+For example, for the points `\( x[0] = 2, x[1] = 6, x[2] = 9, x[3] = 4, x[4] = 3 \)`, with a windows size of `\(N = 3\)`, then `\( y[1] = \frac{6 + 9 + 4}{3} \)`. Left-handed filters of this type can be calculated in real-time (`\(y[i]\)` can be found as soon as `\(x[i]\)` is known).
 
 The window can also be centered around the output signal (a symmetric moving average filter), with the following adjustment of the limits:
 
-<p>$$ y[i] = \frac{1}{M} \sum\limits_{j=-(M-1)/2}^{+(M-1)/2} x[i+j] $$</p>
+<p>$$ y[i] = \frac{1}{N} \sum\limits_{j=-(N-1)/2}^{+(N-1)/2} x[i+j] $$</p>
 
 Symmetric simple moving averages require `\(N\)` to be odd, so that there is an equal number of points either side. One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore it is not real time (i.e. _non-casual_).
 
@@ -109,26 +109,26 @@ A simple moving average filter can also be seen as a convolution between the inp
 
 The frequency response for a simple moving average filter is given by:
 
-<p>$$ |H(f)| = \frac{1}{M}\left|\frac{sin(\pi F M)}{sin(\pi F)}\right| $$</p>
+<p>$$ |H(f)| = \frac{1}{N}\left|\frac{sin(\pi F N)}{sin(\pi F)}\right| $$</p>
 
 <p class="centered">
     where:<br>
     \( H(f) \) is the frequency response<br>
     \( F \) the normalised frequency, in \( cycles/sample \)<br>
-    \( M \) = the number of points in the average (the width of the window)<br>
+    \( N \) = the number of points in the average (the width of the window)<br>
 </p>
 
 Note that the sine function uses radians, not degrees. You may also see this shown in angular frequency units (`\(\omega\)`), in which case `\( \omega = 2\pi F \)`.
 
-To avoid division by zero, use `\( H(0) = M \)`. The magnitude follows the shape of a `\( sinc \)` function.
+To avoid division by zero, use `\( H(0) = N \)`. The magnitude follows the shape of a `\( sinc \)` function.
 
 Or it can be written as:
 
-<p>$$ H(\omega) = \frac{1}{M}(\frac{1 - e^{-j\omega L}}{1 - e^{-j\omega}}) $$</p>
+<p>$$ H(\omega) = \frac{1}{N}\left(\frac{1 - e^{-j\omega L}}{1 - e^{-j\omega}}\right) $$</p>
 
 <p class="centered">
-    wher`e:<br>
-    \( M` \) = the number of points in the average (the width of the window)<br>
+    where:<br>
+    \( N \) = the number of points in the average (the width of the window)<br>
 </p>
 
 Lets design a SMA filter with a sampling rate of `\(1kHz\)` and a window size of `\(10\)`. This gives the following magnitude response:
