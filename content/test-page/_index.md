@@ -142,10 +142,17 @@ This is a warning.
 
 Some inline code. `x[2] = 3`. More text.
 
-Some block code:
+Some block code that **shouldn't** have scroll bars:
 
 ```c
 x[3] = 4;
+int y = x;
+```
+
+Some block code that **should** have scroll bars:
+
+```c
+a long line of text a long line of text a long line of text a long line of text a long line of text a long line of text 
 int y = x;
 ```
 

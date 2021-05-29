@@ -4,8 +4,8 @@ categories: [ "Electronics", "Components", "Transistors" ]
 date: 2015-08-10
 description: "Types, schematic symbols, important parameters, amplifier topologies, and more info about bipolar junction transistors (BJTs)."
 draft: false
-lastmod: 2021-03-05
-tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode", "amplifiers", "common-emitter", "CE", "common-collector", "CC", "common-base", "CB", "grounded base", "Miller capacitance", "Widlar", "Widlar current mirror", "current mirror" ]
+lastmod: 2021-05-29
+tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode", "amplifiers", "common-emitter", "CE", "common-collector", "CC", "common-base", "CB", "grounded base", "Miller capacitance", "Widlar", "Widlar current mirror", "current mirrors", "Micronta", "Radio Shack" , "transistor testers" ]
 title: "Bipolar Junction Transistors (BJTs)"
 type: "page"
 ---
@@ -305,15 +305,16 @@ By utilizing the voltage regulation hysteresis behaviour of a BJT in reverse act
 
 ## Transistor Testers
 
-Many older handheld multimeters contain transistor testers for testing BJT transistors in the popular TO-92 through-hole package.
+Many older handheld multimeters contain transistor testers for testing BJT transistors in the popular TO-92 through-hole package (you should see some 3 or 4 little holes on the front panel with letters similar to CBE).
 
-I also found this older "Micronta Transistor Tester" device:
+I also found this older "Micronta Transistor Tester" device on TradeMe many years ago, I bought in purely out of interest (Micronta being a brand belonging to Radio Shack):
 
 {{% figure src="micronta-transistor-tester-box.jpg" width="600px" caption="The front box." %}}
 
+<div style="display: flex;">
 {{% figure src="micronta-transistor-tester-front-panel.jpg" width="300px" caption="The front panel." %}}
-
 {{% figure src="micronta-transistor-tester-internals.jpg" width="300px" caption="The internal circuitry." %}}
+</div>
 
 ## External Resources
 

@@ -45,3 +45,7 @@ type: "post"
 * Added graphs of a simple moving average (SMA) filter's frequency response.
 
     {{% figure src="/programming/signal-processing/digital-filters/frequency-response-of-sma-magnitude.png" width="600px" %}}
+
+* Added {{% link text="photos of the vintage "Micronta Transistor Tester" (a Radio Shack brand)" src="/electronics/components/transistors/bipolar-junction-transistors-bjts#transistor-testers" %}} to the BJT transistors page.
+
+    {{% figure src="/electronics/components/transistors/bipolar-junction-transistors-bjts/micronta-transistor-tester-box.jpg" width="600px" %}}

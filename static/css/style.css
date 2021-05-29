@@ -241,7 +241,7 @@ ul {
 pre, .pre {
     overflow-x: auto;
     overflow-y: hidden;
-    overflow:   scroll;
+    /* overflow:   scroll; */
 }
 
 pre {
@@ -270,6 +270,7 @@ pre code:not(.has-jax) {
     white-space: pre;
     font-size: 0.8em;
     line-height: 2;
+    border: 0px;
 }
 @media (min-width: 800px) {
     pre code:not(.has-jax) {
