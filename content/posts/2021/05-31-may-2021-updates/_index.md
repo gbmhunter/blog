@@ -24,17 +24,17 @@ type: "post"
 
 * Added a JFET component to the KiCad simulation library.
 
-* Added info on CAN bus mailboxes.
+* Added info on {{% link text="CAN bus mailboxes" src="/electronics/communication-protocols/can-protocol#can-controller-mailboxes" %}}.
 
-* Added a new page on Hashes.
+* Added a new page on {{% link text="Hashes" src="/programming/hashes" %}}.
 
-* More info added on the MQTT Paho library.
+* More info added on the {{% link text="MQTT Paho library" src="/electronics/communication-protocols/mqtt-protocol" %}}.
 
 * Added a section on {{% link text="Ring Oscillators to the Oscillators page" src="/electronics/components/oscillators/#ring-oscillators" %}}. Added simulation results for a three stage ring oscillator.
 
     {{% figure src="/electronics/components/oscillators/ring-oscillator-triple/out.png" width="600px" %}}
 
-* Added schematics on a BJT-based astable multivibrator:
+* Added schematics on a {{% link text="BJT-based astable multivibrator" src="/electronics/components/timers-and-multivibrators#basic-bjt-astable-multivibrator" %}}:
 
     {{% figure src="/electronics/components/timers-and-multivibrators/classic-bjt-astable-multivibrator.svg" width="500px" %}}
 
