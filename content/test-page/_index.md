@@ -149,7 +149,7 @@ x[3] = 4;
 int y = x;
 ```
 
-Some block code that **should** have scroll bars:
+Some block code that **should** have an x-axis scroll bar:
 
 ```c
 a long line of text a long line of text a long line of text a long line of text a long line of text a long line of text 
