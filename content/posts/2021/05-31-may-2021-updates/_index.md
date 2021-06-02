@@ -12,7 +12,7 @@ type: "post"
 
 * Added equations/proofs involving the Wien bridge oscillator.
 
-    {{% figure src="screenshot-of-wien-bridge-equations.png" width="500px" %}}
+    {{% img src="screenshot-of-wien-bridge-equations.png" width="500px" %}}
 
 * Added diagrams and info on {{% link text="coaxial cables" src="/electronics/components/cables#coaxial-cable" %}}.
 
@@ -40,7 +40,7 @@ type: "post"
 
 * Added info on noise power spectral density and noise amplitude spectral density. Added more info about thermal (Johnson-Nyquist) noise including equations and a worked example involving a `\(10k\Omega\)` resistor.
 
-    {{% figure src="screenshot-thermal-johnson-nyquist-noise-equations.png" width="500px" %}}
+    {{% img src="screenshot-thermal-johnson-nyquist-noise-equations.png" width="500px" %}}
 
 * Added graphs of a simple moving average (SMA) filter's frequency response.
 
