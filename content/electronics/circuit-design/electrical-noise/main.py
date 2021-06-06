@@ -4,26 +4,21 @@ import pandas as pd
 import scipy.signal
 
 def main():
-    sine_wave_period_s = 10.0
     number_samples = 1000
-    sampling_frequency_hz = number_samples / sine_wave_period_s
+    sample_rate_Hz = 10e3
+    nyquist_freq_Hz = sample_rate_Hz/2
+    end_time_s = number_samples/sample_rate_Hz
 
-    data_x = np.linspace(0, sine_wave_period_s, number_samples)
-
-    # Create our signal
-    signal_pure = np.sin((data_x/sine_wave_period_s)*2*np.pi)
-
-    # Add some additive white gaussian noise (AWGN)
-    rho = 10e-3
     # noise = white_noise(rho=rho, sr=sr, n=number_samples)
-    noise = awgn(signal_pure, 10)
-    signal_noisy = signal_pure + noise
+    time_s = np.linspace(0, end_time_s, number_samples)
+    spectral_noise_density_VsqHz = 10e-3
+    noise = white_noise(spectral_noise_density_VsqHz, sample_rate_Hz, number_samples)
 
     fig, axes = plt.subplots(1, 1, figsize=(10, 7), squeeze=False)
 
     # Create a plot of the noise
     ax = axes[0][0]
-    ax.plot(data_x, noise, label='White Noise')
+    ax.plot(time_s, noise, label=f'${spectral_noise_density_VsqHz*1000:.0f}mV\sqrt{{Hz}}$ white noise, in a bandwidth of 0-{nyquist_freq_Hz/1000:.0f}kHz')
     ax.set_xlabel('Time (s)')
     ax.set_ylabel('Voltage (V)')
     ax.legend()
@@ -35,7 +30,7 @@ def main():
 
     # Create a plot of the noise
     ax = axes[0][0]
-    ax.plot(data_x, noise_fft, label='White Noise')
+    ax.plot(time_s, noise_fft, label=f'${spectral_noise_density_VsqHz} V\sqrt{{Hz}}$ white noise')
     ax.set_xlabel('Time (s)')
     ax.set_ylabel('Voltage (V)')
     ax.legend()
