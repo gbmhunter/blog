@@ -10,7 +10,7 @@ title: "June 2019 Updates"
 type: "post"
 ---
 
-* The page on {{% link text="Electronic Noise And EMI Suppression" src="/electronics/circuit-design/noise-and-emi-suppression" %}} moved from Electronics->Test And Measurement to Electronics->Circuit Design.
+* The page on {{% link text="Electrical Noise" src="/electronics/circuit-design/electrical-noise" %}} moved from Electronics->Test And Measurement to Electronics->Circuit Design.
 
 * Renamed the Fast Fourier Transform page to the {{% link text="Fourier Transform page" src="/programming/signal-processing/fourier-transforms" %}}, as it now contains information about other Fourier transforms.
 

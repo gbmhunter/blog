@@ -6,7 +6,7 @@ description: "Noise spectral densities, thermal noise, and more info about elect
 draft: false
 lastmod: 2021-05-26
 tags: [ "noise", "dB", "AC coupling", "thermal noise", "Johnson noise", "Nyquist noise" ]
-title: "Noise And EMI Suppression"
+title: "Electrical Noise"
 type: "page"
 ---
 
@@ -51,7 +51,23 @@ where:<br/>
 \(v_n\) is the noise voltage spectral density, in \(V / \sqrt(Hz)\)
 </p>
 
-## Thermal (Johnson-Nyquist) Noise  
+## Colours Of Noise
+
+The _colour of noise_ refers to the shape of the power spectrum with respect to the frequency.
+
+* **White noise**: White noise is the simplest form of noise, and has a flat frequency spectrum when plotted as a linear function of frequency (it has a spectral power density proportional to `\(1\)`). White noise got it's name from _white light_, which was assumed to have a flat power density spectrum across the visible range (the catch here is that, well, it actually doesn't).
+* **Pink noise**: _Pink noise_ has a spectral power density proportional to `\(\frac{1}{f}\)`.
+* **Red noise**: _Red noise_ has a spectral power density proportional to `\(\frac{1}{f^2}\)`. Also called _Brownian noise_.
+
+### White Noise
+
+{{% figure src="white-noise.png" width="500px" caption="What white noise looks like in the time domain." %}}
+
+### Pink Noise
+
+### Red Noise
+
+## Thermal (Johnson-Nyquist) Noise
 
 Thermal noise is generated in any resistor by the random movement of charge carriers (e.g. electrons in a typical circuit) due to them having thermal energy. It is also called _Johnson_, _Nyquist_ or _Johnson-Nyquist_ noise. Thermal noise is unavoidable at any temperature except absolute zero (good luck with that).
 
@@ -129,12 +145,3 @@ As you can see, if the average of the waveform is 0 (as in the case when the wav
 ## Purpose-built Noise Generators
 
 Noise generators can be built for testing circuits.
-
-## EMI Suppression
-
-Common-mode noise
-Differential-mode noise
-
-Class-X and class-Y capacitors
-Bypass capacitors
-
