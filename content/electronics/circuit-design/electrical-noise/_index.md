@@ -18,7 +18,7 @@ type: "page"
 
 **The _noise power spectral density_ (PSD) is a measure of the noise power per Hertz of bandwidth in a signal**. It also called the _noise spectral density_, _noise power density_, or just _noise density_. Typically denoted with `\(N_0\)` and has units `\(W / Hz\)`. The `\(0\)` in the symbol `\(N_0\)` is used to distinguish a density (i.e., per `\(Hz\)`). Without the `\(0\)`, `\(N\)` represents a noise power over a specified bandwidth.
 
-The noise power `\(N\)` can be calculated from the noise power density `\(N_0\)` with the following equation:
+In the case that the noise power spectral density is constant (white noise), the noise power `\(N\)` can be calculated from the noise power density `\(N_0\)` with the following equation:
 
 <p>\begin{align}
 N = BN_0
@@ -28,7 +28,7 @@ N = BN_0
 where:<br/>
 \(N\) is the noise power, in Watts \(W\)<br/>
 \(B\) is the bandwidth of the signal, in Hertz \(Hz\)<br/>
-\(N_0\) is the noise power spectral density, in \(W / Hz\) 
+\(N_0\) is the white noise power spectral density, in \(W / Hz\) 
 </p>
 
 Noise power spectral density can be either one-sided or double-sided. TODO: Add more info on this.
@@ -55,13 +55,15 @@ where:<br/>
 
 The _colour of noise_ refers to the shape of the power spectrum with respect to the frequency.
 
-* **White noise**: White noise is the simplest form of noise, and has a flat frequency spectrum when plotted as a linear function of frequency (it has a spectral power density proportional to `\(1\)`). White noise got it's name from _white light_, which was assumed to have a flat power density spectrum across the visible range (the catch here is that, well, it actually doesn't).
+* **White noise**: White noise is the simplest form of noise, and has a flat power spectral density when plotted against frequency (it has a spectral power density proportional to `\(1\)`). 
 * **Pink noise**: _Pink noise_ has a spectral power density proportional to `\(\frac{1}{f}\)`.
 * **Red noise**: _Red noise_ has a spectral power density proportional to `\(\frac{1}{f^2}\)`. Also called _Brownian noise_.
 
 If you don't have access to equipment that can perform a spectrum/frequency analysis on measured voltages or currents, you can roughly identify the "colour" of the noise sources by recognizing the "shape" of the noise in the time domain on a simple oscilloscope. The following sections contain examples of what each colour of noise looks like in both the time and frequency domain.
 
 ### White Noise
+
+White noise has a flat power spectral density when plotted against frequency. White noise got it's name from _white light_, which was assumed to have a flat power density spectrum across the visible range (the catch here is that, well, it actually doesn't). White noise can be specified by a single constant noise power spectral density value.
 
 The following graph shows what Gaussian white noise looks like in the time domain:
 
@@ -71,7 +73,7 @@ And this is what it looks like in the frequency domain (the discrete FFT of the 
 
 {{% figure src="noise-white-freq-domain.png" width="700px" caption="What white noise looks like in the frequency domain." %}}
 
-White noise does have to be _Gaussian_. Gaussian noise means the probability density function has a Gaussian distribution. 
+Although it commonly is modelled as such, white noise does not have to be _Gaussian_. Gaussian noise means the probability density function has a Gaussian distribution. However other forms of white noise exist, for example, Poisson white noise.
 
 _Stochastic resonance_ is the clever technique of adding white noise to a signal which is usually too weak to be detected by the measurement device. The frequencies in the white noise which are also present in the signal will resonate with each other, amplifying the original signal but not amplifying the rest of the white noise. The system has to have a non-linear response for this to work[^wikipedia-stochastic-resonance].
 
@@ -105,9 +107,11 @@ And this is what it looks like in the frequency domain (the discrete FFT of the 
 
 {{% figure src="noise-red-freq-domain.png" width="700px" caption="What red noise looks like in the frequency domain." %}}
 
-## Thermal (Johnson-Nyquist) Noise
+## So Where Does Electrical Noise Come From?
 
-Thermal noise is generated in any resistor by the random movement of charge carriers (e.g. electrons in a typical circuit) due to them having thermal energy. It is also called _Johnson_, _Nyquist_ or _Johnson-Nyquist_ noise. Thermal noise is unavoidable at any temperature except absolute zero (good luck with that).
+### Thermal (Johnson-Nyquist) Noise
+
+**Thermal noise is generated in any resistor by the random movement of charge carriers (e.g. electrons in a typical circuit) due to them having thermal energy**. It is also called _Johnson_, _Nyquist_ or _Johnson-Nyquist_ noise. Thermal noise is unavoidable at any temperature except absolute zero (good luck with that).
 
 The noise power spectral density of thermal noise is found with the following equation:
 
@@ -180,11 +184,113 @@ This comes from the equation:
 
 As you can see, if the average of the waveform is 0 (as in the case when the waveform is AC coupled), the RMS value is the same as the standard deviation.
 
-## Purpose-built Noise Generators
+## Creating Noise In Software
 
-Noise generators can be built for testing circuits.
+### Power Law Noise
+
+The following Python code is flexible enough to generate power law noise `\(\frac{1}{f^n}\)` of any power `\(n\)`. The code is from <https://github.com/felixpatzelt/colorednoise/blob/master/colorednoise.py>, which uses an algorithm published by J. Timmer and M. Konig called _On Generating Power Law Noise_[^timmer-konig-generating-power-law-noise]. Depends on the popular Numpy library. This function was used to create the power law noise example signals on this page.
+
+```python
+from numpy import sqrt, newaxis
+from numpy.fft import irfft, rfftfreq
+from numpy.random import normal
+from numpy import sum as npsum
+
+def powerlaw_psd_gaussian(exponent, size, fmin=0):
+    """
+    Taken from https://github.com/felixpatzelt/colorednoise/blob/master/colorednoise.py
+    Gaussian (1/f)**beta noise.
+    Based on the algorithm in:
+    Timmer, J. and Koenig, M.:
+    On generating power law noise.
+    Astron. Astrophys. 300, 707-710 (1995)
+    Normalised to unit variance
+    Parameters:
+    -----------
+    exponent : float
+        The power-spectrum of the generated noise is proportional to
+        S(f) = (1 / f)**beta
+        flicker / pink noise:   exponent beta = 1
+        brown noise:            exponent beta = 2
+        Furthermore, the autocorrelation decays proportional to lag**-gamma
+        with gamma = 1 - beta for 0 < beta < 1.
+        There may be finite-size issues for beta close to one.
+    shape : int or iterable
+        The output has the given shape, and the desired power spectrum in
+        the last coordinate. That is, the last dimension is taken as time,
+        and all other components are independent.
+    fmin : float, optional
+        Low-frequency cutoff.
+        Default: 0 corresponds to original paper. It is not actually
+        zero, but 1/samples.
+    Returns
+    -------
+    out : array
+        The samples.
+    Examples:
+    ---------
+    # generate 1/f noise == pink noise == flicker noise
+    >>> import colorednoise as cn
+    >>> y = cn.powerlaw_psd_gaussian(1, 5)
+    """
+    
+    # Make sure size is a list so we can iterate it and assign to it.
+    try:
+        size = list(size)
+    except TypeError:
+        size = [size]
+    
+    # The number of samples in each time series
+    samples = size[-1]
+    
+    # Calculate Frequencies (we assume a sample rate of one)
+    # Use fft functions for real output (-> hermitian spectrum)
+    f = rfftfreq(samples)
+    
+    # Build scaling factors for all frequencies
+    s_scale = f
+    fmin = max(fmin, 1./samples) # Low frequency cutoff
+    ix   = npsum(s_scale < fmin)   # Index of the cutoff
+    if ix and ix < len(s_scale):
+        s_scale[:ix] = s_scale[ix]
+    s_scale = s_scale**(-exponent/2.)
+    
+    # Calculate theoretical output standard deviation from scaling
+    w      = s_scale[1:].copy()
+    w[-1] *= (1 + (samples % 2)) / 2. # correct f = +-0.5
+    sigma = 2 * sqrt(npsum(w**2)) / samples
+    
+    # Adjust size to generate one Fourier component per frequency
+    size[-1] = len(f)
+
+    # Add empty dimension(s) to broadcast s_scale along last
+    # dimension of generated random power + phase (below)
+    dims_to_add = len(size) - 1
+    s_scale     = s_scale[(newaxis,) * dims_to_add + (Ellipsis,)]
+    
+    # Generate scaled random power + phase
+    sr = normal(scale=s_scale, size=size)
+    si = normal(scale=s_scale, size=size)
+    
+    # If the signal length is even, frequencies +/- 0.5 are equal
+    # so the coefficient must be real.
+    if not (samples % 2): si[...,-1] = 0
+    
+    # Regardless of signal length, the DC component must be real
+    si[...,0] = 0
+    
+    # Combine power + corrected phase to Fourier components
+    s  = sr + 1J * si
+    
+    # Transform to real time series & scale to unit variance
+    y = irfft(s, n=samples, axis=-1) / sigma
+    
+    return y
+```
 
 ## References
 
 [^procaccia-schuster-universal-1-f-noise]: Itamar Procaccia and Heinz Schuster: _Functional renormalization-group theory of universal 1/f noise in dynamical systems_. Phys. Rev. A 28, 1210(R). Published 1 August 1983. <https://journals.aps.org/pra/abstract/10.1103/PhysRevA.28.1210>, accessed 2021-06-07.
 [^wikipedia-stochastic-resonance]: <https://en.wikipedia.org/wiki/Stochastic_resonance>, accessed 2021-06-07.
+[^timmer-konig-generating-power-law-noise]: J. Timmer and M. Konig: _On Generating Power Law Noise_. Astronomy And Astrophysics 2.3.1995. <https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.29.5304&rep=rep1&type=pdf>, accessed 2021-06-07.
+
