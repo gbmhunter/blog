@@ -23,6 +23,7 @@ def main():
         'name': 'White Noise',
         'time_s': time_s,
         'voltage_V': white_noise(spectral_noise_density_VsqHz, sample_rate_Hz, number_samples),
+        'dB_per_decade': 0,
     })
 
     pink_noise_time_domain = powerlaw_psd_gaussian(1, number_samples)
@@ -32,6 +33,7 @@ def main():
         'name': 'Pink Noise',
         'time_s': time_s,
         'voltage_V': pink_noise_time_domain,
+        'dB_per_decade': -3,
     })
 
     red_noise_time_domain = powerlaw_psd_gaussian(2, number_samples)
@@ -41,6 +43,7 @@ def main():
         'name': 'Red Noise',
         'time_s': time_s,
         'voltage_V': red_noise_time_domain,
+        'dB_per_decade': -6,
     })
 
 
@@ -48,7 +51,7 @@ def main():
         voltage_V = element['voltage_V']
         fig, axes = plt.subplots(1, 1, figsize=(10, 7), squeeze=False)
         ax = axes[0][0]
-        ax.plot(time_s, voltage_V, label=f'${spectral_noise_density_VsqHz*1000:.0f}mV\sqrt{{Hz}}$ {element["id"]} noise, in a bandwidth of 0-{nyquist_freq_Hz/1000:.0f}kHz')
+        ax.plot(time_s, voltage_V, label=f'{element["id"]} noise, in a bandwidth of 0-{nyquist_freq_Hz/1000:.0f}kHz')
         ax.set_xlabel('Time (s)')
         ax.set_ylabel('Voltage (V)')
         ax.legend()
@@ -60,7 +63,16 @@ def main():
         xf = scipy.fft.fftfreq(number_samples, 1/sample_rate_Hz)
         fig, axes = plt.subplots(1, 1, figsize=(10, 7), squeeze=False)
         ax = axes[0][0]
-        ax.plot(xf[0:number_samples//2], noise_freq_domain_mag_dB[0:number_samples//2], label=f'${spectral_noise_density_VsqHz*1000:.0f}mV\sqrt{{Hz}}$ {element["id"]} noise, in a bandwidth of 0-{nyquist_freq_Hz/1000:.0f}kHz')
+        ax.plot(
+            xf[0:number_samples//2],
+            noise_freq_domain_mag_dB[0:number_samples//2],
+            label=f'{element["id"]} noise, in a bandwidth of 0-{nyquist_freq_Hz/1000:.0f}kHz')
+        # Also plot expected dB drop per decade
+        offset_dB = -5
+        ax.plot(
+            [1, 5000], [offset_dB, offset_dB + np.log(5000)*element['dB_per_decade']],
+            label=f'{element["dB_per_decade"]}dB/decade')
+        ax.set_xscale('log')
         ax.set_xlabel('Frequency (Hz)')
         ax.set_ylabel('Voltage Magnitude (dB)')
         ax.legend()
@@ -105,12 +117,6 @@ def awgn(s, SNRdB, L=1):
     else:
         n = np.sqrt(N0/2)*(np.random.standard_normal(s.shape) + 1j*np.random.standard_normal(s.shape))
     return n
-
-  
-"""Generate colored noise."""
-
-
-
 
 def powerlaw_psd_gaussian(exponent, size, fmin=0):
     """
