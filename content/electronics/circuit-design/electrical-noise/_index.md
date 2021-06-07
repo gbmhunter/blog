@@ -4,8 +4,8 @@ categories: [ "Electronics", "Circuit Design" ]
 date: 2013-10-16
 description: "Noise spectral densities, thermal noise, and more info about electrical noise."
 draft: false
-lastmod: 2021-05-26
-tags: [ "noise", "dB", "AC coupling", "thermal noise", "Johnson noise", "Nyquist noise" ]
+lastmod: 2021-06-07
+tags: [ "noise", "dB", "AC coupling", "thermal noise", "Johnson noise", "Nyquist noise", "Stochastic resonance" ]
 title: "Electrical Noise"
 type: "page"
 ---
@@ -59,13 +59,51 @@ The _colour of noise_ refers to the shape of the power spectrum with respect to 
 * **Pink noise**: _Pink noise_ has a spectral power density proportional to `\(\frac{1}{f}\)`.
 * **Red noise**: _Red noise_ has a spectral power density proportional to `\(\frac{1}{f^2}\)`. Also called _Brownian noise_.
 
+If you don't have access to equipment that can perform a spectrum/frequency analysis on measured voltages or currents, you can roughly identify the "colour" of the noise sources by recognizing the "shape" of the noise in the time domain on a simple oscilloscope. The following sections contain examples of what each colour of noise looks like in both the time and frequency domain.
+
 ### White Noise
 
-{{% figure src="white-noise.png" width="500px" caption="What white noise looks like in the time domain." %}}
+The following graph shows what Gaussian white noise looks like in the time domain:
+
+{{% figure src="noise-white-time-domain.png" width="700px" caption="What white noise looks like in the time domain." %}}
+
+And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
+
+{{% figure src="noise-white-freq-domain.png" width="700px" caption="What white noise looks like in the frequency domain." %}}
+
+White noise does have to be _Gaussian_. Gaussian noise means the probability density function has a Gaussian distribution. 
+
+_Stochastic resonance_ is the clever technique of adding white noise to a signal which is usually too weak to be detected by the measurement device. The frequencies in the white noise which are also present in the signal will resonate with each other, amplifying the original signal but not amplifying the rest of the white noise. The system has to have a non-linear response for this to work[^wikipedia-stochastic-resonance].
 
 ### Pink Noise
 
-### Red Noise
+Also called `\(\frac{1}{f}\)` noise.
+
+The following graph shows what pink noise looks like in the time domain:
+
+{{% figure src="noise-pink-time-domain.png" width="700px" caption="What pink noise looks like in the time domain." %}}
+
+And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
+
+{{% figure src="noise-pink-freq-domain.png" width="700px" caption="What pink noise looks like in the frequency domain." %}}
+
+The following difference equation can create pink noise[^procaccia-schuster-universal-1-f-noise]:
+
+<p>\begin{align}
+x_t = (x_{t-1} + x_{t-1}^2)\ mod\ 1
+\end{align}</p>
+
+### Red (Brownian) Noise
+
+Also called _Brownian_ or `\(\frac{1}{f^2}\)` noise.
+
+The following graph shows what red noise looks like in the time domain:
+
+{{% figure src="noise-red-time-domain.png" width="700px" caption="What red noise looks like in the time domain." %}}
+
+And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
+
+{{% figure src="noise-red-freq-domain.png" width="700px" caption="What red noise looks like in the frequency domain." %}}
 
 ## Thermal (Johnson-Nyquist) Noise
 
@@ -145,3 +183,8 @@ As you can see, if the average of the waveform is 0 (as in the case when the wav
 ## Purpose-built Noise Generators
 
 Noise generators can be built for testing circuits.
+
+## References
+
+[^procaccia-schuster-universal-1-f-noise]: Itamar Procaccia and Heinz Schuster: _Functional renormalization-group theory of universal 1/f noise in dynamical systems_. Phys. Rev. A 28, 1210(R). Published 1 August 1983. <https://journals.aps.org/pra/abstract/10.1103/PhysRevA.28.1210>, accessed 2021-06-07.
+[^wikipedia-stochastic-resonance]: <https://en.wikipedia.org/wiki/Stochastic_resonance>, accessed 2021-06-07.
