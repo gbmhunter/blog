@@ -8,7 +8,7 @@ from numpy.random import normal
 from numpy import sum as npsum
 
 def main():
-    number_samples = 10000
+    number_samples = 10000 # But we will only plot 1000 in the time domain, you can see the behaviour better
     sample_rate_Hz = 10e3
     nyquist_freq_Hz = sample_rate_Hz/2
     end_time_s = number_samples/sample_rate_Hz
@@ -46,12 +46,21 @@ def main():
         'dB_per_decade': -6,
     })
 
+    blue_noise_time_domain = powerlaw_psd_gaussian(-1, number_samples)
+    blue_noise_time_domain = blue_noise_time_domain*10e-3 # Scale to 10mV variance
+    data.append({
+        'id': 'blue',
+        'name': 'Blue Noise',
+        'time_s': time_s,
+        'voltage_V': blue_noise_time_domain,
+        'dB_per_decade': 3,
+    })
 
     for element in data:
         voltage_V = element['voltage_V']
         fig, axes = plt.subplots(1, 1, figsize=(10, 7), squeeze=False)
         ax = axes[0][0]
-        ax.plot(time_s, voltage_V, label=f'{element["id"]} noise, in a bandwidth of 0-{nyquist_freq_Hz/1000:.0f}kHz')
+        ax.plot(time_s[0:1000], voltage_V[0:1000], label=f'{element["id"]} noise, in a bandwidth of 0-{nyquist_freq_Hz/1000:.0f}kHz')
         ax.set_xlabel('Time (s)')
         ax.set_ylabel('Voltage (V)')
         ax.legend()
