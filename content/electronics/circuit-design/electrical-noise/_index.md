@@ -84,7 +84,7 @@ _Stochastic resonance_ is the clever technique of adding white noise to a signal
 
 ### Pink Noise
 
-Also called `\(\frac{1}{f}\)` noise.
+Also called `\(\frac{1}{f}\)` noise. The PSD decreases at `\(3dB\)` per octave.
 
 The following graph shows what pink noise looks like in the time domain:
 
@@ -107,7 +107,7 @@ x_t = (x_{t-1} + x_{t-1}^2)\ mod\ 1
 
 ### Red (Brownian) Noise
 
-Also called _Brownian_ or `\(\frac{1}{f^2}\)` noise.
+Also called _Brownian_ or `\(\frac{1}{f^2}\)` noise. The PSD decreases at `\(6dB\)` per octave.
 
 The following graph shows what red noise looks like in the time domain:
 
@@ -119,7 +119,7 @@ And this is what it looks like in the frequency domain (the discrete FFT of the 
 
 ### Blue Noise
 
-Also called _Azure_ or `\(f\)` noise. It has a PSD proportional to frequency. As the frequency goes up, the noise power goes up also.
+Also called _Azure_ or `\(f\)` noise. It has a PSD proportional to frequency. As the frequency goes up, the noise power goes up also. The PSD increases at `\(3dB\)` per octave.
 
 The following graph shows what blue noise looks like in the time domain:
 
