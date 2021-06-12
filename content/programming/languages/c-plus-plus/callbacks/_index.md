@@ -16,7 +16,7 @@ type: "page"
 
 Callbacks are functions which are passed to other functions (or modules, libraries e.t.c) that then call the function at their choosing.
 
-C++, being a strongly-typed object-orientated language, makes callbacks a tricker subject to deal with than say, in C (non-object orientated) or Javascript (object orientated but NOT strongly typed). **This is especially true for embedded systems where you cannot always rely on having newer C++ standard library header files** such as `<functional>` at your disposal (although, with the limiting testing on Arduino platforms that I have done, I was able to use `<functional>` without any issues).
+C++, being a strongly-typed object-orientated language, makes callbacks a tricker subject to deal with than say, in C (non-object orientated) or Javascript (object orientated but NOT strongly typed). **This is especially true for embedded systems where you cannot always rely on having newer C++ standard library header files** such as `<functional>` at your disposal (it's a mixed bag, some embedded C++ environments I've used do support `<functional>`, others do not).
 
 {{% note %}}
 I have written an open-source C++ callback library called slotmachine-cpp, which you can download from [GitHub here](https://github.com/gbmhunter/slotmachine-cpp).
@@ -29,7 +29,8 @@ First, let's get some terminology out of the way:
 Term            | Description
 ----------------|---------------
 Callee			    | An object which gets passes a callback function, and then calls (executes) it.
-Method			    | A function that belongs to an object.
+Function        | A basic function that does not require an instance of a class to run (e.g. standard C style functions, or static member functions).
+Method			    | A function that belongs to an class, and requires an instance of that class to run. 
 Signals			    | Term used for "events" in an event/listener system.
 Slots			      | Term used for objects which listen to signals in an event/listener system. These are normally implemented with a callback system.
 
@@ -77,26 +78,86 @@ One way to implement callbacks in C++ is to use static methods or non-member fun
 
 The above bullet list should suggest that while easy, static methods or non-member function callbacks is not really an ideal solution. Luckily, there are better solutions (keep reading).
 
-## Using Functors
+## Using std::function
 
-Functors are objects in C++ in where the `()` operator has been overloaded. The `()` operator gives a function-like feel to the operator, in where you can do:
+If you have authorship of the library wanting to callback, the recommended approach is to change the signature away from a C-style callback and use `std::function` and lambdas instead. Rather than the library accepting a C-style callback in the format `int (callback*) (int num1, int num2)`, update the library to accept a `std::function<int(int, int)> callback`. This allows you to pass in a lambda, which as you'll see below, allows you to easily call a member function.
+
+(run this code at <a href="http://cpp.sh/4q3tt" target="_blank">http://cpp.sh/4q3tt</a>)
 
 ```c++
-functorObj myFunctorObj;     // A functor object (the () operator is overloaded)
-myFunctorObj();              // Using the object like a function
+#include <cstdio>
+#include <functional>
+
+class LibraryClass {
+public:
+	void passACallbackToMe(std::function<int(int, int)> callback) {
+	    // Now invoke (call) the callback
+		int o = callback(1, 2);
+        printf("Value: %i\n", o); // We might be on an embedded system, use printf() and not std::cout
+	}
+};
+
+class MyClass {
+public:
+      int methodToCallback(int num1, int num2) {
+          return num1 + num2;
+      }
+};
+
+int main()
+{
+    MyClass myClass;
+    
+    LibraryClass libraryClass;
+    // Use a lambda to capture myClass and call the member method
+    libraryClass.passACallbackToMe([&myClass](int num1, int num2) -> int {
+        return myClass.methodToCallback(num1, num2);
+    });
+    
+    // Alternate way to using a lambda, use std::bind instead. However I recommend the lambda way.
+    libraryClass.passACallbackToMe(std::bind(&MyClass::methodToCallback, myClass, std::placeholders::_1, std::placeholders::_2));
+}
 ```
 
-## A Type Independent Method
+Rather than a lambda like in the example above, you can use `std::bind` instead. I strongly recommend the lambda way of doing things, but for sake of completeness let's introduce the `std::bind` technique (run this code at <a href="http://cpp.sh/3v6kt" target="_blank">http://cpp.sh/3v6kt</a>):
 
-The ideal callback can be passed around with the callee knowing nothing about the object it is calling. This allows for the creation of proper, decoupled, re-usable libraries. With a bit of what may first seem like C++ black-magic, you can implement type agnostic callbacks in C++.
+```c++
+#include <cstdio>
+#include <functional>
 
-A key trick is that at some point you have to strip away the type to pass the object and method address from a type-knowing object to a type-agnostic object. This uses `memcpy()`. Sounds dangerous?
+class LibraryClass {
+public:
+	void passACallbackToMe(std::function<int(int, int)> callback) {
+	    // Now invoke (call) the callback
+		int o = callback(1, 2);
+        printf("Value: %i\n", o); // We might be on an embedded system, use printf() and not std::cout
+	}
+};
+
+class MyClass {
+public:
+      int methodToCallback(int num1, int num2) {
+          return num1 + num2;
+      }
+};
+
+int main()
+{
+    MyClass myClass;
+    
+    LibraryClass libraryClass;
+
+    // Alternate way to using a lambda, use std::bind instead. However I recommend the lambda way.
+    libraryClass.passACallbackToMe(std::bind(&MyClass::methodToCallback, myClass, std::placeholders::_1, std::placeholders::_2));
+}
+
+```
 
 ## Passing a C++ Member Function To A C Callback
 
 The above solution of accepting a `std::function` works great if you also have authorship of the library which wants a callback passed to it. But in many cases you don't have the ability to change the library, and you might be stuck with trying to provide a member function to a library which wants a C-style callback. Never fear, there is a solution to this.
 
-Ready for some magic (I am pretty impressed with how this works!)? Let's look at the code example below:
+Ready for some magic (o.k., not magic, but I am pretty impressed with how this works!)? Let's look at the code example below (run this code at <a href="http://cpp.sh/4usaf" target="_blank">http://cpp.sh/4usaf</a>):
 
 ```c++
 #include <stdio.h>
@@ -144,56 +205,30 @@ int main() {
 
 ## C++ Callback Libraries
 
-<table>
-	<thead>
-		<tr>
-			<th>Library</th>
-			<th>Pros</th>
-			<th>Cons</th>
-			<th>License</th>
-			<th>Rating</th>
-			<th>Link</th>
-		</tr>
-	</thead>
-  <tbody>
-    <tr>
-      <td>cpgf</td>
-      <td>
-        <ul>
-          <li>Uses the signals and slots syntax</li>
-          <li>Callbacks can be functions, member methods, virtual methods...</li>
-          <li>Really easy to use syntax.</li>
-          <li>Powerful.</li>
-        </ul>
-      </td>
-      <td></td>
-      <td>Apache License, Version 2.0</td>
-      <td>9/10</td>
-      <td>[http://www.cpgf.org/](http://www.cpgf.org/)</td>
-    </tr>
-    <tr>
-      <td>libsigc++</td>
-      <td>
-        <ul>
-          <li>Supports signals and slots.</li>
-          <li>Many features.</li>
-          <li>Powerful.</li>
-        </ul>
-      </td>
-      <td >
-        <ul>
-          <li>Uses advanced C++ compiler features</li>
-          <li>Somewhat complex to use</li>
-        </ul>
-      </td>
-      <td>GNU Library General Public License</td>
-      <td>7/10</td>
-      <td><a href="http://libsigc.sourceforge.net/">http://libsigc.sourceforge.net/</a></td>
-    </tr>
-  </tbody>
-</table>
+### cpgf
 
-## Vlpp
+Website: <a href="http://www.cpgf.org/" target="_blank">http://www.cpgf.org/</a>
+
+* Uses the signals and slots syntax
+* Callbacks can be functions, member methods, virtual methods...
+* Really easy to use syntax.
+* Powerful.
+
+License: Apache License, Version 2.0</td>
+  
+### libsigc++
+
+Website: <a href="http://libsigc.sourceforge.net/" target="_blank">http://libsigc.sourceforge.net/</a>
+
+* Supports signals and slots.
+* Many features.
+* Powerful.
+* Uses advanced C++ compiler features.
+* Somewhat complex to use
+
+License: GNU Library General Public License
+
+### Vlpp
 
 _Vlpp_ is an open source C++ library which provides cross-platform replacements for `<functional>` (among other std libraries). Typically, the `<functional>` library provided by the C++ standard library will not work on embedded systems (simple test: try and include it and use `std::function` to see if your platform supports it). _Vlpp_ can be used as a substitute, allowing you to use `vl::Func<void(void)>` to replace `std::function<void(void)>` and implement callbacks in this manner on embedded platforms.
 
