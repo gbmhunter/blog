@@ -1,9 +1,12 @@
 ---
+aliases: [
+    "/programming/languages/c-plus-plus/passing-a-cpp-member-function-to-a-c-callback/", # Combined the content into this page
+]
 author: "gbmhunter"
 categories: [ "Programming", "Languages", "C++" ]
 date: 2014-01-17
 draft: false
-lastmod: 2020-11-13
+lastmod: 2021-06-12
 tags: [ "programming", "languages", "C++", "callbacks", "methods", "functors", "functions", "Vlpp", "libsigc++", "signals", "slots", "callee" ]
 title: "C++ Callbacks"
 type: "page"
@@ -13,7 +16,7 @@ type: "page"
 
 Callbacks are functions which are passed to other functions (or modules, libraries e.t.c) that then call the function at their choosing.
 
-C++, being a strongly-typed object-orientated language, makes callbacks  that much harder to implement than, say in C (non-object orientated) or Javascript (object orientated but NOT strongly typed). Note that you can perform C-style callbacks just as easily in C++, what we are referring to here is class-based callbacks.
+C++, being a strongly-typed object-orientated language, makes callbacks a tricker subject to deal with than say, in C (non-object orientated) or Javascript (object orientated but NOT strongly typed). **This is especially true for embedded systems where you cannot always rely on having newer C++ standard library header files** such as `<functional>` at your disposal (although, with the limiting testing on Arduino platforms that I have done, I was able to use `<functional>` without any issues).
 
 {{% note %}}
 I have written an open-source C++ callback library called slotmachine-cpp, which you can download from [GitHub here](https://github.com/gbmhunter/slotmachine-cpp).
@@ -21,16 +24,20 @@ I have written an open-source C++ callback library called slotmachine-cpp, which
 
 ## Terminology
 
+First, let's get some terminology out of the way:
+
 Term            | Description
---------------------------------
-Callee			| An object which gets passes a callback function, and then calls (executes) it.
-Method			| A function that belongs to an object.
-Signals			| Term used for "events" in an event/listener system.
-Slots			| Term used for objects which listen to signals in an event/listener system. These are normally implemented with a callback system.
+----------------|---------------
+Callee			    | An object which gets passes a callback function, and then calls (executes) it.
+Method			    | A function that belongs to an object.
+Signals			    | Term used for "events" in an event/listener system.
+Slots			      | Term used for objects which listen to signals in an event/listener system. These are normally implemented with a callback system.
 
-## The Problem
+## The Main Problem With Callbacks In C++
 
-The problem arises when you want to make a callback to a method. A method is a member function of an object. To call a method, you can't just know the functions memory address and call it, you also have to know the object that the function belongs to. This means that for method callbacks in their most simple form, the callee has to know the type of the object the function belongs to. For example:
+The problem arises when you want to pass in a non-static method (function belonging to an class, that requires an instance of that class) as a callback to a library. A method is a member function of an object. To call a method, you can't just know the functions memory address and call it, you also have to know the object that the function belongs to (the `this` pointer!).
+
+This means that for C++ method callbacks in their most simple form, **the callee has to know the type of the object the function belongs to**. For example:
     
 ```c++
 class A {
@@ -62,9 +69,9 @@ int main() {
 
 One way to implement callbacks in C++ is to use static methods or non-member functions. This is pretty much how you do it in C, and callbacks of the type `void (*myFunctionPtr)()` can be used. However, this has the following disadvantages:
 
-* You have to create stand-along callback functions.
+* You have to create stand-alone callback functions.
 * Member methods cannot be called directly (obvious). All of the preceding points relate to calling methods...
-* If you want to then call member methods, the static function has to know about the object, requiring the object to be global.
+* If you want to then call member methods, the static function has to know about the object, requiring the object to be global, yuck.
 * Member methods have to be made public to be called from the function/static method, messing with what should really be public and private.
 * All of the above hint at the fact that this is not really an OOP solution
 
@@ -81,9 +88,59 @@ myFunctorObj();              // Using the object like a function
 
 ## A Type Independent Method
 
-The ideal callback can be passes around with the callee knowing nothing about the object it is calling. This allows for the creation of proper, decoupled, re-usable libraries. With a bit of what may first seem like C++ black-magic, you can implement type agnostic callbacks in C++.
+The ideal callback can be passed around with the callee knowing nothing about the object it is calling. This allows for the creation of proper, decoupled, re-usable libraries. With a bit of what may first seem like C++ black-magic, you can implement type agnostic callbacks in C++.
 
 A key trick is that at some point you have to strip away the type to pass the object and method address from a type-knowing object to a type-agnostic object. This uses `memcpy()`. Sounds dangerous?
+
+## Passing a C++ Member Function To A C Callback
+
+The above solution of accepting a `std::function` works great if you also have authorship of the library which wants a callback passed to it. But in many cases you don't have the ability to change the library, and you might be stuck with trying to provide a member function to a library which wants a C-style callback. Never fear, there is a solution to this.
+
+Ready for some magic (I am pretty impressed with how this works!)? Let's look at the code example below:
+
+```c++
+#include <stdio.h>
+#include <functional>
+
+template <typename T>
+struct Callback;
+
+template <typename Ret, typename... Params>
+struct Callback<Ret(Params...)> {
+   template <typename... Args> 
+   static Ret callback(Args... args) {                    
+      return func(args...);  
+   }
+   static std::function<Ret(Params...)> func; 
+};
+
+template <typename Ret, typename... Params>
+std::function<Ret(Params...)> Callback<Ret(Params...)>::func;
+
+// C-style API which just wants a standard function for callback
+void c_function_which_wants_callback(int (*func)(int num1, int num2)) {
+   int o = func(1, 2);
+   printf("Value: %i\n", o);
+}
+
+class ClassWithCallback {
+   public:
+      int method_to_callback(int num1, int num2) {
+          return num1 + num2;
+      }
+};
+
+typedef int (*callback_t)(int,int);
+
+int main() {
+    ClassWithCallback my_class;
+    Callback<int(int,int)>::func = std::bind(&ClassWithCallback::method_to_callback, &my_class, std::placeholders::_1, std::placeholders::_2);
+    callback_t func = static_cast<callback_t>(Callback<int(int,int)>::callback);
+
+    // Now we can pass this function to a C API which just wants a standard function callback    
+    c_function_which_wants_callback(func);      
+}
+```
 
 ## C++ Callback Libraries
 
@@ -147,3 +204,4 @@ _Vlpp_ is an open source C++ library which provides cross-platform replacements 
 [The Type-safe Callbacks In C++](http://www.codeproject.com/Articles/6136/Type-safe-Callbacks-in-C) library on the Code Project gives a great, complete callback library for C++ which allows callbacks with 0 to 5 input arguments.
 
 [Functors to Encapsulate C and C++ Function Pointers](http://www.newty.de/fpt/functor.html) is a short and simple tutorial on using functors.
+
