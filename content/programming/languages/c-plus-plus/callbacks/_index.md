@@ -10,7 +10,7 @@ draft: false
 images: [ "/programming/languages/c-plus-plus/callbacks/callback.png" ]
 lastmod: 2021-06-13
 tags: [ "programming", "languages", "C++", "callbacks", "methods", "functors", "functions", "Vlpp", "libsigc++", "signals", "slots", "callee", "embedded", "functional", "std::bind", "bind" ]
-title: "C++ Callbacks And Interfacing With C"
+title: "C++ Callbacks (and giving member functions to C-style callbacks)"
 type: "page"
 ---
 
