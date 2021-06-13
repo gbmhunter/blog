@@ -6,8 +6,8 @@ author: "gbmhunter"
 categories: [ "Programming", "Languages", "C++" ]
 date: 2014-01-17
 draft: false
-lastmod: 2021-06-12
-tags: [ "programming", "languages", "C++", "callbacks", "methods", "functors", "functions", "Vlpp", "libsigc++", "signals", "slots", "callee" ]
+lastmod: 2021-06-13
+tags: [ "programming", "languages", "C++", "callbacks", "methods", "functors", "functions", "Vlpp", "libsigc++", "signals", "slots", "callee", "embedded", "functional", "std::bind", "bind" ]
 title: "C++ Callbacks"
 type: "page"
 ---
@@ -28,41 +28,49 @@ First, let's get some terminology out of the way:
 
 Term            | Description
 ----------------|---------------
-Callee			    | An object which gets passes a callback function, and then calls (executes) it.
+Callee  		    | A function/method/object which gets called by the caller.
+Caller			    | An object which gets passes a callback function, and then calls (executes) it.
 Function        | A basic function that does not require an instance of a class to run (e.g. standard C style functions, or static member functions).
 Method			    | A function that belongs to an class, and requires an instance of that class to run. 
 Signals			    | Term used for "events" in an event/listener system.
 Slots			      | Term used for objects which listen to signals in an event/listener system. These are normally implemented with a callback system.
 
-## The Main Problem With Callbacks In C++
+## The Primitive C++ Callback: The Caller Knows The Type Of The Callee 
 
 The problem arises when you want to pass in a non-static method (function belonging to an class, that requires an instance of that class) as a callback to a library. A method is a member function of an object. To call a method, you can't just know the functions memory address and call it, you also have to know the object that the function belongs to (the `this` pointer!).
 
-This means that for C++ method callbacks in their most simple form, **the callee has to know the type of the object the function belongs to**. For example:
+This means that for C++ method callbacks in their most primitive form, **the callee has to know the type of the object the function belongs to**. For example (run this code at <a href="https://replit.com/@gbmhunter/pure-cpp-method-callback#main.cpp" target="_blank">https://replit.com/@gbmhunter/pure-cpp-method-callback#main.cpp</a>):
     
 ```c++
-class A {
-	// Create a method that needs to be called
-	PleaseCallMe();
+#include <cstdio>
+
+class MyClass {
+public:
+	// This is our application callback handler for when a message is received, we will
+  // pass this into the library which deals with message parsing
+	void onMsg(int num1, int num2) {
+    printf("onMsg() called with num1=%i, num2=%i\n", num1, num2);
+  }
 };
 
-class B {
-	// Create a method which can call A::PleaseCallMe
-	// Note that the object A has to be known here! This creates undesired coupling!
-	PassACallbackToMe(void (A::* pleaseCallMe)()) {
-		// Call the callback function, this part is just the same as if in C
-		pleaseCallMe();
+class LibraryClass {
+public:
+	// For the library class to call the onMsg, it has to be passed both an instance
+  // of MyClass and a pointer to the member function to call
+	// Note that MyClass has to be known here! This creates undesired coupling...in
+  // reality your library should never have to know about MyClass
+	void passACallbackToMe(MyClass* myClass, void (MyClass::* onMsg)(int num1, int num2)) {
+		// Call the callback function
+		(myClass->*onMsg)(1, 2);
 	}
-}
+};
 
 int main() {
-	// Create objects of type A and B
-	A a;
-	B b;
+	MyClass myClass;
+	LibraryClass libraryClass;
 
-	// Pass a callback to A::PleaseCallMe() into B so that
-	// B can then call it
-	b.PassACallackToMe(&a.*PleaseCallMe);
+	// Provide the instance and function to call
+	libraryClass.passACallbackToMe(&myClass, &MyClass::onMsg);
 }
 ```
 
@@ -76,13 +84,56 @@ One way to implement callbacks in C++ is to use static methods or non-member fun
 * Member methods have to be made public to be called from the function/static method, messing with what should really be public and private.
 * All of the above hint at the fact that this is not really an OOP solution
 
+Below is an example of how you could provide a callback to library that accepts a C-style callback but ends up calling a member method (run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs" target="_blank">https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs</a>):
+
+```c++
+#include <cstdio>
+#include <functional>
+
+class LibraryClass {
+public:
+	  void passACallbackToMe(int (*callback)(int num1, int num2)) {
+	      // Now invoke (call) the callback
+        int o = callback(1, 2);
+        printf("Value: %i\n", o); // We might be on an embedded system, use printf() and not std::cout
+	  }
+};
+
+class MyClass {
+public:
+      int methodToCallback(int num1, int num2) {
+          return num1 + num2;
+      }
+};
+
+// Global pointer to an instance of our class so the C style callback
+// wrapper can invoke the callback on a particular instance (yuck!)
+MyClass * myClassPtr;
+int cStyleWrapper(int num1, int num2) {
+    return myClassPtr->methodToCallback(num1, num2);
+}
+
+int main()
+{
+    MyClass myClass;
+    // Make the global variable point to our new instance. Obviously, this
+    // way does not scale well, as you have to make global variable and C-style
+    // function for every instance (and what if you don't know how many instances you will
+    // need!?!)
+    myClassPtr = &myClass; 
+    
+    LibraryClass libraryClass;
+    libraryClass.passACallbackToMe(&cStyleWrapper);
+}
+```
+
 The above bullet list should suggest that while easy, static methods or non-member function callbacks is not really an ideal solution. Luckily, there are better solutions (keep reading).
 
 ## Using std::function
 
 If you have authorship of the library wanting to callback, the recommended approach is to change the signature away from a C-style callback and use `std::function` and lambdas instead. Rather than the library accepting a C-style callback in the format `int (callback*) (int num1, int num2)`, update the library to accept a `std::function<int(int, int)> callback`. This allows you to pass in a lambda, which as you'll see below, allows you to easily call a member function.
 
-(run this code at <a href="http://cpp.sh/4q3tt" target="_blank">http://cpp.sh/4q3tt</a>)
+(run this code at <a href=https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp</a>)
 
 ```c++
 #include <cstdio>
@@ -119,7 +170,7 @@ int main()
 }
 ```
 
-Rather than a lambda like in the example above, you can use `std::bind` instead. I strongly recommend the lambda way of doing things, but for sake of completeness let's introduce the `std::bind` technique (run this code at <a href="http://cpp.sh/3v6kt" target="_blank">http://cpp.sh/3v6kt</a>):
+Rather than a lambda like in the example above, you can use `std::bind` instead. I strongly recommend the lambda way of doing things, but for sake of completeness let's introduce the `std::bind` technique (run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-bind#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-bind#main.cpp</a>):
 
 ```c++
 #include <cstdio>
@@ -150,14 +201,13 @@ int main()
     // Alternate way to using a lambda, use std::bind instead. However I recommend the lambda way.
     libraryClass.passACallbackToMe(std::bind(&MyClass::methodToCallback, myClass, std::placeholders::_1, std::placeholders::_2));
 }
-
 ```
 
 ## Passing a C++ Member Function To A C Callback
 
 The above solution of accepting a `std::function` works great if you also have authorship of the library which wants a callback passed to it. But in many cases you don't have the ability to change the library, and you might be stuck with trying to provide a member function to a library which wants a C-style callback. Never fear, there is a solution to this.
 
-Ready for some magic (o.k., not magic, but I am pretty impressed with how this works!)? Let's look at the code example below (run this code at <a href="http://cpp.sh/4usaf" target="_blank">http://cpp.sh/4usaf</a>):
+Ready for some magic (o.k., not magic, but I am pretty impressed with how this works!)? Let's look at the code example below (run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp</a>):
 
 ```c++
 #include <stdio.h>

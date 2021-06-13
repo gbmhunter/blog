@@ -356,6 +356,7 @@
         "cread",
         "cronlog",
         "crtscts",
+        "cstdio",
         "cstopb",
         "ctft",
         "ctrl",
