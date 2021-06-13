@@ -5,11 +5,12 @@ aliases: [
 author: "gbmhunter"
 categories: [ "Programming", "Languages", "C++" ]
 date: 2014-01-17
+description: "How to deal with the tricky issue of callbacks in C++ (incl. how to provide member functions to C-style callbacks), especially in embedded environments."
 draft: false
 images: [ "/programming/languages/c-plus-plus/callbacks/callback.png" ]
 lastmod: 2021-06-13
 tags: [ "programming", "languages", "C++", "callbacks", "methods", "functors", "functions", "Vlpp", "libsigc++", "signals", "slots", "callee", "embedded", "functional", "std::bind", "bind" ]
-title: "C++ Callbacks"
+title: "C++ Callbacks And Interfacing With C"
 type: "page"
 ---
 
