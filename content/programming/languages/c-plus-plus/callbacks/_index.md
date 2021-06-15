@@ -80,15 +80,53 @@ int main() {
 
 ## Using Static Methods Or Non-Member Functions (C-Style)
 
-One way to implement callbacks in C++ is to use static methods or non-member functions. This is pretty much how you do it in C, and callbacks of the type `void (*myFunctionPtr)()` can be used. However, this has the following disadvantages:
+If you are stuck with a C-style callback, there is no direct way to call non-static (i.e. takes a `this` pointer as the magic first parameter) member function. You can however easily call static member functions (they are no different in type signature to C-style functions)
 
-* You have to create stand-alone callback functions.
-* Member methods cannot be called directly (obvious). All of the preceding points relate to calling methods...
-* If you want to then call member methods, the static function has to know about the object, requiring the object to be global, yuck.
-* Member methods have to be made public to be called from the function/static method, messing with what should really be public and private.
-* All of the above hint at the fact that this is not really an OOP solution
+(run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-static-method#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-static-method#main.cpp</a>)
 
-Below is an example of how you could provide a callback to library that accepts a C-style callback but ends up calling a member method (run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs" target="_blank">https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs</a>):
+```c++
+#include <cstdio>
+
+class MyClass {
+public:
+	// This is our application callback handler for when a message is received, we will
+  // pass this into the library which deals with message parsing
+  // The "static" keyword makes it easy, as now this function does not
+  // take a this pointer and has the same signature as a plain C function
+	static void onMsg(int num1, int num2) {
+    printf("onMsg() called with num1=%i, num2=%i\n", num1, num2);
+    // NOTE: Can't call any non-static method functions here!
+  }
+};
+
+class LibraryClass {
+public:
+	// For the library class to call the onMsg, it has to be passed both an instance
+  // of MyClass and a pointer to the member function to call
+	// Note that MyClass has to be known here! This creates undesired coupling...in
+  // reality your library should never have to know about MyClass
+	void passACallbackToMe(void (*onMsg)(int num1, int num2)) {
+		// Call the callback function
+		onMsg(1, 2);
+	}
+};
+
+int main() {
+	MyClass myClass;
+	LibraryClass libraryClass;
+
+	// Provide the instance and function to call
+	libraryClass.passACallbackToMe(&myClass.onMsg);
+}
+```
+
+Note the main limitation of the above method is that no non-static member functions can be called. This limits how "object orientated" you can get with your software/firmware architecture.
+
+## Using Static Methods Or Non-Member Functions, But Calling Member Functions Through Shared Variables
+
+As we touched on before, if you are stuck with a C-style callback, there is no direct way to call a member function. However, given we can call static methods (as shown directly above), we can use shared variables (e.g. file scoped variables) to call a particular instance from that static function. This is about the best you can do when you can't change the type signature of the C-style callback.
+
+Let's go through an example, this time using a standard C function rather than a static member function purely for illustration they are interchangeable (run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs" target="_blank">https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs</a>):
 
 ```c++
 #include <cstdio>
@@ -131,7 +169,53 @@ int main()
 }
 ```
 
-The above bullet list should suggest that while easy, static methods or non-member function callbacks is not really an ideal solution. Luckily, there are better solutions (keep reading).
+## Static Variables, With Templating
+
+A slightly more complicated but flexible approach to the above is to use templating, `std::bind` and `std::function` as shown in the below example (run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp</a>):
+
+```c++
+#include <stdio.h>
+#include <functional>
+
+template <typename T>
+struct Callback;
+
+template <typename Ret, typename... Params>
+struct Callback<Ret(Params...)> {
+   template <typename... Args> 
+   static Ret callback(Args... args) {                    
+      return func(args...);  
+   }
+   static std::function<Ret(Params...)> func; 
+};
+
+template <typename Ret, typename... Params>
+std::function<Ret(Params...)> Callback<Ret(Params...)>::func;
+
+// C-style API which just wants a standard function for callback
+void c_function_which_wants_callback(int (*func)(int num1, int num2)) {
+   int o = func(1, 2);
+   printf("Value: %i\n", o);
+}
+
+class ClassWithCallback {
+   public:
+      int method_to_callback(int num1, int num2) {
+          return num1 + num2;
+      }
+};
+
+typedef int (*callback_t)(int,int);
+
+int main() {
+    ClassWithCallback my_class;
+    Callback<int(int,int)>::func = std::bind(&ClassWithCallback::method_to_callback, &my_class, std::placeholders::_1, std::placeholders::_2);
+    callback_t func = static_cast<callback_t>(Callback<int(int,int)>::callback);
+
+    // Now we can pass this function to a C API which just wants a standard function callback    
+    c_function_which_wants_callback(func);      
+}
+```
 
 ## Using std::function
 
@@ -204,56 +288,6 @@ int main()
 
     // Alternate way to using a lambda, use std::bind instead. However I recommend the lambda way.
     libraryClass.passACallbackToMe(std::bind(&MyClass::methodToCallback, myClass, std::placeholders::_1, std::placeholders::_2));
-}
-```
-
-## Passing a C++ Member Function To A C Callback
-
-The above solution of accepting a `std::function` works great if you also have authorship of the library which wants a callback passed to it. But in many cases you don't have the ability to change the library, and you might be stuck with trying to provide a member function to a library which wants a C-style callback. Never fear, there is a solution to this.
-
-Ready for some magic (o.k., not magic, but I am pretty impressed with how this works!)? Let's look at the code example below (run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp</a>):
-
-```c++
-#include <stdio.h>
-#include <functional>
-
-template <typename T>
-struct Callback;
-
-template <typename Ret, typename... Params>
-struct Callback<Ret(Params...)> {
-   template <typename... Args> 
-   static Ret callback(Args... args) {                    
-      return func(args...);  
-   }
-   static std::function<Ret(Params...)> func; 
-};
-
-template <typename Ret, typename... Params>
-std::function<Ret(Params...)> Callback<Ret(Params...)>::func;
-
-// C-style API which just wants a standard function for callback
-void c_function_which_wants_callback(int (*func)(int num1, int num2)) {
-   int o = func(1, 2);
-   printf("Value: %i\n", o);
-}
-
-class ClassWithCallback {
-   public:
-      int method_to_callback(int num1, int num2) {
-          return num1 + num2;
-      }
-};
-
-typedef int (*callback_t)(int,int);
-
-int main() {
-    ClassWithCallback my_class;
-    Callback<int(int,int)>::func = std::bind(&ClassWithCallback::method_to_callback, &my_class, std::placeholders::_1, std::placeholders::_2);
-    callback_t func = static_cast<callback_t>(Callback<int(int,int)>::callback);
-
-    // Now we can pass this function to a C API which just wants a standard function callback    
-    c_function_which_wants_callback(func);      
 }
 ```
 
