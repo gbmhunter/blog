@@ -4,8 +4,8 @@ categories: [ "Electronics", "Tools" ]
 date: 2020-05-18
 description: "A review of the different makes and models of both soldering irons and soldering stations."
 draft: false
-lastmod: 2020-11-30
-tags: [ "electronics", "tools", "soldering iron", "soldering station", "Hakko", "JBC", "Weller", "infrared", "pre-heating station", "rework" ]
+lastmod: 2021-06-14
+tags: [ "electronics", "tools", "soldering iron", "soldering station", "Hakko", "JBC", "Weller", "infrared", "pre-heating station", "rework", "FM-2023" ]
 title: "Soldering Irons And Stations"
 type: "page"
 ---
@@ -54,6 +54,10 @@ A dual port soldering station. For use with the FM-2027 soldering iron which tak
 **Note that that tips are not truly quick change until you also purchase extra _Soldering Pencil Sleeves_**. These are proprietary hand-grips that slide onto the tip. Once each tip has one of these, you can quickly change tips by unclipping the sleeve + tip from the rest of the iron and inserting a new one. These sleeves also remove the need for using pliers or a rubber mat to remove hot tips.
 
 {{% img src="hakko-soldering-pencil-sleeve-green.png" width="300px" caption="A green soldering pencil sleeve from Hakko. You have to purchase one of these per tip before your soldering iron truly becomes 'quick change'. Image from https://nz.element14.com/hakko/b3219/soldering-pencil-sleeve-green/dp/1676853." %}}
+
+This soldering station can also accept Hakko tweezers. A great choice for popping off and on small 0402/0603/0805 chip resistors and capacitors is the FM-2023 Mini SMD Hot Tweezers with the T9-1L tips:
+
+{{% figure src="hm-2023-hakko-mini-hot-tweezers-with-t9-l1-tips.jpg" width="400px" caption="Close up of the T9-1L tips on the Hakko FM-2023 Mini SMD Hot Tweezers. Great for popping on and off small 0402/0603/0805 chip resistors and capacitors." %}}
 
 ### Weller WT 1010
 
