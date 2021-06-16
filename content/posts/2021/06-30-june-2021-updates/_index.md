@@ -17,3 +17,7 @@ type: "post"
 * Added info on {{% link text="Hakko soldering tweezers" src="/electronics/tools/soldering-irons-and-stations/#hakko-fm203-15" %}} to the Soldering Irons And Stations page.
 
     {{% figure src="/electronics/tools/soldering-irons-and-stations/hm-2023-hakko-mini-hot-tweezers-with-t9-l1-tips.jpg" width="300px" %}}
+
+* Starting testing the Asciidoc format and comparing it against the Markdown format.
+
+* Added info on Capacitance Multipliers.
