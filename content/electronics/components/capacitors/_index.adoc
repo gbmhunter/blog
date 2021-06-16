@@ -5,15 +5,18 @@ date: 2011-09-05
 description: "A introduction to capacitors, a fundamental component used in circuit design. A walk-though of the different types, properties, uses and capacitor equations."
 draft: false
 images: [ "/electronics/components/capacitors/container-of-th-tantalum-caps.jpg" ]
-lastmod: 2020-07-20
-tags: [ "capacitor", "cap", "components", "schematic symbols", "circuit", "ceramic", "electrolytics", "tantalums", "packages", "film", "feedthrough", "decoupling", "MFC", "X5R", "X7R", "C0G", "NP0", "singing capacitors", "piezoelectric", "Class I", "Class II", "Class III", "audible noise", "dielectrics", "bending flex", "FT-CAP" ]
+lastmod: 2021-06-16
+tags: [ "capacitor", "cap", "components", "schematic symbols", "circuit", "ceramic", "electrolytics", "tantalums", "packages", "film", "feedthrough", "decoupling", "MFC", "X5R", "X7R", "C0G", "NP0", "singing capacitors", "piezoelectric", "Class I", "Class II", "Class III", "audible noise", "dielectrics", "bending flex", "FT-CAP", "capacitance multipliers" ]
 title: "Capacitors"
 type: "page"
 ---
 
+:toc:
+:xrefstyle: short
+
 ## Overview
 
-Capacitors are a passive electronic component that stores charge between two conductive surfaces. The conductive surfaces (plates) are usually very close together, with a dielectric inbetween, to maximize the capacitance for a given size. They are a popular component, that along with resistors, make up the two most commonly used components on a circuit board. They come in a large range of sizes, from water tank sized caps to small SMD capacitors and capacitors formed from tracks on PCBs.
+Capacitors are a passive electronic component that stores charge between two conductive surfaces. The conductive surfaces (plates) are usually very close together, with a dielectric in-between, to maximize the capacitance for a given size. They are a popular component, that along with resistors, make up the two most commonly used components on a circuit board. They come in a large range of sizes, from water tank sized caps to small SMD capacitors and capacitors formed from tracks on PCBs.
 
 **The mechanical equivalent of a capacitor is a spring**. The larger the capacitance, the stronger the spring. This is using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) mechanical equivalent.
 
@@ -381,6 +384,7 @@ How do you identify film capacitors? Film capacitors usually come in the followi
 
 1. A potted rectangular block with the two leads typically coming out of the same side (radial). Typical colors are yellow, blue, or white.
 
+```
     <table>
       <tr>
         <td>
@@ -391,6 +395,7 @@ How do you identify film capacitors? Film capacitors usually come in the followi
         </td>
       </tr>
     </table>
+```
 
 1. A rounded, red case that has been coasted in a epoxy lacquer, with the leads typically coming out of the same side.
 
@@ -791,7 +796,7 @@ The leakage current through a capacitor can be modeled with a resistor in parall
 
 {{< img src="capacitor-with-parasitic-series-resistance-leakage-current.png" width="288px" caption="A capacitor showing the parasitic series resistance present in all real capacitors, which creates a leakage current."  >}}
 
-## How Leakage Current Is Specified
+### How Leakage Current Is Specified
 
 For electrolytics, the maximum leakage current is usually specified in terms of the capacitance.
 
@@ -824,11 +829,11 @@ When leakage current is specified this way, <b>it is dependent on the voltage</b
 
 Ceramic capacitors are rated with an initial minimum insulation resistance (e.g. 500MR) and then a lower minimum resistance rated over its entire life time (e.g. 50MR).
 
-## Why Leakage Currents Are Important
+### Why Leakage Currents Are Important
 
 Leakage current becomes an important parameter to consider when designing long-life battery powered circuits. This is especially true for circuits powered of primary batteries with high internal resistance, such as lithium thionyl chloride batteries (LiSOCl2), because large (>100uF) capacitors can be required to help provide energy during high pulse current situations. These capacitors can have significant leakage current.
 
-## Measuring The Leakage Current Of A Capacitor
+### Measuring The Leakage Current Of A Capacitor
 
 Because of the small currents/total energy involved, you can't really measure the leakage current of a capacitor with standard multimeter. One way is to use a dedicated high-resistance meter, commonly called a megaohm meter or insulation resistance tester.
 
@@ -1096,7 +1101,37 @@ Many smaller, PCB suitable feedthrough capacitors come in {{% link text="chip pa
 
 Feedthrough capacitors are commonly used in {{% link text="RC, LC, π and t-type filters" src="/electronics/circuit-design/analogue-filters" %}}) when good RF performance is required.
 
-## Repairing Electrolytics
+## Capacitance Multipliers
+
+_Capacitance multipliers_ are circuits which use an active element such as a BJT transistor to "multiply" a capacitor to create an effective capacitance which is much larger. They are useful for:
+
+* Power supply voltage rail filtering.
+
+The below schematic shows a simple capacitance multiplier made from 1 resistor, 1 capacitor and 1 NPN BJT transistor:
+
+[#img-capacitance-multiplier-single] 
+.A simple capacitance multiplier consisting of a single resistor, capacitor and NPN BJT transistor. The effective capacitance is approximately the capacitance of C1 multiplied by the current gain B of the transistor.
+image::capacitance-multiplier-simple.svg[Sunset,500]
+
+The effective capacitance seen by the circuit is the capacitance of C1 multiplied by the current gain `\(\beta + 1\)` of the transistor:
+
+\begin{align}
+C_{eff} = (\beta + 1)\ C1
+\end{align}
+
+Normally `\(\beta >> 1\)` such that it's simplified to:
+
+\begin{align}
+C_{eff} = \beta\ C1
+\end{align}
+
+We can improve on <<img-capacitance-multiplier-single>> by changing the resistor into a resistor divider.
+
+[#img-capacitance-multiplier-resistor-divider] 
+.An capacitance multiplier which has improved filtering performance compared to the <<img-capacitance-multiplier-single,single resistor version above>>.
+image::capacitance-multiplier-resistor-divider.svg[Sunset,500,align="center"]
+
+## Repairing Electrolytic Capacitors
 
 When electrolytic capacitors get old, they can dry out and stop working properly (for example, their capacitance can reduce and/or maximum dielectric voltage drop). There are many sources quoting that electrolytic capacitors can be repaired by ramping the voltage slowly up to its full rated voltage. It is meant to repair the aluminium oxide dielectric layer.
 
