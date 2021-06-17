@@ -459,6 +459,22 @@ Change the value `5.0` to whatever the blocking voltage of your Zener is.
 
 Click [here](kicad-spice-dc-voltage-sweep-zener-files.zip) to download source files for a simulation that includes a Zener diode.
 
+#### BJTs
+
+The default pin ordering for BJT SPICE models is:
+
+1. Collector
+2. Base
+3. Emitter
+
+However, KiCad's default pin ordering for it's BJT symbols is:
+
+1. Emitter
+2. Base
+3. Collector
+
+The best way to fix this is to set the `Alternate node sequence option` to a value of `3 2 1`.
+
 #### MOSFETs
 
 For discrete MOSFETs, the recommended approach is to use the `VDMOS` intrinsic model. This uses a standard 3-pin MOSFET symbol in the following order:

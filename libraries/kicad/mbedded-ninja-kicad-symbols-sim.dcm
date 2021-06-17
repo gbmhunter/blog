@@ -16,6 +16,11 @@ K diode sim simulation
 F ~
 $ENDCMP
 #
+$CMP 2N2222
+D Tran, BJT, NPN
+K NPN transistor CJT
+$ENDCMP
+#
 $CMP 2N5457
 D Tran, JFET, N-Ch
 K transistor NJFET N-JFET

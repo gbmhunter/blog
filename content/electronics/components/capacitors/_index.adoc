@@ -1123,13 +1123,14 @@ The below schematic shows a simple capacitance multiplier made from 1 resistor, 
 
 [#img-capacitance-multiplier-single] 
 .A simple capacitance multiplier consisting of a single resistor, capacitor and NPN BJT transistor. The effective capacitance is approximately the capacitance of C1 multiplied by the current gain B of the transistor.
-image::capacitance-multiplier-simple.svg[Sunset,500]
+image::capacitance-multiplier-simple.svg[width=500]
 
 The effective capacitance seen by the circuit is the capacitance of C1 multiplied by the current gain stem:[\beta + 1] of the transistor:
 
 [stem]
 ++++
 \begin{align}
+\label{eq:eff-cap}
 C_{eff} = (\beta + 1)\ C1
 \end{align}
 ++++
@@ -1143,11 +1144,63 @@ C_{eff} = \beta\ C1
 \end{align}
 ++++
 
+The steady-state output voltage at no load is:
+
+[stem]
+++++
+\begin{align}
+V_{OUT} = V_{IN} - 0.7V
+\end{align}
+++++
+
 We can improve on <<img-capacitance-multiplier-single>> by changing the resistor into a resistor divider.
 
 [#img-capacitance-multiplier-resistor-divider] 
 .An capacitance multiplier which has improved filtering performance compared to the <<img-capacitance-multiplier-single,single resistor version above>>.
-image::capacitance-multiplier-resistor-divider.svg[Sunset,500,align="center"]
+image::capacitance-multiplier-resistor-divider.svg[width=500]
+
+Adding in stem:[R2] lowers the base voltage applied to the transistor, which then lowers the output voltage. Because more voltage is now dropped across the transistor, the circuit is able to provide better filtering than in <<img-capacitance-multiplier-single>> when the input voltage droops.
+
+The steady-state output voltage (at no load) is:
+
+[stem]
+++++
+\begin{align}
+V_{OUT} = \frac{R2}{R1 + R2} V_{IN} - 0.7V
+\end{align}
+++++
+
+The effective capacitance is exactly the same as in the single-resistor version in Eq \ref{eq:eff-cap}.
+
+=== Worked Example
+
+Let's go through the design process for a capacitance multiplier circuit, and then simulate it using KiCad/ngspice to see what it's frequency response is.
+
+Design criteria:
+* 12VDC in
+* Assume power supply is very noisy, with the voltage fluctuating at most 1Vp2p with frequency components from 10Hz to 100kHz.
+
+Given the noise fluctuations can be up to 1Vp2p, we want the BJT transistor to be dropping more than 1Vp2p in it's steady-state conditions so that it can filter out noise if the voltage rail suddenly drops a volt. Let's aim for nominal 10V output.
+
+[stem]
+++++
+\begin{align}
+V_{OUT} = 10V
+\end{align}
+++++
+
+Arbitrarily choosing R2 to be 10kR, this means that R1 must be:
+
+[stem]
+++++
+\begin{align}
+R1 = 
+\end{align}
+++++
+
+[#img-capacitance-multiplier-magnitude] 
+.The simulated frequency response of the capacitance multiplier circuit above. 
+image::capacitance-multiplier-sim/out.png[width=800]
 
 == Repairing Electrolytic Capacitors
 
