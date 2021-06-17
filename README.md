@@ -10,6 +10,20 @@ The recommended code editor is [Visual Studio Code](https://code.visualstudio.co
 
 Follow the instructions [here](https://gohugo.io/getting-started/installing) to install Hugo (using `chocolatey` to install is recommended when running Windows).
 
+Install ruby/asciidoctor. This is needed to render the AsciiDoc pages.
+
+First, ruby needs to be installed. On Windows:
+
+```powershell
+choco install ruby
+```
+
+Then asciidoctor can be installed by using `gem` (Linux, MacOS, Windows):
+
+```sh
+gem install asciidoctor
+```
+
 To start a development server that will watch for file changes (`w`), build drafts (`D`) and build future content (`F`):
 
 ```sh
@@ -73,6 +87,7 @@ $ pipenv install --two LinkChecker
 * Vim (if you're a vim fan!)
 * EditorConfig for VS Code (promotes consistent coding styles, incl. indentation rules)
 * `Better TOML`: For syntax highlighting in the Hugo config file `config.toml`
+* AsciiDoc: For rendering AsciiDoc pages (with the `.adoc` extension).
 
 # Markdown Extensions
 
