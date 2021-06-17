@@ -219,7 +219,7 @@ int main() {
 
 ## Using std::function
 
-If you have authorship of the library wanting to callback, the recommended approach is to change the signature away from a C-style callback and use `std::function` and lambdas instead. Rather than the library accepting a C-style callback in the format `int (callback*) (int num1, int num2)`, update the library to accept a `std::function<int(int, int)> callback`. This allows you to pass in a lambda, which as you'll see below, allows you to easily call a member function.
+If you have authorship of the library wanting to callback, then you can do even better than described above. What I would recommend here is to change the signature away from a C-style callback and use `std::function` and lambdas instead. Rather than the library accepting a C-style callback in the format `int (callback*) (int num1, int num2)`, update the library to accept a `std::function<int(int, int)> callback`. This allows you to pass in a lambda, which as you'll see below, allows you to easily call a member function.
 
 (run this code at <a href=https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp</a>)
 

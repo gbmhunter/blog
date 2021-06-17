@@ -2,7 +2,7 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Tools" ]
 date: 2021-06-15
-description: "Info on reflow soldering ovens."
+description: "Info on signal generators."
 draft: false
 lastmod: 2021-06-15
 tags: [ "electronics", "tools", "signal generators" ]
