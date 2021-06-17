@@ -32,7 +32,11 @@ image::capacitor-schematic-symbol-unpolarized.svg[width=200]
 .Schematic symbol for a basic polarized capacitor.
 image::capacitor-schematic-symbol-polarized.svg[width=200]
 
-TODO: Add symbol for variable capacitor.
+[#img-capacitor-schematic-symbol-variable] 
+.Schematic symbol for a variable capacitor.
+image::capacitor-schematic-symbol-variable.svg[width=200]
+
+These symbols only cover the main types you will see in schematics. There are other symbols for speciality capacitors such as link:#_feedthrough_capacitors[feedthrough capacitors] and trimming capacitors.
 
 == Uses
 
