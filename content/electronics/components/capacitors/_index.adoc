@@ -14,7 +14,6 @@ type: "page"
 :toc:
 :xrefstyle: short
 :stem: latexmath
-:fn-tdk-singing-capacitors: footnote:[https://product.tdk.com/en/contact/faq/31_singing_capacitors_piezoelectric_effect.pdf.]
 
 == Overview
 
@@ -81,7 +80,7 @@ The following table lists the common ceramic dielectric codes.
 
 Class 1:
 
-Class 1 capacitors are specified by the following EIA dielectric codes[^ceramic-dielectric-types]:
+Class 1 capacitors are specified by the following EIA dielectric codes<<ceramic-dielectric-types>>:
 
 ++++
 <table class="small">
@@ -210,7 +209,7 @@ IR requirements for commercial MLCCs are about two times less.
 
 #### Singing Capacitors (Audible Noise)
 
-Sometimes you will hear ceramic capacitors make audible noise! This audible noise is caused due the piezoelectric effect which physically vibrates the capacitor, and can occur in ceramic capacitors which are ferroelectric. Both _Class II_ and _Class III_ ceramic capacitors are ferroelectric, and are susceptible to this problem. However, _Class I_ (e.g. `C0G/NP0`) capacitors are immune{fn-tdk-singing-capacitors}.
+Sometimes you will hear ceramic capacitors make audible noise! This audible noise is caused due the piezoelectric effect which physically vibrates the capacitor, and can occur in ceramic capacitors which are ferroelectric. Both _Class II_ and _Class III_ ceramic capacitors are ferroelectric, and are susceptible to this problem. However, _Class I_ (e.g. `C0G/NP0`) capacitors are immune<<tdk-singing-capacitors>>.
 
 _Class II_ and _Class III_ capacitors are most likely to "sing" when the capacitor is subject to large current/voltage ripple.
 
@@ -253,7 +252,7 @@ Electrolytic capacitors uses a very thin electrically deposited metal oxide film
 
 In over-voltage conditions, holes can be punched through the dielectric layer and the capacitor will begin to conduct. The good news is that if the over-voltage disappears quickly enough (e.g. just a surge or spike), the capacitor can self-heal. The bad news is that a if the capacitor heats up enough, the dielectric can boil, create vapours, and the cap explodes. Most electrolytics have a specific "weak spot" on the case which is designed to break in an over-pressure situation. This can make quite a bang, and can be dangerous if you happen to be peering closely at the circuit while this happened.
 
-The common size codes and sizes of SMD Electrolytic capacitors, see the {{% link text="SMD Electrolytic Capacitor Packages page" src="/pcb-design/component-packages/smd-electrolytic-capacitor-packages" %}}.
+The common size codes and sizes of SMD Electrolytic capacitors, see the link:/pcb-design/component-packages/smd-electrolytic-capacitor-packages[SMD Electrolytic Capacitor Packages page].
 
 ### Tantalum
 
@@ -289,7 +288,7 @@ Tantalum capacitors are actually special type of electrolytic capacitor. But the
 
 [#img-container-of-th-tantalum-caps] 
 .Through-hole tantalum capacitors.
-image::container-of-th-tantalum-caps.jpg[width=1000]
+image::container-of-th-tantalum-caps.jpg[width=700]
 
 Most tantalum capacitors are made with a solid electrolyte, and therefore are not prone to the electrolyte evaporation/drying up problems normal electrolytics have. This makes them able to retain their rated capacitance for years, if not decades.
 
@@ -364,7 +363,7 @@ Because of their large size, the capacitance is usually either in `<number><numb
 </table>
 ++++
 
-Film capacitors are a family of capacitors which use thin insulating plastic film as the dielectric[^wikipedia-film-capacitor]. They are not polarity sensitive. The film can either be **left as is** or **metallized**, which makes it a metallized film capacitor[^capacitorguide.com].
+Film capacitors are a family of capacitors which use thin insulating plastic film as the dielectric<<wikipedia-film-capacitor>>. They are not polarity sensitive. The film can either be **left as is** or **metallized**, which makes it a metallized film capacitor<<capacitorguide.com>>.
 
 How do you identify film capacitors? Film capacitors usually come in the following forms:
 
@@ -1157,46 +1156,95 @@ Let's start from the basics.
 
 We know total energy in the circuit is the integral of power over time:
 
-<div>$$ E_{in} = \int{P_{in} \cdot dt} $$</div>
+[stem] 
+++++
+\begin{align}
+E_{in} = \int{P_{in} \cdot dt}
+\end{align}
+++++
 
 Using the basic equation for electrical power `\( P = VI \)` we can write:
 
-<div>$$ P_{in} = V_{in} \cdot I_{in} $$</div>
+[stem] 
+++++
+\begin{align}
+P_{in} = V_{in} \cdot I_{in}
+\end{align}
+++++
 
 Substituting the power equation into integral equation, we get an equation for the energy in terms of the voltage and current:
 
-<div>$$ E_{in} = \int{  V_{in} I_{in} \cdot dt } $$</div>
+[stem] 
+++++
+\begin{align}
+E_{in} = \int{  V_{in} I_{in} \cdot dt }
+\end{align}
+++++
 
 If we assume a fixed DC voltage source, `\( V_{in} \)`, that does not vary over time, we can bring it outside the integral:
 
-<div>$$ E_{in} = V_{in} \int{  I_{in} \cdot dt } $$</div>
+[stem] 
+++++
+\begin{align}
+E_{in} = V_{in} \int{  I_{in} \cdot dt }
+\end{align}
+++++
 
 Now using the equation for charge in it's integral form `\( Q = \int{I \cdot dt} \)` we can write:
 
-<div>$$ Q_{in} = \int{I_{in} \cdot dt} $$</div>
+[stem] 
+++++
+\begin{align}
+Q_{in} = \int{I_{in} \cdot dt}
+\end{align}
+++++
 
 We can substitute the charge equation into for energy equation:
 
-<div>$$ E_{in} = V_{in} Q_{in} $$</div>
+[stem] 
+++++
+\begin{align}
+E_{in} = V_{in} Q_{in}
+\end{align}
+++++
 
 Assuming the cap was fully charged to `\( V_{in} \)` (o.k., this would take an infinite amount of time, but lets just be realistic and say 99.9% is fully charged), and using the basic formula for the energy in a capacitor (`\( E = \frac{1}{2}CV^2 \)`), we can write:
 
-<div>$$ E_{cap} = \frac{1}{2}CV_{in}^2 $$</div>
+[stem] 
+++++
+\begin{align}
+E_{cap} = \frac{1}{2}CV_{in}^2
+\end{align}
+++++
 
 Now, all of the input charge `\(Q_{in}\)` referred to in charge equation got to the capacitor since the resistor and capacitor share the same current. The equation for the energy in the capacitor can be re-written in terms of charge (using `\(Q=CV\)`):
 
-<div>$$ E_{cap} = \frac{1}{2} V_{in} Q_{in} $$</div>
+[stem] 
+++++
+\begin{align}
+E_{cap} = \frac{1}{2} V_{in} Q_{in}
+\end{align}
+++++
 
 We now have an equation for the energy given out by the voltage source, and an equation for the amount of energy given to the capacitor. Subtracting the two will give the amount of energy lost to the resistance during charging:
 
-<div>$$ E_{res} = E_{in} - E_{cap} $$</div>
-<div>$$ = V_{in} Q_{in} - \frac{1}{2} V_{in} Q_{in} $$</div>
-<div>$$ = \frac{1}{2} V_{in} Q_{in} $$</div>
+[stem] 
+++++
+\begin{align} 
+E_{res} &= E_{in} - E_{cap} \nonumber \\
+        &= V_{in} Q_{in} - \frac{1}{2} V_{in} Q_{in} \nonumber \\
+        &= \frac{1}{2} V_{in} Q_{in}
+\end{align}
+++++
 
 Woah, hang on a moment, this is the same as the energy in the capacitor!
 
 This implies that when charging a capacitor from a fixed DC source, you dissipate just as much energy as heat as you store in the capacitor. It does not matter what the resistance is (it could just be the resistance of the wires and the ESR (equivalent series resistance) in the capacitor).
 
-[^capacitorguide.com]: [http://www.capacitorguide.com/film-capacitor/](http://www.capacitorguide.com/film-capacitor/)
-[^wikipedia-film-capacitor]: [https://en.wikipedia.org/wiki/Film_capacitor](https://en.wikipedia.org/wiki/Film_capacitor)
-[^ceramic-dielectric-types]: <https://www.electronics-notes.com/articles/electronic_components/capacitors/ceramic-dielectric-types-c0g-x7r-z5u-y5v.php>
+[bibliography]
+== References
+
+* [[[capacitorguide.com, cg]]] http://www.capacitorguide.com/film-capacitor/.
+* [[[wikipedia-film-capacitor, wp-fc]]] https://en.wikipedia.org/wiki/Film_capacitor
+* [[[ceramic-dielectric-types, cdt]]] https://www.electronics-notes.com/articles/electronic_components/capacitors/ceramic-dielectric-types-c0g-x7r-z5u-y5v.php
+* [[[tdk-singing-capacitors]]] https://product.tdk.com/en/contact/faq/31_singing_capacitors_piezoelectric_effect.pdf

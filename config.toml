@@ -48,6 +48,21 @@ timeout = 30000
         # This is so we can include HTML in shortcodes that do not start with {{<
         # This had to be added when going from Hugo v0.59.1 to v0.60.0
         unsafe = true
+  
+  [markup.asciidocext]
+    backend = "html5"
+    workingfoldercurrent = false
+    trace = true
+    verbose = true
+    [markup.asciidocext.attributes]
+      includedir = "include"
+      icons = "font"
+      experimental = true
+      sectlinks = true
+      sectanchors = true
+      source-highlighter = "rouge"
+      rouge-css = "style"
+      rouge-style = "github"
 
 [related]
     threshold= 80
