@@ -1017,6 +1017,23 @@ del {
 
 
 /* ========================================================================= */
+/* ASCIIDOC                                                                   */
+/* ========================================================================= */
+
+/* AsciiDoc wraps all text within list elements in a p element, let's reduce the line height
+so the list elements do not have too much vertical padding between items. */
+ul li p {
+  line-height: 1.0;
+}
+
+/* Make image caption text a little smaller than the main paragraph text and make
+it italic */
+.imageblock .title {
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+/* ========================================================================= */
 /* SEARCH                                                                    */
 /* ========================================================================= */
 
