@@ -14,6 +14,7 @@ type: "page"
 :toc:
 :xrefstyle: short
 :stem: latexmath
+:sectnums:
 
 == Overview
 
@@ -21,16 +22,17 @@ Capacitors are a passive electronic component that stores charge between two con
 
 **The mechanical equivalent of a capacitor is a spring**. The larger the capacitance, the stronger the spring. This is using the link:http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html[force-voltage] mechanical equivalent.
 
-== Schematic Symbol
+== Schematic Symbols
 
-Below is a table of most of the capacitor schematic symbols in use.
+[#img-capacitor-schematic-symbol-unpolarized] 
+.Schematic symbol for a basic unpolarized capacitor.
+image::capacitor-schematic-symbol-unpolarized.svg[width=200]
 
-[caption='Figure {counter:figure-number}. ', frame=none, grid=none]
-.Screenshots
-|===
-| image:capacitor-unpolarised-schematic-symbol.png[width=200] | image:capacitor-polarised-schematic-symbol.png[width=200] |image:capacitor-variable-schematic-symbol.png[width=200]
-| The schematic symbol for an unpolarised capacitor. | The schematic symbol for a polarised capacitor. | The schematic symbol for a variable capacitor.
-|===
+[#img-capacitor-schematic-symbol-polarized] 
+.Schematic symbol for a basic polarized capacitor.
+image::capacitor-schematic-symbol-polarized.svg[width=200]
+
+TODO: Add symbol for variable capacitor.
 
 == Uses
 
@@ -215,7 +217,7 @@ _Class II_ and _Class III_ capacitors are most likely to "sing" when the capacit
 
 #### Flexibility
 
-Ceramic capacitors are sometimes tested and rated to be able to withstand a minimum _bending flex_. One example is the [Kemet VW80808 (FT-CAP)](https://content.kemet.com/datasheets/KEM_X7R_FT_VW_AUDI.pdf) range of ceramic capacitors which can withstand 5mm bending flex. These are aimed towards automotive use (but not exclusive to). The large bending flex specification is achieved by designing flexible termination caps at each end of the capacitor, which stops the transfer of stress from the PCB to the fragile ceramic capacitor body.
+Ceramic capacitors are sometimes tested and rated to be able to withstand a minimum _bending flex_. One example is the link:https://content.kemet.com/datasheets/KEM_X7R_FT_VW_AUDI.pdf[Kemet VW80808 (FT-CAP)] range of ceramic capacitors which can withstand 5mm bending flex. These are aimed towards automotive use (but not exclusive to). The large bending flex specification is achieved by designing flexible termination caps at each end of the capacitor, which stops the transfer of stress from the PCB to the fragile ceramic capacitor body.
 
 ### Electrolytic
 
@@ -248,7 +250,7 @@ Ceramic capacitors are sometimes tested and rated to be able to withstand a mini
 </table>
 ++++
 
-Electrolytic capacitors uses a very thin electrically deposited metal oxide film (`\(Al_2 O_3\)`) as their dielectric. They have a high capacitance density (well, that was before super-caps came along). They are usually cylindrical in shape, and come in through-hole (axial and radial) and surface-mount types.
+Electrolytic capacitors uses a very thin electrically deposited metal oxide film (stem:[Al_2 O_3]) as their dielectric. They have a high capacitance density (well, that was before super-caps came along). They are usually cylindrical in shape, and come in through-hole (axial and radial) and surface-mount types.
 
 In over-voltage conditions, holes can be punched through the dielectric layer and the capacitor will begin to conduct. The good news is that if the over-voltage disappears quickly enough (e.g. just a surge or spike), the capacitor can self-heal. The bad news is that a if the capacitor heats up enough, the dielectric can boil, create vapours, and the cap explodes. Most electrolytics have a specific "weak spot" on the case which is designed to break in an over-pressure situation. This can make quite a bang, and can be dangerous if you happen to be peering closely at the circuit while this happened.
 
@@ -777,17 +779,17 @@ Since the ESR is proportional to the capacitor's plate area, for a similar capac
 
 == Leakage Currents
 
-Leakage currents are present in all types of capacitor. Leakage current is the sum of electrical losses from energy required to build up the oxide layers, weaknesses in the dielectric, tunnel effects, and cross currents. They are typically increase proportionally to the capacitance of the capacitor. We can reduce the leakage current down to two main factors, the absorption current `\( I_{abs} \)`, and the intrinsic leakage current `\( I_{il} \)`.
+Leakage currents are present in all types of capacitor. Leakage current is the sum of electrical losses from energy required to build up the oxide layers, weaknesses in the dielectric, tunnel effects, and cross currents. They are typically increase proportionally to the capacitance of the capacitor. We can reduce the leakage current down to two main factors, the absorption current stem:[I_{abs}], and the intrinsic leakage current stem:[I_{il}].
 
 $$ I_{leakage} = I_{abs} + I_{il} $$
 
-Absorption currents are due to quantum tunnelling of electrons at the metal/ceramic barrier! Absorption currents, `\(I_{abs}\)` reduce with time and have weak temperature dependence, while intrinsic leakage currents `\(I_{il}\)` remain constant with time but exponentially increase with temperature.
+Absorption currents are due to quantum tunnelling of electrons at the metal/ceramic barrier! Absorption currents, stem:[I_{abs}] reduce with time and have weak temperature dependence, while intrinsic leakage currents stem:[I_{il}] remain constant with time but exponentially increase with temperature.
 
 Desorption currents (depolarization) flow when the voltage on a capacitor is decreased (e.g. when it is shorted). These currents can actually recharge a previously discharged capacitor, sometimes up to dangerous voltages (people experimenting with coil/rail guns can have this problem)!
 
 Capacitors that have had a relatively constant voltage across them for a decent amount of time typically exhibit far less absorption current than one which has not been charged in the short-term past. This is due to a phenomenon called ‘self-healing’, in where a charged capacitor will heal defects in the electrolyte. Uncharged electrolytic capacitors may have weakened electrolyte due to ‘dissolution’, the destruction of the dielectric when no charge is present.
 
-The leakage current through a capacitor can be modeled with a resistor in parallel with the actual capacitance, as shown in the image below:
+The leakage current through a capacitor can be modelled with a resistor in parallel with the actual capacitance, as shown in the image below:
 
 {{< img src="capacitor-with-parasitic-series-resistance-leakage-current.png" width="288px" caption="A capacitor showing the parasitic series resistance present in all real capacitors, which creates a leakage current."  >}}
 
@@ -899,16 +901,23 @@ A charge pump (also commonly called **bootstrapping**), is a way of using capaci
 
 It is commonly used as a simple way of driving the gate of a n-doped silicon switch (such as a N-Channel MOSFET or IGBT) when being used as a high side driver. Although using a P-Channel as the high-side driver would not require this voltage step-up, N-Channel MOSFETs are preferred in most cases because of their lower on-resistance and price. When using a capacitor to charge the gate of a N-Channel MOSFET, you must make sure the capacitor stores enough charge to transfer to the MOSFET gate while raising the voltage enough drive the on-resistance as low as you need. A general rule of thumb is that the capacitor should store 100x more charge than the gate charge as stated on the MOSFETs datasheet. The charge stored in a capacitor can be calculated using the following equation:
 
-<div>$$Q = CV$$</div>
+[stem] 
+++++
+\begin{align}
+Q = CV
+\end{align}
+++++
 
+++++
 <p class="centered">
     where:<br>
     \(Q\) is the charge (Coulombs)<br>
     \(C\) the capacitance (Farads)<br>
     \(V\) the voltage (Volts)<br>
 </p>
+++++
 
-However, if you really want to optimise the charge pump capacitor, this rule does not suffice. The Fairchild Semiconductor Application Note, ["Design And Application Guide Of Bootstrap Circuit For High-Voltage Gate-Drive IC"](http://www.fairchildsemi.com/an/AN/AN-6076.pdf) has an in-depth analysis of the bootstrap capacitor and surrounding circuit.
+However, if you really want to optimise the charge pump capacitor, this rule does not suffice. The Fairchild Semiconductor Application Note, link:http://www.fairchildsemi.com/an/AN/AN-6076.pdf[Design And Application Guide Of Bootstrap Circuit For High-Voltage Gate-Drive IC] has an in-depth analysis of the bootstrap capacitor and surrounding circuit.
 
 The following circuit shows a charge pump circuit used to generate -5V from a +5V PWM signal.
 
@@ -1112,17 +1121,23 @@ The below schematic shows a simple capacitance multiplier made from 1 resistor, 
 .A simple capacitance multiplier consisting of a single resistor, capacitor and NPN BJT transistor. The effective capacitance is approximately the capacitance of C1 multiplied by the current gain B of the transistor.
 image::capacitance-multiplier-simple.svg[Sunset,500]
 
-The effective capacitance seen by the circuit is the capacitance of C1 multiplied by the current gain `\(\beta + 1\)` of the transistor:
+The effective capacitance seen by the circuit is the capacitance of C1 multiplied by the current gain stem:[\beta + 1] of the transistor:
 
+[stem]
+++++
 \begin{align}
 C_{eff} = (\beta + 1)\ C1
 \end{align}
+++++
 
-Normally `\(\beta >> 1\)` such that it's simplified to:
+Normally stem:[\beta >> 1] such that it's simplified to:
 
+[stem]
+++++
 \begin{align}
 C_{eff} = \beta\ C1
 \end{align}
+++++
 
 We can improve on <<img-capacitance-multiplier-single>> by changing the resistor into a resistor divider.
 
@@ -1142,7 +1157,7 @@ This can be done with power supply set the rated voltage and a high-power (e.g. 
 
 == Energy Loss While Charging A Capacitor
 
-An interesting phenomenon occurs when charging a capacitor from a fixed voltage source (e.g. battery or power supply). Assuming a real-world world situation, there is always going to be some resistance between the voltage source and capacitor. **Exactly the same amount of energy** is dissipated through this resistance as is stored in the capacitor when charging it up to the voltage source voltage `\(V_{cc}\)`. It **doesn't matter how large or small** this resistance is! The resistance could just be the ESR of the capacitor, or it could be a dedicated resistor placed in series to limit the inrush current.
+An interesting phenomenon occurs when charging a capacitor from a fixed voltage source (e.g. battery or power supply). Assuming a real-world world situation, there is always going to be some resistance between the voltage source and capacitor. **Exactly the same amount of energy** is dissipated through this resistance as is stored in the capacitor when charging it up to the voltage source voltage stem:[V_{cc}]. It **doesn't matter how large or small** this resistance is! The resistance could just be the ESR of the capacitor, or it could be a dedicated resistor placed in series to limit the inrush current.
 
 Here is an example schematic:
 
@@ -1163,7 +1178,7 @@ E_{in} = \int{P_{in} \cdot dt}
 \end{align}
 ++++
 
-Using the basic equation for electrical power `\( P = VI \)` we can write:
+Using the basic equation for electrical power stem:[P = VI] we can write:
 
 [stem] 
 ++++
@@ -1181,7 +1196,7 @@ E_{in} = \int{  V_{in} I_{in} \cdot dt }
 \end{align}
 ++++
 
-If we assume a fixed DC voltage source, `\( V_{in} \)`, that does not vary over time, we can bring it outside the integral:
+If we assume a fixed DC voltage source, stem:[V_{in}], that does not vary over time, we can bring it outside the integral:
 
 [stem] 
 ++++
@@ -1190,7 +1205,7 @@ E_{in} = V_{in} \int{  I_{in} \cdot dt }
 \end{align}
 ++++
 
-Now using the equation for charge in it's integral form `\( Q = \int{I \cdot dt} \)` we can write:
+Now using the equation for charge in it's integral form stem:[Q = \int{I \cdot dt}] we can write:
 
 [stem] 
 ++++
@@ -1208,7 +1223,7 @@ E_{in} = V_{in} Q_{in}
 \end{align}
 ++++
 
-Assuming the cap was fully charged to `\( V_{in} \)` (o.k., this would take an infinite amount of time, but lets just be realistic and say 99.9% is fully charged), and using the basic formula for the energy in a capacitor (`\( E = \frac{1}{2}CV^2 \)`), we can write:
+Assuming the cap was fully charged to stem:[V_{in}] (o.k., this would take an infinite amount of time, but lets just be realistic and say 99.9% is fully charged), and using the basic formula for the energy in a capacitor (stem:[E = \frac{1}{2}CV^2]), we can write:
 
 [stem] 
 ++++
@@ -1217,7 +1232,7 @@ E_{cap} = \frac{1}{2}CV_{in}^2
 \end{align}
 ++++
 
-Now, all of the input charge `\(Q_{in}\)` referred to in charge equation got to the capacitor since the resistor and capacitor share the same current. The equation for the energy in the capacitor can be re-written in terms of charge (using `\(Q=CV\)`):
+Now, all of the input charge stem:[Q_{in}] referred to in charge equation got to the capacitor since the resistor and capacitor share the same current. The equation for the energy in the capacitor can be re-written in terms of charge (using stem:[Q=CV]):
 
 [stem] 
 ++++
