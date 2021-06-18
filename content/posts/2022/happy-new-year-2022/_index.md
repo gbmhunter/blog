@@ -12,3 +12,4 @@ type: "post"
 
 - Started the upgrade from CSS to SCSS (using hugo-extended).
 - Started migrating from Markdown to AsciiDoc (using AsciiDoctor support provided by Hugo).
+- Settled on a colour scheme for drawing diagrams (using LibreOffice Draw).
