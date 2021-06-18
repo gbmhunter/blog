@@ -1126,7 +1126,7 @@ The below schematic shows a simple capacitance multiplier made from 1 resistor, 
 .A simple capacitance multiplier consisting of a single resistor, capacitor and NPN BJT transistor. The effective capacitance is approximately the capacitance of C1 multiplied by the current gain B of the transistor.
 image::capacitance-multiplier-simple.svg[width=500]
 
-The effective capacitance seen by the circuit is the capacitance of C1 multiplied by the current gain stem:[\beta + 1] of the transistor:
+The BJT is configured as a emitter-follower (common collector). The output voltage will always be stem:[0.7V] less than the voltage across the capacitor. When the load draws current at stem:[V_{OUT}], rather than all of that current loading the RC filter, only the proportion stem:[\frac{1}{\beta + 1}] gets drawn through the base from the RC filter, the rest of it gets delivered directly from stem:[V_{IN}] via the collector. The effective capacitance seen by the circuit is the capacitance of C1 multiplied by the current gain stem:[\beta + 1] of the transistor:
 
 [stem]
 ++++
@@ -1155,7 +1155,7 @@ f_c = \frac{1}{2\pi R1 C1}
 \end{align}
 ++++
 
-WARNING: Even though this circuit is called a capacitance multiplier, when calculating the cutoff frequency, you must use the real capacitance value, not the effective capacitance! For this I consider this circuit's name somewhat misleading, as the corner frequency is just the same as a regular old RC low-pass filter. What does change is the current capability of the filter, as now most of the current is going through stem:[Q1], rather than stem:[R1].
+WARNING: Even though this circuit is called a capacitance multiplier, when calculating the cutoff frequency, you must use the real capacitance value, not the effective capacitance! For this I consider this circuit's name somewhat misleading, as the corner frequency is just the same as a regular old RC low-pass filter. What does change is the current capability of the filter, as now most of the current is going through stem:[Q1], rather than stem:[R1]. Perhaps the name _buffered RC filter_ would be better than _capacitance multiplier_?
 
 The steady-state output voltage at no load is:
 
@@ -1239,13 +1239,19 @@ C1 &= \frac{R1 + R2}{2\pi R1 R2 f_c} \nonumber \\
 
 If stem:[C1] has turned out to be too small or too large, we could at this point go back and change stem:[R1] and stem:[R2].
 
+[#img-capacitance-multiplier-sim-schematic] 
+.Simulation-ready schematic of the capacitance multiplier we are designing. 
+image::capacitance-multiplier-sim/schematic.png[width=800]
+
 The forward current gain (stem:[\beta]) of the 2N2222 is simulated at 200. stem:[R3] is our load resistor of stem:[100\Omega].
 
 [#img-capacitance-multiplier-magnitude] 
 .The simulated frequency response of the capacitance multiplier circuit above. 
 image::capacitance-multiplier-sim/out.png[width=800]
 
-Looking at the "DC" gain, it is a value of stem:[-1.61dB]. At an input voltage of stem:[12V] this corresponds to an output voltage of stem:[12V \cdot 10^{\frac{-1.61}{20}} = 9.97V], pretty much bang on the stem:[10V] we were aiming for.
+Looking at the "DC" gain, it is a value of stem:[-1.58dB]. At an input voltage of stem:[12V] this corresponds to an output voltage of stem:[12V \cdot 10^{\frac{-1.58}{20}} = 10.0V], bang on the stem:[10V] we were aiming for.
+
+Our cut-off frequency should then be -3dV ontop of that, i.e. at stem:[-1.58dB - 3dB = -4.58dB]. Plotting across and then down does indeed give us a cut-off frequency of approx. 10Hz.
 
 == Repairing Electrolytic Capacitors
 

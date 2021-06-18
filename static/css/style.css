@@ -1060,6 +1060,18 @@ do this for us */
   content: none;
 }
 
+.admonitionblock.warning {
+  background-color: rgb(255, 230, 230);
+}
+
+.admonitionblock table, .admonitionblock table tbody tr {
+  background-color: transparent !important;
+}
+
+.admonitionblock td {
+  line-height: 1.7 !important;
+}
+
 /* ========================================================================= */
 /* SEARCH                                                                    */
 /* ========================================================================= */

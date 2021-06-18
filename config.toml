@@ -56,7 +56,11 @@ timeout = 30000
     verbose = true
     [markup.asciidocext.attributes]
       includedir = "include"
-      icons = "font"
+      # Icons are included at /static/assets/icons/ as svg images
+      #icons = "font"
+      icons = "image"
+      icontype = "svg"
+      iconsdir = "/assets/icons"
       experimental = true
       #sectlinks = true
       #sectanchors = true
