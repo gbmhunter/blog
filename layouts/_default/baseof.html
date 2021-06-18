@@ -23,9 +23,6 @@
         <meta name="MobileOptimized" content="320">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-        <!-- FontAwesome required for icons used by AsciiDoc (e.g. admonitons) -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
         <!-- Make page match the screen's width in device-independant pixels -->
         <meta name="viewport" content="width=device-width,minimum-scale=1">
 
@@ -69,7 +66,11 @@
 
         <!-- MAIN STYLING SCRIPT FOR THIS SITE -->
         <!-- Make sure this is loaded in the head so that the browser does not render twice -->
-        <link rel="stylesheet" href="/css/style.css"/>    
+        <link rel="stylesheet" href="/css/style.css"/>
+
+        {{ $sass := resources.Get "main.scss" }}
+        {{ $styles := $sass | resources.ToCSS | resources.Fingerprint }}
+        <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
         
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">

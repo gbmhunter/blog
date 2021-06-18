@@ -25,6 +25,8 @@ enableGitInfo = false
 # especially on build server
 timeout = 30000
 
+assetDir = "assets"
+
 [params]
     author = "Geoffrey Hunter"
     description = "An embedded engineering site that's got your back."    
