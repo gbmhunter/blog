@@ -1,0 +1,56 @@
+
+/* ========================================================================= */
+/* ASCIIDOC                                                                   */
+/* ========================================================================= */
+
+/* AsciiDoc wraps all text within list elements in a p element, let's get rid of
+margin block start and end values (set by user agent stylesheet)
+so the list elements do not have too much vertical padding between items. */
+ul li p {
+    /* line-height: 1.0; */
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+  
+  /* Make image caption text a little smaller than the main paragraph text and make
+  it italic */
+  .imageblock .title {
+    font-size: 0.8em;
+    font-style: italic;
+    text-align: center; /* Center text (with centered image) */
+  }
+  
+  /* This centers the image */
+  .imageblock .content {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Disable automatic heading numbering because AsciiDoc will
+  do this for us */
+  .content .sect1 h2::before {
+    counter-reset: unset;
+    content: none;
+  }
+  
+  .content .sect1 h3::before {
+    counter-reset: unset;
+    content: none;
+  }
+  
+  .content .sect1 h4::before {
+    counter-reset: unset;
+    content: none;
+  }
+  
+  .admonitionblock.warning {
+    background-color: rgb(255, 230, 230);
+  }
+  
+  .admonitionblock table, .admonitionblock table tbody tr {
+    background-color: transparent !important;
+  }
+
+.admonitionblock td {
+    line-height: 1.7 !important;
+}
