@@ -1145,16 +1145,17 @@ C_{eff} = \beta\ C1
 \end{align}
 ++++
 
-WARNING: Even though the this is commonly called the effective capacitance, when calculating the cutoff frequency, you must use the real capacitance value, not the effective capacitance! (more on this below).
-
 The cut-off frequency for the capacitance multiplier is:
 
 [stem]
 ++++
 \begin{align}
+\label{eq:cap-mult-rc-cutoff}
 f_c = \frac{1}{2\pi R1 C1}
 \end{align}
 ++++
+
+WARNING: Even though this circuit is called a capacitance multiplier, when calculating the cutoff frequency, you must use the real capacitance value, not the effective capacitance! For this I consider this circuit's name somewhat misleading, as the corner frequency is just the same as a regular old RC low-pass filter. What does change is the current capability of the filter, as now most of the current is going through stem:[Q1], rather than stem:[R1].
 
 The steady-state output voltage at no load is:
 
@@ -1182,26 +1183,27 @@ V_{OUT} = \frac{R2}{R1 + R2} V_{IN} - 0.7V
 \end{align}
 ++++
 
-The equation for the cutoff frequency changes slightly:
-
-The cut-off frequency for the capacitance multiplier is:
+The cut-off frequency for the 2 resistor capacitance multiplier is the same equation as Eq. \ref{eq:cap-mult-rc-cutoff} but with the equivalent resistance being stem:[R1] and stem:[R2] in parallel:
 
 [stem]
 ++++
 \begin{align}
-f_c = \frac{1}{2\pi (R1 || R2) C1}
+f_c &= \frac{1}{2\pi (R1 || R2) C1} \nonumber \\
+    &= \frac{R1 + R2}{2\pi R1 R2 C1}
 \end{align}
 ++++
 
-The effective capacitance is exactly the same as in the single-resistor version in Eq \ref{eq:eff-cap}.
+The "effective capacitance" is exactly the same as in the single-resistor version in Eq \ref{eq:eff-cap} (but remember, you don't use this for the cutoff frequency calculations).
 
 === Worked Example
 
 Let's go through the design process for a capacitance multiplier circuit, and then simulate it using KiCad/ngspice to see what it's frequency response is.
 
 Design criteria:
+
 * 12VDC in
 * Assume power supply is very noisy, with the voltage fluctuating at most 1Vp2p with frequency components from 50Hz (mains ripple) to 100kHz.
+* Cut-off frequency of 10Hz (which is quite low)
 
 Given the noise fluctuations can be up to 1Vp2p, we want the BJT transistor to be dropping more than 1Vp2p so that in input voltage is always larger than our output voltage, even with the ripple present on the input. Let's aim for nominal 10V output.
 
@@ -1212,16 +1214,30 @@ V_{OUT} = 10V
 \end{align}
 ++++
 
-Arbitrarily choosing stem:[R2] to be stem:[10k\Omega], this means that stem:[R1] must be:
+Somewhat arbitrarily choosing stem:[R2] to be stem:[10k\Omega], this means that stem:[R1] must be:
 
 [stem]
 ++++
 \begin{align}
-R1 &= \frac{V_{IN} - V_{OUT}}{V_{OUT}} R2 \\
-   &= \frac{12V - 10V}{10V} 10k\Omega \\
+R1 &= \frac{V_{IN} - V_{OUT}}{V_{OUT}} R2 \nonumber \\
+   &= \frac{12V - 10V}{10V} 10k\Omega \nonumber \\
    &= 2k\Omega
 \end{align}
 ++++
+
+Now we have chosen stem:[R1] and stem:[R2], stem:[C1] is determined for us by the cut-off equation:
+
+[stem]
+++++
+\begin{align}
+C1 &= \frac{R1 + R2}{2\pi R1 R2 f_c} \nonumber \\
+   &= \frac{2k\Omega + 10k\Omega}{2\pi*2k\Omega*10k\Omega*10Hz}\nonumber  \\
+   &= 9.5uF \nonumber \\
+   &= 10uF\ \text{(E12 series)}
+\end{align}
+++++
+
+If stem:[C1] has turned out to be too small or too large, we could at this point go back and change stem:[R1] and stem:[R2].
 
 The forward current gain (stem:[\beta]) of the 2N2222 is simulated at 200. stem:[R3] is our load resistor of stem:[100\Omega].
 
