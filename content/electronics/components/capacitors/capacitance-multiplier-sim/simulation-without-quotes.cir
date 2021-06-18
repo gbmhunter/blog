@@ -1,10 +1,10 @@
 .title KiCad schematic
 .include 2N2222.lib
 C1 Net-_C1-Pad1_ GND 10u
-R1 Net-_C1-Pad1_ /V_IN 10k
+R1 Net-_C1-Pad1_ V_IN 2k
 R2 GND Net-_C1-Pad1_ 10k
-Q1 /V_IN Net-_C1-Pad1_ V_OUT 2N2222
+Q1 V_IN Net-_C1-Pad1_ V_OUT 2N2222
 V1 Net-_V1-Pad1_ GND DC 12
-R3 GND V_OUT 100k
-V2 /V_IN Net-_V1-Pad1_ AC 1
+R3 GND V_OUT 1k
+V2 V_IN Net-_V1-Pad1_ AC 1
 .end

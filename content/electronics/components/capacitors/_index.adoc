@@ -1117,7 +1117,8 @@ Feedthrough capacitors are commonly used in {{% link text="RC, LC, π and t-type
 
 _Capacitance multipliers_ are circuits which use an active element such as a BJT transistor to "multiply" a capacitor to create an effective capacitance which is much larger. They are useful for:
 
-* Power supply voltage rail filtering.
+* Transformer/rectifier style DC PSU voltage rail filtering.
+* Providing low-pass filtering into heavy loads, in where just a standard RC filter would suffer from too much voltage drop (or power dissipation) across the resistor.
 
 The below schematic shows a simple capacitance multiplier made from 1 resistor, 1 capacitor and 1 NPN BJT transistor:
 
@@ -1141,6 +1142,17 @@ Normally stem:[\beta >> 1] such that it's simplified to:
 ++++
 \begin{align}
 C_{eff} = \beta\ C1
+\end{align}
+++++
+
+WARNING: Even though the this is commonly called the effective capacitance, when calculating the cutoff frequency, you must use the real capacitance value, not the effective capacitance! (more on this below).
+
+The cut-off frequency for the capacitance multiplier is:
+
+[stem]
+++++
+\begin{align}
+f_c = \frac{1}{2\pi R1 C1}
 \end{align}
 ++++
 
@@ -1170,6 +1182,17 @@ V_{OUT} = \frac{R2}{R1 + R2} V_{IN} - 0.7V
 \end{align}
 ++++
 
+The equation for the cutoff frequency changes slightly:
+
+The cut-off frequency for the capacitance multiplier is:
+
+[stem]
+++++
+\begin{align}
+f_c = \frac{1}{2\pi (R1 || R2) C1}
+\end{align}
+++++
+
 The effective capacitance is exactly the same as in the single-resistor version in Eq \ref{eq:eff-cap}.
 
 === Worked Example
@@ -1178,9 +1201,9 @@ Let's go through the design process for a capacitance multiplier circuit, and th
 
 Design criteria:
 * 12VDC in
-* Assume power supply is very noisy, with the voltage fluctuating at most 1Vp2p with frequency components from 10Hz to 100kHz.
+* Assume power supply is very noisy, with the voltage fluctuating at most 1Vp2p with frequency components from 50Hz (mains ripple) to 100kHz.
 
-Given the noise fluctuations can be up to 1Vp2p, we want the BJT transistor to be dropping more than 1Vp2p in it's steady-state conditions so that it can filter out noise if the voltage rail suddenly drops a volt. Let's aim for nominal 10V output.
+Given the noise fluctuations can be up to 1Vp2p, we want the BJT transistor to be dropping more than 1Vp2p so that in input voltage is always larger than our output voltage, even with the ripple present on the input. Let's aim for nominal 10V output.
 
 [stem]
 ++++
@@ -1189,18 +1212,24 @@ V_{OUT} = 10V
 \end{align}
 ++++
 
-Arbitrarily choosing R2 to be 10kR, this means that R1 must be:
+Arbitrarily choosing stem:[R2] to be stem:[10k\Omega], this means that stem:[R1] must be:
 
 [stem]
 ++++
 \begin{align}
-R1 = 
+R1 &= \frac{V_{IN} - V_{OUT}}{V_{OUT}} R2 \\
+   &= \frac{12V - 10V}{10V} 10k\Omega \\
+   &= 2k\Omega
 \end{align}
 ++++
+
+The forward current gain (stem:[\beta]) of the 2N2222 is simulated at 200. stem:[R3] is our load resistor of stem:[100\Omega].
 
 [#img-capacitance-multiplier-magnitude] 
 .The simulated frequency response of the capacitance multiplier circuit above. 
 image::capacitance-multiplier-sim/out.png[width=800]
+
+Looking at the "DC" gain, it is a value of stem:[-1.61dB]. At an input voltage of stem:[12V] this corresponds to an output voltage of stem:[12V \cdot 10^{\frac{-1.61}{20}} = 9.97V], pretty much bang on the stem:[10V] we were aiming for.
 
 == Repairing Electrolytic Capacitors
 

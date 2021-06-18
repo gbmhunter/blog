@@ -84,20 +84,33 @@ def main():
     circuit = parser.build_circuit(ground=0)
     simulator = circuit.simulator(temperature=25, nominal_temperature=25)
     # analysis = simulator.transient(step_time=100@u_us, end_time=1000@u_ms)
-    analysis = simulator.ac(start_frequency=100@u_mHz, stop_frequency=1@u_MHz, number_of_points=50,  variation='dec')
+    analysis = simulator.ac(start_frequency=100@u_mHz, stop_frequency=10@u_kHz, number_of_points=50,  variation='dec')
 
     v_out = analysis['v_out']
     mag = 20*np.log10(np.abs(v_out.as_ndarray()))
+    print(mag)
     freq = analysis.frequency.as_ndarray()
 
-    fig, ax = plt.subplots(1, figsize=(10, 5))
-    ax.plot(freq, mag)
-    ax.legend(('$V_{OUT}$',), loc=(.8,.8))
+    r1_Ohms = 2e3
+    r2_Ohms = 10e3
+    ratio = r2_Ohms / (r1_Ohms + r2_Ohms)
+    ratio_dB = 20*np.log10(ratio)
+    r_parallel = (r1_Ohms * r2_Ohms) / (r1_Ohms + r2_Ohms)
+    c_F = 10e-6
+    fc = 1 / (2*np.pi*r_parallel*c_F)
+    print(ratio_dB)
+
+    fig, ax = plt.subplots(1, figsize=(10, 7))
+    ax.plot(freq, mag, label='$V_{OUT}$')
+    # ax.legend(('$V_{OUT}$',), loc=(.8,.8))
     ax.grid()
     ax.set_xscale('log')
     ax.set_xlabel('Frequency (Hz)')
     ax.set_ylabel('Voltage Magnitude (dB)')
-
+    ax.axvline(fc, color='C2', label='$f_c$')
+    ax.axhline(ratio_dB, color='C1', label=f'{ratio_dB:.2f}dB (DC gain)')
+    ax.axhline(ratio_dB - 3.0, color='C1', label=f'{ratio_dB - 3:.2f}dB (DC gain - 3dB)')
+    ax.legend()
     plt.tight_layout()
     plt.savefig('out.png')
 
