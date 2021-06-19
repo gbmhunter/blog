@@ -1190,11 +1190,12 @@ The cut-off frequency for the 2 resistor capacitance multiplier is the same equa
 ++++
 \begin{align}
 f_c &= \frac{1}{2\pi (R1 || R2) C1} \nonumber \\
+\label{eq:cm-resistor-divider-cutoff}
     &= \frac{R1 + R2}{2\pi R1 R2 C1}
 \end{align}
 ++++
 
-The "effective capacitance" is exactly the same as in the single-resistor version in Eq \ref{eq:eff-cap} (but remember, you don't use this for the cutoff frequency calculations).
+The "effective capacitance" is exactly the same as in the single-resistor version in Eq. \ref{eq:eff-cap} (but remember, you don't use this for the cutoff frequency calculations).
 
 === Worked Example
 
@@ -1207,7 +1208,7 @@ Design criteria:
 * Cut-off frequency of 10Hz (which is quite low)
 * A relatively low load resistance of stem:[100\Omega] (you can go even lower, but smaller resistors/bigger caps are needed)
 
-Given the noise fluctuations can be up to 1Vp2p, we want the BJT transistor to be dropping more than 1Vp2p so that in input voltage is always larger than our output voltage, even with the ripple present on the input. Let's aim for nominal 10V output at no load.
+Given the noise fluctuations can be up to stem:[1V_{p2p}], we want the *BJT transistor to be dropping more than stem:[1V_{p2p}] so that in input voltage is always larger than our output voltage*, even with the ripple present on the input. Let's aim for nominal stem:[10V] output at no load.
 
 [stem]
 ++++
@@ -1216,20 +1217,21 @@ V_{OUT} = 10V
 \end{align}
 ++++
 
-This constrains the ratio of stem:[R1] and stem:[R2] as:
+This constrains the ratio of stem:[R1] and stem:[R2] as (basic resistor divider equation):
 
 [stem]
 ++++
 \begin{align}
+\label{eq:cm-r1-r2-vin-vout}
 \frac{R1}{R2} = \frac{V_{IN} - V_{OUT}}{V_{OUT}}
 \end{align}
 ++++
 
 We'll use the time-honoured 2N2222 NPN transistor, just because, well, I had a simulation model for it (power consumption shouldn't be to high that we'd need something beefier, but more on that below). The forward current gain (stem:[\beta]) of the 2N2222 is simulated at stem:[200].
 
-Our load resistance is stem:[100\Omega]. At 10V, this will be a current of stem:[100mA]. We need to make sure this current will not cause a significant extra voltage drop across stem:[R1], which would cause the output voltage to droop. Let's allow for stem:[100mV] of drop (i.e. stem:[V_{OUT} = 9.9V]) at stem:[100mA].
+Our load resistance is stem:[100\Omega]. At stem:[10V], this will be a current of stem:[100mA]. We need to make sure this current will not cause a significant extra voltage drop across stem:[R1], which would cause the output voltage to droop. Let's allow for stem:[100mV] of drop (i.e. stem:[V_{OUT} = 9.9V]) at stem:[100mA].
 
-stem:[100mA] through the load will cause:
+stem:[100mA] through the load will cause a current to be drawn through stem:[R1] that will be stem:[\beta + 1] times smaller:
 
 [stem]
 ++++
@@ -1253,7 +1255,7 @@ R1 &= \frac{V_{R1}}{I_{R1}} \nonumber \\
 \end{align}
 ++++
 
-Which means stem:[R2] must be:
+Then using Eq. \ref{eq:cm-r1-r2-vin-vout}, that means stem:[R2] must be:
 
 [stem]
 ++++
@@ -1264,7 +1266,7 @@ R2 &= R1 \frac{V_{OUT}}{V_{IN} - V_{OUT}} \nonumber \\
 \end{align}
 ++++
 
-Now we have found stem:[R1] and stem:[R2], stem:[C1] is determined for us by the cut-off equation:
+Now we have found stem:[R1] and stem:[R2], stem:[C1] is determined for us by the cut-off equation (Eq. \ref{eq:cm-resistor-divider-cutoff}):
 
 [stem]
 ++++
