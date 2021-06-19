@@ -20,4 +20,4 @@ type: "post"
 
 * Starting testing the Asciidoc format and comparing it against the Markdown format.
 
-* Added info on Capacitance Multipliers.
+* Added schematics, equations, worked examples, and bode plots on Capacitance Multiplier circuits.
