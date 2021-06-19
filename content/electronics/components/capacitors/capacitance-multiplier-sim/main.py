@@ -95,6 +95,7 @@ def main():
     r2_Ohms = 10e3
     ratio = r2_Ohms / (r1_Ohms + r2_Ohms)
     ratio_dB = 20*np.log10(ratio)
+    ratio_dB = -1.75
     r_parallel = (r1_Ohms * r2_Ohms) / (r1_Ohms + r2_Ohms)
     c_F = 10e-6
     fc = 1 / (2*np.pi*r_parallel*c_F)
