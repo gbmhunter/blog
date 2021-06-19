@@ -1119,6 +1119,7 @@ _Capacitance multipliers_ are circuits which use an active element such as a BJT
 
 * Transformer/rectifier style DC PSU voltage rail filtering.
 * Providing low-pass filtering into heavy loads, in where just a standard RC filter would suffer from too much voltage drop (or power dissipation) across the resistor.
+* Power supply filtering for Class-A audio amplifiers.
 
 The below schematic shows a simple capacitance multiplier made from 1 resistor, 1 capacitor and 1 NPN BJT transistor:
 
@@ -1204,8 +1205,9 @@ Design criteria:
 * 12VDC in
 * Assume power supply is very noisy, with the voltage fluctuating at most 1Vp2p with frequency components from 50Hz (mains ripple) to 100kHz.
 * Cut-off frequency of 10Hz (which is quite low)
+* A relatively low load resistance of stem:[100\Omega] (you can go even lower, but smaller resistors/bigger caps are needed)
 
-Given the noise fluctuations can be up to 1Vp2p, we want the BJT transistor to be dropping more than 1Vp2p so that in input voltage is always larger than our output voltage, even with the ripple present on the input. Let's aim for nominal 10V output.
+Given the noise fluctuations can be up to 1Vp2p, we want the BJT transistor to be dropping more than 1Vp2p so that in input voltage is always larger than our output voltage, even with the ripple present on the input. Let's aim for nominal 10V output at no load.
 
 [stem]
 ++++
@@ -1214,36 +1216,71 @@ V_{OUT} = 10V
 \end{align}
 ++++
 
-Somewhat arbitrarily choosing stem:[R2] to be stem:[10k\Omega], this means that stem:[R1] must be:
+This constrains the ratio of stem:[R1] and stem:[R2] as:
 
 [stem]
 ++++
 \begin{align}
-R1 &= \frac{V_{IN} - V_{OUT}}{V_{OUT}} R2 \nonumber \\
-   &= \frac{12V - 10V}{10V} 10k\Omega \nonumber \\
-   &= 2k\Omega
+\frac{R1}{R2} = \frac{V_{IN} - V_{OUT}}{V_{OUT}}
 \end{align}
 ++++
 
-Now we have chosen stem:[R1] and stem:[R2], stem:[C1] is determined for us by the cut-off equation:
+Our load resistance is stem:[100\Omega]. At 10V, this will be a current of stem:[100mA]. We need to make sure this current will not cause a significant extra voltage drop across stem:[R1], which would cause the output voltage to droop. Let's allow for stem:[100mV] of drop (i.e. stem:[V_{OUT} = 9.9V]) at stem:[100mA].
+
+stem:[100mA] through the load will cause:
+
+[stem]
+++++
+\begin{align}
+I_{R1} &= \frac{1}{\beta + 1} I_{load} \nonumber \\
+       &= \frac{1}{200 + 1} * 100mA \nonumber \\
+       &= 498uA
+\end{align}
+++++
+
+TIP: stem:[I_{R1}] will actually be larger than this due to the current through it drawn down to ground via stem:[R2]. But this number is fine for calculation purposes.
+
+We can now find what value of stem:[R1] will produce no more than stem:[100mV] drop:
+
+[stem]
+++++
+\begin{align}
+R1 &= \frac{V_{R1}}{I_{R1}} \nonumber \\
+   &= \frac{100mV}{498uA} \nonumber \\
+   &= 200\Omega
+\end{align}
+++++
+
+Which means stem:[R2] must be:
+
+[stem]
+++++
+\begin{align}
+R2 &= R1 \frac{V_{OUT}}{V_{IN} - V_{OUT}} \nonumber \\
+   &= 200\Omega \frac{10V}{12V - 10V} \nonumber \\
+   &= 1k\Omega
+\end{align}
+++++
+
+Now we have found stem:[R1] and stem:[R2], stem:[C1] is determined for us by the cut-off equation:
 
 [stem]
 ++++
 \begin{align}
 C1 &= \frac{R1 + R2}{2\pi R1 R2 f_c} \nonumber \\
-   &= \frac{2k\Omega + 10k\Omega}{2\pi*2k\Omega*10k\Omega*10Hz}\nonumber  \\
-   &= 9.5uF \nonumber \\
-   &= 10uF\ \text{(E12 series)}
+   &= \frac{200\Omega + 1k\Omega}{2\pi*200\Omega*1k\Omega*10Hz} \nonumber  \\
+   &= 95uF \nonumber \\
+   &= 100uF\ \text{(E12 series)}
 \end{align}
 ++++
 
-If stem:[C1] has turned out to be too small or too large, we could at this point go back and change stem:[R1] and stem:[R2].
+The forward current gain (stem:[\beta]) of the 2N2222 is simulated at 200. stem:[R3] is our load resistor of stem:[100\Omega]. We can now draw the finished schematic:
 
 [#img-capacitance-multiplier-sim-schematic] 
 .Simulation-ready schematic of the capacitance multiplier we are designing. 
 image::capacitance-multiplier-sim/schematic.png[width=800]
 
-The forward current gain (stem:[\beta]) of the 2N2222 is simulated at 200. stem:[R3] is our load resistor of stem:[100\Omega].
+Running AC analysis using ngspice gives us the following frequency response (bode plot):
 
 [#img-capacitance-multiplier-magnitude] 
 .The simulated frequency response of the capacitance multiplier circuit above. 
@@ -1251,7 +1288,7 @@ image::capacitance-multiplier-sim/out.png[width=800]
 
 Looking at the "DC" gain, it is a value of stem:[-1.58dB]. At an input voltage of stem:[12V] this corresponds to an output voltage of stem:[12V \cdot 10^{\frac{-1.58}{20}} = 10.0V], bang on the stem:[10V] we were aiming for.
 
-Our cut-off frequency should then be -3dV ontop of that, i.e. at stem:[-1.58dB - 3dB = -4.58dB]. Plotting across and then down does indeed give us a cut-off frequency of approx. 10Hz.
+Our cut-off frequency should then be -3dV ontop of that, i.e. at stem:[-1.58dB - 3dB = -4.58dB]. Plotting across and then down does indeed give us a cut-off frequency of approx. stem:[10Hz]. The roll-off in the stop band is the same as a standard RC low-pass filter at stem:[-20dB/decade].
 
 == Repairing Electrolytic Capacitors
 

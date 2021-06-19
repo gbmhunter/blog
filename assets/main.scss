@@ -45,11 +45,17 @@ do this for us */
     content: none;
 }
 
-.admonitionblock.warning {
-    background-color: rgb(255, 230, 230);
-}
-
+// AsciiDoc admonitions (e.g. TIP:, WARNING:, ...)
 .admonitionblock {
+
+    &.tip {
+        background-color: rgb(230, 255, 230);
+    }
+
+    &.warning {
+        background-color: rgb(255, 230, 230);
+    }
+
     table tbody tr {
         background-color: transparent !important;
     }
