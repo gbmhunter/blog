@@ -4,13 +4,13 @@ categories: [ "Electronics", "Components", "Transistors" ]
 date: 2015-08-10
 description: "Types, schematic symbols, important parameters, amplifier topologies, and more info about bipolar junction transistors (BJTs)."
 draft: false
-lastmod: 2021-05-29
+lastmod: 2021-06-19
 tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode", "amplifiers", "common-emitter", "CE", "common-collector", "CC", "common-base", "CB", "grounded base", "Miller capacitance", "Widlar", "Widlar current mirror", "current mirrors", "Micronta", "Radio Shack" , "transistor testers" ]
 title: "Bipolar Junction Transistors (BJTs)"
 type: "page"
 ---
 
-## Overview
+== Overview
 
 Bipolar junction transistors (BJTs) are 3 legged active semiconductor devices. They behave as a current-amplifier, amplifying a small base-emitter (BE) current into a larger collector-emitter (CE) current.
 
@@ -46,8 +46,8 @@ The bipolar part of their name comes from the fact they conduct by using both ma
 
 The gain of a BJT is the ratio between the base current and the collector current (hence it is a _current gain_), typically when measured with the BJT in a common-emitter configuration. There are few different gains and symbols used, so it's important to know what exact gain is being talked about:
 
-* `\(\beta\)`: DC (large-signal) gain
-* `\(H_{fe}\)` (or `\(h_{FE}\)`): DC (large-signal) gain, part of the H-parameter (Hybrid parameter) model (same as `\(\beta\)`). Also sometimes written as `\(h_{21}\)`
+* stem:[\beta]: DC (large-signal) gain
+* stem:[H_{fe}] (or `\(h_{FE}\)`): DC (large-signal) gain, part of the H-parameter (Hybrid parameter) model (same as `\(\beta\)`). Also sometimes written as `\(h_{21}\)`
 * `\(h_{fe}\)`: Small-signal gain, part of the H-parameter model
 
 All of them depend somewhat other parameters such as collector current and temperature, but typically the gain is treated as a constant. The main thing to remember is **to not expect the current gain to equal an exact number, even between the same BJT transistor from the same manufacturing batch**.
@@ -230,15 +230,15 @@ A resistor divider can simple way to drive the base of an NPN current-sink if yo
 
 **Design Procedure:**
 
-1. Choose the resistor-divider `\(R_1\)` and `\(R_2\)` to provide a voltage at the base of the transistor in the region of `\(2.0-5.0\)`V. I choose `\(R_1 = 10k\Omega\)` as this is a standard resistance, and then `\(R_2 = 2.2k\Omega\)` to give a `\(V_B = 2.16V\)`.
-1. Subtract `\(0.7V\)` of `\(V_B\)` to get `\(V_E\)`. In this case, `\(V_E = 1.46V\)`.
-1. Size `\(R_E\)` to set the desired current of your current sink. Using Ohm's Law, `\(R_E = \frac{V_E}{I}\)`. In this case we wanted `\(2mA\)` to drive an LED, so:
+. Choose the resistor-divider `\(R_1\)` and `\(R_2\)` to provide a voltage at the base of the transistor in the region of `\(2.0-5.0\)`V. I choose `\(R_1 = 10k\Omega\)` as this is a standard resistance, and then `\(R_2 = 2.2k\Omega\)` to give a `\(V_B = 2.16V\)`.
+. Subtract `\(0.7V\)` of `\(V_B\)` to get `\(V_E\)`. In this case, `\(V_E = 1.46V\)`.
+. Size `\(R_E\)` to set the desired current of your current sink. Using Ohm's Law, `\(R_E = \frac{V_E}{I}\)`. In this case we wanted `\(2mA\)` to drive an LED, so:
     <p>\begin{align}
       R_E &= \frac{1.46V}{2mA} \\
           &= 730\Omega \\
           &\approx 732 \, \text{(closest E96 value)}
     \end{align}</p>
-1. As a sanity check, make sure the output impedance of the resistor divider is much less than the input impedance looking into the base of the BJT (otherwise the resistor divider output will get significantly loaded and it's output voltage will drop). That is:
+. As a sanity check, make sure the output impedance of the resistor divider is much less than the input impedance looking into the base of the BJT (otherwise the resistor divider output will get significantly loaded and it's output voltage will drop). That is:
     <p>\begin{align}
     R_1 || R_2 &\ll \beta R_E \\
     \frac{10k\Omega \cdot 2.2k\Omega}{10k\Omega + 2.2k\Omega} &\ll 100 \cdot 732\Omega \\
@@ -257,15 +257,15 @@ A basic PNP BJT-based current mirror is shown below:
 
 **Design Procedure:**
 
-1. Decide on the program current, `\(I_P\)`. This will also be the current through the load. We'll use this value later! For this example we'll choose `\(1mA\)`.
-1. Find the voltage across `\(R_1\)`, nothing that `\(Q_1\)` has a diode voltage drop of `\(0.7V\)` from emitter to base (with the emitter tied to `\(V_{CC}\)`), at that the base and collector of `\(Q_1\)` are tied together and hence at the same voltage:
+. Decide on the program current, `\(I_P\)`. This will also be the current through the load. We'll use this value later! For this example we'll choose `\(1mA\)`.
+. Find the voltage across `\(R_1\)`, nothing that `\(Q_1\)` has a diode voltage drop of `\(0.7V\)` from emitter to base (with the emitter tied to `\(V_{CC}\)`), at that the base and collector of `\(Q_1\)` are tied together and hence at the same voltage:
 
     <p>\begin{align}
     V_{R1}  &= 12V - 0.7V \\
             &= 11.3V
     \end{align}<p>
 
-1. Set the resistance of `\(R_1\)` using Ohm's Law:
+. Set the resistance of `\(R_1\)` using Ohm's Law:
 
     <p>\begin{align}
     R_1 &= \frac{V_{R1}}{I_P} \\
@@ -273,7 +273,7 @@ A basic PNP BJT-based current mirror is shown below:
         &= 11.3k\Omega
     \end{align}</p>
 
-1. All done!
+. All done!
 
 ## Common BJTs
 
