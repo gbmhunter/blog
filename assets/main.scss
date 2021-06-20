@@ -64,3 +64,8 @@ do this for us */
         line-height: 1.7 !important;
     }
 }
+
+// text-center is added by AsciiDoc when [.text-center] is added before a paragraph
+.text-center {
+    text-align: center;
+}
