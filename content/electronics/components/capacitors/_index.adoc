@@ -316,7 +316,7 @@ Tantalum capacitors tend to be more expensive than any other commonly used capac
 
 ==== Issues
 
-The SILLYEST THING about tantalum capacitors is that the polarity indicator is a stripe, next to the POSITIVE end. It goes against pretty much all other stripy-polarity-mark thingies, which all indicate which end is the negative end (think electrolytics, diodes, e.t.c). So, be very careful and vigilant when using these, for it is so easy for forget this rule!
+The SILLIEST THING about tantalum capacitors is that the polarity indicator is a stripe, next to the POSITIVE end. It goes against pretty much all other stripy-polarity-mark thingies, which all indicate which end is the negative end (think electrolytics, diodes, e.t.c). So, be very careful and vigilant when using these, for it is so easy for forget this rule!
 
 Tantalum capacitors are more susceptible to reverse and over-voltage than their electrolytic counterparts. At a high enough voltage, the dielectric breaks down and the capacitor begins to conduct. The current can generate plenty of heat, and here's the best part, it can start of a **mini-thermite** reaction between tantalum and manganese dioxide. Some slightly better news to offset this is that at low-energy breakdowns, tantalum capacitors can actually **self-heal** and stop the leakage current.
 
@@ -459,7 +459,8 @@ Through-hole and SMD super capacitor packages exist.
 
 Door knob (or barrel) capacitors are a form of ceramic capacitor named after their look-alike appearance to a door knob. They are usually rated for high voltages (kV's), and used in RF applications. They hav a low dielectric loss and linear temperature co-efficient of capacitance. They are typically used in the frequency range from 50kHz-100MHz.
 
-{{< img src="door-knob-capacitors.jpg" width="666px" caption="Ceramic, high-voltage 'door-knob' capacitors. Image from www.trademe.co.nz."  >}}
+.Ceramic, high-voltage 'door-knob' capacitors. Image from www.trademe.co.nz.
+image::door-knob-capacitors.jpg[width=600]
 
 ## Dielectric Constants Of Common Materials
 
@@ -602,11 +603,15 @@ The behaviour of capacitors when connected together in series and in parallel is
 
 Capacitors in parallel can be treated as one capacitor with the equivalent capacitance of:
 
-<p>$$ C_{total} = C1 + C2 $$</p>
+[stem]
+++++
+C_{total} = C1 + C2
+++++
 
-*That is, in parallel, <b>the total equivalent capacitance is the sum of the individual capacitances*. This is shown in the below diagram.
+That is, in parallel, *the total equivalent capacitance is the sum of the individual capacitances*. This is shown in the below diagram.
 
-{{< img src="capacitor-equivalence-in-parallel-with-equation.png" width="629px" caption="Diagram showing the resulting capacitance from two capacitors in parallel." >}}
+.Diagram showing the resulting capacitance from two capacitors in parallel.
+image::capacitor-equivalence-in-parallel-with-equation.png[width=600]
 
 *Connecting capacitors in parallel increases the capacitance.* Parallel-connected capacitors occurs everywhere in circuit design. A classic example is bulk decoupling for a switch-mode power supply, which will typically have more than one large capacitor connected in parallel on the input.
 
@@ -616,15 +621,22 @@ One of the benefits of connecting many capacitors in parallel rather than using 
 
 Capacitors in series with each other can be treated as one capacitor with a capacitance:
 
-<p>$$ C_{total} = \frac{1}{\frac{1}{C1} + \frac{1}{C2}} $$</p>
+[stem]
+++++
+C_{total} = \frac{1}{\frac{1}{C1} + \frac{1}{C2}}
+++++
 
 It is usually easier to remember this equation as:
 
-<p>$$ \frac{1}{C_{total}} = \frac{1}{C1} + \frac{1}{C2} $$</p>
+[stem]
+++++
+\frac{1}{C_{total}} = \frac{1}{C1} + \frac{1}{C2}
+++++
 
 This is shown in the following diagram.
 
-{{< img src="capacitor-equivalence-in-series-with-equation.png" width="620px" caption="Diagram showing the equivalent capacitance from two capacitors connected in series."  >}}
+.Diagram showing the equivalent capacitance from two capacitors connected in series.
+image::capacitor-equivalence-in-series-with-equation.png[width=600]
 
 Notice how the total equivalent capacitance is less than any one capacitor in the series string. *Connecting capacitors in series reduces the capacitance*.
 
@@ -636,14 +648,16 @@ One of the benefits of connecting capacitors in series is that each capacitor on
 
 The charge stored on the plates of a capacitor is related to the voltage and capacitance by:
 
-<p>$$Q = CV$$</p>
+[stem]
+++++
+Q = CV
+++++
 
-<p class="centered">
-    where:<br>
-    \(Q\) = charge stored in plates (Colombs)<br>
-    \(C\) = capacitance (Farads)<br>
-    \(V\) = voltage (Volts)<br>
-</p>
+[.text-center]
+where: +
+stem:[Q] = charge stored in plates (Coulombs) +
+stem:[C] = capacitance (Farads) +
+stem:[V] = voltage (Volts)
 
 If using this formula, see the Capacitor Charge Calculator.
 
@@ -651,14 +665,16 @@ If using this formula, see the Capacitor Charge Calculator.
 
 The energy stored in a capacitor is:
 
-<div>$$E = \frac{1}{2}CV^2$$</div>
+[stem]
+++++
+E = \frac{1}{2}CV^2
+++++
 
-<p class="centered">
-    where:<br>
-    \(E\) = energy stored in the capacitor (Joules)<br>
-    \(C\) = capacitance (Farads)<br>
-    \(V\) = voltage across the capacitor (Volts)<br>
-</p>
+[.text-center]
+where: +
+stem:[E] = energy stored in the capacitor (Joules) +
+stem:[C] = capacitance (Farads) +
+stem:[V] = voltage across the capacitor (Volts)
 
 As shown by the equation, the energy stored in a capacitor is related to both the capacitance and voltage of the capacitor. A typical 100nF, 6.5V capacitor can store 2.11uJ. Not much huh! If you are really considering capacitors for their energy storage capabilities, you must look at supercapacitors, which have typical values of 100F and 2.5V (as of 2011). This gives 313J of energy, which is useful amount for powering something.
 
@@ -668,76 +684,89 @@ If using this formula, see the Capacitor Energy Calculator.
 
 The force exerted on the two parallel plates of a capacitor is:
 
-<div>$$F = \frac{\epsilon_0 AV^2}{2d^2}$$</div>
+[stem]
+++++
+F = \frac{\epsilon_0 AV^2}{2d^2}
+++++
 
-<p class="centered">
-    where:<br>
-    \(F\) = outwards force extered on each parallel plate of the capacitor, in Newtons<br>
-    \(\epsilon_0\) = the permittivity of free space<br>
-    \(A\) = overlapping area of the two plates, in meters squared<br>
-    \(V\) = voltage across the capacitor, in Volts<br>
-    \(d\) = seperation distance between the two plates, in meters<br>
-</p>
+[.text-center]
+where: +
+stem:[F] = outwards force exerted on each parallel plate of the capacitor, in Newtons +
+stem:[\epsilon_0] = the permittivity of free space +
+stem:[A] = overlapping area of the two plates, in meters squared +
+stem:[V] = voltage across the capacitor, in Volts +
+stem:[d] = separation distance between the two plates, in meters
 
 === Single Disc Capacitance
 
-{{< img src="diagram-for-disc-capacitance-equation.png" caption="Diagram for the disc-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf."  width="320px" >}}
+.Diagram for the disc-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf.
+image::diagram-for-disc-capacitance-equation.png[width=320]
 
 The capacitance of a single thin plate, with  a ground at 'infinity' (or more practically, just very far away) is:
 
-<div>$$C = 35.4 \times 10^{-12} \epsilon_r d$$</div>
+[stem]
+++++
+C = 35.4 \times 10^{-12} \epsilon_r d
+++++
 
-<p class="centered">
-    where:<br>
-    \(C\) = capacitance (Farads)<br>
-    \(\epsilon_r\) = relative dielectric constant (1 for a vacuum)<br>
-    \(d\) = diameter of the thin plate (meters)<br>
-</p>
+[.text-center]
+where: +
+stem:[C] = capacitance (Farads) +
+stem:[\epsilon_r] = relative dielectric constant (1 for a vacuum) +
+stem:[d] = diameter of the thin plate (meters)
 
 === Sphere Capacitance
 
-{{< img src="diagram-for-sphere-capacitance-equation.png" caption="Diagram for the sphere-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf."  width="320px" >}}
+.Diagram for the sphere-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf.
+image::diagram-for-sphere-capacitance-equation.png[width=320]
 
 The capacitance of a single sphere, again, with a ground at infinity is:
 
-<div>$$C = 55.6 \times 10^{-12} \epsilon_r d$$</div>
+[stem]
+++++
+C = 55.6 \times 10^{-12} \epsilon_r d
+++++
 
-<p class="centered">
-    where:<br>
-    \(C\) = capacitance (Farads)<br>
-    \(\epsilon_r\) = relative dielectric constant (1 for a vacuum)<br>
-    \(r\) = radius of sphere (meters)<br>
-</p>
+[.text-center]
+where: +
+stem:[C] = capacitance (Farads) +
+stem:[\epsilon_r] = relative dielectric constant (1 for a vacuum) +
+stem:[r] = radius of sphere (meters)
 
 === Parallel Plate Capacitance
 
 The capacitance of two parallel plates is approximately
 
-<div>$$C = \epsilon_r \epsilon_o\frac{A}{d}$$</div>
+[stem]
+++++
+C = \epsilon_r \epsilon_o\frac{A}{d}
+++++
 
-<p class="centered">
-where:<br>
-\(\epsilon_o\) = electric constant (\(8.854 \times 10^{-12}Fm^{-1}\))<br>
-\(\epsilon_r\) = dielectric constant of the material between the plates (no unit)<br>
-\(A\) = overlapping surface area of the parallel plates (meters squared)<br>
-\(d\) = distance between the plates (meters)<br>
-</p>
+[.text-center]
+where: +
+stem:[\epsilon_o] = electric constant (stem:[8.854 \times 10^{-12}Fm^{-1}]) +
+stem:[\epsilon_r] = dielectric constant of the material between the plates (no unit) +
+stem:[A] = overlapping surface area of the parallel plates (meters squared) +
+stem:[d] = distance between the plates (meters)
 
 === Concentric Cylinder Capacitance
 
-{{< img src="diagram-for-coaxial-cylinders-capacitance-equation.png" caption="Diagram for the coaxial cylinder capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf."  width="320px" >}}
+.Diagram for the coaxial cylinder capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf.
+image::diagram-for-coaxial-cylinders-capacitance-equation.png[width=320]
 
 The capacitance of two concentric cylinders as shown in the diagram above is:
 
-<div>$$\frac{2 \pi \epsilon_o \epsilon_r}{\ln (\frac{b}{a})} L$$</div>
+[stem]
+++++
+\frac{2 \pi \epsilon_o \epsilon_r}{\ln (\frac{b}{a})} L
+++++
 
-<p class="centered">
-    where:<br>
-    \(a\) = radius of inner cylinder (meters)<br>
-    \(b\) = radius of outer cylinder (meters)<br>
-    \(L\) = length of both cylinders (meters)<br>
-    and all other variables as previously mentioned<br>
-</p>
+[.text-center]
+where: +
+stem:[a] = radius of inner cylinder (meters) +
+stem:[b] = radius of outer cylinder (meters) +
+stem:[L] = length of both cylinders (meters) +
+and all other variables as previously mentioned
 
 == Equivalent Series Resistance (ESR)
 
@@ -768,7 +797,10 @@ Since the ESR is proportional to the capacitor's plate area, for a similar capac
 
 Leakage currents are present in all types of capacitor. Leakage current is the sum of electrical losses from energy required to build up the oxide layers, weaknesses in the dielectric, tunnel effects, and cross currents. They are typically increase proportionally to the capacitance of the capacitor. We can reduce the leakage current down to two main factors, the absorption current stem:[I_{abs}], and the intrinsic leakage current stem:[I_{il}].
 
-$$ I_{leakage} = I_{abs} + I_{il} $$
+[stem]
+++++
+I_{leakage} = I_{abs} + I_{il}
+++++
 
 Absorption currents are due to quantum tunnelling of electrons at the metal/ceramic barrier! Absorption currents, stem:[I_{abs}] reduce with time and have weak temperature dependence, while intrinsic leakage currents stem:[I_{il}] remain constant with time but exponentially increase with temperature.
 
@@ -778,40 +810,41 @@ Capacitors that have had a relatively constant voltage across them for a decent 
 
 The leakage current through a capacitor can be modelled with a resistor in parallel with the actual capacitance, as shown in the image below:
 
-{{< img src="capacitor-with-parasitic-series-resistance-leakage-current.png" width="288px" caption="A capacitor showing the parasitic series resistance present in all real capacitors, which creates a leakage current."  >}}
+.A capacitor showing the parasitic series resistance present in all real capacitors, which creates a leakage current.
+image::capacitor-with-parasitic-series-resistance-leakage-current.png[width=300]
 
 === How Leakage Current Is Specified
 
 For electrolytics, the maximum leakage current is usually specified in terms of the capacitance.
 
-<p>$$ I_{leakage} = xC $$</p>
+[stem]
+++++
+I_{leakage} = xC
+++++
 
-<p class="centered">
-    where:<br>
-    \( I_{leakage} \) = the leakage current, usually specified in units of mA (this is up to the manufacturer and their choice of constant)<br>
-    \( x \) = a fixed constant (e.g. 0.5)<br>
-    \( C \) = the capacitance of the capacitor, and again, choice of units is up to the manufacturer<br>
-</p>
+[.text-center]
+where: +
+stem:[ I_{leakage} ] = the leakage current, usually specified in units of mA (this is up to the manufacturer and their choice of constant) +
+stem:[ x ] = a fixed constant (e.g. 0.5) +
+stem:[ C ] = the capacitance of the capacitor, and again, choice of units is up to the manufacturer
 
-{{% note %}}
-When specified this way, the current is <b>completely independent on voltage</b>. The leakage current for electrolytic super-caps in the range of 1 to 100F is typically 0.5C (mA), where C is the rated capacitance in Farads.
-{{% /note %}}
+TIP: When specified this way, the current is *completely independent on voltage*. The leakage current for electrolytic super-caps in the range of 1 to 100F is typically 0.5C (mA), where C is the rated capacitance in Farads.
 
 The leakage current for MLCC capacitors is specified by an **insulation resistance**. To work out the leakage current, you just use Ohm's law as follows:
 
-<p>$$ I_{leakage} = \frac{V}{R_{insulation}} $$</p>
+[stem]
+++++
+I_{leakage} = \frac{V}{R_{insulation}}
+++++
 
-<p class="centered">
-    where:<br>
-    \( V \) = the voltage across the capacitor<br>
-    \( R_{insulation} \) = the insulation resistance as specified on the capacitors datasheet<br>
-</p>
+[.text-center]
+where: +
+stem:[ V ] = the voltage across the capacitor +
+stem:[ R_{insulation} ] = the insulation resistance as specified on the capacitors datasheet
 
-{{% note %}}
-When leakage current is specified this way, <b>it is dependent on the voltage</b>.
-{{% /note %}}
+TIP: When leakage current is specified this way, *it is dependent on the voltage*.
 
-Ceramic capacitors are rated with an initial minimum insulation resistance (e.g. 500MR) and then a lower minimum resistance rated over its entire life time (e.g. 50MR).
+Ceramic capacitors are rated with an initial minimum insulation resistance (e.g. stem:[500M\Omega]) and then a lower minimum resistance rated over its entire life time (e.g. stem:[50M\Omega]).
 
 === Why Leakage Currents Are Important
 
@@ -827,9 +860,10 @@ Some types of capacitors have a capacitance which changes depending on the appli
 
 The good news is this can be manipulated to make things such as voltage-controlled oscillators (VCOs), in where the capacitance is part of a resonant circuit, and the resonant frequency is changed by modifying the voltage on the capacitor, hence changing the capacitance. [Diodes](/electronics/components/diodes) also offer this feature and can be used to make FM radio signals by modulating a high-frequency waveform.
 
-The bad news is that this also adversely affects the capacitance in situations where you want it to stay constant. This can actually be a very significant problems, especially with small [package](/pcb-design/component-packages/) size ceramic capacitors (such as 0603 and 0805 SMD chip capacitors). An excellent explanation on this effects if Maxim Integrated's "[Temperature and Voltage Variation of Ceramic Capacitors, or Why Your 4.7uF Capacitor Becomes a 0.33uF Capacitor](http://www.maximintegrated.com/app-notes/index.mvp/id/5527)". The following graph is from Maxim's page, and just serves as an example to show by how much the capacitance can vary in normal operation conditions!
+The bad news is that this also adversely affects the capacitance in situations where you want it to stay constant. This can actually be a very significant problems, especially with small link:/pcb-design/component-packages/[package] size ceramic capacitors (such as 0603 and 0805 SMD chip capacitors). An excellent explanation on this effects if Maxim Integrated's link:http://www.maximintegrated.com/app-notes/index.mvp/id/5527[Temperature and Voltage Variation of Ceramic Capacitors, or Why Your 4.7uF Capacitor Becomes a 0.33uF Capacitor]. The following graph is from Maxim's page, and just serves as an example to show by how much the capacitance can vary in normal operation conditions!
 
-{{< img src="graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors.png" width="925px" caption="Graph of the capacitance variation (w.r.t. voltage) of a select group of 4.7uF ceramic chip capacitors, Image from http://www.maximintegrated.com/app-notes/index.mvp/id/5527."  >}}
+.Graph of the capacitance variation (w.r.t. voltage) of a select group of 4.7uF ceramic chip capacitors, Image from http://www.maximintegrated.com/app-notes/index.mvp/id/5527.
+image::graph-of-temperature-variation-of-ceramic-chip-4-7uf-capacitors.png[width=800]
 
 This can upset op-amp gains, frequency cut-off points of filters, and the time constant of RC oscillators.
 
@@ -837,7 +871,8 @@ This can upset op-amp gains, frequency cut-off points of filters, and the time c
 
 Capacitors are commonly used for decoupling, as this following schematic shows (taken from the Raspberry-Pi PCB design).
 
-{{< img src="decoupling-caps-schematic-example-on-r-pi-pcb.png" width="396px" caption="Example usage of decoupling capacitors for ICs. Schematic is from the Raspberry-Pi PCB. Image from http://www.raspberrypi.org/wp-content/uploads/2012/04/Raspberry-Pi-Schematics-R1.0.pdf."  >}}
+.Example usage of decoupling capacitors for ICs. Schematic is from the Raspberry-Pi PCB. Image from http://www.raspberrypi.org/wp-content/uploads/2012/04/Raspberry-Pi-Schematics-R1.0.pdf.
+image::decoupling-caps-schematic-example-on-r-pi-pcb.png[width=400]
 
 == Mains Line Filters
 
@@ -895,20 +930,18 @@ Q = CV
 \end{align}
 ++++
 
-++++
-<p class="centered">
-    where:<br>
-    \(Q\) is the charge (Coulombs)<br>
-    \(C\) the capacitance (Farads)<br>
-    \(V\) the voltage (Volts)<br>
-</p>
-++++
+[.text-center]
+where: +
+stem:[Q] is the charge (Coulombs) +
+stem:[C] the capacitance (Farads) +
+stem:[V] the voltage (Volts)
 
 However, if you really want to optimise the charge pump capacitor, this rule does not suffice. The Fairchild Semiconductor Application Note, link:http://www.fairchildsemi.com/an/AN/AN-6076.pdf[Design And Application Guide Of Bootstrap Circuit For High-Voltage Gate-Drive IC] has an in-depth analysis of the bootstrap capacitor and surrounding circuit.
 
 The following circuit shows a charge pump circuit used to generate -5V from a +5V PWM signal.
 
-{{< img src="charge-pump-based-negative-voltage-gen-schematic.png" width="1157px" caption="This schematic shows a charge pump circuit used to generate -5V from a +5V PWM signal."  >}}
+.This schematic shows a charge pump circuit used to generate -5V from a +5V PWM signal.
+image::charge-pump-based-negative-voltage-gen-schematic.png[width=800]
 
 == Capacitor Packages
 
