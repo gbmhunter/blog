@@ -324,73 +324,55 @@ Because of their large operating temperature range, stability, and high price, t
 
 ### Film Capacitors
 
-++++
-<table>
-<tbody>
-<tr>
-  <td>Synonyms/Subfamilies</td>
-  <td>
-    <ul>
-      <li>MKT</li>
-      <li>MFCs (metallized film capacitors)</li>
-      <li>MPFCs (metallized polyester film capacitors)</li>
-      <li>Power (film) capacitor</li>
-    </ul>
-  </td>
-</tr>
-<tr>
-  <td>Range</td>
-  <td>1nF - 10uF</td>
-</tr>
-<tr>
-  <td>Polarized</td>
-  <td>No</td>
-</tr>
-<tr>
-  <td>Dielectric</td>
-  <td>Polyester, Polycarbonate</td>
-</tr>
-<tr>
-<td>Typical Marking</td>
-<td>
-Because of their large size, the capacitance is usually either in `<number><number><multiplier><tolerance>` picofarad form (e.g. `105K` equals `10e^5pF` equals `1uF`), or because of their large size printed in it's absolute form (e.g. `0.1uF`) on the block somewhere.
-</td>
-</tr>
-<tr>
-  <td>Uses</td>
-  <td>
-    <ul>
-      <li>Power supplies</li>
-      <li>Audio circuits</li>
-    </ul>
-  </td>
-</tr>
-</tbody>
-</table>
-++++
+|===
+| Parameter | Value
+
+| Synonyms/Subfamilies
+a| 
+* MKT
+* MFCs (metallized film capacitors)
+* MPFCs (metallized polyester film capacitors)
+* Power (film) capacitor
+  
+| Range
+| 1nF - 10uF
+
+| Polarized
+| No
+
+| Dielectric
+| Polyester, Polycarbonate
+
+
+| Typical Marking
+| Because of their large size, the capacitance is usually either in `<number><number><multiplier><tolerance>` picofarad form (e.g. `105K` equals `10e^5pF` equals `1uF`), or because of their large size printed in it's absolute form (e.g. `0.1uF`) on the block somewhere.
+
+| Uses
+a|
+* Power supplies
+* Audio circuits
+|===
 
 Film capacitors are a family of capacitors which use thin insulating plastic film as the dielectric<<wikipedia-film-capacitor>>. They are not polarity sensitive. The film can either be **left as is** or **metallized**, which makes it a metallized film capacitor<<capacitorguide.com>>.
 
 How do you identify film capacitors? Film capacitors usually come in the following forms:
 
-1. A potted rectangular block with the two leads typically coming out of the same side (radial). Typical colors are yellow, blue, or white.
+. A potted rectangular block with the two leads typically coming out of the same side (radial). Typical colors are yellow, blue, or white.
++
+[cols="1,1"]
+|===
+a|
+.A yellow potted film capacitor. Image from alibaba.com.
+image::yellow-potted-film-capacitor-alibaba.png[width=200]
+a|
+.A blue potted film capacitor from Hitano.
+image::blue-potted-film-capacitor-hitano.png[width=200]
+|===
 
-++++
-<table>
-  <tr>
-    <td>
-      {{< img src="yellow-potted-film-capacitor-alibaba.png" width="200px" caption="A yellow potted film capacitor. Image from alibaba.com." >}}
-    </td>
-    <td>
-      {{< img src="blue-potted-film-capacitor-hitano.png" width="200px" caption="A blue potted film capacitor from Hitano." >}}
-    </td>
-  </tr>
-</table>
-++++
-
-1. A rounded, red case that has been coasted in a epoxy lacquer, with the leads typically coming out of the same side.
-
-    {{% img src="red-radial-film-capacitor-photo-ecq-p1h822gz3-digikey.png" width="300px" caption="A red radial film capacitor (Panasonic ECQ-P1H822GZ3). Image from digikey.com." %}}
+. A rounded, red case that has been coasted in a epoxy lacquer, with the leads typically coming out of the same side.
++
+.A red radial film capacitor (Panasonic ECQ-P1H822GZ3). Image from digikey.com.
+image::red-radial-film-capacitor-photo-ecq-p1h822gz3-digikey.png[width=300]
 
 **Metallized Polyester Film Capacitors**
 
@@ -398,7 +380,8 @@ _Metallized polyester film capacitors_ (MFCs) are used when long-term stability 
 
 Metallized film capacitors have a self-healing effect when an over-voltage even occurs, while others such as ceramic capacitors do not. This makes them safer to use in high-power applications.
 
-{{% img src="20191227-capacitor-blown-in-circuit.jpg" width="800px" caption="A broken 1uF (marking 105K) 250VAC metallized film capacitor (red bulge with cracks in it) inside a paper shredder." %}}
+.A broken 1uF (marking 105K) 250VAC metallized film capacitor (red bulge with cracks in it) I found inside my mum's paper shredder.
+image::20191227-capacitor-blown-in-circuit.jpg[width=800]
 
 === Polyester (Green Cap)
 

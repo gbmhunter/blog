@@ -65,6 +65,10 @@ image::example-vector-image.svg[width=300]
 
 This sentence contains a bibliographic reference at the end of it<<example-bib>>.
 
+== Tables
+
+
+
 == Admonitions
 
 TIP: This is a tip. I should be green and have a bulb icon on my left.
