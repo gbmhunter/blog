@@ -4,7 +4,7 @@ categories: [ "Electronics", "General", "Circuit Simulation" ]
 date: 2015-06-09
 draft: false
 lastmod: 2021-06-20
-tags: [ "electronics", "SPICE", "simulation", "KiCad", "components", "voltage sources", "current sources", "ECircuitCenter", "smoke analysis", "PSPICE" ]
+tags: [ "electronics", "SPICE", "simulation", "KiCad", "components", "voltage sources", "current sources", "ECircuitCenter", "smoke analysis", "PSPICE", "ngspice" ]
 title: "SPICE Simulation"
 type: "page"
 ---
@@ -13,7 +13,7 @@ See the link:/electronics/general/kicad/kicad-tips-and-tricks#simulation[Simulat
 
 == Elementary SPICE Components
 
-Note: The `XXXXXXX` syntax in the general form describing elementary SPICE components is to dominate a user choosen alpha-numeric identifier (e.g. `RXXXXXXX` could stand for `R1`, `RC1` or `RMYNAME`).
+Note: The `XXXXXXX` syntax in the general form describing elementary SPICE components is to dominate a user chosen alpha-numeric identifier (e.g. `RXXXXXXX` could stand for `R1`, `RC1` or `RMYNAME`).
 
 == Voltage And Current Sources
 
