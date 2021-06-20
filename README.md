@@ -2,33 +2,33 @@
 
 This repo contains the code which is used to build my blog at <blog.mbedded.ninja>.
 
-The static site generator Hugo is used to build the website from the files in this repo. Netlify is used to host the website, along with a few AWS services (built with serverless) to host an API/database for the shurikens.
+The static site generator Hugo is used to build the website from the files in this repo. Netlify is used to deploy and host the website.
 
 # Development
 
-The recommended code editor is [Visual Studio Code](https://code.visualstudio.com/).
+1. The recommended code editor is [Visual Studio Code](https://code.visualstudio.com/).
 
-Follow the instructions [here](https://gohugo.io/getting-started/installing) to install Hugo (using `chocolatey` to install is recommended when running Windows).
+1. Follow the instructions [here](https://gohugo.io/getting-started/installing) to install Hugo (using `chocolatey` to install is recommended when running Windows). **Make sure to install the extended version, as we need to compile `.scss` files into `.css`.
 
-Install ruby/asciidoctor. This is needed to render the AsciiDoc pages.
+1. Install ruby. This is needed to render the AsciiDoc pages.
 
-First, ruby needs to be installed. On Windows:
+    ```powershell
+    choco install ruby
+    ```
 
-```powershell
-choco install ruby
-```
+1. Then `asciidoctor` and `rouge` (for syntax highlighting) can be installed by using `bundle`, which uses the `Gemfile` in the root directory of this repo (Linux, MacOS, Windows):
 
-Then asciidoctor can be installed by using `gem` (Linux, MacOS, Windows):
+    ```sh
+    bundle install
+    ```
 
-```sh
-gem install asciidoctor
-```
+1. To start a development server that will watch for file changes (`w`), build drafts (`D`) and build future content (`F`):
 
-To start a development server that will watch for file changes (`w`), build drafts (`D`) and build future content (`F`):
+    ```sh
+    $ hugo server -wDF
+    ```
 
-```sh
-$ hugo server -wDF
-```
+1. Development server should now be live at `localhost:1313`.
 
 Sometimes hugo gets out of sync with the latest file changes. If this happens, you can force hugo to rebuild everything when detecting a file change (warning: this slows down build times):
 
@@ -36,7 +36,10 @@ Sometimes hugo gets out of sync with the latest file changes. If this happens, y
 $ hugo server -wDF --disableFastRender
 ```
 
-There is a test page filled with different shortcode and style tests. It is located at `/posts/test-page/`.
+There are test pages filled with different shortcode and style tests.
+
+* Markdown: `/posts/tests/markdown`
+* AsciiDoc: `/posts/tests/asciidoc`
 
 # To Build
 
@@ -83,11 +86,11 @@ $ pipenv install --two LinkChecker
 
 # Recommended VS Code Plugins
 
-* Code Spell Checker (prevents spelling mistakes). Additional dictionary definitions are included in `vscode.code-workspace`.
-* Vim (if you're a vim fan!)
-* EditorConfig for VS Code (promotes consistent coding styles, incl. indentation rules)
+* `Code Spell Checker`: Prevents spelling mistakes. Additional dictionary definitions are included in `.vscode/settings.json` under `"cSpell.words"`. Make sure to add new words to the "workspace directory" so they get added to this file.
+* `Vim`: If you're a vim fan!
+* `EditorConfig for VS Code`: Promotes consistent coding styles, incl. indentation rules. Reads rules from `.editorconfig` in this repo's root directory.
 * `Better TOML`: For syntax highlighting in the Hugo config file `config.toml`
-* AsciiDoc: For rendering AsciiDoc pages (with the `.adoc` extension).
+* `AsciiDoc`: For syntax highlighting of AsciiDoc pages (with the `.adoc` extension). Don't rely on it for rendering, use the browser with `hugo` and live file watching for that.
 
 # Markdown Extensions
 
