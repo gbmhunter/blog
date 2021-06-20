@@ -45,7 +45,15 @@ The most basic syntax to create a voltage-controlled switch is:
 
 == Smoke Analysis
 
-_Smoke analysis_ is when the SPICE software performs a simulation and checks that all the components are not exceeding maximum voltages, currents or power dissipation levels. Only a small number of the available SPICE software packages support smoke analysis, including PSPICE (commercial) and Micro-Cap.
+_Smoke analysis_ is when the SPICE software performs a simulation and checks that all the components are not exceeding maximum voltages, currents or power dissipation levels (among other things). Only a small number of the available SPICE software packages support smoke analysis, including PSPICE (commercial) and Micro-Cap (now free).
+
+For example, the Micro-Cap implementation checks the following parameters<<micro-cap-reference-man-v12>>:
+
+• Maximum voltage
+• Maximum current
+• Power dissipation
+• Breakdowns
+• Junction temperatures
 
 == ngspice
 
@@ -90,3 +98,4 @@ One of the only free SPICE simulation packages that supports _smoke analysis_.
 == References
 
 * [[[micro-cap-download-page]]] http://www.spectrum-soft.com/download/download.shtm, accessed 2021-06-20.
+* [[[micro-cap-reference-man-v12]]]: http://www.spectrum-soft.com/download/rm12.pdf, accessed 2021-06-20.
