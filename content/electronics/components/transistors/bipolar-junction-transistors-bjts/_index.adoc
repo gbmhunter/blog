@@ -10,19 +10,24 @@ title: "Bipolar Junction Transistors (BJTs)"
 type: "page"
 ---
 
+:toc:
+:xrefstyle: short
+:stem: latexmath
+:sectnums:
+
 == Overview
 
 Bipolar junction transistors (BJTs) are 3 legged active semiconductor devices. They behave as a current-amplifier, amplifying a small base-emitter (BE) current into a larger collector-emitter (CE) current.
 
 It was the first type of transistor to ever be mass produced.
 
-## Types
+== Types
 
 BJTs come in two flavours, NPN or PNP. They both have three terminals, the collector (C), the base (B) and the emitter (E).
 
 The differences between the NPN and PNP transistor types are analogous to the {{% link text="N-Channel and P-Channel MOSFET" src="/electronics/components/transistors/mosfets" %}} types.
 
-## Schematic Symbols
+== Schematic Symbols
 
 The schematic symbols for NPN and PNP transistors are shown below:
 
@@ -47,24 +52,24 @@ The bipolar part of their name comes from the fact they conduct by using both ma
 The gain of a BJT is the ratio between the base current and the collector current (hence it is a _current gain_), typically when measured with the BJT in a common-emitter configuration. There are few different gains and symbols used, so it's important to know what exact gain is being talked about:
 
 * stem:[\beta]: DC (large-signal) gain
-* stem:[H_{fe}] (or `\(h_{FE}\)`): DC (large-signal) gain, part of the H-parameter (Hybrid parameter) model (same as `\(\beta\)`). Also sometimes written as `\(h_{21}\)`
-* `\(h_{fe}\)`: Small-signal gain, part of the H-parameter model
+* stem:[H_{fe}] (or stem:[h_{FE}]): DC (large-signal) gain, part of the H-parameter (Hybrid parameter) model (same as stem:[\beta]). Also sometimes written as stem:[h_{21}]
+* stem:[h_{fe}]: Small-signal gain, part of the H-parameter model
 
 All of them depend somewhat other parameters such as collector current and temperature, but typically the gain is treated as a constant. The main thing to remember is **to not expect the current gain to equal an exact number, even between the same BJT transistor from the same manufacturing batch**.
 
 <p>$$ I_C = \beta I_B $$</p>
 
-The `\(FE\)` part of the two H-parameter gains represents:
-* `\(F\)`: The _**F**orward_ current amplification
-* `\(E\)`: As measured with the BJT in the _common-**E**mitter_ configuration 
+The stem:[FE] part of the two H-parameter gains represents:
+* stem:[F]: The _**F**orward_ current amplification
+* stem:[E]: As measured with the BJT in the _common-**E**mitter_ configuration 
 
 Temperature has a major influence on the gain of a BJT.
 
 ### Early Voltage (Va)
 
-The Early Voltage is normally denoted with `\(V_A\)`.
+The Early Voltage is normally denoted with stem:[V_A].
 
-As `\(V_{CE}\)` on a BJT increases, the reverse-bias on the `\(V_CB\)` junction increases (this is just a PN junction in reverse bias under typical operation). This increases the depletion region of this junction, which **reduces the effective width of the base**. Because the saturation current is inversely proportional to the effective width of the base, an increase in `\(V_{CE}\)` results in an increase in `\(I_C\)`.
+As stem:[V_{CE}] on a BJT increases, the reverse-bias on the stem:[V_CB] junction increases (this is just a PN junction in reverse bias under typical operation). This increases the depletion region of this junction, which **reduces the effective width of the base**. Because the saturation current is inversely proportional to the effective width of the base, an increase in stem:[V_{CE}] results in an increase in stem:[I_C].
 
 The effect of the collector-emitter current on collector current is given by the following equation:
 
@@ -89,7 +94,7 @@ where:<br/>
 \(q\) is the charge on a electron in Coulombs, which is \(1.6\times 10^{-19}C\)
 </p>
 
-At a room temperature of `\(22^{\circ}C\)`, `\(V_T\)` is approximately `\(25mV\)`. `\(25mV\)` is a good enough approximation for the thermal voltage in many scenarios without taking the actual junction temperature into account. The thermal voltage is used in the hybrid-pi model of the BJT transistor.
+At a room temperature of stem:[22^{\circ}C], stem:[V_T] is approximately stem:[25mV]. stem:[25mV] is a good enough approximation for the thermal voltage in many scenarios without taking the actual junction temperature into account. The thermal voltage is used in the hybrid-pi model of the BJT transistor.
 
 ## BJT Transistor Models
 
@@ -109,15 +114,15 @@ The small-signal linearized hybrid-pi model is a simplification of the complete 
 
 Inputs (independent variables) to the model are:
 
-* Small-signal base-emitter voltage `\(v_\pi\)`
-* Small-signal collector-emitter voltage `\(v_{CE}\)`
+* Small-signal base-emitter voltage stem:[v_\pi]
+* Small-signal collector-emitter voltage stem:[v_{CE}]
 
 From this the model calculates the following outputs (dependent variables):
 
-* Small-signal base current `\(i_B\)`
-* Small-signal collector current `\(i_C\)`
+* Small-signal base current stem:[i_B]
+* Small-signal collector current stem:[i_C]
 
-The transconductance `\(g_m\)` can be calculated with:
+The transconductance stem:[g_m] can be calculated with:
 
 <p>\begin{align}
 g_m &= \frac{i_C}{v_{BE}} & \text{when $v_{CE} = 0$} \\
@@ -132,7 +137,7 @@ where:<br/>
 
 ## Circuit Design Basics With BJTs
 
-The current through the base pin (`\(I_b\)`) and the current through the collector pin (`\(I_c\)`) always sums to give the current through the emitter pin (`\(I_e\)`).
+The current through the base pin (stem:[I_b]) and the current through the collector pin (stem:[I_c]) always sums to give the current through the emitter pin (stem:[I_e]).
 
 <p>$$ I_e = I_b + I_c $$</p>
 
@@ -158,15 +163,20 @@ However, NPN transistors cannot be used as a simple high-side switch, as the emi
 
 The BJT _common-collector_ amplifier is one of the three basic single-stage BJT amplifier topologies. The common collector amplifier topology is also known as a _emitter follower amplifier_.
 
-{{% img src="basic-common-collector-bjt-amplifier-schematic.png" width="640px" caption="The basic schematic of a common-collector BJT amplifier." %}}
+.The basic schematic of a common-collector BJT amplifier.
+image::basic-common-collector-bjt-amplifier-schematic.png[width=600]
 
-The output voltage is almost equal to the input voltage, except for an approximately `\(0.7V\)` diode drop. This means that the amplifier has a voltage gain of almost unity (1), or `\(0dB\)`.
+The output voltage is almost equal to the input voltage, except for an approximately stem:[0.7V] diode drop. This means that the amplifier has a voltage gain of almost unity (1), or stem:[0dB].
 
-<p>$$ v_{out} = v_{in} - 0.7V $$</p>
+[stem]
+++++
+v_{out} = v_{in} - 0.7V
+++++
 
-Here is a graph of `\(v_{in}\)` vs. `\(v_{out}\)` for the above circuit:
+Here is a graph of stem:[v_{in}] vs. stem:[v_{out}] for the above circuit:
 
-{{% img src="vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png" width="1418px" caption="Vout vs. Vin for a basic common-collector BJT amplifier." %}}
+.Vout vs. Vin for a basic common-collector BJT amplifier.
+image::vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png[width=800]
 
 ### Common-Base Amplifier
 
@@ -174,23 +184,27 @@ The BJT _common-base_ (a.k.a. _grounded-base_, and sometimes just abbreviated to
 
 A basic schematic of a common-base NPN BJT amplifier is shown below, excluding DC biasing components:
 
-{{% img src="common-base-amplifier.svg" width="400px" caption="Basic schematic of a NPN BJT common-base amplifier. DC biasing componentry is not shown." %}}
+.Basic schematic of a NPN BJT common-base amplifier. DC biasing componentry is not shown.
+image::common-base-amplifier.svg[width=400]
 
 Note that the above circuit is not realistic because it does not show the DC biasing componentry, however it is useful to illustrate the basic principle of the amplifier. The following schematic shows a common-base amplifier with the DC biasing component included:
 
-{{% img src="common-base-amplifier-dc-bias.svg" width="700px" caption="Schematic of a NPN BJT common-base amplifier with DC biasing componentry shown." %}}
+.Schematic of a NPN BJT common-base amplifier with DC biasing componentry shown.
+image::common-base-amplifier-dc-bias.svg[width=700]
 
 #### Input Resistance
 
 The small-signal input resistance of the common-base BJT amplifier is equal to:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 r_{in} &= \frac{v_{in}}{i_{in}} \\
        &= \frac{v_e}{i_e} \\
        &= \frac{i_e \cdot (r'e\,||\,R_E)}{i_e}  &\text{Replacing $v_e$} \\
        &= r'e\,||\,R_E                          &\text{$i_e$'s cancel out}
-\end{align}</p>
-
+\end{align}
+++++
 
 ### Basic BJT Amplifier Topology Summary
 
@@ -204,23 +218,31 @@ Common-base      | High              | Low               | Low              | Hi
 
 BJTs can be configured to sink a relatively constant amount of current which is independent on the output-side voltage. This can be a useful way of driving an LED from a microcontroller with a constant current, no matter what voltage source is used to drive the LED. BJT current sinks and sources are good for simple, cheap situations in where high precision is not the name of the game. If you want high precision, you're best bet is to build a {{% link text="current-sink from an op-amp" src="/electronics/components/op-amps#current-sinks" %}}.
 
-{{< img src="constant-current-bjt-based-led-driver.png" width="465px" caption="The simulation schematic for a constant-current BJT-based LED driver."  >}}
+.The simulation schematic for a constant-current BJT-based LED driver.
+image::constant-current-bjt-based-led-driver.png[width=500]
 
-The above schematic was designed to drive the LED with 10mA of current when the BJT was driven from a microcontroller running at `\(+3.3V\)`. Since `\(+3.3V\)` is applied to the base of the NPN transistor, the transistor will always turn on just enough so that the voltage at the emitter is `\(0.7V\)` less, e.g.
+The above schematic was designed to drive the LED with 10mA of current when the BJT was driven from a microcontroller running at stem:[+3.3V]. Since stem:[+3.3V] is applied to the base of the NPN transistor, the transistor will always turn on just enough so that the voltage at the emitter is stem:[0.7V] less, e.g.
 
-<p>$$ V_e = V_b - 0.7V $$</p>
+[stem]
+++++
+V_e = V_b - 0.7V
+++++
 
-Since we know the emitter voltage is going to be `\(+2.6V\)`, we can choose the right resistor, `\(R_1\)` to get the LED current we desire (remember that the current out of the emitter is pretty much equal to the current into the collector).
+Since we know the emitter voltage is going to be stem:[+2.6V], we can choose the right resistor, stem:[R_1] to get the LED current we desire (remember that the current out of the emitter is pretty much equal to the current into the collector).
 
-<p>$$ R_1 = \frac{V_e}{I_{LED}} $$</p>
+[stem]
+++++
+R_1 = \frac{V_e}{I_{LED}}
+++++
 
-So if we want a LED current of 10mA, that means we need `\(R1 = 260\Omega\)`. The closest E12 value is `\(270\Omega\)`.
+So if we want a LED current of 10mA, that means we need stem:[R1 = 260\Omega]. The closest E12 value is stem:[270\Omega].
 
-Notice how the LED current is independent of the `\(+12V\)`. The `\(+12V\)` can change to say, `\(+9V\)` and the LED current will still be `\(10mA\)`. The current draw from the microcontroller into the base of the transistor will be very low (somewhere around `\(100uA\)`).
+Notice how the LED current is independent of the stem:[+12V]. The stem:[+12V] can change to say, stem:[+9V] and the LED current will still be stem:[10mA]. The current draw from the microcontroller into the base of the transistor will be very low (somewhere around stem:[100uA]).
 
-Below are the simulation results for the above schematic, showing the LED current to be indeed `\(10mA\)`. It works!
+Below are the simulation results for the above schematic, showing the LED current to be indeed stem:[10mA]. It works!
 
-{{< img src="constant-current-bjt-based-led-driver-simulation-results.png" width="1691px" caption="The simulation results of a constant-current BJT-based LED driver." >}}
+.The simulation results of a constant-current BJT-based LED driver.
+image::constant-current-bjt-based-led-driver-simulation-results.png[width=800]
 
 #### Using A Resistor Divider To Drive The Base
 
@@ -230,22 +252,33 @@ A resistor divider can simple way to drive the base of an NPN current-sink if yo
 
 **Design Procedure:**
 
-. Choose the resistor-divider `\(R_1\)` and `\(R_2\)` to provide a voltage at the base of the transistor in the region of `\(2.0-5.0\)`V. I choose `\(R_1 = 10k\Omega\)` as this is a standard resistance, and then `\(R_2 = 2.2k\Omega\)` to give a `\(V_B = 2.16V\)`.
-. Subtract `\(0.7V\)` of `\(V_B\)` to get `\(V_E\)`. In this case, `\(V_E = 1.46V\)`.
-. Size `\(R_E\)` to set the desired current of your current sink. Using Ohm's Law, `\(R_E = \frac{V_E}{I}\)`. In this case we wanted `\(2mA\)` to drive an LED, so:
-    <p>\begin{align}
-      R_E &= \frac{1.46V}{2mA} \\
-          &= 730\Omega \\
-          &\approx 732 \, \text{(closest E96 value)}
-    \end{align}</p>
-. As a sanity check, make sure the output impedance of the resistor divider is much less than the input impedance looking into the base of the BJT (otherwise the resistor divider output will get significantly loaded and it's output voltage will drop). That is:
-    <p>\begin{align}
-    R_1 || R_2 &\ll \beta R_E \\
-    \frac{10k\Omega \cdot 2.2k\Omega}{10k\Omega + 2.2k\Omega} &\ll 100 \cdot 732\Omega \\
-    1.80k\Omega &\ll 73.2k\Omega
-    \end{align}</p>
+. Choose the resistor-divider stem:[R_1] and stem:[R_2] to provide a voltage at the base of the transistor in the region of stem:[2.0-5.0]V. I choose stem:[R_1 = 10k\Omega] as this is a standard resistance, and then stem:[R_2 = 2.2k\Omega] to give a stem:[V_B = 2.16V].
 
-    The above equation holds true so this design should work as a good current sink ✅
+. Subtract stem:[0.7V] of stem:[V_B] to get stem:[V_E]. In this case, stem:[V_E = 1.46V].
+
+. Size stem:[R_E] to set the desired current of your current sink. Using Ohm's Law, stem:[R_E = \frac{V_E}{I}]. In this case we wanted stem:[2mA] to drive an LED, so:
++
+[stem]
+++++
+\begin{align}
+R_E &= \frac{1.46V}{2mA} \nonumber \\
+    &= 730\Omega \nonumber \\
+    &= \approx 732 \, \text{(closest E96 value)}
+\end{align}
+++++
+
+. As a sanity check, make sure the output impedance of the resistor divider is much less than the input impedance looking into the base of the BJT (otherwise the resistor divider output will get significantly loaded and it's output voltage will drop). That is:
++
+[stem]
+++++
+\begin{align}
+R_1 || R_2 &\ll \beta R_E \nonumber \\
+\frac{10k\Omega \cdot 2.2k\Omega}{10k\Omega + 2.2k\Omega} &\ll 100 \cdot 732\Omega \nonumber \\
+1.80k\Omega &\ll 73.2k\Omega
+\end{align}
+++++
++
+The above equation holds true so this design should work as a good current sink ✅
 
 ### Current Mirrors
 
@@ -253,37 +286,51 @@ A _current mirror_ is a current-copying circuit in where one the current in one 
 
 A basic PNP BJT-based current mirror is shown below: 
 
-{{% img src="current-mirror-pnp.svg" width="400px" caption="A basic PNP-based current mirror programmed to source 1mA into the load. Q1 and Q2 should be a matched transistor pair to achieve good mirroring of the current." %}}
+.A basic PNP-based current mirror programmed to source 1mA into the load. Q1 and Q2 should be a matched transistor pair to achieve good mirroring of the current.
+image::current-mirror-pnp.svg[width=400]
 
 **Design Procedure:**
 
-. Decide on the program current, `\(I_P\)`. This will also be the current through the load. We'll use this value later! For this example we'll choose `\(1mA\)`.
-. Find the voltage across `\(R_1\)`, nothing that `\(Q_1\)` has a diode voltage drop of `\(0.7V\)` from emitter to base (with the emitter tied to `\(V_{CC}\)`), at that the base and collector of `\(Q_1\)` are tied together and hence at the same voltage:
+. Decide on the program current, stem:[I_P]. This will also be the current through the load. We'll use this value later! For this example we'll choose stem:[1mA].
 
-    <p>\begin{align}
-    V_{R1}  &= 12V - 0.7V \\
-            &= 11.3V
-    \end{align}<p>
+. Find the voltage across stem:[R_1], nothing that stem:[Q_1] has a diode voltage drop of stem:[0.7V] from emitter to base (with the emitter tied to stem:[V_{CC}]), at that the base and collector of stem:[Q_1] are tied together and hence at the same voltage:
++
+[stem]
+++++
+\begin{align}
+V_{R1}  &= 12V - 0.7V \nonumber \\
+        &= 11.3V
+\end{align}
+++++
 
-. Set the resistance of `\(R_1\)` using Ohm's Law:
-
-    <p>\begin{align}
-    R_1 &= \frac{V_{R1}}{I_P} \\
-        &= \frac{11.3V}{1mA} \\
-        &= 11.3k\Omega
-    \end{align}</p>
+. Set the resistance of stem:[R_1] using Ohm's Law:
++
+[stem]
+++++
+\begin{align}
+R_1 &= \frac{V_{R1}}{I_P} \nonumber \\
+    &= \frac{11.3V}{1mA} \nonumber \\
+    &= 11.3k\Omega
+\end{align}
+++++
 
 . All done!
+
+### Capacitance Multipliers
+
+Go to the link:/electronics/components/capacitors#_capacitance_multipliers[Capacitance Multipliers] section to see how BJT transistors are used in capacitance multipliers.
 
 ## Common BJTs
 
 The `BC` range of BJTs, including the `BC547` and `BC548` are very common, low-cost general purpose BJT transistors that you will encounter in hobbyist and professional electronics designs alike. They originated with the `BC108` family of metal-cased transistors.
 
+* `2N2222`: First introduced by Motorola at the 1962 IRE convention (using a novel new STAR technology)<<haenichen-interview>>. Since then the 2N2222 has been made by a number of different manufacturers. Complementary pair to the PNP 2N2907.
 * `BC547`: Same as the BC548, but with a higher breakdown voltage.
-* `BC548`: Common NPN transistor, used for switching and amplification purposes.
+* `BC548`: Common NPN transistor, used for switching and amplification purposes. Suitable replacement for the `2N2222` as long as max. voltage/current rating are not exceeded.
 * `BC549`: Low noise version of the BC548.
 
-{{% img src="bc548-transistor-to92-photo.png" width="400px" caption="A photo of the ubiqituous BC548 BJT transistor in to TO-92 package. Image from https://www.dnatechindia.com/bc-548-npn-transistor-buy-online-india.html." %}}
+."A photo of the ubiquitous BC548 BJT transistor in to TO-92 package. Image from https://www.dnatechindia.com/bc-548-npn-transistor-buy-online-india.html.
+image::bc548-transistor-to92-photo.png[width=400]
 
 ## Multiple-Collector And Multiple-Emitter BJTs
 
@@ -291,13 +338,13 @@ Multiple emitter and multiple collector BJTs are special types of BJTs which hav
 
 {{< img src="multiple-emitter-bjt-schematic-symbol-u1.png" width="322px" caption="The schematic symbol for a multiple-emitter BJT." >}}
 
-In the case of a multiple collector BJT, the total collector current `\(I_{C,tot}\,\)` is set by the base current `\(I_B\)`. If all the collectors are the same size (the silicon is physically the same size), then the current is equally split across all collectors.
+In the case of a multiple collector BJT, the total collector current stem:[I_{C,tot}\,] is set by the base current stem:[I_B]. If all the collectors are the same size (the silicon is physically the same size), then the current is equally split across all collectors.
 
 **The multiple-emitter BJT can be used to implement AND logic.** The multiple-emitter BJT forms an integral part of the TTL AND input circuitry (e.g. the 7400 series of integrated circuits). They were introduced into digital logic design to replace the diodes of _diode-transistor logic (DTL)_, with the advantage of a lower switching time and lower power dissipation.
 
 {{< img src="basic-two-input-tll-nand-gate-schematic.png" width="843px" caption="The schematic of a basic two-input TTL NAND gate." >}}
 
-Multiple emitter BJTs were also used in older (e.g. from the 1960's) RAM. For example, Intel's first IC, the 3101 (64 bits of RAM!), **contains multiple emitter BJTs as part of the 2-state latch circuitry which holds one bit of information**. One emitter is used to select which cell to read or write, while the other emitter is used to read or write the data. See an excellent tear-down of the IC on [Ken Shirriff's blog](http://www.righto.com/2017/07/inside-intels-first-product-3101-ram.html).
+Multiple emitter BJTs were also used in older (e.g. from the 1960's) RAM. For example, Intel's first IC, the 3101 (64 bits of RAM!), **contains multiple emitter BJTs as part of the 2-state latch circuitry which holds one bit of information**. One emitter is used to select which cell to read or write, while the other emitter is used to read or write the data. See an excellent tear-down of the IC on link:http://www.righto.com/2017/07/inside-intels-first-product-3101-ram.html[Ken Shirriff's blog].
 
 ## Reverse Active Mode
 
@@ -309,19 +356,25 @@ Many older handheld multimeters contain transistor testers for testing BJT trans
 
 I also found this older "Micronta Transistor Tester" device on TradeMe many years ago, I bought in purely out of interest (Micronta being a brand belonging to Radio Shack):
 
-{{% figure src="micronta-transistor-tester-box.jpg" width="600px" caption="The front box." %}}
+[#img-transistor-tester-front] 
+.The front box.
+image::micronta-transistor-tester-box.jpg[width=600]
 
+++++
 <div style="display: flex;">
 {{% figure src="micronta-transistor-tester-front-panel.jpg" width="300px" caption="The front panel." %}}
 {{% figure src="micronta-transistor-tester-internals.jpg" width="300px" caption="The internal circuitry." %}}
 </div>
+++++
 
 ## External Resources
 
-[This](https://www.youtube.com/watch?v=t0UOSIUve9E) is a great video on two not-so-common transistor biasing configurations.
+link:https://www.youtube.com/watch?v=t0UOSIUve9E[This] is a great video on two not-so-common transistor biasing configurations.
 
-The you are looking for a slice of history and some informative transistor information, check out the [1964 edition of the GE Transistor Manual](ge-transistor-manual-1964.pdf).
+The you are looking for a slice of history and some informative transistor information, check out the link:ge-transistor-manual-1964.pdf[1964 edition of the GE Transistor Manual].
 
-## References
+[bibliography]
+== References
 
-[^penn-ese319-lecture-notes]: <https://www.seas.upenn.edu/~ese319/Lecture_Notes/Lec_9_CCandCBDesigns_08.pdf>
+* [[[haenichen-interview]]] http://www.semiconductormuseum.com/Transistors/Motorola/Haenichen/Haenichen_Page11.htm, retrieved 2021-06-20.
+* [[[penn-ese319-lecture-notes]]]: https://www.seas.upenn.edu/~ese319/Lecture_Notes/Lec_9_CCandCBDesigns_08.pdf, retrieved 2020-02-04.
