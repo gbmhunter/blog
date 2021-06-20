@@ -69,6 +69,10 @@ assetDir = "assets"
       source-highlighter = "rouge"
       rouge-css = "style"
       rouge-style = "github"
+      toc = true
+      xrefstyle = "short"
+      stem = "latexmath"
+      sectnums = true
 
 [related]
     threshold= 80
