@@ -1,0 +1,48 @@
+---
+created: 2021-06-20
+lastmod: 2021-06-20
+title: "AsciiDoc Test Page"
+---
+
+:toc:
+:xrefstyle: short
+:stem: latexmath
+:sectnums:
+
+Table of contents should be shown above^^^. Sections should have numbers in front of them, both in the ToC and in-front of the section headings.
+
+== Maths
+
+An example on an inline equation stem:[y = \frac{1}{x^2}] is embedded in this sentence.
+
+And here is a block-level equation. There second line of the equation should be numbered.
+
+[stem]
+++++
+\begin{align}
+y = \frac{1}{x^2} \nonumber \\
+y = 2
+\end{align}
+++++
+
+== Images
+
+There should be a vector image below that is `300px` wide, with the caption "Hello, world":
+
+.Hello, world
+image::example-vector-image.svg[width=300]
+
+== References
+
+This sentence contains a bibliographic reference at the end of it<<example-bib>>.
+
+== Admonitions
+
+TIP: This is a tip. I should be green and have a bulb icon on my left.
+
+WARNING: This is a warning. I should be red.
+
+[bibliography]
+== References
+
+* [[[example-bib]]] Bibliography text goes here.

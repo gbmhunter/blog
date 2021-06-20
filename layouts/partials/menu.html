@@ -2,7 +2,7 @@
     {{ with .Site.GetPage "/" }}
         {{ range .Sections.ByTitle }}
             {{/* We don't want a menu item for specific pages listed here */}}
-            {{ if (and (ne .Title "Posts") (ne .Title "Test Page")) }}
+            {{ if (and (ne .Title "Posts") (ne .Title "Tests")) }}
                 <li class="dropdown">
                     <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div><div class="right-arrow">▶</div></a>
                     <!-- Using partialCached here offers significant build time speedup, as this recursive menu would otherwise be rebuilt for
