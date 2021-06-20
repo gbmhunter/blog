@@ -1121,6 +1121,8 @@ _Capacitance multipliers_ are circuits which use an active element such as a BJT
 * Providing low-pass filtering into heavy loads, in where just a standard RC filter would suffer from too much voltage drop (or power dissipation) across the resistor.
 * Power supply filtering for Class-A audio amplifiers.
 
+What they are not good for is propping up the voltage rail when the load itself experiences a high di/dt (change in current over time). Loads that draw high peak currents include solenoids switching and H-bridges. They are not any better than a regular capacitor in this regard, as they store no more energy.
+
 The below schematic shows a simple capacitance multiplier made from 1 resistor, 1 capacitor and 1 NPN BJT transistor:
 
 [#img-capacitance-multiplier-single] 
