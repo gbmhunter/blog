@@ -67,7 +67,12 @@ This sentence contains a bibliographic reference at the end of it<<example-bib>>
 
 == Tables
 
+|===
+| Header Col. 1 | Header Col. 2
 
+| Cell 1, 1 | Cell 1, 2
+| Cell 2, 1 | Cell 2, 2
+|===
 
 == Admonitions
 

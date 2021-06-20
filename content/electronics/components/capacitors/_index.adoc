@@ -1113,21 +1113,23 @@ Ceramic chip capacitors usually have a three letter code which describes the max
 
 Feedthrough (or feedthru) capacitors are special three-terminal capacitors (sometimes with four connections) used for **suppression** of **RF noise**. They are also known under the more general name of an _EMI suppression filter_ or _three-terminal capacitor._
 
-{{< img src="feedthrough-capacitor-3d-render-0603-1608-3-connections.jpg" width="314px" caption="A 3D render of an 0603-sized feedthrough capacitor with 3 connections. Image from www.digikey.com." >}}
+.A 3D render of an 0603-sized feedthrough capacitor with 3 connections. Image from www.digikey.com.
+image::feedthrough-capacitor-3d-render-0603-1608-3-connections.jpg[width=350]
 
 Their advantage over a standard decoupling capacitor to ground is **lower parasitic series inductance**, which offers a lower impedance path for RF noise to ground.
 
 === Schematic Symbol
 
-{{< img src="feedthrough-capacitor-schematic-symbol-3-connection.png" width="422px" caption="The schematic symbol for a 3-terminal feedthrough capacitor."  >}}
+.The schematic symbol for a 3-terminal feedthrough capacitor.
+image::feedthrough-capacitor-schematic-symbol-3-connection.png[width=400]
 
 === Component Package
 
-Many smaller, PCB suitable feedthrough capacitors come in {{% link text="chip packages" src="/pcb-design/component-packages/chip-eia-component-packages" %}}, such as the 0603 or 0402 size. They can be distinguished from normal capacitors by the fact that the package will have three or four terminals rather than the standard two.
+Many smaller, PCB suitable feedthrough capacitors come in link:/pcb-design/component-packages/chip-eia-component-packages[chip packages], such as the 0603 or 0402 size. They can be distinguished from normal capacitors by the fact that the package will have three or four terminals rather than the standard two.
 
 === Uses
 
-Feedthrough capacitors are commonly used in {{% link text="RC, LC, π and t-type filters" src="/electronics/circuit-design/analogue-filters" %}}) when good RF performance is required.
+Feedthrough capacitors are commonly used in link:/electronics/circuit-design/analogue-filters[RC, LC, π and t-type filters] when good RF performance is required.
 
 == Capacitance Multipliers
 
