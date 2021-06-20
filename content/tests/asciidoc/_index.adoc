@@ -25,6 +25,35 @@ y = 2
 \end{align}
 ++++
 
+== Code
+
+Inline `uint8_t code` is here.
+
+Below is a C++ code block:
+
+.Some C++ code
+[source,c++]
+----
+include <stdio>
+
+int main() {
+    std::cout << "Testing..." << std::endl;
+    return 0;
+}
+----
+
+Below is a Ruby code block:
+
+.Some Ruby code
+[source,ruby]
+----
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+----
+
 == Images
 
 There should be a vector image below that is `300px` wide, with the caption "Hello, world":
