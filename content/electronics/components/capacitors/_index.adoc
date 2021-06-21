@@ -1322,11 +1322,13 @@ Capacitance multipliers don't have to built from BJT transistors, they can also 
 
 When electrolytic capacitors get old, they can dry out and stop working properly (for example, their capacitance can reduce and/or maximum dielectric voltage drop). There are many sources quoting that electrolytic capacitors can be repaired by ramping the voltage slowly up to its full rated voltage. It is meant to repair the aluminium oxide dielectric layer.
 
-{{< img src="circuit-schematic-showing-how-to-repair-an-electrolytic-capacitor.png" width="287px" caption="Schematic showing how to repair/reform an old electrolytic capacitor. The voltage on the capacitor should slowly rise to the rated voltage."  >}}
+.Schematic showing how to repair/reform an old electrolytic capacitor. The voltage on the capacitor should slowly rise to the rated voltage.
+image::circuit-schematic-showing-how-to-repair-an-electrolytic-capacitor.png[width=300]
 
 This can be done with power supply set the rated voltage and a high-power (e.g. 5W) 30kΩ resistor in series with the capacitor, as shown in the image above. Connect the circuit and measure the voltage across the capacitor. It should start at 0V and increase as an inverse exponential as the current through the capacitor decreases. Wait until the voltage across the capacitor gets above 90% of the rated voltage before disconnecting the circuit, as shown in the image below. If the voltage stabilises below 90% of the full-rated voltage, the capacitor is stuffed and can be thrown out.
 
-{{< img src="capacitor-voltage-graph-while-charging-through-resistor-for-reforming.png" width="399px" caption="Graph of an electrolytic capacitor charging through a resistor to reform the aluminium oxide. The graph part of the image from http://www.antonine-education.co.uk/Pages/Electronics_2/Timing_Subsystems/RC_Networks/further_page_2.htm."  >}}
+.Graph of an electrolytic capacitor charging through a resistor to reform the aluminium oxide. The graph part of the image from http://www.antonine-education.co.uk/Pages/Electronics_2/Timing_Subsystems/RC_Networks/further_page_2.htm.
+image::capacitor-voltage-graph-while-charging-through-resistor-for-reforming.png[width=400]
 
 == Energy Loss While Charging A Capacitor
 
@@ -1334,7 +1336,8 @@ An interesting phenomenon occurs when charging a capacitor from a fixed voltage 
 
 Here is an example schematic:
 
-{{< img src="energy-loss-while-charging-a-capacitor-schematic.png" width="573px" caption="A schematic showing the basic circuit while charging a capacitor, highlighting the energy lost in the series resistance."  >}}
+.A schematic showing the basic circuit while charging a capacitor, highlighting the energy lost in the series resistance.
+image::energy-loss-while-charging-a-capacitor-schematic.png[width=600]
 
 This quite significant and fixed energy loss has implications when it comes to charging caps in low-power circuits (e.g. running of a battery), and sizing resistors (including NTC thermistors) for limiting the inrush current to capacitors, normally as part of the front end to a power supply or motor driver.
 

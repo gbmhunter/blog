@@ -237,7 +237,7 @@ r_{in} &= \frac{v_{in}}{i_{in}} \\
 
 ### Constant-Current Sink
 
-BJTs can be configured to sink a relatively constant amount of current which is independent on the output-side voltage. This can be a useful way of driving an LED from a microcontroller with a constant current, no matter what voltage source is used to drive the LED. BJT current sinks and sources are good for simple, cheap situations in where high precision is not the name of the game. If you want high precision, you're best bet is to build a {{% link text="current-sink from an op-amp" src="/electronics/components/op-amps#current-sinks" %}}.
+BJTs can be configured to sink a relatively constant amount of current which is independent on the output-side voltage. This can be a useful way of driving an LED from a microcontroller with a constant current, no matter what voltage source is used to drive the LED. BJT current sinks and sources are good for simple, cheap situations in where high precision is not the name of the game. If you want high precision, you're best bet is to build a link:/electronics/components/op-amps#current-sinks[current-sink from an op-amp].
 
 .The simulation schematic for a constant-current BJT-based LED driver.
 image::constant-current-bjt-based-led-driver.png[width=500]
@@ -269,7 +269,8 @@ image::constant-current-bjt-based-led-driver-simulation-results.png[width=800]
 
 A resistor divider can simple way to drive the base of an NPN current-sink if you don't need active control. This works well if the supply voltage is known and stable, as the current will fluctuate with supply voltage (if this is going to be an issue, consider using a Zener-based circuit to drive the base of the NPN BJT). Schematics of the design are shown below:
 
-{{% img src="current-source-npn-voltage-divider-base.svg" width="400px" caption="A NPN BJT current-sink using a resistor divider to drive the base." %}}
+.A NPN BJT current-sink using a resistor divider to drive the base.
+image::current-source-npn-voltage-divider-base.svg[width=800]
 
 **Design Procedure:**
 
@@ -303,7 +304,7 @@ The above equation holds true so this design should work as a good current sink 
 
 ### Current Mirrors
 
-A _current mirror_ is a current-copying circuit in where one the current in one BJT is programmed via a resistor and is used to control the current in a second BJT which is used to drive the same current into a load. The current-mirrors shown below are built with BJTs, but other active transistors such as {{% link text="MOSFETs" src="/electronics/components/transistors/mosfets" %}} can also be used.
+A _current mirror_ is a current-copying circuit in where one the current in one BJT is programmed via a resistor and is used to control the current in a second BJT which is used to drive the same current into a load. The current-mirrors shown below are built with BJTs, but other active transistors such as link:/electronics/components/transistors/mosfets[MOSFETs] can also be used.
 
 A basic PNP BJT-based current mirror is shown below: 
 
@@ -357,13 +358,15 @@ image::bc548-transistor-to92-photo.png[width=400]
 
 Multiple emitter and multiple collector BJTs are special types of BJTs which have more than one emitter or more than one collector.
 
-{{< img src="multiple-emitter-bjt-schematic-symbol-u1.png" width="322px" caption="The schematic symbol for a multiple-emitter BJT." >}}
+.The schematic symbol for a multiple-emitter BJT.
+image::multiple-emitter-bjt-schematic-symbol-u1.png[width=300]
 
 In the case of a multiple collector BJT, the total collector current stem:[I_{C,tot}\,] is set by the base current stem:[I_B]. If all the collectors are the same size (the silicon is physically the same size), then the current is equally split across all collectors.
 
 **The multiple-emitter BJT can be used to implement AND logic.** The multiple-emitter BJT forms an integral part of the TTL AND input circuitry (e.g. the 7400 series of integrated circuits). They were introduced into digital logic design to replace the diodes of _diode-transistor logic (DTL)_, with the advantage of a lower switching time and lower power dissipation.
 
-{{< img src="basic-two-input-tll-nand-gate-schematic.png" width="843px" caption="The schematic of a basic two-input TTL NAND gate." >}}
+.The schematic of a basic two-input TTL NAND gate.
+image:basic-two-input-tll-nand-gate-schematic.png[width=800]
 
 Multiple emitter BJTs were also used in older (e.g. from the 1960's) RAM. For example, Intel's first IC, the 3101 (64 bits of RAM!), **contains multiple emitter BJTs as part of the 2-state latch circuitry which holds one bit of information**. One emitter is used to select which cell to read or write, while the other emitter is used to read or write the data. See an excellent tear-down of the IC on link:http://www.righto.com/2017/07/inside-intels-first-product-3101-ram.html[Ken Shirriff's blog].
 
@@ -381,12 +384,15 @@ I also found this older "Micronta Transistor Tester" device on TradeMe many year
 .The front box.
 image::micronta-transistor-tester-box.jpg[width=600]
 
-++++
-<div style="display: flex;">
-{{% figure src="micronta-transistor-tester-front-panel.jpg" width="300px" caption="The front panel." %}}
-{{% figure src="micronta-transistor-tester-internals.jpg" width="300px" caption="The internal circuitry." %}}
-</div>
-++++
+[cols="1,1"]
+|===
+a|
+.The front panel.
+image::micronta-transistor-tester-front-panel.jpg[width=300]
+a|
+.The internal circuitry.
+image::micronta-transistor-tester-internals.jpg[width=300]
+|===
 
 ## External Resources
 
