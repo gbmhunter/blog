@@ -1,0 +1,136 @@
+<!-- This serves as a "shell" template for all pages of the site -->
+<!DOCTYPE html>
+<html lang="{{ $.Site.LanguageCode | default "en" }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">        
+        
+        <!-- TITLE AND DESCRIPTION (SEO)
+            NOTE: the Site's title, and if there is a page title, that is set too -->
+
+        <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }} {{ end }}</title>
+        <!--  For pages, this will use the description field if it's provided in the markdown metadata, otherwise
+        it will will make the description up from a summary -->
+        {{ if .IsHome }}
+            <meta name="description" content="{{ $.Site.Params.description }}" />
+        {{- else if .Description -}}
+            <meta name="description" content="{{ .Description }}" />
+        {{- else if .IsPage -}}
+            <meta name="description" content="{{ .Summary | plainify }}">
+        {{ end }}
+        
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+        <!-- Make page match the screen's width in device-independant pixels -->
+        <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+        <!-- This should output a meta tag looking like <meta name="generator" content="Hugo 0.55.0" /> -->
+        {{ hugo.Generator }}
+
+        {{/* NOTE: For Production make sure you add `HUGO_ENV="production"` before your build command */}}
+        {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
+            <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+        {{ else }}
+            <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+        {{ end }}
+
+        {{ $stylesheet := .Site.Data.webpack_assets.app }}
+        {{ with $stylesheet.css }}
+            <link href="{{ relURL (printf "%s%s" "dist/" .) }}" rel="stylesheet">
+        {{ end }}
+
+        {{ range .Site.Params.custom_css }}
+            <link rel="stylesheet" href="{{ relURL ($.Site.BaseURL) }}{{ . }}">
+        {{ end }}
+
+        {{ block "favicon" . }}
+            {{ partial "site-favicon.html" . }}
+        {{ end }}
+
+        {{ with .OutputFormats.Get "RSS" }}
+            <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+            <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
+        {{ end }}
+
+        {{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/spf13/hugo/blob/master/tpl/tplimpl/template_embedded.go#L158 */}}
+        {{- template "_internal/opengraph.html" . -}}
+        {{- template "_internal/google_news.html" . -}}
+        {{- template "_internal/schema.html" . -}}
+        {{- template "_internal/twitter_cards.html" . -}}
+
+        {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
+            {{ template "_internal/google_analytics_async.html" . }}
+        {{ end }}
+
+        <!-- MAIN STYLING SCRIPT FOR THIS SITE -->
+        <!-- Make sure this is loaded in the head so that the browser does not render twice -->
+        <link rel="stylesheet" href="/css/style.css"/>
+
+        {{ $sass := resources.Get "main.scss" }}
+        {{ $styles := $sass | resources.ToCSS | resources.Fingerprint }}
+        <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+        <!-- jQuery required for calculators and image lightbox -->
+        <script src=https://code.jquery.com/jquery-3.3.1.min.js></script>
+
+    </head>
+
+    <body>
+        <!-- ======================================= -->
+        <!-- MENU BAR (left column on desktop, top section on mobile)  -->
+        <!-- ======================================= -->
+        <div class="left-column-outer"> 
+            <div class="left-column">
+
+                <!--- These two sections are stacked in a column when on desktop, side-by-side when on mobile -->
+                <div class="header-section-1">
+                    <div class="logo-img"><a href="/"><img src={{ "/images/logo/cartoon-ninja.jpg" | absURL }} /></a></div>
+                    <div class="site-title"><a href="/">mbedded.ninja</a></div>
+                    <div class="site-description">The embedded engineering website that's got your back.</div>
+                </div>
+
+                <div class="header-section-2">                  
+                    <!-- MAIN MENU -->
+                    <!-- Make sure this is cached! If not, the build will take a long, long time. -->
+                    {{ partialCached "menu.html" . }}
+                </div>
+
+                <div class="header-section-3">
+                    <!-- RECENTLY EDITED CONTENT -->
+                    <!-- Make sure this is cached! If not, the build will take a long time (but not as long as the menu) -->
+                    {{ partialCached "recently-edited-item" . }}
+                </div>  
+            </div>
+        </div>
+
+        <div class="right-column" style="position: relative;">
+          <div class="inner-right-column">
+              <!-- {{ block "header" . }}{{ partial "site-header.html" .}}{{ end }} -->
+              <!-- This main element wraps the main content of the page -->
+              <main role="main">
+                  {{ block "main" . }}{{ end }}
+              </main>
+              {{ block "footer" . }}{{ partial "site-footer.html" . }}{{ end }}
+              {{ block "scripts" . }}{{ partial "site-scripts.html" . }}{{ end }}
+          </div>
+        </div>
+
+
+
+        {{ partial "mathjax-markdown-solution.html" . }}
+        <!-- LOAD LIGHTBOX FOR IMAGES -->
+        {{ partial "load-photoswipe.html" . }}
+
+        <!-- Instant Search library -->
+        <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.8.1"></script>                
+  </body>
+          <!-- 'Back to Top' button -->
+          <!-- Based of code at https://codepen.io/rdallaire/pen/apoyx -->
+          <a href="javascript:" id="return-to-top"><i class="fas fa-chevron-up"></i></a>
+          <script src="/js/scroll-to-top.js"></script>
+</html>
