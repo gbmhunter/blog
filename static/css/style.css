@@ -372,8 +372,7 @@ html {
     height: 100%;
 }
 
-body {
-    /* height: 100%; */
+/*body {
     display: flex;
     flex-direction: column;
     background-color: rgb(241, 241, 241);
@@ -383,9 +382,9 @@ body {
         height: 100%;        
         flex-direction: row;        
     }
-}
+}*/
 
-.left-column-outer {
+/* .left-column-outer {
     width: 100%;
     margin: auto;
     display: flex;     
@@ -403,12 +402,12 @@ body {
 .left-column {
     width: 90%;
     margin-top: 1em;
-}
+} */
 
 
 /* Left column contains logo and menu */
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
     .left-column {
         min-height: 100%;
         display: flex;
@@ -417,10 +416,6 @@ body {
         justify-content: space-around;
 
         background-color: white;
-        /* width: 30%; */
-        /* max-width: 450px; */
-
-        /* Add subtle border to left-hand column */
         box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
     }
 
@@ -443,15 +438,12 @@ body {
         justify-content: flex-start;
 
         background-color: white;
-        /* width: 30%; */
-        /* max-width: 450px; */
 
-        /* Add subtle border to left-hand column */
         box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
     }
-}
+} */
 
-.header-section-1 {    
+/* .header-section-1 {    
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -462,7 +454,7 @@ body {
     .header-section-1 {
         width: 100%;
     }
-}
+} */
 
 .logo-img {
     width: 70%;
