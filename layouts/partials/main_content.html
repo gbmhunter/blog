@@ -1,71 +1,74 @@
 
-    {{ $section := .Site.GetPage "section" .Section }}
-    <article>
-    <header>
-        {{ partial "breadcrumbs.html" . }}
-        <p>{{with .CurrentSection.Title }}{{. | upper }}{{end}}</p>
-        <h1>
-            <a href="{{ .Permalink }}" class="post-title">{{- .Title -}}</a>
-        </h1>
+{{ $section := .Site.GetPage "section" .Section }}
+ 
+<article class="col-md-7">
+  <header>
+      {{ partial "breadcrumbs.html" . }}
+      <p>{{with .CurrentSection.Title }}{{. | upper }}{{end}}</p>
+      <h1>
+          <a href="{{ .Permalink }}" class="post-title">{{- .Title -}}</a>
+      </h1>
 
-        <div>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Date Published:</td>
-                        <td>
-                            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="datePublished">
-                                <i>{{ .Date.Format "January 2, 2006" }}</i>
-                            </time>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Last Modified:</td>
-                        <td>
-                            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="dateModified">
-                                <i>{{ .Lastmod.Format "January 2, 2006" }}</i>
-                            </time>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> 
-        </div>
-        
-        
-        {{/*  
-            Show "reading time" and "word count" but only if one of the following are true:
-            1) A global config `params` value is set `show_reading_time = true`
-            2) A section front matter value is set `show_reading_time = true`
-            3) A page front matter value is set `show_reading_time = true`
-        */}}
-        {{ if (or (eq (.Param "show_reading_time") true) (eq $section.Params.show_reading_time true) )}}
-        <span> - {{ .ReadingTime}} minutes read</span>
-        <span> - {{ .WordCount}} words</span>
-        {{ end }}
-    </header>
+      <div>
+          <table>
+              <tbody>
+                  <tr>
+                      <td>Date Published:</td>
+                      <td>
+                          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="datePublished">
+                              <i>{{ .Date.Format "January 2, 2006" }}</i>
+                          </time>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>Last Modified:</td>
+                      <td>
+                          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="dateModified">
+                              <i>{{ .Lastmod.Format "January 2, 2006" }}</i>
+                          </time>
+                      </td>
+                  </tr>
+              </tbody>
+          </table> 
+      </div>
+      
+      
+      {{/*  
+          Show "reading time" and "word count" but only if one of the following are true:
+          1) A global config `params` value is set `show_reading_time = true`
+          2) A section front matter value is set `show_reading_time = true`
+          3) A page front matter value is set `show_reading_time = true`
+      */}}
+      {{ if (or (eq (.Param "show_reading_time") true) (eq $section.Params.show_reading_time true) )}}
+      <span> - {{ .ReadingTime}} minutes read</span>
+      <span> - {{ .WordCount}} words</span>
+      {{ end }}
+  </header>
 
-    <div class="content">
-        {{ .TableOfContents }}     
-        
-        {{ $childpages := union .Sections .Pages }}
-        {{ if $childpages }}
-        <h2>Child Pages</h2>
-        {{ end }}
-        {{ range $childpages.ByTitle }}
-            <li>
-                <a href="{{.Permalink}}">{{.Title}}</a>
-            </li>
-        {{ end }}
+  <div class="content">
+      
+      {{ $childpages := union .Sections .Pages }}
+      {{ if $childpages }}
+      <h2>Child Pages</h2>
+      {{ end }}
+      {{ range $childpages.ByTitle }}
+          <li>
+              <a href="{{.Permalink}}">{{.Title}}</a>
+          </li>
+      {{ end }}
 
-        {{- .Content -}}
-    </div>
+      {{- .Content -}}
+  </div>
 
-    <hr />
+  <hr />
 
-    
-    {{- partial "related.html" . -}}
-    {{- partial "tags.html" . -}}
-    <div class="disqus-divider"></div>
-    {{ template "_internal/disqus.html" . }}    
+  
+  {{- partial "related.html" . -}}
+  {{- partial "tags.html" . -}}
+  <div class="disqus-divider"></div>
+  {{ template "_internal/disqus.html" . }}    
 
-    </article>
+</article>
+<div id="toc" class="col-md-2" style="background-color: red;">
+  {{ .TableOfContents }}
+</div>
