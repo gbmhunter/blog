@@ -1,0 +1,59 @@
+baseURL: 'https://blog.mbedded.ninja/'
+languageCode: en-us
+title: mbedded.ninja
+sectionPagesMenu: main
+pluralizelisttitles: 'false'
+pygmentsCodeFences: 'true'
+disqusShortname: blog-mbedded-ninja
+googleAnalytics: UA-92834105-2
+preserveTaxonomyNames: 'true'
+enableGitInfo: false
+timeout: 30000
+assetDir: assets
+params:
+  author: Geoffrey Hunter
+  description: An embedded engineering site that's got your back.
+  images:
+    - /images/logo/mbedded-ninja-twitter-card-600x300.png
+markup:
+  tableOfContents:
+    ordered: false
+    startLevel: 2
+    endLevel: 2
+  goldmark:
+    renderer:
+      unsafe: true
+  asciidocext:
+    backend: html5
+    workingfoldercurrent: false
+    trace: true
+    verbose: true
+    attributes:
+      includedir: include
+      icons: image
+      icontype: svg
+      iconsdir: /assets/icons
+      experimental: true
+      source-highlighter: rouge
+      rouge-css: style
+      rouge-style: github
+      toc: true
+      xrefstyle: short
+      stem: latexmath
+      sectnums: true
+related:
+  threshold: 80
+  includeNewer: true
+  toLower: false
+  indices:
+    - name: keywords
+      weight: 100
+    - name: tags
+      weight: 100
+taxonomies:
+  category: categories
+  tag: tags
+outputs:
+  home:
+    - HTML
+    - RSS
