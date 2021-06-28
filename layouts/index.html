@@ -1,11 +1,14 @@
 {{ define "main" }}
-<div class="content">
+{{ "<!--" | safeHTML }}
+layouts/index.html
+{{ "-->" | safeHTML }}
+<div class="content col-md-6 col-centered">
     <div>
         <!-- Note that the content for index.html, as a sort of list page, will pull from content/_index.md -->
         <!-- This may be empty -->
         {{.Content}}
     </div>
-    <div>
+    <div id="recent-posts">
     <!-- Get the most recent posts, from any section, and then paginate them -->
     {{ range (.Paginate (first 20 ( sort (where .Site.Pages "Section" "posts") "Date" "desc" )) 5 ).Pages }}
         <!-- {{ .Render "summary"}} -->

@@ -41,10 +41,10 @@ assetDir = "assets"
 #     extensionsmask = ["autolink"] # Prevent naked URL from being converted into links, as this creates problems when the are URLs in figure captions.
 
 [markup]
-  [markup.tableOfContents]
-    endLevel = 10
+  [markup.tableOfContents]    
     ordered = false
     startLevel = 2
+    endLevel = 2 # Anything more than 2 and large TOCs overflow the page on large screens (see the "Capacitors" page as an example)
   [markup.goldmark]
     [markup.goldmark.renderer]
         # This is so we can include HTML in shortcodes that do not start with {{<

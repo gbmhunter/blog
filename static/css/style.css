@@ -443,65 +443,7 @@ html {
     }
 } */
 
-/* .header-section-1 {    
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    flex-grow: 0;
-    width: 60%;
-}
-@media (min-width: 800px) {
-    .header-section-1 {
-        width: 100%;
-    }
-} */
 
-.logo-img {
-    width: 70%;
-
-    /* max-width prevents image getting too large when on mobile device */
-    max-width: 300px;
-}
-
-.logo-img img {
-    width: 100%;
-}
-
-.site-title {
-    color: rgb(51, 51, 51);
-    font-size: 5vw;
-    font-weight: 700;
-
-    width: 80%;
-    text-align: center;
-}
-@media (min-width: 800px) {
-    .site-title {
-        font-size: 24px;
-    }
-}
-
-
-/* Disable any link styling for the site title */
-.site-title a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.site-description {
-    color: rgb(51, 51, 51);
-    font-size: 3vw;
-    font-weight: 400;
-
-    margin-top: 7px;
-    width: 60%;
-    text-align: center;
-}
-@media (min-width: 800px) {
-    .site-description {
-        font-size: 1.0rem;
-    }
-}
 
 /* ========================================================================= */
 /* RECENT UPDATES                                                            */

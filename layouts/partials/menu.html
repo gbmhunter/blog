@@ -1,30 +1,29 @@
-<ul class="menu">
-    {{ with .Site.GetPage "/" }}
-        {{ range .Sections.ByTitle }}
-            {{/* We don't want a menu item for specific pages listed here */}}
-            {{ if (and (ne .Title "Posts") (ne .Title "Tests")) }}
-                <li class="dropdown">
-                    <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div><div class="right-arrow">▶</div></a>
-                    <!-- Using partialCached here offers significant build time speedup, as this recursive menu would otherwise be rebuilt for
-                    every page! -->
-                    {{ partial "menu_recursive.html" . }}
-                </li>
-            {{ end }}
-        {{ end }}
-    {{ end }}
-    {{ with .Site.GetPage "/posts" }}
-        <li class="dropdown">
-            <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div></a>
-        </li>
-    {{ end }}
-    {{ with .Site.GetPage "/categories" }}
-        <li class="dropdown">
-            <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div></a>
-        </li>
-    {{ end }}
-    {{ with .Site.GetPage "/tags" }}
-        <li class="dropdown">
-            <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div></a>
-        </li>
-    {{ end }}
-</ul>
+<nav class="collapse bd-links" id="treeview-menu" aria-label="Docs navigation">
+  <ul class="list-unstyled">
+      {{ with .Site.GetPage "/" }}
+          {{ range .Sections.ByTitle }}
+              {{/* We don't want a menu item for specific pages listed here */}}
+              {{ if (and (ne .Title "Posts") (ne .Title "Tests")) }}
+                  <li class="">
+                      <!-- The data bs target doesn't like forward slashes, replace all with hyphens instead -->
+                      <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#{{ replace .RelPermalink "/" "-" }}" aria-expanded="false">
+                        {{ .Title }}
+                      </button>
+                      <!-- Using partialCached here offers significant build time speedup, as this recursive menu would otherwise be rebuilt for
+                      every page! -->
+                      {{ partial "menu_recursive.html" . }}
+                  </li>
+              {{ end }}
+          {{ end }}
+      {{ end }}
+      {{ with .Site.GetPage "/posts" }}
+          <li><a href="{{.Permalink}}">{{ .Title }}</a></li>
+      {{ end }}
+      {{ with .Site.GetPage "/categories" }}
+          <li><a href="{{.Permalink}}">{{ .Title }}</a></li>
+      {{ end }}
+      {{ with .Site.GetPage "/tags" }}
+          <li><a href="{{.Permalink}}">{{ .Title }}</a></li>
+      {{ end }}
+  </ul>
+</nav>
