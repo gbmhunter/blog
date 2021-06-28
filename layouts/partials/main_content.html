@@ -1,7 +1,12 @@
-
+{{ "<!--" | safeHTML }}
+partials/main_content.html
+{{ "-->" | safeHTML }}
+<!-- This partial is used for all list and page types, not used for homepage -->
+<!-- In total, this file contains HTML elements that use up 9 of the 12 bootstrap columns (leaving 3 for the site logo and menu)-->
 {{ $section := .Site.GetPage "section" .Section }}
- 
-<article class="col-md-7">
+
+<!-- order=3 when on small devices so below TOC, order=2 on medium up so TOC goes on the right-->
+<article class="col-md-6 order-3 order-md-2">
   <header>
       {{ partial "breadcrumbs.html" . }}
       <p>{{with .CurrentSection.Title }}{{. | upper }}{{end}}</p>
@@ -47,17 +52,17 @@
 
   <div class="content">
       
-      {{ $childpages := union .Sections .Pages }}
-      {{ if $childpages }}
-      <h2>Child Pages</h2>
-      {{ end }}
-      {{ range $childpages.ByTitle }}
-          <li>
-              <a href="{{.Permalink}}">{{.Title}}</a>
-          </li>
-      {{ end }}
+    {{ $childpages := union .Sections .Pages }}
+    {{ if $childpages }}
+    <h2>Child Pages</h2>
+    {{ end }}
+    {{ range $childpages.ByTitle }}
+      <li>
+        <a href="{{.Permalink}}">{{.Title}}</a>
+      </li>
+    {{ end }}
 
-      {{- .Content -}}
+    {{- .Content -}}
   </div>
 
   <hr />
@@ -69,6 +74,9 @@
   {{ template "_internal/disqus.html" . }}    
 
 </article>
-<div id="toc" class="col-md-2" style="background-color: red;">
-  {{ .TableOfContents }}
+<div id="right-hand-column" class="col-md-3 order-2 order-md-3">
+  <div id="toc">
+    <div>Page contents:</div>
+    {{ .TableOfContents }}
+  </div>
 </div>
