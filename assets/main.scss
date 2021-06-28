@@ -185,6 +185,10 @@ ul li p {
         display: flex;
         justify-content: center;
     }
+
+    img {
+        max-width: 100%; // Even if in the AsciiDoc file the image is specified with width=<large number>, make sure it is not wider than the parent content div
+    }
 }
 
 /* Disable automatic heading numbering because AsciiDoc will

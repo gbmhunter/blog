@@ -16,20 +16,22 @@ type: "page"
 
 ### Noise Power Spectral Density (PSD)
 
-**The _noise power spectral density_ (PSD) is a measure of the noise power per Hertz of bandwidth in a signal**. It also called the _noise spectral density_, _noise power density_, or just _noise density_. Typically denoted with `\(N_0\)` and has units `\(W / Hz\)`. The `\(0\)` in the symbol `\(N_0\)` is used to distinguish a density (i.e., per `\(Hz\)`). Without the `\(0\)`, `\(N\)` represents a noise power over a specified bandwidth.
+**The _noise power spectral density_ (PSD) is a measure of the noise power per Hertz of bandwidth in a signal**. It also called the _noise spectral density_, _noise power density_, or just _noise density_. Typically denoted with stem:[N_0] and has units stem:[W / Hz]. The stem:[0] in the symbol stem:[N_0] is used to distinguish a density (i.e., per stem:[Hz]). Without the stem:[0], stem:[N] represents a noise power over a specified bandwidth.
 
-In the case that the noise power spectral density is constant (white noise), the noise power `\(N\)` can be calculated from the noise power density `\(N_0\)` with the following equation:
+In the case that the noise power spectral density is constant (white noise), the noise power stem:[N] can be calculated from the noise power density stem:[N_0] with the following equation:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 N = BN_0
-\end{align}</p>
+\end{align}
+++++
 
-<p class="centered">
-where:<br/>
-\(N\) is the noise power, in Watts \(W\)<br/>
-\(B\) is the bandwidth of the signal, in Hertz \(Hz\)<br/>
-\(N_0\) is the white noise power spectral density, in \(W / Hz\) 
-</p>
+[.text-center]
+where: +
+\(N\) is the noise power, in Watts \(W\) +
+\(B\) is the bandwidth of the signal, in Hertz \(Hz\) +
+\(N_0\) is the white noise power spectral density, in \(W / Hz\)
 
 Noise power spectral density can be either one-sided or double-sided. TODO: Add more info on this.
 
@@ -37,29 +39,31 @@ Noise power spectral density can be either one-sided or double-sided. TODO: Add 
 
 _Noise amplitude spectral density_ (ASD) is an alternative to specifying a _noise power spectral density_. Instead of the noise power (in Watts), the noise "amplitude" is used. The amplitude is almost always either voltage or current (with voltage being the more common of the two). The symbol and units depend on whether voltage or current is used:
 
-- Noise voltage spectral density: Typical symbol `\(v_n\)` and has units `\(V / \sqrt{HZ}\)`
-- Noise current spectral density: Typical symbol `\(i_n\)` and has units `\(A / \sqrt{HZ}\)`
+- Noise voltage spectral density: Typical symbol stem:[v_n] and has units stem:[V / \sqrt{HZ}]
+- Noise current spectral density: Typical symbol stem:[i_n] and has units stem:[A / \sqrt{HZ}]
 
-The noise voltage spectral density `\(v_n\)` can be calculated from the noise power spectral density `\(N\)` if you assume the load is a resistance of `\(1\Omega\)`:
+The noise voltage spectral density stem:[v_n] can be calculated from the noise power spectral density stem:[N] if you assume the load is a resistance of stem:[1\Omega]:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 v_n = \sqrt{N}
-\end{align}</p>
+\end{align}
+++++
 
-<p class="centered">
-where:<br/>
+[.text-center]
+where: +
 \(v_n\) is the noise voltage spectral density, in \(V / \sqrt(Hz)\)
-</p>
 
 ## Colours Of Noise (Power Law Noise)
 
-The _colour of noise_ refers to the shape of the power spectral density (PSD) with respect to the frequency. The category of noises that are assigned colours can also be called _power law noise_, as it's PSD is proportional to `\(\frac{1}{f^n}\)`, where `\(n\)` can be a positive (most commonly) or negative integer.
+The _colour of noise_ refers to the shape of the power spectral density (PSD) with respect to the frequency. The category of noises that are assigned colours can also be called _power law noise_, as it's PSD is proportional to stem:[\frac{1}{f^n}], where stem:[n] can be a positive (most commonly) or negative integer.
 
-* **White noise**: White noise is the simplest form of noise, and has a flat power spectral density when plotted against frequency (it has a spectral power density proportional to `\(1\)`). 
-* **Pink noise**: _Pink noise_ has a spectral power density proportional to `\(\frac{1}{f}\)`.
-* **Red noise**: _Red noise_ has a spectral power density proportional to `\(\frac{1}{f^2}\)`. Also called _Brownian noise_.
-* **Blue noise**: _Blue noise_ has a spectral power density proportional to `\(f\)`.
-* **Violet noise**: _Violet noise_ has a spectral power density proportional to `\(f^2\)`.
+* **White noise**: White noise is the simplest form of noise, and has a flat power spectral density when plotted against frequency (it has a spectral power density proportional to stem:[1]). 
+* **Pink noise**: _Pink noise_ has a spectral power density proportional to stem:[\frac{1}{f}].
+* **Red noise**: _Red noise_ has a spectral power density proportional to stem:[\frac{1}{f^2}]. Also called _Brownian noise_.
+* **Blue noise**: _Blue noise_ has a spectral power density proportional to stem:[f].
+* **Violet noise**: _Violet noise_ has a spectral power density proportional to stem:[f^2].
 
 If you don't have access to equipment that can perform a spectrum/frequency analysis on measured voltages or currents, you can roughly identify the "colour" of the noise sources by recognizing the "shape" of the noise in the time domain on a simple oscilloscope. The following sections contain examples of what each colour of noise looks like in both the time and frequency domain.
 
@@ -69,72 +73,84 @@ White noise has a flat power spectral density when plotted against frequency. Wh
 
 The following graph shows what Gaussian white noise looks like in the time domain:
 
-{{% figure src="noise-white-time-domain.png" width="700px" caption="What white noise looks like in the time domain." %}}
+.What white noise looks like in the time domain.
+image::noise-white-time-domain.png[width=700]
 
 And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
 
-{{% figure src="noise-white-freq-domain.png" width="700px" caption="What white noise looks like in the frequency domain." %}}
+.What white noise looks like in the frequency domain.
+image::noise-white-freq-domain.png[width=700]
 
 Although it commonly is modelled as such, white noise does not have to be _Gaussian_. Gaussian noise means the probability density function has a Gaussian distribution. However other forms of white noise exist, for example, Poisson white noise.
 
 Examples of white noise include:
+
 * Thermal (Johnson-Nyquist) noise
 
-_Stochastic resonance_ is the clever technique of adding white noise to a signal which is usually too weak to be detected by the measurement device. The frequencies in the white noise which are also present in the signal will resonate with each other, amplifying the original signal but not amplifying the rest of the white noise. The system has to have a non-linear response for this to work[^wikipedia-stochastic-resonance].
+_Stochastic resonance_ is the clever technique of adding white noise to a signal which is usually too weak to be detected by the measurement device. The frequencies in the white noise which are also present in the signal will resonate with each other, amplifying the original signal but not amplifying the rest of the white noise. The system has to have a non-linear response for this to work<<wikipedia-stochastic-resonance>>.
 
 ### Pink Noise
 
-Also called `\(\frac{1}{f}\)` noise. The PSD decreases at `\(3dB\)` per octave.
+Also called stem:[\frac{1}{f}] noise. The PSD decreases at stem:[3dB] per octave.
 
 The following graph shows what pink noise looks like in the time domain:
 
-{{% figure src="noise-pink-time-domain.png" width="700px" caption="What pink noise looks like in the time domain." %}}
+.What pink noise looks like in the time domain.
+image::noise-pink-time-domain.png[width=700px]
 
 And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
 
-{{% figure src="noise-pink-freq-domain.png" width="700px" caption="What pink noise looks like in the frequency domain." %}}
+.What pink noise looks like in the frequency domain.
+image::noise-pink-freq-domain.png[width=700px]
 
 Examples and uses of pink noise:
 
-* Interestingly, the frequency fluctuations of music have a `\(\frac{1}{f}\)` spectral density. The reasoning behind this is that music generated by white‐noise sources sounded too random, while those generated by 1/f2 noise sounded too correlated[^voss-1-f-noise-in-music]. The "loudness" of music and speech also has a `\(\frac{1}{f}\)` PSD.
-* The audio of steady rain fall or rustling leaves has a `\(\frac{1}{f}\)` PSD.
+* Interestingly, the frequency fluctuations of music have a stem:[\frac{1}{f}] spectral density. The reasoning behind this is that music generated by white‐noise sources sounded too random, while those generated by 1/f2 noise sounded too correlated<<voss-1-f-noise-in-music>>. The "loudness" of music and speech also has a stem:[\frac{1}{f}] PSD.
+* The audio of steady rain fall or rustling leaves has a stem:[\frac{1}{f}] PSD.
 
 The following difference equation can create pink noise[^procaccia-schuster-universal-1-f-noise]:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 x_t = (x_{t-1} + x_{t-1}^2)\ mod\ 1
-\end{align}</p>
+\end{align}
+++++
 
 ### Red (Brownian) Noise
 
-Also called _Brownian_ or `\(\frac{1}{f^2}\)` noise. The PSD decreases at `\(6dB\)` per octave.
+Also called _Brownian_ or stem:[\frac{1}{f^2}] noise. The PSD decreases at stem:[6dB] per octave.
 
 The following graph shows what red noise looks like in the time domain:
 
-{{% figure src="noise-red-time-domain.png" width="700px" caption="What red noise looks like in the time domain." %}}
+.What red noise looks like in the time domain.
+image::noise-red-time-domain.png[width=700px]
 
 And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
 
-{{% figure src="noise-red-freq-domain.png" width="700px" caption="What red noise looks like in the frequency domain." %}}
+.What red noise looks like in the frequency domain.
+image::noise-red-freq-domain.png[width=700px]
 
 ### Blue Noise
 
-Also called _Azure_ or `\(f\)` noise. It has a PSD proportional to frequency. As the frequency goes up, the noise power goes up also. The PSD increases at `\(3dB\)` per octave.
+Also called _Azure_ or stem:[f] noise. It has a PSD proportional to frequency. As the frequency goes up, the noise power goes up also. The PSD increases at stem:[3dB] per octave.
 
 The following graph shows what blue noise looks like in the time domain:
 
-{{% figure src="noise-blue-time-domain.png" width="700px" caption="What blue noise looks like in the time domain." %}}
+.What blue noise looks like in the time domain.
+image::noise-blue-time-domain.png[width=700px
 
 And this is what it looks like in the frequency domain (the discrete FFT of the above signal):
 
-{{% figure src="noise-blue-freq-domain.png" width="700px" caption="What blue noise looks like in the frequency domain." %}}
+.What blue noise looks like in the frequency domain.
+image::noise-blue-freq-domain.png[width=700px]
 
 In the audio spectrum, blue noise sounds like a horrible high-pitched hiss.
 
 Examples/uses of blue noise include:
 
 * Cherenkov radiation: A really interesting phenomenon which involves particles travelling faster than the speed of light (in a medium)!
-* Audio dithering: Blue noise can be added to audio tracks or imagery (a.k.a. spatial dithering of digital halftoning) to randomize the error in quantizing the digital signal[^georgiev-fajardo-blue-noise-dithered-sampling].
+* Audio dithering: Blue noise can be added to audio tracks or imagery (a.k.a. spatial dithering of digital halftoning) to randomize the error in quantizing the digital signal<<georgiev-fajardo-blue-noise-dithered-sampling>>.
 
 ## Non-Frequency Noise
 
@@ -152,41 +168,52 @@ Examples/uses of blue noise include:
 
 The noise power spectral density of thermal noise is found with the following equation:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 N_0 = 4 k_B T R 
-\end{align}</p>
+\end{align}
+++++
 
-<p class="centered">
-where:<br/>
-\(N_0\) is the one-sided noise power spectral density, in Watts per Hertz \(WHz^{-1}\)<br/>
-\(k_B\) is Boltzmann's constant, in Joules per Kelvin \(JK^{-1}\) (\(1.380649\times10^{-23} JK^{-1}\))<br/>
-\(T\) is the temperature of the resistor, in Kelvin \(K\)<br/>
+[.text-center]
+where: +
+\(N_0\) is the one-sided noise power spectral density, in Watts per Hertz \(WHz^{-1}\) +
+\(k_B\) is Boltzmann's constant, in Joules per Kelvin \(JK^{-1}\) (\(1.380649\times10^{-23} JK^{-1}\)) +
+\(T\) is the temperature of the resistor, in Kelvin \(K\) +
 \(R\) is the resistance of the resistor, in Ohms \(\Omega\)
-</p>
 
-For example, a `\(10k\Omega\)` resistor at `\(25^{\circ}C\)` has a noise power spectral density `\(N_0\)` of:
+For example, a stem:[10k\Omega] resistor at stem:[25^{\circ}C] has a noise power spectral density stem:[N_0] of:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 N_0 &= 4 k_B T R \nonumber \\
     &= 4 \cdot 1.380649\times10^{-23} JK^{-1} \cdot 298.15K \cdot 10k\Omega \nonumber \\
     &= 1.647\times 10^{-16} W Hz^{-1} \nonumber
-\end{align}</p>
+\end{align}
+++++
 
-Converting this to a noise voltage spectral density `\(v_n\)`:
+Converting this to a noise voltage spectral density stem:[v_n]:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 v_n &= \sqrt{N_0} \nonumber \\
     &= \sqrt{1.647\times 10^{-16} W Hz^{-1}} \nonumber \\
     &= 12.83 nV Hz^{-0.5}
-\end{align}</p>
+\end{align}
+++++
 
-If our system had a bandwidth `\(B\)` of `\(10kHz\)`, then the RMS noise voltage would be:
+If our system had a bandwidth stem:[B] of stem:[10kHz], then the RMS noise voltage would be:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 v_{rms} &= v_n \cdot \sqrt{B} \nonumber \\
         &= 12.83 nV / \sqrt{Hz} \cdot \sqrt{10kHz} \nonumber \\
         &= 1.28uV \nonumber
-\end{align}</p>
+\end{align}
+++++
 
 ## Measuring Noise
 
@@ -206,18 +233,27 @@ Typically, when doing noise measurements with an oscilloscope, AC coupling is tu
 
 Uncorrelated noise sources add in a root-sum-of-squares manner.
 
-<p>$$ e_{total} = \sqrt{e_{1}^2 + e_{2}^2} $$</p>
+[stem]
+++++
+\begin{align}
+e_{total} = \sqrt{e_{1}^2 + e_{2}^2}
+\end{align}
+++++
 
 This comes from the equation:
 
-<p>$$ x_{rms}^2 = \bar{x}^2 + \sigma_{x}^2 $$</p>
+[stem]
+++++
+\begin{align}
+x_{rms}^2 = \bar{x}^2 + \sigma_{x}^2
+\end{align}
+++++
 
-<p class="centered">
-    where:<br>
-    \( x_{rms} \) is the RMS value of waveform x<br>
-    \( \bar{x} \) is the average (mean) of waveform x<br>
-    \( \sigma_{x} \) is the standard deviation of waveform x<br>
-</p>
+[.text-center]
+where: +
+\( x_{rms} \) is the RMS value of waveform x +
+\( \bar{x} \) is the average (mean) of waveform x +
+\( \sigma_{x} \) is the standard deviation of waveform x
 
 As you can see, if the average of the waveform is 0 (as in the case when the waveform is AC coupled), the RMS value is the same as the standard deviation.
 
@@ -225,9 +261,9 @@ As you can see, if the average of the waveform is 0 (as in the case when the wav
 
 ### Power Law Noise
 
-The following Python code is flexible enough to generate power law noise `\(\frac{1}{f^n}\)` of any power `\(n\)`. The code is from <https://github.com/felixpatzelt/colorednoise/blob/master/colorednoise.py>, which uses an algorithm published by J. Timmer and M. Konig called _On Generating Power Law Noise_[^timmer-konig-generating-power-law-noise]. Depends on the popular Numpy library. This function was used to create the power law noise example signals on this page.
+The following Python code is flexible enough to generate power law noise stem:[\frac{1}{f^n}] of any power stem:[n]. The code is from link:https://github.com/felixpatzelt/colorednoise/blob/master/colorednoise.py[colorednoise.py], which uses an algorithm published by J. Timmer and M. Konig called _On Generating Power Law Noise_<<timmer-konig-generating-power-law-noise>>. Depends on the popular Numpy library. This function was used to create the power law noise example signals on this page.
 
-You can also pass in negative exponents `\(-1\)`, `\(-2\)` to generate blue noise and purple noise.
+You can also pass in negative exponents stem:[-1], stem:[-2] to generate blue noise and purple noise.
 
 ```python
 from numpy import sqrt, newaxis
@@ -327,10 +363,11 @@ def powerlaw_psd_gaussian(exponent, size, fmin=0):
     return y
 ```
 
-## References
+[bibliography]
+== References
 
-[^procaccia-schuster-universal-1-f-noise]: Itamar Procaccia and Heinz Schuster: _Functional renormalization-group theory of universal 1/f noise in dynamical systems_. Phys. Rev. A 28, 1210(R). Published 1 August 1983. <https://journals.aps.org/pra/abstract/10.1103/PhysRevA.28.1210>, accessed 2021-06-07.
-[^wikipedia-stochastic-resonance]: <https://en.wikipedia.org/wiki/Stochastic_resonance>, accessed 2021-06-07.
-[^timmer-konig-generating-power-law-noise]: J. Timmer and M. Konig: _On Generating Power Law Noise_. Astronomy And Astrophysics 2.3.1995. <https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.29.5304&rep=rep1&type=pdf>, accessed 2021-06-07.
-[^georgiev-fajardo-blue-noise-dithered-sampling]: Iliyan Georgiev and Marcos Fajardo: _Blue-noise Dithered Sampling_. <https://www.arnoldrenderer.com/research/dither_abstract.pdf>, accessed 2021-06-08.
-[^voss-1-f-noise-in-music]: Voss, R F, and Clarke, J. _''1/f noise'' in music: Music from 1/f noise_. United States: N. p., 1978. Web. doi:10.1121/1.381721.
+* [[[procaccia-schuster-universal-1-f-noise]]]: Itamar Procaccia and Heinz Schuster: _Functional renormalization-group theory of universal 1/f noise in dynamical systems_. Phys. Rev. A 28, 1210(R). Published 1 August 1983. <https://journals.aps.org/pra/abstract/10.1103/PhysRevA.28.1210>, accessed 2021-06-07.
+* [[[wikipedia-stochastic-resonance]]]: <https://en.wikipedia.org/wiki/Stochastic_resonance>, accessed 2021-06-07.
+* [[[timmer-konig-generating-power-law-noise]]]: J. Timmer and M. Konig: _On Generating Power Law Noise_. Astronomy And Astrophysics 2.3.1995. <https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.29.5304&rep=rep1&type=pdf>, accessed 2021-06-07.
+* [[[georgiev-fajardo-blue-noise-dithered-sampling]]]: Iliyan Georgiev and Marcos Fajardo: _Blue-noise Dithered Sampling_. <https://www.arnoldrenderer.com/research/dither_abstract.pdf>, accessed 2021-06-08.
+* [[[voss-1-f-noise-in-music]]]: Voss, R F, and Clarke, J. _''1/f noise'' in music: Music from 1/f noise_. United States: N. p., 1978. Web. doi:10.1121/1.381721.
