@@ -1,28 +1,26 @@
   {{ $child_pages := union .Sections .Pages }}
-  <div class="collapse" id="{{  replace .RelPermalink "/" "-" }}">
-
-    <ul class="list-unstyled small">
-        {{ range $child_pages.ByTitle }}
-          <li>                                    
-            {{ if or (.Sections) (.Pages) }}
-              <!-- The data bs target doesn't like forward slashes, replace all with hyphens instead -->
-              <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#{{ replace .RelPermalink "/" "-" }}" aria-expanded="false">
-                {{ .Title }}
-              </button>
-              {{ partial "menu_recursive.html" . }}
-              
-            {{ else }}
-              <!-- This page does not contain any children, so don't render a button and call the recursive menu again, just render a link-->
-              <a href="{{.Permalink}}">{{ .Title }}</a>  
-            {{ end }}
-
-          </li>
+  <div class="collapse submenu" id="{{  replace .RelPermalink "/" "-" }}">
+    
+    <ul class="menu-list">
+      {{ range $child_pages.ByTitle }}
+      <li class="menu-list-item">                                    
+        
+        <!-- The data bs target doesn't like forward slashes, replace all with hyphens instead -->
+        <div class="menu-chevron-link-wrapper">
+          {{ if or (.Sections) (.Pages) }}
+          <div class="menu-chevron"></div>
+          {{ else }}
+          <!-- This page does not contain any children, so don't render a button and call the recursive menu again, just render a link-->
+          <div class="menu-chevron hidden"></div>
+          {{ end }}
+          <a class="menu-link" aria-expanded="false" href="{{.Permalink}}">
+            {{ .Title }}
+          </a>
+        </div>
+        {{ if or (.Sections) (.Pages) }}
+        {{ partial "menu_recursive.html" . }}
         {{ end }}
-        <!-- {{ range .Pages.ByTitle }}
-            <li>
-                <a href="{{.Permalink}}"><div class="menu-text">{{ .Title }}</div></a>
-                {{ partial "menu_recursive.html" . }}
-            </li>
-        {{ end }} -->
+      </li>
+      {{ end }}
     </ul>
   </div>
