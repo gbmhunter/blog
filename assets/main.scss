@@ -60,7 +60,6 @@
 /* MENU                                                                      */
 /* ========================================================================= */
 
-// @media (min-width: 768px) {
 .menu-nav {
     position: -webkit-sticky;
     position: sticky;
@@ -72,25 +71,21 @@
     overflow-y: auto;
 
     margin-top: 10px;
-    a, button { 
-        color:rgba(0,0,0,0.65); // Color of all menu text, incl button and <a> link text
-        font-size: smaller;
-    }
 
     ul ul {
-        margin-left: 5px; // Apply some indentation to the lists so you can see the hierarachy
+        margin-left: 5px; // Apply some indentation to the lists so you can see the hierarchy
     }
 
     a {
         padding: .375rem .75rem;
         margin-top: .125rem;
         margin-left: 0.1rem;
-        color: rgba(0,0,0,0.65);
+        color: rgb(60, 60, 60);
+        font-size: 0.9em;
         text-decoration: none;
         
     }
 }
-// }
 
 .menu-list {
     list-style-type: none;
@@ -107,10 +102,10 @@
 
 .menu-chevron {
     display: inline;
+    // This is a little SVG chevron (angled bracket)
     content:
         url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
     transition: transform 0.35s ease;
-    // transform-origin: .5em 50%;
     cursor: pointer; // Make it look clickable
 
     &.show {
@@ -122,35 +117,18 @@
     }
 }
 
-
-// This adds the arrows to the left-hand side of the menu items
-// .bd-links .btn::before {
-//     width: 1.25em;
-//     line-height: 0;
-//     // Content from bootstrap.com
-//     content:
-//         url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-//     transition: transform 0.35s ease;
-//     transform-origin: .5em 50%;
-// }
-
-// This spins the right pointing arrow to a downwards pointing arrow
-// if the menu item has been expanded
-// .bd-links .btn[aria-expanded="true"]::before {
-//     transform: rotate(90deg);
-// }
-
-
-
 /* ========================================================================= */
 /* HOMEPAGE CONTENT                                                          */
 /* ========================================================================= */
 
+// Used to center the "recent posts" column
 .col-centered {
     float: none;
     margin: 0 auto;
 }
 
+// Reduce the heading size on the "recent posts" section
+// of the homepage...the default size is too big
 #recent-posts {
     h1 {
         font-size: 1.5em;

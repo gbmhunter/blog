@@ -102,11 +102,11 @@
                 {{ block "main" . }}{{ end }}
               </div> <!-- class="row" -->
             </div>
-            
+            {{ partial "mathjax-markdown-solution.html" . }}
           </body>
           <!-- 'Back to Top' button -->
           <!-- Based of code at https://codepen.io/rdallaire/pen/apoyx -->
-          <a href="javascript:" id="return-to-top"><i class="fas fa-chevron-up"></i></a>
+          <a href="javascript:" id="return-to-top"><i class="fas fa-chevron-up"></i></a>          
 
           <!-- Load our custom Javascript. All code bundled in the one file for fast loading -->
           <script src="/js/main.js"></script>
