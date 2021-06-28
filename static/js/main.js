@@ -13,6 +13,7 @@ $('#return-to-top').click(function() {      // When arrow is clicked
   }, 500);
 });
 
+// Main menu chevron sliding visibility toggle functionality
 $('.menu-chevron').click(function() {
   let chevronEl = $(this)
   let subMenu = chevronEl.parent().parent().children('.submenu')

@@ -11,11 +11,6 @@ title: "Capacitors"
 type: "page"
 ---
 
-:toc:
-:xrefstyle: short
-:stem: latexmath
-:sectnums:
-
 == Overview
 
 Capacitors are a passive electronic component that stores charge between two conductive surfaces. The conductive surfaces (plates) are usually very close together, with a dielectric in-between, to maximize the capacitance for a given size. They are a popular component, that along with resistors, make up the two most commonly used components on a circuit board. They come in a large range of sizes, from water tank sized caps to small SMD capacitors and capacitors formed from tracks on PCBs.
