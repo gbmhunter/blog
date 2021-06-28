@@ -36,7 +36,12 @@ causes slight rendering issues including padding problems with surrounding text 
       // Enable line-breaks, which makes MathJAX wrap long display equations
       // This only occurs on the initial render, so if the page width is changed by user,
       // the equation may still overflow the page.
-      CommonHTML: { linebreaks: { automatic: true } },
+      CommonHTML: { 
+        linebreaks: { 
+          automatic: true
+        },
+        scale: 95, // 100 looks a little too large relative to surrounding text, 95 looks great!
+      },
       // "HTML-CSS": { linebreaks: { automatic: true } },
       // SVG: { linebreaks: { automatic: true } }
     });
@@ -45,6 +50,7 @@ causes slight rendering issues including padding problems with surrounding text 
       // Fix <code> tags after MathJax finishes running. This is a
       // hack to overcome a shortcoming of Markdown. Discussion at
       // https://github.com/mojombo/jekyll/issues/199
+      // Not important for AsciiDoc pages
       var all = MathJax.Hub.getAllJax(), i;
       for(i = 0; i < all.length; i += 1) {
           all[i].SourceElement().parentNode.className += ' has-jax';

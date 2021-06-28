@@ -80,6 +80,10 @@ TIP: This is a tip. I should be green and have a bulb icon on my left.
 
 WARNING: This is a warning. I should be red.
 
+== Links
+
+Here is a URL: link:www.google.com[www.google.com].
+
 [bibliography]
 == References
 

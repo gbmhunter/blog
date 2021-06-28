@@ -17,14 +17,17 @@ p, h1, h2, h3, ul, li, a, div, td, th, input {
 h1 { 
     font-size: 2.5em;
     margin: 0.1em;
+    font-weight: bold;
 }
 
 h2 { 
     font-size: 1.5em;
+    font-weight: bold;
 }
 
 h3 {
     font-size: 1em;
+    font-weight: bold;
 }
 
 .flex-right {
