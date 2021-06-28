@@ -60,7 +60,17 @@
 /* MENU                                                                      */
 /* ========================================================================= */
 
-#treeview-menu {
+// @media (min-width: 768px) {
+.menu-nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5rem;
+    display: block !important;
+    height: calc(100vh - 7rem);
+    padding-left: .25rem;
+    margin-left: -.25rem;
+    overflow-y: auto;
+
     margin-top: 10px;
     a, button { 
         color:rgba(0,0,0,0.65); // Color of all menu text, incl button and <a> link text
@@ -80,36 +90,55 @@
         
     }
 }
+// }
 
-@media (min-width: 768px) {
-    .bd-links {
-        position: -webkit-sticky;
-        position: sticky;
-        top: 5rem;
-        display: block !important;
-        height: calc(100vh - 7rem);
-        padding-left: .25rem;
-        margin-left: -.25rem;
-        overflow-y: auto;
+.menu-list {
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 20px; // This indents the first menu
+    .menu-list {
+        padding-left: 5px; // This indents each submenu to give the user a view of the hierarchy
     }
 }
 
-// This adds the arrows to the left-hand side of the menu items
-.bd-links .btn::before {
-    width: 1.25em;
-    line-height: 0;
-    // Content from bootstrap.com
+.menu-chevron-link-wrapper {
+    display: flex;
+}
+
+.menu-chevron {
+    display: inline;
     content:
         url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
     transition: transform 0.35s ease;
-    transform-origin: .5em 50%;
+    // transform-origin: .5em 50%;
+    cursor: pointer; // Make it look clickable
+
+    &.show {
+        transform: rotate(90deg);
+    }
+
+    &.hidden {
+        visibility: hidden;
+    }
 }
+
+
+// This adds the arrows to the left-hand side of the menu items
+// .bd-links .btn::before {
+//     width: 1.25em;
+//     line-height: 0;
+//     // Content from bootstrap.com
+//     content:
+//         url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+//     transition: transform 0.35s ease;
+//     transform-origin: .5em 50%;
+// }
 
 // This spins the right pointing arrow to a downwards pointing arrow
 // if the menu item has been expanded
-.bd-links .btn[aria-expanded="true"]::before {
-    transform: rotate(90deg);
-}
+// .bd-links .btn[aria-expanded="true"]::before {
+//     transform: rotate(90deg);
+// }
 
 
 
