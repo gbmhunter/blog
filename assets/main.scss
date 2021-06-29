@@ -1,3 +1,10 @@
+:root {
+    --main-color: #05c;
+    --caption-font-color: rgb(100, 100, 100);
+    --caption-font-weight: 500;
+    --example-bg-color: #ffe3e3;
+  }
+
 // Bootstrap breakpoint sizes
 // md: 768px
 
@@ -159,7 +166,109 @@
 }
 
 /* ========================================================================= */
-/* ASCIIDOC                                                                   */
+/* HEADING AND PARAGRAPH STYLING                                             */
+/* ========================================================================= */
+
+p, h1, h2, h3, ul, li, a, div, td, th, input {    
+    font-family: 'avenir next' ,'avenir', sans-serif;
+}
+
+/* Styling for page titles */
+h1 { 
+    font-size: 2.5em;
+    // margin: 0.1em;
+    font-weight: bold;    
+}
+
+// Heading used for top-level sections on a page
+h2 { 
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 1.0em;
+}
+
+h4 {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.flex-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/* ========================================================================= */
+/* POST/PAGE METADATA                                                        */
+/* ========================================================================= */
+
+// This div wraps the "date published" and "last modified" data shown just under the h1
+// heading on post and page views
+.published-modified-wrapper {
+    margin-bottom: 2.0em;
+}
+
+/* ========================================================================= */
+/* CODE                                                                      */
+/* ========================================================================= */
+
+pre, .pre {
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* overflow:   scroll; */
+}
+
+pre {
+    background-color: #222;
+    color: #ddd;
+    white-space: pre;
+    hyphens: none;
+    position: relative;
+}
+
+/* Styling for inline code (no pre element). Make sure not to select code elements
+which have the class `has-jax`, as this is used for inline math and MathJAX
+rendering.
+*/
+code:not(.has-jax) {
+    border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    border: 1px solid #BCBEC0;
+    padding: 2px;     
+}
+
+pre code:not(.has-jax) {
+    display: block;
+    padding: 1.5em 1.5em;
+    white-space: pre;
+    font-size: 0.8em;
+    line-height: 2;
+    border: 0px;
+}
+@media (min-width: 800px) {
+    pre code:not(.has-jax) {
+        font-size: .875rem;
+    }
+}
+
+/* ========================================================================= */
+/* ASCIIDOC SPECIFIC                                                         */
+/* ========================================================================= */
+
+/* ========================================================================= */
+/* ASCIIDOC SPECIFIC                                                         */
+/* ========================================================================= */
+
+/* ========================================================================= */
+/* ASCIIDOC SPECIFIC                                                         */
 /* ========================================================================= */
 
 /* AsciiDoc wraps all text within list elements in a p element, let's get rid of
@@ -233,9 +342,35 @@ do this for us */
     text-align: center;
 }
 
-// CODE
+/* ========================================================================= */
+/* CODE                                                                      */
+/* ========================================================================= */
 
-pre.highlight {
-    // Colour the default code text black
-    color: rgb(0, 0, 0);
+.listingblock {
+    .title {
+        color: var(--caption-font-color);
+        font-size: 1.0em;
+        font-style: italic;
+        font-weight: var(--caption-font-weight);
+
+    }
+
+    pre.highlight {
+        // Colour the default code text black
+        color: rgb(0, 0, 0);
+    }
+}
+
+/* ========================================================================= */
+/* EXAMPLE BLOCKS                                                            */
+/* ========================================================================= */
+.exampleblock {
+    .title {
+        color: var(--caption-font-color);
+        font-size: 1.0em;
+        font-style: italic;
+        font-weight: var(--caption-font-weight);
+
+    }
+    background-color: var(--example-bg-color);
 }

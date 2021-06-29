@@ -4,12 +4,9 @@ lastmod: 2021-06-20
 title: "AsciiDoc Test Page"
 ---
 
-:toc:
-:xrefstyle: short
-:stem: latexmath
-:sectnums:
+:fn-test-1: footnote:test-1[Test footnote 1.]
 
-Table of contents should be shown above^^^. Sections should have numbers in front of them, both in the ToC and in-front of the section headings.
+Page contents (table of contents, ToC) should be shown either above (viewport < 768px) or to the right (viewport >=768px). Sections should have numbers in front of them, both in the ToC and in-front of the section headings.
 
 == Maths
 
@@ -54,6 +51,25 @@ get '/hi' do
 end
 ----
 
+== Example Blocks
+
+The below example block should have a title and a slight red background:
+
+[example]
+.Shot noise example
+--
+A current of stem:[100mA] measured over a bandwidth of stem:[1kHz] gives a RMS shot noise current value of:
+
+[stem]
+++++
+\begin{align}
+i_n &= \sqrt{2IqB} \nonumber \\
+    &= \sqrt{2*1A*1.602e^{-19} C*1kHz} \nonumber \\
+    &= 17.9nA \nonumber \\
+\end{align}
+++++
+--
+
 == Images
 
 There should be a vector image below that is `300px` wide, with the caption "Hello, world":
@@ -64,6 +80,10 @@ image::example-vector-image.svg[width=300]
 == References
 
 This sentence contains a bibliographic reference at the end of it<<example-bib>>.
+
+== Footnotes
+
+This sentence should have a footnote at the end of it{fn-test-1}.
 
 == Tables
 
@@ -80,11 +100,32 @@ TIP: This is a tip. I should be green and have a bulb icon on my left.
 
 WARNING: This is a warning. I should be red.
 
+Below is an Admonition block:
+
+[TIP]
+====
+I am an Admonition block.
+
+I can contain many things.
+====
+
 == Links
 
 Here is a URL: link:www.google.com[www.google.com].
 
+== Lists
+
+* Here is
+* a unordered
+* list
+
+. Here is
+. a ordered
+. list
+
 [bibliography]
 == References
 
-* [[[example-bib]]] Bibliography text goes here.
+APA Style Website:
+
+* [[[example-bib]]] Author, A.A. (YYYY, Month Day). _Title of work_. Site Name. Retrieved YYYY-MM-DD, from https://wwww.google.com
