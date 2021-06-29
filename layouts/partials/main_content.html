@@ -1,82 +1,82 @@
 {{ "<!--" | safeHTML }}
-partials/main_content.html
-{{ "-->" | safeHTML }}
-<!-- This partial is used for all list and page types, not used for homepage -->
-<!-- In total, this file contains HTML elements that use up 9 of the 12 bootstrap columns (leaving 3 for the site logo and menu)-->
-{{ $section := .Site.GetPage "section" .Section }}
-
-<!-- order=3 when on small devices so below TOC, order=2 on medium up so TOC goes on the right-->
-<article class="col-md-6 order-3 order-md-2">
-  <header>
+  partials/main_content.html
+  {{ "-->" | safeHTML }}
+  <!-- This partial is used for all list and page types, not used for homepage -->
+  <!-- In total, this file contains HTML elements that use up 9 of the 12 bootstrap columns (leaving 3 for the site logo and menu)-->
+  {{ $section := .Site.GetPage "section" .Section }}
+  
+  <!-- order=3 when on small devices so below TOC, order=2 on medium up so TOC goes on the right-->
+  <article class="col-md-6 order-3 order-md-2">
+    <header>
       {{ partial "breadcrumbs.html" . }}
       <p>{{with .CurrentSection.Title }}{{. | upper }}{{end}}</p>
       <h1>
-          <a href="{{ .Permalink }}" class="post-title">{{- .Title -}}</a>
+        <a href="{{ .Permalink }}" class="post-title">{{- .Title -}}</a>
       </h1>
-
-      <div>
-          <table>
-              <tbody>
-                  <tr>
-                      <td>Date Published:</td>
-                      <td>
-                          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="datePublished">
-                              <i>{{ .Date.Format "January 2, 2006" }}</i>
-                          </time>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Last Modified:</td>
-                      <td>
-                          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="dateModified">
-                              <i>{{ .Lastmod.Format "January 2, 2006" }}</i>
-                          </time>
-                      </td>
-                  </tr>
-              </tbody>
-          </table> 
+      
+      <div class="published-modified-wrapper">
+        <table>
+          <tbody>
+            <tr>
+              <td>Date Published:</td>
+              <td>
+                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="datePublished">
+                  <i>{{ .Date.Format "January 2, 2006" }}</i>
+                </time>
+              </td>
+            </tr>
+            <tr>
+              <td>Last Modified:</td>
+              <td>
+                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="dateModified">
+                  <i>{{ .Lastmod.Format "January 2, 2006" }}</i>
+                </time>
+              </td>
+            </tr>
+          </tbody>
+        </table> 
       </div>
       
       
       {{/*  
-          Show "reading time" and "word count" but only if one of the following are true:
-          1) A global config `params` value is set `show_reading_time = true`
-          2) A section front matter value is set `show_reading_time = true`
-          3) A page front matter value is set `show_reading_time = true`
-      */}}
-      {{ if (or (eq (.Param "show_reading_time") true) (eq $section.Params.show_reading_time true) )}}
-      <span> - {{ .ReadingTime}} minutes read</span>
-      <span> - {{ .WordCount}} words</span>
-      {{ end }}
-  </header>
-
-  <div class="content">
+        Show "reading time" and "word count" but only if one of the following are true:
+        1) A global config `params` value is set `show_reading_time = true`
+        2) A section front matter value is set `show_reading_time = true`
+        3) A page front matter value is set `show_reading_time = true`
+        */}}
+        {{ if (or (eq (.Param "show_reading_time") true) (eq $section.Params.show_reading_time true) )}}
+        <span> - {{ .ReadingTime}} minutes read</span>
+        <span> - {{ .WordCount}} words</span>
+        {{ end }}
+      </header>
       
-    {{ $childpages := union .Sections .Pages }}
-    {{ if $childpages }}
-    <h2>Child Pages</h2>
-    {{ end }}
-    {{ range $childpages.ByTitle }}
-      <li>
-        <a href="{{.Permalink}}">{{.Title}}</a>
-      </li>
-    {{ end }}
-
-    {{- .Content -}}
-  </div>
-
-  <hr />
-
-  
-  {{- partial "related.html" . -}}
-  {{- partial "tags.html" . -}}
-  <div class="disqus-divider"></div>
-  {{ template "_internal/disqus.html" . }}    
-
-</article>
-<div id="right-hand-column" class="col-md-3 order-2 order-md-3">
-  <div id="toc">
-    <div>Page contents:</div>
-    {{ .TableOfContents }}
-  </div>
-</div>
+      <div class="content">
+        
+        {{ $childpages := union .Sections .Pages }}
+        {{ if $childpages }}
+        <h2>Child Pages</h2>
+        {{ end }}
+        {{ range $childpages.ByTitle }}
+        <li>
+          <a href="{{.Permalink}}">{{.Title}}</a>
+        </li>
+        {{ end }}
+        
+        {{- .Content -}}
+      </div>
+      
+      <hr />
+      
+      
+      {{- partial "related.html" . -}}
+      {{- partial "tags.html" . -}}
+      <div class="disqus-divider"></div>
+      {{ template "_internal/disqus.html" . }}    
+      
+    </article>
+    <div id="right-hand-column" class="col-md-3 order-2 order-md-3">
+      <div id="toc">
+        <div>Page contents:</div>
+        {{ .TableOfContents }}
+      </div>
+    </div>
