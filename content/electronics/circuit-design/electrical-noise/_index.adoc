@@ -6,7 +6,7 @@ description: "Noise spectral densities, the colours of noise, thermal noise, sho
 draft: false
 images: [ "/electronics/circuit-design/electrical-noise/noise-pink-time-domain.png" ]
 lastmod: 2021-06-29
-tags: [ "noise", "dB", "AC coupling", "thermal noise", "Johnson noise", "Nyquist noise", "shot noise", "Poisson noise", "Stochastic resonance", "white noise", "pink noise", "red noise", "blue noise", "violet noise" ]
+tags: [ "noise", "dB", "AC coupling", "thermal noise", "Johnson noise", "Nyquist noise", "shot noise", "Poisson noise", "Stochastic resonance", "white noise", "pink noise", "red noise", "blue noise", "violet noise", "Pythagorean addition" ]
 title: "Electrical Noise"
 type: "page"
 ---
@@ -317,6 +317,17 @@ v_n &= i_n R \nonumber \\
 --
 
 Shot noise also occurs in optics, such as photography, due to the discrete nature of the photons striking each pixel in the camera. 
+
+== Addition of Noise Sources
+
+**The RMS amplitudes of independent noise sources add like orthogonal vectors (Pythagorean addition)**. If two independent voltage noise sources stem:[v_{n1}] and stem:[v_{n2}] were connected in series, then the total voltage noise stem:[v_n] is given by:
+
+[stem]
+++++
+v_n^2 = v_{n1}^2 + v_{n2}^2
+++++
+
+Noise sources like thermal noise and shot noise are independent.
 
 ## Measuring Noise
 
