@@ -14,7 +14,9 @@ type: "post"
 
 * Combined the "Passing A C{plus}{plus} Member Function To A C Callback" page into the "C{plus}{plus} Callbacks" page. Updated the page with much more info, including worked examples which use https://replit.com/@gbmhunter for hosting, compiling and running small snippets of C++ code.
 
-* Updated the Electrical Noise page with info on the various "Colours of Noise" including graphs (in both the time and frequency domains) of white, pink, red, and blue noise.
+* Updated the link:/electronics/circuit-design/electrical-noise/[Electrical Noise page] with info on the various "Colours of Noise" including graphs (in both the time and frequency domains) of white, pink, red, and blue noise.
++
+image::/electronics/circuit-design/electrical-noise/noise-pink-time-domain.png[width=500]
 
 * Added info on link:/electronics/tools/soldering-irons-and-stations/#hakko-fm203-15[Hakko soldering tweezers] to the Soldering Irons And Stations page.
 +
@@ -22,7 +24,9 @@ image::/electronics/tools/soldering-irons-and-stations/hm-2023-hakko-mini-hot-tw
 
 * Starting testing the Asciidoc format and comparing it against the Markdown format.
 
-* Added schematics, equations, worked examples, and bode plots on Capacitance Multiplier circuits.
+* Added schematics, equations, worked examples, and bode plots on link:/electronics/components/capacitors/#_capacitance_multipliers[Capacitance Multiplier circuits].
++
+image::/electronics/components/capacitors/capacitance-multiplier-resistor-divider.svg[width=500]
 
 * Removed the "Test And Measurement" section of the site. Moved the only page underneath it (the "Current Probes" page) to under "Tools" instead.
 

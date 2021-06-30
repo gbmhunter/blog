@@ -3,7 +3,13 @@
     --caption-font-color: rgb(100, 100, 100);
     --caption-font-weight: 500;
     --example-bg-color: #ffe3e3;
-  }
+}
+
+body {
+    // Add padding to top and bottom of body so stuff is smashed against the top/bottom of the viewport
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
 
 // Bootstrap breakpoint sizes
 // md: 768px
