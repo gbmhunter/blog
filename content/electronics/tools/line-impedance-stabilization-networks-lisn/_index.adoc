@@ -1,0 +1,36 @@
+---
+author: "gbmhunter"
+categories: [ "Electronics", "Tools" ]
+date: 2021-06-30
+description: "Schematics, block diagrams, uses and more info on Line Impedance Stabilization Networks (LISNs), an important tool when performing EMC/EMI tests."
+draft: false
+lastmod: 2021-06-30
+tags: [ "electronics", "tools", "line impedance stabilization networks", "LISN", "MIL-STD-461E", "impedance control", "power supplies" ]
+title: "Line Impedance Stabilization Networks (LISNs)"
+type: "page"
+---
+
+== Overview
+
+A _line impedance stabilization network (LISN)_ is a tool used when performing EMC/EMI tests. A LISN is essentially a low-pass filter placed between a power source and the DUT (device under test).
+
+A LISN performs the following functions:
+
+* Provides a well-known impedance to the power input of the DUT.
+* Prevents high-frequency noise from the power supply entering into the DUT, making the measurements of the DUT seem worse than they actually are (isolation of the power supply).
+
+A "50uH" LISN is a common choice, which provides impedance control down to 10kHz. Below 10kHz, impedance control is difficult<<mil-std-461e>>.
+
+MIL-STD-461E mandates the use of LISNs to control the impedance of power sources for many of it's measurement procedures:
+
+[quote, MIL-STD-461E, Section 40.3.6 (4.3.6): Power source impedance]
+____
+The impedance of power sources providing input power to the EUT shall be controlled by Line
+Impedance Stabilization Networks (LISNs) for all measurement procedures of this document
+unless otherwise stated in a particular test procedure.
+____
+
+[bibliography]
+== References
+
+* [[[mil-std-461e]]] Department of Defense (1999, August 20). _MIL-STD-461E: Requirements for the Control of Electromagnetic Interference Characteristics of Subsystems and Equipment_. Quick Search. Retrieved 2021-06-30, from https://quicksearch.dla.mil/qsDocDetails.aspx?ident_number=35789
