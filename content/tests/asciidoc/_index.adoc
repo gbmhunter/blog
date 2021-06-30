@@ -123,6 +123,17 @@ Here is a URL: link:www.google.com[www.google.com].
 . a ordered
 . list
 
+== Quotes
+
+Below is a quote. There should be a vertical bar to the left of the quote and the quote should be indented.
+
+[quote, MIL-STD-461E, Section 40.3.6 (4.3.6): Power source impedance]
+____
+The impedance of power sources providing input power to the EUT shall be controlled by Line
+Impedance Stabilization Networks (LISNs) for all measurement procedures of this document
+unless otherwise stated in a particular test procedure.
+____
+
 [bibliography]
 == References
 
