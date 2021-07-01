@@ -1,0 +1,14 @@
+---
+author: "gbmhunter"
+categories: [ "Posts", "Updates" ]
+date: 2021-07-31
+description: "Blog updates during July 2021."
+draft: false
+lastmod: 2021-07-31
+tags: []
+title: "July 2021 Updates"
+type: "post"
+---
+
+== Updates This Month
+
