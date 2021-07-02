@@ -12,4 +12,6 @@ type: "post"
 
 == Updates This Month
 
-* A new page on link:/electronics/components/gas-discharge-tubes-gdts/[Gas Discharge Tubes (GDTs)].
+* A new page on link:/electronics/components/gas-discharge-tubes-gdts/[Gas Discharge Tubes (GDTs)], with schematic symbols, designators and examples.
++
+::image[/electronics/components/gas-discharge-tubes-gdts/schematic-symbol.svg]

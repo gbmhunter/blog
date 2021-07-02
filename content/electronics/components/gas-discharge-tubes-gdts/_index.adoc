@@ -19,5 +19,20 @@ TIP: You may assume the dot in the schematic symbol indicates a polarity. But si
 
 I have noticed the following designators used for gas discharge tubes:
 
-* GDTx (Gas Discharge Tube)
-* SAx (Surge Arrestor)
+* `GDTx` (Gas Discharge Tube)
+* `SAx` (Surge Arrestor)
+
+== How They Work
+
+. A GDT contains two conductive electrodes separated by a controlled gas (or gas mixture) and a specific pressure, usually less than atmospheric. At low voltages, at low voltages, the gas acts as a almost perfect insulator and (almost) no current flows.
+
+. At a certain voltage, the electric field between the two electrodes becomes strong enough to ionize the gas. This makes the gas conductive, and a current begins to flow between the electrodes. This ionization is somewhat of a avalanche process, once localized ionization occurs in the very close proximity to the electrode tips, much of the surrounding gas becomes ionized too. At this point, the GDTs resistance rapidly falls, hence usually so does the voltage.
+
+. The GDT remains in a low-resistance conductive state until the voltage drops below the extinction point, which is typically much lower than the sparkover voltage (you can think of this as a type of hysteresis).
+
+== Examples
+
+The Bourns 2031-xxT-SM family is a range of miniature SMD GDTs. There are 3 devices in the family, with initial DC sparkover voltages of 150V, 230V and 420V respectively.
+
+.3D model of the Bourns 2031-xxT-SM range of GDTs. Image from https://www.bourns.com/docs/Product-Datasheets/2031-xxT.pdf.
+image::bourns-2031-xxt-gdt-3d-model.png[width=250px]
