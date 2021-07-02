@@ -1,0 +1,23 @@
+---
+author: "gbmhunter"
+categories: [ "Electronics", "Components" ]
+date: 2021-07-02
+description: "Info on gas discharge tubes (GDTs)."
+draft: false
+lastmod: 2021-07-02
+tags: [ "electronics", "gas discharge tubes", "GDT", "GDTs" ]
+title: "Gas Discharge Tubes (GDTs)"
+type: "page"
+---
+
+== Schematic Symbol and Designator
+
+.Schematic symbol and designator for a gas discharge tube (GDT). 
+image::schematic-symbol.svg[width=300px]
+
+TIP: You may assume the dot in the schematic symbol indicates a polarity. But simple 2-pin gas discharge tubes are typically polarity insensitive, and the dot signifies that the device is gas filled (usually at some pressure lower than 1 atmosphere). 
+
+I have noticed the following designators used for gas discharge tubes:
+
+* GDTx (Gas Discharge Tube)
+* SAx (Surge Arrestor)

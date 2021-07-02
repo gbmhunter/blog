@@ -287,6 +287,11 @@ ul li p {
 }
 
 .imageblock {
+
+    // Add gaps between image blocks and other content
+    margin-top: 1em;
+    margin-bottom: 1em;
+
     /* Make image caption text a little smaller than the main paragraph text and make
     it italic */
     .title {
@@ -325,6 +330,10 @@ do this for us */
 
 // AsciiDoc admonitions (e.g. TIP:, WARNING:, ...)
 .admonitionblock {
+
+    // Add gaps between admonition blocks and other content
+    margin-top: 1em;
+    margin-bottom: 1em;
 
     &.tip {
         background-color: rgb(230, 255, 230);
