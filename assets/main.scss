@@ -389,3 +389,25 @@ do this for us */
     }
     background-color: var(--example-bg-color);
 }
+
+/* ========================================================================= */
+/* TABLES                                                                    */
+/* ========================================================================= */
+
+.tableblock {
+    td {
+        padding: 10px;
+        p {
+            line-height: 1.0;
+            margin: 0;
+        }
+    }
+}
+
+caption.title {
+    color: var(--caption-font-color);
+    font-size: 0.9em;
+    font-style: italic;
+    font-weight: var(--caption-font-weight);
+
+}
