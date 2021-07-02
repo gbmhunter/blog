@@ -22,6 +22,12 @@ y = 2
 \end{align}
 ++++
 
+== Warning Is Notes
+
+Use the below block for telling the reader a specific page is still in "notes" format:
+
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
 == Code
 
 Inline `uint8_t code` is here.

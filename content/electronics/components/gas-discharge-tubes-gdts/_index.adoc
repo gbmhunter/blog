@@ -5,10 +5,16 @@ date: 2021-07-02
 description: "Info on gas discharge tubes (GDTs)."
 draft: false
 lastmod: 2021-07-02
-tags: [ "electronics", "gas discharge tubes", "GDT", "GDTs" ]
+tags: [ "electronics", "gas discharge tubes", "GDT", "GDTs", "gas tube arrestors", "surge arrestors", "sparkover voltage", "impulse discharge current" ]
 title: "Gas Discharge Tubes (GDTs)"
 type: "page"
 ---
+
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
+== Overview
+
+_Gas Discharge Tubes (GDTs)_ (a.k.a. _Gas Tube Arrestors (GTAs)_ or _Surge Arrestors (SAs)_) are transient voltage/current spike protection components used in electronic circuits.
 
 == Schematic Symbol and Designator
 
@@ -30,9 +36,23 @@ I have noticed the following designators used for gas discharge tubes:
 
 . The GDT remains in a low-resistance conductive state until the voltage drops below the extinction point, which is typically much lower than the sparkover voltage (you can think of this as a type of hysteresis).
 
+== Important Parameters
+
+=== Sparkover Voltage
+
+The _sparkover voltage_ is the primary characteristic defining a GDT. It is the voltage at which ionization occurs and the GDT begins to conduct under the presence of a slowly increasing voltage. The sparkover voltage is dependent on the electrode spacing, electrode geometry, the gas composition and gas pressure.
+
+=== Impulse Discharge Current
+
+The _impulse discharge current_ is the amount of current the GDT can withstand for a short amount of time under a fault condition. GDTs typically have the highest impulse discharge current rating out of all transient voltage suppressor components (which includes TVS diodes, Zener diodes, e.t.c). Typically rated as per the 8/20us specification. A GDT will normally have a impulse discharge current between stem:[1] and stem:[50kA].
+
 == Examples
 
 The Bourns 2031-xxT-SM family is a range of miniature SMD GDTs. There are 3 devices in the family, with initial DC sparkover voltages of 150V, 230V and 420V respectively.
 
 .3D model of the Bourns 2031-xxT-SM range of GDTs. Image from https://www.bourns.com/docs/Product-Datasheets/2031-xxT.pdf.
 image::bourns-2031-xxt-gdt-3d-model.png[width=250px]
+
+== Suppliers
+
+* DigiKey Gas Discharge Tube Arrestors section: https://www.digikey.com/en/products/filter/circuit-protection/142
