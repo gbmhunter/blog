@@ -4,7 +4,7 @@ categories: [ "Electronics", "Circuit Design" ]
 date: 2011-09-03
 description: "A list of the most popular component designators used on schematics and PCB silkscreens."
 draft: false
-lastmod: 2021-01-25
+lastmod: 2021-07-03
 tags: [ "electronics", "circuit design", "components", "designators", "engineering", "symbols", "PCBs", "silkscreen", "IEEE 315", "schematics", "prefix" ]
 title: "Component Designators"
 type: "page"
@@ -109,15 +109,17 @@ Recommended symbol(s):
 
 ### Ferrite Beads (FB, FEB)
 
-`FB` is the designator used for ferrite beads. Sometimes the designator `FEB` is used instead. To learn more, see the {{% link text="Ferrite Beads page" src="/electronics/components/ferrite-beads" %}}.
+Designator(s):
 
-Recommended designator(s):
+* `FB` (recommended)
+* `FEB`
 
-* `FB`
+Schematic symbol(s):
 
-Recommended schematic symbol(s):
+.The schematic symbol for a ferrite bead.
+image::ferrite-bead-schematic-symbol.png[width=200px]
 
-{{< img src="ferrite-bead-schematic-symbol.png" caption="The schematic symbol for a ferrite bead." width="200px" >}}
+Read more about ferrite beads link:/electronics/components/ferrite-beads[here].
 
 ### Fiducials (FID)
 
@@ -127,10 +129,29 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-{{< img src="fiducial-schematic-symbol.png" caption="The schematic symbol for a fiducial." width="200px" >}}
+.The schematic symbol for a fiducial.
+image::fiducial-schematic-symbol.png"[width=200px]
 
+=== Gas Discharge Tubes (GDT)
 
-### Ground (GND, AGND, DGND)
+Recommended designator:
+
+* `GDT`
+
+Recommended schematic symbols(s):
+
+[.imagerow]
+--
+.Schematic symbol and designator for a 2-electrode gas discharge tube (GDT). 
+image::gdt-schematic-symbol-2-electrode.svg[width=250px, height=200px]
+
+.Schematic symbol and designator for a 3-electrode gas discharge tube (GDT). 
+image::gdt-schematic-symbol-3-electrode.svg[width=250px, height=200px]
+--
+
+Read more about GDTs link:/electronics/components/gas-discharge-tubes-gdts/[here].
+
+=== Ground (GND, AGND, DGND)
 
 Sometimes `GND` is used for all ground points, and sometimes grounds are split based on noise boundaries such as `AGND` and `DGND` (this is common in high-frequency circuits).
 
@@ -148,11 +169,11 @@ Recommended schematic symbol(s):
   {{< img src="digital-ground-schematic-symbol.png" caption="The schematic symbol for digital ground (DGND)." width="200px" >}}
 </div>
 
-### Integrated Circuits (U)
+=== Integrated Circuits (U)
 
 `U` is the designator for integrated circuits. ICs include microcontrollers, liner voltage regulators, op-amps, e.t.c.
 
-Why `U`? One theory is that `U` was the the designator for anything "Unspecified". It makes sense that when ICs first came into use that they would of been labelled as such. The name stuck, and now `U` is used for ICs (and no longer for anything "unspecified"). Another theory is that `U` stood for "Unrepairable"[^ics].
+Why `U`? One theory is that `U` was the the designator for anything "Unspecified". It makes sense that when ICs first came into use that they would of been labelled as such. The name stuck, and now `U` is used for ICs (and no longer for anything "unspecified"). Another theory is that `U` stood for "Unrepairable"<<ics>>.
 
 In older schematics you may also see `IC` or `Z` used for integrated circuits.
 
@@ -315,6 +336,7 @@ The regex pattern to match any valid component designator, which is one or more 
 
 The above pattern also contains the start and end-of-line anchors `^` and `$`, to enforce that there is no text before or after the designator. These can be removed if desired. More on using regex with component designators can be found on the [Altium Scripting page](/electronics/general/altium/altium-scripting-and-using-the-api).
 
-## References
+[bibliography]
+== References
 
-[^ics]: https://electronics.stackexchange.com/questions/25655/why-is-u-used-for-ics-on-circuit-diagrams, fetched on 2019-05-03.
+* [[[ics]]]: https://electronics.stackexchange.com/questions/25655/why-is-u-used-for-ics-on-circuit-diagrams, fetched on 2019-05-03.

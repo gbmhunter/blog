@@ -15,7 +15,7 @@ type: "page"
 
 _Gas Discharge Tubes (GDTs)_ (a.k.a. _Gas Tube Arrestors (GTAs)_ or _Surge Arrestors (SAs)_) are transient voltage/current spike protection components used in electronic circuits.
 
-GDTs, along with link:/electronics/components/diodes/tvs-diodes/[TVS diodes] and spark gaps, are common components to add to circuit boards (and inline on cables inside electronic equipment) to make electronics more robust against voltage spikes (transients) and other EMI events.
+GDTs, along with link:/electronics/components/diodes/tvs-diodes/[TVS diodes], link:/electronics/components/circuit-protection/varistors-vdrs/[MOVs (varistors)], and spark gaps, are common components to add to circuit boards (and inline on cables inside electronic equipment) to make electronics more robust against voltage spikes (transients) and other EMI events.
 
 == Schematic Symbol and Designator
 
