@@ -74,9 +74,9 @@ body {
 /* ========================================================================= */
 
 .menu-nav {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 5rem;
+    // position: -webkit-sticky;
+    // position: sticky;
+    // top: 5rem;
     display: block !important;
     // height: calc(100vh - 7rem);
     padding-left: .25rem;
@@ -286,6 +286,10 @@ ul li p {
     margin-block-end: 0;
 }
 
+/* ========================================================================= */
+/* IMAGES                                                                    */
+/* ========================================================================= */
+
 .imageblock {
 
     // Add gaps between image blocks and other content
@@ -308,6 +312,16 @@ ul li p {
 
     img {
         max-width: 100%; // Even if in the AsciiDoc file the image is specified with width=<large number>, make sure it is not wider than the parent content div
+    }
+}
+
+// imagerow is a custom class we apply to blocks in where we want to show images
+// in a row across the page
+.imagerow {
+    display: flex;
+    justify-content: center;
+    .content {
+        display: flex;
     }
 }
 
