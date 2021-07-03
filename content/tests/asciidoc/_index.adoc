@@ -83,6 +83,17 @@ There should be a vector image below that is `300px` wide, with the caption "Hel
 .Hello, world
 image::example-vector-image.svg[width=300]
 
+Below should be two images side-by-side (both with captions), using our custom `.imagerow` class. The images should be centered on the page:
+
+[.imagerow]
+--
+.Image on the left. 
+image::example-vector-image.svg[width=250px, height=200px]
+
+.Image on the right. 
+image::example-vector-image.svg[width=250px, height=200px]
+--
+
 == References
 
 This sentence contains a bibliographic reference at the end of it<<example-bib>>.

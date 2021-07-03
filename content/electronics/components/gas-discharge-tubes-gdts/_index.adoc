@@ -2,26 +2,35 @@
 author: "gbmhunter"
 categories: [ "Electronics", "Components" ]
 date: 2021-07-02
-description: "Info on gas discharge tubes (GDTs)."
+description: "Schematic symbols, an explanation on 2 and 3-electrode versions, important parameters, how they work, and more info on gas discharge tubes (GDTs)."
 draft: false
-lastmod: 2021-07-02
+images: [ /electronics/components/gas-discharge-tubes-gdts/gdt-schematic-symbol-2-electrode.svg ]
+lastmod: 2021-07-03
 tags: [ "electronics", "gas discharge tubes", "GDT", "GDTs", "gas tube arrestors", "surge arrestors", "sparkover voltage", "impulse discharge current" ]
 title: "Gas Discharge Tubes (GDTs)"
 type: "page"
 ---
 
-WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
-
 == Overview
 
 _Gas Discharge Tubes (GDTs)_ (a.k.a. _Gas Tube Arrestors (GTAs)_ or _Surge Arrestors (SAs)_) are transient voltage/current spike protection components used in electronic circuits.
 
+GDTs, along with link:/electronics/components/diodes/tvs-diodes/[TVS diodes] and spark gaps, are common components to add to circuit boards (and inline on cables inside electronic equipment) to make electronics more robust against voltage spikes (transients) and other EMI events.
+
 == Schematic Symbol and Designator
 
-.Schematic symbol and designator for a 2-electrode gas discharge tube (GDT). 
-image::schematic-symbol.svg[width=300px]
+My preferred schematic symbol for 2 and 3 electrode GDTs are shown below:
 
-TIP: You may assume the dot in the schematic symbol indicates a polarity. But simple 2-pin gas discharge tubes are typically polarity insensitive, and the dot signifies that the device is gas filled (usually at some pressure lower than 1 atmosphere). 
+[.imagerow]
+--
+.Schematic symbol and designator for a 2-electrode gas discharge tube (GDT). 
+image::gdt-schematic-symbol-2-electrode.svg[width=250px, height=200px]
+
+.Schematic symbol and designator for a 3-electrode gas discharge tube (GDT). 
+image::gdt-schematic-symbol-3-electrode.svg[width=250px, height=200px]
+--
+
+TIP: You may assume the dot in the schematic symbol indicates a polarity. But most gas discharge tubes are polarity insensitive, and the dot signifies that the device is gas filled (usually at some pressure lower than 1 atmosphere).
 
 I have noticed the following designators used for gas discharge tubes:
 
