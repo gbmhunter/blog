@@ -5,7 +5,7 @@ date: 2013-10-16
 description: "Noise spectral densities, the colours of noise, thermal noise, shot noise, and more info about electrical noise."
 draft: false
 images: [ "/electronics/circuit-design/electrical-noise/noise-pink-time-domain.png" ]
-lastmod: 2021-06-29
+lastmod: 2021-07-04
 tags: [ "noise", "dB", "AC coupling", "thermal noise", "Johnson noise", "Nyquist noise", "shot noise", "Poisson noise", "Stochastic resonance", "white noise", "pink noise", "red noise", "blue noise", "violet noise", "Pythagorean addition" ]
 title: "Electrical Noise"
 type: "page"
@@ -14,6 +14,9 @@ type: "page"
 ## Overview
 
 _Electrical noise_ is the *unintentional (most of the time, but not in the case of <<_stochastic_resonance, stochastic resonance>>, dither, or random number generation) introduction of voltage/current disturbance in an electrical signal*. Noise is added to a signal as it flows through a circuit/cable by the circuit components themselves, as well as being picked up by electromagnetic means from the surrounding environment. Noise is also emitted by a signal via electromagnetic means to the surrounding environment.
+
+.Noise on a power rail that was feeding 3 SMPS that hadn't been compensated correctly. Kept this image because I thought the waveform was interesting!
+image::noise-from-3-smps.png[width=700px]
 
 * *Electromagnetic interference (EMI)*: The presence of electromagnetic radiation that could disrupt nearby systems. Sources of EMI include electrical storms (lightning), mains power line disruptions, solar radiation and nearby circuitry (power supplies, variable-speed motor drives, arc welders, e.t.c).
 * *Electromagnetic compatibility (EMC)*: The measure of ability for a system to both:

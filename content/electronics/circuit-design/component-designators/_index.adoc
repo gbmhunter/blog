@@ -10,7 +10,7 @@ title: "Component Designators"
 type: "page"
 ---
 
-## Overview
+== Overview
 
 Component designators and schematic symbols are used to quickly identify components both on schematics and PCBs. They usually consist of a short acronym representing the type of component, followed by unique number to distinguish it from other components of the same type (e.g. `R3`, `R4`, `C3`).
 
@@ -22,13 +22,13 @@ Over the years, many standards have been released that specify particular design
 
 However, many schematic and PCB silkscreen designs do not strictly follow any standard (although the similarities are usually quite high). The following list shows non-standard specific, commonly used acronyms and the type of component they represent.
 
-## List of Common Component Designators And Symbols
+== List of Common Component Designators And Symbols
 
 Sorted by alphabetic order.
 
 Some of the symbols below where created with InkScape and saved to a SVG file, which you can [view/download here](/electronics/circuit-design/component-designators/schematic-symbols.svg).
 
-### Antennas (ANT)
+=== Antennas (ANT)
 
 There are a number of different schematic symbols for an antenna, but they all look similar and should be easily recognizable. The designator `E` is also used, however `ANT` is my personal preference.
 
@@ -38,14 +38,18 @@ Recommended designator(s):
 
 Recommended schematic symbols(s):
 
-<div class="hbox">
-  {{< img src="antenna-schematic-symbol.png" caption="A schematic symbol for an antenna." width="100px" >}}
-  {{< img src="antenna-schematic-symbol-2.png" caption="Another schematic symbol for an antenna." width="100px" >}}
-</div>
+[.imagerow]
+--
+.A schematic symbol for an antenna with an open top.
+image::antenna-symbol-open-top.svg[width=100px]
+
+.A schematic symbol for an antenna with an closed top.
+image::antenna-symbol-closed-top.svg[width=100px]
+--
 
 ### Assemblies (A)
 
-Separate assembly or sub-assembly (e.g. daughter board). I do not see this designator used much in practice (and I myself have never used it, for things such as GPS modules with an LGA footprint I have always used the designator U).
+Separate assembly or sub-assembly (e.g. daughter board). I do not see this designator used much in practice (and I myself have never used it, for things such as GPS modules with an LGA footprint I have always used the designator `U`).
 
 Recommended designator(s):
 
@@ -61,7 +65,8 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-{{< img src="battery-schematic-symbol-bt1.png" width="200px" caption="The schematic symbol for a battery." >}}
+.The schematic symbol for a battery.
+image::battery-symbol.svg[width=200px]
 
 ### Capacitors \(C)
 
@@ -73,10 +78,24 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-<div class="hbox">
-  {{% img src="non-polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a non-polarised capacitor." width="200px" %}}
-  {{% img src="polarised-capacitor-schematic-symbol.png" caption="The schematic symbol for a polarised capacitor." width="200px" %}}
-</div>
+[.imagerow]
+--
+.The schematic symbol for a non-polarised capacitor.
+image::capacitor-symbol-unpolarized.svg[width=200px]
+
+.The schematic symbol for a polarised capacitor.
+image::capacitor-symbol-polarized.svg[width=200px]
+
+.The schematic symbol for a variable capacitor.
+image::capacitor-symbol-variable.svg[width=200px]
+--
+
+Recommended parameters to show on the schematics:
+
+* Capacitance (e.g. `10uF`)
+* Voltage (e.g. `16V`)
+
+For special high tolerance (e.g. 1% or less) capacitors it can be useful to show the tolerance also.
 
 ### Diodes (D)
 

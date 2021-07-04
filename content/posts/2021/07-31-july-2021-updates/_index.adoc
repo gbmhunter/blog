@@ -15,3 +15,7 @@ type: "post"
 * A new page on link:/electronics/components/gas-discharge-tubes-gdts/[Gas Discharge Tubes (GDTs)], with schematic symbols, designators and examples.
 +
 ::image[/electronics/components/gas-discharge-tubes-gdts/schematic-symbol.svg]
+
+* Added a new example of a noisy waveform to the link:/electronics/circuit-design/electrical-noise/[Electrical Noise page].
++
+::image[/electronics/circuit-design/electrical-noise/noise-from-3-smps.png]
