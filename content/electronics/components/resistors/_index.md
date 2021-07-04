@@ -131,7 +131,7 @@ The schematic symbol looks like a normal resistor, but with a third pin added to
 
 {{% img src="potentiometer-schematic-symbol.png" width="400px" caption="The schematic symbol for a potentiometer, with the US-style 'squiggly' resistor." %}}
 
-See the {{% link text="Resistors section of the Component Designators page" src="/electronics/circuit-design/component-designators#resistors-r-vr" %}} for more information.
+See the {{% link text="Resistors section of the Component Schematic Symbols and Designators page" src="/electronics/circuit-design/component-schematic-symbols-and-designators#resistors-r-vr" %}} for more information.
 
 ### Common Uses And Example Circuits
 
