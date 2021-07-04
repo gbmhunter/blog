@@ -131,7 +131,7 @@ Recommended designator(s):
 Recommended symbol(s):
 
 .Schematic symbol for a fuse.
-image::fuse-schematic-symbol-f1.png[width=200px]
+image::fuse-symbol.svg[width=200px]
 
 ### Ferrite Beads (FB, FEB)
 
@@ -143,7 +143,12 @@ Designator(s):
 Schematic symbol(s):
 
 .The schematic symbol for a ferrite bead.
-image::ferrite-bead-schematic-symbol.png[width=200px]
+image::ferrite-bead-symbol.svg[width=200px]
+
+Recommended parameters to display on the schematic:
+
+* Impedance (typically rated @ 100MHz)
+* Max. current
 
 Read more about ferrite beads link:/electronics/components/ferrite-beads[here].
 
@@ -156,7 +161,7 @@ Recommended designator(s):
 Recommended schematic symbol(s):
 
 .The schematic symbol for a fiducial.
-image::fiducial-schematic-symbol.png"[width=200px]
+image::fiducial-symbol.svg[width=200px]
 
 === Gas Discharge Tubes (GDT)
 
