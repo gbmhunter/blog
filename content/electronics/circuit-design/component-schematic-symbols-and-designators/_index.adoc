@@ -97,7 +97,7 @@ Recommended parameters to show on the schematics:
 
 For special high tolerance (e.g. 1% or less) capacitors it can be useful to show the tolerance also.
 
-### Diodes (D)
+=== Diodes (D)
 
 The designator `D` can be used for most diodes. Sometimes `Z` is used for a Zener diode, and `LED` for a light-emitting diode, however TVS, Schottky and general purpose diodes are still just `D`.
 
@@ -107,13 +107,19 @@ Recommended designator(s):
 
 Recommended symbol(s):
 
-<div class="hbox">
-  {{< img src="diode-general-purpose-d1-schematic-symbol.png" caption="The recommended schematic symbol for an general purpose diode." width="200px" >}}
-  {{< img src="diode-led-d1-schematic-symbol.png" caption="The recommended schematic symbol for an LED." width="200px" >}}
-  {{< img src="diode-zener-d1-schematic-symbol.png" caption="The recommended schematic symbol for a Zener diode." width="200px" >}}
-</div>
+[.imagerow]
+--
+.The recommended schematic symbol for an general purpose diode.
+image::diode-symbol-general-purpose.svg[width=200px, height=200px]
 
-### Fuse/Fuse Holders (F, XF)
+.The recommended schematic symbol for an zener diode.
+image::diode-symbol-zener.svg[width=200px, height=200px]
+
+.The recommended schematic symbol for an LED.
+image::diode-symbol-led.svg[width=200px, height=200px]
+--
+
+=== Fuse/Fuse Holders (F, XF)
 
 `F` is the designator used for fuses (wired, electrical, e.t.c). `XF` is commonly used for a fuse holder.
 
@@ -124,7 +130,8 @@ Recommended designator(s):
 
 Recommended symbol(s):
 
-{{< img src="fuse-schematic-symbol-f1.png" width="200px" >}}
+.Schematic symbol for a fuse.
+image::fuse-schematic-symbol-f1.png[width=200px]
 
 ### Ferrite Beads (FB, FEB)
 
