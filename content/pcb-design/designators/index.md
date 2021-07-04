@@ -16,7 +16,7 @@ Designators are small component-identifying pieces of text that usually reside o
 
 {{< img src="0603-resistor-and-designator-2d-cad-birds-eye-high-zoom.png" width="425px" caption="A 0603 resistor and it's designator inside a CAD packages PCB design file."  >}}
 
-For more information on what designators are used for what components, see the {{% link text="Component Designators page." src="/electronics/circuit-design/component-designators" %}}.
+For more information on what designators are used for what components, see the {{% link text="Component Schematic Symbols and Designators page." src="/electronics/circuit-design/component-schematic-symbols-and-designators" %}}.
 
 ## Designator Placement On The PCB
 

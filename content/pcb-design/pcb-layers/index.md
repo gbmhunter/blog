@@ -62,7 +62,7 @@ For components that protrude of the edge of the PCB (for example, connectors, or
 
 {{< img src="silkscreen-indicating-footprint-protrudes-edge-of-pcb.png" caption="Diagonal lines on the silkscreen layer of a PCB can be useful for indicating a component that protrudes over the edge of a PCB."  width="400px" >}}
 
-For a list of common component designators which are used on the silkscreen layer, see the {{% link text="Component Designators page" src="/electronics/circuit-design/component-designators" %}}.
+For a list of common component designators which are used on the silkscreen layer, see the {{% link text="Component Schematic Symbols and Designators page" src="/electronics/circuit-design/component-schematic-symbols-and-designators" %}}.
 
 ## Solder Paste Layer
 

@@ -6,7 +6,7 @@ description: "A list of the most popular component designators used on schematic
 draft: false
 lastmod: 2021-07-03
 tags: [ "electronics", "circuit design", "components", "designators", "engineering", "symbols", "PCBs", "silkscreen", "IEEE 315", "schematics", "prefix" ]
-title: "Component Designators"
+title: "Component Schematic Symbols and Designators"
 type: "page"
 ---
 

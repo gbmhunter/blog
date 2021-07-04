@@ -10,7 +10,7 @@ title: "May 2019 Updates"
 type: "post"
 ---
 
-* The {{% link text="Component Designators page" src="/electronics/circuit-design/component-designators" %}} was updated. The mobile unfriendly one-big-table design was removed in favour of separate sections for each component and designator/schematic symbol. Some of the symbols were also updated using InkScape.
+* The {{% link text="Component Schematic Symbols and Designators page" src="/electronics/circuit-design/component-schematic-symbols-and-designators" %}} was updated. The mobile unfriendly one-big-table design was removed in favour of separate sections for each component and designator/schematic symbol. Some of the symbols were also updated using InkScape.
 
 * The PCB Design Tools section of the main PCB Design page was moved onto it's own {{% link text="PCB Design Tools page" src="/pcb-design/pcb-design-tools" %}}.
 
