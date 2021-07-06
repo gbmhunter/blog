@@ -14,8 +14,14 @@ type: "post"
 
 * A new page on link:/electronics/components/gas-discharge-tubes-gdts/[Gas Discharge Tubes (GDTs)], with schematic symbols, designators and examples.
 +
-::image[/electronics/components/gas-discharge-tubes-gdts/schematic-symbol.svg]
+image::/posts/2021/07-31-july-2021-updates/gas-discharge-tubes-gdts-schematic-symbols-screenshot.png[width=700px]
 
 * Added a new example of a noisy waveform to the link:/electronics/circuit-design/electrical-noise/[Electrical Noise page].
 +
-::image[/electronics/circuit-design/electrical-noise/noise-from-3-smps.png]
+image::/electronics/circuit-design/electrical-noise/noise-from-3-smps.png[width=800px]
+
+* Added a new page (in notes format) on link:/electronics/components/spark-gaps/[Spark Gaps].
+
+* Added info on transient surge waveform specification, including a graph illustration the concept behind 8/20us and similar specifications:
++
+image::/posts/2021/07-31-july-2021-updates/transient-pulse-specification-graph-screenshot.png[width=800px]
