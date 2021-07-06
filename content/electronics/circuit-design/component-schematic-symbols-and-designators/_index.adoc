@@ -26,15 +26,14 @@ However, many schematic and PCB silkscreen designs do not strictly follow any st
 
 Sorted by alphabetic order.
 
-Some of the symbols below where created with InkScape and saved to a SVG file, which you can [view/download here](/electronics/circuit-design/component-designators/schematic-symbols.svg).
-
 === Antennas (ANT)
 
 There are a number of different schematic symbols for an antenna, but they all look similar and should be easily recognizable. The designator `E` is also used, however `ANT` is my personal preference.
 
-Recommended designator(s):
+Designator(s):
 
-* `ANT`
+* `ANT` (recommended)
+* `E`
 
 Recommended schematic symbols(s):
 
@@ -194,11 +193,17 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-<div class="hbox">
-  {{< img src="general-common-ground-schematic-symbol.png" caption="The schematic symbol for a general or common ground." width="200px" >}}
-  {{< img src="ground-analogue.png" caption="The schematic symbol for analogue ground (AGND)." width="200px" >}}
-  {{< img src="digital-ground-schematic-symbol.png" caption="The schematic symbol for digital ground (DGND)." width="200px" >}}
-</div>
+[.imagerow]
+--
+.The schematic symbol for a general or common ground. 
+image::general-common-ground-schematic-symbol.png[width=250px, height=200px]
+
+.The schematic symbol for analogue ground (AGND).
+image::ground-analogue.png[width=250px, height=200px]
+
+.The schematic symbol for digital ground (DGND).
+image::digital-ground-schematic-symbol.png[width=250px, height=200px]
+--
 
 === Integrated Circuits (U)
 
@@ -214,7 +219,8 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-{{< img src="integrated-circuit-schematic-symbol-u1.png" width="200px" caption="Recommended schematic symbol for an integrated circuit (IC)." >}}
+.Recommended schematic symbol for an integrated circuit (IC).
+image::integrated-circuit-schematic-symbol-u1.png[width=200px]
 
 ### Jack (J)
 
@@ -282,11 +288,14 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-<div class="hbox">
-{{< img src="resistor-schematic-symbol-r1.png" caption="The schematic symbol for a standard resistor." width="200px" >}}
+[.imagerow]
+--
+.The schematic symbol for a standard resistor.
+image::resistor-schematic-symbol-r1.png[width=250px, height=200px]
 
-{{< img src="variable-resistor-potentiometer-schematic-symbol.png" caption="The schematic symbol for a variable resistor (potentiometer)." width="200px" >}}
-</div>
+.The schematic symbol for a variable resistor (potentiometer).
+image::variable-resistor-potentiometer-schematic-symbol.png[width=250px, height=200px]
+--
 
 ### Switches (S, SW)
 
@@ -304,34 +313,38 @@ Recommended designator(s):
 
 Recommended schematic symbol(s):
 
-{{< img src="spark-gap-schematic-symbol-triangular-200um-no-bom.png" caption="A schematic symbol for a spark gap. This spark gap is created with two triangles of copper on the PCB, with a gap of 200um between them. As this is made purely from the PCB, there is no BOM component needed." width="200px" >}}
+.A schematic symbol for a spark gap. This spark gap is created with two triangles of copper on the PCB, with a gap of 200um between them. As this is made purely from the PCB, there is no BOM component needed.
+image::spark-gap-schematic-symbol-triangular-200um-no-bom.png[width=200px]
 
 ### Transformer (T)
 
-`T` is the designator used for transformers.
+Designator(s):
 
-Recommended designator(s):
-
-* `T`
+* `T` (recommended)
+* `TF` (<<an-component-designators>>)
 
 ### Transistors (Q)
 
-`Q` is the designator used for transistors (BJTs, MOSFETs, JFETs, e.t.c). Sometimes `Q` is also used for an integrated circuit, but I prefer using `U`.
+Typically, `Q` is used for all transistors, no matter if they are BJTs, MOSFETs, JFETs, e.t.c. 
 
-Recommended designator(s):
+Designator(s):
 
-* `Q`
+* `Q` (sometimes `Q` is also used for an integrated circuit, but I prefer using `U`)
 
 Recommended schematic symbol(s):
 
-<div class="hbox">
-  {{< img src="n-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for an N-channel MOSFET." width="200px" >}}
-  {{< img src="p-channel-mosfet-schematic-symbol.png" caption="The schematic symbol for a P-channel MOSFET." width="200px" >}}
-</div>
+[.imagerow]
+--
+.The schematic symbol for an N-channel MOSFET.
+image::n-channel-mosfet-schematic-symbol.png[width=250px, height=200px]
+
+.The schematic symbol for a P-channel MOSFET.
+image::p-channel-mosfet-schematic-symbol.png[width=250px, height=200px]
+--
 
 ### Test Point (TP)
 
-Test point. These may be physical components on the PCB, or just places of exposed copper (e.g. pads, holes or vias).</td>
+Test point. These may be physical components on the PCB, or just places of exposed copper (e.g. pads, holes or vias).
 
 Recommended designator(s):
 
@@ -347,7 +360,7 @@ Recommended designator(s):
 
 ### Crystals/Oscillators (XC, XTAL, Y)
 
-Timing crystals. XTAL or Y are also used.
+Timing crystals. `XTAL` or `Y` are also used.
 
 Recommended designator(s):
 
@@ -355,7 +368,8 @@ Recommended designator(s):
 
 Recommended schematic symbols:
 
-{{< img src="crystal-schematic-symbol.png" caption="The schematic symbol for a crystal." width="200px" >}}
+.The schematic symbol for a crystal.
+image::crystal-schematic-symbol.png[width=200px]
 
 ## Regex
 
@@ -365,9 +379,10 @@ The regex pattern to match any valid component designator, which is one or more 
 ^[A-Z][A-Z]*[0-9][0-9]*$
 ```
 
-The above pattern also contains the start and end-of-line anchors `^` and `$`, to enforce that there is no text before or after the designator. These can be removed if desired. More on using regex with component designators can be found on the [Altium Scripting page](/electronics/general/altium/altium-scripting-and-using-the-api).
+The above pattern also contains the start and end-of-line anchors `^` and `$`, to enforce that there is no text before or after the designator. These can be removed if desired. More on using regex with component designators can be found on the link:/electronics/general/altium/altium-scripting-and-using-the-api[Altium Scripting page].
 
 [bibliography]
 == References
 
+* [[[an-component-designators]]]: RF Cafe (<publish date unknown>). _AN (Army / Navy) Component Designators & Designations_. RF Cafe. Retrieved 2021-07-06, from https://www.rfcafe.com/references/electrical/an-component-designators.htm
 * [[[ics]]]: https://electronics.stackexchange.com/questions/25655/why-is-u-used-for-ics-on-circuit-diagrams, fetched on 2019-05-03.
