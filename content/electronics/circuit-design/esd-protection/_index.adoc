@@ -55,9 +55,9 @@ Be careful, as these diodes usually have quite a low maximum current. Exceeding 
 
 However useful they may be, they also generate design challenges in specific scenario's, and therefore require careful consideration when doing any schematic design involving CMOS I/O with the ESD protection diodes present. The two scenario's which cause problems are:
 
-1. When powering up a circuit with multiple voltage rails
-1. When the voltage on `\(V_{I/O}\)` could at some points be higher than `\(V_{CC}\)` because of the nature of the incoming signal.
-1. When you are selectively powering down the voltage rails powering these ICs in low-power designs.
+. When powering up a circuit with multiple voltage rails
+. When the voltage on `\(V_{I/O}\)` could at some points be higher than `\(V_{CC}\)` because of the nature of the incoming signal.
+. When you are selectively powering down the voltage rails powering these ICs in low-power designs.
 
 Out of all these scenarios, 3. has to be the one that catches a schematic designer out the most often.
 
@@ -102,3 +102,15 @@ Check the inputs maximum digital low and minimum digital high voltage levels. If
 ## ESD Protection Of Capacitive Sensing I/O Lines
 
 See the [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-sensing) page.
+
+== Lighting Surge Characterization And Test Transient Pulses
+
+.Transient ESD events are typically specified with two numbers, stem:[t_1] and stem:[t_2]. stem:[t_1] is the time for the current to reach the peak value. stem:[t_2] is the time from the start to when the current decays to half of the peak value (as shown).
+image::test-pulse-graph-8-20us.svg[width=800px]
+
+|===
+| Name | stem:[t_1] | stem:[t_2]
+
+| 8/20us | 8us | 20us
+| 10/1000us | 10us | 1000us
+|===
