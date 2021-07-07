@@ -67,7 +67,7 @@ Recommended schematic symbol(s):
 .The schematic symbol for a battery.
 image::battery-symbol.svg[width=200px]
 
-### Capacitors \(C)
+### Capacitors (C)
 
 `C` is the recommended designator for capacitors (both polarised and non-polarised). Sometimes you will see `VC` used for a variable capacitor (these are not common). I recommend using two different schematic symbols, flat plates for a non-polarised capacitor, and one plate which is curved for a polarised capacitor.
 
@@ -185,24 +185,26 @@ Read more about GDTs link:/electronics/components/gas-discharge-tubes-gdts/[here
 
 Sometimes `GND` is used for all ground points, and sometimes grounds are split based on noise boundaries such as `AGND` and `DGND` (this is common in high-frequency circuits).
 
-Recommended designator(s):
+Designator(s):
 
 * `GND`: For general purpose use.
 * `AGND`: Specialised analogue ground.
 * `DGND`: Specialised digital ground.
 
-Recommended schematic symbol(s):
+TIP: Ground designators are not usually shown on schematics next to the symbols, as they are obvious from the symbol alone and are not included in the BoM.
+
+Schematic symbol(s):
 
 [.imagerow]
 --
-.The schematic symbol for a general or common ground. 
-image::general-common-ground-schematic-symbol.png[width=250px, height=200px]
+.The schematic symbol for a signal (general) ground. 
+image::ground-symbol-signal.svg[width=250px, height=200px]
 
-.The schematic symbol for analogue ground (AGND).
-image::ground-analogue.png[width=250px, height=200px]
+.The schematic symbol for a earth ground. 
+image::ground-symbol-earth.svg[width=250px, height=200px]
 
-.The schematic symbol for digital ground (DGND).
-image::digital-ground-schematic-symbol.png[width=250px, height=200px]
+.The schematic symbol for a chassis ground. 
+image::ground-symbol-chassis.svg[width=250px, height=200px]
 --
 
 === Integrated Circuits (U)
