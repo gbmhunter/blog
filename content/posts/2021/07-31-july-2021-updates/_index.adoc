@@ -25,3 +25,12 @@ image::/electronics/circuit-design/electrical-noise/noise-from-3-smps.png[width=
 * Added info on link:/electronics/circuit-design/esd-protection/#_lighting_surge_characterization_and_test_transient_pulses[transient surge waveform specification], including a graph illustration the concept behind 8/20us and similar specifications:
 +
 image::/posts/2021/07-31-july-2021-updates/transient-pulse-specification-graph-screenshot.png[width=800px]
+
+* Moved Zener diode info into it's link:/electronics/components/diodes/zener-diodes/[own page].
+
+* Cleaned up many of the schematic symbols on this site for a consistent look and feel:
++
+[.imagerow]
+--
+image::/electronics/circuit-design/component-schematic-symbols-and-designators/diode-symbol-tvs-avalanche.svg[width=200px, height=200px]
+--

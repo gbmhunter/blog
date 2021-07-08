@@ -114,6 +114,9 @@ image::diode-symbol-general-purpose.svg[width=200px, height=200px]
 .The recommended schematic symbol for an zener diode.
 image::diode-symbol-zener.svg[width=200px, height=200px]
 
+.The recommended schematic symbol for a unidirectional avalanche diode (including TVS diodes). Note the second bar distinguishing it from a Zener diode.
+image::diode-symbol-tvs-avalanche.svg[width=200px, height=200px]
+
 .The recommended schematic symbol for an LED.
 image::diode-symbol-led.svg[width=200px, height=200px]
 --
