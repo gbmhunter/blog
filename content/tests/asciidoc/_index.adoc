@@ -111,6 +111,17 @@ This sentence should have a footnote at the end of it{fn-test-1}.
 | Cell 2, 1 | Cell 2, 2
 |===
 
+Below is a table with `%autowidth` set, this means is should only be as wide as the content within it
+
+[%autowidth]
+|===
+| First letter  | Element description
+
+| A             | XSPICE code model
+| B             | Behavioral (arbitrary) source
+|===
+
+
 == Admonitions
 
 TIP: This is a tip. I should be green and have a bulb icon on my left.

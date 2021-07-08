@@ -22,6 +22,6 @@ image::/electronics/circuit-design/electrical-noise/noise-from-3-smps.png[width=
 
 * Added a new page (in notes format) on link:/electronics/components/spark-gaps/[Spark Gaps].
 
-* Added info on transient surge waveform specification, including a graph illustration the concept behind 8/20us and similar specifications:
+* Added info on link:/electronics/circuit-design/esd-protection/#_lighting_surge_characterization_and_test_transient_pulses[transient surge waveform specification], including a graph illustration the concept behind 8/20us and similar specifications:
 +
 image::/posts/2021/07-31-july-2021-updates/transient-pulse-specification-graph-screenshot.png[width=800px]
