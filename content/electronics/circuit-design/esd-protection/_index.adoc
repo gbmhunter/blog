@@ -54,20 +54,21 @@ The table below summarizes the different components you can use for ESD protecti
 
 == Standards
 
-IEC-61312, first introduced in 1995
+* _IEC-61312-1: Protection Against Lightning Electromagnetic Impulse_, first introduced in 1995.
+* _Telecordia GR-1089 Core: Electromagnetic Compatibility And Electrical Safety - Generic Criteria For Network Telecommunications Equipment_: Used by telecommunication service providers. It contains NEBS (Network Equipment - Building System) criteria.
 
 ## Internal ESD Protection On CMOS I/O
 
-Inbuilt protection is very common on a CMOS I/O pins that may be part of a device (anything from a simple load switch, to a medium complexity microcontroller, to a high complexity FPGA). They are normally two per I/O pin. One attached between the pin and GND, and one attached between the pin and VCC. Both are reverse-biased under normal operating conditions (`\( GND <= V_{I/O} <= V_{CC} \)`).
+Inbuilt protection is very common on a CMOS I/O pins that may be part of a device (anything from a simple load switch, to a medium complexity microcontroller, to a high complexity FPGA). They are normally two per I/O pin. One attached between the pin and GND, and one attached between the pin and VCC. Both are reverse-biased under normal operating conditions (stem:[ GND <= V_{I/O} <= V_{CC} ]).
 
-They serve to protect the sensitive CMOS logic in the case of a fault condition on the pin. If the voltage on `\( V_{I/O} \)` rises above `\( V_{CC} \)` (e.g. positive ESD voltage spike), then the top diode conducts, clamping the voltage on the pin to no more than `\( V_{CC} + V_f \)`. Similarly, if the voltage on `\( V_{I/O} \)` drops below `\(V_{GND}\)` (e.g. negative ESD voltage spike), then the bottom diode conducts, clamping the voltage on the pin to no more than `\( -V_f \)`.
+They serve to protect the sensitive CMOS logic in the case of a fault condition on the pin. If the voltage on stem:[ V_{I/O} ] rises above stem:[ V_{CC} ] (e.g. positive ESD voltage spike), then the top diode conducts, clamping the voltage on the pin to no more than stem:[ V_{CC} + V_f ]. Similarly, if the voltage on stem:[ V_{I/O} ] drops below stem:[V_{GND}] (e.g. negative ESD voltage spike), then the bottom diode conducts, clamping the voltage on the pin to no more than stem:[ -V_f ].
 
 Be careful, as these diodes usually have quite a low maximum current. Exceeding this maximum current will blow the ESD diode, usually causing it to go open-circuit, removing the protection from the sensitive CMOS circuitry, which then gets fried almost instantaneously. Your I/O pin then stops working. If your lucky, it will only be a single pin that is effected. If your not, the whole port (if applicable), or even the whole device is fried.
 
 However useful they may be, they also generate design challenges in specific scenario's, and therefore require careful consideration when doing any schematic design involving CMOS I/O with the ESD protection diodes present. The two scenario's which cause problems are:
 
 . When powering up a circuit with multiple voltage rails
-. When the voltage on `\(V_{I/O}\)` could at some points be higher than `\(V_{CC}\)` because of the nature of the incoming signal.
+. When the voltage on stem:[V_{I/O}] could at some points be higher than stem:[V_{CC}] because of the nature of the incoming signal.
 . When you are selectively powering down the voltage rails powering these ICs in low-power designs.
 
 Out of all these scenarios, 3. has to be the one that catches a schematic designer out the most often.
@@ -78,7 +79,7 @@ Backpowering is a phenomenon which occurs in circuits that selectively turn of v
 
 If the leakage current through any CMOS I/O ESD diodes onto the "unpowered" rail is large enough, the circuit may begin back powering itself. This means that although you have turned off the voltage source supplying that rail, the rail still remains powered and all the ICs connected to it still work normally.
 
-You can normally diagnose this by noting the the "unpowered" rail will be one diode forward voltage drop (`\(V_f\)`, which is usually around 0.5-0.7V) less than the voltage on the I/O pin(s) powering the rail (which are normally at `\(V_{CC}\)`).
+You can normally diagnose this by noting the the "unpowered" rail will be one diode forward voltage drop (stem:[V_f], which is usually around 0.5-0.7V) less than the voltage on the I/O pin(s) powering the rail (which are normally at stem:[V_{CC}]).
 
 ## Disabling The ESD Diodes
 
@@ -87,17 +88,18 @@ Extra diodes, external to the IC, can be added to prevent leakage currents throu
 .Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf.
 image::protection-diodes-to-disable-esd-diodes-on-cmos-io.png[width=489px]
 
-However, this approach has it's disadvantages. The actual supply voltage seen by the IC is reduced by twice the voltage drop (`\(V_f\)`) across the diodes (normally 2x 0.5-0.7V = 1.0-1.4V). Also, the IC ground is now significantly different from the system ground. This can upset single-ended ADC measurements and other analogue functions.
+However, this approach has it's disadvantages. The actual supply voltage seen by the IC is reduced by twice the voltage drop (stem:[V_f]) across the diodes (normally 2x 0.5-0.7V = 1.0-1.4V). Also, the IC ground is now significantly different from the system ground. This can upset single-ended ADC measurements and other analogue functions.
 
 ## Series Resistance Into CMOS I/O
 
-I would explain this, but I found an application note by Silicon Labs to explain this much better than I could. So here is a direct copy-and-paste from [AN376](http://www.silabs.com/Support%20Documents/TechnicalDocs/AN376.pdf).
+I would explain this, but I found an application note by Silicon Labs to explain this much better than I could. So here is a direct copy-and-paste from link:http://www.silabs.com/Support%20Documents/TechnicalDocs/AN376.pdf[AN376].
 
-<blockquote>
+[quote]
+____
 The most common method of external ESD protection is adding a small series resistance in-line between the source of ESD energy and the integrated circuit pin to be protected. Somewhat counter-intuitively, a resistance as small as 50Ω can double the ESD immunity of a CMOS IC. Higher immunity is possible; a higher level of protection is somewhat proportional to increased series resistance.
 
 This method works for two reasons. First, the series resistance works with the ICs parasitic pin capacitance (typically 5 to 10 pF) to create a single-pole low pass filter with a cut-off frequency below 1 GHz. This causes the series resistor to attenuate a majority of an ESD event's high-frequency energy (as much as 90% of the rising-edge power in an HBM discharge). Second, when the ICs protection circuits are operating normally, their impedance is very low (on the order of tens of ohms or less). This low resistance works with the series resistance to create a voltage divider, so that the high voltage from an ESD event can only bias the ICs built-in protection circuits with a portion of the total ESD voltage. This attenuation is in addition to rising-edge filtering. The sum of these effects from a simple external series resistor dramatically improves ESD performance in a demanding application.
-</blockquote>
+____
 
 ## Optimal Placement
 
