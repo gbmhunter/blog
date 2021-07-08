@@ -3,6 +3,7 @@ author: "gbmhunter"
 categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-23
 draft: false
+lastmod: 2021-07-09
 title: "Varistors (VDRs)"
 type: "page"
 ---

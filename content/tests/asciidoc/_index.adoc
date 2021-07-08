@@ -121,7 +121,6 @@ Below is a table with `%autowidth` set, this means is should only be as wide as 
 | B             | Behavioral (arbitrary) source
 |===
 
-
 == Admonitions
 
 TIP: This is a tip. I should be green and have a bulb icon on my left.

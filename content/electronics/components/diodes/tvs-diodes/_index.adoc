@@ -8,58 +8,57 @@ title: TVS Diodes
 type: page
 ---
 
-## Overview
+== Overview
 
-TVS (transient voltage suppressor) diodes are used to protect traces from high voltage spikes. They work by shunting currents when the voltage exceeds the **avalanche breakdown potential**. They are basically **high-power Zener diodes**. They start conducting at a preset voltage and are tailored for low on-times.
+TVS (transient voltage suppressor) diodes are used to protect traces from high voltage spikes. They are designed to be operated in the reverse direction and work by shunting currents when the reverse voltage exceeds the **avalanche breakdown potential**. They are basically **high-power Zener diodes**, and are a specialized form of an _avalanche diode_.
+
+They are part of a family of components used for ESD (electro-static discharge) protection, which also includes Zener diodes (however, ESD is not the only thing Zeners are used for). TVS diodes can handle large amounts of peak power (hundred's or thousands of Watts), but Zeners have a tighter voltage tolerance. TVS diodes have more capacitance than Zeners, which could be detrimental in some circumstances (e.g. when protecting the gate signal on a MOSFET).
+
+They come in either uni-directional or bi-directional flavours. Uni-directional TVS diodes block up to the rated voltage in one direction, and behave like a normal conducting diode in the other. Bi-directional block up to the rated voltage in both directions (good for protecting AC waveforms). Use uni-directional diodes if possible, they are cheaper, and they have much faster turn-on times than their bi-directional counterparts (e.g. 4ps compared to 4ns).
+
+== Schematic Symbol
+
+.My preferred schematic symbol for a uni-directional TVS diode (or any other type of avalanche diode for that matter). Notice the double bar distinguishing it from a Zener diode symbol.
+image::diode-symbol-tvs-avalanche.svg[width=200px]
+
+## Arrays
 
 They can be grouped into IC packages called arrays. A typical schematic symbol for a diode array is shown below.
 
-{{< img src="schematic-symbol-esd-diode-array.png" width="297px" caption="The schematic symbol of a diode array, with a common anode connection."  >}}
+.The schematic symbol of a diode array, with a common anode connection.
+image::schematic-symbol-esd-diode-array.png[width=300px]
 
 ## Important Parameters
 
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Symbol</th>
-      <th>Units</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-<tbody >
-<tr id="breakdown-voltage" >
-<td>Breakdown Voltage</td>
-<td>\( V_{breakdown} \)</td>
-<td>\( V \)</td>
-<td>Also called the reverse breakdown voltage. This is the reverse voltage (cathode-to-anode) at which the diode "begins" to conduct. The point at which the diode begins to conduct is usually specified as a fixed current, typically 1mA. Also see [standoff voltage](/electronics/components/diodes/tvs-diodes/).</td>
-</tr>
-<tr id="rated-power" >
-<td>Rated Power</td>
-<td>\( P \)</td>
-<td>\( W \)</td>
-<td>The maximum power the TVS diode can dissipate, for a specified time period. Typical values range between 400W-1.5kW.</td>
-</tr>
-<tr id="standoff-voltage" >
-<td>Standoff Voltage</td>
-<td>\( V_{standoff} \)</td>
-<td>\( V \)</td>
-<td>This is the reverse voltage that the diode can withstand without drawing "any" current. This is one of the most important parameters, as you usually match this voltage to the maximum operating voltage of the wire you are connecting it to. Note that there is a small amount of current drawn at this voltage, this is called the reverse leakage current.</td>
-</tr>
-</tbody>
-</table>
+=== Breakdown Voltage
 
-They are part of a family of components used for ESD (electro-static discharge) protection, which also includes zener diodes. TVS diodes can handle large amounts of peak power (hundred's or thousands of Watts), but Zeners have a tighter voltage tolerance. TVS diodes have more capacitance than Zeners, which could be detrimental in some circumstances (e.g. when protecting the gate signal on a MOSFET).
+Symbol: \( V_{breakdown} \) +
+Units: \( V \)
 
-They come in either uni-directional or bi-directional flavours. Uni-directional diodes block up to the rated voltage in one direction, and behave like a normal conducting diode in the other. Bi-directional block up to the rated voltage in both directions (good for protecting AC waveforms). Use uni-directional diodes if possible, they are cheaper, and they have much faster turn-on times than their bi-directional counterparts (e.g. 4ps compared to 4ns).
+Also called the reverse breakdown voltage. This is the reverse voltage (cathode-to-anode) at which the diode "begins" to conduct. The point at which the diode begins to conduct is usually specified as a fixed current, typically 1mA. Also see [standoff voltage](/electronics/components/diodes/tvs-diodes/).
+
+=== Rated Power
+
+Symbol: \( P \) +
+Units: \( W \)
+
+The maximum power the TVS diode can dissipate, for a specified time period. Typical values range between 400W-1.5kW.
+
+=== Standoff Voltage
+
+Symbol: \( V_{standoff} \) +
+Units: \( V \)
+
+This is the reverse voltage that the diode can withstand without drawing "any" current. This is one of the most important parameters, as you usually match this voltage to the maximum operating voltage of the wire you are connecting it to. Note that there is a small amount of current drawn at this voltage, this is called the reverse leakage current.
 
 ## Leakage Current
 
 The reverse-leakage of TVS diodes decreases as the stand-off voltage increases. Be warned, the leakage current of TVS diodes which have low voltage stand-offs (e.g. <10V), can have large leakage currents! A 5V stand-off TVS diode typically has a reverse-leakage current of around 500uA, but TVS diodes with a stand-off voltage of 10V or higher have a reverse-leakage of 1uA or less. Note that at low stand-off voltages, the leakage current of a bi-directional diode can be double that of a uni-directional diode for the same stand-off voltage.
 
-{{< img src="leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png" width="1182px" caption="Leakage currents of TVS diodes with low stand-off voltages."  >}}
+.Leakage currents of TVS diodes with low stand-off voltages.
+image::leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png[width=1182px]
 
-For more information, see the [ESD Protection](/electronics/circuit-design/esd-protection) page.
+For more information, see the link:/electronics/circuit-design/esd-protection[ESD Protection] page.
 
 ## Reverse Polarity Protection
 

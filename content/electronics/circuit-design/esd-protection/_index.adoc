@@ -27,27 +27,27 @@ The table below summarizes the different components you can use for ESD protecti
 |===
 | Component | Power Capability | Comments
 
-| Ceramic Capacitor
+| link:/electronics/components/capacitors/[Ceramic Capacitor]
 | Poor
 | One of the oldest, simplest and cheapest forms of ESD protection. As you can guess, because of this, it does not perform as well as some of the dedicated ESD devices.
 
-| Zener Diode
+| link:/electronics/components/diodes/zener-diodes/[Zener Diode]
 | Average
 | Zener diodes were designed for voltage regulation rather than ESD protection, but they can be used for low-power ESD protection.
 
-| TVS Diode
+| link:/electronics/components/diodes/tvs-diodes/[TVS Diode]
 | Good
-| These things are designed to handle high-power ESD surges. Turn on time is very good also. Uni-directional TVS diodes have a much faster turn-on time (e.g. 4ps) as opposed to bi-directional types (e.g. 4ns).
+| These things are designed to handle high-power ESD surges. Turn on time is very good also. Uni-directional TVS diodes have a much faster turn-on time (e.g. 4ps) as opposed to bi-directional types (e.g. 4ns). They are a form of avalanche diode.
 
-| MOV (metal-oxide varistor)
+| link:/electronics/components/varistors-vdrs/[MOV (metal-oxide varistor)]
 |
 |
 
-| Gas Discharge Tube (GDT)
+| link:/electronics/components/gas-discharge-tubes-gdts/[Gas Discharge Tube (GDT)]
 | Great
 | Bulkier and more expensive than a TVS diode, but capable of handling much more power! Unfortunately they do not have low and flat clamping voltages, so typically used in conjunction with TVS diodes.
 
-| Spark Gap
+| link:/electronics/components/spark-gaps/[Spark Gap]
 |
 | Can be very simple (just a copper shape on a layer of a PCB!). Work in the same principle as GDTs but without a controlled atmosphere and pressure.
 |===
@@ -56,6 +56,8 @@ The table below summarizes the different components you can use for ESD protecti
 
 * _IEC-61312-1: Protection Against Lightning Electromagnetic Impulse_, first introduced in 1995.
 * _Telecordia GR-1089 Core: Electromagnetic Compatibility And Electrical Safety - Generic Criteria For Network Telecommunications Equipment_: Used by telecommunication service providers. It contains NEBS (Network Equipment - Building System) criteria.
+* _IEC 61643-1, First Edition, 1998, Surge Protective Devices Connected to LowVoltage Power Distribution Systems_. One of the first references to the 8/20us lightning waveform.
+* _IEEE C62.41.2, Recommended Practice on Charactrization of Surge Voltages in Low-Voltage (1000 V and less) AC Power Circuits._
 
 ## Internal ESD Protection On CMOS I/O
 
