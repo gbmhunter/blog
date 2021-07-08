@@ -12,38 +12,49 @@ type: "page"
 
 Electrostatic discharge (ESD) is a unintended quick high-voltage transient waveform which appears on conductors within an electrical circuit. The high voltages and current peaks caused by ESD can cause devices such as static sensitive ICs to fail. Human contact is a common source of an ESD. Even if there is no direct human contact with the circuit, devices such as capacitive sense switches can allow charge to be coupled through onto electrical conductors. ESD protection is needed in cases were ESD discharges could potentially cause a circuit to fail.
 
-{{< img src="esd-protectors-schematic-symbol.png" width="400px" caption="The schematic symbol for ESD protectors. Image from http://www.bourns.com/data/global/pdfs/MLC.pdf." >}}
+.The schematic symbol for ESD protectors. Image from http://www.bourns.com/data/global/pdfs/MLC.pdf.
+image::esd-protectors-schematic-symbol.png[width=400px]
 
-## ESD Protection Devices
+* *Electromagnetic interference (EMI)*: The presence of electromagnetic radiation that could disrupt nearby systems. Sources of EMI include electrical storms (lightning), mains power line disruptions, solar radiation and nearby circuitry (power supplies, variable-speed motor drives, arc welders, e.t.c).
+* *Electromagnetic compatibility (EMC)*: The measure of ability for a system to both:
+    ** Function correctly in the presence of electromagnetic radiation (EMI).
+    ** Not emit EMI that exceeds the regulations defined by the type of system and the environment it will be used in.
+
+== ESD Protection Devices
 
 The table below summarizes the different components you can use for ESD protection.
 
-<div class="table-wrapper">
-<table>
-	<tr>
-		<th>Component</th>
-		<th>Power Capability</th>
-		<th>Comments</th>
-	</tr>
-	<tbody>
-		<tr>
-			<td>Ceramic Capacitor</td>
-			<td>Poor</td>
-			<td>One of the oldest, simplest and cheapest forms of ESD protection. As you can guess, because of this, it does not perform as well as some of the dedicated ESD devices.</td>
-		</tr>
-		<tr >
-			<td>Zener Diode</td>
-			<td>Average</td>
-			<td >Zener diodes were designed for voltage regulation rather than ESD protection, but they can be used for low-power ESD protection. For more information, see the <a href="/electronics/components/diodes/">Diodes page</a>.</td>
-		</tr>
-		<tr>
-			<td>TVS Diode</td>
-			<td>Excellent</td>
-			<td>These things are designed to handle high-power ESD surges. Turn on time is very good also. Uni-directional TVS diodes have a much faster turn-on time (e.g. 4ps) as opposed to bi-directional types (e.g. 4ns). For more information, see the <a href="/electronics/components/diodes/">Diodes page</a>.</td>
-		</tr>
-	</tbody>
-</table>
-</div>
+|===
+| Component | Power Capability | Comments
+
+| Ceramic Capacitor
+| Poor
+| One of the oldest, simplest and cheapest forms of ESD protection. As you can guess, because of this, it does not perform as well as some of the dedicated ESD devices.
+
+| Zener Diode
+| Average
+| Zener diodes were designed for voltage regulation rather than ESD protection, but they can be used for low-power ESD protection.
+
+| TVS Diode
+| Good
+| These things are designed to handle high-power ESD surges. Turn on time is very good also. Uni-directional TVS diodes have a much faster turn-on time (e.g. 4ps) as opposed to bi-directional types (e.g. 4ns).
+
+| MOV (metal-oxide varistor)
+|
+|
+
+| Gas Discharge Tube (GDT)
+| Great
+| Bulkier and more expensive than a TVS diode, but capable of handling much more power! Unfortunately they do not have low and flat clamping voltages, so typically used in conjunction with TVS diodes.
+
+| Spark Gap
+|
+| Can be very simple (just a copper shape on a layer of a PCB!). Work in the same principle as GDTs but without a controlled atmosphere and pressure.
+|===
+
+== Standards
+
+IEC-61312, first introduced in 1995
 
 ## Internal ESD Protection On CMOS I/O
 
@@ -73,7 +84,8 @@ You can normally diagnose this by noting the the "unpowered" rail will be one di
 
 Extra diodes, external to the IC, can be added to prevent leakage currents through CMOS IO pins on devices which have ESD protection diodes to VCC and GND. The following image shows how they would be connected to the IC of interest.
 
-{{< img src="protection-diodes-to-disable-esd-diodes-on-cmos-io.png" width="489px" caption="Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf."  >}}
+.Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf.
+image::protection-diodes-to-disable-esd-diodes-on-cmos-io.png[width=489px]
 
 However, this approach has it's disadvantages. The actual supply voltage seen by the IC is reduced by twice the voltage drop (`\(V_f\)`) across the diodes (normally 2x 0.5-0.7V = 1.0-1.4V). Also, the IC ground is now significantly different from the system ground. This can upset single-ended ADC measurements and other analogue functions.
 
@@ -101,7 +113,7 @@ Check the inputs maximum digital low and minimum digital high voltage levels. If
 
 ## ESD Protection Of Capacitive Sensing I/O Lines
 
-See the [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-sensing) page.
+See the link:/electronics/circuit-design/capacitive-touch-sensing[Capacitive Touch Sensing] page.
 
 == Lighting Surge Characterization And Test Transient Pulses
 
@@ -109,8 +121,9 @@ See the [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-
 image::test-pulse-graph-8-20us.svg[width=800px]
 
 |===
-| Name | stem:[t_1] | stem:[t_2]
+| Name | stem:[t_1] | stem:[t_2] | Comment
 
-| 8/20us | 8us | 20us
-| 10/1000us | 10us | 1000us
+| 8/20us | 8us | 20us |
+| 10/350us | 10us | 350us | Typically used to simulate a lightning strike.
+| 10/1000us | 10us | 1000us |
 |===

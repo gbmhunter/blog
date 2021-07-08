@@ -18,11 +18,7 @@ _Electrical noise_ is the *unintentional (most of the time, but not in the case 
 .Noise on a power rail that was feeding 3 SMPS that hadn't been compensated correctly. Kept this image because I thought the waveform was interesting!
 image::noise-from-3-smps.png[width=700px]
 
-* *Electromagnetic interference (EMI)*: The presence of electromagnetic radiation that could disrupt nearby systems. Sources of EMI include electrical storms (lightning), mains power line disruptions, solar radiation and nearby circuitry (power supplies, variable-speed motor drives, arc welders, e.t.c).
-* *Electromagnetic compatibility (EMC)*: The measure of ability for a system to both:
-    ** Function correctly in the presence of electromagnetic radiation (EMI).
-    ** Not emit EMI that exceeds the regulations defined by the type of system and the environment it will be used in.
-
+This page focuses on noise created by electronics components such as resistors, how to model it, and what it looks like. If you want to know how to protect your circuit from transient voltage spikes and other ESD events, see the link:/electronics/circuit-design/esd-protection/[ESD Protection page].
 
 ## Noise Related Variables And Units 
 

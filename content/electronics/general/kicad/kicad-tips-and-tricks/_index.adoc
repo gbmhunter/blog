@@ -1,27 +1,28 @@
 ---
 author: "gbmhunter"
 date: 2020-04-21
-description: "A beginners tutorial/introduction to KiCad."
+description: "A comprehensive tutorial/introduction to KiCad, including installation, schematic design, PCB design, SPICE simulation, CICD and more."
 categories: [ "Electronics", "General" ]
-lastmod: 2021-05-09
+images: [ "/electronics/general/kicad/kicad-tips-and-tricks/kicad-logo.png" ]
+lastmod: 2021-07-08
 tags: [ "electronics", "KiCad", "CAD", "Eeschema", "PcbNew", "kicad_pcb", "component libraries", "DigiKey", "renaming", "project", "GerbView", "installation", "3D models", "wrl", "step", "schematic templates", "SPICE", "simulation", "ngspice", "Sallen Key", "schematics" ]
 title: "KiCad Tips And Tricks"
 type: "page"
 ---
 
-{{% warning-is-notes %}}
-
 ## Overview
 
 KiCad is an open-source electronic design CAD software package. It runs on Windows, Linux and MacOS.
 
-{{% img src="kicad-logo.png" width="300px" caption="The KiCad logo." %}}
+.The KiCad logo.
+image::kicad-logo.png[width=300px]
 
 KiCad is a C++ program which uses the wxWidgets library to provide the GUI elements.
 
 KiCad organizes work into _projects_. Each project has a project file ending in `.pro`. A _Project_ consists of _schematics_ (`.sch`), a _PCB design file_ (`.kicad_pcb`), _component library files_ (`.lib`), and more.
 
 KiCad is not a single program, but rather a collection of applications that are bundled together. KiCad consists of:
+
 * `KiCad`: The self-titled project management tool. This can load `.pro` files and open other parts of the application such as Eeschema and PcbNew.
 * `Eeschema`: The schematic editing tool.
 * `PcbNew`: The PCB editing tool.
@@ -53,11 +54,11 @@ kicad
 
 #### Self-Extracting Installer
 
-Download and install the self-extracting installer from <https://kicad-pcb.org/download/windows/>.
+Download and install the self-extracting installer from https://kicad-pcb.org/download/windows/.
 
 #### choco
 
-You can use the Windows package manager [Chocolatey](https://chocolatey.org/) to install KiCad. If you have Chocolatey installed, use:
+You can use the Windows package manager link:https://chocolatey.org/[Chocolatey] to install KiCad. If you have Chocolatey installed, use:
 
 ```ps
 choco install kicad
@@ -65,7 +66,8 @@ choco install kicad
 
 ## Configuring The Global Symbol Library Table
 
-{{% img src="kicad-configure-global-symbol-library-table.png" width="500px" caption="The pop-up that occurs when you run KiCad for the first time." %}}
+.The pop-up that occurs when you run KiCad for the first time.
+image::kicad-configure-global-symbol-library-table.png[width=500px]
 
 ## Schematics
 
@@ -75,7 +77,8 @@ By default, the mouse wheel will zoom in/out on the current schematic.
 
 You can navigate the schematic hierarchy using the _Navigate Schematic Hierarchy_ button as shown:
 
-{{% img src="kicad-navigate-schematic-hierarchy-button.png" width="500px" caption="The 'Navigate Schematic Hierarchy' button in KiCad." %}}
+.The 'Navigate Schematic Hierarchy' button in KiCad.
+image::kicad-navigate-schematic-hierarchy-button.png[width=500px]
 
 **Keyboard Shortcuts**
 
@@ -136,7 +139,7 @@ By default, the symbol libraries are installed to:
 
 Each project can pull schematic symbols and footprints from two "tables" (groups) of libraries, _global libraries_ and _project libraries_.
 
-DigiKey maintains the [digikey-kicad-library](https://github.com/Digi-Key/digikey-kicad-library), a KiCad schematic and footprint library of a large number of components that can be supplied by DigiKey. The aim of this library is to provide collection of visually consistent, accurate library parts that have been curated by the DigiKey team. The organization of the library follows the DigiKey family taxonomy.
+DigiKey maintains the link:https://github.com/Digi-Key/digikey-kicad-library[digikey-kicad-library], a KiCad schematic and footprint library of a large number of components that can be supplied by DigiKey. The aim of this library is to provide collection of visually consistent, accurate library parts that have been curated by the DigiKey team. The organization of the library follows the DigiKey family taxonomy.
 
 ### Symbol Creation
 
@@ -144,7 +147,8 @@ The default grid step size is the symbol editor is 50mil (0.050" or 1.27mm). I r
 
 The KiCad symbol editor has a spreadsheet-style bulk pin editor window that lets you change the properties of multiple pins at once:
 
-{{% img src="bulk-editing-pins-in-kicad-symbol-editor.png" width="500px" caption="Bulk editing pins in KiCad's symbol editor." %}}
+.Bulk editing pins in KiCad's symbol editor.
+image::bulk-editing-pins-in-kicad-symbol-editor.png[width=500px]
 
 ### 3D Models
 
@@ -168,20 +172,21 @@ Unfortunately KiCad does not support relative file paths when linking 3D models 
 
 **Keyboard Shortcuts**
 
-```text
+[source]
+----
 D          Start drawing a track
 PgUp       Switch to top layer
 PgDwn      Switch to bottom layer
 F5         Switch to inner copper layer 1
 F6         Switch to inner copper layer 2
-+          Next copper layer
--          Previous copper layer
++          Next copper layer (must already be on a copper layer for this to work)
+-          Previous copper layer (must already be on a copper layer for this to work)
 Ctrl-B     Hide pours
 B          Show pours
 Ctrl-H     Toggle high contrast mode
 Alt-3      Load the 3D viewer
 Space      Reset the relative coordinate origin to 0,0 at the mouse cursor
-```
+----
 
 For PCBs with up to 4 layers, you can use the `PgUp, PgDwn, F5, F6` shortcuts to switch between copper layers. However once you exceed 4 layers you will have to use the `+` and `-`. It might suit you to just use `+` and `-` for any sized board, as there is less muscle memory needed!
 
@@ -249,7 +254,7 @@ Plugins are installed to:
 
 The Windows version of KiCad ships with Python v2.7. If you want to use Python v3.x instead, you can rename `python.exe` located at `C:\Program Files\KiCad\bin\python.exe` to something like `python.exe.old`. This will cause the system Python to be invoked instead of the version shipped with KiCad. The big limitation with this technique is that none of the scripts will be able to `import pcbnew`, so it only really suitable for running scripts which do not depend on the Python KiCad API.
 
-The KiCad C++ source code documentation can be found at <https://docs.kicad-pcb.org/doxygen/index.html> (generated by Doxygen).
+The KiCad C++ source code documentation can be found at https://docs.kicad-pcb.org/doxygen/index.html (generated by Doxygen).
 
 ## Renaming A KiCad Project
 
@@ -292,16 +297,19 @@ For general information on SPICE simulation, also see the {{% link text="SPICE S
 KiCad comes with example simulation circuits located at `<KiCad installation dir>/share/kicad/demos/simulation/`. In this directory there is the following simulation schematic example directories:
 
 * **laser_driver**: Good example if you want to know how to include op-amps and transistors into your simulation. Notice that the pinout for the op-amp used in this schematic is very different to that of the op-amps in KiCAD's two built-in simulation component libraries.
-
-    {{% img src="kicad-laser-driver-simulation-schematic-screenshot.png" width="600px" caption="A screenshot of the Laser Driver simulation example that comes shipped with KiCad. Layout of circuit slightly adjusted to improve screenshot." %}}
++
+.A screenshot of the Laser Driver simulation example that comes shipped with KiCad. Layout of circuit slightly adjusted to improve screenshot.
+image::kicad-laser-driver-simulation-schematic-screenshot.png[width=600px]
 
 * rectifier
 * pspice
 * **sallen_key**: Another example using op-amps, this time setup to perform AC analysis (i.e. produce gain and phase plots). Simulates a Sallen-Key low-pass filter.
-
-    {{% img src="kicad-sallen-key-simulation-schematic-screenshot.png" width="600px" caption="A screenshot of the Sallen Key simulation example that comes shipped with KiCad. Layout of circuit slightly adjusted to improve screenshot."%}}
-
-    {{% img src="kicad-sallen-key-simulation-plots.png" width="700px" caption="The simulation plots for the op-amp output of the KiCad Sallen Key simulation example." %}}
++
+.A screenshot of the Sallen Key simulation example that comes shipped with KiCad. Layout of circuit slightly adjusted to improve screenshot.
+image::kicad-sallen-key-simulation-schematic-screenshot.png[width=600px]
++
+.The simulation plots for the op-amp output of the KiCad Sallen Key simulation example.
+image::kicad-sallen-key-simulation-plots.png[width=700px]
 
 ### Simulation Specific Symbol Parameters
 
@@ -318,38 +326,41 @@ There are a few schematic symbol parameters which have dedicated purposes for SP
 
 The following table lists all the supported KiCad SPICE primitive types (what ngspice calls the _element type_) as of `KiCad v5.1.6`:
 
-First letter  | Element description
---------------|--------------------------------------------------
-A             | XSPICE code model
-B             | Behavioral (arbitrary) source
-C             | Capacitor
-D             | Diode
-E             | Voltage-controlled voltage source (VCVS)
-F             | Current-controlled current source (CCCs)
-G             | Voltage-controlled current source (VCCS)
-H             | Current-controlled voltage source (CCVS)
-I             | Current source
-J             | Junction field effect transistor (JFET)
-K             | Coupled (Mutual) Inductors
-L             | Inductor
-M             | Metal oxide field effect transistor (MOSFET)
-N             | Numerical device for GSS
-O             | Lossy transmission line
-P             | Coupled multiconductor line (CPL)
-Q             | Bipolar junction transistor (BJT)
-R             | Resistor
-S             | Switch (voltage-controlled)
-T             | Lossless transmission line
-U             | Uniformly distributed RC line
-V             | Voltage source
-W             | Switch (current-controlled)
-X             | Subcircuit
-Y             | Single lossy transmission line (TXL)
-Z             | Metal semiconductor field effect transistor (MESFET)
+[%autowidth]
+|===
+| First letter  | Element description
+
+| A             | XSPICE code model
+| B             | Behavioral (arbitrary) source
+| C             | Capacitor
+| D             | Diode
+| E             | Voltage-controlled voltage source (VCVS)
+| F             | Current-controlled current source (CCCs)
+| G             | Voltage-controlled current source (VCCS)
+| H             | Current-controlled voltage source (CCVS)
+| I             | Current source
+| J             | Junction field effect transistor (JFET)
+| K             | Coupled (Mutual) Inductors
+| L             | Inductor
+| M             | Metal oxide field effect transistor (MOSFET)
+| N             | Numerical device for GSS
+| O             | Lossy transmission line
+| P             | Coupled multiconductor line (CPL)
+| Q             | Bipolar junction transistor (BJT)
+| R             | Resistor
+| S             | Switch (voltage-controlled)
+| T             | Lossless transmission line
+| U             | Uniformly distributed RC line
+| V             | Voltage source
+| W             | Switch (current-controlled)
+| X             | Subcircuit
+| Y             | Single lossy transmission line (TXL)
+| Z             | Metal semiconductor field effect transistor (MESFET)
+|===
 
 ### Voltage And Current Sources
 
-Refer to the [ngspice User Manual](http://ngspice.sourceforge.net/docs/ngspice-33-manual.pdf) for a complete list of voltage and current sources. Voltage sources have their `Spice_Primitive` set to `V` and current sources to `I`.
+Refer to the link:http://ngspice.sourceforge.net/docs/ngspice-33-manual.pdf[ngspice User Manual] for a complete list of voltage and current sources. Voltage sources have their `Spice_Primitive` set to `V` and current sources to `I`.
 
 These are called _independent_ sources.
 
@@ -381,18 +392,24 @@ If you are going to run an AC analsysis (i.e. using the `.ac` command), you don'
 
 The `PULSE` voltage/current source can be used to create a single square pulse or continuous PWM signal. The syntax is:
 
-`PULSE(VL VH TD TR TF PW PER PHASE)`
+[source]
+----
+PULSE(VL VH TD TR TF PW PER PHASE)
+----
 
-Name |Parameter       |Default Value   |Units 
------|----------------|----------------|-----------
-V1   |Initial value   |-               |V, A
-V2   |Pulsed value    |-               |V, A
-TD   |Delay time      |0.0             |sec
-TR   |Rise time       |TSTEP           |sec
-TF   |Fall time       |TSTEP           |sec
-PW   |Pulse width     |TSTOP           |sec
-PER  |Period          |TSTOP           |sec
-PHASE|Phase           |0.0             |degrees
+[%autowidth]
+|===
+| Name |Parameter       |Default Value   |Units 
+
+| V1   |Initial value   |-               |V, A
+| V2   |Pulsed value    |-               |V, A
+| TD   |Delay time      |0.0             |sec
+| TR   |Rise time       |TSTEP           |sec
+| TF   |Fall time       |TSTEP           |sec
+| PW   |Pulse width     |TSTOP           |sec
+| PER  |Period          |TSTOP           |sec
+| PHASE|Phase           |0.0             |degrees
+|===
 
 For example, for a continuous pulse train alternating between 0 and 5V at 100kHz with a 50% duty cycle, with `10ns` rise and fall times:
 
@@ -406,10 +423,13 @@ PULSE(0 5 0 10n 10n 5u 10u)
 
 To simulate say, a 10k resistor, start with any two pin symbol (using a resistor symbol would make sense, but that is not a requirement, you could use a two-pin smily face emoji if you want :-D) and make the following changes to it's symbol properties (adding new properties where they don't already exist):
 
-Name                    | Value
-------------------------|-----------
-Value                   | 10k
-Spice_Primitive         | R
+[%autowidth]
+|===
+| Name                    | Value
+
+| Value                   | 10k
+| Spice_Primitive         | R
+|===
 
 Change the `Value` field for different resistances, e.g. 
 
@@ -422,30 +442,39 @@ Note that KiCAD automatically converts the commonly used `M` for megaOhms into t
 
 Follow the Resistor example above but use the following `Value` and `Spice_Primitive` values:
 
-Name                    | Value
-------------------------|-----------
-Value                   | 100n
-Spice_Primitive         | C
+[%autowidth]
+|===
+| Name                    | Value
+
+| Value                   | 100n
+| Spice_Primitive         | C
+|===
 
 #### Inductors
 
 Follow the Resistor example above but use the following `Value` and `Spice_Primitive` values:
 
-Name                    | Value
-------------------------|-----------
-Value                   | 10m
-Spice_Primitive         | L
+[%autowidth]
+|===
+| Name                    | Value
+
+| Value                   | 10m
+| Spice_Primitive         | L
+|===
 
 #### Zener Diodes
 
 To simulate a basic Zener diode, start with the `D_Zener` KiCAD symbol, and make the following changes to it's symbol properties (adding new properties where they don't already exist):
 
-Name                    | Value
-------------------------|-----------
-Spice_Primitive         | D
-Spice_Model             | D_Zener
-Spice_Netlist_Enabled   | Y
-Spice_Node_Sequence     | 2 1
+[%autowidth]
+|===
+| Name                    | Value
+
+| Spice_Primitive         | D
+| Spice_Model             | D_Zener
+| Spice_Netlist_Enabled   | Y
+| Spice_Node_Sequence     | 2 1
+|===
 
 Then add the following text to the schematic:
 
@@ -457,7 +486,7 @@ OR add another symbol property called `Spice_Lib_File` and add the path to a `.l
 
 Change the value `5.0` to whatever the blocking voltage of your Zener is.
 
-Click [here](kicad-spice-dc-voltage-sweep-zener-files.zip) to download source files for a simulation that includes a Zener diode.
+Click link:kicad-spice-dc-voltage-sweep-zener-files.zip[here] to download source files for a simulation that includes a Zener diode.
 
 #### BJTs
 
@@ -489,13 +518,14 @@ Make sure the symbol reference starts with an `M`, e.g. `M1`. Make sure the `Val
 .model 2N7002 VDMOS(Rg=3 Vto=1.6 Rd=0 Rs=.75 Rb=.14 Kp=.17 mtriode=1.25 Cgdmax=80p Cgdmin=12p Cgs=50p Cjo=50p Is=.04p ksubthres=.1)
 ```
 
-{{% img src="crucial-discrete-mosfet-simulation-setup-in-kicad.png" width="800px" caption="Screenshot showing the crucial setup required to simulate discrete MOSFETs in KiCAD with ngspice." %}}
+.Screenshot showing the crucial setup required to simulate discrete MOSFETs in KiCAD with ngspice.
+image::crucial-discrete-mosfet-simulation-setup-in-kicad.png[width=800px]
 
-See the section [11.3 Power MOSFET model (VDMOS) in the ngspice User Manual](http://ngspice.sourceforge.net/docs/ngspice-33-manual.pdf) for more information.
+See the section link:http://ngspice.sourceforge.net/docs/ngspice-33-manual.pdf[11.3 Power MOSFET model (VDMOS) in the ngspice User Manual] for more information.
 
 For MOSFETs built into integrated circuits, use the `BSIM3` model. For the `BSIM3` model, ngspice expects four pins rather than the usual three, gate, drain, source and bulk (substrate). In standard 3-pin MOSFETs the bulk is typically connected internally to the source, so for most simulations you can just do that externally to mimic a standard MOSFET.
 
-See <https://forum.kicad.info/t/generic-mosfets-solved/11155/3>.
+See https://forum.kicad.info/t/generic-mosfets-solved/11155/3.
 
 Looking for `VDMOS` intrinsic models? LTspice ships with over a 1000 of them. Once you install LTspice, you can find all the models within a single text file at `LTspice<version>/lib/cmp/standard.mos`. For example, on Windows with `LTspice XVII` the full path would be:
 
@@ -515,10 +545,11 @@ ngspice model files typically have the `.lib` extension --- the same extension a
 
 Somewhat confusingly, KiCad comes with two SPICE symbol libraries:
 
-1. `pspice`: "Legacy pspice symbol library." --- Presumably symbols which were used when KiCad used PSPICE.
-1. `Simulation_SPICE`: "Symbols specialized for SPICE circuit simulation (including ngspice)." --- Presumably newer symbols designed to work with the current bundled SPICE simulator `ngspice`.
+. `pspice`: "Legacy pspice symbol library." --- Presumably symbols which were used when KiCad used PSPICE.
+. `Simulation_SPICE`: "Symbols specialized for SPICE circuit simulation (including ngspice)." --- Presumably newer symbols designed to work with the current bundled SPICE simulator `ngspice`.
 
-{{% img src="kicad-pspice-legacy-symbol-libraries.png" width="700px" caption="Searching for the PSPICE symbol libraries in KiCad." %}}
+.Searching for the PSPICE symbol libraries in KiCad.
+image::kicad-pspice-legacy-symbol-libraries.png[width=700px]
 
 ### Naming Nets
 
@@ -570,11 +601,13 @@ To do a basic sweep of voltage source `V1` (which must exist in your schematic w
 .dc V1 0.0 5.0 0.1
 ```
 
-{{% img src="kicad-spice-dc-voltage-sweep-zener-schematic.png" width="500px" caption="A KiCAD simulation schematic with a text box defining a DC sweep analysis, sweeping V1 from 0V to 5V in increments of 0.1V." %}}
+.A KiCAD simulation schematic with a text box defining a DC sweep analysis, sweeping V1 from 0V to 5V in increments of 0.1V.
+image::kicad-spice-dc-voltage-sweep-zener-schematic.png[width=500px]
 
-{{% img src="kicad-spice-dc-voltage-sweep-zener-plot.png" width="500px" caption="KiCAD SPICE simulation plot of a DC sweep from 0-5V, showing the input voltage and the voltage across a 3.3V Zener diode." %}}
+.KiCAD SPICE simulation plot of a DC sweep from 0-5V, showing the input voltage and the voltage across a 3.3V Zener diode.
+image::kicad-spice-dc-voltage-sweep-zener-plot.png[width=500px]
 
-Click [here](kicad-spice-dc-voltage-sweep-zener-files.zip) to download the source files for this simulation example.
+Click link:kicad-spice-dc-voltage-sweep-zener-files.zip[here] to download the source files for this simulation example.
 
 #### AC Analysis (.ac)
 
@@ -592,10 +625,9 @@ For example, to simulate the response of the circuit from `1Hz` to `10MHz`:
 .ac dec 10 1 10Meg
 ```
 
-If you are going to run an AC analsysis (i.e. using the `.ac` command), you don't generally want more than one AC source in your schematic. If you have more than 1 AC source, the AC analysis results will be a superposition of all AC voltage sources and will be hard to interpret. To quote the ngspice manual:
+If you are going to run an AC analysis (i.e. using the `.ac` command), you don't generally want more than one AC source in your schematic. If you have more than 1 AC source, the AC analysis results will be a superposition of all AC voltage sources and will be hard to interpret. To quote the ngspice manual:
 
 > Note that in order for this analysis to be meaningful, at least one independent source must have been specified with an ac value. Typically it does not make much sense to specify more than one ac source. If you do, the result will be a superposition of all sources and difficult to interpret.
-
 
 ### Printing Out The Version Of ngspice
 
@@ -609,7 +641,8 @@ version
 
 ngspice will then print out the following information when the simulation is run:
 
-{{% img src="adding-control-text-to-print-ngspice-version-in-kicad.png" width="500px" caption="Adding the shown text anywhere on the KiCAD schematic will trigger ngspice to print out version/build information when you run the simulation." %}}
+.Adding the shown text anywhere on the KiCAD schematic will trigger ngspice to print out version/build information when you run the simulation.
+image::adding-control-text-to-print-ngspice-version-in-kicad.png[width=500px]
 
 ### Saving Plots
 
@@ -630,7 +663,8 @@ Error: there aren't any circuits loaded.
 
 #### There are duplicate components. You need to annotate schematics first.
 
-{{% img src="kicad-simulation-there-are-duplicate-components-error.png" width="300px" caption="Screenshot of the 'There are duplicate components' simulation error in KiCad." %}}
+.Screenshot of the 'There are duplicate components' simulation error in KiCad.
+image::kicad-simulation-there-are-duplicate-components-error.png[width=300px]
 
 This error usually arises if you have not assigned unique designators to all components. Perhaps there are still `R?`, `C?` e.t.c designators on the schematic? Or multiple instances of properly labelled components, such as two `R1`'s. The best way to fix this is just to reset and re-annotate the schematics.
 
@@ -658,12 +692,12 @@ This error can occur during the time stepping of a transient analysis. SPICE has
 
 ## CICD
 
-The GitHub user [productize](https://github.com/productize) has created some Python scripts in the [GitHub repo kicad-automation-scripts](https://github.com/productize/kicad-automation-scripts) which automate some core KiCad processes such as running ERC (electrical rules check on the schematics) and DRC (design rules check on the PCB). Along with committing the KiCad design files to version control systems such as Git, these tools can be used to implement CICD workflows that run automatically on changes/commits.
+The GitHub user link:https://github.com/productize[productize] has created some Python scripts in the link:https://github.com/productize/kicad-automation-scripts[GitHub repo kicad-automation-scripts] which automate some core KiCad processes such as running ERC (electrical rules check on the schematics) and DRC (design rules check on the PCB). Along with committing the KiCad design files to version control systems such as Git, these tools can be used to implement CICD workflows that run automatically on changes/commits.
 
 ## Handy KiCad Plugins
 
 ### InteractiveHtmlBom
 
-Website: <https://github.com/openscopeproject/InteractiveHtmlBom>
+Website: https://github.com/openscopeproject/InteractiveHtmlBom
 
 This plugin shows you a render of the PCB alongside the BOM and lets you select component lines on the BOM, which highlights all the components on the PCB. It's a great tool to use when hand assembling prototype PCBs.
