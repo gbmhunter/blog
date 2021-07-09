@@ -52,6 +52,11 @@ The table below summarizes the different components you can use for ESD protecti
 | Can be very simple (just a copper shape on a layer of a PCB!). Work in the same principle as GDTs but without a controlled atmosphere and pressure.
 |===
 
+== ESD Circuit Basics
+
+.A good habit to get into --- place TVS diodes across inputs/outputs to a PCB (and not just power rails, although that is what is shown in this schematic). Place the TVS as close as possible to the place of entry onto the PCB.
+image::basic-esd-protection-with-tvs-diode.svg[width=800px]
+
 == Standards
 
 * _IEC-61312-1: Protection Against Lightning Electromagnetic Impulse_, first introduced in 1995.
