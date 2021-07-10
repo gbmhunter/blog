@@ -94,6 +94,12 @@ image::example-vector-image.svg[width=250px, height=200px]
 image::example-vector-image.svg[width=250px, height=200px]
 --
 
+[[hello-world]]
+.Hello, world
+image::example-vector-image.svg[width=300]
+
+The above image has an ID, and you should see a reference to it right here: <<hello-world>>.
+
 == References
 
 This sentence contains a bibliographic reference at the end of it<<example-bib>>.
