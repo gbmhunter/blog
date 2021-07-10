@@ -57,7 +57,7 @@ p, li, div, td, th, input {
     color: rgb(85, 85, 85);
 }
 
-p, li, div, td, th {
+p, li, div {
     /* O.k. size on mobile */
     font-size: 2.5vw;
 }
@@ -65,12 +65,6 @@ p, li, div, td, th {
     p, li, div {
         /* 1.3rem was a little too large */
         font-size: 1.1rem;
-    }
-
-    /* Make tabular data a little smaller than standard paragraphs */
-    td, th, td ul li, td p {
-      font-size: 0.9rem;
-      line-height: 1.7;
     }
 }
 
