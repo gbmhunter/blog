@@ -12,9 +12,6 @@ type: "page"
 
 Electrostatic discharge (ESD) is a unintended quick high-voltage transient waveform which appears on conductors within an electrical circuit. The high voltages and current peaks caused by ESD can cause devices such as static sensitive ICs to fail. Human contact is a common source of an ESD. Even if there is no direct human contact with the circuit, devices such as capacitive sense switches can allow charge to be coupled through onto electrical conductors. ESD protection is needed in cases were ESD discharges could potentially cause a circuit to fail.
 
-.The schematic symbol for ESD protectors. Image from http://www.bourns.com/data/global/pdfs/MLC.pdf.
-image::esd-protectors-schematic-symbol.png[width=400px]
-
 * *Electromagnetic interference (EMI)*: The presence of electromagnetic radiation that could disrupt nearby systems. Sources of EMI include electrical storms (lightning), mains power line disruptions, solar radiation and nearby circuitry (power supplies, variable-speed motor drives, arc welders, e.t.c).
 * *Electromagnetic compatibility (EMC)*: The measure of ability for a system to both:
     ** Function correctly in the presence of electromagnetic radiation (EMI).
@@ -22,35 +19,57 @@ image::esd-protectors-schematic-symbol.png[width=400px]
 
 == ESD Protection Devices
 
-The table below summarizes the different components you can use for ESD protection.
+The table below summarizes the different components you can use for ESD protection. Roughly sorted from lowest power to highest power component.
 
 [%autowidth]
 |===
-| Component | Power Capability | Comments
+| Component | Advantages | Disadvantages | Comments
 
 | link:/electronics/components/capacitors/[Ceramic Capacitor]
-| Poor
-| One of the oldest, simplest and cheapest forms of ESD protection. As you can guess, because of this, it does not perform as well as some of the dedicated ESD devices.
+a|
+* Cheap
+* Small
+a|
+* Not effective against high-power ESD events
+* Sensitive to high voltages
+| Suitable for helping lower the voltage spikes caused by small ESD events
 
 | link:/electronics/components/diodes/zener-diodes/[Zener Diode]
-| Average
-| Zener diodes were designed for voltage regulation rather than ESD protection, but they can be used for low-power ESD protection.
+a|
+* Very tightly controlled "turn-on" voltage 
+a|
+* Not effective against high-power ESD events
+| A Zener is a form of avalanche diode, just like a TVS. The main difference is that Zener's are typically designed for sharper turn-on characteristics (for voltage regulation purposes) and less so for power dissipation.
 
 | link:/electronics/components/diodes/tvs-diodes/[TVS Diode]
-| Good
-| These things are designed to handle high-power ESD surges. Turn on time is very good also. Uni-directional TVS diodes have a much faster turn-on time (e.g. 4ps) as opposed to bi-directional types (e.g. 4ns). They are a form of avalanche diode.
+a|
+* Fast turn-on time (esp. uni-directional, bi-directional are slower)
+* Can handle moderate power ESD events
+a|
+* Not suitable as a single component to be effective against high power ESD events (need to be paired with MOVs, spark-gaps or GDTs).
+|
 
 | link:/electronics/components/varistors-vdrs/[MOV (metal-oxide varistor)]
 |
+a|
+* Cumulative degradation
+* Large leakage currents
+* Large capacitance (stem:[10-1000+ pF])
 |
 
-| link:/electronics/components/gas-discharge-tubes-gdts/[Gas Discharge Tube (GDT)]
-| Great
-| Bulkier and more expensive than a TVS diode, but capable of handling much more power! Unfortunately they do not have low and flat clamping voltages, so typically used in conjunction with TVS diodes.
+| link:/electronics/components/gas-discharge-tubes-gdts/[GDT (Gas Discharge Tube)]
+a|
+* Can quench extremely high-power ESD events (e.g. lightning strikes)
+a| 
+* Bulkier and more expensive than a TVS diode
+* Do not have low and sharp turn-on voltages, so typically used in conjunction with TVS diodes.
+* Cumulative degradation to high power events
 
 | link:/electronics/components/spark-gaps/[Spark Gap]
-|
-| Can be very simple (just a copper shape on a layer of a PCB!). Work in the same principle as GDTs but without a controlled atmosphere and pressure.
+a| 
+* Very simple (just a copper shape on a layer of a PCB!).
+a|
+| Work in the same principle as GDTs but without a controlled atmosphere and pressure.
 |===
 
 == ESD Circuit Basics
