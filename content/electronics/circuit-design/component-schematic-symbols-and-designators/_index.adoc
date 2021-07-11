@@ -376,6 +376,17 @@ Recommended schematic symbols:
 .The schematic symbol for a crystal.
 image::crystal-schematic-symbol.png[width=200px]
 
+=== Varistors (RV)
+
+Designator(s):
+
+* RV (recommended)
+
+Schematic symbols:
+
+.Schematic symbol for a varistor (e.g. MOV) (recommended).
+image::varistor-symbol-mov.svg[width=200px]
+
 ## Regex
 
 The regex pattern to match any valid component designator, which is one or more capital letters followed by one or more numerals, is:
