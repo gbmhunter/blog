@@ -22,6 +22,11 @@ y = 2
 \end{align}
 ++++
 
+[.text-center]
+where: +
+stem:[y] is the output, in Watts \(W\) +
+stem:[x] is the input, in Hertz \(Hz\) +
+
 == Warning Is Notes
 
 Use the below block for telling the reader a specific page is still in "notes" format:
@@ -166,6 +171,13 @@ The impedance of power sources providing input power to the EUT shall be control
 Impedance Stabilization Networks (LISNs) for all measurement procedures of this document
 unless otherwise stated in a particular test procedure.
 ____
+
+== Schematic Symbols
+
+Standard SVG dimensions for a single schematic symbol:
+
+* Width: 20mm
+* Height: 30mm
 
 [bibliography]
 == References
