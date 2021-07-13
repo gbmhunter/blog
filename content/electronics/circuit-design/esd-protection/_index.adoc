@@ -95,6 +95,9 @@ image::basic-esd-protection-with-tvs-diode-and-reverse-polarity-fuse.svg[width=8
 
 Inbuilt protection is very common on a CMOS I/O pins that may be part of a device (anything from a simple load switch, to a medium complexity microcontroller, to a high complexity FPGA). They are normally two per I/O pin. One attached between the pin and GND, and one attached between the pin and VCC. Both are reverse-biased under normal operating conditions (stem:[ GND <= V_{I/O} <= V_{CC} ]).
 
+.Diagram of a CMOS digital I/O pin, highlighting the internal protection diodes prevalent in many designs (even if the ICs datasheet does not mention them).
+image::cmos-inputs-showing-internal-protection-diodes.svg[width=400px]
+
 They serve to protect the sensitive CMOS logic in the case of a fault condition on the pin. If the voltage on stem:[ V_{I/O} ] rises above stem:[ V_{CC} ] (e.g. positive ESD voltage spike), then the top diode conducts, clamping the voltage on the pin to no more than stem:[ V_{CC} + V_f ]. Similarly, if the voltage on stem:[ V_{I/O} ] drops below stem:[V_{GND}] (e.g. negative ESD voltage spike), then the bottom diode conducts, clamping the voltage on the pin to no more than stem:[ -V_f ].
 
 Be careful, as these diodes usually have quite a low maximum current. Exceeding this maximum current will blow the ESD diode, usually causing it to go open-circuit, removing the protection from the sensitive CMOS circuitry, which then gets fried almost instantaneously. Your I/O pin then stops working. If your lucky, it will only be a single pin that is effected. If your not, the whole port (if applicable), or even the whole device is fried.

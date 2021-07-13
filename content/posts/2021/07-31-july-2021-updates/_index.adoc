@@ -34,3 +34,7 @@ image::/posts/2021/07-31-july-2021-updates/transient-pulse-specification-graph-s
 --
 image::/electronics/circuit-design/component-schematic-symbols-and-designators/diode-symbol-tvs-avalanche.svg[width=200px, height=200px]
 --
+
+* Added a diagram showing the protection diodes common to most digital CMOS pins.
++
+image::/electronics/circuit-design/esd-protection/cmos-inputs-showing-internal-protection-diodes.svg[width=500px]
