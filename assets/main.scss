@@ -522,3 +522,14 @@ caption.title {
     font-weight: var(--caption-font-weight);
 
 }
+
+/* ========================================================================= */
+/* BIBLIOGRAPHY                                                              */
+/* ========================================================================= */
+
+// Make the bib links superscript
+a[href^="#bib"] {
+    font-size: 50%;
+    margin: left;
+    vertical-align: .7em;
+}
