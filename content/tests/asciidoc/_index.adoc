@@ -107,7 +107,7 @@ The above image has an ID, and you should see a reference to it right here: <<he
 
 == References
 
-This sentence contains a bibliographic reference at the end of it<<example-bib>>.
+This sentence contains a bibliographic reference at the end of it. It should be superscript because the reference text starts with "bib".<<bib-example-1>>.
 
 == Footnotes
 
@@ -184,4 +184,4 @@ Standard SVG dimensions for a single schematic symbol:
 
 APA Style Website:
 
-* [[[example-bib]]] Author, A.A. (YYYY, Month Day). _Title of work_. Site Name. Retrieved YYYY-MM-DD, from https://wwww.google.com
+* [[[bib-example-1]]] Author, A.A. (YYYY, Month Day). _Title of work_. Site Name. Retrieved YYYY-MM-DD, from https://wwww.google.com

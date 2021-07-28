@@ -43,7 +43,7 @@ I have noticed the following designators used for gas discharge tubes:
 
 . A GDT contains two conductive electrodes separated by a controlled gas (or gas mixture) and a specific pressure, usually less than atmospheric. GDTs are normally connected across voltage rails on the inputs to circuitry. Under normal operating conditions at "low" voltages, the gas acts as a almost perfect insulator and (almost) no current flows through the GDT.
 
-. When a voltage transient begins to appear, the voltage on the rail will start rising. At a certain voltage potential across the GDT, the electric field between the two electrodes becomes strong enough to ionize the gas. This makes the gas conductive, and a current begins to flow between the electrodes. This ionization causes an avalanche effect, once localized ionization occurs in the very close proximity to the electrode tips, much of the surrounding gas becomes ionized too<<bourns-gdt-white-paper>>. At this point, the GDTs resistance rapidly falls, and hence so does the voltage, acting as a "crowbar" and protecting down-stream circuitry from excessive voltages. 
+. When a voltage transient begins to appear, the voltage on the rail will start rising. At a certain voltage potential across the GDT, the electric field between the two electrodes becomes strong enough to ionize the gas. This makes the gas conductive, and a current begins to flow between the electrodes. This ionization causes an avalanche effect, once localized ionization occurs in the very close proximity to the electrode tips, much of the surrounding gas becomes ionized too<<bib-bourns-gdt-white-paper>>. At this point, the GDTs resistance rapidly falls, and hence so does the voltage, acting as a "crowbar" and protecting down-stream circuitry from excessive voltages. 
 
 . The GDT remains in a low-resistance conductive state until the voltage drops below the extinction point, which is typically much lower than the sparkover voltage (you can think of this as a type of hysteresis).
 
@@ -96,5 +96,5 @@ image::bourns-2031-xxt-gdt-3d-model.png[width=250px]
 [bibliography]
 == References
 
-* [[[bourns-gdt-white-paper]]] Tim Ardley (2008). _First Principles of a Gas Discharge Tube
+* [[[bib-bourns-gdt-white-paper]]] Tim Ardley (2008). _First Principles of a Gas Discharge Tube
 (GDT) Primary Protector, Rev. 2_. Retrieved 2021-07-02, from https://www.mouser.com/pdfdocs/bourns_gdt_white_paper.pdf
