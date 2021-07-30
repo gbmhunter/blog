@@ -31,9 +31,9 @@ Common designators used for varistors:
 
 == How They Work
 
-Zinc oxide varistors are made from a sintered matrix of zinc oxide (ZnO) grains. The grain boundaries behave very similar to semiconductor PN junction. Because the grains are randomly orientated and positioned throughout the varistor, the whole structure can be compared a huge network of diodes connected in various series and parallel configurations (and random polarities)<<eepower>>.
+Zinc oxide varistors are made from a sintered matrix of zinc oxide (ZnO) grains. The grain boundaries behave very similar to semiconductor PN junction. Because the grains are randomly orientated and positioned throughout the varistor, the whole structure can be compared a huge network of diodes connected in various series and parallel configurations (and random polarities)<<bib-eepower>>.
 
-In the "normal" varistor region of operation (above the leakage current region and below the upturn region), the voltage and current through the varistor is approximated well by the following equation<<lf-theory>>:
+In the "normal" varistor region of operation (above the leakage current region and below the upturn region), the voltage and current through the varistor is approximated well by the following equation<<bib-lf-theory>>:
 
 [stem]
 ++++
@@ -80,6 +80,6 @@ Varistors are preferred over TVS diodes when the product is price-sensitive, hig
 [bibliography]
 == References
 
-* [[[lf-theory]]] Littelfuse. (1999, July). _Littelfuse Varistors - Basic Properties,
+* [[[bib-lf-theory]]] Littelfuse. (1999, July). _Littelfuse Varistors - Basic Properties,
 Terminology and Theory_. Retrieved 2021-07-11, from https://www.littelfuse.com/~/media/electronics_technical/application_notes/varistors/littelfuse_varistors_basic_properties_terminology_and_theory_application_note.pdf
-* [[[eepower]]] EEPower. _Chapter 3 - Resistor types: Varistor_. Retrieved 2021-07-11, from https://eepower.com/resistor-guide/resistor-types/varistor/#
+* [[[bib-eepower]]] EEPower. _Chapter 3 - Resistor types: Varistor_. Retrieved 2021-07-11, from https://eepower.com/resistor-guide/resistor-types/varistor/#

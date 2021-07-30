@@ -346,7 +346,7 @@ Go to the link:/electronics/components/capacitors#_capacitance_multipliers[Capac
 
 The `BC` range of BJTs, including the `BC547` and `BC548` are very common, low-cost general purpose BJT transistors that you will encounter in hobbyist and professional electronics designs alike. They originated with the `BC108` family of metal-cased transistors.
 
-* `2N2222`: First introduced by Motorola at the 1962 IRE convention (using a novel new STAR technology)<<haenichen-interview>>. Since then the 2N2222 has been made by a number of different manufacturers. Complementary pair to the PNP 2N2907.
+* `2N2222`: First introduced by Motorola at the 1962 IRE convention (using a novel new STAR technology)<<bib-haenichen-interview>>. Since then the 2N2222 has been made by a number of different manufacturers. Complementary pair to the PNP 2N2907.
 * `BC547`: Same as the BC548, but with a higher breakdown voltage.
 * `BC548`: Common NPN transistor, used for switching and amplification purposes. Suitable replacement for the `2N2222` as long as max. voltage/current rating are not exceeded.
 * `BC549`: Low noise version of the BC548.
@@ -403,5 +403,5 @@ The you are looking for a slice of history and some informative transistor infor
 [bibliography]
 == References
 
-* [[[haenichen-interview]]] http://www.semiconductormuseum.com/Transistors/Motorola/Haenichen/Haenichen_Page11.htm, retrieved 2021-06-20.
-* [[[penn-ese319-lecture-notes]]]: https://www.seas.upenn.edu/~ese319/Lecture_Notes/Lec_9_CCandCBDesigns_08.pdf, retrieved 2020-02-04.
+* [[[bib-haenichen-interview]]] http://www.semiconductormuseum.com/Transistors/Motorola/Haenichen/Haenichen_Page11.htm, retrieved 2021-06-20.
+* [[[bib-penn-ese319-lecture-notes]]]: https://www.seas.upenn.edu/~ese319/Lecture_Notes/Lec_9_CCandCBDesigns_08.pdf, retrieved 2020-02-04.

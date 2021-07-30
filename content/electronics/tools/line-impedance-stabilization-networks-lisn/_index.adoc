@@ -19,7 +19,7 @@ A LISN performs the following functions:
 * Provides a well-known impedance to the power input of the DUT.
 * Prevents high-frequency noise from the power supply entering into the DUT, making the measurements of the DUT seem worse than they actually are (isolation of the power supply).
 
-A "50uH" LISN is a common choice, which provides impedance control down to 10kHz. Below 10kHz, impedance control is difficult<<mil-std-461e>>.
+A "50uH" LISN is a common choice, which provides impedance control down to 10kHz. Below 10kHz, impedance control is difficult<<bib-mil-std-461e>>.
 
 MIL-STD-461E mandates the use of LISNs to control the impedance of power sources for many of it's measurement procedures:
 
@@ -32,12 +32,12 @@ ____
 
 == CISPR 25
 
-CISPR 25 sets limits and procedures for the measurement for EMI in the frequency range of 150kHz to 2.5GHz<<cispr-25>>. Among other utilities, the standard is applicable to vehicles, and it is a popularly referenced standard among automobile electronic design. It specifies the uses of a stem:[5uH] LISN when performing EMI measurements, is one of the main reasons you will see stem:[5uH] LISN devices available for purchase.
+CISPR 25 sets limits and procedures for the measurement for EMI in the frequency range of 150kHz to 2.5GHz<<bib-cispr-25>>. Among other utilities, the standard is applicable to vehicles, and it is a popularly referenced standard among automobile electronic design. It specifies the uses of a stem:[5uH] LISN when performing EMI measurements, is one of the main reasons you will see stem:[5uH] LISN devices available for purchase.
 
 The TexBox TBOH01 (5uH LISN) is a LISN designed to be compliant with CISPR 25, and retails for around US$250.
 
 [bibliography]
 == References
 
-* [[[mil-std-461e]]] Department of Defense (1999, August 20). _MIL-STD-461E: Requirements for the Control of Electromagnetic Interference Characteristics of Subsystems and Equipment_. Quick Search. Retrieved 2021-06-30, from https://quicksearch.dla.mil/qsDocDetails.aspx?ident_number=35789
-* [[[cispr-25]]] IEC (2016). _Vehicles, boats and internal combustion engines - Radio disturbance characteristics - Limits and methods of measurement for the protection of on-board receivers_. Retrieved 2021-07-02, from https://webstore.iec.ch/publication/26122
+* [[[bib-mil-std-461e]]] Department of Defense (1999, August 20). _MIL-STD-461E: Requirements for the Control of Electromagnetic Interference Characteristics of Subsystems and Equipment_. Quick Search. Retrieved 2021-06-30, from https://quicksearch.dla.mil/qsDocDetails.aspx?ident_number=35789
+* [[[bib-cispr-25]]] IEC (2016). _Vehicles, boats and internal combustion engines - Radio disturbance characteristics - Limits and methods of measurement for the protection of on-board receivers_. Retrieved 2021-07-02, from https://webstore.iec.ch/publication/26122

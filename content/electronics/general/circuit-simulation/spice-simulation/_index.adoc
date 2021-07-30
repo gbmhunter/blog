@@ -47,7 +47,7 @@ The most basic syntax to create a voltage-controlled switch is:
 
 _Smoke analysis_ is when the SPICE software performs a simulation and checks that all the components are not exceeding maximum voltages, currents or power dissipation levels (among other things). Only a small number of the available SPICE software packages support smoke analysis, including PSPICE (commercial) and Micro-Cap (now free).
 
-For example, the Micro-Cap implementation checks the following parameters<<micro-cap-reference-man-v12>>:
+For example, the Micro-Cap implementation checks the following parameters<<bib-micro-cap-reference-man-v12>>:
 
 • Maximum voltage
 • Maximum current
@@ -84,7 +84,7 @@ Use `.control` to create a control block which can contain executable statements
 
 == Micro-Cap
 
-As of 2019-04-07, Spectrum Software closed and released Micro-Cap for free (at version 12)<<micro-cap-download-page>>. You can download it at http://www.spectrum-soft.com/download/download.shtm.
+As of 2019-04-07, Spectrum Software closed and released Micro-Cap for free (at version 12)<<bib-micro-cap-download-page>>. You can download it at http://www.spectrum-soft.com/download/download.shtm.
 
 One of the only free SPICE simulation packages that supports _smoke analysis_.
 
@@ -97,5 +97,5 @@ One of the only free SPICE simulation packages that supports _smoke analysis_.
 [bibliography]
 == References
 
-* [[[micro-cap-download-page]]] http://www.spectrum-soft.com/download/download.shtm, accessed 2021-06-20.
-* [[[micro-cap-reference-man-v12]]]: http://www.spectrum-soft.com/download/rm12.pdf, accessed 2021-06-20.
+* [[[bib-micro-cap-download-page]]] http://www.spectrum-soft.com/download/download.shtm, accessed 2021-06-20.
+* [[[bib-micro-cap-reference-man-v12]]]: http://www.spectrum-soft.com/download/rm12.pdf, accessed 2021-06-20.
