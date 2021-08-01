@@ -1,0 +1,15 @@
+---
+author: "gbmhunter"
+categories: [ "Posts", "Updates" ]
+date: 2021-08-31
+description: "Blog updates during August 2021."
+draft: false
+lastmod: 2021-08-31
+tags: []
+title: "August 2021 Updates"
+type: "post"
+---
+
+== Updates This Month
+
+* A new page on link:/mathematics/statistics/probabilities/[Probabilities].
