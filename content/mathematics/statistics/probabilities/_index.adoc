@@ -55,16 +55,63 @@ This section shows you how you can generate an arbitrary number of random number
 
 Let's define a custom PDF. For this example I just used `sin(x)` in the range from `0` to `pi`, but it could be anything you want. Make sure that you scale the PDF so that the total area under the curve is 1 (i.e. divide the function by it's integral, see the code below for how this is done):
 
+[source,python]
+----
+from scipy import integrate
+from scipy.interpolate import interp1d
+from scipy import stats
+
+# Make up a example PDF
+pdf_x = np.linspace(0, np.pi)
+pdf_y = np.sin(pdf_x)
+----
+
+Now let's normalize the PDF so the total area under the curve is 1:
+
+[source,python]
+----
+# Normalize pdf_y (make area = 1)
+pdf_y_interp = interp1d(pdf_x, pdf_y, kind='cubic')
+integral, _ = integrate.quad(pdf_y_interp, 0, np.pi)
+pdf_y = pdf_y / integral
+----
+
 [[generating-rvs-starting-pdf]]
 .A plot of the "custom" PDF we are going to use to define the distribution to generate random numbers from. In this example I just used `sin(x)` in the range of `0` to `pi`.
 image::generating-rvs-starting-pdf.png[width=600px]
+
+Now find the quantile function (PPF):
+
+[source,python]
+----
+discrete_cdf1 = integrate.cumtrapz(y=pdf_y, x=pdf_x, initial=0)
+cdf1 = interp1d(pdf_x, discrete_cdf1)
+ppf1 = interp1d(discrete_cdf1, pdf_x, bounds_error=False, fill_value=np.NaN, kind='cubic')
+
+class Dist(stats.rv_continuous):
+    def _cdf(self, x):
+        return cdf1(x)
+
+    def _ppf(self, x):
+        return ppf1(x)
+----
+
+Now lets generate some random numbers!
+
+[source,python]
+----
+dist = Dist(a=pdf_x[0], b=pdf_x[-1], xtol=1e-6)
+
+# Now generate 10,000 random values that follow the distribution as specified by your PDF
+random_values = dist.rvs(size=10000)
+----
 
 Histogram showing the distribution of the 10,000 generated random numbers:
 
 .A histogram of 10,000 generated random numbers that follow the distribution defined by our PDF. Notice how it closely follows the PDF defined in <<generating-rvs-starting-pdf>>, but with random "jitter" as you would expect if generating numbers randomly.
 image::generating-rvs-hist-of-rvs.png[width=600px]
 
-.Code used to generate the above plots/data.
+.Complete code used to generate the above plots/data.
 [source,python]
 ----
 from scipy import integrate
