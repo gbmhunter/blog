@@ -146,6 +146,7 @@ random_values = dist.rvs(size=10000)
 == Generating Random Points On A Sphere
 
 For many different applications, you might find yourself needing to generate random points on a sphere, with the condition that they must be uniformly distributed. You then might think you could do this by using spherical coordinates and:
+
 . Randomly picking a value for stem:[\theta] (polar angle, measured from the positive Z-axis) between stem:[0] and stem:[\pi].
 . Randomly picking a value for stem:[\phi] (azimuthal angle)
 
