@@ -3,8 +3,8 @@ author: gbmhunter
 categories: [ "Mathematics", "Statistics" ]
 date: 2021-08-01
 draft: false
-lastmod: 2021-08-01
-tags: [ "mathematics", "statistics", "probabilities", "random variables", "probability density functions", "PDF", "cumulative density functions", "CDF", "quantile functions", "PPF" ]
+lastmod: 2021-08-08
+tags: [ "mathematics", "statistics", "probabilities", "random variables", "probability density functions", "PDF", "cumulative density functions", "CDF", "quantile functions", "PPF", "sphere", "uniform" ]
 title: "Probabilities"
 type: page
 ---
@@ -142,3 +142,23 @@ dist = Dist(a=pdf_x[0], b=pdf_x[-1], xtol=1e-6)
 # Now generate 100,000 random values that follow the distribution as specified by your PDF
 random_values = dist.rvs(size=10000)
 ----
+
+== Generating Random Points On A Sphere
+
+For many different applications, you might find yourself needing to generate random points on a sphere, with the condition that they must be uniformly distributed. You then might think you could do this by using spherical coordinates and:
+. Randomly picking a value for stem:[\theta] (polar angle, measured from the positive Z-axis) between stem:[0] and stem:[\pi].
+. Randomly picking a value for stem:[\phi] (azimuthal angle)
+
+However, this does not give points that are uniformly distributed! You will find that points will be clustered closer together at the poles of the sphere.
+
+Instead of being uniform, the PDF for stem:[\theta] (which we will label stem:[f(\theta)]) needs to be proportional to a sine curve, where<<bib-uniform-sphere>>:
+
+[stem]
+++++
+f(\theta) = \frac{\sin(\theta)}{2}
+++++
+
+[bibliography]
+== References
+
+* [[[bib-uniform-sphere]]] Simon, C. (2015, Feb 27). _Generating uniformly distributed numbers on a sphere_. Mathemathinking. Retrieved 2021-08-08, from http://corysimon.github.io/articles/uniformdistn-on-sphere/
