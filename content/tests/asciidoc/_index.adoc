@@ -109,6 +109,8 @@ The above image has an ID, and you should see a reference to it right here: <<he
 
 This sentence contains a bibliographic reference at the end of it. It should be superscript because the reference text starts with "bib".<<bib-example-1>>.
 
+This is a link to another section in this page: <<_warning_is_notes>>.
+
 == Footnotes
 
 This sentence should have a footnote at the end of it{fn-test-1}.

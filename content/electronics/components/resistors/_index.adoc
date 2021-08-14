@@ -10,9 +10,9 @@ title: "Resistors"
 type: "page"
 ---
 
-## Overview
+== Overview
 
-Resistors are a passive electronic component that restricts the flow of current when a given voltage is applied. They dissipate energy as heat. Given their simplicity and usefulness in circuits, they are the most commonly used electronic component.
+Resistors are a passive electronic component that restricts the flow of current when a given voltage is applied. They dissipate energy as heat. Given their simplicity and usefulness in circuits, they are the normally most commonly used electronic component in any circuit design.
 
 For information on positive temperature coefficient resistors used as "fuses" in circuit protection applications, see the link:/electronics/components/circuit-protection/ptc-type-thermistor[PTC Type Thermistor page].
 
@@ -20,6 +20,16 @@ For information on positive temperature coefficient resistors used as "fuses" in
 
 .One should always appreciate a good pun. Texas Instruments 404 page as of October 2020.
 image::ti-it-looks-like-weve-encountered-some-resistance.png[width=600px]
+
+Resistors are used for a huge number of purposes, including:
+
+* **Potential dividers**: To produce an output voltage that is a fixed percentage of the input voltage.
+* **Biasing**: e.g. transistor amplifiers
+* **Current limiting**: Power an LED from a fixed voltage rail.
+* **Op-amp gain/feedback configuration**: Resistors (along with the occasional capacitor) are used to set the gain/feedback of op-amps. 
+* **Impedance matching**
+* **Current measuring**: Resistors convert a current into a voltage, which is easily measurable by op-amps/ADCs/e.t.c.
+* **GPIO/communication bus pull-up/pull-downs**: To drive nets into passive states, for example to keep the gate tied to source so it's always OFF unless driven on. Also to drive communication bus lines into passive states, especially buses that use arbitration (e.g. I2C, CAN bus).
 
 ## Schematic Symbols
 
@@ -260,19 +270,36 @@ link:https://ninja-calc.mbedded.ninja/calculators/electronics/basics/standard-re
 .NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 10.3kΩ (with closest highest and closest lowest resistance).
 image::screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png[width=552px
 
-## Manufacturing Processes
+== Resistor Manufacturing Processes
 
-### Thick Film
+=== Wire Wound
 
-Thick film is the most common type of resistor. Most 1% and 5% SMD chip package resistors (0402, 0603, e.t.c) use thick film technology.
+Wire-wound resistors are the oldest type of resistor, and are formed by coiling up a piece of wire to get a desired resistance. They are only typically used in modern times in high power applications and for things like fuses.
 
-### Thin Film
+.Cut-away diagram of a typical wire-wound resistor. Image by Bourns, retrieved on 2021-08-14 from https://www.bourns.com/products/resistors/wirewound-resistors.
+image::wire-wound-resistor-diagram-bourns.png[width=300px]
+
+Given they are normally a coil of wire, they can have a significant parasitic inductance and be give off/be susceptible to magnetic fields. See the <<_parasitic_elements>> section for more info.
+
+=== Metal Film
+
+Metal film resistors are the most popular resistor in today's market. They have replaced <<_carbon_film, carbon film resistors>> in most applications due to their cheaper cost, lower noise and smaller size. Metal film resistors can be split into two sub-categories, thick metal film and thin metal film.
+
+==== Thick Metal Film
+
+Thick film is the most common type of metal film resistor. Most 1% and 5% SMD chip package resistors (0402, 0603, e.t.c) use thick film technology.
+
+==== Thin Metal Film
 
 Most 0.1% SMD chip package resistors (0402, 0603, e.t.c) use thin film technology. Thin film resistors can be split into two sub-categories, commercial thin-film and precision thin-film.
 
-### Metal Foil
+=== Metal Foil
 
 Even rarer than thick and thin film resistors, metal foil resistor technology allows the most precise resistors to be made.
+
+=== Carbon Film
+
+Carbon film resistors are formed by forming a conductive carbon film on a ceramic substrate. Carbon film resistors have been replaced in most applications by metal film resistors.
 
 ## Power Resistors
 
@@ -344,7 +371,5 @@ image::reel-0603-resistor-leftovers-best.jpg[width=900px]
 
 [bibliography]
 == References
-
-APA Style Website:
 
 * [[[bib-eepower-res-ind]]] EE Power. _Resistor Inductance_. Retrieved 2021-08-13, from https://eepower.com/resistor-guide/resistor-fundamentals/resistor-inductance/#

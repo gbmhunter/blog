@@ -15,3 +15,5 @@ type: "post"
 * A new page on link:/mathematics/statistics/probabilities/[Probabilities]. Added info on it about how to generate random numbers that follow a specific distribution.
 
 * Updated the Resistors page from Markdown to AsciiDoc format.
+
+* Added a red horizontal bottom boarder to all `h2` headings in the main content of each page.
