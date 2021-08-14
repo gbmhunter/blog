@@ -194,6 +194,12 @@ h2 {
     font-weight: bold;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
+
+    // Add a bottom horizontal "line" for all major page headings
+    border-bottom: 4px solid var(--main-color);
+    float: left;
+    width: 100%;
+    padding-bottom: 3px;
 }
 
 h3 {
