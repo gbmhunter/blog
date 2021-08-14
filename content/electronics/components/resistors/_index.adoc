@@ -4,8 +4,8 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2012-05-14
 description: "Schematic symbols, series and parallel behaviour, manufacturing processes, the E series, tolerances, variable resistors, volume resistance and more info about the electrical components called resistors."
 draft: false
-lastmod: 2021-08-13
-tags: [ "resistors", "resistors", "components", "electronics", "schematic symbols", "tolerances", "E series", "packages", "thick film", "thin film", "potentiometers", "rheostats", "variable resistors", "Ayrton–Perry winding" ]
+lastmod: 2021-08-14
+tags: [ "resistors", "resistors", "components", "electronics", "schematic symbols", "tolerances", "E series", "packages", "thick film", "thin film", "wirewound", "potentiometers", "rheostats", "variable resistors", "Ayrton–Perry winding" ]
 title: "Resistors"
 type: "page"
 ---
@@ -274,7 +274,7 @@ image::screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-3
 
 === Wire Wound
 
-Wire-wound resistors are the oldest type of resistor, and are formed by coiling up a piece of wire to get a desired resistance. They are only typically used in modern times in high power applications and for things like fuses.
+Wire-wound resistors are the oldest type of resistor, and are formed by coiling up a piece of wire to get a desired resistance. They are only typically used in modern times in high power applications and for things like fuses, with ratings up into the 100's of Watts.
 
 .Cut-away diagram of a typical wire-wound resistor. Image by Bourns, retrieved on 2021-08-14 from https://www.bourns.com/products/resistors/wirewound-resistors.
 image::wire-wound-resistor-diagram-bourns.png[width=300px]
@@ -301,7 +301,7 @@ Even rarer than thick and thin film resistors, metal foil resistor technology al
 
 Carbon film resistors are formed by forming a conductive carbon film on a ceramic substrate. Carbon film resistors have been replaced in most applications by metal film resistors.
 
-## Power Resistors
+== Power Resistors
 
 Power resistors is a term used with resistors which are usually rated to dissipate 1W or more of power (without heatsinking).
 
@@ -350,7 +350,11 @@ For most day-to-day applications, resistors can just be treated as if they have 
 
 Helical wirewound resistors have an especially large parasitic inductance because they are wound in a coil. They are also especially susceptible to magnetic pickup (inducing electrical noise into the circuit due to nearby magnetic fields). There are also special _non-inductive_ wirewound resistors in where the wire is wound back and forth rather than in a coil to drastically reduce the inductance (they use the _Ayrton–Perry winding_ technique).
 
-## Packages
+== Resistor Noise
+
+Resistors add _thermal (Johnson-Nyquist) noise_ into circuits. See the link:/electronics/circuit-design/electrical-noise/[Electrical Noise page] for more info.
+
+== Packages
 
 Resistor come in many packages, from large, wire-wound power resistors that come in coils and blocks, to smaller through-hole resistors, to even smaller still SMD resistors. You can find more about resistor packages on the link:/pcb-design/component-packages/[Component Package Database] page.
 
