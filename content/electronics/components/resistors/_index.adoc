@@ -336,11 +336,17 @@ Volume resistance (also known as just resistivity, electrical resistivity, or bu
 
 == Parasitic Elements
 
-For most day-to-day applications, resistors can just be treated as if they have a resistance. However, in high frequency circuits, there are other parasitic elements to a resistor that you must consider. Typically, the main parasitics are modelled as a inductor in series with the resistance and a parallel capacitance, as shown in <<parasitic-model-resistor>>.
+For most day-to-day applications, resistors can just be treated as if they have a resistance. However, in high frequency circuits, there are other parasitic elements to a resistor that you must consider. Typically, the main parasitics are modelled as a extra inductor and capacitor, although the is no standard way of wiring them (depends on what literature you are reading). One popular configuration is shown in <<parasitic-model-of-resistor-series-rl-parallel-c>>.
 
-[[parasitic-model-resistor]]
-.Basic parasitic model of a resistor.
-image::parasitic-model-of-resistor.svg[width=600px]
+[[parasitic-model-of-resistor-series-rl-parallel-c]]
+.Parasitic model of a resistor modelling the resistance in parallel with an inductor which is then in series with a capacitor.
+image::parasitic-model-of-resistor-series-rl-parallel-c.svg[width=600px]
+
+<<parasitic-model-of-resistor-parallel-rc-series-l>> shows another model which is popular as it models the resistance in parallel with the end cap capacitance and this in series with the lead inductance<<bib-edn-resistors-arent-resistors>>.
+
+[[parasitic-model-of-resistor-parallel-rc-series-l]]
+.Parasitic model of a resistor modelling the resistance in parallel with the end cap capacitance and that in series with the lead inductance.
+image::parasitic-model-of-resistor-parallel-rc-series-l.svg[width=600px]
 
 .Resistor types and the ranges of their parasitic inductance<<bib-eepower-res-ind>>
 |===
@@ -381,3 +387,4 @@ image::reel-0603-resistor-leftovers-best.jpg[width=900px]
 == References
 
 * [[[bib-eepower-res-ind]]] EE Power. _Resistor Inductance_. Retrieved 2021-08-13, from https://eepower.com/resistor-guide/resistor-fundamentals/resistor-inductance/#
+* [[[bib-edn-resistors-arent-resistors]]] Wyatt, Kenneth (2013-10-29). _Resistors aren’t resistors_. EDN. Retrieved 2021-08-15, from https://www.edn.com/resistors-arent-resistors/

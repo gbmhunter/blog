@@ -13,7 +13,15 @@ type: "post"
 == Updates This Month
 
 * A new page on link:/mathematics/statistics/probabilities/[Probabilities]. Added info on it about how to generate random numbers that follow a specific distribution.
++
+image::/posts/2021/08-31-august-2021-updates/probabilities-page-screenshot.png[width=400px]
 
 * Updated the Resistors page from Markdown to AsciiDoc format.
 
 * Added a red horizontal bottom boarder to all `h2` headings in the main content of each page.
++
+image::/posts/2021/08-31-august-2021-updates/red-border-under-titles-screenshot.png[width=400px]
+
+* Added link:/electronics/components/resistors/#_parasitic_elements[parasitic models of resistors to the Resistors page].
++
+image::/posts/2021/08-31-august-2021-updates/resistor-parasitic-elements-screenshot.png[width=400px]
