@@ -23,8 +23,8 @@ image::ti-it-looks-like-weve-encountered-some-resistance.png[width=600px]
 
 Resistors are used for a huge number of purposes, including:
 
-* **Potential dividers**: To produce an output voltage that is a fixed percentage of the input voltage.
-* **Biasing**: e.g. transistor amplifiers
+* **Potential dividers**: To produce an output voltage that is a fixed percentage of the input voltage. See the <<_resistor_dividers>> section for more info.
+* **Voltage/current biasing**: e.g. transistor amplifiers
 * **Current limiting**: Power an LED from a fixed voltage rail.
 * **Op-amp gain/feedback configuration**: Resistors (along with the occasional capacitor) are used to set the gain/feedback of op-amps. 
 * **Impedance matching**
@@ -336,16 +336,20 @@ Volume resistance (also known as just resistivity, electrical resistivity, or bu
 
 == Parasitic Elements
 
-For most day-to-day applications, resistors can just be treated as if they have a resistance. However, in high frequency circuits, there are other parasitic elements to a resistor that you must consider.
+For most day-to-day applications, resistors can just be treated as if they have a resistance. However, in high frequency circuits, there are other parasitic elements to a resistor that you must consider. Typically, the main parasitics are modelled as a inductor in series with the resistance and a parallel capacitance, as shown in <<parasitic-model-resistor>>.
+
+[[parasitic-model-resistor]]
+.Basic parasitic model of a resistor.
+image::parasitic-model-of-resistor.svg[width=600px]
 
 .Resistor types and the ranges of their parasitic inductance<<bib-eepower-res-ind>>
 |===
-| Resistor Type | Inductance
+| Resistor Type | Capacitance   | Inductance
 
-| Wirewound     | 0.03-56uH
-| Metal oxide   | 3-200nH
-| Foil          | <80nH
-| Film          | <2nH
+| Wirewound     |               | 0.03-56uH
+| Metal oxide   |               | 3-200nH
+| Metal foil    | 0.05pF        | <80nH
+| Metal film    |               | <2nH
 |=== 
 
 Helical wirewound resistors have an especially large parasitic inductance because they are wound in a coil. They are also especially susceptible to magnetic pickup (inducing electrical noise into the circuit due to nearby magnetic fields). There are also special _non-inductive_ wirewound resistors in where the wire is wound back and forth rather than in a coil to drastically reduce the inductance (they use the _Ayrton–Perry winding_ technique).
