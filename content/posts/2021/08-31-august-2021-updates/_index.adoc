@@ -27,3 +27,5 @@ image::/posts/2021/08-31-august-2021-updates/red-border-under-titles-screenshot.
 image::/posts/2021/08-31-august-2021-updates/resistor-parasitic-elements-screenshot.png[width=400px]
 
 * Consolidated all the info on switch-mode power supplies (e.g. buck converters, boost converters, buck-boost, SEPIC) into a single page.
+
+* Added info on MQTT clients suitable for embedded devices.
