@@ -19,7 +19,7 @@ markup:
   tableOfContents:
     ordered: false
     startLevel: 2
-    endLevel: 2
+    endLevel: 4 # Used to be 2 to keep the TOC short
   goldmark:
     renderer:
       unsafe: true

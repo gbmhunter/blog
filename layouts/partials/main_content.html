@@ -74,7 +74,8 @@
       {{ template "_internal/disqus.html" . }}    
       
     </article>
-    <div id="right-hand-column" class="col-md-3 order-2 order-md-3">
+    <!-- Add data-simplebar to make the scrollbar special! -->
+    <div id="right-hand-column" class="col-md-3 order-2 order-md-3" data-simplebar>
       <div id="toc">
         <div>Page contents:</div>
         {{ .TableOfContents }}

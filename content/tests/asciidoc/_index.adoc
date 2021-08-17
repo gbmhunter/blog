@@ -136,9 +136,17 @@ Below is a table with `%autowidth` set, this means is should only be as wide as 
 
 == Admonitions
 
+NOTE: This is a note.
+
 TIP: This is a tip. I should be green and have a bulb icon on my left.
 
+IMPORTANT: This is important.
+
+CAUTION: This is a caution.
+
 WARNING: This is a warning. I should be red.
+
+
 
 Below is an Admonition block:
 
