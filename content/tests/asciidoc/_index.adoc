@@ -151,7 +151,7 @@ I can contain many things.
 
 == Links
 
-Here is a URL: link:link-text[www.google.com].
+Here is a URL: link:www.google.com[link-text].
 
 == Lists
 

@@ -4,7 +4,7 @@ categories: [ "Electronics", "Communication Protocols" ]
 date: 2014-02-16
 description: "History, brokers, clients, Mosquitto, Puho and more information about the MQTT communications protocol."
 draft: false
-lastmod: 2021-05-06
+lastmod: 2021-08-17
 tags: [ "electronics", "communication protocols", "MQTT", "paho", "Python", "TLS", "SSL", "1883", "8883", "brokers", "clients" ]
 title: "MQTT Protocol"
 type: "page"
@@ -14,9 +14,10 @@ type: "page"
 
 ## Overview
 
-MQTT is a lightweight publish/subscribe communications protocol that uses TCP/IP (and other secondary transport mechanisms). It is designed for remote sensors to communicate with controlling devices. The specification is under a royalty-free licence. Interesting features of the protocol include the one-to-many messaging service (publish/subscribe), the Last Will/Testament feature, and the three qualities of service. You can read more about it [here](http://www.ibm.com/developerworks/webservices/library/ws-mqtt/index.html).
+MQTT is a lightweight publish/subscribe communications protocol that uses TCP/IP (and other secondary transport mechanisms). It is designed for remote sensors to communicate with controlling devices. The specification is under a royalty-free licence. Interesting features of the protocol include the one-to-many messaging service (publish/subscribe), the Last Will/Testament feature, and the three qualities of service. You can read more about it link:http://www.ibm.com/developerworks/webservices/library/ws-mqtt/index.html[here].
 
-{{% figure src="mqtt-logo.png" width="500px" caption="The MQTT logo. Image from https://www.eclipse.org/paho/, acquired 2021-03-30." %}}
+.The MQTT logo. Image from https://www.eclipse.org/paho/, acquired 2021-03-30.
+image::mqtt-logo.png[width=500px]
 
 ## History
 
@@ -42,9 +43,10 @@ Mosquitto can be installed on Windows by downloading the pre-compiled binaries. 
 
 If you have added the installation directory to your system path, you can invoke `mosquitto` with:
 
-```bash
+[source,bash]
+----
 mosquitto
-```
+----
 
 By default the above command will start a MQTT broker listening on port `1883` (the default port for non-encrypted traffic). The broker will not run as a daemon, so you can stop the broker with `Ctrl-C` (or equivalent). It also uses the following defaults:
 
@@ -54,9 +56,10 @@ You can listen to all system topics by subscribing to `$SYS/#`.
 
 If you are experiencing problems when running `mosquitto`, you might want to run in verbose mode `-v` to print debug information, as by default very little information is printed to the command-line:
 
-```bash
+[source,bash]
+----
 $ mosquitto -v
-```
+----
 
 `1883` is the default port for unencrypted traffic. `8883` is the default port for traffic encrypted with SSL/TLS.
 
@@ -70,26 +73,38 @@ $ mosquitto -v
 
 `mosquitto_passwd` is a utility provided alongside `mosquitto` which can generate password files for `mosquitto`. These password files control user access to the broker.
 
-## MQTT Clients
+== MQTT Clients
 
-[Paho](https://pypi.org/project/paho-mqtt/) is a popular MQTT client. It's API is reasonably well documented at <https://pypi.org/project/paho-mqtt/>.
+link:https://pypi.org/project/paho-mqtt/[Paho] is a popular MQTT client for Desktop and server machines running Windows, Linux or macOS. It's API is reasonably well documented at https://pypi.org/project/paho-mqtt/.
 
 You can install Paho the standard way using `pip`:
 
-```python
+[source,python]
+----
 pip install paho-mqtt
-```
+----
 
 The Paho library can then be imported into your Python files with:
 
-```python
+[source,python]
+----
 import paho.mqtt.client as mqtt
-```
+----
 
-To request that the client creates the connection by suppling a username and password, call `username_pw_set()` on the client before calling `connect()`:
+To request that the client creates the connection by supplying a username and password, call `username_pw_set()` on the client before calling `connect()`:
 
 ```python
 client.username_pw_set('admin', 'password')
 client.connect_async(self.broker_address, 1883, 60)
 ```
+
+=== MQTT Clients For Embedded Devices
+
+There are a number of MQTT clients designed for embedded devices, these include:
+
+* link:https://www.eclipse.org/paho/index.php?page=clients/c/embedded/index.php[**The embedded Paho MQTT client**]: Embedded version of the popular Paho MQTT client. It is released as two separate APIs:
+    * MQTTPacket: Low-level C library that deals with the serialization/deserialization of MQTT packets.
+    * MQTTClient: Higher-level C++ library first written for the mbed platform. Depends on MQTTPacket.
+* link:https://github.com/256dpi/arduino-mqtt[**arduino-mqtt**]: Arduino wrapper around the lwmqtt MQTT client. Also available for PlatformIO.
+* **coreMQTT**: MQTT client maintained by the FreeRTOS group (however, the library does not depend on FreeRTOS to operate).
 

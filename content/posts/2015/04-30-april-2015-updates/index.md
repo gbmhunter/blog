@@ -38,7 +38,7 @@ tags:
 
 * New page on the {{% link text="SDQ interface" src="/electronics/communication-protocols/sdq-protocol" %}}.
 
-* New page on {{% link text="Inverting Buck-Boost Converters" src="/electronics/components/power-regulators/inverting-buck-boost-converters" %}}.
+* New page on [Inverting Buck-Boost Converters](/electronics/components/power-regulators/inverting-buck-boost-converters).
 
 	  {{< figure src="/images/2015/04/smps-buck-boost-inverting-basic-components.png" width="683px" caption="The basic components of an inverting buck-boost converter."  >}}
 
