@@ -9,8 +9,8 @@
 
 body {
     // Add padding to top and bottom of body so stuff is smashed against the top/bottom of the viewport
-    padding-top: 1em;
-    padding-bottom: 1em;
+    // padding-top: 1em;
+    // padding-bottom: 1em;
 }
 
 // Bootstrap breakpoint sizes
@@ -155,11 +155,17 @@ body {
 /* TOC                                                                       */
 /* ========================================================================= */
 
-#toc {
-    margin-top: 30px;
+#right-hand-column {
+    height: 100vh;
+    // overflow-y: scroll; // Don't enable scroll here! We use simplebar instead
     position: sticky;
-    // overflow: scroll;
-    top: 5rem;
+    top: 0;
+}
+
+#toc {
+    margin-top: 50px;
+    margin-bottom: 15px;
+
     a {
         text-decoration: none;
         font-size: 0.8em;        
@@ -171,6 +177,14 @@ body {
     li {
         line-height: 1.5;
     }
+}
+
+/* ========================================================================= */
+/* MAIN CONTENT (center column)                                              */
+/* ========================================================================= */
+
+article {
+    padding-top: 20px;
 }
 
 /* ========================================================================= */
@@ -454,6 +468,10 @@ do this for us */
 
     &.tip {
         background-color: rgb(230, 255, 230);
+    }
+
+    &.note {
+        background-color: rgb(252, 252, 237);
     }
 
     &.warning {
