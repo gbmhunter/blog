@@ -1,0 +1,402 @@
+---
+author: "gbmhunter"
+categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
+date: 2015-03-24
+description: "Control methods, component selection, equations, operation modes, schematics, examples and more info on buck converters."
+draft: false
+images: [ "/electronics/components/power-regulators/switch-mode-power-supplies-smps/smps-buck-converter-simple.png" ]
+lastmod: 2021-08-17
+tags: [ "electronics", "components", "power regulators", "SMPS", "buck converter", "power electronics", "inductor", "capacitor", "regulation", "control methods", "constant frequency", "current-mode", "SNVA555", "PCM", "peak current mode", "CCM", "constant current mode", "SEPIC" ]
+title: "Switch Mode Power Supplies (SMPS)"
+type: "page"
+---
+
+== Buck Converters
+
+=== Overview
+
+Buck converters use a switching element, inductor and capacitor to convert an input voltage into a lower output voltage. It is a type of _switch-mode power supply_ (SMPS).
+
+.The basic parts of a buck converter.
+image::smps-buck-converter-simple.png[width=629px]
+
+When using a P-channel MOSFET for synchronous rectification, it's body diode is forward-biased when the converter is in shutdown mode. This can **drain the power source** into the output. More advanced buck converters have extra circuitry to disconnect this P-channel MOSFET when the device is not active.
+
+=== Control Methods
+
+Almost all control methods aim to regulate the output voltage.
+
+==== Constant Frequency, Current-Mode Control
+
+Constant frequency, current-mode control is a very common control method for buck converters. It has the benefits of:
+
+* Permitting smaller output capacitances
+* Simplifying the external frequency compensation
+
+Peak current measurement is a common way of "measuring" the average output current.
+
+A transconductance amplifier (amplifier that converts a input voltage to an output current) is used to compare the voltage at a feedback pin (typically labelled _FB_) to an internal voltage reference.
+
+PCM: Peak current mode
+
+See the excellent [SNVA555: Understanding and Applying Current-Mode Control Theory](https://www.ti.com.cn/cn/lit/an/snva555/snva555.pdf) by TI for more information on current-mode control theory.
+
+=== Inductor Selection
+
+You can use the following equations to select the main inductor for a buck converter.
+
+First, calculate the maximum average inductor current using:
+
+[stem]
+++++
+I_L = I_{OUT} \frac{V_{OUT}}{0.8 V_{IN}}
+++++
+
+[.text-center]
+where: +
+stem:[V_{IN}] = the input voltage to the buck regulator +
+stem:[V_{OUT}] = the output voltage of the buck regulator
+
+Then, calculate the value of inductance required with:
+
+[stem]
+++++
+L = \frac{V_{IN} (V_{OUT} - V_{IN})}{\Delta I_L \cdot f \cdot V_{OUT}}
+++++
+
+[.text-center]
+where: +
+stem:[\Delta I_L] = the desired ripple current in the inductor +
+stem:[f] = the switching frequency +
+and everything else as mentioned previously
+
+==== Types Of Inductors
+
+Inductors used for buck converters can generally be classified into one of three different types:
+
+. **Wire-wound ferrite core**: Copper wound around a ferrite core.
+
+. **Metal composite**: Metal powders moulded around copper windings at high pressure.
++
+.Internal construction of a metal composite inductor. Image by Kemet, retrieved from https://media.digikey.com/pdf/Data%20Sheets/Kemet%20PDFs/MPXV_Series_DS.pdf on 2020-11-30.
+image::metal-composite-inductor-construction-kemet-mpx.png[width=300px]
+
+. **Multilayer**: Laminated sheets.
+
+The various advantages of each of explored in the following table:
+
+[%autowidth]
+|===
+| Type                     | Inductance
+
+| Wire-wound ferrite core  | High (up to 200uH)
+| Metal composite          | Medium (up to 10uF)
+| Multilayer               | Low (up to 1uH)
+|===
+
+=== Capacitor Selection
+
+The output capacitance is primarily determined by the maximum allowed output voltage ripple. This ripple is determined by the capacitance of the capacitor and it's ESR (equivalent series resistance). The output capacitance of a boost converter can be found using the following equation.
+
+[stem]
+++++
+C_{min} = \dfrac{I_O (V_{OUT} - V_{IN})}{f  \Delta V V_{OUT}}
+++++
+
+[.text-center]
+where: +
+stem:[\Delta V] = the maximum desired output voltage ripple +
+and everything else as mentioned previously
+
+The actual ripple will be slightly larger than this due to the ESR of the capacitor.
+
+[stem]
+++++
+\Delta V_{ESR} = I_O R_{ESR}
+++++
+
+[.text-center]
+where: +
+stem:[R_{ESR}] = the parasitic series resistance of the output capacitor
+
+The total output ripple is the sum of the ripple caused by the capacitance, and the ripple cause by the ESR. 
+
+TIP: These equations assume a constant load. Load transients (fluctuations in the load current) will also cause voltage ripple.
+
+=== Down Conversion
+
+Some boost converters also have a built in regulator to provide regulation when the input voltage exceeds the desired output voltage. This is normally a linear regulator, so your efficiency will drop and you will have to take into account the thermal dissipation. This is normally called **down conversion**.
+
+.The internal schematic of a boost converter with in-built down conversion capability (the ability to drop the input voltage).
+image::schematic-of-boost-converter-with-down-conversion-capability.png[width=507px]
+
+The price you pay for this added down conversion feature is a slightly higher cost, and slightly higher quiescent current (e.g. some of TI's boost converters have 19uA quiescent current without down conversion, and 25uA with down conversion).
+
+=== Input Voltage Range
+
+Typically, boost ICs with an internal switch (a converter) can support lower input voltages than those that require an external switch (a controller). A typical minimum input voltage for a converter is in the range 0.3-0.9V, while a controller's minimum is in the range 0.9-1.8V.
+
+=== Buck Converter Calculator
+
+You can find a buck converter calculator as part of link:http://ninja-calc.mbedded.ninja/buck-converter-calculator[mbedded.ninja's NinjaCalc web app].
+
+.A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0).
+image::ninja-calc-buck-converter-calculator-screenshot.png[width=956px]
+
+=== Operation Modes
+
+==== Continuous Conduction Mode (CCM)
+
+CCM is the basic and default operating mode for most buck converters. It is a synchronous mode, meaning the switching frequency is constant and continuous.
+
+==== Advanced Asynchronous Modulation (AAM)
+
+AAM is not supported by all buck converters, and is a mode used at low output currents to reduce the power consumption of the SMPS.
+
+=== Examples
+
+==== Tiny (Nano) Buck Converters
+
+Texas Instruments released a series of very small (3.5x3.5x1.8mm) buck converter modules in 2015. One of the most impressive features is that this includes the inductor (external capacitors are still required). One example is the LMZ20502, which can provide up to 2A of current with an input voltage range of 2.7-5.5V and a output voltage range of 0.8-3.6V.
+
+.A photo of the LMZ20502 buck converter. Image from http://www.digikey.co.nz/product-detail/en/LMZ20502SILT/296-38656-1-ND/.
+image::photo-of-lmz20502-buck-converter.jpg[width=306px]
+
+Notice how most of the volume on the module is taken up the chip inductor (the big brown thing that dominates most of the image). The dimensions of the package are shown in the diagram below.
+
+.The dimensions of the MicroSIP component package, used by the Texas Instruments 'Nano' buck converters. Image from http://www.ti.com/lit/ds/symlink/lmz20502.pdf.
+image::microsip-component-package-dimensions.png[width=500px]
+
+== Boost Converters
+
+Boost converters use a switching element, inductor, diode, and capacitor to convert an input voltage stem:[V_{in}] into a higher or equal output voltage stem:[V_{out}].
+
+.The basic components of a boost converter.
+image::smps-boost-converter-simple.png[width=600px]
+
+In a real boost converter, the switch stem:[SW] is usually realized with a MOSFET or similar electronic switching device.
+
+=== Modes Of Operation
+
+A boost converter can operate in three different modes of operation:
+
+* Continuous conduction mode (CCM)
+* Discontinuous conduction mode (DCM)
+* Critical conduction mode (CrCM)
+* Burst-mode
+
+These are explained in the following sub-sections.
+
+=== Continuous Conduction Mode (CCM)
+
+For the same output current, the peak current through the inductor is lower when the boost converter is operating in CCM, compared on any other mode of operation.
+
+CCM encounters turn-on losses through the switch. These can be exacerbated by the diodes reverse recover charge (stem:[ Q_{rr} ]). Ultra-fast diodes with low (stem:[Q_{rr}]) are therefore recommended.
+
+=== Discontinuous Conduction Mode (DCM)
+
+The switch (lets assume a MOSFET) is turned on at zero current, which means there is little turn-on loss.
+
+=== Critical Conduction Mode (CrCM)
+
+Critical conduction mode (CrCM) is at the boundary between CCM and DCM. 
+
+In CrCM, the peak inductor current is exactly twice the average value. This increases the switching element's RMS current and turn-off current.
+
+CrCM is good for low to medium power boost converter designs. At higher power levels the low filtering ability and high peak inductor currents start to become disadvantageous. Above this point boost converters operating in CCM are more preferable.
+
+=== Burst-Mode
+
+Burst-mode is a favourite for saving power when the load needs very little current. In burst-mode operation, the regulator operates for a period of time, charges up the output capacitor to a set threshold, and then shuts down completely. When the output voltage sags below a set threshold, the converter turns back on and the cycle restarts. This works well when there is little load current and so the converter can "sleep" for a significant period of time before it has to turn on again.
+
+When the converter enters sleep, a number of power consuming components of the boost regulators control circuit can be disabled (e.g. oscillators, voltage references, op-amps), saving power.
+
+=== Design Procedure
+
+This assumes you already know:
+
+<table>
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr>
+<td> \( V_{in} \)</td>
+<td>The input voltage.</td>
+</tr>
+<tr>
+<td> \( V_{out} \)</td>
+<td>The output voltage. This has to be higher or equal to \( V_{in} \)</td>
+</tr>
+<tr>
+<td>\( I_{SW(max)} \)</td>
+<td>The maximum current allowed through the switch.</td>
+</tr>
+<tr>
+<td>\( f_{S} \)</td>
+<td>The switching frequency of the boost converter.</td>
+</tr>
+<tr>
+<td>\( \eta \)</td>
+<td>The efficiency of the converter. This is dependent on output current, but it is o.k. just to approximate with a rough value (e.g. 90%) and use for all calculations.</td>
+</tr>
+</tbody>
+</table>
+
+=== Duty Cycle
+
+The duty cycle for a boost converter is given by:
+
+[stem]
+++++
+D = 1 - \eta \cdot \frac{V_{IN}}{V_{OUT}}
+++++
+
+As you can see, the duty cycle is dependent only on the ratio between the input and output voltages. This has to be one of the simplest boost converter equations. This equation ignores the specific voltage drops across the switching element and rectifier, but rather lumps them together into the efficiency term.
+
+=== Inductance
+
+The inductance can be determined using:
+
+[stem]
+++++
+L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}) \cdot (\frac{\eta I_L}{\Delta I_L})
+++++
+
+You don't know stem:[ I_L ] or stem:[ \Delta I_L ] yet, but the trick is here to assume a maximum inductor ripple current stem:[ \Delta I_L ] as a percentage of the average inductor current, stem:[ I_L ]. A rule-of-thumb is to assume a maximum ripple current of 35% (assuming it is operating in CCM mode). Thus,
+
+[stem]
+++++
+\frac{\Delta I_L}{I_L} = 0.35
+++++
+
+Now the equation for the inductance becomes:
+
+[stem]
+++++
+L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}) \cdot (\frac{\eta }{0.35})
+++++
+
+which can be solved as we know all of the variables.
+
+=== Output Current
+
+The maximum output current is given by:
+
+[stem]
+++++
+I_{OUT(max)} = (I_{SW(max)} - \frac{\Delta I_L}{2})(1 - D)
+++++
+
+=== Diode Selection
+
+The maximum reverse voltage of the diode must be at least equal to the output voltage of the boost converter. This is because diode sees the full load voltage when the switch is closed (in a reverse-biased setup).
+
+=== PCB Routing
+
+The same rules apply for routing boost converters as with any SMPS. See the PCB Routing section on the SMPS page for more information.
+
+=== Light Load Instabilities
+
+Bad things can happen when boost converters are operated with light/no load. If the controller isn't smart enough to reduce the duty cycle down to near 0 when there is no or little load, the voltage across the capacitor can build up to a point where it causes damage to part of the circuitry.
+
+Also, if the converter is in DCM and the load current suddenly increases, the output voltage can sag greatly.
+
+=== Turning Off/Disabling
+
+While most boost controllers have an enable/disable pin, this doesn't actually disconnect the input from output, as the switching device is not in series with input and output, as it is in a buck Converter. Thus if you need the load completely disconnected from the input, you will need to add something like a P-Channel MOSFET or load switch to the front-end of the boost converter.
+
+=== Start-up vs. Runtime Minimum Input Voltage Requirements
+
+Some boost converters have differing start-up and runtime minimum input voltage requirements. Typically, the boost converter requires a higher minimum input voltage to start (e.g. 18V), but once running, can run of a lower voltage (e.g. 500mV).
+
+=== Bypass
+
+Some boost converters designed for ultra-lower power applications have a **bypass mode**. When the output voltage is not needed to be higher than the input voltage, the converter enters a bypass mode in where most of the control circuitry is disabled, the converter stops switching, and the input voltage is "bypassed" straight to the output.
+
+=== Max. Current Ratings
+
+One gotcha: The "max. current" rating that a manufacturer will provide with a boost controller with an integrated switch will usually be the maximum current rating of the switch. **This is not the maximum output current**, but rather the maximum input current. The maximum output current, assuming you have a higher output voltage, will be less than this.
+
+=== Compensation Loop
+
+The compensation loop is part of the feedback mechanism. The below diagram shows a current-mode controlled boost converter with a transconductance amplifier (\( g_m \)) providing the feedback.
+
+.A simplified diagram of a current-mode boost converter with a transconductance amplifier (gm). Image from Texas Instruments Application Report SLVA452 - Compensating the Current-Mode-Controlled Boost Converter.
+image::simplified-diagram-current-mode-boost-converter-with-gm-amplifier.png[width=550px]
+
+The above model is only valid for when the boost converter is acting like a current-mode controlled regulator. This is the case when the ripple current is within the normal operating region (0.2-0.4 times the average input current). When the inductor is oversized to further reduce current ripple through the inductor (less than 0.2 times the average input current), the boost converter behaves more like a voltage-mode controlled regulator and this above model is no longer valid.
+
+External compensation can be added if the manufacturer provides a compensation pin (typically called COMP). The pin is the output of the internal transconductance amplifier.
+
+.The external loop compensation components for the TPS61087 boost regulator. Image from the Texas Instruments TPS61087EVM User's Guide with annotations.
+image::compensation-components-for-tps61087evm-boost-converter-annotated.png[width=870px]
+
+A resistance between 5-100kR and a capacitance between 1-10nF is typical. A higher resistance corresponds to a faster response time. A lower capacitance corresponds to a higher phase margin.
+
+== Inverting Buck-Boost Converter
+
+An inverting buck-boost is a type of switch-mode power supply (SMPS) that converts an input voltage into a higher or lower output voltage. It is given the name inverting because it inverts the output voltage with respect to the input voltage.
+
+.The basic components of an inverting buck-boost converter.
+image::smps-buck-boost-inverting-basic-components.png[width=600px]
+
+== SEPIC SMPS
+
+=== Overview
+
+SEPIC (single-ended primary inductance converter) is a switch-mode power supply (SMPS) which can both up and down-convert, similar to a buck/boost. It can be viewed as a boost converter followed by a buck-boost converter.
+
+.The basic components of a SEPIC style buck-boost converter.
+image::smps-buck-boost-converter-sepic-basic-components.png[width=700px]
+
+It is normally recognised both in schematics and on PCBs because of it's use of two inductors. It's advantages over a buck-boost alone is that is has a non-inverted output voltage, DC decouplement from input to out (through a series power-transferring capacitor), which makes it easier to handle things such as short circuits on the output, and true turnoff of the output (when the switch is off, the output truly goes to 0V).
+
+Like other SMPS, the SEPIC converter uses a switching element of control the output. The power transferring capacitor between input and output is sometimes called the **AC capacitor**.
+
+=== Output Voltage
+
+In continuous-conduction mode (CCM), the equation linking the input and output voltage of a SEPIC is:
+
+[stem]
+++++
+D = \frac{V_{OUT}}{V_{OUT} + V_{IN}}
+++++
+
+=== Inductor(s)
+
+The SEPIC is usually identified by it's two inductors, rather than as most other power converters which use only one. They can either be wound on separate cores and not share any magnetic field (uncoupled inductors), or be wound on the same core and share a magnetic field (a coupled dual-winding inductor). Using a coupled dual-winding inductor has the advantages of reducing the component count, and lowering the total inductance requirements, but can be hard to find for high-power requirements. Coupled inductors used in a SEPIC also benefit from some leakage inductance, which reduces the AC losses.
+
+The equations are different for coupled and un-coupled inductor designs. For a coupled inductor, the equation is:
+
+[stem]
+++++
+L = \frac{V_{IN}^2 d_{min}^2}{2f_s P_{OUT(min)}(1 + d_{min}\frac{1 - n}{n})}
+++++
+
+And for two uncoupled inductors:
+
+[stem]
+++++
+L_1 = \frac{d_{min} V_{IN(max)}^2 n}{2f_s P_{OUT(min)}}
+++++
+
+[stem]
+++++
+L_2 = \frac{(1 - d_{min}) V_{OUT}^2}{2f_s P_{OUT(min)}}
+++++
+
+The above equations determines the minimum inductance required for CCM operation at maximum input voltage and minimum load (the worst-case scenario for a SEPIC).
+
+Even though the equations above show this, it is still worth pointing out that in an decoupled design, the inductances **do not have to be the same value**. This is a common misconception, this rule only applies to the coupled SEPIC design.
+
+=== Capacitor
+
+Sometimes the AC capacitor needs a series RC snubber circuit to make the SEPIC stable. A low resistance between 1-10R and a large capacitance between 50-1000uF can sometimes fix this.
+
+=== Examples
+
+The LT from Linear Technology can be used in a SEPIC configuration to control a series of high-power LEDs.

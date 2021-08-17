@@ -26,9 +26,9 @@ tags: [ "Avada", "buck converters", "component packages", "diodes", "MFI", "MOSF
 
 * Added [Civil Footnotes plugin](https://wordpress.org/plugins/civil-footnotes/) for adding footnotes to posts/pages.
 
-* Moved the info on buck converters from the {{% link text="Power Regulators page" src="/electronics/components/power-regulators" %}} onto it's own {{% link text="Buck Converters page" src="/electronics/components/power-regulators/buck-converters" %}}.
+* Moved the info on buck converters from the {{% link text="Power Regulators page" src="/electronics/components/power-regulators" %}} onto it's own [Buck Converters page](/electronics/components/power-regulators/buck-converters).
 
-* Moved the info on SEPIC converters from the {{% link text="Power Regulators page" src="/electronics/components/power-regulators" %}} onto it's own {{% link text="SEPIC Converters page" src="/electronics/components/power-regulators/sepic-converters" %}}.
+* Moved the info on SEPIC converters from the {{% link text="Power Regulators page" src="/electronics/components/power-regulators" %}} onto it's own [SEPIC Converters page](/electronics/components/power-regulators/sepic-converters).
 
 * Moved the {{% link text="Load Switches page" src="/electronics/circuit-design/power-management/load-switches" %}} so that it is a child of {{% link text="Power Management" src="/electronics/circuit-design/power-management" %}}.
 
