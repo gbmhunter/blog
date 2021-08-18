@@ -19,7 +19,7 @@ markup:
   tableOfContents:
     ordered: false
     startLevel: 2
-    endLevel: 4 # Used to be 2 to keep the TOC short
+    endLevel: 5 # Used to be 2 to keep the TOC short, but now we added separate scrolling for the right-hand column for the TOC
   goldmark:
     renderer:
       unsafe: true
@@ -37,7 +37,10 @@ markup:
       source-highlighter: rouge
       rouge-css: style
       rouge-style: github
+      # The TOC and the number of levels for AsciiDoc pages is determined below
+      # rather than with the markup->tableOfContents section above.
       toc: true
+      toclevels: 4
       xrefstyle: short
       stem: latexmath
       sectnums: true
@@ -53,6 +56,7 @@ related:
 taxonomies:
   category: categories
   tag: tags
+  author: "authors"
 outputs:
   home:
     - HTML
