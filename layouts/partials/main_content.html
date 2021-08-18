@@ -15,6 +15,12 @@
       </h1>
       
       <div class="published-modified-wrapper">
+        <span>
+          Article by: 
+        {{ range .Param "authors" }}
+          <address class="author"><a rel="author" href="#_authors">{{ . }}</a></address>
+        {{ end }}
+        </span>
         <table>
           <tbody>
             <tr>
@@ -66,6 +72,20 @@
       </div>
       
       <hr />
+
+      <!-- The below block shows a list of the authors of the current page, including their name, bio and image
+      This block pulls metadata from the pages at content/authors/... -->
+      <h2 id="_authors">Authors</h2>
+      {{ range .Param "authors" }}
+        {{ $name := . }}
+        {{ $path := printf "/%s/%s" "authors" ($name | urlize) }}
+        {{ with $.Site.GetPage $path }}
+          <h3>{{ .Params.name }}</h3>
+          <img src="/images{{ $path }}.png">
+          <p>{{ .Params.bio }}</p>
+          <p><a href="https://twitter.com/{{ .Params.twitter }}">Twitter</a></p>
+        {{ end }}
+      {{ end }}
       
       
       {{- partial "related.html" . -}}

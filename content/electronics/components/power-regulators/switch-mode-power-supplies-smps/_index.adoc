@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2015-03-24
 description: "Control methods, component selection, equations, operation modes, schematics, examples and more info on buck converters."
@@ -10,6 +10,17 @@ tags: [ "electronics", "components", "power regulators", "SMPS", "buck converter
 title: "Switch Mode Power Supplies (SMPS)"
 type: "page"
 ---
+
+== Overview
+
+_Switch-mode power supplies_ (SMPS) are power conversion circuits that efficiently convert input voltages/currents into different output voltages/currents. They can either:
+
+* Decrease the voltage (link:#_buck_converters[buck converter])
+* Increase the voltage (link:#_boost_converters[boost converter])
+* Increase or decrease the voltage (buck-boost, link:#_sepic[SEPIC], Cuk)
+* Increase or decrease AND invert the voltage (link:#_inverting_buck_boost_converters[inverting buck-boost converter])
+
+Unlike linear regulators which act as a dynamic series resistance to dump energy as heat and produce a lower output voltage, SMPSs efficiently perform voltage conversion by storing energy in the magnetic field of an inductor and electric field of a capacitor (and are not limited to just producing lower output voltages, they can produce higher output voltages also).
 
 == Buck Converters
 
@@ -178,29 +189,20 @@ Notice how most of the volume on the module is taken up the chip inductor (the b
 .The dimensions of the MicroSIP component package, used by the Texas Instruments 'Nano' buck converters. Image from http://www.ti.com/lit/ds/symlink/lmz20502.pdf.
 image::microsip-component-package-dimensions.png[width=500px]
 
-== Boost Converters
+== SMPS Modes Of Operation
 
-Boost converters use a switching element, inductor, diode, and capacitor to convert an input voltage stem:[V_{in}] into a higher or equal output voltage stem:[V_{out}].
-
-.The basic components of a boost converter.
-image::smps-boost-converter-simple.png[width=600px]
-
-In a real boost converter, the switch stem:[SW] is usually realized with a MOSFET or similar electronic switching device.
-
-=== Modes Of Operation
-
-A boost converter can operate in three different modes of operation:
+SMPS can work in different modes of operation:
 
 * Continuous conduction mode (CCM)
 * Discontinuous conduction mode (DCM)
 * Critical conduction mode (CrCM)
 * Burst-mode
 
-These are explained in the following sub-sections.
+We'll explain these a little in the following sub-sections before moving on to boost converters.
 
 === Continuous Conduction Mode (CCM)
 
-For the same output current, the peak current through the inductor is lower when the boost converter is operating in CCM, compared on any other mode of operation.
+For the same output current, the peak current through the inductor is lower when the SMPS is operating in CCM, compared on any other mode of operation.
 
 CCM encounters turn-on losses through the switch. These can be exacerbated by the diodes reverse recover charge (stem:[ Q_{rr} ]). Ultra-fast diodes with low (stem:[Q_{rr}]) are therefore recommended.
 
@@ -220,44 +222,20 @@ CrCM is good for low to medium power boost converter designs. At higher power le
 
 Burst-mode is a favourite for saving power when the load needs very little current. In burst-mode operation, the regulator operates for a period of time, charges up the output capacitor to a set threshold, and then shuts down completely. When the output voltage sags below a set threshold, the converter turns back on and the cycle restarts. This works well when there is little load current and so the converter can "sleep" for a significant period of time before it has to turn on again.
 
-When the converter enters sleep, a number of power consuming components of the boost regulators control circuit can be disabled (e.g. oscillators, voltage references, op-amps), saving power.
+When the converter enters sleep, a number of power consuming components of the SMPS control circuit can be disabled (e.g. oscillators, voltage references, op-amps), saving power.
+
+== Boost Converters
+
+=== Schematics
+
+Boost converters use a switching element, inductor, diode, and capacitor to convert an input voltage stem:[V_{in}] into a higher or equal output voltage stem:[V_{out}].
+
+.The basic schematic of a boost converter. SW1 is typically a MOSFET switched by control logic (not shown).
+image::boost-converter-basic-schematic.svg[width=600px]
 
 === Design Procedure
 
-This assumes you already know:
-
-<table>
-    <thead>
-        <tr>
-            <th>Symbol</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody>
-<tr>
-<td> \( V_{in} \)</td>
-<td>The input voltage.</td>
-</tr>
-<tr>
-<td> \( V_{out} \)</td>
-<td>The output voltage. This has to be higher or equal to \( V_{in} \)</td>
-</tr>
-<tr>
-<td>\( I_{SW(max)} \)</td>
-<td>The maximum current allowed through the switch.</td>
-</tr>
-<tr>
-<td>\( f_{S} \)</td>
-<td>The switching frequency of the boost converter.</td>
-</tr>
-<tr>
-<td>\( \eta \)</td>
-<td>The efficiency of the converter. This is dependent on output current, but it is o.k. just to approximate with a rough value (e.g. 90%) and use for all calculations.</td>
-</tr>
-</tbody>
-</table>
-
-=== Duty Cycle
+==== Duty Cycle
 
 The duty cycle for a boost converter is given by:
 
@@ -268,7 +246,7 @@ D = 1 - \eta \cdot \frac{V_{IN}}{V_{OUT}}
 
 As you can see, the duty cycle is dependent only on the ratio between the input and output voltages. This has to be one of the simplest boost converter equations. This equation ignores the specific voltage drops across the switching element and rectifier, but rather lumps them together into the efficiency term.
 
-=== Inductance
+==== Inductance
 
 The inductance can be determined using:
 
@@ -293,7 +271,7 @@ L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}
 
 which can be solved as we know all of the variables.
 
-=== Output Current
+==== Output Current
 
 The maximum output current is given by:
 
@@ -302,7 +280,7 @@ The maximum output current is given by:
 I_{OUT(max)} = (I_{SW(max)} - \frac{\Delta I_L}{2})(1 - D)
 ++++
 
-=== Diode Selection
+==== Diode Selection
 
 The maximum reverse voltage of the diode must be at least equal to the output voltage of the boost converter. This is because diode sees the full load voltage when the switch is closed (in a reverse-biased setup).
 
@@ -348,21 +326,30 @@ image::compensation-components-for-tps61087evm-boost-converter-annotated.png[wid
 
 A resistance between 5-100kR and a capacitance between 1-10nF is typical. A higher resistance corresponds to a faster response time. A lower capacitance corresponds to a higher phase margin.
 
-== Inverting Buck-Boost Converter
+== Inverting Buck-Boost Converters
 
-An inverting buck-boost is a type of switch-mode power supply (SMPS) that converts an input voltage into a higher or lower output voltage. It is given the name inverting because it inverts the output voltage with respect to the input voltage.
+An inverting buck-boost is a type of switch-mode power supply (SMPS) that converts an input voltage into a higher or lower output voltage. It is given the name inverting because it generates a negative output voltage.
 
-.The basic components of an inverting buck-boost converter.
-image::smps-buck-boost-inverting-basic-components.png[width=600px]
+.The basic schematic of a inverting buck-boost converter. SW1 is typically a MOSFET switched by control logic (not shown).
+image::inverting-buck-boost-converter-basic-schematic.svg[width=600px]
 
-== SEPIC SMPS
+=== Equations
+
+[stem]
+++++
+\begin{align}
+V_{OUT} = -\frac{D}{1 - D} V_{IN}
+\end{align}
+++++
+
+== SEPIC
 
 === Overview
 
 SEPIC (single-ended primary inductance converter) is a switch-mode power supply (SMPS) which can both up and down-convert, similar to a buck/boost. It can be viewed as a boost converter followed by a buck-boost converter.
 
-.The basic components of a SEPIC style buck-boost converter.
-image::smps-buck-boost-converter-sepic-basic-components.png[width=700px]
+.The basic schematic of a SEPIC (single-ended primary inductance converter).
+image::sepic-basic-schematic.svg[width=700px]
 
 It is normally recognised both in schematics and on PCBs because of it's use of two inductors. It's advantages over a buck-boost alone is that is has a non-inverted output voltage, DC decouplement from input to out (through a series power-transferring capacitor), which makes it easier to handle things such as short circuits on the output, and true turnoff of the output (when the switch is off, the output truly goes to 0V).
 

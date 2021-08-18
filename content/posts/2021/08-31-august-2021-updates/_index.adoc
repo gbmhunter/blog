@@ -29,3 +29,7 @@ image::/posts/2021/08-31-august-2021-updates/resistor-parasitic-elements-screens
 * Consolidated all the info on switch-mode power supplies (e.g. buck converters, boost converters, buck-boost, SEPIC) into a single page.
 
 * Added info on MQTT clients suitable for embedded devices.
+
+* Expanded the TOC to contain heading levels 2 to 4 (beforehand it was only showing level 2).
+
+* Added the ability to define multiple authors per page, and added an author block to all content pages. Followed a really useful tutorial at https://moonbooth.com/hugo/authors/.
