@@ -2,25 +2,25 @@
 authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2015-03-24
-description: "Control methods, component selection, equations, operation modes, schematics, examples and more info on buck converters."
+description: "Topologies (buck, boost, buck-boost, SEPIC, Ćuk), control methods, component selection, equations, operation modes, schematics, examples and more info on switch-mode power supplies."
 draft: false
 images: [ "/electronics/components/power-regulators/switch-mode-power-supplies-smps/smps-buck-converter-simple.png" ]
-lastmod: 2021-08-17
-tags: [ "electronics", "components", "power regulators", "SMPS", "buck converter", "power electronics", "inductor", "capacitor", "regulation", "control methods", "constant frequency", "current-mode", "SNVA555", "PCM", "peak current mode", "CCM", "constant current mode", "SEPIC" ]
+lastmod: 2021-08-19
+tags: [ "electronics", "components", "power regulators", "SMPS", "buck converter", "power electronics", "inductor", "capacitor", "regulation", "control methods", "constant frequency", "current-mode", "SNVA555", "PCM", "peak current mode", "CCM", "constant current mode", "SEPIC", "Cuk", "Ćuk" ]
 title: "Switch Mode Power Supplies (SMPS)"
 type: "page"
 ---
 
 == Overview
 
-_Switch-mode power supplies_ (SMPS) are power conversion circuits that efficiently convert input voltages/currents into different output voltages/currents. They can either:
+_Switch-mode power supplies_ (SMPS) are power conversion circuits that **efficiently convert input voltages/currents (power) into different output voltages/currents**. This page only looks at non-isolated SMPSs, i.e. topologies that don't use a transformer. They can either:
 
-* Decrease the voltage (link:#_buck_converters[buck converter])
-* Increase the voltage (link:#_boost_converters[boost converter])
-* Increase or decrease the voltage (buck-boost, link:#_sepic[SEPIC], Cuk)
-* Increase or decrease AND invert the voltage (link:#_inverting_buck_boost_converters[inverting buck-boost converter])
+* Decrease the voltage (<<Buck Converters, buck converter>>)
+* Increase the voltage (<<Boost Converters, boost converter>>)
+* Increase or decrease the voltage (buck-boost, <<SEPIC, SEPIC>>, <<Ćuk Converter, Ćuk Converter>>)
+* Increase or decrease AND invert the voltage (<<Inverting Buck-Boost Converters, inverting buck-noost converter>>)
 
-Unlike linear regulators which act as a dynamic series resistance to dump energy as heat and produce a lower output voltage, SMPSs efficiently perform voltage conversion by storing energy in the magnetic field of an inductor and electric field of a capacitor (and are not limited to just producing lower output voltages, they can produce higher output voltages also).
+Unlike linear regulators which act as a dynamic series resistance to dump energy as heat and produce a lower output voltage, **SMPSs efficiently perform voltage conversion by storing energy in the magnetic field of an inductor and electric field of a capacitor** (and are not limited to just producing lower output voltages, they can produce higher output voltages also).
 
 == Buck Converters
 
@@ -165,16 +165,6 @@ You can find a buck converter calculator as part of link:http://ninja-calc.mbedd
 .A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0).
 image::ninja-calc-buck-converter-calculator-screenshot.png[width=956px]
 
-=== Operation Modes
-
-==== Continuous Conduction Mode (CCM)
-
-CCM is the basic and default operating mode for most buck converters. It is a synchronous mode, meaning the switching frequency is constant and continuous.
-
-==== Advanced Asynchronous Modulation (AAM)
-
-AAM is not supported by all buck converters, and is a mode used at low output currents to reduce the power consumption of the SMPS.
-
 === Examples
 
 ==== Tiny (Nano) Buck Converters
@@ -202,11 +192,15 @@ We'll explain these a little in the following sub-sections before moving on to b
 
 === Continuous Conduction Mode (CCM)
 
+_Continuous conduction mode_ (CCM) is when the **current through the inductor never falls to 0** during the switching cycle. In the case of converter with multiple inductors (e.g. link:#_sepic[SEPIC]), CCM is when the current never falls to 0 in any of the inductors.
+
 For the same output current, the peak current through the inductor is lower when the SMPS is operating in CCM, compared on any other mode of operation.
 
 CCM encounters turn-on losses through the switch. These can be exacerbated by the diodes reverse recover charge (stem:[ Q_{rr} ]). Ultra-fast diodes with low (stem:[Q_{rr}]) are therefore recommended.
 
 === Discontinuous Conduction Mode (DCM)
+
+_Discontinuous conduction mode_ (DCM) is when the **current through the inductor falls to 0** (and stays there for a period of time) during a switching cycle of the SMPS.
 
 The switch (lets assume a MOSFET) is turned on at zero current, which means there is little turn-on loss.
 
@@ -223,6 +217,11 @@ CrCM is good for low to medium power boost converter designs. At higher power le
 Burst-mode is a favourite for saving power when the load needs very little current. In burst-mode operation, the regulator operates for a period of time, charges up the output capacitor to a set threshold, and then shuts down completely. When the output voltage sags below a set threshold, the converter turns back on and the cycle restarts. This works well when there is little load current and so the converter can "sleep" for a significant period of time before it has to turn on again.
 
 When the converter enters sleep, a number of power consuming components of the SMPS control circuit can be disabled (e.g. oscillators, voltage references, op-amps), saving power.
+
+=== Advanced Asynchronous Modulation (AAM)
+
+AAM is not supported by all buck converters, and is a mode used at low output currents to reduce the power consumption of the SMPS.
+
 
 == Boost Converters
 
@@ -333,7 +332,9 @@ An inverting buck-boost is a type of switch-mode power supply (SMPS) that conver
 .The basic schematic of a inverting buck-boost converter. SW1 is typically a MOSFET switched by control logic (not shown).
 image::inverting-buck-boost-converter-basic-schematic.svg[width=600px]
 
-=== Equations
+=== Output Voltage
+
+Again, the output voltage for an ideal SEPIC is purely determined by the input voltage and the duty cycle stem:[D], as given in the following equation:
 
 [stem]
 ++++
@@ -342,33 +343,43 @@ V_{OUT} = -\frac{D}{1 - D} V_{IN}
 \end{align}
 ++++
 
+To give you an idea of how varying the duty cycle can produce either a higher or lower output voltage, see <<vout-to-vin-vs-duty-cycle-buck-boost>> which shows how the output voltage can vary from a small fraction of stem:[V_{IN}] to many times larger than stem:[V_{IN}], and they are equal when the duty cycle is set at 50%.
+
+[[vout-to-vin-vs-duty-cycle-buck-boost]]
+.Relationship between duty cycle and the voltage ratio for a inverting buck-boost converter, ignoring the sign (so applicable for a SEPIC also). Dotted line drawn where stem:[V_{OUT} = V_{IN}], at stem:[D=0.5].
+image::vout-to-vin-vs-duty-cycle-buck-boost.png[width=500px]
+
+As the duty cycle approaches 100%, the ideal output voltage approaches infinity! In practise, non-idealities and component absolute maximums limit the the output voltage to something in the range of 10x the input voltage.
+
 == SEPIC
 
 === Overview
 
 SEPIC (single-ended primary inductance converter) is a switch-mode power supply (SMPS) which can both up and down-convert, similar to a buck/boost. It can be viewed as a boost converter followed by a buck-boost converter.
 
-.The basic schematic of a SEPIC (single-ended primary inductance converter).
+.The basic schematic of a SEPIC (single-ended primary inductance converter). Capacitor C1 is shown as polarized, but in some cases may be unpolarized to prevent problems if the voltage changes polarity (which can occur if the switch has a high duty cycle).
 image::sepic-basic-schematic.svg[width=700px]
 
-It is normally recognised both in schematics and on PCBs because of it's use of two inductors. It's advantages over a buck-boost alone is that is has a non-inverted output voltage, DC decouplement from input to out (through a series power-transferring capacitor), which makes it easier to handle things such as short circuits on the output, and true turnoff of the output (when the switch is off, the output truly goes to 0V).
+Like a <<Ćuk Converter>>, a SEPIC has one switch and two inductors. It's advantages over a buck-boost alone is that is has a non-inverted output voltage, DC decouplement from input to out (through a series power-transferring capacitor), which makes it easier to handle things such as short circuits on the output, and true turnoff of the output (when the switch is off, the output truly goes to 0V).
 
 Like other SMPS, the SEPIC converter uses a switching element of control the output. The power transferring capacitor between input and output is sometimes called the **AC capacitor**.
 
 === Output Voltage
 
-In continuous-conduction mode (CCM), the equation linking the input and output voltage of a SEPIC is:
+In continuous-conduction mode (CCM), the equation linking the input voltage stem:[V_{IN}], output voltage stem:[V_{OUT}] and duty cycle stem:[D] of a SEPIC is:
 
 [stem]
 ++++
-D = \frac{V_{OUT}}{V_{OUT} + V_{IN}}
+V_{OUT} = \frac{D}{1-D} V_{IN}
 ++++
+
+Like before, this equation assumes all components are ideal. This equation is identical to the one for a inverting buck-boost except for the negative sign (a buck-boost inverts the output, while a SEPIC does not).
 
 === Inductor(s)
 
-The SEPIC is usually identified by it's two inductors, rather than as most other power converters which use only one. They can either be wound on separate cores and not share any magnetic field (uncoupled inductors), or be wound on the same core and share a magnetic field (a coupled dual-winding inductor). Using a coupled dual-winding inductor has the advantages of reducing the component count, and lowering the total inductance requirements, but can be hard to find for high-power requirements. Coupled inductors used in a SEPIC also benefit from some leakage inductance, which reduces the AC losses.
+The SEPIC has two inductors, just like the <<Ćuk Converter>>. They can either be wound on separate cores and not share any magnetic field (_uncoupled inductors_), or be wound on the same core and share a magnetic field (a _coupled dual-winding inductor_). Using a coupled dual-winding inductor has the advantages of reducing the component count, and lowering the total inductance requirements, but can be hard to find for high-power requirements. Coupled inductors used in a SEPIC also benefit from some leakage inductance, which reduces the AC losses.
 
-The equations are different for coupled and un-coupled inductor designs. For a coupled inductor, the equation is:
+The equations are different for coupled and un-coupled inductor designs. For a coupled inductor, the equation to calculate the inductance stem:[L] is:
 
 [stem]
 ++++
@@ -389,7 +400,7 @@ L_2 = \frac{(1 - d_{min}) V_{OUT}^2}{2f_s P_{OUT(min)}}
 
 The above equations determines the minimum inductance required for CCM operation at maximum input voltage and minimum load (the worst-case scenario for a SEPIC).
 
-Even though the equations above show this, it is still worth pointing out that in an decoupled design, the inductances **do not have to be the same value**. This is a common misconception, this rule only applies to the coupled SEPIC design.
+NOTE: Even though the equations above show this, it is still worth pointing out that in an decoupled design, the inductances **do not have to be the same value**. This is a common misconception, this rule only applies to the coupled SEPIC design.
 
 === Capacitor
 
@@ -398,3 +409,16 @@ Sometimes the AC capacitor needs a series RC snubber circuit to make the SEPIC s
 === Examples
 
 The LT from Linear Technology can be used in a SEPIC configuration to control a series of high-power LEDs.
+
+== Ćuk Converter
+
+The _Ćuk converter_ is a buck-boost topology that only requires a single switch, but two inductors (just like the link:#_sepic[SEPIC]). It also has the additional property of 0 output ripple current when it's two inductors are coupled. It produces an output voltage which is opposite in polarity to the input (i.e. it is _inverting_).
+
+**Advantages:**
+
+* 0 output ripple current (when the two inductors are coupled).
+
+**Disadvantages:**
+
+* High current stress in the switch.
+* Inverting (depending on the application, this could be an advantage!)
