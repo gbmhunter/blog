@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Signal Processing" ]
 date: 2019-04-23
 description: "A tutorial on the basic types of signals/waveforms you will come across in engineering."

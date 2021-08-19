@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Integrated Development Environments (IDEs)" ]
 date: 2016-06-17
 draft: false

@@ -3,7 +3,7 @@ title: "cat"
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 description: "Creating files, outputing files, appending to files, emptying files and more info on the command-line UNIX program called cat."
 tags: [ "cat", "UNIX", "Linux", "concatenate", "program", "command-line" ]
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2014-07-08
 lastmod: 2018-12-29
 type: "page"

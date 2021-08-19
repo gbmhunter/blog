@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2018-02-26 18:27:01+00:00
 draft: false
 title: Geodesic Calculator Added To NinjaCalc

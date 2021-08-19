@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Tools" ]
 date: 2020-05-19
 description: "A tutorial on what logic analyzers are used for and the various makes and models that exist."

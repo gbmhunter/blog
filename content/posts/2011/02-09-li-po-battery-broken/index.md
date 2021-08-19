@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2011-02-09 05:15:50+00:00
 draft: false
 title: Li-Po Battery Broken!

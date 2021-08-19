@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2017-11-24
 description: "Shortcuts, key bindings, compiling C/C++ and more info about the Visual Studio Code IDE."
 draft: false

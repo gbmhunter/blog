@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Integrated Development Environments (IDEs)" ]
 date: 2021-03-08
 description: "A basic tutorial and in-depth notes on PlatformIO, a build manager/IDE for embedded systems."

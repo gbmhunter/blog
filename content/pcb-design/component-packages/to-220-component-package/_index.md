@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 description: "Dimensions, land patterns and more info for TO-220 package variants such as TO-220AB and TO-220AC."

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2019-04-29
 description: "Dimensions, land patterns, thermal resistances and more info on the TO-273AA (Super TO-220) component package."

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-22 05:58:46+00:00
 draft: false
 title: Control Methodology

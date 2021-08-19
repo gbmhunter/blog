@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components" ]
 date: 2013-05-06
 description: "Important parameters, schematic symbols, series/parallel connections, core materials, construction methods, saturation currents, packages, uses/applications and more info on inductors."

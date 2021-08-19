@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2017-04-21
 draft: false
 title: Installing xsdb And JTAG Drivers

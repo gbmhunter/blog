@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-12-16
 draft: false
 tags: [ "Altium", "vault" ]

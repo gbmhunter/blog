@@ -1,6 +1,6 @@
 ---
 aliases: [ "pwm" ]
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2021-03-11
 draft: false

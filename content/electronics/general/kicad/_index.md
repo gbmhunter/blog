@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2020-04-21
 description: ""
 categories: [ "Electronics", "General" ]

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Projects", "Electronics" ]
 date: 2015-10-04
 tags: [ "electric blanket", "project", "smart phone", "IoT" ]

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2015-08-16
 draft: false
 title: "Xilinx 7 Series Design Guide"

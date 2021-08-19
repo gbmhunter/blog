@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Space" ]
 date: 2019-10-04
 description: "An introduction to the Python library rasterio, used for manipulating geospatial data."

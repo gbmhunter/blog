@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2016-04-19
 draft: false
 title: "Digital Temperature Sensors"

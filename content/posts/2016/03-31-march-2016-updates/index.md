@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-03-31
 draft: false
 tags: [ "circuit protection", "component packages", "connectors", "current loop", " D-subminiature", "D2PAK", "TO-263", "mains power", "SPI", "thermistor" ] 

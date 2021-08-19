@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Mathematics", "Statistics" ]
 date: 2019-08-02
 draft: false

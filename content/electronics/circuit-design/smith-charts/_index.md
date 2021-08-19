@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2014-05-01
 description: "What they look like, how to interpret them, solving impedance matching problems, and more info on Smith charts."

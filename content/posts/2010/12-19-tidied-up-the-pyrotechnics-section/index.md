@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Pyrotechnics", "Updates" ]
 date: 2010-12-19
 draft: false

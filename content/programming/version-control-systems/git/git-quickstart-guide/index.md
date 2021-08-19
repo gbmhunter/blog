@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Version Control Systems" ]
 date: 2013-08-29
 lastmod: 2019-05-20

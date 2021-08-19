@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming" ]
 date: 2012-10-01
 description: "A tutorial on PID control including equations, examples and simulations."

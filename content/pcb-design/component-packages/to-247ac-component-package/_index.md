@@ -1,6 +1,6 @@
 ---
 aliases: [ "TO-247AC Component Package" ]
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2021-03-16
 draft: false

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2017-04-17
 draft: false
 tags: [ "Linux", "Zynq", "Xilinx", "ZC702", "evaluation kit", "Yocto", "meta-xilinx", "VMware", "bit-bake", "poky", "SD card" ]

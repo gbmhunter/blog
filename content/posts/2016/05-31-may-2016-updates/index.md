@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-05-31
 draft: false
 tags: [ "converters", "current sources", "diodes", "Howland", "low capacitance", "PTC", "resistances", "thermistors", "triggered resistances", "TVS", "voltage-to-current" ]

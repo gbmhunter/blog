@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Algorithms" ]
 date: 2019-06-17
 description: "A tutorial on popular convex hull algorithms."

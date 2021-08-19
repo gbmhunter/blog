@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Updates", "Site Admin" ]
 date: 2013-03-28
 draft: false

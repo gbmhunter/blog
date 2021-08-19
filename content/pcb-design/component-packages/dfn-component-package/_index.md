@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2020-07-30
 description: "Synonyms, variants, dimensions, recommended footprints, thermal resistance and more info about the SON (DFN) component package."

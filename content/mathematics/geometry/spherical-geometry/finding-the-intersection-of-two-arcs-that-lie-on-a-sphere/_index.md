@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Mathematics", "Geometry", "Spherical Geometry" ]
 date: 2018-02-15
 draft: false

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-06
 draft: false
 tags: [ "C", "programming", "software", "language" ]

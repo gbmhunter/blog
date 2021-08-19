@@ -1,6 +1,6 @@
 
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Virtual Machines And Containers", "Docker" ]
 date: 2018-04-09
 draft: false

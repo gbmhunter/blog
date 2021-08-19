@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-06-15
 draft: false
 title: Implementing The Observer Pattern In Java

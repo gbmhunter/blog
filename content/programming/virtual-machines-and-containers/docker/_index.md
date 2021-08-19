@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Virtual Machines And Containers" ]
 date: 2017-01-23
 description: "An overview on Docker and the commands to manipulate containers and images."

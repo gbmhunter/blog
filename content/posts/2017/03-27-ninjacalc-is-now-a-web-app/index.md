@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2017-03-27
 draft: false
 title: NinjaCalc Is Now A Web App

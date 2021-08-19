@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Serilization Formats" ]
 date: 2020-07-27
 description: "The encoding and decoding process for packetizing (framing) data using Consistent Overhead Byte Stuffing (COBS)."

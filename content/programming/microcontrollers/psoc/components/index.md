@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Microcontrollers", "Cortex-M3" ]
 date: 2013-03-19
 description: "Brief overview of the variety of components available in PSoc 3/4/5 MCUs."

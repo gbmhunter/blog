@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Serilization Formats" ]
 date: 2014-04-08
 description: "Syntax, code examples, standards and more info about comma-separated value (CSV) files."

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-08-02 05:58:59+00:00
 draft: false
 title: Logic Gates

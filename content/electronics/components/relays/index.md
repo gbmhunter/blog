@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-10-25
 draft: false
 tags: [ "relay", "relays", "solid state", "single-pole", "double-pole", "single-throw", "double-throw", "inductive kickback" ]

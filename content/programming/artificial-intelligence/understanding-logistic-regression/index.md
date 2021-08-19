@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Artificial Intelligence" ]
 date: 2020-02-21
 description: "What is logistic regression, and how does it work?"

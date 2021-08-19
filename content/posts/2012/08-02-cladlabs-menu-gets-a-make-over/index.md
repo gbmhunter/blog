@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-08-02
 draft: false
 title: CladLabs Menu Gets A Make Over

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Components" ]
 date: 2011-09-03
 description: "Brushed DC, brushless, AC inductor, universal motors, half-bridge/full-bridge driver circuits and more info on electrical motors."

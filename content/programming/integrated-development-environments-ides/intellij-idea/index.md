@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Integrated Development Environments" ]
 date: 2016-06-26
 description: "A tutorial on using IntelliJ, including keyboard shortcuts and how to use the IdeaVim plugin."

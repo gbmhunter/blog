@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems" ]
 date: 2019-05-30
 description: "Info on the macOS operating system."

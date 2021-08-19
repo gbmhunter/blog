@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Artificial Intelligence" ]
 date: 2020-02-20
 description: "A step-by-step introduction to machine learning."

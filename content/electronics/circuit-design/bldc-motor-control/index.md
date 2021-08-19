@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2012-08-02
 description: "Positional sensing, trapezoidal control, sinusoidal control, sensor field orientated control, the Clark and Park transformations, PWM and more info on BLDC motor control"

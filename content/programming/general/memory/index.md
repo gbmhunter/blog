@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2014-07-09 04:21:36+00:00
 draft: false
 title: Memory

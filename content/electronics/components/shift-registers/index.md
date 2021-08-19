@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Components" ]
 date: 2020-04-08
 description: "Definition, configurations, uses, example circuit schematics and more information about shift registers."

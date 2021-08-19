@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2016-03-10
 draft: false
 tags: [ "4-20mA", "current loop", "analogue", "transmitter", "receiver", "over-voltage", "HART", "communication protocol", "out-of-band signalling", "noise", "filtering", "buffering", "microcontroller", "ISA S50.1", "NAMUR NE43", "2-Wire", "3-Wire" ]

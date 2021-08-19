@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-03-11
 title: Skateboard Motion Sensor And Alarm Prototype Working
 type: post

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "PCB Design" ]
 date: 2020-08-10
 description: "Thermal conductivity, the resistance model, TIMs, a via thermal resistance calculator and more info on thermal design for PCBs."

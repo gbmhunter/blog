@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2018-03-30 19:04:23+00:00
 draft: false
 title: March 2018 Updates

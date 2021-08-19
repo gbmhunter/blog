@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Components", "Transformers" ]
 date: 2011-09-03
 lastmod: 2011-09-03

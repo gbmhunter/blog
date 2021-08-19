@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2017-10-19 01:02:56+00:00
 draft: false
 title: Concurrency Patterns

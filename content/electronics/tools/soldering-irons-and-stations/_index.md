@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Tools" ]
 date: 2020-05-18
 description: "A review of the different makes and models of both soldering irons and soldering stations."

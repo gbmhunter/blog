@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Mathematics", "Statistics" ]
 date: 2020-03-21
 description: "What is the arithmetic, geometric and harmonic mean of a set of numbers, and why are they important?"

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-06-28
 description: "A step-by-step tutorial on writing a basic Hello, World program in assembly."
 draft: false

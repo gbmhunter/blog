@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Cloud", "AWS" ]
 date: 2020-03-27
 description: "An introduction to AWS Fargate, a container execution service (aka serverless) provided by AWS."

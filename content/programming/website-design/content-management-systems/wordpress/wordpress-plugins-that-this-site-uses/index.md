@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-02-23
 draft: false
 title: Wordpress Plugins That This Site Uses

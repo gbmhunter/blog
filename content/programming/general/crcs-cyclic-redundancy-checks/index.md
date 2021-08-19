@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2016-06-07
 tags: [ "CRC", "cyclic redundancy check", "generator polynomial", "calculator", "NinjaCalc", "CRC-8-ATM", "CRC-16", "XModem", "Kermit" ]
 title: "CRCs (Cyclic Redundancy Checks)"

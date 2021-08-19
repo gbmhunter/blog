@@ -18,7 +18,7 @@ _Switch-mode power supplies_ (SMPS) are power conversion circuits that **efficie
 * Decrease the voltage (<<Buck Converters, buck converter>>)
 * Increase the voltage (<<Boost Converters, boost converter>>)
 * Increase or decrease the voltage (buck-boost, <<SEPIC, SEPIC>>, <<Ćuk Converter, Ćuk Converter>>)
-* Increase or decrease AND invert the voltage (<<Inverting Buck-Boost Converters, inverting buck-noost converter>>)
+* Increase or decrease AND invert the voltage (<<Inverting Buck-Boost Converters, inverting buck-boost converter>>)
 
 Unlike linear regulators which act as a dynamic series resistance to dump energy as heat and produce a lower output voltage, **SMPSs efficiently perform voltage conversion by storing energy in the magnetic field of an inductor and electric field of a capacitor** (and are not limited to just producing lower output voltages, they can produce higher output voltages also).
 

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-02-12
 draft: false
 title: Bit Fields And Bit Manipulation/Masking

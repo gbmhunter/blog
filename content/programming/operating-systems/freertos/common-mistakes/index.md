@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Embedded", "Operating Systems", "Software" ]
 date: 2014-07-20
 draft: false

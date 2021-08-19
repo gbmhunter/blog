@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-06-11
 draft: false
 title: Installing And Using emWin On A PSoC

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-27
 description: "History of this blog, dating back to it's inception as 'Kaboom Pyrotechnics' back in 2004."
 draft: false

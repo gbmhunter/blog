@@ -1,6 +1,6 @@
 ---
 aliases: [ "test-alias" ]
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2004-09-13
 draft: false
 lastmod: 2021-06-20

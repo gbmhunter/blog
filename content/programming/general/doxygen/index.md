@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2013-04-30
 description: "Popular keywords, commenting styles, Doxywizard are more info on the Doxygen documentation system for C/C++ code."
 draft: false

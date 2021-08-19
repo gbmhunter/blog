@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-11-11 16:11:44+00:00
 draft: false
 title: ListView

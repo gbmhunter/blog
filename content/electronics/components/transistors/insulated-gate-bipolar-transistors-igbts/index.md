@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2014-11-30
 draft: false
 title: Insulated-Gate Bipolar Transistors (IGBTs)

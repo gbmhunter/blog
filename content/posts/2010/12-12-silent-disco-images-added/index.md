@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "DJing", "Updates" ]
 date: 2010-12-12
 draft: false

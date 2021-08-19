@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-05
 draft: false
 tags: [ "Altium", "simulation", "SPICE", "simulator", "circuit", "schematic", "XSPICE", "mdl", "ckt", "SimModel", "frequency response" ]

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2013-10-21
 description: "A tutorial on the popular file copying command-line tool rsync, including option explanations, code examples, common use cases and more."

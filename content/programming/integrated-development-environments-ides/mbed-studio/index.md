@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Integrated Development Environments" ]
 date: 2020-06-23
 description: "Info about Mbed Studio."

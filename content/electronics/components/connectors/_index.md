@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-05
 description: "Terminology, types, manufacturers, common usages and more info on electrical connectors."
 draft: false

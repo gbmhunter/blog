@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Integrated Development Environments" ]
 date: 2020-06-19
 description: "Info about STM32CubeIDE, an IDE for the STM32 family of microcontrollers."

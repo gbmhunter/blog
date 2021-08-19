@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2015-08-10
 draft: false
 title: PCIe Hardware Design Guide

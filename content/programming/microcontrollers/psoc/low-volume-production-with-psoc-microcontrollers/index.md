@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-07-26
 draft: false
 title: Low-Volume Production With PSoC Microcontrollers

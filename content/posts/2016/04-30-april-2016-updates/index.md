@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-04-30
 draft: false
 tags: [ "BJTs", "constant-current", "I2C", "LED drivers", "low-pass RC", "Microblaze", "multiple-collector", "multiple-emitter", "NinjaCalc", "NTC", "PWM", "sensors", "temperature", "thermistors", "track current", "VDAC", " z-wave" ]

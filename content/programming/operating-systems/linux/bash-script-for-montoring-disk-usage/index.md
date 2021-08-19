@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems", "Linux" ]
 date: 2018-12-03
 description: "A bash script that can quickly monitor disk usage and report disk usage warnings to the user."

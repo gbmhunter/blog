@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Integrated Development Environments (IDEs)" ]
 date: 2019-07-15
 description: "A tutorial on Jupyter Notebooks and Jupyter Labs."

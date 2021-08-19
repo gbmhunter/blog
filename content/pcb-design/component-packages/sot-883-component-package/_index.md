@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2020-10-15
 description: "Dimensions, recommended footprints, synonyms, common uses, thermal resistances and more info on the SOT-883 component package."

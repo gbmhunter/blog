@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Build Systems And Package Managers" ]
 date: 2017-01-30
 draft: false

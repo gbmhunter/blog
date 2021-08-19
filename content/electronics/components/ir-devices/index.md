@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-03 02:21:55+00:00
 draft: false
 title: "IR Devices"

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Databases" ]
 date: 2020-07-14
 description: "Code examples for MariaDB and PostgreSQL."

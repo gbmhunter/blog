@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-03-14 23:13:25+00:00
 draft: false
 title: Encryption

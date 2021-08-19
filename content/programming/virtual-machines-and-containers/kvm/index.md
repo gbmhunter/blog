@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Virtual Machines And Containers" ]
 date: 2020-05-25
 description: "A tutorial on KVM, a virtualization tool for Linux."

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2014-09-24 02:18:42+00:00
 draft: false
 title: Time Measurement Systems

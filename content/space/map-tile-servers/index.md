@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Space" ]
 date: 2019-12-11
 description: "A tutorial on servers which provide APIs for requesting tiles of map imagery for geospatial mapping applications."

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-12-13
 description: "A tutorial on the most popular C++ containers including std::array, std::vector, std::map, std::deque, std::set and more."
 draft: false

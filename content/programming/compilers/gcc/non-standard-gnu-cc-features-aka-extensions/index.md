@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2014-08-15
 draft: false
 title: Non-Standard GNU C/C++ Features (aka Extensions)

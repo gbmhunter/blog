@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2020-05-01
 description: "Info on importing Altium PCB projects into KiCAD."
 categories: [ "Electronics", "General" ]

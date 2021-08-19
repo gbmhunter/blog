@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Tools" ]
 date: 2020-10-27
 description: "Uses, brands, specifications, and more info about ultrasonic cleaners."

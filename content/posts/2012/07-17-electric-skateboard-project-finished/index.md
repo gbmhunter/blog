@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-07-17
 draft: false
 title: Electric Skateboard Project Finished!

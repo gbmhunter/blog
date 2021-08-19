@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2011-11-21 05:42:17+00:00
 draft: false
 title: Youtube Links Are Down...

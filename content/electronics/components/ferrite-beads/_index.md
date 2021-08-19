@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2013-09-19
 description: "Impedance graphs, schematic symbols, important datasheet parameters, uses, example circuits and more info on ferrite beads."
 draft: false

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2004-07-05
 draft: false
 title: "Safety Info/Legal Stuff"

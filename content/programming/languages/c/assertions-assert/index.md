@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-06-17
 draft: false
 tags: [ "C", "programming", "assert", "asserts", "exception", "firmware", "macro", "pre-processor", "GCC" ]

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2018-05-10
 draft: false
 title: "PID Tuner Tool Released In NinjaCalc"

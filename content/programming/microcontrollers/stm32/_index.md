@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2020-06-19
 description: "Info about the STM32 range of microcontrollers."
 categories: [ "Programming", "Microcontrollers", "STM32" ]

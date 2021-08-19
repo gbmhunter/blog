@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2013-04-03
 draft: false
 tags: [ "C++", "PSoC", "PSoC Creator", "C", "IDEs", "gcc", "g++", "microcontroller", "new", "delete", "vtable", "nothrow" ]

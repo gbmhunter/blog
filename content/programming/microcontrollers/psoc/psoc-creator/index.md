@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Microcontrollers", "Cortex-M3" ]
 date: 2013-04-19
 draft: false

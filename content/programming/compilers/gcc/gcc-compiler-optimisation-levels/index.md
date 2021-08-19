@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Compilers", "GCC" ]
 date: 2015-10-07
 draft: false

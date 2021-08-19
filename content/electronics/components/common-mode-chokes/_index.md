@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components" ]
 date: 2021-01-18
 description: "Schematic symbols, designators, manufacturing part numbers are more info about common-mode chokes."

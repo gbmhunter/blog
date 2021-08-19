@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "General" ]
 date: 2011-09-05
 tags: [ "workshop", "storage", "components", "laser", "oscilloscope", "power supply", "logic analyzer", "capacitors", "software" ]

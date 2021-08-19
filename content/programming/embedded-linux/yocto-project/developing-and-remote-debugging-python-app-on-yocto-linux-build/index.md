@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2017-04-28
 draft: false
 title: Developing And Remote Debugging Python App On Yocto Linux Build

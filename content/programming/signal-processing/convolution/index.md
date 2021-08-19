@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Mathematics", "Signal Processing" ]
 date: 2018-06-05
 description: "A tutorial on convolution."

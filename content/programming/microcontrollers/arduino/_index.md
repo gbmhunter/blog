@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 category: [ "Programming", "Microcontrollers", "Arduino" ]
 date: 2011-11-10
 draft: false

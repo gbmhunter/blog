@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2020-04-19
 description: "Installation and usage info on the Zephyr project, an open-source embedded RTOS developed by the Linux Foundation."
 draft: false

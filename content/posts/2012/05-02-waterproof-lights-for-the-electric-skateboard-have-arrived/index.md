@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-05-02
 draft: false
 title: Waterproof Lights For The Electric Skateboard Have Arrived

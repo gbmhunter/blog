@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-06-09
 draft: false
 title: Skateboard H-Bridge Blew Up (for the +10th time)

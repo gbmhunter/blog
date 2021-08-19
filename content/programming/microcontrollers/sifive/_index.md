@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2020-12-02
 description: "Information on the microcontrollers produced by SiFive."
 categories: [ "Programming", "Microcontrollers", "SiFive" ]

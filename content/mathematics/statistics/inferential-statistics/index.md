@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Mathematics", "Statistics" ]
 date: 2020-08-28
 description: "Info on inferential statistics."

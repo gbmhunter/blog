@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components" ]
 description: "The schematic symbol, frequency response, driver circuits, benders, multi-layer speakers, homemade crystals and more info about Piezos."
 date: 2012-05-02

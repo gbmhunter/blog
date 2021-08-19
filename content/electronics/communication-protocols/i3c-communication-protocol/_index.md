@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2020-11-18
 description: "A tutorial on the I3C communication protocol."
 draft: false

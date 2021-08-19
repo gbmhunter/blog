@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2004-04-30 
 draft: false
 title: Electronic Fuse Instructable Added

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "CPU Architectures" ]
 date: 2013-10-11
 draft: false

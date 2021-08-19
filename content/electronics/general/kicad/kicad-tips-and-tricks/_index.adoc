@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2020-04-21
 description: "A comprehensive tutorial/introduction to KiCad, including installation, schematic design, PCB design, SPICE simulation, CICD and more."
 categories: [ "Electronics", "General" ]

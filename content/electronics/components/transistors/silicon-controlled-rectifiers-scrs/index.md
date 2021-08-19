@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Components" ]
 date: 2020-06-22
 description: "Semiconductor make-up, schematic symbol, commutation and more info about silicon controlled rectifiers (SCRs)."

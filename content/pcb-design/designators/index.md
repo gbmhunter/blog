@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "PCB Design" ]
 date: 2015-04-27
 description: "A tutorial on designator choice and placement during the PCB design process."

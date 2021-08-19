@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2015-01-09 02:18:15+00:00
 draft: false
 title: Bootloaders

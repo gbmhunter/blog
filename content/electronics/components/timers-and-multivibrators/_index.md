@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Components" ]
 date: 2020-09-07
 description: "History, modes of operation, schematics and more info on the timers and multivibrators."

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Programming Languages", "C++" ]
 date: 2017-09-28
 description: "Info about the the Qt software framework/library, including threading, serial ports and more."

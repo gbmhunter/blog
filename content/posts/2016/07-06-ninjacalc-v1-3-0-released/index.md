@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "NinjaCalc" ]
 date: 2016-07-06
 draft: false

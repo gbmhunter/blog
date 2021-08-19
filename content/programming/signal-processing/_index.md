@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Signal Processing" ]
 date: 2013-01-08
 description: "Blog sub-section on signal processing."

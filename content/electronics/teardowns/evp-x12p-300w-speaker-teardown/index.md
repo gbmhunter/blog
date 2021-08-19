@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Teardowns" ]
 date: 2012-07-09
 tags: [ "teardown", "speaker", "EVP-X12P" ]

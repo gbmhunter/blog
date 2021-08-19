@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components", "Diodes", "LEDs" ]
 date: 2013-11-12
 tag: [ "LT3745", "design guide", "LEDs", "LED drivers" ]

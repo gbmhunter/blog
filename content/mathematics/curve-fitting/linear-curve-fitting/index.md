@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2018-06-26
 description: "A tutorial showing how to fit a linear curve to a set of data."
 draft: false

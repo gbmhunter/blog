@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-04-03
 draft: false
 title: Carbon Dioxide (CO2) Sensors

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2020-10-05
 description: "Codings, types, manufacturers, common usages and more info on the industry-standard M8/M12 circular connector family."
 draft: false
