@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Operating Systems", "Linux", "Programs" ]
 date: 2017-01-05
 description: "A tutorial on the command-line tool pkill, used for matching processes against strings and killing them."

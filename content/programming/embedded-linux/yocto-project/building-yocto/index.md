@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2017-05-31 17:27:09+00:00
 draft: false
 title: Building Yocto

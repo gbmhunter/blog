@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-02-10
 draft: false
 title: Quantum Platform (QP)

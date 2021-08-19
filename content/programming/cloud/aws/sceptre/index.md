@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Cloud", "AWS", "Sceptre" ]
 date: 2019-11-21
 draft: false

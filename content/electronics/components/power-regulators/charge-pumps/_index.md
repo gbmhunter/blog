@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2014-12-01
 description: "Schematics, advantages/disadvantages to buck converters, uses/applications and more info about charge pumps (a type of SMPS)."
 draft: false

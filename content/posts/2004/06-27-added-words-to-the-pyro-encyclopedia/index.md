@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2004-06-27
 draft: false
 title: Added Words To The Pyro Encyclopedia

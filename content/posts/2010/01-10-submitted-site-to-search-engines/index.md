@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Updates" ]
 date: 2010-01-10
 tags: [ "electrical suppliers", "Gracol", "search engine", "SEO" ]

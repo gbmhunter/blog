@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-19
 draft: false
 tags: [ "electronics", "updates", "I2C", "communication bus" ]

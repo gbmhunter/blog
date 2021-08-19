@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-15
 draft: false
 title: uVision Version Control With Mercurial

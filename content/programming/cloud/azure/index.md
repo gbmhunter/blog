@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Cloud" ]
 date: 2019-10-09
 draft: false

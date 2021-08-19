@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Design Patterns" ]
 date: 2015-04-23
 draft: false

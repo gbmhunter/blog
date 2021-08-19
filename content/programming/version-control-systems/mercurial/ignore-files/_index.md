@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2014-02-08 03:20:14+00:00
 draft: false
 title: Ignore Files

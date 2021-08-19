@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2017-07-06
 description: "A tutorial on the time complexity of algorithms, including Big-O notation and amortized complexity."
 draft: false

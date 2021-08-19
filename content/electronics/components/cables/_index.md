@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components" ]
 date: 2012-11-21
 description: "Insulation materials, cable types, standards, mutual capacitance and more info on cables."

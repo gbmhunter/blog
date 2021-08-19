@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Image Processing" ]
 date: 2019-05-08
 draft: false

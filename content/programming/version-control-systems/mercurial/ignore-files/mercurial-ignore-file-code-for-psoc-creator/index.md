@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-01-15
 draft: false
 title: Mercurial Ignore File For PSoC Creator In Glob Syntax

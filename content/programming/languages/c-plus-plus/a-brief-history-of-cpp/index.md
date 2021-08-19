@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Languages", "C++" ]
 date: 2019-08-20
 description: ""

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Programming Languages" ]
 date: 2018-06-26
 description: "A tutorial on Python debugging, including how to use pdb."

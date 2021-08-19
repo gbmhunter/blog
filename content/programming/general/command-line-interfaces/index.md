@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2014-01-21 07:40:34+00:00
 draft: false
 title: Command-line Interfaces

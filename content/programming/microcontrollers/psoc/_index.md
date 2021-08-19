@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-05 01:10:03+00:00
 draft: false
 title: PSoC

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2014-01-24
 draft: false
 title: Local Jumps (goto)

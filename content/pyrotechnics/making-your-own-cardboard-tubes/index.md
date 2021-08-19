@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2004-12-07
 draft: false
 title: Making Your Own Cardboard Tubes

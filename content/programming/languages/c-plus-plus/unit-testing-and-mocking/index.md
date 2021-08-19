@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2017-05-26
 draft: false
 title: Unit Testing And Mocking

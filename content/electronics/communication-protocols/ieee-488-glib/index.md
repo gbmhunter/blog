@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2020-07-13
 description: "History, topology, uses, connections and more info about the IEEE-488 (GPIB) communication bus,"
 draft: false

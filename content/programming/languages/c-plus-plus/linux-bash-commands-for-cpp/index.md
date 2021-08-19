@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-05-28
 draft: false
 title: Linux Bash Commands For C++

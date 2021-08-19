@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Programming Languages", "C" ]
 date: 2015-01-07
 draft: false

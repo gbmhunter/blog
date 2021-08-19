@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Components", "Diodes" ]
 date: 2012-03-15
 description: "Parameters, current-limiting resistor calculations, multiplexing, ESD and more info about light-emitting diodes (LEDs)."

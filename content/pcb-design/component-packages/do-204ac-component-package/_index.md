@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-03-09
 description: "Dimensions, recommended PCB footprints, variants, synonyms and more for the DO-15 (DO-204AC) component package."

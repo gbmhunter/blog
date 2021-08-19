@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Algorithms And Data Structures" ]
 date: 2019-01-17
 description: "Tries"

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-10-25
 tags: [ "component packages", "PCB design", "SC-109D", "SOD-123" ]

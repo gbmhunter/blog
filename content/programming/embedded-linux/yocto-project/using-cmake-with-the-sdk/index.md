@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2017-05-05 01:24:56+00:00
 draft: false
 title: Using CMake With The SDK

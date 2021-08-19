@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components", "Diodes" ]
 date: 2015-11-01
 draft: false

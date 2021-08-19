@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "CPU Architectures", "ARM Cortex-M3" ]
 date: 2014-09-30
 draft: false

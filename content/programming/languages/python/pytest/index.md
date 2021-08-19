@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2019-06-05
 description: "A tutorial on pytest, a popular testing framework for Python."

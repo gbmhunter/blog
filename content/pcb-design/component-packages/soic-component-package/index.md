@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-01-21
 description: "Synonyms, variants, pitches, pin numbering, mechanical drawings, recommend footprints and more info about the SOIC range of component packages."

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Simulation" ]
 date: 2011-09-05
 draft: false

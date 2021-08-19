@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-04-15
 draft: false
 title: Stopping Un-wanted Modules From Appearing On The Search Page

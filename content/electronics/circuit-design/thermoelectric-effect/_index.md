@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2021-03-16
 description: "The Seebeck effect, the Peltier effect, thermocouples and more info on the general thermoelectric principle."

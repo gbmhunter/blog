@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2019-02-11
 description: "A tutorial on Python classes and object-orientated design in Python."

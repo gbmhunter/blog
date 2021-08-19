@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2021-01-26
 description: "Architectures, schematic symbols, functional diagrams and more info on 2 and 3-pin shunt voltage regulators."

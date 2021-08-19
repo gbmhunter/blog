@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2013-09-04
 description: "The Mathematics subsection of this blog."
 draft: false

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Posts", "Updates" ]
 date: 2020-08-31
 description: "Blog updates during August 2020."

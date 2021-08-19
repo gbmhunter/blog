@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-09-05
 draft: false
 title: How To Route A PSoC Microcontroller

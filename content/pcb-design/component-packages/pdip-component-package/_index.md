@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "PCB Design", "Component Packages" ]
 date: 2020-01-15
 description: "Info of the PDIP (plastic dual inline package) component package."

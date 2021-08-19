@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Cloud", "AWS" ]
 date: 2019-10-01
 description: "An introduction to S3, a popular key/value storage service provided by AWS."

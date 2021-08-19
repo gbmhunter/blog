@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2014-02-11
 draft: false
 title: SMBus Communication Protocol

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-03
 description: "A tutorial on the I2C communication protocol."
 draft: false

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Build Systems And Package Managers", "CMake" ]
 date: 2017-01-15
 draft: false

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-04-12
 draft: false
 title: NTC Thermistors (Temperature Sensors)

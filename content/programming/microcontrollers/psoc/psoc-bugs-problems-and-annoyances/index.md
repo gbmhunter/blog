@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-08
 draft: false
 title: PSoC Bugs, Problems And Annoyances

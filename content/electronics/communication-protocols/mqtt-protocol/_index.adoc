@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Communication Protocols" ]
 date: 2014-02-16
 description: "History, brokers, clients, Mosquitto, Puho and more information about the MQTT communications protocol."

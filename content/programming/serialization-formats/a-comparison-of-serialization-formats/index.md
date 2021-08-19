@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2019-01-27
 description: "A review of popular serialization formats (CSV, JSON, YAML, e.t.c), including speed and memory comparisons."
 draft: false

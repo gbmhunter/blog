@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2014-02-18 22:31:05+00:00
 draft: false
 title: Metastability And Synchronisation

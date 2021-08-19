@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-08-09
 draft: false
 title: Piezo Crystal Formation Project Uploaded!

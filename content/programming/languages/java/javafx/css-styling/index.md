@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-11-05 11:15:02+00:00
 draft: false
 title: CSS Styling

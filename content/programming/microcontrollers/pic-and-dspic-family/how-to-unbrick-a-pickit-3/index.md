@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Embedded", "Microcontrollers" ]
 date: 2014-04-14
 draft: false

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2004-07-17
 draft: false
 title: Cardboard Tube Instructable Added

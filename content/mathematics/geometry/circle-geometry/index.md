@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-09-04 10:53:19+00:00
 draft: false
 title: Circle Geometry

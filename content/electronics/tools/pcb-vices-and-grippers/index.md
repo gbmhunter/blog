@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Tools" ]
 date: 2020-07-06
 description: "Info on PCB vices and grippers."

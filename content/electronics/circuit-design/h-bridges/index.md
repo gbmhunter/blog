@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2011-09-03
 description: "Schematics, circuits, half-bridges, transistor-based design, motors, controlling bi-color LEDs and more info about H-bridges."

@@ -1,6 +1,6 @@
 ---
 title: "Keyboard Shortcuts"
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: "2014-01-08"
 type: "page"
 draft: false

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Updates" ]
 date: 2014-07-08
 lastmod: 2014-07-08

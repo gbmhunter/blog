@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2012-12-12
 description: "Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol."
 categories: [ "Electronics", "Communication Protocols" ]

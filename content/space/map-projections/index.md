@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Space", "Projections" ]
 date: 2019-11-13
 draft: false

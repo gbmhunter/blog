@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-06-04
 draft: false
 title: Skateboard Wired Up, But Half-Bridge Driver Over-Heating

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Pyrotechnics" ] 
 date: 2012-12-07
 tags: [ "38pvc", "DIY", "homemade", "motors", "PVC", "rocket", "rocketboard", "skateboard" ]

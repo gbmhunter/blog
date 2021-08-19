@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Cloud", "AWS" ]
 date: 2020-03-26
 description: "An introduction to lambda, a function execution service (aka serverless) provided by AWS."

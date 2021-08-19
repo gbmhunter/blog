@@ -2,7 +2,7 @@
 aliases: [
     "/programming/languages/c-plus-plus/passing-a-cpp-member-function-to-a-c-callback/", # Combined the content into this page
 ]
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Languages", "C++" ]
 date: 2014-01-17
 description: "How to deal with the tricky issue of callbacks in C++ (incl. how to provide member functions to C-style callbacks), especially in embedded environments."

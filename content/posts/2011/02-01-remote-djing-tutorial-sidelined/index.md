@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2011-02-01 05:14:35+00:00
 draft: false
 title: Remote DJing Tutorial Sidelined

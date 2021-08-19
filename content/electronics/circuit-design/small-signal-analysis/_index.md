@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2021-01-24
 description: "Explanation, analysis method and more info on small-signal analysis of circuit designs."

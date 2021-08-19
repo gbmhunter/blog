@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Microcontrollers", "RaspberryPi" ]
 date: 2013-03-23
 draft: false

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2020-02-05
 draft: true
 lastmod: 2020-02-05

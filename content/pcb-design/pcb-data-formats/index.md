@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "PCB Design" ]
 date: 2013-10-04
 description: "Gerber files, layers, ODB+, IPC-2581 and more info on PCB data formats."

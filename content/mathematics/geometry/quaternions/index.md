@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Mathematics", "Geometry" ]
 date: 2014-11-13
 description: "A tutorial on quaternions, including calculators to convert between quaternions, rotation matrices and axis-angle notations."

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-01-30
 draft: false
 title: Electric Skateboard Photo Album

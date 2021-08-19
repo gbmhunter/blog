@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-07-18
 draft: false
 title: Inserting Assembly Code Into C

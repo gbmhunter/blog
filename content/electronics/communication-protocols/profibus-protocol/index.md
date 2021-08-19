@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Communication Protocols" ]
 date: 2020-09-28
 description: "Standards, transmission distances, baud rates, transceivers, high-level protocols and more info about the PROFIBUS communication protocol."

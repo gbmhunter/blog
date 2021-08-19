@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Components" ]
 date: 2013-05-29
 lastmod: 2021-04-20

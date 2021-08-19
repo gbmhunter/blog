@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2012-01-05
 description: "Crystals (XTALs), load capacitance, frequency accuracy and stability, schematic symbols, MEMS oscillators, Wien bridges, rings and more info about oscillators."
 draft: false

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-05-04
 draft: false
 title: The New Red PCBs Have Arrived

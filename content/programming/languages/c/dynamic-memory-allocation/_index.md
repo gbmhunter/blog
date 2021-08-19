@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2013-03-18
 description: "A beginners tutorial on memory allocation in C (malloc(), free(), e.t.c.) for embedded systems."
 draft: false

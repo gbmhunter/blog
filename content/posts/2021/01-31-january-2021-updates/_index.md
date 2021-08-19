@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Posts", "Updates" ]
 date: 2021-01-31
 description: "Blog updates during January 2021."

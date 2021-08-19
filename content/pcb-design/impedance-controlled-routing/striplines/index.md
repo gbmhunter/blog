@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "PCB Design" ]
 date: 2015-12-01
 draft: false

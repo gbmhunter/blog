@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Posts", "Updates" ]
 date: 2020-03-14
 description: "How a search feature was added to the statically built blog.mbedded.ninja website running Hugo."

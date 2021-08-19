@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-03-11 22:31:29+00:00
 draft: false
 title: NMEA Protocol

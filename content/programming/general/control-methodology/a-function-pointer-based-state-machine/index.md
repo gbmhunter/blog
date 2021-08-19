@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-22
 description: "A step-by-step tutorial on building a function pointer based state machine."
 draft: false

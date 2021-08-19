@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2018-08-09
 draft: false
 tags: [ "matrix", "condition number", "invertible" ]

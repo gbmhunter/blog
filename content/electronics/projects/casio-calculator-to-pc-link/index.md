@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-07-24
 draft: false
 title: Casio Calculator To PC Link

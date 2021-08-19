@@ -2,7 +2,7 @@
 title: "OpenMP Tutorial"
 description: "\"Hello, world\" example using OpenMP."
 tags: [ "OpenMP", "multiprocessing", "parallelization", "multi-threading" ]
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2018-12-04
 lastmod: 2018-12-05
 type: "page"

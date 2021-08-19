@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2012-02-15
 title: "Altium Scripting And Using The API"
 type: "page"

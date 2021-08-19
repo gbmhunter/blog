@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-10-27
 draft: false
 title: Tonic Control System Project Finished!

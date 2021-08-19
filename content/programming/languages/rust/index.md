@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Programming Languages" ]
 date: 2015-05-13
 description: "A tutorial on the systems programming language Rust."

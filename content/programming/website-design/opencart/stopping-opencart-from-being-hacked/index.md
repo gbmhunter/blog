@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2014-02-18
 draft: false
 title: Stopping OpenCart From Being Hacked

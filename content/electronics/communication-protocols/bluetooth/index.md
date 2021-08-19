@@ -1,7 +1,7 @@
 ---
 title: "Bluetooth"
 tags: [ "communication protocol", "bluetooth" ]
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2015-01-03
 draft: false
 type: page

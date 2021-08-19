@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components", "Power Regulators" ]
 date: 2020-11-04
 description: "Architectures, common output voltages, manufacturer part numbers and more info about voltage references."

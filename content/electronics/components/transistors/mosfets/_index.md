@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Components" ]
 date: 2011-09-03
 description: "Schematic symbols, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."

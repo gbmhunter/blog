@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2011-09-05
 description: "Capabilities, quality, support and more info on a range of electronic suppliers."
 draft: false

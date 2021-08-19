@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2014-11-09
 tags: [ "component packages", "PCB design", "LL-34", "Mini-MELF" ]

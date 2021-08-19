@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2018-12-03
 description: "Regex find/replace, back-references and more info about the text-editor vim."
 lastmod: 2019-05-05

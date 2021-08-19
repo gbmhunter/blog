@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-01-25
 draft: false
 title: Remote Electronic Ignition System

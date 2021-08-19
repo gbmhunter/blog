@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-07-13 20:58:05+00:00
 draft: false
 title: File Systems

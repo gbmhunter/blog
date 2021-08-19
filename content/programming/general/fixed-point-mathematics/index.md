@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-10-23
 draft: false
 tags: [ "mathematics", "fixed point"]

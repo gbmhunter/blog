@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Web Design", "User Interface Libraries" ]
 date: 2019-11-26
 draft: false

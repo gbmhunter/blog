@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 description: "Variants, pin counts, pitches, solderability, thermal resistances, dimensions, land patterns, 3D models and more info for the TSOC component package."

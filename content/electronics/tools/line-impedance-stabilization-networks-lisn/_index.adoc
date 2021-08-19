@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Tools" ]
 date: 2021-06-30
 description: "Schematics, block diagrams, uses and more info on Line Impedance Stabilization Networks (LISNs), an important tool when performing EMC/EMI tests."

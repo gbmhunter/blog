@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Algorithms And Data Structures" ]
 date: 2019-07-07
 description: "A walkthrough on how to parse a mathematical expression. Covers grammar, lexers, parsers, RPN, infix and postfix notation, ASTs and more."

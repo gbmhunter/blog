@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Communication Protocols" ]
 date: 2015-02-15
 description: "Layers, lanes, memory, BARs, usage on Windows, and more info about the PCI Express (PCIe) communication protocol."

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-05-29
 draft: false
 title: PSoC And Xbee Module Fried On Electric Skateboard

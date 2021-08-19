@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2020-03-04
 description: "Synonyms, variants, dimensions, 3D models, land patterns and more info on the USON component package."

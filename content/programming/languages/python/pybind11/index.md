@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-09-24
 draft: false

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2004-11-24
 draft: false
 title: Polumna Salute Instructable And Definitions Added

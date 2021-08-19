@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-02-29
 draft: false
 tags: [ "API", "bit mask", "dependency injection", "dew point", "humidity", "I2C", "Magnus", "object-orientated", " C", "PSoC", "QP" ]

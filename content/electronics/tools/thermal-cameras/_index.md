@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Tools" ]
 date: 2020-08-31
 description: "Uses, brands, specifications, software and more info about thermal cameras."

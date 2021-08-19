@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Signal Processing", "Image Processing" ]
 date: 2019-06-20
 description: "A tutorial (with step-by-step examples) on the MIND descriptor, and image registration algorithm that works well for multi-modal image registration."

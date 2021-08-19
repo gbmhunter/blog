@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Algorithms And Data Structures", "Optimization" ]
 date: 2019-07-09
 description: ""

@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2014-05-07 04:17:19+00:00
 draft: false
 title: Clocks And Timing

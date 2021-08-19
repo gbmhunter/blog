@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2015-02-18
 draft: false
 title: BLE112/BLE113 Design Guide

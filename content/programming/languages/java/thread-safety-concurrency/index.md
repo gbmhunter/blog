@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-07-26
 draft: false
 title: Thread Safety (Concurrency)

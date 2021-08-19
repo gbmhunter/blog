@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2017-07-18
 draft: false
 title: "High-Level Data Link Control (HDLC)"

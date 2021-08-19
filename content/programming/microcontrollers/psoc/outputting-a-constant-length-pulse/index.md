@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-05-20
 draft: false
 title: Outputting A Constant Length Pulse

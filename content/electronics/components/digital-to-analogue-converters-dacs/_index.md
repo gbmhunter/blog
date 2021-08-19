@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components" ]
 date: 2020-11-03
 description: "Architectures, how to read the datasheets, manufacturer part numbers and more info about Digital-to-Analogue Converters (DACs)."

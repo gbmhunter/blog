@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Signal Processing", "Filters" ]
 date: 2014-02-26
 description: "Simple moving averages, exponential moving averages, Savizky-Golay filters, frequency responses, source code and more info on digital filtering (a form of signal processing)."

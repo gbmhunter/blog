@@ -2,7 +2,7 @@
 title: "Site Migration To Hugo Complete"
 description: "Details on the migration of this blog from Wordpress to Hugo."
 tags: [ "blog", "hugo", "wordpress", "migration", "cms", "static site generation", "gatsby", "export", "menu", "partials", "layout", "disqus", "vglnk", "page speed", "seo" ]
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: "2018-12-15"
 lastmod: "2018-12-20"
 type: "post"

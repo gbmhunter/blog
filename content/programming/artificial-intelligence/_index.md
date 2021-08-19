@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Artificial Intelligence" ]
 date: 2020-02-04
 description: "Tutorials on artificial intelligence."

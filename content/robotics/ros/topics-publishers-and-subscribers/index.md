@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2016-12-21
 draft: false
 title: Topics (Publishers And Subscribers)

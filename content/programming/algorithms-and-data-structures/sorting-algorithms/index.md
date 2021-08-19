@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2017-06-11
 description: "A tutorial on popular sorting algorithms, including counting sort, inserting sort, merge sort, selection sort and more."
 draft: false

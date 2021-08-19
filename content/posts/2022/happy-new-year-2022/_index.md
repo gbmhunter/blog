@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Posts", "Updates" ]
 date: 2022-01-01
 description: ""

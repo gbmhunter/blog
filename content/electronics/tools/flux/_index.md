@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Tools" ]
 date: 2015-11-22
 description: "Rosin fluxes, organic fluxes, in-organic fluxes, no-clean types and more info about soldering flux."

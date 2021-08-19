@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "PCB Design" ]
 date: 2011-09-05
 description: "Helpful hints, tricks and standardized ways of doing things to make using Altium Designer easier."

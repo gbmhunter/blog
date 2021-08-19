@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-01-08
 draft: false
 title: Merged history from GeoWeb website

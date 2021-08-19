@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2018-11-24
 description: "A tutorial on Python dictionaries, including how to check if keys exits, delete items while iterating, and more."

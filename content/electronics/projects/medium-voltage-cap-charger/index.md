@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-07-24
 draft: false
 title: Medium-Voltage Cap Charger

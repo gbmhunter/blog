@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 date: 2012-07-13
 draft: false
 tags: [ "Altium", "BOM", "template", "Excel" ]

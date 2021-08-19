@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components", "Diodes" ]
 date: 2011-09-05
 description: "Info about zener, PIN, TVS, Schottky, Zener and general-purpose diodes."

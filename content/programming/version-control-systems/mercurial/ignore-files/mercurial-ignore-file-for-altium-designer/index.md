@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2013-08-02
 draft: false
 title: Mercurial Ignore File For Altium Designer

@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Programming", "Cloud", "AWS" ]
 date: 2019-01-14
 description: "A quick tutorial on Boto 3, Amazon's Python-based API for AWS."

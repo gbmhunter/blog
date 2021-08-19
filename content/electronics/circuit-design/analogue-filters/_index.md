@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2013-01-03
 description: "A tutorial on analogue electronic filters, including low-pass/high-pass 1st order RC, LC and RLC filters and 2nd order RC, Sallen-Key filter topologies."

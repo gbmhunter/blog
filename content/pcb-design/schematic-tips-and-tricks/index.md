@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2015-10-21
 draft: false
 title: Schematic Tips And Tricks

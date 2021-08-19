@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-12-21
 draft: false
 title: '2 New Calculators Added: Capacitor Charge And Energy'

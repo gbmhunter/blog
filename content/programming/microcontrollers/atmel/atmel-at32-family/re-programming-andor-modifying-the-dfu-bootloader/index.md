@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2015-05-19
 draft: false
 title: Re-programming And/Or Modifying The DFU Bootloader

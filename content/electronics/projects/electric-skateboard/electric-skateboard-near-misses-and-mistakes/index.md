@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 date: 2012-05-20
 draft: false
 title: Electric Skateboard Near Misses And Mistakes

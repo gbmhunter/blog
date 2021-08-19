@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Programming", "Communication Protocols" ]
 date: 2013-03-16
 description: "Tutorials on various embedded-related communication protocols, including UART, SPI, I2C, USB, RS-485, CAN bus, 1-Wire, Ethernet, LIN, ModBus, PCI/PCIe and more."

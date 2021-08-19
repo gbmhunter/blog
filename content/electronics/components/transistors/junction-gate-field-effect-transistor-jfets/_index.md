@@ -1,5 +1,5 @@
 ---
-author: "gbmhunter"
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Components" ]
 date: 2011-04-29
 description: "Schematic symbols, important parameters, and more info about junction-gate field-effect transistors (JFETs)."

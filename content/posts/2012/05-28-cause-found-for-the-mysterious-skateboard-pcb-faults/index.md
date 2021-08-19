@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electric Skateboard" ]
 date: 2012-05-28
 draft: false

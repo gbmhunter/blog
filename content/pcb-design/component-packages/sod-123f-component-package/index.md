@@ -1,5 +1,5 @@
 ---
-author: gbmhunter
+authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 tags: [ "component packages", "PCB design", "SOD-123F", "DO-219AA", "PDMU", "M1F" ]
