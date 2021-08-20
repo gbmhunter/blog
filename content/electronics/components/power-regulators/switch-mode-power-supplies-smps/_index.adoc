@@ -36,6 +36,7 @@ The output voltage of a buck converter is purely determined by the input voltage
 [stem]
 ++++
 \begin{align}
+\label{eq:vout-d-vin}
 V_{OUT} = DV_{IN}
 \end{align}
 ++++
@@ -56,7 +57,24 @@ stem:[T] is the switching frequency, in seconds (stem:[t_{on} + t_{off}])
 
 NOTE: The simple equation showing stem:[V_{OUT}] is only dependent on stem:[V_{IN}] and stem:[D] is only true when all components act ideally (e.g. no voltage drop across the diode, no ESR in the capacitor, no resistance through the inductor). In the real world this is never true, however this equation is still a good first approximation.
 
-When using a P-channel MOSFET for synchronous rectification, it's body diode is forward-biased when the converter is in shutdown mode. This can **drain the power source** into the output. More advanced buck converters have extra circuitry to disconnect this P-channel MOSFET when the device is not active.
+The following steps show a way to **intuitively understand how a buck converter produces a lower output voltage** (and derive Eq stem:[\ref{eq:vout-d-vin}]):
+
+. The average voltage across the inductor, over an entire switching cycle, must be 0 (other ways of saying is this is that the integral must be 0, or the volt-seconds must be 0). If it wasn't, then because stem:[V = L \frac{di}{dt}] (the basic equation for an inductor), **the current in the inductor would increase without bound**. 
+. When the switch is closed (stem:[t_{on}]), the voltage across stem:[L1] is stem:[V_{IN} - V_{OUT}] during this phase.
+. When the switch is open (stem:[t_{off}]), stem:[D1] is forward biased, and if we assume it's a perfect diode (no forward voltage drop), the voltage across stem:[L1] is stem:[-V_{OUT}] during this phase.
+. The average (or integral) over the entire switching cycle has to be 0, so:
+[stem]
+++++
+\begin{align}
+(V_{IN} - V_{OUT})t_{on} - V_{OUT}t_{off} &= 0 \nonumber \\
+V_{IN}t_{on} - V_{OUT}t_{on} - V_{OUT}t_{off} &= 0 \nonumber \\
+V_{IN}t_{on} &= V_{OUT}(t_{on} + t_{off}) \nonumber \\
+V_{OUT} &= \frac{t_{on}}{t_{on} + t_{off}} V_{IN} \nonumber \\
+        &= D V_{IN} \nonumber 
+\end{align}
+++++
+
+TIP: This analysis method of realizing the average voltage across the inductor must be 0 over an entire switching cycle also works for other switching topologies. 
 
 === Control Methods
 
@@ -178,6 +196,10 @@ You can find a buck converter calculator as part of link:http://ninja-calc.mbedd
 
 .A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0).
 image::ninja-calc-buck-converter-calculator-screenshot.png[width=956px]
+
+=== Synchronous Rectification
+
+When using a P-channel MOSFET for synchronous rectification, it's body diode is forward-biased when the converter is in shutdown mode. This can **drain the power source** into the output. More advanced buck converters have extra circuitry to disconnect this P-channel MOSFET when the device is not active.
 
 === Examples
 
