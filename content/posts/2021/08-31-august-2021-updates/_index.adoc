@@ -26,7 +26,7 @@ image::/posts/2021/08-31-august-2021-updates/red-border-under-titles-screenshot.
 +
 image::/posts/2021/08-31-august-2021-updates/resistor-parasitic-elements-screenshot.png[width=400px]
 
-* Consolidated all the info on switch-mode power supplies (e.g. buck converters, boost converters, buck-boost, SEPIC) into a single page.
+* Consolidated all the info on non-isolated switch-mode power supplies (e.g. buck converters, boost converters, buck-boost, SEPIC, Ćuk) into a link:/electronics/components/power-regulators/switch-mode-power-supplies-smps/[single page]. And then added more info, as well as updating the basic schematics of the various topologies to match this site's style.
 
 * Added info on MQTT clients suitable for embedded devices.
 

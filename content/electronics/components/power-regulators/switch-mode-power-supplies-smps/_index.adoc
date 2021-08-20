@@ -40,6 +40,20 @@ V_{OUT} = DV_{IN}
 \end{align}
 ++++
 
+stem:[D] is the duty cycle, and varies from stem:[0] to stem:[1]. It is defined as:
+
+[stem]
+++++
+\begin{align}
+D = \frac{t_{on}}{T}
+\end{align}
+++++
+
+[.text-center]
+where +
+stem:[t_{on}] is the on time of the switch, in seconds +
+stem:[T] is the switching frequency, in seconds (stem:[t_{on} + t_{off}])
+
 NOTE: The simple equation showing stem:[V_{OUT}] is only dependent on stem:[V_{IN}] and stem:[D] is only true when all components act ideally (e.g. no voltage drop across the diode, no ESR in the capacitor, no resistance through the inductor). In the real world this is never true, however this equation is still a good first approximation.
 
 When using a P-channel MOSFET for synchronous rectification, it's body diode is forward-biased when the converter is in shutdown mode. This can **drain the power source** into the output. More advanced buck converters have extra circuitry to disconnect this P-channel MOSFET when the device is not active.
