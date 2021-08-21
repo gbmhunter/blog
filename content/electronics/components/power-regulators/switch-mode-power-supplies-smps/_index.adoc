@@ -31,6 +31,8 @@ Buck converters use a switching element, inductor and capacitor to convert an in
 .The basic schematic of a buck converter. SW1 is typically a MOSFET switched by control logic (not shown).
 image::buck-converter-basic-schematic.svg[width=600px]
 
+=== How It Works
+
 The output voltage of a buck converter is purely determined by the input voltage stem:[V_{IN}] and the percentage of time that the switch spend on during each switching cycle, stem:[D]:
 
 [stem]
@@ -76,11 +78,32 @@ V_{OUT} &= \frac{t_{on}}{t_{on} + t_{off}} V_{IN} \nonumber \\
 
 TIP: This analysis method of realizing the average voltage across the inductor must be 0 over an entire switching cycle also works for other switching topologies. 
 
+When the switch is closed, the current flows from the input through the inductor to the output, as shown in <<buck-converter-schematic-current-path-ton>>:
+
+[[buck-converter-schematic-current-path-ton]]
+.Current path when the switch is **closed** (during stem:[t_{on}]).
+image::buck-converter-schematic-current-path-ton.svg[width=500px]
+
+When the switch opens, the input is disconnected. Because the inductor doesn't like changes in current, it keeps a current flowing through the load by forward biasing stem:[D1], as shown in <<buck-converter-schematic-current-path-toff>>:
+
+[[buck-converter-schematic-current-path-toff]]
+.Current path when the switch is **open** (during stem:[t_{off}]).
+image::buck-converter-schematic-current-path-toff.svg[width=500px]
+
+stem:[C1] (which is also called stem:[C_{OUT}]) is to reduce the voltage ripple at the output/load.
+
 === Control Methods
 
-Almost all control methods aim to regulate the output voltage.
+99% of the time, you want a fixed (regulated) and stable output voltage, which does not depend on the input voltage and one which does not start to sag as you draw more current. To achieve this, it is insufficient to drive the switch at a fixed duty cycle. More complex control mechanisms with feedback are required. The most popular two are _voltage-mode control_ and _current-mode control_, which are explained in the following sections.
 
-==== Constant Frequency, Current-Mode Control
+==== Voltage-Mode Control (Constant Frequency)
+
+_Voltage-mode (VM) control_ is the simplest control method.
+
+.Diagram showing how voltage-mode control works.
+image::voltage-mode-control-diagram.svg[width=800px]
+
+==== Current-Mode Control (Constant Frequency)
 
 Constant frequency, current-mode control is a very common control method for buck converters. It has the benefits of:
 
@@ -94,6 +117,10 @@ A transconductance amplifier (amplifier that converts a input voltage to an outp
 PCM: Peak current mode
 
 See the excellent link:https://www.ti.com.cn/cn/lit/an/snva555/snva555.pdf[SNVA555: Understanding and Applying Current-Mode Control Theory] by TI for more information on current-mode control theory.
+
+==== Hysteretic Control
+
+TODO: Add info here.
 
 === Inductor Selection
 
