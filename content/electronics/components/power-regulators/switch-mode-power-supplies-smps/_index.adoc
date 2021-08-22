@@ -98,17 +98,21 @@ stem:[C1] (which is also called stem:[C_{OUT}]) is to reduce the voltage ripple 
 
 ==== Voltage-Mode Control (Constant Frequency)
 
-_Voltage-mode (VM) control_ is the simplest control method.
+_Voltage-mode (VM) control_ is the simplest control method, originating in approx. the 1970's<<bib-microsemi-v-i-mode>>. It works by taking a proportion of the output voltage and comparing it with a fixed reference voltage. The difference between these two is called the error voltage and is amplified by an _error amplifier_. This error voltage is then fed into a comparator, with the other input being a sawtooth signal (triangular waveform). The switch is turned on at the start of the sawtooth period, and turned off when the sawtooth exceeds the error voltage. An SR latch is normally used to prevent multiple triggers per cycle due to noise. Voltage-mode control is named as such because the duty cycle is proportional to the control voltage.
 
-.Diagram showing how voltage-mode control works.
+.The basic logical components used for voltage-mode control.
 image::voltage-mode-control-diagram.svg[width=800px]
 
 ==== Current-Mode Control (Constant Frequency)
 
-Constant frequency, current-mode control is a very common control method for buck converters. It has the benefits of:
+_Current-mode (CM) control_ is a very common control method for buck converters.
 
-* Permitting smaller output capacitances
-* Simplifying the external frequency compensation
+It has the following advantages over VM:
+
+* Simpler external frequency compensation than VM 
+* Faster load transient response than VM.
+
+However, one big disadvantage is the extra control circuitry complexity. However, this is somewhat mitigated in more recent years as all of this circuitry is integrated into a cheap silicon IC.
 
 Peak current measurement is a common way of "measuring" the average output current.
 
@@ -157,30 +161,6 @@ where: +
 stem:[\Delta I_L] = the desired ripple current in the inductor +
 stem:[f] = the switching frequency +
 and everything else as mentioned previously
-
-==== Types Of Inductors
-
-Inductors used for buck converters can generally be classified into one of three different types:
-
-. **Wire-wound ferrite core**: Copper wound around a ferrite core.
-
-. **Metal composite**: Metal powders moulded around copper windings at high pressure.
-+
-.Internal construction of a metal composite inductor. Image by Kemet, retrieved from https://media.digikey.com/pdf/Data%20Sheets/Kemet%20PDFs/MPXV_Series_DS.pdf on 2020-11-30.
-image::metal-composite-inductor-construction-kemet-mpx.png[width=300px]
-
-. **Multilayer**: Laminated sheets.
-
-The various advantages of each of explored in the following table:
-
-[%autowidth]
-|===
-| Type                     | Inductance
-
-| Wire-wound ferrite core  | High (up to 200uH)
-| Metal composite          | Medium (up to 10uF)
-| Multilayer               | Low (up to 1uH)
-|===
 
 === Capacitor Selection
 
@@ -262,7 +242,7 @@ We'll explain these a little in the following sub-sections before moving on to b
 
 === Continuous Conduction Mode (CCM)
 
-_Continuous conduction mode_ (CCM) is when the **current through the inductor never falls to 0** during the switching cycle. In the case of converter with multiple inductors (e.g. link:#_sepic[SEPIC]), CCM is when the current never falls to 0 in any of the inductors.
+_Continuous conduction mode_ (CCM) is when the **current through the inductor never falls to 0** during the switching cycle. In the case of converter with multiple inductors (e.g. <<SEPIC, SEPIC>>, <<Ćuk Converter, Ćuk Converter>>), CCM is when the current never falls to 0 in **any** of the inductors.
 
 For the same output current, the peak current through the inductor is lower when the SMPS is operating in CCM, compared on any other mode of operation.
 
@@ -270,7 +250,7 @@ CCM encounters turn-on losses through the switch. These can be exacerbated by th
 
 === Discontinuous Conduction Mode (DCM)
 
-_Discontinuous conduction mode_ (DCM) is when the **current through the inductor falls to 0** (and stays there for a period of time) during a switching cycle of the SMPS.
+_Discontinuous conduction mode_ (DCM) is when the **current through the inductor falls to 0** (and stays there for a period of time, if it just reaches 0 but does not stay there it is in <<Critical Conduction Mode (CrCM), Critical Conduction Mode>>) during a switching cycle of the SMPS.
 
 The switch (lets assume a MOSFET) is turned on at zero current, which means there is little turn-on loss.
 
@@ -492,3 +472,8 @@ The _Ćuk converter_ is a buck-boost topology that only requires a single switch
 
 * High current stress in the switch.
 * Inverting (depending on the application, this could be an advantage!)
+
+[bibliography]
+== References
+
+* [[[bib-microsemi-v-i-mode]]] Maniktala, Sanjaya (2012). _Voltage-Mode, Current-Mode (and Hysteretic Control)_. Microsemi. Retrieved 2021-08-22, from https://www.microsemi.com/document-portal/doc_view/124786-voltage-mode-current-mode-and-hysteretic-control

@@ -31,7 +31,7 @@
   </font>
  </defs>
  <defs class="TextShapeIndex">
-  <g ooo:slide="id1" ooo:id-list="id3 id4 id5 id6 id7 id8 id9 id10 id11 id12 id13 id14 id15 id16 id17 id18 id19 id20 id21 id22 id23 id24 id25 id26 id27 id28 id29 id30 id31 id32 id33 id34 id35 id36 id37 id38 id39 id40 id41 id42 id43 id44 id45 id46 id47 id48 id49 id50 id51 id52 id53 id54 id55 id56 id57 id58 id59"/>
+  <g ooo:slide="id1" ooo:id-list="id3 id4 id5 id6 id7 id8 id9 id10 id11 id12 id13 id14 id15 id16 id17 id18 id19 id20 id21 id22 id23 id24 id25 id26 id27 id28 id29 id30 id31 id32 id33 id34 id35 id36 id37 id38 id39 id40 id41 id42 id43 id44 id45 id46 id47 id48 id49 id50 id51 id52 id53 id54 id55 id56 id57 id58 id59 id60"/>
  </defs>
  <defs class="EmbeddedBulletChars">
   <g id="bullet-char-template-57356" transform="scale(0.00048828125,-0.00048828125)">
@@ -434,6 +434,12 @@
        <g id="id59">
         <rect class="BoundingBox" stroke="none" fill="none" x="7785" y="1500" width="816" height="726"/>
         <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="282px" font-weight="400"><tspan class="TextPosition" x="8035" y="1883"><tspan fill="rgb(234,117,0)" stroke="none">I</tspan></tspan></tspan></text>
+       </g>
+      </g>
+      <g class="com.sun.star.drawing.CustomShape">
+       <g id="id60">
+        <rect class="BoundingBox" stroke="none" fill="none" x="8799" y="1400" width="203" height="202"/>
+        <path fill="rgb(52,101,164)" stroke="none" d="M 9001,1501 C 9001,1518 8996,1535 8988,1551 8979,1566 8966,1579 8951,1588 8935,1596 8918,1601 8900,1601 8883,1601 8866,1596 8850,1588 8835,1579 8822,1566 8813,1551 8805,1535 8800,1518 8800,1501 8800,1483 8805,1466 8813,1450 8822,1435 8835,1422 8850,1413 8866,1405 8883,1400 8900,1400 8918,1400 8935,1405 8951,1413 8966,1422 8979,1435 8988,1450 8996,1466 9001,1483 9001,1500 L 9001,1501 Z"/>
        </g>
       </g>
      </g>
