@@ -120,7 +120,14 @@ See the excellent link:https://www.ti.com.cn/cn/lit/an/snva555/snva555.pdf[SNVA5
 
 ==== Hysteretic Control
 
-TODO: Add info here.
+Hysteretic control is when the output voltage is directly monitored by a comparator, rather than going through an error amplifier. If the output voltage falls or exceeds below a certain value, the buck converter switch is turned on/off. Because the control is performed by measuring the ripple in the output voltage, this method is also called the _ripple control method_.
+
+There are two ways on controlling the switch:
+
+. Detect when the voltage falls BELOW a set threshold, and turn the switch ON for a fixed amount of time, OR
+. Detect when the voltage rises ABOVE a set threshold, and turn the switch OFF for a fixed amount of time
+
+Hysteretic control has the benefit of being extremely fast to respond to transient current changes, since it is directly monitoring the output voltage and there is no error amplifier. It also does not need any compensation. These advantages make it suitable for powering the rapidly changing current demands of high power CPUs and FPGAs.  
 
 === Inductor Selection
 

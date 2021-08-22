@@ -26,7 +26,7 @@ The first recorded multivibrator was the Abraham-Bloch multivibrator oscillator 
 
 ## Basic BJT Astable Multivibrator
 
-A basic astable multivibrator can be made from two {{% link text="BJT NPN transistors" src="/electronics/components/transistors/bipolar-junction-transistors-bjts" %}} and a handful of passive components, as shown in the schematic below:
+A basic astable multivibrator can be made from two link:/electronics/components/transistors/bipolar-junction-transistors-bjts[BJT NPN transistors] and a handful of passive components, as shown in the schematic below:
 
 .A basic (and somewhat of a classic) BJT astable multivibrator.
 image::classic-bjt-astable-multivibrator.svg[width=600px]
@@ -71,13 +71,25 @@ image::555-timer-schematic-for-astable-operation-ti.png[width=600px]
 
 Equations:
 
-<p>\begin{align} t_H = 0.693 \cdot (R_1 + R_2) \cdot C \end{align}</p>
+[stem]
+++++
+\begin{align} t_H = 0.693 \cdot (R_1 + R_2) \cdot C \end{align}
+++++
 
-<p>\begin{align} t_L = 0.693 \cdot R_2 \cdot C \end{align}</p>
+[stem]
+++++
+\begin{align} t_L = 0.693 \cdot R_2 \cdot C \end{align}
+++++
 
-<p>\begin{align} T = 0.693 \cdot (R_1 + 2R_2) \cdot C \end{align}</p>
+[stem]
+++++
+\begin{align} T = 0.693 \cdot (R_1 + 2R_2) \cdot C \end{align}
+++++
 
-<p>\begin{align} f = \frac{1}{T} \end{align}</p>
+[stem]
+++++
+\begin{align} f = \frac{1}{T} \end{align}
+++++
 
 ### Astable 555 Timer Calculator
 
