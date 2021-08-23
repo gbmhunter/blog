@@ -37,3 +37,5 @@ image::/posts/2021/08-31-august-2021-updates/resistor-parasitic-elements-screens
 * Added a link:/electronics/components/transistors/bipolar-junction-transistors-bjts/#_the_bjt_safe_operating_area[safe operating area (SOA)] graph to the BJT page, and added information on secondary breakdown.
 +
 image::/posts/2021/08-31-august-2021-updates/bjt-safe-operating-area-screenshot.png[width=400px]
+
+* Added link:/electronics/components/power-regulators/linear-regulators/#_protection[info and schematics on adding protection diodes to linear regulators].
