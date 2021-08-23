@@ -198,4 +198,6 @@ The should be -- an em dash in this sentence.
 
 APA Style Website:
 
-* [[[bib-example-1]]] Author, A.A. (YYYY, Month Day). _Title of work_. Site Name. Retrieved YYYY-MM-DD, from https://wwww.google.com
+* [[[bib-example-1, 1]]] Author, A.A. (YYYY, Month Day). _Title of work_. Site Name. Retrieved YYYY-MM-DD, from https://wwww.google.com
+
+Unfortunately for now we have to number the references (starting from 1) manually.

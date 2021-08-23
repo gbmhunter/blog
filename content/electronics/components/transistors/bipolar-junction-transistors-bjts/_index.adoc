@@ -421,6 +421,6 @@ The you are looking for a slice of history and some informative transistor infor
 [bibliography]
 == References
 
-* [[[bib-haenichen-interview]]] http://www.semiconductormuseum.com/Transistors/Motorola/Haenichen/Haenichen_Page11.htm, retrieved 2021-06-20.
-* [[[bib-penn-ese319-lecture-notes]]]: https://www.seas.upenn.edu/~ese319/Lecture_Notes/Lec_9_CCandCBDesigns_08.pdf, retrieved 2020-02-04.
-* [[[bib-wikipedia-soa]]]: Wikipedia. _Safe operating area_. Retrieved 2021-08-23, from https://en.wikipedia.org/wiki/Safe_operating_area
+* [[[bib-haenichen-interview, 1]]] http://www.semiconductormuseum.com/Transistors/Motorola/Haenichen/Haenichen_Page11.htm, retrieved 2021-06-20.
+* [[[bib-penn-ese319-lecture-notes, 2]]]: https://www.seas.upenn.edu/~ese319/Lecture_Notes/Lec_9_CCandCBDesigns_08.pdf, retrieved 2020-02-04.
+* [[[bib-wikipedia-soa, 3]]]: Wikipedia. _Safe operating area_. Retrieved 2021-08-23, from https://en.wikipedia.org/wiki/Safe_operating_area
