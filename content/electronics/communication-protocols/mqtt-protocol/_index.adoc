@@ -2,15 +2,15 @@
 authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Communication Protocols" ]
 date: 2014-02-16
-description: "History, brokers, clients, Mosquitto, Puho and more information about the MQTT communications protocol."
+description: "History, brokers, clients, Mosquitto, Paho, embedded MQTT clients and more information about the MQTT communications protocol."
 draft: false
 lastmod: 2021-08-17
-tags: [ "electronics", "communication protocols", "MQTT", "paho", "Python", "TLS", "SSL", "1883", "8883", "brokers", "clients" ]
+tags: [ "electronics", "communication protocols", "MQTT", "paho", "Python", "TLS", "SSL", "1883", "8883", "brokers", "clients", "coreMQTT", "embedded", "IoT" ]
 title: "MQTT Protocol"
 type: "page"
 ---
 
-{{% warning-is-notes %}}
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
 
 ## Overview
 
@@ -105,6 +105,6 @@ There are a number of MQTT clients designed for embedded devices, these include:
 * link:https://www.eclipse.org/paho/index.php?page=clients/c/embedded/index.php[**The embedded Paho MQTT client**]: Embedded version of the popular Paho MQTT client. It is released as two separate APIs:
     * MQTTPacket: Low-level C library that deals with the serialization/deserialization of MQTT packets.
     * MQTTClient: Higher-level C++ library first written for the mbed platform. Depends on MQTTPacket.
-* link:https://github.com/256dpi/arduino-mqtt[**arduino-mqtt**]: Arduino wrapper around the lwmqtt MQTT client. Also available for PlatformIO.
+* link:https://github.com/256dpi/arduino-mqtt[**arduino-mqtt**]: Arduino wrapper around the lwmqtt MQTT client. Also available for PlatformIO. This one is pretty popular and is recommended in the AWS IoT tutorials.
 * **coreMQTT**: MQTT client maintained by the FreeRTOS group (however, the library does not depend on FreeRTOS to operate).
 
