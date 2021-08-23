@@ -33,3 +33,7 @@ image::/posts/2021/08-31-august-2021-updates/resistor-parasitic-elements-screens
 * Expanded the TOC to contain heading levels 2 to 4 (beforehand it was only showing level 2).
 
 * Added the ability to define multiple authors per page, and added an author block to all content pages. Followed a really useful tutorial at https://moonbooth.com/hugo/authors/.
+
+* Added a link:/electronics/components/transistors/bipolar-junction-transistors-bjts/#_the_bjt_safe_operating_area[safe operating area (SOA)] graph to the BJT page, and added information on secondary breakdown.
++
+image::/posts/2021/08-31-august-2021-updates/bjt-safe-operating-area-screenshot.png[width=400px]

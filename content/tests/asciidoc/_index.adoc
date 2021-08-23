@@ -8,6 +8,8 @@ title: "AsciiDoc Test Page"
 
 Page contents (table of contents, ToC) should be shown either above (viewport < 768px) or to the right (viewport >=768px). Sections should have numbers in front of them, both in the ToC and in-front of the section headings.
 
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
 == Maths
 
 An example on an inline equation stem:[y = \frac{1}{x^2}] is embedded in this sentence.
