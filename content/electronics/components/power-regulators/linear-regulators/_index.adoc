@@ -13,7 +13,7 @@ type: page
 
 Linear regulators are great when you want a cheap, low power voltage regulation solution. They can also be used on the output of a DC/DC converter to reduce the ripple (the ripple will be reduced by the high PSRR).
 
-The basic schematic for the LT1086 3.3V linear regulator. Image from http://www.linear.com/.
+.The basic schematic for the LT1086 3.3V linear regulator. Image from http://www.linear.com/.
 image::lt1086-3.3-linear-regulator-basic-schematic.png[width=700px]
 
 ## Important Parameters
@@ -56,6 +56,9 @@ stem:[ T_a ] is the ambient temperature +
 ## Protection
 
 While you easily blow up regulators in the 1990's, even the very cheap modern-day regulators have built in protection circuitry which makes them basically indestructable. Most feature excess current protection, thermal protection (most turning off above if their die temperature exceeds 150-170°C), short-circuit protection, reverse-polarity protection, and input disconnect (reverse current flow) protection. One of the only ways to kill them is over-voltage on either the input or output.
+
+.If stem:[V_{IN}] falls rapidly (e.g. a short), and there is a lot of capacitance on stem:[V_{OUT}], reverse currents can flow through a linear regulator and damage it. Adding a protection diode as shown from stem:[V_{OUT}] to stem:[V_{IN}] protects against this.
+image::protection-diode-from-vout-to-vin.svg[width=700px]
 
 ## Bypass Capacitor
 
