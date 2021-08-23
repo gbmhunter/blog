@@ -60,6 +60,10 @@ While you easily blow up regulators in the 1990's, even the very cheap modern-da
 .If stem:[V_{IN}] falls rapidly (e.g. a short), and there is a lot of capacitance on stem:[V_{OUT}], reverse currents can flow through a linear regulator and damage it. Adding a protection diode as shown from stem:[V_{OUT}] to stem:[V_{IN}] protects against this.
 image::protection-diode-from-vout-to-vin.svg[width=700px]
 
+This is further compounded if you are using an adjustable linear regulator and have added a filter capacitor on the ADJ pin -- the charge on the capacitor can flow back through the ADJ pin and cause problems. A second diode from ADJ to stem:[V_{OUT}] fixes this problem:
+
+TODO: Add image here.
+
 ## Bypass Capacitor
 
 Variable output-voltage linear regulators usually have a feedback pin for setting the voltage. This pin is normally connected to the centre of a resistor divider between the output pin and ground. The ratio of the resistances determines the output voltage. When using these types of linear regulators, it can help to have a **bypass capacitor** between the output pin and the feedback pin. These are also known as **feedforward capacitors**.

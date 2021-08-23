@@ -148,8 +148,6 @@ CAUTION: This is a caution.
 
 WARNING: This is a warning. I should be red.
 
-
-
 Below is an Admonition block:
 
 [TIP]
@@ -190,6 +188,10 @@ Standard SVG dimensions for a single schematic symbol:
 
 * Width: 20mm
 * Height: 30mm
+
+== Em Dash
+
+The should be -- an em dash in this sentence.
 
 [bibliography]
 == References
