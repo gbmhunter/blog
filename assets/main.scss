@@ -405,11 +405,13 @@ table.code th, table.code td {
 /* AsciiDoc wraps all text within list elements in a p element, let's get rid of
 margin block start and end values (set by user agent stylesheet)
 so the list elements do not have too much vertical padding between items. */
-ul li p {
-    /* line-height: 1.0; */
-    margin-block-start: 0;
-    margin-block-end: 0;
+ul, ol {
+    li p {
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
 }
+
 
 /* ========================================================================= */
 /* IMAGES                                                                    */
