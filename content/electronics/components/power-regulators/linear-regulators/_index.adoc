@@ -3,20 +3,40 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components" ]
 date: 2014-11-09
 draft: false
-lastmod: 2021-08-23
-tags: [ "power regulator", "linear regulator", "bypass capacitor", "PSRR", "CMRR" ]
+lastmod: 2021-08-24
+tags: [ "electronics", "components", "power regulator", "linear regulator", "bypass capacitor", "PSRR", "CMRR", "low dropout", "adjustable", "series regulator", "shunt regulator" ]
 title: "Linear Regulators"
-type: page
+type: "page"
 ---
 
 ## Overview
 
-Linear regulators are great when you want a cheap, low power voltage regulation solution. They can also be used on the output of a DC/DC converter to reduce the ripple (the ripple will be reduced by the high PSRR).
+Linear regulators are devices which vary their "resistance" to generate a **fixed and stable output voltage** (or sometimes output current). Excess voltage/current is dissipated in the linear regulator as heat, and for this reason they can get quite hot when the voltage difference between input and output is large, and/or the load requires high current. In these situations, a more efficient link:/electronics/components/power-regulators/switch-mode-power-supplies-smps/[switch mode power supplies] (which uses switching elements and energy storage in inductors/capacitors) may be more suitable.
+
+Linear regulators are **only capable of producing an output voltage which is lower** than the output voltage. For regulators capable of producing higher output voltages, see link:/electronics/components/power-regulators/switch-mode-power-supplies-smps/[switch mode power supplies] or link:/electronics/components/power-regulators/charge-pumps/[charge pumps].
 
 .The basic schematic for the LT1086 3.3V linear regulator. Image from http://www.linear.com/.
 image::lt1086-3.3-linear-regulator-basic-schematic.png[width=700px]
 
-## Important Parameters
+Linear regulators are great when you want a cheap, low power voltage regulation solution. They can also be used on the output of a SMPS regulator (which are far noisier) to reduce the voltage ripple (the ripple will be reduced by the linear regulators high PSRR).
+
+== Topologies
+
+There are two common topologies used for linear regulators (configurations):
+
+. **Series**: The linear regulator is placed in **series** with the load.
+. **Shunt**: The linear regulator is placed in **parallel** with the load.
+
+=== Series Linear Regulators
+
+Series linear regulators work by comparing the output voltage to a accurate (and usually internal) voltage reference, and use the error to dynamically adjust the resistance of a series pass transistor (or other active element) by turning it more or less "on". The transistor's "resistance" drops the input voltage down to the required output voltage.
+
+Series linear regulators are relatively simple components to connect up into a larger circuit, typically only requiring an input pin, output pin, and either a GND (for fixed voltage versions) or ADJ pin (for variable voltage versions):
+
+.Classic example of a integrated series linear regulator, the LM7805, shown with recommended capacitors (as per https://www.ti.com/lit/ds/symlink/lm340.pdf) attached to it's input and output. The LM7805 is a fixed-voltage regulator (stem:[V_{OUT} = 5.0V]) and so the third pin is just connected to stem:[GND].
+image::series-linear-regulator-fixed-basic-schematic.svg[width=700px]
+
+== Important Parameters
 
 * Maximum current (A)
 * Output voltage (or voltage range if adjustable, stem:[V_{out}])
@@ -26,7 +46,11 @@ image::lt1086-3.3-linear-regulator-basic-schematic.png[width=700px]
 * Power-supply rejection ratio (stem:[PSRR], dB)
 * Maximum operating temperature
 
-## Thermal Considerations
+== Low Dropout Regulators
+
+Low dropout regulators are a special sub-family of series linear regulators that have much smaller dropout voltages (typically stem:[0.3-1.2V], does depend on max. load current) compared with traditional linear regulators which have a typical dropout of stem:[2V]. However, low dropout regulators tend to be **more prone to oscillation and more strict about capacitance requirements** on the input and output.
+
+== Thermal Considerations
 
 The power lost as heat through a linear regulator is:
 
@@ -53,18 +77,19 @@ where: +
 stem:[ T_{j-a} ] is the junction-to-ambient thermal resistance +
 stem:[ T_a ] is the ambient temperature +
 
-## Protection
+== Protection
 
 While you easily blow up regulators in the 1990's, even the very cheap modern-day regulators have built in protection circuitry which makes them basically indestructable. Most feature excess current protection, thermal protection (most turning off above if their die temperature exceeds 150-170°C), short-circuit protection, reverse-polarity protection, and input disconnect (reverse current flow) protection. One of the only ways to kill them is over-voltage on either the input or output.
 
 .If stem:[V_{IN}] falls rapidly (e.g. a short), and there is a lot of capacitance on stem:[V_{OUT}], reverse currents can flow through a linear regulator and damage it. Adding a protection diode as shown from stem:[V_{OUT}] to stem:[V_{IN}] protects against this.
 image::protection-diode-from-vout-to-vin.svg[width=700px]
 
-This is further compounded if you are using an adjustable linear regulator and have added a filter capacitor on the ADJ pin -- the charge on the capacitor can flow back through the ADJ pin and cause problems. A second diode from ADJ to stem:[V_{OUT}] fixes this problem:
+This is further compounded if you are using an adjustable linear regulator and have added a filter capacitor on the ADJ pin -- the charge on the capacitor can flow back through the ADJ pin and cause problems. A second diode from the ADJ pin to stem:[V_{OUT}] fixes this problem:
 
-TODO: Add image here.
+.Protection diodes stem:[D1] and stem:[D2] added to safely discharge C1 and C2. 
+image::protection-diode-from-vout-to-vin-and-adj-to-vout.svg[width=700px]
 
-## Bypass Capacitor
+== Bypass Capacitor
 
 Variable output-voltage linear regulators usually have a feedback pin for setting the voltage. This pin is normally connected to the centre of a resistor divider between the output pin and ground. The ratio of the resistances determines the output voltage. When using these types of linear regulators, it can help to have a **bypass capacitor** between the output pin and the feedback pin. These are also known as **feedforward capacitors**.
 
@@ -76,7 +101,7 @@ Adding capacitance here helps improve the AC characteristics of the linear regul
 
 A typical value of a bypass capacitor is stem:[10nF].
 
-## DDR Termination Regulators
+== DDR Termination Regulators
 
 DDR termination regulators are special-purpose linear regulators designed for powering DDR memory ICs. They usually provide the multiple voltage rails that are required to drive DDR memory, along with the power control logic required to meet the DDR spec. (incl. suspend to RAM, suspend to disk states).
 
@@ -85,6 +110,10 @@ image::tps51206-ti-ddr-termination-regulator-simplified-application-schematic.pn
 
 DDR memory draws current in quick surges of around 2-3A. Most DDR termination regulators support both the sinking and sourcing of current, which means they can clamp the voltage if an overshoot occurs due to a fast switching transient. Standard linear regulators cannot do this, and only source current.
 
-## Example Devices
+== Example Devices
 
 The [Texas Instruments TPS7A4001](http://www.ti.com/product/tps7A4001) is a high-voltage (100V) linear regulator which can provide up to 50mA of current.
+
+The LM78xx series (for fixed positive voltages) and LM79xx series (for fixed negative voltages) of linear regulators have traditionally been very popular choices. They are not low dropout.
+
+The LM317 (for adjustable positive voltages) and LM337 (for adjustable negative voltages) are also very common.
