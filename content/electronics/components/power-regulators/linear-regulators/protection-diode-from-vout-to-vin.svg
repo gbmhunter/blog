@@ -322,28 +322,26 @@
       </g>
       <g class="com.sun.star.drawing.LineShape">
        <g id="id39">
-        <rect class="BoundingBox" stroke="none" fill="none" x="6900" y="2199" width="902" height="1102"/>
-        <path fill="none" stroke="rgb(120,3,115)" d="M 7800,2200 L 7077,3083"/>
-        <path fill="rgb(120,3,115)" stroke="none" d="M 7206,3163 L 6900,3300 6974,2973 7206,3163 Z"/>
+        <rect class="BoundingBox" stroke="none" fill="none" x="6899" y="2199" width="903" height="1103"/>
+        <path fill="none" stroke="rgb(255,0,0)" d="M 7800,2200 L 6900,3300"/>
        </g>
       </g>
       <g class="com.sun.star.drawing.TextShape">
        <g id="id40">
         <rect class="BoundingBox" stroke="none" fill="none" x="7600" y="1700" width="2019" height="888"/>
-        <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="282px" font-weight="400"><tspan class="TextPosition" x="7850" y="2083"><tspan fill="rgb(120,3,115)" stroke="none">Large</tspan></tspan><tspan class="TextPosition" x="7850" y="2401"><tspan fill="rgb(120,3,115)" stroke="none">capacitance</tspan></tspan></tspan></text>
+        <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="282px" font-weight="400"><tspan class="TextPosition" x="7850" y="2083"><tspan fill="rgb(255,0,0)" stroke="none">Large</tspan></tspan><tspan class="TextPosition" x="7850" y="2401"><tspan fill="rgb(255,0,0)" stroke="none">capacitance</tspan></tspan></tspan></text>
        </g>
       </g>
       <g class="com.sun.star.drawing.TextShape">
        <g id="id41">
         <rect class="BoundingBox" stroke="none" fill="none" x="400" y="200" width="1947" height="1206"/>
-        <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="282px" font-weight="400"><tspan class="TextPosition" x="650" y="583"><tspan fill="rgb(120,3,115)" stroke="none">Protection</tspan></tspan><tspan class="TextPosition" x="650" y="901"><tspan fill="rgb(120,3,115)" stroke="none">diode when</tspan></tspan><tspan class="TextPosition" x="650" y="1219"><tspan fill="rgb(120,3,115)" stroke="none">V</tspan></tspan><tspan class="TextPosition" y="1242"><tspan font-size="164px" fill="rgb(120,3,115)" stroke="none">IN</tspan></tspan><tspan class="TextPosition" y="1219"><tspan fill="rgb(120,3,115)" stroke="none"> falls</tspan></tspan></tspan></text>
+        <text class="TextShape"><tspan class="TextParagraph" font-family="Liberation Sans, sans-serif" font-size="282px" font-weight="400"><tspan class="TextPosition" x="650" y="583"><tspan fill="rgb(255,0,0)" stroke="none">Protection</tspan></tspan><tspan class="TextPosition" x="650" y="901"><tspan fill="rgb(255,0,0)" stroke="none">diode when</tspan></tspan><tspan class="TextPosition" x="650" y="1219"><tspan fill="rgb(255,0,0)" stroke="none">V</tspan></tspan><tspan class="TextPosition" y="1242"><tspan font-size="164px" fill="rgb(255,0,0)" stroke="none">IN</tspan></tspan><tspan class="TextPosition" y="1219"><tspan fill="rgb(255,0,0)" stroke="none"> falls</tspan></tspan></tspan></text>
        </g>
       </g>
       <g class="com.sun.star.drawing.LineShape">
        <g id="id42">
-        <rect class="BoundingBox" stroke="none" fill="none" x="2199" y="899" width="1302" height="458"/>
-        <path fill="none" stroke="rgb(120,3,115)" d="M 2200,900 L 3232,1218"/>
-        <path fill="rgb(120,3,115)" stroke="none" d="M 3257,1068 L 3500,1300 3169,1355 3257,1068 Z"/>
+        <rect class="BoundingBox" stroke="none" fill="none" x="2199" y="899" width="1303" height="403"/>
+        <path fill="none" stroke="rgb(255,0,0)" d="M 2200,900 L 3500,1300"/>
        </g>
       </g>
      </g>
