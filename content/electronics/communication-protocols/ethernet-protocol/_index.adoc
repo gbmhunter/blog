@@ -55,6 +55,21 @@ Designed for automotive and IoT applications. Allows for a multidrop architectur
 
 Some ethernet jacks come with the magnetics already in-built, saving you the trouble of including them yourself on the mounted-to PCB
 
+== Power Over Ethernet (PoE)
+
+_Power over Ethernet_ (PoE) is the term used to describe ethernet cables/systems that also provide a power source over the same cable as the data.
+
+A _PoE injector_ is a stand-alone device used to add ("inject") DC power into an existing Ethernet cable.
+
+|===
+| Name  | IEEE standard         | Power to PD | Max. power per port | Energized pairs| Supported devices
+
+| PoE   | IEEE 802.3af          | 12.95 W     | 15.4 W              | 2-pair	     | VoIP phones, WAP
+| PoE+  | IEEE 802.3at          | 25.5 W      | 30 W                | 2-pair	     | 
+| PoE++	| IEEE 802.3bt (Type 3)	| 51 W        | 60 W                | 4-pair	     | 
+| PoE++	| IEEE 802.3bt (Type 4)	| 71.3 W      | 100 W               | 4-pair	     |
+|===
+
 == Popular Chips
 
 === WIZnet W5xxx Family
