@@ -22,7 +22,7 @@ The static site generator Hugo is used to build the website from the files in th
     bundle install
     ```
 
-1. To start a development server that will watch for file changes (`w`), build drafts (`D`) and build future content (`F`). Since this is a large site, we'll also use `--renderToDisk` otherwise it can take up 6GB of memory:
+1. To start a development server that will watch for file changes (`w`), build drafts (`D`) and build future content (`F`). Since this is a large site, we'll also use `--renderToDisk` otherwise it can take up 6GB of memory!!!:
 
     ```sh
     $ hugo server -wDF --renderToDisk
@@ -58,6 +58,11 @@ yarn algolia
 # Directory Structure
 
 <ul>
+  <li>
+    <ul>
+      <li><b>settings.json</b> <i>Contains the word dictionary for VS Code (under "cSpell.words")</i></li>
+    </ul>
+  </li>
   <li><b>content/</b> <i>Markdown files which contain the content which creates the sites pages and posts.</i></li>
   <li><b>layouts/</b>
     <ul>
@@ -89,7 +94,6 @@ $ pipenv install --two LinkChecker
 * `Code Spell Checker`: Prevents spelling mistakes. Additional dictionary definitions are included in `.vscode/settings.json` under `"cSpell.words"`. Make sure to add new words to the "workspace directory" so they get added to this file.
 * `Vim`: If you're a vim fan!
 * `EditorConfig for VS Code`: Promotes consistent coding styles, incl. indentation rules. Reads rules from `.editorconfig` in this repo's root directory.
-* `Better TOML`: For syntax highlighting in the Hugo config file `config.toml`
 * `AsciiDoc`: For syntax highlighting of AsciiDoc pages (with the `.adoc` extension). Don't rely on it for rendering, use the browser with `hugo` and live file watching for that.
 
 # Markdown Extensions

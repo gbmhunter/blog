@@ -1,7 +1,6 @@
 {
     "cSpell.language": "en-GB",	
     "cSpell.words": [
-        "WIZnet",
         "ADCs",
         "AGND",
         "APDs",
@@ -293,6 +292,7 @@
         "VSOURCE",
         "Vlpp",
         "WDFN",
+        "WIZnet",
         "WMTS",
         "Widlar",
         "Wien",
@@ -323,6 +323,7 @@
         "arcsin",
         "arctan",
         "arduinos",
+        "asciidoctor",
         "astype",
         "asyncio",
         "atmelavr",
