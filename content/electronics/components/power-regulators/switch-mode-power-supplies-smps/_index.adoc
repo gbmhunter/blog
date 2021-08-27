@@ -13,7 +13,7 @@ type: "page"
 
 == Overview
 
-_Switch-mode power supplies_ (SMPS) are power conversion circuits that **efficiently convert input voltages/currents (power) into different output voltages/currents**. This page only looks at non-isolated SMPSs, i.e. topologies that don't use a transformer. They can either:
+_Switch-mode power supplies_ (SMPS) are power conversion circuits that **efficiently convert input voltages/currents (power) into different output voltages/currents**. This page only looks at non-isolated SMPSs, i.e. topologies that don't use a transformer. For info on isolated SMPS regulator designs, see the link:/electronics/components/power-regulators/isolated-switch-mode-power-supplies/[Isolated Switch Mode Power Supplies page]. SMPS can either:
 
 * Decrease the voltage (<<Buck Converters, buck converter>>)
 * Increase the voltage (<<Boost Converters, boost converter>>)

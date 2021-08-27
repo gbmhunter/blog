@@ -36,6 +36,30 @@ Series linear regulators are relatively simple components to connect up into a l
 .Classic example of a integrated series linear regulator, the LM7805, shown with recommended capacitors (as per https://www.ti.com/lit/ds/symlink/lm340.pdf) attached to it's input and output. The LM7805 is a fixed-voltage regulator (stem:[V_{OUT} = 5.0V]) and so the third pin is just connected to stem:[GND].
 image::series-linear-regulator-fixed-basic-schematic.svg[width=700px]
 
+=== Shunt Linear Regulators
+
+Confusingly, shunt regulators are commonly shown in schematics as a zener diode with a third pin coming from the middle of the rectangle, as shown in <<shunt-linear-regulator-symbol-and-detailed-circuit>>. This zener diode symbol hides significant complexity, in reality they are actually a integrated circuit containing a voltage reference, op-amp and BJT!
+
+[[shunt-linear-regulator-symbol-and-detailed-circuit]]
+.The commonly used diode-looking schematic symbol for a shunt regulator, next to a more detailed circuit of what is actually inside the component! The voltage reference shown is 2.5V, which is used in the popular LM431 (it may be different for other regulators).
+image::shunt-linear-regulator-symbol-and-detailed-circuit.svg[width=700px]
+
+One common use for these devices is a shunt voltage regulator, as shown in <<shunt-linear-regulator-basic-application-schematic>>. The trick here is that stem:[U1] will turn on as much as it can to make the voltage at its stem:[V_{REF}] pin equal to it's internal voltage reference (which is commonly 2.5V). By connecting stem:[V_{REF}] up to the resistor divider stem:[R1] and stem:[R2], you can get stem:[U1] to shunt regulate to a chosen stem:[V_{OUT}], as long as it's above stem:[V_{REF}].
+
+[[shunt-linear-regulator-basic-application-schematic]]
+.A shunt voltage regulator used to create a regulated output voltage from a higher input voltage.
+image::shunt-linear-regulator-basic-application-schematic.svg[width=500px]
+
+It is quite easy to show that the output voltage in <<shunt-linear-regulator-basic-application-schematic>> is calculated as given in Eq stem:[\ref{eq:vout-vref-shunt-reg}].
+
+[stem]
+++++
+\begin{align}
+\label{eq:vout-vref-shunt-reg}
+V_{OUT} = 1 + \frac{R1}{R2} V_{REF}
+\end{align}
+++++
+
 == Important Parameters
 
 * Maximum current (A)
