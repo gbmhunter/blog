@@ -1,0 +1,48 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2021-08-27
+description: "Schematics, uses/applications and more info about isolated switch-mode power supplies."
+draft: false
+lastmod: 2021-08-27
+tags: [ "electronics", "components", "power supplies", "isolated", "switch-mode power supplies", "SMPS", "flyback", "forward" ]
+title: "Isolated Switch Mode Power Supplies"
+type: "page"
+---
+
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
+== Overview
+
+For regular non-isolated buck, boost, regulators, SEPIC and Ćuk regulators see the link:[Switch Mode Power Supplies (SMPS) page.]
+
+Isolated SMPS topologies:
+
+|===
+| Name          | Advantages
+
+| Flyback       | Requires no inductor (uses the transformer). Simple. Low cost.
+| Flybuck       | Higher freq. than flyback (= smaller components/better efficiency).
+| Forward
+|===
+
+== Flyback Converters
+
+Flyback converters are unique in the fact that they use the transformer as **both a transformer (to provide voltage/current conversion and isolation) and inductor (for storage of energy in it's magnetic field)**. All other isolating SMPSs only use the transformer for voltage/current conversion and isolation, and require a separate inductor on the secondary side for performing the buck/boost regulation. The flyback converter to the most used isolating SMPS topology used<<bib-ti-feedback-loop-design-considerations>>.
+
+At first you may be thinking, but wait, because inductors don't like changes in current, isn't the transformer going to create a huge primary side voltage when the switch is opened? This would be true for a standalone inductor, but because the magnetic field is coupled to the secondary side, the moment the switch opens and the primary-side current stops, the current in the secondary side starts. However, there is still the problem of parasitic inductance. This is a portion of the total primary inductance which is not coupled over to the secondary. This does create a large voltage spike, and has to be dealt with zeners/TVS diodes.
+
+=== Feedback
+
+The TLV431 precision shunt voltage reference in tandem with an optocoupler is a popular way of providing feedback from the secondary side back to a flyback converter.
+
+Flyback converters are used extensively in link:/electronics/communication-protocols/ethernet-protocol/#_power_over_ethernet_poe[Power over Ethernet (PoE) applications].
+
+== Flybuck Converters
+
+== Forward Converters
+
+[bibliography]
+== References
+
+* [[[bib-ti-feedback-loop-design-considerations, 1]]] Lee, S.W. (2020, May). _Practical Feedback Loop Design Considerations for
+Flyback Converter Using UCC28740_. Texas Instruments. Retrieved 2021-08-27, from https://www.ti.com/lit/an/sluaa66/sluaa66.pdf.

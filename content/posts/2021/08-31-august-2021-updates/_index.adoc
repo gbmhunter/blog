@@ -43,3 +43,7 @@ image::/posts/2021/08-31-august-2021-updates/bjt-safe-operating-area-screenshot.
 * Added info on link:/electronics/components/power-regulators/linear-regulators/#_low_dropout_regulators[low-dropout linear regulators].
 
 * Updated the Ethernet page with info on link:/electronics/communication-protocols/ethernet-protocol/[serial-to-ethernet ICs].
+
+* New link:/programming/cloud/aws/aws-iot/[AWS IoT page].
+
+* New link:/electronics/components/power-regulators/isolated-switch-mode-power-supplies/[Isolated Switch Mode Power Supplies page].

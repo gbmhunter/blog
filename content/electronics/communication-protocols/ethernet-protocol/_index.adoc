@@ -57,24 +57,24 @@ Some ethernet jacks come with the magnetics already in-built, saving you the tro
 
 == Power Over Ethernet (PoE)
 
-_Power over Ethernet_ (PoE) is the term used to describe ethernet cables/systems that also provide a power source over the same cable as the data.
+_Power over Ethernet_ (PoE) is the term used to describe ethernet cables/systems that also provide a power source over the same cable as the data. Typically 44-57VDC (48V is a common choice) is passed over one or more of the twisted pairs in most ethernet cables. Data and power can be transmitted along the same twisted pairs as long as proper transformer-based extraction (center-tapped isolation transformers) of the AC data signal and DC power is used. The early PoE standards could provide around 10W of power, but the newer standards allow up to approx. 75W.
 
-_Power sourcing equipment_ (PSE) is the devices that provide power onto the ethernet bus. The _powered device_ (PD) is the device on the other end of the cable which is consuming the power.
+_Power sourcing equipment_ (PSE) are the devices that provide power onto the ethernet bus. The _powered device_ (PD) is the device on the other end of the cable which is consuming the power. The PDs can be up to 100m away from the PSE (as defined by the existing Ethernet standard, this is unchanged with the introduction PoE).
 
 A _PoE injector_ is a stand-alone device used to add ("inject") DC power into an existing Ethernet cable.
 
 The _assured power_ is the amount of power available to the powered device at the end of cable. This is less than the power outputted by the PSE due to the energy lost in the impedance of the cabling.
 
 |===
-| Name  | IEEE standard         | Power to PD | Max. power per port | Energized pairs| Supported devices
+| Name          | IEEE standard         | Year | Power to PD | Max. power per port | Energized pairs| Supported devices
 
-| PoE   | IEEE 802.3af (Type 1) | 12.95 W     | 15.4 W              | 2-pair	     | VoIP phones, WAP
-| PoE+  | IEEE 802.3at (Type 2) | 25.5 W      | 30 W                | 2-pair	     | 
-| PoE++	| IEEE 802.3bt (Type 3)	| 51 W        | 60 W                | 4-pair	     | 
-| PoE++	| IEEE 802.3bt (Type 4)	| 71.3 W      | 100 W               | 4-pair	     |
+| PoE           | IEEE 802.3af (Type 1) | 2003 | 12.95 W     | 15.4 W              | 2-pair	     | VoIP phones, WAP
+| PoE+          | IEEE 802.3at (Type 2) | 2009 | 25.5 W      | 30 W                | 2-pair	     | 
+| PoE++ (UPoE)	| IEEE 802.3bt (Type 3)	|      | 51 W        | 60 W                | 4-pair	     | 
+| PoE++	        | IEEE 802.3bt (Type 4)	|      | 71.3 W      | 100 W               | 4-pair	     | Tilt/pan/zoom (PTZ) security cameras.
 |===
 
-PoE++ is also known as 4PPoE.
+PoE++ is also known as 4PPoE. UPoE is an acronym for _Ultra Power over Ethernet_.
 
 .Typical application schematic for the Analog Devices LTC4267 PoE regulator IC. Image retrieved 2021-08-26 from https://www.analog.com/media/en/technical-documentation/data-sheets/4267fc.pdf.
 image::ltc4267-poe-regulator-typical-application.png[width=600px]
