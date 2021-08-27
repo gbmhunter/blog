@@ -36,7 +36,7 @@ Series linear regulators are relatively simple components to connect up into a l
 .Classic example of a integrated series linear regulator, the LM7805, shown with recommended capacitors (as per https://www.ti.com/lit/ds/symlink/lm340.pdf) attached to it's input and output. The LM7805 is a fixed-voltage regulator (stem:[V_{OUT} = 5.0V]) and so the third pin is just connected to stem:[GND].
 image::series-linear-regulator-fixed-basic-schematic.svg[width=700px]
 
-=== Shunt Linear Regulators
+== Shunt Linear Regulators
 
 Confusingly, shunt regulators are commonly shown in schematics as a zener diode with a third pin coming from the middle of the rectangle, as shown in <<shunt-linear-regulator-symbol-and-detailed-circuit>>. This zener diode symbol hides significant complexity, in reality they are actually a integrated circuit containing a voltage reference, op-amp and BJT!
 
@@ -60,7 +60,11 @@ V_{OUT} = 1 + \frac{R1}{R2} V_{REF}
 \end{align}
 ++++
 
-==== Popular Shunt Regulators
+=== Min/Max Shunt Regulation Current
+
+A shunt regulator will have a minimum stem:[I_{Z(min)}] and maximum stem:[I_{Z(max)}] current at which it is able to regulate correctly. For example, the LM431 has an stem:[I_{Z(min)}] of stem:[1mA] and a stem:[I_{Z(max)}] of stem:[100mA].
+
+=== Popular Shunt Regulators
 
 |===
 | Part Number   | stem:[V_{REF}] | stem:[V_{OUT}]   | stem:[I_C]    | Package(s)                | Comments
