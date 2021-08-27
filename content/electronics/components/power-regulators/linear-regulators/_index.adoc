@@ -60,6 +60,14 @@ V_{OUT} = 1 + \frac{R1}{R2} V_{REF}
 \end{align}
 ++++
 
+==== Popular Shunt Regulators
+
+|===
+| Part Number   | stem:[V_{REF}] | stem:[V_{OUT}]   | stem:[I_C]    | Package(s)                | Comments
+
+| LM431         | 2.5V           | 2.5-36V          | 1-100mA       | SOIC-8, SOT-23, TO-92     | Popular in the feedback circuit of flyback converters.
+|===
+
 == Important Parameters
 
 * Maximum current (A)
