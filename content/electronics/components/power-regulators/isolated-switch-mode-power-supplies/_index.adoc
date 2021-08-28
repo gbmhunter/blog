@@ -27,9 +27,31 @@ Isolated SMPS topologies:
 
 == Flyback Converters
 
+A flyback converter is a type of isolated power converter. It can be thought of as a buck-boost converter with the inductor split to form a transformer. The basic schematic is shown in <<flyback-regulator-schematic-basic>>.
+
+[[flyback-regulator-schematic-basic]]
+.Schematic of a basic flyback converter, with no feedback. Transformer T1 is usually called a "mutually coupled inductor".
+image::flyback-regulator-schematic-basic.svg[width=600px]
+
 Flyback converters are unique in the fact that they use the transformer as **both a transformer (to provide voltage/current conversion and isolation) and inductor (for storage of energy in it's magnetic field)**. All other isolating SMPSs only use the transformer for voltage/current conversion and isolation, and require a separate inductor on the secondary side for performing the buck/boost regulation. The flyback converter to the most used isolating SMPS topology used<<bib-ti-feedback-loop-design-considerations>>.
 
-At first you may be thinking, but wait, because inductors don't like changes in current, isn't the transformer going to create a huge primary side voltage when the switch is opened? This would be true for a standalone inductor, but because the magnetic field is coupled to the secondary side, the moment the switch opens and the primary-side current stops, the current in the secondary side starts. However, there is still the problem of parasitic inductance. This is a portion of the total primary inductance which is not coupled over to the secondary. This does create a large voltage spike, and has to be dealt with zeners/TVS diodes.
+=== Principle Of Operation
+
+. Switch stem:[SW1] closes. The primary of the transformer is connected directly to the input. The current ramps up linearly in the transformer, storing energy in it's magnetic field. Since the voltage on the secondary is negative (note the polarity dots on the windings), diode stem:[D1] is reverse biased and does not conduct, leaving stem:[C_{OUT}] to supply energy to the load (which it does from energy stored in the previous cycle).
+
+. Switch stem:[SW1] opens. The primary current drops (very rapidly). Suddenly, the secondary voltage becomes positive, and stem:[D1] conducts. This supplies energy to both stem:[C_{OUT}] and the load.
+
+TIP: At first you may be thinking, but wait, because inductors don't like changes in current, isn't the transformer going to create a huge primary side voltage when the switch is opened? This would be true for a standalone inductor, but because the magnetic field is coupled to the secondary side, the moment the switch opens and the primary-side current stops, the current in the secondary side starts. However, there is still the problem of parasitic inductance. This is a portion of the total primary inductance which is not coupled over to the secondary. This does create a large voltage spike, and has to be dealt with zeners/TVS diodes.
+
+The output voltage is given by Eq stem:[\ref{eq:vout-vin-flyback}].
+
+[stem]
+++++
+\begin{align}
+\label{eq:vout-vin-flyback}
+V_{OUT} = \frac{V_{IN}}{N_{PS}} \frac{D}{1 - D}
+\end{align}
+++++
 
 === Feedback
 
@@ -42,6 +64,10 @@ The TL431 precision shunt voltage reference in tandem with an optocoupler is a p
 image::flyback-regulator-schematic-with-optocoupler-feedback.svg[width=800px]
 
 Flyback converters are used extensively in link:/electronics/communication-protocols/ethernet-protocol/#_power_over_ethernet_poe[Power over Ethernet (PoE) applications].
+
+=== Controllers
+
+* LM3481
 
 == Flybuck Converters
 
