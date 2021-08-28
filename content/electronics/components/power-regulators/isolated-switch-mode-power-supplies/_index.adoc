@@ -33,13 +33,21 @@ At first you may be thinking, but wait, because inductors don't like changes in 
 
 === Feedback
 
-The TLV431 precision shunt voltage reference in tandem with an optocoupler is a popular way of providing feedback from the secondary side back to a flyback converter.
+The TL431 precision shunt voltage reference in tandem with an optocoupler is a popular way of providing feedback from the secondary side back to a flyback converter. As shown in <<flyback-regulator-schematic-with-optocoupler-feedback>>, it's REF pin is connected via resistor divider to stem:[V_{OUT}], and it sinks as much current through the optocoupler's LED to keep stem:[V_{REF}] at stem:[2.5V], hence providing just enough feedback drive to regulate the output voltage.
+
+[[flyback-regulator-schematic-with-optocoupler-feedback]]
+.Schematic of a flyback regulator with optocoupler-based feedback. The TL431 plays a pivotal role in the feedback loop, essentially sinking as much current through the LED of the optocoupler to keep it's REF voltage at 2.5V (which is a proportion of the output voltage). Compensation components have been omitted for brevity.
+image::flyback-regulator-schematic-with-optocoupler-feedback.svg[width=800px]
 
 Flyback converters are used extensively in link:/electronics/communication-protocols/ethernet-protocol/#_power_over_ethernet_poe[Power over Ethernet (PoE) applications].
 
 == Flybuck Converters
 
+TODO: Add info here.
+
 == Forward Converters
+
+TODO: Add info here.
 
 [bibliography]
 == References
