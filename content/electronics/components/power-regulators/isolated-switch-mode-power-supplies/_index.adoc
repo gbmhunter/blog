@@ -33,6 +33,8 @@ At first you may be thinking, but wait, because inductors don't like changes in 
 
 === Feedback
 
+Without feedback, regulation for a flyback converter can be as good a 5-10% (assuming the input voltage is known and constant). If you need tighter precision of the output voltage, or if the input voltage varies wildly, you will need to add feedback.
+
 The TL431 precision shunt voltage reference in tandem with an optocoupler is a popular way of providing feedback from the secondary side back to a flyback converter. As shown in <<flyback-regulator-schematic-with-optocoupler-feedback>>, it's REF pin is connected via resistor divider to stem:[V_{OUT}], and it sinks as much current through the optocoupler's LED to keep stem:[V_{REF}] at stem:[2.5V], hence providing just enough feedback drive to regulate the output voltage.
 
 [[flyback-regulator-schematic-with-optocoupler-feedback]]
