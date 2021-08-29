@@ -53,6 +53,17 @@ V_{OUT} = \frac{V_{IN}}{N_{PS}} \frac{D}{1 - D}
 \end{align}
 ++++
 
+[.text-center]
+where +
+stem:[N_{PS}] is the windings ratio from primary to secondary, stem:[\frac{N_P}{N_S}] +
+stem:[D] is the duty cycle, and varies from stem:[0] to stem:[1]. It is defined as: +
+[stem]
+++++
+\begin{align}
+D = \frac{t_{on}}{T}
+\end{align}
+++++
+
 === Feedback
 
 Without feedback, regulation for a flyback converter can be as good a 5-10% (assuming the input voltage is known and constant). If you need tighter precision of the output voltage, or if the input voltage varies wildly, you will need to add feedback.

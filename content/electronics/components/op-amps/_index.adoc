@@ -20,13 +20,12 @@ An op-amp's gain can be adjusted with the appropriate external circuitry (the op
 
 An op-amp is commonly drawn on schematics as:
 
-{{< img src="op-amp-basic-schematic-symbol.png" width="335px" caption="The basic schematic symbol for an op-amp."  >}}
+.The basic schematic symbol for an op-amp.
+image::op-amp-basic-schematic-symbol.svg[width=500px]
 
-You may see this symbol with or without the voltage supply pins `\( V_{S+} \)` and `\( V_{S-} \)`. If they are not present, it is assumed that they are connected up to a power source which should be obvious from the design intent.
+You may see this symbol with or without the voltage supply pins stem:[ V_{S+} ] and stem:[ V_{S-} ]. If they are not present, it is assumed that they are connected up to a power source which should be obvious from the design intent.
 
-{{% warning %}}
-Always take note of the position of the inverting (-) and non-inverting (+) input terminals. **Sometimes they can be drawn swapped around relative to the symbol shown above**.
-{{% /warning %}}
+WARNING: Always take note of the position of the inverting (-) and non-inverting (+) input terminals. **Sometimes they can be drawn swapped around relative to the symbol shown above**.
 
 ## Uses
 
@@ -44,7 +43,7 @@ A _voltage follower_ (also known as a _buffer_) is one of the most basic circuit
 
 {{< img src="op-amp-schematic-voltage-follower-buffer.png" width="517px" caption="An op-amp configured as a voltage follower (aka buffer)." >}}
 
-As shown in the above diagram, the output voltage is the same as the input voltage (`\(v_{o} = v_{i}\)`). Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
+As shown in the above diagram, the output voltage is the same as the input voltage (stem:[v_{o} = v_{i}]). Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
 
 A simulation schematic for a voltage-follower op-amp is shown below:
 
@@ -62,21 +61,25 @@ A op-amp in the non-inverting amplifier configuration is shown below.
 
 The equation for the gain of the non-inverting amplifier is:
 
-<p>$$ v_o = (1 + \frac{R_f}{R_i} ) v_i $$</p>
+[stem]
+++++
+v_o = (1 + \frac{R_f}{R_i} ) v_i
+++++
 
-Notice the `\(1\)` in the gain equation? This means that no matter what you set the resistors `\(R_f\)` and `\(R_i\)` to, you can **never get a gain which is less than one**. This is one of the disadvantages of the non-inverting amplifier (you can have a gain of less than one with an inverting amplifier).
+Notice the stem:[1] in the gain equation? This means that no matter what you set the resistors stem:[R_f] and stem:[R_i] to, you can **never get a gain which is less than one**. This is one of the disadvantages of the non-inverting amplifier (you can have a gain of less than one with an inverting amplifier).
 
-Here is a simulation schematic (circuit) for a non-inverting op-amp amplifier running from a single-ended supply. Because R1 (`\(R_f\)`) and R2 (`\(R_i\)`) are both `\(1k\Omega\)`, the op-amp has a gain of:
+Here is a simulation schematic (circuit) for a non-inverting op-amp amplifier running from a single-ended supply. Because R1 (stem:[R_f]) and R2 (stem:[R_i]) are both stem:[1k\Omega], the op-amp has a gain of:
 
-<p>
-$$ G = 1 + \frac{R_f}{R_i} \\  
+[stem]
+++++
+G = 1 + \frac{R_f}{R_i} \\  
 G = 1 + \frac{1k\Omega}{1k\Omega} \\  
 G = 2 $$
-</p>
+++++
 
 {{< img src="non-inverting-op-amp-amplifier-simulation-schematic.png" width="465px" caption="The simulation schematic for a non-inverting op-amp amplifier."  >}}
 
-The results of the simulation are shown below. As you can see, the output voltage `\(V_{out}\)` is exactly twice the input voltage `\(V_{in}\)`.
+The results of the simulation are shown below. As you can see, the output voltage stem:[V_{out}] is exactly twice the input voltage stem:[V_{in}].
 
 {{< img src="vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png" width="1700px" caption="A graph of Vout vs. Vin for a non-inverting op-amp amplifier circuit."  >}}
 
@@ -88,7 +91,10 @@ A op-amp amplifier in the inverting configuration is shown below:
 
 The equation for the gain of an inverting amplifier is:
 
-<p>$$ v_o = - \frac{R_f}{R_i} v_i $$</p>
+[stem]
+++++
+v_o = - \frac{R_f}{R_i} v_i
+++++
 
 The negative sign is to show that the output is the inverse polarity of the input. Notice that, unlike the non-inverting amplifier, **an inverting amplifier lets you obtain a gain of less than 1**.
 
@@ -108,7 +114,10 @@ A differential amplifier amplifies the difference between two electrical signals
 
 The output voltage is given by the equation:
 
-<p>$$ v_o = \frac{R_4}{R_3 + R_4}(1 + \frac{R_2}{R_1})v_2 - \frac{R_2}{R_1}v_1 $$</p>
+[stem]
+++++
+v_o = \frac{R_4}{R_3 + R_4}(1 + \frac{R_2}{R_1})v_2 - \frac{R_2}{R_1}v_1
+++++
 
 Below is a schematic for simulating the behaviour of a differential op-amp:
 
@@ -126,7 +135,7 @@ It's output voltage is proportional to the integral of the input voltage w.r.t. 
 
 However, this circuit is normally not practical in real world situations. Any errors such as the output offset voltage and input bias current (which all op-amps invariably have), as well as a non-perfect input signal with small amounts of DC bias, will cause the output to drift, until it reaches saturation.
 
-A way to fix this problem is to insert a high-valued feedback resistor, `\(R_f\)`, to limit the DC gain, as well as a resistor, `\(R_{bias}\)`, on the non-inverting input terminal to compensate for the input bias current.
+A way to fix this problem is to insert a high-valued feedback resistor, stem:[R_f], to limit the DC gain, as well as a resistor, stem:[R_{bias}], on the non-inverting input terminal to compensate for the input bias current.
 
 {{< img src="op-amp-schematic-integrator-non-ideal.png" width="430px" caption="An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset." >}}
 
@@ -142,26 +151,30 @@ One disadvantage with this design is that the current output is not ground refer
 
 ### Current Sinks
 
-An op-amp can be easily wired up with a MOSFET and sense resistor to make a voltage controlled current sink. The following schematic shows such a device which can control between 0-1A through the load (shown as `\(R_{load}\)`):
+An op-amp can be easily wired up with a MOSFET and sense resistor to make a voltage controlled current sink. The following schematic shows such a device which can control between 0-1A through the load (shown as stem:[R_{load}]):
 
 {{% figure src="current-sink/op-amp-current-sink-schematic.png" width="700px" caption="Schematic of a basic op-amp based current sink." %}}
 
-You set the desired load current by providing a voltage to `\(V_{in}\)`. This voltage typically comes from a resistor divider (fixed current), potentiometer (manually variable current) or DAC (digitally variable current). The load current is given by the simple Ohm's law equation:
+You set the desired load current by providing a voltage to stem:[V_{in}]. This voltage typically comes from a resistor divider (fixed current), potentiometer (manually variable current) or DAC (digitally variable current). The load current is given by the simple Ohm's law equation:
 
-<p>$$ I_{load} = \frac{V_{in}}{R_{sense}} $$</p>
+[stem]
+++++
+I_{load} = \frac{V_{in}}{R_{sense}}
+++++
 
 The circuit works like this:
-1. Desired voltage to set current is provided to `\(V_{in}\)` which is applied to the positive input of the op-amp, `\(V_{op+}\)`.
-1. The op-amp will then drive it's output high in an attempt to bring it's `\(V_{op-}\)` to the same voltage.
-1. As the op-amp raises the voltage on it's output, this is connected to the gate of the MOSFET, which will begin to turn it on.
-1. As the MOSFET turns on, current begins to flow through the load and sense resistor, `\(R_{sense}\)`.
-1. The op-amp will keep turning the MOSFET on until the voltage drop across `\(R_{sense}\)` is equal to `\(V_{in}\)`, meaning `\(V_{op-}\)` is the same as `\(V_{op+}\)`.
-1. This voltage drop will occur when we have the desired amount of current flowing through it, leading to the equation `\( I_{load} = \frac{V_{in}}{R_{sense}} \)`.
+
+. Desired voltage to set current is provided to stem:[V_{in}] which is applied to the positive input of the op-amp, stem:[V_{op+}].
+. The op-amp will then drive it's output high in an attempt to bring it's stem:[V_{op-}] to the same voltage.
+. As the op-amp raises the voltage on it's output, this is connected to the gate of the MOSFET, which will begin to turn it on.
+. As the MOSFET turns on, current begins to flow through the load and sense resistor, stem:[R_{sense}].
+. The op-amp will keep turning the MOSFET on until the voltage drop across stem:[R_{sense}] is equal to stem:[V_{in}], meaning stem:[V_{op-}] is the same as stem:[V_{op+}].
+. This voltage drop will occur when we have the desired amount of current flowing through it, leading to the equation stem:[ I_{load} = \frac{V_{in}}{R_{sense}} ].
 
 Things to note:
 
-* The op-amp is powered here with a slightly negative voltage rail on it's `\(V_{SS}\)` pin. This is that the op-amp remains operational when you set it at low current levels. At low current levels, the voltages at `\(V_{op+}\)` and `\(V_{op-}\)` are very close to zero. Even rail-to-rail op-amps can have trouble performing well if the negative voltage rail was at `\(0V\)`.
-* The power dissipation through the MOSFET and sense resistor has to be considered. The sense resistor is easy, just make sure it can handle the power given by `\(P = I^2 R\)` at the maximum current. The MOSFET power dissipation will depend on the load current and voltage drop across it. The MOSFET is used in it's active region --- the region where it is not fully on nor fully off. The MOSFET will drop the remaining voltage from the voltage source provided to the load, once the load voltage drop and sense resistor voltage drop has been subtracted. Use the equation `\(P = VI\)` to determine the power dissipation in the MOSFET.
+* The op-amp is powered here with a slightly negative voltage rail on it's stem:[V_{SS}] pin. This is that the op-amp remains operational when you set it at low current levels. At low current levels, the voltages at stem:[V_{op+}] and stem:[V_{op-}] are very close to zero. Even rail-to-rail op-amps can have trouble performing well if the negative voltage rail was at stem:[0V].
+* The power dissipation through the MOSFET and sense resistor has to be considered. The sense resistor is easy, just make sure it can handle the power given by stem:[P = I^2 R] at the maximum current. The MOSFET power dissipation will depend on the load current and voltage drop across it. The MOSFET is used in it's active region --- the region where it is not fully on nor fully off. The MOSFET will drop the remaining voltage from the voltage source provided to the load, once the load voltage drop and sense resistor voltage drop has been subtracted. Use the equation stem:[P = VI] to determine the power dissipation in the MOSFET.
 * The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. See below to recommended compensation circuitry to add to the basic schematic to make the design more stable.
 
 **Current Sinking Accuracy**
@@ -169,7 +182,7 @@ Things to note:
 The accuracy of the current sink primarily depends of three aspects:
 
 * The input offset voltage of the op-amp.
-* The accuracy of the DAC (or other voltage source) providing the voltage to `\(V_{in}\)`.
+* The accuracy of the DAC (or other voltage source) providing the voltage to stem:[V_{in}].
 * The tolerance of the current-sense resistor.
 
 **MOSFET Gate Capacitance Compensation**
@@ -178,7 +191,7 @@ The gate capacitance of the MOSFET can load the op-amp output to the point that 
 
 {{% img src="lt1492-voltage-controlled-current-sink.png" width="500px" caption="A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492. Image retrieved 2020-12-25 from https://www.analog.com/media/en/technical-documentation/data-sheets/14923f.pdf." %}}
 
-Read <https://electronics.stackexchange.com/questions/69506/stability-problem-in-unity-gain-opamp> for more information.
+Read https://electronics.stackexchange.com/questions/69506/stability-problem-in-unity-gain-opamp for more information.
 
 ## Important Variables
 
@@ -186,17 +199,17 @@ Sorted by function.
 
 ### Common-Mode Input Voltage Range
 
-The _common-mode input voltage range_ is the range of voltages that can appear at the input to the op-amp and it still work correctly. For standard single-supply op-amps, the typical range is approximately `\(0V\)` to `\(V_+ - 1.5V\)`. Note how it includes the most negative rail `\(V_-\)` (which is 0V for a single-supply op-amp) but only gets within `1.5V` of the most positive rail, `\(V_+\)`
+The _common-mode input voltage range_ is the range of voltages that can appear at the input to the op-amp and it still work correctly. For standard single-supply op-amps, the typical range is approximately stem:[0V] to stem:[V_+ - 1.5V]. Note how it includes the most negative rail stem:[V_-] (which is 0V for a single-supply op-amp) but only gets within `1.5V` of the most positive rail, stem:[V_+]
 
 ### Input Offset Voltage (Vos/Vio)
 
-The _input offset voltage_ `\(V_{OS}\)` (or sometimes called `\(V_{IO}\)`) is the voltage difference required between the two input pins to force the output to 0. It is a DC measurement parameter. In an ideal op-amp, the op-amp only amplifies a difference between the inputs, and so the output is 0V when the difference is 0V. However, real-world op-amps always have some unavoidable differences in the internal components that make up the op-amps (specifically, in the input differential stage of the internal circuitry), and thus the inputs are not perfectly identical. The input offset voltage is typically in the following ranges:
+The _input offset voltage_ stem:[V_{OS}] (or sometimes called stem:[V_{IO}]) is the voltage difference required between the two input pins to force the output to 0. It is a DC measurement parameter. In an ideal op-amp, the op-amp only amplifies a difference between the inputs, and so the output is 0V when the difference is 0V. However, real-world op-amps always have some unavoidable differences in the internal components that make up the op-amps (specifically, in the input differential stage of the internal circuitry), and thus the inputs are not perfectly identical. The input offset voltage is typically in the following ranges:
 
 * 1-5mV for good general purpose op-amps, 5-15mV for really bad ones.
 * 200uV-1mV for specialized low input offset voltage op-amps
 * 10uV-200uV for the best "ultra" low input offset voltage op-amps 
 
-For example, the general purpose LM324 has a typical input offset voltage of 2mV and a maximum of 3mV, at `\(T_A = 25°C\)`[^ti-lm234-datasheet]. "Low" input offset voltage op-amps will have a `\(V_{OS}\)` in the range of 50-200uV. For example, the OPAx196 family of op-amps has a max. `\(V_{IO}: 100uV\)`[^ti-opax196-datasheet].
+For example, the general purpose LM324 has a typical input offset voltage of 2mV and a maximum of 3mV, at stem:[T_A = 25°C][^ti-lm234-datasheet]. "Low" input offset voltage op-amps will have a stem:[V_{OS}] in the range of 50-200uV. For example, the OPAx196 family of op-amps has a max. stem:[V_{IO}: 100uV][^ti-opax196-datasheet].
 
 A non-zero input offset voltage results in gain errors between the input and output of a op-amp.
 
@@ -204,13 +217,13 @@ Input offset voltages vary by op-amp transistor technology. Bipolar op-amps typi
 
 ### Input Bias Current (Ib+ and Ib-)
 
-The _input bias current_ `\(I_{B+}\)` and `\(I_{B-}\)` describe the currents that flow in and out of the op-amps input pins. In an ideal op-amp, no current flows into/out of the input pins (the op-amp has infinite input impedance). In reality, always some small amount of current will flow. Typical input bias currents range from 1-10nA.
+The _input bias current_ stem:[I_{B+}] and stem:[I_{B-}] describe the currents that flow in and out of the op-amps input pins. In an ideal op-amp, no current flows into/out of the input pins (the op-amp has infinite input impedance). In reality, always some small amount of current will flow. Typical input bias currents range from 1-10nA.
 
 The amount and behaviour of input bias current depends on the op-amp transistor technology. A FET-based op-amp's input bias current will double with every 10°C rise in temperature[^analog-devices-input-bias-current].
 
 Input bias currents are a problem because these currents will flow through external circuitry connected to the op-amps inputs. This current when flowing through resistors and other impedances will create unwanted voltages which will increase the systematic errors.
 
-The _input offset current_ `\(I_{OS}\)` is the difference between the input bias current at the `+` pin and the `-` pin.
+The _input offset current_ stem:[I_{OS}] is the difference between the input bias current at the `+` pin and the `-` pin.
 
 ### Input Impedance
 
@@ -226,17 +239,17 @@ An example of an ultra-high gain bandwidth is 1700MHz, which are present in 'Wid
 
 ### High Level Output Voltage
 
-The high level output voltage (`\(V_{OH}\)`) defines the highest voltage which the op-amp can drive the output to (with respect to the power supply `\(V_+\)`).
+The high level output voltage (stem:[V_{OH}]) defines the highest voltage which the op-amp can drive the output to (with respect to the power supply stem:[V_+]).
 
 ### Low Level Output Voltage
 
-The low level output voltage (`\(V_{OL}\)`) defines the lowest voltage which the op-amp can drive the output to. The LM324 is rumoured to only be able to drive the output near ground if it is sourcing current, but only to 0.5V minimum if sinking (see this EDA Forum post, [LM324 Opamp Gain Instability](http://www.edaboard.com/thread209783.html)).
+The low level output voltage (stem:[V_{OL}]) defines the lowest voltage which the op-amp can drive the output to. The LM324 is rumoured to only be able to drive the output near ground if it is sourcing current, but only to 0.5V minimum if sinking (see this EDA Forum post, [LM324 Opamp Gain Instability](http://www.edaboard.com/thread209783.html)).
 
 ### Slew Rate
 
 The _slew rate_ of an op-amp defines the **maximum rate the output voltage can change with respect to time**. In an ideal op-amp, this would be infinite. It has the SI units V/s, and is commonly expressed in uV/s. It can be thought of as the slope of the output waveform if one of the inputs of the input was subjected to a step voltage change. 
 
-Op-amps have a limited output slew rate due to internal compensation capacitor combined with a finite output drive current. Charing a capacitive output with a constant current (a good approximation) gives a linear increase in voltage (recall that the equation relating voltage to current for a capacitor is `\(i = C \frac{dV}{dt}\)`).
+Op-amps have a limited output slew rate due to internal compensation capacitor combined with a finite output drive current. Charing a capacitive output with a constant current (a good approximation) gives a linear increase in voltage (recall that the equation relating voltage to current for a capacitor is stem:[i = C \frac{dV}{dt}]).
 
 The **max. slew rate of an op-amp limits the amplitude of output waveforms it can produce at high frequencies without distortion**. This parameter usually increases as the GBW of the op-amp increases. Higher slew rate op-amps also tend to have higher quiescent currents.
 
@@ -256,7 +269,10 @@ For a fixed-gain, cascading op-amps can also be used to **increase the bandwidth
 
 When cascading op-amps, the total gain is the product of all of the individual op-amps gains, i.e.:
 
-<p>$$ A_{total} = A_0 A_1 A_2 ... A_n $$</p>
+[stem]
+++++
+A_{total} = A_0 A_1 A_2 ... A_n
+++++
 
 ### The Bandwidth
 
@@ -264,7 +280,10 @@ The bandwidth of cascaded op-amps is not as simple to calculate as the gain.
 
 If all of the op-amps are identical, then the following equation can be used:
 
-<p>$$ BW_{tot} = BW \times \sqrt{2^{\frac{1}{N}} - 1} $$</p>
+[stem]
+++++
+BW_{tot} = BW \times \sqrt{2^{\frac{1}{N}} - 1}
+++++
 
 <p class="centered">
     where:<br>
@@ -293,11 +312,9 @@ General purpose op-amps typically have parameters in the following ranges:
 
 ### Rail-to-Rail Op-Amps
 
-A _rail-to-rail_ op-amp is an op-amp which supports input voltages **near** the power rails, and can drive the output close to the one or more  of the power rails. We must stress the word **NEAR**, as the op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. Rail-to-rail op-amps just support wider ranged input voltages and can drive closer to the rails than general purpose op-amps can. Look for the **low level output voltage** (`\(V_{OL}\)`) parameter in the op-amp's datasheet. For "rail-to-rail" op-amps, this will usually be about 100-200mV about ground at normal load currents.
+A _rail-to-rail_ op-amp is an op-amp which supports input voltages **near** the power rails, and can drive the output close to the one or more  of the power rails. We must stress the word **NEAR**, as the op-amp's output voltage will never get exactly to the rail, due to the finite voltage drop across the output-stage transistors. Rail-to-rail op-amps just support wider ranged input voltages and can drive closer to the rails than general purpose op-amps can. Look for the **low level output voltage** (stem:[V_{OL}]) parameter in the op-amp's datasheet. For "rail-to-rail" op-amps, this will usually be about 100-200mV about ground at normal load currents.
 
-{{% warning %}}
-"_Rail-to-rail_" op-amps cannot really output either rail voltage, just closer to it that general purpose op-amps.
-{{% /warning %}}
+WARNING: "_Rail-to-rail_" op-amps cannot really output either rail voltage, just closer to it that general purpose op-amps.
 
 This also means that a rail-to-ral single-supply op-amp cannot output 0V. **To achieve a true ground output, you need a negative voltage supply.** There are dedicated ICs designed to provide a small negative power supply to op-amps so that they can output true ground. One such example is the [Texas Instruments LM7705](http://www.ti.com/product/LM7705), a "_Low Noise Negative Bias Generator_". This IC only generates -230mV, which allows the designer to use CMOS-based op-amps which usually have a maximum supply voltage of 5.5V.
 
@@ -341,53 +358,70 @@ Instrumentation amplifiers are analog voltage amplifier circuits that, although 
 
 ## The Different Types Of Gain, Explained
 
-Open-loop gain `\(A_V\)` (sometimes written as `\(A_{OL}\)`) is the gain of the op-amp without any feedback.
+Open-loop gain stem:[A_V] (sometimes written as stem:[A_{OL}]) is the gain of the op-amp without any feedback.
 
-Closed loop gain `\(G_V\)` is the over-all gain of the op-amp with feedback.
+Closed loop gain stem:[G_V] is the over-all gain of the op-amp with feedback.
 
-{{% img src="open-loop-vs-closed-loop-op-amp-gain-bode-plot.svg" width="500px" caption="How the open-loop and closed-loop gain of an op-amp changes with increasing frequency." %}}
+.How the open-loop and closed-loop gain of an op-amp changes with increasing frequency.
+image::open-loop-vs-closed-loop-op-amp-gain-bode-plot.svg[width=500px]
 
 We can generalize the circuit of an op-amp with negative feedback to the block diagram shown below. 
 
-{{% img src="generalized-negative-feedback-block-diagram.svg" width="700px" caption="A block diagram showing a generalized op-amp configuration with negative feedback." %}}
+.A block diagram showing a generalized op-amp configuration with negative feedback.
+image::generalized-negative-feedback-block-diagram.svg[width=700px]
 
-From the above block diagram we can write an equation for `\(v_{out}\)`:
+From the above block diagram we can write an equation for stem:[v_{out}]:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 v_{out} &= A\times v_{sum} \\
         &= A(v_{in} - Bv_{out}) \\
-\end{align}</p>
+\end{align}
+++++
 
-What we are really interested is an equation for the closed-loop gain `\(G_V\)` which is equal to `\(\frac{v_{out}}{v_{in}}\)`...all we need to do is to re-arrange the equation as shown below:
+What we are really interested is an equation for the closed-loop gain stem:[G_V] which is equal to stem:[\frac{v_{out}}{v_{in}}]...all we need to do is to re-arrange the equation as shown below:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 v_{out} &= Av_{in} - ABv_{out}  & \text{Expanding} \\
 v_{out}(1 - AB) &= Av_{in}      & \text{Shift $v_{out}$ onto left side and factor.} \\
 \frac{v_{out}}{v_{in}} &= \frac{A}{1 - AB}  & \text{Jiggle things to get $\frac{v_{out}}{v_{in}}$} \\
-\end{align}</p>
+\end{align}
+++++
 
-And so we come to an equation for the closed loop gain `\(G_V\)` as:
+And so we come to an equation for the closed loop gain stem:[G_V] as:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 G_V &= \frac{A}{1 - AB}
-\end{align}</p>
+\end{align}
+++++
 
-We can take this one step further, since normally the open-loop gain `\(A\)` for an op-amp is very large, in the range of `\(100,000\)` to `\(1,000,000\)`. With that, we can simply the closed loop gain to be:
+We can take this one step further, since normally the open-loop gain stem:[A] for an op-amp is very large, in the range of stem:[100,000] to stem:[1,000,000]. With that, we can simply the closed loop gain to be:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 G_V &\approx \frac{1}{B}
-\end{align}</p>
+\end{align}
+++++
 
-Name       | Equation
------------|-----------
-Open-loop gain | `\(A\)`
-Loop gain  | `\(-AB\)` 
-Closed-loop gain | $$\approx \frac{1}{B}$$
+|===
+| Name       | Equation
+
+| Open-loop gain | stem:[A]
+| Loop gain  | stem:[-AB] 
+| Closed-loop gain | stem:[\approx \frac{1}{B}]
+|===
 
 ## Examples
 
 Below are some examples of op-amps that stand out from the crowd for some reason, be it popularity, years in service, or functionality wise.
 
+++++
 <table>
   <thead>
     <tr>
@@ -424,6 +458,7 @@ Below are some examples of op-amps that stand out from the crowd for some reason
     </tr>
   </tbody>
 </table>
+++++
 
 ## Negative Voltage Rails
 
@@ -443,15 +478,17 @@ Basic isolation amplifiers require two power supplies (one for each side of isol
 
 One of the first things you learn about an op-amp is that the input impedance on the input pins are very large (ideally infinite). So naturally you would start to question why resistors would be connected to the input pins of an op-amp like shown in the diagram below:
 
-{{% img src="op-amp-input-pin-resistors.png" width="500px" caption="Schematic showing a resistor on the positive input to a op-amp." %}}
+.Schematic showing a resistor on the positive input to a op-amp.
+image::op-amp-input-pin-resistors.png[width=500px]
 
-These input resistors serve to limit the input current if the voltage on the input pin goes above `\(V_{CC}\)`. Most op-amps have protection/clamping diodes from the input pins to `\(V_{CC}\)` (typically you can determines this if in the datasheet the input pins max voltage is rated to `\(V_{CC} + 0.3V\)`, which is one diode voltage drop). If there was no resistor there, the built-in diode would conduct and sink a large current from the input pin to `\(V_{CC}\)`, possibly damaging the op-amp. The resistor limits this current to a safe value.
+These input resistors serve to limit the input current if the voltage on the input pin goes above stem:[V_{CC}]. Most op-amps have protection/clamping diodes from the input pins to stem:[V_{CC}] (typically you can determines this if in the datasheet the input pins max voltage is rated to stem:[V_{CC} + 0.3V], which is one diode voltage drop). If there was no resistor there, the built-in diode would conduct and sink a large current from the input pin to stem:[V_{CC}], possibly damaging the op-amp. The resistor limits this current to a safe value.
 
 ## Offset Nulling Circuits
 
-Some op-amps which are designed to have very low input offset voltages also come with _offset nulling pins_ to further trim the input offset voltage once the op-amp is installed in circuit. The OP07 is one op-amp which has these pins. Typically, a `\(10-50k\Omega\)` potentiometer is connected across these pins with the wiper going to `\(V_{CC}\)`, as shown in the example schematic below:
+Some op-amps which are designed to have very low input offset voltages also come with _offset nulling pins_ to further trim the input offset voltage once the op-amp is installed in circuit. The OP07 is one op-amp which has these pins. Typically, a stem:[10-50k\Omega] potentiometer is connected across these pins with the wiper going to stem:[V_{CC}], as shown in the example schematic below:
 
-{{% img src="op07-op-amp-offset-nulling-circuit.png" width="500px" caption="Image from https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf." %}}
+.Image from https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf.
+image::op07-op-amp-offset-nulling-circuit.png[width=500px]
 
 ## Negative Impedance Converters (NICs)
 
@@ -459,22 +496,25 @@ Some op-amps which are designed to have very low input offset voltages also come
 
 A _negative impedance converter_ (NIC) is a clever op-amp circuit which creates negative impedance (you might be wondering what negative impedance actually is, more on this later). A NIC can be constructed from an op-amp and a few passive components as shown in the following schematic:
 
-{{% img src="negative-impedance-converter-nic.svg" width="500px" caption="Schematic of a negative impedance converter (NIC) created from an op-amp and a few passive components." %}}
+.Schematic of a negative impedance converter (NIC) created from an op-amp and a few passive components.
+image::negative-impedance-converter-nic.svg[width=500px]
 
-Typically the two resistances are the same (`\(R1 = R2\)`), and then the input impedance `\(Z_{IN}\)` is:
+Typically the two resistances are the same (stem:[R1 = R2]), and then the input impedance stem:[Z_{IN}] is:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 Z_{IN} = -Z
-\end{align}</p>
+\end{align}
+++++
 
-<p class="centered">
-\(Z_{IN}\) is the input impedance, in Ohms (\(\Omega\))<br/>
-\(-Z\) is the impedance of the component connected between the inverting terminal and ground, as shown on the diagram, in Ohms (\(\Omega\))
-</p>
+[.text-center]
+stem:[Z_{IN}] is the input impedance, in Ohms (stem:[\Omega]) +
+stem:[-Z] is the impedance of the component connected between the inverting terminal and ground, as shown on the diagram, in Ohms (stem:[\Omega])
 
 ### What Does Negative Impedance Actually Mean?
 
-What does negative impedance actually mean? If `\(Z\)` is just a simple resistor with resistance `\(R\)` (the most basic kind of NIC), then the impedance is `\(Z_{IN} = -R\)`. This means the circuit behaves just like a simple resistor connected to ground, **except that the current comes out of the resistor, not into it**.
+What does negative impedance actually mean? If stem:[Z] is just a simple resistor with resistance stem:[R] (the most basic kind of NIC), then the impedance is stem:[Z_{IN} = -R]. This means the circuit behaves just like a simple resistor connected to ground, **except that the current comes out of the resistor, not into it**.
 
 Things get more interesting when you replace this resistor with a capacitor.
 
@@ -482,72 +522,94 @@ TODO: Add explanation of what happens when capacitor is added.
 
 ### NIC Input Impedance Proof
 
-{{% note %}}
-Skip this section if you are not interested in the maths.
-{{% /note %}}
+NOTE: Skip this section if you are not interested in the maths.
 
-To prove `\(Z_{IN} = -Z\)`, we need to find the input current at inverting terminal, and then use `\(Z_{IN} = \frac{V}{I_{IN}}\)`. The input current can be found by application of Ohm's law and the golden rules of op-amps. Using the rule that the voltage at the two input terminals will be the same, we know the voltage across the impedance `\(Z\)` is going to be:
+To prove stem:[Z_{IN} = -Z], we need to find the input current at inverting terminal, and then use stem:[Z_{IN} = \frac{V}{I_{IN}}]. The input current can be found by application of Ohm's law and the golden rules of op-amps. Using the rule that the voltage at the two input terminals will be the same, we know the voltage across the impedance stem:[Z] is going to be:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 \label{eqn:vzeqv}
 V_Z = V
-\end{align}</p>
+\end{align}
+++++
 
-Using Ohm's law, the current through the impedance `\(Z\)` is therefore:
+Using Ohm's law, the current through the impedance stem:[Z] is therefore:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 I_Z = \frac{V}{Z}
-\end{align}</p>
+\end{align}
+++++
 
-Because there is no current going into the inverting terminal of the op-amp, this current `\(I_Z\)` must also be flowing through `\(R2\)`:
+Because there is no current going into the inverting terminal of the op-amp, this current stem:[I_Z] must also be flowing through stem:[R2]:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 \label{eqn:i_r2}
 I_{R2} = \frac{V}{Z}
-\end{align}</p>
+\end{align}
+++++
 
-Now knowing the voltage at the inverting terminal and the current through `\(R2\)` we can write an equation for the voltage at the output of the op-amp:
+Now knowing the voltage at the inverting terminal and the current through stem:[R2] we can write an equation for the voltage at the output of the op-amp:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 \label{eqn:vout_eq}
 V_{OUT} &= V_Z + V_{R2} \\
         &= V_Z + I_{R2} \cdot R \\
         &= V + \frac{V}{Z} \cdot R &  &\text{Subs. in \ref{eqn:vzeqv} and \ref{eqn:i_r2}}
-\end{align}</p>
+\end{align}
+++++
 
-Now that we know the voltage on both sides of `\(R1\)` we can find the voltage across it:
+Now that we know the voltage on both sides of stem:[R1] we can find the voltage across it:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 \label{eqn:v_r1}
 V_{R1} &= V_{OUT} - V                   &\\
        &= V + \frac{V}{Z} \cdot R - V   & &\text{Subs. in \ref{eqn:vout_eq}} \\
        &= \frac{V}{Z} \cdot R           & &\text{Simplifying}
-\end{align}</p>
+\end{align}
+++++
 
-Now we know the voltage across `\(R1\)` we can find the current going through it using Ohm's law:
+Now we know the voltage across stem:[R1] we can find the current going through it using Ohm's law:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 \label{eqn:i_r1}
 I_{R1} &= \frac{V_{R1}}{R}                &\\
        &= \frac{\frac{V}{Z} \cdot R}{R}   & &\text{Subs. in \ref{eqn:v_r1}} \\
        &= \frac{V}{Z}                     & &\text{Simplifying}
-\end{align}</p>
+\end{align}
+++++
 
-Because the voltage on the right-hand side of `\(R1\)` is higher, this current is flowing right-to-left. Since no current flows into the inverting terminal of the op-amp, this also must be current flowing "out" of the input terminal. Thus:
+Because the voltage on the right-hand side of stem:[R1] is higher, this current is flowing right-to-left. Since no current flows into the inverting terminal of the op-amp, this also must be current flowing "out" of the input terminal. Thus:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 \label{eqn:i_in}
 I_{IN} = -\frac{V}{Z}
-\end{align}</p>
+\end{align}
+++++
 
-Knowing the input current and voltage, we can finally write an equation for `\(Z_{IN}\)`:
+Knowing the input current and voltage, we can finally write an equation for stem:[Z_{IN}]:
 
-<p>\begin{align}
+[stem]
+++++
+\begin{align}
 \label{eqn:z_in}
 Z_{IN} &= \frac{V_{IN}}{I_{IN}}       & &\text{Ohms law} \\
        &= \frac{V}{-\frac{V}{Z}}      & &\text{Subs. in \ref{eqn:i_in}} \\
        &= -Z                          & &\text{Simplifying}
-\end{align}</p>
+\end{align}
+++++
 
 Proof complete!
 
