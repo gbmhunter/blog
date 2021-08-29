@@ -23,7 +23,7 @@ An op-amp is commonly drawn on schematics as:
 .The basic schematic symbol for an op-amp.
 image::op-amp-basic-schematic-symbol.svg[width=500px]
 
-You may see this symbol with or without the voltage supply pins stem:[ V_{S+} ] and stem:[ V_{S-} ]. If they are not present, it is assumed that they are connected up to a power source which should be obvious from the design intent.
+You may see this symbol with or without the voltage supply pins stem:[ +V_{S} ] and stem:[ -V_{S} ]. If they are not present, it is assumed that they are connected up to a power source which should be obvious from the design intent.
 
 WARNING: Always take note of the position of the inverting (-) and non-inverting (+) input terminals. **Sometimes they can be drawn swapped around relative to the symbol shown above**.
 
@@ -33,7 +33,7 @@ WARNING: Always take note of the position of the inverting (-) and non-inverting
 * Linear amplifiers, non-linear amplifiers
 * Pre-amplifiers (amplifier's with a input voltage of 10mV or less)
 * Analogue mathematical operations (differentiators, integrators, summer, subtracters, e.t.c)
-* Voltage to current (transconductance) and current to voltage conversions (transimpedence)
+* Voltage to current (transconductance) and current to voltage conversions (transimpedance)
 
 ## Op-Amp Topologies
 
@@ -41,9 +41,19 @@ WARNING: Always take note of the position of the inverting (-) and non-inverting
 
 A _voltage follower_ (also known as a _buffer_) is one of the most basic circuits you can make with an op-amp.
 
-{{< img src="op-amp-schematic-voltage-follower-buffer.png" width="517px" caption="An op-amp configured as a voltage follower (aka buffer)." >}}
+.An op-amp configured as a voltage follower (aka buffer).
+image::op-amp-schematic-voltage-follower-buffer.svg[width=500px]
 
-As shown in the above diagram, the output voltage is the same as the input voltage (stem:[v_{o} = v_{i}]). Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
+[stem]
+++++
+\begin{align}
+A_V &= 1 \\
+\label{eq:buffer-vout-eq-vin}
+V_{OUT} &= V_{IN}
+\end{align}
+++++
+
+As shown in Eq stem:[\ref{eq:buffer-vout-eq-vin}], the output voltage is the same as the input voltage. Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
 
 A simulation schematic for a voltage-follower op-amp is shown below:
 
@@ -74,7 +84,7 @@ Here is a simulation schematic (circuit) for a non-inverting op-amp amplifier ru
 ++++
 G = 1 + \frac{R_f}{R_i} \\  
 G = 1 + \frac{1k\Omega}{1k\Omega} \\  
-G = 2 $$
+G = 2
 ++++
 
 {{< img src="non-inverting-op-amp-amplifier-simulation-schematic.png" width="465px" caption="The simulation schematic for a non-inverting op-amp amplifier."  >}}
@@ -87,7 +97,8 @@ The results of the simulation are shown below. As you can see, the output voltag
 
 A op-amp amplifier in the inverting configuration is shown below:
 
-{{< img src="op-amp-schematic-inverting-amplifier.png" width="473px" caption="An op-amp configured as an inverting amplifier."  >}}
+.An op-amp configured as an inverting amplifier.
+image::op-amp-schematic-inverting-amplifier.png[width=500px]
 
 The equation for the gain of an inverting amplifier is:
 
@@ -100,17 +111,20 @@ The negative sign is to show that the output is the inverse polarity of the inpu
 
 Below is the schematic used for simulating the behaviour of an inverting op-amp. Note how is requires a negative voltage power supply.
 
-{{< img src="inverting-op-amp-simulation-schematic.png" width="584px" caption="A schematic for simulating the behaviour of an inverting op-amp."  >}}
+.A schematic for simulating the behaviour of an inverting op-amp.
+image::inverting-op-amp-simulation-schematic.png[width=600px]
 
 And below are the simulation results for the above schematic:
 
-{{< img src="vout-vs-vin-inverting-op-amp-gain-neg-1.png" width="1420px" caption="Vout vs. Vin for an inverting op-amp with a gain of -1."  >}}
+.Vout vs. Vin for an inverting op-amp with a gain of -1.
+image::vout-vs-vin-inverting-op-amp-gain-neg-1.png[width=700px]
 
 ### Differential Amplifiers
 
 A differential amplifier amplifies the difference between two electrical signals.
 
-{{< img src="op-amp-schematic-differential-amplifier.png" width="489px" caption="An op-amp configured as a differential amplifier."  >}}
+.An op-amp configured as a differential amplifier.
+image::op-amp-schematic-differential-amplifier.png[width=500px]
 
 The output voltage is given by the equation:
 
@@ -121,23 +135,27 @@ v_o = \frac{R_4}{R_3 + R_4}(1 + \frac{R_2}{R_1})v_2 - \frac{R_2}{R_1}v_1
 
 Below is a schematic for simulating the behaviour of a differential op-amp:
 
-{{< img src="differential-op-amp-simulation-schematic.png" width="822px" caption="A schematic for simulating the behaviour of a differential op-amp."  >}}
+.A schematic for simulating the behaviour of a differential op-amp.
+image::differential-op-amp-simulation-schematic.png[width=800px]
 
 This schematic produces the following results:
 
-{{< img src="differential-op-amp-simulation-graph-vin1-vin2-vout.png" width="1686px" caption="A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier."  >}}
+.A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier.
+image::differential-op-amp-simulation-graph-vin1-vin2-vout.png[width=700px]
 
 ### Integrators
 
 It's output voltage is proportional to the integral of the input voltage w.r.t. time. The figure below shows an **ideal** op-amp based integrator.
 
-{{< img src="op-amp-schematic-ideal-integrator.png" width="491px" caption="An op-amp configured as an ideal integrator."  >}}
+.An op-amp configured as an ideal integrator.
+image::op-amp-schematic-ideal-integrator.png[width=500px]
 
 However, this circuit is normally not practical in real world situations. Any errors such as the output offset voltage and input bias current (which all op-amps invariably have), as well as a non-perfect input signal with small amounts of DC bias, will cause the output to drift, until it reaches saturation.
 
 A way to fix this problem is to insert a high-valued feedback resistor, stem:[R_f], to limit the DC gain, as well as a resistor, stem:[R_{bias}], on the non-inverting input terminal to compensate for the input bias current.
 
-{{< img src="op-amp-schematic-integrator-non-ideal.png" width="430px" caption="An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset." >}}
+.An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset.
+image::op-amp-schematic-integrator-non-ideal.png[width=430px]
 
 ### Transconductance Amplifiers
 
@@ -153,7 +171,8 @@ One disadvantage with this design is that the current output is not ground refer
 
 An op-amp can be easily wired up with a MOSFET and sense resistor to make a voltage controlled current sink. The following schematic shows such a device which can control between 0-1A through the load (shown as stem:[R_{load}]):
 
-{{% figure src="current-sink/op-amp-current-sink-schematic.png" width="700px" caption="Schematic of a basic op-amp based current sink." %}}
+.Schematic of a basic op-amp based current sink.
+image::current-sink/op-amp-current-sink-schematic.png[width=700px]
 
 You set the desired load current by providing a voltage to stem:[V_{in}]. This voltage typically comes from a resistor divider (fixed current), potentiometer (manually variable current) or DAC (digitally variable current). The load current is given by the simple Ohm's law equation:
 
@@ -189,7 +208,8 @@ The accuracy of the current sink primarily depends of three aspects:
 
 The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. Compensation circuitry can be added as shown in the below circuit to limit the phase lag and prevent the circuit from becoming unstable.
 
-{{% img src="lt1492-voltage-controlled-current-sink.png" width="500px" caption="A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492. Image retrieved 2020-12-25 from https://www.analog.com/media/en/technical-documentation/data-sheets/14923f.pdf." %}}
+.A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492. Image retrieved 2020-12-25 from https://www.analog.com/media/en/technical-documentation/data-sheets/14923f.pdf.
+image::lt1492-voltage-controlled-current-sink.png[width=500px]
 
 Read https://electronics.stackexchange.com/questions/69506/stability-problem-in-unity-gain-opamp for more information.
 
@@ -209,17 +229,17 @@ The _input offset voltage_ stem:[V_{OS}] (or sometimes called stem:[V_{IO}]) is 
 * 200uV-1mV for specialized low input offset voltage op-amps
 * 10uV-200uV for the best "ultra" low input offset voltage op-amps 
 
-For example, the general purpose LM324 has a typical input offset voltage of 2mV and a maximum of 3mV, at stem:[T_A = 25°C][^ti-lm234-datasheet]. "Low" input offset voltage op-amps will have a stem:[V_{OS}] in the range of 50-200uV. For example, the OPAx196 family of op-amps has a max. stem:[V_{IO}: 100uV][^ti-opax196-datasheet].
+For example, the general purpose LM324 has a typical input offset voltage of 2mV and a maximum of 3mV, at stem:[T_A = 25°C]<<bib-ti-lm234-datasheet>>. "Low" input offset voltage op-amps will have a stem:[V_{OS}] in the range of 50-200uV. For example, the OPAx196 family of op-amps has a max. stem:[V_{IO}: 100uV]<<bib-ti-opax196-datasheet>>.
 
 A non-zero input offset voltage results in gain errors between the input and output of a op-amp.
 
-Input offset voltages vary by op-amp transistor technology. Bipolar op-amps typically have the lowest input offset voltage, followed by CMOS and the BiFET op-amps[^ti-app-report-input-offset-voltage].
+Input offset voltages vary by op-amp transistor technology. Bipolar op-amps typically have the lowest input offset voltage, followed by CMOS and the BiFET op-amps<<bib-ti-app-report-input-offset-voltage>>.
 
 ### Input Bias Current (Ib+ and Ib-)
 
 The _input bias current_ stem:[I_{B+}] and stem:[I_{B-}] describe the currents that flow in and out of the op-amps input pins. In an ideal op-amp, no current flows into/out of the input pins (the op-amp has infinite input impedance). In reality, always some small amount of current will flow. Typical input bias currents range from 1-10nA.
 
-The amount and behaviour of input bias current depends on the op-amp transistor technology. A FET-based op-amp's input bias current will double with every 10°C rise in temperature[^analog-devices-input-bias-current].
+The amount and behaviour of input bias current depends on the op-amp transistor technology. A FET-based op-amp's input bias current will double with every 10°C rise in temperature<<bib-analog-devices-input-bias-current>>.
 
 Input bias currents are a problem because these currents will flow through external circuitry connected to the op-amps inputs. This current when flowing through resistors and other impedances will create unwanted voltages which will increase the systematic errors.
 
@@ -243,7 +263,7 @@ The high level output voltage (stem:[V_{OH}]) defines the highest voltage which 
 
 ### Low Level Output Voltage
 
-The low level output voltage (stem:[V_{OL}]) defines the lowest voltage which the op-amp can drive the output to. The LM324 is rumoured to only be able to drive the output near ground if it is sourcing current, but only to 0.5V minimum if sinking (see this EDA Forum post, [LM324 Opamp Gain Instability](http://www.edaboard.com/thread209783.html)).
+The low level output voltage (stem:[V_{OL}]) defines the lowest voltage which the op-amp can drive the output to. The LM324 is rumoured to only be able to drive the output near ground if it is sourcing current, but only to 0.5V minimum if sinking (see this EDA Forum post, link:http://www.edaboard.com/thread209783.html[LM324 Opamp Gain Instability]).
 
 ### Slew Rate
 
@@ -285,12 +305,11 @@ If all of the op-amps are identical, then the following equation can be used:
 BW_{tot} = BW \times \sqrt{2^{\frac{1}{N}} - 1}
 ++++
 
-<p class="centered">
-    where:<br>
-    \( BW_{tot} \) = the total bandwidth of the cascaded op-amp system<br>
-    \( BW \) = the bandwidth of the individual op-amps (remember, they have to be identical)<br>
-    \( N \) = the number of op-amps in the cascaded system<br>
-</p>
+[.text-center]
+where: +
+stem:[ BW_{tot} ] = the total bandwidth of the cascaded op-amp system +
+stem:[ BW ] = the bandwidth of the individual op-amps (remember, they have to be identical) +
+stem:[ N ] = the number of op-amps in the cascaded system
 
 The above equation gives diminishing returns with every additional op-amp added.
 
@@ -316,9 +335,10 @@ A _rail-to-rail_ op-amp is an op-amp which supports input voltages **near** the 
 
 WARNING: "_Rail-to-rail_" op-amps cannot really output either rail voltage, just closer to it that general purpose op-amps.
 
-This also means that a rail-to-ral single-supply op-amp cannot output 0V. **To achieve a true ground output, you need a negative voltage supply.** There are dedicated ICs designed to provide a small negative power supply to op-amps so that they can output true ground. One such example is the [Texas Instruments LM7705](http://www.ti.com/product/LM7705), a "_Low Noise Negative Bias Generator_". This IC only generates -230mV, which allows the designer to use CMOS-based op-amps which usually have a maximum supply voltage of 5.5V.
+This also means that a rail-to-ral single-supply op-amp cannot output 0V. **To achieve a true ground output, you need a negative voltage supply.** There are dedicated ICs designed to provide a small negative power supply to op-amps so that they can output true ground. One such example is the link:http://www.ti.com/product/LM7705[Texas Instruments LM7705], a "_Low Noise Negative Bias Generator_". This IC only generates -230mV, which allows the designer to use CMOS-based op-amps which usually have a maximum supply voltage of 5.5V.
 
-{{< img src="lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png" width="688px" caption="The typical application schematic for the Texas Instruments LM7705, a 'Low-Noise Negative Bias Generator' for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/."  >}}
+.The typical application schematic for the Texas Instruments LM7705, a 'Low-Noise Negative Bias Generator' for the negative supply of an op-amp. This allows the op-amp to output true 0V. Image from http://www.ti.com/.
+image::lm7705-low-noise-negative-bias-voltage-generator-for-op-amp-application-schematic.png[width=688px]
 
 ### Micropower Op-Amps
 
@@ -490,6 +510,8 @@ Some op-amps which are designed to have very low input offset voltages also come
 .Image from https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf.
 image::op07-op-amp-offset-nulling-circuit.png[width=500px]
 
+IMPORTANT: If not using the trim pins, leave them not connected (open circuit). Do NOT connect them to ground.
+
 ## Negative Impedance Converters (NICs)
 
 ### What Is A NIC?
@@ -629,9 +651,10 @@ For 8-pin packages:
 
 {{% figure src="standard-8-pin-dual-op-amp-pinout.svg" width="400px" caption="The standard pinout for two op-amps in an 8-pin package. This includes the DIP-8, TSSOP-8, SOIC-8 and MSOP-8 component packages." %}}
 
-## References
+[bibliography]
+== References
 
-[^ti-lm234-datasheet]: <https://www.ti.com/lit/ds/snosc16d/snosc16d.pdf>, retrieved 2020-10-20.
-[^ti-app-report-input-offset-voltage]: <https://www.ti.com/lit/an/sloa059/sloa059.pdf>, retrieved 2020-10-20.
-[^analog-devices-input-bias-current]: <https://www.analog.com/media/en/training-seminars/tutorials/MT-038.pdf>, retrieved 2020-10-20.
-[^ti-opax196-datasheet]: <https://www.ti.com/lit/ds/symlink/opa196.pdf>
+* [[[bib-ti-lm234-datasheet, 1]]]: Retrieved 2020-10-20, from https://www.ti.com/lit/ds/snosc16d/snosc16d.pdf.
+* [[[bib-ti-app-report-input-offset-voltage, 2]]]: Retrieved 2020-10-20, from https://www.ti.com/lit/an/sloa059/sloa059.pdf.
+* [[[bib-analog-devices-input-bias-current, 3]]]: Retrieved 2020-10-20, from https://www.analog.com/media/en/training-seminars/tutorials/MT-038.pdf.
+* [[[bib-ti-opax196-datasheet, 4]]]: https://www.ti.com/lit/ds/symlink/opa196.pdf
