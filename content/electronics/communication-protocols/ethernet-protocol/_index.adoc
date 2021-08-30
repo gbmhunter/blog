@@ -81,6 +81,17 @@ image::ltc4267-poe-regulator-typical-application.png[width=600px]
 
 Signature resistance of 25kR.
 
+== EtherCAT
+
+EtherCAT is a communication protocol with it's physical layer following the Ethernet standard in IEEE 802.3 (the magnetics and PHY are the same). However, the similarity somewhat stops there, it uses a novel technique where:
+
+. Each device is daisy chained to the next via Ethernet cable.
+. The master emits a Ethernet frame (telegram).
+. Each slave device reads the data addressed to it "on the fly", and inserts it's own data into the frame "on the fly".
+. Propagation times between slaves are only limited by hardware propagation delays.
+
+The master node can be implemented using any device with standard Ethernet capability, the same magnetics, PHY and MAC is used. However, whilst the slave node use the same magnetics and PHY, the MAC is replaced by a special EtherCAT Slave Controller (ESC) which can process frames on the fly.
+
 == Popular Chips
 
 === WIZnet W5xxx Family

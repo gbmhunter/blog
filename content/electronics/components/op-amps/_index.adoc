@@ -21,7 +21,7 @@ An op-amp's gain can be adjusted with the appropriate external circuitry (the op
 An op-amp is commonly drawn on schematics as:
 
 .The basic schematic symbol for an op-amp.
-image::op-amp-basic-schematic-symbol.svg[width=500px]
+image::op-amp-basic-schematic-symbol.svg[width=500px,link="op-amp-basic-schematic-symbol.svg"]
 
 You may see this symbol with or without the voltage supply pins stem:[ +V_{S} ] and stem:[ -V_{S} ]. If they are not present, it is assumed that they are connected up to a power source which should be obvious from the design intent.
 
@@ -37,19 +37,20 @@ WARNING: Always take note of the position of the inverting (-) and non-inverting
 
 ## Op-Amp Topologies
 
-### Voltage Follower (a.k.a. Buffer)
+### Voltage Followers (a.k.a. Buffers)
 
 A _voltage follower_ (also known as a _buffer_) is one of the most basic circuits you can make with an op-amp.
 
 .An op-amp configured as a voltage follower (aka buffer).
 image::op-amp-schematic-voltage-follower-buffer.svg[width=500px]
 
+The output voltage for a voltage follower is just simply:
+
 [stem]
 ++++
 \begin{align}
-A_V &= 1 \\
 \label{eq:buffer-vout-eq-vin}
-V_{OUT} &= V_{IN}
+v_{out} &= v_{in}
 \end{align}
 ++++
 
@@ -57,54 +58,65 @@ As shown in Eq stem:[\ref{eq:buffer-vout-eq-vin}], the output voltage is the sam
 
 A simulation schematic for a voltage-follower op-amp is shown below:
 
-{{< img src="simulation-schematic-for-op-amp-voltage-follower-buffer.png" width="382px" caption="A simulation schematic for an op-amp configured as a voltage-follower (buffer)."  >}}
+.A simulation schematic for an op-amp configured as a voltage-follower (buffer).
+image::simulation-schematic-for-op-amp-voltage-follower-buffer.png[width=400px]
 
 The results of the simulation:
 
-{{< img src="output-voltage-vs-input-voltage-op-amp-voltage-follower.png" width="1400px" caption="The simulation results for an op-amp configured as a voltage-follower (buffer). Note how the output voltage mirrors the input voltage exactly."  >}}
+.The simulation results for an op-amp configured as a voltage-follower (buffer). Note how the output voltage mirrors the input voltage exactly.
+image::output-voltage-vs-input-voltage-op-amp-voltage-follower.png[width=600px]
 
-### Non-Inverting Amplifier
+### Non-Inverting Amplifiers
 
-A op-amp in the non-inverting amplifier configuration is shown below.
+A op-amp in the non-inverting amplifier configuration is shown in <<non-inverting-amplifier-schematic>>.
 
-{{< img src="op-amp-schematic-non-inverting-amplifier.png" width="508px" caption="An op-amp configured as a non-inverting amplifier."  >}}
+[[non-inverting-amplifier-schematic]]
+.An op-amp configured as a non-inverting amplifier.
+image::non-inverting-amplifier-schematic.svg[width=500px]
 
-The equation for the gain of the non-inverting amplifier is:
+The equation for the output voltage of the non-inverting amplifier is:
 
 [stem]
 ++++
-v_o = (1 + \frac{R_f}{R_i} ) v_i
+\begin{align}
+v_{out} = (1 + \frac{R_f}{R_i}) v_{in}
+\end{align}
 ++++
 
 Notice the stem:[1] in the gain equation? This means that no matter what you set the resistors stem:[R_f] and stem:[R_i] to, you can **never get a gain which is less than one**. This is one of the disadvantages of the non-inverting amplifier (you can have a gain of less than one with an inverting amplifier).
 
-Here is a simulation schematic (circuit) for a non-inverting op-amp amplifier running from a single-ended supply. Because R1 (stem:[R_f]) and R2 (stem:[R_i]) are both stem:[1k\Omega], the op-amp has a gain of:
+WARNING: There is no one common convention for labelling these feedback resistors. Sometimes they are called stem:[R_i] and stem:[R_f], other times stem:[R_1] and stem:[R_2] (with either resistor being stem:[R_1])
+
+Here is a simulation schematic (circuit) for a non-inverting op-amp amplifier running from a single-ended supply. Because R1 (stem:[R_f]) and R2 (stem:[R_i]) are both stem:[1k\Omega], the op-amp has a voltage gain stem:[A_V] of:
 
 [stem]
 ++++
-G = 1 + \frac{R_f}{R_i} \\  
-G = 1 + \frac{1k\Omega}{1k\Omega} \\  
-G = 2
+A_V = 1 + \frac{R_f}{R_i} \\  
+A_V = 1 + \frac{1k\Omega}{1k\Omega} \\  
+A_V = 2
 ++++
 
-{{< img src="non-inverting-op-amp-amplifier-simulation-schematic.png" width="465px" caption="The simulation schematic for a non-inverting op-amp amplifier."  >}}
+.The simulation schematic for a non-inverting op-amp amplifier.
+image::non-inverting-op-amp-amplifier-simulation-schematic.png[width=450px]
 
-The results of the simulation are shown below. As you can see, the output voltage stem:[V_{out}] is exactly twice the input voltage stem:[V_{in}].
+The results of the simulation are shown below. As you can see, the output voltage stem:[v_{out}] is exactly twice the input voltage stem:[v_{in}].
 
-{{< img src="vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png" width="1700px" caption="A graph of Vout vs. Vin for a non-inverting op-amp amplifier circuit."  >}}
+.A graph of stem:[v_{out}] vs. stem:[v_{in}] for a non-inverting op-amp amplifier circuit.
+image::vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png[width=700px]
 
 ### Inverting Amplifiers
 
-A op-amp amplifier in the inverting configuration is shown below:
+A op-amp amplifier in the inverting configuration is shown in <<inverting-amplifier-schematic>>.
 
+[[inverting-amplifier-schematic]]
 .An op-amp configured as an inverting amplifier.
-image::op-amp-schematic-inverting-amplifier.png[width=500px]
+image::inverting-amplifier-schematic.svg[width=500px]
 
-The equation for the gain of an inverting amplifier is:
+The equation for the output voltage of an inverting amplifier is:
 
 [stem]
 ++++
-v_o = - \frac{R_f}{R_i} v_i
+v_{out} = - \frac{R_f}{R_i} v_{in}
 ++++
 
 The negative sign is to show that the output is the inverse polarity of the input. Notice that, unlike the non-inverting amplifier, **an inverting amplifier lets you obtain a gain of less than 1**.
@@ -116,22 +128,25 @@ image::inverting-op-amp-simulation-schematic.png[width=600px]
 
 And below are the simulation results for the above schematic:
 
-.Vout vs. Vin for an inverting op-amp with a gain of -1.
+.stem:[v_{out}] vs. stem:[v_{in}] for an inverting op-amp with a gain of -1.
 image::vout-vs-vin-inverting-op-amp-gain-neg-1.png[width=700px]
 
 ### Differential Amplifiers
 
-A differential amplifier amplifies the difference between two electrical signals.
+A differential amplifier amplifies the difference between two electrical signals, but does not amplify any signal that is common to both inputs. The schematic is shown in <<differential-amplifier-schematic>>.
 
+[[differential-amplifier-schematic]]
 .An op-amp configured as a differential amplifier.
-image::op-amp-schematic-differential-amplifier.png[width=500px]
+image::differential-amplifier-schematic.svg[width=500px]
 
 The output voltage is given by the equation:
 
 [stem]
 ++++
-v_o = \frac{R_4}{R_3 + R_4}(1 + \frac{R_2}{R_1})v_2 - \frac{R_2}{R_1}v_1
+v_{out} = \frac{R_2}{R_1 + R_2}(1 + \frac{R_4}{R_3})v_1 - \frac{R_4}{R_3}v_2
 ++++
+
+TIP: It's easy to confuse a differential amplifier (what we are discussing here) with a _differentiator amplifier_, which performs the mathematical function of differentiation (opposite of integration).
 
 Below is a schematic for simulating the behaviour of a differential op-amp:
 
@@ -143,19 +158,43 @@ This schematic produces the following results:
 .A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier.
 image::differential-op-amp-simulation-graph-vin1-vin2-vout.png[width=700px]
 
-### Integrators
+=== Integration Amplifiers
 
-It's output voltage is proportional to the integral of the input voltage w.r.t. time. The figure below shows an **ideal** op-amp based integrator.
+An _integration amplifier_ performs mathematical integration on the input signal -- It's output voltage is proportional to the integral of the input voltage w.r.t. time. <<integration-amplifier-schematic-ideal>> shows an **ideal** op-amp based integrator.
 
+[[integration-amplifier-schematic-ideal]]
 .An op-amp configured as an ideal integrator.
-image::op-amp-schematic-ideal-integrator.png[width=500px]
+image::integration-amplifier-schematic-ideal.svg[width=500px]
 
-However, this circuit is normally not practical in real world situations. Any errors such as the output offset voltage and input bias current (which all op-amps invariably have), as well as a non-perfect input signal with small amounts of DC bias, will cause the output to drift, until it reaches saturation.
+Eq. stem:[\ref{eq:vout-vin-ideal-integrator}] shows the relationship between input and output voltage.
+
+[stem]
+++++
+\begin{align}
+\label{eq:vout-vin-ideal-integrator}
+v_{out} = \frac{1}{R_i C} \int_0^t v_{in}\ dt
+\end{align}
+++++
+
+**However, this circuit is normally not practical in real world situations**. Any errors such as the output offset voltage and input bias current (which all op-amps invariably have), as well as a non-perfect input signal with small amounts of DC bias, will cause the output to drift, until it reaches saturation.
 
 A way to fix this problem is to insert a high-valued feedback resistor, stem:[R_f], to limit the DC gain, as well as a resistor, stem:[R_{bias}], on the non-inverting input terminal to compensate for the input bias current.
 
-.An op-amp configured as a non-ideal (real world) integrator, with feedback resistor Rf to slowly remove DC offset.
-image::op-amp-schematic-integrator-non-ideal.png[width=430px]
+.An op-amp configured as a non-ideal (real world) integrator, with feedback resistor stem:[R_f] to slowly remove DC offset and stem:[R_{bias}] to compensate for input bias current.
+image::integration-amplifier-schematic-non-ideal.svg[width=430px]
+
+[stem]
+++++
+\begin{align}
+v_{out} &= \frac{1}{R_i C} \int_0^t v_{in}\ dt \\
+R_{bias} &= R_i\ ||\ R_f ||\ R_L \\
+V_E &= (\frac{R_f}{R_i} + 1) V_{OS}
+\end{align}
+++++
+
+=== Differentiator Amplifiers
+
+TODO: Add content here.
 
 ### Transconductance Amplifiers
 
@@ -488,7 +527,8 @@ Dedicated charge-pump topology power supply ICs are available that supply a smal
 
 Isolation amplifiers provide galvanic isolation between the input (sensor) and output (measurement circuitry). They are used to protect the sensor measurement and recording circuitry (e.g. a microcontroller with on-board ADC) from dangerously high voltages at the sensor, and also the opposite, to protect the sensor environment from potentially dangerous voltages on the rest of the system.
 
-{{< img src="fully-differential-isolation-amplfier-ti-amc1200-simplified-schematic.pdf.png" width="753px" caption="A simplified schematic of the Texas Instruments AMC1200, a fully-differential isolated amplifier. Image from http://www.ti.com/." >}}
+.A simplified schematic of the Texas Instruments AMC1200, a fully-differential isolated amplifier. Image from http://www.ti.com/.
+image::fully-differential-isolation-amplfier-ti-amc1200-simplified-schematic.pdf.png[width=700px]
 
 A common application would be to isolate and amplify the voltage across a current-sense resistor on a high-power motor, or to protect humans with medical sensors connected to them from the measurement system.
 
@@ -649,7 +689,8 @@ Op-amps are usually packaged in industry standard through-hole and surface mount
 
 For 8-pin packages:
 
-{{% figure src="standard-8-pin-dual-op-amp-pinout.svg" width="400px" caption="The standard pinout for two op-amps in an 8-pin package. This includes the DIP-8, TSSOP-8, SOIC-8 and MSOP-8 component packages." %}}
+.The standard pinout for two op-amps in an 8-pin package. This includes the DIP-8, TSSOP-8, SOIC-8 and MSOP-8 component packages.
+image::standard-8-pin-dual-op-amp-pinout.svg[width=400px]
 
 [bibliography]
 == References
