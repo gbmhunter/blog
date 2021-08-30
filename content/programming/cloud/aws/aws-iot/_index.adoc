@@ -4,8 +4,8 @@ categories: [ "Programming", "Cloud", "AWS" ]
 date: 2021-08-26
 description: "An introduction to AWS IoT."
 draft: false
-lastmod: 2021-08-26
-tags: [ "programming", "cloud", "AWS", "Amazon Web Services", "IoT" ]
+lastmod: 2021-08-30
+tags: [ "programming", "cloud", "AWS", "Amazon Web Services", "IoT", "X-CUBE-AWS" ]
 title: "AWS IoT"
 type: "page"
 ---
@@ -43,4 +43,11 @@ The AWS IoT Device SDK For Embedded C (commonly shortened to C-SDK) that you can
 Most of these components have no dependencies other than the standard C library.
 
 Link: https://github.com/aws/aws-iot-device-sdk-embedded-c
+
+X-CUBE-AWS is a port of the AWS IoT Device SDK to the STM32L4, STM32H7 and STM32WB series of microcontrollers<<bib-stm-aws-iot>>.
+
+[bibliography]
+== References
+
+* [[[bib-stm-aws-iot, 1]]] STMicroelectronics. _AWS IoT software expansion for STM32Cube (UM2178)_. Retrieved 2021-08-30, from https://www.st.com/en/embedded-software/x-cube-aws.html
 
