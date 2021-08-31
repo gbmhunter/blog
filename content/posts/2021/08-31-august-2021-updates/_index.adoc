@@ -47,3 +47,7 @@ image::/posts/2021/08-31-august-2021-updates/bjt-safe-operating-area-screenshot.
 * New link:/programming/cloud/aws/aws-iot/[AWS IoT page].
 
 * New link:/electronics/components/power-regulators/isolated-switch-mode-power-supplies/[Isolated Switch Mode Power Supplies page], with info on flyback converters including basic schematics and feedback using optoisolators.
+
+* Added info on how to design foldback current limiting with a linear regulator.
++
+image::linear-reg-foldback-current-limit-screenshot.png[width=400px]

@@ -3,8 +3,8 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components" ]
 date: 2014-11-09
 draft: false
-lastmod: 2021-08-24
-tags: [ "electronics", "components", "power regulator", "linear regulator", "bypass capacitor", "PSRR", "CMRR", "low dropout", "adjustable", "series regulator", "shunt regulator" ]
+lastmod: 2021-08-31
+tags: [ "electronics", "components", "power regulator", "linear regulator", "bypass capacitor", "PSRR", "CMRR", "low dropout", "adjustable", "series regulator", "shunt regulator", "foldback current limiting", "pass transistor" ]
 title: "Linear Regulators"
 type: "page"
 ---
@@ -92,7 +92,9 @@ The power lost as heat through a linear regulator is:
 
 [stem]
 ++++
+\begin{align}
 P_t = (V_{out} - V_{in}) I
+\end{align}
 ++++
 
 [.text-center]
@@ -105,7 +107,9 @@ The regulator has to be able to dissipate this power without exceeding the maxim
 
 [stem]
 ++++
+\begin{align}
 T_j = P_{t}T_{j-a} + T_a
+\end{align}
 ++++
 
 [.text-center]
@@ -146,10 +150,64 @@ image::tps51206-ti-ddr-termination-regulator-simplified-application-schematic.pn
 
 DDR memory draws current in quick surges of around 2-3A. Most DDR termination regulators support both the sinking and sourcing of current, which means they can clamp the voltage if an overshoot occurs due to a fast switching transient. Standard linear regulators cannot do this, and only source current.
 
+== Foldback Current Limiting
+
+_Foldback current limiting_ (a.k.a. _voltage-dependent current limiting_<<bib-ns-v-reg-fundamentals>>) is when the short circuit current of a linear regulator is decreased to a value less than the max. current when the output is at it's normal operating voltage. This is done to protect the series pass transistor in a linear regulator, as it can otherwise start dissipating too much power and overheat.
+
+Foldback current limiting is usually done when simple current limiting is not effective, for example in high output voltage linear regulators which are rated to a high current. Under normal operation, the difference between input and output voltage is small and the power dissipation in the series pass transistor is also consequentially small. But if the output is shorted, now almost the full input voltage is dropped across the pass transistor, causing the power dissipation to shot up.
+
+For example, a 15V in, 12V 1A out linear regulator under normal conditions would dissipate 3W of heat. In the event of a short circuit on the output, without foldback current limiting, this would increase to 15W! A foldback current circuit would maybe limit the short circuit current to 200mA, thus the same 3W is dissipated under the event of a short.
+
+<<foldback-current-limiting-circuit>> shows how foldback current limiting is typically implemented in a linear regulator (either internally or externally to an IC).
+
+[[foldback-current-limiting-circuit]]
+.Foldback current limiting circuit added to a simple series linear regulator.
+image::foldback-current-limiting-circuit.svg[width=800px]
+
+=== How Foldback Current Limiting Works
+
+. Under normal conditions, stem:[Q2] is off and stem:[Q1] turns on enough to regulate the output voltage as normal.
+. As the load current increases, the voltage drop across stem:[R_{SC}] increases.
+. When the load current reaches a certain point, the voltage across stem:[R_{SC}] is large enough that when divided down by stem:[R1] and stem:[R2], it reaches stem:[0.6V] and begins to turn on stem:[Q2].
+. stem:[Q2] robs stem:[Q1] of base drive, turning it more off and thus reducing the output voltage.
+
+=== Design Procedure
+
+The maximum load current stem:[I_{MAX}] before foldback current limiting will kick in is given by Eq. stem:[\ref{eq:foldback-imax}].
+
+[stem]
+++++
+\begin{align}
+\label{eq:foldback-imax}
+I_{MAX} = \frac{1}{R_{SC}} (( 1 + \frac{R1}{R2}) V_{BE} + \frac{R_1}{R_2}V_{REG})
+\end{align}
+++++
+
+[.text-center]
+where: +
+stem:[V_{REG}] is the desired regulated output voltage under non-fault conditions, in Volts [stem:[V]] +
+stem:[V_{BE}] is the forward base-emitter voltage drop, approx. stem:[0.6V] +
+All resistances as shown in <<foldback-current-limiting-circuit>> in Ohms [stem:[\Omega]] +
+
+The short-circuit current stem:[I_{SC}] when stem:[V_{OUT}] falls to stem:[0] is given by Eq. stem:[\ref{eq:foldback-isc}].
+
+[stem]
+++++
+\begin{align}
+\label{eq:foldback-isc}
+I_{SC} = \frac{1}{R_{SC}} (1 + \frac{R_1}{R_2}) V_{BE}
+\end{align}
+++++
+
 == Example Devices
 
-The [Texas Instruments TPS7A4001](http://www.ti.com/product/tps7A4001) is a high-voltage (100V) linear regulator which can provide up to 50mA of current.
+The link:http://www.ti.com/product/tps7A4001[TPS7A4001] is a high-voltage (100V) linear regulator which can provide up to 50mA of current.
 
 The LM78xx series (for fixed positive voltages) and LM79xx series (for fixed negative voltages) of linear regulators have traditionally been very popular choices. They are not low dropout.
 
 The LM317 (for adjustable positive voltages) and LM337 (for adjustable negative voltages) are also very common.
+
+[bibliography]
+== References
+
+* [[[bib-ns-v-reg-fundamentals, 1]]] Simpson, C.. _SNVA558: Linear and Switching Voltage Regulator Fundamentals_. Texas Instruments. Retrieved 2021-08-31, from https://www.ti.com/lit/an/snva558/snva558.pdf
