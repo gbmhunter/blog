@@ -52,6 +52,6 @@ image::/posts/2021/08-31-august-2021-updates/lin-reg-discharge-protection-screen
 +
 image::/posts/2021/08-31-august-2021-updates/flyback-converters-screenshot.png[width=400px]
 
-* Added info on how to design foldback current limiting with a linear regulator.
+* Added info on link:/electronics/components/power-regulators/linear-regulators/#_foldback_current_limiting[how to design foldback current limiting with a linear regulator].
 +
 image::/posts/2021/08-31-august-2021-updates/linear-reg-foldback-current-limit-screenshot.png[width=400px]
