@@ -67,7 +67,7 @@ Recommended schematic symbol(s):
 .The schematic symbol for a battery.
 image::battery-symbol.svg[width=200px]
 
-### Capacitors (C)
+### Capacitors \(C)
 
 `C` is the recommended designator for capacitors (both polarised and non-polarised). Sometimes you will see `VC` used for a variable capacitor (these are not common). I recommend using two different schematic symbols, flat plates for a non-polarised capacitor, and one plate which is curved for a polarised capacitor.
 
@@ -330,7 +330,7 @@ Designator(s):
 
 ### Transistors (Q)
 
-Typically, `Q` is used for all transistors, no matter if they are BJTs, MOSFETs, JFETs, e.t.c. 
+Typically, `Q` is used for all transistors, no matter if they are BJTs, MOSFETs, JFETs, e.t.c.
 
 Designator(s):
 
@@ -338,14 +338,8 @@ Designator(s):
 
 Recommended schematic symbol(s):
 
-[.imagerow]
---
-.The schematic symbol for an N-channel MOSFET.
-image::n-channel-mosfet-schematic-symbol.png[width=250px, height=200px]
-
-.The schematic symbol for a P-channel MOSFET.
-image::p-channel-mosfet-schematic-symbol.png[width=250px, height=200px]
---
+.Schematic symbols for a variety of different transistor types. Showing the circle around the BJT or the body diode of the MOSFET is personal choice, however I do recommend showing the MOSFET body diode so you don't forget it's there when designing a circuit!
+image::transistor-symbols.svg[width=700px]
 
 ### Test Point (TP)
 
@@ -400,5 +394,5 @@ The above pattern also contains the start and end-of-line anchors `^` and `$`, t
 [bibliography]
 == References
 
-* [[[bib-an-component-designators]]]: RF Cafe (<publish date unknown>). _AN (Army / Navy) Component Designators & Designations_. RF Cafe. Retrieved 2021-07-06, from https://www.rfcafe.com/references/electrical/an-component-designators.htm
-* [[[bib-ics]]]: https://electronics.stackexchange.com/questions/25655/why-is-u-used-for-ics-on-circuit-diagrams, fetched on 2019-05-03.
+* [[[bib-an-component-designators, 1]]]: RF Cafe (<publish date unknown>). _AN (Army / Navy) Component Designators & Designations_. RF Cafe. Retrieved 2021-07-06, from https://www.rfcafe.com/references/electrical/an-component-designators.htm
+* [[[bib-ics, 2]]]: https://electronics.stackexchange.com/questions/25655/why-is-u-used-for-ics-on-circuit-diagrams, fetched on 2019-05-03.
