@@ -164,6 +164,14 @@ For example, a 15V in, 12V 1A out linear regulator under normal conditions would
 .Foldback current limiting circuit added to a simple series linear regulator.
 image::foldback-current-limiting-circuit.svg[width=800px]
 
+<<foldback-current-limiting-graph>> shows the V/I response of a linear regulator with foldback current limiting. As the load resistance decreases, the output voltage stays steady at stem:[V_{REG}] until stem:[I_{MAX}] is reached. Then both the output voltage and current reduces, with the current decreasing to stem:[I_{SC}] as the load resistance reaches stem:[0\Omega] (direct short).
+
+[[foldback-current-limiting-graph]]
+.V/I response of a linear regulator with foldback current limiting. Arrow shows direction of decreasing load resistance, all the way to a direct short.
+image::foldback-current-limiting-graph.svg[width=400px]
+
+WARNING: When using a foldback current limiter, non-ohmic loads such as incandescent bulbs or inductive motors can get "stuck" at start-up.
+
 === How Foldback Current Limiting Works
 
 . Under normal conditions, stem:[Q2] is off and stem:[Q1] turns on enough to regulate the output voltage as normal.
