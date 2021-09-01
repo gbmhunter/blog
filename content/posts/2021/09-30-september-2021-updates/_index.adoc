@@ -1,0 +1,15 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Posts", "Updates" ]
+date: 2021-09-30
+description: "Blog updates during September 2021."
+draft: false
+lastmod: 2021-09-30
+tags: []
+title: "September 2021 Updates"
+type: "post"
+---
+
+== Updates This Month
+
+* Added a "How They Work" section to the Analogue Switches page, including a circuit diagram.
