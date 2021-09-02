@@ -1,0 +1,12 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2021-09-02
+draft: false
+lastmod: 2021-09-02
+tags: [ "component packages", "PCB design", "SC-89", "SOD-563" ]
+title: "SOD-563 Component Package"
+type: "page"
+---
+
+SOD-563 is a synonym for the link:../sc-89-component-package[SC-89-6 (SC-89 6-lead)] package.
