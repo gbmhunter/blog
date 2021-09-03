@@ -285,6 +285,8 @@ The _input offset voltage_ varies with both temperature and time (drift). The va
 
 The change of input offset voltage with time is called aging. Aging is normally specified in stem:[uV/1000hours]. But since aging is a physical process that follows the "random walk pattern" (Brownian motion), it is more accurate to describe it proportional to the square root of elapsed time.
 
+Some op-amps are trimmed by the manufacturer after the op-amp is packaged. Performing trimming after packaging prevents any production-line effects from effecting the input offset voltage. One such example is the family of AD8601, AD8602 and AD8604 op-amps from Analog Devices. The offset is trimmed with a special digital code using no extra pins (i.e. reuses existing op-amp pins). Once programmed, poly-silicon fuses are blown to permanently set the trim values<<bib-analog-devices-input-offset-voltage>>.
+
 ==== Trimming Input Offset Voltage
 
 If your op-amp lacks a dedicated trim pin, you can make your own trimming circuit as shown in <<input-offset-voltage-trimming-inverting>>. This is for an op-amp in the inverting configuration. stem:[VR1] is a potentiometer, manually adjusted until it cancels out the op-amps input offset voltage. 
