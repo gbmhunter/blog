@@ -262,11 +262,18 @@ The _common-mode input voltage range_ is the range of voltages that can appear a
 
 ### Input Offset Voltage (Vos/Vio)
 
-The _input offset voltage_ stem:[V_{OS}] (or sometimes called stem:[V_{IO}]) is the voltage difference required between the two input pins to force the output to 0. It is a DC measurement parameter. In an ideal op-amp, the op-amp only amplifies a difference between the inputs, and so the output is 0V when the difference is 0V. However, real-world op-amps always have some unavoidable differences in the internal components that make up the op-amps (specifically, in the input differential stage of the internal circuitry), and thus the inputs are not perfectly identical. The input offset voltage is typically in the following ranges:
+**The _input offset voltage_ stem:[V_{OS}] (or sometimes called stem:[V_{IO}]) is the voltage difference required between the two input pins to force the output to 0**. It is a DC measurement parameter. In an ideal op-amp, the op-amp only amplifies a difference between the inputs, and so the output is 0V when the difference is 0V, hence the input offset voltage is 0V. However, real-world op-amps always have some unavoidable differences in the internal components that make up the op-amps (specifically, in the input differential stage of the internal circuitry), and thus the inputs are not perfectly identical. <<input-offset-voltage-model>> shows how the input offset voltage is modelled as a voltage source in series with one of the inputs of an ideal op-amp.
+
+[[input-offset-voltage-model]]
+.The input offset voltage is modelled as a voltage source in series with one of the inputs of an ideal op-amp (it doesn't matter which input, as the input offset voltage can be positive or negative).
+image::input-offset-voltage-model.svg[width=600px]
+
+The input offset voltage is typically in the following ranges:
 
 * 1-5mV for good general purpose op-amps, 5-15mV for really bad ones.
 * 200uV-1mV for specialized low input offset voltage op-amps
-* 10uV-200uV for the best "ultra" low input offset voltage op-amps 
+* 10uV-200uV for the best "ultra" low input offset voltage op-amps.
+* < 1uV for chopper-stabilized (auto-zero) op-amps.
 
 For example, the general purpose LM324 has a typical input offset voltage of 2mV and a maximum of 3mV, at stem:[T_A = 25°C]<<bib-ti-lm234-datasheet>>. "Low" input offset voltage op-amps will have a stem:[V_{OS}] in the range of 50-200uV. For example, the OPAx196 family of op-amps has a max. stem:[V_{IO}: 100uV]<<bib-ti-opax196-datasheet>>.
 
