@@ -16,4 +16,4 @@ type: "post"
 
 * Added a new page with info on the link:/pcb-design/component-packages/sc-89-component-package/[SC-89 component package].
 
-* Added a model of the input offset voltage for op-amps.
+* Added a model of the input offset voltage for op-amps, a schematic for external input offset voltage trimming, and info on input offset voltage drift with both temperature and time to the link:/electronics/components/op-amps/[Op-Amps page].
