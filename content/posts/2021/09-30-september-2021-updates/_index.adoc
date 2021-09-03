@@ -15,3 +15,5 @@ type: "post"
 * Added a link:/electronics/components/analogue-switches/["How They Work" section] to the Analogue Switches page, including a circuit diagram.
 
 * Added a new page with info on the link:/pcb-design/component-packages/sc-89-component-package/[SC-89 component package].
+
+* Added a model of the input offset voltage for op-amps.
