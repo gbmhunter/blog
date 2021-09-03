@@ -268,7 +268,7 @@ The _common-mode input voltage range_ is the range of voltages that can appear a
 .The input offset voltage is modelled as a voltage source in series with one of the inputs of an ideal op-amp (it doesn't matter which input, as the input offset voltage can be positive or negative).
 image::input-offset-voltage-model.svg[width=600px]
 
-The input offset voltage is typically in the following ranges:
+A non-zero input offset voltage results in gain errors between the input and output of a op-amp. The input offset voltage is typically in the following ranges:
 
 * 1-5mV for good general purpose op-amps, 5-15mV for really bad ones.
 * 200uV-1mV for specialized low input offset voltage op-amps
@@ -277,9 +277,31 @@ The input offset voltage is typically in the following ranges:
 
 For example, the general purpose LM324 has a typical input offset voltage of 2mV and a maximum of 3mV, at stem:[T_A = 25°C]<<bib-ti-lm234-datasheet>>. "Low" input offset voltage op-amps will have a stem:[V_{OS}] in the range of 50-200uV. For example, the OPAx196 family of op-amps has a max. stem:[V_{IO}: 100uV]<<bib-ti-opax196-datasheet>>.
 
-A non-zero input offset voltage results in gain errors between the input and output of a op-amp.
-
 Input offset voltages vary by op-amp transistor technology. Bipolar op-amps typically have the lowest input offset voltage, followed by CMOS and the BiFET op-amps<<bib-ti-app-report-input-offset-voltage>>.
+
+==== Input Offset Voltage Drift
+
+The _input offset voltage_ varies with both temperature and time (drift). The variation with temperature is usually represented by stem:[T_C V_{OS}] (I've also seen stem:[\Delta V_{IO}/\Delta T] used<<bib-onsemi-lm324>>). Typical temperature drift for precision op-amps is in the range of stem:[1-10uV^{\circ}C]<<bib-analog-devices-input-offset-voltage>>. The venerable LM324 has a stem:[T_C V_{OS} = 7uV^{\circ}C] (max)<<bib-onsemi-lm324>>.
+
+The change of input offset voltage with time is called aging. Aging is normally specified in stem:[uV/1000hours]. But since aging is a physical process that follows the "random walk pattern" (Brownian motion), it is more accurate to describe it proportional to the square root of elapsed time.
+
+==== Trimming Input Offset Voltage
+
+If your op-amp lacks a dedicated trim pin, you can make your own trimming circuit as shown in <<input-offset-voltage-trimming-inverting>>. This is for an op-amp in the inverting configuration. stem:[VR1] is a potentiometer, manually adjusted until it cancels out the op-amps input offset voltage. 
+
+[[input-offset-voltage-trimming-inverting]]
+.A popular way of performing external input offset voltage trimming with a inverting op-amp.
+image::input-offset-voltage-trimming-inverting.svg[width=700px]
+
+The maximum input offset voltage you can compensate for with this circuit is given by Eq stem:[\ref{eq:trim-inverting-offset}]<<bib-analog-devices-input-offset-voltage>>.
+
+[stem]
+++++
+\begin{align}
+\label{eq:trim-inverting-offset}
+V_{offset} =  \pm(1 + \frac{R2}{R1}) (\frac{R_P}{R_P + R3}) V_R
+\end{align}
+++++
 
 ### Input Bias Current (Ib+ and Ib-)
 
@@ -706,3 +728,6 @@ image::standard-8-pin-dual-op-amp-pinout.svg[width=400px]
 * [[[bib-ti-app-report-input-offset-voltage, 2]]]: Retrieved 2020-10-20, from https://www.ti.com/lit/an/sloa059/sloa059.pdf.
 * [[[bib-analog-devices-input-bias-current, 3]]]: Retrieved 2020-10-20, from https://www.analog.com/media/en/training-seminars/tutorials/MT-038.pdf.
 * [[[bib-ti-opax196-datasheet, 4]]]: https://www.ti.com/lit/ds/symlink/opa196.pdf
+* [[[bib-analog-devices-input-offset-voltage, 5]]] Analog Devices (2008, Oct.). _MT-037: Op Amp Input Offset Voltage_. Retrieved 2021-09-03, from https://www.analog.com/media/en/training-seminars/tutorials/MT-037.pdf.
+* [[[bib-onsemi-lm324, 6]]] OnSemiconductor (2021, Aug.). _Single Supply Quad
+Operational Amplifiers (Datasheet)_. Retrieved 2021-09-03, from https://www.onsemi.com/pdf/datasheet/lm324-d.pdf. 
