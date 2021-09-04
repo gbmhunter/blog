@@ -1,0 +1,36 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "Circuit Design" ]
+date: 2021-09-04
+draft: false
+lastmod: 2021-09-04
+tags: [ "electronics", "poles", "zeroes", "transfer functions", "bode plots", "Laplace", "control systems" ]
+title: "What Are Poles And Zeroes?"
+type: "page"
+---
+
+== Overview
+
+**A value of stem:[s] that causes the a transfer function to be 0 is called a _zero_, and a value of stem:[s] that causes the transfer function to be infinite is called a _pole_**. Zeroes generally occur when a factor in the numerator is 0 (one notable exception is that a zero can also occur if the denominator tends towards infinity, usually as stem:[s \rightarrow \infty]), poles generally occur when a factor in the denominator is 0.
+
+The poles and zeros of a system can tell you much about how the system performs -- it can tell you if the system is stable, how fast it responds
+
+A first-order low-pass RC filter has the transfer function shown in Eq. stem:[\ref{eq:rc-xfer-fn}].
+
+[stem]
+++++
+\begin{align}
+\label{eq:rc-xfer-fn}
+H(s) = \frac{a_0}{s + w_0}
+\end{align}
+++++
+
+This system has a pole at stem:[s = w_0] and a zero at stem:[s = \infty].
+
+== Pole Zero Plots
+
+Zeroes contribute +90 of phase and increase the magnitude, above the zero frequency.
+Poles contribute -90 of phase and decrease the magnitude, above the pole frequency.
+
+.Graph showing how the location of poles (no zeroes shown) on a pole zero plots shows how components of the system respond to transients (i.e. impulses).
+image::poles-graph.png[width=800px]
