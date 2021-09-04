@@ -3,6 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2016-05-31
 draft: false
+lastmod: 2016-05-31
 tags: [ "voltage", "current", "converter", "Howland", "current source" ]
 title: "Voltage-To-Current Converters"
 type: "page"
