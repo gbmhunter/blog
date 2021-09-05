@@ -4,16 +4,46 @@ categories: [ "Electronics", "Circuit Design" ]
 date: 2021-09-04
 draft: false
 lastmod: 2021-09-04
-tags: [ "electronics", "poles", "zeroes", "transfer functions", "bode plots", "Laplace", "control systems" ]
-title: "What Are Poles And Zeroes?"
+tags: [ "electronics", "poles", "zeroes", "transfer functions", "bode plots", "Laplace", "control systems", "complex numbers", "angular frequency" ]
+title: "What Are Transfer Functions, Poles, And Zeroes?"
 type: "page"
 ---
 
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
 == Overview
+
+_Transfer functions_ are a way of describing the frequency response of a system. The system can be anything with a measurable input and output, e.g. mechanical spring/mass/dampers, electronic RLC circuits, e.t.c. This page will put an emphasis on electrical transfer functions.
+
+Transfer functions describe the relationship between output and input (typically of voltage, but it doesn't have to be) and are usually written in the Laplace domain using the variable stem:[s], where stem:[s] is the complex angular frequency. stem:[Eq. \ref{eq:xfer-fn-vout-vin}] shows this relationship. Note that because we are using stem:[s], this equation encodes both magnitude and phase relationships between the output and input.
+
+[stem]
+++++
+\begin{align}
+\label{eq:xfer-fn-vout-vin}
+H(s) = \frac{v_{out}(s)}{v_{in}(s)}
+\end{align}
+++++
 
 **A value of stem:[s] that causes the a transfer function to be 0 is called a _zero_, and a value of stem:[s] that causes the transfer function to be infinite is called a _pole_**. Zeroes generally occur when a factor in the numerator is 0 (one notable exception is that a zero can also occur if the denominator tends towards infinity, usually as stem:[s \rightarrow \infty]), poles generally occur when a factor in the denominator is 0.
 
-The poles and zeros of a system can tell you much about how the system performs -- it can tell you if the system is stable, how fast it responds
+Intuitively, you can think of zeroes as places in where the system completely blocks a certain frequency. A poles is a place where the system has infinite response (at least mathematically).
+
+The zeroes are the roots of the numerator polynomial, and the poles are the roots of the denominator polynomial. For this reason they are also referred to generally as _roots_.
+
+The poles and zeros of a system can tell you much about how the system performs -- it can tell you if the system is stable, how fast it responds.
+
+For example, the transfer function in stem:[Eq. \ref{eq:xfer-fn-1-over-s}] has a pole at the origin and a zero at infinity. This simple transfer function represents an integrator. A constant voltage applied to it will result in an output climbs without any limit. However, at high frequencies, the output is essentially zero as the positive and negative parts of the waveform are averaged out over time.
+
+[stem]
+++++
+\begin{align}
+\label{eq:xfer-fn-1-over-s}
+H(s) = \frac{1}{s}
+\end{align}
+++++
+
+== The Transfer Function Of A Low-Pass RC Filter
 
 A first-order low-pass RC filter has the transfer function shown in Eq. stem:[\ref{eq:rc-xfer-fn}].
 
@@ -21,16 +51,47 @@ A first-order low-pass RC filter has the transfer function shown in Eq. stem:[\r
 ++++
 \begin{align}
 \label{eq:rc-xfer-fn}
-H(s) = \frac{a_0}{s + w_0}
+H(s) &= \frac{1}{1 + \b{s}RC} \\
+\b{s} &= j\omega \\
+\omega &= 2\pi f \\
+H(f) &= \frac{1}{1 + j2\pi fRC}
 \end{align}
 ++++
 
-This system has a pole at stem:[s = w_0] and a zero at stem:[s = \infty].
+This system has a pole at stem:[f = \frac{1}{2\pi R C}] and a zero at stem:[f = \infty].
+
+We can find the magnitude response of this low-pass RC filter by taking the magnitude of stem:[H(f)], remembering that the magnitude of a complex number is defined as in stem:[Eq. \ref{eq:magnitude-of-complex-num}]. 
+
+[stem]
+++++
+\begin{align}
+\label{eq:magnitude-of-complex-num}
+|a + jb| = \sqrt{(a + jb)(a - jb)}
+\end{align}
+++++
+
+[stem]
+++++
+\begin{align}
+\label{eq:abc}
+| H(f) | &= \left| \frac{1}{1 + j2\pi fRC} \right| \nonumber \\
+         &= \frac{1}{\sqrt{(1 + j2\pi fRC)(1 - j2\pi fRC)}} \nonumber \\
+         &= \frac{1}{\sqrt{1 - (j2\pi fRC)^2}} \nonumber \\
+         &= \frac{1}{\sqrt{1 - (-1)(2\pi fRC)^2}} \nonumber \\
+\label{eq:mag-response-lp-rc-filter}
+         &= \frac{1}{\sqrt{1 + (2\pi fRC)^2}} \\
+\end{align}
+++++
+
+stem:[Eq. \ref{eq:mag-response-lp-rc-filter}] shows the final result. Notice that by finding the magnitude, the imaginary components are gone! We can plot this on a graph.
 
 == Pole Zero Plots
 
-Zeroes contribute +90 of phase and increase the magnitude, above the zero frequency.
-Poles contribute -90 of phase and decrease the magnitude, above the pole frequency.
+* Zeroes contribute +90 of phase and increase the magnitude, above the zero frequency.
+* Poles contribute -90 of phase and decrease the magnitude, above the pole frequency.
+
+Poles are normally drawn as X's on the graph, and zeroes as O's. Unless you are building an oscillator, poles in the right-hand half of the plane (having a positive real component) are a bad thing, as they represent an instability.
 
 .Graph showing how the location of poles (no zeroes shown) on a pole zero plots shows how components of the system respond to transients (i.e. impulses).
-image::poles-graph.png[width=800px]
+image::poles-graph.png[width=900px]
+
