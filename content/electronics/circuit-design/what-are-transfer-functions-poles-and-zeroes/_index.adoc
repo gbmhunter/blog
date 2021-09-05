@@ -15,7 +15,24 @@ WARNING: This page is in notes format, and may not be of the same quality as oth
 
 _Transfer functions_ are a way of describing the frequency response of a system. The system can be anything with a measurable input and output, e.g. mechanical spring/mass/dampers, electronic RLC circuits, e.t.c. This page will put an emphasis on electrical transfer functions.
 
-Transfer functions describe the relationship between output and input (typically of voltage, but it doesn't have to be) and are usually written in the Laplace domain using the variable stem:[s], where stem:[s] is the complex angular frequency. stem:[Eq. \ref{eq:xfer-fn-vout-vin}] shows this relationship. Note that because we are using stem:[s], this equation encodes both magnitude and phase relationships between the output and input.
+Transfer functions are usually written in the Laplace domain using the variable stem:[s], where stem:[s] is the complex angular frequency, as shown in stem:[Eq.\ \ref{eq:s-eq-j-w}].
+
+[stem]
+++++
+\begin{align}
+\label{eq:s-eq-j-w}
+s = j\omega
+\end{align}
+++++
+
+[.text-center]
+where: +
+stem:[j] is the imaginary number (stem:[j = \sqrt{-1}]), also seen as stem:[i] in maths (stem:[j] is used in electronics as to not get stem:[i] confused with current) +
+stem:[\omega = 2\pi f] +
+
+NOTE: Angular frequency stem:[\omega] is used here rather than Hertz stem:[f] just to keep the equations tidier, but it is trivial to convert from one to the other!
+
+Transfer functions describe the relationship between output and input (typically of voltage, but it doesn't have to be). stem:[Eq.\ \ref{eq:xfer-fn-vout-vin}] shows this relationship. We will use the symbol stem:[H(s)] is represent the transfer function.
 
 [stem]
 ++++
@@ -25,7 +42,34 @@ H(s) = \frac{v_{out}(s)}{v_{in}(s)}
 \end{align}
 ++++
 
-**A value of stem:[s] that causes the a transfer function to be 0 is called a _zero_, and a value of stem:[s] that causes the transfer function to be infinite is called a _pole_**. Zeroes generally occur when a factor in the numerator is 0 (one notable exception is that a zero can also occur if the denominator tends towards infinity, usually as stem:[s \rightarrow \infty]), poles generally occur when a factor in the denominator is 0.
+Note that because we are using stem:[s], stem:[Eq.\ \ref{eq:xfer-fn-vout-vin}] encodes both magnitude and phase relationships between the output and input. On it's own, it's complex in nature and not really useful for deducing anything. But, using two clever tricks, you can separately extract the magnitude and phase response equations from stem:[H(s)]. The magnitude response is found by taking the magnitude of stem:[H(s)], which is stem:[|H(s)|] as shown in stem:[Eq.\ \ref{eq:xfer-fn-magnitude}].
+
+[stem]
+++++
+\begin{align}
+\label{eq:xfer-fn-magnitude}
+| H(s) | = \left| \frac{v_{out}(s)}{v_{in}(s)} \right|
+\end{align}
+++++
+
+The phase response stem:[\angle H(s)] is found by finding the angle of the complex number from the positive x-axis, as shown in stem:[Eq.\ \ref{eq:xfer-fn-phase}].
+
+[stem]
+++++
+\begin{align}
+\label{eq:xfer-fn-phase}
+\angle H(s) = \arctan{\left(\frac{\Im \{H(s)\}}{\Re \{H(s)\}}\right)} 
+\end{align}
+++++
+
+[.text-center]
+where +
+stem:[\Im\{H(s)\}] is the imaginary part of stem:[H(s)] +
+stem:[\Re\{H(s)\}] is the real part of stem:[H(s)] +
+
+WARNING: This rule of finding the phase response can sometimes be wrong, as the stem:[\arctan] function throws away information about sign. You have to be aware of what quadrant of the s-plane you are in and compensate appropriately.
+
+**A value of stem:[s] that causes the a transfer function to be 0 is called a _zero_, and a value of stem:[s] that causes the transfer function to be infinite is called a _pole_**. Zeroes generally occur when a factor in the numerator is 0 (one notable exception is that a zero can also occur if the denominator tends towards infinity, usually as stem:[s \rightarrow \infty]), poles generally occur when a factor in the denominator is 0. Poles that have an imaginary component always come in pairs (conjugate pairs).
 
 Intuitively, you can think of zeroes as places in where the system completely blocks a certain frequency. A poles is a place where the system has infinite response (at least mathematically).
 
@@ -45,16 +89,23 @@ H(s) = \frac{1}{s}
 
 == The Transfer Function Of A Low-Pass RC Filter
 
-A first-order low-pass RC filter has the transfer function shown in Eq. stem:[\ref{eq:rc-xfer-fn}].
+A first-order low-pass RC filter has the transfer function shown in stem:[Eq.\ \ref{eq:rc-xfer-fn}].
 
 [stem]
 ++++
 \begin{align}
 \label{eq:rc-xfer-fn}
-H(s) &= \frac{1}{1 + \b{s}RC} \\
-\b{s} &= j\omega \\
-\omega &= 2\pi f \\
-H(f) &= \frac{1}{1 + j2\pi fRC}
+H(s) &= \frac{1}{1 + \b{s}RC}
+\end{align}
+++++
+
+Using stem:[Eq.\ \ref{eq:s-eq-j-w}], we can replace stem:[s] with stem:[j\omega] to get stem:[Eq.\ \ref{eq:rc-xfer-fn-jw}].
+
+[stem]
+++++
+\begin{align}
+\label{eq:rc-xfer-fn-jw}
+H(\omega) &= \frac{1}{1 + j\omega RC}
 \end{align}
 ++++
 
@@ -74,18 +125,29 @@ We can find the magnitude response of this low-pass RC filter by taking the magn
 ++++
 \begin{align}
 \label{eq:abc}
-| H(f) | &= \left| \frac{1}{1 + j2\pi fRC} \right| \nonumber \\
-         &= \frac{1}{\sqrt{(1 + j2\pi fRC)(1 - j2\pi fRC)}} \nonumber \\
-         &= \frac{1}{\sqrt{1 - (j2\pi fRC)^2}} \nonumber \\
-         &= \frac{1}{\sqrt{1 - (-1)(2\pi fRC)^2}} \nonumber \\
+| H(\omega) | &= \left| \frac{1}{1 + j\omega RC} \right| \nonumber \\
+         &= \frac{1}{\sqrt{(1 + j\omega RC)(1 - j\omega RC)}} \nonumber \\
+         &= \frac{1}{\sqrt{1 - (j\omega RC)^2}} \nonumber \\
+         &= \frac{1}{\sqrt{1 - (-1)(\omega RC)^2}} \nonumber \\
 \label{eq:mag-response-lp-rc-filter}
-         &= \frac{1}{\sqrt{1 + (2\pi fRC)^2}} \\
+         &= \frac{1}{\sqrt{1 + (\omega RC)^2}} \\
 \end{align}
 ++++
 
 stem:[Eq. \ref{eq:mag-response-lp-rc-filter}] shows the final result. Notice that by finding the magnitude, the imaginary components are gone! We can plot this on a graph.
 
+We can find the phase response by using rule in stem:[Eq.\ \ref{eq:xfer-fn-phase}].
+
+[stem]
+++++
+\begin{align}
+\angle H(s) = -\arctan{\left(\frac{1}{\omega RC}\right)}
+\end{align}
+++++
+
 == Pole Zero Plots
+
+Poles and zeroes are plotted in the _s-plane_ in what is called a _pole-zero plot_ to give the reader an understanding on how the circuit responds.
 
 * Zeroes contribute +90 of phase and increase the magnitude, above the zero frequency.
 * Poles contribute -90 of phase and decrease the magnitude, above the pole frequency.

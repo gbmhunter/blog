@@ -19,7 +19,6 @@ def plot_dampened_osc(cviscous: float, filename):
     eps = cviscous / (2 * mass * np.sqrt(kspring/mass))
     omega = np.sqrt(kspring / mass)
 
-
     def calc_deri(yvec, time, eps, omega):
         return (yvec[1], -eps * omega * yvec[1] - omega **2 * yvec[0])
 
