@@ -19,3 +19,5 @@ type: "post"
 * Added a model of the input offset voltage for op-amps, a schematic for external input offset voltage trimming, and info on input offset voltage drift with both temperature and time to the link:/electronics/components/op-amps/[Op-Amps page].
 
 * Added new page called link:/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/[What Are Transfer Functions, Poles, And Zeroes?].
+
+* Add the tutorial: link:/programming/cloud/aws/creating-a-scheduled-lambda-function-using-aws-cdk/[Creating A Scheduled Lambda Function Using AWS CDK].

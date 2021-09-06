@@ -3,8 +3,8 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2021-09-04
 draft: false
-lastmod: 2021-09-04
-tags: [ "electronics", "poles", "zeroes", "transfer functions", "bode plots", "Laplace", "control systems", "complex numbers", "angular frequency" ]
+lastmod: 2021-09-05
+tags: [ "electronics", "poles", "zeroes", "transfer functions", "bode plots", "Laplace", "control systems", "complex numbers", "angular frequency", "Argand diagram" ]
 title: "What Are Transfer Functions, Poles, And Zeroes?"
 type: "page"
 ---
@@ -58,16 +58,19 @@ The phase response stem:[\angle H(s)] is found by finding the angle of the compl
 ++++
 \begin{align}
 \label{eq:xfer-fn-phase}
-\angle H(s) = \arctan{\left(\frac{\Im \{H(s)\}}{\Re \{H(s)\}}\right)} 
+\angle H(s) = Arg{\left(\frac{\Im \{H(s)\}}{\Re \{H(s)\}}\right)} 
 \end{align}
 ++++
 
 [.text-center]
 where +
+stem:[Arg] is the argument (implemented with stem:[atan2(y, x)] in many software packages)
 stem:[\Im\{H(s)\}] is the imaginary part of stem:[H(s)] +
-stem:[\Re\{H(s)\}] is the real part of stem:[H(s)] +
+stem:[\Re\{H(s)\}] is the real part of stem:[H(s)] +1
 
-WARNING: This rule of finding the phase response can sometimes be wrong, as the stem:[\arctan] function throws away information about sign. You have to be aware of what quadrant of the s-plane you are in and compensate appropriately.
+WARNING: This rule of finding the phase response can sometimes be wrong, as the stem:[\arctan] function throws away information about sign. You have to be aware of what quadrant of the Argand diagram you are in and compensate appropriately.
+
+== Zeroes And Poles
 
 **A value of stem:[s] that causes the a transfer function to be 0 is called a _zero_, and a value of stem:[s] that causes the transfer function to be infinite is called a _pole_**. Zeroes generally occur when a factor in the numerator is 0 (one notable exception is that a zero can also occur if the denominator tends towards infinity, usually as stem:[s \rightarrow \infty]), poles generally occur when a factor in the denominator is 0. Poles that have an imaginary component always come in pairs (conjugate pairs).
 
@@ -136,24 +139,37 @@ We can find the magnitude response of this low-pass RC filter by taking the magn
 
 stem:[Eq. \ref{eq:mag-response-lp-rc-filter}] shows the final result. Notice that by finding the magnitude, the imaginary components are gone! We can plot this on a graph.
 
-We can find the phase response by using rule in stem:[Eq.\ \ref{eq:xfer-fn-phase}].
+.The magnitude response of the the low-pass RC filter, found by plotting stem:[Eq.\ \ref{eq:mag-response-lp-rc-filter}]. Note that the magnitude has been converted into decibels with stem:[dB = 20log10(mag)].
+image::low-pass-rc-filter-mag.png[width=600px]
+
+We can find the phase response of the low-pass RC filter by using rule in stem:[Eq.\ \ref{eq:xfer-fn-phase}].
 
 [stem]
 ++++
 \begin{align}
-\angle H(s) = -\arctan{\left(\frac{1}{\omega RC}\right)}
+\angle H(j\omega) &= Arg\left(H(j\omega)\right) \nonumber \\
+                  &= Arg\left(\frac{1}{1 + j\omega RC}\right) \nonumber \\
+                  &= Arg(1) - Arg(1 + j\omega RC) \nonumber \\
+                  &= 0 - arctan\left(\frac{j\omega RC}{1}\right) \nonumber \\
+\label{eq:phase-response-lp-rc-filter}
+                  &= -arctan\left(j\omega RC\right) \\
 \end{align}
 ++++
 
+TIP: We can safely reduce stem:[Arg] to stem:[arctan] because we know that stem:[1 + j\omega RC] will be in the 1st quadrant of the Argand diagram for all positive real values of stem:[\omega].
+
+.The phase response of the the low-pass RC filter, found by plotting stem:[Eq.\ \ref{eq:phase-response-lp-rc-filter}]
+image::low-pass-rc-filter-phase.png[width=600px]
+
 == Pole Zero Plots
 
-Poles and zeroes are plotted in the _s-plane_ in what is called a _pole-zero plot_ to give the reader an understanding on how the circuit responds.
+Poles and zeroes are plotted in a _Argand diagram_ in what is called a _pole-zero plot_ to give the reader an understanding on how the circuit responds.
 
 * Zeroes contribute +90 of phase and increase the magnitude, above the zero frequency.
 * Poles contribute -90 of phase and decrease the magnitude, above the pole frequency.
 
 Poles are normally drawn as X's on the graph, and zeroes as O's. Unless you are building an oscillator, poles in the right-hand half of the plane (having a positive real component) are a bad thing, as they represent an instability.
 
-.Graph showing how the location of poles (no zeroes shown) on a pole zero plots shows how components of the system respond to transients (i.e. impulses).
+.Argand diagram showing how the location of poles (no zeroes shown) on a pole zero plots shows how components of the system respond to transients (i.e. impulses).
 image::poles-graph.png[width=900px]
 

@@ -1,12 +1,14 @@
+from logging import log
 import numpy as np
 from scipy.integrate import odeint
 from matplotlib import pyplot as plt
 
 def main():
-    plot_dampened_osc(0.6, 'osc-decreasing.png')
-    plot_dampened_osc(-0.6, 'osc-increasing.png')
-    plot_exponential(2, 'exp-increasing.png')
-    plot_exponential(0.5, 'exp-decreasing.png')
+    # plot_dampened_osc(0.6, 'osc-decreasing.png')
+    # plot_dampened_osc(-0.6, 'osc-increasing.png')
+    # plot_exponential(2, 'exp-increasing.png')
+    # plot_exponential(0.5, 'exp-decreasing.png')
+    create_low_pass_rc_filter_graphs()
 
 def plot_dampened_osc(cviscous: float, filename):
     """
@@ -61,6 +63,35 @@ def plot_exponential(a, filename):
     ax.set_yticklabels([])
     ax.set_xticklabels([])
     plt.savefig(filename)
+
+def create_low_pass_rc_filter_graphs():
+    # Cutoff of 159kHz
+    r_Ohms = 1e3
+    c_Farads = 1e-9
+
+    f_Hz = np.logspace(2, 8, 1000)
+    mag_vout_vin = 1 / np.sqrt(1 + 2*np.pi*f_Hz*r_Ohms*c_Farads)
+    mag_dB = 20*np.log10(mag_vout_vin)
+
+    fig, ax = plt.subplots()
+    ax.plot(f_Hz, mag_dB)
+    ax.set_xscale('log')
+    ax.set_xlabel('f [Hz]')
+    ax.set_ylabel('Magnitude [dB]')
+    ax.grid(which='both')
+    plt.savefig('low-pass-rc-filter-mag.png')
+
+    phase_deg = np.rad2deg(-np.arctan(2*np.pi*f_Hz*r_Ohms*c_Farads))
+
+    fig, ax = plt.subplots()
+    ax.plot(f_Hz, phase_deg)
+    ax.set_xscale('log')
+    ax.set_xlabel('f [Hz]')
+    ax.set_ylabel('Phase [°]')
+    ax.set_yticks([ -90, -45, 0 ])
+    ax.grid(which='both')
+    plt.savefig('low-pass-rc-filter-phase.png')
+
 
 if __name__ == '__main__':
     main()

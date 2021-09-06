@@ -1,0 +1,18 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Cloud", "AWS" ]
+date: 2021-09-06
+draft: false
+lastmod: 2021-09-06
+tags: [ "programming", "cloud", "AWS" ]
+title: "Creating A Scheduled Lambda Function Using AWS CDK"
+type: "page"
+---
+
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
+== Installation Of Dependencies
+
+This tutorial assumes you are running Windows. However, most of the instructions are compatible with Linux, aside from some tweaks needed in this installation step.
+
+
