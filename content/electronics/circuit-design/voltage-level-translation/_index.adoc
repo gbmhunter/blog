@@ -1,0 +1,36 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "Circuit Design" ]
+date: 2015-05-08
+draft: false
+lastmod: 2015-05-08
+title: "Voltage-Level Translation"
+type: "page"
+---
+
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
+## Overview
+
+Voltage-level translation refers to the conversion to digital logic signals from one voltage level (e.g. +3.3V) to another (e.g. +5.0). It is commonly used to provide communication capability between two ICs which are operating of a different voltage rail.
+
+Do not confuse voltage-level translation with voltage converters (e.g. linear regulators or SMPS) which are designed to provide power.
+
+## Discrete MOSFETs
+
+The below schematic shows a simple circuit for voltage-level translation using a single MOSFET and pull-up resistors. It supports bi-directional digital signal translation.
+
+.An example schematic of bi-directional voltage-level translation using a MOSFET.
+image::schematic-of-voltage-level-translation-with-a-mosfet.png[width=660px]
+
+**What happens if stem:[V_{low}] is driven?**
+
+If stem:[V_{low}] is driven high, then the gate-source voltage of the N-channel MOSFET (stem:[V_{GS}]) is stem:[0V], and the MOSFET is OFF. This means that stem:[V_{high}] is pulled high by its stem:[10k\Omega] resistor.
+
+If stem:[V_{low}] is driven low, then the gate-source voltage of the N-channel MOSFET (stem:[V_{GS}]) is now stem:[+3.3V], and the MOSFET is ON. This means that stem:[V_{high}] is driven LOW through the MOSFET.
+
+**What happens if stem:[V_{high}] is driven?**
+
+If stem:[V_{high}] is driven high, the body-diode of the MOSFET will be reverse-biased, and OFF. This means that the source of the MOSFET will be pulled to stem:[+3.3V] by the stem:[10k\Omega] resistor, (stem:[V_{GS}]) will be stem:[0V], the MOSFET OFF, and stem:[V_{low}] also high because of it's stem:[10k\Omega] resistor.
+
+If stem:[V_{high}] is driven low, the body-diode of the MOSFET will be forward-biased, and switch ON. This will start pulling stem:[V_{low}] to ground plus the forward voltage drop of the diode (stem:[0V + 0.7V = 0.7V]). As the voltage on stem:[V_{low}] drops, the (stem:[V_{GS}]) of the MOSFET will start to increase, and the MOSFET will soon turn ON. At this point stem:[V_{low}] will be driven fully to ground (0V).
