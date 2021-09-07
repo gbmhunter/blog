@@ -3,13 +3,17 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-04
 draft: false
+lastmod: 2021-09-07
 tags: [ "component packages", "PCB design", "HC-49US", "SMD", "crystals" ]
-title: HC-49/US Component Package
-type: page
+title: "HC-49/US Component Package"
+type: "page"
 ---
 
 ## Overview
 
+This page contains info on the HC-49/U-S SMD component package that is commonly used to house older SMD crystal. For info on un-named SMD crystal packages (which are more common than the HC-49/U-S due to their smaller size), see the link:/pcb-design/component-packages/smd-crystal-packages/[SMD Crystal Packages page].
+
+++++
 <table>
 <tbody>
 <tr>
@@ -111,6 +115,7 @@ type: page
 </tr>
 </tbody>
 </table>
+++++
 
 ## Comments
 
@@ -118,10 +123,13 @@ Common footprint for larger SMD crystals. Internal circuitry is shielded by meta
 
 ## Photos
 
-{{< img src="hc-49us-component-package-photo.jpg" width="339px" caption="A photo of the HC-49/US component package."  >}}
+.A photo of the HC-49/US component package.
+image::hc-49us-component-package-photo.jpg[width=350px]
 
 ## Images
 
-{{< img src="hc49us-component-package-dimensions-land-pattern.png" caption="The dimensions and recommended land pattern for the HC-49/U-S component package."  width="800px" >}}
+.The dimensions and recommended land pattern for the HC-49/U-S component package.
+image::hc49us-component-package-dimensions-land-pattern.png[width=800px]
 
-{{< img src="hc49us-component-package-photo.jpg" caption="HC-49/US"  width="400px" >}}
+.HC-49/US.
+image::hc49us-component-package-photo.jpg[width=400px]

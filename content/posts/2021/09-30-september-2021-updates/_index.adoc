@@ -21,3 +21,5 @@ type: "post"
 * Added new page called link:/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/[What Are Transfer Functions, Poles, And Zeroes?].
 
 * Add the tutorial: link:/programming/cloud/aws/creating-a-scheduled-lambda-function-using-aws-cdk/[Creating A Scheduled Lambda Function Using AWS CDK].
+
+* Added a new page on link:/pcb-design/component-packages/smd-crystal-packages/[SMD Crystal Packages].
