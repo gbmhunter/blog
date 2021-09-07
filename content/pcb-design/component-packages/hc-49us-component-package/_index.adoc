@@ -21,76 +21,44 @@ This page contains info on the HC-49/U-S SMD component package that is commonly 
 <td >HC-49/U-S</td>
 </tr>
 <tr >
-
 <td >Synonyms
 </td>
-
 <td >HC49/US, HC-49US, HC49-US
 </td>
 </tr>
 <tr >
-
-<td >Variants
-</td>
-
-<td >There a four variants for different height sizes (but same PCB pand pattern).
+<td >Variants</td>
+<td >There a four variants for different height sizes (but same PCB land pattern).
 </td>
 </tr>
 <tr >
-
-<td >Similar To
-</td>
-
+<td >Similar To</td>
 <td >HC-49/S (though-hole version)
 </td>
 </tr>
 <tr >
-
-<td >Mounting
-</td>
-
-<td >SMD
-</td>
+<td >Mounting</td>
+<td >SMD</td>
 </tr>
 <tr >
-
-<td >Pin Count
-</td>
-
-<td >2
-</td>
+<td >Pin Count</td>
+<td >2</td>
 </tr>
 <tr >
-
-<td >Pitch
-</td>
-
-<td >9.5mm
-</td>
+<td >Pitch</td>
+<td >9.5mm</td>
 </tr>
 <tr >
-
-<td >Solderability
-</td>
-
-<td >Easy to solder, as the leads extrude beyond the edge of the package.
-</td>
+<td >Solderability</td>
+<td >Easy to solder, as the leads extrude beyond the edge of the package.</td>
 </tr>
 <tr >
-
-<td >Thermal Resistance
-</td>
-
-<td >n/a (this package is used for low power crystals, not normally relevant)
-</td>
+<td >Thermal Resistance</td>
+<td >n/a (this package is used for low power crystals, not normally relevant)</td>
 </tr>
 <tr >
-
-<td >Land Area
-</td>
-
-<td >57.8mm2 (12.3x4.7mm)
-</td>
+<td >Land Area</td>
+<td >57.8mm2 (12.3x4.7mm)</td>
 </tr>
 <tr>
 <td>Height</td>
