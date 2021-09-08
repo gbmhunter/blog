@@ -193,6 +193,22 @@ Standard SVG dimensions for a single schematic symbol:
 
 The should be -- an em dash in this sentence.
 
+== To Convert Markdown Links To AsciiDoc Links
+
+Regex find string:
+
+[source]
+----
+\[([^\]]+)\]\(([^\)]+)\)
+----
+
+Replace string:
+
+[source]
+----
+link:$2[$1]
+----
+
 [bibliography]
 == References
 

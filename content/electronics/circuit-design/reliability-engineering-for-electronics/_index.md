@@ -1,5 +1,4 @@
 ---
-aliases: [ "pwm" ]
 authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Circuit Design" ]
 date: 2021-03-11
