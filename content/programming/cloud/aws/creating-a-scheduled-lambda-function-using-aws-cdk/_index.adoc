@@ -94,9 +94,11 @@ pip install aws_cdk.aws_lambda_python
 
 Rather than just using `aws_lambda`, I'm using `aws_lambda_python`. This is a special library for lambda's which run in a Python environment, and provides extra functionality to bundle up all the dependencies required automatically. Without this you'd have to work out how to do that yourself, so I definitely recommend using this feature!
 
-There is a folder called `cdk_example` inside your `cdk_example` root directory. Inside this is a `cdk_example_stack.py` file. This file describes your stack.
+== Define The Infrastructure
 
-.The `cdk_example_stack.py` file.
+There is a folder called `cdk_example` inside your `cdk_example` root directory. Inside this is a `cdk_example_stack.py` file. This file describes your stack. Replace the contents with what is listed below.
+
+.The `cdk_example_stack/cdk_example_stack.py` file.
 [source,python]
 ----
 from aws_cdk import core as cdk
@@ -121,3 +123,45 @@ class CdkExampleStack(cdk.Stack):
             handler='handler',
         )
 ----
+
+Notice how we are using `aws_lambda_python.PythonFunction` to create the lambda, rather than the `aws_lambda.Function`, which is a popular example online (for instance, on https://docs.aws.amazon.com/cdk/latest/guide/serverless_example.html). The `PythonFunction` is much better if your lambda is running Python, as it handles bundling of the dependencies for you.
+
+== Add In The Lambda Code
+
+So great, we've defined that our stack is going to contain an lambda. But we haven't actually created any code for the lambda to run. Let's do this now. We'll use Python again for this, although it doesn't have to be the same language as what you've defined the stack with above.
+
+Make a new directory called `lambda` in the root directory of your project. Inside this, create a file called `main.py`. Paste the below contents into this file.
+
+.The `lambda/main.py` file.
+[source,python]
+----
+def handler(event, context):
+    return {
+        'statusCode': 200,
+        'headers': {
+            'Content-Type': 'text/plain'
+        },
+        'body': 'Hello, CDK!',
+    }
+
+
+if __name__ == '__main__':
+    handler(None, None)
+----
+
+=== Adding Dependencies
+
+The above lambda code is really basic, and does't rely on any 3rd party libraries. However, you'll soon run into the need to add dependencies to your project. Thankfully this is easy, all you need to do is create a `requirements.txt` in the `lambda/` directory and add in the lambda dependencies as usual (`pip freeze > requirements.txt` can do this).
+
+== Deploying
+
+We can now deploy the stack into the cloud. All you need to do is type:
+
+[source,shell]
+----
+cdk deploy
+----
+
+`cdk` will automatically bundle the dependencies (by invoking Docker, and installing the dependencies in `lambda/requirements.txt` into a Docker container that matches what will be running in the cloud). It will then upload the bundle to S3 (I think, at least it's somewhere in the cloud!), ready to run!
+
+You can test the lambda by going to the Lambda page in the Web Console and running the "Test" command.
