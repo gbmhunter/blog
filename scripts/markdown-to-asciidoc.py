@@ -11,7 +11,8 @@ def main():
     print(files)
     for file_path in files:
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'{{% link[^%]+%}}', replace=link_replace_fn, multiline=True)
-        power_edit.find_replace_regex(file_path=file_path, regex_str=r'{{% (figure|img)[^%]+%}}', replace=image_replace_fn, multiline=True)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'{{(%|<) (figure|img)[^%]+(%|>)}}', replace=image_replace_fn, multiline=True)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'`\\\([^\\\)`]+\\\)`', replace=inline_eq_replace_fn, multiline=True)
 
 def link_replace_fn(found_text, file_path):
     print(file_path)
@@ -57,10 +58,25 @@ def image_replace_fn(found_text, file_path):
     asciidoc_image = ''
     if caption is not None:
         asciidoc_image += f'.{caption}\n'
-    asciidoc_image = f'image::{src}[width={width}]'
+    asciidoc_image += f'image::{src}[width={width}]'
 
     print(f'asciidoc_image={asciidoc_image}')
     return asciidoc_image
+
+def inline_eq_replace_fn(found_text, file_path):
+    print(file_path)
+    print(f'found_text = {found_text}')
+
+    # Extract src
+    match = re.search(r'`\\\(([^(\\\)`)]+)\\\)`', found_text)
+    content = match.group(1)
+    print(f'content={content}')
+
+    asciidoc_eq = f'stem:[{content}]'
+
+    print(f'asciidoc_eq={asciidoc_eq}')
+    return asciidoc_eq
+
 
 if __name__ == '__main__':
     main()
