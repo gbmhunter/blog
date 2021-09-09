@@ -4,7 +4,7 @@ date: 2012-01-05
 description: "Crystals (XTALs), load capacitance, frequency accuracy and stability, schematic symbols, MEMS oscillators, Wien bridges, rings and more info about oscillators."
 draft: false
 lastmod: 2021-09-09
-tags: [ "electronics", "components", "oscillators", "crystals", "MEMS", "XTAL", "XC", "XO", "OCXO", "frequency", "clocks", "power consumption", "stability", "accuracy", "ultrasonic baths", "ring oscillators", "NOT gates" ]
+tags: [ "electronics", "components", "oscillators", "crystals", "MEMS", "XTAL", "XC", "XO", "OCXO", "frequency", "clocks", "power consumption", "stability", "accuracy", "ultrasonic baths", "ring oscillators", "NOT gates", "turnover temperature" ]
 title: "Crystal And Oscillators"
 type: "page"
 ---
@@ -29,9 +29,9 @@ image::crystal-equivalent-circuit.svg[width=800px]
 
 The series components stem:[C_1], stem:[L_1], and stem:[R_1] model the physical properties of the piezoelectric crystal. They are not real physical electronic components inside the crystal. The parallel component stem:[C_0] is the lead capacitance<<bib-cts-app-note-crystal-basics>>.
 
-stem:[L_1]: This models the mechanical mass of the quartz in motion. Lower frequency crystals have a value of stem:[1-2H] (yes, that's whole Henries, much larger than micro/milli Henries of most real inductors!). This value can drop down to stem:[1-100mH] for the higher frequency crystals, which are smaller and therefore less mass.
+stem:[L_1]: This models the mechanical mass of the quartz in motion. Lower frequency crystals have a value of stem:[1-2H] (yes, that's whole Henries, much larger than micro/milli-Henries of most real inductors!). This value can drop down to stem:[1-100mH] for the higher frequency crystals, which are smaller and therefore less mass.
 
-stem:[C_1]: This models a number of mechnical properties of the quartz crystal: the stiffness, the area of the electrodes, and the thickness/shape of the wafer. The value for fundamental mode crystals ranges between stem:[0.005pF] and stem:[0.030pF].
+stem:[C_1]: This models a number of mechanical properties of the quartz crystal: the stiffness, the area of the electrodes, and the thickness/shape of the wafer. The value for fundamental mode crystals ranges between stem:[0.005pF] and stem:[0.030pF].
 
 stem:[R_1]: This models the impedance of the crystal when it is oscillating at it's series resonant frequency. When a series LC circuit is at resonant frequency, it's impedance is stem:[0\Omega], therefore the impedance (and therefore current) is purely determined by this stem:[R_1]. stem:[R_1] is inversely proportional to the active area of the crystal, therefore smaller crystals have a larger stem:[R_1].
 
@@ -54,6 +54,13 @@ Q &= \frac{X_L}{R} \\
 [.text-center]
 where: +
 stem:[X_L] is the impedance of the inductor. +
+
+=== Turnover Temperature
+
+_Turnover temperature_ is a term used with 32.768kHz crystals to describe the temperature at which the crystal is at it's highest oscillation frequency. 32.768kHz crystals have a negative parabolic frequency response to temperature at the turnover temperature is at the maxima (at lower or higher temperatures, the frequency begins to drop). Most 32.678kHz crystals have a turnover temperature between 20 and 30°C<<bib-st-32khz-temp-comp>>.
+
+.The common shape of a temperature vs. drift curve for a 32.768kHz crystal, highlighting the turnover point at the maxima. 
+image::turnover-temp-graph.svg[width=500px]
 
 ### Oven-Controlled Crystal Oscillators (OCXOs)
 
@@ -409,3 +416,4 @@ image::ring-oscillator-triple/out.png[width=700px]
 * [[[bib-fast-crystal-oscillator-simulation-methodology, 3]]]: https://designers-guide.org/forum/Attachments/GEHRING_-_Fast_Crystal-Oscillator-Simulation_Methodology.pdf, retrieved 2021-04-28.
 * [[[bib-elec-tutorials-crystals, 4]]]: https://www.electronics-tutorials.ws/oscillator/crystal.html, retrieved 2021-04-29.
 * [[[bib-analog-devices-single-supply-wien-bridge, 5]]]: https://www.analog.com/media/en/technical-documentation/application-notes/AN-111.pdf, retrieved 2021-05-01.
+* [[[bib-st-32khz-temp-comp, 6]]]. ST Microelectronics (2009, Jul). _AN2971 Application note: Using the typical temperature characteristics of 32 KHz crystal to compensate the M41T83 and the M41T93 serial real-time clocks_. Retrieved 2021-09-09, from https://www.st.com/resource/en/application_note/an2971-using-the-typical-temperature-characteristics-of-32-khz-crystal-to-compensate-the-m41t83-and-m41t93-serial-realtime-clocks--stmicroelectronics.pdf.
