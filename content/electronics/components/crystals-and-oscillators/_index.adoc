@@ -17,77 +17,15 @@ The page also includes discrete oscillator elements such are crystals.
 
 **_Crystals_ are piezoelectric components which can be used to build an oscillator**. Combined with driving circuitry, they form an oscillator which can be made to output a periodic waveform to be used as a clock source for digital logic (e.g. flipflops, microcontrollers, FPGAs, e.t.c.). They can also be called _piezoelectric resonators_.
 
-{{< img src="crystal-schematic.png" width="275px" caption="A schematic of a crystal, usually connected to a microcontroller or other digital device that uses a clock. The load capacitance usually varies from 6-25pF per leg (see the crystals datasheet for the correct value)." >}}
-
-{{< img src="smd-tuning-fork-weird-name-for-crystal.png" width="275px" caption="Weird name for a crystal, don't you think? Image from http://www.foxonline.com/pdfs/fsrlf.pdf."  >}}
-
-_AT Cut_ crystals are the most common form of crystal. This is where the resonant frequency is determined by the thickness of the cut crystal.
-
-### Schematic Symbol
-
-Unfortunately, many different designator prefixes are used to represent a crystal. Some of the most common are:
-
-* XC
-* XO
-* OCXO (oven-controller crystal oscillator)
-
-### Important Parameters
-
-Sorted alphabetically.
-
-#### Accuracy
-
-Like stability, this is measured in ppm.
-
-Combined with the stability, this gives you the total error you can expect from a crystal operating over a particular temperature range.
-
-#### Frequency
-
-Arguably the most important parameter, this is the nominal frequency of the waveform the crystal generates.
-
-Typical values: 20kHz-48MHz
-
-#### Lead Capacitance
-
-Typical Values: 8pF-20pF
-
-#### Operating Mode
-
-Most crystals operate in the "fundamental" operating mode, that is, they are running at their fundamental frequency. Most crystals below 30MHz operate in their fundamental operating mode. For frequencies higher than 30MHz, crystals begin to operate in the 3rd, 5th or sometimes 7th overtone. Only odd overtones are viable operating frequencies.
-
-Most crystals operating at a overtone frequency use series resonance to do so[^elec-tutorials-crystals].
-
-#### Operating Temperature
-
-The operating temperature is the temperature range in which the crystal is guaranteed to operate within it's specified tolerances (e.g. stability and accuracy).
-
-Typical operating temperatures are -40 to +85°C.
-
-#### Power Consumption
-
-The power consumption of a crystal is a measure of how much **power** the **crystal consumes** during normal operation. This can be of concern for extremely low power designs.
-
-Typical power consumption for a TH/SMD crystal is around 50uW.
-
-Note that this is the power consumption of the crystal itself, and **does not take into account the power consumption of the associated drive circuitry** (which can be much greater!).
-
-#### Stability
-
-Stability is a measure of how repetitive, or stable, the clocks frequency is over time. It is measured in parts-per-million (ppm).
-
-Typical stability is around 30-50ppm.
-
-### What The Crystal Output Looks Like...
-
-The following waveform is the voltage on one of a 12MHz SMD crystals pins, when driven by a standard microcontroller.
-
-{{< img src="12mhz-crystal-output-when-driven-by-microcontroller.jpg" width="1200px" caption="The output voltage waveform of a 12MHz crystal being driven by a standard microcontroller."  >}}
+.A schematic of a crystal, usually connected to a microcontroller or other digital device that uses a clock. The load capacitance usually varies from 6-25pF per leg (see the crystals datasheet for the correct value).
+image::crystal-schematic.png[width=275px]
 
 ### Equivalent Circuit
 
 A piezoelectric crystal resonator can be modelled as a series LCR circuit in parallel with a capacitor:
 
-{{% figure src="crystal-equivalent-circuit.svg" width="800px" caption="The equivalent circuit for a two-lead piezoelectric crystal resonator." %}}
+.The equivalent circuit for a two-lead piezoelectric crystal resonator.
+image::crystal-equivalent-circuit.svg[width=800px]
 
 The series components `\(C_1\)`, `\(L_1\)`, and `\(R_1\)` model the physical properties of the piezoelectric crystal. They are not real physical electronic components inside the crystal. The parallel component `\(C_0\)` is the lead capacitance[^cts-app-note-crystal-basics].
 
@@ -119,7 +57,8 @@ where:<br/>
 
 High-performance crystal oscillators are kept with temperature-controlled environments to increase the stability of the oscillator. They are called oven-controlled crystal oscillators (OCXOs).
 
-{{< img src="n4a-series-oven-controlled-crystal-oscillator-ocxo-photo.gif" width="264px" caption="A photo of an N4A series OCXO. Image from http://www.bliley.com/." >}}
+.A photo of an N4A series OCXO. Image from http://www.bliley.com/.
+image::n4a-series-oven-controlled-crystal-oscillator-ocxo-photo.gif[width=264px]
 
 The crystals are designed to have a _turning-point_, a point of greatest stability, close to the oven temperature. OCXOs, rather than having a temperature stability in the ppm (parts-per-million) range like normal crystals, have a stability in the ppb (parts-per-billion) range (20ppb would be a viable stability).
 
@@ -167,7 +106,8 @@ They use less power than a crystal-based oscillator, making them suitable for ba
 
 MEMS oscillators have been made in packages which are also commonly used for crystal packages, such as the 2012 SMD package.
 
-{{% img src="mems-vs-crystal-oscillator-package-size.png" width="700px" caption="A comparison between MEMS and crystal-based oscillators in CSP and larger 2012 SMD packages. Note how the MEMS oscillator sneaks in two extra pins between the standard 2012 pads for power and ground." %}}
+.A comparison between MEMS and crystal-based oscillators in CSP and larger 2012 SMD packages. Note how the MEMS oscillator sneaks in two extra pins between the standard 2012 pads for power and ground.
+image::mems-vs-crystal-oscillator-package-size.png[width=700px]
 
 Some common industry sizes for oscillators include:
 
@@ -182,11 +122,13 @@ Some common industry sizes for oscillators include:
 
 The Wien bridge oscillator is a relatively simple oscillator that can generate reasonably accurate sine waves. It is named after a bridge circuit designed by Max Wien in 1891 for the measurement of impedances. William R. Hewlett (of Hewlett-Packard fame) designed the Wein bridge oscillator using the Wein bridge circuit and the differential amplifier. 
 
-{{% figure src="wien-bridge-oscillator/schematic-traditional-as-bridge.svg" width="800px" caption="Schematics of a Wien bridge oscillator circuit, drawn in the traditional way with the RC and R networks shown as a bridge." %}}
+.Schematics of a Wien bridge oscillator circuit, drawn in the traditional way with the RC and R networks shown as a bridge.
+image::wien-bridge-oscillator/schematic-traditional-as-bridge.svg[width=800px]
 
 However the modern way to draw this is to split up the non-inverting and inverting feedback circuits like this:
 
-{{% figure src="wien-bridge-oscillator/schematic-modern.svg" width="800px" caption="The modern way to draw the Wien bridge oscillator circuit, separating the non-inverting and inverting feedback sections." %}}
+.The modern way to draw the Wien bridge oscillator circuit, separating the non-inverting and inverting feedback sections.
+image::wien-bridge-oscillator/schematic-modern.svg[width=800px]
 
 In my opinion this is a clearer way of drawing the circuit. Wien bridge oscillators are used in audio applications.
 
@@ -342,11 +284,13 @@ R_{3, no-diode} &= R_3 - R_{3,diode}      \\
                 &= 280\Omega            \\
 \end{align*}</p>
 
-{{% figure src="wien-bridge-oscillator/schematics.png" width="800px" caption="Wien Bridge oscillator circuit." %}}
+.Wien Bridge oscillator circuit.
+image::wien-bridge-oscillator/schematics.png[width=800px]
 
 We can then simulate the circuit using ngspice (an open-source SPICE-like circuit simulator):
 
-{{% figure src="wien-bridge-oscillator/v-sine-out.png" width="800px" caption="SPICE simulation results for the Wien Bridge oscillator circuit shown above. Note how the circuit takes approx. 350ms to start-up, relying on noise (which SPICE does simulate) for the initial 'kick' to begin oscillating." %}}
+.SPICE simulation results for the Wien Bridge oscillator circuit shown above. Note how the circuit takes approx. 350ms to start-up, relying on noise (which SPICE does simulate) for the initial 'kick' to begin oscillating.
+image::wien-bridge-oscillator/v-sine-out.png[width=800px]
 
 You can count 6 cycles in approx. 6ms, which puts the simulated frequency at:
 
@@ -368,23 +312,27 @@ Using a JFET to partially switch in another resistor in parallel with the ground
 
 Schematics of this technique are shown below, with the circuit setup to oscillate at the same frequency as the diode gain-limited variant mentioned above.
 
-{{% figure src="wien-bridge-oscillator-jfet/schematics.png" width="700px" caption="A practical Wien bridge oscillator circuit using a JFET (Q1) as the non-element to actively limit the gain and prevent the oscillator from saturating." %}}
+.A practical Wien bridge oscillator circuit using a JFET (Q1) as the non-element to actively limit the gain and prevent the oscillator from saturating.
+image::wien-bridge-oscillator-jfet/schematics.png[width=700px]
 
-Note the diode and RC circuit controlling the JFET's gate. When the circuit is first powered up, the gate is at ground and hence the gate-source voltage `\(V_{GS} = 0V\)`. Therefore the JFET is almost fully on (remember, {{% link text="JFETs are depletion mode devices" src="/electronics/components/transistors/junction-gate-field-effect-transistor-jfets" %}}), and `\(R_5\)` is in parallel with `\(R_4\)`, increasing the gain of the op-amp. As the output voltage beings to oscillate, on the negative part of the cycle, diode `\(D_1\)` will conduct and charge the RC low-pass filter `\(C_3\)` and `\(R_6\)` with a negative voltage. This will decrease `\(V_{GS}\)` below `\(0V\)`, which will begin to turn the JFET off. This will then increase the equivalent resistance of `\(R_5\)` in parallel with `\(R_4\)` and decrease the op-amp gain. This will continue until the system reaches a steady-state and oscillates forever.
+Note the diode and RC circuit controlling the JFET's gate. When the circuit is first powered up, the gate is at ground and hence the gate-source voltage `\(V_{GS} = 0V\)`. Therefore the JFET is almost fully on (remember, link:/electronics/components/transistors/junction-gate-field-effect-transistor-jfets[JFETs are depletion mode devices]), and `\(R_5\)` is in parallel with `\(R_4\)`, increasing the gain of the op-amp. As the output voltage beings to oscillate, on the negative part of the cycle, diode `\(D_1\)` will conduct and charge the RC low-pass filter `\(C_3\)` and `\(R_6\)` with a negative voltage. This will decrease `\(V_{GS}\)` below `\(0V\)`, which will begin to turn the JFET off. This will then increase the equivalent resistance of `\(R_5\)` in parallel with `\(R_4\)` and decrease the op-amp gain. This will continue until the system reaches a steady-state and oscillates forever.
 
 And below are the simulation results for this circuit:
 
-{{% figure src="wien-bridge-oscillator-jfet/v-sine-out.png" width="800px" caption="SPICE simulation results for the JFET gain-limited Wien bridge oscillator circuit shown above. Notice the ringing on the gain that takes a few hundred milliseconds to stabilize." %}}
+.SPICE simulation results for the JFET gain-limited Wien bridge oscillator circuit shown above. Notice the ringing on the gain that takes a few hundred milliseconds to stabilize.
+image::wien-bridge-oscillator-jfet/v-sine-out.png[width=800px]
 
 ## Ring Oscillators
 
 A _ring oscillator_ (a.k.a. _RO_) is an electronic oscillator made up of a **chain of an odd-number of digital logic NOT gates**. The output of the last NOT gate is fed into the input of the first. The oscillator relies on the _propagation delay_ from the input of the first NOT gate to the output of the last NOT gate to set the oscillation frequency.
 
-{{% figure src="ring-oscillator-single/schematic.svg" width="500px" caption="The world's most basic ring oscillator, using one NOT gate." %}}
+.The world's most basic ring oscillator, using one NOT gate.
+image::ring-oscillator-single/schematic.svg[width=500px]
 
 ### Simulation
 
-{{% figure src="ring-oscillator-triple/simulation.png" width="700px" caption="KiCad schematic of a three stage ring oscillator (ready for simulation)." %}}
+.KiCad schematic of a three stage ring oscillator (ready for simulation).
+image::ring-oscillator-triple/simulation.png[width=700px]
 
 I ran into convergence issues when using the `74HCU04` SPICE model I found floating around on the internet (located in a file called [74HCng.lib](ring-oscillator-single/74HCng.lib)). Simulating one instance of the inverter worked fine, but I got the dreaded `doAnalyses: TRAN:  Timestep too small` error when connecting the second/third/e.t.c inverter in the ring. The convergence issue still occurred even when driving the first inverter instance from a slow frequency `PULSE` voltage source (rather than the driving it from the output of the last inverter), indicating it wasn't a problem with the ring structure.
 
@@ -394,7 +342,8 @@ I then looked harder around the internet and found the `MyHCU04` SPICE model [po
 
 This SPICE model for an inverter fixed the convergence issues I was having (if anyone else is interested in this file, I've saved it [here](ring-oscillator-triple/MyHCU04.lib)). Hurrah!
 
-{{% figure src="ring-oscillator-triple/out.png" width="700px" caption="It's working! Simulated output of the three stage ring oscillator schematic shown above." %}}
+.It's working! Simulated output of the three stage ring oscillator schematic shown above.
+image::ring-oscillator-triple/out.png[width=700px]
 
 ## Manufacturer Part Numbers
 
