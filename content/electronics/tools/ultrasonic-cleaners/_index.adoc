@@ -10,7 +10,7 @@ title: "Ultrasonic Cleaners"
 type: "page"
 ---
 
-{{% warning-is-notes %}}
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
 
 ## Overview 
 
@@ -22,5 +22,5 @@ Synergy Electronics Ltd, NZ supplier of the GT Sonic range.
 
 ## Components That Don't Like Ultrasonic Baths
 
-* MEMS Oscillators: {{% link text="Ultrasonic cleaners can cause permanent damage or long-term reliability issues to the MEMS resonator" src="/electronics/components/oscillators#mems-oscillators" %}} inside a MEMS oscillator.
+* MEMS Oscillators: link:/electronics/components/oscillators#mems-oscillators[Ultrasonic cleaners can cause permanent damage or long-term reliability issues to the MEMS resonator] inside a MEMS oscillator.
 * Crystal Resonators (XTALs): The ultrasonic bath could excite a XTAL into a resonant frequency (or harmonic) that causes damage. 32.678kHZ crystals are especially sensitive since they operate at about the same frequency as an ultrasonic bath uses for it's cleaning action. MHz XTALs are far less sensitive.

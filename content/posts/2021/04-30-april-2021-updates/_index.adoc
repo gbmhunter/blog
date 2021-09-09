@@ -1,0 +1,35 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Posts", "Updates" ]
+date: 2021-04-30
+description: "Blog updates during April 2021."
+draft: false
+lastmod: 2021-04-30
+tags: []
+title: "April 2021 Updates"
+type: "post"
+---
+
+* Updates to the link:/programming/languages/python/an-introduction-to-asynchronous-programming-in-python[Python page on asyncio] including info and code examples on _Tasks_ and how they are scheduled for execution immediately.
+
+* Added info on link:/electronics/components/op-amps#industry-standard-package-pinouts-for-op-amps[industry standard package pinouts for op-amps].
++
+image::/electronics/components/op-amps/standard-8-pin-dual-op-amp-pinout.svg[width=400px]
+
+* Added Win Source Electronics and Microchip Direct to the Electronic Suppliers page.
+
+* Added an link:/electronics/components/oscillators#equivalent-circuit[equivalent circuit model for a crystal] (piezoelectric resonator).
++
+image::/electronics/components/oscillators/crystal-equivalent-circuit.svg[width=600px]
+
+* More info on link:/electronics/components/oscillators/#operating-mode[crystal resonator operating modes].
+
+* Added new page with info on link:/electronics/components/transistors/junction-gate-field-effect-transistor-jfets[JFETS].
+
+* Added info on the link:/electronics/components/oscillators#wien-bridge-oscillator[Wien bridge oscillator to the Oscillators page]. This includes schematics:
++
+image::/electronics/components/oscillators/wien-bridge-oscillator/schematic-traditional-as-bridge.svg[width=500px]
++
+and simulation results:
++
+image::/electronics/components/oscillators/wien-bridge-oscillator/v-sine-out.png[width=500px]

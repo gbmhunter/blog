@@ -1,0 +1,39 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Posts", "Updates" ]
+date: 2021-01-31
+description: "Blog updates during January 2021."
+draft: false
+lastmod: 2021-01-31
+tags: []
+title: "January 2021 Updates"
+type: "post"
+---
+
+* Merged the Oscillators and Crystal pages (which were grouped under a section called _Timing_) into the single link:/electronics/components/oscillators[Oscillators page].
+
+* Added information on MEMS Oscillators to the link:/electronics/components/oscillators[Oscillators page] and link:/pcb-design/component-packages/chip-eia-component-packages[Chip Package] pages.
+
+* Added a link:/electronics/tools/ultrasonic-cleaners#components-that-dont-like-ultrasonic-baths[Components That Don't Like Ultrasonic Baths section to the Ultrasonic Cleaners page].
+
+* Added a new page on link:/electronics/components/common-mode-chokes[Common-mode Chokes].
++
+image::/electronics/components/common-mode-chokes/common-mode-choke-how-it-works-diagram.svg[width=600px]
+
+* Added a section on link:/electronics/components/connectors#idc-connectors[IDC Connectors to the Connector page].
+
+* Add a new page (currently in notes form) on link:/electronics/circuit-design/small-signal-analysis[Small-Signal Analysis].
+
+* Added more information about link:/electronics/components/resistors#potentiometers-and-rheostats-variable-resistors[potentiometers to the Resistors page].
++
+image::/electronics/components/resistors/potentiometer-common-resistor-divider-circuit.png[width=400px]
+
+* Added a new page on link:/electronics/components/power-regulators/shunt-regulators[Shunt Regulators]
++
+image::/electronics/components/power-regulators/shunt-regulators/three-pin-shunt-regulator-schematic-symbol.png[width=300px]
+
+* Added a new page on link:/electronics/components/multiplexers-and-demultiplexers[Multiplexers And Demultiplexers].
++
+image::/electronics/components/multiplexers-and-demultiplexers/cd4051b-functional-diagram-ti.png[width=400px]
+
+* Added info on the link:/electronics/general/kicad/kicad-tips-and-tricks[KiCad Tips And Tricks page] on how to create resistor and Zener simulation components.

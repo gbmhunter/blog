@@ -3,9 +3,9 @@ authors: [ "Geoffrey Hunter" ]
 date: 2012-01-05
 description: "Crystals (XTALs), load capacitance, frequency accuracy and stability, schematic symbols, MEMS oscillators, Wien bridges, rings and more info about oscillators."
 draft: false
-lastmod: 2021-05-09
+lastmod: 2021-09-09
 tags: [ "electronics", "components", "oscillators", "crystals", "MEMS", "XTAL", "XC", "XO", "OCXO", "frequency", "clocks", "power consumption", "stability", "accuracy", "ultrasonic baths", "ring oscillators", "NOT gates" ]
-title: "Oscillators"
+title: "Crystal And Oscillators"
 type: "page"
 ---
 
