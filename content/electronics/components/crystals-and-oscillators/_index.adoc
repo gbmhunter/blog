@@ -57,10 +57,27 @@ stem:[X_L] is the impedance of the inductor. +
 
 === Turnover Temperature
 
-_Turnover temperature_ is a term used with 32.768kHz crystals to describe the temperature at which the crystal is at it's highest oscillation frequency. 32.768kHz crystals have a negative parabolic frequency response to temperature at the turnover temperature is at the maxima (at lower or higher temperatures, the frequency begins to drop). Most 32.678kHz crystals have a turnover temperature between 20 and 30°C<<bib-st-32khz-temp-comp>>.
+**_Turnover temperature_ (stem:[T_O]) is a term used with 32.768kHz crystals to describe the temperature at which the crystal is at it's highest oscillation frequency**. 32.768kHz crystals have a negative parabolic frequency response to temperature (**frequency drops proportionally to the square of the temperature change**) at the turnover temperature is at the maxima (at lower or higher temperatures, the frequency begins to drop). Most 32.678kHz crystals have a turnover temperature stem:[T_O] between 20 and 30°C and stem:[\alpha] of approx. stem:[-0.034ppm^{\circ}C^2]<<bib-st-32khz-temp-comp>>.
 
-.The common shape of a temperature vs. drift curve for a 32.768kHz crystal, highlighting the turnover point at the maxima. 
-image::turnover-temp-graph.svg[width=500px]
+.The common shape of a temperature vs. drift curve for a 32.768kHz crystal, highlighting the turnover point at the maxima. In this model, stem:[T_O=25^{\circ}C,\ \alpha = -0.034ppm^{\circ}C^2]
+image::32768khz-crystal-drift.png[width=500px]
+
+stem:[Eq.\ \ref{eq:32khz-drift}] shows how to calculate the drift from the current operating temperature of the crystal.
+
+[stem]
+++++
+\begin{align}
+\label{eq:32khz-drift}
+ppm = \alpha \cdot (T - T_O)^2
+\end{align}
+++++
+
+[.text-center]
+where: +
+stem:[ppm] is the drift from stem:[f_O], the oscillation frequency at the turnover point, in parts-per-million + 
+stem:[T] is the operating temperature of the crystal, in stem:[^{\circ}C] +
+stem:[T_O] is the temperature at the turnover point, in stem:[^{\circ}C] +
+stem:[\alpha] is a part specific co-efficient, specified in the datasheet, in stem:[ppm^{\circ}C^2]. If no coefficient is listed, stem:[\alpha=-0.034ppm^{\circ}C^2] is a good assumption +
 
 ### Oven-Controlled Crystal Oscillators (OCXOs)
 
