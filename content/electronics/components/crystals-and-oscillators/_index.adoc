@@ -57,9 +57,9 @@ stem:[X_L] is the impedance of the inductor. +
 
 === 32.678kHz Crystals
 
-32.678kHz is a popular frequency because it is exactly stem:[2^{15}]. This means you can use one with a 15-bit binary counter to get a precise 1-second (1Hz) clock or "tick".
+32.678kHz is a popular frequency for crystals (also just shortened to _32kHz crystals_) because it is exactly stem:[2^{15}]. This means you can use one with a 15-bit binary counter to get a precise 1-second (1Hz) clock or "tick". It is also a good trade-off in terms of power consumption (lower frequency = lower power consumption, great for battery powered devices) and size (higher frequency means smaller crystal package). 32.678kHz crystal are very common in any embedded circuit design which needs a _real time clock_ (RTC). As such, they are also "dirt cheap"!
 
-For example, all of the 32.678kHz oscillators in the MSP430 range of microcontrollers use Pierce oscillators<<bib-ti-msp430-32khz>>.
+Many microcontrollers have pins which you can connect a 32.678kHz crystal to. The microcontroller has an internal oscillator for driving the crystal. A _Pierce oscillator_ is a popular oscillator topology used in microcontrollers to drive these crystals. For example, all of the 32.678kHz oscillators in the MSP430 range of microcontrollers use Pierce oscillators<<bib-ti-msp430-32khz>>.
 
 ==== Turnover Temperature
 
