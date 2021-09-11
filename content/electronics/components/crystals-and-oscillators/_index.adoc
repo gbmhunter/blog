@@ -55,7 +55,13 @@ Q &= \frac{X_L}{R} \\
 where: +
 stem:[X_L] is the impedance of the inductor. +
 
-=== Turnover Temperature
+=== 32.678kHz Crystals
+
+32.678kHz is a popular frequency because it is exactly stem:[2^{15}]. This means you can use one with a 15-bit binary counter to get a precise 1-second (1Hz) clock or "tick".
+
+For example, all of the 32.678kHz oscillators in the MSP430 range of microcontrollers use Pierce oscillators<<bib-ti-msp430-32khz>>.
+
+==== Turnover Temperature
 
 **_Turnover temperature_ (stem:[T_O]) is a term used with 32.768kHz crystals to describe the temperature at which the crystal is at it's highest oscillation frequency**. 32.768kHz crystals have a negative parabolic frequency response to temperature (**frequency drops proportionally to the square of the temperature change**) at the turnover temperature is at the maxima (at lower or higher temperatures, the frequency begins to drop). Most 32.678kHz crystals have a turnover temperature stem:[T_O] between 20 and 30°C and stem:[\alpha] of approx. stem:[-0.034ppm^{\circ}C^2]<<bib-st-32khz-temp-comp>>.
 
@@ -433,4 +439,6 @@ image::ring-oscillator-triple/out.png[width=700px]
 * [[[bib-fast-crystal-oscillator-simulation-methodology, 3]]]: https://designers-guide.org/forum/Attachments/GEHRING_-_Fast_Crystal-Oscillator-Simulation_Methodology.pdf, retrieved 2021-04-28.
 * [[[bib-elec-tutorials-crystals, 4]]]: https://www.electronics-tutorials.ws/oscillator/crystal.html, retrieved 2021-04-29.
 * [[[bib-analog-devices-single-supply-wien-bridge, 5]]]: https://www.analog.com/media/en/technical-documentation/application-notes/AN-111.pdf, retrieved 2021-05-01.
-* [[[bib-st-32khz-temp-comp, 6]]]. ST Microelectronics (2009, Jul). _AN2971 Application note: Using the typical temperature characteristics of 32 KHz crystal to compensate the M41T83 and the M41T93 serial real-time clocks_. Retrieved 2021-09-09, from https://www.st.com/resource/en/application_note/an2971-using-the-typical-temperature-characteristics-of-32-khz-crystal-to-compensate-the-m41t83-and-m41t93-serial-realtime-clocks--stmicroelectronics.pdf.
+* [[[bib-st-32khz-temp-comp, 6]]]: ST Microelectronics (2009, Jul). _AN2971 Application note: Using the typical temperature characteristics of 32 KHz crystal to compensate the M41T83 and the M41T93 serial real-time clocks_. Retrieved 2021-09-09, from https://www.st.com/resource/en/application_note/an2971-using-the-typical-temperature-characteristics-of-32-khz-crystal-to-compensate-the-m41t83-and-m41t93-serial-realtime-clocks--stmicroelectronics.pdf.
+* [[[bib-ti-msp430-32khz, 7]]]: Spevak, Peter and Forstner, Peter (2006, Aug). _MSP430 32-kHz Crystal Oscillators
+_. Texas Instruments. Retrieved 2021-09-10, from https://www.ti.com/lit/an/slaa322d/slaa322d.pdf.

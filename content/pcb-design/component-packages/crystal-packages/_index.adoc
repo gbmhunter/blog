@@ -6,7 +6,7 @@ description: "Dimensions, codes, recommended land patterns and more info on SMD 
 draft: false
 lastmod: 2021-09-07
 tags: [ "component packages", "PCB design", "SMD", "crystal", "oscillator", "package", "dimensions", "component" ]
-title: "SMD Crystal Packages"
+title: "Crystal Packages"
 type: "page"
 ---
 
@@ -14,7 +14,7 @@ WARNING: This page is in notes format, and may not be of the same quality as oth
 
 Unfortunately, most surface-mount crystals do not come in named packages. A notable exception is the link:/pcb-design/component-packages/hc-49us-component-package/[HC-49US package]. This page contains info on the unnamed SMD crystal packages, which are usually identified by their width*length. There are a variety of popular width*length combinations used.
 
-== 2 Pad Packages
+== SMD Crystal Packages
 
 .Table of common SMD 2 pad crystal package dimensions
 |===
@@ -54,3 +54,11 @@ image::abracon-ax3dbf1-125.0000t-crystal-package-dimensions.png[width=600px]
 | 
 
 |===
+
+
+== Through-Hole Crystal Packages
+
+Radial 6.2x2.1mm
+
+.Photo of a Raltron R26-32.768-6 32.678kHz crystal in a 6.2x2.1mm radial package. Image retrieved 2021-09-11, from https://nz.element14.com/raltron/r26-32-768-6/crystal-32-768khz-6pf-6-2-x-2/dp/2982324.
+image::raltron-r26-32.768-6-crystal-package-6.2x2.1mm-photo.png[width=300px]
