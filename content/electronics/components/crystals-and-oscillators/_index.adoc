@@ -115,7 +115,7 @@ stem:[T] is the operating temperature of the crystal, in stem:[^{\circ}C] +
 stem:[T_O] is the temperature at the turnover point, in stem:[^{\circ}C] +
 stem:[\alpha] is a part specific co-efficient, specified in the datasheet, in stem:[ppm^{\circ}C^{-2}]. If no coefficient is listed, stem:[\alpha=-0.034ppm^{\circ}C^{-2}] is a good assumption +
 
-Rather than ppm as in stem:[Eq.\ \ref{eq:32khz-drift}], you can instead write is a ratio of stem:[\frac{f}{f_O}]:
+Rather than using stem:[ppm], stem:[Eq.\ \ref{eq:32khz-drift-as-ratio}] shows how you can instead write is a ratio of stem:[\frac{f}{f_O}].
 
 [stem]
 ++++
@@ -124,6 +124,15 @@ Rather than ppm as in stem:[Eq.\ \ref{eq:32khz-drift}], you can instead write is
 \frac{f}{f_O} = \frac{\alpha}{1e^6} \cdot (T - T_O)^2
 \end{align}
 ++++
+
+[.text-center]
+where: +
+stem:[f] is the actual oscillation frequency +
+stem:[f_O] is the oscillation frequency at the turnover point, typically stem:[32.678kHz] + 
+
+=== The Negative Resistance Test
+
+The _negative resistance test_ can be used to find the oscillator load safety margin present on your circuit design. The test is performed by inserting a potentiometer in series between the crystal and the oscillator (which may be inside a microcontroller). You then slowly increase the resistance until you find the point at which the oscillator fails to start-up correctly<<bib-atmel-avr4100>>.
 
 ### Oven-Controlled Crystal Oscillators (OCXOs)
 
