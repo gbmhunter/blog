@@ -27,7 +27,7 @@ A piezoelectric crystal resonator can be modelled as a series LCR circuit in par
 .The equivalent circuit for a two-lead piezoelectric crystal resonator.
 image::crystal-equivalent-circuit.svg[width=800px]
 
-The series components stem:[C_1], stem:[L_1], and stem:[R_1] model the physical properties of the piezoelectric crystal. They are not real physical electronic components inside the crystal. The parallel component stem:[C_0] is the lead capacitance<<bib-cts-app-note-crystal-basics>>.
+The series components stem:[C_1], stem:[L_1], and stem:[R_1] model the physical properties of the piezoelectric crystal, and are called the motional arm<<bib-atmel-avr4100>>. They are not real physical electronic components inside the crystal. The parallel component stem:[C_0] is the lead capacitance<<bib-cts-app-note-crystal-basics>>.
 
 stem:[L_1]: This models the mechanical mass of the quartz in motion. Lower frequency crystals have a value of stem:[1-2H] (yes, that's whole Henries, much larger than micro/milli-Henries of most real inductors!). This value can drop down to stem:[1-100mH] for the higher frequency crystals, which are smaller and therefore less mass.
 
@@ -36,6 +36,30 @@ stem:[C_1]: This models a number of mechanical properties of the quartz crystal:
 stem:[R_1]: This models the impedance of the crystal when it is oscillating at it's series resonant frequency. When a series LC circuit is at resonant frequency, it's impedance is stem:[0\Omega], therefore the impedance (and therefore current) is purely determined by this stem:[R_1]. stem:[R_1] is inversely proportional to the active area of the crystal, therefore smaller crystals have a larger stem:[R_1].
 
 stem:[C_0]: This models the parallel capacitance (a.k.a. _shunt capacitance_) between the two leads of a crystal. It is the measured capacitance between the two leads when the crystal is not excited (i.e. not vibrating). stem:[C_0] typically ranges from stem:[1-7pF].
+
+=== Series And Parallel Resonant Frequencies
+
+The series resonant frequency stem:[f_S] only depends on the motional arm (physical properties of the crystal) as shown in stem:[Eq.\ \ref{eq:series-res-freq}]<<bib-atmel-avr4100>>.
+
+[stem]
+++++
+\begin{align}
+\label{eq:series-res-freq}
+f_S = \frac{1}{2\pi \sqrt{L_1 C_1}}
+\end{align}
+++++
+
+The parallel resonant frequency stem:[f_P] also depends on the parallel parasitic capacitance stem:[C_0], as shown in stem:[Eq.\ \ref{eq:parallel-res-freq}]<<bib-atmel-avr4100>>.
+
+[stem]
+++++
+\begin{align}
+\label{eq:parallel-res-freq}
+f_P = \frac{1}{2\pi \sqrt{L_1 C_1}} \cdot \sqrt{1 + \frac{C_1}{C_0}}
+\end{align}
+++++
+
+The series and parallel resonant frequencies are usually very close together. Crystals below 30MHz are operated at a frequency somewhere between the series and parallel resonant frequencies<<bib-atmel-avr4100>>.
 
 ### Quality Factor
 
@@ -59,7 +83,13 @@ stem:[X_L] is the impedance of the inductor. +
 
 32.678kHz is a popular frequency for crystals (also just shortened to _32kHz crystals_) because it is exactly stem:[2^{15}]. This means you can use one with a 15-bit binary counter to get a precise 1-second (1Hz) clock or "tick". It is also a good trade-off in terms of power consumption (lower frequency = lower power consumption, great for battery powered devices) and size (higher frequency means smaller crystal package). 32.678kHz crystal are very common in any embedded circuit design which needs a _real time clock_ (RTC). As such, they are also "dirt cheap"!
 
-Many microcontrollers have pins which you can connect a 32.678kHz crystal to. The microcontroller has an internal oscillator for driving the crystal. A _Pierce oscillator_ is a popular oscillator topology used in microcontrollers to drive these crystals. For example, all of the 32.678kHz oscillators in the MSP430 range of microcontrollers use Pierce oscillators<<bib-ti-msp430-32khz>>.
+Many microcontrollers have pins which you can connect a 32.678kHz crystal to, with pin names such as `XTAL32`, `32K_XP/32K_XN` (ESP32). Sometimes the `32` is added to distinguish it from the "main" higher frequency oscillator pins, which typically support crystals in the frequency range from 1-48MHz. The microcontroller has an internal oscillator for driving the crystal. A _Pierce oscillator_ is a popular oscillator topology used in microcontrollers to drive these crystals. For example, all of the 32.678kHz oscillators in the MSP430 range of microcontrollers use Pierce oscillators<<bib-ti-msp430-32khz>>.
+
+As shown in <<tuning-fork-32.678khz-crystal-shape>>, 32.678kHz crystals are also called _tuning fork crystals_, as the crystal is usually cut into the shape of a tuning fork<<bib-atmel-avr4100>> (a vibrates in a similar manner to a larger, metal one).
+
+[[tuning-fork-32.678khz-crystal-shape]]
+.Basic shape of a 32.678kHz "tuning fork" crystal.
+image::tuning-fork-32.678khz-crystal-shape.svg[width=700px]
 
 ==== Turnover Temperature
 
@@ -83,7 +113,17 @@ where: +
 stem:[ppm] is the drift from stem:[f_O], the oscillation frequency at the turnover point, in parts-per-million + 
 stem:[T] is the operating temperature of the crystal, in stem:[^{\circ}C] +
 stem:[T_O] is the temperature at the turnover point, in stem:[^{\circ}C] +
-stem:[\alpha] is a part specific co-efficient, specified in the datasheet, in stem:[ppm^{\circ}C^2]. If no coefficient is listed, stem:[\alpha=-0.034ppm^{\circ}C^2] is a good assumption +
+stem:[\alpha] is a part specific co-efficient, specified in the datasheet, in stem:[ppm^{\circ}C^{-2}]. If no coefficient is listed, stem:[\alpha=-0.034ppm^{\circ}C^{-2}] is a good assumption +
+
+Rather than ppm as in stem:[Eq.\ \ref{eq:32khz-drift}], you can instead write is a ratio of stem:[\frac{f}{f_O}]:
+
+[stem]
+++++
+\begin{align}
+\label{eq:32khz-drift-as-ratio}
+\frac{f}{f_O} = \frac{\alpha}{1e^6} \cdot (T - T_O)^2
+\end{align}
+++++
 
 ### Oven-Controlled Crystal Oscillators (OCXOs)
 
@@ -442,3 +482,5 @@ image::ring-oscillator-triple/out.png[width=700px]
 * [[[bib-st-32khz-temp-comp, 6]]]: ST Microelectronics (2009, Jul). _AN2971 Application note: Using the typical temperature characteristics of 32 KHz crystal to compensate the M41T83 and the M41T93 serial real-time clocks_. Retrieved 2021-09-09, from https://www.st.com/resource/en/application_note/an2971-using-the-typical-temperature-characteristics-of-32-khz-crystal-to-compensate-the-m41t83-and-m41t93-serial-realtime-clocks--stmicroelectronics.pdf.
 * [[[bib-ti-msp430-32khz, 7]]]: Spevak, Peter and Forstner, Peter (2006, Aug). _MSP430 32-kHz Crystal Oscillators
 _. Texas Instruments. Retrieved 2021-09-10, from https://www.ti.com/lit/an/slaa322d/slaa322d.pdf.
+* [[[bib-atmel-avr4100, 8]]]: Atmel (2015, Mar). _AVR4100: Selecting and testing 32kHz crystal
+oscillators for Atmel AVR microcontrollers_. Retrieved 2021-09-12, from http://ww1.microchip.com/downloads/en/appnotes/doc8333.pdf.
