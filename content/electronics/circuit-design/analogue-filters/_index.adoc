@@ -22,8 +22,8 @@ Active filters are electronic waveform filters which require their own power sou
 
 ### Filter Topologies vs. Tunings
 
-* Filter topologies define the what components go where.
-* Filter tunings define the values of the components in a particular topology. Filter tunings include Butterworth, Chebyshev and Bessel.
+* _Filter topologies_ define the what components go where.
+* _Filter tunings_ define the values of the components in a particular topology. Filter tunings include Butterworth, Chebyshev and Bessel.
 
 ### Filter Parameters
 
@@ -51,10 +51,11 @@ _Filter optimizations_ maximize a certain characteristic of a filter topology, s
 
 #### Schematic
 
-A first-order low-pass RC filter consists of a single series resistor and then a single capacitor to ground.
+<<low-pass-rc-low-pass-rc-filter-schematic>> shows a first-order low-pass RC filter consisting of a single series resistor and then a single capacitor to ground.
 
-.Schematic of a simple low-pass RC filter. Schematic from https://workspace.circuitmaker.com/Projects/Details/GeoffreyHunter/mbedded-ninja.
-image::low-pass-rc-filter-schematic.png[width=500px]
+[[low-pass-rc-low-pass-rc-filter-schematic]]
+.Schematic of a simple low-pass RC filter.
+image::low-pass-rc/low-pass-rc-filter-schematic.svg[width=500px]
 
 The low-pass RC filter lets through low frequencies but dampens high frequencies.
 
@@ -82,37 +83,83 @@ Typically, a resistance between stem:[1k\Omega] and stem:[100k\Omega] is used. T
 
 #### Frequency Response
 
-The following plot shows the frequency response (also known as a _bode plot_) of a low-pass filter, with values stem:[R = 1k\Omega] and stem:[C = 1\mu F]. Magnitude is plotted in blue and phase in green.
-
-.The frequency response (magnitude and phase) of a low-pass RC filter.
-image::rc-low-pass-filter-frequency-response.png[width=700px]
-
-The magnitude of the RC output voltage stem:[V_{out}] when in the input is a sine wave at frequency stem:[f] and magnitude stem:[V_{in}] is given by:
+To plot the frequency response, we first need to find the transfer function for the low-pass RC filter. We can use the voltage divider rule to write stem:[v_{out}] as a function of stem:[v_{in}]:
 
 [stem]
 ++++
-V_{out} = V_{in} \frac{X_c}{\sqrt{R^2 + X_c^2}}
+\begin{align}
+\frac{V_{out}}{V_{in}} = \frac{X_C}{X_C + R}
+\end{align}
 ++++
 
 [.text-center]
 where: +
-stem:[V_{in}] is the magnitude of the input signal at frequency stem:[f], in Volts +
-stem:[X_c] is the impedance of the capacitor at frequency stem:[f], in Ohms +
+stem:[v_{in}] is the magnitude of the input signal at frequency stem:[f], in Volts +
+stem:[X_C] is the impedance of the capacitor at frequency stem:[f], in Ohms +
 stem:[R] is the resistance of the resistor, in Ohms +
 
-Remember that the impedance of a capacitor is:
+Recall that we can write stem:[X_C] in the Laplace domain as stem:[X_C = \frac{1}{sC}]. Also, stem:[\frac{v_{out}}{v_{in}}] is just our transfer function stem:[H(s)]:
 
 [stem]
 ++++
-X_c = \frac{1}{2\pi fC}
+\begin{align}
+H(s) = \frac{\frac{1}{sC}}{\frac{1}{sC} + R}
+\end{align}
 ++++
 
-The low-pass RC filter also effects the phase of the signal. The higher the frequency, the greater the lag.
+Multiply top and bottom by stem:[\frac{1}{sC}] to clean things up:
 
 [stem]
 ++++
-\phi = -\arctan{(2\pi fRC)}
+\begin{align}
+H(s) = \frac{1}{1 + sRC}
+\end{align}
 ++++
+
+Now replace stem:[s] with stem:[j\omega] so we can then take the magnitude:
+
+[stem]
+++++
+\begin{align}
+H(j\omega) = \frac{1}{1 + j\omega RC}
+\end{align}
+++++
+
+Now take the magnitude (for more info on why and how to do this, see the link:/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/[What Are Transfer Functions, Poles, And Zeroes? page]):
+
+[stem]
+++++
+\begin{align}
+\label{eq:abc}
+| H(j\omega) | &= \left| \frac{1}{1 + j\omega RC} \right| \nonumber \\
+         &= \frac{1}{\sqrt{(1 + j\omega RC)(1 - j\omega RC)}} \nonumber \\
+         &= \frac{1}{\sqrt{1 - (j\omega RC)^2}} \nonumber \\
+         &= \frac{1}{\sqrt{1 - (-1)(\omega RC)^2}} \nonumber \\
+\label{eq:mag-response-lp-rc-filter}
+         &= \frac{1}{\sqrt{1 + (\omega RC)^2}} \\
+\end{align}
+++++
+
+And let's find the phase response:
+
+[stem]
+++++
+\begin{align}
+\angle H(j\omega) &= Arg\left(H(j\omega)\right) \nonumber \\
+                  &= Arg\left(\frac{1}{1 + j\omega RC}\right) \nonumber \\
+                  &= Arg(1) - Arg(1 + j\omega RC) \nonumber \\
+                  &= 0 - arctan\left(\frac{j\omega RC}{1}\right) \nonumber \\
+\label{eq:phase-response-lp-rc-filter}
+                  &= -arctan\left(j\omega RC\right) \\
+\end{align}
+++++
+
+This shows us that an RC filter "delays" signals as they pass through. The higher the frequency, the greater the delay.
+
+The following plot shows the frequency response (also known as a _bode plot_) of a low-pass filter, with values stem:[R = 1k\Omega] and stem:[C = 1\mu F]. Magnitude is plotted in blue and phase in green.
+
+.The frequency response (magnitude and phase) of a low-pass RC filter.
+image::rc-low-pass-filter-frequency-response.png[width=700px]
 
 The cut-off frequency (also called the _break frequency_ or _turnover frequency_<<bib-wikipedia-low-pass-filter>>), stem:[f_c] is not the frequency at which all higher frequencies are stopped (remember, this is an ideal filter, but in real-life they always let through some fraction of the higher-frequencies). Instead, it is the frequency at where:
 
@@ -144,7 +191,7 @@ The low-pass RC filter can be used to provide filtering on analogue inputs to a 
 
 Another way to reduce the reduction in noise immunity due to the resistor in the RC low-pass filter is **to make the capacitor as large as practically possible** (for a particular cut-off frequency). Both the resistance and the capacitance influence the cut-off frequency. If you increase the capacitance by 10x, and reduce the resistance by 10x, you get the same cut-off frequency, but far better noise immunity since the source impedance is not altered as much.
 
-**Another consideration is the effect of the increase in source impedance (due to the resistor in the RC filter) when connecting the output to something like a {{% link text="microcontroller ADC" src="/electronics/circuit-design/adcs" %}}).** The input impedance of an non-buffered ADC pin on a microcontroller is usually somewhere between stem:[20-500k\Omega] (note that this is usually variable, and can change with sampling rate). This will form a resistor divider with the RC filter resistance, increasing the ADC measurement error. As a general rule, **you want the RC filter resistance to be much lower than the ADC input impedance**.
+**Another consideration is the effect of the increase in source impedance (due to the resistor in the RC filter) when connecting the output to something like a link:/electronics/circuit-design/adcs[microcontroller ADC]).** The input impedance of an non-buffered ADC pin on a microcontroller is usually somewhere between stem:[20-500k\Omega] (note that this is usually variable, and can change with sampling rate). This will form a resistor divider with the RC filter resistance, increasing the ADC measurement error. As a general rule, **you want the RC filter resistance to be much lower than the ADC input impedance**.
 
 [stem]
 ++++
@@ -182,41 +229,45 @@ This form of the equation can be useful to calculate the delay (aka the time ste
 
 ### Building A VDAC From An ADC And Low-pass RC Filter
 
-**Low-pass RC filters can also be used to create a VDAC (voltage-based digital-to-analogue converter) from a {{% link text="PWM signal" src="/electronics/circuit-design/pulse-width-modulation-pwm" %}}.** This is useful since many microcontrollers have one (or more) PWM peripherals, but rarely a built-in VDAC. A simple RC filter placed on the output pin of the PWM signal can convert it into a VDAC, in where the **duty cycle** determines the analogue voltage output.
+**Low-pass RC filters can also be used to create a VDAC (voltage-based digital-to-analogue converter) from a link:/electronics/circuit-design/pulse-width-modulation-pwm[PWM signal].** This is useful since many microcontrollers have one (or more) PWM peripherals, but rarely a built-in VDAC. A simple RC filter placed on the output pin of the PWM signal can convert it into a VDAC, in where the **duty cycle** determines the analogue voltage output.
 
 ### Low-Pass LC Filter
 
 The basic low-pass LC filter consists of a single inductor and capacitor.
 
 .A basic schematic of a low-pass LC filter.
-image::lc-low-pass-filter-basic-diagram-schematic.png[width=556px]
+image::low-pass-lc-filter-schematic.svg[width=556px]
 
-Unlike the low-pass RC filter, the low-pass LC filter is theoretically loss-less. This means that it does not dissipate energy as heat. However, the presence of the inductance usually makes the LC filter larger and more expensive than the RC filter.
+Unlike the low-pass RC filter, the low-pass LC filter is theoretically loss-less. This means that it does not dissipate energy as heat. However, real-world inductors have coil resistance and magnetic losses, as well as ESR in the capacitor. Also, the presence of the inductance usually makes the LC filter larger and more expensive than the RC filter.
 
-This makes an LC low-pass filter suitable for higher-power applications. You will see LC low-pass filters being used on the output of buck converters (they are essentially part of the buck converter), to filter the output of an H-bridge, and to filter audio signals before they reach the speakers.
+This makes an LC low-pass filter suitable for higher-power applications. You will see LC low-pass filters being used on the output of link:/electronics/components/power-regulators/switch-mode-power-supplies-smps/[buck converters] (they are essentially part of the buck converter), to filter the output of an H-bridge, and to filter audio signals before they reach the speakers.
 
-The cut-off frequency is given by the following equation:
+The cut-off frequency of a low-pass LC filter is given by the following equation:
 
 [stem]
 ++++
+\begin{align}
 f_c = \frac{1}{2\pi \sqrt{LC}}
+\end{align}
 ++++
 
 The characteristic impedance is:
 
 [stem]
 ++++
+\begin{align}
 Z = \sqrt{LC}
+\end{align}
 ++++
 
 which you will notice is also present in the cut-off frequency equation.
 
 #### Parasitic elements
 
-The main parasitic element to consider with a low-pass LC filter is the parasitic coil resistance of the inductor. This dampens the output signal.
+The main parasitic element to consider with a low-pass LC filter is the parasitic coil resistance of the inductor, stem:[R_L]. Larger valued inductors typically have a larger coil resistance (due to more windings). This dampens the output signal.
 
 .A schematic of a LC low-pass filter with parasitic inductor resistance included.
-image::lc-low-pass-filter-schematic-with-parasitic-inductor-resistance.png[width=539px]
+image::low-pass-lc-filter-with-parasitics-schematic.png[width=539px]
 
 This is equivalent to a low-pass RLC filter.
 
