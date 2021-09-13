@@ -277,7 +277,9 @@ The quality factor is equal to:
 
 [stem]
 ++++
+\begin{align}
 Q = \frac{2\pi f}{R}
+\end{align}
 ++++
 
 As you increase the series resistance, the quality factor decreases.
@@ -309,10 +311,10 @@ f_c = \frac{1}{\pi \sqrt{LC}} \\
 
 [.text-center]
 where: +
-stem:[C] = total capacitance ,Farads +
-stem:[L] = total inductance, Henrys +
-stem:[z_o] = characteristic impedance, Ohms +
-stem:[f_c] = -3dB cut-off frequency, Hz +
+stem:[C] = total capacitance in stem:[F] +
+stem:[L] = total inductance, in stem:[H] +
+stem:[z_o] = characteristic impedance, in stem:[\Omega] +
+stem:[f_c] = -3dB cut-off frequency, in stem:[Hz] +
 
 NOTE: Mentioned is total capacitance or total inductance, as in the case of the π-filter each capacitor is C/2, and in the case of the t-filter, each inductor is L/2.
 
@@ -338,14 +340,18 @@ The corner frequency stem:[f_c] is equal to:
 
 [stem]
 ++++
-f_c = \frac{1}{2\pi \sqrt{R_1C_1R_2C_2}}
+\begin{align}
+f_c = \frac{1}{2\pi \sqrt{R_1 C_1 R_2 C_2}}
+\end{align}
 ++++
 
 Is is important to remember that for a second-order filter, the gain at the corner frequency is no longer -3dB. Instead it is -6dB. In general, the gain can be described for stem:[n] stages with:
 
 [stem]
 ++++
+\begin{align}
 G = \left( \frac{1}{\sqrt{2}} \right) ^n
+\end{align}
 ++++
 
 The reduce the effects of each stages dynamic impedance effecting it's neighbours, its recommended that the following stages resistance should be around 10x the previous stage, and the capacitance 1/10th of the previous stage.
