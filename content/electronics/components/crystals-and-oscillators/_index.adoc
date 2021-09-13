@@ -155,6 +155,10 @@ Newer crystals come in small, custom SMD packages, with typically either 2 or 4 
 
 Crystal oscillators can be difficult to simulate accurately in most SPICE-based programs<<bib-fast-crystal-oscillator-simulation-methodology>>. Most SPICE programs use the Newton-Raphson algorithm for converging to a solution. Unfortunately, the Newton-Raphson algorithm is not suitable for very high Q circuits, of which a crystal resonantor is definitely one (Q values of stem:[10,000] or more!). The time step has to be set so small for accurate simulation of crystal resonantor circuits that it can take days of simulation to "start-up" the ceramic resonantor (i.e. reach steady-state oscillation from power-on).
 
+=== Crystal Component Packages
+
+For info on crystal component packages, see the link:/pcb-design/component-packages/crystal-packages[Crystal Packages page].
+
 ## Oscillators
 
 This site uses the word _oscillator_ to represent a component with an **self-contained** oscillating feature that has power, ground, and signal out pins. This site uses the word _crystal_ to represent an component which contains a oscillating element (in the form of a crystal), which requires an **external oscillation circuit** before it useful.
