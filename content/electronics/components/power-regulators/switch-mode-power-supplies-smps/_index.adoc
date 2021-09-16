@@ -473,7 +473,44 @@ The _Ćuk converter_ is a buck-boost topology that only requires a single switch
 * High current stress in the switch.
 * Inverting (depending on the application, this could be an advantage!)
 
+== Floating Buck-Boost Converters
+
+A _floating buck-boost converter_ is a rarer form of SMPS topology that can generate an output voltage that is either lower or higher than the input voltage. It is labelled "floating" because neither of the output terminals is connected to ground. LEDs do not normally need to be ground referenced, and for this reason it is almost exclusively used for LED driver circuits (configured with feedback so the SMPS output a constant current rather than a constant voltage).
+
+**Advantages:**
+
+* Buck-boost ability with only a single inductor.
+
+**Disadvantages:**
+
+* Floating load (not referenced to ground).
+
+.Schematic of a floating buck-boost converter. Note that stem:[V_{IN}] is referenced to ground, but stem:[V_{OUT}] is not (measured across stem:[R_{LOAD}] as shown).
+image::floating-buck-boost-converter-basic-schematic.svg[width=500px]
+
+<<floating-buck-boost-converter-current-when-switch-closed>> shows the current paths through the floating buck-boost converter when the switch is closed. stem:[V_{IN}] provides a linearly increasing charging current to stem:[L1], whilst output capacitor stem:[C_{OUT}] provides current to the load. stem:[D1] is reverse-biased and so open-circuit.
+
+[[floating-buck-boost-converter-current-when-switch-closed]]
+.Current paths through the floating buck-boost converter when the switch is **closed** (during stem:[t_{on}]).
+image::floating-buck-boost-converter-current-when-switch-closed.svg[width=500px]
+
+<<floating-buck-boost-converter-current-when-switch-open>> shows the current paths when the switch is open. stem:[L1] had current going through it the moment stem:[SW1] was opened, and isn't too happy about having it's current interrupted. So it generates a voltage which forward biases stem:[D1] and provides current to both the load and to re-charge the output capacitor stem:[C_{OUT}].
+
+[[floating-buck-boost-converter-current-when-switch-open]]
+.Current paths through the floating buck-boost converter when the switch is **open** (during stem:[t_{off}]).
+image::floating-buck-boost-converter-current-when-switch-open.svg[width=500px]
+
+=== Output Voltage To Duty Cycle Equation
+
+Like the other topologies, we can find the equation linking the input voltage, output voltage and duty cycle by remembering the simple rule that the **average voltage across the inductor must be 0 over a switch cycle**. The voltage across the inductor when the switch is on (during stem:[t_{on}]) is just stem:[V_{IN}] (taking the left side of the inductor as positive). The voltage across the inductor when the switch is off (during stem:[t_{off}]) is stem:[-V_{OUT}] (ignoring the forward voltage drop across the diode, and remembering we had defined the positive side of the inductor to be the on the left, hence stem:[V_{OUT}] is negative). So: 
+
+[stem]
+++++
+V_{IN}t_{on} + (-V_{OUT})t_{off} = 0
+++++
+
 [bibliography]
 == References
 
-* [[[bib-microsemi-v-i-mode]]] Maniktala, Sanjaya (2012). _Voltage-Mode, Current-Mode (and Hysteretic Control)_. Microsemi. Retrieved 2021-08-22, from https://www.microsemi.com/document-portal/doc_view/124786-voltage-mode-current-mode-and-hysteretic-control
+* [[[bib-microsemi-v-i-mode, 1]]] Maniktala, Sanjaya (2012). _Voltage-Mode, Current-Mode (and Hysteretic Control)_. Microsemi. Retrieved 2021-08-22, from https://www.microsemi.com/document-portal/doc_view/124786-voltage-mode-current-mode-and-hysteretic-control.
+* [[[bib-onsemi-floating-buck-boost, 2]]] OnSemi (2011, May). _Design Note DN05002/D: Buck-Boost Converter for 3A LEDs_. Retrieved 2021-09-16, from https://www.onsemi.com/pub/Collateral/DN05002-D.PDF.
