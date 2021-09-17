@@ -726,18 +726,19 @@ stem:[d] = diameter of the thin plate (meters)
 .Diagram for the sphere-to-infinity capacitance equation.
 image::diagram-for-sphere-capacitance-equation.svg[width=320]
 
-The capacitance of a single sphere, again, with a ground at infinity is:
+The capacitance of a single sphere, again, with a ground at infinity is<<bib-qs-study-capacitance-spherical>>:
 
 [stem]
 ++++
-C = 55.6 \times 10^{-12} \epsilon_r d
+C = 4\pi \epsilon_0 \epsilon_r r
 ++++
 
 [.text-center]
 where: +
-stem:[C] = capacitance (Farads) +
-stem:[\epsilon_r] = relative dielectric constant (1 for a vacuum) +
-stem:[r] = radius of sphere (meters)
+stem:[C] = capacitance, in stem:[F] +
+stem:[\epsilon_0] is the permittivity of free space, approx. stem:[8.85 \times 10^{-12}Fm^{-1}] +
+stem:[\epsilon_r] = relative dielectric constant (stem:[1] for a vacuum) +
+stem:[r] = radius of sphere, in stem:[m]
 
 === Parallel Plate Capacitance
 
@@ -1441,7 +1442,9 @@ This implies that when charging a capacitor from a fixed DC source, you dissipat
 [bibliography]
 == References
 
-* [[[bib-capacitorguide.com, cg]]] http://www.capacitorguide.com/film-capacitor/.
-* [[[bib-wikipedia-film-capacitor, wp-fc]]] https://en.wikipedia.org/wiki/Film_capacitor
-* [[[bib-ceramic-dielectric-types, cdt]]] https://www.electronics-notes.com/articles/electronic_components/capacitors/ceramic-dielectric-types-c0g-x7r-z5u-y5v.php
-* [[[bib-tdk-singing-capacitors]]] https://product.tdk.com/en/contact/faq/31_singing_capacitors_piezoelectric_effect.pdf
+* [[[bib-capacitorguide.com, 1]]] http://www.capacitorguide.com/film-capacitor/.
+* [[[bib-wikipedia-film-capacitor, 2]]] https://en.wikipedia.org/wiki/Film_capacitor
+* [[[bib-ceramic-dielectric-types, 3]]] https://www.electronics-notes.com/articles/electronic_components/capacitors/ceramic-dielectric-types-c0g-x7r-z5u-y5v.php
+* [[[bib-tdk-singing-capacitors, 4]]] https://product.tdk.com/en/contact/faq/31_singing_capacitors_piezoelectric_effect.pdf
+* [[[bib-qs-study-capacitance-spherical, 5]]]: QS Study. _Capacitance of a Spherical Conductor
+Capacitance of a Spherical Conductor_. Retrieved 2021-09-17, from https://qsstudy.com/physics/capacitance-spherical-conductor.
