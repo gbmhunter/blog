@@ -705,8 +705,8 @@ stem:[d] = separation distance between the two plates, in meters
 
 === Single Disc Capacitance
 
-.Diagram for the disc-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf.
-image::diagram-for-disc-capacitance-equation.png[width=320]
+.Diagram for the disc-to-infinity capacitance equation.
+image::diagram-for-disc-capacitance-equation.svg[width=320]
 
 The capacitance of a single thin plate, with  a ground at 'infinity' (or more practically, just very far away) is:
 
@@ -723,8 +723,8 @@ stem:[d] = diameter of the thin plate (meters)
 
 === Sphere Capacitance
 
-.Diagram for the sphere-to-infinity capacitance equation. Image from http://www.capsense.com/capsense-wp.pdf.
-image::diagram-for-sphere-capacitance-equation.png[width=320]
+.Diagram for the sphere-to-infinity capacitance equation.
+image::diagram-for-sphere-capacitance-equation.svg[width=320]
 
 The capacitance of a single sphere, again, with a ground at infinity is:
 
