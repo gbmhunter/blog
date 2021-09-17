@@ -606,7 +606,7 @@ C_{total} = C1 + C2
 That is, in parallel, *the total equivalent capacitance is the sum of the individual capacitances*. This is shown in the below diagram.
 
 .Diagram showing the resulting capacitance from two capacitors in parallel.
-image::capacitor-equivalence-in-parallel-with-equation.png[width=600]
+image::capacitors-in-parallel.svg[width=600]
 
 *Connecting capacitors in parallel increases the capacitance.* Parallel-connected capacitors occurs everywhere in circuit design. A classic example is bulk decoupling for a switch-mode power supply, which will typically have more than one large capacitor connected in parallel on the input.
 
@@ -618,7 +618,18 @@ Capacitors in series with each other can be treated as one capacitor with a capa
 
 [stem]
 ++++
+\begin{align}
 C_{total} = \frac{1}{\frac{1}{C1} + \frac{1}{C2}}
+\end{align}
+++++
+
+or:
+
+[stem]
+++++
+\begin{align}
+C_{total} = \frac{C1C2}{C1 + C2}
+\end{align}
 ++++
 
 It is usually easier to remember this equation as:
@@ -631,9 +642,9 @@ It is usually easier to remember this equation as:
 This is shown in the following diagram.
 
 .Diagram showing the equivalent capacitance from two capacitors connected in series.
-image::capacitor-equivalence-in-series-with-equation.png[width=600]
+image::capacitors-in-series.svg[width=600]
 
-Notice how the total equivalent capacitance is less than any one capacitor in the series string. *Connecting capacitors in series reduces the capacitance*.
+Notice how the total equivalent capacitance is less than any one capacitor in the series string. *Connecting capacitors in series reduces the capacitance*. **Capacitors in series behave in the same way as resistors in parallel.**
 
 One of the benefits of connecting capacitors in series is that each capacitor only sees a portion of the total applied voltage, hence you can apply a higher voltage than the max rated voltage for any single capacitor. However, care must be taken to make sure the capacitors don't build up a *charge imbalance*, which could cause a single capacitor to take more than it's fair share of voltage, and blow up! A balancing circuit can be made by connecting a high-value resistor(e.g. stem:[1M\Omega]) across each capacitor. This causes any unbalanced build-up of charge to dissipate through the resistors, at the expense of increasing the leakage current of the circuit (remember, capacitors have an internal leakage current also). This is similar to how a battery cell charge balancing circuit works.
 
