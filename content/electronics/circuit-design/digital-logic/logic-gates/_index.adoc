@@ -20,11 +20,8 @@ SR latches are the most basic form of flip-form (memory element).
 .An SR latch made from NOR gates.
 image::sr-latch-from-nor-gates.svg[width=500px]
 
-.An SR latch in the "set" state. Red represents logical "1", black logical "0".
-image::sr-latch-from-nor-gates-set-state.svg[width=500px]
-
-.An SR latch in the "reset" state. Red represents logical "1", black logical "0".
-image::sr-latch-from-nor-gates-reset-state.svg[width=500px]
+.(A): A SR latch in the reset state. (B): A SR latch in the set state. Red represents logical "1", black logical "0".
+image::sr-latch-from-nor-gates-states-red-black.svg[width=800px]
 
 ## D Flip-Flops
 
