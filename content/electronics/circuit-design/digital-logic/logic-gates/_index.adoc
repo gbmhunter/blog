@@ -30,6 +30,7 @@ image::rtl-logic-inverter.svg[width=400px]
 * **Very limited fan-out.**
 * **Significant power consumption:** When the transistors are switched on.
 * **Weak drive in one direction:** Single transistor strongly drives output only in one direction, pull-up/down resistor is used in opposite direction.
+* **Poor noise margins**.
 
 == SR Latches
 
