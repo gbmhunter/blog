@@ -25,3 +25,5 @@ type: "post"
 * Added a new page on link:/pcb-design/component-packages/smd-crystal-packages/[SMD Crystal Packages].
 
 * Added info on the link:/electronics/components/crystals-and-oscillators/#_32_678khz_crystals[turnover temperature and oscillation mode of 32.768kHz crystals and the negative resistance test].
+
+* Added info on link:/electronics/circuit-design/digital-logic/logic-gates/[RTL and SR latches] to the Logic Gates page.
