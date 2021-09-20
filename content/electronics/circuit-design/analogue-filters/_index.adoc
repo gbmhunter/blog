@@ -479,8 +479,9 @@ We will simulate the response of a Sallen-Key filter designed with a cutoff freq
 .Simulation schematics of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz.
 image::low-pass-sallen-key/low-pass-sallen-key-simulation-schematic.png[width=800px]
 
-The KiCad schematic for this simulation can be <a href="low-pass-sallen-key/low-pass-sallen-key.sch" download>downloaded here</a>. The simulated gain (magnitude) and phase response is shown below:
+The KiCad schematic for this simulation can be <a href="low-pass-sallen-key/low-pass-sallen-key.sch" download>downloaded here</a>. The simulated gain (magnitude) and phase response is shown in <<low-pass-sallen-key-response>>.
 
+[[low-pass-sallen-key-response]]
 .The simulated gain (magnitude) and phase response of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz. The dotted line shows the cutoff frequency.
 image::low-pass-sallen-key/response.png[width=800px]
 

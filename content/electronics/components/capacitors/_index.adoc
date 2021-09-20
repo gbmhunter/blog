@@ -815,8 +815,9 @@ Desorption currents (depolarization) flow when the voltage on a capacitor is dec
 
 Capacitors that have had a relatively constant voltage across them for a decent amount of time typically exhibit far less absorption current than one which has not been charged in the short-term past. This is due to a phenomenon called ‘self-healing’, in where a charged capacitor will heal defects in the electrolyte. Uncharged electrolytic capacitors may have weakened electrolyte due to ‘dissolution’, the destruction of the dielectric when no charge is present.
 
-The leakage current through a capacitor can be modelled with a resistor in parallel with the actual capacitance, as shown in the image below:
+The leakage current through a capacitor can be modelled with a resistor in parallel with the actual capacitance, as shown in <<capacitor-with-parasitic-series-resistance-leakage-current>>.
 
+[[capacitor-with-parasitic-series-resistance-leakage-current]]
 .A capacitor showing the parasitic series resistance present in all real capacitors, which creates a leakage current.
 image::capacitor-with-parasitic-series-resistance-leakage-current.png[width=300]
 
