@@ -47,7 +47,9 @@ image::or-gate-symbol.svg[width=300px]
 | 1 | 1 | 1
 |===
 
-== Resistor-Transistor Logic (RTL)
+== What Are Logic Gates Built From?
+
+=== Resistor-Transistor Logic (RTL)
 
 _Resistor-transistor logic_ (RTL) is one of the most basic families of digital logic. It uses resistors and BJTs to build the basic gates required for digital logic. Now days it is completely superseded by logic families such transistor-transistor logic (TTL) and CMOS. However, it serves as a great place to introduces readers on how logic gates are built from discrete components.
 
@@ -69,26 +71,28 @@ image::rtl-logic-inverter.svg[width=400px]
 .Schematic of a RTL NOR gate. When both inputs are `LOW`, neither transistor is on and the output is pulled `HIGH` by stem:[R_C]. Any `HIGH` input will turn on a transistor, which will drive the output `LOW`. 
 image::rtl-logic-nor-gate.svg[width=400px]
 
-== Diode-Transistor Logic (DTL)
-
-
-
-== Transistor-Transistor Logic (TTL)
-
-The inputs of TTL logic are the emitters of BJTs.
-
-== CMOS
+=== Diode-Transistor Logic (DTL)
 
 TODO: Add info here.
 
-== SR Latches
+=== Transistor-Transistor Logic (TTL)
+
+The inputs of TTL logic are the emitters of BJTs.
+
+=== CMOS
+
+TODO: Add info here.
+
+== Flip-Flops
+
+=== SR Latches
 
 SR latches are the most basic form of flip-form (memory element).
 
 .An SR latch made from NOR gates.
 image::sr-latch-from-nor-gates.svg[width=500px]
 
-=== How Does An SR Latch Work?
+==== How Does An SR Latch Work?
 
 . **stem:[R] is `HIGH` and stem:[S] is `LOW`:** Since stem:[R] is high, the output of the top NOR gate is `LOW`. This `LOW` feeds into the bottom NOR gate, along with stem:[S] which is also `LOW`, thus the output of the bottom NOR gate is `HIGH`. This `HIGH` feeds into the top NOR gate, which will keep the circuit in this defined state, even if stem:[R] is then brought LOW. This gives the SR latch it's memory.
 . **stem:[R] is `LOW` and stem:[S] is `HIGH`:** Because of the symmetry, the same things happens, but in reverse. stem:[Q] is `HIGH` and stem:[\bar{Q}] is `LOW`. Again, if stem:[S] goes low, the SR latch "remembers" and keeps it's outputs in the same state.
@@ -96,9 +100,9 @@ image::sr-latch-from-nor-gates.svg[width=500px]
 .(A): A SR latch in the reset state. (B): A SR latch in the set state. Red represents logical "1", black logical "0".
 image::sr-latch-from-nor-gates-states-red-black.svg[width=800px]
 
-## D Flip-Flops
+=== D Flip-Flops
 
-=== Triggering
+==== Triggering
 
 Edge-triggered D flip-flops can be either positive or negative edge triggered. Edge-triggered flip-flops are shown by a triangle at the clock input, and negative edge-triggered ones have an additional bubble. However, positive-edge triggered is much more common, and standard practice is to make a negative edge triggered flip-flop by adding your own inverting gate on the clock signal.
 
