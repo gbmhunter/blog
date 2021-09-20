@@ -29,8 +29,9 @@ The differences between the NPN and PNP transistor types are analogous to the li
 
 == Schematic Symbols
 
-The schematic symbols for NPN and PNP transistors are shown below:
+The schematic symbols for NPN and PNP transistors are shown in <<bjt-schematic-symbols-npn-pnp>>.
 
+[[bjt-schematic-symbols-npn-pnp]]
 .Schematics symbols for NPN and PNP transistors. Note that the collector and emitter have flipped positions for the PNP, as commonly drawn on schematics.
 image::bjt-schematic-symbols-npn-pnp.svg[width=600]
 
@@ -267,8 +268,9 @@ image::constant-current-bjt-based-led-driver-simulation-results.png[width=800]
 
 #### Using A Resistor Divider To Drive The Base
 
-A resistor divider can simple way to drive the base of an NPN current-sink if you don't need active control. This works well if the supply voltage is known and stable, as the current will fluctuate with supply voltage (if this is going to be an issue, consider using a Zener-based circuit to drive the base of the NPN BJT). Schematics of the design are shown below:
+A resistor divider can simple way to drive the base of an NPN current-sink if you don't need active control. This works well if the supply voltage is known and stable, as the current will fluctuate with supply voltage (if this is going to be an issue, consider using a Zener-based circuit to drive the base of the NPN BJT). Schematics of the design are shown in <<current-source-npn-voltage-divider-base>>.
 
+[[current-source-npn-voltage-divider-base]]
 .A NPN BJT current-sink using a resistor divider to drive the base.
 image::current-source-npn-voltage-divider-base.svg[width=800]
 
@@ -304,10 +306,9 @@ The above equation holds true so this design should work as a good current sink 
 
 ### Current Mirrors
 
-A _current mirror_ is a current-copying circuit in where one the current in one BJT is programmed via a resistor and is used to control the current in a second BJT which is used to drive the same current into a load. The current-mirrors shown below are built with BJTs, but other active transistors such as link:/electronics/components/transistors/mosfets[MOSFETs] can also be used.
+A _current mirror_ is a current-copying circuit in where one the current in one BJT is programmed via a resistor and is used to control the current in a second BJT which is used to drive the same current into a load. The current-mirrors shown below are built with BJTs, but other active transistors such as link:/electronics/components/transistors/mosfets[MOSFETs] can also be used. <<current-mirror-pnp>> shows a basic PNP BJT-based current mirror. 
 
-A basic PNP BJT-based current mirror is shown below: 
-
+[[current-mirror-pnp]]
 .A basic PNP-based current mirror programmed to source 1mA into the load. Q1 and Q2 should be a matched transistor pair to achieve good mirroring of the current.
 image::current-mirror-pnp.svg[width=400]
 

@@ -42,8 +42,9 @@ Although not as popular as enhancement-mode MOSFETs, depletion-mode MOSFETs are 
 
 image::mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.svg[width=700px]
 
-The easiest way to show the difference between enhancement and depletion-mode MOSFETs is to plot a stem:[V_{GS}] vs. stem:[I_D] graph as shown below:
+The easiest way to show the difference between enhancement and depletion-mode MOSFETs is to plot a stem:[V_{GS}] vs. stem:[I_D] graph as shown in <<vgs-vs-id-enhancement-and-depletion-mode>>.
 
+[[vgs-vs-id-enhancement-and-depletion-mode]]
 .Vgs vs. Id for enhancement-mode and depletion-mode N-channel MOSFETs. Fictional example (not based from real data).
 image::vgs-vs-id-enhancement-and-depletion-mode.svg[width=700px]
 

@@ -56,8 +56,9 @@ v_{out} &= v_{in}
 
 As shown in Eq stem:[\ref{eq:buffer-vout-eq-vin}], the output voltage is the same as the input voltage. Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
 
-A simulation schematic for a voltage-follower op-amp is shown below:
+A simulation schematic for a voltage-follower op-amp is shown in <<simulation-schematic-for-op-amp-voltage-follower-buffer>>.
 
+[[simulation-schematic-for-op-amp-voltage-follower-buffer]]
 .A simulation schematic for an op-amp configured as a voltage-follower (buffer).
 image::simulation-schematic-for-op-amp-voltage-follower-buffer.png[width=400px]
 
@@ -567,8 +568,9 @@ Basic isolation amplifiers require two power supplies (one for each side of isol
 
 ## Input Resistors
 
-One of the first things you learn about an op-amp is that the input impedance on the input pins are very large (ideally infinite). So naturally you would start to question why resistors would be connected to the input pins of an op-amp like shown in the diagram below:
+One of the first things you learn about an op-amp is that the input impedance on the input pins are very large (ideally infinite). So naturally you would start to question why resistors would be connected to the input pins of an op-amp like shown in <<op-amp-input-pin-resistors>>.
 
+[[op-amp-input-pin-resistors]]
 .Schematic showing a resistor on the positive input to a op-amp.
 image::op-amp-input-pin-resistors.png[width=500px]
 
@@ -576,8 +578,9 @@ These input resistors serve to limit the input current if the voltage on the inp
 
 ## Offset Nulling Circuits
 
-Some op-amps which are designed to have very low input offset voltages also come with _offset nulling pins_ to further trim the input offset voltage once the op-amp is installed in circuit. The OP07 is one op-amp which has these pins. Typically, a stem:[10-50k\Omega] potentiometer is connected across these pins with the wiper going to stem:[V_{CC}], as shown in the example schematic below:
+Some op-amps which are designed to have very low input offset voltages also come with _offset nulling pins_ to further trim the input offset voltage once the op-amp is installed in circuit. The OP07 is one op-amp which has these pins. Typically, a stem:[10-50k\Omega] potentiometer is connected across these pins with the wiper going to stem:[V_{CC}], as shown in <<op07-op-amp-offset-nulling-circuit>>.
 
+[[op07-op-amp-offset-nulling-circuit]]
 .Image from https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf.
 image::op07-op-amp-offset-nulling-circuit.png[width=500px]
 

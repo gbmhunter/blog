@@ -26,8 +26,9 @@ The first recorded multivibrator was the Abraham-Bloch multivibrator oscillator 
 
 ## Basic BJT Astable Multivibrator
 
-A basic astable multivibrator can be made from two link:/electronics/components/transistors/bipolar-junction-transistors-bjts[BJT NPN transistors] and a handful of passive components, as shown in the schematic below:
+A basic astable multivibrator can be made from two link:/electronics/components/transistors/bipolar-junction-transistors-bjts[BJT NPN transistors] and a handful of passive components, as shown in <<classic-bjt-astable-multivibrator>>.
 
+[[classic-bjt-astable-multivibrator]]
 .A basic (and somewhat of a classic) BJT astable multivibrator.
 image::classic-bjt-astable-multivibrator.svg[width=600px]
 
