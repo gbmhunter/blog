@@ -4,8 +4,8 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2011-09-05
 description: "Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps)."
 draft: false
-lastmod: 2021-03-23
-tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifiers", "inverting", "buffers", "non-inverting", "components", "gain", "voltage followers", "offset nulling", "input offset voltages", "instrumentation amplifiers", "capacitive loading", "current sources", "quiescent currents", "GBW", "slew rates", "negative impedance converters", "NICs" ]
+lastmod: 2021-09-21
+tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifiers", "inverting", "buffers", "non-inverting", "components", "gain", "voltage followers", "offset nulling", "input offset voltages", "instrumentation amplifiers", "capacitive loading", "current sources", "quiescent currents", "GBW", "slew rates", "negative impedance converters", "NICs", "summing amplifiers" ]
 title: "Op-Amps"
 type: "page"
 ---
@@ -252,6 +252,92 @@ The gate capacitance of the MOSFET can load the op-amp output to the point that 
 image::lt1492-voltage-controlled-current-sink.png[width=500px]
 
 Read https://electronics.stackexchange.com/questions/69506/stability-problem-in-unity-gain-opamp for more information.
+
+=== Summing Amplifier
+
+Op-amps can be used to sum (add) voltages together. There are called _summing amplifiers_.
+
+==== Inverting Summing Amplifier
+
+<<summing-amplifier-inverting>> shows a inverting summing amplifier with three inputs.
+
+[[summing-amplifier-inverting]]
+.A summing amplifier with three inputs.
+image::summing-amplifier-inverting.svg[width=500px]
+
+**_How Does The Inverting Summing Amplifier Work?_**
+
+The current stem:[i_f] going through the resistor stem:[R_f] is just the sum of the currents going through resistors stem:[R_i].
+
+[stem]
+++++
+\begin{align}
+i_f &= - (i_1 + i_2 + i_3) \\
+\end{align}
+++++
+
+The inverting input of the amplifier is at "virtual ground". 
+
+[stem]
+++++
+\begin{align}
+\label{eq:if-eq-v1-ri-v2-ri-v3-ri}
+i_f  &= - (\frac{v_1}{R_i} + \frac{v_2}{R_i} + \frac{v_3}{R_i}) \\
+\end{align}
+++++
+
+Again, because the inverting input is at stem:[0V], the voltage stem:[v_{out}] is just:
+
+[stem]
+++++
+\begin{align}
+\label{eq:vout-eq-if-rf}
+v_{out} &= i_f R_f 
+\end{align}
+++++
+
+Substitute Eq. stem:[\ref{eq:if-eq-v1-ri-v2-ri-v3-ri}] into Eq. stem:[\ref{eq:vout-eq-if-rf}], and then simplify a little:
+
+[stem]
+++++
+\begin{align}
+v_{out} &= - (\frac{v_1}{R_i} + \frac{v_2}{R_i} + \frac{v_3}{R_i}) R_f \nonumber \\
+        \label{eq:inv-sum-amp-gain-eq}
+        &= - \frac{R_f}{R_i} (v_1 + v_2 + v_3) \\
+\end{align}
+++++
+
+And there we have it! Eq. stem:[\ref{eq:inv-sum-amp-gain-eq}] shows you <<summing-amplifier-inverting>> works as an inverting summing amplifier for three input voltages stem:[v_1], stem:[v_2], and stem:[v_3]. Note that aside from summing, the inverting summing amplifier also applies the negative gain stem:[- \frac{R_f}{R_i}], just like a standard <<_inverting_amplifiers, inverting amplifier>>. You can make stem:[R_f] equal to stem:[R_i] if you don't want any gain, but you can't avoid the inverting part. If you don't want it to invert (perhaps your using a single-sided supply?), then take a look at the <<_non_inverting_summing_amplifier, non-inverting summing amplifier>>.
+
+Whilst common, the resistors stem:[R_i] do not need to be equal. If they are **not equal, the circuit in <<summing-amplifier-inverting>> is called a _scaling summing amplifier_**. Each input voltage is scaled by a value determined by it's input resistance before being summed together.
+
+[stem]
+++++
+\begin{align}
+\label{eq:inv-scaling-sum-amp-gain-eq}
+v_{out} &= - R_f (\frac{v_1}{R_1} + \frac{v_2}{R_2} + \frac{v_3}{R_3}) \\
+\end{align}
+++++
+
+==== Non-inverting Summing Amplifier
+
+The _non-inverting summing amplifier_ is similar to the _inverting summing amplifier_ except that it does not invert the input voltages. The advantages and dis-advantages of the non-inverting vs the inverting summing amplifier are highlighted below:
+
+**Advantages**
+
+* Does not invert the input signals (this might actually be a dis-advantage, depending on the application!)
+* May only need a single-ended voltage supply (depending on the voltage ranges of the inputs).
+* Higher input impedance
+
+**Disadvantages**
+
+* More complicated gain equation/resistor values (because there is no virtual ground at the inputs)
+
+<<summing-amplifier-non-inverting>> shows a non-inverting summing amplifier with three inputs.
+
+[[summing-amplifier-non-inverting]]
+.A non-inverting summing amplifier with three inputs.
+image::summing-amplifier-non-inverting.svg[width=500px]
 
 ## Important Variables
 
