@@ -58,6 +58,10 @@
         <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">v</text>
         <text x="702.227px" y="275.587px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:29.15px;fill:rgb(234,117,0);">3</text>
     </g>
+    <g transform="matrix(1,0,0,1,-211.76,66.5914)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">v</text>
+        <text x="702.227px" y="275.587px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:29.15px;fill:rgb(234,117,0);">+</text>
+    </g>
     <g transform="matrix(1,0,0,1,253.594,160.337)">
         <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">v</text>
         <text x="702.227px" y="275.587px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:29.15px;fill:rgb(234,117,0);">out</text>
