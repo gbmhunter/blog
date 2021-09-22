@@ -80,7 +80,7 @@ The equation for the output voltage of the non-inverting amplifier is:
 [stem]
 ++++
 \begin{align}
-v_{out} = (1 + \frac{R_f}{R_i}) v_{in}
+v_{out} = \left(1 + \frac{R_f}{R_i}\right) v_{in}
 \end{align}
 ++++
 
@@ -144,7 +144,7 @@ The output voltage is given by the equation:
 
 [stem]
 ++++
-v_{out} = \frac{R_2}{R_1 + R_2}(1 + \frac{R_4}{R_3})v_1 - \frac{R_4}{R_3}v_2
+v_{out} = \frac{R_2}{R_1 + R_2}\left(1 + \frac{R_4}{R_3}\right)v_1 - \frac{R_4}{R_3}v_2
 ++++
 
 TIP: It's easy to confuse a differential amplifier (what we are discussing here) with a _differentiator amplifier_, which performs the mathematical function of differentiation (opposite of integration).
@@ -189,7 +189,7 @@ image::integration-amplifier-schematic-non-ideal.svg[width=430px]
 \begin{align}
 v_{out} &= \frac{1}{R_i C} \int_0^t v_{in}\ dt \\
 R_{bias} &= R_i\ ||\ R_f ||\ R_L \\
-V_E &= (\frac{R_f}{R_i} + 1) V_{OS}
+V_E &= \left(\frac{R_f}{R_i} + 1\right) V_{OS}
 \end{align}
 ++++
 
@@ -253,7 +253,7 @@ image::lt1492-voltage-controlled-current-sink.png[width=500px]
 
 Read https://electronics.stackexchange.com/questions/69506/stability-problem-in-unity-gain-opamp for more information.
 
-=== Summing Amplifier
+=== Summing Amplifiers
 
 Op-amps can be used to sum (add) voltages together. There are called _summing amplifiers_.
 
@@ -282,7 +282,7 @@ The inverting input of the amplifier is at "virtual ground".
 ++++
 \begin{align}
 \label{eq:if-eq-v1-ri-v2-ri-v3-ri}
-i_f  &= - (\frac{v_1}{R_i} + \frac{v_2}{R_i} + \frac{v_3}{R_i}) \\
+i_f  &= - \left(\frac{v_1}{R_i} + \frac{v_2}{R_i} + \frac{v_3}{R_i}\right) \\
 \end{align}
 ++++
 
@@ -301,7 +301,7 @@ Substitute Eq. stem:[\ref{eq:if-eq-v1-ri-v2-ri-v3-ri}] into Eq. stem:[\ref{eq:vo
 [stem]
 ++++
 \begin{align}
-v_{out} &= - (\frac{v_1}{R_i} + \frac{v_2}{R_i} + \frac{v_3}{R_i}) R_f \nonumber \\
+v_{out} &= - \left(\frac{v_1}{R_i} + \frac{v_2}{R_i} + \frac{v_3}{R_i}\right) R_f \nonumber \\
         \label{eq:inv-sum-amp-gain-eq}
         &= - \frac{R_f}{R_i} (v_1 + v_2 + v_3) \\
 \end{align}
@@ -315,7 +315,7 @@ Whilst common, the resistors stem:[R_i] do not need to be equal. If they are **n
 ++++
 \begin{align}
 \label{eq:inv-scaling-sum-amp-gain-eq}
-v_{out} &= - R_f (\frac{v_1}{R_1} + \frac{v_2}{R_2} + \frac{v_3}{R_3}) \\
+v_{out} &= - R_f \left(\frac{v_1}{R_1} + \frac{v_2}{R_2} + \frac{v_3}{R_3}\right) \\
 \end{align}
 ++++
 
@@ -331,13 +331,76 @@ The _non-inverting summing amplifier_ is similar to the _inverting summing ampli
 
 **Disadvantages**
 
-* More complicated gain equation/resistor values (because there is no virtual ground at the inputs)
+* More complicated gain equation/resistor values (because there is no virtual ground at the inputs).
+* Unused inputs cannot be left floating, they must be grounded (more on this below).
 
 <<summing-amplifier-non-inverting>> shows a non-inverting summing amplifier with three inputs.
 
 [[summing-amplifier-non-inverting]]
 .A non-inverting summing amplifier with three inputs.
 image::summing-amplifier-non-inverting.svg[width=500px]
+
+If all the input resistors are equal (stem:[R_1 = R_2 = R_3 = R]), the gain equation is:
+
+[stem]
+++++
+\begin{align}
+v_{out} = \left(1 + \frac{R_f}{R_i}\right) \frac{v_1 + v_2 + v_3}{3}
+\end{align}
+++++
+
+**_How Does The Non-Inverting Summing Amplifier Work?_**
+
+Because we have no nice virtual ground at the non-inverting input, we have to analyze the non-inverting summing amplifier a little differently to the inverting version. First, use Kirchhoff's current law:
+
+[stem]
+++++
+\begin{align}
+i_1 + i_2 + i_3 = 0 \\
+\end{align}
+++++
+
+Let's call the voltage at the non-inverting pin stem:[v_+]. We can then write replace the currents above with the voltage difference divided by the resistance:
+
+[stem]
+++++
+\begin{align}
+\frac{v_1 - v_+}{R_1} + \frac{v_2 - v_+}{R_2} + \frac{v_3 - v_+}{R_3} = 0 \\
+\end{align}
+++++
+
+Let's assume the input resistors are equal (stem:[R_1 = R_2 = R_3 = R]), then simplify and solve for stem:[v_+]:
+
+[stem]
+++++
+\begin{align}
+\frac{1}{R} ( v_1 - v_+ + v_2 - v_+ + v_3 - v_+ ) &= 0 \nonumber \\
+v_1 + v_2 + v_3 - 3v_+ &= 0 \nonumber \\
+v_+ = \frac{v_1 + v_2 + v_3}{3} \\
+\end{align}
+++++
+
+So now we have an equation for stem:[v_+] in terms on the input voltages. As described in the <<_non_inverting_amplifiers>>, the equation for a non-inverting amplifier is:
+
+[stem]
+++++
+\begin{align}
+v_{out} = \left(1 + \frac{R_f}{R_i}\right) v_{+}
+\end{align}
+++++
+
+Substituting in stem:[v_+] we get the final equation for a 3-input non-inverting summing amplifier:
+
+[stem]
+++++
+\begin{align}
+v_{out} = \left(1 + \frac{R_f}{R_i}\right) \frac{v_1 + v_2 + v_3}{3}
+\end{align}
+++++
+
+Notice the stem:[3]. This scaling factor is equal to the number of inputs the non-inverting summing amplifier has, so remember that the scaling factor changes if you add/remove inputs! 
+
+WARNING: Unused inputs into a inverting summing amplifier can be left floating. **Unused inputs into a non-inverting amplifier CANNOT be left floating**, they need to be tied to ground (0V).
 
 ## Important Variables
 
@@ -797,11 +860,11 @@ Proof complete!
 
 ## Chopper-Stabilised Op-Amps
 
-TODO
+TODO: Add info.
 
 ## Capacitive Loading
 
-TODO
+TODO: Add info.
 
 ## Industry Standard Package Pinouts For Op-Amps
 
