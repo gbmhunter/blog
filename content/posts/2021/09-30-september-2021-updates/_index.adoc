@@ -29,3 +29,7 @@ type: "post"
 * Added info on link:/electronics/circuit-design/digital-logic/logic-gates/[RTL and SR latches] to the Logic Gates page.
 
 * Added info on link:/electronics/components/op-amps/#_summing_amplifier[summing amplifiers to the Op-Amps page].
+
+* Added link:/electronics/components/op-amps/#_level_shifters[info, schematics and simulation results] for op-amp based level-shifters.
+
+* Condensed the four battery pages (lead-acid, zinc-air, coin cells, lithium thionyl chloride) into a single Batteries page.
