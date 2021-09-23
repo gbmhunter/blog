@@ -1,0 +1,12 @@
+.title KiCad schematic
+.include "AD8051.lib"
+XU1 Net-_R1-Pad2_ Net-_R3-Pad1_ +12V -12V V_OUT AD8051
+V1 +12V GND DC 12
+V2 GND -12V DC 12
+R1 /V_IN Net-_R1-Pad2_ 30k
+R2 Net-_R2-Pad1_ Net-_R1-Pad2_ 10k
+R3 Net-_R3-Pad1_ GND 30k
+R4 Net-_R3-Pad1_ V_OUT 10k
+V4 Net-_R2-Pad1_ GND DC 1.65
+V3 /V_IN GND sin(0 5 1k)
+.end
