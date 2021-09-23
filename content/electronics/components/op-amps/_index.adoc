@@ -407,6 +407,19 @@ Notice the stem:[3]. This scaling factor is equal to the number of inputs the no
 
 WARNING: Unused inputs into a inverting summing amplifier can be left floating. **Unused inputs into a non-inverting amplifier CANNOT be left floating**, they need to be tied to ground (0V).
 
+=== Level Shifters
+
+Op-amps can be used to perform _level-shifting_. The concept of level-shifting is very similar to what is achieved by <<_summing_amplifiers, summing amplifiers>>.
+
+<<level-shifter-sim-schematic>> shows a op-amp based level shifter which converts a stem:[\pm 5.0V] signal into a stem:[0-3.3V] signal, suitable for passing into a microcontrollers DAC for digital conversion and processing (microcontrollers often run of stem:[+3.3V], hence that is also a common choice for the reference voltage of the DAC). If you used rail-to-rail op-amps, you might be able to get away with lowering the voltage rails for the op-amp to stem:[\pm 5.0V].
+
+[[level-shifter-sim-schematic]]
+.Schematic of a level-shifting circuit that converts a stem:[\pm 5.0V] signal into a stem:[0-3.3V] signal.
+image::level-shifter-sim/schematic.png[width=700px]
+
+.Simulation results of the level-shifting circuit shown in <<level-shifter-sim-schematic>>. You can clearly see that the stem:[\pm 5.0V] signal has been level-shifted to the range stem:[0-3.3V]. Because the input is connected to the non-inverting input of the op-amp, the output is in phase with the input signal (i.e. not inverted).
+image::level-shifter-sim/out.png[width=700px]
+
 ## Important Variables
 
 Sorted by function.

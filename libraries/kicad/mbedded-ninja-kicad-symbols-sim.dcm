@@ -71,4 +71,10 @@ K sim simulation
 F ~
 $ENDCMP
 #
+$CMP VSIN
+D Voltage source, sinusoidal
+K simulation
+F ~
+$ENDCMP
+#
 #End Doc Library
