@@ -5,7 +5,7 @@ date: 2011-09-05
 description: "Schematic symbol, example circuits, equations, applications and more info about operational amplifiers (op-amps)."
 draft: false
 lastmod: 2021-09-21
-tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifiers", "inverting", "buffers", "non-inverting", "components", "gain", "voltage followers", "offset nulling", "input offset voltages", "instrumentation amplifiers", "capacitive loading", "current sources", "quiescent currents", "GBW", "slew rates", "negative impedance converters", "NICs", "summing amplifiers" ]
+tags: [ "op-amps", "schematic symbols", "analogue", "analog", "operational amplifiers", "inverting", "buffers", "non-inverting", "components", "gain", "voltage followers", "offset nulling", "input offset voltages", "instrumentation amplifiers", "capacitive loading", "current sources", "quiescent currents", "GBW", "slew rates", "negative impedance converters", "NICs", "summing amplifiers", "level shifting" ]
 title: "Op-Amps"
 type: "page"
 ---
@@ -256,6 +256,11 @@ Read https://electronics.stackexchange.com/questions/69506/stability-problem-in-
 === Summing Amplifiers
 
 Op-amps can be used to sum (add) voltages together. There are called _summing amplifiers_.
+
+Summing amplifiers are used for things such as:
+* **Mixing audio signals**: Audio mixers can be made from summing amplifiers, which combine multiple audio tracks together (e.g. singing with guitar, piano and drums).
+* **Creating a DAC**: Many inputs with resistances following a stem:[2^n] pattern are used. These days however you should probably just buy a dedicated DAC IC!
+* **Level-shifting**: For example, shifting a +-5V signal to 0-3.3V for input into a DAC. A two input summing amplifier can do this, with one input being the AC signal you want to level-shift and the other input being a fixed DC offset. Combined with the gain of the op-amp you can both offset and scale the signal.
 
 ==== Inverting Summing Amplifier
 
