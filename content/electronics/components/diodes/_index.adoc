@@ -1,0 +1,643 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "Electronic Components", "Diodes" ]
+date: 2011-09-05
+description: "Info about zener, PIN, TVS, Schottky, Zener and general-purpose diodes."
+draft: false
+lastmod: 2021-09-24
+tags: [ "electronics", "diodes", "components", "current", "schematic symbols", "TVS", "Schottky", "bridge rectifier", "Zener", "dynamic resistance", "impedance", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "laser diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution", "irradiance", "radiometric", "photosynthetic flux", "PPF" ]
+title: "Diodes"
+type: "page"
+---
+
+== Overview
+
+Diodes are passive semiconductor components consisting of a single P-N junction. Their main property is that they only allow conduction of current in one direction, which makes them a useful component in many electronic circuits.
+
+== General Purpose Diodes
+
+=== Schematic Symbol And Designator
+
+On schematics, general purpose diodes use the schematic symbol `D` (as do all most all types of diodes) and use the following symbol (most other types of diodes DO NOT use this symbol, they use slightly adjusted versions).
+
+.The schematic symbol for a general purpose diode. The anode is the left pin and the cathode is on the right. Most other types of diodes (Schottky, Zener, e.t.c) use a slightly adjusted version of this symbol to distinguish themselves from the general purpose variety.
+image::general-purpose-diode-schematic-symbol.svg[width=300px]
+
+=== Parameters
+
+++++
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Symbol</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>Maximum Continuous Forward Current</td>
+    <td>\( I_{f(cont)} \)</td>
+    <td>The maximum continuous current the diode can withstain, usually limited by overheating. Typically 20-500V.
+    </td>
+    </tr>
+    <tr>
+    <td>Forward Voltage</td>
+    <td>\( V_f \)</td>
+    <td>The forward voltage drop, usually rated at maximum continuous current (\( I_f \) ). An ideal diode would have no forward voltage drop. Schottky diodes have the lowest forward voltage drop of any diode. Generally, the smaller the forward voltage drop, the larger the reverse-leakage. The higher the temperature, the smaller the forward voltage drop. Typically 0.3-1.2V.
+    </td>
+    </tr>
+    <tr>
+    <td>Reverse-leakage Current</td>
+    <td>\( I_R \)</td>
+    <td>The leakage current when the diode is reverse-biased at the stand-off voltage. An ideal diode would have no reverse-leakage current. Generally, the smaller the reverse-leakage current, the larger the forward voltage drop. The higher the temperature, the higher the reverse-leakage current. Typically 10nA-1mA.
+    </td>
+    </tr>
+    <tr>
+    <td>Peak-surge forward current</td>
+    <td>\( I_{FSM} \)</td>
+    <td>The forward current the diode can handle for a small amount of time. The exact time depends on the standard used to calculate this value (usually JEDEC). The is normally so you can determine the diode can handle inrush current/inductive energy pulses of a particular circuit.</td>
+    </tr>
+  </tbody>
+</table>
+++++
+
+Some other important properties of diodes are their ability to prevent conduction until a certain, configurable breakdown voltage, and a conduction current that is related to the square of the voltage across it.
+
+Diodes come in many link:/pcb-design/component-packages[component packages], one of the most common being the link:/pcb-design/component-packages/do-41-component-package[through-hole DO-41 package]. They also come in standard SMD packages. It is a good idea to add polarity marks to the silkscreen layer on  diode footprints. The picture below shows polarity marks being added to a diode with a 0603 footprint.
+
+.Polarity marks have been added to the silkscreen layer for these 0603 diodes.
+image::silkscreen-polarity-marks-on-0603-diode-footprint.png[width=500px]
+
+=== Polarity
+
+Most diodes have their polarity marked with a single line near the cathode (the "more negative" end when conducting current). They will let current flow from anode to cathode but not in the other direction.
+
+NOTE: Some diodes, such as bi-directional TVS diodes, do not have a polarity.
+
+SPICE model for the general-purpose `1N4148` diode:
+
+```text
+.model 1N4148 D 
++ IS = 4.352E-9 
++ N = 1.906 
++ BV = 110 
++ IBV = 0.0001 
++ RS = 0.6458 
++ CJO = 7.048E-13 
++ VJ = 0.869 
++ M = 0.03 
++ FC = 0.5 
++ TT = 3.48E-9
+```
+
+=== Can Diodes Share Current?
+
+The short answer: No!
+
+The slightly longer answer...
+
+Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, e.t.c., until one is conducting almost all the current (and leading to thermal runaway!). This even occurs when the diodes are the same part number and from the same production run, due to the fact that there is always small differences between any two diodes. One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg. They should be identical in resistance and have to drop at least stem:[0.3-0.4V] (when the diode has a nominal voltage drop of around stem:[0.7V]) to be effective.
+
+== Schottky Diodes
+
+Schottky diodes are special diodes that have a lower voltage drop than standard diodes (typically 0.3V instead of 0.7V). They are used in applications where the input voltage is small, and in high power applications in where the power consumption of the diode needs to be kept to a minimum. The standard schematic symbol for a schottky diode is shown below (note the curls on the bar, which differs it from the standard diode symbol.
+
+=== Schematic Symbol And Designator
+
+.The schematic symbol and designator for the Schottky diode. The anode is the left pin and the cathode is the right pin.
+image::schottky-diode-schematic-symbol.svg[width=300px]
+
+## Photo Diodes
+
+Note these are not be confused with photo-transistors, which are similar, but technically not photo diodes. Photo diodes have a faster response time than photo-transistors.
+
+## Avalanche Photo-diodes (APDs)
+
+Avalanche photo-diodes (APDs) are constructed in a similar manner to PIN diodes. The major difference is that they are operated with a much larger reverse voltage (100-200V for silicon based ones). This causes the avalanche effect (impact ionization) whenever photons strike the sensor, giving a current-gain of around 100. The current gain is roughly proportional to the applied reverse voltage, and for this reason some special avalanche diodes have been made which have a reverse breakdown voltage of over 1500V, allowing much higher gains (e.g. 1000).
+
+Sometimes they can be operated above their maximum reverse voltage for short periods of time, giving even larger gains! When operated in this fashion, it is called **Geiger mode**.
+
+APDs are used in range-finders and optical communications.
+
+## Bridge Rectifiers
+
+Bridge rectifiers are 4 diodes connected in such a way that they rectify an AC voltage waveform into a DC one. The image below shows a bridge rectifier being used after a transformer to convert `\(12VAC\)` into `\(12VDC\)`. Note that the frequency of the ripple will be twice the AC input frequency (2x `\(50Hz = 100Hz\)`).
+
+{{< img src="transformer-bridge-recitifier-cap-240vac-to-12vdc.png" width="1232px" caption="A schematic of an AC-DC power-supply that uses a bridge rectifier."  >}}
+
+Bridge rectifiers can have snubber elements attached to each diode. This helps reduce the high-frequency noise which can be induced when the diodes themselves switch on/off, due the leakage inductance and parasitic capacitance of the transformer (which cause oscillations when the diodes essentially change the output impedance). Typical values for the snubber circuit are a 47pF capacitor in series with a 2kR resistor.
+
+## Temperature Sensors
+
+Diodes can be used as temperature sensors, as their forward voltage changes depending on the temperature. Most 3-pin active linear temperature sensors use a diode for the temperature measurement, along with additional circuitry to linearise and scale the reading. See the {{% link text="Temperature Sensors page" src="/electronics/components/sensors/temperature-sensors" %}} for more information.
+
+## Steering Diodes
+
+Steering diodes is a name given to a configuration of two or more diodes that changes the direction of current depending on the polarity of the waveform.
+
+They can be used to provide transient ESD protection.
+
+{{< img src="steering-diodes-used-for-transient-esd-protection.png" width="484px" caption="Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf." >}}
+
+They can be used alongside a potentiometer and 555 timer to create a PWM circuit.
+
+{{< img src="schematic-steering-diodes-used-for-555-timer-pwm-circuit.png" width="736px" caption="Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications)."  >}}
+
+## Manufacturer Part Numbers
+
+* **1N4148**: Common general-purpose diode family.
+* **1N58xx**: Common Schottky diode family.
+* **BZX384**: Series of Zeners in a SOD-323 package from Nexperia.
+  * **BZX384-B**: ±2% tolerance range.
+  * **BZX384-C**: ±5% tolerance range.
+* **MM3Z**: Family of Zener diodes from Fairchild Semiconductor (now On Semiconductor). 
+* **MMSZ52**: Family of Zener diodes from Diodes Incorporated.
+
+== DIACs
+
+The DIAC is a form of diode which conducts current only after it reaches it's breakover voltage. The diode then continues to conduct, even if the voltage reduces, until the point where current drops below it's holding current, at which point the DIAC goes back to it's initial non-conducting state.
+
+=== Schematic Symbol
+
+Below is the schematic symbol for the DIAC.
+
+.The schematic symbol for a DIAC.
+image::diac-schematic-symbol.png[width=300px]
+
+== PIN Diodes
+
+A PIN diode is a semiconductor diode with a wide undoped intrinsic semiconductor region between a p-type and n-type semiconductor region (hence the name PIN).
+
+.A photo of a small, through-hole PIN diode.
+image::pin-diode-photo-small.jpg[width=200px]
+
+A "normal" PN diode has a very small intrinsic region, which is good when you wish to use the diode as a standard rectifier. The PIN diodes wide intrinsic region makes it an inferior rectifier, but gives it other desirable properties.
+
+A PIN diode is a light detector. It can be used to convert optical signals into electrical electrical signals. It consists of a p region, an intrinsic region, and a n region (hence the name PIN diode).
+
+=== Important Parameters
+
+++++
+<table>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Symbol</th>
+            <th>Units</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
+<tr>
+<td>Dark Current</td>
+<td >\(I_D\)</td>
+<td >A</td>
+<td >Typically in the 0.1-5nA range.</td>
+</tr>
+<tr >
+<td >Extinction Ratio</td>
+<td > </td>
+<td >none</td>
+<td > </td>
+</tr>
+<tr >
+<td >Field of View</td>
+<td >FoV</td>
+<td > </td>
+<td ></td>
+</tr>
+<tr >
+<td >Output Rise Time</td>
+<td >\(t_r\)</td>
+<td >s</td>
+<td > </td>
+</tr>
+<tr >
+<td >Responsivity</td>
+<td > </td>
+<td >A/W</td>
+</tr>
+</tbody>
+</table>
+++++
+
+PIN diodes are normally operated in the reverse bias state.
+
+Because of their good light-to-current linearity, they are commonly connected to a transimpedance amplifier (one which converts an input current into an output voltage). A typical example would be the Maxim MAX3658, which is designed for fibre-optic applications.
+
+=== RF Applications
+
+They act as almost perfect resistors in the RF and microwave frequencies. The resistivity these AC waveforms see is dependent on the DC bias current flowing through the diode, and the intensity, wavelength and modulation rate of the incoming light.
+
+Because the PIN diodes RF resistance is dependant on the DC bias current, they can be used as an RF switch or variable resistor. The RF resistance can range from about stem:[100m\Omega] to stem:[10k\Omega].
+
+=== Reverse Recovery Time<
+
+PIN diodes have a very poor reverse recovery time.
+
+== TVS Diodes
+
+TVS (transient voltage suppressor) diodes are used to protect traces from high voltage spikes. They are designed to be operated in the reverse direction and work by shunting currents when the reverse voltage exceeds the **avalanche breakdown potential**. They are basically **high-power Zener diodes**, and are a specialized form of an _avalanche diode_.
+
+They are part of a family of components used for ESD (electro-static discharge) protection, which also includes Zener diodes (however, ESD is not the only thing Zeners are used for). TVS diodes can handle large amounts of peak power (hundred's or thousands of Watts), but Zeners have a tighter voltage tolerance. TVS diodes have more capacitance than Zeners, which could be detrimental in some circumstances (e.g. when protecting the gate signal on a MOSFET).
+
+They come in either uni-directional or bi-directional flavours. Uni-directional TVS diodes block up to the rated voltage in one direction, and behave like a normal conducting diode in the other. Bi-directional block up to the rated voltage in both directions (good for protecting AC waveforms). Use uni-directional diodes if possible, they are cheaper, and they have much faster turn-on times than their bi-directional counterparts (e.g. 4ps compared to 4ns).
+
+=== Schematic Symbol
+
+.My preferred schematic symbol for a uni-directional TVS diode (or any other type of avalanche diode for that matter). Notice the double bar distinguishing it from a Zener diode symbol.
+image::diode-symbol-tvs-avalanche.svg[width=200px]
+
+=== Arrays
+
+They can be grouped into IC packages called arrays. A typical schematic symbol for a diode array is shown below.
+
+.The schematic symbol of a diode array, with a common anode connection.
+image::schematic-symbol-esd-diode-array.png[width=300px]
+
+=== Important Parameters
+
+==== Breakdown Voltage
+
+Symbol: stem:[V_{breakdown}] +
+Units: stem:[V]
+
+Also called the reverse breakdown voltage. This is the reverse voltage (cathode-to-anode) at which the diode "begins" to conduct. The point at which the diode begins to conduct is usually specified as a fixed current, typically 1mA.
+
+==== Rated Power
+
+Symbol: \( P \) +
+Units: \( W \)
+
+The maximum power the TVS diode can dissipate, for a specified time period. Typical values range between 400W-1.5kW.
+
+==== Standoff Voltage
+
+Symbol: \( V_{standoff} \) +
+Units: \( V \)
+
+This is the reverse voltage that the diode can withstand without drawing "any" current. This is one of the most important parameters, as you usually match this voltage to the maximum operating voltage of the wire you are connecting it to. Note that there is a small amount of current drawn at this voltage, this is called the reverse leakage current.
+
+==== Leakage Current
+
+The reverse-leakage of TVS diodes decreases as the stand-off voltage increases. Be warned, the leakage current of TVS diodes which have low voltage stand-offs (e.g. <10V), can have large leakage currents! A 5V stand-off TVS diode typically has a reverse-leakage current of around 500uA, but TVS diodes with a stand-off voltage of 10V or higher have a reverse-leakage of 1uA or less. Note that at low stand-off voltages, the leakage current of a bi-directional diode can be double that of a uni-directional diode for the same stand-off voltage.
+
+.Leakage currents of TVS diodes with low stand-off voltages.
+image::leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png[width=1182px]
+
+For more information, see the link:/electronics/circuit-design/esd-protection[ESD Protection] page.
+
+=== Reverse Polarity Protection
+
+Unusually, TVS diodes. along with a fuse or other current-limiting device, can act as a **very good reverse-polarity protection mechanism** on inputs to a PCB. They are usually present on a voltage rail input for the primary reason of reducing ESD. However, if the V+ and GND are connected to the PCB the wrong way around, the TVS diode will forward conduct and clamp the voltage to a normally non-destructive 0.7-1.5V. A current-limiting device like a fuse also has to be present to prevent the TVS diode from overheating.
+
+They are especially suited to this role (when considering other diodes) as the are usually built to dissipate large amounts of heat.
+
+{{< img src="tvs-diode-for-reverse-polarity-protection.png" width="701px" caption="A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection."  >}}
+
+In the schematic above, the **fuse will quickly blow** if the power supply is connected to the input connector the wrong way around.
+
+=== Low Capacitance
+
+There are a family of TVS diodes called low-capacitance (or ultra-low) TVS diodes. They have much less capacitance than standard TVS diodes (typical capacitances are between 0.4-0.9pF), and are designed for protecting high-speed data lines such as those used in USB, HDMI, DisplayPort, and Ethernet communication protocols and also for RF antennas such as GPS, FM radio and NFC antenna lines.
+
+This low capacitance is achieved by adding a forward-biased general purpose diode in series with the usual reverse-biased TVS (zener-style diode). The schematic symbol for a low-capacitance TVS diode is shown below:
+
+{{< img src="internal-schematic-of-low-capacitance-tvs-diode-annotated.png" width="536px" caption="The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component."  >}}
+
+The forward-biased general purpose diode has a much smaller parasitic capacitance than the zener diode. Because the parasitic capacitances are in series (grey capacitors in diagram), the total capacitance of the component is greatly reduced!
+
+=== Special-Purpose TVS Diodes
+
+==== RS-485 TVS Diodes
+
+TVS diodes built specifically for protecting RS-485 communication protocol bus lines are bi-directional and have two different hold-off voltages to meet the RS-485 spec. They normally include the character sequence "SM712" in their part name (e.g. SM712-02HTG by Littelfuse and SM712-TP by Micro Commerical).
+
+.The pintout and functional block diagram of the SM712-02HTG TVS diode, designed specifically for protecting RS-485 bus lines. Image from http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf.
+image::sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png[width=500px]
+
+More information on these diodes can be found in the link:/electronics/communication-protocols/rs-485-protocol#specialised-tvs-diodes[Specialised TVS Diodes section on the RS-485 Protocol page].
+
+== Zener Diodes
+
+Zener diodes are diodes which have a specified reverse blocking voltage at which they breakdown and begin to conduct. They are similar to TVS diodes, but generally have a more defined and precise breakdown voltage, but a lower power rating. The allows Zeners to be used a shunt-style voltage regulators to power small circuits and as such, are sometimes called _voltage regulator diodes_. Shunt voltage references are similar in concept to zener diodes, except that they are more precise but can't dissipate as much power.
+
+Uses for zener diodes include:
+
+* Low power/simple voltage reference
+* Over-voltage protection for low power applications (use TVS diodes to dissipate high energy voltage spikes)
+* To turn on a sub-circuit once a certain voltage level is reached (e.g. an LED in a simple battery charging circuit)
+
+You can purchase Zeners with a reverse voltage drop as low as stem:[1.8V] all the way to above stem:[100V]. For voltage drops less than 1.8V, you can stack (i.e. place in series) multiple normal or schottky diodes in forward bias.
+
+=== Schematic Symbols
+
+.The schematic symbol for a Zener diode.
+image::zener-diode-schematic-symbol-triangle-outline.png[width=400px]
+
+=== How To Read A Zener Diode Datasheet
+
+A zener voltage stem:[ V_Z ] is given at a Zener test current stem:[ I_{ZT} ]. stem:[ V_Z ] is the voltage the Zener regulates to. The test current typically a current large enough to overcome the "knee" in the voltage vs. current curve, and put the Zener into it's "voltage regulation" state (where the voltage stays relatively stable with large changes in current).
+
+=== Regulation Performance And Dynamic Resistance
+
+Low voltage (1-4V) Zener diodes are notoriously bad at voltage regulation due to their high dynamic resistance compared to their high-voltage siblings.
+
+=== Simple Voltage-Limiting Circuit With A Zener Diode
+
+You can build a simple voltage limiting circuit from a Zener diode, a NPN BJT transistor, and a couple of resistors. The schematic below shows an example of this, used to limit the maximum voltage to the stem:[V_{in}\,] pin of the ADP8140 LED driver IC.
+
+.A simple Zener/NPN based voltage limiter circuit for the input to the ADP8140 LED driver IC. Image from https://www.analog.com/media/en/technical-documentation/data-sheets/ADP8140.pdf.
+image::zener-and-npn-bjt-voltage-limiter-adp8140.png[width=600px]
+
+The voltage at stem:[V_{in}\,] is regulated to approximately stem:[ V_Z - 0.7V ]. The current through stem:[R_Z] is:
+
+[stem]
+++++
+I_{RZ} = \frac{V_{CC} - V_Z}{R_Z}
+++++
+
+For more information, see the link:/electronics/circuit-design/esd-protection[ESD Protection] page.
+
+== Light Emitting Diodes (LEDs)
+
+There is a neat little [LED Wizard](http://led.linear1.org/led.wiz) from [LED Centre](http://led.linear1.org/) for working out what parallel/series combination of LED's you should use given a certain input voltage and number of LEDs you want in your array.
+
+{{< img src="red-led-5mm-th-diffused.jpg" width="242px" caption="A diffused-lens, red, 5mm through-hole LED." >}}
+
+=== Important Parameters
+
+_Parameters are sorted alphabetically._
+
+++++
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Parameter Symbol</th>
+      <th>Typical Units</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Dominant Wavelength</td>
+      <td>\(\lambda_{dom}\)</td>
+      <td>nm</td>
+      <td>This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the peak wavelength.</td>
+    </tr>
+    <tr>
+      <td>Flux</td>
+      <td>n/a</td>
+      <td>n/a</td>
+      <td>This will be used as a shorthand for either <i>radiometric flux</i>, <i>spectral flux</i> or rarely, <i>photon flux</i>. You will have to deduce which based on the context.</td>
+    </tr>
+    <tr>
+      <td>Forward Current</td>
+      <td>\(I_F\)</td>
+      <td>mA</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Forward Surge Current</td>
+      <td>\(I_{FM}\)</td>
+      <td>mA</td>
+      <td>Normally rated at a fixed temperature, duty cycle, and pulse length.</td>
+    </tr>
+    <tr>
+      <td>Forward Voltage</td>
+      <td>\(V_F\)</td>
+      <td>V</td>
+      <td>Rated at a fixed forward current.</td>
+    </tr>
+    <tr>
+      <td>Irradiance</td>
+      <td>\( E \)</td>
+      <td>\( mW/m^2 \)</td>
+      <td>Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol \(E\) as \(I\) is already used for radiant intensity. It is a radiometric quantity.</td>
+    </tr>
+    <tr>
+      <td>Peak Wavelength</td>
+      <td>\(\lambda_{peak}\)</td>
+      <td>nm</td>
+      <td>The wavelength at the peak of the spectral density curve. This is the wavelength at which the LED emits the most power (or flux). It is a radiometric quantity, and is not the same thing as the dominant wavelength.</td>
+    </tr>
+    <tr>
+      <td>Photon Flux</td>
+      <td>\( \phi_e \)</td>
+      <td>\( umol/s \)</td>
+      <td>The number of photons emitted per second by the LED. This is a not a common property to be listed on LED datasheets, more typically the <i>radiometric flux</i> is given.</td>
+    </tr>
+    <tr>
+      <td>Photosynthetic Flux</td>
+      <td>\( PPF \)</td>
+      <td>\( umol/s \)</td>
+      <td>Very similar to photon flux, except only photons within the photosynthetic active region (PAR) of 400-700nm are considered. Commonly used for LED light sources that will be used in agriculture for plant growth (e.g. hgih-pressure sodium lamps). Typical values range from 100-200umol/s</td>
+    </tr>
+    <tr>
+      <td>Radiation Pattern</td>
+      <td>\( n/a \)</td>
+      <td>relative intensity (0-1)</td>
+      <td>The radiation pattern (aka spatial distribution) is usually given on a semi-circular graph, showing the relative intensity of the emitted light vs. the angle from looking directly forward.</td>
+    </tr>
+    <tr>
+      <td>Radiant Flux</td>
+      <td>\( \phi_e \)</td>
+      <td>Watts, \( mW \)</td>
+      <td>The <i>radiant flux</i> (also called the <i>radiant power</i>) is the total amount of light energy per unit time radiated from one region to another. In the context of an LED it is typically used to describe the total amount of light energy emitted by the LED each second. You can divide the radiant flux by the input power to calculate the efficiency of the LED, and to find out how much power will be lost as thermal energy. It is different to the photometric flux.</td>
+    </tr>
+    <tr>
+      <td>Reverse Voltage</td>
+      <td>\( V_R \)</td>
+      <td>Volts, \( V \)</td>
+      <td>The maximum voltage the LED can withstand when reverse biased. Typically LEDs are forward biased but in some applications their diode property of only allowing current to flow in one direction is used.</td>
+    </tr>
+    <tr>
+      <td>View Angle</td>
+      <td>\( 2\theta_{\frac{1}{2}} \)</td>
+      <td>degrees</td>
+      <td>The total angle that the LED emits light at. This should be less than 180° as most LEDs emit light of a planar surface. The smaller this value the more focused the LED is. Some LEDs come package with a lens to focus the light.</td>
+    </tr>
+  </tbody>
+</table>
+++++
+
+LED forward voltages for common LED colours are listed in the table below. You will notice that the **forward voltage increases with the increasing frequency of the light** (in simple terms, it takes more input energy to create photos with a higher energy), and the forward voltage is largely independent on the manufacturer or manufacturing process of the LED.
+
+++++
+<table>
+  <thead>
+    <tr>
+      <th>Colour</th>
+      <th>Forward Voltage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Red</td>
+      <td>2.0V</td>
+    </tr>
+    <tr>
+      <td>Orange</td>
+      <td>2.0V</td>
+    </tr>
+    <tr>
+      <td>Yellow</td>
+      <td>2.1V</td>
+    </tr>
+    <tr>
+      <td>Green</td>
+      <td>2.2V</td>
+    </tr>
+    <tr>
+      <td>Blue</td>
+      <td>3.3V</td>
+    </tr>
+  </tbody>
+</table>
+++++
+
+=== Limiting The LED Current
+
+A common mistake when working out the value of a current limiting LED resistor is to forget to include the forward voltage drop of the diode into the equations. This has a bigger effect when running the LED at lower voltages. The equation for working out the resistance needed to limit the current in an LED is:
+
+<div>$$R = \frac{V_{dd} - V_{led,f}}{I_{led}}$$</div>
+
+<p class="centered">
+    where:<br>
+    \(R\) = resistance required in series of LED to limit current<br>
+    \(V_{dd}\) = supply voltage driving the LED (typ. 3.3, 5, 12V)<br>
+    \(V_{led,f}\) = forward voltage drop of the led (typ. 2.0V)<br>
+    \(I_{led}\) = required current through the led (typ. 5-20mA)<br>
+</p>
+
+=== Reverse Mounting
+
+Reverse mounting LED's are SMD LEDs which have the light source emitting in the reverse direction, e.g. toward the PCB they are mounted on. A hole is drilled in the PCB to let the light through to the other side. They are useful when using a PCB as a user interface panel, or when you want to use light guides (since the light guides can be mounted up against flat PCB).
+
+{{% warning %}}
+Be careful when soldering reverse-mount LEDs by hand, it is very easy to push too hard on the LED body and bend the legs!
+{{% /warning %}}
+
+{{< img src="osram-ls-p47k-reverse-mount-led-photo.png" width="440px" caption="An Osram reverse-mount LED (P47K series)."  >}}
+
+=== Multiplexing
+
+Multiplexing is a way of connecting LED's in an arrangement so that it minimises the number of microcontroller pins required to drive them. There is also a even greater pin-saving method, known as Charlieplexing.
+
+Multiplexing is normally done in a row/column configuration, where the LED's are connected in a grid-like fashion, and one microcontroller output pin is used for each row and column. This gives the following equation linking the number of pins used and the number of LEDs:
+
+<p>$$y = (\frac{x}{2})^2$$</p>
+
+<p class="centered">
+  where:<br />
+  \(y\) = number of LEDs<br />
+  \(x\) = number of microcontroller pins<br />
+</p>
+
+=== Charlieplexing
+
+Charlieplexing is a more efficient (in terms of number of drive signals used) way of driving LEDs, compared to multiplexing.
+
+The following equation is given linking the number of pins used and the number of LEDs:
+
+<p>$$y = x^2 - x$$</p>
+
+=== ESD
+
+Even though all LEDs are susceptible to ESD damage, it is the GaN based LEDs (blue, white and some green colors) that are more sensitive to surge voltages caused by ESD.
+
+The susceptibility for LEDs to ESD is low enough that no extra ESD protection measures (aside from the current-limiting resistor which acts somewhat as a ESD suppressor also) are taken for LEDs used for general purposes.
+
+=== Light Detection With A LED
+
+A little known fact about LEDs is that they can be used for light detection. Although not as sensitive as purpose-built photo-diodes, with a few external components, can be interfaced with a microcontroller and be used to detect variations in the light level.
+
+The schematic below shows how to connect an LED up to a general microcontroller for light detection. The LED and resistor are connected up to GPIO pins.
+
+{{< img src="led-connected-to-micro-for-light-detection-schematic.png" width="502px" caption="Schematic showing how to connect an LED to a general microcontroller for light detection. The LED and resistor are connected to GPIO pins."  >}}
+
+The photocurrent of an LED is about 10-100 times smaller that that of a purpose-built photo-diode. The wavelength of peak sensitivity is usually a little less than the peak wavelength that it emits light at.HighLED is binned according to flux output. There are 5 bins:
+
+=== RGB LEDs
+
+RGB LEDs are LED's which have three diodes inside them, one red, one green, and one blue. Whats cool with these is, when controlled correctly, they can produce almost any visible colour (remember primary colours in science class?).
+
+RGBs usually have at least four pins, one each for one side of the red, green, and blue diodes (either all anode or all cathode), and a common which connects all three of the other sides of the diodes. They are more complicated to control than a normal LED, normally requiring 3 different PWM signals, and a bit of firmware to calculate the appropriate duty cycles.
+
+You can get RGD LEDs which already have the control and drive circuitry (e.g. the constant current source) for the LEDs inside them. These are normally connected to a microcontroller via a digital communication bus (e.g. [SPI](/electronics/communication-protocols/spi-communication-protocol), or sometimes a custom protocol).
+
+One popular example, the WS8211, uses it's own custom communications protocol running at 800kHz.
+
+{{< img src="ws2811-rgb-led-front-and-back-photo.png" width="498px" caption="The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller." >}}
+
+=== LED Controllers
+
+LED controllers are ICs designed specifically to make driving LEDs easier, by providing the correct current for the LEDs to operate and off-loading the processing power which would otherwise have to be done on a microcontroller. They normally allow you to control both the current and the PWM rate for each LED (to control both the brightness and colour). Some are specially designed for RGB LEDs.
+
+Some feature logarithmic current output levels to best match up with what the human eye perceives.
+
+==== PWM vs Current Control
+
+There are two main ways to dim an LED, either by changing the current or with PWM. Since PWM only varies how long the LED is on for, and keeps the current through the LED the same, it does not really affect the colour of the LED, while the current-changing method does (the colour depends on the forward current).
+
+==== Examples
+
+The [PCA9634 8-Channel 25mA I2C LED Controller by NXP](http://www.nxp.com/products/power_management/lighting_driver_and_controller_ics/i2c_led_display_control/series/PCA9634.html) is a simple LED driver for up to 8 single low-power (20mA) LEDs.
+
+=== Lens Shapes
+
+LEDs come with a variety of lens shapes. The major thing that the len shapes influences is the **radiant intensity or radiation pattern of the light**. Some lens shapes focus the light around a small angle (e.g. 10°), while others spread the light over nearly 180°.
+
+Most standard LEDs used on circuit boards are either encapsulated or hemispherical.
+
+Hemispherical lens concentrates the light into a tight beam, while the flat and encapsulated lens types spread the light more evenly than an LED with no lens at all.
+
+=== Laser Diodes
+
+Laser diodes are LEDs which emits 'lasered' light using a similar method to standard-light LEDs.
+
+Some laser diodes have integrated switching FETs and capacitors for high-speed, high-power applications (such as laser range finding).
+
+{{< img src="laser-diode-with-integrated-fet-and-cap.png" width="473px" caption="A laser diode with an integrated FET and capacitor for high-seed, high-power switching." >}}
+
+=== Pulse-Width Extending
+
+A common use for an LED is to connect it to a digital output pin of a microcontroller/IC which goes active upon a certain event (say the microcontroller receives a packet of data).
+
+The problem with this is that the length of time that the output pin is active for can be a really short amount of time, e.g. microseconds or even nanoseconds. It the events are rare enough, this may make it impossible to see the LED flicker.
+
+One way to fix this with hardware to to use a simple pulse-width extender circuit as shown below:
+
+{{< img src="led-pulse-extending-circuit-schematic-annotated-rc-mosfet.png" width="645px" caption="The schematic for a LED pulse width extending circuit. It converts a short pulse that would not be seen into a longer pulse which is visible."  >}}
+
+This circuit uses an RC network to form a time delay. When the short pulse arrives, the MOSFET is turned on almost immediately, and the LED lights up. When the pulse stops, the diode prevents the capacitor from discharging immediately, and instead has to discharge slowly through the resistor. The MOSFET/LED remain on until the voltage on the capacitor drops below the MOSFET's gate-source threshold voltage (or something close to that).
+
+=== Peak vs. Dominant Wavelength
+
+LEDs are usually given with two different quantifiers regarding their wavelength, both the _peak wavelength_ and the _dominant wavelength_.
+
+Most LEDs emit a **narrow spectrum of light** (as opposed to filament-style bulbs, which emit a broad spectrum of light). The **spectral shape is approximately Gaussian** (a.k.a. the normal distribution).
+
+{{< img src="green-led-relative-intensity-vs-wavelength-ltst-c190kgkt.png" width="665px" caption="A graph of the relative intensity vs. wavelength for a 0603 green LED (LTST-C190KGKT). It has a peak wavelength of 574nm and a dominant wavelength of 571nm."  >}}
+
+The peak wavelength is the wavelength at the peak of the spectral density curve. The dominant wavelength is a _colorimetric_ quantity that describes the perceived colour of the LED with respect to the human eye. The human eye essentially sees a weighted average of all the wavelengths emitted by the LED, and perceives a single colour based on this averaging.
+
+The dominant wavelength is important for user interface designers as it determines the "colour" the user perceives.
+
+=== Packaging
+
+You can get LED's in a variety of SMD packages. Common SMD LED packages include the 0603 on 0402 chip packages.
+
+{{< img src="0603-led-up-close.jpg" width="1200px" caption="A picture of a 0603 LED up close on a PCB. You can see the filament running into the middle of the pad (the part which emits the light)." >}}
+
+=== Lifetime And Reliability
+
+The expected lifetime and reliability is not typically given on standard-issue LED datasheets, mainly due to:
+
+* Typical LEDs last so long that lifetime of any product they are used in is determined by other factors
+* It is expensive and time-consuming to measure LED reliability
+* Lifetime and reliability information is considered somewhat confidential
+
+However, some LED manufacturers to give lifetime and reliability information. This is typically done for higher power, specific purpose LEDs such as powerful illumination LEDs (think streetlights, car headlights) or agricultural growing lights. The lifetime is typically expressed as a curve of _power maintenance_ over time (in terms of hours the LED has been on for). Power maintenance is how powerful the LED (in terms of light output power) compared to when it was new. Typical single-value lifetimes can be described as the number of hours until the LED light outputs power reduces to 70 or 50% of it's initial output power (a 70 ro 50% power maintenance).
