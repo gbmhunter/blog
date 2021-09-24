@@ -305,7 +305,8 @@ Unusually, TVS diodes. along with a fuse or other current-limiting device, can a
 
 They are especially suited to this role (when considering other diodes) as the are usually built to dissipate large amounts of heat.
 
-{{< img src="tvs-diode-for-reverse-polarity-protection.png" width="701px" caption="A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection."  >}}
+.A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection.
+image::tvs-diode-for-reverse-polarity-protection.png[width=700px]
 
 In the schematic above, the **fuse will quickly blow** if the power supply is connected to the input connector the wrong way around.
 
@@ -315,7 +316,8 @@ There are a family of TVS diodes called low-capacitance (or ultra-low) TVS diode
 
 This low capacitance is achieved by adding a forward-biased general purpose diode in series with the usual reverse-biased TVS (zener-style diode). The schematic symbol for a low-capacitance TVS diode is shown below:
 
-{{< img src="internal-schematic-of-low-capacitance-tvs-diode-annotated.png" width="536px" caption="The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component."  >}}
+.The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component.
+image::internal-schematic-of-low-capacitance-tvs-diode-annotated.png[width=500px]
 
 The forward-biased general purpose diode has a much smaller parasitic capacitance than the zener diode. Because the parasitic capacitances are in series (grey capacitors in diagram), the total capacitance of the component is greatly reduced!
 
@@ -515,11 +517,11 @@ LED forward voltages for common LED colours are listed in the table below. You w
 A common mistake when working out the value of a current limiting LED resistor is to forget to include the forward voltage drop of the diode into the equations. This has a bigger effect when running the LED at lower voltages. The equation for working out the resistance needed to limit the current in an LED is:
 
 [stem]
-++++
+----
 \begin{align}
 R = \frac{V_{dd} - V_{led,f}}{I_{led}}
 \end{align}
-++++
+----
 
 [.text-center]
 where: +
@@ -543,13 +545,15 @@ Multiplexing is a way of connecting LED's in an arrangement so that it minimises
 
 Multiplexing is normally done in a row/column configuration, where the LED's are connected in a grid-like fashion, and one microcontroller output pin is used for each row and column. This gives the following equation linking the number of pins used and the number of LEDs:
 
-<p>$$y = (\frac{x}{2})^2$$</p>
+[stem]
+----
+y = (\frac{x}{2})^2
+----
 
-<p class="centered">
-  where:<br />
-  \(y\) = number of LEDs<br />
-  \(x\) = number of microcontroller pins<br />
-</p>
+[.text-center]
+where: +
+stem:[y] = number of LEDs +
+stem:[x] = number of microcontroller pins +
 
 === Charlieplexing
 
@@ -557,7 +561,10 @@ Charlieplexing is a more efficient (in terms of number of drive signals used) wa
 
 The following equation is given linking the number of pins used and the number of LEDs:
 
-<p>$$y = x^2 - x$$</p>
+[stem]
+----
+y = x^2 - x
+----
 
 === ESD
 
@@ -617,7 +624,8 @@ Laser diodes are LEDs which emits 'lasered' light using a similar method to stan
 
 Some laser diodes have integrated switching FETs and capacitors for high-speed, high-power applications (such as laser range finding).
 
-{{< img src="laser-diode-with-integrated-fet-and-cap.png" width="473px" caption="A laser diode with an integrated FET and capacitor for high-seed, high-power switching." >}}
+.A laser diode with an integrated FET and capacitor for high-seed, high-power switching.
+image::laser-diode-with-integrated-fet-and-cap.png[width=500px]
 
 === Pulse-Width Extending
 
@@ -627,7 +635,8 @@ The problem with this is that the length of time that the output pin is active f
 
 One way to fix this with hardware to to use a simple pulse-width extender circuit as shown below:
 
-{{< img src="led-pulse-extending-circuit-schematic-annotated-rc-mosfet.png" width="645px" caption="The schematic for a LED pulse width extending circuit. It converts a short pulse that would not be seen into a longer pulse which is visible."  >}}
+.The schematic for a LED pulse width extending circuit. It converts a short pulse that would not be seen into a longer pulse which is visible.
+image::led-pulse-extending-circuit-schematic-annotated-rc-mosfet.png[width=650px]
 
 This circuit uses an RC network to form a time delay. When the short pulse arrives, the MOSFET is turned on almost immediately, and the LED lights up. When the pulse stops, the diode prevents the capacitor from discharging immediately, and instead has to discharge slowly through the resistor. The MOSFET/LED remain on until the voltage on the capacitor drops below the MOSFET's gate-source threshold voltage (or something close to that).
 
@@ -637,7 +646,8 @@ LEDs are usually given with two different quantifiers regarding their wavelength
 
 Most LEDs emit a **narrow spectrum of light** (as opposed to filament-style bulbs, which emit a broad spectrum of light). The **spectral shape is approximately Gaussian** (a.k.a. the normal distribution).
 
-{{< img src="green-led-relative-intensity-vs-wavelength-ltst-c190kgkt.png" width="665px" caption="A graph of the relative intensity vs. wavelength for a 0603 green LED (LTST-C190KGKT). It has a peak wavelength of 574nm and a dominant wavelength of 571nm."  >}}
+.A graph of the relative intensity vs. wavelength for a 0603 green LED (LTST-C190KGKT). It has a peak wavelength of 574nm and a dominant wavelength of 571nm.
+image::green-led-relative-intensity-vs-wavelength-ltst-c190kgkt.png[width=650px]
 
 The peak wavelength is the wavelength at the peak of the spectral density curve. The dominant wavelength is a _colorimetric_ quantity that describes the perceived colour of the LED with respect to the human eye. The human eye essentially sees a weighted average of all the wavelengths emitted by the LED, and perceives a single colour based on this averaging.
 
@@ -647,7 +657,8 @@ The dominant wavelength is important for user interface designers as it determin
 
 You can get LED's in a variety of SMD packages. Common SMD LED packages include the 0603 on 0402 chip packages.
 
-{{< img src="0603-led-up-close.jpg" width="1200px" caption="A picture of a 0603 LED up close on a PCB. You can see the filament running into the middle of the pad (the part which emits the light)." >}}
+.A picture of a 0603 LED up close on a PCB. You can see the filament running into the middle of the pad (the part which emits the light).
+image::0603-led-up-close.jpg[width=700px]
 
 === Lifetime And Reliability
 
