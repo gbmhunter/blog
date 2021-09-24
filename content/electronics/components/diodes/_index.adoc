@@ -163,7 +163,7 @@ The DIAC is a form of diode which conducts current only after it reaches it's br
 Below is the schematic symbol for the DIAC.
 
 .The schematic symbol for a DIAC.
-image::diac-schematic-symbol.png[width=300px]
+image::diac-diode-schematic-symbol.svg[width=300px]
 
 == PIN Diodes
 
