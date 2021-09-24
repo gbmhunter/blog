@@ -99,6 +99,23 @@ The slightly longer answer...
 
 Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, e.t.c., until one is conducting almost all the current (and leading to thermal runaway!). This even occurs when the diodes are the same part number and from the same production run, due to the fact that there is always small differences between any two diodes. One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg. They should be identical in resistance and have to drop at least stem:[0.3-0.4V] (when the diode has a nominal voltage drop of around stem:[0.7V]) to be effective.
 
+=== Bridge Rectifiers
+
+_Bridge rectifiers_ are 4 diodes connected in such a way that they **rectify** an AC voltage waveform into a DC one. <<bridge-rectifier-schematic>> shows how a bridge rectifier is made from four diodes, and where the input AC and output DC signals are connected. 
+
+[[bridge-rectifier-schematic]]
+.Basic circuit diagram showing the construction of a bridge rectifier from four general purpose diodes.
+image::bridge-rectifier-schematic.svg[width=500px]
+
+WARNING: Whilst the output of a bridge rectifier is technically DC, the voltage is still changing by a decent amount! The output begins to look like regular, stable DC once you start adding capacitance (and at stem:[50-60Hz] power line frequencies, a lot of it!).
+
+The image below shows a bridge rectifier being used after a transformer to convert stem:[12VAC] (rms) into stem:[12VDC]. Note that the frequency of the ripple will be twice the AC input frequency (stem:[2\cdot 50Hz = 100Hz]).
+
+.A schematic of an AC-DC power-supply that uses a bridge rectifier.
+image::transformer-bridge-recitifier-cap-240vac-to-12vdc.png[width=800px]
+
+Bridge rectifiers can have snubber elements attached to each diode. This helps reduce the high-frequency noise which can be induced when the diodes themselves switch on/off, due the leakage inductance and parasitic capacitance of the transformer (which cause oscillations when the diodes essentially change the output impedance). Typical values for the snubber circuit are a stem:[47pF] capacitor in series with a stem:[2k\Omega] resistor.
+
 == Schottky Diodes
 
 Schottky diodes are special diodes that have a lower voltage drop than standard diodes (typically 0.3V instead of 0.7V). They are used in applications where the input voltage is small, and in high power applications in where the power consumption of the diode needs to be kept to a minimum. The standard schematic symbol for a schottky diode is shown below (note the curls on the bar, which differs it from the standard diode symbol.
@@ -120,17 +137,9 @@ Sometimes they can be operated above their maximum reverse voltage for short per
 
 APDs are used in range-finders and optical communications.
 
-## Bridge Rectifiers
-
-Bridge rectifiers are 4 diodes connected in such a way that they rectify an AC voltage waveform into a DC one. The image below shows a bridge rectifier being used after a transformer to convert `\(12VAC\)` into `\(12VDC\)`. Note that the frequency of the ripple will be twice the AC input frequency (2x `\(50Hz = 100Hz\)`).
-
-{{< img src="transformer-bridge-recitifier-cap-240vac-to-12vdc.png" width="1232px" caption="A schematic of an AC-DC power-supply that uses a bridge rectifier."  >}}
-
-Bridge rectifiers can have snubber elements attached to each diode. This helps reduce the high-frequency noise which can be induced when the diodes themselves switch on/off, due the leakage inductance and parasitic capacitance of the transformer (which cause oscillations when the diodes essentially change the output impedance). Typical values for the snubber circuit are a 47pF capacitor in series with a 2kR resistor.
-
 ## Temperature Sensors
 
-Diodes can be used as temperature sensors, as their forward voltage changes depending on the temperature. Most 3-pin active linear temperature sensors use a diode for the temperature measurement, along with additional circuitry to linearise and scale the reading. See the {{% link text="Temperature Sensors page" src="/electronics/components/sensors/temperature-sensors" %}} for more information.
+Diodes can be used as temperature sensors, as their forward voltage changes depending on the temperature. Most 3-pin active linear temperature sensors use a diode for the temperature measurement, along with additional circuitry to linearise and scale the reading. See the link:/electronics/components/sensors/temperature-sensors[Temperature Sensors page] for more information.
 
 ## Steering Diodes
 
@@ -138,19 +147,21 @@ Steering diodes is a name given to a configuration of two or more diodes that ch
 
 They can be used to provide transient ESD protection.
 
-{{< img src="steering-diodes-used-for-transient-esd-protection.png" width="484px" caption="Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf." >}}
+.Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf.
+image::steering-diodes-used-for-transient-esd-protection.png[width=500px]
 
 They can be used alongside a potentiometer and 555 timer to create a PWM circuit.
 
-{{< img src="schematic-steering-diodes-used-for-555-timer-pwm-circuit.png" width="736px" caption="Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications)."  >}}
+.Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications).
+image::schematic-steering-diodes-used-for-555-timer-pwm-circuit.png[width=700px]
 
 ## Manufacturer Part Numbers
 
 * **1N4148**: Common general-purpose diode family.
 * **1N58xx**: Common Schottky diode family.
 * **BZX384**: Series of Zeners in a SOD-323 package from Nexperia.
-  * **BZX384-B**: ±2% tolerance range.
-  * **BZX384-C**: ±5% tolerance range.
+** **BZX384-B**: ±2% tolerance range.
+** **BZX384-C**: ±5% tolerance range.
 * **MM3Z**: Family of Zener diodes from Fairchild Semiconductor (now On Semiconductor). 
 * **MMSZ52**: Family of Zener diodes from Diodes Incorporated.
 
@@ -232,7 +243,7 @@ They act as almost perfect resistors in the RF and microwave frequencies. The re
 
 Because the PIN diodes RF resistance is dependant on the DC bias current, they can be used as an RF switch or variable resistor. The RF resistance can range from about stem:[100m\Omega] to stem:[10k\Omega].
 
-=== Reverse Recovery Time<
+=== Reverse Recovery Time
 
 PIN diodes have a very poor reverse recovery time.
 
@@ -362,9 +373,10 @@ For more information, see the link:/electronics/circuit-design/esd-protection[ES
 
 == Light Emitting Diodes (LEDs)
 
-There is a neat little [LED Wizard](http://led.linear1.org/led.wiz) from [LED Centre](http://led.linear1.org/) for working out what parallel/series combination of LED's you should use given a certain input voltage and number of LEDs you want in your array.
+There is a neat little link:http://led.linear1.org/led.wiz[LED Wizard] from LED Centre for working out what parallel/series combination of LED's you should use given a certain input voltage and number of LEDs you want in your array.
 
-{{< img src="red-led-5mm-th-diffused.jpg" width="242px" caption="A diffused-lens, red, 5mm through-hole LED." >}}
+.A diffused-lens, red, 5mm through-hole LED.
+image::red-led-5mm-th-diffused.jpg[width=250px]
 
 === Important Parameters
 
@@ -502,25 +514,28 @@ LED forward voltages for common LED colours are listed in the table below. You w
 
 A common mistake when working out the value of a current limiting LED resistor is to forget to include the forward voltage drop of the diode into the equations. This has a bigger effect when running the LED at lower voltages. The equation for working out the resistance needed to limit the current in an LED is:
 
-<div>$$R = \frac{V_{dd} - V_{led,f}}{I_{led}}$$</div>
+[stem]
+++++
+\begin{align}
+R = \frac{V_{dd} - V_{led,f}}{I_{led}}
+\end{align}
+++++
 
-<p class="centered">
-    where:<br>
-    \(R\) = resistance required in series of LED to limit current<br>
-    \(V_{dd}\) = supply voltage driving the LED (typ. 3.3, 5, 12V)<br>
-    \(V_{led,f}\) = forward voltage drop of the led (typ. 2.0V)<br>
-    \(I_{led}\) = required current through the led (typ. 5-20mA)<br>
-</p>
+[.text-center]
+where: +
+stem:[R] is the resistance required in series of LED to limit current, in stem:[\Omega] +
+stem:[V_{dd}] = supply voltage driving the LED (typ. 3.3, 5, 12V), in stem:[V] +
+stem:[V_{led,f}] = forward voltage drop of the led (typ. 2.0V), in stem:[V] +
+stem:[I_{led}] = required current through the led (typ. 5-20mA), in stem:[A] +
 
 === Reverse Mounting
 
 Reverse mounting LED's are SMD LEDs which have the light source emitting in the reverse direction, e.g. toward the PCB they are mounted on. A hole is drilled in the PCB to let the light through to the other side. They are useful when using a PCB as a user interface panel, or when you want to use light guides (since the light guides can be mounted up against flat PCB).
 
-{{% warning %}}
-Be careful when soldering reverse-mount LEDs by hand, it is very easy to push too hard on the LED body and bend the legs!
-{{% /warning %}}
+WARNING: Be careful when soldering reverse-mount LEDs by hand, it is very easy to push too hard on the LED body and bend the legs!
 
-{{< img src="osram-ls-p47k-reverse-mount-led-photo.png" width="440px" caption="An Osram reverse-mount LED (P47K series)."  >}}
+.An Osram reverse-mount LED (P47K series).
+image::osram-ls-p47k-reverse-mount-led-photo.png[width=450px]
 
 === Multiplexing
 
@@ -556,7 +571,8 @@ A little known fact about LEDs is that they can be used for light detection. Alt
 
 The schematic below shows how to connect an LED up to a general microcontroller for light detection. The LED and resistor are connected up to GPIO pins.
 
-{{< img src="led-connected-to-micro-for-light-detection-schematic.png" width="502px" caption="Schematic showing how to connect an LED to a general microcontroller for light detection. The LED and resistor are connected to GPIO pins."  >}}
+.Schematic showing how to connect an LED to a general microcontroller for light detection. The LED and resistor are connected to GPIO pins.
+image::led-connected-to-micro-for-light-detection-schematic.png[width=500px]
 
 The photocurrent of an LED is about 10-100 times smaller that that of a purpose-built photo-diode. The wavelength of peak sensitivity is usually a little less than the peak wavelength that it emits light at.HighLED is binned according to flux output. There are 5 bins:
 
@@ -566,11 +582,12 @@ RGB LEDs are LED's which have three diodes inside them, one red, one green, and 
 
 RGBs usually have at least four pins, one each for one side of the red, green, and blue diodes (either all anode or all cathode), and a common which connects all three of the other sides of the diodes. They are more complicated to control than a normal LED, normally requiring 3 different PWM signals, and a bit of firmware to calculate the appropriate duty cycles.
 
-You can get RGD LEDs which already have the control and drive circuitry (e.g. the constant current source) for the LEDs inside them. These are normally connected to a microcontroller via a digital communication bus (e.g. [SPI](/electronics/communication-protocols/spi-communication-protocol), or sometimes a custom protocol).
+You can get RGD LEDs which already have the control and drive circuitry (e.g. the constant current source) for the LEDs inside them. These are normally connected to a microcontroller via a digital communication bus (e.g. link:/electronics/communication-protocols/spi-communication-protocol[SPI]), or sometimes a custom protocol).
 
 One popular example, the WS8211, uses it's own custom communications protocol running at 800kHz.
 
-{{< img src="ws2811-rgb-led-front-and-back-photo.png" width="498px" caption="The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller." >}}
+.The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller.
+image::ws2811-rgb-led-front-and-back-photo.png[width=500px]
 
 === LED Controllers
 
@@ -584,7 +601,7 @@ There are two main ways to dim an LED, either by changing the current or with PW
 
 ==== Examples
 
-The [PCA9634 8-Channel 25mA I2C LED Controller by NXP](http://www.nxp.com/products/power_management/lighting_driver_and_controller_ics/i2c_led_display_control/series/PCA9634.html) is a simple LED driver for up to 8 single low-power (20mA) LEDs.
+The link:http://www.nxp.com/products/power_management/lighting_driver_and_controller_ics/i2c_led_display_control/series/PCA9634.html[PCA9634 8-Channel 25mA I2C LED Controller by NXP] is a simple LED driver for up to 8 single low-power (20mA) LEDs.
 
 === Lens Shapes
 
