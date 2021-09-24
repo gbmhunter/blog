@@ -10,6 +10,7 @@ type: page
 
 ## Overview
 
+++++
 <table >
 <tbody >
 <tr >
@@ -111,11 +112,13 @@ type: page
 </tr>
 </tbody>
 </table>
+++++
 
 ## Comments
 
-An ultra-thin QFN package. Commonly used for packaging 4 or 5 {{% link text="TVS diodes" src="/electronics/components/diodes/tvs-diodes" %}} together.
+An ultra-thin QFN package. Commonly used for packaging 4 or 5 link:/electronics/components/diodes/[TVS diodes] together.
 
 ## 3D Renders
 
-{{< img src="uqfn-28-component-package-3d-render.jpg" width="313px" caption="A 3D render of the UQFN-28 component package."  >}}
+.A 3D render of the UQFN-28 component package.
+image::uqfn-28-component-package-3d-render.jpg[width=300px]

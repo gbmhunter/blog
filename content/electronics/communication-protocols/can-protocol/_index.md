@@ -326,9 +326,9 @@ The [Freescale MC9SO8D](http://www.freescale.com/webapp/sps/site/prod_summary.js
 
 ### TVS Diodes
 
-There are {{% link text="TVS diode components" src="/electronics/components/diodes/tvs-diodes" %}} specifically designed for CAN bus ESD suppression. Single diode 2-pin packages or double (termed a _diode array_) TVS diode 3-pin packages are common. Common standoff voltages are `\(12V\)` and `\(24V\)` and common power dissipations are `\(200-500W\)`.
+There are {{% link text="TVS diode components" src="/electronics/components/diodes" %}} specifically designed for CAN bus ESD suppression. Single diode 2-pin packages or double (termed a _diode array_) TVS diode 3-pin packages are common. Common standoff voltages are `\(12V\)` and `\(24V\)` and common power dissipations are `\(200-500W\)`.
 
-{{% figure src="can-bus-tvs-diodes-littelfuse-sm24canb-block-diagram-and-application-example.png" width="600px" caption="Block diagram and application example for the CAN bus AQ24CANFD TVS diode from LittelFuse. Image from <https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq24canfd_datasheet.pdf.pdf>, aquired 2021-04-27." %}}
+{{% figure src="can-bus-tvs-diodes-littelfuse-sm24canb-block-diagram-and-application-example.png" width="600px" caption="Block diagram and application example for the CAN bus AQ24CANFD TVS diode from LittelFuse. Image from <https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq24canfd_datasheet.pdf.pdf>, acquired 2021-04-27." %}}
 
 ## CAN Controller Mailboxes
 
