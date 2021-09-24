@@ -33,3 +33,5 @@ type: "post"
 * Added link:/electronics/components/op-amps/#_level_shifters[info, schematics and simulation results] for op-amp based level-shifters.
 
 * Condensed the four battery pages (lead-acid, zinc-air, coin cells, lithium thionyl chloride) into a single Batteries page.
+
+* Condensed the diode pages (TVS diodes, LEDs, Zener Diodes, General Purpose Diodes) into one.
