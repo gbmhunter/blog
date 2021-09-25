@@ -258,7 +258,7 @@ They come in either uni-directional or bi-directional flavours. Uni-directional 
 === Schematic Symbol
 
 .My preferred schematic symbol for a uni-directional TVS diode (or any other type of avalanche diode for that matter). Notice the double bar distinguishing it from a Zener diode symbol.
-image::diode-symbol-tvs-avalanche.svg[width=200px]
+image::tvs-diode-schematic-symbol.svg[width=200px]
 
 === Arrays
 
@@ -517,11 +517,11 @@ LED forward voltages for common LED colours are listed in the table below. You w
 A common mistake when working out the value of a current limiting LED resistor is to forget to include the forward voltage drop of the diode into the equations. This has a bigger effect when running the LED at lower voltages. The equation for working out the resistance needed to limit the current in an LED is:
 
 [stem]
-----
+++++
 \begin{align}
 R = \frac{V_{dd} - V_{led,f}}{I_{led}}
 \end{align}
-----
+++++
 
 [.text-center]
 where: +
@@ -546,9 +546,11 @@ Multiplexing is a way of connecting LED's in an arrangement so that it minimises
 Multiplexing is normally done in a row/column configuration, where the LED's are connected in a grid-like fashion, and one microcontroller output pin is used for each row and column. This gives the following equation linking the number of pins used and the number of LEDs:
 
 [stem]
-----
+++++
+\begin{align}
 y = (\frac{x}{2})^2
-----
+\end{align}
+++++
 
 [.text-center]
 where: +
@@ -562,9 +564,11 @@ Charlieplexing is a more efficient (in terms of number of drive signals used) wa
 The following equation is given linking the number of pins used and the number of LEDs:
 
 [stem]
-----
+++++
+\begin{align}
 y = x^2 - x
-----
+\end{align}
+++++
 
 === ESD
 
