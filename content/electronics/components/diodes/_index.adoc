@@ -344,10 +344,10 @@ Uses for zener diodes include:
 
 You can purchase Zeners with a reverse voltage drop as low as stem:[1.8V] all the way to above stem:[100V]. For voltage drops less than 1.8V, you can stack (i.e. place in series) multiple normal or schottky diodes in forward bias.
 
-=== Schematic Symbols
+=== Schematic Symbol
 
 .The schematic symbol for a Zener diode.
-image::zener-diode-schematic-symbol-triangle-outline.png[width=400px]
+image::zener-diode-schematic-symbol.svg[width=300px]
 
 === How To Read A Zener Diode Datasheet
 
