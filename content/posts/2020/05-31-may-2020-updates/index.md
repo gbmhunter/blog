@@ -22,4 +22,4 @@ type: "post"
 
     {{% figure src="/electronics/general/kicad/kicad-tips-and-tricks/kicad-logo.png" width="300px" %}}
 
-* Added a {{% link text="Soldering Irons And Stations page" src="/electronics/tools/soldering-irons-and-stations" %}}, {{% link text="Reflow Ovens page" src="/electronics/tools/reflow-ovens" %}}, {{% link text="Logic Analyzers page" src="/electronics/tools/logic-analyzers" %}} and {{% link text="Digital Microscopes page" src="/electronics/tools/digital-microscopes" %}}.
+* Added a [Soldering Irons And Stations page](/electronics/tools/soldering-irons-and-stations), [Reflow Ovens page](/electronics/tools/reflow-ovens), [Logic Analysers page](/electronics/tools/logic-analyzers) and [Digital Microscopes page](/electronics/tools/digital-microscopes).
