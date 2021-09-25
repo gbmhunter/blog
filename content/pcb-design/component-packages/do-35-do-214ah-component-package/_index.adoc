@@ -10,7 +10,7 @@ type: page
 
 ## Overview
 
-
+++++
 <table >
 <tbody >
 <tr >
@@ -97,16 +97,15 @@ type: page
 
 <td >Common Uses
 </td>
-
-<td >Diodes (including the popular 1N4148)</td>
+<td>Diodes (including the popular general purpose 1N414x series and Zener BZX55 series).</td>
 </tr>
 </tbody>
 </table>
+++++
 
 ## Comments
 
-This a very common package for small-signal low-power through-hole diodes such as the 1N4148.
+This a very common package for small-signal low-power through-hole diodes such as the 1N4148 and Zener diodes.
 
-## Photo
-
-{{< img src="do-35-do-204ah-component-package-photo.jpg" width="343px" caption="A photo of the DO-35 (DO-204AH) component package."  >}}
+.A photo of the DO-35 (DO-204AH) component package.
+image::do-35-do-204ah-component-package-photo.jpg[width=350px]
