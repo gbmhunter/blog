@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components", "Diodes" ]
 date: 2011-09-05
 description: "Info about zener, PIN, TVS, Schottky, Zener and general-purpose diodes."
 draft: false
-lastmod: 2021-09-24
+lastmod: 2021-09-26
 tags: [ "electronics", "diodes", "components", "current", "schematic symbols", "TVS", "Schottky", "bridge rectifier", "Zener", "dynamic resistance", "impedance", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "laser diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution", "irradiance", "radiometric", "photosynthetic flux", "PPF" ]
 title: "Diodes"
 type: "page"
@@ -24,6 +24,8 @@ On schematics, general purpose diodes use the schematic symbol `D` (as do all mo
 image::general-purpose-diode-schematic-symbol.svg[width=300px]
 
 TIP: A handy mnemonic for remembering the polarity of a diode is to remember that the triangle in the symbol points in the direction of "forward" current (current when the diode is forward conducting).
+
+Some believe that the diode symbol originated from the drawing of a point contact crystal diode, an early form of diode made from crystal and metal, used in things such as "crystal radio" sets<<bib-wikipedia-crystal-detector>>.
 
 === Parameters
 
@@ -747,3 +749,4 @@ However, some LED manufacturers to give lifetime and reliability information. Th
 * [[[bib-bzx55-datasheet, 1]]] Vishay (2019, Mar 11). _BZX55 Series Datasheet_. Retrieved 2021-09-25, from https://www.vishay.com/docs/85604/bzx55.pdf.
 * [[[bib-wikipedia-schottky, 2]]] Wikipedia. _Schottky diode_. Retrieved 2021-09-26, from https://en.wikipedia.org/wiki/Schottky_diode.
 * [[[bib-vishay-1n400x-datasheet, 3]]] Vishay (2020, Apr 29). _1N400x Datasheet: General Purpose Plastic Rectifier_. Retrieved 2021-09-26, from https://www.vishay.com/docs/88503/1n4001.pdf.
+* [[[bib-wikipedia-crystal-detector, 4]]] Wikipedia. _Crystal detector_. Retrieved 2021-09-26, from https://en.wikipedia.org/wiki/Crystal_detector.
