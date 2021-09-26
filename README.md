@@ -8,7 +8,7 @@ The static site generator Hugo is used to build the website from the files in th
 
 1. The recommended code editor is [Visual Studio Code](https://code.visualstudio.com/).
 
-1. Follow the instructions [here](https://gohugo.io/getting-started/installing) to install Hugo (using `chocolatey` to install is recommended when running Windows). **Make sure to install the extended version, as we need to compile `.scss` files into `.css`.
+1. Follow the instructions [here](https://gohugo.io/getting-started/installing) to install Hugo (using `chocolatey` to install is recommended when running Windows). **Make sure to install the extended version, as we need to compile `.scss` files into `.css`**.
 
 1. Install ruby. This is needed to render the AsciiDoc pages.
 
