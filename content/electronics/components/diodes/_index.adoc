@@ -23,6 +23,8 @@ On schematics, general purpose diodes use the schematic symbol `D` (as do all mo
 .The schematic symbol for a general purpose diode. The anode is the left pin and the cathode is on the right. Most other types of diodes (Schottky, Zener, e.t.c) use a slightly adjusted version of this symbol to distinguish themselves from the general purpose variety.
 image::general-purpose-diode-schematic-symbol.svg[width=300px]
 
+TIP: A handy mnemonic for remembering the polarity of a diode is to remember that the triangle in the symbol points in the direction of "forward" current (current when the diode is forward conducting).
+
 === Parameters
 
 ++++
@@ -141,7 +143,18 @@ The BAT42 and BAT43 are popular Schottky diodes, traditionally provided in the l
 
 ==== 1N58xx Family
 
-TODO: Add info.
+The 1N58xx family of Schottky diodes are typically provided in the link:/pcb-design/component-packages/do-41-component-package/[DO-41 package]. Part numbers increment from `1N5817` (20V, 1A) through to `1N5825` (40V, 5A).
+
+.`1N58xx` Schottky diode part number breakdown.
+[source,text]
+----
+  1N58    17
+  |       |
+Family    |
+          |
+Voltage/Current Rating
+17-19=1A,20-22=3A,23-25=5A
+----
 
 ## Photo Diodes
 
