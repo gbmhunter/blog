@@ -15,8 +15,13 @@ type: "page"
 | Name | Diode Outline 41
 | Synonyms
 a|
-* JEDEC DO-204 Variant AH
-| Similar To | DO-31
+* JEDEC DO-204 Variant AL (DO-204AL)
+* SOD66 (NXP)<<bib-nxp-sod66>>
+* LALF (NXP "Package Style")<<bib-nxp-sod66>>
+| Similar To
+a|
+* DO-31
+* DO-35
 | Mounting | TH
 | Pin Count | 2
 | Pitch | 400mil (user variable)
@@ -29,12 +34,17 @@ a|
 * n/a
 | Common Uses
 a|
-* Diodes (incl. the `1N400x` series)
+* General purpose "rectifier" diodes (incl. the `1N400x` series)
 |===
 
-The most common through-hole package for diodes. The common (1N400x) series of diodes comes in this package. The typical rated current for a diode in this package is 1A.
+On of the most common through-hole packages for diodes. The common (1N400x) series of diodes comes in this package. This DO-41 package is normally used for higher power "rectifier" diodes, whilst the lower power "signal" diodes use smaller through-hole packages such as the DO-35. The typical rated current for a diode in this package is 1A.
 
 This package is normally mounted on the PCB in two ways, either flat with the legs bent at 90° to fit into the holes, or in space-constrained applications, vertical, with one of the legs straight and one bent 180° to fit into the holes in the PCB (which are closer together than when in the flat orientation. Material of package is normally moulded plastic.
 
 .A photo of the DO-41 component package.
 image::do-41-component-package-photo.jpg[width=400px]
+
+[bibliography]
+== References
+
+* [[[bib-nxp-sod66, 1]]] NXP (2016, Feb 8). _SOD66: Package Information_. Retrieved 2021-09-26, from https://www.nxp.com/docs/en/package-information/SOD66.pdf.
