@@ -118,6 +118,20 @@ image::transformer-bridge-recitifier-cap-240vac-to-12vdc.png[width=800px]
 
 Bridge rectifiers can have snubber elements attached to each diode. This helps reduce the high-frequency noise which can be induced when the diodes themselves switch on/off, due the leakage inductance and parasitic capacitance of the transformer (which cause oscillations when the diodes essentially change the output impedance). Typical values for the snubber circuit are a stem:[47pF] capacitor in series with a stem:[2k\Omega] resistor.
 
+=== Popular General Purpose Diode Part Numbers
+
+==== 1N400x Family
+
+The `1N400x` family of general purpose diodes have a forward current of 1A and reverse voltage ratings of 50-1000V. They come in the through-hole axial link:/pcb-design/component-packages/do-41-component-package/[DO-41 package].
+
+.Specifications of the various diodes in the `1N400x` family<<bib-vishay-1n400x-datasheet>>.
+|===
+| Part Num.            | 1N4001 | 1N4002 | 1N4003 | 1N4004 | 1N4005 | 1N4006 | 1N4007
+
+| Forward Current      | 1A     | 1A     | 1A     | 1A     | 1A     | 1A     | 1A
+| Max. Reverse Voltage | 50V    | 100V   | 200V   | 400V   | 600V   | 800V   | 1000V
+|===
+
 == Schottky Diodes
 
 _Schottky diodes_ (a.k.a. _Schottky barrier diode_ or _hot-carrier diode_) are diodes formed from a semiconductor-metal junction, rather than a semiconductor-semiconductor junction of a traditional diode. This creates a lower forward voltage drop than standard diodes (typically 0.3V instead of 0.7V), and consequentially also faster switching speeds. They are used in applications where:
@@ -428,6 +442,11 @@ There is a neat little link:http://led.linear1.org/led.wiz[LED Wizard] from LED 
 .A diffused-lens, red, 5mm through-hole LED.
 image::red-led-5mm-th-diffused.jpg[width=250px]
 
+=== Schematic Symbol
+
+.Schematic symbol for an LED (light emitting diode).
+image::led-diode-schematic-symbol.svg[width=300px]
+
 === Important Parameters
 
 _Parameters are sorted alphabetically._
@@ -727,3 +746,4 @@ However, some LED manufacturers to give lifetime and reliability information. Th
 
 * [[[bib-bzx55-datasheet, 1]]] Vishay (2019, Mar 11). _BZX55 Series Datasheet_. Retrieved 2021-09-25, from https://www.vishay.com/docs/85604/bzx55.pdf.
 * [[[bib-wikipedia-schottky, 2]]] Wikipedia. _Schottky diode_. Retrieved 2021-09-26, from https://en.wikipedia.org/wiki/Schottky_diode.
+* [[[bib-vishay-1n400x-datasheet, 3]]] Vishay (2020, Apr 29). _1N400x Datasheet: General Purpose Plastic Rectifier_. Retrieved 2021-09-26, from https://www.vishay.com/docs/88503/1n4001.pdf.
