@@ -120,6 +120,10 @@ image::transformer-bridge-recitifier-cap-240vac-to-12vdc.png[width=800px]
 
 Bridge rectifiers can have snubber elements attached to each diode. This helps reduce the high-frequency noise which can be induced when the diodes themselves switch on/off, due the leakage inductance and parasitic capacitance of the transformer (which cause oscillations when the diodes essentially change the output impedance). Typical values for the snubber circuit are a stem:[47pF] capacitor in series with a stem:[2k\Omega] resistor.
 
+=== Ideal Diodes
+
+One of the main departures that any physical diode has from the concept of an ideal diode is it's non-zero forward voltage drop. You can however compensate for this by making an _ideal diode_ circuit from an op-amp and a diode. See link:/electronics/components/op-amps/#_ideal_diodes[Op-Amps § Ideal Diodes] for more information.
+
 === Popular General Purpose Diode Part Numbers
 
 ==== 1N400x Family
