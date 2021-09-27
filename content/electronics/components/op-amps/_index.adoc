@@ -420,6 +420,16 @@ image::level-shifter-sim/schematic.png[width=700px]
 .Simulation results of the level-shifting circuit shown in <<level-shifter-sim-schematic>>. You can clearly see that the stem:[\pm 5.0V] signal has been level-shifted to the range stem:[0-3.3V]. Because the input is connected to the non-inverting input of the op-amp, the output is in phase with the input signal (i.e. not inverted).
 image::level-shifter-sim/out.png[width=700px]
 
+=== Ideal Diodes
+
+An op-amp can be combined with a regular diode to make an "ideal diode" (also called a _superdiode_<<bib-superdiode>>), one that rectifies and has *no voltage drop*. <<ideal-diode-basic>> shows the most basic form of an ideal diode. Because feedback to the inverting pin is taken from the load (stem:[v_{out}]), the op-amp will drive it's output to whatever is needed to make the output voltage the same as the input voltage (when stem:[v_{in}] is positive), thereby compensating for the forward voltage drop of the diode. When stem:[v_{in}] is negative, the op-amp will try as hard as it can to lower the output voltage, but this will be blocked from the output by the diode, providing the rectifying action.
+
+[[ideal-diode-basic]]
+.A basic "ideal diode" with no forward voltage drop, made from an op-amp and a standard diode.
+image::ideal-diode-basic.svg[width=600px]
+
+The ideal diode is only ideal up to a point. It is not limited by the bandwidth and max. slew rates of the op-amp, which is typically much less than of a basic diode! There is also an issue with slew rates with the above circuit. As soon as stem:[v_{in}] goes negative, the op-amp will "saturate" and swing it's output to the maximum negative voltage. This will cause some delay on the output (limited by the slew rate) when the input once again goes positive.
+
 ## Important Variables
 
 Sorted by function.
@@ -589,30 +599,29 @@ Instrumentation amplifiers are analog voltage amplifier circuits that, although 
 ## Manufacturer Part Number Families
 
 * **INA**
-  * **INAx126**: Precision instrumentation amplifiers by Texas Instruments. The INA126 has one amplifier per package, the INA2126 has two.
-  * **INA290**: Precision current-sense amplifier.
+** **INAx126**: Precision instrumentation amplifiers by Texas Instruments. The INA126 has one amplifier per package, the INA2126 has two.
+** **INA290**: Precision current-sense amplifier.
 * **LM741**: Very popular and old "741" style op-amp produced by Texas Instruments, ON Semiconductor and Rochester Electronics. 
 * **LT**: The prefix Linear Technology (now Analog Devices) uses for their range of op-amps.
-  * **LT1006**: Precision, single-supply op-amp.
-  * **LT1077**: Micropower, single-supply op-amp.
-  * **LT1167**: Instrumentation amplifier.
+** **LT1006**: Precision, single-supply op-amp.
+** **LT1077**: Micropower, single-supply op-amp.
+** **LT1167**: Instrumentation amplifier.
 * **MAX**: Op-amps by Maxim.
-  * **MAX4194**: Instrumentation amplifier.
+** **MAX4194**: Instrumentation amplifier.
 * **OP07**: Analog Devices/Texas Instruments ranges of low input offset voltage op-amps.
-  * **OP07C**: ±3-18V VCC, -40 to +85°C industrial temp. range
-    * **OP07CP**: DIP-8 package
-    * **OP07CS**: SOIC-8 package
-  * **OP07D**: ±4-18V VCC
-  * **OP07E**: 0 to 70°C commercial temp. range
+** **OP07C**: ±3-18V VCC, -40 to +85°C industrial temp. range
+*** **OP07CP**: DIP-8 package
+*** **OP07CS**: SOIC-8 package
+** **OP07D**: ±4-18V VCC
+** **OP07E**: 0 to 70°C commercial temp. range
 * **OPA**: Texas Instruments (previously Burr-Brown) family of op-amps.
-  * **OPAx187**: Zero-drift 36V rail-to-rail op-amps. Includes the OPA187 (1 op-amp), OPA2187 (2 op-amps) and OPA4187 (4 op-amps).
-  * **OPA241**: Single-supply
-  * **OPA251**: Dual-supply
-  * **OPA27**: Texas Instruments (previously Burr-Brown) family of ultra-low noise, precision op-amps. Internally compensated for unity-gain stability.
-  * **OPA37**: Uncompensated version of the OPA27.
+** **OPAx187**: Zero-drift 36V rail-to-rail op-amps. Includes the OPA187 (1 op-amp), OPA2187 (2 op-amps) and OPA4187 (4 op-amps).
+** **OPA241**: Single-supply
+** **OPA251**: Dual-supply
+** **OPA27**: Texas Instruments (previously Burr-Brown) family of ultra-low noise, precision op-amps. Internally compensated for unity-gain stability.
+** **OPA37**: Uncompensated version of the OPA27.
 * **TLE202**: Texas Instruments family of "high-speed low-power" precision operational amplifiers. Belong to the _Excalibur_ family of TI op-amps which uses "isolated vertical PNP transistors" to give unity-gain bandwidth and slew rate improvements.
 * **TLV**: Texas Instruments family of op-amps.
-  **TLV27**:
 
 ## The Different Types Of Gain, Explained
 
@@ -902,4 +911,5 @@ image::standard-8-pin-dual-op-amp-pinout.svg[width=400px]
 * [[[bib-ti-opax196-datasheet, 4]]]: https://www.ti.com/lit/ds/symlink/opa196.pdf
 * [[[bib-analog-devices-input-offset-voltage, 5]]] Analog Devices (2008, Oct.). _MT-037: Op Amp Input Offset Voltage_. Retrieved 2021-09-03, from https://www.analog.com/media/en/training-seminars/tutorials/MT-037.pdf.
 * [[[bib-onsemi-lm324, 6]]] OnSemiconductor (2021, Aug.). _Single Supply Quad
-Operational Amplifiers (Datasheet)_. Retrieved 2021-09-03, from https://www.onsemi.com/pdf/datasheet/lm324-d.pdf. 
+Operational Amplifiers (Datasheet)_. Retrieved 2021-09-03, from https://www.onsemi.com/pdf/datasheet/lm324-d.pdf.
+* [[[bib-superdiode, 7]]] Keim, Robert (2018, Feb 8). _When a Diode Simply Isn’t Good Enough: The Superdiode_. AllAboutCircuits. Retrieved 221-09-27, from https://www.allaboutcircuits.com/technical-articles/when-a-diode-simply-isnt-good-enough-the-superdiode/.
