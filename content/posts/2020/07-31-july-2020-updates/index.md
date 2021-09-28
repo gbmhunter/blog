@@ -22,7 +22,7 @@ type: "post"
 
 * Added a new {{% link text="Databases page" src="/programming/databases" %}} under the _Programming_ section with info on MariaDB and PostgreSQL databases.
 
-* Added a new {{% link text="Multimeters page" src="/electronics/tools/multimeters" %}} under the _Electronics->Tools_ section.
+* Added a new {{% link text="Multimeters page" src="/electronics/tools" %}} under the _Electronics->Tools_ section.
 
 * Added information on ceramic capacitor classes to the Capacitor page.
 
