@@ -74,7 +74,7 @@ $ sudo adduser $USER dialout
 
 At this point we could technically read and write to the serial port, but it will likely not work, because the default configuration settings are not designed for serial port use. So now we will set the configuration correctly.
 
-When modifying any configuration value, it is best practice to only modify the bit you are interested in, and leave all other bits of the field untouched. This is why you will see below the use of `&=` or `|=`, and never `&` or `|` when setting bits.
+When modifying any configuration value, it is best practice to only modify the bit you are interested in, and leave all other bits of the field untouched. This is why you will see below the use of `&=` or `|=`, and never `=` when setting bits.
 
 ## Configuration Setup
 
@@ -135,7 +135,7 @@ tty.c_cflag |= CSTOPB;  // Set stop field, two stop bits used in communication
 The `CS<number>` fields set how many data bits are transmitted per byte across the serial port. The most common setting here is 8 (`CS8`). Definitely use this if you are unsure, I have never used a serial port before which didn't use 8 (but they do exist). You must clear all of the size bits before setting any of them with `&= ~CSIZE`.
 
 ```c
-tty.c_cflag &= ~CSIZE // Clear all the size bits, then use one of the statements below
+tty.c_cflag &= ~CSIZE; // Clear all the size bits, then use one of the statements below
 tty.c_cflag |= CS5; // 5 bits per byte
 tty.c_cflag |= CS6; // 6 bits per byte
 tty.c_cflag |= CS7; // 7 bits per byte
@@ -153,7 +153,7 @@ tty.c_cflag |= CRTSCTS;  // Enable RTS/CTS hardware flow control
 
 ### CREAD and CLOCAL
 
-Setting `CLOCAL` disables modem-specific signal lines such as carrier detect. Is also prevents the controlling process from getting sent a `SIGHUP` signal when a modem disconnect is detected, which is usually a good thing here. Setting `CLOCAL` allows us to read data (we definitely want that!).
+Setting `CLOCAL` disables modem-specific signal lines such as carrier detect. It also prevents the controlling process from getting sent a `SIGHUP` signal when a modem disconnect is detected, which is usually a good thing here. Setting `CLOCAL` allows us to read data (we definitely want that!).
 
 ```c
 tty.c_cflag |= CREAD | CLOCAL; // Turn on READ & ignore ctrl lines (CLOCAL = 1)
@@ -236,7 +236,7 @@ Let's explore the different combinations:
 
 **VMIN > 0, VTIME = 0**: This will make `read()` always wait for bytes (exactly how many is determined by `VMIN`), so `read()` could block indefinitely.  
 
-**VMIN = 0, VTIME > 0**: This is a blocking read of any number chars with a maximum timeout (given by `VTIME`). `read()` will block until either any amount of data is available, or the timeout occurs. This happens to be my favourite mode (and the one I use the most).  
+**VMIN = 0, VTIME > 0**: This is a blocking read of any number of chars with a maximum timeout (given by `VTIME`). `read()` will block until either any amount of data is available, or the timeout occurs. This happens to be my favourite mode (and the one I use the most).  
 
 **VMIN > 0, VTIME > 0**: Block until either `VMIN` characters have been received, or `VTIME` after first character has elapsed. Note that the timeout for `VTIME` does not begin until the first character is received.
 
