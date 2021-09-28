@@ -4,7 +4,7 @@ categories: [ "Electronics", "Tools" ]
 date: 2015-11-22
 draft: false
 lastmod: 2021-09-28
-tags: [ "electronics", "tools", "reflow ovens", "Puhui", "T-962", "T-962A", "T-962C", "soldering", "Atten", "AT-R3028", "oscilloscopes", "scope", "probes", "compensation", "passive", "active", "Keysight", "Tektronix", "Tenma", "Rigol", "multimeters", "low-impedance voltage measurements", "Fluke", "ghost voltages", "noise", "capacitive coupling", "logic analysers", "Saleae", "DreamSourceLab", "DSView", "digital", "communication protocols", "sigrok", "decode", "thermal cameras", "thermal resistances", "heatsinking", "Keysight", "TrueIR", "FLIR", "Fluke", "Testo", "RS Pro", "infrared", "IR", "PCBs", "NETD", "noise equivalent temperature difference", "FTDI", "serial", "UART", "converter", "DC loads", "TekBox", "TBOH02" ]
+tags: [ "electronics", "tools", "reflow ovens", "Puhui", "T-962", "T-962A", "T-962C", "soldering", "Atten", "AT-R3028", "oscilloscopes", "scope", "probes", "compensation", "passive", "active", "Keysight", "Tektronix", "Tenma", "Rigol", "multimeters", "low-impedance voltage measurements", "Fluke", "ghost voltages", "noise", "capacitive coupling", "logic analysers", "Saleae", "DreamSourceLab", "DSView", "digital", "communication protocols", "sigrok", "decode", "thermal cameras", "thermal resistances", "heatsinking", "Keysight", "TrueIR", "FLIR", "Fluke", "Testo", "RS Pro", "infrared", "IR", "PCBs", "NETD", "noise equivalent temperature difference", "FTDI", "serial", "UART", "converter", "DC loads", "TekBox", "TBOH02", "line impedance stabilization networks", "LISN", "MIL-STD-461E", "impedance control", "power supplies", "soldering iron", "soldering station", "Hakko", "JBC", "Weller", "infrared", "pre-heating station", "rework", "FM-2023", "current probes", "hall-effect", "fluxgate", "magnetometer", "flux", "solder", "rosin", "organic acid", "inorganic acid", "no clean flux", "syringe", "flux pen" ]
 title: "Tools"
 type: "page"
 ---
@@ -142,6 +142,32 @@ FTDI provides the Java D2xx API for Android systems. The API is packaged into a 
 
 Basic information on the driver software can be found at http://www.ftdichip.com/Support/Documents/TechnicalNotes/TN_147_Java_D2xx_for_Android.pdf.
 
+== LISNs
+
+A _line impedance stabilization network (LISN)_ is a tool used when performing EMC/EMI tests. A LISN is essentially a low-pass filter placed between a power source and the DUT (device under test).
+
+A LISN performs the following functions:
+
+* Provides a well-known impedance to the power input of the DUT.
+* Prevents high-frequency noise from the power supply entering into the DUT, making the measurements of the DUT seem worse than they actually are (isolation of the power supply).
+
+A "50uH" LISN is a common choice, which provides impedance control down to 10kHz. Below 10kHz, impedance control is difficult<<bib-mil-std-461e>>.
+
+MIL-STD-461E mandates the use of LISNs to control the impedance of power sources for many of it's measurement procedures:
+
+[quote, MIL-STD-461E, Section 40.3.6 (4.3.6): Power source impedance]
+____
+The impedance of power sources providing input power to the EUT shall be controlled by Line
+Impedance Stabilization Networks (LISNs) for all measurement procedures of this document
+unless otherwise stated in a particular test procedure.
+____
+
+=== CISPR 25
+
+CISPR 25 sets limits and procedures for the measurement for EMI in the frequency range of 150kHz to 2.5GHz<<bib-cispr-25>>. Among other utilities, the standard is applicable to vehicles, and it is a popularly referenced standard among automobile electronic design. It specifies the uses of a stem:[5uH] LISN when performing EMI measurements, is one of the main reasons you will see stem:[5uH] LISN devices available for purchase.
+
+The TexBox TBOH01 (5uH LISN) is a LISN designed to be compliant with CISPR 25, and retails for around US$250.
+
 == Microscopes
 
 === Digital
@@ -273,9 +299,228 @@ Synergy Electronics Ltd, NZ supplier of the GT Sonic range.
 * MEMS Oscillators: link:/electronics/components/oscillators#mems-oscillators[Ultrasonic cleaners can cause permanent damage or long-term reliability issues to the MEMS resonator] inside a MEMS oscillator.
 * Crystal Resonators (XTALs): The ultrasonic bath could excite a XTAL into a resonant frequency (or harmonic) that causes damage. 32.678kHZ crystals are especially sensitive since they operate at about the same frequency as an ultrasonic bath uses for it's cleaning action. MHz XTALs are far less sensitive.
 
+== Soldering Irons And Stations
+
+* Quick-change tips
+* Maximum heating power
+* Heating rate (high quality soldering irons can heat-up to the set temperature within about 2 seconds!)
+* Stable temperature control under different loads
+
+For all but the lightest of work you will want to choose a _soldering station_ instead of a _soldering iron_. The station provides a holder for the iron, keeping it in a safe place while you do other work (so you don't burn yourself!). It also allows to a lighter and higher power iron, as most of the electronics can now be located in the freestanding control unit rather than in the handheld iron.
+
+=== Brands
+
+==== Hakko
+
+An American company with a vivid and memorable blue/yellow brand color.
+
+==== JBC
+
+The creme-de-la-creme of soldering iron brands. JBC makes some of the highest-quality soldering stations, but as expected, this comes at a very high price.
+
+==== Weller
+
+The Weller brand is associated with quality, second only to JBC. Naturally, their products are generally cheaper than JBCs to compensate.
+
+=== Hobbyist Range
+
+==== Hakko FX888D
+
+No quick change tips
+
+==== Weller WE1010
+
+No quick change tips
+
+=== Professional Range
+
+==== Hakko FM203-15
+
+A dual port soldering station. For use with the FM-2027 soldering iron which takes the Hakko _T12_ range of tips. Note that the T12 range are quick-change, and you start paying more than double for quick-changes tips (versus the T18 range).
+
+**Note that that tips are not truly quick change until you also purchase extra _Soldering Pencil Sleeves_**. These are proprietary hand-grips that slide onto the tip. Once each tip has one of these, you can quickly change tips by unclipping the sleeve + tip from the rest of the iron and inserting a new one. These sleeves also remove the need for using pliers or a rubber mat to remove hot tips.
+
+.A green soldering pencil sleeve from Hakko. You have to purchase one of these per tip before your soldering iron truly becomes 'quick change'. Image from https://nz.element14.com/hakko/b3219/soldering-pencil-sleeve-green/dp/1676853.
+image::hakko-soldering-pencil-sleeve-green.png[width=300px]
+
+This soldering station can also accept Hakko tweezers. A great choice for popping off and on small 0402/0603/0805 chip resistors and capacitors is the FM-2023 Mini SMD Hot Tweezers with the T9-1L tips:
+
+.Close up of the T9-1L tips on the Hakko FM-2023 Mini SMD Hot Tweezers. Great for popping on and off small 0402/0603/0805 chip resistors and capacitors.
+image::hm-2023-hakko-mini-hot-tweezers-with-t9-l1-tips.jpg[width=400px]
+
+==== Weller WT 1010
+
+Single port. 95W. 550°C max temp. For use with the WTP90 soldering iron, which takes the XT tips.
+
+==== Weller WT2010M
+
+Dual port.
+75W x2
+450°C
+
+=== Preheating Stations
+
+Most heater elements are between 600-1200W. The body material of the heating element is usually ceramic.
+
+Yihua
+UYUE
+
+==== PUHUI T-862
+
+Adjustable temp. range from 0-450°C.
+
+==== GORDAK 853
+
+250x220x110mm
+600W
+
+==== PJLSW
+
+430x350x180mm
+
+== Current Probes
+
+Current probes are measurement devices which are used to measure the current flowing through a conductive material, typically a wire or track on the PCB (usually with an appropriate connection loop).
+
+The main disadvantage with a hall-effect or transformer-based current-probe is that the probe tip must encircle the conductor under test. To do this you must use a wire, or provide a special PCB cut-out around the current-carrying trace. Fluxgate magnetometer-based current probes do not have this issue.
+
+A typical current-probe will add a few nH of inductance to the conductor under test. Any additional wire added to the conductor to accommodate the current-probe might add around 10nH per centimetre.
+
+The sensitivity of a current probe can be increase by increasing the number of turns of the wire. Be careful to divide the displayed current on the oscilloscope by the number of turns to get the actual current. Note that increasing the number of turns increases the insertion impedance (the inductance rises with the square of the number of turns).
+
+=== Price
+
+Current probes are not cheap! They are significantly more expensive than their voltage-measuring brothers. As of 2016, you can find cheap no-brand ones for US$60-700, and more expensive Tektronics or Keysight Technologies (the new Agilent) current probes for US$1000-8000.
+
+=== Hall-Effect Probes
+
+Hall-effect current probes use the hall-effect phenomenon to measure the current travelling through a conductor. Their main advantage over the transformer-based current probes is that they can measure DC currents. However, they do not perform well at higher frequencies (20kHz seems to be a rough upper limit).
+
+The hall-effect sensor is an active sensor, and therefore the probe requires an external power source. This may be provided by an internal replaceable battery (e.g. 9V battery), and external power supply connector, or from the oscilloscope through a specialised connector (this is common on the more expensive, brand specific ones).
+
+Like the AC transformer-based current probes, they require the wire to be inserted into a loop. 
+
+=== Standard AC/DC Current Probes
+
+A combined AC/DC current probe is the most versatile current measurement probe. Traditionally, it uses a transformer to measure AC current, and a hall-effect sensor to measure DC currents (originally patented by Tektronics). Hall-effect sensors are active sensors, so AD/DC current probes require a power source.
+
+The probes are normally **split-core**, which allows you to open the probe tip up to inset the wire under test. 
+
+AC/DC probes output a voltage which is proportional to the current flowing through the wire under test. This voltage is measured by the oscilloscope and displayed on a current-scaled waveform. High-end current probes which are built for specific oscilloscopes may draw power from the single oscilloscope connection, as well as automatically changing the units on the scope and auto-scaling.
+
+=== Fluxgate Magnetometer Current Probes
+
+The main advantage is that the measuring device does not need to fully encircle the track/wire under test, and you can design a probe-styled instrument that can measure track/wire current just by bringing the probe tip into close proximity.
+
+=== Aim I-Prober 520
+
+Aim has patents around it's fluxgate magnetometer based current probe, so it might be a while before other manufacturers make similar probes.
+
+.The AIM I-Prober 520 current probe based on fluxgate magnetometer technology. Image from http://www.tti-test.com/.
+image::aim-i-prober-520-fluxgate-magnetometer-current-probe-with-scope.jpg[width=400]
+
+== EM Probes
+
+=== Beehive Non-contact EM Probes
+
+The Beehive Electronics probes set contains three H-field probes (100A, 100B, 100C) and one E-field probe (100D). All are non-contact probes.
+
+.The four non-contact EM probes made by Beehive Electronics. Three are for magnetic field measurement and one is for electric field measurement.
+image::beehive-electronics-non-contact-em-probes-100-a-b-c-d.jpg[width=700px]
+
+The magnetic flux density can be calculated for the H-field probes using the equation below:
+
+.The equation to work out the magnetic flux density as measured by any of the three magnetic EM probes made by Beehive Electronics.
+image::beehive-magnetic-em-probes-flux-density-equation.png[width=400px]
+
+The scale factors for each of the magnetic probes is given below:
+
+.The scale factors and resonances for each of the three magnetic field probes made by Beehive Electronics.
+image::beehive-magnetic-em-probes-scale-factors-and-resonance.png[width=600px]
+
+== Flux
+
+Flux is a substance used in the soldering process to remove metal corrosion and improve the adhesion of the molten solder to the metal surfaces.
+
+=== Solder Compatibility
+
+Typically, fluxes are compatible with a broad range of solder compounds, including both leaded and higher-temperature lead-free solders.
+
+=== Activity
+
+Flux activity is a measure of the strength/aggressiveness of the flux in it's ability to clean metals while soldering. Low activity fluxes are weak fluxes and as usually mild acids. High activity fluxes are strong fluxes and are usually low pH acids.
+
+=== Types Of Flux
+
+==== Rosin Flux
+
+Rosin fluxes are the oldest types of flux (well, charcoal was first!). Rosin is the name of refined **pine sap**. Rosin flux is typically a solid at room temperature, but quickly melts and flow easily at soldering temperatures. It is usually a light or dark amber colour. Rosin fluxes have a **low flux activity**.
+
+.A tin of rosin-based flux. Image from https://en.wikipedia.org.
+image::rosin-flux-tin-kolophonium-loeten-photo.jpg[width=350px]
+
+As such, it is usually inert while as a solid, and therefore **safe to leave** on the PCB after soldering. This is of course unless during normal operation the PCB temperature rises enough to melt the rosin flux.
+
+Rosin fluxes are usually non-polar and therefore cannot be washed off with plain water. Non-polar solvents like isopropyl alcohol, acetone, or paint thinner can be used to clean rosin fluxes. Semi-aqueous solvents or water with
+
+Some types of solder contain a rosin core to aid the soldering process, and saves you time because you do not have to apply the flux manually.
+
+.A brand of solder which has a rosin-based flux core.
+image::rosin-core-solder-firepower-60-40-photo.jpg[width=300px]
+
+For the chemically-minded people, rosin flux usually has a formula of:
+
+[stem]
+++++
+C_{19}H_{19}COOH
+++++
+
+Obviously, being a naturally produced substance, the make-up of a rosin flux will change.
+
+==== Organic Acid Flux
+
+Organic acid flux is typically made of a weak, organic-based acid such as citric, lactic or stearic acid. The acid is dissolved in a solvent such as a mixture of isopropyl alcohol and water.
+
+They can be a good compromise between reliability, flux activity and cleanability.
+
+==== Inorganic Acid Flux
+
+The most aggressive type of flux, **inorganic fluxes are usually a blend of aggressive chemicals such as hydrochloric acid, zinc chloride and ammonium chloride**. They have a **high activity**. They are normally used for non-electronics related soldering such as a joining of copper pipes (also called brazing).
+
+Inorganic acid fluxes should not be used for electronic soldering because they can leave chemically active residues which cause reliability problems.
+
+==== "No Clean" Flux
+
+The term "no clean" flux is used for fluxes whose residue will not effect the long-term reliability of the PCB. The two important qualities
+
+A disadvantage of no clean flux is the poor aesthetics of leaving the flux residue on the PCB, it can make the PCB appear dirty, old, and may give people the perception that the build quality is not high (only relevant if people actually see the PCB during it's normal use).
+
+The IPC-610 standard specifies some the required properties of no clean flux to be compliant.
+
+=== Flux Applicators
+
+==== Syringes
+
+Flux can be shipped in a syringe. The syringe tip is either a large-diameter (compared to most medical syringes) metal or plastic needle. Syringes offer more precise application of flux than a syringe pen or rod.
+
+==== Pens
+
+Flux pens are permanent marker ("sharpies" for all the Americans) sized pens which contain flux inside them. The tip is made from a porous material which applies flux to the surface and draws more up via the capillary action (much like a normal pen). To promote proper flowing, fluxes used in flux pens are typically of a lower viscosity than the ones in syringes or standard containers.
+
+.A no-clean solder flux pen from ChemTools (part number CT-NC-DP).
+image::solder-flux-pen-no-clean.jpg[width=700px]
+
+Flux pens are great to have on the work bench for quick, on-off flux applications for reworking. The tips are usually quite thick and do not offer the same precision as flux syringes, but normally this extra precision is not necessary (flux can be "slopped" around the board with little consequence).
+
+=== Soldering Fumes
+
+During the soldering process fumes are released. The amount of fumes increases drastically as flux is used.
+
+It is generally not a good thing to inhale these fumes on a long term basis. Fume extractors can be used to remove the fumes safely.
+
 [bibliography]
 == References
 
-APA Style Website:
-
 * [[[bib-movitherm-netd, 1]]] MoviTHERM. _What is NETD in a Thermal Camera?_. Retrieved 2020-09-03, from https://movitherm.com/knowledgebase/netd-thermal-camera/.
+* [[[bib-mil-std-461e, 2]]] Department of Defense (1999, August 20). _MIL-STD-461E: Requirements for the Control of Electromagnetic Interference Characteristics of Subsystems and Equipment_. Quick Search. Retrieved 2021-06-30, from https://quicksearch.dla.mil/qsDocDetails.aspx?ident_number=35789
+* [[[bib-cispr-25, 3]]] IEC (2016). _Vehicles, boats and internal combustion engines - Radio disturbance characteristics - Limits and methods of measurement for the protection of on-board receivers_. Retrieved 2021-07-02, from https://webstore.iec.ch/publication/26122
