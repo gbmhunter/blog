@@ -422,13 +422,25 @@ image::level-shifter-sim/out.png[width=700px]
 
 === Ideal Diodes
 
-An op-amp can be combined with a regular diode to make an "ideal diode" (also called a _superdiode_<<bib-superdiode>>), one that rectifies and has *no voltage drop*. <<ideal-diode-basic>> shows the most basic form of an ideal diode. Because feedback to the inverting pin is taken from the load (stem:[v_{out}]), the op-amp will drive it's output to whatever is needed to make the output voltage the same as the input voltage (when stem:[v_{in}] is positive), thereby compensating for the forward voltage drop of the diode. When stem:[v_{in}] is negative, the op-amp will try as hard as it can to lower the output voltage, but this will be blocked from the output by the diode, providing the rectifying action.
+An op-amp can be combined with a regular diode to make an "ideal diode" (also called a _superdiode_<<bib-superdiode>> or _precision rectifier_), one that rectifies and has *no voltage drop*. Ideal diode circuits are useful when:
+
+* You have to rectify a signal with precision (the forward voltage drop across the diode is unacceptable).
+* You have to rectify a small signal, whose amplitude is less than a forward diode drop.
+
+<<ideal-diode-basic>> shows the most basic form of an ideal diode. Because feedback to the inverting pin is taken from the load (stem:[v_{out}]), the op-amp will drive it's output to whatever is needed to make the output voltage the same as the input voltage (when stem:[v_{in}] is positive), thereby compensating for the forward voltage drop of the diode. When stem:[v_{in}] is negative, the op-amp will try as hard as it can to lower the output voltage, but this will be blocked from the output by the diode, providing the rectifying action.
 
 [[ideal-diode-basic]]
 .A basic "ideal diode" with no forward voltage drop, made from an op-amp and a standard diode.
 image::ideal-diode-basic.svg[width=600px]
 
 The ideal diode is only ideal up to a point. It is not limited by the bandwidth and max. slew rates of the op-amp, which is typically much less than of a basic diode! There is also an issue with slew rates with the above circuit. As soon as stem:[v_{in}] goes negative, the op-amp will "saturate" and swing it's output to the maximum negative voltage. This will cause some delay on the output (limited by the slew rate) when the input once again goes positive.
+
+=== Sample And Hold Circuits
+
+The basic op-amp based _sample and hold_ circuit is an extension of the <<_ideal_diodes, ideal diode>> circuit, but with an added capacitor on the output to maintain with the voltage when the input signal is removed.
+
+.Basic op-amp based sample-and-hold circuit.
+image::sample-and-hold.svg[width=600px]
 
 ## Important Variables
 
