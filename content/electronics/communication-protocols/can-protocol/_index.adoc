@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 date: 2012-12-12
 description: "Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol."
 categories: [ "Electronics", "Communication Protocols" ]
-lastmod: 2021-05-06
+lastmod: 2021-09-29
 tags: [ "CAN bus", "bus", "communication protocol", "CAN1.0", "CAN2.0", "CAN base frame", "CAN extended frame", "USB adapters", "NoCAN", "encoding", "controller", "CANopen", "NEMA 2000", "termination resistors", "FlexRay", "SAE", "J1850", "J1939", "ISO 11783", "ISOBUS", "isolation", "mailboxes" ]
 title: "CAN Protocol"
 type: "page"
@@ -13,11 +13,12 @@ type: "page"
 
 **The CAN (Controller Area Network) protocol is a serial-based, multi-master digital communication protocol originally developed by BOSCH**. It was initially developed for use in the automotive industry. It makes use of priority-based message arbitration. The voltage is not part of the standard, and operating voltages of 5V or 12V are common.
 
-{{< img src="can-bus-logo-bosch.png" width="270px" caption="The CAN bus logo. Image from www.bosch.com." >}}
+.The CAN bus logo. Image from www.bosch.com.
+image::can-bus-logo-bosch.png[width=270px]
 
-If you are looking for help interfacing with SocketCAN from the Linux command-line, see the [How To Use SocketCAN With The Command-Line In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux/).
+If you are looking for help interfacing with SocketCAN from the Linux command-line, see the link:/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux/[How To Use SocketCAN With The Command-Line In Linux page].
 
-If you are looking for help controlling a SocketCAN interface from C software, see the [How To Use SocketCAN With C In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-c-in-linux/).
+If you are looking for help controlling a SocketCAN interface from C software, see the link:/programming/operating-systems/linux/how-to-use-socketcan-with-c-in-linux/[How To Use SocketCAN With C In Linux page].
 
 A alternative communications protocol used in similar applications is the LIN protocol.
 
@@ -31,18 +32,24 @@ The CAN bus transmits 1 and 0's across a differential pair of wires. A recessive
 
 The following equation can be used as a rule-of-thumb to calculate the maximum transmission speed for distances larger than 50m.
 
-<p>$$ BR\times L\leq 60 $$</p>
+[stem]
+++++
+\begin{align}
+BR\times L\leq 60
+\end{align}
+++++
 
-<p class="centered">
-    where:<br>
-    \(BR\) = bit rate (in MBit/s)<br>
-    \(L\) = length (in m)<br>
-<p>
+[.text-center]
+where: +
+stem:[BR] = bit rate (in MBit/s) +
+stem:[L] = length (in m) +
 
-{{% img src="can-bus-bit-rate-vs-bus-length.png" width="500px" caption="Graph showing the relationship between the CAN bus transmission rate and maximum bus length." %}}
+.Graph showing the relationship between the CAN bus transmission rate and maximum bus length.
+image::can-bus-bit-rate-vs-bus-length.png[width=500px]
 
-A value `\(5ns/m\)` is typically used for the propagation time of the CAN bus signal down the twisted-pair cable when calculating maximum baud rates and/or cable lengths. A table of common distances/transmission rates is shown below. These cable lengths are for the cable _trunk_, and not for _stubs_.
+A value stem:[5ns/m] is typically used for the propagation time of the CAN bus signal down the twisted-pair cable when calculating maximum baud rates and/or cable lengths. A table of common distances/transmission rates is shown below. These cable lengths are for the cable _trunk_, and not for _stubs_.
 
+++++
 <table>
   <thead>
     <tr>
@@ -94,14 +101,20 @@ A value `\(5ns/m\)` is typically used for the propagation time of the CAN bus si
     </tr>
   </tbody>
 </table>
+++++
 
 ### Termination Resistors
 
 For high-speed transmission on the CAN bus, **_termination resistors_ are required between the `CAN_H` and `CAN_L` wires at both ends of the cable**. However, make sure to only add them at the ends of the cable, **any CAN devices connected partway along the bus should not have termination resistors**. For a CAN bus in which devices may be arbitrarily connected and disconnected, it is common practise to add _switchable termination_, which can be connected manually with a typical mechanical switch or automatically controlled by firmware/software using an MOSFET-based switch or similar. Although required by the standard, termination resistors are not typically required for the CAN bus to function at slow speeds over small distances.
 
-Adding a single termination resistor of `120R` at each end of the bus is called _standard termination_. Sometimes a decoupling capacitor is also added in conjunction with the termination resistors. This is called _split termination_[^ti-importance-of-termination-resistors], as you have to use two termination resistors instead of one, with the capacitor "splitting" them in two. Using this combination of resistors and capacitor makes a _low-pass filter_ for the common-mode noise on the bus, which has a corner frequency given by the equation[^ti-importance-of-termination-resistors]:
+Adding a single termination resistor of `120R` at each end of the bus is called _standard termination_. Sometimes a decoupling capacitor is also added in conjunction with the termination resistors. This is called _split termination_<<bib-ti-importance-of-termination-resistors>>, as you have to use two termination resistors instead of one, with the capacitor "splitting" them in two. Using this combination of resistors and capacitor makes a _low-pass filter_ for the common-mode noise on the bus, which has a corner frequency given by the equation<<bib-ti-importance-of-termination-resistors>>:
 
-<p>$$ f_{corner} = \frac{1}{2\pi \cdot R_{term/2} \cdot C_{split}} $$</p>
+[stem]
+++++
+\begin{align}
+f_{corner} = \frac{1}{2\pi \cdot R_{term/2} \cdot C_{split}}
+\end{align}
+++++
 
 ### Isolation
 
@@ -111,7 +124,8 @@ When CAN bus receivers are incorporated onto PCBs with microcontrollers and othe
 
 The CiA DS-102 standard defines CAN bus pin assignments for the ubiquitous serial DE-9 connector:
 
-{{% img src="can-bus-cia-ds-102-9-pin-sub-d-connector-pin-assignment.png" width="500px" caption="CAN bus pin assignments for the DE-9 serial connector from the CiA DS-102 standard." %}}
+.CAN bus pin assignments for the DE-9 serial connector from the CiA DS-102 standard.
+image::can-bus-cia-ds-102-9-pin-sub-d-connector-pin-assignment.png[width=500px]
 
 This pin layout is also used for other CAN standards such as CANopen.
 
@@ -131,7 +145,7 @@ The drivers to the CAN line(s) are open-drain. This means that if a node writes 
 
 The main limiting factor on the total bus length at a specific baud rate is the stabilization time for a dominant to recessive bit transmission on the bus. Because it is not driven, the termination resistors play the role of bringing the differential voltage back to the recessive state. The time it takes for the resistors to do this is **primarily dependent on the amount of capacitance on the bus**. This in term determines the maximum length of the bus, as adding additional twisted pair cable increases the capacitance.
 
-Most receivers sample the bit between 75% and 87.5% of the time between the start of one bit and the beginning of the next bit[^elektromotus-can-bus-topology-recommendations]. Earlier sampling points decreases the sensitivity to oscillator tolerances between the different nodes of the CAN bus, whilst a later sampling point allows for a longer signal propagation time and hence longer bus length.
+Most receivers sample the bit between 75% and 87.5% of the time between the start of one bit and the beginning of the next bit<<bib-elektromotus-can-bus-topology-recommendations>>. Earlier sampling points decreases the sensitivity to oscillator tolerances between the different nodes of the CAN bus, whilst a later sampling point allows for a longer signal propagation time and hence longer bus length.
 
 ## Encoding
 
@@ -139,7 +153,7 @@ The CAN bus uses _bit-stuffed NRZ encoding_.
 
 Any sequential sequence of 5 bits of the same type requires the transmitter to insert (_stuff_) a bit of the opposite polarity. Consequentially, the receiver has to remove this bit from the incoming data stream, as it is not part of the original data.
 
-This bit stuffing prevents serious clock drift when there a long sequences of either 0's or 1's transmitted on the bus. There is no seperate clock signal (which is why the CAN bus can be called an _asyncronous protocol_), so the clock is recovered from the data.
+This bit stuffing prevents serious clock drift when there a long sequences of either 0's or 1's transmitted on the bus. There is no separate clock signal (which is why the CAN bus can be called an _asynchronous protocol_), so the clock is recovered from the data.
 
 ## Frame Types
 
@@ -155,7 +169,8 @@ Dominant bits are logic level 0, while recessive bits are logic level 1.
 
 **Standard Data/Remote Frame (11-bit Identifier)**
 
-{{< img src="can-standard-base-frame-format-data-remote.png" width="883px" caption="The standard (base) CAN frame format for both data and remote frames." >}}
+.The standard (base) CAN frame format for both data and remote frames.
+image::can-standard-base-frame-format-data-remote.png[width=883px]
 
 _**SOF bit:**_ A dominant start of frame bit marks the start of a message. It is used to synchronize all the nodes on a bus after being idle. Transmitted by the sender.
 
@@ -177,11 +192,13 @@ _**2-bit ACK:**_ Based on the value of the CRC, the receiver uses first acknowle
 
 _**7-bit EOF:**_ The End Of Frame is marked with 7 recessive bits.
 
-{{% figure src="st-can-frame-incorrect-acronym-ide.png" width="500px" caption="Don't always believe what you see in datasheets. There is definitely no 'Integrated Development Environment' bit in a CAN frame. Image from https://www.st.com/resource/en/application_note/dm00625700-fdcan-peripheral-on-stm32-devices-stmicroelectronics.pdf, accessed 2021-04-19." %}}
+.Don't always believe what you see in datasheets. There is definitely no 'Integrated Development Environment' bit in a CAN frame. Image from https://www.st.com/resource/en/application_note/dm00625700-fdcan-peripheral-on-stm32-devices-stmicroelectronics.pdf, accessed 2021-04-19.
+image::st-can-frame-incorrect-acronym-ide.png[width=500px]
 
 **Extended Data/Remote Frame (29-bit Identifier)**
 
-{{< img src="can-extended-frame-format-data-remote.png" width="1111px" caption="The extended CAN frame format for both data and remote frames."  >}}
+.The extended CAN frame format for both data and remote frames.
+image::can-extended-frame-format-data-remote.png[width=1111px]
 
 The extended frame is the same as the above standard frame, except for the differences described below:
 
@@ -214,7 +231,7 @@ There are 5 different types of errors:
 
 Most popular FPGA vendors provide pre-licensed (you don't have to pay anything to use it!) CAN controller IP cores for use within their FPGAs.
 
-Xilinx provides the [CAN 2.0B and CAN-FD Controller IP core](https://www.xilinx.com/products/intellectual-property/1-8dyf-2862.html) which is compatible with the Ultrascale, Zynq-7000, 7-series, 6-series and other Xilinx FPGAs.
+Xilinx provides the link:https://www.xilinx.com/products/intellectual-property/1-8dyf-2862.html[CAN 2.0B and CAN-FD Controller IP core] which is compatible with the Ultrascale, Zynq-7000, 7-series, 6-series and other Xilinx FPGAs.
 
 ## Standards
 
@@ -222,9 +239,10 @@ Xilinx provides the [CAN 2.0B and CAN-FD Controller IP core](https://www.xilinx.
 
 CANopen was developed for embedded devices in automation systems . It defines the OSI network layers that the basic CAN standards leaves unspecified, which includes the network layer and above.
 
-{{% img src="can-open-logo.jpg" width="500px" caption="The CANopen logo." %}}
+.The CANopen logo.
+image::can-open-logo.jpg[width=500px]
 
-The CANopen standard is defined by the CiA (CAN in Automation) group. The documents for these standards can be found at [https://www.can-cia.org/groups/specifications/](https://www.can-cia.org/groups/specifications/). The most important document is [CiA 301](), which defines the CANopen application layer. If the above link is down, you can view the [local cached copy, v4.2.0, accessed June 2020](cia-301-canopen-specification-document.pdf).
+The CANopen standard is defined by the CiA (CAN in Automation) group. The documents for these standards can be found at link:https://www.can-cia.org/groups/specifications/[https://www.can-cia.org/groups/specifications/]. The most important document is [CiA 301](), which defines the CANopen application layer. If the above link is down, you can view the link:cia-301-canopen-specification-document.pdf[local cached copy, v4.2.0, accessed June 2020].
 
 All CANopen nodes must have a object dictionary.
 
@@ -245,7 +263,7 @@ ISO 11783 is title "Tractors and machinery for agriculture and forestry—Serial
 * ISO 11898-2:2016 - Specifies the high-speed physical media attachment (HS-PMA) component for the CAN bus.
 * ISO 11898-3:2006 - Specifies low-speed, fault tolerant CAN bus information transfer between road vehicles.
 
-ISO 11898 specifies a maximum bus length of 1km, but does allow the use of bridge-devices or repeaters to extend the bus beyond this[^cia-can-physical-layer].
+ISO 11898 specifies a maximum bus length of 1km, but does allow the use of bridge-devices or repeaters to extend the bus beyond this<<bib-cia-can-physical-layer>>.
 
 **Related to ISO 11898 is ISO 16845, which details test suites and test requirements** for checking CAN bus/controller conformance to the specs.
 
@@ -275,83 +293,39 @@ Uses a shielded twisted pair. Used in trucks, agricultural and industrial equipm
 
 **The CAN protocol and CAN FD protocol are protected with IP rights by Bosch**. Any CAN IP modules for a FPGA or ASIC (including self-developed ones!!!), or fixed hardware CAN IP peripherals for microcontrollers **must be licensed**.
 
-{{< img src="can-bus-licensing-fee-highlighted-bosch.png" width="506px" caption="A screenshot of the CAN bus licensing fee details from Bosch. Image from http://www.bosch-semiconductors.de/media/automotive_electronics/pdf_2/ipmodules_3/can_protocol_license_1/Bosch_CAN_Protocol_License_Conditions.pdf."  >}}
-
-See [http://www.bosch-semiconductors.de/media/automotive_electronics/pdf_2/ipmodules_3/can_protocol_license_1/Bosch_CAN_Protocol_License_Conditions.pdf](http://www.bosch-semiconductors.de/media/automotive_electronics/pdf_2/ipmodules_3/can_protocol_license_1/Bosch_CAN_Protocol_License_Conditions.pdf) for more information.
-
-## USB to CAN Adapters
-
-Many USB to CAN adapters use a serial DB-9 connector for the CAN side.
-
-One example is the PCAN-USB, which support Windows and Linux.
-
-{{< img src="pcan-usb-device-connected-to-ubuntu-vmware.png" width="759px" caption="Screenshot showing a PCAN-USB device connected to Ubuntu running inside VMware."  >}}
-
-## Drivers
-
-### SocketCAN
-
-SocketCAN is a set of open-source CAN drivers and a networking stack for the Linux kernel.
-
-SocketCAN creates a new protocol family called `PF_CAN`. You can then communicate with the CAN bus with a socket, in the same way you would for the internet protocol (IP).
-
-CAN support was added to the Linux kernel in version 2.6.25.
-
-More information on SocketCAN, including information and code examples on how to send and receive CAN data from the terminal using SocketCAN, see the [How To Use SocketCAN With The Command-Line In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-the-command-line-in-linux) or the [How To Use SocketCAN With C++ In Linux page](/programming/operating-systems/linux/how-to-use-socketcan-with-c-in-linux).
-
-## ICs
-
-### Dedicated CAN Controller ICs
-
-Some CAN controller ICs use the notion of _mailboxes_. These are areas of memory in which CAN messages can be read from or written to (similar to a buffer).
-
-[MCP2515: Microchip CAN Controller](http://www.microchip.com/wwwproducts/Devices.aspx?dDocName=en010406) is a standalone CAN controller 18-pin IC. It is designed to be connected to a microcontroller via SPI. It is used on the [RS-485 
-CAN HAT for Raspberry Pi by WaveStudio](https://www.waveshare.com/rs485-can-hat.htm).
-
-[MCP2551: Microchip Highspeed CAN Transceiver](http://ww1.microchip.com/downloads/en/DeviceDoc/21667f.pdf)
-
-### Microcontrollers With CAN Peripherals
-
-Microcontrollers can come with built-in CAN peripherals. These CAN peripherals allow the firmware to write bytes into hardware registers for CAN transmission, and the peripheral will generate the correct CAN bits on designated pins. However you cannot connect these pins directly to a CAN bus, you still need a CAN transceiver to convert the low-power single-ended CMOS-level bit signals to a high-strength differential signal suitable for the CAN bus. Simlarly, the microcontroller CAN peripheral will listen to the CAN bus (again, through a suitable transceiver) and provide user configurable interrupts upon data receipt, allowing the firmware to read the data from hardware registers.
-
-Many microcontroller HALs do not provide an API for the CAN bus.
-
-Atmel T89C51CC01 Microcontroller. 8-bit 8051 architecture, with CAN interface. Supports bootloading from the CAN protocol
-
-{{< img src="t89c51cc01-8bit-atmel-can-network-microcontroller.png" width="849px" caption="The Atmel T89C51CC01 microcontroller. An 8-bit 8051 architecture, with a CAN interface."  >}}
-
-The [Freescale MC9SO8D](http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=S08D) range of microcontrollers have built-in support for both CAN and LIN communication protocols. The CAN peripheral block is called an _MSCAN_.
-
-{{< img src="freescale-mc9so8-microcontroller-mscan-hardware-peripheral.png" width="660px" caption="The Freescale MC9SO8 microcontroller MSCAN peripheral." >}}
+.A screenshot of the CAN bus licensing fee details from Bosch. Image from http://www.bosch-semiconductors.de/media/automotive_electronics/pdf_2/ipmodules_3/can_protocol_license_1/Bosch_CAN_Protocol_License_Conditions.pdf.
+image::can-bus-licensing-fee-highlighted-bosch.png[width=506px]
 
 ### TVS Diodes
 
-There are {{% link text="TVS diode components" src="/electronics/components/diodes" %}} specifically designed for CAN bus ESD suppression. Single diode 2-pin packages or double (termed a _diode array_) TVS diode 3-pin packages are common. Common standoff voltages are `\(12V\)` and `\(24V\)` and common power dissipations are `\(200-500W\)`.
+There are link:/electronics/components/diodes[TVS diode components] specifically designed for CAN bus ESD suppression. Single diode 2-pin packages or double (termed a _diode array_) TVS diode 3-pin packages are common. Common standoff voltages are stem:[12V] and stem:[24V] and common power dissipations are stem:[200-500W].
 
-{{% figure src="can-bus-tvs-diodes-littelfuse-sm24canb-block-diagram-and-application-example.png" width="600px" caption="Block diagram and application example for the CAN bus AQ24CANFD TVS diode from LittelFuse. Image from <https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq24canfd_datasheet.pdf.pdf>, acquired 2021-04-27." %}}
+.Block diagram and application example for the CAN bus AQ24CANFD TVS diode from LittelFuse. Image from <https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_aq24canfd_datasheet.pdf.pdf>, acquired 2021-04-27.
+image::can-bus-tvs-diodes-littelfuse-sm24canb-block-diagram-and-application-example.png[width=600px]
 
 ## CAN Controller Mailboxes
 
-Many microcontroller CAN peripherals contain CAN _mailboxes_. A mailbox is a storage place in hardware for a CAN frame (message) which is either being sent or received. Microcontrollers typically have 4-16 mailboxes, with them being a mixture of fixed transmit or receive mailboxes, or having the abilty of configure each mailbox as either for transmit or receive.. The concept of a _mailbox_ significantly reduces the CPU load on the microcontroller when transmitting and receiving CAN frames of interest. To send CAN frames, you will need to use at least one mailbox, but you can have multiple if needed. Multiple transmit mailboxes can be useful if you want to schedule multiple frames for transmission on the bus, and also provide a  priority (higher priority frames will be sent first).
+Many microcontroller CAN peripherals contain CAN _mailboxes_. A mailbox is a storage place in hardware for a CAN frame (message) which is either being sent or received. Microcontrollers typically have 4-16 mailboxes, with them being a mixture of fixed transmit or receive mailboxes, or having the ability of configure each mailbox as either for transmit or receive.. The concept of a _mailbox_ significantly reduces the CPU load on the microcontroller when transmitting and receiving CAN frames of interest. To send CAN frames, you will need to use at least one mailbox, but you can have multiple if needed. Multiple transmit mailboxes can be useful if you want to schedule multiple frames for transmission on the bus, and also provide a  priority (higher priority frames will be sent first).
 
 Receive mailboxes are configured with a receive mask that filter incoming frames. Only incoming frames which pass the filter are stored in the mailbox. The typical process is as follows:
 
-1. The frame ID is ANDed with the mask from the first receive mailbox.
-1. The masked frame ID is then compared with the filter value for the first receive mailbox.
-1. If the filter matches, the frame is accepted and the logic terminates here.
-1. If the filter does not match, steps 1-3 are tried with the next receive mailbox.
-1. If no matches occur, the frame is discarded.
+. The frame ID is ANDed with the mask from the first receive mailbox.
+. The masked frame ID is then compared with the filter value for the first receive mailbox.
+. If the filter matches, the frame is accepted and the logic terminates here.
+. If the filter does not match, steps 1-3 are tried with the next receive mailbox.
+. If no matches occur, the frame is discarded.
 
 ### Real Mailbox Examples
 
-- CANmodule-III is a HDL CAN controller module which has 16 receive mailboxes and 8 transmit mailboxes[^design-reuse-embedded-can-bus-controller].
-- STM32F microcontrollers with CAN peripherals have a number and transmit/receive mailboxes.
+* CANmodule-III is a HDL CAN controller module which has 16 receive mailboxes and 8 transmit mailboxes<<bib-design-reuse-embedded-can-bus-controller>>.
+* STM32F microcontrollers with CAN peripherals have a number and transmit/receive mailboxes.
 
 ## NoCAN
 
-NoCAN is a communications protocol that is **built on-top of the CAN bus**. It provides a layer of abstraction on-top of a 125kHz CAN bus which adds _publish-subscribe based messaging_ and _automated address assignment_. With many wireless options available for IoT devices, NoCAN was borne out the idea that there is a need for an easy-to-use wired communications solution for IoT devices. The protocol was created by Omzlo and was [funded in part by a KickStarter campaign](https://www.kickstarter.com/projects/1242572682/nocan-the-wired-iot-platform-for-makers) in 2019.
+NoCAN is a communications protocol that is **built on-top of the CAN bus**. It provides a layer of abstraction on-top of a 125kHz CAN bus which adds _publish-subscribe based messaging_ and _automated address assignment_. With many wireless options available for IoT devices, NoCAN was borne out the idea that there is a need for an easy-to-use wired communications solution for IoT devices. The protocol was created by Omzlo and was link:https://www.kickstarter.com/projects/1242572682/nocan-the-wired-iot-platform-for-makers[funded in part by a KickStarter campaign] in 2019.
 
-{{% img src="omzlo-white.png" width="200px" caption="The Omzlo logo." %}}
+.The Omzlo logo.
+image::omzlo-white.png[width=200px]
 
 NoCAN only uses the _CAN Extended Mode_, which supports a 29-bit ID, and up to 8 bytes of message data. However NoCAN provides the ability to send up to 64 bytes of data per message by chaining together up to 8 CAN messages (also called frames). For every NoCAN bus, there must be one (and only one) "special" node called a _Network Manager_, and one or more "standard" nodes. NoCAN also offers defines message formats for firmware update and bootloader control over the CAN bus.
 
@@ -359,7 +333,7 @@ NoCAN supports up to 128 nodes on a CAN bus.
 
 ## DeviceNet (IEC 62026-3)
 
-_DeviceNet_ is a network/messaging layer ontop of the CAN bus protocol. It is commonly used in the automation industry. 
+_DeviceNet_ is a network/messaging layer on top of the CAN bus protocol. It is commonly used in the automation industry. 
 
 DeviceNet supports the following baud rates:
 
@@ -373,13 +347,15 @@ DeviceNet cable typically consists of two shielded, twisted pairs. One pair has 
 
 **CAN bus repeaters are devices that allow you to extend the length of a CAN bus or make a fixed-length bus more resilient to external noise**. They do this by _regenerating_ (a.k.a. _buffering_) the CAN bus signal. They typically pass-through signals from one side to the other very quickly (a low _propagation delay_) and therefore are typically invisible to the other nodes on the CAN bus.
 
-{{% img src="iso-11898-2-can-bus-repeater.png" width="600px" caption="A CAN bus repeater topology from the CiA ISO 118989-2 standard." %}}
+.A CAN bus repeater topology from the CiA ISO 118989-2 standard.
+image::iso-11898-2-can-bus-repeater.png[width=600px]
 
 Ideally, the CAN bus repeater would go into a sensible passive state when powered down and present high-impedance inputs to the connected CAN bus segments. It should also provide _glitch free_ power up and power down such that spurious signals are not emitted on the bus at start-up or shut-down.
 
-On Semiconductor manufactures the [AMIS-42770 IC](https://docs.rs-online.com/c9be/0900766b816f7ada.pdf) which can be configured to act as a CAN bus repeater with little external circuitry.
+On Semiconductor manufactures the link:https://docs.rs-online.com/c9be/0900766b816f7ada.pdf[AMIS-42770 IC] which can be configured to act as a CAN bus repeater with little external circuitry.
 
-{{% img src="amis-42770-on-semiconductor-can-bus-repeater-ic.png" width="600px" caption="Application diagram from the AMIS-42770 IC's datasheet which shows how it can be configured to act as a CAN bus repeater." %}}
+.Application diagram from the AMIS-42770 IC's datasheet which shows how it can be configured to act as a CAN bus repeater.
+image::amis-42770-on-semiconductor-can-bus-repeater-ic.png[width=600px]
 
 ### Examples
 
@@ -387,24 +363,27 @@ On Semiconductor manufactures the [AMIS-42770 IC](https://docs.rs-online.com/c9b
 
 This device has 4 separate channels and is transparent to the other nodes on the CAN bus.
 
-{{% img src="ems-crep-s4-can-bus-repeater.png" width="500px" caption="The CRep S4 CAN Bus repeater by EMD Wuensche." %}}
+.The CRep S4 CAN Bus repeater by EMD Wuensche.
+image::ems-crep-s4-can-bus-repeater.png[width=500px]
 
 **CAN FD Repeater Reference Design**
 
 A in-depth reference design by Texas Instruments which explains the inner-workings of a CAN bus repeater.
 
-Link: [http://www.ti.com/lit/ug/tidudb5a/tidudb5a.pdf?ts=1591658758534](http://www.ti.com/lit/ug/tidudb5a/tidudb5a.pdf?ts=1591658758534) [local cached copy](/electronics/communication-protocols/can-protocol/ti-can-fd-repeater-reference-design-tida-01487.pdf)
+Link: link:http://www.ti.com/lit/ug/tidudb5a/tidudb5a.pdf?ts=1591658758534[http://www.ti.com/lit/ug/tidudb5a/tidudb5a.pdf?ts=1591658758534] link:/electronics/communication-protocols/can-protocol/ti-can-fd-repeater-reference-design-tida-01487.pdf[local cached copy]
 
 One informative diagram in this document is the block-level architecture of the repeater:
 
-{{% img src="reference-ti-can-repeater-design-tida-01487.png" width="700px" caption="The block-level architecture of the CAN bus repeater design by Texas Instruments. Image from http://www.ti.com/lit/ug/tidudb5a/tidudb5a.pdf?ts=1591658758534." %}}
+.The block-level architecture of the CAN bus repeater design by Texas Instruments. Image from http://www.ti.com/lit/ug/tidudb5a/tidudb5a.pdf?ts=1591658758534.
+image::reference-ti-can-repeater-design-tida-01487.png[width=700px]
 
-## References
+[bibliography]
+== References
 
-[^ti-importance-of-termination-resistors]: [https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers](https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers)
+* [[[bib-ti-importance-of-termination-resistors, 1]]]: Retrieved 2020-06-10, from https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers
 
-[^elektromotus-can-bus-topology-recommendations]: [https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf](https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf)
+* [[[bib-elektromotus-can-bus-topology-recommendations, 2]]]: Retrieved 2020-06-03, from [https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf.
 
-[^cia-can-physical-layer]: [http://www.inp.nsk.su/~kozak/canbus/canphy.pdf](http://www.inp.nsk.su/~kozak/canbus/canphy.pdf)
+* [[[bib-cia-can-physical-layer, 3]]]: Retrieved 2021-05-06, from http://www.inp.nsk.su/~kozak/canbus/canphy.pdf.
 
-[^design-reuse-embedded-can-bus-controller]: <https://www.design-reuse-embedded.com/product/auto_canmodule-iii_01>
+* [[[bib-design-reuse-embedded-can-bus-controller, 4]]]: Retrieved 2021-05-06, from https://www.design-reuse-embedded.com/product/auto_canmodule-iii_01.
