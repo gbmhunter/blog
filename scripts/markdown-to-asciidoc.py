@@ -1,13 +1,19 @@
 """
 Tool for doing most of the hard work in converting Markdown to AsciiDoc.
 """
+import argparse
 import re
 from power_edit import PowerEdit
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("path_glob")
+    parser.add_argument('-m', '--modify', action='store_true')
+    args = parser.parse_args()
+
     power_edit = PowerEdit()
     power_edit.sim_run = False
-    files = power_edit.find_files('../content/electronics/components/crystals-and-oscillators/*.adoc', recursive=True)
+    files = power_edit.find_files(args.path_glob, recursive=True)
     print(files)
     for file_path in files:
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'{{% link[^%]+%}}', replace=link_replace_fn, multiline=True)
