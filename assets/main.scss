@@ -212,6 +212,7 @@ article {
 
 p, h1, h2, h3, ul, li, a, div, td, th, input {    
     font-family: 'avenir next' ,'avenir', sans-serif;
+    word-break: break-word; // Makes sure long URLs in image captions do not exceed page width
 }
 
 // Styling for page titles
@@ -439,7 +440,7 @@ ul, ol {
     .title {
         font-size: 0.8em;
         font-style: italic;
-        text-align: center; /* Center text (with centered image) */
+        text-align: center; // Center text (with centered image)
     }
 
     /* This centers the image */
