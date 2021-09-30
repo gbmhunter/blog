@@ -420,24 +420,42 @@ image::level-shifter-sim/schematic.png[width=700px]
 .Simulation results of the level-shifting circuit shown in <<level-shifter-sim-schematic>>. You can clearly see that the stem:[\pm 5.0V] signal has been level-shifted to the range stem:[0-3.3V]. Because the input is connected to the non-inverting input of the op-amp, the output is in phase with the input signal (i.e. not inverted).
 image::level-shifter-sim/out.png[width=700px]
 
-=== Ideal Diodes
+=== Ideal Diodes/Rectifiers
 
-An op-amp can be combined with a regular diode to make an "ideal diode" (also called a _superdiode_<<bib-superdiode>> or _precision rectifier_), one that rectifies and has *no voltage drop*. Ideal diode circuits are useful when:
+An op-amp can be combined with a regular diode to make an "ideal diode" (also called a _superdiode_<<bib-superdiode>>, _precision rectifier_, or _half/full-wave rectifier_), one that rectifies and has *no voltage drop*. Ideal diode circuits are useful when:
 
 * You have to rectify a signal with precision (the forward voltage drop across the diode is unacceptable).
 * You have to rectify a small signal, whose amplitude is less than a forward diode drop.
 
-<<ideal-diode-basic>> shows the most basic form of an ideal diode. Because feedback to the inverting pin is taken from the load (stem:[v_{out}]), the op-amp will drive it's output to whatever is needed to make the output voltage the same as the input voltage (when stem:[v_{in}] is positive), thereby compensating for the forward voltage drop of the diode. When stem:[v_{in}] is negative, the op-amp will try as hard as it can to lower the output voltage, but this will be blocked from the output by the diode, providing the rectifying action.
+<<ideal-diode-basic>> shows the most basic form of an ideal diode (a.k.a. a _half-wave rectifier_). Because feedback to the inverting pin is taken from the load (stem:[v_{out}]), the op-amp will drive it's output to whatever is needed to make the output voltage the same as the input voltage (when stem:[v_{in}] is positive), thereby compensating for the forward voltage drop of the diode. When stem:[v_{in}] is negative, the op-amp will try as hard as it can to lower the output voltage, but this will be blocked from the output by the diode, providing the rectifying action.
 
 [[ideal-diode-basic]]
-.A basic "ideal diode" with no forward voltage drop, made from an op-amp and a standard diode.
+.A basic "ideal diode" with no forward voltage drop, made from an op-amp and a standard diode. Also called a _half-wave rectifier_.
 image::ideal-diode-basic.svg[width=600px]
 
 The ideal diode is only ideal up to a point. It is not limited by the bandwidth and max. slew rates of the op-amp, which is typically much less than of a basic diode! There is also an issue with slew rates with the above circuit. As soon as stem:[v_{in}] goes negative, the op-amp will "saturate" and swing it's output to the maximum negative voltage. This will cause some delay on the output (limited by the slew rate) when the input once again goes positive.
 
+TIP: The standard diode in the ideal diode circuit can be replaced by a Schottky diode for a quick-and-easy speed improvement (Schottky diodes have faster switching speeds).
+
+<<ideal-diode-improved-inverting>> shows an improved half-wave rectifier with additional circuitry to prevent the op-amp from saturating when in the blocked part of the cycle. Note that this also is an inverting half-wave rectifier -- it rectifies the negative half of the input and outputs it as a positive wave on the output.
+
+[[ideal-diode-improved-inverting]]
+.An improved ideal diode/half-wave rectifier.
+image::ideal-diode-improved-inverting.svg[width=700px]
+
+The gain of the half-wave rectifier in <<ideal-diode-improved-inverting>> is:
+
+[stem]
+++++
+A = \begin{cases}
+-\frac{R_2}{R_1} & v_{in} < 0 \\
+0 & v_{in} \ge 0 \\
+\end{cases}
+++++
+
 === Sample And Hold Circuits
 
-The basic op-amp based _sample and hold_ circuit is an extension of the <<_ideal_diodes, ideal diode>> circuit, but with an added capacitor on the output to maintain with the voltage when the input signal is removed.
+The basic op-amp based _sample and hold_ circuit is an extension of the <<_ideal_diodesrectifiers, ideal diode>> circuit, but with an added capacitor on the output to maintain with the voltage when the input signal is removed.
 
 .Basic op-amp based sample-and-hold circuit.
 image::sample-and-hold.svg[width=600px]
