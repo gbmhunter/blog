@@ -422,6 +422,8 @@ image::level-shifter-sim/out.png[width=700px]
 
 === Ideal Diodes/Rectifiers
 
+==== Basic Ideal Diode/Rectifier
+
 An op-amp can be combined with a regular diode to make an "ideal diode" (also called a _superdiode_<<bib-superdiode>>, _precision rectifier_, or _half/full-wave rectifier_), one that rectifies and has *no voltage drop*. Ideal diode circuits are useful when:
 
 * You have to rectify a signal with precision (the forward voltage drop across the diode is unacceptable).
@@ -437,7 +439,9 @@ The ideal diode is only ideal up to a point. It is not limited by the bandwidth 
 
 TIP: The standard diode in the ideal diode circuit can be replaced by a Schottky diode for a quick-and-easy speed improvement (Schottky diodes have faster switching speeds).
 
-<<ideal-diode-improved-inverting>> shows an improved half-wave rectifier with additional circuitry to prevent the op-amp from saturating when in the blocked part of the cycle. Note that this also is an inverting half-wave rectifier -- it rectifies the negative half of the input and outputs it as a positive wave on the output.
+==== Improved Half-wave Rectifier
+
+<<ideal-diode-improved-inverting>> shows an improved half-wave rectifier with additional circuitry to prevent the op-amp from saturating when in the blocked part of the cycle<<bib-microchip-op-amp-rectifiers>>. Note that this also is an inverting half-wave rectifier -- it rectifies the negative half of the input and outputs it as a positive wave on the output.
 
 [[ideal-diode-improved-inverting]]
 .An improved ideal diode/half-wave rectifier.
@@ -543,9 +547,9 @@ The high level output voltage (stem:[V_{OH}]) defines the highest voltage which 
 
 The low level output voltage (stem:[V_{OL}]) defines the lowest voltage which the op-amp can drive the output to. The LM324 is rumoured to only be able to drive the output near ground if it is sourcing current, but only to 0.5V minimum if sinking (see this EDA Forum post, link:http://www.edaboard.com/thread209783.html[LM324 Opamp Gain Instability]).
 
-### Slew Rate
+=== Slew Rate
 
-The _slew rate_ of an op-amp defines the **maximum rate the output voltage can change with respect to time**. In an ideal op-amp, this would be infinite. It has the SI units V/s, and is commonly expressed in uV/s. It can be thought of as the slope of the output waveform if one of the inputs of the input was subjected to a step voltage change. 
+The _slew rate_ of an op-amp defines the **maximum rate the output voltage can change with respect to time**. In an ideal op-amp, this would be infinite. It has the SI units stem:[V/s], and is commonly expressed in stem:[uV/s]. It can be thought of as the slope of the output waveform if one of the inputs of the input was subjected to a step voltage change. 
 
 Op-amps have a limited output slew rate due to internal compensation capacitor combined with a finite output drive current. Charing a capacitive output with a constant current (a good approximation) gives a linear increase in voltage (recall that the equation relating voltage to current for a capacitor is stem:[i = C \frac{dV}{dt}]).
 
@@ -943,3 +947,4 @@ image::standard-8-pin-dual-op-amp-pinout.svg[width=400px]
 * [[[bib-onsemi-lm324, 6]]] OnSemiconductor (2021, Aug.). _Single Supply Quad
 Operational Amplifiers (Datasheet)_. Retrieved 2021-09-03, from https://www.onsemi.com/pdf/datasheet/lm324-d.pdf.
 * [[[bib-superdiode, 7]]] Keim, Robert (2018, Feb 8). _When a Diode Simply Isn’t Good Enough: The Superdiode_. AllAboutCircuits. Retrieved 221-09-27, from https://www.allaboutcircuits.com/technical-articles/when-a-diode-simply-isnt-good-enough-the-superdiode/.
+* [[[bib-microchip-op-amp-rectifiers, 8]]] Ducu, Dragos. (2011). _AN1353: Op Amp Rectifiers, Peak Detectors and Clamps_. Microchip. Retrieved 2021-10-01, from http://ww1.microchip.com/downloads/en/AppNotes/01353A.pdf.
