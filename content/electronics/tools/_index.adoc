@@ -180,7 +180,13 @@ Digital microscopes are a great tool to have on an electronics workbench. Couple
 
 ==== AmScope 7X-45X Simul-Focal Stereo Lockable Zoom Microscope on Dual Arm Boom Stand
 
+This a great, well-weighted optical microscope for electronics lab use. The adjustable boom makes it easy to swing the microscope.
+
 Link: https://amscope.com/products/sm-4ntp
+
+Recommended accessories:
+
+* 144 LED Intensity-adjustable Ring Light for Stereo Microscopes with White Housing: https://amscope.com/products/led-144w-zk. This illuminates the work area and gives you great shadow-free light to look at the object at.
 
 == Reflow Ovens
 
