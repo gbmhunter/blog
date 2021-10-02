@@ -435,6 +435,12 @@ An op-amp can be combined with a regular diode to make an "ideal diode" (also ca
 .A basic "ideal diode" with no forward voltage drop, made from an op-amp and a standard diode. Also called a _half-wave rectifier_.
 image::ideal-diode-basic.svg[width=600px]
 
+<<ideal-diode-basic-response>> shows the response of the basic ideal diode circuit.
+
+[[ideal-diode-basic-response]]
+.The response of the basic "ideal diode"/half-wave rectifier circuit shown in <<ideal-diode-basic>>.
+image::ideal-diode-basic-response.png[width=500px]
+
 The ideal diode is only ideal up to a point. It is not limited by the bandwidth and max. slew rates of the op-amp, which is typically much less than of a basic diode! There is also an issue with slew rates with the above circuit. As soon as stem:[v_{in}] goes negative, the op-amp will "saturate" and swing it's output to the maximum negative voltage. This will cause some delay on the output (limited by the slew rate) when the input once again goes positive.
 
 TIP: The standard diode in the ideal diode circuit can be replaced by a Schottky diode for a quick-and-easy speed improvement (Schottky diodes have faster switching speeds).
@@ -553,7 +559,15 @@ The _slew rate_ of an op-amp defines the **maximum rate the output voltage can c
 
 Op-amps have a limited output slew rate due to internal compensation capacitor combined with a finite output drive current. Charing a capacitive output with a constant current (a good approximation) gives a linear increase in voltage (recall that the equation relating voltage to current for a capacitor is stem:[i = C \frac{dV}{dt}]).
 
+<<slew-rate-distortion-diagram>> shows how the non-infinite slew rate of an op-amp distorts the shape of an input square-wave "pulse". The slew rate of stem:[0.4V/us] (which is not particularly good by any standard) of the "jellybean" LM324 op-amp was used in this plot<<bib-ti-lm324-datasheet>>.
+
+[[slew-rate-distortion-diagram]]
+.Plot showing the effect an op-amps slew rate on a input square wave. Slew rate was chosen to be equal to the LM324's of 0.4V/us<<bib-ti-lm324-datasheet>>.
+image::slew-rate-distortion-diagram.png[width=500px]
+
 The **max. slew rate of an op-amp limits the amplitude of output waveforms it can produce at high frequencies without distortion**. This parameter usually increases as the GBW of the op-amp increases. Higher slew rate op-amps also tend to have higher quiescent currents.
+
+TODO: Add plot showing slew-rate distortion of sine wave.
 
 ### Quiescent Current
 
@@ -948,3 +962,4 @@ image::standard-8-pin-dual-op-amp-pinout.svg[width=400px]
 Operational Amplifiers (Datasheet)_. Retrieved 2021-09-03, from https://www.onsemi.com/pdf/datasheet/lm324-d.pdf.
 * [[[bib-superdiode, 7]]] Keim, Robert (2018, Feb 8). _When a Diode Simply Isn’t Good Enough: The Superdiode_. AllAboutCircuits. Retrieved 221-09-27, from https://www.allaboutcircuits.com/technical-articles/when-a-diode-simply-isnt-good-enough-the-superdiode/.
 * [[[bib-microchip-op-amp-rectifiers, 8]]] Ducu, Dragos. (2011). _AN1353: Op Amp Rectifiers, Peak Detectors and Clamps_. Microchip. Retrieved 2021-10-01, from http://ww1.microchip.com/downloads/en/AppNotes/01353A.pdf.
+* [[[bib-ti-lm324-datasheet, 9]]] Texas Instruments (2014). _LM321 Low Power Single Operational Amplifier_. Retrieved 2021-10-02, from https://www.ti.com/lit/ds/symlink/lm321.pdf.
