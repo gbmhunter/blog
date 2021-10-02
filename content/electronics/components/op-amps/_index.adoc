@@ -953,13 +953,12 @@ image::standard-8-pin-dual-op-amp-pinout.svg[width=400px]
 [bibliography]
 == References
 
-* [[[bib-ti-lm234-datasheet, 1]]]: Retrieved 2020-10-20, from https://www.ti.com/lit/ds/snosc16d/snosc16d.pdf.
-* [[[bib-ti-app-report-input-offset-voltage, 2]]]: Retrieved 2020-10-20, from https://www.ti.com/lit/an/sloa059/sloa059.pdf.
-* [[[bib-analog-devices-input-bias-current, 3]]]: Retrieved 2020-10-20, from https://www.analog.com/media/en/training-seminars/tutorials/MT-038.pdf.
-* [[[bib-ti-opax196-datasheet, 4]]]: https://www.ti.com/lit/ds/symlink/opa196.pdf
-* [[[bib-analog-devices-input-offset-voltage, 5]]] Analog Devices (2008, Oct.). _MT-037: Op Amp Input Offset Voltage_. Retrieved 2021-09-03, from https://www.analog.com/media/en/training-seminars/tutorials/MT-037.pdf.
-* [[[bib-onsemi-lm324, 6]]] OnSemiconductor (2021, Aug.). _Single Supply Quad
-Operational Amplifiers (Datasheet)_. Retrieved 2021-09-03, from https://www.onsemi.com/pdf/datasheet/lm324-d.pdf.
+* [[[bib-ti-lm234-datasheet, 1]]]: Texas Instruments (2015). _LMx24-N, LM2902-N Low-Power, Quad-Operational Amplifiers_. Retrieved 2020-10-20, from https://www.ti.com/lit/ds/snosc16d/snosc16d.pdf.
+* [[[bib-ti-app-report-input-offset-voltage, 2]]]: Palmer, Richard (2001). _DC Parameters: Input Offset Voltage (Vio)_. Texas Instruments. Retrieved 2020-10-20, from https://www.ti.com/lit/an/sloa059/sloa059.pdf.
+* [[[bib-analog-devices-input-bias-current, 3]]]: Analog Devices (2008, Oct). _Op Amp Input Bias Current_. Retrieved 2020-10-20, from https://www.analog.com/media/en/training-seminars/tutorials/MT-038.pdf.
+* [[[bib-ti-opax196-datasheet, 4]]]: Texas Instruments (2017, Jul). _OPAx196 36-V, Low-Power, Low Offset Voltage, Rail-to-Rail Operational Amplifier_. Retrieved 2021-09-03, from https://www.ti.com/lit/ds/symlink/opa196.pdf.
+* [[[bib-analog-devices-input-offset-voltage, 5]]] Analog Devices (2008, Oct). _MT-037: Op Amp Input Offset Voltage_. Retrieved 2021-09-03, from https://www.analog.com/media/en/training-seminars/tutorials/MT-037.pdf.
+* [[[bib-onsemi-lm324, 6]]] OnSemiconductor (2021, Aug). _Single Supply Quad Operational Amplifiers (Datasheet)_. Retrieved 2021-09-03, from https://www.onsemi.com/pdf/datasheet/lm324-d.pdf.
 * [[[bib-superdiode, 7]]] Keim, Robert (2018, Feb 8). _When a Diode Simply Isn’t Good Enough: The Superdiode_. AllAboutCircuits. Retrieved 221-09-27, from https://www.allaboutcircuits.com/technical-articles/when-a-diode-simply-isnt-good-enough-the-superdiode/.
 * [[[bib-microchip-op-amp-rectifiers, 8]]] Ducu, Dragos. (2011). _AN1353: Op Amp Rectifiers, Peak Detectors and Clamps_. Microchip. Retrieved 2021-10-01, from http://ww1.microchip.com/downloads/en/AppNotes/01353A.pdf.
 * [[[bib-ti-lm324-datasheet, 9]]] Texas Instruments (2014). _LM321 Low Power Single Operational Amplifier_. Retrieved 2021-10-02, from https://www.ti.com/lit/ds/symlink/lm321.pdf.
