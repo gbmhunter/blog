@@ -1,0 +1,61 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2015-01-03
+draft: false
+lastmod: 2021-10-04
+tags: [ "communication protocol", "bluetooth" ]
+title: "Bluetooth"
+type: "page"
+---
+
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
+== Overview
+
+The original bluetooth is known as Bluetooth Classic and was designed as a short-range wireless point-to-point communications protocol.
+
+Personal area network (PAN) was called a piconet. 1 central device and up to 7 peripherals.
+
+== Logo
+
+The bluetooth logo is shown below:
+
+.The Bluetooth icon/logo.
+image::bluetooth-4-0-icon.jpg[width=300px]
+
+== Advanced Audio Distribution Profile (A2DP)
+
+This is a bluetooth standard which supports the streaming of audio between bluetooth-enabled devices.
+
+== Bluetooth 4.0
+
+In 2010, the Bluetooth Core Specification version 4.0 was released. This included Bluetooth Low Energy (BLE), which is now more commonly known as Bluetooth Smart. Bluetooth Smart specifies a hub-and-spoke connection model (with broadcast support), but no mesh topology.
+
+An attribute is a piece of labelled and addressable data. A characteristic is a group of attributes, and a service is a group of attributes.
+
+attribute < characteristic < service
+
+Bluetooth 4.0 uses the server/client paradigm.
+
+== Bluetooth Smart Mesh Working Group
+
+In 2017, a set of three specifications were released by the Bluetooth SIG:
+
+* Mesh Profile
+* Mesh Model
+* Mesh Device Properties
+
+These specifications allowed Bluetooth devices to form a mesh network. Mesh Profiles use Bluetooth LE for it's underlying radio communications, and as such Mesh Profiles work with Bluetooth 4.2 and Bluetooth 5 devices.
+
+Bluetooth Mesh data packets can be up to 384 bytes.
+
+Two types of encryption keys:
+
+. Network keys: Specific to a physical network.
+. Application keys: Specific to the function of the data, e.g. reading sensor values vs. configuring the sensor.
+
+=== Generic Models
+
+==== Generic OnOff Server
+
+==== Generic Level Server
