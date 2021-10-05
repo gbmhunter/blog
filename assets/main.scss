@@ -514,6 +514,14 @@ do this for us */
     text-align: center;
 }
 
+// [.eq-vars] block attributes are used for explaining the variables of above equations
+.eq-vars {
+    p {
+        text-align: center;
+        font-size: 0.9rem;
+    }
+}
+
 /* ========================================================================= */
 /* CODE                                                                      */
 /* ========================================================================= */
