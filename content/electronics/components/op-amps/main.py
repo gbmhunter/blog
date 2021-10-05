@@ -4,7 +4,7 @@ import numpy as np
 
 def main():
     create_ideal_diode_basic_response()
-    create_slew_rate_distortion_diagram()
+    create_slew_rate_distortion_diagrams()
 
 
 def create_ideal_diode_basic_response():
@@ -33,7 +33,13 @@ def create_ideal_diode_basic_response():
     plt.savefig('ideal-diode-basic-response.png')
 
 
-def ratelimit(x, t, rlim):
+def ratelimit(x: np.ndarray, t: np.ndarray, rlim: float):
+    """
+    Args:
+        x: Array of values at each time in t.
+        t: Array of times for each value in x. Each time does not have to be evenly spaced.
+        rlim: The maximum rate of change of x in units [units x per units t].
+    """
     def helper():
         y = x[0]
         tprev = t[0] 
@@ -46,9 +52,10 @@ def ratelimit(x, t, rlim):
     return np.array(list(helper()))
 
 
-def create_slew_rate_distortion_diagram():
+def create_slew_rate_distortion_diagrams():
     slew_rate_Vpus = 0.4
     time_vals_us = np.linspace(0, 500, 1000)
+
     input_waveform_vals = np.where((time_vals_us > 100) & (time_vals_us < 300), 10, 0)
     output_waveform_vals = ratelimit(input_waveform_vals, time_vals_us, slew_rate_Vpus)
 
@@ -72,7 +79,24 @@ def create_slew_rate_distortion_diagram():
     ax.legend()
     # ax.set_aspect('equal')
     plt.tight_layout()
-    plt.savefig('slew-rate-distortion-diagram.png')
+    plt.savefig('slew-rate-distortion-diagram-square-wave.png')
+
+    # With 0.4V/us slew rate and 10V peak signal, fmax=6.37kHz (before distortion)
+    sine_wave_freq_Hz = 20e3
+    voltage_peak_V = 10.0
+    time_vals_us = np.linspace(0, 100, 1000)
+    input_waveform_vals = voltage_peak_V*np.sin(2*np.pi*sine_wave_freq_Hz*time_vals_us)
+    fig, ax = plt.subplots(figsize=(7, 5))
+    ax.plot(time_vals_us, input_waveform_vals, label='Input (20kHz sine wave)')
+    ax.plot(time_vals_us, ratelimit(input_waveform_vals, time_vals_us, 0.4), label='Output (0.4V/us slew limit)')    
+    ax.plot(time_vals_us, ratelimit(input_waveform_vals, time_vals_us, 1.0), label='Output (1.0V/us slew limit)')
+    ax.set_xlabel('$Time\ [us]$')
+    ax.set_ylabel('$Voltage\ [V]$')
+    ax.grid()
+    ax.legend()
+    # ax.set_aspect('equal')
+    plt.tight_layout()
+    plt.savefig('slew-rate-distortion-diagram-sine-wave.png')
 
 
 if __name__ == '__main__':

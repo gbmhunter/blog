@@ -12,4 +12,4 @@ type: "post"
 
 == Updates This Month
 
-* 
+* Added equations and plots showing the effect op-amp slew rates have on square and sine waves.
