@@ -537,13 +537,13 @@ The _input offset current_ stem:[I_{OS}] is the difference between the input bia
 
 The input impedance is the internal resistance to ground from the two input pins. In an ideal op-amp, this value is infinite. For most op-amps, this value is somewhere between 1-10MΩ.
 
-### Gain-Bandwidth (GBW) Product
+=== Gain-Bandwidth (GBW) Product
 
-The gain-bandwidth product can be initialised as _GBWP_, _GBW_, _GBP_ or _GB_. It is an important parameter which basically puts a limit on the maximum gain and frequency. **An op-amp's maximum possible gain reduces as the frequency of the signal increases.** The multiplication of the gain with the frequency gives the gain-bandwidth product, which is **relatively constant** for a particular op-amp.
+The gain-bandwidth product (initialised as _GBWP_, _GBW_, _GBP_ or _GB_) is an important parameter which puts a limit on the maximum gain and frequency an op-amp can operate at. **An op-amp's maximum possible gain reduces as the frequency of the signal increases.** The multiplication of the gain with the frequency gives the gain-bandwidth product, which is **relatively constant** for a particular op-amp.
 
-Hence if the gain bandwidth of a particular op-amp is 1Mhz, and the gain is 10, the maximum frequency that the op-amp can operate linearly at (still provide a gain of 10) is at 100kHz. Or if the gain was set to 100, then the maximum frequency is 10kHz. **This also means that an op-amp has a built-in low-pass filter, as the gain drops for very high frequencies.**
+Hence if the gain bandwidth of a particular op-amp is 1Mhz, and the gain is 10, the maximum frequency that the op-amp can operate linearly at (still provide a gain of 10) is at 100kHz. Or if the gain was set to 100, then the maximum frequency is 10kHz. **This also means that an op-amp acts as a low-pass filter, as the gain drops for very high frequencies.** Like wise for a GBW of 1MHz, is the gain was just 1 (i.e. acting as a buffer/follower), then it should be able to operate up to frequencies of 1MHz.
 
-An example of an ultra-high gain bandwidth is 1700MHz, which are present in 'Wideband CFB" op-amps, designed for applications such as RGB line drivers (such as the OPA695). A 'normal' GBW can be anywhere between 100kHz and 10MHz. A low gain-bandwidth is around 1kHz (reminiscent of less advanced, older op-amps). **Remember gain is unit-less (V/V), so gain bandwidth is expressed as a frequency only.** Not realising this can be confusing! The GBW product is closely related to the slew rate (see below).
+An example of an ultra-high gain bandwidth is 1700MHz, which are present in 'Wideband CFB" op-amps, designed for applications such as RGB line drivers (such as the OPA695). A 'normal' GBW can be anywhere between 100kHz and 10MHz. A low gain-bandwidth is around 1kHz (reminiscent of less advanced, older op-amps). **Remember gain is unit-less (V/V), so gain bandwidth is expressed as a frequency only.** Not realising this can be confusing! The GBW product is closely related to the <<_slew_rate, slew rate>>.
 
 ### High Level Output Voltage
 
@@ -577,6 +577,12 @@ The maximum frequency of a signal that an op-amp can output before it gets disto
 SR = 2\pi f_{max} V_P
 \end{align}
 ++++
+
+[.eq-vars]
+where: +
+stem:[SR] is the slew rate, in stem:[Vs^{-1}] +
+stem:[f_{max}] is the maximum frequency (of a sine wave) that is allowed before distortion, in stem:[Hz] +
+stem:[V_P] is the peak voltage of the sine wave (i.e. amplitude, or half the peak-to-peak voltage), in stem:[V] +
 
 **Proof**
 
@@ -622,8 +628,8 @@ So just as an example, the jellybean LM324 with a slew rate of stem:[0.4V/us] ca
 ++++
 \begin{align}
 f_{max} &= \frac{SR}{2\pi V_P} \nonumber \\
-        &= \frac{0.4V/us}{2\pi 10V}
-        &= 6.37kHz
+        &= \frac{0.4V/us}{2\pi 10V} \nonumber \\
+        &= 6.37kHz \\
 \end{align}
 ++++
 
@@ -802,44 +808,29 @@ G_V &\approx \frac{1}{B}
 
 Below are some examples of op-amps that stand out from the crowd for some reason, be it popularity, years in service, or functionality wise.
 
-++++
-<table>
-  <thead>
-    <tr>
-      <th>Manufacturer Code</th>
-      <th>Description</th>
-      <th>Approximate Price (1 unit, US$)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>AD860x</td>
-      <td>Good for high precision stuff! Awesome for photo-diode amplification (both current-to-voltage and voltage-to-voltage configurations).</td>
-      <td>$3.50</td>
-    </tr>
-    <tr>
-      <td>LM32x</td>
-      <td>A common family of op-amps that has been around for along time, they can operate of a single supply and can swing right to ground, but cannot swing to the rail voltage. The LM321 has one op-amp, the LM328 has two (dual), and the LM324 has 4 (quad).</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>LM833</td>
-      <td>One of the cheapest 'audio' op-amps available (about US$0.20 as of 2011). Features a high GBW for it's price.</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>OPA695</td>
-      <td>This is a ultra-wideband, current-feedback op-amp. If you need an op-amp with a ridiculously high gain-bandwidth product, this is along the lines of what you want to use. It has a GBW of 1700Mhz and a maximum slew-rate of 4300V/us.</td>
-      <td>$3.50</td>
-    </tr>
-    <tr>
-      <td>OP07</td>
-      <td>A op-amp with a "ultra" low input offset voltage (resistors are trimmed at production time to achieve this), guranteed to be no more than 75uV. This op-amp also features offset nulling pins to further reduce the input offset voltage by performing trimming once the op-amp is installed in a circuit.</td>
-      <td>n/a</td>
-    </tr>
-  </tbody>
-</table>
-++++
+|===
+| Part Number | Price (approx.) | Comments
+
+| AD860x
+| US$3.50 (1)
+| Good for high precision stuff! Awesome for photo-diode amplification (both current-to-voltage and voltage-to-voltage configurations).</td>
+
+| LM32x
+| A common family of op-amps that has been around for along time, they can operate of a single supply and can swing right to ground, but cannot swing to the rail voltage. The LM321 has one op-amp, the LM328 has two (dual), and the LM324 has 4 (quad).
+
+| LM833
+|
+| One of the cheapest 'audio' op-amps available (about US$0.20 as of 2011). Features a high GBW for it's price.
+
+| OPA695
+| US$3.50 (1)
+| This is a ultra-wideband, current-feedback op-amp. If you need an op-amp with a ridiculously high gain-bandwidth product, this is along the lines of what you want to use. It has a GBW of 1700Mhz and a maximum slew-rate of 4300V/us.
+
+| OP07
+|
+| A op-amp with a "ultra" low input offset voltage (resistors are trimmed at production time to achieve this), guaranteed to be no more than 75uV. This op-amp also features offset nulling pins to further reduce the input offset voltage by performing trimming once the op-amp is installed in a circuit.
+
+|===
 
 ## Negative Voltage Rails
 
