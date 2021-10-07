@@ -133,7 +133,31 @@ Below is a table with `%autowidth` set, this means is should only be as wide as 
 | First letter  | Element description
 
 | A             | XSPICE code model
-| B             | Behavioral (arbitrary) source
+| B             | Behavioural (arbitrary) source
+|===
+
+Below is a table with more than one header row. Since there is more than one row, it's actually put in the `tbody` element, but still has `th` cells.
+
+[cols="1,1,1,1,1,1"]
+|===
+2+h| This cell spans two cols.
+2+h| Same.
+2+h| Same.
+
+h| Second row of header cells.
+h| Same.
+h| Same.
+h| Same.
+h| Same.
+h| Same.
+
+| This
+| row
+| is
+| not
+| a
+| header
+
 |===
 
 == Admonitions

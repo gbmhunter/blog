@@ -3,8 +3,8 @@ authors: [ "Geoffrey Hunter" ]
 date: 2011-09-05
 description: "Terminology, types, manufacturers, common usages and more info on electrical connectors."
 draft: false
-lastmod: 2021-10-07
-tags: [ "electronics", "connectors", "electronic components", "circular connectors", "M12", "M8", "pogo", "TagConnect", "spring-loaded", "socket", "plug", "crimp", "plating", "contacts", "IDC", "insulation displacement connectors", "terminal blocks", "DE-9", "DB-9", "DB-25" ]
+lastmod: 2021-10-08
+tags: [ "electronics", "connectors", "electronic components", "circular connectors", "M12", "M8", "pogo", "TagConnect", "spring-loaded", "socket", "plug", "crimp", "plating", "contacts", "IDC", "insulation displacement connectors", "terminal blocks", "DE-9", "DB-9", "DB-25", "headers", "M8", "M12", "IEC 60320" ]
 title: "Connectors"
 type: "page"
 ---
@@ -66,70 +66,60 @@ Unlike most other electrical components, most connector manufacturers do not app
 
 ## Connector Manufacturers
 
-++++
-<table >
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Website</th>
-			<th>Range</th>
-			<th>Provide 3D Models</th>
-			<th>Affordability (1 expensive, 10 cheap)</th>
-			<th>Site Usability (1 bad, 10 good)</th>
-		</tr>
-	</thead>
-  <tbody>
-    <tr>
-      <td>3M</td>
-      <td>link:http://www.3m.com/[http://www.3m.com/]</td>
-      <td>Card edge (inc. latching)</td>
-      <td>Yes, but not always for all parts in a connector family. (Step, IGES, Parasolid)</td>
-      <td>3</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Harting</td>
-      <td>link:http://www.harting.com/[http://www.harting.com]</td>
-      <td>Card edge</td>
-      <td>Yes (Step)</td>
-      <td>5</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Hirose</td>
-      <td>link:http://www.hirose.com/[http://www.hirose.com/]</td>
-      <td>High-end circular</td>
-      <td>Yes, after providing your paid-for email address. (Step)</td>
-      <td>5</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Molex</td>
-      <td>link:http://www.molex.com/[http://www.molex.com]</td>
-      <td>Card edge</td>
-      <td>Yes (Step)</td>
-      <td>3</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td>Samtec</td>
-      <td>link:http://www.samtec.com/[http://www.samtec.com]</td>
-      <td>Backplane, headers (various pitches, and both square-post and machined), rugged circular.</td>
-      <td>Yes (Step).</td>
-      <td>7</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <td>TE Connectivity</td>
-      <td>link:http://www.te.com/[http://www.te.com]</td>
-      <td>Backplane</td>
-      <td>?</td>
-      <td>6</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-++++
+[cols="1,2,2,2,1,1"]
+|===
+| Name | Website | Range | Provide 3D Models | Affordability (1 expensive, 10 cheap) | Site Usability (1 bad, 10 good)
+
+
+| 3M
+| link:http://www.3m.com/[http://www.3m.com/]
+| Card edge (inc. latching)
+| Yes, but not always for all parts in a connector family. (Step, IGES, Parasolid)
+| 3
+| 
+
+| Harting
+| link:http://www.harting.com/[http://www.harting.com]
+| Card edge
+| Yes (Step)
+| 5
+|
+
+| Hirose
+| link:http://www.hirose.com/[http://www.hirose.com/]
+| High-end circular
+| Yes, after providing your paid-for email address. (Step)
+| 5
+| 
+
+| Molex
+| link:http://www.molex.com/[http://www.molex.com]
+a|
+* Headers
+* Wire-to-Board
+* Card edge
+| Yes (Step)
+| 3
+| 6
+
+| Samtec
+| link:http://www.samtec.com/[http://www.samtec.com]
+a|
+* Backplane
+* Headers (various pitches, and both square-post and machined)
+* Rugged circular.
+| Yes (Step)
+| 7
+| 8
+
+| TE Connectivity
+| link:http://www.te.com/[http://www.te.com]
+| Backplane
+| ?
+| 6
+| 
+
+|===
 
 == Tin vs. Gold Plating
 
@@ -146,7 +136,37 @@ Selecting gold tinned contacts can add a good US$0.50 or more to the price of th
 Mixing the two plating metals is not recommended! The corrosion rate is greatly increased when two dissimilar metals come into contact with each other (this is due to the difference in the metal's electrode potentials, which is +1.5V for gold, and only +0.15V for tin).
 
 .You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/.
-image::gold-and-tin-plated-contacts.jpg[width=900px]
+image::gold-and-tin-plated-contacts.jpg[width=500px]
+
+== Headers
+
+The term "Header" normally refers to a basic row of pins or sockets, with little or no additional features such as shrouds, locking ability, or keyed parts. The most common pitch for headers is 2.54mm (100mil). Headers are versatile, as they not vendor-specific, can be connected to by soldering, hooks/probes, or the opposite gender header (either a plug or jack), normally have a standardised pitch, can handle a decent amount of current (at least 1A for normal 2.54mm headers), and are cheap!
+
+Headers are used frequently on electronic development kits. For example, the link:/programming/microcontrollers/arduino[Arduino], link:/programming/microcontrollers/raspberry-pi[RaspberryPi], and link:/programming/microcontrollers/psoc[PSoC] development kits all use headers for various things such as programming the microcontroller to providing a way to connect expansion boards.
+
+=== Types
+
+Headers can have two different pin types, square post of machined post. Square-post headers have square pins, while machined post header have circular pins. The machined post headers are more expensive, but can take more current as there is more contact area between the male and female parts.
+
+You can also get headers which are polarised, usually by both the male missing one pin, and the female part missing the associated hole. This prevents the common mistake of plugging in a header offset by 1 pin or completely the wrong way around. Note that careful choice of the missing pin is required to minimise the chance of an incorrect mating.
+
+=== Typical Pin Numbering
+
+Male headers (plugs) are normally numbered from left-to-right, when the connectors solder terminals (tail end) are facing south on the PCB, and the bits that do the connecting are facing north (all of this while looking down on the PCB). For female headers (jacks) to match, they are numbered from right-to-left. This is all better explained in the following image.
+
+.This image show the typical way in which headers are numbered, with males headers (plugs) being numbered left-to-right and female headers (jacks) being numbered from right-to-left.
+image::typical-numbering-order-for-header-connectors.png[width=500px]
+
+## Using Headers For Board-to-Board Connections
+
+They are also a great, cheap way of connecting two or more PCBs together, as shown in the following image. A disadvantage is that this method is not as mechanically strong as some more expensive custom board-to-board connection methods.
+
+.Header plugs and jacks (male and female parts) are a good way of connecting PCBs together.
+image::2-54mm-smd-right-angle-header-plug-and-jack-mosaic.jpg[width=1200px]
+
+=== Part Links
+
+Samtec make some good priced, link:http://www.samtec.com/connectors/standard-board-to-board/100-inch-square-post.aspx[2.54mm pitch square-post connectors].
 
 ## Circular Connectors
 
@@ -167,7 +187,51 @@ Mini-DIN connectors are smaller versions of the DIN connectors and are 9.5mm in 
 
 Mini-DIN connectors have been used for the S-video interface.
 
-## IDC Connectors
+=== M8/M12 Circular Connectors
+
+**M8 and M12 connectors are circular connectors with a 8mm or 12mm mating thread** (note the thread in question is the thread joining the two mating connectors together, not the other threads which may be present on the M12 connector, such as panel-mount variants which typically have a 16mm thread for mounting to the panel). They are used for a variety of purposes across a large number of industries. A large number of these connectors are rated IP67 and prevent the ingress of water and dust.
+
+M8/M12 connectors have different _codings_. Each coding is a particular pin arrangement and key which prevents the same diameter and pin connector being mated with connectors with different codings.
+
+* A: Sensors, DC power (deprecated use), 1Gbit Ethernet. This is a very common/popular encoding.
+* B: PROFIBUS
+* C: AC power (deprecated)
+* D: 100Mbit ethernet
+* K: AC power
+* L: PROFINET DC power
+* N: 
+* S: AC power (replacement for `C`)
+* T: DC power (replacement for `A` DC power)
+* X: 10Gbit Ethernet
+
+.Common codings for M8/M12 circular connectors. Image from https://www.te.com/content/dam/te-com/documents/industrial-automation-and-control/global/m8m12_product_presentation.pdf.
+image::m8-m12-connector-codings-te-connectivity.png[width=700px]
+
+Common pin counts:
+
+* 4 (M8, M12)
+* 5 (M12, sometimes M8)
+* 8 (M12)
+* 12 (M12)
+
+Some of the panel mount M12 connectors have a M16mm panel mount thead, others have a PG9 (see link:https://en.wikipedia.org/wiki/Panzergewinde[https://en.wikipedia.org/wiki/Panzergewinde]) thread.
+
+==== Inline Connectors
+
+They typically have a PG7 or PG9 thread. The PG9 thread seems to be more common/widely available. The inline connectors may have screw termination (terminal block style).
+
+==== Splitters
+
+The M8/M12 connector family also come with splitters --- Y and T shaped units which allow 3 cables to be connected together.
+
+.A Y-style M12 splitter from Phoenix Contact. Image from https://nz.element14.com/phoenix-contact/1054338/sensor-splitter-8p-m12-plug-plug/dp/3223043.
+image::y-style-m12-splitter-phoenix-contact-1054338.jpg[width=300px]
+
+==== Field Installable Connectors
+
+Some M8/M12 connectors are stated as _field installable_.
+
+== IDC Connectors
 
 IDC (_insulation displacement connector_) connectors are very common style of connector used to carry low speed communications and low current power between multiple circuit boards and between circuit boards and other devices. They are distinguishable by the typically black, square and sharp edged connectors, with a ribbon cable coming out the side.
 
@@ -182,7 +246,7 @@ The socket (least-moving piece, the side that gets soldered onto a PCB) is shrou
 
 The pitch of the PCB pins on an IDC connector is almost always 2.54mm (0.1"). Because IDC connectors always have two rows of pins, this requires that the cable has a conductor pitch of 1.27mm (0.05").
 
-## Telecom Connectors
+== Telecom Connectors
 
 ### BT Connector
 
@@ -474,6 +538,86 @@ _MTA-100 connectors_ are a family of wire-to-board and wire-to-wire connectors. 
 | Green
 | 28AWG
 |===
+
+== RF Connectors
+
+RF connectors are connectors specifically designed to carry high-frequency signals, typically in the 100MHz-30GHz range.
+
+== U.FL
+
+Also known as UMC or XFL connectors.
+
+.A photo of a male, SMD mount UFL connector. Image from www.digikey.com.
+image::ufl-connector-photo.png[width=350px]
+
+=== Schematic Symbol
+
+There is no "standard" schematic symbol for the male, SMD mount UFL connector, so I normally decide to go with some that is visually resembles the actual connector part, as shown below:
+
+.A schematic symbol for the male, SMD, UFL (a.k.a. UMC, UMCC) style RF connector.
+image::ufl-umc-umcc-rf-connector-schematic-symbol.png[width=510px]
+
+The height of the male SMD connector can vary, but something around 1.2mm is common.
+
+== Board-to-Board Connectors
+
+Board-to-board connectors which connect to PCBs side-by-side are called _coplanar_ connectors.
+
+Board-to-board-connectors which connect PCBs ontop of one another are called _mezzanine_ or _stacked_ connectors.
+
+.An example of a 'mezzanine' or 'stacked' style of board-to-board connector.
+image::stacked-board-to-board-connector-photo.png[width=500px]
+
+=== Wire-to-Board (WTB) Support
+
+Some board-to-board connector families are have wire-to-board support, with a special wire-crimped inline receptacle which mates with the PCB-mounted connector that works with both the board-to-board and wire-to-board connectors.
+
+The Hirose DF-59 family is a set of board-to-board/board-to-wire connectors. The special feature about this family is the "floating" contact which allows up to 0.5mm of mis-alignment between the boards.
+
+.Diagram of the Hirose DF-59 family of board-to-board connectors, showing their special 'floating' feature.
+image::df59-hirose-board-to-board-connector-with-special-floating-feature.pdf.png[width=400px]
+
+== Mains Power Connectors
+
+=== IEC 60320
+
+The C13/C14 coupler is very common for powering computers, computer screens and other tech equipment from mains power. In New Zealand, they are commonly called "jug plugs".
+
+.A photo of both the male and female C13/C14 style connectors from the IEC 60320 standard. Also known as 'kettle' or 'jug' plugs. Image from www.amazon.com.
+image::iec-60320-c13-male-and-female-mains-power-connector-photo.jpg[width=500px]
+
+== PCB Card Edge Connectors
+
+This is a cheap and many-pin capable solution when you want to connect two PCBs together. PCB card edge connector involve using the edge of one of the mating PCBs as the connector, by etching/routing "fingers" on the PCB. The other mating part of the connector is designed to accept these fingers. Most card edge connectors are used when the PCBs are at right-angles to each other, although you can get connectors designed for parallel and co-planar connections.
+
+The fingers that are etched on the PCB are usually gold plated to make the contacts more reliable (the normal lead/tin coating oxidises too quickly). This is a special process that most PCB manufacturers will support, and does not add much to the cost of the PCB. The supported PCB thickness of most of these connectors is around 1.60mm (which is pretty standard). Also, it is recommended to add a small bevel to the inserted end of the PCB to facilitate mating. Again, most quality PCB manufacturers will support this.
+
+Card-edge connectors are very susceptible to board warping and board thickness errors, so takes these into consideration when adding card-edge connectors to your PCB design.
+
+.Edge connector fingers which have been gold plated and the PCB bevelled. Image from http://www.eurocircuits.com/index.php/eurocircuits-printed-circuits-blog/gold-plating-for-edge-connectors.
+image::edge-connector-gold-fingers-and-bevel.png[width=445px]
+
+The following image is of PCB card edge connectors on the link:/electronics/teardowns/cavro-xl3000-8-port-syringe-pump-teardown[Cavro XL-3000 syringe pump].
+
+.An example of a PCB card edge connector. This is a photo of the Cavro XL-3000 syringe pump.
+image::pcb-card-edge-connector-example-from-cavro-xl-3000.jpg[width=1200px]
+
+You can get PCB card edge connectors which have latches, which lock in the daughter board which has special "hockey stick" pieces routed on the sides.
+
+.Male pcb-card edge connectors can have 'hockey-stick' latches as indicated (the female connector also has to support this).
+image::pcb-edge-connector-pci-hockey-stick.png[width=412px]
+
+This is a screenshot from a PCB design for the male part of a card-edge connector in Altium.
+
+.An Altium PCB design of a male card-edge connector. This is for the 20-pin connector in the Molex SPD08 series.
+image::altium-card-edge-male-connector-on-pcb.png[width=1502px]
+
+This is a female latching card-edge connector.
+
+.A 20-pin card-edge female connector from the Molex SPD08 series.
+image::pcb-connector-with-latches-3m-spd08.png[width=1265px]
+
+In some rare cases (e.g. the Sullins EBC Card-Edge connector series), aside from the socket, the connector manufacturer will also manufacture a plug which replicates PCB fingers, instead of you using the PCB for this purpose.
 
 [bibliography]
 == References
