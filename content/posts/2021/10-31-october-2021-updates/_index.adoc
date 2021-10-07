@@ -13,3 +13,7 @@ type: "post"
 == Updates This Month
 
 * Added equations and plots showing the effect op-amp slew rates have on square and sine waves.
+
+* Added info on link:/electronics/components/connectors/#_barrier_strips[barrier strips to the Connectors page].
++
+image::/posts/2021/10-31-october-2021-updates/molex-0387700104-barrier-strip-photo.png[width=300px]

@@ -14,11 +14,12 @@ def main():
     power_edit = PowerEdit()
     power_edit.sim_run = not args.modify
     files = power_edit.find_files(args.path_glob, recursive=True)
+    print(f'Running the Markdown-to-AsciiDoc converter. Provide -m to actually modify the files, otherwise a dryrun will be performed.')
     print(files)
     for file_path in files:
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'{{% link[^%]+%}}', replace=link_replace_fn, multiline=True)
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'\[([^\]]+)\]\(([^)]+)\)', replace=markdown_link_replace_fn, multiline=True)
-        power_edit.find_replace_regex(file_path=file_path, regex_str=r'{{(%|<) (figure|img)[^%]+(%|>)}}', replace=image_replace_fn, multiline=True)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'{{(%|<) (figure|img)((?!}}).)+(%|>)}}', replace=image_replace_fn, multiline=True)
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'`?\\\((((?!\\\)).)+)\\\)`?', replace=inline_eq_replace_fn, multiline=True)
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'<p>\\begin{align}[\s\S]*?(?=\\end{align}<\/p>)\\end{align}<\/p>', replace=block_eq_replace_fn, multiline=True)
         
