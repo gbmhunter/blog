@@ -252,6 +252,9 @@ h4 {
     justify-content: flex-end;
 }
 
+div.sect2 {
+    margin-bottom: 10px;
+}
 
 /* ========================================================================= */
 /* POST/PAGE METADATA                                                        */
@@ -334,6 +337,12 @@ div.content {
     th {
         background-color: var(--main-color);
         color: white;
+
+        // Have to also set the text colour with this <p> as AsciiDoc
+        // inserts paragraphs into th cells which are in the tbody.
+        p {
+            color: white;
+        }
         font-weight: normal;
         padding: 10px;
     }
@@ -345,9 +354,9 @@ div.content {
     }
     @media (min-width: 800px) {
         /* Make tabular data a little smaller than standard paragraphs */
-        td, th, td ul li, td p {
-        font-size: 0.95rem;
-        line-height: 1.5;
+        td, th, td ul li, td p, th p {
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
     }
 
