@@ -144,6 +144,16 @@ The term "Header" normally refers to a basic row of pins or sockets, with little
 
 Headers are used frequently on electronic development kits. For example, the link:/programming/microcontrollers/arduino[Arduino], link:/programming/microcontrollers/raspberry-pi[RaspberryPi], and link:/programming/microcontrollers/psoc[PSoC] development kits all use headers for various things such as programming the microcontroller to providing a way to connect expansion boards.
 
+=== Schematic Symbol
+
+<<header-schematic-symbol>> shows the commonly used schematic symbol for a header-style connector. This example shows a male header (because of the `P` in the designator) with 1 row of 2 pins (usually abbreviated to `1x2`).
+
+[[header-schematic-symbol]]
+.The commonly-used schematic symbol for a header. This shows a 1x2 (1 row of 2 pins) male header.
+image::header-schematic-symbol.svg[width=200px]
+
+WARNING: This schematic symbol is very generic and also commonly used for a range of over connector styles, so don't just assume it represents a header!
+
 === Types
 
 Headers can have two different pin types, square post of machined post. Square-post headers have square pins, while machined post header have circular pins. The machined post headers are more expensive, but can take more current as there is more contact area between the male and female parts.

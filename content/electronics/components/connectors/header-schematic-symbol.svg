@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 237 355" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-507.637,-201.526)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">P1</text>
+    </g>
+    <g id="conn-1x2" transform="matrix(1,0,0,1,-2267.72,-1299.21)">
+        <g id="terminal-center" transform="matrix(1,0,0,1,1818.9,696.85)">
+            <ellipse cx="543.307" cy="720.5" rx="11.811" ry="11.783" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        </g>
+        <g id="terminal-center1" serif:id="terminal-center" transform="matrix(1,0,0,1,1818.9,814.905)">
+            <ellipse cx="543.307" cy="720.5" rx="11.811" ry="11.783" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        </g>
+        <path d="M2374.02,1417.35L2480.32,1417.35" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        <path d="M2374.02,1535.4L2480.32,1535.4" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        <rect x="2303.15" y="1358.27" width="118.11" height="236.22" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+    </g>
+</svg>
