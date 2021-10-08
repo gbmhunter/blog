@@ -140,7 +140,7 @@ image::gold-and-tin-plated-contacts.jpg[width=500px]
 
 == Headers
 
-The term "Header" normally refers to a basic row of pins or sockets, with little or no additional features such as shrouds, locking ability, or keyed parts. The most common pitch for headers is 2.54mm (100mil). Headers are versatile, as they not vendor-specific, can be connected to by soldering, hooks/probes, or the opposite gender header (either a plug or jack), normally have a standardised pitch, can handle a decent amount of current (at least 1A for normal 2.54mm headers), and are cheap!
+A _Header_ connector normally refers to a basic row of pins or sockets, with little or no additional features such as shrouds, locking ability, or keyed parts. The most common pitch for headers is 2.54mm (100mil). Headers are versatile, as they not vendor-specific, can be connected to by soldering, hooks/probes, or the opposite gender header (either a plug or jack), normally have a standardised pitch, can handle a decent amount of current (at least 1A for normal 2.54mm headers), and are cheap!
 
 Headers are used frequently on electronic development kits. For example, the link:/programming/microcontrollers/arduino[Arduino], link:/programming/microcontrollers/raspberry-pi[RaspberryPi], and link:/programming/microcontrollers/psoc[PSoC] development kits all use headers for various things such as programming the microcontroller to providing a way to connect expansion boards.
 
@@ -167,7 +167,7 @@ Male headers (plugs) are normally numbered from left-to-right, when the connecto
 .This image show the typical way in which headers are numbered, with males headers (plugs) being numbered left-to-right and female headers (jacks) being numbered from right-to-left.
 image::typical-numbering-order-for-header-connectors.png[width=500px]
 
-## Using Headers For Board-to-Board Connections
+=== Using Headers For Board-to-Board Connections
 
 They are also a great, cheap way of connecting two or more PCBs together, as shown in the following image. A disadvantage is that this method is not as mechanically strong as some more expensive custom board-to-board connection methods.
 
@@ -178,9 +178,9 @@ image::2-54mm-smd-right-angle-header-plug-and-jack-mosaic.jpg[width=1200px]
 
 Samtec make some good priced, link:http://www.samtec.com/connectors/standard-board-to-board/100-inch-square-post.aspx[2.54mm pitch square-post connectors].
 
-## Circular Connectors
+== Circular Connectors
 
-### DIN Connectors
+=== DIN Connectors
 
 The DIN connector was originally developed by the German National Standards Organisation. The known standards are:
 
@@ -191,7 +191,7 @@ The DIN connector was originally developed by the German National Standards Orga
 
 DIN connectors with different numbers of pins can sometimes mate with each other. For example, 3-pin DIN connectors used for mono audio can mate with the left-channel of larger 5-pin DIN stereo connections. DIN connectors were used for the PS/2 keyboard and mouse connectors (know succeeded by the USB connector).
 
-### Mini-DIN Connectors
+=== Mini-DIN Connectors
 
 Mini-DIN connectors are smaller versions of the DIN connectors and are 9.5mm in diameter. A major difference between DIN and Mini-DIN connectors is that Mini-DIN connectors cannot be mated with any of different-number-of-pins Mini-DIN connectors.
 
@@ -217,14 +217,14 @@ M8/M12 connectors have different _codings_. Each coding is a particular pin arra
 .Common codings for M8/M12 circular connectors. Image from https://www.te.com/content/dam/te-com/documents/industrial-automation-and-control/global/m8m12_product_presentation.pdf.
 image::m8-m12-connector-codings-te-connectivity.png[width=700px]
 
-Common pin counts:
+Common pin counts (larger pin counts are only available in the larger diameter connector):
 
 * 4 (M8, M12)
 * 5 (M12, sometimes M8)
 * 8 (M12)
 * 12 (M12)
 
-Some of the panel mount M12 connectors have a M16mm panel mount thead, others have a PG9 (see link:https://en.wikipedia.org/wiki/Panzergewinde[https://en.wikipedia.org/wiki/Panzergewinde]) thread.
+Some of the panel mount M12 connectors have a M16 (16mm) panel mount thead, others have a PG9 (see link:https://en.wikipedia.org/wiki/Panzergewinde[https://en.wikipedia.org/wiki/Panzergewinde]) thread.
 
 ==== Inline Connectors
 
@@ -239,7 +239,7 @@ image::y-style-m12-splitter-phoenix-contact-1054338.jpg[width=300px]
 
 ==== Field Installable Connectors
 
-Some M8/M12 connectors are stated as _field installable_.
+Some M8/M12 connectors are _field installable_. This is when the connection to the wire is done via terminal block style screw cages (or similar) on the backside of the connector. No crimping tool or soldering is required, hence they are able to be made on the fly in the "field".
 
 == IDC Connectors
 
