@@ -49,59 +49,18 @@ image::can-bus-bit-rate-vs-bus-length.png[width=500px]
 
 A value stem:[5ns/m] is typically used for the propagation time of the CAN bus signal down the twisted-pair cable when calculating maximum baud rates and/or cable lengths. A table of common distances/transmission rates is shown below. These cable lengths are for the cable _trunk_, and not for _stubs_.
 
-++++
-<table>
-  <thead>
-    <tr>
-      <th>Speed</th>
-      <th>Distance</th>
-      <th>Comment</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1MBit/s</td>
-      <td>25m</td>
-      <td></td>
-    </tr>
-    <tr >
-      <td>800kBit/s</td>
-      <td>50m</td>
-      <td></td>
-    </tr>
-    <tr >
-      <td>500kBit/s</td>
-      <td>100m</td>
-      <td></td>
-    </tr>
-    <tr >
-      <td>250kBit/s</td>
-      <td>250m</td>
-      <td>Used by the J1939 standard.</td>
-    </tr>
-    <tr >
-      <td>125kBit/s</td>
-      <td>500m</td>
-      <td>Default speed for CANopen.</td>
-    </tr>
-    <tr>
-      <td>50kBit/s</td>
-      <td>1000m</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>20kBit/s</td>
-      <td>2500m</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>10kBit/s</td>
-      <td>5000m</td>
-      <td>Used by the SAE J1850 standard.</td>
-    </tr>
-  </tbody>
-</table>
-++++
+|===
+| Speed | Distance | Comment
+
+| 1MBit/s   | 25m   |
+| 800kBit/s | 50m   |
+| 500kBit/s | 100m  |
+| 250kBit/s | 250m  | Used by the J1939 standard.
+| 125kBit/s | 500m  | Default speed for CANopen.
+| 50kBit/s  | 1000m | 
+| 20kBit/s  | 2500m |
+| 10kBit/s  | 5000m | Used by the SAE J1850 standard.
+|===
 
 ### Termination Resistors
 
@@ -157,11 +116,9 @@ This bit stuffing prevents serious clock drift when there a long sequences of ei
 
 ## Frame Types
 
-Data Frames: Used to transmit a data payload of up to 8 bytes. Very similar frame structure to a remote frame.
-
-Remote Frames: Used to request data. Contains no data payload itself. Very similar frame structure to a data frame.
-
-Error Frames: Transmitted when a node encounters an error during communication. An error frame contains only an error flag and an error delimiter.
+* **Data Frames**: Used to transmit a data payload of up to 8 bytes. Very similar frame structure to a remote frame.
+* **Remote Frames**: Used to request data. Contains no data payload itself. Very similar frame structure to a data frame.
+* **Error Frames**: Transmitted when a node encounters an error during communication. An error frame contains only an error flag and an error delimiter.
 
 ## Frame Structure
 
