@@ -22,13 +22,12 @@ If you are looking for help controlling a SocketCAN interface from C software, s
 
 A alternative communications protocol used in similar applications is the LIN protocol.
 
-## Physical Layer
 
-### Voltages
+== CAN Bus Voltages
 
 The CAN bus transmits 1 and 0's across a differential pair of wires. A recessive logic 1 is when the driver is not "driving" the bus, and therefore there should be almost no voltage differential across `CAN_H` and `CAN_L`. A dominant logic 0 bit is when the transmitting node drives `CAN_H` high and `CAN_L` low.
 
-### Bit Rate And Transmission Distances
+== Bit Rate And Transmission Distances
 
 The following equation can be used as a rule-of-thumb to calculate the maximum transmission speed for distances larger than 50m.
 
@@ -52,17 +51,39 @@ A value stem:[5ns/m] is typically used for the propagation time of the CAN bus s
 |===
 | Speed | Distance | Comment
 
-| 1MBit/s   | 25m   |
-| 800kBit/s | 50m   |
-| 500kBit/s | 100m  |
-| 250kBit/s | 250m  | Used by the J1939 standard.
-| 125kBit/s | 500m  | Default speed for CANopen.
-| 50kBit/s  | 1000m | 
-| 20kBit/s  | 2500m |
-| 10kBit/s  | 5000m | Used by the SAE J1850 standard.
+| 10kb/s  | 5000m | Used by the SAE J1850 standard.
+| 20kb/s  | 2500m |
+| 50kb/s  | 1000m | 
+| 125kb/s | 500m  | Default speed for CANopen.
+| 250kb/s | 250m  | Used by the J1939 standard.
+| 500kb/s | 100m  |
+| 800kb/s | 50m   |
+| 1Mb/s   | 25m   |
 |===
 
-### Termination Resistors
+CAN bus lengths are restricted because all nodes need to be able to sample the bus (and read back a correct result) during the same bit time. They need to do this for two reasons:
+
+* **Bus arbitration**: Nodes need to know if they have lost arbitration of the bus (another node has sent a dominant value whilst they have sent a recessive value).
+* **Acknowledge bit**: The transmitter needs to read the acknowledge value back from the receiver within the period for the acknowledge bit in every frame.
+
+Propagation delays due to long buses will eventually result in nodes sampling the wrong bit, hence limiting the maximum bus length.
+
+=== Stubs
+
+There is a significant amount of contradictory information online on what CAN stub lengths are permissible. The various opinions are:
+
+* TI's SLLA270 states to minimize reflections, lengths of stubs should not exceed 1/3 of the critical length of a bus<<bib-ti-slla270-can-phy-layer-req>>. The critical length is determined by the transition time of bits on the bus (which is determined by the driver), and the speed at which signals propagate down the bus.
+* Bueno Electric's _Maximum Cable Length For a CAN Bus_ page<<bib-bueno-electric-max-cable-len>> gives a maximum cable stub length of 0.3mm for all speeds from 50kb/s to 1Mb/s.
+* and OnSemi<<bib-on-semi-topo-high-speed-can>> give the following rule:
++
+[stem]
+++++
+L_{STUB_MAX} = \frac{T_{PROP_SEG}}{50 \cdot T_{PROP(BUS)}}
+++++
+
+Some CAN bus drivers provide pins so that you can adjust their slew rate.
+
+== Termination Resistors
 
 For high-speed transmission on the CAN bus, **_termination resistors_ are required between the `CAN_H` and `CAN_L` wires at both ends of the cable**. However, make sure to only add them at the ends of the cable, **any CAN devices connected partway along the bus should not have termination resistors**. For a CAN bus in which devices may be arbitrarily connected and disconnected, it is common practise to add _switchable termination_, which can be connected manually with a typical mechanical switch or automatically controlled by firmware/software using an MOSFET-based switch or similar. Although required by the standard, termination resistors are not typically required for the CAN bus to function at slow speeds over small distances.
 
@@ -75,11 +96,11 @@ f_{corner} = \frac{1}{2\pi \cdot R_{term/2} \cdot C_{split}}
 \end{align}
 ++++
 
-### Isolation
+== Isolation
 
 When CAN bus receivers are incorporated onto PCBs with microcontrollers and other digital/analogue circuitry, it is common practise to isolate the CAN circuitry so that noise and voltage spikes from the CAN bus do not damage the circuitry.
 
-### Connectors
+== Connectors
 
 The CiA DS-102 standard defines CAN bus pin assignments for the ubiquitous serial DE-9 connector:
 
@@ -88,25 +109,44 @@ image::can-bus-cia-ds-102-9-pin-sub-d-connector-pin-assignment.png[width=500px]
 
 This pin layout is also used for other CAN standards such as CANopen.
 
-## Arbitration
+== Arbitration
 
 **The CAN network uses priority-based message arbitration**. Message arbitration is required because the CAN networks supports a multi-master bus configuration (i.e. no one master node controls all communication, any node is freely able to attempt to transmit at any time). Arbitration works like such:
 
 The drivers to the CAN line(s) are open-drain. This means that if a node writes a 0 (dominant), it will over-write a 1 (recessive). This is also called a _wired AND_ configuration.
 
+TIP: _Wired AND_ is a good way to allow physical arbitration to take place when multiple nodes to attempt to communicate at the same time. The link:/electronics/communication-protocols/i2c-communication-protocol/[I2C bus] is another protocol that uses this technique.
+
 * Both nodes starts to transmit, but each message has a different message ID. Both nodes also monitor the state of the bus.
 * At some point in time, because of the different message IDs, one node will try to transmit a 0 (dominant) while the other will try to transmit a 1 (recessive).
-* The node transmitting the 0 will detect the bus as 0, all will continue transmitting
+* The node transmitting the 0 will detect the bus as 0, and will continue transmitting.
 * The node transmitting the 1 will detect the bus as 0, indicating that it has lost control (remember a 1 is recessive, and get's "overwritten" by a 1 due to the open-drain drive). This node will back-off, stop transmitting, and try again later.
-* Therefore CAN messages with lower numbered identifiers will therefore take priority over those with higher identifiers. 
 
-## Receiver Sampling Points
+After understanding the arbitration process explained above, it's clear that **CAN messages with lower numbered identifiers will therefore take priority over those with higher identifiers**.
+
+== Receiver Sampling Points
 
 The main limiting factor on the total bus length at a specific baud rate is the stabilization time for a dominant to recessive bit transmission on the bus. Because it is not driven, the termination resistors play the role of bringing the differential voltage back to the recessive state. The time it takes for the resistors to do this is **primarily dependent on the amount of capacitance on the bus**. This in term determines the maximum length of the bus, as adding additional twisted pair cable increases the capacitance.
 
 Most receivers sample the bit between 75% and 87.5% of the time between the start of one bit and the beginning of the next bit<<bib-elektromotus-can-bus-topology-recommendations>>. Earlier sampling points decreases the sensitivity to oscillator tolerances between the different nodes of the CAN bus, whilst a later sampling point allows for a longer signal propagation time and hence longer bus length.
 
-## Encoding
+== Synchronization
+
+=== Hard Synchronization
+
+_Hard synchronization_ occurs on the first recessive-to-dominant transition (the _start-of-frame_, or SOF) when the bus is idle<<bib-microchip-can-mod-bit-timing>>.
+
+=== Resynchronization
+
+_Resynchronization_ is done throughout a CAN frame to maintain the initial synchronization that was done with the hard synchronization. Local oscillator drift (frequency differences between the oscillators driving each node) will cause the bit timing between each node to drift. Resynchronization aims to periodically correct for this.
+
+Resynchronization is done on the recessive-to-dominant transitions that occur during a frame.
+
+TIP: Remember that the dominant state is driven, hence the recessive-to-dominant transition is always going to be sharper then the dominant-to-recessive transition, hence why the former edges are used for resynchronization. 
+
+TODO: Add more info.
+
+== Encoding
 
 The CAN bus uses _bit-stuffed NRZ encoding_.
 
@@ -145,7 +185,9 @@ _**0-8 bytes Data:**_ This is the data payload. Up to 8 bytes can be sent in a s
 
 _**16-bit CRC:**_ The Cyclic Redundancy Check (CRC) is used to detect errors in the packet. It consists of a 15-bit CRC value followed by a delimiter.
 
-_**2-bit ACK:**_ Based on the value of the CRC, the receiver uses first acknowledge bit to either positively or negatively acknowledge the message. The 2nd bit is a delimiter.
+_**2-bit ACK:**_ The sender sends a recessive value for the first acknowledge bit of the acknowledge field (called the _ACK slot_). The receiver(s) drives the first acknowledge bit to to the dominant state if it wants to acknowledge the bit. The 2nd bit of the acknowledge field is the ACK delimiter and is driven recessive by the transmitter.
+
+TIP: In the situation when there are multiple receivers, the acknowledge bit will be driven to the dominant by state by 1 or more of the receivers if they acknowledge. 
 
 _**7-bit EOF:**_ The End Of Frame is marked with 7 recessive bits.
 
@@ -300,7 +342,7 @@ DeviceNet supports the following baud rates:
 
 DeviceNet cable typically consists of two shielded, twisted pairs. One pair has a larger wire diameter for carrying power, and the other pair with a smaller wire diameter is for the data. 
 
-## CAN Bus Repeaters
+== CAN Bus Repeaters
 
 **CAN bus repeaters are devices that allow you to extend the length of a CAN bus or make a fixed-length bus more resilient to external noise**. They do this by _regenerating_ (a.k.a. _buffering_) the CAN bus signal. They typically pass-through signals from one side to the other very quickly (a low _propagation delay_) and therefore are typically invisible to the other nodes on the CAN bus.
 
@@ -314,7 +356,7 @@ On Semiconductor manufactures the link:https://docs.rs-online.com/c9be/0900766b8
 .Application diagram from the AMIS-42770 IC's datasheet which shows how it can be configured to act as a CAN bus repeater.
 image::amis-42770-on-semiconductor-can-bus-repeater-ic.png[width=600px]
 
-### Examples
+=== Examples
 
 **CAN Bus Repeater CRep S4 by EMS Wuensche**
 
@@ -337,10 +379,12 @@ image::reference-ti-can-repeater-design-tida-01487.png[width=700px]
 [bibliography]
 == References
 
-* [[[bib-ti-importance-of-termination-resistors, 1]]]: Retrieved 2020-06-10, from https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers
-
-* [[[bib-elektromotus-can-bus-topology-recommendations, 2]]]: Retrieved 2020-06-03, from [https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf.
-
-* [[[bib-cia-can-physical-layer, 3]]]: Retrieved 2021-05-06, from http://www.inp.nsk.su/~kozak/canbus/canphy.pdf.
-
-* [[[bib-design-reuse-embedded-can-bus-controller, 4]]]: Retrieved 2021-05-06, from https://www.design-reuse-embedded.com/product/auto_canmodule-iii_01.
+* [[[bib-ti-importance-of-termination-resistors, 1]]]: Griffith, John (2016, Jul 14). _Why are termination networks in CAN transceivers so important?_. Texas Instruments. Retrieved 2020-06-10, from https://e2e.ti.com/blogs_/b/industrial_strength/archive/2016/07/14/the-importance-of-termination-networks-in-can-transceivers.
+* [[[bib-elektromotus-can-bus-topology-recommendations, 2]]]: Elektromotus. _Elektromotus CAN bus topology recommendations
+v0.2 rc2_. Retrieved 2020-06-03, from https://emusbms.com/files/bms/docs/Elektromotus_CAN_bus_recommendations_v0.2_rc3.pdf.
+* [[[bib-cia-can-physical-layer, 3]]]: CiA. _CAN Physical Layer_. Retrieved 2021-05-06, from http://www.inp.nsk.su/~kozak/canbus/canphy.pdf.
+* [[[bib-design-reuse-embedded-can-bus-controller, 4]]]: Design & Reuse. _CAN Bus Controller with Message Filter (Mailbox concept)_. Retrieved 2021-05-06, from https://www.design-reuse-embedded.com/product/auto_canmodule-iii_01.
+* [[[bib-ti-slla270-can-phy-layer-req, 5]]] Corrigan, Steve (2008). _Application Report SLLA270: Controller Area Network Physical Layer Requirements_. Texas Instruments. Retrieved 2021-10-11 from https://www.ti.com/lit/an/slla270/slla270.pdf.
+* [[[bib-bueno-electric-max-cable-len, 6]]] Bueno Electric. _Maximum Cable Length For a CAN Bus_. Retrieved 20221-10-11, from https://www.buenoptic.net/encyclopedia/item/537-maximum-cable-length-for-a-can-bus.html.
+* [[[bib-on-semi-topo-high-speed-can, 7]]] OnSemi (2009, Jan). _AND8376/D:  AMIS-30660/42000 - Topology Aspects of a High-Speed CAN Bus_. Retrieved 2021-10-11, from https://www.onsemi.com/pub/collateral/and8376-d.pdf.
+* [[[bib-microchip-can-mod-bit-timing, 8]]]. Richards, Pat (2001). _AN754: Understanding Microchip’s CAN Module Bit Timing_. Microchip. Retrieved 2021-10-11, from http://ww1.microchip.com/downloads/en/appnotes/00754.pdf.
