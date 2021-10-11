@@ -17,3 +17,5 @@ type: "post"
 * Added info on link:/electronics/components/connectors/#_barrier_strips[barrier strips to the Connectors page].
 +
 image::/posts/2021/10-31-october-2021-updates/molex-0387700104-barrier-strip-photo.png[width=300px]
+
+* Add info on link:/electronics/communication-protocols/can-protocol/#_can_bit_timing[CAN bit timing].
