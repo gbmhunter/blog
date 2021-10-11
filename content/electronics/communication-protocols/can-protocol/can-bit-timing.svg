@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 3308 709" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1.4,0,0,1,5.68434e-14,-354.331)">
+        <path d="M337.458,826.772L590.551,826.772L590.551,590.551L337.458,590.551L295.276,708.661L337.458,826.772Z" style="fill:rgb(163,255,191);stroke:black;stroke-width:3.42px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,161.451,-10.0482)">
+        <text x="337.076px" y="378.064px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SYNC_SEG</text>
+    </g>
+    <g transform="matrix(1,0,0,1,118.11,-354.331)">
+        <rect x="708.661" y="590.551" width="472.441" height="236.22" style="fill:rgb(193,252,255);stroke:black;stroke-width:4.17px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,586.648,-11.9227)">
+        <text x="337.076px" y="378.064px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PROP_SEG</text>
+    </g>
+    <g transform="matrix(1.28571,0,0,1,-219.348,-354.331)">
+        <rect x="1181.1" y="590.551" width="826.772" height="236.22" style="fill:rgb(255,253,219);stroke:black;stroke-width:3.62px;"/>
+    </g>
+    <g transform="matrix(0.572499,0,0,1,1685.14,-354.331)">
+        <path d="M1181.1,590.551L1181.1,826.772L2007.87,826.772L2111.03,708.661L2007.87,590.551L1181.1,590.551Z" style="fill:rgb(237,211,255);stroke:black;stroke-width:5.11px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,1317.03,-10.0482)">
+        <text x="337.076px" y="378.064px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PHASE_SEG_1</text>
+    </g>
+    <g transform="matrix(1,0,0,1,2089.17,-10.0482)">
+        <text x="337.076px" y="378.064px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PHASE_SEG_2</text>
+    </g>
+    <g transform="matrix(1,0,0,1,118.11,-354.331)">
+        <path d="M295.276,708.661L236.22,826.772L0,826.772L0,590.551L236.22,590.551L295.276,708.661Z" style="fill:rgb(231,231,231);stroke:black;stroke-width:4.17px;"/>
+    </g>
+    <g transform="matrix(-1,0,0,1,3188.98,-354.331)">
+        <path d="M295.276,708.661L236.22,826.772L0,826.772L0,590.551L236.22,590.551L295.276,708.661Z" style="fill:rgb(231,231,231);stroke:black;stroke-width:4.17px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,118.11,-354.331)">
+        <path d="M295.276,472.441L295.276,944.882" style="fill:none;stroke:black;stroke-width:4.17px;stroke-linecap:butt;stroke-dasharray:4.17,4.17,4.17,0;"/>
+    </g>
+    <g transform="matrix(-1,0,0,1,3188.98,-354.331)">
+        <path d="M295.276,472.441L295.276,944.882" style="fill:none;stroke:black;stroke-width:4.17px;stroke-linecap:butt;stroke-dasharray:4.17,4.17,4.17,0;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,-165.756,-31.6561)">
+        <text x="337.076px" y="378.064px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PREV</text>
+        <text x="366.263px" y="429.7px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">BIT</text>
+    </g>
+    <g transform="matrix(1,0,0,1,2652.17,-33.0897)">
+        <text x="338.48px" y="378.064px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">NEXT</text>
+        <text x="366.263px" y="429.7px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">BIT</text>
+    </g>
+</svg>

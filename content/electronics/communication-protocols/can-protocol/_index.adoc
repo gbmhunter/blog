@@ -124,7 +124,13 @@ TIP: _Wired AND_ is a good way to allow physical arbitration to take place when 
 
 After understanding the arbitration process explained above, it's clear that **CAN messages with lower numbered identifiers will therefore take priority over those with higher identifiers**.
 
-== Receiver Sampling Points
+== CAN Bit Timing
+
+<<can-bit-timing>> shows the timing of a single CAN bit.
+
+[[can-bit-timing]]
+.Timing diagram of a single CAN bit.
+image::can-bit-timing.svg[width=900px]
 
 The main limiting factor on the total bus length at a specific baud rate is the stabilization time for a dominant to recessive bit transmission on the bus. Because it is not driven, the termination resistors play the role of bringing the differential voltage back to the recessive state. The time it takes for the resistors to do this is **primarily dependent on the amount of capacitance on the bus**. This in term determines the maximum length of the bus, as adding additional twisted pair cable increases the capacitance.
 
@@ -197,7 +203,7 @@ image::st-can-frame-incorrect-acronym-ide.png[width=500px]
 **Extended Data/Remote Frame (29-bit Identifier)**
 
 .The extended CAN frame format for both data and remote frames.
-image::can-extended-frame-format-data-remote.png[width=1111px]
+image::can-extended-frame-format-data-remote.png[width=800px]
 
 The extended frame is the same as the above standard frame, except for the differences described below:
 
