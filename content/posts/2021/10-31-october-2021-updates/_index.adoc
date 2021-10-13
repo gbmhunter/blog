@@ -21,3 +21,5 @@ image::/posts/2021/10-31-october-2021-updates/molex-0387700104-barrier-strip-pho
 * Add info on link:/electronics/communication-protocols/can-protocol/#_can_bit_timing[CAN bit timing].
 
 * More info added on the TSSOP component package.
+
+* Added info on the PowerPAK SO-8 component package.
