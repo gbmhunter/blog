@@ -5,7 +5,7 @@ sectionPagesMenu: main
 pluralizelisttitles: 'false'
 pygmentsCodeFences: 'true'
 disqusShortname: blog-mbedded-ninja
-googleAnalytics: G-0WDEVQLPS2 # Used to be UA-92834105-2 (universal ID)
+#googleAnalytics: G-0WDEVQLPS2 # Used to be UA-92834105-2 (universal ID)
 preserveTaxonomyNames: 'true'
 enableGitInfo: false
 timeout: 30000
