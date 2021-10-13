@@ -1,20 +1,40 @@
 |===
-| Name | SC-89-3
+| Name
+| SC-89-3
+
 | Synonyms
 a|
 * 463C-03 (On Semiconductor)<<bib-on-semi-sc-89-3>>
 * SOD-490
-| Similar To | SC-89-6
-| Mounting | SMD
-| Pin Count | 3
-| Pitch | 1.00mm<<bib-on-semi-sc-89-3>>
-| Solderability | Reflow is most suitable. Possible to hand solder/reflow as long as experienced.
-| Thermal Resistance | 
-| Package LxWxH | 1.60x1.60x0.58mm<<bib-on-semi-sc-89-3>>
-| Typical PCB Land Area | 2.49mm²<<bib-on-semi-sc-89-3>>
+
+| Similar To
+| SC-89-6
+
+| Mounting
+| SMD
+
+| Pin Count
+| 3
+
+| Pitch
+| 1.00mm<<bib-on-semi-sc-89-3>>
+
+| Solderability
+| Reflow is most suitable. Possible to hand solder/reflow as long as experienced.
+
+| Thermal Resistance
+| 
+
+| Package LxWxH
+| 1.60x1.60x0.58mm<<bib-on-semi-sc-89-3>>
+
+| Typical PCB Land Area
+| 2.49mm²<<bib-on-semi-sc-89-3>>
+
 | 3D Models
 a|
 * link:https://www.3dcontentcentral.com/download-model.aspx?catalogid=171&id=363411[3dContentCentral]
+
 | Common Uses
 a| n/a
 |===
