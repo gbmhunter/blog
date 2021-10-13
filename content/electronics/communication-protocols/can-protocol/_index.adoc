@@ -146,11 +146,17 @@ _Hard synchronization_ occurs on the first recessive-to-dominant transition (the
 
 _Resynchronization_ is done throughout a CAN frame to maintain the initial synchronization that was done with the hard synchronization. Local oscillator drift (frequency differences between the oscillators driving each node) will cause the bit timing between each node to drift. Resynchronization aims to periodically correct for this.
 
-Resynchronization is done on the recessive-to-dominant transitions that occur during a frame.
+Resynchronization is done on the recessive-to-dominant transitions that occur during a frame. The actual measured transition compared to where it is expected to occur, which is during the `SYNC_SEG` (see <<can-bit-timing>> for a diagram illustrating these segments). Depending on whether the actual transitions occurs before, during or after the `SYNC_SEG`, time is either added to the `PHASE_SEG_1` segment or subtracted from the `PHASE_SEG_2` segment. The following rules are used:
 
-TIP: Remember that the dominant state is driven, hence the recessive-to-dominant transition is always going to be sharper then the dominant-to-recessive transition, hence why the former edges are used for resynchronization. 
+* Transition occurs before `SYNC_SEG`: `TQ` is subtracted from `PHASE_SEG_2`.
+* Transition occurs during `SYNC_SEG`: No adjustment.
+* Transition occurs after `SYNC_SEG`: `TQ` is added to `PHASE_SEG_1`.
 
-TODO: Add more info.
+The amount of `TQ` added or subtracted depends on the _synchronization jump width_ (SJW).
+
+TIP: Remember that the dominant state is driven, hence the recessive-to-dominant transition is always going to be sharper then the dominant-to-recessive transition, hence why the former edges are used for resynchronization.
+
+A transmitting node will not resynchronize on a positive phase error. This means that a transmitting node will not resynchronize due to propagation delays of it's own message. Instead, it is left up to the receivers to resynchronize.
 
 == Encoding
 
