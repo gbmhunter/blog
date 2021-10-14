@@ -743,7 +743,18 @@ Instrumentation amplifiers are analog voltage amplifier circuits that, although 
 * **TLE202**: Texas Instruments family of "high-speed low-power" precision operational amplifiers. Belong to the _Excalibur_ family of TI op-amps which uses "isolated vertical PNP transistors" to give unity-gain bandwidth and slew rate improvements.
 * **TLV**: Texas Instruments family of op-amps.
 
-## The Different Types Of Gain, Explained
+|===
+| Manf. Part Num. | Manf.  | Vsupply   | SR      | Comments
+
+| NCS2001         | OnSemi | 0.8-7.0V  |         | Extremely low-voltage operation.
+| NCS2003         | OnSemi | 1.8V      |         |
+| NCS2007         | OnSemi | 2.7-36V   | 2.8V/us | Large operating voltage range.
+
+|===
+
+* Vsupply is voltage from Vdd/Vcc to Vss/Vee.
+
+== The Different Types Of Gain, Explained
 
 Open-loop gain stem:[A_V] (sometimes written as stem:[A_{OL}]) is the gain of the op-amp without any feedback.
 
