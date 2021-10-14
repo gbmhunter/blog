@@ -330,6 +330,9 @@ div.content table {
     word-break: normal;
 
     border-collapse: collapse;
+
+    /* Add spacing at bottom before next element in page content */
+    margin-bottom: 1em;
 }
 
 div.content {
