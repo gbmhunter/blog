@@ -126,9 +126,9 @@ After understanding the arbitration process explained above, it's clear that **C
 
 == CAN Bit Timing
 
-<<can-bit-timing>> shows the timing of a single CAN bit. **A single CAN bit is broken down into different time segments**. Each time segment is defined by an integer number of _time quanta_ (TQ). Time quanta is determined by the clock provided to the CAN transceiver. This CAN clock is usually provided from a faster system clock by dividing by a programmable pre-scalar. There is normally 8 or more TQ per CAN bit.
+<<can-bit-timing>> shows the timing of a single CAN bit. **A single CAN bit is broken down into different time segments**. Each time segment is defined by an integer number of _time quanta_ (stem:[t_q]). Time quanta is determined by the clock provided to the CAN transceiver. This CAN clock is usually provided from a faster system clock by dividing by a programmable pre-scalar. The minimum is 5, but there is usually 8 or more stem:[t_q] per CAN bit. The _time quanta_ is the smallest amount of time that the CAN transceiver can adjust it's timing by (i.e. it's resolution).
 
-. `SYNC_SEG`: This is always 1TQ. The transceiver expects the bit transitions to occurs during this time period. If they don't, the transceiver performs <<_resynchronization, resynchronization>> to re-align itself.
+. `SYNC_SEG`: This is always stem:[t_q]. The transceiver expects the bit transitions to occurs during this time period. If they don't, the transceiver performs <<_resynchronization, resynchronization>> to re-align itself.
 . `PROP_SEG`: This is the time segment of the bit in which it is expected that the transition will finish propagating to all nodes. It is the _two way propagation_ that matters, i.e. the total time for the transmitted bit to propagate to all nodes and then the nodes response to propagate back. This has to include the propagation time of the signal on the wire (5ns/m is a good approximation), plus propagation delay through the CAN transceivers.
 . `PHASE_SEG_1`: Phase segment 1.
 . `SAMPLE_POINT`: This is the point in time in-between `PHASE_SEG_1` and `PHASE_SEG_2` at which the transceiver samples the value on the bus (recessive or dominant).
@@ -138,11 +138,29 @@ After understanding the arbitration process explained above, it's clear that **C
 .Timing diagram of a single CAN bit.
 image::can-bit-timing.svg[width=900px]
 
-Only one sample point is shown in <<can-bit-timing>>, however **some transceivers support sampling the bus three times to improve noise resiliency** -- once at the sample point as shown in the diagram, once at 1TQ before this point and once 1TQ after this point. Majority voting is then used to determine the state of the bus.
+Only one sample point is shown in <<can-bit-timing>>, however **some transceivers support sampling the bus three times to improve noise resiliency** -- once at the sample point as shown in the diagram, once at stem:[1t_q] before this point and once 1TQ after this point. Majority voting is then used to determine the state of the bus.
 
-The main limiting factor on the total bus length at a specific baud rate is the stabilization time for a dominant to recessive bit transmission on the bus. Because it is not driven, the termination resistors play the role of bringing the differential voltage back to the recessive state. The time it takes for the resistors to do this is **primarily dependent on the amount of capacitance on the bus**. This in term determines the maximum length of the bus, as adding additional twisted pair cable increases the capacitance.
+[width=70%]
+|===
+| Segment     |  Duration
+
+| SYNC_SEG    | stem:[1t_q]
+| PROP_SEG    | stem:[(1..8)t_q]
+| PHASE_SEG_1 | stem:[(1..8)t_q]
+| PHASE_SEG2  | stem:[max(IPT, t_{PHASE\_SEG\_1})]
+|===
+
+IPT is the _information processing time_.
 
 Most CAN transceivers have the lengths of the bit segments configured so that they sample the bit between 75% and 87.5% of the time between the start of one bit and the beginning of the next bit<<bib-elektromotus-can-bus-topology-recommendations>>.
+
+Because any CAN node may sample the bus as soon as `PROP_SEG` is over, the two way propagation of the signal between any two nodes on the bus must occur before the end of `PROP_SEG`. <<can-bit-timing-prop-delay-between-two-nodes>> illustrates this between two nodes, one which is the transmitter and another which is the receiver. The signal has to propagate back from the receiver to the transmitter within this time because the transmitter needs to read back values from the bus during arbitration and the acknowledge bit.
+
+[[can-bit-timing-prop-delay-between-two-nodes]]
+.Diagram showing why the two-way propagation of the bit must occur between any two nodes before the end of the `PROP_SEG`.
+image::can-bit-timing-prop-delay-between-two-nodes.svg[width=800px]
+
+The main limiting factor on the total bus length at a specific baud rate is the stabilization time for a dominant to recessive bit transmission on the bus. Because it is not driven, the termination resistors play the role of bringing the differential voltage back to the recessive state. The time it takes for the resistors to do this is **primarily dependent on the amount of capacitance on the bus**. This in term determines the maximum length of the bus, as adding additional twisted pair cable increases the capacitance.
 
 == Synchronization
 
