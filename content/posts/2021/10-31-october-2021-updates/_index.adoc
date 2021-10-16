@@ -23,3 +23,5 @@ image::/posts/2021/10-31-october-2021-updates/molex-0387700104-barrier-strip-pho
 * More info added on the TSSOP component package.
 
 * Added info on the PowerPAK SO-8 component package.
+
+* Merged the "Logic Gates" and "Metastability" child pages into the parent "Digital Logic" page.
