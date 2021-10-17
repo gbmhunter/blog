@@ -25,3 +25,5 @@ image::/posts/2021/10-31-october-2021-updates/molex-0387700104-barrier-strip-pho
 * Added info on the PowerPAK SO-8 component package.
 
 * Merged the "Logic Gates" and "Metastability" child pages into the parent "Digital Logic" page.
+
+* Added a schematic symbol and internal diagram for the D flipflop.

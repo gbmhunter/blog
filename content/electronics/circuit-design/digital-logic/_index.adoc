@@ -107,6 +107,12 @@ image::sr-latch-from-nor-gates-states-red-black.svg[width=800px]
 
 ==== D Flip-Flops
 
+.The schematic symbol for a D-type flipflop.
+image::d-flipflop-symbol.svg[width=300px]
+
+.How a D flipflop is made from discrete NAND gates. The inverting gate can be replaced by a NAND with both inputs connected to form an all-NAND implementation.
+image::d-flipflop-internals.svg[width=800px]
+
 ===== Triggering
 
 Edge-triggered D flip-flops can be either positive or negative edge triggered. Edge-triggered flip-flops are shown by a triangle at the clock input, and negative edge-triggered ones have an additional bubble. However, positive-edge triggered is much more common, and standard practice is to make a negative edge triggered flip-flop by adding your own inverting gate on the clock signal.
