@@ -8,13 +8,11 @@ title: "Digital Logic"
 type: "page"
 ---
 
-## Overview
+== Overview
 
 Digital logic is the study and application of the fundamentals in digital (binary) electronics, e.g. gates, flip-flops, state machines.
 
 == Logic Gates
-
-When sourcing logic IC's, note that the standard prefix used by many manufactures is "74".
 
 Logic gate inputs are normally labelled as a single letter, starting with A (e.g. a three input AND gate would have inputs A, B and C). The output is normally labelled Y, unless you are using a flip-flop or latch, and the output is labelled Q.
 
@@ -52,9 +50,9 @@ image::or-gate-symbol.svg[width=300px]
 | 1 | 1 | 1
 |===
 
-=== What Are Logic Gates Built From?
+== Logic Families
 
-==== Resistor-Transistor Logic (RTL)
+=== Resistor-Transistor Logic (RTL)
 
 _Resistor-transistor logic_ (RTL) is one of the most basic families of digital logic. It uses resistors and BJTs to build the basic gates required for digital logic. Now days it is completely superseded by logic families such transistor-transistor logic (TTL) and CMOS. However, it serves as a great place to introduces readers on how logic gates are built from discrete components.
 
@@ -76,28 +74,69 @@ image::rtl-logic-inverter.svg[width=400px]
 .Schematic of a RTL NOR gate. When both inputs are `LOW`, neither transistor is on and the output is pulled `HIGH` by stem:[R_C]. Any `HIGH` input will turn on a transistor, which will drive the output `LOW`. 
 image::rtl-logic-nor-gate.svg[width=400px]
 
-==== Diode-Transistor Logic (DTL)
+=== Diode-Transistor Logic (DTL)
 
 TODO: Add info here.
 
-==== Transistor-Transistor Logic (TTL)
+=== Transistor-Transistor Logic (TTL)
 
 The inputs of TTL logic are the emitters of BJTs.
 
-==== CMOS
+=== CMOS
 
-TODO: Add info here.
+Represented by `AC`/`ACT` in part numbers, or `HC`/`HCT` for high-speed equivalents.
 
-=== Flip-Flops
+=== Comparison
 
-==== SR Latches
+|===
+| Logic Subfamily | Description                                  | Comment
+
+| AC              | CMOS.                                        |
+| CVSL            | Cascode voltage switch logic.                | 
+| HCT             | High-speed CMOS with TTL-compatible inputs.  | Only works with a +5V power supply. Interestingly, still slower than original TTL.
+| IIL             | Integrated injection logic.                  |
+| LS              | Low-power Schottky.                          |
+| PTL             | Pass transistor logic.                       |
+|===
+
+== Logic Gate Part Numbers
+
+Texas Instruments introduced the `SN74xx` series of logic ICs in the 1960s, using TTL logic. These parts became very popular and many other manufactures began making pin-compatible parts. They kept the `74xx` section of the part number to aid identification, and hence the `74xx` is somewhat standardized across the industry.
+
+The 5400 series is the military rated version of the 7400 series. The 4000 series is the newer CMOS alternative to the 7400 TTL logic.
+
+.Part number descriptions for the popular TTL 74xx family of ICs.
+|===
+| Part Number | Description                 | Num. Units | Input           | Output
+
+| 74x00       | Quad 2-input NAND gate      | 4          | Normal          | Push-pull
+| 74x01       | Quad 2-input NAND gate      | 4          | Normal          | Open-collector
+| 74x02       | Quad 2-input NOR gate       | 4          | Normal          | Push-pull
+| 74x03       | Quad 2-input NAND gate      | 4          | Normal          | Open-collector
+| 74x04       | Hex inverter gate           | 6          | Normal          | Push-pull
+| 74x05       | Hex inverter gate           | 6          | Normal          | Open-collector
+| 74x06       | Hex inverter gate           | 6          | Normal          | Open-collector, 30V/40mA
+| 74x07       | Hex buffer gate             | 6          | Normal          | Open-collector, 30V/40mA
+| 74x08       | Quad 2-input AND gate       | 4          | Normal          | Push-pull
+| 74x09       | Quad 2-input AND gate       | 4          | Normal          | Open-collector
+| 74x10       | Triple 3-input NAND gate    | 3          | Normal          | Push-pull
+| 74x11       | Triple 3-input AND gate     | 3          | Normal          | Push-pull
+| 74x12       | Triple 3-input NAND gate    | 3          | Normal          | Open-collector
+| 74x13       | Dual 4-input NAND gate      | 2          | Schmitt trigger | Push-pull
+|===
+
+The `x` is a placeholder for the logic subfamily. For example, in `74LSxx` the `LS` represent the low-power Schottky subfamily. Logic subfamilies:
+
+== Flip-Flops
+
+=== SR Latches
 
 SR latches are the most basic form of flip-form (memory element).
 
 .An SR latch made from NOR gates.
 image::sr-latch-from-nor-gates.svg[width=500px]
 
-===== How Does An SR Latch Work?
+==== How Does An SR Latch Work?
 
 . **stem:[R] is `HIGH` and stem:[S] is `LOW`:** Since stem:[R] is high, the output of the top NOR gate is `LOW`. This `LOW` feeds into the bottom NOR gate, along with stem:[S] which is also `LOW`, thus the output of the bottom NOR gate is `HIGH`. This `HIGH` feeds into the top NOR gate, which will keep the circuit in this defined state, even if stem:[R] is then brought LOW. This gives the SR latch it's memory.
 . **stem:[R] is `LOW` and stem:[S] is `HIGH`:** Because of the symmetry, the same things happens, but in reverse. stem:[Q] is `HIGH` and stem:[\bar{Q}] is `LOW`. Again, if stem:[S] goes low, the SR latch "remembers" and keeps it's outputs in the same state.
@@ -105,21 +144,26 @@ image::sr-latch-from-nor-gates.svg[width=500px]
 .(A): A SR latch in the reset state. (B): A SR latch in the set state. Red represents logical "1", black logical "0".
 image::sr-latch-from-nor-gates-states-red-black.svg[width=800px]
 
-==== D Flip-Flops
+=== D Flip-Flops
+
+A D flip-flop (a.k.a. **D**elay flip-flop) is a flip-flop which does not propagate the input to the output until a specific state or change in the clock signal.
 
 .The schematic symbol for a D-type flipflop.
 image::d-flipflop-symbol.svg[width=300px]
 
+<<d-flipflop-internals>> shows the internals of a flip-flop.
+
+[[d-flipflop-internals]]
 .How a D flipflop is made from discrete NAND gates. The inverting gate can be replaced by a NAND with both inputs connected to form an all-NAND implementation.
 image::d-flipflop-internals.svg[width=800px]
 
-===== Triggering
+==== Triggering
 
 Edge-triggered D flip-flops can be either positive or negative edge triggered. Edge-triggered flip-flops are shown by a triangle at the clock input, and negative edge-triggered ones have an additional bubble. However, positive-edge triggered is much more common, and standard practice is to make a negative edge triggered flip-flop by adding your own inverting gate on the clock signal.
 
 NOTE: Adding a inverting gate to the clock signal increasing the propagation delay for that clock input, and will have a significant impact on the operation in high-speed designs.
 
-===== Flip-flop MTBF
+==== Flip-flop MTBF
 
 [stem]
 ++++
