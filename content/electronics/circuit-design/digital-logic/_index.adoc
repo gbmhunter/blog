@@ -129,12 +129,28 @@ The `x` is a placeholder for the logic subfamily. For example, in `74LSxx` the `
 
 == Flip-Flops
 
+Flip-flops (a.k.a. _latches_) are digital circuits which are able to store a single "bit" of information. They have two stable states (representing a digital `1` or `0`), and they can be made to change state by manipulating digital inputs. Flip-flops form the basic storage element in sequential logic.
+
+Flip-flops can be either level-triggered (asynchronous, transparent, opaque) or edge-triggered (synchronous, clocked). Sometimes the word _latch_is exclusively used to refer to level-triggered flip-flops whilst flip-flop is reserved for edge-triggered ones only<<bib-eforu-flipflops>>.
+
 === SR Latches
 
-SR latches are the most basic form of flip-form (memory element).
+SR (**S**et-**R**eset) latches are the most basic form of flip-flop. It is level triggered.
 
 .An SR latch made from NOR gates.
 image::sr-latch-from-nor-gates.svg[width=500px]
+
+.Characteristic table for a SR latch built from NOR gates.
+|===
+| S | R | stem:[Q_{next}] | Action
+
+| 0 | 0 | Q               | Hold
+| 0 | 1 | 0               | Reset
+| 1 | 0 | 1               | Set
+| 1 | 1 | X               | Not allowed
+|===
+
+Driving both set and reset high is a forbidden state. A JK latch is just an extension of the SR latch where the circuit is modified to remove the forbidden state stem:[S = R = 1] and instead cause the output to toggle.
 
 ==== How Does An SR Latch Work?
 
@@ -146,8 +162,9 @@ image::sr-latch-from-nor-gates-states-red-black.svg[width=800px]
 
 === D Flip-Flops
 
-A D flip-flop (a.k.a. **D**elay flip-flop) is a flip-flop which does not propagate the input to the output until a specific state or change in the clock signal.
+A D flip-flop (where the D either stands for **D**elay or **D**ata) is a flip-flop which does not propagate the input to the output until a specific state or change in the clock signal. <<d-flipflop-symbol>> shows the basic symbol for a D-type flip-flop with no preset or clear.
 
+[[d-flipflop-symbol]]
 .The schematic symbol for a D-type flipflop.
 image::d-flipflop-symbol.svg[width=300px]
 
@@ -156,6 +173,20 @@ image::d-flipflop-symbol.svg[width=300px]
 [[d-flipflop-internals]]
 .How a D flipflop is made from discrete NAND gates. The inverting gate can be replaced by a NAND with both inputs connected to form an all-NAND implementation.
 image::d-flipflop-internals.svg[width=800px]
+
+You can actually eliminate the need the inverting/NAND gate altogether by connecting the output of the top NAND to the input of the bottom NAND as shown in <<d-flipflop-internals-no-inv-gate>>, saving one gate (lower cost/size).
+
+[[d-flipflop-internals-no-inv-gate]]
+.A D-type flip-flop with the inverting/NAND gate removed by connecting the output of the top NAND to the input of the bottom NAND.
+image::d-flipflop-internals-no-inv-gate.svg[width=800px]
+
+You may have noticed that the output stage of the D-type flip-flop looks familiar -- that's because it's just an SR latch! <<d-flipflop-internals-highlighting-sr-latch>> highlights the SR latch section of a D-type flip-flop.
+
+[[d-flipflop-internals-highlighting-sr-latch]]
+.A D flip-flop is just a SR latch with some extra circuitry added on the front end to add in the delay functionality.
+image::d-flipflop-internals-highlighting-sr-latch.svg[width=800px]
+
+D-type flip-flops are used for counters, shift-registers and input synchronization.
 
 ==== Triggering
 
@@ -187,6 +218,10 @@ Typical values for a flip-flop inside an ASIC could be:
 * stem:[a = 1MHz]
 
 Which gives stem:[\rm MTBF = 20.1days].
+
+=== JK Flip-flop
+
+
 
 == Karnaugh Maps
 
@@ -266,3 +301,8 @@ A simple delay circuit can be made just by chaining DQ flip-flops together in se
 image::four-clock-cycle-delay-element-from-flipflops.png[width=800px]
 
 This can be used to make a simple timer. Obviously, a limitation is that a flip-flop is needed for every clock cycle of delay needed (try that with a 1000 clock cycle delay!). More advanced timers use binary encoding with the flip-flops to achieve a greater number of states for a lower number of flip-flops.
+
+[bibliography]
+== References
+
+* [[[bib-eforu-flipflops, 1]]] ElectronicsForu (2017, Aug 16). _Basics and Overview of Flip Flops_. Retrieved 2021-10-19, from https://www.electronicsforu.com/technology-trends/learn-electronics/flip-flop-rs-jk-t-d.
