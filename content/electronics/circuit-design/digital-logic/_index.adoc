@@ -84,7 +84,7 @@ The inputs of TTL logic are the emitters of BJTs.
 
 === CMOS
 
-Represented by `AC`/`ACT` in part numbers, or `HC`/`HCT` for high-speed equivalents.
+Represented by `AC`/`ACT` in part numbers, or `HC`/`HCT` for high-speed equivalents. The `T` in the logic subfamily name signifies the parts have TTL-compatible inputs.
 
 === Comparison
 
@@ -93,6 +93,7 @@ Represented by `AC`/`ACT` in part numbers, or `HC`/`HCT` for high-speed equivale
 
 | AC              | CMOS.                                        |
 | CVSL            | Cascode voltage switch logic.                | 
+| HC              | 
 | HCT             | High-speed CMOS with TTL-compatible inputs.  | Only works with a +5V power supply. Interestingly, still slower than original TTL.
 | IIL             | Integrated injection logic.                  |
 | LS              | Low-power Schottky.                          |
@@ -103,33 +104,53 @@ Represented by `AC`/`ACT` in part numbers, or `HC`/`HCT` for high-speed equivale
 
 Texas Instruments introduced the `SN74xx` series of logic ICs in the 1960s, using TTL logic. These parts became very popular and many other manufactures began making pin-compatible parts. They kept the `74xx` section of the part number to aid identification, and hence the `74xx` is somewhat standardized across the industry.
 
-The 5400 series is the military rated version of the 7400 series. The 4000 series is the newer CMOS alternative to the 7400 TTL logic.
+The 5400 series is the military rated version of the 7400 series. The 4000 series is the newer CMOS alternative to the 7400 TTL logic. However (and which is somewhat confusing), newer 7400 parts can also be made using CMOS logic, for example, the 74HC4051 analogue multiplexer<<bib-ti-74hc4051-multi>>. These parts commonly using the logic subfamily names `HC` or `HCT`.
 
 .Part number descriptions for the popular TTL 74xx family of ICs.
 |===
-| Part Number | Description                 | Num. Units | Input           | Output
+| Part Number | Description                                           | Num. Units | Input           | Output
 
-| 74x00       | Quad 2-input NAND gate      | 4          | Normal          | Push-pull
-| 74x01       | Quad 2-input NAND gate      | 4          | Normal          | Open-collector
-| 74x02       | Quad 2-input NOR gate       | 4          | Normal          | Push-pull
-| 74x03       | Quad 2-input NAND gate      | 4          | Normal          | Open-collector
-| 74x04       | Hex inverter gate           | 6          | Normal          | Push-pull
-| 74x05       | Hex inverter gate           | 6          | Normal          | Open-collector
-| 74x06       | Hex inverter gate           | 6          | Normal          | Open-collector, 30V/40mA
-| 74x07       | Hex buffer gate             | 6          | Normal          | Open-collector, 30V/40mA
-| 74x08       | Quad 2-input AND gate       | 4          | Normal          | Push-pull
-| 74x09       | Quad 2-input AND gate       | 4          | Normal          | Open-collector
-| 74x10       | Triple 3-input NAND gate    | 3          | Normal          | Push-pull
-| 74x11       | Triple 3-input AND gate     | 3          | Normal          | Push-pull
-| 74x12       | Triple 3-input NAND gate    | 3          | Normal          | Open-collector
-| 74x13       | Dual 4-input NAND gate      | 2          | Schmitt trigger | Push-pull
+| 74x00       | Quad 2-input NAND gate                                | 4          | Normal          | Push-pull
+| 74x01       | Quad 2-input NAND gate                                | 4          | Normal          | Open-collector
+| 74x02       | Quad 2-input NOR gate                                 | 4          | Normal          | Push-pull
+| 74x03       | Quad 2-input NAND gate                                | 4          | Normal          | Open-collector
+| 74x04       | Hex inverter gate                                     | 6          | Normal          | Push-pull
+| 74x05       | Hex inverter gate                                     | 6          | Normal          | Open-collector
+| 74x06       | Hex inverter gate                                     | 6          | Normal          | Open-collector, 30V/40mA
+| 74x07       | Hex buffer gate                                       | 6          | Normal          | Open-collector, 30V/40mA
+| 74x08       | Quad 2-input AND gate                                 | 4          | Normal          | Push-pull
+| 74x09       | Quad 2-input AND gate                                 | 4          | Normal          | Open-collector
+| 74x10       | Triple 3-input NAND gate                              | 3          | Normal          | Push-pull
+| 74x11       | Triple 3-input AND gate                               | 3          | Normal          | Push-pull
+| 74x12       | Triple 3-input NAND gate                              | 3          | Normal          | Open-collector
+| 74x13       | Dual 4-input NAND gate                                | 2          | Schmitt trigger | Push-pull
+| 74x4051     | High-speed 8-channel analog multiplexer/demultiplexer | 1          | Analog          | Analog
+| 74x4052     | Dual 4-channel analog multiplexer/demultiplexer       | 2          | Analog          | Analog
+| 74x4053     | Triple 2-channel analog multiplexer/demultiplexer     | 3          | Analog          | Analog
 |===
 
-The `x` is a placeholder for the logic subfamily. For example, in `74LSxx` the `LS` represent the low-power Schottky subfamily. Logic subfamilies:
+The `x` is a placeholder for the logic subfamily. For example, in `74LSxx` the `LS` represent the low-power Schottky subfamily.
+
+A company specific prefix may be added to the above part numbers depending on the manufacturer.
+
+|===
+| Prefix | Company
+
+| <none> | Nexperia, Phillips
+| CD     | Texas Instruments
+| DM     | National Semiconductor
+| ID     | IDT
+| M      | STMicroelectronics
+| MC     | OnSemi
+| MM     | National Semiconductor
+| NLV    | OnSemi
+| SN     | Texas Instruments
+| TC     | Toshiba
+|===
 
 == Flip-Flops
 
-Flip-flops (a.k.a. _latches_) are digital circuits which are able to store a single "bit" of information. They have two stable states (representing a digital `1` or `0`), and they can be made to change state by manipulating digital inputs. Flip-flops form the basic storage element in sequential logic.
+A flip-flop (a.k.a. _latch_, or _bistable multivibrator_) is a digital circuit which is able to store a single "bit" of information. It has two stable states (representing a digital `1` or `0`), and they can be made to change state by manipulating digital inputs. Hence they are also called _bistable multivibrators_ (two stable states). Flip-flops form the basic storage element in sequential logic.
 
 Flip-flops can be either level-triggered (asynchronous, transparent, opaque) or edge-triggered (synchronous, clocked). Sometimes the word _latch_is exclusively used to refer to level-triggered flip-flops whilst flip-flop is reserved for edge-triggered ones only<<bib-eforu-flipflops>>.
 
@@ -151,6 +172,10 @@ image::sr-latch-from-nor-gates.svg[width=500px]
 |===
 
 Driving both set and reset high is a forbidden state. A JK latch is just an extension of the SR latch where the circuit is modified to remove the forbidden state stem:[S = R = 1] and instead cause the output to toggle.
+
+`SN74LS279` is a quad SR latch component by Texas Instruments. Two of the four latches have two set inputs, allowing for either to be active to set the latch (equivalent to an OR gate placed before a normal single set input SR latch).
+
+SR latches can be used to make a switch debounce circuit.
 
 ==== How Does An SR Latch Work?
 
@@ -306,3 +331,4 @@ This can be used to make a simple timer. Obviously, a limitation is that a flip-
 == References
 
 * [[[bib-eforu-flipflops, 1]]] ElectronicsForu (2017, Aug 16). _Basics and Overview of Flip Flops_. Retrieved 2021-10-19, from https://www.electronicsforu.com/technology-trends/learn-electronics/flip-flop-rs-jk-t-d.
+* [[[bib-ti-74hc4051-multi, 2]]] Texas Instruments (1997, Nov). _CDx4HC405x, CDx4HCT405x High-Speed CMOS Logic Analog Multiplexers and Demultiplexers (Datasheet)_. Retrieved 2021-10-20, from https://www.ti.com/lit/ds/symlink/cd74hc4051.pdf.
