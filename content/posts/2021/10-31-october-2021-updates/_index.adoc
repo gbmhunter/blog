@@ -29,3 +29,5 @@ image::/posts/2021/10-31-october-2021-updates/molex-0387700104-barrier-strip-pho
 * Added a schematic symbol and internal diagram for the D flipflop.
 
 * Added a new page on Visible Light Communication (VLC).
+
+* Added info on the XOR gate.
