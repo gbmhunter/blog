@@ -412,7 +412,17 @@ table.code th, table.code td {
   font-family: monospace;
 }
 
+/* UNSTYLED TABLES (for layout) */
 
+table.unstyled {
+    > tbody > tr {
+        > td {
+            padding: 0px;
+            background-color: transparent;
+            border: none;
+        }
+    }
+}
 
 /* ========================================================================= */
 /* ASCIIDOC SPECIFIC                                                         */

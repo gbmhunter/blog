@@ -21,23 +21,32 @@ Logic gate inputs are normally labelled as a single letter, starting with A (e.g
 Symbols used in equations:
 
 * stem:[A \cdot B] represents "A and B"
-* stem:[+] represents "A or B"
+* stem:[A + B] represents "A or B"
+* stem:[A \bigoplus B] represents "A xor B"
 * stem:[\bar{A}] represents "not A" (inversion)
 
 ==== AND
 
+[cols="1,1",role=unstyled]
+|===
+
+a|
 .The symbol for an AND gate.
 image::and-gate-symbol.svg[width=300px]
 
+a|
 .Truth table for an AND gate.
-|===
-2.+| Inputs | Output
+[width=100%]
+!===
+2.+! Inputs ! Output
 
-| A | B | Y
-| 0 | 0 | 0
-| 0 | 1 | 0
-| 1 | 0 | 0
-| 1 | 1 | 1
+! A ! B ! Y
+! 0 ! 0 ! 0
+! 0 ! 1 ! 0
+! 1 ! 0 ! 0
+! 1 ! 1 ! 1
+!===
+
 |===
 
 Equation:
@@ -51,18 +60,25 @@ AND = A \cdot B
 
 ==== OR
 
+[cols="1,1",role=unstyled]
+|===
+
+a|
 .The symbol for an OR gate.
 image::or-gate-symbol.svg[width=300px]
 
+a|
 .Truth table for an OR gate.
-|===
-2.+| Inputs | Output
+!===
+2.+! Inputs ! Output
 
-| A | B | Y
-| 0 | 0 | 0
-| 0 | 1 | 1
-| 1 | 0 | 1
-| 1 | 1 | 1
+! A ! B ! Y
+! 0 ! 0 ! 0
+! 0 ! 1 ! 1
+! 1 ! 0 ! 1
+! 1 ! 1 ! 1
+!===
+
 |===
 
 [stem]
@@ -74,33 +90,56 @@ OR = A + B
 
 ==== XOR
 
+The _XOR gate_ (_exclusive OR_) only outputs a `1` if one and only one of it's inputs is also `1`. 
+
+[cols="1,1",role=unstyled]
+|===
+
+a|
 .The symbol for an XOR (exclusive-or) gate.
 image::xor-gate-symbol.svg[width=300px]
 
+a|
 .Truth table for an XOR gate.
-|===
-2.+| Inputs | Output
+!===
+2.+! Inputs ! Output
 
-| A | B | Y
-| 0 | 0 | 0
-| 0 | 1 | 1
-| 1 | 0 | 1
-| 1 | 1 | 0
+! A ! B ! Y
+! 0 ! 0 ! 0
+! 0 ! 1 ! 1
+! 1 ! 0 ! 1
+! 1 ! 1 ! 0
+!===
+
 |===
 
 NOTE: The only difference in behaviour between an OR and XOR is when both inputs are `1`. An OR gate outputs a `1` in this case, whilst and XOR outputs a `0`.
 
-Equation:
+The symbol stem:[\bigoplus] is used to represent XOR, as hence XOR can be written in the following ways:
 
 [stem]
 ++++
 \begin{align}
-XOR = (A \cdot \bar{B}) + (\bar{A} \cdot B)
+XOR &= (A \cdot \bar{B}) + (\bar{A} \cdot B) \\
+    &= (A + B) \cdot (\bar{A} + \bar{B}) \\
+    &= A \bigoplus B
 \end{align}
 ++++
 
 .A XOR gate made from 1 AND, NAND and OR gate.
 image::xor-gate-made-from-and-nand-or.svg[width=500px]
+
+<<xor-gate-made-from-nands>> shows a XOR gate made exclusively from NAND gates.
+
+[[xor-gate-made-from-nands]]
+.A XOR gate made exclusively from NAND gates.
+image::xor-gate-made-from-nands.svg[width=600px]
+
+You can also make a XOR gate exclusively from NOR gates, as shown in <<xor-gate-made-from-nors>>. Note that the structure is similar to the all-NAND gate version of the XOR, but with the additional inverting gate on the output.
+
+[[xor-gate-made-from-nors]]
+.A XOR gate made exclusively from NOR gates.
+image::xor-gate-made-from-nors.svg[width=600px]
 
 === What Are Logic Gates Built From?
 

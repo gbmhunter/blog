@@ -24,10 +24,10 @@ image::/posts/2021/10-31-october-2021-updates/molex-0387700104-barrier-strip-pho
 
 * Added info on the PowerPAK SO-8 component package.
 
-* Merged the "Logic Gates" and "Metastability" child pages into the parent "Digital Logic" page.
+* Merged the "Logic Gates" and "Metastability" child pages into the parent link:/electronics/circuit-design/digital-logic/#_d_flip_flops[Digital Logic page].
 
-* Added a schematic symbol and internal diagram for the D flipflop.
+* Added a schematic symbol and internal diagram for the link:/electronics/circuit-design/digital-logic/#_d_flip_flops[D-type flip-flop].
 
 * Added a new page on Visible Light Communication (VLC).
 
-* Added info on the XOR gate.
+* Added info on the link:/electronics/circuit-design/digital-logic/#_xor[XOR gate].
