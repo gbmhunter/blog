@@ -18,6 +18,12 @@ Logic gate inputs are normally labelled as a single letter, starting with A (e.g
 
 === Types Of Gates
 
+Symbols used in equations:
+
+* stem:[A \cdot B] represents "A and B"
+* stem:[+] represents "A or B"
+* stem:[\bar{A}] represents "not A" (inversion)
+
 ==== AND
 
 .The symbol for an AND gate.
@@ -33,6 +39,15 @@ image::and-gate-symbol.svg[width=300px]
 | 1 | 0 | 0
 | 1 | 1 | 1
 |===
+
+Equation:
+
+[stem]
+++++
+\begin{align}
+AND = A \cdot B
+\end{align}
+++++
 
 ==== OR
 
@@ -50,7 +65,44 @@ image::or-gate-symbol.svg[width=300px]
 | 1 | 1 | 1
 |===
 
-== Logic Families
+[stem]
+++++
+\begin{align}
+OR = A + B
+\end{align}
+++++
+
+==== XOR
+
+.The symbol for an XOR (exclusive-or) gate.
+image::xor-gate-symbol.svg[width=300px]
+
+.Truth table for an XOR gate.
+|===
+2.+| Inputs | Output
+
+| A | B | Y
+| 0 | 0 | 0
+| 0 | 1 | 1
+| 1 | 0 | 1
+| 1 | 1 | 0
+|===
+
+NOTE: The only difference in behaviour between an OR and XOR is when both inputs are `1`. An OR gate outputs a `1` in this case, whilst and XOR outputs a `0`.
+
+Equation:
+
+[stem]
+++++
+\begin{align}
+XOR = (A \cdot \bar{B}) + (\bar{A} \cdot B)
+\end{align}
+++++
+
+.A XOR gate made from 1 AND, NAND and OR gate.
+image::xor-gate-made-from-and-nand-or.svg[width=500px]
+
+=== What Are Logic Gates Built From?
 
 === Resistor-Transistor Logic (RTL)
 
