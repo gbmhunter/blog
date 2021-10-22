@@ -146,6 +146,16 @@ Whilst it is intuitive how a AND or OR gate should work with more than 2 inputs,
 . *Output TRUE only if 1 and only 1 input is TRUE*. This is called a _one-hot detector_. However, this is rarely seen in practise.
 . *Output TRUE only if an odd number of inputs are TRUE*. This is called a _parity generator_ or _modulo-2 adder_. This is more commonly implemented behaviour for a XOR gate with more than 2 inputs.
 
+XOR gates are used for:
+
+* *Parity generators*: A sequence of XOR gates can calculate the parity of block of data, which is used for simple single-bit error detection in some communication protocols (e.g. optional setting you can enable with UART)<<bib-maxim-xor-definition>>.
+* *Correlation/sequence detection*: XOR gates output `FALSE` if both inputs are the same. This behaviour can be utilized to perform correlation between two bit streams.
+* Cryptographic circuits.
+
+==== XNOR
+
+XNOR is an XOR gate but with the output inverted.
+
 === What Are Logic Gates Built From?
 
 === Resistor-Transistor Logic (RTL)
@@ -428,3 +438,4 @@ This can be used to make a simple timer. Obviously, a limitation is that a flip-
 
 * [[[bib-eforu-flipflops, 1]]] ElectronicsForu (2017, Aug 16). _Basics and Overview of Flip Flops_. Retrieved 2021-10-19, from https://www.electronicsforu.com/technology-trends/learn-electronics/flip-flop-rs-jk-t-d.
 * [[[bib-ti-74hc4051-multi, 2]]] Texas Instruments (1997, Nov). _CDx4HC405x, CDx4HCT405x High-Speed CMOS Logic Analog Multiplexers and Demultiplexers (Datasheet)_. Retrieved 2021-10-20, from https://www.ti.com/lit/ds/symlink/cd74hc4051.pdf.
+* [[[bib-maxim-xor-definition, 3]]] Maxim Integrated (2020). _Glossary Definition For XOR Gate_. Retrieved 2021-10-22, from https://www.maximintegrated.com/en/glossary/definitions.mvp/term/XOR%20Gate/gpk/1202.
