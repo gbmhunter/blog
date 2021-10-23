@@ -25,44 +25,48 @@
     <g transform="matrix(1,0,0,1,-225.601,-99.3089)">
         <text x="677.227px" y="258.937px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;fill:rgb(234,117,0);">B</text>
     </g>
-    <g id="gate-or" transform="matrix(1,0,0,1,-602.417,-1606.3)">
-        <g transform="matrix(1.25899,0,0,1,-257.828,236.22)">
+    <g id="gate-nor" transform="matrix(1,0,0,1,-602.417,-1842.52)">
+        <g transform="matrix(1,0,0,1,11.811,649.606)">
+            <path d="M885.827,1287.4C892.345,1287.4 897.638,1292.69 897.638,1299.21C897.638,1305.73 892.345,1311.02 885.827,1311.02C879.308,1311.02 874.016,1305.73 874.016,1299.21C874.016,1292.69 879.308,1287.4 885.827,1287.4ZM885.827,1291.65C890,1291.65 893.389,1295.04 893.389,1299.21C893.389,1303.39 890,1306.77 885.827,1306.77C881.653,1306.77 878.265,1303.39 878.265,1299.21C878.265,1295.04 881.653,1291.65 885.827,1291.65Z" style="fill:rgb(52,101,164);"/>
+        </g>
+        <g transform="matrix(1.25899,0,0,1,-257.828,472.441)">
             <path d="M826.772,1440.94L767.717,1440.94" style="fill:none;stroke:rgb(52,101,164);stroke-width:3.74px;"/>
         </g>
-        <g transform="matrix(1.25899,0,0,1,-257.828,236.22)">
+        <g transform="matrix(1.25899,0,0,1,-257.828,472.441)">
             <path d="M826.772,1511.81L767.717,1511.81" style="fill:none;stroke:rgb(52,101,164);stroke-width:3.74px;"/>
         </g>
+        <g transform="matrix(0.600933,0,0,1,341.638,472.441)">
+            <path d="M944.882,1476.38L1003.94,1476.38" style="fill:none;stroke:rgb(52,101,164);stroke-width:5.15px;"/>
+        </g>
         <g transform="matrix(1,0,0,1,-59,236.22)">
-            <path d="M944.882,1476.38L1003.94,1476.38" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
-        </g>
-        <g transform="matrix(1,0,0,1,-59,0)">
             <path d="M826.772,1653.54C908.072,1653.82 944.882,1712.6 944.882,1712.6" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
         </g>
-        <g transform="matrix(1,0,0,-1,-59,3425.2)">
+        <g transform="matrix(1,0,0,-1,-59,3661.42)">
             <path d="M826.772,1653.54C908.072,1653.82 944.882,1712.6 944.882,1712.6" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
         </g>
-        <g transform="matrix(1,0,0,1,-59,0)">
+        <g transform="matrix(1,0,0,1,-59,236.22)">
             <path d="M826.772,1653.54C836.801,1665.59 850.394,1689.75 850.394,1712.6" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
         </g>
-        <g transform="matrix(1,0,0,-1,-59,3425.2)">
+        <g transform="matrix(1,0,0,-1,-59,3661.42)">
             <path d="M826.772,1653.54C836.801,1665.59 850.394,1689.75 850.394,1712.6" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
         </g>
     </g>
-    <g id="gate-or-iec" transform="matrix(1,0,0,1,-566.929,-1842.52)">
-        <g transform="matrix(1,0,0,1,471.731,1653.91)">
+    <g id="gate-nor-iec" transform="matrix(1,0,0,1,-566.929,-2078.74)">
+        <g transform="matrix(1,0,0,1,471.731,1890.13)">
             <text x="677.227px" y="292.237px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:58.3px;fill:rgb(52,101,164);">≥1</text>
         </g>
-        <g transform="matrix(1,0,0,1,649.606,-472.441)">
+        <g transform="matrix(1,0,0,1,649.606,-236.22)">
             <rect x="472.441" y="2362.2" width="118.11" height="118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
         </g>
-        <g transform="matrix(1,0,0,1,649.606,-472.441)">
+        <g transform="matrix(1,0,0,1,649.606,-236.22)">
             <path d="M472.441,2385.83L413.386,2385.83" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
         </g>
-        <g transform="matrix(1,0,0,1,649.606,-472.441)">
+        <g transform="matrix(1,0,0,1,649.606,-236.22)">
             <path d="M472.441,2456.69L413.386,2456.69" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
         </g>
-        <g transform="matrix(1,0,0,1,649.606,-437.008)">
+        <g transform="matrix(1,0,0,1,649.606,-200.787)">
             <path d="M590.551,2385.83L649.606,2385.83" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
         </g>
+        <path d="M1240.16,2149.61L1275.59,2185.04" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
     </g>
 </svg>

@@ -16,8 +16,6 @@ Digital logic is the study and application of the fundamentals in digital (binar
 
 Logic gate inputs are normally labelled as a single letter, starting with A (e.g. a three input AND gate would have inputs A, B and C). The output is normally labelled Y, unless you are using a flip-flop or latch, and the output is labelled Q.
 
-=== Types Of Gates
-
 Symbols used in equations:
 
 * stem:[A \cdot B] represents "A and B"
@@ -25,28 +23,26 @@ Symbols used in equations:
 * stem:[A \bigoplus B] represents "A xor B"
 * stem:[\bar{A}] represents "not A" (inversion)
 
-==== AND
+There are a few different standards used to draw logic gates on schematics:
 
-[cols="1,1",role=unstyled]
-|===
+* *MIL-STD-806B*: This most commonly used symbols for basic and/or/xor e.t.c gates is captured in this standard. Each gate has a unique shape and are easily distinguished on a large schematic with many gates. NOT logic is shown with a _bubble_.
+* *IEC 60617* (ANSI/IEEE Std 91-1984): All the gates are IC-like rectangles with symbols inside to denote the function. NOT logic is shown with a _flag_ on the pin rather than a _bubble_. Not as easy too quickly identify the gate as MIL-STD-806B, and not as widely used.
 
-a|
+=== AND/NAND
+
 .The symbol for an AND gate.
-image::and-gate-symbol.svg[width=300px]
+image::and-gate-symbol.svg[width=500px]
 
-a|
 .Truth table for an AND gate.
 [width=100%]
-!===
-2.+! Inputs ! Output
+|===
+2.+| Inputs | Output
 
-! A ! B ! Y
-! 0 ! 0 ! 0
-! 0 ! 1 ! 0
-! 1 ! 0 ! 0
-! 1 ! 1 ! 1
-!===
-
+| A | B | Y
+| 0 | 0 | 0
+| 0 | 1 | 0
+| 1 | 0 | 0
+| 1 | 1 | 1
 |===
 
 Equation:
@@ -58,27 +54,35 @@ AND = A \cdot B
 \end{align}
 ++++
 
-==== OR
+.The symbol for an NAND gate.
+image::nand-gate-symbol.svg[width=500px]
 
-[cols="1,1",role=unstyled]
+.Truth table for an NAND gate.
+[width=100%]
+|===
+2.+| Inputs | Output
+
+| *A* | *B* | *Y*
+| 0 | 0 | 1
+| 0 | 1 | 1
+| 1 | 0 | 1
+| 1 | 1 | 0
 |===
 
-a|
+=== OR/NOR
+
 .The symbol for an OR gate.
-image::or-gate-symbol.svg[width=300px]
+image::or-gate-symbol.svg[width=500px]
 
-a|
 .Truth table for an OR gate.
-!===
-2.+! Inputs ! Output
+|===
+2.+| Inputs | Output
 
-! A ! B ! Y
-! 0 ! 0 ! 0
-! 0 ! 1 ! 1
-! 1 ! 0 ! 1
-! 1 ! 1 ! 1
-!===
-
+| A | B | Y
+| 0 | 0 | 0
+| 0 | 1 | 1
+| 1 | 0 | 1
+| 1 | 1 | 1
 |===
 
 [stem]
@@ -88,29 +92,38 @@ OR = A + B
 \end{align}
 ++++
 
-==== XOR
+A NOR gate is just a OR gate but with the output inverted (i.e. what you would get if you connected the output of an OR gate to an inverter).
+
+.The symbols for a NOR gate.
+image::nor-gate-symbol.svg[width=500px]
+
+.Truth table for an NOR gate.
+|===
+2.+| Inputs | Output
+
+| A | B | Y
+| 0 | 0 | 1
+| 0 | 1 | 0
+| 1 | 0 | 0
+| 1 | 1 | 0
+|===
+
+=== XOR
 
 The _XOR gate_ (_exclusive OR_) only outputs a `1` if one and only one of it's inputs is also `1`. 
 
-[cols="1,1",role=unstyled]
-|===
+.The symbols for an XOR (exclusive-or) gate.
+image::xor-gate-symbol.svg[width=500px]
 
-a|
-.The symbol for an XOR (exclusive-or) gate.
-image::xor-gate-symbol.svg[width=300px]
-
-a|
 .Truth table for an XOR gate.
-!===
-2.+! Inputs ! Output
+|===
+2.+| Inputs | Output
 
-! A ! B ! Y
-! 0 ! 0 ! 0
-! 0 ! 1 ! 1
-! 1 ! 0 ! 1
-! 1 ! 1 ! 0
-!===
-
+| A | B | Y
+| 0 | 0 | 0
+| 0 | 1 | 1
+| 1 | 0 | 1
+| 1 | 1 | 0
 |===
 
 NOTE: The only difference in behaviour between an OR and XOR is when both inputs are `1`. An OR gate outputs a `1` in this case, whilst and XOR outputs a `0`.
@@ -152,11 +165,20 @@ XOR gates are used for:
 * *Correlation/sequence detection*: XOR gates output `FALSE` if both inputs are the same. This behaviour can be utilized to perform correlation between two bit streams.
 * Cryptographic circuits.
 
-==== XNOR
-
 XNOR is an XOR gate but with the output inverted.
 
-=== What Are Logic Gates Built From?
+.Truth table for an XNOR gate.
+|===
+2.+| Inputs | Output
+
+| *A* | *B* | *Y*
+| 0 | 0 | 1
+| 0 | 1 | 0
+| 1 | 0 | 0
+| 1 | 1 | 1
+|===
+
+== What Are Logic Gates Built From?
 
 === Resistor-Transistor Logic (RTL)
 
