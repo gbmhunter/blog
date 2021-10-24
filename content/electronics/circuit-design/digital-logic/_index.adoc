@@ -25,12 +25,38 @@ Symbols used in equations:
 
 There are a few different standards used to draw logic gates on schematics:
 
-* *MIL-STD-806B*: This most commonly used symbols for basic and/or/xor e.t.c gates is captured in this standard. Each gate has a unique shape and are easily distinguished on a large schematic with many gates. NOT logic is shown with a _bubble_.
+* *MIL-STD-806B* (Graphic Symbols For Logic Diagrams): This most commonly used symbols for basic and/or/xor e.t.c gates is captured in this standard. Each gate has a unique shape and are easily distinguished on a large schematic with many gates. NOT logic is shown with a _bubble_.
 * *IEC 60617* (ANSI/IEEE Std 91-1984): All the gates are IC-like rectangles with symbols inside to denote the function. NOT logic is shown with a _flag_ on the pin rather than a _bubble_. Not as easy too quickly identify the gate as MIL-STD-806B, and not as widely used.
+* *DIN 40700-24* (Graphical Symbols; Components For Precision Engineering Devices, Especially Clocks): Ever rarer than the MIL-STD-806B or IEC 60617 symbols, these are rarely seen. The 1976 Edition was released in June 1976.
+
+=== NOT
+
+Arguably the simplest logical gate (ignoring a buffer), a _NOT_ gate (a.k.a. inverter) always outputs the opposite (complement) of the input. If the input is `TRUE`, the output is `FALSE`. If the input is `FALSE`, the output is `TRUE`.
+
+.The symbols for a NOT gate (inverter).
+image::not-gate-symbol.svg[width=500px]
+
+.Truth table for an OR gate.
+|===
+1.+| Inputs | Output
+
+| *A* | *Y*
+| 0   | 1
+| 1   | 0
+|===
+
+And this gives rise to the simple equation:
+
+[stem]
+++++
+\begin{align}
+Y = \bar{A}
+\end{align}
+++++
 
 === AND/NAND
 
-.The symbol for an AND gate.
+.The symbols for an AND gate.
 image::and-gate-symbol.svg[width=500px]
 
 .Truth table for an AND gate.
@@ -45,12 +71,14 @@ image::and-gate-symbol.svg[width=500px]
 | 1 | 1 | 1
 |===
 
-Equation:
+The equation for the AND logic may be written in one of the following ways:
 
 [stem]
 ++++
 \begin{align}
-AND = A \cdot B
+Y = A \cdot B \text{Preferred} \\
+Y = AB \\
+Y = A & B
 \end{align}
 ++++
 
@@ -78,17 +106,19 @@ image::or-gate-symbol.svg[width=500px]
 |===
 2.+| Inputs | Output
 
-| A | B | Y
+| *A* | *B* | *Y*
 | 0 | 0 | 0
 | 0 | 1 | 1
 | 1 | 0 | 1
 | 1 | 1 | 1
 |===
 
+The equation for an OR gate:
+
 [stem]
 ++++
 \begin{align}
-OR = A + B
+Y = A + B
 \end{align}
 ++++
 
@@ -101,12 +131,27 @@ image::nor-gate-symbol.svg[width=500px]
 |===
 2.+| Inputs | Output
 
-| A | B | Y
+| *A* | *B* | *Y*
 | 0 | 0 | 1
 | 0 | 1 | 0
 | 1 | 0 | 0
 | 1 | 1 | 0
 |===
+
+The equation for an NOR gate:
+
+[stem]
+++++
+\begin{align}
+Y = \bar{A + B}
+\end{align}
+++++
+
+The OR gate be drawn using three equal diameter circles placed on a grid as shown in <<how-to-draw-the-or-gate>>. Segments of the circles perimeters are taken along with the addition of two horizontal line sections to form the classic OR gate shape<<bib-spin-num-logic-gates>>.
+
+[[how-to-draw-the-or-gate]]
+.Diagram showing how to draw an OR gate from the segments of three equal diameter circles placed on a grid<<bib-spin-num-logic-gates>>.
+image::how-to-draw-the-or-gate.png[width=600px]
 
 === XOR
 
@@ -461,3 +506,4 @@ This can be used to make a simple timer. Obviously, a limitation is that a flip-
 * [[[bib-eforu-flipflops, 1]]] ElectronicsForu (2017, Aug 16). _Basics and Overview of Flip Flops_. Retrieved 2021-10-19, from https://www.electronicsforu.com/technology-trends/learn-electronics/flip-flop-rs-jk-t-d.
 * [[[bib-ti-74hc4051-multi, 2]]] Texas Instruments (1997, Nov). _CDx4HC405x, CDx4HCT405x High-Speed CMOS Logic Analog Multiplexers and Demultiplexers (Datasheet)_. Retrieved 2021-10-20, from https://www.ti.com/lit/ds/symlink/cd74hc4051.pdf.
 * [[[bib-maxim-xor-definition, 3]]] Maxim Integrated (2020). _Glossary Definition For XOR Gate_. Retrieved 2021-10-22, from https://www.maximintegrated.com/en/glossary/definitions.mvp/term/XOR%20Gate/gpk/1202.
+* [[[bib-spin-num-logic-gates, 4]]] McAllister, Willy (2021). _Digital logic gates_. Spinning Numbers. Retrieved 2021-10-24, from https://spinningnumbers.org/a/logic-gates.html.
