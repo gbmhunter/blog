@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 827 237" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-327.638,-122.931)">
+        <text x="677.227px" y="258.937px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;fill:rgb(234,117,0);">Y</text>
+    </g>
+    <g transform="matrix(1,0,0,1,62.1255,-122.931)">
+        <text x="677.227px" y="258.937px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;fill:rgb(234,117,0);">Y</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-611.225,-122.931)">
+        <text x="677.227px" y="258.937px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;fill:rgb(234,117,0);">A</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-221.461,-122.931)">
+        <text x="677.227px" y="258.937px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;fill:rgb(234,117,0);">A</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-567.026,-51.8828)">
+        <text x="677.227px" y="258.937px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:33.333px;">MIL-STD-806B</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-142.611,-51.8828)">
+        <text x="677.227px" y="258.937px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:33.333px;">IEC 60617</text>
+    </g>
+    <g id="gate-not" transform="matrix(1,0,0,1,-602.362,-1181.1)">
+        <path d="M708.661,1299.21L767.717,1299.21L767.717,1240.16L874.016,1299.21L767.717,1358.27L767.717,1299.21" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        <path d="M897.638,1299.21L944.882,1299.21" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        <path d="M885.827,1287.4C892.345,1287.4 897.638,1292.69 897.638,1299.21C897.638,1305.73 892.345,1311.02 885.827,1311.02C879.308,1311.02 874.016,1305.73 874.016,1299.21C874.016,1292.69 879.308,1287.4 885.827,1287.4ZM885.827,1291.65C890,1291.65 893.389,1295.04 893.389,1299.21C893.389,1303.39 890,1306.77 885.827,1306.77C881.653,1306.77 878.265,1303.39 878.265,1299.21C878.265,1295.04 881.653,1291.65 885.827,1291.65Z" style="fill:rgb(52,101,164);"/>
+    </g>
+    <g id="gate-not-iec" transform="matrix(1,0,0,1,-566.929,-1181.1)">
+        <g transform="matrix(1,0,0,1,489.841,1004.31)">
+            <text x="677.227px" y="292.237px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:58.3px;fill:rgb(52,101,164);">1</text>
+        </g>
+        <g transform="matrix(1,0,0,1,649.606,-1122.05)">
+            <rect x="472.441" y="2362.2" width="118.11" height="118.11" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,649.606,-1086.61)">
+            <path d="M472.441,2385.83L413.386,2385.83" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,649.606,-1086.61)">
+            <path d="M590.551,2385.83L649.606,2385.83" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        </g>
+        <path d="M1240.16,1263.78L1275.59,1299.21" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+    </g>
+</svg>
