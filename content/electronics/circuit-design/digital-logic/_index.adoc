@@ -16,25 +16,18 @@ Digital logic is the study and application of the fundamentals in digital (binar
 
 Logic gate inputs are normally labelled as a single letter, starting with A (e.g. a three input AND gate would have inputs A, B and C). The output is normally labelled Y, unless you are using a flip-flop or latch, and the output is labelled Q.
 
-Symbols used in equations:
-
-* stem:[A \cdot B] represents "A and B"
-* stem:[A + B] represents "A or B"
-* stem:[A \bigoplus B] represents "A xor B"
-* stem:[\bar{A}] represents "not A" (inversion)
-
 There are a few different standards used to draw logic gates on schematics:
 
 * *MIL-STD-806B* (Graphic Symbols For Logic Diagrams): This most commonly used symbols for basic and/or/xor e.t.c gates is captured in this standard. Each gate has a unique shape and are easily distinguished on a large schematic with many gates. NOT logic is shown with a _bubble_.
 * *IEC 60617* (ANSI/IEEE Std 91-1984): All the gates are IC-like rectangles with symbols inside to denote the function. NOT logic is shown with a _flag_ on the pin rather than a _bubble_. Not as easy too quickly identify the gate as MIL-STD-806B, and not as widely used.
-* *DIN 40700-24* (Graphical Symbols; Components For Precision Engineering Devices, Especially Clocks): Ever rarer than the MIL-STD-806B or IEC 60617 symbols, these are rarely seen. The 1976 Edition was released in June 1976.
+* *DIN 40700-24* (Graphical Symbols; Components For Precision Engineering Devices, Especially Clocks): Ever rarer than the MIL-STD-806B or IEC 60617 symbols, these are rarely seen. The 1976 Edition was released in June 1976. DIN symbols on this page are referenced to https://de.wikipedia.org/wiki/Logikgatter#Typen_von_Logikgattern_und_Symbolik.
 
 === NOT
 
 Arguably the simplest logical gate (ignoring a buffer), a _NOT_ gate (a.k.a. inverter) always outputs the opposite (complement) of the input. If the input is `TRUE`, the output is `FALSE`. If the input is `FALSE`, the output is `TRUE`.
 
 .The symbols for a NOT gate (inverter).
-image::not-gate-symbol.svg[width=500px]
+image::not-gate-symbol.svg[width=800px]
 
 .Truth table for an OR gate.
 |===
@@ -50,14 +43,16 @@ And this gives rise to the simple equation:
 [stem]
 ++++
 \begin{align}
-Y = \bar{A}
+Y = \overline{A}
 \end{align}
 ++++
 
 === AND/NAND
 
+AND is also called logical conjunction<<bib-wp-list-logic-sym>>.
+
 .The symbols for an AND gate.
-image::and-gate-symbol.svg[width=500px]
+image::and-gate-symbol.svg[width=800px]
 
 .Truth table for an AND gate.
 [width=100%]
@@ -76,14 +71,15 @@ The equation for the AND logic may be written in one of the following ways:
 [stem]
 ++++
 \begin{align}
-Y = A \cdot B \text{Preferred} \\
-Y = AB \\
-Y = A & B
+Y &= A \cdot B \ \text{(preferred)} \\
+Y &= AB \\
+Y &= A \& B \\
+Y &= A \wedge B \\
 \end{align}
 ++++
 
 .The symbol for an NAND gate.
-image::nand-gate-symbol.svg[width=500px]
+image::nand-gate-symbol.svg[width=800px]
 
 .Truth table for an NAND gate.
 [width=100%]
@@ -99,8 +95,10 @@ image::nand-gate-symbol.svg[width=500px]
 
 === OR/NOR
 
+OR is also called logical disjunction<<bib-wp-list-logic-sym>>.
+
 .The symbol for an OR gate.
-image::or-gate-symbol.svg[width=500px]
+image::or-gate-symbol.svg[width=800px]
 
 .Truth table for an OR gate.
 |===
@@ -113,19 +111,21 @@ image::or-gate-symbol.svg[width=500px]
 | 1 | 1 | 1
 |===
 
-The equation for an OR gate:
+The OR operation can be expressed in an equation in the following ways:
 
 [stem]
 ++++
 \begin{align}
-Y = A + B
+Y &= A + B \ \text{(preferred)} \\
+Y &= A \vee B \\
+Y &= A || B \\
 \end{align}
 ++++
 
 A NOR gate is just a OR gate but with the output inverted (i.e. what you would get if you connected the output of an OR gate to an inverter).
 
 .The symbols for a NOR gate.
-image::nor-gate-symbol.svg[width=500px]
+image::nor-gate-symbol.svg[width=800px]
 
 .Truth table for an NOR gate.
 |===
@@ -143,7 +143,7 @@ The equation for an NOR gate:
 [stem]
 ++++
 \begin{align}
-Y = \bar{A + B}
+Y = \overline{A + B}
 \end{align}
 ++++
 
@@ -158,7 +158,7 @@ image::how-to-draw-the-or-gate.png[width=600px]
 The _XOR gate_ (_exclusive OR_) only outputs a `1` if one and only one of it's inputs is also `1`. 
 
 .The symbols for an XOR (exclusive-or) gate.
-image::xor-gate-symbol.svg[width=500px]
+image::xor-gate-symbol.svg[width=800px]
 
 .Truth table for an XOR gate.
 |===
@@ -178,9 +178,9 @@ The symbol stem:[\bigoplus] is used to represent XOR, as hence XOR can be writte
 [stem]
 ++++
 \begin{align}
-XOR &= (A \cdot \bar{B}) + (\bar{A} \cdot B) \\
-    &= (A + B) \cdot (\bar{A} + \bar{B}) \\
-    &= A \bigoplus B
+Y &= (A \cdot \bar{B}) + (\bar{A} \cdot B) \\
+Y &= (A + B) \cdot (\bar{A} + \bar{B}) \\
+Y &= A \bigoplus B \\
 \end{align}
 ++++
 
@@ -211,6 +211,10 @@ XOR gates are used for:
 * Cryptographic circuits.
 
 XNOR is an XOR gate but with the output inverted.
+
+[[xnor-gate-symbol]]
+.The symbols for a XNOR gate.
+image::xnor-gate-symbol.svg[width=800px]
 
 .Truth table for an XNOR gate.
 |===
@@ -507,3 +511,4 @@ This can be used to make a simple timer. Obviously, a limitation is that a flip-
 * [[[bib-ti-74hc4051-multi, 2]]] Texas Instruments (1997, Nov). _CDx4HC405x, CDx4HCT405x High-Speed CMOS Logic Analog Multiplexers and Demultiplexers (Datasheet)_. Retrieved 2021-10-20, from https://www.ti.com/lit/ds/symlink/cd74hc4051.pdf.
 * [[[bib-maxim-xor-definition, 3]]] Maxim Integrated (2020). _Glossary Definition For XOR Gate_. Retrieved 2021-10-22, from https://www.maximintegrated.com/en/glossary/definitions.mvp/term/XOR%20Gate/gpk/1202.
 * [[[bib-spin-num-logic-gates, 4]]] McAllister, Willy (2021). _Digital logic gates_. Spinning Numbers. Retrieved 2021-10-24, from https://spinningnumbers.org/a/logic-gates.html.
+* [[[bib-wp-list-logic-sym, 5]]] Wikipedia (2005, Aug 20). _List of logic symbols_. Retrieved 2021-10-25, from https://en.wikipedia.org/wiki/List_of_logic_symbols.
