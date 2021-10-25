@@ -14,13 +14,15 @@ Digital logic is the study and application of the fundamentals in digital (binar
 
 == Logic Gates
 
-Logic gate inputs are normally labelled as a single letter, starting with A (e.g. a three input AND gate would have inputs A, B and C). The output is normally labelled Y, unless you are using a flip-flop or latch, and the output is labelled Q.
+Logic gate inputs are normally labelled as a single letter, starting with `A` (e.g. a three input AND gate would have inputs `A`, `B` and `C`). The output is normally labelled `Y` (in other material you may see this labelled `X`), unless you are using a flip-flop or latch, and the output is labelled `Q`.
 
 There are a few different standards used to draw logic gates on schematics:
 
 * *MIL-STD-806B* (Graphic Symbols For Logic Diagrams): This most commonly used symbols for basic and/or/xor e.t.c gates is captured in this standard. Each gate has a unique shape and are easily distinguished on a large schematic with many gates. NOT logic is shown with a _bubble_.
 * *IEC 60617* (ANSI/IEEE Std 91-1984): All the gates are IC-like rectangles with symbols inside to denote the function. NOT logic is shown with a _flag_ on the pin rather than a _bubble_. Not as easy too quickly identify the gate as MIL-STD-806B, and not as widely used.
 * *DIN 40700-24* (Graphical Symbols; Components For Precision Engineering Devices, Especially Clocks): Ever rarer than the MIL-STD-806B or IEC 60617 symbols, these are rarely seen. The 1976 Edition was released in June 1976. DIN symbols on this page are referenced to https://de.wikipedia.org/wiki/Logikgatter#Typen_von_Logikgattern_und_Symbolik.
+
+This page uses the convention of `TRUE` or `1` to represent the logic state true, and `FALSE` or `0` to represent the logic state false.
 
 === NOT
 
@@ -29,7 +31,7 @@ Arguably the simplest logical gate (ignoring a buffer), a _NOT_ gate (a.k.a. inv
 .The symbols for a NOT gate (inverter).
 image::not-gate-symbol.svg[width=800px]
 
-.Truth table for an OR gate.
+.Truth table for an NOT gate.
 |===
 1.+| Inputs | Output
 
@@ -38,7 +40,7 @@ image::not-gate-symbol.svg[width=800px]
 | 1   | 0
 |===
 
-And this gives rise to the simple equation:
+And this gives rise to the simple equation for NOT logic:
 
 [stem]
 ++++
@@ -49,7 +51,7 @@ Y = \overline{A}
 
 === AND/NAND
 
-AND is also called logical conjunction<<bib-wp-list-logic-sym>>.
+An AND gate outputs `TRUE` only if all it's inputs are `TRUE`. AND is also called logical conjunction<<bib-wp-list-logic-sym>>.
 
 .The symbols for an AND gate.
 image::and-gate-symbol.svg[width=800px]
@@ -78,6 +80,9 @@ Y &= A \wedge B \\
 \end{align}
 ++++
 
+A NAND gate is just an AND gate but with the output inverted. This is shown in <<nand-gate-symbol>> with the bubble at the output of the AND symbol.
+
+[[nand-gate-symbol]]
 .The symbol for an NAND gate.
 image::nand-gate-symbol.svg[width=800px]
 
@@ -95,7 +100,7 @@ image::nand-gate-symbol.svg[width=800px]
 
 === OR/NOR
 
-OR is also called logical disjunction<<bib-wp-list-logic-sym>>.
+A OR gate is `TRUE` if at least one input is `TRUE`. This means it is also outputs `TRUE` if all it's inputs are `TRUE`. OR is also called logical disjunction<<bib-wp-list-logic-sym>>.
 
 .The symbol for an OR gate.
 image::or-gate-symbol.svg[width=800px]
@@ -122,8 +127,9 @@ Y &= A || B \\
 \end{align}
 ++++
 
-A NOR gate is just a OR gate but with the output inverted (i.e. what you would get if you connected the output of an OR gate to an inverter).
+A NOR gate is just a OR gate but with the output inverted (i.e. what you would get if you connected the output of an OR gate to an inverter). Just like the NAND gate, the NOR is gate is shown in <<nor-gate-symbol>> and is just an OR gate symbol with a bubble on the output.
 
+[[nor-gate-symbol]]
 .The symbols for a NOR gate.
 image::nor-gate-symbol.svg[width=800px]
 
@@ -155,12 +161,12 @@ image::how-to-draw-the-or-gate.png[width=600px]
 
 === XOR
 
-The _XOR gate_ (_exclusive OR_) only outputs a `1` if one and only one of it's inputs is also `1`. 
+A 2-input _XOR gate_ (_exclusive OR_) only outputs `TRUE` if *one and only one* of it's inputs is also `TRUE`. 
 
-.The symbols for an XOR (exclusive-or) gate.
+.The symbols for a 2-input XOR (exclusive-or) gate.
 image::xor-gate-symbol.svg[width=800px]
 
-.Truth table for an XOR gate.
+.Truth table for a 2-input XOR gate.
 |===
 2.+| Inputs | Output
 
@@ -171,7 +177,7 @@ image::xor-gate-symbol.svg[width=800px]
 | 1 | 1 | 0
 |===
 
-NOTE: The only difference in behaviour between an OR and XOR is when both inputs are `1`. An OR gate outputs a `1` in this case, whilst and XOR outputs a `0`.
+NOTE: The only difference in behaviour between an OR and XOR is when both inputs are `TRUE`. An OR gate outputs a `TRUE` in this case, whilst and XOR outputs a `FALSE`.
 
 The symbol stem:[\bigoplus] is used to represent XOR, as hence XOR can be written in the following ways:
 
