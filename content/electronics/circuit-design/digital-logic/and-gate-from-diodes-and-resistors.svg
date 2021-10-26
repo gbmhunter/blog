@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 473 473" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-256.772,54.2344)">
+        <text x="677.227px" y="258.937px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;fill:rgb(234,117,0);">Y</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-428.326,-212.303)">
+        <text x="677.227px" y="258.937px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;fill:rgb(234,117,0);">+5V</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-665.343,54.2344)">
+        <text x="677.227px" y="258.937px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;fill:rgb(234,117,0);">A</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-660.672,172.345)">
+        <text x="677.227px" y="258.937px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;fill:rgb(234,117,0);">B</text>
+    </g>
+    <g id="diode-general" transform="matrix(3.06162e-16,1,-1,3.06162e-16,649.606,-413.441)">
+        <g transform="matrix(1,0,0,1,0.0551181,0)">
+            <path d="M708.661,354.331L708.661,590.551" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,0.0551181,0)">
+            <path d="M673.228,496.063L744.094,496.063L708.661,496.063L673.228,437.008L744.094,437.008L708.661,496.063" style="fill:rgb(52,101,164);stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        </g>
+    </g>
+    <g id="diode-general1" serif:id="diode-general" transform="matrix(3.06162e-16,1,-1,3.06162e-16,649.606,-295.331)">
+        <g transform="matrix(1,0,0,1,0.0551181,0)">
+            <path d="M708.661,354.331L708.661,590.551" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        </g>
+        <g transform="matrix(1,0,0,1,0.0551181,0)">
+            <path d="M673.228,496.063L744.094,496.063L708.661,496.063L673.228,437.008L744.094,437.008L708.661,496.063" style="fill:rgb(52,101,164);stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        </g>
+    </g>
+    <g id="resistor-american" transform="matrix(1,0,0,1,-59.0551,-295.276)">
+        <path d="M354.331,354.331L354.331,401.575L330.709,413.386L377.953,437.008L330.709,460.63L377.953,484.252L330.709,507.874L377.953,531.496L354.331,543.307L354.331,590.551" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+    </g>
+    <g id="connection-center" transform="matrix(1,0,0,1,-188.976,-401.575)">
+        <circle cx="484.252" cy="696.85" r="11.811" style="fill:rgb(52,101,164);stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,-177.165,-59.0551)">
+        <path d="M472.441,354.331L472.441,472.441" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.17px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,-177.165,-59.0551)">
+        <path d="M472.441,354.331L590.551,354.331" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.17px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,-1594.49,-531.496)">
+        <g id="v-rail-short">
+            <path d="M1854.33,590.551L1925.2,590.551" style="fill:none;stroke:rgb(52,101,164);stroke-width:4.25px;"/>
+        </g>
+    </g>
+</svg>

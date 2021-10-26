@@ -80,6 +80,12 @@ Y &= A \wedge B \\
 \end{align}
 ++++
 
+An AND gate can be made using basic diode logic as shown in <<and-gate-from-diodes-and-resistors>>.
+
+[[and-gate-from-diodes-and-resistors]]
+.An AND gate made from basic <<_diode_logic_dl, diode logic>>.
+image::and-gate-from-diodes-and-resistors.svg[width=300px]
+
 A NAND gate is just an AND gate but with the output inverted. This is shown in <<nand-gate-symbol>> with the bubble at the output of the AND symbol.
 
 [[nand-gate-symbol]]
@@ -235,9 +241,17 @@ image::xnor-gate-symbol.svg[width=800px]
 
 == What Are Logic Gates Built From?
 
+=== Diode Logic (DL)
+
+_Diode logic_ (DL) is digital logic circuitry *made from just diodes and resistors*. It is a very simple (if not the simplest) way of constructing logic gates in a circuit. Diode logic is great for getting a basic theoretical understanding of how logic gates are realized, but is *rarely used in practise due to fan-out and switching speed issues*.
+
+[[and-gate-from-diodes-and-resistors-2]]
+.An AND gate made from basic diode logic.
+image::and-gate-from-diodes-and-resistors.svg[width=300px]
+
 === Resistor-Transistor Logic (RTL)
 
-_Resistor-transistor logic_ (RTL) is one of the most basic families of digital logic. It uses resistors and BJTs to build the basic gates required for digital logic. Now days it is completely superseded by logic families such transistor-transistor logic (TTL) and CMOS. However, it serves as a great place to introduces readers on how logic gates are built from discrete components.
+_Resistor-transistor logic_ (RTL) is one of the most basic families of digital logic (only diode logic beats it in terms of simplicity). It uses resistors and BJTs to build the basic gates required for digital logic. Now days it is completely superseded by logic families such transistor-transistor logic (TTL) and CMOS. However, it serves as a great place to introduces readers on how logic gates are built from discrete components.
 
 .A very basic logic "inverter" made from RTL.
 image::rtl-logic-inverter.svg[width=400px]
