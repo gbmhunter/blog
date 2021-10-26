@@ -243,11 +243,13 @@ image::xnor-gate-symbol.svg[width=800px]
 
 === Diode Logic (DL)
 
-_Diode logic_ (DL) is digital logic circuitry *made from just diodes and resistors*. It is a very simple (if not the simplest) way of constructing logic gates in a circuit. Diode logic is great for getting a basic theoretical understanding of how logic gates are realized, but is *rarely used in practise due to fan-out and switching speed issues*.
+_Diode logic_ (DL) is digital logic circuitry *made from just diodes and resistors*. It is a very simple (if not the simplest) way of constructing logic gates in a circuit. Diode logic is great for getting a basic theoretical understanding of how logic gates are realized, but is *rarely used in practise due to fan-out, switching speed issues, and limited gate constructibility (more on this below)!*. Also known as _diode-resistor logic_ (DRL). 
 
 [[and-gate-from-diodes-and-resistors-2]]
 .An AND gate made from basic diode logic.
 image::and-gate-from-diodes-and-resistors.svg[width=300px]
+
+Before long you'll be struck with the solemn realization you can't create a NOT gate (inverter) from pure diode logic (or any gates that require inverting capabilities, such as NAND or NOR gates). *This limits you to being only able to make AND or OR gates*, and hence it's usefulness is severely limited. NOT gates are constructable as soon as you add switching elements, such as transistors. <<_resistor_transistor_logic_rtl, Resistor-transistor logic>> is the extension of diode logic but the addition of transistors.
 
 === Resistor-Transistor Logic (RTL)
 
