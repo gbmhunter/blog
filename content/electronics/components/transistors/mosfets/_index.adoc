@@ -119,7 +119,7 @@ There are three ways in which a MOSFET can generally fail:
 
 To prevent over-voltage failure's, TVS diodes, Zener diodes, or snubber circuits can be used to protect the pins. TVS and Zener diodes are the most common ways to do this, and are used to clamp the voltages to a safe level.
 
-Almost always, a MOSFET will short out the drain and source when it fails. This mean the MOSFET goes into conduction, and can destroy even more circuitry! Either make sure that your MOSFET won't fail, or take precautions against large currents if it does. I experienced plenty of MOSFET failures when designing the half-bridge for the [Electric Skateboard project](/electronics/projects/electric-skateboard)).
+Almost always, a MOSFET will short out the drain and source when it fails. This mean the MOSFET goes into conduction, and can destroy even more circuitry! Either make sure that your MOSFET won't fail, or take precautions against large currents if it does. I experienced plenty of MOSFET failures when designing the half-bridge for the link:/electronics/projects/electric-skateboard[Electric Skateboard project]).
 
 ## Thermal Stability
 
@@ -177,6 +177,12 @@ MOSFETs can be used for load switches, as shown on the link:/electronics/circuit
 .Schematic example of load switching with a P-channel MOSFET. See the Load Switches page for more info.
 image::/electronics/circuit-design/power-management/load-switches/bjt-current-source-to-turn-p-channel-on.svg[width=500px]
 
+Some MOSFETs designed for switching loads support logic-level inputs (e.g. +3.3V or +5.0V from either a microcontroller or logic gate) and have built in TVS diodes. One such example is the DMN61D8L-7 from Diodes Incorporated. As shown in <<dmn61d8l-7-mosfet-internal-schematic>>, this particular MOSFET package also included a pull-down resistor and ESD limiting resistor in series with the gate.
+
+[[dmn61d8l-7-mosfet-internal-schematic]]
+.Internal schematics of the DMN61D8L-7 MOSFET from Diodes Incorporated<<bib-dinc-dmn61d8l-ds>>.
+image::dmn61d8l-7-mosfet-internal-schematic.png[width=600px]
+
 ### Isolated Gate Drives
 
 One problem with MOSFETS (well, with any switched semiconductor) is dealing with the gate drive when either:
@@ -197,9 +203,9 @@ A _common-source enhancement-mode MOSFET amplifier_ is a basic MOSFET-based ampl
 .Schematic of a basic common-mode N-channel MOSFET amplifier.
 image::common-source-amplifier.svg[width=500px]
 
-The huge problem with the above circuit is the non-linearity. 
+The huge problem with the above circuit is the non-linearity.
 
-## Internal Diodes
+== Internal Diodes
 
 Because any PN junction is inherently a diode, a regular MOSFET has two of them. One of the diodes is removed when the substrate is connected to the source.
 
@@ -338,8 +344,9 @@ Typical link:http://www.richieburnett.co.uk/temp/gdt/gdt2.html[gate drive wavefo
 [bibliography]
 == References
 
-* [[[bib-science-direct-split-gate-mosfet, 1]]]: https://www.sciencedirect.com/science/article/pii/S2589208820300041
-* [[[bib-infineon-mosfet-safe-operating-diagram, 2]]]: https://www.infineon.com/dgdl/Infineon-ApplicationNote_Linear_Mode_Operation_Safe_Operation_Diagram_MOSFETs-AN-v01_00-EN.pdf?fileId=db3a30433e30e4bf013e3646e9381200
-* [[[bib-electronic-design-the-spirito-effect, 3]]]: https://www.electronicdesign.com/power-management/article/21795492/the-spirito-effect-improved-my-designand-i-didnt-even-know-it#:~:text=Known%20as%20the%20Spirito%20Effect,trench%20devices%20are%20particularly%20impacted
-* [[[bib-semantic-scholar-dmos, 4]]]: https://www.semanticscholar.org/paper/Diffusion-Selfaligned-MOST%3B-A-New-Approach-for-High-Tarui-Hayashi/c4ad0fa7b03e080cc027545f7152caa28633fa9a
-* [[[bib-wikipedia-hemt, 5]]]: https://en.wikipedia.org/wiki/High-electron-mobility_transistor, accessed 2021-02-18.
+* [[[bib-science-direct-split-gate-mosfet, 1]]]: Yu-Chin Lee, Jyh-Ling Lin (2020). _Structural optimization and miniaturization for Split-Gate Trench MOSFETs with 60 V breakdown voltage_. KeAi. Retrieved 2020-10-13, from https://www.sciencedirect.com/science/article/pii/S2589208820300041.
+* [[[bib-infineon-mosfet-safe-operating-diagram, 2]]]: Schoiswohl, J. (2017, May). _Linear Mode Operation and Safe Operating Diagram of Power-MOSFETs_. Infineon. Retrieved 2020-10-13, from https://www.infineon.com/dgdl/Infineon-ApplicationNote_Linear_Mode_Operation_Safe_Operation_Diagram_MOSFETs-AN-v01_00-EN.pdf?fileId=db3a30433e30e4bf013e3646e9381200.
+* [[[bib-electronic-design-the-spirito-effect, 3]]]: Schimel, Paul (2011, Oct 20). _The Spirito Effect Improved My Design—And I Didn’t Even Know It_. ElectronicDesign. Retrieved 2020-10-14, from https://www.electronicdesign.com/power-management/article/21795492/the-spirito-effect-improved-my-designand-i-didnt-even-know-it.
+* [[[bib-semantic-scholar-dmos, 4]]]: Y. Tarui, Y. Hayashi, T. Sekigawa (1969). _Diffusion Selfaligned MOST; A New Approach for High Speed Device_. Retrieved 2021-02-18, from https://www.semanticscholar.org/paper/Diffusion-Selfaligned-MOST%3B-A-New-Approach-for-High-Tarui-Hayashi/c4ad0fa7b03e080cc027545f7152caa28633fa9a
+* [[[bib-wikipedia-hemt, 5]]]: Wikipedia (2004, Jul 19). _High-electron-mobility transistor_. Retrieved 2021-02-18, from https://en.wikipedia.org/wiki/High-electron-mobility_transistor.
+* [[[bib-dinc-dmn61d8l-ds, 6]]] Diodes Incorporated (2018, Jun). _DMN61D8L/LVT: 60V N-Channel Enhancement Mode MOSFET (Datasheet)_. Retrieved 2021-10-26, from https://www.diodes.com/assets/Datasheets/DMN61D8L-LVT.pdf.
