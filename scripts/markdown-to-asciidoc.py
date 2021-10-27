@@ -126,7 +126,7 @@ def paragraph_eq_replace_fn(found_text, file_path):
     print(f'found_text = {found_text}')
 
     # Extract Latex from inside <p>$$ <equation> $$</p>
-    match = re.search(r'<p>\$\$(((?!\$\$).)+)\$\$<\/p>', found_text)
+    match = re.search(r'<p>\$\$(((?!\$\$).)+)\$\$<\/p>', found_text, flags=re.DOTALL|re.MULTILINE)
     content = match.group(1)
     print(f'content={content}')
 

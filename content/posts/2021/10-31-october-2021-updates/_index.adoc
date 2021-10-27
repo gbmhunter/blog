@@ -31,3 +31,5 @@ image::/posts/2021/10-31-october-2021-updates/molex-0387700104-barrier-strip-pho
 * Added a new page on Visible Light Communication (VLC).
 
 * Added info on the link:/electronics/circuit-design/digital-logic/#_xor[XOR gate].
+
+* Added info on wettable flanks on the QFN component package. 
