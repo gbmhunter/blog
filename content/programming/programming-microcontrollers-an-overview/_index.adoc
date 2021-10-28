@@ -1,0 +1,16 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2021-10-28
+draft: false
+lastmod: 2021-10-28
+title: "Programming Microcontrollers: An Overview"
+type: "page"
+---
+
+== Standard Connector Pinouts
+
+JTAG:
+
+
+
+SWD:
