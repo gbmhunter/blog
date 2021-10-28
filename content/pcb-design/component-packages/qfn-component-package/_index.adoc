@@ -214,6 +214,9 @@ image::wettable-flank-qfn-illustrated-cross-section-allegro.png[width=200px]
 
 The QFN package is one of the most common packages for a manufacturer to add wettable flanks to. Wettable flanks was largely driven by the need to AOI in the automotive industry but this package feature is now found to be generally useful in a number of industries.
 
+.Close-up detail drawing highlighting the wettable flanks on the SOT-618(DD) (QFN) component package by NXP. Image ©2018, NXP<<bib-nxp-sot618-13dd>>.
+image::nxp-sot618-13dd-qfn-wettable-flanks-detail-drawing.png[width=400px]
+
 The tin plating of the flank prevents the traditionally exposed copper (a by-product of the sawing singulation of a single QFN package from a "brick") from oxidizing<<bib-allegro-wettable-flanks>>.
 
 ## Thermal Resistances
@@ -234,3 +237,4 @@ The tin plating of the flank prevents the traditionally exposed copper (a by-pro
 
 * [[[bib-ti-wettable-flanks, 1]]] David Snook (2018, Jan 23). _Make automatic optical inspection easy thanks to packages with wettable flanks_. Texas Instruments. Retrieved 2021-10-27, from https://e2e.ti.com/blogs_/b/behind_the_wheel/posts/make-automatic-optical-inspection-easy-thanks-to-packages-with-wettable-flanks.
 * [[[bib-allegro-wettable-flanks, 2]]] Bradley Smith (2017). _Wettable Flank Plated PQFN_. Allegro Microsystems. Retrieved 2021-10-27, from https://www.allegromicro.com/en/insights-and-innovations/technical-documents/semiconductor-packaging-publications/wettable-flank-plated-pqfn.
+* [[[bib-nxp-sot618-13dd, 3]]] NXP (2018). _SOT618-13(DD) HVQFN40, plastic thermal enhanced very thin quad flat package; no leads, wettable flanks; 40 terminals; 0.5 mm pitch, 6 mm x 6 mm x 0.85 mm body_. Retrieved 2021-10-28, from https://www.nxp.com/docs/en/package-information/SOT618-13(DD).pdf.
