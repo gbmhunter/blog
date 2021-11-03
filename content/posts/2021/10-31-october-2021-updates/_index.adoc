@@ -4,6 +4,7 @@ categories: [ "Posts", "Updates" ]
 date: 2021-10-31
 description: "Blog updates during October 2021."
 draft: false
+images: [ "/posts/2021/10-31-october-2021-updates/op-amp-slew-rate-screenshot.png" ]
 lastmod: 2021-10-31
 tags: []
 title: "October 2021 Updates"
@@ -12,24 +13,34 @@ type: "post"
 
 == Updates This Month
 
-* Added equations and plots showing the effect op-amp slew rates have on square and sine waves.
+* Added link:/electronics/components/op-amps/#_slew_rate[equations and plots showing the effect op-amp slew rates] have on square and sine waves.
++
+image::/posts/2021/10-31-october-2021-updates/op-amp-slew-rate-screenshot.png[width=400px]
 
 * Added info on link:/electronics/components/connectors/#_barrier_strips[barrier strips to the Connectors page].
 +
-image::/posts/2021/10-31-october-2021-updates/molex-0387700104-barrier-strip-photo.png[width=300px]
+image::/posts/2021/10-31-october-2021-updates/molex-0387700104-barrier-strip-photo.png[width=200px]
 
 * Add info on link:/electronics/communication-protocols/can-protocol/#_can_bit_timing[CAN bit timing].
++
+image::/posts/2021/10-31-october-2021-updates/can-bit-timing-screenshot.png[width=400px]
 
-* More info added on the TSSOP component package.
+* More info added on the link:/pcb-design/component-packages/tssop-component-package/[TSSOP component package].
 
-* Added info on the PowerPAK SO-8 component package.
+* Added info on the link:/pcb-design/component-packages/powerpak-so8-component-package/[PowerPAK SO-8 component package].
 
 * Merged the "Logic Gates" and "Metastability" child pages into the parent link:/electronics/circuit-design/digital-logic/#_d_flip_flops[Digital Logic page].
 
 * Added a schematic symbol and internal diagram for the link:/electronics/circuit-design/digital-logic/#_d_flip_flops[D-type flip-flop].
++
+image::/posts/2021/10-31-october-2021-updates/d-flipflop-screenshot.png[width=400px]
 
-* Added a new page on Visible Light Communication (VLC).
+* Added a new page on link:/electronics/communication-protocols/visable-light-communication-vlc/[Visible Light Communication (VLC)].
 
 * Added info on the link:/electronics/circuit-design/digital-logic/#_xor[XOR gate].
++
+image::/posts/2021/10-31-october-2021-updates/xor-gate-screenshot.png[width=400px]
 
-* Added info on wettable flanks on the QFN component package. 
+* Added info on link:/pcb-design/component-packages/qfn-component-package/#_wettable_flanks[wettable flanks on the QFN component package].
++
+image::/posts/2021/10-31-october-2021-updates/qfn-wettable-flanks-screenshot.png[width=400px]

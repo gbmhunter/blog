@@ -1,0 +1,14 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Posts", "Updates" ]
+date: 2021-11-30
+description: "Blog updates during November 2021."
+draft: false
+images: []
+lastmod: 2021-11-30
+tags: []
+title: "November 2021 Updates"
+type: "post"
+---
+
+== Updates This Month
