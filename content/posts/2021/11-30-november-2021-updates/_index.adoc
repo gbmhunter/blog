@@ -12,3 +12,5 @@ type: "post"
 ---
 
 == Updates This Month
+
+* Added 10-pin ARM SWD programming connector pinouts.
