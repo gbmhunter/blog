@@ -7,10 +7,34 @@ title: "Programming Microcontrollers: An Overview"
 type: "page"
 ---
 
-== Standard Connector Pinouts
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
 
-JTAG:
+== TagConnect
 
+Segger has jumped on the band wagon and provides a "J-Link 6-pin Needle Adapter" which looks like a re-branded TagConnect to mate with their J-Link programmer.
 
+== Cortex Debug Connector Pinouts
 
-SWD:
+There are industry-standard connector sizes and pinouts for debugging the Cortex range of ARM-based microcontrollers (e.g. microcontrollers with a Cortex-M0, Cortex-M0+, Cortex-M3, e.t.c.).
+
+=== 10-pin, 1.27mm Pitch
+
+The 10-pin, 2x5, 1.27mm pitch (0.050") connector is the most common debug connector used with Cortex-based microcontrollers.
+
+.Standard pinout for the ARM Cortex 10-pin programming connector configured for (A) JTAG and (B) SWD. NC pins are **N**ot **C**onnected (i.e. not used)<<bib-keil-coresight-conn>>.
+image::arm-cortex-10pin-debug-connector-pinout.svg[width=800px]
+
+The official connector is the link:https://www.samtec.com/products/ftsh-105-01-l-dv-k[Samtec FTSH-105-01], yet luckily these header-style connectors are standardized across manufacturers and almost any 1.27mm 2x5 header-style connector will work.
+
+.3D model of the Samtec FTSH-105-01 10-pin 2x5 1.27mm pitch SMD header<<bib-samtec-ftsh-105-01>>.
+image::samtec-ftsh-105-01-l-dv-k-2x5-1.27mm-header.png[width=300px]
+
+Sometimes `Pin 7` is removed from the male header, and the female header has a blank position in the same location (i.e. no receptacle). This is to "key" the header so it can't be mated incorrectly. Another way of preventing incorrect mating is to use a keyed shroud.
+
+`Pin 9 (GND)` can also be used for detection.
+
+[bibliography]
+== References
+
+* [[[bib-keil-coresight-conn, 1]]]: Keil. _CoreSight Connectors_. Retrieved 2021-11-05, from https://www2.keil.com/coresight/coresight-connectors.
+* [[[bib-samtec-ftsh-105-01, 2]]]: Samtec. _FTSH-105-01-L-DV-K High Reliability Header Strips, 0.050" pitch_. Retrieved 2021-11-05, from https://www.samtec.com/products/ftsh-105-01-l-dv-k.

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1890 709" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,118.11,-177.165)">
+        <path d="M236.22,590.551L236.22,826.772L472.441,826.772L472.441,236.22L236.22,236.22L236.22,472.441" style="fill:none;stroke:rgb(52,101,164);stroke-width:8.33px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,216.535,-78.7402)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,334.646,-78.7402)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,216.535,39.3701)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,334.646,39.3701)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,216.535,157.48)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,334.646,157.48)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,216.535,275.591)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,334.646,275.591)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,216.535,393.701)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,334.646,393.701)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,-480.723,-124.274)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">VCC 1</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-64.1282,-124.274)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">2 <tspan x="713.824px 744.366px " y="258.937px 258.937px ">TM</tspan>S</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-61.7051,-6.16351)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">4 <tspan x="713.824px 744.366px " y="258.937px 258.937px ">TC</tspan>LK</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-61.7051,111.947)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">6 <tspan x="713.824px 744.366px " y="258.937px 258.937px ">TD</tspan>O</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-64.1282,230.057)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">8 <tspan x="713.824px 744.366px " y="258.937px 258.937px ">TD</tspan>I</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-64.1282,348.167)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">10 nRESET</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-488.193,-6.16351)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">GND 3</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-489.048,111.947)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">GND 5</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-482.7,229.373)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">KEY<tspan x="778.131px 790.631px " y="258.937px 258.937px "> 7</tspan></text>
+    </g>
+    <g transform="matrix(1,0,0,1,-491.465,348.167)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">GND 9</text>
+    </g>
+    <g transform="matrix(1,0,0,1,-633.059,383.69)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:75px;fill:rgb(234,117,0);">(A)</text>
+    </g>
+    <g transform="matrix(1,0,0,1,323.634,383.69)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:75px;fill:rgb(234,117,0);">(B)</text>
+    </g>
+    <g transform="matrix(1,0,0,1,1062.99,-177.165)">
+        <path d="M236.22,590.551L236.22,826.772L472.441,826.772L472.441,236.22L236.22,236.22L236.22,472.441" style="fill:none;stroke:rgb(52,101,164);stroke-width:8.33px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,1161.42,-78.7402)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,1279.53,-78.7402)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,1161.42,39.3701)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,1279.53,39.3701)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,1161.42,157.48)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,1279.53,157.48)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,1161.42,275.591)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,1279.53,275.591)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,1161.42,393.701)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(0.666667,0,0,0.666667,1279.53,393.701)">
+        <rect x="259.843" y="259.843" width="70.866" height="70.866" style="fill:none;stroke:rgb(52,101,164);stroke-width:6.25px;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,464.159,-124.274)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">VCC 1</text>
+    </g>
+    <g transform="matrix(1,0,0,1,880.754,-124.274)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">2 SWDIO</text>
+    </g>
+    <g transform="matrix(1,0,0,1,883.177,-6.16351)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">4 SWCLK</text>
+    </g>
+    <g transform="matrix(1,0,0,1,883.177,111.947)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">6 SWO</text>
+    </g>
+    <g transform="matrix(1,0,0,1,880.754,230.057)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">8 NC</text>
+    </g>
+    <g transform="matrix(1,0,0,1,880.754,348.167)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">10 nRESET</text>
+    </g>
+    <g transform="matrix(1,0,0,1,456.689,-6.16351)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">GND 3</text>
+    </g>
+    <g transform="matrix(1,0,0,1,455.834,111.947)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">GND 5</text>
+    </g>
+    <g transform="matrix(1,0,0,1,492.357,230.057)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">NC 7</text>
+    </g>
+    <g transform="matrix(1,0,0,1,453.417,348.167)">
+        <text x="677.227px" y="258.937px" style="font-family:'TimesNewRomanPSMT', 'Times New Roman', serif;font-size:50px;fill:rgb(234,117,0);">GND 9</text>
+    </g>
+</svg>
