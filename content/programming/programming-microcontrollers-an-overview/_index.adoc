@@ -2,12 +2,56 @@
 authors: [ "Geoffrey Hunter" ]
 date: 2021-10-28
 draft: false
-lastmod: 2021-10-28
+lastmod: 2021-11-06
+tags: [ "ARM", "programming", "microcontrollers", "connectors", "pinouts" ]
 title: "Programming Microcontrollers: An Overview"
 type: "page"
 ---
 
 WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
+== Interfaces
+
+ARM DSTREAM?
+
+=== JTAG
+
+JTAG is defined in IEEE 1149.1.
+
+[cols="1,1,4"]
+.JTAG pin functions.
+|===
+| Name | I/O (w.r.t. programmer) | Description
+
+| TCK
+| Output
+| The Test Clock pin is driven by the programmer and provides a clock for the data on the other pins.
+
+| TDI
+| Output
+| The Test Data In pin is driven by the programmer and provides serial data to the target during programming/debugging.
+
+| TDO
+| Input
+| The Test Data Output pin is driven by the target device and provides serial data to the programmer during programming/debugging.
+
+| TMS
+| Output
+| The Test Mode Select pin is used to set the state of the Test Access Port controller.
+
+| nRST
+| Output
+| The Reset pin is driven active low to reset the target device. Typically pulled high on the target board.
+
+|===
+
+=== SWD
+
+=== SWV
+
+=== ETM
+
+4-bit.
 
 == TagConnect
 
@@ -27,11 +71,31 @@ image::arm-cortex-10pin-debug-connector-pinout.svg[width=800px]
 The official connector is the link:https://www.samtec.com/products/ftsh-105-01-l-dv-k[Samtec FTSH-105-01], yet luckily these header-style connectors are standardized across manufacturers and almost any 1.27mm 2x5 header-style connector will work.
 
 .3D model of the Samtec FTSH-105-01 10-pin 2x5 1.27mm pitch SMD header<<bib-samtec-ftsh-105-01>>.
-image::samtec-ftsh-105-01-l-dv-k-2x5-1.27mm-header.png[width=300px]
+image::samtec-ftsh-105-01-l-dv-k-2x5-1.27mm-header.png[width=200px]
 
 Sometimes `Pin 7` is removed from the male header, and the female header has a blank position in the same location (i.e. no receptacle). This is to "key" the header so it can't be mated incorrectly. Another way of preventing incorrect mating is to use a keyed shroud.
 
 `Pin 9 (GND)` can also be used for detection.
+
+=== 20-pin ARM "Standard" Debug Connector Pinout
+
+This is the most common 20-pin debug connector pinout for an ARM device.
+
+.Pinout for the 20-pin "standard" ARM debug connector<<bib-keil-coresight-conn>>.
+image::arm-cortex-20pin-arm-standard-debug-connector-pinout.svg[width=500px]
+
+NOTE: Pin 2 may be specified as either `VCC (optional)` or `NC` (not connected). In most situations I've seen this as `NC`.
+
+=== 20-pin Cortex Debug + ETM Connector Pinout
+
+.Pinout for the "Cortex Debug + ETM Connector" 20-pin debug connector<<bib-keil-coresight-conn>>.
+image::arm-cortex-20pin-coresight-debug-connector-pinout.svg[width=500px]
+
+Supported by the ULINKPro.
+
+=== 38-pin Mictor Connector
+
+Connecting a trace probe to a ARM target.
 
 [bibliography]
 == References
