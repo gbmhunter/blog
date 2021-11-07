@@ -77,6 +77,18 @@ Sometimes `Pin 7` is removed from the male header, and the female header has a b
 
 `Pin 9 (GND)` can also be used for detection.
 
+=== 14-pin TI Connector
+
+.Pinout for the TI 14-pin JTAG connector<<bib-segger-ti-14pin>><<bib-ti-jtag-conns>>.
+image::14pin-ti-jtag-connector-pinout.svg[width=500px]
+
+The `EMU0` and `EMU1` pins can be used for cross-core triggering (e.g. one core halts and signals the other cores to halt)<<bib-ti-jtag-conns>>. They are not supported by ARM DSTREAM<<bib-arm-dstream-interface-ref>>.
+
+The BeagleBoard Rev D and Beagleboard-xM use this connector.
+
+.Photo highlighting the 14-pin TI style JTAG connector on the BeagleBoard-xM<<bib-beagleboard-xm>>.
+image::beagleboard-photo-jtag-14pin-ti-debug-conn-highlighted.png[width=600px]
+
 === 20-pin ARM "Standard" Debug Connector Pinout
 
 This is the most common 20-pin debug connector pinout for an ARM device.
@@ -102,3 +114,7 @@ Connecting a trace probe to a ARM target.
 
 * [[[bib-keil-coresight-conn, 1]]]: Keil. _CoreSight Connectors_. Retrieved 2021-11-05, from https://www2.keil.com/coresight/coresight-connectors.
 * [[[bib-samtec-ftsh-105-01, 2]]]: Samtec. _FTSH-105-01-L-DV-K High Reliability Header Strips, 0.050" pitch_. Retrieved 2021-11-05, from https://www.samtec.com/products/ftsh-105-01-l-dv-k.
+* [[[bib-segger-ti-14pin, 3]]] Segger. _14-Pin TI Adapter_. Retrieved 2021-11-07, from https://www.segger.com/products/debug-probes/j-link/accessories/adapters/14-pin-ti-adapter/.
+* [[[bib-ti-jtag-conns, 4]]] Texas Instruments. _JTAG Connectors and Pinout_. Retrieved 2021-11-07, from http://software-dl.ti.com/ccs/esd/documents/xdsdebugprobes/emu_jtag_connectors.html.
+* [[[bib-arm-dstream-interface-ref, 5]]] ARM. _ARM DSTREAM System and Interface Design Reference: TI JTAG 14_. Retrieved 2021-11-07, from https://developer.arm.com/documentation/dui0499/d/ARM-DSTREAM-Target-Interface-Connections/TI-JTAG-14.
+* [[[bib-beagleboard-xm, 6]]] Beagleboard (2017, May 4). _BeagleBoard-xM_. Retrieved 2021-11-07, from https://beagleboard.org/beagleboard-xm.
