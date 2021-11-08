@@ -16,36 +16,97 @@ ARM DSTREAM?
 
 === JTAG
 
-JTAG is defined in IEEE 1149.1.
+_JTAG_ is a standard defining connections and protocols for testing/verifying PCBs and the devices on them. It is named after the **J**oint **T**est **A**ction **G**roup which defined the standard. It is formally codified in 1990 by IEEE in the standard _IEEE 1149.1-1990_<<bib-wp-jtag>>. ICs supporting JTAG expose a _Test Access Port_ (TAP) which the JTAG device connects to, allowing bi-directional serial data transfer.
+
+Although JTAG was initially designed for board-level testing and verification to address common soldering faults in the 1980's, it is most commonly used today as an in-circuit programming/debug protocol for microcontrollers, microprocessors, FPGAs, and other similar programmable ICs.
+
+JTAG allows the following:
+
+* Processing halting
+* Single-stepping
+* Writing to non-volatile memory (programming)
 
 [cols="1,1,4"]
 .JTAG pin functions.
 |===
 | Name | I/O (w.r.t. programmer) | Description
 
-| TCK
+| `TCK`
 | Output
 | The Test Clock pin is driven by the programmer and provides a clock for the data on the other pins.
 
-| TDI
+| `TDI`
 | Output
 | The Test Data In pin is driven by the programmer and provides serial data to the target during programming/debugging.
 
-| TDO
+| `TDO`
 | Input
 | The Test Data Output pin is driven by the target device and provides serial data to the programmer during programming/debugging.
 
-| TMS
+| `TMS`
 | Output
 | The Test Mode Select pin is used to set the state of the Test Access Port controller.
 
-| nRST
+| `nTRST`
 | Output
-| The Reset pin is driven active low to reset the target device. Typically pulled high on the target board.
+| The "Tap Reset" pin is driven active low to reset the target device. Typically pulled high on the target board. Sometimes just called `TRST`, although always active low.
 
 |===
 
+A 2-wire (excluding GND) "reduced pin count JTAG" is specified in IEEE 1149.7<<bib-wp-jtag>>. The two wires that are used are `TMSC` (test serial data) and `TCKC` (test clock). This 2-wire variant is not common.
+
+CoreSight is an collection of technologies to allow for the debugging of ARM based SoCs. It includes systems built on JTAG for debugging.
+
+`RTCK` (return clock) is a signal created to use be able to use synchronized TAP controllers in ARM9 and ARM11 cores. It is an output of the target system back to the JTAG adapter and is used for synchronization purposes. The RTCK is usually driven by the last flip-flop in the synchronization chain on the target device. The adapter will not change TCK until it gets back a signal on RTCK, this process is called _adaptive clocking_<<bib-arm-dstream-rtck>>.
+
 === SWD
+
+_SWD_ (**S**ingle **W**ire **D**ebug) is a two-wire programming/debugging interface for programmable ICs such as microcontrollers. It is a popular alternative to JTAG. It is formally specified in the ARM Debug Interface v5.
+
+[cols="1,1,4"]
+.SWD wire functions.
+|===
+| Name | I/O (w.r.t. programmer) | Description
+
+| `SWCLK`
+| Output
+| Clock output to target device. Frequency selection is up to the host to decide, up to about 60MHz in practice<<bib-kudelski-swd>>.
+
+| `SWDIO`
+| Bi-directional
+| Synchronous bi-directional data.
+|===
+
+Whilst officially just a 2-wire interface, it is commonly bundled with 1-2 other signals.
+
+[cols="1,1,4"]
+.Additional SWD wire functions.
+|===
+| Name | I/O (w.r.t. programmer) | Description
+
+| `VTREG`
+| Input
+| Target stem:[V_{CC}] voltage so the adapter knows what counts as a logical `1` and `0` on the other wires.
+
+| `SWO`
+| Input
+| 
+
+| `nRST`
+| Output
+| Used to reset the target device. Active low logic.
+|===
+
+SWD uses a bus called _DAP_ (Debug Access Port). On this bus there is one master, the DP (Debug Port, typically a USB dongle when programming microcontrollers), and one or more slaves called APs (Access Ports). There are three different Debug Ports<<bib-kudelski-swd>>:
+
+. JTAG Debug Port (JTAG-DP): Uses the standard JTAG interface.
+. Serial Wire Debug Port (SW-DP): Uses the SWD protocol.
+. Serial Wire / JTAG Debug Port (SWJ-DP): A combination of the previous two, this port can either use SWD or JTAG to access the DAP bus. The `TCK` and `TMS` JTAG signals are re-used for the SWD `SWDCLK` and `SWDIO` signals.
+
+ARM specifies the following two Access Ports:
+
+. Memory Access Port (MEM-AP): Provides access to core memory and registers.
+. JTAG Access Port (JTAG-AP): Provides access to a JTAG chain from the DAP.
 
 === SWV
 
@@ -105,7 +166,7 @@ image::arm-cortex-20pin-coresight-debug-connector-pinout.svg[width=500px]
 
 Supported by the ULINKPro.
 
-=== 38-pin Mictor Connector
+=== 38-pin MICTOR Connector
 
 Connecting a trace probe to a ARM target.
 
@@ -118,3 +179,6 @@ Connecting a trace probe to a ARM target.
 * [[[bib-ti-jtag-conns, 4]]] Texas Instruments. _JTAG Connectors and Pinout_. Retrieved 2021-11-07, from http://software-dl.ti.com/ccs/esd/documents/xdsdebugprobes/emu_jtag_connectors.html.
 * [[[bib-arm-dstream-interface-ref, 5]]] ARM. _ARM DSTREAM System and Interface Design Reference: TI JTAG 14_. Retrieved 2021-11-07, from https://developer.arm.com/documentation/dui0499/d/ARM-DSTREAM-Target-Interface-Connections/TI-JTAG-14.
 * [[[bib-beagleboard-xm, 6]]] Beagleboard (2017, May 4). _BeagleBoard-xM_. Retrieved 2021-11-07, from https://beagleboard.org/beagleboard-xm.
+* [[[bib-wp-jtag, 7]]] Wikipedia. _JTAG_ (2004, May 6). Retrieved 2021-11-08, from https://en.wikipedia.org/wiki/JTAG.
+* [[[bib-arm-dstream-rtck, 8]]] ARM. _DSTREAM-XT System and Interface Design Reference Guide: RTCK_. Retrieved 2021-11-08, from https://developer.arm.com/documentation/102444/1-0/Debug-and-trace-interface/RTCK.
+* [[[bib-kudelski-swd, 9]]] Nicolas Oberli (2019, May 16). _SWD – ARM’s Alternative To JTAG_. Kudelski Security Research. Retrieved 2021-11-08, from https://research.kudelskisecurity.com/2019/05/16/swd-arms-alternative-to-jtag/.

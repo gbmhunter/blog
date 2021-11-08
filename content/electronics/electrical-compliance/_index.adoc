@@ -1,0 +1,16 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2011-09-05
+draft: false
+lastmod: 2021-11-08
+title: "Electrical Compliance"
+type: "page"
+---
+
+Circuits emit electrical noise. They emit radiated electromagnetic noise, and conductive noise (noise that travels down any external electrical connections). Many electronic standards define maximum values of noise and disruption that a circuit can emit.
+
+Reduce these levels requires careful circuit design, in both the components used, the layout, the number of layers, and shielding.
+
+== Pre-compliance Testing
+
+Because official compliance testing is generally expensive, in-house _pre-compliance_ testing is a popular way of gaining confidence the DUT will pass once it is submitted for official testing.

@@ -550,40 +550,20 @@ _Parameters are sorted alphabetically._
 </table>
 ++++
 
-LED forward voltages for common LED colours are listed in the table below. You will notice that the **forward voltage increases with the increasing frequency of the light** (in simple terms, it takes more input energy to create photos with a higher energy), and the forward voltage is largely independent on the manufacturer or manufacturing process of the LED.
+LED forward voltages for common LED colours are listed in the table below. You will notice that the **forward voltage increases with the increasing frequency of the light** (in simple terms, it takes more input energy to create photons with a higher energy), and the forward voltage is largely independent on the manufacturer or manufacturing process of the LED.
 
-++++
-<table>
-  <thead>
-    <tr>
-      <th>Colour</th>
-      <th>Forward Voltage</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Red</td>
-      <td>2.0V</td>
-    </tr>
-    <tr>
-      <td>Orange</td>
-      <td>2.0V</td>
-    </tr>
-    <tr>
-      <td>Yellow</td>
-      <td>2.1V</td>
-    </tr>
-    <tr>
-      <td>Green</td>
-      <td>2.2V</td>
-    </tr>
-    <tr>
-      <td>Blue</td>
-      <td>3.3V</td>
-    </tr>
-  </tbody>
-</table>
-++++
+|===
+| Colour | Forward Voltage
+
+| Red    | 2.0V
+| Orange | 2.0V
+| Yellow | 2.1V
+| Green  | 2.2V
+| Blue   | 3.3V
+| UV     | 3.0V (UVA) to 7.5V (UVC)
+|===
+
+Blue LEDs are GaN based.
 
 === Limiting The LED Current
 
@@ -672,6 +652,15 @@ One popular example, the WS8211, uses it's own custom communications protocol ru
 
 .The WS2811, a popular RGD LED, with integrated controller and drive circuitry (constant current supply). Communicates via a custom 800kHz protocol to a microcontroller.
 image::ws2811-rgb-led-front-and-back-photo.png[width=500px]
+
+=== UV LEDs
+
+UV LEDs are used for applications such as:
+
+* UV curing (UVA: 365-405nm)
+* 3D printing/additive manufacturing
+* Disinfection and sterilization (UVC: 220-280nm)
+* Fluorescence
 
 === LED Controllers
 
