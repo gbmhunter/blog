@@ -14,3 +14,9 @@ type: "post"
 == Updates This Month
 
 * Added 10-pin ARM SWD programming connector pinouts.
+
+* Added more info on the link:/pcb-design/component-packages/to-3-component-package/[TO-3 component package].
+
+* Added info on the link:/pcb-design/component-packages/to-39-component-package/[TO-39 "Balls Lens" component package].
+
+* Added info on the link:/programming/programming-microcontrollers-an-overview/[JTAG and SWD programming/debug interfaces].
