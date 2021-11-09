@@ -16,9 +16,9 @@ ARM DSTREAM?
 
 === JTAG
 
-_JTAG_ is a standard defining connections and protocols for testing/verifying PCBs and the devices on them. It is named after the **J**oint **T**est **A**ction **G**roup which defined the standard. It is formally codified in 1990 by IEEE in the standard _IEEE 1149.1-1990_<<bib-wp-jtag>>. ICs supporting JTAG expose a _Test Access Port_ (TAP) which the JTAG device connects to, allowing bi-directional serial data transfer.
+_JTAG_ is a standard defining connections and protocols for testing/verifying PCBs and the devices on them. It is named after the **J**oint **T**est **A**ction **G**roup which defined the standard. It is formally codified in 1990 by IEEE in the standard _IEEE 1149.1-1990_<<bib-wp-jtag>>. ICs supporting JTAG expose a _Test Access Port_ (TAP) which the JTAG device connects to, allowing bi-directional serial data transfer. JTAG requires 4 signal lines (ignoring the rarely seen 2-signal variant).
 
-Although JTAG was initially designed for board-level testing and verification to address common soldering faults in the 1980's, it is most commonly used today as an in-circuit programming/debug protocol for microcontrollers, microprocessors, FPGAs, and other similar programmable ICs.
+Although JTAG was initially designed for board-level testing and verification to address common soldering faults in the 1980's, it has evolved and is now most commonly used today as an in-circuit programming/debug protocol for microcontrollers, microprocessors, FPGAs, and other similar programmable ICs.
 
 JTAG allows the following:
 
@@ -97,16 +97,20 @@ Whilst officially just a 2-wire interface, it is commonly bundled with 1-2 other
 | Used to reset the target device. Active low logic.
 |===
 
+`SWCLK`, `SWDIO` and `SWO` should be pulled high by approx. stem:[10k\Omega] so that they remain in a stable state when not driven<<bib-arm-dstream-swd-conn>>.
+
 SWD uses a bus called _DAP_ (Debug Access Port). On this bus there is one master, the DP (Debug Port, typically a USB dongle when programming microcontrollers), and one or more slaves called APs (Access Ports). There are three different Debug Ports<<bib-kudelski-swd>>:
 
 . JTAG Debug Port (JTAG-DP): Uses the standard JTAG interface.
 . Serial Wire Debug Port (SW-DP): Uses the SWD protocol.
-. Serial Wire / JTAG Debug Port (SWJ-DP): A combination of the previous two, this port can either use SWD or JTAG to access the DAP bus. The `TCK` and `TMS` JTAG signals are re-used for the SWD `SWDCLK` and `SWDIO` signals.
+. Serial Wire / JTAG Debug Port (SWJ-DP): A combination of the previous two, this port can either use SWD or JTAG to access the DAP bus. The `TCK` and `TMS` JTAG signals are re-used for the SWD `SWCLK` and `SWDIO` signals.
 
 ARM specifies the following two Access Ports:
 
 . Memory Access Port (MEM-AP): Provides access to core memory and registers.
 . JTAG Access Port (JTAG-AP): Provides access to a JTAG chain from the DAP.
+
+WARNING: Not all microcontrollers connect `SWCLK`/`SWDIO` up to the main VDD voltage domain. For example, in STM32F07x/04x devices, the `SWCLK` and `SWDIO` pins are supplied by the `VDDIO2` domain, so make sure to connect the right pins up to `VTREG`.
 
 === SWV
 
@@ -182,3 +186,4 @@ Connecting a trace probe to a ARM target.
 * [[[bib-wp-jtag, 7]]] Wikipedia. _JTAG_ (2004, May 6). Retrieved 2021-11-08, from https://en.wikipedia.org/wiki/JTAG.
 * [[[bib-arm-dstream-rtck, 8]]] ARM. _DSTREAM-XT System and Interface Design Reference Guide: RTCK_. Retrieved 2021-11-08, from https://developer.arm.com/documentation/102444/1-0/Debug-and-trace-interface/RTCK.
 * [[[bib-kudelski-swd, 9]]] Nicolas Oberli (2019, May 16). _SWD – ARM’s Alternative To JTAG_. Kudelski Security Research. Retrieved 2021-11-08, from https://research.kudelskisecurity.com/2019/05/16/swd-arms-alternative-to-jtag/.
+* [[[bib-arm-dstream-swd-conn, 10]]] ARM. _DSTREAM-XT System and Interface Design Reference Guide: SWD Connections_. Retrieved 2021-11-09, from https://developer.arm.com/documentation/dui0499/d/ARM-DSTREAM-Target-Interface-Connections/SWD-connections.
