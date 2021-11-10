@@ -114,6 +114,14 @@ WARNING: Not all microcontrollers connect `SWCLK`/`SWDIO` up to the main VDD vol
 
 === SWV
 
+_Serial Wire Viewer_ (SWV) is the protocol used by the `SWO` pin on the `SWD` connector<<bib-code-inside-out-swv>>.
+
+32 available ITM stimulus ports. ARM recommends<<bib-code-inside-out-swv>>:
+
+* Port 0 is used for text data (e.g. data from `printf()`)
+* Port 31 is used for RTOS event data
+* All other channels are up to the user to decide.
+
 === ETM
 
 4-bit.
@@ -187,3 +195,4 @@ Connecting a trace probe to a ARM target.
 * [[[bib-arm-dstream-rtck, 8]]] ARM. _DSTREAM-XT System and Interface Design Reference Guide: RTCK_. Retrieved 2021-11-08, from https://developer.arm.com/documentation/102444/1-0/Debug-and-trace-interface/RTCK.
 * [[[bib-kudelski-swd, 9]]] Nicolas Oberli (2019, May 16). _SWD – ARM’s Alternative To JTAG_. Kudelski Security Research. Retrieved 2021-11-08, from https://research.kudelskisecurity.com/2019/05/16/swd-arms-alternative-to-jtag/.
 * [[[bib-arm-dstream-swd-conn, 10]]] ARM. _DSTREAM-XT System and Interface Design Reference Guide: SWD Connections_. Retrieved 2021-11-09, from https://developer.arm.com/documentation/dui0499/d/ARM-DSTREAM-Target-Interface-Connections/SWD-connections.
+* [[[bib-code-inside-out-swv, 11]]] Code Inside Out (2021, Nov 11). _Serial Wire Viewer (SWD + SWO)_. Retrieved 2021-11-10, from https://www.codeinsideout.com/blog/stm32/swv/.
