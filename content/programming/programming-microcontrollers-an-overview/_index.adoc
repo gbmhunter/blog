@@ -136,7 +136,24 @@ NOTE: ARM processors prior to ARMv7 use the SVC instructions, formerly known as 
 
 === Segger Real-Time Terminal (RTT)
 
-The _Segger Real-Time Terminal_ (RTT) provides a bi-directional data transfer mechanism between a host and target microcontroller. RTT emulates a telnet connection on the host machine<<bib-mcuoneclipse-segger-rtt>>.
+The _Segger Real-Time Terminal_ (RTT) provides a bi-directional data transfer mechanism between a host and target microcontroller. RTT emulates a telnet connection on the host machine<<bib-mcuoneclipse-segger-rtt>>. For example, to connect to Channel 0 (designed for terminal use), you connect via a Telnet client to `localhost:19021`.
+
+It is currently supported by the following cores<<bib-segger-about-rtt>>:
+
+* ARM Cortex-M0/M0+/M1/M3/M4/M7/M23/M33
+* Renesas RX100/200/600
+
+.Example target-side code to send a message to the host via Segger RTT on Channel 0<<bib-segger-about-rtt>>.
+[source,c]
+----
+int main(void) {
+  do {
+    SEGGER_RTT_WriteString(0, "Hello World from SEGGER!\r\n");
+    _Delay(100);
+  } while (1);
+  return 0;
+}
+----
 
 == TagConnect
 
@@ -197,8 +214,8 @@ Connecting a trace probe to a ARM target.
 [bibliography]
 == References
 
-* [[[bib-keil-coresight-conn, 1]]]: Keil. _CoreSight Connectors_. Retrieved 2021-11-05, from https://www2.keil.com/coresight/coresight-connectors.
-* [[[bib-samtec-ftsh-105-01, 2]]]: Samtec. _FTSH-105-01-L-DV-K High Reliability Header Strips, 0.050" pitch_. Retrieved 2021-11-05, from https://www.samtec.com/products/ftsh-105-01-l-dv-k.
+* [[[bib-keil-coresight-conn, 1]]] Keil. _CoreSight Connectors_. Retrieved 2021-11-05, from https://www2.keil.com/coresight/coresight-connectors.
+* [[[bib-samtec-ftsh-105-01, 2]]] Samtec. _FTSH-105-01-L-DV-K High Reliability Header Strips, 0.050" pitch_. Retrieved 2021-11-05, from https://www.samtec.com/products/ftsh-105-01-l-dv-k.
 * [[[bib-segger-ti-14pin, 3]]] Segger. _14-Pin TI Adapter_. Retrieved 2021-11-07, from https://www.segger.com/products/debug-probes/j-link/accessories/adapters/14-pin-ti-adapter/.
 * [[[bib-ti-jtag-conns, 4]]] Texas Instruments. _JTAG Connectors and Pinout_. Retrieved 2021-11-07, from http://software-dl.ti.com/ccs/esd/documents/xdsdebugprobes/emu_jtag_connectors.html.
 * [[[bib-arm-dstream-interface-ref, 5]]] ARM. _ARM DSTREAM System and Interface Design Reference: TI JTAG 14_. Retrieved 2021-11-07, from https://developer.arm.com/documentation/dui0499/d/ARM-DSTREAM-Target-Interface-Connections/TI-JTAG-14.
@@ -210,3 +227,4 @@ Connecting a trace probe to a ARM target.
 * [[[bib-code-inside-out-swv, 11]]] Code Inside Out (2021, Nov 11). _Serial Wire Viewer (SWD + SWO)_. Retrieved 2021-11-10, from https://www.codeinsideout.com/blog/stm32/swv/.
 * [[[bib-mcuoneclipse-segger-rtt, 12]]] Erich Styger (2015, Jul 7). _Using Segger Real Time Terminal (RTT) with Eclipse_. MCU on Eclipse. Retrieved 2021-11-12, from https://mcuoneclipse.com/2015/07/07/using-segger-real-time-terminal-rtt-with-eclipse/.
 * [[[bib-arm-what-is-semihosting, 13]]] ARM Developer. _What is semihosting?_. Retrieved 2021-11-12, from https://developer.arm.com/documentation/dui0471/g/Bgbjjgij.
+* [[[bib-segger-about-rtt, 14]]] Segger. _About Real Time Transfer_. Retrieved 2021-11-13, from https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/.
