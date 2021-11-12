@@ -13,7 +13,7 @@ type: "post"
 
 == Updates This Month
 
-* Added 10-pin ARM SWD programming connector pinouts.
+* Added link:/programming/programming-microcontrollers-an-overview/[10-pin ARM SWD programming connector pinouts].
 
 * Added more info on the link:/pcb-design/component-packages/to-3-component-package/[TO-3 component package].
 
@@ -22,3 +22,5 @@ type: "post"
 * Added info on the link:/programming/programming-microcontrollers-an-overview/[JTAG and SWD programming/debug interfaces].
 
 * Added info on RF attenuators, transient limiters and EMC software to the link:/electronics/electrical-compliance/[Electrical Compliance page].
+
+* Added info on the link:/programming/programming-microcontrollers-an-overview/[SWV debug protocol, semihosting and Segger RTT].
