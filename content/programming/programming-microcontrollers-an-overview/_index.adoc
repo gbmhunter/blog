@@ -114,7 +114,7 @@ WARNING: Not all microcontrollers connect `SWCLK`/`SWDIO` up to the main VDD vol
 
 === SWV
 
-_Serial Wire Viewer_ (SWV) is the protocol used by the `SWO` pin on the `SWD` connector<<bib-code-inside-out-swv>>.
+_Serial Wire Viewer_ (SWV) is the protocol used by the `SWO` pin on the `SWD` connector<<bib-code-inside-out-swv>>. It is only available for ARM Cortex-M3 cores and higher, it is NOT available on Cortex M0 or M0+ cores.
 
 32 available ITM stimulus ports. ARM recommends<<bib-code-inside-out-swv>>:
 
@@ -122,9 +122,21 @@ _Serial Wire Viewer_ (SWV) is the protocol used by the `SWO` pin on the `SWD` co
 * Port 31 is used for RTOS event data
 * All other channels are up to the user to decide.
 
+SWV can give you `printf()` style debugging output, in where the `printf()` function calls the CMSIS `ITM_SendChar()` function.
+
 === ETM
 
 4-bit.
+
+=== Semihosting
+
+_Semihosting_ is an ARM feature which allows an ARM-based target to communicate with and use the input/output (IO) facilities on the host computer which is running a debugger<<bib-arm-what-is-semihosting>>. Semihosting is commonly used to send `printf()` calls on the target to the host, and be displayed whilst debugging through a terminal on the host.
+
+NOTE: ARM processors prior to ARMv7 use the SVC instructions, formerly known as SWI instructions, to make semihosting calls. However, if you are compiling for an ARMv6-M or ARMv7-M, for example a Cortex-M1 or Cortex-M3 processor, semihosting is implemented using the BKPT instruction<<bib-arm-what-is-semihosting>>.
+
+=== Segger Real-Time Terminal (RTT)
+
+The _Segger Real-Time Terminal_ (RTT) provides a bi-directional data transfer mechanism between a host and target microcontroller. RTT emulates a telnet connection on the host machine<<bib-mcuoneclipse-segger-rtt>>.
 
 == TagConnect
 
@@ -196,3 +208,5 @@ Connecting a trace probe to a ARM target.
 * [[[bib-kudelski-swd, 9]]] Nicolas Oberli (2019, May 16). _SWD – ARM’s Alternative To JTAG_. Kudelski Security Research. Retrieved 2021-11-08, from https://research.kudelskisecurity.com/2019/05/16/swd-arms-alternative-to-jtag/.
 * [[[bib-arm-dstream-swd-conn, 10]]] ARM. _DSTREAM-XT System and Interface Design Reference Guide: SWD Connections_. Retrieved 2021-11-09, from https://developer.arm.com/documentation/dui0499/d/ARM-DSTREAM-Target-Interface-Connections/SWD-connections.
 * [[[bib-code-inside-out-swv, 11]]] Code Inside Out (2021, Nov 11). _Serial Wire Viewer (SWD + SWO)_. Retrieved 2021-11-10, from https://www.codeinsideout.com/blog/stm32/swv/.
+* [[[bib-mcuoneclipse-segger-rtt, 12]]] Erich Styger (2015, Jul 7). _Using Segger Real Time Terminal (RTT) with Eclipse_. MCU on Eclipse. Retrieved 2021-11-12, from https://mcuoneclipse.com/2015/07/07/using-segger-real-time-terminal-rtt-with-eclipse/.
+* [[[bib-arm-what-is-semihosting, 13]]] ARM Developer. _What is semihosting?_. Retrieved 2021-11-12, from https://developer.arm.com/documentation/dui0471/g/Bgbjjgij.
