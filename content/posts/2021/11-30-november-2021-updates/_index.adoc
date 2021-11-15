@@ -24,3 +24,5 @@ type: "post"
 * Added info on RF attenuators, transient limiters and EMC software to the link:/electronics/electrical-compliance/[Electrical Compliance page].
 
 * Added info on the link:/programming/programming-microcontrollers-an-overview/[SWV debug protocol, semihosting and Segger RTT].
+
+* Added more link:/pcb-design/component-packages/usip-component-package/[variant info and package dimensions for the uSiP component package].
