@@ -28,3 +28,5 @@ type: "post"
 * Added more link:/pcb-design/component-packages/usip-component-package/[variant info and package dimensions for the uSiP component package].
 
 * Added info on the SMA RF connector.
+
+* Added more info on digital potentiometers (DPOTS).
