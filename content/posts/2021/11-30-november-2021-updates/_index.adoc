@@ -26,3 +26,5 @@ type: "post"
 * Added info on the link:/programming/programming-microcontrollers-an-overview/[SWV debug protocol, semihosting and Segger RTT].
 
 * Added more link:/pcb-design/component-packages/usip-component-package/[variant info and package dimensions for the uSiP component package].
+
+* Added info on the SMA RF connector.

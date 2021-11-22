@@ -553,14 +553,14 @@ _MTA-100 connectors_ are a family of wire-to-board and wire-to-wire connectors. 
 
 RF connectors are connectors specifically designed to carry high-frequency signals, typically in the 100MHz-30GHz range.
 
-== U.FL
+=== U.FL
 
 Also known as UMC or XFL connectors.
 
 .A photo of a male, SMD mount UFL connector. Image from www.digikey.com.
 image::ufl-connector-photo.png[width=350px]
 
-=== Schematic Symbol
+==== Schematic Symbol
 
 There is no "standard" schematic symbol for the male, SMD mount UFL connector, so I normally decide to go with some that is visually resembles the actual connector part, as shown below:
 
@@ -568,6 +568,20 @@ There is no "standard" schematic symbol for the male, SMD mount UFL connector, s
 image::ufl-umc-umcc-rf-connector-schematic-symbol.png[width=510px]
 
 The height of the male SMD connector can vary, but something around 1.2mm is common.
+
+=== SMA Connectors
+
+SMA (SubMiniature version A) connectors are small (although probably medium-sized by today's standards) stem:[50\Omega] RF coaxial connectors with a screw-style connection mechanism. The gender name refers to the innermost electrical component (e.g. a male SMA connector has the pin in the middle, whilst the female has the socket to accept the pin). They typically have a passband between stem:[0-16GHz], although some specialized versions extends in the 30+ GHz territory<<bib-amphenolrf-sma>>.
+
+.Female through-hole standard SMA connector<<bib-amphenolrf-sma>>. Image © 2020 Amphenol.
+image::female-th-sma-connector-amphenolrf.png[width=400px]
+
+The original SMA connectors were developed in the 1960s<<bib-reichelt-sma-rpsma>>.
+
+* Standard Male SMA connector: Central **0.9mm diameter pin** surrounded by a barrel with **inside** threads.
+* Standard Female SMA connector: Central **sleeve** (made from the di-electric) surrounded by a barrel with **outside** threads.
+
+_Reverse-polarity_ (RP) SMA connectors have the pin and sleeve swapped between the male and female parts. Also known as _RP-SMA_ or _R-SMA_. _Reverse-polarity_ was designed  to prevent the unauthorized connection of a antenna with a larger gain to WiFi equipment<<bib-reichelt-sma-rpsma>>, to distinguish them from cellular equipment involving LTE/GSM/UMTS which was utilizing the standard SMA connector. These days, RP-SMA connectors are now commonplace, somewhat defeating the protection through obscurity. However in general, standard SMA connectors are still used for cellular applications whilst RP-SMA for WiFi/WLAN.
 
 == Board-to-Board Connectors
 
@@ -633,3 +647,5 @@ In some rare cases (e.g. the Sullins EBC Card-Edge connector series), aside from
 == References
 
 * [[[bib-te-mta-100-conns, 1]]] TE Connectivity. _MTA 100 & MTA 156 Connectors_. Retrieved 2021-10-07, from https://www.te.com/usa-en/products/connectors/pcb-connectors/intersection/mta-100-mta-156-connectors.html.
+* [[[bib-reichelt-sma-rpsma, 2]]] Reichelt Elektronik. _SMA and RP-SMA – What You Need to Know About Coaxial Connectors_. Retrieved 2021-11-22, from https://www.reichelt.com/magazin/en/sma-and-rp-sma-what-you-need-to-know-about-coaxial-connectors/.
+* [[[bib-amphenolrf-sma, 3]]] Amphenol RF. _SMA Connectors_. Retrieved 2021-11-22, from https://www.amphenolrf.com/connectors/sma-connectors.html.
