@@ -30,3 +30,5 @@ type: "post"
 * Added info on the SMA RF connector.
 
 * Added more info on digital potentiometers (DPOTS).
+
+* Migrated the link:/electronics/communication-protocols/i2c-communication-protocol/[I2C Communication Protocol page] from Markdown to AsciiDoc.
