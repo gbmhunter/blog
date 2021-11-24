@@ -3,20 +3,24 @@ authors: [ "Geoffrey Hunter" ]
 date: 2011-09-03
 description: "A tutorial on the I2C communication protocol."
 draft: false
-lastmod: 2021-11-23
+lastmod: 2021-11-24
 tags: [ "I2C", "communication protocol", "bus", "serial", "microcontroller", "open-collector", "data", "transceiver", "TX", "RX", "SCL", "SDA" ]
 title: "I2C Communication Protocol"
 type: "page"
 ---
 
-## Overview
+== Overview
 
-The I²C (_Inter-Integrated Circuit_, but pronounced _I-2-C_) bus is a communication protocol commonly used for PCB level transmissions between ICs and microcontrollers. It is a half-duplex synchronous protocol which requires 2 non-power-related wires (4 if you include power and ground). It uses device addressing to indicate the recipient of the data. It is commonly used for sending small packets of information to ICs (such as configuration settings, or a sensor value), while link:/electronics/communication-protocols/spi-communication-protocol/[SPI] is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C can support multiple masters through software protocols.
+The I²C (_Inter-Integrated Circuit_, but pronounced _I-2-C_, and also spelt I2C) bus is a communication protocol commonly used for PCB level transmissions between ICs and microcontrollers. It is a half-duplex, synchronous protocol which requires 2 wires (4 if you include power and ground). It uses device addressing (typically 7-bit) to indicate the recipient of the data. Arbitration is achieved via use of open-drain or open-collector outputs for the SCL and SDA lines (except for uncommon Ultra-fast mode, which uses push-pull drivers). It is commonly used for sending small packets of information to ICs (such as configuration settings, or a sensor value), while link:/electronics/communication-protocols/spi-communication-protocol/[SPI] is used for more data intensive communication (due to its full-duplex and push-pull driver operation). The I2C protocol does not define the semantics (the meaning of the data). I2C can support multiple masters through software protocols.
 
 .The I2C logo.
 image::i2c-logo.gif[width=200px]
 
-## Typical Electrical Specs
+== History
+
+The patent "Two-wire bus-system comprising a clock wire and a data wire for interconnecting a number of stations" for I2C was filed by Philips in 1981<<bib-patent-i2c>>. The first 100kHz system was developed in 1982. 400kbit/s fast mode was introduced in 1992, and 3.4Mbit/s high-speed mode in 1998.
+
+== Typical Electrical Specs
 
 |===
 | Specification | Value
@@ -50,7 +54,7 @@ image::i2c-logo.gif[width=200px]
 
 == Pull-Up Resistors
 
-The I²C bus uses open-drain drivers to allow for **compatibility** between chips that run of different voltages, bus arbitration, and hot-swapping. Thus pull-up resistors are essential for the bus to work. 
+The I2C bus uses open-drain (or open-collector if BJTs are used rather than MOSFETs) drivers to allow for **compatibility** between chips that run of different voltages, bus arbitration, and hot-swapping. Thus pull-up resistors are essential to return the bus to the passive voltage state. 0V is considered low and either +3.3V or +5.0V are common "high" voltages.
 
 .I2C pull-up resistors.
 image::i2c-pull-up-resistors.png[width=488px]
@@ -102,21 +106,23 @@ Typical pull-up resistor values are 10kΩ for up to a 100kHz bud rate, and 1kΩ 
 
 A **gotcha** during PCB design is to unintentionally **add multiple pull-up resistors to each bus line**. Maybe you added pull-up resistors to every I2C slave device, and then connected them to the same bus? Maybe you designed a plug-in board which had an I2C slave on it, and added resistors to that too? In any case, **try and make sure there is only one set of pull-up resistors**, associated with the I2C bus master. If you do need to have multiple resistors, make sure their **combined equivalent resistance does not violate** the I2C specifications.
 
-## Transmission Speeds
+== Transmission Speeds
 
-### Overview
+=== Overview
 
 The data on an I2C bus can be transmitted at different rates, depending on what modes both the transmitter and receiver support. The following table outline the modes and the maximum speeds at which data can be transmitted on them. 
 
 NOTE: Because the data is clocked, there is almost no minimum speed (unless the device implements some sort of time-out feature).
 
 |===
-| I2C Mode              | Maximum Speed
+| I2C Mode               | Maximum Speed | Maximum Bus Capacitance | Drive
 
-| Standard              | 100kHz
-| Fast-mode (Fm)        | 400kHz
-| Fast-mode Plus (Fm+)  | 1MHz
-| High-speed (Hs)       | 3.4MHz
+| Standard               | 100kbit/s     | 400pF                   | Open drain
+| Fast-mode (Fm)         | 400kbit/s     | 400pF                   | Open drain
+| Fast-mode Plus (Fm+)   | 1Mbit/s       | 550pF                   | Open drain
+| High-speed mode (Hs)   | 1.7Mbit/s     | 400pF                   | Open drain
+| High-speed (Hs)        | 3.4Mbit/s     | 100pF                   | Open drain
+| Ultra-fast mode (UFm)  | 5Mbit/s       | n/a                     | Push-pull<<bib-i2c-bus-ufm>>
 |===
 
 === Standard
@@ -127,15 +133,21 @@ The standard communication rate (a.k.a. original speed) allows communication spe
 
 Fast mode is a mode of operation for the I2C bus that allows devices to communicate at speeds of up to 400kHz. It is supported by a great number of I2C devices.
 
-### Fast Mode Plus (Fm+)
+=== Fast Mode Plus (Fm+)
 
 Fast mode plus (Fm+) is an extension of I2C Fast mode which allows devices to communicate at speeds of up to 1MHz. It was introduced by Phillips Semiconductors (which is now NXP) in April 2006. It is occasionally used for I2C devices which require high data throughput.
 
-### High-Speed (Hs)
+=== High-Speed (Hs)
 
 The high-speed mode allows for communication rates of up to 3.4MHz, which makes it the fastest I2C mode available. It is an **officially supported** mode of operation, however, not many I2C devices support this mode of operation (the competing link:/electronics/communication-protocols/spi-communication-protocol[SPI communication protocol]) seems to be the preferred way of doing things at >1Mbps). One of the key differences between all other speed modes and high-speed mode is the **current sourcing** capabilities of the master device in Hs mode. This allows the **master to inject current onto the I2C lines to drive them high** faster than what pull-up resistors on their own would allow.
 
 Also, the clock signal has a high to low ratio of 1:2, which is different the the ratio of 1:1 for all other modes.
+
+=== Ultra-fast Mode (UFm)
+
+_Ultra-fast Mode_ (UFm) is currently the fastest mode of I2C available, with a speed of 5Mbit/s. It is drastically different from all other modes because it uses push-pull drivers rather than open-drain drivers. This means that the bus is no longer bi-directional, and data is sent from master to slaves only. Slaves do not send an acknowledge bit<<bib-i2c-bus-ufm>>.
+
+Ultra-fast mode is almost primarily used for LED drivers, for example the link:https://www.nxp.com/products/power-management/lighting-driver-and-controller-ics/ic-led-controllers/24-bit-ufm-5-mhz-ic-bus-100-ma-40-v-led-driver:PCU9656B[PCU9656B 24-Bit UFm 5MHz I²C-Bus 100mA 40V LED Driver from NXP].
 
 ## I²C Bus Protocols And Variants
 
@@ -148,7 +160,7 @@ There are variants on the I2C bus, defined and implemented by various manufactur
 * ACCESS.bus
 * DDC, E-DDC - (Enhanced) Display Data Channel, used by the HDMI protocol send data from the sink to the source about what resolutions and frame rates it supports. The HDMI specification says it must support standard rate I2C (100kbit/s), with optional support for fast mode (400kbit/s).
 
-## I2C Applications
+== I2C Applications And Uses In Industry
 
 * Automotive (although the CAN/LIN bus is more popular in automotive environments due to the higher noise resistance)
 * Consumer
@@ -158,13 +170,17 @@ There are variants on the I2C bus, defined and implemented by various manufactur
 * Radio/T.V.
 
 .A typical application schematic for an I2C I/O expander.
-image::typical-application-schematic-for-i2c-io-expander.png[width=411px]
+image::typical-application-schematic-for-i2c-io-expander.png[width=400px]
 
-## Addressing
+=== Display Protocols (VGA, DVI and HDMI)
 
-All I2C slave devices must have an address. This address is used by the master to select which device to talk with. All addresses are 7 bits long (EDIT April 2016, this is no longer true, see the **10-bit Addressing section** on this page, and are left shifted by one and packed into the first byte which is sent across the I2C bus by the master (the final bit, bit 0, of the first byte, is used to signal whether a read or write operation is about to take place).
+I2C is used within the VGA, DVI and HDMI protocols<<bib-ken-shirriff-vga-i2c>> to share additional information between the connected devices (it is not used for the visual signal). They call this signal which uses I2C the DDC (_Display Data Channel_) signal. The protocol is implemented in such a way that on the monitor side, all you need to do is hook up a standard I2C EEPROM memory chip<<bib-elec-se-hdmi-and-i2c>>.
 
-### Multiple ICs, Same Address?
+== Addressing
+
+All I2C slave devices must have an address. This address is used by the master to select which device to talk with. Standard addresses are 7 bits long, with a 10-bit extension being rather uncommon. In the case of a 7-bit address, it is left shifted by one and packed into the first byte which is sent across the I2C bus by the master (the final bit, bit 0, of the first byte, is used to signal whether a read or write operation is about to take place).
+
+=== Multiple ICs, Same Address?
 
 Connecting two identical devices (e.g. lets say you have two temperature sensors) onto the same I2C bus, both with the same pre-programmed I2C address means that that the master cannot address them individually and functionality is severely reduced. To overcome this, many I2C slave ICs also come with a few address pins. These address pins are digital inputs and control what I2C address the slave will respond to. A device with two address pins allows the designer to connect up to four identical ICs to the same I2C bus by connecting the address pins to different combinations of Vcc and GND.
 
@@ -315,4 +331,8 @@ A popular alternative to I2C which is also used for intra-board communication is
 [bibliography]
 == References
 
-* [[[bib-pinout-rpi, 1]]] Philip Howard. _I2C - Inter Integrated Circuit_. pinout.xyz. Retrieved 20211-11-23, from https://pinout.xyz/pinout/i2c.
+* [[[bib-pinout-rpi, 1]]] Philip Howard. _I2C - Inter Integrated Circuit_. pinout.xyz. Retrieved 2021-11-23, from https://pinout.xyz/pinout/i2c.
+* [[[bib-elec-se-hdmi-and-i2c, 2]]]. "Turbo J" (2014, Aug 4). _HDMI and I2C_. StackExchange: Electrical Engineering. Retrieved 2021-11-24, from https://electronics.stackexchange.com/questions/123957/hdmi-and-i-2-c.
+* [[[bib-ken-shirriff-vga-i2c, 3]]] Ken Shirriff. _Reading a VGA monitor's configuration data with I2C and a PocketBeagle_. Retrieved 2011-11-24, from http://www.righto.com/2018/03/reading-vga-monitors-configuration-data.html.
+* [[[bib-patent-i2c, 4]]] US Philips Corp (1981, Nov 2). _Two-wire bus-system comprising a clock wire and a data wire for interconnecting a number of stations_. Retrieved 2011-11-24, from https://patents.google.com/patent/US4689740A/en.
+* [[[bib-i2c-bus-ufm, 5]]] I2C BUS. _Ultra Fast Mode UFm_. Retrieved 2021-11-24, from https://www.i2c-bus.org/ultra-fast-mode-ufm/.
