@@ -12,15 +12,22 @@ type: "page"
 
 == Overview
 
-Diodes are passive semiconductor components consisting of a single P-N junction. Their main property is that they only allow conduction of current in one direction, which makes them a useful component in many electronic circuits.
+Diodes are passive semiconductor components consisting of a single P-N junction. Their main property is that they only allow conduction of current in one direction but not in the other, which makes them a useful component in many electronic circuits.
+
+There are many different types of diodes, including general-purpose diodes, Zener diodes to light-emitting diodes (LEDs). This page will walk you through the common types and what they are used for.
 
 == General Purpose Diodes
+
+General purpose diodes are just what they say they are -- simple diodes with no special functionality, used for a wide range of rectification purposes.
+
+.Photo of a 1N4007 general-purpose diode from NTE Electronics in the link:/pcb-design/component-packages/do-41-component-package/[through-hole DO-41 package]<<bib-digikey-nte-11n4007>>. Image (C) NTE Electronics. 
+image::1n4007-diode-photo-nte-electronics.png[width=250px]
 
 === Schematic Symbol And Designator
 
 On schematics, general purpose diodes use the schematic symbol `D` (as do all most all types of diodes) and use the following symbol (most other types of diodes DO NOT use this symbol, they use slightly adjusted versions).
 
-.The schematic symbol for a general purpose diode. The anode is the left pin and the cathode is on the right. Most other types of diodes (Schottky, Zener, e.t.c) use a slightly adjusted version of this symbol to distinguish themselves from the general purpose variety.
+.The schematic symbol for a general purpose diode. The anode is the left pin and the cathode is on the right. Current can only flow from anode to cathode, but not the other way around. Most other types of diodes (Schottky, Zener, e.t.c) use a slightly adjusted version of this symbol to distinguish themselves from the general purpose variety.
 image::general-purpose-diode-schematic-symbol.svg[width=300px]
 
 TIP: A handy mnemonic for remembering the polarity of a diode is to remember that the triangle in the symbol points in the direction of "forward" current (current when the diode is forward conducting).
@@ -34,7 +41,7 @@ Some believe that the diode symbol originated from the drawing of a point contac
 | Parameter | Symbol | Description
 
 | Maximum Continuous Forward Current
-| stem:[I_{f(cont)}]
+| stem:[I_{f(cont)}] or stem:[I_{f(max)}]
 | The maximum continuous current the diode can withstand, usually limited by overheating. Typically 20-500V.
 
 | Forward Voltage
@@ -48,6 +55,10 @@ Some believe that the diode symbol originated from the drawing of a point contac
 | Peak-surge forward current
 | stem:[I_{FSM}]
 | The forward current the diode can handle for a small amount of time. The exact time depends on the standard used to calculate this value (usually JEDEC). The is normally so you can determine the diode can handle inrush current/inductive energy pulses of a particular circuit.
+
+| Peak Reverse Voltage
+| stem:[V_{R(max)}] or stem:[V_{RRM}]<<bib-vishay-1n400x-datasheet>>
+| The maximum reverse voltage the diode can sustain without reverse breakdown occurring and possible damage. Sometimes called PIV (Peak Inverse Voltage)
 |===
 
 Some other important properties of diodes are their ability to prevent conduction until a certain, configurable breakdown voltage, and a conduction current that is related to the square of the voltage across it.
@@ -63,30 +74,13 @@ Most diodes have their polarity marked with a single line near the cathode (the 
 
 NOTE: Some diodes, such as bi-directional TVS diodes, do not have a polarity.
 
-SPICE model for the general-purpose `1N4148` diode:
-
-[source]
-----
-.model 1N4148 D 
-+ IS = 4.352E-9 
-+ N = 1.906 
-+ BV = 110 
-+ IBV = 0.0001 
-+ RS = 0.6458 
-+ CJO = 7.048E-13 
-+ VJ = 0.869 
-+ M = 0.03 
-+ FC = 0.5 
-+ TT = 3.48E-9
-----
-
 === Can Diodes Share Current?
 
 The short answer: No!
 
 The slightly longer answer...
 
-Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, e.t.c., until one is conducting almost all the current (and leading to thermal runaway!). This even occurs when the diodes are the same part number and from the same production run, due to the fact that there is always small differences between any two diodes. One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg. They should be identical in resistance and have to drop at least stem:[0.3-0.4V] (when the diode has a nominal voltage drop of around stem:[0.7V]) to be effective.
+Diodes have a **negative resistive thermal co-efficient**, that is, as they warm up, their resistance decreases. This means that if you connect two or more diodes in parallel to share the current, one will heat up a bit faster than the other, start to conduct more, heat up even further, start to conduct even more, e.t.c., until one is conducting almost all the current (and leading to thermal runaway!). This even occurs when the diodes are the same part number and from the same production run, due to the fact that there is always small differences between any two diodes. One way to prevent one diode from gobbling all the current is to add current-sharing resistors to each diode leg (called a ballast). They should be identical in resistance and have to drop at least stem:[0.3-0.4V] (when the diode has a nominal voltage drop of around stem:[0.7V]) to be effective.
 
 === Bridge Rectifiers
 
@@ -122,6 +116,38 @@ The `1N400x` family of general purpose diodes have a forward current of 1A and r
 | Forward Current      | 1A     | 1A     | 1A     | 1A     | 1A     | 1A     | 1A
 | Max. Reverse Voltage | 50V    | 100V   | 200V   | 400V   | 600V   | 800V   | 1000V
 |===
+
+=== Supplier Links
+
+* DigiKey: link:https://www.digikey.com/en/products/filter/diodes-rectifiers-single/280[Diodes - Rectifiers - Single]
+* Mouser: link:https://www.mouser.com/c/semiconductors/discrete-semiconductors/diodes-rectifiers/diodes-general-purpose-power-switching/[Diodes - General Purpose, Power, Switching]
+
+== Signal Diodes
+
+_Signal diodes_ (a.k.a. _small signal diodes_) are designed for rectification of low power signals rather than the higher power electronics that general purpose diodes are designed to rectify. Although they can't handle high currents or high reverse voltages, they benefit from being able switch faster and therefore more suitable for higher frequency operation. Signal diodes are built in two different ways:
+
+* Point contact diode
+* Glass passivated diode
+
+.Photo of the small signal 1N41488 diode by onsemi in the DO-35 component package. Image (C) onsemi.
+image::1n4148-small-signal-diode-photo-on-semi.png[width=200px]
+
+SPICE model for the small signal `1N4148` diode:
+
+[source]
+----
+.model 1N4148 D 
++ IS = 4.352E-9 
++ N = 1.906 
++ BV = 110 
++ IBV = 0.0001 
++ RS = 0.6458 
++ CJO = 7.048E-13 
++ VJ = 0.869 
++ M = 0.03 
++ FC = 0.5 
++ TT = 3.48E-9
+----
 
 == Schottky Diodes
 
@@ -692,3 +718,5 @@ However, some LED manufacturers to give lifetime and reliability information. Th
 * [[[bib-vishay-1n400x-datasheet, 3]]] Vishay (2020, Apr 29). _1N400x Datasheet: General Purpose Plastic Rectifier_. Retrieved 2021-09-26, from https://www.vishay.com/docs/88503/1n4001.pdf.
 * [[[bib-wikipedia-crystal-detector, 4]]] Wikipedia. _Crystal detector_. Retrieved 2021-09-26, from https://en.wikipedia.org/wiki/Crystal_detector.
 * [[[bib-wikip-pin-diode, 5]]] Wikipedia. _PIN diode_. Retrieved 2021-11-25, from https://en.wikipedia.org/wiki/PIN_diode.
+* [[[bib-digikey-nte-11n4007, 6]]] DigiKey. _NTE Electronics, Inc 1N4007_. Retrieved 2021-11-25, from https://www.digikey.com/en/products/detail/nte-electronics-inc/1N4007/11645794.
+* [[[bib-digikey-onsemi-1n4148, 7]]] DigiKey. _onsemi 1N4148_. Retrieved 2021-11-25, from https://www.digikey.co.nz/en/products/detail/onsemi/1N4148/458603.
