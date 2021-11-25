@@ -29,42 +29,26 @@ Some believe that the diode symbol originated from the drawing of a point contac
 
 === Parameters
 
-++++
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Symbol</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <td>Maximum Continuous Forward Current</td>
-    <td>\( I_{f(cont)} \)</td>
-    <td>The maximum continuous current the diode can withstain, usually limited by overheating. Typically 20-500V.
-    </td>
-    </tr>
-    <tr>
-    <td>Forward Voltage</td>
-    <td>\( V_f \)</td>
-    <td>The forward voltage drop, usually rated at maximum continuous current (\( I_f \) ). An ideal diode would have no forward voltage drop. Schottky diodes have the lowest forward voltage drop of any diode. Generally, the smaller the forward voltage drop, the larger the reverse-leakage. The higher the temperature, the smaller the forward voltage drop. Typically 0.3-1.2V.
-    </td>
-    </tr>
-    <tr>
-    <td>Reverse-leakage Current</td>
-    <td>\( I_R \)</td>
-    <td>The leakage current when the diode is reverse-biased at the stand-off voltage. An ideal diode would have no reverse-leakage current. Generally, the smaller the reverse-leakage current, the larger the forward voltage drop. The higher the temperature, the higher the reverse-leakage current. Typically 10nA-1mA.
-    </td>
-    </tr>
-    <tr>
-    <td>Peak-surge forward current</td>
-    <td>\( I_{FSM} \)</td>
-    <td>The forward current the diode can handle for a small amount of time. The exact time depends on the standard used to calculate this value (usually JEDEC). The is normally so you can determine the diode can handle inrush current/inductive energy pulses of a particular circuit.</td>
-    </tr>
-  </tbody>
-</table>
-++++
+[cols="2,1,5"]
+|===
+| Parameter | Symbol | Description
+
+| Maximum Continuous Forward Current
+| stem:[I_{f(cont)}]
+| The maximum continuous current the diode can withstand, usually limited by overheating. Typically 20-500V.
+
+| Forward Voltage
+| stem:[V_f]
+| The forward voltage drop, usually rated at maximum continuous current (stem:[I_f]). An ideal diode would have no forward voltage drop. Schottky diodes have the lowest forward voltage drop of any diode. Generally, the smaller the forward voltage drop, the larger the reverse-leakage. The higher the temperature, the smaller the forward voltage drop. Typically 0.3-1.2V.
+
+| Reverse-leakage Current
+| stem:[I_R]
+| The leakage current when the diode is reverse-biased at the stand-off voltage. An ideal diode would have no reverse-leakage current. Generally, the smaller the reverse-leakage current, the larger the forward voltage drop. The higher the temperature, the higher the reverse-leakage current. Typically 10nA-1mA.
+
+| Peak-surge forward current
+| stem:[I_{FSM}]
+| The forward current the diode can handle for a small amount of time. The exact time depends on the standard used to calculate this value (usually JEDEC). The is normally so you can determine the diode can handle inrush current/inductive energy pulses of a particular circuit.
+|===
 
 Some other important properties of diodes are their ability to prevent conduction until a certain, configurable breakdown voltage, and a conduction current that is related to the square of the voltage across it.
 
@@ -81,7 +65,8 @@ NOTE: Some diodes, such as bi-directional TVS diodes, do not have a polarity.
 
 SPICE model for the general-purpose `1N4148` diode:
 
-```text
+[source]
+----
 .model 1N4148 D 
 + IS = 4.352E-9 
 + N = 1.906 
@@ -93,7 +78,7 @@ SPICE model for the general-purpose `1N4148` diode:
 + M = 0.03 
 + FC = 0.5 
 + TT = 3.48E-9
-```
+----
 
 === Can Diodes Share Current?
 
@@ -234,55 +219,42 @@ A PIN diode is a semiconductor diode with a wide undoped intrinsic semiconductor
 .A photo of a small, through-hole PIN diode.
 image::pin-diode-photo-small.jpg[width=200px]
 
-A "normal" PN diode has a very small intrinsic region, which is good when you wish to use the diode as a standard rectifier. The PIN diodes wide intrinsic region makes it an inferior rectifier, but gives it other desirable properties.
+A "normal" PN diode has a very small intrinsic region, which is good when you wish to use the diode as a standard rectifier. The PIN diodes wide intrinsic region makes it an inferior rectifier, but makes it suitable for<<bib-wikip-pin-diode>>:
 
-A PIN diode is a light detector. It can be used to convert optical signals into electrical electrical signals. It consists of a p region, an intrinsic region, and a n region (hence the name PIN diode).
+* Attenuators
+* Fast switches
+* Photodetectors (when used in a reversed-biased state)
 
 === Important Parameters
 
-++++
-<table>
-    <thead>
-        <tr>
-            <th>Parameter</th>
-            <th>Symbol</th>
-            <th>Units</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-<tbody>
-<tr>
-<td>Dark Current</td>
-<td >\(I_D\)</td>
-<td >A</td>
-<td >Typically in the 0.1-5nA range.</td>
-</tr>
-<tr >
-<td >Extinction Ratio</td>
-<td > </td>
-<td >none</td>
-<td > </td>
-</tr>
-<tr >
-<td >Field of View</td>
-<td >FoV</td>
-<td > </td>
-<td ></td>
-</tr>
-<tr >
-<td >Output Rise Time</td>
-<td >\(t_r\)</td>
-<td >s</td>
-<td > </td>
-</tr>
-<tr >
-<td >Responsivity</td>
-<td > </td>
-<td >A/W</td>
-</tr>
-</tbody>
-</table>
-++++
+|===
+| Parameter | Symbol | Units | Description
+
+| Dark Current
+| stem:[I_D]
+| stem:[nA]
+| Typically in the 0.1-5nA range.
+
+| Extinction Ratio
+| 
+| none
+| 
+
+| Field of View
+| FoV
+|
+|
+
+| Output Rise Time
+| stem:[t_r]
+| s
+|
+
+| Responsivity
+|
+| A/W
+|
+|===
 
 PIN diodes are normally operated in the reverse bias state.
 
@@ -290,7 +262,7 @@ Because of their good light-to-current linearity, they are commonly connected to
 
 === RF Applications
 
-They act as almost perfect resistors in the RF and microwave frequencies. The resistivity these AC waveforms see is dependent on the DC bias current flowing through the diode, and the intensity, wavelength and modulation rate of the incoming light.
+PIN diodes act as almost perfect resistors in the RF and microwave frequencies<<bib-wikip-pin-diode>>. The resistivity these AC waveforms see is dependent on the DC bias current flowing through the diode, and the intensity, wavelength and modulation rate of the incoming light.
 
 Because the PIN diodes RF resistance is dependant on the DC bias current, they can be used as an RF switch or variable resistor. The RF resistance can range from about stem:[100m\Omega] to stem:[10k\Omega].
 
@@ -457,98 +429,74 @@ image::led-diode-schematic-symbol.svg[width=300px]
 
 _Parameters are sorted alphabetically._
 
-++++
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Parameter Symbol</th>
-      <th>Typical Units</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Dominant Wavelength</td>
-      <td>\(\lambda_{dom}\)</td>
-      <td>nm</td>
-      <td>This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the peak wavelength.</td>
-    </tr>
-    <tr>
-      <td>Flux</td>
-      <td>n/a</td>
-      <td>n/a</td>
-      <td>This will be used as a shorthand for either <i>radiometric flux</i>, <i>spectral flux</i> or rarely, <i>photon flux</i>. You will have to deduce which based on the context.</td>
-    </tr>
-    <tr>
-      <td>Forward Current</td>
-      <td>\(I_F\)</td>
-      <td>mA</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Forward Surge Current</td>
-      <td>\(I_{FM}\)</td>
-      <td>mA</td>
-      <td>Normally rated at a fixed temperature, duty cycle, and pulse length.</td>
-    </tr>
-    <tr>
-      <td>Forward Voltage</td>
-      <td>\(V_F\)</td>
-      <td>V</td>
-      <td>Rated at a fixed forward current.</td>
-    </tr>
-    <tr>
-      <td>Irradiance</td>
-      <td>\( E \)</td>
-      <td>\( mW/m^2 \)</td>
-      <td>Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol \(E\) as \(I\) is already used for radiant intensity. It is a radiometric quantity.</td>
-    </tr>
-    <tr>
-      <td>Peak Wavelength</td>
-      <td>\(\lambda_{peak}\)</td>
-      <td>nm</td>
-      <td>The wavelength at the peak of the spectral density curve. This is the wavelength at which the LED emits the most power (or flux). It is a radiometric quantity, and is not the same thing as the dominant wavelength.</td>
-    </tr>
-    <tr>
-      <td>Photon Flux</td>
-      <td>\( \phi_e \)</td>
-      <td>\( umol/s \)</td>
-      <td>The number of photons emitted per second by the LED. This is a not a common property to be listed on LED datasheets, more typically the <i>radiometric flux</i> is given.</td>
-    </tr>
-    <tr>
-      <td>Photosynthetic Flux</td>
-      <td>\( PPF \)</td>
-      <td>\( umol/s \)</td>
-      <td>Very similar to photon flux, except only photons within the photosynthetic active region (PAR) of 400-700nm are considered. Commonly used for LED light sources that will be used in agriculture for plant growth (e.g. hgih-pressure sodium lamps). Typical values range from 100-200umol/s</td>
-    </tr>
-    <tr>
-      <td>Radiation Pattern</td>
-      <td>\( n/a \)</td>
-      <td>relative intensity (0-1)</td>
-      <td>The radiation pattern (aka spatial distribution) is usually given on a semi-circular graph, showing the relative intensity of the emitted light vs. the angle from looking directly forward.</td>
-    </tr>
-    <tr>
-      <td>Radiant Flux</td>
-      <td>\( \phi_e \)</td>
-      <td>Watts, \( mW \)</td>
-      <td>The <i>radiant flux</i> (also called the <i>radiant power</i>) is the total amount of light energy per unit time radiated from one region to another. In the context of an LED it is typically used to describe the total amount of light energy emitted by the LED each second. You can divide the radiant flux by the input power to calculate the efficiency of the LED, and to find out how much power will be lost as thermal energy. It is different to the photometric flux.</td>
-    </tr>
-    <tr>
-      <td>Reverse Voltage</td>
-      <td>\( V_R \)</td>
-      <td>Volts, \( V \)</td>
-      <td>The maximum voltage the LED can withstand when reverse biased. Typically LEDs are forward biased but in some applications their diode property of only allowing current to flow in one direction is used.</td>
-    </tr>
-    <tr>
-      <td>View Angle</td>
-      <td>\( 2\theta_{\frac{1}{2}} \)</td>
-      <td>degrees</td>
-      <td>The total angle that the LED emits light at. This should be less than 180° as most LEDs emit light of a planar surface. The smaller this value the more focused the LED is. Some LEDs come package with a lens to focus the light.</td>
-    </tr>
-  </tbody>
-</table>
-++++
+|===
+| Name | Parameter Symbol | Typical Units | Description
+
+| Dominant Wavelength
+| stem:[\lambda_{dom}]
+| stem:[n]
+| This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the peak wavelength.
+
+| Flux
+| n/a
+| n/a
+| This will be used as a shorthand for either _radiometric flux_, _spectral flux_ or rarely, _photon flux_. You will have to deduce which based on the context.
+
+| Forward Current
+| stem:[I_F]
+| stem:[mA]
+| This is the maximum forward current the LED continuously be driven at. For small indicator LEDs, the maximum forward current is typically 20-30mA. Normally an indicator LED with a max. forward current of 20mA would be driven at less than the max., somewhere between 2-10mA. 
+
+| Forward Surge Current
+| stem:[I_{FM}]
+| stem:[mA]
+| Normally rated at a fixed temperature, duty cycle, and pulse length.
+
+| Forward Voltage
+| stem:[V_F]
+| stem:[V]
+| Rated at a fixed forward current.
+
+| Irradiance
+| stem:[E]
+| stem:[mW/m^2]
+| Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol \(E\) as \(I\) is already used for radiant intensity. It is a radiometric quantity.
+
+| Peak Wavelength
+| stem:[\lambda_{peak}]
+| nm
+| The wavelength at the peak of the spectral density curve. This is the wavelength at which the LED emits the most power (or flux). It is a radiometric quantity, and is not the same thing as the dominant wavelength.
+
+| Photon Flux
+| stem:[\phi_e]
+| stem:[umol/s]
+| The number of photons emitted per second by the LED. This is a not a common property to be listed on LED datasheets, more typically the _radiometric flux_ is given.
+
+| Photosynthetic Flux
+| stem:[PPF]
+| stem:[umol/s]
+| Very similar to photon flux, except only photons within the photosynthetic active region (PAR) of 400-700nm are considered. Commonly used for LED light sources that will be used in agriculture for plant growth (e.g. high-pressure sodium lamps). Typical values range from 100-200umol/s.
+
+| Radiation Pattern
+| n/a
+| Relative intensity (0-1)
+| The radiation pattern (aka spatial distribution) is usually given on a semi-circular graph, showing the relative intensity of the emitted light vs. the angle from looking directly forward.
+
+| Radiant Flux
+| stem:[\phi_e]
+| Watts, stem:[mW]
+| The _radiant flux_ (also called the _radiant power_) is the total amount of light energy per unit time radiated from one region to another. In the context of an LED it is typically used to describe the total amount of light energy emitted by the LED each second. You can divide the radiant flux by the input power to calculate the efficiency of the LED, and to find out how much power will be lost as thermal energy. It is different to the photometric flux.
+
+| Reverse Voltage
+| stem:[V_R]
+| Volts, stem:[V]
+| The maximum voltage the LED can withstand when reverse biased. Typically LEDs are forward biased but in some applications their diode property of only allowing current to flow in one direction is used.
+
+| View Angle
+| stem:[2\theta_{\frac{1}{2}}]
+| Degrees
+| The total angle that the LED emits light at. This should be less than 180° as most LEDs emit light of a planar surface. The smaller this value the more focused the LED is. Some LEDs come package with a lens to focus the light.
+|===
 
 LED forward voltages for common LED colours are listed in the table below. You will notice that the **forward voltage increases with the increasing frequency of the light** (in simple terms, it takes more input energy to create photons with a higher energy), and the forward voltage is largely independent on the manufacturer or manufacturing process of the LED.
 
@@ -743,3 +691,4 @@ However, some LED manufacturers to give lifetime and reliability information. Th
 * [[[bib-wikipedia-schottky, 2]]] Wikipedia. _Schottky diode_. Retrieved 2021-09-26, from https://en.wikipedia.org/wiki/Schottky_diode.
 * [[[bib-vishay-1n400x-datasheet, 3]]] Vishay (2020, Apr 29). _1N400x Datasheet: General Purpose Plastic Rectifier_. Retrieved 2021-09-26, from https://www.vishay.com/docs/88503/1n4001.pdf.
 * [[[bib-wikipedia-crystal-detector, 4]]] Wikipedia. _Crystal detector_. Retrieved 2021-09-26, from https://en.wikipedia.org/wiki/Crystal_detector.
+* [[[bib-wikip-pin-diode, 5]]] Wikipedia. _PIN diode_. Retrieved 2021-11-25, from https://en.wikipedia.org/wiki/PIN_diode.
