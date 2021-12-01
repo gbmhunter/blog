@@ -113,6 +113,8 @@ image::component-package-to-39-mlx90614xci-dimensions.png[width=400px]
 
 == TO-39 Ball Lens
 
+Optan produces components which come in a TO-39 "Ball Lens" package.
+
 .A 3D render of the TO-39 "Ball Lens" package by Optan<<bib-optan-products>>. Image © 2021, Crystal IS, Inc.
 image::to-39-ball-lens-component-package-optan-3d-render.png[width=400px]
 
