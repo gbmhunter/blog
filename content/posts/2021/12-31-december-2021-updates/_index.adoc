@@ -1,0 +1,16 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Posts", "Updates" ]
+date: 2021-12-31
+description: "Blog updates during December 2021."
+draft: false
+images: []
+lastmod: 2021-12-31
+tags: []
+title: "December 2021 Updates"
+type: "post"
+---
+
+== Updates This Month
+
+* Added info about the JST PH/SH W2B connectors used for Adafruit STEMMA/STEMMA QT and SparkFun Qwiic devices.
