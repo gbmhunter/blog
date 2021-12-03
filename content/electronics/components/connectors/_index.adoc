@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 date: 2011-09-05
 description: "Terminology, types, manufacturers, common usages and more info on electrical connectors."
 draft: false
-lastmod: 2021-10-08
+lastmod: 2021-12-03
 tags: [ "electronics", "connectors", "electronic components", "circular connectors", "M12", "M8", "pogo", "TagConnect", "spring-loaded", "socket", "plug", "crimp", "plating", "contacts", "IDC", "insulation displacement connectors", "terminal blocks", "DE-9", "DB-9", "DB-25", "headers", "M8", "M12", "IEC 60320" ]
 title: "Connectors"
 type: "page"
@@ -11,58 +11,12 @@ type: "page"
 
 ## Overview
 
-Unlike most other electrical components, most connector manufacturers do not append any letter codes in the part numbers for connectors, rather they are just a long sequence of numbers. This can make part recognition very confusing (e.g. when you see an IC with "74" in it's part name, you instantly think of digital logic). A standard way to indicate pin 1 on a connector PCB footprint is to make the copper pad surrounding the pin 1 hole to be a different shape than the rest (e.g. square, while all the others are round).
+Electrical _connectors_ are physical devices to electrically connect things together. Not only are they used in the traditional sense to connect a <<_wire_to_board_wtb_connectors, wire to a board>> (board usually means PCB), but there is a huge number of types to connect wires to wires, boards to boards, wires to panels (panel mount), breakouts, and more. There are specialty connectors for <<_rf_connectors, RF (radio frequency)>>, high current and high voltage. Connectors can also be characterized by their shape, for example the popular <<_circular_connectors, M8/M12 circular connectors>>.
 
-## Terminology
+.Photo of the W2B (wire-to-board) PH 2.0mm pitch connector from JST<<bib-jst-ph-conn>>. Image (C) 2021, JST.
+image::jst-ph-connector-photo.png[width=400px]
 
-++++
-<table>
-	<thead>
-		<tr>
-			<th>Term</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-  <tbody>
-    <tr>
-      <td>Female</td>
-      <td>See socket.</td>
-    </tr>
-    <tr>
-      <td>Genderless</td>
-      <td>A connector that can be mated with it's self (i.e. there is no separate male/female or plug/receptacle parts).</td>
-    </tr>
-    <tr>
-      <td>Header</td>
-      <td>Can either stand for a particular style of connector (see the Header section), or it can stand for a male gender connector.</td>
-    </tr>
-    <tr>
-      <td>Hermaphroditic</td>
-      <td>See genderless.</td>
-    </tr>
-    <tr>
-      <td>Loaded</td>
-      <td>On connectors with a large number of pins, this indicated how many of the pins come shipped with contacts. The contact pattern can also vary.</td>
-    </tr>
-    <tr>
-      <td>Male</td>
-      <td>See plug.</td>
-    </tr>
-    <tr>
-      <td>Plug</td>
-      <td>A connector which has rod-shaped part for plugging into socket. Also called a male connector, or header.</td>
-    </tr>
-    <tr>
-      <td>Receptacle</td>
-      <td>See socket.</td>
-    </tr>
-    <tr>
-      <td>Socket</td>
-      <td>A connector which has holes that accepts plug pins. Also called a female connector or receptacle.</td>
-    </tr>
-  </tbody>
-</table>
-++++
+This page will hopefully explain the various types of connectors you can purchase and when they should be used in electronic/embedded projects. 
 
 ## Connector Manufacturers
 
@@ -514,6 +468,13 @@ Trying the find a good, reasonably-priced WTB connector on a electronic supplier
 
 === Examples
 
+==== JST PH/SH Family
+
+The JST PH 2.0mm pitch W2B connector family is used for the link:https://learn.adafruit.com/introducing-adafruit-stemma-qt[Adafruit STEMMA devices], and the JST SH 1.0mm pitch W2B connector used for Adafruit STEMMA QT (QT representing _cutie_, referring to the smaller pitch) and SparkFun QwiiC devices<<bib-adafruit-jst-sh-conn>>.
+
+.A photo of a Adafruit "STEMMA QT" or SparkFun "Qwiic" connector + cable. Both use the JST SH 1.0mm pitch W2B connector family<<bib-adafruit-jst-sh-conn>>. Image (C) 2021, Adafruit. 
+image::jst-sh-conn-adafruit-stemma-qt-sparkfun-qwiic.png[width=400px]
+
 ==== TE Connectivity HPI
 
 TE Connectivity's 2.0mm HPI connectors are a good choice if you want a smallish connector with 2 to 12 wires. There are SMD and TH variants of the PCB mounted half. I like these because they are relatively cheap, have good documentation, and best of all, come with 3D step models for creating a 3D mock-up of the PCB.
@@ -643,9 +604,21 @@ image::pcb-connector-with-latches-3m-spd08.png[width=1265px]
 
 In some rare cases (e.g. the Sullins EBC Card-Edge connector series), aside from the socket, the connector manufacturer will also manufacture a plug which replicates PCB fingers, instead of you using the PCB for this purpose.
 
+== Identifying Connectors
+
+Unlike most other electrical components, most connector manufacturers do not append any letter codes in the part numbers for connectors, rather they are just a long sequence of numbers. This can make part recognition very confusing (e.g. when you see an IC with "74" in it's part name, you instantly think of digital logic). A standard way to indicate pin 1 on a connector PCB footprint is to make the copper pad surrounding the pin 1 hole to be a different shape than the rest (e.g. square, while all the others are round).
+
+The website https://connectorbook.com/identification.html is a great tool to help you identify unknown connectors. If guides you through a series of questions which narrows down the connector you are looking at.
+
+.Identifying a W2B (wire-to-board) connector with the help connectorbook.com<<bib-connector-book>>.
+image::identifying-a-w2b-connector-on-connector-book.png[width=700px]
+
 [bibliography]
 == References
 
 * [[[bib-te-mta-100-conns, 1]]] TE Connectivity. _MTA 100 & MTA 156 Connectors_. Retrieved 2021-10-07, from https://www.te.com/usa-en/products/connectors/pcb-connectors/intersection/mta-100-mta-156-connectors.html.
 * [[[bib-reichelt-sma-rpsma, 2]]] Reichelt Elektronik. _SMA and RP-SMA – What You Need to Know About Coaxial Connectors_. Retrieved 2021-11-22, from https://www.reichelt.com/magazin/en/sma-and-rp-sma-what-you-need-to-know-about-coaxial-connectors/.
 * [[[bib-amphenolrf-sma, 3]]] Amphenol RF. _SMA Connectors_. Retrieved 2021-11-22, from https://www.amphenolrf.com/connectors/sma-connectors.html.
+* [[[bib-connector-book, 4]]] The Electronic Connector Book. _Identify a connector or connecting component_. Retrieved 2021-12-03, from https://connectorbook.com/identification.html.
+* [[[bib-jst-ph-conn, 5]]] JST. _PH connector_. Retrieved 2021-12-03, from https://www.jst-mfg.com/product/detail_e.php?series=199.
+* [[[bib-adafruit-jst-sh-conn, 6]]] Adafruit. _JST SH 4-pin Right Angle Connector (10-pack) - Qwiic Compatible_. Retrieved 2021-12-03, from https://www.adafruit.com/product/4208.
