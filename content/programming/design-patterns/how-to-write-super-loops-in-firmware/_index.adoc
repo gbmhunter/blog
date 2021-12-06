@@ -11,7 +11,7 @@ type: page
 
 == Overview
 
-A _super loop_ (a.k.a. _mega loop_ or _main loop_) is a popular way to architect firmware code for simple firmware applications. It involves looping through your code which loosely follows the following three steps:
+A _super loop_ (a.k.a. _mega loop_, _main loop_ or _infinite loop_) is a popular way to architect firmware code for simple firmware applications. It involves looping through your code which loosely follows the following three steps:
 
 . Read inputs.
 . Process inputs/data.
@@ -30,6 +30,34 @@ The disadvantages to a super loop include:
 * No ability to prioritize certain tasks (except for using interrupts). This can lead to responsivity issues for large or complex projects.
 
 TIP: The basic idea of a super loop could still be used for a single thread running on an RTOS, so it that sense, it **could** run on an operating system.  
+
+== Basic Top-Level Code
+
+[source,c]
+----
+int main(void) {
+    init();
+    while(1) { // You might see for(;;) used here also
+        read_inputs();
+        do_calculations();
+        set_outputs();
+    }
+}
+----
+
+For larger firmware projects using the super loop architecture, you will want to break the code into modular .c/.h file combinations which have a specific purpose, for example one module for handling an IMU sensor, one module for controlling a motor and one module for printing serial debug data:
+
+[source,c]
+----
+int main(void) {
+    init();
+    while(1) { // You might see for(;;) used here also
+        imu_loop();
+        motor_loop();
+        serial_loop();
+    }
+}
+----
 
 == The System Tick
 

@@ -1,0 +1,130 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2013-06-14
+draft: false
+title: Data Types
+type: page
+---
+
+== The Basic Data Types
+
+The C programming languages supports the following basic data types:
+
+[cols="1,4"]
+|===
+| Type          | Description
+
+| `char`        | The smallest type on an architecture. Usually 8-bits wide. Sign depends on implementation.
+| `int`         | It is guaranteed to be at least 16 bits, but is defined to be the "most natural integer representation for a particular platform", so on a 32-bit machine an int is likely to be 32 bits wide. The only type that the modulus operation can be applied on. 
+| `float`       | Single precision floating point number. Typically 32-bits wide.
+| `double`      | Double precision floating point number. Typically 64-bits wide, although can be analogous to float (i.e. 32-bits wide) on smaller systems such as 8-bit microcontrollers.
+| `void`        | Special case data-type.
+|===
+
+Some of these types can be prefixed with the modifiers `short` and `long`, which change the size of the data type, and the modifiers `signed` and `unsigned` which change whether a number can stored negative numbers or not (in this case, the size of the type does not change, but the range of numbers it can represent does). Every other data type/structure is made up from a combination of these basic data types and the modifiers.
+
+WARNING: It is strongly recommended that you don't use the numeric data types which can vary in size such as `int`, and instead use fixed-width data types such as `uint8_t`, `int32_t`, e.t.c. This increases the portability of your code and increases the readability (it makes it very obvious to a reader of each integer variable's capacity). These fixed-width types are almost always specified by architecture specific headers which essentially `typedef` to the correct `int`/`long int`/e.t.c for that architecture.
+
+The fixed-width data types are usually defined in `stdint.h`. These include:
+
+[source,c]
+----
+int8_t
+uint8_t
+int16_t
+uint16_t
+int32_t
+uint32_t
+int64_t
+uint64_t
+// Not all compilers/platforms (especially microcontroller ones) support these last two
+int128_t
+uint128_t 
+----
+
+## Using sizeof()
+
+`sizeof()` can be used to return the number of bytes each type uses.
+
+[quote, (author unknown)]
+____
+“There was a young man named Wight,  
+Who invented the thirteen bit byte.  
+You’ll get so much more,  
+from your memory, I’m sure.  
+But sadly your sizeof ain’t right.”<<bib-reddit-13-bit-byte>>
+____
+
+== Fixed-width Integral Types
+
+The problem with using `int` and all of it's derivatives (`short int`, `long int`, `long long int`, e.t.c) is that the width of the integer is platform specific. It is normally the same width as the platforms bus, but at least 16-bits. It is also called the natural width. For example, on an 8-bit system, an `int` will be 16 bits wide (remember, the C standard specifies it can't be less than 16 bits). On a 16-bit platform, it will usually be 16 bits, 32 bits for a 32-bit platform, 64 bits for a 64-bit platform, and so on, you get the idea!
+
+To write portable code, it is usually better to use fixed-width integral types.
+
+Fixed-width integral types also need special symbols for `printf()` statements. These are specified in `<cinttypes.h>`. They begin with the letters `PRI`.
+
+== Floats And Doubles
+
+=== Floating Point Support
+
+Most higher-end microcontrollers and CPUs will have a hardware floating-point unit (FPU) inside them, which allows the CPU to do fast floating-point arithmetic. If you have a lower-end, cheaper microcontroller, it may not contain a FPU. In this case, you really have two options if you want to manipulate numbers with decimal precision:
+
+* Use a software-based floating point library (it does the floating-point arithmetic using the CPU). This is usually much lower than when there is a FPU. link:http://www.jhauser.us/arithmetic/SoftFloat.html[Berkeley Softfloat] is one of the most powerful, widely available software-based floating-point libraries.
+* Use fixed-point numbers instead! See link:/programming/general/fixed-point-mathematics[/programming/general/fixed-point-mathematics] for more info, or check out my C++ fixed-point library for embedded systems at https://github.com/gbmhunter/MFixedPoint/.
+
+=== Positive And Negative 0
+
+Floating point numbers support both positive and negative 0 (they are represented by different raw data). To make life easy and most mathematical equations make sense, even though they are stored differently, they are made to equate to one another, that is `-0.0 == +0.0` will be `true`.
+
+`-0.0` doesn't usually cause any problems for an application, in fact some functions behave differently to `-0.0` and `+0.0` (e.g. `atan2()`, `1/x`) such that the maths behaves "as expected"<<bib-stack-of-p0-n0-what-gives-diff-results>>. However it can be a tad unsightly to print `-0.0` for a user-facing display. There are a few ways you can convert `-0.0` into `0.0` before printing. The most obvious way is to:
+
+[source,c]
+----
+float remove_neg_zero_obvious(float a) {
+    if(a == 0.0) { // This works, remembering that -0.0==0.0
+        return 0.0;
+    } else {
+        return a;
+    }
+}
+----
+
+However, there is a simpler trick that can work:
+
+[source,c]
+----
+float remove_neg_zero_simple(float a) {
+    return a + 0.0;
+}
+----
+
+Both of these examples as a complete, testable program (visit https://replit.com/@gbmhunter/positive-and-negative-floats to run it online):
+
+[source,c]
+----
+#include <stdio.h>
+
+float remove_neg_zero_obvious(float a) {
+    if(a == 0.0) { // This works, remembering that -0.0==0.0
+        return 0.0;
+    } else {
+        return a;
+    }
+}
+
+float remove_neg_zero_simple(float a) {
+    return a + 0.0;
+}
+
+int main(void) {  
+  printf("%f\n", remove_neg_zero_obvious(-0.0));
+  printf("%f\n", remove_neg_zero_simple(-0.0));
+  return 0;
+}
+----
+
+[bibliography]
+== References
+
+* [[[bib-reddit-13-bit-byte, 1]]] u/saulmessedupman (2018, Jan 01) -- Original author unknown. _13-bit byte (Post)_. Reddit. Retrieved 2021-12-06, from https://www.reddit.com/r/ProgrammerHumor/comments/7nashw/13bit_byte/.
+* [[[bib-stack-of-p0-n0-what-gives-diff-results, 2]]] Stack Overflow (2014, Aug 15). _What operations and functions on +0.0 and -0.0 give different arithmetic results? (Question and Responses)_. Retrieved 2021-12-06, from https://stackoverflow.com/questions/25332133/what-operations-and-functions-on-0-0-and-0-0-give-different-arithmetic-results.
