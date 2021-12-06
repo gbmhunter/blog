@@ -1,0 +1,122 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Programming", "Design Patterns" ]
+date: 2021-12-06
+draft: false
+lastmod: 2021-12-06
+tags: [ "programming", "super loops" ]
+title: "How To Write Super Loops In Firmware"
+type: page
+---
+
+== Overview
+
+A _super loop_ (a.k.a. _mega loop_ or _main loop_) is a popular way to architect firmware code for simple firmware applications. It involves looping through your code which loosely follows the following three steps:
+
+. Read inputs.
+. Process inputs/data.
+. Set outputs.
+
+A super loop does not run on "operating system" (e.g. RTOS), and therefore there is **no scheduling or asynchronous code execution, everything is just run in a simple synchronous loop**. The idea is to keep the average loop time short (in the microseconds to 10's of milliseconds range) so that the system remains responsive to changes in inputs.
+
+The advantages of a super loop:
+
+* Simple to understand.
+* Don't have to worry about thread safety (memory contention, access to resources, dead-locks e.t.c).
+
+The disadvantages to a super loop include:
+
+* Not as modular as an application running on an OS, and sometimes you run into complexity issues when using a super loop for large firmware projects.
+* No ability to prioritize certain tasks (except for using interrupts). This can lead to responsivity issues for large or complex projects.
+
+TIP: The basic idea of a super loop could still be used for a single thread running on an RTOS, so it that sense, it **could** run on an operating system.  
+
+== The System Tick
+
+The idea is to call a function to get the system tick (which represents the current time, usually measured as an integer number of microseconds or milliseconds since the microcontroller started) once per iteration of your super loop.
+
+[source,c]
+----
+uint32_t curr_tick_us = get_system_tick_us();
+----
+
+It is important to note that you should only read the system tick once per iteration of the loop. This value should be used for all calculations involving the current time for the rest of the loop, even if the current time has changed. This prevents a whole range of tricky-to-debug issues when things start happening in a different order than what was expected.
+
+=== Dealing With Tick Roll-over (Overflow)
+
+It is important to make your firmware immune to the effect of the system tick overflowing (rolling over) and going back to 0 (just ask the link:https://www.engadget.com/2015-05-01-boeing-787-dreamliner-software-bug.html[Boeing 787 Dreamliner] about this<<bib-engadget-787-overflow>>).
+
+The great news is, if you are using an unsigned integer data type to store this number, thanks to the maths, much of the code you write that is based on the difference between the current time and the last time an event happened will automatically run correctly even when the tick overflows!
+
+Let's pretend we need to print something every 100ms, and we're using the ridiculously small storage of a `uint8_t` (to exaggerate the problem) to store the current time and the last time we printed something. Our code to detect when we need to print is:
+
+[source,c]
+----
+if ((uint8_t)(cur_tick_ms - last_print_time_ms) >= 100) {
+    printf("Print time! curr_tick_ms = %i\n", cur_tick_ms);
+    last_print_time_ms = cur_tick_ms;
+}
+----
+
+`last_print_time_ms` and `cur_tick_ms` start at `0`. `cur_tick_ms` starts increasing everytime when iterate around our super loop. When `cur_time_ms` gets to `100`, the `if` statement becomes true and we print. `last_print_time_ms` is updated to `100`. The same thing happens when `cur_tick_ms` gets to `200`. However, since `cur_tick_ms` is a `uint8_t`, it overflows after `255` and wraps back around to `0`. What's great is the math still works out. Because the difference `cur_tick_ms - last_print_time_ms` is also a `uint8_t`, The duration `0 - 200` is not `-200` but `56`. `cur_tick_ms` continues to increment until is reaches `44`, in where `44-200` gives us `100`, and we print again! And the cycle continues.
+
+Full working example showing this phenomenon is below. Run it online at https://replit.com/@gbmhunter/sys-tick-overflow.
+
+[source,c]
+----
+#include <stdio.h>
+#include <stdint.h>
+
+uint8_t get_system_tick_ms() {
+  static uint8_t cur_tick_ms = 0;
+  cur_tick_ms += 10;
+  return cur_tick_ms;
+}
+
+int main(void) {
+  printf("Firmware starting...\n");
+
+  uint8_t last_print_time_ms = 0;
+  const uint8_t PRINT_PERIOD_MS = 100;
+  uint32_t loop_count = 0;
+
+  while(1) {
+    uint8_t cur_tick_ms = get_system_tick_ms();
+
+    if ((uint8_t)(cur_tick_ms - last_print_time_ms) >= PRINT_PERIOD_MS) {
+      printf("Print time! curr_tick_ms = %i\n", cur_tick_ms);
+      last_print_time_ms = cur_tick_ms;
+    }
+
+    // This bit wouldn't be in a firmware application, just to bail the example
+    // code after it's done a few loops
+    loop_count += 1;
+    if (loop_count == 100) {
+      break;
+    }
+  }
+  return 0;
+}
+----
+
+Running the above code, we get the following output:
+
+[source]
+----
+Firmware starting...
+Print time! curr_tick_ms = 100
+Print time! curr_tick_ms = 200
+Print time! curr_tick_ms = 44
+Print time! curr_tick_ms = 144
+Print time! curr_tick_ms = 244
+Print time! curr_tick_ms = 88
+Print time! curr_tick_ms = 188
+Print time! curr_tick_ms = 32
+Print time! curr_tick_ms = 132
+Print time! curr_tick_ms = 232
+----
+
+[bibliography]
+== References
+
+* [[[bib-engadget-787-overflow, 1]]] E. Alvarez (2015, May 1). _To keep a Boeing Dreamliner flying, reboot once every 248 days_. Engadget. Retrieved 2021-12-06, from https://www.engadget.com/2015-05-01-boeing-787-dreamliner-software-bug.html.
