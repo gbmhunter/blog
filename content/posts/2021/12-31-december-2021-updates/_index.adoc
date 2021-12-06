@@ -14,3 +14,5 @@ type: "post"
 == Updates This Month
 
 * Added info about the JST PH/SH W2B connectors used for Adafruit STEMMA/STEMMA QT and SparkFun Qwiic devices.
+
+* Added the new page link:[How To Write Super Loops In Firmware].
