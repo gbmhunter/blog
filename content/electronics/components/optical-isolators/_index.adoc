@@ -4,17 +4,19 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2015-11-02
 draft: false
 lastmod: 2015-11-02
-tags: [ "optical isolators", "phototriac", "schematic symbols", "component packages" ]
+tags: [ "optical isolators", "phototriac", "schematic symbols", "component packages", "opto-isolators" ]
 title: Optical Isolators
 type: page
 ---
 
-## Schematic Symbol
+== Schematic Symbol
 
 A commonly used schematic symbol for an optical isolator is shown below:
 
 .A commonly used symbol for a standard optical isolator.
 image::opto-isolator-schematic-symbol.png[width=200px]
+
+Many opto-isolators use a infrared emitting diode optically coupled to a photo transistor, all within a single enclosed component.
 
 ## The Current-Transfer Ratio
 
