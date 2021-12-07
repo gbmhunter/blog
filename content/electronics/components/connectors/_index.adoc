@@ -544,6 +544,13 @@ The original SMA connectors were developed in the 1960s<<bib-reichelt-sma-rpsma>
 
 _Reverse-polarity_ (RP) SMA connectors have the pin and sleeve swapped between the male and female parts. Also known as _RP-SMA_ or _R-SMA_. _Reverse-polarity_ was designed  to prevent the unauthorized connection of a antenna with a larger gain to WiFi equipment<<bib-reichelt-sma-rpsma>>, to distinguish them from cellular equipment involving LTE/GSM/UMTS which was utilizing the standard SMA connector. These days, RP-SMA connectors are now commonplace, somewhat defeating the protection through obscurity. However in general, standard SMA connectors are still used for cellular applications whilst RP-SMA for WiFi/WLAN.
 
+=== N Connectors
+
+_N connectors_ (a.k.a. N-type or Type N connectors) are large RF connectors.
+
+.Close-up of a N Connector.
+image::n-connector-close-up-edited.jpg[width=300px]
+
 == Board-to-Board Connectors
 
 Board-to-board connectors which connect to PCBs side-by-side are called _coplanar_ connectors.
