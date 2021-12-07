@@ -103,3 +103,7 @@ Migrated from Wordpress (full-blown CMS) to Hugo (static-site generator). The Gi
 A full post with more information on this migration can be found [here](/posts/2018/12-15-site-migration-to-hugo-complete/).
 
 {{< img src="page-view-decrease-migration-from-wordpress-to-hugo.png" width="800px" caption="The decrease in page views after the migration from a Wordpress powered site to a statically-generated site powered by Hugo. There were no domain/page URL changes during this migration." >}}
+
+## Site Info
+
+Arial font is used for image watermarks.
