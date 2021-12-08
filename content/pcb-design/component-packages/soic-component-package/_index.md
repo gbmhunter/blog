@@ -4,7 +4,7 @@ categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-01-21
 description: "Synonyms, variants, pitches, pin numbering, mechanical drawings, recommend footprints and more info about the SOIC range of component packages."
 draft: false
-lastmod: 2020-07-21
+lastmod: 2021-12-08
 tags: [ "component packages", "PCB design", "SOIC", "R-PSDO", "S8", "WSON", "S8E", "SO-4", "SOIC-4", "optical isolators" ]
 title: "SOIC Component Package"
 type: "page"
@@ -22,10 +22,12 @@ type: "page"
       <td>Synonyms</td>
       <td>
         <ul>
+          <li>11-4M1S (Toshiba SO-4, 4.55mm wide body)[^toshiba-tlp185-ds]</li>
           <li>R-PDSO (JEDEC wide body SOIC, 7.5mm width, 0.65mm pitch)</li>
-          <li>SO (ST Microelectronics)</li>
           <li>S8 (SOIC-8, Analog Devices)</li>
           <li>S8E (Linear Technologies, SOIC-8 with exposed pad)</li>
+          <li>SO (ST Microelectronics)</li>
+          <li>SSOP4/LSOP04 (onsemi, SO-4, 7.5mm wide body)[^onsemi-fodm1009-ds]</li>
           <li>WSON (SST, this is a package which shares the same footprint as a SOIC but has a smaller height, not to be confused with the different SON package)</li>
         </ul>
       </td>
@@ -173,4 +175,6 @@ ON Semiconductor uses the case code `751EP` for the `SOIC-4W` package[^on-semico
 
 ## References
 
-[^on-semiconductor-bridge-rectifier]: <https://nz.mouser.com/datasheet/2/308/MB10S-D-1810767.pdf>
+[^on-semiconductor-bridge-rectifier]: https://nz.mouser.com/datasheet/2/308/MB10S-D-1810767.pdf.
+[^toshiba-tlp185-ds]: Retrieved 2021-12-08, from https://media.digikey.com/pdf/Data%20Sheets/Toshiba%20PDFs/TLP185_04-27-17.pdf.
+[^onsemi-fodm1009-ds]: Retrieved 2021-12-08, from https://nz.mouser.com/datasheet/2/308/1/FODM1009_D-2313636.pdf.
