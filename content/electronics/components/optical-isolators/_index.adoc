@@ -9,7 +9,15 @@ title: Optical Isolators
 type: page
 ---
 
-== Schematic Symbol
+== Overview
+
+Types:
+
+* Transistor output optocouplers.
+
+## Transistor Output Optocouplers
+
+### Schematic Symbol
 
 A commonly used schematic symbol for an optical isolator is shown below:
 
@@ -18,11 +26,19 @@ image::opto-isolator-schematic-symbol.png[width=200px]
 
 Many opto-isolators use a infrared emitting diode optically coupled to a photo transistor, all within a single enclosed component.
 
-## The Current-Transfer Ratio
+AC capable opto-couplers usually have two LEDs in anti-parallel (e.g. the HCPL-354 by Avago).
+
+### The Current-Transfer Ratio
 
 The current-transfer ratio of a photo-transistor based optical isolator tells you how well it amplifies an input signal to an output signal.
 
-For optical isolators with a single phototransistor driver, the current-transfer ratio is normally in the 20-120% range.
+For optical isolators with a single phototransistor driver, the current-transfer ratio is normally in the 20-400% range. Sometimes within a family there are multitude of parts with different transfer ratios, specified by slightly different part numbers. The EL3H7-G series from Everlight is one such example.
+
+The current transfer ratio is specified at a particular forward current `I_f` through the diode and particular voltage across the output collector-emitter `V_{CE}`.
+
+### Supplier Links
+
+* link:https://www.mouser.com/c/optoelectronics/optocouplers-photocouplers/transistor-output-optocouplers/[Mouser: Transistor Output Optocouplers]
 
 ## Phototriac Outputs
 
