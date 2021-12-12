@@ -527,7 +527,7 @@ BNC (_Bayonet Neill-Concelman_) connectors are quick connect connectors designed
 
 They were originally designed for military use, but are now commonly used for a variety of RF applications including:
 
-* **Oscilloscope probes:** Although the top-end modern oscilloscopes tend to have proprietary connections to the probes, with added pins for extra functionality.
+* **Oscilloscope probes:** Used for lower frequency oscilloscope probes (0-200MHz). The top-end modern oscilloscopes tend to have proprietary connections to the probes, with added pins for extra functionality.
 * **Analog video signals**
 * **Radio antennas**
 
@@ -578,6 +578,10 @@ _N connectors_ (a.k.a. N-type or Type N connectors) are large RF connectors.
 
 .Close-up of a N Connector.
 image::n-connector-close-up-edited.jpg[width=300px]
+
+=== 7/16 DIN Connectors
+
+TODO: Add info here.
 
 == Board-to-Board Connectors
 
