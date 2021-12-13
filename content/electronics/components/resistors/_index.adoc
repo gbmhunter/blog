@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2012-05-14
 description: "Schematic symbols, series and parallel behaviour, manufacturing processes, the E series, tolerances, variable resistors, volume resistance and more info about the electrical components called resistors."
 draft: false
-lastmod: 2021-08-14
+lastmod: 2021-12-13
 tags: [ "resistors", "resistors", "components", "electronics", "schematic symbols", "tolerances", "E series", "packages", "thick film", "thin film", "wirewound", "potentiometers", "rheostats", "variable resistors", "Ayrton–Perry winding" ]
 title: "Resistors"
 type: "page"
@@ -126,8 +126,8 @@ image::screenshot-of-ninjacalc-resistor-divider-calculator.png[width=604px]
 
 _Potentiometers_ are 3 terminal resistors whose resistance can be varied by means of a mechanical wiper or similar actuating device. They consist of two outer terminals which provide connections to a fixed resistance made from a conductive track, and a middle pin which connects to the wiper. The potentiometer can be turned so that the wiper slides from one end of the track to the other, changing the resistance between it and the two outer pins. A rheostat is simply a potentiometer but with one of the outside pins missing. They typically come in values of 5, 10, 20, 50 and 100kΩ.
 
-.A photo of a common through-hole potentiometer. Image from https://www.amplifiedparts.com/products/potentiometer-alpha-linear-pc-mount-marshall, retrieved 2021-01-25.
-image::potentiometer-photo-amplified-parts-dot-com.png[width=300px]
+.A photo of a panel-mount, through-hole potentiometer from BI Technologies/TT Electronics (part number P160KNP-0EC15B10K). The outer pins have a fixed resistance across them of stem:[10k\Omega]. The middle pin is connected to the wiper, and it's resistance varies between the outer pins (linearly in this case, but other tapers exist such as logarithmic) as the knob is turned.
+image::potentiometer-10k-edited.jpg[width=300px]
 
 The _style_ of a potentiometer can be:
 
