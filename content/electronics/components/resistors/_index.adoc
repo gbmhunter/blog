@@ -137,9 +137,9 @@ The _style_ of a potentiometer can be:
 
 The _taper_ of a potentiometer can either be:
 
-* Linear
-* Logarithmic
-* Reverse logarithmic
+* **Linear taper**: Most common form of taper. Value changes linearly with knob rotation.
+* **Logarithmic taper** or **Audio taper**: Commonly used in audio applications for volume control to achieve a more natural change in volume (human ears perceive loudness logarithmically). However, "logarithmic taper" is a misnomer, they are actually exponential (opposite of logarithmic) to compensate for logarithmic hearing<<bib-eepower-potentiometer-taper>>!
+* **Reverse logarithmic taper**: Exact opposite response of a logarithmic taper pot. Used for applications such as audio volume controls which need to rotate counter-clockwise rather than clockwise<<bib-eepower-potentiometer-taper>>. These pots actually have a logarithmic response.
 
 Tolerance on potentiometers normally ranges from 2-15%. Note that this is much higher than standard 1% chip SMD fixed resistors, don't expect potentiometers to be as cheap and accurate!
 
@@ -386,5 +386,6 @@ image::reel-0603-resistor-leftovers-best.jpg[width=900px]
 [bibliography]
 == References
 
-* [[[bib-eepower-res-ind]]] EE Power. _Resistor Inductance_. Retrieved 2021-08-13, from https://eepower.com/resistor-guide/resistor-fundamentals/resistor-inductance/#
-* [[[bib-edn-resistors-arent-resistors]]] Wyatt, Kenneth (2013-10-29). _Resistors aren’t resistors_. EDN. Retrieved 2021-08-15, from https://www.edn.com/resistors-arent-resistors/
+* [[[bib-eepower-res-ind, 1]]] EE Power. _Resistor Inductance_. Retrieved 2021-08-13, from https://eepower.com/resistor-guide/resistor-fundamentals/resistor-inductance/#
+* [[[bib-edn-resistors-arent-resistors, 2]]] Wyatt, Kenneth (2013-10-29). _Resistors aren’t resistors_. EDN. Retrieved 2021-08-15, from https://www.edn.com/resistors-arent-resistors/
+* [[[bib-eepower-potentiometer-taper, 3]]] EE Power. _Potentiometer Taper_. Retrieved 2021-12-13, from https://eepower.com/resistor-guide/resistor-types/potentiometer-taper/#.
