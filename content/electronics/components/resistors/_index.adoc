@@ -154,7 +154,7 @@ Designator prefixes for potentiometers and rheostats include:
 The schematic symbol looks like a normal resistor, but with a third pin added to the side of the resistor with an arrow, indicating the wiper. An example (with the US style squiggly resistor) is shown below:
 
 .The schematic symbol for a potentiometer, with the US-style 'squiggly' resistor.
-image::potentiometer-schematic-symbol.png[width=400px]
+image::potentiometer-symbol.svg[width=200px]
 
 See the link:/electronics/circuit-design/component-schematic-symbols-and-designators#resistors-r-vr[Resistors section of the Component Schematic Symbols and Designators page] for more information.
 
