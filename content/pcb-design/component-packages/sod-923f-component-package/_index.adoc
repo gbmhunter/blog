@@ -19,6 +19,7 @@ type: page
 | Synonyms
 a|
 * 0402
+* 0402F (Comchip)<<bib-comchip-cdbqc0130l-hf>>
 
 | Similar To
 a|
@@ -66,3 +67,4 @@ image::sod-923f-3d-render-digikey.png[width=300px]
 ## References
 
 * [[[bib-digikey-cpdqr5v0u-hf, 1]]] DigiKey. _Comchip Technology CPDQR5V0U-HF (product page)_. Retrieved 2021-12-14, from https://www.digikey.in/en/products/detail/comchip-technology/CPDQR5V0U-HF/3308667.
+* [[[bib-comchip-cdbqc0130l-hf, 2]]] Comchip. _Low VF SMD Schottky Barrier Diode: CDBQC0130L-HF (datasheet)_. Retrieved 2021-12-14, from https://www.comchiptech.com/admin/files/product/CDBQC0130L-HF%20RevB681116.pdf.
