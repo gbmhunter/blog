@@ -122,12 +122,16 @@ The triggered resistance should be many orders of magnitude larger than the off 
 
 * Eaton: Eaton sells a range of PTC fuses under the brandname _Polytron_.
 * Bourns: They sell a family of resettable PTC fuses under the brand name _Multifuse_, with the part numbers beginning with _MF-_. See https://www.bourns.com/products/circuit-protection/resettable-fuses-multifuse-pptc.
-* Bel
+* Bel:
 * Littelfuse: Littelfuse sells PTCs under their brand name POLYFUSE<<bib-littelfuse-60r-ds>>.
 
 ## Supplier Links
 
 * DigiKey: https://www.digikey.com/en/products/filter/ptc-resettable-fuses/150
+
+## PTC Reliability
+
+The IEEE publication link:https://www.prognostics.umd.edu/calcepapers/10_Shunfeng_Cheng_Failure_Precursors_for_Polymer_Resettable_Fuses.pdf[Failure Precursors for Polymer Resettable Fuses] has some interesting reading on the behaviour of PTC fuses as they age and what the early indications are of failure.
 
 [bibliography]
 ## References
