@@ -53,7 +53,7 @@ The _time to trip_ is the time the PTC fuse takes to transition from the normal 
 
 ### Rmin/R1max
 
-stem:[R_{min}] is the minimum resistance of the PTC in it's initial (unsoldered) state. However, after a PTC trips and then is allowed to cool to reset, it does not usually fall back down to stem:[R_{min}] immediately, but instead some value which is slightly higher. This is stem:[R_{1max}]. Note that soldering methods such as reflow soldering cause the same resistance change effect as tripping (after all, both processes heat it up!).
+stem:[R_{min}] is the minimum resistance of the PTC in it's initial (unsoldered) state. However, after a PTC trips and then is allowed to cool to reset, it does not usually fall back down to stem:[R_{min}] quickly, but can take days to reach this initial stem:[R_{min}] state. Instead, a stem:[R_{1max}] (a.k.a. stem:[R_{TRIP}]) value is specified which is the resistance it returns to after some fixed time period, usually an hour. Note that soldering methods such as reflow soldering cause the same resistance change effect as tripping (after all, both processes heat it up!).
 
 TIP: stem:[R_{min}] is useful for determining the _peak fault current_ that will occur if a short-circuit occurs (before the PTC trips). stem:[I_{max} = \frac{V_{in}}{R_{min}}]. This rate at which this peak current will drop will depend on the <<_time_to_trip, time to trip>>.
 
@@ -76,6 +76,14 @@ Linear thermistors are those which have a roughly linear response in resistance 
 ### Switching
 
 TODO
+
+## Applications
+
+PTC fuses can be used in a range of applications including:
+
+* Overload protection on `VBUS` (the positive voltage rail) on USB 2/3 ports.
+* Overload protection in DC motors.
+* Preventing rechargeable batteries from overheating or overcharging (or discharging to fast).
 
 ## PTC Thermistors vs. Fuses
 
@@ -112,7 +120,7 @@ The triggered resistance should be many orders of magnitude larger than the off 
 
 ## Manufacturers
 
-* Eaton
+* Eaton: Eaton sells a range of PTC fuses under the brandname _Polytron_.
 * Bourns: They sell a family of resettable PTC fuses under the brand name _Multifuse_, with the part numbers beginning with _MF-_. See https://www.bourns.com/products/circuit-protection/resettable-fuses-multifuse-pptc.
 * Bel
 * Littelfuse: Littelfuse sells PTCs under their brand name POLYFUSE<<bib-littelfuse-60r-ds>>.
