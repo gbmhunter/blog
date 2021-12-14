@@ -518,6 +518,9 @@ RF connectors are connectors specifically designed to carry high-frequency signa
 
 BNC (_Bayonet Neill-Concelman_) connectors are quick connect connectors designed for RF signals. It is named after it's **B**ayonet locking mechanism and it's inventors, Paul **N**eill and Carl **C**oncelman. It is "standardized" in MIL-STD-348A<<bib-everyspec-mil-std-348a>>.
 
+.Four BNC connectors on the front of a Keysight InfiniiVision DSOX2024A oscilloscope to connect the probes to.
+image::bnc-connectors-on-oscilloscope.jpg[width=700px]
+
 === Specifications
 
 * **Passband:** 0-4GHz
