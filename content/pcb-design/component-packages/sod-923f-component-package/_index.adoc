@@ -1,0 +1,68 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2021-12-14
+draft: false
+lastmod: 2021-12-14
+tags: [ "component packages", "PCB design", "SOD-923F", "small-outline", "diodes" ]
+title: "SOD-923F Component Package"
+type: page
+---
+
+## Overview
+
+[cols="1,3"]
+|===
+| Name
+| SOD-923F (Small Outline Diode 923F)
+
+| Synonyms
+a|
+* 0402
+
+| Similar To
+a|
+* link:../sod-923-component-package[SOD-923]
+
+| Variants
+| 
+
+| Mounting
+| SMD
+
+| Pin Count
+| 2
+
+| Pitch
+| n/a
+
+| Solderability
+| Reflow is most suitable. Possible to hand solder/reflow as long as experienced.
+
+| Thermal Resistance
+| 
+
+| Package LxWxH
+| n/a
+
+| Typical PCB Land Area
+| n/a
+
+| 3D Models
+| n/a
+
+| Common Uses
+a|
+* ESD protection diodes
+* Schottky diodes
+|===
+
+The SOD-923F is similar to the link:../sod-923-component-package[SOD-923], except that the SOD-923F does not have pins protruding past the end of the package and instead is a "chip" style package with the pins on the bottom face of the package. It is identical to the 0402 package commonly used for resistors and capacitor, however the `SOD-923F`` designation is typically used for diodes whilst `0402` is used for chip resistors and capacitors.
+
+.A 3D render of the SOD-923F component package<<bib-digikey-cpdqr5v0u-hf>>. Image (C) DigiKey.
+image::sod-923f-3d-render-digikey.png[width=300px]
+
+[bibliography]
+## References
+
+* [[[bib-digikey-cpdqr5v0u-hf, 1]]] DigiKey. _Comchip Technology CPDQR5V0U-HF (product page)_. Retrieved 2021-12-14, from https://www.digikey.in/en/products/detail/comchip-technology/CPDQR5V0U-HF/3308667.

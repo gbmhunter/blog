@@ -11,6 +11,9 @@ a|
 | Similar To
 | SC-89-6
 
+| Variants
+| 
+
 | Mounting
 | SMD
 
