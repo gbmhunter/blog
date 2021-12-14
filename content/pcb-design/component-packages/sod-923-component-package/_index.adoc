@@ -1,0 +1,70 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-10-25
+draft: false
+lastmod: 2021-12-14
+tags: [ "component packages", "PCB design", "SOD-923", "small-outline", "diodes", "SC-116A" ]
+title: "SOD-923 Component Package"
+type: page
+---
+
+## Overview
+
+[cols="1,3"]
+|===
+| Name
+| SOD-923 (Small Outline Diode 923)
+
+| Synonyms
+a|
+* SC-116A
+
+| Similar To
+a|
+* link:../sod-923f-component-package[SOD-923F]
+
+| Variants
+| 
+
+| Mounting
+| SMD
+
+| Pin Count
+| 2
+
+| Pitch
+| 0.875mm<<bib-toshiba-sod-923>>
+
+| Solderability
+| Reflow is most suitable. Possible to hand solder/reflow as long as experienced.
+
+| Thermal Resistance
+| 
+
+| Package LxWxH
+| 1.0x0.6x0.4mm<<bib-toshiba-sod-923>><<bib-centralsemi-sod-923pd>>
+
+| Typical PCB Land Area
+| 0.72mm² (1.2x0.6mm)<<bib-toshiba-sod-923>>
+
+| 3D Models
+a|
+* https://toshiba.semicon-storage.com/ap-en/semiconductor/design-development/package/detail.SOD-923.html
+
+| Common Uses
+a|
+* ESD protection diodes
+* Schottky diodes
+|===
+
+The SOD-923 is similar to the SOD-923F, except the SOD-923 has pins protruding from the sides of the package and is not considered a "chip" package. The SOD-923 and SOD-923F have the same outer dimensions (when you include the pins in the SOD-923).
+
+.A 3D render of the SOD-923 component package.
+image::sod-923-component-package-3d-render.jpg[width=300px]
+
+[bibliography]
+## References
+
+* [[[bib-toshiba-sod-923, 1]]] Toshiba Semiconductor. _SOD-923_. Retrieved 2021-12-14, from https://toshiba.semicon-storage.com/ap-en/semiconductor/design-development/package/detail.SOD-923.html.
+* [[[bib-centralsemi-sod-923pd, 2]]] Central Semiconductor. _Package Details: SOD-923 Case_. Retrieved 2021-12-14, from https://www.centralsemi.com/PDFs/case/SOD-923PD.PDF.

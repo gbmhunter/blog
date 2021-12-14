@@ -18,3 +18,5 @@ type: "post"
 * Added the new page link:/programming/design-patterns/how-to-write-super-loops-in-firmware/[How To Write Super Loops In Firmware].
 
 * Added more info about the link:/programming/languages/c/data-types/[data types available in C].
+
+* Added info on the link:/pcb-design/component-packages/sod-923f-component-package/[SOD-923F component package].
