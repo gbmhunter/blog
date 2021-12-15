@@ -11,7 +11,7 @@ type: "page"
 
 ## Overview
 
-A _PTC resettable fuse_ (or just PTC) is a passive electronic component used to **protect against excessive load currents and short-circuits in electronic circuits**. The key difference between standard blowable fuses and PTC resettable fuses is that a PTC resettable is _resettable_ -- once the fault condition is cleared the fuses resets and the circuit can work normally again, without any manual replacement of fuses. PTC stands for positive temperature coefficient and references the fact that the components resistance increases with increasing temperature.
+A _PTC resettable fuse_ (or just PTC, a.k.a. _polyfuse_, _polyswitch_ or _multifuse_) is a passive electronic component used to **protect against excessive load currents and short-circuits in electronic circuits**. The key difference between standard blowable fuses and PTC resettable fuses is that a PTC resettable is _resettable_ -- once the fault condition is cleared the fuses resets and the circuit can work normally again, without any manual replacement of fuses. PTC stands for positive temperature coefficient and references the fact that the components resistance increases with increasing temperature.
 
 .3D render of a 1206 chip sized PTC fuse from Bel Fuse Inc<<bib-digikey-bel-fuse-0zcj0035ff2g>>.
 image::3d-render-of-chip-ptc-fuse-bel-fuse-0zcj0035ff2g.png[width=200px]
