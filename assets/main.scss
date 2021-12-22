@@ -231,7 +231,9 @@ h2 {
 
     // Add a bottom horizontal "line" for all major page headings
     border-bottom: 4px solid var(--main-color);
-    float: left;
+
+    // 2021-12-22: Commented float: left out as it was hiding images/code blocks if they directly after an h2 heading
+    // float: left;
     width: 100%;
     padding-bottom: 3px;
 }
