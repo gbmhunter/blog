@@ -86,3 +86,24 @@ CT1206-010U-016V-01: Cap, Tantalum, 1206, 10uF, 16V
 
 ###  Inductors
 
+Inductors usually have two very similar current parameters, _rated current_ and _saturation current_. Unfortunately they do not come is the same standarized SMD packages that resistors and capacitors do, so we omit a package section from the part number. So we have the following part number format:
+
+[source]
+----
+L120U-002A-01
+||    |    |
+||    |    Sequential number
+||    Rated current
+||      120M: 120mA
+||      002A: 2A
+|Inductance
+|  120N: 120nF
+Inductor (L being commonly used as the designator prefix for an inductor)
+----
+
+Some examples:
+
+[source]
+----
+L
+----
