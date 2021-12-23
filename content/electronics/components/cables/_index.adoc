@@ -242,10 +242,13 @@ The shield must be grounded (with respect to the signals/EMI) to be effective.
 Cable glands are strain-relief and weather-proofing glands which allow cables to be passed through enclosure walls.
 
 .Three sizes of cable gland.
-image::cable-glands-three-sizes-edited.jpg[width=500px]
+image::cable-glands-three-sizes.jpg[width=500px]
 
 .A single large cable gland which contains a grommet which allows 8 cables to pass through.
 image::cable-gland-multi-cable-edited.jpg[width=300px]
+
+.Metal cable glands are available if you need stronger support. Note however metal is not strictly better...plastic is better for chemical/corrosion resistance!
+image::metal-cable-gland.jpg[width=200px]
 
 [bibliography]
 ## References
