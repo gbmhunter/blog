@@ -11,4 +11,4 @@ type: "page"
 
 ## Overview
 
-The `SOT-346` package is a synonym for the `SOT-23-3` (SOT-23 with 3 pins) package. See the {{% link text="SOT-23 Component Package page" link="sot-23-component-package" %}} for more information.
+The `SOT-346` package is a synonym for the `SOT-23-3` (SOT-23 with 3 pins) package. See the link:../sot-23-component-package[SOT-23 Component Package page] for more information.
