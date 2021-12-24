@@ -1,0 +1,84 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2021-03-16
+draft: false
+lastmod: 2021-12-24
+tags: [ "component packages", "PCB design", "transistor", "transistor outline", "TO-247", "TO-247AC", "SOD-429" ]
+title: "TO-247 Component Package"
+type: "page"
+---
+
+## Overview
+
+[cols="1,3"]
+|===
+| Name
+| TO-247 (Transistor Outline 247)
+
+| Synonyms
+a|
+* SOD-429 (TO-247AC, Nexperia)
+* CASE 340L-02 (TO-247AC, On Semi)<<bib-on-semi-package-change>>
+
+| Similar To
+a|
+* link:../to-218-component-package[TO-218] (unlike the TO-247, this does not have an isolated mounting hole)
+
+| Variants
+a|
+* TO-247AC, TO-247-3 (3 leads)
+
+| Mounting
+| TH
+
+| Pin Count
+| 2, 3 (TO-247AC)
+
+| Pitch
+| 5.45mm (0.215")<<bib-on-semi-package-change>>
+
+| Solderability
+| Suitable for wave soldering. Easy to solder by hand.
+
+| Thermal Resistance
+| 
+
+| Package LxWxH
+| n/a
+
+| Typical PCB Land Area
+| n/a
+
+| 3D Models
+a| n/a
+
+| Common Uses
+a|
+* BJTs
+* MOSFETs
+|===
+
+## TO-247AC (TO-247-3)
+
+The `TO-247AC` (a.k.a. `TO-247-3`) is the 3-pin variant of the TO-247 package. It is considered the "upgrade" of the TO-218 (SOT-93), with the main difference being the insulated mounting hole, making it easier to mount to a heatsink without shorting things out (it is "mechanically compatible" with the TO-218, however not identical!<<bib-on-semi-package-change>>).
+
+When containing a MOSFET, the pin wiring is usually:
+
+1. Gate
+2. Drain
+3. Source 
+
+.Photo of the International Rectifier (now Vishay) IRFP460 N-channel power MOSFET in the TO-247AC component package.
+image::irfp460-to-247.jpg[width=200px]
+
+.3D render of the TO-247AC component package. Image from https://www.powerelectronictips.com/igbts-come-fully-isolated-247-package/, retrieved 2021-03-16.
+image::to-247ac-component-package-3d-render-infineon.jpg[width=500px]
+
+.The dimensions for the TO-247AC (SOD-429) component package. Image from <https://assets.nexperia.com/documents/package-information/SOT429.pdf>, accessed 2021-03-16.
+image::to-247ac-sod-429-component-package-dimensions.png[width=800px]
+
+[bibliography]
+## References
+
+* [[[bib-on-semi-package-change, 1]]] ON Semiconductor (2012, Jun 9). _Final Product/Process Change Notification #16827:  Package change from TO-218 to TO-247 for all Bipolar Power Transistors_. Retrieved 2021-12-24, from https://www.mouser.com/PCN/ON%20Semiconductor_16827.pdf.
