@@ -1,14 +1,14 @@
 ---
 authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
-date: 2015-10-15
+date: 2021-12-25
 draft: false
-lastmod: 2020-01-15
-tags: [ "component packages", "PCB design", "SOT-346", "small-outline", "transistor", "SOT-23", "SOT-23-3" ]
-title: "SOT-346 Component Package"
+lastmod: 2021-12-25
+tags: [ "component packages", "PCB design", "SOT-93" ]
+title: "SOT-93 Component Package"
 type: "page"
 ---
 
 ## Overview
 
-The `SOT-346` package is a synonym for the `SOT-23-3` (SOT-23 with 3 pins) package. See the link:../sot-23-component-package[SOT-23 Component Package page] for more information.
+The `SOT-93` package is a synonym for the `TO-218-3` (3 pin variant of the TO-218 package) package. See the link:../to-218-component-package[TO-218 Component Package page] for more information.

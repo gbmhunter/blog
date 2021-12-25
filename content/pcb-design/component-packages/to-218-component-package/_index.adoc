@@ -14,7 +14,7 @@ type: "page"
 [cols="1,3"]
 |===
 | Name
-| TO-218 (Transistor Outline 218)
+| TO-218 (Transistor Outline 218, JEDEC)
 
 | Synonyms
 a|

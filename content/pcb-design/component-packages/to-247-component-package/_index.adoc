@@ -14,7 +14,7 @@ type: "page"
 [cols="1,3"]
 |===
 | Name
-| TO-247 (Transistor Outline 247)
+| TO-247 (Transistor Outline 247, JEDEC)
 
 | Synonyms
 a|
@@ -28,6 +28,8 @@ a|
 | Variants
 a|
 * TO-247AC, TO-247-3 (3 leads)
+* TO-247PLUS-3 (Infineon)<<bib-infineon-to247plus>>
+* TO-247PLUS-4 (Infineon)<<bib-infineon-to247plus>>
 
 | Mounting
 | TH
@@ -82,3 +84,4 @@ image::to-247ac-sod-429-component-package-dimensions.png[width=800px]
 ## References
 
 * [[[bib-on-semi-package-change, 1]]] ON Semiconductor (2012, Jun 9). _Final Product/Process Change Notification #16827:  Package change from TO-218 to TO-247 for all Bipolar Power Transistors_. Retrieved 2021-12-24, from https://www.mouser.com/PCN/ON%20Semiconductor_16827.pdf.
+* [[[bib-infineon-to247plus, 2]]] Infineon (2017, Feb 10). _AN2017-01: TO-247PLUS - Description of the packages and assembly guidelines_. Retrieved 2021-12-25, from https://www.infineon.com/dgdl/Infineon-Discrete_IGBT_in_TO-247PLUS-AN-v02_00-EN.pdf?fileId=5546d46249cd10140149e0c7fe9d56c7. 
