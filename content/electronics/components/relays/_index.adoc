@@ -57,7 +57,10 @@ Protect with diode in anti-parallel. This diode can keep the relay turned on for
 
 ## Latching
 
-With a little bit of clever (in design, not in the components themselves) external componentry, a mechanical relay can be made to latch-on, and will only reset once the load has been disconnected.
+With a little external componentry, a mechanical relay can be made to latch-on after triggered, and will only reset once a reset button has been pushed (or power disconnected).
+
+.A simple latching relay circuit. The RESET pushbutton can be replaced with short if you only need the circuit to reset on power off.
+image::latching-relay-circuit.png[width=400px]
 
 ## Common Relay Packages
 
