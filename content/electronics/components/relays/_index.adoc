@@ -40,16 +40,15 @@ image::solid-state-relay-in-schematic-with-input-resistor.png[width=600px]
 
 ## Contact Arrangements
 
-Normally Open vs. Normally Closed
+* **Normally open (NO):** Contacts which are open-circuit when the coil is not energized, and become short-circuit to common when the coil is energized.
+* **Normally open (NO):** Contacts which are short-circuit to common when the coil is not energized, and become open-circuit when the coil is energized.
 
 Single-pole, single-throw (1A)
 
 Double-pole, single-throw (1C)
 
-The following diagram shows three of the most common contact arrangements for relays.
-
-.Three of the most common contact arrangements for relays. Image from 'http://relays.te.com/pnb.asp'.
-image::relay-form-a-b-c-contact-arrangement.png[width=500px]
+.Schematic symbol for a relay with a normally-open (NO), normally-closed (NC) and common contact.
+image::relay-no-nc-schematic-symbol.png[width=500px]
 
 ## Inductive Kickback
 
