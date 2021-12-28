@@ -27,9 +27,18 @@ Relays with built in timers.
 * Rated Coil Current: The current the relay coil will draw when the rated coil voltage is applied to it.
 * Contact Current Rating: The maximum current that the relay can conduct through the contacts
 
-## Solid State
+.The DEC DH1U-5VDC relay that can switch 250VAC at 15A.
+image::relay-dec-dh1u-5vdc-tv-8.jpg[width=200px]
+
+.The Tyco T9AS5D12 relay. Coil is driven with 12VDC and switches 240VAC. Notice the two different contact ratings, 10A for the N.C. (normally closed) and 20A for the N.O. (normally open).
+image::relay-tyco-t9as5d12-12-12vdc-240vac.jpg[width=500px]
+
+## Solid State Relays
 
 Solid-state relays are relay's that don't have any moving mechanical parts involved in the switching. They use semi-conductor devices to perform the switching instead.
+
+.The MGR-1 D4825 solid state relay from Mager. The input takes 3-32VDC to switch the output 24-480VAC contacts at up to 25A.
+image::solid-state-relay-mgr-1-d4825.jpg[width=600px]
 
 The normal way of doing this is to perform the switching with back-to-back N-channel link:/electronics/components/transistors/mosfets/[MOSFETs] whose gates are activated by a isolating opto-coupler (LED and receiver).
 
