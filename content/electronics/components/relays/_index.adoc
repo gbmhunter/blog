@@ -2,7 +2,7 @@
 authors: [ "Geoffrey Hunter" ]
 date: 2012-10-25
 draft: false
-lastmood: 2021-12-22
+lastmood: 2021-12-29
 tags: [ "relay", "relays", "solid state", "single-pole", "double-pole", "single-throw", "double-throw", "inductive kickback" ]
 title: "Relays"
 type: "page"
@@ -28,24 +28,24 @@ Relays with built in timers.
 * Contact Current Rating: The maximum current that the relay can conduct through the contacts
 
 .The DEC DH1U-5VDC relay that can switch 250VAC at 15A.
-image::relay-dec-dh1u-5vdc-tv-8.jpg[width=200px]
+image::relay-dec-dh1u-5vdc-tv-8.jpg[width=200px, link="relay-dec-dh1u-5vdc-tv-8.jpg"]
 
 .The Tyco T9AS5D12 relay. Coil is driven with 12VDC and switches 240VAC. Notice the two different contact ratings, 10A for the N.C. (normally closed) and 20A for the N.O. (normally open).
-image::relay-tyco-t9as5d12-12-12vdc-240vac.jpg[width=500px]
+image::relay-tyco-t9as5d12-12-12vdc-240vac.jpg[width=350px, link="relay-tyco-t9as5d12-12-12vdc-240vac.jpg"]
 
 ## Solid State Relays
 
 Solid-state relays are relay's that don't have any moving mechanical parts involved in the switching. They use semi-conductor devices to perform the switching instead.
 
 .The MGR-1 D4825 solid state relay from Mager. The input takes 3-32VDC to switch the output 24-480VAC contacts at up to 25A.
-image::solid-state-relay-mgr-1-d4825.jpg[width=600px]
+image::solid-state-relay-mgr-1-d4825.jpg[width=500px, link="solid-state-relay-mgr-1-d4825.jpg"]
 
 The normal way of doing this is to perform the switching with back-to-back N-channel link:/electronics/components/transistors/mosfets/[MOSFETs] whose gates are activated by a isolating opto-coupler (LED and receiver).
 
 Below is the typical schematic symbol for a solid-state relay, along with a resistor connected to the input to limit the current through the internal LED.
 
 .This is the typical schematic symbol for a solid-state relay, along with a resistor connected to the input to limit the current through the internal LED.
-image::solid-state-relay-in-schematic-with-input-resistor.png[width=600px]
+image::solid-state-relay-in-schematic-with-input-resistor.png[width=600px, link="solid-state-relay-in-schematic-with-input-resistor.png"]
 
 ## Contact Arrangements
 
@@ -57,7 +57,7 @@ Single-pole, single-throw (1A)
 Double-pole, single-throw (1C)
 
 .Schematic symbol for a relay with a normally-open (NO), normally-closed (NC) and common contact.
-image::relay-no-nc-schematic-symbol.png[width=500px]
+image::relay-no-nc-schematic-symbol.png[width=500px, link="relay-no-nc-schematic-symbol.png"]
 
 ## Inductive Kickback
 
@@ -68,7 +68,7 @@ Protect with diode in anti-parallel. This diode can keep the relay turned on for
 With a little external componentry, a mechanical relay can be made to latch-on after triggered, and will only reset once a reset button has been pushed (or power disconnected).
 
 .A simple latching relay circuit. The RESET pushbutton can be replaced with short if you only need the circuit to reset on power off.
-image::latching-relay-circuit.png[width=400px]
+image::latching-relay-circuit.png[width=400px, link="latching-relay-circuit.png"]
 
 ## Common Relay Packages
 
@@ -78,7 +78,7 @@ You can get DIN mounted relay "sockets" for mounting relays onto DIN rail, as sh
 
 [[relay-in-din-socket]]
 .An Omron relay on a DIN mounted relay "socket".
-image::relay-in-din-socket.jpg[width=500px]
+image::relay-in-din-socket.jpg[width=500px, link="relay-in-din-socket.jpg"]
 
 ## Supplier Links
 
