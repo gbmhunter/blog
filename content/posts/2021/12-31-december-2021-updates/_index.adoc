@@ -24,3 +24,5 @@ type: "post"
 * Added a new page on the TO-218 component package.
 
 * Added more info on the TO-247 component package.
+
+* Updated the info on relay flyback diodes, including adding an example schematic.
