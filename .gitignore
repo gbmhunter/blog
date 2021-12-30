@@ -4,6 +4,9 @@ public/
 # Hugo puts page resources (e.g. images) here
 resources/
 
+# Temp Hugo build file
+.hugo_build.lock
+
 __pycache__/
 
 # VS Code settings
