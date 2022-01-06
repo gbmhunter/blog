@@ -186,11 +186,6 @@ This is another footnote[^foot-2].
 
 {{% link src="relative-page" text="Relative link." %}}
 
-## Colors
-
-Blue: `#3465a4`
-Orange: `#ea7500`
-
 ## Other
 
 Footnotes, related content and tags sections should be below.
