@@ -107,3 +107,9 @@ A full post with more information on this migration can be found [here](/posts/2
 ## Site Info
 
 Arial font is used for image watermarks.
+
+## Colors
+
+Blue: `#3465a4`
+Orange: `#ea7500`
+Main red color: `#dc3545`
