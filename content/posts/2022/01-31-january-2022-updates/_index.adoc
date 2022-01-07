@@ -14,3 +14,5 @@ type: "post"
 == Updates This Month
 
 * Added info on ICs which have different part numbers for different I2C addresses.
+
+* Added a photo of a castellated daughter board inside a Logitech G810 mechanical keyboard. 
