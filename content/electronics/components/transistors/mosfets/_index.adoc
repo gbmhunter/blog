@@ -4,7 +4,7 @@ categories: [ "Electronics", "Components" ]
 date: 2011-09-03
 description: "Schematic symbols, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."
 draft: false
-lastmod: 2021-02-18
+lastmod: 2022-01-07
 tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate", "SOA diagram" ,"safe operating area", "thermal limits", "Spirito effect", "common-source amplifier", "HEMT" ]
 title: "MOSFETs"
 type: "page"
@@ -52,6 +52,12 @@ The easiest way to show the difference between enhancement and depletion-mode MO
 image::vgs-vs-id-enhancement-and-depletion-mode.svg[width=700px]
 
 The curve for the depletion-mode MOSFET is shown on the left. As you can see, the device is OFF (not conducting current) when stem:[V_{GS}] is around stem:[-4V] and is well and truly on when stem:[V_{GS}] gets to stem:[0V]. In comparison, the enhancement-mode MOSFET is fully off when stem:[V_{GS} = 0V], and takes around stem:[+3V] before it starts conducting. 
+
+Depletion-mode MOSFETs are used for:
+
+* <<#_bi_directional_current_limiter, Bi-directional current limiting circuits (which can also withstand high voltages)>>
+* Current sinks/sources
+* Attaching onto the input of a linear regulator to allow it to run of high voltages (or protect it from ESD)<<bib-ixys-dep-mode-mosfet-applications>>.
 
 ### Alternate Style #1
 
@@ -208,9 +214,43 @@ image::common-source-amplifier.svg[width=500px]
 
 The huge problem with the above circuit is the non-linearity.
 
-### Bi-direction Current Limiter
+### Bi-directional Current Limiter
 
-An interesting use for depletion-mode MOSFETs is a simple bi-directional current limiter circuit.
+An interesting use for <<#_depletion_mode, depletion-mode MOSFETs>> is a **simple bi-directional current limiter circuit**. <<depletion-mode-mosfet-current-limiter>> shows the schematic, which uses two depletion-mode MOSFETs connected back-to-back with a resistor in-between.
+
+[[depletion-mode-mosfet-current-limiter]]
+.Schematic of a bi-directional current limiter made from two depletion mode MOSFETs and a resistor.
+image::depletion-mode-mosfet-current-limiter.svg[width=600px,link="depletion-mode-mosfet-current-limiter.svg"]
+
+This circuit utilizes the **depletion-mode MOSFETs unique feature of being on when the gate-source voltage is 0V**. The circuit works like this:
+
+. When no current is flowing, no voltage is dropped across the resistor. Hence both MOSFETs stem:[V_{GS}] is 0V. Because these are depletion-mode MOSFETs, this means they are turned on, and the circuit appears as a resistance of value stem:[R_S].
+. As current begins to flow from left-to-right, a voltage drop begins to appear across stem:[R_S]. This creates a negative stem:[V_{GS}] for stem:[Q1] and a positive stem:[V_{GS}] for stem:[Q2]. We can ignore the positive stem:[V_{GS}] as this only serves to turn stem:[Q2] a little more (note that even if stem:[Q2] wasn't on, it's internal body diode would conduct anyway). However the negative stem:[V_{GS}] on stem:[Q1] is important!
+. As the current reaches a certain value, stem:[V_{GS}] across stem:[Q1] will become negative enough to reach it's stem:[V_{GS(th)}] (which is between -2.1V and -1V for the BSP149<<bib-infineon-bsp149-ds>>). At this point it will begin turning stem:[Q1] off, stem:[Q1] will begin to drop voltage across it and hence limit the current of the circuit.
+. Because of the symmetry this circuit works in exactly the same way if current is flowing in the other direction (right-to-left), but with the roles of stem:[Q1] and stem:[Q2] reversed.
+
+[example]
+.Worked Example of the Bi-directional Current Limiter
+--
+<<depletion-mode-mosfet-current-limiter>> shows two BSP149 MOSFETs and an stem:[R_S = 1k\Omega].
+
+From the datasheet of the BSP149, stem:[V_{GS(th)}] is between -2.1V and -1V<<bib-infineon-bsp149-ds>>. Unfortunately stem:[V_{GS(th)}] is never a well defined parameter, so we'll just pick a value in the middle of stem:[V_{GS(th)} = -1.5V].
+
+This means that the circuit should limit the current to approximately:
+
+[stem]
+++++
+\begin{align}
+I_{LIM} &= \frac{\left| V_{GS(th)} \right|}{R_S} \\
+        &= \frac{\left| -1.5V\right| }{1k\Omega} \\
+        &= 1.5mA
+\end{align}
+++++
+--
+
+Because you can get depletion-mode MOSFETs with a maximum stem:[V_{DS}] rating of 200-1000V, this circuit is an excellent candidate for protecting the input of something that could expect either a high positive or negative voltage.
+
+TIP: Because of the part-to-part uncertainty in stem:[V_{GS(th)}], this circuit is suitable for crude current-limiting (e.g. for circuit protection) but not for designing an accurate current sink/source. 
 
 ## Internal Diodes
 
@@ -357,3 +397,5 @@ Typical link:http://www.richieburnett.co.uk/temp/gdt/gdt2.html[gate drive wavefo
 * [[[bib-semantic-scholar-dmos, 4]]]: Y. Tarui, Y. Hayashi, T. Sekigawa (1969). _Diffusion Selfaligned MOST; A New Approach for High Speed Device_. Retrieved 2021-02-18, from https://www.semanticscholar.org/paper/Diffusion-Selfaligned-MOST%3B-A-New-Approach-for-High-Tarui-Hayashi/c4ad0fa7b03e080cc027545f7152caa28633fa9a
 * [[[bib-wikipedia-hemt, 5]]]: Wikipedia (2004, Jul 19). _High-electron-mobility transistor_. Retrieved 2021-02-18, from https://en.wikipedia.org/wiki/High-electron-mobility_transistor.
 * [[[bib-dinc-dmn61d8l-ds, 6]]] Diodes Incorporated (2018, Jun). _DMN61D8L/LVT: 60V N-Channel Enhancement Mode MOSFET (Datasheet)_. Retrieved 2021-10-26, from https://www.diodes.com/assets/Datasheets/DMN61D8L-LVT.pdf.
+* [[[bib-infineon-bsp149-ds, 7]]] Infineon (2012, Nov 28). _BSP149: SIPMOS Small-Signal-Transistor_. Retrieved 2022-01-07, from https://www.infineon.com/dgdl/Infineon-BSP149-DS-v02_01-en.pdf?fileId=db3a30433c1a8752013c1fcbb815397c.
+* [[[bib-ixys-dep-mode-mosfet-applications, 8]]] IXYS (2014, Mar 10). _AN-500: Depletion-Mode Power MOSFETs and Applications_. Retrieved 2022-01-07, from https://www.ixysic.com/home/pdfs.nsf/www/AN-500.pdf/$file/AN-500.pdf. 
