@@ -233,6 +233,23 @@ Replace string:
 link:$2[$1]
 ----
 
+== Worked Examples
+
+[example]
+.Worked Example of the Bi-directional Current Limiter
+--
+This is a "worked example" block, where the reader should be guided through the thinking/calculations that led to choosing particular values for a circuit, or a piece of code.
+
+[stem]
+++++
+\begin{align}
+I_{LIM} &= \frac{\left| V_{GS(th)} \right|}{R_S} \\
+        &= \frac{\left| -1.5V\right| }{1k\Omega} \\
+        &= 1.5mA
+\end{align}
+++++
+--
+
 [bibliography]
 == References
 
