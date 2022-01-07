@@ -29,18 +29,21 @@ MOSFETs should not be confused with similar but different semiconductor devices 
 
 ### Enhancement-Mode
 
-Unfortunately for the keen circuit designer learning about MOSFETs, there is a dizzying variety of MOSFET symbols in use, owing to the fact that there are a larger number of different MOSFET types, and that no one can agree on a single standard. This section will walk you through all the various types. Firstly, shown below is the commonly used schematic symbols for enhancement-mode MOSFETs, showing both the N-channel and P-channel variant.
+Unfortunately for the keen circuit designer learning about MOSFETs, there is a dizzying variety of MOSFET symbols in use, owing to the fact that there are a larger number of different MOSFET types, and that no one can agree on a single standard. This section will walk you through all the various types. Firstly, <<mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch>> shows the commonly used schematic symbols for enhancement-mode MOSFETs, with both the N-channel and P-channel variant.
 
+[[mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch]]
 .Schematic symbols for enhancement-mode N-channel and P-channel MOSFETs. D=drain, S=source, G=gate. This is one of the most popular variants of symbol for these device types, and contains the most information (e.g. shows the body diode, so you can't forget it exists when designing your circuit!).
-image:mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch.svg[width=700px]
+image::mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch.svg[width=700px,link="mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch.svg"]
 
-The arrow has it's origins from a simple diode, in which the arrow points from the P-type substrate to the N-type substrate (which is also the direction of conventional current flow through a diode). Sometimes an **outer circle is added to the above symbols**, since a MOSFET is a transistor and by convention transistors are drawn with circles (e.g. think about a BJT symbol). However this has been omitted from the above symbols as it does contribute somewhat to the "noisyness", I find the circle-less symbol much cleaner. Totally a personal preference though.
+WARNING: You will normally encounter P-channel MOSFET symbols with the source at the top (unlike in <<mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch>> where it is drawn at the bottom, just for comparison reasons with the N-channel) -- it most circuits this is the more positive node (e.g. connected to stem:[V_{DD}]).
+
+The arrow in the symbol has it's origins from a simple diode, in which the arrow points from the P-type substrate to the N-type substrate (which is also the direction of conventional current flow through a diode). Sometimes an **outer circle is added to the above symbols**, since a MOSFET is a transistor and by convention transistors are drawn with circles (e.g. think about a BJT symbol). However this has been omitted from the above symbols as it does contribute somewhat to the "noisyness", I find the circle-less symbol much cleaner. Totally a personal preference though.
 
 ### Depletion-Mode
 
 Although not as popular as enhancement-mode MOSFETs, depletion-mode MOSFETs are a very important MOSFET type. They are typically distinguished on schematics from enhancement-mode types by drawing a solid line rather than a dashed line for the channel, as shown in the below figure:
 
-image::mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.svg[width=700px]
+image::mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.svg[width=700px,link="mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.svg"]
 
 The easiest way to show the difference between enhancement and depletion-mode MOSFETs is to plot a stem:[V_{GS}] vs. stem:[I_D] graph as shown in <<vgs-vs-id-enhancement-and-depletion-mode>>.
 
@@ -174,7 +177,7 @@ Trench MOSFETs give a very low stem:[ R_{DS(on)} ] per unit silicon area.
 
 MOSFETs can be used for load switches, as shown on the link:/electronics/circuit-design/power-management/load-switches[Load Switches page]. They can be used in a back-to-back configuration for creating AC solid-state relays (SSRs).
 
-.Schematic example of load switching with a P-channel MOSFET. See the Load Switches page for more info.
+.Schematic example of load switching with a P-channel MOSFET (Q2). See the link:/electronics/circuit-design/power-management/load-switches[Load Switches page] for more info.
 image::/electronics/circuit-design/power-management/load-switches/bjt-current-source-to-turn-p-channel-on.svg[width=500px]
 
 Some MOSFETs designed for switching loads support logic-level inputs (e.g. +3.3V or +5.0V from either a microcontroller or logic gate) and have built in TVS diodes. One such example is the DMN61D8L-7 from Diodes Incorporated. As shown in <<dmn61d8l-7-mosfet-internal-schematic>>, this particular MOSFET package also included a pull-down resistor and ESD limiting resistor in series with the gate.
@@ -205,7 +208,11 @@ image::common-source-amplifier.svg[width=500px]
 
 The huge problem with the above circuit is the non-linearity.
 
-== Internal Diodes
+### Bi-direction Current Limiter
+
+An interesting use for depletion-mode MOSFETs is a simple bi-directional current limiter circuit.
+
+## Internal Diodes
 
 Because any PN junction is inherently a diode, a regular MOSFET has two of them. One of the diodes is removed when the substrate is connected to the source.
 

@@ -182,12 +182,18 @@ All I2C slave devices must have an address. This address is used by the master t
 
 === Multiple ICs, Same Address?
 
-Connecting two identical devices (e.g. lets say you have two temperature sensors) onto the same I2C bus, both with the same pre-programmed I2C address means that that the master cannot address them individually and functionality is severely reduced. To overcome this, many I2C slave ICs also come with a few address pins. These address pins are digital inputs and control what I2C address the slave will respond to. A device with two address pins allows the designer to connect up to four identical ICs to the same I2C bus by connecting the address pins to different combinations of Vcc and GND.
+Connecting two identical devices (e.g. lets say you have two temperature sensors) onto the same I2C bus, both with the same pre-programmed I2C address means that that the master cannot address them individually and functionality is severely reduced. To overcome this, many I2C slave ICs also come with a few address pins. These address pins are digital inputs and control what I2C address the slave will respond to. A typical device with two address pins allows the designer to connect up to four identical ICs to the same I2C bus by connecting the address pins to different combinations of stem:[V_{CC}] and GND.
 
-Newer pin-constrained I2C slave devices allow you to connect the address pins up to SCL and SDA to further increase the number of assignable addresses. With two address pins, and the possibility of connecting each up to either stem:[V_{CC}], GND, SCL or SDA, gives a total of 16 different I2C addresses.
+Newer pin-constrained I2C slave devices allow you to connect the address pins up to SCL and SDA to further increase the number of assignable addresses. With two address pins, and the possibility of connecting each up to either stem:[V_{CC}], GND, SCL or SDA, gives a total of 16 different I2C addresses (stem:[n = 4^2]).
 
-.The logic table (truth table) of the I2C address pins on the TI INA226 IC. Notice how you can connect the address pins up to SCL or SDA as well as the standard VS and GND, to give a total of 16 possible I2C addresses.
-image::i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png[width=826px]
+.The logic table (truth table) of the I2C address pins on the TI INA226 IC. Notice how you can connect the address pins up to SCL or SDA as well as the standard VS and GND, to give a total of 16 possible I2C addresses<<bib-ti-ina226-power-mon>>.
+image::i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png[width=800px,link="i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png"]
+
+Another way the address issue is addressed (that could be worded better) is by the manufacturer providing a range of orderable part number for the same chip, but with different I2C addresses. One such example is the ADS1100 ADC by TI in a tiny SOT-23-6 package. There are no spare pins for address configuration on this 6-pin package -- instead, you can order 8 different parts which have a different I2C address in the range `0b1001000-0b1001111` (as shown in <<ads1100-adc-packaging-information>>)<<bib-ti-ads1100-adc>>.
+
+[[ads1100-adc-packaging-information]]
+.The different part numbers for the ADS1100 ADC. Each part number comes with a different I2C address<<bib-ti-ads1100-adc>>.
+image::ads1100-adc-packaging-information.png[width=600px,link="ads1100-adc-packaging-information.png"]
 
 ### Reserved I2C Addresses
 
@@ -336,3 +342,5 @@ A popular alternative to I2C which is also used for intra-board communication is
 * [[[bib-ken-shirriff-vga-i2c, 3]]] Ken Shirriff. _Reading a VGA monitor's configuration data with I2C and a PocketBeagle_. Retrieved 2011-11-24, from http://www.righto.com/2018/03/reading-vga-monitors-configuration-data.html.
 * [[[bib-patent-i2c, 4]]] US Philips Corp (1981, Nov 2). _Two-wire bus-system comprising a clock wire and a data wire for interconnecting a number of stations_. Retrieved 2011-11-24, from https://patents.google.com/patent/US4689740A/en.
 * [[[bib-i2c-bus-ufm, 5]]] I2C BUS. _Ultra Fast Mode UFm_. Retrieved 2021-11-24, from https://www.i2c-bus.org/ultra-fast-mode-ufm/.
+* [[[bib-ti-ads1100-adc, 6]]] Texas Instruments (formally Burr-Brown) (2003). _ADS1100: Self-Calibrating, 16-Bit Analog-to-Digital Converter (datasheet)_. Retrieved 2022-01-07, from https://www.ti.com/lit/ds/symlink/ads1100.pdf.
+* [[[bib-ti-ina226-power-mon, 7]]] Texas Instruments (2011, Jun). _INA226 High-Side or Low-Side Measurement, Bi-Directional Current and Power Monitor with I2C Compatible Interface (datasheet)_. Retrieved 2022-01-07, from https://www.ti.com/lit/ds/symlink/ina226.pdf. 
