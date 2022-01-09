@@ -1,0 +1,39 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "Electronic Components" ]
+date: 2022-01-09
+description: "Schematics, advantages/disadvantages, and uses of various current source/sink circuits."
+draft: false
+lastmod: 2022-01-09
+tags: [ "electronics", "components", "current sources", "current sinks" ]
+title: "Current Sources And Sinks"
+type: "page"
+---
+
+## Overview
+
+_Current sources_ and _current sinks_ are electronic circuits which allow a fixed amount of current to flow through it, irrespective of the voltage across it. A current source (or sink) is not a single passive component, but a small circuit usually made from an active element (transistor, op-amp) and a few passives (such as resistors). Current sources/sinks are used as a sub-circuit in many larger circuit designs.
+
+Uses of current sources:
+
+* Driving LEDs (especially high power LEDs)
+* Biasing resistors for pull-ups/pull-downs
+* Charging capacitors to provide a linear increase in voltage across it (e.g. to make a sawtooth or triangular waveform).
+
+Current sources are very common in circuit design, and as such are usually drawn using schematic symbols shown in <<curr-source-symbols>>. Many analogue IC functional diagrams will show current sources as such, hiding the discrete components they are made from.
+
+[[curr-source-symbols]]
+.Popular schematics symbols to represent current sources.
+image::curr-source-symbols.svg[width=500px,link="curr-source-symbols.svg"]
+
+The _compliance_ of a current source is the voltage range that the current source can operate over and function correctly. Outside of this range, either components are damaged (maximum voltage ratings are exceeded) or the current begins to change. 
+
+Current sources may either provide power into a circuit (like a power supply), or require external power to operate.
+
+## Zener Diode And BJT Current Source
+
+## Constant-Current Diode (JFET Current Source)
+
+## Depletion-Mode MOSFET Current Source
+
+## Op-amp Current Sink
