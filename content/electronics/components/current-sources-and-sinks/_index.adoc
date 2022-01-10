@@ -12,28 +12,62 @@ type: "page"
 
 ## Overview
 
-_Current sources_ and _current sinks_ are electronic circuits which allow a fixed amount of current to flow through it, irrespective of the voltage across it. A current source (or sink) is not a single passive component, but a small circuit usually made from an active element (transistor, op-amp) and a few passives (such as resistors). Current sources/sinks are used as a sub-circuit in many larger circuit designs.
+_Current sources_ and _current sinks_ are electronic circuits which allow a fixed amount of current to flow through it, irrespective of the voltage across it. A current source (or sink) is not a single passive component, but a small circuit usually made from an active element (link:/electronics/components/transistors/[transistor], link:/electronics/components/op-amps/[op-amp]) and a few passives (such as link:/electronics/components/resistors/[resistors]). Current sources/sinks are used as a sub-circuit in many larger circuit designs.
 
 Uses of current sources:
 
-* Driving LEDs (especially high power LEDs)
+* Driving link:/electronics/components/diodes/#_light_emitting_diodes_leds[LEDs] (especially high power LEDs)
 * Biasing resistors for pull-ups/pull-downs
-* Charging capacitors to provide a linear increase in voltage across it (e.g. to make a sawtooth or triangular waveform).
+* Charging link:/electronics/components/capacitors/[capacitors] to provide a linear increase in voltage across it (e.g. to make a sawtooth or triangular waveform).
 
-Current sources are very common in circuit design, and as such are usually drawn using schematic symbols shown in <<curr-source-symbols>>. Many analogue IC functional diagrams will show current sources as such, hiding the discrete components they are made from.
+Current sources are very common in circuit design, and as such are usually drawn using schematic symbols shown in <<curr-source-symbols>>. An independent current source is once which has a predetermined fixed set current. A _controlled_ (or _dependent_) current source is one which is determined by another measurable value in the circuit, usually a voltage (e.g. stem:[I_{source} = kV_{\text{somewhere else}}]). You may have seen a controlled current source symbol in the small-signal model for a BJT. Many analogue IC functional diagrams will show current sources with these symbols, hiding the discrete components they are made from.
 
 [[curr-source-symbols]]
 .Popular schematics symbols to represent current sources.
-image::curr-source-symbols.svg[width=500px,link="curr-source-symbols.svg"]
+image::curr-source-symbols.svg[width=400px,link="curr-source-symbols.svg"]
 
-The _compliance_ of a current source is the voltage range that the current source can operate over and function correctly. Outside of this range, either components are damaged (maximum voltage ratings are exceeded) or the current begins to change. 
+The _compliance_ of a current source is the voltage range that the current source can operate over and function correctly. Outside of this range, either components are damaged (maximum voltage ratings are exceeded) or the current falls out of regulation. 
 
 Current sources may either provide power into a circuit (like a power supply), or require external power to operate.
 
 ## Zener Diode And BJT Current Source
 
+<<zener-diode-bjt-current-source-schematic>> shows one of the popular methods for constructing a current source from a link:/electronics/components/diodes/#_zener_diodes[Zener diode] and link:/electronics/components/transistors/bipolar-junction-transistors-bjts/[BJT].
+
+[[zener-diode-bjt-current-source-schematic]]
+.Schematic of a Zener diode + BJT current source.
+image::zener-diode-bjt-current-source-schematic.png[width=400px,link="zener-diode-bjt-current-source-schematic.png"]
+
+### How It Works
+
+. The Zener diode stem:[D1], biased into it's voltage regulation range with resistor stem:[R1], maintains a steady voltage stem:[V_B] at the base of the BJT transistor.
+. Using the rule that there is a stem:[0.7V] drop the base-emitter junction of a BJT, this puts a fixed voltage at the emitter also.
+. Since this means there is a fixed voltage across stem:[R_E], this means by Ohm's law there is a fixed current through stem:[R_E].
+. Because most of the current supplied to the emitter of a BJT comes from the collector (only about 100-800th of the current comes from the base, depending on the gain stem:[h_{FE}] of the BJT), this means there is a fixed current through stem:[R_{load}] also!
+
+The current through the load is given by:
+
+[stem]
+++++
+\begin{align}
+I_{load} = \frac{V_Z - 0.7V}{R_E}
+\end{align}
+++++
+
+[.text-center]
+where: +
+stem:[V_Z] is the voltage of the Zener diode in stem:[V] +
+stem:[R_E] is the resistance of resistor stem:[R_E] in stem:[\Omega] +
+stem:[I_{load}] is the resulting current through the load resistor, in stem:[A] +
+
 ## Constant-Current Diode (JFET Current Source)
+
+The _constant-current_ diode (a.k.a _JFET current source_) is a very simple current source made from a JFET and optional resistor.
 
 ## Depletion-Mode MOSFET Current Source
 
+TODO: Add info.
+
 ## Op-amp Current Sink
+
+TODO: Add info.
