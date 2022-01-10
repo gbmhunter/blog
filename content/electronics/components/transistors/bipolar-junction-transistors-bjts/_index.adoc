@@ -10,24 +10,19 @@ title: "Bipolar Junction Transistors (BJTs)"
 type: "page"
 ---
 
-:toc:
-:xrefstyle: short
-:stem: latexmath
-:sectnums:
+## Overview
 
-== Overview
+Bipolar junction transistors (BJTs) are 3 legged active electrical semiconductor components. They behave as a current-amplifier, amplifying a small base-emitter (BE) current into a larger collector-emitter (CE) current.
 
-Bipolar junction transistors (BJTs) are 3 legged active semiconductor devices. They behave as a current-amplifier, amplifying a small base-emitter (BE) current into a larger collector-emitter (CE) current.
+BJT transistors were the second type of transistor to be mass produced (superseding the Type-A transistor), at the first at very large quantities<<bib-pbs-evolution-of-tran>>.
 
-It was the first type of transistor to ever be mass produced.
-
-== Types
+## Types
 
 BJTs come in two flavours, NPN or PNP. They both have three terminals, the collector (C), the base (B) and the emitter (E).
 
 The differences between the NPN and PNP transistor types are analogous to the link:/electronics/components/transistors/mosfets[N-Channel and P-Channel MOSFET] types.
 
-== Schematic Symbols
+## Schematic Symbols
 
 The schematic symbols for NPN and PNP transistors are shown in <<bjt-schematic-symbols-npn-pnp>>.
 
@@ -180,12 +175,13 @@ However, NPN transistors cannot be used as a simple high-side switch, as the emi
 
 ### Common Collector Amplifier
 
-The BJT _common-collector_ amplifier is one of the three basic single-stage BJT amplifier topologies. The common collector amplifier topology is also known as a _emitter follower amplifier_.
+The BJT _common-collector_ amplifier shown in <<basic-common-collector-bjt-amplifier-schematic>> is one of the three basic single-stage BJT amplifier topologies. The common collector amplifier topology is also known as a _emitter follower amplifier_.
 
+[[basic-common-collector-bjt-amplifier-schematic]]
 .The basic schematic of a common-collector BJT amplifier.
-image::basic-common-collector-bjt-amplifier-schematic.png[width=600]
+image::basic-common-collector-bjt-amplifier-schematic.svg[width=400,link="basic-common-collector-bjt-amplifier-schematic.svg"]
 
-The output voltage is almost equal to the input voltage, except for an approximately stem:[0.7V] diode drop. This means that the amplifier has a voltage gain of almost unity (1), or stem:[0dB].
+The output voltage is almost equal to the input voltage, except for an approximately stem:[0.7V] diode drop across the base-emitter junction. This means that the amplifier has a voltage gain of almost unity (1), or stem:[0dB].
 
 [stem]
 ++++
@@ -240,10 +236,11 @@ r_{in} &= \frac{v_{in}}{i_{in}} \\
 
 BJTs can be configured to sink a relatively constant amount of current which is independent on the output-side voltage. This can be a useful way of driving an LED from a microcontroller with a constant current, no matter what voltage source is used to drive the LED. BJT current sinks and sources are good for simple, cheap situations in where high precision is not the name of the game. If you want high precision, you're best bet is to build a link:/electronics/components/op-amps#current-sinks[current-sink from an op-amp].
 
+[[constant-current-bjt-based-led-driver]]
 .The simulation schematic for a constant-current BJT-based LED driver.
-image::constant-current-bjt-based-led-driver.png[width=500]
+image::constant-current-bjt-based-led-driver.svg[width=300,link="constant-current-bjt-based-led-driver.svg"]
 
-The above schematic was designed to drive the LED with 10mA of current when the BJT was driven from a microcontroller running at stem:[+3.3V]. Since stem:[+3.3V] is applied to the base of the NPN transistor, the transistor will always turn on just enough so that the voltage at the emitter is stem:[0.7V] less, e.g.
+The schematic in <<constant-current-bjt-based-led-driver>> was designed to drive the LED with 10mA of current when the BJT was driven from a microcontroller running at stem:[+3.3V]. Since stem:[+3.3V] is applied to the base of the NPN transistor, the transistor will always turn on just enough so that the voltage at the emitter is stem:[0.7V] less, e.g.
 
 [stem]
 ++++
@@ -261,10 +258,11 @@ So if we want a LED current of 10mA, that means we need stem:[R1 = 260\Omega]. T
 
 Notice how the LED current is independent of the stem:[+12V]. The stem:[+12V] can change to say, stem:[+9V] and the LED current will still be stem:[10mA]. The current draw from the microcontroller into the base of the transistor will be very low (somewhere around stem:[100uA]).
 
-Below are the simulation results for the above schematic, showing the LED current to be indeed stem:[10mA]. It works!
+<<constant-current-bjt-based-led-driver-simulation-results>> shows the simulation results for the schematic in <<constant-current-bjt-based-led-driver>>, showing the LED current to be indeed stem:[10mA]. It works!
 
+[[constant-current-bjt-based-led-driver-simulation-results]]
 .The simulation results of a constant-current BJT-based LED driver.
-image::constant-current-bjt-based-led-driver-simulation-results.png[width=800]
+image::constant-current-bjt-based-led-driver-simulation-results.png[width=800,link="constant-current-bjt-based-led-driver-simulation-results.png"]
 
 #### Using A Resistor Divider To Drive The Base
 
@@ -425,3 +423,4 @@ The you are looking for a slice of history and some informative transistor infor
 * [[[bib-haenichen-interview, 1]]] http://www.semiconductormuseum.com/Transistors/Motorola/Haenichen/Haenichen_Page11.htm, retrieved 2021-06-20.
 * [[[bib-penn-ese319-lecture-notes, 2]]]: https://www.seas.upenn.edu/~ese319/Lecture_Notes/Lec_9_CCandCBDesigns_08.pdf, retrieved 2020-02-04.
 * [[[bib-wikipedia-soa, 3]]]: Wikipedia. _Safe operating area_. Retrieved 2021-08-23, from https://en.wikipedia.org/wiki/Safe_operating_area
+* [[[bib-pbs-evolution-of-tran, 4]]] PBS (1999). _Evolution of the Transistor_. Retrieved 2022-01-10, from https://www.pbs.org/transistor/background1/events/trnsevolution.html.
