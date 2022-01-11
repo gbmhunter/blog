@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2022-01-09
 description: "Schematics, advantages/disadvantages, and uses of various current source/sink circuits."
 draft: false
-lastmod: 2022-01-09
+lastmod: 2022-01-12
 tags: [ "electronics", "components", "current sources", "current sinks" ]
 title: "Current Sources And Sinks"
 type: "page"
@@ -86,7 +86,7 @@ TIP: Because of the typically large stem:[R_S > 100\Omega] this circuit is only 
 ++++
 \begin{align}
 \label{eq:jfet-vgs}
-V_{GS} = V_{GS(off)} [ 1 - (\frac{I_D}{I_{DSS}})^{1/k} ]
+V_{GS} = V_{GS(off)} \left[ 1 - (\frac{I_D}{I_{DSS}})^{1/k} \right]
 \end{align}
 ++++
 +
@@ -103,14 +103,15 @@ stem:[k] is the conduction parameter for the JFET, and depends on the device geo
 [stem]
 ++++
 \begin{align}
-R_S = \frac{V_{GS}}{I_D}
+\label{eq:rs-vgs-id}
+R_S = \frac{|V_{GS}|}{I_D}
 \end{align}
 ++++
 
 [example]
 .Worked Example: 10mA Constant-Current Diode
 --
-Let's design a constant-current diode using the ubiquitous 2N5457 JFET (we'll choose the one from On Semi) for a current of stem:[0.5mA]
+Let's design a constant-current diode using the ubiquitous 2N5457 JFET (we'll choose the one from On Semi) for a constant current stem:[I_D] of stem:[1.0mA].
 
 From the link:https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf[OnSemi 2N5457 datasheet], we get the following values:
 
@@ -122,16 +123,29 @@ V_{GS(off)} &= -6.0V\ \text{(max)} \\
 \end{align}
 ++++
 
-Plugging these values into stem:[Eq.\ \ref{eq:jfet-vgs}] we can work out the required gate-source voltage:
+Plugging these values into stem:[Eq.\ \ref{eq:jfet-vgs}] we can work out the required gate-source voltage (with the common assumption that stem:[k = 2]):
 
 [stem]
 ++++
 \begin{align}
-V_{GS} = V_{GS(off)} [ 1 - (\frac{I_D}{I_{DSS}})^{1/k} ]
+V_{GS} &= V_{GS(off)} \left[ 1 - (\frac{I_D}{I_{DSS}})^{1/k} \right] \nonumber \\
+       &= -6.0V \left[ 1 - (\frac{1.0mA}{3.0mA})^{1/2} \right] \nonumber \\
+       &= -2.54V
 \end{align}
 ++++
 
-TODO: Finish example.
+Knowing the current stem:[I_D] through the resistor and the voltage stem:[V_{GS}] across it, we can find the resistance using stem:[Eq.\ \ref{eq:rs-vgs-id}]:
+
+[stem]
+++++
+\begin{align}
+R_S &= \frac{V_{GS}}{I_D} \nonumber \\
+    &= \frac{|-2.54V|}{1.0mA} \nonumber \\
+    &= 2.54k\Omega \\
+\end{align}
+++++
+
+Done!
 --
 
 The resistor stem:[R_S] can be replaced with a link:/electronics/components/potentiometers/[potentiometer] to create a variable current source, or for tuning/calibration of the current source to a precise value (typically a trimmer-style potentiometer would be used for this).
