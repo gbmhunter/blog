@@ -53,33 +53,7 @@ The gate-source breakdown voltage stem:[V_{(BR)GSS}] is the maximum voltage the 
 
 ## Current Source
 
-JFETs can be used to make two-terminal current sources which can be useful in circuit design due to their simplicity. They can also be used to make low-noise current sources.
-
-You first calculate the required gate-source voltage<<bib-vishay-an103-jfet-constant-current-source>>:
-
-[stem]
-++++
-\begin{align}
-V_{GS} = V_{GS(off)} [ 1 - (\frac{I_D}{I_{DSS}})^{1/k} ]
-\end{align}
-++++
-
-[.text-center]
-where: +
-stem:[V_{GS}] is the gate-source voltage required to bias the JFET at the correct current, in stem:[V] +
-stem:[V_{GS(off)}] is the gate-source cutoff voltage, a parameter you can get from the JFETs datasheet, in stem:[V] +
-stem:[I_D] is the current you want the current source to drive at, in stem:[A] +
-stem:[I_{DSS}] is the zero gate-source drain current, a parameter you can get from the JFETs datasheet, in stem:[A] +
-stem:[k] is the conduction parameter for the JFET, and depends on the device geometry. This is not normally mentioned in the datasheet, however for this equation you can generally assume it to be stem:[2]. +
-
-You can then find the value of stem:[R_S] with:
-
-[stem]
-++++
-\begin{align}
-R_S = \frac{V_{GS}}{I_D}
-\end{align}
-++++
+JFETs can be used to make two-terminal current sources which can be useful in circuit design due to their simplicity. See link:/electronics/components/current-sources-and-sinks/#_constant_current_diode_jfet_current_source[Current Sources And Sinks: Constant-Current Diode (JFET Current Source)] for schematics, how they work, and equations for calculating the values. They can also be used to make low-noise current sources.
 
 ## Common Components
 
@@ -89,4 +63,4 @@ R_S = \frac{V_{GS}}{I_D}
 [bibliography]
 ## References
 
-* [[[bib-vishay-an103-jfet-constant-current-source, 1]]] Siliconix (now Vishay) (1997, Mar 10). _AN103: The FET Constant-Current Source/Limiter_. Retrieved 2021-04-29, from https://www.vishay.com/docs/70596/70596.pdf.
+
