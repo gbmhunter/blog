@@ -74,7 +74,7 @@ image::constant-current-diode-schematic.png[width=350px,link="constant-current-d
 
 The constant-current diode works by using the resistor stem:[R_S] to negatively bias the N-channel JFET at a specific operating point. At this operating point the current from drain to source (and consequentially the load) will be relatively constant<<bib-elec-tut-fet-current-source>>.
 
-TIP: Because of the typically large stem:[R_S > 100\Omega] this circuit is only suitable for making low-power current sources up to the stem:[10mA-100mA] range. 
+TIP: Because of the typically large stem:[R_S > 100\Omega] this circuit is only suitable for making low-power current sources up to the stem:[10mA-100mA] range. Also, because of the large uncertainty in stem:[V_{GS(off)}] (e.g. for the 2N5457, the datasheet says it is somewhere between stem:[-0.5V] and stem:[-6.0V]!<<bib-onsemi-2n5457-ds>>), these don't make very accurate current sources (without trimming). But they are stable!
 
 ### How To Calculate The Value Of The Resistor stem:[R_S]
 
@@ -85,6 +85,7 @@ TIP: Because of the typically large stem:[R_S > 100\Omega] this circuit is only 
 [stem]
 ++++
 \begin{align}
+\label{eq:jfet-vgs}
 V_{GS} = V_{GS(off)} [ 1 - (\frac{I_D}{I_{DSS}})^{1/k} ]
 \end{align}
 ++++
@@ -106,6 +107,33 @@ R_S = \frac{V_{GS}}{I_D}
 \end{align}
 ++++
 
+[example]
+.Worked Example: 10mA Constant-Current Diode
+--
+Let's design a constant-current diode using the ubiquitous 2N5457 JFET (we'll choose the one from On Semi) for a current of stem:[0.5mA]
+
+From the link:https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf[OnSemi 2N5457 datasheet], we get the following values:
+
+[stem]
+++++
+\begin{align}
+I_{DSS} &= 3.0mA\ \text{(typ)} \\
+V_{GS(off)} &= -6.0V\ \text{(max)} \\
+\end{align}
+++++
+
+Plugging these values into stem:[Eq.\ \ref{eq:jfet-vgs}] we can work out the required gate-source voltage:
+
+[stem]
+++++
+\begin{align}
+V_{GS} = V_{GS(off)} [ 1 - (\frac{I_D}{I_{DSS}})^{1/k} ]
+\end{align}
+++++
+
+TODO: Finish example.
+--
+
 The resistor stem:[R_S] can be replaced with a link:/electronics/components/potentiometers/[potentiometer] to create a variable current source, or for tuning/calibration of the current source to a precise value (typically a trimmer-style potentiometer would be used for this).
 
 ## Depletion-Mode MOSFET Current Source
@@ -122,3 +150,4 @@ TODO: Add info.
 * [[[bib-centralsemi-curr-limiting-diode, 1]]] Central Semiconductor Corp.. _What is a Current Limiting Diode?_. Retrieved 2022-01-11, from https://www.centralsemi.com/pdfs/selection/leaded/what_is_a_cld.pdf.
 * [[[bib-vishay-an103-jfet-constant-current-source, 2]]] Siliconix (now Vishay) (1997, Mar 10). _AN103: The FET Constant-Current Source/Limiter_. Retrieved 2021-04-29, from https://www.vishay.com/docs/70596/70596.pdf.
 * [[[bib-elec-tut-fet-current-source, 3]]] Electronics Tutorials. _FET Current Source_. Retrieved 2022-01-11, from https://www.electronics-tutorials.ws/transistor/fet-current-source.html.
+* [[[bib-onsemi-2n5457-ds, 4]]] On Semiconductor (now On Semi) (2010, Feb). _2N5457, 2N5458 JFETs: General Purpose N−Channel − Depletion (datasheet)_. Retrieved 2022-01-11, from https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf.
