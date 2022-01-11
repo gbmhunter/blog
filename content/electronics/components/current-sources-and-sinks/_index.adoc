@@ -62,7 +62,7 @@ stem:[I_{load}] is the resulting current through the load resistor, in stem:[A] 
 
 ## Constant-Current Diode (JFET Current Source)
 
-The _constant-current_ diode (a.k.a _JFET current source_) is a very simple current source made from a JFET and optional resistor.
+The _constant-current_ diode (a.k.a _JFET current source_, _current-limiting diode_ (CLD), or _regulating diode_<<bib-centralsemi-curr-limiting-diode>>) is a very simple current source made from a link:/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/[JFET] and optional resistor.
 
 ## Depletion-Mode MOSFET Current Source
 
@@ -71,3 +71,8 @@ TODO: Add info.
 ## Op-amp Current Sink
 
 TODO: Add info.
+
+[bibliography]
+## References
+
+* [[[bib-centralsemi-curr-limiting-diode, 1]]] Central Semiconductor Corp.. _What is a Current Limiting Diode?_. Retrieved 2022-01-11, from https://www.centralsemi.com/pdfs/selection/leaded/what_is_a_cld.pdf.
