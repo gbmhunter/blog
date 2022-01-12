@@ -15,7 +15,7 @@ Debouncing is the technique of detecting and removing multiple state changes fro
 
 {{< img src="button-press-needs-debouncing.jpg" width="440px" caption="A digitalized output of a button press, which needs debouncing." >}}
 
-The amount the time it takes for a switch to stabilize is highly dependent on the type of switch and how it is actuated, but if designing a filter you have to start somewhere right? **A general rule-of-thumb is to allow the switch 20ms to settle** when swtching between on and off (in either direction). However, some switches have been seen to take 150ms[^ganssle-guide-to-debouncing]!
+The amount the time it takes for a switch to stabilize is highly dependent on the type of switch and how it is actuated, but if designing a filter you have to start somewhere right? **A general rule-of-thumb is to allow the switch 20ms to settle** when switching between on and off (in either direction). However, some switches have been seen to take 150ms[^ganssle-guide-to-debouncing]!
 
 ## Hardware Debouncing
 

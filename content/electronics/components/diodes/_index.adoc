@@ -710,6 +710,13 @@ The expected lifetime and reliability is not typically given on standard-issue L
 
 However, some LED manufacturers to give lifetime and reliability information. This is typically done for higher power, specific purpose LEDs such as powerful illumination LEDs (think streetlights, car headlights) or agricultural growing lights. The lifetime is typically expressed as a curve of _power maintenance_ over time (in terms of hours the LED has been on for). Power maintenance is how powerful the LED (in terms of light output power) compared to when it was new. Typical single-value lifetimes can be described as the number of hours until the LED light outputs power reduces to 70 or 50% of it's initial output power (a 70 ro 50% power maintenance).
 
+## Constant-Current Diodes
+
+_Constant-current diodes_ are two terminal current sources made from a N-channel JFET and resistor. You can either make one yourself or buy a discrete component containing the JFET and resistor built-in. See link:/electronics/components/current-sources-and-sinks/#_constant_current_diode_jfet_current_source[Current Sources And Sinks: Constant-Current Diode (JFET Current Source)] for schematics, equations and worked examples.
+
+.Schematic of a constant-current diode. See link:/electronics/components/current-sources-and-sinks/#_constant_current_diode_jfet_current_source[Current Sources And Sinks: Constant-Current Diode (JFET Current Source)] for more info.
+image::/electronics/components/current-sources-and-sinks/constant-current-diode-schematic.png[width=350px,link="/electronics/components/current-sources-and-sinks/constant-current-diode-schematic.png"]
+
 [bibliography]
 == References
 
