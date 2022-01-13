@@ -207,15 +207,19 @@ A transconductance amplifier is useful creating an industry standard 4-20mA (or 
 
 One disadvantage with this design is that the current output is not ground referenced, that is, ground is not used as the return path for the current. This complicates the wiring.
 
-### Current Sinks
+### Current Sources
 
-An op-amp can be easily wired up with a MOSFET and sense resistor to make a voltage controlled current sink. 
+An **op-amp can be easily wired up with a MOSFET and sense resistor to make a _voltage controlled current source_**. See link:/electronics/components/current-sources-and-sinks/#_op_amp_current_sink[Current Sources And Sinks: Op-amp Current Sink] for info on how to make an op-amp current source, including schematics, equations and worked examples.
+
+.Schematic of an op-amp based current sink. See link:/electronics/components/current-sources-and-sinks/#_op_amp_current_sink[Current Sources And Sinks: Op-amp Current Sink] for more info.
+image::/electronics/components/current-sources-and-sinks/current-sink/op-amp-current-sink-schematic.png[width=500px,link="/electronics/components/current-sources-and-sinks/current-sink/op-amp-current-sink-schematic.png"]
 
 === Summing Amplifiers
 
 Op-amps can be used to sum (add) voltages together. There are called _summing amplifiers_.
 
 Summing amplifiers are used for things such as:
+
 * **Mixing audio signals**: Audio mixers can be made from summing amplifiers, which combine multiple audio tracks together (e.g. singing with guitar, piano and drums).
 * **Creating a DAC**: Many inputs with resistances following a stem:[2^n] pattern are used. These days however you should probably just buy a dedicated DAC IC!
 * **Level-shifting**: For example, shifting a +-5V signal to 0-3.3V for input into a DAC. A two input summing amplifier can do this, with one input being the AC signal you want to level-shift and the other input being a fixed DC offset. Combined with the gain of the op-amp you can both offset and scale the signal.

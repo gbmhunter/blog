@@ -19,4 +19,4 @@ type: "post"
 
 * Created a new page on current sources and sinks, including a Zener/BJT current source and constant-current diode (JFET current source).
 
-* Added schematic symbols and other info on JFETs.
+* Added JFET schematic symbols. Added JFET info on transconductance and dynamic resistance.
