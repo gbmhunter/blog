@@ -109,7 +109,7 @@ R_S = \frac{|V_{GS}|}{I_D}
 ++++
 
 [example]
-.Worked Example: 10mA Constant-Current Diode
+.Worked Example: 1.0mA Constant-Current Diode
 --
 Let's design a constant-current diode using the ubiquitous 2N5457 JFET (we'll choose the one from On Semi) for a constant current stem:[I_D] of stem:[1.0mA].
 
@@ -149,6 +149,10 @@ Done!
 --
 
 The resistor stem:[R_S] can be replaced with a link:/electronics/components/potentiometers/[potentiometer] to create a variable current source, or for tuning/calibration of the current source to a precise value (typically a trimmer-style potentiometer would be used for this).
+
+An important parameter determining the accuracy/stability of a constant-current diode is the link:/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/#_output_conductance[output conductance] stem:[g_{oss}] of the JFET. This is the ratio of change in stem:[I_D] to change in stem:[V_{DS}]. This is a measure of how stable the constant-current source will be to changes in the voltage across it, which occur if either the supply voltage or load resistance changes. The lower the stem:[g_{oss}] the better (an ideal current source would have stem:[g_{oss} = 0], which is the equivalent to a resistance of stem:[\infty]).
+
+For more great reading on the constant-current diode, see https://www.vishay.com/docs/70596/70596.pdf.
 
 ## Depletion-Mode MOSFET Current Source
 
@@ -195,7 +199,7 @@ The accuracy of the current sink primarily depends of three aspects:
 
 The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. Compensation circuitry can be added as shown in the below circuit to limit the phase lag and prevent the circuit from becoming unstable.
 
-.A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492. Image retrieved 2020-12-25 from https://www.analog.com/media/en/technical-documentation/data-sheets/14923f.pdf.
+.A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492<<bib-linear-lt1492-ds>>.
 image::lt1492-voltage-controlled-current-sink.png[width=500px]
 
 Read https://electronics.stackexchange.com/questions/69506/stability-problem-in-unity-gain-opamp for more information.
@@ -207,3 +211,4 @@ Read https://electronics.stackexchange.com/questions/69506/stability-problem-in-
 * [[[bib-vishay-an103-jfet-constant-current-source, 2]]] Siliconix (now Vishay) (1997, Mar 10). _AN103: The FET Constant-Current Source/Limiter_. Retrieved 2021-04-29, from https://www.vishay.com/docs/70596/70596.pdf.
 * [[[bib-elec-tut-fet-current-source, 3]]] Electronics Tutorials. _FET Current Source_. Retrieved 2022-01-11, from https://www.electronics-tutorials.ws/transistor/fet-current-source.html.
 * [[[bib-onsemi-2n5457-ds, 4]]] On Semiconductor (now On Semi) (2010, Feb). _2N5457, 2N5458 JFETs: General Purpose N−Channel − Depletion (datasheet)_. Retrieved 2022-01-11, from https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf.
+* [[[bib-linear-lt1492-ds, 5]]] Linear Technology. _LT1492/LT1493: 5MHz, 3V/µs, Low Power Single Supply, Dual and Quad Precision Op Amps (datasheet)_. Retrieved 2020-12-25 from https://www.analog.com/media/en/technical-documentation/data-sheets/14923f.pdf.
