@@ -1,0 +1,48 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "Circuit Design" ]
+date: 2022-01-17
+draft: false
+lastmod: 2022-01-17
+tags: [ "electronics", "Wheatstone bridges" ]
+title: "Wheatstone Bridges"
+type: "page"
+---
+
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
+## Overview
+
+The _Wheatstone bridge_ (a.k.a. _resistance bridge_) is a circuit consisting of four resistive components. It has the benefit of being able to perform accurate measurements of resistance. <<basic-schematic-of-wheatstone-bridge>> shows the basic schematic.
+
+[[basic-schematic-of-wheatstone-bridge]]
+.The basic schematic of a Wheatstone bridge (resistance bridge).
+image::basic-schematic-of-wheatstone-bridge.png[width=400px,link="basic-schematic-of-wheatstone-bridge.png"]
+
+stem:[Eq.\ \ref{eq-wheatstone-general}] is the general equation for the Wheatstone bridge.
+
+[stem]
+++++
+\begin{align}
+\label{eq-wheatstone-general}
+V_{OUT} = V_{DC} \left( \frac{R2}{R1 + R2} - \frac{R4}{R3 + R4} \right)
+\end{align}
+++++
+
+The output voltage (and consequentially, output current) is 0 when both of the "legs" of the bridge are balanced. That is:
+
+[stem]
+++++
+\begin{align}
+V_{OUT} = 0 \quad \text{if} \quad \frac{R2}{R1} = \frac{R4}{R3}
+\end{align}
+++++
+
+## History
+
+The Wheatstone bridge was invented by Samuel Hunter Christie in 1833, but got it's name from Sir Charles Wheatstone, who improved and popularized the circuit in 1843<<bib-maglab-wheatstone-history>>.
+
+[bibliography]
+## References
+
+* [[[bib-maglab-wheatstone-history, 1]]] National MagLab (2014, Dec 10). _Wheatstone Bridge – 1843_. Retrieved 2022-01-17, from https://nationalmaglab.org/education/magnet-academy/history-of-electricity-magnetism/museum/wheatstone-bridge-1843.

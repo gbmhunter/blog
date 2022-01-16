@@ -4,6 +4,7 @@ This repo contains the code which is used to build my blog at <blog.mbedded.ninj
 
 The static site generator Hugo is used to build the website from the files in this repo. Netlify is used to deploy and host the website.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3983d7b2-7481-4caa-9874-1ce1a3e82369/deploy-status)](https://app.netlify.com/sites/blog-mbedded-ninja/deploys)
 # Development
 
 1. The recommended code editor is [Visual Studio Code](https://code.visualstudio.com/).
@@ -47,12 +48,6 @@ To build site and place files in `public` directory:
 
 ```sh
 $ hugo
-```
-
-To sync the Algolia index with the current state of the hugo site, make sure you've built the site by running `hugo`, and then:
-
-```sh
-yarn algolia
 ```
 
 # Directory Structure
