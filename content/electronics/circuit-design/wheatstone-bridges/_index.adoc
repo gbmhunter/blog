@@ -41,7 +41,7 @@ V_{OUT} = 0 \quad \text{if} \quad \frac{R2}{R1} = \frac{R4}{R3}
 The traditional use is to replace the bottom resistors on both legs of the Wheatstone bridge -- one leg with a variable resistor (rheostat or potentiometer) and the other with an unknown resistance which you want to measure. The variable resistor is adjusted until the output voltage (or current) is stem:[0]. Assuming you know the resistance of the rheostat, you can calculate the resistance of stem:[R_x].
 
 .Traditional use of the Wheatstone bridge. The bottom resistor on one leg is replaced with a rheostat (stem:[R2]), and the other bottom resistor with the unknown resistance stem:[R_x]. Adjusting the rheostat until the output voltage (or current) is 0 "balances" the bridge, and the unknown resistance can be found knowing the other three.
-image::pot-and-unknown-resistance-wheatstone-bridge.png[width=400px]
+image::pot-and-unknown-resistance-wheatstone-bridge.png[width=400px,link="pot-and-unknown-resistance-wheatstone-bridge.png"]
 
 ## Benefits Over A Simple Resistor Divider
 
