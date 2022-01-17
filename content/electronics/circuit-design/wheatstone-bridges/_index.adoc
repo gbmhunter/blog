@@ -45,7 +45,7 @@ image::pot-and-unknown-resistance-wheatstone-bridge.png[width=400px,link="pot-an
 
 ## Benefits Over A Simple Resistor Divider
 
-You might be wondering why use a complicated 4-resistor Wheatstone bridge when you could just use a simple 2-resistor resistor divider, and measure the output voltage. By knowing the output voltage, the supply voltage, and at least one of the resistances, you can then calculate the other resistance in a resistor divider. The benefit of a Wheatstone bridge is that it is inherently a _differential_ measurement, rather than a _single-ended_ one (which a resistor divider is). This means:
+You might be wondering why use a complicated 4-resistor Wheatstone bridge when you could just use a simple 2-resistor link:/electronics/components/resistors/#_resistor_dividers[resistor divider], and measure the output voltage. By knowing the output voltage, the supply voltage, and at least one of the resistances, you can then calculate the other resistance in a resistor divider. The benefit of a Wheatstone bridge is that it is inherently a _differential_ measurement, rather than a _single-ended_ one (which a resistor divider is). This means:
 
 * You don't need a precise auxiliary voltage reference if you just plan on balancing the bridge (i.e. making stem:[V_{OUT} = 0V]).
 * Even if you are measuring the output voltage (and hence need an auxiliary voltage reference):
