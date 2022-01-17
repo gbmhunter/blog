@@ -6,7 +6,7 @@ description: "A tutorial on analog-to-digital converters (ADCs), including accur
 draft: false
 lastmod: 2019-01-20
 tags: [ "ADCs", "microcontrollers", "accuracy", "resolution", "current loop", "analog-to-digital converter", "digital", "analogue", "analog" ]
-title: "ADCs"
+title: "Analogue-to-Digital Converters (ADCs)"
 type: "page"
 ---
 
@@ -14,7 +14,8 @@ type: "page"
 
 An _analogue-to-digital converter_ (ADC) is a device which converts an input analogue voltage level into a representative digital value. They are commonly used in embedded electronics to measure the value of an analogue sensor. They are very popular and many microcontrollers have one or more built in ADCs, as well as stand-alone ADC ICs which normally offer greater precision and resolutions.
 
-{{< img src="adc-symbol-analogue-to-digital.png" width="376px" caption="A symbol representing a analogue-to-digital converter (ADC)." >}}
+.A symbol representing a analogue-to-digital converter (ADC).
+image::adc-symbol-analogue-to-digital.png[width=376px]
 
 ## Microcontroller ADCs
 
@@ -32,14 +33,14 @@ Delta-Sigma ADCs also take longer to switch between input signals (if measuring 
 
 ## Medical Uses
 
-ADCs are commonly used in medical devices for biopotential measurements. One common application is for the analogue front-end in EEG devices. The [Texas Instruments ADS1299](http://www.ti.com/product/ads1299) is one example of an ADC IC designed for EEG applications.
+ADCs are commonly used in medical devices for biopotential measurements. One common application is for the analogue front-end in EEG devices. The link:http://www.ti.com/product/ads1299[Texas Instruments ADS1299] is one example of an ADC IC designed for EEG applications.
 
 ## 4-20mA Current Loops
 
 ADCs can be used to read the value from a 4-20mA current loop signal with the help of a current-to-voltage converting resistors (what all resistors do, right?).
 
-See the {{% link text="4-20mA Current Loops page" src="/electronics/communication-protocols/4-20ma-current-loops" %}} for more info.
+See the link:/electronics/communication-protocols/4-20ma-current-loops[4-20mA Current Loops page] for more info.
 
 ## Suppliers
 
-* [DigiKey's Data Acquisition - Analog to Digital Converters (ADC) section](https://www.digikey.com/products/en/integrated-circuits-ics/data-acquisition-analog-to-digital-converters-adc/700) (US)
+* link:https://www.digikey.com/products/en/integrated-circuits-ics/data-acquisition-analog-to-digital-converters-adc/700[DigiKey's Data Acquisition - Analog to Digital Converters (ADC) section] (US)
