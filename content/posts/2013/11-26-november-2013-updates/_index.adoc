@@ -23,7 +23,7 @@ It's been a buuuussssyyyyyy month around here. A list of the updates for this mo
 
 * Installed the [SEO Smart Links plugin](http://wordpress.org/plugins/seo-automatic-links/), which links pages to others based on scanned text
 
-* New {{% link text="Digital Temperature Sensors page" src="/electronics/components/sensors/temperature-sensors/digital-temperature-sensors" %}}.
+* New link:/electronics/components/sensors/temperature-sensors/digital-temperature-sensors[Digital Temperature Sensors page].
 
 * {{% link text="rsync" src="/programming/operating-systems/linux/programs/rsync" %}} and {{% link text="ddclient" src="/programming/operating-systems/linux/programs/ddclient" %}} pages in the {{% link text="Linux page" src="/programming/operating-systems/linux" %}}
 

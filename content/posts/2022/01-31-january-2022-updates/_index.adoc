@@ -22,3 +22,5 @@ type: "post"
 * Added link:/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/[JFET schematic symbols]. Added JFET info on link:/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/[transconductance and dynamic resistance].
 
 * Created a new page on link:/electronics/circuit-design/wheatstone-bridges/[Wheatstone bridges].
+
+* Condensed all the temperature sensor sub-pages into the temperature sensor page.
