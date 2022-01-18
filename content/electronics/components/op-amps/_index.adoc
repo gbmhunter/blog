@@ -56,6 +56,9 @@ v_{out} &= v_{in}
 
 As shown in Eq stem:[\ref{eq:buffer-vout-eq-vin}], the output voltage is the same as the input voltage. Well isn't this pointless? No, the key point to a voltage follower/buffer is that it can convert a **high-impedance input into a low impedance output**. Practically, this means that you can now sink/source more current from the output without the voltage changing. Buffers are great for boosting signals that travel across long distances, or for signals which get split and go to many devices (this is called **fan-out**, and is common with digital clock signals).
 
+[example]
+.Simulation example for a voltage follower.
+--
 A simulation schematic for a voltage-follower op-amp is shown in <<simulation-schematic-for-op-amp-voltage-follower-buffer>>.
 
 [[simulation-schematic-for-op-amp-voltage-follower-buffer]]
@@ -66,6 +69,7 @@ The results of the simulation:
 
 .The simulation results for an op-amp configured as a voltage-follower (buffer). Note how the output voltage mirrors the input voltage exactly.
 image::output-voltage-vs-input-voltage-op-amp-voltage-follower.png[width=600px]
+--
 
 ### Non-Inverting Amplifiers
 
@@ -88,6 +92,9 @@ Notice the stem:[1] in the gain equation? This means that no matter what you set
 
 WARNING: There is no one common convention for labelling these feedback resistors. Sometimes they are called stem:[R_i] and stem:[R_f], other times stem:[R_1] and stem:[R_2] (with either resistor being stem:[R_1])
 
+[example]
+.Simulation example for a non-inverting amplifier.
+--
 Here is a simulation schematic (circuit) for a non-inverting op-amp amplifier running from a single-ended supply. Because R1 (stem:[R_f]) and R2 (stem:[R_i]) are both stem:[1k\Omega], the op-amp has a voltage gain stem:[A_V] of:
 
 [stem]
@@ -104,6 +111,7 @@ The results of the simulation are shown below. As you can see, the output voltag
 
 .A graph of stem:[v_{out}] vs. stem:[v_{in}] for a non-inverting op-amp amplifier circuit.
 image::vout-vs-vin-non-inverting-op-amp-amplifier-gain-of-2.png[width=700px]
+--
 
 ### Inverting Amplifiers
 
@@ -122,6 +130,9 @@ v_{out} = - \frac{R_f}{R_i} v_{in}
 
 The negative sign is to show that the output is the inverse polarity of the input. Notice that, unlike the non-inverting amplifier, **an inverting amplifier lets you obtain a gain of less than 1**.
 
+[example]
+.Simulation example for a an inverting amplifier.
+--
 Below is the schematic used for simulating the behaviour of an inverting op-amp. Note how is requires a negative voltage power supply.
 
 .A schematic for simulating the behaviour of an inverting op-amp.
@@ -131,6 +142,7 @@ And below are the simulation results for the above schematic:
 
 .stem:[v_{out}] vs. stem:[v_{in}] for an inverting op-amp with a gain of -1.
 image::vout-vs-vin-inverting-op-amp-gain-neg-1.png[width=700px]
+--
 
 ### Differential Amplifiers
 
@@ -149,6 +161,9 @@ v_{out} = \frac{R_2}{R_1 + R_2}\left(1 + \frac{R_4}{R_3}\right)v_1 - \frac{R_4}{
 
 TIP: It's easy to confuse a differential amplifier (what we are discussing here) with a _differentiator amplifier_, which performs the mathematical function of differentiation (opposite of integration).
 
+[example]
+.Simulation example for a differential amplifier.
+--
 Below is a schematic for simulating the behaviour of a differential op-amp:
 
 .A schematic for simulating the behaviour of a differential op-amp.
@@ -158,6 +173,7 @@ This schematic produces the following results:
 
 .A graph Vout vs. Vin1 and Vin2 for a op-amp configured as a differential amplifier.
 image::differential-op-amp-simulation-graph-vin1-vin2-vout.png[width=700px]
+--
 
 === Integration Amplifiers
 
@@ -373,6 +389,9 @@ WARNING: Unused inputs into a inverting summing amplifier can be left floating. 
 
 Op-amps can be used to perform _level-shifting_. The concept of level-shifting is very similar to what is achieved by <<_summing_amplifiers, summing amplifiers>>.
 
+[example]
+.Simulation example for an op-amp based level shifter.
+--
 <<level-shifter-sim-schematic>> shows a op-amp based level shifter which converts a stem:[\pm 5.0V] signal into a stem:[0-3.3V] signal, suitable for passing into a microcontrollers DAC for digital conversion and processing (microcontrollers often run of stem:[+3.3V], hence that is also a common choice for the reference voltage of the DAC). If you used rail-to-rail op-amps, you might be able to get away with lowering the voltage rails for the op-amp to stem:[\pm 5.0V].
 
 [[level-shifter-sim-schematic]]
@@ -381,10 +400,11 @@ image::level-shifter-sim/schematic.png[width=700px]
 
 .Simulation results of the level-shifting circuit shown in <<level-shifter-sim-schematic>>. You can clearly see that the stem:[\pm 5.0V] signal has been level-shifted to the range stem:[0-3.3V]. Because the input is connected to the non-inverting input of the op-amp, the output is in phase with the input signal (i.e. not inverted).
 image::level-shifter-sim/out.png[width=700px]
+--
 
-=== Ideal Diodes/Rectifiers
+### Ideal Diodes/Rectifiers
 
-==== Basic Ideal Diode/Rectifier
+#### Basic Ideal Diode/Rectifier
 
 An op-amp can be combined with a regular diode to make an "ideal diode" (also called a _superdiode_<<bib-superdiode>>, _precision rectifier_, or _half/full-wave rectifier_), one that rectifies and has *no voltage drop*. Ideal diode circuits are useful when:
 
@@ -425,7 +445,7 @@ A = \begin{cases}
 \end{cases}
 ++++
 
-=== Sample And Hold Circuits
+### Sample And Hold Circuits
 
 The basic op-amp based _sample and hold_ circuit is an extension of the <<_ideal_diodesrectifiers, ideal diode>> circuit, but with an added capacitor on the output to maintain with the voltage when the input signal is removed.
 
@@ -584,6 +604,9 @@ SR = 2\pi f_{max} V_P
 \end{align}
 ++++
 
+[example]
+.Finding the max. frequency of the LM324 due to slew rate limitations.
+--
 So just as an example, the jellybean LM324 with a slew rate of stem:[0.4V/us] can generate a stem:[10V] peak (stem:[20V] peak-to-peak) waveform of the following frequency before distortion:
 
 [stem]
@@ -594,6 +617,7 @@ f_{max} &= \frac{SR}{2\pi V_P} \nonumber \\
         &= 6.37kHz \\
 \end{align}
 ++++
+--
 
 ==== Slew Rate Effects On Sine Waves
 

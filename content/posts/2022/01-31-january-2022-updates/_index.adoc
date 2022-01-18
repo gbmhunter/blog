@@ -17,8 +17,8 @@ type: "post"
 
 * Added a photo of a castellated daughter board inside a Logitech G810 mechanical keyboard. 
 
-* Created a new page on current sources and sinks, including a Zener/BJT current source and constant-current diode (JFET current source).
+* Created a new page on link:/electronics/components/current-sources-and-sinks/[current sources and sinks], including a Zener/BJT current source and constant-current diode (JFET current source).
 
-* Added JFET schematic symbols. Added JFET info on transconductance and dynamic resistance.
+* Added link:/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/[JFET schematic symbols]. Added JFET info on link:/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/[transconductance and dynamic resistance].
 
-* Created a new page on Wheatstone bridges.
+* Created a new page on link:/electronics/circuit-design/wheatstone-bridges/[Wheatstone bridges].
