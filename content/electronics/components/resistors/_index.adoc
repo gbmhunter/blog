@@ -91,20 +91,49 @@ Resistor dividers are two or more resistors in a series configuration such that 
 
 The simplest voltage divider consists of just two resistors in series.
 
-.A basic schematic of a resistor divider, showing the equation which determines the output voltage.
-image::basic-resistor-divider-schematic-with-equation.png[width=556px]
+.A basic schematic of a simple resistor divider. You will see these used everywhere in circuits!
+image::resistor-divider-schematic.png[width=350px,link="resistor-divider-schematic.png"]
+
+The equation for stem:[V_{OUT}] is:
+
+[stem]
+++++
+\begin{align}
+\label{eq:vout-eq-r2-r1-vin}
+V_{OUT} &= \frac{R2}{R1\ +\ R2} V_{IN} \\
+\end{align}
+++++
+
+The input voltage "divides" itself across the resistors proportionally based on relative resistances. The more resistance of any one resistor, the greater amount of voltage that will drop across it. You can easily reach the above equation by applying Ohm's law to the circuit.
+
+WARNING: The above equation on holds true when the input voltage source is of sufficiently low low impedance (e.g. output from linear regulator, SMPS) and the output is connected to something of relatively high impedance (input to ADC, input to op-amp, e.t.c).
+
+During circuit design, you will encounter times when you have three knowns from stem:[Eq.\ \ref{eq:vout-eq-r2-r1-vin}] but have to solve for any one of the others. Thus it has be re-arranged for every variable below for convenience (with stem:[V_{IN}] and stem:[R1] being able to be simplified slightly):
+
+[stem]
+++++
+\begin{align}
+V_{IN} &= \frac{R1 + R2}{R2} V_{OUT} \\
+       &= \left( \frac{R1}{R2} + 1 \right) V_{OUT} \\
+R1 &= \frac{V_{IN} - V_{OUT}}{V_{OUT}} R2 \\
+   &= \left( \frac{V_{IN}}{V_{OUT}} - 1 \right) R2 \\
+R2 &= \frac{V_{OUT}}{V_{IN} - V_{OUT}} R1 \\
+\end{align}
+++++
+
+### Output Impedance
 
 The output impedance of a resistor divider is equivalent the stem:[R1] in parallel with stem:[R2]:
 
 [stem]
 ++++
 \begin{align}
-\b{Z_O} &= R1 || R2 \\
-    &= \frac{R1 \cdot R2}{R1 + R2}
+\b{Z_O} &= R1 || R2 \nonumber \\
+    &= \frac{R1 \cdot R2}{R1 + R2} \\
 \end{align}
 ++++
 
-This output impedance is relevant for both small signals are large signals. See the link:/electronics/circuit-design/small-signal-analysis#analysis-of-a-resistor-divider[Analysis Of A Resistor Divider section on the Small-Signal Analysis page] for more information.
+This output impedance is relevant for both small signals and large signals. See the link:/electronics/circuit-design/small-signal-analysis#analysis-of-a-resistor-divider[Analysis Of A Resistor Divider section on the Small-Signal Analysis page] for more information.
 
 Note that the output impedance of a resistor divider is normally quite high, compared to other "standard" voltage sources. For this reason, **you cannot normally use a resistor divider to drop the voltage and provide power to a device**. This is a common mistake that people learning electronics do, when in reality you should either be using a linear regulator, a SMPS, or a transformer. Voltage dividers should normally only be used to provide a voltage to a high-impedance input (e.g. op-amp input, comparator input, microcontroller ADC input, or voltage-level translation for comms signals).
 
@@ -113,7 +142,17 @@ The exception to the above rule is when the two following conditions are met:
 * The device will draw a small enough current that the voltage sag due to the extra current through R1 is acceptable (and the current is not too variable).
 * The extra current going through R1 will not cause it to overheat.
 
+### Applications
+
+Resistors dividers are used everywhere in circuit design! They are commonly used for:
+
+* Scaling down a higher voltage (e.g. a 0-12V voltage rail) down to something that can be measured by an link:/electronics/components/analogue-to-digital-converters-adcs/[ADC] (e.g. 0-2.5V).
+* Biasing link:/electronics/components/transistors/[transistors].
+* Providing the correct voltages to the inputs of link:/electronics/components/op-amps/[op-amps].
+
 An interesting example I have seen of a resistor divider powering a circuit was a low-power microcontroller being powered directly from a resistor-divider, diode and capacitor from mains supply (240VAC). The microcontroller only drew stem:[uA] so met the two above conditions.
+
+### Online Calculators
 
 The link:http://gbmhunter.github.io/NinjaCalc/[NinjaCalc] has a calculator that can work out voltages, resistances and currents of a resistor divider.
 
