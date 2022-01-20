@@ -41,6 +41,32 @@ ADCs can be used to read the value from a 4-20mA current loop signal with the he
 
 See the link:/electronics/communication-protocols/4-20ma-current-loops[4-20mA Current Loops page] for more info.
 
+## Examples
+
+[.table-1000,cols="1,1,1,1,1,1,1,2"]
+|===
+| Manf. | Manf. Part Num | Topology | Resolution | Speed | Digital Interface | Package | Comments
+
+| Texas Instruments
+| link:https://www.ti.com/lit/ds/symlink/ads8866.pdf[ADS8866IDRCR]
+| SAR
+| 16-bit
+| 100ksps
+| SPI
+| DFN-10-3x3-TP
+| Pin/functionally compatible with the Microchip MCP33131-05-E/MN.
+
+| Microchip
+| link:https://ww1.microchip.com/downloads/en/DeviceDoc/MCP33131-MCP33121-MCP33111-Family-Data-Sheet-DS20006122A.pdf[MCP33131-05-E/MN]
+| SAR
+| 16-bit
+| 500ksps
+| SPI
+| DFN-10-3x3-TP
+| Pin/functionally compatible with the Texas Instruments ADS8866IDRCR.
+
+|===
+
 ## Suppliers
 
 * link:https://www.digikey.com/products/en/integrated-circuits-ics/data-acquisition-analog-to-digital-converters-adc/700[DigiKey's Data Acquisition - Analog to Digital Converters (ADC) section] (US)

@@ -4,8 +4,8 @@ categories: [ "Programming", "Programming Languages", "Python" ]
 date: 2019-06-11
 description: "A tutorial on pandas, a popular data analysis library for Python."
 draft: false
-lastmod: 2019-09-03
-tags: [ "programming", "programming languages", "Python", "pandas", "DataFrame", "CSV", "Jupyter", "Numpy", "conda" ]
+lastmod: 2022-01-20
+tags: [ "programming", "programming languages", "Python", "pandas", "DataFrame", "CSV", "Jupyter", "Numpy", "conda", "merge", "VLOOKUP" ]
 title: "pandas"
 type: "page"
 ---
@@ -153,7 +153,7 @@ print(sorted_df, ascending=False)
 
 ## Parsing CSV Files
 
-`pandas` has first-tier support for CSV files. It can load in a CSV file directly into a `DataFrame`, ready for analyzing, without having to write any line-by-line CSV parsing. It will also label the columns if the CSV file has a header row (which is recommended!).
+`pandas` has first-tier support for CSV files. It can load in a CSV file directly into a `DataFrame`, ready for analysing, without having to write any line-by-line CSV parsing. It will also label the columns if the CSV file has a header row (which is recommended!).
 
 To load a CSV file into a `DataFrame`:
 
@@ -164,3 +164,20 @@ df = pandas.read_csv('file_path.csv')
 ## Integration With Jupyter
 
 `pandas` has good integration into Jupyter. It can render dataframes as formatted and styled HTML tables, either by typing the dataframe variable on the last line of a cell or by using the `display(my_dataframe)` syntax. When dealing with large amounts of data inside a dataframe, it will truncate internal cells (with `...`) to limit the table height and width (similar to when you print a large `numpy` array). Typically you should always leverage Jupyter's dataframe rendering ability, rather than using `print(my_dataframe)` (which just prints the dataframe as a string).
+
+## Merging Tables (VLOOKUP Equivalent)
+
+Pandas provides the ability to merge tables together in a similar fashion to the `VLOOKUP` function in Excel, or similar to a `JOIN` in SQL.
+
+The syntax for `merge()` is:
+
+```python
+pd.merge(left, right, left_on, right_on, how)
+```
+
+The different types of joins (the `how` parameter), which follow the same naming convention as SQL:
+
+* `inner`: Rows which have matching values in both tables.
+* `left`: All rows in the left table plus those matching from the right.
+* `right`: All rows in the right table plus those matching from the left.
+* `outer`: All rows from both tables.
