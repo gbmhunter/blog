@@ -24,3 +24,5 @@ type: "post"
 * Created a new page on link:/electronics/circuit-design/wheatstone-bridges/[Wheatstone bridges].
 
 * Condensed all the temperature sensor sub-pages into the temperature sensor page.
+
+* Added more info on the SOIC component package.

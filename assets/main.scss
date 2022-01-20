@@ -602,6 +602,26 @@ caption.title {
 
 }
 
+// This is added so large tables will be scrollable. If this messed up other content,
+// we might have to wrap the containers in a div which does this instead.
+.sectionbody {
+    overflow-x: auto;
+}
+
+// Classes to make tables which are larger than the standard content, with scrollable content. Used
+// for tables with a large number of columns/lots of data.
+.table-800 {
+    width: 800px;
+}
+
+.table-1000 {
+    width: 1000px;
+}
+
+.table-1200 {
+    width: 1200px;
+}
+
 /* ========================================================================= */
 /* BIBLIOGRAPHY                                                              */
 /* ========================================================================= */

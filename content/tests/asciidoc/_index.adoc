@@ -160,6 +160,32 @@ h| Same.
 
 |===
 
+Below is a table which should be wider than the standard content width, and have a horizontal scrollable bar at the bottom. 
+
+[.table-1000,cols="1,1,1,1,1,1,1,2"]
+|===
+| Manf. | Manf. Part Num | Topology | Resolution | Speed | Digital Interface | Package | Comments
+
+| Texas Instruments
+| link:https://www.ti.com/lit/ds/symlink/ads8866.pdf[ADS8866IDRCR]
+| SAR
+| 16-bit
+| 100ksps
+| SPI
+| DFN-10-3x3-TP
+| Pin/functionally compatible with the Microchip MCP33131-05-E/MN.
+
+| Microchip
+| link:https://ww1.microchip.com/downloads/en/DeviceDoc/MCP33131-MCP33121-MCP33111-Family-Data-Sheet-DS20006122A.pdf[MCP33131-05-E/MN]
+| SAR
+| 16-bit
+| 500ksps
+| SPI
+| DFN-10-3x3-TP
+| Pin/functionally compatible with the Texas Instruments ADS8866IDRCR.
+
+|===
+
 == Admonitions
 
 NOTE: This is a note.
