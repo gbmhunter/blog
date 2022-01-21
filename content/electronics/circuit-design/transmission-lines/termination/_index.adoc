@@ -1,0 +1,23 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "PCB Design" ]
+date: 2013-10-29
+draft: false
+lastmod: 2022-01-21
+tags: [ "PCB design", "termination" ]
+title: "Termination"
+type: "page"
+---
+
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
+## Overview
+
+_Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches.
+
+## Series Termination
+
+_Series termination_ (a.k.a. _back termination_).
+
+.How to do series termination. Resistor stem:[R_S] is placed at the output of the driver before the transmission line. stem:[R_S] is equal to the characteristic impedance of the transmission line. 
+image::series-termination-schematic.png[width=800px,link="series-termination-schematic.png"]
