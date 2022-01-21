@@ -11,11 +11,11 @@ type: post
 
 It's been a buuuussssyyyyyy month around here. A list of the updates for this month:
 
-* [candy-calc firmware project](https://github.com/gbmhunter/candy-calc) started on GitHub. I am hoping to eventually convert ~~\[all calculators on this site\](/electronics/general/online-calculators)~~ to use this framework.  
+* link:candy-calc firmware project[https://github.com/gbmhunter/candy-calc] started on GitHub. I am hoping to eventually convert all calculators on this site to use this framework.  
 
   	{{< img src="candy-calc-readme-screenshot.jpg" width="500px" caption="A screenshot of the candy-calc repo on GitHub." >}}
 
-* LT3745 Design Guide page (**as of Dec 2017, URL not available**) and calculator using the [candy-calc](https://github.com/gbmhunter/candy-calc) framework  
+* LT3745 Design Guide page (**as of Dec 2017, URL not available**) and calculator using the link:candy-calc[https://github.com/gbmhunter/candy-calc] framework  
 
   	{{< img src="lt3745-calculator-screenshot.jpg" width="500px" caption="A screenshot of the calculator on the LT3745 Design Guide page." >}}
 
@@ -33,7 +33,7 @@ image::led-lens-shapes-screenshot.jpg[width=400px]
 
 * More info added to the {{% link text="Windows" src="/programming/operating-systems/windows" %}} and {{% link text="Batch" src="/programming/languages/batch" %}} pages
 
-* A new {{% link text="Impedance Controlled Routing page" src="/pcb-design/impedance-controlled-routing" %}}
+* Added a new pass:[<s>Impedance Controlled Routing page</s>] (update 2022-01: now link:[Transmission Lines page]).
 
 * New info on the {{% link text="Cellular Modem page" src="/electronics/components/cellular-modems" %}}, and a {{% link text="Telit HE910 Design Notes page" src="/electronics/components/cellular-modems/he910-design-notes" %}}
 

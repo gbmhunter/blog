@@ -26,3 +26,5 @@ type: "post"
 * Condensed all the temperature sensor sub-pages into the temperature sensor page.
 
 * Added more info on the SOIC component package.
+
+* Added a page on termination (electrical termination of transmission lines). 
