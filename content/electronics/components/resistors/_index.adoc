@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2012-05-14
 description: "Schematic symbols, series and parallel behaviour, manufacturing processes, the E series, tolerances, variable resistors, volume resistance and more info about the electrical components called resistors."
 draft: false
-lastmod: 2021-12-13
+lastmod: 2022-01-21
 tags: [ "resistors", "resistors", "components", "electronics", "schematic symbols", "tolerances", "E series", "packages", "thick film", "thin film", "wirewound", "potentiometers", "rheostats", "variable resistors", "Ayrton–Perry winding" ]
 title: "Resistors"
 type: "page"
@@ -14,7 +14,7 @@ type: "page"
 
 Resistors are a passive electronic component that restricts the flow of current when a given voltage is applied. They dissipate energy as heat. Given their simplicity and usefulness in circuits, they are the normally most commonly used electronic component in any circuit design.
 
-For information on positive temperature coefficient resistors used as "fuses" in circuit protection applications, see the link:/electronics/components/circuit-protection/ptc-type-thermistor[PTC Type Thermistor page].
+For information on positive temperature coefficient resistors used as "fuses" in circuit protection applications, see the link:/electronics/components/circuit-protection/ptc-type-thermistor[PTC Type Thermistor page]. For info on digital potentiometers, see the link:/electronics/components/digital-potentiometers-dpots/[Digital Potentiometers (DPOTs) page].
 
 **The mechanical equivalent of a resistor is friction.** The larger the resistance, the larger the friction. This is when using the link:http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html[force-voltage] equivalence.
 
@@ -33,16 +33,10 @@ Resistors are used for a huge number of purposes, including:
 
 ## Schematic Symbols
 
-The most commonly-used resistor schematic symbols are shown below. I prefer the American-style resistor over the European (given my distaste for the American imperial system, I never thought I would ever say that!), and use the American style through-out the rest of this website.
+The most commonly-used resistor schematic symbols are shown below. I prefer the American-style resistor over the European purely because there are already many "box-like" schematic symbols used for other components (e.g. fuses, ICs), and so the squiggle makes a resistor more distinguishable (given my distaste for the American imperial system, I never thought I would ever say that!). The American style is used through-out the rest of this website.
 
-[.imagerow]
---
-.The American-styled schematic symbol for a resistor.
-image::resistor-schematic-symbol-american.png[width=200px]
-
-.The European schematic symbol for a resistor.
-image::resistor-schematic-symbol-european.png[width=200px]
---
+.The "American" and "European" schematic symbols for a resistor. I prefer the American-style because it's easiest to distinguish from other box-like symbols.
+image::schematic-symbols-amer-euro-resistors.png[width=500px]
 
 See the link:#potentiometers-and-rheostats-variable-resistors[Potentiometers And Rheostats (Variable Resistors) section] for more schematic symbols.
 
