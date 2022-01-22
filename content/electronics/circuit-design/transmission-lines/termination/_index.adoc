@@ -13,11 +13,35 @@ WARNING: This page is in notes format, and may not be of the same quality as oth
 
 ## Overview
 
-_Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches.
+_Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches. 
+
+Types of termination:
+
+* Series termination
+* Parallel termination
+* AC termination
+* Thevenin termination
+
+Most of these termination methods are discussed in the context of digital signals -- i.e. fast transitions at the driver between two discrete voltage levels. Analogue signals can also be terminated. 
 
 ## Series Termination
 
-_Series termination_ (a.k.a. _back termination_).
+_Series termination_ (a.k.a. _back termination_ or _source termination_) is a termination method in where a resistor is added in series at the start of the transmission line, and no termination is added at the end of the termination line. Even though the start of the transmission line receives half the voltage from the driver, **the receiver sees a perfect transition to the full voltage due to a purposeful reflection back to the driver**. 
 
 .How to do series termination. Resistor stem:[R_S] is placed at the output of the driver before the transmission line. stem:[R_S] is equal to the characteristic impedance of the transmission line. 
 image::series-termination-schematic.png[width=800px,link="series-termination-schematic.png"]
+
+[example]
+.How a stem:[0-5V] waveform propagates on a stem:[50\Omega] series terminated transmission line.
+--
+. Driver drives line from stem:[0V] (low) to stem:[+5.0V] (high). Waveform looks like a step (fast rise time).
+. Waveform sees stem:[50\Omega] series termination resistor, and then the stem:[50\Omega] characteristic impedance of the transmission line to ground. Thus half the voltage is dropped across the series termination, and stem:[+2.5V] is applied to the start of the transmission line.
+. This waveform travels down the transmission line, still looking like a stem:[+2.5V] step.
+. Waveform reaches the end of the transmission line. This is open circuit, and so a reflected wave of stem:[+2.5V] is generated. These two add together to cause the end to jump straight from stem:[0V] to stem:[+5.0V].
+. The reflected wave travels back down the transmission line, which looks like a step jump from stem:[+2.5V] to stem:[+5.0V].
+. The reflected wave reaches the start and performs the same step jump from stem:[+2.5V] to stem:[+5.0V]. Because this is properly terminated, no further reflections occur, and the voltage stays steady at stem:[+5.0V].
+. The line has now reached steady state, and to the driver looks like an open-circuit (high-impedance), requiring no further drive current (this can be a big bonus for series termination).
+--
+
+## Parallel Termination
+
