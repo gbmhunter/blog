@@ -27,4 +27,4 @@ type: "post"
 
 * Added more info on the SOIC component package.
 
-* Added a page on termination (electrical termination of transmission lines). 
+* Added a page on termination (electrical termination of transmission lines), including schematic examples of series termination. 
