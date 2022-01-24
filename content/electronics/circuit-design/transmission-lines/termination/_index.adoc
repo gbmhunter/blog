@@ -80,3 +80,53 @@ _Parallel termination_ is a termination method in where a resistor stem:[R_P] is
 
 .Schematic showing basic parallel termination. A resistor stem:[R_P] is added at the receiver end to either GND or stem:[V_{CC}].
 image::parallel-termination-schematic.png[width=800px,link="parallel-termination-schematic.png"]
+
+The waveform exiting the transmission line needs to see the same impedance as the transmission line itself.
+
+[stem]
+++++
+\begin{align}
+Z_{IN} || Z_P = Z_{TL}
+\end{align}
+++++
+
+Typically, the input impedance of the receiver will be relatively high (stem:[>1k\Omega]) in comparison to the impedance you're aiming for:
+
+[stem]
+++++
+\begin{align}
+Z_{IN} >> Z_{TL}
+\end{align}
+++++
+
+And in which case the equation simplifies to:
+
+[stem]
+++++
+\begin{align}
+Z_P = Z_{TL}
+\end{align}
+++++
+
+* No reflections (as opposed to series termination, which has one reflection back to the driver).
+* Driver needs to provide continuous current for one of the logic levels.
+
+## Thevenin Termination
+
+_Thevenin termination_ is a form of termination in where two resistors (usually identical) are connected to the receiving end of the transmission line, one to stem:[V_{CC}] and the other to stem:[GND]. 
+
+.Schematic showing Thevenin termination. Two usually identical resistors stem:[R_{P1}] and stem:[R_{P2}] are connected to the receiver.
+image::thevenin-termination-schematic.png[width=800px,link="thevenin-termination-schematic.png"]
+
+Assuming the receiver is relatively high impedance, the parallel combination of stem:[R_{P1}] and stem:[R_{P2}] must equal the impedance of the transmission line.
+
+[stem]
+++++
+\begin{align}
+R_{P1} || R_{P2} &= Z_{TL} \nonumber \\
+\frac{R_{P1} \cdot R_{P2}}{R_{P1} + R_{P2}} &= Z_{TL} \\
+\end{align}
+++++
+
+## AC Termination
+
