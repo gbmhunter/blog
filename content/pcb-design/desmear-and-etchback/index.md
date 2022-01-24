@@ -3,7 +3,9 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "PCB Design" ]
 date: 2014-11-03
 draft: false
-title: Desmear And Etchback
+lastmod: 2014-11-03
+tags: [ "PCB", "design" ]
+title: "Desmear And Etchback"
 type: page
 ---
 
