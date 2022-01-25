@@ -393,6 +393,10 @@ The TN92527 (a.k.a just the _82527_) is a older CAN transceiver made by Intel<<b
 | TJA1052i
 | Yes
 
+| Texas Instruments
+| ISO1044
+| Yes
+
 |===
 
 == CAN Bus Repeaters
