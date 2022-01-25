@@ -162,6 +162,8 @@ h| Same.
 
 Below is a table which should be wider than the standard content width, and have a horizontal scrollable bar at the bottom. 
 
+[.overflow]
+--
 [.table-1000,cols="1,1,1,1,1,1,1,2"]
 |===
 | Manf. | Manf. Part Num | Topology | Resolution | Speed | Digital Interface | Package | Comments
@@ -185,6 +187,7 @@ Below is a table which should be wider than the standard content width, and have
 | Pin/functionally compatible with the Texas Instruments ADS8866IDRCR.
 
 |===
+--
 
 == Admonitions
 

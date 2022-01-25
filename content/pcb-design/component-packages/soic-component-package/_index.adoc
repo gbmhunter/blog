@@ -23,8 +23,9 @@ a|
 * R-PDSO (JEDEC wide body SOIC, 7.5mm width, 0.65mm pitch)
 * S8 (SOIC-8, Analog Devices)
 * S8E (Linear Technologies, SOIC-8 with exposed pad)
-* SOIC8E (SOIC-8N with exposed pad, Monolithic Power Solutions<<bib-mps-mp2497-a-ds>>)
 * SO (ST Microelectronics)
+* SOIC8E (SOIC-8N with exposed pad, Monolithic Power Solutions<<bib-mps-mp2497-a-ds>>)
+* SOT162-1 (SOIC-16W, NXP<<bib-nxp-sot162-1>>)
 * SSOP4/LSOP04 (onsemi, SO-4, 7.5mm wide body)<<bib-onsemi-fodm1009-ds>>
 * WSON (SST, this is a package which shares the same footprint as a SOIC but has a smaller height, not to be confused with the different SON package)
 
@@ -93,11 +94,15 @@ Thermal resistance:
 
 ## SOIC-xW
 
-The SOIC-xW (SOIC wide) family of packages is governed by the JEDEC MS-013 standard.
+The `SOIC-xW` (SOIC wide) family of packages is governed by the JEDEC MS-013 and IEC 075E03 standards. NXP's `SOT-162-1` package is a SOIC-16W<<bib-nxp-sot162-1>>.
 
-Land area:
+|===
+| Package Name | Land Area
 
-* SOIC-28W: 186.4mm² (10.3x18.1mm)
+| SOIC-16W     | 136.3mm² (11.9x11.45mm)<<bib-nxp-sot162-1>>
+| SOIC-28W     | 186.4mm² (10.3x18.1mm)
+
+|===
 
 ## Pitch
 
@@ -159,3 +164,4 @@ ON Semiconductor uses the case code `751EP` for the `SOIC-4W` package<<bib-on-se
 * [[[bib-toshiba-tlp185-ds, 2]]] Retrieved 2021-12-08, from https://media.digikey.com/pdf/Data%20Sheets/Toshiba%20PDFs/TLP185_04-27-17.pdf.
 * [[[bib-onsemi-fodm1009-ds, 3]]] Retrieved 2021-12-08, from https://nz.mouser.com/datasheet/2/308/1/FODM1009_D-2313636.pdf.
 * [[[bib-mps-mp2497-a-ds, 4]]] Monolithic Power Solutions (2012, May 30). _MP2497-A: 3A, 50V, 100kHz Step-Down Converter with Programmable Output OVP Threshold_. Retrieved 2022-01-20 from https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP2497A/document_id/1972.
+* [[[bib-nxp-sot162-1, 5]]] NXP (2016, Feb 8). _SOT162-1: Plastic small outline package; 16 leads; body width 7.5 mm (package information)_. Retrieved 2022-01-25, from https://www.nxp.com/docs/en/package-information/SOT162-1.pdf.
