@@ -602,9 +602,16 @@ caption.title {
 
 }
 
-// This is added so large tables will be scrollable. If this messed up other content,
-// we might have to wrap the containers in a div which does this instead.
-.sectionbody {
+// This is added so to make large tables scrollable. Wrap the table in an AsciiDoc block like so:
+// [.overflow]
+// --
+// [.table-1000]
+// |===
+//   ...
+//   ...
+// |===
+// --
+.overflow {
     overflow-x: auto;
 }
 
