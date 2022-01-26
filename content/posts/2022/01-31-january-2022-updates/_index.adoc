@@ -32,3 +32,5 @@ type: "post"
 * Added more info on the SOIC component package, including the link:/pcb-design/component-packages/sot-162-1-component-package/[SOT-162-1 NXP synonym].
 
 * Added info on the link:/pcb-design/component-packages/sod-123-component-package/#_sod_123ep[SOD-123EP component package], a variant of the SOD-123.
+
+* Added info on link:/programming/design-patterns/how-to-write-super-loops-in-firmware/#_keeping_track_of_loop_time[monitoring loop time] to the page on firmware superloops.

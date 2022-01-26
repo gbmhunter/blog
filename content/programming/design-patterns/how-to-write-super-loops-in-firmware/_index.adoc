@@ -59,7 +59,7 @@ int main(void) {
 }
 ----
 
-== The System Tick
+## The System Tick
 
 The idea is to call a function to get the system tick (which represents the current time, usually measured as an integer number of microseconds or milliseconds since the microcontroller started) once per iteration of your super loop.
 
@@ -70,7 +70,7 @@ uint32_t curr_tick_us = get_system_tick_us();
 
 It is important to note that you should only read the system tick once per iteration of the loop. This value should be used for all calculations involving the current time for the rest of the loop, even if the current time has changed. This prevents a whole range of tricky-to-debug issues when things start happening in a different order than what was expected.
 
-=== Dealing With Tick Roll-over (Overflow)
+### Dealing With Tick Roll-over (Overflow)
 
 It is important to make your firmware immune to the effect of the system tick overflowing (rolling over) and going back to 0 (just ask the link:https://www.engadget.com/2015-05-01-boeing-787-dreamliner-software-bug.html[Boeing 787 Dreamliner] about this<<bib-engadget-787-overflow>>).
 
@@ -142,6 +142,22 @@ Print time! curr_tick_ms = 188
 Print time! curr_tick_ms = 32
 Print time! curr_tick_ms = 132
 Print time! curr_tick_ms = 232
+----
+
+## Keeping Track Of Loop Time
+
+A really useful metric to keep track of in a super loop architecture is the _loop time_. The loop time is the time it takes to perform one complete iteration of the super loop. The loop time will always vary (technically, this is called _jitter_), due to different things occurring on every loop. The shortest loop times will be when no new events occur, the longest will be when many events occur on the same loop which trigger long-running actions. It is generally a good idea to keep the maximum loop time short, typically in the microsecond to 10's of milliseconds range, such that the embedded system remains responsive to the outside world and doesn't appear to "hang".
+
+It's easy to compute the loop time from the "tick" from the last iteration of the loop, and the "tick" from the current iteration. Check that this does not exceed a reasonable number (reasonable will entirely depend on your exact application, printing out the loop time might clue you into a suitable limit), and handle the "error" as appropriate (in the example below, a warning is printed to the default debug port).
+
+[source,c]
+----
+uint32_t prev_tick_ms = cur_tick_ms;
+uint32_t cur_tick_ms = get_system_tick_ms();
+uint32_t loop_time_ms = cur_tick_ms - prev_tick_ms;
+if (loop_time_ms > 20) {
+  printf("WARNING: Loop time greater than 20ms!");
+}
 ----
 
 [bibliography]
