@@ -30,3 +30,5 @@ type: "post"
 * Added a page on termination (electrical termination of transmission lines), including schematic examples of series termination. 
 
 * Added more info on the SOIC component package, including the link:/pcb-design/component-packages/sot-162-1-component-package/[SOT-162-1 NXP synonym].
+
+* Added info on the link:/pcb-design/component-packages/sod-123-component-package/#_sod_123ep[SOD-123EP component package], a variant of the SOD-123.

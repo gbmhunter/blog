@@ -386,18 +386,32 @@ DeviceNet cable typically consists of two shielded, twisted pairs. One pair has 
 
 The TN92527 (a.k.a just the _82527_) is a older CAN transceiver made by Intel<<bib-intel-82527>>. It was Intel's first CAN controller that supported CAN Specification 2.0.
 
+[.overflow]
+--
+[.table-1000,cols="1,1,1,1,1,1,1,2"]
 |===
-| Manf. | Manf. Part Num. | Isolated?
+| Manf. | Manf. Part Num. | Data Rate | Isolated? | Price (USD, 100) | Package | Datasheet | Comments
 
 | NXP
 | TJA1052i
+| 5Mbps
 | Yes
+| ?
+| SOIC-16W
+| link:https://www.nxp.com/docs/en/data-sheet/TJA1052I.pdf[Datasheet]
+|
 
 | Texas Instruments
-| ISO1044
+| ISO1044BD
+| 5Mbps
 | Yes
+| link:https://www.digikey.com/en/products/detail/texas-instruments/ISO1044BD/13237251[$2.88]
+| SOIC-8
+| link:https://www.ti.com/lit/ds/symlink/iso1044.pdf[Datasheet]
+|
 
 |===
+--
 
 == CAN Bus Repeaters
 
@@ -445,5 +459,5 @@ v0.2 rc2_. Retrieved 2020-06-03, from https://emusbms.com/files/bms/docs/Elektro
 * [[[bib-bueno-electric-max-cable-len, 6]]] Bueno Electric. _Maximum Cable Length For a CAN Bus_. Retrieved 20221-10-11, from https://www.buenoptic.net/encyclopedia/item/537-maximum-cable-length-for-a-can-bus.html.
 * [[[bib-on-semi-topo-high-speed-can, 7]]] OnSemi (2009, Jan). _AND8376/D:  AMIS-30660/42000 - Topology Aspects of a High-Speed CAN Bus_. Retrieved 2021-10-11, from https://www.onsemi.com/pub/collateral/and8376-d.pdf.
 * [[[bib-microchip-can-mod-bit-timing, 8]]]. Richards, Pat (2001). _AN754: Understanding Microchip’s CAN Module Bit Timing_. Microchip. Retrieved 2021-10-11, from http://ww1.microchip.com/downloads/en/appnotes/00754.pdf.
-* [[[bib-intel-82527]]] Intel (1997, Dec). _82527 Serial Communications Controller Area Network Protocol_. Retrieved 2021-10-14, from http://www.nj7p.org/Manuals/PDFs/Intel/273150-001.PDF.
-* [[[bib-cia-bit-timing]]] Taralkar, Meenanath (2012). _Computation of CAN Bit Timing Parameters Simplified_. CAN in Automation. Retrieved 2021-10-14, from https://www.can-cia.org/fileadmin/resources/documents/proceedings/2012_taralkar.pdf.
+* [[[bib-intel-82527, 9]]] Intel (1997, Dec). _82527 Serial Communications Controller Area Network Protocol_. Retrieved 2021-10-14, from http://www.nj7p.org/Manuals/PDFs/Intel/273150-001.PDF.
+* [[[bib-cia-bit-timing, 10]]] Taralkar, Meenanath (2012). _Computation of CAN Bit Timing Parameters Simplified_. CAN in Automation. Retrieved 2021-10-14, from https://www.can-cia.org/fileadmin/resources/documents/proceedings/2012_taralkar.pdf.
