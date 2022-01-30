@@ -15,6 +15,11 @@ params:
   description: An embedded engineering site that's got your back.
   images:
     - /images/logo/mbedded-ninja-twitter-card-600x300.png
+  # rssTypes lists the content types which will be included in the RSS feed
+  # This is referenced in rss.xml
+  rssTypes:
+  - page
+  - posts
 markup:
   tableOfContents:
     ordered: false
@@ -60,7 +65,7 @@ taxonomies:
 outputs:
   home:
     - HTML
-    - RSS
+    - RSS # Output RSS feed for entire blog at /index.xml
 security:
   enableInlineShortcodes: false
   exec:
@@ -80,3 +85,7 @@ security:
     - (?i)GET|POST
     urls:
     - .*
+
+services:
+  rss:
+    limit: 100 # Sets the max. number of RSS entries (most recent allowed through)
