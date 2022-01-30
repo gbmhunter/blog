@@ -4,6 +4,8 @@ lastmod: 2021-06-20
 title: "AsciiDoc Test Page"
 ---
 
+:imagesdir: {{< permalink >}}
+
 :fn-test-1: footnote:test-1[Test footnote 1.]
 
 Page contents (table of contents, ToC) should be shown either above (viewport < 768px) or to the right (viewport >=768px). Sections should have numbers in front of them, both in the ToC and in-front of the section headings.
