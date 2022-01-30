@@ -7,6 +7,8 @@ title: "Temperature Sensors"
 type: "page"
 ---
 
+:imagesdir: {{< permalink >}}
+
 ## Overview
 
 Temperature sensors are electronic transducers which measure the temperature of the nearby body (which in many cases is the temperature sensor itself) and then converts it into either a analogue or digital electrical signal.

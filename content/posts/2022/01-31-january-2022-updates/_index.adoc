@@ -11,6 +11,8 @@ title: "January 2022 Updates"
 type: "post"
 ---
 
+:imagesdir: {{< permalink >}}
+
 == Updates This Month
 
 * Added info on ICs which have different part numbers for different I2C addresses.
