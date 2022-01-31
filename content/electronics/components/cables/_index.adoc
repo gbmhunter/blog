@@ -187,43 +187,6 @@ Some examples of combined power/data cables include:
 
 * Lapp UNITRONIC BUS PB COMBI 7-W cable. It contains 3x 1.0mm2 power cores and 1x2x0.64mm2 twisted pair core for data. The twisted pair is individually shielded (to protect it from noise on the power cores), and the whole cable is also shielded.
 
-## Coaxial Cable
-
-_Coaxial cable_ (or just _coax cable_) is a type of cable consisting of single core surrounded by a circular outer shield, with a insulating dielectric sandwiched between the two. The term _coaxial_ comes from the inner conductor and outer shield sharing the same axis (they are concentric with one another). Coax is most commonly used to transmit high frequency signals over small (oscilloscope probes) and large distances (transatlantic phone cables).
-
-.The make-up of a standard coaxial cable. Relative dimensions accurate for RG-6 (dimensions taken from http://www.farnell.com/datasheets/1697593.pdf).
-image::coax-cable-cut-away-annotated.png[width=700px]
-
-RG-6 is one of the most common types of coaxial cable in residual homes due to it's use with TVs.
-
-Properties of popular coaxial cable types<<pro-power-coaxial-rg6>>:
-
-|===
-| Name    | Conductor Diameter (mm) | Insulator Diameter (mm)  | Shield Outer Diameter (mm) | Jacket Outer Diameter (mm)
-
-| RG-6    | 1.0                     | 4.57                     | 5.2                        | 6.6
-|===
-
-Properties of popular coaxial cable dielectrics<<rf-cafe-coax-chart>>:
-
-|===
-| Name                         | Propagation Velocity
-
-| Solid Polyethylene (PE)      | 0.659c
-| Foam Polyethylene (FE)       | 0.800c
-| Foam Polystyrene (FS)        | 0.910c
-| Air Space Polyethylene (ASP) | 0.840-0.880c
-| Solid Teflon (ST)            | 0.694c
-| Air Space Teflon (AST)       | 0.850-0.900c
-|===
-
-[.text-center]
-where stem:[c=3e8ms^{-1}] is the speed of light in a vacuum.
-
-### Precision Capacitors From Coaxial Cable
-
-Coax cable has a capacitance of approx. 1pF/10mm, as measured between the central conductor and the outer shield. Precision capacitors for prototype/lab use can be from trimmed lengths of coax. cable.
-
 ## Mutual Capacitance
 
 For cables with screening, typically a conductor-to-conductor and conductor-to-screen capacitance is given. The conductor-to-conductor capacitance is typically 80-140nF and the conductor-to-screen capacitance is typically 100-180nF (slightly higher than the conductor-to-conductor capacitance). 
@@ -253,5 +216,4 @@ image::metal-cable-gland.jpg[width=200px]
 [bibliography]
 ## References
 
-* [[[pro-power-coaxial-rg6, 1]]]: Pro-Power. _Cable Coaxial RG6 (datasheet)_. Retrieved 2021-05-04, from http://www.farnell.com/datasheets/1697593.pdf.
-* [[[rf-cafe-coax-chart, 2]]]: RF Cafe. _Coaxial Cable Specifications_. Retrieved 2021-05-05, from https://www.rfcafe.com/references/electrical/coax-chart.htm.
+* n/a

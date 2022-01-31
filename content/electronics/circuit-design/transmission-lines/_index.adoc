@@ -11,7 +11,7 @@ type: "page"
 
 ## Overview
 
-A _transmission line_ is a wire/cable/track on the PCB, that, because of the frequency of the electrical signals going through have reached a certain point (typically RF), you can no longer just treat the wire as a short circuit. Instead, the connection must be treated as a _transmission line_, and must be _terminated_ correctly. If it is not terminated correctly, reflections and standing waves can occur, which typically decrease the performance of the circuit.
+A _transmission line_ is a wire/cable/track on the PCB, that, because of the frequency of the electrical signals going through have reached a certain point (typically RF), you can no longer just treat the wire as a short circuit. Instead, the connection must be treated as a _transmission line_, and must be _impedance matched_ all the way from the driver to the receiver. Impedance matching is done to maximise power transfer and minimise reflections from the load. The typical way to impedance match is to make sure the transmission line is _terminated_ correctly.
 
 .Schematic symbol for a transmission line, which represents a piece of coax cable. Because this usually isn't a component to appear on the BOM (if it's a PCB track), it's not normally given a designator.
 image::transmission-line-schematic-symbol.png[width=500px]
@@ -29,7 +29,16 @@ This is related to the capacitive ability of the medium between two copper layer
 
 This is the impedance (kind of like resistance) a signal "sees" when travelling down a transmission line. Note that the main difference between standard resistance and the characteristic impedance is that the impedance does not depend on the length of the conductor. It has the same value no matter how long the transmission line.
 
-The characteristic impedance of a transmission line need to equal the impedance of the end devices connected to it, otherwise reflections will occur.
+The characteristic impedance of a transmission line is usually called stem:[Z_C]. It is dependant on the per unit length inductance stem:[L] and capacitance stem:[C] of the transmission line. The equation is: 
+
+[stem]
+++++
+\begin{align}
+Z_C = \sqrt{ \frac{L}{C} }
+\end{align}
+++++
+
+However, you rarely calculate stem:[Z_C] from the per-unit inductance and capacitance. Instead, you either use transmission lines with well controlled parameters that specify their impedance (e.g. stem:[50\Omega] link:/electronics/components/cables/#_coaxial_cable[RG-58 coax cable]), or you design PCB traces using well know formulas for the impedance determined by the track width, PCB di-electric, geometry and proximity to ground.
 
 Typical impedances and their associated uses are:
 
@@ -46,11 +55,13 @@ Typical impedances and their associated uses are:
 | Differential ethernet signals. Differential PCIe signals.
 
 | 120Ω
-| RS-485 bus
+| RS-485 bus. CAN bus.
 
 |===
 
-## When Should I Worry About Impedance?
+## When Is A Transmission Line A Transmission Line?
+
+**Wires, cables, PCB tracks e.t.c. have to be treated as transmission lines when the signal passing through it changes rapidly compared to the time the signal takes to travel through the transmission line.**
 
 The first problem with digital waveforms is finding out the maximum frequency you need to support for it. It is not the clocking/data speed! If you assumed that, the edges of the clock would be rounded off and you'd end up with a sine-wave like waveform. The highest frequency components you need to support are the edges of the data. There is a well-known rule-of-thumb for applies to digital waveforms:
 
@@ -86,6 +97,92 @@ TIP: The impedance of a PCB track is not important if it is at least 10 times sm
 
 Thus, the minimum wavelength of the USB full-speed signal is 1.65m, and the characteristic impedance of the track is only important if the total track length is greater than 165mm.
 --
+
+## Reflections
+
+**Whenever the signal passes from one medium to another with different characteristic impedance, a reflection occurs at the boundary.** The reflection appears at the boundary at propagates in both directions (both forwards with the signal, and backwards towards the signal source). The magnitude (in terms of voltage) of the reflection is determined by the voltage reflection coefficient.
+
+Voltage reflection coefficients are usually represented with the Greek uppercase "Gamma" (stem:[\Gamma]), with subscripts representing the direction of signal as it crosses the boundaries between two "mediums" (cables, circuit traces, e.t.c.) of different impedance. The voltage reflection coefficient is defined as the ratio of the reflected wave to the incident wave:
+
+[stem]
+++++
+\begin{align}
+\Gamma \equiv \frac{B}{A}
+\end{align}
+++++
+
+[.text-center]
+where: +
+stem:[ A ] is the voltage of the incident wave, in stem:[V] +
+stem:[ B ] is the voltage of the reflection (going back to the source), in stem:[V] +
+
+The voltage reflection coefficient stem:[\Gamma_{12}], of a signal moving from medium 1 to medium 2 is:
+
+[stem]
+++++
+\begin{align}
+\Gamma_{12} = \frac{Z_2 - Z_1}{Z_2 + Z_1}
+\end{align}
+++++
+
+[.text-center]
+where: +
+stem:[Z_1] is the characteristic impedance of medium 1, in stem:[\Omega] +
+stem:[Z_2] is the characteristic impedance of medium 2, in stem:[\Omega] +
+
+Similarly, the voltage reflection coefficient for a wave going the other way is:
+
+[stem]
+++++
+\begin{align}
+\Gamma_{21} = \frac{Z_1 - Z_2}{Z_1 + Z_2}
+\end{align}
+++++
+
+Thus the coefficients have the same magnitude, but differ in sign:
+
+[stem]
+++++
+\begin{align}
+\Gamma_{21} = -\Gamma_{12}
+\end{align}
+++++
+
+Let's consider a transmission line connected to a receiver in three different scenarios:
+
+**Receiver Is Terminated With Characteristic Impedance**
+
+You can see from the above equation that for perfectly matched mediums the reflection coefficient is stem:[0]. No energy is reflected back to the source.
+
+**Receiver Is Shorted To Ground**
+
+When the receiver is shorted to ground, then stem:[Z_2 = 0]. The voltage reflection coefficient is then:
+
+[stem]
+++++
+\begin{align}
+\Gamma_{12} &= \frac{0 - Z_1}{0 + Z_1} \nonumber \\
+            &= -1 \\
+\end{align}
+++++
+
+As you can see, stem:[Z_0] is gone, stem:[Z_1] cancels out and you are left with a stem:[\Gamma = -1]. Thus the reflected wave is equal in magnitude but 180° out of phase with the incident wave. This means they cancel each over out, giving stem:[0V] at the receiver. This makes sense! There cannot be any voltage across a short (by definition)!
+
+**Receiver Is Open Circuit**
+
+When the receiver is open circuit, then stem:[Z_2 \to \infty]. Using L'Hospital's rule:
+
+[stem]
+++++
+\begin{align}
+\Gamma_{12} &= lim_{Z_2 \to \infty} \frac{Z_2 - Z_1}{Z_2 + Z_1} \nonumber \\
+            &= lim_{Z_2 \to \infty} \frac{\frac{d}{d(Z_2)}(Z_2 - Z_1)}{\frac{d}{d(Z_2)}(Z_2 + Z_1)} \nonumber \\
+            &= \frac{1}{1} \nonumber \\
+            &= 1
+\end{align}
+++++
+
+All of the energy is reflected back to the source. The reflected wave is equal in magnitude and in phase with the incident wave.
 
 ## Co-planar Waveguides (CPW)
 

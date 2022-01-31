@@ -1,10 +1,11 @@
 ---
 authors: [ "Geoffrey Hunter" ]
-categories: [ "PCB Design" ]
+categories: [ "Electronics", "Circuit Design", "Transmission Lines" ]
 date: 2013-10-29
 draft: false
-lastmod: 2022-01-21
-tags: [ "PCB design", "termination" ]
+images: [ "/electronics/circuit-design/transmission-lines/termination/series-termination-schematic.png" ]
+lastmod: 2022-01-31
+tags: [ "PCB design", "termination", "series", "parallel", "Thevenin", "AC", "impedance", "characteristic", "reflections", "RF" ]
 title: "Termination"
 type: "page"
 ---
@@ -15,7 +16,7 @@ WARNING: This page is in notes format, and may not be of the same quality as oth
 
 ## Overview
 
-_Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches. A high-speed signal should ideally see the same impedance all the way from driver to receiver. The impedance of the transmission line is usually stem:[50-150\Omega], but drivers are usually low impedance (stem:[<20\Omega]), and receivers high-impedance (stem:[>1k\Omega]). For this reason, termination resistors are added at the driver and/or receiver to keep the apparent impedance  
+_Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches. A high-speed signal should ideally see the same impedance all the way from driver to receiver. The impedance of the transmission line stem:[Z_C] is usually stem:[50-150\Omega], but drivers are usually low impedance (stem:[<20\Omega]), and receivers high-impedance (stem:[>1k\Omega]). For this reason, termination resistors are added at the driver and/or receiver to keep the apparent impedance  
 
 Types of termination:
 
@@ -31,7 +32,7 @@ Most of these termination methods are discussed in the context of digital signal
 _Series termination_ (a.k.a. _back termination_ or _source termination_) is a termination method in where a resistor is added in series at the start of the transmission line, and no termination is added at the end of the termination line. Even though the start of the transmission line receives half the voltage from the driver, **the receiver sees a perfect transition to the full voltage due to a purposeful reflection back to the driver**. 
 
 .How to do series termination. Resistor stem:[R_S] is placed at the output of the driver before the transmission line. stem:[R_S] is equal to the characteristic impedance of the transmission line. 
-image::series-termination-schematic.png[width=800px,link="series-termination-schematic.png"]
+image::series-termination-schematic.png[width=800px,link="{{< permalink >}}/series-termination-schematic.png"]
 
 Advantages:
 
@@ -58,15 +59,15 @@ So far we have been assuming a perfect driver, i.e. one with no output resistanc
 [stem]
 ++++
 \begin{align}
-Z_S = Z_{TL} - Z_{driver}
+Z_S = Z_{C} - Z_{driver}
 \end{align}
 ++++
 
 [.text-center]
 where: +
 stem:[Z_S] is the impedance, in stem:[\Omega] +
-stem:[Z_{TL}] is the characteristic impedance of the transmission line, in stem:[\Omega] +
-stem:[Z_{driver}] is the output impedance of the driver. +
+stem:[Z_{C}] is the characteristic impedance of the transmission line, in stem:[\Omega] +
+stem:[Z_{driver}] is the output impedance of the driver, in stem:[\Omega] +
 
 TIP: The above impedances should have no imaginary component, so they are just resistances.
 
@@ -74,21 +75,26 @@ TIP: The above impedances should have no imaginary component, so they are just r
 
 [[series-termination-with-non-zero-driver-output-impedance.png]]
 .Real-world series termination, in where the driver has non-zero output impedance. Reduce the series termination resistance so that the total resistance is still equal to the characteristic impedance of the transmission line.
-image::series-termination-with-non-zero-driver-output-impedance.png[width=800px,link="series-termination-with-non-zero-driver-output-impedance.png"]
+image::series-termination-with-non-zero-driver-output-impedance.png[width=800px,link="{{< permalink >}}/series-termination-with-non-zero-driver-output-impedance.png"]
+
+**Series Termination Summary**
+
+* Consumes no power at steady-state, only during transitions.
+* Uses only one resistor.
 
 ## Parallel Termination
 
 _Parallel termination_ is a termination method in where a resistor stem:[R_P] is added to the receiver end of the transmission line, and is connected across the line and either GND or stem:[V_{CC}] (hence in parallel).
 
 .Schematic showing basic parallel termination. A resistor stem:[R_P] is added at the receiver end to either GND or stem:[V_{CC}].
-image::parallel-termination-schematic.png[width=800px,link="parallel-termination-schematic.png"]
+image::parallel-termination-schematic.png[width=800px,link="{{< permalink >}}/parallel-termination-schematic.png"]
 
 The waveform exiting the transmission line needs to see the same impedance as the transmission line itself.
 
 [stem]
 ++++
 \begin{align}
-Z_{IN} || Z_P = Z_{TL}
+Z_{IN} || Z_P = Z_{C}
 \end{align}
 ++++
 
@@ -97,7 +103,7 @@ Typically, the input impedance of the receiver will be relatively high (stem:[>1
 [stem]
 ++++
 \begin{align}
-Z_{IN} >> Z_{TL}
+Z_{IN} >> Z_{C}
 \end{align}
 ++++
 
@@ -106,9 +112,11 @@ And in which case the equation simplifies to:
 [stem]
 ++++
 \begin{align}
-Z_P = Z_{TL}
+Z_P = Z_{C}
 \end{align}
 ++++
+
+**Parallel Termination Summery**
 
 * No reflections (as opposed to series termination, which has one reflection back to the driver).
 * Driver needs to provide continuous current for one of the logic levels.
@@ -118,17 +126,33 @@ Z_P = Z_{TL}
 _Thevenin termination_ is a form of termination in where two resistors (usually identical) are connected to the receiving end of the transmission line, one to stem:[V_{CC}] and the other to stem:[GND]. 
 
 .Schematic showing Thevenin termination. Two usually identical resistors stem:[R_{P1}] and stem:[R_{P2}] are connected to the receiver.
-image::thevenin-termination-schematic.png[width=800px,link="thevenin-termination-schematic.png"]
+image::thevenin-termination-schematic.png[width=800px,link="{{< permalink >}}/thevenin-termination-schematic.png"]
 
 Assuming the receiver is relatively high impedance, the parallel combination of stem:[R_{P1}] and stem:[R_{P2}] must equal the impedance of the transmission line.
 
 [stem]
 ++++
 \begin{align}
-R_{P1} || R_{P2} &= Z_{TL} \nonumber \\
-\frac{R_{P1} \cdot R_{P2}}{R_{P1} + R_{P2}} &= Z_{TL} \\
+R_{P1} || R_{P2} &= Z_{C} \nonumber \\
+\nonumber \\
+\frac{R_{P1} \cdot R_{P2}}{R_{P1} + R_{P2}} &= Z_{C} \\
 \end{align}
 ++++
 
+**Thevenin Termination Summary**
+
+* Consumes half as much power as parallel termination, but still more than series termination.
+* Uses two resistors, instead of the one each for series and parallel termination.
+
 ## AC Termination
 
+_AC termination_ is similar to parallel termination, except a capacitor is added in series with the termination resistor at the receiver, as shown in <<ac-termination-schematic>>. AC termination addresses the DC current consumption of parallel termination. The idea is that the resistor is still present to provide termination for the high-speed signals (which are fast enough to see the capacitance as low impedance), whilst the capacitor blocks DC current consumption<<bib-avx-ac-term>>.
+
+[[ac-termination-schematic]]
+.Schematic showing AC termination.
+image::ac-termination-schematic.png[width=800px,link="{{< permalink >}}/ac-termination-schematic.png"]
+
+[bibliography]
+## References
+
+* [[[bib-avx-ac-term, 1]]] Ben Smith. _Technical Information: AC Termination for Signal Buses_. AVX. Retrieved 2022-01-31, from https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.83.298&rep=rep1&type=pdf.
