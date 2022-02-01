@@ -3,23 +3,25 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "PCB Design" ]
 date: 2013-10-29
 draft: false
-lastmod: 2022-01-21
+lastmod: 2022-02-01
 tags: [ "PCB design", "transmission lines", "impedance", "routing", "dielectric", "characteristic impedance", "waveguides", "microstrips", "striplines" ]
 title: "Transmission Lines"
 type: "page"
 ---
+
+:imagesdir: {{< permalink >}}
 
 ## Overview
 
 A _transmission line_ is a wire/cable/track on the PCB, that, because of the frequency of the electrical signals going through have reached a certain point (typically RF), you can no longer just treat the wire as a short circuit. Instead, the connection must be treated as a _transmission line_, and must be _impedance matched_ all the way from the driver to the receiver. Impedance matching is done to maximise power transfer and minimise reflections from the load. The typical way to impedance match is to make sure the transmission line is _terminated_ correctly.
 
 .Schematic symbol for a transmission line, which represents a piece of coax cable. Because this usually isn't a component to appear on the BOM (if it's a PCB track), it's not normally given a designator.
-image::transmission-line-schematic-symbol.png[width=500px]
+image::transmission-line-schematic-symbol.png[width=500px,link="{{< permalink >}}/transmission-line-schematic-symbol.png"]
 
 _Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches. See the link:[Termination page] for more info.
 
 .An isometric diagram of a microstrip. Image from www.maximintegrated.com.
-image::microstrip-track-example-in-isometric-view-microchip.gif[width=300px]
+image::microstrip-track-example-in-isometric-view-microchip.gif[width=300px,link="{{< permalink >}}/microstrip-track-example-in-isometric-view-microchip.gif"]
 
 ## Dielectric Constant
 
@@ -27,9 +29,9 @@ This is related to the capacitive ability of the medium between two copper layer
 
 ## Characteristic Impedance
 
-This is the impedance (kind of like resistance) a signal "sees" when travelling down a transmission line. Note that the main difference between standard resistance and the characteristic impedance is that the impedance does not depend on the length of the conductor. It has the same value no matter how long the transmission line.
+The _characteristic impedance_ of a conductor is the impedance a signal "sees" when travelling down a conductor that has to be treated as a transmission line (more on at what length a conductor becomes a transmission line below). Note that the main difference between standard resistance and the characteristic impedance is that the **characteristic impedance does not depend on the length of the conductor**. It has the same value no matter the length of the transmission line!
 
-The characteristic impedance of a transmission line is usually called stem:[Z_C]. It is dependant on the per unit length inductance stem:[L] and capacitance stem:[C] of the transmission line. The equation is: 
+**The characteristic impedance of a transmission line is usually called stem:[Z_C].** It is dependant on the per unit length inductance stem:[L] and capacitance stem:[C] of the transmission line. The equation is: 
 
 [stem]
 ++++
@@ -63,11 +65,60 @@ Typical impedances and their associated uses are:
 
 **Wires, cables, PCB tracks e.t.c. have to be treated as transmission lines when the signal passing through it changes rapidly compared to the time the signal takes to travel through the transmission line.**
 
+So how rapid is "rapid"? Most guidelines state that a conductive path has to be treated as a transmission line once the cable becomes longer than about 1/10 of the wavelength of the operating frequency. Remember that the wavelength of a signal stem:[\lambda] is calculated with the simple equation:
+
+[stem]
+++++
+\begin{align}
+\lambda = \frac{c}{f}
+\end{align}
+++++
+
+[.text-center]
+where: +
+stem:[\lambda] is the wavelength, in stem:[m] +
+stem:[c] is the speed of light, in which stem:[3{\times}10^8 ms^{-1}] is a good enough approximation +
+stem:[f] is the frequency of the signal, in stem:[Hz] +
+
+For example, electronicdesign.com states<<bib-elec-design-imp-matching-p1>>:
+
+> A cable becomes a transmission line when it has a length greater than λ/8 at the operating frequency.
+
+[example]
+.Finding the "transmission line length" for a 780MHz signal.
+--
+You have a signal at 780MHz. At what length does a cable carrying this signal have to be treated as a transmission line?
+
+The wavelength of a 780MHz signal is:
+
+[stem]
+++++
+\begin{align}
+\lambda &= \frac{3{\times}10^8ms^{-1}}{780MHz} \nonumber \\
+        &= 385mm \\
+\end{align}
+++++
+
+The length of cable at which it "becomes" a transmission line is just 1/10th of this wavelength:
+
+[stem]
+++++
+\begin{align}
+l &= \frac{\lambda}{10} \nonumber \\
+  &= 38.5mm \\
+\end{align}
+++++
+--
+
+### What About Digital Waveforms?
+
 The first problem with digital waveforms is finding out the maximum frequency you need to support for it. It is not the clocking/data speed! If you assumed that, the edges of the clock would be rounded off and you'd end up with a sine-wave like waveform. The highest frequency components you need to support are the edges of the data. There is a well-known rule-of-thumb for applies to digital waveforms:
 
 [stem]
 ++++
+\begin{align}
 BW \approx \frac{0.35}{t_r}
+\end{align}
 ++++
 
 [.text-center]
@@ -152,7 +203,7 @@ Let's consider a transmission line connected to a receiver in three different sc
 
 **Receiver Is Terminated With Characteristic Impedance**
 
-You can see from the above equation that for perfectly matched mediums the reflection coefficient is stem:[0]. No energy is reflected back to the source.
+You can see from the above equation that for perfectly matched mediums the reflection coefficient is stem:[0]. No energy is reflected back to the source. This is also the condition in which maximum power is transferred to the load.
 
 **Receiver Is Shorted To Ground**
 
@@ -200,3 +251,8 @@ Vias are a bit of a nuisance when it comes to impedance controlled traces.
 ## External Links
 
 A good impedance calculator for a number of different transmission lines is found at link:http://www.eeweb.com/toolbox/wire-microstrip-impedance/[http://www.eeweb.com/toolbox/wire-microstrip-impedance/].
+
+[bibliography]
+## References
+
+* [[[bib-elec-design-imp-matching-p1, 1]]] Lou Frenzel (2011, Oct 25). _Back to Basics: Impedance Matching (Part 1)_. ElectronicDesign. Retrieved 2022-02-01, from https://www.electronicdesign.com/technologies/communications/article/21796367/back-to-basics-impedance-matching-part-1.
