@@ -5,11 +5,13 @@ date: 2011-09-05
 description: "A introduction to capacitors, a fundamental component used in circuit design. A walk-though of the different types, properties, uses and capacitor equations."
 draft: false
 images: [ "/electronics/components/capacitors/container-of-th-tantalum-caps.jpg" ]
-lastmod: 2021-06-16
+lastmod: 2022-02-01
 tags: [ "capacitor", "cap", "components", "schematic symbols", "circuit", "ceramic", "electrolytics", "tantalums", "packages", "film", "feedthrough", "decoupling", "MFC", "X5R", "X7R", "C0G", "NP0", "singing capacitors", "piezoelectric", "Class I", "Class II", "Class III", "audible noise", "dielectrics", "bending flex", "FT-CAP", "capacitance multipliers" ]
 title: "Capacitors"
 type: "page"
 ---
+
+:imagesdir: {{< permalink >}}
 
 == Overview
 
@@ -216,7 +218,13 @@ _Class II_ and _Class III_ capacitors are most likely to "sing" when the capacit
 
 #### Flexibility
 
-Ceramic capacitors are sometimes tested and rated to be able to withstand a minimum _bending flex_. One example is the link:https://content.kemet.com/datasheets/KEM_X7R_FT_VW_AUDI.pdf[Kemet VW80808 (FT-CAP)] range of ceramic capacitors which can withstand 5mm bending flex. These are aimed towards automotive use (but not exclusive to). The large bending flex specification is achieved by designing flexible termination caps at each end of the capacitor, which stops the transfer of stress from the PCB to the fragile ceramic capacitor body.
+Ceramic capacitors are sometimes tested and rated to be able to withstand a maximum _bending flex_. One example is the link:https://content.kemet.com/datasheets/KEM_X7R_FT_VW_AUDI.pdf[Kemet VW80808 (FT-CAP)] range of ceramic capacitors which can withstand 5mm bending flex. These are aimed towards automotive use (but not exclusive to). The large bending flex specification is achieved by designing flexible termination caps at each end of the capacitor, which stops the transfer of stress from the PCB to the fragile ceramic capacitor body.
+
+AVX has coined the term _FLEXITERM_ for their range of ceramic chip capacitors that can withstand higher bending flex. <<avx-flexiterm-test-for-ceramic-chip-caps>> shows a diagram of the test setup for measuring the maximum bending flex<<bib-avx-auto-mlcc>>.
+
+[[avx-flexiterm-test-for-ceramic-chip-caps]]
+.Diagram showing the test setup for measuring the maximum bending flex for AVX chip capacitors with "FLEXITERM" terminals<<bib-avx-auto-mlcc>>.
+image::avx-flexiterm-test-for-ceramic-chip-caps.png[width=500px,link="{{< permalink >}}/avx-flexiterm-test-for-ceramic-chip-caps.png"]
 
 ### Electrolytic
 
@@ -1447,5 +1455,5 @@ This implies that when charging a capacitor from a fixed DC source, you dissipat
 * [[[bib-wikipedia-film-capacitor, 2]]] https://en.wikipedia.org/wiki/Film_capacitor
 * [[[bib-ceramic-dielectric-types, 3]]] https://www.electronics-notes.com/articles/electronic_components/capacitors/ceramic-dielectric-types-c0g-x7r-z5u-y5v.php
 * [[[bib-tdk-singing-capacitors, 4]]] https://product.tdk.com/en/contact/faq/31_singing_capacitors_piezoelectric_effect.pdf
-* [[[bib-qs-study-capacitance-spherical, 5]]]: QS Study. _Capacitance of a Spherical Conductor
-Capacitance of a Spherical Conductor_. Retrieved 2021-09-17, from https://qsstudy.com/physics/capacitance-spherical-conductor.
+* [[[bib-qs-study-capacitance-spherical, 5]]]: QS Study. _Capacitance of a Spherical Conductor_. Retrieved 2021-09-17, from https://qsstudy.com/physics/capacitance-spherical-conductor.
+* [[[bib-avx-auto-mlcc, 6]]] AVX. _Automotive MLCC (datasheet)_. Retrieved 2022-02-01, from https://datasheets.avx.com/AutoMLCC.pdf.
