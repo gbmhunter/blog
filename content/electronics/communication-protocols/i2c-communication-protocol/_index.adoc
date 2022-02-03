@@ -3,11 +3,13 @@ authors: [ "Geoffrey Hunter" ]
 date: 2011-09-03
 description: "A tutorial on the I2C communication protocol."
 draft: false
-lastmod: 2021-11-24
+lastmod: 2021-12-04
 tags: [ "I2C", "communication protocol", "bus", "serial", "microcontroller", "open-collector", "data", "transceiver", "TX", "RX", "SCL", "SDA" ]
 title: "I2C Communication Protocol"
 type: "page"
 ---
+
+:imagesdir: {{< permalink >}}
 
 == Overview
 
@@ -187,13 +189,13 @@ Connecting two identical devices (e.g. lets say you have two temperature sensors
 Newer pin-constrained I2C slave devices allow you to connect the address pins up to SCL and SDA to further increase the number of assignable addresses. With two address pins, and the possibility of connecting each up to either stem:[V_{CC}], GND, SCL or SDA, gives a total of 16 different I2C addresses (stem:[n = 4^2]).
 
 .The logic table (truth table) of the I2C address pins on the TI INA226 IC. Notice how you can connect the address pins up to SCL or SDA as well as the standard VS and GND, to give a total of 16 possible I2C addresses<<bib-ti-ina226-power-mon>>.
-image::i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png[width=800px,link="i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png"]
+image::i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png[width=800px,link="{{< permalink >}}/i2c-slave-address-pins-logic-table-with-scl-sda-ability-ti-ina226.png"]
 
 Another way the address issue is addressed (that could be worded better) is by the manufacturer providing a range of orderable part number for the same chip, but with different I2C addresses. One such example is the ADS1100 ADC by TI in a tiny SOT-23-6 package. There are no spare pins for address configuration on this 6-pin package -- instead, you can order 8 different parts which have a different I2C address in the range `0b1001000-0b1001111` (as shown in <<ads1100-adc-packaging-information>>)<<bib-ti-ads1100-adc>>.
 
 [[ads1100-adc-packaging-information]]
 .The different part numbers for the ADS1100 ADC. Each part number comes with a different I2C address<<bib-ti-ads1100-adc>>.
-image::ads1100-adc-packaging-information.png[width=600px,link="ads1100-adc-packaging-information.png"]
+image::ads1100-adc-packaging-information.png[width=600px,link="{{< permalink >}}/ads1100-adc-packaging-information.png"]
 
 ### Reserved I2C Addresses
 
