@@ -3,11 +3,13 @@ authors: [ "Geoffrey Hunter" ]
 date: 2012-12-12
 description: "Bit rates, arbitration, encoding, frame types, CAN base frame, CAN extended frame, USB adapters and more info about the CAN communication protocol."
 categories: [ "Electronics", "Communication Protocols" ]
-lastmod: 2021-09-29
+lastmod: 2022-02-03
 tags: [ "CAN bus", "bus", "communication protocol", "CAN1.0", "CAN2.0", "CAN base frame", "CAN extended frame", "USB adapters", "NoCAN", "encoding", "controller", "CANopen", "NEMA 2000", "termination resistors", "FlexRay", "SAE", "J1850", "J1939", "ISO 11783", "ISOBUS", "isolation", "mailboxes" ]
 title: "CAN Protocol"
 type: "page"
 ---
+
+:imagesdir: {{< permalink >}}
 
 ## Overview
 
@@ -123,6 +125,18 @@ TIP: _Wired AND_ is a good way to allow physical arbitration to take place when 
 * The node transmitting the 1 will detect the bus as 0, indicating that it has lost control (remember a 1 is recessive, and get's "overwritten" by a 1 due to the open-drain drive). This node will back-off, stop transmitting, and try again later.
 
 After understanding the arbitration process explained above, it's clear that **CAN messages with lower numbered identifiers will therefore take priority over those with higher identifiers**.
+
+<<arbitration-waveform-waveform-full-annotated>> shows arbitration happening with a real-world scope capture, by showing the changing dominant bus voltage as driving transceivers lose arbitration and "drop" off the bus. 
+
+[[arbitration-waveform-waveform-full-annotated]]
+.Scope capture showing arbitration happen in real life! This scope was connected at some point on a long CAN bus with many transceivers, with a differential probe across the CAN_H and CAN_L wires. Since each transceiver is a different distance away from the measurement point, and there were transceiver from different IC manufacturers on the bus, each one drives the bus to a slightly different dominant voltage as seen by the scope.
+image::arbitration-waveform/waveform-full-annotated.png[width=600px,link="{{< permalink >}}/arbitration-waveform/waveform-full-annotated.png"]
+
+If we zoom in on one of the arbitration events as in <<arbitration-waveform-waveform-zoomed-in-annotated>> we can see it aligns with the bit period of 8us (the CAN bus was running at 125kHz).
+
+[[arbitration-waveform-waveform-zoomed-in-annotated]]
+.Zoomed in view of the above scope capture, showing the width of the arbitration "events" aligns with the bit period of 8us (CAN bus was running at 125kHz).
+image::arbitration-waveform/waveform-zoomed-in-annotated.png[width=600px,link="{{< permalink >}}/arbitration-waveform/waveform-zoomed-in-annotated.png"]
 
 == CAN Bit Timing
 
