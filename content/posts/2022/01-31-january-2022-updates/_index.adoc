@@ -15,24 +15,42 @@ type: "post"
 
 == Updates This Month
 
-* Added info on ICs which have different part numbers for different I2C addresses.
+* Added info on link:[ICs which have different part numbers for different I2C addresses].
++
+image::i2c-addresses-diff-part-nums-screenshot.png[width="400px",link="{{< permalink >}}/i2c-addresses-diff-part-nums-screenshot.png"]
 
-* Added a photo of a castellated daughter board inside a Logitech G810 mechanical keyboard. 
+* Added a link:[/pcb-design/castellation/photo of a castellated daughter board inside a Logitech G810 mechanical keyboard]. 
++
+image::logitech-castellation-screenshot.png[width="400px",link="{{< permalink >}}/logitech-castellation-screenshot.png"]
 
 * Created a new page on link:/electronics/components/current-sources-and-sinks/[current sources and sinks], including a Zener/BJT current source and constant-current diode (JFET current source).
++
+image::current-sources-screenshot.png[width="400px",link="{{< permalink >}}/current-sources-screenshot.png]
 
 * Added link:/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/[JFET schematic symbols]. Added JFET info on link:/electronics/components/transistors/junction-gate-field-effect-transistor-jfets/[transconductance and dynamic resistance].
++
+image::jfet-schematic-symbols-screenshot.png[width="400px",link="{{< permalink >}}/jfet-schematic-symbols-screenshot.png"]
 
 * Created a new page on link:/electronics/circuit-design/wheatstone-bridges/[Wheatstone bridges].
++
+image::wheatstone-bridges-screenshot.png[width="400px",link="{{< permalink >}}/wheatstone-bridges-screenshot.png"]
 
-* Condensed all the temperature sensor sub-pages into the temperature sensor page.
-
-* Added more info on the SOIC component package.
+* Condensed all the temperature sensor sub-pages into the link:/electronics/components/sensors/temperature-sensors/[temperature sensor page].
++
+image::temperature-sensors-screenshot.png[width="400px",link="{{< permalink >}}/temperature-sensors-screenshot.png"]
 
 * Added a page on termination (electrical termination of transmission lines), including schematic examples of series termination. 
++
+image::series-termination-screenshot.png[width="400px",link="{{< permalink >}}/series-termination-screenshot.png"]
 
 * Added more info on the SOIC component package, including the link:/pcb-design/component-packages/sot-162-1-component-package/[SOT-162-1 NXP synonym].
++
+image::soic-component-package-screenshot.png[width="400px",link="{{< permalink >}}/soic-component-package-screenshot.png"]
 
 * Added info on the link:/pcb-design/component-packages/sod-123-component-package/#_sod_123ep[SOD-123EP component package], a variant of the SOD-123.
++
+image::sod-123ep-component-package-screenshot.png[width="400px",link="{{< permalink >}}/sod-123ep-component-package-screenshot.png"]
 
 * Added info on link:/programming/design-patterns/how-to-write-super-loops-in-firmware/#_keeping_track_of_loop_time[monitoring loop time] to the page on firmware superloops.
++
+image::loop-time-screenshot.png[width="400px",link="{{< permalink >}}/loop-time-screenshot.png"]
