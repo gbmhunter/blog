@@ -4,7 +4,7 @@ categories: [ "Posts", "Updates" ]
 date: 2022-01-31
 description: "Blog updates during January 2022."
 draft: false
-images: []
+images: [ "/posts/2022/01-31-january-2022-updates/jfet-schematic-symbols-screenshot.png", "/posts/2022/01-31-january-2022-updates/wheatstone-bridges-screenshot.png", "/posts/2022/01-31-january-2022-updates/series-termination-screenshot.png" ]
 lastmod: 2022-01-31
 tags: []
 title: "January 2022 Updates"
@@ -39,7 +39,7 @@ image::wheatstone-bridges-screenshot.png[width="400px",link="{{< permalink >}}/w
 +
 image::temperature-sensors-screenshot.png[width="400px",link="{{< permalink >}}/temperature-sensors-screenshot.png"]
 
-* Added a page on termination (electrical termination of transmission lines), including schematic examples of series termination. 
+* Added a page on link:/electronics/circuit-design/transmission-lines/termination/[termination (electrical termination of transmission lines), including schematic examples of series termination]. 
 +
 image::series-termination-screenshot.png[width="400px",link="{{< permalink >}}/series-termination-screenshot.png"]
 
