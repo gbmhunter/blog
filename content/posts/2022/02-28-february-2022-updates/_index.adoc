@@ -1,0 +1,18 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Posts", "Updates" ]
+date: 2022-02-28
+description: "Blog updates during February 2022."
+draft: false
+images: [ ]
+lastmod: 2022-02-28
+tags: []
+title: "February 2022 Updates"
+type: "post"
+---
+
+:imagesdir: {{< permalink >}}
+
+== Updates This Month
+
+* Added more information on CAN arbitration, incl. waveforms.
