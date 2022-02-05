@@ -153,7 +153,7 @@ tty.c_cflag |= CRTSCTS;  // Enable RTS/CTS hardware flow control
 
 ### CREAD and CLOCAL
 
-Setting `CLOCAL` disables modem-specific signal lines such as carrier detect. It also prevents the controlling process from getting sent a `SIGHUP` signal when a modem disconnect is detected, which is usually a good thing here. Setting `CLOCAL` allows us to read data (we definitely want that!).
+Setting `CLOCAL` disables modem-specific signal lines such as carrier detect. It also prevents the controlling process from getting sent a `SIGHUP` signal when a modem disconnect is detected, which is usually a good thing here. Setting `CREAD` allows us to read data (we definitely want that!).
 
 ```c
 tty.c_cflag |= CREAD | CLOCAL; // Turn on READ & ignore ctrl lines (CLOCAL = 1)
@@ -455,7 +455,7 @@ int main() {
 
   // Write to serial port
   unsigned char msg[] = { 'H', 'e', 'l', 'l', 'o', '\r' };
-  write(serial_port, "Hello, world!", sizeof(msg));
+  write(serial_port, msg, sizeof(msg));
 
   // Allocate memory for read buffer, set size according to your needs
   char read_buf [256];
@@ -463,7 +463,7 @@ int main() {
   // Normally you wouldn't do this memset() call, but since we will just receive
   // ASCII data for this example, we'll set everything to 0 so we can
   // call printf() easily.
-  memset(&read_buf, '\0', sizeof(read_buf);
+  memset(&read_buf, '\0', sizeof(read_buf));
 
   // Read bytes. The behaviour of read() (e.g. does it block?,
   // how long does it block for?) depends on the configuration
@@ -482,7 +482,7 @@ int main() {
 
   close(serial_port)
   return 0; // success
-}
+};
 ```
 
 **For Linux serial port code examples see [https://github.com/gbmhunter/CppLinuxSerial](https://github.com/gbmhunter/CppLinuxSerial).**
