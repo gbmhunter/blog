@@ -16,3 +16,5 @@ type: "post"
 == Updates This Month
 
 * Added more information on CAN arbitration, incl. waveforms.
+
+* Created a new page on the link:/electronics/communication-protocols/rs-422-protocol/[RS-422 communication protocol].
