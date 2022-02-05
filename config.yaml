@@ -19,7 +19,7 @@ params:
   # This is referenced in rss.xml
   rssTypes:
   - page
-  - posts
+  - post
 markup:
   tableOfContents:
     ordered: false
