@@ -16,7 +16,7 @@ WARNING: This page is in notes format, and may not be of the same quality as oth
 
 ## Overview
 
-_Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches. A high-speed signal should ideally see the same impedance all the way from driver to receiver. The impedance of the transmission line stem:[Z_C] is usually stem:[50-150\Omega], but drivers are usually low impedance (stem:[<20\Omega]), and receivers high-impedance (stem:[>1k\Omega]). For this reason, termination resistors are added at the driver and/or receiver to keep the apparent impedance  
+_Termination_ is the process of adding components (usually resistors, but sometimes capacitors and inductors) to the ends of transmission lines (the start, the end, or both) to prevent things like reflections due to impedance mis-matches. A high-speed signal should ideally see the same impedance all the way from driver to receiver. The impedance of the transmission line stem:[Z_C] is usually stem:[50-150\Omega], but drivers are usually low impedance (stem:[<20\Omega]), and receivers high-impedance (stem:[>1k\Omega]). For this reason, termination resistors are added at the driver and/or receiver to keep the apparent impedance equal to the characteristic impedance.
 
 Types of termination:
 
@@ -81,6 +81,7 @@ image::series-termination-with-non-zero-driver-output-impedance.png[width=800px,
 
 * Consumes no power at steady-state, only during transitions.
 * Uses only one resistor.
+* Due to reflections, only good for point-to-point connections (not multi-drop) in where the cable propagation time is short relative to the bit period.
 
 ## Parallel Termination
 
@@ -120,6 +121,9 @@ Z_P = Z_{C}
 
 * No reflections (as opposed to series termination, which has one reflection back to the driver).
 * Driver needs to provide continuous current for one of the logic levels.
+* Good for point-to-point and multi-drop (e.g. RS-422, link:/electronics/communication-protocols/rs-485-protocol/[RS-485], link:/electronics/communication-protocols/can-protocol/[CAN bus]) connections.
+* Bit period does not have to be much larger than cable propagation time.
+* Lower noise margin than series termination (less voltage swing at the receiver)
 
 ## Thevenin Termination
 
