@@ -16,16 +16,69 @@ WARNING: This page is in notes format, and may not be of the same quality as oth
 
 ## Overview
 
-_RS-422_ (a.k.a. TIA/EIA-422) is a serial, differential communication protocol used for transmitting data. RS-422 uses 2 wires for transmitting and 2 wires for receiving for full-duplex communication. 1 driver and up to 10 receivers can be connected per twisted pair. It is closely related to the less popular RS-423 protocol. It is also related to the link:/electronics/communication-protocols/rs-232-protocol/[RS-232] (single-ended) and link:/electronics/communication-protocols/rs-485-protocol/[RS-485] (differential) communication protocols.
+_RS-422_ (a.k.a. TIA/EIA-422) is a serial, differential communication protocol used for transmitting data. RS-422 uses 2 wires for transmitting and 2 wires for receiving for full-duplex communication. 1 driver and up to 10 receivers can be connected per twisted pair, which is called _simplex multidrop_<<bib-ti-rs-422-rs-485>> (unlike RS-485, which is differential and allows for multiple drivers). It is closely related to the less popular RS-423 protocol. It is also related to the link:/electronics/communication-protocols/rs-232-protocol/[RS-232] (single-ended) and link:/electronics/communication-protocols/rs-485-protocol/[RS-485] (differential) communication protocols.
 
 |===
-| Speed  | Max. Distance<<bib-wp-rs-422>>
+| Speed  | Max. Distance
 
-| 10kbps | 1200m
+| 10kbps | 1200m<<bib-wp-rs-422>>
 | 10Mbps | 10m
+|===
+
+The maximum allowed differential voltage is stem:[\pm 6.0V]<<bib-wp-rs-422>>.
+
+A _mark_ (binary 1) is transmitted with a negative differential voltage, a _space_ (binary 0) is transmitted with a positive differential voltage. This is the same terminology and "inverse" polarity as RS-232 and RS-485.
+
+## Connectors
+
+The link:/electronics/components/connectors/d-subminiature-d-sub-connectors/[DE-9] is the de facto industry standard connector for RS-422.
+
+
+.Industry standard pinout for RS-422 on a DE-9 connector<<bib-active-experts-rs422-pinout>>.
+|===
+| Pin Number | Name | Description
+
+| 1
+| TXD-
+| Transmitted data -
+
+| 2
+| TXD+
+| Transmitted data pass:[+]
+
+| 3
+| RTS-
+| Request to send -
+
+| 4
+| RTS+
+| Request to send pass:[+]
+
+| 5
+| GND
+| Ground
+
+| 6
+| RXD-
+| Received data -
+
+| 7
+| RXD+
+| Received data pass:[+]
+
+| 8
+| CTS-
+| Clear to send -
+
+| 9
+| CTS+
+| Clear to send pass:[+]
+
 |===
 
 [bibliography]
 ## References
 
 * [[[bib-wp-rs-422, 1]]] Wikipedia (2022, Jan 25). _RS-422_. Retrieved 2022-02-05, from https://en.wikipedia.org/wiki/RS-422.
+* [[[bib-active-experts-rs422-pinout, 2]]] ActiveXperts. _RS422 Serial Port Connector Pin Layout_. Retrieved 2022-02-06, from https://www.activexperts.com/serial-port-component/tutorials/pinout422/.
+* [[[bib-ti-rs-422-rs-485, 3]]] Manny Soltero, Jing Zhang, Chris Cockril (2002, Jun). _SLLA070D: RS-422 and RS-485 Standards Overview and System Configurations (Application Report)_. Retrieved 2022-02-06, from https://www.ti.com/lit/an/slla070d/slla070d.pdf.
