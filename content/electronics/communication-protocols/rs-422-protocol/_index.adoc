@@ -33,6 +33,10 @@ A _mark_ (binary 1) is transmitted with a negative differential voltage, a _spac
 
 The link:/electronics/components/connectors/d-subminiature-d-sub-connectors/[DE-9] is the de facto industry standard connector for RS-422.
 
+.Pin numbering for the D-sub DE-9 (a.k.a. DB-9) female and male connectors.
+image::dsub-db-9-female-male-photo-pin-numbers.png[width=500px,link="{{< permalink >}}/dsub-db-9-female-male-photo-pin-numbers.png"]
+
+The industry standard pinout for RS-422 in a DE-9 connector is shown in the table below.
 
 .Industry standard pinout for RS-422 on a DE-9 connector<<bib-active-experts-rs422-pinout>>.
 |===
@@ -75,6 +79,28 @@ The link:/electronics/components/connectors/d-subminiature-d-sub-connectors/[DE-
 | Clear to send pass:[+]
 
 |===
+
+## Parts
+
+Many RS-422 transceivers also support RS-485.
+
+[.overflow]
+--
+[.table-1000,cols="1,1,1,1,1,1,1,2"]
+|===
+| Manf. Part Num. | Manf. | Protocols | stem:[V_S] | Data Rate | Package | USD, 100 | Comments
+
+| link:https://www.renesas.com/us/en/document/dst/isl3179e-isl3180e-datasheet[ISL3179EIRZ]
+| Renesas
+| RS-422, RS-485
+| 3-3.6V
+| 40Mbps
+| DFN-10
+| link:https://www.digikey.com/en/products/detail/renesas-electronics-america-inc/ISL3179EIRZ/1879479[$2.48]
+| Also supports RS-485.
+
+|===
+--
 
 [bibliography]
 ## References
