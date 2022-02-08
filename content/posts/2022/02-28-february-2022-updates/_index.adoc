@@ -18,3 +18,5 @@ type: "post"
 * Added more information on CAN arbitration, incl. waveforms.
 
 * Created a new page on the link:/electronics/communication-protocols/rs-422-protocol/[RS-422 communication protocol].
+
+* Added a new page on gel crimp connectors.
