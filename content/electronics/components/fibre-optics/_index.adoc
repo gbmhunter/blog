@@ -1,0 +1,51 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2022-02-09
+description: "Info on fibre optics."
+draft: false
+images: [ ]
+lastmod: 2022-02-09
+tags: [ "electronics", "components", "fibre", "optics" ]
+title: "Fibre Optics"
+type: "page"
+---
+
+:imagesdir: {{< permalink >}}
+
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
+## Transceivers
+
+850nm Oxide VCSEL laser transmitter.
+
+|===
+| Manf. Part Num. | Manf. | Image | Directionality | Speed | Price (USD, 100) | Datasheet | Mounting
+
+| FTLF8519P3BNL
+| Finisar Corporation
+a| image:ftlf8519p3bnl-fibre-optic-transceiver-photo.png[width=100px,link="{{< permalink >}}/ftlf8519p3bnl-fibre-optic-transceiver-photo.png"]
+| TX/RX
+| 2.125Gbps
+| link:https://www.digikey.com/en/products/detail/finisar-corporation/FTLF8519P3BNL/3507745[$30.21 (80)]
+| link:https://ii-vi.com/product/1000base-sx-and-2g-fibre-channel-2gfc-500m-extended-temperature-sfp-optical-transceiver/[Datasheet]
+| Pluggable, SFP
+
+|===
+
+Fibre optic transceivers can be found on DigiKey at https://www.digikey.com/en/products/filter/fiber-optics-transceiver-modules/118.
+
+## Connectors
+
+* Versatile Link: 
+* LC Duplex: LC is a range of fibre-optic connectors from Molex. They come in simplex and duplex varieties.
+* ST: 
+
+
+Small Form Factor Pluggable Multi-Sourcing Agreement (MSA)?
+
+Small Form Factor Pluggable (SFP)?
+
+SFF-8472
+
+Fast Ethernet, FDDI, and Asynchronous Transfer Mode 
+(ATM)
