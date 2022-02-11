@@ -5,6 +5,7 @@ This repo contains the code which is used to build my blog at <blog.mbedded.ninj
 The static site generator Hugo is used to build the website from the files in this repo. Netlify is used to deploy and host the website.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3983d7b2-7481-4caa-9874-1ce1a3e82369/deploy-status)](https://app.netlify.com/sites/blog-mbedded-ninja/deploys)
+
 # Development
 
 1. The recommended code editor is [Visual Studio Code](https://code.visualstudio.com/).
@@ -52,27 +53,19 @@ $ hugo
 
 # Directory Structure
 
-<ul>
-  <li>
-    <ul>
-      <li><b>settings.json</b> <i>Contains the word dictionary for VS Code (under "cSpell.words")</i></li>
-    </ul>
-  </li>
-  <li><b>content/</b> <i>Markdown files which contain the content which creates the sites pages and posts.</i></li>
-  <li><b>layouts/</b>
-    <ul>
-      <li>
-        <b>shortcodes</b> <i>Hugo shortcodes.</i>
-        <ul>
-          <li><b>calculators</b> <i>Contains the HTML/CSS/jQuery based interactive calculators which are embedded into certain pages.</i></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><b>old/</b> <i>Deprecated content which is kept around just in case I need it again.</i></li>
-  <li><b>requirements/</b> <i>Contains a requirements.txt used to create a Python virtual environment for running the various Python scripts in this repo.</i></li>
-  <li><b>scripts/</b> <i>Useful Python scripts to automate some laborious tasks.</i></li>
-</ul>
+```
+|--.vscode/
+|  |--settings.json -> Contains the word dictionary for VS Code (under "cSpell.words")
+|--assets
+|  |--main.scss -> Main stylesheet. This requires hugo-extended to compile.
+|--content/ -> Markdown files which contain the content which creates the sites pages and posts.
+|--layouts/
+|  |--shortcodes -> Hugo shortcodes.
+|  |--calculators -> Contains the HTML/CSS/jQuery based interactive calculators which are embedded into certain pages (deprecated, these are now part of NinjaCalc)
+|--old/ -> Deprecated content which is kept around just in case I need it again.
+|--requirements/ -> Contains a requirements.txt used to create a Python virtual environment for running the various Python scripts in this repo.
+|--scripts/ -> Useful Python scripts to automate some laborious tasks.
+```
 
 # Broken Link Checking
 
@@ -95,6 +88,18 @@ $ pipenv install --two LinkChecker
 
 The syntax `<www.google.com>` can be used (instead of `[www.google.com](www.google.com)`) to include a link in where the displayed text is the same as the href.
 
-# Diagrams
+# Images
 
-Diagrams are typically drawn in _LibreOffice Draw_ and then exported to `.svg` to display on a page. The Draw file (`.odg`) is usually located in the same content directory as the page the diagram is shown on.
+## Diagrams
+
+Diagrams are drawn in Affinity Designer.
+
+Diagrams used to be drawn in _LibreOffice Draw_ and then exported to `.svg` to display on a page. The Draw file (`.odg`) is usually located in the same content directory as the page the diagram is shown on.
+
+## Photos
+
+Photos are edited in Affinity Photo. 
+
+# Statistics
+
+The code to generate blog statistics (e.g. number of visitors, increases since last year) is all contained in the separate repo <https://github.com/gbmhunter/blog-stats> (it needs to be separate because when it runs, it checks out specific commits of this repo).
