@@ -251,6 +251,7 @@
         "figsize",
         "figurecount",
         "filt",
+        "FIONREAD",
         "fixup",
         "flexsearch",
         "Fluxgate",

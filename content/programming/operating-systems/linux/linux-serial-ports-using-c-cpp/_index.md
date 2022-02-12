@@ -411,7 +411,7 @@ int main() {
   // Open the serial port. Change device path as needed (currently set to an standard FTDI USB-UART cable type device)
   int serial_port = open("/dev/ttyUSB0", O_RDWR);
 
-  // Create new termios struc, we call it 'tty' for convention
+  // Create new termios struct, we call it 'tty' for convention
   struct termios tty;
 
   // Read in existing settings, and handle any error
@@ -507,9 +507,9 @@ These instructions apply to older versions of Linux, and/or embedded Linux.
 
 It can be prudent to try and prevent other processes from reading/writing to the serial port at the same time you are.
 
-One way to accomplish this is with the `flock()` system call:
+One way to accomplish this is with the `flock()` system call (note this example is in C++, easy to change to C if needed!):
 
-```c    
+```cpp
 #include <sys/file.h>
 
 int main() {
@@ -526,9 +526,29 @@ int main() {
 }
 ```
 
+## Getting The Number Of RX Bytes Available
+
+You can use `FIONREAD` along with `ioctl()` to see if there are any bytes available in the OS input (receive) buffer for the serial port[^sweet-serial-posix]. This can be useful in a polling-style method in where the application regularly checks for bytes before trying to read them.
+
+```cpp
+#include <unistd.h>
+#include <termios.h>
+
+int main() {
+
+  // ... get file descriptor here
+
+  // See if there are bytes available to read
+  int bytes;
+  ioctl(fd, FIONREAD, &bytes);
+}
+```
+
+The provided pointer to integer `bytes` gets written by the `ioctl()` function with the number of bytes available to be read from the serial port.
+
 ## Changing Terminal Settings Are System Wide
 
-Although getting and setting terminal settings are done with a file descriptor, **the settings apply to the terminal device itself and will effect all other system applications** that are using or going to use the terminal. This also means that terminal setting changes are persistant after the file descriptor is closed, and even after the application that changed the settings is terminated[^gnu-terminal-mode-functions].
+Although getting and setting terminal settings are done with a file descriptor, **the settings apply to the terminal device itself and will effect all other system applications** that are using or going to use the terminal. This also means that terminal setting changes are persistent after the file descriptor is closed, and even after the application that changed the settings is terminated[^gnu-terminal-mode-functions].
 
 ## Examples
 
@@ -541,3 +561,4 @@ See [http://www.gnu.org/software/libc/manual/html_node/Terminal-Modes.html](http
 ## References
 
 [^gnu-terminal-mode-functions]: <http://www.gnu.org/software/libc/manual/html_node/Mode-Functions.html>
+[^sweet-serial-posix]: Michael R. Sweet (1999). _Serial Programming Guide for POSIX Operating Systems_. Retrieved 2022-02-12, from https://www.cmrr.umn.edu/~strupp/serial.html.
