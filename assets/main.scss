@@ -641,6 +641,12 @@ a[href^="#bib"] {
     vertical-align: .5em;
 }
 
+// Scale down the bibliography so that it is smaller than normal content. Gives it a
+// better fit on the page and prevents the references section having too much vertical scroll
+ul.bibliography li p {
+    font-size: 0.9em;
+}
+
 /* ========================================================================= */
 /* AUTHOR CARDS                                                              */
 /* ========================================================================= */
