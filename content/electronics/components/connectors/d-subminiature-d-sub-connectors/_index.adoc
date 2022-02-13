@@ -103,6 +103,9 @@ Solder Lug: Designed so that wires can be soldered onto the pins. This style of 
 
 ## Pin Numbering
 
+.Pin numbers for the male DE-9 connector, looking at the "front" of the connector which mates with the female part.
+image::dsub-de-9-pin-numbers.png[width=500px,link="{{< permalink >}}/dsub-de-9-pin-numbers.png"]
+
 .Pin numbering for the D-sub DE-9 (a.k.a. DB-9) female and male connectors.
 image::dsub-db-9-female-male-photo-pin-numbers.png[width=500px,link="{{< permalink >}}/dsub-db-9-female-male-photo-pin-numbers.png"]
 
