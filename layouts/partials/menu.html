@@ -3,7 +3,7 @@
     {{ with .Site.GetPage "/" }}
       {{ range .Sections.ByTitle }}
         {{/* We don't want a menu item for specific pages listed here */}}
-        {{ if (and (ne .Title "Posts") (ne .Title "Tests")) }}
+        {{ if (and (ne .Title "Posts") (ne .Title "Tests") (ne .Title "Authors")) }}
           <li class="menu-list-item">            
             <div class="menu-chevron-link-wrapper">
               <div class="menu-chevron"></div>

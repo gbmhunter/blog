@@ -80,10 +80,16 @@
         {{ $name := . }}
         {{ $path := printf "/%s/%s" "authors" ($name | urlize) }}
         {{ with $.Site.GetPage $path }}
-          <h3>{{ .Params.name }}</h3>
-          <img src="/images{{ $path }}.png">
-          <p>{{ .Params.bio }}</p>
-          <p><a href="https://twitter.com/{{ .Params.twitter }}">Twitter</a></p>
+          <div class="author-card">
+            
+            <img src="/images{{ $path }}.png">
+            <div>
+              <h3>{{ .Params.name }}</h3>
+              <p>{{ .Params.bio }}</p>
+              <div><i class="fab fa-twitter"></i> <a href="https://twitter.com/{{ .Params.twitter }}">Twitter</a></div>
+              <div><i class="fab fa-github"></i> <a href="https://github.com/{{ .Params.github }}">GitHub</a></div>
+            </div>
+          </div>
         {{ end }}
       {{ end }}
       
