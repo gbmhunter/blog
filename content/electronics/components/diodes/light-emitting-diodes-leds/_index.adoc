@@ -29,9 +29,9 @@ _Parameters are sorted alphabetically._
 ### Dominant Wavelength
 
 * Symbol: stem:[\lambda_{dom}]
-* Units: stem:[n]
+* Units: stem:[nm]
 
-This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the peak wavelength.
+This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the peak wavelength. Normally measured in nanometers (stem:[nm]).
 
 ### Flux
 
@@ -283,6 +283,49 @@ The peak wavelength is the wavelength at the peak of the spectral density curve.
 
 The dominant wavelength is important for user interface designers as it determines the "colour" the user perceives.
 
+== LEDs For Agricultural Use
+
+Many grow lights (lights that provide a "fake sun" for plants to trigger photosynthesis, typically used in indoor growing environments) now use LEDs (sodium lamps were a popular choice before LEDs became both powerful and cheap enough).
+
+Sometimes you will have to convert between irradiance given in stem:[mW{\cdot}cm^{-2}] and PAR given in stem:[umol{\cdot}m^{-2}{\cdot}s^{-1}].
+
+The Planck-Einstein equation gives a direct relationship between the frequency of a photon and it's energy<<bib-wp-planck-relation>>:
+
+[stem]
+++++
+\begin{align}
+E &= hf \\
+\end{align}
+++++
+
+[.text-center]
+where: +
+stem:[E] is the energy of the photon, in stem:[J] +
+stem:[h] is the Planck constant, stem:[6.62607015{\times}10^{-34} J{\cdot}Hz^{-1}]<<bib-wp-planck-constant>> +
+stem:[f] is the frequency of the photon, in stem:[Hz] +
+
+Of course you can use stem:[c = f\lambda] to write this in terms of the wavelength instead of frequency:
+
+[stem]
+++++
+\begin{align}
+E &= h\frac{c}{\lambda} \\
+\end{align}
+++++
+
+Knowing this, you can convert an energy from stem:[mW] into a number of photons. One issue however is that the light from an LED is not emitted all at one precise frequency, it is usually spread across a small band of wavelengths known as it's spectrum. One approximation is to just pretend all the light is emitted at _peak wavelength_. A more precise method is to take the spectrum, digitize it, and then calculate the proportion of photons for each small increment in wavelength.
+
+The number of photons per centimetre squared is:
+
+[stem]
+++++
+\begin{align}
+N_{photons} &= \frac{I\lambda_{peak}}{c} \\
+\end{align}
+++++
+
+TODO: Finish this.
+
 == Packaging
 
 You can get LED's in a variety of SMD packages. Common SMD LED packages include the 0603 on 0402 chip packages.
@@ -299,3 +342,9 @@ The expected lifetime and reliability is not typically given on standard-issue L
 * Lifetime and reliability information is considered somewhat confidential
 
 However, some LED manufacturers to give lifetime and reliability information. This is typically done for higher power, specific purpose LEDs such as powerful illumination LEDs (think streetlights, car headlights) or agricultural growing lights. The lifetime is typically expressed as a curve of _power maintenance_ over time (in terms of hours the LED has been on for). Power maintenance is how powerful the LED (in terms of light output power) compared to when it was new. Typical single-value lifetimes can be described as the number of hours until the LED light outputs power reduces to 70 or 50% of it's initial output power (a 70 ro 50% power maintenance).
+
+[bibliography]
+## References
+
+* [[[bib-wp-planck-relation, 1]]] Wikipedia (2022, Jan 15). _Planck relation_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_relation.
+* [[[bib-wp-planck-constant, 2]]] Wikipedia (2022, Feb 6). _Planck constant_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_constant.
