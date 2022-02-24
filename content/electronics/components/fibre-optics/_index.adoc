@@ -32,7 +32,10 @@ Some fiber optic transmitter/receiver pairs are DC-coupled, which extends the ba
 
 Basic fibre-optic standard designed for transmitting audio using 1mm plastic fiber. Uses visible red LEDs (at 650nm) which means you can easily see when it's working (and which end is the transmitter).
 
-TOSLINK components are becoming harder to find these days. TOSLINK patch cables can usually be found at places which sell TVs, computers and other audio/video equipment (TOSLINK being used to transmit audio).
+.Photo of the TOSLINK TORX1355(F) receiver and TOTX1353(F) transmitter.
+image::torx1355f-totx1353f-toslink-transceivers.jpg[width=700px,,link="{{< permalink >}}/torx1355f-totx1353f-toslink-transceivers.jpg"]
+
+TOSLINK components are becoming harder to find these days, although TOSLINK patch cables can usually be found at places which sell TVs, computers and other audio/video equipment (TOSLINK being used to transmit audio).
 
 ### Versatile Link (VL)
 
