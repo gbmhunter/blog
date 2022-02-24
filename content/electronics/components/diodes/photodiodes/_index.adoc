@@ -1,0 +1,19 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2022-02-24
+description: "Info on photodiodes."
+draft: false
+images: [ ]
+lastmod: 2022-02-24
+tags: [ "electronics", "components", "photodiodes", "diodes", "light" ]
+title: "Photodiodes"
+type: "page"
+---
+
+:imagesdir: {{< permalink >}}
+
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
+## Overview
+
+A photodiode is a two terminal component which converts light into an electrical current. Just like a link:/electronics/components/diodes/[general-purpose diode], they consist of a normal semiconductor PN junction (or PIN junction). The difference is the photodiodes semiconductor junction is exposed to light through a transparent window rather than encapsulated in opaque material as in a standard diode.

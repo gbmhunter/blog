@@ -95,8 +95,10 @@ Fast Ethernet, FDDI, and Asynchronous Transfer Mode
 
 ## Fiber
 
+Glass-based fibers have lower attenuation than plastic-based fibers, allowing for longer transmission distances.
 
 APF: All-plastic fiber.
+HCS: Hard-clad Silica fiber (a.k.a. polymer-clad fiber, PCF) is optical fiber with a 200um core of silica glass.  
 PCF: Plastic-clad glass fiber.
 POF: :.
 

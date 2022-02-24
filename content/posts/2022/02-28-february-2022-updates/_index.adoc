@@ -28,3 +28,5 @@ type: "post"
 ** Added CMake option for shared library (thanks lotricekCZ).
 
 * Published a new release of NinjaCalc with various version bumps of dependencies to fix security vulnerabilities.
+
+* Added a new page on link:/electronics/components/diodes/photodiodes/[photodiodes].
