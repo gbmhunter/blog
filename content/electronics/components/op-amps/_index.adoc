@@ -509,7 +509,7 @@ V_{offset} =  \pm(1 + \frac{R2}{R1}) (\frac{R_P}{R_P + R3}) V_R
 
 The _input bias current_ stem:[I_{B+}] and stem:[I_{B-}] describe the currents that flow in and out of the op-amps input pins. In an ideal op-amp, no current flows into/out of the input pins (the op-amp has infinite input impedance). In reality, always some small amount of current will flow. Typical input bias currents range from 1-10nA.
 
-The amount and behaviour of input bias current depends on the op-amp transistor technology. A FET-based op-amp's input bias current will double with every 10°C rise in temperature<<bib-analog-devices-input-bias-current>>.
+The amount and behaviour of input bias current depends on the op-amp transistor technology. A FET-based op-amp's input bias current will approximately double with every 10°C rise in temperature<<bib-analog-devices-input-bias-current>><<bib-analog-devices-precision-photodiode>>.
 
 Input bias currents are a problem because these currents will flow through external circuitry connected to the op-amps inputs. This current when flowing through resistors and other impedances will create unwanted voltages which will increase the systematic errors.
 
@@ -1013,6 +1013,7 @@ image::standard-8-pin-dual-op-amp-pinout.svg[width=400px]
 * [[[bib-ti-opax196-datasheet, 4]]]: Texas Instruments (2017, Jul). _OPAx196 36-V, Low-Power, Low Offset Voltage, Rail-to-Rail Operational Amplifier_. Retrieved 2021-09-03, from https://www.ti.com/lit/ds/symlink/opa196.pdf.
 * [[[bib-analog-devices-input-offset-voltage, 5]]] Analog Devices (2008, Oct). _MT-037: Op Amp Input Offset Voltage_. Retrieved 2021-09-03, from https://www.analog.com/media/en/training-seminars/tutorials/MT-037.pdf.
 * [[[bib-onsemi-lm324, 6]]] OnSemiconductor (2021, Aug). _Single Supply Quad Operational Amplifiers (Datasheet)_. Retrieved 2021-09-03, from https://www.onsemi.com/pdf/datasheet/lm324-d.pdf.
-* [[[bib-superdiode, 7]]] Keim, Robert (2018, Feb 8). _When a Diode Simply Isn’t Good Enough: The Superdiode_. AllAboutCircuits. Retrieved 221-09-27, from https://www.allaboutcircuits.com/technical-articles/when-a-diode-simply-isnt-good-enough-the-superdiode/.
+* [[[bib-superdiode, 7]]] Keim, Robert (2018, Feb 8). _When a Diode Simply Isn’t Good Enough: The Superdiode_. AllAboutCircuits. Retrieved 2021-09-27, from https://www.allaboutcircuits.com/technical-articles/when-a-diode-simply-isnt-good-enough-the-superdiode/.
 * [[[bib-microchip-op-amp-rectifiers, 8]]] Ducu, Dragos. (2011). _AN1353: Op Amp Rectifiers, Peak Detectors and Clamps_. Microchip. Retrieved 2021-10-01, from http://ww1.microchip.com/downloads/en/AppNotes/01353A.pdf.
 * [[[bib-ti-lm324-datasheet, 9]]] Texas Instruments (2014). _LM321 Low Power Single Operational Amplifier_. Retrieved 2021-10-02, from https://www.ti.com/lit/ds/symlink/lm321.pdf.
+* [[[bib-analog-devices-precision-photodiode, 10]]]: Luis Orozco (2014). _MS-2624: Optimizing Precision Photodiode Sensor Circuit Design_. Analog Devices. Retrieved 2022-02-24, from https://www.analog.com/en/technical-articles/optimizing-precision-photodiode-sensor-circuit-design.html.
