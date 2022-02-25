@@ -18,6 +18,11 @@ WARNING: This page is in notes format, and may not be of the same quality as oth
 
 A photodiode is a two terminal component which converts light into an electrical current. Just like a link:/electronics/components/diodes/[general-purpose diode], they consist of a normal semiconductor PN junction (or PIN junction). The difference is the photodiodes semiconductor junction is exposed to light through a transparent window rather than encapsulated in opaque material as in a standard diode.
 
+Uses:
+
+* Light sensors
+* MOSFET gate drivers in opto-couplers
+
 ## Schematic Symbol
 
 <<photodiode-schematic-symbol>> shows the common schematic symbol used for a photodiode.
@@ -46,3 +51,12 @@ V_{OUT} &= I_D R_f
 ++++
 
 TIP: Remember that the op-amp will drive it's output to whatever voltage is needed to keep it's inverting input at the same potential as it's non-inverting input (0V).
+
+## Equivalent Circuit
+
+TODO: Add circuit here<<bib-burr-brown-noise-perf-tia-vs-int>>.
+
+[bibliography]
+## References
+
+* [[[bib-burr-brown-noise-perf-tia-vs-int, 1]]] Bonnie C. Baker (1993). _Comparison Of Noise Performance Between A FET Transimpedance Amplifier And A Switched Integrator_. Burr Brown (now Texas Instruments). Retrieved 2022-02-25, from https://www.ti.com/lit/an/sboa034/sboa034.pdf.
