@@ -4,8 +4,8 @@ date: 2022-02-24
 description: "Schematic symbol and more info on photodiodes."
 draft: false
 images: [ ]
-lastmod: 2022-02-24
-tags: [ "electronics", "components", "photodiodes", "diodes", "light" ]
+lastmod: 2022-02-25
+tags: [ "electronics", "components", "photodiodes", "diodes", "light", "transimpedance", "amplifier", "op-amp", "PN", "junction", "PIN", "semiconductor" ]
 title: "Photodiodes"
 type: "page"
 ---
@@ -20,10 +20,29 @@ A photodiode is a two terminal component which converts light into an electrical
 
 ## Schematic Symbol
 
+<<photodiode-schematic-symbol>> shows the common schematic symbol used for a photodiode.
 
-[[photodiode-schematic-symbol]] shows the common schematic symbol used for a photodiode.
-
+[[photodiode-schematic-symbol]]
 .Schematic symbol for a photodiode.
 image::photodiode-schematic-symbol.png[width=300px,link="{{< permalink >}}/photodiode-schematic-symbol.png"]
 
+TIP: The photodiode schematic symbol is very similar to one for an link:/electronics/components/diodes/light-emitting-diodes-leds/[LED (light-emitting diode)], but the "light arrows" on an LED point away from the diode.
 
+## Basic Photodiode-based Transimpedance Amplifier Circuit
+
+Photodiodes are commonly used to measure light intensities. But the output of a photodiode is a very small current, which isn't very useful for measuring. A common "analogue front-end" to add to a photodiode is a _transimpedance amplifier_ using an link:/electronics/components/op-amps/[op-amp], as shown in <<simple-transimpedance-photodiode-circuit>>. The transimpedance amplifier converts the very small current into a much larger voltage. This voltage can then be used to control other parts of a circuit or can be fed into an ADC for digitizing before being read by a microcontroller.
+
+[[simple-transimpedance-photodiode-circuit]]
+.A basic transimpedance amplifier circuit to convert the photodiodes light-dependent current into a measurable voltage. The output can be used to control other analog circuitry are can be connected to an link:/electronics/components/analogue-to-digital-converters-adcs/[ADC].
+image::simple-transimpedance-photodiode-circuit.png[width=700px,link="{{< permalink >}}/simple-transimpedance-photodiode-circuit.png"]
+
+Because the op-amps non-inverting is tied to ground, the inverting input is a "virtual ground" (it also stays at 0V). Because the diode current stem:[I_D] has no-where to go but through the resistor stem:[R_f], this gives the simple equation:
+
+[stem]
+++++
+\begin{align}
+V_{OUT} &= I_D R_f
+\end{align}
+++++
+
+TIP: Remember that the op-amp will drive it's output to whatever voltage is needed to keep it's inverting input at the same potential as it's non-inverting input (0V).

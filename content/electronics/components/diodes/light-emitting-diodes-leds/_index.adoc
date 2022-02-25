@@ -22,6 +22,8 @@ image::red-led-5mm-th-diffused.jpg[width=250px]
 .Schematic symbol for an LED (light emitting diode).
 image::led-diode-schematic-symbol.svg[width=300px]
 
+IMPORTANT: It's worth pointing out that the LED's schematic symbol looks very similar to a link:/electronics/components/diodes/photodiodes/[photodiodes], except the "light arrows" on a photodiode's symbol point inwards. 
+
 ## Important Parameters
 
 _Parameters are sorted alphabetically._
