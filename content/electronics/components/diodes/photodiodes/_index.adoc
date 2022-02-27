@@ -1,11 +1,11 @@
 ---
 authors: [ "Geoffrey Hunter" ]
 date: 2022-02-24
-description: "Schematic symbol and more info on photodiodes."
+description: "Schematic symbols, equivalent circuits and more info on photodiodes."
 draft: false
 images: [ ]
 lastmod: 2022-02-25
-tags: [ "electronics", "components", "photodiodes", "diodes", "light", "transimpedance", "amplifier", "op-amp", "PN", "junction", "PIN", "semiconductor" ]
+tags: [ "electronics", "components", "photodiodes", "diodes", "light", "transimpedance", "amplifier", "op-amp", "PN", "junction", "PIN", "semiconductor", "equivalent circuit", "Germanium", "current source" ]
 title: "Photodiodes"
 type: "page"
 ---
@@ -33,6 +33,16 @@ image::photodiode-schematic-symbol.png[width=300px,link="{{< permalink >}}/photo
 
 TIP: The photodiode schematic symbol is very similar to one for an link:/electronics/components/diodes/light-emitting-diodes-leds/[LED (light-emitting diode)], but the "light arrows" on an LED point away from the diode.
 
+## Important Parameters
+
+### Responsivity
+
+### Linearity
+
+### Quantum Efficiency
+
+
+
 ## Basic Photodiode-based Transimpedance Amplifier Circuit
 
 Photodiodes are commonly used to measure light intensities. But the output of a photodiode is a very small current, which isn't very useful for measuring. A common "analogue front-end" to add to a photodiode is a _transimpedance amplifier_ using an link:/electronics/components/op-amps/[op-amp], as shown in <<simple-transimpedance-photodiode-circuit>>. The transimpedance amplifier converts the very small current into a much larger voltage. This voltage can then be used to control other parts of a circuit or can be fed into an ADC for digitizing before being read by a microcontroller.
@@ -52,11 +62,57 @@ V_{OUT} &= I_D R_f
 
 TIP: Remember that the op-amp will drive it's output to whatever voltage is needed to keep it's inverting input at the same potential as it's non-inverting input (0V).
 
+The current noise density of the circuit is<<bib-osi-photodiode-chars-and-apps>>:
+
+[stem]
+++++
+\begin{align}
+I_N = \sqrt{\frac{4kT}{R_f}}
+\end{align}
+++++
+
+[.text-center]
+where: +
+stem:[I_N] is the current noise density, in stem:[A_{rms}Hz^{-0.5}] +
+stem:[k] is Boltzmann's constant, stem:[1.38{\times}10^{-23}JK^{-1}] +
+stem:[T] is the temperature of the photodiode, in stem:[K] +
+
+## Gain Peaking Capacitor
+
+A capacitor stem:[C_f] can be added in parallel with stem:[R_f] to prevent _gain peaking_.
+
+
+
+## Biasing
+
+When connected to a transimpedance amplifier, the photodiode can either be used with stem:[0V] potential across it (_photovoltaic mode_) or with a reverse bias (_photoconductive mode_)<<bib-osi-photodiode-chars-and-apps>>.
+
+### Photoconductive Mode
+
+Applying a reverse-bias to a photodiode can improve the speed of the device, and is the preferred mode of operation for high-speed applications<<bib-osi-photodiode-chars-and-apps>>. The speed increase is because a greater reverse-bias increases the depletion region. This in turn reduces the junction capacitance, increasing the bandwidth of the device.
+
+* Increased speed.
+* Increased dark and noise current.
+
+### Photovoltaic Mode
+
+The photovoltaic mode of operation is recommended for low speed stem:[<350kHz] and low-light level applications<<bib-osi-photodiode-chars-and-apps>>. It also appears to be more linear, due to the less variations in response due to changes in temperature<<bib-osi-photodiode-chars-and-apps>>.
+
 ## Equivalent Circuit
 
-TODO: Add circuit here<<bib-burr-brown-noise-perf-tia-vs-int>>.
+<<photodiode-equivalent-circuit>> shows an equivalent circuit for a photodiode.
+
+[[photodiode-equivalent-circuit]]
+.An equivalent circuit for a photodiode. Based of the circuit in _Comparison Of Noise Performance Between A FET Transimpedance Amplifier And A Switched Integrator_ by Burr Brown<<bib-burr-brown-noise-perf-tia-vs-int>>.
+image::photodiode-equivalent-circuit.png[width=700px,link="{{< permalink >}}/photodiode-equivalent-circuit.png"]
+
+stem:[R1] represents the resistance in parallel with the current source, and is also called the _shunt resistance_. You want this shunt resistance to be as high as possible, as this means more of the current is delivered to the load. Germanium photodiodes can have lower shunt resistance in the stem:[1-100k\Omega] range<<bib-aac-photodiode-equiv-circuit>>.
+
+stem:[C1] represents the junction capacitance, cause by the depletion region of the PN junction. Junction capacitance effects the photodiodes high-frequency response, as the capacitances impedance drops with increasing frequency. Lower capacitance photodiodes have better high frequency response. The value of stem:[C1] is not constant -- in fact it is strongly dependent on the reverse-bias voltage. **The higher the reverse-bias, the lower the capacitance**. Thus you can improve a photodiodes high frequency response by reverse-biasing it at a high voltage.
 
 [bibliography]
 ## References
 
 * [[[bib-burr-brown-noise-perf-tia-vs-int, 1]]] Bonnie C. Baker (1993). _Comparison Of Noise Performance Between A FET Transimpedance Amplifier And A Switched Integrator_. Burr Brown (now Texas Instruments). Retrieved 2022-02-25, from https://www.ti.com/lit/an/sboa034/sboa034.pdf.
+* [[[bib-aac-photodiode-equiv-circuit, 2]]] Robert Keim (2020, Dec 23). _Understanding the Photodiode Equivalent Circuit_. Retrieved 2022-02-27, from https://www.allaboutcircuits.com/technical-articles/understanding-the-photodiode-equivalent-circuit/.
+* [[[bib-osi-photodiode-chars-and-apps, 3]]] OSI Optoelectronics. _Photodiode Characteristics and Applications_. Retrieved 2022-02-27, from http://www.osioptoelectronics.com/application-notes/an-photodiode-parameters-characteristics.pdf.
