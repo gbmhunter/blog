@@ -37,11 +37,27 @@ TIP: The photodiode schematic symbol is very similar to one for an link:/electro
 
 ### Responsivity
 
+* Units: stem:[AW^{-1}]
+* Typical range: stem:[0.1{-}1AW^{-1}]
+
 ### Linearity
 
 ### Quantum Efficiency
 
+### Spectral Range
 
+* Units: stem:[nm]
+* Typical range: stem:[400-1100nm]
+
+### Sensitive Area
+
+* Units: stem:[mm^2]
+* Typical range: stem:[1-10mm^2]
+
+The _sensitive area_ is the area of the PN junction that is exposed and responds to light. A larger sensitive area will result in a photodiode being able detect lower levels of light, and provide more bits of resolution.
+
+.Mechanical outline showing the sensitive area on the top face of the Vishay BPW34 photodiode (DIP-2 package)<<bib-vishay-bpw34-ds>>.
+image::bpw34-sensitive-area.png[width=300px,link="{{< permalink >}}/bpw34-sensitive-area.png"]
 
 ## Basic Photodiode-based Transimpedance Amplifier Circuit
 
@@ -112,9 +128,32 @@ stem:[R_{sh}] represents the resistance in parallel with the current source, and
 
 stem:[C_j] represents the junction capacitance, cause by the depletion region of the PN junction. Junction capacitance effects the photodiodes high-frequency response, as the capacitances impedance drops with increasing frequency. Lower capacitance photodiodes have better high frequency response. The value of stem:[C_j] is not constant -- in fact it is strongly dependent on the reverse-bias voltage. **The higher the reverse-bias, the lower the capacitance**. Thus you can improve a photodiodes high frequency response by reverse-biasing it at a high voltage.
 
+.A graph showing the junction capacitance vs. reverse voltage for the Vishay BPW34 photodiode<<bib-vishay-bpw34-ds>>. You can clearly see the reduction of capacitance with increased reverse bias!
+image::bpw34-diode-capacitance-vs-reverse-voltage.png[width=400px,link="{{< permalink >}}/bpw34-diode-capacitance-vs-reverse-voltage.png"]
+
+## Manufacturers
+
+### Opto Diode
+
+Opto Diode manufacture a range of silcon photodiodes in through-hole TO-5, TO-8 and TO-18 packages.
+
+.Close-up photo of the ODD-5WISOL photodiode from Opto Diode in a TO-5 package<<bib-opto-diode-odd-5wisol-ds>>. This photodiode has an active area of approx. stem:[5mm^2] and responsivity of stem:[0.4A/W] at 632nm (red).
+image::odd-5wisol-photodiode-photo-to-5.png[width=200px,link="{{< permalink >}}/odd-5wisol-photodiode-photo-to-5.png"]
+
+## Popular Parts
+
+### Vishay BPW34
+
+* Package: DIP-2
+* Price: link:https://www.digikey.com/en/products/detail/vishay-semiconductor-opto-division/BPW34/1681149[US$0.48 (1000)]
+
+Popular PIN photodiode with a spectral range from 400-1100nm.
+
 [bibliography]
 ## References
 
 * [[[bib-burr-brown-noise-perf-tia-vs-int, 1]]] Bonnie C. Baker (1993). _Comparison Of Noise Performance Between A FET Transimpedance Amplifier And A Switched Integrator_. Burr Brown (now Texas Instruments). Retrieved 2022-02-25, from https://www.ti.com/lit/an/sboa034/sboa034.pdf.
 * [[[bib-aac-photodiode-equiv-circuit, 2]]] Robert Keim (2020, Dec 23). _Understanding the Photodiode Equivalent Circuit_. Retrieved 2022-02-27, from https://www.allaboutcircuits.com/technical-articles/understanding-the-photodiode-equivalent-circuit/.
 * [[[bib-osi-photodiode-chars-and-apps, 3]]] OSI Optoelectronics. _Photodiode Characteristics and Applications_. Retrieved 2022-02-27, from http://www.osioptoelectronics.com/application-notes/an-photodiode-parameters-characteristics.pdf.
+* [[[bib-opto-diode-odd-5wisol-ds, 4]]] Opto Diode (2022, Jan 27). _Photodiode 5 mm2 - Isolated: ODD-5WISOL (datasheet)_. Retrieved 2022-02-27, from https://optodiode.com/pdf/ODD-5WISOL.pdf. 
+* [[[bib-vishay-bpw34-ds, 5]]] Vishay (2011, Aug 23). _BPW34, BPW34S: Silicon PIN Photodiode (datasheet)_. Retrieved 2022-02-27, from https://www.vishay.com/docs/81521/bpw34.pdf.
