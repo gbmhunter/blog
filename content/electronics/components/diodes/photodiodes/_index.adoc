@@ -87,28 +87,30 @@ A capacitor stem:[C_f] can be added in parallel with stem:[R_f] to prevent _gain
 
 When connected to a transimpedance amplifier, the photodiode can either be used with stem:[0V] potential across it (_photovoltaic mode_) or with a reverse bias (_photoconductive mode_)<<bib-osi-photodiode-chars-and-apps>>.
 
+### Photovoltaic Mode
+
+_Photovoltaic mode_ is when the photodiode is not operated with any DC bias across it (i.e. there is stem:[0V] across it). This is usually achieved by tying one side of the photodiode to ground, whilst the other side is held at "virtual ground" by an op-amp (as shown in <<simple-transimpedance-photodiode-circuit>>).
+
+The photovoltaic mode of operation is recommended for low speed stem:[<350kHz] and low-light level applications<<bib-osi-photodiode-chars-and-apps>>. It also appears to be more linear, due to the less variations in response due to changes in temperature<<bib-osi-photodiode-chars-and-apps>>.
+
 ### Photoconductive Mode
 
-Applying a reverse-bias to a photodiode can improve the speed of the device, and is the preferred mode of operation for high-speed applications<<bib-osi-photodiode-chars-and-apps>>. The speed increase is because a greater reverse-bias increases the depletion region. This in turn reduces the junction capacitance, increasing the bandwidth of the device.
+_Photoconductive mode_ is when the photodiode is operated with a reverse-bias voltage across it. Applying a reverse-bias to a photodiode can improve the speed of the device, and is the preferred mode of operation for high-speed applications<<bib-osi-photodiode-chars-and-apps>>. The speed increase is because a greater reverse-bias increases the depletion region. This in turn reduces the junction capacitance, increasing the bandwidth of the device.
 
 * Increased speed.
 * Increased dark and noise current.
-
-### Photovoltaic Mode
-
-The photovoltaic mode of operation is recommended for low speed stem:[<350kHz] and low-light level applications<<bib-osi-photodiode-chars-and-apps>>. It also appears to be more linear, due to the less variations in response due to changes in temperature<<bib-osi-photodiode-chars-and-apps>>.
 
 ## Equivalent Circuit
 
 <<photodiode-equivalent-circuit>> shows an equivalent circuit for a photodiode.
 
 [[photodiode-equivalent-circuit]]
-.An equivalent circuit for a photodiode. Based of the circuit in _Comparison Of Noise Performance Between A FET Transimpedance Amplifier And A Switched Integrator_ by Burr Brown<<bib-burr-brown-noise-perf-tia-vs-int>>.
+.An equivalent circuit for a photodiode. Based of the circuit in _Photodiode Characteristics and Applications_ by OSI Optoelectronics<<bib-osi-photodiode-chars-and-apps>>.
 image::photodiode-equivalent-circuit.png[width=700px,link="{{< permalink >}}/photodiode-equivalent-circuit.png"]
 
-stem:[R1] represents the resistance in parallel with the current source, and is also called the _shunt resistance_. You want this shunt resistance to be as high as possible, as this means more of the current is delivered to the load. Germanium photodiodes can have lower shunt resistance in the stem:[1-100k\Omega] range<<bib-aac-photodiode-equiv-circuit>>.
+stem:[R_{sh}] represents the resistance in parallel with the current source, and is called the _shunt resistance_. You want this shunt resistance to be as high as possible, as this means more of the current is delivered to the load. Germanium photodiodes can have lower shunt resistance in the stem:[1-100k\Omega] range<<bib-aac-photodiode-equiv-circuit>>.
 
-stem:[C1] represents the junction capacitance, cause by the depletion region of the PN junction. Junction capacitance effects the photodiodes high-frequency response, as the capacitances impedance drops with increasing frequency. Lower capacitance photodiodes have better high frequency response. The value of stem:[C1] is not constant -- in fact it is strongly dependent on the reverse-bias voltage. **The higher the reverse-bias, the lower the capacitance**. Thus you can improve a photodiodes high frequency response by reverse-biasing it at a high voltage.
+stem:[C_j] represents the junction capacitance, cause by the depletion region of the PN junction. Junction capacitance effects the photodiodes high-frequency response, as the capacitances impedance drops with increasing frequency. Lower capacitance photodiodes have better high frequency response. The value of stem:[C_j] is not constant -- in fact it is strongly dependent on the reverse-bias voltage. **The higher the reverse-bias, the lower the capacitance**. Thus you can improve a photodiodes high frequency response by reverse-biasing it at a high voltage.
 
 [bibliography]
 ## References
