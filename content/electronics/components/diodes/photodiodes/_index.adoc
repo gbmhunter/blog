@@ -4,8 +4,8 @@ date: 2022-02-24
 description: "Schematic symbols, equivalent circuits and more info on photodiodes."
 draft: false
 images: [ ]
-lastmod: 2022-02-25
-tags: [ "electronics", "components", "photodiodes", "diodes", "light", "transimpedance", "amplifier", "op-amp", "PN", "junction", "PIN", "semiconductor", "equivalent circuit", "Germanium", "current source" ]
+lastmod: 2022-02-28
+tags: [ "electronics", "components", "photodiodes", "diodes", "light", "transimpedance", "amplifier", "op-amp", "PN", "junction", "PIN", "semiconductor", "equivalent circuit", "Germanium", "current source", "avalanche" ]
 title: "Photodiodes"
 type: "page"
 ---
@@ -16,7 +16,7 @@ WARNING: This page is in notes format, and may not be of the same quality as oth
 
 ## Overview
 
-A photodiode is a two terminal component which converts light into an electrical current. Just like a link:/electronics/components/diodes/[general-purpose diode], they consist of a normal semiconductor PN junction (or PIN junction). The difference is the photodiodes semiconductor junction is exposed to light through a transparent window rather than encapsulated in opaque material as in a standard diode.
+A photodiode is a two terminal component which converts light into an electrical current. Just like a link:/electronics/components/diodes/[general-purpose diode], they consist of a normal semiconductor PN junction. The difference is the photodiodes semiconductor junction is exposed to light through a transparent window rather than encapsulated in opaque material as in a standard diode.
 
 Uses:
 
@@ -33,6 +33,26 @@ image::photodiode-schematic-symbol.png[width=300px,link="{{< permalink >}}/photo
 
 TIP: The photodiode schematic symbol is very similar to one for an link:/electronics/components/diodes/light-emitting-diodes-leds/[LED (light-emitting diode)], but the "light arrows" on an LED point away from the diode.
 
+## Types of Photodiodes
+
+There are three basic types of photodiode:
+
+* PN junction photodiode
+* PIN photodiode
+* Avalanche photodiode
+
+### PN Junction Photodiode
+
+A _PN junction photodiode_ is the "standard photodiode" that uses a PN junction to detect light. The PN junction forms a depletion region, which is exposed to the environment through a transparent window. When a photon strikes this depletion region, it is absorbed, and an electron-hole pair is created. Because of the electric field present in the depletion region, the electron will want to move (_sweeped_) towards the N doped semiconductor, whilst the hole will want to move towards the P doped semiconductor. These moving charge carries create the photodiode current (_photocurrent_) that you measure.
+
+### PIN Photodiode
+
+A _PIN photodiode_ is a variant of the standard PN junction photodiode that has an intrinsic layer placed between the two doped semiconductor layers. This intrinsic region increases the depletion region, which in turn reduces the junction capacitance of the photodiode. This allows it to be used in high-speed applications.
+
+### Avalanche Photodiode
+
+An _avalanche photodiode_ (APDs) is a variant of the standard PN junction photodiode that makes use of impact ionization (the avalanche effect) to increase the photon to current response of the photodiode (gain). This internal gain means that APDs have high responsivity, making them useful for detecting extremely low levels of light. APDs require to be operated at a high reverse-bias voltage, near their breakdown voltage. Even though the high reverse-bias creates a larger dark current (and higher current noise), the effect of the internal gain outweighs this additional noise, making them suitable for low-level light detection<<bib-wavelength-elec-photodiodes>>.
+
 ## Important Parameters
 
 ### Responsivity
@@ -41,6 +61,11 @@ TIP: The photodiode schematic symbol is very similar to one for an link:/electro
 * Typical range: stem:[0.1{-}1AW^{-1}]
 
 ### Linearity
+
+[quote, Hamamatsu: Si photodiodes]
+____
+In some cases, applying a reverse voltage is effective in enhancing the upper limit of linearity<<bib-hamamatsu-si-photodiodes>>.
+____
 
 ### Quantum Efficiency
 
@@ -157,3 +182,5 @@ Popular PIN photodiode with a spectral range from 400-1100nm.
 * [[[bib-osi-photodiode-chars-and-apps, 3]]] OSI Optoelectronics. _Photodiode Characteristics and Applications_. Retrieved 2022-02-27, from http://www.osioptoelectronics.com/application-notes/an-photodiode-parameters-characteristics.pdf.
 * [[[bib-opto-diode-odd-5wisol-ds, 4]]] Opto Diode (2022, Jan 27). _Photodiode 5 mm2 - Isolated: ODD-5WISOL (datasheet)_. Retrieved 2022-02-27, from https://optodiode.com/pdf/ODD-5WISOL.pdf. 
 * [[[bib-vishay-bpw34-ds, 5]]] Vishay (2011, Aug 23). _BPW34, BPW34S: Silicon PIN Photodiode (datasheet)_. Retrieved 2022-02-27, from https://www.vishay.com/docs/81521/bpw34.pdf.
+* [[[bib-hamamatsu-si-photodiodes, 6]]] Hamamatsu (2020, Dec). _Si photodiodes_. Retrieved 2022-02-28, from https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/si_pd_kspd9001e.pdf.
+* [[[bib-wavelength-elec-photodiodes, 7]]] Wavelength Electronics (2018). _Photodiode Basics_. Retrieved 2022-02-28, from https://www.teamwavelength.com/photodiode-basics/.
