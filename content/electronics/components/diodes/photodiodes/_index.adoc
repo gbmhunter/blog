@@ -53,6 +53,20 @@ A _PIN photodiode_ is a variant of the standard PN junction photodiode that has 
 
 An _avalanche photodiode_ (APDs) is a variant of the standard PN junction photodiode that makes use of impact ionization (the avalanche effect) to increase the photon to current response of the photodiode (gain). This internal gain means that APDs have high responsivity, making them useful for detecting extremely low levels of light. APDs require to be operated at a high reverse-bias voltage, near their breakdown voltage. Even though the high reverse-bias creates a larger dark current (and higher current noise), the effect of the internal gain outweighs this additional noise, making them suitable for low-level light detection<<bib-wavelength-elec-photodiodes>>.
 
+## Photodiode Current vs. Voltage
+
+The typical relationship between the photodiodes voltage and current is shown in <<photodiode-voltage-vs-current>>.
+
+[[photodiode-voltage-vs-current]]
+.Graph showing the typical relationship between photodiode voltage and current, for three different levels of incident light power. The top-most curve is with no incident light, curves then shift downwards very linearly with increasing light power. 
+image::photodiode-voltage-vs-current.png[width=700px,link="{{< permalink >}}/photodiode-voltage-vs-current.png"]
+
+TIP: Except for stem:[V=0V] (right on the vertical axis), almost no photodiode is operated in the right-half of the graph.
+
+The top-most curve is when there is no incident light (stem:[P_{IN} = 0W]). You will notice this curve goes through stem:[(0,0)]. As the incident light power increases, the curve shifts downwards, in a mostly linear fashion (this is why you can make accurate light sensors with photodiodes).
+
+The right-half of the graph is not terribly interesting, as the photodiode just acts as a normal diodes in this area, with a sharp increase in the current around the typical "turn-on" voltage of stem:[0.7V]. In the left-hand side of the graph, as the reverse-bias voltage increases, the diodes dark current increases (the line with stem:[P_{IN} = 0W]).
+
 ## Important Parameters
 
 ### Responsivity
