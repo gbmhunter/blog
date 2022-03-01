@@ -33,9 +33,12 @@ Some fiber optic transmitter/receiver pairs are DC-coupled, which extends the ba
 Basic fibre-optic standard designed for transmitting audio using 1mm plastic fiber. Uses visible red LEDs (at 650nm) which means you can easily see when it's working (and which end is the transmitter).
 
 .Photo of the TOSLINK TORX1355(F) receiver and TOTX1353(F) transmitter.
-image::torx1355f-totx1353f-toslink-transceivers.jpg[width=700px,,link="{{< permalink >}}/torx1355f-totx1353f-toslink-transceivers.jpg"]
+image::torx1355f-totx1353f-toslink-transceivers.jpg[width=700px,link="{{< permalink >}}/torx1355f-totx1353f-toslink-transceivers.jpg"]
 
 TOSLINK components are becoming harder to find these days, although TOSLINK patch cables can usually be found at places which sell TVs, computers and other audio/video equipment (TOSLINK being used to transmit audio).
+
+.Photo of a 5m TOSLINK cable from Multicomp Pro with plugs on both ends (part number JR9907.5M D=4MM BLK)<<bib-e14-toslink-cable>>.
+image::toslink-cabke-jr9907.5md4mmblk-5m.png[width=300px,link="{{< permalink >}}/toslink-cabke-jr9907.5md4mmblk-5m.png"]
 
 ### Versatile Link (VL)
 
@@ -110,3 +113,4 @@ POF: :.
 
 * [[[bib-avago-afbr-4526z-ds, 1]]] Avago (now Broadcom). _AFBR-4526Z, AFBR-452BZPlastic optical fiber duplex connector for AFBR-5972xZ (datasheet)_. Retrieved 2022-02-10, from https://docs.broadcom.com/doc/AV02-2926EN.
 * [[[bib-fiber-optic-solutions-lc-fiber, 2]]] Fiber Optic Solutions (2018). _LC Fiber Connector Definition, Types And User Guide_. Retrieved 2022-02-10, from https://www.fiber-optic-solutions.com/lc-fiber-connector-definition.html.
+* [[[bib-e14-toslink-cable, 3]]] Element14. _JR9907.5M D=4MM BLK: Audio / Video Cable Assembly, TOSLINK Plug, TOSLINK Plug, 16.4 ft, 5 m, Black (product page)_. Retrieved 2022-03-01, from https://nz.element14.com/pro-signal/jr9907-5m-d-4mm-blk/lead-optical-5m-toslink/dp/4258472.
