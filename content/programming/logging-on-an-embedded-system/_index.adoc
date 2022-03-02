@@ -1,0 +1,27 @@
+---
+authors: [ "Geoffrey Hunter" ]
+date: 2022-03-02
+description: ""
+draft: false
+images: [ ]
+lastmod: 2022-03-02
+tags: [ ]
+title: "Logging On An Embedded System"
+type: "page"
+---
+
+:imagesdir: {{< permalink >}}
+
+WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+
+## Overview
+
+## Expensive printf()
+
+Deferred logging in Zephyr: https://docs.zephyrproject.org/latest/reference/logging/index.html
+
+QSpy logging.
+
+TRICE: https://interrupt.memfault.com/blog/trice
+
+
