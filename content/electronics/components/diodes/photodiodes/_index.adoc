@@ -98,6 +98,19 @@ The _sensitive area_ is the area of the PN junction that is exposed and responds
 .Mechanical outline showing the sensitive area on the top face of the Vishay BPW34 photodiode (DIP-2 package)<<bib-vishay-bpw34-ds>>.
 image::bpw34-sensitive-area.png[width=300px,link="{{< permalink >}}/bpw34-sensitive-area.png"]
 
+### Dark Current
+
+The dark current for a silicon photodiode approximately doubles for every stem:[10^{\circ}C] in temperature rise<<bib-nthu-optical-detectors>>, giving rise to the following equation:
+
+[stem]
+++++
+\begin{align}
+I_{dark}(T_2) = I_{dark}(T_1) \cdot 2^{\frac{T_2 - T_1}{6}} 
+\end{align}
+++++
+
+The dark current at stem:[25^{\circ}C] is usually specified in the photodiode's datasheet. Using this equation, you can then find the dark current for any other temperature.
+
 ## Basic Photodiode-based Transimpedance Amplifier Circuit
 
 Photodiodes are commonly used to measure light intensities. But the output of a photodiode is a very small current, which isn't very useful for measuring. A common "analogue front-end" to add to a photodiode is a _transimpedance amplifier_ using an link:/electronics/components/op-amps/[op-amp], as shown in <<simple-transimpedance-photodiode-circuit>>. The transimpedance amplifier converts the very small current into a much larger voltage. This voltage can then be used to control other parts of a circuit or can be fed into an ADC for digitizing before being read by a microcontroller.
@@ -198,3 +211,4 @@ Popular PIN photodiode with a spectral range from 400-1100nm.
 * [[[bib-vishay-bpw34-ds, 5]]] Vishay (2011, Aug 23). _BPW34, BPW34S: Silicon PIN Photodiode (datasheet)_. Retrieved 2022-02-27, from https://www.vishay.com/docs/81521/bpw34.pdf.
 * [[[bib-hamamatsu-si-photodiodes, 6]]] Hamamatsu (2020, Dec). _Si photodiodes_. Retrieved 2022-02-28, from https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/si_pd_kspd9001e.pdf.
 * [[[bib-wavelength-elec-photodiodes, 7]]] Wavelength Electronics (2018). _Photodiode Basics_. Retrieved 2022-02-28, from https://www.teamwavelength.com/photodiode-basics/.
+* [[[bib-nthu-optical-detectors, 8]]] Wei-Chih Wang. _Optical Detectors_. Retrieved 2022-03-02, from https://depts.washington.edu/mictech/optics/me557/detector.pdf.
