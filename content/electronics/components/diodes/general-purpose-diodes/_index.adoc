@@ -43,8 +43,10 @@ The _average rectified forward current_ is the average current a diode can susta
 [stem]
 ++++
 \begin{align}
-I_{av} &= \frac{1}{2\pi} \int_0^{\pi} I_{max} \sin t dt \\
-       &= \frac{1}{2\pi} 2I_{max} \\
+I_{av} &= \frac{1}{2\pi} \int_0^{\pi} I_{max} \sin (t) dt \nonumber \\
+       &= \frac{1}{2\pi} I_{max} -[\cos (t)] \big|_{0}^{\pi} \nonumber \\
+       &= \frac{1}{2\pi} I_{max} -[-1 - 1] \nonumber \\
+       &= \frac{1}{2\pi} 2I_{max} \nonumber \\
        &= \frac{I_{max}}{\pi}
 \end{align}
 ++++

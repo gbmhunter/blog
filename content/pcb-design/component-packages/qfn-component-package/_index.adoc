@@ -30,7 +30,9 @@ a|
 * RSB (QFN-40 by Texas Instruments)
 * SOT.... (NXP's name for it's QFN range of packages, not this does not include packages such as the SOT-23, which are NOT QFN packages)
 * T3B (Microchip VQFN-48, 7x7x0.9mm, 0.5mm pitch, 5.15x5.15mm EP)<<bib-microchip-sam-d21-ds>>
+* TMB (Microchip VQFN-64, 9x9x0.9mm, 0.5mm pitch, 4.70x4.70mm EP)<<bib-microchip-sam-d21-ds>>
 * ZLG (Atmel VQFN-48, 7x7x0.9mm, 0.5mm pitch, 5.15x5.15mm EP)<<bib-microchip-sam-d21-ds>>
+* ZST (Atmel VQFN-64, 9x9x0.9mm, 0.5mm pitch, 4.70x4.70mm EP)<<bib-microchip-sam-d21-ds>>
 
 | Variants
 a|
