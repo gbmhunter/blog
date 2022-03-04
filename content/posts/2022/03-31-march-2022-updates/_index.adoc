@@ -1,0 +1,20 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Posts", "Updates" ]
+date: 2022-03-31
+description: "Blog updates during March 2022."
+draft: false
+images: [ ]
+lastmod: 2022-03-31
+tags: []
+title: "March 2022 Updates"
+type: "post"
+---
+
+:imagesdir: {{< permalink >}}
+
+== Updates This Month
+
+* Added more info to the link:/pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package/[MiniMELF Component Package page].
+
+* Added info on link:/electronics/components/diodes/general-purpose-diodes/#_average_rectified_forward_current[average rectified forward current for general purpose diodes].
