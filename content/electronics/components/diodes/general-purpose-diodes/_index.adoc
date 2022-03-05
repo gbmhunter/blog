@@ -10,6 +10,8 @@ title: "General Purpose Diodes"
 type: "page"
 ---
 
+:imagesdir: {{< permalink >}}
+
 == Overview
 
 General purpose diodes are just what they say they are -- simple diodes with no special functionality, used for a wide range of rectification purposes.
@@ -38,7 +40,7 @@ The maximum continuous current the diode can withstand, usually limited by overh
 
 ### Average Rectified Forward Current
 
-The _average rectified forward current_ is the average current a diode can sustain when it only conducting during the positive half-cycle of a sine wave. It is related to the maximum current that the diode conducts at during the top of the positive cycle of the sine wave by stem:[I_{av} = \frac{I_{max}}{\pi}]. This equation is obtained by integrating the current over the positive half-cycle of a sine wave and then dividing it by the total time for one cycle:
+The _average rectified forward current_ is the maximum average current the diode can sustain when it only conducting during the positive half-cycle of a sine wave (i.e. working as a half-wave rectifier). It is related to the maximum current that the diode conducts at during the top of the positive cycle of the sine wave by stem:[I_{av} = \frac{I_{max}}{\pi}]. This equation is obtained by integrating the current over the positive half-cycle of a sine wave and then dividing it by the total time for one cycle:
 
 [stem]
 ++++
@@ -50,6 +52,12 @@ I_{av} &= \frac{1}{2\pi} \int_0^{\pi} I_{max} \sin (t) dt \nonumber \\
        &= \frac{I_{max}}{\pi}
 \end{align}
 ++++
+
+This ignores the fact the diode doesn't conduct until the forward voltage gets to about stem:[0.7V], which is fine to ignore is most cases as this part of the cycle will be tiny in comparison to everything else.<<avg-rectified-forward-current-plot>> shows graphically when the diode is conducting from a sinusoidal supply and the relationship between average rectified forward current and maximum (peak) current for a complete sine wave cycle. stem:[I_{max}] was chosen to be stem:[5A], and the waveform has a period of stem:[2\pi] seconds for simplicity (although relationship is independent of period/frequency).
+
+[[avg-rectified-forward-current-plot]]
+.Plot showing the relationship between average rectified forward current and max. current for a diode rectifying a sine wave (e.g. mains supply).
+image::avg-rectified-forward-current-plot.png[width=500px,link="{{< permalink >}}/avg-rectified-forward-current-plot.png"]
 
 TIP: The integration limits are set to stem:[0] and stem:[\pi] (and not stem:[2\pi]) because we only want integrate over the first-half of the sine wave cycle when the diode is conducting.
 

@@ -9,6 +9,8 @@ title: "Isolated Switch Mode Power Supplies"
 type: "page"
 ---
 
+:imagesdir: {{< permalink >}}
+
 WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
 
 == Overview
@@ -24,6 +26,9 @@ Isolated SMPS topologies:
 | Flybuck       | Higher freq. than flyback (= smaller components/better efficiency).
 | Forward
 |===
+
+.Photo of the Traco TSP600-124 24V 600W DIN-mounted power supply, which runs of mains power. This is medium power isolated switch-mode power supply unit.
+image::traco-power-tsp600-124-psu-photo.jpg[width=350px,link="{{< permalink >}}/traco-power-tsp600-124-psu-photo.jpg"]
 
 == Flyback Converters
 
