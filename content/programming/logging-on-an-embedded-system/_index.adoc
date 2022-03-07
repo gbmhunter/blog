@@ -1,11 +1,11 @@
 ---
 authors: [ "Geoffrey Hunter" ]
 date: 2022-03-02
-description: ""
+description: "Deferred logging, printf() and other info handling logging properly on embedded systems."
 draft: false
 images: [ ]
-lastmod: 2022-03-02
-tags: [ ]
+lastmod: 2022-03-07
+tags: [ "programming", "embedded", "microcontrollers", "deferred logging", "UART", "serial" ]
 title: "Logging On An Embedded System"
 type: "page"
 ---
@@ -16,12 +16,39 @@ WARNING: This page is in notes format, and may not be of the same quality as oth
 
 ## Overview
 
+**Embedded systems are hard to debug**. You don't have the luxury of connecting up a monitor and keyboard (well, most of the time), and stepping through code isn't much use when the application needs to continually respond to real-world events for the bug to appear in the first place. And after a while, toggling your single GPIO LED just does not cut it, and you decide you need to be able to log messages and print values. This is typically where `printf()` and a trusty UART is employed (or similar serial transport), spitting messages out to a computer (via an FTDI cable, virtual COM port over USB, or similar).
+
+This page aims to discuss the finer details about logging on embedded systems, and cover some interesting topics such as _deferred logging_.
+
 ## Expensive printf()
 
+The `printf()` family of functions used when logging perform string formatting when they are called. They take the format string and the variable-sized length of variables, convert each variable to a string depending on the format string specifier (e.g. integer to string conversion, float to string conversion), and then build up an output string. In the context of a real-time embedded system, this can be a **very time-consuming process**. This can cause latency issues which causes your application to miss real-time constraints, such as clearing input/output buffers for other serial communication protocols, or responding to an external GPIO interrupt event in time.
+
+This is especially true when logging in interrupts. To keep your system responsive, the general mantra is to do the minimal amount of work possible in an interrupt and return. Long `printf()` calls couldn't get further from this ideal. There is a nice concept which solves this problem, yet still let's you long in interrupts -- _deferred logging_.
+
+The general idea with _deferred logging_ is to **do the minimal amount of work capturing the intent to log a message in the interrupt**, and then let the main application loop (or loops, if you are running a RTOS) deal with the next steps: formatting a nice output string and sending it across the transport of choice (typically UART).
+
 Deferred logging in Zephyr: https://docs.zephyrproject.org/latest/reference/logging/index.html
+
+[quote, Logging (Zephyr Project Documentation)]
+____
+Logger’s default frontend is designed to be thread safe and minimizes time needed to log the message. Time consuming operations like string formatting or access to the transport are not performed by default when logging API is called.
+____
+
+Zephyr provides four logging severity levels:
+
+* `error`
+* `warning`
+* `info`
+* `debug`
+
+Whilst interrupt driven logging is desirable in normal use cases, you cannot normally rely on interrupts working during a serious error. In these scenarios it's better to resort to blocking calls to the hardware to pump out the logging data byte-by-byte. Zephyr includes a `log_panic()` function that does this for you.
 
 QSpy logging.
 
 TRICE: https://interrupt.memfault.com/blog/trice
 
+[bibliography]
+## References
 
+* [[[bib-zephyr-logging, 1]]] Zephyr (2022, Feb 27). _Logging -- Zephyr Project Documentation_. Retrieved 2022-03-07, from https://docs.zephyrproject.org/latest/reference/logging/index.html.

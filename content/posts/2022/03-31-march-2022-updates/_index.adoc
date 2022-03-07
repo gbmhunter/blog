@@ -18,3 +18,7 @@ type: "post"
 * Added more info to the link:/pcb-design/component-packages/mini-melf-sod-80-do-213aa-component-package/[MiniMELF Component Package page].
 
 * Added info on link:/electronics/components/diodes/general-purpose-diodes/#_average_rectified_forward_current[average rectified forward current for general purpose diodes].
+
+* Added info on the ARIES Correct-A-Chip series of breakout boards/IC adapter PCBs.
+
+* Added info on adding a high-value parallel feedback resistor to 32.678kHz crystal tracks to prevent start-up problems in humid environments.
