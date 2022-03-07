@@ -3,11 +3,13 @@ authors: [ "Geoffrey Hunter" ]
 date: 2012-01-05
 description: "Crystals (XTALs), load capacitance, frequency accuracy and stability, schematic symbols, MEMS oscillators, Wien bridges, rings and more info about oscillators."
 draft: false
-lastmod: 2021-09-09
+lastmod: 2022-03-07
 tags: [ "electronics", "components", "oscillators", "crystals", "MEMS", "XTAL", "XC", "XO", "OCXO", "frequency", "clocks", "power consumption", "stability", "accuracy", "ultrasonic baths", "ring oscillators", "NOT gates", "turnover temperature" ]
 title: "Crystal And Oscillators"
 type: "page"
 ---
+
+:imagesdir: {{< permalink >}}
 
 ## Overview
 
@@ -129,6 +131,16 @@ Rather than using stem:[ppm], stem:[Eq.\ \ref{eq:32khz-drift-as-ratio}] shows ho
 where: +
 stem:[f] is the actual oscillation frequency +
 stem:[f_O] is the oscillation frequency at the turnover point, typically stem:[32.678kHz] + 
+
+#### 32.768kHz Crystal Start-Up Issues
+
+An interesting 32.767kHz crystal start-up issue is discussed in STM's STM32F10xx4 STM32F10xx6 Errata sheet<<bib-st-stm32f10xx4-errata>>. Start-up issues with the LSE (low speed external) 32.678kHz crystal have been observed when there is some small amount of leakage current from the `OSC32_IN` and `OSC32_OUT` pins. This is especially true in "harsh conditions", i.e. humid environments.
+
+[[xtal-start-up-issue-st-es0348-stm32f101x46-errata]]
+.Schematic showing an additional parallel _feedback resistor_ (shown in green) between stem:[16M\Omega] and stem:[22M\Omega] to prevent 32.678kHz crystal start-up issues when there is significant leakage from the crystal traces.<<bib-st-stm32f10xx4-errata>>.
+image::32_678khz-xtal-start-up-issue-st-es0348-stm32f101x46-errata.png[width=500px,link="{{< permalink >}}/32_678khz-xtal-start-up-issue-st-es0348-stm32f101x46-errata.png"]
+
+As shown in <<xtal-start-up-issue-st-es0348-stm32f101x46-errata>>, the solution is to place and additional stem:[16{-}22M\Omega] parallel feedback resistor between the crystals pins (the `OSC32_IN` and `OSC32_OUT` tracks).
 
 === The Negative Resistance Test
 
@@ -497,3 +509,4 @@ image::ring-oscillator-triple/out.png[width=700px]
 _. Texas Instruments. Retrieved 2021-09-10, from https://www.ti.com/lit/an/slaa322d/slaa322d.pdf.
 * [[[bib-atmel-avr4100, 8]]]: Atmel (2015, Mar). _AVR4100: Selecting and testing 32kHz crystal
 oscillators for Atmel AVR microcontrollers_. Retrieved 2021-09-12, from http://ww1.microchip.com/downloads/en/appnotes/doc8333.pdf.
+* [[[bib-st-stm32f10xx4-errata, 9]]] ST Microelectronics (2020, April). _STM32F10xx4 STM32F10xx6 Errata sheet: STM32F101x4/6, STM32F102x4/6 and STM32F103x4/6 low-density device limitations_. Retrieved 2022-03-07, from https://www.st.com/resource/en/errata_sheet/es0348-stm32f101x46-stm32f102x46-and-stm32f103x46-lowdensity-device-limitations-stmicroelectronics.pdf. 

@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
-lastmod: 2022-03-04
+lastmod: 2022-03-07
 tags: [ "component packages", "PCB design", "MiniMELF", "Mini-MELF", "DO213-AA", "SOD-80", "LL-34", "LLDS", "roll away package" ]
 title: "MiniMELF (SOD-80, DO-213AA) Component Package"
 type: "page"
@@ -27,7 +27,7 @@ image::mini-melf-sod-80-do-213aa-component-package-photo.jpg[width=100px,link="{
 a|
 * 100H01 (IEC package outline code<<bib-nexperia-sod80c-package-info>>)
 * DO-213AA
-* LL-34
+* LL-34 (Littelfuse<<bib-littelfuse-ll-34-thermistors-ds>>)
 * LLDS (Nexperia<<bib-nexperia-sod80c-package-info>>)
 * SOD-80 (Small-outline Diode 80)
 * SOD-80C (Nexperia<<bib-nexperia-sod80c-package-info>>)
@@ -92,3 +92,4 @@ image::component-package-sod-80-dimensions-and-land-pattern.gif[width=500px,link
 ## References
 
 * [[[bib-nexperia-sod80c-package-info, 1]]] Nexperia (2017, Jan 30). _SOD80C: Glass, hermetically sealed glass surface-mounted package; 2 connectors; 3.5 mm x 1.5 mm body (package information)_. Retrieved 2022-03-04, from https://assets.nexperia.com/documents/package-information/SOD80C.pdf.
+* [[[bib-littelfuse-ll-34-thermistors-ds, 2]]] Littelfuse (2018, Feb 26). _Surface Mount Thermistors: MELF Style Thermistor: LL 34 MiniMELF SM_. Retrieved 2022-03-07, from https://www.littelfuse.com/~/media/electronics/datasheets/surface_mount_thermistors/littelfuse_surface_mount_thermistors_melf_style_thermistors_ll_34_minimelf_sm_datasheet.pdf.pdf.
