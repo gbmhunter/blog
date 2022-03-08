@@ -4,7 +4,7 @@ categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-01-21
 description: "Synonyms, variants, pitches, pin numbering, mechanical drawings, recommend footprints and more info about the SOIC range of component packages."
 draft: false
-lastmod: 2022-01-20
+lastmod: 2022-03-08
 tags: [ "component packages", "PCB design", "SOIC", "R-PSDO", "S8", "WSON", "S8E", "SO-4", "SOIC-4", "optical isolators" ]
 title: "SOIC Component Package"
 type: "page"
@@ -20,6 +20,7 @@ type: "page"
 | Synonyms
 a|
 * 11-4M1S (Toshiba SO-4, 4.55mm wide body)<<bib-toshiba-tlp185-ds>>
+* 751EP (onsemi SOIC4 W<<bib-on-semiconductor-bridge-rectifier>>)
 * R-PDSO (JEDEC wide body SOIC, 7.5mm width, 0.65mm pitch)
 * S8 (SOIC-8, Analog Devices)
 * S8E (Linear Technologies, SOIC-8 with exposed pad)
@@ -68,9 +69,22 @@ a|
 * High-power MOSFETs (normally in a SOIC-8N, with one pin for the gate, and either 3 or 4 pins for the drain and source).
 |===
 
-## SOIC-xN
+## Overview
 
-The SOIC-xN (SOIC narrow) family of packages is governed by the JEDEC MS-012-AA standard. There are non-exposed (normally just referred to as SOIC-x or SOIC-xN) and exposed pad versions (which are normally indicated with an "E" in the package name<<bib-mps-mp2497-a-ds>>). 
+[WARNING]
+====
+There are are three different widths of SOIC packages, all which can be referred to as just SOIC by manufacturers in component datasheets! When designing a PCB, make sure to double-check the exact package width matches the PCB footprint/land pattern you've chosen.
+
+. Package body width of 3.80mm (0.150"). JEDEC standard, commonly used for SOIC packages with a small pin count (16 or less).
+. Package body width of 5.30mm (0.208"). EIAJ standard<<bib-dexpcb-soic>>, used for SOIC packages with higher pin counts (>16) or for isolated ICs (e.g. Maxim package `SOIC [W8]`<<bib-maxim-soic-w8>>).
+. Package body width of 7.52mm (0.300"). JEDEC standard, commonly called SOIC Wide or `SOIC-W` (e.g. Maxim package `SOIC (W)` variant `W20+6`)<<bib-maxim-soicw-20-28>>.
+
+More on these different width SOIC packages below.
+====
+
+## SOIC (JEDEC, 0.150" Package Body Width)
+
+The JEDEC version of the `SOIC` (a.k.a `SOIC-xN` (SOIC narrow)) family of packages is governed by the JEDEC MS-012-AA standard. There are non-exposed (normally just referred to as SOIC-x or SOIC-xN) and exposed pad versions (which are normally indicated with an "E" in the package name<<bib-mps-mp2497-a-ds>>). 
 
 The dimensions for the `SOIC-8N` package are shown below:
 
@@ -92,16 +106,19 @@ Thermal resistance:
 * SOIC-8: 55K/W (6cm2 of copper, ground pins attached internally to die)
 * SOIC-8: 33.5K/W (1 square inch of copper surrounding package, connected to ground)
 
-## SOIC-xW
+## SOIC (EIAJ, 0.208" Package Body Width)
 
-The `SOIC-xW` (SOIC wide) family of packages is governed by the JEDEC MS-013 and IEC 075E03 standards. NXP's `SOT-162-1` package is a SOIC-16W<<bib-nxp-sot162-1>>.
+Confusingly, the EIAJ standard defines a different body width of 5.3mm (0.208") for the `SOIC`` package, compared to the 3.8mm body width as defined in the JEDEC standard<<bib-dexpcb-soic>>. Generally used for ICs with a larger number of pins (>16).
+
+## SOIC-W (JEDEC, 0.300" Package Body Width)
+
+The `SOIC-W` (SOIC wide) family of packages is governed by the JEDEC MS-013 and IEC 075E03 standards. NXP's `SOT-162-1` package is a SOIC-16W<<bib-nxp-sot162-1>>.
 
 |===
 | Package Name | Land Area
 
 | SOIC-16W     | 136.3mm² (11.9x11.45mm)<<bib-nxp-sot162-1>>
 | SOIC-28W     | 186.4mm² (10.3x18.1mm)
-
 |===
 
 ## Pitch
@@ -160,8 +177,11 @@ ON Semiconductor uses the case code `751EP` for the `SOIC-4W` package<<bib-on-se
 [bibliography]
 ## References
 
-* [[[bib-on-semiconductor-bridge-rectifier, 1]]] https://nz.mouser.com/datasheet/2/308/MB10S-D-1810767.pdf.
+* [[[bib-on-semiconductor-bridge-rectifier, 1]]] On Semiconductor (now onsemi) (2019, Sep). _Bridge Rectifiers, 0.5 A: MB10S (datasheet)_. Retrieved 2022-03-08, from https://www.mouser.com/datasheet/2/308/1/MB10S_D-2314909.pdf.
 * [[[bib-toshiba-tlp185-ds, 2]]] Retrieved 2021-12-08, from https://media.digikey.com/pdf/Data%20Sheets/Toshiba%20PDFs/TLP185_04-27-17.pdf.
 * [[[bib-onsemi-fodm1009-ds, 3]]] Retrieved 2021-12-08, from https://nz.mouser.com/datasheet/2/308/1/FODM1009_D-2313636.pdf.
 * [[[bib-mps-mp2497-a-ds, 4]]] Monolithic Power Solutions (2012, May 30). _MP2497-A: 3A, 50V, 100kHz Step-Down Converter with Programmable Output OVP Threshold_. Retrieved 2022-01-20 from https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP2497A/document_id/1972.
 * [[[bib-nxp-sot162-1, 5]]] NXP (2016, Feb 8). _SOT162-1: Plastic small outline package; 16 leads; body width 7.5 mm (package information)_. Retrieved 2022-01-25, from https://www.nxp.com/docs/en/package-information/SOT162-1.pdf.
+* [[[bib-maxim-soicw-20-28, 6]]] Maxim (2013, Jan 17). _Package Outline: 20L, 28L SOIC .300"_. Retrieved 2022-03-08, from https://pdfserv.maximintegrated.com/package_dwgs/21-0703.PDF.
+* [[[bib-maxim-soic-w8, 7]]] Maxim. _Package Land Pattern: [W8] 0.208" SOIC, 8 Leads_. Retrieved 2022-03-08, from https://pdfserv.maximintegrated.com/land_patterns/90-0258.PDF.
+* [[[bib-dexpcb-soic, 8]]] DEX PCB. _Device Overview > SOIC_. Retrieved 2022-03-08, from https://dexpcb.com/manual/device_overview.htm.
