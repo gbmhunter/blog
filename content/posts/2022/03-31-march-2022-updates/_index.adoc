@@ -22,3 +22,9 @@ type: "post"
 * Added info on the ARIES Correct-A-Chip series of breakout boards/IC adapter PCBs.
 
 * Added info on adding a high-value parallel feedback resistor to 32.678kHz crystal tracks to prevent start-up problems in humid environments.
+
+* Started a page on test jigs.
+
+* Added info on backfeeding through UART TX/RX lines.
+
+* Added info on adding pull-up resistors to UART TX/RX lines to prevent spurious garbage being transmitted during microcontroller resets.
