@@ -9,16 +9,18 @@ title: "UART Communication Protocol"
 type: "page"
 ---
 
+:imagesdir: {{< permalink >}}
+
 ## Overview
 
-UART (_Universal Asynchronous Receiver/Transmitter_) is a lower-voltage, microcontroller friendly equivalent of the RS-232 digital data transmission protocol with origins dating back to the 1960's. It was designed as a communication protocol to talk between _DTE_ (data terminal equipment) and _DCE_ (data communication equipment). It is universal in the sense the timing, voltages, flow control and error checking can be configured.
+UART (_Universal Asynchronous Receiver/Transmitter_) is a lower-voltage, microcontroller friendly equivalent of the RS-232 digital data transmission protocol with origins dating back to the 1960's. It is universal in the sense the timing, voltages, flow control and error checking can be configured.
 
 |===
-| Drive Type | Single-ended
-| Num. Wires (excl. GND) | 2 (TX/RX) or 4 (TX/RX and RTS/CTS)
-| Duplexity | Full
-| Connection Topology | Point-to-point
-| OSI Layers | Layers 1 (physical) and 2 (data link)
+| Drive Type             | Single-ended
+| Num. Wires (excl. GND) | Commonly just 2 (TX/RX) or 4 (TX/RX and RTS/CTS)
+| Duplexity              | Full
+| Connection Topology    | Point-to-point
+| OSI Layers             | Layers 1 (physical) and 2 (data link)
 |===
 
 
@@ -40,6 +42,8 @@ The long history of RS-232 like serial communication means that UART is synonymo
 ## Connectors
 
 UART is a protocol that has no one single recognizable connector. Because it is commonly used in conjunction with RS-232 or RS-485 protocols, the D subminiature connectors are commonly associated with the UART protocol. However, because UART is a very common microcontroller peripheral and can be used for short, permanent on-PCB communications between microcontroller and 3rd party device, it is also commonly implemented without any connector at all (pin-to-pin on PCB), or is routed from microcontroller directly to 0.1" header pins for things such as debugging (a debug UART is very common on embedded devices).
+
+WARNING: There is confusion of how to connect two RS-232 (or UART!) devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support RS-232/UART can act either as a DTE or a DCE. **Take particular care when connecting RS-232/UART ports together on embedded devices!**
 
 ## Transmission Speeds
 

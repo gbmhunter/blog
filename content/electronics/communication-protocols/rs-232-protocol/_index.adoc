@@ -9,9 +9,11 @@ title: "RS-232 Protocol"
 type: "page"
 ---
 
+:imagesdir: {{< permalink >}}
+
 ## Overview
 
-RS-232 is a digital data transmission protocol with origins dating back to the 1960's. It was designed as a communication protocol to talk between _DTE_ (data terminal equipment) and _DCE_ (data communication equipment).
+RS-232 is a digital data transmission protocol with origins dating back to the 1960's. It was designed as a communication protocol to talk between _DTE_ (data terminal equipment) and _DCE_ (data communication equipment). It is closely related to the link:/electronics/communication-protocols/uart-communication-protocol/[UART communication protocol] provided by most microcontrollers, except that RS-232 uses higher-voltage signalling whilst UART is restricted between `VCC` of the microcontroller and `GND`.
 
 |===
 | Drive Type | Single-ended
@@ -26,7 +28,7 @@ RS-232 is commonly used today for a variety of different purposes in embedded sy
 ## Pinout
 
 .The pinout of a male RS-232 DE-9 connector. Image from http://www.ethernut.de/.
-image::rs232-comm-protocol-male-connector-large-pinout.png[width=315px]
+image::rs232-comm-protocol-male-connector-large-pinout.png[width=350px,link="{{< permalink >}}/rs232-comm-protocol-male-connector-large-pinout.png"]
 
 ## Revisions
 
@@ -49,88 +51,66 @@ A small amount of power can be extracted from the RTS and CTS lines for powering
 
 The following tables lists all of the flow control signals (as well as the data signals), with respect to the device in question. Matching signals are grouped together.
 
-<div class="table-wrapper">
-<table>
-  <thead>
-    <tr>
-      <th>Signal</th>
-      <th>Port Type</th>
-      <th>Description</th>
-      <th>DB-25 Pin</th>
-      <th>DE-9 Pin</th>
-    </tr>
-  </thead>
-  <tbody>
-<tr>
-<td>DTR (Data Terminal Ready)</td>
-<td>Output</td>
-<td>DTE drives this to indicate to the DCE that it is present.</td>
-<td>5</td>
-<td>4</td>
-</tr>
-<tr>
-<td>DCD (Data Carrier Detect)</td>
-<td>Input</td>
-<td>DCE drives this when it is connected to the telephone line.</td>
-<td>8</td>
-<td>1</td>
-</tr>
-<tr>
-<td>RI (Ring Indicator)</td>
-<td>Input</td>
-<td>The DCE drives this when it has detected a phone call. Note that there is no matching signal going the other way.</td>
-<td>22</td>
-<td>9</td>
-</tr>
-<tr>
-<td>RTS (Request To Send)</td>
-<td>Output</td>
-<td>DTE drives this to tell the DCE to get ready to receive data.</td>
-<td>4</td>
-<td>7</td>
-</tr>
-<tr>
-<td>CTS (Clear To Send)</td>
-<td>Input</td>
-<td>Driven by the DCE when it is ready to accept data.</td>
-<td>5</td>
-<td>8</td>
-</tr>
-<tr>
-<td>TxD (Data Transmit)</td>
-<td>Output</td>
-<td>The DTE sends data to the DCE over this line.</td>
-<td>2</td>
-<td>3</td>
-</tr>
-<tr>
-<td>RxD (Data Receive)</td>
-<td>Input</td>
-<td>The DCE sends data to the DTE over this line.</td>
-<td>3</td>
-<td>2</td>
-</tr>
-<tr>
-<td>Common Ground (GND)</td>
-<td>n/a</td>
-<td>The common ground for all signals.</td>
-<td>7</td>
-<td>5</td>
-</tr>
-<tr>
-<td>Protective Ground (PG)</td>
-<td>n/a</td>
-<td>The protective ground. This is usually just connected up to the common ground on the PCB.</td>
-<td>1</td>
-<td>n/a</td>
-</tr>
-</tbody>
-</table>
-</div>
+|===
+| Signal | Port Type | Description | DB-25 Pin | DE-9 Pin
 
-{{% warning %}}
-There is confusion of how to connect two UART devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support UART can act either as a DTE or a DCE. **Take particular care when connecting UART ports together on embedded devices!**
-{{% /warning %}}
+| DTR (Data Terminal Ready)
+| Output
+| DTE drives this to indicate to the DCE that it is present.
+| 5
+| 4
+
+| DCD (Data Carrier Detect)
+| Input
+| DCE drives this when it is connected to the telephone line.
+| 8
+| 1
+
+| RI (Ring Indicator)
+| Input
+| The DCE drives this when it has detected a phone call. Note that there is no matching signal going the other way.
+| 22
+| 9
+
+| RTS (Request To Send)
+| Output
+| DTE drives this to tell the DCE to get ready to receive data.
+| 4
+| 7
+
+| CTS (Clear To Send)
+| Input
+| Driven by the DCE when it is ready to accept data.
+| 5
+| 8
+
+| TxD (Data Transmit)
+| Output
+| The DTE sends data to the DCE over this line.
+| 2
+| 3
+
+| RxD (Data Receive)
+| Input
+| The DCE sends data to the DTE over this line.
+| 3
+| 2
+
+| Common Ground (GND)
+| n/a
+| The common ground for all signals.
+| 7
+| 5
+
+| Protective Ground (PG)
+| n/a
+| The protective ground. This is usually just connected up to the common ground on the PCB.
+| 1
+| n/a
+
+|===
+
+WARNING: There is confusion of how to connect two RS-232 (or UART!) devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support RS-232/UART can act either as a DTE or a DCE. **Take particular care when connecting RS-232/UART ports together on embedded devices!**
 
 > Rule-of-thumb: Most RS-232 serial interfaces with a male 9 or 25 pin connector are DTE's, most with a female 9 or 25 pin connector are DCE's.
 
