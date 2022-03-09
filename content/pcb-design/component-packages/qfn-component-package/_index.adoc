@@ -10,6 +10,8 @@ title: "QFN Component Package"
 type: "page"
 ---
 
+:imagesdir: {{< permalink >}}
+
 == Overview
 
 [cols="1,3"]
@@ -25,6 +27,7 @@ a|
 * HVQFN (NXP's name for a QFN with wettable flanks)
 * LFCSP (Analog Devices)
 * MLF (Micro-leadframe)
+* MLP (Fairchild Semiconductor<<bib-fairchild-an-5067-mpl-packages>>)
 * QFN-UT (Ultra-thin QFN packages by Samtech)
 * RQZ (QFN-48, 7x7mm, 050mm pitch by Texas Instruments)
 * RSB (QFN-40 by Texas Instruments)
@@ -196,10 +199,17 @@ image::qfn-24-component-package-with-unique-corner-pads-mpu-9250-land-pattern.pn
 
 ## Completely Non-Standard QFN Packages
 
-Aside from the unique corner pins that QFN packages can have (as explained above), **some QFN packages are completely IC specific and do not follow the "standard" at all**. One example is the link:https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MPM3620GQV/document_id/2092[MPM3620 which comes in a "QFN-20" component package] which has changing pitch, different sized pins, bridged pins and internal pins near the bottom center of the package:
+Aside from the unique corner pins that QFN packages can have (as explained above), **some QFN packages are completely IC specific and do not follow the "standard" at all**. One example is the link:https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MPM3620GQV/document_id/2092[MPM3620 which comes in a "QFN-20" component package] (<<mps-mpm3620-non-standard-qfn-20-component-package>>) which has changing pitch, different sized pins, bridged pins and internal pins near the bottom center of the package:
 
+[[mps-mpm3620-non-standard-qfn-20-component-package]]
 .The package dimensions and recommended land pattern for the non-standard QFN-20 package used on the MPS MPM3620 step-down module.
 image::mps-mpm3620-non-standard-qfn-20-component-package.png[width=500px]
+
+`MLP` is a common package name used for "non-standard" QFN-like packages, an example is shown in <<powerpak-mlp55-27l-vishay-component-dimensions>>.
+
+[[powerpak-mlp55-27l-vishay-component-dimensions]]
+.Dimensions of the "PowerPAK" MLP55-27L Vishay component package, another "non-standard" and very unique QFN-like package.
+image::powerpak-mlp55-27l-vishay-component-dimensions.png[width=500px,link="{{< permalink >}}/powerpak-mlp55-27l-vishay-component-dimensions.png"]
 
 ## Standardization Of Pinout For Logic Functions
 
@@ -249,3 +259,4 @@ The tin plating of the flank prevents the traditionally exposed copper (a by-pro
 * [[[bib-allegro-wettable-flanks, 2]]] Bradley Smith (2017). _Wettable Flank Plated PQFN_. Allegro Microsystems. Retrieved 2021-10-27, from https://www.allegromicro.com/en/insights-and-innovations/technical-documents/semiconductor-packaging-publications/wettable-flank-plated-pqfn.
 * [[[bib-nxp-sot618-13dd, 3]]] NXP (2018). _SOT618-13(DD) HVQFN40, plastic thermal enhanced very thin quad flat package; no leads, wettable flanks; 40 terminals; 0.5 mm pitch, 6 mm x 6 mm x 0.85 mm body_. Retrieved 2021-10-28, from https://www.nxp.com/docs/en/package-information/SOT618-13(DD).pdf.
 * [[[bib-microchip-sam-d21-ds, 4]]] Microchip (2021). _SAM D21/DA1 Family Low-Power, 32-bit Cortex-M0+ MCU with Advanced Analog and PWM (datasheet)_. Retrieved 2022-03-02, from https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf.
+* [[[bib-fairchild-an-5067-mpl-packages, 5]]] Fairchild Semiconductor (2005, Sep). _PCB Land Pattern Design and Surface Mount Guidelines for MLP Packages_. Retrieved 2022-03-09, from http://educypedia.karadimov.info/library/AN-5067.pdf.
