@@ -3,7 +3,7 @@ authors: [ "Geoffrey Hunter" ]
 date: 2011-09-12
 description: "A tutorial on the UART communication protocol, including types, baud rates, flow control, error checking, RS-232 and more."
 draft: false
-lastmod: 2022-03-08
+lastmod: 2022-03-13
 tags: [ "UART", "communication protocol", "USART", "microcontroller", "serial", "8n1", "universal asynchronous", "receiver", "transmitter", "RX", "TX" ]
 title: "UART Communication Protocol"
 type: "page"
@@ -90,6 +90,12 @@ Do you need a higher-level communication protocol that works over a UART connect
 When using UARTs on microcontrollers, be careful about _backfeeding_ (a.k.a _backpowering_) devices through the `TX` line! If a microcontroller loses it's power rails during normal operation, the `TX` line connected to the microcontrollers `RX` can keep it's `VCC` afloat by conducting through the internal ESD diodes (remember that in the idle state, the TX line is driven high).
 
 WARNING: A common scenario for this to occur is debug UARTs, in where an FTDI cable or similar is connected to a UART port on a microcontroller for debugging. During debugging you disconnect power from the microcontroller in an attempt to reset it, only to discover it's being kept alive by the backfeeding through the FTDI's TX pin.
+
+link:/electronics/components/voltage-level-translation/[Voltage-level translator ICs] are one way to fix this problem. You have make sure they are of the type which make the I/O pins stem:[A] and stem:[B] high-impedance when there is stem:[0V] on one or more of the stem:[V_{CC}] pins. <<voltage-translator-to-prevent-uart-backfeeding>> shows how a voltage-translator IC can be used to prevent backfeeding a MCU from a debug UART.
+
+[[voltage-translator-to-prevent-uart-backfeeding]]
+.Schematic showing a circuit using a voltage translator IC to prevent backfeeding a microcontroller from an FTDI cable (or similar) when power (VCC) is removed. 
+image::voltage-translator-to-prevent-uart-backfeeding.png[width=800px,link="{{< permalink >}}/voltage-translator-to-prevent-uart-backfeeding.png"]
 
 ## Pull-up Resistors On TX Lines
 

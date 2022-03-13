@@ -25,6 +25,8 @@ type: "post"
 
 * Started a page on test jigs.
 
-* Added info on backfeeding through UART TX/RX lines.
+* Added info on link:/electronics/communication-protocols/uart-communication-protocol/#_backfeeding_through_uart[backfeeding through UART TX/RX lines].
 
-* Added info on adding pull-up resistors to UART TX/RX lines to prevent spurious garbage being transmitted during microcontroller resets.
+* Added info on adding link:/electronics/communication-protocols/uart-communication-protocol/#_pull_up_resistors_on_tx_lines[pull-up resistors to UART TX/RX lines to prevent spurious garbage being transmitted during microcontroller resets].
+
+* Added more info on link:/electronics/components/voltage-level-translation/[voltage-level translator ICs].
