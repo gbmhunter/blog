@@ -4,7 +4,7 @@ date: 2011-09-12
 description: "A tutorial on the UART communication protocol, including types, baud rates, flow control, error checking, RS-232 and more."
 draft: false
 lastmod: 2022-03-13
-tags: [ "UART", "communication protocol", "USART", "microcontroller", "serial", "8n1", "universal asynchronous", "receiver", "transmitter", "RX", "TX" ]
+tags: [ "UART", "communication protocol", "USART", "microcontroller", "serial", "8n1", "universal asynchronous", "receiver", "transmitter", "RX", "TX", "backfeeding", "IOFF" ]
 title: "UART Communication Protocol"
 type: "page"
 ---
@@ -96,6 +96,8 @@ link:/electronics/components/voltage-level-translation/[Voltage-level translator
 [[voltage-translator-to-prevent-uart-backfeeding]]
 .Schematic showing a circuit using a voltage translator IC to prevent backfeeding a microcontroller from an FTDI cable (or similar) when power (VCC) is removed. 
 image::voltage-translator-to-prevent-uart-backfeeding.png[width=800px,link="{{< permalink >}}/voltage-translator-to-prevent-uart-backfeeding.png"]
+
+Rather than a voltage-level translating IC, a buffer IC with stem:[I_{OFF}] functionality (this is what Texas Instruments calls a logic IC which won't backfeed current from the I/O pins into the stem:[V_{CC}] pins when the VCC pins are at stem:[0V]) will also work -- for example, the SN74LVC1G125 ("Single Bus Buffer Gate With 3-State Output").
 
 ## Pull-up Resistors On TX Lines
 
