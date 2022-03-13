@@ -30,3 +30,5 @@ type: "post"
 * Added info on adding link:/electronics/communication-protocols/uart-communication-protocol/#_pull_up_resistors_on_tx_lines[pull-up resistors to UART TX/RX lines to prevent spurious garbage being transmitted during microcontroller resets].
 
 * Added more info on link:/electronics/components/voltage-level-translation/[voltage-level translator ICs].
+
+* Added info on link:/electronics/circuit-design/logic-families/#_powered_off_protection[CMOS totem-pole drivers with added power off protection].
