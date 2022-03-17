@@ -60,9 +60,13 @@ image::74lvc1t45-diodes-inc-voltage-translator-pinout.png[width=300px,link={{< p
 
 Some have DIR pins. Some have OE pins. Some have auto-direction sensing with no DIR pin.
 
-### IOFF Circuitry
+### Powered Off Protection (IOFF)
 
-stem:[I_{OFF}] is activated when one or more of the power rails is at stem:[0V]
+Powered off protection is activated when one or more of the power rails is at stem:[0V]. Texas Instruments commonly uses the name stem:[I_{OFF}] to describe this feature.
+
+[[cmos-powered-off-protection-circuit-ioff-ti]]
+.Circuit showing how a CMOS "totem-pole" driver is modified to provide "powered off protection". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to stem:[V_{CC}] in the case that the power rail is at stem:[0V]<<bib-ti-powered-off-protection>><<bib-ti-logic-in-live-insertion-apps>>.
+image::cmos-powered-off-protection-circuit-ioff-ti.png[width=700px,link="{{< permalink >}}/cmos-powered-off-protection-circuit-ioff-ti.png"]
 
 ### Clamping Diodes
 
@@ -84,3 +88,5 @@ Confusingly, voltage level translators can be found in two separate sections (bo
 
 * [[[bib-diodes-inc-74lvc1t45z6-7-ds, 1]]] Diodes Incorporated (2018, Oct). _74LVC1T45: Single Bit Dual Power Supply Translating Transceiver With 3 State Outputs_. Retrieved 2022-03-11, from https://www.diodes.com/assets/Datasheets/74LVC1T45.pdf.
 * [[[bib-nxp-voltage-translation, 2]]] NXP (2014, May). _Voltage translation: How to manage mixed-voltage designs with NXP level translators_. Retrieved 2022-03-11, from https://www.nxp.com/docs/en/nxp/brochures/75017511.pdf.
+* [[[bib-ti-powered-off-protection, 3]]] Shreyas Rao (2016, Nov 2). _Logic gates and switches with Ioff or powered-off protection: empowering you to power down (blog post)_. Texas Instruments. Retrieved 2022-03-13, from https://e2e.ti.com/blogs_/b/analogwire/posts/logic-gates-and-switches-with-ioff-empowering-you-to-power-down.
+* [[[bib-ti-logic-in-live-insertion-apps, 4]]] Jose M. Soltero and Ernest Cox (2002, Jan). _SCEA025: Logic in Live-Insertion Applications With a Focus on GTLP (Application Report)_. Texas Instruments. Retrieved 2022-03-13, from https://www.ti.com/lit/an/scea026/scea026.pdf. 

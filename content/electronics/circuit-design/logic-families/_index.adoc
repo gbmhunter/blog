@@ -56,7 +56,7 @@ Some logic gates include "powered-off protection" to prevent this, and allow ext
 
 [[cmos-powered-off-protection-circuit-ioff-ti]]
 .Circuit showing how a CMOS "totem-pole" driver is modified to provide "powered off protection". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to stem:[V_{CC}] in the case that the power rail is at stem:[0V]<<bib-ti-powered-off-protection>><<bib-ti-logic-in-live-insertion-apps>>.
-image::cmos-powered-off-protection-circuit-ioff-ti.png[width=700px]
+image::cmos-powered-off-protection-circuit-ioff-ti.png[width=700px,link="{{< permalink >}}/cmos-powered-off-protection-circuit-ioff-ti.png"]
 
 Some examples of ICs with "powered-off protection" include the link:https://www.ti.com/lit/ds/symlink/sn74lvc1g125.pdf[SN74LVC1G125: Single Bus Buffer Gate With 3-State Output], the link:https://www.ti.com/product/SN74CB3Q3125[SN74CB3Q3125: 3.3-V, 2:1 (SPDT), 4-channel FET bus switch] and the link:https://www.analog.com/en/products/adg5248f.html#product-overview[ADG5248F: 8:1 Analog Multiplexers].
 
