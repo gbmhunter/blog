@@ -42,23 +42,23 @@ If stem:[V_{high}] is driven low, the body-diode of the MOSFET will be forward-b
 
 ## Dedicated ICs
 
-Plenty of dedicated ICs exist for performing level translation, from dedicated low-to-high translations, high-to-low, anything-to-anything, along 1-bit to 16-bit versions. `1T` means 1 gate with voltage translation, `45` means 1-bit transceiver with direction control.
+Plenty of dedicated ICs exist for performing voltage-level translation, from dedicated low-to-high translations, high-to-low, anything-to-anything, and bit widths of 1-bit to 16-bit. `1T` means 1 gate with voltage translation, `45` means 1-bit transceiver with direction control.
 
-.A 74LVC1T45 being used to voltage translate a 3.3V logic-level signal to a 5.0V voltage domain.
+.A 74LVC1T45 voltage-level translator IC being used to voltage translate a 3.3V logic-level signal to a 5.0V voltage domain.
 image::basic-use-of-74lvc1t45.png[width=500px,link="{{< permalink >}}/basic-use-of-74lvc1t45.png"]
 
-74AUP1T45: Nexperia, 1-bit
-
-### 74LVC1T45Z6-7: Diodes Incorporated, 1-bit
-
-stem:[I_{OFF}] is activated when one or more of the power rails is at stem:[0V]
-
-.The pinout for the single bit Diodes Inc 74LVC1T45Z6-7 voltage translator in the SOT-563 package<<bib-diodes-inc-74lvc1t45z6-7-ds>>.
-image::74lvc1t45-diodes-inc-voltage-translator-pinout.png[width=300px,link={{< permalink >}}/74lvc1t45-diodes-inc-voltage-translator-pinout.png"]
-
-### Unidirectional vs. Bidirectional
+### Directionality (Unidirectional, Bidirectional, Auto-directional)
 
 Some have DIR pins. Some have OE pins. Some have auto-direction sensing with no DIR pin.
+
+**How Does Auto-Direction Work?**
+
+Auto-direction voltage-level translator ICs use a clever technique to remove the need for a direction pin to specify which side is an input and which side is an output. They work by driving pins with a weak signal (e.g. a CMOS totem-pole driver but with a stem:[4k\Omega] resistor in series with the output<<bib-ti-txb0104-ds>>) that can be overridden by an external signal.
+
+To fix the problem of these weak drives causing slow edge transitions, one shot timers monitor each side for rising or falling-edges. On a transition, the one shot timers momentarily turn on a strong drive (standard CMOS totem-pole) to create a fast transition. The timer quickly expires, turning of the strong drive and letting the weak drive take over until the next transition.
+
+.Architecture of a single cell inside the TXB0104 IC, showing how the auto-direction sensing circuitry works<<bib-ti-txb0104-ds>>.
+image::ti-txb0104-auto-direction-sensing-architecture.png[width=400px,link="{{< permalink >}}/ti-txb0104-auto-direction-sensing-architecture.png"]
 
 ### Powered Off Protection (IOFF)
 
@@ -80,6 +80,34 @@ NXP’s LV, HC, and HEF families have input clamping diodes to VCC and can be us
 resistors for high-to-low level translation<<bib-nxp-voltage-translation>>.
 ____
 
+### Examples
+
+#### 74LVC1T45Z6-7: Diodes Incorporated, 1-bit
+
+stem:[I_{OFF}] is activated when one or more of the power rails is at stem:[0V]
+
+.The pinout for the single bit Diodes Inc 74LVC1T45Z6-7 voltage translator in the SOT-563 package<<bib-diodes-inc-74lvc1t45z6-7-ds>>.
+image::74lvc1t45-diodes-inc-voltage-translator-pinout.png[width=300px,link={{< permalink >}}/74lvc1t45-diodes-inc-voltage-translator-pinout.png"]
+
+#### TXB0104
+
+|===
+| Manufacturer              | Texas Instruments
+| Num. Bits                 | 4-bit
+| Auto-direction            | Yes
+| Voltage, stem:[V_{CCA}]   | 1.2-3.6V
+| Voltage, stem:[V_{CCB}]   | 1.65-5.5V
+| Package                   | BGA-12, SOIC-14, QFN-12, 
+| Cost                      | US$1.64 (TXB0104D, quantities of 100)
+|===
+
+The Texas Instruments _TXB0104_ is a popular 4-bit, auto-directional voltage level translator that comes in a number of different packages, including larger SOIC-14 packages all the way down to BGA-12.
+
+SparkFun makes a breakout board for this IC, the link:https://www.sparkfun.com/products/11771[SparkFun Voltage-Level Translator Breakout - TXB0104 (part num. BOB-11771)].
+
+.The SparkFun breakout board for the TXB0104<<bib-sparkfun-txb0104-breakout>>.
+image::sparkfun-txb0104-voltage-level-translator-breakout.png[width=250px,link="{{< permalink >}}/sparkfun-txb0104-voltage-level-translator-breakout.png"]
+
 ## Suppliers
 
 Confusingly, voltage level translators can be found in two separate sections (both under the Logic section) on DigiKey:
@@ -95,3 +123,5 @@ Confusingly, voltage level translators can be found in two separate sections (bo
 * [[[bib-ti-powered-off-protection, 3]]] Shreyas Rao (2016, Nov 2). _Logic gates and switches with Ioff or powered-off protection: empowering you to power down (blog post)_. Texas Instruments. Retrieved 2022-03-13, from https://e2e.ti.com/blogs_/b/analogwire/posts/logic-gates-and-switches-with-ioff-empowering-you-to-power-down.
 * [[[bib-ti-logic-in-live-insertion-apps, 4]]] Jose M. Soltero and Ernest Cox (2002, Jan). _SCEA025: Logic in Live-Insertion Applications With a Focus on GTLP (Application Report)_. Texas Instruments. Retrieved 2022-03-13, from https://www.ti.com/lit/an/scea026/scea026.pdf.
 * [[[bib-nexperia-voltage-translators-product-page, 5]]] Nexperia. _Voltage translators (level-shifters) (product page)_. Retrieved 2022-03-17, from https://www.nexperia.com/products/analog-logic-ics/asynchronous-interface-logic/voltage-translators-level-shifters/.
+* [[[bib-sparkfun-txb0104-breakout, 6]]] SparkFun. _SparkFun Voltage-Level Translator Breakout - TXB0104 (product page)_. Retrieved 2022-03-18, from https://www.sparkfun.com/products/11771.
+* [[[bib-ti-txb0104-ds, 7]]] Texas Instruments (2020). _TXB0104 4-Bit Bidirectional Voltage-level Translator With Automatic Direction Sensing and ±15-kV ESD Protection (datasheet)_. Retrieved 2022-03-18, from https://www.ti.com/lit/ds/symlink/txb0104.pdf.
