@@ -64,7 +64,6 @@ image::ti-txb0104-auto-direction-sensing-architecture.png[width=400px,link="{{< 
 
 Powered off protection is activated when one or more of the power rails is at stem:[0V]. Texas Instruments commonly uses the name stem:[I_{OFF}] to describe this feature.
 
-[[cmos-powered-off-protection-circuit-ioff-ti]]
 .Circuit showing how a CMOS "totem-pole" driver is modified to provide "powered off protection". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to stem:[V_{CC}] in the case that the power rail is at stem:[0V]<<bib-ti-powered-off-protection>><<bib-ti-logic-in-live-insertion-apps>>.
 image::cmos-powered-off-protection-circuit-ioff-ti.png[width=700px,link="{{< permalink >}}/cmos-powered-off-protection-circuit-ioff-ti.png"]
 

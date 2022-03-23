@@ -52,9 +52,8 @@ image::static-latchup-tests-snippet-stm32f070xx.png[width=500px]
 
 By default, most CMOS based devices contain diodes from the I/O pins to the voltage rails and ground (this is an inherent part of the fabrication of a MOSFET and the intrinsic body diodes). Additional ESD protection diodes may be also added in parallel. Whilst normally a good thing, these diodes can cause problems, notably a problem called _backfeeding_. If the local power rail collapses, but signals are still present on the I/O pins (from other parts of the circuitry which are still powered), the diode from the I/O pin to stem:[V_{CC}] will conduct and keep the power rail "propped up".
 
-Some logic gates include "powered-off protection" to prevent this, and allow external signals to be present when the power rail is at stem:[0V]. Texas Instruments calls this stem:[I_{OFF}] protection<<bib-ti-powered-off-protection>><<bib-ti-logic-in-live-insertion-apps>>. <<cmos-powered-off-protection-circuit-ioff-ti>> shows how the standard CMOS totem-pole driver is modified to provide "powered-off protection".
+Some logic gates include "powered-off protection" to prevent this, and allow external signals to be present when the power rail is at stem:[0V]. Texas Instruments calls this stem:[I_{OFF}] protection<<bib-ti-powered-off-protection>><<bib-ti-logic-in-live-insertion-apps>>. The figure below shows how the standard CMOS totem-pole driver is modified to provide "powered-off protection".
 
-[[cmos-powered-off-protection-circuit-ioff-ti]]
 .Circuit showing how a CMOS "totem-pole" driver is modified to provide "powered off protection". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to stem:[V_{CC}] in the case that the power rail is at stem:[0V]<<bib-ti-powered-off-protection>><<bib-ti-logic-in-live-insertion-apps>>.
 image::cmos-powered-off-protection-circuit-ioff-ti.png[width=700px,link="{{< permalink >}}/cmos-powered-off-protection-circuit-ioff-ti.png"]
 
