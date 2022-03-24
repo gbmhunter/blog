@@ -4,7 +4,7 @@ categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
 tags: [ "component packages", "PCB design", "SOD-323", "SC-76", "small-outline", "diodes" ]
-title: SOD-323 (SC-76) Component Package
+title: "SOD-323 (SC-76) Component Package"
 type: page
 ---
 

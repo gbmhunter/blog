@@ -4,7 +4,7 @@ categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-06
 draft: false
 tags: [ "component packages", "PCB design", "SOD-723", "small-outline", "diodes" ]
-title: SOD-723 Component Package
+title: "SOD-723 Component Package"
 type: page
 ---
 

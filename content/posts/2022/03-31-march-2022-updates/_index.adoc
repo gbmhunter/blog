@@ -32,3 +32,5 @@ type: "post"
 * Added more info on link:/electronics/components/voltage-level-translation/[voltage-level translator ICs].
 
 * Added info on link:/electronics/circuit-design/logic-families/#_powered_off_protection[CMOS totem-pole drivers with added power off protection].
+
+* Updated the info on the link:/pcb-design/component-packages/sod-523-component-package/[SOD-523 Component Package].
