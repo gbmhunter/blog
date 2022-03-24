@@ -2,7 +2,7 @@
 authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components", "Diodes" ]
 date: 2011-09-05
-description: "Info about zener, PIN, TVS, Schottky, Zener and general-purpose diodes."
+description: "Info about diodes."
 draft: false
 lastmod: 2021-09-26
 tags: [ "electronics", "diodes", "components", "current", "schematic symbols", "TVS", "Schottky", "bridge rectifier", "Zener", "dynamic resistance", "impedance", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "laser diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution", "irradiance", "radiometric", "photosynthetic flux", "PPF" ]
@@ -41,44 +41,6 @@ SPICE model for the small signal `1N4148` diode:
 + M = 0.03 
 + FC = 0.5 
 + TT = 3.48E-9
-----
-
-== Schottky Diodes
-
-_Schottky diodes_ (a.k.a. _Schottky barrier diode_ or _hot-carrier diode_) are diodes formed from a semiconductor-metal junction, rather than a semiconductor-semiconductor junction of a traditional diode. This creates a lower forward voltage drop than standard diodes (typically 0.3V instead of 0.7V), and consequentially also faster switching speeds. They are used in applications where:
-
-* The input voltage is small.
-* In high power applications in where the power consumption of the diode needs to be kept to a minimum (e.g. in a link:/electronics/components/power-regulators/switch-mode-power-supplies-smps/[SMPS]).
-* High switching speed applications.
-
-=== How They Are Made
-
-Unlike general purpose diodes which are formed from the junction of N-doped and P-doped semiconductors, **Schottky diodes are formed from the junction of a semiconductor with a metal**<<bib-wikipedia-schottky>>. This semiconductor-metal junction is called a Schottky barrier, named after German physicist Walter H. Schottky.
-
-=== Schematic Symbol And Designator
-
-.The schematic symbol and designator for the Schottky diode. Note the curls on the bar, which differs from the general-purpose diode symbol. The anode is the left pin and the cathode is the right pin.
-image::schottky-diode-schematic-symbol.svg[width=300px]
-
-=== Popular Schottky Diode Part Numbers
-
-==== BAT42/BAT43
-
-The BAT42 and BAT43 are popular Schottky diodes, traditionally provided in the link:/pcb-design/component-packages/do-35-do-214ah-component-package/[axial DO-35 package]. Manufactured by Vishay and STMicroelectronics (among others). The main (and potentially only?) difference between the BAT42 and BAT43 seems to be that the forward voltage for the BAT42 is measured at 10 and 50mA, whilst for the BAT43 it is measured at 2 and 15mA.
-
-==== 1N58xx Family
-
-The 1N58xx family of Schottky diodes are typically provided in the link:/pcb-design/component-packages/do-41-component-package/[DO-41 package]. Part numbers increment from `1N5817` (20V, 1A) through to `1N5825` (40V, 5A).
-
-.`1N58xx` Schottky diode part number breakdown.
-[source,text]
-----
-  1N58    17
-  |       |
-Family    |
-          |
-Voltage/Current Rating
-17-19=1A,20-22=3A,23-25=5A
 ----
 
 ## Photo Diodes
@@ -344,9 +306,8 @@ image::/electronics/components/current-sources-and-sinks/constant-current-diode-
 == References
 
 * [[[bib-bzx55-datasheet, 1]]] Vishay (2019, Mar 11). _BZX55 Series Datasheet_. Retrieved 2021-09-25, from https://www.vishay.com/docs/85604/bzx55.pdf.
-* [[[bib-wikipedia-schottky, 2]]] Wikipedia. _Schottky diode_. Retrieved 2021-09-26, from https://en.wikipedia.org/wiki/Schottky_diode.
-* [[[bib-vishay-1n400x-datasheet, 3]]] Vishay (2020, Apr 29). _1N400x Datasheet: General Purpose Plastic Rectifier_. Retrieved 2021-09-26, from https://www.vishay.com/docs/88503/1n4001.pdf.
-* [[[bib-wikipedia-crystal-detector, 4]]] Wikipedia. _Crystal detector_. Retrieved 2021-09-26, from https://en.wikipedia.org/wiki/Crystal_detector.
-* [[[bib-wikip-pin-diode, 5]]] Wikipedia. _PIN diode_. Retrieved 2021-11-25, from https://en.wikipedia.org/wiki/PIN_diode.
-* [[[bib-digikey-nte-11n4007, 6]]] DigiKey. _NTE Electronics, Inc 1N4007_. Retrieved 2021-11-25, from https://www.digikey.com/en/products/detail/nte-electronics-inc/1N4007/11645794.
-* [[[bib-digikey-onsemi-1n4148, 7]]] DigiKey. _onsemi 1N4148_. Retrieved 2021-11-25, from https://www.digikey.co.nz/en/products/detail/onsemi/1N4148/458603.
+* [[[bib-vishay-1n400x-datasheet, 2]]] Vishay (2020, Apr 29). _1N400x Datasheet: General Purpose Plastic Rectifier_. Retrieved 2021-09-26, from https://www.vishay.com/docs/88503/1n4001.pdf.
+* [[[bib-wikipedia-crystal-detector, 3]]] Wikipedia. _Crystal detector_. Retrieved 2021-09-26, from https://en.wikipedia.org/wiki/Crystal_detector.
+* [[[bib-wikip-pin-diode, 4]]] Wikipedia. _PIN diode_. Retrieved 2021-11-25, from https://en.wikipedia.org/wiki/PIN_diode.
+* [[[bib-digikey-nte-11n4007, 5]]] DigiKey. _NTE Electronics, Inc 1N4007_. Retrieved 2021-11-25, from https://www.digikey.com/en/products/detail/nte-electronics-inc/1N4007/11645794.
+* [[[bib-digikey-onsemi-1n4148, 6]]] DigiKey. _onsemi 1N4148_. Retrieved 2021-11-25, from https://www.digikey.co.nz/en/products/detail/onsemi/1N4148/458603.
