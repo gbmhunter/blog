@@ -1,0 +1,71 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
+draft: false
+lastmod: 2022-03-25
+tags: [ "component packages", "PCB design", "SOD-323", "SC-76", "small-outline", "diodes" ]
+title: "SOD-323 (SC-76) Component Package"
+type: "page"
+---
+
+:imagesdir: {{< permalink >}}
+
+## Overview
+
+[cols="1,3"]
+|===
+| Name
+| SOD-323 (Small-outline Diode 323)
+
+| Image
+a|
+image::sod-323-sc-76-component-package-3d-render.jpg[width=200px,link="{{< permalink >}}/sod-323-sc-76-component-package-3d-render.jpg"]
+
+| Synonyms
+a|
+* SC-76 (EIAJ)
+
+| Similar To
+a|
+* SOD-523
+
+| Variants
+| None
+
+| Mounting
+| SMD
+
+| Pin Count
+| 2
+
+| Pitch
+| 2.2mm<<bib-nxp-sod323-ds>>
+
+| Solderability
+| Reflow is recommended. Easy to solder by hand.
+
+| Thermal Resistance
+| 
+
+| Package Dimensions
+a|
+* Length: 1.7mm<<bib-nxp-sod323-ds>>
+* Width: 1.25mm<<bib-nxp-sod323-ds>>
+* Height: 0.95mm<<bib-nxp-sod323-ds>>
+
+| Typical PCB Land Area
+| stem:[13.75mm^2] (5x2.75mm)<<bib-nxp-sod323-ds>>
+
+| 3D Models
+a| -
+
+| Common Uses
+a|
+* Diodes
+|===
+
+[bibliography]
+## References
+
+* [[[bib-nxp-sod323-ds, 1]]] NXP (2019, July 30). _SOD323 plastic, surface-mounted package; 2 leads; 1.3 mm pitch; 1.7mm x 1.25 mm x 0.95 mm body (datasheet)_. Retrieved 2022-03-25, from https://www.nxp.com/docs/en/package-information/SOD323.pdf.

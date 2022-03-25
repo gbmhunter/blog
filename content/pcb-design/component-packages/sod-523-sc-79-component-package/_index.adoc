@@ -5,7 +5,7 @@ date: 2014-11-09
 draft: false
 lastmod: 2022-03-23
 tags: [ "component packages", "PCB design", "SOD-523", "SC-79", "SSMini2-F5-B", "CASE 502", "small-outline", "diodes" ]
-title: "SOD-523 Component Package"
+title: "SOD-523 (SC-79) Component Package"
 type: "page"
 ---
 

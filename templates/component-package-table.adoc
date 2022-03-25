@@ -3,6 +3,10 @@
 | Name
 | SC-89-3
 
+| Image
+a|
+image::example.png[width=200px,link="{{< permalink >}}/example.png"]
+
 | Synonyms
 a|
 * 463C-03 (On Semiconductor)<<bib-on-semi-sc-89-3>>

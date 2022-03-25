@@ -52,8 +52,18 @@ Voltage/Current Rating
 
 _Guard rings_ can be designed onto the silicon that makes up a Schottky diode to improve it's robustness to over-voltage, by causing the diode to be driven into avalanche breakdown before the Schottky is damaged by excessive current<<bib-microsemi-intro-to-schottky>>.
 
+One example of a Schottky diode with a guard ring is the Nexperia PMEG2020AEA 20V, 2A Schottky diode in a SOD-323 package:
+
+[quote, Nexperia PMEG2020AEA Datasheet]
+____
+Planar Maximum Efficiency General Application (MEGA) Schottky barrier rectifier with an **integrated
+guard ring for stress protection**, encapsulated in a SOD323 (SC-76) very small SMD plastic
+package<<bib-nexperia-pmeg2020aea>>.
+____
+
 [bibliography]
 == References
 
 * [[[bib-wikipedia-schottky, 1]]] Wikipedia. _Schottky diode_. Retrieved 2021-09-26, from https://en.wikipedia.org/wiki/Schottky_diode.
 * [[[bib-microsemi-intro-to-schottky, 2]]] Kent Walters, Bob Werner. _MicroNote Series 401: Introduction to Schottky Rectifiers_. Microsemi. Retrieved 2022-03-24, from https://www.microsemi.com/document-portal/doc_view/14630-introduction-to-schottky-rectifiers.
+* [[[bib-nexperia-pmeg2020aea, 3]]] Nexperia. _PMEG2020AEA: 20 V, 2 A very low VF MEGA Schottky barrier rectifier in SOD323 (SC-76) package (datasheet)_. Retrieved 2022-03-25, from https://assets.nexperia.com/documents/data-sheet/PMEG2020AEA.pdf.
