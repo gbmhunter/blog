@@ -28,7 +28,9 @@ a|
 
 | Similar To
 a|
-* SOD-523
+* SOD-323FL (flat leads)
+* link:/pcb-design/component-packages/sod-523-sc-79-component-package/[SOD-523] (smaller)
+* SOD-723 (even smaller)
 
 | Variants
 | None
@@ -46,7 +48,10 @@ a|
 | Reflow is recommended. Easy to solder by hand.
 
 | Thermal Resistance
-| 
+a|
+* stem:[R_{\theta(ja)} = 450K/W] (FR4 PCB, single-sided copper, standard footprint)<<bib-nexperia-pmeg2020aea>>
+* stem:[R_{\theta(ja)} = 210K/W] (FR4 PCB, single-sided copper, standard footprint but with stem:[1cm^2] mounting pad for cathode)<<bib-nexperia-pmeg2020aea>>
+* stem:[R_{\theta(jc)} = 90K/W] (from junction to solder point)<<bib-nexperia-pmeg2020aea>>
 
 | Package Dimensions
 a|
@@ -69,3 +74,4 @@ a|
 ## References
 
 * [[[bib-nxp-sod323-ds, 1]]] NXP (2019, July 30). _SOD323 plastic, surface-mounted package; 2 leads; 1.3 mm pitch; 1.7mm x 1.25 mm x 0.95 mm body (datasheet)_. Retrieved 2022-03-25, from https://www.nxp.com/docs/en/package-information/SOD323.pdf.
+* [[[bib-nexperia-pmeg2020aea, 2]]] Nexperia. _PMEG2020AEA: 20 V, 2 A very low VF MEGA Schottky barrier rectifier in SOD323 (SC-76) package (datasheet)_. Retrieved 2022-03-25, from https://assets.nexperia.com/documents/data-sheet/PMEG2020AEA.pdf.

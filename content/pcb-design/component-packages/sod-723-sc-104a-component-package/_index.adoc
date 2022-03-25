@@ -1,0 +1,84 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2015-04-06
+draft: false
+lastmod: 2022-03-25
+tags: [ "component packages", "PCB design", "SOD-723", "SC-104A", "small-outline", "diodes" ]
+title: "SOD-723 (SC-104A) Component Package"
+type: "page"
+---
+
+:imagesdir: {{< permalink >}}
+
+## Overview
+
+[cols="1,3"]
+|===
+| Name
+| SOD-723 (Small-outline Diode 723)
+
+| Image
+a|
+image::sod-723-component-package-3d-render.jpg[width=200px,link="{{< permalink >}}/sod-723-component-package-3d-render.jpg"]
+
+| Synonyms
+a|
+* SC-104A (JEITA)<<bib-rohm-vdz27b-ds>>
+* VMD2 (Rohm Semiconductor)<<bib-rohm-vdz27b-ds>>
+
+| Similar To
+a|
+* link:/pcb-design/component-packages/sod-323-sc-76-component-package/[SOD-323] (much bigger)
+* link:/pcb-design/component-packages/sod-523-sc-79-component-package/[SOD-523] (bigger)
+
+| Variants
+| None
+
+| Mounting
+| SMD
+
+| Pin Count
+| 2
+
+| Pitch
+| 1.1mm
+
+| Solderability
+| Reflow is most suitable.
+
+| Thermal Resistance
+| 
+
+| Package Dimensions
+| 
+
+| Typical PCB Land Area
+| 
+
+| 3D Models
+a| -
+
+| Common Uses
+a|
+* General purpose diodes
+* Schottky diodes
+|===
+
+.A 3D render of the SOD-723 component package.
+image::sod-723-component-package-3d-render.jpg[width=300px,link="{{< permalink >}}/sod-723-component-package-3d-render.jpg"]
+
+## Dimensions
+
+.2D dimensions drawing of the SOD-723 package. Taken from the NXP SOD-723 datasheet (http://www.nxp.com/documents/outline_drawing/sod723_po.pdf).
+image::package-sod-723-2d-dimensions.png[width=500px]
+
+## Land Pattern
+
+.The recommended PCB land pattern for the SOD-723 component package.
+image::package-sod-723-recommended-land-pattern.png[width=500px]
+
+[bibliography]
+## References
+
+* [[[bib-rohm-vdz27b-ds, 1]]] Rohm Semiconductor (2017, Jan 12). _VDZ27B: Zener Diode (datasheet)_. Retrieved 2022-03-25, from https://fscdn.rohm.com/en/products/databook/datasheet/discrete/diode/zener/vdzt2r27b-e.pdf.
