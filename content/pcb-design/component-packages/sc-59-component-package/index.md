@@ -4,9 +4,9 @@ categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-04-07
 draft: false
 lastmod: 2015-04-07
-tags: [ "component packages", "PCB design", "SC-59", "SOT-23" ]
+tags: [ "component packages", "PCB design", "SC-59", "SOT-23", "JEITA", "EIAJ" ]
 title: "SC-59 Component Package"
 type: "page"
 ---
 
-SC-59 is a synonym for the {{% link text="SOT-23 component package" src="../sot-23-component-package" %}}.
+SC-59 is a synonym (JEITA) for the {{% link text="SOT-23 component package" src="../sot-23-component-package" %}}.

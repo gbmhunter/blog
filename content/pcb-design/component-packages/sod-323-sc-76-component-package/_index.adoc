@@ -41,7 +41,7 @@ a|
 | Similar To
 a|
 * link:/pcb-design/component-packages/sod-523-sc-79-component-package/[SOD-523] (smaller)
-* SOD-723 (even smaller)
+* link:/pcb-design/component-packages/sod-723-sc-104a-component-package/[SOD-723] (even smaller)
 
 | Variants
 a|
@@ -87,16 +87,40 @@ a|
 
 ## SOD-323 (Standard Variant)
 
+`SOD-323` is a 2 lead, SMD component package commonly used for diodes. Without any other suffixes, `SOD-323` typically refers to bent lead variant, also know as `SC-76` (JEITA)<<bib-nxp-sod323-ds>>.
+
+.3D model of the `SOD-323` component package.
+image::sod-323-sc-76-component-package-3d-render.jpg[width=200px,link="{{< permalink >}}/sod-323-sc-76-component-package-3d-render.jpg"]
+
+|===
+| Property | NXP (nominal)<<bib-nxp-sod323-ds>>
+| Body Length | 1.7mm
+| Body Width  | 1.25mm
+| Body Height | 0.95mm
+|===
+
+.Dimensions for the `SOD-323` component package<<bib-nxp-sod323-ds>>.
+image::sod-323-package-dimensions-nxp.png[width=700px,link="{{< permalink >}}/sod-323-package-dimensions-nxp.png"]
+
+
 ## SOD-323F (Flat Lead Variant)
 
-The `SOD-323F` is a variant which has flat leads instead of the bent leads in the standard `SOD-323`. The EIAJ name for this package is SC-90.
+The `SOD-323F` is a variant which has flat leads instead of the bent leads in the standard `SOD-323`. It has the same body dimensions as the standard `SOD-323`.
+
+**Synonyms**
+
+* `SC-90`: JEITA (EIAJ).
+* `SOD-323F-2`: Mouser<<bib-mouser-pmeg2020ejf>>.
+* `SOD-323FL`: Rohm<<bib-rohm-udzv33b-ds>>.
+* `UMD2`: Rohm<<bib-rohm-udzv33b-ds>>.
+
+WARNING: Rohm uses the name `SOD-323FL` to refer to the same package as many other manufacturers call `SOD-323F`<<bib-rohm-udzv33b-ds>>. Central Semiconductor also uses the package name `SOD-323FL`, but this refers to a different variant with different sized leads (see below).
+
+.3D render of the `SOD-323F` component package<<bib-nexperia-sod-323f>>.
+image::sod-323f-3d-render-nexperia.png[width=300px,link="{{< permalink >}}/sod-323f-3d-render-nexperia.png"]
 
 .Package dimensions of the `SOD-323F` component package<<bib-diodes-inc-sod-323f>>.
 image::sod-323f-package-dimensions-diodes-inc.png[width=700px,link="{{< permalink >}}/sod-323f-package-dimensions-diodes-inc.png"]
-
-## SOD-323FL (Rohm Variant)
-
-The EIAJ name for this package is `SC-90A`.
 
 ## SOD-323FL (Central Semiconductor Variant)
 
@@ -124,5 +148,8 @@ image::sod-323he-package-dimensions-rohm.png[width=600px,link="{{< permalink >}}
 * [[[bib-nxp-sod323-ds, 1]]] NXP (2019, July 30). _SOD323 plastic, surface-mounted package; 2 leads; 1.3 mm pitch; 1.7mm x 1.25 mm x 0.95 mm body (datasheet)_. Retrieved 2022-03-25, from https://www.nxp.com/docs/en/package-information/SOD323.pdf.
 * [[[bib-nexperia-pmeg2020aea, 2]]] Nexperia. _PMEG2020AEA: 20 V, 2 A very low VF MEGA Schottky barrier rectifier in SOD323 (SC-76) package (datasheet)_. Retrieved 2022-03-25, from https://assets.nexperia.com/documents/data-sheet/PMEG2020AEA.pdf.
 * [[[bib-central-semi-sod-323fl, 3]]] Central Semiconductor (2013, Mar 27). _Package Details: SOD-323FL Case_. Retrieved 2022-03-27, from https://www.centralsemi.com/PDFS/CASE/SOD-323FLPD.PDF.
-* [[[bib-rohm-rb558vam150-ds, 4]]] Rohm (2016). _RB558VAM150: Schottky Barrier Diode (datasheet)_. Retrieved 2022-03-27, from https://www.mouser.com/datasheet/2/348/rb558vam150tr_e-1870568.pdf.
+* [[[bib-rohm-rb558vam150-ds, 4]]] Rohm Semiconductor (2016). _RB558VAM150: Schottky Barrier Diode (datasheet)_. Retrieved 2022-03-27, from https://www.mouser.com/datasheet/2/348/rb558vam150tr_e-1870568.pdf.
 * [[[bib-diodes-inc-sod-323f, 5]]] Diodes Incorporated. _SOD-323F: Package Information (datasheet)_. Retrieved 2022-03-27, from https://www.diodes.com/assets/Package-Files/SOD323F.pdf.
+* [[[bib-mouser-pmeg2020ejf, 6]]] Mouser. _Nexperia PMEG2020EJF (product page)_. Retrieved 2022-03-28, from https://www.mouser.com/ProductDetail/Nexperia/PMEG2020EJF?qs=45Avz0nZxhu5ApwA0R%252B84A%3D%3D.
+* [[[bib-nexperia-sod-323f, 7]]] Nexperia. _Packages -> SC-90 (SOD-323F)_. Retrieved 2022-03-28, from https://www.nexperia.com/packages/SOD323F.html. 
+* [[[bib-rohm-udzv33b-ds, 8]]] Rohm Semiconductor (2021, Jan 8). _UDZV: Zener Diode (datasheet). Retrieved 2022-03-28, from https://fscdn.rohm.com/en/products/databook/datasheet/discrete/diode/zener/udzvte-1733b-e.pdf.

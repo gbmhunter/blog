@@ -18,14 +18,23 @@ type: page
 
 | Synonyms
 a|
-* SC-116A
+**SOD-923**
+
+* SC-116A (JEITA)
+
+**SOD-923F**
+
+* 0402
+* 0402F (Comchip)<<bib-comchip-cdbqc0130l-hf>>
 
 | Similar To
 a|
-* link:../sod-923f-component-package[SOD-923F]
+* link:../sod-723-component-package[SOD-723]
 
 | Variants
-| 
+a|
+* SOD-923
+* SOD-923F
 
 | Mounting
 | SMD
@@ -58,13 +67,24 @@ a|
 * Schottky diodes
 |===
 
+## SOD-923 (Gull-wing Lead Variant)
+
 The SOD-923 is similar to the SOD-923F, except the SOD-923 has pins protruding from the sides of the package and is not considered a "chip" package. The SOD-923 and SOD-923F have the same outer dimensions (when you include the pins in the SOD-923).
 
 .A 3D render of the SOD-923 component package.
 image::sod-923-component-package-3d-render.jpg[width=300px]
+
+## SOD-923F (Flat Lead Variant)
+
+The SOD-923F is similar to the link:../sod-923-component-package[SOD-923], except that the SOD-923F does not have pins protruding past the end of the package and instead is a "chip" style package with the pins on the bottom face of the package. It is identical to the 0402 package commonly used for resistors and capacitor, however the `SOD-923F`` designation is typically used for diodes whilst `0402` is used for chip resistors and capacitors.
+
+.A 3D render of the SOD-923F component package<<bib-digikey-cpdqr5v0u-hf>>. Image (C) DigiKey.
+image::sod-923f-3d-render-digikey.png[width=300px]
 
 [bibliography]
 ## References
 
 * [[[bib-toshiba-sod-923, 1]]] Toshiba Semiconductor. _SOD-923_. Retrieved 2021-12-14, from https://toshiba.semicon-storage.com/ap-en/semiconductor/design-development/package/detail.SOD-923.html.
 * [[[bib-centralsemi-sod-923pd, 2]]] Central Semiconductor. _Package Details: SOD-923 Case_. Retrieved 2021-12-14, from https://www.centralsemi.com/PDFs/case/SOD-923PD.PDF.
+* [[[bib-digikey-cpdqr5v0u-hf, 3]]] DigiKey. _Comchip Technology CPDQR5V0U-HF (product page)_. Retrieved 2021-12-14, from https://www.digikey.in/en/products/detail/comchip-technology/CPDQR5V0U-HF/3308667.
+* [[[bib-comchip-cdbqc0130l-hf, 4]]] Comchip. _Low VF SMD Schottky Barrier Diode: CDBQC0130L-HF (datasheet)_. Retrieved 2021-12-14, from https://www.comchiptech.com/admin/files/product/CDBQC0130L-HF%20RevB681116.pdf.
