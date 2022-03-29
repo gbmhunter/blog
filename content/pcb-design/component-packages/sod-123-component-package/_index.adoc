@@ -24,11 +24,15 @@ a|
 * DO-219AA (SOD-123F)
 * M1F (SOD-123F, Fagor Electronica)
 * PDMU (SOD-123F, Rohm)
-* SC-109D
+* SC-109D (JEITA)
 * SOD-123W-2 (SOD-123W, Mouser)<<bib-mouser-diodes-sod-123w-2>>
 
 | Similar To
-a| n/a
+a|
+* link:/pcb-design/component-packages/sod-323-sc-76-component-package/[SOD-323] (larger)
+* link:/pcb-design/component-packages/sod-523-sc-79-component-package/[SOD-523] (smaller)
+* link:/pcb-design/component-packages/sod-723-sc-104a-component-package/[SOD-723] (even smaller)
+* link:/pcb-design/component-packages/sod-923-component-package/[SOD-923] (smallest)
 
 | Variants
 a|
@@ -69,7 +73,7 @@ a|
 
 ## SOD-123
 
-The _SOD-123_ component package is a small, 2-lead SMD package, commonly used for packaging diodes. The leads are gull-wing style (coming out the side of the package), whilst the `SOD-123F` variant has pads (on the underside of the package).
+The _SOD-123_ component package is a medium sized, 2-lead SMD package, commonly used for packaging diodes. The leads are gull-wing style (coming out the side of the package), whilst the `SOD-123F` variant has pads (on the underside of the package). It is the largest `SOD` package from the family including `SOD-323`, `SOD-523`, `SOD-723` and `SOD-923`.
 
 .A 3D render of the SOD-123 component package. Image from www.digikey.com.
 image::sod-123-component-package-3d-render.jpg[width=300px]
