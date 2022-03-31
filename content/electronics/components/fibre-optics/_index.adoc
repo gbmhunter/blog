@@ -1,11 +1,11 @@
 ---
 authors: [ "Geoffrey Hunter" ]
 date: 2022-02-09
-description: "Info on fibre optics."
+description: "TOSLINK, Versatile Link, ST/SC, LC, transceivers, connectors and more info on fibre optics."
 draft: false
 images: [ ]
-lastmod: 2022-02-23
-tags: [ "electronics", "components", "fibre", "optics" ]
+lastmod: 2022-03-31
+tags: [ "electronics", "components", "fibre", "optics", "TOSHIBA", "TOSLINK", "Versatile Link", "transceivers", "automatic threshold control", "ATC" ]
 title: "Fibre Optics"
 type: "page"
 ---
@@ -30,10 +30,20 @@ Some fiber optic transmitter/receiver pairs are DC-coupled, which extends the ba
 
 ### TOSLINK
 
-Basic fibre-optic standard designed for transmitting audio using 1mm plastic fiber. Uses visible red LEDs (at 650nm) which means you can easily see when it's working (and which end is the transmitter).
+Basic fibre-optic standard designed for transmitting audio using 1mm plastic fiber. Uses visible red LEDs (at 650nm) which means you can easily see when it's working (and which end is the transmitter). Common bandwidths for TOSLINK connections are from DC to 10Mbps<<bib-toshiba-torx1355f-ds>>.
 
 .Photo of the TOSLINK TORX1355(F) receiver and TOTX1353(F) transmitter.
 image::torx1355f-totx1353f-toslink-transceivers.jpg[width=700px,link="{{< permalink >}}/torx1355f-totx1353f-toslink-transceivers.jpg"]
+
+The TOSLINK transmitter components just contains the LED (e.g. the `TOTX1353(F)`), hence the need for a current-limiting resistor and driver. The driver can be open-collector/open-drain, as it only needs to sink current.
+
+.Typical surrounding circuitry required to drive the TOTX1353(F) transmitter<<bib-toshiba-totx1353f-ds>>. 
+image::totx1353f-driver-schematic.png[width=500px,link="{{< permalink >}}/totx1353f-driver-schematic.png"]
+
+The receiver contains more circuitry than the transmitter, including _automatic threshold control_ (ATC) to compensate for widely different input optical power levels<<bib-toshiba-torx1355f-ds>>.
+
+.Typical surrounding circuitry to receive signals via the TORX1355(f) receiver<<bib-toshiba-torx1355f-ds>>. The large 47uF inductor in series with the power supply (presumably to form a low-pass LC filter) is an interesting recommendation!).
+image::torx1355f-application-circuit.png[width=500px,link="{{< permalink >}}/torx1355f-application-circuit.png"]
 
 TOSLINK components are becoming harder to find these days, although TOSLINK patch cables can usually be found at places which sell TVs, computers and other audio/video equipment (TOSLINK being used to transmit audio).
 
@@ -114,3 +124,5 @@ POF: :.
 * [[[bib-avago-afbr-4526z-ds, 1]]] Avago (now Broadcom). _AFBR-4526Z, AFBR-452BZPlastic optical fiber duplex connector for AFBR-5972xZ (datasheet)_. Retrieved 2022-02-10, from https://docs.broadcom.com/doc/AV02-2926EN.
 * [[[bib-fiber-optic-solutions-lc-fiber, 2]]] Fiber Optic Solutions (2018). _LC Fiber Connector Definition, Types And User Guide_. Retrieved 2022-02-10, from https://www.fiber-optic-solutions.com/lc-fiber-connector-definition.html.
 * [[[bib-e14-toslink-cable, 3]]] Element14. _JR9907.5M D=4MM BLK: Audio / Video Cable Assembly, TOSLINK Plug, TOSLINK Plug, 16.4 ft, 5 m, Black (product page)_. Retrieved 2022-03-01, from https://nz.element14.com/pro-signal/jr9907-5m-d-4mm-blk/lead-optical-5m-toslink/dp/4258472.
+* [[[bib-toshiba-totx1353f-ds, 4]]] Toshiba (2014, May 20). _TOTX1353(F): Fiber Optic Transmitting Module (datasheet)_. Retrieved 2022-03-31, from https://nz.mouser.com/datasheet/2/408/TORX1355(F)_datasheet_en_20200312-1108723.pdf.
+* [[[bib-toshiba-torx1355f-ds, 5]]] Toshiba (2020, Mar 12). _TORX1355(F): Fiber Optic Receiving Module (datasheet)_. Retrieved 2022-03-31, from https://nz.mouser.com/datasheet/2/408/TORX1355(F)_datasheet_en_20200312-1108723.pdf.
