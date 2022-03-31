@@ -42,13 +42,26 @@ image::totx1353f-driver-schematic.png[width=500px,link="{{< permalink >}}/totx13
 
 The receiver contains more circuitry than the transmitter, including _automatic threshold control_ (ATC) to compensate for widely different input optical power levels<<bib-toshiba-torx1355f-ds>>.
 
-.Typical surrounding circuitry to receive signals via the TORX1355(f) receiver<<bib-toshiba-torx1355f-ds>>. The large 47uF inductor in series with the power supply (presumably to form a low-pass LC filter) is an interesting recommendation!).
+.Typical surrounding circuitry to receive signals via the TORX1355(F) receiver<<bib-toshiba-torx1355f-ds>>. The large 47uF inductor in series with the power supply (presumably to form a low-pass LC filter) is an interesting recommendation!).
 image::torx1355f-application-circuit.png[width=500px,link="{{< permalink >}}/torx1355f-application-circuit.png"]
 
 TOSLINK components are becoming harder to find these days, although TOSLINK patch cables can usually be found at places which sell TVs, computers and other audio/video equipment (TOSLINK being used to transmit audio).
 
 .Photo of a 5m TOSLINK cable from Multicomp Pro with plugs on both ends (part number JR9907.5M D=4MM BLK)<<bib-e14-toslink-cable>>.
 image::toslink-cabke-jr9907.5md4mmblk-5m.png[width=300px,link="{{< permalink >}}/toslink-cabke-jr9907.5md4mmblk-5m.png"]
+
+.Photo showing the clearly visible illumination when TOSLINK is in working. On left, the TOTX1353(F) transmitter being driven with 1.5mA of current. On right, the same signal but now with a 5m cable plugged into the transmitter, with this photo being taken of the other end.
+image::toslink-visible-illumination.jpg[width=700px,link="{{< permalink >}}/toslink-visible-illumination.jpg"]
+
+The image below shows an oscilloscope capture of a TOSLINK system in use. The upper green waveform is a 1MHz, 5V square wave being fed into a TOTX1353(F) transmitter (with a 2.2kΩ resistor to limit the LED current). The lower yellow waveform is the resulting output from a TORX1355(F) receiver connected to the transmitter via a 5m TOSLINK cable.
+
+TIP: The 5V input square wave is fed into the cathode of the transmitters LED (as per the recommended application circuit in the datasheet), so the LED is turned on when the signal is low, hence the inversion of the signal.
+
+[[toslink-5m-in-vs-out-1mhz]]
+.Oscilloscope capture showing the input and output waveform of a TOSLINK system in use.
+image::toslink-5m-in-vs-out-1mhz.png[width=700px,link="{{< permalink >}}/toslink-5m-in-vs-out-1mhz.png"]
+
+The difference between an edge on the input and the edge appearing on the output (time between the dotted vertical "cursor" lines) is 148ns. **Light travels at 3e8m/s, so would take 17ns to travel down the 5m cable. The remaining 131ns of the 148ns must be due to processing delays in the TOSLINK transceiver and receiver**. Time delays of the oscilloscope probes is small and consistent for both input and output, so should have a negligible effect on this measurement.
 
 ### Versatile Link (VL)
 
