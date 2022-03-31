@@ -4,7 +4,7 @@ categories: [ "Electronics", "Circuit Design" ]
 date: 2011-09-03
 description: "A tutorial on analog-to-digital converters (ADCs), including accuracy, resolution, measuring techniques, usage in microcontrollers and more."
 draft: false
-lastmod: 2019-01-20
+lastmod: 2022-03-31
 tags: [ "ADCs", "microcontrollers", "accuracy", "resolution", "current loop", "analog-to-digital converter", "digital", "analogue", "analog" ]
 title: "Analogue-to-Digital Converters (ADCs)"
 type: "page"
@@ -43,32 +43,29 @@ See the link:/electronics/communication-protocols/4-20ma-current-loops[4-20mA Cu
 
 ## Examples
 
-[.overflow]
---
-[.table-1000,cols="1,1,1,1,1,1,1,2"]
-|===
-| Manf. | Manf. Part Num | Topology | Resolution | Speed | Digital Interface | Package | Comments
-
-| Texas Instruments
-| link:https://www.ti.com/lit/ds/symlink/ads8866.pdf[ADS8866IDRCR]
-| SAR
-| 16-bit
-| 100ksps
-| SPI
-| DFN-10-3x3-TP
-| Pin/functionally compatible with the Microchip MCP33131-05-E/MN.
-
-| Microchip
-| link:https://ww1.microchip.com/downloads/en/DeviceDoc/MCP33131-MCP33121-MCP33111-Family-Data-Sheet-DS20006122A.pdf[MCP33131-05-E/MN]
-| SAR
-| 16-bit
-| 500ksps
-| SPI
-| DFN-10-3x3-TP
-| Pin/functionally compatible with the Texas Instruments ADS8866IDRCR.
+### Texas Instruments ADS8866IDRCR
 
 |===
---
+| Manf.             | Texas Instruments
+| Manf. Part Num    | link:https://www.ti.com/lit/ds/symlink/ads8866.pdf[ADS8866IDRCR]
+| Topology          | SAR
+| Resolution        | 16-bit
+| Speed             | 100ksps
+| Digital Interface | SPI
+| Package           | DFN-10-3x3-TP
+|===
+
+Claims to be pin compatible with the Microchip MCP33131-05-E/MN, however the analogue supply voltage ranges are incompatible!
+
+### Microchip MCP33131-05-E/MN
+
+| Manf.             | Microchip
+| Manf. Part Num    | link:https://ww1.microchip.com/downloads/en/DeviceDoc/MCP33131-MCP33121-MCP33111-Family-Data-Sheet-DS20006122A.pdf[MCP33131-05-E/MN]
+| Topology          | SAR
+| Resolution        | 16-bit
+| Speed             | 500ksps
+| Digital Interface | SPI
+| Package           | DFN-10-3x3-TP
 
 ## Suppliers
 
