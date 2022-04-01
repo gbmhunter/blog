@@ -5,7 +5,7 @@ date: 2015-04-06
 draft: false
 lastmod: 2022-03-25
 tags: [ "component packages", "PCB design", "SOD-323", "SC-76", "small-outline", "diodes" ]
-title: "SOD-323 (SC-76) Component Package"
+title: "SOD-323 Component Package"
 type: "page"
 ---
 
@@ -41,8 +41,8 @@ a|
 | Similar To
 a|
 * link:/pcb-design/component-packages/sod-123-component-package/[SOD-123] (larger)
-* link:/pcb-design/component-packages/sod-523-sc-79-component-package/[SOD-523] (smaller)
-* link:/pcb-design/component-packages/sod-723-sc-104a-component-package/[SOD-723] (even smaller)
+* link:/pcb-design/component-packages/sod-523-component-package/[SOD-523] (smaller)
+* link:/pcb-design/component-packages/sod-723-component-package/[SOD-723] (even smaller)
 * link:/pcb-design/component-packages/sod-923-component-package/[SOD-923] (smallest)
 
 | Variants

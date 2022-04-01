@@ -1,0 +1,66 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2022-04-01
+draft: false
+lastmod: 2022-04-01
+tags: [ "component packages", "PCB design", "SOD-882", "DFN1006-2" ]
+title: "SOD-882 Component Package"
+type: "page"
+---
+
+:imagesdir: {{< permalink >}}
+
+## Overview
+
+[cols="1,3"]
+|===
+| Name
+| SOD-882 (Small-outline Diode 882)
+
+| Image
+a|
+
+| Synonyms
+a|
+* DFN1006-2
+
+| Similar To
+a|
+
+| Variants
+| None
+
+| Mounting
+| SMD
+
+| Pin Count
+| 2
+
+| Pitch
+|
+
+| Solderability
+| Reflow is most suitable.
+
+| Thermal Resistance
+| 
+
+| Package Dimensions
+| 
+
+| Typical PCB Land Area
+| 
+
+| 3D Models
+a| -
+
+| Common Uses
+a|
+* General purpose diodes
+* Schottky diodes
+|===
+
+[bibliography]
+## References
+

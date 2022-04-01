@@ -30,9 +30,9 @@ a|
 | Similar To
 a|
 * link:/pcb-design/component-packages/sod-123-component-package/[SOD-123] (largest)
-* link:/pcb-design/component-packages/sod-323-sc-76-component-package/[SOD-323] (much larger)
-* link:/pcb-design/component-packages/sod-523-sc-79-component-package/[SOD-523] (larger)
-* link:/pcb-design/component-packages/sod-723-component-package[SOD-723] (larger)
+* link:/pcb-design/component-packages/sod-323-component-package/[SOD-323] (much larger)
+* link:/pcb-design/component-packages/sod-523-component-package/[SOD-523] (larger)
+* link:/pcb-design/component-packages/sod-723-component-package/[SOD-723] (larger)
 
 | Variants
 a|
