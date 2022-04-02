@@ -28,7 +28,8 @@ a|
 
 | Similar To
 a|
-* SOT-883 (3 pins in the same sized package)
+* link:/pcb-design/component-packages/dfn-component-package/[DFN]
+* link:/pcb-design/component-packages/sot-883-component-package/[SOT-883] (3 pins in the same sized package, used for transistors)
 
 | Variants
 | None
@@ -69,6 +70,8 @@ a|
 |===
 
 The `SOD-882` component package is quite different from many other SOD packages (such as `SOD-323`, `SOD-523`) in that it's pads are on the underside of the package rather than gull-wing or flat leads (when the `F` suffix is used). This makes the `SOD-882` very similar to a standard DFN package.
+
+It is also very similar to the link:/pcb-design/component-packages/sot-883-component-package/[SOT-883 component package] (note: that's SOT, not SOD!). It has the same outside dimensions as the `SOT-883`, except with only 2 pads instead of 3. This presumably explains the transition from `SOD` to `SOT` -- the two pin package is used for diodes, whilst this three pin package is used for transistors.
 
 [bibliography]
 ## References

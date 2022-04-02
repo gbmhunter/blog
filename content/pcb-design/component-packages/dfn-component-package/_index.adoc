@@ -4,7 +4,7 @@ categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2020-07-30
 description: "Synonyms, variants, dimensions, recommended footprints, thermal resistance and more info about the SON (DFN) component package."
 draft: false
-lastmod: 2020-07-30
+lastmod: 2022-04-03
 tags: [ "component packages", "PCB design", "DFN", "SON", "QFN" ]
 title: "DFN Component Package"
 type: "page"
@@ -35,7 +35,10 @@ a|
 * WDFN-6 (SON-6, On Semiconductor/Fairchild Semiconductor)
 
 | Similar To
-| link:../qfn-component-package[QFN] (note that some may call SON a variant of QFN)
+a|
+* link:../qfn-component-package[QFN] (note that some may call SON a variant of QFN)
+* link:/pcb-design/component-packages/sod-882-component-package/[SOD-882] (two pad package used for diodes)
+* link:/pcb-design/component-packages/sot-883-component-package/[SOT-883] (three pad package used for transistors)
 
 | Variants
 | The SON package can have a varying number of pins. There are also VSON and WSON packages which are exactly the same as the SON package except for a different height. This package can also optionally include an exposed pad.
