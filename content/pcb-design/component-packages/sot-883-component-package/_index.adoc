@@ -75,6 +75,8 @@ a|
 
 The `SOT-883` component package is very similar to a DFN package. It is also very similar to the link:/pcb-design/component-packages/sod-882-component-package/[SOD-882 component package] (note: that's `SOD`, not `SOT`!). It has the same outside dimensions as the `SOD-882`, except with the addition of an extra pad. This presumably explains the transition from `SOD` to `SOT` -- the two pin package is used for diodes, whilst this three pin package is used for transistors.
 
+onsemi (formally On Semiconductor) calls this package the `XDFN3`<<bib-on-semi-ntns3c68nz-ds>>. However, you have to be careful as onsemi also uses the name `XDFN3` for slightly different packages, for example, the NTNS5K0P021Z MOSFET, which has a smaller package size of 0.62x0.42x0.4mm<<bib-on-semi-ntns5k0p021z-ds>>, rather than 1.0x0.6x0.5mm of the `SOT-883`. The key difference is the "case code" which is `CASE 506CB1`<<bib-on-semi-ntns3c68nz-ds>> for the SOT-883, but `CASE 711BH`<<bib-on-semi-ntns5k0p021z-ds>> for the smaller 0.62x0.42x0.4mm package.
+
 ## 3D Render
 
 .A 3D render of the SOT-883 component package. Image from https://assets.nexperia.com/documents/package-information/SOT883.pdf.
@@ -95,3 +97,5 @@ image::sot-883-component-package-recommended-footprint.png[width=800px]
 
 * [[[bib-nexperia-sot-883, 1]]] Nexperia (2020, Sep 25). _SOT883: plastic, leadless ultra small package; 3 terminals; 0.35 mm pitch; 1 mm x 0.6 mm x 0.48 mm body (package information)_. Retrieved 2022-04-02, from https://assets.nexperia.com/documents/package-information/SOT883.pdf.
 * [[[bib-nexperia-pbss2515m-ds, 2]]] NXP (now Nexperia) (2003, Jun 17). _PBSS2515M: 15 V, 0.5 A NPN low VCEsat (BISS) transistor (datasheet)_. Retrieved 2022-04-03, from https://assets.nexperia.com/documents/data-sheet/PBSS2515M.pdf. 
+* [[[bib-on-semi-ntns3c68nz-ds, 3]]] On Semiconductor (now onsemi) (2019, Jun). _NTNS3C68NZ: MOSFET - Single, N-Channel, Small Signal, SOT-883, (XDFN3), 1.0 x 0.6 x 0.4 mm 12 V, 758 mA (datasheet)_. Retrieved 2022-04-03, from https://www.onsemi.com/pdf/datasheet/ntns3c68nz-d.pdf.
+* [[[bib-on-semi-ntns5k0p021z-ds, 4]]] On Semiconductor (now onsemi) (2019, Jun). _NTNS5K0P021Z: MOSFET - Single P-Channel, Small Signal, XDFN3, 0.62 x 0.42 x 0.4 mm, -20 V, -127 mA (datasheet)_. Retrieved 2022-04-03, from https://www.onsemi.com/pdf/datasheet/ntns5k0p021z-d.pdf.
