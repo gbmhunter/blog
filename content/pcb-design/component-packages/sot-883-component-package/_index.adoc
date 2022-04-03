@@ -26,9 +26,10 @@ image::sot-883-component-package-3d-render.png[width=300px,link="{{< permalink >
 
 | Synonyms
 a|
-* DFN1006-3 (NXP<<bib-nexperia-sot-883>>)
-* SC-101 (JEITA, EIAJ)<<bib-nexperia-pbss2515m-ds>>       
-* XDFN3 (On Semiconductor)
+* `CASE 506DB` (onsemi<<bib-on-semi-ntns3c68nz-ds>>)
+* `DFN1006-3` (NXP<<bib-nexperia-sot-883>>)
+* `SC-101` (JEITA, EIAJ)<<bib-nexperia-pbss2515m-ds>>       
+* `XDFN3` (onsemi)
 
 | Similar To
 a|
