@@ -3,8 +3,8 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "PCB Design", "Component Packages" ]
 date: 2015-11-11
 draft: false
-lastmod: 2022-04-03
-tags: [ "component packages", "PCB design", "SOT-89", "small-outline", "transistor", "SC-62", "TO-243" ]
+lastmod: 2022-04-04
+tags: [ "component packages", "PCB design", "SOT-89", "small-outline", "transistor", "SC-62", "TO-243", "2-5K1A", "BJTs" ]
 title: "SOT-89 Component Package"
 type: "page"
 ---
@@ -30,11 +30,13 @@ image::sot-89-sc62-to-243-component-package-3d-render.jpg[width=200px,link="{{< 
 
 | Synonyms
 a|
-* SC-62
-* TO-243
+* `2-5K1A` (Toshiba)<<bib-toshiba-2sc2873-ds>>
+* `SC-62` (JEITA)<<bib-toshiba-2sc2873-ds>><<bib-nxp-sot89>>
+* `TO-243` (JEDEC)<<bib-nxp-sot89>>
 
 | Similar To
-|
+a|
+* `SOT-89-6`
 
 | Mounting
 | SMD
@@ -43,7 +45,7 @@ a|
 | 3 (incl. tab-like lead)
 
 | Pitch
-| 1.50mm (between lead centers on the same side)
+| 1.50mm (between lead centers on the same side)<<bib-nxp-sot89>>
 
 | Solderability
 | The package is relatively easy to solder by hand. There are no issues with hand soldering the tab since the tab produces on one side of the package.
@@ -52,7 +54,10 @@ a|
 | 
 
 | Package Dimensions
-|
+a|
+* Length: 4.5mm (nom)<<bib-nxp-sot89>>
+* Width: 2.5mm (nom)<<bib-nxp-sot89>>
+* Height: 1.5mm (nom)<<bib-nxp-sot89>>
 
 | Typical PCB Land Area
 |
@@ -61,7 +66,8 @@ a|
 a| -
 
 | Common Uses
-a| -
+a|
+* BJTs<<bib-toshiba-2sc2873-ds>>
 |===
 
 ### Dimensions
@@ -93,3 +99,5 @@ www.diodes.com states their SOT-89-5 component package to have:
 ## References
 
 * [[[bib-diodes-sot89, 1]]] Retrieved 2022-04-03, from https://www.diodes.com/assets/Package-Files/SOT89.pdf.
+* [[[bib-toshiba-2sc2873-ds, 2]]] Toshiba (2013, Nov 01). _2SC2873: TOSHIBA Transistor Silicon NPN Epitaxial Type (PCT Process) (datasheet)_. Retrieved 2022-04-04, from https://www.mouser.com/datasheet/2/408/2SC2873_datasheet_en_20131101-1649836.pdf.
+* [[[bib-nxp-sot89, 3]]] NXP (2016, Feb 8). _SOT89: plastic surface-mounted package; die pad for good heat transfer; 3 leads (package information)_. Retrieved 2022-04-04 from https://www.nxp.com/docs/en/package-information/SOT89.pdf.
