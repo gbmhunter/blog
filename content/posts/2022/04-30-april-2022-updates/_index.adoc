@@ -18,3 +18,6 @@ type: "post"
 * Added a new pages on the SOD-882 component package.
 
 * Updated the info on the SOT-883 component package.
+
+* Updated info on the WSON component package.
+
