@@ -270,13 +270,53 @@ There are two different message lengths supported by the CAN protocol.
 
 ## Errors
 
-There are 5 different types of errors:
+There are 5 different types of errors defined by the CAN standard<<bib-kvaser-can-error-handling>>:
 
-* **Bit Error**: The transmitter monitors the bus level as it sends bits. If the level is not the same as what it is transmitting, a bit error occurs. Physical layer error.
-* **Stuff Error**: If 6 or more consecutive bits of the same type are found. Physical layer error.
-* **Format Error**: Data-link layer error.
-* **CRC Error**: When the computed CRC does not match the one received in the message packet. Data-link layer error.
-* **Acknowledge (ACK) Error**: Data-link layer error.
+* **Bit Error**: The transmitter monitors the bus level as it sends bits. If the level is not the same as what it is transmitting, a bit error occurs. The one exception to this rule is that no bit errors are raised during the arbitration process as differences are to be expected during this phase. Physical layer error.
+* **Stuff Error**: If 5 consecutive bits of the same level have been transmitted, the transmitter will add a 6th bit of opposite polarity to the transmission (and the receivers remove this 6th bit). A _stuff error_ occurs if 6 or more consecutive bits of the same type are found. Physical layer error.
+* **Format Error**: Some parts of a CAN frame have predefined/fixed levels (incl. the CRC delimiter, ACK delimiter, EOF). If a receiver detects the wrong level at any of these bit locations, a _format error_ occurs. This is a data-link layer error.
+* **CRC Error**: When the computed 15-bit CRC does not match the one received in the message packet, the receiver raises a _CRC error_. This is a data-link layer error.
+* **Acknowledge (ACK) Error**: All receiving nodes that correctly receive a CAN frame will transmit a dominant level during the ACK bit. The transmitter sends a recessive level during this bit. If the transmitter does not detect a dominant level during this bit, an _acknowledgement error_ occurs. This is a data-link layer error.
+
+All CAN nodes will monitor the bus for the above errors. If a node detects an error, it will transmit an _error flag_. There is more than one type of error flag, these are explained below.
+
+### Dealing With Errors
+
+To prevent fault CAN nodes from from permanently disturbing/blocking a CAN network, the CAN standard defines a somewhat sophisticated _fault confinement process_ that nodes much adhere to. This fault confinement process is usually implemented in CAN controllers/peripherals, such that the main application does not have to deal with this itself (many users of CAN systems may be unaware that these fault confinement processes even exist!).
+
+**Each CAN node maintains two error counters**, the _transmit error counter_ (TEC) and the _receive error counter_ (REC). A CAN node initially starts out in the _Error Active_ state. When either of the TEC or REC (error counters) goes above 127, the node will transition to the _Error Passive_ state. When the TEC (but not the REC) goes above 255, the node transitions to the _Bus Off_ state. A node will transmit different error flags depending on what error state it is in<<bib-kvaser-can-error-handling>>:
+
+* In the _Error Active_ state, a node will transmit _Active Error flags_ when it detects an error.
+* In the _Error Passive_ state, a node will transmit _Passive Error flags_ when it detects an error. It also has to wait 
+* In the _Bus Off_ state, a node will not transmit anything at all.
+
+An _Active Error_ flag consists of 6 dominant bits followed by 8 recessive bits. The 6 dominant bits purposefully breaks the bit stuffing rule above (of no more than 5 consecutive bits having the same level), which causes all other nodes to send their own error flag (in response to the violation of the bit stuffing rule).
+
+An _Error Passive_ flag consists only of recessive bits, as to not disrupt any existing communications (i.e. will not block the bus).
+
+**Adding/Subtracting From the Error Counters**
+
+The rules for adding to or subtracting from the error counters is rather complex<<bib-port-can-faq-errors>>:
+
+* When a receiver detects an error, the REC will be increased by 1, except when the detected error was a Bit Error during the sending of an Active error Flag or an Overload Flag.
+* When a receiver detects a dominant bit as the first bit after sending an Error Flag, the REC will be increased by 8.
+* When a transmitter sends an Error Flag, the TEC is increased by 8. Exception 1: If the transmitter is Error Passive and detects an ACK Error because of not detecting a dominant ACK and does not detect a dominant bit while sending its Passive Error Flag. Exception 2: If the transmitter sends an Error Flag because a Stuff Error occurred during arbitration, and should have been recessive, and has been sent as recessive but monitored as dominant.
+* If the transmitter detects a Bit Error while sending an Active Error Flag or an Overload Frame, the TEC is increased by 8.
+* If a receiver detects a Bit Error while sending an Active Error Flag or an Overload Flag, the REC is increased by 8.
+* Any node tolerates up to 7 consecutive dominant bits after sending an Active Error Flag, Passive Error Flag or Overload Flag. After detecting the fourteenth consecutive dominant bit (in case of an Active Error Flag or an Overload Flag) or after detecting the eighth consecutive dominant bit following a Passive Error Flag, and after each sequence of additional eight consecutive dominant bits, every transmitter increases its TEC by 8 and every receiver increases its REC by 8.
+* After successful transmission of a frame (getting ACK and no error until EOF is finished), the TEC is decreased by 1 unless it was already 0.
+* After the successful reception of a frame (reception without error up to the ACK Slot and the successful sending of the ACK bit), the REC is decreased by 1, if it was between 1 and 127. If the REC was 0, it stays 0, and if it was greater than 127, then it will be set to a value between 119 and 127.
+* A node is Error Passive when the TEC equals or exceeds 128, or when the REC equals or exceeds 128. An error condition letting a node become Error Passive causes the node to send an Active Error Flag.
+* A node is Bus Off when the TEC is greater than or equal to 256.
+* An Error Passive node becomes Error Active again when both the TEC and the REC are less than or equal to 127.
+* A node which is Bus Off is permitted to become Error Active (no longer Bus Off) with its error counters both set to 0 after 128 occurrence of 11 consecutive recessive bits have been monitored on the bus.
+
+**Transmit errors are generally "weighted" more than receive errors because it's more likely that the transmitter is the one at fault**, and hence it will transition to the _Error Passive_ and _Bus Off_ states before the receiving node would.
+
+Many CAN controllers provide status bits and interrupts (when the node transitions to this state) for the following conditions:
+
+* An "error warning", when at least one of the error counters is above 96.
+* When the node is in the "Bus Off state".
 
 ## CAN Controller IP
 
@@ -475,3 +515,5 @@ v0.2 rc2_. Retrieved 2020-06-03, from https://emusbms.com/files/bms/docs/Elektro
 * [[[bib-microchip-can-mod-bit-timing, 8]]]. Richards, Pat (2001). _AN754: Understanding Microchip’s CAN Module Bit Timing_. Microchip. Retrieved 2021-10-11, from http://ww1.microchip.com/downloads/en/appnotes/00754.pdf.
 * [[[bib-intel-82527, 9]]] Intel (1997, Dec). _82527 Serial Communications Controller Area Network Protocol_. Retrieved 2021-10-14, from http://www.nj7p.org/Manuals/PDFs/Intel/273150-001.PDF.
 * [[[bib-cia-bit-timing, 10]]] Taralkar, Meenanath (2012). _Computation of CAN Bit Timing Parameters Simplified_. CAN in Automation. Retrieved 2021-10-14, from https://www.can-cia.org/fileadmin/resources/documents/proceedings/2012_taralkar.pdf.
+* [[[bib-kvaser-can-error-handling, 11]]] Kvaser. _Kvaser CAN Protocol Course: CAN Error Handling_. Retrieved 2022-04-07, from https://www.kvaser.com/lesson/can-error-handling/.
+* [[[bib-port-can-faq-errors, 12]]] port (2021, Feb 8). _CanFaqErrors_. Retrieved 2022-04-07, from http://www.port.de/cgi-bin/CAN/CanFaqErrors.

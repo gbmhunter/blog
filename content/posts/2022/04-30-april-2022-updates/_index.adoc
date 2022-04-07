@@ -21,3 +21,4 @@ type: "post"
 
 * Updated info on the WSON component package.
 
+* Added more info on CAN bus errors and error handling/fault confinement.
