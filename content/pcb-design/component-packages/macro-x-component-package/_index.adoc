@@ -1,0 +1,78 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "PCB Design", "Component Packages" ]
+date: 2022-04-18
+draft: false
+lastmod: 2022-04-18
+tags: [ "component packages", "PCB design", "Macro X", "Micro-X Ceramic" ]
+title: "Macro X Component Package"
+type: "page"
+---
+
+:imagesdir: {{< permalink >}}
+
+## Overview
+
+[cols="1,3"]
+|===
+| Name
+| 
+
+| Image
+a|
+image::mrf581.png[width=200px,link="{{< permalink >}}/mrf581.png"]
+
+| Synonyms
+a|
+* Micro-X Ceramic<<bib-digikey-mrf581>>
+* Package Style M238<<bib-microsemi-mrf581-ds>>
+
+| Similar To
+a|
+* Macro T
+
+| Variants
+| 
+
+| Mounting
+| -
+
+| Pin Count
+| 4
+
+| Pitch
+|
+
+| Solderability
+| -
+
+| Thermal Resistance
+| -
+
+| Package Dimensions
+| -
+
+| Typical PCB Land Area
+| -
+
+| 3D Models
+a| -
+
+| Common Uses
+a|
+* RF transistors<<bib-microsemi-mrf581-ds>>
+
+|===
+
+The Macro X component package seems to be obsolete now (2022).
+
+Microsemi's BJT pinout for this package connected the longest lead to the collector, the lead opposite this to the base, and the other two leads to the emitter<<bib-microsemi-mrf581-ds>>.
+
+.Photo of the MRF581 RF NPN transistor in the Macro X component package.
+image::mrf581.png[width=350px,link="{{< permalink >}}/mrf581.png"]
+
+[bibliography]
+## References
+
+* [[[bib-microsemi-mrf581-ds, 1]]] Microsemi (2008, Dec). _MRF581: RF & Microwave Discrete Low Power Transistors (datasheet)_. Retrieved 2022-04-18, from https://www.microsemi.com/document-portal/doc_download/11675-mrf581-mrf581a-reva-datasheet.
+* [[[bib-digikey-mrf581, 2]]] Digikey. _Microsemi Corporation MRF581 (product page)_. Retrieved 2022-04-18, from https://www.digikey.com/en/products/detail/microsemi-corporation/MRF581/2077046.
