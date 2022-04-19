@@ -3,8 +3,8 @@ authors: [ "Geoffrey Hunter" ]
 categories: [ "Electronics", "Electronic Components" ]
 date: 2013-06-24
 draft: false
-lastmod: 2022-01-17
-tags: [ "potentiometers", "rheostats", "resistors", "rotational", "linear", "taper", "linear", "log" ]
+lastmod: 2022-04-19
+tags: [ "potentiometers", "rheostats", "resistors", "rotational", "linear", "taper", "linear", "log", "Bourns", "antilog" ]
 title: "Potentiometers And Rheostats"
 type: "page"
 ---
@@ -33,45 +33,36 @@ The resistance is of potentiometers is easy to read, a usually indicated by a th
 
 There are two types of taper codes (confusing!).
 
-++++
-<table>
-    <thead>
-        <tr>
-            <th>Taper</th>
-            <th>Old Code</th>
-            <th>New Code</th>
-        </tr>
-    </thead>
-<tbody>
-<tr>
-<td>Linear</td>
-<td>A</td>
-<td>B</td>
-</tr>
-<tr>
-<td>Logarithmic (Audio)</td>
-<td>C</td>
-<td>A</td>
-</tr>
-<tr>
-<td>Antilog</td>
-<td>F</td>
-<td>n/a</td>
-</tr>
-</tbody>
-</table>
-++++
+|===
+| Taper               | Old Code | New Code
+
+| Linear              | A        | B
+| Logarithmic (Audio) | C        | A
+| Antilog             | F        | n/a
+|===
 
 ## Travel (Rotation)
 
-## Partial-turn
+### Partial-turn
 
 Partial-turn potentiometers are the most common and cheapest form of potentiometer. The _total mechanical travel_ (rotation) is usually between 250-330°. The _total electrical travel_ is usually less than this, which means there is some dead-zone and the start and end of the travel in where the resistance does not changed.
 
 Partial-turn potentiometers are commonly used in human-operated situations (the potentiometer is rotated by hand). They provide enough resolution for things such as amplifier volume control.
 
-## Multi-turn
+### Multi-turn
 
 A common number of turns for multi-turn potentiometers is 10. They are usually MUCH MORE expensive than their partial turn counterparts (as of June 2016, US$20 (100) for a "cheap" 3-turn wire-wound potentiometer).
 
 Multi-turn potentiometers are used when more resolution is required, or the "thing" rotating the potentiometer is going to go through 1 or more revolutions (e.g. if the potentiometer was connected to an axle or pulley which rotated back and forth through 4 revolutions). 
+
+## Further Reading
+
+_The Potentiometer Handbook_ by Bourns is a great resource for anything potentiometer related (a hefty 227 pages). Available for free (as of 2022) from https://www.bourns.com/pdfs/onlinepotentiometerhandbook.pdf.
+
+.Screenshot of the "front cover" from the online edition of "The Potentiometer Handbook" by Bourns<<bib-bourns-the-potentiometer-handbook>>.
+image::bourns-the-potentiometer-handbook-front-cover.png[width=500px,link="{{< permalink >}}/bourns-the-potentiometer-handbook-front-cover.png"]
+
+[bibliography]
+## References
+
+* [[[bib-bourns-the-potentiometer-handbook, 1]]] Bourns (2008). _The Potentiometer Handbook_. Retrieved 2022-04-19, from https://www.bourns.com/pdfs/onlinepotentiometerhandbook.pdf.

@@ -24,3 +24,9 @@ type: "post"
 * Added more info on CAN bus errors and error handling/fault confinement.
 
 * Added a new page on the link:/pcb-design/component-packages/macro-x-component-package/[Macro X component package].
+
+* Updated the info on the link:/pcb-design/component-packages/lga-component-package/[LGA component package].
+
+* Added more info on link:/pcb-design/component-packages/qfn-component-package/#_completely_non_standard_qfn_packages[non-standard QFN packages].
+
+* Added info on the link:/electronics/components/potentiometers-and-rheostats/#_further_reading[Bourns "The Potentiometer Handbook"].

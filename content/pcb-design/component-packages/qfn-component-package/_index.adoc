@@ -211,6 +211,16 @@ image::mps-mpm3620-non-standard-qfn-20-component-package.png[width=500px]
 .Dimensions of the "PowerPAK" MLP55-27L Vishay component package, another "non-standard" and very unique QFN-like package.
 image::powerpak-mlp55-27l-vishay-component-dimensions.png[width=500px,link="{{< permalink >}}/powerpak-mlp55-27l-vishay-component-dimensions.png"]
 
+Another great example is ST Microelectronic's PWD13F60 high-voltage full-bridge with integrated gate driver IC. It comes in a `VFQFPN 10x13x1.0mm` package which contains a variety of pad shapes and sizes, as shown in the below image:
+
+.3D render of the VFQFPN 10x13x1.0mm package used for ST Microelectronic's PWD13F60 IC<<bib-st-pwd13f60-ds>>.
+image::st-micro-pwd13f60-vfqfpn-3d-render.png[width=500px,link="{{< permalink >}}/st-micro-pwd13f60-vfqfpn-3d-render.png"]
+
+Want to see the recommended footprint for this IC? See below!
+
+.The recommended footprint (land pattern) for the PWD13F60 in the VFQFPN 10x13x1.0mm package<<bib-st-pwd13f60-ds>>.
+image::st-micro-pwd13f60-vfqfpn-recommended-footprint.png[width=700px,link="{{< permalink >}}/st-micro-pwd13f60-vfqfpn-recommended-footprint.png"]
+
 ## Standardization Of Pinout For Logic Functions
 
 JEDEC has a standard on the pinout of QFN packages for logic functions.
@@ -260,3 +270,4 @@ The tin plating of the flank prevents the traditionally exposed copper (a by-pro
 * [[[bib-nxp-sot618-13dd, 3]]] NXP (2018). _SOT618-13(DD) HVQFN40, plastic thermal enhanced very thin quad flat package; no leads, wettable flanks; 40 terminals; 0.5 mm pitch, 6 mm x 6 mm x 0.85 mm body_. Retrieved 2021-10-28, from https://www.nxp.com/docs/en/package-information/SOT618-13(DD).pdf.
 * [[[bib-microchip-sam-d21-ds, 4]]] Microchip (2021). _SAM D21/DA1 Family Low-Power, 32-bit Cortex-M0+ MCU with Advanced Analog and PWM (datasheet)_. Retrieved 2022-03-02, from https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf.
 * [[[bib-fairchild-an-5067-mpl-packages, 5]]] Fairchild Semiconductor (2005, Sep). _PCB Land Pattern Design and Surface Mount Guidelines for MLP Packages_. Retrieved 2022-03-09, from http://educypedia.karadimov.info/library/AN-5067.pdf.
+* [[[bib-st-pwd13f60-ds, 6]]] ST Microelectronics (2017, Dec). _PWD13F60: High-density power driver - high voltage full bridge with integrated gate driver (datasheet)_. Retrieved 2022-04-19, from https://www.st.com/resource/en/datasheet/pwd13f60.pdf.
