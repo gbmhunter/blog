@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2013-06-24
 draft: false
 lastmod: 2022-04-19
-tags: [ "potentiometers", "rheostats", "resistors", "rotational", "linear", "taper", "linear", "log", "antilog", "Bourns" ]
+tags: [ "potentiometers", "rheostats", "resistors", "rotational", "linear", "taper", "linear", "log", "antilog", "Bourns", "independent linearity" ]
 title: "Potentiometers And Rheostats"
 type: "page"
 ---
@@ -148,7 +148,7 @@ y = ab^x + c
 \end{align}
 ++++
 
-Let stem:[x] be the percentage of total potentiometer rotation in where stem:[0 \le x \le 1], and stem:[y] be the percentage of total resistance, again varying from stem:[0 \le y \e 1]. stem:[a], stem:[b] and stem:[c] are free parameters to fit the desired curve (they are constrained below).
+Let stem:[x] be the percentage of total potentiometer rotation in where stem:[0 \le x \le 1], and stem:[y] be the percentage of total resistance, again varying from stem:[0 \le y \le 1]. stem:[a], stem:[b] and stem:[c] are free parameters to fit the desired curve (they are constrained below).
 
 For an ideal potentiometer, we want the resistance to be stem:[0] when the rotation is stem:[0], e.g. stem:[y = 0] when stem:[x = 0]. Therefore:
 
@@ -206,6 +206,8 @@ We are almost there, except we still have one degree of freedom! How do we choos
 ++++
 \begin{align}
 y_m &= \frac{b^{0.5} - 1}{b - 1} \nonumber \\
+    &= \frac{\sqrt{b} - 1}{b - 1} \nonumber \\
+    &= \frac{\sqrt{b} - 1}{ (\sqrt{b} + 1)(\sqrt{b} - 1) } \nonumber \\
     &= \frac{1}{\sqrt{b} + 1} \\
 \end{align}
 ++++

@@ -32,3 +32,5 @@ type: "post"
 * Added info on the link:/electronics/components/potentiometers-and-rheostats/#_further_reading[Bourns "The Potentiometer Handbook"].
 
 * Added graphs and equations on potentiometer tapers.
+
+* Added info on potentiometer independent linearity.
