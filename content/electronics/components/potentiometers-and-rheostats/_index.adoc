@@ -78,9 +78,16 @@ _Taper codes_ exist to inform the user of a potentiometers taper. There are two 
 
 TODO: Add info here.
 
-## Tolerance
+## Tolerance And Linearity
 
 Tolerance on potentiometers normally ranges from 2-15%. Note that this is much higher than standard 1% chip SMD fixed resistors, don't expect potentiometers to be as cheap and accurate!
+
+Precision potentiometers typically focus achieving was is called good _independent linearity_. Independent linearity is the maximum deviation from a linear "best fit line" which is plotted against the points comparing the output resistance to the position of the potentiometer<<bib-bourns-pot-linearity-tech-note>>. This best-fit line does not often go through 0.
+
+.A plot from the Bourns Potentiometer Linearity Tech Note showing how independent linearity is specified<<bib-bourns-pot-linearity-tech-note>>.
+image::bourns-potentiometer-independent-linearity-plot.png[width=700px,link="{{< permalink >}}/bourns-potentiometer-independent-linearity-plot.png"]
+
+For example, the Bourns 3590S-2-103L 10-turn precision rotary potentiometer has a specified independent linearity of stem:[\pm 0.25\%]<<bib-bourns-3590s-2-103l-ds>>.
 
 ## Labelling
 
@@ -103,6 +110,9 @@ Partial-turn potentiometers are commonly used in human-operated situations (the 
 A common number of turns for multi-turn potentiometers is 10. They are usually MUCH MORE expensive than their partial turn counterparts (as of June 2016, US$20 (100) for a "cheap" 3-turn wire-wound potentiometer).
 
 Multi-turn potentiometers are used when more resolution is required, or the "thing" rotating the potentiometer is going to go through 1 or more revolutions (e.g. if the potentiometer was connected to an axle or pulley which rotated back and forth through 4 revolutions).
+
+.Photo of the Bourns 3590S-2-103L 10-turn precision rotary potentiometer. As of April 2022, this costs approx. US$17 each in quantities of 10<<bib-mouser-bourns-3590s-2-103l>>.
+image::bourns-3590s-2-103l-10-turn-rotary-pot.png[width=250px,link="{{< permalink >}}/bourns-3590s-2-103l-10-turn-rotary-pot.png"]
 
 ## Common Uses And Example Circuits
 
@@ -145,8 +155,8 @@ For an ideal potentiometer, we want the resistance to be stem:[0] when the rotat
 [stem]
 ++++
 \begin{align}
-0 = a + c \\
-c = -a
+0 = a + c \nonumber \\
+c = -a \\
 \end{align}
 ++++
 
@@ -173,9 +183,9 @@ Let's solve for stem:[a] in terms of stem:[b]:
 [stem]
 ++++
 \begin{align}
-1 &= ab - a \\
-  &= a(b - 1)
-a = \frac{1}{b - 1}
+1 &= ab - a \nonumber \\
+  &= a(b - 1) \nonumber \\
+a = \frac{1}{b - 1} \\
 \end{align}
 ++++
 
@@ -184,8 +194,8 @@ Substituting stem:[a] into our equation now gives:
 [stem]
 ++++
 \begin{align}
-y &= \frac{1}{b - 1}b^x - \frac{1}{b - 1} \\
-  &= \frac{1}{b - 1}(b^x - 1) \\
+y &= \frac{1}{b - 1}b^x - \frac{1}{b - 1} \nonumber \\
+  &= \frac{1}{b - 1}(b^x - 1) \nonumber \\
   &= \frac{b^x - 1}{b - 1} \\
 \end{align}
 ++++
@@ -195,7 +205,7 @@ We are almost there, except we still have one degree of freedom! How do we choos
 [stem]
 ++++
 \begin{align}
-y_m &= \frac{b^{0.5} - 1}{b - 1} \\
+y_m &= \frac{b^{0.5} - 1}{b - 1} \nonumber \\
     &= \frac{1}{\sqrt{b} + 1} \\
 \end{align}
 ++++
@@ -205,10 +215,10 @@ Let's solve for stem:[b]:
 [stem]
 ++++
 \begin{align}
-y_m &= \frac{1}{\sqrt{b} + 1} \\
-y_m(\sqrt{b} + 1) &= 1 \\
-\sqrt{b} + 1 &= \frac{1}{y_m} \\
-\sqrt{b} &= \frac{1}{y_m} - 1 \\
+y_m &= \frac{1}{\sqrt{b} + 1} \nonumber \\
+y_m(\sqrt{b} + 1) &= 1 \nonumber \\
+\sqrt{b} + 1 &= \frac{1}{y_m} \nonumber \\
+\sqrt{b} &= \frac{1}{y_m} - 1 \nonumber \\
 b &= \left( \frac{1}{y_m} - 1 \right)^2 \\
 \end{align}
 ++++
@@ -234,3 +244,6 @@ image::bourns-the-potentiometer-handbook-front-cover.png[width=500px,link="{{< p
 
 * [[[bib-bourns-the-potentiometer-handbook, 1]]] Bourns (2008). _The Potentiometer Handbook_. Retrieved 2022-04-19, from https://www.bourns.com/pdfs/onlinepotentiometerhandbook.pdf.
 * [[[bib-eepower-potentiometer-taper, 2]]] EE Power. _Potentiometer Taper_. Retrieved 2021-12-13, from https://eepower.com/resistor-guide/resistor-types/potentiometer-taper/#.
+* [[[bib-mouser-bourns-3590s-2-103l, 3]]] Mouser. _Bourns 3590S-2-103L (product page)_. Retrieved 2022-04-20, from https://www.mouser.com/ProductDetail/Bourns/3590S-2-103L?qs=ka0oSW1bB1LlqwdMBlB3qQ%3D%3D.
+* [[[bib-bourns-pot-linearity-tech-note, 4]]] Bourns. _Potentiometers Linearity Technical Note_. Retrieved 2022-04-20, from https://www.bourns.com/docs/technical-documents/technical-library/sensors-controls/technical-notes/Bourns_pot_linearity_technote.pdf.
+* [[[bib-bourns-3590s-2-103l-ds, 5]]] Bourns. _Bourns 3590 - Precision Potentiometer (datasheet)_. Retrieved 2022-04-20, from https://www.mouser.com/datasheet/2/54/3590-1989906.pdf.
