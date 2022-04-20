@@ -55,7 +55,14 @@ The taper is the relationship between position and resistance. It is also someti
 
 * **Linear taper**: Most common form of taper. Value changes linearly with knob rotation.
 * **Logarithmic taper** or **Audio taper**: Commonly used in audio applications for volume control to achieve a more natural change in volume (human ears perceive loudness logarithmically). However, "logarithmic taper" is a misnomer, they are actually exponential (opposite of logarithmic) to compensate for logarithmic hearing<<bib-eepower-potentiometer-taper>>!
-* **Reverse logarithmic taper**: Exact opposite response of a logarithmic taper pot. Used for applications such as audio volume controls which need to rotate counter-clockwise rather than clockwise<<bib-eepower-potentiometer-taper>>. These pots actually have a logarithmic response.
+* **Reverse logarithmic taper**: Also called the _antilog taper_. Exact opposite response of a logarithmic taper pot. Used for applications such as audio volume controls which need to rotate counter-clockwise rather than clockwise<<bib-eepower-potentiometer-taper>>. These pots actually have a logarithmic response.
+
+The below plot gives you an idea on the shapes of these tapers. For the equation used to generate these tapers, see the below section <<#_the_ideal_logarithmic_taper_equation, The Ideal Logarithmic Taper Equation>>. 
+
+.Plot of the approximation of three common potentiometer tapers, the linear, log and antilog taper.
+image::plot-of-tapers.png[width=500px,link="{{< permalink >}}/plot-of-tapers.png"]
+
+WARNING: Log and antilog tapers are usually never very precise (unless you pay big money), and in cases are just two piece-wise linear tapers of different gradients. The plot above just shows the **approximate shape**.
 
 _Taper codes_ exist to inform the user of a potentiometers taper. There are two types of taper codes in use (confusing!).
 
@@ -115,6 +122,101 @@ If we assume the worst-case, **the output impedance of a potentiometer is**:
 where: +
 \(\b{Z_O}\) is the output impedance, in \( \Omega \) +
 \( R_{pot} \) is the end-to-end resistance of the potentiometer, in \( \Omega \)
+
+## The Ideal Logarithmic Taper Equation
+
+We can write the general equation to map a linear scale to a logarithmic scale as:
+
+[stem]
+++++
+\begin{align}
+y = ab^x + c
+\end{align}
+++++
+
+Let stem:[x] be the percentage of total potentiometer rotation in where stem:[0 \le x \le 1], and stem:[y] be the percentage of total resistance, again varying from stem:[0 \le y \e 1]. stem:[a], stem:[b] and stem:[c] are free parameters to fit the desired curve (they are constrained below).
+
+For an ideal potentiometer, we want the resistance to be stem:[0] when the rotation is stem:[0], e.g. stem:[y = 0] when stem:[x = 0]. Therefore:
+
+[stem]
+++++
+\begin{align}
+0 = a + c \\
+c = -a
+\end{align}
+++++
+
+This allows us to remove stem:[c] from the equation, giving:
+
+[stem]
+++++
+\begin{align}
+y = ab^x - a
+\end{align}
+++++
+
+Also, we want to have maximum resistance when the potentiometer is rotated to maximum. So stem:[y = 1] when stem:[x = 1].
+
+[stem]
+++++
+\begin{align}
+1 = ab - a
+\end{align}
+++++
+
+Let's solve for stem:[a] in terms of stem:[b]:
+
+[stem]
+++++
+\begin{align}
+1 &= ab - a \\
+  &= a(b - 1)
+a = \frac{1}{b - 1}
+\end{align}
+++++
+
+Substituting stem:[a] into our equation now gives:
+
+[stem]
+++++
+\begin{align}
+y &= \frac{1}{b - 1}b^x - \frac{1}{b - 1} \\
+  &= \frac{1}{b - 1}(b^x - 1) \\
+  &= \frac{b^x - 1}{b - 1} \\
+\end{align}
+++++
+
+We are almost there, except we still have one degree of freedom! How do we choose the value of stem:[b]? One way is to define the value of stem:[y] when the potentiometer is rotated half-way to max, i.e. at stem:[x = 0.5]. We'll call this resistance stem:[y_m] (y at midpoint).
+
+[stem]
+++++
+\begin{align}
+y_m &= \frac{b^{0.5} - 1}{b - 1} \\
+    &= \frac{1}{\sqrt{b} + 1} \\
+\end{align}
+++++
+
+Let's solve for stem:[b]:
+
+[stem]
+++++
+\begin{align}
+y_m &= \frac{1}{\sqrt{b} + 1} \\
+y_m(\sqrt{b} + 1) &= 1 \\
+\sqrt{b} + 1 &= \frac{1}{y_m} \\
+\sqrt{b} &= \frac{1}{y_m} - 1 \\
+b &= \left( \frac{1}{y_m} - 1 \right)^2 \\
+\end{align}
+++++
+
+The below graph shows the shape of the potentiometers response for different values of stem:[y_m], starting at stem:[0.1] and ending with stem:[0.9].
+
+NOTE: At stem:[y_m = 0.5] the resistance factor goes to stem:[\infty], so stem:[y_m = 0.5] is not plotted.
+
+.Plot of the ideal potentiometer log taper equation for various values of stem:[y_m].
+image::plot-of-parametric-log-law.png[width=600px,link="{{< permalink >}}/plot-of-parametric-log-law.png"]
+
+In reality, potentiometers with a "log taper" can be roughly approximated with stem:[y_m = 0.1], whilst those with an "antilog taper" with stem:[y_m = 0.9].
 
 ## Further Reading
 
