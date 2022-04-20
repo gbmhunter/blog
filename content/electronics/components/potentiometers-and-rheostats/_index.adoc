@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2013-06-24
 draft: false
 lastmod: 2022-04-19
-tags: [ "potentiometers", "rheostats", "resistors", "rotational", "linear", "taper", "linear", "log", "Bourns", "antilog" ]
+tags: [ "potentiometers", "rheostats", "resistors", "rotational", "linear", "taper", "linear", "log", "antilog", "Bourns" ]
 title: "Potentiometers And Rheostats"
 type: "page"
 ---
@@ -74,6 +74,10 @@ _Taper codes_ exist to inform the user of a potentiometers taper. There are two 
 | Antilog             | F        | n/a
 |===
 
+### Tapering Resistors
+
+TODO: Add info here.
+
 ## Tolerance
 
 Tolerance on potentiometers normally ranges from 2-15%. Note that this is much higher than standard 1% chip SMD fixed resistors, don't expect potentiometers to be as cheap and accurate!
@@ -105,7 +109,7 @@ Multi-turn potentiometers are used when more resolution is required, or the "thi
 The most common use for a potentiometer to provide a variable output voltage based on how the far the potentiometer has been turned. This voltage then can be used to control any number of things, such as the volume of music as the user turns the volume dial. The two ends of the potentiometer are connected across a constant voltage source, in the example below, this is stem:[ 5V ]. The wiper then forms the variable mid-point of a voltage divider. As you turn the potentiometer, one of the "resistors" increases while the other decreases, and thus the wiper varies in voltage from one end point to the other. In the example below the wiper voltage varies from stem:[ 0V ] to stem:[ 5V ]:
 
 .A very common way to use a potentiometer in a circuit to provide a variable output voltage.
-image::potentiometer-common-resistor-divider-circuit.png[width=600px]
+image::potentiometer-common-resistor-divider-circuit.png[width=600px,link="{{< permalink >}}/potentiometer-common-resistor-divider-circuit.png"]
 
 A word of caution...Make sure you do not draw too much current from the wiper. Ignoring the wiper resistance, the output impedance of the potentiometer changes depending on the wiper position. When the wiper is at either end, the output impedance is stem:[ 0 \Omega ] (great you may say). But the output impedance increases to the worst case when the wiper is exactly half-way between the two ends, in which case it is stem:[ \frac{R_{pot}}{4} \, \Omega ] (two resistors in parallel, each resistor being stem:[ \frac{R_{pot}}{2} \, \Omega ]).
 
