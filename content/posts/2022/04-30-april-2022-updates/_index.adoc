@@ -34,3 +34,7 @@ type: "post"
 * Added graphs and equations on potentiometer tapers.
 
 * Added info on potentiometer independent linearity.
+
+* Added info/waveforms on power management IC UVLO/OVLO.
+
+* Added link:/electronics/components/resistors/#_wire_wound[image of a wirewound resistor].

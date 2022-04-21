@@ -4,11 +4,13 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2012-05-14
 description: "Schematic symbols, series and parallel behaviour, manufacturing processes, the E series, tolerances, variable resistors, volume resistance and more info about the electrical components called resistors."
 draft: false
-lastmod: 2022-01-21
+lastmod: 2022-04-21
 tags: [ "resistors", "resistors", "components", "electronics", "schematic symbols", "tolerances", "E series", "packages", "thick film", "thin film", "wirewound", "potentiometers", "rheostats", "variable resistors", "Ayrton-Perry winding" ]
 title: "Resistors"
 type: "page"
 ---
+
+:imagesdir: {{< permalink >}}
 
 == Overview
 
@@ -88,7 +90,7 @@ Resistor dividers are two or more resistors in a series configuration such that 
 The simplest voltage divider consists of just two resistors in series.
 
 .A basic schematic of a simple resistor divider. You will see these used everywhere in circuits!
-image::resistor-divider-schematic.png[width=350px,link="resistor-divider-schematic.png"]
+image::resistor-divider-schematic.png[width=350px,link="{{< permalink >}}/resistor-divider-schematic.png"]
 
 The equation for stem:[V_{OUT}] is:
 
@@ -238,7 +240,7 @@ See link:https://en.wikipedia.org/wiki/Preferred_number[Wikipedia - Preferred Nu
 link:https://ninja-calc.mbedded.ninja/calculators/electronics/basics/standard-resistance-finder[The NinjaCalc Standard Resistance Finder calculator], can easily find the closest E-series resistance to your desired resistance.
 
 .NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 10.3kΩ (with closest highest and closest lowest resistance).
-image::screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png[width=552px
+image::screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png[width=550px,link="{{< permalink >}}/screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png"]
 
 == Resistor Manufacturing Processes
 
@@ -247,9 +249,12 @@ image::screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-3
 Wire-wound resistors are the oldest type of resistor, and are formed by coiling up a piece of wire to get a desired resistance. They are only typically used in modern times in high power applications and for things like fuses, with ratings up into the 100's of Watts.
 
 .Cut-away diagram of a typical wire-wound resistor. Image by Bourns, retrieved on 2021-08-14 from https://www.bourns.com/products/resistors/wirewound-resistors.
-image::wire-wound-resistor-diagram-bourns.png[width=300px]
+image::wire-wound-resistor-diagram-bourns.png[width=300px,link="{{< permalink >}}/wire-wound-resistor-diagram-bourns.png"]
 
 Given they are normally a coil of wire, they can have a significant parasitic inductance and be give off/be susceptible to magnetic fields. See the <<_parasitic_elements>> section for more info.
+
+.Close-up photo of the TT Electronics W22-2KJI 2kΩ 7W wirewound resistor<<bib-tt-electronics-w20-series-ds>>.
+image::tt-electronics-w22-2kji-2kr-wirewound-resistor.png[width=500px,link="{{< permalink >}}/tt-electronics-w22-2kji-2kr-wirewound-resistor.png"]
 
 === Metal Film
 
@@ -276,19 +281,19 @@ Carbon film resistors are formed by forming a conductive carbon film on a cerami
 Power resistors is a term used with resistors which are usually rated to dissipate 1W or more of power (without heatsinking).
 
 .A bunch of ceramic power resistors rated from 5 to 25W of power dissipation.
-image::bunch-of-ceramic-power-resistors.jpg[width=600px]
+image::bunch-of-ceramic-power-resistors.jpg[width=600px,link="{{< permalink >}}/bunch-of-ceramic-power-resistors.jpg"]
 
 They can be used to intentionally heat things, as the picture below shows. This image below is a common 5W resistor being used to heat a small container of oil, with a copper thermostat from a hot water cylinder being used to control the temperature.
 
 .Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature.
-image::using-a-power-resistor-to-heat-oil.jpg[width=900px]
+image::using-a-power-resistor-to-heat-oil.jpg[width=800px,link="{{< permalink >}}/using-a-power-resistor-to-heat-oil.jpg"]
 
 ## Current-Sense Resistors
 
 Current-sense resistors are a label given to low-valued, high precision (1% or better), and high power resistors that are good for using in current-sense circuits. Sometimes there is nothing special about these resistors (it's purely a marketing term), othertimes they may have two additional terminals for _Kelvin sensing_. A four terminal resistor is also called an _ammeter shunt_. Two of the terminals are used to pass the high current, the other two are used to measure to voltage drop across the resistor. This gets rid of measurement errors due to voltage drop in the wires going to the resistor (when the sense line and high-current path are the same thing).
 
 .A large four-lead current sensing resistor.
-image::current-sensing-resistor-large-four-lead.jpg[width=513px]
+image::current-sensing-resistor-large-four-lead.jpg[width=500px,link="{{< permalink >}}/current-sensing-resistor-large-four-lead.jpg"]
 
 More information and schematics on how to make current-sense circuits can be found on the link:/electronics/circuit-design/current-sensing[Current-Sensing page].
 
@@ -358,3 +363,4 @@ image::reel-0603-resistor-leftovers-best.jpg[width=900px]
 
 * [[[bib-eepower-res-ind, 1]]] EE Power. _Resistor Inductance_. Retrieved 2021-08-13, from https://eepower.com/resistor-guide/resistor-fundamentals/resistor-inductance/#.
 * [[[bib-edn-resistors-arent-resistors, 2]]] Wyatt, Kenneth (2013-10-29). _Resistors aren’t resistors_. EDN. Retrieved 2021-08-15, from https://www.edn.com/resistors-arent-resistors/.
+* [[[bib-tt-electronics-w20-series-ds, 3]]] TT Electronics (2020, Jun). _Vitreous Enamelled Wirewound Resistors: W20 Series (datasheet)_. Retrieved 2022-04-21, from https://www.mouser.com/datasheet/2/414/TTRB_S_A0010754439_1-2565592.pdf.
