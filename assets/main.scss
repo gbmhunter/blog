@@ -8,6 +8,762 @@
     --example-bg-color: #ffe3e3;
 }
 
+/* 800px is the cut-off point */
+
+* {
+    /* Don't set font family for everything, as it messes with code blocks */
+    /* font-family: 'avenir next' ,'avenir', sans-serif */
+}
+
+/* ===================================== */
+/* HEADING NUMBERING */
+/* ===================================== */
+
+body {
+    counter-reset: h2counter;
+}
+
+.content h1 {
+    counter-reset: h2counter;
+}
+
+.content h2 {
+    counter-reset: h3counter;
+}
+
+.content h3 {
+  counter-reset: h4counter;
+}
+
+.content h2:before {
+    content: counter(h2counter) ".\0000a0\0000a0";
+    counter-increment: h2counter;
+}
+
+.content h3:before {
+    content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
+    counter-increment: h3counter;
+}
+
+.content h4:before {
+  content: counter(h2counter) "." counter(h3counter) "." counter(h4counter) ".\0000a0\0000a0";
+  counter-increment: h4counter;
+}
+
+/* END OF HEADING NUMBERING */
+
+/* Use rem for body, use em for everything else */
+/* This controls the main font size */
+body {
+    font-size: 1.2rem;
+}
+
+input {
+    font-size: 0.9rem;
+}
+
+p, li, div {
+    /* O.k. size on mobile */
+    font-size: 2.5vw;
+}
+@media (min-width: 800px) {
+    p, li, div {
+        /* 1.3rem was a little too large */
+        font-size: 1.1rem;
+    }
+}
+
+figcaption p {
+    font-size: 80%;
+    font-style: italic;
+    color: gray;
+    text-align: center;
+}
+
+/* Allow for special paragraphs that have centered text */
+div.content p.centered {
+    text-align: center;
+}
+
+/* Center single images on the page */
+div.box {
+    margin: auto;
+}
+
+
+/* ========================================================================= */
+/* OK, WARNING, ERROR SPANS                                                  */
+/* ========================================================================= */
+
+span.ok {
+    color: #00b300;
+    font-weight: bold;
+}
+
+span.warning {
+    color: orange;
+    font-weight: bold;
+}
+
+span.error {
+    color: red;
+    font-weight: bold;
+}
+
+/* ========================================================================= */
+/* LISTS                                                                     */
+/* ========================================================================= */
+
+ul {
+    padding-inline-start: 7vw;
+}
+@media (min-width: 800px) {
+    ul {
+        padding-inline-start: 40px;
+    }
+}
+
+/* ========================================================================= */
+/* BREADCRUMBS                                                               */
+/* ========================================================================= */
+
+.breadcrumbs {
+    font-size: 1.0em;
+}
+
+.breadcrumbs li {
+    display: inline;
+}
+
+/* ========================================================================= */
+/* MATHJAX                                                                   */
+/* ========================================================================= */
+
+/* This fixes an issue where the tops of some symbols in an equation where clipped */
+code.has-jax span {
+    clip: unset !important;
+}
+
+/* Should be rem, not em here! */
+code.has-jax span {
+  /* Disabled this as it was creating rendering issues with latex subscript/superscript */
+  /* font-size: 0.8rem !important; */
+}
+
+/* ========================================================================= */
+/* BLOCK QUOTES                                                              */
+/* ========================================================================= */
+
+blockquote {    
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 1em;
+    padding-left: 1em;
+    border-left: 3px solid #ccc;    
+}
+@media (min-width: 800px) {
+    blockquote {    
+        margin-left: 50px;
+        padding-left: 15px;
+    }
+}
+
+/* markdown wraps the text inside a p element */
+blockquote p {
+    font-size: 1em;
+}
+@media (min-width: 800px) {
+    blockquote p {
+        font-size: 1.2rem;
+    }
+}
+
+/* ========================================================================= */
+/* PAGINATION                                                                */
+/* ========================================================================= */
+
+/* Pagination HTML is created with the Hugo template: {{ template "_internal/pagination.html" . }} */
+
+ul.pagination {
+
+    width: 100%;
+    padding: 0;
+
+    /* Add some vertical margin */
+    margin: 1em 0;
+
+    /* Display page numbers and arrows in row, not column */
+    display: flex;
+    justify-content: center;
+
+    /* Hide the bullets */
+    list-style-type: none;
+}
+
+ul.pagination li {
+    /* Add space between each number and arrow */
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+/* ========================================================================= */
+/* POST STYLING                                                              */
+/* ========================================================================= */
+
+/* Disable link styling for post titles */
+.post-title {
+    text-decoration: none;
+    color: inherit;
+}
+
+article {
+    /* This forces content to stay within the bounds of the article element and wrap if needed */
+    width: 100%;
+}
+
+/* ========================================================================= */
+/* MAIN PAGE STYLING                                                         */
+/* ========================================================================= */
+
+html {
+    height: 100%;
+}
+
+/*body {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(241, 241, 241);
+}
+@media (min-width: 800px) {
+    body {
+        height: 100%;        
+        flex-direction: row;        
+    }
+}*/
+
+/* .left-column-outer {
+    width: 100%;
+    margin: auto;
+    display: flex;     
+    flex-direction: column;
+    align-items: center; 
+    
+}
+@media (min-width: 800px) {
+    .left-column-outer {
+        width: 30%;
+        max-width: 450px;
+    }
+}
+
+.left-column {
+    width: 90%;
+    margin-top: 1em;
+} */
+
+
+/* Left column contains logo and menu */
+
+/* @media (max-width: 800px) {
+    .left-column {
+        min-height: 100%;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: space-around;
+
+        background-color: white;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
+    }
+
+    .header-section-2 {
+        margin: 1.0em;
+        flex-grow: 2;
+    }
+
+    .header-section-3 {
+        display: none;
+    }
+}
+
+@media (min-width: 800px) {
+    .left-column {
+        min-height: 100%;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        background-color: white;
+
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
+    }
+} */
+
+
+
+/* ========================================================================= */
+/* RECENT UPDATES                                                            */
+/* ========================================================================= */
+
+div.recent-updates {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+div.recent-updates .link {
+  text-decoration: none;
+}
+
+div.recent-updates .item {
+  border: solid 1px rgba(100, 100, 100, 0.5);
+  border-radius: 5px;
+  margin: 10px 0px;
+  padding: 5px;
+  /* Keep width sensible for left column (when is desktop mode) */
+  width: 250px;
+}
+
+div.recent-updates .item:hover {
+  background-color: rgba(230, 230, 230, 1.0);
+}
+
+div.recent-updates h2 {
+    font-size: 1.0em;
+    margin: 0px;
+    margin-left: 10px;
+}
+
+div.recent-updates .modified {
+    font-size: 0.7em;
+    margin: 0px;
+    margin-left: 10px;
+    font-style: italic;
+}
+
+div.recent-updates .description {
+    font-size: 0.8em;
+    margin: 0px;
+    margin-left: 10px;
+}
+
+/* ========================================================================= */
+/* RIGHT COLUMN                                                              */
+/* ========================================================================= */
+
+.right-column {
+    width: 100%;
+}
+@media (min-width: 800px) {
+    .right-column {
+        width: 70%;
+    }
+}
+
+/* Right column contains page content */
+.right-column {
+    height: 100%;
+    flex: 1;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.inner-right-column {
+    width: 90%;
+    max-width: 900px;
+    margin-top: 1em;
+    background-color: white;
+
+    /* Add subtle border to right-hand content */
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); 
+
+    /* Stops long URLs and strings going of the right-hand side of the column */
+    word-break: break-word;
+}
+
+/* Padding between border of right-hand inner column and content */
+main {
+    padding: 5vw;
+}
+@media (min-width: 800px) {
+    main {
+        padding: 80px;
+    }
+}
+
+.homepage-post-content {
+    padding-bottom: 50px;
+}
+
+/* Add a bit of space below the footer before the page ends */
+footer {
+    padding-bottom: 20px;
+}
+
+/* ========================================================================= */
+/* IMAGE STYLING                                                             */
+/* ========================================================================= */
+
+figure {
+    /* Setting these margins to 0 fixes the issue where the user agent stylesheet would set them to
+    40px and prevent the images for spanning the entire width of the content div */
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+figure img {
+    width: 100%; /* Force images to stay within the confines of the parent container */
+}
+
+/* ========================================================================= */
+/* PROMPTS                                                                   */
+/* ========================================================================= */
+
+aside.prompt {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    box-sizing: border-box;
+}
+
+aside.prompt .title {    
+    font-weight: 700;
+    padding-left: 1em;
+}
+
+aside.prompt .title .title-text {
+    padding-left: 1em;
+}
+
+aside.prompt div.content {
+    margin: 0;
+    padding-left: 1em;
+}
+
+aside.prompt div.content p {
+    margin: 0;
+    padding: 0.8em;
+    font-size: 0.8em;
+}
+
+/* QUESTION */
+
+aside.question {
+    border-left-color: #64dd17;
+}
+
+aside.question .title {
+    background-color: rgba(100,221,23,.1);
+}
+
+aside.question .title .icon {
+    color: #64dd17;
+}
+
+/* WARNING */
+
+aside.warning {
+    border-left-color: #ff9100;
+}
+
+aside.warning .title {
+    background-color: rgba(255, 145, 0, 0.1);
+}
+
+aside.warning .title .icon {
+    color: #ff9100;
+}
+
+/* NOTE */
+
+aside.note {
+    border-left-color: #651fff;
+}
+
+aside.note .title {
+    background-color: rgba(101, 31, 255, 0.1);
+}
+
+aside.note .title .icon {
+    color: #651fff;
+}
+
+/* ========================================================================= */
+/* DISQUS STYLING                                                             */
+/* ========================================================================= */
+
+/* Divider between the end of the page/related content/tags and the start of the Disqus comments */
+.disqus-divider {
+    height: 30px;
+}
+
+/* ========================================================================= */
+/* MENU STYLING                                                         */
+/* ========================================================================= */
+
+
+
+/* ========================================================================= */
+/* FOOTER                                                                    */
+/* ========================================================================= */
+
+/* Footer contains copyright and "Powered by Hugo" */
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+} 
+
+/* ========================================================================= */
+/* MATRIX (using a table)                                                    */
+/* ========================================================================= */
+
+/* This adds matrix looking brackets to the side of the table */
+
+.matrix {
+    position: relative;
+}
+
+.matrix:before, .matrix:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    border: 1px solid #000;
+    width: 6px;
+    height: 100%;
+}
+.matrix:before {
+    left: -6px;
+    border-right: 0px;
+}
+.matrix:after {
+    right: -6px;
+    border-left: 0px;
+}
+
+table.matrix tr:nth-of-type(even) {
+    background: white;
+}
+
+table.matrix tr:nth-of-type(odd) {
+    background: white;
+}
+
+.matrix td {
+    padding: 5px;    
+    text-align: center;
+}
+
+.matrix {
+    border-spacing: 0px;
+}
+
+.matrix td {
+    width: 2em;
+}
+
+/* ========================================================================= */
+/* CALCULATORS                                                               */
+/* ========================================================================= */
+
+.calculator input {
+    width: 6em;
+    height: 1.5em;
+}
+
+.calculator table tr:nth-of-type(even) {
+    background: white;
+}
+
+.calculator table tr:nth-of-type(odd) {
+    background: white;
+}
+
+/* ========================================================================= */
+/* HBOX and VBOX                                                             */
+/* ========================================================================= */
+
+/* Handy hbox and vbox elements that can be used around the site to layout child
+elements */
+
+div.hbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+div.vbox {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========================================================================= */
+/* STRIKE-TRHOUGH (DEL)                                                      */
+/* ========================================================================= */
+
+del {
+    text-decoration: line-through;
+    background-color: #fbb;
+    color: #555;
+}
+
+
+/* ========================================================================= */
+/* REFERENCES                                                                */
+/* ========================================================================= */
+
+
+
+#return-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.7);
+  width: 50px;
+  height: 50px;
+  display: block;
+  text-decoration: none;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  display: none;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+#return-to-top i {
+  color: #fff;
+  margin: 0;
+  position: relative;
+  left: 16px;
+  top: 13px;
+  font-size: 19px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+#return-to-top:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+#return-to-top:hover i {
+  color: #fff;
+  top: 5px;
+}
+
+
+/* ========================================================================= */
+/* SEARCH                                                                    */
+/* ========================================================================= */
+
+/* #fast-search-outer {
+  visibility: hidden;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#fastSearch { 
+  width: 80%;
+  max-width: 900px;
+  height: 50%;
+  display: none; // This will get changed to inline-block by JS
+  color: white;
+  background-color: white;
+}      
+
+#fast-search-please-wait {
+  width: 80%;
+  max-width: 900px;
+  height: 50%;
+  display: none; // This will get changed to flex by JS
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  background-color: rgba(40, 40, 40, 0.5);
+}
+
+#fast-search-please-wait-text {
+  color: white;
+}
+
+#fast-search-input-wrapper {
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+  
+#fastSearch input { 
+  padding: 4px 10px;
+  box-sizing: border-box;
+  height: 31px;
+  font-size: 1.2em;
+  color: rgb(34, 34, 34);
+  background-color: white;
+  border-radius: 3px 3px 0px 0px;
+  border: none;
+  outline: none;
+  text-align: left;
+  display: inline-block;
+}
+  
+#searchResults li { 
+  list-style: none; 
+  margin-left: 0em;
+  background-color: white; 
+  border-bottom: 1px solid rgba(100, 100, 100, 0.5);
+}
+
+#searchResults li .title {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+#searchResults {
+  visibility: inherit;
+  display: inline-block;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+#searchResults a {
+  width: 100%;
+  box-sizing: border-box;
+  text-decoration: none !important; padding: 10px; display: inline-block;
+  color: rgb(34, 34, 34);
+}
+
+#searchResults a:hover, a:focus {
+  outline: 0;
+  background-color: rgb(200, 200, 200);
+} */
+
 body {
     // Add padding to top and bottom of body so stuff is smashed against the top/bottom of the viewport
     // padding-top: 1em;
@@ -440,18 +1196,6 @@ table.unstyled {
     }
 }
 
-/* ========================================================================= */
-/* ASCIIDOC SPECIFIC                                                         */
-/* ========================================================================= */
-
-/* ========================================================================= */
-/* ASCIIDOC SPECIFIC                                                         */
-/* ========================================================================= */
-
-/* ========================================================================= */
-/* ASCIIDOC SPECIFIC                                                         */
-/* ========================================================================= */
-
 /* AsciiDoc wraps all text within list elements in a p element, let's get rid of
 margin block start and end values (set by user agent stylesheet)
 so the list elements do not have too much vertical padding between items. */
@@ -545,6 +1289,45 @@ do this for us */
     td {
         line-height: 1.7 !important;
     }
+}
+
+// Admonition blocks for markdown
+.admonitionblock-md {
+
+    // Add gaps between admonition blocks and other content
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: flex;
+    outline: 1px solid silver;
+
+    .icon {
+        width: 65px;
+        padding: 10px;
+        outline: 1px solid silver;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content {
+        margin: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    &.tip {
+        background-color: rgb(230, 255, 230);
+    }
+
+    &.note {
+        background-color: rgb(252, 252, 237);
+    }
+
+    &.warning {
+        background-color: rgb(255, 230, 230);
+    }
+
+    
 }
 
 // text-center is added by AsciiDoc when [.text-center] is added before a paragraph

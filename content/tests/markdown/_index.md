@@ -10,7 +10,7 @@ title: "Markdown Test Page"
 
 Is the breadcrumb working above ^^^ ???
 
-Is the TOC working above ^^^ ???
+There should be a TOC either above (narrow screens) or in the right sidebar (wide screen).
 
 **Bold**, _italics_.
 
@@ -130,13 +130,19 @@ A wide HTML table (we should be able to scroll horizontally):
 </table>
 </div>
 
+## Admonitions
+
 {{% note %}}
-This is a note.
+This is a note. I should be yellow.
 {{% /note %}}
 
 {{% warning %}}
-This is a warning.
+This is a warning. I should be red.
 {{% /warning %}}
+
+{{% tip %}}
+This is a tip. I should be green and have a bulb icon on my left.
+{{% /tip %}}
 
 ## Code
 
@@ -188,4 +194,6 @@ This is another footnote[^foot-2].
 
 ## Other
 
-Footnotes, related content and tags sections should be below.
+References, authors, related content and tags sections should be below (in that order).
+
+## References
