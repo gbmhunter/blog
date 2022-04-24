@@ -52,11 +52,6 @@ input {
     font-size: 0.9rem;
 }
 
-p, li, div, td, th, input {
-    line-height: 1.7;
-    color: rgb(85, 85, 85);
-}
-
 p, li, div {
     /* O.k. size on mobile */
     font-size: 2.5vw;

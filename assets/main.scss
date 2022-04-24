@@ -2,6 +2,7 @@
     // main-color is the main 'theme' red of the site
     --main-color: #dc3545;
     --main-color-light: #fff3f3;
+    --text-color: rgb(85, 85, 85);
     --caption-font-color: rgb(100, 100, 100);
     --caption-font-weight: 500;
     --example-bg-color: #ffe3e3;
@@ -23,6 +24,11 @@ body {
         top: 0;
         height: 100vh;
     }   
+}
+
+p, li, div, td, th, input, code.has-jax {
+    line-height: 1.7;
+    color: var(--text-color)
 }
 
 // header-section-1 contains logo, site name and site description
@@ -269,6 +275,14 @@ div.sect2 {
 }
 
 /* ========================================================================= */
+/* MATHJAX                                                                   */
+/* ========================================================================= */
+
+code.has-jax {
+    font-size: 1em;
+}
+
+/* ========================================================================= */
 /* CODE                                                                      */
 /* ========================================================================= */
 
@@ -308,7 +322,7 @@ pre code:not(.has-jax) {
 }
 @media (min-width: 800px) {
     pre code:not(.has-jax) {
-        font-size: .875rem;
+        font-size: .876rem;
     }
 }
 
