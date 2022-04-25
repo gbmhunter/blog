@@ -8,6 +8,7 @@ script_dir = Path(__file__).parent
 def main():
     plot_three_tapers()
     plot_parametric_log_law()
+    plot_tapering_resistors()
 
 def plot_parametric_log_law():
     rotation_0_to_1 = np.linspace(0, 1, 1000)
@@ -53,6 +54,39 @@ def plot_three_tapers():
     ax.grid()
     plt.tight_layout()
     plt.savefig(script_dir / 'plot-of-tapers.png')
+
+
+def plot_tapering_resistors():
+    position_factor = np.linspace(0, 1, 1000)
+    vin_V = 1.0
+    r_pot = 1.0
+    r_taper = 0.1  # As a proportion of R, the resistance of the pot
+
+    # r_bot = r_pot_position || r_taper
+    r_bot = (r_pot*position_factor * r_taper) / \
+        (r_pot*position_factor + r_taper)
+    r_top = 1 - r_pot*position_factor
+
+    v_out = (r_bot / (r_top + r_bot)) * vin_V
+
+    # Compare with proper log taper
+    # Set y_m = 0.1 for log taper
+    y_m = 0.1
+    b = (1/y_m - 1)**2
+    resistance_factor_log_taper = (np.power(b, position_factor) - 1) / (b - 1)
+
+    fig, ax = plt.subplots(figsize=(7, 7))
+    ax.plot(position_factor, v_out, label='Log Tapering Resistor ($R_{taper} = 0.1R_{pot}$)') 
+    ax.plot(position_factor, resistance_factor_log_taper, label='Actual Log Taper ($y_m = 0.1$)')   
+    ax.set_xlabel('Position Factor [0-1]', fontsize=12)
+    ax.set_ylabel('$\\frac{V_{OUT}}{V_{IN}}$ [V/V]', fontsize=15)
+    ax.set_aspect('equal')
+    ax.legend()
+    ax.grid()
+    plt.tight_layout()
+    plt.savefig(script_dir / 'tapering_resistor_log.png')
+
+
 
 if __name__ == '__main__':
     main()

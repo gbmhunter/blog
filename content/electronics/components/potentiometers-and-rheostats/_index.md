@@ -72,7 +72,19 @@ _Taper codes_ exist to inform the user of a potentiometers taper. Confusingly, t
 
 ### Tapering Resistors
 
-TODO: Add info here.
+If you can't get log or antilog potentiometers, you can approximate the behaviour of them using a linear potentiometer and additional fixed resistors (which are called _tapering resistors_ in this context). The below schematic shows to to approximate log, antilog and log-antilog behaviour: 
+
+{{% img src="resistor-taper-circuits.png" width="800px" caption="Schematic showing how to modify the response of a linear potentiometer (to make it approximate log, antilog and log-antilog behaviour) using tapering resistors." %}}
+
+{{% note %}}
+The tapering resistor trick only works if you are using the potentiometer as a voltage divider. If you are just connecting to one end terminal and the middle (i.e. rheostat style), you will need a proper log/anti-log potentiometer/rheostat.
+{{% /note %}}
+
+How do we choose the value of `\(R_{taper}\)`? A good rule-of-thumb is to pick a value which is about 10-20% of the potentiometers total resistance. For example, for a `\(10k\Omega\)` linear potentiometer, you would choose a tapering resistance of `\(1{-}2k\Omega\)`. The below graph shows the response of a pot with a tapering resistor connected up to provide a log response. The tapering resistor's resistance is 10% of the potentiometers (e.g. if it was a `\(10k\Omega\)` pot, the tapering resistor would be `\(1k\Omega\)`). This response is also compared to an "ideal" logarithmic response, with `\(y_m = 0.1\)` (see [The Ideal Logarithmic Taper Equation Section](#the-ideal-logarithmic-taper-equation) for more on what this means).
+
+{{% img src="tapering_resistor_log.png" width="500px" caption="Plot showing the response of a tapering resistor (approx. log) vs. an ideal log pot (with y_m = 0.1). Whilst it doesn't match that closely, this level of precision is good enough for many applications!" %}}
+
+Not bad for just a single additional resistor! And while yes, you can clearly see differences between the tapering resistor circuit and the ideal logarithmic response, in many applications this is close enough (also remembering that many proper log tapered pots will have similar amounts of difference to an ideal response).
 
 ## Tolerance And Linearity
 
