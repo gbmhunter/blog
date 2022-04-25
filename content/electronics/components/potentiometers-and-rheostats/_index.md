@@ -77,7 +77,7 @@ If you can't get log or antilog potentiometers, you can approximate the behaviou
 {{% img src="resistor-taper-circuits.png" width="800px" caption="Schematic showing how to modify the response of a linear potentiometer (to make it approximate log, antilog and log-antilog behaviour) using tapering resistors." %}}
 
 {{% note %}}
-The tapering resistor trick only works if you are using the potentiometer as a voltage divider. If you are just connecting to one end terminal and the middle (i.e. rheostat style), you will need a proper log/anti-log potentiometer/rheostat.
+The tapering resistor trick works for log and antilog tapers are using the potentiometer as a voltage divider. If you are just connecting to one end terminal and the middle (i.e. rheostat style), you can only achieve an antilog taper.
 {{% /note %}}
 
 How do we choose the value of `\(R_{taper}\)`? A good rule-of-thumb is to pick a value which is about 10-20% of the potentiometers total resistance. For example, for a `\(10k\Omega\)` linear potentiometer, you would choose a tapering resistance of `\(1{-}2k\Omega\)`. The below graph shows the response of a pot with a tapering resistor connected up to provide a log response. The tapering resistor's resistance is 10% of the potentiometers (e.g. if it was a `\(10k\Omega\)` pot, the tapering resistor would be `\(1k\Omega\)`). This response is also compared to an "ideal" logarithmic response, with `\(y_m = 0.1\)` (see [The Ideal Logarithmic Taper Equation Section](#the-ideal-logarithmic-taper-equation) for more on what this means).
