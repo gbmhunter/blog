@@ -38,7 +38,9 @@ width decreases -->
     {{- if (.Get "caption") -}}
     <figcaption>
       <p>
-        {{- .Get "caption" | markdownify -}}
+<!-- Caption may have markdown in it. Markdown inside HTML must be separated from the processing HTML by a blank line, and don't have any spaces as these can be rendered as a code block -->
+
+{{ .Get "caption" | markdownify }}
       </p>
     </figcaption>
     {{- end -}}

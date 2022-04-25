@@ -1311,7 +1311,8 @@ do this for us */
 
     .content {
         margin: 10px;
-        display: flex;
+        // Don't make the content flex, as it does weird things when there is bold text inside.
+        // display: flex;
         align-items: center;
     }
 
@@ -1326,8 +1327,6 @@ do this for us */
     &.warning {
         background-color: rgb(255, 230, 230);
     }
-
-    
 }
 
 // text-center is added by AsciiDoc when [.text-center] is added before a paragraph

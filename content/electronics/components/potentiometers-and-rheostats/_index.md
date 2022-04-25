@@ -62,13 +62,13 @@ The below plot gives you an idea on the shapes of these tapers. For the equation
 Log and antilog tapers are usually never very precise (unless you pay big money), and in cases are just two piece-wise linear tapers of different gradients. The plot above just shows the **approximate shape**.
 {{% /warning %}}
 
-_Taper codes_ exist to inform the user of a potentiometers taper. There are two types of taper codes in use (confusing!).
+_Taper codes_ exist to inform the user of a potentiometers taper. Confusingly, there are many different taper code naming schemes in use, however the Asian version seems to be most common these days[^bib-eepower-potentiometer-taper].
 
-| Taper               | Old Code | New Code
-|---------------------|----------|----------
-| Linear              | A        | B
-| Logarithmic (Audio) | C        | A
-| Antilog             | F        | n/a
+| Taper               | Asian (common) | Europe | America | Vishay
+|---------------------|----------------|--------|---------|-------
+| Linear              | B              | A      | B       | A
+| Logarithmic (Audio) | A              | C      | A       | L
+| Antilog             |                | F      | C       | F
 
 ### Tapering Resistors
 
@@ -80,7 +80,7 @@ Tolerance on potentiometers normally ranges from 2-15%. Note that this is much h
 
 Precision potentiometers typically focus achieving was is called good _independent linearity_. Independent linearity is the maximum deviation from a linear "best fit line" which is plotted against the points comparing the output resistance to the position of the potentiometer[^bib-bourns-pot-linearity-tech-note]. This best-fit line does not often go through 0.
 
-{{< img src="bourns-potentiometer-independent-linearity-plot.png" width="700px" caption="A plot from the Bourns Potentiometer Linearity Tech Note showing how independent linearity is specified[^bib-bourns-pot-linearity-tech-note]." >}}
+{{% img src="bourns-potentiometer-independent-linearity-plot.png" width="700px" caption="A plot from the Bourns Potentiometer Linearity Tech Note showing how independent linearity is specified[^bib-bourns-pot-linearity-tech-note]." %}}
 
 For example, the Bourns 3590S-2-103L 10-turn precision rotary potentiometer has a specified independent linearity of `\(\pm 0.25\%\)`[^bib-bourns-3590s-2-103l-ds].
 
@@ -124,10 +124,11 @@ If we assume the worst-case, **the output impedance of a potentiometer is**:
 \end{align}
 </p>
 
-[.text-center]
-where: +
-\(\b{Z_O}\) is the output impedance, in \( \Omega \) +
-\( R_{pot} \) is the end-to-end resistance of the potentiometer, in \( \Omega \)
+<p class="centered">
+where:<br/>
+\(\b{Z_O}\) is the output impedance, in \( \Omega \)<br/>
+\( R_{pot} \) is the end-to-end resistance of the potentiometer, in \( \Omega \)<br/>
+</p>
 
 ## The Ideal Logarithmic Taper Equation
 
@@ -228,7 +229,7 @@ _The Potentiometer Handbook_ by Bourns is a great resource for anything potentio
 ## References
 
 [^bib-bourns-the-potentiometer-handbook]: Bourns (2008). _The Potentiometer Handbook_. Retrieved 2022-04-19, from https://www.bourns.com/pdfs/onlinepotentiometerhandbook.pdf.
-[^bib-eepower-potentiometer-taper]: EE Power. _Potentiometer Taper_. Retrieved 2021-12-13, from https://eepower.com/resistor-guide/resistor-types/potentiometer-taper/#.
+[^bib-eepower-potentiometer-taper]: EE Power. _Chapter 3 - Resistor Types: Potentiometer Taper_. Retrieved 2021-12-13, from https://eepower.com/resistor-guide/resistor-types/potentiometer-taper/#.
 [^bib-mouser-bourns-3590s-2-103l]: Mouser. _Bourns 3590S-2-103L (product page)_. Retrieved 2022-04-20, from https://www.mouser.com/ProductDetail/Bourns/3590S-2-103L?qs=ka0oSW1bB1LlqwdMBlB3qQ%3D%3D.
 [^bib-bourns-pot-linearity-tech-note]: Bourns. _Potentiometers Linearity Technical Note_. Retrieved 2022-04-20, from https://www.bourns.com/docs/technical-documents/technical-library/sensors-controls/technical-notes/Bourns_pot_linearity_technote.pdf.
 [^bib-bourns-3590s-2-103l-ds]: Bourns. _Bourns 3590 - Precision Potentiometer (datasheet)_. Retrieved 2022-04-20, from https://www.mouser.com/datasheet/2/54/3590-1989906.pdf.
