@@ -19,10 +19,9 @@ def main():
     print(files)
     for file_path in files:
         # Convert hyperlinks
-        power_edit.find_replace_regex(file_path=file_path, regex_str=r'link:.*?\[.*?\]', replace=link_replace_fn, multiline=True)
-        # power_edit.find_replace_regex(file_path=file_path, regex_str=r'\[([^\]]+)\]\(([^)]+)\)', replace=markdown_link_replace_fn, multiline=True)
-        # power_edit.find_replace_regex(file_path=file_path, regex_str=r'{{(%|<) (figure|img)((?!}}).)+(%|>)}}', replace=image_replace_fn, multiline=True)
-        # power_edit.find_replace_regex(file_path=file_path, regex_str=r'`?\\\((((?!\\\)).)+)\\\)`?', replace=inline_eq_replace_fn, multiline=True)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'link:.*?\[.*?\]', replace=link_replace_fn, multiline=True)        
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'\..*?\nimage::.*?\[.*?\]', replace=image_replace_fn, multiline=False)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'stem:\[(.*?)\]', replace=inline_eq_replace_fn, multiline=False)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'<p>\\begin{align}[\s\S]*?(?=\\end{align}<\/p>)\\end{align}<\/p>', replace=block_eq_replace_fn, multiline=True)        
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'<p>\$\$(((?!\$\$).)+)\$\$<\/p>', replace=paragraph_eq_replace_fn, multiline=True)
 
@@ -43,68 +42,44 @@ def link_replace_fn(found_text, file_path):
 
     return markdown_link
 
-def markdown_link_replace_fn(found_text, file_path):
-    print(file_path)
-    print(f'found_text = {found_text}')
-
-    match = re.search(r'\[([^\]]+)\]\(([^)]+)\)', found_text)
-    text = match.group(1)
-    print(f'text={text}')
-
-    src = match.group(2)
-    print(f'src={src}')
-
-    asciidoc_link = f'link:{src}[{text}]'
-    print(f'asciidoc_link={asciidoc_link}')
-
-    return asciidoc_link
 
 def image_replace_fn(found_text, file_path):
     print(file_path)
     print(f'found_text = {found_text}')
 
     # Extract src
-    match = re.search(r'src="([^"]+)"', found_text)
-    src = match.group(1)
+    match = re.search(r'\.(.*?)\nimage::(.*?)\[(.*?)\]', found_text)
+    caption = match.group(1)
+    print(f'caption={caption}')
+    src = match.group(2)
     print(f'src={src}')
 
-    # Extract width
-    match = re.search(r'width="([^"]+)"', found_text)
-    width = match.group(1)
-    print(f'width={width}')
+    # Params will need further extraction, this contains the width
+    params = match.group(3)
+    print(f'params={params}')
+    regex = re.compile(r'width=(.*?)px')
+    match = regex.search(params)
 
-    # Extract caption
-    match = re.search(r'caption="([^"]+)"', found_text)
-    if match is not None:
-        caption = match.group(1)
-    else:
-        caption = None
-    print(f'caption={caption}')
+    width_px = match.group(1)
+    print(f'width_px={width_px}')
 
-    asciidoc_image = ''
-    if caption is not None:
-        asciidoc_image += f'.{caption}\n'
-    asciidoc_image += f'image::{src}[width={width}]'
+    markdown_image = f'{{{{% img src="{src}" width="{width_px}" caption="{caption}" %}}}}'
+    print(f'markdown_image={markdown_image}')
 
-    print(f'asciidoc_image={asciidoc_image}')
-    return asciidoc_image
+    return markdown_image
 
 def inline_eq_replace_fn(found_text, file_path):
     print(file_path)
     print(f'found_text = {found_text}')
 
-    # Extract src
-    # Matches:
-    # `\( <eq> \)` OR
-    # \( <eq> \)
-    match = re.search(r'`?\\\((((?!\$\$).)+)\\\)`?', found_text)
+    match = re.search(r'stem:\[(.*?)\]', found_text)
     content = match.group(1)
     print(f'content={content}')
 
-    asciidoc_eq = f'stem:[{content}]'
+    markdown_eq = f'`\({content}\)`'
 
-    print(f'asciidoc_eq={asciidoc_eq}')
-    return asciidoc_eq
+    print(f'markdown_eq={markdown_eq}')
+    return markdown_eq
 
 def block_eq_replace_fn(found_text, file_path):
     print(file_path)
