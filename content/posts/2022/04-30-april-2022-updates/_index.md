@@ -36,3 +36,5 @@ type: "post"
 * Added info/waveforms on power management IC UVLO/OVLO.
 
 * Added [image of a wirewound resistor](/electronics/components/resistors/#_wire_wound).
+
+* Added a new page on the [SOT-143 component package](/pcb-design/component-packages/sod-143-component-package/).

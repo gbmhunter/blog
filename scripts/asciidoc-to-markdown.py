@@ -110,7 +110,10 @@ def bibliography_replace_fn(found_text, file_path):
         print(f'bib_entry={bib_entry}')
 
         bib_id = match.group(1)
+        # Remove the ", <number>" of the end of the bib_id
+        bib_id = bib_id.split(',')[0]
         print(f'bib_id={bib_id}')
+
         bib_info = match.group(2)
         print(f'bib_info={bib_info}')
         return f'[^{bib_id}]: {bib_info}'
@@ -119,7 +122,7 @@ def bibliography_replace_fn(found_text, file_path):
     converted_bib = '\n'.join(converted_bib.split('\n')[1:])
 
     print(f'converted_bib={converted_bib}')
-    return ''
+    return converted_bib
 
 # def block_eq_replace_fn(found_text, file_path):
 #     print(file_path)
