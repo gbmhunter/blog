@@ -22,6 +22,8 @@ def main():
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'link:.*?\[.*?\]', replace=link_replace_fn, multiline=True)        
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'\..*?\nimage::.*?\[.*?\]', replace=image_replace_fn, multiline=False)
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'stem:\[(.*?)\]', replace=inline_eq_replace_fn, multiline=False)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'<<.*?>>', replace=bib_reference_replace_fn, multiline=False)
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'\[bibliography\]\n## References\n\n\*(.*\n?)*', replace=bibliography_replace_fn, multiline=False)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'<p>\\begin{align}[\s\S]*?(?=\\end{align}<\/p>)\\end{align}<\/p>', replace=block_eq_replace_fn, multiline=True)        
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'<p>\$\$(((?!\$\$).)+)\$\$<\/p>', replace=paragraph_eq_replace_fn, multiline=True)
 
@@ -81,33 +83,71 @@ def inline_eq_replace_fn(found_text, file_path):
     print(f'markdown_eq={markdown_eq}')
     return markdown_eq
 
-def block_eq_replace_fn(found_text, file_path):
+def bib_reference_replace_fn(found_text, file_path):
+    """
+    found_text format: <<reference>>
+    """
+    print(file_path)
+    print(f'found_text = {found_text}')
+    match = re.search(r'<<(.*?)>>', found_text)
+    reference = match.group(1)
+    print(f'reference={reference}')
+
+    markdown_reference = f'[^{reference}]'
+    print(f'markdown_reference={markdown_reference}')
+    return markdown_reference
+
+def bibliography_replace_fn(found_text, file_path):
+    """
+    found_text format:
+    """
     print(file_path)
     print(f'found_text = {found_text}')
 
-    # Extract src
-    match = re.search(r'<p>\\begin{align}([\s\S]*?(?=\\end{align}<\/p>))\\end{align}<\/p>', found_text)
-    content = match.group(1)
-    print(f'content={content}')
+    def replace_fn(match):
+        bib_entry = match.group(0)
+        # bib_entry should be a single line in the bibliography
+        print(f'bib_entry={bib_entry}')
 
-    asciidoc_eq = f'[stem]\n++++\n\\begin{{align}}{content}\\end{{align}}\n++++'
+        bib_id = match.group(1)
+        print(f'bib_id={bib_id}')
+        bib_info = match.group(2)
+        print(f'bib_info={bib_info}')
+        return f'[^{bib_id}]: {bib_info}'
 
-    print(f'asciidoc_eq={asciidoc_eq}')
-    return asciidoc_eq
+    converted_bib = re.sub(r'\* \[\[\[(.*?)\]\]\](.*)', replace_fn, found_text)
+    converted_bib = '\n'.join(converted_bib.split('\n')[1:])
 
-def paragraph_eq_replace_fn(found_text, file_path):
-    print(file_path)
-    print(f'found_text = {found_text}')
+    print(f'converted_bib={converted_bib}')
+    return ''
 
-    # Extract Latex from inside <p>$$ <equation> $$</p>
-    match = re.search(r'<p>\$\$(((?!\$\$).)+)\$\$<\/p>', found_text, flags=re.DOTALL|re.MULTILINE)
-    content = match.group(1)
-    print(f'content={content}')
+# def block_eq_replace_fn(found_text, file_path):
+#     print(file_path)
+#     print(f'found_text = {found_text}')
 
-    asciidoc_eq = f'[stem]\n++++\n\\begin{{align}}{content}\\end{{align}}\n++++'
+#     # Extract src
+#     match = re.search(r'<p>\\begin{align}([\s\S]*?(?=\\end{align}<\/p>))\\end{align}<\/p>', found_text)
+#     content = match.group(1)
+#     print(f'content={content}')
 
-    print(f'asciidoc_eq={asciidoc_eq}')
-    return asciidoc_eq
+#     asciidoc_eq = f'[stem]\n++++\n\\begin{{align}}{content}\\end{{align}}\n++++'
+
+#     print(f'asciidoc_eq={asciidoc_eq}')
+#     return asciidoc_eq
+
+# def paragraph_eq_replace_fn(found_text, file_path):
+#     print(file_path)
+#     print(f'found_text = {found_text}')
+
+#     # Extract Latex from inside <p>$$ <equation> $$</p>
+#     match = re.search(r'<p>\$\$(((?!\$\$).)+)\$\$<\/p>', found_text, flags=re.DOTALL|re.MULTILINE)
+#     content = match.group(1)
+#     print(f'content={content}')
+
+#     asciidoc_eq = f'[stem]\n++++\n\\begin{{align}}{content}\\end{{align}}\n++++'
+
+#     print(f'asciidoc_eq={asciidoc_eq}')
+#     return asciidoc_eq
 
 if __name__ == '__main__':
     main()
