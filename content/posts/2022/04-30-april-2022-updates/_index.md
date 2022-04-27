@@ -39,4 +39,5 @@ type: "post"
 
 * Added a new page on the [SOT-143 component package](/pcb-design/component-packages/sod-143-component-package/).
 
-* Added info on steering diodes.
+* Created a new page called [Protecting IO Lines From ESD](/electronics/circuit-design/esd-protection/protecting-io-lines-from-esd/).
+
