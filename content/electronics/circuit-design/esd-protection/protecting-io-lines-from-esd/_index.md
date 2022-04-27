@@ -31,7 +31,7 @@ To improve on the simple series resistor, a capacitor can be added to further im
 
 Arguably a better option than just a simple resistor and capacitor is the use of steering diodes. Steering diodes are connected between the I/O line and two voltage rails, typically `\(V_{CC}\)` and `\(GND\)`. You normally want to use Schottky diodes, as they have a lower forward voltage drop of around 0.3V compared to the standard PN junction diode forward voltage drop of 0.7V. This means your more robust external steering diodes will conduct and shunt more of the ESD energy away before the internal ESD protection diodes connected to the GPIO port in the MCU port do. 
 
-TODO: Add schematic.
+{{% img src="io-protection-with-steering-diodes-to-rail.png" width="600px" caption="Using steering diodes (Schottky diodes connected as shown) to protect an IO line from ESD." %}}
 
 ## Steering Diodes And TVS
 
@@ -49,6 +49,8 @@ To add further protection, a TVS diode can be added to the voltage rail, to help
 TODO: Add schematic.
 
 Some ESD diode arrays incorporate steering diodes and a TVS diode to do just this. For example, the Bourns CDDFN10-0506N features 6 steering diode pairs connected to a single TVS. It is designed for high-speed signals and presents an input capacitance of only 0.25-0.35pF to the signal line, as well as "feed-through" routing design to minimize impedance changes[^bib-bourns-cddfn10-0506n-ds].
+
+## Isolation
 
 ## References
 
