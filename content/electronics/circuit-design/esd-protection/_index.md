@@ -91,12 +91,49 @@ Disadvantages:
 [Spark Gap](/electronics/components/spark-gaps/) very simple (just a copper shape on a layer of a PCB!). Work in the same principle as GDTs but without a controlled atmosphere and pressure.
 
 
-## ESD Circuit Basics
+## Protecting I/O Lines
+
+### A Simple Resistor
+
+One of the simplest ways of protection an I/O line from ESD is to add a series resistor.
+
+TODO: Add schematic.
+
+### Resistor With Capacitor
+
+To improve on the simple series resistor, a capacitor can be added to further improve ESD protection. The capacitor is between the I/O line (once it has past through the resistor) and ground. This forms a low-pass filter which will help quench short (high frequency) ESD spikes.
+
+TODO: Add schematic.
+
+### Steering Diodes
+
+Arguably a better option than just a simple resistor and capacitor is the use of steering diodes. Steering diodes are connected between the I/O line and two voltage rails, typically `\(V_{CC}\)` and `\(GND\)`.
+
+TODO: Add schematic.
+
+### Steering Diodes And TVS
+
+As we learnt above, steering diodes dump the ESD energy into the voltage rails. This can be o.k. in the following conditions:
+
+* ESD energy is low
+* ESD event is short
+* There is some capacitance on your voltage rails (decoupling caps and PSU output capacitors count!).
+* The circuits connected to your voltage rail consume a "bit" of power, i.e. are not ultra-low power design circuits which only draw 10uA. 
+
+You start to run into problems if the ESD energy is high, and the ESD event continues for some time, and your voltage rail can no longer "absorb" the ESD (by consuming the energy with running circuits, or dumping it into capacitance). The voltage rail may start to climb. If you are using a SMPS or series linear regulator to power this rail, there is nothing that these devices can do to stop the voltage from climbing (remember they can only source current, not sink it -- shunt regulators are the exception!). The rail voltage may climb to dangerously high levels which causes damage to the ICs running of it.
+
+To add further protection, a TVS diode can be added to the voltage rail, to help clamp the voltage if it starts rising, as shown in the schematic below:
+
+TODO: Add schematic.
+
+Some ESD diode arrays incorporate steering diodes and a TVS diode to do just this. For example, the Bourns CDDFN10-0506N features 6 steering diode pairs connected to a single TVS. It is designed for high-speed signals and presents an input capacitance of only 0.25-0.35pF to the signal line, as well as "feed-through" routing design to minimize impedance changes[^bib-bourns-cddfn10-0506n-ds].
+
+### Standalone TVS Diodes
 
 {{% img src="basic-esd-protection-with-tvs-diode.svg" width="800" caption="A good habit to get into --- place TVS diodes across inputs/outputs to a PCB (and not just power rails, although that is what is shown in this schematic). Place the TVS as close as possible to the place of entry onto the PCB." %}}
 
 {{% note %}}
-A TVS a shown in <<tvs-on-12v-input>> also protects against reverse polarity. In this situation, the TVS will forward conduct and clamp the voltage to about `\(-0.7V\)`. Make sure that this will either blow a fuse or that the TVS is big enough to sustain the power dissipation indefinitely. See <<tvs-on-12v-input-and-fuse>> for an example using both a TVS diode and fuse.
+A TVS as shown above also protects against reverse polarity. In this situation, the TVS will forward conduct and clamp the voltage to about `\(-0.7V\)`. Make sure that this will either blow a fuse or that the TVS is big enough to sustain the power dissipation indefinitely. See <<tvs-on-12v-input-and-fuse>> for an example using both a TVS diode and fuse.
 {{% /note %}}
 
 {{% img src="basic-esd-protection-with-tvs-diode-and-reverse-polarity-fuse.svg" width="800" caption="Using both a fuse and a TVS on a +12V power supply to a PCB. In this case, the fuse is placed before the TVS diode so that it would also blow if the +12V was hooked up the wrong way around (current going through F1 and D1)." %}}
@@ -174,3 +211,7 @@ See the [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-
 | 8/20us | 8us | 20us |
 | 10/350us | 10us | 350us | Typically used to simulate a lightning strike.
 | 10/1000us | 10us | 1000us |
+
+## References
+
+[^bib-bourns-cddfn10-0506n-ds]: Bourns. _CDDFN10-0506N - TVS/Steering Diode Array (datasheet)_. Retrieved 2022-04-27 from https://www.bourns.com/docs/Product-Datasheets/CDDFN10-0506N.pdf.
