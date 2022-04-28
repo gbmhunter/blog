@@ -31,15 +31,18 @@ To improve on the simple series resistor, a capacitor can be added to further im
 
 {{% img src="io-protection-with-resistor-capacitor.png" width="600px" caption="Simple IO protection with a series resistor." %}}
 
+Advantages:
+
 * Still pretty simple.
 * Better than just a resistor.
+
+Disadvantages:
+
 * Not suitable for medium to high-frequency signals (even worse than just a resistor at attenuating high-frequency signals!)
 
 ## TVS Diode
 
-Another popular way of protecting an IO line from ESD is to connect a TVS diode to it. TVS diodes are designed to be operated whilst reverse biased and have preset reverse standoff voltages, above which point they begin to conduct and absorb energy. They are designed to be robust and able to absorb energy (which they dissipate as heat) from ESD events.
-
-* Simple
+Another popular way of protecting an IO line from ESD is to connect a [TVS diode](/electronics/components/diodes/tvs-diodes/) to it. TVS diodes are designed to be operated whilst reverse biased and have preset reverse standoff voltages, above which point they begin to conduct and absorb energy. They are designed to be robust and able to absorb energy (which they dissipate as heat) from ESD events.
 
 {{% img src="io-protection-with-tvs-diode.png" width="600px" caption="ESD protection with a TVS diode. The standoff voltage is normally set to the maximum working voltage (i.e. +3.3V in this case) and will begin to conduct significantly as the voltage rises above this level." %}}
 
@@ -48,6 +51,16 @@ The above schematic is a unidirectional TVS diode, which will clamp a positive E
 {{% warning %}}
 TVS diodes do not have a sharp turn-on point, and the voltage can rise significantly above the standoff voltage.
 {{% /warning %}}
+
+Advantages:
+
+* Simple
+* Moderately effective
+* No energy is dumped into voltage rails (as is with steering diodes), instead it's absorbed by TVS. 
+
+Disadvantages:
+
+* Voltage can still climb quite high
 
 ## Steering Diodes
 

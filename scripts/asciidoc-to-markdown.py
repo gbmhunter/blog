@@ -18,6 +18,8 @@ def main():
     print('Running the Asciidoc-to-Markdown converter. Provide -m to actually modify the files, otherwise a dryrun will be performed.')
     print(files)
     for file_path in files:
+        # Convert headings in the form "== <HEADING TEXT>" to "## <HEADING TEXT>"
+        power_edit.find_replace_regex(file_path=file_path, regex_str=r'^(=+?) (.*?)$', replace=heading_replace_fn, multiline=True)
         # Convert hyperlinks
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'link:.*?\[.*?\]', replace=link_replace_fn, multiline=True)        
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'\..*?\nimage::.*?\[.*?\]', replace=image_replace_fn, multiline=False)
@@ -26,6 +28,22 @@ def main():
         power_edit.find_replace_regex(file_path=file_path, regex_str=r'\[bibliography\]\n## References\n\n\*(.*\n?)*', replace=bibliography_replace_fn, multiline=False)
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'<p>\\begin{align}[\s\S]*?(?=\\end{align}<\/p>)\\end{align}<\/p>', replace=block_eq_replace_fn, multiline=True)        
         # power_edit.find_replace_regex(file_path=file_path, regex_str=r'<p>\$\$(((?!\$\$).)+)\$\$<\/p>', replace=paragraph_eq_replace_fn, multiline=True)
+
+
+def heading_replace_fn(found_text, file_path):
+    print('heading_replace_fn() called.')
+    print(file_path)
+    print(f'found_text = {found_text}')
+
+    # Extract number of "=" and heading text
+    match = re.search(r'^(=+?) (.*?)$', found_text)
+    equal_signs = match.group(1)
+    print(f'equal_signs={equal_signs}')
+    heading_text = match.group(2)
+    print(f'heading_text={heading_text}')
+
+    markdown_heading = f"{'#'*len(equal_signs)} {heading_text}"
+    return markdown_heading
 
 
 def link_replace_fn(found_text, file_path):
