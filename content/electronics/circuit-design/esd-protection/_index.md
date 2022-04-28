@@ -1,12 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Circuit Design" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Circuit Design ]
 date: 2011-09-03
 draft: false
 lastmod: 2022-04-27
-tags: [ "ESD", "diodes", "electrostatic discharge", "high voltage", "electronics", "series resistance" ]
-title: "ESD Protection"
-type: "page"
+tags: [ ESD, diodes, electrostatic discharge, high voltage, electronics, series resistance ]
+title: ESD Protection
+type: page
 ---
 
 ## Overview
@@ -98,6 +98,22 @@ Disadvantages:
 * _IEC 61643-1, First Edition, 1998, Surge Protective Devices Connected to LowVoltage Power Distribution Systems_. One of the first references to the 8/20us lightning waveform.
 * _IEEE C62.41.2, Recommended Practice on Charactrization of Surge Voltages in Low-Voltage (1000 V and less) AC Power Circuits._
 
+### IEC 61000-4
+
+`IEC 61000-4` is all about electromagnetic compatibility (EMC). Of particular interest is Part 4 (`61000-4-4`), which is titled "Testing and measurement techniques – Electrical fast transient/burst immunity test"[^bib-iec-61000-4-4-2012]. It details how to construct tests on circuits to measure their susceptibility to ESD, with a focus on ESD from source such as the interruption of inductive loads and relay contact bounce. The first edition was released in 1995. As of 2022, the 2012 version is the most recent.
+
+`IEC 61000-4-4` defines some test levels with associated peak voltages that ports must be able to withstand. A distinction is made between "power ports" and "signal ports".
+
+| Test Levels | Peak Voltage - Power Ports | Peak Voltage - Signal Ports
+|-------------|-------------|-------------
+| 1           | 0.5kV       | 0.25kV
+| 2           | 1kV         | 0.5kV
+| 3           | 2kV         | 1kV
+| 4           | 4kV         | 2kV
+| X           | n/a         | n/a
+
+Test level `X` designates a special test in where the levels are defined by the user. The "repetition frequency" for all levels is 5 or 100kHz.
+
 ## Internal ESD Protection On CMOS I/O
 
 Inbuilt protection is very common on a CMOS I/O pins that may be part of a device (anything from a simple load switch, to a medium complexity microcontroller, to a high complexity FPGA). They are normally two per I/O pin. One attached between the pin and GND, and one attached between the pin and VCC. Both are reverse-biased under normal operating conditions (`\( GND <= V_{I/O} <= V_{CC} \)`).
@@ -177,3 +193,4 @@ See the [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-
 ## References
 
 [^bib-bourns-cddfn10-0506n-ds]: Bourns. _CDDFN10-0506N - TVS/Steering Diode Array (datasheet)_. Retrieved 2022-04-27 from https://www.bourns.com/docs/Product-Datasheets/CDDFN10-0506N.pdf.
+[^bib-iec-61000-4-4-2012]: Retrieved 2022-04-28, from https://webstore.iec.ch/publication/22271.
