@@ -45,6 +45,53 @@ R_{BC} = \frac{R_A R_B + R_A R_C + R_B R_C}{R_A} \\
 
 ## Resistor Network Example
 
-{{% img src="wheatstone-resistor-network.png" width="400px" caption="What is the current I drawn from the +12V for this resistor network? This can't be solved purely with resistors-in-series and resistors-in-parallel equations, but can be done with the help of a Delta To Wye transformation." %}}
+{{% img src="wheatstone-resistor-network-worked-example-01.png" width="300px" caption="What is the current I drawn from the +12V for this resistor network? This can't be solved purely with resistors-in-series and resistors-in-parallel equations, but can be done with the help of a Delta To Wye transformation." %}}
 
-21mA.
+Let's treat the top three resistors as a Delta network:
+
+{{% img src="wheatstone-resistor-network-worked-example-02.png" width="300px" caption="We can treat the top three resistors as a Delta network." %}}
+
+Let's now convert this Delta network to a Wye network:
+
+<p>\begin{align}
+R_A &= \frac{R_{AB}R_{AC}}{R_{AB} + R_{AC} + R_{BC}} \nonumber \\
+    &= \frac{200\Omega \cdot 120\Omega}{200\Omega + 120\Omega + 680\Omega} \nonumber \\
+    &= 24.0\Omega \\
+R_B &= \frac{R_{AB}R_{BC}}{R_{AB} + R_{AC} + R_{BC}} \nonumber \\
+    &= \frac{200\Omega \cdot 680\Omega}{200\Omega + 120\Omega + 680\Omega} \nonumber \\
+    &= 136\Omega \\
+R_C &= \frac{R_{AC}R_{BC}}{R_{AB} + R_{AC} + R_{BC}} \nonumber \\
+    &= \frac{120\Omega \cdot 680\Omega}{200\Omega + 120\Omega + 680\Omega} \nonumber \\
+    &= 81.6\Omega \\
+\end{align}</p>
+
+{{% img src="wheatstone-resistor-network-worked-example-03.png" width="300px" caption="The same circuit, but now transformed to a Wye network." %}}
+
+We can now collapse the rest of this circuit down by using the standard resistors-in-series and resistors-in-parallel simplifications:
+
+<p>\begin{align}
+R_{LL} &= 24\Omega + 820\Omega \nonumber \\    
+       &= 844\Omega \\
+R_{LR} &= 81.6\Omega + 180\Omega \nonumber \\    
+       &= 262\Omega \\
+\end{align}</p>
+
+{{% img src="wheatstone-resistor-network-worked-example-04.png" width="300px" caption="The two bottom legs simplified." %}}
+
+We can now simplify the two bottom resistors which are in parallel:
+
+{{% img src="wheatstone-resistor-network-worked-example-05.png" width="200px" caption="Simplifying the two bottom resistors in parallel into this one resistor." %}}
+
+And then we combine the last two resistors in series into just one resistor:
+
+{{% img src="wheatstone-resistor-network-worked-example-06.png" width="200px" caption="Simplifying the two remaining resistors in series into just the one resistor." %}}
+
+Now it's a simple task of `\(I = \frac{V}{R} \)`:
+
+<p>\begin{align}
+I &= \frac{V}{R} \\
+  &= \frac{12V}{336\Omega} \\
+  &= 35.7mA
+\end{align}</p>
+
+Link to circuitjs simulation: [https://tinyurl.com/yyhmky8p](https://tinyurl.com/yyhmky8p)

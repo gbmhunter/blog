@@ -3,5 +3,7 @@
   Relative links (within blog) will be opened in same page.
   Supports the syntax:
   [<url_text>](<url> "<url_title>")
+  
+  WARNING: Do not pass .Text to markdownify, this will result in URLs which use the URL for both the src and text to become nested!
 -->
-<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank"{{ end }}>{{ .Text | markdownify }}</a>
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if or (strings.HasPrefix .Destination "http") (strings.HasPrefix .Destination "https") }} target="_blank"{{ end }}>{{ .Text }}</a>
