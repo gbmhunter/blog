@@ -86,10 +86,20 @@ To add further protection, a TVS diode can be added to the voltage rail, to help
 
 {{% img src="io-protection-with-steering-diodes-to-rail-and-tvs.png" width="700px" caption="Protecting an IO line from ESD with both steering diodes and a TVS diode." %}}
 
-Some ESD diode arrays incorporate steering diodes and a TVS diode to do just this. For example, the Bourns CDDFN10-0506N features 6 steering diode pairs connected to a single TVS. It is designed for high-speed signals and presents an input capacitance of only 0.25-0.35pF to the signal line, as well as "feed-through" routing design to minimize impedance changes[^bib-bourns-cddfn10-0506n-ds].
+Some ESD diode arrays incorporate steering diodes and a TVS diode to do just this. For example, the Bourns CDDFN10-0506N features 6 steering diode pairs connected to a single TVS. It is designed for high-speed signals and presents an input capacitance of only 0.25-0.35pF to the signal line, as well as "feed-through" routing design to minimize impedance changes[^bib-bourns-cddfn10-0506n-ds]. Another example, shown below, is the SP3012-06UTG ESD diode array from Littelfuse[^bib-littelfuse-sp3012-ds]. It is designed to protect USB3.0 data lines:
+
+<div style="display: flex;">
+{{% img src="littelfuse-sp3012-06utg-esd-array-functional-block-diagram.png" width="300px" caption="Functional block diagram for the Littelfuse SP3012-06UTG ESD diode array[^bib-littelfuse-sp3012-ds]." %}}
+{{% img src="littelfuse-sp3012-06utg-esd-array-usb30-application-example.png" width="300px" caption="Using the Littelfuse SP3012-06UTG to protect data lines on USB3.0[^bib-littelfuse-sp3012-ds]." %}}
+</div>
+
+{{% note %}}
+The SP3012-06UTG has a Zener diode instead of a TVS diode, but the principle is still the same. "Zeners" typically offer lower max. power dissipation levels than diodes labelled as "TVS diodes".
+{{% /note %}}
 
 ## Isolation
 
 ## References
 
 [^bib-bourns-cddfn10-0506n-ds]: Bourns. _CDDFN10-0506N - TVS/Steering Diode Array (datasheet)_. Retrieved 2022-04-27 from https://www.bourns.com/docs/Product-Datasheets/CDDFN10-0506N.pdf.
+[^bib-littelfuse-sp3012-ds]: Littelfuse (2021). _SP3012 Series: 0.5pF Diode Array for USB3.0_. Retrieved 2022-04-29, from https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sp3012_datasheet.pdf.pdf.

@@ -100,7 +100,15 @@ Disadvantages:
 
 ### IEC 61000-4
 
-`IEC 61000-4` is all about electromagnetic compatibility (EMC). Of particular interest is Part 4 (`61000-4-4`), which is titled "Testing and measurement techniques – Electrical fast transient/burst immunity test"[^bib-iec-61000-4-4-2012]. It details how to construct tests on circuits to measure their susceptibility to ESD, with a focus on ESD from source such as the interruption of inductive loads and relay contact bounce. The first edition was released in 1995. As of 2022, the 2012 version is the most recent.
+`IEC 61000-4` is all about electromagnetic compatibility (EMC).
+
+**IEC 61000-4-2**
+
+For example, the ESD Withstand Voltage `\(V_{ESD}\)` for the LittelFuse SP3012-06UTG ESD diode array is rated to `\(\pm 12kV\)` to IEC61000-4-2 (Contact) and `\(\pm 25kV\)` to IEC61000-4-2 (Air)[^bib-littelfuse-sp3012-ds].
+
+**IEC 61000-4-4**
+
+Of particular interest is Part 4 (`61000-4-4`), which is titled "Testing and measurement techniques – Electrical fast transient/burst immunity test"[^bib-iec-61000-4-4-2012]. It details how to construct tests on circuits to measure their susceptibility to ESD, with a focus on ESD from source such as the interruption of inductive loads and relay contact bounce. The first edition was released in 1995. As of 2022, the 2012 version is the most recent.
 
 `IEC 61000-4-4` defines some test levels with associated peak voltages that ports must be able to withstand. A distinction is made between "power ports" and "signal ports".
 
@@ -194,3 +202,4 @@ See the [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-
 
 [^bib-bourns-cddfn10-0506n-ds]: Bourns. _CDDFN10-0506N - TVS/Steering Diode Array (datasheet)_. Retrieved 2022-04-27 from https://www.bourns.com/docs/Product-Datasheets/CDDFN10-0506N.pdf.
 [^bib-iec-61000-4-4-2012]: Retrieved 2022-04-28, from https://webstore.iec.ch/publication/22271.
+[^bib-littelfuse-sp3012-ds]: Littelfuse (2021). _SP3012 Series: 0.5pF Diode Array for USB3.0_. Retrieved 2022-04-29, from https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sp3012_datasheet.pdf.pdf.
