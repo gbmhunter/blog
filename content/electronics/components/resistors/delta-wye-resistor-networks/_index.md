@@ -80,9 +80,20 @@ R_{LR} &= 81.6\Omega + 180\Omega \nonumber \\
 
 We can now simplify the two bottom resistors which are in parallel:
 
+<p>\begin{align}
+R_{parallel} &= 844\Omega\ ||\ 262\Omega \nonumber \\    
+             &= \frac{844\Omega \cdot 262\Omega}{844\Omega + 262\Omega} \nonumber \\
+             &= 200\Omega \\
+\end{align}</p>
+
 {{% img src="wheatstone-resistor-network-worked-example-05.png" width="200px" caption="Simplifying the two bottom resistors in parallel into this one resistor." %}}
 
 And then we combine the last two resistors in series into just one resistor:
+
+<p>\begin{align}
+R_{single} &= 136\Omega + 200\Omega \nonumber \\             
+           &= 336\Omega \\
+\end{align}</p>
 
 {{% img src="wheatstone-resistor-network-worked-example-06.png" width="200px" caption="Simplifying the two remaining resistors in series into just the one resistor." %}}
 
@@ -94,4 +105,6 @@ I &= \frac{V}{R} \\
   &= 35.7mA
 \end{align}</p>
 
-Link to circuitjs simulation: [https://tinyurl.com/yyhmky8p](https://tinyurl.com/yyhmky8p)
+Link to circuitjs simulation: [https://tinyurl.com/y2tu5t2t](https://tinyurl.com/y2tu5t2t)
+
+{{% img src="circuitjs-sim-of-wheatstone-resistor-network.png" width="200px" caption="Screenshot of this Wheatstone bridge resistor network in a circuitjs simulation." %}}
