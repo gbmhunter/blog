@@ -1,0 +1,2 @@
+# Spring-mass-damper example at:
+# https://github.com/gbmhunter/NinjaCalc/blob/56daeb15612fe4c85093f958fc52a6774f0cb909/src/components/Calculators/Software/PidTuner/Processes/SpringMassDamperProcess.txt

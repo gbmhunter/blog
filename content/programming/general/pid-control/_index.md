@@ -1,30 +1,32 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Programming" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Programming ]
 date: 2012-10-01
-description: "A tutorial on PID control including equations, examples and simulations."
+description: A tutorial on PID control including equations, examples and simulations.
 draft: false
-lastmod: 2019-05-21
-tags: [ "programming", "control theory", "PID", "systems", "controllers", "setpoints", "integral windup", "simulation", "NinjaCalc" ]
+lastmod: 2022-05-07
+tags: [ programming, control theory, PID, systems, controllers, setpoints, integral windup, simulation, NinjaCalc ]
 title: PID Control
 type: page
 ---
 
 ## Overview
 
-PID control is a very common technique for controlling a system in which you have a desired set-point for the system to be in, and are able to control this with one variable. PID is an acronym for Proportional-Derivative-Integral, and describes the three mathematical processes used to decide on a output to the control system.
+PID control (a.k.a. three-term control[^wikipedia-pid]) is a very common technique for controlling a system in which you have a desired set-point for the system to be in, and are able to control this with one variable. PID is an acronym for Proportional-Derivative-Integral, and describes the three mathematical processes used to decide on a output to the control system.
 
 You change the dynamics of the PID control loop by varying three parameters, the proportional, integral and derivative constants.
 
 ## How PID Works
 
-PID is a industry-standard way of controlling a system, given a single input control parameter (e.g. duty cycle of heater) and a single variable that you want controlled (e.g. temperature of the heater).
+PID is a industry-standard way of controlling a system, given a single input control variable VC (e.g. duty cycle of heater) and a single variable (called the process variable, or PV) that you want controlled (e.g. temperature of the heater).
 
-A PID controller compares a set-point (decided on by the user, e.g. this may the temperature you want the room to be at). It then compares this with the measured system variable (the actual temperature of the room). The difference between the set-point and the measured variable is called the error.
+A PID controller compares a set-point (SP) (decided on by the user, e.g. this may the temperature you want the room to be at). It then compares this with the measured system variable (the actual temperature of the room). The difference between the set-point and the measured variable is called the error.
+
+The system variable (e.g. temperature) can also be called the _Process Variable_ (PV). The variable you can control (e.g. duty cycle of heater) is also called the _Control Variable_ (CV). 
 
 This error is what is fed into the `P` (proportional), `I` (integral) and `D` (derivative) blocks.
 
-{{< figure src="/images/2018/04/pid-controller-diagram-process-error-setpoint-measured-value.png" width="716px" caption="A block diagram of a PID controller." >}}
+{{% img src="pid-controller-diagram-process-error-setpoint-measured-value.png" width="700px" caption="A block diagram of a PID controller." %}}
 
 ## The Maths
 
@@ -53,6 +55,18 @@ This PID equation is in the continuous time domain. However, most PID control lo
 </p>
 
 This equation is suitable for implementing in code. There also exists the Z transformation of the equation, but this obscures the physical meaning of the parameters used in the controller.
+
+## Gain vs. Bands
+
+The band is also called the throttling range.
+
+Commonly referred to as the throttling range (TR), proportional band is defined as the amount of change in the controlled variable required to drive the loop output from 0 to 100%.
+
+<p>\begin{align}
+PB = \frac{100}{G}
+\end{align}</p>
+
+For example, if the proportional band (PB) is 20%, then the proportional gain (G) is 5.
 
 ## Tuning Methods
 
@@ -86,9 +100,9 @@ Be careful not to set the integral term to a negative value! This could potentia
 
 Lets assume a mass/spring/damper process (aka plant or system) which consists of a mass attached to a fixed wall by spring and damper. We want to control the position of the mass, relative to it's resting point (which will be when the spring exerts no force).
 
-{{< figure src="/images/2018/04/mass-spring-damper-system-diagram-pid.png" width="583px" caption="A mass-spring-damper system, which is commonly used to demonstrate PID control and appropriate tuning."  >}}
+{{% img src="mass-spring-damper-system-diagram-pid.png" width="600px" caption="A mass-spring-damper system, which is commonly used to demonstrate PID control and appropriate tuning." %}}
 
-The mass m is 2kg. The spring has a spring constant, k, which is 5N/m. The damping coefficient is 3 Ns/m.
+The mass `\(m\)` is `\(2kg\)`. The spring has a spring constant, `\(k\)`, which is `\(5Nm^{-1}\)`. The damping coefficient `\(c\)` is `\(3 Nsm^{-1}\)`.
 
 We can model the system using Newton's equation:
 
@@ -115,25 +129,25 @@ We can simulate this system in code by discretizing the system into small time s
 
 1. Assume starting conditions of displacement, velocity and acceleration are 0. `\(F_{ext}\)` is the control variable (set by the PID controller).
 
-2. Determine a time step, `\( \Delta{T} \)`. Then for each time step:
+2. Determine a suitably small time step, `\( \Delta{T} \)`. Then for each time step:
 
 3. Calculate the force exerted by the spring and damper.  
 
-	`\( F_{spring} = kx \)`
+	<p>$$ F_{spring} = kx $$</p>
 
- 	`\( F_{damper} = c\dot{x} \)`
+ 	<p>$$ F_{damper} = c\dot{x} $$</p>
 
 4. Calculate the acceleration for this time step:  
 
-	`\( \ddot{x} = \frac{F_{ext} - F_{spring} - F_{damper}}{m} \)`
+	<p>$$ \ddot{x} = \frac{F_{ext} - F_{spring} - F_{damper}}{m} $$</p>
 
 5. Calculate the change in velocity and displacement for this time step:  
 
-	`\( \Delta{\dot{x}} = \ddot{x} \Delta{T} \)`
+	<p>$$ \Delta{\dot{x}} = \ddot{x} \Delta{T} $$</p>
 
-	`\( \Delta{x} = \dot{x} \Delta{T} \)`
+	<p>$$ \Delta{x} = \dot{x} \Delta{T} $$</p>
    
-	Note that these are changes in velocity in displacement, so to calculate the velocity and displacement you add this change to the stored velocity/displacement state.
+	**Note that these are changes in velocity and displacement, so to calculate the current velocity and displacement you add this change to the stored velocity/displacement state.**
 
 6. Once the values for the velocity and displacement are updated, repeat steps 3-5 for the next time step. `\(F_{spring}\)` and `\(F_{damper}\)` will calculated for the next time step using these updated velocity and displacement values.
 
@@ -148,3 +162,7 @@ A really cool open-source hardware project is the [osPID Kit](http://www.rockets
 [Improving The Beginners PID: Introduction](http://brettbeauregard.com/blog/2011/04/improving-the-beginners-pid-introduction/) is a great set of articles explaining PID control loops and use Arduino code examples to supplement the explanations.
 
 [Practical Process Control: Proven Methods And Best Practices For Automated Process Control](http://controlguru.com/) has lots of useful information on PID.
+
+## References
+
+[^wikipedia-pid]: Wikipedia (2022, Mar 30). _PID controller_. Retrieved 2022-05-07, from https://en.wikipedia.org/wiki/PID_controller.
