@@ -151,6 +151,10 @@ We can simulate this system in code by discretizing the system into small time s
 
 6. Once the values for the velocity and displacement are updated, repeat steps 3-5 for the next time step. `\(F_{spring}\)` and `\(F_{damper}\)` will calculated for the next time step using these updated velocity and displacement values.
 
+### Response Plots
+
+{{% img src="msd-response-plots.png" width="500px" %}}
+
 ## Firmware Modules
 
 If you are looking for PID code for an embedded system, check out my [Pid project on GitHub (CP3id)](https://github.com/gbmhunter/CP3id). It is written in C++ and designed to be portable enough to run on many embedded systems, as well as Linux.

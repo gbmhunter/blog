@@ -2,16 +2,18 @@
 # Spring-mass-damper example at:
 # https:#github.com/gbmhunter/NinjaCalc/blob/56daeb15612fe4c85093f958fc52a6774f0cb909/src/components/Calculators/Software/PidTuner/Processes/SpringMassDamperProcess.txt
 from enum import Enum
+from pathlib import Path
 
+SCRIPT_DIR = Path(__file__).resolve().parent
 
 class IntegralLimitModes(Enum):
-    NONE = 'None',
-    CONSTANT_LIMITED = 'Constant Limited',
+    NONE = 'None'
+    CONSTANT_LIMITED = 'Constant Limited'
     OUTPUT_LIMITED = 'Output Limited'
 
 
 class Pid:
-    def init(self, pConstant, iConstant, dConstant):
+    def __init__(self, pConstant, iConstant, dConstant):
         self.pConstant = pConstant
         self.iConstant = iConstant
         self.dConstant = dConstant
@@ -22,7 +24,7 @@ class Pid:
 
         # Integral limiting (default to OFF)
         self.integralLimitSettings = {}
-        self.integralLimitSettings.mode = IntegralLimitModes.NONE
+        self.integralLimitSettings['mode'] = IntegralLimitModes.NONE
 
         # Output limiting (default to OFF)
         self.enableOutputLimiting = False
@@ -52,12 +54,12 @@ class Pid:
     def setIntegralLimit(self, options):
         # console.log('setIntegralLimit() called with settings = ')
         # console.log(options)
-        if options.mode == IntegralLimitModes.CONSTANT_LIMITED:
+        if options['mode'] == IntegralLimitModes.CONSTANT_LIMITED:
             if ('min' not in options) or ('max' not in options):
                 raise RuntimeError('Provided options must have min and ' + \
                                    ' max property when mode === CONSTANT_LIMITED.')
             
-        elif options.mode == IntegralLimitModes.OUTPUT_LIMITED:
+        elif options['mode'] == IntegralLimitModes.OUTPUT_LIMITED:
             # Output limiting has to be enabled for this mode to work
             if not self.enableOutputLimiting:
                 raise RuntimeError('Integral limiting set to OUTPUT_LIMITED but output limiting is not enabled.')                
@@ -82,7 +84,7 @@ class Pid:
         # Limit integral control
         # console.log('self.integralLimitSettings =')
         # console.log(self.integralLimitSettings)
-        if self.integralLimitSettings.mode == IntegralLimitModes.CONSTANT_LIMITED:
+        if self.integralLimitSettings['mode'] == IntegralLimitModes.CONSTANT_LIMITED:
             # console.log('Limiting integral term with constant.')
             if self.iValue > self.integralLimitSettings.max:
                 self.iValue = self.integralLimitSettings.max
@@ -110,13 +112,13 @@ class Pid:
         if self.enableOutputLimiting:
             if output > self.outputLimMax:
                 # console.log('Desired output is above max. limit.')
-                if self.integralLimitSettings.mode == IntegralLimitModes.OUTPUT_LIMITED:
+                if self.integralLimitSettings['mode'] == IntegralLimitModes.OUTPUT_LIMITED:
                     self.limitIntegralTerm(output)
                 
                 output = self.outputLimMax
             elif output < self.outputLimMin:
                 # console.log('Desired output (' + output + ') is below min. limit (' + self.outputLimMin + '.')
-                if self.integralLimitSettings.mode == IntegralLimitModes.OUTPUT_LIMITED:
+                if self.integralLimitSettings['mode'] == IntegralLimitModes.OUTPUT_LIMITED:
                     self.limitIntegralTerm(output)
                 
                 output = self.outputLimMin
@@ -170,7 +172,7 @@ class Pid:
     
 class SpringMassDamper:
 
-    def init(self):
+    def __init__(self):
         self.mass_kg = 1.0
         self.springConstantK_NPm = 20.0
         self.dampingCoefficientC_NsPm = 10.0
@@ -179,7 +181,7 @@ class SpringMassDamper:
         self.velocity_mPs = 0.0
 
     def update(self, controlVariable, timeStep_s):
-        print('update() called with controlVariable (external force) = ' + controlVariable + ', timeStep_s = ' + timeStep_s + '.')        
+        print(f'update() called with controlVariable(external force)={controlVariable}, timeStep_s={timeStep_s}.')        
 
         #     # Equation for mass-spring-damper process
         #     # Fext - kx - c*(d/dx) = m*(d^2/dx^2)
@@ -210,3 +212,61 @@ class SpringMassDamper:
         # print('displacement_m = ' + self.displacement_m)
 
         return self.displacement_m
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+def main():
+    p = 350
+    i = 300
+    d = 50
+
+    pid = Pid(p, i, d)
+    pid.setOutputLimits(True, -1000, 1000)
+
+    smd = SpringMassDamper()
+
+    start_time_s = 0.0
+    end_time_s = 3.0
+    time_step_s = 10e-3
+
+    impulse_time_s = 1.0
+    impulse_displacement_m = 1
+
+    curr_time_s = start_time_s
+
+    # Start with a set point = 0m
+    pid.setSetPoint(0)
+    control_variable_N = 0
+    displacement_m = 0
+
+    times_s = []
+    set_points_m = []
+    displacements_m = []
+    while curr_time_s <= end_time_s:
+        if curr_time_s >= impulse_time_s:
+            pid.setSetPoint(impulse_displacement_m)
+        set_points_m.append(pid.setPoint)
+        control_variable_N = pid.run(displacement_m, time_step_s)
+        
+        displacement_m = smd.update(control_variable_N, time_step_s)
+        times_s.append(curr_time_s)
+        displacements_m.append(displacement_m)
+        
+        curr_time_s += time_step_s
+
+    fig, ax = plt.subplots()
+    ax.plot(times_s, set_points_m, label='Set point')
+    ax.plot(times_s, displacements_m, label='Measured displacement')
+    ax.text(0.95, 0.5, f'p={p}, i={i}, d={d}',
+        verticalalignment='bottom', horizontalalignment='right',
+        transform=ax.transAxes, fontsize=12)
+    ax.set_xlabel('Time [s]')
+    ax.set_ylabel('Displacement [m]')
+    ax.legend()
+    fig.set_tight_layout(True)
+    plt.savefig(SCRIPT_DIR / 'msd-response-plots.png')
+
+
+if __name__ == '__main__':
+    main()
