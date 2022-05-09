@@ -4,8 +4,8 @@ categories: [ Programming ]
 date: 2012-10-01
 description: A tutorial on PID control including equations, examples and simulations.
 draft: false
-lastmod: 2022-05-07
-tags: [ programming, control theory, PID, systems, controllers, setpoints, integral windup, simulation, NinjaCalc ]
+lastmod: 2022-05-09
+tags: [ programming, control theory, PID, systems, controllers, setpoints, integral windup, simulation, NinjaCalc, derivative kick, PV, CV, SP, process value, control value ]
 title: PID Control
 type: page
 ---
@@ -32,17 +32,21 @@ This error is what is fed into the `P` (proportional), `I` (integral) and `D` (d
 
 The standard PID equation is:
 
-<div>$$output = K_{p}e(t) + K_{i}\int e(t) \mathrm{d} x + K_{d}\frac{d}{dt}e(t)$$</div>
+<p>\begin{align}
+output = K_{p}e(t) + K_{i}\int e(t) \mathrm{d} x + K_{d}\frac{d}{dt}e(t)
+\end{align}</p>
 
-The error is always defined as the `setpoint value - acutal value`, so the error is positive when the actual value is less than what it needs to be. It is defined by the following equation:
+The error is always defined as the `setpoint value - process value` `\(SP - PV\)`, so the error is positive when the actual value is less than what it needs to be. It is defined by the following equation:
 
-<div>$$e = u(t) - y(t)$$</div>
+<p>\begin{align}
+e(t) = SP - PV
+\end{align}</p>
 
 <p class="centered">
 	where:<br>
-	\(e\) = error<br>
-	\(u(t)\) = setpoint value<br>
-	\(y(t)\) = actual value<br>
+	\(e(t)\) = error<br>
+	\(SP\) = setpoint value<br>
+	\(PV\) = process value<br>
 </p>
 
 This PID equation is in the continuous time domain. However, most PID control loops are implemented digitally. The discrete equation is written:
@@ -90,11 +94,47 @@ For example, say the P, I and D terms were contributing the following effort to 
 
 * P = 6
 * I = 5
-* D =2
+* D = 2
 
 Lets pretend the output is limited to 10. `P + I + D = 13`, so the output is going to be saturated. The I effort is likely to be even larger next iteration (assuming we haven't reached our set-point yet) and so the output will saturate even more. To prevent this, we could limit the I value so that the sum of all three just hits the saturation limit, e.g. I would be set to 2.
 
 Be careful not to set the integral term to a negative value! This could potentially occur if the P + D term were already larger than the saturated value.
+
+## Getting Rid Of Derivative Kick
+
+_Derivative Kick_ is the name for large output (CV) swings when a step-change in the set point (SP) occurs. When the set point changes abruptedly (you want the temperature of the room to be 20°C, but now someone else has come along and set it 25°C), the derivative of error is mathematically infinite! In a discrete, sampled based system this essentially results in a really large number. Remembering that the derivative term is:
+
+<p>\begin{align}
+\text{derivative term} = K_{d}\frac{d}{dt}e(t)
+\end{align}</p>
+
+this results in a huge spike (kick) in the output (CV). Luckily, when implementing a PID controller, there is an easy way to fix this. Remember that the error is:
+
+<p>\begin{align}
+e(t) = SP - PV
+\end{align}</p>
+
+If we take the derivative of this:
+
+<p>\begin{align}
+\frac{d}{dt}e(t) = \frac{d}{dt}(SP - PV)
+\end{align}</p>
+
+The trick is to now assume the SP is constant. If the SP is constant, then the derivative of a constant is just 0. Thus:
+
+<p>\begin{align}
+\frac{d}{dt}e(t) = -\frac{d}{dt}(PV)
+\end{align}</p>
+
+**So for the derivative term, rather than calculating the change in error as the change in SP - PV, we just use the negative change in PV**. In code, this would look like:
+
+```python
+deltaError = newError - lastError # Don't do this, results in derivative kick
+deltaError = newPV - lastPV # Do this instead! No derivative kick with change in set pint!
+dTerm = deltaError / deltaTime 
+```
+
+This gets rid of derivative kick in the PID controller when the set point changes abruptedly.
 
 ## Worked Example
 

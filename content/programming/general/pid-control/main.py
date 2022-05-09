@@ -1,6 +1,7 @@
 # flake8: noqa
 # Spring-mass-damper example at:
 # https:#github.com/gbmhunter/NinjaCalc/blob/56daeb15612fe4c85093f958fc52a6774f0cb909/src/components/Calculators/Software/PidTuner/Processes/SpringMassDamperProcess.txt
+from distutils.command.config import config
 from enum import Enum
 from pathlib import Path
 
@@ -11,6 +12,8 @@ class IntegralLimitModes(Enum):
     CONSTANT_LIMITED = 'Constant Limited'
     OUTPUT_LIMITED = 'Output Limited'
 
+class DerivativeKickReduction(Enum):
+    
 
 class Pid:
     def __init__(self, pConstant, iConstant, dConstant):
@@ -217,9 +220,32 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def main():
-    p = 350
-    i = 300
-    d = 50
+
+    configs = [
+        {
+            'p': 350,
+            'i': 300,
+            'd': 50,
+            'plot_filename': 'msd-response-plot-underdamped.png',
+        },
+        {
+            'p': 10,
+            'i': 30,
+            'd': 0,
+            'plot_filename': 'msd-response-plot-p50-i300-d0.png',
+        },
+        {
+            'p': 10,
+            'i': 0,
+            'd': 0,
+            'plot_filename': 'msd-response-plot-just-p.png',
+        },
+    ]
+
+    for config in configs:
+        run_simulation(config['p'], config['i'], config['d'], config['plot_filename'])
+
+def run_simulation(p, i, d, plot_filename):
 
     pid = Pid(p, i, d)
     pid.setOutputLimits(True, -1000, 1000)
@@ -227,7 +253,7 @@ def main():
     smd = SpringMassDamper()
 
     start_time_s = 0.0
-    end_time_s = 3.0
+    end_time_s = 4.0
     time_step_s = 10e-3
 
     impulse_time_s = 1.0
@@ -243,11 +269,22 @@ def main():
     times_s = []
     set_points_m = []
     displacements_m = []
+
+    p_term_vals = []
+    i_term_vals = []
+    d_term_vals = []
+    output = []
     while curr_time_s <= end_time_s:
         if curr_time_s >= impulse_time_s:
             pid.setSetPoint(impulse_displacement_m)
         set_points_m.append(pid.setPoint)
         control_variable_N = pid.run(displacement_m, time_step_s)
+
+        last_pid_terms = pid.getLastTerms()
+        p_term_vals.append(last_pid_terms['p'])
+        i_term_vals.append(last_pid_terms['i'])
+        d_term_vals.append(last_pid_terms['d'])
+        output.append(last_pid_terms['output'])
         
         displacement_m = smd.update(control_variable_N, time_step_s)
         times_s.append(curr_time_s)
@@ -255,17 +292,31 @@ def main():
         
         curr_time_s += time_step_s
 
-    fig, ax = plt.subplots()
+    fig, axes = plt.subplots(ncols=1, nrows=2, figsize=(5, 10))
+    ax = axes[0]
     ax.plot(times_s, set_points_m, label='Set point')
     ax.plot(times_s, displacements_m, label='Measured displacement')
-    ax.text(0.95, 0.5, f'p={p}, i={i}, d={d}',
+    ax.text(0.95, 0.5, f'K_P={p}, K_I={i}, K_D={d}',
         verticalalignment='bottom', horizontalalignment='right',
         transform=ax.transAxes, fontsize=12)
     ax.set_xlabel('Time [s]')
     ax.set_ylabel('Displacement [m]')
+    ax.set_title('Response of System')
     ax.legend()
+
+    # Plot P, I, D terms on second axes (lower)
+    ax = axes[1]
+    ax.plot(times_s, p_term_vals, label='P Term')
+    ax.plot(times_s, i_term_vals, label='I Term')
+    ax.plot(times_s, d_term_vals, label='D Term')
+    ax.plot(times_s, output, label='Output')
+    ax.set_xlabel('Time [s]')
+    ax.set_ylabel('Force [N] (CV)')
+    ax.set_title('Values of PID Terms and Output (CV)')
+    ax.legend()
+
     fig.set_tight_layout(True)
-    plt.savefig(SCRIPT_DIR / 'msd-response-plots.png')
+    plt.savefig(SCRIPT_DIR / plot_filename)
 
 
 if __name__ == '__main__':
