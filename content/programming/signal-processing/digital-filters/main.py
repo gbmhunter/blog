@@ -125,5 +125,60 @@ def create_window_comparison_plots():
     plt.tight_layout()
     plt.savefig('window-comparison-frequency-response.png')
 
+def moving_average_error():
+    """
+    Calculate and plot the accumulated error from performing a moving average with float32's.
+    """
+    import matplotlib.pyplot as plt
+    import numpy as np
+    import random
+    # inputs = random.sample(range(0, 100), 5)
+    # inputs = [1, 2, 3, 4, 5]
+    np.random.seed(5)
+    inputs = np.random.random(10000000).astype('float32')*2
+
+    window_length = 10
+    moving_average = np.array([0], dtype='float32')
+    window = np.zeros(window_length, dtype='float32')
+    curr_pos = 0
+
+    calc_delta_period = 100
+
+    sample_numbers = []
+    deltas = []
+
+    for idx, input in enumerate(inputs):
+
+        moving_average[0] = moving_average[0] - window[curr_pos] + input
+        
+        # Save new input into window at correct position (overwrite oldest)
+        window[curr_pos] = input
+
+        if idx % calc_delta_period == 0:
+            sample_numbers.append(idx)
+            sum_of_window = np.array([0], dtype='float32')
+            for item in window:
+                sum_of_window[0] += item        
+            delta = sum_of_window - moving_average
+            deltas.append(delta)
+
+        curr_pos += 1
+        if curr_pos >= len(window):
+            curr_pos = 0
+
+    print(f'moving_average={moving_average}')
+    sum_of_window = np.array([0], dtype='float32')
+    for item in window:
+        sum_of_window[0] += item
+    print(f'sum_of_window={sum_of_window}')
+    delta = sum_of_window - moving_average
+    print(f'delta={delta}')
+
+    fig, ax = plt.subplots(figsize=(10, 7))
+    ax.plot(sample_numbers, deltas)
+    ax.set_xlabel('Sample Number')
+    ax.set_ylabel('Error')
+    ax.grid()
+
 if __name__ == '__main__':
     main()

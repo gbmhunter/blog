@@ -13,7 +13,7 @@ class IntegralLimitModes(Enum):
     OUTPUT_LIMITED = 'Output Limited'
 
 class DerivativeKickReduction(Enum):
-    
+    pass
 
 class Pid:
     def __init__(self, pConstant, iConstant, dConstant):
