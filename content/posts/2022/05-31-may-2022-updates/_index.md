@@ -13,4 +13,6 @@ type: "post"
 
 ## Updates This Month
 
-* Update the PID page.
+* Updated the PID page.
+
+* Added info the recursive SMA algorithm (and split info on SMA filters onto it's own page).
