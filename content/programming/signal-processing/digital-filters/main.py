@@ -1,12 +1,17 @@
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import scipy.signal
 from scipy.fftpack import fft, fftshift
 
+SCRIPT_DIR = Path(__file__).parent
+
 def main():
-    create_sma_plots()
-    create_window_comparison_plots()
+    # create_sma_plots()
+    # create_window_comparison_plots()
+    windowed_moving_average_accumulated_error()
 
 def create_sma_plots():
     # Equations from https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Digital-filters/Simple%20Moving%20Average/Simple-Moving-Average.html#:~:text=The%20cutoff%20frequency%20is%20defined,)%20%E2%89%88%20%E2%88%92%203.01%20d%20B%20.
@@ -64,7 +69,7 @@ def create_sma_plots():
     ax.set_title('Phase Response Of SMA')
     ax.legend()
     plt.tight_layout()
-    plt.savefig('frequency-response-of-sma-phase.png')
+    plt.savefig(SCRIPT_DIR / 'frequency-response-of-sma-phase.png')
 
 def create_window_comparison_plots():
     N = 51
@@ -123,15 +128,13 @@ def create_window_comparison_plots():
     ax.set_xlabel("Normalized frequency [cycles per sample]")
     ax.legend()
     plt.tight_layout()
-    plt.savefig('window-comparison-frequency-response.png')
+    plt.savefig(SCRIPT_DIR / 'window-comparison-frequency-response.png')
 
-def moving_average_error():
+def windowed_moving_average_accumulated_error():
     """
-    Calculate and plot the accumulated error from performing a moving average with float32's.
+    Calculate and plot the accumulated error from performing a moving average with the float32 data type.
     """
-    import matplotlib.pyplot as plt
-    import numpy as np
-    import random
+
     # inputs = random.sample(range(0, 100), 5)
     # inputs = [1, 2, 3, 4, 5]
     np.random.seed(5)
@@ -177,8 +180,10 @@ def moving_average_error():
     fig, ax = plt.subplots(figsize=(10, 7))
     ax.plot(sample_numbers, deltas)
     ax.set_xlabel('Sample Number')
-    ax.set_ylabel('Error')
+    ax.set_ylabel('Accumulated Error')
     ax.grid()
+
+    plt.savefig(SCRIPT_DIR / 'windowed-moving-average-accumulated-error.png')
 
 if __name__ == '__main__':
     main()

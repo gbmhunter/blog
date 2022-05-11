@@ -88,7 +88,9 @@ There are two common types of simple moving average filters, left-hand and symme
 
 A left-hand simple moving average filter can be represented by:
 
-<p>$$ y[i] = \frac{1}{N} \sum\limits_{j=0}^{N-1} x[i+j] $$</p>
+<p>\begin{align}
+y[i] = \frac{1}{N} \sum\limits_{j=0}^{N-1} x[i+j]
+\end{align}</p>
 
 <p class="centered">
     where:<br/>
@@ -101,7 +103,9 @@ For example, for the points `\( x[0] = 2, x[1] = 6, x[2] = 9, x[3] = 4, x[4] = 3
 
 The window can also be centered around the output signal (a symmetric moving average filter), with the following adjustment of the limits:
 
-<p>$$ y[i] = \frac{1}{N} \sum\limits_{j=-(N-1)/2}^{+(N-1)/2} x[i+j] $$</p>
+<p>\begin{align}
+y[i] = \frac{1}{N} \sum\limits_{j=-(N-1)/2}^{+(N-1)/2} x[i+j]
+\end{align}</p>
 
 Symmetric simple moving averages require `\(N\)` to be odd, so that there is an equal number of points either side. One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore it is not real time (i.e. _non-casual_).
 
