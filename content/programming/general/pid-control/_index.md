@@ -129,9 +129,9 @@ The trick is to now assume the SP is constant. If the SP is constant, then the d
 **So for the derivative term, rather than calculating the change in error as the change in SP - PV, we just use the negative change in PV**. In code, this would look like:
 
 ```python
-deltaError = newError - lastError # Don't do this, results in derivative kick
-deltaError = newPV - lastPV # Do this instead! No derivative kick with change in set pint!
-dTerm = deltaError / deltaTime 
+delta_error = new_error - last_error # Don't do this, results in derivative kick
+delta_error = new_PV - last_PV # Do this instead! No derivative kick with change in set pint!
+d_term = delta_error / delta_time 
 ```
 
 This gets rid of derivative kick in the PID controller when the set point changes abruptedly.
