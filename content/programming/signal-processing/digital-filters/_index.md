@@ -26,50 +26,6 @@ For information on the popular simple moving average (windowed) filters, see the
 y_i = y_{i-1} \cdot (1 - \alpha) + x_i \cdot \alpha \nonumber
 \end{align}</p>
 
-## FIR Moving Average (MA) Filters
-
-### Overview
-
-One of the classic examples of an FIR is a moving average (MA) filter. It can also be called a **box-car filter**. There are many subtypes of moving average filter, including the _simple moving average_ (SMA) filter and _exponential moving average_ (EMA) filter.
-
-Moving average filters are also fast. In fact, they are the **fastest digital filter availiable** (when recursion is used).
-
-{{% note %}}
-Some equations use frequency `\( f \)`, while others use angular frequency `\( \omega \)`.
-{{% /note %}}
-
-### Terminology
-
-<table>
-  <thead>
-    <tr>
-      <th>Term</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>\(N\)</td>
-      <td>The number of data points used in a moving average filter. This is called the "size of the window". \(M\) is another letter commonly used to represent the same thing.</td>
-    </tr>
-    <tr>
-      <td>\(F\)</td>
-      <td>The normalised frequency, units \(cycles/sample\). This is a frequency in the discrete time-domain. Do not confuse with \( f \),, which is a frequency in the continuous time-domain.</td>
-    </tr>
-    <tr>
-      <td>\(f\)</td>
-      <td>A frequency of a waveform in the continuous time-domain. Do not confuse with \( F \), which is a frequency in the discrete time-domain.</td>
-    </tr>
-    <tr>
-      <td>\(f_s\)</td>
-      <td>The sample frequency of a waveform, measured in the continuous time-domain. This parameter is used when you want to convert a input waveform frequency from a continuous time-domain frequency to a normalised discrete time-domain frequency (see more here).</td>
-    </tr>
-    <tr>
-      <td>\( \omega \)</td>
-      <td>The normalised frequency, in units \(radians/sample\).</td>
-    </tr>
-  </tbody>
-</table>
 
 ### Converting From A Continuous Time-Domain To Normalised Discrete Time-Domain Frequency
 
@@ -84,17 +40,6 @@ Remember, to map a continuous time-domain frequency to the discrete time-domain,
     \( f_s \) is the sample frequency in the continuous time-domain, in \(Hz\) (or \(samples/second\))<br />
 </p>
 
-### A Comparison Of The Popular Windows
-
-All the windows shown below are centered windows (and not left-aligned). The window sample weights are normalized to 1.
-
-The frequency responses can be found by extending the window waveform with 0's, and then performing an FFT on the waveform. The resultant frequency domain waveform will be the frequency response of the window. This works because **a moving window is mathematically equivalent to a convolution, and convolution in the time domain is multiplication in the frequency domain**. Hence your input signal in the frequency domain will be multiplied by FFT of the window.
-
-{{% figure src="window-comparison-shapes.png" width="600px" caption="A comparison of the popular window shapes for moving average filters." %}}
-
-And a comparison of the frequency responses of these windows is shown below: 
-
-{{% figure src="window-comparison-shapes.png" width="600px" caption="The frequency responses of the popular window shapes shown above, normalized w.r.t to the sampling frequency fs." %}}
 
 ### External Resources
 

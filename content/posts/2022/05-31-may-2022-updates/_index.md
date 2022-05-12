@@ -15,4 +15,4 @@ type: "post"
 
 * Updated the PID page.
 
-* Added info the recursive SMA algorithm (and split info on SMA filters onto it's own page).
+* Added [more info on SMA filters](/programming/signal-processing/digital-filters/moving-average-filters/), including the recursive SMA algorithm and plots showing SMA filters working on noisy data. Also moved info on moving average filters onto it's own page.

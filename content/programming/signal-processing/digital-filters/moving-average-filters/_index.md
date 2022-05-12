@@ -2,15 +2,54 @@
 authors: [ Geoffrey Hunter ]
 categories: [ Programming, Signal Processing, Filters ]
 date: 2014-02-26
-description: Simple moving average (SMA) filters.
+description: Simple moving average (SMA) filters, window sizes, frequency responses, recursive SMA, EMAs and more info on moving average filters.
 draft: false
-lastmod: 2022-05-11
-tags: [ SMA, simple moving average, moving average, filters, recursive, left-handed, centered ]
-title: Simple Moving Average Filters (SMAs)
+lastmod: 2022-05-12
+tags: [ SMA, simple moving average, moving average, EMA, exponential, filters, recursive, left-handed, centered, Python, Pandas, Numpy, convolve, kernel ]
+title: Moving Average Filters
 type: page
 ---
 
 ## Overview
+
+_Moving average filters_ are a family of filters which have a finite impulse response (FIR). They all use a finite-length window of data points to calculate the averaged output. The easiest moving average filter to understand is the _Simple Moving Average_ (SMA) filter (also called a **box-car filter**), which uses a window in where all the inputs values are weighted equally (coefficients are equal). Other moving average filters include the _Exponential Moving Average_ (EMA) filter, with exponentially-weighted coefficients.
+
+## Terminology
+
+First off, some terminology.
+
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>\(N\)</td>
+      <td>The number of data points used in a moving average filter. This is called the "size of the window". \(M\) is another letter commonly used to represent the same thing.</td>
+    </tr>
+    <tr>
+      <td>\(F\)</td>
+      <td>The normalised frequency, units \(cycles/sample\). This is a frequency in the discrete time-domain. Do not confuse with \( f \),, which is a frequency in the continuous time-domain.</td>
+    </tr>
+    <tr>
+      <td>\(f\)</td>
+      <td>A frequency of a waveform in the continuous time-domain. Do not confuse with \( F \), which is a frequency in the discrete time-domain.</td>
+    </tr>
+    <tr>
+      <td>\(f_s\)</td>
+      <td>The sample frequency of a waveform, measured in the continuous time-domain. This parameter is used when you want to convert a input waveform frequency from a continuous time-domain frequency to a normalised discrete time-domain frequency (see more here).</td>
+    </tr>
+    <tr>
+      <td>\( \omega \)</td>
+      <td>The normalised frequency, in units \(radians/sample\).</td>
+    </tr>
+  </tbody>
+</table>
+
+## Simple Moving Average Filter
 
 The _simple moving average_ (SMA) filter (a.k.a _rolling average filter_) is one of the most commonly used digital filters (or averaging device), due to it's simplicity and ease of use. Although SMA filters are simple, they are first equal (there are other filters that perform as good as, but not better) **at reducing random noise whilst retaining a sharp step response**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to separate one band of frequencies from another[^analog-devices-dsp-book-ch15].
 
@@ -214,13 +253,25 @@ Watch out when using floating point numbers with the recursive algorithm!
 
 **Integer based data does not have this accumulation error problem with the recursive SMA**. If you did need to use floats, and you don't have the CPU brute to use the non-recursive method, one solution may be to periodically clear the previous output value and recompute the output using the non-recursive equation. This will reset your error back to 0, preventing it from growing without bound.
 
+## A Comparison Of The Popular Window Shapes
+
+Stuck on what window shape to use? If a simple moving average won't suffice in it's simplicity, it might then depend on the frequency response you are after. Popular window shapes and their frequency responses are shown below. All the windows shown below are centered windows (and not left-aligned). The window sample weights are normalized to 1.
+
+The frequency responses can be found by extending the window waveform with 0's, and then performing an FFT on the waveform. The resultant frequency domain waveform will be the frequency response of the window. This works because **a moving window is mathematically equivalent to a convolution, and convolution in the time domain is multiplication in the frequency domain**. Hence your input signal in the frequency domain will be multiplied by FFT of the window.
+
+{{% img src="window-comparison-shapes.png" width="600px" caption="A comparison of the popular window shapes for moving average filters." %}}
+
+And a comparison of the frequency responses of these windows is shown below: 
+
+{{% img src="window-comparison-frequency-response.png" width="600px" caption="The frequency responses of the popular window shapes shown above, normalized w.r.t to the sampling frequency fs." %}}
+
 ## Multiple Pass Moving Average Filters
 
 A _multiple pass simple moving average filter_ is a SMA filter which has been applied multiple times to the same signal. Two passes through a simple moving average filter produces the same effect as a triangular moving average filter. After four or more passes, it is equivalent to a Gaussian filter[^analog-devices-dsp-book-ch15].
 
 ## Code Examples
 
-The following code shows how to create a left-handed SMA filter in [Python](/programming/languages/python/).
+The following code shows how to create a left-handed SMA filter in [Python](/programming/languages/python/). Note that this example is to show the logic behind the algorithm. For fast and easy SMA use in Python I would recommend using Numpy's `np.convolve()` or Panda's `pd.Series.rolling()`.
 
 ```python
 def sma_example_code():
