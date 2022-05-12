@@ -16,7 +16,11 @@ The _simple moving average_ (SMA) filter (a.k.a _rolling average filter_) is one
 
 The following plot shows the effect of a SMA filter. The data used is New Zealand's national average temperature (data from https://data.mfe.govt.nz/table/89453-new-zealands-national-temperature-19092016/):
 
-TODO: Add plot.
+{{% img src="nz-nat-yearly-temp-plot.png" width="600px" caption="The effect of SMAs on data. New Zealand's national average yearly temperatures, overlaid with a 5-wide and 20-wide left-handed SMA." %}}
+
+{{% note %}}
+The SMAs don't start at the same point as the data due to them not being considered "valid" until the window is full of data.
+{{% /note %}}
 
 There are two common types of simple moving average filters, left-hand and symmetric filters.
 
@@ -33,7 +37,13 @@ y[i] = \frac{1}{N} \sum\limits_{j=0}^{N-1} x[i+j]
     \( N \) = the number of points in the average (the width of the window)<br/>
  </p>
 
-For example, for the points `\( x[0] = 2, x[1] = 6, x[2] = 9, x[3] = 4, x[4] = 3 \)`, with a windows size of `\(N = 3\)`, then `\( y[1] = \frac{6 + 9 + 4}{3} \)`. Left-handed filters of this type can be calculated in real-time (`\(y[i]\)` can be found as soon as `\(x[i]\)` is known).
+For example, with a windows size of `\(N = 5\)`, the moving average at point 9 would be sum of the last 5 inputs divided by 5:
+
+<p>\begin{align}
+y[9] = \frac{x[9] + x[8] + x[7] + x[6] + x[5]}{5}
+\end{align}</p>
+
+Left-handed filters of this type can be calculated in real-time (`\(y[i]\)` can be found as soon as `\(x[i]\)` is known).
 
 The window can also be centered around the output signal (a symmetric moving average filter), with the following adjustment of the limits:
 
@@ -51,7 +61,7 @@ b_i = \frac{1}{N + 1}
 
 A simple moving average filter can also be seen as a convolution between the input signal and a rectangular pulse whose area is 1.
 
-### Frequency Response
+## Frequency Response
 
 The frequency response for a simple moving average filter is given by:
 
@@ -89,7 +99,7 @@ and the phase:
 
 {{% img src="frequency-response-of-sma-phase.png" width="700px" caption="The phase response of a SMA filter with fs=1kHz and a window size of 10. Frequency range is from 0Hz up to Nyquist (fs/2)." %}}
 
-### Cutoff Frequency
+## Cutoff Frequency
 
 When designing a SMA filter, you typically want to set the window size `\(N\)` based on the frequencies you want to pass through and those you want reject. The easiest figure of merit for this is the cutoff frequency `\(\omega_c\)` (or `\(f_c\)`), which we'll define here as the `\(\frac{1}{2}\)` power point (`\(-3dB\)` point). This is the frequency at which the power of the signal is reduced by half.
 
@@ -160,18 +170,18 @@ where:<br/>
 \(f_s\) is the sample frequency, in Hertz \(Hz\)
 </p>
 
-### Recursive SMA Implementation
+## Recursive SMA Implementation
 
-**The computation power required to calculate the output at each step in a SMA filter can be significantly reduced with a simple trick**. For example, consider a basic left-handed SMA with a window size of 5 (no division just to simplify things):
+**The computation power required to calculate the output at each step in a SMA filter can be significantly reduced with a simple trick**. For example, consider a basic left-handed SMA with a window size of 5:
 
 <p>\begin{align}
-y[5] = x[5] + x[6] + x[7] + x[8] + x[9]
+y[9] = \frac{x[9] + x[8] + x[7] + x[6] + x[5]}{5}
 \end{align}</p>
 
 Instead of calculating each output as above, we can instead save the last output value we calculated, add the new input data point to it, and subtract the oldest data point from the window:
 
 <p>\begin{align}
-y[5] = y[6] + x[5] - x[10]
+y[9] = y[8] + \frac{1}{5}(x[9] - x[4])
 \end{align}</p>
 
 This is called a _recursive_ algorithm[^analog-devices-dsp-book-ch15], because the output of one step is used in the calculation of future steps. It's main benefit is the tremendous speed increase in computing each step, especially when the window size is large.
@@ -194,11 +204,11 @@ Watch out when using floating point numbers with the recursive algorithm!
 
 **Integer based data does not have this accumulation error problem with the recursive SMA**. If you did need to use floats, and you don't have the CPU brute to use the non-recursive method, one solution may be to periodically clear the previous output value and recompute the output using the non-recursive equation. This will reset your error back to 0, preventing it from growing without bound.
 
-### Multiple Pass Moving Average Filters
+## Multiple Pass Moving Average Filters
 
 A _multiple pass simple moving average filter_ is a SMA filter which has been applied multiple times to the same signal. Two passes through a simple moving average filter produces the same effect as a triangular moving average filter. After four or more passes, it is equivalent to a Gaussian filter[^analog-devices-dsp-book-ch15].
 
-### Code Examples
+## Code Examples
 
 The following code shows how to create a left-handed SMA filter in [Python](/programming/languages/python/).
 
@@ -217,7 +227,8 @@ def sma_example_code():
 
     for idx, input in enumerate(inputs):
         # Use recursive SMA algorithm
-        moving_average = moving_average - window[curr_pos] + input
+        moving_average = moving_average + 
+            (1/window_length)*(input - window[curr_pos])
 
         # Save new input into window at correct position (overwrite oldest)
         window[curr_pos] = input
@@ -225,21 +236,25 @@ def sma_example_code():
         curr_pos += 1
         if curr_pos >= len(window):
             curr_pos = 0
-
-        print(f'y[{idx}] = {moving_average}')
+        
+        if idx < window_length - 1:
+            # SMA not yet valid
+            print(f'y[{idx}] = NAN')
+        else:
+            print(f'y[{idx}] = {moving_average:.2f}')
 ```
 
 The output is:
 
 ```
-y[0] = 1
-y[1] = 7
-y[2] = 10
-y[3] = 13
-y[4] = 9
+y[0] = NAN
+y[1] = NAN
+y[2] = 3.33
+y[3] = 4.33
+y[4] = 3.00
 ```
 
-### Fast Start-up
+## Fast Start-up
 
 Like all filters, the simple moving average filter introduces lag to the signal. You can use fast start-up logic to reduce the lag on start-up (and reset, if applicable). This is done by keeping track of how many data points have been passed through the filter, and if less have been passed through than the width of the window (i.e. some window elements are still at their initialised value, normally 0), you ignore them when calculating the average.
 

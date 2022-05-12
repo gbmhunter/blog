@@ -10,31 +10,31 @@ SCRIPT_DIR = Path(__file__).parent
 
 def main():
     nzs_national_yearly_temp_plot()
-    # sma_example_code()
+    sma_example_code()
     # create_sma_plots()
     # windowed_moving_average_accumulated_error()
 
 
 def nzs_national_yearly_temp_plot():
+    # Extract temperature data from .csv file
     df = pd.read_csv(SCRIPT_DIR / 'new-zealands-national-temperature-19092016.csv')
+    # Data set contains other data, we only care about the national average temperature
+    df = df[df['Statistic'] == 'National_average_temperature']
+    df['SMA_5'] = df['Temperature_degrees_celcius'].rolling(5).mean()
+    df['SMA_20'] = df['Temperature_degrees_celcius'].rolling(20).mean()
 
-    window_length = 10
-    moving_average = 0
-    window = [0]*window_length
-    curr_pos = 0
-
-    for idx, input in enumerate(inputs):
-        # Use recursive SMA algorithm
-        moving_average = moving_average - window[curr_pos] + input
-
-        # Save new input into window at correct position (overwrite oldest)
-        window[curr_pos] = input
-
-        curr_pos += 1
-        if curr_pos >= len(window):
-            curr_pos = 0
-
-        print(f'y[{idx}] = {moving_average}')
+    # Plot graph of raw data and two SMAs
+    fig, ax = plt.subplots()
+    ax.plot(df['Year'], df['Temperature_degrees_celcius'], alpha=0.5, label='Raw')
+    ax.plot(df['Year'], df['SMA_5'], label='SMA_5')
+    ax.plot(df['Year'], df['SMA_20'], label='SMA_20')
+    ax.set_xlabel('Temperature [$^{\circ}C$]')
+    ax.set_ylabel('Year')
+    ax.set_title('NZs National Yearly Average Temperatures With SMAs')
+    ax.grid()
+    ax.legend()
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'nz-nat-yearly-temp-plot.png')
 
 def sma_example_code():
     """
@@ -50,7 +50,7 @@ def sma_example_code():
 
     for idx, input in enumerate(inputs):
         # Use recursive SMA algorithm
-        moving_average = moving_average - window[curr_pos] + input
+        moving_average = moving_average + (1/window_length)*(input - window[curr_pos])
 
         # Save new input into window at correct position (overwrite oldest)
         window[curr_pos] = input
@@ -58,8 +58,12 @@ def sma_example_code():
         curr_pos += 1
         if curr_pos >= len(window):
             curr_pos = 0
-
-        print(f'y[{idx}] = {moving_average}')
+        
+        if idx < window_length - 1:
+            # SMA not yet valid
+            print(f'y[{idx}] = NAN')
+        else:
+            print(f'y[{idx}] = {moving_average:.2f}')
 
 
 def create_sma_plots():
