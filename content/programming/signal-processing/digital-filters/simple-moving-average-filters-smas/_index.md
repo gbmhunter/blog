@@ -19,8 +19,12 @@ The following plot shows the effect of a SMA filter. The data used is New Zealan
 {{% img src="nz-nat-yearly-temp-plot.png" width="600px" caption="The effect of SMAs on data. New Zealand's national average yearly temperatures, overlaid with a 5-wide and 20-wide left-handed SMA." %}}
 
 {{% note %}}
-The SMAs don't start at the same point as the data due to them not being considered "valid" until the window is full of data.
+Sometimes SMAs don't start at the same point as the data due to them not being considered "valid" until the window is full of data (like above). Other times you may want to reduce the effective window size as you approach the ends to get an output at every input.
 {{% /note %}}
+
+The below plot shows a noisy 1kHz sine wave (with random, normally distributed noise) and then the application of a SMA filter (symmetric, window size = 50) which does a commendable job at recovering the original signal:
+
+{{% img src="sine-wave-with-noise.png" width="600px" caption="Plot showing a noisy sine wave (random, normally distributed noise) and then the application of a SMA filter (symmetric, window size = 50) which recovers the original signal really well!" %}}
 
 There are two common types of simple moving average filters, left-handed and symmetric filters.
 
@@ -57,7 +61,7 @@ For example, using our `\(y[9]\)`:
 y[9] = \frac{x[11] + x[10] + x[9] + x[8] + x[7]}{5}
 \end{align}</p>
 
-Symmetric simple moving averages require `\(N\)` to be odd, so that there is an equal number of points either side. The advantage of a symmetric filter is that the output is not delayed (phase shifted) relative to the input signal, as it is with the left-handed filter. **One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore it is not real time (i.e. _non-casual_)**. Most SMA filters use on stock market data use a left-handed filter so that it is real-time.
+Symmetric simple moving averages require `\(N\)` to be odd, so that there is an equal number of points either side. The advantage of a symmetric filter is that the output is not delayed (phase shifted) relative to the input signal, as it is with the left-handed filter. **One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore it is not real time (i.e. _non-casual_)**. Most SMA filters used on stock market data use a left-handed filter so that it is real-time.
 
 When treating a simple moving average filter as a FIR, the coefficients are all equal. The order of the filter is 1 less than the value you divide each value by. The coefficients are given by the following equation:
 

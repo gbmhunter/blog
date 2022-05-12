@@ -9,9 +9,10 @@ SCRIPT_DIR = Path(__file__).parent
 
 
 def main():
-    nzs_national_yearly_temp_plot()
-    sma_example_code()
-    # create_sma_plots()
+    # nzs_national_yearly_temp_plot()
+    sine_wave_with_noise_plot()
+    # sma_example_code()
+    # sma_mag_and_phase_plots()
     # windowed_moving_average_accumulated_error()
 
 
@@ -35,6 +36,33 @@ def nzs_national_yearly_temp_plot():
     ax.legend()
     plt.tight_layout()
     plt.savefig(SCRIPT_DIR / 'nz-nat-yearly-temp-plot.png')
+
+
+def sine_wave_with_noise_plot():
+    sine_wave_f_Hz = 1e3
+    num_samples = 1000
+    amplitude = 1.0
+    window_size = 50
+    # Sine wave freq is 1kHz, so want to get two periods in
+    t = np.linspace(0, 2e-3, num=num_samples)
+    y = amplitude*np.sin(t*2*np.pi*sine_wave_f_Hz)
+
+    # Add noise to sine wave. mean is 0
+    rng = np.random.default_rng(5)
+    noise = rng.normal(0, amplitude/5, num_samples)
+    y += noise
+
+    # y_sma = pd.Series(y).rolling(window=window_size).mean().values
+    y_sma = np.convolve(y, np.ones(window_size)/window_size, mode='same')
+
+    fig, ax = plt.subplots()
+    ax.plot(t*1e3, y, label='Noisy sine wave', alpha=0.6)
+    ax.plot(t*1e3, y_sma, label=f'SMA with N={window_size}')
+    ax.set_xlabel('Time [ms]')
+    ax.set_ylabel('Amplitude')
+    ax.legend()
+    plt.savefig(SCRIPT_DIR / 'sine-wave-with-noise.png')
+
 
 def sma_example_code():
     """
@@ -66,7 +94,7 @@ def sma_example_code():
             print(f'y[{idx}] = {moving_average:.2f}')
 
 
-def create_sma_plots():
+def sma_mag_and_phase_plots():
     # Equations from https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Digital-filters/Simple%20Moving%20Average/Simple-Moving-Average.html#:~:text=The%20cutoff%20frequency%20is%20defined,)%20%E2%89%88%20%E2%88%92%203.01%20d%20B%20.
 
     # Function for calculating the cut-off frequency of a moving average filter
