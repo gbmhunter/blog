@@ -12,7 +12,7 @@ type: page
 
 ## Overview
 
-The _simple moving average_ (SMA) filter (a.k.a _rolling average filter_) is one of the most commonly used digital filters, due to it's simplicity and ease of use. Although SMA filters are simple, they are first equal (there are other filters that perform as good as, but not better) **at reducing random noise whilst retaining a sharp step response**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to separate one band of frequencies from another[^analog-devices-dsp-book-ch15]. You can see their poor roll-off in the stop band in proceeding graphs.
+The _simple moving average_ (SMA) filter (a.k.a _rolling average filter_) is one of the most commonly used digital filters (or averaging device), due to it's simplicity and ease of use. Although SMA filters are simple, they are first equal (there are other filters that perform as good as, but not better) **at reducing random noise whilst retaining a sharp step response**. However, they are the **worst filter for frequency domain signals**, they have a very poor ability to separate one band of frequencies from another[^analog-devices-dsp-book-ch15].
 
 The following plot shows the effect of a SMA filter. The data used is New Zealand's national average temperature (data from https://data.mfe.govt.nz/table/89453-new-zealands-national-temperature-19092016/):
 
@@ -22,12 +22,12 @@ The following plot shows the effect of a SMA filter. The data used is New Zealan
 The SMAs don't start at the same point as the data due to them not being considered "valid" until the window is full of data.
 {{% /note %}}
 
-There are two common types of simple moving average filters, left-hand and symmetric filters.
+There are two common types of simple moving average filters, left-handed and symmetric filters.
 
 A left-hand simple moving average filter can be represented by:
 
 <p>\begin{align}
-y[i] = \frac{1}{N} \sum\limits_{j=0}^{N-1} x[i+j]
+y[i] = \frac{1}{N} \sum\limits_{j=0}^{N-1} x[i-j]
 \end{align}</p>
 
 <p class="centered">
@@ -37,7 +37,7 @@ y[i] = \frac{1}{N} \sum\limits_{j=0}^{N-1} x[i+j]
     \( N \) = the number of points in the average (the width of the window)<br/>
  </p>
 
-For example, with a windows size of `\(N = 5\)`, the moving average at point 9 would be sum of the last 5 inputs divided by 5:
+For example, with a windows size of `\(N = 5\)`, the moving average at point 9 would be sum of the last 5 inputs `\(x[9]\)` thru to `\(x[5]\)` divided by 5:
 
 <p>\begin{align}
 y[9] = \frac{x[9] + x[8] + x[7] + x[6] + x[5]}{5}
@@ -51,7 +51,13 @@ The window can also be centered around the output signal (a symmetric moving ave
 y[i] = \frac{1}{N} \sum\limits_{j=-(N-1)/2}^{+(N-1)/2} x[i+j]
 \end{align}</p>
 
-Symmetric simple moving averages require `\(N\)` to be odd, so that there is an equal number of points either side. One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore it is not real time (i.e. _non-casual_).
+For example, using our `\(y[9]\)`:
+
+<p>\begin{align}
+y[9] = \frac{x[11] + x[10] + x[9] + x[8] + x[7]}{5}
+\end{align}</p>
+
+Symmetric simple moving averages require `\(N\)` to be odd, so that there is an equal number of points either side. The advantage of a symmetric filter is that the output is not delayed (phase shifted) relative to the input signal, as it is with the left-handed filter. **One disadvantage of a symmetric filter is that you have to know data points that occur after the point in interest, and therefore it is not real time (i.e. _non-casual_)**. Most SMA filters use on stock market data use a left-handed filter so that it is real-time.
 
 When treating a simple moving average filter as a FIR, the coefficients are all equal. The order of the filter is 1 less than the value you divide each value by. The coefficients are given by the following equation:
 
