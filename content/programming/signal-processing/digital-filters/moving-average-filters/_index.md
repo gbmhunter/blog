@@ -65,9 +65,11 @@ The below plot shows a noisy 1kHz sine wave (with random, normally distributed n
 
 {{% img src="sine-wave-with-noise.png" width="600px" caption="Plot showing a noisy sine wave (random, normally distributed noise) and then the application of a SMA filter (symmetric, window size = 50) which recovers the original signal really well!" %}}
 
-There are two common types of simple moving average filters, left-handed and symmetric filters.
+There are two common types of simple moving average filters:
+* Left-handed SMA
+* Symmetric SMA
 
-A left-hand simple moving average filter can be represented by:
+A left-handed simple moving average filter can be represented by:
 
 <p>\begin{align}
 y[i] = \frac{1}{N} \sum\limits_{j=0}^{N-1} x[i-j]
@@ -91,10 +93,10 @@ Left-handed filters of this type can be calculated in real-time (`\(y[i]\)` can 
 The window can also be centered around the output signal (a symmetric moving average filter), with the following adjustment of the limits:
 
 <p>\begin{align}
-y[i] = \frac{1}{N} \sum\limits_{j=-(N-1)/2}^{+(N-1)/2} x[i+j]
+y[i] = \frac{1}{N} \sum\limits_{j=-(N-1)/2}^{+(N-1)/2} x[i-j]
 \end{align}</p>
 
-For example, using our `\(y[9]\)`:
+For example, using our `\(y[9]\)` again:
 
 <p>\begin{align}
 y[9] = \frac{x[11] + x[10] + x[9] + x[8] + x[7]}{5}
@@ -109,8 +111,7 @@ b_i = \frac{1}{N + 1}
 \end{align}</p>
 
 A simple moving average filter can also be seen as a convolution between the input signal and a rectangular pulse whose area is 1.
-
-## Frequency Response
+### Frequency Response
 
 The frequency response for a simple moving average filter is given by:
 
@@ -148,7 +149,7 @@ and the phase:
 
 {{% img src="frequency-response-of-sma-phase.png" width="700px" caption="The phase response of a SMA filter with fs=1kHz and a window size of 10. Frequency range is from 0Hz up to Nyquist (fs/2)." %}}
 
-## Cutoff Frequency
+### Cutoff Frequency
 
 When designing a SMA filter, you typically want to set the window size `\(N\)` based on the frequencies you want to pass through and those you want reject. The easiest figure of merit for this is the cutoff frequency `\(\omega_c\)` (or `\(f_c\)`), which we'll define here as the `\(\frac{1}{2}\)` power point (`\(-3dB\)` point). This is the frequency at which the power of the signal is reduced by half.
 
@@ -219,7 +220,7 @@ where:<br/>
 \(f_s\) is the sample frequency, in Hertz \(Hz\)
 </p>
 
-## Recursive SMA Implementation
+### Recursive SMA Implementation
 
 **The computation power required to calculate the output at each step in a SMA filter can be significantly reduced with a simple trick**. For example, consider a basic left-handed SMA with a window size of 5:
 
@@ -234,6 +235,10 @@ y[9] = y[8] + \frac{1}{5}(x[9] - x[4])
 \end{align}</p>
 
 This is called a _recursive_ algorithm[^analog-devices-dsp-book-ch15], because the output of one step is used in the calculation of future steps. It's main benefit is the tremendous speed increase in computing each step, especially when the window size is large.
+
+{{% note %}}
+The simple moving average filter is the only such window-based filter which can be speed up with this recursion trick. Other forms like exponential, Gaussian and Blackman moving averages have to use computationally expensive convolution.
+{{% /note %}}
 
 **One thing to watch out for is accumulated error if using floating point numbers**. Because you are now calculating the next output value from the previous output calculation (rather than fresh input data, as you would for the non-recursive algorithm), floating point precision errors will accumulate slowly in the output. 
 
@@ -253,23 +258,19 @@ Watch out when using floating point numbers with the recursive algorithm!
 
 **Integer based data does not have this accumulation error problem with the recursive SMA**. If you did need to use floats, and you don't have the CPU brute to use the non-recursive method, one solution may be to periodically clear the previous output value and recompute the output using the non-recursive equation. This will reset your error back to 0, preventing it from growing without bound.
 
-## A Comparison Of The Popular Window Shapes
+### Similarity To Convolution
 
-Stuck on what window shape to use? If a simple moving average won't suffice in it's simplicity, it might then depend on the frequency response you are after. Popular window shapes and their frequency responses are shown below. All the windows shown below are centered windows (and not left-aligned). The window sample weights are normalized to 1.
+A SMA filter is identical to the [convolution (a mathematical concept)](/programming/signal-processing/convolution/) of the input signal with the window waveform (kernel). Typically you would set the height of each point in the window to `\(\frac{1}{N}\)`, so that the area under the window curve is 1 (and the SMA has no gain). For example, a 5-point window waveform `\(g(t)\)` would have the values:
 
-The frequency responses can be found by extending the window waveform with 0's, and then performing an FFT on the waveform. The resultant frequency domain waveform will be the frequency response of the window. This works because **a moving window is mathematically equivalent to a convolution, and convolution in the time domain is multiplication in the frequency domain**. Hence your input signal in the frequency domain will be multiplied by FFT of the window.
+<p>\begin{align}
+g(t) = 0, 0, \frac{1}{5}, \frac{1}{5}, \frac{1}{5}, \frac{1}{5}, \frac{1}{5}, 0, 0
+\end{align}</p>
 
-{{% img src="window-comparison-shapes.png" width="600px" caption="A comparison of the popular window shapes for moving average filters." %}}
+### Multiple Pass Moving Average Filters
 
-And a comparison of the frequency responses of these windows is shown below: 
+A _multiple pass simple moving average filter_ is a SMA filter which has been applied multiple times to the same signal. Two passes through a simple moving average filter produces the same effect as a triangular moving average filter (convolution of a square wave with a square wave is a triangle wave). After four or more passes, it is equivalent to a Gaussian filter[^analog-devices-dsp-book-ch15].
 
-{{% img src="window-comparison-frequency-response.png" width="600px" caption="The frequency responses of the popular window shapes shown above, normalized w.r.t to the sampling frequency fs." %}}
-
-## Multiple Pass Moving Average Filters
-
-A _multiple pass simple moving average filter_ is a SMA filter which has been applied multiple times to the same signal. Two passes through a simple moving average filter produces the same effect as a triangular moving average filter. After four or more passes, it is equivalent to a Gaussian filter[^analog-devices-dsp-book-ch15].
-
-## Code Examples
+### Code Examples
 
 The following code shows how to create a left-handed SMA filter in [Python](/programming/languages/python/). Note that this example is to show the logic behind the algorithm. For fast and easy SMA use in Python I would recommend using Numpy's `np.convolve()` or Panda's `pd.Series.rolling()`.
 
@@ -315,13 +316,29 @@ y[3] = 4.33
 y[4] = 3.00
 ```
 
-## Fast Start-up
+### Fast Start-up
 
 Like all filters, the simple moving average filter introduces lag to the signal. You can use fast start-up logic to reduce the lag on start-up (and reset, if applicable). This is done by keeping track of how many data points have been passed through the filter, and if less have been passed through than the width of the window (i.e. some window elements are still at their initialised value, normally 0), you ignore them when calculating the average.
 
 This is conceptually the same as having a variable-width window which increases from 1 to the maximum value, `\(x\)`, as the first `\(x\)` values are passed through the filter. The window width then stays at width `\(x\)` for evermore (or until the filter is reset/program restarts).
 
 If you also know a what times the signal will jump significantly, you can reset the filter at these points to remove the lag from the output. You could even do this automatically by resetting the filter if the value jumps by some minimum threshold.
+
+## Exponential Moving Average (EMA) Filters
+
+TODO: Add content.
+
+## A Comparison Of The Popular Window Shapes
+
+Stuck on what window shape to use? If a simple moving average won't suffice in it's simplicity, it might then depend on the frequency response you are after. Popular window shapes and their frequency responses are shown below. All the windows shown below are centered windows (and not left-aligned). The window sample weights are normalized to 1.
+
+The frequency responses can be found by extending the window waveform with 0's, and then performing an FFT on the waveform. The resultant frequency domain waveform will be the frequency response of the window. This works because **a moving window is mathematically equivalent to a convolution, and convolution in the time domain is multiplication in the frequency domain**. Hence your input signal in the frequency domain will be multiplied by FFT of the window.
+
+{{% img src="window-comparison-shapes.png" width="600px" caption="A comparison of the popular window shapes for moving average filters." %}}
+
+And a comparison of the frequency responses of these windows is shown below: 
+
+{{% img src="window-comparison-frequency-response.png" width="600px" caption="The frequency responses of the popular window shapes shown above, normalized w.r.t to the sampling frequency fs." %}}
 
 ## References
 
