@@ -326,7 +326,7 @@ If you also know a what times the signal will jump significantly, you can reset 
 
 ## Exponential Moving Average (EMA) Filters
 
-TODO: Add content.
+Unlike a SMA, most EMA filters is not windowed, and the next value depends on all previous inputs. Thus most EMA filters are a form of infinite impulse response (IIR) filter, whilst a SMA is a finite impulse response (FIR) filter. There are exceptions, and you can indeed build a windowed exponential moving average filter in where the coefficients are weighted exponentially.
 
 ## A Comparison Of The Popular Window Shapes
 

@@ -14,6 +14,7 @@ def main():
     # sma_example_code()
     # sma_mag_and_phase_plots()
     # windowed_moving_average_accumulated_error()
+    # create_window_comparison_plots()
 
 
 def nzs_national_yearly_temp_plot():
@@ -208,6 +209,66 @@ def windowed_moving_average_accumulated_error():
     ax.grid()
 
     plt.savefig(SCRIPT_DIR / 'windowed-moving-average-accumulated-error.png')
+
+
+def create_window_comparison_plots():
+    N = 51
+
+    window_data = [
+        {
+            'name': 'Boxcar',
+            'values': scipy.signal.boxcar(N),
+        },
+        {
+            'name': 'Exponential',
+            'values': scipy.signal.windows.exponential(N, tau=3.0),
+        },
+        {
+            'name': 'Gaussian',
+            'values': scipy.signal.windows.gaussian(N, std=7),
+        },
+        {
+            'name': 'Blackman',
+            'values': scipy.signal.blackman(N),
+        },
+    ]
+
+    def plot_window(window, ax, label):
+        ax.plot(window, label=label)
+
+    def plot_freq_response(window, ax, label):
+        with np.errstate(divide='ignore', invalid='ignore'):
+            # fft() does not center the DC component, need to use fftshift() later
+            # to do that
+            # 2048 significantly larger than window size, so 0 padding will occur
+            A = fft(window, 2048) / (len(window)/2.0)
+            freq = np.linspace(-0.5, 0.5, len(A)) # This is normalized frequency (w.r.t sampling frequency)
+            response = 20 * np.log10(np.abs(fftshift(A / abs(A).max())))
+        ax.plot(freq, response, label=label)
+
+    fig, axes = plt.subplots(1, 1, figsize=(10, 7), squeeze=False)
+    ax = axes[0][0]
+    for window in window_data:
+        plot_window(window['values'], ax, window['name'])
+    ax.set_title("Popular window shapes, N=51")
+    ax.set_xlabel('Sample')
+    ax.set_ylabel('Weight')
+    ax.legend()
+    plt.tight_layout()
+    plt.savefig('window-comparison-shapes.png')
+
+    fig, axes = plt.subplots(1, 1, figsize=(10, 7), squeeze=False)
+    ax = axes[0][0]
+    for window in window_data:
+        plot_freq_response(window['values'], ax, window['name'])
+
+    ax.axis([0, 0.5, -120, 0])
+    ax.set_title("Frequency response of popular windows, N=51")
+    ax.set_ylabel("Normalized magnitude [dB]")
+    ax.set_xlabel("Normalized frequency [cycles per sample]")
+    ax.legend()
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'window-comparison-frequency-response.png')
 
 
 if __name__ == '__main__':
