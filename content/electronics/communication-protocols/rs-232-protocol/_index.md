@@ -1,0 +1,123 @@
+---
+authors: [ "Geoffrey Hunter" ]
+categories: [ "Electronics", "Communication Protocols" ]
+date: 2015-10-29
+draft: false
+lastmod: 2022-03-02
+tags: [ "RS-232", "serial", "UART", "DTE", "DCE", "communication protocol", "TX", "RX", "USB" ]
+title: "RS-232 Protocol"
+type: "page"
+---
+
+## Overview
+
+RS-232 is a digital data transmission protocol with origins dating back to the 1960's. It was designed as a communication protocol to talk between _DTE_ (data terminal equipment) and _DCE_ (data communication equipment). It is closely related to the [UART communication protocol](/electronics/communication-protocols/uart-communication-protocol/) provided by most microcontrollers, except that RS-232 uses higher-voltage signalling whilst UART is restricted between `VCC` of the microcontroller and `GND`.
+
+|                           |
+|---------------------------|---------------------
+| Drive Type                | Single-ended
+| Num. Wires (excl. GND)    | 2 (TX/RX) or 4 (TX/RX and RTS/CTS)
+| Duplexity                 | Full
+| Connection Topology       | Point-to-point
+| OSI Layers                | Layers 1 (physical) and 2 (data link)
+
+RS-232 is commonly used today for a variety of different purposes in embedded systems, incl industrial equipment, test and measurement equipment. RS-232 ports are no longer available on most desktop computers (and certainly not on laptops), but USB-to-RS232 adapters are cheap, popular and easy to use with almost any operating system.
+
+## Pinout
+
+{{% img src="rs232-comm-protocol-male-connector-large-pinout.png" width="350" caption="The pinout of a male RS-232 DE-9 connector. Image from http://www.ethernut.de/." %}}
+
+## Revisions
+
+* RS-232C (or just shortened to RS-232)
+* EIA-232-D (1987)
+* EIA/TIA-232-E (1991)
+
+## Flow Control
+
+The flow control is a way of detecting when the receiver or transmitter is ready to accept or send new data. The UART protocol provides a few (all optional) methods for flow control:
+
+* Hardware RTS/CTS lines
+* Software XON/XOFF flow control
+
+### RTS/CTS
+
+This is done by various additional connections to the standard transmit, receive and ground wires. The two most common are CTS and RTS. Typically, a micro-controller may have one or two UART peripherals that support this feature, while the rest are just basic non-flow control UART's.
+
+A small amount of power can be extracted from the RTS and CTS lines for powering low-power devices.
+
+The following tables lists all of the flow control signals (as well as the data signals), with respect to the device in question. Matching signals are grouped together.
+
+| Signal | Port Type | Description | DB-25 Pin | DE-9 Pin |
+|---|---|---|---|---|
+| DTR (Data Terminal Ready) | Output | DTE drives this to indicate to the DCE that it is present. | 5 | 4 |
+| DCD (Data Carrier Detect) | Input | DCE drives this when it is connected to the telephone line. | 8 | 1 |
+| RI (Ring Indicator) | Input | The DCE drives this when it has detected a phone call. Note that there is no matching signal going the other way. | 22 | 9 |
+| RTS (Request To Send) | Output | DTE drives this to tell the DCE to get ready to receive data. | 4 | 7 |
+| CTS (Clear To Send) | Input | Driven by the DCE when it is ready to accept data. | 5 | 8 |
+| TxD (Data Transmit) | Output | The DTE sends data to the DCE over this line. | 2 | 3 |
+| RxD (Data Receive) | Input | The DCE sends data to the DTE over this line. | 3 | 2 |
+| Common Ground (GND) | n/a | The common ground for all signals. | 7 | 5 |
+| Protective Ground (PG) | n/a | The protective ground. This is usually just connected up to the common ground on the PCB. | 1 | n/a |
+
+{{% warning %}}
+WARNING: There is confusion of how to connect two RS-232 (or UART!) devices together arises when it is not terminal equipment (DTE) connected to modem equipment (DCE). In the embedded world, microcontrollers and other devices which support RS-232/UART can act either as a DTE or a DCE. **Take particular care when connecting RS-232/UART ports together on embedded devices!**
+{{% /warning %}}
+
+> Rule-of-thumb: Most RS-232 serial interfaces with a male 9 or 25 pin connector are DTE's, most with a female 9 or 25 pin connector are DCE's.
+
+Most often, manufacturers label the UART pins as DTE's. In this case, you have to swap all connections with their matching line. So TxD of device 1 is connected to RxD of device 2, RxD of device 1 is connected to TxD of device 2, RTS of device 1 is connected to CTS of device 2, e.tc.
+
+## Transmission Distances
+
+15m or less
+
+## Higher-Level Protocols
+
+Do you need a higher-level communication protocol that works over a UART connection? See the [SerialFiller](https://github.com/gbmhunter/SerialFiller) library on GitHub (written in C++). SerialFiller uses a publish/subscribe mechanism and works well on point-to-point serial connections such as UART.
+
+## Interfaces
+
+The pinout of a typical Analog Devices RS-232 to UART transceiver is shown below.
+
+{{% img src="analog-devices-rs-232-transceiver-pin-layout.png" width="242" caption="Pinout of a RS-232 transceiver by Analog Devices." %}}
+
+Another example of a RS-232 to CMOS UART converter is the MAX3221IDBE4. It supports an auto-shutdown feature based on the voltage-level of the receiving RS-232 line.
+
+## Driver ICs
+
+### MAX3227
+
+The Maxim MAX3227 is a popular RS-232 line transceiver. It contains 1 driver and 1 receiver as is designed to be driven from CMOS signals (e.g. connected to a microcontroller UART)[^bib-maxim-max32xx-ds]. Texas Instruments produces a drop-in replacement part for the MAX3227, the MAX3227CDBR (the CDBR standing for commercial temp. range, tape and reeled)[^bib-ti-max3227cdbr-ds].
+
+## Cheap Discrete-Part RS-232 To TTL Converter
+
+A RS-232 to TTL logic-level converter can be made out of a few discrete components. The schematic shown below uses some clever circuitry, including a charge-pump like circuit, to generate the negative voltage required for RS-232 transmission back to the computer.
+
+{{% img src="low-cost-discrete-part-rs-232-to-ttl-converter-schematic-atmel-avr910.png" width="600" caption="The schematic of a cheap, discrete-part RS-232 to TTL logic-level converter. Image from Atmel AVR910 (http://www.atmel.com/)." %}}
+
+## RS-232 DE-9 To RJ-45 Cables
+
+Many routers contain a RJ-45 socket that carry a RS-232 bus. They are designed so you can plug in a DE-9 to RJ-45 cable and connect the router to a PC for configuration. One example of a cable is the [Tripp Lite RJ45 to DB9F Cisco Serial Console Port Rollover Cable](https://assets.tripplite.com/product-pdfs/en/p430006.pdf), as shown in the below image:
+
+{{% img src="tripplite-rj45-to-db9f-cisco-serial-console-port-rollover-cable-photo.png" width="300px" caption="Photo of the TrippLite RJ45 to DB9F Cisco Serial Console Port Rollover Cable, 6 ft. (1.83 m)[^bib-tripp-lite-rj45-to-db9f-cable-ds]." %}}
+
+The common pinout for this cable is shown in the table below[^bib-juniper-rj45-to-db9-adapter] [^bib-us-converters-making-db-to-rj45-adapter]:
+
+| RJ-45 | Signal | DB-9 | Signal |
+|-------|--------|------|--------|
+| 1     | RTS    | 8    | CTS    |
+| 2     | DTR    | 6    | DSR    |
+| 3     | TxD    | 2    | RxD    |
+| 4     | GND    | 5    | GND    |
+| 6     | RxD    | 3    | TxD    |
+| 7     | DSR    | 4    | DTR    |
+| 8     | CTS    | 7    | RTS    |
+
+## References
+
+[^bib-ti-max3227cdbr-ds]:  Texas Instruments (2006, Feb). _AX3227: 3V to 5.5V Single-channel RS-232 Line Driver/Receiver With ±15kV ESD Protection (datasheet)_. Retrieved 2022-03-02, from https://www.ti.com/lit/ds/symlink/max3227.pdf.
+[^bib-maxim-max32xx-ds]:  Maxim (2011, Feb). _MAX3224–MAX3227/MAX3244/MAX3245: 1µA Supply Current, 1Mbps, 3.0V to 5.5V, RS-232 Transceivers with AutoShutdown Plus (datasheet)_. Retrieved 2022-03-02, from https://datasheets.maximintegrated.com/en/ds/MAX3224-MAX3245.pdf.  
+[^bib-juniper-rj45-to-db9-adapter]: Juniper (2021, Nov 13). _MX2020 Universal Routing Platform Hardware Guide: RJ-45 to DB-9 Serial Port Adapter Pinout Information_. Retrieved 2022-05-17, from https://www.juniper.net/documentation/us/en/hardware/mx2020/srx4600/topics/concept/port-rj45-db9-adapter-pinout.html.
+[^bib-us-converters-making-db-to-rj45-adapter]: U.S. Converters LLC. _Making a DB to RJ45 adapter_. Retrieved 2022-05-17, from https://www.usconverters.com/downloads/support/db9_rj45_assembeling_guide.pdf.
+[^bib-tripp-lite-rj45-to-db9f-cable-ds]: Tripp Lite. _RJ45 to DB9F Cisco Serial Console Port Rollover Cable, 6 ft. (1.83 m)_. Retrieved 2022-05-17, from https://assets.tripplite.com/product-pdfs/en/p430006.pdf.

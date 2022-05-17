@@ -97,9 +97,16 @@ Some ESD diode arrays incorporate steering diodes and a TVS diode to do just thi
 The SP3012-06UTG has a Zener diode instead of a TVS diode, but the principle is still the same. "Zeners" typically offer lower max. power dissipation levels than diodes labelled as "TVS diodes".
 {{% /note %}}
 
+Another example is the Littelfuse `SRDA3.3` steering diode array IC. It is designed to protect +3.3V IO lines and is rated to `\(\pm 30kV\)` contact, `\(\pm 30kV\)` air via IEC61000-4-2[^bib-littelfuse-srda33-ds]. It's functional block diagram is:
+
+{{% img src="littelfuse-srda33-functional-block-diagram.png" width="300px" caption="The functional block diagram of the Littelfuse SRDA3.3 steering diode array[^bib-littelfuse-srda33-ds]." %}}
+
 ## Isolation
+
+TODO: Add info.
 
 ## References
 
 [^bib-bourns-cddfn10-0506n-ds]: Bourns. _CDDFN10-0506N - TVS/Steering Diode Array (datasheet)_. Retrieved 2022-04-27 from https://www.bourns.com/docs/Product-Datasheets/CDDFN10-0506N.pdf.
 [^bib-littelfuse-sp3012-ds]: Littelfuse (2021). _SP3012 Series: 0.5pF Diode Array for USB3.0_. Retrieved 2022-04-29, from https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sp3012_datasheet.pdf.pdf.
+[^bib-littelfuse-srda33-ds]: Littelfuse (2013). _SRDA3.3 Series 8pF 35A Diode Array (datasheet)_. Retrieved 2022-05-17, from https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_srda3_3_datasheet.pdf.pdf.

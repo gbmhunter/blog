@@ -173,6 +173,17 @@ A name (it stands for protected-FET) used by [Siemens](http://www.siemens.com) a
 
 Trench MOSFETs give a very low `\( R_{DS(on)} \)` per unit silicon area.
 
+### Gallium Nitride (GaN) MOSFETs
+
+_Gallium Nitride_ (GaN) MOSFETs switch much faster than traditional silicon MOSFETs[^bib-ti-gan-ics], resulting in lower switch losses in power electronics and higher-frequency operation. This is because they have much smaller gate-to-drain capacitance than their silicon counterpart[^infineon-gan-hemt].
+
+One example of a GaN MOSFET is Texas Instrument's LMG3525R030-Q1. It is a GaN MOSFET with an integrated driver, protection and error reporting. The driver supports switching speeds of up to 150V/ns[^ti-lmg352xr030-q1-ds].
+
+<div style="display: flex;">
+{{% img src="lmg3525r030-q1-ti-gan-fet-3d-render.png" width="200px" caption="3D render of the LMG3525R030-Q1[^ti-lmg352xr030-q1-ds]." %}}
+{{% img src="lmg3525r030-q1-ti-gan-fet-block-diagram.png" width="200px" caption="Block diagram of the LMG3525R030-Q1[^ti-lmg352xr030-q1-ds]." %}}
+</div>
+
 ## MOSFET Applications
 
 ### Load Switching
@@ -387,3 +398,6 @@ Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.
 [^bib-dinc-dmn61d8l-ds]:  Diodes Incorporated (2018, Jun). _DMN61D8L/LVT: 60V N-Channel Enhancement Mode MOSFET (Datasheet)_. Retrieved 2021-10-26, from https://www.diodes.com/assets/Datasheets/DMN61D8L-LVT.pdf.
 [^bib-infineon-bsp149-ds]:  Infineon (2012, Nov 28). _BSP149: SIPMOS Small-Signal-Transistor_. Retrieved 2022-01-07, from https://www.infineon.com/dgdl/Infineon-BSP149-DS-v02_01-en.pdf?fileId=db3a30433c1a8752013c1fcbb815397c.
 [^bib-ixys-dep-mode-mosfet-applications]:  IXYS (2014, Mar 10). _AN-500: Depletion-Mode Power MOSFETs and Applications_. Retrieved 2022-01-07, from https://www.ixysic.com/home/pdfs.nsf/www/AN-500.pdf/$file/AN-500.pdf. 
+[^bib-ti-gan-ics]: Texas Instruments. _Power management > Gallium nitride (GaN) ICs (product page)_. Retrieved 2022-05-17, from https://www.ti.com/power-management/gallium-nitride/overview.html.
+[^infineon-gan-hemt]: Infineon (2022). _GaN HEMT – Gallium Nitride Transistor (product page)_. Retrieved 2022-05-17, from https://www.infineon.com/cms/en/product/power/gan-hemt-gallium-nitride-transistor/.
+[^ti-lmg352xr030-q1-ds]: Texas Instruments (2021, Jun). _LMG352xR030-Q1 650-V 30-mΩ GaN FET with Integrated Driver, Protection, and Temperature Reporting (datasheet)_. Retrieved 2022-05-17, from https://www.ti.com/lit/ds/symlink/lmg3525r030-q1.pdf.
