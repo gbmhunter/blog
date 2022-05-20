@@ -18,13 +18,11 @@ You change the dynamics of the PID control loop by varying three parameters, the
 
 ## How PID Works
 
-PID is a industry-standard way of controlling a system, given a single input control variable VC (e.g. duty cycle of heater) and a single variable (called the process variable, or PV) that you want controlled (e.g. temperature of the heater).
+PID is a industry-standard way of controlling a system, given a single process variable `PV` that you want controlled (e.g. temperature of the heater) and a single variable you can adjust called the control variable `CV` (e.g. duty cycle of heater).
 
-A PID controller compares a set-point (SP) (decided on by the user, e.g. this may the temperature you want the room to be at). It then compares this with the measured system variable (the actual temperature of the room). The difference between the set-point and the measured variable is called the error.
+A PID controller compares a set-point (`SP`) (decided on by the user, e.g. this may the temperature you want the room to be at). The `SP` has the same units as the `PV`. It then compares this with the measured system variable (the actual temperature of the room). The difference between the set-point and the measured variable is called the _error_. 
 
-The system variable (e.g. temperature) can also be called the _Process Variable_ (PV). The variable you can control (e.g. duty cycle of heater) is also called the _Control Variable_ (CV). 
-
-This error is what is fed into the `P` (proportional), `I` (integral) and `D` (derivative) blocks.
+This error is fed into the `P` (proportional), `I` (integral) and `D` (derivative) blocks of the PID controller. These blocks act on the error in different ways, and their output is summed together to generate the `CV`. The way these P, I and D blocks work is explained below.
 
 {{% img src="pid-controller-diagram-process-error-setpoint-measured-value.png" width="700px" caption="A block diagram of a PID controller." %}}
 
@@ -61,6 +59,8 @@ This PID equation is in the continuous time domain. However, most PID control lo
 This equation is suitable for implementing in code. There also exists the Z transformation of the equation, but this obscures the physical meaning of the parameters used in the controller.
 
 ## Gain vs. Bands
+
+Some PID controllers work on absolute inputs and outputs (e.g. temperature in °C for the `PV` and `SP`, and power output to heater in Watts as the `CV`), whilst other PID controllers use inputs/outputs that represent the percentage of total range (i.e. their units are percent). One benefit of using percentages is that the PID loops can require less tuning adjustment when transferring to a different system, as the percentage-based inputs/outputs scale proportionally with the changing ranges of the system.
 
 The band is also called the throttling range.
 
