@@ -1054,6 +1054,7 @@ pre {
     white-space: pre;
     hyphens: none;
     position: relative;
+    margin-bottom: 0px; // reboot added 1em margin-bottom, get rid of this!
 }
 
 /* Styling for inline code (no pre element). Make sure not to select code elements
