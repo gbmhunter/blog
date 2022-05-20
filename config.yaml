@@ -28,6 +28,19 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+  highlight:
+    anchorLineNos: false
+    codeFences: true
+    guessSyntax: false
+    hl_Lines: ""
+    lineAnchors: ""
+    lineNoStart: 1
+    lineNos: true # Show line numbers in the left gutter of code blocks
+    lineNumbersInTable: true
+    noClasses: true
+    noHl: false
+    style: rainbow_dash # monokai
+    tabWidth: 4
   asciidocext:
     backend: html5
     workingfoldercurrent: false

@@ -1082,6 +1082,14 @@ pre code:not(.has-jax) {
     }
 }
 
+// For some reason, when adding line numbers to code blocks, the first row's line number would
+// always be horizontally skewed in the wrong place. This is an incredibly specific selector
+// to fix this, and overrides style= added by the markdown parser.
+div.highlight > div > table > tbody > tr > td:nth-child(1) > pre > code > span {
+    margin-right: 0 !important;
+    padding: 0 !important;
+}
+
 /* ========================================================================= */
 /* TABLE STYLING                                                             */
 /* ========================================================================= */

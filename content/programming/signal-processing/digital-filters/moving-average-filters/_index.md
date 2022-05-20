@@ -234,7 +234,7 @@ Instead of calculating each output as above, we can instead save the last output
 y[9] = y[8] + \frac{1}{5}(x[9] - x[4])
 \end{align}</p>
 
-This is called a _recursive_ algorithm[^analog-devices-dsp-book-ch15], because the output of one step is used in the calculation of future steps. It's main benefit is the tremendous speed increase in computing each step, especially when the window size is large.
+This is called a _recursive_ algorithm[^analog-devices-dsp-book-ch15], because the output of one step is used in the calculation of future steps. It's main benefit is the tremendous speed increase in computing each step, especially when the window size is large. Whilst this dependence on previous output (`\(y[9]\)` depends on `\(y[8]\)`) makes it look like an IIR filter, this recursion trick does not change the SMAs behaviour, and it still an FIR filter (once the input flies "past" the end of the window, it has no bearing on the output).
 
 {{% note %}}
 The simple moving average filter is the only such window-based filter which can be speed up with this recursion trick. Other forms like exponential, Gaussian and Blackman moving averages have to use computationally expensive convolution.
@@ -328,6 +328,28 @@ If you also know a what times the signal will jump significantly, you can reset 
 
 Unlike a SMA, most EMA filters is not windowed, and the next value depends on all previous inputs. Thus most EMA filters are a form of infinite impulse response (IIR) filter, whilst a SMA is a finite impulse response (FIR) filter. There are exceptions, and you can indeed build a windowed exponential moving average filter in where the coefficients are weighted exponentially.
 
+## Gaussian Window
+
+The 1D Gaussian function `\(G(x)\)` is[^auckland-uni-comp-sci-gaussian-filtering]:
+
+<p>\begin{align}
+\Large
+G(x) = \frac{1}{\sqrt{2\pi} \sigma} e^{-\frac{x^2}{2\sigma^2}}
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(\sigma\) is the standard deviation<br/>
+</p>
+
+A 5-item symmetric Gaussian window with a standard deviation `\(\sigma\)` of `\(1\)` would give the window coefficients:
+
+```
+[ 0.061, 0.245, 0.388, 0.245, 0.061 ]
+```
+
+TODO: Add more info.
+
 ## A Comparison Of The Popular Window Shapes
 
 Stuck on what window shape to use? If a simple moving average won't suffice in it's simplicity, it might then depend on the frequency response you are after. Popular window shapes and their frequency responses are shown below. All the windows shown below are centered windows (and not left-aligned). The window sample weights are normalized to 1.
@@ -346,3 +368,4 @@ And a comparison of the frequency responses of these windows is shown below:
 [^pieter-p-ema]: <https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Digital-filters/Exponential%20Moving%20Average/C++Implementation.html#arduino-example>, accessed 2021-05-29.
 [^dsp-stack-exchange-cut-off-freq-sma]: <https://dsp.stackexchange.com/questions/9966/what-is-the-cut-off-frequency-of-a-moving-average-filter>, accessed 2021-05-27.
 [^analog-devices-dsp-book-ch15]: <https://www.analog.com/media/en/technical-documentation/dsp-book/dsp_book_Ch15.pdf>, accessed 2021-05-27.
+[^auckland-uni-comp-sci-gaussian-filtering]: University of Auckland. _Gaussian Filtering (lecture slides)_. Retrieved 2022-05-15 from https://www.cs.auckland.ac.nz/courses/compsci373s1c/PatricesLectures/Gaussian%20Filtering_1up.pdf. 

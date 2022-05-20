@@ -150,13 +150,18 @@ This is a tip. I should be green and have a bulb icon on my left.
 
 ## Code
 
+Some of the syntax highlighting settings are set in `config.yaml` under `markup` -> `highlight`.
+
 Some inline code. `x[2] = 3`. More text.
 
-Some block code that **shouldn't** have scroll bars:
+Some block code that **shouldn't** have scroll bars, but should have line numbers:
 
 ```c
 x[3] = 4;
 int y = x;
+if (y == 4) {
+  printf("Hello, world!");
+}
 ```
 
 Some block code that **should** have an x-axis scroll bar:
