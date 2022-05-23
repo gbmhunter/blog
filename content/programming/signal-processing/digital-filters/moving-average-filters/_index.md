@@ -128,7 +128,7 @@ The frequency response for a simple moving average filter is given by:
 
 Note that the sine function uses radians, not degrees. You may also see this shown in angular frequency units (`\(\omega\)`), in which case `\( \omega = 2\pi F \)`.
 
-To avoid division by zero, use `\( H(0) = N \)`. The magnitude follows the shape of a `\( sinc \)` function.
+To avoid division by zero, use `\( H(0) = 1 \)`. The magnitude follows the shape of a `\( sinc \)` function.
 
 Or it can be written as:
 
@@ -159,7 +159,7 @@ We can find the equation for the cutoff frequency from `\(H(\omega)\)` above.
 \sin^2 \left(\frac{\omega_c N}{2}\right) - \frac{N^2}{2} \sin^2 \left( \frac{\omega_c}{2} \right) = 0
 \end{equation}</p>
 
-Unfortunately, no general closed form solution for the cutoff frequency exists (i.e. there is no way to re-arrange this equation to solve for `\(\omega_c\)`). However, these are two ways to get around this problem.
+**Unfortunately, no general closed form solution for the cutoff frequency exists** (i.e. there is no way to re-arrange this equation to solve for `\(\omega_c\)`). However, these are two ways to get around this problem.
 
 1. Solve the equation numerically, e.g. use the Newton-Raphson method.
 1. Use an equation which approximates the answer (easier method, recommended approach unless you really need the accuracy!)
