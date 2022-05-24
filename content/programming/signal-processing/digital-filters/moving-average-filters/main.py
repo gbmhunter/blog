@@ -10,9 +10,10 @@ SCRIPT_DIR = Path(__file__).parent
 
 def main():
     # nzs_national_yearly_temp_plot()
-    sine_wave_with_noise_plot()
+    # sine_wave_with_noise_plot()
     # sma_example_code()
     # sma_mag_and_phase_plots()
+    sma_freq_response_varied_window_sizes()
     # windowed_moving_average_accumulated_error()
     # create_window_comparison_plots()
 
@@ -112,14 +113,12 @@ def sma_mag_and_phase_plots():
     with np.errstate(divide='ignore', invalid='ignore'):
         freq_response = (1/(N**2))*((np.sin(w*N/2)**2)/(np.sin(w/2)**2))
 
-    freq_response_dB = 10*np.log10(freq_response)
-
     # SMA coefficients
     b = np.ones(N)
     a = np.array([N] + [0]*(N-1))
     w, h = scipy.signal.freqz(b, a, worN=4096)
     f = (w*fs_Hz)/(2*np.pi)  # Convert from rad/sample to Hz
-    freq_response_dB = 20*np.log10(abs(h))
+    mag_response_dB = 20*np.log10(abs(h))
     phase_response = np.angle(h)*(180/np.pi)
 
     w_c = get_sma_cutoff(N)
@@ -128,7 +127,7 @@ def sma_mag_and_phase_plots():
 
     fig, axes = plt.subplots(1, 1, figsize=(10, 7), squeeze=False)
     ax = axes[0][0]
-    ax.plot(f, freq_response_dB, label='Frequency response')
+    ax.plot(f, mag_response_dB, label='Frequency response')
     ax.axvline(fs_Hz/N, color='C1', linestyle='--', label='Window frequency')
     ax.axvline(f_c_Hz, color='C2', linestyle='--', label='Cutoff frequency')
     ax.set_xlabel('Frequency (Hz)')
@@ -152,6 +151,34 @@ def sma_mag_and_phase_plots():
     ax.legend()
     plt.tight_layout()
     plt.savefig(SCRIPT_DIR / 'frequency-response-of-sma-phase.png')
+
+
+def sma_freq_response_varied_window_sizes():
+    window_sizes = [ 2, 3, 10, 50 ]
+    fig, axes = plt.subplots(1, 1, figsize=(10, 7), squeeze=False)
+
+    for N in window_sizes:
+        fs_Hz = 1000  # Sampling frequency
+        f = np.linspace(0, fs_Hz/2, 1000)
+        w = 2*np.pi*(f/fs_Hz)
+
+        # SMA coefficients
+        b = np.ones(N)
+        a = np.array([N] + [0]*(N-1))
+        w, h = scipy.signal.freqz(b, a, worN=4096)
+        f = (w*fs_Hz)/(2*np.pi)  # Convert from rad/sample to Hz
+        mag_response_dB = 20*np.log10(abs(h))        
+        
+        ax = axes[0][0]
+        ax.plot(f, mag_response_dB, label=f'N={N}')
+
+    ax.set_xlabel('Frequency (Hz)')
+    ax.set_ylabel('Magnitude (dB)')
+    ax.set_ylim(-50, 10)
+    ax.set_title('SMA Frequency Response With Varying Window Sizes')
+    ax.legend()
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'sma-freq-response-various-window-sizes.png')
 
 
 def windowed_moving_average_accumulated_error():

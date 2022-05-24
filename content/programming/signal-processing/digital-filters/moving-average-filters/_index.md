@@ -18,36 +18,42 @@ _Moving average filters_ are a family of filters which have a finite impulse res
 
 First off, some terminology.
 
-<table>
-  <thead>
-    <tr>
-      <th>Term</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>\(N\)</td>
-      <td>The number of data points used in a moving average filter. This is called the "size of the window". \(M\) is another letter commonly used to represent the same thing.</td>
-    </tr>
-    <tr>
-      <td>\(F\)</td>
-      <td>The normalised frequency, units \(cycles/sample\). This is a frequency in the discrete time-domain. Do not confuse with \( f \),, which is a frequency in the continuous time-domain.</td>
-    </tr>
-    <tr>
-      <td>\(f\)</td>
-      <td>A frequency of a waveform in the continuous time-domain. Do not confuse with \( F \), which is a frequency in the discrete time-domain.</td>
-    </tr>
-    <tr>
-      <td>\(f_s\)</td>
-      <td>The sample frequency of a waveform, measured in the continuous time-domain. This parameter is used when you want to convert a input waveform frequency from a continuous time-domain frequency to a normalised discrete time-domain frequency (see more here).</td>
-    </tr>
-    <tr>
-      <td>\( \omega \)</td>
-      <td>The normalised frequency, in units \(radians/sample\).</td>
-    </tr>
-  </tbody>
-</table>
+### Window Size (N)
+
+* Symbol: `\(N\)`
+
+The _window size_ is number of data points used in a moving average filter. `\(M\)` is another letter commonly used to represent the same thing.
+
+### Normalized Frequency (F)
+
+* Symbol: `\(F\)`
+
+The normalised frequency, with units `\(cycles/sample\)`. This is a frequency in the discrete time-domain. Do not confuse with `\(f\)` which is a frequency in the continuous time-domain.
+
+To convert from a standard frequency `\(f\)` to a normalized frequency `\(F\)`, use the equation:
+
+<p>\begin{align}
+F = \frac{f}{f_s}
+\end{align}</p>
+
+<p class="centered">
+    where:<br>
+    \( F \) is the normalized frequency, in \(cycles/sample\)<br>
+    \( f \) is the standard frequency, in \( Hz \)<br>
+    \( f_s \) is the sample rate, in \( Hz \)<br>
+</p>
+
+The normalized frequency can also be expressed in radians, and if so uses the symbol `\(\omega\)`. This has the units `\(radians/sample\)`.
+
+### Frequency (f)
+
+* Symbol: `\(f\)`
+
+A frequency of a waveform in the continuous time-domain. Do not confuse with \( F \), which is a frequency in the discrete time-domain.
+
+### Sampling Frequency (`\(f_s\)`)
+
+The sample frequency of a waveform, measured in the continuous time-domain. This parameter is used when you want to convert a input waveform frequency from a continuous time-domain frequency to a normalised discrete time-domain frequency (see more here). 
 
 ## Simple Moving Average Filter
 
@@ -116,38 +122,52 @@ A simple moving average filter can also be seen as a convolution between the inp
 The frequency response for a simple moving average filter is given by:
 
 <p>\begin{align}
-|H(f)| = \frac{1}{N}\left|\frac{sin(\pi F N)}{sin(\pi F)}\right|
+H(F) = \frac{1}{N}\frac{sin(\pi F N)}{sin(\pi F)}
 \end{align}</p>
 
 <p class="centered">
     where:<br>
-    \( H(f) \) is the frequency response<br>
+    \( H(F) \) is the frequency response<br>
     \( F \) the normalised frequency, in \( cycles/sample \)<br>
     \( N \) = the number of points in the average (the width of the window)<br>
 </p>
 
-Note that the sine function uses radians, not degrees. You may also see this shown in angular frequency units (`\(\omega\)`), in which case `\( \omega = 2\pi F \)`.
-
-To avoid division by zero, use `\( H(0) = 1 \)`. The magnitude follows the shape of a `\( sinc \)` function.
-
-Or it can be written as:
+Note that the sine function uses radians, not degrees. You may also see this shown in angular frequency units (`\(\omega\)`), in which case `\( \omega = 2\pi F \)`. To convert from a standard frequency `\(f\)` to a normalized frequency `\(F\)`, use the equation:
 
 <p>\begin{align}
-H(\omega) = \frac{1}{N}\left(\frac{1 - e^{-j\omega L}}{1 - e^{-j\omega}}\right)
+F = \frac{f}{f_s}
 \end{align}</p>
 
 <p class="centered">
     where:<br>
-    \( N \) = the number of points in the average (the width of the window)<br>
+    \( F \) is the normalized frequency, in \(cycles/sample\)<br>
+    \( f \) is the standard frequency, in \( Hz \)<br>
+    \( f_s \) is the sample rate, in \( Hz \)<br>
 </p>
+
+To avoid division by zero, use `\( H(0) = 1 \)`. The magnitude follows the shape of a `\( sinc \)` function.
+
+The frequency response can also be written as[^uc-berkeley-freq-response-sma]:
+
+<p>\begin{align}
+H(\omega) = \frac{1}{N}\left(\frac{1 - e^{-j\omega N}}{1 - e^{-j\omega}}\right)
+\end{align}</p>
 
 Lets design a SMA filter with a sampling rate of `\(1kHz\)` and a window size of `\(10\)`. This gives the following magnitude response:
 
 {{% img src="frequency-response-of-sma-magnitude.png" width="700px" caption="The magnitude response of a SMA filter with fs=1kHz and a window size of 10. Frequency range is from 0Hz up to Nyquist (fs/2)." %}}
 
-and the phase:
+As expected, this shows us that at DC, the signal is not attenuated at all. As the frequency increases, the filter then begins to block more and more, until it lets through absolutely no signal at `\(100Hz\)`. This can be intuitively understood, because with a `\(1kHz\)` sampling frequency and a window size of `\(10\)`, **a single cycle of a `\(100Hz\)` signal would fit perfectly into the window**. Since you take the average of all the values in the window, this top half of the `\(100Hz\)` signal would cancel out perfectly with the bottom half, giving no output. But then, as the frequency further increases, the filter begins to let through some of the signal, as shown by the side lobes. The next point of infinite attenuation is at `\(200Hz\)`, which is when 2 cycles of the signal would fit perfectly into the window. This cycle occurs all the way up to Nyquist at `\(500Hz\)`.
+
+The phase response of the same filter is shown below:
 
 {{% img src="frequency-response-of-sma-phase.png" width="700px" caption="The phase response of a SMA filter with fs=1kHz and a window size of 10. Frequency range is from 0Hz up to Nyquist (fs/2)." %}}
+
+For interest, let's have a look at how increasing the window size effects the frequency response:
+
+{{% img src="sma-freq-response-various-window-sizes.png" width="500px" caption="Plot showing what effect an increasing window size has on the frequency response (magnitude) of a SMA filter." %}}
+
+As expected, increasing the window size decreases the cut-off frequency and also improves the roll-off. However, for a left-handed (casual) SMA filter, it also significantly increases the phase shift (or time delay!), so normally a trade-off has to be made.
 
 ### Cutoff Frequency
 
@@ -308,7 +328,7 @@ def sma_example_code():
 
 The output is:
 
-```
+```text
 y[0] = NAN
 y[1] = NAN
 y[2] = 3.33
@@ -328,6 +348,54 @@ If you also know a what times the signal will jump significantly, you can reset 
 
 Unlike a SMA, most EMA filters is not windowed, and the next value depends on all previous inputs. Thus most EMA filters are a form of infinite impulse response (IIR) filter, whilst a SMA is a finite impulse response (FIR) filter. There are exceptions, and you can indeed build a windowed exponential moving average filter in where the coefficients are weighted exponentially.
 
+A exponentially weighted moving average filter **places more weight on recent data by discounting old data in an exponential fashion**. It is a **low-pass, infinite-impulse response (IIR) filter**.
+
+It is identical to the **discrete first-order low-pass RC filter**.
+
+The _difference equation_ for an exponential moving average filter is:
+
+<p>\begin{align}
+y_i = y_{i-1} \cdot (1 - \alpha) + x_i \cdot \alpha
+\end{align}</p>
+
+<p class="centered">
+    where:<br>
+    \( y \) = the output (\(i\) denotes the sample number)<br>
+    \( x \) = the input<br>
+    \( \alpha \) = is a constant which sets the cutoff frequency (a value between \(0\) and \(1\))<br>
+</p>
+
+Notice that the calculation does not require the storage of past values of `\(x\)` and only the previous value of `\(y\)`, **which makes this filter memory and computation friendly (especially relevant for microcontrollers)**. Only one addition, one subtraction, and two multiplication operations are needed.
+
+The constant `\( \alpha \)` determines how aggressive the filter is. It can vary between `\(0\)` and `\(1\)` (inclusive). As `\( \alpha \to 0 \)`, the filter gets more and more aggressive, until at `\( \alpha = 0 \)`, where the input has no effect on the output (if the filter started like this, then the output would stay at `\(0\)`). As `\( \alpha \to 1 \)`, the filter lets more of the raw input through at less filtered data, until at `\( \alpha = 1 \)`, where the filter is not "filtering" at all (pass-through from input to output).
+
+The following code implements a IIR EMA filter in C++, suitable for microcontrollers and other embedded devices[^pieter-p-ema]. {{% link text="Fixed-point numbers" src="/programming/general/fixed-point-mathematics" %}} are used instead of floats to speed up computation. `K` is the number of fractional bits used in the fixed-point representation.
+
+```cpp
+template <uint8_t K, class uint_t = uint16_t>
+class EMA {
+  public:
+    /// Update the filter with the given input and return the filtered output.
+    uint_t operator()(uint_t input) {
+        state += input;
+        uint_t output = (state + half) >> K;
+        state -= output;
+        return output;
+    }
+
+    static_assert(
+        uint_t(0) < uint_t(-1),  // Check that `uint_t` is an unsigned type
+        "The `uint_t` type should be an unsigned integer, otherwise, "
+        "the division using bit shifts is invalid.");
+
+    /// Fixed point representation of one half, used for rounding.
+    constexpr static uint_t half = 1 << (K - 1);
+
+  private:
+    uint_t state = 0;
+};
+```
+
 ## Gaussian Window
 
 The 1D Gaussian function `\(G(x)\)` is[^auckland-uni-comp-sci-gaussian-filtering]:
@@ -344,7 +412,7 @@ where:<br/>
 
 A 5-item symmetric Gaussian window with a standard deviation `\(\sigma\)` of `\(1\)` would give the window coefficients:
 
-```
+```text
 [ 0.061, 0.245, 0.388, 0.245, 0.061 ]
 ```
 
@@ -369,3 +437,4 @@ And a comparison of the frequency responses of these windows is shown below:
 [^dsp-stack-exchange-cut-off-freq-sma]: <https://dsp.stackexchange.com/questions/9966/what-is-the-cut-off-frequency-of-a-moving-average-filter>, accessed 2021-05-27.
 [^analog-devices-dsp-book-ch15]: <https://www.analog.com/media/en/technical-documentation/dsp-book/dsp_book_Ch15.pdf>, accessed 2021-05-27.
 [^auckland-uni-comp-sci-gaussian-filtering]: University of Auckland. _Gaussian Filtering (lecture slides)_. Retrieved 2022-05-15 from https://www.cs.auckland.ac.nz/courses/compsci373s1c/PatricesLectures/Gaussian%20Filtering_1up.pdf. 
+[^uc-berkeley-freq-response-sma]: UC Berkeley. _Frequency Response of the Running Average Filter (course notes)_. Retrieved 2022-05-24, from https://ptolemy.berkeley.edu/eecs20/week12/freqResponseRA.html.
