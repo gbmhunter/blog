@@ -5,6 +5,7 @@ GEM
     rouge (3.26.0)
 
 PLATFORMS
+  universal-darwin-19
   x64-mingw32
 
 DEPENDENCIES
