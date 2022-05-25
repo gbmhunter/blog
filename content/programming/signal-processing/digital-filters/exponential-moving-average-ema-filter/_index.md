@@ -74,6 +74,27 @@ class EMA {
 };
 ```
 
+## Frequency Response
+
+The frequency response of the EMA filter can be found by using the Z transform. If we start with the time-domain equation for an EMA filter:
+
+<p>\begin{align}
+y[i] = \alpha \cdot x[i] + (1 - \alpha) \cdot y[i-1]
+\end{align}</p>
+
+And then take the Z tranform of it:
+
+<p>\begin{align}
+Y(z) = aX(z) + (1 - \alpha) z^{-1} Y(z)
+\end{align}</p>
+
+Then re-arrange to find the transfer function `\(H(z)\)`:
+
+<p>\begin{align}
+H(z) &= \frac{Y(z)}{X(z)} \nonumber \\
+     &= \frac{\alpha}{1 - (1-\alpha)z^{-1}} \\
+\end{align}</p>
+
 ## Impulse Response
 
 The discrete unit sample function is defined as:
