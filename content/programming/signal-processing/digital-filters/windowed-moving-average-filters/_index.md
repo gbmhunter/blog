@@ -4,15 +4,19 @@ categories: [ Programming, Signal Processing, Filters ]
 date: 2014-02-26
 description: Simple moving average (SMA) filters, window sizes, frequency responses, recursive SMA, EMAs and more info on moving average filters.
 draft: false
-lastmod: 2022-05-12
+lastmod: 2022-05-25
 tags: [ SMA, simple moving average, moving average, EMA, exponential, filters, recursive, left-handed, centered, Python, Pandas, Numpy, convolve, kernel ]
-title: Moving Average Filters
+title: Windowed Moving Average Filters
 type: page
 ---
 
 ## Overview
 
-_Moving average filters_ are a family of filters which have a finite impulse response (FIR). They all use a finite-length window of data points to calculate the averaged output. The easiest moving average filter to understand is the _Simple Moving Average_ (SMA) filter (also called a **box-car filter**), which uses a window in where all the inputs values are weighted equally (coefficients are equal). Other moving average filters include the _Exponential Moving Average_ (EMA) filter, with exponentially-weighted coefficients.
+_Windowed moving average filters_ are a family of filters which have a finite impulse response (FIR). They all use a finite-length window of data points to calculate the averaged output. The easiest moving average filter to understand is the _Simple Moving Average_ (SMA) filter (also called a **box-car filter**), which uses a window in where all the inputs values are weighted equally (coefficients are equal). Other moving average filters include the _Windowed Exponential Moving Average_ (EMA) filter, with exponentially-weighted coefficients.
+
+{{% note %}}
+"Exponential Moving Average" can also refer to a non-windowed IIR filter, so we are explicit can call this the "Windowed Exponential Moving Average" filter.
+{{% /note %}}
 
 ## Terminology
 
