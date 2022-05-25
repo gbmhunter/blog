@@ -32,7 +32,7 @@ The _window size_ is number of data points used in a moving average filter. `\(M
 
 * Symbol: `\(F\)`
 
-The normalised frequency, with units `\(cycles/sample\)`. This is a frequency in the discrete time-domain. Do not confuse with `\(f\)` which is a frequency in the continuous time-domain.
+The normalised frequency, with units `\(Hz/sample\)`. This describes an frequency component in a filter relative to the sampling frequency (e.g. a normalized frequency `\(F\)` of 0.1 means there are 10 samples per cycle. The signal is at Nyquist when `\(F=0.5\)`. This is a frequency in the discrete time-domain. Do not confuse with `\(f\)` which is a frequency in the continuous time-domain.
 
 To convert from a standard frequency `\(f\)` to a normalized frequency `\(F\)`, use the equation:
 
@@ -42,7 +42,7 @@ F = \frac{f}{f_s}
 
 <p class="centered">
     where:<br>
-    \( F \) is the normalized frequency, in \(cycles/sample\)<br>
+    \( F \) is the normalized frequency, in \(Hz/sample\)<br>
     \( f \) is the standard frequency, in \( Hz \)<br>
     \( f_s \) is the sample rate, in \( Hz \)<br>
 </p>

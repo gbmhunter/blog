@@ -95,6 +95,10 @@ H(z) &= \frac{Y(z)}{X(z)} \nonumber \\
      &= \frac{\alpha}{1 - (1-\alpha)z^{-1}} \\
 \end{align}</p>
 
+This transfer function can be used to create bode plots of the magnitude and phase response of the EMA filter. The below bode plot shows the response of an EMA filter with `\(\alpha=0.25\)`. The x-axis frequency is the normalized frequency, in units `\(Hz/sample\)`, which makes the plot applicable for any sampling frequency.
+
+{{% img src="ema-bode-plot.png" width="600px" caption="Bode plot showing the magnitude and phase of an EMA filter with \\\\( \alpha=0.25 \\\\)." %}}
+
 ## Impulse Response
 
 The discrete unit sample function is defined as:
