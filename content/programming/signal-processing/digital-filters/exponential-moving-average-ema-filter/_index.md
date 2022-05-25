@@ -10,13 +10,13 @@ title: Exponential Moving Average (EMA) Filters
 type: page
 ---
 
-## Exponential Moving Average (EMA) Filters
+## Overview
+
+The _exponential moving average_ (EMA) filter is a **discrete, low-pass, infinite-impulse response (IIR) filter**. It **places more weight on recent data by discounting old data in an exponential fashion**, and behaves similarly to the **discrete first-order low-pass RC filter**.
 
 Unlike a SMA, most EMA filters is not windowed, and the next value depends on all previous inputs. Thus most EMA filters are a form of infinite impulse response (IIR) filter, whilst a SMA is a finite impulse response (FIR) filter. There are exceptions, and you can indeed build a windowed exponential moving average filter in where the coefficients are weighted exponentially.
 
-A exponentially weighted moving average filter **places more weight on recent data by discounting old data in an exponential fashion**. It is a **low-pass, infinite-impulse response (IIR) filter**.
-
-It is identical to the **discrete first-order low-pass RC filter**.
+## EMA Equation
 
 The _difference equation_ for an exponential moving average filter is:
 
@@ -103,6 +103,19 @@ From this, we can plot what the response will look like for impulse as the input
 
 {{% img src="ema-impulse-response.png" width="600px" caption="Impulse response for an EMA filter with different \\\\(\alpha\\\\) values." %}}
 
+## Cut-off Frequency
+
+The _cut-off frequency_ (-3dB point) of an EMA filter is given by[^se-dsp-ema-cutoff]:
+
+<p>\begin{align}
+f_c = \frac{f_s}{2\pi} \arccos{\left[1 - \frac{\alpha^2}{2(1-\alpha)}\right]}
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(f_s\) is the sampling frequency in \(Hz\)<br/>
+</p>
+
 ## External Resources
 
 [https://stratifylabs.co/embedded%20design%20tips/2013/10/04/Tips-An-Easy-to-Use-Digital-Filter/](https://stratifylabs.co/embedded%20design%20tips/2013/10/04/Tips-An-Easy-to-Use-Digital-Filter/) is a great page explaining the exponential moving average filter.
@@ -110,3 +123,4 @@ From this, we can plot what the response will look like for impulse as the input
 ## References
 
 [^pieter-p-ema]: <https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Digital-filters/Exponential%20Moving%20Average/C++Implementation.html#arduino-example>, accessed 2021-05-29.
+[^se-dsp-ema-cutoff]: Andy Walls (2017, Apr 22). _Exponential moving average cut-off frequency (Q/A)_. StackExchange: Signal Processing. Retrieved 2022-05-25, from https://dsp.stackexchange.com/questions/40462/exponential-moving-average-cut-off-frequency.
