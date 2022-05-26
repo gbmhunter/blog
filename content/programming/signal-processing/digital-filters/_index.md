@@ -80,6 +80,17 @@ Python is a great language for experimenting with digital filters. The popular `
 
 `fftfreq()` converts normalized frequencies into real frequencies.
 
+`scipy.signal.freqz()` calculates the frequency response of a digital filter. It expects the coefficients of the transfer function described as:
+
+<p>\begin{align}
+H(z) &= \frac{Y(z)}{X(z)} \nonumber \\
+     &= \frac{b_0 + b_1 z^{-1} + b_2 z^{-2} + ... + b_m z^{-m}} {a_0 + a_1 z^{-1} + a_2 z^{-2} + ... + a_n z^{-n}} \\
+\end{align}</p>
+
+{{% warning %}}
+The order of these coefficients to `freqz()` is the reverse of what is standard in most places.
+{{% /warning %}}
+
 ## References
 
 [^pieter-p-sma]: <https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Digital-filters/Simple%20Moving%20Average/Simple-Moving-Average.html>, accessed 2021-05-27.

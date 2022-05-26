@@ -2,7 +2,9 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy.signal
+import scipy.signal 
+from math import pi, acos
+
 
 SCRIPT_DIR = Path(__file__).parent
 
@@ -12,23 +14,17 @@ def main():
     create_impulse_response_plot()
 
 def create_freq_response_plot():
-    from scipy.signal import freqz 
-    import matplotlib.pyplot as plt
-    from math import pi, acos
-    import numpy as np
 
     alpha = 0.25
 
+    # Create coefficients for the scipy freqz() function
     b = np.array(alpha)
     a = np.array((1, alpha - 1))
-
-    print("b =", b)                        # Print the coefficients
-    print("a =", a)
 
     x = (alpha**2 + 2*alpha - 2) / (2*alpha - 2)
     w_c = acos(x)                          # Calculate the cut-off frequency
 
-    w, h = freqz(b, a)                     # Calculate the frequency response
+    w, h = scipy.signal.freqz(b, a)                     # Calculate the frequency response
 
     freq_HzperSample = w/(2*np.pi)
     f_cuttoff_HzperSample = w_c/(2*np.pi)
