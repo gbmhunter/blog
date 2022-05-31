@@ -1,8 +1,10 @@
 ---
 authors: [ "Geoffrey Hunter" ]
 date: 2014-04-17
+description: A style/feature guide on writing firmware (code for microcontrollers) using C++.
 draft: false
 lastmod: 2022-05-31
+tags: [ c++, constructors, errors, status, initialization, embedded, firmware, classes, microcontrollers ]
 title: C++ On Embedded Systems
 type: page
 ---
