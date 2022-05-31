@@ -151,6 +151,7 @@
         "cronlog",
         "crtscts",
         "CSIZE",
+        "cstdint",
         "cstdio",
         "cstopb",
         "CTBGA",
