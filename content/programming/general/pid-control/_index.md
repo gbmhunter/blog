@@ -49,7 +49,7 @@ e(t) = SP - PV
 
 This PID equation is in the continuous time domain. However, most PID control loops are implemented digitally. The discrete equation is written:
 
-<div>$$output = K_{p}e_{k} + K_{i}T\sum\limits_{i=0}^k e_{k} + K_{d}\frac{(e_{k} - e_{k-1})}{T}$$</div>
+<p>$$output = K_{p}e_{k} + K_{i}T\sum\limits_{i=0}^k e_{k} + K_{d}\frac{(e_{k} - e_{k-1})}{T}$$</p>
 
 <p class="centered">
 	where:<br>
@@ -146,15 +146,15 @@ The mass `\(m\)` is `\(2kg\)`. The spring has a spring constant, `\(k\)`, which 
 
 We can model the system using Newton's equation:
 
-<div>$$ F = ma $$</div>
+<p>$$ F = ma $$</p>
 
 Summing up the forces on the mass `\(m\)` gives:
 
-<div>$$ F_{ext} - F_{spring} - F_{damper} = m\ddot{x} $$</div>
+<p>$$ F_{ext} - F_{spring} - F_{damper} = m\ddot{x} $$</p>
 
 Substituting in the equations for the spring and damper give:
 
-<div>$$ F_{ext} - kx - c\dot{x} = m\ddot{x} $$</div>
+<p>$$ F_{ext} - kx - c\dot{x} = m\ddot{x} $$</p>
 
 <p class="centered">
 	where:<br>

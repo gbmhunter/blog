@@ -40,9 +40,9 @@ I believe you can carefully select a subset of the C++ language which provides m
 * STL
 * Boost
 
-## Returning Errors In Constructors
+## Handling Errors In Constructors
 
-One issue when writing classes in firmware is the difficulty in signalling back to the caller when an error occurs in a constructor. The standard function approach of returning a error number does not work as you are not allowed a return value from C++ constructors. When developing C++ applications running on a full-blown OS, the standard way to deal with it is to throw an exception. In an embedded application where you are not allowed to use exceptions, this is obviously not an option. For example, consider the following example class:
+One issue when writing classes in firmware is the **difficulty in signalling back to the caller when an error occurs in a C++ class constructor**. The standard function approach of returning a error number does not work as you are not allowed a return value from C++ constructors. When developing C++ applications running on a full-blown OS, the standard way to deal with it is to throw an exception. In an embedded application where you are not allowed to use exceptions, this is obviously not an option. For example, consider the following example class:
 
 ```c++
 #include <cstdint>

@@ -3,8 +3,8 @@ authors: [ Geoffrey Hunter ]
 date: 2011-09-05
 description: Capabilities, quality, support and more info on a range of electronic suppliers.
 draft: false
-lastmod: 2022-05-27
-tags: [ electronics, engineering, suppliers, batteries, hardware, PCBs, EMS, components, JLC PCB, PCB Cart, manufacturers, LCSC ]
+lastmod: 2022-06-01
+tags: [ electronics, engineering, suppliers, batteries, hardware, PCBs, EMS, components, JLC PCB, PCB Cart, manufacturers, LCSC, Microchip, Microchip Direct, Atmel, ST ]
 title: Electrical Suppliers
 type: page
 ---
@@ -155,6 +155,8 @@ A spin-off of Alibaba, AliExpress is geared more towards single customers and sm
 
 ## Manufacturer Specific Suppliers
 
+This section has info on IC manufacturers self-owned supplier stores.
+
 ### ST Microelectronics eStore
 
 * Website: https://estore.st.com/
@@ -167,7 +169,13 @@ A spin-off of Alibaba, AliExpress is geared more towards single customers and sm
 * Website: https://www.microchipdirect.com
 * Free samples: n/a
 
-If your favourite Microchip part is not available via common suppliers, you might still be able to find it on Microchip Direct.
+{{% img src="microchip-direct-logo.png" width="300px" caption="Microchip Direct's logo.[^bib-microchip-direct-home-page]" %}}
+
+If your favourite Microchip part is not available via common suppliers, you might still be able to find it on Microchip Direct. Also known as _Microchip Purchasing & Client Services_.
+
+{{% warning %}}
+The displayed available stock of a part on Microchip Direct does not drop as orders are made, and nor is the shown lead time that accurate. Instead, a manual review process is done in the 24-48 hours after an order is made, and someone decides if they can full-fill your order. At that point you a sent another email with a confirmed dispatch date. It feels like a poor way to do business!
+{{% warning %}}
 
 ## Hobby Electronics Suppliers
 
@@ -522,3 +530,4 @@ Palmerston North manufacturer of fibreglass products (especially moulded). Do no
 
 [^bib-st-estore-free-samples]:  ST Microelectronics. _A6986ITR (product page)_. Retrieved 2021-11-29, from https://estore.st.com/en/a6986itr-cpn.html.
 [^bib-lcsc-about]: LCSC. _Who Are We_. Retrieved 2022-05-27, from https://lcsc.com/about/company.
+[^bib-microchip-direct-home-page]: Microchip Direct (a.k.a. Microchip Purchasing & Client Services). _Home page_. Retrieved 2022-06-01, from https://www.microchipdirect.com/. 
