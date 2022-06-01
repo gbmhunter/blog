@@ -85,6 +85,8 @@ International online component store that stocks most electrical components. In 
 
 As of May 2022, their slogan is "More Asian Brands, Lower Prices". During the component part shortages of 2021-2022 they managed to provide stock of some critical MCUs that were completely out-of-stock on DigiKey/Mouser. They sell clones of the STMicroelectronics STM32 microcontrollers, including the HK32 (by HK) and GD32 (by GigaDevice).
 
+LCSC supports a single sign-on/account across JLC PCB, EasyEDA and LCSC.
+
 ### Mouser
 
 {{% img src="mouser-logo.jpg" width="100" caption="The Mouser logo." %}}
@@ -331,6 +333,8 @@ image::pcb-cart-4-layer-1-core-1-6mm-layer-stackup.jpg[width=400px]
 * Based In: China
 
 JLC PCB is (and I quote from their website) "China's Largest PCB Prototype Manufacturer". I believe them on this, they are an absolutely huge PCB fabrication house in China, and offer a very streamlined, fast and cheap PCB manufacturing service for "standard" PCB designs. Pricing can be laughably cheap for 2-layer/4-layer boards (e.g. on USD$5 for a 4-layer PCB!), as long as you don't have any non-standard manufacturing requirements.
+
+JLC PCB supports a single sign-on/account across JLC PCB, EasyEDA and LCSC.
 
 ### Silver Circuits
 
