@@ -77,7 +77,7 @@ Many devices do not support all four SPI modes. It is common (especially for sla
 
 ### Can A Single Master Support Multiple SPI Modes On The Same Bus?
 
-The short answer is yes, as long as the master can be configured to all the relevant modes (most SPI peripherals inside microcontrollers support multiple SPI modes). The SPI slaves do not care what happens on the SCLK, MOSI and MISO lines while their chip select is inactive (high). So other slave devices that use other SPI modes can be communicated with whilst the chip select is held high for all other slave devices (as per normal operation). Care must be taken to change the clock polarity to what the slave node expects before making it's chip select active.
+Yes, a single master can support different SPI modes on the same bus, as long as the master can be configured to all the relevant modes (most SPI peripherals inside microcontrollers support multiple SPI modes). The SPI slaves do not care what happens on the SCLK, MOSI and MISO lines while their chip select is inactive (high). So other slave devices that use other SPI modes can be communicated with whilst the chip select is held high for all other slave devices (as per normal operation). Care must be taken to change the clock polarity to what the slave node expects before making it's chip select active.
 
 ## Timing
 
@@ -115,6 +115,18 @@ Some microcontrollers have dedicated chip select pins which are connected to the
 
 On STM32 microcontrollers this pin is called `NSS` (which stands for _not slave select_, _not_ being because the signal is active low).
 
+## Shared MOSI/MISO Pins
+
+Some low-pin count packaged ICs use shared MOSI/MISO lines. One such example is some of the DPOTs in the Microchip MCP4XXX family. The 8-pin potentiometer variants such as the MCP4131 contain a single MOSI/MISO pin (called SDI/SDO). This obviously prevents data from being transmitted in both directions at the same time. If connecting such a device up to a normal hardware SPI peripheral, a resistor is needed to prevent driver contention (as shown in the below image) when the MCP4131 sends data back to the microcontroller. If you are bit-banging the SPI communications, you can smartly turn the host controller output into an input at the right clock edge to receive data and eliminate the need for the resistor.
+
+{{% img src="microchip-mcp41x1-dpot-spi-connections.png" width="600px" caption="Schematics from the MCP4XXX DPOT datasheet showing to connect the shared MOSI/MISO pin (called SDI/SDO) to a SPI bus and SPI host[^bib-microchip-mcp4xxxx-dpot-ds]." %}}
+
+The datasheet says exactly when the SDI will be turned into an SDO and data sent back:
+
+> The 8-lead Single Potentiometer devices are pin limited so the SDO pin is multiplexed with the SDI pin
+(SDI/SDO pin). After the Address/Command (first 6-bits) are received, If a valid Read command has been
+requested, the SDO pin starts driving the requested read data onto the SDI/SDO pin[^bib-microchip-mcp4xxxx-dpot-ds].
+
 ## Similar Protocols
 
 ### Microwire (uWire)
@@ -128,3 +140,7 @@ The mSPI bus is a modification of the SPI bus that enforces that the comms proto
 ### RapidS
 
 The RapidS term is used by [Atmel](http://www.atmel.com/) and [Adesto Technologies](http://www.adestotech.com/). It is commonly present on memory chips such as EEPROM and Flash memory ICs. The RapidS serial interface is SPI compatible for frequencies up to 33MHz. The RapidS protocol is different to the Rapid8 protocol, which is a **parallel interface**.
+
+## References
+
+[^bib-microchip-mcp4xxxx-dpot-ds]: Microchip (2008). _Microchip MCP413X/415X/423X/425X: 7/8-Bit Single/Dual SPI Digital POT with Volatile Memory (datasheet)_. Retrieved 2022-06-02, from https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/22060b.pdf.
