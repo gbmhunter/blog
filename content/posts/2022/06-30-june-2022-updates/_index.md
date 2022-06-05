@@ -14,3 +14,5 @@ type: "post"
 ## Updates This Month
 
 * Added [info on SPI peripherals with shared MOSI/MISO pins](/electronics/communication-protocols/spi-communication-protocol/#shared-mosimiso-pins).
+
+* Added a [new page on Elastomeric connectors](/electronics/components/connectors/elastomeric-connectors/).
