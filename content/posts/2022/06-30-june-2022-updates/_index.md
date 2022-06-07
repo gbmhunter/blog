@@ -16,3 +16,5 @@ type: "post"
 * Added [info on SPI peripherals with shared MOSI/MISO pins](/electronics/communication-protocols/spi-communication-protocol/#shared-mosimiso-pins).
 
 * Added a [new page on Elastomeric connectors](/electronics/components/connectors/elastomeric-connectors/).
+
+* Added a [new page on the RP2040 microcontroller](/programming/microcontrollers/raspberry-pi/rp2040/) from Raspberry Pi Ltd.
