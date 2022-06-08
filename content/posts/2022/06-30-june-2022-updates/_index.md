@@ -18,3 +18,5 @@ type: "post"
 * Added a [new page on Elastomeric connectors](/electronics/components/connectors/elastomeric-connectors/).
 
 * Added a [new page on the RP2040 microcontroller](/programming/microcontrollers/raspberry-pi/rp2040/) from Raspberry Pi Ltd.
+
+* Added more info on [MX circular connectors](/electronics/components/connectors/mx-circular-connectors/).
