@@ -4,7 +4,7 @@ categories: [ "Programming", "Integrated Development Environments" ]
 date: 2020-06-19
 description: "Info about STM32CubeIDE, an IDE for the STM32 family of microcontrollers."
 draft: false
-lastmod: 2020-06-22
+lastmod: 2022-06-06
 tags: [ "programming", "integrated development environments", "IDEs", "STM32CubeIDE", "C", "C++", "embedded", "microcontrollers", "STMicroelectronics", "ioc", "arm-none-eabi-gcc", "arm-none-eabi-g++" ]
 title: "STM32CubeIDE"
 type: "page"
@@ -35,7 +35,9 @@ SEGGER J-Link drivers, ST_LINK drivers and ST_LINK server software is provided w
 
 ## Default File Structure
 
-```
+Below shows the default directory/file structure for a STM32CubeIDE project:
+
+```text
 <root_project_dir>
   |-- Core
   |   |-- Inc                    Contains the user header files.
@@ -60,7 +62,7 @@ Enabling peripherals via the `.ioc` file generates `MX_<peripheral_name>_Init()`
 
 ## Git Ignore File
 
-```
+```text
 Debug/
 ```
 
@@ -71,6 +73,10 @@ Confusingly, even if you specify the project as a "C++ Project" when creating it
 The linker is called correctly regardless of the extension of `main` --- `arm-none-eabi-g++` will be called during the linking step.
 
 However, when you change the peripheral configurations using the `.ioc` file and re-generate code, it will also recreate the `main.c`.
+
+{{% note %}}
+UPDATE 2022-06-06: Apparently you can get STM32CubeIDE to create a `main.cpp` when regenerating code with the `.ioc` file.
+{{% /note %}}
 
 ## STM32CubeMonitor
 

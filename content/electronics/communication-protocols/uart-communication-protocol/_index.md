@@ -3,8 +3,8 @@ authors: [ "Geoffrey Hunter" ]
 date: 2011-09-12
 description: "A tutorial on the UART communication protocol, including types, baud rates, flow control, error checking, RS-232 and more."
 draft: false
-lastmod: 2022-03-13
-tags: [ "UART", "communication protocol", "USART", "microcontroller", "serial", "8n1", "universal asynchronous", "receiver", "transmitter", "RX", "TX", "backfeeding", "IOFF" ]
+lastmod: 2022-06-09
+tags: [ "UART", "communication protocol", "USART", "microcontroller", "serial", "8n1", "universal asynchronous", "receiver", "transmitter", "RX", "TX", "backfeeding", "IOFF", synchronization ]
 title: "UART Communication Protocol"
 type: "page"
 ---
@@ -36,6 +36,8 @@ The long history of RS-232 like serial communication means that UART is synonymo
 * MIDI
 * LIN Bus
 * IrDa
+
+Generally, if someone uses the term UART with no additional context, they are referring to the RS-232 protocol but with voltage levels between VCC and GND, typically created by a UART peripheral in a microcontroller or FPGA.
 
 ## Connectors
 
@@ -72,6 +74,14 @@ You may notice when sending lots of characters across a UART that some appear to
 * Make the UART transmission lines as short as possible and with as little capacitance as possible.
 * Shield the UART cable (not so important)
 * Implement a checksum algorithm into the receiver and transmitter, such as a CRC. The UART protocol does not support this natively, you will have to use a 3rd party library/write the code to do this yourself. Even when using a simple checksum algorithm such as exclusive or (XOR), this is probably one of the most fool proof methods for error checking.
+
+## Synchronization
+
+Synchronization problems can arise if data is sent continuously (i.e. with no idle time between blocks of data) from a UART transmitter and the receiver boots up in the middle of the transmission (or otherwise gets reset or loses where it thinks it was). In this case, the receiver may not be able to correctly distinguish the start bit from any of the other bits, as the start and end bits have the same bit width as the data. The receiver may produce incorrect data or signal framing errors until there is enough idle time to "reset" it's internal state and correctly wait for the next start bit.
+
+{{% warning %}}
+Because of these synchronization issues, it's advisable to add occasional pauses (idle time) between blocks of data if they do not happen naturally. 
+{{% /warning %}}
 
 ## Break Signal
 

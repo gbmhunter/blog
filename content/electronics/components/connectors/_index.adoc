@@ -92,63 +92,6 @@ Mixing the two plating metals is not recommended! The corrosion rate is greatly 
 .You can see the difference between the gold and tin plated header connectors. Image from http://www.fischerelektronik.de/en/latest-news/press-releases/releases/smd-high-precision-male-header-with-2point54mm-grid-spacing-horizontal-design/.
 image::gold-and-tin-plated-contacts.jpg[width=500px]
 
-== Headers
-
-A _Header_ connector normally refers to a basic row of pins or sockets, with little or no additional features such as shrouds, locking ability, or keyed parts. The most common pitch for headers is 2.54mm (100mil). Headers are versatile, as they not vendor-specific, can be connected to by soldering, hooks/probes, or the opposite gender header (either a plug or jack), normally have a standardised pitch, can handle a decent amount of current (at least 1A for normal 2.54mm headers), and are cheap!
-
-Headers are used frequently on electronic development kits. For example, the link:/programming/microcontrollers/arduino[Arduino], link:/programming/microcontrollers/raspberry-pi[RaspberryPi], and link:/programming/microcontrollers/psoc[PSoC] development kits all use headers for various things such as programming the microcontroller to providing a way to connect expansion boards.
-
-=== Schematic Symbol
-
-<<header-schematic-symbol>> shows the commonly used schematic symbol for a header-style connector. This example shows a male header (because of the `P` in the designator) with 1 row of 2 pins (usually abbreviated to `1x2`).
-
-[[header-schematic-symbol]]
-.The commonly-used schematic symbol for a header. This shows a 1x2 (1 row of 2 pins) male header.
-image::header-schematic-symbol.svg[width=200px]
-
-WARNING: This schematic symbol is very generic and also commonly used for a range of over connector styles, so don't just assume it represents a header!
-
-=== Types
-
-Headers can have two different pin types, square post of machined post. Square-post headers have square pins, while machined post header have circular pins. The machined post headers are more expensive, but can take more current as there is more contact area between the male and female parts.
-
-You can also get headers which are polarised, usually by both the male missing one pin, and the female part missing the associated hole. This prevents the common mistake of plugging in a header offset by 1 pin or completely the wrong way around. Note that careful choice of the missing pin is required to minimise the chance of an incorrect mating.
-
-=== Typical Pin Numbering
-
-Male headers (plugs) are normally numbered from left-to-right, when the connectors solder terminals (tail end) are facing south on the PCB, and the bits that do the connecting are facing north (all of this while looking down on the PCB). For female headers (jacks) to match, they are numbered from right-to-left. This is all better explained in the following image.
-
-.This image show the typical way in which headers are numbered, with males headers (plugs) being numbered left-to-right and female headers (jacks) being numbered from right-to-left.
-image::typical-numbering-order-for-header-connectors.png[width=500px]
-
-=== Using Headers For Board-to-Board Connections
-
-They are also a great, cheap way of connecting two or more PCBs together, as shown in the following image. A disadvantage is that this method is not as mechanically strong as some more expensive custom board-to-board connection methods.
-
-.Header plugs and jacks (male and female parts) are a good way of connecting PCBs together.
-image::2-54mm-smd-right-angle-header-plug-and-jack-mosaic.jpg[width=1200px]
-
-=== Part Links
-
-Samtec make some good priced, link:http://www.samtec.com/connectors/standard-board-to-board/100-inch-square-post.aspx[2.54mm pitch square-post connectors].
-
-
-
-== IDC Connectors
-
-IDC (_insulation displacement connector_) connectors are very common style of connector used to carry low speed communications and low current power between multiple circuit boards and between circuit boards and other devices. They are distinguishable by the typically black, square and sharp edged connectors, with a ribbon cable coming out the side.
-
-.A photo of a IDC plug and socket. The top piece of black plastic squashes the ribbon cable into the sharp blades and keeps the cable clamped.
-image::idc-connector-plug-and-socket-photo.png[width=400px]
-
-The namesake comes from the way the connector attaches to the ribbon cable --- the connector has sharp "razor" style blades with a notch cut through the center of each one. The ribbon cable is pushed onto the end of the blades, and the blades pierce the ribbon cable and make contact with the blades (hence "displacing the insulation"). This removes the need to strip the end of the ribbon cable and connect via crimps/soldering/screw terminals and thus makes them extremely easy to construct.
-
-Sometimes jokingly referred to as "**I**t **D**id not **C**onnect" connectors, they can make for unreliable connections when hand assembled or not constructed in the correct manner. Unlike terminal blocks or crimped connectors, it is hard to visually confirm that the connections were made correctly given the clamp obscures the connection points.
-
-The socket (least-moving piece, the side that gets soldered onto a PCB) is shrouded and keyed to make sure the parts mate in the correct way.
-
-The pitch of the PCB pins on an IDC connector is almost always 2.54mm (0.1"). Because IDC connectors always have two rows of pins, this requires that the cable has a conductor pitch of 1.27mm (0.05").
-
 == Telecom Connectors
 
 ### BT Connector

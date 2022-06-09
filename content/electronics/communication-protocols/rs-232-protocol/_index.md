@@ -21,7 +21,7 @@ RS-232 is a digital data transmission protocol with origins dating back to the 1
 | Connection Topology       | Point-to-point
 | OSI Layers                | Layers 1 (physical) and 2 (data link)
 
-RS-232 is commonly used today for a variety of different purposes in embedded systems, incl industrial equipment, test and measurement equipment. RS-232 ports are no longer available on most desktop computers (and certainly not on laptops), but USB-to-RS232 adapters are cheap, popular and easy to use with almost any operating system.
+RS-232 is commonly used today for a variety of different purposes in embedded systems, incl industrial equipment, test and measurement equipment. RS-232 ports are no longer available on most desktop computers (and certainly not on laptops), but USB-to-RS232 adapters are cheap, popular and easy to use with almost any operating system. Microcontroller UART peripherals are commonly connected to a UART-to-RS232 converter to send data that is going off-board.
 
 ## Pinout
 
