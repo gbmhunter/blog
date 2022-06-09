@@ -3,8 +3,8 @@ authors: [ Geoffrey Hunter ]
 date: 2011-09-05
 description: Terminology, types, manufacturers, common usages and more info on circular connectors.
 draft: false
-lastmod: 2022-06-08
-tags: [ electronics, connectors, electronic components, circular connectors, M12, M8, field installable, DIN, coding, splitters, Phoenix, PLUSCON ]
+lastmod: 2022-06-10
+tags: [ electronics, connectors, electronic components, circular connectors, M12, M8, M5, field installable, DIN, coding, splitters, Phoenix, PLUSCON ]
 title: MX Circular Connectors
 type: page
 ---
@@ -16,7 +16,7 @@ _MX Circular Connectors_ include all circular connectors designated with M and a
 
 **M8 and M12 connectors are circular connectors with a 8mm or 12mm mating thread** (note the thread in question is the thread joining the two mating connectors together, not the other threads which may be present on the M12 connector, such as panel-mount variants which typically have a 16mm thread for mounting to the panel). They are used for a variety of purposes across a large number of industries. A large number of these connectors are rated IP67 and prevent the ingress of water and dust.
 
-Smaller M5 connectors also exist.
+Smaller M5 connectors also exist, which include 2, 3 and 4pin configurations[^bib-norcomp-m5-series-conn].
 
 M8/M12 connectors have different _codings_. Each coding is a particular pin arrangement and key which prevents the same diameter and pin connector being mated with connectors with different codings.
 
@@ -60,4 +60,12 @@ Some M8/M12 connectors are _field installable_. This is when the connection to t
 
 ### Phoenix Contact
 
-_Phoenix Contact_ make a number of circular connector product in the M5, M8 and M12 range under their _PLUSCON_ brand name. A good brochure listing many of their M5 to M12 products can be found at https://www.phoenixcontact.com/assets/downloads_ed/local_us/web_dwl_promotion/52003587_EN_US_PLUSCON_circular_M5_M8_M12_LoRes.pdf.
+_Phoenix Contact_ make a number of circular connector product in the M5, M8 and M12 range under their _PLUSCON_ brand name. A good brochure listing many of their M5 to M12 products can be found at https://www.phoenixcontact.com/assets/downloads_ed/local_us/web_dwl_promotion/52003587_EN_US_PLUSCON_circular_M5_M8_M12_LoRes.pdf. Some of the offerings include Litz wires.
+
+### NorComp
+
+_NorComp_ manufacture a range of M5, M8 and M12 circular connectors.
+
+## References
+
+[^bib-norcomp-m5-series-conn]: NorComp. _M5 Connector Series (product page)_. Retrieved 2022-06-10, from https://www.norcomp.net/series/m5-series-circular-connector.
