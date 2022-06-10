@@ -20,3 +20,5 @@ type: "post"
 * Added a [new page on the RP2040 microcontroller](/programming/microcontrollers/raspberry-pi/rp2040/) from Raspberry Pi Ltd.
 
 * Added more info on [MX circular connectors](/electronics/components/connectors/mx-circular-connectors/).
+
+* Added info on [UART frame structure](/electronics/communication-protocols/uart-communication-protocol/#uart-frame-structure).

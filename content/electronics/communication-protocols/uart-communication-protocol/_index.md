@@ -4,7 +4,7 @@ date: 2011-09-12
 description: "A tutorial on the UART communication protocol, including types, baud rates, flow control, error checking, RS-232 and more."
 draft: false
 lastmod: 2022-06-09
-tags: [ "UART", "communication protocol", "USART", "microcontroller", "serial", "8n1", "universal asynchronous", "receiver", "transmitter", "RX", "TX", "backfeeding", "IOFF", synchronization ]
+tags: [ "UART", "communication protocol", "USART", "microcontroller", "serial", "8n1", "universal asynchronous", "receiver", "transmitter", "RX", "TX", "backfeeding", "IOFF", synchronization, parity, stop bits, start bit ]
 title: "UART Communication Protocol"
 type: "page"
 ---
@@ -23,6 +23,16 @@ UART (_Universal Asynchronous Receiver/Transmitter_) is a lower-voltage, microco
 
 
 **It is commonly used today as a simple, two-way node-to-node serial communications protocol between devices on a circuit board** or possibly over a cable. Because of it's low voltage and single-ended nature, it is not very noise resilient, and is usually replaced with a more robust protocol such as [RS-232](/electronics/communication-protocols/rs-232-protocol) or [RS-485](/electronics/communication-protocols/rs-485-protocol) when communication occurs over any significant cable length or in a noisy environment.
+
+## UART Frame Structure
+
+UART sends data in groups of 5, 6, 7 or 8 bits at a time across the bus (typically 8, to equal a single byte) in what is called a _UART frame_. The bus idles "high" when no data is sent. To indicate the start of a frame, the transmitter drives the line low for one bit period, this is called the start bit. The receiver synchronizes it's incoming bit sampling clock with the falling edge of the start bit. The start bit lasts for one bit period, and which point the transmitter sends the bits of data by driving the line either high or low. This is then followed by an optional parity bit (which is more often than not excluded). Then this is followed by 1 or 2 stop bits.
+
+The figure below shows what a UART frame would look like when configured in the popular '8n1' configuration (8 bits, no parity, 1 stop bit):
+
+{{% img src="uart-example-byte-waveform-8n1.png" width="800px" caption="Drawing showing the basic frame structure of a byte sent across a UART bus in the popular '8n1' configuration (8 bits, no parity, 1 stop bit)." %}}
+
+UART has no say in what the data means, it is up to the application code to make sense of one these bits of data mean and to group them into larger data structures.
 
 ## Protocol
 
