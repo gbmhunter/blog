@@ -1,12 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [ Geoffrey Hunter ]
 date: 2011-09-12
-description: "A tutorial on the UART communication protocol, including types, baud rates, flow control, error checking, RS-232 and more."
+description: A tutorial on the UART communication protocol, including types, baud rates, flow control, error checking, RS-232 and more.
 draft: false
 lastmod: 2022-06-09
-tags: [ "UART", "communication protocol", "USART", "microcontroller", "serial", "8n1", "universal asynchronous", "receiver", "transmitter", "RX", "TX", "backfeeding", "IOFF", synchronization, parity, stop bits, start bit ]
-title: "UART Communication Protocol"
-type: "page"
+tags: [ UART, communication protocol, USART, microcontroller, serial, 8n1, universal asynchronous, receiver, transmitter, RX, TX, backfeeding, IOFF, synchronization, parity, stop bits, start bit, frame ]
+title: UART Communication Protocol
+type: page
 ---
 
 ## Overview
@@ -24,15 +24,45 @@ UART (_Universal Asynchronous Receiver/Transmitter_) is a lower-voltage, microco
 
 **It is commonly used today as a simple, two-way node-to-node serial communications protocol between devices on a circuit board** or possibly over a cable. Because of it's low voltage and single-ended nature, it is not very noise resilient, and is usually replaced with a more robust protocol such as [RS-232](/electronics/communication-protocols/rs-232-protocol) or [RS-485](/electronics/communication-protocols/rs-485-protocol) when communication occurs over any significant cable length or in a noisy environment.
 
+## Terminology
+
+### Bit Period
+
+The _bit period_ is the time (or width) of a single bit in a UART transmission or frame. The bit period is just the reciprocal of the baud rate:
+
+<p>\begin{align}
+t_{bit} = \frac{1}{BR}
+\end{align</p>
+
+For example, some common baud rates and their corresponding bit periods are:
+
+| Baud Rate | Bit Period
+|-----------|-------------
+| 9600      | 104us
+| 57600     | 17.4us
+| 115200    | 8.68us
+
+### Start Bit
+
+The first bit in a UART frame. Always just one bit period wide. The receiver uses the falling (first) edge of the start bit to synchronize it's sampling clock, the first data bit will be sample 1.5bit periods after this transition.
+
+### Stop Bit
+
+The last bit (or bits) in a UART frame. There can be 1, 1.5 or 2 stop bits, with 1 being the most common.
+
 ## UART Frame Structure
 
-UART sends data in groups of 5, 6, 7 or 8 bits at a time across the bus (typically 8, to equal a single byte) in what is called a _UART frame_. The bus idles "high" when no data is sent. To indicate the start of a frame, the transmitter drives the line low for one bit period, this is called the start bit. The receiver synchronizes it's incoming bit sampling clock with the falling edge of the start bit. The start bit lasts for one bit period, and which point the transmitter sends the bits of data by driving the line either high or low. This is then followed by an optional parity bit (which is more often than not excluded). Then this is followed by 1 or 2 stop bits.
+UART sends data in groups of 5, 6, 7 or 8 bits at a time across the bus (typically 8, to equal a single byte) in what is called a _UART frame_. The bus idles "high" when no data is sent. To indicate the start of a frame, the transmitter drives the line low for one bit period, this is called the _start bit_. The receiver synchronizes it's incoming bit sampling clock with the falling edge of the start bit. The start bit lasts for one bit period, and which point the transmitter sends the bits of data by driving the line either high or low. This is then followed by an optional _parity bit_ (which is commonly excluded). Then this is followed by 1, 1.5 or 2 _stop bits_.
 
 The figure below shows what a UART frame would look like when configured in the popular '8n1' configuration (8 bits, no parity, 1 stop bit):
 
 {{% img src="uart-example-byte-waveform-8n1.png" width="800px" caption="Drawing showing the basic frame structure of a byte sent across a UART bus in the popular '8n1' configuration (8 bits, no parity, 1 stop bit)." %}}
 
 UART has no say in what the data means, it is up to the application code to make sense of one these bits of data mean and to group them into larger data structures.
+
+You might be wondering, why ever have more than 1 stop bit? The answer is that multiple stop bits can be useful to delay the next frame if the receiver needs a little more time to process the current frame.
+
+See the below section on [Synchronization](#synchronization) for more details on the idle to start bit transition and how the receiver "locks on" to the transmitted data.
 
 ## Protocol
 
