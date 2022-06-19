@@ -1,26 +1,32 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Electronic Components", "Diodes" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Electronic Components, Diodes ]
 date: 2011-09-05
-description: "Info about light-emitting diodes (LEDs)."
+description: Schematic symbols, equations, types, forward voltages, design hints and more info about light-emitting diodes (LEDs).
 draft: false
-lastmod: 2022-01-28
-tags: [ "LEDs", "light", "emitting", "diodes" ]
-title: "Light-emitting Diodes (LEDs)"
-type: "page"
+lastmod: 2022-06-19
+tags: [ LEDs, light, emitting, diodes, PAR, irradiance, radiance, flux, lumens, radiometry, photometry, wavelengths, PWM, controllers, viewing angle ]
+title: Light-emitting Diodes (LEDs)
+type: page
 ---
 
 ## Overview
 
-There is a neat little [LED Wizard](http://led.linear1.org/led.wiz) from LED Centre for working out what parallel/series combination of LED's you should use given a certain input voltage and number of LEDs you want in your array.
+_Light-emitting diodes_ (LEDs) are electrical components which when provided with voltage and current, emit light. Although there are many ways to make light from electricity (hot filaments, lasers, plasma, e.t.c.), by-definition LEDs are built from a basic diode. They typically have two electrical connections, just like a standard diode. They emit light when forward biased, and block reverse current just like normal diodes (a warning here: some LEDs DO NOT like being reverse biased, please read the datasheet). 
 
 {{% img src="red-led-5mm-th-diffused.jpg" width="250" caption="A diffused-lens, red, 5mm through-hole LED." %}}
 
 ## Schematic Symbol
 
+The schematic symbol for a LED looks like a diode symbol, but with arrows added to indicate that it gives of light. The schematic symbol for a LED is shown below. As with a normal diode, the anode is on the left, and the cathode on the right.
+
 {{% img src="led-diode-schematic-symbol.svg" width="300" caption="Schematic symbol for an LED (light emitting diode)." %}}
 
-IMPORTANT: It's worth pointing out that the LED's schematic symbol looks very similar to a [photodiodes](/electronics/components/diodes/photodiodes/), except the "light arrows" on a photodiode's symbol point inwards. 
+{{% warning %}}
+It's worth pointing out that the LED's schematic symbol looks very similar to a [photodiodes](/electronics/components/diodes/photodiodes/), except the "light arrows" on a photodiode's symbol point inwards.
+{{% /warning %}}
+
+A more positive voltage is needed on the anode w.r.t to the cathode for current to flow through the LED and it emit light.
 
 ## Important Parameters
 
@@ -29,9 +35,9 @@ _Parameters are sorted alphabetically._
 ### Dominant Wavelength
 
 * Symbol: `\(\lambda_{dom}\)`
-* Units: `\(nm\)`
+* Units (typical): `\(nm\)`
 
-This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the peak wavelength. Normally measured in nanometers (`\(nm\)`).
+This is the wavelength of the apparent color the human eye "sees" the LED as. It is a photometric quantity, and is not the same thing as the [peak wavelength](#peak-wavelength). Normally measured in nanometers (`\(nm\)`).
 
 ### Flux
 
@@ -40,21 +46,21 @@ This will be used as a shorthand for either _radiometric flux_, _spectral flux_ 
 ### Forward Current
 
 * Symbol: `\(I_F\)`
-* Units: `\(mA\)`
+* Units (typical): `\(mA\)`
 
 This is the maximum forward current the LED continuously be driven at. For small indicator LEDs, the maximum forward current is typically 20-30mA. Normally an indicator LED with a max. forward current of 20mA would be driven at less than the max., somewhere between 2-10mA. 
 
 ### Forward Surge Current
 
 * Symbol: `\(I_{FM}\)`
-* Units: `\(mA\)`
+* Units (typical): `\(mA\)`
  
 Normally rated at a fixed temperature, duty cycle, and pulse length.
 
 ### Forward Voltage
 
 * Symbol: `\(V_F\)`
-* Units: `\(V\)`
+* Units (typical): `\(V\)`
 
 Rated at a fixed forward current.
 
@@ -75,58 +81,60 @@ Blue LEDs are GaN based.
 ### Irradiance
 
 * Symbol: `\(E\)`
-* Units: `\(mW/m^2\)`
+* Units (typical): `\(mW/m^2\)`
 
 Irradiance is the power received per unit area of a surface which is illuminated by a light source. Irradiance is usually denoted with the symbol \(E\) as \(I\) is already used for radiant intensity. It is a radiometric quantity.
 
 ### Peak Wavelength
 
 * Symbol: `\(\lambda_{peak}\)`
-* Units: nm
+* Units (typical): `\(nm\)`
 
-The wavelength at the peak of the spectral density curve. This is the wavelength at which the LED emits the most power (or flux). It is a radiometric quantity, and is not the same thing as the dominant wavelength.
+The wavelength at the peak of the spectral density curve. This is the wavelength at which the LED emits the most power (or flux). It is a radiometric quantity, and is not the same thing as the [dominant wavelength](#dominant-wavelength).
 
 ### Photon Flux
 
 * Symbol: `\(\phi_e\)`
-* Units: `\(umol/s\)`
+* Units (typical): `\(umol/s\)`
 
 The number of photons emitted per second by the LED. This is a not a common property to be listed on LED datasheets, more typically the _radiometric flux_ is given.
 
 ### Photosynthetic Flux
 
 * Symbol: `\(PPF\)`
-* Units: `\(umol/s\)`
+* Units (typical): `\(umol/s\)`
 
 Very similar to photon flux, except only photons within the photosynthetic active region (PAR) of 400-700nm are considered. Commonly used for LED light sources that will be used in agriculture for plant growth (e.g. high-pressure sodium lamps). Typical values range from 100-200umol/s.
 
 ### Radiation Pattern
 
 * Symbol: n/a
-* Units: Relative intensity (0-1)
+* Units (typical): Relative intensity (0-1)
 
 The radiation pattern (aka spatial distribution) is usually given on a semi-circular graph, showing the relative intensity of the emitted light vs. the angle from looking directly forward.
 
 ### Radiant Flux
 
 * Symbol: `\(\phi_e\)`
-* Units: Watts, `\(mW\)`
+* Units (typical): Watts, `\(mW\)`
 
 The _radiant flux_ (also called the _radiant power_) is the total amount of light energy per unit time radiated from one region to another. In the context of an LED it is typically used to describe the total amount of light energy emitted by the LED each second. You can divide the radiant flux by the input power to calculate the efficiency of the LED, and to find out how much power will be lost as thermal energy. It is different to the photometric flux.
 
 ### Reverse Voltage
 
 * Symbol: `\(V_R\)`
-* Units: Volts, `\(V\)`
+* Units (typical): Volts, `\(V\)`
 
 The maximum voltage the LED can withstand when reverse biased. Typically LEDs are forward biased but in some applications their diode property of only allowing current to flow in one direction is used.
 
 ### View Angle
 
 * Symbol: `\(2\theta_{\frac{1}{2}}\)`
-* Units: Degrees
+* Units (typical): Degrees, `\(^{\circ}\)`
 
-The total angle that the LED emits light at. This should be less than 180° as most LEDs emit light of a planar surface. The smaller this value the more focused the LED is. Some LEDs come package with a lens to focus the light.
+The _viewing angle_ (a.k.a. _view angle_) is the total angle that the LED light output encompasses before the light radiance drops down to 50% of it's peak. This should be less than 180° as most LEDs emit light of a planar surface. The smaller this value the more focused the LED is. Some LEDs come package with a lens to focus the light. It is called `\(2\theta_{\frac{1}{2}}\)` because `\(\theta_{\frac{1}{2}}\)` is the angle measured from the center to where the radiance falls to half the peak, thus the total angle is twice this. It is assumed that the view angle is the same for any cross-sectional plane of the LED, for most LEDs this is true as their radiation pattern is rotationally symmetric (around the axis pointing forwards).
+
+Another definition of this is the angle until the light radiance drops down to 50% of what it emitted from center[^bib-street-co-viewing-angle]. This is the same as the above definition as long as the LED emits the most amount of light directly forward, which is true for a large number of LEDs.
 
 ## Limiting The LED Current
 
@@ -357,3 +365,4 @@ However, some LED manufacturers to give lifetime and reliability information. Th
 
 [^bib-wp-planck-relation]:  Wikipedia (2022, Jan 15). _Planck relation_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_relation.
 [^bib-wp-planck-constant]:  Wikipedia (2022, Feb 6). _Planck constant_. Retrieved 2022-02-23, from https://en.wikipedia.org/wiki/Planck_constant.
+[^bib-street-co-viewing-angle]: Street Co. _How Is Viewing Angle An Important Asset Of LED Displays_. Retrieved 2022-06-19, from https://streetcommunication.com/how-is-viewing-angle-an-important-asset-of-led-displays/.
