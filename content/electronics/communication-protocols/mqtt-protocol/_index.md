@@ -105,7 +105,7 @@ There are a number of MQTT clients designed for embedded devices, these include:
 
 ## MQTT-SN
 
-MQTT-SN (MQTT for Sensor Networks, previously known as just MQTT-S[^bib-mqtt-mqtt-specifications]) is a version of the MQTT protocol which has been optimized use on low-power, low-performance IoT devices. It is designed to work on non-TCP/IP networks, such as Zigbee[^bib-mqtt-mqtt-specifications].
+MQTT-SN (MQTT for Sensor Networks, previously known as just MQTT-S[^bib-mqtt-mqtt-specifications]) is a version of the MQTT protocol which has been optimized use on low-power, low-performance, wireless IoT devices. It is designed to work on non-TCP/IP networks, such as Zigbee[^bib-mqtt-mqtt-specifications].
 
 Some of the changes include:
 
@@ -113,7 +113,12 @@ Some of the changes include:
 
 The complete specification for MQTT-SN is called _MQTT For Sensor Networks (MQTT-SN) Protocol Specification: Version 1.2_ and can be downloaded for free from https://www.oasis-open.org/committees/download.php/66091/MQTT-SN_spec_v1.2.pdf.
 
+> MQTT-SN is designed in such a way that it is agnostic of the underlying networking services. Any network
+which provides a bi-directional data transfer service between any node and a particular one (a gateway) should
+be able to support MQTT-SN[^bib-oasis-open-mqtt-protocol-spec-v1.2].
+
 ## References
 
 [^bib-ublox-mqtt-sn]: ublox (2020, Jun 16). _MQTT-SN – lowering the cost of IoT at scale_. Retrieved 2022-06-20, from https://www.u-blox.com/en/blogs/insights/mqtt-sn.
 [^bib-mqtt-mqtt-specifications]: MQTT. _MQTT Specifications_. Retrieved 2022-06-20, from https://mqtt.org/mqtt-specification/.
+[^bib-oasis-open-mqtt-protocol-spec-v1.2]: Andy Stanford-Clark and Hong Linh Truong (2013, Nov 14). _MQTT For Sensor Networks (MQTT-SN) Protocol Specification: Version 1.2_. Retrieved 2022-06-21, from https://www.oasis-open.org/committees/download.php/66091/MQTT-SN_spec_v1.2.pdf.
