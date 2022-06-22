@@ -5,7 +5,7 @@ date: 2014-02-16
 description: History, brokers, clients, Mosquitto, Paho, embedded MQTT clients and more information about the MQTT communications protocol.
 draft: false
 lastmod: 2022-06-20
-tags: [ electronics, communication protocols, MQTT, paho, Python, TLS, SSL, "1883", "8883", brokers, clients, coreMQTT, embedded, IoT, MQTT-SN, sensor networks, ZigBee ]
+tags: [ electronics, communication protocols, MQTT, paho, Python, TLS, SSL, "1883", "8883", brokers, clients, coreMQTT, embedded, IoT, MQTT-SN, sensor networks, ZigBee, SCADA, IBM, Mosquitto ]
 title: MQTT Protocol
 type: page
 ---
@@ -14,13 +14,21 @@ type: page
 
 ## Overview
 
-MQTT is a lightweight publish/subscribe communications protocol that uses TCP/IP (and other secondary transport mechanisms). It is designed for remote sensors to communicate with controlling devices. The specification is under a royalty-free licence. Interesting features of the protocol include the one-to-many messaging service (publish/subscribe), the Last Will/Testament feature, and the three qualities of service. You can read more about it [here](http://www.ibm.com/developerworks/webservices/library/ws-mqtt/index.html).
+MQTT is a **lightweight publish/subscribe communications protocol** that uses TCP/IP (and other secondary transport mechanisms). It is designed for remote sensors to communicate with controlling devices. The specification is under a royalty-free licence. Interesting features of the protocol include the one-to-many messaging service (publish/subscribe), the Last Will/Testament feature, and the three qualities of service. You can read more about it [here](http://www.ibm.com/developerworks/webservices/library/ws-mqtt/index.html).
 
 {{% img src="mqtt-logo.png" width="500" caption="The MQTT logo. Image from https://www.eclipse.org/paho/, acquired 2021-03-30." %}}
 
+[MQTT-SN (MQTT for Sensor Networks)](#mqtt-sn) is an optimized version of the MQTT protocol designed to be used over non-TCP/IP connections.
+
 ## History
 
-MQTT was initially released in a partnership between IBM and Arcom in 1998. As of 2021-03, the latest version is v5.0.
+Andy Stanford-Clark (working at IBM) and Arlen Nipper (working for Eurotech) published the first version of the MQTT protocol in 1999. It was used to monitor oil pipelines that used the SCADA (Supervisory Control and Data Acquisition) control system[^bib-wikipedia-mqtt], with connections to the internet primarily through expensive satellite connections[^bib-paessler-brief-history-mqtt].
+
+The MQ in MQTT stood for "Message Queue" in the IBM MQSeries, a family of messaging software products. Version 3.1 of the protocol referred to it as MQ Telemetry Transport, and hence the name "MQTT" was born[^bib-wikipedia-mqtt].
+
+In 2013, IBM submitted MQTT v3.1 to the OASIS specification body[^bib-wikipedia-mqtt].
+
+On March 7, 2019, MQTT Version 5 was released, and as of 2022-06 is the most recent major version.
 
 ## MQTT Brokers
 
@@ -97,19 +105,24 @@ client.connect_async(self.broker_address, 1883, 60)
 
 There are a number of MQTT clients designed for embedded devices, these include:
 
-* [**The embedded Paho MQTT client**](https://www.eclipse.org/paho/index.php?page=clients/c/embedded/index.php): Embedded version of the popular Paho MQTT client. It is released as two separate APIs:
+* [The embedded Paho MQTT client](https://www.eclipse.org/paho/index.php?page=clients/c/embedded/index.php): Embedded version of the popular Paho MQTT client. It is released as two separate APIs:
     * MQTTPacket: Low-level C library that deals with the serialization/deserialization of MQTT packets.
     * MQTTClient: Higher-level C++ library first written for the mbed platform. Depends on MQTTPacket.
-* [**arduino-mqtt**](https://github.com/256dpi/arduino-mqtt): Arduino wrapper around the lwmqtt MQTT client. Also available for PlatformIO. This one is pretty popular and is recommended in the AWS IoT tutorials.
+* [arduino-mqtt](https://github.com/256dpi/arduino-mqtt): Arduino wrapper around the lwmqtt MQTT client. Also available for PlatformIO. This one is pretty popular and is recommended in the AWS IoT tutorials.
 * **coreMQTT**: MQTT client maintained by the FreeRTOS group (however, the library does not depend on FreeRTOS to operate).
 
 ## MQTT-SN
 
 MQTT-SN (MQTT for Sensor Networks, previously known as just MQTT-S[^bib-mqtt-mqtt-specifications]) is a version of the MQTT protocol which has been optimized use on low-power, low-performance, wireless IoT devices. It is designed to work on non-TCP/IP networks, such as Zigbee[^bib-mqtt-mqtt-specifications].
 
-Some of the changes include:
+The following image shows the high-level MQTT-SN architecture, and how MQTT-SN clients talk to a standard MQTT broker.
 
-1. Shortened two-byte topic aliases are used instead of full topic names (strings)[^bib-ublox-mqtt-sn]. This can cut down on the amount of bytes sent for topic identification considerably, e.g. the topic name `device1/sensor5/temperature` now just becomes topic ID `5`.
+{{% img src="mqtt-sn-architecture.png" width="600px" caption="High-level diagram of the MQTT-SN architecture[^bib-oasis-open-mqtt-protocol-spec-v1.2]." %}}
+
+Some of the changes in MQTT-SN include (compared to standard MQTT):
+
+1. Shortened two-octet (byte) topic IDs are used instead of full topic names (strings)[^bib-ublox-mqtt-sn]. This can cut down on the amount of bytes sent for topic identification considerably, e.g. the topic name `device1/sensor5/temperature` now just becomes topic ID `54`.
+1. Ability to pre-assign topic IDs on both the client and Gateways (GW) so they don't have to be registered across the network (with the `REGISTER` message).
 
 The complete specification for MQTT-SN is called _MQTT For Sensor Networks (MQTT-SN) Protocol Specification: Version 1.2_ and can be downloaded for free from https://www.oasis-open.org/committees/download.php/66091/MQTT-SN_spec_v1.2.pdf.
 
@@ -122,3 +135,5 @@ be able to support MQTT-SN[^bib-oasis-open-mqtt-protocol-spec-v1.2].
 [^bib-ublox-mqtt-sn]: ublox (2020, Jun 16). _MQTT-SN – lowering the cost of IoT at scale_. Retrieved 2022-06-20, from https://www.u-blox.com/en/blogs/insights/mqtt-sn.
 [^bib-mqtt-mqtt-specifications]: MQTT. _MQTT Specifications_. Retrieved 2022-06-20, from https://mqtt.org/mqtt-specification/.
 [^bib-oasis-open-mqtt-protocol-spec-v1.2]: Andy Stanford-Clark and Hong Linh Truong (2013, Nov 14). _MQTT For Sensor Networks (MQTT-SN) Protocol Specification: Version 1.2_. Retrieved 2022-06-21, from https://www.oasis-open.org/committees/download.php/66091/MQTT-SN_spec_v1.2.pdf.
+[^bib-wikipedia-mqtt]: Wikipedia (2022, June 21). _MQTT_. Retrieved 2022-06-22, from https://en.wikipedia.org/wiki/MQTT.
+[^bib-paessler-brief-history-mqtt]: Shaun Behrens (2019, Aug 09). _From Oil Pipelines to the IoT: A Brief History of MQTT_. Paessler. Retrieved 2022-06-22, from https://blog.paessler.com/a-brief-history-of-mqtt.
