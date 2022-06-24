@@ -38,7 +38,7 @@ SCLK    | _Clock_. Driven by the master, this provides the clock signal to the s
 MOSI    | _Master out, slave in_. A.k.a. _main out, subnode in_. The master drives the line and provides data to the slaves. Only the slave with nCS asserted (low) listens to the data.
 MISO    | _Master in, slave out_. A.k.a. _main in, subnode out_. The selected slave can drive this line to send data to the master.
 
-{{% img src="typical-spi-connections.jpg" width="180px" caption="The typical SPI connections that an IC will have." %}}
+{{% img src="spi-basic-master-slave-diagram.png" width="600px" caption="The basic connections needed between an SPI master and a single SPI slave." %}}
 
 One limitation with SPI is that the master has to **initiate** all communication. This can be a problem if the slave has data for the master but the master hasn't or doesn't know when to ask for it. If continuous polling is not feasible, designers get around this by also providing a _Data Ready_ line to the master. This is separate from the SPI interface, and usually set to trigger an **interrupt** to tell the master to request for the data across the SPI interface.
 
@@ -72,6 +72,10 @@ SPI Mode | Clock Polarity (CPOL) | Clock Phase (CPHA) | Which Clock Edge Is Used
 3        | 1                     | 1                  | Data sampled on rising edge and shifted out on falling edge.
 
 A common point of confusion is what clock phase (CPHA) means for data sampling/shifting for the different clock polarities. I have seen many sites and diagrams online which state that a clock phase of `0` means that data is sampled on the rising edge.
+
+The following diagram gives a graphical representation of the different CPOL and CPHA settings. Bits on the MOSI and MISO lines are always sampled half-way between the transitions. For CPHA=0 this means data is sampled on clock edges 1, 3, 5, e.t.c and for CPHA=1 data is sampled on clock edges 2, 4, 6, e.t.c.
+
+{{% img src="cpol-and-cpha-diagram.png" width="800px" caption="Diagram showing the different behaviours for different CPOL and CPHA settings." %}}
 
 The standard defines these different modes to allow for greater variability in the master and slave devices that can use SPI.
 
