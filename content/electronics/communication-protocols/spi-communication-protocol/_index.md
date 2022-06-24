@@ -11,7 +11,7 @@ type: page
 
 ## Overview
 
-SPI (_Serial Peripheral Interface_) is a **communication protocol commonly used to talk between microcontrollers/FPGAs and peripheral ICs on circuit boards**. The SPI protocol was initially developed by Motorola. It is **full-duplex** (data can be sent in both directions at once), and is ideally suited to sending medium-speed data streams between devices. Speeds of **10MHz** or more are achievable. It is a **de-facto standard**, which means there is no governing body that defines and regulates the protocol. This means there a quite a number of protocol variants.
+SPI (_Serial Peripheral Interface_) is a **communication protocol commonly used to talk between microcontrollers/FPGAs and peripheral ICs on circuit boards**. The SPI protocol was initially developed by Motorola. It is **full-duplex** (data can be sent in both directions at once), and is ideally suited to sending medium-speed data streams between devices on the same PCB. Speeds of **10MHz** or more are achievable. It is a **de-facto standard**, which means there is no governing body that defines and regulates the protocol. This means there a quite a number of protocol variants.
 
 {{% img src="spi-basic-master-slave-diagram.png" width="600px" caption="The basic connections needed between an SPI master and a single SPI slave." %}}
 
@@ -27,20 +27,20 @@ SPI (_Serial Peripheral Interface_) is a **communication protocol commonly used 
 
 ## Physical Layer
 
-SPI can either be _three wire_ (when there is only one slave and the slave does not require any signal on this line), or _four wire_ (when there are multiple slaves, and the slave select line needs to be used). For every slave there needs to be new select line, but the other three traces can be shared.
+SPI consists of a basis of three wires (SCLK, MOSI and MISO), plus one chip select (nCS) wire per slave. In the special case of only one slave, the chip select line can be dropped and the pin pulled permanently low on the slave.
 
-The track names are:
+The purpose of these connections is:
 
 Name    | Function
 --------|------------
-CS      |
-SCLK    |
-MOSI    |
-MISO    |
+nCS     | _Chip select_, a.k.a. _slave select_ (nSS). This is driven low (hence the `n`) by the master to select a slave. There is a separate chip select line going from the master to each slave.
+SCLK    | _Clock_. Driven by the master, this provides the clock signal to the slaves to clock data in and out with. The exact polarity and edges that are used depend on the values of CPOL and CPHA.
+MOSI    | _Master out, slave in_. A.k.a. _main out, subnode in_. The master drives the line and provides data to the slaves. Only the slave with nCS asserted (low) listens to the data.
+MISO    | _Master in, slave out_. A.k.a. _main in, subnode out_. The selected slave can drive this line to send data to the master.
 
 {{% img src="typical-spi-connections.jpg" width="180px" caption="The typical SPI connections that an IC will have." %}}
 
-One limitation with SPI is that the master has to **initiate** all communication. This can be a problem if the slave has data for the master but the master hasn't or doesn't know when to ask for it. Designers get around this by also providing a _Data Ready_ line to the master. This is separate from the SPI interface, and usually set to trigger an **interrupt** to tell the master to request for the data.
+One limitation with SPI is that the master has to **initiate** all communication. This can be a problem if the slave has data for the master but the master hasn't or doesn't know when to ask for it. If continuous polling is not feasible, designers get around this by also providing a _Data Ready_ line to the master. This is separate from the SPI interface, and usually set to trigger an **interrupt** to tell the master to request for the data across the SPI interface.
 
 **No specific termination** is needed on SPI connections. Long connections (many metres or more) and high data rates (>10Mhz) may require standard termination procedures to prevent reflections.
 
@@ -60,7 +60,7 @@ SPI has **four** standard 'modes'. These define different polarities of the cloc
 
 The clock polarity (CPOL) determines whether the idle state of the clock signal is either 0 (CPOL = 0) or 1 (CPOL = 1).
 
-The clock phase (CPHA) determines whether data is captured/sent on the rising or falling edge. **If CPHA = 0, then data is sampled on the first clock edge. If CPHA = 1, then data is sampled on the second clock edge.** This is true no matter what the clock polarity (CPOL) is set to. Note that if CPHA = 0, then data must be setup before the first clock edge.
+The clock phase (CPHA) determines whether data is captured/sent on the rising or falling edge. **If CPHA = 0, then data is sampled on the first clock edge. If CPHA = 1, then data is sampled on the second clock edge.** This is true no matter what the clock polarity (CPOL) is set to, and applies both to the master and all the slaves. Note that if CPHA = 0, then data must be setup before the first clock edge. If CPHA = 1, then the devices have the initial clock edge to shift data onto the lines, in preparation for sampling on the second clock edge.
 
 The following table shows the naming conventions for _Microchip PIC_ or _ARM-based_ microcontrollers:
 
@@ -71,7 +71,7 @@ SPI Mode | Clock Polarity (CPOL) | Clock Phase (CPHA) | Which Clock Edge Is Used
 2        | 1                     | 0                  | Data sampled on falling edge and shifted out on rising edge.
 3        | 1                     | 1                  | Data sampled on rising edge and shifted out on falling edge.
 
-A common point of confusion is what clock phase (CPHA) means for data sampling/shifting for the different clock polarities. I have seen many sites and diagrams online which state that a clock phase of `0` means that data is sampled on the rising edge for 
+A common point of confusion is what clock phase (CPHA) means for data sampling/shifting for the different clock polarities. I have seen many sites and diagrams online which state that a clock phase of `0` means that data is sampled on the rising edge.
 
 The standard defines these different modes to allow for greater variability in the master and slave devices that can use SPI.
 
