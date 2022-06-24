@@ -13,6 +13,8 @@ type: page
 
 SPI (_Serial Peripheral Interface_) is a **communication protocol commonly used to talk between microcontrollers/FPGAs and peripheral ICs on circuit boards**. The SPI protocol was initially developed by Motorola. It is **full-duplex** (data can be sent in both directions at once), and is ideally suited to sending medium-speed data streams between devices. Speeds of **10MHz** or more are achievable. It is a **de-facto standard**, which means there is no governing body that defines and regulates the protocol. This means there a quite a number of protocol variants.
 
+{{% img src="spi-basic-master-slave-diagram.png" width="600px" caption="The basic connections needed between an SPI master and a single SPI slave." %}}
+
 ## Advantages
 
 * SPI has much higher throughput compared to other board-level communication protocols (such as I2C or 1-wire), primarily because the bus lines are driven both high and low, and there is a separate wire for transmit and receive (full-duplex). However not as fast as protocols such as LVDS.
@@ -31,7 +33,10 @@ The track names are:
 
 Name    | Function
 --------|------------
-
+CS      |
+SCLK    |
+MOSI    |
+MISO    |
 
 {{% img src="typical-spi-connections.jpg" width="180px" caption="The typical SPI connections that an IC will have." %}}
 
@@ -151,4 +156,4 @@ The RapidS term is used by [Atmel](http://www.atmel.com/) and [Adesto Technologi
 [^bib-nxp-fxos8700cq-ds]: NXP (2017, Apr 25). _FXOS8700CQ 6-axis sensor with integrated linear accelerometer and magnetometer_. Retrieved 2022-06-02, from https://www.nxp.com/docs/en/data-sheet/FXOS8700CQ.pdf.
 [^bib-microchip-forums-spi-3-wire-microwire]: Microchip Forum (2006, Nov 13). _Differences between SPI, 3-Wire and Microwire_. Retrieved 2022-06-02, from https://www.microchip.com/forums/m202051.aspx.
 [^bib-scienceprog-microwire-compared]: ScienceProg. _Microwire compared to SPI and I2C_. Retrieved 2022-06-02, from https://scienceprog.com/microwire-compared-to-spi-and-i2c/.
-[^bib-ti-an-452-microwire]. Texas Instruments (1992, Jan). _AN-452: MICROWIRE Serial Interface_. Retrieved 2022-06-02, from https://www.ti.com/lit/an/snoa743/snoa743.pdf.
+[^bib-ti-an-452-microwire]: Texas Instruments (1992, Jan). _AN-452: MICROWIRE Serial Interface_. Retrieved 2022-06-02, from https://www.ti.com/lit/an/snoa743/snoa743.pdf.

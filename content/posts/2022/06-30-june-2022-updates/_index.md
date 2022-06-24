@@ -22,3 +22,5 @@ type: "post"
 * Added more info on [MX circular connectors](/electronics/components/connectors/mx-circular-connectors/).
 
 * Added info on [UART frame structure](/electronics/communication-protocols/uart-communication-protocol/#uart-frame-structure).
+
+* Added info on [MQTT-SN (MQTT for Sensor Networks)](/electronics/communication-protocols/mqtt-protocol/#mqtt-sn).
