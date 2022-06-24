@@ -48,7 +48,7 @@ One limitation with SPI is that the master has to **initiate** all communication
 
 Many **microcontrollers** support the SPI protocol with **dedicated peripheral hardware** to perform the low-level functions associated with sending and receiving SPI data. However, SPI can also be **bit banged** (see below).
 
-The MSB (most significant bit) is sent first, and naturally is then the first to be received. There is no pre-defined packet format, so there is no overhead added by the SPI protocol. This makes SPI great for fast transmission of arbitrary data streams.
+The MSB (most significant bit) is sent first, and naturally is then the first to be received. There is no pre-defined packet format, so there is no overhead added by the SPI protocol. This makes SPI great for fast transmission of arbitrary data streams, but relies on application specific interpretation of the raw bytes.
 
 Chip select normally uses inverse logic (low = chip selected). It usually is used to 'frame' a command sequence.
 
@@ -76,6 +76,10 @@ A common point of confusion is what clock phase (CPHA) means for data sampling/s
 The following diagram gives a graphical representation of the different CPOL and CPHA settings. Bits on the MOSI and MISO lines are always sampled half-way between the transitions. For CPHA=0 this means data is sampled on clock edges 1, 3, 5, e.t.c and for CPHA=1 data is sampled on clock edges 2, 4, 6, e.t.c.
 
 {{% img src="cpol-and-cpha-diagram.png" width="800px" caption="Diagram showing the different behaviours for different CPOL and CPHA settings." %}}
+
+Below shows an example of a single-byte transfer with CPOL=0 and CPHA=0. The master sends the data `0xA1` and the slave sends `0x75`.
+
+{{% img src="example-transmission-cpol0-cpha0.png" width="800px" caption="Example single-byte transfer with CPOL=0 and CPHA=0. Master sends 0xA1, slave sends 0x75." %}}
 
 The standard defines these different modes to allow for greater variability in the master and slave devices that can use SPI.
 
