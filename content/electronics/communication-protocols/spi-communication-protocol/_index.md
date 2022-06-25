@@ -152,7 +152,15 @@ requested, the SDO pin starts driving the requested read data onto the SDI/SDO p
 
 ## Dual And Quad SPI
 
-Dual and Quad SPI (QSPI) are extensions on the basic SPI bus which allow for faster communication rates. QSPI is commonly used for external NOR flash memory.
+Dual and Quad SPI (QSPI) are extensions on the basic SPI bus which allow for faster communication rates. Dual SPI replaces the `MOSI` and `MISO` lines with bi-directional `IO0` and `IO1` lines. This allows twice the data transfer rate in any one direction at a time, however, it now makes the protocol half-duplex (it is now unable to transfer data in both directions at the same time).
+
+{{% img src="dual-spi-diagram.png" width="500px" caption="A Dual SPI bus, where MOSI and MISO have been replaced with bi-directional IO0 and IO1." %}}
+
+QSPI takes this idea even further and adds two additional bi-directional data lines, `IO2` and `IO3`, as shown in the following diagram:
+
+{{% img src="quad-spi-diagram.png" width="500px" caption="A Quad SPI (QSPI) bus, which is like a Dual SPI bus but with two additional data lines, IO2 and IO3." %}}
+
+With the four data lines in QSPI, **a single byte can be sent in two clock cycles** (4 bits per clock cycle). QSPI is commonly used for external NOR flash memory. Examples include the [Cypress S79FS01GS "1 Gbit, 1.8 V Dual-Quad Serial Peripheral Interface with Multi-I/O Flash"](https://www.infineon.com/dgdl/Infineon-S79FS01GS_1_Gbit_1.8_V_Dual-Quad_Serial_Peripheral_Interface_with_Multi-I_O_Flash-DataSheet-v03_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ee7dd5970c3).
 
 ## Firmware
 
