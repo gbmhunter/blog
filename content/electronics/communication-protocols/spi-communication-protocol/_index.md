@@ -3,15 +3,15 @@ authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Communication Protocols ]
 date: 2011-09-03
 draft: false
-lastmod: 2022-06-02
-tags: [ electronics, communication protocols, SPI, bit-banging, MOSI, MISO, peripherals, microcontrollers, MCP4131 ]
+lastmod: 2022-06-25
+tags: [ electronics, communication protocols, SPI, bit-banging, MOSI, MISO, peripherals, microcontrollers, MCP4131, Arduino, controller, peripheral, master, slave, OSHWA ]
 title: SPI Communication Protocol
 type: page
 ---
 
 ## Overview
 
-SPI (_Serial Peripheral Interface_) is a **communication protocol commonly used to talk between microcontrollers/FPGAs and peripheral ICs on circuit boards**. The SPI protocol was initially developed by Motorola. It is **full-duplex** (data can be sent in both directions at once), and is ideally suited to sending medium-speed data streams between devices on the same PCB. Speeds of **10MHz** or more are achievable. It is a **de-facto standard**, which means there is no governing body that defines and regulates the protocol. This means there a quite a number of protocol variants.
+SPI (_Serial Peripheral Interface_) is a **communication protocol commonly used to talk between microcontrollers/FPGAs and peripheral ICs on circuit boards**. The SPI protocol was initially developed by Motorola. It is **full-duplex** (data can be sent in both directions at once), and is ideally suited to sending medium-speed data streams (typical rates up to 10-24Mbps[^bib-totalphase-single-dual-quad-spi]) between devices on the same PCB. It is a **de-facto standard**, which means there is no governing body that defines and regulates the protocol. This means there a quite a number of protocol variants.
 
 {{% img src="spi-basic-master-slave-diagram.png" width="600px" caption="The basic connections needed between an SPI master and a single SPI slave." %}}
 
@@ -44,11 +44,20 @@ One limitation with SPI is that the master has to **initiate** all communication
 
 **No specific termination** is needed on SPI connections. Long connections (many metres or more) and high data rates (>10Mhz) may require standard termination procedures to prevent reflections.
 
+Arduino has moved away from master/slave terminology (supported by an [OSHWA resolution](https://www.oshwa.org/a-resolution-to-redefine-spi-signal-names)) and now uses the following _controller/peripheral_ terminology for SPI[^bib-arduino-spi]:
+
+Old (Master/Slave)          | New (Controller/Peripheral)
+----------------------------|---------
+SS (Slave Select)           | CS (Chip Select)
+SCLK (Serial Clock)         | SCK (Serial Clock)
+MOSI (Master Out, Slave In) | COPI (Controller Out, Peripheral In)
+MISO (Master In, Slave Out) | CIPO (Controller In, Peripheral Out)
+
 ## Protocol
 
 Many **microcontrollers** support the SPI protocol with **dedicated peripheral hardware** to perform the low-level functions associated with sending and receiving SPI data. However, SPI can also be **bit banged** (see below).
 
-The MSB (most significant bit) is sent first, and naturally is then the first to be received. There is no pre-defined packet format, so there is no overhead added by the SPI protocol. This makes SPI great for fast transmission of arbitrary data streams, but relies on application specific interpretation of the raw bytes.
+The MSB (most significant bit) is typically sent first, and naturally is then the first to be received. However this is not specified by the standard, and occasionally you will encounter SPI devices that expect data LSB first. There is no pre-defined packet format, so there is no overhead added by the SPI protocol. This makes SPI great for fast transmission of arbitrary data streams, but relies on application specific interpretation of the raw bytes.
 
 Chip select normally uses inverse logic (low = chip selected). It usually is used to 'frame' a command sequence.
 
@@ -62,7 +71,7 @@ The clock polarity (CPOL) determines whether the idle state of the clock signal 
 
 The clock phase (CPHA) determines whether data is captured/sent on the rising or falling edge. **If CPHA = 0, then data is sampled on the first clock edge. If CPHA = 1, then data is sampled on the second clock edge.** This is true no matter what the clock polarity (CPOL) is set to, and applies both to the master and all the slaves. Note that if CPHA = 0, then data must be setup before the first clock edge. If CPHA = 1, then the devices have the initial clock edge to shift data onto the lines, in preparation for sampling on the second clock edge.
 
-The following table shows the naming conventions for _Microchip PIC_ or _ARM-based_ microcontrollers:
+The following table shows the naming conventions for _Microchip PIC_ or _ARM-based_ microcontrollers, as well as what is used for the Arduino SPI API[^bib-arduino-spi]:
 
 SPI Mode | Clock Polarity (CPOL) | Clock Phase (CPHA) | Which Clock Edge Is Used To Sample/Shift?
 ---------|-----------------------|--------------------|--------------------------------------------------------------
@@ -71,24 +80,21 @@ SPI Mode | Clock Polarity (CPOL) | Clock Phase (CPHA) | Which Clock Edge Is Used
 2        | 1                     | 0                  | Data sampled on falling edge and shifted out on rising edge.
 3        | 1                     | 1                  | Data sampled on rising edge and shifted out on falling edge.
 
-A common point of confusion is what clock phase (CPHA) means for data sampling/shifting for the different clock polarities. I have seen many sites and diagrams online which state that a clock phase of `0` means that data is sampled on the rising edge.
+A common point of confusion is what clock phase (CPHA) means for data sampling/shifting for the different clock polarities. I have seen many sites and diagrams online which state that a clock phase CPHA of `0` means that data is sampled on the rising edge (this is only true is CPOL is also 0).
 
 The following diagram gives a graphical representation of the different CPOL and CPHA settings. Bits on the MOSI and MISO lines are always sampled half-way between the transitions. For CPHA=0 this means data is sampled on clock edges 1, 3, 5, e.t.c and for CPHA=1 data is sampled on clock edges 2, 4, 6, e.t.c.
 
 {{% img src="cpol-and-cpha-diagram.png" width="800px" caption="Diagram showing the different behaviours for different CPOL and CPHA settings." %}}
 
-Below shows an example of a single-byte transfer with CPOL=0 and CPHA=0. The master sends the data `0xA1` and the slave sends `0x75`.
+Below shows an example of a single-byte transfer with CPOL=0 and CPHA=0. The master sends the data `0xA1` and the slave sends `0x75`. Data is sampled at the dotted red vertical lines.
 
-{{% img src="example-transmission-cpol0-cpha0.png" width="800px" caption="Example single-byte transfer with CPOL=0 and CPHA=0. Master sends 0xA1, slave sends 0x75." %}}
+{{% img src="example-transmission-cpol0-cpha0.png" width="800px" caption="Example single-byte transfer with CPOL=0 and CPHA=0 (Mode 0). Master sends 0xA1, slave sends 0x75. Data is sampled at the dotted red vertical lines." %}}
+
+And now for comparison, let's see what it would look like if we transmitted the same data but with CPOL=1 and CPHA=1 (Mode 3):
+
+{{% img src="example-transmission-cpol1-cpha1.png" width="800px" caption="Example single-byte transfer with CPOL=1 and CPHA=1 (Mode 3). Master sends 0xA1, slave sends 0x75. Data is sampled at the dotted red vertical lines." %}}
 
 The standard defines these different modes to allow for greater variability in the master and slave devices that can use SPI.
-
-### What Is The Idle State?
-
-The idle state is defined as the periods when:
-
-* CS is high and transitioning to low at the start of a transmission
-* CS is low and transitioning to high at the end of a transmission
 
 {{% note %}}
 Many devices do not support all four SPI modes. It is common (especially for slave devices) to only support two of the four modes.
@@ -144,6 +150,42 @@ The datasheet says exactly when the SDI will be turned into an SDO and data sent
 (SDI/SDO pin). After the Address/Command (first 6-bits) are received, If a valid Read command has been
 requested, the SDO pin starts driving the requested read data onto the SDI/SDO pin[^bib-microchip-mcp4xxxx-dpot-ds].
 
+## Dual And Quad SPI
+
+Dual and Quad SPI (QSPI) are extensions on the basic SPI bus which allow for faster communication rates. QSPI is commonly used for external NOR flash memory.
+
+## Firmware
+
+The Arduino platform provides a consistent API for accessing peripherals on an SPI bus. The API is accessed by including `SPI.h` in your `.cpp` file. If the microcontroller has only one SPI bus, it can usually be accessed via the global `SPI`.
+
+```c++
+#include <SPI.h>
+
+const int slavePin = 20;
+
+int main() {
+    uint8_t val1, val2;
+
+    // Begin SPI transaction, setting clock speed to 1MHz, most significant bit first (typical), and
+    // SPI Mode 0 (CPOL=0, CPHA=0).
+    SPI.beginTransaction(SPISettings(1000000, MSBFIRST, SPI_MODE0));
+
+    // Assert the slaves chip select (drive low)
+    digitalWrite(slavePin, LOW);
+
+    // Two bytes transferred across, and read the two bytes sent back to us
+    val1 = SPI.transfer(0xA1);
+    val2 = SPI.transfer(0x07);
+
+    // De-assert the chip select
+    digitalWrite(slavePin, HIGH);
+
+    // End transaction, SPI bus is now free to be used by other devices
+    SPI.endTransaction();
+}
+
+```
+
 ## Similar Protocols
 
 ### Microwire (uWire)
@@ -165,3 +207,5 @@ The RapidS term is used by [Atmel](http://www.atmel.com/) and [Adesto Technologi
 [^bib-microchip-forums-spi-3-wire-microwire]: Microchip Forum (2006, Nov 13). _Differences between SPI, 3-Wire and Microwire_. Retrieved 2022-06-02, from https://www.microchip.com/forums/m202051.aspx.
 [^bib-scienceprog-microwire-compared]: ScienceProg. _Microwire compared to SPI and I2C_. Retrieved 2022-06-02, from https://scienceprog.com/microwire-compared-to-spi-and-i2c/.
 [^bib-ti-an-452-microwire]: Texas Instruments (1992, Jan). _AN-452: MICROWIRE Serial Interface_. Retrieved 2022-06-02, from https://www.ti.com/lit/an/snoa743/snoa743.pdf.
+[^bib-arduino-spi]: Arduino. _Arduino & Serial Peripheral Interface (SPI)_. Retrieved 2022-06-25, from https://docs.arduino.cc/learn/communication/spi.
+[^bib-totalphase-single-dual-quad-spi]: Kathleen Chan. _What are the Differences of Single vs Dual vs Quad SPI?_. TotalPhase. Retrieved 2022-06-25, from https://www.totalphase.com/blog/2020/05/what-are-the-differences-of-single-vs-dual-vs-quad-spi/.
