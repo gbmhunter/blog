@@ -4,7 +4,7 @@ categories: [ Electronics, Communication Protocols ]
 date: 2011-09-03
 draft: false
 lastmod: 2022-06-25
-tags: [ electronics, communication protocols, SPI, bit-banging, MOSI, MISO, peripherals, microcontrollers, MCP4131, Arduino, controller, peripheral, master, slave, OSHWA ]
+tags: [ electronics, communication protocols, SPI, bit-banging, MOSI, MISO, peripherals, microcontrollers, MCP4131, Arduino, controller, peripheral, master, slave, OSHWA, execute-in-place, XIP ]
 title: SPI Communication Protocol
 type: page
 ---
@@ -160,8 +160,13 @@ QSPI takes this idea even further and adds two additional bi-directional data li
 
 {{% img src="quad-spi-diagram.png" width="500px" caption="A Quad SPI (QSPI) bus, which is like a Dual SPI bus but with two additional data lines, IO2 and IO3." %}}
 
-With the four data lines in QSPI, **a single byte can be sent in two clock cycles** (4 bits per clock cycle). QSPI is commonly used for external NOR flash memory. Examples include the [Cypress S79FS01GS "1 Gbit, 1.8 V Dual-Quad Serial Peripheral Interface with Multi-I/O Flash"](https://www.infineon.com/dgdl/Infineon-S79FS01GS_1_Gbit_1.8_V_Dual-Quad_Serial_Peripheral_Interface_with_Multi-I_O_Flash-DataSheet-v03_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ee7dd5970c3).
+With the four data lines in QSPI, **a single byte can be sent in two clock cycles** (4 bits per clock cycle). QSPI is commonly used for external NOR flash memory. Examples include the [Cypress S79FS01GS 1 Gbit, 1.8 V Dual-Quad Serial Peripheral Interface with Multi-I/O Flash](https://www.infineon.com/dgdl/Infineon-S79FS01GS_1_Gbit_1.8_V_Dual-Quad_Serial_Peripheral_Interface_with_Multi-I_O_Flash-DataSheet-v03_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ee7dd5970c3). Chips that support QSPI usually also support Dual SPI.
 
+{{% img src="infineon-s25fs128s-qspi-flash-connection-diagram.png" width="500px" caption="Wiring diagram for the Infineon S25FS128S QSPI flash IC[^bib-infineon-s25fs128s-ds]." %}}
+
+## Execute-In-Place (XIP)
+
+Many QSPI flash ICs support _execute-in-place_ (XIP). This is when a section of the CPUs main memory is mapped to the external flash memory. The CPU is unaware that this section of memory is off-chip, and the fetching process happens automatically in the background over a QSPI interface.
 ## Firmware
 
 The Arduino platform provides a consistent API for accessing peripherals on an SPI bus. The API is accessed by including `SPI.h` in your `.cpp` file. If the microcontroller has only one SPI bus, it can usually be accessed via the global `SPI`.
@@ -217,3 +222,4 @@ The RapidS term is used by [Atmel](http://www.atmel.com/) and [Adesto Technologi
 [^bib-ti-an-452-microwire]: Texas Instruments (1992, Jan). _AN-452: MICROWIRE Serial Interface_. Retrieved 2022-06-02, from https://www.ti.com/lit/an/snoa743/snoa743.pdf.
 [^bib-arduino-spi]: Arduino. _Arduino & Serial Peripheral Interface (SPI)_. Retrieved 2022-06-25, from https://docs.arduino.cc/learn/communication/spi.
 [^bib-totalphase-single-dual-quad-spi]: Kathleen Chan. _What are the Differences of Single vs Dual vs Quad SPI?_. TotalPhase. Retrieved 2022-06-25, from https://www.totalphase.com/blog/2020/05/what-are-the-differences-of-single-vs-dual-vs-quad-spi/.
+[^bib-infineon-s25fs128s-ds]: Infineon (2019, Nov 22). _S25FS128S/S25FS256S: 1.8 V, Serial Peripheral Interface with Multi-I/O, MirrorBit® Non-Volatile Flash (datasheet)_. Retrieved 2022-06-26, from https://www.infineon.com/dgdl/Infineon-S25FS128S_S25FS256S_1.8_V_Serial_Peripheral_Interface_with_Multi-I_O_MirrorBit(R)_Non-Volatile_Flash-DataSheet-v14_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ed6b5ab5758. 
