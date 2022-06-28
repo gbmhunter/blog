@@ -26,3 +26,5 @@ type: "post"
 * Added info on [MQTT-SN (MQTT for Sensor Networks)](/electronics/communication-protocols/mqtt-protocol/#mqtt-sn).
 
 * Added info and diagrams on SPI CPOL and CPHA settings, incl. example byte transfers.
+
+* Added a new page on the Kalman Filter (still in notes form).
