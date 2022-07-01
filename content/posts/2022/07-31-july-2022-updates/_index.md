@@ -12,3 +12,5 @@ type: "post"
 ---
 
 ## Updates This Month
+
+* Changed the left side-bar, main content and right side-bar columns widths at various screen breakpoints to make the main content larger on wider screens.

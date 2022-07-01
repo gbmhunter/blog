@@ -103,11 +103,14 @@
         </head>
         
         <body>
+          <!-- Set this below div to container-fluid if you want it to take up the entire page width on large
+            screens, rather than stopping at 1354px wide. -->
           <div class="container-xxl">
             <div class="row">
               <!-- LEFT-HAND SIDEBAR (logo + menu) -->
               <!-- Add data-simplebar to make the scrollbar special! -->
-              <aside class="bd-sidebar col-md-3" data-simplebar>
+              <!-- col-md-3 to col-xl-2 makes the column relatively smaller on wide screens -->
+              <aside class="bd-sidebar col-md-3 col-xl-2" data-simplebar>
                 
                 <!--- These two sections are stacked in a column when on desktop, side-by-side when on mobile -->
                 <div class="header-section-1">

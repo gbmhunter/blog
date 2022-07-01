@@ -6,7 +6,7 @@
   {{ $section := .Site.GetPage "section" .Section }}
   
   <!-- order=3 when on small devices so below TOC, order=2 on medium up so TOC goes on the right-->
-  <article class="col-md-6 order-3 order-md-2">
+  <article class="col-md-6 col-xl-8 order-3 order-md-2">
     <header>
       {{ partial "breadcrumbs.html" . }}
       <p>{{with .CurrentSection.Title }}{{. | upper }}{{end}}</p>
@@ -110,7 +110,7 @@
       
     </article>
     <!-- Add data-simplebar to make the scrollbar special! -->
-    <div id="right-hand-column" class="col-md-3 order-2 order-md-3" data-simplebar>
+    <div id="right-hand-column" class="col-md-3 col-xl-2 order-2 order-md-3" data-simplebar>
       <div id="toc">
         <div>Page contents:</div>
         {{ .TableOfContents }}
