@@ -1,16 +1,51 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Programming", "Databases" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Programming, Databases ]
 date: 2020-07-14
-description: "Code examples for MariaDB and PostgreSQL."
+description: Code examples for SQL, MariaDB and PostgreSQL.
 draft: false
-lastmod: 2020-07-20
-tags: [ "programming", "databases", "MariaDB", "SQL", "table", "PostgreSQL", "inheritance", "object-orientated databases" ]
-title: "Databases"
-type: "page"
+lastmod: 2022-07-01
+tags: [ programming, databases, MariaDB, SQL, table, PostgreSQL, inheritance, object-orientated databases, records ]
+title: Databases
+type: page
 ---
 
 {{% warning-is-notes %}}
+
+## SQL
+
+A _record_ is the definition for a row in a table. 
+
+### Inserting A Record
+
+To insert a record into a table, use the SQL `INSERT` command. Let's say we wanted to add a person called `josh` to the `people` table:
+
+```sql
+INSERT INTO people(name)
+VALUES('josh');
+```
+
+To do the same thing from Python:
+
+```python
+cur.execute('INSERT INTO people(name) VALUES(%s);', ('josh',))
+conn.commit()
+```
+
+### Updating A Record
+
+The SQL command `UPDATE` is used to update existing records (table rows). Suppose we wanted to update the age of all people named `ben` to `11`:
+
+```sql
+UPDATE people SET age=11 WHERE name=ben
+```
+
+To do the same thing in Python:
+
+```python
+cur.execute(f'UPDATE people SET age=%s WHERE name=%s', (age, name, ))
+conn.commit()
+```
 
 ## MariaDB
 
