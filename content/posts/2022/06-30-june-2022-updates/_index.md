@@ -14,17 +14,22 @@ type: "post"
 ## Updates This Month
 
 * Added [info on SPI peripherals with shared MOSI/MISO pins](/electronics/communication-protocols/spi-communication-protocol/#shared-mosimiso-pins).
+    {{% img src="shared-mosi-miso-pins-screenshot.png" width="500px" %}}
 
 * Added a [new page on Elastomeric connectors](/electronics/components/connectors/elastomeric-connectors/).
+    {{% img src="elastomeric-connectors-screenshot.png" width="500px" %}}
 
 * Added a [new page on the RP2040 microcontroller](/programming/microcontrollers/raspberry-pi/rp2040/) from Raspberry Pi Ltd.
+    {{% img src="rpi-screenshot.png" width="500px" %}}
 
 * Added more info on [MX circular connectors](/electronics/components/connectors/mx-circular-connectors/).
 
 * Added info on [UART frame structure](/electronics/communication-protocols/uart-communication-protocol/#uart-frame-structure).
+    {{% img src="uart-frame-structure-screenshot.png" width="500px" %}}
 
 * Added info on [MQTT-SN (MQTT for Sensor Networks)](/electronics/communication-protocols/mqtt-protocol/#mqtt-sn).
 
-* Added info and diagrams on SPI CPOL and CPHA settings, incl. example byte transfers.
+* Added info and diagrams on [SPI CPOL and CPHA settings](/electronics/communication-protocols/spi-communication-protocol/#modes), incl. example byte transfers.
+    {{% img src="spi-cpol-cpha-screenshot.png" width="500px" %}}
 
-* Added a new page on the Kalman Filter (still in notes form).
+* Added a new page on the [Kalman Filter](/programming/signal-processing/digital-filters/kalman-filter/) (still in notes form).
