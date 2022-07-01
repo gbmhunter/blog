@@ -1,7 +1,8 @@
 {{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
 {{ define "main" }}
-<!-- This file is used to render all the single tag pages, e.g. /tags/electronics/ -->
-<article class="col-md-6 order-3 order-md-2">
+<!-- This file is used to render all the single tag pages, e.g. /tags/electronics/ 
+  Make sure it has the same columns tags as in main_content.html -->
+<article class="col-md-6 col-xl-8 order-3 order-md-2">
   {{ partial "breadcrumbs.html" . }}
   <header>
     <p class="f6 b helvetica tracked">

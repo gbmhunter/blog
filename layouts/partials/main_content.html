@@ -5,7 +5,8 @@
   <!-- In total, this file contains HTML elements that use up 9 of the 12 bootstrap columns (leaving 3 for the site logo and menu)-->
   {{ $section := .Site.GetPage "section" .Section }}
   
-  <!-- order=3 when on small devices so below TOC, order=2 on medium up so TOC goes on the right-->
+  <!-- order=3 when on small devices so below TOC, order=2 on medium up so TOC goes on the right
+    Make sure this has the same column classes as list.html -->
   <article class="col-md-6 col-xl-8 order-3 order-md-2">
     <header>
       {{ partial "breadcrumbs.html" . }}
