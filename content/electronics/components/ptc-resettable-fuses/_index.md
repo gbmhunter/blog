@@ -13,10 +13,12 @@ type: "page"
 
 A _PTC resettable fuse_ (or just PTC, a.k.a. _polyfuse_, _polyswitch_ or _multifuse_) is a passive electronic component used to **protect against excessive load currents and short-circuits in electronic circuits**. The key difference between standard blowable fuses and PTC resettable fuses is that a PTC resettable is _resettable_ -- once the fault condition is cleared the fuses resets and the circuit can work normally again, without any manual replacement of fuses. PTC stands for positive temperature coefficient and references the fact that the components resistance increases with increasing temperature.
 
-.3D render of a 1206 chip sized PTC fuse from Bel Fuse Inc<<bib-digikey-bel-fuse-0zcj0035ff2g>>.
-image::3d-render-of-chip-ptc-fuse-bel-fuse-0zcj0035ff2g.png[width=200px]
+<div style="display: flex;">
+{{% img src="3d-render-of-chip-ptc-fuse-bel-fuse-0zcj0035ff2g.png" width="300" caption="3D render of a 1206 chip sized PTC fuse from Bel Fuse Inc[^bib-digikey-bel-fuse-0zcj0035ff2g]." %}}
+{{% img src="bourns-mf-sm050-ptc-fuse.png" width="300px" caption="A photo of the Bourns MF-SM050 PTC fuse. This was on a PCB used in an agricultural LED light (grow light)." %}}
+</div>
 
-For information on just plain old resistors, see the link:/electronics/components/resistors[Resistors page].
+For information on just plain old resistors, see the [Resistors page](/electronics/components/resistors).
 
 ## How They Work
 
@@ -26,8 +28,7 @@ It is essentially a resistor whose resistance increases as temperature increases
 
 I prefer to use the designator prefix `RT` (e.g. `RT1`) and the following schematic symbol for a PTC-type thermistor. 
 
-.Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor.
-image::positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png[width=400px]
+{{% img src="positive-temperature-coefficient-ptc-component-schematic-symbol-and-designator.png" width="400" caption="Schematic symbol and designator for a PTC (positive-temperature co-efficient) thermistor." %}}
 
 I use the designator prefix `RT` for thermistors (**R**esistance depends on **T**emperature), while using `RV` for varistors (**R**esistance depends on **V**oltage).
 
@@ -45,7 +46,7 @@ Typically the trip current is around double the hold current (e.g. a hold curren
 
 ### Rated Voltage
 
-The _rated voltage_ (a.k.a. _maximum voltage_, _voltage (max)_, stem:[V_{max}], stem:[V_{DC}]) is the maximum voltage the PTC can handle across it's two pins without damage. This is usually applicable when the PTC is in it's tripped state and the PTC is dropping almost the full supply voltage across it.
+The _rated voltage_ (a.k.a. _maximum voltage_, _voltage (max)_, `\(V_{max}\)`, `\(V_{DC}\)`) is the maximum voltage the PTC can handle across it's two pins without damage. This is usually applicable when the PTC is in it's tripped state and the PTC is dropping almost the full supply voltage across it.
 
 ### Time To Trip
 
@@ -53,19 +54,19 @@ The _time to trip_ is the time the PTC fuse takes to transition from the normal 
 
 ### Rmin/R1max
 
-stem:[R_{min}] is the minimum resistance of the PTC in it's initial (unsoldered) state. However, after a PTC trips and then is allowed to cool to reset, it does not usually fall back down to stem:[R_{min}] quickly, but can take days to reach this initial stem:[R_{min}] state. Instead, a stem:[R_{1max}] (a.k.a. stem:[R_{TRIP}]) value is specified which is the resistance it returns to after some fixed time period, usually an hour. Note that soldering methods such as reflow soldering cause the same resistance change effect as tripping (after all, both processes heat it up!).
+`\(R_{min}\)` is the minimum resistance of the PTC in it's initial (unsoldered) state. However, after a PTC trips and then is allowed to cool to reset, it does not usually fall back down to `\(R_{min}\)` quickly, but can take days to reach this initial `\(R_{min}\)` state. Instead, a `\(R_{1max}\)` (a.k.a. `\(R_{TRIP}\)`) value is specified which is the resistance it returns to after some fixed time period, usually an hour. Note that soldering methods such as reflow soldering cause the same resistance change effect as tripping (after all, both processes heat it up!).
 
-TIP: stem:[R_{min}] is useful for determining the _peak fault current_ that will occur if a short-circuit occurs (before the PTC trips). stem:[I_{max} = \frac{V_{in}}{R_{min}}]. This rate at which this peak current will drop will depend on the <<_time_to_trip, time to trip>>.
+TIP: `\(R_{min}\)` is useful for determining the _peak fault current_ that will occur if a short-circuit occurs (before the PTC trips). `\(I_{max} = \frac{V_{in}}{R_{min}}\)`. This rate at which this peak current will drop will depend on the [^_time_to_trip, time to trip].
 
-The conditions to measure stem:[R_{1max}] varies slightly between manufacturers. For example, LittelFuse specifies stem:[R_{1max}] in it's `60R` series as:
+The conditions to measure `\(R_{1max}\)` varies slightly between manufacturers. For example, LittelFuse specifies `\(R_{1max}\)` in it's `60R` series as:
 
-> Maximum resistance of device at 20°C measured one hour after tripping or reflow soldering of 260°C for 20 sec<<bib-littelfuse-60r-ds>>.
+> Maximum resistance of device at 20°C measured one hour after tripping or reflow soldering of 260°C for 20 sec[^bib-littelfuse-60r-ds].
 
-You typically have to design the load so it can operate under normal conditions with a PTC whose resistance in somewhere between stem:[R_{min}] and stem:[R_{1max}].
+You typically have to design the load so it can operate under normal conditions with a PTC whose resistance in somewhere between `\(R_{min}\)` and `\(R_{1max}\)`.
 
 ### Max. Power Dissipation
 
-The _maximum power dissipation_ (a.k.a. stem:[P_{d, max}]) is the maximum power that the PTC can dissipate when in a tripped state under specified environmental conditions such as the ambient air temperature and PCB footprint (PCB footprint is more relevant for SMD devices than through-hole devices). Power dissipation above this limit can cause damage to the device due to overheating.
+The _maximum power dissipation_ (a.k.a. `\(P_{d, max}\)`) is the maximum power that the PTC can dissipate when in a tripped state under specified environmental conditions such as the ambient air temperature and PCB footprint (PCB footprint is more relevant for SMD devices than through-hole devices). Power dissipation above this limit can cause damage to the device due to overheating.
 
 ## Types
 
@@ -99,22 +100,22 @@ One consideration to make is that a **PTC never reaches a complete open-circuit 
 
 ## How To Calculate The Triggered Resistance
 
-Most PTC thermistor datasheets will tell you the nominal off resistance (and/or it's range of values), but not the triggered resistance! However, you can calculate this using the typical power value (stem:[P_D]) that they provide.
+Most PTC thermistor datasheets will tell you the nominal off resistance (and/or it's range of values), but not the triggered resistance! However, you can calculate this using the typical power value (`\(P_D\)`) that they provide.
 
-stem:[P_D] is the typical power dissipated by the device when in a tripped state and in a fixed temperature (usually 23-25°C) still air environment. This is somewhat independent of the voltage applied to the thermistor, due to an increased voltage causing more heating, which in turn increases the resistance, which lowers the current and therefore dissipated. This is a form of negative feedback, and because this dissipated power is independent of the supply voltage, it can be specified as a property of the component on the datasheet.
+`\(P_D\)` is the typical power dissipated by the device when in a tripped state and in a fixed temperature (usually 23-25°C) still air environment. This is somewhat independent of the voltage applied to the thermistor, due to an increased voltage causing more heating, which in turn increases the resistance, which lowers the current and therefore dissipated. This is a form of negative feedback, and because this dissipated power is independent of the supply voltage, it can be specified as a property of the component on the datasheet.
 
 To calculate the triggered resistance, use the following equation:
 
-[stem]
-++++
+<p>\begin{align}
 R_{triggered} = \frac{V^2}{P_D}
-++++
+\end{align}</p>
 
-[.text-center]
-where: +
-stem:[R_{triggered}] is the triggered resistance of the PTC thermistor, in Ohms +
-stem:[V] is the voltage across the PTC thermistor (usually equal to the open-circuit supply voltage) +
-stem:[P_D] is the dissipated power of the PTC thermistor when in it's triggered state, as given by it's datasheet +
+<p class="centered">
+where:<br/>
+\(R_{triggered}\) is the triggered resistance of the PTC thermistor, in Ohms</br>
+\(V\) is the voltage across the PTC thermistor (usually equal to the open-circuit supply voltage)</br>
+\(P_D\) is the dissipated power of the PTC thermistor when in it's triggered state, as given by it's datasheet</br>
+</p>
 
 The triggered resistance should be many orders of magnitude larger than the off resistance.
 
@@ -123,7 +124,7 @@ The triggered resistance should be many orders of magnitude larger than the off 
 * Eaton: Eaton sells a range of PTC fuses under the brandname _Polytron_.
 * Bourns: They sell a family of resettable PTC fuses under the brand name _Multifuse_, with the part numbers beginning with _MF-_. See https://www.bourns.com/products/circuit-protection/resettable-fuses-multifuse-pptc.
 * Bel:
-* Littelfuse: Littelfuse sells PTCs under their brand name POLYFUSE<<bib-littelfuse-60r-ds>>.
+* Littelfuse: Littelfuse sells PTCs under their brand name POLYFUSE[^bib-littelfuse-60r-ds].
 
 ## Supplier Links
 
@@ -131,10 +132,9 @@ The triggered resistance should be many orders of magnitude larger than the off 
 
 ## PTC Reliability
 
-The IEEE publication link:https://www.prognostics.umd.edu/calcepapers/10_Shunfeng_Cheng_Failure_Precursors_for_Polymer_Resettable_Fuses.pdf[Failure Precursors for Polymer Resettable Fuses] has some interesting reading on the behaviour of PTC fuses as they age and what the early indications are of failure.
+The IEEE publication [Failure Precursors for Polymer Resettable Fuses](https://www.prognostics.umd.edu/calcepapers/10_Shunfeng_Cheng_Failure_Precursors_for_Polymer_Resettable_Fuses.pdf) has some interesting reading on the behaviour of PTC fuses as they age and what the early indications are of failure.
 
-[bibliography]
 ## References
 
-* [[[bib-digikey-bel-fuse-0zcj0035ff2g, 1]]] DigiKey. _Bel Fuse Inc. 0ZCJ0035FF2G (product page)_. Retrieved 2021-12-14, from https://www.digikey.com/en/products/detail/bel-fuse-inc/0ZCJ0035FF2G/4156131.
-* [[[bib-littelfuse-60r-ds, 2]]] Littelfuse. _POLYFUSE® Resettable PTCs: Radial Leaded > 60R Series (datasheet_. Retrieved 2021-12-14, from https://www.littelfuse.com/data/en/data_sheets/littelfuse_60r.pdf.
+[^bib-digikey-bel-fuse-0zcj0035ff2g]: DigiKey. _Bel Fuse Inc. 0ZCJ0035FF2G (product page)_. Retrieved 2021-12-14, from https://www.digikey.com/en/products/detail/bel-fuse-inc/0ZCJ0035FF2G/4156131.
+[^bib-littelfuse-60r-ds]: Littelfuse. _POLYFUSE® Resettable PTCs: Radial Leaded > 60R Series (datasheet_. Retrieved 2021-12-14, from https://www.littelfuse.com/data/en/data_sheets/littelfuse_60r.pdf.
