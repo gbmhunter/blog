@@ -833,7 +833,7 @@ p, li, div, td, th, input, code.has-jax {
     font-weight: 400;
 
     margin-top: 7px;
-    width: 60%;
+    width: 90%; // Used to be 60%, changed to 90% because we made the column thinner
     text-align: center;
 }
 @media (min-width: 768px) {
@@ -867,9 +867,14 @@ p, li, div, td, th, input, code.has-jax {
         margin-top: .125rem;
         margin-left: 0.1rem;
         color: rgb(60, 60, 60);
-        font-size: 0.9em;
+        font-size: 1.2em;
         text-decoration: none;
         
+    }
+    @media (min-width: 768px) {
+        a {
+            font-size: 0.9em;
+        }
     }
 }
 
