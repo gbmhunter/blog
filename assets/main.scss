@@ -1468,3 +1468,19 @@ ul.bibliography li p {
         margin-right: 10px;
     }
 }
+
+/* ========================================================================= */
+/* POSITIVES/NEGATIVES                                                       */
+/* ========================================================================= */
+
+// These stylings are designed to be used with spans that wrap unordered lists of
+// pros/cons
+
+span.pro {
+    color: green;
+}
+
+span.con {
+    // Our main colour happens to be a nice red for cons
+    color: var(--main-color);
+}
