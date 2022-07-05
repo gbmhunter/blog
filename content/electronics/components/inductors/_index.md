@@ -309,6 +309,38 @@ There are usually two maximum current ratings on an inductor's datasheet, the sa
 
 Confusing? The most simple Simon design approach is to pick the lower maximum current of the two and treat that as the maximum current allowed through the inductor. A seasoned inductor sensei will realise that the rated current is not applicable to short current peaks, and so it is safe to exceed this for brief periods of time, as long as the saturation current is not exceeded (disclaimer: in some cases, even exceeding the saturation current limit is o.k. or even desirable, but see the Saturation Current section for more info on this.
 
+## How To Measure Inductance In An Electronics Lab
+
+Inductor markings can be confusing (or completely absent!), making it hard to determine the part number and inductance of a particular inductor. Additionally, basic multimeters have no ability to measure inductance. Luckily, there are many ways to measure inductance in a laboratory setting.
+
+One such way is with a signal generator and oscilloscope.
+
+1. Set the signal generator to:
+    * Waveform: `Sine wave`
+    * Voltage: `1V peak-to-peak`
+    * Frequency: `10kHz`
+    * Output type: `High-Z`
+
+1. Connect the oscilloscope to the signal generator and measure the open-circuit voltage. It should be about 1V peak-to-peak. Record down the exact peak-to-peak value, as signal generators are not usually that accurate with their voltages!
+
+
+    NOTE: If you read 2V peak-to-peak, you probably have the signal generators output type set to 50Ω, which means it doubles the voltage. Switch to high-Z or change the voltage to 500mV peak-to-peak to compensate.
+
+1. Now connect the inductor to the signal generator, whilst still measuring the voltage with the oscilloscope (this will be the output voltage of the signal generator, as well as the voltage across the inductor).
+
+1. Adjust the frequency of the signal generator until the peak-to-peak voltage across the inductor is half the measured open-circuit peak-to-peak voltage.
+
+1. Calculate the inductance! It is equal to:
+
+    <p>\begin{align}
+    L = \sqrt{\frac{1}{3}} \cdot \frac{50\Omega}{2\pi f}  
+    \end{align}</p>
+
+    <p class="centered">
+    where:</br>
+    \(f\) is the frequency at which the inductors peak-to-peak voltage was half the signal generators open-circuit peak-to-peak voltage 
+    </p>
+
 ## Manufacturer Part Numbers
 
 * **DR1050**: Series of inductors by Eaton (previously Cooper Bussmann).
