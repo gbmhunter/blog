@@ -313,7 +313,9 @@ Confusing? The most simple Simon design approach is to pick the lower maximum cu
 
 Inductor markings can be confusing (or completely absent!), making it hard to determine the part number and inductance of a particular inductor. Additionally, basic multimeters have no ability to measure inductance. Luckily, there are many ways to measure inductance in a laboratory setting.
 
-One such way is with a signal generator and oscilloscope.
+### Measuring Inductance with a Signal Generator and Oscilloscope
+
+One way to measure the inductance of an inductor is with a signal generator and oscilloscope[^bib-dos4ever-meas-unknown-inductors].
 
 1. Set the signal generator to:
     * Waveform: `Sine wave`
@@ -323,8 +325,7 @@ One such way is with a signal generator and oscilloscope.
 
 1. Connect the oscilloscope to the signal generator and measure the open-circuit voltage. It should be about 1V peak-to-peak. Record down the exact peak-to-peak value, as signal generators are not usually that accurate with their voltages!
 
-
-    NOTE: If you read 2V peak-to-peak, you probably have the signal generators output type set to 50Ω, which means it doubles the voltage. Switch to high-Z or change the voltage to 500mV peak-to-peak to compensate.
+    {{< note >}}If you read 2V peak-to-peak, you probably have the signal generators output type set to 50Ω, which means it doubles the voltage. Switch to high-Z or change the voltage to 500mV peak-to-peak to compensate.{{< /note >}}
 
 1. Now connect the inductor to the signal generator, whilst still measuring the voltage with the oscilloscope (this will be the output voltage of the signal generator, as well as the voltage across the inductor).
 
@@ -333,13 +334,25 @@ One such way is with a signal generator and oscilloscope.
 1. Calculate the inductance! It is equal to:
 
     <p>\begin{align}
-    L = \sqrt{\frac{1}{3}} \cdot \frac{50\Omega}{2\pi f}  
+    L = \sqrt{\frac{1}{3}} \cdot \frac{50\Omega}{2\pi f}
     \end{align}</p>
 
     <p class="centered">
     where:</br>
-    \(f\) is the frequency at which the inductors peak-to-peak voltage was half the signal generators open-circuit peak-to-peak voltage 
+    \(f\) is the frequency in Hertz at which the inductors peak-to-peak voltage was half the signal generators open-circuit peak-to-peak voltage<br/>
+    \(50\Omega\) is the output impedance of the signal generator (measure and tweak this value for a more accurate calculation)<br/>
+    \(L\) is the calculated inductance, in Henries<br/>
     </p>
+
+{{% warning %}}
+The above method only works well for inductors which have a low series resistance[^bib-dos4ever-meas-unknown-inductors].
+{{% /warning %}}
+
+**How It Works**
+
+The internal resistance of the signal generator `\(50\Omega\)` and the inductance form a voltage divider. The impedance of the resistor stays constant at `\(50\Omega\)` no matter the frequency, but the impedance of the inductor does change with frequency. You vary the frequency until the voltage at the mid-point of the voltage divider is half the total voltage, which means that the impedances of the resistor and inductor are the same.
+
+
 
 ## Manufacturer Part Numbers
 
@@ -351,3 +364,7 @@ One such way is with a signal generator and oscilloscope.
 Unfortunately for the PCB designer, almost all SMD inductor packages are non-standard and unique to the manufacturer and series.
 
 {{< img src="ipc-sm-782-component-dimensions-for-smd-inductors.png" width="709px" caption="Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard." >}}
+
+## References
+
+[^bib-dos4ever-meas-unknown-inductors]: Ronald Dekker. _A Simple Method to Measure Unknown Inductors_. DOS4Ever. Retrieved 2022-07-06, from https://www.dos4ever.com/inductor/inductor.html.
