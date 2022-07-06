@@ -325,9 +325,13 @@ One way to measure the inductance of an inductor is with a signal generator and 
 
 1. Connect the oscilloscope to the signal generator and measure the open-circuit voltage. It should be about 1V peak-to-peak. Record down the exact peak-to-peak value, as signal generators are not usually that accurate with their voltages!
 
+    {{< img src="inductor-measurement-with-sig-gen-and-oscilloscope-01.png" width="500px" >}}
+
     {{< note >}}If you read 2V peak-to-peak, you probably have the signal generators output type set to 50Ω, which means it doubles the voltage. Switch to high-Z or change the voltage to 500mV peak-to-peak to compensate.{{< /note >}}
 
-1. Now connect the inductor to the signal generator, whilst still measuring the voltage with the oscilloscope (this will be the output voltage of the signal generator, as well as the voltage across the inductor).
+1. Now connect the inductor to the signal generator, whilst still measuring the voltage with the oscilloscope (this will be the output voltage of the signal generator, as well as the voltage across the inductor). The circuit should look like this:
+
+    {{< img src="inductor-measurement-with-sig-gen-and-oscilloscope-02.png" width="600px" >}}
 
 1. Adjust the frequency of the signal generator until the peak-to-peak voltage across the inductor is half the measured open-circuit peak-to-peak voltage.
 
@@ -350,9 +354,35 @@ The above method only works well for inductors which have a low series resistanc
 
 **How It Works**
 
-The internal resistance of the signal generator `\(50\Omega\)` and the inductance form a voltage divider. The impedance of the resistor stays constant at `\(50\Omega\)` no matter the frequency, but the impedance of the inductor does change with frequency. You vary the frequency until the voltage at the mid-point of the voltage divider is half the total voltage, which means that the impedances of the resistor and inductor are the same.
+The internal resistance of the signal generator `\(50\Omega\)` and the inductance form a voltage divider. The impedance of the resistor stays constant at `\(50\Omega\)` no matter the frequency, but the impedance of the inductor does change with frequency (`\(Z_L = X_L = \omega L\)`). You vary the frequency until the voltage at the mid-point of the voltage divider is half the total voltage, which means that the impedances of the resistor and inductor are the same.
 
+We arrive at the equation for the inductance by using the voltage-divider rule for a complex circuit:
 
+<p>\begin{align}
+\left| \frac{V_{SCOPE}}{V_{SIG}} \right| = \left| \frac{j\omega L}{R + j\omega L} \right|
+\end{align}</p>
+
+Simplifying:
+
+<p>\begin{align}
+\left| \frac{V_{SCOPE}}{V_{SIG}} \right| &= \left| \frac{j\omega L}{R + j\omega L} \cdot \frac{R - j\omega L}{R - j\omega L} \right| \\
+                                         &= \left| \frac{j\omega RL + \omega^2 L^2}{R^2 + \omega^2 L^2} \right|
+\end{align}</p>
+
+Now let's separate the equation into a real and imaginary part:
+
+<p>\begin{align}
+\left| \frac{V_{SCOPE}}{V_{SIG}} \right| &= \left| \frac{\omega^2 L^2}{R^2 + \omega^2 L^2} + j\frac{\omega RL}{R^2 + \omega^2 L^2} \right| \\
+\end{align}</p>
+
+Now we can take the magnitude of this and simplify:
+
+<p>\begin{align}
+\left| \frac{V_{SCOPE}}{V_{SIG}} \right| &= \sqrt{ \frac{\omega^4 L^4}{(R^2 + \omega^2 L^2)^2} + \frac{\omega^2 R^2L^2}{(R^2 + \omega^2 L^2)^2} } \\
+                                         &= \frac{\sqrt{\omega^4 L^4 + \omega^2R^2L^2}}{R^2 + \omega^2L^2} \\
+                                         &= \frac{\sqrt{\omega^2 L^2(R^2 + \omega^2L^2)}}{R^2 + \omega^2L^2} \\
+                                         &= \frac{\omega L}{\sqrt{R^2 + \omega^2L^2}} \\
+\end{align}</p>
 
 ## Manufacturer Part Numbers
 
