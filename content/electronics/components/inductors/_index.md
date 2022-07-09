@@ -4,7 +4,7 @@ categories: [ "Electronics", "Electronic Components" ]
 date: 2013-05-06
 description: "Important parameters, schematic symbols, series/parallel connections, core materials, construction methods, saturation currents, packages, uses/applications and more info on inductors."
 draft: false
-lastmod: 2020-12-02
+lastmod: 2022-07-08
 tags: [ "inductor", "inductors", "inductance", "permeability", "parallel", "series", "parasitic model", "saturation current", "packages", "flat coil", "powdered iron", "ferrite", "toroidal" ]
 title: "Inductors"
 type: "page"
@@ -20,69 +20,56 @@ Inductors are passive electronic components which store energy as a magnetic fie
 
 Two inductances which are in close proximity they can couple with each, this is called **mutual inductance**. This is the basic principle behind a {{% link text="transformer" src="/electronics/components/transformers" %}}.
 
-## Terminology
+## How They Work
 
-<table>
-  <thead>
-    <tr>
-      <th>Term</th>
-      <th>Definition</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Core</td>
-      <td>Inductors are made from turns of wire. The core of an inductor is the area enclosed by these turns of wires.</td>
-    </tr>
-    <tr>
-      <td>Ferro-magnetic</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Inductance</td>
-      <td>The inductance of an inductor is it's primary parameter. It is a measure of how much energy the inductance can store. It is also a measure of the voltage the inductor will generate in response to a current change. This parameter is used to calculate it's impedance, for a given frequency.</td>
-    </tr>
-    <tr>
-      <td>Permeability</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Self-resonance</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+When current is flowing through an inductor, some electrical energy is converted and stored as magnetic energy in the inductors magnetic field. Inductors like staying at a constant current, and they "actively resist" current changes. They do this by generating a voltage across their terminals which resists the change in current.
 
+The defining equation relating the voltage, inductance and change in current is:
+
+<p>$$v = L \frac{di}{dt}$$</p>
+
+<p class="centered">
+    where:<br>
+    \(v\) is the voltage across the inductor<br>
+    \(L\) is the inductance of the inductor<br>
+    \(\frac{di}{dt}\) is the instantaneous change in current through the inductor<br>
+</p>
+
+## Schematic Symbol and Designator
+
+There are a few common schematic symbols for an inductor. `L` is almost always used as the designator prefix on schematics, e.g. inductors will be named `L1`, `L2`, e.t.c. The one shown below is commonly used for a simple inductor. 
+
+{{< img src="schematic-symbol-of-inductor.png" width="500px" caption="Schematic symbol and example designator for a basic inductor." >}}
 
 ## Important Parameters
 
 ### Inductance
 
-Symbol: `\(I\)`
-Units: Henries (`\(H\)`)
+* Symbol: `\(L\)`
+* Units: Henries (`\(H\)`)
 
-This parameter determines the relationship between the rate of change in current through the inductor and the inductors voltage.
+The main thing you care about! The _inductance_ determines the relationship between the rate of change in current through the inductor and the inductors voltage. It determines the voltage the inductor will generate in response to a specific rate of current change. This parameter is used to calculate it's impedance, for a given frequency.
 
 ### K-factor
 
 ### DC resistance
 
-Symbol: `\(DCR\)`
-Units: Ohms (`\(\Omega\)`)
+* Symbol: `\(DCR\)`
+* Units: Ohms (`\(\Omega\)`)
 
 The DC resistance of the coil of wire that the inductor is made up from. You can use this to calculate resistive losses through the inductor. An ideal inductor has no DCR. The DC resistance of an inductor can be easily measured by a good quality multimeter or benchtop Ohm meter.
 
 ### Saturation Current
 
-Symbol: `\(I_{sat}\)`
-Units: Amps (`\(A\)`)
+* Symbol: `\(I_{sat}\)`
+* Units: Amps (`\(A\)`)
 
 This is the most important current rating. Essentially, this is the maximum current the inductor can take before it stops working like an inductor. At higher currents, the inductor becomes much more lossy.
 
 ### Rated current
 
-Symbol: `\(I_{rated}\)`
-Units: Amps (`\(A\)`)
+* Symbol: `\(I_{rated}\)`
+* Units: Amps (`\(A\)`)
 
 This is typically given as the amount of current required to created a fixed temperature rise above ambient due to resistive losses in the copper winding. The temperature rise is usually 40°C.
 
@@ -176,22 +163,7 @@ This is shown in the diagram below:
 
 {{< img src="inductor-in-series-with-equation.png" width="609px" caption="Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances." >}}
 
-## Equations
-
-### Inductance Equation
-
-The equation relating the voltage, inductance and change in current is:
-
-<p>$$v = L \frac{di}{dt}$$</p>
-
-<p class="centered">
-    where:<br>
-    \(v\) is the voltage across the inductor<br>
-    \(L\) is the inductance of the inductor<br>
-    \(\frac{di}{dt}\) is the instantaneous change in current through the inductor<br>
-</p>
-
-### Energy Equation
+## The Energy Stored In An Inductor
 
 The energy stored in a inductor is given by:
 
@@ -199,25 +171,31 @@ The energy stored in a inductor is given by:
 
 <p class="centered">
     where:<br>
-    \(E\) is the energy stored in the inductor<br>
-    \(L\) is the inductance of the inductor<br>
-    \(I\) is the current flowing through the inductor<br>
+    \(E\) is the energy stored in the inductor, in Joules \(J\)<br>
+    \(L\) is the inductance of the inductor, in Henries \(H\)<br>
+    \(I\) is the current flowing through the inductor, in Amps \(A\)<br>
 </p>
 
 This equation is only valid when the inductor is operating in it's linear region, that is, before the current reaches the point where the magnetic field begins to **saturate**. Notice that it is similar to the {{% link text="equation for energy in a capacitor" src="/electronics/components/capacitors#energy" %}}.
 
-### Simple Impedance Model
+## The Impedance Of An Inductor
 
-An ideal inductor (no parasitic elements) has an impedance given by:
+### Simple Model
+
+An ideal inductor (no parasitic elements) has an impedance `\(Z_L\)` given by:
 
 <p>$$Z_L = 2\pi fL$$</p>
 
 <p class="centered">
     where:<br>
-    \( Z_L \) = inductor's impedance (\( \Omega \))<br>
-    \( f \) = frequency of analysis (\( Hz \))<br>
-    \( L \) = inductance of inductor (\( H \))<br>
+    \( Z_L \) = inductor's impedance, in Ohms (\( \Omega \))<br>
+    \( f \) = frequency of analysis, in Hertz (\( Hz \))<br>
+    \( L \) = inductance of inductor, in Henries (\( H \))<br>
 </p>
+
+{{% note %}}
+Sometimes `\(X_L\)` is used instead of `\(Z_L\)`. `\(X\)` represents reactance (purely imaginary), whilst `\(Z\)` is for impedance (which may contain real and imaginary parts). For a **simple inductor with no parasitic elements the reactance and impedance is the same**, i.e. `\(X_L = Z_L\)`.
+{{% /note %}}
 
 This shows that the impedance goes up as the frequency goes up. At DC levels, the inductor has no impedance and acts like a short-circuit, while at high frequencies the inductor approaches an open-circuit.
 
