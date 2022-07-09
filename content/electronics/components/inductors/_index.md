@@ -12,13 +12,21 @@ type: "page"
 
 ## Overview
 
-Inductors are passive electronic components which store energy as a magnetic field. They are made by coiling wire around a material (be it air, or something else). They are not as common as [resistors](/electronics/components/resistors) and {{% link text="capacitors" src="/electronics/components/capacitors" %}} in electronic circuits. They are related to [transformers](/electronics/components/transformers).
+Inductors are passive electronic components which store energy as a magnetic field. They are made by coiling wire around a material (be it air, or something else). They are well used but not as common as [resistors](/electronics/components/resistors) and {{% link text="capacitors" src="/electronics/components/capacitors" %}} in electronic circuits.
 
 {{< img src="3-35uh-20a-large-inductor.jpg" caption="A 3.35uH 20A large inductor." width="400px" >}}
 
 **The mechanical equivalent of an inductor is mass.** The larger the inductance, the larger the mass. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
 Two inductances which are in close proximity they can couple with each, this is called **mutual inductance**. This is the basic principle behind a {{% link text="transformer" src="/electronics/components/transformers" %}}.
+
+Inductors are used in many things, including:
+
+* Common-mode chokes
+* [Ferrite beads](/electronics/components/ferrite-beads/)
+* [Transformers](/electronics/components/transformers)
+* Switch mode power suppliers (e.g. buck and boost converters)
+* Pi/T filters
 
 ## How They Work
 
