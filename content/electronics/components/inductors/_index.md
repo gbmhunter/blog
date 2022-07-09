@@ -22,11 +22,11 @@ Two inductances which are in close proximity they can couple with each, this is 
 
 Inductors are used in many things, including:
 
-* Common-mode chokes
+* [Common-mode chokes](/electronics/components/common-mode-chokes/)
 * [Ferrite beads](/electronics/components/ferrite-beads/)
 * [Transformers](/electronics/components/transformers)
-* Switch mode power suppliers (e.g. buck and boost converters)
-* Pi/T filters
+* [Switch mode power suppliers](/electronics/components/power-regulators/switch-mode-power-supplies-smps/) (e.g. buck and boost converters)
+* [Pi/T filters](/electronics/circuit-design/analogue-filters/)
 
 ## How They Work
 
@@ -42,6 +42,8 @@ The defining equation relating the voltage, inductance and change in current is:
     \(L\) is the inductance of the inductor<br>
     \(\frac{di}{dt}\) is the instantaneous change in current through the inductor<br>
 </p>
+
+For example: If you connected 12V across an inductor, initially there would be no current, as current cannot change instantaneously through an inductor. Then, because the voltage across the inductor is a constant 12V, the current through the inductor would rise linearly. The bigger the inductance, the slower the current would increase, as per the equation above. In a perfect world this would continue forever, but in reality either your power supply will current limit or your inductor will start to heat up and smoke.
 
 ## Schematic Symbol and Designator
 
