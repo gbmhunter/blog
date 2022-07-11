@@ -74,18 +74,44 @@ The DC resistance of the coil of wire that the inductor is made up from. You can
 * Symbol: `\(I_{sat}\)`
 * Units: Amps (`\(A\)`)
 
-This is the most important current rating. Essentially, this is the maximum current the inductor can take before it stops working like an inductor. At higher currents, the inductor becomes much more lossy.
+The _saturation current_ is the maximum current the inductor can take before it stops working like an inductor. Above this point, the magnetic field does not increase proportionally with the current (the core is "saturated"), and the apparent inductance of the inductor begins to decrease. This also means that above the saturation current the current will rise/fall much faster, which can cause it to shoot up to dangerous levels. It is not the same thing as the _rated current_.
+
+For example, Vishay Dale specified the saturation current for it's IHLP-1212BZ-11 family ([datasheet](https://www.vishay.com/docs/34289/lp12bz11.pdf)) of inductors as the current at which the inductance drops 20% down from the value at 0A (it's rated inductance)[^bib-vishay-ihlp1212bz11-ds]. The following graph shows the inductance vs. DC current plot for the IHLP1212BZER1R0M11 inductor in this family. This inductor has a saturation current of 4.5A.
+
+{{% img src="inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11.png" width="500px" caption="Plot of inductance vs. DC current for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds]." %}}
 
 ### Rated current
 
 * Symbol: `\(I_{rated}\)`
 * Units: Amps (`\(A\)`)
 
-This is typically given as the amount of current required to created a fixed temperature rise above ambient due to resistive losses in the copper winding. The temperature rise is usually 40°C.
+The _rated current_ is typically given as the amount of average current required to created a fixed temperature rise above ambient due to resistive losses in the copper winding. The temperature rise is usually 40°C. Inductors can usually handle current peaks above the _rated current_ as long as the average is still less.
 
-Be careful when choosing an inductor, normally it's the saturation current which is important, and it can be much lower than the rated current!
+### Self-resonant Frequency
 
-Inductors are commonly used as an energy storage component in {{% link text="DC/DC converters" src="/electronics/components/power-regulators" %}}.
+* Symbol: `\(SRF\)`
+* Units: Megahertz (`\(MHz\)`)
+
+The _self-resonant frequency_ of an inductor is the frequency at which the parasitic capacitance of the inductor resonates with the inductance, resulting in a very high impedance (e.g. open circuit)[^bib-everythingrf-self-resonant-frequency]. The inductor stops behaving like a inductor above the self-resonant frequency.
+
+The below plot shows a plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor. The self-resonant frequency occurs where the inductance `\(L\)` spikes at about 75MHz:
+
+{{% img src="self-resonant-frequency.png" width="600px" caption="Plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds], highlighting the self-resonant frequency (SRF)." %}}
+
+The equation for the SRF is[^bib-coilcraft-measuring-srf]:
+
+<p>\begin{align}
+SRF = \frac{1}{2\pi \sqrt{LC}}
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(L\) is the inductance in Henries<br/>
+\(C\) is the parasitic capacitance, in Farads</br>
+\(SRF\) is the self-resonant frequency, in Hertz</br>
+</p>
+
+The main contributor to the parasitic capacitance is the distributed capacitance between each coil windings.
 
 ## Types Of Inductors
 
@@ -403,3 +429,6 @@ Unfortunately for the PCB designer, almost all SMD inductor packages are non-sta
 ## References
 
 [^bib-dos4ever-meas-unknown-inductors]: Ronald Dekker. _A Simple Method to Measure Unknown Inductors_. DOS4Ever. Retrieved 2022-07-06, from https://www.dos4ever.com/inductor/inductor.html.
+[^bib-vishay-ihlp1212bz11-ds]: Vishay Dale. _IHLP-1212BZ-11: IHLP Commercial Inductors, Low DCR Series (datasheet). Retrieved 2022-07-11, from https://www.vishay.com/docs/34289/lp12bz11.pdf.
+[^bib-everythingrf-self-resonant-frequency]: everythingRF. _What is Self Resonant Frequency (SRF) in Inductors?_. Retrieved 2022-07-11, from https://www.everythingrf.com/community/what-is-self-resonant-frequency.
+[^bib-coilcraft-measuring-srf]: Coilcraft (2003, Sep 16). _Document 363-1: Measuring Self Resonant Frequency_. Retrieved 2022-07-11, from https://www.coilcraft.com/getmedia/8ef1bd18-d092-40e8-a3c8-929bec6adfc9/doc363_measuringsrf.pdf.
