@@ -62,23 +62,29 @@ The main thing you care about! The _inductance_ determines the relationship betw
 
 ### K-factor
 
+The _K-factor_ (a.k.a.) _coupling coefficient_ is a fractional value of the amount of flux linkage between two coils. It is not applicable for a single inductor, but is a useful property when describing transformers.
+
 ### DC resistance
 
 * Symbol: `\(DCR\)`
 * Units: Ohms (`\(\Omega\)`)
 
-The DC resistance of the coil of wire that the inductor is made up from. You can use this to calculate resistive losses through the inductor. An ideal inductor has no DCR. The DC resistance of an inductor can be easily measured by a good quality multimeter or benchtop Ohm meter.
+The _DC resistance_ is the resistance of the inductor's coil of wire, measured at DC. You can use this to calculate resistive losses through the inductor. An ideal inductor has no DCR. The DC resistance of an inductor can be easily measured by a good quality multimeter or benchtop Ohm meter. For a fixed volume, a larger valued inductor usually has a higher DCR as it has a larger number of thinner guage turns.
+
+Typical DC resistances range from `\(10m\Omega\)` to `\(10\Omega\)`. 
 
 ### Saturation Current
 
 * Symbol: `\(I_{sat}\)`
 * Units: Amps (`\(A\)`)
 
-The _saturation current_ is the maximum current the inductor can take before it stops working like an inductor. Above this point, the magnetic field does not increase proportionally with the current (the core is "saturated"), and the apparent inductance of the inductor begins to decrease. This also means that above the saturation current the current will rise/fall much faster, which can cause it to shoot up to dangerous levels. It is not the same thing as the _rated current_.
+The _saturation current_ is the maximum current the inductor can take before it stops working like an inductor (it's not a sudden point, but rather defined as when the inductance drops to a fixed percentage of it's nominal value). Above this point, the magnetic field does not increase proportionally with the current (the core is "saturated"), and the apparent inductance of the inductor is decreasing. This also means that above the saturation current the current will rise/fall much faster, which can cause it to shoot up to dangerous levels. It is not the same thing as the _rated current_.
 
 For example, Vishay Dale specified the saturation current for it's IHLP-1212BZ-11 family ([datasheet](https://www.vishay.com/docs/34289/lp12bz11.pdf)) of inductors as the current at which the inductance drops 20% down from the value at 0A (it's rated inductance)[^bib-vishay-ihlp1212bz11-ds]. The following graph shows the inductance vs. DC current plot for the IHLP1212BZER1R0M11 inductor in this family. This inductor has a saturation current of 4.5A.
 
 {{% img src="inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11.png" width="500px" caption="Plot of inductance vs. DC current for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds]." %}}
+
+Typical saturation currents range from 10-100mA's for small inductors, up to 1-10A for larger PCB mount inductors.
 
 ### Rated current
 
