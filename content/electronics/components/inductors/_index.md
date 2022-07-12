@@ -45,18 +45,18 @@ The defining equation relating the voltage, inductance and change in current is:
 
 For example: If you connected 12V across an inductor, initially there would be no current, as current cannot change instantaneously through an inductor. Then, because the voltage across the inductor is a constant 12V, the current through the inductor would rise linearly. The bigger the inductance, the slower the current would increase, as per the equation above. In a perfect world this would continue forever, but in reality either your power supply will current limit or your inductor will start to heat up and smoke.
 
-## Schematic Symbol and Designator
+## Schematic Symbols and Designator
 
-There are a few common schematic symbols for an inductor. `L` is almost always used as the designator prefix on schematics, e.g. inductors will be named `L1`, `L2`, e.t.c. The one shown below is commonly used for a simple inductor. 
+There are a few common schematic symbols for an inductor. `L` is almost always used as the designator prefix on schematics, e.g. inductors will be named `L1`, `L2`, e.t.c. The figure below shows the symbols used for common sub-families of inductors. Not all circuit designers will be specific and use a special symbol to indicate iron/ferrite cored inductors (vs. air-cored inductors), and the generic symbol may be used for all types. 
 
-{{< img src="schematic-symbol-of-inductor.png" width="500px" caption="Schematic symbol and example designator for a basic inductor." >}}
+{{< img src="schematic-symbols-of-inductors.png" width="500px" caption="Schematic symbols for a range of the basic inductor sub-families." >}}
 
 ## Important Parameters
 
 ### Inductance
 
 * Symbol: `\(L\)`
-* Units: Henries (`\(H\)`)
+* Units: Henries (or Henrys)[^bib-wiktionary-henry] (`\(H\)`)
 
 The main thing you care about! The _inductance_ determines the relationship between the rate of change in current through the inductor and the inductors voltage. It determines the voltage the inductor will generate in response to a specific rate of current change. This parameter is used to calculate it's impedance, for a given frequency.
 
@@ -403,3 +403,4 @@ Unfortunately for the PCB designer, almost all SMD inductor packages are non-sta
 ## References
 
 [^bib-dos4ever-meas-unknown-inductors]: Ronald Dekker. _A Simple Method to Measure Unknown Inductors_. DOS4Ever. Retrieved 2022-07-06, from https://www.dos4ever.com/inductor/inductor.html.
+[^bib-wiktionary-henry]: Wiktionary. _henry_. Retrieved 2022-07-10, from https://en.wiktionary.org/wiki/henry.
