@@ -30,20 +30,52 @@ I have written an open-source C++ callback library called slotmachine-cpp, which
 
 First, let's get some terminology out of the way:
 
-Term            | Description
-----------------|---------------
-Callee  		    | A function/method/object which gets called by the caller.
-Caller			    | An object which gets passes a callback function, and then calls (executes) it.
-Function        | A basic function that does not require an instance of a class to run (e.g. standard C style functions, or static member functions).
-Method			    | A function that belongs to an class, and requires an instance of that class to run. 
-Signals			    | Term used for "events" in an event/listener system.
-Slots			      | Term used for objects which listen to signals in an event/listener system. These are normally implemented with a callback system.
+<table>
+    <colgroup>
+       <col span="1" style="width: 100px;">
+       <col span="1" style="width: 400px;">
+    </colgroup>
+    <thead>
+        <tr>
+            <th>Term</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Callee</td>
+            <td>A function/method/object which gets called by the caller.</td>
+        </tr>
+        <tr>
+            <td>Caller</td>
+            <td>An object which gets passes a callback function, and then calls (executes) it.</td>
+        </tr>
+        <tr>
+            <td>Function</td>
+            <td>A basic function that does not require an instance of a class to run (e.g. standard C style functions, or static member functions).</td>
+        </tr>
+        <tr>
+            <td>Method</td>
+            <td>A function that belongs to an class, and requires an instance of that class to run.</td>
+        </tr>
+        <tr>
+            <td>Signals</td>
+            <td>Term used for "events" in an event/listener system.</td>
+        </tr>
+        <tr>
+            <td>Slots</td>
+            <td>Term used for objects which listen to signals in an event/listener system. These are normally implemented with a callback system.</td>
+        </tr>
+    </tbody>
+</table>
 
 ## The Primitive C++ Callback: The Caller Knows The Type Of The Callee 
 
 The problem arises when you want to pass in a non-static method (function belonging to an class, that requires an instance of that class) as a callback to a library. A method is a member function of an object. To call a method, you can't just know the functions memory address and call it, you also have to know the object that the function belongs to (the `this` pointer!).
 
-This means that for C++ method callbacks in their most primitive form, **the callee has to know the type of the object the function belongs to**. For example (run this code at <a href="https://replit.com/@gbmhunter/pure-cpp-method-callback#main.cpp" target="_blank">https://replit.com/@gbmhunter/pure-cpp-method-callback#main.cpp</a>):
+This means that for C++ method callbacks in their most primitive form, **the callee has to know the type of the object the function belongs to**. For example:
+
+(run this code at <a href="https://replit.com/@gbmhunter/pure-cpp-method-callback#main.cpp" target="_blank">https://replit.com/@gbmhunter/pure-cpp-method-callback#main.cpp</a>)
     
 ```c++
 #include <cstdio>
@@ -80,7 +112,7 @@ int main() {
 
 ## Using Static Methods Or Non-Member Functions (C-Style)
 
-If you are stuck with a C-style callback, there is no direct way to call non-static (i.e. takes a `this` pointer as the magic first parameter) member function. You can however easily call static member functions (they are no different in type signature to C-style functions)
+If you are stuck with a C-style callback, there is no direct way to call non-static (i.e. takes a `this` pointer as the magic first parameter) member function. You can however easily call static member functions (they are no different in type signature to C-style functions):
 
 (run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-static-method#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-static-method#main.cpp</a>)
 
@@ -126,7 +158,9 @@ Note the main limitation of the above method is that no non-static member functi
 
 As we touched on before, if you are stuck with a C-style callback, there is no direct way to call a member function. However, given we can call static methods (as shown directly above), we can use shared variables (e.g. file scoped variables) to call a particular instance from that static function. This is about the best you can do when you can't change the type signature of the C-style callback.
 
-Let's go through an example, this time using a standard C function rather than a static member function purely for illustration they are interchangeable (run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs" target="_blank">https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs</a>):
+Let's go through an example, this time using a standard C function rather than a static member function purely for illustration they are interchangeable:
+
+(run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs" target="_blank">https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs</a>)
 
 ```c++
 #include <cstdio>
@@ -171,7 +205,9 @@ int main()
 
 ## Static Variables, With Templating
 
-A slightly more complicated but flexible approach to the above is to use templating, `std::bind` and `std::function` as shown in the below example (run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp</a>):
+A slightly more complicated but flexible approach to the above is to use templating, `std::bind` and `std::function` as shown in the below example:
+
+(run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp</a>)
 
 ```c++
 #include <stdio.h>
@@ -221,7 +257,7 @@ int main() {
 
 If you have authorship of the library wanting to callback, then you can do even better than described above. What I would recommend here is to change the signature away from a C-style callback and use `std::function` and lambdas instead. Rather than the library accepting a C-style callback in the format `int (callback*) (int num1, int num2)`, update the library to accept a `std::function<int(int, int)> callback`. This allows you to pass in a lambda, which as you'll see below, allows you to easily call a member function.
 
-(run this code at <a href=https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp</a>)
+(run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp</a>)
 
 ```c++
 #include <cstdio>
