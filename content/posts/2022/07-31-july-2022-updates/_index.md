@@ -16,3 +16,5 @@ type: "post"
 * Changed the left side-bar, main content and right side-bar columns widths at various screen breakpoints to make the main content larger on wider screens.
 
 * Added a how-to on an easy method for [measuring inductance using a signal generator and oscilloscope](/electronics/components/inductors/#how-to-measure-inductance-in-an-electronics-lab).
+
+* Updated info on inductor saturated current.

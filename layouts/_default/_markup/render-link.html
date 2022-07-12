@@ -5,5 +5,5 @@
   [<url_text>](<url> "<url_title>")
   
   WARNING: Do not pass .Text to markdownify, this will result in URLs which use the URL for both the src and text to become nested!
--->
-<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if or (strings.HasPrefix .Destination "http") (strings.HasPrefix .Destination "https") }} target="_blank"{{ end }}>{{ .Text }}</a>
+  ALSO: Don't put a new line between the end of this comment and the start of the HTML, is causes a space to be inserted at the start of the link!
+--><a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if or (strings.HasPrefix .Destination "http") (strings.HasPrefix .Destination "https") }} target="_blank"{{ end }}>{{ .Text }}</a>
