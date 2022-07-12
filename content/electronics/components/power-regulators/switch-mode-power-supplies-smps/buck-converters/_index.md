@@ -5,7 +5,7 @@ date: 2015-03-24
 description: Control methods, component selection, equations, operation modes, schematics, examples and more info on buck converters.
 draft: false
 images: [ /electronics/components/power-regulators/switch-mode-power-supplies-smps/smps-buck-converter-simple.png ]
-lastmod: 2022-07-05
+lastmod: 2022-07-12
 tags: [ electronics, components, power regulators, SMPS, buck converter, power electronics, inductor, capacitor, regulation, control methods, constant frequency, current-mode, SNVA555, PCM, peak current mode, CCM, constant current mode ]
 title: Buck Converters
 type: page
@@ -17,61 +17,57 @@ Buck converters use a switching element, inductor and capacitor to convert an in
 
 {{% img src="buck-converter-basic-schematic.svg" width="600" caption="The basic schematic of a buck converter. SW1 is typically a MOSFET switched by control logic (not shown)." %}}
 
+To learn more about EMI/EMC considerations regarding buck converters, see the [EMC and Switch-Mode Power Supplies page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/).
+
 ## How A Buck Converter Works
 
 The output voltage of a buck converter is purely determined by the input voltage `\(V_{IN}\)` and the percentage of time that the switch spend on during each switching cycle, `\(D\)`:
 
-[stem]
-++++
-\begin{align}
+<p>\begin{align}
 \label{eq:vout-d-vin}
 V_{OUT} = DV_{IN}
-\end{align}
-++++
+\end{align}</p>
 
 `\(D\)` is the duty cycle, and varies from `\(0\)` to `\(1\)`. It is defined as:
 
-[stem]
-++++
-\begin{align}
+<p>\begin{align}
 D = \frac{t_{on}}{T}
-\end{align}
-++++
+\end{align}</p>
 
-[.text-center]
-where +
-`\(t_{on}\)` is the on time of the switch, in seconds +
-`\(T\)` is the switching frequency, in seconds (`\(t_{on} + t_{off}\)`)
+<p class="centered">
+where:</br>
+\(t_{on}\) is the on time of the switch, in seconds</br>
+\(T\) is the switching frequency, in seconds (\(t_{on} + t_{off}\))</br>
+</p>
 
-NOTE: The simple equation showing `\(V_{OUT}\)` is only dependent on `\(V_{IN}\)` and `\(D\)` is only true when all components act ideally (e.g. no voltage drop across the diode, no ESR in the capacitor, no resistance through the inductor). In the real world this is never true, however this equation is still a good first approximation.
+{{% note %}}
+The simple equation showing `\(V_{OUT}\)` is only dependent on `\(V_{IN}\)` and `\(D\)` is only true when all components act ideally (e.g. no voltage drop across the diode, no ESR in the capacitor, no resistance through the inductor). In the real world this is never true, however this equation is still a good first approximation.
+{{% /note %}}
 
 The following steps show a way to **intuitively understand how a buck converter produces a lower output voltage** (and derive Eq `\(\ref{eq:vout-d-vin}\)`):
 
-. The average voltage across the inductor, over an entire switching cycle, must be 0 (other ways of saying is this is that the integral must be 0, or the volt-seconds must be 0). If it wasn't, then because `\(V = L \frac{di}{dt}\)` (the basic equation for an inductor), **the current in the inductor would increase without bound**. 
-. When the switch is closed (`\(t_{on}\)`), the voltage across `\(L1\)` is `\(V_{IN} - V_{OUT}\)` during this phase.
-. When the switch is open (`\(t_{off}\)`), `\(D1\)` is forward biased, and if we assume it's a perfect diode (no forward voltage drop), the voltage across `\(L1\)` is `\(-V_{OUT}\)` during this phase.
-. The average (or integral) over the entire switching cycle has to be 0, so:
-[stem]
-++++
-\begin{align}
-(V_{IN} - V_{OUT})t_{on} - V_{OUT}t_{off} &= 0 \nonumber \\
-V_{IN}t_{on} - V_{OUT}t_{on} - V_{OUT}t_{off} &= 0 \nonumber \\
-V_{IN}t_{on} &= V_{OUT}(t_{on} + t_{off}) \nonumber \\
-V_{OUT} &= \frac{t_{on}}{t_{on} + t_{off}} V_{IN} \nonumber \\
-        &= D V_{IN} \nonumber 
-\end{align}
-++++
+1. The average voltage across the inductor, over an entire switching cycle, must be 0 (other ways of saying is this is that the integral must be 0, or the volt-seconds must be 0). If it wasn't, then because `\(V = L \frac{di}{dt}\)` (the basic equation for an inductor), **the current in the inductor would increase without bound**. 
+1. When the switch is closed (`\(t_{on}\)`), the voltage across `\(L1\)` is `\(V_{IN} - V_{OUT}\)` during this phase.
+1. When the switch is open (`\(t_{off}\)`), `\(D1\)` is forward biased, and if we assume it's a perfect diode (no forward voltage drop), the voltage across `\(L1\)` is `\(-V_{OUT}\)` during this phase.
+1. The average (or integral) over the entire switching cycle has to be 0, so:
+    <p>\begin{align}
+    (V_{IN} - V_{OUT})t_{on} - V_{OUT}t_{off} &= 0 \nonumber \\
+    V_{IN}t_{on} - V_{OUT}t_{on} - V_{OUT}t_{off} &= 0 \nonumber \\
+    V_{IN}t_{on} &= V_{OUT}(t_{on} + t_{off}) \nonumber \\
+    V_{OUT} &= \frac{t_{on}}{t_{on} + t_{off}} V_{IN} \nonumber \\
+            &= D V_{IN} \nonumber 
+    \end{align}</p>
 
-TIP: This analysis method of realizing the average voltage across the inductor must be 0 over an entire switching cycle also works for other switching topologies. 
+{{% tip %}}
+This analysis method of realizing the average voltage across the inductor must be 0 over an entire switching cycle also works for other switching topologies. 
+{{% /tip %}}
 
-When the switch is closed, the current flows from the input through the inductor to the output, as shown in [^buck-converter-schematic-current-path-ton]:
+When the switch is closed, the current flows from the input through the inductor to the output, as shown below:
 
-[[buck-converter-schematic-current-path-ton]]
 {{% img src="buck-converter-schematic-current-path-ton.svg" width="500" caption="Current path when the switch is **closed** (during `\(t_{on}\)`)." %}}
 
-When the switch opens, the input is disconnected. Because the inductor doesn't like changes in current, it keeps a current flowing through the load by forward biasing `\(D1\)`, as shown in [^buck-converter-schematic-current-path-toff]:
+When the switch opens, the input is disconnected. Because the inductor doesn't like changes in current, it keeps a current flowing through the load by forward biasing `\(D1\)`, as shown below:
 
-[[buck-converter-schematic-current-path-toff]]
 {{% img src="buck-converter-schematic-current-path-toff.svg" width="500" caption="Current path when the switch is **open** (during `\(t_{off}\)`)." %}}
 
 `\(C1\)` (which is also called `\(C_{OUT}\)`) is to reduce the voltage ripple at the output/load.
@@ -111,8 +107,8 @@ Hysteretic control is when the output voltage is directly monitored by a compara
 
 There are two ways on controlling the switch:
 
-. Detect when the voltage falls BELOW a set threshold, and turn the switch ON for a fixed amount of time, OR
-. Detect when the voltage rises ABOVE a set threshold, and turn the switch OFF for a fixed amount of time
+1. Detect when the voltage falls BELOW a set threshold, and turn the switch ON for a fixed amount of time, OR
+1. Detect when the voltage rises ABOVE a set threshold, and turn the switch OFF for a fixed amount of time
 
 Hysteretic control has the benefit of being extremely fast to respond to transient current changes, since it is directly monitoring the output voltage and there is no error amplifier. It also does not need any compensation. These advantages make it suitable for powering the rapidly changing current demands of high power CPUs and FPGAs.  
 
@@ -123,56 +119,58 @@ You can use the following equations to select the main inductor for a buck conve
 First, calculate the maximum average inductor current using:
 
 <p>\begin{align}
-
 I_L = I_{OUT} \frac{V_{OUT}}{0.8 V_{IN}}
 \end{align}</p>
 
-[.text-center]
-where: +
-`\(V_{IN}\)` = the input voltage to the buck regulator +
-`\(V_{OUT}\)` = the output voltage of the buck regulator
+<p class="centered">
+where: <br/>
+\(V_{IN}\) = the input voltage to the buck regulator</br>
+\(V_{OUT}\) = the output voltage of the buck regulator</br>
+</p>
 
 Then, calculate the value of inductance required with:
 
 <p>\begin{align}
-
 L = \frac{V_{IN} (V_{OUT} - V_{IN})}{\Delta I_L \cdot f \cdot V_{OUT}}
 \end{align}</p>
 
-[.text-center]
-where: +
-`\(\Delta I_L\)` = the desired ripple current in the inductor +
-`\(f\)` = the switching frequency +
-and everything else as mentioned previously
+<p class="centered">
+where:</br>
+\(\Delta I_L\) = the desired ripple current in the inductor</br>
+`\(f\)` = the switching frequency</br>
+and everything else as mentioned previously</br>
+</p>
 
 ## Capacitor Selection
 
 The output capacitance is primarily determined by the maximum allowed output voltage ripple. This ripple is determined by the capacitance of the capacitor and it's ESR (equivalent series resistance). The output capacitance of a boost converter can be found using the following equation.
 
 <p>\begin{align}
-
 C_{min} = \dfrac{I_O (V_{OUT} - V_{IN})}{f  \Delta V V_{OUT}}
 \end{align}</p>
 
-[.text-center]
-where: +
-`\(\Delta V\)` = the maximum desired output voltage ripple +
-and everything else as mentioned previously
+<p class="centered">
+where:</br>
+\(\Delta V\) = the maximum desired output voltage ripple</br>
+and everything else as mentioned previously</br>
+</p>
 
 The actual ripple will be slightly larger than this due to the ESR of the capacitor.
 
 <p>\begin{align}
-
 \Delta V_{ESR} = I_O R_{ESR}
 \end{align}</p>
 
-[.text-center]
-where: +
-`\(R_{ESR}\)` = the parasitic series resistance of the output capacitor
+<p class="centered">
+where:</br>
+\(R_{ESR}\) = the parasitic series resistance of the output capacitor</br>
+</p>
 
 The total output ripple is the sum of the ripple caused by the capacitance, and the ripple cause by the ESR. 
 
-TIP: These equations assume a constant load. Load transients (fluctuations in the load current) will also cause voltage ripple.
+{{% note %}}
+These equations assume a constant load. Load transients (fluctuations in the load current) will also cause voltage ripple.
+{{% /note %}}
 
 ## Buck Converter Calculator
 
