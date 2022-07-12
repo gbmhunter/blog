@@ -18,3 +18,5 @@ type: "post"
 * Added a how-to on an easy method for [measuring inductance using a signal generator and oscilloscope](/electronics/components/inductors/#how-to-measure-inductance-in-an-electronics-lab).
 
 * Updated info on inductor saturated current.
+
+* Started a page on SMPS EMC and hot loops.
