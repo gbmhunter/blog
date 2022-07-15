@@ -11,7 +11,7 @@ type: "page"
 
 ## Overview
 
-A _PTC resettable fuse_ (or just PTC, a.k.a. _polyfuse_, _polyswitch_ or _multifuse_) is a passive electronic component used to **protect against excessive load currents and short-circuits in electronic circuits**. The key difference between standard blowable fuses and PTC resettable fuses is that a PTC resettable is _resettable_ -- once the fault condition is cleared the fuses resets and the circuit can work normally again, without any manual replacement of fuses. PTC stands for positive temperature coefficient and references the fact that the components resistance increases with increasing temperature.
+A _PTC resettable fuse_ (or just PTC, a.k.a. _polyfuse_, _polyswitch_, _multifuse_ or _posistor_[^bib-elec-point-posistor] [^bib-juno-106-service-notes]) is a passive electronic component used to **protect against excessive load currents and short-circuits in electronic circuits**. The key difference between standard blowable fuses and PTC resettable fuses is that a PTC resettable is _resettable_ -- once the fault condition is cleared the fuses resets and the circuit can work normally again, without any manual replacement of fuses. PTC stands for positive temperature coefficient and references the fact that the components resistance increases with increasing temperature.
 
 <div style="display: flex;">
 {{% img src="3d-render-of-chip-ptc-fuse-bel-fuse-0zcj0035ff2g.png" width="300" caption="3D render of a 1206 chip sized PTC fuse from Bel Fuse Inc[^bib-digikey-bel-fuse-0zcj0035ff2g]." %}}
@@ -138,3 +138,5 @@ The IEEE publication [Failure Precursors for Polymer Resettable Fuses](https://w
 
 [^bib-digikey-bel-fuse-0zcj0035ff2g]: DigiKey. _Bel Fuse Inc. 0ZCJ0035FF2G (product page)_. Retrieved 2021-12-14, from https://www.digikey.com/en/products/detail/bel-fuse-inc/0ZCJ0035FF2G/4156131.
 [^bib-littelfuse-60r-ds]: Littelfuse. _POLYFUSE® Resettable PTCs: Radial Leaded > 60R Series (datasheet_. Retrieved 2021-12-14, from https://www.littelfuse.com/data/en/data_sheets/littelfuse_60r.pdf.
+[^bib-elec-point-posistor]: ElectronicsPoint (2003). _What is a positor? (forum post)_. Retrieved 2022-07-13, from https://www.electronicspoint.com/forums/threads/what-is-a-positor.11721/.
+[^bib-juno-106-service-notes]: Roland (1984, Jul 31). _JUNO-106: Service Notes (First Edition)_. Retrieved 2022-07-13, from http://www.analoguerenaissance.com/D80017A/juno-serv.pdf.
