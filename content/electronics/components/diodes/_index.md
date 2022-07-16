@@ -1,13 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Electronic Components", "Diodes" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Electronic Components, Diodes ]
 date: 2011-09-05
-description: "Info about diodes."
+description: Info about diodes.
 draft: false
 lastmod: 2021-09-26
-tags: [ "electronics", "diodes", "components", "current", "schematic symbols", "TVS", "Schottky", "bridge rectifier", "Zener", "dynamic resistance", "impedance", "LEDs", "light-emitting diodes", "parameters", "forward current", "forward voltage", "reverse voltage", "dominant wavelength", "peak wavelength", "reverse mounting", "multiplexing", "charlieplexing", "RGB", "laser diodes", "current control", "PWM", "lens", "radiation pattern", "spatial distribution", "irradiance", "radiometric", "photosynthetic flux", "PPF" ]
-title: "Diodes"
-type: "page"
+tags: [ electronics, diodes, components, current, schematic symbols ]
+title: Diodes
+type: page
 ---
 
 ## Overview
