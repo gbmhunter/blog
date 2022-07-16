@@ -90,10 +90,3 @@ TVS diodes built specifically for protecting RS-485 communication protocol bus l
 More information on these diodes can be found in the [Specialised TVS Diodes section on the RS-485 Protocol page](/electronics/communication-protocols/rs-485-protocol#specialised-tvs-diodes).
 
 ## References
-
-[^bib-bzx55-datasheet]:  Vishay (2019, Mar 11). _BZX55 Series Datasheet_. Retrieved 2021-09-25, from https://www.vishay.com/docs/85604/bzx55.pdf.
-[^bib-vishay-1n400x-datasheet]:  Vishay (2020, Apr 29). _1N400x Datasheet: General Purpose Plastic Rectifier_. Retrieved 2021-09-26, from https://www.vishay.com/docs/88503/1n4001.pdf.
-[^bib-wikipedia-crystal-detector]:  Wikipedia. _Crystal detector_. Retrieved 2021-09-26, from https://en.wikipedia.org/wiki/Crystal_detector.
-[^bib-wikip-pin-diode]:  Wikipedia. _PIN diode_. Retrieved 2021-11-25, from https://en.wikipedia.org/wiki/PIN_diode.
-[^bib-digikey-nte-11n4007]:  DigiKey. _NTE Electronics, Inc 1N4007_. Retrieved 2021-11-25, from https://www.digikey.com/en/products/detail/nte-electronics-inc/1N4007/11645794.
-[^bib-digikey-onsemi-1n4148]:  DigiKey. _onsemi 1N4148_. Retrieved 2021-11-25, from https://www.digikey.co.nz/en/products/detail/onsemi/1N4148/458603.
