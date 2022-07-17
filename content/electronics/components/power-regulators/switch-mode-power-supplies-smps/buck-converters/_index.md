@@ -182,6 +182,12 @@ You can find a buck converter calculator as part of [mbedded.ninja's NinjaCalc w
 
 When using a P-channel MOSFET for synchronous rectification, it's body diode is forward-biased when the converter is in shutdown mode. This can **drain the power source** into the output. More advanced buck converters have extra circuitry to disconnect this P-channel MOSFET when the device is not active.
 
+## EMC
+
+The input current "hot loop" of a buck converter is the most important part to worry about when it comes to EMC. See the [EMC and Switch-Mode Power Supplies page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/) for more information.
+
+{{% figure src="/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/buck-converter-hot-loop.png" width="500px" caption="The hot loop in a buck converter is on the output side." %}}
+
 ## Examples
 
 ### Tiny (Nano) Buck Converters

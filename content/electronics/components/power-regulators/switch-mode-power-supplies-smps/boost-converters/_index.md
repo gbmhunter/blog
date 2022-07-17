@@ -11,92 +11,87 @@ title: Boost Converters
 type: page
 ---
 
-## Boost Converters
+## Overview
 
-### Schematics
+## Schematics
 
 Boost converters use a switching element, inductor, diode, and capacitor to convert an input voltage `\(V_{in}\)` into a higher or equal output voltage `\(V_{out}\)`.
 
 {{% img src="boost-converter-basic-schematic.svg" width="600" caption="The basic schematic of a boost converter. SW1 is typically a MOSFET switched by control logic (not shown)." %}}
 
-### Design Procedure
+## Design Procedure
 
-#### Duty Cycle
+### Duty Cycle
 
 The duty cycle for a boost converter is given by:
 
 <p>\begin{align}
-
 D = 1 - \eta \cdot \frac{V_{IN}}{V_{OUT}}
 \end{align}</p>
 
 As you can see, the duty cycle is dependent only on the ratio between the input and output voltages. This has to be one of the simplest boost converter equations. This equation ignores the specific voltage drops across the switching element and rectifier, but rather lumps them together into the efficiency term.
 
-#### Inductance
+### Inductance
 
 The inductance can be determined using:
 
 <p>\begin{align}
-
 L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}) \cdot (\frac{\eta I_L}{\Delta I_L})
 \end{align}</p>
 
 You don't know `\( I_L \)` or `\( \Delta I_L \)` yet, but the trick is here to assume a maximum inductor ripple current `\( \Delta I_L \)` as a percentage of the average inductor current, `\( I_L \)`. A rule-of-thumb is to assume a maximum ripple current of 35% (assuming it is operating in CCM mode). Thus,
 
 <p>\begin{align}
-
 \frac{\Delta I_L}{I_L} = 0.35
 \end{align}</p>
 
 Now the equation for the inductance becomes:
 
 <p>\begin{align}
-
 L = (\frac{V_{in}}{V_{out}})^2 \cdot (\frac{V_{out} - V_{in}}{I_{out} \cdot f_s}) \cdot (\frac{\eta }{0.35})
 \end{align}</p>
 
 which can be solved as we know all of the variables.
 
-#### Output Current
+### Output Current
 
 The maximum output current is given by:
 
 <p>\begin{align}
-
 I_{OUT(max)} = (I_{SW(max)} - \frac{\Delta I_L}{2})(1 - D)
 \end{align}</p>
 
-#### Diode Selection
+### Diode Selection
 
 The maximum reverse voltage of the diode must be at least equal to the output voltage of the boost converter. This is because diode sees the full load voltage when the switch is closed (in a reverse-biased setup).
 
-### PCB Routing
+## PCB Routing
 
 The same rules apply for routing boost converters as with any SMPS. See the PCB Routing section on the SMPS page for more information.
 
-### Light Load Instabilities
+## Light Load Instabilities
 
 Bad things can happen when boost converters are operated with light/no load. If the controller isn't smart enough to reduce the duty cycle down to near 0 when there is no or little load, the voltage across the capacitor can build up to a point where it causes damage to part of the circuitry.
 
 Also, if the converter is in DCM and the load current suddenly increases, the output voltage can sag greatly.
 
-### Turning Off/Disabling
+## Turning Off/Disabling
 
 While most boost controllers have an enable/disable pin, this doesn't actually disconnect the input from output, as the switching device is not in series with input and output, as it is in a buck Converter. Thus if you need the load completely disconnected from the input, you will need to add something like a P-Channel MOSFET or load switch to the front-end of the boost converter.
 
-### Start-up vs. Runtime Minimum Input Voltage Requirements
+## Start-up vs. Runtime Minimum Input Voltage Requirements
 
 Some boost converters have differing start-up and runtime minimum input voltage requirements. Typically, the boost converter requires a higher minimum input voltage to start (e.g. 18V), but once running, can run of a lower voltage (e.g. 500mV).
 
-### Bypass
+## Bypass
 
 Some boost converters designed for ultra-lower power applications have a **bypass mode**. When the output voltage is not needed to be higher than the input voltage, the converter enters a bypass mode in where most of the control circuitry is disabled, the converter stops switching, and the input voltage is "bypassed" straight to the output.
 
-### Max. Current Ratings
+## Max. Current Ratings
 
 One gotcha: The "max. current" rating that a manufacturer will provide with a boost controller with an integrated switch will usually be the maximum current rating of the switch. **This is not the maximum output current**, but rather the maximum input current. The maximum output current, assuming you have a higher output voltage, will be less than this.
 
-### Compensation Loop
+## Compensation Loop
 
 The compensation loop is part of the feedback mechanism. The below diagram shows a current-mode controlled boost converter with a transconductance amplifier (\( g_m \)) providing the feedback.
 
@@ -110,7 +105,7 @@ External compensation can be added if the manufacturer provides a compensation p
 
 A resistance between 5-100kR and a capacitance between 1-10nF is typical. A higher resistance corresponds to a faster response time. A lower capacitance corresponds to a higher phase margin.
 
-### Down Conversion
+## Down Conversion
 
 Some boost converters also have a built in regulator to provide regulation when the input voltage exceeds the desired output voltage. This is normally a linear regulator, so your efficiency will drop and you will have to take into account the thermal dissipation. This is normally called **down conversion**.
 
@@ -118,6 +113,12 @@ Some boost converters also have a built in regulator to provide regulation when 
 
 The price you pay for this added down conversion feature is a slightly higher cost, and slightly higher quiescent current (e.g. some of TI's boost converters have 19uA quiescent current without down conversion, and 25uA with down conversion).
 
-### Input Voltage Range
+## Input Voltage Range
 
 Typically, boost ICs with an internal switch (a converter) can support lower input voltages than those that require an external switch (a controller). A typical minimum input voltage for a converter is in the range 0.3-0.9V, while a controller's minimum is in the range 0.9-1.8V.
+
+## EMC
+
+The output current loop "hot loop" of a boost converter is the most important part to worry about when it comes to EMC. See the [EMC and Switch-Mode Power Supplies page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/) for more information.
+
+{{% figure src="/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/boost-converter-hot-loop.png" width="500px" caption="The hot loop in a boost converter is on the output side." %}}
