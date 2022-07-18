@@ -49,6 +49,8 @@ conn.commit()
 
 ## MariaDB
 
+_MariaDB_ is a fully open-source, GPL licenced database engine that is designed to be a drop-in replacement for MySQL. Whilst MySQL supports Windows, Linux and Mac OS, MariaDB only supports Windows and Linux (no Mac OS support)[^bib-geeks-for-geeks-msql-vs-mariadb].
+
 To change the position of a column:
 
 ```sql
@@ -76,6 +78,8 @@ CREATE TABLE student (
 
 If a table already exists, you can inheritance via the `INHERIT` variant of the `ALTER TABLE` statement.
 
+PostgreSQL does not let you easily alter the position of a column in a table -- to do so you have to recreate the table with the desired column order.
+
 ### Working With PostgreSQL In Python
 
 One of the most popular PostgreSQL libraries for Python is `psycopg2`. To install it on Ubuntu you will also need the `libpg-dev` package on your system:
@@ -85,3 +89,6 @@ sudo apt install libpq-dev
 pip install psycopg2
 ```
 
+## References
+
+[^bib-geeks-for-geeks-msql-vs-mariadb]: Vishwash Vishwakarma (2020, May 22). _Difference Between MySQL and MariaDB_. GeeksforGeeks. Retrieved 2022-07-18, from https://www.geeksforgeeks.org/difference-between-mysql-and-mariadb/. 

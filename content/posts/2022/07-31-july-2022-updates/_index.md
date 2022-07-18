@@ -20,3 +20,7 @@ type: "post"
 * Updated info on inductor saturated current.
 
 * Started a page on SMPS EMC and hot loops.
+
+* Added FCC Part 15 conductive limits to the EMC page.
+
+* Tied up the SMPS pages.

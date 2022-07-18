@@ -64,7 +64,7 @@ This analysis method of realizing the average voltage across the inductor must b
 
 When the switch is closed, the current flows from the input through the inductor to the output, as shown below:
 
-{{% img src="buck-converter-schematic-current-path-ton.svg" width="500" caption="Current path when the switch is **closed** (during `\(t_{on}\)`)." %}}
+{{% img src="buck-converter-schematic-current-path-ton.svg" width="500" caption="Current path when the switch is **closed** (during `\(t_{on}\)` )." %}}
 
 When the switch opens, the input is disconnected. Because the inductor doesn't like changes in current, it keeps a current flowing through the load by forward biasing `\(D1\)`, as shown below:
 
@@ -174,7 +174,7 @@ These equations assume a constant load. Load transients (fluctuations in the loa
 
 ## Buck Converter Calculator
 
-You can find a buck converter calculator as part of [mbedded.ninja's NinjaCalc web app](http://ninja-calc.mbedded.ninja/buck-converter-calculator).
+You can find a buck converter calculator as part of [mbedded.ninja&lsquo;s NinjaCalc web app](http://ninja-calc.mbedded.ninja/buck-converter-calculator).
 
 {{% img src="ninja-calc-buck-converter-calculator-screenshot.png" width="956" caption="A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0)." %}}
 

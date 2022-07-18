@@ -2,8 +2,8 @@
 authors: [ Geoffrey Hunter ]
 date: 2011-09-05
 draft: false
-lastmod: 2022-06-03
-tags: [ electrical compliance, compliance, EMI, EMC, attenuators, transient limiters, anechoic, TekBox, EMCview, FCC, Part 15, radiator ]
+lastmod: 2022-07-18
+tags: [ electrical compliance, compliance, EMI, EMC, attenuators, transient limiters, anechoic, TekBox, EMCview, FCC, Part 15, radiators, LISN, conducted emissions, radiated emissions, CISPR ]
 title: Electromagnetic Compatibility (EMC)
 type: page
 ---
@@ -45,10 +45,132 @@ The FCC defines the following types of radiators[^bib-fcc-equipment-authorizatio
 
 The FCC also groups devices into two classes[^bib-sunfire-fcc-part-15]:
 
-* **Class A**: Devices used in industrial or commercial settings which are not marketed for use in a residential house or by the general public.
-* **Class B**: Devices marketed for primary use in a residential environment and for general use by the public.
+* **Class A**: Devices used in industrial or commercial settings which are not marketed for use in a residential house or by the general public. Not as restrictive as Class B.
+* **Class B**: Devices marketed for primary use in a residential environment and for general use by the public. _Class B_ has more restrictive conductive and radiated limits the device must meet.
 
 The EMC limits for Class A devices are higher (more relaxed) than they are for Class B.
+
+#### FCC Part 15 Conductive Limits for Unintentional Radiators
+
+For Class A unintentional radiators the voltage that is conducted back onto the AC mains must not exceed the following limits. Part 15 only cares about the frequency range of 150kHz at 30MHz, and the voltages are as measured by a 50uH/50Ω LISN from each live wire to ground. These are from FCC Part 15 section [15.107 Conductive Limits](https://www.ecfr.gov/current/title-47/section-15.107).
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Frequency of emission (MHz)</th>
+      <th colspan="2">Conducted limit (dBuV)</th>
+    </tr>
+    <tr>
+      <th>Quasi-peak</th>
+      <th>Average</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0.15-0.5MHz</td>
+      <td>79dBuV</td>
+      <td>66dBuV</td>
+    </tr>
+    <tr>
+      <td>0.5-30MHz</td>
+      <td>73dBuV</td>
+      <td>60dBuV</td>
+    </tr>
+  </tbody>
+</table>
+
+Reminder: To convert from dBuV to uV, use the equation:
+
+<p>\begin{align}
+\large
+uV = 10^{\frac{dBuV}{20}} \cdot 1uV
+\end{align}</p>
+
+For example, `\(79dBuV = 8913uV = 8.9mV\)`.
+
+For everything but Class A devices (i.e. Class B, it's the only other class), the following conductive limits apply:
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Frequency of emission (MHz)</th>
+      <th colspan="2">Conducted limit (dBuV)</th>
+    </tr>
+    <tr>
+      <th>Quasi-peak</th>
+      <th>Average</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0.15-0.5MHz</td>
+      <td>66 to 56dBuV*</td>
+      <td>56 to 46dBuV*</td>
+    </tr>
+    <tr>
+      <td>0.5-5MHz</td>
+      <td>56dBuV</td>
+      <td>46dBuV</td>
+    </tr>
+    <tr>
+      <td>5-30MHz</td>
+      <td>60dBuV</td>
+      <td>50dBuV</td>
+    </tr>
+  </tbody>
+</table>
+
+Ranges marked with `*` vary linearly between the two values on a plot of uVdB vs. log(frequency) across the specified frequency range.
+
+#### FCC Part 15 Radiative Limits for Unintentional Radiators
+
+FCC Part 15 imposes the following radiative limits on Class A and Class B unintentional radiators, as per [§ 15.109 Radiated emission limits](https://www.ecfr.gov/current/title-47/chapter-I/subchapter-A/part-15/subpart-B/section-15.109) (notice the different measurement distances):
+
+<table>
+  <thead>
+    <tr>
+      <th>Frequency of emission</th>
+      <th>Field Strength, Class A @ 10m</th>
+      <th>Field Strength, Class B @ 3m</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>30-88MHz</td>
+      <td>90uV/m</td>
+      <td>100uV/m</td>
+    </tr>
+    <tr>
+      <td>88-216MHz</td>
+      <td>150uV/m</td>
+      <td>150uV/m</td>
+    </tr>
+    <tr>
+      <td>216-960MHz</td>
+      <td>210uV/m</td>
+      <td>200uV/m</td>
+    </tr>
+    <tr>
+      <td>>960MHz</td>
+      <td>300uV/m</td>
+      <td>500uV/m</td>
+    </tr>
+  </tbody>
+</table>
+
+{{% note %}}
+The field strength for Class B (residential) is measured at 3m whilst Class A (industrial/commercial) is measured at 10m, so whilst the uV/m can be similar, the shorter Class B distance is more restrictive.
+{{% /note %}}
+
+The bandwidth (frequency range) you have to measure depends on complicated set of rules specified in [§ 15.33 Frequency range of radiated measurements](https://www.ecfr.gov/current/title-47/chapter-I/subchapter-A/part-15/subpart-A/section-15.33). In general, expect to measure from 9kHz up to the 2-5th harmonic of your highest operating frequency (including digital clock signals).
+
+Instead of these radiative limits above, the FCC allows you to use the CISPR 22 limits if you so choose:
+
+> As an alternative to the radiated emission limits shown in paragraphs (a) and (b) of this section, digital devices may be shown to comply with the standards contained in Third Edition of the International Special Committee on Radio Interference (CISPR), Pub. 22, “Information Technology Equipment - Radio Disturbance Characteristics - Limits and Methods of Measurement” (incorporated by reference, see § 15.38). -- FCC Part 15: § 15.109 Radiated emission limits.
+
+### CISPR 25
+
+CISPR 25 is a very popular standard that provides limits and measurement techniques for EMC compliance. The standard directly applies to automobiles.
 
 ## Pre-compliance Testing
 
@@ -59,6 +181,22 @@ Because official compliance testing is generally expensive, in-house _pre-compli
 The [TekBox EMCview software](https://www.tekbox.com/product/emcview-pc-software-emc-compliance-testing/) can control the spectrum analyzer to do multiple sweeps across the frequency range, collate the data, and display the results with comparison/thresholds for the popular EMC standards. It currently supports a range of spectrum analysers from Rigol, Siglent, R&S and others[^bib-tekbox-emcview].
 
 {{% img src="tekbox-emcview-screenshot.png" width="700" caption="Screenshot of the Texbox EMCview software[^bib-tekbox-emcview]. Image © 2021, Texbox." %}}
+
+### LISNs
+
+A _line-impedance stabilization network_ is a vital piece of equipment when performing EMC tests.
+
+Below is an image of a TexBox TBL5016-1 50uH/50R LISN that is designed to work with DC or AC up to 250V (and therefore can be used to perform a FCC conducted emissions test):
+
+{{% img src="tekbox-50uh-lisn-tbl5016-1-photo.png" width="500px" caption="A photo of the TekBox TBL5016-1 50uH/50R LISN." %}}
+
+The internal schematic of this LISN is shown below:
+
+{{% img src="tekbox-50uh-lisn-tbl5016-1-schematic.png" width="700px" caption="The internal schematic of the TekBox LISN shown above." %}}
+
+**Why are some LISNs 50uH and others 5uH?**
+
+A LISN inductance of 50 µH represents the inductance of power distribution wiring running for approximately 50m, which is a good approximation for most mains powered devices. Automobile standards usually specify a LISN inductance of 5uH because this more closely represents the inductance in the power wires in a car[^bib-analog-ic-tips-emi-comparison].
 
 ### Attenuators
 
@@ -80,3 +218,5 @@ TODO: Add info.
 [^bib-tekbox-emcview]:  Texbox. _EMVView PC Software For EMC Pre-Compliance Testing_. Retrieved 2021-11-11, from https://www.tekbox.com/product/emcview-pc-software-emc-compliance-testing/.
 [^bib-fcc-equipment-authorization-rf-device]: FCC. _Equipment Authorization – RF Device_. Retrieved 2022-06-03, from https://www.fcc.gov/oet/ea/rfdevice.
 [^bib-sunfire-fcc-part-15]: Tim Payne. _What Is FCC Part 15 Testing?_. Sunfire Testing. Retrieved 2022-06-03, from https://sunfiretesting.com/What-Is-FCC-Part-15-Testing/.
+[^bib-tekbox-tbl5016-1-manual]: TekBox. _TBL5016-1: 50µH Line Impedance Stabilisation Network (manual)_. Retrieved 2022-07-18, from https://www.tekbox.com/product/TBL5016-1_LISN-Manual.pdf.
+[^bib-analog-ic-tips-emi-comparison]: Timothy Hegarty (2021, April 2). _A comparison of EMI test setups and specifications for automotive, industrial and defense applications, part 1: conducted emissions_. Analog IC Tips. Retrieved 2022-07-18, from https://www.analogictips.com/a-comparison-of-emi-test-setups-and-specifications-for-automotive-industrial-and-defense-applications-part-1-conducted-emissions/.
