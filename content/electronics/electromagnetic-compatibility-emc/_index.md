@@ -31,6 +31,8 @@ EMC testing involves spectrometers, antennas, radio frequency cabling/connectors
 
 Reduce these levels requires careful circuit design, in both the components used, the layout, the number of layers, and shielding.
 
+For information specifically relating to EMS and switch-mode power supply design, see the [EMC and Switch-Mode Power Supplies page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/).
+
 ## Standards
 
 ### FCC Part 15
@@ -170,7 +172,7 @@ Instead of these radiative limits above, the FCC allows you to use the CISPR 22 
 
 ### CISPR 25
 
-CISPR 25 is a very popular standard that provides limits and measurement techniques for EMC compliance. The standard directly applies to automobiles.
+CISPR 25 is a very popular standard that provides limits and measurement techniques for EMC compliance. It's full name is "Vehicles, boats and internal combustion engines - Radio disturbance characteristics - Limits and methods of measurement for the protection of on-board receivers". The standard gets a lot of attention because it is one that applies to the automotive industry.
 
 ## Pre-compliance Testing
 
