@@ -19,7 +19,10 @@ Switch-mode power supplies (SMPS) can be a **large source of EMI in a circuit**,
 
 * Input and output capacitors as close as possible to the SMPS IC.
 * Keeping the current loops involving the capacitors, inductor(s) and switching node(s) as small as possible (w.r.t. to their area).
-* Making sure there is a continuous ground plane close to all other nets (this also relates to keeping current loops small). 
+* Making sure there is a continuous ground plane close to all other nets (this also relates to keeping current loops small).
+
+For further reading, see the [Electromagnetic Compatibility (EMC)](/electronics/electromagnetic-compatibility-emc/) page for more EMC-related information.
+
 ## Hot Loops
 
 _Hot loops_ are the current loops in SMPS designs which generally generate/radiate the most EMI and are of greatest concern when it comes to EMC.
