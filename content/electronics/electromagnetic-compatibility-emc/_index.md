@@ -194,6 +194,11 @@ The internal schematic of this LISN is shown below:
 
 {{% img src="tekbox-50uh-lisn-tbl5016-1-schematic.png" width="700px" caption="The internal schematic of the TekBox LISN shown above." %}}
 
+For DC powered DUTs, you will need one LISN for the positive power supply line and one LISN for the negative/ground power supply line. For AC powered DUTs, you similarly need one LISN per wire, so:
+
+* Single phase: 1 LISN on the live, 1 LISN on the neutral.
+* Three phase: 1 LISN on each phase.
+
 **Why are some LISNs 50uH and others 5uH?**
 
 A LISN inductance of 50 µH represents the inductance of power distribution wiring running for approximately 50m, which is a good approximation for most mains powered devices. Automobile standards usually specify a LISN inductance of 5uH because this more closely represents the inductance in the power wires in a car[^bib-analog-ic-tips-emi-comparison].
