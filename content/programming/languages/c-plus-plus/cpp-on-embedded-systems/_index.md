@@ -182,7 +182,44 @@ int main() {
 
 The boolean `m_initSuccessful` could be changed to a `uint8_t` if you want to provide the caller with more detailed information as to why the constructor failed.
 
-## C++ Standrad Libraries For Embedded Devices
+## C++ And Interrupts
+
+There is a few things to be aware of when using C++ for embedded firmware projects that use interrupts and interrupt service routines (ISRs):
+
+### C++ Mangling The ISR Name
+
+C++ mangles function names (adds arbitrary characters to the name) -- If your firmware environment relies on exact function names for ISRs, then you cannot use a C++ function. The work around for this is to wrap the ISR function with `extern "C"`. The following example is using the STM32 standard peripherals firmware library:
+
+```c++
+// In a .cpp file somewhere...
+extern "C" {
+    void SPI1_IRQHandler(void)
+    {
+        // ISR handler code goes here
+    } 
+}
+```
+
+If you didn't wrap `SPI1_IRQHandler(void)` in `extern "C"`, it's compiled name would be something like `AbXllGSPI1_IRQHandler(void)`. This would not get picked up by the linker, and because in the startup code there is a default (fall-back) IRQ function defined with `__weak`, you wouldn't even get a error saying the function is missing!
+
+You won't have this problem if the platform you use provides a function to "register" ISRs, as you'll be passing the mangled name to the register function anyway:
+
+```c++
+int main(void) {
+    // In your firmware app somewhere...
+    register_isr(&SPI1_IRQHandler);
+}
+```
+
+{{% note %}}
+C++ performs name mangling so it can support function overloading (functions with the same name, but supporting a different number and/or type of input and output variables).
+{{% note %}}
+
+### ISRs Calling Class Functions
+
+ISRs typically have a strict function type signature -- no input variables and no return type. Thus there is no way to pass through as function inputs instances of C++ classes to access and call class member functions. For this reason you generally have to define file scoped class instances that the ISR has access to (or a static member function, or just call a C-style function).
+
+## C++ Standard Libraries For Embedded Devices
 
 [uClibc++](http://cxx.uclibc.org/index.html) is a C++ standard library designed specifically for microcontrollers. It even has exception support!
 
