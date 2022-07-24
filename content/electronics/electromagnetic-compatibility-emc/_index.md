@@ -3,7 +3,7 @@ authors: [ Geoffrey Hunter ]
 date: 2011-09-05
 draft: false
 lastmod: 2022-07-18
-tags: [ electrical compliance, compliance, EMI, EMC, attenuators, transient limiters, anechoic, TekBox, EMCview, FCC, Part 15, radiators, LISN, conducted emissions, radiated emissions, CISPR ]
+tags: [ electrical compliance, compliance, EMI, EMC, attenuators, transient limiters, anechoic, TekBox, EMCview, FCC, Part 15, radiators, LISN, conducted emissions, radiated emissions, CISPR, CISPR 11, CISPR 25 ]
 title: Electromagnetic Compatibility (EMC)
 type: page
 ---
@@ -170,6 +170,10 @@ Instead of these radiative limits above, the FCC allows you to use the CISPR 22 
 
 > As an alternative to the radiated emission limits shown in paragraphs (a) and (b) of this section, digital devices may be shown to comply with the standards contained in Third Edition of the International Special Committee on Radio Interference (CISPR), Pub. 22, “Information Technology Equipment - Radio Disturbance Characteristics - Limits and Methods of Measurement” (incorporated by reference, see § 15.38). -- FCC Part 15: § 15.109 Radiated emission limits.
 
+### CISPR 11
+
+Conducted and radiated RF limits for ISM equipment.
+
 ### CISPR 25
 
 CISPR 25 is a very popular standard that provides limits and measurement techniques for EMC compliance. It's full name is "Vehicles, boats and internal combustion engines - Radio disturbance characteristics - Limits and methods of measurement for the protection of on-board receivers". The standard gets a lot of attention because it is one that applies to the automotive industry.
@@ -196,10 +200,22 @@ The internal schematic of this LISN is shown below:
 
 {{% img src="tekbox-50uh-lisn-tbl5016-1-schematic.png" width="700px" caption="The internal schematic of the TekBox LISN shown above." %}}
 
-For DC powered DUTs, you will need one LISN for the positive power supply line and one LISN for the negative/ground power supply line. For AC powered DUTs, you similarly need one LISN per wire, so:
+For DC powered DUTs, you will need one LISN for the positive power supply line and one LISN for the negative power supply line. Noise measurements on each are performed separately, both w.r.t. to ground/earth.
+
+{{% img src="textbox-lisn-wiring-diagram-for-dc.png" width="500px" caption="LISN wiring setup for measuring a DC-powered DUT." %}}
+
+For mains AC powered DUTs, it depends on how many phases and the configuration of the DUT (if three phase):
 
 * Single phase: 1 LISN on the live, 1 LISN on the neutral.
-* Three phase: 1 LISN on each phase.
+* Three phase, delta: 1 LISN on each phase (3 total).
+* Three phase, star: 1 LISN on each phase and one on neutral (4 total).
+
+<div style="display: flex;">
+{{% img src="textbox-lisn-wiring-diagram-for-ac-single-phase.png" width="250px" caption="LISN wiring setup for measuring a single-phase AC powered DUT." %}}
+{{% img src="textbox-lisn-wiring-diagram-for-ac-three-phase-delta.png" width="250px" caption="LISN wiring setup for measuring a three-phase (delta) AC powered DUT." %}}
+{{% img src="textbox-lisn-wiring-diagram-for-ac-three-phase-star.png" width="250px" caption="LISN wiring setup for measuring a three-phase (star) AC powered DUT." %}}
+</div>
+
 
 **Why are some LISNs 50uH and others 5uH?**
 
@@ -218,6 +234,10 @@ _Transient limiters_ are another level of protection to a spectrum analyzer abov
 ## Peak, Quasi-Peak And Averages
 
 TODO: Add info.
+
+## Further Reading
+
+The [Academy of EMC: EMC Standards web page](https://www.academyofemc.com/emc-standards) is a great free resource that covers a huge range of EMC standards and explains the applicability, test setup and limits. It is a big page and goes into quite some detail!
 
 ## References
 

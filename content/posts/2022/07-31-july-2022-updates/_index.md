@@ -24,3 +24,5 @@ type: "post"
 * Added FCC Part 15 conductive limits to the EMC page.
 
 * Tied up the SMPS pages.
+
+* Added info on LISNs.
