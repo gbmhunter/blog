@@ -2,8 +2,8 @@
 authors: [ Geoffrey Hunter ]
 date: 2011-09-05
 draft: false
-lastmod: 2022-07-18
-tags: [ electrical compliance, compliance, EMI, EMC, attenuators, transient limiters, anechoic, TekBox, EMCview, FCC, Part 15, radiators, LISN, conducted emissions, radiated emissions, CISPR, CISPR 11, CISPR 25 ]
+lastmod: 2022-07-27
+tags: [ electrical compliance, compliance, EMI, EMC, attenuators, transient limiters, anechoic, TekBox, EMCview, FCC, Part 15, radiators, LISN, conducted emissions, radiated emissions, CISPR, CISPR 11, CISPR 25, European, EN 55011, quasi-peak, average, peak, limits, standards, signal analyzer ]
 title: Electromagnetic Compatibility (EMC)
 type: page
 ---
@@ -96,8 +96,6 @@ uV = 10^{\frac{dBuV}{20}} \cdot 1uV
 
 For example, `\(79dBuV = 8913uV = 8.9mV\)`.
 {{% /tip %}}
-
-
 
 For everything but Class A devices (i.e. Class B, it's the only other class), the following conductive limits apply:
 
@@ -237,6 +235,9 @@ The following table lists the conducted EMC limits for Class A devices (by Group
   </tbody>
 </table>
 
+The above data is visualized in the below graphs:
+
+{{% img src="cispr-11-conductive-limits.png" width="900px" caption="CISPR 11 conductive EMC limits (both quasi-peak and average) for Group 1, Group 2 LP and Group 2 HP devices." %}}
 
 ### CISPR 25
 
