@@ -35,6 +35,11 @@ For information specifically relating to EMS and switch-mode power supply design
 
 ## Standards
 
+### Overview of EMC Standards
+
+* **FCC:** Defines EMC standards that apply for the USA. Part 15 is very commonly referenced and applies to a large number of devices.
+* **IEC CISPR:** A range of European EMC standards. Some of these are being superseded by the equivalent CENELEC EN standards.
+* **CENELEC EN Standards:** A range of international standards released by CENELEC. Many of them are based largely of CISPR standards. Many countries adopt these standards for their own use. The _EN_ stands for _European Norm_.
 ### FCC Part 15
 
 Part 15 is a section of the document _Title 47 of the Code of Federal Regulations_ titled _Radio Frequency Devices_ (47 CFR § 15), written by the FCC. It sets out standards for the amount of electromagnetic emissions an _unlicensed_ device can emit. It is available for free online at https://www.ecfr.gov/current/title-47/chapter-I/subchapter-A/part-15.
@@ -81,6 +86,7 @@ For Class A unintentional radiators the voltage that is conducted back onto the 
   </tbody>
 </table>
 
+{{% tip %}}
 Reminder: To convert from dBuV to uV, use the equation:
 
 <p>\begin{align}
@@ -89,6 +95,9 @@ uV = 10^{\frac{dBuV}{20}} \cdot 1uV
 \end{align}</p>
 
 For example, `\(79dBuV = 8913uV = 8.9mV\)`.
+{{% /tip %}}
+
+
 
 For everything but Class A devices (i.e. Class B, it's the only other class), the following conductive limits apply:
 
@@ -123,6 +132,10 @@ For everything but Class A devices (i.e. Class B, it's the only other class), th
 </table>
 
 Ranges marked with `*` vary linearly between the two values on a plot of uVdB vs. log(frequency) across the specified frequency range.
+
+The tabular data above (both Class A and B devices) is displayed in the following graphs:
+
+{{% img src="fcc-part15-unintentional-radiators-conductive-limits.png" width="900px" caption="Graphs of Class A and B conductive limits for unintentional radiators as per FCC Part 15." %}}
 
 #### FCC Part 15 Radiative Limits for Unintentional Radiators
 
@@ -172,12 +185,68 @@ Instead of these radiative limits above, the FCC allows you to use the CISPR 22 
 
 ### CISPR 11
 
-Conducted and radiated RF limits for ISM equipment.
+_CISPR 11_ is a EMC standard that specifies conducted and radiated RF emission limits for industrial, scientific and medical (ISM) equipment. It was originally published in 1975, with the 6th edition coming out in 2015. _EN 55011_ is an international standard which is largely based of CISPR 11.
+
+The following table lists the conducted EMC limits for Class A devices (by Group) under the CISPR 11 standard[^bib-ti-conducted-emi-for-psus]:
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Frequency of emission (MHz)</th>
+      <th colspan="2">Group 1 Conducted limits (dBuV)</th>
+      <th colspan="2">Group 2 LP Conducted limits (dBuV)</th>
+      <th colspan="2">Group 2 HP Conducted limits (dBuV)</th>
+    </tr>
+    <tr>
+      <th>Quasi-peak</th>
+      <th>Average</th>
+      <th>Quasi-peak</th>
+      <th>Average</th>
+      <th>Quasi-peak</th>
+      <th>Average</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0.15-0.5MHz</td>
+      <td>79dBuV</td>
+      <td>66dBuV</td>
+      <td>100dBuV</td>
+      <td>90dBuV</td>
+      <td>130dBuV</td>
+      <td>120dBuV</td>
+    </tr>
+    <tr>
+      <td>0.5-5MHz</td>
+      <td>73dBuV</td>
+      <td>60dBuV</td>
+      <td>86dBuV</td>
+      <td>76dBuV</td>
+      <td>130dBuV</td>
+      <td>120dBuV</td>
+    </tr>
+    <tr>
+      <td>5-30MHz</td>
+      <td>73dBuV</td>
+      <td>60dBuV</td>
+      <td>90-73dBuV</td>
+      <td>80-60dBuV</td>
+      <td>130dBuV</td>
+      <td>120dBuV</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ### CISPR 25
 
-CISPR 25 is a very popular standard that provides limits and measurement techniques for EMC compliance. It's full name is "Vehicles, boats and internal combustion engines - Radio disturbance characteristics - Limits and methods of measurement for the protection of on-board receivers". The standard gets a lot of attention because it is one that applies to the automotive industry.
+_CISPR 25_ is a very popular standard that provides limits and measurement techniques for EMC compliance. It's full name is "Vehicles, boats and internal combustion engines - Radio disturbance characteristics - Limits and methods of measurement for the protection of on-board receivers". The standard gets a lot of attention because it is one that applies to the automotive industry.
 
+Most CISPR standards specify conducted EMC limits up to 30MHz, however CISPR 25 specified limits up to 108MHz[^bib-ti-conducted-emi-for-psus].
+
+### EN 55011
+
+_EN 55011_ is an international EMC emissions standards for ISM equipment produced by CENELEC, the European Committee for Electrotechnical Standardization. It is largely based of CISPR 11[^bib-celec-en-55011-cispr-11]. As of July 2022, the latest version was released in April 2016[^bib-globalspec-en-55011]. [BS EN 55011:2016+A2:2021](https://www.standards.govt.nz/shop/bs-en-550112016-a22021/) is the equivalent standard for New Zealand.
 ## Pre-compliance Testing
 
 Because official compliance testing is generally expensive, in-house _pre-compliance_ testing is a popular way of gaining confidence the DUT will pass once it is submitted for official testing.
@@ -233,7 +302,7 @@ _Transient limiters_ are another level of protection to a spectrum analyzer abov
 
 ## Peak, Quasi-Peak And Averages
 
-TODO: Add info.
+_Quasi-peak_ detection is when the frequency components of a signal are weighted according to their repetition rate[^bib-atlas-what-is-quasi-peak]. Many spectrum analyzers allow you to scan in this "mode". Quasi-peak scans impact the frequency components that are not continuous (e.g. the noise generated by a SMPS that is operating in burst mode and transition between periods of switching and no-switching). Quasi-peak measurements are always equal to or less than the peak measurement. Most EMC standards specify quasi-peak limits rather than peak limits (e.g. FCC Part 15, or CISPR 11). However, because quasi-peak scans on a spectrum analyzer take more time than a peak (it has to sample for longer because of the specific "charge" and "discharge" time constants), many people perform EMC measurements first on "peak" mode, and only perform a quasi-peak scan if the peak fails.
 
 ## Further Reading
 
@@ -241,9 +310,13 @@ The [Academy of EMC: EMC Standards web page](https://www.academyofemc.com/emc-st
 
 ## References
 
-[^bib-com-power-lit-930a-ds]: : Com-Power. _Transient Limiters: LIT-153A and LIT-930A (Datasheet)_. Retrieved 2021-11-11, from https://www.com-power.com/uploads/pdf/LIT-930A-1.pdf.
-[^bib-tekbox-emcview]:  Texbox. _EMVView PC Software For EMC Pre-Compliance Testing_. Retrieved 2021-11-11, from https://www.tekbox.com/product/emcview-pc-software-emc-compliance-testing/.
+[^bib-com-power-lit-930a-ds]: Com-Power. _Transient Limiters: LIT-153A and LIT-930A (Datasheet)_. Retrieved 2021-11-11, from https://www.com-power.com/uploads/pdf/LIT-930A-1.pdf.
+[^bib-tekbox-emcview]: Texbox. _EMVView PC Software For EMC Pre-Compliance Testing_. Retrieved 2021-11-11, from https://www.tekbox.com/product/emcview-pc-software-emc-compliance-testing/.
 [^bib-fcc-equipment-authorization-rf-device]: FCC. _Equipment Authorization – RF Device_. Retrieved 2022-06-03, from https://www.fcc.gov/oet/ea/rfdevice.
 [^bib-sunfire-fcc-part-15]: Tim Payne. _What Is FCC Part 15 Testing?_. Sunfire Testing. Retrieved 2022-06-03, from https://sunfiretesting.com/What-Is-FCC-Part-15-Testing/.
 [^bib-tekbox-tbl5016-1-manual]: TekBox. _TBL5016-1: 50µH Line Impedance Stabilisation Network (manual)_. Retrieved 2022-07-18, from https://www.tekbox.com/product/TBL5016-1_LISN-Manual.pdf.
 [^bib-analog-ic-tips-emi-comparison]: Timothy Hegarty (2021, April 2). _A comparison of EMI test setups and specifications for automotive, industrial and defense applications, part 1: conducted emissions_. Analog IC Tips. Retrieved 2022-07-18, from https://www.analogictips.com/a-comparison-of-emi-test-setups-and-specifications-for-automotive-industrial-and-defense-applications-part-1-conducted-emissions/.
+[^bib-ti-conducted-emi-for-psus]: Timothy Hegarty (2018, Feb). _An overview of conducted EMI specifications for power supplies_. Texas Instruments. Retrieved 2022-07-27, from https://www.ti.com/lit/wp/slyy136/slyy136.pdf.
+[^bib-celec-en-55011-cispr-11]: CElectronics. _EN 55011 CISPR 11: Industrial, scientific and medical (ISM) radio-frequency equipment – Electromagnetic disturbance characteristics – Limits and methods of measurement._. Retrieved 2022-07-27, from https://celectronics.com/training/learning/method/EN55011.html.
+[^bib-globalspec-en-55011]: GlobalSpec. _CENELEC - EN 55011: Industrial, scientific and medical equipment - Radio-frequency disturbance characteristics - Limits and methods of measurement_. Retrieved 2022-07-27, from https://standards.globalspec.com/std/14375876/en-55011.
+[^bib-atlas-what-is-quasi-peak]: Atlas Compliance And Engineering. _What is Quasi Peak_. Retrieved 2022-07-27, from https://atlasce.com/services/emissions-testing/what-is-quasi-peak/.
