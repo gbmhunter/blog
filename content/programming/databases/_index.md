@@ -12,9 +12,29 @@ type: page
 
 {{% warning-is-notes %}}
 
-## SQL
+## MySQL
 
-A _record_ is the definition for a row in a table. 
+A _record_ is the definition for a row in a table.
+
+### Creating A Database
+
+A single SQL instance can have one or more databases.
+
+```sql
+CREATE DATABASE IF NOT EXISTS my_database;
+```
+
+### Creating A Table
+
+```sql
+CREATE TABLE people(id INT PRIMARY KEY, name VARCHAR(255))
+```
+
+If you only want to create a table if it doesn't already exist, you can use `IF NOT EXISTS`:
+
+```sql
+CREATE TABLE IF NOT EXISTS people(id INT PRIMARY KEY, name VARCHAR(255))
+```
 
 ### Inserting A Record
 
@@ -45,6 +65,14 @@ To do the same thing in Python:
 ```python
 cur.execute(f'UPDATE people SET age=%s WHERE name=%s', (age, name, ))
 conn.commit()
+```
+
+### Debug Info
+
+You can get some debug info on the last foreign key failure by running the command:
+
+```sql
+SHOW ENGINE INNODB STATUS 
 ```
 
 ## MariaDB

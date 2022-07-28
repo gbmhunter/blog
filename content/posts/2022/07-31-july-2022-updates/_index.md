@@ -21,8 +21,10 @@ type: "post"
 
 * Started a page on SMPS EMC and hot loops.
 
-* Added FCC Part 15 conductive limits to the EMC page.
+* Added FCC Part 15 conductive limits and CISPR 11 info to the EMC page.
 
 * Tied up the SMPS pages.
 
 * Added info on LISNs.
+
+* Added more info on SQL, MySQL and MariaDB.
