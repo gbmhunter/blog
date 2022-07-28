@@ -36,6 +36,42 @@ If you only want to create a table if it doesn't already exist, you can use `IF 
 CREATE TABLE IF NOT EXISTS people(id INT PRIMARY KEY, name VARCHAR(255))
 ```
 
+### Changing A Position Of A Column
+
+MySQL/MariaDB are somewhat unique in that you can both **specify the insertion point of a column and change the position of an existing column**. Many other databases such as PostgreSQL do not let you do this, and new columns are always added to the end of the table. This does not matter so much for code-driven front ends which can render the columns in whatever order they choose, but this ability to insert a column at a point of your choosing is **really useful if you rely on generic database viewing tools such as DBeaver**.
+
+To change the position of an existing column, by inserting after an existing column:
+
+```sql
+ALTER TABLE tbl_name MODIFY COLUMN new_col_name column_definition AFTER existing_col_name;
+```
+
+If you want to insert the column as the first column, instead of `AFTER <existing_col_name>` use `FIRST`:
+
+```sql
+ALTER TABLE tbl_name MODIFY COLUMN new_col_name column_definition FIRST;
+```
+
+More info at <https://mariadb.com/kb/en/alter-table/>.
+
+### Checking If A Column Exists
+
+You can use the `SHOW COLUMNS` command to check if a column exists in a table:
+
+```sql
+SHOW COLUMNS FROM table_name LIKE 'column_name'
+```
+
+For example, in Python:
+
+```python
+cur.execute(f'SHOW COLUMNS FROM table_name LIKE \'column_name\'')
+results = cur.fetchall()
+if len(results) == 1:
+    # Column column_name exists in table, do something here.
+    pass
+```
+
 ### Inserting A Record
 
 To insert a record into a table, use the SQL `INSERT` command. Let's say we wanted to add a person called `josh` to the `people` table:
@@ -78,14 +114,6 @@ SHOW ENGINE INNODB STATUS
 ## MariaDB
 
 _MariaDB_ is a fully open-source, GPL licenced database engine that is designed to be a drop-in replacement for MySQL. Whilst MySQL supports Windows, Linux and Mac OS, MariaDB only supports Windows and Linux (no Mac OS support)[^bib-geeks-for-geeks-msql-vs-mariadb].
-
-To change the position of a column:
-
-```sql
-ALTER TABLE tbl_name MODIFY COLUMN col_name column_definition AFTER col_name;
-```
-
-More info at <https://mariadb.com/kb/en/alter-table/>.
 
 ## PostgreSQL
 
