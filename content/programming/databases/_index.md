@@ -103,6 +103,23 @@ cur.execute(f'UPDATE people SET age=%s WHERE name=%s', (age, name, ))
 conn.commit()
 ```
 
+### Timestamps
+
+The `TIMESTAMP` data type holds temporal data in the form of a date and time. It can be used
+
+```sql
+ALTER TABLE my_table_name ADD COLUMN my_timestamp_column TIMESTAMP
+```
+
+There is special behaviour defined for the first column of this type that you add to a table, it automatically gets the following properties applied to it:
+
+* `DEFAULT CURRENT_TIMESTAMP`
+* `ON UPDATE CURRENT_TIMESTAMP`
+
+This means that the column records will automatically default to the current datetime when it is first added. It also means that when any other data in the record is changed, the column will update to the current datetime (so it acts like a "last modified" field).
+
+See https://mariadb.com/kb/en/timestamp/ for more info.
+
 ### Debug Info
 
 You can get some debug info on the last foreign key failure by running the command:
