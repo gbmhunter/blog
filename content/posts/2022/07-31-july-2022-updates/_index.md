@@ -30,3 +30,5 @@ type: "post"
 * Added more info on [SQL, MySQL and MariaDB](/programming/databases/).
 
 * Added a new page on [thermal jumper chips](/electronics/components/thermal-jumper-chips/).
+
+* Added the new page [Embedded Systems And The Volatile Keyword](/programming/languages/c/embedded-systems-and-the-volatile-keyword/).
