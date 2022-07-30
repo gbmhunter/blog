@@ -132,7 +132,39 @@ def plot_cispr11_conductive_limits():
     ###########
     ax = axes[1]
 
-    # TODO: Add plots here.
+    # Group 1
+    vertices = np.array([
+        # freq_MHz, limit_dBuV
+        [ 0.15, 66 ],
+        [ 0.5,  66 ],
+        [ 0.5,  60 ],
+        [ 30,   60 ],
+    ])
+    ax.plot(vertices[:, 0], vertices[:, 1], label="Group 1")
+
+    # Group 2, LP
+    vertices = np.array([
+        # freq_MHz, limit_dBuV
+        [ 0.15, 90 ],
+        [ 0.5,  90 ],
+        [ 0.5,  76 ],
+        [ 5,    76 ],
+        [ 5,    80 ],
+        [ 30,   60 ],
+    ])
+    ax.plot(vertices[:, 0], vertices[:, 1], label="Group 2 LP")
+
+    # Group 2, HP
+    vertices = np.array([
+        # freq_MHz, limit_dBuV
+        [ 0.15, 120 ],
+        [ 0.5,  120 ],
+        [ 0.5,  115 ],
+        [ 5,    115 ],
+        [ 5,    105 ],
+        [ 30,   105 ],
+    ])
+    ax.plot(vertices[:, 0], vertices[:, 1], label="Group 2 HP")
 
     # Log for frequency
     ax.set_xscale('log')
@@ -142,7 +174,7 @@ def plot_cispr11_conductive_limits():
     ax.set_title('Average Conductive Limits')
     ax.set_xlabel('Frequency [MHz]')
     ax.set_ylabel('Conductive Limit [dBuV]')
-    ax.set_ylim(0, 100)
+    ax.set_ylim(0, 140)
     ax.legend()
     ax.grid(which='both', axis='x')
     ax.grid(which='major', axis='y')
