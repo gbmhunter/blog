@@ -36,6 +36,42 @@ If you only want to create a table if it doesn't already exist, you can use `IF 
 CREATE TABLE IF NOT EXISTS people(id INT PRIMARY KEY, name VARCHAR(255))
 ```
 
+### Changing A Position Of A Column
+
+MySQL/MariaDB are somewhat unique in that you can both **specify the insertion point of a column and change the position of an existing column**. Many other databases such as PostgreSQL do not let you do this, and new columns are always added to the end of the table. This does not matter so much for code-driven front ends which can render the columns in whatever order they choose, but this ability to insert a column at a point of your choosing is **really useful if you rely on generic database viewing tools such as DBeaver**.
+
+To change the position of an existing column, by inserting after an existing column:
+
+```sql
+ALTER TABLE tbl_name MODIFY COLUMN new_col_name column_definition AFTER existing_col_name;
+```
+
+If you want to insert the column as the first column, instead of `AFTER <existing_col_name>` use `FIRST`:
+
+```sql
+ALTER TABLE tbl_name MODIFY COLUMN new_col_name column_definition FIRST;
+```
+
+More info at <https://mariadb.com/kb/en/alter-table/>.
+
+### Checking If A Column Exists
+
+You can use the `SHOW COLUMNS` command to check if a column exists in a table:
+
+```sql
+SHOW COLUMNS FROM table_name LIKE 'column_name'
+```
+
+For example, in Python:
+
+```python
+cur.execute(f'SHOW COLUMNS FROM table_name LIKE \'column_name\'')
+results = cur.fetchall()
+if len(results) == 1:
+    # Column column_name exists in table, do something here.
+    pass
+```
+
 ### Inserting A Record
 
 To insert a record into a table, use the SQL `INSERT` command. Let's say we wanted to add a person called `josh` to the `people` table:
@@ -67,6 +103,23 @@ cur.execute(f'UPDATE people SET age=%s WHERE name=%s', (age, name, ))
 conn.commit()
 ```
 
+### Timestamps
+
+The `TIMESTAMP` data type holds temporal data in the form of a date and time. It can be used
+
+```sql
+ALTER TABLE my_table_name ADD COLUMN my_timestamp_column TIMESTAMP
+```
+
+There is special behaviour defined for the first column of this type that you add to a table, it automatically gets the following properties applied to it:
+
+* `DEFAULT CURRENT_TIMESTAMP`
+* `ON UPDATE CURRENT_TIMESTAMP`
+
+This means that the column records will automatically default to the current datetime when it is first added. It also means that when any other data in the record is changed, the column will update to the current datetime (so it acts like a "last modified" field).
+
+See https://mariadb.com/kb/en/timestamp/ for more info.
+
 ### Debug Info
 
 You can get some debug info on the last foreign key failure by running the command:
@@ -78,14 +131,6 @@ SHOW ENGINE INNODB STATUS
 ## MariaDB
 
 _MariaDB_ is a fully open-source, GPL licenced database engine that is designed to be a drop-in replacement for MySQL. Whilst MySQL supports Windows, Linux and Mac OS, MariaDB only supports Windows and Linux (no Mac OS support)[^bib-geeks-for-geeks-msql-vs-mariadb].
-
-To change the position of a column:
-
-```sql
-ALTER TABLE tbl_name MODIFY COLUMN col_name column_definition AFTER col_name;
-```
-
-More info at <https://mariadb.com/kb/en/alter-table/>.
 
 ## PostgreSQL
 
