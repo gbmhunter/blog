@@ -8,7 +8,7 @@ date: 2014-01-17
 description: "How to deal with the tricky issue of callbacks in C++ (incl. how to provide member functions to C-style callbacks), especially in embedded environments."
 draft: false
 images: [ "/programming/languages/c-plus-plus/callbacks/callback.png" ]
-lastmod: 2021-06-13
+lastmod: 2022-08-02
 tags: [ "programming", "languages", "C++", "callbacks", "methods", "functors", "functions", "Vlpp", "libsigc++", "signals", "slots", "callee", "embedded", "functional", "std::bind", "bind" ]
 title: "C++ Callbacks (and giving member functions to C-style callbacks)"
 type: "page"
@@ -75,7 +75,7 @@ The problem arises when you want to pass in a non-static method (function belong
 
 This means that for C++ method callbacks in their most primitive form, **the callee has to know the type of the object the function belongs to**. For example:
 
-(run this code at <a href="https://replit.com/@gbmhunter/pure-cpp-method-callback#main.cpp" target="_blank">https://replit.com/@gbmhunter/pure-cpp-method-callback#main.cpp</a>)
+(run this code at [https://replit.com/@gbmhunter/pure-cpp-method-callback#main.cpp](https://replit.com/@gbmhunter/pure-cpp-method-callback#main.cpp)):
     
 ```c++
 #include <cstdio>
@@ -114,7 +114,7 @@ int main() {
 
 If you are stuck with a C-style callback, there is no direct way to call non-static (i.e. takes a `this` pointer as the magic first parameter) member function. You can however easily call static member functions (they are no different in type signature to C-style functions):
 
-(run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-static-method#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-static-method#main.cpp</a>)
+(run this code at [https://replit.com/@gbmhunter/c-callback-in-cpp-using-static-method#main.cpp](https://replit.com/@gbmhunter/c-callback-in-cpp-using-static-method#main.cpp)):
 
 ```c++
 #include <cstdio>
@@ -160,7 +160,7 @@ As we touched on before, if you are stuck with a C-style callback, there is no d
 
 Let's go through an example, this time using a standard C function rather than a static member function purely for illustration they are interchangeable:
 
-(run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs" target="_blank">https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs</a>)
+(run this code at [https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs](https://replit.com/@gbmhunter/c-callback-in-c-using-global-vars-and-funcs)):
 
 ```c++
 #include <cstdio>
@@ -207,7 +207,7 @@ int main()
 
 A slightly more complicated but flexible approach to the above is to use templating, `std::bind` and `std::function` as shown in the below example:
 
-(run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp</a>)
+(run this code at [https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp](https://replit.com/@gbmhunter/c-callback-in-cpp-using-templating-functional-bind#main.cpp)):
 
 ```c++
 #include <stdio.h>
@@ -257,7 +257,7 @@ int main() {
 
 If you have authorship of the library wanting to callback, then you can do even better than described above. What I would recommend here is to change the signature away from a C-style callback and use `std::function` and lambdas instead. Rather than the library accepting a C-style callback in the format `int (callback*) (int num1, int num2)`, update the library to accept a `std::function<int(int, int)> callback`. This allows you to pass in a lambda, which as you'll see below, allows you to easily call a member function.
 
-(run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp</a>)
+(run this code at [https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp](https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-lambda#main.cpp)):
 
 ```c++
 #include <cstdio>
@@ -288,13 +288,12 @@ int main()
     libraryClass.passACallbackToMe([&myClass](int num1, int num2) -> int {
         return myClass.methodToCallback(num1, num2);
     });
-    
-    // Alternate way to using a lambda, use std::bind instead. However I recommend the lambda way.
-    libraryClass.passACallbackToMe(std::bind(&MyClass::methodToCallback, myClass, std::placeholders::_1, std::placeholders::_2));
 }
 ```
 
-Rather than a lambda like in the example above, you can use `std::bind` instead. I strongly recommend the lambda way of doing things, but for sake of completeness let's introduce the `std::bind` technique (run this code at <a href="https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-bind#main.cpp" target="_blank">https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-bind#main.cpp</a>):
+Rather than a lambda like in the example above, you can use `std::bind` instead. I strongly recommend the lambda way of doing things, but for sake of completeness let's introduce the `std::bind` technique
+
+(run this code at [https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-bind#main.cpp](https://replit.com/@gbmhunter/c-callback-in-cpp-using-std-function-bind#main.cpp)):
 
 ```c++
 #include <cstdio>
