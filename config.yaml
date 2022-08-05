@@ -8,7 +8,7 @@ disqusShortname: blog-mbedded-ninja
 #googleAnalytics: G-0WDEVQLPS2 # Used to be UA-92834105-2 (universal ID)
 preserveTaxonomyNames: 'true'
 enableGitInfo: false
-timeout: 30000
+timeout: 60000 # Used be to 30,000 but this would timeout on netlify
 assetDir: assets
 params:
   author: Geoffrey Hunter
