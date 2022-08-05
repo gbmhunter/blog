@@ -16,19 +16,27 @@ type: "post"
 * Changed the left side-bar, main content and right side-bar columns widths at various screen breakpoints to make the main content larger on wider screens.
 
 * Added a how-to on an easy method for [measuring inductance using a signal generator and oscilloscope](/electronics/components/inductors/#how-to-measure-inductance-in-an-electronics-lab).
+    {{% img src="measuring-inductance-screenshot.png" width="500px" %}}
 
-* Updated info on inductor saturated current.
+* Updated info on [the saturated current of an inductor](/electronics/components/inductors/#saturation-current-1).
+    {{% img src="saturation-current-screenshot.png" width="500px" %}}
 
-* Started a page on SMPS EMC and hot loops.
+* Started a page on [SMPS EMC and hot loops](/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/).
+    {{% img src="buck-converter-hot-loop-screenshot.png" width="500px" %}}
 
-* Added FCC Part 15 conductive limits and CISPR 11 info to the EMC page.
+* Added [FCC Part 15 conductive limits and CISPR 11 info to the EMC page](/electronics/electromagnetic-compatibility-emc/).
+    {{% img src="emc-limits-screenshot.png" width="500px" %}}
 
-* Tied up the SMPS pages.
+* Tied up the [SMPS pages](/electronics/components/power-regulators/switch-mode-power-supplies-smps/).
 
-* Added info on LISNs.
+* Added [info on LISNs](/electronics/electromagnetic-compatibility-emc/#lisns).
+    {{% img src="lisn-screenshot.png" width="500px" %}}
 
 * Added more info on [SQL, MySQL and MariaDB](/programming/databases/).
+    {{% img src="databases-screenshot.png" width="500px" %}}
 
 * Added a new page on [thermal jumper chips](/electronics/components/thermal-jumper-chips/).
+    {{% img src="thermal-jumper-chip-screenshot.png" width="500px" %}}
 
 * Added the new page [Embedded Systems And The Volatile Keyword](/programming/languages/c/embedded-systems-and-the-volatile-keyword/).
+    {{% img src="volatile-screenshot.png" width="500px" %}}
