@@ -19,4 +19,4 @@ Current mirrors are used extensively inside analogue ICs such as operation ampli
 
 ## Basic BJT Current Mirror
 
-{{% img src="basic-bjt-current-mirror.png" width="500px" caption="A basic BJT current mirror made from two NPN bipolar junction transistors." %}}
+{{% img src="basic-bjt-current-mirror.png" width="400px" caption="A basic BJT current mirror made from two NPN bipolar junction transistors." %}}
