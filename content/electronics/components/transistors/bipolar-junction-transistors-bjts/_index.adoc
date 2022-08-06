@@ -16,6 +16,8 @@ Bipolar junction transistors (BJTs) are 3 legged active electrical semiconductor
 
 BJT transistors were the second type of transistor to be mass produced (superseding the Type-A transistor), at the first at very large quantities<<bib-pbs-evolution-of-tran>>.
 
+They are used for making things such as amplifiers, switches, linear regulators, link:/electronics/components/current-mirrors/[current mirrors] and digital logic.
+
 ## Types
 
 BJTs come in two flavours, NPN or PNP. They both have three terminals, the collector (C), the base (B) and the emitter (E).

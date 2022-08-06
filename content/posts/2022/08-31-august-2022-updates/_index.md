@@ -14,3 +14,5 @@ type: "post"
 ## Updates This Month
 
 * Added a page with info on using the volatile keyword in firmware.
+
+* Added a page on [current mirrors](/electronics/components/current-mirrors/).

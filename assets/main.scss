@@ -1484,3 +1484,17 @@ span.con {
     // Our main colour happens to be a nice red for cons
     color: var(--main-color);
 }
+
+/* ========================================================================= */
+/* CIRCUITJS                                                                 */
+/* ========================================================================= */
+
+.circuitjs-container {
+    // background-color: #dddddd;
+    padding: 20px;
+    
+    iframe {
+        // This is to remove some whitespace that circuitjs adds to the bottom of it's iframe
+        margin-bottom: -30px;
+    }
+}
