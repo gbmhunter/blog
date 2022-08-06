@@ -1,0 +1,6 @@
+{{ $data := .Get "data"}}
+{{ $url := "&hideMenu=true&hideSidebar=true" | printf "%s%s" $data | printf "%s%s" "https://www.falstad.com/circuit/circuitjs.html?ctz=" | printf "%s" }}
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+<iframe src="{{ $url | htmlUnescape | safeHTML }}" width=500 height=500 style="display: block; margin: auto;"></iframe>
+<div>(full page version <a href="https://www.falstad.com/circuit/circuitjs.html?ctz={{ .Get "data" | htmlUnescape | safeHTML }}">here</a>)</div>
+</div>
