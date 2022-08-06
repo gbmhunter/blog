@@ -132,7 +132,7 @@ A wide HTML table (we should be able to scroll horizontally):
 
 ## Images
 
-{{% img src="cartoon-ninja.jpg" width="300px" caption="This should be an clickable image of the logo. Always use '%' and not '-' in the hugo shortcode delimiters to allow footnotes. There should be a footnote number at the end of this sentence[^foot-1]." %}}
+{{% img src="cartoon-ninja.jpg" width="300px" caption="This should be an clickable image of the logo. **Bold text**. An equation: `\(x^2\)`. Always use '%' and not '<' in the hugo shortcode delimiters to render equations and footnotes. There should be a footnote number at the end of this sentence[^foot-1]." %}}
 
 ## Admonitions
 
