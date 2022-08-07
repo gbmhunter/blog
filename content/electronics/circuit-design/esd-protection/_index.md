@@ -126,7 +126,7 @@ Test level `X` designates a special test in where the levels are defined by the 
 
 Inbuilt protection is very common on a CMOS I/O pins that may be part of a device (anything from a simple load switch, to a medium complexity microcontroller, to a high complexity FPGA). They are normally two per I/O pin. One attached between the pin and GND, and one attached between the pin and VCC. Both are reverse-biased under normal operating conditions (`\( GND <= V_{I/O} <= V_{CC} \)`).
 
-{{% img src="cmos-inputs-showing-internal-protection-diodes.svg" width="400" caption="Diagram of a CMOS digital I/O pin, highlighting the internal protection diodes prevalent in many designs (even if the ICs datasheet does not mention them)." %}}
+{{% figure src="cmos-inputs-showing-internal-protection-diodes.svg" width="400" caption="Diagram of a CMOS digital I/O pin, highlighting the internal protection diodes prevalent in many designs (even if the ICs datasheet does not mention them)." %}}
 
 They serve to protect the sensitive CMOS logic in the case of a fault condition on the pin. If the voltage on `\( V_{I/O} \)` rises above `\( V_{CC} \)` (e.g. positive ESD voltage spike), then the top diode conducts, clamping the voltage on the pin to no more than `\( V_{CC} + V_f \)`. Similarly, if the voltage on `\( V_{I/O} \)` drops below `\(V_{GND}\)` (e.g. negative ESD voltage spike), then the bottom diode conducts, clamping the voltage on the pin to no more than `\( -V_f \)`.
 
@@ -150,18 +150,18 @@ You can normally diagnose this by noting the the "unpowered" rail will be one di
 
 ## Standalone TVS Diodes
 
-{{% img src="basic-esd-protection-with-tvs-diode.svg" width="800" caption="A good habit to get into --- place TVS diodes across inputs/outputs to a PCB (and not just power rails, although that is what is shown in this schematic). Place the TVS as close as possible to the place of entry onto the PCB." %}}
+{{% figure src="basic-esd-protection-with-tvs-diode.svg" width="800" caption="A good habit to get into --- place TVS diodes across inputs/outputs to a PCB (and not just power rails, although that is what is shown in this schematic). Place the TVS as close as possible to the place of entry onto the PCB." %}}
 
 {{% note %}}
 A TVS as shown above also protects against reverse polarity. In this situation, the TVS will forward conduct and clamp the voltage to about `\(-0.7V\)`. Make sure that this will either blow a fuse or that the TVS is big enough to sustain the power dissipation indefinitely. See <<tvs-on-12v-input-and-fuse>> for an example using both a TVS diode and fuse.
 {{% /note %}}
 
-{{% img src="basic-esd-protection-with-tvs-diode-and-reverse-polarity-fuse.svg" width="800" caption="Using both a fuse and a TVS on a +12V power supply to a PCB. In this case, the fuse is placed before the TVS diode so that it would also blow if the +12V was hooked up the wrong way around (current going through F1 and D1)." %}}
+{{% figure src="basic-esd-protection-with-tvs-diode-and-reverse-polarity-fuse.svg" width="800" caption="Using both a fuse and a TVS on a +12V power supply to a PCB. In this case, the fuse is placed before the TVS diode so that it would also blow if the +12V was hooked up the wrong way around (current going through F1 and D1)." %}}
 ## Disabling The ESD Diodes
 
 Extra diodes, external to the IC, can be added to prevent leakage currents through CMOS IO pins on devices which have ESD protection diodes to VCC and GND. The following image shows how they would be connected to the IC of interest.
 
-{{% img src="protection-diodes-to-disable-esd-diodes-on-cmos-io.png" width="489" caption="Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf." %}}
+{{% figure src="protection-diodes-to-disable-esd-diodes-on-cmos-io.png" width="489" caption="Adding external diodes to disable the internal ESD diodes in an IC. Image from http://www.intersil.com/content/dam/Intersil/documents/isl4/isl43l410.pdf." %}}
 
 However, this approach has it's disadvantages. The actual supply voltage seen by the IC is reduced by twice the voltage drop (`\(V_f\)`) across the diodes (normally 2x 0.5-0.7V = 1.0-1.4V). Also, the IC ground is now significantly different from the system ground. This can upset single-ended ADC measurements and other analogue functions.
 
@@ -189,7 +189,7 @@ See the [Capacitive Touch Sensing](/electronics/circuit-design/capacitive-touch-
 
 ## Lighting Surge Characterization And Test Transient Pulses
 
-{{% img src="test-pulse-graph-8-20us.svg" width="800" caption="Transient ESD events are typically specified with two numbers, `\(t_1\)` and `\(t_2\)`. `\(t_1\)` is the time for the current to reach the peak value. `\(t_2\)` is the time from the start to when the current decays to half of the peak value (as shown)." %}}
+{{% figure src="test-pulse-graph-8-20us.svg" width="800" caption="Transient ESD events are typically specified with two numbers, `\(t_1\)` and `\(t_2\)`. `\(t_1\)` is the time for the current to reach the peak value. `\(t_2\)` is the time from the start to when the current decays to half of the peak value (as shown)." %}}
 
 
 | Name | `\(t_1\)` | `\(t_2\)` | Comment

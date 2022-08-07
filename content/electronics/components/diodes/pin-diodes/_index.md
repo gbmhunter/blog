@@ -14,7 +14,7 @@ type: "page"
 
 A PIN diode is a semiconductor diode with a wide undoped intrinsic semiconductor region between a p-type and n-type semiconductor region (hence the name PIN).
 
-{{% img src="pin-diode-photo-small.jpg" width="200" caption="A photo of a small, through-hole PIN diode." %}}
+{{% figure src="pin-diode-photo-small.jpg" width="200" caption="A photo of a small, through-hole PIN diode." %}}
 
 A "normal" PN diode has a very small intrinsic region, which is good when you wish to use the diode as a standard rectifier. The PIN diodes wide intrinsic region makes it an inferior rectifier, but makes it suitable for[^bib-wikip-pin-diode]:
 

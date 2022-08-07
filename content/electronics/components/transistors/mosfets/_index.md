@@ -32,7 +32,7 @@ MOSFETs should not be confused with similar but different semiconductor devices 
 Unfortunately for the keen circuit designer learning about MOSFETs, there is a dizzying variety of MOSFET symbols in use, owing to the fact that there are a larger number of different MOSFET types, and that no one can agree on a single standard. This section will walk you through all the various types. Firstly, [^mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch] shows the commonly used schematic symbols for enhancement-mode MOSFETs, with both the N-channel and P-channel variant.
 
 [[mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch]]
-{{% img src="mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch.svg" width="700" caption="Schematic symbols for enhancement-mode N-channel and P-channel MOSFETs. D=drain, S=source, G=gate. This is one of the most popular variants of symbol for these device types, and contains the most information (e.g. shows the body diode, so you can't forget it exists when designing your circuit!)." %}}
+{{% figure src="mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch.svg" width="700" caption="Schematic symbols for enhancement-mode N-channel and P-channel MOSFETs. D=drain, S=source, G=gate. This is one of the most popular variants of symbol for these device types, and contains the most information (e.g. shows the body diode, so you can't forget it exists when designing your circuit!)." %}}
 
 WARNING: You will normally encounter P-channel MOSFET symbols with the source at the top (unlike in [^mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch] where it is drawn at the bottom, just for comparison reasons with the N-channel) -- it most circuits this is the more positive node (e.g. connected to `\(V_{DD}\)`).
 
@@ -47,7 +47,7 @@ image::mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.svg[width=700px,link="m
 The easiest way to show the difference between enhancement and depletion-mode MOSFETs is to plot a `\(V_{GS}\)` vs. `\(I_D\)` graph as shown in [^vgs-vs-id-enhancement-and-depletion-mode].
 
 [[vgs-vs-id-enhancement-and-depletion-mode]]
-{{% img src="vgs-vs-id-enhancement-and-depletion-mode.svg" width="700" caption="Vgs vs. Id for enhancement-mode and depletion-mode N-channel MOSFETs. Fictional example (not based from real data)." %}}
+{{% figure src="vgs-vs-id-enhancement-and-depletion-mode.svg" width="700" caption="Vgs vs. Id for enhancement-mode and depletion-mode N-channel MOSFETs. Fictional example (not based from real data)." %}}
 
 The curve for the depletion-mode MOSFET is shown on the left. As you can see, the device is OFF (not conducting current) when `\(V_{GS}\)` is around `\(-4V\)` and is well and truly on when `\(V_{GS}\)` gets to `\(0V\)`. In comparison, the enhancement-mode MOSFET is fully off when `\(V_{GS} = 0V\)`, and takes around `\(+3V\)` before it starts conducting. 
 
@@ -61,7 +61,7 @@ Depletion-mode MOSFETs are used for:
 
 Sometimes the body connection, body diode and enhancement/depletion mode indicators are removed altogether from the schematic symbol, and a simplified set of symbols as below are used:
 
-{{% img src="mosfet-schematic-symbols-simplified-style-n-ch-p-ch.svg" width="800" caption="An simplified/alternate style for a MOSFET symbol. Note the different convention used for the direction of the arrows! There is also no distinction between depletion and enhancement-mode MOSFETs in the alternative style (assume it is enhancement-mode if in doubt)." %}}
+{{% figure src="mosfet-schematic-symbols-simplified-style-n-ch-p-ch.svg" width="800" caption="An simplified/alternate style for a MOSFET symbol. Note the different convention used for the direction of the arrows! There is also no distinction between depletion and enhancement-mode MOSFETs in the alternative style (assume it is enhancement-mode if in doubt)." %}}
 
 ### Alternate Style #2
 
@@ -155,7 +155,7 @@ The DMOS (_Double-Diffused MOSFET_) was first developed in 1969[^bib-semantic-sc
 
 FinFETs are multi-fin FETs which overcome issues once MOSFET approach very small sizes (such as 22nm).
 
-{{% img src="3d-model-of-the-structure-of-a-multi-fin-finfet.png" width="600" caption="The 3D structure of a multi-fin MOSFET (FinFET)." %}}
+{{% figure src="3d-model-of-the-structure-of-a-multi-fin-finfet.png" width="600" caption="The 3D structure of a multi-fin MOSFET (FinFET)." %}}
 
 ### FRFET
 
@@ -182,8 +182,8 @@ _Gallium Nitride_ (GaN) MOSFETs switch much faster than traditional silicon MOSF
 One example of a GaN MOSFET is Texas Instrument's LMG3525R030-Q1. It is a GaN MOSFET with an integrated driver, protection and error reporting. The driver supports switching speeds of up to 150V/ns[^ti-lmg352xr030-q1-ds].
 
 <div style="display: flex;">
-{{% img src="lmg3525r030-q1-ti-gan-fet-3d-render.png" width="200px" caption="3D render of the LMG3525R030-Q1[^ti-lmg352xr030-q1-ds]." %}}
-{{% img src="lmg3525r030-q1-ti-gan-fet-block-diagram.png" width="200px" caption="Block diagram of the LMG3525R030-Q1[^ti-lmg352xr030-q1-ds]." %}}
+{{% figure src="lmg3525r030-q1-ti-gan-fet-3d-render.png" width="200px" caption="3D render of the LMG3525R030-Q1[^ti-lmg352xr030-q1-ds]." %}}
+{{% figure src="lmg3525r030-q1-ti-gan-fet-block-diagram.png" width="200px" caption="Block diagram of the LMG3525R030-Q1[^ti-lmg352xr030-q1-ds]." %}}
 </div>
 
 ## MOSFET Applications
@@ -196,7 +196,7 @@ MOSFETs can be used for load switches, as shown on the [Load Switches page](/ele
 
 Some MOSFETs designed for switching loads support logic-level inputs (e.g. +3.3V or +5.0V from either a microcontroller or logic gate) and have built in TVS diodes. One such example is the DMN61D8L-7 from Diodes Incorporated. As shown in [^dmn61d8l-7-mosfet-internal-schematic], this particular MOSFET package also included a pull-down resistor and ESD limiting resistor in series with the gate.
 
-{{% img src="dmn61d8l-7-mosfet-internal-schematic.png" width="600" caption="Internal schematics of the DMN61D8L-7 MOSFET from Diodes Incorporated[^bib-dinc-dmn61d8l-ds]." %}}
+{{% figure src="dmn61d8l-7-mosfet-internal-schematic.png" width="600" caption="Internal schematics of the DMN61D8L-7 MOSFET from Diodes Incorporated[^bib-dinc-dmn61d8l-ds]." %}}
 
 ### Isolated Gate Drives
 
@@ -215,7 +215,7 @@ In these cases, the gate drive has to be **isolated**.
 
 A _common-source enhancement-mode MOSFET amplifier_ is a basic MOSFET-based amplifier. The most popular variant is based of an N-channel enhancement-mode MOSFET (although you can make common-source amplifiers with P-channels too!), in which the source is grounded. It is **called a "common-source" amplifier because the source is a shared (common) terminal between the input and output**. It is closely related to the BJT common-emitter amplifier. Like the common-emitter amplifier, it is an inverting amplifier.
 
-{{% img src="common-source-amplifier.svg" width="500" caption="Schematic of a basic common-mode N-channel MOSFET amplifier." %}}
+{{% figure src="common-source-amplifier.svg" width="500" caption="Schematic of a basic common-mode N-channel MOSFET amplifier." %}}
 
 The huge problem with the above circuit is the non-linearity.
 
@@ -223,7 +223,7 @@ The huge problem with the above circuit is the non-linearity.
 
 An interesting use for [^#_depletion_mode, depletion-mode MOSFETs] is a **simple bi-directional current limiter circuit**. [^depletion-mode-mosfet-current-limiter] shows the schematic, which uses two depletion-mode MOSFETs connected back-to-back with a resistor in-between.
 
-{{% img src="depletion-mode-mosfet-current-limiter.svg" width="600" caption="Schematic of a bi-directional current limiter made from two depletion mode MOSFETs and a resistor." %}}
+{{% figure src="depletion-mode-mosfet-current-limiter.svg" width="600" caption="Schematic of a bi-directional current limiter made from two depletion mode MOSFETs and a resistor." %}}
 
 The circuit above utilizes the **depletion-mode MOSFETs unique feature of being on when the gate-source voltage is 0V**. The circuit works like this:
 
@@ -286,7 +286,7 @@ Standard MOSFETs actually have four, not three, electrical connection points. Ho
 
 NOTE: There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
 
-{{% img src="mosfet-four-terminal-internal-diagram.gif" width="350" caption="Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/." %}}
+{{% figure src="mosfet-four-terminal-internal-diagram.gif" width="350" caption="Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/." %}}
 
 Another interesting note is that without the connection of the substrate to the source, the MOSFET source and drain connections would be identical, and there would be no need to separately identify them
 
@@ -296,15 +296,15 @@ A. Because when it isn't, a MOSFET becomes much harder to use. If the substrate 
 
 The 3N163 is an example of a MOSFET which provides you with a fourth pin for the substrate connection.
 
-{{% img src="3n163-mosfet-drawing-with-substrate-connection.png" width="350" caption="A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html." %}}
+{{% figure src="3n163-mosfet-drawing-with-substrate-connection.png" width="350" caption="A drawing of the 3N163 P-channel MOSFET, which has a fourth leg for the substrate connection (C). Image from http://pdf1.alldatasheet.com/datasheet-pdf/view/123459/CALOGIC/3N163.html." %}}
 
 You may also note that some IC designs do not connect the substrate to the source. The TPS2020 load switch by Texas Instruments is one example. You can see in the diagram below that the substrate pin is connected to ground. I'm not entirely sure why, but it might have something to do with the devices ability to block reverse current. Normally this is achieved with back-to-back MOSFETs, but this diagram almost suggests that they pull it off using only the one MOSFET.
 
-{{% img src="tps2020-functional-diagram-with-mosfet-body-grounded-annotated.png" width="600" caption="Functional block diagram of the TPS2020 load switch. Note how the substrate of the MOSFET (top middle) is not connected to the source, but instead connected to ground. Image from http://www.ti.com/lit/ds/symlink/tps2020.pdf." %}}
+{{% figure src="tps2020-functional-diagram-with-mosfet-body-grounded-annotated.png" width="600" caption="Functional block diagram of the TPS2020 load switch. Note how the substrate of the MOSFET (top middle) is not connected to the source, but instead connected to ground. Image from http://www.ti.com/lit/ds/symlink/tps2020.pdf." %}}
 
 Interestingly, the block diagram for the [NCP380 high-side load switch by On Semiconductor](http://www.onsemi.com/pub_link/Collateral/NCP380-D.PDF) may shed more light on this matter. Notice how in the image below, the substrate of the MOSFET is connected to two switches, which can either connect it to the input or the output.
 
-{{% img src="ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png" width="700" caption="A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed." %}}
+{{% figure src="ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png" width="700" caption="A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed." %}}
 
 ## The Transconductance Of A MOSFET
 
@@ -376,7 +376,7 @@ The Spirito effect is observed at high Vds voltages and low Id currents. High Vd
 
 For a really good read on the Spirito effect, see [NASA's publication: Power MOSFET Thermal Instability Operation Characterization Support](/electronics/components/transistors/mosfets/nasa-tm-2010-216684-power-mosfet-thermal-instability-operation.pdf)
 
-{{% img src="mosfet-soa-diagram-with-annotations.png" width="700" caption="A MOSFET SOA (safe operating area) diagram, showing the different limits which bound the area." %}}
+{{% figure src="mosfet-soa-diagram-with-annotations.png" width="700" caption="A MOSFET SOA (safe operating area) diagram, showing the different limits which bound the area." %}}
 
 . Rds(on) Limit: When `\(V_{DS}\)` is very low, it means that the MOSFET is driven to saturation, and the MOSFET acts if it has a fixed drain-source resistance, `\(R_{DS(on)}\)`. This gives a linear relationship between voltage and current and is the limit line in the upper-left section of the SOA graph.
 . Package Current Limit: MOSFET datasheets will specify a maximum current, irrespective of the amount of power dissipation. The current limit is driven by physical parts inside the package which are not the silicon MOSFET cell(s), but the surrounding lead wires, bonding clips, e.t.c. This gives the upper-centre horizontal line on the SOA graph.

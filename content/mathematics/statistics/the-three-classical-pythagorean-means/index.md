@@ -55,11 +55,11 @@ The geometric means of 2 and 3 numbers can be intuitively visualized:
 
 1) In 2D, it two numbers were the width and height of a rectangle, the geometric mean gives you the length of the side of a square (equal sided rectangle) which would have the same **area** as the rectangle.
 
-    {{% img src="geometric-mean-2d-same-area.png" width="500px" caption="Taking the geometric mean of a rectangle (side lengths of 4 and 9) gives you length of the sides of a square (side length of 6) with the same area." %}}
+    {{% figure src="geometric-mean-2d-same-area.png" width="500px" caption="Taking the geometric mean of a rectangle (side lengths of 4 and 9) gives you length of the sides of a square (side length of 6) with the same area." %}}
 
 2) Similarly, in 3D if the three numbers were the width, height and depth of a rectangular cuboid (box), the geometric mean gives you the length of the side of a cube (equal sided cuboid) which would have the same **volume**.
 
-    {{% img src="geometric-mean-3d-same-volume.png" width="500px" caption="Taking the geometric mean of a box (side lengths of 8, 2 and 4) gives you length of the sides of a cube (side length of 4) with the same volume." %}}
+    {{% figure src="geometric-mean-3d-same-volume.png" width="500px" caption="Taking the geometric mean of a box (side lengths of 8, 2 and 4) gives you length of the sides of a cube (side length of 4) with the same volume." %}}
 
 ### Uses
 

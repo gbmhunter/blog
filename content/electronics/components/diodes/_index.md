@@ -42,11 +42,11 @@ Steering diodes is a name given to a configuration of two or more diodes that ch
 
 They can be used to provide transient ESD protection.
 
-{{% img src="steering-diodes-used-for-transient-esd-protection.png" width="500" caption="Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf." %}}
+{{% figure src="steering-diodes-used-for-transient-esd-protection.png" width="500" caption="Steering diodes can be used for transient ESD protection. Image from http://www.protekdevices.com/Assets/Documents/Technical_Articles/ta1002.pdf." %}}
 
 They can be used alongside a potentiometer and 555 timer to create a PWM circuit.
 
-{{% img src="schematic-steering-diodes-used-for-555-timer-pwm-circuit.png" width="700" caption="Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications)." %}}
+{{% figure src="schematic-steering-diodes-used-for-555-timer-pwm-circuit.png" width="700" caption="Schematic highlighting the steering diodes used to generate a variable duty-cycle PWM circuit using a 555 timer, without changing the frequency. Image from http://www.electroschematics.com/6950/555-duty-cycle-control/ (with modifications)." %}}
 
 ## Manufacturer Part Numbers
 
@@ -66,13 +66,13 @@ The DIAC is a form of diode which conducts current only after it reaches it's br
 
 Below is the schematic symbol for the DIAC.
 
-{{% img src="diac-diode-schematic-symbol.svg" width="300" caption="The schematic symbol for a DIAC." %}}
+{{% figure src="diac-diode-schematic-symbol.svg" width="300" caption="The schematic symbol for a DIAC." %}}
 
 ## Constant-Current Diodes
 
 _Constant-current diodes_ are two terminal current sources made from a N-channel JFET and resistor. You can either make one yourself or buy a discrete component containing the JFET and resistor built-in. See [Current Sources And Sinks: Constant-Current Diode (JFET Current Source)](/electronics/components/current-sources-and-sinks/#_constant_current_diode_jfet_current_source) for schematics, equations and worked examples.
 
-{{% img src="constant-current-diode-schematic.png" width="350" caption="Schematic of a constant-current diode. See [Current Sources And Sinks: Constant-Current Diode (JFET Current Source)](/electronics/components/current-sources-and-sinks/#_constant_current_diode_jfet_current_source) for more info." %}}
+{{% figure src="constant-current-diode-schematic.png" width="350" caption="Schematic of a constant-current diode. See [Current Sources And Sinks: Constant-Current Diode (JFET Current Source)](/electronics/components/current-sources-and-sinks/#_constant_current_diode_jfet_current_source) for more info." %}}
 
 ## References
 

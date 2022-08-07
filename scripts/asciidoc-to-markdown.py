@@ -88,7 +88,7 @@ def image_replace_fn(found_text, file_path):
     width_px = match.group(1)
     print(f'width_px={width_px}')
 
-    markdown_image = f'{{{{% img src="{src}" width="{width_px}" caption="{caption}" %}}}}'
+    markdown_image = f'{{{{% figure src="{src}" width="{width_px}" caption="{caption}" %}}}}'
     print(f'markdown_image={markdown_image}')
 
     return markdown_image

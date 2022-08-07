@@ -20,7 +20,7 @@ Current mirrors are used extensively inside analogue ICs such as operation ampli
 
 You can make a basic current mirror from nothing but two [bi-polar transistors (BJTs)](/electronics/components/transistors/bipolar-junction-transistors-bjts/). Shown below is a basic BJT current mirror made from two NPN BJTs:
 
-{{% img src="basic-bjt-current-mirror.png" width="400px" caption="A basic BJT current mirror made from two NPN bipolar junction transistors." %}}
+{{% figure src="basic-bjt-current-mirror.png" width="400px" caption="A basic BJT current mirror made from two NPN bipolar junction transistors." %}}
 
 **<u>How Does It Work?</u>**
 
@@ -40,7 +40,7 @@ The main current error in the basic BJT current mirror circuit is because the ba
 
 As mentioned above, one of the main problems with the basic current mirror is that the bases of `Q1` and `Q2` "suck" away some of the input current. To improve on this, we can add another NPN BJT on the input side to "buffer" the base of `Q1`/`Q2`. Now only `\(\frac{1}{101} * \frac{2}{101} = \frac{3}{10201}\)` of the current is diverted away. This is called the _buffered feedback current mirror_, or _emitter follower augmented mirror_[^bib-analog-devices-current-mirror].
 
-{{% img src="buffered-bjt-current-mirror.png" width="400px" caption="Schematic of a buffered BJT current mirror." %}}
+{{% figure src="buffered-bjt-current-mirror.png" width="400px" caption="Schematic of a buffered BJT current mirror." %}}
 
 Below is a simulation of the buffered feedback current mirror. Notice now the the output current is only `\(0.03\%\)` different from the input! This is a great improvement on the `\(2\%\)` error of the basic BJT current mirror!
 

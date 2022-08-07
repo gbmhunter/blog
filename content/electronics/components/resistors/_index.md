@@ -20,7 +20,7 @@ For information on positive temperature coefficient resistors used as "fuses" in
 
 **The mechanical equivalent of a resistor is friction.** The larger the resistance, the larger the friction. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
-{{% img src="ti-it-looks-like-weve-encountered-some-resistance.png" width="600" caption="One should always appreciate a good pun. Texas Instruments 404 page as of October 2020." %}}
+{{% figure src="ti-it-looks-like-weve-encountered-some-resistance.png" width="600" caption="One should always appreciate a good pun. Texas Instruments 404 page as of October 2020." %}}
 
 Resistors are used for a huge number of purposes, including:
 
@@ -36,7 +36,7 @@ Resistors are used for a huge number of purposes, including:
 
 The most commonly-used resistor schematic symbols are shown below. I prefer the American-style resistor over the European purely because there are already many "box-like" schematic symbols used for other components (e.g. fuses, ICs), and so the squiggle makes a resistor more distinguishable (given my distaste for the American imperial system, I never thought I would ever say that!). The American style is used through-out the rest of this website.
 
-{{% img src="schematic-symbols-amer-euro-resistors.png" width="500" caption="The \"American\" and \"European\" schematic symbols for a resistor. I prefer the American-style because it's easiest to distinguish from other box-like symbols." %}}
+{{% figure src="schematic-symbols-amer-euro-resistors.png" width="500" caption="The \"American\" and \"European\" schematic symbols for a resistor. I prefer the American-style because it's easiest to distinguish from other box-like symbols." %}}
 
 See the [Potentiometers And Rheostats (Variable Resistors) section](#potentiometers-and-rheostats-variable-resistors) for more schematic symbols.
 
@@ -60,7 +60,7 @@ It is usually easier to remember this equation as:
 
 The following diagram shows this:
 
-{{% img src="resistors-in-parallel-equivalence-with-equation.png" width="723" caption="Two resistors in parallel can be treated as one resistor using the shown equation." %}}
+{{% figure src="resistors-in-parallel-equivalence-with-equation.png" width="723" caption="Two resistors in parallel can be treated as one resistor using the shown equation." %}}
 
 ### Resistors In Series
 
@@ -72,7 +72,7 @@ R_{total} = R1 + R2
 
 This is shown in the diagram below:
 
-{{% img src="two-resistors-in-series-equivalent-single-resistance.png" width="669" caption="Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image." %}}
+{{% figure src="two-resistors-in-series-equivalent-single-resistance.png" width="669" caption="Two resistors in series is the equivalent of one resistor with the resistance shown by the equation in this image." %}}
 
 ## Resistor Dividers
 
@@ -80,7 +80,7 @@ Resistor dividers are two or more resistors in a series configuration such that 
 
 The simplest voltage divider consists of just two resistors in series.
 
-{{% img src="resistor-divider-schematic.png" width="350" caption="A basic schematic of a simple resistor divider. You will see these used everywhere in circuits!" %}}
+{{% figure src="resistor-divider-schematic.png" width="350" caption="A basic schematic of a simple resistor divider. You will see these used everywhere in circuits!" %}}
 
 The equation for `\(V_{OUT}\)` is:
 
@@ -137,7 +137,7 @@ An interesting example I have seen of a resistor divider powering a circuit was 
 
 The [NinjaCalc](http://gbmhunter.github.io/NinjaCalc/) has a calculator that can work out voltages, resistances and currents of a resistor divider.
 
-{{% img src="screenshot-of-ninjacalc-resistor-divider-calculator.png" width="604" caption="A screenshot of the NinjaCalc's 'Resistor Divider' calculator, being used to find the top resistance." %}}
+{{% figure src="screenshot-of-ninjacalc-resistor-divider-calculator.png" width="604" caption="A screenshot of the NinjaCalc's 'Resistor Divider' calculator, being used to find the top resistance." %}}
 
 ## Tolerances
 
@@ -218,7 +218,7 @@ See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_numbe
 
 [The NinjaCalc Standard Resistance Finder calculator](https://ninja-calc.mbedded.ninja/calculators/electronics/basics/standard-resistance-finder), can easily find the closest E-series resistance to your desired resistance.
 
-{{% img src="screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png" width="550" caption="NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 10.3kΩ (with closest highest and closest lowest resistance)." %}}
+{{% figure src="screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png" width="550" caption="NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 10.3kΩ (with closest highest and closest lowest resistance)." %}}
 
 ## Resistor Manufacturing Processes
 
@@ -226,11 +226,11 @@ See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_numbe
 
 Wire-wound resistors are the oldest type of resistor, and are formed by coiling up a piece of wire to get a desired resistance. They are only typically used in modern times in high power applications and for things like fuses, with ratings up into the 100's of Watts.
 
-{{% img src="wire-wound-resistor-diagram-bourns.png" width="300" caption="Cut-away diagram of a typical wire-wound resistor. Image by Bourns, retrieved on 2021-08-14 from https://www.bourns.com/products/resistors/wirewound-resistors." %}}
+{{% figure src="wire-wound-resistor-diagram-bourns.png" width="300" caption="Cut-away diagram of a typical wire-wound resistor. Image by Bourns, retrieved on 2021-08-14 from https://www.bourns.com/products/resistors/wirewound-resistors." %}}
 
 Given they are normally a coil of wire, they can have a significant parasitic inductance and be give off/be susceptible to magnetic fields.
 
-{{% img src="tt-electronics-w22-2kji-2kr-wirewound-resistor.png" width="500" caption="Close-up photo of the TT Electronics W22-2KJI 2kΩ 7W wirewound resistor[^bib-tt-electronics-w20-series-ds]." %}}
+{{% figure src="tt-electronics-w22-2kji-2kr-wirewound-resistor.png" width="500" caption="Close-up photo of the TT Electronics W22-2KJI 2kΩ 7W wirewound resistor[^bib-tt-electronics-w20-series-ds]." %}}
 
 ### Metal Film
 
@@ -256,17 +256,17 @@ Carbon film resistors are formed by forming a conductive carbon film on a cerami
 
 Power resistors is a term used with resistors which are usually rated to dissipate 1W or more of power (without heatsinking).
 
-{{% img src="bunch-of-ceramic-power-resistors.jpg" width="600" caption="A bunch of ceramic power resistors rated from 5 to 25W of power dissipation." %}}
+{{% figure src="bunch-of-ceramic-power-resistors.jpg" width="600" caption="A bunch of ceramic power resistors rated from 5 to 25W of power dissipation." %}}
 
 They can be used to intentionally heat things, as the picture below shows. This image below is a common 5W resistor being used to heat a small container of oil, with a copper thermostat from a hot water cylinder being used to control the temperature.
 
-{{% img src="using-a-power-resistor-to-heat-oil.jpg" width="800" caption="Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature." %}}
+{{% figure src="using-a-power-resistor-to-heat-oil.jpg" width="800" caption="Power resistors can be used for heating. This photo shows a 5W resistor being used to heat a small container of oil, with a thermostat from a hot water cylinder to control the temperature." %}}
 
 ## Current-Sense Resistors
 
 Current-sense resistors are a label given to low-valued, high precision (1% or better), and high power resistors that are good for using in current-sense circuits. Sometimes there is nothing special about these resistors (it's purely a marketing term), othertimes they may have two additional terminals for _Kelvin sensing_. A four terminal resistor is also called an _ammeter shunt_. Two of the terminals are used to pass the high current, the other two are used to measure to voltage drop across the resistor. This gets rid of measurement errors due to voltage drop in the wires going to the resistor (when the sense line and high-current path are the same thing).
 
-{{% img src="current-sensing-resistor-large-four-lead.jpg" width="500" caption="A large four-lead current sensing resistor." %}}
+{{% figure src="current-sensing-resistor-large-four-lead.jpg" width="500" caption="A large four-lead current sensing resistor." %}}
 
 More information and schematics on how to make current-sense circuits can be found on the [Current-Sensing page](/electronics/circuit-design/current-sensing).
 
@@ -286,11 +286,11 @@ Volume resistance (also known as just resistivity, electrical resistivity, or bu
 
 For most day-to-day applications, resistors can just be treated as if they have a resistance. However, in high frequency circuits, there are other parasitic elements to a resistor that you must consider. Typically, the main parasitics are modelled as a extra inductor and capacitor, although the is no standard way of wiring them (depends on what literature you are reading). One popular configuration is shown below:
 
-{{% img src="parasitic-model-of-resistor-series-rl-parallel-c.svg" width="600" caption="Parasitic model of a resistor modelling the resistance in parallel with an inductor which is then in series with a capacitor." %}}
+{{% figure src="parasitic-model-of-resistor-series-rl-parallel-c.svg" width="600" caption="Parasitic model of a resistor modelling the resistance in parallel with an inductor which is then in series with a capacitor." %}}
 
 Below shows another model which is popular as it models the resistance in parallel with the end cap capacitance and this in series with the lead inductance[^bib-edn-resistors-arent-resistors].
 
-{{% img src="parasitic-model-of-resistor-parallel-rc-series-l.svg" width="600" caption="Parasitic model of a resistor modelling the resistance in parallel with the end cap capacitance and that in series with the lead inductance." %}}
+{{% figure src="parasitic-model-of-resistor-parallel-rc-series-l.svg" width="600" caption="Parasitic model of a resistor modelling the resistance in parallel with the end cap capacitance and that in series with the lead inductance." %}}
 
 The below table shows resistor types and the ranges of their parasitic inductance[^bib-eepower-res-ind]:
 
@@ -313,15 +313,15 @@ Resistor come in many packages, from large, wire-wound power resistors that come
 
 Through-hole resistors use the older color code scheme (the current international standard as of 2013 is IEC 60062). Newer surface-mount resistors usually have the value printed directly on them (a three-digit number is most common, with the third digit being the multiplier).
 
-{{% img src="500-0603-smd-resistors-on-tape.jpg" width="530" caption="SMD resistors usually come on a tape like the one shown (which could be on a reel) which contains 500 0603 SMD resistors." %}}
+{{% figure src="500-0603-smd-resistors-on-tape.jpg" width="530" caption="SMD resistors usually come on a tape like the one shown (which could be on a reel) which contains 500 0603 SMD resistors." %}}
 
 Once taken out of the tape, they don't look like much!
 
-{{% img src="500-0603-smd-resistors-next-to-a-pin.jpg" width="517" caption="500 0603 SMD resistors in a pile next to pin. This is too illustrate just how small they are! (and then can get smaller)." %}}
+{{% figure src="500-0603-smd-resistors-next-to-a-pin.jpg" width="517" caption="500 0603 SMD resistors in a pile next to pin. This is too illustrate just how small they are! (and then can get smaller)." %}}
 
 This was me trying to be arty-farty with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with.
 
-{{% img src="reel-0603-resistor-leftovers-best.jpg" width="900" caption="This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with." %}}
+{{% figure src="reel-0603-resistor-leftovers-best.jpg" width="900" caption="This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with." %}}
 
 ## References
 

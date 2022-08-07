@@ -165,7 +165,7 @@ t, &\text{for $0 \le t < 1$} \\
 \end{cases}
 $$</p>
 
-{{% img src="convolution-two-box-car-functions.gif" width="700px" caption="An animated .gif showing the convolution of two box-car functions. The value of the convolution function at any time t (bottom line in red) is the amount area shown in red in the middle plot, which is the area under the curve of f(t)g(t) (the two waveforms multiplied together)." %}}
+{{% figure src="convolution-two-box-car-functions.gif" width="700px" caption="An animated .gif showing the convolution of two box-car functions. The value of the convolution function at any time t (bottom line in red) is the amount area shown in red in the middle plot, which is the area under the curve of f(t)g(t) (the two waveforms multiplied together)." %}}
 
 ## Convolution With Unit Impulse (Dirac Delta) Function
 

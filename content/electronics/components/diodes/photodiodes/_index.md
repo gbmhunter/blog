@@ -25,7 +25,7 @@ Uses:
 
 Below is the common schematic symbol used for a photodiode:
 
-{{% img src="photodiode-schematic-symbol.png" width="300" caption="Schematic symbol for a photodiode." %}}
+{{% figure src="photodiode-schematic-symbol.png" width="300" caption="Schematic symbol for a photodiode." %}}
 
 {{% tip %}}
 The photodiode schematic symbol is very similar to one for an [LED (light-emitting diode)](/electronics/components/diodes/light-emitting-diodes-leds/), but the "light arrows" on an LED point away from the diode.
@@ -55,7 +55,7 @@ An _avalanche photodiode_ (APDs) is a variant of the standard PN junction photod
 
 The typical relationship between the photodiodes voltage and current is shown below:
 
-{{% img src="photodiode-voltage-vs-current.png" width="700" caption="Graph showing the typical relationship between photodiode voltage and current, for three different levels of incident light power. The top-most curve is with no incident light, curves then shift downwards very linearly with increasing light power. " %}}
+{{% figure src="photodiode-voltage-vs-current.png" width="700" caption="Graph showing the typical relationship between photodiode voltage and current, for three different levels of incident light power. The top-most curve is with no incident light, curves then shift downwards very linearly with increasing light power. " %}}
 
 {{% tip %}}
 Except for `\(V=0V\)` (right on the vertical axis), almost no photodiode is operated in the right-half of the graph.
@@ -90,7 +90,7 @@ The right-half of the graph is not terribly interesting, as the photodiode just 
 
 The _sensitive area_ is the area of the PN junction that is exposed and responds to light. A larger sensitive area will result in a photodiode being able detect lower levels of light, and provide more bits of resolution.
 
-{{% img src="bpw34-sensitive-area.png" width="300" caption="Mechanical outline showing the sensitive area on the top face of the Vishay BPW34 photodiode (DIP-2 package)[^bib-vishay-bpw34-ds]." %}}
+{{% figure src="bpw34-sensitive-area.png" width="300" caption="Mechanical outline showing the sensitive area on the top face of the Vishay BPW34 photodiode (DIP-2 package)[^bib-vishay-bpw34-ds]." %}}
 
 ### Dark Current
 
@@ -106,7 +106,7 @@ The dark current at `\(25^{\circ}C\)` is usually specified in the photodiode's d
 
 Photodiodes are commonly used to measure light intensities. But the output of a photodiode is a very small current, which isn't very useful for measuring. A common "analogue front-end" to add to a photodiode is a _transimpedance amplifier_ using an [op-amp](/electronics/components/op-amps/), as shown below. The transimpedance amplifier converts the very small current into a much larger voltage. This voltage can then be used to control other parts of a circuit or can be fed into an ADC for digitizing before being read by a microcontroller.
 
-{{% img src="simple-transimpedance-photodiode-circuit.png" width="700" caption="A basic transimpedance amplifier circuit to convert the photodiodes light-dependent current into a measurable voltage. The output can be used to control other analog circuitry are can be connected to an [ADC](/electronics/components/analogue-to-digital-converters-adcs/)." %}}
+{{% figure src="simple-transimpedance-photodiode-circuit.png" width="700" caption="A basic transimpedance amplifier circuit to convert the photodiodes light-dependent current into a measurable voltage. The output can be used to control other analog circuitry are can be connected to an [ADC](/electronics/components/analogue-to-digital-converters-adcs/)." %}}
 
 Because the op-amps non-inverting is tied to ground, the inverting input is a "virtual ground" (it also stays at 0V). Because the diode current `\(I_D\)` has no-where to go but through the resistor `\(R_f\)`, this gives the simple equation:
 
@@ -156,13 +156,13 @@ _Photoconductive mode_ is when the photodiode is operated with a reverse-bias vo
 
 Below shows an equivalent circuit for a photodiode:
 
-{{% img src="photodiode-equivalent-circuit.png" width="700" caption="An equivalent circuit for a photodiode. Based of the circuit in _Photodiode Characteristics and Applications_ by OSI Optoelectronics[^bib-osi-photodiode-chars-and-apps]." %}}
+{{% figure src="photodiode-equivalent-circuit.png" width="700" caption="An equivalent circuit for a photodiode. Based of the circuit in _Photodiode Characteristics and Applications_ by OSI Optoelectronics[^bib-osi-photodiode-chars-and-apps]." %}}
 
 `\(R_{sh}\)` represents the resistance in parallel with the current source, and is called the _shunt resistance_. You want this shunt resistance to be as high as possible, as this means more of the current is delivered to the load. Germanium photodiodes can have lower shunt resistance in the `\(1-100k\Omega\)` range[^bib-aac-photodiode-equiv-circuit].
 
 `\(C_j\)` represents the junction capacitance, cause by the depletion region of the PN junction. Junction capacitance effects the photodiodes high-frequency response, as the capacitances impedance drops with increasing frequency. Lower capacitance photodiodes have better high frequency response. The value of `\(C_j\)` is not constant -- in fact it is strongly dependent on the reverse-bias voltage. **The higher the reverse-bias, the lower the capacitance**. Thus you can improve a photodiodes high frequency response by reverse-biasing it at a high voltage.
 
-{{% img src="bpw34-diode-capacitance-vs-reverse-voltage.png" width="400" caption="A graph showing the junction capacitance vs. reverse voltage for the Vishay BPW34 photodiode[^bib-vishay-bpw34-ds]. You can clearly see the reduction of capacitance with increased reverse bias!" %}}
+{{% figure src="bpw34-diode-capacitance-vs-reverse-voltage.png" width="400" caption="A graph showing the junction capacitance vs. reverse voltage for the Vishay BPW34 photodiode[^bib-vishay-bpw34-ds]. You can clearly see the reduction of capacitance with increased reverse bias!" %}}
 
 ## Manufacturers
 
@@ -170,7 +170,7 @@ Below shows an equivalent circuit for a photodiode:
 
 Opto Diode manufacture a range of silcon photodiodes in through-hole TO-5, TO-8 and TO-18 packages.
 
-{{% img src="odd-5wisol-photodiode-photo-to-5.png" width="200" caption="Close-up photo of the ODD-5WISOL photodiode from Opto Diode in a TO-5 package[^bib-opto-diode-odd-5wisol-ds]. This photodiode has an active area of approx. `\(5mm^2\)` and responsivity of `\(0.4A/W\)` at 632nm (red)." %}}
+{{% figure src="odd-5wisol-photodiode-photo-to-5.png" width="200" caption="Close-up photo of the ODD-5WISOL photodiode from Opto Diode in a TO-5 package[^bib-opto-diode-odd-5wisol-ds]. This photodiode has an active area of approx. `\(5mm^2\)` and responsivity of `\(0.4A/W\)` at 632nm (red)." %}}
 
 ## Popular Parts
 

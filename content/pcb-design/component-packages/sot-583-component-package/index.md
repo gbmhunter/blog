@@ -100,15 +100,15 @@ type: "page"
 
 ## Dimensions
 
-{{% img src="sot-583-component-package-dimensions-ti.png" width="500px" caption="The dimensions of the SOT-583 component package from TI. Image from https://www.ti.com/lit/ml/mpcs002/mpcs002.pdf." %}}
+{{% figure src="sot-583-component-package-dimensions-ti.png" width="500px" caption="The dimensions of the SOT-583 component package from TI. Image from https://www.ti.com/lit/ml/mpcs002/mpcs002.pdf." %}}
 
 ## Recommended Footprint
 
-{{% img src="sot-583-component-package-recommended-footprint.png" width="500px" caption="The recommended footprint for the SOT-583 component package by TI. Image from https://www.ti.com/lit/ml/mpcs002/mpcs002.pdf." %}}
+{{% figure src="sot-583-component-package-recommended-footprint.png" width="500px" caption="The recommended footprint for the SOT-583 component package by TI. Image from https://www.ti.com/lit/ml/mpcs002/mpcs002.pdf." %}}
 
 ## 3D Renders
 
-{{% img src="sot-583-component-package-3d-render-ti.png" width="200px" caption="A 3D render of the SOT-583 component package. Image from https://www.ti.com/product/TPS628512." %}}
+{{% figure src="sot-583-component-package-3d-render-ti.png" width="200px" caption="A 3D render of the SOT-583 component package. Image from https://www.ti.com/product/TPS628512." %}}
 
 ## References
 

@@ -14,7 +14,7 @@ type: "page"
 
 pandas is a data analysis library for Python. It provides high-level data structures and analytical tools for data analysis.
 
-{{% img src="pandas_logo.png" width="700px" caption="The pandas logo." %}}
+{{% figure src="pandas_logo.png" width="700px" caption="The pandas logo." %}}
 
 ## Installation
 

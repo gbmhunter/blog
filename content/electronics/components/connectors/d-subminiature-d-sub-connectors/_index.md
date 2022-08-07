@@ -14,7 +14,7 @@ type: "page"
 
 _D-Subminiature connectors_ (abbreviated to _D-Sub connectors_) were designed by ITT Canon in 1952. Large by today's standards, at the time, these connectors where one of the smallest connectors available for a computer, hence the name "subminiature". They are characterised by two or more rows of connections inside a **"D" shape** metal shell.
 
-{{% img src="de-9-female-pcb-mount-d-sub-connector-photo.jpg" width="300" caption="One of the most commonly used D-sub connectors of this era, the 9-pin female PCB-mount DE-9 connector." %}}
+{{% figure src="de-9-female-pcb-mount-d-sub-connector-photo.jpg" width="300" caption="One of the most commonly used D-sub connectors of this era, the 9-pin female PCB-mount DE-9 connector." %}}
 
 TIP: The **DE-9 is a very popular 9-pin computer serial cable**. It is also commonly (and **incorrectly**) called a DB-9 connector, presumably because of the name of larger DB-25 connector that it replaced.
 
@@ -24,7 +24,7 @@ Older serial communication protocols such as [RS-232](/electronics/communication
 
 I recommend using the unique schematic symbol style below for the range of D-sub-miniature connectors. It immediately identifies the connector to the viewer.
 
-{{% img src="connector-db25-schematic-symbol.png" width="200" caption="An easy-to-identify schematic symbol style for representing D sub-miniature connectors." %}}
+{{% figure src="connector-db25-schematic-symbol.png" width="200" caption="An easy-to-identify schematic symbol style for representing D sub-miniature connectors." %}}
 
 ## Sizes
 
@@ -108,11 +108,11 @@ Solder Lug: Designed so that wires can be soldered onto the pins. This style of 
 
 ## Pin Numbering
 
-{{% img src="dsub-de-9-pin-numbers.png" width="500" caption="Pin numbers for the male DE-9 connector, looking at the 'front' of the connector which mates with the female part." %}}
+{{% figure src="dsub-de-9-pin-numbers.png" width="500" caption="Pin numbers for the male DE-9 connector, looking at the 'front' of the connector which mates with the female part." %}}
 
-{{% img src="dsub-db-9-female-male-photo-pin-numbers.png" width="500" caption="Pin numbering for the D-sub DE-9 (a.k.a. DB-9) female and male connectors." %}}
+{{% figure src="dsub-db-9-female-male-photo-pin-numbers.png" width="500" caption="Pin numbering for the D-sub DE-9 (a.k.a. DB-9) female and male connectors." %}}
 
-{{% img src="dsub-db-25-pin-numbers.png" width="500" caption="Pin numbers for the male DB-25 connector, looking at the 'front' of the connector which mates with the female part." %}}
+{{% figure src="dsub-db-25-pin-numbers.png" width="500" caption="Pin numbers for the male DB-25 connector, looking at the 'front' of the connector which mates with the female part." %}}
 
 ## Uses
 
@@ -122,7 +122,7 @@ Many older consumer products and prototype circuits of all ages use the DE-9 con
 
 Filtered D-sub connectors have purposeful capacitance-to-ground (or more complicated filters) built into each one of the connectors pins.
 
-{{% img src="d-sub-connector-with-c-filter-conec-graph-of-insertion-loss-vs-freq.pdf.png" width="551" caption="A graph of insertion loss vs. frequency for a Conec D-sub connector with integrated capacitance for filtering (a 'C' filter)." %}}
+{{% figure src="d-sub-connector-with-c-filter-conec-graph-of-insertion-loss-vs-freq.pdf.png" width="551" caption="A graph of insertion loss vs. frequency for a Conec D-sub connector with integrated capacitance for filtering (a 'C' filter)." %}}
 
 Compared to implementing the filtering on say, the PCB, filtering at the connector offers the advantage of increased EMI protection due to the filtering occurring at the point that the signal enters the enclosure (so the wires to the PCB don't radiate noise). It also saves PCB space and simplifies PCB routing/layout.
 
@@ -130,10 +130,10 @@ Compared to implementing the filtering on say, the PCB, filtering at the connect
 
 You can buy pre-made screw kits, such as the [TE Connectivity 5205817-1](http://www.digikey.co.nz/product-search/en?vendor=0&keywords=5205817-1&stock=1), which comes with all the necessary screws and associated hardware to secure two D-sub connectors together (I might point out here that screws **are not required** to make a connection, but help to make it more secure).
 
-{{% img src="te-connectivity-5205817-1-d-sub-screw-kit.jpg" width="254" caption="The TE Connectivity 5205817-1 D-Sub screw kit." %}}
+{{% figure src="te-connectivity-5205817-1-d-sub-screw-kit.jpg" width="254" caption="The TE Connectivity 5205817-1 D-Sub screw kit." %}}
 
 ## Waterproof Variants
 
 Waterproof variants of D-sub connectors exist, the two most common being a DE-9 or a DB-25.
 
-{{% img src="amphenol-ltw-waterproof-serial-de-9-receptacle-connector.jpg" width="450" caption="A waterproof DE-9 receptacle by Amphenol LTW." %}}
+{{% figure src="amphenol-ltw-waterproof-serial-de-9-receptacle-connector.jpg" width="450" caption="A waterproof DE-9 receptacle by Amphenol LTW." %}}

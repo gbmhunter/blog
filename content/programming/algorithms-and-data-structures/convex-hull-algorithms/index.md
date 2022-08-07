@@ -14,7 +14,7 @@ type: "page"
 
 Given a cloud of points on a 2D plane, a convex hull is the smallest set of points which encloses all of the points.
 
-{{% img src="convex_hull.png" width="700px" caption="The 2D convex hull for a set of points." %}}
+{{% figure src="convex_hull.png" width="700px" caption="The 2D convex hull for a set of points." %}}
 
 Another useful concept related to convex hulls is the _minimum bounded rectangle_. The minimum bounded rectangle is the smallest rectangle (measured by area) which encompasses the entire convex hull (by extension, it is also the smallest rectangle that encompasses all points).
 

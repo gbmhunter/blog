@@ -65,11 +65,11 @@ For the first time ever, we see Linux-related pages take over the top positions 
 
 ### Acquisition
 
-{{% img src="20191231-google-analytics-top-channels-2019.png" width="400px" caption="The top channels of 2019. Image from Google Analytics." %}}
+{{% figure src="20191231-google-analytics-top-channels-2019.png" width="400px" caption="The top channels of 2019. Image from Google Analytics." %}}
 
 ### Most Popular Referrers
 
-{{% img src="20191231-google-analytics-top-referrers-2019.png" width="800px" caption="The top referrers of 2019. Image from Google Analytics." %}}
+{{% figure src="20191231-google-analytics-top-referrers-2019.png" width="800px" caption="The top referrers of 2019. Image from Google Analytics." %}}
 
 ## Goal Completion
 

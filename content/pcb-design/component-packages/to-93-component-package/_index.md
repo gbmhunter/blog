@@ -75,6 +75,6 @@ type: "page"
 
 A large panel mount package used for high-power SCRs. Has good heat-sinking capabilities. Thread is 28.5mm in diameter, so fits 29-30mm hole. The metal case/thread is usually used as the anode, and the thick cable the cathode (there normally is a flying lead for the cathode also), along with a white flying lead for the gate.
 
-{{% img src="to-93-component-package-photo.jpg" width="160px" caption="A photo of the TO-93 component package." %}}
+{{% figure src="to-93-component-package-photo.jpg" width="160px" caption="A photo of the TO-93 component package." %}}
 
-{{% img src="two-scrs-on-heatsinks.jpg" width="600px" caption="Two high-power SCRs in TO-93 packages that are mounted to heatsinks (the International Rectifier 151RB60 and an unknown SCR)." %}}
+{{% figure src="two-scrs-on-heatsinks.jpg" width="600px" caption="Two high-power SCRs in TO-93 packages that are mounted to heatsinks (the International Rectifier 151RB60 and an unknown SCR)." %}}

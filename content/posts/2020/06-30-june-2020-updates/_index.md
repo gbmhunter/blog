@@ -26,7 +26,7 @@ type: "post"
 
 * Added information on {{% link text="number-to-string functions in the C programming language to the String Manipulation page" src="/programming/languages/c/string-manipulation" %}}.
 
-    {{% img src="c-string-manipulation-itoa-section-screenshot.png" width="500px" %}}
+    {{% figure src="c-string-manipulation-itoa-section-screenshot.png" width="500px" %}}
 
 * Updated the {{% link text="Debouncing page" src="/electronics/circuit-design/debouncing" %}}.
 

@@ -15,7 +15,7 @@ _Sorted in alphabetical order_.
 
 ### Avnet
 
-{{% img src="avnet-logo.gif" width="100px" %}}
+{{% figure src="avnet-logo.gif" width="100px" %}}
 
 |                     |
 |---------------------|-----------------------
@@ -29,7 +29,7 @@ _Sorted in alphabetical order_.
 
 ### Digi-Key
 
-{{% img src="digi-key-logo.jpg" width="100" caption="The Digi-Key logo." %}}
+{{% figure src="digi-key-logo.jpg" width="100" caption="The Digi-Key logo." %}}
 
 |                     |
 |---------------------|-----------------------
@@ -47,15 +47,15 @@ Their pricing is usually a little expensive for one of components, but they are 
 
 Automatic Part List/BOM/Order Creation. This speeds up the ordering process. Directly upload BOMs  as text, csv, or Excel Spreadsheet (.xls) files to DigiKey, select the appropriate columns, and then instantly create orders.
 
-{{% img src="digi-key-automatic-bom-uploading-please-wait.png" width="320px" %}}
+{{% figure src="digi-key-automatic-bom-uploading-please-wait.png" width="320px" %}}
 
-{{% img src="digi-key-automatic-bom-uploading-selecting-excel-columns.png" width="700px" %}}
+{{% figure src="digi-key-automatic-bom-uploading-selecting-excel-columns.png" width="700px" %}}
 
 **DigiKey has a PandA (_Price and Availability_) tool** which allows you to check the pricing and availability for a list of products that you provide either manually in the web form, or by uploading a `.xls`, `.xlsx`, `.csv` or `.txt` file.
 
 ### Element14
 
-{{% img src="element-14-logo.jpg" width="100px" %}}
+{{% figure src="element-14-logo.jpg" width="100px" %}}
 
 |                     |
 |---------------------|-----------------------
@@ -71,7 +71,7 @@ International online component store that stocks most electrical components. In 
 
 ### LCSC
 
-{{% img src="lcsc-logo.png" width="200px" caption="The LCSC logo." %}}
+{{% figure src="lcsc-logo.png" width="200px" caption="The LCSC logo." %}}
 
 |                     |
 |---------------------|-----------------------
@@ -89,7 +89,7 @@ LCSC supports a single sign-on/account across JLC PCB, EasyEDA and LCSC.
 
 ### Mouser
 
-{{% img src="mouser-logo.jpg" width="100" caption="The Mouser logo." %}}
+{{% figure src="mouser-logo.jpg" width="100" caption="The Mouser logo." %}}
 
 |                     |
 |---------------------|-----------------------
@@ -107,7 +107,7 @@ Mouser supports reeling small component order quantities that are under the amou
 
 ### RS Components
 
-{{% img src="rs-components-logo.jpg" width="100" caption="The RS Components logo." %}}
+{{% figure src="rs-components-logo.jpg" width="100" caption="The RS Components logo." %}}
 
 |                     |
 |---------------------|-----------------------
@@ -123,7 +123,7 @@ International online component store that stocks most electrical components. As 
 
 ### Alibaba
 
-{{% img src="alibaba-logo.jpg" width="100px" caption="The Alibaba logo." %}}
+{{% figure src="alibaba-logo.jpg" width="100px" caption="The Alibaba logo." %}}
 
 |                     |
 |---------------------|-----------------------
@@ -139,7 +139,7 @@ Alibaba is a huge international trading site that offers goods a whole sale pric
 
 ### AliExpress
 
-{{% img src="aliexpress-logo.jpg" width="100px" caption="The AliExpress logo." %}}
+{{% figure src="aliexpress-logo.jpg" width="100px" caption="The AliExpress logo." %}}
 
 |                     |
 |---------------------|-----------------------
@@ -162,14 +162,14 @@ This section has info on IC manufacturers self-owned supplier stores.
 * Website: https://estore.st.com/
 * Free samples: Yes
 
-{{% img src="st-estore-free-samples.png" width="500" caption="The ST eStore provides free samples for some of their parts, for example, the A6986ITR isolated buck converter[^bib-st-estore-free-samples]." %}}
+{{% figure src="st-estore-free-samples.png" width="500" caption="The ST eStore provides free samples for some of their parts, for example, the A6986ITR isolated buck converter[^bib-st-estore-free-samples]." %}}
 
 ### Microchip Direct
 
 * Website: https://www.microchipdirect.com
 * Free samples: n/a
 
-{{% img src="microchip-direct-logo.png" width="300px" caption="Microchip Direct's logo.[^bib-microchip-direct-home-page]" %}}
+{{% figure src="microchip-direct-logo.png" width="300px" caption="Microchip Direct's logo.[^bib-microchip-direct-home-page]" %}}
 
 If your favourite Microchip part is not available via common suppliers, you might still be able to find it on Microchip Direct. Also known as _Microchip Purchasing & Client Services_.
 
@@ -310,7 +310,7 @@ The one benefit of Jaycar is that they have physical stores in many cities, mean
 
 ### PCB Cart
 
-{{% img src="pcb-cart-logo.jpg" width="100" caption="The PCB Cart logo." %}}
+{{% figure src="pcb-cart-logo.jpg" width="100" caption="The PCB Cart logo." %}}
 
 * Website: wwww.pcbcart.com
 * Number Of Layers: 4
@@ -334,7 +334,7 @@ image::pcb-cart-4-layer-1-core-1-6mm-layer-stackup.jpg[width=400px]
 
 ### JLC PCB
 
-{{% img src="jlc-pcb-logo.png" width="400" caption="The logo for JLC PCB. Image from https://www.crunchbase.com/organization/jlcpcb, retrieved 2021-03-03." %}}
+{{% figure src="jlc-pcb-logo.png" width="400" caption="The logo for JLC PCB. Image from https://www.crunchbase.com/organization/jlcpcb, retrieved 2021-03-03." %}}
 
 * Website: <https://jlcpcb.com/>
 * Instant Quote: Yes
@@ -355,7 +355,7 @@ JLC PCB supports a single sign-on/account across JLC PCB, EasyEDA and LCSC.
 
 ### PCB Zone
 
-{{% img src="pcb-zone-logo.jpg" width="100" caption="The PCB Zone logo." %}}
+{{% figure src="pcb-zone-logo.jpg" width="100" caption="The PCB Zone logo." %}}
 
 * Website: http://www.pcbzone.net/
 * Number Of Layers: 2
@@ -369,7 +369,7 @@ Manufacturer of PCB boards that is semi-tailored to hobbyist/DIY productions, of
 
 ### IMP
 
-{{% img src="imp-logo.gif" width="100" caption="The IMP logo." %}}
+{{% figure src="imp-logo.gif" width="100" caption="The IMP logo." %}}
 
 * Website: http://www.imppc.com.au/
 * Number Of Layers: 2-8+

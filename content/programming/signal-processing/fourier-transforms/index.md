@@ -17,7 +17,7 @@ The Fourier transform is an operation which can transform a signal that is descr
 
 > Fourier theorem states that a periodic function f(x) which is reasonably continuous may be expressed as the sum of a series of sine or cosine terms (called the Fourier series), each of which has specific amplitude and phase coefficients known as Fourier coefficients.[^fourier-theorem]
 
-{{% img src="1d-fourier-transform.png" width="700px" caption="The 1D FFT of a waveform made from two sinusoids." %}}
+{{% figure src="1d-fourier-transform.png" width="700px" caption="The 1D FFT of a waveform made from two sinusoids." %}}
 
 The finite signal in time has a continuous signal in frequency, and vice versa, a continuous signal in time has a finite signal in frequency.
 
@@ -139,9 +139,9 @@ The Fourier Transform of a real-numbered spatial image (i.e. a typical photo) pr
 
  Often in image processing, we use the magnitude/phase representation, and are mostly interested in the magnitude image. The magnitude can be written as `\(|F(u,v)|\)`, the phase as `\(\phi F(u,v) \)`
 
- {{% img src="sinusoidal.gif" width="850px" caption="A sinusoidal image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px." %}}
+ {{% figure src="sinusoidal.gif" width="850px" caption="A sinusoidal image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px." %}}
 
- {{% img src="square_wave.gif" width="850px" caption="A square-waved (striped) image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px." %}}
+ {{% figure src="square_wave.gif" width="850px" caption="A square-waved (striped) image in the spatial domain and it's corresponding Fourier magnitude and phase images. The wavelength is varied from 2 to 64px." %}}
 
 ## Code Libraries
 

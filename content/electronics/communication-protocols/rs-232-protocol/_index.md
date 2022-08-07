@@ -25,7 +25,7 @@ RS-232 is commonly used today for a variety of different purposes in embedded sy
 
 ## Pinout
 
-{{% img src="rs232-comm-protocol-male-connector-large-pinout.png" width="350" caption="The pinout of a male RS-232 DE-9 connector. Image from http://www.ethernut.de/." %}}
+{{% figure src="rs232-comm-protocol-male-connector-large-pinout.png" width="350" caption="The pinout of a male RS-232 DE-9 connector. Image from http://www.ethernut.de/." %}}
 
 ## Revisions
 
@@ -80,7 +80,7 @@ Do you need a higher-level communication protocol that works over a UART connect
 
 The pinout of a typical Analog Devices RS-232 to UART transceiver is shown below.
 
-{{% img src="analog-devices-rs-232-transceiver-pin-layout.png" width="242" caption="Pinout of a RS-232 transceiver by Analog Devices." %}}
+{{% figure src="analog-devices-rs-232-transceiver-pin-layout.png" width="242" caption="Pinout of a RS-232 transceiver by Analog Devices." %}}
 
 Another example of a RS-232 to CMOS UART converter is the MAX3221IDBE4. It supports an auto-shutdown feature based on the voltage-level of the receiving RS-232 line.
 
@@ -94,13 +94,13 @@ The Maxim MAX3227 is a popular RS-232 line transceiver. It contains 1 driver and
 
 A RS-232 to TTL logic-level converter can be made out of a few discrete components. The schematic shown below uses some clever circuitry, including a charge-pump like circuit, to generate the negative voltage required for RS-232 transmission back to the computer.
 
-{{% img src="low-cost-discrete-part-rs-232-to-ttl-converter-schematic-atmel-avr910.png" width="600" caption="The schematic of a cheap, discrete-part RS-232 to TTL logic-level converter. Image from Atmel AVR910 (http://www.atmel.com/)." %}}
+{{% figure src="low-cost-discrete-part-rs-232-to-ttl-converter-schematic-atmel-avr910.png" width="600" caption="The schematic of a cheap, discrete-part RS-232 to TTL logic-level converter. Image from Atmel AVR910 (http://www.atmel.com/)." %}}
 
 ## RS-232 DE-9 To RJ-45 Cables
 
 Many routers contain a RJ-45 socket that carry a RS-232 bus. They are designed so you can plug in a DE-9 to RJ-45 cable and connect the router to a PC for configuration. One example of a cable is the [Tripp Lite RJ45 to DB9F Cisco Serial Console Port Rollover Cable](https://assets.tripplite.com/product-pdfs/en/p430006.pdf), as shown in the below image:
 
-{{% img src="tripplite-rj45-to-db9f-cisco-serial-console-port-rollover-cable-photo.png" width="300px" caption="Photo of the TrippLite RJ45 to DB9F Cisco Serial Console Port Rollover Cable, 6 ft. (1.83 m)[^bib-tripp-lite-rj45-to-db9f-cable-ds]." %}}
+{{% figure src="tripplite-rj45-to-db9f-cisco-serial-console-port-rollover-cable-photo.png" width="300px" caption="Photo of the TrippLite RJ45 to DB9F Cisco Serial Console Port Rollover Cable, 6 ft. (1.83 m)[^bib-tripp-lite-rj45-to-db9f-cable-ds]." %}}
 
 The common pinout for this cable is shown in the table below[^bib-juniper-rj45-to-db9-adapter] [^bib-us-converters-making-db-to-rj45-adapter]:
 

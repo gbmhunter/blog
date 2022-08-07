@@ -23,8 +23,8 @@ import pcbnew
 board = pcbnew.GetBoard()
 ```
 
-{{% img src="kicad-pcbnew-python-shell-pyalamode.png" width="700px" caption="A screenshot of the Python shell in pcbnew (the KiCAD PCB editor)." %}}
+{{% figure src="kicad-pcbnew-python-shell-pyalamode.png" width="700px" caption="A screenshot of the Python shell in pcbnew (the KiCAD PCB editor)." %}}
 
 Scripts are placed in `<kicad installation dir>/scripting/plugins/`. They then show up in `pcbnew` under _Tools > External Plugins_.
 
-{{% img src="kicad-default-provided-python-plugins.png" width="600px" caption="A directory listing showing all the python plugins that are provided by default with an installation of KiCAD v5.1.6." %}}
+{{% figure src="kicad-default-provided-python-plugins.png" width="600px" caption="A directory listing showing all the python plugins that are provided by default with an installation of KiCAD v5.1.6." %}}

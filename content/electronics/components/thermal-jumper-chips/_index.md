@@ -16,11 +16,11 @@ type: page
 
 _Thermal jumper chips_ (TJCs) are surface mount (SMD) chip-sized components which have two pads (e.g. just like 0603 resistors). They are designed to provide good thermal conductivity between the two pads but the pads are electrically isolated from one another. They are typically made from aluminium nitride (AIN), which has a thermal conductivity of around `\(170W/mK\)`[^bib-tt-elec-tjc-series-ds] [^bib-vishay-thermawick-series-ds].
 
-{{% img src="vishay-thermawick-construction-thjp.png" width="400px" caption="Basic construction of a thermal jumper chip from the Vishay ThermaWick family[^bib-vishay-thermawick-series-ds]." %}}
+{{% figure src="vishay-thermawick-construction-thjp.png" width="400px" caption="Basic construction of a thermal jumper chip from the Vishay ThermaWick family[^bib-vishay-thermawick-series-ds]." %}}
 
 They are used to reduce the temperature of components and high-heat areas on a PCB, and can thermally connect "live copper pours" to better heat-sinked parts of the PCB such as the ground plane. 
 
-{{% img src="tjc-application-example-tt-electronics.png" width="300px" caption="Typical application example for a thermal jumper chip.[^bib-tt-elec-tjc-series-ds]" %}}
+{{% figure src="tjc-application-example-tt-electronics.png" width="300px" caption="Typical application example for a thermal jumper chip.[^bib-tt-elec-tjc-series-ds]" %}}
 
 ## Manufacturers
 

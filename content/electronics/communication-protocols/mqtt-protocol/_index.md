@@ -16,7 +16,7 @@ type: page
 
 MQTT is a **lightweight publish/subscribe communications protocol** that uses TCP/IP (and other secondary transport mechanisms). It is designed for remote sensors to communicate with controlling devices. The specification is under a royalty-free licence. Interesting features of the protocol include the one-to-many messaging service (publish/subscribe), the Last Will/Testament feature, and the three qualities of service. You can read more about it [here](http://www.ibm.com/developerworks/webservices/library/ws-mqtt/index.html).
 
-{{% img src="mqtt-logo.png" width="500" caption="The MQTT logo. Image from https://www.eclipse.org/paho/, acquired 2021-03-30." %}}
+{{% figure src="mqtt-logo.png" width="500" caption="The MQTT logo. Image from https://www.eclipse.org/paho/, acquired 2021-03-30." %}}
 
 [MQTT-SN (MQTT for Sensor Networks)](#mqtt-sn) is an optimized version of the MQTT protocol designed to be used over non-TCP/IP connections.
 
@@ -117,7 +117,7 @@ MQTT-SN (MQTT for Sensor Networks, previously known as just MQTT-S[^bib-mqtt-mqt
 
 The following image shows the high-level MQTT-SN architecture, and how MQTT-SN clients talk to a standard MQTT broker.
 
-{{% img src="mqtt-sn-architecture.png" width="600px" caption="High-level diagram of the MQTT-SN architecture[^bib-oasis-open-mqtt-protocol-spec-v1.2]." %}}
+{{% figure src="mqtt-sn-architecture.png" width="600px" caption="High-level diagram of the MQTT-SN architecture[^bib-oasis-open-mqtt-protocol-spec-v1.2]." %}}
 
 Some of the changes in MQTT-SN include (compared to standard MQTT):
 

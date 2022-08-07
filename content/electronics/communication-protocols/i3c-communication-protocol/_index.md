@@ -15,7 +15,7 @@ type: "page"
 
 The _I3C communication protocol_ (pronounced eye-three-see) is a standard by the Sensor Working Group at the MIPI Alliance. The name is intended to indicate it's similarity to {{% link text="I2C" src="i2c-communication-protocol" %}}, with the bus having the same two-wire _SCL_ and _SDA_ wires and being **backwards compatible with I2C** (with some caveats).
 
-{{% img src="mipi-alliance-logo.jpg" width="700px" caption="The MIPI Alliance logo. I couldn't find a logo specifically for the I3C protocol so this is the best substitute. Image from https://www.fierceelectronics.com/components/mipi-alliance-releases-mipi-i3c-sensor-interface-specification." %}}
+{{% figure src="mipi-alliance-logo.jpg" width="700px" caption="The MIPI Alliance logo. I couldn't find a logo specifically for the I3C protocol so this is the best substitute. Image from https://www.fierceelectronics.com/components/mipi-alliance-releases-mipi-i3c-sensor-interface-specification." %}}
 
 MIPI membership (and $$$) is required to get the full I3C specification. However, there is a publicly available subset of the full specification called MIPI I3C Basic, which can be downloaded for free from the [MIPI Alliance website](https://resources.mipi.org/mipi-i3c-basic-v1-download).
 
@@ -27,7 +27,7 @@ The I3C standard was first released publicly by the MIPI Alliance in late 2017[^
 
 The MIPI I3C Basic specification states that I3C has significant energy consumption and bus speed improvements over I2C:
 
-{{% img src="i3c-vs-i2c-energy-consumption-and-raw-data-rate.png" width="800px" caption="Energy consumption and data rate comparisons between I3C and I2C. Image from the publicly available MIPI I3C Basic specification." %}}
+{{% figure src="i3c-vs-i2c-energy-consumption-and-raw-data-rate.png" width="800px" caption="Energy consumption and data rate comparisons between I3C and I2C. Image from the publicly available MIPI I3C Basic specification." %}}
 
 The speed improvement over I2C is enabled mostly by the ability for I3C to **switch from open-drain to push-pull drive** in certain modes. I2C uses open-drain drive at all times, which limits the rise-time of the signal (the signal is pulled high by a "slow" resistor). I3C can switch from open-drain to push-pull once the initial bus arbitration has taken place, allowing much faster communication (up to rates comparable with SPI).
 

@@ -19,7 +19,7 @@ type: "page"
     </tr>
     <tr>
       <td>Image</td>
-      <td>{{% img src="sod-128-component-package-3d-render.jpg" width="150px" %}}</td>
+      <td>{{% figure src="sod-128-component-package-3d-render.jpg" width="150px" %}}</td>
     </tr>
     <tr>
       <td>Synonyms</td>
@@ -89,15 +89,15 @@ type: "page"
 
 ## 3D Render
 
-{{% img src="sod-128-component-package-3d-render.jpg" width="300" caption="A 3D render of the SOD-128 component package." %}}
+{{% figure src="sod-128-component-package-3d-render.jpg" width="300" caption="A 3D render of the SOD-128 component package." %}}
 
 ## Dimensions
 
-{{% img src="sod128-package-outline.jpg" width="500" caption="The package outline for the SOD-128 component package." %}}
+{{% figure src="sod128-package-outline.jpg" width="500" caption="The package outline for the SOD-128 component package." %}}
 
 ## Recommended Land Pattern
 
-{{% img src="sod128-recommended-land-pattern.jpg" width="500" caption="The recommended land pattern for the SOD-128 component package." %}}
+{{% figure src="sod128-recommended-land-pattern.jpg" width="500" caption="The recommended land pattern for the SOD-128 component package." %}}
 
 ## References
 

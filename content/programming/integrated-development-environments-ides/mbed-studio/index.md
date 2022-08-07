@@ -16,11 +16,11 @@ type: "page"
 
 Mbed Studio is an IDE for embedded devices. It directly ties in with the firmware framework `mbed-os` which provides a HAL and RTOS for ARM Cortex microcontrollers. Mbed Studio is based of the [Eclipse Theia IDE](https://theia-ide.org/), which is itself based of Visual Studio Code.
 
-{{% img src="arm-mbed-studio-getting-started.png" width="600px" caption="A screenshot of the 'Getting Started' welcome screen in Mbed Studio." %}}
+{{% figure src="arm-mbed-studio-getting-started.png" width="600px" caption="A screenshot of the 'Getting Started' welcome screen in Mbed Studio." %}}
 
 Mbed Studio uses ARM Compiler 6 (as of June 2020).
 
-{{% img src="mbed-studio-os-blinky-example.png" width="600px" caption="A screenshot of the 'OS blinky' example project in Mbed Studio." %}}
+{{% figure src="mbed-studio-os-blinky-example.png" width="600px" caption="A screenshot of the 'OS blinky' example project in Mbed Studio." %}}
 
 ## Installation
 

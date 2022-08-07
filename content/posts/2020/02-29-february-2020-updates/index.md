@@ -20,7 +20,7 @@ type: "post"
 
 * Added a new tutorial on {{% link text="The Sigmoid Function" src="/programming/artificial-intelligence/the-sigmoid-function" %}}, including the logistic function.
 
-    {{% img src="graph-logistic-function.png" width="300px" %}}
+    {{% figure src="graph-logistic-function.png" width="300px" %}}
 
 * Added a new tutorial on logistic regression (the logistic function being one type of Sigmoid function), called {{% link text="Understanding Logistic Regression" src="/programming/artificial-intelligence/understanding-logistic-regression" %}}
 

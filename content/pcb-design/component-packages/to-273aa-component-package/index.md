@@ -85,11 +85,11 @@ The TO-273AA (also known as the Super-220) can be considered a variant of the TO
 
 ## 3D Render
 
-{{% img src="to-273aa-super-to-220-component-package-3d-render.png" width="200px" caption="A 3D render of the TO-273AA (Super TO-220) component package. Image from http://www.irf.com/part/INTELLIGENT-POWER-SWITCH-1-CHANNEL-LOW-SIDE-DRIVER-IN-A-SUPER-220-TO-273AA-PACKAGE/_/A~IPS0551T." %}}
+{{% figure src="to-273aa-super-to-220-component-package-3d-render.png" width="200px" caption="A 3D render of the TO-273AA (Super TO-220) component package. Image from http://www.irf.com/part/INTELLIGENT-POWER-SWITCH-1-CHANNEL-LOW-SIDE-DRIVER-IN-A-SUPER-220-TO-273AA-PACKAGE/_/A~IPS0551T." %}}
 
 ## Dimensions
 
-{{% img src="component-package-to-273aa-super-to-220-case-outline-dimensions.png" width="700px" caption="The case outline and dimensions of the TO-273AA component package (Super TO-220). Image from http://www.irf.com/product-info/datasheets/data/ips0551t.pdf." %}}
+{{% figure src="component-package-to-273aa-super-to-220-case-outline-dimensions.png" width="700px" caption="The case outline and dimensions of the TO-273AA component package (Super TO-220). Image from http://www.irf.com/product-info/datasheets/data/ips0551t.pdf." %}}
 
 ## References
 

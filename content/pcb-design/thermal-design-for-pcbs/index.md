@@ -170,7 +170,7 @@ Thermal interface materials (TIMs) are thin layers of compressible ("compliant")
 
 Phase-change TIMs are a flexible solid sheet at room temperature, but quickly soften at higher temperatures (e.g. 50°C and above) to fill in microscopic irregularities between the two surfaces and decrease thermal resistance. The thickness of phase-change TIMs is usually between 0.1 and 0.5mm. [Boron nitride](https://en.wikipedia.org/wiki/Boron_nitride) is an example of a compound which has phase-change abilities.
 
-{{% img src="thermal-resistance-vs-pressure-tim-t-global-tg-a1250.png" width="600px" caption="The relationship between pressure and thermal resistance for a silicon TIM from T-Global Technology (TG-A1250). Image acquired 2020-08-14 from http://www.tglobaltechnology.com/uploads/files/tds/TG-A1250.pdf." %}}
+{{% figure src="thermal-resistance-vs-pressure-tim-t-global-tg-a1250.png" width="600px" caption="The relationship between pressure and thermal resistance for a silicon TIM from T-Global Technology (TG-A1250). Image acquired 2020-08-14 from http://www.tglobaltechnology.com/uploads/files/tds/TG-A1250.pdf." %}}
 
 ## References
 

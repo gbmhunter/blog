@@ -59,7 +59,7 @@ In 1975 IEEE standardized the GPIB as _Standard Digital Interface For Programmab
 
 Although initially designed for connecting instrumentation to computers, in 1977 HP also used the GPIB bus inside it's Commodore PET range of personal computers to connect peripherals[^wikipedia-ieee-488]. However this was quickly replaced with faster buses such as SCSI.
 
-{{% img src="gpib-ieee-488-keithley-daq.jpg" width="400px" caption="Photo of the Keithley DAQ6510 Data Acquisition And Logging module which uses the IEEE-488 (GPIB) bus." %}}
+{{% figure src="gpib-ieee-488-keithley-daq.jpg" width="400px" caption="Photo of the Keithley DAQ6510 Data Acquisition And Logging module which uses the IEEE-488 (GPIB) bus." %}}
 
 In instrumentation, GLIB has generally been replaced with more recent communication protocols such as USB and Ethernet for new instrumentation.
 

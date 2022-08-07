@@ -14,7 +14,7 @@ type: page
 
 _Elastomeric connectors_ (a.k.a. ZEBRA connectors, the popular trademarked name by Fujipoly[^bib-fujipoly-design-guidelines]) are electrical connectors made from **alternating regions of conductive and insulating rubber or elastomer**[^bib-wikipedia-elastomer-conn] (e.g. carbon-filled and normal silicone rubber[^bib-fujipoly-zebra-conn]).
 
-{{% img src="zebra-connector-photo.png" width="400px" caption="Photo of the ZEBRA branded elastomeric connector from Fujipoly[^bib-fujipoly-zebra-elastomeric-conn]." %}}
+{{% figure src="zebra-connector-photo.png" width="400px" caption="Photo of the ZEBRA branded elastomeric connector from Fujipoly[^bib-fujipoly-zebra-elastomeric-conn]." %}}
 
 One popular use for these connectors was (and still is) to connect small liquid crystal displays (LCDs) to the controlling circuit board. LCDs only require small currents and thus suitable for use with elastomeric connectors. 
 
@@ -24,7 +24,7 @@ There are two common ways of using elastomeric connectors:
 
 1. **Pitch of elastomeric connector is the same** as the PCB/components, and pads on components are aligned with the connector (1 to 1).
 1. **Pitch of elastomeric connector is much smaller** (at least twice as small, but ideally even finer), and no precise alignment is required. This method relies on there being at least one conductive part of the connector touching each pad on the component. This idea is very similar to anisotropic conductive film.
-    {{% img src="zebra-connector-interface.png" width="500px" caption="Drawing from Fujipoly showing how a fine-pitch elastomeric connector can connect larger pitched components without precise alignment[^bib-fujipoly-zebra-elastomeric-conn]." %}}
+    {{% figure src="zebra-connector-interface.png" width="500px" caption="Drawing from Fujipoly showing how a fine-pitch elastomeric connector can connect larger pitched components without precise alignment[^bib-fujipoly-zebra-elastomeric-conn]." %}}
 
 ## References
 

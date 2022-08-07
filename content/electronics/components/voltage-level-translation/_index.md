@@ -38,7 +38,7 @@ The below schematic shows a simple circuit for voltage-level translation using a
 * <span class="pro">Simple circuitry.</span>
 * <span class="con">Weak pull-up for certain edges in certain directions, resulting in slow transition speeds.</span>
 
-{{% img src="schematic-of-voltage-level-translation-with-a-mosfet.png" width="600" caption="An example schematic of bi-directional voltage-level translation using a MOSFET." %}}
+{{% figure src="schematic-of-voltage-level-translation-with-a-mosfet.png" width="600" caption="An example schematic of bi-directional voltage-level translation using a MOSFET." %}}
 
 **What happens if `\(V_{low}\)` is driven?**
 
@@ -59,7 +59,7 @@ _Totem-pole_ voltage-level translators used totem-pole MOSFET receivers and driv
 * <span class="pro">Typically there are no relative restrictions on the voltage levels of side A vs. side B (i.e. there is no "low side" and no "high side", they can vary independently).</span>
 * <span class="con">Complex circuitry.</span>
 
-{{% img src="basic-use-of-74lvc1t45.png" width="500" caption="A 74LVC1T45 voltage-level translator IC being used to voltage translate a 3.3V logic-level signal to a 5.0V voltage domain." %}}
+{{% figure src="basic-use-of-74lvc1t45.png" width="500" caption="A 74LVC1T45 voltage-level translator IC being used to voltage translate a 3.3V logic-level signal to a 5.0V voltage domain." %}}
 
 ### Directionality (Unidirectional, Bidirectional, Auto-directional)
 
@@ -71,13 +71,13 @@ Auto-direction voltage-level translator ICs use a clever technique to remove the
 
 To fix the problem of these weak drives causing slow edge transitions, one shot timers monitor each side for rising or falling-edges. On a transition, the one shot timers momentarily turn on a strong drive (standard CMOS totem-pole) to create a fast transition. The timer quickly expires, turning of the strong drive and letting the weak drive take over until the next transition.
 
-{{% img src="ti-txb0104-auto-direction-sensing-architecture.png" width="400" caption="Architecture of a single cell inside the TXB0104 IC, showing how the auto-direction sensing circuitry works[^bib-ti-txb0104-ds]." %}}
+{{% figure src="ti-txb0104-auto-direction-sensing-architecture.png" width="400" caption="Architecture of a single cell inside the TXB0104 IC, showing how the auto-direction sensing circuitry works[^bib-ti-txb0104-ds]." %}}
 
 ### Powered Off Protection (IOFF)
 
 Powered off protection is activated when one or more of the power rails is at `\(0V\)`. Texas Instruments commonly uses the name `\(I_{OFF}\)` to describe this feature.
 
-{{% img src="cmos-powered-off-protection-circuit-ioff-ti.png" width="700" caption="Circuit showing how a CMOS \"totem-pole\" driver is modified to provide \"powered off protection\". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to `\(V_{CC}\)` in the case that the power rail is at `\(0V\)`[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps]." %}}
+{{% figure src="cmos-powered-off-protection-circuit-ioff-ti.png" width="700" caption="Circuit showing how a CMOS \"totem-pole\" driver is modified to provide \"powered off protection\". Addition diode added between the substrate and the source of the P-channel MOSFET as circled, which prevents current from the output flowing back to `\(V_{CC}\)` in the case that the power rail is at `\(0V\)`[^bib-ti-powered-off-protection][^bib-ti-logic-in-live-insertion-apps]." %}}
 
 ### Propagation Delay
 
@@ -98,7 +98,7 @@ _Four-port MOSFET with gate bias_ voltage-level translators (this isn't their of
 
 The `LSF` family of level translators is one such example (available from many manufacturers).
 
-{{% img src="lsf-family-level-translator-bias-circuit.png" width="500px" caption="Internal schematic for the LSF family of translators[^bib-ti-bias-circuit-lsf-family]." %}}
+{{% figure src="lsf-family-level-translator-bias-circuit.png" width="500px" caption="Internal schematic for the LSF family of translators[^bib-ti-bias-circuit-lsf-family]." %}}
 
 The voltage rail on the B-side must always be higher than the voltage rail on the A-side for this style of translator to work properly.
 
@@ -108,7 +108,7 @@ The voltage rail on the B-side must always be higher than the voltage rail on th
 
 `\(I_{OFF}\)` is activated when one or more of the power rails is at `\(0V\)`.
 
-{{% img src="74lvc1t45-diodes-inc-voltage-translator-pinout.png" width="300" caption="The pinout for the single bit Diodes Inc 74LVC1T45Z6-7 voltage translator in the SOT-563 package[^bib-diodes-inc-74lvc1t45z6-7-ds]." %}}
+{{% figure src="74lvc1t45-diodes-inc-voltage-translator-pinout.png" width="300" caption="The pinout for the single bit Diodes Inc 74LVC1T45Z6-7 voltage translator in the SOT-563 package[^bib-diodes-inc-74lvc1t45z6-7-ds]." %}}
 
 #### TXB0104
 
@@ -128,7 +128,7 @@ The Texas Instruments _TXB0104_ is a popular 4-bit, auto-directional voltage lev
 
 SparkFun makes a breakout board for this IC, the [SparkFun Voltage-Level Translator Breakout - TXB0104 (part num. BOB-11771)](https://www.sparkfun.com/products/11771).
 
-{{% img src="sparkfun-txb0104-voltage-level-translator-breakout.png" width="250" caption="The SparkFun breakout board for the TXB0104[^bib-sparkfun-txb0104-breakout]." %}}
+{{% figure src="sparkfun-txb0104-voltage-level-translator-breakout.png" width="250" caption="The SparkFun breakout board for the TXB0104[^bib-sparkfun-txb0104-breakout]." %}}
 
 ## Suppliers
 

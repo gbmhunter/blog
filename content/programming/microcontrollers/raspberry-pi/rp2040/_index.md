@@ -13,13 +13,13 @@ type: page
 
 The _RP2040_ is a 32-bit 133MHz dual-core ARM Cortex-M0+ microcontroller designed by Raspberry Pi Ltd. It was announced on Jan 21st, 2021 as is the first microcontroller designed by Raspberry Pi Ltd, with the intention of being a cheaper, real-time, hardware orientated computing platform to provide alongside the more powerful RaspberryPi. One distinguishing feature of the RP2040 compared to other microcontrollers is the **unique Programmable I/O (PIO) subsystem**.
 
-{{% img src="rp2040-package-photo.png" width="400px" caption="Photo of the RP2040 IC in it's 56-pin 7x7mm QFN package[^bib-rpi-rp2040-product-page]." %}}
+{{% figure src="rp2040-package-photo.png" width="400px" caption="Photo of the RP2040 IC in it's 56-pin 7x7mm QFN package[^bib-rpi-rp2040-product-page]." %}}
 
 The datasheet for the RP2040 can be found at https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf.
 
 The RP2040 is not a family of microcontrollers (as typical with other vendors), it is a single 56pin, 7x7mm [QFN component](/pcb-design/component-packages/qfn-component-package/) with a 0.4mm pitch.
 
-{{% img src="rp2040-qfn-56-pinout.png" width="600px" caption="Pinout for the RP2040 microcontroller, which is in a QFN-56-7x7 package[^bib-rpi-rp2040-ds]." %}}
+{{% figure src="rp2040-qfn-56-pinout.png" width="600px" caption="Pinout for the RP2040 microcontroller, which is in a QFN-56-7x7 package[^bib-rpi-rp2040-ds]." %}}
 
 ## Features
 
@@ -42,7 +42,7 @@ The RP2040 contains the following[^bib-rpi-rp2040-ds]:
     * [USB 1.1 controller](/electronics/communication-protocols/usb-protocol/) and PHY, with host and device support
     * 8 PIO state machines
 
-{{% img src="rp2040-system-overview.png" width="700px" caption="A system overview (functional block diagram) of the RP2040 microcontroller[^bib-rpi-rp2040-hardware-design]." %}}
+{{% figure src="rp2040-system-overview.png" width="700px" caption="A system overview (functional block diagram) of the RP2040 microcontroller[^bib-rpi-rp2040-hardware-design]." %}}
 
 For needed peripherals that are not listed above, rather than having to bit-bang them, the 8 PIO state machines allow you to create custom hardware logic to perform these tasks.
 

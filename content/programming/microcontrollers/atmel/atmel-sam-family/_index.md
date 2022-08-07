@@ -18,4 +18,4 @@ The Atmel SAM D20 family uses the ARM Cortex-M0+ core. Peripherals include gener
 
 There are a number of different programming protocols you can use with the Atmel SAMD family. This includes the ARM SWD protocol. The pinout used by the Atmel-ICE programming is shown below:
 
-{{% img src="atmel-ice-swd-pin-mapping.png" width="600px" caption="The pin mapping for the Atmel-ICE programmer when using the SWD programming interface. Image from http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-42330-Atmel-ICE_UserGuide.pdf." %}}
+{{% figure src="atmel-ice-swd-pin-mapping.png" width="600px" caption="The pin mapping for the Atmel-ICE programmer when using the SWD programming interface. Image from http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-42330-Atmel-ICE_UserGuide.pdf." %}}

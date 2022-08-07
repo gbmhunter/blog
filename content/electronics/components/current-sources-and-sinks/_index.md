@@ -22,7 +22,7 @@ Uses of current sources:
 
 Current sources are very common in circuit design, and as such are usually drawn using schematic symbols as shown below. An independent current source is once which has a predetermined fixed set current. A _controlled_ (or _dependent_) current source is one which is determined by another measurable value in the circuit, usually a voltage (e.g. `\(I_{source} = kV_{\text{somewhere else}}\)`). You may have seen a controlled current source symbol in the small-signal model for a BJT. Many analogue IC functional diagrams will show current sources with these symbols, hiding the discrete components they are made from.
 
-{{% img src="curr-source-symbols.svg" width="400" caption="Popular schematics symbols to represent current sources." %}}
+{{% figure src="curr-source-symbols.svg" width="400" caption="Popular schematics symbols to represent current sources." %}}
 
 The _compliance_ of a current source is the voltage range that the current source can operate over and function correctly. Outside of this range, either components are damaged (maximum voltage ratings are exceeded) or the current falls out of regulation. 
 
@@ -32,7 +32,7 @@ Current sources may either provide power into a circuit (like a power supply), o
 
 Below shows one of the popular methods for constructing a current source from a [Zener diode](/electronics/components/diodes/#_zener_diodes) and [BJT](/electronics/components/transistors/bipolar-junction-transistors-bjts/).
 
-{{% img src="zener-diode-bjt-current-source-schematic.png" width="400" caption="Schematic of a Zener diode + BJT current source." %}}
+{{% figure src="zener-diode-bjt-current-source-schematic.png" width="400" caption="Schematic of a Zener diode + BJT current source." %}}
 
 ### How It Works
 
@@ -60,7 +60,7 @@ The _constant-current_ diode (a.k.a _JFET current source_, _current-limiting dio
 
 Below shows the schematic for a constant-current diode:
 
-{{% img src="constant-current-diode-schematic.png" width="350" caption="Schematic for a constant-current diode, a.k.a JFET current source. Current source is very simple, and consists of just an N-channel JFET and (optional) resistor. This two-terminal current source is not referenced to any rail and thus the load can be high-side, low-side, or anywhere in-between!" %}}
+{{% figure src="constant-current-diode-schematic.png" width="350" caption="Schematic for a constant-current diode, a.k.a JFET current source. Current source is very simple, and consists of just an N-channel JFET and (optional) resistor. This two-terminal current source is not referenced to any rail and thus the load can be high-side, low-side, or anywhere in-between!" %}}
 
 ### How It Works
 
@@ -171,7 +171,7 @@ The accuracy of the current sink primarily depends of three aspects:
 
 The gate capacitance of the MOSFET can load the op-amp output to the point that it introduces enough phase lag to cause the circuit to go unstable. Compensation circuitry can be added as shown in the below circuit to limit the phase lag and prevent the circuit from becoming unstable.
 
-{{% img src="lt1492-voltage-controlled-current-sink.png" width="500" caption="A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492[^bib-linear-lt1492-ds]." %}}
+{{% figure src="lt1492-voltage-controlled-current-sink.png" width="500" caption="A schematic showing gate capacitance compensation circuitry on a op-amp based current sink using the LT1492[^bib-linear-lt1492-ds]." %}}
 
 Read https://electronics.stackexchange.com/questions/69506/stability-problem-in-unity-gain-opamp for more information.
 

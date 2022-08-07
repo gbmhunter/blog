@@ -97,7 +97,7 @@ H(z) &= \frac{Y(z)}{X(z)} \nonumber \\
 
 This transfer function can be used to create bode plots of the magnitude and phase response of the EMA filter. The below bode plot shows the response of an EMA filter with `\(\alpha=0.25\)`. The x-axis frequency is the normalized frequency, in units `\(Hz/sample\)`, which makes the plot applicable for any sampling frequency.
 
-{{% img src="ema-bode-plot.png" width="600px" caption="Bode plot showing the magnitude and phase of an EMA filter with \\\\( \alpha=0.25 \\\\)." %}}
+{{% figure src="ema-bode-plot.png" width="600px" caption="Bode plot showing the magnitude and phase of an EMA filter with \\\\( \alpha=0.25 \\\\)." %}}
 
 The _cut-off frequency_ (-3dB point) of an EMA filter is given by[^se-dsp-ema-cutoff]:
 
@@ -137,7 +137,7 @@ y[i] &= \alpha (1-\alpha)^n \\
 
 From this, we can plot what the response will look like for impulse as the input. As you can see in the following graph, the output starts off at `\(y[0] = \alpha\)` and then decays towards 0. A larger alpha makes the initial response larger but also the decay faster.
 
-{{% img src="ema-impulse-response.png" width="600px" caption="Impulse response for an EMA filter with different \\\\(\alpha\\\\) values." %}}
+{{% figure src="ema-impulse-response.png" width="600px" caption="Impulse response for an EMA filter with different \\\\(\alpha\\\\) values." %}}
 
 ## External Resources
 

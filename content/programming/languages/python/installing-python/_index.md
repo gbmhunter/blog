@@ -36,7 +36,7 @@ Windows 10 introduced what I consider a really annoying "feature" called _App Ex
 
 You can disable App Execution Aliases for `python.exe` and `python3.exe` by searching for _Managing App Execution Aliases_ in the Windows Search. Load up the settings window and deselect all versions of `python`.
 
-{{% img src="windows-manage-app-execution-aliases-python.png" width="400px" caption="Deselect all flavours of python.exe from the App Execution Aliases settings dialogue in Windows to prevent the Windows Store from opening when you try and invoke a non-existent python.exe." %}}
+{{% figure src="windows-manage-app-execution-aliases-python.png" width="400px" caption="Deselect all flavours of python.exe from the App Execution Aliases settings dialogue in Windows to prevent the Windows Store from opening when you try and invoke a non-existent python.exe." %}}
 
 You might get an error like shown below if you try and invoke a non-existent `python.exe` when arguments are provided (Windows Store will NOT load in this case):
 

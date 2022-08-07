@@ -30,7 +30,7 @@ $ sudo apt install qt5-default
 
 You need at least the Xcode command line tools installed so that Qt Creator can find/use the C++ compiler.
 
-{{% img src="qt-creator-you-need-to-install-xcode-command-line-tools.png" width="200px" caption="The Qt installer warning you that you need Xcode and the Xcode command-line tools installed. Note that you can make do with just the command-line tools." %}}
+{{% figure src="qt-creator-you-need-to-install-xcode-command-line-tools.png" width="200px" caption="The Qt installer warning you that you need Xcode and the Xcode command-line tools installed. Note that you can make do with just the command-line tools." %}}
 
 You can download both Xcode and the Xcode command-line tools from the Apple app store.
 
@@ -66,11 +66,11 @@ It seems a little strange, that by default, Qt Creator will not allow files with
 
 1. Click _Tools_ from the top menu bar and then click on _Options_.
 
-    {{% img src="qt-creator-menu-tools-options.png" width="300px" %}}
+    {{% figure src="qt-creator-menu-tools-options.png" width="300px" %}}
 
 1. Uncheck the _Lower case file names_ checkbox.
 
-    {{% img src="qt-creator-uncheck-lower-case-filenames.png" width="700px" %}}
+    {{% figure src="qt-creator-uncheck-lower-case-filenames.png" width="700px" %}}
 
 1. Done!
 
@@ -228,7 +228,7 @@ The open-source program `linuxdeployqt` (available from [here](https://github.co
 
 The Qt installation includes an executable called `macdeployqt` (located at `<Qt install dir>/bin/`). This command-line program can be used to create a disk image (`.dmg`) file from the app bundle.
 
-{{% img src="macdeployqt-cli-screenshot.png" width="500px" caption="Screenshot of the Qt macdeployqt CLI tool." %}}
+{{% figure src="macdeployqt-cli-screenshot.png" width="500px" caption="Screenshot of the Qt macdeployqt CLI tool." %}}
 
 To create a `.dmg` file:
 

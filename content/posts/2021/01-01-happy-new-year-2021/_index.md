@@ -59,13 +59,13 @@ Again, we see the Linux-related serial port and CAN bus pages that shifted to to
 
 ### Acquisition
 
-{{% img src="acquisitions-2019-2020.png" width="800px" caption="The top channels of 2020 as a bar graph, compared with 2019. Image from Google Analytics." %}}
+{{% figure src="acquisitions-2019-2020.png" width="800px" caption="The top channels of 2020 as a bar graph, compared with 2019. Image from Google Analytics." %}}
 
-{{% img src="top-channels-2019-2020.png" width="400px" caption="The top channels of 2020 as a percentage, compared with 2019. Image from Google Analytics." %}}
+{{% figure src="top-channels-2019-2020.png" width="400px" caption="The top channels of 2020 as a percentage, compared with 2019. Image from Google Analytics." %}}
 
 ### Most Popular Referrers
 
-{{% img src="referrals-2020.png" width="800px" caption="The top referrers of 2020. Image from Google Analytics." %}}
+{{% figure src="referrals-2020.png" width="800px" caption="The top referrers of 2020. Image from Google Analytics." %}}
 
 ## Goal Completion
 

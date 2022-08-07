@@ -19,7 +19,7 @@ type: "page"
     </tr>
     <tr>
       <td>Image</td>
-      <td>{{% img src="sot-143-3d-model-digikey.png" width="150px" %}}</td>
+      <td>{{% figure src="sot-143-3d-model-digikey.png" width="150px" %}}</td>
     </tr>
     <tr>
       <td>Synonyms</td>
@@ -87,7 +87,7 @@ type: "page"
 
 The `SOT-143` is a smallish 4-pinned SMD package which is easily distinguishable by having one wider lead compared with the other 3. 
 
-{{% img src="sot-143-3d-model-digikey.png" width="300px" caption="A 3D model of the SOT-143 component package[^bib-digikey-stm6315rbw13f]. On the upside down render, you can clearly see the 1 wider lead." %}}
+{{% figure src="sot-143-3d-model-digikey.png" width="300px" caption="A 3D model of the SOT-143 component package[^bib-digikey-stm6315rbw13f]. On the upside down render, you can clearly see the 1 wider lead." %}}
 
 ## References
 

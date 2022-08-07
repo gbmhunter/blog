@@ -17,7 +17,7 @@ Microcontrollers use the open-source RISC-V instruction set.
 
 The _HiFive1 Rev B_ is SiFive's second revision of their first development kit. It carries a FE310-G002 _Freedom Everywhere_ SoC (System on Chip).
 
-{{% img src="sifive-hifive-rev-b-dev-kit-stock-photo.png" width="500px" caption="Photo of the HiFive Rev B development kit. Image from https://www.crowdsupply.com/sifive/hifive1-rev-b, retrieved 2020-12-02." %}}
+{{% figure src="sifive-hifive-rev-b-dev-kit-stock-photo.png" width="500px" caption="Photo of the HiFive Rev B development kit. Image from https://www.crowdsupply.com/sifive/hifive1-rev-b, retrieved 2020-12-02." %}}
 
 ### Specifications
 

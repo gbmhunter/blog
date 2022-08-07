@@ -11,7 +11,7 @@ type: "page"
 
 ## Overview
 
-{{% img src="aws-sam-squirrel-logo.jpg" width="200px" caption="The logo for AWS SAM." %}}
+{{% figure src="aws-sam-squirrel-logo.jpg" width="200px" caption="The logo for AWS SAM." %}}
 
 ## Installation
 

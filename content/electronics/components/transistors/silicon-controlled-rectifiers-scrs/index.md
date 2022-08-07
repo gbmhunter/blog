@@ -23,7 +23,7 @@ It is argued whether an SCR and thyristor are identical or represent two differe
 
 An SCR can be turned on electrically via the _gate_, just like a normal transistor, **but cannot be turned off as easily**. Once turned on, the SCR _latches_ on, even if the gate voltage is removed. It only turns off when the current through the SCR drops below the _holding current_, **and** then a sufficient reverse voltage is applied to a fixed length of time[^electronics-hub-scr-turn-off-methods]. The process of turning a SCR off is called _commutation_.
 
-{{% img src="two-scrs-on-heatsinks.jpg" width="600px" caption="Two high-power SCRs in TO-93 packages that are mounted to heatsinks (the International Rectifier 151RB60 and an unknown SCR)." %}}
+{{% figure src="two-scrs-on-heatsinks.jpg" width="600px" caption="Two high-power SCRs in TO-93 packages that are mounted to heatsinks (the International Rectifier 151RB60 and an unknown SCR)." %}}
 
 ## Schematic Symbol
 
@@ -70,7 +70,7 @@ Parasitic SCRs are formed during the manufacturing of CMOS logic devices (e.g. a
 
 SCRs are typically used in applications that require the switching of high voltages and/or currents.
 
-{{% img src="m54123l-circuit-breaker-typical-application-with-scr.png" width="600px" caption="Typical application diagram for the M54123L circuit breaker IC, showing the use of an external SCR." %}}
+{{% figure src="m54123l-circuit-breaker-typical-application-with-scr.png" width="600px" caption="Typical application diagram for the M54123L circuit breaker IC, showing the use of an external SCR." %}}
 
 They are used in coil-gun/rail-gun designs to connect the charged capacitor bank into the coil or rail, dumping the energy into the gun and firing the device. The typical high voltage and pulse current ratings of SCRs makes them a good choice for this. The main disadvantage of using an SCR over an IGBT for this purpose is that you cannot turn them off. This is not so important in a rail-gun, but in a coil-gun design you may want to disconnect the capacitor bank once the projectile reaches the center of the coil, to prevent pull-back.
 

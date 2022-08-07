@@ -117,13 +117,13 @@ where:<br/>
 
 What happens as we change `\(\beta_1\)`?
 
-{{% img src="logistic-function-changing-b1.gif" width="800px" %}}
+{{% figure src="logistic-function-changing-b1.gif" width="800px" %}}
 
 It changes the shape of the curve, starting-off looking like a linear line, and progressively getting closer to looking like a step function. This `\(\beta_1\)` term is analogous to the slope `\(m\)` in linear regression.
 
 What happens as we change `\(\beta_0\)`?
 
-{{% img src="logistic-function-changing-b0.gif" width="800px" %}}
+{{% figure src="logistic-function-changing-b0.gif" width="800px" %}}
 
 This is analogous to the y-intercept `\(c\)` in linear regression, except that `\(\beta_0\)` shifts the curve along the x-axis.
 
@@ -145,7 +145,7 @@ print(data.shape[0])
 data.head())
 ```
 
-{{% img src="data-head-iris.png" width="500px" caption="The first 5 rows of the Iris dataset." %}}
+{{% figure src="data-head-iris.png" width="500px" caption="The first 5 rows of the Iris dataset." %}}
 
 Split the data into the features `x` and the target `y`:
 
@@ -174,7 +174,7 @@ predictions = model.predict(x_test)
 print(predictions)
 ```
 
-{{% img src="logistic-regression-iris-predictions.png" width="600px" caption="The predictions of the type of Iris for the test data." %}}
+{{% figure src="logistic-regression-iris-predictions.png" width="600px" caption="The predictions of the type of Iris for the test data." %}}
 
 Print a "classification report":
 
@@ -182,7 +182,7 @@ Print a "classification report":
 print(classification_report(y_test, predictions))
 ```
 
-{{% img src="logistic-regression-iris-classification-report.png" width="500px" caption="The classification report for our logistic regression model." %}}
+{{% figure src="logistic-regression-iris-classification-report.png" width="500px" caption="The classification report for our logistic regression model." %}}
 
 For someone new to categorization, these terms in the classification report can be confusing. This is what they mean[^scikit-classification-report]:
 

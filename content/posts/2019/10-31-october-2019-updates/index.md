@@ -25,4 +25,4 @@ type: "post"
 
 * Added an interactive 3D rotation visualizer to the {{% link text="Quaternion page" src="/mathematics/geometry/quaternions#3d-rotation" %}}, which shows you how a right-hand coordinate system XYZ is rotated in 3D space by either a rotation matrix, quaternion, or angle-axis rotation. This tool is also very useful to convert between the three ways of describing a rotation (when you enter a rotation in one notation, the other two get updated automatically).
 
-    {{% img src="3d-rotation-visualizer-screenshot.png" width="500px" caption="A screenshot of the 3D rotation visualizer and converter." %}}
+    {{% figure src="3d-rotation-visualizer-screenshot.png" width="500px" caption="A screenshot of the 3D rotation visualizer and converter." %}}

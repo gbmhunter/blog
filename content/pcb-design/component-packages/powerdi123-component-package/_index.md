@@ -91,11 +91,11 @@ PowerDI123 is a proprietary package by Diodes Incorporated.
 
 ## Dimensions
 
-{{% img src="powerdi123-component-package-dimensions.png" width="800px" caption="The dimensions for the PowerDI123 component package. Image from https://www.diodes.com/assets/Package-Files/PowerDI123-Type-B.pdf." %}}
+{{% figure src="powerdi123-component-package-dimensions.png" width="800px" caption="The dimensions for the PowerDI123 component package. Image from https://www.diodes.com/assets/Package-Files/PowerDI123-Type-B.pdf." %}}
 
 ## Recommended Footprint
 
-{{% img src="powerdi123-component-package-recommended-footprint.png" width="800px" caption="The recommended footprint for the PowerDI123 component package. Image from https://www.diodes.com/assets/Package-Files/PowerDI123-Type-B.pdf." %}}
+{{% figure src="powerdi123-component-package-recommended-footprint.png" width="800px" caption="The recommended footprint for the PowerDI123 component package. Image from https://www.diodes.com/assets/Package-Files/PowerDI123-Type-B.pdf." %}}
 
 ## References
 

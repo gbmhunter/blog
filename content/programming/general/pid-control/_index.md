@@ -24,7 +24,7 @@ A PID controller compares a set-point (`SP`) (decided on by the user, e.g. this 
 
 This error is fed into the `P` (proportional), `I` (integral) and `D` (derivative) blocks of the PID controller. These blocks act on the error in different ways, and their output is summed together to generate the `CV`. The way these P, I and D blocks work is explained below.
 
-{{% img src="pid-controller-diagram-process-error-setpoint-measured-value.png" width="700px" caption="A block diagram of a PID controller." %}}
+{{% figure src="pid-controller-diagram-process-error-setpoint-measured-value.png" width="700px" caption="A block diagram of a PID controller." %}}
 
 ## The Maths
 
@@ -140,7 +140,7 @@ This gets rid of derivative kick in the PID controller when the set point change
 
 Lets assume a mass/spring/damper process (aka plant or system) which consists of a mass attached to a fixed wall by spring and damper. We want to control the position of the mass, relative to it's resting point (which will be when the spring exerts no force).
 
-{{% img src="mass-spring-damper-system-diagram-pid.png" width="600px" caption="A mass-spring-damper system, which is commonly used to demonstrate PID control and appropriate tuning." %}}
+{{% figure src="mass-spring-damper-system-diagram-pid.png" width="600px" caption="A mass-spring-damper system, which is commonly used to demonstrate PID control and appropriate tuning." %}}
 
 The mass `\(m\)` is `\(2kg\)`. The spring has a spring constant, `\(k\)`, which is `\(5Nm^{-1}\)`. The damping coefficient `\(c\)` is `\(3 Nsm^{-1}\)`.
 
@@ -193,7 +193,7 @@ We can simulate this system in code by discretizing the system into small time s
 
 ### Response Plots
 
-{{% img src="msd-response-plots.png" width="500px" %}}
+{{% figure src="msd-response-plots.png" width="500px" %}}
 
 ## Firmware Modules
 

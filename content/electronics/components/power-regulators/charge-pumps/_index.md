@@ -29,7 +29,7 @@ _Marx generators_ are similar to charge pumps except they use spark gaps instead
 
 In charge pump designs in which both legs of the capacitor are switched to different parts of the circuit at the same time, the capacitors are called _flying capacitors_, named because both their leads are for a brief moment in time disconnected from the circuit. The capacitor connected across the output load is called the _reservoir capacitor_, _storage capacitor_ or _load capacitor_[^sipex-charge-pump-caps-for-rs-232].
 
-{{% img src="charge-pump-voltage-doubler-schematic.png" width="700px" caption="The basic schematic for a voltage doubling charge pump circuit." %}}
+{{% figure src="charge-pump-voltage-doubler-schematic.png" width="700px" caption="The basic schematic for a voltage doubling charge pump circuit." %}}
 
 Schottky diodes are preferred because of their low forward voltage drop and higher switching speeds.
 
@@ -50,7 +50,7 @@ This is the most basic type of charge pump. We'll go through each step of the pr
 1. The pulse then transitions back to 0V, and the cycle begins again with C1 charing back up to 5V (remember that it would of dropped to somewhere between 0-5V when transferring charge to C2 in the previous step).
 1. After enough cycles, the output voltage an C2 stabilizes to `\(2*V_{in} - 2V_f\)`.
 
-{{% img src="charge-pump-voltage-doubler-schematic.png" width="700px" caption="The basic schematic for a voltage doubling charge pump circuit." %}}
+{{% figure src="charge-pump-voltage-doubler-schematic.png" width="700px" caption="The basic schematic for a voltage doubling charge pump circuit." %}}
 
 To demonstrate the behaviour of this circuit, I simulated it using KiCad and ngspice. The simulation files can be downloaded below:
 
@@ -82,7 +82,7 @@ The _Greinacher voltage multiplier_ (a.k.a. _half-wave doubler_) was invented by
 
 John F. Dickson patented what is known as the "Dickson charge pump" in the late 1970's (filed in 1978, patent dated July 22, 1980)[^justia-patents-john-f-dickson]. It is very similar to the Greinacher doubler except it runs of an DC input. It was primarily used to generate programming/rewrite voltages in EEPROM/flash memory ICs.
 
-{{% img src="john-f-dickson-patent-charge-pump-schematic.png" width="600px" caption="A schematic from John F. Dickson's 1978 charge pump patent. Image from https://patentimages.storage.googleapis.com/d5/27/b7/321211f48454c8/US4214174.pdf, retrieved 2020-12-14." %}}
+{{% figure src="john-f-dickson-patent-charge-pump-schematic.png" width="600px" caption="A schematic from John F. Dickson's 1978 charge pump patent. Image from https://patentimages.storage.googleapis.com/d5/27/b7/321211f48454c8/US4214174.pdf, retrieved 2020-12-14." %}}
 
 ## Uses
 

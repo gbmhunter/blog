@@ -14,7 +14,7 @@ type: "page"
 
 S3 is a popular key-value storage service provided by Amazon Web Services (AWS). It offers cheap and moderately fast (not as fast as a hard-drive, but faster than deep archive systems) mechanism for the storage and retrieval of arbitrary files.
 
-{{% img src="aws-s3-logo.png" width="300px" caption="The AWS S3 logo." %}}
+{{% figure src="aws-s3-logo.png" width="300px" caption="The AWS S3 logo." %}}
 
 ## S3 Doesn't Have Directories, But It Does?
 

@@ -29,13 +29,13 @@ A SISO shift register can be used as a simple digital delay circuit. A 4-bit SIS
 
 Data is shifted in serially on a single wire, but all the data is read out in parallel on multiple output wire.
 
-{{% img src="sn74hc595-functional-block-diagram-texas-instruments.png" width="500px" caption="The functional block diagram for the Texas Instruments SN74HC595 shift register. Image from http://www.ti.com/lit/ds/symlink/sn74hc595.pdf." %}}
+{{% figure src="sn74hc595-functional-block-diagram-texas-instruments.png" width="500px" caption="The functional block diagram for the Texas Instruments SN74HC595 shift register. Image from http://www.ti.com/lit/ds/symlink/sn74hc595.pdf." %}}
 
 A common use case for SIPO shift registers it to convert a serial signal into a parallel signal.
 
 SIPO shift registers are also used to drive electronics which requires a large number of connections from a microcontroller with a limited number on outputs or GPIO. The microcontroller can output the drive state for all the pins from a single serial pin, and the SIPO converts this into output of many pins. This technique only works for driving electronics which doesn't require fast update rates, as the microcontroller has to output the data serially.
 
-{{% img src="two-seven-segment-displays-driven-by-shift-registers-texas-instruments.png" width="600px" caption="Two 7-segment displays driven by Texas Instruments SN74HC595 shift registers. Image from https://www.ti.com/lit/an/sbva057/sbva057.pdf." %}}
+{{% figure src="two-seven-segment-displays-driven-by-shift-registers-texas-instruments.png" width="600px" caption="Two 7-segment displays driven by Texas Instruments SN74HC595 shift registers. Image from https://www.ti.com/lit/an/sbva057/sbva057.pdf." %}}
 
 Likely to be the most popular SIPO shift register in the 74HC595 which is commonly abbreviated to just the "595" (similar to the "555" being the most popular timer IC) [^fastled-github-page].
 

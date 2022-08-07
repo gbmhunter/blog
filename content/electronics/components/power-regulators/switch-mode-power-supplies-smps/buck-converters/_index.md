@@ -15,7 +15,7 @@ type: page
 
 Buck converters use a switching element, inductor and capacitor to convert an input voltage into a **lower** output voltage. It is a type of _switch-mode power supply_ (SMPS).
 
-{{% img src="buck-converter-basic-schematic.svg" width="600" caption="The basic schematic of a buck converter. SW1 is typically a MOSFET switched by control logic (not shown)." %}}
+{{% figure src="buck-converter-basic-schematic.svg" width="600" caption="The basic schematic of a buck converter. SW1 is typically a MOSFET switched by control logic (not shown)." %}}
 
 To learn more about EMI/EMC considerations regarding buck converters, see the [EMC and Switch-Mode Power Supplies page](/electronics/components/power-regulators/switch-mode-power-supplies-smps/emc-and-switch-mode-power-supplies/).
 
@@ -64,11 +64,11 @@ This analysis method of realizing the average voltage across the inductor must b
 
 When the switch is closed, the current flows from the input through the inductor to the output, as shown below:
 
-{{% img src="buck-converter-schematic-current-path-ton.svg" width="500" caption="Current path when the switch is **closed** (during `\(t_{on}\)` )." %}}
+{{% figure src="buck-converter-schematic-current-path-ton.svg" width="500" caption="Current path when the switch is **closed** (during `\(t_{on}\)` )." %}}
 
 When the switch opens, the input is disconnected. Because the inductor doesn't like changes in current, it keeps a current flowing through the load by forward biasing `\(D1\)`, as shown below:
 
-{{% img src="buck-converter-schematic-current-path-toff.svg" width="500" caption="Current path when the switch is **open** (during `\(t_{off}\)`)." %}}
+{{% figure src="buck-converter-schematic-current-path-toff.svg" width="500" caption="Current path when the switch is **open** (during `\(t_{off}\)`)." %}}
 
 `\(C1\)` (which is also called `\(C_{OUT}\)`) is to reduce the voltage ripple at the output/load.
 
@@ -80,7 +80,7 @@ When the switch opens, the input is disconnected. Because the inductor doesn't l
 
 _Voltage-mode (VM) control_ is the simplest control method, originating in approx. the 1970's[^bib-microsemi-v-i-mode]. It works by taking a proportion of the output voltage and comparing it with a fixed reference voltage. The difference between these two is called the error voltage and is amplified by an _error amplifier_. This error voltage is then fed into a comparator, with the other input being a sawtooth signal (triangular waveform). The switch is turned on at the start of the sawtooth period, and turned off when the sawtooth exceeds the error voltage. An SR latch is normally used to prevent multiple triggers per cycle due to noise. Voltage-mode control is named as such because the duty cycle is proportional to the control voltage.
 
-{{% img src="voltage-mode-control-diagram.svg" width="800" caption="The basic logical components used for voltage-mode control." %}}
+{{% figure src="voltage-mode-control-diagram.svg" width="800" caption="The basic logical components used for voltage-mode control." %}}
 
 ### Current-Mode Control (Constant Frequency)
 
@@ -176,7 +176,7 @@ These equations assume a constant load. Load transients (fluctuations in the loa
 
 You can find a buck converter calculator as part of [mbedded.ninja&lsquo;s NinjaCalc web app](http://ninja-calc.mbedded.ninja/buck-converter-calculator).
 
-{{% img src="ninja-calc-buck-converter-calculator-screenshot.png" width="956" caption="A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0)." %}}
+{{% figure src="ninja-calc-buck-converter-calculator-screenshot.png" width="956" caption="A screenshot of the buck converter calculator in NinjaCalc (as of v2.2.0)." %}}
 
 ## Synchronous Rectification
 
@@ -194,8 +194,8 @@ The input current "hot loop" of a buck converter is the most important part to w
 
 Texas Instruments released a series of very small (3.5x3.5x1.8mm) buck converter modules in 2015. One of the most impressive features is that this includes the inductor (external capacitors are still required). One example is the LMZ20502, which can provide up to 2A of current with an input voltage range of 2.7-5.5V and a output voltage range of 0.8-3.6V.
 
-{{% img src="photo-of-lmz20502-buck-converter.jpg" width="306" caption="A photo of the LMZ20502 buck converter. Image from http://www.digikey.co.nz/product-detail/en/LMZ20502SILT/296-38656-1-ND/." %}}
+{{% figure src="photo-of-lmz20502-buck-converter.jpg" width="306" caption="A photo of the LMZ20502 buck converter. Image from http://www.digikey.co.nz/product-detail/en/LMZ20502SILT/296-38656-1-ND/." %}}
 
 Notice how most of the volume on the module is taken up the chip inductor (the big brown thing that dominates most of the image). The dimensions of the package are shown in the diagram below.
 
-{{% img src="microsip-component-package-dimensions.png" width="500" caption="The dimensions of the MicroSIP component package, used by the Texas Instruments 'Nano' buck converters. Image from http://www.ti.com/lit/ds/symlink/lmz20502.pdf." %}}
+{{% figure src="microsip-component-package-dimensions.png" width="500" caption="The dimensions of the MicroSIP component package, used by the Texas Instruments 'Nano' buck converters. Image from http://www.ti.com/lit/ds/symlink/lmz20502.pdf." %}}

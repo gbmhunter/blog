@@ -17,7 +17,7 @@ This page explains some of the ways you can go about protecting IO lines on a PC
 
 One of the simplest ways of protecting an I/O line from ESD is to add a series resistor, as shown in the schematic below:
 
-{{% img src="io-protection-with-resistor.png" width="600px" caption="Simple IO protection with a series resistor." %}}
+{{% figure src="io-protection-with-resistor.png" width="600px" caption="Simple IO protection with a series resistor." %}}
 
 One thing to be aware of is that this will limit the maximum frequency that can be used through this IO line (more so that other ESD techniques, such as steering diodes as discussed below). The series resistor will form a low-pass RC filter with the parasitic capacitance on the line after the resistor. For short PCB traces, most of this parasitic capacitance will be from the input capacitance of the GPIO pin on the MCU. Something in the region of `\(10pF\)` can be expected, which with a `\(1k\Omega\)` resistor will form a low-pass filter with a cut-off frequency of `\(16MHz\)`.
 
@@ -29,7 +29,7 @@ One thing to be aware of is that this will limit the maximum frequency that can 
 
 To improve on the simple series resistor, a capacitor can be added to further improve ESD protection. The capacitor is between the I/O line (once it has past through the resistor) and ground. This forms a low-pass filter which will help quench short (high frequency) ESD spikes.
 
-{{% img src="io-protection-with-resistor-capacitor.png" width="600px" caption="Simple IO protection with a series resistor." %}}
+{{% figure src="io-protection-with-resistor-capacitor.png" width="600px" caption="Simple IO protection with a series resistor." %}}
 
 Advantages:
 
@@ -44,7 +44,7 @@ Disadvantages:
 
 Another popular way of protecting an IO line from ESD is to connect a [TVS diode](/electronics/components/diodes/tvs-diodes/) to it. TVS diodes are designed to be operated whilst reverse biased and have preset reverse standoff voltages, above which point they begin to conduct and absorb energy. They are designed to be robust and able to absorb energy (which they dissipate as heat) from ESD events.
 
-{{% img src="io-protection-with-tvs-diode.png" width="600px" caption="ESD protection with a TVS diode. The standoff voltage is normally set to the maximum working voltage (i.e. +3.3V in this case) and will begin to conduct significantly as the voltage rises above this level." %}}
+{{% figure src="io-protection-with-tvs-diode.png" width="600px" caption="ESD protection with a TVS diode. The standoff voltage is normally set to the maximum working voltage (i.e. +3.3V in this case) and will begin to conduct significantly as the voltage rises above this level." %}}
 
 The above schematic is a unidirectional TVS diode, which will clamp a positive ESD event as the voltage starts to rise above `\(+3.3V\)`, and will clamp a negative-going ESD event when the voltage gets to around `\({-}0.7V\)` and forward biases the diode.
 
@@ -69,7 +69,7 @@ Steering diodes are connected between the I/O line and two voltage rails, typica
 * Sharper turn on than a TVS diode.
 * Dump energy into rails, which may be a bad thing.
 
-{{% img src="io-protection-with-steering-diodes-to-rail.png" width="600px" caption="Using steering diodes (Schottky diodes connected as shown) to protect an IO line from ESD." %}}
+{{% figure src="io-protection-with-steering-diodes-to-rail.png" width="600px" caption="Using steering diodes (Schottky diodes connected as shown) to protect an IO line from ESD." %}}
 
 ## Steering Diodes And TVS
 
@@ -84,13 +84,13 @@ You start to run into problems if the ESD energy is high, and the ESD event cont
 
 To add further protection, a TVS diode can be added to the voltage rail, to help clamp the voltage if it starts rising, as shown in the schematic below:
 
-{{% img src="io-protection-with-steering-diodes-to-rail-and-tvs.png" width="700px" caption="Protecting an IO line from ESD with both steering diodes and a TVS diode." %}}
+{{% figure src="io-protection-with-steering-diodes-to-rail-and-tvs.png" width="700px" caption="Protecting an IO line from ESD with both steering diodes and a TVS diode." %}}
 
 Some ESD diode arrays incorporate steering diodes and a TVS diode to do just this. For example, the Bourns CDDFN10-0506N features 6 steering diode pairs connected to a single TVS. It is designed for high-speed signals and presents an input capacitance of only 0.25-0.35pF to the signal line, as well as "feed-through" routing design to minimize impedance changes[^bib-bourns-cddfn10-0506n-ds]. Another example, shown below, is the SP3012-06UTG ESD diode array from Littelfuse[^bib-littelfuse-sp3012-ds]. It is designed to protect USB3.0 data lines:
 
 <div style="display: flex;">
-{{% img src="littelfuse-sp3012-06utg-esd-array-functional-block-diagram.png" width="300px" caption="Functional block diagram for the Littelfuse SP3012-06UTG ESD diode array[^bib-littelfuse-sp3012-ds]." %}}
-{{% img src="littelfuse-sp3012-06utg-esd-array-usb30-application-example.png" width="300px" caption="Using the Littelfuse SP3012-06UTG to protect data lines on USB3.0[^bib-littelfuse-sp3012-ds]." %}}
+{{% figure src="littelfuse-sp3012-06utg-esd-array-functional-block-diagram.png" width="300px" caption="Functional block diagram for the Littelfuse SP3012-06UTG ESD diode array[^bib-littelfuse-sp3012-ds]." %}}
+{{% figure src="littelfuse-sp3012-06utg-esd-array-usb30-application-example.png" width="300px" caption="Using the Littelfuse SP3012-06UTG to protect data lines on USB3.0[^bib-littelfuse-sp3012-ds]." %}}
 </div>
 
 {{% note %}}
@@ -99,7 +99,7 @@ The SP3012-06UTG has a Zener diode instead of a TVS diode, but the principle is 
 
 Another example is the Littelfuse `SRDA3.3` steering diode array IC. It is designed to protect +3.3V IO lines and is rated to `\(\pm 30kV\)` contact, `\(\pm 30kV\)` air via IEC61000-4-2[^bib-littelfuse-srda33-ds]. It's functional block diagram is:
 
-{{% img src="littelfuse-srda33-functional-block-diagram.png" width="300px" caption="The functional block diagram of the Littelfuse SRDA3.3 steering diode array[^bib-littelfuse-srda33-ds]." %}}
+{{% figure src="littelfuse-srda33-functional-block-diagram.png" width="300px" caption="The functional block diagram of the Littelfuse SRDA3.3 steering diode array[^bib-littelfuse-srda33-ds]." %}}
 
 ## Isolation
 

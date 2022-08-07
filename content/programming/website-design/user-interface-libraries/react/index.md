@@ -11,7 +11,7 @@ type: "page"
 
 ## Overview
 
-{{% img src="react-logo.png" width="400px" caption="The React logo." %}}
+{{% figure src="react-logo.png" width="400px" caption="The React logo." %}}
 
 ## Injecting Variables At Build Time
 

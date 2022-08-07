@@ -82,7 +82,7 @@ The _saturation current_ is the maximum current the inductor can take before it 
 
 For example, Vishay Dale specified the saturation current for it's IHLP-1212BZ-11 family ([datasheet](https://www.vishay.com/docs/34289/lp12bz11.pdf)) of inductors as the current at which the inductance drops 20% down from the value at 0A (it's rated inductance)[^bib-vishay-ihlp1212bz11-ds]. The following graph shows the inductance vs. DC current plot for the IHLP1212BZER1R0M11 inductor in this family. This inductor has a saturation current of 4.5A.
 
-{{% img src="inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11.png" width="500px" caption="Plot of inductance vs. DC current for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds]." %}}
+{{% figure src="inductance-vs-dc-current-vishay-ihlp1212bzer1r0m11.png" width="500px" caption="Plot of inductance vs. DC current for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds]." %}}
 
 Typical saturation currents range from 10-100mA's for small inductors, up to 1-10A for larger PCB mount inductors.
 
@@ -102,7 +102,7 @@ The _self-resonant frequency_ of an inductor is the frequency at which the paras
 
 The below plot shows a plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor. The self-resonant frequency occurs where the inductance `\(L\)` spikes at about 75MHz:
 
-{{% img src="self-resonant-frequency.png" width="600px" caption="Plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds], highlighting the self-resonant frequency (SRF)." %}}
+{{% figure src="self-resonant-frequency.png" width="600px" caption="Plot of inductance vs. frequency for the Vishay Dale IHLP1212BZER1R0M11 inductor[^bib-vishay-ihlp1212bz11-ds], highlighting the self-resonant frequency (SRF)." %}}
 
 The equation for the SRF is[^bib-coilcraft-measuring-srf]:
 
@@ -135,7 +135,7 @@ Flat coil inductors have a very low profile (height from the surface of the PCB)
 
 Metal composite inductors (also called _moulded power inductors_) are made with metal powders moulded around copper windings at high pressure.
 
-{{% img src="metal-composite-inductor-construction-kemet-mpx.png" width="300px" caption="Internal construction of a metal composite inductor. Image by Kemet, retrieved from https://media.digikey.com/pdf/Data%20Sheets/Kemet%20PDFs/MPXV_Series_DS.pdf on 2020-11-30." %}}
+{{% figure src="metal-composite-inductor-construction-kemet-mpx.png" width="300px" caption="Internal construction of a metal composite inductor. Image by Kemet, retrieved from https://media.digikey.com/pdf/Data%20Sheets/Kemet%20PDFs/MPXV_Series_DS.pdf on 2020-11-30." %}}
 
 ### Air-cored Inductors
 

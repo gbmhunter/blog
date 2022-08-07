@@ -17,7 +17,7 @@ _Signal diodes_ (a.k.a. _small signal diodes_) are designed for rectification of
 * Point contact diode
 * Glass passivated diode
 
-{{% img src="1n4148-small-signal-diode-photo-on-semi.png" width="200" caption="Photo of the small signal 1N41488 diode by onsemi in the DO-35 component package. Image (C) onsemi." %}}
+{{% figure src="1n4148-small-signal-diode-photo-on-semi.png" width="200" caption="Photo of the small signal 1N41488 diode by onsemi in the DO-35 component package. Image (C) onsemi." %}}
 
 SPICE model for the small signal `1N4148` diode:
 

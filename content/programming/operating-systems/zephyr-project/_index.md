@@ -16,7 +16,7 @@ type: "page"
 
 The _Zephyr Project_ (also just called _Zephyr_, which will be used for the remainder of this page) is a real-time operating system designed for resource-constrained devices such as microcontrollers. Is is part of the Linux Foundation.
 
-{{% img src="zephyr-project-logo.png" width="500px" %}}
+{{% figure src="zephyr-project-logo.png" width="500px" %}}
 
 The [main repo can be found on GitHub](https://github.com/zephyrproject-rtos/zephyr).
 
@@ -442,7 +442,7 @@ CMake Error at C:/Users/Geoffrey Hunter/temp/zephyrproject/zephyr/cmake/kconfig.
 
 It is due to there being one or more spaces in the path to your Zephyr project directory. This isn't a bug that is going to be fixed anytime soon, Zephyr is very clear on the matter in their documentation:
 
-{{% img src="spaces-in-path-not-supported-zephyr-documentation-warning.png" width="900px" caption="" %}}
+{{% figure src="spaces-in-path-not-supported-zephyr-documentation-warning.png" width="900px" caption="" %}}
 
 I found this out the hard way and went through all the trouble of [renaming my user directory](https://superuser.com/questions/890812/how-to-rename-the-user-folder-in-windows-10) to fix the issue.
 

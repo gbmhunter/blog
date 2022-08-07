@@ -133,7 +133,7 @@ Ranges marked with `*` vary linearly between the two values on a plot of uVdB vs
 
 The tabular data above (both Class A and B devices) is displayed in the following graphs:
 
-{{% img src="fcc-part15-unintentional-radiators-conductive-limits.png" width="900px" caption="Graphs of Class A and B conductive limits for unintentional radiators as per FCC Part 15." %}}
+{{% figure src="fcc-part15-unintentional-radiators-conductive-limits.png" width="900px" caption="Graphs of Class A and B conductive limits for unintentional radiators as per FCC Part 15." %}}
 
 #### FCC Part 15 Radiative Limits for Unintentional Radiators
 
@@ -237,7 +237,7 @@ The following table lists the conducted EMC limits for Class A devices (by Group
 
 The above data is visualized in the below graphs:
 
-{{% img src="cispr-11-conductive-limits.png" width="900px" caption="CISPR 11 conductive EMC limits (both quasi-peak and average) for Group 1, Group 2 LP and Group 2 HP devices." %}}
+{{% figure src="cispr-11-conductive-limits.png" width="900px" caption="CISPR 11 conductive EMC limits (both quasi-peak and average) for Group 1, Group 2 LP and Group 2 HP devices." %}}
 
 ### CISPR 25
 
@@ -256,7 +256,7 @@ Because official compliance testing is generally expensive, in-house _pre-compli
 
 The [TekBox EMCview software](https://www.tekbox.com/product/emcview-pc-software-emc-compliance-testing/) can control the spectrum analyzer to do multiple sweeps across the frequency range, collate the data, and display the results with comparison/thresholds for the popular EMC standards. It currently supports a range of spectrum analysers from Rigol, Siglent, R&S and others[^bib-tekbox-emcview].
 
-{{% img src="tekbox-emcview-screenshot.png" width="700" caption="Screenshot of the Texbox EMCview software[^bib-tekbox-emcview]. Image © 2021, Texbox." %}}
+{{% figure src="tekbox-emcview-screenshot.png" width="700" caption="Screenshot of the Texbox EMCview software[^bib-tekbox-emcview]. Image © 2021, Texbox." %}}
 
 ### LISNs
 
@@ -264,15 +264,15 @@ A _line-impedance stabilization network_ is a vital piece of equipment when perf
 
 Below is an image of a TexBox TBL5016-1 50uH/50R LISN that is designed to work with DC or AC up to 250V (and therefore can be used to perform a FCC conducted emissions test):
 
-{{% img src="tekbox-50uh-lisn-tbl5016-1-photo.png" width="500px" caption="A photo of the TekBox TBL5016-1 50uH/50R LISN." %}}
+{{% figure src="tekbox-50uh-lisn-tbl5016-1-photo.png" width="500px" caption="A photo of the TekBox TBL5016-1 50uH/50R LISN." %}}
 
 The internal schematic of this LISN is shown below:
 
-{{% img src="tekbox-50uh-lisn-tbl5016-1-schematic.png" width="700px" caption="The internal schematic of the TekBox LISN shown above." %}}
+{{% figure src="tekbox-50uh-lisn-tbl5016-1-schematic.png" width="700px" caption="The internal schematic of the TekBox LISN shown above." %}}
 
 For DC powered DUTs, you will need one LISN for the positive power supply line and one LISN for the negative power supply line. Noise measurements on each are performed separately, both w.r.t. to ground/earth.
 
-{{% img src="textbox-lisn-wiring-diagram-for-dc.png" width="500px" caption="LISN wiring setup for measuring a DC-powered DUT." %}}
+{{% figure src="textbox-lisn-wiring-diagram-for-dc.png" width="500px" caption="LISN wiring setup for measuring a DC-powered DUT." %}}
 
 For mains AC powered DUTs, it depends on how many phases and the configuration of the DUT (if three phase):
 
@@ -281,9 +281,9 @@ For mains AC powered DUTs, it depends on how many phases and the configuration o
 * Three phase, star: 1 LISN on each phase and one on neutral (4 total).
 
 <div style="display: flex;">
-{{% img src="textbox-lisn-wiring-diagram-for-ac-single-phase.png" width="250px" caption="LISN wiring setup for measuring a single-phase AC powered DUT." %}}
-{{% img src="textbox-lisn-wiring-diagram-for-ac-three-phase-delta.png" width="250px" caption="LISN wiring setup for measuring a three-phase (delta) AC powered DUT." %}}
-{{% img src="textbox-lisn-wiring-diagram-for-ac-three-phase-star.png" width="250px" caption="LISN wiring setup for measuring a three-phase (star) AC powered DUT." %}}
+{{% figure src="textbox-lisn-wiring-diagram-for-ac-single-phase.png" width="250px" caption="LISN wiring setup for measuring a single-phase AC powered DUT." %}}
+{{% figure src="textbox-lisn-wiring-diagram-for-ac-three-phase-delta.png" width="250px" caption="LISN wiring setup for measuring a three-phase (delta) AC powered DUT." %}}
+{{% figure src="textbox-lisn-wiring-diagram-for-ac-three-phase-star.png" width="250px" caption="LISN wiring setup for measuring a three-phase (star) AC powered DUT." %}}
 </div>
 
 
@@ -299,7 +299,7 @@ _Attenuators_ are devices which reduce the power of a signal without distorting 
 
 _Transient limiters_ are another level of protection to a spectrum analyzer above and beyond what a simple attenuator can provide. They are commonly used whilst performing conducted EMI measurements using a LISN. `10dB` of flat in-band attenuation is common, across a frequency range of 9kHz to 30MHz. Maximum input is typically somewhere between +-10-20V DC at 2-5W of continuous power. N-type connectors are typically provided for the input and output.
 
-{{% img src="lit-930a-transient-limiter-freq-response.png" width="600" caption="Frequency response of the LIT-930A transient limiter by Com-Power[^bib-com-power-lit-930a-ds]. Graph shows a flat 10dB attenuation across the pass-band between 9kHz and 30MHz. Image © Com-Power." %}}
+{{% figure src="lit-930a-transient-limiter-freq-response.png" width="600" caption="Frequency response of the LIT-930A transient limiter by Com-Power[^bib-com-power-lit-930a-ds]. Graph shows a flat 10dB attenuation across the pass-band between 9kHz and 30MHz. Image © Com-Power." %}}
 
 ## Peak, Quasi-Peak And Averages
 

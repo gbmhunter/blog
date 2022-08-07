@@ -121,7 +121,7 @@ It is commonly used for medium-power linear regulators and load switches.
 
 The tab is sometimes electrically connected to pin 2 (the middle pin on the other side of the package), or sometimes electrically isolated for all other pins and called pin 4. For example, the AZ1117I linear regulator from Diodes Incorporated connects the tab to pin 2:
 
-{{% img src="az1117i-diodes-incorporated-sot223-pin-diagram-tab-connected-to-pin-2.png" width="400px" caption="The pin diagram for the AZ1117I in a SOT-223 package. Note how the tab is connected to pin 2." %}}
+{{% figure src="az1117i-diodes-incorporated-sot223-pin-diagram-tab-connected-to-pin-2.png" width="400px" caption="The pin diagram for the AZ1117I in a SOT-223 package. Note how the tab is connected to pin 2." %}}
 
 ### Thermal Resistance
 

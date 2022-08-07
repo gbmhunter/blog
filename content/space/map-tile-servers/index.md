@@ -17,7 +17,7 @@ Typically WGS84 Web Mercator (EPSG:3857).
 
 https://a.tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2017_3857/default/g/1/1/1.jpg returns this tile:
 
-{{% img src="map-tile-s2-2018-epsg3857-1-1-1.png" width="400px" caption="The tile returned from a Web Map Tile Service (WMTS) at the URL https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2017_3857/default/g/1/1/1.jpg" %}}
+{{% figure src="map-tile-s2-2018-epsg3857-1-1-1.png" width="400px" caption="The tile returned from a Web Map Tile Service (WMTS) at the URL https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2017_3857/default/g/1/1/1.jpg" %}}
 
 ## Standards
 

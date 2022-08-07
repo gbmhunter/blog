@@ -22,7 +22,7 @@ $$</p>
 
 Plotted from `\(x = -10\)` to `\(x = 10\)`, the function looks like this:
 
-{{% img src="graph-logistic-function.png" width="700px" caption="A graph of the logistic function." %}}
+{{% figure src="graph-logistic-function.png" width="700px" caption="A graph of the logistic function." %}}
 
 The logistic function pops up in _logistic regression_ (a popular algorithm used in machine learning) in the form:
 

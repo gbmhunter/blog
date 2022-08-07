@@ -14,7 +14,7 @@ type: page
 
 Julia is a dynamically-typed, compiled language with a strong emphasis on mathematics and data visualization applications. Julia code files usually end in `.jl`.
 
-{{% img src="julia_programming_language_logo.png" width="200px" caption="The Julia logo." %}}
+{{% figure src="julia_programming_language_logo.png" width="200px" caption="The Julia logo." %}}
 
 ## Installation
 

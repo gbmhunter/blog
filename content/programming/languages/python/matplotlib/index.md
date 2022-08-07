@@ -89,7 +89,7 @@ plt.savefig('legend-text-color-matches-plot-line-color.png')
 
 This will produce a plot which looks like:
 
-{{% img src="legend-text-color-matches-plot-line-color.png" width="700px" %}}
+{{% figure src="legend-text-color-matches-plot-line-color.png" width="700px" %}}
 
 ## Creating Animated Plots
 

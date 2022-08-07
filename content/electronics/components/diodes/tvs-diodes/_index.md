@@ -20,13 +20,13 @@ They come in either uni-directional or bi-directional flavours. Uni-directional 
 
 ## Schematic Symbol
 
-{{% img src="tvs-diode-schematic-symbol.svg" width="400" caption="My preferred schematic symbol for a uni-directional TVS diode (or any other type of avalanche diode for that matter). Notice the double bar distinguishing it from a Zener diode symbol." %}}
+{{% figure src="tvs-diode-schematic-symbol.svg" width="400" caption="My preferred schematic symbol for a uni-directional TVS diode (or any other type of avalanche diode for that matter). Notice the double bar distinguishing it from a Zener diode symbol." %}}
 
 ## Arrays
 
 TVS diodes can be grouped into IC packages called arrays. A typical schematic symbol for a diode array is shown below.
 
-{{% img src="schematic-symbol-esd-diode-array.png" width="300" caption="The schematic symbol of a diode array, with a common anode connection." %}}
+{{% figure src="schematic-symbol-esd-diode-array.png" width="300" caption="The schematic symbol of a diode array, with a common anode connection." %}}
 
 ## Important Parameters
 
@@ -55,7 +55,7 @@ This is the reverse voltage that the diode can withstand without drawing "any" c
 
 The reverse-leakage of TVS diodes decreases as the stand-off voltage increases. Be warned, the leakage current of TVS diodes which have low voltage stand-offs (e.g. <10V), can have large leakage currents! A 5V stand-off TVS diode typically has a reverse-leakage current of around 500uA, but TVS diodes with a stand-off voltage of 10V or higher have a reverse-leakage of 1uA or less. Note that at low stand-off voltages, the leakage current of a bi-directional diode can be double that of a uni-directional diode for the same stand-off voltage.
 
-{{% img src="leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png" width="1182" caption="Leakage currents of TVS diodes with low stand-off voltages." %}}
+{{% figure src="leakage-currents-of-tvs-diodes-with-low-standoff-voltage.png" width="1182" caption="Leakage currents of TVS diodes with low stand-off voltages." %}}
 
 For more information, see the [ESD Protection](/electronics/circuit-design/esd-protection) page.
 
@@ -65,7 +65,7 @@ Unusually, TVS diodes. along with a fuse or other current-limiting device, can a
 
 They are especially suited to this role (when considering other diodes) as the are usually built to dissipate large amounts of heat.
 
-{{% img src="tvs-diode-for-reverse-polarity-protection.png" width="700" caption="A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection." %}}
+{{% figure src="tvs-diode-for-reverse-polarity-protection.png" width="700" caption="A TVS diode (along with a fuse) can also be a good mechanism for reverse-polarity protection." %}}
 
 In the schematic above, the **fuse will quickly blow** if the power supply is connected to the input connector the wrong way around.
 
@@ -75,7 +75,7 @@ There are a family of TVS diodes called low-capacitance (or ultra-low) TVS diode
 
 This low capacitance is achieved by adding a forward-biased general purpose diode in series with the usual reverse-biased TVS (zener-style diode). The schematic symbol for a low-capacitance TVS diode is shown below:
 
-{{% img src="internal-schematic-of-low-capacitance-tvs-diode-annotated.png" width="500" caption="The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component." %}}
+{{% figure src="internal-schematic-of-low-capacitance-tvs-diode-annotated.png" width="500" caption="The internal schematic of a low-capacitance TVS diode, showing the forward-biased general purpose diode added in series to greatly reduce the total capacitance of the component." %}}
 
 The forward-biased general purpose diode has a much smaller parasitic capacitance than the zener diode. Because the parasitic capacitances are in series (grey capacitors in diagram), the total capacitance of the component is greatly reduced!
 
@@ -85,7 +85,7 @@ The forward-biased general purpose diode has a much smaller parasitic capacitanc
 
 TVS diodes built specifically for protecting RS-485 communication protocol bus lines are bi-directional and have two different hold-off voltages to meet the RS-485 spec. They normally include the character sequence "SM712" in their part name (e.g. SM712-02HTG by Littelfuse and SM712-TP by Micro Commerical).
 
-{{% img src="sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png" width="500" caption="The pintout and functional block diagram of the SM712-02HTG TVS diode, designed specifically for protecting RS-485 bus lines. Image from http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf." %}}
+{{% figure src="sm712-02htg-rs485-tvs-diode-pinout-and-functional-block-diagram.png" width="500" caption="The pintout and functional block diagram of the SM712-02HTG TVS diode, designed specifically for protecting RS-485 bus lines. Image from http://www.littelfuse.com/~/media/electronics/datasheets/tvs_diode_arrays/littelfuse_tvs_diode_array_sm712_datasheet.pdf.pdf." %}}
 
 More information on these diodes can be found in the [Specialised TVS Diodes section on the RS-485 Protocol page](/electronics/communication-protocols/rs-485-protocol#specialised-tvs-diodes).
 

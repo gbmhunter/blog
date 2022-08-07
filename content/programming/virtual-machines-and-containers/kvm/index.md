@@ -18,6 +18,6 @@ KVM (Kernel-based Virtual Machine) is a virtualization tool for Linux. KVM can b
 
 If you get the following error:
 
-{{% img src="kvm-unable-to-connect-to-libvirt.png" width="500px" caption="Screenshot of the 'Unable to connect to libvirt' error in KVM." %}}
+{{% figure src="kvm-unable-to-connect-to-libvirt.png" width="500px" caption="Screenshot of the 'Unable to connect to libvirt' error in KVM." %}}
 
 It is probably because the current user does not belong to the `libvirt` group. Type `groups` to see what groups the user currently belongs to. 

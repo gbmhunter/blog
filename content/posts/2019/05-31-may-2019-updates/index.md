@@ -18,7 +18,7 @@ type: "post"
 
 * Big updates to the {{% link text="Convolution page" src="/programming/signal-processing/convolution" %}}, including the addition of a worked example where the convolution of two box-car functions is calculated.
 
-    {{% img src="convolution-two-box-car-functions.gif" width="500px" caption="An animated .gif showing the convolution of two box-car functions. The value of the convolution function at any time t (bottom line in red) is the amount area shown in red in the middle plot, which is the area under the curve of f(t)g(t) (the two waveforms multiplied together)." %}}
+    {{% figure src="convolution-two-box-car-functions.gif" width="500px" caption="An animated .gif showing the convolution of two box-car functions. The value of the convolution function at any time t (bottom line in red) is the amount area shown in red in the middle plot, which is the area under the curve of f(t)g(t) (the two waveforms multiplied together)." %}}
 
 * Added a new page on {{% link text="less" src="/programming/operating-systems/linux/programs/less" %}}, the basic Linux command-line utility for displaying text.
 

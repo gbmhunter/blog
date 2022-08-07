@@ -31,7 +31,7 @@ A real sinusoidal signal has the general form:
 
 An example sinusoidal where `\( f(t) = 2\sin(2t + \frac{\pi}{4}) \)` is shown below:
 
-{{% img src="examples-of-basic-sinusoidal-signals.png" width="700px" %}}
+{{% figure src="examples-of-basic-sinusoidal-signals.png" width="700px" %}}
 
 {{% note %}}
 `\(\sin()\)` in the above equation may be replaced by `\(\cos()\)`, which just shifts everything by `\(\frac{\pi}{2}\)` (`\( \cos(x) = \sin(x + \frac{\pi}{2})  \)`). It is still called a sinusoidal signal.
@@ -62,7 +62,7 @@ The general form for an exponential signal is:
 
 Below are some examples of real exponential signals, showing how varying `\(A\)` and `\(\lambda\)` (limited to real numbers only) effect the waveform shape.
 
-{{% img src="examples-of-basic-real-exponential-signals.png" width="700px" %}}
+{{% figure src="examples-of-basic-real-exponential-signals.png" width="700px" %}}
 
 When `\(\lambda > 1\)`, the signal exhibits _exponential growth_ (this typically represents an _unstable_ signal). When `\(\lambda < 1\)`, the signal exhibits _exponential decay_ (this typically represents a _stable_ signal).
 
@@ -99,9 +99,9 @@ f(t)  &= Ae^{\lambda t} \\
 
 Below are graphs of the real component of both growing and decaying complex exponential signals. **You can see how the signal is enveloped by `\(\pm |A|e^{\sigma t}\)`**. This is because the signal is the product of an exponential component and a `\(\cos()\)` component, and the `\(\cos()\)` component always varies between `\(-1\)` and `\(1\)`.
 
-{{% img src="complex-exponential-signals-real-component-growing.png" width="700px" caption="The real component of a growing complex exponential signal. In this case \(|A| = 1, \sigma = 0.2, \omega = 2\pi , \theta = 0\)." %}}
+{{% figure src="complex-exponential-signals-real-component-growing.png" width="700px" caption="The real component of a growing complex exponential signal. In this case \(|A| = 1, \sigma = 0.2, \omega = 2\pi , \theta = 0\)." %}}
 
-{{% img src="complex-exponential-signals-real-component-decaying.png" width="700px" caption="The real component of a decaying complex exponential signal. In this case \(|A| = 7, \sigma = -0.2, \omega = 2\pi , \theta = 0\)." %}}
+{{% figure src="complex-exponential-signals-real-component-decaying.png" width="700px" caption="The real component of a decaying complex exponential signal. In this case \(|A| = 7, \sigma = -0.2, \omega = 2\pi , \theta = 0\)." %}}
 
 ## Heaviside (Unit-Step) Function
 
@@ -117,7 +117,7 @@ $$</p>
 
 The Heaviside function looks something like the signal below, however the point at `\(H(0)\)` can be drawn in different ways (more on that below):
 
-{{% img src="the-unit-step-function-heaviside.png" width="700px" %}}
+{{% figure src="the-unit-step-function-heaviside.png" width="700px" %}}
 
 Oliver Heaviside used his equation to calculate the current in an electrical circuit when it is first switched on {{< bib id="heaviside-wikipedia" >}}.
 
@@ -137,7 +137,7 @@ $$</p>
 
 This is how the NIST DLMF (_Digital Library of Mathematical Functions_) defines the Heaviside function (see [section 1.16.13](https://dlmf.nist.gov/1.16#E13)). This version of the Heaviside function is left-continuous at `\(t = 0\)` but not right continuous.
 
-{{% img src="heaviside-unit-step-function-h0-eq-0.png" width="500px" %}}
+{{% figure src="heaviside-unit-step-function-h0-eq-0.png" width="500px" %}}
 
 **H(0) = 0.5**
 
@@ -158,7 +158,7 @@ This is the version of the Heaviside function which seems to be most often used.
 
 Drawn on a graph it looks like:
 
-{{% img src="heaviside-unit-step-function-h0-eq-0p5.png" width="500px" %}}
+{{% figure src="heaviside-unit-step-function-h0-eq-0p5.png" width="500px" %}}
 
 **H(0) = 1**
 
@@ -176,7 +176,7 @@ $$</p>
 
 Drawn on a graph it looks like:
 
-{{% img src="heaviside-unit-step-function-h0-eq-1.png" width="500px" %}}
+{{% figure src="heaviside-unit-step-function-h0-eq-1.png" width="500px" %}}
 
 The Heaviside function is usually defined like this when used in the context of cumulative distributions for statistical purposes. 
 
@@ -186,7 +186,7 @@ The Heaviside function is usually defined like this when used in the context of 
 
 Drawn on a graph it looks like:
 
-{{% img src="heaviside-unit-step-function-h0-eq-set-0-1.png" width="500px" %}}
+{{% figure src="heaviside-unit-step-function-h0-eq-set-0-1.png" width="500px" %}}
 
 ### Shifted Heaviside
 

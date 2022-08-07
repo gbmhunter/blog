@@ -97,4 +97,4 @@ The `SOP-4` is an easy to solder, medium sized, 4-pin SMD package. Commonly used
 
 ## SOP-8
 
-{{% img src="sop-8-package-dimensions-ti.png" width="600px" caption="The package dimensions for the SOP-8 component package. Image from https://www.ti.com/lit/ds/symlink/iso1050.pdf." %}}
+{{% figure src="sop-8-package-dimensions-ti.png" width="600px" caption="The package dimensions for the SOP-8 component package. Image from https://www.ti.com/lit/ds/symlink/iso1050.pdf." %}}

@@ -28,7 +28,7 @@ type: "post"
 
 * Added a {{% link text="tutorial on pandas" src="/programming/languages/python/pandas" %}}, a popular data analytics library for Python.
 
-    {{% img src="pandas_logo.png" width="700px" caption="The pandas logo." %}}
+    {{% figure src="pandas_logo.png" width="700px" caption="The pandas logo." %}}
 
 * Updated the {{% link text="Python Debugging page" src="/programming/languages/python/python-debugging" %}} with more info on `pdb`.
 
@@ -42,4 +42,4 @@ type: "post"
 
 * Added a {{% link text="new page about the programming language Julia" src="/programming/languages/julia" %}}.
 
-    {{% img src="julia_programming_language_logo.png" width="200px" caption="The Julia logo." %}}
+    {{% figure src="julia_programming_language_logo.png" width="200px" caption="The Julia logo." %}}

@@ -31,7 +31,7 @@ M8/M12 connectors have different _codings_. Each coding is a particular pin arra
 * T: DC power (replacement for `A` DC power)
 * X: 10Gbit Ethernet
 
-{{% img src="m8-m12-connector-codings-te-connectivity.png" width="700" caption="Common codings for M8/M12 circular connectors. Image from https://www.te.com/content/dam/te-com/documents/industrial-automation-and-control/global/m8m12_product_presentation.pdf." %}}
+{{% figure src="m8-m12-connector-codings-te-connectivity.png" width="700" caption="Common codings for M8/M12 circular connectors. Image from https://www.te.com/content/dam/te-com/documents/industrial-automation-and-control/global/m8m12_product_presentation.pdf." %}}
 
 Common pin counts (larger pin counts are only available in the larger diameter connector):
 
@@ -50,7 +50,7 @@ They typically have a PG7 or PG9 thread. The PG9 thread seems to be more common/
 
 The M8/M12 connector family also come with splitters --- Y and T shaped units which allow 3 cables to be connected together.
 
-{{% img src="y-style-m12-splitter-phoenix-contact-1054338.jpg" width="300" caption="A Y-style M12 splitter from Phoenix Contact. Image from https://nz.element14.com/phoenix-contact/1054338/sensor-splitter-8p-m12-plug-plug/dp/3223043." %}}
+{{% figure src="y-style-m12-splitter-phoenix-contact-1054338.jpg" width="300" caption="A Y-style M12 splitter from Phoenix Contact. Image from https://nz.element14.com/phoenix-contact/1054338/sensor-splitter-8p-m12-plug-plug/dp/3223043." %}}
 
 ## Field Installable Connectors
 

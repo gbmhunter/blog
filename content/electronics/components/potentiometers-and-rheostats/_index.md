@@ -74,7 +74,7 @@ _Taper codes_ exist to inform the user of a potentiometers taper. Confusingly, t
 
 If you can't get log or antilog potentiometers, you can approximate the behaviour of them using a linear potentiometer and additional fixed resistors (which are called _tapering resistors_ in this context). The below schematic shows to to approximate log, antilog and log-antilog behaviour: 
 
-{{% img src="resistor-taper-circuits.png" width="800px" caption="Schematic showing how to modify the response of a linear potentiometer (to make it approximate log, antilog and log-antilog behaviour) using tapering resistors." %}}
+{{% figure src="resistor-taper-circuits.png" width="800px" caption="Schematic showing how to modify the response of a linear potentiometer (to make it approximate log, antilog and log-antilog behaviour) using tapering resistors." %}}
 
 {{% note %}}
 The tapering resistor trick works for log and antilog tapers are using the potentiometer as a voltage divider. If you are just connecting to one end terminal and the middle (i.e. rheostat style), you can only achieve an antilog taper.
@@ -82,7 +82,7 @@ The tapering resistor trick works for log and antilog tapers are using the poten
 
 How do we choose the value of `\(R_{taper}\)`? A good rule-of-thumb is to pick a value which is about 10-20% of the potentiometers total resistance. For example, for a `\(10k\Omega\)` linear potentiometer, you would choose a tapering resistance of `\(1{-}2k\Omega\)`. The below graph shows the response of potentiometers with tapering resistors. The tapering resistor's resistance is 10% of the potentiometers (e.g. if it was a `\(10k\Omega\)` pot, the tapering resistor would be `\(1k\Omega\)`). In the case of the log-antilog circuit, both tapering resistors have a resistance of 10% `\(R_{POT}\)`. In the case of the log and antilog circuits, the responses are also compared to the "ideal" responses (see [The Ideal Logarithmic Taper Equation Section](#the-ideal-logarithmic-taper-equation) for more on how this is calculated):
 
-{{% img src="tapering-resistor-plots.png" width="800px" caption="Plot showing the response of a tapering resistor (approx. log) vs. an ideal log pot (with y_m = 0.1). Whilst it doesn't match that closely, this level of precision is good enough for many applications!" %}}
+{{% figure src="tapering-resistor-plots.png" width="800px" caption="Plot showing the response of a tapering resistor (approx. log) vs. an ideal log pot (with y_m = 0.1). Whilst it doesn't match that closely, this level of precision is good enough for many applications!" %}}
 
 Not bad for 1 or 2 additional resistors! And while yes, you can clearly see differences between the tapering resistor circuit and the ideal responses, in many applications this is close enough (also remembering that many "properly" tapered pots will have similar amounts of difference to an ideal response).
 
@@ -92,7 +92,7 @@ Tolerance on potentiometers normally ranges from 2-15%. Note that this is much h
 
 Precision potentiometers typically focus achieving was is called good _independent linearity_. Independent linearity is the maximum deviation from a linear "best fit line" which is plotted against the points comparing the output resistance to the position of the potentiometer[^bib-bourns-pot-linearity-tech-note]. This best-fit line does not often go through 0.
 
-{{% img src="bourns-potentiometer-independent-linearity-plot.png" width="700px" caption="A plot from the Bourns Potentiometer Linearity Tech Note showing how independent linearity is specified[^bib-bourns-pot-linearity-tech-note]." %}}
+{{% figure src="bourns-potentiometer-independent-linearity-plot.png" width="700px" caption="A plot from the Bourns Potentiometer Linearity Tech Note showing how independent linearity is specified[^bib-bourns-pot-linearity-tech-note]." %}}
 
 For example, the Bourns 3590S-2-103L 10-turn precision rotary potentiometer has a specified independent linearity of `\(\pm 0.25\%\)`[^bib-bourns-3590s-2-103l-ds].
 
@@ -118,13 +118,13 @@ A common number of turns for multi-turn potentiometers is 10. They are usually M
 
 Multi-turn potentiometers are used when more resolution is required, or the "thing" rotating the potentiometer is going to go through 1 or more revolutions (e.g. if the potentiometer was connected to an axle or pulley which rotated back and forth through 4 revolutions).
 
-{{% img src="bourns-3590s-2-103l-10-turn-rotary-pot.png" width="250px" caption="Photo of the Bourns 3590S-2-103L 10-turn precision rotary potentiometer. As of April 2022, this costs approx. US$17 each in quantities of 10[^bib-mouser-bourns-3590s-2-103l]." %}}
+{{% figure src="bourns-3590s-2-103l-10-turn-rotary-pot.png" width="250px" caption="Photo of the Bourns 3590S-2-103L 10-turn precision rotary potentiometer. As of April 2022, this costs approx. US$17 each in quantities of 10[^bib-mouser-bourns-3590s-2-103l]." %}}
 
 ## Common Uses And Example Circuits
 
 The most common use for a potentiometer to provide a variable output voltage based on how the far the potentiometer has been turned. This voltage then can be used to control any number of things, such as the volume of music as the user turns the volume dial. The two ends of the potentiometer are connected across a constant voltage source, in the example below, this is `\( 5V \)`. The wiper then forms the variable mid-point of a voltage divider. As you turn the potentiometer, one of the "resistors" increases while the other decreases, and thus the wiper varies in voltage from one end point to the other. In the example below the wiper voltage varies from `\( 0V \)` to `\( 5V \)`:
 
-{{% img src="potentiometer-common-resistor-divider-circuit.png" width="600px" caption="A very common way to use a potentiometer in a circuit to provide a variable output voltage." %}}
+{{% figure src="potentiometer-common-resistor-divider-circuit.png" width="600px" caption="A very common way to use a potentiometer in a circuit to provide a variable output voltage." %}}
 
 A word of caution...Make sure you do not draw too much current from the wiper. Ignoring the wiper resistance, the output impedance of the potentiometer changes depending on the wiper position. When the wiper is at either end, the output impedance is `\( 0 \Omega \)` (great you may say). But the output impedance increases to the worst case when the wiper is exactly half-way between the two ends, in which case it is `\( \frac{R_{pot}}{4} \, \Omega \)` (two resistors in parallel, each resistor being `\( \frac{R_{pot}}{2} \, \Omega \)`).
 
@@ -228,7 +228,7 @@ The below graph shows the shape of the potentiometers response for different val
 At `\(y_m = 0.5\)` the resistance factor goes to `\(\infty\)`, so `\(y_m = 0.5\)` is not plotted.
 {{% /note %}}
 
-{{% img src="plot-of-parametric-log-law.png" width="600px" caption="Plot of the ideal potentiometer log taper equation for various values of `\(y_m\)`." %}}
+{{% figure src="plot-of-parametric-log-law.png" width="600px" caption="Plot of the ideal potentiometer log taper equation for various values of `\(y_m\)`." %}}
 
 In reality, potentiometers with a "log taper" can be roughly approximated with `\(y_m = 0.1\)`, whilst those with an "antilog taper" with `\(y_m = 0.9\)`.
 
@@ -236,7 +236,7 @@ In reality, potentiometers with a "log taper" can be roughly approximated with `
 
 _The Potentiometer Handbook_ by Bourns is a great resource for anything potentiometer related (a hefty 227 pages). Available for free (as of 2022) from https://www.bourns.com/pdfs/onlinepotentiometerhandbook.pdf.
 
-{{% img src="bourns-the-potentiometer-handbook-front-cover.png" width="500px" caption="Screenshot of the 'front cover' from the online edition of 'The Potentiometer Handbook' by Bourns[^bib-bourns-the-potentiometer-handbook]." %}}
+{{% figure src="bourns-the-potentiometer-handbook-front-cover.png" width="500px" caption="Screenshot of the 'front cover' from the online edition of 'The Potentiometer Handbook' by Bourns[^bib-bourns-the-potentiometer-handbook]." %}}
 
 ## References
 

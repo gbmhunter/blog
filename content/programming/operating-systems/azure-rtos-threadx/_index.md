@@ -27,4 +27,4 @@ ThreadX first released in 1997. It was started and developed by Express Logic. I
 
 ## Memory Usage
 
-{{% img src="azure-rtos-threadx-static-memory-usage-table.png" width="500px" caption="A summary of Azure RTOS ThreadX's static memory (flash) utilization. Image retrieved 2020-12-06 from https://docs.microsoft.com/en-us/azure/rtos/threadx/overview-threadx#most-deployed-rtos." %}}
+{{% figure src="azure-rtos-threadx-static-memory-usage-table.png" width="500px" caption="A summary of Azure RTOS ThreadX's static memory (flash) utilization. Image retrieved 2020-12-06 from https://docs.microsoft.com/en-us/azure/rtos/threadx/overview-threadx#most-deployed-rtos." %}}
