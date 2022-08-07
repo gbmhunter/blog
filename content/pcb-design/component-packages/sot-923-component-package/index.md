@@ -127,8 +127,8 @@ Tiny package used for diodes! See the below picture for a comparison of one of t
 
 ## 3D Renders
 
-{{< img src="sot-923-component-package-3d-render.jpg" width="423px" caption="A 3D render of the SOT-923 component package."  >}}
+{{% figure src="sot-923-component-package-3d-render.jpg" width="423px" caption="A 3D render of the SOT-923 component package."  %}}
 
 ## Images
 
-{{< img src="tiny-sod-923-package-relative-to-usb-conn.jpg" caption="3D model showing the difference between the size of a tiny SOD-923 package and a PCB-mount USB connector."  width="500px" >}}
+{{% figure src="tiny-sod-923-package-relative-to-usb-conn.jpg" caption="3D model showing the difference between the size of a tiny SOD-923 package and a PCB-mount USB connector."  width="500px" %}}

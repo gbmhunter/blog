@@ -27,7 +27,7 @@ Common names are:
 * `/dev/ttyUSB0` - Most USB-to-serial cables will show up using a file named like this.
 * `/dev/pts/0` - A pseudo terminal. These can be generated with `socat`.
 
-{{< img src="linux-dev-dir-ttyacm0-arduino-serial.png" width="600px" caption="A listing of the /dev/ directory in Linux with a connected Arduino. The Arduino serial port is present as /dev/ttyACM0." >}}
+{{% figure src="linux-dev-dir-ttyacm0-arduino-serial.png" width="600px" caption="A listing of the /dev/ directory in Linux with a connected Arduino. The Arduino serial port is present as /dev/ttyACM0." %}}
 
 **To write to a serial port, you write to the file. To read from a serial port, you read from the file.** Of course, this allows you to send/receive data, but how do you set the serial port parameters such as baud rate, parity, e.t.c? This is set by a special `tty` configuration `struct`.
 

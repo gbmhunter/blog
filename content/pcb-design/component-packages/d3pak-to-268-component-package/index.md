@@ -119,17 +119,17 @@ I have only ever seen this in the 3-pin variant (called TO-268-3).
 
 ## Recommended Land Pattern
 
-{{< img src="to-268-component-package-land-pattern.png" width="500px" caption="Recommended land pattern for the D3PAK (TO-268) component package." >}}
+{{% figure src="to-268-component-package-land-pattern.png" width="500px" caption="Recommended land pattern for the D3PAK (TO-268) component package." %}}
 
 ## Recommended Stencil
 
-{{< img src="to-268-component-package-recommended-stencil-pattern.png" width="500px" caption="Recommended stencil pattern for the D3PAK (TO-268) component package." >}}
+{{% figure src="to-268-component-package-recommended-stencil-pattern.png" width="500px" caption="Recommended stencil pattern for the D3PAK (TO-268) component package." %}}
 
 
 ## Package Dimensions
 
-{{< img src="to-268-3-component-package-dimensions.png" width="500px" caption="Dimensions for the D3PAK (TO-268) component package." >}}
+{{% figure src="to-268-3-component-package-dimensions.png" width="500px" caption="Dimensions for the D3PAK (TO-268) component package." %}}
 
 ## Photos
 
-{{< img src="d3pak-to-268-component-package-photo.jpg" width="366px" caption="Photo of the D3PAK (TO-268) component package."  >}}
+{{% figure src="d3pak-to-268-component-package-photo.jpg" width="366px" caption="Photo of the D3PAK (TO-268) component package."  %}}

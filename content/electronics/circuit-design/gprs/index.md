@@ -12,7 +12,7 @@ type: "page"
 
 GPRS (General Packet Radio Service) allows data to be sent over a cellular network (i.e. the same network cellphones use) in a cost-effective and efficient manner. It can be used on 2G and 3G.
 
-{{< img src="dev-kit-featuring-sim900-gprs-module-and-sma-antenna.jpg" width="398px" caption="Development kit featuring the SIM900 GPRS module and a SMA antenna."  >}}
+{{% figure src="dev-kit-featuring-sim900-gprs-module-and-sma-antenna.jpg" width="398px" caption="Development kit featuring the SIM900 GPRS module and a SMA antenna."  %}}
 
 ## GPRS Modules
 

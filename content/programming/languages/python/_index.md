@@ -18,6 +18,6 @@ One notable aspect of the Python syntax is the lack of braces for delimiting fun
 
 > "Life is better without braces" - _Bruce Eckel_
 
-{{< img src="python-icon.png" width="200px" caption="The Python logo." >}}
+{{% figure src="python-icon.png" width="200px" caption="The Python logo." %}}
 
 See the child pages above for more info!

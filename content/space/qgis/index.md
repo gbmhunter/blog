@@ -12,7 +12,7 @@ type: page
 
 _QGIS_ is a open-source and free-to-use desktop GUI application for viewing and processing geospatial imagery. The Q comes from the fact that it using the QT GUI framework, the GIS stands for _geographic information systen_.
 
-{{< img src="qgis-logo.png" width="200px" caption="The QGIS logo." >}}
+{{% figure src="qgis-logo.png" width="200px" caption="The QGIS logo." %}}
 
 The official site for QGIS can be found at <https://www.qgis.org/>.
 
@@ -22,15 +22,15 @@ Since QGIS v2.18, you can **add XYZ style tile servers as layers** in QGIS (with
 
 Firstly, right click on _XYZ Tiles_ in the left-hand side _Browser_ window in QGIS and then click on _New Connection_.
 
-{{< img src="qgis-xyz-tiles-new-connection.png" width="500px" caption="Right-click on 'XYZ tiles' and then click on 'New Connection'." >}}
+{{% figure src="qgis-xyz-tiles-new-connection.png" width="500px" caption="Right-click on 'XYZ tiles' and then click on 'New Connection'." %}}
 
 Then add your desired XYZ tile server information:
 
-{{< img src="qgis-xyz-tiles-google-tile-server.png" width="500px" caption="Adding the Google tile map service to QGIS." >}}
+{{% figure src="qgis-xyz-tiles-google-tile-server.png" width="500px" caption="Adding the Google tile map service to QGIS." %}}
 
 To use this tile server, click on the newly added tile server and drag in down into the _Layers_ pane:
 
-{{< img src="qgis-xyz-tiles-dragging-server-into-layers.png" width="500px" caption="Dragging the tile server into the Layers pane to display the basemap imagery." >}}
+{{% figure src="qgis-xyz-tiles-dragging-server-into-layers.png" width="500px" caption="Dragging the tile server into the Layers pane to display the basemap imagery." %}}
 
 Some popular tile servers are listed below (non of them require authentication):
 

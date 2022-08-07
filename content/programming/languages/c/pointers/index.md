@@ -10,7 +10,7 @@ type: page
 
 Pointers are a core concept in C programming, yet can be a difficult concept to grasp for those who are new to the language.
 
-{{< figure src="/images/2013/03/pointing-hand-icon.png"   >}}
+{{< figure src="/images/2013/03/pointing-hand-icon.png" width="300px" >}}
 
 And, here is my favourite question and answer regarding pointers:
 

@@ -17,7 +17,7 @@ VirtualBox is virtual machine software by Oracle.
 
 A long-standing bug with Oracles VirtualBox and the popular Linux text editor, Gedit (or any other text editor, for that matter), is the "File Busy" error that you get when trying to save a file across a mounted, shared folder from within Linux system running Gedit (e.g. saving into a Windows-hosted folder).
 
-{{< img src="gedit-save-to-shared-virtual-box-folder-text-file-busy-error.png" caption="The workaround, to enable the 'Save Backup Copy' option in the preferences, and hit the save button twice."  width="800px" >}}
+{{% figure src="gedit-save-to-shared-virtual-box-folder-text-file-busy-error.png" caption="The workaround, to enable the 'Save Backup Copy' option in the preferences, and hit the save button twice."  width="800px" %}}
 
 The problem comes from shared folders which are mounted using the command:
 
@@ -27,7 +27,7 @@ $ sudo mount -t vboxsf shared-name folder-to-mount-to
 
 The only workaround I am aware of is to enable the "Save Backup Copy" option in the preferences, and hit the save button twice. Annoying and far from perfect, but you can get quick at doing this (`Ctrl-S`, `Enter`, `Ctrl-S` does the trick).
 
-{{< img src="gedit-preferences-enabling-save-backup-copy-to-stop-file-busy-error.png" caption="The 'File Busy' error that you get when trying to save a file across a mounted, shared folder from within Linux system running Gedit."  width="500px" >}}
+{{% figure src="gedit-preferences-enabling-save-backup-copy-to-stop-file-busy-error.png" caption="The 'File Busy' error that you get when trying to save a file across a mounted, shared folder from within Linux system running Gedit."  width="500px" %}}
 
 You will also have to delete all the `.goutputstream-XXXXXX` files that are created in the directory (these are the backup files).
 

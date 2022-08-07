@@ -95,7 +95,7 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
     </ul>
   </td>
   <td>Uses transistors to create a dynamically changing resistance to drop the voltage to the required level (hence linear). Dissipates the energy as heat, and therefore is very inefficient, and limited in power. Linear regulators have very low radiated EMI because they do not have a switching element. For the very same reason they also have very low output ripple, and high PSRR (power supply rejection ratio).</td>
-  <td >{{< img src="lm7805-voltage-regulator.jpg" caption="The LM7805 5V linear voltage regulator in a TO-220 package."  width="160px" >}}</td>
+  <td >{{% figure src="lm7805-voltage-regulator.jpg" caption="The LM7805 5V linear voltage regulator in a TO-220 package."  width="160px" %}}</td>
 </tr>
 <tr>
 <td>Buck Converter</td>
@@ -112,7 +112,7 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
   </ul>
 </td>
 <td>Uses an inductor, capacitor and switching element to reduce the input voltage. The alternative method to a buck converter for reducing the input voltage is a linear voltage regulator. Very high efficiencies in some cases due to the absence resistive power losses.</td>
-<td>{{< img src="ptma401120-dcdc-converter-module-from-ti.png" caption="The PTMA401120 DC/DC converter module from Texas Instruments. This can convert anything from 36 to 72V down to 12V with a 1A output."  width="160px" >}}</td>
+<td>{{% figure src="ptma401120-dcdc-converter-module-from-ti.png" caption="The PTMA401120 DC/DC converter module from Texas Instruments. This can convert anything from 36 to 72V down to 12V with a 1A output."  width="160px" %}}</td>
 </tr>
 <tr>
   <td>Boost Converter</td>
@@ -183,14 +183,14 @@ Power regulators aim to convert an input DC voltage into a DC output voltage. Th
     </ul>
   </td>
   <td> Used in low power and cheap applications, e.g. powering an LED from a 1.5V battery.</td>
-  <td>{{< img src="joule-thief.jpg" caption="A tiny Joule Thief made for a single coin battery that can power an LED."  width="160px" >}}</td>
+  <td>{{% figure src="joule-thief.jpg" caption="A tiny Joule Thief made for a single coin battery that can power an LED."  width="160px" %}}</td>
 </tr>
 </tbody>
 </table>
 
 ## DC/DC Converters And Controllers
 
-{{< img src="recom-acdc-converter.jpg" caption="A Recom AC/DC converter module that can take 100-240VAC as it's input and outputs 12V at up to 83mA."  width="200px" >}}
+{{% figure src="recom-acdc-converter.jpg" caption="A Recom AC/DC converter module that can take 100-240VAC as it's input and outputs 12V at up to 83mA."  width="200px" %}}
 
 DC/DC converters and controllers are ICs which contain all of the logic and most of the passive componentry that makes up a switching power converter. When the industry talks about a DC/DC converter, they are talking about a chip which has an integrated switch (usually a [MOSFET](/electronics/components/transistors/mosfets/)). When they talk about a DC/DC controller, they are talking about a chip which requires an external switch.
 
@@ -200,7 +200,7 @@ Two important patents in the history of DC/DC converters are patent [US3040271](
 
 DC/DC converters are also used to charge batteries from solar panels. In this case, they are operated in an unusual fashion, because you want to regulate the input voltage to what provides maximum power extraction from the solar panel, rather than regulating the output voltage. Sometimes AC/DC power supplies are called LPS, which is an acronym for "**limited power supply**". This term is related to the IEC60950-1 standard.
 
-{{< img src="ul60950-limited-power-circuits-graph.png" caption="A graph of voltage vs. current for a LPS (limited power supply)."  width="400px" >}}
+{{% figure src="ul60950-limited-power-circuits-graph.png" caption="A graph of voltage vs. current for a LPS (limited power supply)."  width="400px" %}}
 
 ### Efficiencies
 
@@ -214,7 +214,7 @@ DC/DC converters can extend their efficient operating current range by enabling 
 
 Although strictly not a DC/DC converter, you can purchase ready-to-go PCB-mounted AC/DC converter modules that are designed to plug straight into the AC mains (90-270VAC(rms)), and output a DC voltage typically between 3.3 and 24V. Power ratings are typically 1-10W. The one shown below is made by MeanWell.
 
-{{< img src="meanwell-pm-15-12-acdc-converter-size-comparison-photo.jpg" caption="Size comparison of a Meanwell 15W, 12V AC/DC converter."  width="500px" >}}
+{{% figure src="meanwell-pm-15-12-acdc-converter-size-comparison-photo.jpg" caption="Size comparison of a Meanwell 15W, 12V AC/DC converter."  width="500px" %}}
 
 The types which are designed to be plugged straight into the wall are called wall-warts. They usually have two-core wire going to a DC jack connector. The wire with the white stripes on it is usually positive.
 

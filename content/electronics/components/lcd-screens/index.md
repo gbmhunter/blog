@@ -21,7 +21,7 @@ The contrast is normally controlled by a potentiometer connected to one of the p
 
 LCD screens are typically use 8-bit interfaces which can usually support a reduced pin-count 4-bit mode. The following schematic shows how a typical character LCD screen is connected when using four-bit mode. The 7 lines D-RS, D-R/W, D-EN and D-D4 through D-D7 are connected to a microcontroller or similar interface. The contrast  of the screen is set by potentiometer VR1. Note that for a LCD requiring a negative contrast supply (the one shown is for a LCD with an internal negative-voltage generator), VR1 is connected differently with the pin connected to +5V-SCAP instead connected to a negative supply (typically between -2 and -3V).
 
-{{< img src="lcd-schematic.jpg" caption="Schematic for a character LCD."  width="500px" >}}
+{{% figure src="lcd-schematic.jpg" caption="Schematic for a character LCD."  width="500px" %}}
 
 ## Mounting
 
@@ -29,11 +29,11 @@ LCD screens are typically use 8-bit interfaces which can usually support a reduc
 
 The following image shows how you can reverse mount an LCD screen onto a PCB directly (using the PCB as the front panel).
 
-{{< img src="reverse-mounting-lcd-screen-onto-pcb-annotated.png" caption="This picture shows how to reverse-mount a standard LCD screen onto a PCB. Notice the SMD 2.54mm pitch header with long contacts (6.80mm)."  width="600px" >}}
+{{% figure src="reverse-mounting-lcd-screen-onto-pcb-annotated.png" caption="This picture shows how to reverse-mount a standard LCD screen onto a PCB. Notice the SMD 2.54mm pitch header with long contacts (6.80mm)."  width="600px" %}}
 
 The image below shows what a reverse-mounted LCD screen will look like from the front.
 
-{{< img src="lcd-screen-reverse-mounted-on-pcb-front-view.jpg" caption="The front view of a reverse-mounted LCD screen."  width="600px" >}}
+{{% figure src="lcd-screen-reverse-mounted-on-pcb-front-view.jpg" caption="The front view of a reverse-mounted LCD screen."  width="600px" %}}
 
 ## TFT LCD Screens
 

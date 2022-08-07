@@ -17,7 +17,7 @@ type: "post"
   <li>
       Added new "shuriken" feature to posts and pages. You can now click on the shuriken to "upvote" content! You can get more information on the <a href="/posts/2019/03-10-adding-shurikens/">Adding Shurikens post</a>.
 
-      {{< img src="shuriken-icon.png" width="100px" caption="+1's, likes, thumb's up and claps have been done before, this blog uses shurikens!"  >}}
+      {{% figure src="shuriken-icon.png" width="100px" caption="+1's, likes, thumb's up and claps have been done before, this blog uses shurikens!"  %}}
   </li>
   <li>Added a <a href="/space/qgis">QGIS page</a> (open-source, free-to-use GUI software to working with geospatial images) with information on how to add tile servers, start multiple instances of QGIS and more.</li>
   <li>Updates to the quaternion page, including:

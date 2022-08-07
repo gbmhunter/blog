@@ -24,7 +24,7 @@ There have been many updates this month!
 
 * New [MOSFET gate-drive graph](/electronics/components/transistors/mosfets/#dead-time) on the [MOSFETs page](/electronics/components/transistors/mosfets/).  
 
-    {{< img src="two-mosfet-gate-drives-with-deadtime-graph-screenshot.png" width="500px" caption="Screenshot of the MOSFET gate drive graph on the MOSFETs page."   >}}
+    {{% figure src="two-mosfet-gate-drives-with-deadtime-graph-screenshot.png" width="500px" caption="Screenshot of the MOSFET gate drive graph on the MOSFETs page."   %}}
       
 * New [eng-graphs-js repo](https://github.com/gbmhunter/eng-graphs-js), which holds all the data/code for the graphs displayed in various places on this website.
 

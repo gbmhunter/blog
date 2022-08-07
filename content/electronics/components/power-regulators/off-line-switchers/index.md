@@ -22,8 +22,8 @@ IMHO, this was a **bad name choice**, as many people would assume it is related 
 
 Both isolated and non-isolated off-line switchers exist on the market.
 
-{{< img src="offline-switcher-complete-isolated-flyback-switching-supply-schematic-ti.png" width="651px" caption="Schematic of a isolated off-line switcher by TI. Image from http://www.ti.com."  >}}
+{{% figure src="offline-switcher-complete-isolated-flyback-switching-supply-schematic-ti.png" width="651px" caption="Schematic of a isolated off-line switcher by TI. Image from http://www.ti.com."  %}}
 
 And here is an example of a non-isolated version:
 
-{{< img src="offline-switcher-linkswitch-tn-typical-application-schematic.pdf.png" width="625px" caption="A typical application schematic for the LinkSwitch-TN family of non-isolated off-line switchers by Power Integrations. Image from www.power.com."  >}}
+{{% figure src="offline-switcher-linkswitch-tn-typical-application-schematic.pdf.png" width="625px" caption="A typical application schematic for the LinkSwitch-TN family of non-isolated off-line switchers by Power Integrations. Image from www.power.com."  %}}

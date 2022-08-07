@@ -24,7 +24,7 @@ Altium is a professional, licensed electronic CAD design package, whose two core
 
 Very simple but extensive PCB design aid. And it's free! Includes a via current calculator, trace width calculator, bandwidth calculator, differential pair calculator, mechanical data, conductor impedance calculator, unit conversions, planar inductor calculator, thermal resistance calculator and more!
 
-{{< img src="saturn-pcb-toolkit-screenshot.gif" width="500px" caption="A screen-shot of the Saturn PCB toolkit." >}}
+{{% figure src="saturn-pcb-toolkit-screenshot.gif" width="500px" caption="A screen-shot of the Saturn PCB toolkit." %}}
 
 ## Standard Resistor Calculator
 
@@ -32,4 +32,4 @@ Very simple but extensive PCB design aid. And it's free! Includes a via current 
 
 Invaluable when working out the closest manufactured resistor to the value you need in your design. There are tons of web-based calculators out there, and most let you choose a resistor series (e.g. E12, E24 e.t.c), or a precision (e.g. 5%, 1%). The higher the precision (1% is higher than 5%), the more expensive the resistor.
 
-{{< img src="resistor-calculator-screenshot.jpg" width="500px" caption="Screenshot of the resistor calculator." >}}
+{{% figure src="resistor-calculator-screenshot.jpg" width="500px" caption="Screenshot of the resistor calculator." %}}

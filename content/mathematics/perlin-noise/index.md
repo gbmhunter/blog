@@ -12,7 +12,7 @@ type: page
 
 **Perlin noise** is commonly used to create natural looking textures in computer graphics. A common example is it's use to create a randomly generated landscape, or realistic looking clouds.
 
-{{< img src="perlin-noise-cloud-example.png" width="331px" caption="Rendered Perlin noise that has been configured to make realistic looking clouds." >}}
+{{% figure src="perlin-noise-cloud-example.png" width="331px" caption="Rendered Perlin noise that has been configured to make realistic looking clouds." %}}
 
 Ken Perlin invented the Perlin noise algorithm following CGI work on the movie Tron.
 

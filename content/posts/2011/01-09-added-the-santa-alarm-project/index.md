@@ -10,6 +10,6 @@ type: post
 
 Added the {{% link src="/electronics/projects/santa-alarm" text="Santa Alarm" %}} project! My solution to early mornings...
 
-{{< img src="santa_alarm_09.jpg" width="600px" >}}
+{{% figure src="santa_alarm_09.jpg" width="600px" %}}
 
 Also, I added more information on interrupts in C. Not that exciting I know, but useful!

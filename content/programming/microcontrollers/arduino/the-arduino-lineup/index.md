@@ -30,7 +30,7 @@ The Due currently has a problem running the OneWire library. The micros() functi
 
 ## Arduino Uno
 
-{{< img src="arduino-uno-pcb.jpg" caption="The Arduino UNO, the first ever Arduino PCB."  width="200px" >}}
+{{% figure src="arduino-uno-pcb.jpg" caption="The Arduino UNO, the first ever Arduino PCB."  width="200px" %}}
 
 Being one of the most popular Arduino boards, most shields are designed to be compatible with the Arduino Uno. The original contains a [DIP-packaged](/pcb-design/component-packages/) microcontroller placed in a socket, but there is also a SMD version.
 
@@ -52,7 +52,7 @@ I used one of these in the [Luxcity Tonic UV Control System project](/electronic
 
 ## Arduino Yun
 
-{{< img src="arduino-yun-pcb.jpg" caption="The Arduino Yun, a PCB with both a real-time Arduino microcontroller and Linux-based microprocessor."  width="200px" >}}
+{{% figure src="arduino-yun-pcb.jpg" caption="The Arduino Yun, a PCB with both a real-time Arduino microcontroller and Linux-based microprocessor."  width="200px" %}}
 
 The Arduino Yun was released in 2013, and was the first Arduino to incorporate a traditional real-time Arduino microcontroller (the Arduino Leonardo) with a networked, high-performance Linux-based SOC running right next to it.
 

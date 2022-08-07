@@ -11,7 +11,7 @@ type: page
 
 SCons is a build system.
 
-{{< img src="scons-build-system-logo.png" width="310px" caption="The logo for the SCons build system."  >}}
+{{% figure src="scons-build-system-logo.png" width="310px" caption="The logo for the SCons build system."  %}}
 
 ## Installation
 

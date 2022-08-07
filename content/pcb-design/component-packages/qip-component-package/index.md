@@ -89,4 +89,4 @@ Has four rows of pins. Used in the 1970's when single-sided boards with through-
 
 ## Photos
 
-{{< img src="qip-component-package-photo.jpg" width="600px" caption="A photo of the QIP component package." >}}
+{{% figure src="qip-component-package-photo.jpg" width="600px" caption="A photo of the QIP component package." %}}

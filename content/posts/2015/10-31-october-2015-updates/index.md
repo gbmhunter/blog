@@ -15,19 +15,19 @@ type: post
 
 * Moved all of the Atmel microcontroller pages under a new [Atmel parent page](/programming/microcontrollers/atmel).  
 
-    {{< img src="atmel-avr-at32-3d-render-of-ic-www-teckhat-com.gif" width="259px" caption="A 3D render of the AT32UC3L, an Atmel AVR AT32 microcontroller. Image from http://teckhat.com/."  >}}  
+    {{% figure src="atmel-avr-at32-3d-render-of-ic-www-teckhat-com.gif" width="259px" caption="A 3D render of the AT32UC3L, an Atmel AVR AT32 microcontroller. Image from http://teckhat.com/."  %}}  
 
 * New [AVRDUDE page](/programming/microcontrollers/atmel/avrdude) under Programming->Microcontrollers->Atmel.
 
 * New [PCB Surface Finishes page](/pcb-design/pcb-surface-finishes) under PCB Design.  
 
-    {{< img src="pcb-surface-finish-immersion-silver.jpg" width="355px" caption="Example of an immersion silver (IAg) PCB finish. Image from http://www.rlcinnovation.com/."  >}}  
+    {{% figure src="pcb-surface-finish-immersion-silver.jpg" width="355px" caption="Example of an immersion silver (IAg) PCB finish. Image from http://www.rlcinnovation.com/."  %}}  
 
 * New [GCC Compiler Optimisation Levels page](/programming/compilers/gcc/gcc-compiler-optimisation-levels), under Programming->Compilers->GCC.
 
 * New [SOT-346 Component Package page](/pcb-design/component-packages/sot-346-component-package).  
 
-    {{< img src="sot-346-sc-59a-component-package-3d-render.jpg" width="354px" caption="A 3D render of the SOT-346 (SC-59A) component package." >}}  
+    {{% figure src="sot-346-sc-59a-component-package-3d-render.jpg" width="354px" caption="A 3D render of the SOT-346 (SC-59A) component package." %}}  
 
 * Section on low-pass LC filters added to the "Passive Filters" page.
 
@@ -47,7 +47,7 @@ type: post
 
 * New [Testpoints page](/pcb-design/testpoints) under [PCB Design](/pcb-design).  
 
-    {{< img src="keystone-minature-smd-testpoint.jpg" width="275px" caption="A miniature SMD testpoint made by Keystone."  >}}  
+    {{% figure src="keystone-minature-smd-testpoint.jpg" width="275px" caption="A miniature SMD testpoint made by Keystone."  %}}  
 
 * Tidied up the [PCB Design page](/pcb-design).
 
@@ -55,7 +55,7 @@ type: post
 
 * New [TO-5 Component Package page](/pcb-design/component-packages/to-5-component-package).  
 
-    {{< img src="to-5-6-component-package-photo.jpg" width="275px" caption="A photo of the TO-5 6-lead component package."  >}}  
+    {{% figure src="to-5-6-component-package-photo.jpg" width="275px" caption="A photo of the TO-5 6-lead component package."  %}}  
 
 * New [RS-232 Protocol page](/electronics/communication-protocols/rs-232-protocol) under Electronics->Communication Protocols.
 

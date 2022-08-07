@@ -114,4 +114,4 @@ Commonly used for resistor networks and RAM chips. Similar to the DIP package ex
 
 ## Photos
 
-{{< img src="sip-component-package-photo.jpg" width="385px" caption="A photo of the SIP component package." >}}
+{{% figure src="sip-component-package-photo.jpg" width="385px" caption="A photo of the SIP component package." %}}

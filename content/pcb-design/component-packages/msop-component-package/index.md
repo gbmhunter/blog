@@ -148,12 +148,12 @@ Synonyms: DGS (Texas Instruments), VSSOP-10 (Texas Instruments)
 
 ## MSOP-8
 
-{{< img src="msop-8-component-package-3d-model-with-exposed-pad.jpg" width="500px" caption="3D model of the MSOP-8 component package (with exposed pad)." >}}
+{{% figure src="msop-8-component-package-3d-model-with-exposed-pad.jpg" width="500px" caption="3D model of the MSOP-8 component package (with exposed pad)." %}}
 
-{{< img src="msop-8-component-package-dimensions.png" width="500px" caption="Package dimensions of the MSOP-8 component package (with exposed pad)." >}}
+{{% figure src="msop-8-component-package-dimensions.png" width="500px" caption="Package dimensions of the MSOP-8 component package (with exposed pad)." %}}
 
 ## MSOP-10
 
-{{< img src="msop-10-component-package-dimensions.png" width="500px" caption="Package dimensions of the MSOP-10 component package (with exposed pad)." >}}
+{{% figure src="msop-10-component-package-dimensions.png" width="500px" caption="Package dimensions of the MSOP-10 component package (with exposed pad)." %}}
 
-{{< img src="msop-10-component-package-recommend-land-pattern.gif" width="500px" caption="The recommeneded land pattern for the MSOP-10 component package." >}}
+{{% figure src="msop-10-component-package-recommend-land-pattern.gif" width="500px" caption="The recommeneded land pattern for the MSOP-10 component package." %}}

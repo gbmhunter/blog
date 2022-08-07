@@ -13,7 +13,7 @@ type: "page"
 
 Visual Studio Code is a free, multi-platform, open-source code editor from Microsoft.
 
-{{< img src="visual-studio-code-icon-large.png" width="200px" caption="The icon for Microsoft's Visual Studio Code."  >}}
+{{% figure src="visual-studio-code-icon-large.png" width="200px" caption="The icon for Microsoft's Visual Studio Code."  %}}
 
 ## Keyboard Shortcuts
 

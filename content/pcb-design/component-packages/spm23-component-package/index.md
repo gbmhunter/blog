@@ -122,8 +122,8 @@ Package proprietary to Fairchild Semiconductor, used for some of their motor dri
 
 ## Photos
 
-{{< img src="spm23-component-package-photo.jpg" width="344px" caption="A photo of the SPM23 component package."  >}}
+{{% figure src="spm23-component-package-photo.jpg" width="344px" caption="A photo of the SPM23 component package."  %}}
 
 ## Recommended Land Pattern (Footprint)
 
-{{< img src="component-package-spm-23-land-pattern.png" caption="The land pattern for the SPM-23 component package."  width="400px" >}}
+{{% figure src="component-package-spm-23-land-pattern.png" caption="The land pattern for the SPM-23 component package."  width="400px" %}}

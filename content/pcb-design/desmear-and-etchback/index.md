@@ -20,9 +20,9 @@ The images below show positive etchback.
 <table>
   <tbody>
     <tr>
-      <td>{{< img src="etchback-none.png" width="200px" caption="Cross-section of a via hole with no etchback (hole has not been plated yet)." >}}</td>
-      <td>{{< img src="etchback-before-plating.png" width="220px" caption="Cross-section of a via hole that has positive etchback (hole has not been plated yet)." >}}</td>
-      <td>{{< img src="etchback-after-plating.png" width="200px" caption="Cross-section of a via which has been plated after positive etchback was done, notice the 'three-point connection'."  >}}</td>
+      <td>{{% figure src="etchback-none.png" width="200px" caption="Cross-section of a via hole with no etchback (hole has not been plated yet)." %}}</td>
+      <td>{{% figure src="etchback-before-plating.png" width="220px" caption="Cross-section of a via hole that has positive etchback (hole has not been plated yet)." %}}</td>
+      <td>{{% figure src="etchback-after-plating.png" width="200px" caption="Cross-section of a via which has been plated after positive etchback was done, notice the 'three-point connection'."  %}}</td>
     </tr>
   </tbody>
 </table>
@@ -31,7 +31,7 @@ The images below show positive etchback.
 
 Negative etchback is when the copper layers recede from the edge of the via hole, as shown in the diagram below.
 
-{{< img src="etchback-negative.png" width="314px" caption="The cross-section of a via with negative etchback. Notice how the copper plane recedes from the edge of the via hole."  >}}
+{{% figure src="etchback-negative.png" width="314px" caption="The cross-section of a via with negative etchback. Notice how the copper plane recedes from the edge of the via hole."  %}}
 
 ## Methods
 

@@ -60,7 +60,7 @@ Given two points `\(x_1\)` and `\(x_2\)` which form a line in 3D space, and a th
 
 Assume we have points `\(\mathbf{p1}\)` and `\(\mathbf{p2}\)` which form a line, and we want to find the shortest distance from this line to a point `\(\mathbf{p3}\)`.
 
-{{< img src="3d-point-to-line-distance-diagram-p1-p2-p3-p4.png" width="475px" caption="A diagram showing a 3D point to line distance problem."  >}}
+{{% figure src="3d-point-to-line-distance-diagram-p1-p2-p3-p4.png" width="475px" caption="A diagram showing a 3D point to line distance problem."  %}}
 
 We will first find the point `\(\mathbf{p4}\)` which is the closest point to `\(\mathbf{p3}\)` which is on the line. Once we have this, finding the distance of the line which goes from `\(\mathbf{p3}\)` to `\(\mathbf{p4}\)` will be trivial.
 

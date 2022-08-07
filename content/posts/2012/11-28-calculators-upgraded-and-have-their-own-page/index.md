@@ -33,4 +33,4 @@ The electronic online calculators have been upgraded! They now
 
 The calculators now have their own ~~\[page\](/electronics/general/online-calculators)~~, which shows the collection of calculators that are used on the electrical pages of the ~~\[CladLabs site\](www.cladlabs.com)~~.
 
-{{< img src="calculators-got-upgrade-and-have-their-own-page-with-border.jpg" caption="Screenshot of the Ohm's law and resistor divider online calculators."  width="600px" >}}
+{{% figure src="calculators-got-upgrade-and-have-their-own-page-with-border.jpg" caption="Screenshot of the Ohm's law and resistor divider online calculators."  width="600px" %}}

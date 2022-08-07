@@ -92,7 +92,7 @@ PCI devices have a set of registers referred to as the _configuration space_, an
 
 The configuration space is a standardized section of memory on PCIe cards that allows PCIe cards to configure correctly.
 
-{{< img src="pci-type-0-non-bridge-config-space-diagram-v2.png" width="624px" caption="The standardised registers that belong to the PCI/PCIe Type 0 (non-bridge) configuration space. Image from https://en.wikipedia.org."  >}}
+{{% figure src="pci-type-0-non-bridge-config-space-diagram-v2.png" width="624px" caption="The standardised registers that belong to the PCI/PCIe Type 0 (non-bridge) configuration space. Image from https://en.wikipedia.org."  %}}
 
 ## What Are BARs?
 
@@ -118,11 +118,11 @@ The way to detect and explore the PCIe device depends on the OS that the compute
 
 The built-in Device Manager gives a very brief overview of detected PCI cards.
 
-{{< img src="screenshot-of-custom-pcie-card-in-device-manager.png" width="341px" caption="A screenshot of Windows Device Manager showing the presence of a custom PCIe card."  >}}
+{{% figure src="screenshot-of-custom-pcie-card-in-device-manager.png" width="341px" caption="A screenshot of Windows Device Manager showing the presence of a custom PCIe card."  %}}
 
 _RWEverything_ is a great Windows tool that allows you to read and write from any available memory location on the PCIe card (not just the configuration memory, as many other tools provide).
 
-{{< img src="screenshot-of-custom-pcie-card-in-rw-everything.png" width="883px" caption="A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC."  >}}
+{{% figure src="screenshot-of-custom-pcie-card-in-rw-everything.png" width="883px" caption="A screenshot of the RWEverything software while exploring the memory of a custom PCIe card inserted into a Windows PC."  %}}
 
 {{% note %}}
 Many browsers and anti-virus software packages will state that RWEverything is a virus/malware. Chrome doesn't even let you download the file. However, I have used RWEverything many times and not discovered any problems from using the software. I suspect that this program is picked up by anti-virus software because it allows low-level read/write access to the systems memory and peripherals.

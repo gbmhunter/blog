@@ -16,7 +16,7 @@ This page is about mechanically adjustable resistors called potentiometers and r
 _Potentiometers_ are 3 terminal resistors whose resistance can be varied by means of a mechanical wiper or similar actuating device. They consist of two outer terminals which provide connections to a fixed resistance made from a conductive track, and a middle pin which connects to the wiper. The potentiometer can be turned so that the wiper slides from one end of the track to the other, changing the resistance between it and the two outer pins. A rheostat (which is also called a _variable resistor_) is simply a potentiometer but with one of the outside pins missing. They typically come in values of 5, 10, 20, 50 and 100kΩ.
 
 
-{{< img src="potentiometer-10k-edited.jpg" width="300px" caption="A photo of a panel-mount, through-hole potentiometer from BI Technologies/TT Electronics (part number P160KNP-0EC15B10K). The outer pins have a fixed resistance across them of `\(10k\Omega\)`. The middle pin is connected to the wiper, and it's resistance varies between the outer pins (linearly in this case, but other tapers exist such as logarithmic) as the knob is turned." >}}
+{{% figure src="potentiometer-10k-edited.jpg" width="300px" caption="A photo of a panel-mount, through-hole potentiometer from BI Technologies/TT Electronics (part number P160KNP-0EC15B10K). The outer pins have a fixed resistance across them of `\(10k\Omega\)`. The middle pin is connected to the wiper, and it's resistance varies between the outer pins (linearly in this case, but other tapers exist such as logarithmic) as the knob is turned." %}}
 
 Potentiometers are commonly used for user interfaces (e.g. volume control on an audio amplifier), once-off manufacturing calibration, and cheap mechanical rotation to digital converters.
 
@@ -30,7 +30,7 @@ Designator prefixes for potentiometers and rheostats include:
 
 The schematic symbol looks like a normal resistor, but with a third pin added to the side of the resistor with an arrow, indicating the wiper. An example (with the US style squiggly resistor) is shown below:
 
-{{< img src="potentiometer-symbol.svg" width="200px" caption="The schematic symbol for a potentiometer, with the US-style 'squiggly' resistor." >}}
+{{% figure src="potentiometer-symbol.svg" width="200px" caption="The schematic symbol for a potentiometer, with the US-style 'squiggly' resistor." %}}
 
 See the [Resistors section of the Component Schematic Symbols and Designators page](/electronics/circuit-design/component-schematic-symbols-and-designators#resistors-r-vr) for more information.
 
@@ -56,7 +56,7 @@ The taper is the relationship between position and resistance. It is also someti
 
 The below plot gives you an idea on the shapes of these tapers. For the equation used to generate these tapers, see the below section [The Ideal Logarithmic Taper Equation](#the-ideal-logarithmic-taper-equation). 
 
-{{< img src="plot-of-tapers.png" width="500px" caption="Plot of the approximation of three common potentiometer tapers, the linear, log and antilog taper." >}}
+{{% figure src="plot-of-tapers.png" width="500px" caption="Plot of the approximation of three common potentiometer tapers, the linear, log and antilog taper." %}}
 
 {{% warning %}}
 Log and antilog tapers are usually never very precise (unless you pay big money), and in cases are just two piece-wise linear tapers of different gradients. The plot above just shows the **approximate shape**.

@@ -31,4 +31,4 @@ type: post
 
 * New {{% link text="Perlin Noise page" src="/mathematics/perlin-noise" %}} under Mathematics.  
 
-    {{< img src="perlin-noise-cloud-example.png" width="374px" caption="Rendered Perlin noise that has been configured to make realistic looking clouds." >}}
+    {{% figure src="perlin-noise-cloud-example.png" width="374px" caption="Rendered Perlin noise that has been configured to make realistic looking clouds." %}}

@@ -14,7 +14,7 @@ type: "page"
 
 Inductors are passive electronic components which store energy as a magnetic field. They are made by coiling wire around a material (be it air, or something else). They are well used but not as common as [resistors](/electronics/components/resistors) and {{% link text="capacitors" src="/electronics/components/capacitors" %}} in electronic circuits.
 
-{{< img src="3-35uh-20a-large-inductor.jpg" caption="A 3.35uH 20A large inductor." width="400px" >}}
+{{% figure src="3-35uh-20a-large-inductor.jpg" caption="A 3.35uH 20A large inductor." width="400px" %}}
 
 **The mechanical equivalent of an inductor is mass.** The larger the inductance, the larger the mass. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
@@ -49,7 +49,7 @@ For example: If you connected 12V across an inductor, initially there would be n
 
 There are a few common schematic symbols for an inductor. `L` is almost always used as the designator prefix on schematics, e.g. inductors will be named `L1`, `L2`, e.t.c. The figure below shows the symbols used for common sub-families of inductors. Not all circuit designers will be specific and use a special symbol to indicate iron/ferrite cored inductors (vs. air-cored inductors), and the generic symbol may be used for all types. 
 
-{{< img src="schematic-symbols-of-inductors.png" width="500px" caption="Schematic symbols for a range of the basic inductor sub-families." >}}
+{{% figure src="schematic-symbols-of-inductors.png" width="500px" caption="Schematic symbols for a range of the basic inductor sub-families." %}}
 
 ## Important Parameters
 
@@ -193,7 +193,7 @@ It is usually easier to remember this equation as:
 
 The following diagram shows this:
 
-{{< img src="inductors-in-parallel-with-equation.png" width="608px" caption="Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image."  >}}
+{{% figure src="inductors-in-parallel-with-equation.png" width="608px" caption="Two inductors in parallel is the equivalent of one inductor whose inductance is given by the reciprocal equation in this image."  %}}
 
 ### Inductors In Series
 
@@ -203,7 +203,7 @@ The equivalent inductance of two inductors connected in series is the sum of the
 
 This is shown in the diagram below:
 
-{{< img src="inductor-in-series-with-equation.png" width="609px" caption="Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances." >}}
+{{% figure src="inductor-in-series-with-equation.png" width="609px" caption="Two inductors in series are the equivalent of one inductor whose inductance is the sum of the individual inductances." %}}
 
 ## The Energy Stored In An Inductor
 
@@ -313,7 +313,7 @@ Inductors only behave like inductors over a **limited current range**. As the cu
 
 The below image shows a typical inductance vs. current curve for a ferrite core, SMD inductor that could be used on a 3A SMPS design. It's rated saturation current is 4.2A. Notice how after the current increases beyond this point, the inductance of the inductor drops of rapidly.
 
-{{< img src="inductance-vs-current-graph-wurth-7447789003-3.3uh.png" width="502px" caption="Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A."  >}}
+{{% figure src="inductance-vs-current-graph-wurth-7447789003-3.3uh.png" width="502px" caption="Inductance vs. current graph of the Wurth 7447789003, a 3.3uH ferrite SMD inductor with a specified saturation current of 4.2A."  %}}
 
 As governed by the basic induction equation, applying a constant voltage across an inductor will lead to a linear increase in current. This will be the case until the saturation point, at which the current will begin to increase more rapidly, until is reaches a limit determined only by the DC resistance of the windings.
 
@@ -345,13 +345,13 @@ One way to measure the inductance of an inductor is with a signal generator and 
 
 1. Connect the oscilloscope to the signal generator and measure the open-circuit voltage. It should be about 1V peak-to-peak. Record down the exact peak-to-peak value, as signal generators are not usually that accurate with their voltages!
 
-    {{< img src="inductor-measurement-with-sig-gen-and-oscilloscope-01.png" width="500px" >}}
+    {{% figure src="inductor-measurement-with-sig-gen-and-oscilloscope-01.png" width="500px" %}}
 
     {{< note >}}If you read 2V peak-to-peak, you probably have the signal generators output type set to 50Ω, which means it doubles the voltage. Switch to high-Z or change the voltage to 500mV peak-to-peak to compensate.{{< /note >}}
 
 1. Now connect the inductor to the signal generator, whilst still measuring the voltage with the oscilloscope (this will be the output voltage of the signal generator, as well as the voltage across the inductor). The circuit should look like this:
 
-    {{< img src="inductor-measurement-with-sig-gen-and-oscilloscope-02.png" width="600px" >}}
+    {{% figure src="inductor-measurement-with-sig-gen-and-oscilloscope-02.png" width="600px" %}}
 
 1. Adjust the frequency of the signal generator until the peak-to-peak voltage across the inductor is half the measured open-circuit peak-to-peak voltage.
 
@@ -430,7 +430,7 @@ L   &= \sqrt{\frac{1}{3}} \frac{R}{2\pi f}
 
 Unfortunately for the PCB designer, almost all SMD inductor packages are non-standard and unique to the manufacturer and series.
 
-{{< img src="ipc-sm-782-component-dimensions-for-smd-inductors.png" width="709px" caption="Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard." >}}
+{{% figure src="ipc-sm-782-component-dimensions-for-smd-inductors.png" width="709px" caption="Standard dimensions for three different types of SMD inductor packages. Image from the IPC-SM-782 standard." %}}
 
 ## References
 

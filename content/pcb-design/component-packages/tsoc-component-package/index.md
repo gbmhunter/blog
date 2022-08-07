@@ -97,20 +97,20 @@ The only difference between the D6+1, D6-1 and D6N-1 variants of the TSOC-6 comp
 
 **Photo**
 
-{{< img src="tsoc-6-component-package-photo.jpg" width="360px" caption="A photo of the TSOC-6 component package. Image from maximintegrated.com." >}}
+{{% figure src="tsoc-6-component-package-photo.jpg" width="360px" caption="A photo of the TSOC-6 component package. Image from maximintegrated.com." %}}
 
 **Dimensions**
 
 All Variants:
 
-{{< img src="tsoc-6-component-package-dimensions.png" width="500px" caption="A photo of the TSOC-6 component package. Image from maximintegrated.com." >}}
+{{% figure src="tsoc-6-component-package-dimensions.png" width="500px" caption="A photo of the TSOC-6 component package. Image from maximintegrated.com." %}}
 
 **Recommended Land Pattern**
 
 D6+1/D6-1 Variants (Variant A):
 
-{{< img src="component-package-tsoc-6-d6n-1-recommended-land-pattern.png" width="500px" caption="The recommended land pattern for the TSOC-6 D6+1/D6-1 component package. Image from maximintegrated.com." >}}
+{{% figure src="component-package-tsoc-6-d6n-1-recommended-land-pattern.png" width="500px" caption="The recommended land pattern for the TSOC-6 D6+1/D6-1 component package. Image from maximintegrated.com." %}}
 
 D6N+1/D6N-1 Variants (Variant B):
 
-{{< img src="component-package-tsoc-6-d6n-1-recommended-land-pattern.png" width="500px" caption="The recommended land pattern for the TSOC-6 D6N+1/D6N-1 component package. Image from maximintegrated.com." >}}
+{{% figure src="component-package-tsoc-6-d6n-1-recommended-land-pattern.png" width="500px" caption="The recommended land pattern for the TSOC-6 D6N+1/D6N-1 component package. Image from maximintegrated.com." %}}

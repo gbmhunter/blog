@@ -51,28 +51,28 @@ This is when I switched from using a light theme to a dark theme.
 
 **Some of the banner images this site used at this time were:**
 
-{{< img src="banner-980x300-coil-gun.jpg" width="800px" caption="Banner image relating to the coil gun I made." >}}
+{{% figure src="banner-980x300-coil-gun.jpg" width="800px" caption="Banner image relating to the coil gun I made." %}}
 
-{{< img src="banner-980x300-columbus-radio.jpg" width="800px" caption="Banner image relating to the retro valve-operated radio that I renovated and added Spotify playback to." >}}
+{{% figure src="banner-980x300-columbus-radio.jpg" width="800px" caption="Banner image relating to the retro valve-operated radio that I renovated and added Spotify playback to." %}}
 
-{{< img src="banner-980x300-component-packages.jpg" width="800px" caption="Banner image advertising the component packages section of this blog." >}}
+{{% figure src="banner-980x300-component-packages.jpg" width="800px" caption="Banner image advertising the component packages section of this blog." %}}
 
-{{< img src="banner-980x300-electric-skateboard.jpg" width="800px" caption="Banner image taking the reader to the project page for the electric skateboard I built." >}}
+{{% figure src="banner-980x300-electric-skateboard.jpg" width="800px" caption="Banner image taking the reader to the project page for the electric skateboard I built." %}}
 
-{{< img src="banner-980x300-high-voltage.jpg" width="800px" caption="Banner image with photos with myself messing around with a neon-sign transformer." >}}
+{{% figure src="banner-980x300-high-voltage.jpg" width="800px" caption="Banner image with photos with myself messing around with a neon-sign transformer." %}}
 
-{{< img src="banner-980x300-inursery.jpg" width="800px" caption="Banner image taking the reader to the project page for the temperature regulated 'iNursery' I built." >}}
+{{% figure src="banner-980x300-inursery.jpg" width="800px" caption="Banner image taking the reader to the project page for the temperature regulated 'iNursery' I built." %}}
 
-{{< img src="banner-980x300-luxcity-tonic.jpg" width="800px" caption="Banner image advertising the Luxcity 'Tonic' project I was involved in." >}}
+{{% figure src="banner-980x300-luxcity-tonic.jpg" width="800px" caption="Banner image advertising the Luxcity 'Tonic' project I was involved in." %}}
 
-{{< img src="banner-980x300-op-amps.jpg" width="800px" caption="Banner image advertising the op-amp section of this blog." >}}
+{{% figure src="banner-980x300-op-amps.jpg" width="800px" caption="Banner image advertising the op-amp section of this blog." %}}
 
 ### 2014: Blog Renamed To mbedded.ninja
 
 * Name: mbedded.minja
 * URL: www.mbedded.ninja  
 
-{{< img src="mbedded-ninja-front-page-header-2014.png" width="800px" caption="A screenshot of the frontpage header just after blog was moved from cladlabs.com to mbedded.ninja (the theme was essentially kept the same)." >}}
+{{% figure src="mbedded-ninja-front-page-header-2014.png" width="800px" caption="A screenshot of the frontpage header just after blog was moved from cladlabs.com to mbedded.ninja (the theme was essentially kept the same)." %}}
 
 ### 2015: Updated To The Wordpress TwentyFifteen Theme
 
@@ -102,7 +102,7 @@ Migrated from Wordpress (full-blown CMS) to Hugo (static-site generator). The Gi
 
 A full post with more information on this migration can be found [here](/posts/2018/12-15-site-migration-to-hugo-complete/).
 
-{{< img src="page-view-decrease-migration-from-wordpress-to-hugo.png" width="800px" caption="The decrease in page views after the migration from a Wordpress powered site to a statically-generated site powered by Hugo. There were no domain/page URL changes during this migration." >}}
+{{% figure src="page-view-decrease-migration-from-wordpress-to-hugo.png" width="800px" caption="The decrease in page views after the migration from a Wordpress powered site to a statically-generated site powered by Hugo. There were no domain/page URL changes during this migration." %}}
 
 ## Site Info
 

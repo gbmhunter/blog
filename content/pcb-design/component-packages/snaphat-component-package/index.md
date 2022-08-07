@@ -98,12 +98,12 @@ Package registered by ST Microelectronics. Used to hold small rechargeable batte
 
 ## Photo
 
-{{< img src="snaphat-component-package-photo.png" width="340px" caption="A photo of the SNAPHAT component package."  >}}
+{{% figure src="snaphat-component-package-photo.png" width="340px" caption="A photo of the SNAPHAT component package."  %}}
 
 ## Dimensions
 
-{{< img src="component-package-snaphat-dimensions.png" caption="The dimensions for the SnapHat component package."  width="600px" >}}
+{{% figure src="component-package-snaphat-dimensions.png" caption="The dimensions for the SnapHat component package."  width="600px" %}}
 
 ## Typical Pin Connections
 
-{{< img src="component-package-snaphat-schematic.png" caption="The schematic for the SnapHat component package."  width="400px" >}}
+{{% figure src="component-package-snaphat-schematic.png" caption="The schematic for the SnapHat component package."  width="400px" %}}

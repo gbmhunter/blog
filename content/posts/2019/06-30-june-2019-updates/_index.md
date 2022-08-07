@@ -16,11 +16,11 @@ type: "post"
 
 * Added graphs of 1D Fourier transformations:
 
-    {{% figure src="/programming/signal-processing/fourier-transforms/1d-fourier-transform.png" %}}
+    {{% figure src="/programming/signal-processing/fourier-transforms/1d-fourier-transform.png" width="400px" %}}
 
     and animated .gifs of 2D Fourier transformations:
 
-    {{% figure src="/programming/signal-processing/fourier-transforms/sinusoidal.gif" %}}
+    {{% figure src="/programming/signal-processing/fourier-transforms/sinusoidal.gif" width="400px" %}}
 
 * Updated the pytest page with info on `mark` (markers) and `pytest` naming conventions.
 

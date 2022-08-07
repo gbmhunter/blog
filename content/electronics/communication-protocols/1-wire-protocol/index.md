@@ -10,7 +10,7 @@ type: page
 
 <p>The 1-wire protocol is a one wire, half-duplex, bi-directional, multi-drop, wired communication protocol.</p>
 
-{{< img src="1-wire-ic-schematic-ds18b20-high-zoom-logo.png" width="181px" caption="A high-zoom schematic screenshot of the DS18B20, a Maxim 1-wire temperature sensor."  >}}
+{{% figure src="1-wire-ic-schematic-ds18b20-high-zoom-logo.png" width="181px" caption="A high-zoom schematic screenshot of the DS18B20, a Maxim 1-wire temperature sensor."  %}}
 
 <table>
     <tbody>
@@ -51,7 +51,7 @@ type: page
 
 <p>The 1-wire communication protocol is a hardware and software design that allows communication between a microcontroller and other ICs, using only a single wire (excluding ground, and if needed, a power rail). Each and every 1-Wire IC has it's own unique code.</p>
 
-{{< img src="ds18b20-temp-sensor-functional-block-diagram-showing-one-wire-interface.png" width="475px" caption="The functional block diagram of the DS18B20 temperature sensor, showing the 1-wire interface circuitry. Image from www.maximintegrated.com."  >}}
+{{% figure src="ds18b20-temp-sensor-functional-block-diagram-showing-one-wire-interface.png" width="475px" caption="The functional block diagram of the DS18B20 temperature sensor, showing the 1-wire interface circuitry. Image from www.maximintegrated.com."  %}}
 
 ## Addressing
 
@@ -79,7 +79,7 @@ To obtain true 1-wire communication (excluding ground), some 1-wire ICs support 
 
 Some 1-wire devices have two additional pins to support sequence detection.
 
-{{< img src="1-wire-bus-example-showing-sequence-detection-with-ds28ea00.png" width="702px" caption="An example of a 1-wire bus with the DS28EA00 ICs, which support sequence detection. Image from www.maximintegrated.com."  >}}
+{{% figure src="1-wire-bus-example-showing-sequence-detection-with-ds28ea00.png" width="702px" caption="An example of a 1-wire bus with the DS28EA00 ICs, which support sequence detection. Image from www.maximintegrated.com."  %}}
 
 ## Bit Bashing
 

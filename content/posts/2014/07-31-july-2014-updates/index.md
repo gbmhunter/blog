@@ -21,7 +21,7 @@ Probably one of the biggest months of updates ever!
 
 * Updated [Alitum Simulation page](/electronics/general/altium/altium-simulation).
 
-    {{< img src="frequency_response_01.jpg" width="700px" caption="A first-order high-pass filter with a cut-off frequency of 15.9kHz."   >}}
+    {{% figure src="frequency_response_01.jpg" width="700px" caption="A first-order high-pass filter with a cut-off frequency of 15.9kHz."   %}}
 
 * New page on the Linux program [diff](/programming/operating-systems/linux/programs/diff).
 
@@ -63,7 +63,7 @@ Probably one of the biggest months of updates ever!
 
 * New component package added, [SOD-123F](/pcb-design/component-packages/sod-123f-component-package/), to the [Component Packages page](/pcb-design/component-packages/).
 
-    {{< img src="component-package-sod-123f-3d-model-2.jpg" width="500px" caption="A 3D model of the SOD-123F component package." >}}
+    {{% figure src="component-package-sod-123f-3d-model-2.jpg" width="500px" caption="A 3D model of the SOD-123F component package." %}}
 
 * New GitHub repo, [TemplateCodeFiles](https://github.com/gbmhunter/TemplateCodeFiles), which currently contains template code for the C and C++ languages.
 
@@ -77,7 +77,7 @@ Probably one of the biggest months of updates ever!
 
 * Updated to the [RingBuff-Cpp](https://github.com/gbmhunter/RingBuff-Cpp) GitHub repo.
 
-    {{< img src="github-ringbuff-readme-screenshot.png" width="500px" >}}
+    {{% figure src="github-ringbuff-readme-screenshot.png" width="500px" %}}
 
 * Updates to the [Microcontroller IDE Comparison page](/programming/general/microcontroller-ide-comparison) relating to AVR Studio.
 

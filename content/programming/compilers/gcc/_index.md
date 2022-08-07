@@ -12,4 +12,4 @@ type: "page"
 
 ## Logo
 
-{{< img src="gcc-compiler-logo.png" width="200px" caption="The GCC logo." >}}
+{{% figure src="gcc-compiler-logo.png" width="200px" caption="The GCC logo." %}}

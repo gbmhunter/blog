@@ -27,7 +27,7 @@ If you are thinking of using Scons or Makefiles, please make sure you are doing 
 
 ## Bazel
 
-{{< img src="bazel-build-system-logo.png" width="150px" >}}
+{{% figure src="bazel-build-system-logo.png" width="150px" %}}
 
 * Website: [https://bazel.build/](https://bazel.build/)
 * Code: [https://github.com/bazelbuild/bazel](https://github.com/bazelbuild/bazel)
@@ -85,7 +85,7 @@ Bazel seems to have first tier build support for C/C++, Java, Android and iOS.
 
 ## Buck
 
-{{< img src="buck-build-system-logo.png" width="150px" >}}
+{{% figure src="buck-build-system-logo.png" width="150px" %}}
 
 * Website: [https://buckbuild.com/](https://buckbuild.com/)
 * Code: [https://github.com/facebook/buck](https://github.com/facebook/buck)
@@ -133,7 +133,7 @@ Bazel seems to have first tier build support for C/C++, Java, Android and iOS.
 
 ## Buckaroo
 
-{{< img src="buckaroo-package-manager-logo.png" width="150px" >}}
+{{% figure src="buckaroo-package-manager-logo.png" width="150px" %}}
 
 * Website: [https://buckaroo.pm/](https://buckaroo.pm/)
 * Code: [https://github.com/LoopPerfect/buckaroo](https://github.com/LoopPerfect/buckaroo)
@@ -145,7 +145,7 @@ Unfortunately, I do not believe that Buckaroo supports local dependencies. All d
 
 ## CMake
 
-{{< img src="cmake-build-system-logo.png" width="150px" >}}
+{{% figure src="cmake-build-system-logo.png" width="150px" %}}
 
 * Website: [https://cmake.org/](https://cmake.org/)
 * Code: [https://gitlab.kitware.com/cmake/cmake](https://gitlab.kitware.com/cmake/cmake)
@@ -210,7 +210,7 @@ For more information on CMake, see the [dedicated CMake section of mbedded.ninja
 
 ## Conan
 
-{{< img src="conan-c-cpp-package-manager-logo.png" width="150px" >}}
+{{% figure src="conan-c-cpp-package-manager-logo.png" width="150px" %}}
 
 * Website: [https://conan.io/](https://conan.io/)
 * Code: [https://github.com/conan-io/conan](https://github.com/conan-io/conan)
@@ -264,7 +264,7 @@ When used with CMake, Conan can take over the responsibility of what is traditio
 
 ## Makefiles
 
-{{< img src="gnu-logo.png" width="150px" >}}
+{{% figure src="gnu-logo.png" width="150px" %}}
 
 * Website: [https://www.gnu.org/software/make/](https://www.gnu.org/software/make/)
 * Code: [http://savannah.gnu.org/projects/make/](http://savannah.gnu.org/projects/make/)
@@ -315,7 +315,7 @@ No. No. No. Please don't consider raw makefiles as your build system unless you 
 
 ## Scons
 
-{{< img src="scons-build-system.png" width="200px" >}}
+{{% figure src="scons-build-system.png" width="200px" %}}
 
 * Website: [https://scons.org/](https://scons.org/)
 * Code: [https://github.com/SCons/scons](https://github.com/SCons/scons)

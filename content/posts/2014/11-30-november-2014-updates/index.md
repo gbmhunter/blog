@@ -11,7 +11,7 @@ type: post
 
 * Added [Desmear and Etch/pcb-design/desmear-and-etchback/nd-etchback) under Electronics->PCB Design.  
 
-    {{< img src="etchback-after-plating.png" width="219px" caption="A via which has been plated after etchback was done, notice the 'three-point connection'."  >}}
+    {{% figure src="etchback-after-plating.png" width="219px" caption="A via which has been plated after etchback was done, notice the 'three-point connection'."  %}}
 
 * Update to the [sed page](/programming/operating-systems/linux/programs/sed) with a new example on replacing a date format.
 
@@ -24,7 +24,7 @@ type: post
 * New [IMS (Insulated Metallic Substrate) PCBs page under Electronics->PCB Design. Includes tikz drawn diagrams.  
 ](/electronics/pcb-design/ims-insulated-metal-substrate-pcbs)  
 
-    {{< img src="ims-pcb-aluminium-side-on-photo.png" width="653px" caption="A side on photo of a IMS PCB with an aluminium base."  >}}
+    {{% figure src="ims-pcb-aluminium-side-on-photo.png" width="653px" caption="A side on photo of a IMS PCB with an aluminium base."  %}}
 
 * New [.bss Section page](/programming/languages/c/bss-section) under Programming->Languages->C.
 
@@ -60,7 +60,7 @@ type: post
 
 * New [page on 2D Coordinate Rotation](/mathematics/geometry/2d-coordinate-rotation/) under Mathematics.  
 
-    {{< img src="2d-co-ordinate-rotation-equations.png" width="375px" caption="2D co-ordinate rotation equations."  >}}
+    {{% figure src="2d-co-ordinate-rotation-equations.png" width="375px" caption="2D co-ordinate rotation equations."  %}}
 
 * New info about SEPICs added to the [Power Converters page](/electronics/components/power-regulators).
 

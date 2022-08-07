@@ -12,7 +12,7 @@ type: page
 
 Most SMD tantalum capacitors follow a standard set of sizes given in the following table. Most are almost rectangular, but if you look closely some the the faces are slightly angled. They are typically orange in colour. Kemet and AVX (two large manufacturers of these caps) label the packages slightly differently.
 
-{{< img src="smd-tantalum-capacitor-package-photo.jpg" width="262px" caption="A photo of a SMD tantalum capacitor package."  >}}
+{{% figure src="smd-tantalum-capacitor-package-photo.jpg" width="262px" caption="A photo of a SMD tantalum capacitor package."  %}}
 
 <table>
   <thead>
@@ -153,4 +153,4 @@ Most SMD tantalum capacitors follow a standard set of sizes given in the followi
 
 The land dimensions and courtyard are shown below:
 
-{{< img src="tantalum-smd-capacitors-component-package-kemet-land-dimensions-and-courtyard-info.pdf.png" width="1139px" caption="The land dimensions and courtyard for various SMD tantalum capacitor sizes. Image from www.kemet.com." >}}
+{{% figure src="tantalum-smd-capacitors-component-package-kemet-land-dimensions-and-courtyard-info.pdf.png" width="1139px" caption="The land dimensions and courtyard for various SMD tantalum capacitor sizes. Image from www.kemet.com." %}}

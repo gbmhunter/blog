@@ -14,7 +14,7 @@ The _Yocto Project_, or more commonly just called _Yocto_, is a build system use
 It is important to note **that it is not a Linux distribution itself**, but a collection of tools to generate a custom Linux distribution for your specific embedded hardware.
 {{% /note %}}
 
-{{< img src="the-yocto-project-logo.png" width="404px" caption="The logo for the Yocto project."  >}}
+{{% figure src="the-yocto-project-logo.png" width="404px" caption="The logo for the Yocto project."  %}}
 
 ## Quick Start
 
@@ -86,7 +86,7 @@ $ bitbake core-image-sato
 
 Now go grab a coffee. Or better yet, take your family out to a restaurant for a nice meal. This is going to **TAKE A WHILE**.
 
-{{< img src="yocto-linux-build-in-progress-showing-cpu-usage.png" width="1491px" caption="An embedded Linux build in progress (using Yocto), note the CPU usage!"  >}}
+{{% figure src="yocto-linux-build-in-progress-showing-cpu-usage.png" width="1491px" caption="An embedded Linux build in progress (using Yocto), note the CPU usage!"  %}}
 
 **Make sure your computer is not set to go to sleep/shutdown after 1-2 hours of activity, otherwise you might find the build won't complete!**
 
@@ -102,7 +102,7 @@ $ runqemu qemux86
 
 This should load up a separate window, and display a GUI of the Linux image you just built.
 
-{{< img src="yocto-running-qemu-after-building-default-linux-image.png" width="1327px" caption="Running the finished Yocto build in QEMU (an emulator)."  >}}
+{{% figure src="yocto-running-qemu-after-building-default-linux-image.png" width="1327px" caption="Running the finished Yocto build in QEMU (an emulator)."  %}}
 
 ## The Project Configuration File
 

@@ -8,7 +8,7 @@ title: "Happy New Year 2020"
 type: "post"
 ---
 
-{{< img src="happy-new-year-2020.png" width="500px" caption="Happy new year!" >}}
+{{% figure src="happy-new-year-2020.png" width="500px" caption="Happy new year!" %}}
 
 A big happy new year to you from Geoff here at blog.mbedded.ninja. Looking back at this blog in 2019, below are some interesting statistics from the 2019 year.
 
@@ -45,9 +45,9 @@ This is the second year in a row in which I have used Google Analytics for stati
   </tbody>
 </table>
 
-{{< img src="20191231-google-analytics-weekly-page-views-for-2019.png" width="800px" caption="A comparison of the number of page views per week for the 2018 and 2019 years. Image from Google Analytics." >}}
+{{% figure src="20191231-google-analytics-weekly-page-views-for-2019.png" width="800px" caption="A comparison of the number of page views per week for the 2018 and 2019 years. Image from Google Analytics." %}}
 
-{{< img src="20191231-google-analytics-weekly-users-for-2019.png" width="800px" caption="A comparison of the number of users per week for the 2018 and 2019 years. Image from Google Analytics." >}}
+{{% figure src="20191231-google-analytics-weekly-users-for-2019.png" width="800px" caption="A comparison of the number of users per week for the 2018 and 2019 years. Image from Google Analytics." %}}
 
 A _page view_ is a single view of a page (which can be a returning or new user). A _user_ is a unique person who has visited this website at least once.
 
@@ -55,11 +55,11 @@ A _page view_ is a single view of a page (which can be a returning or new user).
 
 Ranked by number of page views:
 
-{{< img src="20191231-google-analytics-top-10-pages-2019.png" width="800px" caption="The top 10 most visited pages of 2019. Image from Google Analytics." >}}
+{{% figure src="20191231-google-analytics-top-10-pages-2019.png" width="800px" caption="The top 10 most visited pages of 2019. Image from Google Analytics." %}}
 
 Compared to the top 10 pages of 2018:
 
-{{< img src="20191231-google-analytics-top-10-pages-2018.png" width="800px" caption="The top 10 most visited pages of 2018. Image from Google Analytics." >}}
+{{% figure src="20191231-google-analytics-top-10-pages-2018.png" width="800px" caption="The top 10 most visited pages of 2018. Image from Google Analytics." %}}
 
 For the first time ever, we see Linux-related pages take over the top positions that were held by Altium-related pages for at least the last 5 years. There were no hugely different page categories that entered the top 10 list this year.
 

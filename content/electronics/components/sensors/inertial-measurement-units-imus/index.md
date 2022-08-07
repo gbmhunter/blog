@@ -38,7 +38,7 @@ More and more GPS units are beginning to support integration with an IMU unit to
 
 [RTIMULib](https://github.com/RTIMULib/RTIMULib) is a pretty nice software package which makes it easier to get IMUs working with operating systems (including "embedded" ones such as the RaspberryPi). The writer, "richards-tech", also has a version of this for the Arduino, which makes it easy to use the Arduino as an I2C host to read back data from popular IMUs, send it via UART to a computer, where it can be processed.
 
-{{< img src="screenshot-playing-around-with-rthostimugl.png" width="782px" caption="Playing around with RTHostIMUGL and a connected IMU through an Arduino." >}}
+{{% figure src="screenshot-playing-around-with-rthostimugl.png" width="782px" caption="Playing around with RTHostIMUGL and a connected IMU through an Arduino." %}}
 
 ## Packages
 

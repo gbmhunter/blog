@@ -11,7 +11,7 @@ type: page
 
 Vaults are for storing design data.
 
-{{< img src="altium-vault-image.png" width="300px" caption="Depiction of the Altium vault."  >}}
+{{% figure src="altium-vault-image.png" width="300px" caption="Depiction of the Altium vault."  %}}
 
 ## Personal Vault
 

@@ -18,11 +18,11 @@ tags: [ "Avada", "buck converters", "component packages", "diodes", "MFI", "MOSF
 
 * New page on {{% link text="Made For Apple (MFi)" src="/electronics/circuit-design/made-for-ipod-iphone-ipad-mfi" %}}.
 
-  	{{< img src="apple-logo.png" width="152px" caption="The Apple logo."  >}}
+  	{{% figure src="apple-logo.png" width="152px" caption="The Apple logo."  %}}
 
 * New {{% link text="WLCSP package" src="/pcb-design/component-packages/wlcsp-component-package" %}} added to the Component Package database.
 
-	  {{< img src="wlcsp5-component-package-3d-render.jpg" width="236px" caption="A 3D render of the WLCSP5 component package."  >}}
+	  {{% figure src="wlcsp5-component-package-3d-render.jpg" width="236px" caption="A 3D render of the WLCSP5 component package."  %}}
 
 * Added [Civil Footnotes plugin](https://wordpress.org/plugins/civil-footnotes/) for adding footnotes to posts/pages.
 
@@ -32,7 +32,7 @@ tags: [ "Avada", "buck converters", "component packages", "diodes", "MFI", "MOSF
 
 * Moved the {{% link text="Load Switches page" src="/electronics/circuit-design/power-management/load-switches" %}} so that it is a child of {{% link text="Power Management" src="/electronics/circuit-design/power-management" %}}.
 
-  	{{< img src="high-side-mosfet-load-switch-schematic.png" width="608px" caption="A high-side load switch made from a N-Channel and P-Channel MOSFET."  >}}
+  	{{% figure src="high-side-mosfet-load-switch-schematic.png" width="608px" caption="A high-side load switch made from a N-Channel and P-Channel MOSFET."  %}}
 
 * New page on {{% link text="Analogue Switches" src="/electronics/components/analogue-switches" %}}.
 
@@ -40,4 +40,4 @@ tags: [ "Avada", "buck converters", "component packages", "diodes", "MFI", "MOSF
 
 * {{% link text="SOT-1226" src="/pcb-design/component-packages/sot-1226-component-package" %}} added to the {{% link text="Component Package Database" src="/pcb-design/component-packages" %}}.
 
-  	{{< img src="sot-1226-component-package-3d-render-top-bottom.gif" width="166px" caption="A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html."  >}}
+  	{{% figure src="sot-1226-component-package-3d-render-top-bottom.gif" width="166px" caption="A 3D render of the SOD-1226 component package. Image from http://www.nxp.com/packages/sot1226.html."  %}}

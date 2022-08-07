@@ -87,13 +87,13 @@ The `SOP-4` is an easy to solder, medium sized, 4-pin SMD package. Commonly used
 
 ### Photos And 3D Models
 
-{{< img src="sop-4-component-package-photo.jpg" width="356px" caption="A photo of the SOP-4 component package." >}}
+{{% figure src="sop-4-component-package-photo.jpg" width="356px" caption="A photo of the SOP-4 component package." %}}
 
-{{< img src="sop-4-component-package-3d-model.jpg" caption="A 3D model of the SOP-4 component package. Image from www.digikey.com."  width="500px" >}}
+{{% figure src="sop-4-component-package-3d-model.jpg" caption="A 3D model of the SOP-4 component package. Image from www.digikey.com."  width="500px" %}}
 
 ### Dimensions And Land Pattern
 
-{{< img src="sop-4-component-package-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the SOP-4 component package. Image from http://www.everlight.com/datasheets/EL452-G.pdf."  width="500px" >}}
+{{% figure src="sop-4-component-package-dimensions-and-land-pattern.png" caption="The dimensions and recommended land pattern for the SOP-4 component package. Image from http://www.everlight.com/datasheets/EL452-G.pdf."  width="500px" %}}
 
 ## SOP-8
 

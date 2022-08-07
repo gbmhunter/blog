@@ -12,7 +12,7 @@ type: "post"
 
 * New tutorial on [Bresenham's Line Algorithm](/programming/algorithms-and-data-structures/bresenhams-line-algorithm).
 
-    {{< img src="bresenham-pixels-shaded.png" width="400px" caption="A line drawn using Bresenham's line algorithm." >}}
+    {{% figure src="bresenham-pixels-shaded.png" width="400px" caption="A line drawn using Bresenham's line algorithm." %}}
 
 * Big updates to the [Algorithm Time Complexity page](/programming/algorithms-and-data-structures/algorithm-time-complexity/).
 

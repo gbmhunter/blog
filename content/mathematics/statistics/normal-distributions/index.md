@@ -20,7 +20,7 @@ where:<br>
 \( \sigma \) is the standard deviation<br>
 </p>
 
-{{< img src="normal-distribution-pdf-examples.png" width="500px" caption="A few example probability density functions (PDFs) for the normal distribution."  >}}
+{{% figure src="normal-distribution-pdf-examples.png" width="500px" caption="A few example probability density functions (PDFs) for the normal distribution."  %}}
 
 <p>See <a href="https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution">https://github.com/gbmhunter/BlogAssets/tree/master/Mathematics/Statistics/NormalDistribution</a> for the code which generated these graphs.</p>
 

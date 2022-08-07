@@ -13,7 +13,7 @@ type: "page"
 
 Fitting a linear curve (a line!) to a set of data is called linear regression. Typically, we want to minimize the square of the vertical error between each point and the line. The following graph shows four data points in green, and the calculated line of best fit in blue:
 
-{{< img src="linear_curve_fitting_graph_of_points_and_line.png" width="600px" caption="The linear curve fitting (using the least squares approach) to four data points."  >}}
+{{% figure src="linear_curve_fitting_graph_of_points_and_line.png" width="600px" caption="The linear curve fitting (using the least squares approach) to four data points."  %}}
 
 We can write an equation for the error as follows:
 
@@ -130,4 +130,4 @@ Thus our line of best fit:
 
 The points and line of best fit are shown in the below graph:
 
-{{< img src="linear_curve_fitting_graph_of_points_and_line.png" width="587px" caption="The linear curve fitting (using the least squares approach) to four data points." >}}
+{{% figure src="linear_curve_fitting_graph_of_points_and_line.png" width="587px" caption="The linear curve fitting (using the least squares approach) to four data points." %}}

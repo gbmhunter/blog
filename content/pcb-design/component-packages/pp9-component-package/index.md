@@ -66,4 +66,4 @@ type: page
 
 The PP9 package is a less common 9V battery size (compared to the {{% link text="PP3" src="../pp3-component-package" %}}). Zinc carbon 9V batteries come in this package.
 
-{{< img src="pp9-component-package-9v-eveready-silver-battery.jpg" width="279px" caption="A 9V battery in the PP9 component package."  >}}
+{{% figure src="pp9-component-package-9v-eveready-silver-battery.jpg" width="279px" caption="A 9V battery in the PP9 component package."  %}}

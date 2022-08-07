@@ -17,7 +17,7 @@ type: "post"
 
 <p>Continuing with the Ninja theme, rather than likes, +1's, thumb ups or claps, this blog has "shurikens" (Ninja stars).</p>
 
-{{< img src="shuriken-icon.png" width="100px" caption="+1's, likes, thumb's up and claps have been done before, this blog uses shurikens!"  >}}
+{{% figure src="shuriken-icon.png" width="100px" caption="+1's, likes, thumb's up and claps have been done before, this blog uses shurikens!"  %}}
 
 <p>You can see the backend code at <a href="https://github.com/gbmhunter/shuriken-backend">https://github.com/gbmhunter/shuriken-backend</a>. The front-end is embedded in the code that generates this blog, which can be found at <a href="https://github.com/gbmhunter/blog">https://github.com/gbmhunter/blog</a>. Files of interest in the <code>blog</code> repository include:</p>
 
@@ -29,7 +29,7 @@ type: "post"
 
 <p>You can see the final result in this .gif below (or just look at this webpage!):</p>
 
-{{< img src="shuriken.gif" width="700px" caption="Demo of the shurikens." >}}
+{{% figure src="shuriken.gif" width="700px" caption="Demo of the shurikens." %}}
 
 <h2>AWS Infrastructure</h2>
 
@@ -80,13 +80,13 @@ $ serverless deploy -v
 
 <p>TravisCI is used to build and deploy the backend. The AWS credentials are stored in secret TravisCI environment variables called <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code>.</p>
 
-{{< img src="travis-ci-secret-environment-variables.png" width="700px" caption="The settings page for the CICD setup on TravisCI."  >}}
+{{% figure src="travis-ci-secret-environment-variables.png" width="700px" caption="The settings page for the CICD setup on TravisCI."  %}}
 
 <h2>Disqus Reaction Removal</h2>
 
 <p>Adding these shurikens also meant I no longer had any need for the "Disqus reactions". These reactions where a piece of functionality the Disqus commenting system let you enable which would allow viewers to choose between 6 or so basic emoji (upvote, funny, love, e.t.c). I had always found this a tad tacky and untidy, but until now was the only way viewers could quickly react to content. Now that the shurikens have been added, I have disabled the Disqus reactions.</p>
 
-{{< img src="removing-disqus-reactions.png" width="700px" caption="Saying goodbye to the Disqus reactions."  >}}
+{{% figure src="removing-disqus-reactions.png" width="700px" caption="Saying goodbye to the Disqus reactions."  %}}
 
 <h2>What Could Be Improved</h2>
 

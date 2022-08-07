@@ -10,7 +10,7 @@ type: post
 
 * Logo added!  
 
-    {{< img src="cartoon-ninja.jpg" width="500px" caption="cartoon-ninja" >}}
+    {{% figure src="cartoon-ninja.jpg" width="500px" caption="cartoon-ninja" %}}
 
 * Reformatted page header.
 

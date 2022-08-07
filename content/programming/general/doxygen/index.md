@@ -12,11 +12,11 @@ type: page
 
 Doxygen is an open-source program for **documenting code**. It is commonly used to build documentation from **source files which have special identifiers added** to help generate useful documentation. Doxygen supports many languages (including C, C++, C#, Java, Python, VHDL, PHP and others...), however only C/C++ documentation is covered here. As of 2016, it is guessed to be the **most popular method for documenting C/C++ code**.
 
-{{< img src="doxygen-logo.png" width="300px"  >}}
+{{% figure src="doxygen-logo.png" width="300px"  %}}
 
 It is essentially a program which looks through your source code and extracts information about functions, variables, enumerations, defines and almost everything else, including special comments and identifies that you place in the code, and compiles it into a nice looking html, pdf, or latex document. With the right commands, you can create a customized main page, linking between similar functions, automatic bug/todo lists, insert latex equations and more!
 
-{{< img src="doxygen-html-documentation-screenshot.png" width="1900px" caption="Screenshot of the html documentation that Doxygen generates with properly commented code."  >}}
+{{% figure src="doxygen-html-documentation-screenshot.png" width="1900px" caption="Screenshot of the html documentation that Doxygen generates with properly commented code."  %}}
 
 ## Doxygen Quick Reference
 
@@ -194,6 +194,6 @@ void FuncInTestGroup() {
 
 Doxywizard is a Windows GUI for using Doxygen. Setting `EXTRACT_PRIVATE = 1` and `EXTRACT_STATIC = 1` results in doxygen including all commented objects into the documentation, not just the ones that it deems public or accessible from other files (static). I find this to be much more useful than to exclude them, as without these objects present in the documentation it can leave the reader wondering how on earth your code works (C doesn't have the nice public interface structure that object orientated programming has). The following picture shows the two options selected when using the Doxygen GUI (Doxywizard).
 
-{{< img src="doxygen-gui-extract-private-and-static-selected.png" width="829px" caption="Selecting 'EXTRACT_PRIVATE' and 'EXTRACT STATIC' in the Doxygen GUI."  >}}
+{{% figure src="doxygen-gui-extract-private-and-static-selected.png" width="829px" caption="Selecting 'EXTRACT_PRIVATE' and 'EXTRACT STATIC' in the Doxygen GUI."  %}}
 
 Make sure to save your configuration file (doxyfile, no extension) somewhere with the source code so you can run it again and doxygen will remember the settings.

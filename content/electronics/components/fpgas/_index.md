@@ -14,7 +14,7 @@ FPGA's are associated with a fair amount of design complexity.
 
 Below is an A3-sized schematic sheet with JUST one 236-pin FPGA component added to it (no actual routing).
 
-{{< img src="fpga-schematic-just-the-ic-no-routing.png" width="1245px" caption="An A3 schematic sheet with just one 236-pin FPGA IC added to it (no routing)."  >}}
+{{% figure src="fpga-schematic-just-the-ic-no-routing.png" width="1245px" caption="An A3 schematic sheet with just one 236-pin FPGA IC added to it (no routing)."  %}}
 
 ## Power Supplies
 

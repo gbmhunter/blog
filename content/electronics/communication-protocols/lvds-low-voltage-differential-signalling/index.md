@@ -47,7 +47,7 @@ A serializer/deserializer (SERDES) can be used to convert the stream of bits int
 
 The original LVDS standard was concerned only with point-to-point communications. NSC invented a standard called Bus LVDS (BLVDS) which is a variant on LVDS which allows for a topology of one transmitter connected to multiple receivers.
 
-{{< img src="lvds-multipoint-configuration-example-schematic-ti.png" width="676px" caption="Example schematics showing LVDS devices in a multipoint configuration. Image from www.ti.com."  >}}
+{{% figure src="lvds-multipoint-configuration-example-schematic-ti.png" width="676px" caption="Example schematics showing LVDS devices in a multipoint configuration. Image from www.ti.com."  %}}
 
 Multipoint LVDS is now covered by the TIA/EIA-899 standard.
 

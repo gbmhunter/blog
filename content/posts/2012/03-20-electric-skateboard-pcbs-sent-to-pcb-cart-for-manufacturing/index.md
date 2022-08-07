@@ -8,7 +8,7 @@ title: Electric Skateboard PCBs Sent To PCB Cart For Manufacturing
 type: post
 ---
 
-{{< img src="electric-skateboard-pcb-panel-camtastic.jpg" caption="Screenshot of the Gerber's sent to PCB Cart for manufacturing."  width="650px" >}}
+{{% figure src="electric-skateboard-pcb-panel-camtastic.jpg" caption="Screenshot of the Gerber's sent to PCB Cart for manufacturing."  width="650px" %}}
 
 Finally, the electric skateboard PCBs have been sent away for manufacturing. I eventually chose [PCB Cart](http://www.pcbcart.com/) after discovering that I couldn't run the PCBs as a 'Prototype' at [Silver Circuits](http://www.custompcb.com/) (their maximum Prototype PCB size was 160mm in any direction, my panel was 200mm). See the {{% link text="Electrical Suppliers page" src="/electronics/general/electrical-suppliers" %}} for more info on PCB manufacturers.
 

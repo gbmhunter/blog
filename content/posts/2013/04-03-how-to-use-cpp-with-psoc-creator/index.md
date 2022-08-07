@@ -19,7 +19,7 @@ It covers the four main steps:
 
 1. Compiling with G++ rather than GCC using custom compiler flags
 
-    {{< img src="psoc-creator-build-settings-command-line-custom-flags.png" caption="Adding custom command line flags in PSoC Creator to force GCC to use the C++ compiler."  width="500px" >}}
+    {{% figure src="psoc-creator-build-settings-command-line-custom-flags.png" caption="Adding custom command line flags in PSoC Creator to force GCC to use the C++ compiler."  width="500px" %}}
 
 2. Wrapping C code with guards:
 
@@ -37,7 +37,7 @@ It covers the four main steps:
 
     Preventing exception functionality to prevent linker errors such as `undefined reference to __gxx_personality_v0` and `undefined reference to __cxa_end_cleanup` (again, this is optional, and only applied if you want to use new and delete)
     
-    {{< img src="cplusplus-linker-error-undefined-reference-to-gxx-personality.png" caption="Add the custom compile flag '-fno-exceptions' to every .cpp file you want to compile in PSoC Creator to prevent the 'undefined reference to __gxx_personality_v0' linker error." width="600px" >}}
+    {{% figure src="cplusplus-linker-error-undefined-reference-to-gxx-personality.png" caption="Add the custom compile flag '-fno-exceptions' to every .cpp file you want to compile in PSoC Creator to prevent the 'undefined reference to __gxx_personality_v0' linker error." width="600px" %}}
 
 The steps have pictures and code examples to help you through the process.
 

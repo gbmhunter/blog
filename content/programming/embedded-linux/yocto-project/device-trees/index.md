@@ -20,4 +20,4 @@ $ build/tmp/sysroots/x86_64-linux/usr/bin/dtc -I dtb -O dts -o devicetree.dts de
 
 This `.dts` file is much more useful to a developer than the `.dtb` file, and can be inspected to make sure the Yocto build is configured correctly!
 
-{{< img src="yocto-device-tree-conversion-from-blob-to-source.png" width="1159px" caption="A comparison between the Yocto generated binary Device Tree Blob (.dtb) file and the human-readable Device Tree Source (.dts) file that can be created from the .dtb file using the program dtc."  >}}
+{{% figure src="yocto-device-tree-conversion-from-blob-to-source.png" width="1159px" caption="A comparison between the Yocto generated binary Device Tree Blob (.dtb) file and the human-readable Device Tree Source (.dts) file that can be created from the .dtb file using the program dtc."  %}}

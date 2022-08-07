@@ -64,4 +64,4 @@ There a four standard SIM card sizes.
 </tbody>
 </table>
 
-{{< img src="stack-of-sim-card-component-packages-3d-render.jpeg" width="404px" caption="A 3D render of a stack of standard-sized SIM cards."  >}}
+{{% figure src="stack-of-sim-card-component-packages-3d-render.jpeg" width="404px" caption="A 3D render of a stack of standard-sized SIM cards."  %}}

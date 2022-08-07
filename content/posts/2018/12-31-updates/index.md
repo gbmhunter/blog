@@ -21,6 +21,6 @@ type: "post"
 * Site is now mobile friendly! I learnt a bit on responsive web design over the Christmas break and updated the HTML/CSS of this site so it looks good on mobile devices.
 
     <div style="display: flex;">
-    {{< img src="blog-mbedded-ninja-mobile-before.png" width="300px" caption="What blog.mbedded.ninja looked like before I made it mobile compatible."  >}}
-    {{< img src="blog-mbedded-ninja-mobile-after.png" width="300px" caption="What blog.mbedded.ninja looked like after I made it mobile compatible (using a Galaxy S5 viewport)."  >}}
+    {{% figure src="blog-mbedded-ninja-mobile-before.png" width="300px" caption="What blog.mbedded.ninja looked like before I made it mobile compatible."  %}}
+    {{% figure src="blog-mbedded-ninja-mobile-after.png" width="300px" caption="What blog.mbedded.ninja looked like after I made it mobile compatible (using a Galaxy S5 viewport)."  %}}
     </div>

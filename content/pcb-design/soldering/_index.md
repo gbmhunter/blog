@@ -10,7 +10,7 @@ type: "page"
 
 ## Overview
 
-{{< img src="smd-components-in-reflow.gif" width="240px" caption="SMD components during a reflow soldering process." >}}
+{{% figure src="smd-components-in-reflow.gif" width="240px" caption="SMD components during a reflow soldering process." %}}
 
 ## Manually Applying Solder Paste
 

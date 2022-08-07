@@ -13,7 +13,7 @@ type: "page"
 
 Before reading this page, please check out the [Linear Curve Fitting page](/mathematics/curve-fitting/linear-curve-fitting). Many of the principles mentioned there will be re-used here, and will not be explained in as much detail.
 
-{{< img src="many-polynomial-best-fits-on-graph.png" width="605px" caption="A graph showing how different degree polynomials can be fitted to data."  >}}
+{{% figure src="many-polynomial-best-fits-on-graph.png" width="605px" caption="A graph showing how different degree polynomials can be fitted to data."  %}}
 
 ## Calculating The Polynomial Curve
 
@@ -151,4 +151,4 @@ Thus our line of best fit:
 
 The data points and polynomial of best fit are shown in the below graph:
 
-{{< img src="2-degree-poly-best-fit-graph.png" width="600px" caption="Four data points and a 2 degree polynomial of best fit (using the least squares method)."  >}}
+{{% figure src="2-degree-poly-best-fit-graph.png" width="600px" caption="Four data points and a 2 degree polynomial of best fit (using the least squares method)."  %}}

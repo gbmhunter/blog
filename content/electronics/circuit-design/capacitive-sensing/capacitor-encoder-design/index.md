@@ -71,8 +71,8 @@ The Altium script takes input variables such as N track length, number of passiv
 <table>
   <tbody>
     <tr>
-      <td>{{< img src="linear-nm1-cap-encoder-passive-pcb-image.png" caption="A linear capacitive encoder passive PCB."  width="400px" >}}</td>
-      <td>{{< img src="linear-nm1-cap-encoder-active-pcb-image.png" caption="A linear capacitive encoder active PCB."  width="400px" >}}</td>
+      <td>{{% figure src="linear-nm1-cap-encoder-passive-pcb-image.png" caption="A linear capacitive encoder passive PCB."  width="400px" %}}</td>
+      <td>{{% figure src="linear-nm1-cap-encoder-active-pcb-image.png" caption="A linear capacitive encoder active PCB."  width="400px" %}}</td>
     </tr>
   </tbody>
 </table>
@@ -83,8 +83,8 @@ A rotational capacitive encoder design is very much like the linear one, except 
 <table>
   <tbody>
     <tr>
-      <td>{{< img src="rotational-nm1-capacitive-encoder-passive-pcb-image.png" caption="A rotational capacitive encoder passive PCB." width="400px" >}}</td>
-      <td>{{< img src="rotational-nm1-capacitive-encoder-active-pcb-image.png" caption="A rotational capacitive encoder active PCB." width="400px" >}}</td>
+      <td>{{% figure src="rotational-nm1-capacitive-encoder-passive-pcb-image.png" caption="A rotational capacitive encoder passive PCB." width="400px" %}}</td>
+      <td>{{% figure src="rotational-nm1-capacitive-encoder-active-pcb-image.png" caption="A rotational capacitive encoder active PCB." width="400px" %}}</td>
     </tr>
   </tbody>
 </table>
@@ -97,7 +97,7 @@ The reason I recommend adding a dielectric is that it **stabilizes** the capacit
 
 I achieved good results when using 0.165mm thick acrylic adhesive transfer tape (3M code 467MP), as shown below.
 
-{{< img src="165um-dielectric-3m-467mp-half-peeled-off-backing.jpg" caption="165um plastic dielectric (3M 467MP)."  width="400px" >}}
+{{% figure src="165um-dielectric-3m-467mp-half-peeled-off-backing.jpg" caption="165um plastic dielectric (3M 467MP)."  width="400px" %}}
 
 ## Maximum Velocities
 
@@ -113,15 +113,15 @@ The skewing can be prevented by:
 
 The following image shows the individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm).
 
-{{< img src="cap-encoder-individual-cdc-waveform-graphs-for-both-tracks.jpg" caption="The individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm)."  width="800px" >}}
+{{% figure src="cap-encoder-individual-cdc-waveform-graphs-for-both-tracks.jpg" caption="The individual waveforms for each CDC channel on both the N and N-1 tracks (for use with an absolute algorithm)."  width="800px" %}}
 
 The following image shows the grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm).
 
-{{< img src="cap-encoder-grouped-cdc-waveform-graphs-for-both-tracks.jpg" caption="The grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm)."  width="800px" >}}
+{{% figure src="cap-encoder-grouped-cdc-waveform-graphs-for-both-tracks.jpg" caption="The grouped waveforms (all 6 channels) for both the N and N-1 tracks (for use with an absolute algorithm)."  width="800px" %}}
 
 What makes the signal processing difficult is that the channels of CDC values can have different offset's. The graph below shows this (notice the light green channel which has a much higher offset than all the others.
 
-{{< img src="cdc-vs-time-graph-showing-different-offsets-of-each-channel.jpg" caption="CDC values vs. time graph showing the different offsets each channel can have."  width="800px" >}}
+{{% figure src="cdc-vs-time-graph-showing-different-offsets-of-each-channel.jpg" caption="CDC values vs. time graph showing the different offsets each channel can have."  width="800px" %}}
 
 ## Firmware And Algorithm
 
@@ -196,7 +196,7 @@ The absolute position can be found if the capacitive encoder has two tracks (usi
 
 The phase difference between the tracks increments stepwise every time the N track loop phase distance loops from max to 0 (the encoder is moving in the forward direction) decrements in the same fashion every time the phase distance loops from 0 to max. The graph below shows the phase difference incrementing (nosily) by about 0.95 everytime the N track completes one cycle.
 
-{{< img src="cdc-phase-difference-graph-showing-noisy-stepwise-increments.jpg" caption="Graph showing the stepwise incrementing of the phase difference between the two calculated positions of the CDC tracks."  width="800px" >}}
+{{% figure src="cdc-phase-difference-graph-showing-noisy-stepwise-increments.jpg" caption="Graph showing the stepwise incrementing of the phase difference between the two calculated positions of the CDC tracks."  width="800px" %}}
 
 A maths function, `Maths_RoundToPrecision()` needs to be used to round the phase difference to the closest expected value.
 

@@ -121,10 +121,10 @@ If the pin number isn't specified, it is likely to be the 3 pin variant (this is
 
 This package is also commonly known as the `SC-70`.
 
-{{< img src="component-package-sot-323-3-3d-model.jpg" caption="3D model of the SOT-323-3 (SC-70-3) component package."  width="500px" >}}
+{{% figure src="component-package-sot-323-3-3d-model.jpg" caption="3D model of the SOT-323-3 (SC-70-3) component package."  width="500px" %}}
 
 ## SOT-323-5
 
-{{< img src="component-package-sot-323-5-dimensions-and-land-pattern.png" caption="Dimensions and recommended land pattern for the SOT-323-5 (SC-70-5) component package." width="800px" >}}
+{{% figure src="component-package-sot-323-5-dimensions-and-land-pattern.png" caption="Dimensions and recommended land pattern for the SOT-323-5 (SC-70-5) component package." width="800px" %}}
 
-{{< img src="component-package-sot-323-5-3d-model.jpg" caption="3D model of the SOT-323-5 (SC-70-5) component package."  width="500px" >}}
+{{% figure src="component-package-sot-323-5-3d-model.jpg" caption="3D model of the SOT-323-5 (SC-70-5) component package."  width="500px" %}}

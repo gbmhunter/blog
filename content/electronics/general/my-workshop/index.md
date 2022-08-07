@@ -16,8 +16,8 @@ type: "page"
 <table>
     <tbody>
         <tr>
-            <td>{{< img src="component_trays_01.jpg" caption="These trays are awesome for storing through-hole components."  width="300px" >}}</td>
-            <td>{{< img src="component_trays_02.jpg" caption="20 of them in total."  width="300px" >}}</td>
+            <td>{{% figure src="component_trays_01.jpg" caption="These trays are awesome for storing through-hole components."  width="300px" %}}</td>
+            <td>{{% figure src="component_trays_02.jpg" caption="20 of them in total."  width="300px" %}}</td>
         </tr>
     </tbody>
 </table>
@@ -26,11 +26,11 @@ type: "page"
 
 <p>No, I didn't eat all that ice cream myself (but I sure did help!). But they are all 2L ice-cream containers, eaten by my family over the last 8 years. They make really good stackable containers for holding components and anything else that is too big or not used enough for the component trays.</p>
 
-{{< img src="storage_containers.jpg" caption="Ice cream containers for storage. I didn't eat all that ice cream, honest :-)."  width="400px" >}}
+{{% figure src="storage_containers.jpg" caption="Ice cream containers for storage. I didn't eat all that ice cream, honest :-)."  width="400px" %}}
 
 <p>For storing SMD components such as resistors, capacitors, and ferrite beads, I use these modular storage containers from DealExtreme. They are great because a) cheap, b) small, c) modular, d) have flip-top lids which spring open. I use a labeller to create small labels for each one, describing the component.</p>
 
-{{< img src="smd-container-open-and-closed.jpg" caption="A container from DealExtreme used for holding SMD components (capacitors in this picture)"  width="600px" >}}
+{{% figure src="smd-container-open-and-closed.jpg" caption="A container from DealExtreme used for holding SMD components (capacitors in this picture)"  width="600px" %}}
 
 <h2>Tools</h2>
 
@@ -40,11 +40,11 @@ A variable voltage-limited or current-limited power supply is a must for any ser
 
 I brought a cheap 0-30V, 0-5A power supply from AliExpress. It is the YH-305D, as shown below. It set me back about NZ$130, including shipping.
 
-{{< img src="single-channel-dc-power-supply-photo.jpg" caption="A single channel DC power supply with variable voltage and current controls."  width="400px" >}}
+{{% figure src="single-channel-dc-power-supply-photo.jpg" caption="A single channel DC power supply with variable voltage and current controls."  width="400px" %}}
 
 I also have a high-power DC-DC buck converter that I use when I need high current. It is a 12A, 4.5-30V in, 0.8-28V out (adjustable) buck converter that is rated to 100W without a fan and up to 200W with active cooling. It was about NZ$13 (US$9) on [AliExpress](http://www.aliexpress.com/). Here is a [link to the product](http://www.ebay.com/itm/ws/eBayISAPI.dll?ViewItem&item=321013571373&ssPageName=ADME:X:AAQ:US:1123).
 
-{{< img src="12a-buck-converter-from-aliexpress.jpg" caption="A 12A, 4.5-30V in, 0.8-28V out DC-DC buck converter from AliExpress. Rated power is 100W without active cooling, 200W with active cooling."  width="400px" >}}
+{{% figure src="12a-buck-converter-from-aliexpress.jpg" caption="A 12A, 4.5-30V in, 0.8-28V out DC-DC buck converter from AliExpress. Rated power is 100W without active cooling, 200W with active cooling."  width="400px" %}}
 
 ### Oscilloscope
 
@@ -53,15 +53,15 @@ Hitachi V-1050F 100MHz Oscilloscope - This thing is an ancient beast. I picked i
 <table>
     <tbody>
         <tr>
-            <td>{{< img src="oscilloscope_01.jpg" caption="Old-skurl oscilloscope."  width="300px" >}}</td>
-            <td>{{< img src="oscilloscope_02.jpg" caption="Testing with the oscilloscope."  width="300px" >}}</td>
+            <td>{{% figure src="oscilloscope_01.jpg" caption="Old-skurl oscilloscope."  width="300px" %}}</td>
+            <td>{{% figure src="oscilloscope_02.jpg" caption="Testing with the oscilloscope."  width="300px" %}}</td>
         </tr>
     </tbody>
 </table>
 
 As of 2012 I got a new oscilloscope, a Rigol ADS 1102CAL. It has a 100MHz bandwidth. Brought it for NZ$400 from [AliExpress](http://www.aliexpress.com/).
 
-{{< img src="2012-07-19-19-13-37.jpg" caption="The new Rigol ADS 1102CAL oscilloscope."  width="500px" >}}
+{{% figure src="2012-07-19-19-13-37.jpg" caption="The new Rigol ADS 1102CAL oscilloscope."  width="500px" %}}
 
 Newer oscilloscopes like this one usually have USB ports for saving captures of waveforms to. You can usually select from a range of file formats such as an image (.png, .jpeg), comma-separated values (.csv), or a proprietary binary format such as .wfm. I have found .csv files to be to most useful, since it gives you all of the raw data. I'm pretty sure the .wfm files also store all of the data, but for some reason I have had trouble trying to extract the timing information from them.
 
@@ -75,7 +75,7 @@ Logic analysers usually have 8 or more inputs. They record the 1's and 0's on th
 
 The particular [Saleae](http://www.saleae.com/) "[Logic](http://www.saleae.com/logic)" logic analyser below uses a [PSoC microcontroller](/programming/microcontrollers/psoc).
 
-{{< img src="digital-logic-analyzer.jpg" caption="A digital logic analyser."  width="400px" >}}
+{{% figure src="digital-logic-analyzer.jpg" caption="A digital logic analyser."  width="400px" %}}
 
 ### UART-To-RS-232 Converter
 
@@ -85,7 +85,7 @@ One of these is essential for debugging embedded designs. My favourite is the TT
 
 Plenty of industrial, hard-wearing and/or long-distance electrical equipment uses the RS-485 interface for communicating. The DT-5019 is a great USB-to-RS-485 converter for talking to devices uses this protocol with a computer.
 
-{{< img src="usb-serial-port-for-rs-485-converter-in-device-manager.png" caption="When installing a USB-to-RS485/422 converter, it installs a virtual COM port under the Device Manager in Windows." width="500px" >}}
+{{% figure src="usb-serial-port-for-rs-485-converter-in-device-manager.png" caption="When installing a USB-to-RS485/422 converter, it installs a virtual COM port under the Device Manager in Windows." width="500px" %}}
 
 I got this from [DealExtreme](http://dx.com/), part number [54289](http://dx.com/p/dtech-usb-2-0-to-rs422-rs485-adapter-cable-1-2m-cable-54289), for US$19.70 in Jan 2013 (inc. shipping to NZ). It is made by Dtech.
 
@@ -116,7 +116,7 @@ Supported transmission speeds are:
   </tbody>
 </table>
 
-{{< img src="dt5019-usb-to-rs-485-converter-photo.jpg" caption="The DT-5019 USB-to-RS-485 converter, with supplied terminal block breakout board."  width="600px" >}}
+{{% figure src="dt5019-usb-to-rs-485-converter-photo.jpg" caption="The DT-5019 USB-to-RS-485 converter, with supplied terminal block breakout board."  width="600px" %}}
 
 The manual for this Dtech converter can be downloaded [here](/docs/dtech-usb-to-rs-485-manual.pdf).
 
@@ -131,9 +131,9 @@ These pics below are of my largest capacitors, 20 1800uF, 500V monstrosities. I 
 <table>
   <tbody>
     <tr>
-      <td>{{< img src="1800uf_500v_caps_01.jpg" caption="They are big, and they are powerful."  width="250px" >}}</td>
-      <td>{{< img src="1800uf_500v_caps_02.jpg" caption="Capacitor size comparison."  width="250px" >}}</td>
-      <td>{{< img src="1800uf_500v_caps_03.jpg" caption="The collection of large capacitors."  width="250px" >}}</td>
+      <td>{{% figure src="1800uf_500v_caps_01.jpg" caption="They are big, and they are powerful."  width="250px" %}}</td>
+      <td>{{% figure src="1800uf_500v_caps_02.jpg" caption="Capacitor size comparison."  width="250px" %}}</td>
+      <td>{{% figure src="1800uf_500v_caps_03.jpg" caption="The collection of large capacitors."  width="250px" %}}</td>
     </tr>
   </tbody>
 </table>
@@ -143,12 +143,12 @@ My 'monster' cap bank. Me and a mate made this in 2005 for a coil gun. Each capa
 <table>
   <tbody>
     <tr>
-      <td>{{< img src="monster_cap_bank_01.jpg" caption="The bank from above. Made with disposable camera caps."  width="250px" >}}</td>
-      <td>{{< img src="monster_cap_bank_05.jpg" caption="Damaged caps."  width="250px" >}}</td>
+      <td>{{% figure src="monster_cap_bank_01.jpg" caption="The bank from above. Made with disposable camera caps."  width="250px" %}}</td>
+      <td>{{% figure src="monster_cap_bank_05.jpg" caption="Damaged caps."  width="250px" %}}</td>
     </tr>
     <tr>
-      <td>{{< img src="monster_cap_bank_06.jpg" caption="Width comparison."  width="250px" >}}</td>
-      <td>{{< img src="monster_cap_bank_04.jpg" caption="Damaged tracks! I think someone ran over it."  width="250px" >}}</td>
+      <td>{{% figure src="monster_cap_bank_06.jpg" caption="Width comparison."  width="250px" %}}</td>
+      <td>{{% figure src="monster_cap_bank_04.jpg" caption="Damaged tracks! I think someone ran over it."  width="250px" %}}</td>
     </tr>
   </tbody>
 </table>
@@ -157,15 +157,15 @@ My 'monster' cap bank. Me and a mate made this in 2005 for a coil gun. Each capa
 
 PCBs are useful when developing a circuit past the quick prototype stage. I have both blank copper PCB sheets as well as protoboard (copper tracks running parallel with each other), and variations on proto-board designed to make it easier to hook up ICs and other chips.
 
-{{< img src="pcbs.jpg" caption="Collection of proto-typing and solid copper boards for making up circuits." width="400px" >}}
+{{% figure src="pcbs.jpg" caption="Collection of proto-typing and solid copper boards for making up circuits." width="400px" %}}
 
 ### Laser
 
-{{< img src="hene-laser-tube.jpg" caption="The HeNe laser, looking down the 'barrel'." width="400px" >}}
+{{% figure src="hene-laser-tube.jpg" caption="The HeNe laser, looking down the 'barrel'." width="400px" %}}
 
 3kV HeNe Laser - I picked this laser up from [TradeMe](https://www.trademe.co.nz/) in 2005 for NZ$40. The tube is about 400mm long and 80mm in diameter. The power supply is a separate PCB which runs of 12V. So far I have never managed to get the laser running continuously, only turning on intermittently every few seconds. It seems there is a problem with the power supply and it cannot supply the required current to keep the laser on. It also emits quite a annoying squeal when running (I'm guessing it's the switching frequency). I am unsure of it's output power...
 
-{{< img src="hene-laser-3kv-power-supply.jpg" caption="The power supply for a 3kV HeNe laser."  width="500px" >}}
+{{% figure src="hene-laser-3kv-power-supply.jpg" caption="The power supply for a 3kV HeNe laser."  width="500px" %}}
 
 ## Software
 

@@ -136,7 +136,7 @@ TODO: Add info.
 
 The following schematic shows such a device which can control between 0-1A through the load (shown as `\(R_{load}\)`):
 
-{{% figure src="current-sink/op-amp-current-sink-schematic.png" width="700" caption="Schematic of a basic op-amp based current sink." %}}
+{{% figure src="/electronics/components/current-sources-and-sinks/current-sink/op-amp-current-sink-schematic.png" width="700" caption="Schematic of a basic op-amp based current sink." %}}
 
 You set the desired load current by providing a voltage to `\(V_{in}\)`. This voltage typically comes from a resistor divider (fixed current), potentiometer (manually variable current) or DAC (digitally variable current). The load current is given by the simple Ohm's law equation:
 

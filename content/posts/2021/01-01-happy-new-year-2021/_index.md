@@ -8,7 +8,7 @@ title: "Happy New Year 2021"
 type: "post"
 ---
 
-{{< img src="happy-new-year-2021.jpg" width="500px" caption="Happy new year!" >}}
+{{% figure src="happy-new-year-2021.jpg" width="500px" caption="Happy new year!" %}}
 
 [2020 may be the year we all want to forget](https://en.wikipedia.org/wiki/Death_to_2020). The silver lining is that the lockdown period gave me some extra time to work on extra content and improvements for this blog.
 
@@ -43,9 +43,9 @@ Year | Num. Page Views | Num. Users
 2019 | 99k             | 49k
 2020 | 134k            | 97k
 
-{{< img src="number-of-page-views-2019-2020.png" width="800px" caption="A comparison of the number of page views per week for the 2019 and 2020 years. Image from Google Analytics." >}}
+{{% figure src="number-of-page-views-2019-2020.png" width="800px" caption="A comparison of the number of page views per week for the 2019 and 2020 years. Image from Google Analytics." %}}
 
-{{< img src="number-of-users-2019-2020.png" width="800px" caption="A comparison of the number of users per week for the 2018 and 2019 years. Image from Google Analytics." >}}
+{{% figure src="number-of-users-2019-2020.png" width="800px" caption="A comparison of the number of users per week for the 2018 and 2019 years. Image from Google Analytics." %}}
 
 As per standard Google nomenclature, a _page view_ is a single view of a page (which can be a returning or new user). A _user_ is a unique person who has visited this website at least once.
 
@@ -53,7 +53,7 @@ As per standard Google nomenclature, a _page view_ is a single view of a page (w
 
 The top 6 pages, ranked by number of page views:
 
-{{< img src="top-6-pages-2019-2020.png" width="800px" caption="The top 10 most visited pages of 2019. Image from Google Analytics." >}}
+{{% figure src="top-6-pages-2019-2020.png" width="800px" caption="The top 10 most visited pages of 2019. Image from Google Analytics." %}}
 
 Again, we see the Linux-related serial port and CAN bus pages that shifted to top position in 2019 remain there for 2020. 
 

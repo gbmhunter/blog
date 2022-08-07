@@ -13,7 +13,7 @@ type: "page"
 
 Valgrind is a tool that can be used to detect memory management and threading bugs.
 
-{{< img src="valgrind-logo.jpg" width="316px" caption="The Valgrind logo."  >}}
+{{% figure src="valgrind-logo.jpg" width="316px" caption="The Valgrind logo."  %}}
 
 ## Installation
 
@@ -108,4 +108,4 @@ $ kcachegrind
 
 You should then be presented with wonderful profiling data as shown below!
 
-{{< img src="callgrind-profiling-output-displayed-in-kcachegrind.png" width="1310px" caption="The callgrind profiling output data being displayed in kcachegrind for a simple test application (with Fibonacci calculation and looping)." >}}
+{{% figure src="callgrind-profiling-output-displayed-in-kcachegrind.png" width="1310px" caption="The callgrind profiling output data being displayed in kcachegrind for a simple test application (with Fibonacci calculation and looping)." %}}

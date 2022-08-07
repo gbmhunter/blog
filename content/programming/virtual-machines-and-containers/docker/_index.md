@@ -14,7 +14,7 @@ type: "page"
 
 Docker is container software. It is commonly used as a lightweight alternative to a virtual machine.
 
-{{< img src="docker-logo.png" width="300px" >}}
+{{% figure src="docker-logo.png" width="300px" %}}
 
 ## Running Docker Without sudo
 

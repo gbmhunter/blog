@@ -14,7 +14,7 @@ type: page
 
 Designators are small component-identifying pieces of text that usually reside on both the circuit schematics and the top and bottom silkscreen layers of a PCB design.
 
-{{< img src="0603-resistor-and-designator-2d-cad-birds-eye-high-zoom.png" width="425px" caption="A 0603 resistor and it's designator inside a CAD packages PCB design file."  >}}
+{{% figure src="0603-resistor-and-designator-2d-cad-birds-eye-high-zoom.png" width="425px" caption="A 0603 resistor and it's designator inside a CAD packages PCB design file."  %}}
 
 For more information on what designators are used for what components, see the {{% link text="Component Schematic Symbols and Designators page." src="/electronics/circuit-design/component-schematic-symbols-and-designators" %}}.
 
@@ -22,11 +22,11 @@ For more information on what designators are used for what components, see the {
 
 Designators normally only face in two directions only (i.e. down-facing and right-facing).
 
-{{< img src="close-up-of-0603-resistor-on-pcb.jpg" caption="A close-up of a 0603 resistor and it's designator on a PCB."  width="800px" >}}
+{{% figure src="close-up-of-0603-resistor-on-pcb.jpg" caption="A close-up of a 0603 resistor and it's designator on a PCB."  width="800px" %}}
 
 If you cannot fit the designators next to their relevant components (e.g. a dense PCB), you can place a group of designators beside their components with the same orientation/placement, and the user can still understand which designator belongs to which component. You can see this being done on PC components such as motherboards and GPUs.
 
-{{< img src="designators-separated-from-dense-components-on-pcb.png" caption="Designators can be separated from dense components, as long as they are grouped and are in the same orientation as the components."  width="800px" >}}
+{{% figure src="designators-separated-from-dense-components-on-pcb.png" caption="Designators can be separated from dense components, as long as they are grouped and are in the same orientation as the components."  width="800px" %}}
 
 ## Resetting Designators
 

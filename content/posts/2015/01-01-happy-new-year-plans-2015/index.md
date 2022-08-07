@@ -11,7 +11,7 @@ type: post
 
 Happy new year to all!
 
-{{< img src="happy-new-year-2015.jpg" width="693px" caption="Happy new year! Image from www.freechristmaswallpapers.net."  >}}
+{{% figure src="happy-new-year-2015.jpg" width="693px" caption="Happy new year! Image from www.freechristmaswallpapers.net."  %}}
 
 First a few stats regarding mbedded.ninja in 2014.
 
@@ -43,7 +43,7 @@ First a few stats regarding mbedded.ninja in 2014.
 
 And here is a screenshot of the number of visitors by month up to Jan 2015 since I started logging:
 
-{{< img src="mbedded-ninja-visitor-stats-by-month-to-jan-2015.png" width="608px" caption="Num. of visitors to mbedded.ninja by month to January 2015."  >}}
+{{% figure src="mbedded-ninja-visitor-stats-by-month-to-jan-2015.png" width="608px" caption="Num. of visitors to mbedded.ninja by month to January 2015."  %}}
 
 Things I hope to attempt this year:
 

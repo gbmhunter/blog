@@ -94,7 +94,7 @@ The package with the densest pin density out there, BGAs are used to either make
 
 A 3D render of the BGA-144 component package.
 
-{{< img src="bga-144-component-package-3d-render.jpg" width="372px" caption="A 3D render of the BGA-144 component package."  >}}
+{{% figure src="bga-144-component-package-3d-render.jpg" width="372px" caption="A 3D render of the BGA-144 component package."  %}}
 
 ## Ball Layout
 
@@ -110,7 +110,7 @@ The pad diameter for a BGA footprint can be determined by one of three methods:
 
 ## Soldermask Considerations
 
-{{< img src="example-of-nsmd-pcb-pad-solder-joint-xilinx.png" width="507px" caption="Example of a NSMD (non-soldermask defined) solder joint on a BGA package. Image from http://www.xilinx.com/."  >}}
+{{% figure src="example-of-nsmd-pcb-pad-solder-joint-xilinx.png" width="507px" caption="Example of a NSMD (non-soldermask defined) solder joint on a BGA package. Image from http://www.xilinx.com/."  %}}
 
 ## Variants
 
@@ -118,7 +118,7 @@ The pad diameter for a BGA footprint can be determined by one of three methods:
 
 DSBGA (Die Sized BGA) is the name given by Texas Instruments for their family of BGA packages in where the die size is the same as the package size. They are also known by the term Wafer-Level Chip Scale Package (WLCSP). As of October 2015, they are available in 0.30, 0.35, 0.40, and 0.50mm pitches. 
 
-{{< img src="dsbga-component-package-4-25-bump-size-comparison-ti.png" width="282px" caption="A size comparison of the 4 to 25 bump DSBGA component packages. Image from http://www.ti.com/."  >}}
+{{% figure src="dsbga-component-package-4-25-bump-size-comparison-ti.png" width="282px" caption="A size comparison of the 4 to 25 bump DSBGA component packages. Image from http://www.ti.com/."  %}}
 
 Texas Instruments also assigns a package code to each package within the DSBGA family. Here are some example (this is in no way an exhaustive list):
 
@@ -155,4 +155,4 @@ Texas Instruments also assigns a package code to each package within the DSBGA f
 
 Note that confusingly, the three letter Texas Instrument's code is **not unique** for a particular package. For example, the code "YZP" may refer to a 5, 6, or 8 ball DSBGA package, which also may have **different** height, width and length dimensions. 
 
-{{< img src="dsbga-8-component-package-2d-pcb-footprint-birds-eye.png" width="236px" caption="A 2D birds-eye view of the CAD model for the DSBGA-8 component package."  >}}
+{{% figure src="dsbga-8-component-package-2d-pcb-footprint-birds-eye.png" width="236px" caption="A 2D birds-eye view of the CAD model for the DSBGA-8 component package."  %}}

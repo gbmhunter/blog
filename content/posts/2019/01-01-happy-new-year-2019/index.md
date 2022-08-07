@@ -7,7 +7,7 @@ title: "Happy New Year 2019"
 type: "post"
 ---
 
-{{< img src="colorful-happy-new-year-2019-vector.jpg" width="800px" caption="Happy new year! Image from www.vecteezy.com." >}}
+{{% figure src="colorful-happy-new-year-2019-vector.jpg" width="800px" caption="Happy new year! Image from www.vecteezy.com." %}}
 
 ## Statistics for 2018
 
@@ -20,7 +20,7 @@ Metric      | 2017  | 2018 |
 Page Views  | 83k   | 116k |
 Users       | 41k   | 63k  |
 
-{{< img src="google-analytics-2018-mbedded-ninja-users.png" width="800px" caption="Number of users per week for the 2018 year. Image from Google Analytics." >}}
+{{% figure src="google-analytics-2018-mbedded-ninja-users.png" width="800px" caption="Number of users per week for the 2018 year. Image from Google Analytics." %}}
 
 A _User_ is a unique person who visited this website at least once.
 

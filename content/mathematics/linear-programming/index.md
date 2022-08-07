@@ -10,7 +10,7 @@ type: page
 
 <p>This page provides an introduction to linear programming, with examples which use GNU Linear Programming Toolkit C API.</p>
 
-{{< img src="linear-programming-example-2d-graph-feasible-region-wikipedia.png" width="203px" caption="An example of linear programming with 2 variables. Image from www.wikipedia.com."  >}}
+{{% figure src="linear-programming-example-2d-graph-feasible-region-wikipedia.png" width="203px" caption="An example of linear programming with 2 variables. Image from www.wikipedia.com."  %}}
 
 <h2>What Is Linear Programming Good For?</h2>
 

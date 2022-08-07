@@ -14,7 +14,7 @@ Price: (unknown)
 
 A simple three PIN device that is good for binary (on/off) short-range detection between 0-30mm. Uses a POT to adjust the threshold. This came with the Arduino 4WD Robot platform.
 
-{{< img src="arduino-infrared-sensors.jpg" caption="Arduino-compatible infrared sensors."  width="400px" >}}
+{{% figure src="arduino-infrared-sensors.jpg" caption="Arduino-compatible infrared sensors."  width="400px" %}}
 
 ## Freetronics LCD And Keypad Shield
 
@@ -45,11 +45,11 @@ void loop() {
 
 ## Motor Controller
 
-{{< img src="arduino-4wd-robot-motor-controller.jpg" caption="The controller for a Arduino 4WD robot."  width="400px" >}}
+{{% figure src="arduino-4wd-robot-motor-controller.jpg" caption="The controller for a Arduino 4WD robot."  width="400px" %}}
 
 ## Sensor Shield
 
-{{< img src="arduino-sensor-shield.jpg" caption="An Arduino sensor shield." width="400px" >}}
+{{% figure src="arduino-sensor-shield.jpg" caption="An Arduino sensor shield." width="400px" %}}
 
 ## Ultrasonic Ranging Module HCSR-04
 
@@ -60,11 +60,11 @@ Price: US$4.00 (as of 2012)
 
 Very easy to interface to, due there being a native Arduino API function called pulseIn(), which returns the length of a digital pulse measured on one of it's pins. Example firmware code for this module can be found on the [xAppSoftware Blog](http://www.xappsoftware.com/wordpress/2012/03/15/how-to-interface-the-hc-sr04-ultrasonic-ranging-module-to-arduino/). Included in the Arduino 4WD Robot Platform.
 
-{{< img src="arduino-ultrasound-module.jpg" caption="An Arduino compatible ultrasound module."  width="600px" >}}
+{{% figure src="arduino-ultrasound-module.jpg" caption="An Arduino compatible ultrasound module."  width="600px" %}}
 
 ## The DealExtreme Robotic Platform
 
-{{< img src="bottom-side-of-arduino-4wd-robot.jpg" caption="The bottom side of the 4WD Arduino robot."  width="200px" >}}
+{{% figure src="bottom-side-of-arduino-4wd-robot.jpg" caption="The bottom side of the 4WD Arduino robot."  width="200px" %}}
 
 Supplier: [DealExtreme](http://dx.com/)  
 Product Link: (http://dx.com/p/multi-function-4wd-arduino-robot-raider-car-kits-128715, **as of Dec 2017, URL is unavailable**)  
@@ -74,4 +74,4 @@ A cheap, versatile, easy-to-use (well, kind of, but read the next paragraph) rob
 
 No instructions come with this! You are left on your own to figure out how to assemble and then use it. That said, you can find instructions written by users for most of the individual components on online blogs.
 
-{{< img src="arduino-4wd-robot-base-wheels-motor-driver.jpg" caption="A Arduino robot base."  width="600px" >}}
+{{% figure src="arduino-4wd-robot-base-wheels-motor-driver.jpg" caption="A Arduino robot base."  width="600px" %}}

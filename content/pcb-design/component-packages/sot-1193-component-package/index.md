@@ -125,8 +125,8 @@ NXP seems to be the only manufacturer who uses this package.
 
 ## 3D Renders
 
-{{< img src="sot-1193-component-package-3d-render.jpg" width="360px" caption="A 3D render of the SOT-1193 component package."  >}}
+{{% figure src="sot-1193-component-package-3d-render.jpg" width="360px" caption="A 3D render of the SOT-1193 component package."  %}}
 
 ## Dimensions
 
-{{< img src="component-package-sot-1193-2-nxp-xqfn8-dimensions.png" caption="The dimensions for the SOT-1193-2 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1193-2_po.pdf."  width="600px" >}}
+{{% figure src="component-package-sot-1193-2-nxp-xqfn8-dimensions.png" caption="The dimensions for the SOT-1193-2 component package. Image from http://www.nxp.com/documents/outline_drawing/sot1193-2_po.pdf."  width="600px" %}}

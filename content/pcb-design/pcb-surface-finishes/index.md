@@ -14,7 +14,7 @@ The following surface finishes are listed in order of increasing price/performan
 
 HASL is one of the most widely used surface finishes. It involves dipping the circuit board into a pot of molten solder, taking it out, and then removing the excess solder with a set of "air knives".
 
-{{< img src="hasl-pcb-surface-finish-example.jpg" width="463px" caption="An example of a PCB with a HASL surface finish. Image from http://www.pcbsourcing.com/."  >}}
+{{% figure src="hasl-pcb-surface-finish-example.jpg" width="463px" caption="An example of a PCB with a HASL surface finish. Image from http://www.pcbsourcing.com/."  %}}
 
 **Pros:**
 
@@ -38,7 +38,7 @@ The thermal shock from dipping the PCB into a pool of molten solder can damage t
 
 Immersion tin is
 
-{{< img src="example-of-immersion-tin-surface-finish-on-pcb.jpg" width="890px" caption="Example of an immersion tin (ISn) PCB surface finish. Image from http://www.standardpcb.com/."  >}}
+{{% figure src="example-of-immersion-tin-surface-finish-on-pcb.jpg" width="890px" caption="Example of an immersion tin (ISn) PCB surface finish. Image from http://www.standardpcb.com/."  %}}
 
 **Pros**
 
@@ -57,7 +57,7 @@ The biggest issue with ISn is that the copper and tin layers slowly diffuse into
 
 Immersion silver is good alternative to ENIG.
 
-{{< img src="pcb-surface-finish-immersion-silver.jpg" width="600px" caption="Example of an immersion silver (IAg) PCB finish. Image from http://www.rlcinnovation.com/."  >}}
+{{% figure src="pcb-surface-finish-immersion-silver.jpg" width="600px" caption="Example of an immersion silver (IAg) PCB finish. Image from http://www.rlcinnovation.com/."  %}}
 
 **Pros**
 
@@ -76,7 +76,7 @@ PCBs plated with IAg must not be handled directly or cleaned with a solvent prio
 
 ENIG is becoming more and more popular as component package pitch sizes drop, and RoHS regulation becomes more common place.
 
-{{< img src="example-of-immersion-gold-pcb-surface-finish.jpg" width="1557px" caption="Example of an immersion gold PCB surface finish. Image from http://www.standardpcb.com/."  >}}
+{{% figure src="example-of-immersion-gold-pcb-surface-finish.jpg" width="1557px" caption="Example of an immersion gold PCB surface finish. Image from http://www.standardpcb.com/."  %}}
 
 **Pros**
 

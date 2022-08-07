@@ -16,7 +16,7 @@ The AXI bus is the most widely used AMBA interface. The bus use has long since e
 
 The protocol has separate address/control and data phases. It supports un-aligned data transfers with byte strobes. It uses burst-based data transfers with only the start address provided. It supports out-of-order transaction completion. It has separate read and write channels.
 
-{{< img src="axi-bus-channel-architecture-of-reads-and-writes-diagram.png" width="422px" caption="The AXI bus channel architecture. Image from http://www.xilinx.com/support/documentation/ip_documentation/axi_ref_guide/v13_4/ug761_axi_reference_guide.pdf."  >}}
+{{% figure src="axi-bus-channel-architecture-of-reads-and-writes-diagram.png" width="422px" caption="The AXI bus channel architecture. Image from http://www.xilinx.com/support/documentation/ip_documentation/axi_ref_guide/v13_4/ug761_axi_reference_guide.pdf."  %}}
 
 ## Versions
 

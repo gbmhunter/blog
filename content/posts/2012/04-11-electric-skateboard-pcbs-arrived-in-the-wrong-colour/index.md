@@ -15,4 +15,4 @@ We reached an agreement that I could get them redone in another colour, paying h
 
 The photo below shows the gross orange colour compared to the kind of yellow I was expecting.
 
-{{< img src="2012-04-04-15-45-02.jpg" caption="This photo shows the gross orange colour of the electric skateboard PCBs compared to the kind of yellow I was expecting."  width="600px" >}}
+{{% figure src="2012-04-04-15-45-02.jpg" caption="This photo shows the gross orange colour of the electric skateboard PCBs compared to the kind of yellow I was expecting."  width="600px" %}}

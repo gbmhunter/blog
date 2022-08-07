@@ -90,8 +90,8 @@ Used by Texas Instruments for some of their higher power DC/DC converters. Has a
 
 ## Photos
 
-{{< img src="eep-component-package-photo.png" width="384px" caption="Photo of a DC/DC converter by Texas Instruments in an EEP package."  >}}
+{{% figure src="eep-component-package-photo.png" width="384px" caption="Photo of a DC/DC converter by Texas Instruments in an EEP package."  %}}
 
 ## Dimensions
 
-{{< img src="eep-dimensions.png" caption="Dimensions of the EEP package."  width="500px" >}}
+{{% figure src="eep-dimensions.png" caption="Dimensions of the EEP package."  width="500px" %}}

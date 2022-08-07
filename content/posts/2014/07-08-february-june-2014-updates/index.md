@@ -24,7 +24,7 @@ So progress has been a little slower than usual lately, here are all the updates
 		
 * I am now using Latex to draw diagrams! I have begun using [QuickLatex](http://quicklatex.com/), [TikZ](http://www.texample.net/tikz/) and [Circuitikz](http://www.ctan.org/pkg/circuitikz). This allows me to draw images like this:
 
-    {{< img src="example-of-an-op-amp-circuit-drawn-with-circuitikz.png" width="600px" caption="An op-amp circuit drawn with Circuitikz/Latex." >}}
+    {{% figure src="example-of-an-op-amp-circuit-drawn-with-circuitikz.png" width="600px" caption="An op-amp circuit drawn with Circuitikz/Latex." %}}
 
     Admittedly, this is just an image, but the real diagrams on the [Op-Amp page](/electronics/components/op-amps) are described in the Tex language, and only rendered when you visit the page!
 

@@ -119,7 +119,7 @@ type: page
 
 <h2>Antenna Basics</h2>
 
-{{< img src="gps-bluetooth-antenna-with-isolated-magnetic-dipole-photo.jpg" width="281px" caption="Photo of a combined GPS and Bluetooth antenna with an isolated magnetic dipole. Image from www.digikey.com."  >}}
+{{% figure src="gps-bluetooth-antenna-with-isolated-magnetic-dipole-photo.jpg" width="281px" caption="Photo of a combined GPS and Bluetooth antenna with an isolated magnetic dipole. Image from www.digikey.com."  %}}
 
 <h3>Gain</h3>
 
@@ -137,7 +137,7 @@ type: page
 
 <p>For a GPS antenna, the VSWR approaches 1 for the GPS signal frequency. The below graph shows the typical VSWR and efficiency vs. frequency for a passive SMD GPS antenna.</p>
 
-{{< img src="gps-chip-antenna-vswr-and-efficiency-graph.png" width="540px" caption="A graph of the VSWR and efficiency vs. frequency for a passive SMD GPS antenna. Image from http://www.fractus.com/sales_documents/FR05-S1-E-0-103/DS_FR05-S1-E-0-103.pdf."  >}}
+{{% figure src="gps-chip-antenna-vswr-and-efficiency-graph.png" width="540px" caption="A graph of the VSWR and efficiency vs. frequency for a passive SMD GPS antenna. Image from http://www.fractus.com/sales_documents/FR05-S1-E-0-103/DS_FR05-S1-E-0-103.pdf."  %}}
 
 ## Types Of Antennas
 
@@ -176,15 +176,15 @@ Typical parameter values:
 
 Chip antennas are SMD components which look similar to chip resistors or chip capacitors. Chip antennas come in two types; **on ground types**, that require a **ground below them and a clearance around them**, and **ground-cleared** types, that require a **ground-free area** underneath them. Ground-cleared types have the useful ability of being able to be **reverse mounted** onto PCBs. Examples of GNSS chip antenna manufacturers include [Pulse Electronics](http://www.pulseelectronics.com/products/antennas), Antenova, Taiyo Yuden (who also manufacture chip resistors and capacitors), Johanson Technology, and Ethertronics.
 
-{{< img src="gps-chip-antenna-3d-model.jpg" width="278px" caption="Photo of a small GPS chip antenna. Image from www.digikey.com."  >}}
+{{% figure src="gps-chip-antenna-3d-model.jpg" width="278px" caption="Photo of a small GPS chip antenna. Image from www.digikey.com."  %}}
 
 Below is a typical footprint for a 0603-sized chip antenna. Notice how both the input and ground connect up to the same pad of the chip! (and the other pad is connected to ground only). Although you may think this is a direct short, at microwave frequencies you can do this.
 
-{{< img src="gps-chip-antenna-footprint-w3009.png" width="969px" caption="The recommended footprint for the W3009 GPS chip antenna. Image from http://productfinder.pulseeng.com/products/datasheets/W3009.pdfhttp://productfinder.pulseeng.com/products/datasheets/W3009.pdf."  >}}
+{{% figure src="gps-chip-antenna-footprint-w3009.png" width="969px" caption="The recommended footprint for the W3009 GPS chip antenna. Image from http://productfinder.pulseeng.com/products/datasheets/W3009.pdfhttp://productfinder.pulseeng.com/products/datasheets/W3009.pdf."  %}}
 
 Below is the typical radiation patterns for a 0603-sized chip antenna.
 
-{{< img src="gps-chip-antenna-w3009-typical-free-space-radiation-patterns.png" width="992px" caption="The typical radiation pattern for all 3 planes for the W3009 GPS chip antenna. Image from http://productfinder.pulseeng.com/products/datasheets/W3009.pdf."  >}}
+{{% figure src="gps-chip-antenna-w3009-typical-free-space-radiation-patterns.png" width="992px" caption="The typical radiation pattern for all 3 planes for the W3009 GPS chip antenna. Image from http://productfinder.pulseeng.com/products/datasheets/W3009.pdf."  %}}
 
 ## Helixes
 
@@ -194,13 +194,13 @@ Helixes are one of the best types of GNSS antennas because their large volume en
 
 Patch antennas are common on circuit boards (PCBs), and also for plug in antennas to smallish GNSS devices.
 
-{{< img src="gps-patch-antenna-01-photo.jpg" width="331px" caption="Photo of a SMD mounted GPS patch antenna. Image from www.digikey.com."  >}}
+{{% figure src="gps-patch-antenna-01-photo.jpg" width="331px" caption="Photo of a SMD mounted GPS patch antenna. Image from www.digikey.com."  %}}
 
 They are normally made from a base ceramic material (and called ceramic patch antennas). They are typically more expensive than chip antennas but cheaper than helical antennas.
 
-{{< img src="gps-patch-antenna-02-photo.jpg" width="358px" caption="Photo of a SMD mounted GPS patch antenna. Image from www.digikey.com."  >}}
+{{% figure src="gps-patch-antenna-02-photo.jpg" width="358px" caption="Photo of a SMD mounted GPS patch antenna. Image from www.digikey.com."  %}}
 
-{{< img src="gps-external-patch-antenna-photo.jpg" width="407px" caption="Photo of an external (to PCB) GPS patch antenna. Image from www.digikey.com."  >}}
+{{% figure src="gps-external-patch-antenna-photo.jpg" width="407px" caption="Photo of an external (to PCB) GPS patch antenna. Image from www.digikey.com."  %}}
 
 ## Relativity
 

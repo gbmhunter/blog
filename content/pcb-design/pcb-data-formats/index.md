@@ -131,7 +131,7 @@ Altium loads up Camtastic (which comes installed with Altium) whenever you gener
 
 For anything greater than a 2 layer board, the PCB manufacturer can have trouble distinguishing the layer order from the Gerber files. This is because the inner copper layers and plane layers are numbered separately (both starting from 1), and therefore the order in which they should be in is ambiguous.
 
-{{< img src="gerber-file-layer-order-confusion.png" width="438px" caption="The stack-up order of internal copper layers and internal planes is ambiguous by just looking at the Gerber file name extensions."  >}}
+{{% figure src="gerber-file-layer-order-confusion.png" width="438px" caption="The stack-up order of internal copper layers and internal planes is ambiguous by just looking at the Gerber file name extensions."  %}}
 
 ## ODB++
 

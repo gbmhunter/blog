@@ -10,7 +10,7 @@ type: page
 
 Conan is a package manager, primarily designed for C or C++ packages.
 
-{{< img src="conan-package-manager-logo-with-text.png" width="200px" >}}
+{{% figure src="conan-package-manager-logo-with-text.png" width="200px" %}}
 
 ## Installation
 

@@ -19,7 +19,7 @@ Situations When You Must Consider Noise:
 * Circuits with sensitive sensors (this essentially means you will need a high-gain, low input level amp)
 * Circuits in noisy (in the electrical sense) environments (e.g. car engine bays, next to power circuitry e.t.c)
 
-{{< img src="fpga-fgg-485-capacitors-around-outside-pcb-routing-screenshot.png" width="670px" caption="If your not allowed to place components on the bottom-side of the PCB, placing decoupling caps around the perimeter of a large BGA packaged FPGA is the best you can do."  >}}
+{{% figure src="fpga-fgg-485-capacitors-around-outside-pcb-routing-screenshot.png" width="670px" caption="If your not allowed to place components on the bottom-side of the PCB, placing decoupling caps around the perimeter of a large BGA packaged FPGA is the best you can do."  %}}
 
 Note that top-side only components for high-speed FPGA designs is not recommended, and prototyping is definitely needed for design verification.
 

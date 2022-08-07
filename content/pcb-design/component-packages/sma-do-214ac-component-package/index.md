@@ -79,12 +79,12 @@ Not to be confused with SMD (surface-mount device, the common name for any surfa
 
 ## 3D Render
 
-{{< img src="sma-do-214ac-component-package-3d-render.jpg" width="356px" caption="A 3D render of the SMA (DO-214AC) component package."  >}}
+{{% figure src="sma-do-214ac-component-package-3d-render.jpg" width="356px" caption="A 3D render of the SMA (DO-214AC) component package."  %}}
 
 # Dimensions
 
-{{< img src="package-do-214ac-2d-dimensions.png" caption="The dimensions for the DO-214AC component package."  width="500px" >}}
+{{% figure src="package-do-214ac-2d-dimensions.png" caption="The dimensions for the DO-214AC component package."  width="500px" %}}
 
 ## Recommended Land Pattern
 
-{{< img src="package-do-214ac-recommended-land-pattern.png" caption="The recommended PCB land pattern for the DO-214AC component package."  width="500px" >}}
+{{% figure src="package-do-214ac-recommended-land-pattern.png" caption="The recommended PCB land pattern for the DO-214AC component package."  width="500px" %}}

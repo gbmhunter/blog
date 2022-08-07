@@ -20,7 +20,7 @@ Although we make these simplifications to explain the algorithm, Bresenham's lin
 
 We start at the start pixel, `\( x_k,\;y_k \)`, and we increase `\(x\)` by 1. Then we decide on whether `\(y\)` needs to increase by 1, or remain at `\(y\)`. We make this decision based on whether the pixel `\( x_k + 1,\;y_k \)` or the pixel `\( x_k + 1,\;y_k + 1\)` is closest to the line.
 
-{{< img src="bresenham-selecting-next-pixel.png" width="700px" caption="Choosing the next pixel when drawing a line. Each grid point is the center of a pixel. The blue dot is the previously selected pixel that has been drawn. We have to choose the next pixel from the two possible orange options." >}}
+{{% figure src="bresenham-selecting-next-pixel.png" width="700px" caption="Choosing the next pixel when drawing a line. Each grid point is the center of a pixel. The blue dot is the previously selected pixel that has been drawn. We have to choose the next pixel from the two possible orange options." %}}
 
 So in the example above, we would want to choose the pixel where we increment `\(y\)` by 1, as you can see it is closer to the line. To work this out in code, we keep track of the amount of accumulated error between the line and the chosen pixels (error in the vertical, or y, direction only). If the error becomes larger than 0.5, we know that the `\(y_{k+1}\)` pixel is closer to the line than the `\(y_k\)` pixel, and we increment `\(y\)` by 1.
 
@@ -86,11 +86,11 @@ def draw_line_bresenham(x_start, y_start, x_end, y_end):
 
 If the programming language supports it, you can perform the `*2` multiplication above with a left-shift (a good compiler will probably optimize this for you anyway).
 
-{{< img src="bresenham-pixels-shaded.png" width="700px" caption="A line drawn using Bresenham's line algorithm." >}}
+{{% figure src="bresenham-pixels-shaded.png" width="700px" caption="A line drawn using Bresenham's line algorithm." %}}
 
 It also helps to see Bresenham's line algorithm in action on a larger line:
 
-{{< img src="bresenham-large-line.png" width="700px" caption="A line drawn using Bresenham's line algorithm." >}}
+{{% figure src="bresenham-large-line.png" width="700px" caption="A line drawn using Bresenham's line algorithm." %}}
 
 For comparison, if we don't care about using floating point arithmetic (and we don't want to use Brehenham's line algorithm), we can just use the simple method below:
 

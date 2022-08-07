@@ -86,8 +86,8 @@ NXP seems to be the only manufacturer who uses this package.
 
 ## 3D Renders
 
-{{< img src="sot-886-component-package-3d-render.jpg" width="378px" caption="A 3D render of the SOT-886 component package." >}}
+{{% figure src="sot-886-component-package-3d-render.jpg" width="378px" caption="A 3D render of the SOT-886 component package." %}}
 
 ## Other Images
 
-{{< img src="component-footprint-sot-886-land-pattern.png" caption="The PCB land pattern for the SOT-886 component package. Image from http://www.nxp.com/documents/reflow_soldering/sot886_fr.pdf." width="800px" >}}
+{{% figure src="component-footprint-sot-886-land-pattern.png" caption="The PCB land pattern for the SOT-886 component package. Image from http://www.nxp.com/documents/reflow_soldering/sot886_fr.pdf." width="800px" %}}

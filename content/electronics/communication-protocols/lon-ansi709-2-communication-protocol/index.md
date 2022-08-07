@@ -16,7 +16,7 @@ The Local Operating Network (LON) protocol is a inter-device communication proto
     <tbody>
         <tr>
             <td>Logo</td>
-            <td>{{< img src="lonmark-international-logo-certified.jpg" caption="The logo of LonMark International. Image from http://www.prlog.org/." width="200px" >}}</td>
+            <td>{{% figure src="lonmark-international-logo-certified.jpg" caption="The logo of LonMark International. Image from http://www.prlog.org/." width="200px" %}}</td>
         </tr>
         <tr>
             <td>Speed</td>
@@ -73,7 +73,7 @@ _Bindings_ are how LON nodes share data. For data to be shared, two variables on
 
 A Echelon Neuron microprocessor is not to be confused with a Cavium Neuron, which is a processor designed for high-performance IEEE802 network search applications. Neuron microprocessors are commonly used as transceivers on the LON. A Neuron chip contains three 8-bit inline CPUs, on-board memory, 11 GPIOs and a LON hardware peripheral.
 
-{{< img src="ft-5000-smart-transceiver-cip-block-diagram.png" width="392px" caption="The block diagram for the FT5000 'Smart Transceiver' IC which can be used as part of a LON node."  >}}
+{{% figure src="ft-5000-smart-transceiver-cip-block-diagram.png" width="392px" caption="The block diagram for the FT5000 'Smart Transceiver' IC which can be used as part of a LON node."  %}}
 
 The transceivers usually run of a 5.0V power supply.
 
@@ -131,7 +131,7 @@ There a four different routing algorithm types to choose from:
 
 A communications transformer sits between the transceiver and the transmission line.
 
-{{< img src="ft500-ft-x3-connection-diagram.png" width="518px" caption="A connection diagram between the FT5000 processor and the FT-X3 transformer."  >}}
+{{% figure src="ft500-ft-x3-connection-diagram.png" width="518px" caption="A connection diagram between the FT5000 processor and the FT-X3 transformer."  %}}
 
 The FT-X1 was the first transformer. FT-X3 (US$4.52 (1), DigiKey, Feb 2015) belongs to the LonWorks 2.0 platform.
 
@@ -181,13 +181,13 @@ The International Forecourt Standards Forum (IFSF) specifies standards for petro
 
 The Echelon FT5000 (manf. part number 14305R-ES) is a modern (as of Feb 2015) LON controller. It allows you to run user defined code. It itself has no on-board non-volatile user memory, so external flash/EEPROM must be provided. It has 42kB of volatile memory to hold application code. It supports re-programming of the flash/EEPROM over the TF/PT-10 LON network (the differential, wired LON network).
 
-{{< img src="ft5000-typical-operating-conditions.png" width="325px" caption="The typical operating conditions of the FT5000 processor."  >}}
+{{% figure src="ft5000-typical-operating-conditions.png" width="325px" caption="The typical operating conditions of the FT5000 processor."  %}}
 
 ### Memory
 
 The FT5000 requires at least 2kB of external serial EEPROM for storing it's configuration data. The maximum size the EEPROM is allowed to be is 64kB. You also need space to store your user application code (since the FT5000 itself does not have any internal NVM). You can either use the EEPROM data, or if that is not big enough, use an external SPI flash IC. Note that although the FT5000 supports I2C flash, the datasheet says that as of it's publication date, it is not aware of any I2C flash which meets the FT5000's specifications. I am not aware of any size restrictions for the flash memory.
 
-{{< img src="ft5000-allowed-external-memory-configurations.png" width="270px" caption="The permitted external memory configurations for the FT5000 processor."  >}}
+{{% figure src="ft5000-allowed-external-memory-configurations.png" width="270px" caption="The permitted external memory configurations for the FT5000 processor."  %}}
 
 Because the way of writing SPI flash memory can very slightly between manufacturers (reads are all the same), a small function resides in the EEPROM that instructs the FT5000 how to correctly write to the device. Echelon provides three memory ICs which have been "qualified" to work with the FT5000. These are:
 

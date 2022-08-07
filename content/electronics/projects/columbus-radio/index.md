@@ -15,21 +15,21 @@ To bring a old, broken valve-based antique radio into the digital age with the a
 
 My partner brought this lovely vintage, but worn valve-based radio an auction many years ago for NZ$5. Bargain! 
 
-{{< img src="columbus-radio-010-original-front.jpg" width="535px" caption="The original front-panel of the Columbus radio."  >}}
+{{% figure src="columbus-radio-010-original-front.jpg" width="535px" caption="The original front-panel of the Columbus radio."  %}}
 
 Even though it was worn and torn, you could tell it had been beautifully made and with attention to detail. Different veneers were expertly crafted into each wooden face of the cabinet. The rear showed you the inner-workings, large valves, plate capacitors and pully systems!
 
-{{< img src="columbus-radio-020-original-radio-from-back.jpg" width="589px" caption="The original rear of the cabinet. Valves, air capacitors and pulley systems!"  >}}
+{{% figure src="columbus-radio-020-original-radio-from-back.jpg" width="589px" caption="The original rear of the cabinet. Valves, air capacitors and pulley systems!"  %}}
 
  The original electronics!
 
-{{< img src="columbus-radio-250-the-original-electronics-woah.jpg" width="763px" caption="The original electronics of the Columbus radio, housed in the underside of the metal case which sat in the radio cabinet."  >}}
+{{% figure src="columbus-radio-250-the-original-electronics-woah.jpg" width="763px" caption="The original electronics of the Columbus radio, housed in the underside of the metal case which sat in the radio cabinet."  %}}
 
 Woah! I had seen nothing like it before. I had heard of the style of **board-less circuit design** in where the components themselves supported one another, but only ever seen "new age" artistic examples of it (for instance a digital audio amplifier). And the component density was crazy! There were **bare wires** running past each over in free space with only mm's of clearance. Tabs had been added to the metal enclosure at frequent intervals around the outside to serve both as a grounding point and a mechanical support.
 
 Oh and don't forget the classic speaker...
 
-{{< img src="columbus-radio-040-original-speaker.jpg" width="706px" caption="The original Columbus radio speaker."  >}}
+{{% figure src="columbus-radio-040-original-speaker.jpg" width="706px" caption="The original Columbus radio speaker."  %}}
 
 UPDATE 2015-01-12: I found [this webpage](http://www.radio-restoration.com/Columbus.html) which describes the Columbus radio brand and it's origins. Based on this information, the radio was made in New Zealand sometime between 1937 and 1961.
 
@@ -44,9 +44,9 @@ I tried a few different paint strippers (because my father had all of these lyin
 <table>
 <tbody>
 <tr>
-<td>{{< img src="columbus-radio-050-maxistrip-paint-stripper.jpg" width="253px" caption="The Maxistrip paint stripper."  >}}</td>
-<td>{{< img src="columbus-radio-060-easy-spray-paint-stripper.jpg" width="171px" caption="The 'Dad's Easy Spray' paint stripper."  >}}</td>
-<td>{{< img src="columbus-radio-070-coopers-paint-stripper.jpg" width="176px" caption="The Cooper's stripper."  >}}</td>
+<td>{{% figure src="columbus-radio-050-maxistrip-paint-stripper.jpg" width="253px" caption="The Maxistrip paint stripper."  %}}</td>
+<td>{{% figure src="columbus-radio-060-easy-spray-paint-stripper.jpg" width="171px" caption="The 'Dad's Easy Spray' paint stripper."  %}}</td>
+<td>{{% figure src="columbus-radio-070-coopers-paint-stripper.jpg" width="176px" caption="The Cooper's stripper."  %}}</td>
 </tr>
 </tbody>
 </table>
@@ -56,62 +56,62 @@ Here is me applying the stripper to the cabinet:
 <table>
 <tbody>
 <tr>
-<td>{{< img src="columbus-radio-075-trying-the-maxistrip.jpg" width="232px" caption="Testing out the Maxistrip stripper."  >}}</td>
-<td>{{< img src="columbus-radio-080-coating-radio-with-stripper.jpg" width="421px" caption="Applying the stripper."  >}}</td>
+<td>{{% figure src="columbus-radio-075-trying-the-maxistrip.jpg" width="232px" caption="Testing out the Maxistrip stripper."  %}}</td>
+<td>{{% figure src="columbus-radio-080-coating-radio-with-stripper.jpg" width="421px" caption="Applying the stripper."  %}}</td>
 </tr>
 </tbody>
 </table>
 
 This is left for about 20 minutes, and then the stripper removed with a combination of scraping, iron wool and water/washer.
 
-{{< img src="columbus-radio-090-scraping-the-varnish-off.jpg" width="722px" caption="Removing the stripper goop after about 20mins of soaking."  >}}
+{{% figure src="columbus-radio-090-scraping-the-varnish-off.jpg" width="722px" caption="Removing the stripper goop after about 20mins of soaking."  %}}
 
 Yay, it works! You can see the bare wood (on the side) coming up nicely in the photo below:
 
-{{< img src="columbus-radio-120-difference-between-stripped-and-original.jpg" width="585px" caption="Comparison between the stripped and non-stripped wooden surfaces of the cabinet."  >}}
+{{% figure src="columbus-radio-120-difference-between-stripped-and-original.jpg" width="585px" caption="Comparison between the stripped and non-stripped wooden surfaces of the cabinet."  %}}
 
 I did a bit of a comparison between them, and the differences were pretty amazing! The Cooper's seemed to produce a much nicer finish than the other two...
 
 <table>
   <tbody>
     <tr>
-      <td>{{< img src="columbus-radio-124-comparison-maxistrip.jpg" width="346px" caption="A wooden surface stripped using Maxistrip." >}}</td>
-      <td>{{< img src="columbus-radio-125-comparison-coopers.jpg" width="347px" caption="A wooden surface stripped using Cooper's." >}}</td>
+      <td>{{% figure src="columbus-radio-124-comparison-maxistrip.jpg" width="346px" caption="A wooden surface stripped using Maxistrip." %}}</td>
+      <td>{{% figure src="columbus-radio-125-comparison-coopers.jpg" width="347px" caption="A wooden surface stripped using Cooper's." %}}</td>
     </tr>
   </tbody>
 </table>
 
 Sadly, I also had to remove the "Columbus" logo, as there was no way of protecting it while at the same time stripping of all of the varnish surrounding it.
 
-{{< img src="columbus-radio-130-removing-the-columbus-logo.jpg" width="647px" caption="Sadly removing the 'Columbus' logo."  >}}
+{{% figure src="columbus-radio-130-removing-the-columbus-logo.jpg" width="647px" caption="Sadly removing the 'Columbus' logo."  %}}
 
 I had to mask of the speaker port while stripping the front panel.
 
-{{< img src="columbus-radio-135-masking-speaker-port-while-stripping.jpg" width="428px" caption="Masking of the speaker port while stripping the front face of the cabinet."  >}}
+{{% figure src="columbus-radio-135-masking-speaker-port-while-stripping.jpg" width="428px" caption="Masking of the speaker port while stripping the front face of the cabinet."  %}}
 
 Don't forget the strip the dials! These had intricate carvings of the Columbus ship on them.
 
-{{< img src="columbus-radio-140-stripping-the-knobs.jpg" width="544px" caption="Stripping back the intricate dials of the Columbus radio."  >}}
+{{% figure src="columbus-radio-140-stripping-the-knobs.jpg" width="544px" caption="Stripping back the intricate dials of the Columbus radio."  %}}
 
 All stripped! The wood had come up really nice, and since all of the glossy, cracked varnish had gone, I realised there were far more veneer patterns that I first thought.
 
-{{< img src="columbus-radio-145-cabinent-all-stripped-ready-for-moisturising.jpg" width="538px" caption="All stripped and already looking better than the before!"  >}}
+{{% figure src="columbus-radio-145-cabinent-all-stripped-ready-for-moisturising.jpg" width="538px" caption="All stripped and already looking better than the before!"  %}}
 
 ## Moisturising The Cabinet
 
 The Cooper's "wood restoration" product line also includes some moisturiser that you are meant to add after you have stripped it.
 
-{{< img src="columbus-radio-155-moisturising-the-cabinent.jpg" width="492px" caption="Moisturising the cabinet."  >}}
+{{% figure src="columbus-radio-155-moisturising-the-cabinent.jpg" width="492px" caption="Moisturising the cabinet."  %}}
 
 The moisturiser does not give it a hard surface, nor does it stain the wood, but rather soaks into it and brings out the original colour.
 
-{{< img src="columbus-radio-190-finished-the-cabinent.jpg" width="656px" caption="The cabinet looking swag after moisturising!"  >}}
+{{% figure src="columbus-radio-190-finished-the-cabinent.jpg" width="656px" caption="The cabinet looking swag after moisturising!"  %}}
 
 ## No More Borer
 
 The existing cabinet had quite a few appearance-degrading borer holes on the front face. To prevent any more of these, I gave the cabinet a good coat of "no borer".
 
-{{< img src="columbus-radio-160-coating-the-inside-with-no-borer.jpg" width="533px" caption="Giving the inside of the cabinet a good coat of 'no borer'."  >}}
+{{% figure src="columbus-radio-160-coating-the-inside-with-no-borer.jpg" width="533px" caption="Giving the inside of the cabinet a good coat of 'no borer'."  %}}
 
 ## Cleaning The Glass
 
@@ -123,7 +123,7 @@ The glass panel had to be handled carefully, the radio frequencies and other tex
 
 I decided on using a **RaspberryPi** with the [Volumio distribution](http://volumio.org/). I already has some Raspberry Pi experience after the Auto-Electric Blanket project and just general tinkering, and Volumio software looked like a pretty powerful and open-source music streaming application that would work on the Raspberry Pi.
 
-{{< img src="columbus-radio-300-raspberry-pi-b-plus.jpg" width="444px" caption="The RaspberryPi B+ I used as for the smarts inside Columbus radio."  >}}
+{{% figure src="columbus-radio-300-raspberry-pi-b-plus.jpg" width="444px" caption="The RaspberryPi B+ I used as for the smarts inside Columbus radio."  %}}
 
 The **RaspberryPi B+ was preferable** over the older A or B solely because of the improved audio output. The first versions of the Pi shared a single regulator between the audio output DAC and a few other peripherals. These peripherals, when in use, caused some **significant distortion/noise** of the audio output. They have fixed this in the B+ and given the DAC it's own dedicated voltage regulator.
 
@@ -135,21 +135,21 @@ I was initially looking at a 100W amplifier from DealExtreme like the TA2024 or 
 
 I could of kept this speaker and gone for a "classic sound" as well as a "classic look", but I really preferred something with a bit more clarity and punch, so I decided to replace the speaker with two 40W RMS 6x9 speakers I had lying around after my Ford Laser got wrecked.
 
-{{< img src="columbus-radio-200-removing-the-original-speaker.jpg" width="371px" caption="Removing the existing Columbus radio speaker."  >}}
+{{% figure src="columbus-radio-200-removing-the-original-speaker.jpg" width="371px" caption="Removing the existing Columbus radio speaker."  %}}
 
 Unfortunately, these didn't quite fit side-by-side when facing forwards in the enclosure! So for better or worse, I decided to face one backwards (goodbye stereo). Here is the front speaker being installed:
 
 <table><tbody ><tr >
-<td >{{< img src="columbus-radio-210-installing-6x9-mount.jpg" width="268px" caption="Installing the 6x9 mount for the front speaker."  >}}
+<td >{{% figure src="columbus-radio-210-installing-6x9-mount.jpg" width="268px" caption="Installing the 6x9 mount for the front speaker."  %}}
 
 </td>
-<td >{{< img src="columbus-radio-220-installing-6x9-speaker.jpg" width="268px" caption="Installing the front 6x9 speaker."  >}}
+<td >{{% figure src="columbus-radio-220-installing-6x9-speaker.jpg" width="268px" caption="Installing the front 6x9 speaker."  %}}
 
 </td></tr></tbody></table>
 
  Installing the rear speaker:
 
-{{< img src="columbus-radio-241-rear-facing-speaker.jpg" width="564px" caption="Installing the rear 6x9 speaker."  >}}
+{{% figure src="columbus-radio-241-rear-facing-speaker.jpg" width="564px" caption="Installing the rear 6x9 speaker."  %}}
 
 EDIT (post completion): One backwards facing speaker **didn't seem to be that detrimental** (apart from no having proper stereo)! I tested various speaker configurations and there seemed to be no difference between the rear speaker facing backwards or forwards.
 
@@ -157,7 +157,7 @@ EDIT (post completion): One backwards facing speaker **didn't seem to be that de
 
  This was an easy design choice, I needed both +5V @ 500mA and +12V @ whatever speakers take (approx. 1A continuous, 5A peak per speaker, based on the speakers power ratings). I had some old computer ATX PSUs lying around, so choose a suitably sized one (this wasn't hard either, there was plenty of space in the back of the Columbus radio).
 
-{{< img src="columbus-radio-230-making-room-for-psu.jpg" width="417px" caption="Chiseling away some small bits of wood in the cabinet to make room for the PSU."  >}}
+{{% figure src="columbus-radio-230-making-room-for-psu.jpg" width="417px" caption="Chiseling away some small bits of wood in the cabinet to make room for the PSU."  %}}
 
 ## LEDs Are Not Retro, Woops
 
@@ -166,8 +166,8 @@ There used to be some sort of valve-based indicator which poked out onto the fro
 <table>
 <tbody>
 <tr>
-<td>{{< img src="columbus-radio-345-removing-old-indicator.jpg" width="250px" caption="Removing the existing valve-based indicator."  >}}</td>
-<td>{{< img src="columbus-radio-350-place-for-indicator.jpg" width="257px" caption="I now had to find something to fit into the gap..."  >}}</td>
+<td>{{% figure src="columbus-radio-345-removing-old-indicator.jpg" width="250px" caption="Removing the existing valve-based indicator."  %}}</td>
+<td>{{% figure src="columbus-radio-350-place-for-indicator.jpg" width="257px" caption="I now had to find something to fit into the gap..."  %}}</td>
 </tr>
 </tbody>
 </table>
@@ -179,8 +179,8 @@ Heartbreakingly I decided to rip them out right then and there before the epoxy 
 <table>
 <tbody>
 <tr>
-<td>{{< img src="columbus-radio-353-new-indicator.jpg" width="300px" caption="Making up a mount for a 12V, 100mA bulb to replace the valve-based indicator."  >}}</td>
-<td>{{< img src="columbus-radio-356-gluing-new-indicator-into-place.jpg" width="300px" caption="Hot-gluing the bulb into the front glass face from the back."  >}}</td>
+<td>{{% figure src="columbus-radio-353-new-indicator.jpg" width="300px" caption="Making up a mount for a 12V, 100mA bulb to replace the valve-based indicator."  %}}</td>
+<td>{{% figure src="columbus-radio-356-gluing-new-indicator-into-place.jpg" width="300px" caption="Hot-gluing the bulb into the front glass face from the back."  %}}</td>
 </tr>
 </tbody>
 </table>
@@ -193,7 +193,7 @@ There are 5 dials on the Columbus radio, The central one is a SPST switch for co
 
 I decided to use the two existing potentiometers to control the volume and to switch to the next track. The volume one is self-explanatory, for the "next track" functionality I had the idea to make it so you just twiddle it in any direction by at least a small threshold amount to get it to go to the next track in the playlist.
 
-{{< img src="columbus-radio-360-wiring-up-a-pot.jpg" width="600px" caption="Wiring up from the RaspberryPi daughter board to an existing potentiometer on the Columbus radio. This one was used for volume control."  >}}
+{{% figure src="columbus-radio-360-wiring-up-a-pot.jpg" width="600px" caption="Wiring up from the RaspberryPi daughter board to an existing potentiometer on the Columbus radio. This one was used for volume control."  %}}
 
 ## RaspberryPi Daughter Board
 
@@ -204,15 +204,15 @@ For this reason, I had to **craft a daughter board**. I used a piece of strip-bo
 <table>
 <tbody>
 <tr>
-<td>{{< img src="columbus-radio-310-cutting-out-daughter-board.jpg" width="378px" caption="Cutting out a RaspberryPi daughter board from strip-board prototyping PCB."  >}}</td>
-<td>{{< img src="columbus-radio-320-fitting-daughter-board.jpg" width="285px" caption="Fitting the daughter board directly onto the RaspberryPi's GPIO header. This was designed so the entire thing could still fit inside a standard Pi B+ enclosure."  >}}</td>
+<td>{{% figure src="columbus-radio-310-cutting-out-daughter-board.jpg" width="378px" caption="Cutting out a RaspberryPi daughter board from strip-board prototyping PCB."  %}}</td>
+<td>{{% figure src="columbus-radio-320-fitting-daughter-board.jpg" width="285px" caption="Fitting the daughter board directly onto the RaspberryPi's GPIO header. This was designed so the entire thing could still fit inside a standard Pi B+ enclosure."  %}}</td>
 </tr>
 </tbody>
 </table>
 
 The layout of the GPIO on the RaspberryPi is shown below.
 
-{{< img src="raspberry-pi-gpio-layout-model-b-plus-800.jpg" width="300px" caption="The GPIO header layout of the RaspberryPi B+. Image from http://www.raspberrypi-spy.co.uk/2014/07/raspberry-pi-b-gpio-header-details-and-pinout/."  >}}
+{{% figure src="raspberry-pi-gpio-layout-model-b-plus-800.jpg" width="300px" caption="The GPIO header layout of the RaspberryPi B+. Image from http://www.raspberrypi-spy.co.uk/2014/07/raspberry-pi-b-gpio-header-details-and-pinout/."  %}}
 
 The following table shows what GPIO header pins I decided to use and what they are connected up to on the daughter board (the circuit was so simple I didn't think it warranted actual schematics been drawn up):
 
@@ -267,7 +267,7 @@ The **RaspberryPi doesn't have any ADCs**, so I had to use the popular **MCP3008
 
 Here is a photo of the completed daughter board:
 
-{{< img src="columbus-radio-330-populated-daughter-board.jpg" width="600px" caption="The completed daughter board." >}}
+{{% figure src="columbus-radio-330-populated-daughter-board.jpg" width="600px" caption="The completed daughter board." %}}
 
 ## The Software
 
@@ -285,7 +285,7 @@ Getting SPI working was more difficult. When running `lsmod` on the default volu
 
 I ran `apt-get update` and `apt-get -y upgrade`.
 
-{{< img src="volumio-sudo-upgrade-screenshot.png" width="568px" caption="Part-way through the sudo -y upgrade process on the volumio."  >}}
+{{% figure src="volumio-sudo-upgrade-screenshot.png" width="568px" caption="Part-way through the sudo -y upgrade process on the volumio."  %}}
 
 `modprobe spidev` seemed to run o.k. with no errors. It wasn't listed under `lsmod`, but I could see the two SPI devices in `/dev` (run `ls /dev`).
 
@@ -307,7 +307,7 @@ This fixed the `Python.h` error! Now an attempt to read the ADC value.
 
 Even though the potentiometer wasn't moving, the read back ADC values kept varying as shown in the below image.
 
-{{< img src="potentiometer-not-moving-but-adc-values-changing.png" width="654px" caption="Screenshot a python script reading back the ADC value from the old potentiometer and converting it into the volume. Even though the potentiometer was not moving, the volume value was varying wildly."  >}}
+{{% figure src="potentiometer-not-moving-but-adc-values-changing.png" width="654px" caption="Screenshot a python script reading back the ADC value from the old potentiometer and converting it into the volume. Even though the potentiometer was not moving, the volume value was varying wildly."  %}}
 
 I had a feeling this was due to the **high resistance** of the volume potentiometer, it's full scale value is 870kΩR. The **input impedance** of the ADC channel upon measuring must of been low enough compared to the potentiometer resistance to cause the ADC voltage to fluctuate during measurement. I fixed this jitter by adding a 470nF, 50V electrolytic capacitor on the ADC channel 0 input as close to the ADC IC as possible. My first attempt with a large 47uF capacitor didn't work because it took to long to charge (time constant RC is too big)!
 
@@ -383,7 +383,7 @@ sudo dpkg -i python-rpi.gpio_0.5.8-1_armhf.deb
 rsync -avz /home/gbmhunter/GoogleDrive/Projects/ColumbusRadio/repo root@columbus:~/ColumbusRadio
 ```
 
-{{< img src="columbus-radio-440-volumio-ssh-and-rsync-screenshot.png" width="965px" caption="Copying the repository to the RaspberryPi using rsync, and then loading the code through SSH."  >}}
+{{% figure src="columbus-radio-440-volumio-ssh-and-rsync-screenshot.png" width="965px" caption="Copying the repository to the RaspberryPi using rsync, and then loading the code through SSH."  %}}
 
 ## The Python Hardware UI Script
 
@@ -394,7 +394,7 @@ I originally went for a basic mega main-loop code architecture. The basic tasks 
 * Read the ADC values from the MCP3008 to find out where the two potentiometer's are. Implement filtering and thresholding for these values to prevent false triggering and jitter. Based on these readings, send the appropriate commands to Volumio to change the volume and skip to the next track.
 * Regularly check for an internet connection, and start flashing the UI bulb if no internet connectivity is found.
  
-{{< img src="columbus-radio-430-screenshot-of-python-hardware-ui-code.png" width="630px" caption="Screenshot of part of the Python 'hardware UI' script."  >}}
+{{% figure src="columbus-radio-430-screenshot-of-python-hardware-ui-code.png" width="630px" caption="Screenshot of part of the Python 'hardware UI' script."  %}}
 
 Note that the complete hardware UI code can be found in the [GitHub ColumbusRadio repo](https://github.com/gbmhunter/ColumbusRadio) at `hardware-ui/hardware-ui.py`.
 
@@ -459,7 +459,7 @@ This didn't turn out to be an issue in the final product, as the RaspberryPi was
 
 Here is a photo of the finished media-streaming, internet aware radio!
 
-{{< img src="columbus-radio-420-closeup-on-stand-with-effect.jpg" width="904px" caption="The finished Columbus radio, streaming music from the internet using Volumio and Spotify!"  >}}
+{{% figure src="columbus-radio-420-closeup-on-stand-with-effect.jpg" width="904px" caption="The finished Columbus radio, streaming music from the internet using Volumio and Spotify!"  %}}
 
 ## Statistics
 
@@ -496,25 +496,25 @@ Everyone loves statistics, right?
 
 Below are the time logs for this project:
 
-{{< img src="columbus-radio-600-time-logs.png" width="922px" caption="The time logs for the Columbus Radio project."  >}}
+{{% figure src="columbus-radio-600-time-logs.png" width="922px" caption="The time logs for the Columbus Radio project."  %}}
 
 The time spent (in hours) by date:
 
-{{< img src="columbus-radio-610-graph-time-worked-by-date.png" width="635px" caption="The time spend on the Columbus Radio project by date."  >}}
+{{% figure src="columbus-radio-610-graph-time-worked-by-date.png" width="635px" caption="The time spend on the Columbus Radio project by date."  %}}
 
 The time spent on the Columbus Radio project (as a percentage) by category:
 
-{{< img src="columbus-radio-620-graph-time-worked-by-category.png" width="699px" caption="Time spent by category on the Columbus Radio project."  >}}
+{{% figure src="columbus-radio-620-graph-time-worked-by-category.png" width="699px" caption="Time spent by category on the Columbus Radio project."  %}}
 
 ## Material Cost Statistics
 
 The individual material costs of each item used to build the Columbus Radio.
 
-{{< img src="columbus-radio-630-table-material-cost.png" width="864px" caption="The material costs of each component used to build the Columbus Radio."  >}}
+{{% figure src="columbus-radio-630-table-material-cost.png" width="864px" caption="The material costs of each component used to build the Columbus Radio."  %}}
 
  And now as a pretty pie chart (as a percentage of the total cost):
 
-{{< img src="columbus-radio-640-graph-material-cost-by-component.png" width="818px" caption="The material costs (as a percentage) of the components used to build the Columbus Radio."  >}}
+{{% figure src="columbus-radio-640-graph-material-cost-by-component.png" width="818px" caption="The material costs (as a percentage) of the components used to build the Columbus Radio."  %}}
 
 ## Things To Improve On
 

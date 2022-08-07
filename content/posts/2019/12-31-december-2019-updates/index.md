@@ -24,7 +24,7 @@ type: "post"
 
         but only when building on the CICD server (Netlify). I removed this `columbus-radio` page and would fail on another specific page. While these specific pages didn't use any unique shortcodes that the other pages didn't, I did notice that these pages contained a large number of image resources.
 
-        {{< img src="screenshot-columbus-radio-directory.png" width="500px" caption="A screenshot showing the number of image resources in the `columbus-radio` page." >}}
+        {{% figure src="screenshot-columbus-radio-directory.png" width="500px" caption="A screenshot showing the number of image resources in the `columbus-radio` page." %}}
 
         Hugo had a default timeout of 10s per page, and pages with a large number of image resources were taking longer than this to process (the images are scaled and resampled). This was an easy fix, I just increased Hugo's timeout to 30s in `config.toml`:
 

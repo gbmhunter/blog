@@ -31,15 +31,15 @@ Total Money Spent:  NZ$3611
 
 Finishing of the wiring.
 
-{{< img src="2012-06-17-21-09-23.jpg" caption="Finishing off the last bit of wiring."  width="500px" >}}
+{{% figure src="2012-06-17-21-09-23.jpg" caption="Finishing off the last bit of wiring."  width="500px" %}}
 
 A mug shot of the board next to some greenery...
 
-{{< img src="2012-06-18-10-59-10.jpg" caption="A mug shot of the finished board next to some greenery :-D."  width="500px" >}}
+{{% figure src="2012-06-18-10-59-10.jpg" caption="A mug shot of the finished board next to some greenery :-D."  width="500px" %}}
 
 Here is what it looks like at night time.
 
-{{< img src="2012-06-16-19-17-34.jpg" caption="The electric skateboards lights proving useful at night."  width="500px" >}}
+{{% figure src="2012-06-16-19-17-34.jpg" caption="The electric skateboards lights proving useful at night."  width="500px" %}}
 
 **More Info**
 

@@ -127,10 +127,10 @@ Exclusively used by NXP for some of their RFID inlays. I'm not sure why they lab
 
 ## 3D Renders
 
-{{< img src="sot-1040-1-component-package-3d-render.gif" width="160px" caption="A 3D render of the SOT-1040-1 component package."  >}}
+{{% figure src="sot-1040-1-component-package-3d-render.gif" width="160px" caption="A 3D render of the SOT-1040-1 component package."  %}}
 
-{{< img src="component-package-sot-1040-1-3d-model.gif" caption="The 3D model of the SOT-1040-1 component package. Image from http://www.nxp.com/documents/outline_3d/sot1040-1_3d.gif."  width="200px" >}}
+{{% figure src="component-package-sot-1040-1-3d-model.gif" caption="The 3D model of the SOT-1040-1 component package. Image from http://www.nxp.com/documents/outline_3d/sot1040-1_3d.gif."  width="200px" %}}
 
 ## Dimensions
 
-{{< img src="component-package-sot-1040-1-outline-drawing.png" caption="The dimensions of the SOT-1040-1 component package. Image from http://www.nxp.com/packages/SOT1040-1.html."  width="600px" >}}
+{{% figure src="component-package-sot-1040-1-outline-drawing.png" caption="The dimensions of the SOT-1040-1 component package. Image from http://www.nxp.com/packages/SOT1040-1.html."  width="600px" %}}

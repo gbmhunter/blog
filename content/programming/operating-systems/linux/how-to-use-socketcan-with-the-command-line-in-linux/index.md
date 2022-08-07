@@ -18,7 +18,7 @@ If you are looking for help controlling a SocketCAN interface from C software, s
 
 If you are looking for more information about the CAN bus protocol itself, see the [CAN Protocol page](/electronics/communication-protocols/can-protocol/).
 
-{{< img src="socketcan-image.png" width="337px" caption="Icon for SocketCAN. Image from https://github.com/linux-can/can-utils." >}}
+{{% figure src="socketcan-image.png" width="337px" caption="Icon for SocketCAN. Image from https://github.com/linux-can/can-utils." %}}
 
 ## What Types of CAN Interfaces Are There?
 

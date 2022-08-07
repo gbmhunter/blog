@@ -10,6 +10,6 @@ categories: [ "Electronics", "Updates" ]
 
 The I2C communication has been updated with new info.
 
-{{< img src="i2c-logo.gif" caption="The I2C logo."  width="320px" >}}
+{{% figure src="i2c-logo.gif" caption="The I2C logo."  width="320px" %}}
 
 Check it out {{% link text="here" src="/electronics/communication-protocols/i2c-communication-protocol" %}}.

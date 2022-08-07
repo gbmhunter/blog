@@ -76,15 +76,15 @@ And `\(g(t)\)` is exactly the same:
 \end{cases}
 $$</p>
 
-{{< img src="box-car-functions-ft-gt.png" width="700px" caption="" >}}
+{{% figure src="box-car-functions-ft-gt.png" width="700px" caption="" %}}
 
 We need to "flip" `\(g(\tau)\)` to give `\(g(-\tau)\)`:
 
-{{< img src="g-tau-flipped.png" width="700px" caption="" >}}
+{{% figure src="g-tau-flipped.png" width="700px" caption="" %}}
 
 Then we need to shift `\(g(-\tau)\)` by `\(t\)` to give `\(g(t - \tau)\)`:
 
-{{< img src="g-tau-offset.png" width="700px" caption="" >}}
+{{% figure src="g-tau-offset.png" width="700px" caption="" %}}
 
 Now we to vary `\(t\)` from `\(-\infty\)` to `\(+\infty\)`, and at each `\(t\)`, multiply the two signals together `\(f(\tau)g(t - \tau)\)`, and calculate the total area under this new signal (mathematically, the integral between `\(-\infty\)` and `\(+\infty\)`). This area is the value of the convolution at time `\(t\)`. 
 
@@ -96,7 +96,7 @@ Obviously, varying `\(t\)` from `\(-\infty\)` to `\(+\infty\)` manually is impos
 
 When `\(t < 0\)` the two box-cars do not intersect at all, thus the product of `\(f\)` and `\(g\)` is always 0, and thus the area is also 0, which means the value of the convolution function when `\(t < 0\)` is also 0:
 
-{{< img src="when-t-less-than-0.png" width="400px" >}}
+{{% figure src="when-t-less-than-0.png" width="400px" %}}
 
 <p>$$
   \int_{-\infty}^{-\infty} f(\tau)g(t - \tau)\,d\tau = 0
@@ -108,7 +108,7 @@ $$</p>
 
 When `\(0 \le t < 1\)`, the two box-car functions begin to intersect, with the amount if intersection increasing with `\(t\)`. Where they intersect, the product of the two functions is also `\(1\)`. This product is shown as the green line below.
 
-{{< img src="when-0-lte-t-lt-1.png" width="400px" >}}
+{{% figure src="when-0-lte-t-lt-1.png" width="400px" %}}
 
 From visual inspection of the green plot, it is obvious that the area under the curve is going to be width*height, which in this case is `\((t - 0)*1 = t\)`. Mathematically this can be calculated by:
 
@@ -124,7 +124,7 @@ From visual inspection of the green plot, it is obvious that the area under the 
 
 When `\(1 \le t < 2\)`, the functions still intersect, but they are beginning to separate. The area is again width*height, where the width is from `\(t-1\)` to `\(1\)`, and the height is still `\(1\)`.
 
-{{< img src="when-1-lte-t-lt-2.png" width="400px" >}}
+{{% figure src="when-1-lte-t-lt-2.png" width="400px" %}}
 
 We can calculate a function for the convolution in this interval with:
 
@@ -141,7 +141,7 @@ We can calculate a function for the convolution in this interval with:
 
 When `\(t \ge 2\)`, the two box-cars do not intersect at all (just like when `\(t < 0\)`):
 
-{{< img src="when-2-lte-t-lt-inf.png" width="400px" >}}
+{{% figure src="when-2-lte-t-lt-inf.png" width="400px" %}}
 
 Mathematically we can write this as:
 

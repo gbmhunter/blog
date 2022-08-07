@@ -27,7 +27,7 @@ There are two types of phase-cutting:
 
 Here is a VERY simple two-component zero-cross detection circuit by Atmel:
 
-{{< img src="two-resistor-one-micro-very-simple-zero-cross-detector-atmel.png" width="333px" caption="A very simple two-component mains zero-cross detection circuit. Image from http://www.atmel.com/."  >}}
+{{% figure src="two-resistor-one-micro-very-simple-zero-cross-detector-atmel.png" width="333px" caption="A very simple two-component mains zero-cross detection circuit. Image from http://www.atmel.com/."  %}}
 
 More info on this circuit can be found [here](http://www.atmel.com/Images/doc2508.pdf).
 

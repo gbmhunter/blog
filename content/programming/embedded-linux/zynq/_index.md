@@ -10,7 +10,7 @@ type: page
 
 **The Zynq is a family of Xilinx FPGAs which incorporate both programmable logic and one or more dedicated ARM Cortex-A9 processors** (because of the inclusion of the processor, it can be referred to as a SoC instead of an FPGA).
 
-{{< img src="xilinx-zynq-7000-ZC720-evaluation-kit-photo.png" width="773px" caption="The Xilinx ZC720 Evaluation Kit featuring the Zynq-7000 SoC."  >}}
+{{% figure src="xilinx-zynq-7000-ZC720-evaluation-kit-photo.png" width="773px" caption="The Xilinx ZC720 Evaluation Kit featuring the Zynq-7000 SoC."  %}}
 
 ## Acronyms
 

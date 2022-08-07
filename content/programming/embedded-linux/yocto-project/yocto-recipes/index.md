@@ -105,7 +105,7 @@ This includes BSD, GPL-3.0 and MIT.
 
 Yocto supports patches, which is a way of **modifying third-party code** before it is included in the build, **without first having to duplicate the source code** or ask the maintainer to make the change for you.
 
-{{< img src="patch-icon-band-aid.png" width="202px" caption="Patch icon (band-aid)."  >}}
+{{% figure src="patch-icon-band-aid.png" width="202px" caption="Patch icon (band-aid)."  %}}
 
 Patches can be **easily created using Git**. If you can download the third-party source code as a Git repository, this is definitely the easiest solution. After downloading the repository, make the required changes to the code, and add these changes to the repository as a new commit. You can then tell Git to make a patch file.
 
