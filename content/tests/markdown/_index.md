@@ -134,6 +134,10 @@ A wide HTML table (we should be able to scroll horizontally):
 
 {{% img src="cartoon-ninja.jpg" width="300px" caption="This should be an clickable image of the logo. **Bold text**. An equation: `\(x^2\)`. Always use '%' and not '<' in the hugo shortcode delimiters to render equations and footnotes. There should be a footnote number at the end of this sentence[^foot-1]." %}}
 
+Link to an image which is not a page resource:
+
+{{% img src="/images/logo/cartoon-ninja.jpg" width="300px" caption="Caption for non-page resource image." %}}
+
 ## Admonitions
 
 {{% note %}}
