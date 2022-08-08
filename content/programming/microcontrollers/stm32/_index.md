@@ -9,13 +9,13 @@ title: "STM32 Microcontrollers"
 type: "page"
 ---
 
-WARNING: This page is in notes format, and may not be of the same quality as other pages on this site.
+{{% warning-is-notes %}}
 
 ## Overview
 
 `STM32` is a family of 32-bit, ARM Cortex-M microcontrollers manufactured by ST Microelectronics. 
 
-All `STM32` micros are supported by ST's own link:/programming/integrated-development-environments-ides/stm32cubeide[STM32CubeIDE].
+All `STM32` micros are supported by ST's own [STM32CubeIDE](/programming/integrated-development-environments-ides/stm32cubeide).
 
 ## Development Kits
 
@@ -33,7 +33,7 @@ _ST-LINK/V1_ is deprecated.
 
 ### ST-LINK/V2
 
-The _ST-LINK/V2_ is an in-circuit programmer and debugger for the STM8 and STM32 families of microcontrollers. It supports the SWIM (Single Wire Interface Module, for STM8 only)<<bib-st-swim>>, SWD (Single Wire Debug) and JTAG programming protocols. 
+The _ST-LINK/V2_ is an in-circuit programmer and debugger for the STM8 and STM32 families of microcontrollers. It supports the SWIM (Single Wire Interface Module, for STM8 only)[^bib-st-swim], SWD (Single Wire Debug) and JTAG programming protocols. 
 
 ### ST-LINK/V2-ISOL
 
@@ -49,8 +49,7 @@ Designed to supersede the ST-LINK/V2 family of programmers. Comes in three flavo
 
 All have 1 or more virtual comm ports (VCPs) and mass-storage device emulation for drag-and-drop flash programming.
 
-.A photo of the STLINK-V3SET programmer. Image from https://www.digikey.co.nz/product-detail/en/stmicroelectronics/STLINK-V3SET/497-18216-ND.
-image::stlink-v3set-st-microelectronics-programmer-photo.png[width=500px]
+{{% figure src="stlink-v3set-st-microelectronics-programmer-photo.png" width="500" caption="A photo of the STLINK-V3SET programmer. Image from https://www.digikey.co.nz/product-detail/en/stmicroelectronics/STLINK-V3SET/497-18216-ND." %}}
 
 ### NUCLEO Development Kits
 
@@ -81,8 +80,7 @@ Or as the following inputs:
 
 Reference schematic for the STM32F030 (just power, clock and programming):
 
-.The reference schematic for the STM32F030 microcontroller. Image from https://www.st.com/resource/en/application_note/dm00089834-getting-started-with-stm32f030xx-and-stm32f070xx-series-hardware-development-stmicroelectronics.pdf.
-image::stm32f030-reference-schematic.png[width=800px]
+{{% figure src="stm32f030-reference-schematic.png" width="800" caption="The reference schematic for the STM32F030 microcontroller. Image from https://www.st.com/resource/en/application_note/dm00089834-getting-started-with-stm32f030xx-and-stm32f070xx-series-hardware-development-stmicroelectronics.pdf." %}}
 
 ## STM32F1
 
@@ -93,11 +91,11 @@ Some things to note:
 - All GPIO pins with the same integer last digit across each port (e.g. `PA1`, `PB1`, `PC1`, ...) are connected to the same interrupt, and only one pin may be connected to the interrupt at any one time. Be careful when routing signals to your GPIO pins!
 - Peripherals are divided into two APB buses. All peripherals connected to `APB1` run at half the main clock frequency, and peripherals connected to `APB2` run at the main clock frequency.
 
-To develop with STM32F1 microcontrollers you will need two PDFs, the specific "datasheet" for the exact microcontroller you are using, and the more general and much bigger link:https://www.st.com/resource/en/reference_manual/cd00171190-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf[reference manual].
+To develop with STM32F1 microcontrollers you will need two PDFs, the specific "datasheet" for the exact microcontroller you are using, and the more general and much bigger [reference manual](https://www.st.com/resource/en/reference_manual/cd00171190-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf).
 
 ## STM32G
 
-The `STM32G` is a family of "general purpose" STM32 microcontrollers. The family either uses a 64MHz ARM Cortex-M0+ CPU architecture (the M0+ instructions are an optimized superset of the M0, the M0+ also has a two-stage pipeline, while the M0 has a three-stage pipeline) for the `G0` or the Cortex-M4F for the `G4`<<bib-wp-stm32>>.
+The `STM32G` is a family of "general purpose" STM32 microcontrollers. The family either uses a 64MHz ARM Cortex-M0+ CPU architecture (the M0+ instructions are an optimized superset of the M0, the M0+ also has a two-stage pipeline, while the M0 has a three-stage pipeline) for the `G0` or the Cortex-M4F for the `G4`[^bib-wp-stm32].
 
 ### STM32G0
 
@@ -116,8 +114,7 @@ Family of mixed-signal microcontrollers, which include both DSP and FPU instruct
 
 The `STM32WLEx` is a family of "SoC" microcontrollers featuring a `STM32L4` coupled with a wireless radio IC that supports LoRaWAN (both of these are in the same physical IC).
 
-[bibliography]
 ## References
 
-* [[[bib-st-swim, 1]]] ST Microelectronics (2016, Aug). _UM0470 User manual: STM8 SWIM communication protocol and debug module_. Retrieved 2020-09-03, from https://www.st.com/resource/en/user_manual/cd00173911-stm8-swim-communication-protocol-and-debug-module-stmicroelectronics.pdf.
-* [[[bib-wp-stm32, 2]]] Wikipedia (last edited 2021, Aug 31). _STM32_. Retrieved 2022-01-12, from https://en.wikipedia.org/wiki/STM32.
+[^bib-st-swim]:  ST Microelectronics (2016, Aug). _UM0470 User manual: STM8 SWIM communication protocol and debug module_. Retrieved 2020-09-03, from https://www.st.com/resource/en/user_manual/cd00173911-stm8-swim-communication-protocol-and-debug-module-stmicroelectronics.pdf.
+[^bib-wp-stm32]:  Wikipedia (last edited 2021, Aug 31). _STM32_. Retrieved 2022-01-12, from https://en.wikipedia.org/wiki/STM32.
