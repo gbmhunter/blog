@@ -1,12 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [ Geoffrey Hunter ]
 date: 2020-06-19
-description: "Info about the STM32 range of microcontrollers."
-categories: [ "Programming", "Microcontrollers", "STM32" ]
-lastmod: 2022-01-12
-tags: [ "programming", "microcontrollers", "STM32", "STM32F0", "Cortex-M0", "ARM", "STM32CubeIDE", "Nucleo", "STM32WLEx", "LoRa", "LoRaWAN", "ST-LINK/V2", "virtual COM ports", "VCPs", "LoRaWAN" ]
-title: "STM32 Microcontrollers"
-type: "page"
+description: Info about the STM32 range of microcontrollers.
+categories: [ Programming, Microcontrollers, STM32 ]
+lastmod: 2022-08-09
+tags: [ programming, microcontrollers, STM32, STM32F0, Cortex-M0, ARM, STM32CubeIDE, Nucleo, STM32WLEx, LoRa, LoRaWAN, ST-LINK/V2, virtual COM ports, VCPs, LoRaWAN, STLINK-V3, STLINK-V3SET, isolation ]
+title: STM32 Microcontrollers
+type: page
 ---
 
 {{% warning-is-notes %}}
@@ -39,17 +39,40 @@ The _ST-LINK/V2_ is an in-circuit programmer and debugger for the STM8 and STM32
 
 The _ST-LINK/V2-ISOL_ is similar in functionality to the ST-LINK/V2 but with additional isolation between the PC and target board.
 
-### ST-LINK/V3
+### STLINK-V3
 
 Designed to supersede the ST-LINK/V2 family of programmers. Comes in three flavours:
 
-* STLINK-V3SET
-* STLINK-V3MINI
+* **STLINK-V3SET**: The "standard" programmer that comes with an enclosure. The main module board is the MB1441. Optional adapter boards can be attached to it for extra functionality[^bib-st-um2448-stlink-v3set].
+* **STLINK-V3MINI**: A miniature form of the programming, that comes as a bare PCB. Much cheaper than the STLINK-V3SET.
 * **STLINK-V3MODS**: A programmer on a castellated-edged PCB module, designed to be soldered onto a PCB containing the microcontroller to be programmed.
 
 All have 1 or more virtual comm ports (VCPs) and mass-storage device emulation for drag-and-drop flash programming.
 
 {{% figure src="stlink-v3set-st-microelectronics-programmer-photo.png" width="500" caption="A photo of the STLINK-V3SET programmer. Image from https://www.digikey.co.nz/product-detail/en/stmicroelectronics/STLINK-V3SET/497-18216-ND." %}}
+
+**STDC14 Connector**
+
+The `STDC14` pinout/connector was introduced in STLINK-V3. This is a 14-pin 2x7 1.27mm pitch header-style connector. The middle 10-pins copy the standard 10-pin ARM Cortex programming connector. 2 on one end add UART TX/RX, and the other two on the other end are reserved.
+
+The pinout for the STDC14 connector is shown the below table[^bib-st-um2448-stlink-v3set]:
+
+<table>
+  <thead>
+    <tr><th>Pin No.</th>  <th>Description</th>          <th>Pin No.</th>  <th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td>        <td>Reserved</td>             <td>2</td>        <td>Reserved</td></tr>
+    <tr><td>3</td>        <td>T_VCC</td>                <td>4</td>        <td>T_JTMS/T_SWDIO</td></tr>
+    <tr><td>5</td>        <td>GND</td>                  <td>6</td>        <td>T_JCLK/T_SWCLK</td></tr>
+    <tr><td>7</td>        <td>GND</td>                  <td>8</td>        <td>T_JTDO/T_SWO</td></tr>
+    <tr><td>9</td>        <td>T_JRCLK/NC</td>           <td>10</td>       <td>T_JTDI/NC</td></tr>
+    <tr><td>11</td>       <td>GNDDetect</td>            <td>12</td>       <td>T_NRST</td></tr>
+    <tr><td>13</td>       <td>T_VCP_RX</td>             <td>14</td>       <td>T_VCP_TX</td></tr>
+  </tbody>
+</table>
+
+The [TagConnect TC2070-IDC-050 or TC2070-IDC-NL-050 cables](https://www.tag-connect.com/debugger-cable-selection-installation-instructions/stlink-v3) can be used with the STLINK-V3 and it's STDC14 connector to provide connector-less pogo-pin style programming[^bib-tagconnect-stlink-v3].
 
 ### NUCLEO Development Kits
 
@@ -118,3 +141,5 @@ The `STM32WLEx` is a family of "SoC" microcontrollers featuring a `STM32L4` coup
 
 [^bib-st-swim]:  ST Microelectronics (2016, Aug). _UM0470 User manual: STM8 SWIM communication protocol and debug module_. Retrieved 2020-09-03, from https://www.st.com/resource/en/user_manual/cd00173911-stm8-swim-communication-protocol-and-debug-module-stmicroelectronics.pdf.
 [^bib-wp-stm32]:  Wikipedia (last edited 2021, Aug 31). _STM32_. Retrieved 2022-01-12, from https://en.wikipedia.org/wiki/STM32.
+[^bib-st-um2448-stlink-v3set]: ST Microelectronics (2021, Dec). _UM2448 User manual: STLINK-V3SET debugger/programmer for STM8 and STM32_. Retrieved 2022-08-09, from https://www.st.com/en/development-tools/stlink-v3set.html#documentation.
+[^bib-tagconnect-stlink-v3]: TagConnect. _Tag-Connect Solutions for Debuggers & Programmers: ST-Link-V3 Cable Selection_. Retrieved 2022-08-09, from https://www.tag-connect.com/debugger-cable-selection-installation-instructions/stlink-v3.
