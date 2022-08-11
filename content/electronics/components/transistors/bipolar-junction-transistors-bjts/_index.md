@@ -166,9 +166,11 @@ However, NPN transistors cannot be used as a simple high-side switch, as the emi
 
 ### Common Collector Amplifier
 
-The BJT _common-collector_ amplifier shown below is one of the three basic single-stage BJT amplifier topologies. The common collector amplifier topology is also known as a _emitter follower amplifier_.
+#### Basic Common Collector Amplifier
 
-{{% figure src="basic-common-collector-bjt-amplifier-schematic.png" width="400px" caption="The basic schematic of a common-collector BJT amplifier." %}}
+The BJT _common-collector_ amplifier is one of the three basic single-stage BJT amplifier topologies. The common collector amplifier topology is also known as a _emitter follower amplifier_ or _voltage follower_. It has a high input-impedance, a low output-impedance, and has a non-inverting gain of around 1. It does NOT produce much voltage gain, but is able to provide current gain, and therefore overall power gain. Because of it's "buffering" capabilities it is often used between high-impedance inputs and low-impedance outputs[^bib-libretexts-common-collector-amplifier].
+
+{{% figure src="common-collector-bjt-amplifier-basic-schematic.png" width="400px" caption="The basic schematic of a common-collector BJT amplifier." %}}
 
 The output voltage is almost equal to the input voltage, except for an approximately `\(0.7V\)` diode drop across the base-emitter junction. This means that the amplifier has a voltage gain of almost unity (1), or `\(0dB\)`.
 
@@ -183,6 +185,12 @@ Here is a graph of `\(v_{in}\)` vs. `\(v_{out}\)` for the above circuit:
 The common-collector amplifier is simulated in circuitjs below:
 
 {{% circuitjs data="CQAgjOB0AMt-CwFMC0B2c1IDYDMAWAJmzQFZcBOADjG1PpG2xEJFOjdTDACgB3ELlKtChfIOHgKraDzBpWQ1mGkTl2Dhwyk2ITXsg6AwgHsANmaQBjAC4mATiABq5mwEMA5kh4e1gwhxKgrjMmjw2gtDiYoGSMXrgICi4hri0+FQEYMRgVBSkVAakFLn5pCrYYoTs4mCwIAAmSABmbgCuZjb8LPgc8bhRPWGOQdXMQbgBCXWwPABuQ-59vYscEDN9hixbmoY+i5PLgSEJsgEY8fEqIiviAJYAdjznfmMgvX2kzOImbV0mIEKkwSvQoFF0WHgFDQdEqOg44iBIHBHHBuB4QA" %}}
+
+#### Common Collector Amplifier With AC Coupling And DC Bias
+
+A more useful common-collector amplifier can be made which AC couples the input and provides a DC bias point at the base of the BJT. Below is a schematic of one built with a NPN transistor:
+
+{{% figure src="common-collector-bjt-amplifier-ac-coupled-schematic.png" width="600px" caption="Schematic of an AC-coupled common-collector NPN BJT amplifier." %}}
 
 ### Common-Base Amplifier
 
@@ -375,7 +383,8 @@ The you are looking for a slice of history and some informative transistor infor
 
 ## References
 
-[^bib-haenichen-interview]:  http://www.semiconductormuseum.com/Transistors/Motorola/Haenichen/Haenichen_Page11.htm, retrieved 2021-06-20.
-[^bib-penn-ese319-lecture-notes]: : https://www.seas.upenn.edu/~ese319/Lecture_Notes/Lec_9_CCandCBDesigns_08.pdf, retrieved 2020-02-04.
-[^bib-wikipedia-soa]: : Wikipedia. _Safe operating area_. Retrieved 2021-08-23, from https://en.wikipedia.org/wiki/Safe_operating_area
-[^bib-pbs-evolution-of-tran]:  PBS (1999). _Evolution of the Transistor_. Retrieved 2022-01-10, from https://www.pbs.org/transistor/background1/events/trnsevolution.html.
+[^bib-haenichen-interview]: http://www.semiconductormuseum.com/Transistors/Motorola/Haenichen/Haenichen_Page11.htm, retrieved 2021-06-20.
+[^bib-penn-ese319-lecture-notes]: https://www.seas.upenn.edu/~ese319/Lecture_Notes/Lec_9_CCandCBDesigns_08.pdf, retrieved 2020-02-04.
+[^bib-wikipedia-soa]: Wikipedia. _Safe operating area_. Retrieved 2021-08-23, from https://en.wikipedia.org/wiki/Safe_operating_area
+[^bib-pbs-evolution-of-tran]: PBS (1999). _Evolution of the Transistor_. Retrieved 2022-01-10, from https://www.pbs.org/transistor/background1/events/trnsevolution.html.
+[^bib-libretexts-common-collector-amplifier]: James M. Fiore (2022, May 23). _Common Collector Amplifier_. LibreTexts: Engineering. Retrieved 2022-08-11, from https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Book%3A_Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07%3A_BJT_Small_Signal_Amplifiers/7.4%3A_Common_Collector_Amplifier. 
