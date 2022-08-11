@@ -1498,3 +1498,12 @@ span.con {
         margin-bottom: -30px;
     }
 }
+
+/* ========================================================================= */
+/* WORKED EXAMPLES                                                           */
+/* ========================================================================= */
+
+.worked-example {
+    background-color: var(--main-color-light);
+    padding: 1em; // Padding based on em, not px, so is responsive?
+}

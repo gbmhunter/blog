@@ -82,13 +82,14 @@ def image_replace_fn(found_text, file_path):
     # Params will need further extraction, this contains the width
     params = match.group(3)
     print(f'params={params}')
-    regex = re.compile(r'width=(.*?)px')
+    # "px" could be missing
+    regex = re.compile(r'width=([0-9]+)')
     match = regex.search(params)
 
     width_px = match.group(1)
     print(f'width_px={width_px}')
 
-    markdown_image = f'{{{{% figure src="{src}" width="{width_px}" caption="{caption}" %}}}}'
+    markdown_image = f'{{{{% figure src="{src}" width="{width_px}px" caption="{caption}" %}}}}'
     print(f'markdown_image={markdown_image}')
 
     return markdown_image
