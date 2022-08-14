@@ -66,15 +66,20 @@ Temperature has a major influence on the gain of a BJT.
 
 ### Early Voltage (Va)
 
-The Early Voltage is normally denoted with `\(V_A\)`.
+* Symbol: `\(V_A\)`
 
-As `\(V_{CE}\)` on a BJT increases, the reverse-bias on the `\(V_CB\)` junction increases (this is just a PN junction in reverse bias under typical operation). This increases the depletion region of this junction, which **reduces the effective width of the base**. Because the saturation current is inversely proportional to the effective width of the base, an increase in `\(V_{CE}\)` results in an increase in `\(I_C\)`.
+The _Early Voltage_ is a parameter used to determine the _Early effect_. The Early effect describes the small increase in collector current as the collector-emitter voltage increases (with a BJT operating in it's saturation region). As `\(V_{CE}\)` on a BJT increases, the reverse-bias on the `\(V_{CB}\)` junction increases (this is just a PN junction in reverse bias under typical operation). This increases the depletion region of this junction, which **reduces the effective width of the base**. Because the saturation current is inversely proportional to the effective width of the base, an increase in `\(V_{CE}\)` results in an increase in `\(I_C\)`.
 
-The effect of the collector-emitter current on collector current is given by the following equation:
+The effect of the collector-emitter voltage on collector current is given by the following equation:
 
 <p>\begin{align}
 I_C = I_{C(sat)} ( 1 + \frac{V_{CE}}{V_A} )
 \end{align}</p>
+
+<p class="centered">
+where:</br>
+\(V_A\) is the Early voltage</br>
+</p>
 
 ### Miller Capacitance
 
@@ -105,13 +110,13 @@ TODO: Add info here
 
 ### Hybrid-Pi Transistor Model
 
-The hybrid-pi model is a well-used model for approximating the small-signal behaviour of transistors at low frequencies. There are a few variants of the hybrid-pi model, the simplest being the small-signal linearized version.
+The hybrid-pi model is a well-used model for approximating the small-signal behaviour of transistors at low frequencies. There are a few variants of the hybrid-pi model, the simplest being the small-signal linearized version. It is also known as the Giacoletto model after L.J. Giacoletto who designed it in 1969[^bib-wikipedia-hybrid-pi-model].
 
 #### Small-Signal Linearized Hybrid-Pi Model
 
 The small-signal linearized hybrid-pi model is a simplification of the complete hybrid-pi model.
 
-{{% figure src="hybrid-pi-model.png" width="600px" caption="A simplified Hybrid-Pi model of a BJT transistor." %}}
+{{% figure src="hybrid-pi-model-simplified.png" width="600px" caption="A simplified Hybrid-Pi model of a BJT transistor." %}}
 
 Inputs (independent variables) to the model are:
 
@@ -123,18 +128,45 @@ From this the model calculates the following outputs (dependent variables):
 * Small-signal base current `\(i_B\)`
 * Small-signal collector current `\(i_C\)`
 
-The transconductance `\(g_m\)` can be calculated with:
+The transconductance `\(g_m\)` can be calculated with (evaluated when `\(v_{ce} = 0\)`)[^bib-wikipedia-hybrid-pi-model]:
 
 <p>\begin{align}
-g_m &= \frac{i_C}{v_{BE}} & \text{when $v_{CE} = 0$} \\
-    &= \frac{I_C}{V_T}
+g_m &= \left. \frac{i_C}{v_{BE}} \right|_{v_{ce}=0} \nonumber \\
+    \label{eq:gm-ic-vt}
+    &= \frac{I_C}{V_T} \\
 \end{align}</p>
 
 <p class="centered">
 where:</br>
 \(I_C\) is the DC bias collector current (not the small-signal collector current)</br>
-\(V_T\) is the thermal voltage</br>
+\(V_T\) is the thermal voltage (see above for more info on this)</br>
 </p>
+
+The resistance between the base and emitter as looking into the base, `\(r_{\pi}\)`, is equal to[^bib-wikipedia-hybrid-pi-model]:
+
+<p>\begin{align}
+r_{\pi} &= \left. \frac{v_b}{i_{be}}\right|_{v_{ce}=0} \nonumber \\
+        \label{eq:rpi-vt-ib}
+        &= \frac{V_T}{I_B} \\
+\end{align}</p>
+
+{{% note %}}
+Why do we specify "as looking into the base" when specifying the resistance between base and emitter? Surely it's the same "as looking into the emitter"? For a two terminal component such as a basic resistor, this would be true. But for a three terminal component such as a BJT, the current going into the base is not the same as the current coming out of the emitter. So when calculating the apparent resistance, even though the voltage between base-and-emitter is the same, the current depends on whether you are "looking into" the base or the emitter.
+{{% /note %}}
+
+By using `\(h_{fe} = \frac{I_C}{I_B}\)` and `\(Eq. \ref{eq:gm-ic-vt}\)` we can substitute into `\(Eq. \ref{eq:rpi-vt-ib}\)` to re-write `\(r_{\pi}\)`:
+
+<p>\begin{align}
+r_{\pi} &= \frac{h_{fe}}{g_m} \\
+\end{align}</p>
+
+The output resistance, `\(r_O\)`, can be found with[^bib-wikipedia-hybrid-pi-model]:
+
+<p>\begin{align}
+r_{O} &= \left. \frac{v_{ce}}{i_c} \right|_{v_{be}=0} \nonumber \\
+      &= \frac{1}{I_C}(V_A + V_{CE}) \nonumber \\
+      &\approx \frac{V_A}{I_C} \\
+\end{align}</p>
 
 ## Circuit Design Basics With BJTs
 
@@ -388,3 +420,4 @@ The you are looking for a slice of history and some informative transistor infor
 [^bib-wikipedia-soa]: Wikipedia. _Safe operating area_. Retrieved 2021-08-23, from https://en.wikipedia.org/wiki/Safe_operating_area
 [^bib-pbs-evolution-of-tran]: PBS (1999). _Evolution of the Transistor_. Retrieved 2022-01-10, from https://www.pbs.org/transistor/background1/events/trnsevolution.html.
 [^bib-libretexts-common-collector-amplifier]: James M. Fiore (2022, May 23). _Common Collector Amplifier_. LibreTexts: Engineering. Retrieved 2022-08-11, from https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Book%3A_Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07%3A_BJT_Small_Signal_Amplifiers/7.4%3A_Common_Collector_Amplifier. 
+[^bib-wikipedia-hybrid-pi-model]: Wikipedia (2020, Mar 22). _Hybrid-pi model_. Retrieved 2022-08-14, from https://en.wikipedia.org/wiki/Hybrid-pi_model.

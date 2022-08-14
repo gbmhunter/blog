@@ -16,3 +16,5 @@ type: "post"
 * Added a page with info on using the volatile keyword in firmware.
 
 * Added a page on [current mirrors](/electronics/components/current-mirrors/).
+
+* Added more info on the [Hybrid-pi BJT model](/electronics/components/transistors/bipolar-junction-transistors-bjts/#hybrid-pi-transistor-model).
