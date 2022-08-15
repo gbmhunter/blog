@@ -12,7 +12,7 @@ Pillow==9.0.0
 ply==3.11
 pycparser==2.20
 pyparsing==2.4.7
-PySpice==1.4.3
+PySpice==1.5.0
 python-dateutil==2.8.1
 pytz==2021.1
 PyYAML==5.4.1

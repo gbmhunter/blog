@@ -42,6 +42,25 @@ BJTs are made from a hunk of silicon. They are either a thin slice of P-type sem
 
 The bipolar part of their name comes from the fact they conduct by using both majority and minority charge carriers.
 
+## BJT Characteristics
+
+_BJT characteristics_ is a family of curves that show you how a BJT responds to various currents and voltages across it's terminals. Normally two parameters are varied whilst a third is held constant. BJT characteristics can be broken down into:
+
+* **Input characteristics:** How `\(I_{B}\)` changes with `\(V_{BE}\)`, at constant `\(V_{CE}\)`[^bib-byjus-transfer-characteristics].
+* **Transfer characteristics:** How `\(I_C\)` changes with `\(I_B\)`, at constant `\(V_{CE}\)`.
+* **Output characteristics:** How `\(I_C\)` changes with `\(V_{CE}\)`, at constant `\(I_B\)`.
+* **Mutual characteristics:** How `\(I_C\)` changes with `\(V_{BE}\)`[^bib-learn-about-elec-bjts-current-gain].
+
+### Output Characteristics
+
+The characteristic output curve for a BJT shows show the collector current `\(I_C\)` changes as the collector-emitter voltage `\(V_{CE}\)` changes, at a fixed base current `\(I_B\)`. This curve is shown for a number of base currents to cover a range of operation points, and generally you can interpolate between the curves for your specific base current if needed.
+
+The below figure shows the simulated output transfer characteristics for the popular 2N2222 BJT. `\(I_C\)` is plotted against `\(V_{CE}\)` for a range of base currents `\(I_B\)` varying from 0 to 5mA:
+
+{{% figure src="/electronics/components/transistors/bipolar-junction-transistors-bjts/output-transfer-characteristics-microcap-sim/plot.png" width="600px" caption="The output transfer characteristics (simulated) for the 2N2222 BJT." %}}
+
+(Micro-Cap simulation file: [circuit.cir](output-transfer-characteristics-microcap-sim/circuit.cir))
+
 ## Important Parameters
 
 ### Beta And Gain (B, hfe)
@@ -81,6 +100,15 @@ where:</br>
 \(V_A\) is the Early voltage</br>
 </p>
 
+The Early voltage can be derived from `\(I_C\)` vs. `\(V_{CE}\)` graphs. If you extrapolate the active part of the curve (beyond the knee) back to where the line crosses the x-axis, this gives you the negative of the Early voltage, `\(-V_A\)`. It should not matter what the base current `\(I_B\)` is, all the curves should cross the x-axis at the same point. The following graph shows this:
+
+{{% figure src="/electronics/components/transistors/bipolar-junction-transistors-bjts/early-voltage-microcap-sim/vce-vs-ic-with-early-voltage.png" width="700px" caption="Graph of Vce vs. Ic showing how the Early voltage is the extrapolation of the curves (in the active region) back to the x-axis intersection." %}}
+
+(Micro-Cap simulation file: [early-voltage.cir](early-voltage-microcap-sim/early-voltage.cir))
+
+Micro-Cap with the QNB transistor was used to simulate these `\(I_C\)` vs. `\(V_{CE}\)` curves. This model had a Early voltage `VAF` set to `45V`, which agrees well with the extrapolated curves and the x-axis intersection.
+
+In SPICE models, the variable `VAF` is typically used to denote the Early voltage (standing for _forward Early voltage_).
 ### Miller Capacitance
 
 TODO: Add notes here
@@ -421,3 +449,5 @@ The you are looking for a slice of history and some informative transistor infor
 [^bib-pbs-evolution-of-tran]: PBS (1999). _Evolution of the Transistor_. Retrieved 2022-01-10, from https://www.pbs.org/transistor/background1/events/trnsevolution.html.
 [^bib-libretexts-common-collector-amplifier]: James M. Fiore (2022, May 23). _Common Collector Amplifier_. LibreTexts: Engineering. Retrieved 2022-08-11, from https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Book%3A_Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07%3A_BJT_Small_Signal_Amplifiers/7.4%3A_Common_Collector_Amplifier. 
 [^bib-wikipedia-hybrid-pi-model]: Wikipedia (2020, Mar 22). _Hybrid-pi model_. Retrieved 2022-08-14, from https://en.wikipedia.org/wiki/Hybrid-pi_model.
+[^bib-byjus-transfer-characteristics]: Byju's. _Characteristics Of A Transistor_. Retrieved 2022-08-15, from https://byjus.com/physics/characteristics-of-a-transistor/.
+[^bib-learn-about-elec-bjts-current-gain]: Learnabout Electronics (2020, Dec 29). _Learnabout Electronics - Bipolar Junction Transistors (BJTs)_. Retrieved 2022-08-15, from https://learnabout-electronics.org/Semiconductors/bjt_05.php.
