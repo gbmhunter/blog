@@ -9,7 +9,9 @@
 {{/* If the src to the image starts with a /, we assume it's not a page resource, and therefore can't resample it.
 If it is a page resource, resample to match the specified width */}}
 {{- $link := "" -}}
-{{ if hasPrefix (.Get "src") "/" }}
+{{/* CHANGE 2022-08-16: Removing grabbing the image as a page resource as this didn't work for image/ directories under _index.md, but did for index.md */}}
+{{/* if hasPrefix (.Get "src") "/" */}}
+{{ if true }}
   {{ $link = .Get "src" }}
 {{ else }}
   {{- $image := .Page.Resources.GetMatch (printf "%s" (.Get "src")) -}}

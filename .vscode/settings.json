@@ -1045,9 +1045,13 @@
         "zephyrproject",
         "zynq"
     ],
-    "vim.surround": true,
-    "python.pythonPath": "C:\\Python38\\python.exe",
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
-    "python.linting.enabled": false
+    "python.linting.enabled": false,
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}\\scripts\\util"
+    },
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}\\scripts\\util"
+    ],
 }

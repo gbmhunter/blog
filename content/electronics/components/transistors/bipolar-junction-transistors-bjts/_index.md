@@ -238,9 +238,11 @@ The output voltage is almost equal to the input voltage, except for an approxima
 v_{out} = v_{in} - 0.7V
 \end{align}</p>
 
-Here is a graph of `\(v_{in}\)` vs. `\(v_{out}\)` for the above circuit:
+Here is a graph of `\(v_{in}\)` vs. `\(v_{out}\)` for the above circuit, with `\(R1=1k\Omega\)`:
 
-{{% figure src="vout-vs-vin-basic-common-collector-bjt-amplifier-v2.png" width="800px" caption="Vout vs. Vin for a basic common-collector BJT amplifier." %}}
+{{% figure src="basic-common-collector-amplifier/plot-annotated.png" width="800px" caption="`\(V_{out}\)` vs. `\(V_{in}\)` for a basic common-collector BJT amplifier." %}}
+
+(Micro-Cap simulation file: [circuit.cir](basic-common-collector-amplifier/circuit.cir))
 
 The common-collector amplifier is simulated in circuitjs below:
 
@@ -251,6 +253,10 @@ The common-collector amplifier is simulated in circuitjs below:
 A more useful common-collector amplifier can be made which AC couples the input and provides a DC bias point at the base of the BJT. Below is a schematic of one built with a NPN transistor:
 
 {{% figure src="common-collector-bjt-amplifier-ac-coupled-schematic.png" width="600px" caption="Schematic of an AC-coupled common-collector NPN BJT amplifier." %}}
+
+### Common Emitter Amplifier
+
+The _common emitter amplifier_ is a general-purpose BJT-based amplifier that it typically use for voltage amplification.
 
 ### Common-Base Amplifier
 
@@ -321,9 +327,11 @@ A resistor divider can simple way to drive the base of an NPN current-sink if yo
 
 {{% figure src="current-source-npn-voltage-divider-base.png" width="500px" caption="A NPN BJT current-sink using a resistor divider to drive the base." %}}
 
+<div class="worked-example">
+
 **Design Procedure:**
 
-1. Choose the resistor-divider `\(R_1\)` and `\(R_2\)` to provide a voltage at the base of the transistor in the region of `\(2.0-5.0\)`V. I choose `\(R_1 = 10k\Omega\)` as this is a standard resistance, and then `\(R_2 = 2.2k\Omega\)` to give a `\(V_B = 2.16V\)`.
+1. Choose the resistor-divider `\(R_1\)` and `\(R_2\)` to provide a voltage at the base of the transistor in the region of `\(2.0-5.0\)`V. I choose `\(R_1 = 10k\Omega\)` as this is a standard resistance, and then `\(R_2 = 2.2k\Omega\)` to give a `\(V_B = 2.16V\)`. This uses the standard resistance divider rule, which assume negligible current is drawn from the resistor divider through the base of the transistor.
 
 1. Subtract `\(0.7V\)` of `\(V_B\)` to get `\(V_E\)`. In this case, `\(V_E = 1.46V\)`.
 
@@ -341,6 +349,8 @@ A resistor divider can simple way to drive the base of an NPN current-sink if yo
     1.80k\Omega &\ll 73.2k\Omega
     \end{align}</p>
     The above equation holds true so this design should work as a good current sink ✅
+
+</div>
 
 ### Current Mirrors
 
