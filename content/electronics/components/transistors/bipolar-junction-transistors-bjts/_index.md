@@ -258,6 +258,8 @@ A more useful common-collector amplifier can be made which AC couples the input 
 
 The _common emitter amplifier_ is a general-purpose BJT-based amplifier that it typically use for voltage amplification.
 
+{{% figure src="common-emitter-amplifier/common-emitter-amplifier-schematic.png" width="600px" caption="Schematic for a common emitter amplifier with DC bias and AC coupling." %}}
+
 ### Common-Base Amplifier
 
 The BJT _common-base_ (a.k.a. _grounded-base_, and sometimes just abbreviated to _CB_ or _GB_) amplifier is one of the three basic single-stage BJT amplifier topologies. The base of the BJT is connected to ground and shared with the output signal, hence the "common-base". The input signal is fed to the emitter and the output comes from the collector. It is not as popular in discrete low-frequency circuits as the common-collector or common-emitter BJT amplifiers.

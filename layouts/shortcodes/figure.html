@@ -10,10 +10,12 @@
 If it is a page resource, resample to match the specified width */}}
 {{- $link := "" -}}
 {{/* CHANGE 2022-08-16: Removing grabbing the image as a page resource as this didn't work for image/ directories under _index.md, but did for index.md */}}
-{{/* if hasPrefix (.Get "src") "/" */}}
-{{ if true }}
+{{ if hasPrefix (.Get "src") "/" }}
   {{ $link = .Get "src" }}
 {{ else }}
+  {{/* Image link does not start with /, so assume relative. Need to add the permalink to the start of the image source so post images work on the home page */}}
+  {{ $link = print .Page.Permalink (.Get "src") }}
+  {{/*
   {{- $image := .Page.Resources.GetMatch (printf "%s" (.Get "src")) -}}
 
   {{- if not $image -}}
@@ -33,6 +35,7 @@ If it is a page resource, resample to match the specified width */}}
     {{- $thumb = $image.Resize (printf "%s%s CatmullRom" $width_without_px "x") -}}
     {{- $link = $thumb.Permalink -}}
   {{- end -}}
+  */}}
 {{- end -}}
 <!-- The min-width of 200px makes sure than the caption text doesn't get too squashed when the width of the image is small (e.g. 100px). The user provided width gets set to max-width, which allows the actual width to scale smaller as the page
 width decreases -->
