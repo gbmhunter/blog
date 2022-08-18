@@ -4,7 +4,7 @@ Version=12.00
 Program=Micro-Cap
 Component Version=10.00
 Shape Version=11.00
-Screen=2560,1440
+Screen=1920,1080
 MCAPVersion=12.2.0.5
 Key ID=Demo
 NLCnt=13
@@ -138,7 +138,7 @@ PowerFormat=3
 PathDelayFormat=3
 WarningFormat=3
 GridTextFormulaFormat=3
-Window Placement in Transient Analysis=2,3, -1,-1, -8,-31, 52,52,1703,628
+Window Placement in Transient Analysis=2,3, -1,-1, -8,-31, 26,26,1481,602
 SpiceType=AMBIGUOUS
 Title_Block_Border=None
 Title_Block=False
@@ -515,7 +515,7 @@ ALIGNBOTTOM=Yes
 
 [Section]
 Index=0
-Name="circuit"
+Name="circuit1"
 Type=Main
 Enable=True
 CurrentPage 0=0
@@ -537,9 +537,9 @@ PrinterScale=1
 Scale 0=1
 Scale 1=1
 Scale 2=1
-SB 3=381,50
+SB 3=381,146
 Scale 3=0.25
-Px=414,243
+Px=622,235
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
@@ -667,7 +667,7 @@ SimulationLog=True
 
 [Transient]
 WinID=1
-Window Placement=2,3, -1,-1, -8,-31, 52,52,1703,628
+Window Placement=2,3, -1,-1, -8,-31, 26,26,1481,602
 Font=Height=-19,FStyle=0,Color=#0000FF,Name=Arial
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
@@ -766,7 +766,7 @@ Num Out Allow Dup Y Expr=False
 Num Out Low="TSTART"
 Num Out High="TMAX"
 Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
-Num Out Window Placement=2,3, -1,-1, -8,-31, 26,26,1481,602
+Num Out Window Placement=2,3, -1,-1, -8,-31, 52,52,1703,628
 Num Out Format=3
 Num Out HideNonSelected=False
 Num Out UseActualDataPoints=False
@@ -946,8 +946,8 @@ ScaleUnitsX="Auto"
 ScaleUnitsY="Auto"
 SFmtX=2
 SFmtY=2
-NOFmtX=4E
-NOFmtY=4E
+NOFmtX=3E
+NOFmtY=3E
 
 [WaveForm]
 Analysis=Transient

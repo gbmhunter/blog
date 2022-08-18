@@ -4,7 +4,7 @@ categories: [ "Electronics", "Components", "Transistors" ]
 date: 2015-08-10
 description: "Types, schematic symbols, important parameters, amplifier topologies, and more info about bipolar junction transistors (BJTs)."
 draft: false
-lastmod: 2021-06-19
+lastmod: 2022-08-18
 tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "base", "collector", "emitter", "reverse active mode", "amplifiers", "common-emitter", "CE", "common-collector", "CC", "common-base", "CB", "grounded base", "Miller capacitance", "Widlar", "Widlar current mirror", "current mirrors", "Micronta", "Radio Shack" , "transistor testers" ]
 title: "Bipolar Junction Transistors (BJTs)"
 type: "page"
@@ -254,127 +254,6 @@ A more useful common-collector amplifier can be made which AC couples the input 
 
 {{% figure src="common-collector-bjt-amplifier-ac-coupled-schematic.png" width="600px" caption="Schematic of an AC-coupled common-collector NPN BJT amplifier." %}}
 
-### Common Emitter Amplifier
-
-The _common emitter amplifier_ is a general-purpose BJT-based amplifier that it typically use for voltage amplification.
-
-{{% figure src="common-emitter-amplifier/common-emitter-amplifier-schematic.png" width="600px" caption="Schematic for a common emitter amplifier with DC bias and AC coupling." %}}
-
-`\(R1\)` and `\(R2\)` are used to provide a DC bias point for the base of the transistor, using the standard resistor divider technique (to be exact, you also have to take into account that the transistor draws some current from the output of the resistor divider, but generally you can ignore that). `\(C1\)` is used to AC couple the input signal to the DC bias point -- it's value is chosen so that it appears as a short for the AC signal frequencies of interest but blocks DC. `\(R_L\)` is known as the load resistance. `\(C_E\)` is the _emitter bypass capacitor_ as is used to bypass `\(R_E\)` so that the AC signal essentially sees the emitter connected directly to ground.
-
-<div class="worked-example">
-
-**Worked Example**
-
-Assumptions:
-
-* `\(V_{CC}\)` is `\(12V\)`
-* We'll be using the venerable [BC548BTA NPN transistor from onsemi](https://nz.mouser.com/datasheet/2/308/BC550_D-1802078.pdf) in our amplifier.
-
-1. Chose a suitable DC collector current for your amplifier. A reasonable choice would be `\(I_C = 10mA\)` (max. `\(I_C\)` for the BC547B is `\(100mA\)`).
-    <br/><br/>
-
-1. **Determine `\(R_E\)`:** As a rule of thumb, 10% of `\(V_{CC}\)` is normally dropped across `\(R_E\)`[^bib-stack-exchange-resistor-values-for-common-emitter]:
-    <p>\begin{align}
-    V_{R_E} &= 0.1V_{CC} \nonumber \\
-        &= 0.1*12V \nonumber \\
-        &= 1.2V \nonumber \\
-    \end{align}</p>
-    <br/>
-
-    And then:
-    <p>\begin{align}
-    R_E &= \frac{V_{R_E}}{I_{R_E}} \nonumber \\
-        &= \frac{1.2V}{10mA} \nonumber \\
-        &= 120\Omega \nonumber \\
-    \end{align}</p>
-    <br/>
-
-1. **Find the collector resistor value:** We are dropping `\(1.2V\)` across the emitter resistor. That leaves `\(10.8V\)` to be dropped across the collector resistor and the BJT. Assuming a saturation voltage of 200mV, this gives the BJT `\(10.6V\)` of swing. For maximum symmetrical output, we want to drop half of this `\(10.6V\)` across the collector resistor:
-    <p>\begin{align}
-    R_C &= \frac{V_{R_C}}{I_{R_C}} \nonumber \\
-        &= \frac{10.6V}{10mA} \nonumber \\    
-        &= 1.06k\Omega \nonumber \\
-    \end{align}</p>
-    <br/>
-
-1. **Find the base current:** Calculate `\(I_B\)` using the approximate gain:
-    <p>\begin{align}
-    I_B &= \frac{I_C}{\beta} \nonumber \\
-        &= \frac{10mA}{200} \nonumber \\
-        &= 50uA \nonumber \\
-    \end{align}</p>
-    <br/>
-
-1. **Determine the base voltage `\(V_B\)`:** `\(V_B\)` is just the emitter voltage plus the diode `\(V_BE\)` drop:
-
-    <p>\begin{align}
-    V_B &= V_E + V_{BE} \nonumber \\
-        &= 1.2V + 0.7V \nonumber \\
-        &= 1.9V \nonumber \\
-    \end{align}</p>
-    <br/>
-
-1. **Calculate resistor divider values**: Chose `\(R1\)` and `\(R2\)` to set the output of the resistor divider to match this base voltage. We also want to make sure the current flowing through the resistor is 10x the current that will be sucked out of it into the base of the transistor, that way we can ignore the loading of the BJT when calculating the resistor values.
-    <p>\begin{align}
-    I_{R2} &= 10 \cdot I_B \nonumber \\
-           &= 10 \cdot 50uA \nonumber \\
-           &= 500uA \nonumber \\
-    \end{align}</p>
-
-    Now we can easily calculate the value of `\(R2\)`:
-
-    <p>\begin{align}
-    R2 &= \frac{V_{R2}}{I_{R2}} \nonumber \\
-       &= \frac{1.9V}{500uA} \nonumber \\
-       &= 3.8k\Omega \nonumber \\
-    \end{align}</p>
-
-    And `\(R1\)`:
-
-    <p>\begin{align}
-    R1 &= \frac{V_{R1}}{I_{R1}} \nonumber \\
-       &= \frac{12V - 1.9V}{500uA} \nonumber \\
-       &= 20.2k\Omega \nonumber \\
-    \end{align}</p>
-
-1. **Calculate input AC coupling capacitor:** The rule of thumb is to make sure the impedance of the capacitor is 10x less that the AC impedance of the resistor divider at the lowest frequency of interest. Our lowest frequency of interest is `\(20Hz\)`.
-
-    <p>\begin{align}
-    R_{in} &= \frac{R1 \cdot R2}{R1 + R2} \nonumber \\
-           &= \frac{20.2k\Omega \cdot 3.8k\Omega}{20.2k\Omega + 3.8k\Omega} \nonumber \\
-           &= 3.20k\Omega \nonumber \\
-    \end{align}</p>
-
-    <p>\begin{align}
-    Z_{C_{in}} &= \frac{R_{in}}{10} \nonumber \\
-               &= \frac{3.20k\Omega}{10} \nonumber \\
-               &= 320\Omega \nonumber \\
-    \end{align}</p>
-
-    <p>\begin{align}
-    C_{in} &= \frac{1}{2\pi f Z_{C_{in}}} \nonumber \\
-           &= \frac{1}{2\pi \cdot 20Hz \cdot 320\Omega} \nonumber \\
-           &= 25uF \nonumber \\
-    \end{align}</p>
-
-1. **Calculate emitter bypass capacitor:** The same rule of thumb applies to `\(C_E\)`, except this time it's impedance should be 10x smaller than `\(R_E\)`:
-    <p>\begin{align}
-    Z_{C_E} &= \frac{R_E}{10} \nonumber \\
-            &= \frac{120\Omega}{10} \nonumber \\
-            &= 12\Omega \nonumber \\
-    \end{align}</p>
-
-    <p>\begin{align}
-    C_E &= \frac{1}{2\pi f Z_{C_E}} \nonumber \\
-        &= \frac{1}{2\pi \cdot 20Hz \cdot 12\Omega} \nonumber \\
-        &= 663uF \\
-    \end{align}</p>
-
-1. **Done!**
-
-</div>
-
 ### Common-Base Amplifier
 
 The BJT _common-base_ (a.k.a. _grounded-base_, and sometimes just abbreviated to _CB_ or _GB_) amplifier is one of the three basic single-stage BJT amplifier topologies. The base of the BJT is connected to ground and shared with the output signal, hence the "common-base". The input signal is fed to the emitter and the output comes from the collector. It is not as popular in discrete low-frequency circuits as the common-collector or common-emitter BJT amplifiers.
@@ -578,5 +457,3 @@ The you are looking for a slice of history and some informative transistor infor
 [^bib-wikipedia-hybrid-pi-model]: Wikipedia (2020, Mar 22). _Hybrid-pi model_. Retrieved 2022-08-14, from https://en.wikipedia.org/wiki/Hybrid-pi_model.
 [^bib-byjus-transfer-characteristics]: Byju's. _Characteristics Of A Transistor_. Retrieved 2022-08-15, from https://byjus.com/physics/characteristics-of-a-transistor/.
 [^bib-learn-about-elec-bjts-current-gain]: Learnabout Electronics (2020, Dec 29). _Learnabout Electronics - Bipolar Junction Transistors (BJTs)_. Retrieved 2022-08-15, from https://learnabout-electronics.org/Semiconductors/bjt_05.php.
-[^bib-cadence-common-emitter-design]: Cadence. _Common-Emitter Transistor Amplifier Design_. Retrieved 2022-08-17, from https://resources.system-analysis.cadence.com/blog/msa2021-common-emitter-transistor-amplifier-design.
-[^bib-stack-exchange-resistor-values-for-common-emitter]: Stack Exchange: Electrical Engineering (2021, Oct 13). _How to choose resistors' value for common emitter amplifier?_. Retrieved 2022-08-17, from https://electronics.stackexchange.com/questions/127491/how-to-choose-resistors-value-for-common-emitter-amplifier. 
