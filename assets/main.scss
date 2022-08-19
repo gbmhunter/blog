@@ -666,104 +666,6 @@ del {
   top: 5px;
 }
 
-
-/* ========================================================================= */
-/* SEARCH                                                                    */
-/* ========================================================================= */
-
-/* #fast-search-outer {
-  visibility: hidden;
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#fastSearch { 
-  width: 80%;
-  max-width: 900px;
-  height: 50%;
-  display: none; // This will get changed to inline-block by JS
-  color: white;
-  background-color: white;
-}      
-
-#fast-search-please-wait {
-  width: 80%;
-  max-width: 900px;
-  height: 50%;
-  display: none; // This will get changed to flex by JS
-  justify-content: center;
-  align-items: center;
-
-  color: white;
-  background-color: rgba(40, 40, 40, 0.5);
-}
-
-#fast-search-please-wait-text {
-  color: white;
-}
-
-#fast-search-input-wrapper {
-  padding: 10px;
-  border-bottom: 1px solid black;
-}
-  
-#fastSearch input { 
-  padding: 4px 10px;
-  box-sizing: border-box;
-  height: 31px;
-  font-size: 1.2em;
-  color: rgb(34, 34, 34);
-  background-color: white;
-  border-radius: 3px 3px 0px 0px;
-  border: none;
-  outline: none;
-  text-align: left;
-  display: inline-block;
-}
-  
-#searchResults li { 
-  list-style: none; 
-  margin-left: 0em;
-  background-color: white; 
-  border-bottom: 1px solid rgba(100, 100, 100, 0.5);
-}
-
-#searchResults li .title {
-  font-size: 1.1em;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-
-#searchResults {
-  visibility: inherit;
-  display: inline-block;
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-}
-
-#searchResults a {
-  width: 100%;
-  box-sizing: border-box;
-  text-decoration: none !important; padding: 10px; display: inline-block;
-  color: rgb(34, 34, 34);
-}
-
-#searchResults a:hover, a:focus {
-  outline: 0;
-  background-color: rgb(200, 200, 200);
-} */
-
 body {
     // Add padding to top and bottom of body so stuff is smashed against the top/bottom of the viewport
     // padding-top: 1em;
@@ -1159,11 +1061,8 @@ div.content {
 }
 
 div.content tr:nth-of-type(even) {
-    background: var(--main-color-light);
-}
-
-div.content tr:nth-of-type(odd) {
-    // background:#EFEFEF;
+    // This adds a light red background to every second row
+    //background: var(--main-color-light);
 }
 
 div.content td {
@@ -1483,6 +1382,26 @@ span.pro {
 span.con {
     // Our main colour happens to be a nice red for cons
     color: var(--main-color);
+}
+
+/* ========================================================================= */
+/* GOOD/OK/BAD                                                               */
+/* ========================================================================= */
+
+.good {
+    color: green;
+    font-weight: bold;
+}
+
+.ok {
+    color: orange;
+    font-weight: bold;
+}
+
+.bad {
+    // Our main colour happens to be a nice red bad
+    color: var(--main-color);
+    font-weight: bold;
 }
 
 /* ========================================================================= */

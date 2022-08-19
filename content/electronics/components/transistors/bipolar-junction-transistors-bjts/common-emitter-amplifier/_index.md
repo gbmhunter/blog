@@ -12,14 +12,16 @@ type: page
 
 ## Overview
 
-The _common emitter amplifier_ is a general-purpose BJT-based amplifier that it typically used for voltage amplification.
+The _common emitter amplifier_ is a general-purpose BJT-based amplifier that it typically used for voltage amplification. It offers medium input impedance but unfortunately high output impedance. It is commonly followed with a buffer circuit such as a common-collector amplifier to reduce the output impedance.
 
-Properties:
+**Properties:**
 
 <table>
   <tbody>
-    <tr><td>Voltage Gain</td>   <td>Medium</td></tr>
-    <tr><td>Phase Shift</td>    <td>180</td></tr>
+    <tr><td>Voltage Gain</td>       <td class="good">High</td></tr>
+    <tr><td>Input Impedance</td>   <td class="ok">Medium</td></tr>
+    <tr><td>Output Impedance</td>  <td class="bad">High</td></tr>    
+    <tr><td>Phase Shift</td>        <td>180</td></tr>
   </tbody>
 </table>
 
@@ -31,7 +33,7 @@ Lower case letters used below represent changes in quantities, e.g. `\(V_C\)` is
 
 {{% figure src="common-emitter-amplifier-schematic.png" width="600px" caption="Schematic for a common emitter amplifier with DC bias and AC coupling." %}}
 
-`\(R1\)` and `\(R2\)` are used to provide a DC bias point for the base of the transistor, using the standard resistor divider technique (to be exact, you also have to take into account that the transistor draws some current from the output of the resistor divider, but generally you can ignore that). `\(C1\)` is used to AC couple the input signal to the DC bias point -- it's value is chosen so that it appears as a short for the AC signal frequencies of interest but blocks DC. `\(R_L\)` is known as the load resistance. `\(R_E\)` adds emitter degeneration and makes the amplifier gain more stable with variations in `\(\beta\)`. `\(C_E\)` is the _emitter bypass capacitor_ and is used to bypass `\(R_E\)` so that the AC signal essentially sees the emitter connected directly to ground.
+`\(R1\)` and `\(R2\)` are used to provide a DC bias point for the base of the transistor, using the standard resistor divider technique (to be exact, you also have to take into account that the transistor draws some current from the output of the resistor divider, but generally you can ignore that). `\(C1\)` is used to AC couple the input signal to the DC bias point -- it's value is chosen so that it appears as a short for the AC signal frequencies of interest but blocks DC. `\(R_L\)` is known as the load resistance. `\(R_E\)` adds _emitter degeneration_ and makes the amplifier gain more stable with variations in `\(\beta\)`. `\(C_E\)` is the _emitter bypass capacitor_ and is used to bypass `\(R_E\)` so that the AC signal essentially sees the emitter connected directly to ground.
 
 ## Gain Of A Common Emitter Amplifier
 

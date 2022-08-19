@@ -20,3 +20,5 @@ type: "post"
 * Added more info on the [Hybrid-pi BJT model](/electronics/components/transistors/bipolar-junction-transistors-bjts/#hybrid-pi-transistor-model).
 
 * Added info on [BJT output transfer characteristics](/electronics/components/transistors/bipolar-junction-transistors-bjts/#output-characteristics).
+
+* Added a new page with info on the common emitter BJT amplifier.
