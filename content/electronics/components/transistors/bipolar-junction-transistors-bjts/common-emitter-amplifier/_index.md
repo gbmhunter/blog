@@ -1,13 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Components", "Transistors" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Components, Transistors ]
 date: 2022-08-18
-description: "Schematics, equations and worked examples for the BJT common emitter amplifier."
+description: Schematics, equations and worked examples for the BJT common emitter amplifier.
 draft: false
-lastmod: 2022-08-18
-tags: [ "electronics", "components", "transistors", "bipolar junction transistors", "BJTs", "common emitter amplifier" ]
-title: "Common Emitter Amplifier"
-type: "page"
+lastmod: 2022-08-19
+tags: [ electronics, components, transistors, bipolar junction transistors, BJTs, common emitter amplifier, gain, NPN, PNP, current ]
+title: Common Emitter Amplifier
+type: page
 ---
 
 ## Overview
@@ -23,41 +23,65 @@ Properties:
   </tbody>
 </table>
 
-## How It Works
+{{% note %}}
+Lower case letters used below represent changes in quantities, e.g. `\(V_C\)` is the voltage at the collector, whilst `\(v_c\)` is the change in voltage at the collector, `\(\Delta V_C\)`.
+{{% /note %}}
+
+## How A Common Emitter Amplifier Works
 
 {{% figure src="common-emitter-amplifier-schematic.png" width="600px" caption="Schematic for a common emitter amplifier with DC bias and AC coupling." %}}
 
-`\(R1\)` and `\(R2\)` are used to provide a DC bias point for the base of the transistor, using the standard resistor divider technique (to be exact, you also have to take into account that the transistor draws some current from the output of the resistor divider, but generally you can ignore that). `\(C1\)` is used to AC couple the input signal to the DC bias point -- it's value is chosen so that it appears as a short for the AC signal frequencies of interest but blocks DC. `\(R_L\)` is known as the load resistance. `\(C_E\)` is the _emitter bypass capacitor_ as is used to bypass `\(R_E\)` so that the AC signal essentially sees the emitter connected directly to ground.
+`\(R1\)` and `\(R2\)` are used to provide a DC bias point for the base of the transistor, using the standard resistor divider technique (to be exact, you also have to take into account that the transistor draws some current from the output of the resistor divider, but generally you can ignore that). `\(C1\)` is used to AC couple the input signal to the DC bias point -- it's value is chosen so that it appears as a short for the AC signal frequencies of interest but blocks DC. `\(R_L\)` is known as the load resistance. `\(R_E\)` adds emitter degeneration and makes the amplifier gain more stable with variations in `\(\beta\)`. `\(C_E\)` is the _emitter bypass capacitor_ and is used to bypass `\(R_E\)` so that the AC signal essentially sees the emitter connected directly to ground.
 
-## Gain
+## Gain Of A Common Emitter Amplifier
+
+{{% figure src="common-emitter-amplifier-gain-equation-diagram.png" width="300px" float="right" caption="Diagram showing how the gain equation for a common emitter amplifier is found." %}}
 
 The gain of a common-emitter amplifier by definition is:
 
 <p>\begin{align}
-A = \frac{V_{OUT}}{V_{IN}} \\
+A = \frac{v_{out}}{v_{in}} \nonumber \\
 \end{align}</p>
 
-This by itself is not very helpful, as we can't calculate the gain from the circuit components using this equation. However, the voltage gain is also equal to the ratio of collector resistance to emitter resistance (with a negative sign, because the signal is inverted)[^bib-electronics-tutorials-common-emitter-amplifier]:
+Now, assuming `\(i_c \approx i_e\)`, the change in voltage at the output is:
 
 <p>\begin{align}
-A = -\frac{R_C}{R_E} \\
+v_{out} = - i_e R_C \nonumber \\
 \end{align}</p>
 
-But because capacitor `\(C_E\)` shorts out `\(R_E\)` at our signal frequencies, shouldn't this make our gain infinite? Not quite, as this is where the transistors internal emitter resistance `\(r_E\)` comes into play. This internal resistance contributes in series with the external emitter resistor `\(R_E\)` (which is `\(0\Omega\)` at signal frequencies).
+And the change in voltage at the input is:
+
+<p>\begin{align}
+v_{in} = i_e (r_e + R_E) \nonumber \\
+\end{align}</p>
+
+Note that we have to take the internal emitter resistance `\(r_e\)` into account here, as the emitter bypass capacitor is going to remove the `\(R_E\)` term further down, leaving only `\(r_e\)`.
+
+Substituting these equations for `\(v_{in}\)` and `\(v_{out}\)` into the gain equation gives:
+
+<p>\begin{align}
+A &= \frac{- i_e R_C}{i_e (r_e + R_E)} \nonumber \\
+  &= -\frac{R_C}{r_e + R_E} \nonumber \\
+\end{align}</p>
+
+Remember that the value for `\(r_e\)` is dependent on the emitter current at the DC bias point:
 
 <p>\begin{align}
 r_e &= \frac{25mV}{I_E} \nonumber \\    
 \end{align}</p>
 
-Thus:
+Thus, for our signal frequencies at which the `\(C_E\)` capacitor shorts out external resistor `\(R_E\)`, the emitter resistance is just `\(r_e\)` and the gain becomes:
 
 <p>\begin{align}
-A &= \frac{R_C}{R_E} \nonumber \\
-  &= \frac{R_C}{r_E} \nonumber \\
-  &= \frac{I_E R_C}{25mV} \nonumber \\
+A &= -\frac{R_C}{r_e} \nonumber \\
+  &= -\frac{I_E R_C}{25mV} \nonumber \\
 \end{align}</p>
 
-## Design Process
+{{% note %}}
+The voltage gain of the common emitter amplifier **is not dependent on the current gain `\(\beta\)` of the BJT**. This is good news, as this property cannot be tightly controlled during manufacture and usually varies between "identical" transistors by a few `\(100%\)` or more!
+{{% /note %}}
+
+## Common Emitter Amplifier Design Process
 
 How do you design a common emitter amplifier? Let's do a worked example to progress through the design steps.
 
@@ -65,10 +89,11 @@ How do you design a common emitter amplifier? Let's do a worked example to progr
 
 * `\(V_{CC}\)` is `\(12V\)`
 * We'll be using the venerable [BC548BTA NPN transistor from onsemi](https://nz.mouser.com/datasheet/2/308/BC550_D-1802078.pdf) in our amplifier.
+* We're trying to get as much gain as possible (a noble quest).
 
 **Steps**
 
-1. Chose a suitable DC collector current for your amplifier. A reasonable choice would be `\(I_C = 10mA\)` (max. `\(I_C\)` for the BC547B is `\(100mA\)`).
+1. **Choose collector current:** Chose a suitable DC collector current for your amplifier. A reasonable choice would be `\(I_C = 10mA\)` (max. `\(I_C\)` for the BC547B is `\(100mA\)`).
     <br/><br/>
 
 1. **Determine `\(R_E\)`:** As a rule of thumb, 10% of `\(V_{CC}\)` is normally dropped across `\(R_E\)`[^bib-stack-exchange-resistor-values-for-common-emitter]:
@@ -172,16 +197,16 @@ How do you design a common emitter amplifier? Let's do a worked example to progr
 1. **Calculate the gain**: 
 
     <p>\begin{align}
-    A &= \frac{I_E R_C}{25mV} \nonumber \\
-      &= \frac{10mA * 530\Omega}{25mV} \\
-      &= 212 \\
+    A &= -\frac{I_E R_C}{25mV} \nonumber \\
+      &= -\frac{10mA * 530\Omega}{25mV} \nonumber \\
+      &= -212 \\
     \end{align}</p>
 
     Or in dB:
 
     <p>\begin{align}
-    A_{db} &= 20\log(A) \\
-           &= 20\log(212) \\
+    A_{db} &= 20\log(A) \nonumber \\
+           &= 20\log(212) \nonumber \\
            &= 46.5 \\
     \end{align}</p>
 
