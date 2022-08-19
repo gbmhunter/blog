@@ -4,7 +4,8 @@ categories: [ Electronics, Components, Transistors ]
 date: 2022-08-18
 description: Schematics, equations and worked examples for the BJT common emitter amplifier.
 draft: false
-lastmod: 2022-08-19
+images: [ /electronics/components/transistors/bipolar-junction-transistors-bjts/common-emitter-amplifier/common-emitter-amplifier-schematic.png ]
+lastmod: 2022-08-20
 tags: [ electronics, components, transistors, bipolar junction transistors, BJTs, common emitter amplifier, gain, NPN, PNP, current ]
 title: Common Emitter Amplifier
 type: page
@@ -12,16 +13,19 @@ type: page
 
 ## Overview
 
-The _common emitter amplifier_ is a general-purpose BJT-based amplifier that it typically used for voltage amplification. It offers medium input impedance but unfortunately high output impedance. It is commonly followed with a buffer circuit such as a common-collector amplifier to reduce the output impedance.
+The _common emitter amplifier_ is a general-purpose BJT-based amplifier that it typically used for voltage amplification. It offers **great voltage gain and ok current gain**. The **input impedance is moderate but unfortunately it has high output impedance**. The output is inverted with respect to the input. It is commonly followed with a buffer circuit such as a common-collector amplifier to reduce the output impedance.
+
+The MOSFET analogue to the BJT common emitter amplifier is the _common source amplifier_.
 
 **Properties:**
 
 <table>
   <tbody>
     <tr><td>Voltage Gain</td>       <td class="good">High</td></tr>
-    <tr><td>Input Impedance</td>   <td class="ok">Medium</td></tr>
-    <tr><td>Output Impedance</td>  <td class="bad">High</td></tr>    
-    <tr><td>Phase Shift</td>        <td>180</td></tr>
+    <tr><td>Current Gain</td>       <td class="ok">Medium</td></tr>
+    <tr><td>Input Impedance</td>    <td class="ok">Medium</td></tr>
+    <tr><td>Output Impedance</td>   <td class="bad">High</td></tr>    
+    <tr><td>Phase Shift</td>        <td>180°</td></tr>
   </tbody>
 </table>
 
@@ -33,28 +37,33 @@ Lower case letters used below represent changes in quantities, e.g. `\(V_C\)` is
 
 {{% figure src="common-emitter-amplifier-schematic.png" width="600px" caption="Schematic for a common emitter amplifier with DC bias and AC coupling." %}}
 
-`\(R1\)` and `\(R2\)` are used to provide a DC bias point for the base of the transistor, using the standard resistor divider technique (to be exact, you also have to take into account that the transistor draws some current from the output of the resistor divider, but generally you can ignore that). `\(C1\)` is used to AC couple the input signal to the DC bias point -- it's value is chosen so that it appears as a short for the AC signal frequencies of interest but blocks DC. `\(R_L\)` is known as the load resistance. `\(R_E\)` adds _emitter degeneration_ and makes the amplifier gain more stable with variations in `\(\beta\)`. `\(C_E\)` is the _emitter bypass capacitor_ and is used to bypass `\(R_E\)` so that the AC signal essentially sees the emitter connected directly to ground.
+* `\(R1\)` and `\(R2\)` are used to provide a DC bias point for the base of the transistor, using the standard resistor divider technique (to be exact, you also have to take into account that the transistor draws some current from the output of the resistor divider, but generally you can ignore that).
+* `\(C1\)` is used to AC couple the input signal to the DC bias point -- it's value is chosen so that it appears as a short for the AC signal frequencies of interest but blocks DC.
+* `\(R_E\)` adds _emitter degeneration_[^bib-analog-devices-lab-common-emitter-amplifier] and makes the amplifier gain more stable with variations in `\(\beta\)`. `\(C_E\)` is the _emitter bypass capacitor_ and is used to bypass `\(R_E\)` so that the AC signal essentially sees the emitter connected directly to ground.
+* `\(R_C\)` is the collector resistance which helps set the voltage gain of the amplifier.
+* `\(R_L\)` is the load resistance. You may see this and `\(C_{OUT}\)` omitted from some diagrams of the common emitter amplifier.
+* `\(C_{OUT}\)` is the AC coupling capacitor on the output, which blocks the DC component, similarly to `\(C_{IN}\)`.
 
 ## Gain Of A Common Emitter Amplifier
 
 {{% figure src="common-emitter-amplifier-gain-equation-diagram.png" width="300px" float="right" caption="Diagram showing how the gain equation for a common emitter amplifier is found." %}}
 
-The gain of a common-emitter amplifier by definition is:
+The voltage gain of a common-emitter amplifier (by definition) is:
 
 <p>\begin{align}
-A = \frac{v_{out}}{v_{in}} \nonumber \\
+A_V = \frac{v_{out}}{v_{in}} \\
 \end{align}</p>
 
-Now, assuming `\(i_c \approx i_e\)`, the change in voltage at the output is:
+Remember that `\(v_{in}\)` and `\(v_{out}\)` are lower case and represent changes in the signal (i.e. deltas, and ignore their DC levels). Now, assuming `\(i_c \approx i_e\)`, the change in voltage at the output is:
 
 <p>\begin{align}
-v_{out} = - i_e R_C \nonumber \\
+v_{out} = - i_e R_C \\
 \end{align}</p>
 
 And the change in voltage at the input is:
 
 <p>\begin{align}
-v_{in} = i_e (r_e + R_E) \nonumber \\
+v_{in} = i_e (r_e + R_E) \\
 \end{align}</p>
 
 Note that we have to take the internal emitter resistance `\(r_e\)` into account here, as the emitter bypass capacitor is going to remove the `\(R_E\)` term further down, leaving only `\(r_e\)`.
@@ -62,21 +71,21 @@ Note that we have to take the internal emitter resistance `\(r_e\)` into account
 Substituting these equations for `\(v_{in}\)` and `\(v_{out}\)` into the gain equation gives:
 
 <p>\begin{align}
-A &= \frac{- i_e R_C}{i_e (r_e + R_E)} \nonumber \\
-  &= -\frac{R_C}{r_e + R_E} \nonumber \\
+A_V &= \frac{- i_e R_C}{i_e (r_e + R_E)} \nonumber \\
+    &= -\frac{R_C}{r_e + R_E} \\
 \end{align}</p>
 
 Remember that the value for `\(r_e\)` is dependent on the emitter current at the DC bias point:
 
 <p>\begin{align}
-r_e &= \frac{25mV}{I_E} \nonumber \\    
+r_e &= \frac{25mV}{I_E} \\    
 \end{align}</p>
 
 Thus, for our signal frequencies at which the `\(C_E\)` capacitor shorts out external resistor `\(R_E\)`, the emitter resistance is just `\(r_e\)` and the gain becomes:
 
 <p>\begin{align}
-A &= -\frac{R_C}{r_e} \nonumber \\
-  &= -\frac{I_E R_C}{25mV} \nonumber \\
+A_V &= -\frac{R_C}{r_e} \nonumber \\
+    &= -\frac{I_E R_C}{25mV} \\
 \end{align}</p>
 
 {{% note %}}
@@ -98,7 +107,7 @@ How do you design a common emitter amplifier? Let's do a worked example to progr
 1. **Choose collector current:** Chose a suitable DC collector current for your amplifier. A reasonable choice would be `\(I_C = 10mA\)` (max. `\(I_C\)` for the BC547B is `\(100mA\)`).
     <br/><br/>
 
-1. **Determine `\(R_E\)`:** As a rule of thumb, 10% of `\(V_{CC}\)` is normally dropped across `\(R_E\)`[^bib-stack-exchange-resistor-values-for-common-emitter]:
+1. **Determine the emitter resistor `\(R_E\)`:** As a rule of thumb, 10% of `\(V_{CC}\)` is normally dropped across `\(R_E\)`[^bib-stack-exchange-resistor-values-for-common-emitter] [^bib-electronics-notes-common-emitter-design]:
     <p>\begin{align}
     V_{R_E} &= 0.1V_{CC} \nonumber \\
         &= 0.1*12V \nonumber \\
@@ -114,7 +123,7 @@ How do you design a common emitter amplifier? Let's do a worked example to progr
     \end{align}</p>
     <br/>
 
-1. **Find the collector resistor value:** We are dropping `\(1.2V\)` across the emitter resistor. That leaves `\(10.8V\)` to be dropped across the collector resistor and the BJT. Assuming a saturation voltage of 200mV, this gives the BJT `\(10.6V\)` of swing. For maximum symmetrical output, we want to drop half of this `\(10.6V\)` across the collector resistor:
+1. **Find the collector resistor `\(R_C\)`:** We are dropping `\(1.2V\)` across the emitter resistor. That leaves `\(10.8V\)` to be dropped across the collector resistor and the BJT. Assuming a saturation voltage of 200mV, this gives the BJT `\(10.6V\)` of swing. For maximum symmetrical output, we want to drop half of this `\(10.6V\)` across the collector resistor:
     <p>\begin{align}
     R_C &= \frac{V_{R_C}}{I_{R_C}} \nonumber \\
         &= \frac{0.5*10.6V}{10mA} \nonumber \\    
@@ -199,17 +208,17 @@ How do you design a common emitter amplifier? Let's do a worked example to progr
 1. **Calculate the gain**: 
 
     <p>\begin{align}
-    A &= -\frac{I_E R_C}{25mV} \nonumber \\
-      &= -\frac{10mA * 530\Omega}{25mV} \nonumber \\
-      &= -212 \\
+    A_V &= -\frac{I_E R_C}{25mV} \nonumber \\
+        &= -\frac{10mA * 530\Omega}{25mV} \nonumber \\
+        &= -212 \\
     \end{align}</p>
 
     Or in dB:
 
     <p>\begin{align}
-    A_{db} &= 20\log(A) \nonumber \\
-           &= 20\log(212) \nonumber \\
-           &= 46.5 \\
+    A_{V(db)} &= 20\log(A) \nonumber \\
+              &= 20\log(212) \nonumber \\
+              &= 46.5dB \\
     \end{align}</p>
 
 1. **Done!**
@@ -218,16 +227,26 @@ The finished schematic, along with voltage sources ready for simulation is shown
 
 {{% figure src="common-emitter-amplifier-design-process-schematic.png" width="800px" caption="The finished schematic of our common emitter amplifier, ready for simulation." %}}
 
-Given the large gain of `\(46.5dB\)`, I didn't want to saturate the output so I chose an input sine wave signal with an amplitude of `\(10mV\)` at a frequency of `\(1kHz\)`. The simulated input and output voltages are shown below.
+Given the large gain of `\(46.5dB\)`, I didn't want to saturate the output so I chose an input sine wave signal with an amplitude of `\(10mV\)` at a frequency of `\(1kHz\)`. The simulated input and output voltages are shown below (**note the change in the y-axis scale - the input is in `\(mV\)` and the output is in `\(V\)`**).
 
 {{% figure src="common-emitter-amplifier-simulation-vin-vout-plot.png" width="600px" caption="Simulation results showing `\(V_{OUT}\)` vs. `\(V_{IN}\)`." %}}
 
-The simulated frequency response shown below is close to what we expect. The simulated gain of around `\(42dB\)` is close enough to our calculated gain of `\(46.5dB\)` considering all the approximations we made!
+{{% note %}}
+You can clearly see the `\(180^{\circ}\)` phase shift between the input and output in the plots above. Also, the output decoupling capacitor is doing a good job at removing the DC component and centers around signal around `\(0V\)`.
+{{% /note %}}
+
+The simulated frequency response shown below is close to what we expect. The simulated gain of around `\(42dB\)` is close enough to our calculated gain of `\(46.5dB\)` considering all the approximations we made! The phase shift is `\(180^{\circ}\)` for most of our signal bandwidth.
 
 {{% figure src="common-emitter-amplifier-simulation-freq-response-plot.png" width="600px" caption="The simulated frequency response of our common emitter amplifier." %}}
+
+{{% warning %}}
+The gain of the circuit would drop significantly if the load resistance was decreased, due to the medium amount of output impedance (ideally this would be `\(0\Omega\)`). When designing a common emitter amplifier, make sure you are not loading it too much. You can decrease the output impedance of a common emitter amplifier by increase the amount of collector quiescent current `\(I_C\)`. 
+{{% /warning %}}
 
 ## References
 
 [^bib-cadence-common-emitter-design]: Cadence. _Common-Emitter Transistor Amplifier Design_. Retrieved 2022-08-17, from https://resources.system-analysis.cadence.com/blog/msa2021-common-emitter-transistor-amplifier-design.
 [^bib-stack-exchange-resistor-values-for-common-emitter]: Stack Exchange: Electrical Engineering (2021, Oct 13). _How to choose resistors' value for common emitter amplifier?_. Retrieved 2022-08-17, from https://electronics.stackexchange.com/questions/127491/how-to-choose-resistors-value-for-common-emitter-amplifier. 
 [^bib-electronics-tutorials-common-emitter-amplifier]: Electronics Tutorials. _Common Emitter Amplifier_. Retrieved 2022-08-18, from https://www.electronics-tutorials.ws/amplifier/amp_2.html.
+[^bib-analog-devices-lab-common-emitter-amplifier]: Analog Devices (2020, Mar 23). _Activity: Common Emitter Amplifier_. Retrieved 2022-08-20, from https://wiki.analog.com/university/courses/electronics/electronics-lab-5.
+[^bib-electronics-notes-common-emitter-design]: Electronics Notes. _Transistor Common Emitter Circuit Design_. Retrieved 2022-08-20, from https://www.electronics-notes.com/articles/analogue_circuits/transistor/transistor-common-emitter-amplifier-circuit-design.php.

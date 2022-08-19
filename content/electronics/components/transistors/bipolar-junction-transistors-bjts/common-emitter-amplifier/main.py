@@ -8,7 +8,7 @@ import util
 SCRIPT_DIR = Path(__file__).parent
 
 def main():
-    # create_vin_vout_plot()
+    create_vin_vout_plot()
     create_freq_response_plot()
 
 def create_vin_vout_plot():
@@ -42,14 +42,24 @@ def create_freq_response_plot():
 
     df = pd.read_csv(micro_cap_output_path, delim_whitespace=True, skiprows=[0, 1, 3])    
 
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, axes = plt.subplots(ncols=1, nrows=2, figsize=(8, 8))
 
+    ax = axes[0]
     ax.plot(df['F'], df['dB(v(OUT)/v(IN))'])
     ax.set_xlabel('$Frequency\ [Hz]$')
     ax.set_ylabel('$Gain\ [dB]$')
 
     ax.set_xscale('log')
     ax.grid()
+
+    ax = axes[1]
+    ax.plot(df['F'], df['ph(v(OUT)/v(IN))'])
+    ax.set_xlabel('$Frequency\ [Hz]$')
+    ax.set_ylabel('$Phase\ [\circ]$')
+
+    ax.set_xscale('log')
+    ax.grid()
+
 
     util.add_watermark_to_fig(fig)
     fig.tight_layout()

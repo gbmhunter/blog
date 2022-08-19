@@ -7,7 +7,7 @@ Shape Version=11.00
 Screen=2560,1440
 MCAPVersion=12.2.0.5
 Key ID=Demo
-NLCnt=30
+NLCnt=36
 TXCnt=4
 
 [shapedef]
@@ -115,7 +115,7 @@ Name=Resistor
 Definition=Resistor
 Shape=Resistor
 Mask=6913
-Used=169
+Used=170
 memo=Resistor
 Label Offset=18,6,8,11
 PinCnt=2
@@ -127,7 +127,7 @@ Name=Capacitor
 Definition=Capacitor
 Shape=Capacitor
 Mask=7425
-Used=27
+Used=28
 memo=Capacitor
 Label Offset=16,12,12,12
 PinCnt=2
@@ -159,7 +159,7 @@ PathDelayFormat=3
 WarningFormat=3
 GridTextFormulaFormat=3
 Window Placement in Transient Analysis=2,3, -1,-1, -8,-31, 130,130,2091,951
-Window Placement in AC Analysis=2,3, -1,-1, -8,-31, 130,130,2091,951
+Window Placement in AC Analysis=2,3, -1,-1, -8,-31, 234,234,2395,1040
 SpiceType=AMBIGUOUS
 Title_Block_Border=None
 Title_Block=False
@@ -279,12 +279,6 @@ Style=8192
 ON=0,0,PACKAGE
 V
 
-[Wire]
-Pxs=480,408,528,408
-
-[Wire]
-Pxs=528,408,552,408
-
 [Comp]
 Name=Resistor
 Px=416,496
@@ -336,7 +330,7 @@ Pxs=416,432,416,448
 Pxs=416,496,416,504
 
 [Wire]
-Pxs=416,504,448,504
+Pxs=416,504,480,504
 
 [Wire]
 Pxs=416,360,416,368
@@ -390,11 +384,8 @@ Pxs=480,456,512,456
 
 [Comp]
 Name=Ground
-Px=448,504
+Px=480,504
 Rot=1
-
-[Wire]
-Pxs=448,504,480,504
 
 [Comp]
 Name=Ground
@@ -453,13 +444,64 @@ Pxs=312,432,320,432
 [Wire]
 Pxs=320,432,336,432
 
-[Grid Text]
-Text="OUT"
-Px=528,408
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
+[Comp]
+Name=Capacitor
+Px=568,408
+Rot=6
+
+[Attr]
+ON=-40,-38,PART
+V=COUT
+Style=8192
+
+[Attr]
+ON=-35,-24,CAPACITANCE
+V=25u
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=Resistor
+Px=584,480
+Rot=3
+
+[Attr]
+ON=12,-38,PART
+V=RLOAD
+Style=8192
+
+[Attr]
+ON=11,-25,RESISTANCE
+V=10k
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=480,408,520,408
+
+[Wire]
+Pxs=568,408,584,408
+
+[Wire]
+Pxs=584,408,584,432
+
+[Wire]
+Pxs=584,480,584,504
+
+[Wire]
+Pxs=512,504,584,504
+
+[Wire]
+Pxs=584,408,608,408
+
+[Wire]
+Pxs=608,408,632,408
 
 [Grid Text]
 Text="VCC"
@@ -480,6 +522,14 @@ CBorder=None
 [Grid Text]
 Text="IN"
 Px=320,432
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="OUT"
+Px=608,408
 GridSnap=True
 JustifyH=Left
 JustifyV=Bottom
@@ -681,9 +731,9 @@ PrinterScale=1
 Scale 0=1
 Scale 1=1
 Scale 2=1
-SB 3=60,249
+SB 3=86,270
 Scale 3=0.25
-Px=222,354
+Px=285,402
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
@@ -1077,7 +1127,7 @@ Name="MAIN"
 
 [AC]
 WinID=2
-Window Placement=2,3, -1,-1, -8,-31, 130,130,2091,951
+Window Placement=2,3, -1,-1, -8,-31, 234,234,2395,1040
 Font=Height=-19,FStyle=0,Color=#0000FF,Name=Arial
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
@@ -1154,16 +1204,16 @@ Num Out Header Center="$MC\n$user\n$company\n$Analysis of $name\n$date $time"
 Num Out Header Right
 Num Out Delimiter=32
 Num Out Write=True
-Num Out Write Main Header=True
-Num Out Write Limits=True
-Num Out Write Branch Header=True
+Num Out Write Main Header=False
+Num Out Write Limits=False
+Num Out Write Branch Header=False
 Num Out Write Models=False
 Num Out Write Zero Models=True
 Num Out Write Undefined Models=True
-Num Out Write Operating Point=True
-Num Out Write Measurement Values=True
+Num Out Write Operating Point=False
+Num Out Write Measurement Values=False
 Num Out Write Tolerance Detail=True
-Num Out Write Noise=True
+Num Out Write Noise=False
 Num Out Write Values=True
 Num Out Write Waveform Header=True
 Num Out Allow Dup Y Expr=False
@@ -1172,7 +1222,7 @@ Num Out High="FMAX"
 Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
 Num Out Format=3
 Num Out HideNonSelected=False
-Num Out UseActualDataPoints=False
+Num Out UseActualDataPoints=True
 AutoSaveWave=False
 Wave Format=16E
 State Variables Format=5E
@@ -1365,10 +1415,10 @@ AliasID=2
 XExp=T
 YExp=v(OUT)
 XRng=0.003
-YRng=9.6,5.6
+YRng=1.8,-1.2
 Options=OUTPUT,LINEARX,LINEARY
 Range Grid X=0.0006
-Range Grid Y=0.8
+Range Grid Y=0.6
 WSP Title="v(OUT) vs T"
 WSP Checked=False
 WSP NOP=0
@@ -1410,7 +1460,7 @@ NOFmtY=3E
 
 [Limits]
 Analysis=AC
-FRange=1E8,1Meg
+FRange=1E10,0.1
 NPts=1001
 Temp=27
 MaxChng=5
@@ -1432,11 +1482,11 @@ Plt=1
 AliasID=1
 XExp=F
 YExp=dB(v(OUT)/v(IN))
-XRng=1e+8,1e+6
-YRng=43,38
-Options=LINEARY
-Range Grid X=1.98e+7
-Range Grid Y=1
+XRng=1e+10,0.1
+YRng=75,-50
+Options=OUTPUT,LINEARY
+Range Grid X=2e+9
+Range Grid Y=25
 Enable=Enable
 Line Color=#0000FF
 Text Color=#0000FF
@@ -1457,12 +1507,12 @@ Analysis=AC
 Plt=2
 AliasID=2
 XExp=F
-YExp=ph(v(VCC))
-XRng=1e+8,1e+6
-YRng=1,-1
-Options=LINEARY
-Range Grid X=1.98e+7
-Range Grid Y=0.5
+YExp=ph(v(OUT)/v(IN))
+XRng=1e+10,0.1
+YRng=100,-400
+Options=OUTPUT,LINEARY
+Range Grid X=2e+9
+Range Grid Y=100
 Enable=Enable
 Line Color=#FF0000
 Text Color=#FF0000

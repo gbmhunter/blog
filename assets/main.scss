@@ -114,12 +114,19 @@ span.error {
 /* LISTS                                                                     */
 /* ========================================================================= */
 
-ul {
-    padding-inline-start: 7vw;
-}
-@media (min-width: 800px) {
+.content {
     ul {
-        padding-inline-start: 40px;
+        padding-inline-start: 7vw;
+        li {
+            // Add some top and bottom padding to list elements in content so they don't
+            // look too crammed together
+            padding: 0.3em 0px;
+        }
+    }
+    @media (min-width: 800px) {
+        ul {
+            padding-inline-start: 40px;
+        }
     }
 }
 
@@ -999,7 +1006,7 @@ div.highlight > div > table > tbody > tr > td:nth-child(1) > pre > code > span {
 }
 
 /* ========================================================================= */
-/* TABLE STYLING                                                             */
+/* TABLES
 /* ========================================================================= */
 
 .table-wrapper {
@@ -1117,6 +1124,52 @@ ul, ol {
         margin-block-start: 0;
         margin-block-end: 0;
     }
+}
+
+// AsciiDoc uses table blocks
+.tableblock {
+    td {
+        padding: 10px;
+        p {
+            line-height: 1.0;
+            margin: 0;
+        }
+    }
+}
+
+caption.title {
+    color: var(--caption-font-color);
+    font-size: 0.9em;
+    font-style: italic;
+    font-weight: var(--caption-font-weight);
+
+}
+
+// This is added so to make large tables scrollable. Wrap the table in an AsciiDoc block like so:
+// [.overflow]
+// --
+// [.table-1000]
+// |===
+//   ...
+//   ...
+// |===
+// --
+.overflow {
+    overflow-x: auto;
+}
+
+// Classes to make tables which are larger than the standard content, with scrollable content. Used
+// for tables with a large number of columns/lots of data.
+.table-800 {
+    width: 800px;
+}
+
+.table-1000 {
+    width: 1000px;
+}
+
+.table-1200 {
+    width: 1200px;
 }
 
 
@@ -1288,55 +1341,6 @@ do this for us */
     background-color: var(--example-bg-color);
     padding: 10px;
     margin-bottom: 20px; // Space before the next element on the page
-}
-
-/* ========================================================================= */
-/* TABLES                                                                    */
-/* ========================================================================= */
-
-.tableblock {
-    td {
-        padding: 10px;
-        p {
-            line-height: 1.0;
-            margin: 0;
-        }
-    }
-}
-
-caption.title {
-    color: var(--caption-font-color);
-    font-size: 0.9em;
-    font-style: italic;
-    font-weight: var(--caption-font-weight);
-
-}
-
-// This is added so to make large tables scrollable. Wrap the table in an AsciiDoc block like so:
-// [.overflow]
-// --
-// [.table-1000]
-// |===
-//   ...
-//   ...
-// |===
-// --
-.overflow {
-    overflow-x: auto;
-}
-
-// Classes to make tables which are larger than the standard content, with scrollable content. Used
-// for tables with a large number of columns/lots of data.
-.table-800 {
-    width: 800px;
-}
-
-.table-1000 {
-    width: 1000px;
-}
-
-.table-1200 {
-    width: 1200px;
 }
 
 /* ========================================================================= */
