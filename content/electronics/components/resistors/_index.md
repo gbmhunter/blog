@@ -1,22 +1,24 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Electronic Components" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Electronic Components ]
 date: 2012-05-14
-description: "Schematic symbols, series and parallel behaviour, manufacturing processes, the E series, tolerances, variable resistors, volume resistance and more info about the electrical components called resistors."
+description: Schematic symbols, series and parallel behaviour, manufacturing processes, the E series, tolerances, variable resistors, volume resistance and more info about the electrical components called resistors.
 draft: false
-lastmod: 2022-04-21
-tags: [ "resistors", "resistors", "components", "electronics", "schematic symbols", "tolerances", "E series", "packages", "thick film", "thin film", "wirewound", "potentiometers", "rheostats", "variable resistors", "Ayrton-Perry winding" ]
-title: "Resistors"
-type: "page"
+lastmod: 2022-08-26
+tags: [ resistors, resistors, components, electronics, schematic symbols, tolerances, E series, packages, thick film, thin film, wirewound, potentiometers, rheostats, variable resistors, Ayrton-Perry winding, resistor optimizer, resistor divider ]
+title: Resistors
+type: page
 ---
 
 ## Overview
 
-This page is about fixed resistance components called resistors. For info on mechanically variable resistors, see the [Potentiometers and Rheostats page](/electronics/components/potentiometers-and-rheostats/). For info on digital controlled resistors, see the [Digital Potentiometers (DPOTs) page](/electronics/components/digital-potentiometers-dpots/).
+_Resistors_ are a passive electronic component that restricts the flow of current when a given voltage is applied. They dissipate energy as heat. Given their simplicity and usefulness in circuits, they are the normally most commonly used electronic component in any circuit design.
 
-Resistors are a passive electronic component that restricts the flow of current when a given voltage is applied. They dissipate energy as heat. Given their simplicity and usefulness in circuits, they are the normally most commonly used electronic component in any circuit design.
+**Related Pages**
 
-For information on positive temperature coefficient resistors used as "fuses" in circuit protection applications, see the [PTC Type Thermistor page](/electronics/components/circuit-protection/ptc-type-thermistor). For info on digital potentiometers, see the [Digital Potentiometers (DPOTs) page](/electronics/components/digital-potentiometers-dpots/).
+* For information on positive temperature coefficient resistors used as "fuses" in circuit protection applications, see the [PTC Type Thermistor page](/electronics/components/circuit-protection/ptc-type-thermistor).
+* For info on mechanically variable resistors, see the [Potentiometers and Rheostats page](/electronics/components/potentiometers-and-rheostats/).
+* For info on digital controlled variable resistors, see the [Digital Potentiometers (DPOTs) page](/electronics/components/digital-potentiometers-dpots/).
 
 **The mechanical equivalent of a resistor is friction.** The larger the resistance, the larger the friction. This is when using the [force-voltage](http://lpsa.swarthmore.edu/Analogs/ElectricalMechanicalAnalogs.html) equivalence.
 
@@ -56,6 +58,12 @@ It is usually easier to remember this equation as:
 
 <p>\begin{align}
 \frac{1}{R_{total}} = \frac{1}{R1} + \frac{1}{R2}
+\end{align}</p>
+
+or as (and this is my favourite):
+
+<p>\begin{align}
+R_{total} &= \frac{R1R2}{R1 + R2}
 \end{align}</p>
 
 The following diagram shows this:
@@ -98,9 +106,9 @@ The above equation on holds true when the input voltage source is of sufficientl
 During circuit design, you will encounter times when you have three knowns from `\(Eq.\ \ref{eq:vout-eq-r2-r1-vin}\)` but have to solve for any one of the others. Thus it has be re-arranged for every variable below for convenience (with `\(V_{IN}\)` and `\(R1\)` being able to be simplified slightly):
 
 <p>\begin{align}
-V_{IN} &= \frac{R1 + R2}{R2} V_{OUT} \\
+V_{IN} &= \frac{R1 + R2}{R2} V_{OUT} \nonumber \\
        &= \left( \frac{R1}{R2} + 1 \right) V_{OUT} \\
-R1 &= \frac{V_{IN} - V_{OUT}}{V_{OUT}} R2 \\
+R1 &= \frac{V_{IN} - V_{OUT}}{V_{OUT}} R2 \nonumber \\
    &= \left( \frac{V_{IN}}{V_{OUT}} - 1 \right) R2 \\
 R2 &= \frac{V_{OUT}}{V_{IN} - V_{OUT}} R1 \\
 \end{align}</p>
@@ -323,8 +331,15 @@ This was me trying to be arty-farty with the left-overs from putting about 30,00
 
 {{% figure src="reel-0603-resistor-leftovers-best.jpg" width="900" caption="This was me trying to be creative with the left-overs from putting about 30,000 reeled 0603 resistors into containers for prototyping with." %}}
 
+## Resistor Optimizer Tool
+
+There is a great, free tool by Janne Ahonen called _Resistor Optimizer_ ([download it here](http://jahonen.kapsi.fi/Electronics/ResOptimizer/)) which finds optimal values for resistor dividers and optimal values for series/parallel resistor combinations to achieve the desired total resistance. It runs on Windows (Win32 application)[^bib-jahonen-kapsi-resistor-optimizer].
+
+{{% figure src="resistor-optimizer-janne-ahonen-screenshot.png" width="700px" caption="Screenshot of the Resistor Optimizer tool[^bib-jahonen-kapsi-resistor-optimizer]." %}}
+
 ## References
 
-[^bib-eepower-res-ind]:  EE Power. _Resistor Inductance_. Retrieved 2021-08-13, from https://eepower.com/resistor-guide/resistor-fundamentals/resistor-inductance/#.
-[^bib-edn-resistors-arent-resistors]:  Wyatt, Kenneth (2013-10-29). _Resistors aren’t resistors_. EDN. Retrieved 2021-08-15, from https://www.edn.com/resistors-arent-resistors/.
-[^bib-tt-electronics-w20-series-ds]:  TT Electronics (2020, Jun). _Vitreous Enamelled Wirewound Resistors: W20 Series (datasheet)_. Retrieved 2022-04-21, from https://www.mouser.com/datasheet/2/414/TTRB_S_A0010754439_1-2565592.pdf.
+[^bib-eepower-res-ind]: EE Power. _Resistor Inductance_. Retrieved 2021-08-13, from https://eepower.com/resistor-guide/resistor-fundamentals/resistor-inductance/#.
+[^bib-edn-resistors-arent-resistors]: Wyatt, Kenneth (2013-10-29). _Resistors aren’t resistors_. EDN. Retrieved 2021-08-15, from https://www.edn.com/resistors-arent-resistors/.
+[^bib-tt-electronics-w20-series-ds]: TT Electronics (2020, Jun). _Vitreous Enamelled Wirewound Resistors: W20 Series (datasheet)_. Retrieved 2022-04-21, from https://www.mouser.com/datasheet/2/414/TTRB_S_A0010754439_1-2565592.pdf.
+[^bib-jahonen-kapsi-resistor-optimizer]: Janne Ahonen (2018, Jun 17). _Resistor optimizer (product page)_. Retrieved 2022-08-26, from http://jahonen.kapsi.fi/Electronics/ResOptimizer/.

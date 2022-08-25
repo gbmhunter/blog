@@ -8,7 +8,7 @@ date: 2014-01-17
 description: "How to deal with the tricky issue of callbacks in C++ (incl. how to provide member functions to C-style callbacks), especially in embedded environments."
 draft: false
 images: [ "/programming/languages/c-plus-plus/callbacks/callback.png" ]
-lastmod: 2022-08-02
+lastmod: 2022-08-21
 tags: [ "programming", "languages", "C++", "callbacks", "methods", "functors", "functions", "Vlpp", "libsigc++", "signals", "slots", "callee", "embedded", "functional", "std::bind", "bind" ]
 title: "C++ Callbacks (and giving member functions to C-style callbacks)"
 type: "page"
@@ -353,7 +353,7 @@ License: GNU Library General Public License
 
 ### Vlpp
 
-_Vlpp_ is an open source C++ library which provides cross-platform replacements for `<functional>` (among other std libraries). Typically, the `<functional>` library provided by the C++ standard library will not work on embedded systems (simple test: try and include it and use `std::function` to see if your platform supports it). _Vlpp_ can be used as a substitute, allowing you to use `vl::Func<void(void)>` to replace `std::function<void(void)>` and implement callbacks in this manner on embedded platforms.
+[Vlpp is an open source C++ library](https://github.com/vczh-libraries/Vlpp) which provides cross-platform replacements for `<functional>` (among other std libraries). Sometimes, the `<functional>` library provided by the C++ standard library will not work on embedded systems (I've had it work fine on some embedded platforms and not on others). _Vlpp_ can be used as a substitute, allowing you to use `vl::Func<void(void)>` to replace `std::function<void(void)>` and implement callbacks in this manner on embedded platforms.
 
 ## External Resources
 

@@ -13,7 +13,7 @@ type: page
 
 ## Overview
 
-The _common emitter amplifier_ is a general-purpose BJT-based amplifier that it typically used for voltage amplification. It offers **great voltage gain and ok current gain**. The **input impedance is moderate but unfortunately it has high output impedance**. The output is inverted with respect to the input. It is commonly followed with a buffer circuit such as a common-collector amplifier to reduce the output impedance.
+The _common emitter amplifier_ is a general-purpose BJT-based amplifier that it typically used for voltage amplification. It offers **great voltage gain and ok current gain**. The **input impedance is moderate but unfortunately it has high output impedance**. The output is inverted with respect to the input. It is commonly followed with a buffer circuit such as a common-collector amplifier to reduce the output impedance. The common emitter amplifier find use in audio and RF applications.
 
 The MOSFET analogue to the BJT common emitter amplifier is the _common source amplifier_.
 
@@ -40,7 +40,7 @@ Lower case letters used below represent changes in quantities, e.g. `\(V_C\)` is
 * `\(R1\)` and `\(R2\)` are used to provide a DC bias point for the base of the transistor, using the standard resistor divider technique (to be exact, you also have to take into account that the transistor draws some current from the output of the resistor divider, but generally you can ignore that).
 * `\(C1\)` is used to AC couple the input signal to the DC bias point -- it's value is chosen so that it appears as a short for the AC signal frequencies of interest but blocks DC.
 * `\(R_E\)` adds _emitter degeneration_[^bib-analog-devices-lab-common-emitter-amplifier] and makes the amplifier gain more stable with variations in `\(\beta\)`. `\(C_E\)` is the _emitter bypass capacitor_ and is used to bypass `\(R_E\)` so that the AC signal essentially sees the emitter connected directly to ground.
-* `\(R_C\)` is the collector resistance which helps set the voltage gain of the amplifier.
+* `\(R_C\)` is the collector resistor which helps set the voltage gain of the amplifier. Sometimes this is called the load resistor[^bib-diyode-mag-common-emitter-amp], however this can be confusing, as typically the "load" is placed after the output AC coupling capacitor. 
 * `\(R_L\)` is the load resistance. You may see this and `\(C_{OUT}\)` omitted from some diagrams of the common emitter amplifier.
 * `\(C_{OUT}\)` is the AC coupling capacitor on the output, which blocks the DC component, similarly to `\(C_{IN}\)`.
 
@@ -250,3 +250,4 @@ The gain of the circuit would drop significantly if the load resistance was decr
 [^bib-electronics-tutorials-common-emitter-amplifier]: Electronics Tutorials. _Common Emitter Amplifier_. Retrieved 2022-08-18, from https://www.electronics-tutorials.ws/amplifier/amp_2.html.
 [^bib-analog-devices-lab-common-emitter-amplifier]: Analog Devices (2020, Mar 23). _Activity: Common Emitter Amplifier_. Retrieved 2022-08-20, from https://wiki.analog.com/university/courses/electronics/electronics-lab-5.
 [^bib-electronics-notes-common-emitter-design]: Electronics Notes. _Transistor Common Emitter Circuit Design_. Retrieved 2022-08-20, from https://www.electronics-notes.com/articles/analogue_circuits/transistor/transistor-common-emitter-amplifier-circuit-design.php.
+[^bib-diyode-mag-common-emitter-amp]: Bob Harper (2018, Dec).  _Common Emitter Transistor Amplifier_. Diyode. Retrieved 2022-08-21 from https://diyodemag.com/education/common_emitter_transistor_amplifier.
