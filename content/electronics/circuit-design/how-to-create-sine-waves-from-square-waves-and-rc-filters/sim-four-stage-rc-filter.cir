@@ -109,7 +109,7 @@ Pin="Plus",6,0,-5,-6
 Pin="Minus",0,0,-20,-6
 
 [Circuit]
-Window Placement=2,3, -1,-1, -8,-31, 312,312,2273,1133
+Window Placement=2,3, -1,-1, -8,-31, 0,0,1695,820
 Default Object=Color=#000080
 Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
 Default Object Apply Border To Text=No
@@ -121,7 +121,7 @@ PowerFormat=3
 PathDelayFormat=3
 WarningFormat=3
 GridTextFormulaFormat=3
-Window Placement in Transient Analysis=2,3, -1,-1, -8,-31, 312,312,2273,1133
+Window Placement in Transient Analysis=2,3, -1,-1, -8,-31, 0,0,1895,820
 Window Placement in AC Analysis=2,3, -1,-1, -8,-31, 390,390,2551,1196
 SpiceType=AMBIGUOUS
 Title_Block_Border=None
@@ -644,7 +644,7 @@ PrinterScale=1
 Scale 0=1
 Scale 1=1
 Scale 2=1
-SB 3=427,240
+SB 3=427,384
 Scale 3=0.25
 Px=674,324
 WinBackGround Color=#FFFFFF
@@ -778,7 +778,7 @@ SimulationLog=True
 
 [Transient]
 WinID=1
-Window Placement=2,3, -1,-1, -8,-31, 312,312,2273,1133
+Window Placement=2,3, -1,-1, -8,-31, 0,0,1895,820
 Font=Height=-19,FStyle=0,Color=#0000FF,Name=Arial
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
@@ -832,7 +832,7 @@ Data Point Labels Color Back=#FFFF00
 OperPoint=True
 OperPointOnly=False
 AutoScaleRanges=True
-FixedTimeStep=False
+FixedTimeStep=True
 DoPSS=False
 PSS_Periods="1"
 PSS_Iterations="5"
@@ -1244,7 +1244,7 @@ Seed=0
 Analysis=Transient
 TMax=2m
 TStart=0
-TStep=0
+TStep=1u
 NPts=51
 Temp=27
 RetraceRuns=1
