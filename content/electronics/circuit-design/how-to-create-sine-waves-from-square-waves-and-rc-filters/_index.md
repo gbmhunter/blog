@@ -4,9 +4,9 @@ categories: [ Electronics, Circuit Design ]
 date: 2022-08-26
 description: 
 draft: false
-images: [  ]
+images: [ /electronics/circuit-design/how-to-create-sine-waves-from-square-waves-and-rc-filters/four-rc-filter-sine-wave-generator-schematic.png ]
 lastmod: 2022-08-26
-tags: [ electronics, circuit design, square waves, sine waves, RC filters, Fourier, digital, analogue, simulations, Micro-Cap, SPICE ]
+tags: [ electronics, circuit design, square waves, sine waves, RC filters, Fourier, digital, analogue, simulations, Micro-Cap, SPICE, distortion, THC, bode plots, frequency response ]
 title: How To Create Sine Waves From Square Waves And RC Filters
 type: page
 ---
@@ -15,7 +15,9 @@ type: page
 
 During circuit design, you may need a sine wave for some reason. One way to create a sine wave is by **generating a square wave (which is trivial to produce digitally) and then filtering the result with some [RC filters](/electronics/circuit-design/analogue-filters/)**.
 
-If you can remember Fourier analysis, a square wave can be thought of as being made up of an infinite number of sine waves, starting at the fundamental frequency and then going up with all the odd numbered harmonics. The filtering works by **allowing the fundamental frequency through (it's in it's pass band), whilst blocking all the higher harmonics**. The below image shows a 10kHz, 3.3V square wave at it's FFT. You can see the spike which represents the fundamental at `\(10kHz\)`. The next spike is the first harmonic at `\(30kHz\)`. 
+{{% figure src="four-rc-filter-sine-wave-generator-schematic.png" width="900px" caption="Schematic of a sine wave generator circuit using a square wave input and 4 RC filter stages." %}}
+
+If you can remember Fourier analysis, a square wave can be thought of as being made up of an infinite number of sine waves, starting at the fundamental frequency and then going up with all the odd numbered harmonics. The filtering works by **allowing the fundamental frequency through (it's in it's pass band), whilst blocking all the higher harmonics**. The below image shows a `\(10kHz\)`, `\(3.3V\)` square wave at it's FFT. You can see the spike which represents the fundamental at `\(10kHz\)`. The next spike is the first harmonic at `\(30kHz\)`. 
 
 {{% figure src="sim-four-stage-rc-filter-fft-of-input-plot.png" width="600px" caption="The time domain voltage signal of a 10kHz 3.3V square wave (top) and the FFT of this signal (bottom)." %}}
 
@@ -23,11 +25,11 @@ If you can remember Fourier analysis, a square wave can be thought of as being m
 
 ## Choosing The R And Cs
 
-Lets say we want a sine wave at `\(10kHz\)`. We'll configure a timer or PWM peripheral on a microcontroller to output a square wave at 10kHz with a 50% duty cycle.
+Lets say we want a sine wave at `\(10kHz\)`. We'll configure a timer or PWM peripheral on a microcontroller to output a square wave at `\(10kHz\)` with a `\(50\%\)` duty cycle.
 
 For each RC filter, we get to pick either the capacitance or resistance and then calculate the other. Let's pick a capacitance of `\(10nF\)`.
 
-We'll design the cut-off frequency of each stage to be equal to the desired sine wave frequency. Remember that the cut-off frequency `\(f_c\)` for an RC filter is:
+We'll design the cut-off frequency of each stage to be equal to the desired sine wave frequency. Remember that the cut-off frequency `\(f_c\)` for a RC filter is:
 
 <p>\begin{align}
 f_c &= \frac{1}{2\pi R C} \nonumber \\
@@ -41,7 +43,7 @@ where:</br>
 </p>
 
 {{% note %}}
-You don't have to make the cut-off frequency of each stage equal to the input/output frequency. It's a trade-off between the amplitude of the output sine wave and the amount of distortion the sine wave will have. If you lower the cut-off frequency, the RC filters will attenuate more of the fundamental frequency and reduce the amplitude of your sine wave, but will also attenuate more of the harmonics, meaning less distortion. In reverse, if you raise the cut-off frequency, you will get a larger amplitude sine wave but with more distortion.
+**You don't have to make the cut-off frequency of each stage equal to the input/output frequency**. It's a trade-off between the amplitude of the output sine wave and the amount of distortion the sine wave will have. If you lower the cut-off frequency, the RC filters will attenuate more of the fundamental frequency and reduce the amplitude of your sine wave, but will also attenuate more of the harmonics, meaning less distortion. In reverse, if you raise the cut-off frequency, you will get a larger amplitude sine wave but with more distortion.
 {{% /note %}}
 
 This means the resistor in each RC stage has to be:
@@ -62,15 +64,17 @@ Remember, all the `\(R\)` and `\(C\)` values should be the same. This gives us t
 
 [(Micro-Cap simulation file)](sim-four-stage-rc-filter.cir)
 
+I added taps at the outputs of the intermediate stages so we can see how the waveform changes as it moves through the circuit!
+
 ## Simulating The Sine Wave Generator
 
-The simulated output voltage waveforms are shown below (using SPICE transient analysis). Note how the waveforms get progressively more and more sinewave-esque as it passed through each RC filter stage:
+The simulated output voltage waveforms are shown below (using SPICE transient analysis). Note how the waveforms get progressively more and more sinewave-esque as they pass through each RC filter stage:
 
 {{% figure src="sim-four-stage-rc-filter-output-plot.png" width="700px" caption="Simulation results for the four-stage RC filter based sine wave generator circuit." %}}
 
-It's also interesting to point out that the final output the sine wave has a DC offset of `\(1.65V\)`. This is because the DC component (average voltage) of the input 3.3V square wave at 50% duty cycle is `\(3.3V / 2 = 1.65V\)`. If you want to remove this bias, you can connect an AC coupling capacitor to the output to center the sine wave around `\(0V\)`.
+It's also interesting to point out that the final output the sine wave has a DC offset of `\(1.65V\)`. This is because the DC component (average voltage) of the input `\(3.3V\)` square wave at `\(50\%\)` duty cycle is `\(3.3V / 2 = 1.65V\)`. If you want to remove this bias, you can connect an AC coupling capacitor to the output to center the sine wave around `\(0V\)`.
 
-The bode plots of this filter are shown below. Each successive filter stage increases the slope of the attenuation. At the fundamental frequency (which the frequency we want to pass) of `\(10kHz)`, the attenuation is `\(23dB\)` (14x reduction). At `\(30kHz\)` (which is the 1st harmonic of the square wave, and we want to block this), the output is attenuated by `\(45dB\)` (178x reduction).
+The bode plots (frequency response) of this circuit is shown below. Each successive filter stage increases the slope of the attenuation. At the fundamental frequency (which the frequency we want to pass) of `\(10kHz\)`, the attenuation is `\(23dB\)` (14x reduction). At `\(30kHz\)` (which is the 1st harmonic of the square wave, and we want to block this), the output is attenuated by `\(45dB\)` (178x reduction).
 
 {{% figure src="sim-four-stage-rc-filter-bode-plot.png" width="700px" caption="Bode plots for the four-stage RC filter based sine wave generator circuit." %}}
 
@@ -80,7 +84,7 @@ As shown in the bode plots above, the phase of the output is also shifted. Our o
 
 ## Distortion
 
-Is a four stage RC filter going to produce a perfect sine wave? No. It just happens that four stages produces a sine wave which is "good enough" for most applications. We can do an FFT on the resulting output to see how "good" our sine wave is. A pure sine wave will have a single spike in the FFT at the fundamental frequency. Any distortion will show up as other spikes in the FFT. And while we are at it, lets do an FFT of the output from each stage, so see how the quality improves at it makes it's way through the circuit.
+**Is a four stage RC filter going to produce a perfect sine wave? No.** It just happens that four stages produces a sine wave which is "good enough" for most applications. We can do an FFT on the resulting output to see how "good" our sine wave is. A pure sine wave will have a single spike in the FFT at the fundamental frequency. Any distortion will show up as other spikes in the FFT. And while we are at it, lets do an FFT of the output from each intermediate stage, so see how the quality improves at it makes it's way through the circuit.
 
 The following plots show the waveform and it's FFT at the input and at the output of each RC filter stage. The DC component of the waveform has been removed as to not swamp the FFT plot (we usually don't care about the DC component anyway, we could easily remove this with an AC coupling capacitor).
 
