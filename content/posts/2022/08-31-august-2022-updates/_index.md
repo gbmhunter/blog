@@ -24,3 +24,5 @@ type: "post"
 * Added a new page with info on the common emitter BJT amplifier.
 
 * Added info on the Resistor Optimizer tool.
+
+* Added the new page [How To Create Sine Waves From Square Waves And RC Filters](/electronics/circuit-design/how-to-create-sine-waves-from-square-waves-and-rc-filters/). 
