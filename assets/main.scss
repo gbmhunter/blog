@@ -128,6 +128,17 @@ span.error {
             padding-inline-start: 40px;
         }
     }
+
+    // This id is set by hugo
+    #TableOfContents {
+        ul {
+            li {
+                // Get rid of this padding added above to specifically the table of contents, we
+                // want this to be more condensed.
+                padding: 0px 0px;
+            }
+        }
+    }
 }
 
 /* ========================================================================= */

@@ -26,3 +26,5 @@ type: "post"
 * Added info on the Resistor Optimizer tool.
 
 * Added the new page [How To Create Sine Waves From Square Waves And RC Filters](/electronics/circuit-design/how-to-create-sine-waves-from-square-waves-and-rc-filters/). 
+
+* Added a new page on [Switched Capacitor Filters](/electronics/components/switched-capacitor-filters/).

@@ -1,13 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Components" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Components ]
 date: 2011-09-03
-description: "Schematic symbols, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs."
+description: Schematic symbols, important parameters, leakage currents, failure modes, thermal stability, dead-time, FGMOS and more info about MOSFETs.
 draft: false
 lastmod: 2022-07-04
-tags: [ "MOSFETs", "transistors", "field-effect transistors", "metal oxide semiconductors", "schematics", "electronics", "switches", "inverters", "H-bridges", "half-bridges", "switch-mode", "substrate bias effect", "floating-gate MOSFETs", "FGMOS", "EEPROM", "flash memory", "drain", "source", "gate", "split-gate", "SOA diagram" ,"safe operating area", "thermal limits", "Spirito effect", "common-source amplifier", "HEMT" ]
-title: "MOSFETs"
-type: "page"
+tags: [ MOSFETs, transistors, field-effect transistors, metal oxide semiconductors, schematics, electronics, switches, inverters, H-bridges, half-bridges, switch-mode, substrate bias effect, floating-gate MOSFETs, FGMOS, EEPROM, flash memory, drain, source, gate, split-gate, SOA diagram ,safe operating area, thermal limits, Spirito effect, common-source amplifier, HEMT ]
+title: MOSFETs
+type: page
 ---
 
 ## Overview
@@ -29,12 +29,13 @@ MOSFETs should not be confused with similar but different semiconductor devices 
 
 ### Enhancement-Mode
 
-Unfortunately for the keen circuit designer learning about MOSFETs, there is a dizzying variety of MOSFET symbols in use, owing to the fact that there are a larger number of different MOSFET types, and that no one can agree on a single standard. This section will walk you through all the various types. Firstly, [^mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch] shows the commonly used schematic symbols for enhancement-mode MOSFETs, with both the N-channel and P-channel variant.
+Unfortunately for the keen circuit designer learning about MOSFETs, there is a dizzying variety of MOSFET symbols in use, owing to the fact that there are a larger number of different MOSFET types, and that no one can agree on a single standard. This section will walk you through all the various types. The below image shows the commonly used schematic symbols for enhancement-mode MOSFETs, with both the N-channel and P-channel variant.
 
-[[mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch]]
 {{% figure src="mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch.svg" width="700" caption="Schematic symbols for enhancement-mode N-channel and P-channel MOSFETs. D=drain, S=source, G=gate. This is one of the most popular variants of symbol for these device types, and contains the most information (e.g. shows the body diode, so you can't forget it exists when designing your circuit!)." %}}
 
-WARNING: You will normally encounter P-channel MOSFET symbols with the source at the top (unlike in [^mosfet-schematic-symbols-enhancement-mode-n-ch-p-ch] where it is drawn at the bottom, just for comparison reasons with the N-channel) -- it most circuits this is the more positive node (e.g. connected to `\(V_{DD}\)`).
+{{% warning %}}
+You will normally encounter P-channel MOSFET symbols with the source at the top (unlike above, where it is drawn at the bottom, just for comparison reasons with the N-channel) -- it most circuits this is the more positive node (e.g. connected to `\(V_{DD}\)`).
+{{% /warning %}}
 
 The arrow in the symbol has it's origins from a simple diode, in which the arrow points from the P-type substrate to the N-type substrate (which is also the direction of conventional current flow through a diode). Sometimes an **outer circle is added to the above symbols**, since a MOSFET is a transistor and by convention transistors are drawn with circles (e.g. think about a BJT symbol). However this has been omitted from the above symbols as it does contribute somewhat to the "noisyness", I find the circle-less symbol much cleaner. Totally a personal preference though.
 
@@ -42,18 +43,17 @@ The arrow in the symbol has it's origins from a simple diode, in which the arrow
 
 Although not as popular as enhancement-mode MOSFETs, depletion-mode MOSFETs are a very important MOSFET type. They are typically distinguished on schematics from enhancement-mode types by drawing a solid line rather than a dashed line for the channel, as shown in the below figure:
 
-image::mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.svg[width=700px,link="mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.svg"]
+{{% figure src="mosfet-schematic-symbols-depletion-mode-n-ch-p-ch.svg" width="700px" caption="Schematic symbols for depletion-mode MOSFETs." %}}
 
-The easiest way to show the difference between enhancement and depletion-mode MOSFETs is to plot a `\(V_{GS}\)` vs. `\(I_D\)` graph as shown in [^vgs-vs-id-enhancement-and-depletion-mode].
+The easiest way to show the difference between enhancement and depletion-mode MOSFETs is to plot a `\(V_{GS}\)` vs. `\(I_D\)` graph as shown in below.
 
-[[vgs-vs-id-enhancement-and-depletion-mode]]
 {{% figure src="vgs-vs-id-enhancement-and-depletion-mode.svg" width="700" caption="Vgs vs. Id for enhancement-mode and depletion-mode N-channel MOSFETs. Fictional example (not based from real data)." %}}
 
 The curve for the depletion-mode MOSFET is shown on the left. As you can see, the device is OFF (not conducting current) when `\(V_{GS}\)` is around `\(-4V\)` and is well and truly on when `\(V_{GS}\)` gets to `\(0V\)`. In comparison, the enhancement-mode MOSFET is fully off when `\(V_{GS} = 0V\)`, and takes around `\(+3V\)` before it starts conducting. 
 
 Depletion-mode MOSFETs are used for:
 
-* [^#_bi_directional_current_limiter, Bi-directional current limiting circuits (which can also withstand high voltages)]
+* [Bi-directional current limiting circuits](#bi-directional-current-limiter) (which can also withstand high voltages)
 * Current sinks/sources
 * Attaching onto the input of a linear regulator to allow it to run of high voltages (or protect it from ESD)[^bib-ixys-dep-mode-mosfet-applications].
 
@@ -252,11 +252,11 @@ TIP: Because of the part-to-part uncertainty in `\(V_{GS(th)}\)`, this circuit i
 
 ## Internal Diodes
 
-Because any PN junction is inherently a diode, a regular MOSFET has two of them. One of the diodes is removed when the substrate is connected to the source.
+Because any PN junction is inherently a diode, a regular MOSFET has two of them. One of the diodes is removed when the substrate is connected to the source, which is usually done for any 3-pin discrete MOSFET component.
 
 ## The Internal BJT
 
-So know we know that MOSFETs naturally have two internal diodes, did you know they also contain a BJT. The source-substrate-drain layers form either an NPN or PNP BJT. You don't normally have to worry about this "parasitic" element.
+Aside from the two naturally occurring diodes, MOSFETs also contain a BJT. The source-substrate-drain layers form either an NPN or PNP BJT. You don't normally have to worry about this "parasitic" element.
 
 CMOS devices have PNPN structures. This forms a parasitic thyristor, which can cause latch-up.
 
@@ -274,17 +274,19 @@ V_{TN} = V_{TO} + \gamma (\sqrt{|V_{SB} + 2\phi_F|} - \sqrt{|2\phi_F|})
 
 <p class="centered">
   where:<br/>
-  `\(V_{TN}\)` = the threshold voltage with substrate bias present [Volts]</br>
-  `\(V_{TO}\)` = the threshold voltage for zero substrate bias [Volts]</br>
-  `\(\gamma\)` = the body effect parameter</br>
-  `\(V_{SB}\)` = the source to body (substrate) voltage [Volts]</br>
+  \(V_{TN}\) = the threshold voltage with substrate bias present [Volts]</br>
+  \(V_{TO}\) = the threshold voltage for zero substrate bias [Volts]</br>
+  \(\gamma\) = the body effect parameter</br>
+  \(V_{SB}\) = the source to body (substrate) voltage [Volts]</br>
 </p>
 
 ## The Substrate (Body) Connection
 
 Standard MOSFETs actually have four, not three, electrical connection points. However most discrete MOSFET components only provide 3 leads from the package. This is because the substrate (body) lead, is normally connected internally to the source (as mentioned above in the _The Body Effect_ section), so you only get three external connections (_Gate_, _Source/Substrate_, and _Drain_).
 
-NOTE: There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
+{{% note %}}
+There are other types of specialty MOSFETs which have even more pins, such as current-measurement MOSFETs.
+{{% /note %}}
 
 {{% figure src="mosfet-four-terminal-internal-diagram.gif" width="350" caption="Internal diagram of a MOSFET showing the four connections, including the substrate (body) pin. Image from http://www.muzique.com/news/mosfet-body-diodes/." %}}
 
@@ -378,11 +380,11 @@ For a really good read on the Spirito effect, see [NASA's publication: Power MOS
 
 {{% figure src="mosfet-soa-diagram-with-annotations.png" width="700" caption="A MOSFET SOA (safe operating area) diagram, showing the different limits which bound the area." %}}
 
-. Rds(on) Limit: When `\(V_{DS}\)` is very low, it means that the MOSFET is driven to saturation, and the MOSFET acts if it has a fixed drain-source resistance, `\(R_{DS(on)}\)`. This gives a linear relationship between voltage and current and is the limit line in the upper-left section of the SOA graph.
-. Package Current Limit: MOSFET datasheets will specify a maximum current, irrespective of the amount of power dissipation. The current limit is driven by physical parts inside the package which are not the silicon MOSFET cell(s), but the surrounding lead wires, bonding clips, e.t.c. This gives the upper-centre horizontal line on the SOA graph.
-. Power Limit: The power limit line is determined by the maximum power dissipation the MOSFET can handle before the junction temperature exceeds it's maximum value (typically between 100-200°C). This line is dependent on the case-to-ambient thermal resistance (which is specific to the PCB/environment the MOSFET is used in!) and ambient temperature, so the best the MOSFET manufacturer can do is assume a sensible value (and hopefully state the assumption in the datasheet).
-. Thermal Instability: Thermal instability occurs at lower `\(V_{GS}\)` voltages[^bib-infineon-mosfet-safe-operating-diagram].
-. Breakdown Voltage Limit: Above a certain drain-source voltage, the MOSFET experiences "breakdown" and stops working correctly. This puts a hard upper-limit on the `\(V_{DS}\)` voltage, shown by the far right vertical line on the SOA graph.
+1. Rds(on) Limit: When `\(V_{DS}\)` is very low, it means that the MOSFET is driven to saturation, and the MOSFET acts if it has a fixed drain-source resistance, `\(R_{DS(on)}\)`. This gives a linear relationship between voltage and current and is the limit line in the upper-left section of the SOA graph.
+1. Package Current Limit: MOSFET datasheets will specify a maximum current, irrespective of the amount of power dissipation. The current limit is driven by physical parts inside the package which are not the silicon MOSFET cell(s), but the surrounding lead wires, bonding clips, e.t.c. This gives the upper-centre horizontal line on the SOA graph.
+1. Power Limit: The power limit line is determined by the maximum power dissipation the MOSFET can handle before the junction temperature exceeds it's maximum value (typically between 100-200°C). This line is dependent on the case-to-ambient thermal resistance (which is specific to the PCB/environment the MOSFET is used in!) and ambient temperature, so the best the MOSFET manufacturer can do is assume a sensible value (and hopefully state the assumption in the datasheet).
+1. Thermal Instability: Thermal instability occurs at lower `\(V_{GS}\)` voltages[^bib-infineon-mosfet-safe-operating-diagram].
+1. Breakdown Voltage Limit: Above a certain drain-source voltage, the MOSFET experiences "breakdown" and stops working correctly. This puts a hard upper-limit on the `\(V_{DS}\)` voltage, shown by the far right vertical line on the SOA graph.
 
 ## External Resources
 
@@ -392,14 +394,14 @@ Typical [gate drive waveforms, on richieburnett.co.uk](http://www.richieburnett.
 
 ## References
 
-[^bib-science-direct-split-gate-mosfet]: : Yu-Chin Lee, Jyh-Ling Lin (2020). _Structural optimization and miniaturization for Split-Gate Trench MOSFETs with 60 V breakdown voltage_. KeAi. Retrieved 2020-10-13, from https://www.sciencedirect.com/science/article/pii/S2589208820300041.
-[^bib-infineon-mosfet-safe-operating-diagram]: : Schoiswohl, J. (2017, May). _Linear Mode Operation and Safe Operating Diagram of Power-MOSFETs_. Infineon. Retrieved 2020-10-13, from https://www.infineon.com/dgdl/Infineon-ApplicationNote_Linear_Mode_Operation_Safe_Operation_Diagram_MOSFETs-AN-v01_00-EN.pdf?fileId=db3a30433e30e4bf013e3646e9381200.
-[^bib-electronic-design-the-spirito-effect]: : Schimel, Paul (2011, Oct 20). _The Spirito Effect Improved My Design—And I Didn’t Even Know It_. ElectronicDesign. Retrieved 2020-10-14, from https://www.electronicdesign.com/power-management/article/21795492/the-spirito-effect-improved-my-designand-i-didnt-even-know-it.
-[^bib-semantic-scholar-dmos]: : Y. Tarui, Y. Hayashi, T. Sekigawa (1969). _Diffusion Selfaligned MOST; A New Approach for High Speed Device_. Retrieved 2021-02-18, from https://www.semanticscholar.org/paper/Diffusion-Selfaligned-MOST%3B-A-New-Approach-for-High-Tarui-Hayashi/c4ad0fa7b03e080cc027545f7152caa28633fa9a
-[^bib-wikipedia-hemt]: : Wikipedia (2004, Jul 19). _High-electron-mobility transistor_. Retrieved 2021-02-18, from https://en.wikipedia.org/wiki/High-electron-mobility_transistor.
-[^bib-dinc-dmn61d8l-ds]:  Diodes Incorporated (2018, Jun). _DMN61D8L/LVT: 60V N-Channel Enhancement Mode MOSFET (Datasheet)_. Retrieved 2021-10-26, from https://www.diodes.com/assets/Datasheets/DMN61D8L-LVT.pdf.
-[^bib-infineon-bsp149-ds]:  Infineon (2012, Nov 28). _BSP149: SIPMOS Small-Signal-Transistor_. Retrieved 2022-01-07, from https://www.infineon.com/dgdl/Infineon-BSP149-DS-v02_01-en.pdf?fileId=db3a30433c1a8752013c1fcbb815397c.
-[^bib-ixys-dep-mode-mosfet-applications]:  IXYS (2014, Mar 10). _AN-500: Depletion-Mode Power MOSFETs and Applications_. Retrieved 2022-01-07, from https://www.ixysic.com/home/pdfs.nsf/www/AN-500.pdf/$file/AN-500.pdf. 
+[^bib-science-direct-split-gate-mosfet]: Yu-Chin Lee, Jyh-Ling Lin (2020). _Structural optimization and miniaturization for Split-Gate Trench MOSFETs with 60 V breakdown voltage_. KeAi. Retrieved 2020-10-13, from https://www.sciencedirect.com/science/article/pii/S2589208820300041.
+[^bib-infineon-mosfet-safe-operating-diagram]: Schoiswohl, J. (2017, May). _Linear Mode Operation and Safe Operating Diagram of Power-MOSFETs_. Infineon. Retrieved 2020-10-13, from https://www.infineon.com/dgdl/Infineon-ApplicationNote_Linear_Mode_Operation_Safe_Operation_Diagram_MOSFETs-AN-v01_00-EN.pdf?fileId=db3a30433e30e4bf013e3646e9381200.
+[^bib-electronic-design-the-spirito-effect]: Schimel, Paul (2011, Oct 20). _The Spirito Effect Improved My Design—And I Didn’t Even Know It_. ElectronicDesign. Retrieved 2020-10-14, from https://www.electronicdesign.com/power-management/article/21795492/the-spirito-effect-improved-my-designand-i-didnt-even-know-it.
+[^bib-semantic-scholar-dmos]: Y. Tarui, Y. Hayashi, T. Sekigawa (1969). _Diffusion Selfaligned MOST; A New Approach for High Speed Device_. Retrieved 2021-02-18, from https://www.semanticscholar.org/paper/Diffusion-Selfaligned-MOST%3B-A-New-Approach-for-High-Tarui-Hayashi/c4ad0fa7b03e080cc027545f7152caa28633fa9a
+[^bib-wikipedia-hemt]: Wikipedia (2004, Jul 19). _High-electron-mobility transistor_. Retrieved 2021-02-18, from https://en.wikipedia.org/wiki/High-electron-mobility_transistor.
+[^bib-dinc-dmn61d8l-ds]: Diodes Incorporated (2018, Jun). _DMN61D8L/LVT: 60V N-Channel Enhancement Mode MOSFET (Datasheet)_. Retrieved 2021-10-26, from https://www.diodes.com/assets/Datasheets/DMN61D8L-LVT.pdf.
+[^bib-infineon-bsp149-ds]: Infineon (2012, Nov 28). _BSP149: SIPMOS Small-Signal-Transistor_. Retrieved 2022-01-07, from https://www.infineon.com/dgdl/Infineon-BSP149-DS-v02_01-en.pdf?fileId=db3a30433c1a8752013c1fcbb815397c.
+[^bib-ixys-dep-mode-mosfet-applications]: IXYS (2014, Mar 10). _AN-500: Depletion-Mode Power MOSFETs and Applications_. Retrieved 2022-01-07, from https://www.ixysic.com/home/pdfs.nsf/www/AN-500.pdf/$file/AN-500.pdf. 
 [^bib-ti-gan-ics]: Texas Instruments. _Power management > Gallium nitride (GaN) ICs (product page)_. Retrieved 2022-05-17, from https://www.ti.com/power-management/gallium-nitride/overview.html.
 [^infineon-gan-hemt]: Infineon (2022). _GaN HEMT – Gallium Nitride Transistor (product page)_. Retrieved 2022-05-17, from https://www.infineon.com/cms/en/product/power/gan-hemt-gallium-nitride-transistor/.
 [^ti-lmg352xr030-q1-ds]: Texas Instruments (2021, Jun). _LMG352xR030-Q1 650-V 30-mΩ GaN FET with Integrated Driver, Protection, and Temperature Reporting (datasheet)_. Retrieved 2022-05-17, from https://www.ti.com/lit/ds/symlink/lmg3525r030-q1.pdf.
