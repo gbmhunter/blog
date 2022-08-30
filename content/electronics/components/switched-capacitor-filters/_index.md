@@ -34,7 +34,11 @@ One of the biggest uses for a switched-capacitor filters is as an anti-aliasing 
 
 ## Topologies
 
-Most universal switched-capacitor filter ICs are arranged in the state-variable-biquad configuration, which allows for the creation of low-pass, band-pass, high-pass, all-pass and notch filters. It also allows for the design of high-Q filters with relatively low dependence on component tolerances[^bib-linear-tech-mystery-switched-capacitor]. 
+Most universal switched-capacitor filter ICs are arranged in the state-variable-biquad configuration, which allows for the creation of low-pass, band-pass, high-pass, all-pass and notch filters. It also allows for the design of high-Q filters with relatively low dependence on component tolerances[^bib-linear-tech-mystery-switched-capacitor].
+
+## Clock Feedthrough
+
+_Clock feedthrough_ (or clock feedthru) is the RMS value of the clock frequency and it's harmonics which are injected into the output of a switched-capacitor filter[^bib-analog-devices-ltc-1068-ds]. Clock feedthrough is typically tested with the input of the filter grounded.
 
 ## Simulation
 
