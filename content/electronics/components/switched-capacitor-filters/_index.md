@@ -5,7 +5,7 @@ date: 2022-08-29
 description: Info on switched-capacitor filters.
 draft: false
 lastmod: 2022-08-29
-tags: [ electronics, components, switched-capacitor filters, switched-capacitor, filters, capacitors, analogue ]
+tags: [ electronics, components, switched-capacitor filters, switched-capacitor, filters, capacitors, analogue, clock feedthrough, Linear Technology, Analog Devices, lowpass, highpass, notch, bandpass ]
 title: Switched-Capacitor Filters
 type: page
 ---
