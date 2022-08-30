@@ -95,3 +95,15 @@ One figure of merit we can use for each output is the _total harmonic distortion
 {{% figure src="sim-four-stage-rc-filter-thd-bar-plot.png" width="600px" caption="Plot showing the THD at each stage in the sine wave generator circuit." %}}
 
 By the time we get to the final output, `\(V_{OUT4}\)`, we are down to a THD of `\(3.8\%\)`. Pretty good!
+
+## Other Methods Of Making A Sine Wave
+
+Using cascaded RC filter is only one way of many to create sine waves! Some other popular methods include:
+
+1. **Using a [switched-capacitor IC](/electronics/components/switched-capacitor-filters/):** This is essentially the same method as using cascaded RC filters except by using a switched-capacitor filter IC you can get higher order filters with a smaller number of components (e.g. an 8th order filter is not unusual).
+
+1. **A [digital-to-analogue converter (DAC)](/electronics/components/digital-to-analogue-converters-dacs/):** You can easily generate a sine wave by feeding it with sine wave digital codes generated in a microcontroller or FPGA. Precision will depend on the resolution and clock speed of the DAC.
+
+1. **A [Wien Bridge Oscillator](/electronics/components/crystals-and-oscillators/#_wien_bridge_oscillator):** Using an op-amp, 2x diodes and a few resistors/capacitors you can generate very pure sine wave.
+
+1. **Function generator:** The simple go-to method to create a sine wave in a laboratory environment. Very flexible in terms of the frequency and amplitude you can choose.
