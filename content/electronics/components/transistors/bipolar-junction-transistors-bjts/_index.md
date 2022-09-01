@@ -224,6 +224,8 @@ However, NPN transistors cannot be used as a simple high-side switch, as the emi
 
 ## BJT Circuits
 
+* [Common-emitter amplifier](/electronics/circuit-design/bjt-common-emitter-amplifier/)
+
 ### Common Collector Amplifier
 
 #### Basic Common Collector Amplifier

@@ -5,15 +5,15 @@ date: 2022-08-18
 description: Schematics, equations and worked examples for the BJT common emitter amplifier.
 draft: false
 images: [ /electronics/components/transistors/bipolar-junction-transistors-bjts/common-emitter-amplifier/common-emitter-amplifier-schematic.png ]
-lastmod: 2022-08-20
+lastmod: 2022-09-02
 tags: [ electronics, components, transistors, bipolar junction transistors, BJTs, common emitter amplifier, gain, NPN, PNP, current ]
-title: Common Emitter Amplifier
+title: BJT Common Emitter Amplifier
 type: page
 ---
 
 ## Overview
 
-The _common emitter amplifier_ is a general-purpose BJT-based amplifier that it typically used for voltage amplification. It offers **great voltage gain and ok current gain**. The **input impedance is moderate but unfortunately it has high output impedance**. The output is inverted with respect to the input. It is commonly followed with a buffer circuit such as a common-collector amplifier to reduce the output impedance. The common emitter amplifier find use in audio and RF applications.
+The BJT _common emitter amplifier_ is a general-purpose [BJT-based](/electronics/components/transistors/bipolar-junction-transistors-bjts/) amplifier that it typically used for voltage amplification. It offers **great voltage gain and ok current gain**. The **input impedance is moderate but unfortunately it has high output impedance**. The output is inverted with respect to the input. It is commonly followed with a buffer circuit such as a common-collector amplifier to reduce the output impedance. The common emitter amplifier find use in audio and RF applications.
 
 The MOSFET analogue to the BJT common emitter amplifier is the _common source amplifier_.
 

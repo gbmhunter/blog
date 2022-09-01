@@ -25,7 +25,7 @@ type: "post"
 * Added info on [BJT output transfer characteristics](/electronics/components/transistors/bipolar-junction-transistors-bjts/#output-characteristics).
     {{% figure src="bjt-output-transfer-characteristics-screenshot.png" width="500px" %}}
 
-* Added a new page with info on the [common emitter BJT amplifier](/electronics/components/transistors/bipolar-junction-transistors-bjts/common-emitter-amplifier/).
+* Added a new page with info on the [common emitter BJT amplifier](/electronics/circuit-design/bjt-common-emitter-amplifier/).
     {{% figure src="common-emitter-amplifier-screenshot.png" width="500px" %}}
 
 * Added info on the [Resistor Optimizer tool](/electronics/components/resistors/#resistor-optimizer-tool).
