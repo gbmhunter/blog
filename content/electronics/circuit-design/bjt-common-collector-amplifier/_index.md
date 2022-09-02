@@ -68,21 +68,52 @@ The small-signal AC model for this circuit is shown below. DC voltage rails and 
 
 `\(r_e\)` is the small-signal emitter resistance which is internal to the BJT.
 
-### Voltage Gain
+### Unloaded Voltage Gain
 
-The voltage gain of a common-collector amplifier (by definition) is:
+The unloaded small-signal voltage gain of a common-collector amplifier is found by ignoring `\(R_L\)` in the small-signal AC model of the common-collector circuit. By definition the gain is:
 
 <p>\begin{align}
 A_V = \frac{v_{out}}{v_{in}} \\
 \end{align}</p>
 
-Remember that `\(v_{in}\)` and `\(v_{out}\)` are lower case and represent changes in the signal (i.e. deltas, and ignore their DC levels). So:
+Remember that `\(v_{in}\)` and `\(v_{out}\)` are lower case and represent changes in the signal (i.e. deltas, and ignore their DC levels). So a change in `\(v_{out}\)` is just a change of emitter voltage, and a change in `\(v_{in}\)` is just a change in base voltage. We can also apply Ohm's law to get:
 
 <p>\begin{align}
 A_V &= \frac{v_e}{v_b} \nonumber \\
     &= \frac{i_c R_E}{i_c(r_e + R_E)} \nonumber \\
     &= \frac{R_E}{r_e + R_E} \\
 \end{align}</p>
+
+### Input Impedance
+
+The input impedance looking into the base of the transistor is:
+
+<p>\begin{align}
+Z_{in(base)} &= \beta (r_e + R_E) \nonumber \\
+\end{align}</p>
+
+Then the total input impedance is the base input impedance in parallel with both base resistors:
+
+<p>\begin{align}
+Z_{in} &= Z_{in(base)} || R_{B1} || R_{B2} \nonumber \\
+\end{align}</p>
+
+
+## Common-Collector Amplifier Design Process
+
+How do you design a common-collector amplifier? Let's do a worked example to progress through the design steps.
+
+**Assumptions**
+
+* `\(V_{CC}\)` is `\(12V\)`
+* We'll be using the venerable [BC548BTA NPN transistor from onsemi](https://nz.mouser.com/datasheet/2/308/BC550_D-1802078.pdf) in our amplifier.
+* We want to provide current gain (i.e. buffer) to a 5V peak-to-peak AC signal between 50Hz-20kHz (i.e. audio).
+* The input impedance `\(Z_{IN}\)` must be at least `\(70k\Omega\)`
+* `\(I_C = 10mA\)`.
+
+**Steps**
+
+1. **Determine `\(R_E\)`:** We will make `\(V_E = \frac{1}{2}V_{CC}\)` to allow for the largest symmetrical voltage swing without distortion.
 
 ## References
 
