@@ -15,7 +15,7 @@ type: page
 
 The BJT _common emitter amplifier_ is a general-purpose [BJT-based](/electronics/components/transistors/bipolar-junction-transistors-bjts/) amplifier that it typically used for voltage amplification. It offers **great voltage gain and ok current gain**. The **input impedance is moderate but unfortunately it has high output impedance**. The output is inverted with respect to the input. It is commonly followed with a buffer circuit such as a common-collector amplifier to reduce the output impedance. The common emitter amplifier find use in audio and RF applications.
 
-The MOSFET analogue to the BJT common emitter amplifier is the _common source amplifier_.
+The [MOSFET](/electronics/components/transistors/mosfets/) analogue to the BJT common emitter amplifier is the _common source amplifier_.
 
 **Properties:**
 
@@ -23,8 +23,9 @@ The MOSFET analogue to the BJT common emitter amplifier is the _common source am
   <tbody>
     <tr><td>Voltage Gain</td>       <td class="good">High</td></tr>
     <tr><td>Current Gain</td>       <td class="ok">Medium</td></tr>
+    <tr><td>Power Gain</td>         <td class="ok">Medium</td></tr>
     <tr><td>Input Impedance</td>    <td class="ok">Medium</td></tr>
-    <tr><td>Output Impedance</td>   <td class="bad">High</td></tr>    
+    <tr><td>Output Impedance</td>   <td class="bad">High</td></tr>
     <tr><td>Phase Shift</td>        <td>180°</td></tr>
   </tbody>
 </table>

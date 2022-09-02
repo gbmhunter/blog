@@ -12,3 +12,5 @@ type: "post"
 ---
 
 ## Updates This Month
+
+* Create a new page for the BJT common-collector amplifier.

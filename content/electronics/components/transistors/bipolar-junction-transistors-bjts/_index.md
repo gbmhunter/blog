@@ -225,36 +225,7 @@ However, NPN transistors cannot be used as a simple high-side switch, as the emi
 ## BJT Circuits
 
 * [Common-emitter amplifier](/electronics/circuit-design/bjt-common-emitter-amplifier/)
-
-### Common Collector Amplifier
-
-#### Basic Common Collector Amplifier
-
-The BJT _common-collector_ amplifier is one of the three basic single-stage BJT amplifier topologies. The common collector amplifier topology is also known as a _emitter follower amplifier_ or _voltage follower_. It has a high input-impedance, a low output-impedance, and has a non-inverting gain of around 1. It does NOT produce much voltage gain, but is able to provide current gain, and therefore overall power gain. Because of it's "buffering" capabilities it is often used between high-impedance inputs and low-impedance outputs[^bib-libretexts-common-collector-amplifier].
-
-{{% figure src="common-collector-bjt-amplifier-basic-schematic.png" width="400px" caption="The basic schematic of a common-collector BJT amplifier." %}}
-
-The output voltage is almost equal to the input voltage, except for an approximately `\(0.7V\)` diode drop across the base-emitter junction. This means that the amplifier has a voltage gain of almost unity (1), or `\(0dB\)`.
-
-<p>\begin{align}
-v_{out} = v_{in} - 0.7V
-\end{align}</p>
-
-Here is a graph of `\(v_{in}\)` vs. `\(v_{out}\)` for the above circuit, with `\(R1=1k\Omega\)`:
-
-{{% figure src="basic-common-collector-amplifier/plot-annotated.png" width="800px" caption="`\(V_{out}\)` vs. `\(V_{in}\)` for a basic common-collector BJT amplifier." %}}
-
-(Micro-Cap simulation file: [circuit.cir](basic-common-collector-amplifier/circuit.cir))
-
-The common-collector amplifier is simulated in circuitjs below:
-
-{{% circuitjs data="CQAgjOB0AMt-CwFMC0B2c1IDYDMAWAJmzQFZcBOADjG1PpG2xEJFOjdTDACgB3ELlKtChfIOHgKraDzBpWQ1mGkTl2Dhwyk2ITXsg6AwgHsANmaQBjAC4mATiABq5mwEMA5kh4e1gwhxKgrjMmjw2gtDiYoGSMXrgICi4hri0+FQEYMRgVBSkVAakFLn5pCrYYoTs4mCwIAAmSABmbgCuZjb8LPgc8bhRPWGOQdXMQbgBCXWwPABuQ-59vYscEDN9hixbmoY+i5PLgSEJsgEY8fEqIiviAJYAdjznfmMgvX2kzOImbV0mIEKkwSvQoFF0WHgFDQdEqOg44iBIHBHHBuB4QA" %}}
-
-#### Common Collector Amplifier With AC Coupling And DC Bias
-
-A more useful common-collector amplifier can be made which AC couples the input and provides a DC bias point at the base of the BJT. Below is a schematic of one built with a NPN transistor:
-
-{{% figure src="common-collector-bjt-amplifier-ac-coupled-schematic.png" width="600px" caption="Schematic of an AC-coupled common-collector NPN BJT amplifier." %}}
+* [Common-collector amplifier](3/electronics/circuit-design/bjt-common-collector-amplifier/)
 
 ### Common-Base Amplifier
 
