@@ -4,8 +4,8 @@ categories: [ Programming, Signal Processing, Filters ]
 date: 2022-06-28
 description: Info on the Kalman filter.
 draft: false
-lastmod: 2022-06-28
-tags: [ filter, Kalman ]
+lastmod: 2022-09-04
+tags: [ filter, Kalman, programming, system, estimation, robots, kinematics, GPS, GNSS, hidden variables, variables ]
 title: Kalman Filter
 type: page
 ---
@@ -15,3 +15,17 @@ type: page
 ## Overview
 
 The _Kalman filter_ is a digital filter which produces estimates of system variables (called _hidden variables_, because you cannot know their exact value) based of noisy measurements (data with uncertainty). The Kalman filter is a very common estimation algorithm used in many applications such as GPS/positional measurements, radar, robot kinematics.
+
+Kalman filters are relatively light of processing power requirements and memory usage[^bib-bzarg-kalman-filter-pictures], making them suitable for a range of embedded applications.
+
+The Kalman filter assumes the system variables are random and Gaussian distributed[^bib-bzarg-kalman-filter-pictures].
+
+A nieve approach would be to assume that the system variables are independent of one another. But this might not be the case, and if it's not, you're throwing away good information! The Kalman filter supports correlated variables, by the way of a _covariance matrix_. 
+
+## Further Reading
+
+[How a Kalman Filter works, in pictures by Bzarg](https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/)[^bib-bzarg-kalman-filter-pictures] is a great article which explains the Kalman filter step-by-step using visual aids. It definitely helps you understand the Kalman filter in a intuitive fashion!
+
+## References
+
+[^bib-bzarg-kalman-filter-pictures]: Bzarg. _How a Kalman filter works, in pictures_. Retrieved 2022-09-04, from https://www.bzarg.com/p/how-a-kalman-filter-works-in-pictures/.

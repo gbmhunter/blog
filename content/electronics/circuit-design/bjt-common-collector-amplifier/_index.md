@@ -98,23 +98,13 @@ Then the total input impedance is the base input impedance in parallel with both
 Z_{in} &= Z_{in(base)} || R_{B1} || R_{B2} \nonumber \\
 \end{align}</p>
 
+## Further Reading
 
-## Common-Collector Amplifier Design Process
+[Common-Collector Amplifier Design by Kenneth A. Kuhn](https://www.kennethkuhn.com/students/ee351/bjt_cc_amplifier_design.pdf) goes into great detail about the amplifier design with precise equations and considerations[^bib-kenneth-kuhn-common-collector-amp-design]. It's much better than what I have here!
 
-How do you design a common-collector amplifier? Let's do a worked example to progress through the design steps.
-
-**Assumptions**
-
-* `\(V_{CC}\)` is `\(12V\)`
-* We'll be using the venerable [BC548BTA NPN transistor from onsemi](https://nz.mouser.com/datasheet/2/308/BC550_D-1802078.pdf) in our amplifier.
-* We want to provide current gain (i.e. buffer) to a 5V peak-to-peak AC signal between 50Hz-20kHz (i.e. audio).
-* The input impedance `\(Z_{IN}\)` must be at least `\(70k\Omega\)`
-* `\(I_C = 10mA\)`.
-
-**Steps**
-
-1. **Determine `\(R_E\)`:** We will make `\(V_E = \frac{1}{2}V_{CC}\)` to allow for the largest symmetrical voltage swing without distortion.
+{{% figure src="graph-from-kenneth-kuhn-cc-amplifier-design.png" width="400px" caption="Just one example of a graph from Kenneth Kuhn's excellent Common-Collector Amplifier Design[^bib-kenneth-kuhn-common-collector-amp-design]." %}}
 
 ## References
 
 [^bib-libretexts-common-collector-amplifier]: James M. Fiore (2022, May 23). _Common Collector Amplifier_. LibreTexts: Engineering. Retrieved 2022-08-11, from https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Book%3A_Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07%3A_BJT_Small_Signal_Amplifiers/7.4%3A_Common_Collector_Amplifier.
+[^bib-kenneth-kuhn-common-collector-amp-design]: Kenneth A. Kuhn. _Common-Collector Amplifier Design_. Retrieved 2022-09-03, from https://www.kennethkuhn.com/students/ee351/bjt_cc_amplifier_design.pdf.
