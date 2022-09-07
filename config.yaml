@@ -89,7 +89,7 @@ security:
     - ^postcss$
     - ^asciidoctor$ # Added by gbmhunter to allow asciidoctor. Not included by default!
     osEnv:
-    - (?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM)$
+    - (?i)^(PATH|PATHEXT|APPDATA|TMP|TEMP|TERM|GEM_PATH)$
   funcs:
     getenv:
     - ^HUGO_
