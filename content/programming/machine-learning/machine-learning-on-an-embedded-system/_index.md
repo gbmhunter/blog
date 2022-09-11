@@ -3,8 +3,8 @@ authors: [ Geoffrey Hunter ]
 categories: [ Programming, Machine Learning ]
 date: 2022-09-08
 draft: true
-lastmod: 2022-09-08
-tags: [ programming, machine learning ]
+lastmod: 2022-09-10
+tags: [ programming, machine learning, TensorFlow, TensorFlow Lite, Linux, RP2040, camera, AI, artificial intelligence, Cortex-M0+, ARM, RaspberryPi ]
 title: Machine Learning On An Embedded System
 type: page
 ---
@@ -13,7 +13,7 @@ type: page
 
 The page is about exploring machine learning on an embedded system. By embedded, I mean a microcontroller running on "bare metal", with no concept of a file system.
 
-I looked around and choose [Pico4ML by ArduCam](https://www.arducam.com/pico4ml-an-rp2040-based-platform-for-tiny-machine-learning/) as my development kit to play around with. It features a RP2040 microcontroller, 320x240 pixel camera, IMU, microphone and 160x80 LCD display. You can probably tell from the name, but it is specially built for performing machine learning, and it's rich sensor inputs and display let you do some cool stuff!
+I looked around and choose [Pico4ML by ArduCam](https://www.arducam.com/pico4ml-an-rp2040-based-platform-for-tiny-machine-learning/) as my development kit to play around with. It features a RP2040 microcontroller, 320x240 pixel monochromatic camera, IMU, microphone and 160x80 LCD display. You can probably tell from the name, but it is specially built for performing machine learning, and it's rich sensor inputs and display let you do some cool stuff!
 
 The RP2040 contains an Arm Cortex-M0+ processor running up to 133MHz, with 264kB SRAM and 2MB QSPI flash. So it's not your low end 1kB RAM/8kB flash ATmega8 but neither is it a powerful processor designed to run Linux.
 
@@ -33,7 +33,7 @@ $ ./pico-setup/pico-setup.sh
 
 ... and go make a coffee. It also disables the Linux serial console so it can be used as a debug UART from the pico. Ouch, 5.9GB of space used. I regret only using an 8GB SD card.
 
-Grrr, it even installed VS code with the cortex-debug, cpptools and cmake-tools extensions
+Hmmm, it even installed VS code with the `cortex-debug`, `cpptools` and `cmake-tools` extensions.
 
 Get the RPI-Pico-Cam firmware and compile:
 
@@ -47,7 +47,7 @@ $ cmake ..
 
 and coffee time again! I’m starting to get the jitters.
 
-This builds the firmware image, including tensorflow lite and benchmark programs.
+This builds the firmware image, including TensorFlow Lite and benchmark programs.
 
 Holding down the “bootsel” button while powering on the Pico4ML makes the Pico4ML appear as a mass removable drive (sda):
 
@@ -71,7 +71,6 @@ UF2 Bootloader v3.0
 Model: Raspberry Pi RP2
 Board-ID: RPI-RP2
 ```
-
 
 Copy the .uf2 file onto the device:
 
@@ -109,6 +108,8 @@ person score:-95 no person score 95
 
 TensorFlow Lite is a cut-down version of TensorFlow designed for low power devices, e.g. the RaspberryPi.
 
+{{% figure src="tensorflow-lite-logo-social.png" width="500px" caption="The logo for TensorFlow Lite[^bib-tensorflow-lite-logo]." %}}
+
 TensorFlow Lite for Microcontrollers is a further cut-down version that runs on….microcontrollers. Supported boards include:
 
 * STM32F746 Discovery Kit
@@ -118,7 +119,7 @@ TensorFlow Lite for Microcontrollers is a further cut-down version that runs on�
 * Various Adafruit boards
 * Arduino Nano 33 BLE Sense
 
-On device training is NOT support with TFL for MCUs (not surprising, really).
+On device training is NOT support with TFL for MCUs (not surprising, really). Only a limited sub-set of features are supported. They can be found at [all_ops_resolver.cc](https://github.com/tensorflow/tflite-micro/blob/main/tensorflow/lite/micro/all_ops_resolver.cc).
 
 ## Model Training Workflow
 
@@ -194,4 +195,33 @@ DISM /Online /Disable-Feature:Microsoft-Hyper-V
 
 Yay! Tensor flow is now happy.
 
+## WSL
 
+WSL on my machine had Python 3.6. Let's get Python 3.9:
+
+```
+$ sudo add-apt-repository ppa:deadsnakes/ppa
+$ sudo apt install python3.9
+$ sudo apt install python3.9-venv
+```
+
+```
+$ python3.9 -m venv .venv
+$ source .venv/bin/activate
+$ pip install tflite-model-maker
+```
+
+{{% figure src="installing-tflite-model-maker.png" width="500px" caption="Installing tflite-model-maker on WSL." %}}
+
+https://www.tensorflow.org/lite/models/modify/model_maker/image_classification contains some useful example code on how to get started with `tflite-model-maker` in Python.
+
+We get the following error, but we're told we can safely ignore it:
+
+```
+2022-09-11 08:51:13.649993: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2022-09-11 08:51:13.650051: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+```
+
+## References
+
+[^bib-tensorflow-lite-logo]: _TensorFlow Lite logo_. Retrieved 2022-09-10, from https://www.tensorflow.org/site-assets/images/project-logos/tensorflow-lite-logo-social.png.
