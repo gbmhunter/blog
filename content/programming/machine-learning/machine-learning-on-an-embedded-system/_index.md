@@ -43,9 +43,10 @@ $ cd RPI-Pico-Cam/tflmicro
 $ mkdir build 
 $ cd build 
 $ cmake ..
+$ make
 ```
 
-and coffee time again! I’m starting to get the jitters.
+and coffee time again! I’m starting to get the jitters. Don't worry though, successive builds are much faster (take about 10s).
 
 This builds the firmware image, including TensorFlow Lite and benchmark programs.
 
@@ -75,7 +76,7 @@ Board-ID: RPI-RP2
 Copy the .uf2 file onto the device:
 
 ```sh
-$ cp person_detection_screen_int8.uf2 /mnt/pico/
+$ cp tflmicro/build/examples/person_detection_screen/person_detection_screen_int8.uf2 /mnt/pico/
 $ sync
 ```
 
@@ -201,9 +202,10 @@ WSL on my machine had Python 3.6. Let's get Python 3.9:
 
 ```
 $ sudo add-apt-repository ppa:deadsnakes/ppa
-$ sudo apt install python3.9
-$ sudo apt install python3.9-venv
+$ sudo apt install python3.9 python3.9-venv
 ```
+
+Create virtual environment and install `tflite-model-maker`:
 
 ```
 $ python3.9 -m venv .venv
@@ -220,6 +222,24 @@ We get the following error, but we're told we can safely ignore it:
 ```
 2022-09-11 08:51:13.649993: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
 2022-09-11 08:51:13.650051: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+```
+
+TensorFlow Lite lets you define `TF_LITE_STRIP_ERROR_STRINGS` (used in `error_reporter.h`) to strip out all error message strings to reduce binary size.
+
+TensorFlow Lite for Microcontrollers defers error printing to `MicroErrorReporter`, which calls `DebugLog()`.
+
+All in one command:
+
+```
+make && sudo mount /dev/sdc1 /mnt/pico/ && cp /home/biolumic/pico4ml/RPI-Pico-Cam/tflmicro/build/examples/person_detection_screen/person_detection_screen_int8.uf2 /mnt/pico/
+```
+
+Annoyingly, sda changes to sdb, then sdc, e.t.c everytime you start in boot mode.
+
+The size of the person detection model is 300568 bytes (294kB).
+
+```
+const int g_person_detect_model_data_len = 300568;
 ```
 
 ## References

@@ -25,6 +25,24 @@ VS Code has an extension for WSL. It allows you write/run code inside WSL whilst
 
 From inside WSL, if you type the command `code .`, it will open at VS Code in Windows and setup a remote development session into WSL at the current working directory.
 
+```
+wsl --shutdown
+```
+
+Must be run from terminal with Administrator privileges:
+
+```
+wsl --upgrade
+```
+
+You can set the default distribution with:
+
+```
+wsl --set-default <distro-name>
+```
+
+The default distribution is the one which will load if you just type `wsl` at the command-line in Windows.
+
 ## Upgrading From WSL 1 To WSL 2
 
 If you first enabled/installed WSL a long time ago, you might be running WSL 1. WSL 2 is a big upgrade over WSL 1 -- WSL 1 used a "wrapper" to convert Linux system calls into Windows calls, whilst WSL 2 features a full Linux virtual machine (similar to VirtualBox).
