@@ -66,9 +66,51 @@ The below figure shows the behaviour of the voltage doubling charge pump. Notice
 
 {{% figure src="/electronics/components/power-regulators/charge-pumps/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-plot.png" width="600px" caption="A plot of the simulation results for the above voltage doubling charge pump circuit." %}}
 
-Below is the schematic of a Micro-Cap +3.3V voltage-doubling charge pump simulation. The input is driven with a 10kHz +3.3V square wave, something that can easily be done from a microcontroller pin.
+**Output Impedance**
+
+Charge pumps can be used as voltage sources, although **normally only for light loads are they generally have significant output impedance** (compared to linear regulators and SMPS). In general, the output impedance for a charge pump can be calculated by[^electronics-se-charge-pump-output-res]:
+
+<p>\begin{align}
+R_O = \frac{N}{f*C} \\
+\end{align}</p>
+
+<p class="centered">
+where:</br>
+\(R_O\) is the output resistance, in Ohms [\(\Omega\)]</br>
+\(N\) is the number of stages, excluding the last "tank" capacitor</br>
+\(f\) is the switching frequency, in Hertz [\(Hz\)]</br>
+\(C\) is the capacitance of each stage, assuming they all have the same value, in Farads [\(F\)]</br>
+</p>
+
+Let's compare what this equation says compared to a simulation. Below is the schematic of a Micro-Cap +3.3V voltage-doubling charge pump simulation. The input is driven with a 10kHz +3.3V square wave.
 
 {{% figure src="charge-pump-voltage-doubler-sim-microcap/schematics.png" width="800px" caption="Micro-Cap simulation schematic of a +3.3V voltage-doubling charge pump." %}}
+
+[Micro-Cap simulation file](charge-pump-voltage-doubler-sim-microcap/charge-pump-voltage-doubler-sim-microcap.cir)
+
+The equation predicts the output impedance to be:
+
+<p>\begin{align}
+R_O &= \frac{1}{5kHz*1uF} \nonumber \\
+    &= 200\Omega \\
+\end{align}</p>
+
+To find the output impedance, I found the output voltage under no load, and the output voltage and current with a `\(100\Omega\)` load. Both of these were done using Transient-style simulations.
+
+At no load, `\(V_O = 5.98V\)`.
+
+With `\(R_{L} = 100\Omega\)`, `\(V_L = 2.23V\)`.
+
+Thus we can find the output resistance:
+
+<p>\begin{align}
+R_O &= R_L \frac{V_O - V_L}{V_L} \nonumber \\
+    &= 100\Omega * \frac{5.98V - 2.23V}{2.23V} \nonumber \\
+    &= 168\Omega
+\end{align}</p>
+
+So `\(200\Omega\)` predicted by the equation and `\(168\Omega\)` measured in the simulation. Sort of close! I'm guessing some of the differences could be explained by simulation non-idealities such as the diodes and parasitic elements. 
+
 
 ### Voltage Inverting Charge Pump
 
@@ -117,3 +159,4 @@ The RS-232 standard mandates 5-15V `\(V_{OH}\)` and `\(V_{OL}\)` levels. Because
 [^edn-capacitive-voltage-conversion]: <https://www.edn.com/capacitive-voltage-conversion-aka-the-charge-pump/>, retrieved 2020-12-08.
 [^sipex-charge-pump-caps-for-rs-232]: <https://www.maxlinear.com/appnote/ani-19_selectingchargepumpcaps_072406_d.pdf>, retrieved 2020-12-14.
 [^justia-patents-john-f-dickson]: <https://patents.justia.com/inventor/john-f-dickson>, retrieved 2020-12-14.
+[^electronics-se-charge-pump-output-res]: StackExchange: Electrical Engineering. _Charge pump output resistance_. Retrieved 2022-09-14, from https://electronics.stackexchange.com/questions/136860/charge-pump-output-resistance.
