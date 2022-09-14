@@ -1,12 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [ Geoffrey Hunter ]
 date: 2014-12-01
-description: "Schematics, advantages/disadvantages to buck converters, uses/applications and more info about charge pumps (a type of SMPS)."
+description: Schematics, advantages/disadvantages to buck converters, uses/applications and more info about charge pumps (a type of SMPS).
 draft: false
-lastmod: 2020-12-19
-tags: [ "electronics", "components", "power supplies", "charge pumps", "SMPS", "switch-mode power supplies", "op-amps", "MOSFETs", "buck converters", "LEDs", "drivers", "voltage doublers", "diodes", "schottky", "capacitors", "RS-232", "flying capacitor", "reservoir capacitor", "Dickson charge pump", "half-wave doubler" ]
-title: "Charge Pumps"
-type: "page"
+lastmod: 2022-09-14
+tags: [ electronics, components, power supplies, charge pumps, SMPS, switch-mode power supplies, op-amps, MOSFETs, voltage doublers, diodes, schottky, capacitors, reservoir capacitor, Dickson charge pump ]
+title: Charge Pumps
+type: page
 ---
 
 ## Overview
@@ -65,6 +65,10 @@ The following KiCad schematics were used to perform the simulation:
 The below figure shows the behaviour of the voltage doubling charge pump. Notice that after about 5 cycles the output voltage stabilizes to it's steady state value of approximately 8.7V. This simulation assumed a perfect voltage source driven pulse input, in reality the pulse input has some non-zero output impedance which effects the stabilization time and output current capacity.
 
 {{% figure src="/electronics/components/power-regulators/charge-pumps/charge-pump-voltage-doubler-simulation/charge-pump-voltage-doubler-simulation-plot.png" width="600px" caption="A plot of the simulation results for the above voltage doubling charge pump circuit." %}}
+
+Below is the schematic of a Micro-Cap +3.3V voltage-doubling charge pump simulation. The input is driven with a 10kHz +3.3V square wave, something that can easily be done from a microcontroller pin.
+
+{{% figure src="charge-pump-voltage-doubler-sim-microcap/schematics.png" width="800px" caption="Micro-Cap simulation schematic of a +3.3V voltage-doubling charge pump." %}}
 
 ### Voltage Inverting Charge Pump
 
