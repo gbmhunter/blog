@@ -8,7 +8,7 @@ Screen=2560,1440
 MCAPVersion=12.2.0.5
 Key ID=Demo
 NLCnt=22
-TXCnt=3
+TXCnt=4
 
 [shapedef]
 Name=Capacitor
@@ -465,6 +465,14 @@ JustifyH=Left
 JustifyV=Bottom
 CBorder=None
 
+[Grid Text]
+Text="+3.3V"
+Px=616,216
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
 [Schematic]
 CurrentSection 0=0
 CurrentSection 1=0
@@ -662,7 +670,7 @@ Scale 0=1
 Scale 1=1
 Scale 2=1
 Scale 3=0.66666666666666663
-Px=593,438
+Px=767,210
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
