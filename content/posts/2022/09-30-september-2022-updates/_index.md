@@ -19,3 +19,5 @@ type: "post"
 
 * Upgraded the Netlify build image from Ubuntu Xenial 16.04 (which is deprecated and was going to be unsupported in November 2022) to Ubuntu Focal 20.04. This initially caused a hugo build failure, which was resolved by adding `GEM_PATH` to the `security: exec: osEnv:` section of the `config.yaml`.
     {{% figure src="adding-gem-path-to-config-yaml.png" width="400px" %}}
+
+* Added info on charge pump output impedance.
