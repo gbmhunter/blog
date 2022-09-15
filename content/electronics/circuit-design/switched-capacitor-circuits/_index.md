@@ -17,13 +17,17 @@ The basic switched-capacitor circuit is shown below:
 
 {{% figure src="basic-switched-capacitor-circuit.png" width="400px" caption="A basic switched-capacitor circuit." %}}
 
-By changing the switching frequency, you can change the equivalent "resistance" between `\(V_{in}\)` and `\(V_{out}\)`. The equivalent resistance is:
+## Equivalent Resistance
+
+**By changing the switching frequency, you can change the equivalent "resistance"** between `\(V_{in}\)` and `\(V_{out}\)`. The equivalent resistance is:
 
 <p>\begin{align}
 R_{equiv} &= \frac{1}{C_1f} \\
 \end{align}</p>
 
-## Equivalent Resistance Derivation
+This is the core principle behind [switched-capacitor filters](/electronics/components/switched-capacitor-filters/).
+
+### Equivalent Resistance Derivation
 
 In phase 1 when switch `SW1` is closed and `SW2` is open, the capacitor charges up to `\(V_{in}\)`. [By definition](/electronics/components/capacitors/#_charge), the charge stored in the capacitor during this time is:
 
