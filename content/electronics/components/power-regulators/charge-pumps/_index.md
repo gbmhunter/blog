@@ -71,12 +71,12 @@ The below figure shows the behaviour of the voltage doubling charge pump. Notice
 Charge pumps can be used as voltage sources, although **normally only for light loads are they generally have significant output impedance** (compared to linear regulators and SMPS). In general, the output impedance for a charge pump can be calculated by[^electronics-se-charge-pump-output-res]:
 
 <p>\begin{align}
-R_O = \frac{N}{f*C} \\
+Z_{out} = \frac{N}{f*C} \\
 \end{align}</p>
 
 <p class="centered">
 where:</br>
-\(R_O\) is the output resistance, in Ohms [\(\Omega\)]</br>
+\(Z_{out}\) is the output resistance, in Ohms [\(\Omega\)]</br>
 \(N\) is the number of stages, excluding the last "tank" capacitor</br>
 \(f\) is the switching frequency, in Hertz [\(Hz\)]</br>
 \(C\) is the capacitance of each stage, assuming they all have the same value, in Farads [\(F\)]</br>
@@ -91,26 +91,31 @@ Let's compare what this equation says compared to a simulation. Below is the sch
 The equation predicts the output impedance to be:
 
 <p>\begin{align}
-R_O &= \frac{1}{5kHz*1uF} \nonumber \\
-    &= 200\Omega \\
+Z_{out} &= \frac{1}{5kHz*1uF} \nonumber \\
+        &= 200\Omega \\
 \end{align}</p>
 
 To find the output impedance, I found the output voltage under no load, and the output voltage and current with a `\(100\Omega\)` load. Both of these were done using Transient-style simulations.
 
-At no load, `\(V_O = 5.98V\)`.
+At no load, `\(V_{source} = 5.98V\)`.
 
-With `\(R_{L} = 100\Omega\)`, `\(V_L = 2.23V\)`.
+With `\(R_{load} = 100\Omega\)`, `\(V_{load} = 2.23V\)`.
 
-Thus we can find the output resistance:
+Thus we can find the output resistance using the resistor divider equation:
 
 <p>\begin{align}
-R_O &= R_L \frac{V_O - V_L}{V_L} \nonumber \\
-    &= 100\Omega * \frac{5.98V - 2.23V}{2.23V} \nonumber \\
+V_{load} &= \frac{R_{load}}{Z_{out} + R_{load}} \\
+\end{align}</p>
+
+Re-arrange for `\(Z_{out}\)`:
+
+<p>\begin{align}
+Z_{out} &= \left(\frac{V_{source}}{V_{load}} - 1\right)*R_{load} \nonumber \\
+    &= \left(\frac{5.98V}{2.23V} - 1\right) * 100\Omega \nonumber \\
     &= 168\Omega
 \end{align}</p>
 
 So `\(200\Omega\)` predicted by the equation and `\(168\Omega\)` measured in the simulation. Sort of close! I'm guessing some of the differences could be explained by simulation non-idealities such as the diodes and parasitic elements. 
-
 
 ### Voltage Inverting Charge Pump
 
