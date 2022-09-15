@@ -25,6 +25,8 @@ A single capacitor/diode configuration (with additional smoothing capacitor on t
 
 _Marx generators_ are similar to charge pumps except they use spark gaps instead of diodes as the switching elements. Marx generators are typically used for high voltage/high power applications.
 
+Charge pumps are very closely related to [Switched-Capacitor Circuits](/electronics/circuit-design/switched-capacitor-circuits/).
+
 ## How It Works
 
 In charge pump designs in which both legs of the capacitor are switched to different parts of the circuit at the same time, the capacitors are called _flying capacitors_, named because both their leads are for a brief moment in time disconnected from the circuit. The capacitor connected across the output load is called the _reservoir capacitor_, _storage capacitor_ or _load capacitor_[^sipex-charge-pump-caps-for-rs-232].
@@ -81,6 +83,8 @@ where:</br>
 \(f\) is the switching frequency, in Hertz [\(Hz\)]</br>
 \(C\) is the capacitance of each stage, assuming they all have the same value, in Farads [\(F\)]</br>
 </p>
+
+For more information on how this equation is derived, see the  [Switched Capacitor Circuits page](/electronics/circuit-design/switched-capacitor-circuits/).
 
 Let's compare what this equation says compared to a simulation. Below is the schematic of a Micro-Cap +3.3V voltage-doubling charge pump simulation. The input is driven with a 10kHz +3.3V square wave.
 

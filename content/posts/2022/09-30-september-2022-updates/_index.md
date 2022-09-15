@@ -21,3 +21,5 @@ type: "post"
     {{% figure src="adding-gem-path-to-config-yaml.png" width="400px" %}}
 
 * Added info on [charge pump output impedance](/electronics/components/power-regulators/charge-pumps/).
+
+* Added a new page on [switched-capacitor circuits](/electronics/circuit-design/switched-capacitor-circuits/).
