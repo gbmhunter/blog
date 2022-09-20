@@ -23,3 +23,7 @@ type: "post"
 * Added info on [charge pump output impedance](/electronics/components/power-regulators/charge-pumps/).
 
 * Added a new page on [switched-capacitor circuits](/electronics/circuit-design/switched-capacitor-circuits/).
+
+* Converted the [Analogue Filters page](/electronics/circuit-design/analogue-filters/) from Asciidoc to Markdown.
+
+* Added info on Elliptic filters.
