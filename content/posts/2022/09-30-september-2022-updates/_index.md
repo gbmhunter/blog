@@ -27,3 +27,5 @@ type: "post"
 * Converted the [Analogue Filters page](/electronics/circuit-design/analogue-filters/) from Asciidoc to Markdown.
 
 * Added info on Elliptic filters.
+
+* Moved the info on Sallen-Key filters into it's own page.

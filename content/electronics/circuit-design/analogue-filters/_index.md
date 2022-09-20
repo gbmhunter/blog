@@ -12,6 +12,10 @@ type: page
 
 ## Overview
 
+Related pages:
+
+* [Sallen-Key Filters]()
+
 ### Passive vs. Active
 
 Even in the pass-band, passive filters almost always increase the impedance of the signal, post filter. For a trace on a circuit board, this actually makes the post-filter trace more susceptible to picking up external noise. For this reason, when using a passive filter to filter out induced noise of a sensitive trace, always place a passive filter as close as possible to the receiving end of the signal (e.g. as close as possible to an ADC pin on a microcontroller).
@@ -22,7 +26,8 @@ Active filters are electronic waveform filters which require their own power sou
 
 ### Filter Topologies vs. Tunings
 
-* _Filter topologies_ define the what components go where.
+* _Filter types_ describe the purpose of the filter. Filter types include low-pass, high-pass, band-pass, notch (band reject), and all-pass.
+* _Filter topologies_ define the what components go where. Filter topologies include 
 * _Filter tunings_ define the values of the components in a particular topology. Filter tunings include Butterworth, Chebyshev and Bessel.
 
 ### Filter Parameters
@@ -353,7 +358,13 @@ Commonly used in analogue-crossover circuitry.
 
 ### Elliptic Optimization
 
-Elliptic optimization (a.k.a. a Cauer or Zolotarev filter[^bib-rutgers-elliptic-lecture-notes]) is a filter that is optimized for the fastest transition in gain from the passband to the stopband. It has equal ripple in both the passband and stopband[^bib-wikipedia-elliptic-filter]. 
+Elliptic optimization (a.k.a. a Cauer or Zolotarev filter[^bib-rutgers-elliptic-lecture-notes]) is a filter that is optimized for the fastest transition in gain from the passband to the stopband. It has equal ripple in both the passband and stopband[^bib-wikipedia-elliptic-filter].
+
+You can generate an Elliptical filter in Python using the scipy package:
+
+```python
+scipy.signal.ellip(N, rp, rs, Wn, btype='low', analog=False, output='ba', fs=None)
+```
 
 ### Filter Coefficient Tables
 
@@ -415,121 +426,6 @@ A filter topology is an actual circuit configuration which can realize a number 
 * Multiple-Feedback Filters (a.k.a. infinite-gain filters)
 * State-Variable Filters: As known as _KHN filters_ after the inventors W. J. Kerwin, L. P. Huelsman and R. W. Newcomb, first reported in 1967[^bib-sergio-franco-design-with-op-amps].
 
-## Sallen-Key Filters
-
-The Sallen-Key filter is one of the **most popular active 2nd-order analogue filters**. It can be configured as a low-pass, high-pass, band-pass or band-stop filter. Also called a _Sallen and Key_ filter. It was first introduced in 1955 by R.P. Sallen and E.L. Key of MIT's Lincoln Labs, whose last names give this filter it's name.
-
-It has low _component spread_ (low ratios of highest to lowest capacitor and resistor values). It also has a high input impedance and low output impedance, allowing for multiple filters to be chained together without intermediary buffers. However, one issue with the Sallen-Key filter is the strong dependence on the op-amp having low output impedance. An op-amp's output impedance rises with frequency, and thus the filtering ability begins to suffer around the 50-500kHz range.
-
-It is closely related to a [voltage-controlled voltage source (VCVS) filter](#voltage-controlled-voltage-source-vcvs-filters), however the VCVS filter also includes gain by connected a resistor divider from the output to the inverting terminal of the op-amp.
-
-### Low-Pass Sallen-Key Filter
-
-The schematic for a unity-gain low-pass Sallen-Key filter is shown below:
-
-{{% figure src="low-pass-sallen-key/low-pass-sallen-key.svg" width="700px" caption="The schematic for a unity-gain low-pass Sallen-Key filter." %}}
-
-It looks like 2 cascaded RC filters, except with the other terminal of the 1st capacitor connected to the op-amp's output rather than ground! What does this mean?
-
-{{% warning %}}
-Take note of labelling of the resistors and capacitors if reading other material on Sallen-Key filters, there is no one popular convention as the resistor and capacitor orders are switched frequently.
-{{% /warning %}}
-
-A Sallen-Key filter has a gain which begins to increase again after a certain frequency in the stop band.
-
-We will simulate the response of a Sallen-Key filter designed with a cutoff frequency of 1kHz. Below is the KiCad schematic used for the simulation:
-
-{{% figure src="low-pass-sallen-key/low-pass-sallen-key-simulation-schematic.png" width="800px" caption="Simulation schematics of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz." %}}
-
-The KiCad schematic for this simulation can be <a href="low-pass-sallen-key/low-pass-sallen-key.sch" download>downloaded here</a>. The simulated gain (magnitude) and phase response is shown below.
-
-{{% figure src="low-pass-sallen-key/response.png" width="800px" caption="The simulated gain (magnitude) and phase response of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz. The dotted line shows the cutoff frequency." %}}
-
-The transfer function:
-
-<p>\begin{align}
-\frac{v_{out}}{v_{in}} = \frac{\frac{1}{R1C1R2C2}}{s^2 + \left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)s + \frac{1}{R1C1R2C2}}
-\end{align}</p>
-
-The resistance of the resistors `\(R1\)` and `\(R2\)` are related to the capacitances and filter coefficients by the following equation:
-
-<p>\begin{align}
-\label{eqn:r1r2eq}
-R1, R2 = \frac{a_1 C1 \mp \sqrt{ (a_1 C1)^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2}
-\end{align}</p>
-
-You use the `\(-\)` sign when calculating `\(R1\)` and the `\(+\)` sign for calculating `\(R2\)`.
-
-To obtain real values under the square root, `\(C1\)` must obey the follow condition:
-
-<p>\begin{align}
-\label{eqn:c1geq}
-C1 \geq C2 \frac{4b_1}{a_1^2}
-\end{align}</p>
-
-These equations give you enough info to calculate all the resistances and capacitors for a Sallen-Key filter. See the design example below to show how you would go about it.
-
-#### Design Example: 2nd-Order Low-Pass Unity-Gain 3dB-Chebyshev Sallen-Key Filter
-
-The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Chebyshev 3dB ripple coefficients (this will give us a sharp transition from the passband to the stopband) and a corner frequency must be `\(f_c = 1kHz\)`.
-
-1. Look up the [Chebyshev filter coefficients](#filter-coefficient-tables). From the table we get:
-    <p>\begin{align}
-    a_1 = 1.0650 \\
-    b_1 = 1.9305
-    \end{align}</p>
-
-1. Choose a capacitance for `\(C2\)`. This is rather arbitrary, but a good recommended starting range is something between `\(1-100nF\)`. Lets pick:
-    <p>\begin{align}
-    C2 = 10nF
-    \end{align}</p>
-
-1. Calculate the capacitance of `\(C1\)` from `\(Eq. \ref{eqn:c1geq}\)`:
-    <p>\begin{align}
-    C1 &\geq C2 \frac{4b_1}{a_1^2} \\
-        &\geq 10nF \frac{4\cdot1.9305}{1.0650^2} \\
-        &\geq 68.1nF
-    \end{align}</p>
-
-    Pick the next largest E12 value:
-
-    <p>\begin{align}
-    C1 = 82nF
-    \end{align}</p>
-
-1. Calculate `\(R1\)` and `\(R2\)` using `\(Eq. \ref{eqn:r1r2eq}\)`:
-    <p>\begin{align}
-    R1 &= \frac{a_1 C1 - \sqrt{(a_1 C1)^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2} \\
-        &= \frac{1.0650 \cdot 82nF - \sqrt{1.0650^2 \cdot 82nF^2 - 4 \cdot 1.9305 \cdot 10nF \cdot 82nF}}{4\pi \cdot 1kHz \cdot 10nF \cdot 82nF} \\
-        &= 4.98k\Omega
-    \end{align}</p>
-
-    <p>\begin{align}
-    R2 &= \frac{a_1 C2 + \sqrt{a_1^2 C2^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2} \\
-        &= \frac{1.0650 \cdot 82nF + \sqrt{1.0650^2 \cdot 82nF^2 - 4 \cdot 1.9305 \cdot 10nF \cdot 82nF}}{4\pi \cdot 1kHz \cdot 10nF \cdot 82nF} \\
-        &= 12.0k\Omega
-    \end{align}</p>
-
-    Pick the closest E96 values:
-    <p>\begin{align}
-    R1 = 4.99k\Omega \\
-    R2 = 12.1k\Omega
-    \end{align}</p>
-
-1. Build the circuit! It should look like this:
-    {{% figure src="low-pass-sallen-key-chebyshev-3db/schematic-print.svg" width="700px" caption="Schematic of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above." %}}
-1. And just good measure this was simulated, to make sure the response is as expected.
-
-    {{% figure src="low-pass-sallen-key-chebyshev-3db/response.png" width="700px" caption="Simulated response of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above." %}}
-
-### Dependence On Op-Amp Output Impedance
-
-A Sallen-Key filter is strongly dependent on the op-amp having a low output impedance. A op-amp's output impedance increases with increasing frequency, thus the performance of the Sallen-Key begins to suffer around the 50-500kHz range.
-
-This can be seen in the following bode plot for a 2nd-order low-pass Sallen-Key filter, with a cutoff frequency `\(f_c\)` of 1kHz:
-
-{{% figure src="low-pass-sallen-key-showing-gain-rise/annotated-plot.svg" width="600px" caption="Gain plot of a low-pass Sallen-Key filter showing the reversal to increasing again once a certain frequency is reached, owing to the increasing op-amp output impedance." %}}
-
 ## Voltage-Controlled Voltage-Source (VCVS) Filters
 
 Voltage-controlled voltage-source (VCVS) filters are an extension of the [Sallen-Key filter](#sallen-key-filters) (in that sense, the _Sallen-Key filter_ can be thought of as a simplification of the VCVS filter in where the voltage gain of the op-amp is set to one) in where standard resistor divider feedback is added between the op-amp's output and the inverting input, allowing the gain of the filter to be something other than `\(1\)`.
@@ -568,3 +464,4 @@ The PSoC microcontroller features an in-built and versatile digital filter block
 [^bib-sergio-franco-design-with-op-amps]:  Franco, Sergio. _Design With Operational Amplifiers And Analog Integrated Circuits_. Fourth Edition. McGraw-Hill Education. Copyright 2015.
 [^bib-wikipedia-elliptic-filter]: Wikipedia (2022, Jan 30). _Elliptic filter_. Retrieved 2022-09-20, from https://en.wikipedia.org/wiki/Elliptic_filter.
 [^bib-rutgers-elliptic-lecture-notes]: Sophocles J. Orfanidis (2006, Nov 20). _Lecture Notes on Elliptic Filter Design_. Rutgers University: Department of Electrical & Computer Engineering. Retrieved 2022-09-20, from https://www.ece.rutgers.edu/~orfanidi/ece521/notes.pdf.
+[^bib-analog-devices-ch8-analog-filters]: Analog Devices. _Chapter 8: Analog Filters_. Retrieved 2022-09-20, https://www.analog.com/media/en/training-seminars/design-handbooks/Basic-Linear-Design/Chapter8.pdf.
