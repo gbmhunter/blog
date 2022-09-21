@@ -24,9 +24,9 @@ It is closely related to a [voltage-controlled voltage source (VCVS) filter](#vo
 
 ## Low-Pass Sallen-Key Filter
 
-The schematic for a unity-gain low-pass Sallen-Key filter is shown below:
+The schematic for a low-pass Sallen-Key filter is shown below:
 
-{{% figure src="low-pass-sallen-key/low-pass-sallen-key.svg" width="700px" caption="The schematic for a unity-gain low-pass Sallen-Key filter." %}}
+{{% figure src="low-pass-sallen-key-filter-schematic.png" width="700px" caption="The schematic for a low-pass Sallen-Key filter." %}}
 
 It looks like 2 cascaded RC filters, except with the other terminal of the 1st capacitor connected to the op-amp's output rather than ground! What does this mean?
 
@@ -67,7 +67,7 @@ C1 \geq C2 \frac{4b_1}{a_1^2}
 \end{align}</p>
 
 {{% note %}}
-The choice of resistances effects the cut-off frequency, but the choice of capacitors does not.
+The choice of resistances affects the cut-off frequency, but the choice of capacitors does not.
 {{% /note %}}
 
 These equations give you enough info to calculate all the resistances and capacitors for a Sallen-Key filter. See the design example below to show how you would go about it.
@@ -129,6 +129,20 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
 
 </div>
 
+### Low-Pass Simplifications
+
+There are a range of different "simplifications" you can make to Sallen-Key filter design to make it easier to calculate the required resistances and capacitances for you desired cut-off frequency, Q and tuning[^bib-ti-active-low-pass-filter-design].
+
+#### Set Filter Components As Ratios
+
+The idea here is to define a new variable `\(m\)` which is the ratio of the resistances and a new variable `\(n\)` which is a ratio of the capacitances.
+
+So we define:
+
+<p>\begin{align}
+R_1 = mR,\ R_2 = R,\ C_1 = C,\ C_2 = nC \\
+\end{align}</p>
+
 ## High-Pass Sallen-Key Filter
 
 You can arrive at a high-pass Sallen-Key filter by switching the positions of the resistors and capacitors in a low-pass Sallen-Key filter (just like you can for passive RC filters). This gives you the following schematic:
@@ -158,20 +172,6 @@ A Sallen-Key filter is strongly dependent on the op-amp having a low output impe
 This can be seen in the following bode plot for a 2nd-order low-pass Sallen-Key filter, with a cutoff frequency `\(f_c\)` of 1kHz:
 
 {{% figure src="low-pass-sallen-key-showing-gain-rise/annotated-plot.svg" width="600px" caption="Gain plot of a low-pass Sallen-Key filter showing the reversal to increasing again once a certain frequency is reached, owing to the increasing op-amp output impedance." %}}
-
-## Simplifications
-
-There are a range of different "simplifications" you can make to Sallen-Key filter design to make it easier to calculate the required resistances and capacitances for you desired cut-off frequency, Q and tuning[^bib-ti-active-low-pass-filter-design].
-
-### Set Filter Components As Ratios
-
-The idea here is to define a new variable `\(m\)` which is the ratio of the resistances and a new variable `\(n\)` which is a ratio of the capacitances.
-
-So we define:
-
-<p>\begin{align}
-R_1 = mR,\ R_2 = R,\ C_1 = C,\ C_2 = nC \\
-\end{align}</p>
 
 ## Further Reading
 
