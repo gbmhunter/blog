@@ -4,7 +4,7 @@ categories: [ Electronics, Circuit Design ]
 date: 2013-01-03
 description:
 draft: false
-lastmod: 2022-09-20
+lastmod: 2022-09-21
 tags: [ electronics, circuit design, filters, active filters, low-pass, high-pass, bode plot, frequency response, Sallen-Key, voltage-controlled voltage source, VCVS, cutoff frequency ]
 title: Sallen-Key Filters
 type: page
@@ -44,10 +44,10 @@ The KiCad schematic for this simulation can be <a href="low-pass-sallen-key/low-
 
 {{% figure src="low-pass-sallen-key/response.png" width="800px" caption="The simulated gain (magnitude) and phase response of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz. The dotted line shows the cutoff frequency." %}}
 
-The transfer function:
+The transfer function for a 2nd-order low-pass Sallen-Key filter is:
 
 <p>\begin{align}
-\frac{v_{out}}{v_{in}} = \frac{\frac{1}{R1C1R2C2}}{s^2 + \left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)s + \frac{1}{R1C1R2C2}}
+H(s) &= \frac{\frac{1}{R1C1R2C2}}{s^2 + \left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)s + \frac{1}{R1C1R2C2}} \\
 \end{align}</p>
 
 The resistance of the resistors `\(R1\)` and `\(R2\)` are related to the capacitances and filter coefficients by the following equation:
@@ -66,18 +66,22 @@ To obtain real values under the square root, `\(C1\)` must obey the follow condi
 C1 \geq C2 \frac{4b_1}{a_1^2}
 \end{align}</p>
 
+{{% note %}}
+The choice of resistances effects the cut-off frequency, but the choice of capacitors does not.
+{{% /note %}}
+
 These equations give you enough info to calculate all the resistances and capacitors for a Sallen-Key filter. See the design example below to show how you would go about it.
 
 <div class="worked-example">
 
 **Design Example: 2nd-Order Low-Pass Unity-Gain 3dB-Chebyshev Sallen-Key Filter**
 
-The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Chebyshev 3dB ripple coefficients (this will give us a sharp transition from the passband to the stopband) and a corner frequency must be `\(f_c = 1kHz\)`.
+The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Chebyshev 3dB ripple coefficients (this will give us a sharp transition from the passband to the stopband) and a corner frequency of `\(f_c = 1kHz\)`.
 
-1. Look up the [Chebyshev filter coefficients](#filter-coefficient-tables). From the table we get:
+1. Look up the [Chebyshev filter coefficients](/electronics/circuit-design/analogue-filters/#filter-coefficient-tables). From the table we get:
     <p>\begin{align}
     a_1 = 1.0650 \\
-    b_1 = 1.9305
+    b_1 = 1.9305 \\
     \end{align}</p>
 
 1. Choose a capacitance for `\(C2\)`. This is rather arbitrary, but a good recommended starting range is something between `\(1-100nF\)`. Lets pick:
@@ -127,7 +131,25 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
 
 ## High-Pass Sallen-Key Filter
 
-TODO: Add info here.
+You can arrive at a high-pass Sallen-Key filter by switching the positions of the resistors and capacitors in a low-pass Sallen-Key filter (just like you can for passive RC filters). This gives you the following schematic:
+
+The transfer function for a 2nd-order high-pass Sallen-Key filter is[^bib-ti-2nd-order-sallen-key-high-pass]:
+
+<p>\begin{align}
+H(s) &= \frac{s^2}{s^2 + \left(\frac{1}{R2C1} + \frac{1}{R2C2}\right)s + \frac{1}{R1C1R2C2}} \\
+\end{align}</p>
+
+It is similar to the transfer function for the low-pass filter, except note:
+1. It's just `\(s^2\)` on the numerator.
+2. The coefficient for `\(s\)` on the denominator changes from `\(\left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)\)` to `\(\left(\frac{1}{R2C1} + \frac{1}{R2C2}\right)\)`.
+
+<div class="worked-example">
+
+**Design Example: 2nd-Order High-Pass Unity-Gain Butterworth Sallen-Key Filter**
+
+For the low-pass filter example we chose Chebyshev tunings, this time around we are going to use Butterworth tunings.
+
+</div>
 
 ## Dependence On Op-Amp Output Impedance
 
@@ -137,6 +159,26 @@ This can be seen in the following bode plot for a 2nd-order low-pass Sallen-Key 
 
 {{% figure src="low-pass-sallen-key-showing-gain-rise/annotated-plot.svg" width="600px" caption="Gain plot of a low-pass Sallen-Key filter showing the reversal to increasing again once a certain frequency is reached, owing to the increasing op-amp output impedance." %}}
 
+## Simplifications
+
+There are a range of different "simplifications" you can make to Sallen-Key filter design to make it easier to calculate the required resistances and capacitances for you desired cut-off frequency, Q and tuning[^bib-ti-active-low-pass-filter-design].
+
+### Set Filter Components As Ratios
+
+The idea here is to define a new variable `\(m\)` which is the ratio of the resistances and a new variable `\(n\)` which is a ratio of the capacitances.
+
+So we define:
+
+<p>\begin{align}
+R_1 = mR,\ R_2 = R,\ C_1 = C,\ C_2 = nC \\
+\end{align}</p>
+
+## Further Reading
+
+For general information on analogue filters, see the [Analogue Filters page](/electronics/circuit-design/analogue-filters/).
+
 ## References
 
 [^bib-analog-devices-ch8-analog-filters]: Analog Devices. _Chapter 8: Analog Filters_. Retrieved 2022-09-20, https://www.analog.com/media/en/training-seminars/design-handbooks/Basic-Linear-Design/Chapter8.pdf.
+[^bib-ti-2nd-order-sallen-key-high-pass]: Texas Instruments (2021, Jun). _SBOA225: Single-supply, 2nd-order, Sallen-Key high-pass filter circuit_. Retrieved 2022-09-21, from https://www.ti.com/lit/an/sboa225/sboa225.pdf.
+[^bib-ti-active-low-pass-filter-design]: Jim Karki (2002, Sep). _SLOA049B: Active Low-Pass Filter Design_. Texas Instruments. Retrieved 2022-09-21, from https://www.ti.com/lit/an/sloa049b/sloa049b.pdf.
