@@ -24,17 +24,15 @@ The Sallen-Key filter is closely related to a _voltage-controlled voltage source
 
 ## Low-Pass Sallen-Key Filter
 
-The schematic for a low-pass Sallen-Key filter is shown below:
+The schematic for a unity-gain low-pass Sallen-Key filter is shown below:
 
-{{% figure src="low-pass-sallen-key-filter-schematic.png" width="700px" caption="The schematic for a unity-gain low-pass Sallen-Key filter." %}}
+{{% figure src="low-pass-unity-gain-sallen-key-filter-schematic.png" width="700px" caption="The schematic for a unity-gain low-pass Sallen-Key filter." %}}
 
 It looks like 2 cascaded RC filters, except with the other terminal of the 1st capacitor connected to the op-amp's output rather than ground! What does this mean?
 
 {{% warning %}}
 Take note of labelling of the resistors and capacitors if reading other material on Sallen-Key filters, there is no one popular convention as the resistor and capacitor orders are switched frequently.
 {{% /warning %}}
-
-A Sallen-Key filter has a gain which begins to increase again after a certain frequency in the stop band.
 
 We will simulate the response of a Sallen-Key filter designed with a cutoff frequency of 1kHz. Below is the KiCad schematic used for the simulation:
 
@@ -231,7 +229,7 @@ a_1 &= 1.414 \\
 
 ## Dependence On Op-Amp Output Impedance
 
-A Sallen-Key filter is strongly dependent on the op-amp having a low output impedance. A op-amp's output impedance increases with increasing frequency, thus the performance of the Sallen-Key begins to suffer around the 50-500kHz range.
+A Sallen-Key filter is strongly dependent on the op-amp having a low output impedance. A op-amp's output impedance increases with increasing frequency, thus the performance of the Sallen-Key begins to suffer around the 50-500kHz range. **Thus the gain which begins to increase again after a certain frequency in the stop band**.
 
 This can be seen in the following bode plot for a 2nd-order low-pass Sallen-Key filter, with a cutoff frequency `\(f_c\)` of 1kHz:
 
