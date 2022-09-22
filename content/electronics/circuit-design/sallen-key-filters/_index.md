@@ -20,13 +20,13 @@ The performance of a Sallen-Key filters does not depend that much on the perform
 
 One disadvantage of the Sallen-Key filter is that the Q of the filter is very sensitive to component variations, which can be a problem, especially for high-Q filter sections.
 
-It is closely related to a [voltage-controlled voltage source (VCVS) filter](#voltage-controlled-voltage-source-vcvs-filters). Some literature makes the distinction of a Sallen-Key filter having no gain, and the VCVS filter including gain by connected a resistor divider from the output to the inverting terminal of the op-amp. However we will consider them one and the same for the purpose of analysis, as the no-gain version is a special subtype of the generalized with-gain version.
+The Sallen-Key filter is closely related to a _voltage-controlled voltage source (VCVS)_ filter. Some literature makes the distinction of a Sallen-Key filter having unity gain, and the VCVS filter including non-unity gain by connecting a resistor divider from the output to the inverting terminal of the op-amp. However we will consider them one and the same for the purpose of analysis, as the unity-gain version is a special subtype of the generalized with-gain version.
 
 ## Low-Pass Sallen-Key Filter
 
 The schematic for a low-pass Sallen-Key filter is shown below:
 
-{{% figure src="low-pass-sallen-key-filter-schematic.png" width="700px" caption="The schematic for a low-pass Sallen-Key filter." %}}
+{{% figure src="low-pass-sallen-key-filter-schematic.png" width="700px" caption="The schematic for a unity-gain low-pass Sallen-Key filter." %}}
 
 It looks like 2 cascaded RC filters, except with the other terminal of the 1st capacitor connected to the op-amp's output rather than ground! What does this mean?
 
@@ -81,7 +81,7 @@ There are a range of different "simplifications" you can make to Sallen-Key filt
 
 #### Set Filter Components As Ratios
 
-The idea here is to define a new variable `\(m\)` which is the ratio of the resistances and a new variable `\(n\)` which is a ratio of the capacitances.
+The idea here is to define a new variable `\(m\)` which is the ratio of the resistances and a new variable `\(n\)` which is a ratio of the capacitances. **This is the most basic of simplifications**, and actually doesn't impose any restrictions on any of the values.
 
 So we define:
 
@@ -92,11 +92,23 @@ R_1 = mR,\ R_2 = R,\ C_1 = C,\ C_2 = nC \\
 This simplifies the cut-off frequency and quality factor equations to:
 
 <p>\begin{align}
-f_c &= \frac{1}{2\pi RC\sqrt{mn}}
-Q   &= \frac{\sqrt{mn}}{m + 1 + mn(1 - K)}
+f_c &= \frac{1}{2\pi RC\sqrt{mn}} \\
+Q   &= \frac{\sqrt{mn}}{m + 1 + mn(1 - K)} \\
 \end{align}</p>
 
-Firstly, you decide on a desired gain `\(K\)`, quality factor `\(Q\)` and cut-off frequency `\(f_c\)`. Then
+Firstly, you decide on a desired gain `\(K\)` and quality factor `\(Q\)`. Then chose a ratio `\(n\)` for the capacitors, for example `\(1\)`. This will allow you to calculate `\(m\)` using the equation for the quality factor.
+
+With arbitrary `\(K\)`, `\(Q\)` and `\(n\)`, solving the quality factor equation for `\m\)` gives something truly horrible (I got [Wolfram Alpha to solve this one](https://www.wolframalpha.com/input?i=solve+Q%3Dsqrt%28m+n%29%2F%28m+%2B+1+%2B+m+n%281+-+K%29%29+for+m) for me):
+
+<p>\begin{align}
+m = \frac{2 K n Q^2 - \sqrt{n} \sqrt{4 K n Q^2 - 4 n Q^2 + n - 4 Q^2} - 2 n Q^2 + n - 2 Q^2)}{(2 Q^2 (K^2 n^2 - 2 K n^2 - 2 K n + n^2 + 2 n + 1)}
+\end{align}</p>
+
+Lastly, decide on your cut-off frequency `\(f_c\)` and then you can calculate `\(R\)` using the cut-off frequency equation.
+
+<p>\begin{align}
+R &= \frac{1}{2\pi f_c C\sqrt{mn}} \\
+\end{align}</p>
 
 ### Tuning Based Design
 
