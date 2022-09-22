@@ -20,7 +20,7 @@ The performance of a Sallen-Key filters does not depend that much on the perform
 
 One disadvantage of the Sallen-Key filter is that the Q of the filter is very sensitive to component variations, which can be a problem, especially for high-Q filter sections.
 
-It is closely related to a [voltage-controlled voltage source (VCVS) filter](#voltage-controlled-voltage-source-vcvs-filters), however the VCVS filter also includes gain by connected a resistor divider from the output to the inverting terminal of the op-amp.
+It is closely related to a [voltage-controlled voltage source (VCVS) filter](#voltage-controlled-voltage-source-vcvs-filters). Some literature makes the distinction of a Sallen-Key filter having no gain, and the VCVS filter including gain by connected a resistor divider from the output to the inverting terminal of the op-amp. However we will consider them one and the same for the purpose of analysis, as the no-gain version is a special subtype of the generalized with-gain version.
 
 ## Low-Pass Sallen-Key Filter
 
@@ -44,11 +44,63 @@ The KiCad schematic for this simulation can be <a href="low-pass-sallen-key/low-
 
 {{% figure src="low-pass-sallen-key/response.png" width="800px" caption="The simulated gain (magnitude) and phase response of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz. The dotted line shows the cutoff frequency." %}}
 
-The transfer function for a 2nd-order low-pass Sallen-Key filter is:
+The generalized transfer function for a 2nd-order low-pass filter is[^bib-ti-analysis-of-sallen-key-arch]:
 
 <p>\begin{align}
-H(s) &= \frac{\frac{1}{R1C1R2C2}}{s^2 + \left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)s + \frac{1}{R1C1R2C2}} \\
+H(f) &= \frac{K}{-\left( \frac{f}{f_c} \right)^2 + \frac{jf}{Qf_c} + 1} \\
 \end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(K\) is the gain factor<br/>
+\(f_c\) is the cut-off frequency in Hertz [\(Hz\)]<br/>
+\(Q\) is the quality factor<br/>
+</p>
+
+The transfer function for a 2nd-order low-pass Sallen-Key filter is[^bib-ti-analysis-of-sallen-key-arch]:
+
+<p>\begin{align}
+H(s) &= \frac{K}{(R1R2C1C2)s^2 + (R1C1 + R2C1 + R1C2(1 - K))s + 1} \\
+\end{align}</p>
+
+The cut-off frequency is:
+
+<p>\begin{align}
+f_c = \frac{1}{2\pi \sqrt{R1R2C1C2}}
+\end{align}</p>
+
+and the quality factor is:
+
+<p>\begin{align}
+Q = \frac{\sqrt{R1R2C1C2}}{R1C1 + R2C1 + R1C2(1 - K)}
+\end{align}</p>
+
+### Low-Pass Simplifications
+
+There are a range of different "simplifications" you can make to Sallen-Key filter design to make it easier to calculate the required resistances and capacitances for you desired cut-off frequency, Q and tuning[^bib-ti-active-low-pass-filter-design].
+
+#### Set Filter Components As Ratios
+
+The idea here is to define a new variable `\(m\)` which is the ratio of the resistances and a new variable `\(n\)` which is a ratio of the capacitances.
+
+So we define:
+
+<p>\begin{align}
+R_1 = mR,\ R_2 = R,\ C_1 = C,\ C_2 = nC \\
+\end{align}</p>
+
+This simplifies the cut-off frequency and quality factor equations to:
+
+<p>\begin{align}
+f_c &= \frac{1}{2\pi RC\sqrt{mn}}
+Q   &= \frac{\sqrt{mn}}{m + 1 + mn(1 - K)}
+\end{align}</p>
+
+Firstly, you decide on a desired gain `\(K\)`, quality factor `\(Q\)` and cut-off frequency `\(f_c\)`. Then
+
+### Tuning Based Design
+
+You can design a Sallen-Key filter based of a particular filter tuning and it's coefficients, this is an alternative to choosing the quality factor and gain yourself. Given the filter tuning coefficients `\(a_0\)` and `\(a_1\)` and desired cut-off frequency `\(f_c\)` you can then calculate the required resistances and capacitances.
 
 The resistance of the resistors `\(R1\)` and `\(R2\)` are related to the capacitances and filter coefficients by the following equation:
 
@@ -129,20 +181,6 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
 
 </div>
 
-### Low-Pass Simplifications
-
-There are a range of different "simplifications" you can make to Sallen-Key filter design to make it easier to calculate the required resistances and capacitances for you desired cut-off frequency, Q and tuning[^bib-ti-active-low-pass-filter-design].
-
-#### Set Filter Components As Ratios
-
-The idea here is to define a new variable `\(m\)` which is the ratio of the resistances and a new variable `\(n\)` which is a ratio of the capacitances.
-
-So we define:
-
-<p>\begin{align}
-R_1 = mR,\ R_2 = R,\ C_1 = C,\ C_2 = nC \\
-\end{align}</p>
-
 ## High-Pass Sallen-Key Filter
 
 You can arrive at a high-pass Sallen-Key filter by switching the positions of the resistors and capacitors in a low-pass Sallen-Key filter (just like you can for passive RC filters). This gives you the following schematic:
@@ -157,11 +195,25 @@ It is similar to the transfer function for the low-pass filter, except note:
 1. It's just `\(s^2\)` on the numerator.
 2. The coefficient for `\(s\)` on the denominator changes from `\(\left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)\)` to `\(\left(\frac{1}{R2C1} + \frac{1}{R2C2}\right)\)`.
 
+This means our filter coefficients `\(a_0\)` and `\(a_1\)` are:
+
+<p>\begin{align}
+a_0 &= \frac{1}{R1 \times R2 \times C1 \times C2} \\
+a_1 &= \frac{1}{R2 \times C1} + \frac{1}{R2 \times C2} \\
+\end{align}</p>
+
 <div class="worked-example">
 
 **Design Example: 2nd-Order High-Pass Unity-Gain Butterworth Sallen-Key Filter**
 
 For the low-pass filter example we chose Chebyshev tunings, this time around we are going to use Butterworth tunings.
+
+From the table, the Butterworth coefficients are:
+
+<p>\begin{align}
+a_0 &= 1 \\
+a_1 &= 1.414 \\
+\end{align}</p>
 
 </div>
 
@@ -177,8 +229,15 @@ This can be seen in the following bode plot for a 2nd-order low-pass Sallen-Key 
 
 For general information on analogue filters, see the [Analogue Filters page](/electronics/circuit-design/analogue-filters/).
 
+## Old
+
+<p>\begin{align}
+H(s) &= \frac{\frac{1}{R1C1R2C2}}{s^2 + \left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)s + \frac{1}{R1C1R2C2}} \\
+\end{align}</p>
+
 ## References
 
 [^bib-analog-devices-ch8-analog-filters]: Analog Devices. _Chapter 8: Analog Filters_. Retrieved 2022-09-20, https://www.analog.com/media/en/training-seminars/design-handbooks/Basic-Linear-Design/Chapter8.pdf.
 [^bib-ti-2nd-order-sallen-key-high-pass]: Texas Instruments (2021, Jun). _SBOA225: Single-supply, 2nd-order, Sallen-Key high-pass filter circuit_. Retrieved 2022-09-21, from https://www.ti.com/lit/an/sboa225/sboa225.pdf.
 [^bib-ti-active-low-pass-filter-design]: Jim Karki (2002, Sep). _SLOA049B: Active Low-Pass Filter Design_. Texas Instruments. Retrieved 2022-09-21, from https://www.ti.com/lit/an/sloa049b/sloa049b.pdf.
+[^bib-ti-analysis-of-sallen-key-arch]: James Karki (1999, Jul). _SLOA024B: Analysis of the Sallen-Key Architecture (Application Report)_. Texas Instruments. Retrieved 2022-09-22, from https://www.ti.com/lit/an/sloa024b/sloa024b.pdf.
