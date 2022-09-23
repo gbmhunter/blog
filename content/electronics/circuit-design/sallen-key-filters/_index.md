@@ -73,6 +73,13 @@ and the quality factor is:
 Q = \frac{\sqrt{R1R2C1C2}}{R1C1 + R2C1 + R1C2(1 - K)}
 \end{align}</p>
 
+The gain equation is the same as for an non-inverting amplifier:
+
+<p>\begin{align}
+\label{eq:gain-eq}
+K = 1 + \frac{R3}{R4}
+\end{align}</p>
+
 ### Low-Pass Simplifications
 
 There are a range of different "simplifications" you can make to Sallen-Key filter design to make it easier to calculate the required resistances and capacitances for you desired cut-off frequency, Q and tuning[^bib-ti-active-low-pass-filter-design].
@@ -91,22 +98,95 @@ This simplifies the cut-off frequency and quality factor equations to:
 
 <p>\begin{align}
 f_c &= \frac{1}{2\pi RC\sqrt{mn}} \\
+\label{eq:quality-factor-m-n}
 Q   &= \frac{\sqrt{mn}}{m + 1 + mn(1 - K)} \\
 \end{align}</p>
 
 Firstly, you decide on a desired gain `\(K\)` and quality factor `\(Q\)`. Then chose a ratio `\(n\)` for the capacitors, for example `\(1\)`. This will allow you to calculate `\(m\)` using the equation for the quality factor.
 
-With arbitrary `\(K\)`, `\(Q\)` and `\(n\)`, solving the quality factor equation for `\m\)` gives something truly horrible (I got [Wolfram Alpha to solve this one](https://www.wolframalpha.com/input?i=solve+Q%3Dsqrt%28m+n%29%2F%28m+%2B+1+%2B+m+n%281+-+K%29%29+for+m) for me):
+With arbitrary `\(K\)`, `\(Q\)` and `\(n\)`, solving the quality factor equation for `\(m\)` gives something truly horrible (I cheated and got [Wolfram Alpha to solve this one](https://www.wolframalpha.com/input?i=solve+Q%3Dsqrt%28m+n%29%2F%28m+%2B+1+%2B+m+n%281+-+K%29%29+for+m) for me):
 
 <p>\begin{align}
-m = \frac{2 K n Q^2 - \sqrt{n} \sqrt{4 K n Q^2 - 4 n Q^2 + n - 4 Q^2} - 2 n Q^2 + n - 2 Q^2)}{(2 Q^2 (K^2 n^2 - 2 K n^2 - 2 K n + n^2 + 2 n + 1)}
+m = \frac{2 K n Q^2 \pm \sqrt{n} \sqrt{4 K n Q^2 - 4 n Q^2 + n - 4 Q^2} - 2 n Q^2 + n - 2 Q^2}{2 Q^2 (K^2 n^2 - 2 K n^2 - 2 K n + n^2 + 2 n + 1)}
 \end{align}</p>
 
 Lastly, decide on your cut-off frequency `\(f_c\)` and then you can calculate `\(R\)` using the cut-off frequency equation.
 
 <p>\begin{align}
+\label{eq:r-cutoff-freq}
 R &= \frac{1}{2\pi f_c C\sqrt{mn}} \\
 \end{align}</p>
+
+<div class="worked-example">
+
+**Design Example: Low-Pass K=5, Q=1 Sallen-Key Filter Using mn Ratios**
+
+Design goals:
+
+* Cut-off frequency `\(f_c = 10kHz\)`
+* Gain `\(K = 5\)`
+* Quality factor `\(Q= 1\)`
+
+Let's first calculate the ratios of resistances and capacitances, `\(m\)` and `\(n\)`. We get to choose `\(n\)`, so let's go with `\(n = 1\)` to simplify things. Substituting values into `\(Eq.\ \ref{eq:quality-factor-m-n}\)` gives us:
+
+<p>\begin{align}
+1 &= \frac{\sqrt{m}}{-3m + 1} \nonumber \\
+\sqrt{m} &= -3m + 1 \nonumber \\
+m &= 9m^2 -6m + 1 \nonumber \\
+9m^2 -7m + 1 = 0 \nonumber \\
+\end{align}</p>
+
+We can use the quadratic equation to find the two solutions for `\(m\)`. Only one of them is gives a real number for `\(m\)` since the initial square root forces `\(m\)` to be positive. Thus:
+
+<p>\begin{align}
+m = 0.189 \nonumber \\
+\end{align}</p>
+
+We have the freedom to choose `\(C\)`, and because `\(n = 1\)`, `\(C1 = C2 = C\)`. Let's choose `\(C = 10nF\)`, and therefore:
+
+<p>\begin{align}
+C1 &= 10nF \nonumber \\
+C2 &= 10nF \nonumber \\
+\end{align}</p>
+
+Using `\(Eq.\ \ref{eq:r-cutoff-freq}\)`, we can now find `\(R\)`:
+
+<p>\begin{align}
+R &= \frac{1}{2\pi f_c C\sqrt{mn}} \nonumber \\
+  &= \frac{1}{2\pi 10kHz \times 10nF \sqrt{0.189}} \nonumber \\
+  &= 3.66k\Omega \nonumber \\
+\end{align}</p>
+
+Choosing the closest E96 value for `\(R2\)`, and calculating `\(R1\)`:
+
+<p>\begin{align}
+R2 &= R \nonumber \\
+   &= 3.65k\Omega\ (E96) \nonumber \\
+R1 &= mR \nonumber \\
+   &= 0.189 \times 3.66k\Omega \nonumber \\
+   &= 692\Omega \nonumber \\
+   &= 698\Omega\ (E96) \nonumber \\
+\end{align}</p>
+
+Lastly, we can calculate the values of the gain resistors. Choose a value for `\(R4=1k\Omega\)`. Then using `\(Eq.\ \ref{eq:gain-eq}\)` we can find `\(R3\)`:
+
+<p>\begin{align}
+K &= 1 + \frac{R3}{R4} \nonumber \\
+R3 &= (K - 1)R4 \nonumber \\
+   &= (5 - 1) \times 1k\Omega \nonumber \\
+   &= 4k\Omega \nonumber \\
+   &= 4.02k\Omega\ (E96) \nonumber \\
+\end{align}</p>
+
+All done! Our finished schematic looks like this:
+
+{{% figure src="low-pass-sallen-key-mn-ratios/low-pass-sallen-key-mn-ratios-schematic.png" width="500px" caption="The finished schematic of the low-pass Sallen-Key filter designed using the mn ratio technique." %}}
+
+The simulated frequency and phase response for this circuit is shown below.
+
+{{% figure src="low-pass-sallen-key-mn-ratios/low-pass-sallen-key-mn-ratios-bode-plot.png" width="700px" caption="The simulated bode plots for the low-pass Sallen-Key filter designed using the mn ratio technique." %}}
+
+</div>
 
 ### Tuning Based Design
 

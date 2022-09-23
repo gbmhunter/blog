@@ -1440,4 +1440,5 @@ span.con {
 .worked-example {
     background-color: var(--main-color-light);
     padding: 1em; // Padding based on em, not px, so is responsive?
+    margin-bottom: 1em; // Add space at the bottom so the next heading/paragraph e.t.c does not collide with it
 }
