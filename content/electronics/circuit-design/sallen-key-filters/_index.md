@@ -24,7 +24,11 @@ The Sallen-Key filter is closely related to a _voltage-controlled voltage source
 
 ## Low-Pass Sallen-Key Filter
 
-The schematic for a unity-gain low-pass Sallen-Key filter is shown below:
+The schematic for a variable-gain low-pass Sallen-Key filter (a.k.a. VCVS filter) is shown below.
+
+{{% figure src="low-pass-variable-gain-sallen-key-filter-schematic.png" width="700px" caption="The schematic for a variable-gain low-pass Sallen-Key filter." %}}
+
+The schematic for the unity-gain low-pass Sallen-Key filter is shown below. Note the removal of `\(R3\)` and `\(R4\)`, the output is instead directly fed into the inverting input of the op-amp, just like when using an op-amp as a buffer.
 
 {{% figure src="low-pass-unity-gain-sallen-key-filter-schematic.png" width="700px" caption="The schematic for a unity-gain low-pass Sallen-Key filter." %}}
 
@@ -33,14 +37,6 @@ It looks like 2 cascaded RC filters, except with the other terminal of the 1st c
 {{% warning %}}
 Take note of labelling of the resistors and capacitors if reading other material on Sallen-Key filters, there is no one popular convention as the resistor and capacitor orders are switched frequently.
 {{% /warning %}}
-
-We will simulate the response of a Sallen-Key filter designed with a cutoff frequency of 1kHz. Below is the KiCad schematic used for the simulation:
-
-{{% figure src="low-pass-sallen-key/low-pass-sallen-key-simulation-schematic.png" width="800px" caption="Simulation schematics of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz." %}}
-
-The KiCad schematic for this simulation can be <a href="low-pass-sallen-key/low-pass-sallen-key.sch" download>downloaded here</a>. The simulated gain (magnitude) and phase response is shown below.
-
-{{% figure src="low-pass-sallen-key/response.png" width="800px" caption="The simulated gain (magnitude) and phase response of a low-pass Sallen-Key filter designed for a cutoff frequency of 1kHz. The dotted line shows the cutoff frequency." %}}
 
 The generalized transfer function for a 2nd-order low-pass filter is[^bib-ti-analysis-of-sallen-key-arch]:
 
@@ -80,13 +76,15 @@ The gain equation is the same as for an non-inverting amplifier:
 K = 1 + \frac{R3}{R4}
 \end{align}</p>
 
-### Low-Pass Simplifications
 
-There are a range of different "simplifications" you can make to Sallen-Key filter design to make it easier to calculate the required resistances and capacitances for you desired cut-off frequency, Q and tuning[^bib-ti-active-low-pass-filter-design].
 
-#### Set Filter Components As Ratios
+### How To Calculate Component Values
 
-The idea here is to define a new variable `\(m\)` which is the ratio of the resistances and a new variable `\(n\)` which is a ratio of the capacitances. **This is the most basic of simplifications**, and actually doesn't impose any restrictions on any of the values.
+https://www.analog.com/media/en/training-seminars/design-handbooks/Basic-Linear-Design/Chapter8.pdf
+
+#### Setting Filter Components As Ratios
+
+The idea here is to define a new variable `\(m\)` which is the ratio of the resistances and a new variable `\(n\)` which is a ratio of the capacitances.
 
 So we define:
 
@@ -116,6 +114,8 @@ Lastly, decide on your cut-off frequency `\(f_c\)` and then you can calculate `\
 \label{eq:r-cutoff-freq}
 R &= \frac{1}{2\pi f_c C\sqrt{mn}} \\
 \end{align}</p>
+
+The process can be simplified even more, by setting `\(n = 1\)`. This makes both capacitors equal.
 
 <div class="worked-example">
 
@@ -185,6 +185,8 @@ All done! Our finished schematic looks like this:
 The simulated frequency and phase response for this circuit is shown below.
 
 {{% figure src="low-pass-sallen-key-mn-ratios/low-pass-sallen-key-mn-ratios-bode-plot.png" width="700px" caption="The simulated bode plots for the low-pass Sallen-Key filter designed using the mn ratio technique." %}}
+
+We chose a `\(Q\)` above 0.707, so we expect some peaking in the gain response around cut-off.
 
 </div>
 
@@ -275,35 +277,77 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
 
 You can arrive at a high-pass Sallen-Key filter by switching the positions of the resistors and capacitors in a low-pass Sallen-Key filter (just like you can for passive RC filters). This gives you the following schematic:
 
-The transfer function for a 2nd-order high-pass Sallen-Key filter is[^bib-ti-2nd-order-sallen-key-high-pass]:
+TODO: Add schematic
+
+The transfer function for a variable-gain high-pass Sallen-Key filter is[^bib-analog-devices-ch8-analog-filters]:
 
 <p>\begin{align}
-H(s) &= \frac{s^2}{s^2 + \left(\frac{1}{R2C1} + \frac{1}{R2C2}\right)s + \frac{1}{R1C1R2C2}} \\
+H(s) &= \frac{Ks^2}{s^2 + \left( \dfrac{\frac{C2}{R2} + \frac{C1}{R2} + (1-K)\frac{C2}{R1}}{C1C2} \right)s + \dfrac{1}{R1C1R2C2}} \\
 \end{align}</p>
 
-It is similar to the transfer function for the low-pass filter, except note:
+If you are using the unity-gain op-amp (no `\(R3\)` or `\(R4\)`), the transfer function simplifies to[^bib-ti-2nd-order-sallen-key-high-pass]:
+
+<p>\begin{align}
+H(s) &= \frac{s^2}{s^2 + \left(\dfrac{1}{R2C1} + \dfrac{1}{R2C2}\right)s + \dfrac{1}{R1C1R2C2}} \\
+\end{align}</p>
+
+This unity-gain transfer function is similar to the unity-gain transfer function for the low-pass filter, except note:
 1. It's just `\(s^2\)` on the numerator.
 2. The coefficient for `\(s\)` on the denominator changes from `\(\left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)\)` to `\(\left(\frac{1}{R2C1} + \frac{1}{R2C2}\right)\)`.
 
-This means our filter coefficients `\(a_0\)` and `\(a_1\)` are:
+This means our unity-gain filter coefficients `\(a_0\)` and `\(a_1\)` are:
 
 <p>\begin{align}
 a_0 &= \frac{1}{R1 \times R2 \times C1 \times C2} \\
 a_1 &= \frac{1}{R2 \times C1} + \frac{1}{R2 \times C2} \\
 \end{align}</p>
 
+### How To Calculate Component Values
+
+This design process assumes the following inputs:
+
+* Cut-off frequency `\(f_c\)`
+* Quality factor `\(Q\)`
+* Gain `\(K\)`
+
+This process is based of [Basic Linear Design: Chapter 8 - Page 8.90](https://www.analog.com/media/en/training-seminars/design-handbooks/Basic-Linear-Design/Chapter8.pdf).
+
+Choose `\(C1\)`. Set `\(C2\)` to the same value.
+
+Then calculate an intermediary variable `\(k\)`, with:
+
+<p>\begin{align}
+k = 2\pi f_c C1 \\
+\end{align}</p>
+
+{{% warning %}}
+Make sure not to confuse this intermediary variable `\(k\)` with the gain `\(K\)`.
+{{% /warning %}}
+
+Find `\(\alpha\)`:
+
+<p>\begin{align}
+\alpha = \frac{1}{Q} \\
+\end{align}</p>
+
+`\(R1\)` and `\(R2\)` are then:
+
+<p>\begin{align}
+R1 &= \frac{\alpha + \sqrt{\alpha^2 + (K - 1)}}{4k} \\
+R2 &= \frac{4}{\alpha + \sqrt{\alpha^2 + (K - 1)}} \times \frac{1}{k} \\
+\end{align}</p>
+
+
+
+
+
+
+
 <div class="worked-example">
 
 **Design Example: 2nd-Order High-Pass Unity-Gain Butterworth Sallen-Key Filter**
 
-For the low-pass filter example we chose Chebyshev tunings, this time around we are going to use Butterworth tunings.
 
-From the table, the Butterworth coefficients are:
-
-<p>\begin{align}
-a_0 &= 1 \\
-a_1 &= 1.414 \\
-\end{align}</p>
 
 </div>
 
