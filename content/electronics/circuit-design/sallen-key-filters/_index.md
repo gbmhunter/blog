@@ -279,7 +279,13 @@ You can arrive at a high-pass Sallen-Key filter by switching the positions of th
 
 {{% figure src="high-pass-variable-gain-sallen-key-filter-schematic.png" width="600px" caption="Schematic of a variable-gain high-pass Sallen-Key filter." %}}
 
-The transfer function for a variable-gain high-pass Sallen-Key filter is[^bib-analog-devices-ch8-analog-filters]:
+The general form of the transfer function for a second order high-pass filter is[^bib-analog-devices-ch8-analog-filters]:
+
+<p>\begin{align}
+H(s) = \frac{Ks^2}{s^2 + \alpha \omega_0 s + \omega_0^2} \\
+\end{align}</p>
+
+Using Ohm's law and Kirchhoff's current/voltage laws, we can write the equivalent transfer function for a variable-gain high-pass Sallen-Key filter, in terms of the resistances and capacitances[^bib-analog-devices-ch8-analog-filters]:
 
 <p>\begin{align}
 H(s) &= \frac{Ks^2}{s^2 + \left( \dfrac{\frac{C2}{R2} + \frac{C1}{R2} + (1-K)\frac{C2}{R1}}{C1C2} \right)s + \dfrac{1}{R1C1R2C2}} \\
@@ -324,7 +330,7 @@ k = 2\pi f_c C1 \\
 Make sure not to confuse this intermediary variable `\(k\)` with the gain `\(K\)`.
 {{% /warning %}}
 
-Find `\(\alpha\)`:
+Find `\(\alpha\)`, which by definition is the inverse of the quality factor:
 
 <p>\begin{align}
 \alpha = \frac{1}{Q} \\
@@ -338,16 +344,47 @@ R2 &= \frac{4}{\alpha + \sqrt{\alpha^2 + (K - 1)}} \times \frac{1}{k} \\
 \end{align}</p>
 
 
-
-
-
-
-
 <div class="worked-example">
 
-**Design Example: 2nd-Order High-Pass Unity-Gain Butterworth Sallen-Key Filter**
+**Design Example: High-Pass Sallen-Key Filter With fc=20kHz, Q=1.5, K=4**
 
+Inputs:
 
+* Cut-off frequency of `\(f_c = 20kHz\)`
+* Quality factor of `\(Q = 1.5\)`
+* Pass-band gain of `\(K=4\)`
+
+1. Firstly, choose the two capacitances to be equal and within a sensible range. `\(C_1 = C_2 = 10nF\)`.
+
+1. Calculate the intermediary `\(k\)` variable:
+    <p>\begin{align}
+    k &= 2\pi f_c C_1 \nonumber \\
+      &= 2\pi \times 20kHz \times 10nF \nonumber \\
+      &= 1.26\times 10^{-3} \nonumber \\
+    \end{align}</p>
+
+1. Calculate `\(\alpha\)`:
+    <p>\begin{align}
+    \alpha &= \frac{1}{Q} \nonumber \\
+           &= \frac{1}{1.5} \nonumber \\
+           &= 0.667 \nonumber \\
+    \end{align}</p>
+
+1. Calculate `\(R_1\)` and `\(R_2\)`:
+    <p>\begin{align}
+    R_1 &= \frac{\alpha + \sqrt{\alpha^2 + (K - 1)}}{4k} \nonumber \\
+        &= \frac{0.667 + \sqrt{0.667^2 + (4 - 1)}}{4\times 1.26\times 10^{-3}} \nonumber \\
+        &= 502\Omega \nonumber \\
+        &= 499\Omega\ (E96) \nonumber \\
+    R_2 &= \frac{4}{\alpha + \sqrt{\alpha^2 + (K - 1)}} \times \frac{1}{k} \nonumber \\
+        &= \frac{4}{0.667 + \sqrt{0.667^2 + (4 - 1)}} \times \frac{1}{1.26\times 10^{-3}} \nonumber \\
+        &= 1.26k\Omega \nonumber \\
+        &= 1.27k\Omega\ (E96) \nonumber \\
+    \end{align}</p>
+
+1. Done!
+
+1. TODO: Add schematic and sim results.
 
 </div>
 
