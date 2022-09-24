@@ -277,7 +277,7 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
 
 You can arrive at a high-pass Sallen-Key filter by switching the positions of the resistors and capacitors in a low-pass Sallen-Key filter (just like you can for passive RC filters). This gives you the following schematic:
 
-TODO: Add schematic
+{{% figure src="high-pass-variable-gain-sallen-key-filter-schematic.png" width="600px" caption="Schematic of a variable-gain high-pass Sallen-Key filter." %}}
 
 The transfer function for a variable-gain high-pass Sallen-Key filter is[^bib-analog-devices-ch8-analog-filters]:
 
