@@ -382,6 +382,15 @@ Inputs:
         &= 1.27k\Omega\ (E96) \nonumber \\
     \end{align}</p>
 
+1. Choose `\(R_4 = 1k\Omega\)`. Then calculate `\(R_3\)`:
+    <p>\begin{align}
+    R_3 &= R_4 (K - 1) \nonumber \\
+        &= 1k\Omega (4 - 1) \nonumber \\
+        &= 3k\Omega \nonumber \\
+        &= 3.01k\Omega\ (E96) \nonumber \\
+    \end{align}</p>
+
+
 1. Done!
 
 1. TODO: Add schematic and sim results.
