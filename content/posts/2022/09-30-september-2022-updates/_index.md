@@ -31,3 +31,5 @@ type: "post"
 * Moved the info on Sallen-Key filters into it's own page.
 
 * Moved the _PCB Design->PCB Manufacturing And Assembly Considerations_ page to _Electronics->Circuit Design->The Schematic And PCB Design Guide_.
+
+* Added a new page on [Switched Integrator ICs](/electronics/components/switched-integrator-ics/).

@@ -12,7 +12,7 @@ type: page
 
 ## Overview
 
-The Sallen-Key filter is one of the **most popular active 2nd-order analogue filters**[^bib-analog-devices-ch8-analog-filters]. It can be configured as a low-pass, high-pass, band-pass or band-stop filter. Also called a _Sallen and Key_ filter. It was first introduced in 1955 by R.P. Sallen and E.L. Key of MIT's Lincoln Labs, whose last names give this filter it's name.
+The Sallen-Key filter is one of the **most popular active 2nd-order analogue filters topologies**[^bib-analog-devices-ch8-analog-filters]. It can be configured as a low-pass, high-pass, band-pass or band-stop filter. Also called a _Sallen and Key_ filter. It was first introduced in 1955 by R.P. Sallen and E.L. Key of MIT's Lincoln Labs, whose last names give this filter it's name. It is a _filter topology_, and defines the components and connections between them to realize a 2nd order filter. Various _filter tunings_ such as Butterworth, Bessel and Chebyshev can be implemented using the Sallen-Key topology. 
 
 It has low _component spread_ (low ratios of highest to lowest capacitor and resistor values). It also has a high input impedance and low output impedance, allowing for multiple filters to be chained together without intermediary buffers.
 
@@ -20,7 +20,9 @@ The performance of a Sallen-Key filters does not depend that much on the perform
 
 One disadvantage of the Sallen-Key filter is that the Q of the filter is very sensitive to component variations, which can be a problem, especially for high-Q filter sections.
 
-The Sallen-Key filter is closely related to a _voltage-controlled voltage source (VCVS)_ filter. Some literature makes the distinction of a Sallen-Key filter having unity gain, and the VCVS filter including non-unity gain by connecting a resistor divider from the output to the inverting terminal of the op-amp. However we will consider them one and the same for the purpose of analysis, as the unity-gain version is a special subtype of the generalized with-gain version.
+The Sallen-Key filter is closely related to a _voltage-controlled voltage source (VCVS)_ filter. Some literature makes the distinction of a Sallen-Key filter having unity gain, and the VCVS filter including non-unity gain by connecting a resistor divider from the output to the inverting terminal of the op-amp. However we will consider them one and the same for the purpose of analysis, as the unity-gain version is a special subtype of the generalized variable-gain version.
+
+Another popular alternative to the Sallen-Key topology is the Multiple Feedback (MFB) topology[^bib-ti-active-low-pass-filter-design].
 
 ## Low-Pass Sallen-Key Filter
 
