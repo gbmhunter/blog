@@ -1,13 +1,13 @@
 ---
-authors: [ "Geoffrey Hunter" ]
+authors: [ Geoffrey Hunter ]
 date: 2022-02-24
-description: "Schematic symbols, equivalent circuits and more info on photodiodes."
+description: Schematic symbols, equivalent circuits and more info on photodiodes.
 draft: false
 images: [ ]
-lastmod: 2022-02-28
-tags: [ "electronics", "components", "photodiodes", "diodes", "light", "transimpedance", "amplifier", "op-amp", "PN", "junction", "PIN", "semiconductor", "equivalent circuit", "Germanium", "current source", "avalanche" ]
-title: "Photodiodes"
-type: "page"
+lastmod: 2022-09-27
+tags: [ electronics, components, photodiodes, diodes, light, transimpedance, amplifier, op-amp, PN, junction, PIN, semiconductor, equivalent circuit, Germanium, current source, avalanche, switched capacitor ]
+title: Photodiodes
+type: page
 ---
 
 {{% warning-is-notes %}}
@@ -118,6 +118,8 @@ V_{OUT} &= I_D R_f
 Remember that the op-amp will drive it's output to whatever voltage is needed to keep it's inverting input at the same potential as it's non-inverting input (0V).
 {{% /tip %}}
 
+An alternative to using a transimpedance amplifier to convert current to voltage is to use an op-amp and a capacitor to act as an integrator. You can by special [switched capacitor ICs](/electronics/components/switched-integrator-ics/) that package the op-amp, switches and precision capacitor in a single semiconductor IC. They offer good SNR, but with relatively low bandwidth. However, this method is not as popular as the transimpedance amplifier, and the dedicated ICs are expensive and hard to source.
+
 The current noise density of the circuit is[^bib-osi-photodiode-chars-and-apps]:
 
 <p>\begin{align}
@@ -131,21 +133,21 @@ where:</br>
 \(T\) is the temperature of the photodiode, in \(K\)</br>
 </p>
 
-## Gain Peaking Capacitor
+### Gain Peaking Capacitor
 
 A capacitor `\(C_f\)` can be added in parallel with `\(R_f\)` to prevent _gain peaking_.
 
-## Biasing
+### Biasing
 
 When connected to a transimpedance amplifier, the photodiode can either be used with `\(0V\)` potential across it (_photovoltaic mode_) or with a reverse bias (_photoconductive mode_)[^bib-osi-photodiode-chars-and-apps].
 
-### Photovoltaic Mode
+#### Photovoltaic Mode
 
 _Photovoltaic mode_ is when the photodiode is not operated with any DC bias across it (i.e. there is `\(0V\)` across it). This is usually achieved by tying one side of the photodiode to ground, whilst the other side is held at "virtual ground" by an op-amp.
 
 The photovoltaic mode of operation is recommended for low speed `\(<350kHz\)` and low-light level applications[^bib-osi-photodiode-chars-and-apps]. It also appears to be more linear, due to the less variations in response due to changes in temperature[^bib-osi-photodiode-chars-and-apps].
 
-### Photoconductive Mode
+#### Photoconductive Mode
 
 _Photoconductive mode_ is when the photodiode is operated with a reverse-bias voltage across it. Applying a reverse-bias to a photodiode can improve the speed of the device, and is the preferred mode of operation for high-speed applications[^bib-osi-photodiode-chars-and-apps]. The speed increase is because a greater reverse-bias increases the depletion region. This in turn reduces the junction capacitance, increasing the bandwidth of the device.
 
