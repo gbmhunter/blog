@@ -348,12 +348,12 @@ R2 &= \frac{4}{\alpha + \sqrt{\alpha^2 + (K - 1)}} \times \frac{1}{k} \\
 
 <div class="worked-example">
 
-**Design Example: High-Pass Sallen-Key Filter With fc=20kHz, Q=1.5, K=4**
+**Design Example: High-Pass Sallen-Key Filter With fc=2kHz, Q=0.8, K=4**
 
 Inputs:
 
-* Cut-off frequency of `\(f_c = 20kHz\)`
-* Quality factor of `\(Q = 1.5\)`
+* Cut-off frequency of `\(f_c = 2kHz\)`
+* Quality factor of `\(Q = 0.8\)`
 * Pass-band gain of `\(K=4\)`
 
 1. Firstly, choose the two capacitances to be equal and within a sensible range. `\(C_1 = C_2 = 10nF\)`.
@@ -361,27 +361,27 @@ Inputs:
 1. Calculate the intermediary `\(k\)` variable:
     <p>\begin{align}
     k &= 2\pi f_c C_1 \nonumber \\
-      &= 2\pi \times 20kHz \times 10nF \nonumber \\
-      &= 1.26\times 10^{-3} \nonumber \\
+      &= 2\pi \times 2kHz \times 10nF \nonumber \\
+      &= 1.26\times 10^{-4} \nonumber \\
     \end{align}</p>
 
 1. Calculate `\(\alpha\)`:
     <p>\begin{align}
     \alpha &= \frac{1}{Q} \nonumber \\
-           &= \frac{1}{1.5} \nonumber \\
-           &= 0.667 \nonumber \\
+           &= \frac{1}{0.8} \nonumber \\
+           &= 1.25 \nonumber \\
     \end{align}</p>
 
 1. Calculate `\(R_1\)` and `\(R_2\)`:
     <p>\begin{align}
     R_1 &= \frac{\alpha + \sqrt{\alpha^2 + (K - 1)}}{4k} \nonumber \\
-        &= \frac{0.667 + \sqrt{0.667^2 + (4 - 1)}}{4\times 1.26\times 10^{-3}} \nonumber \\
-        &= 502\Omega \nonumber \\
-        &= 499\Omega\ (E96) \nonumber \\
+        &= \frac{1.25 + \sqrt{1.25^2 + (4 - 1)}}{4\times 1.26\times 10^{-4}} \nonumber \\
+        &= 6.74k\Omega \nonumber \\
+        &= 6.81k\Omega\ (E96) \nonumber \\
     R_2 &= \frac{4}{\alpha + \sqrt{\alpha^2 + (K - 1)}} \times \frac{1}{k} \nonumber \\
-        &= \frac{4}{0.667 + \sqrt{0.667^2 + (4 - 1)}} \times \frac{1}{1.26\times 10^{-3}} \nonumber \\
-        &= 1.26k\Omega \nonumber \\
-        &= 1.27k\Omega\ (E96) \nonumber \\
+        &= \frac{4}{1.25 + \sqrt{1.25^2 + (4 - 1)}} \times \frac{1}{1.26\times 10^{-4}} \nonumber \\
+        &= 9.40k\Omega \nonumber \\
+        &= 9.31k\Omega\ (E96) \nonumber \\
     \end{align}</p>
 
 1. Choose `\(R_4 = 1k\Omega\)`. Then calculate `\(R_3\)`:
@@ -392,10 +392,11 @@ Inputs:
         &= 3.01k\Omega\ (E96) \nonumber \\
     \end{align}</p>
 
+1. Done! The finished schematic looks like (ready for simulating):
+    {{% figure src="high-pass-sallen-key-fc2khz-q1.5-k4/schematic.png" width="600px" caption="The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter." %}}
 
-1. Done!
-
-1. TODO: Add schematic and sim results.
+    And the simulated bode plot:
+    {{% figure src="high-pass-sallen-key-fc2khz-q1.5-k4/bode-plot.png" width="700px" caption="The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter." %}}
 
 </div>
 

@@ -269,7 +269,7 @@ Style=8192
 
 [Attr]
 ON=12,-22,RESISTANCE
-V=499
+V=6.81k
 Style=8192
 
 [Attr]
@@ -288,7 +288,7 @@ Style=8192
 
 [Attr]
 ON=-42,25,RESISTANCE
-V=1.27k
+V=9.40k
 Style=8192
 
 [Attr]
@@ -715,7 +715,7 @@ Scale 1=1
 Scale 2=1
 SB 3=0,183
 Scale 3=0.5
-Px=472,417
+Px=465,259
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
@@ -1210,10 +1210,10 @@ AliasID=1
 XExp=F
 YExp=dB(v(OUT)/v(IN))
 XRng=1e+7,10
-YRng=80,-120
+YRng=60,-90
 Options=OUTPUT,LINEARY
 Range Grid X=2e+6
-Range Grid Y=40
+Range Grid Y=30
 Enable=Enable
 Line Color=#0000FF
 Text Color=#0000FF
@@ -1236,7 +1236,7 @@ AliasID=2
 XExp=F
 YExp=ph(v(OUT)/v(IN))
 XRng=1e+7,10
-YRng=400,150
+YRng=50,-200
 Options=OUTPUT,LINEARY
 Range Grid X=2e+6
 Range Grid Y=50
