@@ -422,8 +422,9 @@ V=V3
 Style=8192
 
 [Attr]
-ON=15,-41,VALUE
+ON=5,-11,VALUE
 V=DC 0 AC 1 0
+Style=8192
 
 [Attr]
 ON=0,0,PACKAGE
@@ -715,7 +716,7 @@ Scale 1=1
 Scale 2=1
 SB 3=0,183
 Scale 3=0.5
-Px=465,259
+Px=180,405
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
