@@ -30,7 +30,7 @@ The schematic for a variable-gain low-pass Sallen-Key filter (a.k.a. VCVS filter
 
 {{% figure src="low-pass-variable-gain-sallen-key-filter-schematic.png" width="700px" caption="The schematic for a variable-gain low-pass Sallen-Key filter." %}}
 
-The schematic for the unity-gain low-pass Sallen-Key filter is shown below. Note the removal of `\(R3\)` and `\(R4\)`, the output is instead directly fed into the inverting input of the op-amp, just like when using an op-amp as a buffer.
+The schematic for the unity-gain low-pass Sallen-Key filter is shown below. Note the removal of `\(R_3\)` and `\(R_4\)`, the output is instead directly fed into the inverting input of the op-amp, just like when using an op-amp as a buffer.
 
 {{% figure src="low-pass-unity-gain-sallen-key-filter-schematic.png" width="700px" caption="The schematic for a unity-gain low-pass Sallen-Key filter." %}}
 
@@ -56,26 +56,26 @@ where:<br/>
 The transfer function for a 2nd-order low-pass Sallen-Key filter is[^bib-ti-analysis-of-sallen-key-arch]:
 
 <p>\begin{align}
-H(s) &= \frac{K}{(R1R2C1C2)s^2 + (R1C1 + R2C1 + R1C2(1 - K))s + 1} \\
+H(s) &= \frac{K}{(R_1R_2C_1C_2)s^2 + (R_1C_1 + R_2C_1 + R_1C_2(1 - K))s + 1} \\
 \end{align}</p>
 
 The cut-off frequency is:
 
 <p>\begin{align}
-f_c = \frac{1}{2\pi \sqrt{R1R2C1C2}}
+f_c = \frac{1}{2\pi \sqrt{R_1R_2C_1C_2}}
 \end{align}</p>
 
 and the quality factor is:
 
 <p>\begin{align}
-Q = \frac{\sqrt{R1R2C1C2}}{R1C1 + R2C1 + R1C2(1 - K)}
+Q = \frac{\sqrt{R_1R_2C_1C_2}}{R_1C_1 + R_2C_1 + R_1C_2(1 - K)}
 \end{align}</p>
 
 The gain equation is the same as for an non-inverting amplifier:
 
 <p>\begin{align}
 \label{eq:gain-eq}
-K = 1 + \frac{R3}{R4}
+K = 1 + \frac{R_3}{R_4}
 \end{align}</p>
 
 
@@ -144,11 +144,11 @@ We can use the quadratic equation to find the two solutions for `\(m\)`. Only on
 m = 0.189 \nonumber \\
 \end{align}</p>
 
-We have the freedom to choose `\(C\)`, and because `\(n = 1\)`, `\(C1 = C2 = C\)`. Let's choose `\(C = 10nF\)`, and therefore:
+We have the freedom to choose `\(C\)`, and because `\(n = 1\)`, `\(C_1 = C_2 = C\)`. Let's choose `\(C = 10nF\)`, and therefore:
 
 <p>\begin{align}
-C1 &= 10nF \nonumber \\
-C2 &= 10nF \nonumber \\
+C_1 &= 10nF \nonumber \\
+C_2 &= 10nF \nonumber \\
 \end{align}</p>
 
 Using `\(Eq.\ \ref{eq:r-cutoff-freq}\)`, we can now find `\(R\)`:
@@ -159,25 +159,25 @@ R &= \frac{1}{2\pi f_c C\sqrt{mn}} \nonumber \\
   &= 3.66k\Omega \nonumber \\
 \end{align}</p>
 
-Choosing the closest E96 value for `\(R2\)`, and calculating `\(R1\)`:
+Choosing the closest E96 value for `\(R_2\)`, and calculating `\(R_1\)`:
 
 <p>\begin{align}
-R2 &= R \nonumber \\
+R_2 &= R \nonumber \\
    &= 3.65k\Omega\ (E96) \nonumber \\
-R1 &= mR \nonumber \\
+R_1 &= mR \nonumber \\
    &= 0.189 \times 3.66k\Omega \nonumber \\
    &= 692\Omega \nonumber \\
    &= 698\Omega\ (E96) \nonumber \\
 \end{align}</p>
 
-Lastly, we can calculate the values of the gain resistors. Choose a value for `\(R4=1k\Omega\)`. Then using `\(Eq.\ \ref{eq:gain-eq}\)` we can find `\(R3\)`:
+Lastly, we can calculate the values of the gain resistors. Choose a value for `\(R_4=1k\Omega\)`. Then using `\(Eq.\ \ref{eq:gain-eq}\)` we can find `\(R_3\)`:
 
 <p>\begin{align}
-K &= 1 + \frac{R3}{R4} \nonumber \\
-R3 &= (K - 1)R4 \nonumber \\
-   &= (5 - 1) \times 1k\Omega \nonumber \\
-   &= 4k\Omega \nonumber \\
-   &= 4.02k\Omega\ (E96) \nonumber \\
+K &= 1 + \frac{R_3}{R_4} \nonumber \\
+R_3 &= (K - 1)R_4 \nonumber \\
+    &= (5 - 1) \times 1k\Omega \nonumber \\
+    &= 4k\Omega \nonumber \\
+    &= 4.02k\Omega\ (E96) \nonumber \\
 \end{align}</p>
 
 All done! Our finished schematic looks like this:
@@ -196,20 +196,20 @@ We chose a `\(Q\)` above 0.707, so we expect some peaking in the gain response a
 
 You can design a Sallen-Key filter based of a particular filter tuning and it's coefficients, this is an alternative to choosing the quality factor and gain yourself. Given the filter tuning coefficients `\(a_0\)` and `\(a_1\)` and desired cut-off frequency `\(f_c\)` you can then calculate the required resistances and capacitances.
 
-The resistance of the resistors `\(R1\)` and `\(R2\)` are related to the capacitances and filter coefficients by the following equation:
+The resistance of the resistors `\(R_1\)` and `\(R_2\)` are related to the capacitances and filter coefficients by the following equation:
 
 <p>\begin{align}
 \label{eqn:r1r2eq}
-R1, R2 = \frac{a_1 C1 \mp \sqrt{ (a_1 C1)^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2}
+R_1, R_2 = \frac{a_1 C_1 \mp \sqrt{ (a_1 C_1)^2 - 4 b_1 C_1C_2}}{4\pi f_c C_1 C_2}
 \end{align}</p>
 
-You use the `\(-\)` sign when calculating `\(R1\)` and the `\(+\)` sign for calculating `\(R2\)`.
+You use the `\(-\)` sign when calculating `\(R_1\)` and the `\(+\)` sign for calculating `\(R_2\)`.
 
-To obtain real values under the square root, `\(C1\)` must obey the follow condition:
+To obtain real values under the square root, `\(C_1\)` must obey the follow condition:
 
 <p>\begin{align}
 \label{eqn:c1geq}
-C1 \geq C2 \frac{4b_1}{a_1^2}
+C_1 \geq C_2 \frac{4b_1}{a_1^2}
 \end{align}</p>
 
 {{% note %}}
@@ -230,14 +230,14 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
     b_1 = 1.9305 \\
     \end{align}</p>
 
-1. Choose a capacitance for `\(C2\)`. This is rather arbitrary, but a good recommended starting range is something between `\(1-100nF\)`. Lets pick:
+1. Choose a capacitance for `\(C_2\)`. This is rather arbitrary, but a good recommended starting range is something between `\(1-100nF\)`. Lets pick:
     <p>\begin{align}
-    C2 = 10nF
+    C_2 = 10nF
     \end{align}</p>
 
-1. Calculate the capacitance of `\(C1\)` from `\(Eq. \ref{eqn:c1geq}\)`:
+1. Calculate the capacitance of `\(C_1\)` from `\(Eq. \ref{eqn:c1geq}\)`:
     <p>\begin{align}
-    C1 &\geq C2 \frac{4b_1}{a_1^2} \\
+    C_1 &\geq C_2 \frac{4b_1}{a_1^2} \\
         &\geq 10nF \frac{4\cdot1.9305}{1.0650^2} \\
         &\geq 68.1nF
     \end{align}</p>
@@ -245,26 +245,26 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
     Pick the next largest E12 value:
 
     <p>\begin{align}
-    C1 = 82nF
+    C_1 = 82nF
     \end{align}</p>
 
-1. Calculate `\(R1\)` and `\(R2\)` using `\(Eq. \ref{eqn:r1r2eq}\)`:
+1. Calculate `\(R_1\)` and `\(R_2\)` using `\(Eq. \ref{eqn:r1r2eq}\)`:
     <p>\begin{align}
-    R1 &= \frac{a_1 C1 - \sqrt{(a_1 C1)^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2} \\
+    R_1 &= \frac{a_1 C_1 - \sqrt{(a_1 C_1)^2 - 4 b_1 C_1C_2}}{4\pi f_c C_1 C_2} \\
         &= \frac{1.0650 \cdot 82nF - \sqrt{1.0650^2 \cdot 82nF^2 - 4 \cdot 1.9305 \cdot 10nF \cdot 82nF}}{4\pi \cdot 1kHz \cdot 10nF \cdot 82nF} \\
         &= 4.98k\Omega
     \end{align}</p>
 
     <p>\begin{align}
-    R2 &= \frac{a_1 C2 + \sqrt{a_1^2 C2^2 - 4 b_1 C1C2}}{4\pi f_c C1 C2} \\
+    R_2 &= \frac{a_1 C_2 + \sqrt{a_1^2 C_2^2 - 4 b_1 C_1C_2}}{4\pi f_c C_1 C_2} \\
         &= \frac{1.0650 \cdot 82nF + \sqrt{1.0650^2 \cdot 82nF^2 - 4 \cdot 1.9305 \cdot 10nF \cdot 82nF}}{4\pi \cdot 1kHz \cdot 10nF \cdot 82nF} \\
         &= 12.0k\Omega
     \end{align}</p>
 
     Pick the closest E96 values:
     <p>\begin{align}
-    R1 = 4.99k\Omega \\
-    R2 = 12.1k\Omega
+    R_1 = 4.99k\Omega \\
+    R_2 = 12.1k\Omega
     \end{align}</p>
 
 1. Build the circuit! It should look like this:
@@ -274,6 +274,48 @@ The task is to design a 2nd-order unity-gain Sallen-Key filter optimized with Ch
     {{% figure src="low-pass-sallen-key-chebyshev-3db/response.png" width="700px" caption="Simulated response of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above." %}}
 
 </div>
+
+### Frequency Limitations of the Low-Pass Sallen-Key Filter
+
+A low-pass Sallen-Key filter is strongly dependent on the op-amp having a low output impedance. A op-amp's output impedance increases with increasing frequency, thus the performance of the Sallen-Key low-pass begins to suffer around the 50-500kHz range. **Thus the gain which begins to increase again after a certain frequency in the stop band**.
+
+{{% figure src="low-pass-variable-gain-sallen-key-filter-freq-limit.png" width="900px" caption="Equivalent circuit for a low-pass Sallen-Key filter at high frequencies. The left-hand shows the circuit with the capacitors shorted. The right-hand is a simplification showing the addition of the op-amps output impedance." %}}
+
+Based of the above schematic, we can use the voltage divider rule to write:
+
+<p>\begin{align}
+\frac{V_{out}}{V_{in}} &= \frac{R_2 || Z_O}{R_1 + R_2 || Z_O} \nonumber \\
+                       &= \frac{1}{\frac{R_1}{R_2 || Z_O} + 1} \nonumber \\
+                       &= \dfrac{1}{\dfrac{R_1}{\frac{R_2Z_O}{R_2 + Z_O}} + 1} \nonumber \\
+                       &= \dfrac{1}{\frac{R_1(R_2 + Z_O)}{R_2Z_O} + 1} \nonumber \\
+                       &= \dfrac{1}{\frac{R_1R_2 + R_1Z_O}{R_2Z_O} + 1} \nonumber \\
+                       &= \dfrac{1}{\frac{R_1}{Z_O} + \frac{R_1}{R_2} + 1} \\
+\end{align}</p>
+
+Assuming `\(Z_O\)` is much smaller that `\(R_1\)`, and that `\(R_1\)` and `\(R_2\)` are roughly in the same order of magnitude, the `\(\frac{R_1}{Z_O}\)` term then dominates the bottom of the fraction. Thus:
+
+<p>\begin{align}
+\frac{V_{out}}{V_{in}} &\approx \frac{Z_O}{R_1} \\
+\end{align}</p>
+
+`\(Z_O\)` is the closed-loop impedance. It is frequency-dependent, and is related to the open-loop impedance by: 
+
+<p>\begin{align}
+Z_O = \frac{z_O}{1 + AB} \\
+\end{align}</p>
+
+<p class="centered">
+where:</br>
+\(z_O\) is the open-loop impedance<br/>
+\(A\) is the closed-loop gain<br/>
+\(B\) is the feedback factor, and equal to \(\frac{R_4}{R_3 + R_4}\)<br/>
+</p>
+
+So as the closed-loop gain `\(A\)` of the op-amp begins to drop at high frequencies, the output impedance of the op-amp begins to increase. **The op-amp then struggles to keep the inverting input of the low-pass Sallen-Key filter at virtual ground**, and begins to let through some of the signal. This reduces the effectiveness of the low-pass filter in the stop band.
+
+We can see the effect of an increasing output impedance at high frequencies in the following bode plot for a 2nd-order low-pass Sallen-Key filter, with a cutoff frequency `\(f_c\)` of 1kHz:
+
+{{% figure src="low-pass-sallen-key-showing-gain-rise/annotated-plot.svg" width="600px" caption="Gain plot of a low-pass Sallen-Key filter showing the reversal to increasing again once a certain frequency is reached, owing to the increasing op-amp output impedance." %}}
 
 ## High-Pass Sallen-Key Filter
 
@@ -290,24 +332,24 @@ H(s) = \frac{Ks^2}{s^2 + \alpha \omega_0 s + \omega_0^2} \\
 Using Ohm's law and Kirchhoff's current/voltage laws, we can write the equivalent transfer function for a variable-gain high-pass Sallen-Key filter, in terms of the resistances and capacitances[^bib-analog-devices-ch8-analog-filters]:
 
 <p>\begin{align}
-H(s) &= \frac{Ks^2}{s^2 + \left( \dfrac{\frac{C2}{R2} + \frac{C1}{R2} + (1-K)\frac{C2}{R1}}{C1C2} \right)s + \dfrac{1}{R1C1R2C2}} \\
+H(s) &= \frac{Ks^2}{s^2 + \left( \dfrac{\frac{C_2}{R_2} + \frac{C_1}{R_2} + (1-K)\frac{C_2}{R_1}}{C_1C_2} \right)s + \dfrac{1}{R_1C_1R_2C_2}} \\
 \end{align}</p>
 
-If you are using the unity-gain op-amp (no `\(R3\)` or `\(R4\)`), the transfer function simplifies to[^bib-ti-2nd-order-sallen-key-high-pass]:
+If you are using the unity-gain op-amp (no `\(R_3\)` or `\(R_4\)`), the transfer function simplifies to[^bib-ti-2nd-order-sallen-key-high-pass]:
 
 <p>\begin{align}
-H(s) &= \frac{s^2}{s^2 + \left(\dfrac{1}{R2C1} + \dfrac{1}{R2C2}\right)s + \dfrac{1}{R1C1R2C2}} \\
+H(s) &= \frac{s^2}{s^2 + \left(\dfrac{1}{R_2C_1} + \dfrac{1}{R_2C_2}\right)s + \dfrac{1}{R_1C_1R_2C_2}} \\
 \end{align}</p>
 
 This unity-gain transfer function is similar to the unity-gain transfer function for the low-pass filter, except note:
 1. It's just `\(s^2\)` on the numerator.
-2. The coefficient for `\(s\)` on the denominator changes from `\(\left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)\)` to `\(\left(\frac{1}{R2C1} + \frac{1}{R2C2}\right)\)`.
+2. The coefficient for `\(s\)` on the denominator changes from `\(\left(\frac{1}{R_1C_1} + \frac{1}{R_2C_2}\right)\)` to `\(\left(\frac{1}{R_2C_1} + \frac{1}{R_2C_2}\right)\)`.
 
 This means our unity-gain filter coefficients `\(a_0\)` and `\(a_1\)` are:
 
 <p>\begin{align}
-a_0 &= \frac{1}{R1 \times R2 \times C1 \times C2} \\
-a_1 &= \frac{1}{R2 \times C1} + \frac{1}{R2 \times C2} \\
+a_0 &= \frac{1}{R_1 \times R_2 \times C_1 \times C_2} \\
+a_1 &= \frac{1}{R_2 \times C_1} + \frac{1}{R_2 \times C_2} \\
 \end{align}</p>
 
 ### How To Calculate Component Values
@@ -320,12 +362,12 @@ This design process assumes the following inputs:
 
 This process is based of [Basic Linear Design: Chapter 8 - Page 8.90](https://www.analog.com/media/en/training-seminars/design-handbooks/Basic-Linear-Design/Chapter8.pdf).
 
-Choose `\(C1\)`. Set `\(C2\)` to the same value.
+Choose `\(C_1\)`. Set `\(C_2\)` to the same value.
 
 Then calculate an intermediary variable `\(k\)`, with:
 
 <p>\begin{align}
-k = 2\pi f_c C1 \\
+k = 2\pi f_c C_1 \\
 \end{align}</p>
 
 {{% warning %}}
@@ -338,11 +380,11 @@ Find `\(\alpha\)`, which by definition is the inverse of the quality factor:
 \alpha = \frac{1}{Q} \\
 \end{align}</p>
 
-`\(R1\)` and `\(R2\)` are then:
+`\(R_1\)` and `\(R_2\)` are then:
 
 <p>\begin{align}
-R1 &= \frac{\alpha + \sqrt{\alpha^2 + (K - 1)}}{4k} \\
-R2 &= \frac{4}{\alpha + \sqrt{\alpha^2 + (K - 1)}} \times \frac{1}{k} \\
+R_1 &= \frac{\alpha + \sqrt{\alpha^2 + (K - 1)}}{4k} \\
+R_2 &= \frac{4}{\alpha + \sqrt{\alpha^2 + (K - 1)}} \times \frac{1}{k} \\
 \end{align}</p>
 
 
@@ -394,29 +436,47 @@ Inputs:
 
 1. Done! The finished schematic looks like (ready for simulating):
     {{% figure src="high-pass-sallen-key-fc2khz-q1.5-k4/schematic.png" width="600px" caption="The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter." %}}
-
     And the simulated bode plot:
     {{% figure src="high-pass-sallen-key-fc2khz-q1.5-k4/bode-plot.png" width="700px" caption="The simulation-ready schematic of our 2kHz high-pass Sallen-Key filter." %}}
 
 </div>
 
-## Dependence On Op-Amp Output Impedance
+### Frequency Limitations of the High-Pass Sallen-Key Filter
 
-A Sallen-Key filter is strongly dependent on the op-amp having a low output impedance. A op-amp's output impedance increases with increasing frequency, thus the performance of the Sallen-Key begins to suffer around the 50-500kHz range. **Thus the gain which begins to increase again after a certain frequency in the stop band**.
+The high-pass Sallen-Key filter works well up to a certain frequency, and after which the non-idealities of the op-amp begin to reduce the gain. This turns the high-pass Sallen-Key filter more into a band-pass filter, with the upper frequency cut-off determined by the open-loop gain of the op-amp.
 
-This can be seen in the following bode plot for a 2nd-order low-pass Sallen-Key filter, with a cutoff frequency `\(f_c\)` of 1kHz:
+At frequencies much higher than the cut-off `\(f_c\)`, we can assume the two capacitors are shorts. This gives us the following schematic:
 
-{{% figure src="low-pass-sallen-key-showing-gain-rise/annotated-plot.svg" width="600px" caption="Gain plot of a low-pass Sallen-Key filter showing the reversal to increasing again once a certain frequency is reached, owing to the increasing op-amp output impedance." %}}
+{{% figure src="high-pass-variable-gain-sallen-key-filter-freq-limit.png" width="500px" caption="Equivalent circuit for high frequency signals through the high-pass Sallen-Key filter. Both capacitors are considered shorts." %}}
+
+If we assume a non-infinite open-loop gain `\(A\)` of the op-amp, the transfer function of this above circuit is:
+
+<p>\begin{align}
+\label{eq:transfer-fn-high-pass-freq-limit}
+H(f) &= \frac{A}{AB + 1} \\
+\end{align}</p>
+
+where `\(B\)` is the feedback factor (how much of the output is fed back to the inverting terminal via the voltage divider made from `\(R_3\)` and `\(R_4\)`):
+
+<p>\begin{align}
+B &= \frac{R_4}{R_3 + R_4} \\
+\end{align}</p>
+
+If we divide the numerator and denominator of `\(Eq.\ \ref{eq:transfer-fn-high-pass-freq-limit}\)` by `\(AB\)` the behaviour of the transfer function as `\(A\)` drops becomes more apparent: 
+
+<p>\begin{align}
+H(f) &= \frac{1}{B} \left[\frac{1}{1 + \frac{1}{AB}}\right] \\
+\end{align}</p>
+
+When the open-loop gain `\(A\)` is large, this equation just becomes `\(H(f) = \frac{1}{B}\)`, the standard gain equation for a non-inverting op-amp. However, as `\(A\)` decreases we can no longer ignore the `\(\frac{1}{AB}\)` term and it starts reducing the overall gain of the circuit.
+
+You can a practical example of this frequency limitation with the high-pass Sallen-Key filter we designed above. As shown below, the gain of the high-pass filter starts falling and hits `\(0dB\)` at the stated gain bandwidth product `\(GBW\)` at `\(10MHz\)`.
+
+{{% figure src="high-pass-sallen-key-fc2khz-q1.5-k4/freq-limitation-plot.png" width="700px" caption="Annotated bode plot showing how the upper frequency limit of the high-pass Sallen-Key filter lines up nicely with the stated GBW=10MHz of the op-amp." %}}
 
 ## Further Reading
 
 For general information on analogue filters, see the [Analogue Filters page](/electronics/circuit-design/analogue-filters/).
-
-## Old
-
-<p>\begin{align}
-H(s) &= \frac{\frac{1}{R1C1R2C2}}{s^2 + \left(\frac{1}{R1C1} + \frac{1}{R2C2}\right)s + \frac{1}{R1C1R2C2}} \\
-\end{align}</p>
 
 ## References
 
