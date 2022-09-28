@@ -11,32 +11,43 @@ type: page
 
 ## Overview
 
-The document "[Technical Performance on C++ Performance](http://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf)" is a good read if you are really interested in the advantages/disadvantages of using C++ on an embedded platform.
+One fear about using C++ on an embedded system is a decrease in performance (in terms of memory and processing speed). As with most complex issues, the answer really is -- "it depends".
 
-[The Embedded C++ Homepage](http://www.caravan.net/ec2plus/) is sort of a hub for embedded C++ programming. They define a sub-set of the full C++ language for use on embedded devices such as microcontrollers.
+**I believe you can carefully select a subset of the C++ language which provides most of the benefits of OO-based design, but does not incur any signifcant performance hits for the target system**.
 
-## Performance Concerns
-
-One fear about using C++ on an embedded system is a decrease in performance (in terms of memory and processing speed). As with most complex issues, the answer really is, "it depends".
-
-I believe you can carefully select a subset of the C++ language which provides most of the benefits of OO-based design, but does not incur any performance hits for the target system.
+This page aims to cover many of C++'s features and weigh-in on their suitability in embedded systems.
 
 ## C++ Features That Should Be Used
 
-* Classes (pretty much no overhead)
-* Templates (no overhead, can be thought of as a more powerful version of a macro). However, incorrect/careless use of template can cause a huge increase in code size.
-* Function overloading
-* Typesafe enums (i.e. enum class), typesafe typedefs
+This is a list of all the C++ features that **you SHOULD USE in most embedded firmware**:
+
+* Classes
+* Templates (no overhead, can be thought of as a more powerful version of a macro). However, incorrect/careless use of templates can cause a huge increase in code size.
+* Function overloading and default parameters. No overhead.
+* Typesafe enums (i.e. `enum class`), typesafe typedefs
 * Operator overloading (when done sensibly!)
-* References (they are just safer pointers!)
+* References (they are just safer pointers that can't be null!)
 * Namespaces (no overhead)
 * Inheritance 
-* auto
+* `auto`
+
+### Classes
+
+If you've ever done a C-based embedded project and had multiple instances of an peripheral to control (e.g. a UART), you've probably realized it's inefficient and hard to main the code if you just copy all your `Uart_Write(char * bytes, ...)` and `Uart_Read()` functions and call them `Uart2_Write()`, `Uart2_Read()` e.t.c. You then probably thought, hey, I'll just have one copy of all the functions, but for all of them as the first parameter, pass in a Uart `struct` which contains all the configuration and state data for a particular UART.
+
+Now your functions are looking something like `Uart_Write(Uart& uart, char * bytes, ...)`. Well guess what, **this is the basic idea of a class in C++**, but in a more readable and maintainable way. So there is no reason not to use C++ classes in embedded firmware, and there is no performance penalty, at least when classes are used in this basic sense.
+
+### Typesafe Enums
+
+Enums in C can be dangerous. A user of a library function can pass any old integer value as a parameter into a function which takes an enum. The compiler will not complain, however at runtime the provided value could be completely out-of-range and cause unexpected bugs.
+
+C++ improves things with the concept of the `enum class`. This is a more strongly typed enum, and the compiler will error if you try and convert between this type and an integer without explicitly doing a cast.
 
 ## C++ Features That Could Be Used, But Only After Careful Consideration
 
 * Virtual Methods
 * RTTI
+* Exceptions
 * STL
 * Boost
 
@@ -61,7 +72,7 @@ private:
 };
 
 int main() {
-  TempSensor tempSensor(10);
+  TempSensor tempSensor(10); // We don't know if this is ok or not!
 }
 ```
 
@@ -112,6 +123,8 @@ You might want to make sure the caller does not forget to call the `Init()` func
 
 Using an `Init()` function also **opens up the possibility of the caller being able to re-initialize the class without having to delete this object and construct a new one**. This may or may not be beneficial for a particular application!
 
+One downside to this approach is that the caller has to remember to call `Init()` before they can use any of the classes other functions. Also, adding the `m_isInitialized` check is more code that you have to add to every member function.
+
 ### Pass In Status Pointer To Constructor
 
 Another way to solve the problem is to pass into the constructor a pointer to a status variable so the constructor can assign to it, similar to how you would pass in extra "outputs" to a normal function if the function had more than one output.
@@ -122,14 +135,14 @@ Another way to solve the problem is to pass into the constructor a pointer to a 
 
 class TempSensor {
 public:
-  TempSensor(uint8_t i2cAddress, uint8_t * status) {
+  TempSensor(uint8_t i2cAddress, uint8_t & status) {
     // Validate I2C address
     if (i2cAddress > 127) {      
-      *status = 1;
+      status = 1;
       return;
     }
     m_i2cAddress = i2cAddress;
-    *status = 0;
+    status = 0;
   }
 private:
     uint8_t m_i2cAddress;
@@ -137,7 +150,7 @@ private:
 
 int main() {
   uint8_t status;
-  TempSensor tempSensor(200, &status);
+  TempSensor tempSensor(200, status);
   if (status != 0) {
     printf("Error initializing temp. sensor. status=%u\n", status);
   }
@@ -213,11 +226,17 @@ int main(void) {
 
 {{% note %}}
 C++ performs name mangling so it can support function overloading (functions with the same name, but supporting a different number and/or type of input and output variables).
-{{% note %}}
+{{% /note %}}
 
 ### ISRs Calling Class Functions
 
-ISRs typically have a strict function type signature -- no input variables and no return type. Thus there is no way to pass through as function inputs instances of C++ classes to access and call class member functions. For this reason you generally have to define file scoped class instances that the ISR has access to (or a static member function, or just call a C-style function).
+ISRs typically have a strict function type signature -- no input variables and no return type. Thus there is no way to pass through as function inputs instances of C++ classes to access and call class member functions. For this reason you generally have to define file scoped class instances that the ISR has access to (or a static member function, or just call a C-style function). See the [C++ Callbacks page](/programming/languages/c-plus-plus/callbacks/) for more info.
+
+## Further Reading
+
+The document "[Technical Performance on C++ Performance](http://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf)" is a good read if you are really interested in the advantages/disadvantages of using C++ on an embedded platform.
+
+[The Embedded C++ Homepage](http://www.caravan.net/ec2plus/) is sort of a hub for embedded C++ programming. They define a sub-set of the full C++ language for use on embedded devices such as microcontrollers.
 
 ## C++ Standard Libraries For Embedded Devices
 

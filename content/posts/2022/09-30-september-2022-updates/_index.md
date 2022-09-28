@@ -28,8 +28,10 @@ type: "post"
 
 * Added info on Elliptic filters.
 
-* Moved the info on Sallen-Key filters into it's own page.
+* Moved the info on [Sallen-Key filters](/electronics/circuit-design/sallen-key-filters/) into it's own page. Added more info on low-pass and high-pass Sallen-Key filters, along with simulated examples and info on their high-frequency limitations.
 
 * Moved the _PCB Design->PCB Manufacturing And Assembly Considerations_ page to _Electronics->Circuit Design->The Schematic And PCB Design Guide_.
 
 * Added a new page on [Switched Integrator ICs](/electronics/components/switched-integrator-ics/).
+
+* Updated the [C++ On Embedded Systems page](/programming/languages/c-plus-plus/cpp-on-embedded-systems/) with more info and examples on what C++ features you should and shouldn't use in an embedded system. Also replaced a code example that was using a pointer to use a reference.
