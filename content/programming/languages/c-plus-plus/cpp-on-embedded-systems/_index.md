@@ -3,19 +3,19 @@ authors: [ "Geoffrey Hunter" ]
 date: 2014-04-17
 description: A style/feature guide on writing firmware (code for microcontrollers) using C++.
 draft: false
-lastmod: 2022-05-31
-tags: [ c++, constructors, errors, status, initialization, embedded, firmware, classes, microcontrollers ]
+lastmod: 2022-09-29
+tags: [ c++, constructors, errors, status, initialization, embedded, firmware, classes, microcontrollers, NTBS, strings, pointers, MISRA, arrays, dynamic memory allocation, new, delete, malloc, free ]
 title: C++ On Embedded Systems
 type: page
 ---
 
 ## Overview
 
-One fear about using C++ on an embedded system is a decrease in performance (in terms of memory and processing speed). As with most complex issues, the answer really is -- "it depends".
+One fear about using C++ on an embedded system is a decrease in performance (in terms of memory and processing speed). As with most complex issues, the answer really is -- "it depends". Also, the concept on what an embedded system various between people and companies. You can use most C++ features on high-level embedded devices that are running a full-blown OS such as Linux. What this page refers to is "deeply" embedded systems -- systems which are running "bare metal" (no OS) or with an RTOS on a microcontroller. Memory is normally very constrained, typical flash memory sizes are between 16-256kB, and RAM between 2-64kB. The CPU clock speed might be anywhere from 8 to 250MHz, with typically a single core.
 
-**I believe you can carefully select a subset of the C++ language which provides most of the benefits of OO-based design, but does not incur any signifcant performance hits for the target system**.
+**I believe you can carefully select a subset of the C++ language which provides most of the benefits of OO-based design, but does not incur any significant performance hits for the target embedded system**.
 
-This page aims to cover many of C++'s features and weigh-in on their suitability in embedded systems.
+This page aims to cover many of C++'s features and weigh-in on their suitability in deeply embedded systems.
 
 ## C++ Features That Should Be Used
 
@@ -24,12 +24,16 @@ This is a list of all the C++ features that **you SHOULD USE in most embedded fi
 * Classes
 * Templates (no overhead, can be thought of as a more powerful version of a macro). However, incorrect/careless use of templates can cause a huge increase in code size.
 * Function overloading and default parameters. No overhead.
-* Typesafe enums (i.e. `enum class`), typesafe typedefs
+* Enum classes, typesafe typedefs
 * Operator overloading (when done sensibly!)
 * References (they are just safer pointers that can't be null!)
 * Namespaces (no overhead)
 * Inheritance 
 * `auto`
+* Smart pointers (`std::unique_ptr`, `std::shared_ptr`)
+* `std::array`
+
+These are explained in more detail in the below sub-sections.
 
 ### Classes
 
@@ -37,19 +41,116 @@ If you've ever done a C-based embedded project and had multiple instances of an 
 
 Now your functions are looking something like `Uart_Write(Uart& uart, char * bytes, ...)`. Well guess what, **this is the basic idea of a class in C++**, but in a more readable and maintainable way. So there is no reason not to use C++ classes in embedded firmware, and there is no performance penalty, at least when classes are used in this basic sense.
 
-### Typesafe Enums
+### Enums Classes
 
 Enums in C can be dangerous. A user of a library function can pass any old integer value as a parameter into a function which takes an enum. The compiler will not complain, however at runtime the provided value could be completely out-of-range and cause unexpected bugs.
 
-C++ improves things with the concept of the `enum class`. This is a more strongly typed enum, and the compiler will error if you try and convert between this type and an integer without explicitly doing a cast.
+Also, all enums share the same scope, so you have to be careful to avoid name collisions! For example, if you want to have two `IDLE` enums for different state machines, you are forced to change the names, e.g. `GPS_IDLE` and `MOTOR_IDLE`.
+
+C++ improves things with the concept of the `enum class`. This is a more strongly typed enum, and the compiler will error if you try and convert between this type and an integer without explicitly doing a cast. The enum values are also scoped to the name of the enum, preventing naming collisions with other enums in your project.
+
+The example below shows how C-style enums can be implicitly cast to integers (which can be dangerous), whilst an `enum class` won't.
+
+```c++
+// C-style enums
+enum EStates { OFF, IDLE, RUNNING };
+enum EColors { RED, BLUE, GREEN };
+
+// C++-style enum classes
+enum class ECStates { OFF, IDLE, RUNNING };
+enum class ECColors { RED, BLUE, GREEN };
+
+int main() {
+  EStates myEState;
+  myEState = IDLE;
+  if (myEStateState == GREEN) { // Bad idea, but compiles
+    // ...
+  }
+
+  ECStates myECState = ECStates::IDLE;
+  if (myECState == ECColors::GREEN) { // Bad idea, but yay, won't compile!
+    // ...
+  }
+}
+```
+
+{{% tip %}}
+While `enum class` won't let you implicitly cast to an integer, it's still sometimes useful to be able to do so. You can still do it, but you have to explicitly cast the variable in your code. I recommend using `static_cast<uint8_t>(myEnum)` to do so.
+{{% /tip %}}
+
+The below example shows how C-style enums can cause scoping/naming issues.
+
+```c++
+enum GpsState {
+  OFF
+  IDLE,
+  SCANNING
+};
+
+enum MotorState {
+  OFF, // Because of the global scope, this is going to collide with the OFF in GpsState!  
+  RUNNING
+};
+```
+
+But if we use `enum class` we avoid the naming collision:
+
+```c++
+enum class GpsState {
+  OFF
+  IDLE,
+  SCANNING
+};
+
+enum class MotorState {
+  OFF, // This is fine, MotorState::OFF is not going to collide with GpsState::OFF
+  RUNNING
+};
+```
+
+### Namespaces
+
+C++ namespaces are a great feature to use to help you organise your code. They allow you to organize your code into logical scoped groups and prevent naming collisions. This is especially important when writing libraries, as from the library writers perspective, they have no control over the naming of everything else in the projects it will be used in, and from the library users perspective, they really don't want to be diving into library code to change things to fix naming collisions if at all possible. 
+
+```c++
+namespace my_namespace {
+  // All my stuff goes here
+}
+```
 
 ## C++ Features That Could Be Used, But Only After Careful Consideration
 
+* `new/delete`
 * Virtual Methods
 * RTTI
 * Exceptions
-* STL
+* `std::string`
+* `std::vector`
 * Boost
+
+### new/delete
+
+`new` and `delete` is C++'s answer to C's `malloc()` and `free()` functions. They are improved versions of `malloc()` and `free()`.
+
+My general rule for embedded firmware is, unless otherwise banned from using dynamic memory allocation due to a specific coding standard (e.g. MISRA), **to allow the use of dynamic memory allocation, but only during initialization**. My opinion is that this gives the best of both worlds. The ability to use dynamic memory allocation allows your firmware to be flexible to initialization variables and configuration. Only allowing it an initialization prevents the "memory segmentation" issues that can occur when objects are continually created and deleted from the heap at runtime. 
+
+### Exceptions
+
+Exceptions are powerful, they allow errors to propagate up a stack until you care about catching them, without having to add any code at any of the layers which don't care about the exception. However, they are a problem for most deeply-embedded firmware projects, because:
+
+* Stack unwinding is processor intensive.
+
+With exceptions not allowed in embedded firmware, error handling is typically done by returning error codes from functions and checking them every time the function is called. **This may seem like a lot of hassle at first, but is a very common paradigm and forces you to think about the "exceptional" scenarios and how to handle them**. Many more modern languages such as Go and Rust encourage the "return error code, check error code, continue" process over exceptions anyway.
+
+When exceptions are disabled, one issue to think about is how to handle errors in constructors. See the [Handling Errors In Constructors section](#handling-errors-in-constructors) below on that.
+
+The GCC compiler supports the `-fno-exceptions` flag which disables exceptions.
+
+### std::string
+
+I would generally recommend against using `std::string` in embedded firmware, due to it's use of dynamic memory allocation at runtime (when using the default allocator).
+
+In embedded C++, `std::string_view` can be used as a safer wrapper around raw NTBS (null-terminated byte strings) without using dynamic memory allocation at runtime.
 
 ## Handling Errors In Constructors
 
@@ -234,7 +335,7 @@ ISRs typically have a strict function type signature -- no input variables and n
 
 ## Further Reading
 
-The document "[Technical Performance on C++ Performance](http://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf)" is a good read if you are really interested in the advantages/disadvantages of using C++ on an embedded platform.
+The document "[Technical Performance on C++ Performance](http://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf)" is a good read if you are really interested in the advantages/disadvantages of using C++ on an embedded platform[^bib-iso-tech-report-cpp-performance].
 
 [The Embedded C++ Homepage](http://www.caravan.net/ec2plus/) is sort of a hub for embedded C++ programming. They define a sub-set of the full C++ language for use on embedded devices such as microcontrollers.
 
@@ -243,3 +344,7 @@ The document "[Technical Performance on C++ Performance](http://www.open-std.org
 [uClibc++](http://cxx.uclibc.org/index.html) is a C++ standard library designed specifically for microcontrollers. It even has exception support!
 
 [Check out The Standard Template Library (STL) For AVR With C++ Streams](http://andybrown.me.uk/wk/2011/01/15/the-standard-template-library-stl-for-avr-with-c-streams/) if you want to get a library for using things like string and iostream with AVR microcontrollers.
+
+## References
+
+[^bib-iso-tech-report-cpp-performance]: ISO/IEC (2006, Feb 15). _ISO/IEC TR 18015:2006(E) - Technical Report on C++ Performance_. Retrieved 2022-09-29, from https://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf.

@@ -485,7 +485,11 @@ You can a practical example of this frequency limitation with the high-pass Sall
 
 The [OKAWA Electric Design website](http://sim.okawa-denshi.jp/en/Fkeisan.htm) has some good Sallen-Key filter calculators, including 2nd and 3rd-order low-pass and high-pass calculators.
 
-{{% figure src="okawa-sallen-key-filter-calculators-screenshot.png" width="500px" caption="Screenshot of the Sallen-Key filter calculators offered by the [OKAWA Electric Design website](http://sim.okawa-denshi.jp/en/Fkeisan.htm)." %}}
+{{% figure src="okawa-sallen-key-filter-calculators-screenshot.png" width="500px" caption="Screenshot of the Sallen-Key filter calculators offered by the [OKAWA Electric Design website](http://sim.okawa-denshi.jp/en/Fkeisan.htm)[^bib-okawa-filter-design-and-analysis]." %}}
+
+The Texas Instruments [Filter Design Tool](https://webench.ti.com/filter-design-tool/filter-type) is a web-based tool that supports the Sallen-Key topology. You firstly enter in the desired characteristics of your filter (e.g. low-pass, cut-off frequency, amount of rejection in stop band, tuning, e.t.c) and then can select Sallen-Key as a topology to implement the filter with.
+
+{{% figure src="ti-filter-design-tool-screenshot.png" width="700px" caption="Screenshot of the Filter Design Tool from Texas Instruments[^bib-ti-filter-design-tool]." %}}
 
 ## Further Reading
 
@@ -497,3 +501,5 @@ For general information on analogue filters, see the [Analogue Filters page](/el
 [^bib-ti-2nd-order-sallen-key-high-pass]: Texas Instruments (2021, Jun). _SBOA225: Single-supply, 2nd-order, Sallen-Key high-pass filter circuit_. Retrieved 2022-09-21, from https://www.ti.com/lit/an/sboa225/sboa225.pdf.
 [^bib-ti-active-low-pass-filter-design]: Jim Karki (2002, Sep). _SLOA049B: Active Low-Pass Filter Design_. Texas Instruments. Retrieved 2022-09-21, from https://www.ti.com/lit/an/sloa049b/sloa049b.pdf.
 [^bib-ti-analysis-of-sallen-key-arch]: James Karki (1999, Jul). _SLOA024B: Analysis of the Sallen-Key Architecture (Application Report)_. Texas Instruments. Retrieved 2022-09-22, from https://www.ti.com/lit/an/sloa024b/sloa024b.pdf.
+[^bib-ti-filter-design-tool]: Texas Instruments. _Filter Design Tool (web application)_. Retrieved 2022-09-29, from https://webench.ti.com/filter-design-tool/filter-type.
+[^bib-okawa-filter-design-and-analysis]: OKAWA Electric Design. _Filter Design and Analysis (web application)_. Retrieved 2022-09-29, from http://sim.okawa-denshi.jp/en/Fkeisan.htm.
