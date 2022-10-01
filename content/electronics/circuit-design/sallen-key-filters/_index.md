@@ -43,24 +43,33 @@ It looks like 2 cascaded RC filters, except with the other terminal of the 1st c
 Take note of labelling of the resistors and capacitors if reading other material on Sallen-Key filters, there is no one popular convention as the resistor and capacitor orders are switched frequently.
 {{% /warning %}}
 
-The generalized transfer function for a 2nd-order low-pass filter is[^bib-ti-analysis-of-sallen-key-arch]:
+The generalized transfer function for a 2nd-order low-pass filter is[^bib-analog-devices-ch8-analog-filters] [^bib-gary-tuttle-second-order-filters]:
 
 <p>\begin{align}
-H(f) &= \frac{K}{-\left( \frac{f}{f_c} \right)^2 + \frac{jf}{Qf_c} + 1} \\
+\label{eq:gen-2-order-lp}
+H(s) &= \frac{K\omega_0^2}{s^2 + \frac{\omega_0}{Q}s + \omega_0^2} \\
 \end{align}</p>
 
 <p class="centered">
 where:<br/>
 \(K\) is the gain factor<br/>
-\(f_c\) is the cut-off frequency in Hertz [\(Hz\)]<br/>
-\(Q\) is the quality factor<br/>
+\(\omega_0\) is the characteristic frequency in radians/s [\(rads^{-1}\)]<br/>
+\(Q\) is the quality factor and is dimensionless [\(no\ unit\)]<br/>
+\(s = j\omega\)<br/>
 </p>
 
-The transfer function for a 2nd-order low-pass Sallen-Key filter is[^bib-ti-analysis-of-sallen-key-arch]:
+{{% tip %}}
+The characteristic frequency `\(\omega_0\)` is not necessarily equal to the cut-off frequency. Also, `\(\frac{1}{Q}\)` is sometimes written as `\(\alpha\)`.
+{{% /tip %}}
+
+Written in the same form as the general equation above, the transfer function for a 2nd-order low-pass Sallen-Key filter is[^bib-analog-devices-ch8-analog-filters]:
 
 <p>\begin{align}
-H(s) &= \frac{K}{(R_1R_2C_1C_2)s^2 + (R_1C_1 + R_2C_1 + R_1C_2(1 - K))s + 1} \\
+\label{eq:sallen-key-2-order-lp}
+H(s) &= \frac{\frac{K}{R_1R_2C_1C_2}} {s^2 + \left[(\frac{1}{R_1} + \frac{1}{R_2})\frac{1}{C_1} + \frac{1 - K}{R_2C_2} \right]s + \frac{1}{R_1R_2C_1C_2}} \\
 \end{align}</p>
+
+Equating the coefficients in the general form (`\(Eq.\ \ref{eq:gen-2-order-lp}\)`) with those specific to the Sallen-Key topology (`\(Eq.\ \ref{eq:sallen-key-2-order-lp}\)`) allows us to find the equations of the characteristic frequency and quality factor.
 
 The cut-off frequency is:
 
@@ -503,3 +512,4 @@ For general information on analogue filters, see the [Analogue Filters page](/el
 [^bib-ti-analysis-of-sallen-key-arch]: James Karki (1999, Jul). _SLOA024B: Analysis of the Sallen-Key Architecture (Application Report)_. Texas Instruments. Retrieved 2022-09-22, from https://www.ti.com/lit/an/sloa024b/sloa024b.pdf.
 [^bib-ti-filter-design-tool]: Texas Instruments. _Filter Design Tool (web application)_. Retrieved 2022-09-29, from https://webench.ti.com/filter-design-tool/filter-type.
 [^bib-okawa-filter-design-and-analysis]: OKAWA Electric Design. _Filter Design and Analysis (web application)_. Retrieved 2022-09-29, from http://sim.okawa-denshi.jp/en/Fkeisan.htm.
+[^bib-gary-tuttle-second-order-filters]: Gary Tuttle. _EE 230: Second-order Filters (lecture slides)_. Retrieved 2022-10-01, from http://tuttle.merc.iastate.edu/ee230/topics/filters/second_order_intro.pdf.
