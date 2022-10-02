@@ -375,18 +375,41 @@ scipy.signal.ellip(N, rp, rs, Wn, btype='low', analog=False, output='ba', fs=Non
     <p>\begin{align}k_i = \frac{f_{ci}}{f_c} \end{align}</p>
 * `\(Q_i\)` is the quality factor of the partial filter
 
+All values have been normalized by setting `\(\omega_c = 1\)`.
+
 #### Butterworth Coefficients
 
 <table>
   <thead>
-    <tr><th>n</th>  <th>\(i\)</th>  <th>\(a_i\)</th>  <th>\(b_i\)</th>  <th>\(k_i\)</th>  <th>\(Q_i\)</th></tr>
+    <tr><th>n</th>  <th>\(i\)</th>  <th>\(a_i\)</th>  <th>\(b_i\)</th>  <th>\(k_i\)</th>  <th>\(Q_i\)</th>  <th style="width: 200px;">Polynomial Factors</th></tr>
   </thead>
   <tbody>
-    <tr><td>1</td>      <td>1</td>      <td>1.0000</td>   <td>0.0000</td>   <td>1.000</td>    <td>n/a</td></tr>
-    <tr><td>2</td>      <td>1</td>      <td>1.4142</td>   <td>1.0000</td>   <td>1.000</td>    <td>0.71</td></tr>
-    <tr><td>3</td>      <td>1</td>      <td>1.0000</td>   <td>0.0000</td>   <td>1.000</td>    <td>n/a</td></tr>
+    <tr><td>1</td>      <td>1</td>      <td>1.0000</td>   <td>0.0000</td>   <td>1.000</td>    <td>n/a</td>  <td>\(s + 1\)</td></tr>
+    <tr><td>2</td>      <td>1</td>      <td>1.4142</td>   <td>1.0000</td>   <td>1.000</td>    <td>0.71</td> <td>\(s^2 + 1.4142s + 1\)</td></tr>
+    <tr><td>3</td>      <td>1</td>      <td>1.0000</td>   <td>0.0000</td>   <td>1.000</td>    <td>n/a</td>  <td rowspan="2">\((s + 1)(s^2 + s + 1)\)</td></tr>
     <tr><td></td>       <td>2</td>      <td>1.0000</td>   <td>1.0000</td>   <td>1.272</td>    <td>1.00</td></tr>
   </tbody>
+</table>
+
+<table>
+<thead>
+<tr><th style="text-align: right;">  n</th><th style="width:700px;">poly</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: right;">  1</td><td>\(s + 1\)</td></tr>
+<tr><td style="text-align: right;">  2</td><td>\(s^{2} + 1.41421356237309 s + 1\)
+                                     </td></tr>
+<tr><td style="text-align: right;">  3</td><td>\(\left(s + 1\right) \left(s^{2} + 1.0 s + 1\right)\)
+                                     </td></tr>
+<tr><td style="text-align: right;">  4</td><td>\(\left(s^{2} + 0.765366864730179 s + 1\right) \left(s^{2} + 1.84775906502257 s + 1\right)\)
+                                     </td></tr>
+<tr><td style="text-align: right;">  5</td><td>\(\left(s + 1\right) \left(s^{2} + 0.618033988749895 s + 1\right) \left(s^{2} + 1.61803398874989 s + 1\right)\)
+                                     </td></tr>
+<tr><td style="text-align: right;">  6</td><td>\(\left(s^{2} + 0.517638090205041 s + 1\right) \left(s^{2} + 1.41421356237309 s + 1\right) \left(s^{2} + 1.93185165257814 s + 1\right)\)      
+                                     </td></tr>
+<tr><td style="text-align: right;">  7</td><td>\(\left(s + 1\right) \left(s^{2} + 0.445041867912629 s + 1\right) \left(s^{2} + 1.24697960371747 s + 1\right) \left(s^{2} + 1.80193773580484 s + 1\right)\)                        </td></tr>
+<tr><td style="text-align: right;">  8</td><td>\(\left(s^{2} + 0.390180644032256 s + 1\right) \left(s^{2} + 1.1111404660392 s + 1\right) \left(s^{2} + 1.66293922460509 s + 1\right) \left(s^{2} + 1.96157056080646 s + 1\right)\)</td></tr>
+</tbody>
 </table>
 
 #### Chebyshev Coefficients For 3dB Passband Ripple

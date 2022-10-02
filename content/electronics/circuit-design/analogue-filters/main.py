@@ -5,31 +5,33 @@ from pathlib import Path
 import matplotlib.ticker as ticker
 
 def main():
-    create_freq_response_plot()
+    # create_freq_response_plot()
 
-    create_sallen_key_response_plot(Path('low-pass-sallen-key'))
-    create_sallen_key_response_plot(Path('low-pass-sallen-key-chebyshev-3db'))
-    create_sallen_key_response_plot(Path('low-pass-sallen-key-butterworth'))
+    # create_sallen_key_response_plot(Path('low-pass-sallen-key'))
+    # create_sallen_key_response_plot(Path('low-pass-sallen-key-chebyshev-3db'))
+    # create_sallen_key_response_plot(Path('low-pass-sallen-key-butterworth'))
 
-    # Low-Pass Filter Comparison Plots
-    config = [
-        {
-            'data_path': Path('low-pass-sallen-key-chebyshev-3db/sim-results.csv'),
-            'legend': 'Chebyshev 3dB',
-        },
-        {
-            'data_path': Path('low-pass-sallen-key-butterworth/sim-results.csv'),
-            'legend': 'Butterworth',
-        },
-        {
-            'data_path': Path('low-pass-sallen-key-bessel/sim-results.csv'),
-            'legend': 'Bessel',
-        },
-    ]
-    create_low_pass_filter_comparison_plots(config)
+    # # Low-Pass Filter Comparison Plots
+    # config = [
+    #     {
+    #         'data_path': Path('low-pass-sallen-key-chebyshev-3db/sim-results.csv'),
+    #         'legend': 'Chebyshev 3dB',
+    #     },
+    #     {
+    #         'data_path': Path('low-pass-sallen-key-butterworth/sim-results.csv'),
+    #         'legend': 'Butterworth',
+    #     },
+    #     {
+    #         'data_path': Path('low-pass-sallen-key-bessel/sim-results.csv'),
+    #         'legend': 'Bessel',
+    #     },
+    # ]
+    # create_low_pass_filter_comparison_plots(config)
 
-    # Create plot showing Sallen-Key gain rise due to non-zero op-amp output impedance
-    create_sallen_key_bode_plot_showing_gain_rise()
+    # # Create plot showing Sallen-Key gain rise due to non-zero op-amp output impedance
+    # create_sallen_key_bode_plot_showing_gain_rise()
+
+    create_butterworth_table()
 
 def parse_row(data_in):
     out = np.array(data_in)
@@ -284,6 +286,39 @@ def create_sallen_key_bode_plot_showing_gain_rise():
 
     plt.tight_layout()
     plt.savefig(data_dir_path / 'response.png')
+
+from sympy import *
+import math
+from tabulate import tabulate
+def create_butterworth_table():
+    
+    def create_polynomial_expr(n):
+        """
+        Generates a printable sympy expression of the factored Butterworth polynomial of degree n  
+        Polynomial equations from https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Analog-Filters/Butterworth-Filters.html
+        """
+        init_printing(use_unicode=True)
+        s = symbols('s')        
+        if n % 2 == 0:
+            # n is even
+            end = n//2
+            output = 1
+        else:
+            # n is off
+            output = (s + 1)
+            end = (n - 1)//2
+        # The rest is the same regardless of odd or even
+        for k in range(end):
+            output *= (s**2 - 2*math.cos(2*math.pi*(2*k + n + 1)/(4*n))*s + 1)
+        return output
+
+    table = [['n', 'poly']]
+    for i in range(1, 9):
+        poly = create_polynomial_expr(i)
+        table.append([f'{i}', f'\({latex(poly)}\)'])
+
+    print(tabulate(table, headers='firstrow', tablefmt='html'))
+
 
 
 if __name__ == '__main__':
