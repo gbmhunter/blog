@@ -1,19 +1,19 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Programming", "Operating Systems", "Linux" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Programming, Operating Systems, Linux ]
 date: 2017-06-24
-description: "A walk-through on how to configure serial ports correctly in Linux."
+description: A walk-through on how to configure serial ports correctly in Linux.
 draft: false
-images: [ "/programming/operating-systems/linux/linux-serial-ports-using-c-cpp/linux-dev-dir-ttyacm0-arduino-serial.png" ]
-lastmod: 2020-11-24
-tags: [ "Linux", "serial ports", "termios", "files", "unix", "tty", "devices", "configurations", "C", "C++", "examples", "getty", "Arduino", "code" ]
-title: "Linux Serial Ports Using C/C++"
-type: "page"
+images: [ /programming/operating-systems/linux/linux-serial-ports-using-c-cpp/linux-dev-dir-ttyacm0-arduino-serial.png ]
+lastmod: 2022-10-03
+tags: [ Linux, serial ports, termios, files, unix, tty, devices, configurations, C, C++, examples, getty, Arduino, code, USB, serial, data ]
+title: Linux Serial Ports Using C/C++
+type: page
 ---
 
 ## Overview
 
-Unluckily, using serial ports in Linux is not the easiest thing in the world. When dealing with the `termios.h` header, there are many finicky settings buried within multiple bytes worth of bitfields. This page is an attempt to help explain these settings and show you how to configure a serial port in Linux correctly.
+Unluckily, using serial ports in Linux is not the easiest thing in the world. When dealing with the `termios.h` header, **there are many finicky settings buried within multiple bytes worth of bitfields**. This page is an attempt to help explain these settings and show you how to configure a serial port in Linux correctly.
 
 ## Everything Is A File
 
@@ -391,7 +391,7 @@ int n = read(serial_port, &read_buf, sizeof(read_buf));
 This is a simple as:
 
 ```c
-close(serial_port)
+close(serial_port);
 ```
 
 ## Full Example (Standard Baud Rates)
@@ -480,7 +480,7 @@ int main() {
   // print it to the screen like this!)
   printf("Read %i bytes. Received message: %s", num_bytes, read_buf);
 
-  close(serial_port)
+  close(serial_port);
   return 0; // success
 };
 ```
