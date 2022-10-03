@@ -14,3 +14,5 @@ type: "post"
 ## Updates This Month
 
 * Used the sympy Python package to generate tables of factored Butterworth filter polynomials.
+
+* Added information on [MQTT message ordering](/electronics/communication-protocols/mqtt-protocol/#message-ordering).

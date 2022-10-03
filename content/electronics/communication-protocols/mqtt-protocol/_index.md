@@ -4,8 +4,8 @@ categories: [ Electronics, Communication Protocols ]
 date: 2014-02-16
 description: History, brokers, clients, Mosquitto, Paho, embedded MQTT clients and more information about the MQTT communications protocol.
 draft: false
-lastmod: 2022-06-20
-tags: [ electronics, communication protocols, MQTT, paho, Python, TLS, SSL, "1883", "8883", brokers, clients, coreMQTT, embedded, IoT, MQTT-SN, sensor networks, ZigBee, SCADA, IBM, Mosquitto ]
+lastmod: 2022-10-03
+tags: [ electronics, communication protocols, MQTT, paho, Python, TLS, SSL, "1883", "8883", brokers, clients, coreMQTT, embedded, IoT, MQTT-SN, sensor networks, ZigBee, SCADA, IBM, Mosquitto, message ordering, messages ]
 title: MQTT Protocol
 type: page
 ---
@@ -130,6 +130,31 @@ The complete specification for MQTT-SN is called _MQTT For Sensor Networks (MQTT
 which provides a bi-directional data transfer service between any node and a particular one (a gateway) should
 be able to support MQTT-SN[^bib-oasis-open-mqtt-protocol-spec-v1.2].
 
+## Message Ordering
+
+**The ordering of messages can sometimes be important, especially when a device is sending control messages or state information across MQTT**. For example, if a switch published a message saying it was on, and then quickly published a message saying it was off, you need the order of these messages to be preserved if you want to know the current state of the switch.
+
+MQTT makes the following guarantees about message ordering for messages sent on the same topic (no guarantee of ordering is made across messages on different topics)[^bib-stackoverflow-is-message-order-preserved-in-mqtt-messages]:
+
+* No guarantees are made about the relative ordering between messages published on a topic with different QoS values. For example, a message published by one client with a QoS of 0 after a message with a QoS of 2 may be received first by a different client.
+* QoS 0 messages will be delivered in order (but messages may get lost)
+* QoS 1 messages will be delivered in order, but only for the first attempt. Duplicates may be sent, and a duplicate may arrive after the next message was received.
+* QoS 2 messages will be delivered in order.
+
+Per [Section 4.6: Message ordering](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718105) of the MQTT v3.1.1 documentation[^bib-oasis-mqtt-v3.1.1-specifications]:
+
+> A Client MUST follow these rules when implementing the protocol flows defined elsewhere in this chapter:
+>
+> When it re-sends any PUBLISH packets, it MUST re-send them in the order in which the original PUBLISH packets were sent (this applies to QoS 1 and QoS 2 messages) [MQTT-4.6.0-1]
+> - It MUST send PUBACK packets in the order in which the corresponding PUBLISH packets were received (QoS 1 messages) [MQTT-4.6.0-2]
+> - It MUST send PUBREC packets in the order in which the corresponding PUBLISH packets were received (QoS 2 messages) [MQTT-4.6.0-3]
+> - It MUST send PUBREL packets in the order in which the corresponding PUBREC packets were received (QoS 2 messages) [MQTT-4.6.0-4]
+> 
+> A Server MUST by default treat each Topic as an "Ordered Topic". It MAY provide an administrative or other mechanism to allow one or more Topics to be treated as an "Unordered Topic" [MQTT-4.6.0-5].
+>
+>  When a Server processes a message that has been published to an Ordered Topic, it MUST follow the rules listed above when delivering messages to each of its subscribers. In addition it MUST send PUBLISH packets to consumers (for the same Topic and QoS) in the order that they were received from any given Client
+
+
 ## References
 
 [^bib-ublox-mqtt-sn]: ublox (2020, Jun 16). _MQTT-SN – lowering the cost of IoT at scale_. Retrieved 2022-06-20, from https://www.u-blox.com/en/blogs/insights/mqtt-sn.
@@ -137,3 +162,5 @@ be able to support MQTT-SN[^bib-oasis-open-mqtt-protocol-spec-v1.2].
 [^bib-oasis-open-mqtt-protocol-spec-v1.2]: Andy Stanford-Clark and Hong Linh Truong (2013, Nov 14). _MQTT For Sensor Networks (MQTT-SN) Protocol Specification: Version 1.2_. Retrieved 2022-06-21, from https://www.oasis-open.org/committees/download.php/66091/MQTT-SN_spec_v1.2.pdf.
 [^bib-wikipedia-mqtt]: Wikipedia (2022, June 21). _MQTT_. Retrieved 2022-06-22, from https://en.wikipedia.org/wiki/MQTT.
 [^bib-paessler-brief-history-mqtt]: Shaun Behrens (2019, Aug 09). _From Oil Pipelines to the IoT: A Brief History of MQTT_. Paessler. Retrieved 2022-06-22, from https://blog.paessler.com/a-brief-history-of-mqtt.
+[^bib-stackoverflow-is-message-order-preserved-in-mqtt-messages]: StackOverflow. _Is message order preserved in MQTT messages?_. Retrieved 2022-10-03, from https://stackoverflow.com/questions/30955110/is-message-order-preserved-in-mqtt-messages.
+[^bib-oasis-mqtt-v3.1.1-specifications]: Oasis. _MQTT Version 3.1.1 Specifications_. Retrieved 2022-10-03, from http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html.
