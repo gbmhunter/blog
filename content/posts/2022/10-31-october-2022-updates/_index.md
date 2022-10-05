@@ -16,3 +16,5 @@ type: "post"
 * Used the sympy Python package to generate tables of factored Butterworth filter polynomials.
 
 * Added information on [MQTT message ordering](/electronics/communication-protocols/mqtt-protocol/#message-ordering).
+
+* Added [standard max. and min. resistances for E series resistors](/electronics/components/resistors/#the-e-series).

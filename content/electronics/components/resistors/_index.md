@@ -4,8 +4,8 @@ categories: [ Electronics, Electronic Components ]
 date: 2012-05-14
 description: Schematic symbols, series and parallel behaviour, manufacturing processes, the E series, tolerances, variable resistors, volume resistance and more info about the electrical components called resistors.
 draft: false
-lastmod: 2022-08-26
-tags: [ resistors, resistors, components, electronics, schematic symbols, tolerances, E series, packages, thick film, thin film, wirewound, potentiometers, rheostats, variable resistors, Ayrton-Perry winding, resistor optimizer, resistor divider ]
+lastmod: 2022-10-05
+tags: [ resistors, resistors, components, electronics, schematic symbols, tolerances, E series, packages, thick film, thin film, wirewound, potentiometers, rheostats, variable resistors, Ayrton-Perry winding, resistor optimizer, resistor divider, E96, E24, E12 ]
 title: Resistors
 type: page
 ---
@@ -184,10 +184,11 @@ For non-repetitive, high precision values, you can actually tweak a resistors va
 
 Practically all resistors follow an _E series_, a **scale of predefined resistances** that have standardised by IEC 60063. This type of sequence is called [preferred numbers](https://en.wikipedia.org/wiki/Preferred_number). Common E series are the E12, E24, E48, E96 and E192 series. The series divides the numbers between 1 and 10 into 12, 24, 48, e.t.c steps. The steps are chosen so that maximum relative error between any resistance you want and the closest resistance in the series is fixed (i.e. constant).
 
-Simply, this means that each series guarantees you will be able to find a resistor that equals the resistance you need within a **fixed maximum percentage error***.
+Simply, this means that each series guarantees you will be able to find a resistor that equals the resistance you need within a **fixed maximum percentage error**.
 
-TIP: Confusingly, for each series, you can get ever so slightly higher errors than what is listed below. This is due to the final rounding process (e.g. E96 resistors are rounded to three significant figures).
-
+{{% tip %}}
+Confusingly, for each series, you can get ever so slightly higher errors than what is listed below. This is due to the final rounding process (e.g. E96 resistors are rounded to three significant figures).
+{{% /tip %}}
 
 | Series | Maximum Percentage Error
 |--------|--------------------------
@@ -222,11 +223,15 @@ where:</br>
 \(n\) = the total number of elements in the series</br>
 </p>
 
-See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_number), for information on these series.
+For any E-series range, this pattern is applied for every decade of resistance, e.g. between `\(1-10\Omega\)`, `\(10-100\Omega\)`, `\(100-1k\Omega\)` and so on. standard families of resistors will start at about `\(1\Omega\)` and continue up to `\(10-20M\Omega\)`. For values outside of this range you generally have to find specialist products (e.g. precision current measuring resistors) and pay a little more for them.
+
+{{% figure src="yageo-rc-series-thick-film-general-purpose-resistors-summary-table.png" width="900px" caption="Table showing the min. and max. resistances available in Yageo's RC family of general-purpose thick-film resistors[^bib-yageo-rc-family-product-page]." %}}
 
 [The NinjaCalc Standard Resistance Finder calculator](https://ninja-calc.mbedded.ninja/calculators/electronics/basics/standard-resistance-finder), can easily find the closest E-series resistance to your desired resistance.
 
 {{% figure src="screenshot-ninjacalc-standard-resistance-finder-preferred-value-e6-e192-324.png" width="550" caption="NinjaCalc's 'Standard Resistance Finder' calculator showing the closest E-series values to a desired resistance of 10.3kΩ (with closest highest and closest lowest resistance)." %}}
+
+See [Wikipedia - Preferred Number](https://en.wikipedia.org/wiki/Preferred_number) for more information on these series.
 
 ## Resistor Manufacturing Processes
 
@@ -343,3 +348,4 @@ There is a great, free tool by Janne Ahonen called _Resistor Optimizer_ ([downlo
 [^bib-edn-resistors-arent-resistors]: Wyatt, Kenneth (2013-10-29). _Resistors aren’t resistors_. EDN. Retrieved 2021-08-15, from https://www.edn.com/resistors-arent-resistors/.
 [^bib-tt-electronics-w20-series-ds]: TT Electronics (2020, Jun). _Vitreous Enamelled Wirewound Resistors: W20 Series (datasheet)_. Retrieved 2022-04-21, from https://www.mouser.com/datasheet/2/414/TTRB_S_A0010754439_1-2565592.pdf.
 [^bib-jahonen-kapsi-resistor-optimizer]: Janne Ahonen (2018, Jun 17). _Resistor optimizer (product page)_. Retrieved 2022-08-26, from http://jahonen.kapsi.fi/Electronics/ResOptimizer/.
+[^bib-yageo-rc-family-product-page]: Yageo. _Thick Film General Purpose (product page)_. Retrieved 2022-10-05, from https://www.yageo.com/en/Product/Index/rchip/thick_film_general_purpose.
