@@ -20,3 +20,5 @@ type: "post"
 * Added [standard max. and min. resistances for E series resistors](/electronics/components/resistors/#the-e-series).
 
 * Added info on BJT leakage currents.
+
+* Added equations to find the normalized Butterworth filter polynomials.

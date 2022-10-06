@@ -323,9 +323,9 @@ The reduce the effects of each stages dynamic impedance effecting it's neighbour
 
 It might seem hard to believe, but you can build RC networks which increase the input voltage at specific frequencies. See [Herman Epstein - Synthesis Of Passive RC Networks With Gains Greater Than Unity](http://www.oldfriend.url.tw/article/IEEE_paper/Synthesis%20of%20Passive%20RC%20Networks%20with%20Gains.pdf) [(cached copy, 2021-01-23)](./herman-epstein-synthesis-of-passive-rc-networks-with-gains-greater-than-unity.pdf) for a detailed analysis.
 
-## Filter Optimizations
+## Filter Tunings
 
-_Filter optimizations_ are specific tunings of filters to maximise a particular characteristic of it's response. Filter optimization directly specifies what the filter coefficients must be.
+_Filter tunings_ are specific tunings of filters to maximise a particular characteristic of it's response. Filter tuning directly specifies what the filters polynomials must be.
 
 * **Butterworth** Optimized for the flattest response through the pass-band, at the expense of having a low transition between the pass and stop-band.
 * **Chebyshev**: Designed to have a steep transition between the pass and stop-band, at the expense of gain ripple in either the pass or stopband (_type 1_ or _type 2_). Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name. There are two types of Chebyshev filters:
@@ -334,17 +334,29 @@ _Filter optimizations_ are specific tunings of filters to maximise a particular 
 * **Bessel**: Optimized for linear phase response up to (or down to for high-pass filters) the cutoff frequency `\(f_c\)`, at the expense of a slower transition to the stop-band. This is useful to minimizing the signal distortion (a linear _phase response_ in the frequency domain is a constant _time delay_ in the time domain).
 * **Elliptic:** Designed to have the fastest transition from the passband to the stopband, at the expense of ripple in both of these bands (Chebyshev optimization only produces ripple in one of the bands but is not as fast in the transition). Also called _Cauer_ filters or _Rational Chebyshev_ filters.
 
-The graphs below show the differences in response (bode plots, gain and phase) for these various filter optimizations:
+The graphs below show the differences in response (bode plots, gain and phase) for these various filter tunings:
 
 {{% figure src="low-pass-filter-optimization-comparison-gain-db.png" width="700px" caption="A comparison of different filter optimizations. Gain shown in dB." %}}
 
-Sometimes the differences can been visualized better by display the gain as V/V:
+Sometimes the differences can been visualized better by display the gain as `\(V/V\)`:
 
 {{% figure src="low-pass-filter-optimization-comparison-gain-vv.png" width="700px" caption="A comparison of different filter optimizations. Gain shown in V/V." %}}
 
 The linear phase delay of the Bessel filter is best visualized in the below plot where the phase in plotted on a linear scale rather than a logarithmic:
 
 {{% figure src="low-pass-filter-optimization-comparison-phase-linear.png" width="700px" caption="Phase delay of different filter optimizations, with the frequency plotted on a linear axis rather than a logarithmic axis. This is the best way to visualize the linear phase delay of the Bessel optimization." %}}
+
+### Butterworth Tunings
+
+The normalized Butterworth polynomial of degree `\(n\)` is given by[^bib-pieter-p-butterworth-filters]:
+
+<p>\begin{align}
+B_n(s) =
+\begin{cases}
+  \prod_{k=0}^{\frac{n}{2} - 1}(s^2 -2\cos{(2\pi\frac{2k + n + 1}{4n})s + 1}) & \text{even }n \\
+  (s + 1)\prod_{k=0}^{\frac{n - 1}{2} - 1}(s^2 -2\cos{(2\pi\frac{2k + n + 1}{4n})s + 1}) & \text{odd }n \\
+\end{cases}
+\end{align}</p>
 
 ### Chebyshev Optimization
 
@@ -488,3 +500,4 @@ The PSoC microcontroller features an in-built and versatile digital filter block
 [^bib-wikipedia-elliptic-filter]: Wikipedia (2022, Jan 30). _Elliptic filter_. Retrieved 2022-09-20, from https://en.wikipedia.org/wiki/Elliptic_filter.
 [^bib-rutgers-elliptic-lecture-notes]: Sophocles J. Orfanidis (2006, Nov 20). _Lecture Notes on Elliptic Filter Design_. Rutgers University: Department of Electrical & Computer Engineering. Retrieved 2022-09-20, from https://www.ece.rutgers.edu/~orfanidi/ece521/notes.pdf.
 [^bib-analog-devices-ch8-analog-filters]: Analog Devices. _Chapter 8: Analog Filters_. Retrieved 2022-09-20, https://www.analog.com/media/en/training-seminars/design-handbooks/Basic-Linear-Design/Chapter8.pdf.
+[^bib-pieter-p-butterworth-filters]: Pieter P (2021, Jul 15). _Butterworth Filters_. Retrieved 2022-10-06, from https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Analog-Filters/Butterworth-Filters.html.
