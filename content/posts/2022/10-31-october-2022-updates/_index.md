@@ -18,3 +18,5 @@ type: "post"
 * Added information on [MQTT message ordering](/electronics/communication-protocols/mqtt-protocol/#message-ordering).
 
 * Added [standard max. and min. resistances for E series resistors](/electronics/components/resistors/#the-e-series).
+
+* Added info on BJT leakage currents.

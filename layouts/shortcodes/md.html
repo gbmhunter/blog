@@ -1,1 +1,3 @@
-{{- .Inner | $.Page.RenderString -}}
+
+
+{{ .Inner | htmlUnescape | markdownify }}

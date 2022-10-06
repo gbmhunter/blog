@@ -402,6 +402,14 @@ _Second breakdown_ (a.k.a _second breakdown_) is a limitation on the SOA that is
 
 Secondary breakdown was initially thought to be a problem unique to BJT devices, and not other transistors such as MOSFETs. However, with recent technological improvements, MOSFETs have been made with high transconductances and can also experience a similar problem when operated in linear mode[^bib-wikipedia-soa].
 
+## BJT Leakage Currents
+
+* \(I_{cbo}\): Collector-base cut-off. This is the leakage from the collector to base with the emitter open-circuit (i.e. not connected to anything). The `o` stands for "open". This essentially the leakage current of the collector-base diode with reverse bias.
+* \(I_{ceo}\): The leakage from collector to emitter with the base open-circuit.
+* \(I_{ces}\): The leakage from collector to emitter with the base connected to the emitter (the s stands for "shorted").
+
+Values exponentially increase with temperature.
+
 ## Transistor Testers
 
 Many older handheld multimeters contain transistor testers for testing BJT transistors in the popular TO-92 through-hole package (you should see some 3 or 4 little holes on the front panel with letters similar to CBE).
