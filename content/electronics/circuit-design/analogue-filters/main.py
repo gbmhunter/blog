@@ -290,6 +290,7 @@ def create_sallen_key_bode_plot_showing_gain_rise():
 from sympy import *
 import math
 from tabulate import tabulate
+from bs4 import BeautifulSoup
 def create_butterworth_table():
     
     def create_polynomial_expr(n):
@@ -309,16 +310,27 @@ def create_butterworth_table():
             end = (n - 1)//2
         # The rest is the same regardless of odd or even
         for k in range(end):
-            output *= (s**2 - 2*math.cos(2*math.pi*(2*k + n + 1)/(4*n))*s + 1)
+            # The round to 3 decimal places below keeps the printed number sensible
+            output *= (s**2 - round(2*math.cos(2*math.pi*(2*k + n + 1)/(4*n)), 3)*s + 1)
         return output
 
     table = [['n', 'poly']]
     for i in range(1, 9):
         poly = create_polynomial_expr(i)
-        table.append([f'{i}', f'\({latex(poly)}\)'])
+        # If we are a 1st or 2nd order filter, add brackets manually as these
+        # are removed by sympy
+        if i == 1 or i == 2:
+            table.append([f'{i}', f'\(({latex(poly)})\)'])
+        else:
+            table.append([f'{i}', f'\({latex(poly)}\)'])
 
-    print(tabulate(table, headers='firstrow', tablefmt='html'))
-
+    html_table = tabulate(table, headers='firstrow', tablefmt='html')
+    soup = BeautifulSoup(html_table, features='html.parser')
+    
+    # Add a fixed width to column with latex equations in it, otherwise the table width goes crazy
+    second_col = soup.table.thead.tr.find_all('th')[1]
+    second_col['style'] = 'width: 700px;'
+    print(soup.prettify())
 
 
 if __name__ == '__main__':
