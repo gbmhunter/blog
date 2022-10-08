@@ -348,6 +348,25 @@ The linear phase delay of the Bessel filter is best visualized in the below plot
 
 ### Butterworth Tunings
 
+Tuning a filter for a Butterworth response gives a filter which is **maximally flat in the passband**, and rolls off towards zero in the stopband. The price you pay for this is slower roll-off into the stop-band, compared with Chebyshev or Elliptic tunings.
+
+{{% tip %}}
+It may sounds dumb, but I've always remembered Butterworth as a flat passband which "slides like butter".
+{{% /tip %}}
+
+Butterworth tunings are defined as a filter whose magnitude is[^bib-wikipedia-butterworth-filter]:
+
+<p>\begin{align}
+\label{eq:butterworth-magnitude}
+| H_n(s) | \triangleq \frac{1}{\sqrt{1 + \omega^{2n}}}
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(\omega\) is the angular frequency \([rads^{-1}]\)<br/>
+\(n\) is the order of the filter<br/>
+</p>
+
 The normalized Butterworth polynomial of degree `\(n\)` is given by[^bib-pieter-p-butterworth-filters]:
 
 <p>\begin{align}
@@ -363,86 +382,37 @@ B_n(s) =
 If you've never seen it before, the large Pi symbol `\(\prod\)` in the above equation represents the product of a series of things, such like the capital Sigma symbol `\(\Sigma\)` represents the sum of a series of things. For example, `\(\prod_{k=1}^{3}k = 1\times 2 \times 3\)`.
 {{% /tip %}}
 
-Below is a table of the factored Butterworth polynomials for order `\(n\)`. The polynomial is useful in this form as each product forms either a first or second-order partial filter which can be directly implemented by a standard filter topology (e.g. RC filter for a first-order section, Sallen-Key for a second-order section). These polynomials were generated with `\(Eq.\ \ref{eq:butterworth-polynomial}\)`.
+Below is a table of the normalized factored Butterworth polynomials for order `\(n\)`. The polynomial is useful in this form as each product forms either a first or second-order partial filter which can be directly implemented by a standard filter topology (e.g. RC filter for a first-order section, Sallen-Key for a second-order section). These polynomials were generated with `\(Eq.\ \ref{eq:butterworth-polynomial}\)`. The polynomials are normalized by setting `\(\omega_c = 1\)` (the characteristic frequency).
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align: right;">
-    n
-   </th>
-   <th style="width: 700px;">
-    poly
-   </th>
-  </tr>
- </thead>
- <tbody>
-  <tr>
-   <td style="text-align: right;">
-    1
-   </td>
-   <td>
-    \((s + 1)\)
-   </td>
-  </tr>
-  <tr>
-   <td style="text-align: right;">
-    2
-   </td>
-   <td>
-    \((s^{2} + 1.414 s + 1)\)
-   </td>
-  </tr>
-  <tr>
-   <td style="text-align: right;">
-    3
-   </td>
-   <td>
-    \(\left(s + 1\right) \left(s^{2} + 1.0 s + 1\right)\)
-   </td>
-  </tr>
-  <tr>
-   <td style="text-align: right;">
-    4
-   </td>
-   <td>
-    \(\left(s^{2} + 0.765 s + 1\right) \left(s^{2} + 1.848 s + 1\right)\)
-   </td>
-  </tr>
-  <tr>
-   <td style="text-align: right;">
-    5
-   </td>
-   <td>
-    \(\left(s + 1\right) \left(s^{2} + 0.618 s + 1\right) \left(s^{2} + 1.618 s + 1\right)\)
-   </td>
-  </tr>
-  <tr>
-   <td style="text-align: right;">
-    6
-   </td>
-   <td>
-    \(\left(s^{2} + 0.518 s + 1\right) \left(s^{2} + 1.414 s + 1\right) \left(s^{2} + 1.932 s + 1\right)\)
-   </td>
-  </tr>
-  <tr>
-   <td style="text-align: right;">
-    7
-   </td>
-   <td>
-    \(\left(s + 1\right) \left(s^{2} + 0.445 s + 1\right) \left(s^{2} + 1.247 s + 1\right) \left(s^{2} + 1.802 s + 1\right)\)
-   </td>
-  </tr>
-  <tr>
-   <td style="text-align: right;">
-    8
-   </td>
-   <td>
-    \(\left(s^{2} + 0.39 s + 1\right) \left(s^{2} + 1.111 s + 1\right) \left(s^{2} + 1.663 s + 1\right) \left(s^{2} + 1.962 s + 1\right)\)
-   </td>
-  </tr>
- </tbody>
-</table>
+_All numbers are rounded to 3 decimal places_.
+
+{{% file src="butterworth-factored-polynomial-table.html" %}}
+
+Using these polynomials `\(B_n\)`, we can write the transfer function of a Butterworth filter as[^bib-pieter-p-butterworth-filters]:
+
+<p>\begin{align}
+H_n(s) = \frac{1}{B_n}
+\end{align}</p>
+
+{{% note %}}
+This equation is different from `\(Eq.\ \ref{eq:butterworth-magnitude}\)` which defined the magnitude of a Butterworth filter, because this equation lacks the magnitude `\(|\)` symbols around `\(H_n(s)\)`. This equation is the full-and-proper transfer function, which contains both the magnitude and phase information.
+{{% /note %}}
+
+The Butterworth polynomial coefficients can be calculated with[^bib-wikipedia-butterworth-filter]:
+
+<p>\begin{align}
+a_{k}=\prod _{\mu =1}^{k}{\frac {\cos((\mu -1)\gamma )}{\sin(\mu \gamma )}}
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(a_0 = 1\)<br/>
+\(\gamma = \dfrac{\pi}{2n}\)<br/>
+</p>
+
+There is also a recursive formula to calculate the coefficients, but we'll just use the product based one. The below table shows the Butterworth polynomial coefficients calculated with this equation, up to `\(n=8\)` (8th order filter).
+
+{{% file src="butterworth-polynomial-coeffs-table.html" %}}
 
 ### Chebyshev Optimization
 
@@ -568,3 +538,4 @@ The PSoC microcontroller features an in-built and versatile digital filter block
 [^bib-rutgers-elliptic-lecture-notes]: Sophocles J. Orfanidis (2006, Nov 20). _Lecture Notes on Elliptic Filter Design_. Rutgers University: Department of Electrical & Computer Engineering. Retrieved 2022-09-20, from https://www.ece.rutgers.edu/~orfanidi/ece521/notes.pdf.
 [^bib-analog-devices-ch8-analog-filters]: Analog Devices. _Chapter 8: Analog Filters_. Retrieved 2022-09-20, https://www.analog.com/media/en/training-seminars/design-handbooks/Basic-Linear-Design/Chapter8.pdf.
 [^bib-pieter-p-butterworth-filters]: Pieter P (2021, Jul 15). _Butterworth Filters_. Retrieved 2022-10-06, from https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Analog-Filters/Butterworth-Filters.html.
+[^bib-wikipedia-butterworth-filter]: Wikipedia (2022, Aug 25). _Butterworth Filter_. Retrieved 2022-10-08, from https://en.wikipedia.org/wiki/Butterworth_filter.

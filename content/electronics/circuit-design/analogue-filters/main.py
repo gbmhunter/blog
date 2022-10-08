@@ -1,8 +1,16 @@
 import csv
+import math
+from pathlib import Path
+
+from bs4 import BeautifulSoup
 import numpy as np
 import matplotlib.pyplot as plt
-from pathlib import Path
 import matplotlib.ticker as ticker
+from sympy import *
+from tabulate import tabulate
+
+
+SCRIPT_DIR = Path(__file__).parent
 
 def main():
     # create_freq_response_plot()
@@ -31,7 +39,8 @@ def main():
     # # Create plot showing Sallen-Key gain rise due to non-zero op-amp output impedance
     # create_sallen_key_bode_plot_showing_gain_rise()
 
-    create_butterworth_table()
+    create_butterworth_factored_polynomial_table()
+    create_butterworth_polynomial_coeffs_table()
 
 def parse_row(data_in):
     out = np.array(data_in)
@@ -287,11 +296,8 @@ def create_sallen_key_bode_plot_showing_gain_rise():
     plt.tight_layout()
     plt.savefig(data_dir_path / 'response.png')
 
-from sympy import *
-import math
-from tabulate import tabulate
-from bs4 import BeautifulSoup
-def create_butterworth_table():
+
+def create_butterworth_factored_polynomial_table():
     
     def create_polynomial_expr(n):
         """
@@ -314,7 +320,7 @@ def create_butterworth_table():
             output *= (s**2 - round(2*math.cos(2*math.pi*(2*k + n + 1)/(4*n)), 3)*s + 1)
         return output
 
-    table = [['n', 'poly']]
+    table = [['n', 'polynomial']]
     for i in range(1, 9):
         poly = create_polynomial_expr(i)
         # If we are a 1st or 2nd order filter, add brackets manually as these
@@ -329,9 +335,50 @@ def create_butterworth_table():
     
     # Add a fixed width to column with latex equations in it, otherwise the table width goes crazy
     second_col = soup.table.thead.tr.find_all('th')[1]
-    second_col['style'] = 'width: 700px;'
-    print(soup.prettify())
+    second_col['style'] = 'width: 700px;'    
+    table_file_path = SCRIPT_DIR / 'butterworth-factored-polynomial-table.html'
+    with table_file_path.open('w') as file:
+        file.write(soup.prettify())
 
+def create_butterworth_polynomial_coeffs_table():
+    """
+    Creates an HTML table containing Butterworth polynomial coefficients, and writes it to a file.
+    """
+    def calc_coeffs_for_order(n):
+        # Equation from https://en.wikipedia.org/wiki/Butterworth_filter
+        # {\displaystyle a_{k}=\prod _{\mu =1}^{k}{\frac {\cos((\mu -1)\gamma )}{\sin(\mu \gamma )}}\,,}
+        # Coefficients are returned in a list, in this order: [ a0, a1, ..., an ]
+        gamma = np.pi / (2*n)
+        # Need to calculate n + 1 coefficients
+        coeffs = []
+        for k in range(n + 1):
+            if k == 0:
+                coeffs.append(1.0)
+            else:
+                # Use product formula
+                product = 1.0
+                for mew in range(1, k + 1):
+                    product *= np.cos((mew - 1)*gamma) / np.sin(mew * gamma)
+                coeffs.append(product)
+        return coeffs
+
+    table = [['n', '\(a_0\)', '\(a_1\)', '\(a_2\)', '\(a_3\)', '\(a_4\)', '\(a_5\)', '\(a_6\)', '\(a_7\)', '\(a_8\)']]
+    for n in range(1, 9):
+        coeffs = calc_coeffs_for_order(n)
+        # Convert floats to strings with rounding
+        coeffs = [ f'{coeff:.4}' for coeff in coeffs ]
+        row = [ f'{n}' ]
+        row.extend(coeffs)
+        table.append(row)
+    html_table = tabulate(table, headers='firstrow', tablefmt='html')
+    soup = BeautifulSoup(html_table, features='html.parser')
+    
+    # Add a fixed width to column with latex equations in it, otherwise the table width goes crazy
+    for col in soup.table.thead.tr.find_all('th'):
+        col['style'] = 'width: 80px;'
+    table_file_path = SCRIPT_DIR / 'butterworth-polynomial-coeffs-table.html'
+    with table_file_path.open('w') as file:
+        file.write(soup.prettify())
 
 if __name__ == '__main__':
     main()

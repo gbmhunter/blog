@@ -22,3 +22,5 @@ type: "post"
 * Added info on BJT leakage currents.
 
 * Added equations to find the normalized Butterworth filter polynomials.
+
+* Added a `file` shortcode to load content from relative files into the main Markdown file. This is used to load a Python generated HTML table (which is saved to a separate file) into the primary Markdown file.
