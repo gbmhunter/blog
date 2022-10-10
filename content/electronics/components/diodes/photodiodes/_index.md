@@ -1,11 +1,11 @@
 ---
 authors: [ Geoffrey Hunter ]
 date: 2022-02-24
-description: Schematic symbols, equivalent circuits and more info on photodiodes.
+description: Schematic symbols, equivalent circuits, transimpedance amplifiers and more info on photodiodes.
 draft: false
 images: [ ]
-lastmod: 2022-09-27
-tags: [ electronics, components, photodiodes, diodes, light, transimpedance, amplifier, op-amp, PN, junction, PIN, semiconductor, equivalent circuit, Germanium, current source, avalanche, switched capacitor ]
+lastmod: 2022-10-10
+tags: [ electronics, components, photodiodes, diodes, light, transimpedance, amplifier, TIA, op-amp, PN, junction, PIN, semiconductor, equivalent circuit, Germanium, current source, avalanche, switched capacitor ]
 title: Photodiodes
 type: page
 ---
@@ -104,7 +104,7 @@ The dark current at `\(25^{\circ}C\)` is usually specified in the photodiode's d
 
 ## Basic Photodiode-based Transimpedance Amplifier Circuit
 
-Photodiodes are commonly used to measure light intensities. But the output of a photodiode is a very small current, which isn't very useful for measuring. A common "analogue front-end" to add to a photodiode is a _transimpedance amplifier_ using an [op-amp](/electronics/components/op-amps/), as shown below. The transimpedance amplifier converts the very small current into a much larger voltage. This voltage can then be used to control other parts of a circuit or can be fed into an ADC for digitizing before being read by a microcontroller.
+Photodiodes are commonly used to measure light intensities. But the output of a photodiode is a very small current (typically `\(pA\)`), which isn't very useful for measuring. A common "analogue front-end" to add to a photodiode is a _transimpedance amplifier_ using an [op-amp](/electronics/components/op-amps/), as shown below. The transimpedance amplifier converts the very small current into a much larger voltage. This voltage can then be used to control other parts of a circuit or can be fed into an ADC for digitizing before being read by a microcontroller.
 
 {{% figure src="simple-transimpedance-photodiode-circuit.png" width="700" caption="A basic transimpedance amplifier circuit to convert the photodiodes light-dependent current into a measurable voltage. The output can be used to control other analog circuitry are can be connected to an [ADC](/electronics/components/analogue-to-digital-converters-adcs/)." %}}
 
@@ -117,6 +117,8 @@ V_{OUT} &= I_D R_f
 {{% tip %}}
 Remember that the op-amp will drive it's output to whatever voltage is needed to keep it's inverting input at the same potential as it's non-inverting input (0V).
 {{% /tip %}}
+
+**It's important to pay attention to the input bias current `\(I_B\)` when choosing the op-amp for this circuit**. This is because the photodiode sources a very small current (e.g. in the `\(pA{-}nA\)`). Any input bias current is either going to add or subtract from this photodiode current before being amplified by the feedback resistor. Jellybean op-amps have `\(I_B\)` in the range of `\(1{-}10nA\)`. You normally want to pick an op-amp which has an input bias current that is at least an order of magnitude smaller than the photodiode current you are trying to measure. Luckily, you can get op-amps that are specifically designed to have small input bias currents. For example, the [Texas Instruments OPA396](https://www.ti.com/lit/ds/symlink/opa396.pdf) has a typ. `\(I_B = \pm 10fA\)` at `\(25^{\circ}C\)`! This increases to approx. `\(\pm 4pF\)` across it's entire temperature range (typical)[^bib-ti-opa396-datasheet].
 
 An alternative to using a transimpedance amplifier to convert current to voltage is to use an op-amp and a capacitor to act as an integrator. You can by special [switched capacitor ICs](/electronics/components/switched-integrator-ics/) that package the op-amp, switches and precision capacitor in a single semiconductor IC. They offer good SNR, but with relatively low bandwidth. However, this method is not as popular as the transimpedance amplifier, and the dedicated ICs are expensive and hard to source.
 
@@ -193,3 +195,4 @@ Popular PIN photodiode with a spectral range from 400-1100nm.
 [^bib-hamamatsu-si-photodiodes]:  Hamamatsu (2020, Dec). _Si photodiodes_. Retrieved 2022-02-28, from https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/si_pd_kspd9001e.pdf.
 [^bib-wavelength-elec-photodiodes]:  Wavelength Electronics (2018). _Photodiode Basics_. Retrieved 2022-02-28, from https://www.teamwavelength.com/photodiode-basics/.
 [^bib-nthu-optical-detectors]:  Wei-Chih Wang. _Optical Detectors_. Retrieved 2022-03-02, from https://depts.washington.edu/mictech/optics/me557/detector.pdf.
+[^bib-ti-opa396-datasheet]: Texas Instruments (formally Burr-Brown) (2021, Jul). _OPA396 Precision, Low IQ, Low Input Bias Current Op Amp (datasheet)_. Retrieved 2022-10-10, from https://www.ti.com/lit/ds/symlink/opa396.pdf.

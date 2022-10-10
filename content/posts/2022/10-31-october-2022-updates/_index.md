@@ -19,7 +19,7 @@ type: "post"
 
 * Added [standard max. and min. resistances for E series resistors](/electronics/components/resistors/#the-e-series).
 
-* Added info on BJT leakage currents.
+* Added info on [BJT leakage currents](/electronics/components/transistors/bipolar-junction-transistors-bjts/#bjt-leakage-currents).
 
 * Added equations to find the normalized Butterworth tuning (filters) polynomials. Added bode plots of various order Butterworth tunings.
 

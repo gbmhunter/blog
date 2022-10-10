@@ -3,7 +3,7 @@ authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Communication Protocols ]
 date: 2011-09-03
 draft: false
-lastmod: 2022-06-25
+lastmod: 2022-10-10
 tags: [ electronics, communication protocols, SPI, bit-banging, MOSI, MISO, peripherals, microcontrollers, MCP4131, Arduino, controller, peripheral, master, slave, OSHWA, execute-in-place, XIP ]
 title: SPI Communication Protocol
 type: page
@@ -31,12 +31,17 @@ SPI consists of a basis of three wires (SCLK, MOSI and MISO), plus one chip sele
 
 The purpose of these connections is:
 
-Name    | Function
---------|------------
-nCS     | _Chip select_, a.k.a. _slave select_ (nSS). This is driven low (hence the `n`) by the master to select a slave. There is a separate chip select line going from the master to each slave.
-SCLK    | _Clock_. Driven by the master, this provides the clock signal to the slaves to clock data in and out with. The exact polarity and edges that are used depend on the values of CPOL and CPHA.
-MOSI    | _Master out, slave in_. A.k.a. _main out, subnode in_. The master drives the line and provides data to the slaves. Only the slave with nCS asserted (low) listens to the data.
-MISO    | _Master in, slave out_. A.k.a. _main in, subnode out_. The selected slave can drive this line to send data to the master.
+<table>
+  <thead>
+    <tr><th style="width:100px">Name</th>   <th>Function</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>nCS</td>    <td><i>Chip select</i>, a.k.a. <i>slave select</i> (nSS). This is driven low (hence the `n`) by the master to select a slave. There is a separate chip select line going from the master to each slave.</td></tr>
+    <tr><td>SCLK</td>   <td><i>Clock</i>. Driven by the master, this provides the clock signal to the slaves to clock data in and out with. The exact polarity and edges that are used depend on the values of CPOL and CPHA.</td></tr>
+    <tr><td>MOSI</td>   <td><i>Master out, slave in</i>. A.k.a. <i>main out, subnode in</i>. The master drives the line and provides data to the slaves. Only the slave with nCS asserted (low) listens to the data.</td></tr>
+    <tr><td>MISO</td>   <td><i>Master in, slave out</i>. A.k.a. <i>main in, subnode out</i>. The selected slave can drive this line to send data to the master.</td></tr>
+  </tbody>
+</table>
 
 {{% figure src="spi-basic-master-slave-diagram.png" width="600px" caption="The basic connections needed between an SPI master and a single SPI slave." %}}
 
@@ -99,6 +104,10 @@ The standard defines these different modes to allow for greater variability in t
 {{% note %}}
 Many devices do not support all four SPI modes. It is common (especially for slave devices) to only support two of the four modes.
 {{% /note %}}
+
+To give you an example of what it means for firmware, below is a screenshot of the SPI modes table from the [Microchip SAM D21 MCU datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf). We are lucky in this case, the SAMD21 microcontroller supports all four modes of operation. 
+
+{{% figure src="microchip-sam-d21-spi-transfer-modes-table.png" width="800px" caption="Screenshot of the SPI modes table from the Microchip SAM D21 datasheet[^bib-microchip-samd21-datasheet]." %}}
 
 ### Can A Single Master Support Multiple SPI Modes On The Same Bus?
 
@@ -223,3 +232,4 @@ The RapidS term is used by [Atmel](http://www.atmel.com/) and [Adesto Technologi
 [^bib-arduino-spi]: Arduino. _Arduino & Serial Peripheral Interface (SPI)_. Retrieved 2022-06-25, from https://docs.arduino.cc/learn/communication/spi.
 [^bib-totalphase-single-dual-quad-spi]: Kathleen Chan. _What are the Differences of Single vs Dual vs Quad SPI?_. TotalPhase. Retrieved 2022-06-25, from https://www.totalphase.com/blog/2020/05/what-are-the-differences-of-single-vs-dual-vs-quad-spi/.
 [^bib-infineon-s25fs128s-ds]: Infineon (2019, Nov 22). _S25FS128S/S25FS256S: 1.8 V, Serial Peripheral Interface with Multi-I/O, MirrorBit® Non-Volatile Flash (datasheet)_. Retrieved 2022-06-26, from https://www.infineon.com/dgdl/Infineon-S25FS128S_S25FS256S_1.8_V_Serial_Peripheral_Interface_with_Multi-I_O_MirrorBit(R)_Non-Volatile_Flash-DataSheet-v14_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ed6b5ab5758. 
+[^bib-microchip-samd21-datasheet]: Microchip (2021). _SAM D21/DA1 Family: Low-Power, 32-bit Cortex-M0+ MCU with Advanced Analog and PWM (datasheet)_. Retrieved 2022-10-10, from https://ww1.microchip.com/downloads/en/DeviceDoc/SAM-D21-DA1-Family-Data-Sheet-DS40001882H.pdf.

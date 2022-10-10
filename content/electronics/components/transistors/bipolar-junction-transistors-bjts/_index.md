@@ -404,11 +404,21 @@ Secondary breakdown was initially thought to be a problem unique to BJT devices,
 
 ## BJT Leakage Currents
 
-* \(I_{cbo}\): Collector-base cut-off. This is the leakage from the collector to base with the emitter open-circuit (i.e. not connected to anything). The `o` stands for "open". This essentially the leakage current of the collector-base diode with reverse bias.
-* \(I_{ceo}\): The leakage from collector to emitter with the base open-circuit.
-* \(I_{ces}\): The leakage from collector to emitter with the base connected to the emitter (the s stands for "shorted").
+BJTs do not act as perfect switches. When "off", a small amount of leakage current will flow depending on the applied voltage to each of it's terminals. Leakage currents for BJT are normally in the `\(nA\)` range. For many applications, this amount of leakage does not effect the operation in any significant way. However, for certain applications such as extremely low-power devices and low-current measurement circuits, some `\(nA\)` of leakage can be large enough to cause issues.
 
-Values exponentially increase with temperature.
+There are three main leakage parameters specified in BJT datasheets, which are explained in detail below. Most leakage currents exponentially increase with temperature.
+
+### Icbo
+
+`\(I_{cbo}\)` (collector-base cut-off current) is the leakage from the collector to base with the emitter open-circuit (i.e. not connected to anything). The `o` stands for "open". This essentially the leakage current of the collector-base diode with reverse bias. It is the most common leakage current value (if any) that you'll find on a BJTs datasheet. The onsemi BC547BTF gives a `\(I_{cbo,max} = 15nA \)` in it's datasheet[^bib-onsemi-bc546-ds].
+
+### Iceo
+
+`\(I_{ceo}\)` (collector-emitter cut-off current) is the leakage current from collector to emitter with the base open-circuit. JEDEC calls this the _collector cut-off current, base open_[^bib-jedec-iceo]. Not commonly listed on datasheets.
+
+### Ices
+
+`\(I_{ces}\)` is the leakage from collector to emitter with the base connected to the emitter (the s stands for "shorted"). Not commonly listed on datasheets.
 
 ## Transistor Testers
 
@@ -438,3 +448,5 @@ The you are looking for a slice of history and some informative transistor infor
 [^bib-wikipedia-hybrid-pi-model]: Wikipedia (2020, Mar 22). _Hybrid-pi model_. Retrieved 2022-08-14, from https://en.wikipedia.org/wiki/Hybrid-pi_model.
 [^bib-byjus-transfer-characteristics]: Byju's. _Characteristics Of A Transistor_. Retrieved 2022-08-15, from https://byjus.com/physics/characteristics-of-a-transistor/.
 [^bib-learn-about-elec-bjts-current-gain]: Learnabout Electronics (2020, Dec 29). _Learnabout Electronics - Bipolar Junction Transistors (BJTs)_. Retrieved 2022-08-15, from https://learnabout-electronics.org/Semiconductors/bjt_05.php.
+[^bib-onsemi-bc546-ds]: onsemi (formally Fairchild) (2002). _BC546 / BC547 / BC548 / BC549 / BC550: NPN Epitaxial Silicon Transistor (datasheet)_. Retrieved 2022-10-10, from https://nz.mouser.com/datasheet/2/308/BC550_D-1802078.pdf. 
+[^bib-jedec-iceo]: JEDEC. _Dictionary: collector cutoff current, base open (ICEO)_. Retrieved 2022-10-10, from https://www.jedec.org/standards-documents/dictionary/terms/collector-cutoff-current-base-open-iceo.
