@@ -367,21 +367,22 @@ TIP: The standard diode in the ideal diode circuit can be replaced by a Schottky
 
 #### Improved Half-wave Rectifier
 
-[^ideal-diode-improved-inverting] shows an improved half-wave rectifier with additional circuitry to prevent the op-amp from saturating when in the blocked part of the cycle[^bib-microchip-op-amp-rectifiers]. Note that this also is an inverting half-wave rectifier -- it rectifies the negative half of the input and outputs it as a positive wave on the output.
+The below schematic shows an improved half-wave rectifier with additional circuitry to prevent the op-amp from saturating when in the blocked part of the cycle[^bib-microchip-op-amp-rectifiers]. Note that this also is an inverting half-wave rectifier -- it rectifies the negative half of the input and outputs it as a positive wave on the output.
 
-[[ideal-diode-improved-inverting]]
 {{% figure src="ideal-diode-improved-inverting.svg" width="700px" caption="An improved ideal diode/half-wave rectifier." %}}
 
-The gain of the half-wave rectifier in [^ideal-diode-improved-inverting] is:
+The gain of the half-wave rectifier above is:
 
-<p>A = \begin{cases}
+<p>\begin{align}
+A = \begin{cases}
 -\frac{R_2}{R_1} & v_{in} < 0 \\
 0 & v_{in} \ge 0 \\
-\end{cases}</p>
+\end{cases}
+\end{align}</p>
 
 ### Sample And Hold Circuits
 
-The basic op-amp based _sample and hold_ circuit is an extension of the [^_ideal_diodesrectifiers, ideal diode] circuit, but with an added capacitor on the output to maintain with the voltage when the input signal is removed.
+The basic op-amp based _sample and hold_ circuit is an extension of the ideal diode circuit, but with an added capacitor on the output to maintain with the voltage when the input signal is removed.
 
 {{% figure src="sample-and-hold.svg" width="600px" caption="Basic op-amp based sample-and-hold circuit." %}}
 
@@ -395,9 +396,8 @@ The _common-mode input voltage range_ is the range of voltages that can appear a
 
 ### Input Offset Voltage (Vos/Vio)
 
-**The _input offset voltage_ `\(V_{OS}\)` (or sometimes called `\(V_{IO}\)`) is the voltage difference required between the two input pins to force the output to 0**. It is a DC measurement parameter. In an ideal op-amp, the op-amp only amplifies a difference between the inputs, and so the output is 0V when the difference is 0V, hence the input offset voltage is 0V. However, real-world op-amps always have some unavoidable differences in the internal components that make up the op-amps (specifically, in the input differential stage of the internal circuitry), and thus the inputs are not perfectly identical. [^input-offset-voltage-model] shows how the input offset voltage is modelled as a voltage source in series with one of the inputs of an ideal op-amp.
+**The _input offset voltage_ `\(V_{OS}\)` (or sometimes called `\(V_{IO}\)`) is the voltage difference required between the two input pins to force the output to 0**. It is a DC measurement parameter. In an ideal op-amp, the op-amp only amplifies a difference between the inputs, and so the output is 0V when the difference is 0V, hence the input offset voltage is 0V. However, real-world op-amps always have some unavoidable differences in the internal components that make up the op-amps (specifically, in the input differential stage of the internal circuitry), and thus the inputs are not perfectly identical. The below circuit shows how the input offset voltage is modelled as a voltage source in series with one of the inputs of an ideal op-amp.
 
-[[input-offset-voltage-model]]
 {{% figure src="input-offset-voltage-model.svg" width="600px" caption="The input offset voltage is modelled as a voltage source in series with one of the inputs of an ideal op-amp (it doesn't matter which input, as the input offset voltage can be positive or negative)." %}}
 
 A non-zero input offset voltage results in gain errors between the input and output of a op-amp. The input offset voltage is typically in the following ranges:
@@ -680,13 +680,11 @@ We can take this one step further, since normally the open-loop gain `\(A\)` for
 G_V &\approx \frac{1}{B}
 \end{align}</p>
 
-|===
-| Name       | Equation
+In summary:
 
-| Open-loop gain | `\(A\)`
-| Loop gain  | `\(-AB\)` 
-| Closed-loop gain | `\(\approx \frac{1}{B}\)`
-|===
+* Open-loop gain: `\(A\)`
+* Loop gain: `\(-AB\)` 
+* Closed-loop gain: `\(\approx \frac{1}{B}\)`
 
 ## Examples
 

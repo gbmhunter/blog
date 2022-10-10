@@ -420,6 +420,12 @@ There are three main leakage parameters specified in BJT datasheets, which are e
 
 `\(I_{ces}\)` is the leakage from collector to emitter with the base connected to the emitter (the s stands for "shorted"). Not commonly listed on datasheets.
 
+### Leakage Measurement Circuits
+
+The three leakage parameters are measured as shown in the following circuits.
+
+{{% figure src="leakage-current-diagrams.png" width="800px" caption="Circuits showing how each 1 of the three BJT leakage currents is measured." %}}
+
 ## Transistor Testers
 
 Many older handheld multimeters contain transistor testers for testing BJT transistors in the popular TO-92 through-hole package (you should see some 3 or 4 little holes on the front panel with letters similar to CBE).
