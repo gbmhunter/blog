@@ -1,12 +1,11 @@
 ---
 authors: [ "Geoffrey Hunter" ]
+categories: [ Updates ]
 date: 2015-03-31
 draft: false
 lastmod: 2015-03-31
 title: March 2015 Updates
 type: post
-categories:
-- Updates
 tags: [ "Avada", "buck converters", "component packages", "diodes", "MFI", "MOSFETs", "power regulators", "SMPS", "SOT-1226", "themes", "USB", "WLCSP" ]
 ---
 
@@ -30,7 +29,7 @@ tags: [ "Avada", "buck converters", "component packages", "diodes", "MFI", "MOSF
 
 * Moved the info on SEPIC converters from the {{% link text="Power Regulators page" src="/electronics/components/power-regulators" %}} onto it's own [SEPIC Converters page](/electronics/components/power-regulators/sepic-converters).
 
-* Moved the {{% link text="Load Switches page" src="/electronics/circuit-design/power-management/load-switches" %}} so that it is a child of {{% link text="Power Management" src="/electronics/circuit-design/power-management" %}}.
+* Moved the [Load Switches page](/electronics/circuit-design/load-switches/) so that it is a child of {{% link text="Power Management" src="/electronics/circuit-design/power-management" %}}.
 
   	{{% figure src="high-side-mosfet-load-switch-schematic.png" width="608px" caption="A high-side load switch made from a N-Channel and P-Channel MOSFET."  %}}
 

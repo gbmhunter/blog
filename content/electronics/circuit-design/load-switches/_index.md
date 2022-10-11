@@ -1,20 +1,20 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Circuit Design" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Circuit Design ]
 date: 2013-11-08
-description: "Schematics, circuit explanations, equations and more info on load switches."
+description: Schematics, circuit explanations, equations and more info on load switches.
 draft: false
-lastmod: 2021-02-16
-tags: [ "electronics", "circuit design", "load switches", "MOSFETs", "BJTs", "power supplies", "loads", "current sinks", "ICs" ]
-title: "Load Switches"
-type: "page"
+lastmod: 2022-10-11
+tags: [ electronics, circuit design, load switches, MOSFETs, BJTs, power supplies, loads, current sinks, ICs ]
+title: Load Switches
+type: page
 ---
 
 ## MOSFET Based
 
 The following image shows a {{% link text="MOSFET" src="/electronics/components/transistors/mosfets" %}} based high-side switch:
 
-{{% figure src="high-side-mosfet-load-switch-schematic.png" width="678px" caption="A high-side load switch made from a N-Channel and P-Channel MOSFET." %}}
+{{% figure src="high-side-mosfet-load-switch-schematic.png" width="700px" caption="A high-side load switch made from a N-Channel and P-Channel MOSFET." %}}
 
 ### BJT Current Sink Driving P-Channel MOSFET Load Switch
 
@@ -50,6 +50,16 @@ The following image shows an IC based high-side switch.
 
 Some load-switches have reverse-polarity protection. More information of how they exactly implement reverse-protection with only the one MOSFET can be found in the [The Substrate (Body) Connection section of the MOSFET page](/electronics/components/transistors/mosfets/#the-substrate-body-connection).
 
-
 {{% figure src="ncp380-ncv-380-load-switch-internal-block-diagram-with-reverse-current-protection.png" width="516px" caption="A functional diagram of the NCP380 high-side load switch. Note the switches connected to the MOSFET substrate which show how reverse-current protection is performed."  %}}
 
+**Be careful, some ICs which look like high-side load switches with built-in current protection are not actually suitable for switching a load**. One example is the Maxim MAX15162 _8V to 60V Smart Dual 1.5A Circuit Breaker with Accurate Current Monitoring_ IC ([datasheet here](https://datasheets.maximintegrated.com/en/ds/MAX15162.pdf)).
+
+{{% figure src="max15162-simplified-block-diagram.png" width="800px" caption="The simplified block diagram of the MAX15162 circuit breaker IC[^bib-maxim-max15162-ds]." %}}
+
+As highlighted in the below screenshot of it's datasheet, during start-up it only supplies an average of 28mA to the load, even though the part is designed to pass up to 1.5A during normal operation[^bib-maxim-max15162-ds]. If `\(V_{OUT}\)` doesn't climb to equal `\(V_{IN}\)` within 250ms during start-up, it times out. So any significant resistive load on the output that drew more than 28mA but less than 1.5A would always cause this IC time out during start-up. **This suggests that it is designed to work in tandem with an external high-side switch that is placed between this circuit breaker IC and the load**. If the high-side switch is kept off whilst the circuit breaker IC start-up, it will only have capacitance to charge up on it's output, hence the 28mA will be ok (up to a max. capacitance, and explain how to calculate this in the datasheet).
+
+{{% figure src="max15162-startup-paragraph-screenshot-annotated.png" width="800px" caption="Screenshot from the MAX15162's datasheet highlighting it's averaged 28mA start-up current[^bib-maxim-max15162-ds]." %}}
+
+## References
+
+[^bib-maxim-max15162-ds]: Maxim (2021, Mar). _MAX15162: 8V to 60V Smart Dual 1.5A Circuit Breaker with Accurate Current Monitoring (datasheet)_. Retrieved 2022-10-11, from https://datasheets.maximintegrated.com/en/ds/MAX15162.pdf.
