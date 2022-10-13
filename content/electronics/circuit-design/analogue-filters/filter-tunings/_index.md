@@ -66,7 +66,7 @@ B_n(s) =
 \end{align}</p>
 
 {{% tip %}}
-If you've never seen it before, the large Pi symbol `\(\prod\)` in the above equation represents the product of a series of things, such like the capital Sigma symbol `\(\Sigma\)` represents the sum of a series of things. For example, `\(\prod_{k=1}^{3}k = 1\times 2 \times 3\)`.
+If you've never seen it before, the uppercase Pi symbol `\(\prod\)` in the above equation represents the product of a series of things, such like the uppercase Sigma symbol `\(\Sigma\)` represents the sum of a series of things. For example, `\(\prod_{k=1}^{3}k = 1\times 2 \times 3\)`.
 {{% /tip %}}
 
 Below is a table of the normalized factored Butterworth polynomials for order `\(n\)`. The polynomial is useful in this form as each product forms either a first or second-order partial filter which can be directly implemented by a standard filter topology (e.g. RC filter for a first-order section, Sallen-Key for a second-order section). These polynomials were generated with `\(Eq.\ \ref{eq:butterworth-polynomial}\)`. The polynomials are normalized by setting `\(\omega_c = 1\)` (the characteristic frequency).
@@ -89,7 +89,7 @@ This transfer function gives the following bode plots (by taking the magnitude a
 
 {{% figure src="butterworth-bode-plot-for-various-n.png" width="900px" caption="Magnitude and phase bode plots for normalized Butterworth filters of orders 1, 2, 4 and 8." %}}
 
-The Butterworth polynomial coefficients can be calculated with[^bib-wikipedia-butterworth-filter]:
+The Butterworth polynomial coefficients `\(a_0, a_1, ..., a_n\)` for an `\(n\)`-order filter can be calculated with this product-based equation[^bib-wikipedia-butterworth-filter]:
 
 <p>\begin{align}
 a_{k}=\prod _{\mu =1}^{k}{\frac {\cos((\mu -1)\gamma )}{\sin(\mu \gamma )}}
@@ -97,7 +97,7 @@ a_{k}=\prod _{\mu =1}^{k}{\frac {\cos((\mu -1)\gamma )}{\sin(\mu \gamma )}}
 
 <p class="centered">
 where:<br/>
-\(a_0 = 1\)<br/>
+\(a_0 = 1\) (ignore the above equation for \(a_0\))<br/>
 \(\gamma = \dfrac{\pi}{2n}\)<br/>
 </p>
 
@@ -195,3 +195,5 @@ All values have been normalized by setting `\(\omega_c = 1\)`.
 
 [^bib-pieter-p-butterworth-filters]: Pieter P (2021, Jul 15). _Butterworth Filters_. Retrieved 2022-10-06, from https://tttapa.github.io/Pages/Mathematics/Systems-and-Control-Theory/Analog-Filters/Butterworth-Filters.html.
 [^bib-wikipedia-butterworth-filter]: Wikipedia (2022, Aug 25). _Butterworth Filter_. Retrieved 2022-10-08, from https://en.wikipedia.org/wiki/Butterworth_filter.
+[^bib-wikipedia-elliptic-filter]: Wikipedia (2022, Jan 30). _Elliptic filter_. Retrieved 2022-09-20, from https://en.wikipedia.org/wiki/Elliptic_filter.
+[^bib-rutgers-elliptic-lecture-notes]: Sophocles J. Orfanidis (2006, Nov 20). _Lecture Notes on Elliptic Filter Design_. Rutgers University: Department of Electrical & Computer Engineering. Retrieved 2022-09-20, from https://www.ece.rutgers.edu/~orfanidi/ece521/notes.pdf.
