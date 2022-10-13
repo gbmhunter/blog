@@ -4,7 +4,7 @@ categories: [ Electronics, Circuit Design ]
 date: 2013-01-03
 description: Schematics, equations, worked examples, calculators and more info on low-pass/high-pass Sallen-Key filters.
 draft: false
-images: [ /electronics/circuit-design/sallen-key-filters/low-pass-variable-gain-sallen-key-filter-schematic.png ]
+images: [ /electronics/circuit-design/analogue-filters/sallen-key-filters/low-pass-variable-gain-sallen-key-filter-schematic.png ]
 lastmod: 2022-10-14
 tags: [ electronics, circuit design, filters, active filters, low-pass, high-pass, bode plot, frequency response, Sallen-Key, voltage-controlled voltage source, VCVS, cutoff frequency, multiple feedback, MFB ]
 title: Sallen-Key Filters
