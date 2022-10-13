@@ -2,10 +2,10 @@
 authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Circuit Design ]
 date: 2013-01-03
-description:
+description: Schematics, equations, worked examples, calculators and more info on low-pass/high-pass Sallen-Key filters.
 draft: false
 images: [ /electronics/circuit-design/sallen-key-filters/low-pass-variable-gain-sallen-key-filter-schematic.png ]
-lastmod: 2022-09-28
+lastmod: 2022-10-14
 tags: [ electronics, circuit design, filters, active filters, low-pass, high-pass, bode plot, frequency response, Sallen-Key, voltage-controlled voltage source, VCVS, cutoff frequency, multiple feedback, MFB ]
 title: Sallen-Key Filters
 type: page
@@ -13,9 +13,12 @@ type: page
 
 ## Overview
 
-The Sallen-Key filter is one of the **most popular active 2nd-order analogue filters topologies**[^bib-analog-devices-ch8-analog-filters]. It can be configured as a low-pass, high-pass, band-pass or band-stop filter. Also called a _Sallen and Key_ filter. It was first introduced in 1955 by R.P. Sallen and E.L. Key of MIT's Lincoln Labs, whose last names give this filter it's name. It is a _filter topology_, and defines the components and connections between them to realize a 2nd order filter. Various _filter tunings_ such as Butterworth, Bessel and Chebyshev can be implemented using the Sallen-Key topology.
+The Sallen-Key filter is one of the **most popular active 2nd-order analogue filters topologies**[^bib-analog-devices-ch8-analog-filters]. It can be configured as a low-pass, high-pass, band-pass or band-stop filter. Also called a _Sallen and Key_ filter. It was first introduced in 1955 by R.P. Sallen and E.L. Key of MIT's Lincoln Labs, whose last names give this filter it's name. It is a _filter topology_, and defines the components and connections between them to realize a 2nd order filter. Various [filter tunings](/electronics/circuit-design/analogue-filters/filter-tunings/) such as Butterworth, Bessel and Chebyshev can be implemented using the Sallen-Key topology.
 
-{{% figure src="low-pass-variable-gain-sallen-key-filter-schematic.png" width="300px" caption="The schematic for a variable-gain low-pass Sallen-Key filter." %}}
+<div style="display: flex;">
+{{% figure src="low-pass-variable-gain-sallen-key-filter-schematic.png" width="400px" caption="The schematic for a variable-gain low-pass Sallen-Key filter." %}}
+{{% figure src="low-pass-sallen-key-chebyshev-3db/response.png" width="400px" caption="Simulated response of the design example (2nd-order 3dB Chebyshev Sallen-Key low-pass filter with a cutoff frequency of 1kHz) above." %}}
+</div>
 
 The Sallen-Key filter has **low _component spread_** (low ratios of highest to lowest capacitor and resistor values). It also has a high input impedance and low output impedance, allowing for multiple filters to be chained together without intermediary buffers.
 
@@ -33,11 +36,9 @@ The schematic for a variable-gain low-pass Sallen-Key filter (a.k.a. VCVS filter
 
 {{% figure src="low-pass-variable-gain-sallen-key-filter-schematic.png" width="700px" caption="The schematic for a variable-gain low-pass Sallen-Key filter." %}}
 
-The schematic for the unity-gain low-pass Sallen-Key filter is shown below. Note the removal of `\(R_3\)` and `\(R_4\)`, the output is instead directly fed into the inverting input of the op-amp, just like when using an op-amp as a buffer.
+The schematic for the unity-gain low-pass Sallen-Key filter is shown below (which is generally not called a VCVS filter). Note the removal of `\(R_3\)` and `\(R_4\)`, the output is instead directly fed into the inverting input of the op-amp, just like when using an op-amp as a buffer. **The filter has unity gain in the pass-band.**
 
 {{% figure src="low-pass-unity-gain-sallen-key-filter-schematic.png" width="700px" caption="The schematic for a unity-gain low-pass Sallen-Key filter." %}}
-
-It looks like 2 cascaded RC filters, except with the other terminal of the 1st capacitor connected to the op-amp's output rather than ground! What does this mean?
 
 {{% warning %}}
 Take note of labelling of the resistors and capacitors if reading other material on Sallen-Key filters, there is no one popular convention as the resistor and capacitor orders are switched frequently.
@@ -59,7 +60,7 @@ where:<br/>
 </p>
 
 {{% tip %}}
-The characteristic frequency `\(\omega_0\)` is not necessarily equal to the cut-off frequency. Also, `\(\frac{1}{Q}\)` is sometimes written as `\(\alpha\)`.
+For any general 2nd-order filter, the characteristic frequency `\(\omega_0\)` is not necessarily equal to the cut-off frequency. Also, `\(\frac{1}{Q}\)` is sometimes written as `\(\alpha\)`.
 {{% /tip %}}
 
 Written in the same form as the general equation above, the transfer function for a 2nd-order low-pass Sallen-Key filter is[^bib-analog-devices-ch8-analog-filters]:
@@ -71,7 +72,7 @@ H(s) &= \frac{\frac{K}{R_1R_2C_1C_2}} {s^2 + \left[(\frac{1}{R_1} + \frac{1}{R_2
 
 Equating the coefficients in the general form (`\(Eq.\ \ref{eq:gen-2-order-lp}\)`) with those specific to the Sallen-Key topology (`\(Eq.\ \ref{eq:sallen-key-2-order-lp}\)`) allows us to find the equations of the characteristic frequency and quality factor.
 
-The cut-off frequency is:
+The cut-off frequency is (remembering `\(f = 2\pi \omega\)`):
 
 <p>\begin{align}
 f_c = \frac{1}{2\pi \sqrt{R_1R_2C_1C_2}}
@@ -503,6 +504,10 @@ The Texas Instruments [Filter Design Tool](https://webench.ti.com/filter-design-
 ## Further Reading
 
 For general information on analogue filters, see the [Analogue Filters page](/electronics/circuit-design/analogue-filters/).
+
+See the [Filter Tunings page](/electronics/circuit-design/analogue-filters/filter-tunings/) for information on Butterworth, Bessel, Chebyshev, e.t.c filter tunings and their polynomial coefficients (these can be applied to a Sallen-Key filter topology).
+
+{{% figure src="filter-tunings-page-screenshot.png" width="400px" %}}
 
 ## References
 
