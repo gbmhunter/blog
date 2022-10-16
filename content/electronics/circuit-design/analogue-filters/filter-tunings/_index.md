@@ -33,7 +33,7 @@ The linear phase delay of the Bessel filter is best visualized in the below plot
 
 {{% figure src="low-pass-filter-optimization-comparison-phase-linear.png" width="700px" caption="Phase delay of different filter optimizations, with the frequency plotted on a linear axis rather than a logarithmic axis. This is the best way to visualize the linear phase delay of the Bessel optimization." %}}
 
-### Butterworth Tunings
+## Butterworth Tunings
 
 Tuning a filter for a Butterworth response gives a filter which is **maximally flat in the passband**, and rolls off towards zero in the stopband. The price you pay for this is slower roll-off into the stop-band, compared with Chebyshev or Elliptic tunings.
 
@@ -113,30 +113,138 @@ B_3 &= (s + 1)(s^2 + s + 1) \nonumber \\
     &= s^3 + 2s^2 + 2s + 1 \nonumber \\
 \end{align}</p>
 
-Yay, they are the same!
+Yay, they are the same! If you are ever wanting to generate the Butterworth polynomial coefficients yourself, here is a Python function that returns you the Butterworth coefficients for any order `\(n\)`:
 
+```python
+from typings import List
+import numpy as np
 
-### Chebyshev Optimization
+def calc_butterworth_coeffs_for_order(n: int) -> List[float]:
+    """
+    Calculates the Butterworth polynomial coefficients for the given degree n.
 
-Chebyshev filters with even order numbers (e.g. 2nd order, 4th order, ...) generate ripples above the 0dB line, filters with odd order numbers (e.g. 3rd order, 5th order, ...) generate ripples below the 0dB line.
+    Equation from https://en.wikipedia.org/wiki/Butterworth_filter:
+        {\displaystyle a_{k}=\prod _{\mu =1}^{k}{\frac {\cos((\mu -1)\gamma )}{\sin(\mu \gamma )}}\,,}
+
+    Args:
+        n   Degree of Butterworth polynomial. Must be >= 0.
+    Returns:
+        Coefficients of Butterworth polynomial of degree n. Coefficients are returned in a list, in this order: [ a0, a1, ..., an ].
+    """
+
+    gamma = np.pi / (2*n)
+    # Need to calculate n + 1 coefficients
+    coeffs = []
+    for k in range(n + 1):
+        if k == 0:
+            # a_0 = 1.0
+            coeffs.append(1.0)
+        else:
+            # Use product formula
+            product = 1.0
+            for mew in range(1, k + 1):
+                product *= np.cos((mew - 1)*gamma) / np.sin(mew * gamma)
+            coeffs.append(product)
+    return coeffs
+```
+
+## Chebyshev Tunings
+
+Chebyshev-tuned filters with even order numbers (e.g. 2nd order, 4th order, ...) generate ripples above the 0dB line, filters with odd order numbers (e.g. 3rd order, 5th order, ...) generate ripples below the 0dB line.
+
+Chebyshev-tuned filters can be further broken down into two _types_: 
+
+* **Type I:** Ripple in the pass-band, no ripple in the stop-band. This is the most common type of Chebyshev-tuned filter, as it has faster roll-off. Sometimes referred to just as a _Chebyshev filter_ (with no mention that it's Type I).
+* **Type II:** No-ripple in the pass-band, ripple in the stop-band. Also known as an _inverse Chebyshev-tuned filter_. This is not as popular as Type I as it's roll-off is not as steep.
 
 Because Chebyshev filters have ripple in the pass-band, **their cutoff frequency is usually defined in a completely different way to all other filter optimizations**. Rather than specifying `\(f_c\)` as the -3dB point, the `\(f_c\)` for Chebyshev filters is defined at the point at which the gain leaves the allowed ripple region (i.e. > 0.5dB for a 0.5dB Chebyshev filter, > 3dB for a 3dB Chebyshev filter).
 
-### Bessel Optimization
+A Type I Chebyshev tuned filter of order `\(n\)` has a gain response of[^bib-wikipedia-chebyshev-filter]:
+
+<p>\begin{align}
+| H_n(s) | = \frac{1}{\sqrt{1 + \varepsilon^2 T_n(\omega / \omega_0)^2}}
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(\varepsilon\) is the damping factor<br/>
+\(\omega_0\) is the characteristic frequency<br/>
+\(T_n(\omega / \omega_0)\) is a Chebyshev polynomial of the first kind with order \(n\) </br>
+</p>
+
+{{% note %}}
+The are actually two different kinds of "Chebyshev polynomials". In analogue filter design, we always use the first kind (for both Type I and Type II Chebyshev filters), commonly denoted `\(T_n\)`. Chebyshev polynomials of the second kind are usually denoted `\(U_n\)`.
+{{% /note %}}
+
+The ripple in the passband may have multiple maxima and minima. However, the peaks of each maxima/minima have the same amplitude (i.e. they are bounded by a fixed value). This is known as equiripple behaviour, and stems from the core definition of a Type I Chebyshev polynomial.
+
+The driving factor behind the Chebyshev tunings is the Chebyshev polynomials of the first kind. They are defined by[^bib-wikipedia-chebyshev-polynomials]:
+
+<p>\begin{align}
+T_n(\cos{\theta}) &= \cos{n\theta}
+\end{align}</p>
+
+You can calculate the Chebyshev polynomials of the first kind with the recursive definition[^bib-wikipedia-chebyshev-polynomials]:
+
+<p>\begin{align}
+T_0(x)     &= 1 \nonumber \\
+T_1(x)     &= x \nonumber \\
+T_{n+1}(x) &= 2xT_n(x) - T_{n-1}(x) \\
+\end{align}</p>
+
+The first 6 Chebyshev polynomials are shown below:
+
+<p>\begin{align}
+T_0(x) &= 1 \nonumber \\
+T_1(x) &= x \nonumber \\
+T_2(x) &= 2x^2 - 1 \nonumber \\
+T_3(x) &= 4x^3 - 3x \nonumber \\
+T_4(x) &= 8x^4 - 8x^2 + 1 \nonumber \\
+T_5(x) &= 16x^5 - 20x^3 + 5x \nonumber \\
+\end{align}</p>
+
+These are special polynomials which are maximally bounded between `\([-1, 1]\)` on the interval `\(x\ \epsilon\ [-1, 1]\)`. You can see this interesting behaviour in the below graph. It shows the first 6 Chebyshev polynomials `\(T_0\)` through to `\(T_5\)`. Note that `\(T_0 = 1\)`, and is somewhat hidden by the horizontal bounding line.
+
+{{% figure src="chebyshev-poly-graph.png" width="600px" caption="The first 6 Chebyshev polynomials (of the first kind) from `\(T_1\)` to `\(T_6\)`." %}}
+
+The below Python function can be used to calculate the Chebyshev polynomial coefficients of the first kind, for a given order `\(n\)`. Although we could build up a recursive function and use sympy to find them based of the recursive equation above, it's easier just to use the `numpy.polynomial` module which provides a function to calculate them.
+
+```python
+import numpy.polynomial
+def chebyshev_poly_coeffs(n: int) -> List[float]:
+    """
+    Calculates the Chebyshev polynomial coefficients (of the first kind) for the provided degree n.
+
+    Args:
+        n: Degree of polynomial. Must be >= 0.
+    Returns:
+        List of Chebyshev polynomial coefficients, sorted from lowest degree to highest degree i.e. [ a_0, a_1, ..., a_n ].
+    """
+    # First build up coefficients for a_0T_0 + a_1T_1 + ... a_nT_n
+    input_coeffs = [0] * (n + 1)
+    input_coeffs[-1] = 1 # Set the last item to 1, this corresponds to T_n(x)
+    # Now convert this to Chebyshev polynomial coefficients
+    poly_coeffs = numpy.polynomial.chebyshev.cheb2poly(input_coeffs)
+    return poly_coeffs
+```
+
+## Bessel Tunings
 
 Commonly used in analogue-crossover circuitry.
 
-### Elliptic Optimization
+## Elliptic Tunings
 
-Elliptic optimization (a.k.a. a Cauer or Zolotarev filter[^bib-rutgers-elliptic-lecture-notes]) is a filter that is optimized for the fastest transition in gain from the passband to the stopband. It has equal ripple in both the passband and stopband[^bib-wikipedia-elliptic-filter].
+Elliptic-tuned filters (a.k.a. a Cauer or Zolotarev filter[^bib-rutgers-elliptic-lecture-notes]) is a filter that is optimized for the fastest transition in gain from the passband to the stopband. It has equal ripple in both the passband and stopband[^bib-wikipedia-elliptic-filter].
 
 You can generate an Elliptical filter in Python using the scipy package:
 
 ```python
+import scipy.signal
+
 scipy.signal.ellip(N, rp, rs, Wn, btype='low', analog=False, output='ba', fs=None)
 ```
 
-### Filter Coefficient Tables
+## Filter Coefficient Tables
 
 * `\(n\)` is the filter order
 * `\(i\)` is the partial filter order
@@ -163,7 +271,7 @@ All values have been normalized by setting `\(\omega_c = 1\)`.
 
 
 
-#### Chebyshev Coefficients For 3dB Passband Ripple
+### Chebyshev Coefficients For 3dB Passband Ripple
 
 <table>
   <thead>
@@ -177,7 +285,7 @@ All values have been normalized by setting `\(\omega_c = 1\)`.
   </tbody>
 </table>
 
-#### Bessel Coefficients
+### Bessel Coefficients
 
 <table>
   <thead>
@@ -197,3 +305,5 @@ All values have been normalized by setting `\(\omega_c = 1\)`.
 [^bib-wikipedia-butterworth-filter]: Wikipedia (2022, Aug 25). _Butterworth Filter_. Retrieved 2022-10-08, from https://en.wikipedia.org/wiki/Butterworth_filter.
 [^bib-wikipedia-elliptic-filter]: Wikipedia (2022, Jan 30). _Elliptic filter_. Retrieved 2022-09-20, from https://en.wikipedia.org/wiki/Elliptic_filter.
 [^bib-rutgers-elliptic-lecture-notes]: Sophocles J. Orfanidis (2006, Nov 20). _Lecture Notes on Elliptic Filter Design_. Rutgers University: Department of Electrical & Computer Engineering. Retrieved 2022-09-20, from https://www.ece.rutgers.edu/~orfanidi/ece521/notes.pdf.
+[^bib-wikipedia-chebyshev-filter]: Wikipedia (2022, Oct 11). _Chebyshev Filter_. Retrieved 2022-10-14, from https://en.wikipedia.org/wiki/Chebyshev_filter.
+[^bib-wikipedia-chebyshev-polynomials]: Wikipedia (2022, Oct 16). _Chebyshev polynomials_. Retrieved 2022-10-16, from https://en.wikipedia.org/wiki/Chebyshev_polynomials.

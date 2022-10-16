@@ -26,3 +26,5 @@ type: "post"
 * Added a `file` shortcode to load content from relative files into the main Markdown file. This is used to load a Python generated HTML table (which is saved to a separate file) into the primary Markdown file.
 
 * Added info on [circuit breaker ICs](/electronics/circuit-design/load-switches/).
+
+* Added info on [Chebyshev filter tunings](/electronics/circuit-design/analogue-filters/filter-tunings/) including equations and plots.

@@ -1,5 +1,6 @@
 import math
 from pathlib import Path
+from typing import List
 
 from bs4 import BeautifulSoup
 import numpy as np
@@ -12,19 +13,36 @@ from tabulate import tabulate
 SCRIPT_DIR = Path(__file__).parent
 
 def main():
-    create_butterworth_magnitude_plot()
-    create_butterworth_factored_polynomial_table()
-    create_butterworth_polynomial_coeffs_table()
+    # create_butterworth_magnitude_plot()
+    # create_butterworth_factored_polynomial_table()
+    # create_butterworth_polynomial_coeffs_table()
 
-def calc_butterworth_coeffs_for_order(n):
-    # Equation from https://en.wikipedia.org/wiki/Butterworth_filter
-    # {\displaystyle a_{k}=\prod _{\mu =1}^{k}{\frac {\cos((\mu -1)\gamma )}{\sin(\mu \gamma )}}\,,}
-    # Coefficients are returned in a list, in this order: [ a0, a1, ..., an ]
+    # chebyshev_poly()
+    create_chebyshev_poly_graph()
+
+#==========================================================
+# Butterworth
+#==========================================================
+
+def calc_butterworth_coeffs_for_order(n: int) -> List[float]:
+    """
+    Calculates the Butterworth polynomial coefficients for the given degree n.
+
+    Equation from https://en.wikipedia.org/wiki/Butterworth_filter:
+        {\displaystyle a_{k}=\prod _{\mu =1}^{k}{\frac {\cos((\mu -1)\gamma )}{\sin(\mu \gamma )}}\,,}
+
+    Args:
+        n   Degree of Butterworth polynomial. Must be >= 0.
+    Returns:
+        Coefficients of Butterworth polynomial of degree n. Coefficients are returned in a list, in this order: [ a0, a1, ..., an ].
+    """
+
     gamma = np.pi / (2*n)
     # Need to calculate n + 1 coefficients
     coeffs = []
     for k in range(n + 1):
         if k == 0:
+            # a_0 = 1.0
             coeffs.append(1.0)
         else:
             # Use product formula
@@ -142,6 +160,57 @@ def create_butterworth_polynomial_coeffs_table():
     table_file_path = SCRIPT_DIR / 'butterworth-polynomial-coeffs-table.html'
     with table_file_path.open('w') as file:
         file.write(soup.prettify())
+
+#==========================================================
+# Chebyshev
+#==========================================================
+
+import numpy.polynomial
+def chebyshev_poly_coeffs(n: int) -> List[float]:
+    """
+    Calculates the Chebyshev polynomial coefficients (of the first kind) for the provided degree n.
+
+    Args:
+        n: Degree of polynomial. Must be >= 0.
+    Returns:
+        List of Chebyshev polynomial coefficients, sorted from lowest degree to highest degree i.e. [ a_0, a_1, ..., a_n ].
+    """
+    # First build up coefficients for a_0T_0 + a_1T_1 + ... a_nT_n
+    input_coeffs = [0] * (n + 1)
+    input_coeffs[-1] = 1 # Set the last item to 1, this corresponds to T_n(x)
+    # Now convert this to Chebyshev polynomial coefficients
+    poly_coeffs = numpy.polynomial.chebyshev.cheb2poly(input_coeffs)
+    return poly_coeffs
+
+def create_chebyshev_poly_graph():
+    fig, ax = plt.subplots()
+    x_vals = np.linspace(-1.5, 1.5, 100)
+
+    # Plot the first 6 polynomials
+    for n in range(0, 6):
+        poly_coeffs = chebyshev_poly_coeffs(n)        
+        x = symbols('x')
+        poly = Poly(reversed(poly_coeffs), x)
+        # Convert the Polynomial object into an expression object, otherwise lambdify won't work
+        poly = poly.as_expr()
+        lam_poly = lambdify(x, poly, modules=['numpy', 'sympy'])
+        y_vals = lam_poly(x_vals)
+        # If n=0, the poly is just 1, and sympy doesn't return an array of 1's, just
+        # and single 1. Let's fix that.
+        if n == 0:
+          y_vals = [y_vals]*x_vals.size
+        ax.plot(x_vals, y_vals, label=f'$T_{n}$')
+
+    ax.set_xlabel('$x$')
+    ax.set_ylabel('$T_n$')
+    ax.set_ybound(-1.5, 1.5)
+    ax.axvline(-1.0, c='grey', ls='--')
+    ax.axvline(1.0, c='grey', ls='--')
+    ax.axhline(-1.0, c='grey', ls='--')
+    ax.axhline(1.0, c='grey', ls='--')
+    ax.legend()
+    plt.tight_layout()
+    plt.savefig(SCRIPT_DIR / 'chebyshev-poly-graph.png')
 
 if __name__ == '__main__':
     main()
