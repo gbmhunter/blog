@@ -2,10 +2,10 @@
 authors: [ Geoffrey Hunter ]
 categories: [ Electronics, Circuit Design ]
 date: 2013-01-03
-description: 
+description: Butterworth, Chebyshev, Bessel, elliptic, transfer functions, polynomials, equations, graphs and more information on analogue filter tunings. 
 draft: false
-lastmod: 2022-10-09
-tags: [ electronics, circuit design, filters ]
+lastmod: 2022-10-17
+tags: [ electronics, circuit design, filters, Butterworth, Chebyshev, Bessel, Elliptic, analogue, mathematics, transfer functions, polynomials, equations, graphs, passband, stopband ]
 title: Filter Tunings
 type: page
 ---
@@ -181,8 +181,16 @@ The ripple in the passband may have multiple maxima and minima. However, the pea
 The driving factor behind the Chebyshev tunings is the Chebyshev polynomials of the first kind. They are defined by[^bib-wikipedia-chebyshev-polynomials]:
 
 <p>\begin{align}
-T_n(\cos{\theta}) &= \cos{n\theta}
+T_n(\cos{\theta}) &= \cos(n\theta) \\
 \end{align}</p>
+
+{{% tip %}}
+It's a little unusual in the way it's normally defined with it being a function of `\(\cos(\theta)\)` rather than just `\(\theta\)`. I think this is just so you can avoid adding an inverse cosine term into the expression. I prefer the following definition:
+
+<p>\begin{align}
+T_n(\theta) &= \cos(n\arccos(\theta)) \\
+\end{align}</p>
+{{% /tip %}}
 
 You can calculate the Chebyshev polynomials of the first kind with the recursive definition[^bib-wikipedia-chebyshev-polynomials]:
 
