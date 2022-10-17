@@ -185,10 +185,10 @@ T_n(\cos{\theta}) &= \cos(n\theta) \\
 \end{align}</p>
 
 {{% tip %}}
-It's a little unusual in the way it's normally defined with it being a function of `\(\cos(\theta)\)` rather than just `\(\theta\)`. I think this is just so you can avoid adding an inverse cosine term into the expression. I prefer the following definition:
+It's a little unusual in the way it's normally defined with it being a function of `\(\cos(\theta)\)` rather than just `\(x\)`. If you let `\(x = \cos \theta\)`, then you can substitute `\(\theta = \arccos x\)` are arrive at: 
 
 <p>\begin{align}
-T_n(\theta) &= \cos(n\arccos(\theta)) \\
+T_n(x) &= \cos(n\arccos(x)) \text{ for }|x| \leq 1 \\
 \end{align}</p>
 {{% /tip %}}
 
@@ -211,7 +211,7 @@ T_4(x) &= 8x^4 - 8x^2 + 1 \nonumber \\
 T_5(x) &= 16x^5 - 20x^3 + 5x \nonumber \\
 \end{align}</p>
 
-These are special polynomials which are maximally bounded between `\([-1, 1]\)` on the interval `\(x\ \epsilon\ [-1, 1]\)`. You can see this interesting behaviour in the below graph. It shows the first 6 Chebyshev polynomials `\(T_0\)` through to `\(T_5\)`. Note that `\(T_0 = 1\)`, and is somewhat hidden by the horizontal bounding line.
+These are special polynomials in which the leading coefficient (coefficient in front of the highest power of `\(x\)`) is the largest value it can be whilst the polynomial is bounded between `\([-1, 1]\)` on the interval `\(x\ \epsilon\ [-1, 1]\)`[^bib-wikipedia-chebyshev-polynomials]. You can see this interesting behaviour in the below graph. It shows the first 6 Chebyshev polynomials `\(T_0\)` through to `\(T_5\)`. Note that `\(T_0 = 1\)`, and is somewhat hidden by the horizontal bounding line.
 
 {{% figure src="chebyshev-poly-graph.png" width="600px" caption="The first 6 Chebyshev polynomials (of the first kind) from `\(T_1\)` to `\(T_6\)`." %}}
 
