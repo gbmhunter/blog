@@ -1082,4 +1082,5 @@
     "python.analysis.extraPaths": [
         "${workspaceFolder}\\scripts\\util"
     ],
+    "markdown.validate.enabled": true,
 }
