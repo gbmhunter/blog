@@ -4,8 +4,8 @@ categories: [ Electronics, Circuit Design ]
 date: 2013-01-03
 description: Butterworth, Chebyshev, Bessel, elliptic, transfer functions, polynomials, equations, graphs and more information on analogue filter tunings. 
 draft: false
-lastmod: 2022-10-17
-tags: [ electronics, circuit design, filters, Butterworth, Chebyshev, Bessel, Elliptic, analogue, mathematics, transfer functions, polynomials, equations, graphs, passband, stopband ]
+lastmod: 2022-10-20
+tags: [ electronics, circuit design, filters, tunings, Butterworth, Chebyshev, Bessel, Bessel-Thomson, Elliptic, analogue, mathematics, transfer functions, polynomials, equations, graphs, passband, stopband ]
 title: Filter Tunings
 type: page
 ---
@@ -238,7 +238,27 @@ def chebyshev_poly_coeffs(n: int) -> List[float]:
 
 ## Bessel Tunings
 
-Commonly used in analogue-crossover circuitry.
+A _Bessel_ tuned filter is one which has a maximally linear phase response. This corresponds to a maximally flat group/phase delay. This behaviour preserves the shapes of filtered signals in the passband, which is a desirable property for audio signals. It is also sometimes called _Bessel-Thomson_ tuned filters because W. E. Thomson who worked out how to apply Bessel functions to electronic filters in 1949[^bib-thomson-delay-networks-maximally-flat-freq].
+
+The transfer function of a low-pass Bessel tuned filter is[^bib-wikipedia-bessel-filter]:
+
+<p>\begin{align}
+H(s) &= \frac{\theta_n(0)}{\theta_n(s/\omega_0)}
+\end{align}</p>
+
+where `\(\theta_n(s)\)` is a reverse Bessel polynomial (more on this below), `\(\omega_0\)` is the characteristic frequency and `\(s=k\omega\)`.
+
+The reverse Bessel polynomials are given by[^bib-wikipedia-bessel-filter]:
+
+<p>\begin{align}
+\theta_n(s) &= \sum_{k=0}^n a_k s^k
+\end{align}</p>
+
+where `\(a_k\)` is a coefficient given by:
+
+<p>\begin{align}
+a_k &= \frac{(2n - k)!}{2^{n-k}k!(n - k)!}
+\end{align}</p>
 
 ## Elliptic Tunings
 
@@ -315,3 +335,5 @@ All values have been normalized by setting `\(\omega_c = 1\)`.
 [^bib-rutgers-elliptic-lecture-notes]: Sophocles J. Orfanidis (2006, Nov 20). _Lecture Notes on Elliptic Filter Design_. Rutgers University: Department of Electrical & Computer Engineering. Retrieved 2022-09-20, from https://www.ece.rutgers.edu/~orfanidi/ece521/notes.pdf.
 [^bib-wikipedia-chebyshev-filter]: Wikipedia (2022, Oct 11). _Chebyshev Filter_. Retrieved 2022-10-14, from https://en.wikipedia.org/wiki/Chebyshev_filter.
 [^bib-wikipedia-chebyshev-polynomials]: Wikipedia (2022, Oct 16). _Chebyshev polynomials_. Retrieved 2022-10-16, from https://en.wikipedia.org/wiki/Chebyshev_polynomials.
+[^bib-thomson-delay-networks-maximally-flat-freq]: W. E. Thomson (1949, Nov). _Delay networks having maximally flat frequency characteristics_. 621.392.5: Paper No. 872 - Radio section.
+[^bib-wikipedia-bessel-filter]: Wikipedia (2022, Oct 16). _Bessel filter_. Retrieved 2022-10-20, from https://en.wikipedia.org/wiki/Bessel_filter.

@@ -28,3 +28,5 @@ type: "post"
 * Added info on [circuit breaker ICs](/electronics/circuit-design/load-switches/).
 
 * Added info on [Chebyshev filter tunings](/electronics/circuit-design/analogue-filters/filter-tunings/) including equations and plots.
+
+* Added info on Bessel filter tunings.
