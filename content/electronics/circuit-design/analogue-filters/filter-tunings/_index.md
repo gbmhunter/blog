@@ -260,6 +260,16 @@ where `\(a_k\)` is a coefficient given by:
 a_k &= \frac{(2n - k)!}{2^{n-k}k!(n - k)!}
 \end{align}</p>
 
+However, by this definition of the reverse Bessel polynomials, `\(\theta_n(0)\)` is indeterminate. So instead, `\(\theta_n(0)\)` is defined as:
+
+<p>\begin{align}
+\theta_n(0) &= \lim_{x \to 0} \theta_n(x)
+\end{align}</p>
+
+The above equations were used to generate the table below, which lists the reverse Bessel polynomials of degree 0 to 8. 
+
+{{% file src="bessel-polynomial-coeffs-table.html" %}}
+
 ## Elliptic Tunings
 
 Elliptic-tuned filters (a.k.a. a Cauer or Zolotarev filter[^bib-rutgers-elliptic-lecture-notes]) is a filter that is optimized for the fastest transition in gain from the passband to the stopband. It has equal ripple in both the passband and stopband[^bib-wikipedia-elliptic-filter].

@@ -18,7 +18,9 @@ def main():
     # create_butterworth_polynomial_coeffs_table()
 
     # chebyshev_poly()
-    create_chebyshev_poly_graph()
+    # create_chebyshev_poly_graph()
+
+    create_bessel_poly_table()
 
 #==========================================================
 # Butterworth
@@ -211,6 +213,66 @@ def create_chebyshev_poly_graph():
     ax.legend()
     plt.tight_layout()
     plt.savefig(SCRIPT_DIR / 'chebyshev-poly-graph.png')
+
+#==========================================================
+# Bessel
+#==========================================================
+
+def bessel_ak(n: int, k: int) -> int:
+    """
+    Calculates the coefficient a_k that goes in front of s_k as part of a reverse Bessel polynomial.
+    Equation from https://en.wikipedia.org/wiki/Bessel_filter 
+    """
+    return int(math.factorial(2*n - k) / (2**(n - k)*math.factorial(k)*math.factorial(n - k)))
+
+def create_bessel_poly_table() -> None:
+    """
+    Creates a HTML table of bessel reverse polynomials.
+    """
+
+    soup = BeautifulSoup('<table></table>', features='html.parser')
+
+    soup.table.append(soup.new_tag('thead'))
+    soup.table.thead.append(soup.new_tag('tr'))
+
+    cell = soup.new_tag('th')
+    cell.append('Degree \(n\)')
+    cell['style'] = 'width: 80px;'
+    soup.table.thead.tr.append(cell)
+
+    cell = soup.new_tag('th')
+    cell.append('Reverse Bessel Polynomial')
+    cell['style'] = 'width: 600px;'
+    soup.table.thead.tr.append(cell)
+
+    new_tag = soup.new_tag('tbody')
+    soup.table.append(new_tag)
+    
+    # Generate polynomials for degree 0 to 8
+    for n in range(9):
+        s = symbols('s')
+        poly = 0*s
+        for k in range(n + 1):
+            poly += bessel_ak(n, k)*(s**k)
+
+        # New table row
+        html_row = soup.new_tag('tr')
+
+        # col 1: n
+        td = soup.new_tag('td')
+        td.append(f'{n}')
+        html_row.append(td)
+
+        # col 2: polynomial
+        td = soup.new_tag('td')
+        td.append(f'\({latex(poly)}\)')
+        html_row.append(td)
+
+        soup.table.tbody.append(html_row)
+    print(soup)
+    table_file_path = SCRIPT_DIR / 'bessel-polynomial-coeffs-table.html'
+    with table_file_path.open('w') as file:
+        file.write(soup.prettify())
 
 if __name__ == '__main__':
     main()
