@@ -12,7 +12,7 @@ type: page
 
 ## Overview
 
-_Filter tunings_ are specific tunings of filters to maximise a particular characteristic of it's response. Filter tuning directly specifies what the filters polynomials must be.
+_Filter tunings_ are specific tunings of filters to maximise a particular characteristic of it's response. Filter tuning directly specifies what the filters polynomials must be in it's transfer function (see [What Are Transfer Functions, Poles and Zeroes](/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/) for more info).
 
 * **Butterworth** Optimized for the flattest response through the pass-band, at the expense of having a low transition between the pass and stop-band.
 * **Chebyshev**: Designed to have a steep transition between the pass and stop-band, at the expense of gain ripple in either the pass or stopband (_type 1_ or _type 2_). Also called  Chevyshev, Tschebychev, Tschebyscheff or Tchevysheff, depending on exactly how you translate the original Russian name. There are two types of Chebyshev filters:
@@ -238,7 +238,7 @@ def chebyshev_poly_coeffs(n: int) -> List[float]:
 
 ## Bessel Tunings
 
-A _Bessel_ tuned filter is one which has a maximally linear phase response. This corresponds to a maximally flat group/phase delay. This behaviour preserves the shapes of filtered signals in the passband, which is a desirable property for audio signals. It is also sometimes called _Bessel-Thomson_ tuned filters because W. E. Thomson who worked out how to apply Bessel functions to electronic filters in 1949[^bib-thomson-delay-networks-maximally-flat-freq].
+A _Bessel_ tuned filter is one which has a maximally linear phase response. This corresponds to a maximally flat group/phase delay (the time it takes for a signal to pass through as a function of frequency). This behaviour preserves the shapes of filtered signals in the passband, which is a desirable property for audio signals. It is also sometimes called _Bessel-Thomson_ tuned filters because W. E. Thomson who worked out how to apply Bessel functions to electronic filters in 1949[^bib-thomson-delay-networks-maximally-flat-freq].
 
 The transfer function of a low-pass Bessel tuned filter is[^bib-wikipedia-bessel-filter]:
 
@@ -269,6 +269,23 @@ However, by this definition of the reverse Bessel polynomials, `\(\theta_n(0)\)`
 The above equations were used to generate the table below, which lists the reverse Bessel polynomials of degree 0 to 8. 
 
 {{% file src="bessel-polynomial-coeffs-table.html" %}}
+
+<div class="worked-example">
+
+**Find the transfer function for a 2nd-order Bessel low-pass filter with `\(\omega_0 = 1\)`.**
+
+Using the equations or table above, the 2nd-order reverse Bessel polynomial `\(\theta_2(s/1) = s^2 + 3s + 3\)`. The limit of this function as `\(s \to 0\)` is `\(3\)`. So:
+
+<p>\begin{align}
+H(s) &= \frac{\theta_n(0)}{\theta_n(s/\omega_0)} \nonumber \\
+     &= \frac{3}{s^2 + 3s + 3} \nonumber \\
+\end{align}</p>
+
+To find the magnitude response of this we substitute `\(s = j\omega\)`.
+
+TODO: Finish this.
+
+</div>
 
 ## Elliptic Tunings
 
