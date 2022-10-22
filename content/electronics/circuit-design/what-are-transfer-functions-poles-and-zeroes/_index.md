@@ -1,12 +1,12 @@
 ---
-authors: [ "Geoffrey Hunter" ]
-categories: [ "Electronics", "Circuit Design" ]
+authors: [ Geoffrey Hunter ]
+categories: [ Electronics, Circuit Design ]
 date: 2021-09-04
 draft: false
-lastmod: 2022-10-21
-tags: [ "electronics", "poles", "zeroes", "transfer functions", "bode plots", "Laplace", "control systems", "complex numbers", "angular frequency", "Argand diagram" ]
-title: "What Are Transfer Functions, Poles, And Zeroes?"
-type: "page"
+lastmod: 2022-10-22
+tags: [ electronics, poles, zeroes, transfer functions, bode plots, Laplace, control systems, complex numbers, angular frequency, Argand diagram, frequency response, filters, Wolfram Alpha ]
+title: What Are Transfer Functions, Poles, And Zeroes?
+type: page
 ---
 
 {{% warning-is-notes %}}
@@ -46,6 +46,24 @@ Note that because we are using `\(s\)`, `\(Eq.\ \ref{eq:xfer-fn-vout-vin}\)` enc
 | H(s) | = \left| \frac{v_{out}(s)}{v_{in}(s)} \right|
 \end{align}</p>
 
+To calculate the magnitude of the numerator and denominator, you generally:
+
+1. Substitute in `\(j\omega\)` for `\(s\)` into the polynomials on the top and bottom of the transfer function.
+1. Simplify any `\(j\)`'s that are now risen to powers. For example, `\(j^2 = -1\)`, `\(j^3 = -j\)`, e.t.c.
+1. Group all the real components together, and group all the imaginary components together, so it's in the form `\(a + jb\)`.
+1. Now that we've grouped the real and imaginary components, we can use the rule `\(| a + jb | = \sqrt{a^2 + b^2}\)`. This removes the imaginary component from the equation.
+1. Simplify as needed.
+
+{{% tip %}}
+Sometimes you'll see the equation for calculating the magnitude of an complex number as:
+
+<p>\begin{align}
+|a + jb| = \sqrt{(a + jb)(a - jb)}
+<p>\end{align}
+
+This is equivalent to `\(| a + jb | = \sqrt{a^2 + b^2}\)`, but in my opinion it takes more simplifying, so I prefer the simple square-root-of-squares approach.
+{{% /tip %}}
+
 The phase response `\(\angle H(s)\)` is found by finding the angle of the complex number from the positive x-axis, as shown in `\(Eq.\ \ref{eq:xfer-fn-phase}\)`.
 
 <p>\begin{align}
@@ -68,7 +86,11 @@ This rule of finding the phase response can sometimes be wrong, as the `\(\arcta
 
 **A value of `\(s\)` that causes the a transfer function to be 0 is called a _zero_, and a value of `\(s\)` that causes the transfer function to be infinite is called a _pole_**. Zeroes generally occur when a factor in the numerator is 0 (one notable exception is that a zero can also occur if the denominator tends towards infinity, usually as `\(s \rightarrow \infty\)`), poles generally occur when a factor in the denominator is 0. Poles that have an imaginary component always come in pairs (conjugate pairs).
 
-Intuitively, you can think of zeroes as places in where the system completely blocks a certain frequency. A poles is a place where the system has infinite response (at least mathematically).
+Intuitively, you can think of zeroes as places in where the system completely blocks a certain frequency. A poles is a frequency where the system has infinite response (at least mathematically). You might begin to wonder here why your system would be ok with any poles at all -- surely any frequency in where the gain of the system went to infinity would be a bad thing? Well yes, at any real frequency it would be. The key idea here is that **poles are ok to have as long as their real component is negative, i.e. at a frequency that cannot exist in real life**. On the Argand diagram this means no poles on the right-hand side of the graph.
+
+{{% tip %}}
+A notable exception to the rule off "all poles must have a negative real frequency component" is for oscillators. You want them to have some positive feedback, that's what makes them oscillate by themselves!
+{{% /tip %}}
 
 The zeroes are the roots of the numerator polynomial, and the poles are the roots of the denominator polynomial. For this reason they are also referred to generally as _roots_.
 
@@ -97,14 +119,15 @@ Using `\(Eq.\ \ref{eq:s-eq-j-w}\)`, we can replace `\(s\)` with `\(j\omega\)` to
 H(\omega) &= \frac{1}{1 + j\omega RC}
 \end{align}</p>
 
-This system has a pole at `\(f = \frac{1}{2\pi R C}\)` and a zero at `\(f = \infty\)`.
+This system has a pole at `\(\omega = -\frac{1}{jRC} = \frac{j}{RC}\)` and a zero at `\(\omega = \infty\)`.
 
-We can find the magnitude response of this low-pass RC filter by taking the magnitude of `\(H(f)\)`, remembering that the magnitude of a complex number is defined as in `\(Eq. \ref{eq:magnitude-of-complex-num}\)`. 
+We can find the magnitude response of this low-pass RC filter by taking the magnitude of `\(H(f)\)`, remembering that the magnitude of a complex number is defined as: 
 
 <p>\begin{align}
 \label{eq:magnitude-of-complex-num}
-|a + jb| = \sqrt{(a + jb)(a - jb)}
+|a + jb | = \sqrt{a^2 + b^2}
 \end{align}</p>
+
 
 <p>\begin{align}
 \label{eq:abc}
@@ -137,7 +160,7 @@ We can safely reduce `\(Arg\)` to `\(arctan\)` because we know that `\(1 + j\ome
 
 {{% figure src="low-pass-rc-filter-phase.png" width="600px" caption="The phase response of the the low-pass RC filter, found by plotting `\(Eq.\ \ref{eq:phase-response-lp-rc-filter}\)`" %}}
 
-## Pole Zero Plots
+## Pole Zero Plots (Argand Diagrams)
 
 Poles and zeroes are plotted in a _Argand diagram_ in what is called a _pole-zero plot_ to give the reader an understanding on how the circuit responds.
 
@@ -148,3 +171,20 @@ Poles are normally drawn as X's on the graph, and zeroes as O's. Unless you are 
 
 {{% figure src="poles-graph.png" width="900px" caption="Argand diagram showing how the location of poles (no zeroes shown) on a pole zero plots shows how components of the system respond to transients (i.e. impulses)." %}}
 
+## Other Resources
+
+### Wolfram Alpha
+
+Wolfram Alpha can take a transfer function and calculate many of it's properties. It recognises the keywords `transfer function` in front of the numerator/denominator. For example, if you input in it's search bar (which is a 2nd-order [Bessel-tuned filter](/electronics/circuit-design/analogue-filters/filter-tunings/#bessel-tunings)):
+
+```text
+transfer function (3)/(s^2+3s+3)
+```
+
+It will spit back at you things like the unit step response, state space representation, zeroes and poles, bode plot, Nyquist plot, Nichols plot, Root locus plot, gain margin and phase margin[^bib-wolfram-alpha-transfer-function-2nd-order-bessel]. Click [here](https://www.wolframalpha.com/input?i=transfer+function+%283%29%2F%28s%5E2%2B3s%2B3%29) to jump to these results in Wolfram Alpha.
+
+{{% figure src="wolfram-alpha-transfer-function-analysis-screenshot.png" width="600px" caption="Screenshot of Wolfram Alpha's results when you provide it a transfer function[^bib-wolfram-alpha-transfer-function-2nd-order-bessel]." %}}
+
+## References
+
+[^bib-wolfram-alpha-transfer-function-2nd-order-bessel]: Wolfram Alpha. _Results from providing the input text "transfer function (3)/(s^2+3s+3)"_. Retrieved 2022-10-22, from https://www.wolframalpha.com/input?i=transfer+function+%283%29%2F%28s%5E2%2B3s%2B3%29. 

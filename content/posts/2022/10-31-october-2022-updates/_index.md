@@ -30,3 +30,7 @@ type: "post"
 * Added info on [Chebyshev filter tunings](/electronics/circuit-design/analogue-filters/filter-tunings/) including equations and plots.
 
 * Added info on Bessel filter tunings.
+
+* Added info on Wolfram Alpha's ability to analyze transfer functions.
+
+* Added more info to the [What Are Transfer Functions, Poles, And Zeroes?](/electronics/circuit-design/what-are-transfer-functions-poles-and-zeroes/) page.
