@@ -272,7 +272,7 @@ The above equations were used to generate the table below, which lists the rever
 
 <div class="worked-example">
 
-**Find the transfer function for a 2nd-order Bessel low-pass filter with `\(\omega_0 = 1\)`.**
+**Find the transfer function for a 2nd-order Bessel low-pass filter with `\(\omega_0 = 1\)`. Then find the equations for magnitude/phase and create bode plots.**
 
 Using the equations or table above, the 2nd-order reverse Bessel polynomial `\(\theta_2(s/1) = s^2 + 3s + 3\)`. The limit of this function as `\(s \to 0\)` is `\(3\)`. So:
 

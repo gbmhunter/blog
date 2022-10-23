@@ -46,6 +46,14 @@ Note that because we are using `\(s\)`, `\(Eq.\ \ref{eq:xfer-fn-vout-vin}\)` enc
 | H(s) | = \left| \frac{v_{out}(s)}{v_{in}(s)} \right|
 \end{align}</p>
 
+You might see the magnitude (gain) written as `\(G(\omega)\)`. This is equivalent to the magnitude of `\(H(s)\)`, i.e.:
+
+<p>\begin{align}
+| H(s) | = G(\omega)
+\end{align}</p>
+
+A `\(\omega\)` is used with `\(G\)` for the gain rather than `\(s\)` because the process of taking the magnitude of `\(H(s)\)` removes all imaginary components, leaving a function which is just dependent on `\(\omega\)` and not `\(j\omega\)`.
+
 To calculate the magnitude of the numerator and denominator, you generally:
 
 1. Substitute in `\(j\omega\)` for `\(s\)` into the polynomials on the top and bottom of the transfer function.
@@ -61,7 +69,7 @@ Sometimes you'll see the equation for calculating the magnitude of an complex nu
 |a + jb| = \sqrt{(a + jb)(a - jb)}
 <p>\end{align}
 
-This is equivalent to `\(| a + jb | = \sqrt{a^2 + b^2}\)`, but in my opinion it takes more simplifying, so I prefer the simple square-root-of-squares approach.
+This is equivalent to `\(| a + jb | = \sqrt{a^2 + b^2}\)`, but in my opinion it takes more simplifying, so I prefer the simple square-root-of-squares approach (which is also intuitive to remember). Remember that the magnitude is the distance of the complex number from the origin when drawn on the complex plane, so you can use Pythagoras' theorem.
 {{% /tip %}}
 
 The phase response `\(\angle H(s)\)` is found by finding the angle of the complex number from the positive x-axis, as shown in `\(Eq.\ \ref{eq:xfer-fn-phase}\)`.
@@ -171,7 +179,7 @@ Poles are normally drawn as X's on the graph, and zeroes as O's. Unless you are 
 
 {{% figure src="poles-graph.png" width="900px" caption="Argand diagram showing how the location of poles (no zeroes shown) on a pole zero plots shows how components of the system respond to transients (i.e. impulses)." %}}
 
-## Other Resources
+## Transfer Function Design Tools
 
 ### Wolfram Alpha
 
@@ -185,6 +193,11 @@ It will spit back at you things like the unit step response, state space represe
 
 {{% figure src="wolfram-alpha-transfer-function-analysis-screenshot.png" width="600px" caption="Screenshot of Wolfram Alpha's results when you provide it a transfer function[^bib-wolfram-alpha-transfer-function-2nd-order-bessel]." %}}
 
+### OKAWA Transfer Function Analysis and Design Tool
+
+The OKAWA Electric Design website has a [Transfer Function Analysis and Design tool](http://sim.okawa-denshi.jp/en/dtool.php) which can calculate many of the same things the Wolfram Alpha tool can[^bib-okawa-transfer-function-analysis].
+
 ## References
 
-[^bib-wolfram-alpha-transfer-function-2nd-order-bessel]: Wolfram Alpha. _Results from providing the input text "transfer function (3)/(s^2+3s+3)"_. Retrieved 2022-10-22, from https://www.wolframalpha.com/input?i=transfer+function+%283%29%2F%28s%5E2%2B3s%2B3%29. 
+[^bib-wolfram-alpha-transfer-function-2nd-order-bessel]: Wolfram Alpha. _Results from providing the input text "transfer function (3)/(s^2+3s+3)"_. Retrieved 2022-10-22, from https://www.wolframalpha.com/input?i=transfer+function+%283%29%2F%28s%5E2%2B3s%2B3%29.
+[^bib-okawa-transfer-function-analysis]: OKAWA Electric Design. _Transfer Function Analysis and Design Tool_. Retrieved 2022-10-23, from http://sim.okawa-denshi.jp/en/dtool.php.
