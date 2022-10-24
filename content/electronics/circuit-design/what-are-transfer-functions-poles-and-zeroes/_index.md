@@ -17,22 +17,29 @@ _Transfer functions_ are a way of describing the frequency and phase response of
 
 ## The Laplace Domain
 
-Transfer functions are usually written in the Laplace domain using the variable `\(s\)`, where `\(s\)` is the complex angular frequency, as shown in `\(Eq.\ \ref{eq:s-eq-j-w}\)`.
+Transfer functions are usually written in the Laplace domain using the variable `\(s\)`, where `\(s\)` is equal to:
+
+<p>\begin{align}
+s = \sigma + j\omega
+\end{align}</p>
+
+<p class="centered">
+where:<br/>
+\(\sigma\) is the real part which determines the exponential increase/decrease<br/>
+\(j\) is the imaginary number (\(j = \sqrt{-1}\)), also seen as \(i\) in maths (\(j\) is used in electronics as to not get \(i\) confused with current)<br/>
+\(\omega\) is the angular frequency, in units \(rads^{-1}\). Remember that \(\omega = 2{\pi}f\)<br/>
+</p>
+
+{{% note %}}
+Angular frequency `\(\omega\)` `\([rads^{-1}]\)` is used rather than standard frequency `\(f\)` `\([Hz]\)` just to keep the equations tidier, but it is trivial to convert from one to the other!
+{{% /note %}}
+
+Because we normally only care about what happens to steady-state sinusoidal signals (i.e. transients have all died away), **we can simplify the equation by setting `\(\sigma = 0\)`, as `\(\sigma\)` encodes the exponentially increasing/decaying components**. This is essentially simplifying the general Laplace transform to the simpler Fourier transform, and thus `\(s\)` becomes:
 
 <p>\begin{align}
 \label{eq:s-eq-j-w}
 s = j\omega
 \end{align}</p>
-
-<p class="centered">
-where:<br/>
-\(j\) is the imaginary number (\(j = \sqrt{-1}\)), also seen as \(i\) in maths (\(j\) is used in electronics as to not get \(i\) confused with current)<br/>
-\(\omega = 2\pi f\)<br/>
-</p>
-
-{{% note %}}
-Angular frequency `\(\omega\)` is used here rather than Hertz `\(f\)` just to keep the equations tidier, but it is trivial to convert from one to the other!
-{{% /note %}}
 
 Transfer functions describe the relationship between output and input (typically of voltage, but it doesn't have to be). `\(Eq.\ \ref{eq:xfer-fn-vout-vin}\)` shows this relationship. We will use the symbol `\(H(s)\)` is represent the transfer function (we are referring to a continuous-time system here, you might see `\(H(z)\)` used for a discrete-time system).
 
@@ -40,6 +47,14 @@ Transfer functions describe the relationship between output and input (typically
 \label{eq:xfer-fn-vout-vin}
 H(s) = \frac{v_{out}(s)}{v_{in}(s)}
 \end{align}</p>
+
+**The above equation is great, but is really just one of those "be definition" equations and doesn't tell you anything about an electrical system** (e.g. filter). The real usefulness comes in when you can write `\(\frac{v_{out}(s)}{v_{in}(s)}\)` in terms of the circuit components, typically using KVL/KCL. This lets you write the transfer function with a polynomial on top and bottom:
+
+<p>\begin{align}
+H(s) = \frac{6s}{s^2 + 2s + 9}
+\end{align}</p>
+
+This is much more useful! It tells use everything we need to know about the electrical system (more on this below).
 
 ## Magnitude and Phase
 
